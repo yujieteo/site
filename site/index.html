@@ -301,6 +301,34 @@
 </script>
 
     
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      // Don't try to typeset inside things like search boxes / inputs.
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+</script>
+<script>
+  // Re-typeset after the filter/search script mutates the DOM (e.g.
+  // when entries are shown/hidden or tags are clicked), in case any
+  // math ships inside content that gets toggled later.
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  });
+</script>
+
     </main>
     <footer class="site-footer">
       Made with love.

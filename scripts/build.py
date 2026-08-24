@@ -10,6 +10,10 @@ buttons. Clicking "Filters" opens a small anchored dropdown panel with
 tags sorted most-common-first. The panel is self-contained (fixed
 width, wraps, scrolls) so it can't be broken by unrelated CSS elsewhere
 on the page.
+
+Pages also render LaTeX (via MathJax) so that any $...$ / $$...$$ or
+\\(...\\) / \\[...\\] math in bios, notes, exercise text, and hints is
+typeset in the browser.
 """
 
 import os
@@ -23,6 +27,43 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 TEMPLATES = os.path.join(ROOT, "templates")
 OUT = os.path.join(ROOT, "site")
+
+
+# MathJax v3 configuration + loader. Injected on every page (see
+# render_page below) so LaTeX in bios / notes / exercise text / hints
+# gets typeset automatically, regardless of where in the DOM it ends
+# up. MathJax scans and typesets the whole document once it loads, so
+# it doesn't matter that this script tag lives at the end of the body
+# rather than in <head>.
+MATHJAX_SCRIPT = r"""
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      // Don't try to typeset inside things like search boxes / inputs.
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+</script>
+<script>
+  // Re-typeset after the filter/search script mutates the DOM (e.g.
+  // when entries are shown/hidden or tags are clicked), in case any
+  // math ships inside content that gets toggled later.
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  });
+</script>
+"""
 
 
 FILTER_SCRIPT = """
@@ -124,8 +165,11 @@ def load_all(subdir):
 def render_page(title, content, root="", tagline="", name="", nav_home="", nav_papers="", nav_exercises=""):
     with open(os.path.join(TEMPLATES, "base.html")) as f:
         base = f.read()
+    # Append the MathJax loader to the page content so every generated
+    # page renders LaTeX, without requiring changes to base.html.
+    content_with_mathjax = content + MATHJAX_SCRIPT
     return base.format(
-        title=title, content=content, root=root, tagline=tagline, name=name,
+        title=title, content=content_with_mathjax, root=root, tagline=tagline, name=name,
         nav_home=nav_home, nav_papers=nav_papers, nav_exercises=nav_exercises,
     )
 
