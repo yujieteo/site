@@ -6,144 +6,18 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-ib-m-methods-full#000
-  text: Why do people model stuff linearly?
-  hint: it is simpler, however quantum mechanics and Schrodinger's euqation is inherent linear
+  text: Why are physical systems frequently linearized?
+  hint: Small perturbations around equilibrium obey linear differential equations that can be solved using
+    superposition and spectral decomposition.
   locator: null
   sub_index: null
-  search_text: why do people model stuff linearly? it is simpler, however quantum mechanics and schrodinger's
-    euqation is inherent linear
+  search_text: why are physical systems frequently linearized? small perturbations around equilibrium
+    obey linear differential equations that can be solved using superposition and spectral decomposition.
 - id: dec41-user-srcf-net-h-ib-m-methods-full#001
-  text: 'Why do one think of the space of functions as a vector space? (Hint: when dealing with periodic
-    functions, pick basis elements which are periodic) https://dec41.user.srcf.net/h/III_M/hydrodynamic_stability/full'
-  hint: null
+  text: Why do function spaces form vector spaces?
+  hint: Linear combinations of functions satisfy vector space axioms, enabling Fourier series and orthogonal
+    expansions.
   locator: null
   sub_index: null
-  search_text: 'why do one think of the space of functions as a vector space? (hint: when dealing with
-    periodic functions, pick basis elements which are periodic) https://dec41.user.srcf.net/h/iii_m/hydrodynamic_stability/full'
-- id: dec41-user-srcf-net-h-ib-m-methods-full#002
-  text: Why is hydrodynamic stability interesting?
-  hint: studying how small perturbations grow, so this is a good test ground. One can look at how shear
-    and fluid inertia, vorticity can lead to transition to turbulence and stability considerations?
-  locator: null
-  sub_index: null
-  search_text: why is hydrodynamic stability interesting? studying how small perturbations grow, so this
-    is a good test ground. one can look at how shear and fluid inertia, vorticity can lead to transition
-    to turbulence and stability considerations?
-- id: dec41-user-srcf-net-h-ib-m-methods-full#003
-  text: 'Why can we not assume incompressibility? (Hint: different fluids being mixed together) Actually,
-    I realise the goal is to simply reduce it down to Fourier analysis using linearisation and assumptions'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'why can we not assume incompressibility? (hint: different fluids being mixed together)
-    actually, i realise the goal is to simply reduce it down to fourier analysis using linearisation and
-    assumptions'
-- id: dec41-user-srcf-net-h-ib-m-methods-full#004
-  text: 'Why must we take inviscid and irrotational assumptions? (Hint: can apply Stoke''s theorem, u
-    = nabla phi i.e. velocity potential. Stoke''s theorem holds. I learnt that Stoke'' theorem apply on
-    local coordinate charts, so it is independent on global topology. Integration descends to pairing
-    between de Rham cohomology and singular homology). Therefore, one can get Bernoulli''s theorem'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'why must we take inviscid and irrotational assumptions? (hint: can apply stoke''s theorem,
-    u = nabla phi i.e. velocity potential. stoke''s theorem holds. i learnt that stoke'' theorem apply
-    on local coordinate charts, so it is independent on global topology. integration descends to pairing
-    between de rham cohomology and singular homology). therefore, one can get bernoulli''s theorem'
-- id: dec41-user-srcf-net-h-ib-m-methods-full#005
-  text: Why is Bernoulli's theorem used at the interface?
-  hint: energy flow at the interface is assumed to be constant
-  locator: null
-  sub_index: null
-  search_text: why is bernoulli's theorem used at the interface? energy flow at the interface is assumed
-    to be constant
-- id: dec41-user-srcf-net-h-ib-m-methods-full#006
-  text: 'Why does one make the assumption that there is no velocity in the far field? (Hint: interesting
-    behaviour happens only at the interface, so assume phi tends to 0 as z tends to positive or negative
-    infinity respectively, similarly for the derivative)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'why does one make the assumption that there is no velocity in the far field? (hint: interesting
-    behaviour happens only at the interface, so assume phi tends to 0 as z tends to positive or negative
-    infinity respectively, similarly for the derivative)'
-- id: dec41-user-srcf-net-h-ib-m-methods-full#007
-  text: Why does one linearise the equation?
-  hint: one can do Fourier analysis, apply the ansatz and supply Laplace's equation
-  locator: null
-  sub_index: null
-  search_text: why does one linearise the equation? one can do fourier analysis, apply the ansatz and
-    supply laplace's equation
-- id: dec41-user-srcf-net-h-ib-m-methods-full#008
-  text: 'What is the result obtained when one gets the dispersion relation? (Hint: high frequency for
-    deep water waves with large density difference, with small density difference, you can get low frequency
-    waves)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'what is the result obtained when one gets the dispersion relation? (hint: high frequency
-    for deep water waves with large density difference, with small density difference, you can get low
-    frequency waves)'
-- id: dec41-user-srcf-net-h-ib-m-methods-full#009
-  text: What happens when the heavier fluid is on top of the lighter one?
-  hint: apply Fourier analysis, it is unstable by looking at root loci, one gets Rayleigh-Taylor instability
-  locator: null
-  sub_index: null
-  search_text: what happens when the heavier fluid is on top of the lighter one? apply fourier analysis,
-    it is unstable by looking at root loci, one gets rayleigh-taylor instability
-- id: dec41-user-srcf-net-h-ib-m-methods-full#010
-  text: 'What happens when the wavelength decrease? (Hint: compute omega = +- i theta), one gets sigma
-    then gets the ultraviolet catastrophe i.e. it is not well posed'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'what happens when the wavelength decrease? (hint: compute omega = +- i theta), one gets
-    sigma then gets the ultraviolet catastrophe i.e. it is not well posed'
-- id: dec41-user-srcf-net-h-ib-m-methods-full#011
-  text: What is thermal conduction controlled by?
-  hint: thermal diffusivity.
-  locator: null
-  sub_index: null
-  search_text: what is thermal conduction controlled by? thermal diffusivity.
-- id: dec41-user-srcf-net-h-ib-m-methods-full#012
-  text: 'What is thermal convection controlled by? (hint: viscosity)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'what is thermal convection controlled by? (hint: viscosity)'
-- id: dec41-user-srcf-net-h-ib-m-methods-full#013
-  text: Why when the temperature gradient is small, the heat transfer is due to conduction?
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: why when the temperature gradient is small, the heat transfer is due to conduction?
-- id: dec41-user-srcf-net-h-ib-m-methods-full#014
-  text: Why is density hard to consider?
-  hint: density is affected by temperature
-  locator: null
-  sub_index: null
-  search_text: why is density hard to consider? density is affected by temperature
-- id: dec41-user-srcf-net-h-ib-m-methods-full#015
-  text: Why is vorticity important?
-  hint: tilted lead to naturally induced torque when there is an interface of two fluids with different
-    densities
-  locator: null
-  sub_index: null
-  search_text: why is vorticity important? tilted lead to naturally induced torque when there is an interface
-    of two fluids with different densities
-- id: dec41-user-srcf-net-h-ib-m-methods-full#016
-  text: What is the Boussinesq approximation? How does one derived it?
-  hint: density difference drives the motion, variation in density is small  enough to be ignored, so
-    fix the case where density is constant except when g -> infty, but rho' -> 0 with remaining g rho'
-    remaining finite.
-  locator: null
-  sub_index: null
-  search_text: what is the boussinesq approximation? how does one derived it? density difference drives
-    the motion, variation in density is small  enough to be ignored, so fix the case where density is
-    constant except when g -> infty, but rho' -> 0 with remaining g rho' remaining finite.
-- id: dec41-user-srcf-net-h-ib-m-methods-full#017
-  text: Why does one reduce the gravity?
-  hint: normalise the density with the density
-  locator: null
-  sub_index: null
-  search_text: why does one reduce the gravity? normalise the density with the density
+  search_text: why do function spaces form vector spaces? linear combinations of functions satisfy vector
+    space axioms, enabling fourier series and orthogonal expansions.

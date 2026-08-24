@@ -1,0 +1,68 @@
+url: https://dec41.user.srcf.net/h/III_M/modern_statistical_methods/full
+title: modern statistical methods
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iii-m-modern-statistical-methods-full#000
+  text: Why are modern statistical methods needed for high-dimensional data?
+  hint: To handle the $p \gg n$ regime where the number of parameters exceeds the sample size.
+  locator: null
+  sub_index: null
+  search_text: why are modern statistical methods needed for high-dimensional data? to handle the $p \gg
+    n$ regime where the number of parameters exceeds the sample size.
+- id: dec41-user-srcf-net-h-iii-m-modern-statistical-methods-full#001
+  text: When can ordinary least squares (OLS) be used?
+  hint: When the design matrix $X$ has full column rank, making $X^T X$ invertible.
+  locator: null
+  sub_index: null
+  search_text: when can ordinary least squares (ols) be used? when the design matrix $x$ has full column
+    rank, making $x^t x$ invertible.
+- id: dec41-user-srcf-net-h-iii-m-modern-statistical-methods-full#002
+  text: What does the Gauss-Markov theorem state?
+  hint: The OLS estimator $\widehat{\beta}_{\mathrm{OLS}} = (X^T X)^{-1} X^T Y$ is the Best Linear Unbiased
+    Estimator (BLUE), minimizing variance.
+  locator: null
+  sub_index: null
+  search_text: what does the gauss-markov theorem state? the ols estimator $\widehat{\beta}_{\mathrm{ols}}
+    = (x^t x)^{-1} x^t y$ is the best linear unbiased estimator (blue), minimizing variance.
+- id: dec41-user-srcf-net-h-iii-m-modern-statistical-methods-full#003
+  text: How does one define the maximum likelihood estimator (MLE)?
+  hint: $\widehat{\theta}_{\mathrm{MLE}} = \arg\max_\theta \ell(\theta; Y) = \arg\max_\theta \sum \ln
+    f(y_i; \theta)$.
+  locator: null
+  sub_index: null
+  search_text: how does one define the maximum likelihood estimator (mle)? $\widehat{\theta}_{\mathrm{mle}}
+    = \arg\max_\theta \ell(\theta; y) = \arg\max_\theta \sum \ln f(y_i; \theta)$.
+- id: dec41-user-srcf-net-h-iii-m-modern-statistical-methods-full#004
+  text: What is the Cramér-Rao lower bound?
+  hint: 'The variance of any unbiased estimator is lower bounded by the inverse of the Fisher information
+    matrix: $\operatorname{Var}(\widehat{\theta}) \ge I(\theta)^{-1}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the cramér-rao lower bound? the variance of any unbiased estimator is lower bounded
+    by the inverse of the fisher information matrix: $\operatorname{var}(\widehat{\theta}) \ge i(\theta)^{-1}$.'
+- id: dec41-user-srcf-net-h-iii-m-modern-statistical-methods-full#005
+  text: Why does one use biased estimators like ridge regression?
+  hint: Introducing small bias reduces variance significantly, lowering the overall Mean Squared Error
+    (MSE) via the bias-variance tradeoff.
+  locator: null
+  sub_index: null
+  search_text: why does one use biased estimators like ridge regression? introducing small bias reduces
+    variance significantly, lowering the overall mean squared error (mse) via the bias-variance tradeoff.
+- id: dec41-user-srcf-net-h-iii-m-modern-statistical-methods-full#006
+  text: How does ridge regression resolve singularity?
+  hint: Adding a penalty $\lambda I$ makes $X^T X + \lambda I$ invertible for any $\lambda > 0$.
+  locator: null
+  sub_index: null
+  search_text: how does ridge regression resolve singularity? adding a penalty $\lambda i$ makes $x^t
+    x + \lambda i$ invertible for any $\lambda > 0$.
+- id: dec41-user-srcf-net-h-iii-m-modern-statistical-methods-full#007
+  text: How does singular value decomposition (SVD) analyze ridge regression?
+  hint: Decomposing $X = U \Sigma V^T$ shrinks singular components by factors of $\frac{\sigma_i^2}{\sigma_i^2
+    + \lambda}$.
+  locator: null
+  sub_index: null
+  search_text: how does singular value decomposition (svd) analyze ridge regression? decomposing $x =
+    u \sigma v^t$ shrinks singular components by factors of $\frac{\sigma_i^2}{\sigma_i^2 + \lambda}$.

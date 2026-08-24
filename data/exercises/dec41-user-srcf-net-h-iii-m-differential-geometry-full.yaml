@@ -6,1245 +6,205 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#000
-  text: How does one invent differentiability?
-  hint: derivatives are local, just need to know near p, calculus on a sphere can be done because sphere
-    looks locally like R^n
+  text: How does one define differentiability on a manifold?
+  hint: Use coordinate charts $(U, \varphi)$ to transfer calculus from $\mathbb{R}^n$ to the manifold
+    locally.
   locator: null
   sub_index: null
-  search_text: how does one invent differentiability? derivatives are local, just need to know near p,
-    calculus on a sphere can be done because sphere looks locally like r^n
+  search_text: how does one define differentiability on a manifold? use coordinate charts $(u, \varphi)$
+    to transfer calculus from $\mathbb{r}^n$ to the manifold locally.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#001
-  text: How does one invent a chart?
-  hint: just take bijections from U a set valued in R^n, charts are then used to have something that looks
-    locally like R^n, then to define the center, you want the kernel of the set to be point you want to
-    differentiate
+  text: How does one define a chart on a topological space?
+  hint: 'A homeomorphism $\varphi: U \to \varphi(U) \subseteq \mathbb{R}^n$ from an open subset $U \subseteq
+    M$ onto an open subset of $\mathbb{R}^n$.'
   locator: null
   sub_index: null
-  search_text: how does one invent a chart? just take bijections from u a set valued in r^n, charts are
-    then used to have something that looks locally like r^n, then to define the center, you want the kernel
-    of the set to be point you want to differentiate
+  search_text: 'how does one define a chart on a topological space? a homeomorphism $\varphi: u \to \varphi(u)
+    \subseteq \mathbb{r}^n$ from an open subset $u \subseteq m$ onto an open subset of $\mathbb{r}^n$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#002
-  text: What is a typical counterexample how global behaviour may vary?
-  hint: vector field for R^3 punctured, curl vanishes everywhere DOES NOT MEAN we know it is the gradient
-    of some function
+  text: What is a smooth atlas?
+  hint: A collection of charts $\{(U_\alpha, \varphi_\alpha)\}$ covering $M$ such that all transition
+    maps $\varphi_\beta \circ \varphi_\alpha^{-1}$ are smooth diffeomorphisms on their domains.
   locator: null
   sub_index: null
-  search_text: what is a typical counterexample how global behaviour may vary? vector field for r^3 punctured,
-    curl vanishes everywhere does not mean we know it is the gradient of some function
+  search_text: what is a smooth atlas? a collection of charts $\{(u_\alpha, \varphi_\alpha)\}$ covering
+    $m$ such that all transition maps $\varphi_\beta \circ \varphi_\alpha^{-1}$ are smooth diffeomorphisms
+    on their domains.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#003
-  text: How does one bypass charts?
-  hint: define smooth maps first and consider the category of smooth maps, then take idempotent envelope
+  text: How does one define a smooth manifold?
+  hint: A second-countable Hausdorff topological space equipped with a maximal smooth atlas.
   locator: null
   sub_index: null
-  search_text: how does one bypass charts? define smooth maps first and consider the category of smooth
-    maps, then take idempotent envelope
+  search_text: how does one define a smooth manifold? a second-countable hausdorff topological space equipped
+    with a maximal smooth atlas.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#004
-  text: Why are charts easy to work with?
-  hint: they are valued in R^n, and lend to a definition of smooth functions! And one can talk about continuity,
-    differentiability by identifying U with the phi(U). Furthermore, no requirement for U to be open on
-    the manifold M, or phi to be a morphism, so charts are more general than topology
+  text: Why is the second-countable condition required for manifolds?
+  hint: To ensure the existence of partitions of unity and exclude pathological spaces like the long line.
   locator: null
   sub_index: null
-  search_text: why are charts easy to work with? they are valued in r^n, and lend to a definition of smooth
-    functions! and one can talk about continuity, differentiability by identifying u with the phi(u).
-    furthermore, no requirement for u to be open on the manifold m, or phi to be a morphism, so charts
-    are more general than topology
+  search_text: why is the second-countable condition required for manifolds? to ensure the existence of
+    partitions of unity and exclude pathological spaces like the long line.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#005
-  text: What is important to defining smooth functions?
-  hint: define composition of pullback on charts, recall the definition of a Fourier transform for locally
-    compact abelian groups, it looks similar
+  text: How does one define smooth maps between manifolds?
+  hint: 'A map $F: M \to N$ is smooth if for all charts $(U, \varphi)$ on $M$ and $(V, \psi)$ on $N$,
+    the composition $\psi \circ F \circ \varphi^{-1}$ is smooth on $\mathbb{R}^n$.'
   locator: null
   sub_index: null
-  search_text: what is important to defining smooth functions? define composition of pullback on charts,
-    recall the definition of a fourier transform for locally compact abelian groups, it looks similar
+  search_text: 'how does one define smooth maps between manifolds? a map $f: m \to n$ is smooth if for
+    all charts $(u, \varphi)$ on $m$ and $(v, \psi)$ on $n$, the composition $\psi \circ f \circ \varphi^{-1}$
+    is smooth on $\mathbb{r}^n$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#006
-  text: How does one fix the problem where points might not be in the chart?
-  hint: take open cover of the manifold M of the chart.
+  text: How does one define tangent vectors via derivations?
+  hint: 'Tangent vectors at $p \in M$ are $\mathbb{R}$-linear derivations $v: C^\infty(M) \to \mathbb{R}$
+    satisfying the Leibniz rule $v(fg) = v(f)g(p) + f(p)v(g)$.'
   locator: null
   sub_index: null
-  search_text: how does one fix the problem where points might not be in the chart? take open cover of
-    the manifold m of the chart.
+  search_text: 'how does one define tangent vectors via derivations? tangent vectors at $p \in m$ are
+    $\mathbb{r}$-linear derivations $v: c^\infty(m) \to \mathbb{r}$ satisfying the leibniz rule $v(fg)
+    = v(f)g(p) + f(p)v(g)$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#007
-  text: How does one fix the problem of a function may be smooth at point relative to some chart, but
-    not others?
-  hint: compatibility condition i.e. use a compatibility condition, not that atlases and sheaves are different,
-    sheaves describes SECTIONS which are functions on that space, atlases directly use the sets as the
-    manifold, one can take atlases is a sheaf on the site of cartesian spaces?
+  text: How does one define the differential of a smooth map?
+  hint: 'The linear map $dF_p: T_p M \to T_{F(p)} N$ defined by $(dF_p(v))(g) = v(g \circ F)$ for $g \in
+    C^\infty(N)$.'
   locator: null
   sub_index: null
-  search_text: how does one fix the problem of a function may be smooth at point relative to some chart,
-    but not others? compatibility condition i.e. use a compatibility condition, not that atlases and sheaves
-    are different, sheaves describes sections which are functions on that space, atlases directly use
-    the sets as the manifold, one can take atlases is a sheaf on the site of cartesian spaces?
+  search_text: 'how does one define the differential of a smooth map? the linear map $df_p: t_p m \to
+    t_{f(p)} n$ defined by $(df_p(v))(g) = v(g \circ f)$ for $g \in c^\infty(n)$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#008
-  text: Why does one need atlases?
-  hint: smoothness no longer depends on the chart
+  text: What is a partition of unity subordinate to an open cover?
+  hint: 'A family of smooth functions $\rho_\alpha: M \to [0, 1]$ with $\operatorname{supp}(\rho_\alpha)
+    \subseteq U_\alpha$, locally finite supports, and $\sum_\alpha \rho_\alpha = 1$.'
   locator: null
   sub_index: null
-  search_text: why does one need atlases? smoothness no longer depends on the chart
+  search_text: 'what is a partition of unity subordinate to an open cover? a family of smooth functions
+    $\rho_\alpha: m \to [0, 1]$ with $\operatorname{supp}(\rho_\alpha) \subseteq u_\alpha$, locally finite
+    supports, and $\sum_\alpha \rho_\alpha = 1$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#009
-  text: How does one check equivalent atlases?
-  hint: since smoothness no longer depends on the chart, take union
+  text: How does one define embedded submanifolds?
+  hint: A subset $S \subset M$ that locally admits slice coordinate charts where $S \cap U = \{x_{k+1}
+    = \dots = x_n = 0\}$.
   locator: null
   sub_index: null
-  search_text: how does one check equivalent atlases? since smoothness no longer depends on the chart,
-    take union
+  search_text: how does one define embedded submanifolds? a subset $s \subset m$ that locally admits slice
+    coordinate charts where $s \cap u = \{x_{k+1} = \dots = x_n = 0\}$.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#010
-  text: How does one invent differentiable structure?
-  hint: choice of equivalence classes of atlases
+  text: What is the regular value theorem?
+  hint: 'If $c \in N$ is a regular value of $F: M \to N$, then $F^{-1}(c)$ is an embedded submanifold
+    of dimension $\dim M - \dim N$.'
   locator: null
   sub_index: null
-  search_text: how does one invent differentiable structure? choice of equivalence classes of atlases
+  search_text: 'what is the regular value theorem? if $c \in n$ is a regular value of $f: m \to n$, then
+    $f^{-1}(c)$ is an embedded submanifold of dimension $\dim m - \dim n$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#011
-  text: How does one invent the topology determined by an atlas?
-  hint: M is not a topological space, define the topology using an atlas, say V in M is open if chart
-    on intersections are open for all charts in the atlas, this gives a topology as one can check
+  text: What is a smooth vector field?
+  hint: 'A smooth section of the tangent bundle $\pi: TM \to M$, or equivalently a derivation of the algebra
+    $C^\infty(M)$.'
   locator: null
   sub_index: null
-  search_text: how does one invent the topology determined by an atlas? m is not a topological space,
-    define the topology using an atlas, say v in m is open if chart on intersections are open for all
-    charts in the atlas, this gives a topology as one can check
+  search_text: 'what is a smooth vector field? a smooth section of the tangent bundle $\pi: tm \to m$,
+    or equivalently a derivation of the algebra $c^\infty(m)$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#012
-  text: How does one define a manifold?
-  hint: Hausdorff, second countable topological space with choice of differentiable conditions. It is
-    the smooth structure that gives the topological conditions.
+  text: How does one define the Lie bracket of vector fields?
+  hint: Define $[X, Y](f) = X(Y(f)) - Y(X(f))$, which satisfies bilinearity, antisymmetry, and the Jacobi
+    identity.
   locator: null
   sub_index: null
-  search_text: how does one define a manifold? hausdorff, second countable topological space with choice
-    of differentiable conditions. it is the smooth structure that gives the topological conditions.
+  search_text: how does one define the lie bracket of vector fields? define $[x, y](f) = x(y(f)) - y(x(f))$,
+    which satisfies bilinearity, antisymmetry, and the jacobi identity.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#013
-  text: Why need second countable as a condition on the manifold?
-  hint: exclude pathologies like the long line
+  text: What are integral curves and why do they exist?
+  hint: Curves $\gamma(t)$ satisfying $\dot{\gamma}(t) = X(\gamma(t))$; existence and uniqueness follow
+    from the Picard-Lindelöf theorem on ODEs.
   locator: null
   sub_index: null
-  search_text: why need second countable as a condition on the manifold? exclude pathologies like the
-    long line
+  search_text: what are integral curves and why do they exist? curves $\gamma(t)$ satisfying $\dot{\gamma}(t)
+    = x(\gamma(t))$; existence and uniqueness follow from the picard-lindelöf theorem on odes.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#014
-  text: How does one define local coordinates?
-  hint: 'take projections valued in R from each chart phi: U -> phi(U). This is abuse of notation. To
-    adapt this to other manifold, pick M to be other types of manifolds, the definition generalises'
+  text: What is a complete vector field?
+  hint: A vector field whose integral curves are defined for all $t \in \mathbb{R}$, generating a global
+    1-parameter group of diffeomorphisms.
   locator: null
   sub_index: null
-  search_text: 'how does one define local coordinates? take projections valued in r from each chart phi:
-    u -> phi(u). this is abuse of notation. to adapt this to other manifold, pick m to be other types
-    of manifolds, the definition generalises'
+  search_text: what is a complete vector field? a vector field whose integral curves are defined for all
+    $t \in \mathbb{r}$, generating a global 1-parameter group of diffeomorphisms.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#015
-  text: How does one prove that the set of n by n matrices to be a manifold? (Hint take bijection with
-    R^n^2, so GL_n is open, als oa  manifold i.e. one can study Lie groups)
-  hint: null
+  text: How does one define the Lie derivative?
+  hint: 'Differentiate a tensor field along the local flow $\Phi_t$ of a vector field $X$: $\mathcal{L}_X
+    Y = \lim_{t \to 0} \frac{(\Phi_{-t})_* Y - Y}{t} = [X, Y]$.'
   locator: null
   sub_index: null
-  search_text: how does one prove that the set of n by n matrices to be a manifold? (hint take bijection
-    with r^n^2, so gl_n is open, als oa  manifold i.e. one can study lie groups)
+  search_text: 'how does one define the lie derivative? differentiate a tensor field along the local flow
+    $\phi_t$ of a vector field $x$: $\mathcal{l}_x y = \lim_{t \to 0} \frac{(\phi_{-t})_* y - y}{t} =
+    [x, y]$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#016
-  text: Why can't charts U valued in R^n vary?
-  hint: need space to be connected if U_1 cap U_2 nonzero, diemnsion must be constant since one will need
-    to have derivative t be a linear isomorphism. So dimension is global provided with have connectedness
+  text: What is a Lie group?
+  hint: A smooth manifold $G$ equipped with a group structure such that multiplication and inversion are
+    smooth maps.
   locator: null
   sub_index: null
-  search_text: why can't charts u valued in r^n vary? need space to be connected if u_1 cap u_2 nonzero,
-    diemnsion must be constant since one will need to have derivative t be a linear isomorphism. so dimension
-    is global provided with have connectedness
+  search_text: what is a lie group? a smooth manifold $g$ equipped with a group structure such that multiplication
+    and inversion are smooth maps.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#017
-  text: How does one invent for a map to be smooth?
-  hint: invent the notion of smooth to a point by a certain commutative diagram i.e. phi^-1 pullback to
-    smooth space, then pushforward and down via f then zeta. Function is smooth if smooth at all points,
-    diffeomorphism is smooth f with smooth inverse, C^\infty is space of smooth maps, it is a vector space
-    with multiplication.
+  text: What is the Lie algebra of a Lie group?
+  hint: The Lie algebra $\mathfrak{g} \cong T_e G$ of left-invariant vector fields under the Lie bracket.
   locator: null
   sub_index: null
-  search_text: how does one invent for a map to be smooth? invent the notion of smooth to a point by a
-    certain commutative diagram i.e. phi^-1 pullback to smooth space, then pushforward and down via f
-    then zeta. function is smooth if smooth at all points, diffeomorphism is smooth f with smooth inverse,
-    c^\infty is space of smooth maps, it is a vector space with multiplication.
+  search_text: what is the lie algebra of a lie group? the lie algebra $\mathfrak{g} \cong t_e g$ of left-invariant
+    vector fields under the lie bracket.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#018
-  text: How does one define a curve?
-  hint: a curve is a smooth map valued in the manifold taking parameters in the nonempty open interval,
-    NOT CLOSED
+  text: How does one define differential forms?
+  hint: Smooth sections of the exterior algebra bundle $\Lambda^k(T^*M)$, acting as alternating multilinear
+    forms on tangent vectors.
   locator: null
   sub_index: null
-  search_text: how does one define a curve? a curve is a smooth map valued in the manifold taking parameters
-    in the nonempty open interval, not closed
+  search_text: how does one define differential forms? smooth sections of the exterior algebra bundle
+    $\lambda^k(t^*m)$, acting as alternating multilinear forms on tangent vectors.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#019
-  text: Why does one need the definition of a curve?
-  hint: To define derivatives. define a tangent space to a manifold that paptures where the direction
-    lives, then one uses a curve and taking the derivative along the curve, check thatit satisfies the
-    Leibniz rules and we are done, however we do not take equivalence relations of curves.
+  text: 'How does one define the exterior derivative $d: \Omega^k(M) \to \Omega^{k+1}(M)$?'
+  hint: The unique $\mathbb{R}$-linear operator satisfying $d^2 = 0$, $d(\omega \wedge \eta) = d\omega
+    \wedge \eta + (-1)^k \omega \wedge d\eta$, and $df(X) = X(f)$ for 0-forms.
   locator: null
   sub_index: null
-  search_text: why does one need the definition of a curve? to define derivatives. define a tangent space
-    to a manifold that paptures where the direction lives, then one uses a curve and taking the derivative
-    along the curve, check thatit satisfies the leibniz rules and we are done, however we do not take
-    equivalence relations of curves.
+  search_text: 'how does one define the exterior derivative $d: \omega^k(m) \to \omega^{k+1}(m)$? the
+    unique $\mathbb{r}$-linear operator satisfying $d^2 = 0$, $d(\omega \wedge \eta) = d\omega \wedge
+    \eta + (-1)^k \omega \wedge d\eta$, and $df(x) = x(f)$ for 0-forms.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#020
-  text: How does one check charts for smooth functions?
-  hint: for functions from M -> N, need to check it on both N and M.
+  text: What is de Rham cohomology?
+  hint: The cohomology groups $H_{\mathrm{dR}}^k(M) = \ker(d^k) / \operatorname{im}(d^{k-1})$ measuring
+    closed forms that are not exact.
   locator: null
   sub_index: null
-  search_text: how does one check charts for smooth functions? for functions from m -> n, need to check
-    it on both n and m.
+  search_text: what is de rham cohomology? the cohomology groups $h_{\mathrm{dr}}^k(m) = \ker(d^k) / \operatorname{im}(d^{k-1})$
+    measuring closed forms that are not exact.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#021
-  text: Why does one not define a tangent space up to some equivalence relation?
-  hint: no obvious vector space structure on tangent space, this motivates using derivations, linear map
-    valued in R parameterised by the smooth space on open subset satisfying Leibniz's rule for the linear
-    algebra, then the tangent space is the derivations of the open subset at a point. Basically, you force
-    the calculus rule that you want and then state that vector spaces that satsify this.
+  text: What is the Poincaré lemma?
+  hint: Every closed differential form on a star-shaped or contractible open set is exact for $k \ge 1$.
   locator: null
   sub_index: null
-  search_text: why does one not define a tangent space up to some equivalence relation? no obvious vector
-    space structure on tangent space, this motivates using derivations, linear map valued in r parameterised
-    by the smooth space on open subset satisfying leibniz's rule for the linear algebra, then the tangent
-    space is the derivations of the open subset at a point. basically, you force the calculus rule that
-    you want and then state that vector spaces that satsify this.
+  search_text: what is the poincaré lemma? every closed differential form on a star-shaped or contractible
+    open set is exact for $k \ge 1$.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#022
-  text: How does one define the notion of a tangent vector and derivatives?
-  hint: the tangent vectors form a basis of the tangent space, by definition of the tangent space as a
-    vector space, so these are all the derivations by proving that a derivation only depends on first
-    order derivatives, this is proven by Taylor's theorem, then use the definition of the chain rule built
-    in, one defines a derivative to simply be a linear map DF(X)(g) or X(g * F) for F in smooth space.
-    Then the chain rule is just composition of the derivatives
+  text: What is Stokes' theorem for manifolds with boundary?
+  hint: $\int_M d\omega = \int_{\partial M} \omega$ for any compactly supported $(n-1)$-form on an oriented
+    $n$-dimensional manifold with boundary.
   locator: null
   sub_index: null
-  search_text: how does one define the notion of a tangent vector and derivatives? the tangent vectors
-    form a basis of the tangent space, by definition of the tangent space as a vector space, so these
-    are all the derivations by proving that a derivation only depends on first order derivatives, this
-    is proven by taylor's theorem, then use the definition of the chain rule built in, one defines a derivative
-    to simply be a linear map df(x)(g) or x(g * f) for f in smooth space. then the chain rule is just
-    composition of the derivatives
+  search_text: what is stokes' theorem for manifolds with boundary? $\int_m d\omega = \int_{\partial m}
+    \omega$ for any compactly supported $(n-1)$-form on an oriented $n$-dimensional manifold with boundary.
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#023
-  text: How does one reduce it to normal derivative theory? (Hint; reduce the definition of tangent vectors
-    in R^n to the canonical one i.e. in R^1 i.e. the vector 1. And this is canonical)
-  hint: null
+  text: What is a Koszul connection on a vector bundle $E \to M$?
+  hint: 'A linear map $\nabla: \Gamma(E) \to \Gamma(T^*M \otimes E)$ satisfying the Leibniz rule $\nabla(f
+    s) = df \otimes s + f \nabla s$.'
   locator: null
   sub_index: null
-  search_text: how does one reduce it to normal derivative theory? (hint; reduce the definition of tangent
-    vectors in r^n to the canonical one i.e. in r^1 i.e. the vector 1. and this is canonical)
+  search_text: 'what is a koszul connection on a vector bundle $e \to m$? a linear map $\nabla: \gamma(e)
+    \to \gamma(t^*m \otimes e)$ satisfying the leibniz rule $\nabla(f s) = df \otimes s + f \nabla s$.'
 - id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#024
-  text: 'How does one prove that the derivative of F has a matrix representation? (Hint: use definition
-    to make it into linear combination with first derivatives as basis, apply this to local function y_k.
-    One can then define an Df or the derivative of f as an element in the dual space (T_p M)*, since Df:
-    T_p M -> T_f()p) R iso to R is a linear map'
-  hint: null
+  text: How does one define parallel transport and geodesics?
+  hint: 'A section $s(t)$ along a curve $\gamma$ is parallel if $\nabla_{\dot{\gamma}} s = 0$; a curve
+    is a geodesic if its velocity vector is parallel: $\nabla_{\dot{\gamma}} \dot{\gamma} = 0$.'
   locator: null
   sub_index: null
-  search_text: 'how does one prove that the derivative of f has a matrix representation? (hint: use definition
-    to make it into linear combination with first derivatives as basis, apply this to local function y_k.
-    one can then define an df or the derivative of f as an element in the dual space (t_p m)*, since df:
-    t_p m -> t_f()p) r iso to r is a linear map'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#025
-  text: 'How does one pick an open set to define a tangent space? (Hint: germs of functions or use partitions
-    of unity i.e. bump functions. One then have p in W in open U, W, U open, if they are equal on W, and
-    X in space of derivations of smooth space on U, then we have X(f1) = X(fg2), again, this can be proven
-    by looking at the chain rule and picking a bump function that vanishes outside o W so that you can
-    have chi h = 0'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one pick an open set to define a tangent space? (hint: germs of functions or
-    use partitions of unity i.e. bump functions. one then have p in w in open u, w, u open, if they are
-    equal on w, and x in space of derivations of smooth space on u, then we have x(f1) = x(fg2), again,
-    this can be proven by looking at the chain rule and picking a bump function that vanishes outside
-    o w so that you can have chi h = 0'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#026
-  text: 'How does one work with partitions of unity? (Hint: start with wanting to construct global structure
-    on the manifold, smoothly varying inner product for each tangent space T_p M, M = R^n, canonical choice
-    of inner product at each point in R^n, there is a unique choice on R^n that is easy, but problem is
-    general vectors spaces have many distinct inner products. Consider open covers of manifold, there
-    is a partition of unity subordinate to  the open covers as a collection of smooth maps to R such that
-    it is less than or equal to 1, support is in the map is in the open subset, all but finitely many
-    phi_a(p) is 0 and sum of phi_a = 1, the final sum by cofiniteness is finite so convergence issues
-    are resolved. Pick inner product on each open U_alpha in the chart, define inner product on the space.
-    The main theorem is that there are always partition of unity subordinate to the open covers)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one work with partitions of unity? (hint: start with wanting to construct global
-    structure on the manifold, smoothly varying inner product for each tangent space t_p m, m = r^n, canonical
-    choice of inner product at each point in r^n, there is a unique choice on r^n that is easy, but problem
-    is general vectors spaces have many distinct inner products. consider open covers of manifold, there
-    is a partition of unity subordinate to  the open covers as a collection of smooth maps to r such that
-    it is less than or equal to 1, support is in the map is in the open subset, all but finitely many
-    phi_a(p) is 0 and sum of phi_a = 1, the final sum by cofiniteness is finite so convergence issues
-    are resolved. pick inner product on each open u_alpha in the chart, define inner product on the space.
-    the main theorem is that there are always partition of unity subordinate to the open covers)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#027
-  text: How does one prove that partitions of unity subordinate to open covers exists?
-  hint: do case for M is compact, coordinate chart p such that one takes finite subcover of M covered
-    by W_p_1 for lots of p_1 by picking chi_p = 1 on neighbourhood W_p of p. The construction of these
-    bump functions, and byc onstruction these phi_alphas are in U_alpha, divide each phi_alpha by sum
-    of phi_beta to normalise it to be unity. General proof requires second countable.
-  locator: null
-  sub_index: null
-  search_text: how does one prove that partitions of unity subordinate to open covers exists? do case
-    for m is compact, coordinate chart p such that one takes finite subcover of m covered by w_p_1 for
-    lots of p_1 by picking chi_p = 1 on neighbourhood w_p of p. the construction of these bump functions,
-    and byc onstruction these phi_alphas are in u_alpha, divide each phi_alpha by sum of phi_beta to normalise
-    it to be unity. general proof requires second countable.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#028
-  text: How does one invent submanifold?
-  hint: need embedding i.e. slice coordinates where S intersect U for some chart U containing P such that
-    S cap U = {x_k+1 ... x_n = 0}. This make s it easy to prove that the derivative of the inclusion map
-    is injective i.e. you append empty coordinates all the other coordinates and really did include everything
-    and did not kill off anything. Think of subobject as an inclusion map BUT embedded requires higher
-    coordinates to all equal 0, immersion requires injective inclusion maps which is weaker
-  locator: null
-  sub_index: null
-  search_text: how does one invent submanifold? need embedding i.e. slice coordinates where s intersect
-    u for some chart u containing p such that s cap u = {x_k+1 ... x_n = 0}. this make s it easy to prove
-    that the derivative of the inclusion map is injective i.e. you append empty coordinates all the other
-    coordinates and really did include everything and did not kill off anything. think of subobject as
-    an inclusion map but embedded requires higher coordinates to all equal 0, immersion requires injective
-    inclusion maps which is weaker
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#029
-  text: 'How does one invent immersed submanifolds? How does one distinguish immersed submanifolds and
-    embedded submanifolds? (Hint: inclusion maps which are continuous bijections need not be homeomorphism,
-    so if you define smooth injective inclusion maps with tangent space injective, you only get an immersed
-    submanifold, NOT an embedded submanifold)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent immersed submanifolds? how does one distinguish immersed submanifolds
-    and embedded submanifolds? (hint: inclusion maps which are continuous bijections need not be homeomorphism,
-    so if you define smooth injective inclusion maps with tangent space injective, you only get an immersed
-    submanifold, not an embedded submanifold)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#030
-  text: What is the motivation behind Lie subgroups?
-  hint: smooth structure on subgroup H making H an IMMERSED submanifold
-  locator: null
-  sub_index: null
-  search_text: what is the motivation behind lie subgroups? smooth structure on subgroup h making h an
-    immersed submanifold
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#031
-  text: 'How does one invent the notion of regular values? Hint: inverse of a smooth map on a point has
-    to be regular value i.e. for all p in S, derivative at p mapping from tangent spaces is surjective.
-    One proves that S = F^-1(c) is embedded submanifold of dim M - dim N for F in C^infty(M,N), the prove
-    is done by looking for slice coordinates, wlog assume F(p) = c, pick c = p = 0, take derivative, you
-    get surjective derivative as 0, it has rank m by assumption reorder so first m columns are independent.
-    You get a nonsingular matrix, use inverse function theorem to define alpha and get it as a local diffeomomorphism,
-    check that it is a slice chart, so you get by construction whose image under F is where first m coordinates
-    vanish)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent the notion of regular values? hint: inverse of a smooth map on a point
-    has to be regular value i.e. for all p in s, derivative at p mapping from tangent spaces is surjective.
-    one proves that s = f^-1(c) is embedded submanifold of dim m - dim n for f in c^infty(m,n), the prove
-    is done by looking for slice coordinates, wlog assume f(p) = c, pick c = p = 0, take derivative, you
-    get surjective derivative as 0, it has rank m by assumption reorder so first m columns are independent.
-    you get a nonsingular matrix, use inverse function theorem to define alpha and get it as a local diffeomomorphism,
-    check that it is a slice chart, so you get by construction whose image under f is where first m coordinates
-    vanish)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#032
-  text: Why is it hard to define smooth derivatives for curves and why invent Vect?
-  hint: curve valued in manifold parametrising the interval, derivative varies smoothly is hard, because
-    you workw ith different vector space, solution is to pick local coordinates and check that it does
-    not depend on coordinates, even better is to simply turn the vector space into a manifold, one invents
-    the notion of vector fields for the tangent space as a vector space. Define vector field as smooth
-    maps valued in the manifold that looks like an open, such that for all points in the open, X(p) is
-    a (linear combination) of tangent vectors or just X(p) in T_p(M). One then take the set of all vector
-    fields, take sums of X(p) and scalar multiplications of X(p), this looks like a C^\infty(U) module,
-    open covers agree of intersect, there is descent so this is a sheaf of C^infty module i.e. Vect is
-    a sheaf of C^infty-modules.
-  locator: null
-  sub_index: null
-  search_text: why is it hard to define smooth derivatives for curves and why invent vect? curve valued
-    in manifold parametrising the interval, derivative varies smoothly is hard, because you workw ith
-    different vector space, solution is to pick local coordinates and check that it does not depend on
-    coordinates, even better is to simply turn the vector space into a manifold, one invents the notion
-    of vector fields for the tangent space as a vector space. define vector field as smooth maps valued
-    in the manifold that looks like an open, such that for all points in the open, x(p) is a (linear combination)
-    of tangent vectors or just x(p) in t_p(m). one then take the set of all vector fields, take sums of
-    x(p) and scalar multiplications of x(p), this looks like a c^\infty(u) module, open covers agree of
-    intersect, there is descent so this is a sheaf of c^infty module i.e. vect is a sheaf of c^infty-modules.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#033
-  text: How does one define tangent bundles, make TM into a manifold of 2 dim M called the tangent bundle
-    using a suitable open cover of T_p M for p in M, there is a natural projection map then check that
-    it is Hausdorff and second countable on coordinates, one has smooth projection maps, then one can
-    check that Vect(U) works and F-related works and other stuff
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: how does one define tangent bundles, make tm into a manifold of 2 dim m called the tangent
-    bundle using a suitable open cover of t_p m for p in m, there is a natural projection map then check
-    that it is hausdorff and second countable on coordinates, one has smooth projection maps, then one
-    can check that vect(u) works and f-related works and other stuff
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#034
-  text: How does one invent Vect(M) as a derivation?
-  hint: prove that it the Leibniz rule by defining it and check that it is a C^\infty(M) module. Note
-    that Vect(M) denotes the Lie algebra of smooth vector fields on M, smooth sections of the tangent
-    bundle TM
-  locator: null
-  sub_index: null
-  search_text: how does one invent vect(m) as a derivation? prove that it the leibniz rule by defining
-    it and check that it is a c^\infty(m) module. note that vect(m) denotes the lie algebra of smooth
-    vector fields on m, smooth sections of the tangent bundle tm
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#035
-  text: How does one have the Lie bracket?
-  hint: consider the Lie bracket of two elements in Vect(M) as the vector field corresponding to XY -
-    YX in Vect(M), so Vect(M) is now a Lie algebra that is bilinear, antisymmetric if it vanishes i.e.
-    [X,Y] + [Y,X] = 0 and the Jacobi identity holds. Lie bracket hard to show Jacobi identity.
-  locator: null
-  sub_index: null
-  search_text: how does one have the lie bracket? consider the lie bracket of two elements in vect(m)
-    as the vector field corresponding to xy - yx in vect(m), so vect(m) is now a lie algebra that is bilinear,
-    antisymmetric if it vanishes i.e. [x,y] + [y,x] = 0 and the jacobi identity holds. lie bracket hard
-    to show jacobi identity.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#036
-  text: 'How does one invent integral curves? (Hint: use physics, drop a particle into that space, this
-    defines integral curves)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent integral curves? (hint: use physics, drop a particle into that space,
-    this defines integral curves)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#037
-  text: 'How does one prove integral curves always exist? (Hint: fundamental theorem on ODES or Picard-Lindelof
-    guaranteeing first order IVP has unique exact solution on specific local time interval, U in R^n open
-    U valued in R^n smooth, pick t_0 in R, consider the ODE y'' = a(y(t)), y_i(t) = c_i, c_i components
-    of a vector, exists open interval I containing t0 and open U_0 in U such that there is a smooth solution
-    for every smooth vector c in U_0 (to make it wlog), smooth solution gamma_c valued in U parameterising
-    interval I satisfying the ODE. Any solutions agree on a common domain, it is smooth in both variables.
-    Then one proves integral curves exist by working in coordinates, and use the fact that the partial
-    derivatives form a basis to recover this fundamental theorem of ODEs. Uniquneness is more work, need
-    to check integral curves covering the same point and then compute agreement on some neighbourhood
-    of t_0 and use topology, see proof in book)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one prove integral curves always exist? (hint: fundamental theorem on odes or
-    picard-lindelof guaranteeing first order ivp has unique exact solution on specific local time interval,
-    u in r^n open u valued in r^n smooth, pick t_0 in r, consider the ode y'' = a(y(t)), y_i(t) = c_i,
-    c_i components of a vector, exists open interval i containing t0 and open u_0 in u such that there
-    is a smooth solution for every smooth vector c in u_0 (to make it wlog), smooth solution gamma_c valued
-    in u parameterising interval i satisfying the ode. any solutions agree on a common domain, it is smooth
-    in both variables. then one proves integral curves exist by working in coordinates, and use the fact
-    that the partial derivatives form a basis to recover this fundamental theorem of odes. uniquneness
-    is more work, need to check integral curves covering the same point and then compute agreement on
-    some neighbourhood of t_0 and use topology, see proof in book)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#038
-  text: Why does one care about F-relatedness for Vect?
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: why does one care about f-relatedness for vect?
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#039
-  text: 'How does one prove that all derivations come from vector fields? (Hint: check that the map M
-    -> TM sending from p -> X_p is smooth i.e. X_p(fg) = f(p) X_p(g) + g(p) X_p(f)). Important state of
-    mind is to think of X in Vect(M) as a derivation of C^\infty(M). However composition for two vector
-    fields need not be a vector field, not a derivation XY is cross term, but XY - YX is a derivation,
-    so this motivates the notion of Lie brackets'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one prove that all derivations come from vector fields? (hint: check that the
-    map m -> tm sending from p -> x_p is smooth i.e. x_p(fg) = f(p) x_p(g) + g(p) x_p(f)). important state
-    of mind is to think of x in vect(m) as a derivation of c^\infty(m). however composition for two vector
-    fields need not be a vector field, not a derivation xy is cross term, but xy - yx is a derivation,
-    so this motivates the notion of lie brackets'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#040
-  text: Why does one care about complete vector fields?
-  hint: one wants a canonical integral curve, i.e. take I_p -> M, which is maximal i.e. gamma(0) = 0,
-    exists and unique, I_p depends on the point. Complete vector fields requires I_p to be R for all p
-    in M, then one can ge t a canonical flow map I think, relax completeness but the domains of definition
-    need to be more careful.
-  locator: null
-  sub_index: null
-  search_text: why does one care about complete vector fields? one wants a canonical integral curve, i.e.
-    take i_p -> m, which is maximal i.e. gamma(0) = 0, exists and unique, i_p depends on the point. complete
-    vector fields requires i_p to be r for all p in m, then one can ge t a canonical flow map i think,
-    relax completeness but the domains of definition need to be more careful.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#041
-  text: 'Why does one want to prove that any X in. Vect(M) to be complete vector fields? (Hint: this avoids
-    issues with working with the domains an dbeing specific about the criterion, as stated in the theorem
-    for the existence of the gamma_p(t) with a variety of conditions. To prove, this, finite finitely
-    man such U of p such that (-eps x eps) x U is in D where Gamma_t(p) is defined. So compactness gives
-    existence, composition gives addition by definition and then one gets Gamma Nt = (Gamma_t)^N)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'why does one want to prove that any x in. vect(m) to be complete vector fields? (hint:
-    this avoids issues with working with the domains an dbeing specific about the criterion, as stated
-    in the theorem for the existence of the gamma_p(t) with a variety of conditions. to prove, this, finite
-    finitely man such u of p such that (-eps x eps) x u is in d where gamma_t(p) is defined. so compactness
-    gives existence, composition gives addition by definition and then one gets gamma nt = (gamma_t)^n)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#042
-  text: How does one invent the notion of Lie derivatives?
-  hint: f defined all over M, vector field X, derivative of f in the direction, real valued then can do
-    X(f), Lie derivatives is required because composition of two vector fields need not be vector field,
-    so you want to differentiate things along X using more complicated flows. One define the Lie derivative
-    over complete vector fields i.e. defined pointiwise t=0 Phi*(g)(p), Phi is the canonical maximal integral
-    curve of X over a complete vector field smooth over p and t. L_X(g) = X(g) and L_x(g) is in C^\infty(M,
-    R) by direct computation, however Lie derivatives really shine when differentiating vector fields,
-    one can define it as pointwise derivative of vector fields, one can compute and show L_X(Y) = Lie
-    brakcet [X,Y]
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of lie derivatives? f defined all over m, vector field x,
-    derivative of f in the direction, real valued then can do x(f), lie derivatives is required because
-    composition of two vector fields need not be vector field, so you want to differentiate things along
-    x using more complicated flows. one define the lie derivative over complete vector fields i.e. defined
-    pointiwise t=0 phi*(g)(p), phi is the canonical maximal integral curve of x over a complete vector
-    field smooth over p and t. l_x(g) = x(g) and l_x(g) is in c^\infty(m, r) by direct computation, however
-    lie derivatives really shine when differentiating vector fields, one can define it as pointwise derivative
-    of vector fields, one can compute and show l_x(y) = lie brakcet [x,y]
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#043
-  text: Why are Lie groups important?
-  hint: two points on Lie group as manifold are the same since action on Lie group is free and transitive,
-    idea is to study it on infinitesimal neighbourhood of identity which tells you about all poitns on
-    manifold via Lie algebra.
-  locator: null
-  sub_index: null
-  search_text: why are lie groups important? two points on lie group as manifold are the same since action
-    on lie group is free and transitive, idea is to study it on infinitesimal neighbourhood of identity
-    which tells you about all poitns on manifold via lie algebra.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#044
-  text: What are some examples of Lie groups?
-  hint: GLn(R), SL_n(C), O(n)
-  locator: null
-  sub_index: null
-  search_text: what are some examples of lie groups? gln(r), sl_n(c), o(n)
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#045
-  text: What translation map makes Lie groups so nice?
-  hint: L_g(h) = gh as automorphism on Lie group, induces linear isomorphism DL_g|e inducing canonical
-    identification of all tangent spaces
-  locator: null
-  sub_index: null
-  search_text: what translation map makes lie groups so nice? l_g(h) = gh as automorphism on lie group,
-    induces linear isomorphism dl_g|e inducing canonical identification of all tangent spaces
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#046
-  text: Why does one care about left invariant vector field?
-  hint: one can get tangent vector at identity, extend to invariant vector field using Lie group, induce
-    isomorphism between T_eG and Vect^L G this gies T_eG the structure of a Lie algebra. One can define
-    it with Lie algebra
-  locator: null
-  sub_index: null
-  search_text: why does one care about left invariant vector field? one can get tangent vector at identity,
-    extend to invariant vector field using lie group, induce isomorphism between t_eg and vect^l g this
-    gies t_eg the structure of a lie algebra. one can define it with lie algebra
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#047
-  text: How does one prove that abelian Lie group has vanishing Lie group?
-  hint: no cross term since doing it in any order has no difference
-  locator: null
-  sub_index: null
-  search_text: how does one prove that abelian lie group has vanishing lie group? no cross term since
-    doing it in any order has no difference
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#048
-  text: 'What is the requirement for Lie algebra homomorphisms? (Hint: linear map such that beta[e,x]
-    = [beta(e), beta(x)])'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'what is the requirement for lie algebra homomorphisms? (hint: linear map such that beta[e,x]
-    = [beta(e), beta(x)])'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#049
-  text: Why does one care about tensor products?
-  hint: bilinear maps, take two vectors and returns a number, examples are inner product and the volume
-    form. Important is that we need multilinear maps. Tensors are a trick to turn bilinear maps to linear
-    maps.
-  locator: null
-  sub_index: null
-  search_text: why does one care about tensor products? bilinear maps, take two vectors and returns a
-    number, examples are inner product and the volume form. important is that we need multilinear maps.
-    tensors are a trick to turn bilinear maps to linear maps.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#050
-  text: Why does one care about a bunch of natural isomorphisms i.e. associativity, commutativity and
-    distributivity over duality
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: why does one care about a bunch of natural isomorphisms i.e. associativity, commutativity
-    and distributivity over duality
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#051
-  text: What is a tensor of type (k,l)?
-  hint: take k fold V* and l fold V tensor products, tensors are elements in these.
-  locator: null
-  sub_index: null
-  search_text: what is a tensor of type (k,l)? take k fold v* and l fold v tensor products, tensors are
-    elements in these.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#052
-  text: Why does one care about alternating bilinear maps?
-  hint: Lie algebras? so care about a(v,w)+a(w,v) = 0 see vanish Lie bracket, one compute ideal as algebras
-    generated by v otimes v in v in V in T(V) then define and get exterior algebras when one takes T(V)/I(V)
-    to get the exterior algebra and pi(V^otimes k) to get the k-th exterior product.
-  locator: null
-  sub_index: null
-  search_text: why does one care about alternating bilinear maps? lie algebras? so care about a(v,w)+a(w,v)
-    = 0 see vanish lie bracket, one compute ideal as algebras generated by v otimes v in v in v in t(v)
-    then define and get exterior algebras when one takes t(v)/i(v) to get the exterior algebra and pi(v^otimes
-    k) to get the k-th exterior product.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#053
-  text: Why does one then care about exterior algebra?
-  hint: dual of the space of alternating multilinear maps
-  locator: null
-  sub_index: null
-  search_text: why does one then care about exterior algebra? dual of the space of alternating multilinear
-    maps
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#054
-  text: How does one invent the idea of vector bundles?
-  hint: consider spaces as T_p M otimes T_p M up to r times exist, one wants to construct a tensor bundle,
-    one therefore invents general vector bundles for smooth manifolds?
-  locator: null
-  sub_index: null
-  search_text: how does one invent the idea of vector bundles? consider spaces as t_p m otimes t_p m up
-    to r times exist, one wants to construct a tensor bundle, one therefore invents general vector bundles
-    for smooth manifolds?
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#055
-  text: How does one remember the definition of the vector bundle?
-  hint: rank r, take smooth manifold E, it is valued on M with smooth E -> M, parametrising the vector
-    bundle E with inverse image of the point on the manifold M is a r-dim vector space of course one can
-    replace vector space with what you want for general bundles, for all p in M, there is open (replace
-    notion of topology by something else) containing p and diffeomorphism U x R^r such that trivialisation
-    diagram commutes, E is a total space of all fibres, pi is a projection pi^-t(p) is R-dim vector space
-    fibre over p.
-  locator: null
-  sub_index: null
-  search_text: how does one remember the definition of the vector bundle? rank r, take smooth manifold
-    e, it is valued on m with smooth e -> m, parametrising the vector bundle e with inverse image of the
-    point on the manifold m is a r-dim vector space of course one can replace vector space with what you
-    want for general bundles, for all p in m, there is open (replace notion of topology by something else)
-    containing p and diffeomorphism u x r^r such that trivialisation diagram commutes, e is a total space
-    of all fibres, pi is a projection pi^-t(p) is r-dim vector space fibre over p.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#056
-  text: How does one use vector bundles to invent tangent bundles?
-  hint: TM -> M is vector bundle, fibres are vector space of tangent vectors, get frame which is asis
-    of differentials, giving trivialisatoins of TM over U.
-  locator: null
-  sub_index: null
-  search_text: how does one use vector bundles to invent tangent bundles? tm -> m is vector bundle, fibres
-    are vector space of tangent vectors, get frame which is asis of differentials, giving trivialisatoins
-    of tm over u.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#057
-  text: Describe Vect(M) as a set of smooth sections?
-  hint: Vect(M) = C^\infty(M, TM)
-  locator: null
-  sub_index: null
-  search_text: describe vect(m) as a set of smooth sections? vect(m) = c^\infty(m, tm)
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#058
-  text: 'How does one invent the idea of smooth sections? (Hint: consider opens in M, smnooth U to E i.e.
-    map to total space such that s(p) in E_p or fibres for all p in U such that when you compose section
-    with projection you get the identity, but I still don''t understand this visually)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent the idea of smooth sections? (hint: consider opens in m, smnooth u
-    to e i.e. map to total space such that s(p) in e_p or fibres for all p in u such that when you compose
-    section with projection you get the identity, but i still don''t understand this visually)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#059
-  text: 'How does one invent the notion of transition functions? (HIn: you want to invent cocycle condition?
-    Take two trivialisations of E, then take t_a * t_b^{-1}, one can then make this to be equal to transition
-    from U_B to U_A, these satisfy the cocycle conditions?)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent the notion of transition functions? (hin: you want to invent cocycle
-    condition? take two trivialisations of e, then take t_a * t_b^{-1}, one can then make this to be equal
-    to transition from u_b to u_a, these satisfy the cocycle conditions?)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#060
-  text: How does one construct vector bundles?
-  hint: find unique smooth structure from transition functions, get direct sum, tensor products, duals,
-    explicit construction in notes to understand
-  locator: null
-  sub_index: null
-  search_text: how does one construct vector bundles? find unique smooth structure from transition functions,
-    get direct sum, tensor products, duals, explicit construction in notes to understand
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#061
-  text: How does one describe vector fields?
-  hint: type (0,1) is vector fields, type (1,0) is one form, type (0,0) is real valued function
-  locator: null
-  sub_index: null
-  search_text: how does one describe vector fields? type (0,1) is vector fields, type (1,0) is one form,
-    type (0,0) is real valued function
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#062
-  text: How does one invent a Riemannian metric?
-  hint: first need tensor type (2,0), then you need a bilinear map T_p M x T_p M -> R to be symmetric
-    and positive definite, this bilinear map being like this forms an inner product, the (2,0) lets it
-    so that it is easy to compute say length, take integral of y'(t) for y -> I -> M a curve over the
-    interval, this is intuitive since the inner product gives rise to a norm over the metric, then one
-    can integrate the length of the tangent vectors to get the length of a line
-  locator: null
-  sub_index: null
-  search_text: how does one invent a riemannian metric? first need tensor type (2,0), then you need a
-    bilinear map t_p m x t_p m -> r to be symmetric and positive definite, this bilinear map being like
-    this forms an inner product, the (2,0) lets it so that it is easy to compute say length, take integral
-    of y'(t) for y -> i -> m a curve over the interval, this is intuitive since the inner product gives
-    rise to a norm over the metric, then one can integrate the length of the tangent vectors to get the
-    length of a line
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#063
-  text: How does one compute vector bundle morphisms?
-  hint: take a bundle morphisms over manifolds since these are maps to morphisms M, one needs a pair of
-    smooth maps F for total space and f for base space such that the diagram commutes and F_p is linear
-    for each p. One can define morphisms over M in a more general way, these are bundle morphisms.
-  locator: null
-  sub_index: null
-  search_text: how does one compute vector bundle morphisms? take a bundle morphisms over manifolds since
-    these are maps to morphisms m, one needs a pair of smooth maps f for total space and f for base space
-    such that the diagram commutes and f_p is linear for each p. one can define morphisms over m in a
-    more general way, these are bundle morphisms.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#064
-  text: How does one compute bundle morphisms over the same base?
-  hint: generalise the definition, pick (F, id_M) for your bundle morphism voer a common base.
-  locator: null
-  sub_index: null
-  search_text: how does one compute bundle morphisms over the same base? generalise the definition, pick
-    (f, id_m) for your bundle morphism voer a common base.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#065
-  text: What is the requirement for TM and T*M to be a bundle isomorphism?
-  hint: need to work over a Riemannian metric
-  locator: null
-  sub_index: null
-  search_text: what is the requirement for tm and t*m to be a bundle isomorphism? need to work over a
-    riemannian metric
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#066
-  text: 'How does one invent the notion of differential forms? (Hint: start with alternatiung n-linear
-    maps tells us the signed volume of parallelepiped spanned by n vectors, differential p-form is alternating
-    p-linear map on TANGENT SPACE at each point, not the span, i.e. infinitesimal p-dimensional parallelpiped,
-    so one gets C^\infty(M, gamma^p T*M) = {p-forms on M}, an element of the C^\infty space defined by
-    the algernating algebra on tangent space gives a differential form, one gets Omega^0 as C^\infty(M,
-    R))'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent the notion of differential forms? (hint: start with alternatiung n-linear
-    maps tells us the signed volume of parallelepiped spanned by n vectors, differential p-form is alternating
-    p-linear map on tangent space at each point, not the span, i.e. infinitesimal p-dimensional parallelpiped,
-    so one gets c^\infty(m, gamma^p t*m) = {p-forms on m}, an element of the c^\infty space defined by
-    the algernating algebra on tangent space gives a differential form, one gets omega^0 as c^\infty(m,
-    r))'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#067
-  text: How does one write out local coordinates of differential forms over some indexing set?
-  hint: it is sum of omega_i1 to i_p dx_i had dx_ip
-  locator: null
-  sub_index: null
-  search_text: how does one write out local coordinates of differential forms over some indexing set?
-    it is sum of omega_i1 to i_p dx_i had dx_ip
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#068
-  text: Compute n-forms?
-  hint: 0-form is smooth function, 1-form is section of T*M, dual of T be careful. How does one write
-    df locally? Write it as linear combinations a_i hit this with del/del x_j. One essentially gets the
-    1-form as a graient of a function when one does this
-  locator: null
-  sub_index: null
-  search_text: compute n-forms? 0-form is smooth function, 1-form is section of t*m, dual of t be careful.
-    how does one write df locally? write it as linear combinations a_i hit this with del/del x_j. one
-    essentially gets the 1-form as a graient of a function when one does this
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#069
-  text: How does given a 1-form w, how to find a 0 form such that w = df and how does this motivate the
-    definition of the exterior derivative?
-  hint: motivating question from w = a dx + b dy, symmetry of partial derivatives forces. and b to be
-    certain values, this will motivate the construction of the exterior derivative so that one does not
-    have to resort to using local coordinates
-  locator: null
-  sub_index: null
-  search_text: how does given a 1-form w, how to find a 0 form such that w = df and how does this motivate
-    the definition of the exterior derivative? motivating question from w = a dx + b dy, symmetry of partial
-    derivatives forces. and b to be certain values, this will motivate the construction of the exterior
-    derivative so that one does not have to resort to using local coordinates
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#070
-  text: How does one compute volume by using, locally write for w a differential form Omega^n(M), then
-    locally write w = g dx_1 hat ... hat dx_n, alternating form that assigns a real number to n-tangent
-    vectors, this measures volume basically
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: how does one compute volume by using, locally write for w a differential form omega^n(m),
-    then locally write w = g dx_1 hat ... hat dx_n, alternating form that assigns a real number to n-tangent
-    vectors, this measures volume basically
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#071
-  text: How does one invent the notion of the Exterior derivatives?
-  hint: one starts with a map valued in the space of forms Omega^p+1(M) as image, take on Omega^0(M) we
-    have df(X) = X(f), then d^2 = 0 to ensure that we can do homology later and in particular, second
-    order effects cancel so partial derivatives commute, and derivative operator satisfies the Leibniz's
-    rule. So homology is a form of linearisation that allows for stuff to commute.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of the exterior derivatives? one starts with a map valued
-    in the space of forms omega^p+1(m) as image, take on omega^0(m) we have df(x) = x(f), then d^2 = 0
-    to ensure that we can do homology later and in particular, second order effects cancel so partial
-    derivatives commute, and derivative operator satisfies the leibniz's rule. so homology is a form of
-    linearisation that allows for stuff to commute.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#072
-  text: How does one put curl * grad = 0 using differential forms?
-  hint: work in R^3 then omega = P dx + Q dy + R dz in Omega^1(R^3), compute d(P dx) one gets curl as
-    d omega. So d^2 = 0 means curl * grad = 0 using Clairut's theorem stating that mixed partial derivatives
-    commute for any smooth function df, components of 1-form is gradient, exterior derivative of 1-form
-    gives like terms vanishing. Turns out this is a big paint o compute globally even though it works
-    globally, one needs to check that d exists, and well defined, local uniqueness i sfirst deefine, then
-    one uses bump functions to prove global uniuqeness by picking arbitrary x in U with bump functions
-    and partitions of unity.
-  locator: null
-  sub_index: null
-  search_text: how does one put curl * grad = 0 using differential forms? work in r^3 then omega = p dx
-    + q dy + r dz in omega^1(r^3), compute d(p dx) one gets curl as d omega. so d^2 = 0 means curl * grad
-    = 0 using clairut's theorem stating that mixed partial derivatives commute for any smooth function
-    df, components of 1-form is gradient, exterior derivative of 1-form gives like terms vanishing. turns
-    out this is a big paint o compute globally even though it works globally, one needs to check that
-    d exists, and well defined, local uniqueness i sfirst deefine, then one uses bump functions to prove
-    global uniuqeness by picking arbitrary x in u with bump functions and partitions of unity.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#073
-  text: How does one define a symplectic form?
-  hint: you want 2-forms to be nondegenerate i.e. omega(X_p, X_p) = 0 implies X_p = 0, and then domega
-    = 0, so symplctic form is nondegenerate 2-form omega such that d omega = 0
-  locator: null
-  sub_index: null
-  search_text: how does one define a symplectic form? you want 2-forms to be nondegenerate i.e. omega(x_p,
-    x_p) = 0 implies x_p = 0, and then domega = 0, so symplctic form is nondegenerate 2-form omega such
-    that d omega = 0
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#074
-  text: 'Why does one use covectors rather than vectors i.e. T*M when defining symplectic forms:'
-  hint: pushforwards are hard to define since F might not be injective, idea one can form the pullback
-    F* g = g compose F in Omega^0(M), but in general one has the map DF_x, but you cannot pushforward
-    a vector field on M to vector field on N since the map not be injective, one use the dual to pullforms
-    back from T_F(x)* N to T_x*M, this motivates the definition
-  locator: null
-  sub_index: null
-  search_text: 'why does one use covectors rather than vectors i.e. t*m when defining symplectic forms:
-    pushforwards are hard to define since f might not be injective, idea one can form the pullback f*
-    g = g compose f in omega^0(m), but in general one has the map df_x, but you cannot pushforward a vector
-    field on m to vector field on n since the map not be injective, one use the dual to pullforms back
-    from t_f(x)* n to t_x*m, this motivates the definition'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#075
-  text: 'How does one motivate de Rham cohomology? (Hint: given omega in Omega^p(M) with d-omega = 0,
-    is there sigma in Omega^p-1 such that omega = d sigma? Not necessarily, fails up to group in de Rham
-    cohomology, define vector spaces for each p, vanishing de Rham cohomology gives if all p forms omega
-    with d omega are of form d theta)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one motivate de rham cohomology? (hint: given omega in omega^p(m) with d-omega
-    = 0, is there sigma in omega^p-1 such that omega = d sigma? not necessarily, fails up to group in
-    de rham cohomology, define vector spaces for each p, vanishing de rham cohomology gives if all p forms
-    omega with d omega are of form d theta)'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#076
-  text: How does one invent the idea of closed p-forms?
-  hint: not every closed form is exact, d omega = 0 does not imply existence of omega = d sigma, closed
-    forms correspond to cocycles
-  locator: null
-  sub_index: null
-  search_text: how does one invent the idea of closed p-forms? not every closed form is exact, d omega
-    = 0 does not imply existence of omega = d sigma, closed forms correspond to cocycles
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#077
-  text: How does one invent the idea of an exact forms?
-  hint: omega = d sigma, d omega = 0 if you take derivatives due to linearisation rules, so all exact
-    forms in closed. Failure is by de Rham cohomology
-  locator: null
-  sub_index: null
-  search_text: how does one invent the idea of an exact forms? omega = d sigma, d omega = 0 if you take
-    derivatives due to linearisation rules, so all exact forms in closed. failure is by de rham cohomology
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#078
-  text: How does one invent the notion of de Rham cohomology?
-  hint: all exact forms are closed since by linearity, second order effects vanished, but not all closed
-    forms are exact i.e. we need not necessarily find omega = d sigma
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of de rham cohomology? all exact forms are closed since
-    by linearity, second order effects vanished, but not all closed forms are exact i.e. we need not necessarily
-    find omega = d sigma
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#079
-  text: What can one compute on de Rham cohomology?
-  hint: if closed i.e. d omega = 0, omega is exact iff it vanishes in de Rham cohomology, but one wants
-    to study properties of de Rham cohomology, 0th de Rham cohomology then it is just the number of connected
-    of components or copies of R sicne they correspond to locally constant functions, if p > dim M, all
-    p-forms are trivial by double d = 0 rule.
-  locator: null
-  sub_index: null
-  search_text: what can one compute on de rham cohomology? if closed i.e. d omega = 0, omega is exact
-    iff it vanishes in de rham cohomology, but one wants to study properties of de rham cohomology, 0th
-    de rham cohomology then it is just the number of connected of components or copies of r sicne they
-    correspond to locally constant functions, if p > dim m, all p-forms are trivial by double d = 0 rule.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#080
-  text: How does one invent the notion of homotopy invariant and smooth homotopy?
-  hint: 'Consider a smooth map valued in N, for F_0 and F_1 from M to N be smooth maps, taking cartesian
-    product with M as preimage or paremters, then F_0 and F_1 are homotopy if it starts with F(0, x) ends
-    with F(1, x), such a map exists so F_0 and F_1 are homotopy, smooth homotopy if they are smooth maps.
-    PROBLEM: [0,1] x M is not a manifold, required F is smooth if can be extended to a smooth function.
-    Homotopic maps means F_0* = F_1* as maps on de Rham cohomology, one proves this by computation and
-    looking at dt components, see proof in notes.'
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent the notion of homotopy invariant and smooth homotopy? consider a smooth
-    map valued in n, for f_0 and f_1 from m to n be smooth maps, taking cartesian product with m as preimage
-    or paremters, then f_0 and f_1 are homotopy if it starts with f(0, x) ends with f(1, x), such a map
-    exists so f_0 and f_1 are homotopy, smooth homotopy if they are smooth maps. problem: [0,1] x m is
-    not a manifold, required f is smooth if can be extended to a smooth function. homotopic maps means
-    f_0* = f_1* as maps on de rham cohomology, one proves this by computation and looking at dt components,
-    see proof in notes.'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#081
-  text: How does one compute de Rham cohomology of convex sets in general
-  hint: 'smooth homotopy reduces to case of complex sets: example is one consider convex shapeed map or
-    start-shaped subset, smooth homotopy from identity map to F_0 or constant map to x_0 map, so de Rham
-    cohomology is simply 1 connected component and vanishes for higher homotopy'
-  locator: null
-  sub_index: null
-  search_text: 'how does one compute de rham cohomology of convex sets in general smooth homotopy reduces
-    to case of complex sets: example is one consider convex shapeed map or start-shaped subset, smooth
-    homotopy from identity map to f_0 or constant map to x_0 map, so de rham cohomology is simply 1 connected
-    component and vanishes for higher homotopy'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#082
-  text: How does one invent smooth homotopy equivalence?
-  hint: compsoition of smooth maps are homotopy to the identity from each other, then de Rham cohomology
-    is equal.
-  locator: null
-  sub_index: null
-  search_text: how does one invent smooth homotopy equivalence? compsoition of smooth maps are homotopy
-    to the identity from each other, then de rham cohomology is equal.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#083
-  text: How does one invent the Mayer-Vietoris theorem?
-  hint: first part is always in snake lemma, the other requries differential geometry input that satisfies
-    the snake lemma
-  locator: null
-  sub_index: null
-  search_text: how does one invent the mayer-vietoris theorem? first part is always in snake lemma, the
-    other requries differential geometry input that satisfies the snake lemma
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#084
-  text: How does one invent the notion of exact sequences and cochain complexes?
-  hint: exact at p if closed = exact or ker d_p = im_d_p-1, exact if exact every p.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of exact sequences and cochain complexes? exact at p if
-    closed = exact or ker d_p = im_d_p-1, exact if exact every p.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#085
-  text: How does one invent the notion of de Rham complexes?
-  hint: one proves that the space of differential forms form a cochain complexes with the differential
-    requiring linearity and noninteraction of cohomology terms to be d^2 = 0. Once you have a cochain
-    complex one can talk about de Rham cohomology as the kernel of one map i.e. the cocycles or closed
-    forms, and kill off the exact forms to find the closed forms which are not exact which corresponds
-    to ker d_{p} / im d_{p-1}. The cohomology of the de Rham complex is the de Rham cohomology.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of de rham complexes? one proves that the space of differential
-    forms form a cochain complexes with the differential requiring linearity and noninteraction of cohomology
-    terms to be d^2 = 0. once you have a cochain complex one can talk about de rham cohomology as the
-    kernel of one map i.e. the cocycles or closed forms, and kill off the exact forms to find the closed
-    forms which are not exact which corresponds to ker d_{p} / im d_{p-1}. the cohomology of the de rham
-    complex is the de rham cohomology.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#086
-  text: How does one invent the notion of cochain complexes?
-  hint: try to form a category between them, then one has cochain maps requiring a diagram to commute,
-    this is well defined.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of cochain complexes? try to form a category between them,
-    then one has cochain maps requiring a diagram to commute, this is well defined.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#087
-  text: How does one invent the notion of short exact sequences?
-  hint: sequence of 3, V^1 -> V^2 is injective, V^2 -> V^3 is surjective by definition of exactness, im(a)
-    = ker(b) for condition of exactness.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of short exact sequences? sequence of 3, v^1 -> v^2 is injective,
-    v^2 -> v^3 is surjective by definition of exactness, im(a) = ker(b) for condition of exactness.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#088
-  text: Why are partitions of unity important in integration of differential forms?
-  hint: need to patch them together.
-  locator: null
-  sub_index: null
-  search_text: why are partitions of unity important in integration of differential forms? need to patch
-    them together.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#089
-  text: Why are domains of integration important?
-  hint: it needs to be defined and measure theory needs to be considered for it to work, so D is bounded,
-    and boundary is measure 0.
-  locator: null
-  sub_index: null
-  search_text: why are domains of integration important? it needs to be defined and measure theory needs
-    to be considered for it to work, so d is bounded, and boundary is measure 0.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#090
-  text: How does on do integration on R^n with differential forms?
-  hint: the eaisest way to take domain of integraation to be compact, define an n-form on D for some open
-    U containing D using compactness, this open U is finite, omega = f dx_1 wedge dx_n, then integrate
-    over the n-form, one can define for U in R^n, omega in Omega^n(R^n) with compact support, D in U,
-    containing supp omega, do not say integrate directly on supp omega and need compactness, because supp
-    omega need not have a nice boundary
-  locator: null
-  sub_index: null
-  search_text: how does on do integration on r^n with differential forms? the eaisest way to take domain
-    of integraation to be compact, define an n-form on d for some open u containing d using compactness,
-    this open u is finite, omega = f dx_1 wedge dx_n, then integrate over the n-form, one can define for
-    u in r^n, omega in omega^n(r^n) with compact support, d in u, containing supp omega, do not say integrate
-    directly on supp omega and need compactness, because supp omega need not have a nice boundary
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#091
-  text: Once one does integration with R^n, how does one integrate on a manifold?
-  hint: define smooth functions with orientation, f is smooth if resrtiction of smooth function U -> R^m,
-    U contains D, then you need a lemma with the assumption that D^o -> E^o is an orientation-preserving
-    diffeomorphism.
-  locator: null
-  sub_index: null
-  search_text: once one does integration with r^n, how does one integrate on a manifold? define smooth
-    functions with orientation, f is smooth if resrtiction of smooth function u -> r^m, u contains d,
-    then you need a lemma with the assumption that d^o -> e^o is an orientation-preserving diffeomorphism.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#092
-  text: How does one need compactness?
-  hint: boundary weird, need nice open cover, need finite subcover to work with that is nice.
-  locator: null
-  sub_index: null
-  search_text: how does one need compactness? boundary weird, need nice open cover, need finite subcover
-    to work with that is nice.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#093
-  text: How does one work with integration of manifolds?
-  hint: supp(omega) compact subset, need cover beause it may be bad to integrate on so compactness is
-    needed, need oriented chart because you need orientation to do integration, chart independence is
-    proven by lemma, smooth map between domains of integration commute with integral operator, then cover
-    the support with finitely many oriented charts, consider partitiosn of unity, then integral of omega
-    over M oriented, is simply the sum of integral of omega with partitions of unity of finitely many
-    oriented charts. Ignore proof of independence of choice of finitely many oriented charts and the partition
-    of unity.
-  locator: null
-  sub_index: null
-  search_text: how does one work with integration of manifolds? supp(omega) compact subset, need cover
-    beause it may be bad to integrate on so compactness is needed, need oriented chart because you need
-    orientation to do integration, chart independence is proven by lemma, smooth map between domains of
-    integration commute with integral operator, then cover the support with finitely many oriented charts,
-    consider partitiosn of unity, then integral of omega over m oriented, is simply the sum of integral
-    of omega with partitions of unity of finitely many oriented charts. ignore proof of independence of
-    choice of finitely many oriented charts and the partition of unity.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#094
-  text: How does one use Riemannian metric to get a canonical background form??
-  hint: M oriented manifold, g Riemannina metric, unique Riemannian volume form exists, uniqueness up
-    to lambda, evaluatinf on orthonormal basis gives lambda = 1 wlog, existence, Gram-Schmidt to get orthonormal
-    frame, wlog assume oriented otherwise shift the orthonormal frame, set f = sigma under orthnormal
-    frame, nonvanishing because sigma nowhere vanishing, prove existence locally, patched together globally
-    knowing local uniqueness
-  locator: null
-  sub_index: null
-  search_text: how does one use riemannian metric to get a canonical background form?? m oriented manifold,
-    g riemannina metric, unique riemannian volume form exists, uniqueness up to lambda, evaluatinf on
-    orthonormal basis gives lambda = 1 wlog, existence, gram-schmidt to get orthonormal frame, wlog assume
-    oriented otherwise shift the orthonormal frame, set f = sigma under orthnormal frame, nonvanishing
-    because sigma nowhere vanishing, prove existence locally, patched together globally knowing local
-    uniqueness
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#095
-  text: How does one define manifolds, charts, and atlas with boundaries?
-  hint: 'chart with boundary so that image of open under chart in H^n = sequences of R^n: x_n >= 0 is
-    open, image may or may not hit boundary. An atlas with boundary on M is a cover by charts-with-boundary
-    (U_a, phi_a) such that transition maps are smooth, manifold with boundaryis set M of atlas with boundary,
-    induced topology is Hausdorff, second countable, note it is not a manifold, manifold is manifold with
-    boundary because why? Points on edge look like half space, relax this condition at the edge, smooth
-    manifold transitions cleanly to half space, shapes with sharp edges can fail smoothness'
-  locator: null
-  sub_index: null
-  search_text: 'how does one define manifolds, charts, and atlas with boundaries? chart with boundary
-    so that image of open under chart in h^n = sequences of r^n: x_n >= 0 is open, image may or may not
-    hit boundary. an atlas with boundary on m is a cover by charts-with-boundary (u_a, phi_a) such that
-    transition maps are smooth, manifold with boundaryis set m of atlas with boundary, induced topology
-    is hausdorff, second countable, note it is not a manifold, manifold is manifold with boundary because
-    why? points on edge look like half space, relax this condition at the edge, smooth manifold transitions
-    cleanly to half space, shapes with sharp edges can fail smoothness'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#096
-  text: How does one have to care about orientation on boundaries?
-  hint: it induces the orientation of the boundary, exercise to check that it does nto depend on the basis.
-  locator: null
-  sub_index: null
-  search_text: how does one have to care about orientation on boundaries? it induces the orientation of
-    the boundary, exercise to check that it does nto depend on the basis.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#097
-  text: How does one state Stoke's theorems?
-  hint: need oriented manifold of boundary, consider differential form in Omega^n-1, if it has compact
-    support (to admit finite subcover for integration), then integral d_omega for M = integral of boundary
-    for omega, if no boundary then integral d omega = 0, d omega is n-form on M, can integrate it, RHS
-    integrates restriction of omega on boundary, (n-1) form i* omega, inclusion of boundary into manifold.
-  locator: null
-  sub_index: null
-  search_text: how does one state stoke's theorems? need oriented manifold of boundary, consider differential
-    form in omega^n-1, if it has compact support (to admit finite subcover for integration), then integral
-    d_omega for m = integral of boundary for omega, if no boundary then integral d omega = 0, d omega
-    is n-form on m, can integrate it, rhs integrates restriction of omega on boundary, (n-1) form i* omega,
-    inclusion of boundary into manifold.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#098
-  text: How does one generalise FTC to reinvent Stoke's theorem?
-  hint: integrating d omega over [0,1], replace [0,1] with M, integrating omega over boundary which is
-    F_2 - F_1, replace it with sums of omega itself at the two points to become general boundaries.
-  locator: null
-  sub_index: null
-  search_text: how does one generalise ftc to reinvent stoke's theorem? integrating d omega over [0,1],
-    replace [0,1] with m, integrating omega over boundary which is f_2 - f_1, replace it with sums of
-    omega itself at the two points to become general boundaries.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#099
-  text: How does one compute fundamental theorem of line integrals using Stoke's theorem?
-  hint: manifold is 1D curve C, omega is f(x,y,z), d omega is gradient, so Stoke's theorem gives integral
-    of zero form in 3 coordinates for 1D curve gives integral of gradient of boundary of 1D curve which
-    is end point
-  locator: null
-  sub_index: null
-  search_text: how does one compute fundamental theorem of line integrals using stoke's theorem? manifold
-    is 1d curve c, omega is f(x,y,z), d omega is gradient, so stoke's theorem gives integral of zero form
-    in 3 coordinates for 1d curve gives integral of gradient of boundary of 1d curve which is end point
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#100
-  text: How does one compute Green's theorem using Stoke's theorem?
-  hint: 2D flat region, omega is 1 form, P dx + Q dy, d omega or component is dQ/dx - dP/dy dA, so integrating
-    the curl domega of the flat region is the same as integrating over the boundary of the flat region
-    for 1-form omega
-  locator: null
-  sub_index: null
-  search_text: how does one compute green's theorem using stoke's theorem? 2d flat region, omega is 1
-    form, p dx + q dy, d omega or component is dq/dx - dp/dy da, so integrating the curl domega of the
-    flat region is the same as integrating over the boundary of the flat region for 1-form omega
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#101
-  text: How does one compute Kelvin's Stokes?
-  hint: 2D open surface, S, 1-form omega is P dx + Q dy +.R dz, d omega is 3D curl or del x F, dS, so
-    integrate curl over 2D open surface S is the same as integrating 1-form omega P dx + Q dy + R dz over
-    boundary of open surface del S.
-  locator: null
-  sub_index: null
-  search_text: how does one compute kelvin's stokes? 2d open surface, s, 1-form omega is p dx + q dy +.r
-    dz, d omega is 3d curl or del x f, ds, so integrate curl over 2d open surface s is the same as integrating
-    1-form omega p dx + q dy + r dz over boundary of open surface del s.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#102
-  text: How does one compute the divergence theorem?
-  hint: integrate 2-form omega over boundary of solid volume P dydz + Q dz dz + R dx dy = integrate d
-    omega which is divergence del F dV.
-  locator: null
-  sub_index: null
-  search_text: how does one compute the divergence theorem? integrate 2-form omega over boundary of solid
-    volume p dydz + q dz dz + r dx dy = integrate d omega which is divergence del f dv.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#103
-  text: What is the hard part of the proof of generalises Stoke's theorem?
-  hint: keeping track of signs, reducing it to Fubinis's theorem to integrate in any order of dx_i first,
-    compute using fundamental theorem of calculus, sign trackign is hard due to orientation on boundaries,
-    result is true for single oriented chart with local coordinates, cover M by oriented charts using
-    compact support, use partition of unity subordinate to finitely many open covers for oriented charts.
-  locator: null
-  sub_index: null
-  search_text: what is the hard part of the proof of generalises stoke's theorem? keeping track of signs,
-    reducing it to fubinis's theorem to integrate in any order of dx_i first, compute using fundamental
-    theorem of calculus, sign trackign is hard due to orientation on boundaries, result is true for single
-    oriented chart with local coordinates, cover m by oriented charts using compact support, use partition
-    of unity subordinate to finitely many open covers for oriented charts.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#104
-  text: Why does one show that classes of symplectic forms on manifold withou boundary i.e. omega in Omega^2(M)
-    is nonzero in second de Rham cohomology?
-  hint: use linear algebra to show integral omega^n is nonzero, omega closed, if it vanishes tthen d(tau
-    wedge copies of omega) is just omega^n or vanishes using Stoke's theorem on manifold without boundary,
-    contradiction, so [omega] is nonzero.
-  locator: null
-  sub_index: null
-  search_text: why does one show that classes of symplectic forms on manifold withou boundary i.e. omega
-    in omega^2(m) is nonzero in second de rham cohomology? use linear algebra to show integral omega^n
-    is nonzero, omega closed, if it vanishes tthen d(tau wedge copies of omega) is just omega^n or vanishes
-    using stoke's theorem on manifold without boundary, contradiction, so [omega] is nonzero.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#105
-  text: How does one invent De Rham's theorem?
-  hint: need M compact, one defines a singular p-simplex, natural isomorphism (of rings) with singular
-    cohomology of M, de Rham has product given by wedge, and singular cohomology in R as cup product.
-    Define singular cohomology using singular p simplex, same properties with no change in proof. Define
-    singular cohomology and smooth singular cohomology, bad definition in general, but need to be careful
-    about corners and integrated over codimensnion 2 faces, use Stoke's theorem, de Rham basis as de Rham
-    cover for the basis of the topology. It seem slike a horrible mess.
-  locator: null
-  sub_index: null
-  search_text: how does one invent de rham's theorem? need m compact, one defines a singular p-simplex,
-    natural isomorphism (of rings) with singular cohomology of m, de rham has product given by wedge,
-    and singular cohomology in r as cup product. define singular cohomology using singular p simplex,
-    same properties with no change in proof. define singular cohomology and smooth singular cohomology,
-    bad definition in general, but need to be careful about corners and integrated over codimensnion 2
-    faces, use stoke's theorem, de rham basis as de rham cover for the basis of the topology. it seem
-    slike a horrible mess.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#106
-  text: How does one invent connections using physics?
-  hint: move in manifold along a path, velocity means derivative of path, pick canonical tangent vector
-    at identity, acceleration means iterate, BUT, we can use the fact that we are working with vector
-    bundles, fibres are vector spaces, so the acceleration lives in the tangent bundle, solved by connection.
-    Specify how to take derivatives of sections, or how to compare infinitesimally close vectors in a
-    vector bundle.
-  locator: null
-  sub_index: null
-  search_text: how does one invent connections using physics? move in manifold along a path, velocity
-    means derivative of path, pick canonical tangent vector at identity, acceleration means iterate, but,
-    we can use the fact that we are working with vector bundles, fibres are vector spaces, so the acceleration
-    lives in the tangent bundle, solved by connection. specify how to take derivatives of sections, or
-    how to compare infinitesimally close vectors in a vector bundle.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#107
-  text: How does one invent the definition of Koszul connections?
-  hint: vector bundle, take linear map on differential forms on vector bundles on M, d_E(fs) = df tensor
-    s + f d_E s, this is a Koszul connection, define the derivative of s in the direction of X
-  locator: null
-  sub_index: null
-  search_text: how does one invent the definition of koszul connections? vector bundle, take linear map
-    on differential forms on vector bundles on m, d_e(fs) = df tensor s + f d_e s, this is a koszul connection,
-    define the derivative of s in the direction of x
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#108
-  text: How does one define a derivative over a section?
-  hint: defie derivative as applying d_E(s) or the linear map from TM -> total space E to X, so this del
-    V applying this map is the connection. So one can differentiate sections of the whole bundle along
-    everywhere defined vector path, but not path along a vector fields
-  locator: null
-  sub_index: null
-  search_text: how does one define a derivative over a section? defie derivative as applying d_e(s) or
-    the linear map from tm -> total space e to x, so this del v applying this map is the connection. so
-    one can differentiate sections of the whole bundle along everywhere defined vector path, but not path
-    along a vector fields
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#109
-  text: How does one define locality of connections?
-  hint: definition of quantity of connection depends only on values of X at p, use linearity and check
-    that if Y = 0 in neighbourhood U o fP, connection vanishes, pick bump function identically 1 near
-    p, supp(X) in U cannot remember the proof.
-  locator: null
-  sub_index: null
-  search_text: how does one define locality of connections? definition of quantity of connection depends
-    only on values of x at p, use linearity and check that if y = 0 in neighbourhood u o fp, connection
-    vanishes, pick bump function identically 1 near p, supp(x) in u cannot remember the proof.
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#110
-  text: How does one prove existence and uniqueness of the formula for connections?
-  hint: locla uniqueness first, bump function argument need to be learnt, work locally on the chart, compute
-    D_t V|t0 by Leibniz and second property, every term is uniquely determined based on Leibniz's rule
-    adn second property of connections, existence easy, formula works locally uniquely and then patch
-    together
-  locator: null
-  sub_index: null
-  search_text: how does one prove existence and uniqueness of the formula for connections? locla uniqueness
-    first, bump function argument need to be learnt, work locally on the chart, compute d_t v|t0 by leibniz
-    and second property, every term is uniquely determined based on leibniz's rule adn second property
-    of connections, existence easy, formula works locally uniquely and then patch together
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#111
-  text: How to prove that any vector bundle admits a connection?
-  hint: think of difference in two connections as linear, this is a bundle morphism and it is contained
-    in the space of all differential forms over the endormorphisms on the total space, set of all connections
-    on E is affine space
-  locator: null
-  sub_index: null
-  search_text: how to prove that any vector bundle admits a connection? think of difference in two connections
-    as linear, this is a bundle morphism and it is contained in the space of all differential forms over
-    the endormorphisms on the total space, set of all connections on e is affine space
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#112
-  text: How does one compute Christoffel's symbols?
-  hint: linear connection, get frame on tangent bundle, also for cotangent bundle, write locally in coordinates
-    as Christophel symbols i.e. the connection is given by Christoffel symbols * del_k or the basis of
-    the frame. Basically Christoffel symbols are coefficeints for the frame
-  locator: null
-  sub_index: null
-  search_text: how does one compute christoffel's symbols? linear connection, get frame on tangent bundle,
-    also for cotangent bundle, write locally in coordinates as christophel symbols i.e. the connection
-    is given by christoffel symbols * del_k or the basis of the frame. basically christoffel symbols are
-    coefficeints for the frame
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#113
-  text: How does one define geodesic with the connections?
-  hint: 'minimum D_t p''(t) = 0 for curve p: I -> M, working along the linear connection, find ODE to
-    uniquely specify the geodesic, existence and uniqueness by Picard Lindelof, write this using Christofel
-    symbols, second order ODE, get unique solutions locally given initial conditions, then patch to get
-    global existence and uniqueness. One can talk about parallel vector fields, D_t V(t) mod 0 for all
-    tin I, vector field is constant along the path, not literally constant since each V(t) lives in different
-    vector space. Important result is parallel transport, path is geodesic if derivative of path is parallel
-    as definitiojn. Parallel transport means there exist unique parallel vector field such that V(t_0)
-    = zeta in tangent bundle under p(t_0), this is teh prallel transport. PRove using Christoffel symbols,
-    first order ODE, initial condition, locally unique, globally exist by compactness using finitely many
-    charts. One can define the parallel transport map. PROBLEM: depends on curve chose. SOLUTION: invent
-    flat connections that depends on homotopy class of the curves.'
-  locator: null
-  sub_index: null
-  search_text: 'how does one define geodesic with the connections? minimum d_t p''(t) = 0 for curve p:
-    i -> m, working along the linear connection, find ode to uniquely specify the geodesic, existence
-    and uniqueness by picard lindelof, write this using christofel symbols, second order ode, get unique
-    solutions locally given initial conditions, then patch to get global existence and uniqueness. one
-    can talk about parallel vector fields, d_t v(t) mod 0 for all tin i, vector field is constant along
-    the path, not literally constant since each v(t) lives in different vector space. important result
-    is parallel transport, path is geodesic if derivative of path is parallel as definitiojn. parallel
-    transport means there exist unique parallel vector field such that v(t_0) = zeta in tangent bundle
-    under p(t_0), this is teh prallel transport. prove using christoffel symbols, first order ode, initial
-    condition, locally unique, globally exist by compactness using finitely many charts. one can define
-    the parallel transport map. problem: depends on curve chose. solution: invent flat connections that
-    depends on homotopy class of the curves.'
-- id: dec41-user-srcf-net-h-iii-m-differential-geometry-full#114
-  text: How does one invent metric connection?
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: how does one invent metric connection?
+  search_text: 'how does one define parallel transport and geodesics? a section $s(t)$ along a curve $\gamma$
+    is parallel if $\nabla_{\dot{\gamma}} s = 0$; a curve is a geodesic if its velocity vector is parallel:
+    $\nabla_{\dot{\gamma}} \dot{\gamma} = 0$.'

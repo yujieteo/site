@@ -1,0 +1,52 @@
+url: https://dec41.user.srcf.net/h/IB_M/linear_algebra/full
+title: linear algebra
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-ib-m-linear-algebra-full#000
+  text: How does one define a vector space?
+  hint: A set $V$ equipped with vector addition and scalar multiplication over a field $\mathbb{F}$ satisfying
+    the vector space axioms.
+  locator: null
+  sub_index: null
+  search_text: how does one define a vector space? a set $v$ equipped with vector addition and scalar
+    multiplication over a field $\mathbb{f}$ satisfying the vector space axioms.
+- id: dec41-user-srcf-net-h-ib-m-linear-algebra-full#001
+  text: What is the standard basis of $\mathbb{F}^n$?
+  hint: The set of unit vectors $\{e_1, \dots, e_n\}$ where $e_i$ has a 1 in the $i$-th entry and 0 elsewhere.
+  locator: null
+  sub_index: null
+  search_text: what is the standard basis of $\mathbb{f}^n$? the set of unit vectors $\{e_1, \dots, e_n\}$
+    where $e_i$ has a 1 in the $i$-th entry and 0 elsewhere.
+- id: dec41-user-srcf-net-h-ib-m-linear-algebra-full#002
+  text: Why does the concept of dimension fail to be unique for general modules over rings?
+  hint: Modules over arbitrary rings may lack bases or have invariant basis number failures.
+  locator: null
+  sub_index: null
+  search_text: why does the concept of dimension fail to be unique for general modules over rings? modules
+    over arbitrary rings may lack bases or have invariant basis number failures.
+- id: dec41-user-srcf-net-h-ib-m-linear-algebra-full#003
+  text: How does one define the span of a subset?
+  hint: The set of all finite linear combinations $\operatorname{span}(S) = \{\sum_{i=1}^k c_i v_i \mid
+    c_i \in \mathbb{F}, v_i \in S\}$.
+  locator: null
+  sub_index: null
+  search_text: how does one define the span of a subset? the set of all finite linear combinations $\operatorname{span}(s)
+    = \{\sum_{i=1}^k c_i v_i \mid c_i \in \mathbb{f}, v_i \in s\}$.
+- id: dec41-user-srcf-net-h-ib-m-linear-algebra-full#004
+  text: Why are infinite sums not allowed in purely algebraic spans?
+  hint: Algebraic vector spaces do not possess topologies to define limits and convergence.
+  locator: null
+  sub_index: null
+  search_text: why are infinite sums not allowed in purely algebraic spans? algebraic vector spaces do
+    not possess topologies to define limits and convergence.
+- id: dec41-user-srcf-net-h-ib-m-linear-algebra-full#005
+  text: How does one define linear independence?
+  hint: A set $\{v_1, \dots, v_k\}$ is linearly independent if $\sum c_i v_i = 0$ implies $c_1 = \dots
+    = c_k = 0$.
+  locator: null
+  sub_index: null
+  search_text: how does one define linear independence? a set $\{v_1, \dots, v_k\}$ is linearly independent
+    if $\sum c_i v_i = 0$ implies $c_1 = \dots = c_k = 0$.

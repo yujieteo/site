@@ -6,301 +6,125 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-l-logic-full#000
-  text: 'Who first invented the notion of proof? (Hint: Godel, motivated by need to write down an incompleteness
-    theorem)'
-  hint: null
+  text: Who formalized the first mathematical notion of proof?
+  hint: Kurt Gödel, motivated by the completeness and incompleteness theorems.
   locator: null
   sub_index: null
-  search_text: 'who first invented the notion of proof? (hint: godel, motivated by need to write down
-    an incompleteness theorem)'
+  search_text: who formalized the first mathematical notion of proof? kurt gödel, motivated by the completeness
+    and incompleteness theorems.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#001
-  text: What was the notion invented later after Godel? (Hint; natural deduction, three axioms and one
-    rule of inference). i.e. A and B are true, conclude A and B, then use AND elimination. There are introduction
-    rules and there are elimination rules
-  hint: null
+  text: What is natural deduction?
+  hint: A proof system introduced by Gentzen based on introduction and elimination rules for logical connectives.
   locator: null
   sub_index: null
-  search_text: what was the notion invented later after godel? (hint; natural deduction, three axioms
-    and one rule of inference). i.e. a and b are true, conclude a and b, then use and elimination. there
-    are introduction rules and there are elimination rules
+  search_text: what is natural deduction? a proof system introduced by gentzen based on introduction and
+    elimination rules for logical connectives.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#002
-  text: How does one write proofs, introduce disjunction or conjunction into our conclusions, then there
-    are elimination rules, which eliminate conjunctions and implications from premises. Assume A then
-    prove B, we need a function to take a proof tree into a proof tree. Introduce means introduce a symbol,
-    A B means A and B, A and B implies A and A and B implies B. These are elimination rules. A means A
-    or B, or an or introduction
-  hint: null
+  text: How does one write proofs in natural deduction?
+  hint: Construct proof trees where assumptions are discharged using introduction rules and premises are
+    broken down using elimination rules.
   locator: null
   sub_index: null
-  search_text: how does one write proofs, introduce disjunction or conjunction into our conclusions, then
-    there are elimination rules, which eliminate conjunctions and implications from premises. assume a
-    then prove b, we need a function to take a proof tree into a proof tree. introduce means introduce
-    a symbol, a b means a and b, a and b implies a and a and b implies b. these are elimination rules.
-    a means a or b, or an or introduction
+  search_text: how does one write proofs in natural deduction? construct proof trees where assumptions
+    are discharged using introduction rules and premises are broken down using elimination rules.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#003
-  text: Compute using the implication elimination rule, A and A->B
-  hint: null
+  text: What is the implication elimination rule (Modus Ponens)?
+  hint: From $A$ and $A \to B$, deduce $B$.
   locator: null
   sub_index: null
-  search_text: compute using the implication elimination rule, a and a->b
+  search_text: what is the implication elimination rule (modus ponens)? from $a$ and $a \to b$, deduce
+    $b$.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#004
-  text: How does one do a elimination rule for A proves and B proves C so if we know A or B, then C must
-    be true. Empty disjunction means or is false, so you can prove anything from falsehood, this is ex
-    falso sequitur quolibet
-  hint: null
+  text: What is the principle of explosion (ex falso quodlibet)?
+  hint: From a contradiction or falsehood $\bot$, any proposition $C$ can be derived.
   locator: null
   sub_index: null
-  search_text: how does one do a elimination rule for a proves and b proves c so if we know a or b, then
-    c must be true. empty disjunction means or is false, so you can prove anything from falsehood, this
-    is ex falso sequitur quolibet
+  search_text: what is the principle of explosion (ex falso quodlibet)? from a contradiction or falsehood
+    $\bot$, any proposition $c$ can be derived.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#005
-  text: 'How does one construct negation? (Hint: take A implies false, so A is false)'
-  hint: null
+  text: How does one define negation constructively?
+  hint: Define $\neg A$ as $A \to \bot$.
   locator: null
   sub_index: null
-  search_text: 'how does one construct negation? (hint: take a implies false, so a is false)'
+  search_text: how does one define negation constructively? define $\neg a$ as $a \to \bot$.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#006
-  text: 'How does one construct classical propositional logic? What rule does one add? (Hint: pick A ->
-    not, gives not / A). Or I don''t know just use law of excluded middle or law of double negation?'
-  hint: null
+  text: How does classical logic differ from intuitionistic logic?
+  hint: Classical logic adds the Law of the Excluded Middle ($A \lor \neg A$) or Double Negation Elimination
+    ($\neg\neg A \to A$).
   locator: null
   sub_index: null
-  search_text: 'how does one construct classical propositional logic? what rule does one add? (hint: pick
-    a -> not, gives not / a). or i don''t know just use law of excluded middle or law of double negation?'
+  search_text: how does classical logic differ from intuitionistic logic? classical logic adds the law
+    of the excluded middle ($a \lor \neg a$) or double negation elimination ($\neg\neg a \to a$).
 - id: dec41-user-srcf-net-h-iii-l-logic-full#007
-  text: 'How does one construct a proof the Russell''s paradox lead to the theory (hint: use a proof that
-    R in R is inconsistent, take two copies of the proof, simply need implication introduction rules).
-    No extensionality is required'
-  hint: null
+  text: How does Russell's paradox arise in naive set theory?
+  hint: Defining $R = \{x \mid x \notin x\}$ yields $R \in R \iff R \notin R$, proving inconsistency in
+    unconstrained comprehension.
   locator: null
   sub_index: null
-  search_text: 'how does one construct a proof the russell''s paradox lead to the theory (hint: use a
-    proof that r in r is inconsistent, take two copies of the proof, simply need implication introduction
-    rules). no extensionality is required'
+  search_text: how does russell's paradox arise in naive set theory? defining $r = \{x \mid x \notin x\}$
+    yields $r \in r \iff r \notin r$, proving inconsistency in unconstrained comprehension.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#008
-  text: What does Russell's paradox imply that a definition is required?
-  hint: maximal formula iff conclusion of an occurrence of an introduction rule, major premises of an
-    occurrence of the elimination rule for the same connective.
+  text: What are the combinators K and S?
+  hint: 'Axioms in combinatory logic that axiomatize the implicational fragment of intuitionistic logic:
+    $K: A \to (B \to A)$ and $S: (A \to B \to C) \to (A \to B) \to (A \to C)$.'
   locator: null
   sub_index: null
-  search_text: what does russell's paradox imply that a definition is required? maximal formula iff conclusion
-    of an occurrence of an introduction rule, major premises of an occurrence of the elimination rule
-    for the same connective.
+  search_text: 'what are the combinators k and s? axioms in combinatory logic that axiomatize the implicational
+    fragment of intuitionistic logic: $k: a \to (b \to a)$ and $s: (a \to b \to c) \to (a \to b) \to (a
+    \to c)$.'
 - id: dec41-user-srcf-net-h-iii-l-logic-full#009
-  text: 'What are axioms K and S? (Hint: they axiomatize the conditional -> fragment of constructive logic,
-    i.e. you can just use proposition and conditionals, you do not need and, or, not, and this is constructive.
-    This is the im implicational propositional calculus, only relies on modus ponens and conditional introduction)?'
-  hint: null
+  text: What is Peirce's law?
+  hint: $((A \to B) \to A) \to A$, which holds classically but is unprovable in intuitionistic propositional
+    logic.
   locator: null
   sub_index: null
-  search_text: 'what are axioms k and s? (hint: they axiomatize the conditional -> fragment of constructive
-    logic, i.e. you can just use proposition and conditionals, you do not need and, or, not, and this
-    is constructive. this is the im implicational propositional calculus, only relies on modus ponens
-    and conditional introduction)?'
+  search_text: what is peirce's law? $((a \to b) \to a) \to a$, which holds classically but is unprovable
+    in intuitionistic propositional logic.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#010
-  text: Why is Pierce's law needed?
-  hint: conditional fragment of classical logic. What is axioms K and S??
+  text: What is linear logic?
+  hint: A resource-sensitive logic where assumptions cannot be duplicated or discarded arbitrarily, eliminating
+    weakening and contraction.
   locator: null
   sub_index: null
-  search_text: why is pierce's law needed? conditional fragment of classical logic. what is axioms k and
-    s??
+  search_text: what is linear logic? a resource-sensitive logic where assumptions cannot be duplicated
+    or discarded arbitrarily, eliminating weakening and contraction.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#011
-  text: How does one prove that Pierce's law is unprovable?
-  hint: use three true values, then draw a truth table, but this does not give intuition? A nicer answer
-    is to use the Curry-Howard correspondence?
+  text: What is proof-theoretic harmony?
+  hint: A balance where elimination rules extract no more and no less information than what was put in
+    by the introduction rules.
   locator: null
   sub_index: null
-  search_text: how does one prove that pierce's law is unprovable? use three true values, then draw a
-    truth table, but this does not give intuition? a nicer answer is to use the curry-howard correspondence?
+  search_text: what is proof-theoretic harmony? a balance where elimination rules extract no more and
+    no less information than what was put in by the introduction rules.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#012
-  text: Why does one study linear logic or resource logic?
-  hint: logics where assumptions can only be used once.
+  text: What is the Curry-Howard correspondence?
+  hint: 'The isomorphism between constructive logic and typed lambda calculus: propositions are types,
+    and proofs are programs.'
   locator: null
   sub_index: null
-  search_text: why does one study linear logic or resource logic? logics where assumptions can only be
-    used once.
+  search_text: 'what is the curry-howard correspondence? the isomorphism between constructive logic and
+    typed lambda calculus: propositions are types, and proofs are programs.'
 - id: dec41-user-srcf-net-h-iii-l-logic-full#013
-  text: What is a weakening rule used for?
-  hint: dropping assumptions
+  text: How does Kripke semantics model intuitionistic logic?
+  hint: 'Uses partially ordered sets of possible worlds where truth is monotonic: $w \le w''$ and $w \Vdash
+    A \implies w'' \Vdash A$.'
   locator: null
   sub_index: null
-  search_text: what is a weakening rule used for? dropping assumptions
+  search_text: 'how does kripke semantics model intuitionistic logic? uses partially ordered sets of possible
+    worlds where truth is monotonic: $w \le w''$ and $w \vdash a \implies w'' \vdash a$.'
 - id: dec41-user-srcf-net-h-iii-l-logic-full#014
-  text: Why must one have the definition of harmony?
-  hint: you can use A to get A&B but A&B tells you nothing about A, in the example of the notes. Another
-    asymmetry is that you do not need B to prove A&B, but you can use A&B to deduce something about B.
-    So the rule you want is such that A&B is the strongest assertion one can prove from introduction,
-    then A&B is the weakest assertion one can have through elimination, though this is not precise.
+  text: What are Heyting algebras?
+  hint: Bounded lattices equipped with a relative pseudo-complement that provide algebraic models for
+    intuitionistic logic, generalizing Boolean algebras.
   locator: null
   sub_index: null
-  search_text: why must one have the definition of harmony? you can use a to get a&b but a&b tells you
-    nothing about a, in the example of the notes. another asymmetry is that you do not need b to prove
-    a&b, but you can use a&b to deduce something about b. so the rule you want is such that a&b is the
-    strongest assertion one can prove from introduction, then a&b is the weakest assertion one can have
-    through elimination, though this is not precise.
+  search_text: what are heyting algebras? bounded lattices equipped with a relative pseudo-complement
+    that provide algebraic models for intuitionistic logic, generalizing boolean algebras.
 - id: dec41-user-srcf-net-h-iii-l-logic-full#015
-  text: What is a lambda expression for?
-  hint: notation for function that takes in x and returns phi(x)
+  text: What is the Gödel-Gentzen negative translation?
+  hint: A mapping that embeds classical logic into intuitionistic logic by inserting double negations
+    on subformulas.
   locator: null
   sub_index: null
-  search_text: what is a lambda expression for? notation for function that takes in x and returns phi(x)
-- id: dec41-user-srcf-net-h-iii-l-logic-full#016
-  text: Why are types a thing in proofs?
-  hint: need to know what is it a proof of?
-  locator: null
-  sub_index: null
-  search_text: why are types a thing in proofs? need to know what is it a proof of?
-- id: dec41-user-srcf-net-h-iii-l-logic-full#017
-  text: What does the false proposition correspond to and why?
-  hint: it has no proofs, and the empty set is a set that admits a function to any set X whatsoever
-  locator: null
-  sub_index: null
-  search_text: what does the false proposition correspond to and why? it has no proofs, and the empty
-    set is a set that admits a function to any set x whatsoever
-- id: dec41-user-srcf-net-h-iii-l-logic-full#018
-  text: "What can types do for the law of excluded middle? (Hint: no uniform construction without knowing\
-    \ anything about A for the statement ((A -> false) -> false) implies A). Therefore one can show that\
-    \ you cannot prove ((A -> B) -> A)->A with natural deduction without the law of excluded middle. The\
-    \ proof is by thinking about types and finding contradiction to show that one can uniformly pick\t\
-    \ a distinguished element out of a two element set"
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: "what can types do for the law of excluded middle? (hint: no uniform construction without\
-    \ knowing anything about a for the statement ((a -> false) -> false) implies a). therefore one can\
-    \ show that you cannot prove ((a -> b) -> a)->a with natural deduction without the law of excluded\
-    \ middle. the proof is by thinking about types and finding contradiction to show that one can uniformly\
-    \ pick\t a distinguished element out of a two element set"
-- id: dec41-user-srcf-net-h-iii-l-logic-full#019
-  text: How does one invent world logic?
-  hint: classical logic uses collection of propositions with model as function valued in true and false,
-    then truth can be define recursively. However, one can take a subset of propositions, a subset of
-    it,a. model as a collection of worlds, then take a partial order on the subset called accessibility.
-    Then the partial order represents belief, w' >= w means w believes phi if w follows omega. The rest
-    are poset relations.
-  locator: null
-  sub_index: null
-  search_text: how does one invent world logic? classical logic uses collection of propositions with model
-    as function valued in true and false, then truth can be define recursively. however, one can take
-    a subset of propositions, a subset of it,a. model as a collection of worlds, then take a partial order
-    on the subset called accessibility. then the partial order represents belief, w' >= w means w believes
-    phi if w follows omega. the rest are poset relations.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#020
-  text: How does one invent the last rule for world posets?
-  hint: w does not believe in p, does not mean p is false, it just means w remains ignorant as to whether
-    p is true.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the last rule for world posets? w does not believe in p, does not mean
-    p is false, it just means w remains ignorant as to whether p is true.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#021
-  text: How does one reinvent classical logic using world semantics?
-  hint: one world means classical logic
-  locator: null
-  sub_index: null
-  search_text: how does one reinvent classical logic using world semantics? one world means classical
-    logic
-- id: dec41-user-srcf-net-h-iii-l-logic-full#022
-  text: How does one reinvent negation? Wha is the difference between the world not having A?
-  hint: the symbol is reserved that there is no opinion as to whether A is true, not A means there is
-    no possible compatible with w in which A is true, this is a much stronger statement.
-  locator: null
-  sub_index: null
-  search_text: how does one reinvent negation? wha is the difference between the world not having a? the
-    symbol is reserved that there is no opinion as to whether a is true, not a means there is no possible
-    compatible with w in which a is true, this is a much stronger statement.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#023
-  text: How else can one amend world semantics without a partial ordeR?
-  hint: pick world semantics to not use a partial order.
-  locator: null
-  sub_index: null
-  search_text: how else can one amend world semantics without a partial order? pick world semantics to
-    not use a partial order.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#024
-  text: How does one think about decidability in world models?
-  hint: refuted by possible world model can be done using finitely many distinct possible world models
-  locator: null
-  sub_index: null
-  search_text: how does one think about decidability in world models? refuted by possible world model
-    can be done using finitely many distinct possible world models
-- id: dec41-user-srcf-net-h-iii-l-logic-full#025
-  text: Why are Heyting algebras important in world models?
-  hint: if the underlying poset is a Heyting algebra, this will validate all constructive theses, so classical
-    logic correspond to Boolean algebra, and constructive logic correspond to Heyting algebras
-  locator: null
-  sub_index: null
-  search_text: why are heyting algebras important in world models? if the underlying poset is a heyting
-    algebra, this will validate all constructive theses, so classical logic correspond to boolean algebra,
-    and constructive logic correspond to heyting algebras
-- id: dec41-user-srcf-net-h-iii-l-logic-full#026
-  text: How does one invent the negative interpretation of classical logic?
-  hint: the idea is that constructive logician sees A or B as we can prove A or we can prove B, but classically
-    one gets a weaker statement as "it is not true that A and B are both false". So, constructive logicians
-    see classical statements as putting in enough negations.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the negative interpretation of classical logic? the idea is that constructive
-    logician sees a or b as we can prove a or we can prove b, but classically one gets a weaker statement
-    as "it is not true that a and b are both false". so, constructive logicians see classical statements
-    as putting in enough negations.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#027
-  text: How does one invent the definition of a stable formula?
-  hint: you get not phi* -> phi, so you can have the lemma, any formula built up by negated and doubly
-    negated atomics is stable, then use not not not A -> not A, then some other mass implication and lambda-terms
-    to do this.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the definition of a stable formula? you get not phi* -> phi, so you
-    can have the lemma, any formula built up by negated and doubly negated atomics is stable, then use
-    not not not a -> not a, then some other mass implication and lambda-terms to do this.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#028
-  text: 'Why are there many distinct definitions of finiteness? (Hint: axiom of choice, Kuratowski is
-    finite i.e. union by finite singletons, or N-finite by x being N-finite, y not in x then x union {y},
-    the basic idea is finite is a sort of poisoning) N-finite needs distinction, Kuratowski finite doe
-    not have law of excluded middle'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'why are there many distinct definitions of finiteness? (hint: axiom of choice, kuratowski
-    is finite i.e. union by finite singletons, or n-finite by x being n-finite, y not in x then x union
-    {y}, the basic idea is finite is a sort of poisoning) n-finite needs distinction, kuratowski finite
-    doe not have law of excluded middle'
-- id: dec41-user-srcf-net-h-iii-l-logic-full#029
-  text: Why is there differences in nonempty set?
-  hint: inhabited guarantees existence of an element y but nonempty only have negation.
-  locator: null
-  sub_index: null
-  search_text: why is there differences in nonempty set? inhabited guarantees existence of an element
-    y but nonempty only have negation.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#030
-  text: How does one come up with the definition of a universal theory?
-  hint: axioms does not have quantifiers in the middle. Groups rings and modules are universal theories.
-  locator: null
-  sub_index: null
-  search_text: how does one come up with the definition of a universal theory? axioms does not have quantifiers
-    in the middle. groups rings and modules are universal theories.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#031
-  text: Why is it important that substructures being a model implies that we have a model of universal
-    theory?
-  hint: correspondence between syntax and semantics.
-  locator: null
-  sub_index: null
-  search_text: why is it important that substructures being a model implies that we have a model of universal
-    theory? correspondence between syntax and semantics.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#032
-  text: How does one come up with the definition of a diagram for a theory?
-  hint: one has a language and a structure, then add a constant symbol for each x in the structure of
-    the language, take axioms to be all quantifier-free sentences then one has a model.
-  locator: null
-  sub_index: null
-  search_text: how does one come up with the definition of a diagram for a theory? one has a language
-    and a structure, then add a constant symbol for each x in the structure of the language, take axioms
-    to be all quantifier-free sentences then one has a model.
-- id: dec41-user-srcf-net-h-iii-l-logic-full#033
-  text: How does one invent the negative interpretation of classical logic into constructive logic due
-    to Godel?
-  hint: the idea is to apply the doubel negation everywhere?
-  locator: null
-  sub_index: null
-  search_text: how does one invent the negative interpretation of classical logic into constructive logic
-    due to godel? the idea is to apply the doubel negation everywhere?
+  search_text: what is the gödel-gentzen negative translation? a mapping that embeds classical logic into
+    intuitionistic logic by inserting double negations on subformulas.

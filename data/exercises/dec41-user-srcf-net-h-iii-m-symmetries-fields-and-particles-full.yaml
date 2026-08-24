@@ -7,252 +7,91 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#000
-  text: Why the definition of a group in physics? (Leave physical laws invariant, noting that gauge fields
-    are uniquely specified by the gauge symmetric group it works with)
-  hint: null
+  text: Why are symmetry groups used in physics?
+  hint: Symmetries leave physical laws invariant; continuous global symmetries yield conserved charges
+    via Noether's theorem.
   locator: null
   sub_index: null
-  search_text: why the definition of a group in physics? (leave physical laws invariant, noting that gauge
-    fields are uniquely specified by the gauge symmetric group it works with)
+  search_text: why are symmetry groups used in physics? symmetries leave physical laws invariant; continuous
+    global symmetries yield conserved charges via noether's theorem.
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#001
-  text: 'Why does one focus on smooth symmetries? (Hint: these are the symmetries that can go into Noether''s
-    theorem, therefore one can study them as infinitesimal symmetries, forming a vector space i.e. a Lie
-    algebra)'
-  hint: null
+  text: Why are Lie algebras studied instead of Lie groups?
+  hint: Lie algebras linearize the group near the identity, reducing non-linear group manifolds to linear
+    algebra.
   locator: null
   sub_index: null
-  search_text: 'why does one focus on smooth symmetries? (hint: these are the symmetries that can go into
-    noether''s theorem, therefore one can study them as infinitesimal symmetries, forming a vector space
-    i.e. a lie algebra)'
+  search_text: why are lie algebras studied instead of lie groups? lie algebras linearize the group near
+    the identity, reducing non-linear group manifolds to linear algebra.
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#002
-  text: Why study Lie algebras?
-  hint: it can be classified, and it is less complicated than studying Lie groups
+  text: What is a matrix Lie group?
+  hint: A closed subgroup of $\mathrm{GL}_n(\mathbb{C})$, such as $\mathrm{SO}(n)$, $\mathrm{SU}(n)$,
+    or $\mathrm{Sp}(n)$.
   locator: null
   sub_index: null
-  search_text: why study lie algebras? it can be classified, and it is less complicated than studying
-    lie groups
+  search_text: what is a matrix lie group? a closed subgroup of $\mathrm{gl}_n(\mathbb{c})$, such as $\mathrm{so}(n)$,
+    $\mathrm{su}(n)$, or $\mathrm{sp}(n)$.
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#003
-  text: What are gauge theories?
-  hint: these are theories that obey symmetry conditions, and therefore interactions come up automatically
+  text: What is the orthogonal group $\mathrm{O}(n)$?
+  hint: The group of real matrices preserving the Euclidean inner product $M^T M = I$, with $\det M =
+    \pm 1$.
   locator: null
   sub_index: null
-  search_text: what are gauge theories? these are theories that obey symmetry conditions, and therefore
-    interactions come up automatically
+  search_text: what is the orthogonal group $\mathrm{o}(n)$? the group of real matrices preserving the
+    euclidean inner product $m^t m = i$, with $\det m = \pm 1$.
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#004
-  text: What is required to invent the definition of a smooth map?
-  hint: partial derivatives of all orders exist?
+  text: What is the unitary group $\mathrm{U}(n)$?
+  hint: The group of complex matrices preserving the Hermitian inner product $U^\dagger U = I$.
   locator: null
   sub_index: null
-  search_text: what is required to invent the definition of a smooth map? partial derivatives of all orders
-    exist?
+  search_text: what is the unitary group $\mathrm{u}(n)$? the group of complex matrices preserving the
+    hermitian inner product $u^\dagger u = i$.
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#005
-  text: 'What is the definition of a manifold, what are the ingredients that go into it? (Hint: Dimension,
-    collection of subsets, collection of bijections to R^n as charts, Hausdorff and second countable)'
-  hint: null
+  text: Why is the Lorentz group $\mathrm{O}(3, 1)$ non-compact?
+  hint: It preserves the indefinite Minkowski metric $\eta = \operatorname{diag}(1, -1, -1, -1)$, allowing
+    unbounded boost parameters.
   locator: null
   sub_index: null
-  search_text: 'what is the definition of a manifold, what are the ingredients that go into it? (hint:
-    dimension, collection of subsets, collection of bijections to r^n as charts, hausdorff and second
-    countable)'
+  search_text: why is the lorentz group $\mathrm{o}(3, 1)$ non-compact? it preserves the indefinite minkowski
+    metric $\eta = \operatorname{diag}(1, -1, -1, -1)$, allowing unbounded boost parameters.
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#006
-  text: How does one invent the notion of the chart?
-  hint: you basically want a map from phi_B of the intersection to phi_A of the intersection of the transition
-    function to be smooth. This is the compatibility condition.
+  text: How does one compute the Lie algebra $\mathfrak{su}(n)$?
+  hint: 'Traceless anti-Hermitian $n \times n$ matrices: $\mathfrak{su}(n) = \{X \in M_n(\mathbb{C}) \mid
+    X^\dagger = -X, \operatorname{Tr}(X) = 0\}$.'
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of the chart? you basically want a map from phi_b of the
-    intersection to phi_a of the intersection of the transition function to be smooth. this is the compatibility
-    condition.
+  search_text: 'how does one compute the lie algebra $\mathfrak{su}(n)$? traceless anti-hermitian $n \times
+    n$ matrices: $\mathfrak{su}(n) = \{x \in m_n(\mathbb{c}) \mid x^\dagger = -x, \operatorname{tr}(x)
+    = 0\}$.'
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#007
-  text: How does one invent the notion of a Lie group?
-  hint: group whose underlying set is given a manifold structure, multiplication map is a smooth map.
+  text: Why is $\mathrm{SU}(2)$ the universal covering group of $\mathrm{SO}(3)$?
+  hint: $\mathrm{SU}(2) \cong S^3$ is simply connected and has a $2:1$ covering homomorphism onto $\mathrm{SO}(3)
+    \cong \mathbb{RP}^3$.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of a lie group? group whose underlying set is given a manifold
-    structure, multiplication map is a smooth map.
+  search_text: why is $\mathrm{su}(2)$ the universal covering group of $\mathrm{so}(3)$? $\mathrm{su}(2)
+    \cong s^3$ is simply connected and has a $2:1$ covering homomorphism onto $\mathrm{so}(3) \cong \mathbb{rp}^3$.
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#008
-  text: How does one invent the notion of the matrix Lie groups?
-  hint: not all matrices are invertible, so one invents the general linear group over the field. These
-    are Lie groups. One proves for SL(2, R) by counting argument on coordinate patches for all points
-    a nonzero, d = 1 + bc/a, then cover all of SL(2, R), so it has dimension 3, one can do a similar counting
-    argument by induction to prove existence of matrix Lie groups, and then compute the dimension. Subgroups
-    of GL_n are matrix Lie groups
+  text: What is the Poincaré-Hopf theorem?
+  hint: 'The sum of indices of zeros of a smooth vector field on a compact manifold equals its Euler characteristic:
+    $\sum \operatorname{ind}(X) = \chi(M)$.'
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of the matrix lie groups? not all matrices are invertible,
-    so one invents the general linear group over the field. these are lie groups. one proves for sl(2,
-    r) by counting argument on coordinate patches for all points a nonzero, d = 1 + bc/a, then cover all
-    of sl(2, r), so it has dimension 3, one can do a similar counting argument by induction to prove existence
-    of matrix lie groups, and then compute the dimension. subgroups of gl_n are matrix lie groups
+  search_text: 'what is the poincaré-hopf theorem? the sum of indices of zeros of a smooth vector field
+    on a compact manifold equals its euler characteristic: $\sum \operatorname{ind}(x) = \chi(m)$.'
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#009
-  text: How does one invent the orthogonal group?
-  hint: preserve length of vectors, 1 = det(M)^2, so has two conneceted components, only one of hthese
-    contains the identity, piece where det M = 1
+  text: What is the Baker-Campbell-Hausdorff formula?
+  hint: Expresses $\ln(e^X e^Y) = X + Y + \frac{1}{2}[X, Y] + \frac{1}{12}[X, [X, Y]] - \frac{1}{12}[Y,
+    [X, Y]] + \dots$ purely in terms of Lie brackets.
   locator: null
   sub_index: null
-  search_text: how does one invent the orthogonal group? preserve length of vectors, 1 = det(m)^2, so
-    has two conneceted components, only one of hthese contains the identity, piece where det m = 1
+  search_text: what is the baker-campbell-hausdorff formula? expresses $\ln(e^x e^y) = x + y + \frac{1}{2}[x,
+    y] + \frac{1}{12}[x, [x, y]] - \frac{1}{12}[y, [x, y]] + \dots$ purely in terms of lie brackets.
 - id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#010
-  text: How does one invent the notion of the volume element?
-  hint: think about how the special orthogonal group, orthogonal matrices preserve the sign of the volume
-    element
+  text: Why is the exponential map not always globally surjective for Lie groups?
+  hint: For non-compact or disconnected groups, the exponential image may not cover the entire connected
+    component (e.g., $\mathrm{SL}_2(\mathbb{R})$).
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of the volume element? think about how the special orthogonal
-    group, orthogonal matrices preserve the sign of the volume element
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#011
-  text: How does one invent the notion of eigenvalues from Lie algebra?
-  hint: classification of Lie groups is one motivation
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of eigenvalues from lie algebra? classification of lie groups
-    is one motivation
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#012
-  text: How doses one come up with the axis of rotation when working with the special orthogonal group?
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: how doses one come up with the axis of rotation when working with the special orthogonal
-    group?
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#013
-  text: 'How does one compute the eigenvalues of he special orthogoanl group? (Hint: exp(i theta)). 0
-    How does one invent the unitary group?'
-  hint: it preserves the L2 norms of vectors NOT just the real length so it is different, we hae ||v||
-    = ||Uv|| for all ||V||, again similar to the orthogonal group exp(i delta) for delta real, determinant
-    can take continuous range of values so connected. NOTE that unitary group does not preserve all norms,
-    only permutation groups or subgroups of the symmetric group does that
-  locator: null
-  sub_index: null
-  search_text: 'how does one compute the eigenvalues of he special orthogoanl group? (hint: exp(i theta)).
-    0 how does one invent the unitary group? it preserves the l2 norms of vectors not just the real length
-    so it is different, we hae ||v|| = ||uv|| for all ||v||, again similar to the orthogonal group exp(i
-    delta) for delta real, determinant can take continuous range of values so connected. note that unitary
-    group does not preserve all norms, only permutation groups or subgroups of the symmetric group does
-    that'
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#014
-  text: How does one come up with the Lorentz group O(3,1).being noncompact?
-  hint: matrices preserve metric on R^n of signature (p,q) i,e, M^T eta M = eta, eta is variant of identity
-    matrix eta = (I_p 0; 0 -I_q), mirrors PDEs with wave fonts, noncompact, consider SO(1,1), homeomorphic
-    to R is noncompact
-  locator: null
-  sub_index: null
-  search_text: how does one come up with the lorentz group o(3,1).being noncompact? matrices preserve
-    metric on r^n of signature (p,q) i,e, m^t eta m = eta, eta is variant of identity matrix eta = (i_p
-    0; 0 -i_q), mirrors pdes with wave fonts, noncompact, consider so(1,1), homeomorphic to r is noncompact
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#015
-  text: How does one invent the notion of simple connectedness in Lie theory?
-  hint: S^1 deforms to trivial, not possible because S^1 has Z as trivial fundamental group i.e. Pontraygin
-    duality
-  locator: null
-  sub_index: null
-  search_text: how does one invent the notion of simple connectedness in lie theory? s^1 deforms to trivial,
-    not possible because s^1 has z as trivial fundamental group i.e. pontraygin duality
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#016
-  text: How does one invent a Lie algebra?
-  hint: use invariance of the group, simply study algebra or vector space at the identity
-  locator: null
-  sub_index: null
-  search_text: how does one invent a lie algebra? use invariance of the group, simply study algebra or
-    vector space at the identity
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#017
-  text: How does one compute the dimension of the Lie algebra and invent the basis?
-  hint: translations up to copies of dimension dim g, then take linear combinations.
-  locator: null
-  sub_index: null
-  search_text: how does one compute the dimension of the lie algebra and invent the basis? translations
-    up to copies of dimension dim g, then take linear combinations.
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#018
-  text: How does one use the result of the dimension of a manifold and that of the tangent space to be
-    equal?
-  hint: find in tangent bundle, found all of them to show, just count dimensions, this the dimension counting
-    arguments?
-  locator: null
-  sub_index: null
-  search_text: how does one use the result of the dimension of a manifold and that of the tangent space
-    to be equal? find in tangent bundle, found all of them to show, just count dimensions, this the dimension
-    counting arguments?
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#019
-  text: How does one prove that traceless anti-Hermitian matrices are all the elements in su(n)?
-  hint: use special unitary group compute det U(t) = 1, then Taylor expand with the trace, resulting in
-    higher trace terms all vanishing, so trace 0, then counting dimensions of traceless anti-Hermitian
-    matrices gives it as all elements in the Lie algebra
-  locator: null
-  sub_index: null
-  search_text: how does one prove that traceless anti-hermitian matrices are all the elements in su(n)?
-    use special unitary group compute det u(t) = 1, then taylor expand with the trace, resulting in higher
-    trace terms all vanishing, so trace 0, then counting dimensions of traceless anti-hermitian matrices
-    gives it as all elements in the lie algebra
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#020
-  text: How does one prove failure of perfect correspondence of Lie groups and Lie algebras, so(3) iso
-    su(2), but SO(3) not isomorphic to SU(2), SU(2) is 3-sphere, SO(3) is not simply connected, SU(2)
-    is
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: how does one prove failure of perfect correspondence of lie groups and lie algebras, so(3)
-    iso su(2), but so(3) not isomorphic to su(2), su(2) is 3-sphere, so(3) is not simply connected, su(2)
-    is
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#021
-  text: Why does one only care about the identity elemetns using left and right translation?
-  hint: group structure tells us about tangent space of all points
-  locator: null
-  sub_index: null
-  search_text: why does one only care about the identity elemetns using left and right translation? group
-    structure tells us about tangent space of all points
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#022
-  text: How does one invent the Poincare-Hopf theorem?
-  hint: want to count actual number of zeroes in the vector field, compact nonzero Euler char gives existence
-    of 0 in vector field, one uses this to prove the hairy ball theorem. smooth vector field has. a0,
-    smooth vector field S^2n can never be a Lie group, compact Lie group of dim 2 is torus.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the poincare-hopf theorem? want to count actual number of zeroes in
-    the vector field, compact nonzero euler char gives existence of 0 in vector field, one uses this to
-    prove the hairy ball theorem. smooth vector field has. a0, smooth vector field s^2n can never be a
-    lie group, compact lie group of dim 2 is torus.
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#023
-  text: How does one invent existence of exponential map using ODE theory?
-  hint: tangent vector, find path points in X, use marix Lie group and specify boundary condition, Picard-Lindelof
-    guarantees existence and uniqueness, matrix Lie group gives construction of exponential map and power
-    series, nice convergence properties, restrict to tangent by taking first order of the expansion. Consider
-    abelian Lie subgroup S_X if one looks at exp(tX), s0 exp((t+s)X) distirbutes. BUT exp(X) exp(Y) assumes
-    X and Y commute, fails
-  locator: null
-  sub_index: null
-  search_text: how does one invent existence of exponential map using ode theory? tangent vector, find
-    path points in x, use marix lie group and specify boundary condition, picard-lindelof guarantees existence
-    and uniqueness, matrix lie group gives construction of exponential map and power series, nice convergence
-    properties, restrict to tangent by taking first order of the expansion. consider abelian lie subgroup
-    s_x if one looks at exp(tx), s0 exp((t+s)x) distirbutes. but exp(x) exp(y) assumes x and y commute,
-    fails
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#024
-  text: How does one invent the Baker-Campbell-Hausdorff formula?
-  hint: exp X exp Y not equal to exp(X+Y) and X and Y o not commute, find formula in Lie brackets.
-  locator: null
-  sub_index: null
-  search_text: how does one invent the baker-campbell-hausdorff formula? exp x exp y not equal to exp(x+y)
-    and x and y o not commute, find formula in lie brackets.
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#025
-  text: How does exp fail to be bijective?
-  hint: exp is locally bijective since single term L(G) determines G in neighbourhood of e, not globally
-    bijective for same reason Lie algebra do not correspond to Lie groups, the main reason is connectedness,
-    exp not surjective since by continuity, image of exp is connected, but this need not be the full space
-    which is disconnected.
-  locator: null
-  sub_index: null
-  search_text: how does exp fail to be bijective? exp is locally bijective since single term l(g) determines
-    g in neighbourhood of e, not globally bijective for same reason lie algebra do not correspond to lie
-    groups, the main reason is connectedness, exp not surjective since by continuity, image of exp is
-    connected, but this need not be the full space which is disconnected.
-- id: dec41-user-srcf-net-h-iii-m-symmetries-fields-and-particles-full#026
-  text: 'How does one invent representation theory in field theory? (Hint: fixed vector space, change
-    coordinates, field trnasform, EM tensor transform as 2 tensor, spacetime symmetries by group G, change
-    of coordinates simply means specify group element of Lie group, example, special relativity, change
-    coordinates means call out element in Lorentz group O(3,1))'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent representation theory in field theory? (hint: fixed vector space,
-    change coordinates, field trnasform, em tensor transform as 2 tensor, spacetime symmetries by group
-    g, change of coordinates simply means specify group element of lie group, example, special relativity,
-    change coordinates means call out element in lorentz group o(3,1))'
+  search_text: why is the exponential map not always globally surjective for lie groups? for non-compact
+    or disconnected groups, the exponential image may not cover the entire connected component (e.g.,
+    $\mathrm{sl}_2(\mathbb{r})$).

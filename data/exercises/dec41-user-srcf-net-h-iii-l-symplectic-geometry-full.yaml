@@ -1,0 +1,138 @@
+url: https://dec41.user.srcf.net/h/III_L/symplectic_geometry/full
+title: symplectic geometry
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#000
+  text: What is a symplectic vector space?
+  hint: 'A real vector space $V$ equipped with a non-degenerate, skew-symmetric bilinear form $\Omega:
+    V \times V \to \mathbb{R}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a symplectic vector space? a real vector space $v$ equipped with a non-degenerate,
+    skew-symmetric bilinear form $\omega: v \times v \to \mathbb{r}$.'
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#001
+  text: What is the standard form theorem for symplectic vector spaces?
+  hint: Every finite-dimensional symplectic vector space has even dimension $2n$ and admits a symplectic
+    basis where $\Omega = \sum e_i^* \wedge f_i^*$.
+  locator: null
+  sub_index: null
+  search_text: what is the standard form theorem for symplectic vector spaces? every finite-dimensional
+    symplectic vector space has even dimension $2n$ and admits a symplectic basis where $\omega = \sum
+    e_i^* \wedge f_i^*$.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#002
+  text: What are isotropic, coisotropic, and Lagrangian subspaces?
+  hint: A subspace $W \subseteq V$ is isotropic if $W \subseteq W^\Omega$, coisotropic if $W^\Omega \subseteq
+    W$, and Lagrangian if $W = W^\Omega$ ($\dim W = \frac{1}{2} \dim V$).
+  locator: null
+  sub_index: null
+  search_text: what are isotropic, coisotropic, and lagrangian subspaces? a subspace $w \subseteq v$ is
+    isotropic if $w \subseteq w^\omega$, coisotropic if $w^\omega \subseteq w$, and lagrangian if $w =
+    w^\omega$ ($\dim w = \frac{1}{2} \dim v$).
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#003
+  text: What is a symplectic manifold?
+  hint: A smooth $2n$-dimensional manifold $M$ equipped with a closed, non-degenerate differential 2-form
+    $\omega$ ($d\omega = 0$, $\omega^n \ne 0$).
+  locator: null
+  sub_index: null
+  search_text: what is a symplectic manifold? a smooth $2n$-dimensional manifold $m$ equipped with a closed,
+    non-degenerate differential 2-form $\omega$ ($d\omega = 0$, $\omega^n \ne 0$).
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#004
+  text: Why is the volume of a compact symplectic manifold non-zero in de Rham cohomology?
+  hint: $\omega^n$ is a non-vanishing volume form, so $\int_M \omega^n > 0$, implying $[\omega] \ne 0
+    \in H_{\mathrm{dR}}^2(M)$.
+  locator: null
+  sub_index: null
+  search_text: why is the volume of a compact symplectic manifold non-zero in de rham cohomology? $\omega^n$
+    is a non-vanishing volume form, so $\int_m \omega^n > 0$, implying $[\omega] \ne 0 \in h_{\mathrm{dr}}^2(m)$.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#005
+  text: What is a symplectomorphism?
+  hint: 'A diffeomorphism $f: M \to M$ preserving the symplectic form: $f^* \omega = \omega$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a symplectomorphism? a diffeomorphism $f: m \to m$ preserving the symplectic form:
+    $f^* \omega = \omega$.'
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#006
+  text: What is Moser's stability theorem?
+  hint: If $\omega_t$ is a smooth family of symplectic forms on a compact manifold with constant cohomology
+    class $[\omega_t]$, then there exists a family of diffeomorphisms $\psi_t$ such that $\psi_t^* \omega_t
+    = \omega_0$.
+  locator: null
+  sub_index: null
+  search_text: what is moser's stability theorem? if $\omega_t$ is a smooth family of symplectic forms
+    on a compact manifold with constant cohomology class $[\omega_t]$, then there exists a family of diffeomorphisms
+    $\psi_t$ such that $\psi_t^* \omega_t = \omega_0$.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#007
+  text: What is Darboux's theorem?
+  hint: Every symplectic manifold is locally symplectomorphic to standard $\mathbb{R}^{2n}$ with coordinates
+    $(x_1, \dots, x_n, y_1, \dots, y_n)$ where $\omega = \sum_{i=1}^n dx_i \wedge dy_i$.
+  locator: null
+  sub_index: null
+  search_text: what is darboux's theorem? every symplectic manifold is locally symplectomorphic to standard
+    $\mathbb{r}^{2n}$ with coordinates $(x_1, \dots, x_n, y_1, \dots, y_n)$ where $\omega = \sum_{i=1}^n
+    dx_i \wedge dy_i$.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#008
+  text: What is the canonical symplectic structure on a cotangent bundle $T^*X$?
+  hint: The canonical 1-form $\alpha = \sum p_i dq_i$ gives the symplectic form $\omega = -d\alpha = \sum
+    dq_i \wedge dp_i$.
+  locator: null
+  sub_index: null
+  search_text: what is the canonical symplectic structure on a cotangent bundle $t^*x$? the canonical
+    1-form $\alpha = \sum p_i dq_i$ gives the symplectic form $\omega = -d\alpha = \sum dq_i \wedge dp_i$.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#009
+  text: What is a Lagrangian submanifold?
+  hint: 'An $n$-dimensional submanifold $L \subset M^{2n}$ such that the pullback of the symplectic form
+    vanishes: $\iota^* \omega = 0$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a lagrangian submanifold? an $n$-dimensional submanifold $l \subset m^{2n}$ such
+    that the pullback of the symplectic form vanishes: $\iota^* \omega = 0$.'
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#010
+  text: What is the Lagrangian neighborhood theorem?
+  hint: A tubular neighborhood of a Lagrangian submanifold $L \subset M$ is symplectomorphic to a neighborhood
+    of the zero section in $T^*L$.
+  locator: null
+  sub_index: null
+  search_text: what is the lagrangian neighborhood theorem? a tubular neighborhood of a lagrangian submanifold
+    $l \subset m$ is symplectomorphic to a neighborhood of the zero section in $t^*l$.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#011
+  text: What is an almost complex structure $J$?
+  hint: 'A smooth bundle endomorphism $J: TM \to TM$ satisfying $J^2 = -\operatorname{id}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is an almost complex structure $j$? a smooth bundle endomorphism $j: tm \to tm$ satisfying
+    $j^2 = -\operatorname{id}$.'
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#012
+  text: When is an almost complex structure compatible with a symplectic form?
+  hint: When $g(u, v) = \omega(u, Jv)$ defines a Riemannian metric and $\omega(Ju, Jv) = \omega(u, v)$.
+  locator: null
+  sub_index: null
+  search_text: when is an almost complex structure compatible with a symplectic form? when $g(u, v) =
+    \omega(u, jv)$ defines a riemannian metric and $\omega(ju, jv) = \omega(u, v)$.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#013
+  text: What is the Newlander-Nirenberg theorem?
+  hint: An almost complex structure $J$ is integrable (induced by complex charts) if and only if its Nijenhuis
+    tensor $N_J$ vanishes identically.
+  locator: null
+  sub_index: null
+  search_text: what is the newlander-nirenberg theorem? an almost complex structure $j$ is integrable
+    (induced by complex charts) if and only if its nijenhuis tensor $n_j$ vanishes identically.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#014
+  text: What is a Kähler manifold?
+  hint: A manifold equipped with a Riemannian metric $g$, a symplectic form $\omega$, and an integrable
+    complex structure $J$ that are mutually compatible.
+  locator: null
+  sub_index: null
+  search_text: what is a kähler manifold? a manifold equipped with a riemannian metric $g$, a symplectic
+    form $\omega$, and an integrable complex structure $j$ that are mutually compatible.
+- id: dec41-user-srcf-net-h-iii-l-symplectic-geometry-full#015
+  text: What is the Hodge decomposition on a compact Kähler manifold?
+  hint: Decomposes de Rham cohomology into Dolbeault cohomology groups $H^k(M, \mathbb{C}) \cong \bigoplus_{p+q=k}
+    H^{p,q}(M)$ with Hodge symmetry $H^{p,q} \cong \overline{H^{q,p}}$.
+  locator: null
+  sub_index: null
+  search_text: what is the hodge decomposition on a compact kähler manifold? decomposes de rham cohomology
+    into dolbeault cohomology groups $h^k(m, \mathbb{c}) \cong \bigoplus_{p+q=k} h^{p,q}(m)$ with hodge
+    symmetry $h^{p,q} \cong \overline{h^{q,p}}$.

@@ -1,0 +1,47 @@
+url: https://dec41.user.srcf.net/h/III_M/hydrodynamic_stability/full
+title: hydrodynamic stability
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iii-m-hydrodynamic-stability-full#000
+  text: What is the goal of hydrodynamic stability theory?
+  hint: To determine whether small perturbations to a laminar fluid flow grow exponentially in time, leading
+    to turbulence.
+  locator: null
+  sub_index: null
+  search_text: what is the goal of hydrodynamic stability theory? to determine whether small perturbations
+    to a laminar fluid flow grow exponentially in time, leading to turbulence.
+- id: dec41-user-srcf-net-h-iii-m-hydrodynamic-stability-full#001
+  text: When are inviscid and irrotational assumptions valid?
+  hint: In potential flow where $\nabla \times u = 0$, allowing velocity to be expressed as the gradient
+    of a potential $u = \nabla \phi$ satisfying $\nabla^2 \phi = 0$.
+  locator: null
+  sub_index: null
+  search_text: when are inviscid and irrotational assumptions valid? in potential flow where $\nabla \times
+    u = 0$, allowing velocity to be expressed as the gradient of a potential $u = \nabla \phi$ satisfying
+    $\nabla^2 \phi = 0$.
+- id: dec41-user-srcf-net-h-iii-m-hydrodynamic-stability-full#002
+  text: How is Bernoulli's theorem applied at a free fluid interface?
+  hint: Matches unsteady dynamic pressure across the boundary to balance surface tension and gravity.
+  locator: null
+  sub_index: null
+  search_text: how is bernoulli's theorem applied at a free fluid interface? matches unsteady dynamic
+    pressure across the boundary to balance surface tension and gravity.
+- id: dec41-user-srcf-net-h-iii-m-hydrodynamic-stability-full#003
+  text: What is the Rayleigh-Taylor instability?
+  hint: An instability that occurs when a heavy fluid is placed on top of a lighter fluid in a gravitational
+    field.
+  locator: null
+  sub_index: null
+  search_text: what is the rayleigh-taylor instability? an instability that occurs when a heavy fluid
+    is placed on top of a lighter fluid in a gravitational field.
+- id: dec41-user-srcf-net-h-iii-m-hydrodynamic-stability-full#004
+  text: What is the Boussinesq approximation?
+  hint: Density differences are neglected in inertial terms and retained only in the buoyancy gravitational
+    term $g \Delta\rho$.
+  locator: null
+  sub_index: null
+  search_text: what is the boussinesq approximation? density differences are neglected in inertial terms
+    and retained only in the buoyancy gravitational term $g \delta\rho$.

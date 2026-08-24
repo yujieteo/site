@@ -6,96 +6,17 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#000
-  text: Why invent the halting problem?
-  hint: show that there are some results that are not computable.
+  text: Why is the halting problem undecidable?
+  hint: Diagonalization proves that no Turing machine can determine whether an arbitrary program halts
+    on a given input.
   locator: null
   sub_index: null
-  search_text: why invent the halting problem? show that there are some results that are not computable.
+  search_text: why is the halting problem undecidable? diagonalization proves that no turing machine can
+    determine whether an arbitrary program halts on a given input.
 - id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#001
-  text: 'How does one come up with the definition of a language? (Hint: input bit string, B_n for all
-    n-bit string, input size is length n). Then, show that the size is the logarithm instead. https://dec41.user.srcf.net/h/III_M/modern_statistical_methods/full'
-  hint: null
+  text: How does one define a formal language in computational complexity?
+  hint: A subset of bit strings $L \subseteq \{0, 1\}^*$, with input size measured by string length $n$.
   locator: null
   sub_index: null
-  search_text: 'how does one come up with the definition of a language? (hint: input bit string, b_n for
-    all n-bit string, input size is length n). then, show that the size is the logarithm instead. https://dec41.user.srcf.net/h/iii_m/modern_statistical_methods/full'
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#002
-  text: Why do we care about modern statistical methods?
-  hint: large number of parameters, data sets is very small?
-  locator: null
-  sub_index: null
-  search_text: why do we care about modern statistical methods? large number of parameters, data sets
-    is very small?
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#003
-  text: Why do we care about classical statistics?
-  hint: we can use regression?
-  locator: null
-  sub_index: null
-  search_text: why do we care about classical statistics? we can use regression?
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#004
-  text: When can we use least square method?
-  hint: X has full column rank and X^T X is invertible.
-  locator: null
-  sub_index: null
-  search_text: when can we use least square method? x has full column rank and x^t x is invertible.
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#005
-  text: Why is least squares used?
-  hint: Gauss-Markov theorem, any other linear estimator has positive semidefinite var(AY) - var(AY^OLS)
-    so this is the best linear unbiased estimator.
-  locator: null
-  sub_index: null
-  search_text: why is least squares used? gauss-markov theorem, any other linear estimator has positive
-    semidefinite var(ay) - var(ay^ols) so this is the best linear unbiased estimator.
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#006
-  text: How does one invent maximum likelihood estimator?
-  hint: define log likelihood of density, or log of density, then maximise log of density over theta to
-    get the estimator
-  locator: null
-  sub_index: null
-  search_text: how does one invent maximum likelihood estimator? define log likelihood of density, or
-    log of density, then maximise log of density over theta to get the estimator
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#007
-  text: Why does one care about the Fisher information matrix?
-  hint: the Cramer-Rao bound, this proves that maximum likelihood estimation is the best since variance
-    of estimators - inverse of fisher info matrix over estimate is postiive semidefinite, so maximum likelihood
-    estimation works for more general models than linear regression, so this theorem says that maximum
-    likelihood estimator is unbiased and achieves the Cramer-Rao bound, asymptotically it is also normally
-    distributed.
-  locator: null
-  sub_index: null
-  search_text: why does one care about the fisher information matrix? the cramer-rao bound, this proves
-    that maximum likelihood estimation is the best since variance of estimators - inverse of fisher info
-    matrix over estimate is postiive semidefinite, so maximum likelihood estimation works for more general
-    models than linear regression, so this theorem says that maximum likelihood estimator is unbiased
-    and achieves the cramer-rao bound, asymptotically it is also normally distributed.
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#008
-  text: Compare and contrast least squares and maximum likelihood estimator
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: compare and contrast least squares and maximum likelihood estimator
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#009
-  text: Why does one care about biased estimators?
-  hint: in ridge regression, introduce a bias to reduce variance, this gets a smaller MSE, so biased estimators
-    have some effect.
-  locator: null
-  sub_index: null
-  search_text: why does one care about biased estimators? in ridge regression, introduce a bias to reduce
-    variance, this gets a smaller mse, so biased estimators have some effect.
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#010
-  text: Why care about ridge regression?
-  hint: if we can pick a lambda so that X^T X + lambda I is invertible, with a good lambda bias to tuen
-    the parameter, one can do better than ordinary least squares in reducing MSE.
-  locator: null
-  sub_index: null
-  search_text: why care about ridge regression? if we can pick a lambda so that x^t x + lambda i is invertible,
-    with a good lambda bias to tuen the parameter, one can do better than ordinary least squares in reducing
-    mse.
-- id: dec41-user-srcf-net-h-iii-m-quantum-computation-full#011
-  text: Why care about singular value decomposition?
-  hint: it gives or hints at the correct selection of lambda to reduce MSE for ridge regression? I am
-    not sure.
-  locator: null
-  sub_index: null
-  search_text: why care about singular value decomposition? it gives or hints at the correct selection
-    of lambda to reduce mse for ridge regression? i am not sure.
+  search_text: how does one define a formal language in computational complexity? a subset of bit strings
+    $l \subseteq \{0, 1\}^*$, with input size measured by string length $n$.

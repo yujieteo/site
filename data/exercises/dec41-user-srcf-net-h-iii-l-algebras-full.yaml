@@ -6,376 +6,236 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#000
-  text: Why the definition of k-algebra?
-  hint: 'don''t need product to be commutative, m(x otimes y) = xy, so it is a k-vector with a linear
-    map A otimes A to A called the product map, and a linear map u: k -> A which is the unit map. u(1)
-    is identity of the multiplication.'
+  text: Why the definition of a $k$-algebra?
+  hint: 'A $k$-vector space $A$ equipped with a bilinear associative multiplication map $m: A \otimes_k
+    A \to A$ and a unit map $u: k \to A$.'
   locator: null
   sub_index: null
-  search_text: 'why the definition of k-algebra? don''t need product to be commutative, m(x otimes y)
-    = xy, so it is a k-vector with a linear map a otimes a to a called the product map, and a linear map
-    u: k -> a which is the unit map. u(1) is identity of the multiplication.'
+  search_text: 'why the definition of a $k$-algebra? a $k$-vector space $a$ equipped with a bilinear associative
+    multiplication map $m: a \otimes_k a \to a$ and a unit map $u: k \to a$.'
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#001
-  text: Why is K a k-algebra for K/k a finite field extension
-  hint: null
+  text: Why is a finite field extension $K/k$ a $k$-algebra?
+  hint: Field multiplication provides the bilinear $k$-algebra multiplication map.
   locator: null
   sub_index: null
-  search_text: why is k a k-algebra for k/k a finite field extension
+  search_text: why is a finite field extension $k/k$ a $k$-algebra? field multiplication provides the
+    bilinear $k$-algebra multiplication map.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#002
-  text: Why do we care about skew fields?
-  hint: null
+  text: Why does one study division algebras and skew fields?
+  hint: They serve as the noncommutative building blocks in Wedderburn's structure theorems.
   locator: null
   sub_index: null
-  search_text: why do we care about skew fields?
+  search_text: why does one study division algebras and skew fields? they serve as the noncommutative
+    building blocks in wedderburn's structure theorems.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#003
-  text: Why do we care about ideals?
-  hint: use to define Artinian rings, left ideals as k-subspaces such that x in A, y in I i.e. x is coefficient,
-    then xy in I, right ideal is yx in I. An ideal is an left ideal and right ideal. This way you do not
-    need that the algebra be finite dimensional
+  text: Why do we care about ideals in algebra?
+  hint: Two-sided ideals form kernels of algebra homomorphisms and define quotient algebras; left/right
+    ideals define submodules.
   locator: null
   sub_index: null
-  search_text: why do we care about ideals? use to define artinian rings, left ideals as k-subspaces such
-    that x in a, y in i i.e. x is coefficient, then xy in i, right ideal is yx in i. an ideal is an left
-    ideal and right ideal. this way you do not need that the algebra be finite dimensional
+  search_text: why do we care about ideals in algebra? two-sided ideals form kernels of algebra homomorphisms
+    and define quotient algebras; left/right ideals define submodules.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#004
-  text: Why do we care about the group algebra kG to be the set of linear combinations for lambda_g in
-    a field, and g an element in a group G. These are group algebras and there are lots of examples of
-    group algebras
-  hint: null
+  text: What is a group algebra $k[G]$?
+  hint: The free $k$-vector space on basis elements $g \in G$ with multiplication extended linearly from
+    the group product.
   locator: null
   sub_index: null
-  search_text: why do we care about the group algebra kg to be the set of linear combinations for lambda_g
-    in a field, and g an element in a group g. these are group algebras and there are lots of examples
-    of group algebras
+  search_text: what is a group algebra $k[g]$? the free $k$-vector space on basis elements $g \in g$ with
+    multiplication extended linearly from the group product.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#005
-  text: Why do we care about the Artinian algebras?
-  hint: there is a finite dimensional conditions on the ideals? The descending chain condition I_1 >=
-    I_2 >= ...
+  text: What are Artinian algebras?
+  hint: Algebras satisfying the descending chain condition on left/right ideals.
   locator: null
   sub_index: null
-  search_text: why do we care about the artinian algebras? there is a finite dimensional conditions on
-    the ideals? the descending chain condition i_1 >= i_2 >= ...
+  search_text: what are artinian algebras? algebras satisfying the descending chain condition on left/right
+    ideals.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#006
-  text: Why does one care about the Artin-Wedderburn theorem?
-  hint: it classifies all left-Artinian algebra with the condition that the intersection of maximal left
-    ideals is 0, then it si the direct sum of finitely many matrix algebras over the division algebra.
-    Artinian if left and right Artinian.
+  text: What does the Artin-Wedderburn theorem state?
+  hint: Every semisimple left-Artinian algebra is isomorphic to a finite direct sum of matrix rings over
+    division algebras $\bigoplus_{i=1}^r M_{n_i}(D_i)$.
   locator: null
   sub_index: null
-  search_text: why does one care about the artin-wedderburn theorem? it classifies all left-artinian algebra
-    with the condition that the intersection of maximal left ideals is 0, then it si the direct sum of
-    finitely many matrix algebras over the division algebra. artinian if left and right artinian.
+  search_text: what does the artin-wedderburn theorem state? every semisimple left-artinian algebra is
+    isomorphic to a finite direct sum of matrix rings over division algebras $\bigoplus_{i=1}^r m_{n_i}(d_i)$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#007
-  text: 'Why care about the Maschke''s theorem? (Hint: it means the hypothesis of the Artin-Wedderburn
-    theorem holds, i.e. group algebra has a constraint)'
-  hint: null
+  text: What is Maschke's theorem?
+  hint: If $G$ is a finite group and the characteristic of $k$ does not divide $|G|$, then the group algebra
+    $k[G]$ is semisimple.
   locator: null
   sub_index: null
-  search_text: 'why care about the maschke''s theorem? (hint: it means the hypothesis of the artin-wedderburn
-    theorem holds, i.e. group algebra has a constraint)'
+  search_text: what is maschke's theorem? if $g$ is a finite group and the characteristic of $k$ does
+    not divide $|g|$, then the group algebra $k[g]$ is semisimple.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#008
-  text: Why are all finite dimensional algebras are Noetherian?
-  hint: you construct left ideals, finitely many?
+  text: Why are finite-dimensional algebras Noetherian?
+  hint: Any ascending chain of ideals must stabilize by vector space dimension constraints.
   locator: null
   sub_index: null
-  search_text: why are all finite dimensional algebras are noetherian? you construct left ideals, finitely
-    many?
+  search_text: why are finite-dimensional algebras noetherian? any ascending chain of ideals must stabilize
+    by vector space dimension constraints.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#009
-  text: Why are polynomial algebras and power series rings are Noetherian?
-  hint: null
+  text: Why are polynomial algebras and power series rings Noetherian?
+  hint: By the Hilbert Basis Theorem.
   locator: null
   sub_index: null
-  search_text: why are polynomial algebras and power series rings are noetherian?
+  search_text: why are polynomial algebras and power series rings noetherian? by the hilbert basis theorem.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#010
-  text: Why doe sone care about universal enveloping algebra?
-  hint: associative algebra that underpins the representation theory fo Lie algebras
+  text: What is the universal enveloping algebra $U(\mathfrak{g})$?
+  hint: The universal unital associative algebra turning Lie brackets into commutators $[X, Y] = XY -
+    YX$.
   locator: null
   sub_index: null
-  search_text: why doe sone care about universal enveloping algebra? associative algebra that underpins
-    the representation theory fo lie algebras
+  search_text: what is the universal enveloping algebra $u(\mathfrak{g})$? the universal unital associative
+    algebra turning lie brackets into commutators $[x, y] = xy - yx$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#011
-  text: 'Why does one care about Weyl algebra? (Hint: example of noncommutative Noetherian algebra, char
-    k = 0, operators multiplication by X and differentiate with respect to X, to form Weyl algebra)'
-  hint: null
+  text: What is the Weyl algebra?
+  hint: The noncommutative Noetherian algebra generated by $X$ and $\partial / \partial X$ satisfying
+    $[ \partial/\partial X, X ] = 1$.
   locator: null
   sub_index: null
-  search_text: 'why does one care about weyl algebra? (hint: example of noncommutative noetherian algebra,
-    char k = 0, operators multiplication by x and differentiate with respect to x, to form weyl algebra)'
+  search_text: what is the weyl algebra? the noncommutative noetherian algebra generated by $x$ and $\partial
+    / \partial x$ satisfying $[ \partial/\partial x, x ] = 1$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#012
-  text: Why in the commutative case, we look at the spectrum of prime ideals? This gives the theory of
-    algebraic geometry
-  hint: null
+  text: Why do we study $\operatorname{Spec}(R)$ in commutative algebra?
+  hint: It provides the geometric foundation for algebraic geometry by viewing commutative rings as rings
+    of functions on prime spectra.
   locator: null
   sub_index: null
-  search_text: why in the commutative case, we look at the spectrum of prime ideals? this gives the theory
-    of algebraic geometry
+  search_text: why do we study $\operatorname{spec}(r)$ in commutative algebra? it provides the geometric
+    foundation for algebraic geometry by viewing commutative rings as rings of functions on prime spectra.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#013
-  text: Why do we care about Goldie's theorem?
-  hint: Artin-Wedderburn conditions for Noetherian algebras, i.e. A is a right Noetherian algebra with
-    no nonzero ideals all of whose elements are nilpotent, then A embeds in a finite direct sum of matrix
-    algebras over divisions algebras.
+  text: What is Goldie's theorem?
+  hint: It provides noncommutative analogues of fractions, embedding semiprime Noetherian rings into semisimple
+    Artinian rings of quotients.
   locator: null
   sub_index: null
-  search_text: why do we care about goldie's theorem? artin-wedderburn conditions for noetherian algebras,
-    i.e. a is a right noetherian algebra with no nonzero ideals all of whose elements are nilpotent, then
-    a embeds in a finite direct sum of matrix algebras over divisions algebras.
+  search_text: what is goldie's theorem? it provides noncommutative analogues of fractions, embedding
+    semiprime noetherian rings into semisimple artinian rings of quotients.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#014
-  text: Why can we think of Noetherian algebras (some types) are deformations of analogous commutative
-    algebra
-  hint: A_1 is deformation algebra, instead of thinking of [X,Y] = 0, think of [X,Y]=1, so it is the deformation
-    for the polynomial algebra. One can deform
+  text: How can noncommutative Noetherian algebras be viewed as deformations of commutative algebras?
+  hint: The first Weyl algebra $A_1$ deforms the polynomial ring $k[X, Y]$ by replacing $[X, Y] = 0$ with
+    $[X, Y] = 1$.
   locator: null
   sub_index: null
-  search_text: why can we think of noetherian algebras (some types) are deformations of analogous commutative
-    algebra a_1 is deformation algebra, instead of thinking of [x,y] = 0, think of [x,y]=1, so it is the
-    deformation for the polynomial algebra. one can deform
+  search_text: how can noncommutative noetherian algebras be viewed as deformations of commutative algebras?
+    the first weyl algebra $a_1$ deforms the polynomial ring $k[x, y]$ by replacing $[x, y] = 0$ with
+    $[x, y] = 1$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#015
   text: How does one invent Hochschild cohomology?
-  hint: think of deformations of noncommutative algebras, get a non commutative power series, then one
-    invents the Hochschild cohomology by trying to deform noncommutative algebra so that it remains associative.
+  hint: Study associative deformations of noncommutative algebras over $k[[t]]$; obstructions and infinitesimal
+    deformations lie in Hochschild cohomology groups $H\!H^2(A, A)$.
   locator: null
   sub_index: null
-  search_text: how does one invent hochschild cohomology? think of deformations of noncommutative algebras,
-    get a non commutative power series, then one invents the hochschild cohomology by trying to deform
-    noncommutative algebra so that it remains associative.
+  search_text: how does one invent hochschild cohomology? study associative deformations of noncommutative
+    algebras over $k[[t]]$; obstructions and infinitesimal deformations lie in hochschild cohomology groups
+    $h\!h^2(a, a)$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#016
-  text: What is one example to think of a right Artinian and non left Artinian over Q algebra
-  hint: come up with [r s ; 0 t] algebra then uses [0 s ; 0 0], one gets R as a Q-vector space that is
-    infinite dimensional, one gets an infinitely strictly descending chain of ideals contained in I.
+  text: What is an example of a ring that is right-Artinian but not left-Artinian?
+  hint: The upper triangular matrix ring $\begin{pmatrix} \mathbb{Q} & \mathbb{R} \\ 0 & \mathbb{R} \end{pmatrix}$
+    over $\mathbb{Q}$.
   locator: null
   sub_index: null
-  search_text: what is one example to think of a right artinian and non left artinian over q algebra come
-    up with [r s ; 0 t] algebra then uses [0 s ; 0 0], one gets r as a q-vector space that is infinite
-    dimensional, one gets an infinitely strictly descending chain of ideals contained in i.
+  search_text: what is an example of a ring that is right-artinian but not left-artinian? the upper triangular
+    matrix ring $\begin{pmatrix} \mathbb{q} & \mathbb{r} \\ 0 & \mathbb{r} \end{pmatrix}$ over $\mathbb{q}$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#017
-  text: How does one invent modules?
-  hint: let an algebra, then take left vector space over it with the bilinear map from a tensor product.
+  text: How does one define modules over an algebra?
+  hint: An abelian group $M$ with a $k$-bilinear action $A \times M \to M$ satisfying module associativity.
   locator: null
   sub_index: null
-  search_text: how does one invent modules? let an algebra, then take left vector space over it with the
-    bilinear map from a tensor product.
+  search_text: how does one define modules over an algebra? an abelian group $m$ with a $k$-bilinear action
+    $a \times m \to m$ satisfying module associativity.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#018
-  text: How does one invent bimodules?
-  hint: left A-module and right A-module, two actions commute.
+  text: How does one define bimodules?
+  hint: 'An abelian group equipped with commuting left $A$-action and right $B$-action: $(a \cdot m) \cdot
+    b = a \cdot (m \cdot b)$.'
   locator: null
   sub_index: null
-  search_text: how does one invent bimodules? left a-module and right a-module, two actions commute.
+  search_text: 'how does one define bimodules? an abelian group equipped with commuting left $a$-action
+    and right $b$-action: $(a \cdot m) \cdot b = a \cdot (m \cdot b)$.'
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#019
-  text: How does one come up with prime ideals for the noncommutative case?
-  hint: need IJ in P, either I in P or J in P, and not using elements.
+  text: What is a prime ideal in a noncommutative ring?
+  hint: An ideal $P$ such that if $I J \subseteq P$ for two-sided ideals $I, J$, then $I \subseteq P$
+    or $J \subseteq P$.
   locator: null
   sub_index: null
-  search_text: how does one come up with prime ideals for the noncommutative case? need ij in p, either
-    i in p or j in p, and not using elements.
+  search_text: what is a prime ideal in a noncommutative ring? an ideal $p$ such that if $i j \subseteq
+    p$ for two-sided ideals $i, j$, then $i \subseteq p$ or $j \subseteq p$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#020
-  text: How does one come up the definition of the annihilator?
-  hint: you want the kernel of the A-module homomorphism given by x -> xm i.e. what vanishes when using
-    0 in m in M.
+  text: How does one define the annihilator of a module?
+  hint: $\operatorname{Ann}_A(M) = \{a \in A \mid a \cdot m = 0 \text{ for all } m \in M\}$.
   locator: null
   sub_index: null
-  search_text: how does one come up the definition of the annihilator? you want the kernel of the a-module
-    homomorphism given by x -> xm i.e. what vanishes when using 0 in m in m.
+  search_text: how does one define the annihilator of a module? $\operatorname{ann}_a(m) = \{a \in a \mid
+    a \cdot m = 0 \text{ for all } m \in m\}$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#021
-  text: 'How does one come up with the definition on simple or irreducible? (Hint: submodules are 0 and
-    M)?'
-  hint: null
+  text: How does one define a simple (irreducible) module?
+  hint: A non-zero module whose only submodules are $0$ and $M$.
   locator: null
   sub_index: null
-  search_text: 'how does one come up with the definition on simple or irreducible? (hint: submodules are
-    0 and m)?'
+  search_text: how does one define a simple (irreducible) module? a non-zero module whose only submodules
+    are $0$ and $m$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#022
-  text: How does one come up with the definition of maximal left ideal
-  hint: A/I simple, kill off I gives simple module.
+  text: How does one define a maximal left ideal?
+  hint: A proper left ideal $I \subsetneq A$ such that $A/I$ is a simple left $A$-module.
   locator: null
   sub_index: null
-  search_text: how does one come up with the definition of maximal left ideal a/i simple, kill off i gives
-    simple module.
+  search_text: how does one define a maximal left ideal? a proper left ideal $i \subsetneq a$ such that
+    $a/i$ is a simple left $a$-module.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#023
-  text: How does one prove the existence of a maximal proper submodule M' for M finite generated A-module
-  hint: finiteness required for minimal generating set, then take -1 using proper submodule, proper if
-    does not contain m_k under increasing unions, apply Zorn's
+  text: How does one prove the existence of a maximal proper submodule in a finitely generated module?
+  hint: Apply Zorn's lemma to the family of proper submodules.
   locator: null
   sub_index: null
-  search_text: how does one prove the existence of a maximal proper submodule m' for m finite generated
-    a-module finiteness required for minimal generating set, then take -1 using proper submodule, proper
-    if does not contain m_k under increasing unions, apply zorn's
+  search_text: how does one prove the existence of a maximal proper submodule in a finitely generated
+    module? apply zorn's lemma to the family of proper submodules.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#024
-  text: 'How does one come up with the definition of the Jacobson radical? (Hint: want to see how far
-    it deviates from a semisimple rings i.e. A / J(A) is always semisimple, simple algebras are semisimple
-    because the Jacobson radical is an ideal, and it is not A)'
-  hint: null
+  text: How does one define the Jacobson radical $J(A)$?
+  hint: The intersection of all maximal left ideals of $A$, measuring the obstruction to semisimplicity.
   locator: null
   sub_index: null
-  search_text: 'how does one come up with the definition of the jacobson radical? (hint: want to see how
-    far it deviates from a semisimple rings i.e. a / j(a) is always semisimple, simple algebras are semisimple
-    because the jacobson radical is an ideal, and it is not a)'
+  search_text: how does one define the jacobson radical $j(a)$? the intersection of all maximal left ideals
+    of $a$, measuring the obstruction to semisimplicity.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#025
-  text: How does one invent Nakayama's lemma?
-  hint: G = 1 + I, Jacobson's radical is the largest ideal satisfyin 3 i.e. G = {1 + a, a in I} = 1 +
-    I is subgroup of the unit group of A, this is so that one can invent the definition of semisimple,
-    algebra is semisimple if it has trivial Jacobson radical.
+  text: What is Nakayama's lemma?
+  hint: For a finitely generated left $A$-module $M$, if $J(A) M = M$, then $M = 0$.
   locator: null
   sub_index: null
-  search_text: how does one invent nakayama's lemma? g = 1 + i, jacobson's radical is the largest ideal
-    satisfyin 3 i.e. g = {1 + a, a in i} = 1 + i is subgroup of the unit group of a, this is so that one
-    can invent the definition of semisimple, algebra is semisimple if it has trivial jacobson radical.
+  search_text: what is nakayama's lemma? for a finitely generated left $a$-module $m$, if $j(a) m = m$,
+    then $m = 0$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#026
-  text: 'How does one invent the statements of Nakayama''s lemma and why they are true? (Hint: left ideal
-    if I <= J(A), equivalent to fg left A-module, if IM = M, then M = 0)'
-  hint: null
+  text: How does one decompose a semisimple left $A$-module?
+  hint: As a direct sum of simple submodules using idempotent orthogonal decompositions.
   locator: null
   sub_index: null
-  search_text: 'how does one invent the statements of nakayama''s lemma and why they are true? (hint:
-    left ideal if i <= j(a), equivalent to fg left a-module, if im = m, then m = 0)'
+  search_text: how does one decompose a semisimple left $a$-module? as a direct sum of simple submodules
+    using idempotent orthogonal decompositions.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#027
-  text: How does one decompose a left A-module?
-  hint: consider e_i be 1 in i-i-th entry and 0 everywhere else, use idempotence and then consider these
-    are all left and right ideals respectively for M_n(k), only ideals are 0 and A and admits decomposition
-    into simple module
+  text: Why are completely reducible modules closed under direct sums, submodules, and quotients?
+  hint: Every submodule has a complementary summand.
   locator: null
   sub_index: null
-  search_text: how does one decompose a left a-module? consider e_i be 1 in i-i-th entry and 0 everywhere
-    else, use idempotence and then consider these are all left and right ideals respectively for m_n(k),
-    only ideals are 0 and a and admits decomposition into simple module
+  search_text: why are completely reducible modules closed under direct sums, submodules, and quotients?
+    every submodule has a complementary summand.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#028
-  text: 'Why are completely reducible modules closed under sums, submodules and quotients and products?
-    (Hints: sums follow from definitions, submodules can be done by taking  M completely reducible, N
-    <= M, then S in N.)'
-  hint: null
+  text: How does the radical of a module generalize the Jacobson radical?
+  hint: $\operatorname{Rad}(M)$ is the intersection of all maximal submodules of $M$; for left Artinian
+    $A$, $J(A)M = \operatorname{Rad}(M)$.
   locator: null
   sub_index: null
-  search_text: 'why are completely reducible modules closed under sums, submodules and quotients and products?
-    (hints: sums follow from definitions, submodules can be done by taking  m completely reducible, n
-    <= m, then s in n.)'
+  search_text: how does the radical of a module generalize the jacobson radical? $\operatorname{rad}(m)$
+    is the intersection of all maximal submodules of $m$; for left artinian $a$, $j(a)m = \operatorname{rad}(m)$.
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#029
-  text: Why do we need to generalize the Jacobson radical (intersection of all left ideals) to radicals,
-    or intersection of all maximal submodules of M
-  hint: prove that left Artinian algebra is completely reducible over itself if it is semisimple, so radicals
-    work for modules, Jacobson radical works for left Artinian algebras.
+  text: What is Schur's lemma?
+  hint: 'If $M$ and $N$ are simple $A$-modules, every non-zero homomorphism $f: M \to N$ is an isomorphism;
+    thus $\operatorname{End}_A(M)$ is a division algebra.'
   locator: null
   sub_index: null
-  search_text: why do we need to generalize the jacobson radical (intersection of all left ideals) to
-    radicals, or intersection of all maximal submodules of m prove that left artinian algebra is completely
-    reducible over itself if it is semisimple, so radicals work for modules, jacobson radical works for
-    left artinian algebras.
+  search_text: 'what is schur''s lemma? if $m$ and $n$ are simple $a$-modules, every non-zero homomorphism
+    $f: m \to n$ is an isomorphism; thus $\operatorname{end}_a(m)$ is a division algebra.'
 - id: dec41-user-srcf-net-h-iii-l-algebras-full#030
-  text: 'What can one do with definition of radical? (Hint: define completely reducible by proposition
-    if intersection of all maximal submodules is trivial)'
-  hint: null
+  text: How does one characterize semisimple Artinian rings using the Jacobson radical?
+  hint: An Artinian ring $A$ is semisimple if and only if $J(A) = 0$.
   locator: null
   sub_index: null
-  search_text: 'what can one do with definition of radical? (hint: define completely reducible by proposition
-    if intersection of all maximal submodules is trivial)'
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#031
-  text: 'What corollaries does one get from the radical implying completely reducible? (Hint: semisimple
-    left Artinian algebra, aA is completely, reducible and every left A-module is completely reducible)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'what corollaries does one get from the radical implying completely reducible? (hint: semisimple
-    left artinian algebra, aa is completely, reducible and every left a-module is completely reducible)'
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#032
-  text: 'When does the Jacobson radical work for A. a non semisimple left Artinian algebra? (Hint: let
-    A b e left Artinian, M a fg left A-module, then J(A) M = Rad(M) or the uing the Jacobson radical as
-    the coefficient system for the module M gives the radical of the non-semisimple left Artinian algebra)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'when does the jacobson radical work for a. a non semisimple left artinian algebra? (hint:
-    let a b e left artinian, m a fg left a-module, then j(a) m = rad(m) or the uing the jacobson radical
-    as the coefficient system for the module m gives the radical of the non-semisimple left artinian algebra)'
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#033
-  text: 'How does one compute A to be left Noetherian for A a left Artinian algebra (hint: Jacobson radical
-    is made nilpotent, or M a finitely generated A-module, both left Artinian and left Noetherian)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one compute a to be left noetherian for a a left artinian algebra (hint: jacobson
-    radical is made nilpotent, or m a finitely generated a-module, both left artinian and left noetherian)'
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#034
-  text: How does one come up or know that the Artin-Wedderburn theorem to be true?
-  hint: map from A_A to End(A_A) sending A to left multiplication of A is isomorphism of algebras. Then,
-    one uses Schur's lemma to show that for each matrix ring of the division ring decomposed one gets
-    isomorphism of factors to the matrix ring.
-  locator: null
-  sub_index: null
-  search_text: how does one come up or know that the artin-wedderburn theorem to be true? map from a_a
-    to end(a_a) sending a to left multiplication of a is isomorphism of algebras. then, one uses schur's
-    lemma to show that for each matrix ring of the division ring decomposed one gets isomorphism of factors
-    to the matrix ring.
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#035
-  text: How does one think up the statement of the right handed Artin-Wedderburn theorem?
-  hint: A be semisimple right artininan algebra, it has canonical decomposition to matrix rings over division
-    algebras with unique factorisation, and has exactly r isomorphism classes of simple right modules
-    S_i and endomorphism rings of these S_i are isomorphic to these division algebras with and the dimension
-    for these right modules give the dimension of the division algebras, if A is simple, then r = 1 i.e.
-    1 simple right module.
-  locator: null
-  sub_index: null
-  search_text: how does one think up the statement of the right handed artin-wedderburn theorem? a be
-    semisimple right artininan algebra, it has canonical decomposition to matrix rings over division algebras
-    with unique factorisation, and has exactly r isomorphism classes of simple right modules s_i and endomorphism
-    rings of these s_i are isomorphic to these division algebras with and the dimension for these right
-    modules give the dimension of the division algebras, if a is simple, then r = 1 i.e. 1 simple right
-    module.
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#036
-  text: How does one reinvent the left version of the Artin-Wedderburn theorem?
-  hint: use opposite algebras
-  locator: null
-  sub_index: null
-  search_text: how does one reinvent the left version of the artin-wedderburn theorem? use opposite algebras
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#037
-  text: How does one come up with the truth and the statement of Schur's lemma?
-  hint: either they are equal or homs between them are trivial if they are simple, if M is simple A-module,
-    then endomorphism ring is division algebra, prove is by injective as kernel is submodule so kill off
-    everything, image is whole thing since image is submodule, isomorphism else homs are empty
-  locator: null
-  sub_index: null
-  search_text: how does one come up with the truth and the statement of schur's lemma? either they are
-    equal or homs between them are trivial if they are simple, if m is simple a-module, then endomorphism
-    ring is division algebra, prove is by injective as kernel is submodule so kill off everything, image
-    is whole thing since image is submodule, isomorphism else homs are empty
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#038
-  text: How does one extend Wedderburn-Artin theory from semisimple algebras to general right Artinian
-    algebras?
-  hint: kill of Jacobson radical
-  locator: null
-  sub_index: null
-  search_text: how does one extend wedderburn-artin theory from semisimple algebras to general right artinian
-    algebras? kill of jacobson radical
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#039
-  text: How does one come up with the definition of group algebras?
-  hint: coefficients a field, eigenvectors a group, take tensor product and bilinear map down to the field,
-    one gets a group algebra
-  locator: null
-  sub_index: null
-  search_text: how does one come up with the definition of group algebras? coefficients a field, eigenvectors
-    a group, take tensor product and bilinear map down to the field, one gets a group algebra
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#040
-  text: How does one know Maschke's theorem must be true?
-  hint: take coefficient of group algebra k to be of characteristic prime not dividing the group, one
-    gets a semisimple algebra or kG semisimple. Proof is via submodule V of kG-module U has a complement
-    to get the semisimplicity, one uses the projection to be averaged and the fact that p does not divide
-    the order of the group here.
-  locator: null
-  sub_index: null
-  search_text: how does one know maschke's theorem must be true? take coefficient of group algebra k to
-    be of characteristic prime not dividing the group, one gets a semisimple algebra or kg semisimple.
-    proof is via submodule v of kg-module u has a complement to get the semisimplicity, one uses the projection
-    to be averaged and the fact that p does not divide the order of the group here.
-- id: dec41-user-srcf-net-h-iii-l-algebras-full#041
-  text: 'What additional condition is required for converse of Maschke''s theorem? (Hint: G must be finite
-    group, then use Artin-Wedderburn, only one summand of kG-module S in kG by Artin-Wedderburn using
-    finite division algebra, then consider two ideals of kG< this is two sided ideal, consider centre
-    of algebra, one have char k | order of G for sake of contradiction, center is contained in some ideal
-    of kG, write it as two possible decompositions of same dimension (kG/I_1 oplus I_1 = kG/I_1 oplus
-    I_2 oplus ... contradiction via Schur''s lemma, so char k does not divide G)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'what additional condition is required for converse of maschke''s theorem? (hint: g must
-    be finite group, then use artin-wedderburn, only one summand of kg-module s in kg by artin-wedderburn
-    using finite division algebra, then consider two ideals of kg< this is two sided ideal, consider centre
-    of algebra, one have char k | order of g for sake of contradiction, center is contained in some ideal
-    of kg, write it as two possible decompositions of same dimension (kg/i_1 oplus i_1 = kg/i_1 oplus
-    i_2 oplus ... contradiction via schur''s lemma, so char k does not divide g)'
+  search_text: how does one characterize semisimple artinian rings using the jacobson radical? an artinian
+    ring $a$ is semisimple if and only if $j(a) = 0$.

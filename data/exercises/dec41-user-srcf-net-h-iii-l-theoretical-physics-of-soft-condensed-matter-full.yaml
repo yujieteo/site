@@ -6,66 +6,60 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#000
-  text: Why does one ignore quantum fluctuations?
-  hint: compute k_B T to be h bar / tau_Q, tau_Q is 10E-13, so ignore, can set h bar = 0?
+  text: Why does one ignore quantum fluctuations in soft matter physics?
+  hint: The thermal energy scale $k_B T$ greatly exceeds the quantum energy scale $\hbar / \tau_Q$, so
+    setting $\hbar \to 0$ is valid.
   locator: null
   sub_index: null
-  search_text: why does one ignore quantum fluctuations? compute k_b t to be h bar / tau_q, tau_q is 10e-13,
-    so ignore, can set h bar = 0?
+  search_text: why does one ignore quantum fluctuations in soft matter physics? the thermal energy scale
+    $k_b t$ greatly exceeds the quantum energy scale $\hbar / \tau_q$, so setting $\hbar \to 0$ is valid.
 - id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#001
-  text: Why are thermal fluctuations important?
-  hint: one can do elasticity or bulk modulus to be G approximately k_B T N/V, G has a lower shear modulus
-    of 10E2 and 10E7, K/G is large, one wants G to be nonzero, and tau to be short.
+  text: Why are thermal fluctuations essential in soft matter systems?
+  hint: Elastic shear moduli are of order $k_B T \cdot N/V \sim 10^2 - 10^7 \, \mathrm{Pa}$, which makes
+    thermal energies comparable to structural deformation energies.
   locator: null
   sub_index: null
-  search_text: why are thermal fluctuations important? one can do elasticity or bulk modulus to be g approximately
-    k_b t n/v, g has a lower shear modulus of 10e2 and 10e7, k/g is large, one wants g to be nonzero,
-    and tau to be short.
+  search_text: why are thermal fluctuations essential in soft matter systems? elastic shear moduli are
+    of order $k_b t \cdot n/v \sim 10^2 - 10^7 \, \mathrm{pa}$, which makes thermal energies comparable
+    to structural deformation energies.
 - id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#002
-  text: Why does one coarse grain the system?
-  hint: too many particles?
+  text: Why does one coarse-grain a soft matter system?
+  hint: To eliminate microscopic molecular degrees of freedom and focus on macroscopic continuous field
+    variables.
   locator: null
   sub_index: null
-  search_text: why does one coarse grain the system? too many particles?
+  search_text: why does one coarse-grain a soft matter system? to eliminate microscopic molecular degrees
+    of freedom and focus on macroscopic continuous field variables.
 - id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#003
-  text: Why does one care about mean field theory?
-  hint: one wants to see the probability or density of seeing a field configurations
+  text: Why is mean field theory used and where does it fail?
+  hint: It computes dominant free energy minima but neglects large-scale fluctuation effects near critical
+    points.
   locator: null
   sub_index: null
-  search_text: why does one care about mean field theory? one wants to see the probability or density
-    of seeing a field configurations
+  search_text: why is mean field theory used and where does it fail? it computes dominant free energy
+    minima but neglects large-scale fluctuation effects near critical points.
 - id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#004
-  text: Why does mean field theory fail for this?
-  hint: does not account for thermal fluctuations, so use variational method?
+  text: Why are hydrodynamic equations used for soft condensed matter?
+  hint: They describe the slow, long-wavelength dissipative relaxation of conserved order parameters via
+    free energy functionals.
   locator: null
   sub_index: null
-  search_text: why does mean field theory fail for this? does not account for thermal fluctuations, so
-    use variational method?
+  search_text: why are hydrodynamic equations used for soft condensed matter? they describe the slow,
+    long-wavelength dissipative relaxation of conserved order parameters via free energy functionals.
 - id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#005
-  text: Why does one care about the hydrodynamic level equations?
-  hint: deterministic PDE on how the system evolves, so care about free energy functional and chemical
-    potential
+  text: Why is random thermal noise added to hydrodynamic equations?
+  hint: To satisfy the fluctuation-dissipation theorem, yielding stochastic PDEs such as the Landau-Lifshitz
+    equations.
   locator: null
   sub_index: null
-  search_text: why does one care about the hydrodynamic level equations? deterministic pde on how the
-    system evolves, so care about free energy functional and chemical potential
+  search_text: why is random thermal noise added to hydrodynamic equations? to satisfy the fluctuation-dissipation
+    theorem, yielding stochastic pdes such as the landau-lifshitz equations.
 - id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#006
-  text: Why is random noise important?
-  hint: mean noise is 0, but random noise is determined by one parameter to get the probabilistic distribution
-    of the field by the stochastic PDE, one gets the fluctuation dissipation system
+  text: How does one modify the Navier-Stokes equations for soft matter?
+  hint: Incorporate stress tensors derived from free energy functionals, incompressibility constraints,
+    stochastic noise, and internal orientational order parameters.
   locator: null
   sub_index: null
-  search_text: why is random noise important? mean noise is 0, but random noise is determined by one parameter
-    to get the probabilistic distribution of the field by the stochastic pde, one gets the fluctuation
-    dissipation system
-- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#007
-  text: How does one gradually weaken the Navier-Stokes equation to study soft matter?
-  hint: get hydrodynamic PDE, assume incompressibility, then promote to stochastic PDE using the Landau-Lipschitz
-    equation, last term is noise stress tensor, treat it as Gaussian, fixed by fluctuation dissipation.
-    One can weaken more assumptions by thinking about fluid mixtures, and add molecular orientations.
-  locator: null
-  sub_index: null
-  search_text: how does one gradually weaken the navier-stokes equation to study soft matter? get hydrodynamic
-    pde, assume incompressibility, then promote to stochastic pde using the landau-lipschitz equation,
-    last term is noise stress tensor, treat it as gaussian, fixed by fluctuation dissipation. one can
-    weaken more assumptions by thinking about fluid mixtures, and add molecular orientations.
+  search_text: how does one modify the navier-stokes equations for soft matter? incorporate stress tensors
+    derived from free energy functionals, incompressibility constraints, stochastic noise, and internal
+    orientational order parameters.

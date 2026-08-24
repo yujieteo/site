@@ -6,98 +6,90 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#000
-  text: What is the analogy for Bose-Einstein statistics for network links?
-  hint: growth based on age or uniform potential is Bose-Einstein gas, critical phase means highly fit
-    nodes grow fast, but share links, condensation phase means a single node captures all links. Keyword
-    is Barbasi-Albert scale-free networks. Quantum bosons crowd to the same low energy state, new links.
+  text: What is the network analogy for Bose-Einstein condensation?
+  hint: In the Bianconi-Barabási model, node fitness corresponds to energy levels; high-fitness nodes
+    capture a macroscopic fraction of links in a condensation phase.
   locator: null
   sub_index: null
-  search_text: what is the analogy for bose-einstein statistics for network links? growth based on age
-    or uniform potential is bose-einstein gas, critical phase means highly fit nodes grow fast, but share
-    links, condensation phase means a single node captures all links. keyword is barbasi-albert scale-free
-    networks. quantum bosons crowd to the same low energy state, new links.
+  search_text: what is the network analogy for bose-einstein condensation? in the bianconi-barabási model,
+    node fitness corresponds to energy levels; high-fitness nodes capture a macroscopic fraction of links
+    in a condensation phase.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#001
-  text: What is the classification of statistics?
-  hint: Maxwell-Boltzman statistics, distinguishable entities with no capacity limit. Example, numbered
-    luggage in hotel lobby, any number of entities can occupy any state, every entity has unique identity.
-    Fermi-Dirac, indistinguishable activity, strict exclusivity, example assigned seating in stadium.
-    Bose-Einstein statistics i.e. identical, nocap limit, prefer to pile to exact same states
+  text: What is the classification of classical and quantum statistics?
+  hint: Maxwell-Boltzmann (distinguishable, no occupancy limit), Fermi-Dirac (indistinguishable, Pauli
+    exclusion with max occupancy 1), and Bose-Einstein (indistinguishable, no occupancy limit).
   locator: null
   sub_index: null
-  search_text: what is the classification of statistics? maxwell-boltzman statistics, distinguishable
-    entities with no capacity limit. example, numbered luggage in hotel lobby, any number of entities
-    can occupy any state, every entity has unique identity. fermi-dirac, indistinguishable activity, strict
-    exclusivity, example assigned seating in stadium. bose-einstein statistics i.e. identical, nocap limit,
-    prefer to pile to exact same states
+  search_text: what is the classification of classical and quantum statistics? maxwell-boltzmann (distinguishable,
+    no occupancy limit), fermi-dirac (indistinguishable, pauli exclusion with max occupancy 1), and bose-einstein
+    (indistinguishable, no occupancy limit).
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#002
-  text: How does one invent the notion of microstate?
-  hint: need to use the fact that the microstates are indistinguishable macroscopically, this is the basic
-    insight of irrelevant operator in Wilsonian renormalisation
+  text: How does one define a microstate?
+  hint: A complete microscopic specification of the quantum state or classical phase space coordinates
+    of every constituent particle.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of microstate? need to use the fact that the microstates
-    are indistinguishable macroscopically, this is the basic insight of irrelevant operator in wilsonian
-    renormalisation
+  search_text: how does one define a microstate? a complete microscopic specification of the quantum state
+    or classical phase space coordinates of every constituent particle.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#003
-  text: How does one invent the expectation of the operators?
-  hint: basis of normalised eigenstates. Mixed state with density operator is linear combination of probabilty
-    that microstate is eigenstate, get expectation value of the operator.
+  text: How does one compute expectation values using the density matrix?
+  hint: $\langle A \rangle = \operatorname{Tr}(\rho A)$, where $\rho = \sum p_i |\psi_i\rangle \langle\psi_i|$
+    represents the mixed state.
   locator: null
   sub_index: null
-  search_text: how does one invent the expectation of the operators? basis of normalised eigenstates.
-    mixed state with density operator is linear combination of probabilty that microstate is eigenstate,
-    get expectation value of the operator.
+  search_text: how does one compute expectation values using the density matrix? $\langle a \rangle =
+    \operatorname{tr}(\rho a)$, where $\rho = \sum p_i |\psi_i\rangle \langle\psi_i|$ represents the mixed
+    state.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#004
-  text: How does one invent the fundamental assumption of statistical mechanics?
-  hint: isolated system in equilbrium is equally likely to be in any accessible microstates, partial knowledge.
+  text: What is the fundamental postulate of statistical mechanics?
+  hint: An isolated system in thermodynamic equilibrium is equally likely to be found in any of its accessible
+    microstates.
   locator: null
   sub_index: null
-  search_text: how does one invent the fundamental assumption of statistical mechanics? isolated system
-    in equilbrium is equally likely to be in any accessible microstates, partial knowledge.
+  search_text: what is the fundamental postulate of statistical mechanics? an isolated system in thermodynamic
+    equilibrium is equally likely to be found in any of its accessible microstates.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#005
-  text: How does one invent microcanonical ensemble?
-  hint: need measuring device, energy is between del E, del E is accuracy of the measuring device, accessible
-    microstates are those with energy E <= E_n < E + delta E. Accessible microstates are those with energy
-    in between E <= E_n <= E + delta E
+  text: How does one construct the microcanonical ensemble?
+  hint: The statistical ensemble of an isolated system with fixed energy in the interval $[E, E + \delta
+    E]$, particle number $N$, and volume $V$.
   locator: null
   sub_index: null
-  search_text: how does one invent microcanonical ensemble? need measuring device, energy is between del
-    e, del e is accuracy of the measuring device, accessible microstates are those with energy e <= e_n
-    < e + delta e. accessible microstates are those with energy in between e <= e_n <= e + delta e
+  search_text: how does one construct the microcanonical ensemble? the statistical ensemble of an isolated
+    system with fixed energy in the interval $[e, e + \delta e]$, particle number $n$, and volume $v$.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#006
-  text: How does one compute the characteristic distribution of the microcanonical ensemble?
-  hint: no information, so uniform distribution or 1/Omega(E) within the measurement limit
+  text: What is the microcanonical probability distribution?
+  hint: Uniform probability $P_n = 1/\Omega(E)$ for all accessible microstates, and $P_n = 0$ otherwise.
   locator: null
   sub_index: null
-  search_text: how does one compute the characteristic distribution of the microcanonical ensemble? no
-    information, so uniform distribution or 1/omega(e) within the measurement limit
+  search_text: what is the microcanonical probability distribution? uniform probability $p_n = 1/\omega(e)$
+    for all accessible microstates, and $p_n = 0$ otherwise.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#007
-  text: How does one invent the entropy?
-  hint: Omega(E) is not linear in N, so take logarithm of Omega(E), use k log 2 for measuring device is
-    k log 2, entropy is additive, additive means it is noninteracting
+  text: How does one define Boltzmann entropy?
+  hint: $S = k_B \ln \Omega(E)$, which is extensive and additive for non-interacting subsystems.
   locator: null
   sub_index: null
-  search_text: how does one invent the entropy? omega(e) is not linear in n, so take logarithm of omega(e),
-    use k log 2 for measuring device is k log 2, entropy is additive, additive means it is noninteracting
+  search_text: how does one define boltzmann entropy? $s = k_b \ln \omega(e)$, which is extensive and
+    additive for non-interacting subsystems.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#008
-  text: How does one invent the temperature?
-  hint: entropy is smooth in total energy, dS/dE = 1/T, inverse temperature. You want that equilbrium
-    derivative must vanish so temperature must be equal.
+  text: How does one define thermodynamic temperature?
+  hint: $\frac{1}{T} = \frac{\partial S}{\partial E}$, matching equilibrium conditions when two systems
+    exchange heat.
   locator: null
   sub_index: null
-  search_text: how does one invent the temperature? entropy is smooth in total energy, ds/de = 1/t, inverse
-    temperature. you want that equilbrium derivative must vanish so temperature must be equal.
+  search_text: how does one define thermodynamic temperature? $\frac{1}{t} = \frac{\partial s}{\partial
+    e}$, matching equilibrium conditions when two systems exchange heat.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#009
-  text: How does one prove that energy will transfer from high temperature to low temperature?
-  hint: change in entropy, linear, replace with definition is temperature
+  text: How does one prove that heat flows from high temperature to low temperature?
+  hint: The second law of thermodynamics requires $dS = (1/T_1 - 1/T_2) dE_1 \ge 0$, forcing $dE_1 > 0$
+    when $T_2 > T_1$.
   locator: null
   sub_index: null
-  search_text: how does one prove that energy will transfer from high temperature to low temperature?
-    change in entropy, linear, replace with definition is temperature
+  search_text: how does one prove that heat flows from high temperature to low temperature? the second
+    law of thermodynamics requires $ds = (1/t_1 - 1/t_2) de_1 \ge 0$, forcing $de_1 > 0$ when $t_2 > t_1$.
 - id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#010
   text: How does one define the heat capacity of a system?
-  hint: C = dE/dt, specific divides by mass of the system.
+  hint: $C = \frac{dE}{dT} = T \frac{\partial S}{\partial T}$.
   locator: null
   sub_index: null
-  search_text: how does one define the heat capacity of a system? c = de/dt, specific divides by mass
-    of the system.
+  search_text: how does one define the heat capacity of a system? $c = \frac{de}{dt} = t \frac{\partial
+    s}{\partial t}$.

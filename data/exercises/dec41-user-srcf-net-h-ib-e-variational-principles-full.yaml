@@ -6,77 +6,27 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-ib-e-variational-principles-full#000
-  text: What is a main motivation problem for the variation principles?
-  hint: null
+  text: What is the Euler-Lagrange equation?
+  hint: 'Necessary condition for a path $y(x)$ to be a stationary point of $S[y] = \int L(x, y, y'') \,
+    dx$: $\frac{\partial L}{\partial y} - \frac{d}{dx}\left(\frac{\partial L}{\partial y''}\right) = 0$.'
   locator: null
   sub_index: null
-  search_text: what is a main motivation problem for the variation principles?
+  search_text: 'what is the euler-lagrange equation? necessary condition for a path $y(x)$ to be a stationary
+    point of $s[y] = \int l(x, y, y'') \, dx$: $\frac{\partial l}{\partial y} - \frac{d}{dx}\left(\frac{\partial
+    l}{\partial y''}\right) = 0$.'
 - id: dec41-user-srcf-net-h-ib-e-variational-principles-full#001
-  text: What is the rationale for the stationary points being the definition?
-  hint: cannot change any further, grad f = 0
+  text: What is the geometric meaning of stationary points?
+  hint: Points where the first variation $\delta S = 0$, meaning directional derivatives vanish in all
+    directions.
   locator: null
   sub_index: null
-  search_text: what is the rationale for the stationary points being the definition? cannot change any
-    further, grad f = 0
+  search_text: what is the geometric meaning of stationary points? points where the first variation $\delta
+    s = 0$, meaning directional derivatives vanish in all directions.
 - id: dec41-user-srcf-net-h-ib-e-variational-principles-full#002
-  text: 'What is the purpose of a Hessian matrix? Why does one compute the eigenvalues? (Hint: compute
-    sign of eigenvalues, then f(x) - f(0) be positive), so local minimum. Otherwise, look at degenerate
-    stationary points and assess higher derivatives'
-  hint: null
+  text: What is the Legendre transform?
+  hint: Transforms a convex Lagrangian $L(q, \dot{q})$ into a Hamiltonian $H(q, p) = p\dot{q} - L$ where
+    $p = \frac{\partial L}{\partial \dot{q}}$.
   locator: null
   sub_index: null
-  search_text: 'what is the purpose of a hessian matrix? why does one compute the eigenvalues? (hint:
-    compute sign of eigenvalues, then f(x) - f(0) be positive), so local minimum. otherwise, look at degenerate
-    stationary points and assess higher derivatives'
-- id: dec41-user-srcf-net-h-ib-e-variational-principles-full#003
-  text: Why are convex functions nice?
-  hint: stationary points of convex functions are all minima, and convex functions can have at most one
-    minimum value. Why are these true?
-  locator: null
-  sub_index: null
-  search_text: why are convex functions nice? stationary points of convex functions are all minima, and
-    convex functions can have at most one minimum value. why are these true?
-- id: dec41-user-srcf-net-h-ib-e-variational-principles-full#004
-  text: 'Why is the definition of convex functions is a based on convex combinations? (Hint: it is geometric,
-    the functions, so if I draw a chord over it?) Actually, I realise nonconvexity is an obstruction in
-    a sense that you can classify the holes that lead to nonconvexity. Why isn''t this a definition?'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'why is the definition of convex functions is a based on convex combinations? (hint: it
-    is geometric, the functions, so if i draw a chord over it?) actually, i realise nonconvexity is an
-    obstruction in a sense that you can classify the holes that lead to nonconvexity. why isn''t this
-    a definition?'
-- id: dec41-user-srcf-net-h-ib-e-variational-principles-full#005
-  text: 'What is the purpose of the Legendre transform? (Hint: transform between Lagrangian and Hamiltonian)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'what is the purpose of the legendre transform? (hint: transform between lagrangian and
-    hamiltonian)'
-- id: dec41-user-srcf-net-h-ib-e-variational-principles-full#006
-  text: What is the key property of the Legendre transform that we want
-  hint: for example df*/dp = x, basically we have del E/del S = T, del E/del V = -p
-  locator: null
-  sub_index: null
-  search_text: what is the key property of the legendre transform that we want for example df*/dp = x,
-    basically we have del e/del s = t, del e/del v = -p
-- id: dec41-user-srcf-net-h-ib-e-variational-principles-full#007
-  text: Why does nobody understand what is entropy?
-  hint: not sure why it is the increment with temperature to give work
-  locator: null
-  sub_index: null
-  search_text: why does nobody understand what is entropy? not sure why it is the increment with temperature
-    to give work
-- id: dec41-user-srcf-net-h-ib-e-variational-principles-full#008
-  text: What is one method that resolves constrained optimisation?
-  hint: Lagrange multipliers
-  locator: null
-  sub_index: null
-  search_text: what is one method that resolves constrained optimisation? lagrange multipliers
-- id: dec41-user-srcf-net-h-ib-e-variational-principles-full#009
-  text: What are the purpose of functionals?
-  hint: find the "minimum" of the function
-  locator: null
-  sub_index: null
-  search_text: what are the purpose of functionals? find the "minimum" of the function
+  search_text: what is the legendre transform? transforms a convex lagrangian $l(q, \dot{q})$ into a hamiltonian
+    $h(q, p) = p\dot{q} - l$ where $p = \frac{\partial l}{\partial \dot{q}}$.

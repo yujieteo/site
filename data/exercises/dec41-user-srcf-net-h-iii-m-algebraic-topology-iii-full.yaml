@@ -6,615 +6,553 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#000
-  text: Why are maps always assumed to be continuous i.e. inverse images are open on domain?
-  hint: null
+  text: Why are maps always assumed to be continuous, i.e., inverse images of open sets are open?
+  hint: To preserve topological invariants and topological structure.
   locator: null
   sub_index: null
-  search_text: why are maps always assumed to be continuous i.e. inverse images are open on domain?
+  search_text: why are maps always assumed to be continuous, i.e., inverse images of open sets are open?
+    to preserve topological invariants and topological structure.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#001
   text: How does one invent homotopy and homotopy equivalence?
-  hint: continuous deformation, take projection of interval product with a space and then declaring homotopy
-    exists
+  hint: Define continuous deformation by taking the cylinder $X \times [0, 1]$ and declaring two maps
+    homotopic if there exists a continuous map extending both boundary inclusions.
   locator: null
   sub_index: null
-  search_text: how does one invent homotopy and homotopy equivalence? continuous deformation, take projection
-    of interval product with a space and then declaring homotopy exists
+  search_text: how does one invent homotopy and homotopy equivalence? define continuous deformation by
+    taking the cylinder $x \times [0, 1]$ and declaring two maps homotopic if there exists a continuous
+    map extending both boundary inclusions.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#002
   text: How is homotopy equivalence straightforward?
-  hint: composition?
+  hint: It defines an equivalence relation that is compatible with composition of continuous maps.
   locator: null
   sub_index: null
-  search_text: how is homotopy equivalence straightforward? composition?
+  search_text: how is homotopy equivalence straightforward? it defines an equivalence relation that is
+    compatible with composition of continuous maps.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#003
-  text: Why is dimension and cardinality a meaningless concept?
-  hint: contractibility of R^n
+  text: Why are dimension and cardinality insufficient topological invariants up to homotopy?
+  hint: Contractibility of $\mathbb{R}^n$ shows spaces of different dimensions can have identical homotopy
+    types.
   locator: null
   sub_index: null
-  search_text: why is dimension and cardinality a meaningless concept? contractibility of r^n
+  search_text: why are dimension and cardinality insufficient topological invariants up to homotopy? contractibility
+    of $\mathbb{r}^n$ shows spaces of different dimensions can have identical homotopy types.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#004
-  text: How does one invent the genus?
-  hint: the holes are preserved by homotopy equivalence? Assign groups to consider spaces up to homotopy
+  text: How does one invent the genus of a surface?
+  hint: Holes and handles are preserved under homeomorphism and homotopy; algebraic topology assigns abelian
+    groups to detect these holes algebraically.
   locator: null
   sub_index: null
-  search_text: how does one invent the genus? the holes are preserved by homotopy equivalence? assign
-    groups to consider spaces up to homotopy
+  search_text: how does one invent the genus of a surface? holes and handles are preserved under homeomorphism
+    and homotopy; algebraic topology assigns abelian groups to detect these holes algebraically.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#005
   text: How does one invent the notion of a chain complex?
-  hint: invariants are groups, enforce continuous maps between them with the condition that the boundary
-    map of the boundary maps are 0.
+  hint: Define a sequence of abelian groups and boundary homomorphisms $(C_n, \partial_n)$ satisfying
+    the algebraic boundary condition $\partial_n \circ \partial_{n+1} = 0$.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of a chain complex? invariants are groups, enforce continuous
-    maps between them with the condition that the boundary map of the boundary maps are 0.
+  search_text: how does one invent the notion of a chain complex? define a sequence of abelian groups
+    and boundary homomorphisms $(c_n, \partial_n)$ satisfying the algebraic boundary condition $\partial_n
+    \circ \partial_{n+1} = 0$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#006
-  text: How does one invent the notion of cochain complex?
-  hint: take dual of complexes? But this is not true in general.
+  text: How does one invent the notion of a cochain complex?
+  hint: Dualize chain complexes by applying $\operatorname{Hom}(-, G)$ with coboundary maps $d^n = \partial_{n+1}^*$
+    satisfying $d^{n+1} \circ d^n = 0$.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of cochain complex? take dual of complexes? but this is
-    not true in general.
+  search_text: how does one invent the notion of a cochain complex? dualize chain complexes by applying
+    $\operatorname{hom}(-, g)$ with coboundary maps $d^n = \partial_{n+1}^*$ satisfying $d^{n+1} \circ
+    d^n = 0$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#007
   text: How does one invent homology?
-  hint: compose every two maps to be 0 is linear behaviour, so the image of the second map is killed off,
-    and contained in the kernel of the first map, how much is this killed off? One can invent homology
-    by killing off as much of the kernel as you can, note that due to definition of boundaries, you kill
-    off the kernel as much as you can.
+  hint: Since $\partial^2 = 0$, the image of $\partial_{n+1}$ is contained in the kernel of $\partial_n$.
+    Define the homology group as the quotient $H_n = \ker(\partial_n) / \operatorname{im}(\partial_{n+1})$
+    to measure non-bounding cycles.
   locator: null
   sub_index: null
-  search_text: how does one invent homology? compose every two maps to be 0 is linear behaviour, so the
-    image of the second map is killed off, and contained in the kernel of the first map, how much is this
-    killed off? one can invent homology by killing off as much of the kernel as you can, note that due
-    to definition of boundaries, you kill off the kernel as much as you can.
+  search_text: how does one invent homology? since $\partial^2 = 0$, the image of $\partial_{n+1}$ is
+    contained in the kernel of $\partial_n$. define the homology group as the quotient $h_n = \ker(\partial_n)
+    / \operatorname{im}(\partial_{n+1})$ to measure non-bounding cycles.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#008
-  text: How does one invent the notion of homology class?
-  hint: homology exists as groups/modules, and hence have representative elements
+  text: How does one invent the notion of a homology class?
+  hint: Represent homology groups as equivalence classes of cycles modulo boundaries $[z] \in \ker \partial
+    / \operatorname{im} \partial$.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of homology class? homology exists as groups/modules, and
-    hence have representative elements
+  search_text: how does one invent the notion of a homology class? represent homology groups as equivalence
+    classes of cycles modulo boundaries $[z] \in \ker \partial / \operatorname{im} \partial$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#009
   text: How does one invent the notion of cycles?
-  hint: these are the ones that vanish to 0 from the first map, and hence you can picture them literally
-    as cycles i.e. they don't go anywhere.
+  hint: Cycles are elements in the kernel of $\partial_n$, algebraically capturing closed paths or loops
+    with no boundary.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of cycles? these are the ones that vanish to 0 from the
-    first map, and hence you can picture them literally as cycles i.e. they don't go anywhere.
+  search_text: how does one invent the notion of cycles? cycles are elements in the kernel of $\partial_n$,
+    algebraically capturing closed paths or loops with no boundary.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#010
-  text: How does one invent the notion of the boundary?
-  hint: these are sent to 0 upon the next map i.e. the image of the boundary points
+  text: How does one invent the notion of boundaries?
+  hint: Boundaries are elements in the image of $\partial_{n+1}$, representing cycles that bound higher-dimensional
+    geometric simplices.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of the boundary? these are sent to 0 upon the next map i.e.
-    the image of the boundary points
+  search_text: how does one invent the notion of boundaries? boundaries are elements in the image of $\partial_{n+1}$,
+    representing cycles that bound higher-dimensional geometric simplices.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#011
-  text: How does invent chain maps?
-  hint: collection of homomorphisms to commute between chain complexes i.e. morphisms in a category for
-    chain complexes
+  text: How does one invent chain maps?
+  hint: 'Define collections of homomorphisms $f_\# : C_n \to C_n''$ commuting with boundary operators
+    $f_\# \circ \partial = \partial'' \circ f_\#$, acting as morphisms in the category of chain complexes.'
   locator: null
   sub_index: null
-  search_text: how does invent chain maps? collection of homomorphisms to commute between chain complexes
-    i.e. morphisms in a category for chain complexes
+  search_text: 'how does one invent chain maps? define collections of homomorphisms $f_\# : c_n \to c_n''$
+    commuting with boundary operators $f_\# \circ \partial = \partial'' \circ f_\#$, acting as morphisms
+    in the category of chain complexes.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#012
-  text: Why is singular homology advantageous and disadvantageous?
-  hint: it does nto depend on the triangulation of the space, and show that the homology does not depend
-    on the choice of triangulation, however one cannot write down what the chain complexes look like and
-    compute homology, but we need to prove useful results to compute the homology groups indirectly
+  text: Why is singular homology both advantageous and disadvantageous?
+  hint: It is functorial and does not depend on a choice of triangulation, but singular chain groups are
+    uncountably infinite and impossible to compute directly from the definition without structural tools
+    like Mayer-Vietoris.
   locator: null
   sub_index: null
-  search_text: why is singular homology advantageous and disadvantageous? it does nto depend on the triangulation
-    of the space, and show that the homology does not depend on the choice of triangulation, however one
-    cannot write down what the chain complexes look like and compute homology, but we need to prove useful
-    results to compute the homology groups indirectly
+  search_text: why is singular homology both advantageous and disadvantageous? it is functorial and does
+    not depend on a choice of triangulation, but singular chain groups are uncountably infinite and impossible
+    to compute directly from the definition without structural tools like mayer-vietoris.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#013
-  text: Why does one write about cohomology instead?
-  hint: operations only work on cohomology sometimes
+  text: Why does one introduce cohomology in addition to homology?
+  hint: Cohomology carries a natural ring structure via the cup product, providing finer algebraic invariants.
   locator: null
   sub_index: null
-  search_text: why does one write about cohomology instead? operations only work on cohomology sometimes
+  search_text: why does one introduce cohomology in addition to homology? cohomology carries a natural
+    ring structure via the cup product, providing finer algebraic invariants.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#014
-  text: How does one invent singular n-simplicies?
-  hint: t ake maps from standard simplicies onto the space, so there is a pullback from the space into
-    a standard simplex, the singular n-simplicies can be stupid.
+  text: How does one invent singular $n$-simplices?
+  hint: 'Define them as continuous maps $\sigma: \Delta^n \to X$ from the standard geometric $n$-simplex
+    $\Delta^n$ into the topological space $X$.'
   locator: null
   sub_index: null
-  search_text: how does one invent singular n-simplicies? t ake maps from standard simplicies onto the
-    space, so there is a pullback from the space into a standard simplex, the singular n-simplicies can
-    be stupid.
+  search_text: 'how does one invent singular $n$-simplices? define them as continuous maps $\sigma: \delta^n
+    \to x$ from the standard geometric $n$-simplex $\delta^n$ into the topological space $x$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#015
   text: How does one invent singular chain complexes?
-  hint: one gets pullbacks to standard n-simplicies i.e. singular n-simplicies, now force it to have a
-    free abelian group to form linear combinations of these singular n-simplicies with finitely many nonzero
-    n integers for coefficients in Z.
+  hint: Form the free abelian group $C_n(X)$ generated by all singular $n$-simplices with integer coefficients.
   locator: null
   sub_index: null
-  search_text: how does one invent singular chain complexes? one gets pullbacks to standard n-simplicies
-    i.e. singular n-simplicies, now force it to have a free abelian group to form linear combinations
-    of these singular n-simplicies with finitely many nonzero n integers for coefficients in z.
+  search_text: how does one invent singular chain complexes? form the free abelian group $c_n(x)$ generated
+    by all singular $n$-simplices with integer coefficients.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#016
-  text: Why does one insert alternating minus signs on the differential maps?
-  hint: need d(d(sigma)) to cancel
+  text: Why does one insert alternating signs in the boundary formula?
+  hint: Alternating signs in $\partial \sigma = \sum_{i=0}^n (-1)^i \sigma \circ d^i$ ensure cancellation
+    so that $\partial^2 = 0$.
   locator: null
   sub_index: null
-  search_text: why does one insert alternating minus signs on the differential maps? need d(d(sigma))
-    to cancel
+  search_text: why does one insert alternating signs in the boundary formula? alternating signs in $\partial
+    \sigma = \sum_{i=0}^n (-1)^i \sigma \circ d^i$ ensure cancellation so that $\partial^2 = 0$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#017
-  text: How does one check that one does get a chain complex?
-  hint: compute maps del_j * del_i = del_i * del_j-1, and then check the homomorphism vanishes on each
-    basis element
+  text: How does one check that the singular chain complex satisfies $\partial^2 = 0$?
+  hint: Compute face map compositions $d_j \circ d_i = d_i \circ d_{j-1}$ for $i < j$ and verify that
+    all terms in the double sum cancel in pairs.
   locator: null
   sub_index: null
-  search_text: how does one check that one does get a chain complex? compute maps del_j * del_i = del_i
-    * del_j-1, and then check the homomorphism vanishes on each basis element
+  search_text: how does one check that the singular chain complex satisfies $\partial^2 = 0$? compute
+    face map compositions $d_j \circ d_i = d_i \circ d_{j-1}$ for $i < j$ and verify that all terms in
+    the double sum cancel in pairs.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#018
   text: How does one compute singular homology?
-  hint: kill off the kernel of the previous map by the image of the next map, the kernel of the previous
-    map is already sent to 0.
+  hint: Compute the kernel of the $n$-th boundary operator and quotient out the image of the $(n+1)$-th
+    boundary operator.
   locator: null
   sub_index: null
-  search_text: how does one compute singular homology? kill off the kernel of the previous map by the
-    image of the next map, the kernel of the previous map is already sent to 0.
+  search_text: how does one compute singular homology? compute the kernel of the $n$-th boundary operator
+    and quotient out the image of the $(n+1)$-th boundary operator.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#019
   text: How does one compute singular cohomology?
-  hint: induce the cochain complex, then kill of the kernel of the next map by the image of the previous
-    map since are all changed, note one cannot just casually take dualising and taking homology by taking
-    dual cochcain complexes, you need some sort of compactness condition which is guaranteed by simplicies.
+  hint: Construct the dual cochain complex $C^n(X; G) = \operatorname{Hom}(C_n(X), G)$ and compute $H^n(X;
+    G) = \ker(d^n) / \operatorname{im}(d^{n-1})$.
   locator: null
   sub_index: null
-  search_text: how does one compute singular cohomology? induce the cochain complex, then kill of the
-    kernel of the next map by the image of the previous map since are all changed, note one cannot just
-    casually take dualising and taking homology by taking dual cochcain complexes, you need some sort
-    of compactness condition which is guaranteed by simplicies.
+  search_text: how does one compute singular cohomology? construct the dual cochain complex $c^n(x; g)
+    = \operatorname{hom}(c_n(x), g)$ and compute $h^n(x; g) = \ker(d^n) / \operatorname{im}(d^{n-1})$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#020
-  text: How does one prove that a homeomorphism induces isomorphism of homology groups?
-  hint: one uses homotopy equivalences later, i.e. one has shown that homology is a functor and functors
-    preserve isomorphisms, but category theory on arrows makes it easier
+  text: How does one prove that a homeomorphism induces an isomorphism of homology groups?
+  hint: Show that singular homology is a functor from the category of topological spaces to abelian groups,
+    so it preserves isomorphisms.
   locator: null
   sub_index: null
-  search_text: how does one prove that a homeomorphism induces isomorphism of homology groups? one uses
-    homotopy equivalences later, i.e. one has shown that homology is a functor and functors preserve isomorphisms,
-    but category theory on arrows makes it easier
+  search_text: how does one prove that a homeomorphism induces an isomorphism of homology groups? show
+    that singular homology is a functor from the category of topological spaces to abelian groups, so
+    it preserves isomorphisms.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#021
-  text: How does singular homology work?
-  hint: cycles detect holes, quotient out boundaries help us identify the cycles that detect the same
-    holes
+  text: How does singular homology work geometrically?
+  hint: Cycles detect potential holes, and quotienting out boundaries identifies cycles that surround
+    the same topological void.
   locator: null
   sub_index: null
-  search_text: how does singular homology work? cycles detect holes, quotient out boundaries help us identify
-    the cycles that detect the same holes
+  search_text: how does singular homology work geometrically? cycles detect potential holes, and quotienting
+    out boundaries identifies cycles that surround the same topological void.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#022
-  text: Compute the singular homology of a one point space?
-  hint: there is always a singular n-simplex to a point, so the chain complexes are Z and are generated
-    by the boundary maps, so they look like Z if n = 0, 0 if n > 0
+  text: How does one compute the singular homology of a one-point space?
+  hint: There is a unique singular $n$-simplex $\sigma_n$ for each $n$; the boundary map is an isomorphism
+    for even $n$ and zero for odd $n$, yielding $H_0(\mathrm{pt}) \cong \mathbb{Z}$ and $H_n(\mathrm{pt})
+    = 0$ for $n > 0$.
   locator: null
   sub_index: null
-  search_text: compute the singular homology of a one point space? there is always a singular n-simplex
-    to a point, so the chain complexes are z and are generated by the boundary maps, so they look like
-    z if n = 0, 0 if n > 0
+  search_text: how does one compute the singular homology of a one-point space? there is a unique singular
+    $n$-simplex $\sigma_n$ for each $n$; the boundary map is an isomorphism for even $n$ and zero for
+    odd $n$, yielding $h_0(\mathrm{pt}) \cong \mathbb{z}$ and $h_n(\mathrm{pt}) = 0$ for $n > 0$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#023
-  text: Compute the disjoint union of path components?
-  hint: each singular simplex lies in some path components, so one just take direct sum of homology groups.
+  text: How does one compute the homology of a disjoint union of path components?
+  hint: Every singular simplex has a connected domain and must lie in a single path component, so $C_n(\bigsqcup
+    X_\alpha) \cong \bigoplus C_n(X_\alpha)$ and $H_n(\bigsqcup X_\alpha) \cong \bigoplus H_n(X_\alpha)$.
   locator: null
   sub_index: null
-  search_text: compute the disjoint union of path components? each singular simplex lies in some path
-    components, so one just take direct sum of homology groups.
+  search_text: how does one compute the homology of a disjoint union of path components? every singular
+    simplex has a connected domain and must lie in a single path component, so $c_n(\bigsqcup x_\alpha)
+    \cong \bigoplus c_n(x_\alpha)$ and $h_n(\bigsqcup x_\alpha) \cong \bigoplus h_n(x_\alpha)$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#024
-  text: Compute the zeroth homology of a path connected space that is nonempty?
-  hint: just the integers, prove this by defining a homomorphism and working from there. Then one can
-    prove that for any space X, H_0(X) is the free abelian group generated by the path components of X.
+  text: How does one compute the zeroth homology of a nonempty path-connected space?
+  hint: 'Define an augmentation map $\varepsilon: C_0(X) \to \mathbb{Z}$ by $\sum n_i x_i \mapsto \sum
+    n_i$; path-connectedness ensures $\ker \varepsilon = \operatorname{im} \partial_1$, so $H_0(X) \cong
+    \mathbb{Z}$.'
   locator: null
   sub_index: null
-  search_text: compute the zeroth homology of a path connected space that is nonempty? just the integers,
-    prove this by defining a homomorphism and working from there. then one can prove that for any space
-    x, h_0(x) is the free abelian group generated by the path components of x.
+  search_text: 'how does one compute the zeroth homology of a nonempty path-connected space? define an
+    augmentation map $\varepsilon: c_0(x) \to \mathbb{z}$ by $\sum n_i x_i \mapsto \sum n_i$; path-connectedness
+    ensures $\ker \varepsilon = \operatorname{im} \partial_1$, so $h_0(x) \cong \mathbb{z}$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#025
-  text: How does one compute using homotopy invariance?
-  hint: R^n is homotopic to a point, then they must induce the same homology and cohomology, this is an
-    example of the homotopy invariance theorem in action
+  text: How does one compute homology using homotopy invariance?
+  hint: Homotopic maps induce identical homomorphisms on homology; since $\mathbb{R}^n$ is contractible
+    to a point, $H_n(\mathbb{R}^n) \cong H_n(\mathrm{pt})$.
   locator: null
   sub_index: null
-  search_text: how does one compute using homotopy invariance? r^n is homotopic to a point, then they
-    must induce the same homology and cohomology, this is an example of the homotopy invariance theorem
-    in action
+  search_text: how does one compute homology using homotopy invariance? homotopic maps induce identical
+    homomorphisms on homology; since $\mathbb{r}^n$ is contractible to a point, $h_n(\mathbb{r}^n) \cong
+    h_n(\mathrm{pt})$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#026
-  text: How does one compute using Mayer-Vietoris?
-  hint: compute cohomology on smaller subspaces, information is encoded in exacts sequence i.e. kernel
-    of next map is equal to the image of previous map, sequence is exact if exact at each X_n, so using
-    first isomorphism theorem, the 0 -> A -> B -> C -> 0 being exact means C is isomorphic to B/A, for
-    the case of Mayer-Vietoris, inclusions of the intersection into A and B means there are homomorphisms
-    such that the Mayer-Vietoris exact seqeunce is exact and natural i.e. f maps A union B to U union
-    V such that f(A) is included in U and f(B) is included in B, then the chain map commutes from the
-    sequence of A B to the sequence of U V, the Mayer-Vietoris sequence is homology of A cap B -> A oplus
-    B -> A cup B, for nth homology of A cup B mapping to n-1 homology of A cap B.
+  text: How does one compute homology using the Mayer-Vietoris sequence?
+  hint: Decompose $X = A \cup B$ into open subsets and use the short exact sequence of chain complexes
+    to obtain the long exact sequence $\dots \to H_n(A \cap B) \to H_n(A) \oplus H_n(B) \to H_n(X) \xrightarrow{\partial_*}
+    H_{n-1}(A \cap B) \to \dots$.
   locator: null
   sub_index: null
-  search_text: how does one compute using mayer-vietoris? compute cohomology on smaller subspaces, information
-    is encoded in exacts sequence i.e. kernel of next map is equal to the image of previous map, sequence
-    is exact if exact at each x_n, so using first isomorphism theorem, the 0 -> a -> b -> c -> 0 being
-    exact means c is isomorphic to b/a, for the case of mayer-vietoris, inclusions of the intersection
-    into a and b means there are homomorphisms such that the mayer-vietoris exact seqeunce is exact and
-    natural i.e. f maps a union b to u union v such that f(a) is included in u and f(b) is included in
-    b, then the chain map commutes from the sequence of a b to the sequence of u v, the mayer-vietoris
-    sequence is homology of a cap b -> a oplus b -> a cup b, for nth homology of a cup b mapping to n-1
-    homology of a cap b.
+  search_text: how does one compute homology using the mayer-vietoris sequence? decompose $x = a \cup
+    b$ into open subsets and use the short exact sequence of chain complexes to obtain the long exact
+    sequence $\dots \to h_n(a \cap b) \to h_n(a) \oplus h_n(b) \to h_n(x) \xrightarrow{\partial_*} h_{n-1}(a
+    \cap b) \to \dots$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#027
   text: How does one invent relative homology and excision?
-  hint: define homology of X ignoring A, so relative homology should not depends on things inside A, but
-    this is not true in general, however, excision is needed to remove subspaces of A that is not too
-    big.
+  hint: Define the relative chain complex $C_n(X, A) = C_n(X)/C_n(A)$ to ignore features in $A$. Excision
+    allows removing a subset $Z \subset A$ whose closure is in the interior of $A$ without changing relative
+    homology.
   locator: null
   sub_index: null
-  search_text: how does one invent relative homology and excision? define homology of x ignoring a, so
-    relative homology should not depends on things inside a, but this is not true in general, however,
-    excision is needed to remove subspaces of a that is not too big.
+  search_text: how does one invent relative homology and excision? define the relative chain complex $c_n(x,
+    a) = c_n(x)/c_n(a)$ to ignore features in $a$. excision allows removing a subset $z \subset a$ whose
+    closure is in the interior of $a$ without changing relative homology.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#028
   text: How does one construct relative homology?
-  hint: restrict homology on X to homology on subspace as well defined differential, then relative homology
-    with respect to A is H_n(X,A) = H_n(C(X, A))
+  hint: The boundary operator descends to the quotient complex $C_n(X, A) = C_n(X) / C_n(A)$, and relative
+    homology is defined as $H_n(X, A) = H_n(C_\bullet(X, A))$.
   locator: null
   sub_index: null
-  search_text: how does one construct relative homology? restrict homology on x to homology on subspace
-    as well defined differential, then relative homology with respect to a is h_n(x,a) = h_n(c(x, a))
+  search_text: how does one construct relative homology? the boundary operator descends to the quotient
+    complex $c_n(x, a) = c_n(x) / c_n(a)$, and relative homology is defined as $h_n(x, a) = h_n(c_\bullet(x,
+    a))$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#029
   text: How does one apply the excision theorem?
-  hint: require that Z be in A in X to excise, such that the closure taken in X, then the map H_n(X\Z,
-    A\Z) -> H_n(X,A) in relative homology is an isomorphism?
+  hint: If $\overline{Z} \subseteq \operatorname{int}(A)$, the inclusion $(X \setminus Z, A \setminus
+    Z) \hookrightarrow (X, A)$ induces an isomorphism $H_n(X \setminus Z, A \setminus Z) \cong H_n(X,
+    A)$.
   locator: null
   sub_index: null
-  search_text: how does one apply the excision theorem? require that z be in a in x to excise, such that
-    the closure taken in x, then the map h_n(x\z, a\z) -> h_n(x,a) in relative homology is an isomorphism?
+  search_text: how does one apply the excision theorem? if $\overline{z} \subseteq \operatorname{int}(a)$,
+    the inclusion $(x \setminus z, a \setminus z) \hookrightarrow (x, a)$ induces an isomorphism $h_n(x
+    \setminus z, a \setminus z) \cong h_n(x, a)$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#030
-  text: How does one compute the homology of spheres?
-  hint: split up as coproduct of two points, apply Mayer-Vietoris, one gets for S^1 as Z for first and
-    second singular homology, else it vanishes, one uses the fact that H_0(A cap B) is generate dby p,
-    and q. This works for any sphere in general for S^n, then homology is Z for i=0, i=n.
+  text: How does one compute the homology of spheres $S^n$?
+  hint: Decompose $S^n$ into two contractible hemispheres with intersection homotopy equivalent to $S^{n-1}$
+    and apply induction via Mayer-Vietoris, yielding $H_0(S^n) \cong \mathbb{Z}$, $H_n(S^n) \cong \mathbb{Z}$,
+    and $0$ otherwise.
   locator: null
   sub_index: null
-  search_text: how does one compute the homology of spheres? split up as coproduct of two points, apply
-    mayer-vietoris, one gets for s^1 as z for first and second singular homology, else it vanishes, one
-    uses the fact that h_0(a cap b) is generate dby p, and q. this works for any sphere in general for
-    s^n, then homology is z for i=0, i=n.
+  search_text: how does one compute the homology of spheres $s^n$? decompose $s^n$ into two contractible
+    hemispheres with intersection homotopy equivalent to $s^{n-1}$ and apply induction via mayer-vietoris,
+    yielding $h_0(s^n) \cong \mathbb{z}$, $h_n(s^n) \cong \mathbb{z}$, and $0$ otherwise.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#031
-  text: How does one compute the degree of a map from S^n -> S^n?
-  hint: Mayer-Vietoris gives deg(f) as unique integer such that H_n(S^n in Z), the map f_* is given by
-    multiplication of f_*
+  text: 'How does one compute the degree of a map $f: S^n \to S^n$?'
+  hint: 'The induced map $f_*: H_n(S^n) \to H_n(S^n)$ on $H_n(S^n) \cong \mathbb{Z}$ is multiplication
+    by a unique integer $\deg(f)$.'
   locator: null
   sub_index: null
-  search_text: how does one compute the degree of a map from s^n -> s^n? mayer-vietoris gives deg(f) as
-    unique integer such that h_n(s^n in z), the map f_* is given by multiplication of f_*
+  search_text: 'how does one compute the degree of a map $f: s^n \to s^n$? the induced map $f_*: h_n(s^n)
+    \to h_n(s^n)$ on $h_n(s^n) \cong \mathbb{z}$ is multiplication by a unique integer $\deg(f)$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#032
-  text: How does one invent the notion of the degree of the map?
-  hint: generalise the winding number
+  text: How does one invent the notion of the degree of a map?
+  hint: Generalize the winding number of closed curves in the plane to higher-dimensional spheres.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of the degree of the map? generalise the winding number
+  search_text: how does one invent the notion of the degree of a map? generalize the winding number of
+    closed curves in the plane to higher-dimensional spheres.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#033
-  text: What are the uses of a degree of a map?
-  hint: condition for Brouwer's fixed point theorem. for example
+  text: What are the applications of the degree of a map?
+  hint: Proving the Brouwer fixed-point theorem, the hairy ball theorem, and the fundamental theorem of
+    algebra.
   locator: null
   sub_index: null
-  search_text: what are the uses of a degree of a map? condition for brouwer's fixed point theorem. for
-    example
+  search_text: what are the applications of the degree of a map? proving the brouwer fixed-point theorem,
+    the hairy ball theorem, and the fundamental theorem of algebra.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#034
-  text: How does one prove that maps from D^n to D^n ha sa fixed point?
-  hint: f has no fixed point for contradiction, define map to boundary of disc by taking intersection
-    of ray to boundary through x, pick x on boundary, so this map is fixed point on boundary, then compose
-    this with the identity map of the inclusion of boundary into the disc, one gets a contraction of D^n
-    gives a homotopy from the identity map of a circle boundary S^n-1 to a circle boundary S^n-1 to the
-    constant map. This is a contradiction i.e. map from identity map of S^n-1 to S^n-1 should not be homotopy
-    to constant map at a point because these maps have different degrees
+  text: 'How does one prove that every continuous map $f: D^n \to D^n$ has a fixed point?'
+  hint: 'Assume $f(x) \ne x$ for all $x$, construct a retraction $r: D^n \to \partial D^n = S^{n-1}$ by
+    shooting rays from $f(x)$ through $x$, which induces a retraction on homology giving $0 \cong H_{n-1}(D^n)
+    \to H_{n-1}(S^{n-1}) \cong \mathbb{Z}$, a contradiction.'
   locator: null
   sub_index: null
-  search_text: how does one prove that maps from d^n to d^n ha sa fixed point? f has no fixed point for
-    contradiction, define map to boundary of disc by taking intersection of ray to boundary through x,
-    pick x on boundary, so this map is fixed point on boundary, then compose this with the identity map
-    of the inclusion of boundary into the disc, one gets a contraction of d^n gives a homotopy from the
-    identity map of a circle boundary s^n-1 to a circle boundary s^n-1 to the constant map. this is a
-    contradiction i.e. map from identity map of s^n-1 to s^n-1 should not be homotopy to constant map
-    at a point because these maps have different degrees
+  search_text: 'how does one prove that every continuous map $f: d^n \to d^n$ has a fixed point? assume
+    $f(x) \ne x$ for all $x$, construct a retraction $r: d^n \to \partial d^n = s^{n-1}$ by shooting rays
+    from $f(x)$ through $x$, which induces a retraction on homology giving $0 \cong h_{n-1}(d^n) \to h_{n-1}(s^{n-1})
+    \cong \mathbb{z}$, a contradiction.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#035
-  text: 'How does one prove the long exact sequence of relative homology? (Hint: one uses the snake lemma,
-    one uses A as a subgroup of B, and C as a quotient B/A, by first isomorphism theorem, then C can be
-    represented by any element of A, apply the boundary map to this representative, this must come from
-    an element of A and it is not depend on the representatives chosen i.e. well defined. Key steps, produce
-    representative for cycle in A_n-1, produce by exactness B_n -> C_n ius surjective, pick y in B_n so
-    q_n(y) = x by surjectivity, so move down to next level. One will eventually get representatives suych
-    that del_*[x] = [z] as a candidate definition for some [z] in A_n-1 and [x] in C_n via del as connecting
-    homomorphism, one needs to check that d_n-1(z) = 0, del is homomorphism, [z] is well defined i.e.
-    does not depend on choices for x and y in homology class, and that indeed it is an exact sequence'
-  hint: null
+  text: How does one prove the long exact sequence of relative homology?
+  hint: Apply the Snake Lemma to the short exact sequence of chain complexes $0 \to C_\bullet(A) \to C_\bullet(X)
+    \to C_\bullet(X, A) \to 0$ and verify well-definedness of the connecting homomorphism $\partial_*$.
   locator: null
   sub_index: null
-  search_text: 'how does one prove the long exact sequence of relative homology? (hint: one uses the snake
-    lemma, one uses a as a subgroup of b, and c as a quotient b/a, by first isomorphism theorem, then
-    c can be represented by any element of a, apply the boundary map to this representative, this must
-    come from an element of a and it is not depend on the representatives chosen i.e. well defined. key
-    steps, produce representative for cycle in a_n-1, produce by exactness b_n -> c_n ius surjective,
-    pick y in b_n so q_n(y) = x by surjectivity, so move down to next level. one will eventually get representatives
-    suych that del_*[x] = [z] as a candidate definition for some [z] in a_n-1 and [x] in c_n via del as
-    connecting homomorphism, one needs to check that d_n-1(z) = 0, del is homomorphism, [z] is well defined
-    i.e. does not depend on choices for x and y in homology class, and that indeed it is an exact sequence'
+  search_text: how does one prove the long exact sequence of relative homology? apply the snake lemma
+    to the short exact sequence of chain complexes $0 \to c_\bullet(a) \to c_\bullet(x) \to c_\bullet(x,
+    a) \to 0$ and verify well-definedness of the connecting homomorphism $\partial_*$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#036
-  text: How does one prove the 5 lemma?
-  hint: same idea, via diagram chasing
+  text: How does one prove the Five Lemma?
+  hint: Perform diagram chasing on a commutative diagram with exact rows.
   locator: null
   sub_index: null
-  search_text: how does one prove the 5 lemma? same idea, via diagram chasing
+  search_text: how does one prove the five lemma? perform diagram chasing on a commutative diagram with
+    exact rows.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#037
-  text: How does one prove relative homology forms a isomorphism in the third case?
-  hint: long exact sequence and 5 lemma
+  text: How does one prove that relative homology forms an isomorphism under excision?
+  hint: Combine the long exact sequence of pairs with the Five Lemma and the small simplex theorem.
   locator: null
   sub_index: null
-  search_text: how does one prove relative homology forms a isomorphism in the third case? long exact
-    sequence and 5 lemma
+  search_text: how does one prove that relative homology forms an isomorphism under excision? combine
+    the long exact sequence of pairs with the five lemma and the small simplex theorem.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#038
-  text: How odes one prove homotopy invariance?
-  hint: need to show that homotopies of maps induce homotopies of chain complexes, so one needs to define
-    chain homotopy which is proven by looking at cycles, then, one visualises the chain homotopy as a
-    triangular prism of the connecting diagrams
+  text: How does one prove homotopy invariance of homology?
+  hint: 'Construct an explicit prism operator $P: C_n(X) \to C_{n+1}(Y)$ giving a chain homotopy $\partial
+    P + P \partial = g_\# - f_\#$.'
   locator: null
   sub_index: null
-  search_text: how odes one prove homotopy invariance? need to show that homotopies of maps induce homotopies
-    of chain complexes, so one needs to define chain homotopy which is proven by looking at cycles, then,
-    one visualises the chain homotopy as a triangular prism of the connecting diagrams
+  search_text: 'how does one prove homotopy invariance of homology? construct an explicit prism operator
+    $p: c_n(x) \to c_{n+1}(y)$ giving a chain homotopy $\partial p + p \partial = g_\# - f_\#$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#039
   text: How does one prove excision and Mayer-Vietoris together?
-  hint: use the small simplex theorem, let U be indexed collection of subspaces that interiors cover X,
-    then consider the subgroup generated by those singular n-simplices, if the singular n-simplicial map
-    lies in the subspace interior, then its faces does as well, then define homology on these collection
-    of subspaces, and then prove that this is indeed a isomorphism, one does this by cutting up each simplex
-    into smaller parts using barycentric subdivision, it will lie on the open covers i.e. cutting it up
-    does not change homology. To prove Mayer-Vietoris, reduce to case of direct sum of subspace interor
-    as a map to be surjective at least with trivial kernel as a natural chain map, using a map that just
-    forgets that the cut up simplicies lie in A and B, this gives SES of C(A cap B) -> C(A oplus B) ->
-    C(A+B), one gets LES of homology via snake lemma, now repplace for the case of simplicies with the
-    actual homology itself using the small simplex theorem. Excision to prove, then one similarly uses
-    the small simplicies theorem with the 5 lemma, and use that B = X \ Z interior, this also gives the
-    condition that it must be in the interior
+  hint: Use the small simplex theorem via barycentric subdivision to subdivide chains until each simplex
+    lies entirely inside an element of an open cover $\mathcal{U}$, showing $C_\bullet^\mathcal{U}(X)
+    \hookrightarrow C_\bullet(X)$ is a quasi-isomorphism.
   locator: null
   sub_index: null
-  search_text: how does one prove excision and mayer-vietoris together? use the small simplex theorem,
-    let u be indexed collection of subspaces that interiors cover x, then consider the subgroup generated
-    by those singular n-simplices, if the singular n-simplicial map lies in the subspace interior, then
-    its faces does as well, then define homology on these collection of subspaces, and then prove that
-    this is indeed a isomorphism, one does this by cutting up each simplex into smaller parts using barycentric
-    subdivision, it will lie on the open covers i.e. cutting it up does not change homology. to prove
-    mayer-vietoris, reduce to case of direct sum of subspace interor as a map to be surjective at least
-    with trivial kernel as a natural chain map, using a map that just forgets that the cut up simplicies
-    lie in a and b, this gives ses of c(a cap b) -> c(a oplus b) -> c(a+b), one gets les of homology via
-    snake lemma, now repplace for the case of simplicies with the actual homology itself using the small
-    simplex theorem. excision to prove, then one similarly uses the small simplicies theorem with the
-    5 lemma, and use that b = x \ z interior, this also gives the condition that it must be in the interior
+  search_text: how does one prove excision and mayer-vietoris together? use the small simplex theorem
+    via barycentric subdivision to subdivide chains until each simplex lies entirely inside an element
+    of an open cover $\mathcal{u}$, showing $c_\bullet^\mathcal{u}(x) \hookrightarrow c_\bullet(x)$ is
+    a quasi-isomorphism.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#040
-  text: How to prove the small simplicies theorem?
-  hint: 0 simplex gets barycentric division to itself, do barycentric division for 1-simplex, 2-siomplex
-    and extend linearly to n-simplex by the process, in this case one just barycentrically divide boundary,
-    add barycenter, this is a recursive process. One then constructs a cone map by generalising the case
-    of 2 simplex to form a cone of the simplex in orange, then one constructs a barycentric subdivison
-    map, define it for i_n defined it for all space using natruality using recursion, it is natural, chain
-    homotopic to identity, and the diameter is bounded by (n/n+1)^k. Now one assembles it by considering
-    chain as finite sum of simplicies, it just has to work for single simplicies, using analysis i.e.
-    the Lebesgue number lemma and work out the containment of if cone map in C_n^U(X), then p^X(c) in
-    C_n^U(X), lastly one gets chain homotopy to identity
+  text: How does one prove the small simplices theorem?
+  hint: Perform iterated barycentric subdivisions on simplices, bounded by diameter factor $(n/(n+1))^k$,
+    and apply the Lebesgue Number Lemma to ensure every subdivided piece falls inside the open cover.
   locator: null
   sub_index: null
-  search_text: how to prove the small simplicies theorem? 0 simplex gets barycentric division to itself,
-    do barycentric division for 1-simplex, 2-siomplex and extend linearly to n-simplex by the process,
-    in this case one just barycentrically divide boundary, add barycenter, this is a recursive process.
-    one then constructs a cone map by generalising the case of 2 simplex to form a cone of the simplex
-    in orange, then one constructs a barycentric subdivison map, define it for i_n defined it for all
-    space using natruality using recursion, it is natural, chain homotopic to identity, and the diameter
-    is bounded by (n/n+1)^k. now one assembles it by considering chain as finite sum of simplicies, it
-    just has to work for single simplicies, using analysis i.e. the lebesgue number lemma and work out
-    the containment of if cone map in c_n^u(x), then p^x(c) in c_n^u(x), lastly one gets chain homotopy
-    to identity
+  search_text: how does one prove the small simplices theorem? perform iterated barycentric subdivisions
+    on simplices, bounded by diameter factor $(n/(n+1))^k$, and apply the lebesgue number lemma to ensure
+    every subdivided piece falls inside the open cover.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#041
-  text: 'How does one define reduced homology? (Hint: relative homology over a point that differs when
-    n = 0)'
-  hint: null
+  text: How does one define reduced homology?
+  hint: 'Augment the chain complex by $\epsilon: C_0(X) \to \mathbb{Z}$ so that $\widetilde{H}_0(X)$ removes
+    one copy of $\mathbb{Z}$, setting $\widetilde{H}_n(\mathrm{pt}) = 0$ for all $n$.'
   locator: null
   sub_index: null
-  search_text: 'how does one define reduced homology? (hint: relative homology over a point that differs
-    when n = 0)'
+  search_text: 'how does one define reduced homology? augment the chain complex by $\epsilon: c_0(x) \to
+    \mathbb{z}$ so that $\widetilde{h}_0(x)$ removes one copy of $\mathbb{z}$, setting $\widetilde{h}_n(\mathrm{pt})
+    = 0$ for all $n$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#042
   text: How does one invent good pairs and reduced homology?
-  hint: isomorphism between homology of (X,A) and reduced homology of (X/A)
+  hint: For a good pair $(X, A)$ where $A$ is a deformation retract of a neighborhood in $X$, prove $H_n(X,
+    A) \cong \widetilde{H}_n(X/A)$.
   locator: null
   sub_index: null
-  search_text: how does one invent good pairs and reduced homology? isomorphism between homology of (x,a)
-    and reduced homology of (x/a)
+  search_text: how does one invent good pairs and reduced homology? for a good pair $(x, a)$ where $a$
+    is a deformation retract of a neighborhood in $x$, prove $h_n(x, a) \cong \widetilde{h}_n(x/a)$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#043
-  text: How does one define cell complexes?
-  hint: restrict to intermediate spaces to be too strong i.e. manifolds, but union of two R^n is still
-    sensible, idea is to have a method that build spaces, and say one consider only spaces built this
-    way, i.e. built by family of maps from circle S^n-1 to X^n-1, for discrete space X^0 and give it the
-    weak topology
+  text: How does one define cell complexes (CW complexes)?
+  hint: Construct topological spaces inductively by attaching $n$-cells $D^n$ along their boundaries $S^{n-1}$
+    to the $(n-1)$-skeleton $X^{n-1}$, equipped with the weak topology.
   locator: null
   sub_index: null
-  search_text: how does one define cell complexes? restrict to intermediate spaces to be too strong i.e.
-    manifolds, but union of two r^n is still sensible, idea is to have a method that build spaces, and
-    say one consider only spaces built this way, i.e. built by family of maps from circle s^n-1 to x^n-1,
-    for discrete space x^0 and give it the weak topology
+  search_text: how does one define cell complexes (cw complexes)? construct topological spaces inductively
+    by attaching $n$-cells $d^n$ along their boundaries $s^{n-1}$ to the $(n-1)$-skeleton $x^{n-1}$, equipped
+    with the weak topology.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#044
-  text: Why does one care that one can directly compute the cohomology of the cell complex by taking direct
-    sum rather than following some ad hoc mess)
-  hint: null
+  text: Why is cellular homology advantageous for computing homology and cohomology?
+  hint: The cellular chain groups $C_n^{\mathrm{CW}}(X)$ are free abelian groups generated by the $n$-cells,
+    making them finite-dimensional for finite CW complexes.
   locator: null
   sub_index: null
-  search_text: why does one care that one can directly compute the cohomology of the cell complex by taking
-    direct sum rather than following some ad hoc mess)
+  search_text: why is cellular homology advantageous for computing homology and cohomology? the cellular
+    chain groups $c_n^{\mathrm{cw}}(x)$ are free abelian groups generated by the $n$-cells, making them
+    finite-dimensional for finite cw complexes.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#045
-  text: How does one discover the universal coefficient theorem?
-  hint: key examples are cell complexes, say you know what the homologies are, find cohomologies by keeping
-    Z's unchanged and move torsion up, example is to take RP^n = S^n/(x id with -z), so one can compute
-    that RP^n = RP^n-1 union D^n for disc.
+  text: How does one discover the Universal Coefficient Theorem?
+  hint: Relate homology with coefficients to integral homology via short exact sequences involving $\operatorname{Tor}(H_{n-1}(X),
+    G)$ and $\operatorname{Ext}(H_{n-1}(X), G)$.
   locator: null
   sub_index: null
-  search_text: how does one discover the universal coefficient theorem? key examples are cell complexes,
-    say you know what the homologies are, find cohomologies by keeping z's unchanged and move torsion
-    up, example is to take rp^n = s^n/(x id with -z), so one can compute that rp^n = rp^n-1 union d^n
-    for disc.
+  search_text: how does one discover the universal coefficient theorem? relate homology with coefficients
+    to integral homology via short exact sequences involving $\operatorname{tor}(h_{n-1}(x), g)$ and $\operatorname{ext}(h_{n-1}(x),
+    g)$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#046
-  text: Why does one care about cohomology with coefficients?
-  hint: easiest group to use is Z, but you can replace it with any abelian group
+  text: Why does one study cohomology with coefficients?
+  hint: Changing coefficients to fields like $\mathbb{Q}$ or $\mathbb{F}_p$ simplifies computations and
+    detects torsion phenomena.
   locator: null
   sub_index: null
-  search_text: why does one care about cohomology with coefficients? easiest group to use is z, but you
-    can replace it with any abelian group
+  search_text: why does one study cohomology with coefficients? changing coefficients to fields like $\mathbb{q}$
+    or $\mathbb{f}_p$ simplifies computations and detects torsion phenomena.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#047
-  text: Why does one care about Euler characteristic?
-  hint: it seems to be about the cell decomposition at first glance, if you look at the (-1)^n n-cells
-    definition.
+  text: Why is the Euler characteristic invariant under cell decomposition?
+  hint: The alternating sum of cell counts $\sum (-1)^n c_n$ equals the alternating sum of Betti numbers
+    $\sum (-1)^n \operatorname{rank}(H_n(X))$.
   locator: null
   sub_index: null
-  search_text: why does one care about euler characteristic? it seems to be about the cell decomposition
-    at first glance, if you look at the (-1)^n n-cells definition.
+  search_text: why is the euler characteristic invariant under cell decomposition? the alternating sum
+    of cell counts $\sum (-1)^n c_n$ equals the alternating sum of betti numbers $\sum (-1)^n \operatorname{rank}(h_n(x))$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#048
-  text: How does one invent cup product on cohomology? (cup product is multiplication in R, for phi in
-    C^K(X,R), and psi in C^;(X;R), then for singular map sigma, cup product is phi(sigma) * psi(sigma)
-    multiplication in R< one can even take restriction, then singular cohomology is simply the cohomology
-    of the graded pieces by direct sum)
-  hint: null
+  text: How does one invent the cup product in cohomology?
+  hint: For cochains $\phi \in C^k(X; R)$ and $\psi \in C^l(X; R)$, define $(\phi \smile \psi)(\sigma)
+    = \phi(\sigma|_{[v_0, \dots, v_k]}) \psi(\sigma|_{[v_k, \dots, v_{k+l}]})$ to induce a graded ring
+    structure on $H^*(X; R)$.
   locator: null
   sub_index: null
-  search_text: how does one invent cup product on cohomology? (cup product is multiplication in r, for
-    phi in c^k(x,r), and psi in c^;(x;r), then for singular map sigma, cup product is phi(sigma) * psi(sigma)
-    multiplication in r< one can even take restriction, then singular cohomology is simply the cohomology
-    of the graded pieces by direct sum)
+  search_text: how does one invent the cup product in cohomology? for cochains $\phi \in c^k(x; r)$ and
+    $\psi \in c^l(x; r)$, define $(\phi \smile \psi)(\sigma) = \phi(\sigma|_{[v_0, \dots, v_k]}) \psi(\sigma|_{[v_k,
+    \dots, v_{k+l}]})$ to induce a graded ring structure on $h^*(x; r)$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#049
-  text: How does one compute the differentials in the cup product?
-  hint: product rule with a sign, prove this by direct computation
+  text: How does one compute differentials for the cup product?
+  hint: Verify the graded Leibniz rule $d(\phi \smile \psi) = d\phi \smile \psi + (-1)^k \phi \smile d\psi$
+    by direct evaluation on simplices.
   locator: null
   sub_index: null
-  search_text: how does one compute the differentials in the cup product? product rule with a sign, prove
-    this by direct computation
+  search_text: how does one compute differentials for the cup product? verify the graded leibniz rule
+    $d(\phi \smile \psi) = d\phi \smile \psi + (-1)^k \phi \smile d\psi$ by direct evaluation on simplices.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#050
-  text: What does cup product induce a well define map?
-  hint: well defined map of sum of cohomological degrees, but not necessarily commutative as a ring, there
-    is a graded commutative condition to make sure cohmology works
+  text: Why does the cup product induce a well-defined graded-commutative ring?
+  hint: 'Show that the cup product preserves cocycles and coboundaries, and is graded-commutative: $\alpha
+    \smile \beta = (-1)^{kl} \beta \smile \alpha$ for $\alpha \in H^k, \beta \in H^l$.'
   locator: null
   sub_index: null
-  search_text: what does cup product induce a well define map? well defined map of sum of cohomological
-    degrees, but not necessarily commutative as a ring, there is a graded commutative condition to make
-    sure cohmology works
+  search_text: 'why does the cup product induce a well-defined graded-commutative ring? show that the
+    cup product preserves cocycles and coboundaries, and is graded-commutative: $\alpha \smile \beta =
+    (-1)^{kl} \beta \smile \alpha$ for $\alpha \in h^k, \beta \in h^l$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#051
-  text: How does one prove that the cup product is natural
-  hint: define a chain map for the case of C_n(X) -> C_n(x) of a single point, then one uses combinatorics
-    to work out a definition of epsilon_n as (-1)^(n(n+1)/2)
+  text: How does one prove that the cup product is natural?
+  hint: 'Check that for any continuous map $f: X \to Y$, $f^*(\alpha \smile \beta) = f^*(\alpha) \smile
+    f^*(\beta)$ at the cochain level.'
   locator: null
   sub_index: null
-  search_text: how does one prove that the cup product is natural define a chain map for the case of c_n(x)
-    -> c_n(x) of a single point, then one uses combinatorics to work out a definition of epsilon_n as
-    (-1)^(n(n+1)/2)
+  search_text: 'how does one prove that the cup product is natural? check that for any continuous map
+    $f: x \to y$, $f^*(\alpha \smile \beta) = f^*(\alpha) \smile f^*(\beta)$ at the cochain level.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#052
-  text: How does one define a cross product?
-  hint: cup product taking tensor product to cross product of elements cup product together
+  text: How does one define the cross product?
+  hint: 'Define $\times: H^k(X) \otimes H^l(Y) \to H^{k+l}(X \times Y)$ by $\alpha \times \beta = p_X^*(\alpha)
+    \smile p_Y^*(\beta)$.'
   locator: null
   sub_index: null
-  search_text: how does one define a cross product? cup product taking tensor product to cross product
-    of elements cup product together
+  search_text: 'how does one define the cross product? define $\times: h^k(x) \otimes h^l(y) \to h^{k+l}(x
+    \times y)$ by $\alpha \times \beta = p_x^*(\alpha) \smile p_y^*(\beta)$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#053
-  text: How does one invent a relative cup product?
-  hint: take  some other abelian group
+  text: How does one invent the relative cup product?
+  hint: 'Extend the cup product to pairs: $H^k(X, A) \times H^l(X, B) \to H^{k+l}(X, A \cup B)$.'
   locator: null
   sub_index: null
-  search_text: how does one invent a relative cup product? take  some other abelian group
+  search_text: 'how does one invent the relative cup product? extend the cup product to pairs: $h^k(x,
+    a) \times h^l(x, b) \to h^{k+l}(x, a \cup b)$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#054
-  text: How does one prove full Kunneth's formula?
-  hint: need Tor and Ext, this just mean cross product map is isomorphism, use 5 lemma to prove for relative
-    version, one proves this using induction on cells and dimension at the same time
+  text: How does one prove the full Künneth formula?
+  hint: Decompose chain complexes of product spaces via the algebraic Künneth theorem with $\operatorname{Tor}$
+    terms, and verify using induction on CW cells.
   locator: null
   sub_index: null
-  search_text: how does one prove full kunneth's formula? need tor and ext, this just mean cross product
-    map is isomorphism, use 5 lemma to prove for relative version, one proves this using induction on
-    cells and dimension at the same time
+  search_text: how does one prove the full künneth formula? decompose chain complexes of product spaces
+    via the algebraic künneth theorem with $\operatorname{tor}$ terms, and verify using induction on cw
+    cells.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#055
-  text: How does one prove the universal theorem most simply?
-  hint: work in R a PID, M an R-module, then base change to M gives natural map of homology in M, take
-    homs to do cohomology, isomorphism if cohomology is free, pick R = Z, R-module is abelian group, this
-    tells us how homology and cohomology with coefficients an abelian group are related
+  text: How does one prove the Universal Coefficient Theorem most simply?
+  hint: Over a PID $R$, split the free chain complex $0 \to Z_n \to C_n \to B_{n-1} \to 0$ and apply $\operatorname{Hom}_R(-,
+    M)$ and $-\otimes_R M$.
   locator: null
   sub_index: null
-  search_text: how does one prove the universal theorem most simply? work in r a pid, m an r-module, then
-    base change to m gives natural map of homology in m, take homs to do cohomology, isomorphism if cohomology
-    is free, pick r = z, r-module is abelian group, this tells us how homology and cohomology with coefficients
-    an abelian group are related
+  search_text: how does one prove the universal coefficient theorem most simply? over a pid $r$, split
+    the free chain complex $0 \to z_n \to c_n \to b_{n-1} \to 0$ and apply $\operatorname{hom}_r(-, m)$
+    and $-\otimes_r m$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#056
   text: How does one invent the notion of vector bundles?
-  hint: assign vector bundle to each point, then for the definition is a map to a space imposing real
-    vector space structure on fibres or pullback of a point of each point to local triviality condition,
-    restrictions as linear isomorphism, these are local trivialisations
+  hint: Associate a vector space $E_x \cong \mathbb{R}^k$ to each point $x \in M$ such that $E = \bigsqcup
+    E_x$ is locally trivial, $E|_U \cong U \times \mathbb{R}^k$.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of vector bundles? assign vector bundle to each point, then
-    for the definition is a map to a space imposing real vector space structure on fibres or pullback
-    of a point of each point to local triviality condition, restrictions as linear isomorphism, these
-    are local trivialisations
+  search_text: how does one invent the notion of vector bundles? associate a vector space $e_x \cong \mathbb{r}^k$
+    to each point $x \in m$ such that $e = \bigsqcup e_x$ is locally trivial, $e|_u \cong u \times \mathbb{r}^k$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#057
-  text: How to define sections of vector bundles?
-  hint: composition of vector bundle with section gives identity map i.e. looks like a copy of parameter
-    points in image
+  text: How does one define sections of vector bundles?
+  hint: 'Define smooth maps $s: M \to E$ such that $\pi \circ s = \operatorname{id}_M$.'
   locator: null
   sub_index: null
-  search_text: how to define sections of vector bundles? composition of vector bundle with section gives
-    identity map i.e. looks like a copy of parameter points in image
+  search_text: 'how does one define sections of vector bundles? define smooth maps $s: m \to e$ such that
+    $\pi \circ s = \operatorname{id}_m$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#058
-  text: How does one define pullback of vector bundles?
-  hint: take fibre product such that postcomposition with y gives vector bundle of the point. Project
-    onto first coordinate
+  text: How does one define the pullback of a vector bundle?
+  hint: 'For $f: N \to M$, construct $f^*E = \{(n, e) \in N \times E \mid f(n) = \pi(e)\}$.'
   locator: null
   sub_index: null
-  search_text: how does one define pullback of vector bundles? take fibre product such that postcomposition
-    with y gives vector bundle of the point. project onto first coordinate
+  search_text: 'how does one define the pullback of a vector bundle? for $f: n \to m$, construct $f^*e
+    = \{(n, e) \in n \times e \mid f(n) = \pi(e)\}$.'
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#059
-  text: How does one compute Whitney sum of vector bundles?
-  hint: for each coordinate
+  text: How does one compute the Whitney sum of vector bundles?
+  hint: Take fiberwise direct sums $E \oplus F$ over the same base manifold $M$.
   locator: null
   sub_index: null
-  search_text: how does one compute whitney sum of vector bundles? for each coordinate
+  search_text: how does one compute the whitney sum of vector bundles? take fiberwise direct sums $e \oplus
+    f$ over the same base manifold $m$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#060
-  text: How does one invent quotient bundle?
-  hint: take fibrewise quotient?
+  text: How does one invent quotient bundles?
+  hint: For a subbundle $E \subset F$, construct the fiberwise quotient bundle $F/E$.
   locator: null
   sub_index: null
-  search_text: how does one invent quotient bundle? take fibrewise quotient?
+  search_text: how does one invent quotient bundles? for a subbundle $e \subset f$, construct the fiberwise
+    quotient bundle $f/e$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#061
-  text: How does one invent Grassmannian manifold?
-  hint: take k-dim linear subgroups of R^n, this is a prototype example of a moduli space.
+  text: How does one invent Grassmannian manifolds?
+  hint: Define $\operatorname{Gr}(k, \mathbb{R}^n)$ as the moduli space of all $k$-dimensional linear
+    subspaces of $\mathbb{R}^n$.
   locator: null
   sub_index: null
-  search_text: how does one invent grassmannian manifold? take k-dim linear subgroups of r^n, this is
-    a prototype example of a moduli space.
+  search_text: how does one invent grassmannian manifolds? define $\operatorname{gr}(k, \mathbb{r}^n)$
+    as the moduli space of all $k$-dimensional linear subspaces of $\mathbb{r}^n$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#062
-  text: How does one invent Gysin sequence?
-  hint: long exact sequence with a vector bundle, d-dim vector bundle, R-oriented, each fibre is vector
-    space with unit sphere, want inner product, norms on fd vector space is equivalent, arbitrarily choose
-    1 with inner product = 1, lone exacts sequence of H^*(X:R) modules give Gysin seuqence, exact because
-    top row is exact by thinking about sphere bundle.
+  text: How does one invent the Gysin sequence?
+  hint: Construct the long exact sequence in cohomology associated with an oriented sphere bundle $S^{k-1}
+    \to E_0 \to M$ using the Euler class.
   locator: null
   sub_index: null
-  search_text: how does one invent gysin sequence? long exact sequence with a vector bundle, d-dim vector
-    bundle, r-oriented, each fibre is vector space with unit sphere, want inner product, norms on fd vector
-    space is equivalent, arbitrarily choose 1 with inner product = 1, lone exacts sequence of h^*(x:r)
-    modules give gysin seuqence, exact because top row is exact by thinking about sphere bundle.
+  search_text: how does one invent the gysin sequence? construct the long exact sequence in cohomology
+    associated with an oriented sphere bundle $s^{k-1} \to e_0 \to m$ using the euler class.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#063
-  text: How does one prove Poincare duality for compact oriented manifold?
-  hint: induct over covers of compact oriented manifold, but in general covers are not compact, compactness
-    is when one take subcover, so need a version of noncompact manifolds, one invents compactly supported
-    cohomology to get around this
+  text: How does one prove Poincaré duality for a compact oriented manifold?
+  hint: Induct on open covers using Mayer-Vietoris, showing $H_c^k(M) \cong H_{n-k}(M)$ via cap product
+    with the fundamental class $[M]$.
   locator: null
   sub_index: null
-  search_text: how does one prove poincare duality for compact oriented manifold? induct over covers of
-    compact oriented manifold, but in general covers are not compact, compactness is when one take subcover,
-    so need a version of noncompact manifolds, one invents compactly supported cohomology to get around
-    this
+  search_text: how does one prove poincaré duality for a compact oriented manifold? induct on open covers
+    using mayer-vietoris, showing $h_c^k(m) \cong h_{n-k}(m)$ via cap product with the fundamental class
+    $[m]$.
 - id: dec41-user-srcf-net-h-iii-m-algebraic-topology-iii-full#064
-  text: How does one take finiteness as intersection if compactness and discreteness. Discrete opposite
-    is continuous sort of, there are disconnected space. Unit interval has countable many points but compact.
-    Integers is discrete but not compact and does not admit a finite subcover
-  hint: null
+  text: How does one relate compactness and discreteness?
+  hint: Compactness guarantees finite subcovers; a discrete space is compact if and only if it is finite.
   locator: null
   sub_index: null
-  search_text: how does one take finiteness as intersection if compactness and discreteness. discrete
-    opposite is continuous sort of, there are disconnected space. unit interval has countable many points
-    but compact. integers is discrete but not compact and does not admit a finite subcover
+  search_text: how does one relate compactness and discreteness? compactness guarantees finite subcovers;
+    a discrete space is compact if and only if it is finite.

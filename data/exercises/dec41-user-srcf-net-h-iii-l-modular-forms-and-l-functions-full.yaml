@@ -6,691 +6,570 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#000
-  text: What is the Langlands program and why?
-  hint: representations of the Galois group and elliptic curves over Q are related to automorphic forms
-    and Galois representations
+  text: What is the Langlands program and why is it important?
+  hint: It posits deep connections between Galois representations, automorphic forms, and $L$-functions
+    associated with arithmetic objects like elliptic curves over $\mathbb{Q}$.
   locator: null
   sub_index: null
-  search_text: what is the langlands program and why? representations of the galois group and elliptic
-    curves over q are related to automorphic forms and galois representations
+  search_text: what is the langlands program and why is it important? it posits deep connections between
+    galois representations, automorphic forms, and $l$-functions associated with arithmetic objects like
+    elliptic curves over $\mathbb{q}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#001
-  text: What is a Dedekind eta function?
-  hint: one specifies the functional equations eta(z+1) = exp(pi i /12) eta(z), and eta(-1/z) = root(z/i)
-    eta(z), this is chosen such that sqrt(-i tau) = 1 when i = tau
+  text: What is the Dedekind eta function?
+  hint: Define $\eta(z) = q^{1/24} \prod_{n=1}^\infty (1 - q^n)$ with $q = e^{2\pi i z}$, satisfying the
+    functional equations $\eta(z+1) = e^{\pi i / 12} \eta(z)$ and $\eta(-1/z) = \sqrt{z/i} \, \eta(z)$.
   locator: null
   sub_index: null
-  search_text: what is a dedekind eta function? one specifies the functional equations eta(z+1) = exp(pi
-    i /12) eta(z), and eta(-1/z) = root(z/i) eta(z), this is chosen such that sqrt(-i tau) = 1 when i
-    = tau
+  search_text: what is the dedekind eta function? define $\eta(z) = q^{1/24} \prod_{n=1}^\infty (1 - q^n)$
+    with $q = e^{2\pi i z}$, satisfying the functional equations $\eta(z+1) = e^{\pi i / 12} \eta(z)$
+    and $\eta(-1/z) = \sqrt{z/i} \, \eta(z)$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#002
-  text: Why does the Dedekind eta function appear in bosonic string theory? And why is bosonic string
-    theory the first stirng theory invented?
-  hint: null
+  text: Why does the Dedekind eta function appear in bosonic string theory?
+  hint: It calculates the partition function of free transverse oscillator modes on the string worldsheet
+    in 26 dimensions.
   locator: null
   sub_index: null
-  search_text: why does the dedekind eta function appear in bosonic string theory? and why is bosonic
-    string theory the first stirng theory invented?
+  search_text: why does the dedekind eta function appear in bosonic string theory? it calculates the partition
+    function of free transverse oscillator modes on the string worldsheet in 26 dimensions.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#003
-  text: How does one invent the L-series?
-  hint: generalise the Riemann zeta function
+  text: How does one invent $L$-series?
+  hint: Generalize the Riemann zeta function by weighting Dirichlet series coefficients with arithmetic
+    characters or automorphic eigenvalues.
   locator: null
   sub_index: null
-  search_text: how does one invent the l-series? generalise the riemann zeta function
+  search_text: how does one invent $l$-series? generalize the riemann zeta function by weighting dirichlet
+    series coefficients with arithmetic characters or automorphic eigenvalues.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#004
-  text: How does one study L-series?
-  hint: one can do it the classical way using analysis, the other is to use a cohomological approach via
-    class field theory.
+  text: How does one study $L$-series?
+  hint: Classically using complex analytic continuation and contour integration, or cohomologically via
+    class field theory and étale cohomology.
   locator: null
   sub_index: null
-  search_text: how does one study l-series? one can do it the classical way using analysis, the other
-    is to use a cohomological approach via class field theory.
+  search_text: how does one study $l$-series? classically using complex analytic continuation and contour
+    integration, or cohomologically via class field theory and étale cohomology.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#005
   text: How does one invent the Fourier transform?
-  hint: expand f using an exponential basis of roots of unity i.e. exp(2 pi i yx)
+  hint: Expand functions in an orthonormal basis of characters $x \mapsto e^{2\pi i \xi x}$ on abelian
+    groups.
   locator: null
   sub_index: null
-  search_text: how does one invent the fourier transform? expand f using an exponential basis of roots
-    of unity i.e. exp(2 pi i yx)
+  search_text: how does one invent the fourier transform? expand functions in an orthonormal basis of
+    characters $x \mapsto e^{2\pi i \xi x}$ on abelian groups.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#006
-  text: How does one invent R and R/Z?
-  hint: these are abelian topological groups, and are continuous group homomorphism to U(1) in C, this
-    is useful in gauge theory. Basically one can use them as groups associated with [fibre] bundles and
-    do gauge theory with them.
+  text: How does one study $\mathbb{R}$ and $\mathbb{R}/\mathbb{Z}$?
+  hint: As abelian topological groups whose character groups are continuous homomorphisms into the circle
+    group $U(1)$.
   locator: null
   sub_index: null
-  search_text: how does one invent r and r/z? these are abelian topological groups, and are continuous
-    group homomorphism to u(1) in c, this is useful in gauge theory. basically one can use them as groups
-    associated with [fibre] bundles and do gauge theory with them.
+  search_text: how does one study $\mathbb{r}$ and $\mathbb{r}/\mathbb{z}$? as abelian topological groups
+    whose character groups are continuous homomorphisms into the circle group $u(1)$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#007
   text: How does one invent characters?
-  hint: the idea is to do topology with them, take continuous homomorphisms to circle U(1), then one gets
-    roots of unity, with this you can do a lot of group theory if it has finite order
+  hint: 'Define continuous group homomorphisms $\chi: G \to U(1)$.'
   locator: null
   sub_index: null
-  search_text: how does one invent characters? the idea is to do topology with them, take continuous homomorphisms
-    to circle u(1), then one gets roots of unity, with this you can do a lot of group theory if it has
-    finite order
+  search_text: 'how does one invent characters? define continuous group homomorphisms $\chi: g \to u(1)$.'
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#008
-  text: How does one invent trivial characters, product of two characters, and conjugate characters?
-  hint: work with the complex number
+  text: How does one invent trivial characters, products of characters, and conjugate characters?
+  hint: Use pointwise multiplication, inversion, and complex conjugation in $\mathbb{C}^\times$.
   locator: null
   sub_index: null
-  search_text: how does one invent trivial characters, product of two characters, and conjugate characters?
-    work with the complex number
+  search_text: how does one invent trivial characters, products of characters, and conjugate characters?
+    use pointwise multiplication, inversion, and complex conjugation in $\mathbb{c}^\times$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#009
   text: How does one invent the character group?
-  hint: Pontraygin duality, take all continuous homomorphisms to U(1) as a group, this is a Chu construction,
-    evaluating it against a target space U(1) as a dualizing object. So the easiest way to remember Pontryagin
-    duality is that it is the duality of character groups in a Fourier transform somehow. The easiest
-    example of Pontryagin duality to visualise is circle representing the integers. Integers to circle
-    give discrete time Fourier transform. Discrete groups dualise to compact groups i.e. circle, it has
-    to repeat somewhere.
+  hint: Use Pontryagin duality to study $\widehat{G} = \operatorname{Hom}_{\mathrm{cont}}(G, U(1))$ as
+    a dual topological abelian group.
   locator: null
   sub_index: null
-  search_text: how does one invent the character group? pontraygin duality, take all continuous homomorphisms
-    to u(1) as a group, this is a chu construction, evaluating it against a target space u(1) as a dualizing
-    object. so the easiest way to remember pontryagin duality is that it is the duality of character groups
-    in a fourier transform somehow. the easiest example of pontryagin duality to visualise is circle representing
-    the integers. integers to circle give discrete time fourier transform. discrete groups dualise to
-    compact groups i.e. circle, it has to repeat somewhere.
+  search_text: how does one invent the character group? use pontryagin duality to study $\widehat{g} =
+    \operatorname{hom}_{\mathrm{cont}}(g, u(1))$ as a dual topological abelian group.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#010
-  text: How does one compute the character group where G = Z, Z/nZ, and product?
-  hint: U(1) for G with discrete topology, one needs to assign a topology, for Z/nZ it is n-th roots of
-    unity, for product group it is still R^n, for R^x it is parity x R
+  text: How does one compute the character group for $G = \mathbb{Z}, \mathbb{Z}/n\mathbb{Z}$, and $\mathbb{R}$?
+  hint: $\widehat{\mathbb{Z}} \cong U(1)$, $\widehat{\mathbb{Z}/n\mathbb{Z}} \cong \mu_n$, $\widehat{\mathbb{R}}
+    \cong \mathbb{R}$, and $\widehat{\mathbb{R}^\times} \cong \{\pm 1\} \times \mathbb{R}$.
   locator: null
   sub_index: null
-  search_text: how does one compute the character group where g = z, z/nz, and product? u(1) for g with
-    discrete topology, one needs to assign a topology, for z/nz it is n-th roots of unity, for product
-    group it is still r^n, for r^x it is parity x r
+  search_text: how does one compute the character group for $g = \mathbb{z}, \mathbb{z}/n\mathbb{z}$,
+    and $\mathbb{r}$? $\widehat{\mathbb{z}} \cong u(1)$, $\widehat{\mathbb{z}/n\mathbb{z}} \cong \mu_n$,
+    $\widehat{\mathbb{r}} \cong \mathbb{r}$, and $\widehat{\mathbb{r}^\times} \cong \{\pm 1\} \times \mathbb{r}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#011
   text: What is Pontryagin duality and how does one invent it?
-  hint: some sort of finite order, so compactness condition, you simply need local compactness, you get
-    an isomorphism between G and G^, my mental image of this is simply arrows working around U(1) retains
-    the same structure if one consider small neighbourhoods
+  hint: For locally compact abelian groups $G$, the canonical evaluation map $G \to \widehat{\widehat{G}}$
+    is an isomorphism of topological groups.
   locator: null
   sub_index: null
-  search_text: what is pontryagin duality and how does one invent it? some sort of finite order, so compactness
-    condition, you simply need local compactness, you get an isomorphism between g and g^, my mental image
-    of this is simply arrows working around u(1) retains the same structure if one consider small neighbourhoods
+  search_text: what is pontryagin duality and how does one invent it? for locally compact abelian groups
+    $g$, the canonical evaluation map $g \to \widehat{\widehat{g}}$ is an isomorphism of topological groups.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#012
-  text: Why is there no canonical isomorphism in Pontraygin duality?
-  hint: isomorphism is clear with hypothesis of finite abelian groups using classification, then prove
-    for cyclic groups which is obvious that roots of unity work the same way as Z/nZ
+  text: Why is there no canonical isomorphism between a finite abelian group and its dual?
+  hint: An isomorphism $G \cong \widehat{G}$ depends on a choice of generators/roots of unity, while $G
+    \cong \widehat{\widehat{G}}$ is canonical.
   locator: null
   sub_index: null
-  search_text: why is there no canonical isomorphism in pontraygin duality? isomorphism is clear with
-    hypothesis of finite abelian groups using classification, then prove for cyclic groups which is obvious
-    that roots of unity work the same way as z/nz
+  search_text: why is there no canonical isomorphism between a finite abelian group and its dual? an isomorphism
+    $g \cong \widehat{g}$ depends on a choice of generators/roots of unity, while $g \cong \widehat{\widehat{g}}$
+    is canonical.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#013
-  text: How does one invent the Fourier transform?
-  hint: it is like conjugate, take the measure to be density in R, then take the product of the inverse
-    of character and f(x) you work back to the chi_y(x) inverse i.e. characters are homomorphisms from
-    the group to the circle
+  text: How does one invent the Fourier transform on locally compact abelian groups?
+  hint: 'Integrate against inverse characters: $\widehat{f}(\chi) = \int_G f(g) \overline{\chi(g)} \,
+    dg$.'
   locator: null
   sub_index: null
-  search_text: how does one invent the fourier transform? it is like conjugate, take the measure to be
-    density in r, then take the product of the inverse of character and f(x) you work back to the chi_y(x)
-    inverse i.e. characters are homomorphisms from the group to the circle
+  search_text: 'how does one invent the fourier transform on locally compact abelian groups? integrate
+    against inverse characters: $\widehat{f}(\chi) = \int_g f(g) \overline{\chi(g)} \, dg$.'
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#014
-  text: What is the "correct way to think about the Fourier transform?
-  hint: think of it as a function on R^, and also as a integral over R of the inverse of characters with
-    f(x) i.e. assume f has a Fourier basis in characters and take inverse
+  text: What is the conceptual way to think about the Fourier transform?
+  hint: As spectral decomposition of the translation operator on $L^2(G)$ into character eigencomponents.
   locator: null
   sub_index: null
-  search_text: what is the "correct way to think about the fourier transform? think of it as a function
-    on r^, and also as a integral over r of the inverse of characters with f(x) i.e. assume f has a fourier
-    basis in characters and take inverse
+  search_text: what is the conceptual way to think about the fourier transform? as spectral decomposition
+    of the translation operator on $l^2(g)$ into character eigencomponents.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#015
-  text: How does one invent the Schwarz space?
-  hint: need functions that decay fast at infinity so that you do not need heavy assumptions on the f^
+  text: How does one invent the Schwartz space?
+  hint: Define the space of smooth functions with rapid decay at infinity along with all their derivatives,
+    ensuring stability under Fourier transformation.
   locator: null
   sub_index: null
-  search_text: how does one invent the schwarz space? need functions that decay fast at infinity so that
-    you do not need heavy assumptions on the f^
+  search_text: how does one invent the schwartz space? define the space of smooth functions with rapid
+    decay at infinity along with all their derivatives, ensuring stability under fourier transformation.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#016
   text: How does one invent the Fourier inversion formula?
-  hint: in logic you want double negation, take double dual of f, you get f(-x)
+  hint: 'Show that applying the dual Fourier transform twice recovers the original function up to reflection:
+    $\mathcal{F}(\mathcal{F}(f))(x) = f(-x)$.'
   locator: null
   sub_index: null
-  search_text: how does one invent the fourier inversion formula? in logic you want double negation, take
-    double dual of f, you get f(-x)
+  search_text: 'how does one invent the fourier inversion formula? show that applying the dual fourier
+    transform twice recovers the original function up to reflection: $\mathcal{f}(\mathcal{f}(f))(x) =
+    f(-x)$.'
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#017
-  text: How does one invent the Fourier inversion formula for G = R/Z?
-  hint: you take the basis to be characters via the Fourier series so the Fourier transform changes sign
-    from - to + because the negative sign in the Fourier transform is pullback from U(1) to G = R/Z as
-    an abelian topological group, so it is simply linear combination with characters as basis elements
+  text: How does one invent the Fourier inversion formula for $G = \mathbb{R}/\mathbb{Z}$?
+  hint: Reconstruct periodic functions from their discrete Fourier series coefficients via $\sum_{n \in
+    \mathbb{Z}} \widehat{f}(n) e^{2\pi i n x}$.
   locator: null
   sub_index: null
-  search_text: how does one invent the fourier inversion formula for g = r/z? you take the basis to be
-    characters via the fourier series so the fourier transform changes sign from - to + because the negative
-    sign in the fourier transform is pullback from u(1) to g = r/z as an abelian topological group, so
-    it is simply linear combination with characters as basis elements
+  search_text: how does one invent the fourier inversion formula for $g = \mathbb{r}/\mathbb{z}$? reconstruct
+    periodic functions from their discrete fourier series coefficients via $\sum_{n \in \mathbb{z}} \widehat{f}(n)
+    e^{2\pi i n x}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#018
-  text: 'How does one prove the Fourier inversion formula for f: Z/NZ -> C?'
-  hint: start with Dirac delta function as a basis for f i.e. delta_a is orthogonal for x = a, take Fourier
-    transform, one gets the Fourier transform on roots of unity to be geometric Frobenius or zeta^{-a},
-    RHS is 1/N sum zeta(x-a) then use the fact that sum of zeta^j is N if k = 0 mod N.
+  text: 'How does one prove the Fourier inversion formula for $f: \mathbb{Z}/N\mathbb{Z} \to \mathbb{C}$?'
+  hint: Use orthogonality of roots of unity $\frac{1}{N}\sum_{x \in \mathbb{Z}/N\mathbb{Z}} e^{2\pi i
+    k x / N} = \delta_{k, 0}$.
   locator: null
   sub_index: null
-  search_text: 'how does one prove the fourier inversion formula for f: z/nz -> c? start with dirac delta
-    function as a basis for f i.e. delta_a is orthogonal for x = a, take fourier transform, one gets the
-    fourier transform on roots of unity to be geometric frobenius or zeta^{-a}, rhs is 1/n sum zeta(x-a)
-    then use the fact that sum of zeta^j is n if k = 0 mod n.'
+  search_text: 'how does one prove the fourier inversion formula for $f: \mathbb{z}/n\mathbb{z} \to \mathbb{c}$?
+    use orthogonality of roots of unity $\frac{1}{n}\sum_{x \in \mathbb{z}/n\mathbb{z}} e^{2\pi i k x
+    / n} = \delta_{k, 0}$.'
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#019
-  text: What is a Haar measure? How does one invent it?
-  hint: one wants to work with Fourier transform and not worry about non-commutative, pick left translation
-    invariant [Fourier transform] Borel measure on the group with regularity conditions, like being finite
-    on compact sets
+  text: What is a Haar measure and how does one invent it?
+  hint: A non-trivial translation-invariant Borel measure on a locally compact group that is finite on
+    compact sets and positive on non-empty open sets.
   locator: null
   sub_index: null
-  search_text: what is a haar measure? how does one invent it? one wants to work with fourier transform
-    and not worry about non-commutative, pick left translation invariant [fourier transform] borel measure
-    on the group with regularity conditions, like being finite on compact sets
+  search_text: what is a haar measure and how does one invent it? a non-trivial translation-invariant
+    borel measure on a locally compact group that is finite on compact sets and positive on non-empty
+    open sets.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#020
-  text: Why does one care about Haar measure?
-  hint: Haar measure exists for locally compact abelian group G up to scaling
+  text: Why does one care about Haar measures?
+  hint: Haar measure exists uniquely up to a positive scalar multiple on any locally compact group, enabling
+    integration and harmonic analysis.
   locator: null
   sub_index: null
-  search_text: why does one care about haar measure? haar measure exists for locally compact abelian group
-    g up to scaling
+  search_text: why does one care about haar measures? haar measure exists uniquely up to a positive scalar
+    multiple on any locally compact group, enabling integration and harmonic analysis.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#021
-  text: How does one invent the need for local compactness in Haar measure?
-  hint: nonempty open set must have strictly postiive volume, every compact set must have finite volume,
-    if topological group not locally compact, pick neighbourhood of identity element, wlog for counterexample
-    infinite dimension Banach space like L^2, pick neighbourhood of identity element, need infinite number
-    of disjoint translated copies of smaller open, translation invariance means each copy has exact same
-    volume, measure finite subpieces volume 0, so volume 0, subpieces positive volume, blows up to infinity
-    by additivity, so nonzero on open and finite on compact, key is you need compactness, finite subcover
-    to prevent this blow up. Haar ratio is volume of compact set is estimate d by trnaslated copies of
-    open neighbourhood needed to cover it, minimumnumber of left shifts. Local compactness guarantee that
-    Haar ratio is finite integer.
+  text: Why is local compactness necessary for the existence of a Haar measure?
+  hint: In infinite-dimensional spaces, infinitely many disjoint translated open sets would force total
+    measure to be either zero or infinite.
   locator: null
   sub_index: null
-  search_text: how does one invent the need for local compactness in haar measure? nonempty open set must
-    have strictly postiive volume, every compact set must have finite volume, if topological group not
-    locally compact, pick neighbourhood of identity element, wlog for counterexample infinite dimension
-    banach space like l^2, pick neighbourhood of identity element, need infinite number of disjoint translated
-    copies of smaller open, translation invariance means each copy has exact same volume, measure finite
-    subpieces volume 0, so volume 0, subpieces positive volume, blows up to infinity by additivity, so
-    nonzero on open and finite on compact, key is you need compactness, finite subcover to prevent this
-    blow up. haar ratio is volume of compact set is estimate d by trnaslated copies of open neighbourhood
-    needed to cover it, minimumnumber of left shifts. local compactness guarantee that haar ratio is finite
-    integer.
+  search_text: why is local compactness necessary for the existence of a haar measure? in infinite-dimensional
+    spaces, infinitely many disjoint translated open sets would force total measure to be either zero
+    or infinite.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#022
-  text: How does one compute the Haar measure of R, G discrete group, and G multiplicative group positive
-    reals?
-  hint: Lebesgue measure, counting measure, and int f(x) dx/x, invariant under multiplication of x by
-    a constant
+  text: How does one compute the Haar measure of $\mathbb{R}$, a discrete group $G$, and $\mathbb{R}_{>0}^\times$?
+  hint: Lebesgue measure $dx$ on $\mathbb{R}$, counting measure on discrete $G$, and $dx/x$ on $\mathbb{R}_{>0}^\times$.
   locator: null
   sub_index: null
-  search_text: how does one compute the haar measure of r, g discrete group, and g multiplicative group
-    positive reals? lebesgue measure, counting measure, and int f(x) dx/x, invariant under multiplication
-    of x by a constant
+  search_text: how does one compute the haar measure of $\mathbb{r}$, a discrete group $g$, and $\mathbb{r}_{>0}^\times$?
+    lebesgue measure $dx$ on $\mathbb{r}$, counting measure on discrete $g$, and $dx/x$ on $\mathbb{r}_{>0}^\times$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#023
-  text: How does one invent the notion of a Fourier inversion formula?
-  hint: you want the double dual of the Fourier transform of f(g) to give -f(g) due to complex number
-    up to a constant, and this is a canonical isomorphism. The constant is necessary due to the fact that
-    measures are defined up to a constant
+  text: How does one normalize the Fourier inversion formula using Haar measure?
+  hint: Select dual Haar measures on $G$ and $\widehat{G}$ such that the inversion constant equals 1.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of a fourier inversion formula? you want the double dual
-    of the fourier transform of f(g) to give -f(g) due to complex number up to a constant, and this is
-    a canonical isomorphism. the constant is necessary due to the fact that measures are defined up to
-    a constant
+  search_text: how does one normalize the fourier inversion formula using haar measure? select dual haar
+    measures on $g$ and $\widehat{g}$ such that the inversion constant equals 1.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#024
-  text: How does one fix the definition of a Fourier transform using Haar measure?
-  hint: let G be locally compact ab group, Haar measure dg exists, let f be "character" or continuous
-    L^1 function in C or U^1, the Fourier transform is the integral taking the pullback of the character
-    of g back to group G * f(g) and then take integration.
+  text: How does one define the Fourier transform using Haar measure?
+  hint: Set $\widehat{f}(\xi) = \int_G f(g) \overline{\xi(g)} \, dg$ for $f \in L^1(G)$.
   locator: null
   sub_index: null
-  search_text: how does one fix the definition of a fourier transform using haar measure? let g be locally
-    compact ab group, haar measure dg exists, let f be "character" or continuous l^1 function in c or
-    u^1, the fourier transform is the integral taking the pullback of the character of g back to group
-    g * f(g) and then take integration.
+  search_text: how does one define the fourier transform using haar measure? set $\widehat{f}(\xi) = \int_g
+    f(g) \overline{\xi(g)} \, dg$ for $f \in l^1(g)$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#025
-  text: How does one prove the Fourier inversion theorem for the Fourier transform of locally compact
-    abelian groups?
-  hint: again it is logic so f^^ = f(-g) up to constant using the canonical isomorphism induced by the
-    classification of abelian groups.
+  text: How does one prove the Fourier inversion theorem for locally compact abelian groups?
+  hint: Prove it first on Schwartz-Bruhat functions and extend to $L^2(G)$ via Plancherel's theorem.
   locator: null
   sub_index: null
-  search_text: how does one prove the fourier inversion theorem for the fourier transform of locally compact
-    abelian groups? again it is logic so f^^ = f(-g) up to constant using the canonical isomorphism induced
-    by the classification of abelian groups.
+  search_text: how does one prove the fourier inversion theorem for locally compact abelian groups? prove
+    it first on schwartz-bruhat functions and extend to $l^2(g)$ via plancherel's theorem.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#026
-  text: 'How does one invent the Poisson summation formula? (Hint: sum f(a) = sum f^(b) in Schwarz space,
-    it is well defined on R^n/Z^n in Schwarz space that is left invariant using lca group Fourier transform,
-    Fourier series exist, now change variable x to  x-a which does not change exponential term, one gets
-    basis of f^(b). Thne pick g(0) = sum of f(x+a) = sum of f(a), left invariant'
-  hint: null
+  text: How does one invent the Poisson summation formula?
+  hint: Periodize a Schwartz function $g(x) = \sum_{n \in \mathbb{Z}} f(x+n)$, compute its Fourier series,
+    and evaluate at zero to get $\sum_{n \in \mathbb{Z}} f(n) = \sum_{m \in \mathbb{Z}} \widehat{f}(m)$.
   locator: null
   sub_index: null
-  search_text: 'how does one invent the poisson summation formula? (hint: sum f(a) = sum f^(b) in schwarz
-    space, it is well defined on r^n/z^n in schwarz space that is left invariant using lca group fourier
-    transform, fourier series exist, now change variable x to  x-a which does not change exponential term,
-    one gets basis of f^(b). thne pick g(0) = sum of f(x+a) = sum of f(a), left invariant'
+  search_text: how does one invent the poisson summation formula? periodize a schwartz function $g(x)
+    = \sum_{n \in \mathbb{z}} f(x+n)$, compute its fourier series, and evaluate at zero to get $\sum_{n
+    \in \mathbb{z}} f(n) = \sum_{m \in \mathbb{z}} \widehat{f}(m)$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#027
-  text: 'How does one invent the Mellin transform? (Hint: use the fact that dx/x is invariant under multiplication
-    by x when one defines a Haar measure, so use y^s f(y) dy/y) for a f: R>0 -> C knowing what you know
-    about the Haar measure). So the Mellin transform is an incarnation of the Fourier transform, and in
-    fact it is an analytic continuation of the Fourier transform'
-  hint: null
+  text: How does one invent the Mellin transform?
+  hint: 'Integrate against multiplicative Haar measure: $\mathcal{M}(f)(s) = \int_0^\infty f(y) y^{s-1}
+    \, dy = \int_0^\infty f(y) y^s \frac{dy}{y}$.'
   locator: null
   sub_index: null
-  search_text: 'how does one invent the mellin transform? (hint: use the fact that dx/x is invariant under
-    multiplication by x when one defines a haar measure, so use y^s f(y) dy/y) for a f: r>0 -> c knowing
-    what you know about the haar measure). so the mellin transform is an incarnation of the fourier transform,
-    and in fact it is an analytic continuation of the fourier transform'
+  search_text: 'how does one invent the mellin transform? integrate against multiplicative haar measure:
+    $\mathcal{m}(f)(s) = \int_0^\infty f(y) y^{s-1} \, dy = \int_0^\infty f(y) y^s \frac{dy}{y}$.'
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#028
-  text: How does one invent a gamma function?
-  hint: take the Mellin transform of exp, which is the factorial sort of, therefore the gamma function
-    is a analytic continuation of the factorial
+  text: How does one invent the Gamma function?
+  hint: Take the Mellin transform of $e^{-y}$, yielding $\Gamma(s) = \int_0^\infty y^{s-1} e^{-y} \, dy$,
+    which continuously interpolates the factorial $(n-1)!$.
   locator: null
   sub_index: null
-  search_text: how does one invent a gamma function? take the mellin transform of exp, which is the factorial
-    sort of, therefore the gamma function is a analytic continuation of the factorial
+  search_text: how does one invent the gamma function? take the mellin transform of $e^{-y}$, yielding
+    $\gamma(s) = \int_0^\infty y^{s-1} e^{-y} \, dy$, which continuously interpolates the factorial $(n-1)!$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#029
-  text: How does one come up with Mellin transforms as a technique in number theory?
-  hint: a lot of Dirichlet series appears as MEllin transforms of some functions, one writes the 1/2pi^-s
-    Gamma(s)  * Dirichlet series ot be a Mellin transform of some f and s, where f(y) is a Fourier series,
-    one can study analysis M(f,s) with the analytic properties of the gamma function to deduce the Dirichlet
-    series
+  text: How do Mellin transforms serve as a technique in number theory?
+  hint: Relate Dirichlet series $\sum a_n n^{-s}$ to the Mellin transform of their generating functions
+    $\sum a_n e^{-ny}$.
   locator: null
   sub_index: null
-  search_text: how does one come up with mellin transforms as a technique in number theory? a lot of dirichlet
-    series appears as mellin transforms of some functions, one writes the 1/2pi^-s gamma(s)  * dirichlet
-    series ot be a mellin transform of some f and s, where f(y) is a fourier series, one can study analysis
-    m(f,s) with the analytic properties of the gamma function to deduce the dirichlet series
+  search_text: how do mellin transforms serve as a technique in number theory? relate dirichlet series
+    $\sum a_n n^{-s}$ to the mellin transform of their generating functions $\sum a_n e^{-ny}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#030
   text: How does one invent the Riemann zeta function?
-  hint: pick Dirichlet series, all coefficients of a_n = 1.
+  hint: 'Sum $n^{-s}$ over all positive integers: $\zeta(s) = \sum_{n=1}^\infty n^{-s}$ for $\operatorname{Re}(s)
+    > 1$.'
   locator: null
   sub_index: null
-  search_text: how does one invent the riemann zeta function? pick dirichlet series, all coefficients
-    of a_n = 1.
+  search_text: 'how does one invent the riemann zeta function? sum $n^{-s}$ over all positive integers:
+    $\zeta(s) = \sum_{n=1}^\infty n^{-s}$ for $\operatorname{re}(s) > 1$.'
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#031
   text: How does one invent the Euler product formula?
-  hint: write out the geometric series of p^{-s} and one gets the product at all primes using unique factorisation
-    in Z and be careful about convergences, one can then use it to connect the zeta function with the
-    distribution of primes
+  hint: Expand geometric series $\prod_p (1 - p^{-s})^{-1} = \prod_p \sum_{k=0}^\infty p^{-ks}$ and use
+    unique prime factorization in $\mathbb{Z}$.
   locator: null
   sub_index: null
-  search_text: how does one invent the euler product formula? write out the geometric series of p^{-s}
-    and one gets the product at all primes using unique factorisation in z and be careful about convergences,
-    one can then use it to connect the zeta function with the distribution of primes
+  search_text: how does one invent the euler product formula? expand geometric series $\prod_p (1 - p^{-s})^{-1}
+    = \prod_p \sum_{k=0}^\infty p^{-ks}$ and use unique prime factorization in $\mathbb{z}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#032
-  text: 'How does one write the zeta function as a Mellin transform? (Hint: multiply it by Gamma(s)/(2pi)^-s,
-    then pick f(y) = 1/exp(2 pi y) - 1)'
-  hint: null
+  text: How does one express the Riemann zeta function as a Mellin transform?
+  hint: Show $\pi^{-s/2} \Gamma(s/2) \zeta(s) = \int_0^\infty \frac{1}{e^{\pi y} - 1} y^{s/2} \frac{dy}{y}$.
   locator: null
   sub_index: null
-  search_text: 'how does one write the zeta function as a mellin transform? (hint: multiply it by gamma(s)/(2pi)^-s,
-    then pick f(y) = 1/exp(2 pi y) - 1)'
+  search_text: how does one express the riemann zeta function as a mellin transform? show $\pi^{-s/2}
+    \gamma(s/2) \zeta(s) = \int_0^\infty \frac{1}{e^{\pi y} - 1} y^{s/2} \frac{dy}{y}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#033
-  text: How does one deduce that zeta(s) has a meromorphic continuation to C with s = 1 as only singularity?
-  hint: pick simple pole at y - 0 by writing out the Mellin transform, Re(s) > 1 with at worst simple
-    poles at s = 1 - N...
+  text: How does one prove that $\zeta(s)$ has a meromorphic continuation to $\mathbb{C}$ with a single
+    simple pole at $s = 1$?
+  hint: Use the Jacobi theta function identity and split the Mellin integral $\int_0^1 + \int_1^\infty$.
   locator: null
   sub_index: null
-  search_text: how does one deduce that zeta(s) has a meromorphic continuation to c with s = 1 as only
-    singularity? pick simple pole at y - 0 by writing out the mellin transform, re(s) > 1 with at worst
-    simple poles at s = 1 - n...
+  search_text: how does one prove that $\zeta(s)$ has a meromorphic continuation to $\mathbb{c}$ with
+    a single simple pole at $s = 1$? use the jacobi theta function identity and split the mellin integral
+    $\int_0^1 + \int_1^\infty$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#034
-  text: How does one prove that there are infinitely many primes?
-  hint: infinitely many primes, zeta(s) is analytic everywhere, by contrapositive there are infinitely
-    many primes using Euler's product formula.
+  text: How does one prove that there are infinitely many primes using the zeta function?
+  hint: If there were finitely many primes, the Euler product would remain bounded as $s \to 1^+$, contradicting
+    the divergence of the harmonic series.
   locator: null
   sub_index: null
-  search_text: how does one prove that there are infinitely many primes? infinitely many primes, zeta(s)
-    is analytic everywhere, by contrapositive there are infinitely many primes using euler's product formula.
+  search_text: how does one prove that there are infinitely many primes using the zeta function? if there
+    were finitely many primes, the euler product would remain bounded as $s \to 1^+$, contradicting the
+    divergence of the harmonic series.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#035
-  text: How does one compute the values of zeta(s) at negative integers?
-  hint: use the Bernoulli numbers as a generating function
+  text: How does one compute the values of $\zeta(s)$ at negative integers?
+  hint: 'Use the functional equation relating $\zeta(1-s)$ to $\zeta(s)$ and express values via Bernoulli
+    numbers: $\zeta(1-k) = -B_k / k$.'
   locator: null
   sub_index: null
-  search_text: how does one compute the values of zeta(s) at negative integers? use the bernoulli numbers
-    as a generating function
+  search_text: 'how does one compute the values of $\zeta(s)$ at negative integers? use the functional
+    equation relating $\zeta(1-s)$ to $\zeta(s)$ and express values via bernoulli numbers: $\zeta(1-k)
+    = -b_k / k$.'
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#036
-  text: 'How does one invention the notion of Dirichlet L-function? (Hint: one has Dirichlet characters
-    mod N is a character from multiplicative Z/nZ to multiplicative C, then a Dirichlet L-function is
-    a Dirichlet series that comes from these characters)'
-  hint: null
+  text: How does one invent the notion of a Dirichlet $L$-function?
+  hint: 'Associate an $L$-series $L(s, \chi) = \sum_{n=1}^\infty \chi(n) n^{-s}$ to a Dirichlet character
+    $\chi: (\mathbb{Z}/N\mathbb{Z})^\times \to \mathbb{C}^\times$.'
   locator: null
   sub_index: null
-  search_text: 'how does one invention the notion of dirichlet l-function? (hint: one has dirichlet characters
-    mod n is a character from multiplicative z/nz to multiplicative c, then a dirichlet l-function is
-    a dirichlet series that comes from these characters)'
+  search_text: 'how does one invent the notion of a dirichlet $l$-function? associate an $l$-series $l(s,
+    \chi) = \sum_{n=1}^\infty \chi(n) n^{-s}$ to a dirichlet character $\chi: (\mathbb{z}/n\mathbb{z})^\times
+    \to \mathbb{c}^\times$.'
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#037
-  text: How does one come up with the notion of primitive characters?
-  hint: only have it composed with a reduction mod M. no M < N with M | N with chi' in (Z/mZ)^\times
+  text: How does one define primitive Dirichlet characters?
+  hint: A character mod $N$ is primitive if it does not factor through $(\mathbb{Z}/M\mathbb{Z})^\times$
+    for any proper divisor $M \mid N$.
   locator: null
   sub_index: null
-  search_text: how does one come up with the notion of primitive characters? only have it composed with
-    a reduction mod m. no m < n with m | n with chi' in (z/mz)^\times
+  search_text: how does one define primitive dirichlet characters? a character mod $n$ is primitive if
+    it does not factor through $(\mathbb{z}/m\mathbb{z})^\times$ for any proper divisor $m \mid n$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#038
-  text: How does one define equivalent characters?
-  hint: '[x, N_1 N_2] = 1, chi_1 (x mod N_1) = chi_2 (x mod N_2) basically one can produce a new character
-    from an old one via reduction mod Nd'
+  text: How does one define equivalent Dirichlet characters?
+  hint: Characters are equivalent if they are induced by the same primitive character modulo their conductors.
   locator: null
   sub_index: null
-  search_text: how does one define equivalent characters? [x, n_1 n_2] = 1, chi_1 (x mod n_1) = chi_2
-    (x mod n_2) basically one can produce a new character from an old one via reduction mod nd
+  search_text: how does one define equivalent dirichlet characters? characters are equivalent if they
+    are induced by the same primitive character modulo their conductors.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#039
-  text: How does one invented the notion of a conductor of a character chi with unique M | N such that
-    there is a primitive chi_* in (Z/mZ)\times that is equivalent to chi?
-  hint: null
+  text: How does one define the conductor of a Dirichlet character $\chi$?
+  hint: The smallest modulus $M \mid N$ such that $\chi$ factors through $(\mathbb{Z}/M\mathbb{Z})^\times$.
   locator: null
   sub_index: null
-  search_text: how does one invented the notion of a conductor of a character chi with unique m | n such
-    that there is a primitive chi_* in (z/mz)\times that is equivalent to chi?
+  search_text: how does one define the conductor of a dirichlet character $\chi$? the smallest modulus
+    $m \mid n$ such that $\chi$ factors through $(\mathbb{z}/m\mathbb{z})^\times$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#040
-  text: 'How do we know that Dirichlet series |chi(n)| = 1? (Hint: Dirichlet series is convergent for
-    Re(s) > 1)'
-  hint: null
+  text: Why is a Dirichlet series with bounded coefficients $|\chi(n)| \le 1$ convergent for $\operatorname{Re}(s)
+    > 1$?
+  hint: Dominated by the convergent series $\sum n^{-\sigma}$ for $\sigma > 1$.
   locator: null
   sub_index: null
-  search_text: 'how do we know that dirichlet series |chi(n)| = 1? (hint: dirichlet series is convergent
-    for re(s) > 1)'
+  search_text: why is a dirichlet series with bounded coefficients $|\chi(n)| \le 1$ convergent for $\operatorname{re}(s)
+    > 1$? dominated by the convergent series $\sum n^{-\sigma}$ for $\sigma > 1$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#041
-  text: How does one get the same Euler product?
-  hint: use chi(mn) = chi(m) chi(n) = (mn, N) = 1
+  text: How does one derive the Euler product for Dirichlet $L$-functions?
+  hint: Complete multiplicativity $\chi(mn) = \chi(m)\chi(n)$ yields $L(s, \chi) = \prod_p (1 - \chi(p)p^{-s})^{-1}$.
   locator: null
   sub_index: null
-  search_text: how does one get the same euler product? use chi(mn) = chi(m) chi(n) = (mn, n) = 1
+  search_text: how does one derive the euler product for dirichlet $l$-functions? complete multiplicativity
+    $\chi(mn) = \chi(m)\chi(n)$ yields $l(s, \chi) = \prod_p (1 - \chi(p)p^{-s})^{-1}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#042
-  text: How does one prove that Dirichlet has meromorphic continuation to C?
-  hint: 'let phi: Z/NZ -> C be any N-periodic series, write it as Mellin transform, write f(y) as a series
-    with basis exp(-2 pi n y), then write this as a ratio, split into two terms, M_0 and M_infty, second
-    term is analytic for all s in C, so reduce to 0 to 1 case, then do a lot of stuff to cancel out all
-    the poles by again. This is a very tricky proof. But anyway essentially it has a meromorphic continuation
-    to C but it is very messy. Another way is to express it as a finite linear combination to Hurwitz
-    zeta functions.'
+  text: How does one prove that Dirichlet $L$-functions have meromorphic continuation to $\mathbb{C}$?
+  hint: Express $L(s, \chi)$ as a linear combination of Hurwitz zeta functions or via the Mellin transform
+    of periodic theta functions.
   locator: null
   sub_index: null
-  search_text: 'how does one prove that dirichlet has meromorphic continuation to c? let phi: z/nz ->
-    c be any n-periodic series, write it as mellin transform, write f(y) as a series with basis exp(-2
-    pi n y), then write this as a ratio, split into two terms, m_0 and m_infty, second term is analytic
-    for all s in c, so reduce to 0 to 1 case, then do a lot of stuff to cancel out all the poles by again.
-    this is a very tricky proof. but anyway essentially it has a meromorphic continuation to c but it
-    is very messy. another way is to express it as a finite linear combination to hurwitz zeta functions.'
+  search_text: how does one prove that dirichlet $l$-functions have meromorphic continuation to $\mathbb{c}$?
+    express $l(s, \chi)$ as a linear combination of hurwitz zeta functions or via the mellin transform
+    of periodic theta functions.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#043
-  text: How does one prove the non-vanishing of Dirichlet L-functions?
-  hint: consider all characters together, check that it has a pole at s = 1 and analytic everywhere else,
-    chi_N(s) is analytic on Re(s) > 0, so if any other L(chi, 1) = 0, zeta_N(s) is analytic on Re(s) >
-    0, one finds a nice formula for the auxiliary product function over all characters, leading to a contradiction
-    if a zero were present, nonvanishing at s = 1/2, is hard that one uses moment methods or mollifiers,
-    find it in Course in Arithmetic, class number formulas might be easier?
+  text: How does one prove the non-vanishing of Dirichlet $L$-functions at $s = 1$ for non-trivial characters?
+  hint: Consider the product $\prod_\chi L(s, \chi)$ and use positivity of coefficients to prevent multiple
+    zeros from cancelling the pole of $\zeta(s)$ at $s = 1$.
   locator: null
   sub_index: null
-  search_text: how does one prove the non-vanishing of dirichlet l-functions? consider all characters
-    together, check that it has a pole at s = 1 and analytic everywhere else, chi_n(s) is analytic on
-    re(s) > 0, so if any other l(chi, 1) = 0, zeta_n(s) is analytic on re(s) > 0, one finds a nice formula
-    for the auxiliary product function over all characters, leading to a contradiction if a zero were
-    present, nonvanishing at s = 1/2, is hard that one uses moment methods or mollifiers, find it in course
-    in arithmetic, class number formulas might be easier?
+  search_text: how does one prove the non-vanishing of dirichlet $l$-functions at $s = 1$ for non-trivial
+    characters? consider the product $\prod_\chi l(s, \chi)$ and use positivity of coefficients to prevent
+    multiple zeros from cancelling the pole of $\zeta(s)$ at $s = 1$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#044
   text: How does one prove Dirichlet's theorem on primes in arithmetic progressions?
-  hint: one uses the notion of analytic density, one can generalise it to L/K finite extension of number
-    fields with Galois group, G = Gal(L/K), for all primes p of K which is unramified in L, define a Frobenius
-    conjugacy class, one has a Cebotarev density theorem, L/K Galois extension, any conjugacy class C
-    in Gal(L/K), exists infinitely many prime p with [sigma_p] = C.
+  hint: Use character orthogonality to isolate primes $p \equiv a \pmod N$ via $\sum_\chi \overline{\chi(a)}
+    \log L(s, \chi)$ and apply non-vanishing $L(1, \chi) \ne 0$.
   locator: null
   sub_index: null
-  search_text: how does one prove dirichlet's theorem on primes in arithmetic progressions? one uses the
-    notion of analytic density, one can generalise it to l/k finite extension of number fields with galois
-    group, g = gal(l/k), for all primes p of k which is unramified in l, define a frobenius conjugacy
-    class, one has a cebotarev density theorem, l/k galois extension, any conjugacy class c in gal(l/k),
-    exists infinitely many prime p with [sigma_p] = c.
+  search_text: how does one prove dirichlet's theorem on primes in arithmetic progressions? use character
+    orthogonality to isolate primes $p \equiv a \pmod n$ via $\sum_\chi \overline{\chi(a)} \log l(s, \chi)$
+    and apply non-vanishing $l(1, \chi) \ne 0$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#045
   text: How does one invent modular forms?
-  hint: one tries to find which ones transform nicely under Fourier transforms.
+  hint: Study holomorphic functions on the upper half-plane $\mathbb{H}$ that transform with weight $k$
+    under the action of $\mathrm{SL}_2(\mathbb{Z})$ and are holomorphic at cusps.
   locator: null
   sub_index: null
-  search_text: how does one invent modular forms? one tries to find which ones transform nicely under
-    fourier transforms.
+  search_text: how does one invent modular forms? study holomorphic functions on the upper half-plane
+    $\mathbb{h}$ that transform with weight $k$ under the action of $\mathrm{sl}_2(\mathbb{z})$ and are
+    holomorphic at cusps.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#046
-  text: How does one know what fixes the upper half plane?
-  hint: GL_2(R)^+ but not faithful
+  text: What is the action of $\mathrm{GL}_2^+(\mathbb{R})$ on the upper half-plane?
+  hint: Via Möbius transformations $z \mapsto \frac{az+b}{cz+d}$, with kernel given by scalar matrices
+    $\mathbb{R}_{>0}^\times I$.
   locator: null
   sub_index: null
-  search_text: how does one know what fixes the upper half plane? gl_2(r)^+ but not faithful
+  search_text: what is the action of $\mathrm{gl}_2^+(\mathbb{r})$ on the upper half-plane? via möbius
+    transformations $z \mapsto \frac{az+b}{cz+d}$, with kernel given by scalar matrices $\mathbb{r}_{>0}^\times
+    i$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#047
-  text: How does one compute the action of GL_2(R)^+ to not be faithful?
-  hint: there is a kernel
+  text: Why is the action of $\mathrm{GL}_2^+(\mathbb{R})$ on $\mathbb{H}$ not faithful?
+  hint: Positive scalar matrices act as the identity.
   locator: null
   sub_index: null
-  search_text: how does one compute the action of gl_2(r)^+ to not be faithful? there is a kernel
+  search_text: why is the action of $\mathrm{gl}_2^+(\mathbb{r})$ on $\mathbb{h}$ not faithful? positive
+    scalar matrices act as the identity.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#048
-  text: How does one invent the notion of PGL_2(R)^+?
-  hint: kill of the subgroup as the kernel
+  text: How does one invent $\mathrm{PGL}_2^+(\mathbb{R})$ and $\mathrm{PSL}_2(\mathbb{R})$?
+  hint: Quotient by the center to obtain faithful projective group actions on $\mathbb{H}$.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of pgl_2(r)^+? kill of the subgroup as the kernel
+  search_text: how does one invent $\mathrm{pgl}_2^+(\mathbb{r})$ and $\mathrm{psl}_2(\mathbb{r})$? quotient
+    by the center to obtain faithful projective group actions on $\mathbb{h}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#049
-  text: How does one invent PSL_2(R)?
-  hint: multiply any matrix in GL_2(R^+) by multiplying an element of SL_2(R) with unit in R
+  text: What is the Iwasawa decomposition of $\mathrm{SL}_2(\mathbb{R})$?
+  hint: Decompose $G = KAN$ into compact $K = \mathrm{SO}(2)$, diagonal $A$, and strictly upper triangular
+    $N$.
   locator: null
   sub_index: null
-  search_text: how does one invent psl_2(r)? multiply any matrix in gl_2(r^+) by multiplying an element
-    of sl_2(r) with unit in r
+  search_text: what is the iwasawa decomposition of $\mathrm{sl}_2(\mathbb{r})$? decompose $g = kan$ into
+    compact $k = \mathrm{so}(2)$, diagonal $a$, and strictly upper triangular $n$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#050
-  text: Why does one care about the Iwasawa decomposition?
-  hint: null
+  text: How does one compute the Iwasawa decomposition?
+  hint: Apply Gram-Schmidt orthogonalization to the column vectors of $g \in \mathrm{SL}_2(\mathbb{R})$.
   locator: null
   sub_index: null
-  search_text: why does one care about the iwasawa decomposition?
+  search_text: how does one compute the iwasawa decomposition? apply gram-schmidt orthogonalization to
+    the column vectors of $g \in \mathrm{sl}_2(\mathbb{r})$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#051
-  text: How does one compute a Iwasawa decomposition?
-  hint: Gram-Schmidt orthogonalisation of SL_2(R)
+  text: What is the fundamental domain for the modular group $\mathrm{SL}_2(\mathbb{Z})$ acting on $\mathbb{H}$?
+  hint: The standard region $\mathcal{F} = \{z \in \mathbb{H} \mid |z| \ge 1, |\operatorname{Re}(z)| \le
+    1/2\}$.
   locator: null
   sub_index: null
-  search_text: how does one compute a iwasawa decomposition? gram-schmidt orthogonalisation of sl_2(r)
+  search_text: what is the fundamental domain for the modular group $\mathrm{sl}_2(\mathbb{z})$ acting
+    on $\mathbb{h}$? the standard region $\mathcal{f} = \{z \in \mathbb{h} \mid |z| \ge 1, |\operatorname{re}(z)|
+    \le 1/2\}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#052
-  text: Why does one care about the definition of the modular group?
-  hint: null
+  text: How does one prove that $\mathrm{SL}_2(\mathbb{Z}) \backslash \mathbb{H}$ has finite invariant
+    hyperbolic volume?
+  hint: Integrate the hyperbolic volume form $y^{-2} \, dx \, dy$ over the fundamental domain $\mathcal{F}$
+    to get $\pi / 3$.
   locator: null
   sub_index: null
-  search_text: why does one care about the definition of the modular group?
+  search_text: how does one prove that $\mathrm{sl}_2(\mathbb{z}) \backslash \mathbb{h}$ has finite invariant
+    hyperbolic volume? integrate the hyperbolic volume form $y^{-2} \, dx \, dy$ over the fundamental
+    domain $\mathcal{f}$ to get $\pi / 3$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#053
-  text: How does one draw conclusions about the fundamental domain for action of Gamma on H
-  hint: use something analogous of reduction theory for binary positive definite binary quadratic forms
+  text: How does one compute the $q$-expansion of a modular form?
+  hint: Invariance under $z \mapsto z+1$ makes $f(z)$ periodic, yielding a Fourier series in $q = e^{2\pi
+    i z}$.
   locator: null
   sub_index: null
-  search_text: how does one draw conclusions about the fundamental domain for action of gamma on h use
-    something analogous of reduction theory for binary positive definite binary quadratic forms
+  search_text: how does one compute the $q$-expansion of a modular form? invariance under $z \mapsto z+1$
+    makes $f(z)$ periodic, yielding a fourier series in $q = e^{2\pi i z}$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#054
-  text: How does one prove that Gamma \ H has finite invariant measure?
-  hint: use 2-form associated with mu, given by eta, gamma
+  text: How does one define a cusp form?
+  hint: A modular form whose $q$-expansion has vanishing constant term $a_0 = 0$, so that it vanishes
+    at all cusps.
   locator: null
   sub_index: null
-  search_text: how does one prove that gamma \ h has finite invariant measure? use 2-form associated with
-    mu, given by eta, gamma
+  search_text: how does one define a cusp form? a modular form whose $q$-expansion has vanishing constant
+    term $a_0 = 0$, so that it vanishes at all cusps.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#055
-  text: How does one compute the Laurent expansion, q-expansion of f?
-  hint: null
+  text: Why are cusp forms important?
+  hint: Cusp forms decay exponentially as $y \to \infty$, making them square-integrable with respect to
+    the Petersson inner product.
   locator: null
   sub_index: null
-  search_text: how does one compute the laurent expansion, q-expansion of f?
+  search_text: why are cusp forms important? cusp forms decay exponentially as $y \to \infty$, making
+    them square-integrable with respect to the petersson inner product.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#056
-  text: How does one invent the notion of a modular form?
-  hint: weight k, f|gamma = f, for all gamma in Gamma, how does one invent f is holomorphic at cusps of
-    Gamma, if vanish at the cusps, these are cusp forms
+  text: What is a weakly modular form?
+  hint: A function satisfying the modular transformation law that is meromorphic at the cusps.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of a modular form? weight k, f|gamma = f, for all gamma
-    in gamma, how does one invent f is holomorphic at cusps of gamma, if vanish at the cusps, these are
-    cusp forms
+  search_text: what is a weakly modular form? a function satisfying the modular transformation law that
+    is meromorphic at the cusps.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#057
-  text: Why does one care that modular forms are cusp forms?
-  hint: constant term of modular form is -, this is useful since one can just have n >= 1 in the Laurent
-    expansion or q-expansion of the modular form
+  text: What are Eisenstein series and why are they fundamental?
+  hint: Average $1/(cz+d)^k$ over coprime pairs $(c, d)$ to form holomorphic modular forms that do not
+    vanish at cusps.
   locator: null
   sub_index: null
-  search_text: why does one care that modular forms are cusp forms? constant term of modular form is -,
-    this is useful since one can just have n >= 1 in the laurent expansion or q-expansion of the modular
-    form
+  search_text: what are eisenstein series and why are they fundamental? average $1/(cz+d)^k$ over coprime
+    pairs $(c, d)$ to form holomorphic modular forms that do not vanish at cusps.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#058
-  text: Why does one care about weak modular forms?
-  hint: it is meromorphic at infinity
+  text: How does one generalize Eisenstein series to congruence subgroups?
+  hint: Sum over cosets of $\Gamma_0(N)$, $\Gamma_1(N)$, or $\Gamma(N)$ modulo parabolic stabilizers.
   locator: null
   sub_index: null
-  search_text: why does one care about weak modular forms? it is meromorphic at infinity
+  search_text: how does one generalize eisenstein series to congruence subgroups? sum over cosets of $\gamma_0(n)$,
+    $\gamma_1(n)$, or $\gamma(n)$ modulo parabolic stabilizers.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#059
-  text: Why does one care about the main class of modular forms, Eisenstein series?
-  hint: theory of elliptic functions, these are Eisenstein series. These are the simplest and most useful,
-    one wants normalised Eisenstein series as well and it appears in elliptic coefficients when one expands
-    the Weierstrass p-function
+  text: How does one invent theta functions as modular forms?
+  hint: Define $\Theta(z) = \sum_{n \in \mathbb{Z}} q^{n^2}$, which yields modular forms of weight $1/2$
+    by the Poisson summation formula.
   locator: null
   sub_index: null
-  search_text: why does one care about the main class of modular forms, eisenstein series? theory of elliptic
-    functions, these are eisenstein series. these are the simplest and most useful, one wants normalised
-    eisenstein series as well and it appears in elliptic coefficients when one expands the weierstrass
-    p-function
+  search_text: how does one invent theta functions as modular forms? define $\theta(z) = \sum_{n \in \mathbb{z}}
+    q^{n^2}$, which yields modular forms of weight $1/2$ by the poisson summation formula.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#060
-  text: How does one generalise Eisenstein series?
-  hint: null
+  text: How does Hecke theory work for $\Gamma_0(N)$?
+  hint: Hecke operators $T_n$ act on spaces of modular forms; common eigenforms have multiplicative Fourier
+    coefficients and satisfy multiplicity one.
   locator: null
   sub_index: null
-  search_text: how does one generalise eisenstein series?
+  search_text: how does hecke theory work for $\gamma_0(n)$? hecke operators $t_n$ act on spaces of modular
+    forms; common eigenforms have multiplicative fourier coefficients and satisfy multiplicity one.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#061
-  text: How does one invent theta function sas a modular form?
-  hint: null
+  text: Why is the arithmetic of the Ramanujan Delta function $\Delta(z) = q \prod_{n=1}^\infty (1-q^n)^{24}
+    = \sum \tau(n) q^n$ significant?
+  hint: Deligne proved the Ramanujan conjecture $|\tau(p)| \le 2 p^{11/2}$ using the Weil conjectures,
+    connecting modular forms to $\ell$-adic Galois representations.
   locator: null
   sub_index: null
-  search_text: how does one invent theta function sas a modular form?
+  search_text: why is the arithmetic of the ramanujan delta function $\delta(z) = q \prod_{n=1}^\infty
+    (1-q^n)^{24} = \sum \tau(n) q^n$ significant? deligne proved the ramanujan conjecture $|\tau(p)| \le
+    2 p^{11/2}$ using the weil conjectures, connecting modular forms to $\ell$-adic galois representations.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#062
-  text: How does one do Hecke theory for Gamma_0(N)
-  hint: work with the key case of Gamma_1(N), modular form of level 1 is q-expansion, if we have Hecke
-    eigenform, just need Hecke eigenvalues or values of a_p, this is multiplicity 1, modular forms is
-    fd, depend on finitely many coefficients, but not enough, you need strong multiplicity one theorem
+  text: Why is the space of modular forms $M_k(\Gamma)$ finite-dimensional?
+  hint: Apply the valence formula / Riemann-Roch theorem to the compactified modular curve.
   locator: null
   sub_index: null
-  search_text: how does one do hecke theory for gamma_0(n) work with the key case of gamma_1(n), modular
-    form of level 1 is q-expansion, if we have hecke eigenform, just need hecke eigenvalues or values
-    of a_p, this is multiplicity 1, modular forms is fd, depend on finitely many coefficients, but not
-    enough, you need strong multiplicity one theorem
+  search_text: why is the space of modular forms $m_k(\gamma)$ finite-dimensional? apply the valence formula
+    / riemann-roch theorem to the compactified modular curve.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#063
-  text: Why does ne care about the arithmetic of Delta = sum tau(n) q^n i.e. q expansion with coefficients
-    as the Ramanujan tau-function?
-  hint: 691 congruence, tau(mn) = tau(m) tau(n) and |tau(p)| < 2p^11/2, Deligne proved the second fact
-    in 1972, tau(p) is related to Galois representations
+  text: What is the Hecke algebra?
+  hint: The commutative algebra generated by Hecke operators $T_n$ and diamond operators acting on $M_k(\Gamma)$.
   locator: null
   sub_index: null
-  search_text: why does ne care about the arithmetic of delta = sum tau(n) q^n i.e. q expansion with coefficients
-    as the ramanujan tau-function? 691 congruence, tau(mn) = tau(m) tau(n) and |tau(p)| < 2p^11/2, deligne
-    proved the second fact in 1972, tau(p) is related to galois representations
+  search_text: what is the hecke algebra? the commutative algebra generated by hecke operators $t_n$ and
+    diamond operators acting on $m_k(\gamma)$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#064
-  text: Why does one care about M_k as finite dimensional with a basis?
-  hint: null
+  text: How does one invent the modular slash operator?
+  hint: Define $(f|_k \gamma)(z) = (\det \gamma)^{k/2} (cz+d)^{-k} f(\gamma z)$ to make the modular transformation
+    law a right group action.
   locator: null
   sub_index: null
-  search_text: why does one care about m_k as finite dimensional with a basis?
+  search_text: how does one invent the modular slash operator? define $(f|_k \gamma)(z) = (\det \gamma)^{k/2}
+    (cz+d)^{-k} f(\gamma z)$ to make the modular transformation law a right group action.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#065
-  text: WHy does one care about Hecke algebra?
-  hint: M_k is a module for a Hecke algebra and is related to Galois representations
+  text: What is the Atkin-Lehner theory of newforms?
+  hint: Decomposes spaces of cusp forms into oldforms coming from lower levels and newforms that satisfy
+    strong multiplicity one.
   locator: null
   sub_index: null
-  search_text: why does one care about hecke algebra? m_k is a module for a hecke algebra and is related
-    to galois representations
+  search_text: what is the atkin-lehner theory of newforms? decomposes spaces of cusp forms into oldforms
+    coming from lower levels and newforms that satisfy strong multiplicity one.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#066
-  text: Why does one care about Hecke operators?
-  hint: null
+  text: What is an automorphic representation?
+  hint: An irreducible representation of a reductive algebraic group $G(\mathbb{A})$ over the adeles occurring
+    in the space of square-integrable functions $L^2(G(\mathbb{Q}) \backslash G(\mathbb{A}))$.
   locator: null
   sub_index: null
-  search_text: why does one care about hecke operators?
+  search_text: what is an automorphic representation? an irreducible representation of a reductive algebraic
+    group $g(\mathbb{a})$ over the adeles occurring in the space of square-integrable functions $l^2(g(\mathbb{q})
+    \backslash g(\mathbb{a}))$.
 - id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#067
-  text: How does one invent a Hecke algebra?
-  hint: generate a ring with double cosets, free abelian group onf symbols Gamma g Gamma for each double
-    coset gamma g Gamma, define an action on this, this has a multiplicative structure using the fact
-    that G-modules are abelian groups with Z-linear G-action, module of group ring ZG, work with right
-    modules. Importantly it is to compute the Hecke algebras for these cases.
-  locator: null
-  sub_index: null
-  search_text: how does one invent a hecke algebra? generate a ring with double cosets, free abelian group
-    onf symbols gamma g gamma for each double coset gamma g gamma, define an action on this, this has
-    a multiplicative structure using the fact that g-modules are abelian groups with z-linear g-action,
-    module of group ring zg, work with right modules. importantly it is to compute the hecke algebras
-    for these cases.
-- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#068
-  text: Why does one invent the slash operator?
-  hint: one wants to have det gamma^k/2 factor
-  locator: null
-  sub_index: null
-  search_text: why does one invent the slash operator? one wants to have det gamma^k/2 factor
-- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#069
-  text: Why does one care about the Atkin-Lehner theorem?
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: why does one care about the atkin-lehner theorem?
-- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#070
-  text: Why does one care about automorphic representations?
-  hint: one studies properties of modular forms on SL_2(Z), holomorphic H -> C and (cz+d)^-k f(gamma(z))
-    where gamma is [a b; c d] in SL_2(Z), with good growth conditions at cusp, second is modularity condition
-    which gives us Hecke operators, growth condition give fd of space of modular forms, first condition
-    can actually be dropped since we do not need to work on C, one can study nonholomorphic modular forms
-    then one invent W_k(Gamma(1) to be set of C^\inf functions H -> C, but this is too big, so need so
-    regularity conditions. Holomorphic functions is too strong, since only ones are constant, but weaken
-    to harmonic, still fails, max principle implies f must vanish, turns out the correct words are Maass
-    forms, need non-holomorphic Eisenstein series)
-  locator: null
-  sub_index: null
-  search_text: why does one care about automorphic representations? one studies properties of modular
-    forms on sl_2(z), holomorphic h -> c and (cz+d)^-k f(gamma(z)) where gamma is [a b; c d] in sl_2(z),
-    with good growth conditions at cusp, second is modularity condition which gives us hecke operators,
-    growth condition give fd of space of modular forms, first condition can actually be dropped since
-    we do not need to work on c, one can study nonholomorphic modular forms then one invent w_k(gamma(1)
-    to be set of c^\inf functions h -> c, but this is too big, so need so regularity conditions. holomorphic
-    functions is too strong, since only ones are constant, but weaken to harmonic, still fails, max principle
-    implies f must vanish, turns out the correct words are maass forms, need non-holomorphic eisenstein
-    series)
-- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#071
   text: How does one invent Maass forms?
-  hint: one wants to study nonholomorphic modular forms, cannot use holomorphic or harmonic, so condition
-    Laplacian under hyperbolic metric = lambda f gives correct conditions, then you can have nonholomorphic
-    Eisenstein series.
+  hint: Non-holomorphic smooth modular functions on $\mathbb{H}$ that are eigenfunctions of the hyperbolic
+    Laplacian $\Delta = -y^2(\partial_x^2 + \partial_y^2)$ with polynomial growth at cusps.
   locator: null
   sub_index: null
-  search_text: how does one invent maass forms? one wants to study nonholomorphic modular forms, cannot
-    use holomorphic or harmonic, so condition laplacian under hyperbolic metric = lambda f gives correct
-    conditions, then you can have nonholomorphic eisenstein series.
-- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#072
-  text: How does one invent cusp forms?
-  hint: pick F_1 = 0, A = B = 0 for f(z) as a Maass form condition, one can then classify Maass cusp forms
-    with eigenvalue, fd nonzero if lamdbda_n >= 0, then one can define Hecke operators and carry over
-    modular form theory
+  search_text: how does one invent maass forms? non-holomorphic smooth modular functions on $\mathbb{h}$
+    that are eigenfunctions of the hyperbolic laplacian $\delta = -y^2(\partial_x^2 + \partial_y^2)$ with
+    polynomial growth at cusps.
+- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#068
+  text: How does one invent the Casimir operator?
+  hint: The central quadratic element in the universal enveloping algebra $U(\mathfrak{g})$ of a Lie algebra,
+    acting as a Laplacian on automorphic forms.
   locator: null
   sub_index: null
-  search_text: how does one invent cusp forms? pick f_1 = 0, a = b = 0 for f(z) as a maass form condition,
-    one can then classify maass cusp forms with eigenvalue, fd nonzero if lamdbda_n >= 0, then one can
-    define hecke operators and carry over modular form theory
-- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#073
-  text: How does one invent Casimir operator?
-  hint: take Laplacian of Maass form and correspond it to automorphic forms
+  search_text: how does one invent the casimir operator? the central quadratic element in the universal
+    enveloping algebra $u(\mathfrak{g})$ of a lie algebra, acting as a laplacian on automorphic forms.
+- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#069
+  text: How does one define general automorphic forms?
+  hint: Smooth functions on $G(\mathbb{Q}) \backslash G(\mathbb{A})$ that are $K$-finite, $\mathcal{Z}(\mathfrak{g})$-finite,
+    and satisfy moderate growth conditions.
   locator: null
   sub_index: null
-  search_text: how does one invent casimir operator? take laplacian of maass form and correspond it to
-    automorphic forms
-- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#074
-  text: How does one invent automorphic forms?
-  hint: one wants to work with C^\infty functions, fulfilling harmonic condition Phi(gr_theta) = exp(ik
-    theta) Phi(g), this is the harmonic condition, such that Casimir Phi = lambda Phi, similar to Maass
-    forms satisfying growth condition to get good conditions at cusp, where Phi(a b; c d) <= poly in a,b,c,d
-    then an integral gives condition of this being a cusp function.
-  locator: null
-  sub_index: null
-  search_text: how does one invent automorphic forms? one wants to work with c^\infty functions, fulfilling
-    harmonic condition phi(gr_theta) = exp(ik theta) phi(g), this is the harmonic condition, such that
-    casimir phi = lambda phi, similar to maass forms satisfying growth condition to get good conditions
-    at cusp, where phi(a b; c d) <= poly in a,b,c,d then an integral gives condition of this being a cusp
-    function.
-- id: dec41-user-srcf-net-h-iii-l-modular-forms-and-l-functions-full#075
-  text: How does one study the general theory of automorphic forms?
-  hint: replace G and Gamma with any semisimple lie group for G, and Gamma with arithmetic subgroup, to
-    get the general theory of automorphic forms for half of the Langlands program
-  locator: null
-  sub_index: null
-  search_text: how does one study the general theory of automorphic forms? replace g and gamma with any
-    semisimple lie group for g, and gamma with arithmetic subgroup, to get the general theory of automorphic
-    forms for half of the langlands program
+  search_text: how does one define general automorphic forms? smooth functions on $g(\mathbb{q}) \backslash
+    g(\mathbb{a})$ that are $k$-finite, $\mathcal{z}(\mathfrak{g})$-finite, and satisfy moderate growth
+    conditions.

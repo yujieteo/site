@@ -1,237 +1,90 @@
 url: https://dec41.user.srcf.net/h/III_L/the_standard_model/full
 title: standard model
-note: this stuff is a horrible mess. I skipped a lot in the middle.
+note: notes on gauge theory and the electroweak-strong interactions.
 tags: []
 source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#000
-  text: What are forces mediated by?
-  hint: photon mediates EM, QED, weak interaction mediated by W+- and Z bosons, strong by gluons for QCD.
-    QED and weak different, high energy is single gauge group. Matter is by spin 1/2 fermions, G1/g2/G3
-    types. Interaction tables. Charged leptons and neutrinos are leptons, positive quarks and negative
-    quarks are quarks. Nonzero charge means work with EM. Higgs Boson has spin zero, gives mass to W+-,
-    Z bosons and fermions. Gauge group is SU(3)_C x SU(2)_L x U(1)_Y
+  text: What gauge groups mediate the fundamental forces in the Standard Model?
+  hint: The gauge group is $\mathrm{SU}(3)_C \times \mathrm{SU}(2)_L \times \mathrm{U}(1)_Y$, mediating
+    strong, weak, and hypercharge interactions via gluons, $W^\pm/Z^0$ bosons, and photons.
   locator: null
   sub_index: null
-  search_text: what are forces mediated by? photon mediates em, qed, weak interaction mediated by w+-
-    and z bosons, strong by gluons for qcd. qed and weak different, high energy is single gauge group.
-    matter is by spin 1/2 fermions, g1/g2/g3 types. interaction tables. charged leptons and neutrinos
-    are leptons, positive quarks and negative quarks are quarks. nonzero charge means work with em. higgs
-    boson has spin zero, gives mass to w+-, z bosons and fermions. gauge group is su(3)_c x su(2)_l x
-    u(1)_y
+  search_text: what gauge groups mediate the fundamental forces in the standard model? the gauge group
+    is $\mathrm{su}(3)_c \times \mathrm{su}(2)_l \times \mathrm{u}(1)_y$, mediating strong, weak, and
+    hypercharge interactions via gluons, $w^\pm/z^0$ bosons, and photons.
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#001
-  text: What is important fun fact about gauge fields?
-  hint: they are just connections on principal bundles, why write them as local 1-form matrices A_mu that
-    transform like crazy
+  text: How are gauge fields represented geometrically?
+  hint: As connection 1-forms $A = A_\mu^a T^a dx^\mu$ on principal $G$-bundles with curvature given by
+    the field strength $F = dA + g A \wedge A$.
   locator: null
   sub_index: null
-  search_text: what is important fun fact about gauge fields? they are just connections on principal bundles,
-    why write them as local 1-form matrices a_mu that transform like crazy
+  search_text: how are gauge fields represented geometrically? as connection 1-forms $a = a_\mu^a t^a
+    dx^\mu$ on principal $g$-bundles with curvature given by the field strength $f = da + g a \wedge a$.
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#002
-  text: What is important about symmetry breaking?
-  hint: selecting section in vector bundles.
+  text: What are the exact symmetries of the Standard Model?
+  hint: Color $\mathrm{SU}(3)_C$ and electromagnetism $\mathrm{U}(1)_{\mathrm{EM}}$ are unbroken exact
+    gauge symmetries.
   locator: null
   sub_index: null
-  search_text: what is important about symmetry breaking? selecting section in vector bundles.
+  search_text: what are the exact symmetries of the standard model? color $\mathrm{su}(3)_c$ and electromagnetism
+    $\mathrm{u}(1)_{\mathrm{em}}$ are unbroken exact gauge symmetries.
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#003
-  text: What is the gauge group in the standard model?
-  hint: 'colour for SU(3) and SU(2) chiral for weak, U(1) is hypercharge. NOTE: EM has U(1) gauge group
-    but different from this U(1) we see'
+  text: What are gauge anomalies?
+  hint: Classical symmetries of an action that are broken by quantum loop effects in the path integral
+    measure.
   locator: null
   sub_index: null
-  search_text: 'what is the gauge group in the standard model? colour for su(3) and su(2) chiral for weak,
-    u(1) is hypercharge. note: em has u(1) gauge group but different from this u(1) we see'
+  search_text: what are gauge anomalies? classical symmetries of an action that are broken by quantum
+    loop effects in the path integral measure.
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#004
-  text: How does one invent the notion of exact symmetry?
-  hint: U(1)_EM and SU(3)_C are exact symmetries, these are the only actual symmetries we have.
+  text: How does spontaneous symmetry breaking occur in the Standard Model?
+  hint: The Higgs scalar field develops a non-zero vacuum expectation value $\langle \Phi \rangle = \frac{1}{\sqrt{2}}
+    \begin{pmatrix} 0 \\ v \end{pmatrix}$, breaking $\mathrm{SU}(2)_L \times \mathrm{U}(1)_Y \to \mathrm{U}(1)_{\mathrm{EM}}$.
   locator: null
   sub_index: null
-  search_text: how does one invent the notion of exact symmetry? u(1)_em and su(3)_c are exact symmetries,
-    these are the only actual symmetries we have.
+  search_text: how does spontaneous symmetry breaking occur in the standard model? the higgs scalar field
+    develops a non-zero vacuum expectation value $\langle \phi \rangle = \frac{1}{\sqrt{2}} \begin{pmatrix}
+    0 \\ v \end{pmatrix}$, breaking $\mathrm{su}(2)_l \times \mathrm{u}(1)_y \to \mathrm{u}(1)_{\mathrm{em}}$.
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#005
-  text: How does one invent anomalies?
-  hint: exact in classical, goes away when quantised, global axial symmetry for massless spinor fields
+  text: What is Goldstone's theorem?
+  hint: Spontaneous breaking of continuous global symmetries produces massless scalar particles (Nambu-Goldstone
+    bosons).
   locator: null
   sub_index: null
-  search_text: how does one invent anomalies? exact in classical, goes away when quantised, global axial
-    symmetry for massless spinor fields
+  search_text: what is goldstone's theorem? spontaneous breaking of continuous global symmetries produces
+    massless scalar particles (nambu-goldstone bosons).
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#006
-  text: How does one break symmetry with terms of the Lagrangian?
-  hint: terms are small so approximate, may be useful
+  text: What is the Higgs mechanism?
+  hint: In gauge theories, Goldstone bosons are "eaten" to become the longitudinal polarization states
+    of gauge bosons, giving mass to $W^\pm$ and $Z^0$ while keeping the photon massless.
   locator: null
   sub_index: null
-  search_text: how does one break symmetry with terms of the lagrangian? terms are small so approximate,
-    may be useful
+  search_text: what is the higgs mechanism? in gauge theories, goldstone bosons are "eaten" to become
+    the longitudinal polarization states of gauge bosons, giving mass to $w^\pm$ and $z^0$ while keeping
+    the photon massless.
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#007
-  text: How does one invent hidden symmetries?
-  hint: respected by Lagrangian but not the vacuum, spontaneously broken means vacuum expectation value
-    i.e. SU(2)_L x U(1)_Y into U(1)_EM, dynamic breaking of SU(2)_L x SU(2)_R in strong interaction
+  text: What are Dirac and chiral representations of spinors?
+  hint: Dirac spinors transform under the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2\eta^{\mu\nu}$;
+    chiral projectors $P_{L,R} = \frac{1}{2}(1 \mp \gamma^5)$ separate left- and right-handed Weyl fermions.
   locator: null
   sub_index: null
-  search_text: how does one invent hidden symmetries? respected by lagrangian but not the vacuum, spontaneously
-    broken means vacuum expectation value i.e. su(2)_l x u(1)_y into u(1)_em, dynamic breaking of su(2)_l
-    x su(2)_r in strong interaction
+  search_text: what are dirac and chiral representations of spinors? dirac spinors transform under the
+    clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2\eta^{\mu\nu}$; chiral projectors $p_{l,r} = \frac{1}{2}(1
+    \mp \gamma^5)$ separate left- and right-handed weyl fermions.
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#008
-  text: What are chiral symmetries?
-  hint: spinors, all matter feilds are spinors, so important. One gets Dirac spinor with rep theory as
-    Dirac matrices satisfying relations of teh Clifford algebra with the Minkowski metric, Dirac fermions
-    are the spinor field satisfying the Dirac equation. One does representation theory, pick the chiral
-    representation in terms fo the Pauli matrices
+  text: What is the CPT theorem?
+  hint: Any local, Lorentz-invariant unitary quantum field theory is invariant under the combined operations
+    of Charge conjugation, Parity inversion, and Time reversal.
   locator: null
   sub_index: null
-  search_text: what are chiral symmetries? spinors, all matter feilds are spinors, so important. one gets
-    dirac spinor with rep theory as dirac matrices satisfying relations of teh clifford algebra with the
-    minkowski metric, dirac fermions are the spinor field satisfying the dirac equation. one does representation
-    theory, pick the chiral representation in terms fo the pauli matrices
+  search_text: what is the cpt theorem? any local, lorentz-invariant unitary quantum field theory is invariant
+    under the combined operations of charge conjugation, parity inversion, and time reversal.
 - id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#009
-  text: How does one demo gauge symmetry for the Dirac equation as the simplest example?
-  hint: Dirac equation, p(x) -> exp(ia) p(x) for any constant a, leaves all observable physics unchanged,
-    problem, a varies with x, kinetic term in Dirac Lagrangian nolonger invariant, solution, at gauge
-    covariant derivative D_mu, D_mu p(x) -> exp(i a(x)) D_mu p(x), replace del_mu with D_mu in Lagrangian,
-    get Gauge invariant theory, really it means introducting A_mu(x) which is a Gauge field, D_mu p(x)
-    = (del_mu + igA_mu) p(x), then transform A_mu -> A_mu - 1/g del_mu a(x), a(x) is the gauge transform
-    since a now depends on x. Check that D_mu transforms ass claimed, A_mu(x) is thought of as physical
-    field, have kinetic term, get L_g = -1/4 F_mu nu F^mu nu. This gets a U(1) gauge theory, since exp(ia)
-    is in U(1), A_mu in Lie algebra u(1). Real Lie algebra will have nontrivial Lie bracket, however,
-    so this is a simple demo
+  text: What are the Sakharov conditions for baryogenesis?
+  hint: Baryon number violation, C and CP violation, and departure from thermal equilibrium.
   locator: null
   sub_index: null
-  search_text: how does one demo gauge symmetry for the dirac equation as the simplest example? dirac
-    equation, p(x) -> exp(ia) p(x) for any constant a, leaves all observable physics unchanged, problem,
-    a varies with x, kinetic term in dirac lagrangian nolonger invariant, solution, at gauge covariant
-    derivative d_mu, d_mu p(x) -> exp(i a(x)) d_mu p(x), replace del_mu with d_mu in lagrangian, get gauge
-    invariant theory, really it means introducting a_mu(x) which is a gauge field, d_mu p(x) = (del_mu
-    + iga_mu) p(x), then transform a_mu -> a_mu - 1/g del_mu a(x), a(x) is the gauge transform since a
-    now depends on x. check that d_mu transforms ass claimed, a_mu(x) is thought of as physical field,
-    have kinetic term, get l_g = -1/4 f_mu nu f^mu nu. this gets a u(1) gauge theory, since exp(ia) is
-    in u(1), a_mu in lie algebra u(1). real lie algebra will have nontrivial lie bracket, however, so
-    this is a simple demo
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#010
-  text: Why does one care about Lorentz transformatiuons?
-  hint: Lorentz symmetries are continuous by Lie groups, deform smoothly to identity, study Lie algebra,
-    study them infinitesimally, vector feilds are defined by change of coordinates, study how vector fields
-    transform under Lorentz transformations?
-  locator: null
-  sub_index: null
-  search_text: why does one care about lorentz transformatiuons? lorentz symmetries are continuous by
-    lie groups, deform smoothly to identity, study lie algebra, study them infinitesimally, vector feilds
-    are defined by change of coordinates, study how vector fields transform under lorentz transformations?
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#011
-  text: How does one motivate discrete symmetries?
-  hint: not symmetries of universe, but need to understand them and how they fail to be symmetries, particularly,
-    parity, time, reversal, and charge, and combine them, and CPT. These failing to be symmetrries were
-    big result, combination is a symmetry of the universe and can be proven in QFT as the CPT theorem.
-  locator: null
-  sub_index: null
-  search_text: how does one motivate discrete symmetries? not symmetries of universe, but need to understand
-    them and how they fail to be symmetries, particularly, parity, time, reversal, and charge, and combine
-    them, and cpt. these failing to be symmetrries were big result, combination is a symmetry of the universe
-    and can be proven in qft as the cpt theorem.
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#012
-  text: How does one come up with assumptions to relate transformations to QFT?
-  hint: classical transform gives automorphisms of state space, f need not be linear, BUT if f is symmetry
-    thant Wigner's theorem applies, if f auto on state space is symmetry, linear and unitary OR antilinear
-    and anti-unitary i.e. classification of symmetries of theory, unitary if preeserves norms, antiunitary
-    if preserves conjugate of norm, precisely need normalised states to be equivalent if differ by phase
-    i.e. up to phase so need to assume that after state space auto f, they differ by phase.
-  locator: null
-  sub_index: null
-  search_text: how does one come up with assumptions to relate transformations to qft? classical transform
-    gives automorphisms of state space, f need not be linear, but if f is symmetry thant wigner's theorem
-    applies, if f auto on state space is symmetry, linear and unitary or antilinear and anti-unitary i.e.
-    classification of symmetries of theory, unitary if preeserves norms, antiunitary if preserves conjugate
-    of norm, precisely need normalised states to be equivalent if differ by phase i.e. up to phase so
-    need to assume that after state space auto f, they differ by phase.
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#013
-  text: How does one invent the cPT theorem?
-  hint: particle forward in time cannot be distinguished from antiparticle backward in time
-  locator: null
-  sub_index: null
-  search_text: how does one invent the cpt theorem? particle forward in time cannot be distinguished from
-    antiparticle backward in time
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#014
-  text: How does one invent baryogenesis?
-  hint: asymmetry in more matter and antimatter, C and CP violation, nonequilibrium, baryon number violation
-    or lepton number asymmetry i.e. process that generates excess baryons
-  locator: null
-  sub_index: null
-  search_text: how does one invent baryogenesis? asymmetry in more matter and antimatter, c and cp violation,
-    nonequilibrium, baryon number violation or lepton number asymmetry i.e. process that generates excess
-    baryons
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#015
-  text: How does one invent spontaneous symmetry breaking?
-  hint: Lagrangian has symmetry, miltiple minima, arbitrary pick minimum that is not canonical, picking
-    vacuum is not invariant under the symmetry.
-  locator: null
-  sub_index: null
-  search_text: how does one invent spontaneous symmetry breaking? lagrangian has symmetry, miltiple minima,
-    arbitrary pick minimum that is not canonical, picking vacuum is not invariant under the symmetry.
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#016
-  text: How does one compute symmetry breaking with discrete symmetry?
-  hint: pick V(-p) = V(p), p^4 theory with Lagrangian, get m^2 < 0, with imaginary mass, minimum at v,
-    perturbation at v, not invariant under f -> -f, broken by vacuum expectation value of p. Generalise
-    this to continuous symmetry, you get wine bottle on Sombrero potential, again continuum of vacuum
-  locator: null
-  sub_index: null
-  search_text: how does one compute symmetry breaking with discrete symmetry? pick v(-p) = v(p), p^4 theory
-    with lagrangian, get m^2 < 0, with imaginary mass, minimum at v, perturbation at v, not invariant
-    under f -> -f, broken by vacuum expectation value of p. generalise this to continuous symmetry, you
-    get wine bottle on sombrero potential, again continuum of vacuum
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#017
-  text: How does one invent Goldstone's theorem?
-  hint: AQFT, symmetries of Lagrangian has noether current and charges, pick spontanously broken symmetry
-    by picking vacuum, pick Lie algebra basis, one works with the symmetry breaking expressions to get
-    the Kallen-Lehmann spectral representation using the Fourier transform, lots of Lorentz invariance
-  locator: null
-  sub_index: null
-  search_text: how does one invent goldstone's theorem? aqft, symmetries of lagrangian has noether current
-    and charges, pick spontanously broken symmetry by picking vacuum, pick lie algebra basis, one works
-    with the symmetry breaking expressions to get the kallen-lehmann spectral representation using the
-    fourier transform, lots of lorentz invariance
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#018
-  text: 'How does one invent the Higgs mechanism? (Hint: QED, impose Lorentz gauge, get negative norm
-    states, fix gague condition that does not have negative norm states, breaks Lorentz invariants, this
-    is the Higgs mechanism. as usual simplest example is to work with scalar electromagnetics, specify
-    U(1) gaguge transform, state p(x) and A_mu(x), calculate potential first, pick mu^2 < 0 for interesting
-    case of spontaneous symmetry, theory is invariant under unitary transformations, one can come up with
-    the unitary gauge and sacrifice gauge freedom, eta-field is massive with mass, photo gains a mass,
-    Goldstone boson taken up by A_mu whihc gains DOF)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: 'how does one invent the higgs mechanism? (hint: qed, impose lorentz gauge, get negative
-    norm states, fix gague condition that does not have negative norm states, breaks lorentz invariants,
-    this is the higgs mechanism. as usual simplest example is to work with scalar electromagnetics, specify
-    u(1) gaguge transform, state p(x) and a_mu(x), calculate potential first, pick mu^2 < 0 for interesting
-    case of spontaneous symmetry, theory is invariant under unitary transformations, one can come up with
-    the unitary gauge and sacrifice gauge freedom, eta-field is massive with mass, photo gains a mass,
-    goldstone boson taken up by a_mu whihc gains dof)'
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#019
-  text: How does one summarise electroweak theory?
-  hint: SU(2)_L x U(1)_Y, gauge field su(2) and u(1), coupling of U(1) by hypercharge, covariant derivative
-    is big mess, field strengths as well. Scalar Higgs field and fundamental SU(2) representation, 3 generatiosns
-    of matter, Q is charge, Y_L is lhs hypercharge.
-  locator: null
-  sub_index: null
-  search_text: how does one summarise electroweak theory? su(2)_l x u(1)_y, gauge field su(2) and u(1),
-    coupling of u(1) by hypercharge, covariant derivative is big mess, field strengths as well. scalar
-    higgs field and fundamental su(2) representation, 3 generatiosns of matter, q is charge, y_l is lhs
-    hypercharge.
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#020
-  text: How did early high energy physics work? (electrons, hadrons, protons, neutrons, assign isospin?
-    But essentialy, one uses representation theory later. Find out it looks like weight diagram of su(3).
-    Renormalisation is more important in QCD, coupling constant.)
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: how did early high energy physics work? (electrons, hadrons, protons, neutrons, assign
-    isospin? but essentialy, one uses representation theory later. find out it looks like weight diagram
-    of su(3). renormalisation is more important in qcd, coupling constant.)
-- id: dec41-user-srcf-net-h-iii-l-the-standard-model-full#021
-  text: What is Ruterford and Mott scatering in terms of low energy physics?
-  hint: low energy smashing electrons into protons, get the scattering?
-  locator: null
-  sub_index: null
-  search_text: what is ruterford and mott scatering in terms of low energy physics? low energy smashing
-    electrons into protons, get the scattering?
+  search_text: what are the sakharov conditions for baryogenesis? baryon number violation, c and cp violation,
+    and departure from thermal equilibrium.

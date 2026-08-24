@@ -1,0 +1,15 @@
+url: https://dec41.user.srcf.net/h/II_M/galois_theory/full
+title: Galois theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-ii-m-galois-theory-full#000
+  text: What problem was Galois theory originally invented to solve?
+  hint: Determining whether polynomial equations are solvable by radicals via the algebraic structure
+    of their Galois groups.
+  locator: null
+  sub_index: null
+  search_text: what problem was galois theory originally invented to solve? determining whether polynomial
+    equations are solvable by radicals via the algebraic structure of their galois groups.

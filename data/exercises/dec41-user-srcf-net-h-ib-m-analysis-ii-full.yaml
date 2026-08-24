@@ -1,0 +1,93 @@
+url: https://dec41.user.srcf.net/h/IB_M/analysis_ii/full
+title: analysis II
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#000
+  text: How does one define pointwise convergence of functions?
+  hint: $f_n \to f$ pointwise if $\lim_{n \to \infty} f_n(x) = f(x)$ for every $x \in D$.
+  locator: null
+  sub_index: null
+  search_text: how does one define pointwise convergence of functions? $f_n \to f$ pointwise if $\lim_{n
+    \to \infty} f_n(x) = f(x)$ for every $x \in d$.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#001
+  text: What is the limitation of pointwise convergence?
+  hint: Pointwise limits of continuous functions need not be continuous, e.g., $f_n(x) = x^{2n+1}$ on
+    $[-1, 1]$.
+  locator: null
+  sub_index: null
+  search_text: what is the limitation of pointwise convergence? pointwise limits of continuous functions
+    need not be continuous, e.g., $f_n(x) = x^{2n+1}$ on $[-1, 1]$.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#002
+  text: How does one define uniform convergence?
+  hint: $f_n \to f$ uniformly if for all $\varepsilon > 0$, there exists $N$ such that for all $n > N$
+    and all $x \in D$, $|f_n(x) - f(x)| < \varepsilon$.
+  locator: null
+  sub_index: null
+  search_text: how does one define uniform convergence? $f_n \to f$ uniformly if for all $\varepsilon
+    > 0$, there exists $n$ such that for all $n > n$ and all $x \in d$, $|f_n(x) - f(x)| < \varepsilon$.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#003
+  text: What is a uniformly Cauchy sequence?
+  hint: For all $\varepsilon > 0$, there exists $N$ such that for all $n, m > N$ and all $x$, $|f_n(x)
+    - f_m(x)| < \varepsilon$; equivalent to uniform convergence in complete spaces.
+  locator: null
+  sub_index: null
+  search_text: what is a uniformly cauchy sequence? for all $\varepsilon > 0$, there exists $n$ such that
+    for all $n, m > n$ and all $x$, $|f_n(x) - f_m(x)| < \varepsilon$; equivalent to uniform convergence
+    in complete spaces.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#004
+  text: When does the uniform limit of differentiable functions have a differentiable limit?
+  hint: When $f_n(x_0)$ converges at one point and the derivatives $f_n'$ converge uniformly on $[a, b]$.
+  locator: null
+  sub_index: null
+  search_text: when does the uniform limit of differentiable functions have a differentiable limit? when
+    $f_n(x_0)$ converges at one point and the derivatives $f_n'$ converge uniformly on $[a, b]$.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#005
+  text: What is absolute convergence of a series?
+  hint: A series $\sum a_n$ converges absolutely if $\sum |a_n| < \infty$.
+  locator: null
+  sub_index: null
+  search_text: what is absolute convergence of a series? a series $\sum a_n$ converges absolutely if $\sum
+    |a_n| < \infty$.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#006
+  text: What is the Weierstrass M-test?
+  hint: If $|f_n(x)| \le M_n$ for all $x$ and $\sum M_n < \infty$, then $\sum f_n(x)$ converges uniformly
+    and absolutely.
+  locator: null
+  sub_index: null
+  search_text: what is the weierstrass m-test? if $|f_n(x)| \le m_n$ for all $x$ and $\sum m_n < \infty$,
+    then $\sum f_n(x)$ converges uniformly and absolutely.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#007
+  text: How does one define uniform continuity?
+  hint: A function $f$ is uniformly continuous if for all $\varepsilon > 0$, there exists $\delta > 0$
+    such that for all $x, y$ with $|x - y| < \delta$, $|f(x) - f(y)| < \varepsilon$.
+  locator: null
+  sub_index: null
+  search_text: how does one define uniform continuity? a function $f$ is uniformly continuous if for all
+    $\varepsilon > 0$, there exists $\delta > 0$ such that for all $x, y$ with $|x - y| < \delta$, $|f(x)
+    - f(y)| < \varepsilon$.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#008
+  text: Why is every continuous function on a compact interval uniformly continuous?
+  hint: By the Heine-Cantor theorem / Bolzano-Weierstrass property on compact metric spaces.
+  locator: null
+  sub_index: null
+  search_text: why is every continuous function on a compact interval uniformly continuous? by the heine-cantor
+    theorem / bolzano-weierstrass property on compact metric spaces.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#009
+  text: What is Lebesgue's criterion for Riemann integrability?
+  hint: A bounded function on a compact interval is Riemann integrable if and only if its set of discontinuities
+    has Lebesgue measure zero.
+  locator: null
+  sub_index: null
+  search_text: what is lebesgue's criterion for riemann integrability? a bounded function on a compact
+    interval is riemann integrable if and only if its set of discontinuities has lebesgue measure zero.
+- id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#010
+  text: 'What is a normed vector space? (Hint: A vector space equipped with a function $\|\cdot\|: V \to
+    [0, \infty)$ satisfying positive definiteness, absolute scalability, and the triangle inequality.)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is a normed vector space? (hint: a vector space equipped with a function $\|\cdot\|:
+    v \to [0, \infty)$ satisfying positive definiteness, absolute scalability, and the triangle inequality.)'
