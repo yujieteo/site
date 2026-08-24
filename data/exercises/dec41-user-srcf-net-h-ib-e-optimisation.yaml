@@ -1,0 +1,136 @@
+url: https://dec41.user.srcf.net/h/IB_E/optimisation
+title: optimisation
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-ib-e-optimisation#000
+  text: Why does one define constrained optimisation?
+  hint: there are constraints to obey?
+  locator: null
+  sub_index: null
+  search_text: why does one define constrained optimisation? there are constraints to obey?
+- id: dec41-user-srcf-net-h-ib-e-optimisation#001
+  text: What is the general form of a linear program? (Minimise c^T x subject to Ax >= b, x >= 0)? Why
+    is this the most general forms?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what is the general form of a linear program? (minimise c^t x subject to ax >= b, x >=
+    0)? why is this the most general forms?
+- id: dec41-user-srcf-net-h-ib-e-optimisation#002
+  text: 'Why can a function be neither concave nor convex? (Hint: f and f'' are not convex)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'why can a function be neither concave nor convex? (hint: f and f'' are not convex)'
+- id: dec41-user-srcf-net-h-ib-e-optimisation#003
+  text: Why care about convexity?
+  hint: local minima are global minima with the convexity condition
+  locator: null
+  sub_index: null
+  search_text: why care about convexity? local minima are global minima with the convexity condition
+- id: dec41-user-srcf-net-h-ib-e-optimisation#004
+  text: Why is this definition of a positive semidefinite Hessian convex set exist?
+  hint: positive semidefinite Hessian, v^T H v >= 0 for all v in R^n
+  locator: null
+  sub_index: null
+  search_text: why is this definition of a positive semidefinite hessian convex set exist? positive semidefinite
+    hessian, v^t h v >= 0 for all v in r^n
+- id: dec41-user-srcf-net-h-ib-e-optimisation#005
+  text: What is the purpose of Morse homology
+  hint: local minima fails to be global minima, graded by number of negative eigenvalues of the Hessian
+  locator: null
+  sub_index: null
+  search_text: what is the purpose of morse homology local minima fails to be global minima, graded by
+    number of negative eigenvalues of the hessian
+- id: dec41-user-srcf-net-h-ib-e-optimisation#006
+  text: "Why is the Lagrangian used to solve constrained maximisation? (Hint: Lagrangian sufficiency,\
+    \ key step in the prove is to define the feasible set. Want to minimise f without restriction i.e.\
+    \ no more further first order change, but we are constrained by forcing x to lie on path h(x) = b.\
+    \ Need del f * dx = 0, del f is perpendicular to dx or parallel to normal to the path. Therefore,\
+    \ one gets Lagrange multipliers i.e. you cannot move into other paths.)\t https://dec41.user.srcf.net/h/IB_M/linear_algebra/full"
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: "why is the lagrangian used to solve constrained maximisation? (hint: lagrangian sufficiency,\
+    \ key step in the prove is to define the feasible set. want to minimise f without restriction i.e.\
+    \ no more further first order change, but we are constrained by forcing x to lie on path h(x) = b.\
+    \ need del f * dx = 0, del f is perpendicular to dx or parallel to normal to the path. therefore,\
+    \ one gets lagrange multipliers i.e. you cannot move into other paths.)\t https://dec41.user.srcf.net/h/ib_m/linear_algebra/full"
+- id: dec41-user-srcf-net-h-ib-e-optimisation#007
+  text: How does one invent the notion of a vector space?
+  hint: add two vectors together and multiply by some scalar
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a vector space? add two vectors together and multiply
+    by some scalar
+- id: dec41-user-srcf-net-h-ib-e-optimisation#008
+  text: What is one super interesting example of vector spaces?
+  hint: truncated generating functions
+  locator: null
+  sub_index: null
+  search_text: what is one super interesting example of vector spaces? truncated generating functions
+- id: dec41-user-srcf-net-h-ib-e-optimisation#009
+  text: How does one construct a vector space?
+  hint: scalar function from F x V -> V, V is an additive abelian groups
+  locator: null
+  sub_index: null
+  search_text: how does one construct a vector space? scalar function from f x v -> v, v is an additive
+    abelian groups
+- id: dec41-user-srcf-net-h-ib-e-optimisation#010
+  text: What are the issues with notions of coordinate, length, angle or distance for a general vector
+    space?
+  hint: these are not intrinsic to the definition of a vector space
+  locator: null
+  sub_index: null
+  search_text: what are the issues with notions of coordinate, length, angle or distance for a general
+    vector space? these are not intrinsic to the definition of a vector space
+- id: dec41-user-srcf-net-h-ib-e-optimisation#011
+  text: What else does one typically invent when it comes to vector spaces?
+  hint: subspace, quotient spaces, and linear independence?
+  locator: null
+  sub_index: null
+  search_text: what else does one typically invent when it comes to vector spaces? subspace, quotient
+    spaces, and linear independence?
+- id: dec41-user-srcf-net-h-ib-e-optimisation#012
+  text: 'How does one invent the standard basis? (Hint: take the example of everything in R^n can be written
+    uniquely as a sum of scalar multiples of basis elements, one wants to prove this and be able to define
+    DIMENSION)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the standard basis? (hint: take the example of everything in r^n can
+    be written uniquely as a sum of scalar multiples of basis elements, one wants to prove this and be
+    able to define dimension)'
+- id: dec41-user-srcf-net-h-ib-e-optimisation#013
+  text: What is the issue with the notion of dimension in modules?
+  hint: not all modules have a basis, so it is a lot harder to have the definition of dimension
+  locator: null
+  sub_index: null
+  search_text: what is the issue with the notion of dimension in modules? not all modules have a basis,
+    so it is a lot harder to have the definition of dimension
+- id: dec41-user-srcf-net-h-ib-e-optimisation#014
+  text: How does one come up with the definition of a span?
+  hint: you want every element in the vector space to be written uniquely as a sum of scalar multiples
+    of basis elements, so the span of a subspace is define as how one can take scalar multiples of elements
+  locator: null
+  sub_index: null
+  search_text: how does one come up with the definition of a span? you want every element in the vector
+    space to be written uniquely as a sum of scalar multiples of basis elements, so the span of a subspace
+    is define as how one can take scalar multiples of elements
+- id: dec41-user-srcf-net-h-ib-e-optimisation#015
+  text: Why does one not define infinite sums for spans?
+  hint: convergence is not well defined in a general vector space without some careful analysis.
+  locator: null
+  sub_index: null
+  search_text: why does one not define infinite sums for spans? convergence is not well defined in a general
+    vector space without some careful analysis.
+- id: dec41-user-srcf-net-h-ib-e-optimisation#016
+  text: How does one come up with the notion of linear independence?
+  hint: can conclude scalars are 0 if linear combination is 0
+  locator: null
+  sub_index: null
+  search_text: how does one come up with the notion of linear independence? can conclude scalars are 0
+    if linear combination is 0

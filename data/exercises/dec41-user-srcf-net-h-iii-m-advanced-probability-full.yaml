@@ -1,0 +1,251 @@
+url: https://dec41.user.srcf.net/h/III_M/advanced_probability/full
+title: advanced probability and martingales
+note: this is a very useful summary I learnt a lot of simplifications to measure theory.
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#000
+  text: 'How does one invent the notion of sigma algebra? (Hint: need to eventually get Borel sigma algebra
+    (this is needed for uniqueness) containing a topology, sigma algebra is the parameter space for a
+    measure, it looks like sets or blobs, complement of blob is in sigma algebra, empty blob is in sigma
+    algebra, arbitrary countable unions of blobs is in sigma algebra. The definition of measure is map
+    assigning a real number to each part of a sigma algebra such that empty set has empty measure, countable
+    unions of disjoint sets means one take sums of measures or countable additivity. Disjoint to prevent
+    weirdness.) Important image is blob, complements of blobs and countable sums'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the notion of sigma algebra? (hint: need to eventually get borel sigma
+    algebra (this is needed for uniqueness) containing a topology, sigma algebra is the parameter space
+    for a measure, it looks like sets or blobs, complement of blob is in sigma algebra, empty blob is
+    in sigma algebra, arbitrary countable unions of blobs is in sigma algebra. the definition of measure
+    is map assigning a real number to each part of a sigma algebra such that empty set has empty measure,
+    countable unions of disjoint sets means one take sums of measures or countable additivity. disjoint
+    to prevent weirdness.) important image is blob, complements of blobs and countable sums'
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#001
+  text: How does one invent measurable functions?
+  hint: measurable functions if one can take preimages on the level of sigma algebras for maps of topological
+    space, similar to continuous functions.
+  locator: null
+  sub_index: null
+  search_text: how does one invent measurable functions? measurable functions if one can take preimages
+    on the level of sigma algebras for maps of topological space, similar to continuous functions.
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#002
+  text: 'How does one invent the integral with respect to a measure? (Hint: note that the existence of
+    this is a theorem, and is summarised by the monotone convergence theorem, measure space, assign positive
+    measurable functions to be integrals that are linear i.e. noninteracting and has the monotone convergence
+    theorem i.e. monotone sequences of functions that converge pointwise then limits converge. Lastly,
+    integrating against the indicator yields back the same measurable function). Important image is Fourier
+    analysis essentially of linear non-interacting integrals to basis'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the integral with respect to a measure? (hint: note that the existence
+    of this is a theorem, and is summarised by the monotone convergence theorem, measure space, assign
+    positive measurable functions to be integrals that are linear i.e. noninteracting and has the monotone
+    convergence theorem i.e. monotone sequences of functions that converge pointwise then limits converge.
+    lastly, integrating against the indicator yields back the same measurable function). important image
+    is fourier analysis essentially of linear non-interacting integrals to basis'
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#003
+  text: 'How does one invent simple functions? (Hint: finite linear combinations of indicators, takes
+    on finitely many values, use monotone convergence) Important image is finiteness'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent simple functions? (hint: finite linear combinations of indicators,
+    takes on finitely many values, use monotone convergence) important image is finiteness'
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#004
+  text: 'How does one invent almost everywhere? (Hint: measurable functions are equal up to differences
+    in sets of 0 measure.). Important image is gluing 0 measure boundaries'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent almost everywhere? (hint: measurable functions are equal up to differences
+    in sets of 0 measure.). important image is gluing 0 measure boundaries'
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#005
+  text: 'How does one invent the notion of Fatou''s lemma? (Hint: if sequence not monotone, then one gets
+    inequality of limit infimum, taking limit infs before taking measure is <= taking limits inf after
+    taking measure, done by applying monotone convergence to limit infimum sequence). Important image
+    is visualising expectation and lower bounds of integral of sine curve'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the notion of fatou''s lemma? (hint: if sequence not monotone, then
+    one gets inequality of limit infimum, taking limit infs before taking measure is <= taking limits
+    inf after taking measure, done by applying monotone convergence to limit infimum sequence). important
+    image is visualising expectation and lower bounds of integral of sine curve'
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#006
+  text: 'How does one invent integrable functions? (Hint: measure finite, L^1(E) for space of integrable,
+    extend mu by taking difference between mu(f+) and mu(f-), Caratheodory''s extension, not shown here)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent integrable functions? (hint: measure finite, l^1(e) for space of integrable,
+    extend mu by taking difference between mu(f+) and mu(f-), caratheodory''s extension, not shown here)'
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#007
+  text: How does one invent and prove the dominated convergence theorem?
+  hint: f_i in measurable space, f_i -> f almost everywhere, EXISTS dominating g integrable, |f_i| < g
+    almost everywhere, then limit mu(f_n) converges, apply Fatou's lemma on g - f_n and g + f_n. The easiest
+    way to see this is to think of a bounded envelope, domination looks like some form of compactness.
+    Actually, it looks like sequential weak compactness in L^p space, so there probably are variants of
+    dominated convergence theorem.
+  locator: null
+  sub_index: null
+  search_text: how does one invent and prove the dominated convergence theorem? f_i in measurable space,
+    f_i -> f almost everywhere, exists dominating g integrable, |f_i| < g almost everywhere, then limit
+    mu(f_n) converges, apply fatou's lemma on g - f_n and g + f_n. the easiest way to see this is to think
+    of a bounded envelope, domination looks like some form of compactness. actually, it looks like sequential
+    weak compactness in l^p space, so there probably are variants of dominated convergence theorem.
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#008
+  text: How does one invent product sigma algebras?
+  hint: take topological cartesian products of topologies, exist unique measure that distributes to composition
+    of measures.
+  locator: null
+  sub_index: null
+  search_text: how does one invent product sigma algebras? take topological cartesian products of topologies,
+    exist unique measure that distributes to composition of measures.
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#009
+  text: How does one invent Fubini's theorem?
+  hint: 'map x_1 and x_2 to two different integrals ina. tensor product of two sigma algebra, then one
+    can interchange limits. Example: f = f(x_1, x_2), mE+, E = E_1 tensor E_2.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent fubini''s theorem? map x_1 and x_2 to two different integrals ina.
+    tensor product of two sigma algebra, then one can interchange limits. example: f = f(x_1, x_2), me+,
+    e = e_1 tensor e_2.'
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#010
+  text: How does one first encounter condition probability theory?
+  hint: note the notation change, scale probability measure first, probability A and B happened, given
+    B that happened, assume B happened that is why take intersection. Now allow B to vary, consider disjoint
+    events in sigma-algebra, define linear combinations integrating to basis in sigma-algebra, think of
+    blob being cut up into compartments, same event same compartment. Then each compartment has an indicator
+    function to test against X, one takes linear combinations of countably infinitely many of these compartments
+    which essentially are disjoint events
+  locator: null
+  sub_index: null
+  search_text: how does one first encounter condition probability theory? note the notation change, scale
+    probability measure first, probability a and b happened, given b that happened, assume b happened
+    that is why take intersection. now allow b to vary, consider disjoint events in sigma-algebra, define
+    linear combinations integrating to basis in sigma-algebra, think of blob being cut up into compartments,
+    same event same compartment. then each compartment has an indicator function to test against x, one
+    takes linear combinations of countably infinitely many of these compartments which essentially are
+    disjoint events
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#011
+  text: How does one find the characterising property of conditional expectations?
+  hint: reduce case of sigma algebra to all events G, the conditional expectation denoted Y is G-measurable
+    and Y is integrable and one can have equality of linear combinations of expectations with indicators
+    in each event G_a in all events G. To prove this one simply computes the expectation of Y, using monotone
+    convergence twice to swap expectation and the sum using the definition of integration. Important point
+    is conditional expectation given sigma algebra G
+  locator: null
+  sub_index: null
+  search_text: how does one find the characterising property of conditional expectations? reduce case
+    of sigma algebra to all events g, the conditional expectation denoted y is g-measurable and y is integrable
+    and one can have equality of linear combinations of expectations with indicators in each event g_a
+    in all events g. to prove this one simply computes the expectation of y, using monotone convergence
+    twice to swap expectation and the sum using the definition of integration. important point is conditional
+    expectation given sigma algebra g
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#012
+  text: How does one prove existence and uniqueness of conditional expectation?
+  hint: need uniqueness up to measure 0, intuitively we know it exists and is unique up to measure 0.
+    One uses functional analysis of Hilbert-space. This is a painful thing to prove, need some Hilbert
+    space functional analysis stuff, for part 1, define Y to be orthogonal projection of X onto L^2(G),
+    G is new sigma algebra, second apart, use X - Y orthogonal to L^2(G) by definition, use measure space
+    is finite, indicator function of any measurable set is L^2. Now go to case where X in mE+, monotone
+    convergence is needed to get the result, satisfy result, if X' >= X almost surely, Y' >= Y almost
+    surely, then one chase indicator functions. Define Y_n as some expectation, pick it so Y_n increasing,
+    again use monotone convergence, chase indicator limits and we are done by checking finiteness. For
+    arbitrary X in L^1, wrote X = X+ - X- and define Y+- = Y+ - Y- or Hahn decomposition, uniqueness is
+    clear
+  locator: null
+  sub_index: null
+  search_text: how does one prove existence and uniqueness of conditional expectation? need uniqueness
+    up to measure 0, intuitively we know it exists and is unique up to measure 0. one uses functional
+    analysis of hilbert-space. this is a painful thing to prove, need some hilbert space functional analysis
+    stuff, for part 1, define y to be orthogonal projection of x onto l^2(g), g is new sigma algebra,
+    second apart, use x - y orthogonal to l^2(g) by definition, use measure space is finite, indicator
+    function of any measurable set is l^2. now go to case where x in me+, monotone convergence is needed
+    to get the result, satisfy result, if x' >= x almost surely, y' >= y almost surely, then one chase
+    indicator functions. define y_n as some expectation, pick it so y_n increasing, again use monotone
+    convergence, chase indicator limits and we are done by checking finiteness. for arbitrary x in l^1,
+    wrote x = x+ - x- and define y+- = y+ - y- or hahn decomposition, uniqueness is clear
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#013
+  text: What key properties does one want to prove about conditional expectation?
+  hint: E(X|G), E(E(X|G)) = EX, X >= 0, E(X|G) >= 0, X and G independent, E(X|G) = E[X], linearity, monotone,
+    Fatou's, DCT, Jensen's inequality, tower property
+  locator: null
+  sub_index: null
+  search_text: what key properties does one want to prove about conditional expectation? e(x|g), e(e(x|g))
+    = ex, x >= 0, e(x|g) >= 0, x and g independent, e(x|g) = e[x], linearity, monotone, fatou's, dct,
+    jensen's inequality, tower property
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#014
+  text: How does one prove the lemma that X in L^1, family of random variables Y_G = E(X|G) for all G
+    in F is uniformly integrable, for all eps > 0, lambda > 0 such that E(Y_G indicator) < eps for all
+    G
+  hint: fix eps > 0, use Jensen's then get E|Y| <= E|X|, then use Markov's, bound it by eps by using that
+    1_{|Y| > lambda} being G-measurable
+  locator: null
+  sub_index: null
+  search_text: how does one prove the lemma that x in l^1, family of random variables y_g = e(x|g) for
+    all g in f is uniformly integrable, for all eps > 0, lambda > 0 such that e(y_g indicator) < eps for
+    all g fix eps > 0, use jensen's then get e|y| <= e|x|, then use markov's, bound it by eps by using
+    that 1_{|y| > lambda} being g-measurable
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#015
+  text: How does one invent filtrations?
+  hint: sigma algebras representing information at time n.
+  locator: null
+  sub_index: null
+  search_text: how does one invent filtrations? sigma algebras representing information at time n.
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#016
+  text: How does one invent stochastic processes?
+  hint: equip filtration to measure space, consider sequence of random variable, one can then compute
+    natural filtration on it.
+  locator: null
+  sub_index: null
+  search_text: how does one invent stochastic processes? equip filtration to measure space, consider sequence
+    of random variable, one can then compute natural filtration on it.
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#017
+  text: How does one invent natural filtrations?
+  hint: filtration associated with a sequence i.e. sequences of X_1 up to X_n
+  locator: null
+  sub_index: null
+  search_text: how does one invent natural filtrations? filtration associated with a sequence i.e. sequences
+    of x_1 up to x_n
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#018
+  text: How does one invent adapted processes?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one invent adapted processes?
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#019
+  text: How does one invent integrable processes?
+  hint: X_n in L^1 for all n >= 0
+  locator: null
+  sub_index: null
+  search_text: how does one invent integrable processes? x_n in l^1 for all n >= 0
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#020
+  text: How does one invent martingales?
+  hint: want to model the process where we cannot predict it going up or down even if we have all the
+    information up to the present?
+  locator: null
+  sub_index: null
+  search_text: how does one invent martingales? want to model the process where we cannot predict it going
+    up or down even if we have all the information up to the present?
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#021
+  text: How does one invent the notion of stopping time?
+  hint: like everything it is a random variable, and it is valued in the positive infinite naturals for
+    integer stopping times, requiring that the random variable <= n for F_n, at time n, want to know if
+    T has occurred, can determine it using the information we have at time n.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of stopping time? like everything it is a random variable,
+    and it is valued in the positive infinite naturals for integer stopping times, requiring that the
+    random variable <= n for f_n, at time n, want to know if t has occurred, can determine it using the
+    information we have at time n.
+- id: dec41-user-srcf-net-h-iii-m-advanced-probability-full#022
+  text: How does one invent the notion of the optimal stopping theorem?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the optimal stopping theorem?

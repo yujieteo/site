@@ -1,0 +1,139 @@
+- title: "Python Documentation"
+  url: "https://docs.python.org/3/"
+  category: "systems"
+  note: "Official reference for the Python language and standard library; the first language truly learnt."
+
+- title: "C# Documentation"
+  url: "https://learn.microsoft.com/en-us/dotnet/csharp/"
+  category: "systems"
+  note: "Official documentation for the C# language and .NET ecosystem, used for work."
+
+- title: "Intel x86/x86-64 Software Developer Manuals"
+  url: "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html"
+  category: "systems"
+  note: "The primary reference for x86 processors, instruction sets, memory models, and system programming."
+
+- title: "Git Documentation"
+  url: "https://git-scm.com/doc"
+  category: "systems"
+  note: "Official documentation for Git version control."
+
+- title: "LLVM Documentation"
+  url: "https://llvm.org/docs/"
+  category: "systems"
+  note: "Reference material for compiler infrastructure, optimization, and code generation."
+
+- title: "QEMU Documentation"
+  url: "https://www.qemu.org/docs/master/"
+  category: "systems"
+  note: "Documentation for machine emulation, virtualization, and systems experimentation."
+
+- title: "NVIDIA CUDA Toolkit Documentation"
+  url: "https://docs.nvidia.com/cuda/"
+  category: "architecture"
+  note: "Documentation for GPU programming, parallel algorithms, and accelerator-based computing."
+
+- title: "Competitive Programming Algorithms"
+  url: "https://cp-algorithms.com/"
+  category: "architecture"
+  note: "A practical collection of algorithms and data structures with implementations and explanations."
+
+- title: "A Modern Primer on Processing in Memory (PIM)"
+  url: "https://arxiv.org/pdf/2012.03112"
+  category: "architecture"
+  note: "An overview of architectures that move computation closer to memory to reduce data movement costs."
+
+- title: "David Tong's Lecture Notes"
+  url: "https://davidtong.org/teaching/"
+  category: "physics"
+  note: "Introductions to mathematical physics, quantum field theory, statistical physics, and relativity."
+
+- title: "J.S. Milne's Mathematical Notes"
+  url: "https://www.jmilne.org/math/"
+  category: "mathematics"
+  note: "Graduate-level notes on algebraic geometry, algebraic number theory, class field theory, and arithmetic geometry."
+
+- title: "arXiv Mathematics"
+  url: "https://arxiv.org/list/math/new"
+  category: "mathematics"
+  note: "A source for current mathematical research papers and preprints."
+
+- title: "Stacks Project"
+  url: "https://stacks.math.columbia.edu/"
+  category: "mathematics"
+  note: "A comprehensive reference for algebraic geometry, commutative algebra, and foundational topics."
+
+- title: "Kerodon"
+  url: "https://kerodon.net/"
+  category: "mathematics"
+  note: "Notes on higher category theory, homotopy theory, and modern foundations."
+
+- title: "1Lab"
+  url: "https://1lab.dev/"
+  category: "mathematics"
+  note: "Formalized and computational approaches to category theory and higher mathematics."
+
+- title: "nLab"
+  url: "https://ncatlab.org/nlab/show/HomePage"
+  category: "mathematics"
+  note: "An interconnected encyclopedia covering category theory, topology, mathematical physics, and higher structures."
+
+- title: "pi-base, topology"
+  url: "https://topology.pi-base.org/"
+  category: "mathematics"
+  note: "A database of examples and counterexamples in topology."
+
+- title: "Friedl's Topology Notes"
+  url: "https://friedl.app.uni-regensburg.de/papers/1t-total-public-october-7-2024.pdf"
+  category: "mathematics"
+  note: "An extensive reference covering large portions of modern topology."
+
+- title: "LMFDB"
+  url: "https://www.lmfdb.org/"
+  category: "mathematics"
+  note: "A database for exploring elliptic curves, modular forms, L-functions, and related objects in number theory."
+
+- title: "zbMATH Open"
+  url: "https://zbmath.org/"
+  category: "mathematics"
+  note: "A searchable database of mathematical literature and reviews."
+
+- title: "Cambridge Mathematics Notes"
+  url: "https://at2027.user.srcf.net/notes.html"
+  category: "mathematics"
+  note: "A collection of university mathematics lecture notes spanning many subjects."
+
+- title: "The On-Line Encyclopedia of Integer Sequences (OEIS)"
+  url: "https://oeis.org/"
+  category: "computational"
+  note: "A searchable database of integer sequences, useful for identifying patterns arising from calculations."
+
+- title: "Wolfram Language & System Documentation Center"
+  url: "https://reference.wolfram.com/language/"
+  category: "computational"
+  note: "A powerful mathematical computer algebra system with sane notebook defaults."
+
+- title: "SageMath Documentation"
+  url: "https://doc.sagemath.org/"
+  category: "computational"
+  note: "Documentation for the SageMath computer algebra system."
+
+- title: "Kaggle"
+  url: "https://www.kaggle.com/"
+  category: "computational"
+  note: "A source of datasets that could be used for data science exploration."
+
+- title: "Avigad - Theorem Proving in Lean 4"
+  url: "https://leanprover.github.io/theorem_proving_in_lean4/"
+  category: "computational"
+  note: "An introduction to formal mathematics and theorem proving with Lean."
+
+- title: "PATRAN Documentation"
+  url: "https://simcompanion.hexagon.com/customers/s/article/Patran-Product-Documentation"
+  category: "engineering"
+  note: "Preprocessor documentation used for work."
+
+- title: "ANSYS APDL"
+  url: "https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/prod_page.html?pn=Mechanical%20APDL&pid=MechanicalAPDL&lang=en"
+  category: "engineering"
+  note: "The first finite element software learnt in depth, with mentorship during an internship."

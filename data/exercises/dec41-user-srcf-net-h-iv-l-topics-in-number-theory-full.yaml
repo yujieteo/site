@@ -1,0 +1,283 @@
+url: https://dec41.user.srcf.net/h/IV_L/topics_in_number_theory/full
+title: topics in number theory
+note: this is basically number theory
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#000
+  text: How does one invent the notion of a separable closure?
+  hint: one wants to invent Galois theory, or profinite groups with associated Krull topology, one takes
+    the group Gal(K bar/K), K bar is the separable closure?
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a separable closure? one wants to invent galois theory,
+    or profinite groups with associated krull topology, one takes the group gal(k bar/k), k bar is the
+    separable closure?
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#001
+  text: How does one invent Galois theory?
+  hint: one consider fields and finite subfields, one studies Gal(K bar/K) for number theory we look at
+    Gal(Q bar/Q), closed subgroups correspond to subfields, open subgroups corresponds to finite subfields
+    and these are BIJECTIONS for abelian case
+  locator: null
+  sub_index: null
+  search_text: how does one invent galois theory? one consider fields and finite subfields, one studies
+    gal(k bar/k) for number theory we look at gal(q bar/q), closed subgroups correspond to subfields,
+    open subgroups corresponds to finite subfields and these are bijections for abelian case
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#002
+  text: How does one come up with the notation of K^ab
+  hint: one computes Gal(K^ab/K), K bar is separable closure of K, this is Gamma^ab/K i.e. one takes Gamma_K
+    = Gal(K^bar / K) and kill off the commutative elements i.e. [Gamma_K, Gamma_K] where this is the commutator
+    bracket.
+  locator: null
+  sub_index: null
+  search_text: how does one come up with the notation of k^ab one computes gal(k^ab/k), k bar is separable
+    closure of k, this is gamma^ab/k i.e. one takes gamma_k = gal(k^bar / k) and kill off the commutative
+    elements i.e. [gamma_k, gamma_k] where this is the commutator bracket.
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#003
+  text: What is the Gamma group defined up to?
+  hint: It is defined up to conjugation, this is why Gamma_K is hard to define since it has many automorphisms,
+    but its abelianisation is well defined
+  locator: null
+  sub_index: null
+  search_text: what is the gamma group defined up to? it is defined up to conjugation, this is why gamma_k
+    is hard to define since it has many automorphisms, but its abelianisation is well defined
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#004
+  text: 'How one invents non-archimedean local fields? (Hint: remove the Archimedean local field properties,
+    one takes Q_p, and F_p((t)), the desired property is one wants a canonical normalised valuation that
+    surjections onto Z from F^\cross'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how one invents non-archimedean local fields? (hint: remove the archimedean local field
+    properties, one takes q_p, and f_p((t)), the desired property is one wants a canonical normalised
+    valuation that surjections onto z from f^\cross'
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#005
+  text: How does one invent the notion of a valuation ring?
+  hint: one wants v(x) >= 0
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a valuation ring? one wants v(x) >= 0
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#006
+  text: 'How does one invent the notion of a uniformiser? (Hint: one wants a maximal ideal to kill off
+    i.e. v(x) >= 1, so v(pi) = 1, this is so that one can define residue fields or finite fields of order)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the notion of a uniformiser? (hint: one wants a maximal ideal to kill
+    off i.e. v(x) >= 1, so v(pi) = 1, this is so that one can define residue fields or finite fields of
+    order)'
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#007
+  text: How one invent residue fields?
+  hint: you want to do abelian class field theory, so you want O_F/m_F to get it as a finite field
+  locator: null
+  sub_index: null
+  search_text: how one invent residue fields? you want to do abelian class field theory, so you want o_f/m_f
+    to get it as a finite field
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#008
+  text: 'How does invent the notion of a maximal unramified extension? (Hint: you want to take the profinite
+    limit or inverse limit of Gal(k bar, k), one takes the inverse limit of Z/nZ = Gal(k bar/k)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does invent the notion of a maximal unramified extension? (hint: you want to take
+    the profinite limit or inverse limit of gal(k bar, k), one takes the inverse limit of z/nz = gal(k
+    bar/k)'
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#009
+  text: How does one invent the notion of an inertia group?
+  hint: kill off the maximal unramified extension from F^bar or the separable closure
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of an inertia group? kill off the maximal unramified extension
+    from f^bar or the separable closure
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#010
+  text: How does one invention the notion of the wild inertia group as the maximal pro-p-subgroup of I_F?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one invention the notion of the wild inertia group as the maximal pro-p-subgroup
+    of i_f?
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#011
+  text: How does one invent the notion of arithmetic and geometric Frobenius?
+  hint: x^q = phi_q(x) this is not 1, one thinks about picking an isomorphism of Z^ to be the "1", however
+    it is easier to use the geometric Frobenius, the purpose is so that Gal(k bar/k) isomorphic to Z^
+    by taking geometric Frobenius to be 1. This comes from algebraic geometry, pullback along the morphism
+    k -> k by arithmetic Frobenius gives the geometric Frobenius. The arithmetic Frobenius gives the Galois
+    action
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of arithmetic and geometric frobenius? x^q = phi_q(x) this
+    is not 1, one thinks about picking an isomorphism of z^ to be the "1", however it is easier to use
+    the geometric frobenius, the purpose is so that gal(k bar/k) isomorphic to z^ by taking geometric
+    frobenius to be 1. this comes from algebraic geometry, pullback along the morphism k -> k by arithmetic
+    frobenius gives the geometric frobenius. the arithmetic frobenius gives the galois action
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#012
+  text: Why does one care about the inertia group?
+  hint: we want to single out the p-phenomena to avoid, therefore, one wants to define the inertial roup,
+    pick n coprime to p, then take mu_n(bar k) to be set of zetas in bar k, zeta^n = 1, then pick an n-th
+    root of pi in bar F, gets pi_n^n = pi. This is tricky notation. This is not a solution.
+  locator: null
+  sub_index: null
+  search_text: why does one care about the inertia group? we want to single out the p-phenomena to avoid,
+    therefore, one wants to define the inertial roup, pick n coprime to p, then take mu_n(bar k) to be
+    set of zetas in bar k, zeta^n = 1, then pick an n-th root of pi in bar f, gets pi_n^n = pi. this is
+    tricky notation. this is not a solution.
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#013
+  text: Why does one care about the tame mod n character?
+  hint: you want to eventually form a limit over all n to get a Tate module, eventually one finds that
+    t(n) as a 1-cocycle. This is not a solution.
+  locator: null
+  sub_index: null
+  search_text: why does one care about the tame mod n character? you want to eventually form a limit over
+    all n to get a tate module, eventually one finds that t(n) as a 1-cocycle. this is not a solution.
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#014
+  text: 'Why does one care about local class field theory? (Hint: finite abelian extensions of F corresponds
+    to open finite index subgroups of F^\times, then there is an Artin map, and looks like something similar
+    to Pontraygin duality, but there is the Artin map where F^\times is valued in Gamma_F^ab, the existence
+    theorem says the Artin map induces a bijection)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'why does one care about local class field theory? (hint: finite abelian extensions of
+    f corresponds to open finite index subgroups of f^\times, then there is an artin map, and looks like
+    something similar to pontraygin duality, but there is the artin map where f^\times is valued in gamma_f^ab,
+    the existence theorem says the artin map induces a bijection)'
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#015
+  text: Why does one care about the full statement of class field theory?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: why does one care about the full statement of class field theory?
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#016
+  text: How does one invent the notion of the Weil group?
+  hint: Artin map has dense image, but not surjective in general, one simply fixes this using the geometric
+    Frobenius as part of the definition, note that it is not profinite, it is totally disconnected but
+    not compact. Then one can define F^\times is isomorphic to the abelianised Weil group, and the O^\times_F
+    maps isomorphically to the inertia subgroup of Gamma^ab_F.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the weil group? artin map has dense image, but not surjective
+    in general, one simply fixes this using the geometric frobenius as part of the definition, note that
+    it is not profinite, it is totally disconnected but not compact. then one can define f^\times is isomorphic
+    to the abelianised weil group, and the o^\times_f maps isomorphically to the inertia subgroup of gamma^ab_f.
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#017
+  text: How does one invent the notion of the relative Weil group?
+  hint: one needs to understand the Weil group computations of C and R, so one has the Artin map for complex
+    multiplicative group to be 1, then Weil group R is a nonabelian group that is a bit messy, then the
+    inverse of the Artin map maps z to zz\bar or sigma to -1. Then one defines the relative Weil group
+    using the geometric Frobenius, and make it commutative by killing off the commutator and grant it
+    the quotient topology
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the relative weil group? one needs to understand the
+    weil group computations of c and r, so one has the artin map for complex multiplicative group to be
+    1, then weil group r is a nonabelian group that is a bit messy, then the inverse of the artin map
+    maps z to zz\bar or sigma to -1. then one defines the relative weil group using the geometric frobenius,
+    and make it commutative by killing off the commutator and grant it the quotient topology
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#018
+  text: 'How does one prove class field theory? (Hint: cohomological method, exxistence of Artin map,
+    then one interprets Gal(E/F) cohomologically and then compute the Brauer group, and then one gets
+    the Artin map as a cup product, and it generalises to duality theorem for any M. Then formal group
+    methods, one can use Lubin-Tate theory, this is very explicitly and gives a natural generalisation
+    to non-abelian extensions, but it does not give non-abelian extensions. Lastly, there is the Neukirch
+    method, E/F abelian finite, construct inverse Artin map to be in F^\cross \ N_{E/F}(E^\cross) there
+    is only one possibility, <g. is cyclic subgroup of Gal(E/F). Then one proves a lemma to get a homomorphism
+    that does not depend on the choices'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one prove class field theory? (hint: cohomological method, exxistence of artin
+    map, then one interprets gal(e/f) cohomologically and then compute the brauer group, and then one
+    gets the artin map as a cup product, and it generalises to duality theorem for any m. then formal
+    group methods, one can use lubin-tate theory, this is very explicitly and gives a natural generalisation
+    to non-abelian extensions, but it does not give non-abelian extensions. lastly, there is the neukirch
+    method, e/f abelian finite, construct inverse artin map to be in f^\cross \ n_{e/f}(e^\cross) there
+    is only one possibility, <g. is cyclic subgroup of gal(e/f). then one proves a lemma to get a homomorphism
+    that does not depend on the choices'
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#019
+  text: What is the natural progression to class field theory?
+  hint: global theorems come first, then local class field theory comes later
+  locator: null
+  sub_index: null
+  search_text: what is the natural progression to class field theory? global theorems come first, then
+    local class field theory comes later
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#020
+  text: 'How does one invent the notion of a global field? (Hint: find a replacement for local fields
+    to be non-Archimedean local fields or finite fields, now use a irreducible curve C/F_q, or take finite
+    extension of F_q(t))'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the notion of a global field? (hint: find a replacement for local
+    fields to be non-archimedean local fields or finite fields, now use a irreducible curve c/f_q, or
+    take finite extension of f_q(t))'
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#021
+  text: How does one invent the notion of a place/
+  hint: try to find a definition for the valuation for global fields, similar to that of local fields
+    where a valuation is convenient valued of K^\times
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a place/ try to find a definition for the valuation for
+    global fields, similar to that of local fields where a valuation is convenient valued of k^\times
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#022
+  text: How does one invent the notion of finite places and infinite places?
+  hint: not sure, but there are prime ideals normal to ring of integers O_K, or complex and real embedding?
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of finite places and infinite places? not sure, but there
+    are prime ideals normal to ring of integers o_k, or complex and real embedding?
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#023
+  text: How does one come up with the correspondence to closed points of the curve?
+  hint: take all finite places
+  locator: null
+  sub_index: null
+  search_text: how does one come up with the correspondence to closed points of the curve? take all finite
+    places
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#024
+  text: How does one invent the notions of canonical normalised valuations (but not absolute value)?
+  hint: put up absolute value of K_v then |x|_v = q_v^-v(x) and q_v = |O_v/pi_v O_v| as cardinality of
+    residue field, these are done so that one can invent the product formula, to have it stable under
+    finite extensions of Q, by inventing it for the case of Q.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notions of canonical normalised valuations (but not absolute value)?
+    put up absolute value of k_v then |x|_v = q_v^-v(x) and q_v = |o_v/pi_v o_v| as cardinality of residue
+    field, these are done so that one can invent the product formula, to have it stable under finite extensions
+    of q, by inventing it for the case of q.
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#025
+  text: Compute the normalisation of K = Q, v = p, p prime, K_v real, K_v complex?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the normalisation of k = q, v = p, p prime, k_v real, k_v complex?
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#026
+  text: How does one invent the notion of adeles and ideles?
+  hint: to state global class field theory? What did Tate noticed?
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of adeles and ideles? to state global class field theory?
+    what did tate noticed?
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#027
+  text: How does one invent the natural absolute value of the ideles?
+  hint: it is enough to prove the finiteness of the class group and Dirichlet unit theorem? So that is
+    motivating, then, using the restricted product, the map valuing in multiplicative from C_K to R_>0^\times,
+    it has a compact kernel. This can be used to construct continuous surjections
+  locator: null
+  sub_index: null
+  search_text: how does one invent the natural absolute value of the ideles? it is enough to prove the
+    finiteness of the class group and dirichlet unit theorem? so that is motivating, then, using the restricted
+    product, the map valuing in multiplicative from c_k to r_>0^\times, it has a compact kernel. this
+    can be used to construct continuous surjections
+- id: dec41-user-srcf-net-h-iv-l-topics-in-number-theory-full#028
+  text: How does one invent Langlands correspondence?
+  hint: start with local class field theory W_F^ab is isomorphic to F^\times, now use the full Weil group,
+    one can write local class field theory as the case of GL_1, characters of GL_1(F) i.e. F^\times is
+    1D representations of W_F. So W_F^ab is 1-dim representations, Schur's lemma is nice, and this is
+    1D reps of W_F. Then F^\times are like characters of GL_1(F).
+  locator: null
+  sub_index: null
+  search_text: how does one invent langlands correspondence? start with local class field theory w_f^ab
+    is isomorphic to f^\times, now use the full weil group, one can write local class field theory as
+    the case of gl_1, characters of gl_1(f) i.e. f^\times is 1d representations of w_f. so w_f^ab is 1-dim
+    representations, schur's lemma is nice, and this is 1d reps of w_f. then f^\times are like characters
+    of gl_1(f).

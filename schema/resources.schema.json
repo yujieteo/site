@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Resource",
+  "type": "object",
+  "required": ["title", "url", "category"],
+  "properties": {
+    "title": { "type": "string" },
+    "url": { "type": "string" },
+    "category": { "type": "string" },
+    "note": { "type": "string" }
+  }
+}

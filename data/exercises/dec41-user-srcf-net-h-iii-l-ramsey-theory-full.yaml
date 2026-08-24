@@ -1,0 +1,75 @@
+url: https://dec41.user.srcf.net/h/III_L/ramsey_theory/full
+title: Ramsey theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iii-l-ramsey-theory-full#000
+  text: 'What is the basic question of Ramsey theory? (Hint: structure, break up into finitely many pieces,
+    can we find a piece that retains the structure of X? Colouring is one of many examples)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is the basic question of ramsey theory? (hint: structure, break up into finitely
+    many pieces, can we find a piece that retains the structure of x? colouring is one of many examples)'
+- id: dec41-user-srcf-net-h-iii-l-ramsey-theory-full#001
+  text: 'What is another basic question of Ramsey theory? (Hint: graph coloring, then one wants to see
+    if one can find a monochromatic graph of size 4? Naturally the probabilistic method works well here,
+    but the essential idea is one can guarantee the existence of a certain nice structure)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is another basic question of ramsey theory? (hint: graph coloring, then one wants
+    to see if one can find a monochromatic graph of size 4? naturally the probabilistic method works well
+    here, but the essential idea is one can guarantee the existence of a certain nice structure)'
+- id: dec41-user-srcf-net-h-iii-l-ramsey-theory-full#002
+  text: How does one come up with Rado's theorem?
+  hint: one have a system of linear equations, finitely colour the integers, can we find a monochromatic
+    solution to these equations? All linear systems always admit monochromatic solutions, this is also
+    what makes linear systems very nice.
+  locator: null
+  sub_index: null
+  search_text: how does one come up with rado's theorem? one have a system of linear equations, finitely
+    colour the integers, can we find a monochromatic solution to these equations? all linear systems always
+    admit monochromatic solutions, this is also what makes linear systems very nice.
+- id: dec41-user-srcf-net-h-iii-l-ramsey-theory-full#003
+  text: How does one come up of r-sets?
+  hint: one wants subset of X of size r, then the elements are r-sets
+  locator: null
+  sub_index: null
+  search_text: how does one come up of r-sets? one wants subset of x of size r, then the elements are
+    r-sets
+- id: dec41-user-srcf-net-h-iii-l-ramsey-theory-full#004
+  text: 'How does one come up with the notion of a graph? (Hint: you want edges to be a subset of subsets
+    of pairs of vertices or E in V^(2)). This is an unusually slick definition'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one come up with the notion of a graph? (hint: you want edges to be a subset
+    of subsets of pairs of vertices or e in v^(2)). this is an unusually slick definition'
+- id: dec41-user-srcf-net-h-iii-l-ramsey-theory-full#005
+  text: Why does one care about the notion of colouring?
+  hint: take map to [k], then one has the colours as some sort of moduli space, pullback and then you
+    get some sort of structure.
+  locator: null
+  sub_index: null
+  search_text: why does one care about the notion of colouring? take map to [k], then one has the colours
+    as some sort of moduli space, pullback and then you get some sort of structure.
+- id: dec41-user-srcf-net-h-iii-l-ramsey-theory-full#006
+  text: 'How does one define a monochromatic colouring? (Hint: X with a map [not a morphism] that is a
+    k-colouring, it is monochromatic if the colouring restricted to Y is constant)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one define a monochromatic colouring? (hint: x with a map [not a morphism] that
+    is a k-colouring, it is monochromatic if the colouring restricted to y is constant)'
+- id: dec41-user-srcf-net-h-iii-l-ramsey-theory-full#007
+  text: What typically ends up as open problem?
+  hint: find an explicit infinite monochromatic set for the colouring of red i+j has an even number of
+    distinct prime factors, blue otherwise, so a lot of open problems are simply making things explicit.
+  locator: null
+  sub_index: null
+  search_text: what typically ends up as open problem? find an explicit infinite monochromatic set for
+    the colouring of red i+j has an even number of distinct prime factors, blue otherwise, so a lot of
+    open problems are simply making things explicit.

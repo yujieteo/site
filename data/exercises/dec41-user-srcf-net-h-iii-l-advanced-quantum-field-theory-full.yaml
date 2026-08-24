@@ -1,0 +1,1324 @@
+url: https://dec41.user.srcf.net/h/III_L/advanced_quantum_field_theory/full
+title: advanced quantum field theory
+note: I have skipped some part of the notes is important
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#000
+  text: Why is quantum field theory important?
+  hint: path integrals and functional methods to study quantum gauge theory, gauge theories work everywhere
+    and generalises electrodynamics, transform fields by Lie groups and get infinitely redundant descriptions,
+    quantising this eliminates redundancy however you now have ghost fields and BRST symmetry. Importantly,
+    quantum field theory is technique.
+  locator: null
+  sub_index: null
+  search_text: why is quantum field theory important? path integrals and functional methods to study quantum
+    gauge theory, gauge theories work everywhere and generalises electrodynamics, transform fields by
+    lie groups and get infinitely redundant descriptions, quantising this eliminates redundancy however
+    you now have ghost fields and brst symmetry. importantly, quantum field theory is technique.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#001
+  text: What is the motivation behind Wilsonian loop?
+  hint: observables in gauge theory constructions
+  locator: null
+  sub_index: null
+  search_text: what is the motivation behind wilsonian loop? observables in gauge theory constructions
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#002
+  text: What is the motivation behind phonons?
+  hint: vibrations of the crystal, quantising it becomes phonons, i.e. wave-particle duality is general
+    and applies not just to quantum mechanics.
+  locator: null
+  sub_index: null
+  search_text: what is the motivation behind phonons? vibrations of the crystal, quantising it becomes
+    phonons, i.e. wave-particle duality is general and applies not just to quantum mechanics.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#003
+  text: Why is a space needed to be decided?
+  hint: depends on the domain, particle physics means pick pseudo-Riemannian manifold, (M, g) = R^4, eta,
+    or eta is Minkowski metric, or pick R^3, delta, delta is flat Euclidean metric, in string theory,
+    pick Riemann surface or sphere or torus, one just picks conformal equivalence class of metric i.e.
+    metric up to scalar factor. QFT for knots one picks oriented 3-manifold but no metric. R^d is noncompact
+    so bad
+  locator: null
+  sub_index: null
+  search_text: why is a space needed to be decided? depends on the domain, particle physics means pick
+    pseudo-riemannian manifold, (m, g) = r^4, eta, or eta is minkowski metric, or pick r^3, delta, delta
+    is flat euclidean metric, in string theory, pick riemann surface or sphere or torus, one just picks
+    conformal equivalence class of metric i.e. metric up to scalar factor. qft for knots one picks oriented
+    3-manifold but no metric. r^d is noncompact so bad
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#004
+  text: Why must one pick a scalar field?
+  hint: field theory after all, field gives the gauge which is decided by picking an isomorphism on a
+    prinicpal G-bundle (or infinity bundles), but actually want can have something more general called
+    a target space. In the course, N is a manifold, but really it can be anything that looks like a manifold
+    i.e. a sheaf. Basically it is a sort of value assigned to the parameter.
+  locator: null
+  sub_index: null
+  search_text: why must one pick a scalar field? field theory after all, field gives the gauge which is
+    decided by picking an isomorphism on a prinicpal g-bundle (or infinity bundles), but actually want
+    can have something more general called a target space. in the course, n is a manifold, but really
+    it can be anything that looks like a manifold i.e. a sheaf. basically it is a sort of value assigned
+    to the parameter.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#005
+  text: What is the entropy of the field?
+  hint: it is the measure D phi and it does not exist, essentially the measure used in the partition function
+    and we do not understand what it is in the path integral. Integrated over all field configuration,
+    weighted by exp(-S/h). Requires Faddev-Popov determinant to correct redundancies in the measure and
+    lattice regularisation to yield finite results. There is no compactness or even local compactness
+    here. Subject of research. Strangely there is no compactness assumption required, just need discretisation
+  locator: null
+  sub_index: null
+  search_text: what is the entropy of the field? it is the measure d phi and it does not exist, essentially
+    the measure used in the partition function and we do not understand what it is in the path integral.
+    integrated over all field configuration, weighted by exp(-s/h). requires faddev-popov determinant
+    to correct redundancies in the measure and lattice regularisation to yield finite results. there is
+    no compactness or even local compactness here. subject of research. strangely there is no compactness
+    assumption required, just need discretisation
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#006
+  text: 'What does one pick for the field? (Hint: pick M -> R, M as interval called time (most typical
+    case), and field is M -> R^3 or paths in R^3). One can pick instead of R^3, pick a Calabi-Yau manifold,
+    or pick fields with nonzero spin as connections on principal G-bundles with nontrivial representation
+    of the Lorentz group.)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what does one pick for the field? (hint: pick m -> r, m as interval called time (most
+    typical case), and field is m -> r^3 or paths in r^3). one can pick instead of r^3, pick a calabi-yau
+    manifold, or pick fields with nonzero spin as connections on principal g-bundles with nontrivial representation
+    of the lorentz group.)'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#007
+  text: What is the next step after one picks a field?
+  hint: pick C to be space of all field configurations like some moduli space, this is infinite dimensional,
+    this makes it hard?
+  locator: null
+  sub_index: null
+  search_text: what is the next step after one picks a field? pick c to be space of all field configurations
+    like some moduli space, this is infinite dimensional, this makes it hard?
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#008
+  text: Why does one pick a Calabi-Yau manifold as the target space for a scalar field?
+  hint: SU(3) holonomy allows survival of quantum supersymmetry to survive compactification, solve vacuum
+    Einstien field equations with 0 net expansion or contraction, this is Ricci flatness. Hodge numbers
+    determine particle families, charges, and gauge forces in 4D world, therefore one does Kahler theory
+    on the Calabi-Yau manifold
+  locator: null
+  sub_index: null
+  search_text: why does one pick a calabi-yau manifold as the target space for a scalar field? su(3) holonomy
+    allows survival of quantum supersymmetry to survive compactification, solve vacuum einstien field
+    equations with 0 net expansion or contraction, this is ricci flatness. hodge numbers determine particle
+    families, charges, and gauge forces in 4d world, therefore one does kahler theory on the calabi-yau
+    manifold
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#009
+  text: 'Why does one pick an action? (Hint: one wants a value for the field and for the action to be
+    local sometimes so that there are no far field effects, but this is a VERY suspicious assumption (see
+    Bell''s theorem and spooky action at a distance. One also wants to apply some sort of Noether''s theorem
+    to it.)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'why does one pick an action? (hint: one wants a value for the field and for the action
+    to be local sometimes so that there are no far field effects, but this is a very suspicious assumption
+    (see bell''s theorem and spooky action at a distance. one also wants to apply some sort of noether''s
+    theorem to it.)'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#010
+  text: Why does one compute the partition function and why is there a minus sign?
+  hint: this is where harmonic analysis can come in, Euclidean signature gives - sign, otherwise it will
+    be some i, partition function allows you to do harmonic analysis, in fact it is Z = int D phi exp(-S[phi]
+    h), the factor exp is the suppress wild contributions using analysis, D phi is the entropy but problem
+    is that this not well defined as a measure since we do not have tools like compactness here, one fixes
+    this with lattice regularisation and Faddev-Popov ghosts. This is the hard part of quantum field theory
+    which is to find a working measure. Same as partition function but in imaginary time.
+  locator: null
+  sub_index: null
+  search_text: why does one compute the partition function and why is there a minus sign? this is where
+    harmonic analysis can come in, euclidean signature gives - sign, otherwise it will be some i, partition
+    function allows you to do harmonic analysis, in fact it is z = int d phi exp(-s[phi] h), the factor
+    exp is the suppress wild contributions using analysis, d phi is the entropy but problem is that this
+    not well defined as a measure since we do not have tools like compactness here, one fixes this with
+    lattice regularisation and faddev-popov ghosts. this is the hard part of quantum field theory which
+    is to find a working measure. same as partition function but in imaginary time.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#011
+  text: How does one compute the partition function of a FQFT?
+  hint: functor on the category of d-dimensional cobordisms, partition function is assignment of d-dim
+    tori of the values Z(T), partition function is the trace over the value of the QFT int he cylinder
+    by cutting, so the name comes from, QFTs, on Riemannian cobordisms, value of the QFT on a cylinder
+    of length t is linear operator of the form exp(-tH) for some operator H, so the partition comes from
+    cutting the torus open? Cobordisms are mapped to linear operator, example cylinder has shape circle
+    x interval, H is energy or Hamiltonian, torus is built by gluing the ends, gluing ends means take
+    trace of evolution operator, that is why the FQFT maps a d-dim torus to a number
+  locator: null
+  sub_index: null
+  search_text: how does one compute the partition function of a fqft? functor on the category of d-dimensional
+    cobordisms, partition function is assignment of d-dim tori of the values z(t), partition function
+    is the trace over the value of the qft int he cylinder by cutting, so the name comes from, qfts, on
+    riemannian cobordisms, value of the qft on a cylinder of length t is linear operator of the form exp(-th)
+    for some operator h, so the partition comes from cutting the torus open? cobordisms are mapped to
+    linear operator, example cylinder has shape circle x interval, h is energy or hamiltonian, torus is
+    built by gluing the ends, gluing ends means take trace of evolution operator, that is why the fqft
+    maps a d-dim torus to a number
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#012
+  text: What is important about the measure D phi on C, where C is the space of all possible field configurations
+    i.e. a point in C represents a picture of field across all of M?
+  hint: it does not actually exists, and this is hard to invent to make it work.
+  locator: null
+  sub_index: null
+  search_text: what is important about the measure d phi on c, where c is the space of all possible field
+    configurations i.e. a point in c represents a picture of field across all of m? it does not actually
+    exists, and this is hard to invent to make it work.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#013
+  text: Why does one study quantum field theory in 0 dimensions?
+  hint: it is fully rigorous and solved.
+  locator: null
+  sub_index: null
+  search_text: why does one study quantum field theory in 0 dimensions? it is fully rigorous and solved.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#014
+  text: For a 0 dim quantum field theory, what happens when one assumes that the universe is connected?
+  hint: becomes a single point
+  locator: null
+  sub_index: null
+  search_text: for a 0 dim quantum field theory, what happens when one assumes that the universe is connected?
+    becomes a single point
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#015
+  text: Compute the Lorentz group O(1,3) of a connected 0 dimensional universe
+  hint: it is trivial, manifold is one point, configuration space is R, then single field is a real variable
+    from a point to R. This is not an infinite dimensional space, it only has one dimension.
+  locator: null
+  sub_index: null
+  search_text: compute the lorentz group o(1,3) of a connected 0 dimensional universe it is trivial, manifold
+    is one point, configuration space is r, then single field is a real variable from a point to r. this
+    is not an infinite dimensional space, it only has one dimension.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#016
+  text: Compute the scalar field for a connected 0 dimensional universe?
+  hint: pt -> R i.e. assign a point with a real number
+  locator: null
+  sub_index: null
+  search_text: compute the scalar field for a connected 0 dimensional universe? pt -> r i.e. assign a
+    point with a real number
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#017
+  text: Compute the action and the partition function of a 0 dimensional scalar field? Compute the path
+    integral measure for the partition function?
+  hint: Lebesgue measure
+  locator: null
+  sub_index: null
+  search_text: compute the action and the partition function of a 0 dimensional scalar field? compute
+    the path integral measure for the partition function? lebesgue measure
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#018
+  text: Compute the correlation functions?
+  hint: one can get a probability distribution on R, this is the point of eventually doing QFT, one finds
+    that expectation value of f in this distribution.
+  locator: null
+  sub_index: null
+  search_text: compute the correlation functions? one can get a probability distribution on r, this is
+    the point of eventually doing qft, one finds that expectation value of f in this distribution.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#019
+  text: Why does one compute the series expansion in phi?
+  hint: you mainly need it to be even, so that the asymptotic behaviour is symmetric on both sides, nothing
+    depends on the field because the partition function integrates it across all fields.
+  locator: null
+  sub_index: null
+  search_text: why does one compute the series expansion in phi? you mainly need it to be even, so that
+    the asymptotic behaviour is symmetric on both sides, nothing depends on the field because the partition
+    function integrates it across all fields.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#020
+  text: How does one compute the QFT on the 0 dimensional quantum field theory?
+  hint: take equations of motions to be linear, superposition, particles do not interact, one gets the
+    partition function to be a Gaussian integral based on probability theory easiest proof is by Wilsonian
+    renormalisation.
+  locator: null
+  sub_index: null
+  search_text: how does one compute the qft on the 0 dimensional quantum field theory? take equations
+    of motions to be linear, superposition, particles do not interact, one gets the partition function
+    to be a gaussian integral based on probability theory easiest proof is by wilsonian renormalisation.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#021
+  text: How does one compute this partition function for a simplest QFT of 0 dimensional universe?
+  hint: Gaussian integral, symmetric, take orthogonal transformation that diagonalises it which exists
+    due to symmetry, d^n phi is invariant, in terms of eigenvectors, using representation theory reduces
+    to product of 1D Gaussian integrals due to non-interaction, one can then compute Wick's theorem i.e.
+    reduce to computation of integral for correlation function to combinatorics of counting the number
+    of ways to pair things up.
+  locator: null
+  sub_index: null
+  search_text: how does one compute this partition function for a simplest qft of 0 dimensional universe?
+    gaussian integral, symmetric, take orthogonal transformation that diagonalises it which exists due
+    to symmetry, d^n phi is invariant, in terms of eigenvectors, using representation theory reduces to
+    product of 1d gaussian integrals due to non-interaction, one can then compute wick's theorem i.e.
+    reduce to computation of integral for correlation function to combinatorics of counting the number
+    of ways to pair things up.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#022
+  text: 'Why does Taylor series expansion of partition functions come in? (Hint: integral diverges, need
+    to have asymptotic series instead, then one use''s Laplace''s method / Watson''s lemma.) This motivates
+    the semiclassical term and quantum corrections from the asymptotic series?'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'why does taylor series expansion of partition functions come in? (hint: integral diverges,
+    need to have asymptotic series instead, then one use''s laplace''s method / watson''s lemma.) this
+    motivates the semiclassical term and quantum corrections from the asymptotic series?'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#023
+  text: Why does one want to compute correlation functions or partition functions in QFT?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: why does one want to compute correlation functions or partition functions in qft?
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#024
+  text: What terms decide the partition function in QFT?
+  hint: Z = Z(m^2, g_n), where in the series expansion m^2 phi^2/2 is the quadratic term, then the remaining
+    g_n are the coefficients for g_n phi^n / n!, looking like Dirichlet series. This is the series expansion
+    in terms of Phi
+  locator: null
+  sub_index: null
+  search_text: what terms decide the partition function in qft? z = z(m^2, g_n), where in the series expansion
+    m^2 phi^2/2 is the quadratic term, then the remaining g_n are the coefficients for g_n phi^n / n!,
+    looking like dirichlet series. this is the series expansion in terms of phi
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#025
+  text: 'How does one introduce correlation functions in 0D quantum field theory? (Hint: pick another
+    function, pick any function but a nice one is exp(-S(phi)/h) so that the expectation results in an
+    convergent integral. This motivates complicated f later to find how the field at different points
+    relate to one another). Later, <f> or the correlation function depends on m^2, g_n, and other things
+    that define f. NOTE: nothing depends on the field since this integral is over all possible fields
+    (R), for a point'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one introduce correlation functions in 0d quantum field theory? (hint: pick another
+    function, pick any function but a nice one is exp(-s(phi)/h) so that the expectation results in an
+    convergent integral. this motivates complicated f later to find how the field at different points
+    relate to one another). later, <f> or the correlation function depends on m^2, g_n, and other things
+    that define f. note: nothing depends on the field since this integral is over all possible fields
+    (r), for a point'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#026
+  text: What is the classical interpretation of free QFTs?
+  hint: action on phi is at most quadratic, equations of motions are linear, superposition implies no
+    particle interaction, analogous to reducing to the case single particle but it just means that there
+    are no particle interactions
+  locator: null
+  sub_index: null
+  search_text: what is the classical interpretation of free qfts? action on phi is at most quadratic,
+    equations of motions are linear, superposition implies no particle interaction, analogous to reducing
+    to the case single particle but it just means that there are no particle interactions
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#027
+  text: 'What does one compute for a 0D free QFT? (Hint: define a positive definite symmetric matrix for
+    simplicity, denoted M, the inverse of M is the propagator, this appears in the field action formula,
+    then one uses the quadratic terms 0.5 M_ab phi^a phi^b, then one computes the partition function as
+    a Gaussian integral to be (2 pi h)^n/2 / root(det M)). Diagonalise the M which is the action matrix,
+    inverse is directionally proportional to the propagator with orthogonal O, and note that Lebesgue
+    measure is invariant under orthogonal transform [mass does not change intuitively] so the terms of
+    eigenvectors reduces to n 1D Gaussian integrals (think about Schur''s lemma) i.e. this reduces to
+    classical probability theory)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what does one compute for a 0d free qft? (hint: define a positive definite symmetric matrix
+    for simplicity, denoted m, the inverse of m is the propagator, this appears in the field action formula,
+    then one uses the quadratic terms 0.5 m_ab phi^a phi^b, then one computes the partition function as
+    a gaussian integral to be (2 pi h)^n/2 / root(det m)). diagonalise the m which is the action matrix,
+    inverse is directionally proportional to the propagator with orthogonal o, and note that lebesgue
+    measure is invariant under orthogonal transform [mass does not change intuitively] so the terms of
+    eigenvectors reduces to n 1d gaussian integrals (think about schur''s lemma) i.e. this reduces to
+    classical probability theory)'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#028
+  text: How does one generalise free QFT?
+  hint: the quadratic term, add a J(phi) where J is thought of as a source, but nobody cares, this will
+    be used to compute correlation funtions
+  locator: null
+  sub_index: null
+  search_text: how does one generalise free qft? the quadratic term, add a j(phi) where j is thought of
+    as a source, but nobody cares, this will be used to compute correlation funtions
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#029
+  text: How does one compute correlation functions for 0D free QFT and how does this motivate Wick's theorem?
+  hint: compute similarly as to the case above, use linearity to reduce P(phi) to monomials, ignore case
+    of m odd since the correlations vanish, pick m = 2k, then one gets cases of phi as pairings of 1 to
+    2k, i.e. edges for pairs of points. This gives a budget version of Wick's theorem, and M^-1 in the
+    correlation function is the propagator i.e. the factor on the exponential.
+  locator: null
+  sub_index: null
+  search_text: how does one compute correlation functions for 0d free qft and how does this motivate wick's
+    theorem? compute similarly as to the case above, use linearity to reduce p(phi) to monomials, ignore
+    case of m odd since the correlations vanish, pick m = 2k, then one gets cases of phi as pairings of
+    1 to 2k, i.e. edges for pairs of points. this gives a budget version of wick's theorem, and m^-1 in
+    the correlation function is the propagator i.e. the factor on the exponential.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#030
+  text: What is Wick's probability theorem or Isserlis theorem?
+  hint: zero mean multivariate normal random vector, then expectation of X_1 X_2... is sum of product
+    of covariance matrices subject to some combinatorial conditions, odd means no pairing, Isserlis proves
+    even case by induction using combinatorics. One can evaluate the characteristic of Gaussians via the
+    Isserlis theorems.
+  locator: null
+  sub_index: null
+  search_text: what is wick's probability theorem or isserlis theorem? zero mean multivariate normal random
+    vector, then expectation of x_1 x_2... is sum of product of covariance matrices subject to some combinatorial
+    conditions, odd means no pairing, isserlis proves even case by induction using combinatorics. one
+    can evaluate the characteristic of gaussians via the isserlis theorems.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#031
+  text: What is the purpose of the propagator in 0D QFT?
+  hint: reduce integral computation for correlation functions to combinatorics of counting the number
+    of ways to pair things up note that this is somehow related to Kreimer-Connes interpretations. It
+    assigns a weight, use the propagator to evaluate the amplitude by counting the number of ways to pair
+    things i.e. (2k-1)!!. Interactions? Propagator give vertex with 4 legs, pair up using Feynman diagrams.
+    Graph enumeration, counting symmetry factors and permutations of connecting dots with lines. Feynman
+    diagrams are basis elements, coproduct dissects the graph to divergent subgroups, antipode computes
+    counterterms to BPHZ renormalisation, this is a Hopf algebra in realistic QFTs.
+  locator: null
+  sub_index: null
+  search_text: what is the purpose of the propagator in 0d qft? reduce integral computation for correlation
+    functions to combinatorics of counting the number of ways to pair things up note that this is somehow
+    related to kreimer-connes interpretations. it assigns a weight, use the propagator to evaluate the
+    amplitude by counting the number of ways to pair things i.e. (2k-1)!!. interactions? propagator give
+    vertex with 4 legs, pair up using feynman diagrams. graph enumeration, counting symmetry factors and
+    permutations of connecting dots with lines. feynman diagrams are basis elements, coproduct dissects
+    the graph to divergent subgroups, antipode computes counterterms to bphz renormalisation, this is
+    a hopf algebra in realistic qfts.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#032
+  text: What does it mean for theories with interactions?
+  hint: action is nonquadratic on field
+  locator: null
+  sub_index: null
+  search_text: what does it mean for theories with interactions? action is nonquadratic on field
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#033
+  text: How does one resolve theories with interactions?
+  hint: approximate partition functions with asymptotic series, cannot use Taylor series if h bar < 0,
+    so asymptotic series, then one can approximate the partition function Z(h bar) as some asymptotic
+    series by Laplace's method, the idea is to expand g(t) and h(t) in integral g(t) exp x h(t) as Taylor
+    series around the peak, get leading asymptotic term, evaluate on leading term gets semiclassical term,
+    remaining terms are quantum corrections.
+  locator: null
+  sub_index: null
+  search_text: how does one resolve theories with interactions? approximate partition functions with asymptotic
+    series, cannot use taylor series if h bar < 0, so asymptotic series, then one can approximate the
+    partition function z(h bar) as some asymptotic series by laplace's method, the idea is to expand g(t)
+    and h(t) in integral g(t) exp x h(t) as taylor series around the peak, get leading asymptotic term,
+    evaluate on leading term gets semiclassical term, remaining terms are quantum corrections.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#034
+  text: 'What is quantum field theory about? (Hint: working with the quantum correction terms i.e. Ah_bar
+    + B h_bar^2 for theories with interactions)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is quantum field theory about? (hint: working with the quantum correction terms i.e.
+    ah_bar + b h_bar^2 for theories with interactions)'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#035
+  text: How does one find a asymptotic series expansion of Z(h bar, m lambda)?
+  hint: need to use Gamma functions, these will have Feynman diagrams appear later, lambda is a coupling
+    constant
+  locator: null
+  sub_index: null
+  search_text: how does one find a asymptotic series expansion of z(h bar, m lambda)? need to use gamma
+    functions, these will have feynman diagrams appear later, lambda is a coupling constant
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#036
+  text: What are tachyons? (m^2 < 0, instability, actions whose minima occur at nonzero field values,
+    this is symmetry breaking, pick the minimum to expand your Taylor series, symmetry is broken. So arbitrary
+    choice of minimum breaks it)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what are tachyons? (m^2 < 0, instability, actions whose minima occur at nonzero field values,
+    this is symmetry breaking, pick the minimum to expand your taylor series, symmetry is broken. so arbitrary
+    choice of minimum breaks it)
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#037
+  text: 'How does one invent Feynman diagrams? (Hint: consider powers of h bar lambda / m^4)^n, combination
+    is fixed by dimensional analysis, but combinatorial factor is hard, one has to rewrite the path integral,
+    then use Wick''s theorem, the factor came from Wick''s theorem i.e. number of ways to pair 4n vertices.
+    Feynman diagrams are ways to group interaction vertices of valency 4 together, for example, connecting
+    the two rods diagram give a single point with two loops. One uses the orbit stabiliser theorem, some
+    graph counting of all connected graphs to simplify)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent feynman diagrams? (hint: consider powers of h bar lambda / m^4)^n,
+    combination is fixed by dimensional analysis, but combinatorial factor is hard, one has to rewrite
+    the path integral, then use wick''s theorem, the factor came from wick''s theorem i.e. number of ways
+    to pair 4n vertices. feynman diagrams are ways to group interaction vertices of valency 4 together,
+    for example, connecting the two rods diagram give a single point with two loops. one uses the orbit
+    stabiliser theorem, some graph counting of all connected graphs to simplify)'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#038
+  text: How does one expand the partition function of interacting theories?
+  hint: expand this as the different diagrams from the Feynman diagrams one obtains.
+  locator: null
+  sub_index: null
+  search_text: how does one expand the partition function of interacting theories? expand this as the
+    different diagrams from the feynman diagrams one obtains.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#039
+  text: Why is the double scalar (phi/chi) field [this means low energy and high energy] with chi [high
+    energy] inaccessible example important?
+  hint: interested in correlation functions that depend only on phi, integrate out chi, then one can define
+    the effective action for phi, and pretending phi does not exist, this allows us to generate an infinite
+    series of new interactions in phi with a mass shift, this is a useful technique to determine incarnation
+    of high energy particles in lower energy fields.
+  locator: null
+  sub_index: null
+  search_text: why is the double scalar (phi/chi) field [this means low energy and high energy] with chi
+    [high energy] inaccessible example important? interested in correlation functions that depend only
+    on phi, integrate out chi, then one can define the effective action for phi, and pretending phi does
+    not exist, this allows us to generate an infinite series of new interactions in phi with a mass shift,
+    this is a useful technique to determine incarnation of high energy particles in lower energy fields.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#040
+  text: How does one invent the quantity log(Z/Z_0)?
+  hint: take the sum of all connected graphs, since counting all graphs is very tedious.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the quantity log(z/z_0)? take the sum of all connected graphs, since
+    counting all graphs is very tedious.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#041
+  text: What is the problem with field independent terms?
+  hint: no role in correlation functions since it does not depend on phi, but this cannot be dropped since
+    it contributes to the cosmological constant.
+  locator: null
+  sub_index: null
+  search_text: what is the problem with field independent terms? no role in correlation functions since
+    it does not depend on phi, but this cannot be dropped since it contributes to the cosmological constant.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#042
+  text: How does one invent supersymmetric theories?
+  hint: have quantum corrections cancel out in asymptotic series of partition functions.
+  locator: null
+  sub_index: null
+  search_text: how does one invent supersymmetric theories? have quantum corrections cancel out in asymptotic
+    series of partition functions.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#043
+  text: How does one invent effective actions and have new couplings with tiny effects?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one invent effective actions and have new couplings with tiny effects?
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#044
+  text: How does one compare bosons and fermions?
+  hint: Bose statistics and Fermi-Dirac statistics
+  locator: null
+  sub_index: null
+  search_text: how does one compare bosons and fermions? bose statistics and fermi-dirac statistics
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#045
+  text: How does one do study fermions in 0D quantum field theory?
+  hint: cannot use path integrals since these involve commutes, treat fields as formal symbols and redfine
+    path integral subject to commutator theta_i theta_j + theta_j theta_i = 0, one gets path integral
+    of all d theta terms exp(-S[theta terms]), then exponentialm means one can write power series and
+    then have it expand out to be the Berezin integral for a single field since poly expression is a +
+    b theta.
+  locator: null
+  sub_index: null
+  search_text: how does one do study fermions in 0d quantum field theory? cannot use path integrals since
+    these involve commutes, treat fields as formal symbols and redfine path integral subject to commutator
+    theta_i theta_j + theta_j theta_i = 0, one gets path integral of all d theta terms exp(-s[theta terms]),
+    then exponentialm means one can write power series and then have it expand out to be the berezin integral
+    for a single field since poly expression is a + b theta.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#046
+  text: Why must one imagine the fields to be complex?
+  hint: to get the correct mass term so you need a field and its complex conjugate, so for analysis purposes
+    for masses you need to work over complex fields
+  locator: null
+  sub_index: null
+  search_text: why must one imagine the fields to be complex? to get the correct mass term so you need
+    a field and its complex conjugate, so for analysis purposes for masses you need to work over complex
+    fields
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#047
+  text: How does one motivate linear functionals when fields are formal symbols?
+  hint: cannot integral formal symbols, takelinear functionals from space of polynomials to reals that
+    act as integrals, this gives Berezin integrals.
+  locator: null
+  sub_index: null
+  search_text: how does one motivate linear functionals when fields are formal symbols? cannot integral
+    formal symbols, takelinear functionals from space of polynomials to reals that act as integrals, this
+    gives berezin integrals.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#048
+  text: How does one find the standard choice of action for QFT in 1 dimension?
+  hint: integral over interval for 0.5g(v',v') + V(x), V is potential, v' is time derivative. Nonlinear,
+    g(v',v') can be complicated if Riemannian metric is not flat
+  locator: null
+  sub_index: null
+  search_text: how does one find the standard choice of action for qft in 1 dimension? integral over interval
+    for 0.5g(v',v') + v(x), v is potential, v' is time derivative. nonlinear, g(v',v') can be complicated
+    if riemannian metric is not flat
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#049
+  text: How does one do quantum mechanics?
+  hint: one starts with a Hilbert space, typically L^2, then take square integrable functions, for dynamics
+    one takes the Hamiltonian operator, with the Laplacian or H = 0.5 del + V, del = 1/root(g) ... One
+    will neeed some sort of picture like the Heisenberg picture, amplitude is given by the heat kernel
+    i.e. exp(-Ht) but it does not make sense in the Euclidean world and reconnect this back with normal
+    quantum mechanics by replacing Euclidean time T with iT giving the Schrodinger equation
+  locator: null
+  sub_index: null
+  search_text: how does one do quantum mechanics? one starts with a hilbert space, typically l^2, then
+    take square integrable functions, for dynamics one takes the hamiltonian operator, with the laplacian
+    or h = 0.5 del + v, del = 1/root(g) ... one will neeed some sort of picture like the heisenberg picture,
+    amplitude is given by the heat kernel i.e. exp(-ht) but it does not make sense in the euclidean world
+    and reconnect this back with normal quantum mechanics by replacing euclidean time t with it giving
+    the schrodinger equation
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#050
+  text: How does one derive the concatenation property of the heat kernel?
+  hint: Gaussians convolve, compute that integral d^n z K_t2(y,z) K_t1(z,x). Concatenation property of
+    the heat kernel, set delta t = T/N. Now one can look at the heat kernel <y|exp(-HT)|x> which will
+    eventually give the path integral, this where the path measure comes from.
+  locator: null
+  sub_index: null
+  search_text: how does one derive the concatenation property of the heat kernel? gaussians convolve,
+    compute that integral d^n z k_t2(y,z) k_t1(z,x). concatenation property of the heat kernel, set delta
+    t = t/n. now one can look at the heat kernel <y|exp(-ht)|x> which will eventually give the path integral,
+    this where the path measure comes from.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#051
+  text: What is the problem when one does path integrals when one writes out the heat kernel as a path
+    integral?
+  hint: the path integral measure needs to be defined but this fails, and one needs to assume that it
+    is at least once continuously differentaible
+  locator: null
+  sub_index: null
+  search_text: what is the problem when one does path integrals when one writes out the heat kernel as
+    a path integral? the path integral measure needs to be defined but this fails, and one needs to assume
+    that it is at least once continuously differentaible
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#052
+  text: What do states mean to evaluate the propagator?
+  hint: codim 1 subspace or subspaces of M of one dimension lower than M are associated to states in Hilbert
+    space H.
+  locator: null
+  sub_index: null
+  search_text: what do states mean to evaluate the propagator? codim 1 subspace or subspaces of m of one
+    dimension lower than m are associated to states in hilbert space h.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#053
+  text: How does one come up with canonical quantization?
+  hint: Hamiltonian approach, and trying to preserve formal structure like symmetries of classical theory,
+    quantising only the motion of particles, leaving electromagnetic field classical, hence quantum mechanics,
+    this also means there is first quantization and second quantization
+  locator: null
+  sub_index: null
+  search_text: how does one come up with canonical quantization? hamiltonian approach, and trying to preserve
+    formal structure like symmetries of classical theory, quantising only the motion of particles, leaving
+    electromagnetic field classical, hence quantum mechanics, this also means there is first quantization
+    and second quantization
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#054
+  text: What does the partition function mean in statistical physics?
+  hint: trace of exp(-HT) which is like a torus, path integral formulation means we integrate over all
+    circles
+  locator: null
+  sub_index: null
+  search_text: what does the partition function mean in statistical physics? trace of exp(-ht) which is
+    like a torus, path integral formulation means we integrate over all circles
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#055
+  text: 'How does one invent local operators? (Hint: simplest choice for correlation functions for 1D
+    quantumf ield thoery, so you just want an operator depending on value of the fields and finitely many
+    derivatives at just one points, easier, do not even do derivatives, get functions N -> R, pullback
+    to get O(x(t)))'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent local operators? (hint: simplest choice for correlation functions
+    for 1d quantumf ield thoery, so you just want an operator depending on value of the fields and finitely
+    many derivatives at just one points, easier, do not even do derivatives, get functions n -> r, pullback
+    to get o(x(t)))'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#056
+  text: Why is order of the local operators in the sequence important?
+  hint: multiplication of operators is noncommutative and this represents time, this is already seen with
+    quantum field theory doing perturbation, interaction between different time and places given by propagators
+    arising as kinetic terms from the Lagrangian
+  locator: null
+  sub_index: null
+  search_text: why is order of the local operators in the sequence important? multiplication of operators
+    is noncommutative and this represents time, this is already seen with quantum field theory doing perturbation,
+    interaction between different time and places given by propagators arising as kinetic terms from the
+    lagrangian
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#057
+  text: What is the big problem with regularisation?
+  hint: the main motivation is the two limits for the path measure and the action. For quantum field theory,
+    it is very hard to do lattice regularisation of path integrals, one tries to decompose the field into
+    Fourier modes i.e. linear combinations of exp. Then, take a high energy cutoff regularisation, and
+    the limits do not make sense because you cannot have Lebesgue measure on infinite dimensional space.
+  locator: null
+  sub_index: null
+  search_text: what is the big problem with regularisation? the main motivation is the two limits for
+    the path measure and the action. for quantum field theory, it is very hard to do lattice regularisation
+    of path integrals, one tries to decompose the field into fourier modes i.e. linear combinations of
+    exp. then, take a high energy cutoff regularisation, and the limits do not make sense because you
+    cannot have lebesgue measure on infinite dimensional space.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#058
+  text: How does one come up with the relevant properties of Lebesgue measure on inner product space?
+  hint: volume is positive for nonnegative open subset, it is invariant under translation, every x in
+    inner product space is contained in at least one open neighbourhood of finite volume [to prevent containment
+    in infinite volume stuff]
+  locator: null
+  sub_index: null
+  search_text: how does one come up with the relevant properties of lebesgue measure on inner product
+    space? volume is positive for nonnegative open subset, it is invariant under translation, every x
+    in inner product space is contained in at least one open neighbourhood of finite volume [to prevent
+    containment in infinite volume stuff]
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#059
+  text: How does one prove that Lebesgue measures fail on infinite dimensional inner product space?
+  hint: construct hypercube construction cut up to 2^D, then this open hypercube has infinitely many copies
+    of C(L/2), vol(C(L/2)) must be nonzero, vol(C(L)) has infinite measure, true for any L, all open sets
+    have infinite measure so we are dead
+  locator: null
+  sub_index: null
+  search_text: how does one prove that lebesgue measures fail on infinite dimensional inner product space?
+    construct hypercube construction cut up to 2^d, then this open hypercube has infinitely many copies
+    of c(l/2), vol(c(l/2)) must be nonzero, vol(c(l)) has infinite measure, true for any l, all open sets
+    have infinite measure so we are dead
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#060
+  text: What is really needed for the measure and what new problem arises?
+  hint: you just need Dx exp(-S[x]), and this is no longer translation invariant in 1D QFT, this is the
+    Wiener measure. However, Yang-Mills theory gives it for 4 dimensions
+  locator: null
+  sub_index: null
+  search_text: what is really needed for the measure and what new problem arises? you just need dx exp(-s[x]),
+    and this is no longer translation invariant in 1d qft, this is the wiener measure. however, yang-mills
+    theory gives it for 4 dimensions
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#061
+  text: What problem solves does the Wiener measure solve in QM?
+  hint: the idea is that integral Dx exp(-S[x]), problem of noncommutativity, one has to consider a free
+    theory and pick times, this later needs to be regularised. That integral Dx exp(-S[x]). So it does
+    not exist for QED, may not exist for standard model open problem, but it may exist for Yang-Mills
+    theory in 4D.
+  locator: null
+  sub_index: null
+  search_text: what problem solves does the wiener measure solve in qm? the idea is that integral dx exp(-s[x]),
+    problem of noncommutativity, one has to consider a free theory and pick times, this later needs to
+    be regularised. that integral dx exp(-s[x]). so it does not exist for qed, may not exist for standard
+    model open problem, but it may exist for yang-mills theory in 4d.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#062
+  text: Why is regularisation needed?
+  hint: in continuum naive path integral, the difference vanishes naively, but it does not vanish naively
+    for path integral for perturbation theory. Path integral is sensitive to time ordering, so something
+    discrete happenw hen times cross
+  locator: null
+  sub_index: null
+  search_text: why is regularisation needed? in continuum naive path integral, the difference vanishes
+    naively, but it does not vanish naively for path integral for perturbation theory. path integral is
+    sensitive to time ordering, so something discrete happenw hen times cross
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#063
+  text: How does one invent Feynman rules?
+  hint: do 1D QFT, pick circle S^1 as universe, write down path integral, now to compute correlators of
+    free theory. Move to momentum space and using orthogonality relations, then sum over momentum space
+    correlators, free part becomes countably many 0 dim fields, compute the correlators with Feynamn diagrams,
+    one gets Fourier transform instead for noncompact space.
+  locator: null
+  sub_index: null
+  search_text: how does one invent feynman rules? do 1d qft, pick circle s^1 as universe, write down path
+    integral, now to compute correlators of free theory. move to momentum space and using orthogonality
+    relations, then sum over momentum space correlators, free part becomes countably many 0 dim fields,
+    compute the correlators with feynamn diagrams, one gets fourier transform instead for noncompact space.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#064
+  text: Why does one care about effective field theories in 1 dimension?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: why does one care about effective field theories in 1 dimension?
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#065
+  text: Why does log det = tr log
+  hint: det is prod of eigenvalues, trace is sum of them
+  locator: null
+  sub_index: null
+  search_text: why does log det = tr log det is prod of eigenvalues, trace is sum of them
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#066
+  text: Why is nonlocality bad in physics?
+  hint: equations of motions are integral differential equation, it needs to know what is happening in
+    the far side
+  locator: null
+  sub_index: null
+  search_text: why is nonlocality bad in physics? equations of motions are integral differential equation,
+    it needs to know what is happening in the far side
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#067
+  text: What is so good about low energy theories?
+  hint: low energy approximation is OK
+  locator: null
+  sub_index: null
+  search_text: what is so good about low energy theories? low energy approximation is ok
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#068
+  text: 'Why is negative mass dimension appears? (Hints: low energy means series is truncated early, ignore
+    higher interactions, so low probability events are ignoerd and it becomes nonunitary, so for weak
+    interactions, coupling constant G_weak has mass dim -1, low energy OK and represents beta decay, 4-Fermi
+    theory becomes nonunitary, and G_weak is an approximation of W-boson propagator. Also, general relativity
+    has negative mass dimension.)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'why is negative mass dimension appears? (hints: low energy means series is truncated early,
+    ignore higher interactions, so low probability events are ignoerd and it becomes nonunitary, so for
+    weak interactions, coupling constant g_weak has mass dim -1, low energy ok and represents beta decay,
+    4-fermi theory becomes nonunitary, and g_weak is an approximation of w-boson propagator. also, general
+    relativity has negative mass dimension.)'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#069
+  text: How does one come up with a cosmological constant?
+  hint: one computes S_T[x] by computing quantum gravity allowing integration over all possible graphs,
+    since there are singularities in the manifolds. One gets an S_T expression with a 0.5 int x^2 dt integral
+    and m^2/2 dt term as cosomological term. 1D integrals over T_is give the Schwinger parameters of the
+    graph.
+  locator: null
+  sub_index: null
+  search_text: how does one come up with a cosmological constant? one computes s_t[x] by computing quantum
+    gravity allowing integration over all possible graphs, since there are singularities in the manifolds.
+    one gets an s_t expression with a 0.5 int x^2 dt integral and m^2/2 dt term as cosomological term.
+    1d integrals over t_is give the schwinger parameters of the graph.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#070
+  text: What is classical field theory?
+  hint: Noether's theorem relate symmetries to conservation laws
+  locator: null
+  sub_index: null
+  search_text: what is classical field theory? noether's theorem relate symmetries to conservation laws
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#071
+  text: How does one derive conservation of charge using classical theory?
+  hint: start with variation on phi locally, so transformation is generated by some vector, take S[phi]
+    invariant under the vector for constant variation epsilon(x), for general epsilon(x) instead choose
+    it to have compact support, then delta S can be written to be 0, one derives a conserved current.
+    Define a charge associated to codim 1 hypersurface N using this Noether current using some normal
+    vector to a time slice. Take these N as hypersurfaces of time slices, then use Stoke's theorem on
+    manifolds, one gets conservation of charge. Key ingredients are varaition of phi local action with
+    compact support, delta S = 0, then take Noether current over time slice hypersurfaces, apply Stoke's
+    theorem
+  locator: null
+  sub_index: null
+  search_text: how does one derive conservation of charge using classical theory? start with variation
+    on phi locally, so transformation is generated by some vector, take s[phi] invariant under the vector
+    for constant variation epsilon(x), for general epsilon(x) instead choose it to have compact support,
+    then delta s can be written to be 0, one derives a conserved current. define a charge associated to
+    codim 1 hypersurface n using this noether current using some normal vector to a time slice. take these
+    n as hypersurfaces of time slices, then use stoke's theorem on manifolds, one gets conservation of
+    charge. key ingredients are varaition of phi local action with compact support, delta s = 0, then
+    take noether current over time slice hypersurfaces, apply stoke's theorem
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#072
+  text: What is the problem when doing Noether's theorem in qantum theory?
+  hint: symmetry required to preserve S[phi] and then one needs to regularise D phi. Problem, D phi as
+    lattice is typically not invariant. Options include symmetry restored in the limit. Then nobody can
+    think of a invariant path integral measure.
+  locator: null
+  sub_index: null
+  search_text: what is the problem when doing noether's theorem in qantum theory? symmetry required to
+    preserve s[phi] and then one needs to regularise d phi. problem, d phi as lattice is typically not
+    invariant. options include symmetry restored in the limit. then nobody can think of a invariant path
+    integral measure.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#073
+  text: Why does one care about correlation functions?
+  hint: Noether currents are nice, but you want actual observable quantities i.e. symmetries manifesting
+    in correlation functions
+  locator: null
+  sub_index: null
+  search_text: why does one care about correlation functions? noether currents are nice, but you want
+    actual observable quantities i.e. symmetries manifesting in correlation functions
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#074
+  text: What is a simple example of manifesting correlators?
+  hint: complex field, transformation by exp(ia), a in R/2 pi Z, conjugate field transforms and suppose
+    it preseres action and measure, symmetry gives vanishing correaltors, each propagator joins up a phi
+    and phi bar, if not equal, cannot draw, so must vanish
+  locator: null
+  sub_index: null
+  search_text: what is a simple example of manifesting correlators? complex field, transformation by exp(ia),
+    a in r/2 pi z, conjugate field transforms and suppose it preseres action and measure, symmetry gives
+    vanishing correaltors, each propagator joins up a phi and phi bar, if not equal, cannot draw, so must
+    vanish
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#075
+  text: How does one derive Ward's identity?
+  hint: infinitesimal transformation as hypothesis, symmetric when phi is constant, then write down the
+    correlator function, 0-th order cancels, then introduce delta functions, one gets the Ward identity,
+    which says that the vector field is divergence free except at the insertins of x_i, one can recover
+    invariance of correlations by supposing M compact no boundary, integrate the Ward identity, use Stoke';s
+    theorem, integral of divergence term vanishes
+  locator: null
+  sub_index: null
+  search_text: how does one derive ward's identity? infinitesimal transformation as hypothesis, symmetric
+    when phi is constant, then write down the correlator function, 0-th order cancels, then introduce
+    delta functions, one gets the ward identity, which says that the vector field is divergence free except
+    at the insertins of x_i, one can recover invariance of correlations by supposing m compact no boundary,
+    integrate the ward identity, use stoke';s theorem, integral of divergence term vanishes
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#076
+  text: How does one invent renormalisation?
+  hint: study quantum field theory described by action, but theory is not tested on high energy scales,
+    previously one integrates out high energy particles. For compact universe, Laplacian has discrete
+    eigenvalues by Pontraygin duality, if we consider a flat torus then Laplacian lie on a lattice again
+    by Pontraygin duality, cutoff means finitely many energy modes, so it is regularised. However this
+    fails for noncompact universes.
+  locator: null
+  sub_index: null
+  search_text: how does one invent renormalisation? study quantum field theory described by action, but
+    theory is not tested on high energy scales, previously one integrates out high energy particles. for
+    compact universe, laplacian has discrete eigenvalues by pontraygin duality, if we consider a flat
+    torus then laplacian lie on a lattice again by pontraygin duality, cutoff means finitely many energy
+    modes, so it is regularised. however this fails for noncompact universes.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#077
+  text: How does one invent the notion of relevant operators?
+  hint: QFT stats with scales of relevant and irrelevant operators, focus on critical trajectory, infinitely
+    many coupling constants that are nonzero, low energies means these give the irrelevant operators.
+    Low energies, only finitely many relevant operators matter. Marginal operators are those that are
+    unchanged in RG flow, look at higher corrections to check, these are important since they persist
+    in RG evolution
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of relevant operators? qft stats with scales of relevant
+    and irrelevant operators, focus on critical trajectory, infinitely many coupling constants that are
+    nonzero, low energies means these give the irrelevant operators. low energies, only finitely many
+    relevant operators matter. marginal operators are those that are unchanged in rg flow, look at higher
+    corrections to check, these are important since they persist in rg evolution
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#078
+  text: How does one invent the notion of infrared divergences?
+  hint: zero mass photon has no energy gap, soft proton emissions indistinguishable from no emission,
+    photons have 0 mass, produce low energy quanta, physical feature of 0 mass gauge fields, physical
+    detector has finite energy resolution, cannot tell the soft photons. Need to sum over unobservable
+    soft photon emissions
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of infrared divergences? zero mass photon has no energy
+    gap, soft proton emissions indistinguishable from no emission, photons have 0 mass, produce low energy
+    quanta, physical feature of 0 mass gauge fields, physical detector has finite energy resolution, cannot
+    tell the soft photons. need to sum over unobservable soft photon emissions
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#079
+  text: How does one split the field into low and high energy modes by cut off Gamma_0?
+  hint: split the integral first and define it to phi and chi accordingly, then define the scale effective
+    action
+  locator: null
+  sub_index: null
+  search_text: how does one split the field into low and high energy modes by cut off gamma_0? split the
+    integral first and define it to phi and chi accordingly, then define the scale effective action
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#080
+  text: How does one invent the Wilsonian renormalisation group equation?
+  hint: impose a cutoff on the integral, this can be done for any cut off, so it is a map from [0, Gamma_0]
+    to the space of all actions, for any epsilon, can take scale Gamma action, and produce scale Gamma
+    - epsilon effective action, Wilsoninan renormalisation group action, this is a group or monoid action
+    on the space of actions.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the wilsonian renormalisation group equation? impose a cutoff on the
+    integral, this can be done for any cut off, so it is a map from [0, gamma_0] to the space of all actions,
+    for any epsilon, can take scale gamma action, and produce scale gamma - epsilon effective action,
+    wilsoninan renormalisation group action, this is a group or monoid action on the space of actions.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#081
+  text: What happens when you form a coupling constant of the renormalisation group equation?
+  hint: the coefficients will still have to transform and shift, phi
+  locator: null
+  sub_index: null
+  search_text: what happens when you form a coupling constant of the renormalisation group equation? the
+    coefficients will still have to transform and shift, phi
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#082
+  text: How does one compute Gaussian theory as a critical point?
+  hint: all vanishing coupling, mass term vanishes, nothing happens when integrating out modes, so all
+    quantum corrections vanish.
+  locator: null
+  sub_index: null
+  search_text: how does one compute gaussian theory as a critical point? all vanishing coupling, mass
+    term vanishes, nothing happens when integrating out modes, so all quantum corrections vanish.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#083
+  text: How does one invent wavefunction renormalisation?
+  hint: one must consider new contributions to the kinetic term for phi.
+  locator: null
+  sub_index: null
+  search_text: how does one invent wavefunction renormalisation? one must consider new contributions to
+    the kinetic term for phi.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#084
+  text: What happens when one differentiate the wavefunction renormalisation equation?
+  hint: one gets the Callan-Symanzik equation for the partition function
+  locator: null
+  sub_index: null
+  search_text: what happens when one differentiate the wavefunction renormalisation equation? one gets
+    the callan-symanzik equation for the partition function
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#085
+  text: How does one invent beta functions of the coupling?
+  hint: it changes under change of energy scale via RG flow, requires physical observables remain independent
+    of arbitrary momentum cut off. One gets beta(G) = del g/ del ln(mu), depends on mu implicitly through
+    g, mu is fixed in the energy scale.
+  locator: null
+  sub_index: null
+  search_text: how does one invent beta functions of the coupling? it changes under change of energy scale
+    via rg flow, requires physical observables remain independent of arbitrary momentum cut off. one gets
+    beta(g) = del g/ del ln(mu), depends on mu implicitly through g, mu is fixed in the energy scale.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#086
+  text: What is the anomalous dimension meant for?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what is the anomalous dimension meant for?
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#087
+  text: What are coupling constants?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what are coupling constants?
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#088
+  text: How does one invent the Callan-Symanzik equation for correlation functions?
+  hint: differentiate with respect to s
+  locator: null
+  sub_index: null
+  search_text: how does one invent the callan-symanzik equation for correlation functions? differentiate
+    with respect to s
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#089
+  text: What is renormalisation group flow? How does one invent this?
+  hint: Gamma -> 0 means move to infrared with small scales and low energy changes, one wants to study
+    how the coupling constants change. Integrate out fast high energy fluctuations.
+  locator: null
+  sub_index: null
+  search_text: what is renormalisation group flow? how does one invent this? gamma -> 0 means move to
+    infrared with small scales and low energy changes, one wants to study how the coupling constants change.
+    integrate out fast high energy fluctuations.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#090
+  text: 'What is the purpose of the beta function? (Hint: it encodes the dependence of a coupling parameter
+    on the energy scale, it has no explicit dependence on the energy scale. As the scale mu veries, the
+    theory presents self similarly, and can access any scale from any other scale as the group action
+    so g(kappa) = G^{-1} ((kappa/mu)^d G(g(M)))). If the beta functions vanish, it is scale invariant,
+    and this gives rise to conformal field theory)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is the purpose of the beta function? (hint: it encodes the dependence of a coupling
+    parameter on the energy scale, it has no explicit dependence on the energy scale. as the scale mu
+    veries, the theory presents self similarly, and can access any scale from any other scale as the group
+    action so g(kappa) = g^{-1} ((kappa/mu)^d g(g(m)))). if the beta functions vanish, it is scale invariant,
+    and this gives rise to conformal field theory)'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#091
+  text: How does one compute coupling and masses?
+  hint: compute by matching experimental results to computation?
+  locator: null
+  sub_index: null
+  search_text: how does one compute coupling and masses? compute by matching experimental results to computation?
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#092
+  text: Why does one choose an ultraviolet cutoff and renormalisation scales?
+  hint: retain certain order of irrelevant terms
+  locator: null
+  sub_index: null
+  search_text: why does one choose an ultraviolet cutoff and renormalisation scales? retain certain order
+    of irrelevant terms
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#093
+  text: 'How does one invent renormalisation theory? (Hint: describe experiments at larger energy, and
+    change the ultraviolet cutoff, Wilson fixed attention as cutoff is pushed to infinity while low level
+    energy is helped fixed, include field with momenta, perform wavefunction renormalisation by scaling
+    the field to get the same kinetic term, then compute the Lagrangian on the new field which reproduces
+    the IR dynamics of th eoriginal system, this flow gives Callan0Symnazik beta function i.e. Callan-Symanzikbeta
+    function is del g/ del log zeta, fixed point of renormalisation group is beta(g) = 0 for flow g(Gamma)
+    to g(zeta Gamma))'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent renormalisation theory? (hint: describe experiments at larger energy,
+    and change the ultraviolet cutoff, wilson fixed attention as cutoff is pushed to infinity while low
+    level energy is helped fixed, include field with momenta, perform wavefunction renormalisation by
+    scaling the field to get the same kinetic term, then compute the lagrangian on the new field which
+    reproduces the ir dynamics of th eoriginal system, this flow gives callan0symnazik beta function i.e.
+    callan-symanzikbeta function is del g/ del log zeta, fixed point of renormalisation group is beta(g)
+    = 0 for flow g(gamma) to g(zeta gamma))'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#094
+  text: 'How does one understand the beta function? (Hint: solve the Callan-Symanzik equation to ive a
+    running coupling and solve for zeta, it would be exp(integral dg/beta(g)))'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one understand the beta function? (hint: solve the callan-symanzik equation to
+    ive a running coupling and solve for zeta, it would be exp(integral dg/beta(g)))'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#095
+  text: What is the simplest example of doing RG group flow
+  hint: Lagrangian action is even power of 1/2 (del phi)^2 d^d x i.e. kinetic. Now split it into phi_IR(k)
+    and phi_UV(k). No interaction, do not couple, integrating out high energy mode gets constant factor
+    in partition. Rescale coordinate, redefine k' as k/zeta, x' to zaa x. Renormalisation the infrared
+    for the new phi, substitute k = zeta k' into the equation. Now pertub this with tiny mass m^2 phi^2
+    with coupling g = m^2, g(zeta) = g_0/zeta^2. Take derivative with log zeta, gets Callan-Symanzik beta,
+    now set it to 0 i.e. g = 0. This is the Gaussian fixed point, as zeta -> 1, massless free field theory
+    is scale invariant. Similarly for phi^4 theory in 4D.
+  locator: null
+  sub_index: null
+  search_text: what is the simplest example of doing rg group flow lagrangian action is even power of
+    1/2 (del phi)^2 d^d x i.e. kinetic. now split it into phi_ir(k) and phi_uv(k). no interaction, do
+    not couple, integrating out high energy mode gets constant factor in partition. rescale coordinate,
+    redefine k' as k/zeta, x' to zaa x. renormalisation the infrared for the new phi, substitute k = zeta
+    k' into the equation. now pertub this with tiny mass m^2 phi^2 with coupling g = m^2, g(zeta) = g_0/zeta^2.
+    take derivative with log zeta, gets callan-symanzik beta, now set it to 0 i.e. g = 0. this is the
+    gaussian fixed point, as zeta -> 1, massless free field theory is scale invariant. similarly for phi^4
+    theory in 4d.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#096
+  text: What are some non physics examples?
+  hint: Wilson-Fisher fixed point for self avoiding random walks in polymer chemistry. A Nobel prize is
+    won to find the Wilson-Fisher fixed points, all long polymers ina. good solvent behave exactly the
+    same way. Bacterial colonies using the KPZ equation, finanicial fluctuations are other examples.
+  locator: null
+  sub_index: null
+  search_text: what are some non physics examples? wilson-fisher fixed point for self avoiding random
+    walks in polymer chemistry. a nobel prize is won to find the wilson-fisher fixed points, all long
+    polymers ina. good solvent behave exactly the same way. bacterial colonies using the kpz equation,
+    finanicial fluctuations are other examples.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#097
+  text: What nonperturbative computing technique is obtained from Wilsonian renormalisation?
+  hint: systematically lower the cutoff scale, by integrating over, then one coarse grain the fields and
+    examine the long distance behaviour.
+  locator: null
+  sub_index: null
+  search_text: what nonperturbative computing technique is obtained from wilsonian renormalisation? systematically
+    lower the cutoff scale, by integrating over, then one coarse grain the fields and examine the long
+    distance behaviour.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#098
+  text: 'How does one interpret probability theory as a trivial field theory (Hint: i.e. 0 dim field theory,
+    then compute expectation or integral dx f(x) P(x), one finds the partition function S(x) = - log P(x)
+    is real. One can define the characteristic function as the cumulants. cumulants are connected parts
+    of n-point functions of the field [x])'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one interpret probability theory as a trivial field theory (hint: i.e. 0 dim
+    field theory, then compute expectation or integral dx f(x) p(x), one finds the partition function
+    s(x) = - log p(x) is real. one can define the characteristic function as the cumulants. cumulants
+    are connected parts of n-point functions of the field [x])'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#099
+  text: How does one prove the central limit theorem under RG-flow?
+  hint: the fixed point qwhen beta function vanishes, fixed point of probability distribution under renormalisation
+    group flow is the Gaussian distribution. The central limit theorem is a special case of Wilsonian
+    renormalisation group flow.
+  locator: null
+  sub_index: null
+  search_text: how does one prove the central limit theorem under rg-flow? the fixed point qwhen beta
+    function vanishes, fixed point of probability distribution under renormalisation group flow is the
+    gaussian distribution. the central limit theorem is a special case of wilsonian renormalisation group
+    flow.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#100
+  text: How does one invent perturbation theory or effective field theory?
+  hint: invent Wilson flow in space of Lagrangians in lattice field theory?
+  locator: null
+  sub_index: null
+  search_text: how does one invent perturbation theory or effective field theory? invent wilson flow in
+    space of lagrangians in lattice field theory?
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#101
+  text: What are infrared and ultraviolet levels?
+  hint: low level and high level energy cutoff
+  locator: null
+  sub_index: null
+  search_text: what are infrared and ultraviolet levels? low level and high level energy cutoff
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#102
+  text: How does one come up with the notion of critical point?
+  hint: start with probability theory which is a 0 dim QFT, Gaussians mean no interaction normal distribution,
+    nothing happens when we integrate oute modes, then a critical point is a choice of couplings such
+    that the beta function is 0.
+  locator: null
+  sub_index: null
+  search_text: how does one come up with the notion of critical point? start with probability theory which
+    is a 0 dim qft, gaussians mean no interaction normal distribution, nothing happens when we integrate
+    oute modes, then a critical point is a choice of couplings such that the beta function is 0.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#103
+  text: How does one compute the renormalisation group equation for a two point function?
+  hint: kill off the beta function = 0.
+  locator: null
+  sub_index: null
+  search_text: how does one compute the renormalisation group equation for a two point function? kill
+    off the beta function = 0.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#104
+  text: How does one move way from a Gaussian universe?
+  hint: start with somewhere close to critical points but not critical, i.e. Taylor expand, look at second
+    derivatives i.e. Taylor expand the beta function, which is the first derivative. Beta functions are
+    simply first derivatives.
+  locator: null
+  sub_index: null
+  search_text: how does one move way from a gaussian universe? start with somewhere close to critical
+    points but not critical, i.e. taylor expand, look at second derivatives i.e. taylor expand the beta
+    function, which is the first derivative. beta functions are simply first derivatives.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#105
+  text: How does one invent the Levy flight , idea is wavefunction renormalisation becomes x' = y'/2^{1/a},
+    instead of picking a to be 2, pick a to be arbitrary, a arbitrary gives more general case that is
+    not Gaussian, now use Foruier transform, one computes the beta function for the Gaussian coupling
+    to be b(g) = dg/d log zeta = (a-2)g, a > 2, beta is positive, g_2 is dominant dominates, so Gaussian
+    fixed, points, a < 2, b(g) negative, set all beta functions to zero gets Levy fixed point, char function
+    is non-analytic exponential form cannot write analytic. Get Levy Symmetric Stable Distribution. Looks
+    like Levy flight, local then large jump.Self similar across all scales
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one invent the levy flight , idea is wavefunction renormalisation becomes x' =
+    y'/2^{1/a}, instead of picking a to be 2, pick a to be arbitrary, a arbitrary gives more general case
+    that is not gaussian, now use foruier transform, one computes the beta function for the gaussian coupling
+    to be b(g) = dg/d log zeta = (a-2)g, a > 2, beta is positive, g_2 is dominant dominates, so gaussian
+    fixed, points, a < 2, b(g) negative, set all beta functions to zero gets levy fixed point, char function
+    is non-analytic exponential form cannot write analytic. get levy symmetric stable distribution. looks
+    like levy flight, local then large jump.self similar across all scales
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#106
+  text: How does one invent the critical surfaces?
+  hint: one tries to compute the eigenvectors of the B_ik as some Hessian after Taylor expanding the beta
+    functions, quantum corrections ar enot required near the critical point. Move to infrared, one gets
+    more relevant operators and there are finitely many. One compute the critical surface to be a span
+    of all irrelevant modes, infinite dimensional with finite codimension from the relevant modes.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the critical surfaces? one tries to compute the eigenvectors of the
+    b_ik as some hessian after taylor expanding the beta functions, quantum corrections ar enot required
+    near the critical point. move to infrared, one gets more relevant operators and there are finitely
+    many. one compute the critical surface to be a span of all irrelevant modes, infinite dimensional
+    with finite codimension from the relevant modes.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#107
+  text: Why can we do physics?
+  hint: we start at scale Gamma_0, relevant and irrelevant operators, flow along to infrared level, move
+    towards critical trajectory, infinitely many coupling constants, at low energies, just need to know
+    finitely many of them.
+  locator: null
+  sub_index: null
+  search_text: why can we do physics? we start at scale gamma_0, relevant and irrelevant operators, flow
+    along to infrared level, move towards critical trajectory, infinitely many coupling constants, at
+    low energies, just need to know finitely many of them.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#108
+  text: What are marginal operators?
+  hint: Delta_i = d i.e. unchanged operators under RG flow, since they stay constant over RG revolutions,
+    these are IMPORTANT in phenomena, and appear in concrete theories like quantum electrodynamics and
+    quantum chromodynamics.
+  locator: null
+  sub_index: null
+  search_text: what are marginal operators? delta_i = d i.e. unchanged operators under rg flow, since
+    they stay constant over rg revolutions, these are important in phenomena, and appear in concrete theories
+    like quantum electrodynamics and quantum chromodynamics.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#109
+  text: How does one figure out how high energy theory?
+  hint: try to figure out how Gamma_0 tends to infinity
+  locator: null
+  sub_index: null
+  search_text: how does one figure out how high energy theory? try to figure out how gamma_0 tends to
+    infinity
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#110
+  text: How does one compute the RG evolution of a theory?
+  hint: simplify, d > 2, marginal and relevant operators involves derivatives of the kinetic term, restrct
+    to terms of the form 1/2 (del phi)^2 + V(phi), this is called local potential approximation with low
+    and high energy modes
+  locator: null
+  sub_index: null
+  search_text: how does one compute the rg evolution of a theory? simplify, d > 2, marginal and relevant
+    operators involves derivatives of the kinetic term, restrct to terms of the form 1/2 (del phi)^2 +
+    v(phi), this is called local potential approximation with low and high energy modes
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#111
+  text: How does one invent the notion of infrared divergence?
+  hint: low energy mode is everywhere constant is assumed, phi is low, chi is high
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of infrared divergence? low energy mode is everywhere constant
+    is assumed, phi is low, chi is high
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#112
+  text: How does one manage the chi path integral to be finite?
+  hint: work over a compact space, say T^d with side servers length L, finitely many Fourier mode, path
+    integral is product of Gaussians.
+  locator: null
+  sub_index: null
+  search_text: how does one manage the chi path integral to be finite? work over a compact space, say
+    t^d with side servers length l, finitely many fourier mode, path integral is product of gaussians.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#113
+  text: What exactly is free theory?
+  hint: only fixed point when ignoring all derivatives. Fixed points are constant with renormalisation
+    group flow
+  locator: null
+  sub_index: null
+  search_text: what exactly is free theory? only fixed point when ignoring all derivatives. fixed points
+    are constant with renormalisation group flow
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#114
+  text: What is the Wilson-Fisher fixed point, how does one invent?
+  hint: set dimension 4 - epsilon, or physics with fractal, one proves that there exists a Wilson-Fisher
+    fixed points.
+  locator: null
+  sub_index: null
+  search_text: what is the wilson-fisher fixed point, how does one invent? set dimension 4 - epsilon,
+    or physics with fractal, one proves that there exists a wilson-fisher fixed points.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#115
+  text: What is perturbative renormalisation in traditional quantum field theory?
+  hint: d = 4 dimensions, action is given by this
+  locator: null
+  sub_index: null
+  search_text: what is perturbative renormalisation in traditional quantum field theory? d = 4 dimensions,
+    action is given by this
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#116
+  text: How does one invent a renormalisation scheme?
+  hint: objective is to pick delta z, delta m and delta phi to add counter terms to bound the loop integral
+    for the perturbations in the theory. A renormalisation scheme is a selection of these indicators.
+  locator: null
+  sub_index: null
+  search_text: how does one invent a renormalisation scheme? objective is to pick delta z, delta m and
+    delta phi to add counter terms to bound the loop integral for the perturbations in the theory. a renormalisation
+    scheme is a selection of these indicators.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#117
+  text: How does one invent a on-shell renormalisation scheme?
+  hint: pick counterterms so that momentum space propagators have simple pole when k^2 = -m_phys^2 where
+    m_phys is physical mass of the particle, residue of pole is 1.
+  locator: null
+  sub_index: null
+  search_text: how does one invent a on-shell renormalisation scheme? pick counterterms so that momentum
+    space propagators have simple pole when k^2 = -m_phys^2 where m_phys is physical mass of the particle,
+    residue of pole is 1.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#118
+  text: 'What is important in U(1) gauge theory? (Hint: scale with exp(i lambda(x))) one can introduce
+    a lot of high energy modes)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is important in u(1) gauge theory? (hint: scale with exp(i lambda(x))) one can introduce
+    a lot of high energy modes)'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#119
+  text: How does one invent dimensional regularisation or pertubatively?
+  hint: get rid of infinite integrals, get rid of infinities in loops, but study the theory in arbitrary
+    dimensions, but it fails in certain dimensions, then one analytically continue it as a function of
+    dimension i.e. draw a graph of what the functions look like for the d sort of. There may be an obvious
+    choice.
+  locator: null
+  sub_index: null
+  search_text: how does one invent dimensional regularisation or pertubatively? get rid of infinite integrals,
+    get rid of infinities in loops, but study the theory in arbitrary dimensions, but it fails in certain
+    dimensions, then one analytically continue it as a function of dimension i.e. draw a graph of what
+    the functions look like for the d sort of. there may be an obvious choice.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#120
+  text: How does one invent nonabelian gauge theory?
+  hint: start with a differential manifold, then the derivatives of the field need to be glued for a bunch
+    of vector spaces as a vector bundles, then one requires them to not be trivial, everything we do is
+    local on a bundle and these are trivial. In physics, we are allowed to think about bundles and conclude
+    that these are locally trivial, and the choice of trivialisation is not canonical, one has to pick
+    a basis at each point of space and this is very arbitrary.
+  locator: null
+  sub_index: null
+  search_text: how does one invent nonabelian gauge theory? start with a differential manifold, then the
+    derivatives of the field need to be glued for a bunch of vector spaces as a vector bundles, then one
+    requires them to not be trivial, everything we do is local on a bundle and these are trivial. in physics,
+    we are allowed to think about bundles and conclude that these are locally trivial, and the choice
+    of trivialisation is not canonical, one has to pick a basis at each point of space and this is very
+    arbitrary.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#121
+  text: How does one invent the notion of a gauge of the field?
+  hint: get vector bundle for example, vector bundles have every point isomorphic to a vector bundle.
+    Exploit the horrible fact that there is no canonical choice of isomorphism, picking the isomorhism
+    means picking the gauge of the field. The field is sections of some vector bundle.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a gauge of the field? get vector bundle for example,
+    vector bundles have every point isomorphic to a vector bundle. exploit the horrible fact that there
+    is no canonical choice of isomorphism, picking the isomorhism means picking the gauge of the field.
+    the field is sections of some vector bundle.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#122
+  text: Why does one need tangent bundles and codtangent bundles?
+  hint: form new vector spaces like direct sum and tensor products, one generalise this to tensor product
+    bundles, sections are tensor fields.
+  locator: null
+  sub_index: null
+  search_text: why does one need tangent bundles and codtangent bundles? form new vector spaces like direct
+    sum and tensor products, one generalise this to tensor product bundles, sections are tensor fields.
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#123
+  text: 'How does one invent G-bundles? (Hint: V = R^n with Euclidean inner product, you want trivialisations
+    to have maps repsectivng inner product i.e. orthogonal maps, not just linear isomorphisms, transition
+    functions want to land in O(n), i.e. G-bundle, vector bundle with fibre V with trivialisation cover
+    valued in a group G, so you want O(n) bundle, one can generalise this of instead picking a subgroup
+    of GL(V), you can pick any Lie group G with representation in V)., Need to specify an eleemnt in the
+    covering maps satisfying cocycle condition, so one can recover the whole vector bundle from the transition
+    functions, every n-dim vector bundle is naturally a GL(n) bundle picking the identity map'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent g-bundles? (hint: v = r^n with euclidean inner product, you want trivialisations
+    to have maps repsectivng inner product i.e. orthogonal maps, not just linear isomorphisms, transition
+    functions want to land in o(n), i.e. g-bundle, vector bundle with fibre v with trivialisation cover
+    valued in a group g, so you want o(n) bundle, one can generalise this of instead picking a subgroup
+    of gl(v), you can pick any lie group g with representation in v)., need to specify an eleemnt in the
+    covering maps satisfying cocycle condition, so one can recover the whole vector bundle from the transition
+    functions, every n-dim vector bundle is naturally a gl(n) bundle picking the identity map'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#124
+  text: How does one invent the notion of a principal G-bundle?
+  hint: do not pick V as vector space, pick G itself as the natural object for G to act on
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a principal g-bundle? do not pick v as vector space,
+    pick g itself as the natural object for g to act on
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#125
+  text: 'How does one specify a gauge theory with a gauge group? (Hint: specify manifold M with gauge
+    group G, supplement our universe M with a principal G-bundle, in QED it is U(1), i. QCD it is SU(3),
+    in Standard model it is SU(3) x SU(2). x U(1), thenone picks a representation and form an associated
+    bundle, this is canonical up to first Cech cohomology, a field is then defined as a section fo the
+    bundle Example: Maxwell theory, G = U(1), complex scalar field is G -> C, natural action of U(1))'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one specify a gauge theory with a gauge group? (hint: specify manifold m with
+    gauge group g, supplement our universe m with a principal g-bundle, in qed it is u(1), i. qcd it is
+    su(3), in standard model it is su(3) x su(2). x u(1), thenone picks a representation and form an associated
+    bundle, this is canonical up to first cech cohomology, a field is then defined as a section fo the
+    bundle example: maxwell theory, g = u(1), complex scalar field is g -> c, natural action of u(1))'
+- id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#126
+  text: How does one prove that an associated bundle is a canonical way of making a vector bundle?
+  hint: use principal G-bundles with fibre V are specified with transition functions only, and do not
+    reference what the fibres look like, note that there are many choices of trivalising covers, to fix
+    this one moe specify that these are cohomologous i.e. of equal Cech cohomology group, so there is
+    no issue, coefficients in G
+  locator: null
+  sub_index: null
+  search_text: how does one prove that an associated bundle is a canonical way of making a vector bundle?
+    use principal g-bundles with fibre v are specified with transition functions only, and do not reference
+    what the fibres look like, note that there are many choices of trivalising covers, to fix this one
+    moe specify that these are cohomologous i.e. of equal cech cohomology group, so there is no issue,
+    coefficients in g

@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yu Jie Teo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <h1>Yu Jie Teo</h1>
+      <div class="subtitle">Personal website</div>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="papers.html" class="">Papers</a>
+        <a href="exercises.html" class="">Exercises</a>
+      </nav>
+    </header>
+    <main>
+      <p>This is the personal website of Yu Jie Teo. Broadly interested in mathematics, computing, physics, and engineering. This site is a collection of notes, references, and technical material to revisit and develop over time.
+</p>
+    <div class="search-row">
+      <input type="text" id="resource-search" class="search-box" placeholder="Search title or note...">
+      <span class="result-count" id="resource-count">28 / 28</span>
+    </div>
+    <div class="tag-filter-bar" id="resource-tagbar"><button class="tag active" data-tag="__all__" type="button">all</button><button class="tag" data-tag="architecture" type="button">architecture</button><button class="tag" data-tag="computational" type="button">computational</button><button class="tag" data-tag="engineering" type="button">engineering</button><button class="tag" data-tag="mathematics" type="button">mathematics</button><button class="tag" data-tag="physics" type="button">physics</button><button class="tag" data-tag="systems" type="button">systems</button></div>
+    <div id="resource-list">
+        <div class="entry" data-tags="systems" data-search="python documentation official reference for the python language and standard library; the first language truly learnt. systems">
+          <div class="entry-title"><a href="https://docs.python.org/3/">Python Documentation</a></div>
+          <div class="entry-abstract">Official reference for the Python language and standard library; the first language truly learnt.</div>
+          <div><span class="tag" data-tag="systems">systems</span></div>
+        </div>
+        
+        <div class="entry" data-tags="systems" data-search="c# documentation official documentation for the c# language and .net ecosystem, used for work. systems">
+          <div class="entry-title"><a href="https://learn.microsoft.com/en-us/dotnet/csharp/">C# Documentation</a></div>
+          <div class="entry-abstract">Official documentation for the C# language and .NET ecosystem, used for work.</div>
+          <div><span class="tag" data-tag="systems">systems</span></div>
+        </div>
+        
+        <div class="entry" data-tags="systems" data-search="intel x86/x86-64 software developer manuals the primary reference for x86 processors, instruction sets, memory models, and system programming. systems">
+          <div class="entry-title"><a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html">Intel x86/x86-64 Software Developer Manuals</a></div>
+          <div class="entry-abstract">The primary reference for x86 processors, instruction sets, memory models, and system programming.</div>
+          <div><span class="tag" data-tag="systems">systems</span></div>
+        </div>
+        
+        <div class="entry" data-tags="systems" data-search="git documentation official documentation for git version control. systems">
+          <div class="entry-title"><a href="https://git-scm.com/doc">Git Documentation</a></div>
+          <div class="entry-abstract">Official documentation for Git version control.</div>
+          <div><span class="tag" data-tag="systems">systems</span></div>
+        </div>
+        
+        <div class="entry" data-tags="systems" data-search="llvm documentation reference material for compiler infrastructure, optimization, and code generation. systems">
+          <div class="entry-title"><a href="https://llvm.org/docs/">LLVM Documentation</a></div>
+          <div class="entry-abstract">Reference material for compiler infrastructure, optimization, and code generation.</div>
+          <div><span class="tag" data-tag="systems">systems</span></div>
+        </div>
+        
+        <div class="entry" data-tags="systems" data-search="qemu documentation documentation for machine emulation, virtualization, and systems experimentation. systems">
+          <div class="entry-title"><a href="https://www.qemu.org/docs/master/">QEMU Documentation</a></div>
+          <div class="entry-abstract">Documentation for machine emulation, virtualization, and systems experimentation.</div>
+          <div><span class="tag" data-tag="systems">systems</span></div>
+        </div>
+        
+        <div class="entry" data-tags="architecture" data-search="nvidia cuda toolkit documentation documentation for gpu programming, parallel algorithms, and accelerator-based computing. architecture">
+          <div class="entry-title"><a href="https://docs.nvidia.com/cuda/">NVIDIA CUDA Toolkit Documentation</a></div>
+          <div class="entry-abstract">Documentation for GPU programming, parallel algorithms, and accelerator-based computing.</div>
+          <div><span class="tag" data-tag="architecture">architecture</span></div>
+        </div>
+        
+        <div class="entry" data-tags="architecture" data-search="competitive programming algorithms a practical collection of algorithms and data structures with implementations and explanations. architecture">
+          <div class="entry-title"><a href="https://cp-algorithms.com/">Competitive Programming Algorithms</a></div>
+          <div class="entry-abstract">A practical collection of algorithms and data structures with implementations and explanations.</div>
+          <div><span class="tag" data-tag="architecture">architecture</span></div>
+        </div>
+        
+        <div class="entry" data-tags="architecture" data-search="a modern primer on processing in memory (pim) an overview of architectures that move computation closer to memory to reduce data movement costs. architecture">
+          <div class="entry-title"><a href="https://arxiv.org/pdf/2012.03112">A Modern Primer on Processing in Memory (PIM)</a></div>
+          <div class="entry-abstract">An overview of architectures that move computation closer to memory to reduce data movement costs.</div>
+          <div><span class="tag" data-tag="architecture">architecture</span></div>
+        </div>
+        
+        <div class="entry" data-tags="physics" data-search="david tong's lecture notes introductions to mathematical physics, quantum field theory, statistical physics, and relativity. physics">
+          <div class="entry-title"><a href="https://davidtong.org/teaching/">David Tong's Lecture Notes</a></div>
+          <div class="entry-abstract">Introductions to mathematical physics, quantum field theory, statistical physics, and relativity.</div>
+          <div><span class="tag" data-tag="physics">physics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="j.s. milne's mathematical notes graduate-level notes on algebraic geometry, algebraic number theory, class field theory, and arithmetic geometry. mathematics">
+          <div class="entry-title"><a href="https://www.jmilne.org/math/">J.S. Milne's Mathematical Notes</a></div>
+          <div class="entry-abstract">Graduate-level notes on algebraic geometry, algebraic number theory, class field theory, and arithmetic geometry.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="arxiv mathematics a source for current mathematical research papers and preprints. mathematics">
+          <div class="entry-title"><a href="https://arxiv.org/list/math/new">arXiv Mathematics</a></div>
+          <div class="entry-abstract">A source for current mathematical research papers and preprints.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="stacks project a comprehensive reference for algebraic geometry, commutative algebra, and foundational topics. mathematics">
+          <div class="entry-title"><a href="https://stacks.math.columbia.edu/">Stacks Project</a></div>
+          <div class="entry-abstract">A comprehensive reference for algebraic geometry, commutative algebra, and foundational topics.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="kerodon notes on higher category theory, homotopy theory, and modern foundations. mathematics">
+          <div class="entry-title"><a href="https://kerodon.net/">Kerodon</a></div>
+          <div class="entry-abstract">Notes on higher category theory, homotopy theory, and modern foundations.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="1lab formalized and computational approaches to category theory and higher mathematics. mathematics">
+          <div class="entry-title"><a href="https://1lab.dev/">1Lab</a></div>
+          <div class="entry-abstract">Formalized and computational approaches to category theory and higher mathematics.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="nlab an interconnected encyclopedia covering category theory, topology, mathematical physics, and higher structures. mathematics">
+          <div class="entry-title"><a href="https://ncatlab.org/nlab/show/HomePage">nLab</a></div>
+          <div class="entry-abstract">An interconnected encyclopedia covering category theory, topology, mathematical physics, and higher structures.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="pi-base, topology a database of examples and counterexamples in topology. mathematics">
+          <div class="entry-title"><a href="https://topology.pi-base.org/">pi-base, topology</a></div>
+          <div class="entry-abstract">A database of examples and counterexamples in topology.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="friedl's topology notes an extensive reference covering large portions of modern topology. mathematics">
+          <div class="entry-title"><a href="https://friedl.app.uni-regensburg.de/papers/1t-total-public-october-7-2024.pdf">Friedl's Topology Notes</a></div>
+          <div class="entry-abstract">An extensive reference covering large portions of modern topology.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="lmfdb a database for exploring elliptic curves, modular forms, l-functions, and related objects in number theory. mathematics">
+          <div class="entry-title"><a href="https://www.lmfdb.org/">LMFDB</a></div>
+          <div class="entry-abstract">A database for exploring elliptic curves, modular forms, L-functions, and related objects in number theory.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="zbmath open a searchable database of mathematical literature and reviews. mathematics">
+          <div class="entry-title"><a href="https://zbmath.org/">zbMATH Open</a></div>
+          <div class="entry-abstract">A searchable database of mathematical literature and reviews.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="mathematics" data-search="cambridge mathematics notes a collection of university mathematics lecture notes spanning many subjects. mathematics">
+          <div class="entry-title"><a href="https://at2027.user.srcf.net/notes.html">Cambridge Mathematics Notes</a></div>
+          <div class="entry-abstract">A collection of university mathematics lecture notes spanning many subjects.</div>
+          <div><span class="tag" data-tag="mathematics">mathematics</span></div>
+        </div>
+        
+        <div class="entry" data-tags="computational" data-search="the on-line encyclopedia of integer sequences (oeis) a searchable database of integer sequences, useful for identifying patterns arising from calculations. computational">
+          <div class="entry-title"><a href="https://oeis.org/">The On-Line Encyclopedia of Integer Sequences (OEIS)</a></div>
+          <div class="entry-abstract">A searchable database of integer sequences, useful for identifying patterns arising from calculations.</div>
+          <div><span class="tag" data-tag="computational">computational</span></div>
+        </div>
+        
+        <div class="entry" data-tags="computational" data-search="wolfram language & system documentation center a powerful mathematical computer algebra system with sane notebook defaults. computational">
+          <div class="entry-title"><a href="https://reference.wolfram.com/language/">Wolfram Language & System Documentation Center</a></div>
+          <div class="entry-abstract">A powerful mathematical computer algebra system with sane notebook defaults.</div>
+          <div><span class="tag" data-tag="computational">computational</span></div>
+        </div>
+        
+        <div class="entry" data-tags="computational" data-search="sagemath documentation documentation for the sagemath computer algebra system. computational">
+          <div class="entry-title"><a href="https://doc.sagemath.org/">SageMath Documentation</a></div>
+          <div class="entry-abstract">Documentation for the SageMath computer algebra system.</div>
+          <div><span class="tag" data-tag="computational">computational</span></div>
+        </div>
+        
+        <div class="entry" data-tags="computational" data-search="kaggle a source of datasets that could be used for data science exploration. computational">
+          <div class="entry-title"><a href="https://www.kaggle.com/">Kaggle</a></div>
+          <div class="entry-abstract">A source of datasets that could be used for data science exploration.</div>
+          <div><span class="tag" data-tag="computational">computational</span></div>
+        </div>
+        
+        <div class="entry" data-tags="computational" data-search="avigad - theorem proving in lean 4 an introduction to formal mathematics and theorem proving with lean. computational">
+          <div class="entry-title"><a href="https://leanprover.github.io/theorem_proving_in_lean4/">Avigad - Theorem Proving in Lean 4</a></div>
+          <div class="entry-abstract">An introduction to formal mathematics and theorem proving with Lean.</div>
+          <div><span class="tag" data-tag="computational">computational</span></div>
+        </div>
+        
+        <div class="entry" data-tags="engineering" data-search="patran documentation preprocessor documentation used for work. engineering">
+          <div class="entry-title"><a href="https://simcompanion.hexagon.com/customers/s/article/Patran-Product-Documentation">PATRAN Documentation</a></div>
+          <div class="entry-abstract">Preprocessor documentation used for work.</div>
+          <div><span class="tag" data-tag="engineering">engineering</span></div>
+        </div>
+        
+        <div class="entry" data-tags="engineering" data-search="ansys apdl the first finite element software learnt in depth, with mentorship during an internship. engineering">
+          <div class="entry-title"><a href="https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/prod_page.html?pn=Mechanical%20APDL&pid=MechanicalAPDL&lang=en">ANSYS APDL</a></div>
+          <div class="entry-abstract">The first finite element software learnt in depth, with mentorship during an internship.</div>
+          <div><span class="tag" data-tag="engineering">engineering</span></div>
+        </div>
+        </div>
+    <div class="no-results" id="resource-noresults">No resources match your search.</div>
+    
+<script>
+(function() {
+  const searchBox = document.getElementById('resource-search');
+  const tagBar = document.getElementById('resource-tagbar');
+  const entries = Array.from(document.querySelectorAll('#resource-list .entry[data-tags]'));
+  const noResults = document.getElementById('resource-noresults');
+  const countLabel = document.getElementById('resource-count');
+  const total = entries.length;
+  let activeTag = '__all__';
+
+  function applyFilters() {
+    const q = searchBox.value.trim().toLowerCase();
+    let visibleCount = 0;
+    entries.forEach(function(entry) {
+      const tags = entry.dataset.tags.split(',').filter(Boolean);
+      const matchesTag = activeTag === '__all__' || tags.includes(activeTag);
+      const matchesSearch = q === '' || entry.dataset.search.includes(q);
+      const show = matchesTag && matchesSearch;
+      entry.classList.toggle('hidden', !show);
+      if (show) visibleCount++;
+    });
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    countLabel.textContent = visibleCount + ' / ' + total;
+  }
+
+  searchBox.addEventListener('input', applyFilters);
+
+  tagBar.addEventListener('click', function(e) {
+    const btn = e.target.closest('button.tag');
+    if (!btn) return;
+    activeTag = btn.dataset.tag;
+    tagBar.querySelectorAll('button.tag').forEach(function(b) {
+      b.classList.toggle('active', b === btn);
+    });
+    applyFilters();
+  });
+
+  document.getElementById('resource-list').addEventListener('click', function(e) {
+    const chip = e.target.closest('.entry .tag[data-tag]');
+    if (!chip) return;
+    activeTag = chip.dataset.tag;
+    tagBar.querySelectorAll('button.tag').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.tag === activeTag);
+    });
+    applyFilters();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  applyFilters();
+})();
+</script>
+
+    
+    </main>
+    <footer class="site-footer">
+      Made with love.
+    </footer>
+  </div>
+</body>
+</html>

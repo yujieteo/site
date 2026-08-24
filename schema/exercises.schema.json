@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Exercise resource",
+  "description": "A resource (URL) paired with a list of exercises/questions extracted from personal notes, each optionally anchored to a page/slide/section and optionally carrying a hint.",
+  "type": "object",
+  "required": ["url", "title", "exercises"],
+  "additionalProperties": false,
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical source URL for the resource (paper, notes, lecture slides, etc.)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Short title/description of the resource, taken from the text after the comma on the URL line."
+    },
+    "note": {
+      "type": "string",
+      "description": "Any freeform commentary attached to the resource line beyond the title (e.g. 'I skipped some part of the notes')."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Derived/curated tags for filtering (subject area, author, etc.)."
+    },
+    "source_file": {
+      "type": "string",
+      "description": "Which raw notes file (e.g. notes2.txt, problems.txt) this record was parsed from."
+    },
+    "locator_kind": {
+      "type": "string",
+      "enum": ["page", "slide", "none", "mixed"],
+      "description": "Whether this resource's exercises are anchored by page numbers, slide numbers, both, or unanchored."
+    },
+    "exercises": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/exercise" }
+    }
+  },
+  "definitions": {
+    "exercise": {
+      "type": "object",
+      "required": ["id", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable id, e.g. '<slug-of-url>#003', unique within the resource."
+        },
+        "text": {
+          "type": "string",
+          "description": "The exercise/question text, with any (Hint: ...) and (Page/Slide N) markers stripped out."
+        },
+        "hint": {
+          "type": ["string", "null"],
+          "description": "Extracted hint text from a trailing or inline '(Hint: ...)' clause, if present."
+        },
+        "locator": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": { "type": "string", "enum": ["page", "slide", "section"] },
+            "value": {
+              "type": "string",
+              "description": "Raw locator value as it appeared, e.g. '4', '99', '2.11(a)'."
+            },
+            "number": {
+              "type": ["integer", "null"],
+              "description": "Numeric page/slide number if it could be parsed as a plain integer."
+            }
+          },
+          "required": ["kind", "value"]
+        },
+        "sub_index": {
+          "type": ["integer", "null"],
+          "description": "Position of this exercise among exercises sharing the same locator (0-based), for stable ordering/dedup."
+        },
+        "search_text": {
+          "type": "string",
+          "description": "Lowercased concatenation of text+hint, precomputed for fast client-side search."
+        }
+      }
+    }
+  }
+}

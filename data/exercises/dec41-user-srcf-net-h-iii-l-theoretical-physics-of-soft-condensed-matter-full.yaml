@@ -1,0 +1,71 @@
+url: https://dec41.user.srcf.net/h/III_L/theoretical_physics_of_soft_condensed_matter/full
+title: condensed matter
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#000
+  text: Why does one ignore quantum fluctuations?
+  hint: compute k_B T to be h bar / tau_Q, tau_Q is 10E-13, so ignore, can set h bar = 0?
+  locator: null
+  sub_index: null
+  search_text: why does one ignore quantum fluctuations? compute k_b t to be h bar / tau_q, tau_q is 10e-13,
+    so ignore, can set h bar = 0?
+- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#001
+  text: Why are thermal fluctuations important?
+  hint: one can do elasticity or bulk modulus to be G approximately k_B T N/V, G has a lower shear modulus
+    of 10E2 and 10E7, K/G is large, one wants G to be nonzero, and tau to be short.
+  locator: null
+  sub_index: null
+  search_text: why are thermal fluctuations important? one can do elasticity or bulk modulus to be g approximately
+    k_b t n/v, g has a lower shear modulus of 10e2 and 10e7, k/g is large, one wants g to be nonzero,
+    and tau to be short.
+- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#002
+  text: Why does one coarse grain the system?
+  hint: too many particles?
+  locator: null
+  sub_index: null
+  search_text: why does one coarse grain the system? too many particles?
+- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#003
+  text: Why does one care about mean field theory?
+  hint: one wants to see the probability or density of seeing a field configurations
+  locator: null
+  sub_index: null
+  search_text: why does one care about mean field theory? one wants to see the probability or density
+    of seeing a field configurations
+- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#004
+  text: Why does mean field theory fail for this?
+  hint: does not account for thermal fluctuations, so use variational method?
+  locator: null
+  sub_index: null
+  search_text: why does mean field theory fail for this? does not account for thermal fluctuations, so
+    use variational method?
+- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#005
+  text: Why does one care about the hydrodynamic level equations?
+  hint: deterministic PDE on how the system evolves, so care about free energy functional and chemical
+    potential
+  locator: null
+  sub_index: null
+  search_text: why does one care about the hydrodynamic level equations? deterministic pde on how the
+    system evolves, so care about free energy functional and chemical potential
+- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#006
+  text: Why is random noise important?
+  hint: mean noise is 0, but random noise is determined by one parameter to get the probabilistic distribution
+    of the field by the stochastic PDE, one gets the fluctuation dissipation system
+  locator: null
+  sub_index: null
+  search_text: why is random noise important? mean noise is 0, but random noise is determined by one parameter
+    to get the probabilistic distribution of the field by the stochastic pde, one gets the fluctuation
+    dissipation system
+- id: dec41-user-srcf-net-h-iii-l-theoretical-physics-of-soft-condensed-matter-full#007
+  text: How does one gradually weaken the Navier-Stokes equation to study soft matter?
+  hint: get hydrodynamic PDE, assume incompressibility, then promote to stochastic PDE using the Landau-Lipschitz
+    equation, last term is noise stress tensor, treat it as Gaussian, fixed by fluctuation dissipation.
+    One can weaken more assumptions by thinking about fluid mixtures, and add molecular orientations.
+  locator: null
+  sub_index: null
+  search_text: how does one gradually weaken the navier-stokes equation to study soft matter? get hydrodynamic
+    pde, assume incompressibility, then promote to stochastic pde using the landau-lipschitz equation,
+    last term is noise stress tensor, treat it as gaussian, fixed by fluctuation dissipation. one can
+    weaken more assumptions by thinking about fluid mixtures, and add molecular orientations.

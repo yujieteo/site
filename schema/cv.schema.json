@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CV",
+  "type": "object",
+  "required": ["name", "title", "affiliation", "bio", "education"],
+  "properties": {
+    "name": { "type": "string" },
+    "title": { "type": "string" },
+    "affiliation": { "type": "string" },
+    "email": { "type": "string" },
+    "bio": { "type": "string" },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["degree", "institution", "year"],
+        "properties": {
+          "degree": { "type": "string" },
+          "institution": { "type": "string" },
+          "year": { "type": "string" }
+        }
+      }
+    },
+    "awards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "year"],
+        "properties": {
+          "name": { "type": "string" },
+          "year": { "type": "string" }
+        }
+      }
+    }
+  }
+}

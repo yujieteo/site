@@ -1,0 +1,89 @@
+url: https://zb260.user.srcf.net/notes/III/alggrp.pdf
+title: topics in algebraic groups
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: zb260-user-srcf-net-notes-iii-alggrp-pdf#000
+  text: How does one invent quasicompact schemes?
+  hint: think about topological spaces
+  locator: null
+  sub_index: null
+  search_text: how does one invent quasicompact schemes? think about topological spaces
+- id: zb260-user-srcf-net-notes-iii-alggrp-pdf#001
+  text: How does one invent quasiseparated schemes?
+  hint: quasicompact on the level of intersections, to construct non-quasiseparate schemes, glue two copies
+    of A^\infty_k, take U as A^\infty_k kill off {T0, T1, ...}, and some more work... but this is rare
+  locator: null
+  sub_index: null
+  search_text: how does one invent quasiseparated schemes? quasicompact on the level of intersections,
+    to construct non-quasiseparate schemes, glue two copies of a^\infty_k, take u as a^\infty_k kill off
+    {t0, t1, ...}, and some more work... but this is rare
+- id: zb260-user-srcf-net-notes-iii-alggrp-pdf#002
+  text: How does one invent relative notion of qcqs?
+  hint: take it as properties of morphisms i.e. pullback for all affines in qcqs
+  locator: null
+  sub_index: null
+  search_text: how does one invent relative notion of qcqs? take it as properties of morphisms i.e. pullback
+    for all affines in qcqs
+- id: zb260-user-srcf-net-notes-iii-alggrp-pdf#003
+  text: How does invent Noetherian schemes?
+  hint: check Noetherian locally, and require quasicompact because Noetherian is about quasicompactness
+  locator: null
+  sub_index: null
+  search_text: how does invent noetherian schemes? check noetherian locally, and require quasicompact
+    because noetherian is about quasicompactness
+- id: zb260-user-srcf-net-notes-iii-alggrp-pdf#004
+  text: 'How does one invent Kahler differentials? (Hint: sum rule and product rule when valued in the
+    B-module Omega_B/A, construct this using brute force on free B-module of classes [b] in B, once this
+    exists this is universal, then can define using universal properties of chain rule and sum rule. One
+    can then define A0derivation of B is a B-module M as an additive map valued to M with the Kahler differential
+    structure, i.e. D(a) = 0, then chain rule for D(b_1 b_2)). One can also define it as Hom(Omega_B/A,
+    M) -> Der_A(B,M) as isomorphism, extend from [b] to D(b), pick Gamma = 0 as derivation, factors through
+    some psi Omega_B/A = O/Q by universa; property? Gives surjectivity, injectivity follows from db generating
+    the Kahler differential. Basically one can define Kahler differentials through derivations'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent kahler differentials? (hint: sum rule and product rule when valued
+    in the b-module omega_b/a, construct this using brute force on free b-module of classes [b] in b,
+    once this exists this is universal, then can define using universal properties of chain rule and sum
+    rule. one can then define a0derivation of b is a b-module m as an additive map valued to m with the
+    kahler differential structure, i.e. d(a) = 0, then chain rule for d(b_1 b_2)). one can also define
+    it as hom(omega_b/a, m) -> der_a(b,m) as isomorphism, extend from [b] to d(b), pick gamma = 0 as derivation,
+    factors through some psi omega_b/a = o/q by universa; property? gives surjectivity, injectivity follows
+    from db generating the kahler differential. basically one can define kahler differentials through
+    derivations'
+- id: zb260-user-srcf-net-notes-iii-alggrp-pdf#005
+  text: How does one invent B' = B otimes_A A', map of Kahler differential under base change with B' is
+    isomorphism?
+  hint: universal property gives immediate proof
+  locator: null
+  sub_index: null
+  search_text: how does one invent b' = b otimes_a a', map of kahler differential under base change with
+    b' is isomorphism? universal property gives immediate proof
+- id: zb260-user-srcf-net-notes-iii-alggrp-pdf#006
+  text: 'What is motivation for Kahler differentials? (Hint: take X smooth manifold, associate a tangent
+    bundle, pullback to get tangent space for each point of X at x in X, define as R-linear maps D by
+    derivations from C^\infty valued in R following chain rule, T_x X is collection of R-derivations,
+    given C^\infty(X)-module by evaluation i.e. linear algebra over R, algebra this gets Kahler differentials'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is motivation for kahler differentials? (hint: take x smooth manifold, associate
+    a tangent bundle, pullback to get tangent space for each point of x at x in x, define as r-linear
+    maps d by derivations from c^\infty valued in r following chain rule, t_x x is collection of r-derivations,
+    given c^\infty(x)-module by evaluation i.e. linear algebra over r, algebra this gets kahler differentials'
+- id: zb260-user-srcf-net-notes-iii-alggrp-pdf#007
+  text: How does one invent cotangent spaces by taking Kahler differential Omega_A/k base change with
+    k, for local k-algebra k, one gets m/m^2 for local k-algebra [A,m], prove this using surjection from
+    m/m^2 to Kahler differential since Omega_k/k = 0, for other direction use induced map of k-derivation
+    Der_k(R, m/m^2))
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one invent cotangent spaces by taking kahler differential omega_a/k base change
+    with k, for local k-algebra k, one gets m/m^2 for local k-algebra [a,m], prove this using surjection
+    from m/m^2 to kahler differential since omega_k/k = 0, for other direction use induced map of k-derivation
+    der_k(r, m/m^2))

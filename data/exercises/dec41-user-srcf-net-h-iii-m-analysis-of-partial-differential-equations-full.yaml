@@ -1,0 +1,475 @@
+url: https://dec41.user.srcf.net/h/III_M/analysis_of_partial_differential_equations/full
+title: need to fill in the gaps in the middle. I am not so scared of PDEs now.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#000
+  text: How does one do higher PDEs?
+  hint: prove existence and uniqueness, no explicit construction, done using functional analysis
+  locator: null
+  sub_index: null
+  search_text: how does one do higher pdes? prove existence and uniqueness, no explicit construction,
+    done using functional analysis
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#001
+  text: Why is time a special direction?
+  hint: wave equation means time derivative now has different sign from the rest
+  locator: null
+  sub_index: null
+  search_text: why is time a special direction? wave equation means time derivative now has different
+    sign from the rest
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#002
+  text: Where does norm come in on function space?
+  hint: continuity is discussed for regularity, so must pick topology, pick appropriate norms.
+  locator: null
+  sub_index: null
+  search_text: where does norm come in on function space? continuity is discussed for regularity, so must
+    pick topology, pick appropriate norms.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#003
+  text: How does one invent the term well posed?
+  hint: unqieu solution, continuous dependence, regularity
+  locator: null
+  sub_index: null
+  search_text: how does one invent the term well posed? unqieu solution, continuous dependence, regularity
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#004
+  text: 'How does one invent notion of PDEs? (Hint: valued in R from U x ... x R^n^k space and u valued
+    in R as unknown on open ball U in R^n)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent notion of pdes? (hint: valued in r from u x ... x r^n^k space and
+    u valued in r as unknown on open ball u in r^n)'
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#005
+  text: How does one invent the classical solution?
+  hint: Identically satisfied on open U when u and all higher derivatives up to D^ik u are substituted,
+    take u and F in vector space and get system of PDEs
+  locator: null
+  sub_index: null
+  search_text: how does one invent the classical solution? identically satisfied on open u when u and
+    all higher derivatives up to d^ik u are substituted, take u and f in vector space and get system of
+    pdes
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#006
+  text: What is the meaning of transport equation?
+  hint: evolution of density u of some chemical being advected bya. flow. Method of characteristics solves
+    this PDEs
+  locator: null
+  sub_index: null
+  search_text: what is the meaning of transport equation? evolution of density u of some chemical being
+    advected bya. flow. method of characteristics solves this pdes
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#007
+  text: How does one use Laplace's equation?
+  hint: electrostatic potential in vacuum, heat distribution. Inhomogenous version gives electrostatic
+    field over charge distribution.
+  locator: null
+  sub_index: null
+  search_text: how does one use laplace's equation? electrostatic potential in vacuum, heat distribution.
+    inhomogenous version gives electrostatic field over charge distribution.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#008
+  text: How does one use the heat eqaution?
+  hint: temperature in uniform body or chemical diffusion, u is density
+  locator: null
+  sub_index: null
+  search_text: how does one use the heat eqaution? temperature in uniform body or chemical diffusion,
+    u is density
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#009
+  text: How does one use the wave equation?
+  hint: n = 1 for strings, n = 2 for drums, n = 3 for air density in sound wave
+  locator: null
+  sub_index: null
+  search_text: how does one use the wave equation? n = 1 for strings, n = 2 for drums, n = 3 for air density
+    in sound wave
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#010
+  text: How does one uses Maxwell's equations?
+  hint: U(1) electromagnetism
+  locator: null
+  sub_index: null
+  search_text: how does one uses maxwell's equations? u(1) electromagnetism
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#011
+  text: How does one use Einstein's equation?
+  hint: gravity
+  locator: null
+  sub_index: null
+  search_text: how does one use einstein's equation? gravity
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#012
+  text: How does one use minimal surface equations?
+  hint: local extremisers of areas
+  locator: null
+  sub_index: null
+  search_text: how does one use minimal surface equations? local extremisers of areas
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#013
+  text: Why is it hard to make general statements for PDEs?
+  hint: must be true for say heat and wave equations
+  locator: null
+  sub_index: null
+  search_text: why is it hard to make general statements for pdes? must be true for say heat and wave
+    equations
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#014
+  text: Why is the classification for all PDEs that is second order useful?
+  hint: classify locally to smooth, parabolic or smoothing, or hyperbolic i.e. finite speed propagation.
+    Linear superposition is also useful. Energy estimates are also general. Lie theory? However, now extending
+    to distribution theory and embedding theorem to quantify regularity and boudnary trace behaviours.
+    Energy profile is key to understaiding the PDEs. Energy is related to Lie theory, and Lie theory is
+    related to representation theory i.e. number theory.
+  locator: null
+  sub_index: null
+  search_text: why is the classification for all pdes that is second order useful? classify locally to
+    smooth, parabolic or smoothing, or hyperbolic i.e. finite speed propagation. linear superposition
+    is also useful. energy estimates are also general. lie theory? however, now extending to distribution
+    theory and embedding theorem to quantify regularity and boudnary trace behaviours. energy profile
+    is key to understaiding the pdes. energy is related to lie theory, and lie theory is related to representation
+    theory i.e. number theory.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#015
+  text: What are linear PDEs? (Linear functions of its derivatives)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what are linear pdes? (linear functions of its derivatives)
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#016
+  text: What is semilinear PDEs?
+  hint: terms of higher order derivatives are linear.
+  locator: null
+  sub_index: null
+  search_text: what is semilinear pdes? terms of higher order derivatives are linear.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#017
+  text: Why care about autonomous ODEs?
+  hint: 'no explicit time dependence on u''(t) = f(u(t)) fixing U in R some open, f: U->R^n'
+  locator: null
+  sub_index: null
+  search_text: 'why care about autonomous odes? no explicit time dependence on u''(t) = f(u(t)) fixing
+    u in r some open, f: u->r^n'
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#018
+  text: Why care about Picard-Lindelof?
+  hint: assume exists r, K > 0, B_r(u_0) in U and norm(f(x) - f(y)) <= K norm(x - u_0), exists epsilon.
+    > 0 and unique C1 function solvign Cauchy problem
+  locator: null
+  sub_index: null
+  search_text: why care about picard-lindelof? assume exists r, k > 0, b_r(u_0) in u and norm(f(x) - f(y))
+    <= k norm(x - u_0), exists epsilon. > 0 and unique c1 function solvign cauchy problem
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#019
+  text: How to prove Picard-Lindelof?
+  hint: 'forward, use FTC, converse is integral equation, u is C^0 solution to integral solution, solves
+    ODE, u is C^0 satisfies integral equation, reformulated problem as integral equation, assumes less
+    about functions or weak formulation, looking for fixed point of map w -> u_0 + int f(w(s)) ds acting
+    on C equals set of w: from closed epsilon interval to B_r2(u_0), w continuous, complete metric space
+    equipping it with supremum norm. Show epsulon small enough, contraction map, show it actually lands
+    in C and it is a contraction, show this then use contraction mapping theorem, unique fixed point.
+    Idea is to formulate as fixed point problem all the time. Unique C^1 exists locally, may run out of
+    U in finite time so globally it may fail.'
+  locator: null
+  sub_index: null
+  search_text: 'how to prove picard-lindelof? forward, use ftc, converse is integral equation, u is c^0
+    solution to integral solution, solves ode, u is c^0 satisfies integral equation, reformulated problem
+    as integral equation, assumes less about functions or weak formulation, looking for fixed point of
+    map w -> u_0 + int f(w(s)) ds acting on c equals set of w: from closed epsilon interval to b_r2(u_0),
+    w continuous, complete metric space equipping it with supremum norm. show epsulon small enough, contraction
+    map, show it actually lands in c and it is a contraction, show this then use contraction mapping theorem,
+    unique fixed point. idea is to formulate as fixed point problem all the time. unique c^1 exists locally,
+    may run out of u in finite time so globally it may fail.'
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#020
+  text: How to use Picard-Lindelof in practice?
+  hint: to prove contraction mapping theorem, pick point in C, apply B, by contraction get fixed point,
+    way to construct approximate to ODEs, physicists will try to construct Taylor series at that point,
+    this motivates Cauchy-Kovalevskaya for ODEs converging to Picard-Lindelof solution if f is real analytic,
+    real analytic is condition i.e. being equal to Taylor's series. So the definition gives the theorem.
+  locator: null
+  sub_index: null
+  search_text: how to use picard-lindelof in practice? to prove contraction mapping theorem, pick point
+    in c, apply b, by contraction get fixed point, way to construct approximate to odes, physicists will
+    try to construct taylor series at that point, this motivates cauchy-kovalevskaya for odes converging
+    to picard-lindelof solution if f is real analytic, real analytic is condition i.e. being equal to
+    taylor's series. so the definition gives the theorem.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#021
+  text: Why is single variable convergence related to geometric series? How does this motivates the definition
+    of the majorant
+  hint: only way to show series converges is by comparison to geometric series, hencethis motivates the
+    definition of the majorant i.e. formal power series
+  locator: null
+  sub_index: null
+  search_text: why is single variable convergence related to geometric series? how does this motivates
+    the definition of the majorant only way to show series converges is by comparison to geometric series,
+    hencethis motivates the definition of the majorant i.e. formal power series
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#022
+  text: How to define majorant?
+  hint: g f formal power series, g majorizes of if g_alpha >= norm(f_alpha) for all multi indexes.
+  locator: null
+  sub_index: null
+  search_text: how to define majorant? g f formal power series, g majorizes of if g_alpha >= norm(f_alpha)
+    for all multi indexes.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#023
+  text: 'What lemma to prove Cauchy-Kovalevskaya theorem for first order ODEs> (Hint: use lemma g >> f,
+    and g converges for |x| < f, then f converges for |x| < r, this is done by a simple comparison, if
+    f(x) = formal power series in terms of alpha converges for x < r, and intermediate is 0 < s root(n)
+    < r, f has majorant which converges on |x| < s)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what lemma to prove cauchy-kovalevskaya theorem for first order odes> (hint: use lemma
+    g >> f, and g converges for |x| < f, then f converges for |x| < r, this is done by a simple comparison,
+    if f(x) = formal power series in terms of alpha converges for x < r, and intermediate is 0 < s root(n)
+    < r, f has majorant which converges on |x| < s)'
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#024
+  text: How to prove Cauchy-Kovalevskaya for first order equations?
+  hint: pick real analytic, solve PDE near origin, uniqueness and plug them into PDE, come up with expression
+    for u, exists poly in power series coefficeints, function of coefficients in power series expansion
+    of B, c, proe uniqueness, for existence, show ocnvergence of neighbourhood origin. Important fact
+    to prove, coefficients of q_alpha are nonnegative, then use comparison test to reduce to particular
+    PDE, construct poly by induction, evlaute at 0 expand all terms get poly in terms of B_j and c, nonnegative
+    reduces to majorisationc ase of Cr/r - (x^1 + ... x^n), this gives lemma required, write downtthe
+    solution of PDE using method of characteristics, requires eistence of solution. Anyway check the notes
+    for the prove.
+  locator: null
+  sub_index: null
+  search_text: how to prove cauchy-kovalevskaya for first order equations? pick real analytic, solve pde
+    near origin, uniqueness and plug them into pde, come up with expression for u, exists poly in power
+    series coefficeints, function of coefficients in power series expansion of b, c, proe uniqueness,
+    for existence, show ocnvergence of neighbourhood origin. important fact to prove, coefficients of
+    q_alpha are nonnegative, then use comparison test to reduce to particular pde, construct poly by induction,
+    evlaute at 0 expand all terms get poly in terms of b_j and c, nonnegative reduces to majorisationc
+    ase of cr/r - (x^1 + ... x^n), this gives lemma required, write downtthe solution of pde using method
+    of characteristics, requires eistence of solution. anyway check the notes for the prove.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#025
+  text: What is the Cauchy-Kovalevskaya-Kashiaware theorem?
+  hint: cohomological formulation of Cauchy-Kovaleskaya using D-modules, compatability requires nonhomogenous
+    parts of each equation adn vanishing of derived Ext^1 functor.
+  locator: null
+  sub_index: null
+  search_text: what is the cauchy-kovalevskaya-kashiaware theorem? cohomological formulation of cauchy-kovaleskaya
+    using d-modules, compatability requires nonhomogenous parts of each equation adn vanishing of derived
+    ext^1 functor.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#026
+  text: How does one motivate the definition of noncharacteristic?
+  hint: a_(0,...,k) (0, ... 0) is nonzero. The a are the coefficients of the quasilinear problem, and
+    typically you want them to be real analytic about the origin i.e. = 0 to solve the equation by Cauchy-Kovalevskaya.
+    One can define real analytic hypersurface. Noncharacteristic if sum of a_alpha(D Phi^n)^alpha nonzero
+    or linear combinations of normals to the hypersurface nonzero i.e. express your vector in terms of
+    a formal power series in deriatvives of A. If second order, all eigenvalues are positive no characteristic
+    surfaces, elliptic i.e. smooth, (a_ij) but one negative eigenvalue, rest positive, than hyperbolic
+    means characteristic directions like light cone, waves propagate on all these surface i.e. the characteristic
+    surface.
+  locator: null
+  sub_index: null
+  search_text: how does one motivate the definition of noncharacteristic? a_(0,...,k) (0, ... 0) is nonzero.
+    the a are the coefficients of the quasilinear problem, and typically you want them to be real analytic
+    about the origin i.e. = 0 to solve the equation by cauchy-kovalevskaya. one can define real analytic
+    hypersurface. noncharacteristic if sum of a_alpha(d phi^n)^alpha nonzero or linear combinations of
+    normals to the hypersurface nonzero i.e. express your vector in terms of a formal power series in
+    deriatvives of a. if second order, all eigenvalues are positive no characteristic surfaces, elliptic
+    i.e. smooth, (a_ij) but one negative eigenvalue, rest positive, than hyperbolic means characteristic
+    directions like light cone, waves propagate on all these surface i.e. the characteristic surface.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#027
+  text: What is elliptic regularity?
+  hint: take case of linear combinations a_ij v^j v^i = 0, set u_lambda as exp(i lambda v x) large wlog
+    |v| = 1, characteristic directions are directions where singulartiies can propagate, but not true
+    for elliptic operators
+  locator: null
+  sub_index: null
+  search_text: what is elliptic regularity? take case of linear combinations a_ij v^j v^i = 0, set u_lambda
+    as exp(i lambda v x) large wlog |v| = 1, characteristic directions are directions where singulartiies
+    can propagate, but not true for elliptic operators
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#028
+  text: What is an easy way to remember classification of PDE types?
+  hint: eigenvalue all positive, elliptic, smooth static equilibria, zero means infinite speed propagation
+    or parabolic, negative means finite speed propagation, or hyperbolic, tricomi is transonic flow. Is
+    it related to speed of sound? Navier-Stokes is hyperbolic or finite speed soundwaves, parabolic means
+    infinite speed shockwave by friction and heat related to eigenvalue 0. So speed is inversely related
+    to eigenvalue, smaller eigenvalue faster it is
+  locator: null
+  sub_index: null
+  search_text: what is an easy way to remember classification of pde types? eigenvalue all positive, elliptic,
+    smooth static equilibria, zero means infinite speed propagation or parabolic, negative means finite
+    speed propagation, or hyperbolic, tricomi is transonic flow. is it related to speed of sound? navier-stokes
+    is hyperbolic or finite speed soundwaves, parabolic means infinite speed shockwave by friction and
+    heat related to eigenvalue 0. so speed is inversely related to eigenvalue, smaller eigenvalue faster
+    it is
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#029
+  text: Where does the Cauchy-Kovalevskaya fail?
+  hint: no real analytic, no control over solution length, does not answer well posedness.
+  locator: null
+  sub_index: null
+  search_text: where does the cauchy-kovalevskaya fail? no real analytic, no control over solution length,
+    does not answer well posedness.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#030
+  text: How does one invent Holder spaces?
+  hint: k-times differentiable with partial derivatives continuous for |a| < k, grant supremum norm on
+    dericatives, but not guaranteed to exist, define norm on sum of D^\akpha u(x) so that all D^\alpha
+    are bounded and UNIFORMLY continuous i.e. conditions that allow sum of supremum to be defined to make
+    C^k(U bar a Banach space. Lastly, allow for fractional differentiability by defining Holder continuous
+    as bounded by C norm(x,y)^gamma for fractional gamma, then define Holder seminorm by taking sup |u(x)
+    - u(y)|/|x-y|^\gamma)
+  locator: null
+  sub_index: null
+  search_text: how does one invent holder spaces? k-times differentiable with partial derivatives continuous
+    for |a| < k, grant supremum norm on dericatives, but not guaranteed to exist, define norm on sum of
+    d^\akpha u(x) so that all d^\alpha are bounded and uniformly continuous i.e. conditions that allow
+    sum of supremum to be defined to make c^k(u bar a banach space. lastly, allow for fractional differentiability
+    by defining holder continuous as bounded by c norm(x,y)^gamma for fractional gamma, then define holder
+    seminorm by taking sup |u(x) - u(y)|/|x-y|^\gamma)
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#031
+  text: Why are Sobolev spaces more useful than Holder spaces?
+  hint: Holder spaces, uses sup norm, change this to L^p norm and one gets Sobolev spaces.
+  locator: null
+  sub_index: null
+  search_text: why are sobolev spaces more useful than holder spaces? holder spaces, uses sup norm, change
+    this to l^p norm and one gets sobolev spaces.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#032
+  text: How does one invent L^p space?
+  hint: set of U -> R differentiable such that norm u is bounded up to equality almost everywhere i.e.
+    due to measure theory, then define the norm to be integral of |u(x)|^p ^1/p similar to Holder's inequality
+    and take the infimum across all C >= 0 such that |u(x)| is bounded by C almost everywhere.
+  locator: null
+  sub_index: null
+  search_text: how does one invent l^p space? set of u -> r differentiable such that norm u is bounded
+    up to equality almost everywhere i.e. due to measure theory, then define the norm to be integral of
+    |u(x)|^p ^1/p similar to holder's inequality and take the infimum across all c >= 0 such that |u(x)|
+    is bounded by c almost everywhere.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#033
+  text: 'What happens when one attempts to define local L^p spaces? (hint: u in L^p_loc(U) if u in L^p(V)
+    for every V compactly contained in U i.e. V bar in U, V bar compact. Ignore blow up at boundary BUT
+    it is not Banach but Frechet space. Defining differentiability for locally L^p Frechet spaces are
+    bad, value of L^p (U) at point not well defined, need notion of weak derivative, alpha weak derivative
+    if int u D^alpha phi dx. = (-1)^|alpha| int u phi dx, why this definition? (Hint: comes from integration
+    by parts), this is basically the definition of a distributional derivative, except this requries derivative
+    to be L^1 local)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what happens when one attempts to define local l^p spaces? (hint: u in l^p_loc(u) if u
+    in l^p(v) for every v compactly contained in u i.e. v bar in u, v bar compact. ignore blow up at boundary
+    but it is not banach but frechet space. defining differentiability for locally l^p frechet spaces
+    are bad, value of l^p (u) at point not well defined, need notion of weak derivative, alpha weak derivative
+    if int u d^alpha phi dx. = (-1)^|alpha| int u phi dx, why this definition? (hint: comes from integration
+    by parts), this is basically the definition of a distributional derivative, except this requries derivative
+    to be l^1 local)'
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#034
+  text: How does one invent distributional derivatives?
+  hint: use integration by parts to shift derivative to smooth, compact supported test function i.e. <T',
+    phi> = - <T, phi'>, where T need not be smooth, but phi can be a test function. It always exists.
+    Derivative of step function is Dirac delta function.
+  locator: null
+  sub_index: null
+  search_text: how does one invent distributional derivatives? use integration by parts to shift derivative
+    to smooth, compact supported test function i.e. <t', phi> = - <t, phi'>, where t need not be smooth,
+    but phi can be a test function. it always exists. derivative of step function is dirac delta function.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#035
+  text: How does one prove equality of weak derivatives almost everywhere?
+  hint: apply distributional derivative formula using integration by parts, check that it is indeed u
+    - u by shifting to integration by parts, you have it almost everywhere by measure theory
+  locator: null
+  sub_index: null
+  search_text: how does one prove equality of weak derivatives almost everywhere? apply distributional
+    derivative formula using integration by parts, check that it is indeed u - u by shifting to integration
+    by parts, you have it almost everywhere by measure theory
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#036
+  text: How does one define Sobolev space? The main idea is to define L^p norm over D^alpha u which must
+    exist in localised L^p space as condition
+  hint: u in L_loc^1 i.e. in localised L^1 Frechet space belongs to Sobolev space W^k,p(U) if u i.e. the
+    function of interest is in L^p(U), D^alpha u exists and is in L^p(U), the W^k,p, norm is defined by
+    sum of L^p norms of the D^alpha u components which are defined to exist, if p is infinite then take
+    the sum of all |D^alpha u| under supremum L^\infty norm.  For p = 2, one gets a Hilbert space and
+    write as H^k(U)
+  locator: null
+  sub_index: null
+  search_text: how does one define sobolev space? the main idea is to define l^p norm over d^alpha u which
+    must exist in localised l^p space as condition u in l_loc^1 i.e. in localised l^1 frechet space belongs
+    to sobolev space w^k,p(u) if u i.e. the function of interest is in l^p(u), d^alpha u exists and is
+    in l^p(u), the w^k,p, norm is defined by sum of l^p norms of the d^alpha u components which are defined
+    to exist, if p is infinite then take the sum of all |d^alpha u| under supremum l^\infty norm.  for
+    p = 2, one gets a hilbert space and write as h^k(u)
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#037
+  text: How does one prove that Sobolev spaces are Banach spaces?
+  hint: use definition of norm of the D_alpha p, triangle inequality forms from Minkowski inequality i.e.
+    convex triangle inequality for L^p space, completeness, require completeness of L^p(U) by considering
+    Cauchy sequences of derivative sequences since the u norms in Sobolev space bounds the D^alpha norm
+    in L^p space, use completeness of L^p space to map to u^alpha, to show equality, use integration by
+    parts, then one show that D^alpha u = u alpha in L^p(U) and we are done.
+  locator: null
+  sub_index: null
+  search_text: how does one prove that sobolev spaces are banach spaces? use definition of norm of the
+    d_alpha p, triangle inequality forms from minkowski inequality i.e. convex triangle inequality for
+    l^p space, completeness, require completeness of l^p(u) by considering cauchy sequences of derivative
+    sequences since the u norms in sobolev space bounds the d^alpha norm in l^p space, use completeness
+    of l^p space to map to u^alpha, to show equality, use integration by parts, then one show that d^alpha
+    u = u alpha in l^p(u) and we are done.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#038
+  text: How does one invent mollifers?
+  hint: get distributional derivative in Sobolev space, then improve regularity i.e. sharpness of Dirac
+    deltas or singularity by convolving it with smooth mollifers, standard mollifiers look very close
+    to normal dsitribution, but killed off when norm exceeds 1., choose C so that total measure is 1.
+    Mollification is the convolution with the standard moliifier i.e. integral over U of stdmoll(x-y)
+    f(y) which gives the lcoal average around each point weighting given by smoother mollifers.
+  locator: null
+  sub_index: null
+  search_text: how does one invent mollifers? get distributional derivative in sobolev space, then improve
+    regularity i.e. sharpness of dirac deltas or singularity by convolving it with smooth mollifers, standard
+    mollifiers look very close to normal dsitribution, but killed off when norm exceeds 1., choose c so
+    that total measure is 1. mollification is the convolution with the standard moliifier i.e. integral
+    over u of stdmoll(x-y) f(y) which gives the lcoal average around each point weighting given by smoother
+    mollifers.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#039
+  text: How does one prove that mollified local averages of f (for f in local L^1 Frechet space) around
+    each point are in C^\infty, converges to f almost everywhere as eps -> 0, if f in C(U) then f_eps
+    converges to f uniformly as well as convergence in L^p on any V compactly contained in U?
+  hint: problematic on boundaries.
+  locator: null
+  sub_index: null
+  search_text: how does one prove that mollified local averages of f (for f in local l^1 frechet space)
+    around each point are in c^\infty, converges to f almost everywhere as eps -> 0, if f in c(u) then
+    f_eps converges to f uniformly as well as convergence in l^p on any v compactly contained in u? problematic
+    on boundaries.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#040
+  text: 'What is the purpose of Sobolev inequaltiies? (Hitn: trade different desirable properties i.e.
+    trade differentiability for continuity. Sobolev inequalities allow them, construct solutions in Sobolev
+    spaces since they are uses, use Sobolev inequalities to pass to smooth solution by trading back to
+    continuity example is Gagliardo-Nirenberg-Sobolev inequality which uses the fact that function is
+    integral of derivatives, n inputs mean n integrals, integrate and Holder n-repetitions, Morrey''s
+    inequality.)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is the purpose of sobolev inequaltiies? (hitn: trade different desirable properties
+    i.e. trade differentiability for continuity. sobolev inequalities allow them, construct solutions
+    in sobolev spaces since they are uses, use sobolev inequalities to pass to smooth solution by trading
+    back to continuity example is gagliardo-nirenberg-sobolev inequality which uses the fact that function
+    is integral of derivatives, n inputs mean n integrals, integrate and holder n-repetitions, morrey''s
+    inequality.)'
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#041
+  text: What is the canonical example of elliptic boundary value problems?
+  hint: 'U in R^n bounded open smooth boundary, surface is perfect conductor, rho: U -> R is charge density
+    inside U, electro static field satisfiees nabla phi = rho, phi on boundary = 0 or electrostatic field
+    on boundary is 0, fails Cauchy-Kovalevskaya, not enough solutions define Lu to be some cursed stuff,
+    assume at least L^infty, which is divergence form, use energy method, nondivergence form uses maximum
+    principle, divergence form makes it easy to do integration by parts'
+  locator: null
+  sub_index: null
+  search_text: 'what is the canonical example of elliptic boundary value problems? u in r^n bounded open
+    smooth boundary, surface is perfect conductor, rho: u -> r is charge density inside u, electro static
+    field satisfiees nabla phi = rho, phi on boundary = 0 or electrostatic field on boundary is 0, fails
+    cauchy-kovalevskaya, not enough solutions define lu to be some cursed stuff, assume at least l^infty,
+    which is divergence form, use energy method, nondivergence form uses maximum principle, divergence
+    form makes it easy to do integration by parts'
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#042
+  text: How does one define unifrom ellipticity?
+  hint: condition needed for not jsut L elliptic i.e. eigenvalues all nonnegative, but degenerate, need
+    to define uniform ellipticity with some cursed inequality.
+  locator: null
+  sub_index: null
+  search_text: how does one define unifrom ellipticity? condition needed for not jsut l elliptic i.e.
+    eigenvalues all nonnegative, but degenerate, need to define uniform ellipticity with some cursed inequality.
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#043
+  text: 'How does one amend the form of the boundary value prolem of the electrostatic canonical problem?
+    (Hint: weak formulation as per proof of Picard-Lindelof. Find weak solution and exploit Hilbert space
+    structure) https://dec41.user.srcf.net/h/II_M/galois_theory/full'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one amend the form of the boundary value prolem of the electrostatic canonical
+    problem? (hint: weak formulation as per proof of picard-lindelof. find weak solution and exploit hilbert
+    space structure) https://dec41.user.srcf.net/h/ii_m/galois_theory/full'
+- id: dec41-user-srcf-net-h-iii-m-analysis-of-partial-differential-equations-full#044
+  text: What does Galois theory provide at first?
+  hint: whether a polynomial has a solution in terms of radical
+  locator: null
+  sub_index: null
+  search_text: what does galois theory provide at first? whether a polynomial has a solution in terms
+    of radical

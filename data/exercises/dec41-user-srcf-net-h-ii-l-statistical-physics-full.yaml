@@ -1,0 +1,103 @@
+url: https://dec41.user.srcf.net/h/II_L/statistical_physics/full
+title: statistical physics
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#000
+  text: What is the analogy for Bose-Einstein statistics for network links?
+  hint: growth based on age or uniform potential is Bose-Einstein gas, critical phase means highly fit
+    nodes grow fast, but share links, condensation phase means a single node captures all links. Keyword
+    is Barbasi-Albert scale-free networks. Quantum bosons crowd to the same low energy state, new links.
+  locator: null
+  sub_index: null
+  search_text: what is the analogy for bose-einstein statistics for network links? growth based on age
+    or uniform potential is bose-einstein gas, critical phase means highly fit nodes grow fast, but share
+    links, condensation phase means a single node captures all links. keyword is barbasi-albert scale-free
+    networks. quantum bosons crowd to the same low energy state, new links.
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#001
+  text: What is the classification of statistics?
+  hint: Maxwell-Boltzman statistics, distinguishable entities with no capacity limit. Example, numbered
+    luggage in hotel lobby, any number of entities can occupy any state, every entity has unique identity.
+    Fermi-Dirac, indistinguishable activity, strict exclusivity, example assigned seating in stadium.
+    Bose-Einstein statistics i.e. identical, nocap limit, prefer to pile to exact same states
+  locator: null
+  sub_index: null
+  search_text: what is the classification of statistics? maxwell-boltzman statistics, distinguishable
+    entities with no capacity limit. example, numbered luggage in hotel lobby, any number of entities
+    can occupy any state, every entity has unique identity. fermi-dirac, indistinguishable activity, strict
+    exclusivity, example assigned seating in stadium. bose-einstein statistics i.e. identical, nocap limit,
+    prefer to pile to exact same states
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#002
+  text: How does one invent the notion of microstate?
+  hint: need to use the fact that the microstates are indistinguishable macroscopically, this is the basic
+    insight of irrelevant operator in Wilsonian renormalisation
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of microstate? need to use the fact that the microstates
+    are indistinguishable macroscopically, this is the basic insight of irrelevant operator in wilsonian
+    renormalisation
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#003
+  text: How does one invent the expectation of the operators?
+  hint: basis of normalised eigenstates. Mixed state with density operator is linear combination of probabilty
+    that microstate is eigenstate, get expectation value of the operator.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the expectation of the operators? basis of normalised eigenstates.
+    mixed state with density operator is linear combination of probabilty that microstate is eigenstate,
+    get expectation value of the operator.
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#004
+  text: How does one invent the fundamental assumption of statistical mechanics?
+  hint: isolated system in equilbrium is equally likely to be in any accessible microstates, partial knowledge.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the fundamental assumption of statistical mechanics? isolated system
+    in equilbrium is equally likely to be in any accessible microstates, partial knowledge.
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#005
+  text: How does one invent microcanonical ensemble?
+  hint: need measuring device, energy is between del E, del E is accuracy of the measuring device, accessible
+    microstates are those with energy E <= E_n < E + delta E. Accessible microstates are those with energy
+    in between E <= E_n <= E + delta E
+  locator: null
+  sub_index: null
+  search_text: how does one invent microcanonical ensemble? need measuring device, energy is between del
+    e, del e is accuracy of the measuring device, accessible microstates are those with energy e <= e_n
+    < e + delta e. accessible microstates are those with energy in between e <= e_n <= e + delta e
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#006
+  text: How does one compute the characteristic distribution of the microcanonical ensemble?
+  hint: no information, so uniform distribution or 1/Omega(E) within the measurement limit
+  locator: null
+  sub_index: null
+  search_text: how does one compute the characteristic distribution of the microcanonical ensemble? no
+    information, so uniform distribution or 1/omega(e) within the measurement limit
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#007
+  text: How does one invent the entropy?
+  hint: Omega(E) is not linear in N, so take logarithm of Omega(E), use k log 2 for measuring device is
+    k log 2, entropy is additive, additive means it is noninteracting
+  locator: null
+  sub_index: null
+  search_text: how does one invent the entropy? omega(e) is not linear in n, so take logarithm of omega(e),
+    use k log 2 for measuring device is k log 2, entropy is additive, additive means it is noninteracting
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#008
+  text: How does one invent the temperature?
+  hint: entropy is smooth in total energy, dS/dE = 1/T, inverse temperature. You want that equilbrium
+    derivative must vanish so temperature must be equal.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the temperature? entropy is smooth in total energy, ds/de = 1/t, inverse
+    temperature. you want that equilbrium derivative must vanish so temperature must be equal.
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#009
+  text: How does one prove that energy will transfer from high temperature to low temperature?
+  hint: change in entropy, linear, replace with definition is temperature
+  locator: null
+  sub_index: null
+  search_text: how does one prove that energy will transfer from high temperature to low temperature?
+    change in entropy, linear, replace with definition is temperature
+- id: dec41-user-srcf-net-h-ii-l-statistical-physics-full#010
+  text: How does one define the heat capacity of a system?
+  hint: C = dE/dt, specific divides by mass of the system.
+  locator: null
+  sub_index: null
+  search_text: how does one define the heat capacity of a system? c = de/dt, specific divides by mass
+    of the system.
