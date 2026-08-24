@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/00F2
+title: ring maps of finite type and finite presentation
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-00f2#000
+  text: Define a ring map $R \to S$ to be of finite type if $S \cong R[x_1, \dots, x_n]/I$, and of finite
+    presentation if $I$ is finitely generated ($S \cong R[x_1, \dots, x_n]/(f_1, \dots, f_m)$)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a ring map $r \to s$ to be of finite type if $s \cong r[x_1, \dots, x_n]/i$, and
+    of finite presentation if $i$ is finitely generated ($s \cong r[x_1, \dots, x_n]/(f_1, \dots, f_m)$)

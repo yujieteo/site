@@ -1,0 +1,43 @@
+url: https://ymsc.tsinghua.edu.cn/__local/7/B5/04/0890A5CE2893D5380292FD983CD_99A1AD7E_31656.pdf
+title: pedagogical introduction to p-adic Hodge theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: ymsc-tsinghua-edu-cn-local-7-b5-04-0890a5ce2893d5380292fd983cd-99a1ad7e-31656-pd#000
+  text: 'Recall the classical Hodge decomposition for a smooth projective variety $X / \mathbb{C}$: $H^n(X,
+    \mathbb{C}) \cong \bigoplus_{p+q=n} H^{p, q}(X)$'
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: 'recall the classical hodge decomposition for a smooth projective variety $x / \mathbb{c}$:
+    $h^n(x, \mathbb{c}) \cong \bigoplus_{p+q=n} h^{p, q}(x)$'
+- id: ymsc-tsinghua-edu-cn-local-7-b5-04-0890a5ce2893d5380292fd983cd-99a1ad7e-31656-pd#001
+  text: 'Define the $p$-adic valuation $v_p: \mathbb{Q}_p \to \mathbb{Z} \cup \{\infty\}$ and the field
+    $\mathbb{C}_p = \widehat{\overline{\mathbb{Q}_p}}$ as the completion of the algebraic closure of $\mathbb{Q}_p$'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: 'define the $p$-adic valuation $v_p: \mathbb{q}_p \to \mathbb{z} \cup \{\infty\}$ and the
+    field $\mathbb{c}_p = \widehat{\overline{\mathbb{q}_p}}$ as the completion of the algebraic closure
+    of $\mathbb{q}_p$'
+- id: ymsc-tsinghua-edu-cn-local-7-b5-04-0890a5ce2893d5380292fd983cd-99a1ad7e-31656-pd#002
+  text: 'State the Hodge-Tate comparison theorem: for a smooth projective variety $X / K$, $H_{\text{ét}}^n(X_{\overline{K}},
+    \mathbb{Q}_p) \otimes_{\mathbb{Q}_p} \mathbb{C}_p \cong \bigoplus_{p+q=n} H^q(X, \Omega_{X/K}^p) \otimes_K
+    \mathbb{C}_p(-p)$'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: 'state the hodge-tate comparison theorem: for a smooth projective variety $x / k$, $h_{\text{ét}}^n(x_{\overline{k}},
+    \mathbb{q}_p) \otimes_{\mathbb{q}_p} \mathbb{c}_p \cong \bigoplus_{p+q=n} h^q(x, \omega_{x/k}^p) \otimes_k
+    \mathbb{c}_p(-p)$'

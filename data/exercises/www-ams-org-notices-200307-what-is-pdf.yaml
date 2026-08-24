@@ -1,0 +1,33 @@
+url: https://www.ams.org/notices/200307/what-is.pdf
+title: What is a Dessin d'Enfant? by Leila Schneps
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ams-org-notices-200307-what-is-pdf#000
+  text: Define a Grothendieck dessin d'enfant as a bipartite graph embedded in a compact oriented topological
+    surface whose complement is a union of topological disks
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a grothendieck dessin d'enfant as a bipartite graph embedded in a compact oriented
+    topological surface whose complement is a union of topological disks
+- id: www-ams-org-notices-200307-what-is-pdf#001
+  text: 'State Belyi''s Theorem: a smooth projective algebraic curve $X / \mathbb{C}$ is defined over
+    $\overline{\mathbb{Q}}$ if and only if there exists a non-constant meromorphic function $\beta: X
+    \to \mathbb{P}^1$ (a Belyi map) ramified at most over $\{0, 1, \infty\}$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state belyi''s theorem: a smooth projective algebraic curve $x / \mathbb{c}$ is defined
+    over $\overline{\mathbb{q}}$ if and only if there exists a non-constant meromorphic function $\beta:
+    x \to \mathbb{p}^1$ (a belyi map) ramified at most over $\{0, 1, \infty\}$'
+- id: www-ams-org-notices-200307-what-is-pdf#002
+  text: Explain how the absolute Galois group $\operatorname{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})$ acts
+    faithfully on dessins d'enfants
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: explain how the absolute galois group $\operatorname{gal}(\overline{\mathbb{q}}/\mathbb{q})$
+    acts faithfully on dessins d'enfants

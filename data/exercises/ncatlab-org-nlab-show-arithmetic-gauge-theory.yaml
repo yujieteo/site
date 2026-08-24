@@ -1,0 +1,25 @@
+url: https://ncatlab.org/nlab/show/arithmetic+gauge+theory
+title: arithmetic gauge theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-arithmetic-gauge-theory#000
+  text: 'Describe the arithmetic gauge theory framework: view arithmetic curves $\operatorname{Spec}(\mathcal{O}_K)$
+    as 3-manifolds, and view Galois representations $\rho: G_K \to G$ as principal $G$-bundles with flat
+    connections'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'describe the arithmetic gauge theory framework: view arithmetic curves $\operatorname{spec}(\mathcal{o}_k)$
+    as 3-manifolds, and view galois representations $\rho: g_k \to g$ as principal $g$-bundles with flat
+    connections'
+- id: ncatlab-org-nlab-show-arithmetic-gauge-theory#001
+  text: Compare classical gauge fields (principal bundles with connections) to arithmetic gauge fields
+    (continuous homomorphisms of absolute Galois groups)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compare classical gauge fields (principal bundles with connections) to arithmetic gauge
+    fields (continuous homomorphisms of absolute galois groups)

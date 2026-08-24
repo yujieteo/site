@@ -23,13 +23,21 @@
     <main>
       <p>This is the personal website of Yu Jie Teo. Broadly interested in mathematics, computing, physics, and engineering. This site is a collection of notes, references, and technical material to revisit and develop over time.
 </p>
-    
-    <div class="search-row">
+    <div class="search-row" id="resource-filters-wrap" style="position:relative; display:flex; align-items:center; gap:0.6em; flex-wrap:wrap;">
       <input type="text" id="resource-search" class="search-box" placeholder="Search title or note...">
+      <button type="button" id="resource-filters-toggle" class="filters-toggle">Filters</button>
       <span class="result-count" id="resource-count">31 / 31</span>
+
+      <div id="resource-tagbar"
+           style="display:none; position:absolute; top:calc(100% + 6px); left:0;
+                  width:min(90vw, 420px); max-height:320px; overflow-y:auto;
+                  flex-wrap:wrap; gap:0.4em; box-sizing:border-box;
+                  background:#fff; border:1px solid #ddd; border-radius:8px;
+                  box-shadow:0 8px 24px rgba(0,0,0,0.12); padding:0.7em;
+                  z-index:50;">
+        <button class="tag active" data-tag="__all__" type="button">all</button><button class="tag" data-tag="mathematics" type="button">mathematics</button><button class="tag" data-tag="computational" type="button">computational</button><button class="tag" data-tag="systems" type="button">systems</button><button class="tag" data-tag="architecture" type="button">architecture</button><button class="tag" data-tag="engineering" type="button">engineering</button><button class="tag" data-tag="math" type="button">math</button><button class="tag" data-tag="physics" type="button">physics</button>
+      </div>
     </div>
-    
-    <div class="tag-filter-bar" id="resource-tagbar"><button class="tag active" data-tag="__all__" type="button">all</button><button class="tag" data-tag="architecture" type="button">architecture</button><button class="tag" data-tag="computational" type="button">computational</button><button class="tag" data-tag="engineering" type="button">engineering</button><button class="tag" data-tag="math" type="button">math</button><button class="tag" data-tag="mathematics" type="button">mathematics</button><button class="tag" data-tag="physics" type="button">physics</button><button class="tag" data-tag="systems" type="button">systems</button></div>
     <div id="resource-list">
         <div class="entry" data-tags="systems" data-search="python documentation official reference for the python language and standard library; the first language truly learnt. systems">
           <div class="entry-title"><a href="https://docs.python.org/3/">Python Documentation</a></div>
@@ -223,11 +231,13 @@
 (function() {
   const searchBox = document.getElementById('resource-search');
   const tagBar = document.getElementById('resource-tagbar');
+  const filtersToggle = document.getElementById('resource-filters-toggle');
   const entries = Array.from(document.querySelectorAll('#resource-list .entry[data-tags]'));
   const noResults = document.getElementById('resource-noresults');
   const countLabel = document.getElementById('resource-count');
   const total = entries.length;
   let activeTag = '__all__';
+  let panelOpen = false;
 
   function applyFilters() {
     const q = searchBox.value.trim().toLowerCase();
@@ -244,26 +254,45 @@
     countLabel.textContent = visibleCount + ' / ' + total;
   }
 
+  function setActiveTag(tag) {
+    activeTag = tag;
+    tagBar.querySelectorAll('button.tag').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.tag === tag);
+    });
+    applyFilters();
+  }
+
+  function togglePanel(forceOpen) {
+    panelOpen = typeof forceOpen === 'boolean' ? forceOpen : !panelOpen;
+    tagBar.style.display = panelOpen ? 'flex' : 'none';
+    filtersToggle.classList.toggle('open', panelOpen);
+  }
+
   searchBox.addEventListener('input', applyFilters);
+
+  filtersToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    togglePanel();
+  });
+
+  // Close the dropdown when clicking anywhere outside it.
+  document.addEventListener('click', function(e) {
+    if (panelOpen && !tagBar.contains(e.target) && e.target !== filtersToggle) {
+      togglePanel(false);
+    }
+  });
 
   tagBar.addEventListener('click', function(e) {
     const btn = e.target.closest('button.tag');
     if (!btn) return;
-    activeTag = btn.dataset.tag;
-    tagBar.querySelectorAll('button.tag').forEach(function(b) {
-      b.classList.toggle('active', b === btn);
-    });
-    applyFilters();
+    setActiveTag(btn.dataset.tag);
+    togglePanel(false);
   });
 
   document.getElementById('resource-list').addEventListener('click', function(e) {
     const chip = e.target.closest('.entry .tag[data-tag]');
     if (!chip) return;
-    activeTag = chip.dataset.tag;
-    tagBar.querySelectorAll('button.tag').forEach(function(b) {
-      b.classList.toggle('active', b.dataset.tag === activeTag);
-    });
-    applyFilters();
+    setActiveTag(chip.dataset.tag);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
@@ -271,7 +300,6 @@
 })();
 </script>
 
-    
     
     </main>
     <footer class="site-footer">

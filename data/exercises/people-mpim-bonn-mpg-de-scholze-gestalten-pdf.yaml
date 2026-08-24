@@ -1,0 +1,48 @@
+url: https://people.mpim-bonn.mpg.de/scholze/Gestalten.pdf
+title: Scholze's Gestalten
+note: 121 pages
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#000
+  text: State Gelfand duality between compact Hausdorff spaces and commutative $C^*$-algebras
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: state gelfand duality between compact hausdorff spaces and commutative $c^*$-algebras
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#001
+  text: State Stone duality between Stone spaces (profinite sets) and Boolean algebras
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: state stone duality between stone spaces (profinite sets) and boolean algebras
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#002
+  text: 'State the duality between affine schemes and commutative rings: $\mathbf{Aff} \cong \mathbf{CRing}^{\mathrm{op}}$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state the duality between affine schemes and commutative rings: $\mathbf{aff} \cong \mathbf{cring}^{\mathrm{op}}$'
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#003
+  text: Describe Tannakian reconstruction of an affine group scheme $G$ from the symmetric monoidal category
+    of its finite-dimensional representations $\mathbf{Rep}(G)$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: describe tannakian reconstruction of an affine group scheme $g$ from the symmetric monoidal
+    category of its finite-dimensional representations $\mathbf{rep}(g)$
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#004
+  text: Define Stefanich rings and describe Gestalten using canonical Grothendieck topologies and deloopings
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define stefanich rings and describe gestalten using canonical grothendieck topologies and
+    deloopings
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#005
+  text: Define $\kappa$-compactness, $\kappa$-filtered colimits, and $\kappa$-presentability in presentable
+    $\infty$-categories
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define $\kappa$-compactness, $\kappa$-filtered colimits, and $\kappa$-presentability in
+    presentable $\infty$-categories

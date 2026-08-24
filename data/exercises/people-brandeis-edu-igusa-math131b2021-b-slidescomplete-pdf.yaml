@@ -1,0 +1,39 @@
+url: https://people.brandeis.edu/~igusa/Math131b2021/B-SlidesComplete.pdf
+title: commutative algebra summary
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: people-brandeis-edu-igusa-math131b2021-b-slidescomplete-pdf#000
+  text: Compute $\mathbb{Q}(i) \cong \mathbb{Q}[x]/(x^2 + 1)$ as a degree 2 field extension of $\mathbb{Q}$
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: compute $\mathbb{q}(i) \cong \mathbb{q}[x]/(x^2 + 1)$ as a degree 2 field extension of
+    $\mathbb{q}$
+- id: people-brandeis-edu-igusa-math131b2021-b-slidescomplete-pdf#001
+  text: 'Prove that the degree $[K(\alpha) : K]$ equals the degree of the minimal polynomial of $\alpha$
+    over $K$'
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: 'prove that the degree $[k(\alpha) : k]$ equals the degree of the minimal polynomial of
+    $\alpha$ over $k$'
+- id: people-brandeis-edu-igusa-math131b2021-b-slidescomplete-pdf#002
+  text: 'Show that a finite field extension $L/K$ is separable if and only if the number of distinct $K$-embeddings
+    $L \hookrightarrow \overline{K}$ equals $[L : K]$'
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: 'show that a finite field extension $l/k$ is separable if and only if the number of distinct
+    $k$-embeddings $l \hookrightarrow \overline{k}$ equals $[l : k]$'

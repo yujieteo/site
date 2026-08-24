@@ -1,0 +1,31 @@
+url: https://people.mpim-bonn.mpg.de/scholze/Complex.pdf
+title: Scholze's Complex Geometry
+note: in 148 pages
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: people-mpim-bonn-mpg-de-scholze-complex-pdf#000
+  text: Construct the sheaf $\mathcal{O}$ on closed polydiscs in $\mathbb{C}^n$ and prove the vanishing
+    of higher sheaf cohomology using Cauchy's integral formula and the $\bar{\partial}$-operator
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: construct the sheaf $\mathcal{o}$ on closed polydiscs in $\mathbb{c}^n$ and prove the vanishing
+    of higher sheaf cohomology using cauchy's integral formula and the $\bar{\partial}$-operator
+- id: people-mpim-bonn-mpg-de-scholze-complex-pdf#001
+  text: Show that topological abelian groups do not form an abelian category (the first isomorphism theorem
+    fails), and contrast this with the abelian category of condensed abelian groups
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: show that topological abelian groups do not form an abelian category (the first isomorphism
+    theorem fails), and contrast this with the abelian category of condensed abelian groups
+- id: people-mpim-bonn-mpg-de-scholze-complex-pdf#002
+  text: Define condensed sets as sheaves on the site of compact Hausdorff spaces with finite joint surjective
+    covers
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define condensed sets as sheaves on the site of compact hausdorff spaces with finite joint
+    surjective covers

@@ -1,0 +1,18 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides23.pdf
+title: elliptic curves lecture 23
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides23-pdf#000
+  text: Prove that every rational map from a smooth curve to a projective variety extends uniquely to
+    a regular morphism
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: prove that every rational map from a smooth curve to a projective variety extends uniquely
+    to a regular morphism

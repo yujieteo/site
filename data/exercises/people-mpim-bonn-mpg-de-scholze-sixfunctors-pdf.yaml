@@ -1,0 +1,55 @@
+url: https://people.mpim-bonn.mpg.de/scholze/SixFunctors.pdf
+title: Scholze's six functor formalisms
+note: in 111 pages
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: people-mpim-bonn-mpg-de-scholze-sixfunctors-pdf#000
+  text: '(Warm up, Schapira) Describe the six-functor formalism for ordinary functions: tensor product
+    (pointwise product), direct image with compact support (integration), pullback (composition with $f$),
+    and exceptional pullback'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(warm up, schapira) describe the six-functor formalism for ordinary functions: tensor
+    product (pointwise product), direct image with compact support (integration), pullback (composition
+    with $f$), and exceptional pullback'
+- id: people-mpim-bonn-mpg-de-scholze-sixfunctors-pdf#001
+  text: Define the base change isomorphism $g^* f_* \cong f'_* g'^*$ for a Cartesian diagram in a six-functor
+    formalism
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define the base change isomorphism $g^* f_* \cong f'_* g'^*$ for a cartesian diagram in
+    a six-functor formalism
+- id: people-mpim-bonn-mpg-de-scholze-sixfunctors-pdf#002
+  text: Formulate the projection formula $f_!(A \otimes f^* B) \cong f_! A \otimes B$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: formulate the projection formula $f_!(a \otimes f^* b) \cong f_! a \otimes b$
+- id: people-mpim-bonn-mpg-de-scholze-sixfunctors-pdf#003
+  text: Define the category of correspondences $\mathbf{Corr}(\mathcal{C}, E)$ and composition of correspondences
+    via fiber products
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define the category of correspondences $\mathbf{corr}(\mathcal{c}, e)$ and composition
+    of correspondences via fiber products
+- id: people-mpim-bonn-mpg-de-scholze-sixfunctors-pdf#004
+  text: '(Proper Base Change) Prove that for a proper morphism $f: X \to Y$, the stalk $(f_* \mathcal{F})_y$
+    is isomorphic to $H^0(X_y, \mathcal{F}|_{X_y})$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(proper base change) prove that for a proper morphism $f: x \to y$, the stalk $(f_* \mathcal{f})_y$
+    is isomorphic to $h^0(x_y, \mathcal{f}|_{x_y})$'
+- id: people-mpim-bonn-mpg-de-scholze-sixfunctors-pdf#005
+  text: 'Formulate Verdier duality: the right adjoint $f^!$ to $f_!$ satisfying $\mathbf{R}\operatorname{Hom}(f_!
+    A, B) \cong \mathbf{R}\operatorname{Hom}(A, f^! B)$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'formulate verdier duality: the right adjoint $f^!$ to $f_!$ satisfying $\mathbf{r}\operatorname{hom}(f_!
+    a, b) \cong \mathbf{r}\operatorname{hom}(a, f^! b)$'

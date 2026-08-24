@@ -1,0 +1,16 @@
+url: https://www.its.caltech.edu/~matilde/IntroNCGCaltech1.pdf
+title: Marcolli's summary of differential geometry in 33 slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: www-its-caltech-edu-matilde-introncgcaltech1-pdf#000
+  text: Define smooth manifolds via smooth atlases and transition functions
+  hint: null
+  locator:
+    kind: slide
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: define smooth manifolds via smooth atlases and transition functions

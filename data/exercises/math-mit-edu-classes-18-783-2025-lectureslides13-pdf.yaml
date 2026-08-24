@@ -1,0 +1,18 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides13.pdf
+title: elliptic curves lecture 13
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides13-pdf#000
+  text: Distinguish ordinary elliptic curves ($E[p] \cong \mathbb{Z}/p\mathbb{Z}$) and supersingular elliptic
+    curves ($E[p] = 0$) in characteristic $p$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: distinguish ordinary elliptic curves ($e[p] \cong \mathbb{z}/p\mathbb{z}$) and supersingular
+    elliptic curves ($e[p] = 0$) in characteristic $p$

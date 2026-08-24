@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
 """Render YAML data files into a static site: a home page of resources,
 a papers page, and an exercises page, all with live search and
-tag/category filtering."""
+tag/category filtering.
+
+Tag filtering UI: tags are hidden behind a single "Filters" button
+(next to the search box), matching the theoremsearch.com pattern of a
+compact "Filters | Search" bar rather than a wall of always-visible tag
+buttons. Clicking "Filters" opens a small anchored dropdown panel with
+tags sorted most-common-first. The panel is self-contained (fixed
+width, wraps, scrolls) so it can't be broken by unrelated CSS elsewhere
+on the page.
+"""
 
 import os
+import re
 from collections import Counter
+from urllib.parse import urlparse
 
 import yaml
 
@@ -13,16 +24,19 @@ DATA = os.path.join(ROOT, "data")
 TEMPLATES = os.path.join(ROOT, "templates")
 OUT = os.path.join(ROOT, "site")
 
+
 FILTER_SCRIPT = """
 <script>
 (function() {{
   const searchBox = document.getElementById('{search_id}');
   const tagBar = document.getElementById('{tagbar_id}');
+  const filtersToggle = document.getElementById('{toggle_id}');
   const entries = Array.from(document.querySelectorAll('#{list_id} .entry[data-tags]'));
   const noResults = document.getElementById('{noresults_id}');
   const countLabel = document.getElementById('{count_id}');
   const total = entries.length;
   let activeTag = '__all__';
+  let panelOpen = false;
 
   function applyFilters() {{
     const q = searchBox.value.trim().toLowerCase();
@@ -39,91 +53,51 @@ FILTER_SCRIPT = """
     countLabel.textContent = visibleCount + ' / ' + total;
   }}
 
+  function setActiveTag(tag) {{
+    activeTag = tag;
+    tagBar.querySelectorAll('button.tag').forEach(function(b) {{
+      b.classList.toggle('active', b.dataset.tag === tag);
+    }});
+    applyFilters();
+  }}
+
+  function togglePanel(forceOpen) {{
+    panelOpen = typeof forceOpen === 'boolean' ? forceOpen : !panelOpen;
+    tagBar.style.display = panelOpen ? 'flex' : 'none';
+    filtersToggle.classList.toggle('open', panelOpen);
+  }}
+
   searchBox.addEventListener('input', applyFilters);
+
+  filtersToggle.addEventListener('click', function(e) {{
+    e.stopPropagation();
+    togglePanel();
+  }});
+
+  // Close the dropdown when clicking anywhere outside it.
+  document.addEventListener('click', function(e) {{
+    if (panelOpen && !tagBar.contains(e.target) && e.target !== filtersToggle) {{
+      togglePanel(false);
+    }}
+  }});
 
   tagBar.addEventListener('click', function(e) {{
     const btn = e.target.closest('button.tag');
     if (!btn) return;
-    activeTag = btn.dataset.tag;
-    tagBar.querySelectorAll('button.tag').forEach(function(b) {{
-      b.classList.toggle('active', b === btn);
-    }});
-    applyFilters();
+    setActiveTag(btn.dataset.tag);
+    togglePanel(false);
   }});
 
   document.getElementById('{list_id}').addEventListener('click', function(e) {{
     const chip = e.target.closest('.entry .tag[data-tag]');
     if (!chip) return;
-    activeTag = chip.dataset.tag;
-    tagBar.querySelectorAll('button.tag').forEach(function(b) {{
-      b.classList.toggle('active', b.dataset.tag === activeTag);
-    }});
-    applyFilters();
+    setActiveTag(chip.dataset.tag);
     window.scrollTo({{ top: 0, behavior: 'smooth' }});
   }});
 
   applyFilters();
 }})();
 </script>
-"""
-
-# Toggle behavior for a collapsed-by-default tag/filter bar, inspired by
-# theoremsearch.com's single "Filters" disclosure button.
-FILTERS_TOGGLE_SCRIPT = """
-<script>
-(function() {{
-  const toggle = document.getElementById('{toggle_id}');
-  const tagBar = document.getElementById('{tagbar_id}');
-  if (!toggle || !tagBar) return;
-  toggle.addEventListener('click', function() {{
-    const isOpen = tagBar.classList.toggle('open');
-    toggle.classList.toggle('open', isOpen);
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  }});
-}})();
-</script>
-"""
-
-COLLAPSIBLE_FILTER_STYLE = """
-<style>
-.filters-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  background: none;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 0.35em 0.8em;
-  font-size: 0.9em;
-  cursor: pointer;
-  margin: 0.5em 0;
-}
-.filters-toggle-btn .chevron {
-  transition: transform 0.15s ease;
-  display: inline-block;
-}
-.filters-toggle-btn.open .chevron {
-  transform: rotate(180deg);
-}
-.tag-filter-bar.collapsible {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.2s ease, opacity 0.2s ease;
-  margin: 0;
-}
-.tag-filter-bar.collapsible.open {
-  max-height: 400px;
-  overflow-y: auto;
-  opacity: 1;
-  margin: 0.5em 0 1em;
-}
-.tag-count {
-  opacity: 0.6;
-  font-size: 0.85em;
-  margin-left: 0.25em;
-}
-</style>
 """
 
 
@@ -156,74 +130,62 @@ def render_page(title, content, root="", tagline="", name="", nav_home="", nav_p
     )
 
 
-def render_filterable_list(rows_html, tag_buttons_html, id_prefix, search_placeholder,
-                            empty_message, total, collapsible_filters=False):
+def render_tag_bar(sorted_tags, all_label="all"):
+    """sorted_tags: list of (tag_value, label) already sorted most-common-first."""
+    buttons = [f'<button class="tag active" data-tag="__all__" type="button">{all_label}</button>']
+    for tag, label in sorted_tags:
+        buttons.append(f'<button class="tag" data-tag="{tag}" type="button">{label}</button>')
+    return "".join(buttons)
+
+
+def render_filterable_list(rows_html, tag_bar_html, id_prefix, search_placeholder,
+                            empty_message, total):
     search_id = f"{id_prefix}-search"
     tagbar_id = f"{id_prefix}-tagbar"
     list_id = f"{id_prefix}-list"
     noresults_id = f"{id_prefix}-noresults"
     count_id = f"{id_prefix}-count"
     toggle_id = f"{id_prefix}-filters-toggle"
+    wrap_id = f"{id_prefix}-filters-wrap"
 
     script = FILTER_SCRIPT.format(
         search_id=search_id, tagbar_id=tagbar_id, list_id=list_id,
-        noresults_id=noresults_id, count_id=count_id,
+        noresults_id=noresults_id, count_id=count_id, toggle_id=toggle_id,
     )
 
-    if collapsible_filters:
-        # Tag bar starts collapsed; a single "Filters" button reveals it,
-        # instead of rendering every tag inline on page load.
-        toggle_html = (
-            f'<button type="button" id="{toggle_id}" class="filters-toggle-btn" '
-            f'aria-expanded="false">Filters <span class="chevron">\u25be</span></button>'
-        )
-        tagbar_class = "tag-filter-bar collapsible"
-        toggle_script = FILTERS_TOGGLE_SCRIPT.format(toggle_id=toggle_id, tagbar_id=tagbar_id)
-        style_block = COLLAPSIBLE_FILTER_STYLE
-    else:
-        toggle_html = ""
-        tagbar_class = "tag-filter-bar"
-        toggle_script = ""
-        style_block = ""
-
+    # The panel's positioning/sizing is written inline (rather than relying
+    # on a `.tag-filter-bar` rule in static/style.css) so it can't inherit
+    # a no-wrap / overflow-x-auto rule from elsewhere and run off infinitely
+    # to the right. It behaves as a fixed-width, wrapping, scrollable
+    # dropdown anchored under the search row.
     return f"""
-    {style_block}
-    <div class="search-row">
+    <div class="search-row" id="{wrap_id}" style="position:relative; display:flex; align-items:center; gap:0.6em; flex-wrap:wrap;">
       <input type="text" id="{search_id}" class="search-box" placeholder="{search_placeholder}">
+      <button type="button" id="{toggle_id}" class="filters-toggle">Filters</button>
       <span class="result-count" id="{count_id}">{total} / {total}</span>
+
+      <div id="{tagbar_id}"
+           style="display:none; position:absolute; top:calc(100% + 6px); left:0;
+                  width:min(90vw, 420px); max-height:320px; overflow-y:auto;
+                  flex-wrap:wrap; gap:0.4em; box-sizing:border-box;
+                  background:#fff; border:1px solid #ddd; border-radius:8px;
+                  box-shadow:0 8px 24px rgba(0,0,0,0.12); padding:0.7em;
+                  z-index:50;">
+        {tag_bar_html}
+      </div>
     </div>
-    {toggle_html}
-    <div class="{tagbar_class}" id="{tagbar_id}">{tag_buttons_html}</div>
     <div id="{list_id}">{rows_html}</div>
     <div class="no-results" id="{noresults_id}">{empty_message}</div>
     {script}
-    {toggle_script}
     """
 
 
-def render_link_list(entries, id_prefix, search_placeholder, empty_message,
-                      collapsible_filters=False, sort_tags_by_frequency=False):
+def render_link_list(entries, id_prefix, search_placeholder, empty_message):
     """Build the filterable list for {title, url, category, note} entries.
-
-    If sort_tags_by_frequency is True, tag/category buttons are ordered by
-    how many entries use them (most common first) instead of alphabetically,
-    and each button shows a count badge.
-    """
+    Tags (categories) sorted most-common-first (ties broken alphabetically)."""
     counts = Counter(e["category"] for e in entries)
-
-    if sort_tags_by_frequency:
-        categories = [c for c, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))]
-    else:
-        categories = sorted(counts.keys())
-
-    def label(c):
-        if sort_tags_by_frequency:
-            return f'{c} <span class="tag-count">{counts[c]}</span>'
-        return c
-
-    tag_buttons = '<button class="tag active" data-tag="__all__" type="button">all</button>' + "".join(
-        f'<button class="tag" data-tag="{c}" type="button">{label(c)}</button>' for c in categories
-    )
+    sorted_cats = [c for c, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))]
+    tag_bar_html = render_tag_bar([(c, c) for c in sorted_cats])
 
     rows = ""
     for e in entries:
@@ -237,33 +199,32 @@ def render_link_list(entries, id_prefix, search_placeholder, empty_message,
         </div>
         """
 
-    return render_filterable_list(
-        rows, tag_buttons, id_prefix, search_placeholder, empty_message, len(entries),
-        collapsible_filters=collapsible_filters,
-    )
+    return render_filterable_list(rows, tag_bar_html, id_prefix, search_placeholder,
+                                   empty_message, len(entries))
 
 
 def render_exercise_list(records):
     """Build the filterable list for exercise records loaded from
     data/exercises. Filter tags = resource slugs (title as label);
     each exercise is its own entry so search operates at exercise
-    granularity, but filtering happens at resource granularity."""
+    granularity, but filtering happens at resource granularity.
+    Resources sorted most-common-first by exercise count."""
 
     def slug_for(record):
-        import re
-        from urllib.parse import urlparse
         parsed = urlparse(record["url"])
         s = re.sub(r"[^a-zA-Z0-9]+", "-", (parsed.netloc + parsed.path)).strip("-").lower()
         return s[:60] or "resource"
 
-    tag_defs = []  # (slug, label)
+    tag_defs = {}  # slug -> label
     rows = ""
     total = 0
+    resource_counts = Counter()
 
     for record in records:
         slug = slug_for(record)
         label = record.get("title") or record["url"]
-        tag_defs.append((slug, label))
+        tag_defs[slug] = label
+        resource_counts[slug] += len(record.get("exercises", []))
 
         for ex in record.get("exercises", []):
             total += 1
@@ -295,14 +256,13 @@ def render_exercise_list(records):
             </div>
             """
 
-    tag_defs.sort(key=lambda t: t[1].lower())
-    tag_buttons = '<button class="tag active" data-tag="__all__" type="button">all resources</button>' + "".join(
-        f'<button class="tag" data-tag="{slug}" type="button">{label}</button>'
-        for slug, label in tag_defs
-    )
+    sorted_slugs = [
+        s for s, _ in sorted(resource_counts.items(), key=lambda kv: (-kv[1], tag_defs[kv[0]].lower()))
+    ]
+    tag_bar_html = render_tag_bar([(s, tag_defs[s]) for s in sorted_slugs], all_label="all resources")
 
     return render_filterable_list(
-        rows, tag_buttons, "exercise",
+        rows, tag_bar_html, "exercise",
         "Search exercises, hints, or resource titles...",
         "No exercises match your search.",
         total,
@@ -328,8 +288,6 @@ def build_papers(cv, papers):
         papers, "paper",
         "Search title or note...",
         "No papers match your search.",
-        collapsible_filters=True,
-        sort_tags_by_frequency=True,
     )
     content = f'<h2 class="section-title">Papers</h2>{body}'
     return render_page(

@@ -1,0 +1,44 @@
+url: https://opus.bibliothek.uni-augsburg.de/opus4/files/42513/notes.pdf
+title: Blechschmidt's thesis on the internal language of schemes
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#000
+  text: 'Explain the internal translation in $\operatorname{Sh}(X)$: an $\mathcal{O}_X$-module $\mathcal{F}$
+    is of finite type if and only if it is internally a finitely generated module over the ring object
+    $\mathcal{O}_X$'
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: 'explain the internal translation in $\operatorname{sh}(x)$: an $\mathcal{o}_x$-module
+    $\mathcal{f}$ is of finite type if and only if it is internally a finitely generated module over the
+    ring object $\mathcal{o}_x$'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#001
+  text: 'Translate Kripke-Joyal semantics for open sets $U \subseteq X$: $U \Vdash \phi \land \psi \iff
+    (U \Vdash \phi \text{ and } U \Vdash \psi)$, and $U \Vdash \exists x \, \phi(x) \iff$ there is an
+    open cover $U = \bigcup U_i$ with sections $s_i \in \mathcal{F}(U_i)$ such that $U_i \Vdash \phi(s_i)$'
+  hint: null
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 0
+  search_text: 'translate kripke-joyal semantics for open sets $u \subseteq x$: $u \vdash \phi \land \psi
+    \iff (u \vdash \phi \text{ and } u \vdash \psi)$, and $u \vdash \exists x \, \phi(x) \iff$ there is
+    an open cover $u = \bigcup u_i$ with sections $s_i \in \mathcal{f}(u_i)$ such that $u_i \vdash \phi(s_i)$'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#002
+  text: 'Formulate the internal property that $\mathcal{O}_X$ is a local ring: $1 \ne 0$ and $x + y \text{
+    is invertible} \implies (x \text{ is invertible} \lor y \text{ is invertible})$'
+  hint: null
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 0
+  search_text: 'formulate the internal property that $\mathcal{o}_x$ is a local ring: $1 \ne 0$ and $x
+    + y \text{ is invertible} \implies (x \text{ is invertible} \lor y \text{ is invertible})$'

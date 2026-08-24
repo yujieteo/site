@@ -1,0 +1,67 @@
+url: https://www.math.purdue.edu/~jlipman/MA598/Serre-Course%20in%20Arithmetic.pdf
+title: Serre's A Course in Arithmetic
+note: Chapters I to VI
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-math-purdue-edu-jlipman-ma598-serre-course-20in-20arithmetic-pdf#000
+  text: '(Chapter I, Theorem 2) Compute the order of the multiplicative group of a finite field: $|\mathbb{F}_q^\times|
+    = q - 1$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(chapter i, theorem 2) compute the order of the multiplicative group of a finite field:
+    $|\mathbb{f}_q^\times| = q - 1$'
+- id: www-math-purdue-edu-jlipman-ma598-serre-course-20in-20arithmetic-pdf#001
+  text: '(Chapter I, Theorem 3) State the Chevalley-Warning Theorem: if $f_\alpha \in \mathbb{F}_q[X_1,
+    \dots, X_n]$ satisfy $\sum \deg(f_\alpha) < n$, then the number of common zeros $|V|$ is $0 \pmod
+    p$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(chapter i, theorem 3) state the chevalley-warning theorem: if $f_\alpha \in \mathbb{f}_q[x_1,
+    \dots, x_n]$ satisfy $\sum \deg(f_\alpha) < n$, then the number of common zeros $|v|$ is $0 \pmod
+    p$'
+- id: www-math-purdue-edu-jlipman-ma598-serre-course-20in-20arithmetic-pdf#002
+  text: (Chapter I, Theorem 4) Define the Legendre symbol $\left(\frac{x}{p}\right) \equiv x^{(p-1)/2}
+    \pmod p$ for $x \in \mathbb{F}_p^\times$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (chapter i, theorem 4) define the legendre symbol $\left(\frac{x}{p}\right) \equiv x^{(p-1)/2}
+    \pmod p$ for $x \in \mathbb{f}_p^\times$
+- id: www-math-purdue-edu-jlipman-ma598-serre-course-20in-20arithmetic-pdf#003
+  text: '(Chapter I, Theorem 5) State the Law of Quadratic Reciprocity: $\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)
+    = (-1)^{\frac{p-1}{2}\frac{q-1}{2}}$ for odd primes $p, q$, and compute the Gauss sum proof'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(chapter i, theorem 5) state the law of quadratic reciprocity: $\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)
+    = (-1)^{\frac{p-1}{2}\frac{q-1}{2}}$ for odd primes $p, q$, and compute the gauss sum proof'
+- id: www-math-purdue-edu-jlipman-ma598-serre-course-20in-20arithmetic-pdf#004
+  text: (Chapter II) Define the field of $p$-adic numbers $\mathbb{Q}_p$ and the ring of $p$-adic integers
+    $\mathbb{Z}_p = \varprojlim \mathbb{Z}/p^n\mathbb{Z}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (chapter ii) define the field of $p$-adic numbers $\mathbb{q}_p$ and the ring of $p$-adic
+    integers $\mathbb{z}_p = \varprojlim \mathbb{z}/p^n\mathbb{z}$
+- id: www-math-purdue-edu-jlipman-ma598-serre-course-20in-20arithmetic-pdf#005
+  text: (Chapter III) Define the Hilbert symbol $(a, b)_v \in \{\pm 1\}$ over local fields and prove Hilbert's
+    reciprocity law $\prod_v (a, b)_v = 1$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (chapter iii) define the hilbert symbol $(a, b)_v \in \{\pm 1\}$ over local fields and
+    prove hilbert's reciprocity law $\prod_v (a, b)_v = 1$
+- id: www-math-purdue-edu-jlipman-ma598-serre-course-20in-20arithmetic-pdf#006
+  text: '(Chapter IV) State the Hasse-Minkowski Theorem: a quadratic form over $\mathbb{Q}$ has a non-trivial
+    zero in $\mathbb{Q}$ if and only if it has a non-trivial zero in $\mathbb{R}$ and in $\mathbb{Q}_p$
+    for all primes $p$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(chapter iv) state the hasse-minkowski theorem: a quadratic form over $\mathbb{q}$ has
+    a non-trivial zero in $\mathbb{q}$ if and only if it has a non-trivial zero in $\mathbb{r}$ and in
+    $\mathbb{q}_p$ for all primes $p$'

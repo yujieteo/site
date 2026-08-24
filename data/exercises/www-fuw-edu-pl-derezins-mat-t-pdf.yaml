@@ -1,0 +1,22 @@
+url: https://www.fuw.edu.pl/~derezins/mat-t.pdf
+title: general topology
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-fuw-edu-pl-derezins-mat-t-pdf#000
+  text: Compute the cardinality of open sets in the discrete topology ($2^X$) and indiscrete topology
+    ($\{\emptyset, X\}$)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the cardinality of open sets in the discrete topology ($2^x$) and indiscrete topology
+    ($\{\emptyset, x\}$)
+- id: www-fuw-edu-pl-derezins-mat-t-pdf#001
+  text: Explain why topologies are defined with arbitrary unions and finite intersections of open sets
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: explain why topologies are defined with arbitrary unions and finite intersections of open
+    sets

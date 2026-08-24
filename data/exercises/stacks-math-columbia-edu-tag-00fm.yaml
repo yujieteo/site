@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/00FM
+title: Noetherian rings
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-00fm#000
+  text: '(Lemma 10.31.1) State the Hilbert Basis Theorem: if $R$ is Noetherian, then the polynomial ring
+    $R[X]$ and power series ring $R[[X]]$ are Noetherian'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(lemma 10.31.1) state the hilbert basis theorem: if $r$ is noetherian, then the polynomial
+    ring $r[x]$ and power series ring $r[[x]]$ are noetherian'

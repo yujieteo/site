@@ -1,0 +1,17 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides20.pdf
+title: elliptic curves lecture 20
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides20-pdf#000
+  text: Define the modular polynomial $\Phi_N(X, Y)$ parameterizing pairs of $N$-isogenous elliptic curves
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: define the modular polynomial $\phi_n(x, y)$ parameterizing pairs of $n$-isogenous elliptic
+    curves

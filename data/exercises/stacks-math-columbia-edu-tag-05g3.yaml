@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/05G3
+title: base change
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-05g3#000
+  text: (Definition 10.14.1) Define the base change of an $R$-algebra $S$ along $R \to R'$ via the tensor
+    product $S' = S \otimes_R R'$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (definition 10.14.1) define the base change of an $r$-algebra $s$ along $r \to r'$ via
+    the tensor product $s' = s \otimes_r r'$

@@ -1,0 +1,25 @@
+url: https://www.ams.org/notices/200805/tx080500586p.pdf
+title: What is a Toric Variety? by David Cox
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ams-org-notices-200805-tx080500586p-pdf#000
+  text: Define an affine toric variety $X_\sigma = \operatorname{Spec}(\mathbb{C}[S_\sigma])$ from a strongly
+    convex rational polyhedral cone $\sigma \subset N_\mathbb{R}$, and a general toric variety $X_\Sigma$
+    from a fan $\Sigma$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define an affine toric variety $x_\sigma = \operatorname{spec}(\mathbb{c}[s_\sigma])$ from
+    a strongly convex rational polyhedral cone $\sigma \subset n_\mathbb{r}$, and a general toric variety
+    $x_\sigma$ from a fan $\sigma$
+- id: www-ams-org-notices-200805-tx080500586p-pdf#001
+  text: 'Connect projective toric varieties to lattice polyhedra $P$ and moment maps $\mu: X_P \to P$
+    in symplectic geometry with fiber $T^n = (S^1)^n$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'connect projective toric varieties to lattice polyhedra $p$ and moment maps $\mu: x_p
+    \to p$ in symplectic geometry with fiber $t^n = (s^1)^n$'

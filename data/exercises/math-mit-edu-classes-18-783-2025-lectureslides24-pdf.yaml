@@ -1,0 +1,18 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides24.pdf
+title: elliptic curves lecture 24
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides24-pdf#000
+  text: Define modular forms of weight $k$ for $\Gamma \le \mathrm{SL}_2(\mathbb{Z})$ satisfying $f\left(\frac{a\tau+b}{c\tau+d}\right)
+    = (c\tau+d)^k f(\tau)$ and holomorphy at cusps
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: define modular forms of weight $k$ for $\gamma \le \mathrm{sl}_2(\mathbb{z})$ satisfying
+    $f\left(\frac{a\tau+b}{c\tau+d}\right) = (c\tau+d)^k f(\tau)$ and holomorphy at cusps

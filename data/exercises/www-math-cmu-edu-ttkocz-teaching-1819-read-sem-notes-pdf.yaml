@@ -1,0 +1,23 @@
+url: https://www.math.cmu.edu/~ttkocz/teaching/1819/read-sem-notes.pdf
+title: Minkowski's theorem and lattice points
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-math-cmu-edu-ttkocz-teaching-1819-read-sem-notes-pdf#000
+  text: 'State Minkowski''s Theorem: any symmetric convex body $C \subset \mathbb{R}^d$ with $\operatorname{vol}(C)
+    > 2^d$ contains a non-zero lattice point in $\mathbb{Z}^d$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state minkowski''s theorem: any symmetric convex body $c \subset \mathbb{r}^d$ with $\operatorname{vol}(c)
+    > 2^d$ contains a non-zero lattice point in $\mathbb{z}^d$'
+- id: www-math-cmu-edu-ttkocz-teaching-1819-read-sem-notes-pdf#001
+  text: Prove Fermat's Two-Square Theorem (primes $p \equiv 1 \pmod 4$ are sums of two squares) using
+    Minkowski's theorem
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: prove fermat's two-square theorem (primes $p \equiv 1 \pmod 4$ are sums of two squares)
+    using minkowski's theorem

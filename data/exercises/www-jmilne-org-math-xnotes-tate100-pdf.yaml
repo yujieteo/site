@@ -1,0 +1,53 @@
+url: https://www.jmilne.org/math/xnotes/Tate100.pdf
+title: arithmetic duality summary by Milne in 23 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-jmilne-org-math-xnotes-tate100-pdf#000
+  text: Define the Weil-Châtelet group $\operatorname{WC}(A/K) \cong H^1(K, A)$ classifying principal
+    homogeneous spaces (torsors) for an abelian variety $A / K$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: define the weil-châtelet group $\operatorname{wc}(a/k) \cong h^1(k, a)$ classifying principal
+    homogeneous spaces (torsors) for an abelian variety $a / k$
+- id: www-jmilne-org-math-xnotes-tate100-pdf#001
+  text: 'State the Tate Local Duality theorem: for an abelian variety $A$ over a local field $K$, the
+    cup product pairing $H^1(K, A) \times A''(K) \to H^2(K, \mathbb{G}_m) \cong \mathbb{Q}/\mathbb{Z}$
+    is a perfect pairing of locally compact groups, where $A''$ is the dual abelian variety'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: 'state the tate local duality theorem: for an abelian variety $a$ over a local field $k$,
+    the cup product pairing $h^1(k, a) \times a''(k) \to h^2(k, \mathbb{g}_m) \cong \mathbb{q}/\mathbb{z}$
+    is a perfect pairing of locally compact groups, where $a''$ is the dual abelian variety'
+- id: www-jmilne-org-math-xnotes-tate100-pdf#002
+  text: 'State the Barsotti-Weil formula: the dual abelian variety $A''$ represents the functor $\operatorname{Ext}^1(A,
+    \mathbb{G}_m)$ of extensions of $A$ by $\mathbb{G}_m$'
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: 'state the barsotti-weil formula: the dual abelian variety $a''$ represents the functor
+    $\operatorname{ext}^1(a, \mathbb{g}_m)$ of extensions of $a$ by $\mathbb{g}_m$'
+- id: www-jmilne-org-math-xnotes-tate100-pdf#003
+  text: Formulate the Poitou-Tate 9-term exact sequence of global arithmetic duality for Galois cohomology
+    over number fields
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: formulate the poitou-tate 9-term exact sequence of global arithmetic duality for galois
+    cohomology over number fields

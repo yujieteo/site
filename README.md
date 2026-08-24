@@ -22,6 +22,7 @@ pip3 install -r requirements.txt
 python3 scripts/validate.py
 python3 scripts/build.py
 python3 scripts/parse_notes.py
+python3 scripts/parse_exercise.py
 python3 scripts/clean_notes.py
 open site/index.html
 ```

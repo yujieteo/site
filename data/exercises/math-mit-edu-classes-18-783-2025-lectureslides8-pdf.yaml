@@ -1,0 +1,16 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides8.pdf
+title: elliptic curves lecture 8
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides8-pdf#000
+  text: 'State the Prime Number Theorem: $\pi(x) \sim \frac{x}{\ln x}$'
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: 'state the prime number theorem: $\pi(x) \sim \frac{x}{\ln x}$'

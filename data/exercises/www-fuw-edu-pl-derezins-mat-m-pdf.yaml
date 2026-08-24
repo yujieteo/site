@@ -1,0 +1,15 @@
+url: https://www.fuw.edu.pl/~derezins/mat-m.pdf
+title: measure theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-fuw-edu-pl-derezins-mat-m-pdf#000
+  text: Define rings and $\sigma$-algebras of sets and verify that every field of sets is a ring closed
+    under complements
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define rings and $\sigma$-algebras of sets and verify that every field of sets is a ring
+    closed under complements

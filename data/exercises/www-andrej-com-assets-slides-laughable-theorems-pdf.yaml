@@ -1,0 +1,22 @@
+url: https://www.andrej.com/assets/slides/laughable-theorems.pdf
+title: Lawvere's fixed point theorem
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: www-andrej-com-assets-slides-laughable-theorems-pdf#000
+  text: 'State and prove Lawvere''s Fixed Point Theorem: if there exists a point-surjective morphism $e:
+    A \to Y^A$ in a Cartesian closed category, then every endomorphism $f: Y \to Y$ has a fixed point
+    $y \in Y$ such that $f(y) = y$. Deduce Cantor''s theorem, Russell''s paradox, and Gödel''s incompleteness
+    theorem as corollaries'
+  hint: null
+  locator:
+    kind: slide
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: 'state and prove lawvere''s fixed point theorem: if there exists a point-surjective morphism
+    $e: a \to y^a$ in a cartesian closed category, then every endomorphism $f: y \to y$ has a fixed point
+    $y \in y$ such that $f(y) = y$. deduce cantor''s theorem, russell''s paradox, and gödel''s incompleteness
+    theorem as corollaries'

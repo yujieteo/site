@@ -32,7 +32,7 @@ BULLET_RE = re.compile(r"^\s*-\s*(.*)$")
 # Matches a leading locator marker like "(Page 4)" or "(Slide 12)" or
 # "(Page 4, Exercise 1.2.3.)" -- we only pull out the first Page/Slide token.
 LOCATOR_RE = re.compile(
-    r"^\(\s*(Page|Slide)\s*([0-9]+[A-Za-z]?(?:\s*/\s*[0-9]+)?)\s*(?:[,)].*?)?\)\s*",
+    r"^\(\s*(Page|Slide)\s*([0-9]+[A-Za-z]?(?:\s*/\s*[0-9]+)?)\s*(?:,[^)]*)?\)\s*",
     re.IGNORECASE,
 )
 

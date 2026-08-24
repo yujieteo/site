@@ -1,0 +1,31 @@
+url: https://stacks.math.columbia.edu/download/intersection.pdf
+title: intersection theory in Stacks
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: stacks-math-columbia-edu-download-intersection-pdf#000
+  text: 'Define Serre''s Tor-formula for the intersection multiplicity of two subvarieties $V, W \subseteq
+    X$: $i(V, W; Z) = \sum_{i=0}^{\dim X} (-1)^i \operatorname{length}_{\mathcal{O}_{X, Z}}\left(\operatorname{Tor}_i^{\mathcal{O}_{X,
+    Z}}(\mathcal{O}_{V, Z}, \mathcal{O}_{W, Z})\right)$'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: 'define serre''s tor-formula for the intersection multiplicity of two subvarieties $v,
+    w \subseteq x$: $i(v, w; z) = \sum_{i=0}^{\dim x} (-1)^i \operatorname{length}_{\mathcal{o}_{x, z}}\left(\operatorname{tor}_i^{\mathcal{o}_{x,
+    z}}(\mathcal{o}_{v, z}, \mathcal{o}_{w, z})\right)$'
+- id: stacks-math-columbia-edu-download-intersection-pdf#001
+  text: Define the group of $k$-cycles $Z_k(X)$ as the free abelian group on $k$-dimensional closed subvarieties,
+    and define rational equivalence to obtain Chow groups $A_k(X)$
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: define the group of $k$-cycles $z_k(x)$ as the free abelian group on $k$-dimensional closed
+    subvarieties, and define rational equivalence to obtain chow groups $a_k(x)$

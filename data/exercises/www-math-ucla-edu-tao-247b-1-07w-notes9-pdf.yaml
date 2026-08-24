@@ -1,0 +1,40 @@
+url: https://www.math.ucla.edu/~tao/247b.1.07w/notes9.pdf
+title: Fourier analysis on finite abelian groups
+note: Tao harmonic analysis
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-math-ucla-edu-tao-247b-1-07w-notes9-pdf#000
+  text: 'Define normalized Haar measure on a finite group $G$: $\int_G f(x) \, dx = \frac{1}{|G|} \sum_{x
+    \in G} f(x)$'
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: 'define normalized haar measure on a finite group $g$: $\int_g f(x) \, dx = \frac{1}{|g|}
+    \sum_{x \in g} f(x)$'
+- id: www-math-ucla-edu-tao-247b-1-07w-notes9-pdf#001
+  text: State the Gelfand-Mazur theorem for finite abelian groups, showing that all irreducible translation-invariant
+    subspaces are 1-dimensional
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: state the gelfand-mazur theorem for finite abelian groups, showing that all irreducible
+    translation-invariant subspaces are 1-dimensional
+- id: www-math-ucla-edu-tao-247b-1-07w-notes9-pdf#002
+  text: 'State the Peter-Weyl theorem for finite abelian groups: the characters $\widehat{G}$ form an
+    orthonormal basis of $L^2(G)$, yielding $f(x) = \sum_{\chi \in \widehat{G}} \widehat{f}(\chi) \chi(x)$'
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: 'state the peter-weyl theorem for finite abelian groups: the characters $\widehat{g}$ form
+    an orthonormal basis of $l^2(g)$, yielding $f(x) = \sum_{\chi \in \widehat{g}} \widehat{f}(\chi) \chi(x)$'

@@ -1,0 +1,41 @@
+url: https://www.math.cmu.edu/~af1p/Teaching/Combinatorics/Slides/Basic-Counting.pdf
+title: basic counting and combinatorics
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#000
+  text: Compute the number of functions $[n] \to [m]$ as $m^n$, and subsets of $[n]$ as $2^n$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: compute the number of functions $[n] \to [m]$ as $m^n$, and subsets of $[n]$ as $2^n$
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#001
+  text: Show that the number of even subsets of a non-empty finite set equals the number of odd subsets
+    ($2^{n-1}$)
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: show that the number of even subsets of a non-empty finite set equals the number of odd
+    subsets ($2^{n-1}$)
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#002
+  text: Compute the binomial coefficients $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ and Pascal's identity $\binom{n}{k}
+    = \binom{n-1}{k} + \binom{n-1}{k-1}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the binomial coefficients $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ and pascal's identity
+    $\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#003
+  text: 'State Vandermonde''s convolution formula: $\sum_{r=0}^k \binom{m}{r}\binom{n}{k-r} = \binom{m+n}{k}$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state vandermonde''s convolution formula: $\sum_{r=0}^k \binom{m}{r}\binom{n}{k-r} = \binom{m+n}{k}$'

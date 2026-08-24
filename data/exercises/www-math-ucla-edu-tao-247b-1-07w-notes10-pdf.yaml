@@ -1,0 +1,49 @@
+url: https://www.math.ucla.edu/~tao/247b.1.07w/notes10.pdf
+title: representation theory for finite non-abelian groups
+note: Tao harmonic analysis
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-math-ucla-edu-tao-247b-1-07w-notes10-pdf#000
+  text: 'Prove Weyl''s unitary trick: every finite-dimensional representation of a finite group can be
+    made unitary by averaging the inner product'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: 'prove weyl''s unitary trick: every finite-dimensional representation of a finite group
+    can be made unitary by averaging the inner product'
+- id: www-math-ucla-edu-tao-247b-1-07w-notes10-pdf#001
+  text: State Schur's Lemma for representations of finite groups over $\mathbb{C}$
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: state schur's lemma for representations of finite groups over $\mathbb{c}$
+- id: www-math-ucla-edu-tao-247b-1-07w-notes10-pdf#002
+  text: 'Prove the Jordan-Hölder and Maschke theorems: every representation of a finite group over $\mathbb{C}$
+    decomposes uniquely into a direct sum of irreducible representations'
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 1
+  search_text: 'prove the jordan-hölder and maschke theorems: every representation of a finite group over
+    $\mathbb{c}$ decomposes uniquely into a direct sum of irreducible representations'
+- id: www-math-ucla-edu-tao-247b-1-07w-notes10-pdf#003
+  text: Define the matrix-valued Fourier transform $\widehat{f}(\rho) = \int_G f(x) \rho(x)^* \, dx$ and
+    prove the non-abelian Fourier inversion formula
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: define the matrix-valued fourier transform $\widehat{f}(\rho) = \int_g f(x) \rho(x)^* \,
+    dx$ and prove the non-abelian fourier inversion formula

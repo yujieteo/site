@@ -1,0 +1,23 @@
+url: https://lawverearchives.com/wp-content/uploads/2024/12/1970-quantifiers-and-sheaves.pdf
+title: Lawvere and Tierney's Quantifiers and Sheaves
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: lawverearchives-com-wp-content-uploads-2024-12-1970-quantifiers-and-sheaves-pdf#000
+  text: Define an elementary topos as a Cartesian closed category with finite limits and a subobject classifier
+    $\Omega$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define an elementary topos as a cartesian closed category with finite limits and a subobject
+    classifier $\omega$
+- id: lawverearchives-com-wp-content-uploads-2024-12-1970-quantifiers-and-sheaves-pdf#001
+  text: Compute the subobject classifier $\Omega$ for the topos of sheaves $\operatorname{Sh}(X)$ on a
+    topological space
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the subobject classifier $\omega$ for the topos of sheaves $\operatorname{sh}(x)$
+    on a topological space

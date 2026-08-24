@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/07N7
+title: colimits
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-07n7#000
+  text: (Lemma 10.8.2) Construct the directed colimit $\varinjlim M_i$ of a filtered system of $R$-modules
+    as a quotient $\bigoplus M_i / \sim$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (lemma 10.8.2) construct the directed colimit $\varinjlim m_i$ of a filtered system of
+    $r$-modules as a quotient $\bigoplus m_i / \sim$

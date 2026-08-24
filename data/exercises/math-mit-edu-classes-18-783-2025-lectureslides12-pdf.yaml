@@ -1,0 +1,20 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides12.pdf
+title: elliptic curves lecture 12
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides12-pdf#000
+  text: Prove that the endomorphism ring $\operatorname{End}(E)$ of an elliptic curve is either $\mathbb{Z}$,
+    an order in an imaginary quadratic field (CM), or a maximal order in a quaternion algebra (supersingular
+    in characteristic $p$)
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: prove that the endomorphism ring $\operatorname{end}(e)$ of an elliptic curve is either
+    $\mathbb{z}$, an order in an imaginary quadratic field (cm), or a maximal order in a quaternion algebra
+    (supersingular in characteristic $p$)

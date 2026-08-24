@@ -1,0 +1,21 @@
+url: https://www.jmilne.org/math/Documents/DeligneArcata.pdf
+title: Deligne's Arcata for etale cohomology
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-jmilne-org-math-documents-delignearcata-pdf#000
+  text: Define a sieve on an object $U$ in a category, and formulate the sheaf condition using covering
+    sieves
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a sieve on an object $u$ in a category, and formulate the sheaf condition using
+    covering sieves
+- id: www-jmilne-org-math-documents-delignearcata-pdf#001
+  text: Compare the sieve perspective of Grothendieck topologies with the Čech covering perspective
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compare the sieve perspective of grothendieck topologies with the čech covering perspective

@@ -1,0 +1,31 @@
+url: https://arxiv.org/pdf/1010.1540
+title: local Langlands in GL_n
+note: in 37 pages
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: arxiv-org-pdf-1010-1540#000
+  text: 'State the local Langlands correspondence for $\mathrm{GL}_n(F)$: the bijection between irreducible
+    smooth representations of $\mathrm{GL}_n(F)$ and $n$-dimensional Frobenius-semisimple Weil-Deligne
+    representations of $W_F$'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: 'state the local langlands correspondence for $\mathrm{gl}_n(f)$: the bijection between
+    irreducible smooth representations of $\mathrm{gl}_n(f)$ and $n$-dimensional frobenius-semisimple
+    weil-deligne representations of $w_f$'
+- id: arxiv-org-pdf-1010-1540#001
+  text: Describe normalized parabolic induction $\pi_1 \boxplus \dots \boxplus \pi_t$ and its compatibility
+    with direct sums of Weil-Deligne representations
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: describe normalized parabolic induction $\pi_1 \boxplus \dots \boxplus \pi_t$ and its compatibility
+    with direct sums of weil-deligne representations

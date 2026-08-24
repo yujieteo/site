@@ -1,0 +1,100 @@
+url: https://www.kwlan.org/articles/intro-sh-ex.pdf
+title: example based introduction to Shimura varieties
+note: Lan Kai-Wen
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-kwlan-org-articles-intro-sh-ex-pdf#000
+  text: Compute the profinite completion of the integers $\widehat{\mathbb{Z}} = \varprojlim \mathbb{Z}/N\mathbb{Z}$
+    and the ring of finite adeles $\mathbb{A}^\infty = \widehat{\mathbb{Z}} \otimes_\mathbb{Z} \mathbb{Q}$
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: compute the profinite completion of the integers $\widehat{\mathbb{z}} = \varprojlim \mathbb{z}/n\mathbb{z}$
+    and the ring of finite adeles $\mathbb{a}^\infty = \widehat{\mathbb{z}} \otimes_\mathbb{z} \mathbb{q}$
+- id: www-kwlan-org-articles-intro-sh-ex-pdf#001
+  text: Define the full ring of adeles $\mathbb{A} = \mathbb{A}^\infty \times \mathbb{R}$ via the restricted
+    direct product
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 1
+  search_text: define the full ring of adeles $\mathbb{a} = \mathbb{a}^\infty \times \mathbb{r}$ via the
+    restricted direct product
+- id: www-kwlan-org-articles-intro-sh-ex-pdf#002
+  text: Define the symplectic group $\mathrm{Sp}_{2n}(\mathbb{R})$ and general symplectic group $\mathrm{GSp}_{2n}(\mathbb{R})$
+    preserving the standard skew-symmetric form $J_n = \begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix}$
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: define the symplectic group $\mathrm{sp}_{2n}(\mathbb{r})$ and general symplectic group
+    $\mathrm{gsp}_{2n}(\mathbb{r})$ preserving the standard skew-symmetric form $j_n = \begin{pmatrix}
+    0 & i_n \\ -i_n & 0 \end{pmatrix}$
+- id: www-kwlan-org-articles-intro-sh-ex-pdf#003
+  text: 'Compute the similitude character $\nu: \operatorname{GSp}_{2n}(\mathbb{R}) \to \mathbb{R}^\times$
+    defined by $g^T J_n g = \nu(g) J_n$'
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 1
+  search_text: 'compute the similitude character $\nu: \operatorname{gsp}_{2n}(\mathbb{r}) \to \mathbb{r}^\times$
+    defined by $g^t j_n g = \nu(g) j_n$'
+- id: www-kwlan-org-articles-intro-sh-ex-pdf#004
+  text: Define the orthogonal groups $\mathrm{O}_n(\mathbb{R})$ and $\mathrm{O}_{p, q}(\mathbb{R})$ and
+    their special orthogonal subgroups
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: define the orthogonal groups $\mathrm{o}_n(\mathbb{r})$ and $\mathrm{o}_{p, q}(\mathbb{r})$
+    and their special orthogonal subgroups
+- id: www-kwlan-org-articles-intro-sh-ex-pdf#005
+  text: Compute the symmetric space $S_n = \{X \in M_n(\mathbb{R}) \mid X^T = X, X > 0, \det X = 1\} \cong
+    \mathrm{SL}_n(\mathbb{R})/\mathrm{SO}(n)$
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 1
+  search_text: compute the symmetric space $s_n = \{x \in m_n(\mathbb{r}) \mid x^t = x, x > 0, \det x
+    = 1\} \cong \mathrm{sl}_n(\mathbb{r})/\mathrm{so}(n)$
+- id: www-kwlan-org-articles-intro-sh-ex-pdf#006
+  text: Describe the action of $\mathrm{SL}_2(\mathbb{R})$ on the Poincaré upper half-plane $\mathbb{H}
+    = \{z \in \mathbb{C} \mid \operatorname{Im}(z) > 0\}$ via Möbius transformations $z \mapsto \frac{az+b}{cz+d}$,
+    with stabilizer $\mathrm{SO}(2)$ at $z = i$, giving $\mathbb{H} \cong \mathrm{SL}_2(\mathbb{R})/\mathrm{SO}(2)$
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: describe the action of $\mathrm{sl}_2(\mathbb{r})$ on the poincaré upper half-plane $\mathbb{h}
+    = \{z \in \mathbb{c} \mid \operatorname{im}(z) > 0\}$ via möbius transformations $z \mapsto \frac{az+b}{cz+d}$,
+    with stabilizer $\mathrm{so}(2)$ at $z = i$, giving $\mathbb{h} \cong \mathrm{sl}_2(\mathbb{r})/\mathrm{so}(2)$
+- id: www-kwlan-org-articles-intro-sh-ex-pdf#007
+  text: Define the Shimura variety double coset space $X_U = G(\mathbb{Q}) \backslash (D \times G(\mathbb{A}^\infty))
+    / U$ for a compact open subgroup $U \subset G(\mathbb{A}^\infty)$, and describe the Hecke action of
+    $g \in G(\mathbb{A}^\infty)$ mapping $X_U \to X_{g U g^{-1}}$
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 1
+  search_text: define the shimura variety double coset space $x_u = g(\mathbb{q}) \backslash (d \times
+    g(\mathbb{a}^\infty)) / u$ for a compact open subgroup $u \subset g(\mathbb{a}^\infty)$, and describe
+    the hecke action of $g \in g(\mathbb{a}^\infty)$ mapping $x_u \to x_{g u g^{-1}}$

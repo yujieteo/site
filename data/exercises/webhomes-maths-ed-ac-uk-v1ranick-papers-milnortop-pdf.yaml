@@ -1,0 +1,35 @@
+url: https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnortop.pdf
+title: Milnor's Topology from a Differentiable Viewpoint
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: webhomes-maths-ed-ac-uk-v1ranick-papers-milnortop-pdf#000
+  text: 'Define regular and critical values of a smooth map $f: M \to N$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'define regular and critical values of a smooth map $f: m \to n$'
+- id: webhomes-maths-ed-ac-uk-v1ranick-papers-milnortop-pdf#001
+  text: 'State Sard''s Theorem: the set of critical values of a smooth map has Lebesgue measure zero'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state sard''s theorem: the set of critical values of a smooth map has lebesgue measure
+    zero'
+- id: webhomes-maths-ed-ac-uk-v1ranick-papers-milnortop-pdf#002
+  text: Define the Brouwer degree $\deg(f) \pmod 2$ and integer degree $\deg(f) = \sum_{x \in f^{-1}(y)}
+    \operatorname{sgn}(df_x)$ for maps between compact oriented manifolds of the same dimension
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define the brouwer degree $\deg(f) \pmod 2$ and integer degree $\deg(f) = \sum_{x \in f^{-1}(y)}
+    \operatorname{sgn}(df_x)$ for maps between compact oriented manifolds of the same dimension
+- id: webhomes-maths-ed-ac-uk-v1ranick-papers-milnortop-pdf#003
+  text: Classify connected 1-dimensional smooth manifolds as the circle $S^1$ or the real line $\mathbb{R}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: classify connected 1-dimensional smooth manifolds as the circle $s^1$ or the real line
+    $\mathbb{r}$

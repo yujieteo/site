@@ -1,0 +1,16 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides21.pdf
+title: elliptic curves lecture 21
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides21-pdf#000
+  text: Compute residue fields of maximal ideals in ring extensions of number fields
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: compute residue fields of maximal ideals in ring extensions of number fields

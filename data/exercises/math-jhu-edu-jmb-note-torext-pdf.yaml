@@ -1,0 +1,81 @@
+url: https://math.jhu.edu/~jmb/note/torext.pdf
+title: Tor and Ext group computations
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-jhu-edu-jmb-note-torext-pdf#000
+  text: Compute the tensor products $\mathbb{Z} \otimes_\mathbb{Z} H \cong H$, $\mathbb{Q} \otimes_\mathbb{Z}
+    \mathbb{Q} \cong \mathbb{Q}$, and $\mathbb{Z}/n\mathbb{Z} \otimes_\mathbb{Z} \mathbb{Z}/m\mathbb{Z}
+    \cong \mathbb{Z}/\gcd(n, m)\mathbb{Z}$
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: compute the tensor products $\mathbb{z} \otimes_\mathbb{z} h \cong h$, $\mathbb{q} \otimes_\mathbb{z}
+    \mathbb{q} \cong \mathbb{q}$, and $\mathbb{z}/n\mathbb{z} \otimes_\mathbb{z} \mathbb{z}/m\mathbb{z}
+    \cong \mathbb{z}/\gcd(n, m)\mathbb{z}$
+- id: math-jhu-edu-jmb-note-torext-pdf#001
+  text: Compute $\operatorname{Tor}_1^\mathbb{Z}(\mathbb{Z}/n\mathbb{Z}, H) \cong H[n] = \{h \in H \mid
+    n h = 0\}$, giving $\operatorname{Tor}_1^\mathbb{Z}(\mathbb{Z}/n\mathbb{Z}, \mathbb{Z}/m\mathbb{Z})
+    \cong \mathbb{Z}/\gcd(n, m)\mathbb{Z}$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: compute $\operatorname{tor}_1^\mathbb{z}(\mathbb{z}/n\mathbb{z}, h) \cong h[n] = \{h \in
+    h \mid n h = 0\}$, giving $\operatorname{tor}_1^\mathbb{z}(\mathbb{z}/n\mathbb{z}, \mathbb{z}/m\mathbb{z})
+    \cong \mathbb{z}/\gcd(n, m)\mathbb{z}$
+- id: math-jhu-edu-jmb-note-torext-pdf#002
+  text: Prove that $\operatorname{Tor}_1^\mathbb{Z}(\mathbb{Z}, H) = 0$ and $\operatorname{Tor}_1^\mathbb{Z}(\mathbb{Q},
+    H) = 0$ since $\mathbb{Z}$ is projective and $\mathbb{Q}$ is a flat $\mathbb{Z}$-module
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: prove that $\operatorname{tor}_1^\mathbb{z}(\mathbb{z}, h) = 0$ and $\operatorname{tor}_1^\mathbb{z}(\mathbb{q},
+    h) = 0$ since $\mathbb{z}$ is projective and $\mathbb{q}$ is a flat $\mathbb{z}$-module
+- id: math-jhu-edu-jmb-note-torext-pdf#003
+  text: Compute $\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z}, H) \cong H[n]$ and $\operatorname{Ext}_\mathbb{Z}^1(\mathbb{Z}/n\mathbb{Z},
+    H) \cong H / n H$
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: compute $\operatorname{hom}_\mathbb{z}(\mathbb{z}/n\mathbb{z}, h) \cong h[n]$ and $\operatorname{ext}_\mathbb{z}^1(\mathbb{z}/n\mathbb{z},
+    h) \cong h / n h$
+- id: math-jhu-edu-jmb-note-torext-pdf#004
+  text: Compute $\operatorname{Ext}_\mathbb{Z}^1(\mathbb{Z}/n\mathbb{Z}, \mathbb{Z}) \cong \mathbb{Z}/n\mathbb{Z}$
+    and $\operatorname{Ext}_\mathbb{Z}^1(\mathbb{Z}/n\mathbb{Z}, \mathbb{Z}/m\mathbb{Z}) \cong \mathbb{Z}/\gcd(n,
+    m)\mathbb{Z}$
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 1
+  search_text: compute $\operatorname{ext}_\mathbb{z}^1(\mathbb{z}/n\mathbb{z}, \mathbb{z}) \cong \mathbb{z}/n\mathbb{z}$
+    and $\operatorname{ext}_\mathbb{z}^1(\mathbb{z}/n\mathbb{z}, \mathbb{z}/m\mathbb{z}) \cong \mathbb{z}/\gcd(n,
+    m)\mathbb{z}$
+- id: math-jhu-edu-jmb-note-torext-pdf#005
+  text: Compute $\operatorname{Hom}_\mathbb{Z}(\mathbb{Q}, \mathbb{Z}) = 0$ and $\operatorname{Ext}_\mathbb{Z}^1(\mathbb{Q},
+    \mathbb{Z}) \cong \mathbb{A}_\mathbb{Q}^\infty / \mathbb{Q} \cong \mathbb{R} \oplus \dots$, which
+    is an uncountably infinite-dimensional $\mathbb{Q}$-vector space
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: compute $\operatorname{hom}_\mathbb{z}(\mathbb{q}, \mathbb{z}) = 0$ and $\operatorname{ext}_\mathbb{z}^1(\mathbb{q},
+    \mathbb{z}) \cong \mathbb{a}_\mathbb{q}^\infty / \mathbb{q} \cong \mathbb{r} \oplus \dots$, which
+    is an uncountably infinite-dimensional $\mathbb{q}$-vector space

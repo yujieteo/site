@@ -1,0 +1,27 @@
+url: https://arxiv.org/pdf/1003.1935
+title: Langlands-Kottwitz for modular curves in 39 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-1003-1935#000
+  text: 'Fix a prime $p$ and integer $m \ge 3$. Describe the moduli space $\mathcal{M}_m / \mathbb{Z}[1/m]$
+    of elliptic curves with level-$m$ structure, and compute the Galois group of the Drinfeld level-$p^n$
+    covering $\pi_n: \mathcal{M}_{\Gamma(p^n), m} \to \mathcal{M}_m$ as $\mathrm{GL}_2(\mathbb{Z}/p^n\mathbb{Z})$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'fix a prime $p$ and integer $m \ge 3$. describe the moduli space $\mathcal{m}_m / \mathbb{z}[1/m]$
+    of elliptic curves with level-$m$ structure, and compute the galois group of the drinfeld level-$p^n$
+    covering $\pi_n: \mathcal{m}_{\gamma(p^n), m} \to \mathcal{m}_m$ as $\mathrm{gl}_2(\mathbb{z}/p^n\mathbb{z})$'
+- id: arxiv-org-pdf-1003-1935#001
+  text: Compute the local Euler factor of the Hasse-Weil zeta function $\zeta_p(X, s)$ for a smooth projective
+    variety $X / \mathbb{Q}$ with good reduction at $p$ via $\log \zeta_p(X, s) = \sum_{r=1}^\infty |\mathcal{X}(\mathbb{F}_{p^r})|
+    \frac{p^{-r s}}{r}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the local euler factor of the hasse-weil zeta function $\zeta_p(x, s)$ for a smooth
+    projective variety $x / \mathbb{q}$ with good reduction at $p$ via $\log \zeta_p(x, s) = \sum_{r=1}^\infty
+    |\mathcal{x}(\mathbb{f}_{p^r})| \frac{p^{-r s}}{r}$

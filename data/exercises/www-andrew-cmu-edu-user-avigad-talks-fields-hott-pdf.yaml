@@ -1,0 +1,38 @@
+url: https://www.andrew.cmu.edu/user/avigad/Talks/fields_hott.pdf
+title: Homotopy Type Theory summary in 39 slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: www-andrew-cmu-edu-user-avigad-talks-fields-hott-pdf#000
+  text: 'Explain the fundamental propositions-as-types / homotopy type theory correspondence: types are
+    spaces, terms are points, identity types are path spaces, and equivalences are homotopies'
+  hint: null
+  locator:
+    kind: slide
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: 'explain the fundamental propositions-as-types / homotopy type theory correspondence: types
+    are spaces, terms are points, identity types are path spaces, and equivalences are homotopies'
+- id: www-andrew-cmu-edu-user-avigad-talks-fields-hott-pdf#001
+  text: State the Awodey-Warren theorem establishing that identity types in Martin-Löf type theory satisfy
+    the axioms of a Quillen model category
+  hint: null
+  locator:
+    kind: slide
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: state the awodey-warren theorem establishing that identity types in martin-löf type theory
+    satisfy the axioms of a quillen model category
+- id: www-andrew-cmu-edu-user-avigad-talks-fields-hott-pdf#002
+  text: 'State Voevodsky''s Univalence Axiom: $(A \simeq B) \simeq (A = B)$'
+  hint: null
+  locator:
+    kind: slide
+    value: '34'
+    number: 34
+  sub_index: 0
+  search_text: 'state voevodsky''s univalence axiom: $(a \simeq b) \simeq (a = b)$'

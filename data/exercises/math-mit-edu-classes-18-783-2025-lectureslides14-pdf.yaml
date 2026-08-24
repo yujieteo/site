@@ -1,0 +1,18 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides14.pdf
+title: elliptic curves lecture 14
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides14-pdf#000
+  text: Define complex elliptic curves via lattices $E(\mathbb{C}) \cong \mathbb{C}/\Lambda$, and compute
+    the $j$-invariant $j(\Lambda) = 1728 \frac{g_2^3}{g_2^3 - 27g_3^2}$
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: define complex elliptic curves via lattices $e(\mathbb{c}) \cong \mathbb{c}/\lambda$, and
+    compute the $j$-invariant $j(\lambda) = 1728 \frac{g_2^3}{g_2^3 - 27g_3^2}$

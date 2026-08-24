@@ -1,0 +1,52 @@
+url: https://www.jmilne.org/math/xnotes/svn.pdf
+title: Shimura varieties in 3 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-jmilne-org-math-xnotes-svn-pdf#000
+  text: Classify simply connected 1-dimensional Riemann surfaces as the Riemann sphere $\mathbb{P}^1(\mathbb{C})$,
+    the complex plane $\mathbb{C}$, and the unit disk/upper half-plane $\mathbb{D} \cong \mathbb{H}$
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: classify simply connected 1-dimensional riemann surfaces as the riemann sphere $\mathbb{p}^1(\mathbb{c})$,
+    the complex plane $\mathbb{c}$, and the unit disk/upper half-plane $\mathbb{d} \cong \mathbb{h}$
+- id: www-jmilne-org-math-xnotes-svn-pdf#001
+  text: Construct Shimura curves as quotients $\Gamma \backslash \mathbb{H}$ where $\Gamma \subset B^\times$
+    is a discrete arithmetic subgroup arising from a quaternion algebra $B$ over a totally real field
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 1
+  search_text: construct shimura curves as quotients $\gamma \backslash \mathbb{h}$ where $\gamma \subset
+    b^\times$ is a discrete arithmetic subgroup arising from a quaternion algebra $b$ over a totally real
+    field
+- id: www-jmilne-org-math-xnotes-svn-pdf#002
+  text: Define automorphic forms on Shimura curves and characterize their $q$-expansions and rationality
+    properties over number fields
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: define automorphic forms on shimura curves and characterize their $q$-expansions and rationality
+    properties over number fields
+- id: www-jmilne-org-math-xnotes-svn-pdf#003
+  text: Formulate Deligne's general axiomatic definition of Shimura varieties as algebraic moduli of abelian
+    varieties with Hodge cycles
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: formulate deligne's general axiomatic definition of shimura varieties as algebraic moduli
+    of abelian varieties with hodge cycles

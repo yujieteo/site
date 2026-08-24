@@ -1,0 +1,59 @@
+url: https://www.math.toronto.edu/~ila/Lang%20--%20Algebraic%20number%20theory.pdf
+title: Lang's algebraic number theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-math-toronto-edu-ila-lang-20-20algebraic-20number-20theory-pdf#000
+  text: Define an element $x \in B$ to be integral over $A \subseteq B$ if $x$ satisfies a monic polynomial
+    with coefficients in $A$
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: define an element $x \in b$ to be integral over $a \subseteq b$ if $x$ satisfies a monic
+    polynomial with coefficients in $a$
+- id: www-math-toronto-edu-ila-lang-20-20algebraic-20number-20theory-pdf#001
+  text: Prove that the integral closure of $A$ in $B$ is a subring of $B$
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: prove that the integral closure of $a$ in $b$ is a subring of $b$
+- id: www-math-toronto-edu-ila-lang-20-20algebraic-20number-20theory-pdf#002
+  text: Prove that if $L/K$ is a finite separable field extension and $\alpha \in \mathcal{O}_L$, then
+    $\operatorname{Tr}_{L/K}(\alpha) \in \mathcal{O}_K$ and $\operatorname{Nm}_{L/K}(\alpha) \in \mathcal{O}_K$
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 1
+  search_text: prove that if $l/k$ is a finite separable field extension and $\alpha \in \mathcal{o}_l$,
+    then $\operatorname{tr}_{l/k}(\alpha) \in \mathcal{o}_k$ and $\operatorname{nm}_{l/k}(\alpha) \in
+    \mathcal{o}_k$
+- id: www-math-toronto-edu-ila-lang-20-20algebraic-20number-20theory-pdf#003
+  text: State the Lying Over and Going Up theorems for integral extensions of commutative rings
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: state the lying over and going up theorems for integral extensions of commutative rings
+- id: www-math-toronto-edu-ila-lang-20-20algebraic-20number-20theory-pdf#004
+  text: 'State the Chinese Remainder Theorem for pairwise comaximal ideals in a commutative ring: $A/\bigcap
+    \mathfrak{a}_i \cong \prod A/\mathfrak{a}_i$'
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: 'state the chinese remainder theorem for pairwise comaximal ideals in a commutative ring:
+    $a/\bigcap \mathfrak{a}_i \cong \prod a/\mathfrak{a}_i$'

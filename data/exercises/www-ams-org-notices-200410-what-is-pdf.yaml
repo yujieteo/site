@@ -1,0 +1,25 @@
+url: https://www.ams.org/notices/200410/what-is.pdf
+title: What is a Motive? by Barry Mazur
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ams-org-notices-200410-what-is-pdf#000
+  text: Explain how the Jacobian variety $J(C) = \operatorname{Pic}^0(C)$ linearizes a smooth projective
+    curve $C$, providing the universal 1-dimensional abelian variety quotient for degree zero divisors
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: explain how the jacobian variety $j(c) = \operatorname{pic}^0(c)$ linearizes a smooth projective
+    curve $c$, providing the universal 1-dimensional abelian variety quotient for degree zero divisors
+- id: www-ams-org-notices-200410-what-is-pdf#001
+  text: Formulate Grothendieck's vision of motives as the universal cohomology theory factoring all classical
+    Weil cohomology functors (Betti, de Rham, $\ell$-adic, crystalline) through an intermediate abelian
+    category $\mathbf{Mot}(k)$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: formulate grothendieck's vision of motives as the universal cohomology theory factoring
+    all classical weil cohomology functors (betti, de rham, $\ell$-adic, crystalline) through an intermediate
+    abelian category $\mathbf{mot}(k)$

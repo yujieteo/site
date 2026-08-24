@@ -1,0 +1,26 @@
+url: https://www.jmilne.org/math/xnotes/EOM95.pdf
+title: Milne's definition of a Shimura variety in 2 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-jmilne-org-math-xnotes-eom95-pdf#000
+  text: Define a Shimura variety as a double coset space $\operatorname{Sh}_K(G, X) = G(\mathbb{Q}) \backslash
+    (X \times G(\mathbb{A}_f)) / K$ for a reductive group $G / \mathbb{Q}$, a symmetric domain $X$, and
+    a compact open subgroup $K \subset G(\mathbb{A}_f)$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a shimura variety as a double coset space $\operatorname{sh}_k(g, x) = g(\mathbb{q})
+    \backslash (x \times g(\mathbb{a}_f)) / k$ for a reductive group $g / \mathbb{q}$, a symmetric domain
+    $x$, and a compact open subgroup $k \subset g(\mathbb{a}_f)$
+- id: www-jmilne-org-math-xnotes-eom95-pdf#001
+  text: 'State the Baily-Borel theorem: every Shimura variety has a canonical realization as a quasi-projective
+    algebraic variety over $\mathbb{C}$ with a canonical model over its reflex field $E(G, X)$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state the baily-borel theorem: every shimura variety has a canonical realization as a
+    quasi-projective algebraic variety over $\mathbb{c}$ with a canonical model over its reflex field
+    $e(g, x)$'

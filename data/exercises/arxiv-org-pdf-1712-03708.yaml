@@ -1,0 +1,41 @@
+url: https://arxiv.org/pdf/1712.03708
+title: Scholze's p-adic geometry in 29 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: arxiv-org-pdf-1712-03708#000
+  text: Describe rigid-analytic varieties over complete algebraically closed non-archimedean fields $C
+    / \mathbb{Q}_p$ as non-archimedean analogues of complex manifolds
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: describe rigid-analytic varieties over complete algebraically closed non-archimedean fields
+    $c / \mathbb{q}_p$ as non-archimedean analogues of complex manifolds
+- id: arxiv-org-pdf-1712-03708#001
+  text: Construct non-archimedean Hopf surfaces $X = (\mathbb{A}^{2, \mathrm{an}} \setminus \{(0, 0)\})
+    / q^\mathbb{Z}$ for $0 < |q| < 1$, and show they are non-Kähler ($h^{1, 0} \ne h^{0, 1}$)
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: construct non-archimedean hopf surfaces $x = (\mathbb{a}^{2, \mathrm{an}} \setminus \{(0,
+    0)\}) / q^\mathbb{z}$ for $0 < |q| < 1$, and show they are non-kähler ($h^{1, 0} \ne h^{0, 1}$)
+- id: arxiv-org-pdf-1712-03708#002
+  text: Define $p$-adic étale cohomology with coefficients in $\mathbb{C}_p$ via $H_{\text{ét}}^n(X, \mathbb{C}_p)
+    = \left(\varprojlim_m H_{\text{ét}}^n(X, \mathbb{Z}/p^m\mathbb{Z})\right) \otimes_{\mathbb{Z}_p} \mathbb{C}_p$
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 1
+  search_text: define $p$-adic étale cohomology with coefficients in $\mathbb{c}_p$ via $h_{\text{ét}}^n(x,
+    \mathbb{c}_p) = \left(\varprojlim_m h_{\text{ét}}^n(x, \mathbb{z}/p^m\mathbb{z})\right) \otimes_{\mathbb{z}_p}
+    \mathbb{c}_p$

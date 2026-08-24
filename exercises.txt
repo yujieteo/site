@@ -478,3 +478,1025 @@ https://dec41.user.srcf.net/h/III_M/analysis_of_partial_differential_equations/f
 
 https://dec41.user.srcf.net/h/II_M/galois_theory/full, Galois theory
 	- What problem was Galois theory originally invented to solve? (Hint: Determining whether polynomial equations are solvable by radicals via the algebraic structure of their Galois groups.)
+
+https://www.preschema.com/papers/stacksncts.pdf, Adeel Khan's stacks, in 76 pages
+    - (Page 2) Imagine the moduli space of 1-dimensional linear subspaces in $\mathbb{C}^{n+1}$. What is this object? (Hint: Think about lines through the origin in projective space $\mathbb{P}^n$.)
+    - (Page 2) Imagine the moduli space of $k$-dimensional linear subspaces of a vector space and show that it is equivalently the $(k-1)$-dimensional linear subspaces of the projectivization of the vector space. What is this object? (Hint: The Grassmannian $\operatorname{Gr}(k, V) \cong \operatorname{Gr}(k-1, \mathbb{P}(V))$.)
+    - (Page 2) Imagine a family or fibration of sets parametrized by commutative algebras. What is this object? What happens if you imagine a fibration of groupoids parameterized by a suitable commutative algebra instead? (Hint: A functor of points/presheaf of sets vs. a fibration in groupoids/stack.)
+    - (Page 2) Compute the moduli space of vector bundles on an algebraic variety $X$, and compute the moduli space of principal $G$-bundles on $X$.
+    - (Page 2) Compute the moduli space of coherent sheaves on an algebraic variety by removing an equivalence relation.
+    - (Page 3) Consider the example in Theorem 0.0.6. How does one specify complex projective $n$-space as a scheme? (Hint: Compute its functor of points: these are $A$-linear surjections $A^{n+1} \twoheadrightarrow L$, where $L$ is a locally free $A$-module of rank 1.)
+    - (Page 3) Compute the diagram of a groupoid as a category. What are the objects of a groupoid for an equivalence relation $R \subseteq X \times X$? (Hint: Objects are elements of $X$, and morphisms are elements of $R$.)
+    - (Page 4) Compute for the case of $\mathcal{M}_{\operatorname{Bun}_G}(C)$ taking a commutative algebra $A$ to the groupoid of principal $G$-bundles on the scheme $C \otimes_k A$ under base change. What do you get for $G = \mathrm{GL}_n$? (Hint: One gets the moduli stack $\operatorname{Bun}_n(C)$ of rank $n$ vector bundles on $C$.)
+    - (Page 5) What class of functors does homological algebra allow us to derive, and what do $\infty$-categories let us derive? (Hint: Homological algebra derives functors between abelian categories, whereas $\infty$-categories allow deriving non-abelian functors such as the tangent bundle and non-linear moduli.)
+    - (Page 6) Compute the classical moduli stack $\mathcal{M}_{\mathrm{cl}}$ of vector bundles (respectively, coherent sheaves and principal $G$-bundles). There is a closed immersion $\mathcal{M}_{\mathrm{cl}} \hookrightarrow \mathcal{M}$ which is an isomorphism if and only if $X$ is a curve (if and only if $\mathcal{M}$ is smooth). What happens when $\dim X \ge 2$? (Hint: It retains hidden/homotopical smoothness when formulated as a derived stack.)
+    - (Page 7) Describe the simplex category $\Delta$ whose objects are finite non-empty ordinals $[n] = \{0, 1, \dots, n\}$ with order-preserving maps. Construct a simplicial set $X: \Delta^{\mathrm{op}} \to \mathbf{Set}$ with $X_n := X([n])$, and describe its face and degeneracy maps.
+    - (Page 7) Construct the injective coface maps $d^i: [n-1] \to [n]$ skipping vertex $i$ and surjective codegeneracy maps $s^i: [n+1] \to [n]$ doubling vertex $i$, then compute the induced face maps $d_i$ and degeneracy maps $s_i$ satisfying the simplicial identities.
+    - (Page 8) Construct the standard $n$-simplex $\Delta^n$ using hom-sets out of $[k]$. What is this object? (Hint: $\Delta_k^n = \operatorname{Hom}_\Delta([k], [n])$ via the Yoneda embedding.)
+    - (Page 8) Compute the union of faces of $\Delta^n$ excluding the $k$-th face to define the $k$-th horn $\Lambda_k^n$. (Hint: $\Lambda_k^n = \bigcup_{j \ne k} \partial_j \Delta^n \subset \partial \Delta^n$.)
+    - (Page 8) Construct the boundary $\partial \Delta^n$ of the standard $n$-simplex as the union of all its faces.
+    - (Page 8) Construct the morphism $\sigma: \Delta^n \to X$ corresponding to an $n$-simplex. What lemma is required for this identification? (Hint: The Yoneda lemma.)
+    - (Page 8) Construct the functor category $\operatorname{Fun}([n], \mathcal{C})$ for a small category $\mathcal{C}$, and define the nerve $N(\mathcal{C})$ as a simplicial set whose $n$-simplices are strings of $n$ composable morphisms.
+    - (Page 8, Exercise 1.2.3.) Take the left Kan extension along the inclusion $\Delta \hookrightarrow \mathbf{Cat}$ to construct the left adjoint of the nerve functor $N: \mathbf{Cat} \to \mathbf{sSet}$. Why is the nerve fully faithful? (Hint: 0-simplices are objects, 1-simplices are morphisms, and 2-simplices uniquely determine composition.)
+    - (Page 9, Remark 1.2.6.) Construct the composition of two morphisms as a horn filling $\Lambda_1^2 \to \Delta^2$ or as a pushout of simplicial sets $\Delta^1 \cup_{\Delta^0} \Delta^1 \cong \Lambda_1^2$.
+    - (Page 10, Proposition 1.2.8.) Prove that a simplicial set $X$ is isomorphic to the nerve of a 1-category if and only if the inner horn restriction maps $X_n = \operatorname{Hom}(\Delta^n, X) \to \operatorname{Hom}(\Lambda_k^n, X)$ are bijections for all $0 < k < n$ and $n \ge 2$ (Grothendieck-Segal theorem).
+    - (Page 10, Definition 1.3.2.) What condition defines a Kan complex? (Hint: The restriction maps $\operatorname{Hom}(\Delta^n, X) \to \operatorname{Hom}(\Lambda_k^n, X)$ are surjective for all $0 \le k \le n$ and $n \ge 1$, ensuring all horns have fillers.)
+    - (Page 10, Definition 1.3.2.) Why is the nerve of an $\infty$-groupoid (or 1-groupoid) a Kan complex? (Hint: Invertibility of all morphisms guarantees that outer horns also admit fillers.)
+    - (Page 10) Describe Milnor's theorem relating the homotopy categories of CW complexes and Kan complexes via the singular simplicial set functor $\operatorname{Sing}(X)$ and geometric realization $|K|$.
+    - (Page 10) Compute the $n$-simplices of the singular simplicial set $\operatorname{Sing}(X)$ using continuous maps $|\Delta^n| \to X$.
+    - (Page 11) Why are Kan complexes regarded as algebraic models of spaces? (Hint: 0-simplices correspond to points, 1-simplices to paths, 2-simplices to homotopies between paths, and composition is unique up to coherent homotopy.)
+    - (Page 11, Definition 1.4.1) Define a quasi-category (weak Kan complex / $(\infty, 1)$-category) via inner horn filling. (Hint: The restriction maps $\operatorname{Hom}(\Delta^n, X) \to \operatorname{Hom}(\Lambda_k^n, X)$ are surjective for all inner horns $0 < k < n$.)
+    - (Page 11, Construction 1.4.2) Construct a diagram describing homotopies between morphisms as 2-simplices, and define composition up to coherent homotopy in an $\infty$-category.
+    - (Page 12) Describe the Duskin nerve of a 2-category as a simplicial set whose 0-simplices are objects, 1-simplices are 1-morphisms, and 2-simplices are 2-morphisms with coherence data.
+    - (Page 12) Compute the compatibility relations satisfied by 3-simplices in the Duskin nerve.
+    - (Page 13) Describe how a 1-groupoid is viewed as a $(2, 1)$-category by discarding non-invertible 2-morphisms.
+    - (Page 13) Describe the large simplicial set $\mathbf{Kan}$ whose vertices are Kan complexes and $n$-simplices are coherent diagrams of maps.
+    - (Page 14) What conditions define a Grothendieck topology on a category $\mathcal{C}$? (Hint: Existence of fiber products, stable covers under base change, and stability under composition.)
+    - (Page 14) Construct the prototypical site: the category of open subsets $\operatorname{Open}(X)$ of a topological space with covering families given by open covers.
+    - (Page 14/15) Construct the étale site of a scheme with coverings given by étale surjections (or faithfully flat morphisms).
+    - (Page 17) Construct the Čech nerve $\check{C}(U \to X)$ of a covering morphism. What is its $n$-th term, and how does it define an $\infty$-sheaf? (Hint: $U_n = U \times_X \dots \times_X U$, and the sheaf condition is given by a limit/descent condition.)
+    - (Page 18) Compute the limit of a cosimplicial diagram in a 1-category as an equalizer. (Hint: $\lim X^\bullet \cong \operatorname{eq}(X^0 \rightrightarrows X^1)$.)
+    - (Page 18) Define a stack as a sheaf of groupoids satisfying descent with respect to covering sieves.
+    - (Page 19) Prove the equivalence of categories between $\operatorname{Fun}(\mathcal{C}^{\mathrm{op}}, \mathbf{Cat})$ and Cartesian fibrations over $\mathcal{C}$ via the Grothendieck construction.
+    - (Page 19) Compare the étale topology (flat, unramified, locally of finite presentation) and the fpqc topology (faithfully flat, quasi-compact). Which topology is finer?
+    - (Page 20) Describe augmented simplicial diagrams $X_\bullet \to X_{-1}$ and their totalizations/limits as descent conditions.
+    - (Page 20) Prove that the module functor $R \mapsto \operatorname{Mod}_R$ satisfies faithfully flat descent on the category of commutative rings.
+    - (Page 22, Lemma 3.2.9) Prove that the pullback functor $f^*$ on quasi-coherent sheaves is conservative when $f: X \to Y$ is faithfully flat and quasi-compact.
+    - (Page 23) Compute the right Kan extension of $\mathbf{Aff}^{\mathrm{op}} \to \mathbf{Cat}$ along $\mathbf{Aff} \hookrightarrow \mathbf{Sch}$ to construct quasi-coherent sheaves on arbitrary schemes and stacks.
+    - (Page 25) Compute the colimit of a group action $X/G$ in the $\infty$-category of $\infty$-groupoids, and identify it with the geometric realization of the Čech nerve $X \times_Y X \rightrightarrows X$.
+    - (Page 28, Remark 4.1.2) Define a groupoid object in an $\infty$-category via Cartesian squares associated with ordered partitions of $[n]$.
+    - (Page 30, Example 4.1.4) Compute the nerve $B G$ of a group $G$ as a simplicial object with $B G_n = G^n$, with face maps given by group multiplication and degeneracies by identity insertions.
+    - (Page 32, Theorem 4.1.9) State Lurie's theorem on effective epimorphisms in $\infty$-topoi and the equivalence between groupoid objects and quotients.
+    - (Page 35) Construct group objects in $\operatorname{Shv}(\mathbf{Sch}; \mathbf{Set})$ and describe their actions on objects.
+    - (Page 38, Definition 4.2.3) Construct groupoid actions and Cartesian squares describing group actions up to coherent homotopy.
+
+https://www.math.uni-bonn.de/people/ja/alggeoI/notes.pdf, Scholze's algebraic geometry notes
+    - (Page 4) Define an affine algebraic set $V(S) \subseteq \mathbb{A}^n(k)$ as the zero locus of a subset of polynomials $S \subseteq k[X_1, \dots, X_n]$ over an algebraically closed field $k$.
+    - (Page 4) Use Hilbert's Basis Theorem to prove that every ideal $\mathfrak{a} \subseteq k[X_1, \dots, X_n]$ is finitely generated, and hence $V(S) = V(f_1, \dots, f_m)$ for a finite set of polynomials.
+    - (Page 4) Prove that every ascending chain of ideals in $k[X_1, \dots, X_n]$ stabilizes since $k[X_1, \dots, X_n]$ is Noetherian.
+    - (Page 4, Example 1.3) Show that every algebraic subset of $\mathbb{A}^1(k)$ is either a finite set of points or the entire affine line.
+    - (Page 4) Compute the zero set $V(f)$ for $f \in k[X]$ using its factorization into linear factors in a PID.
+    - (Page 4) Compute the geometric zero loci in $\mathbb{A}^2(\mathbb{C})$ for $x + y = 0$, $x^2 + y^2 = 1$, and $x^2 + y^2 = -1$.
+    - (Page 5) Show that a non-singular cubic curve (elliptic curve) forms an affine algebraic set in $\mathbb{A}^2(k)$.
+    - (Page 5) Describe the zero locus of $x^2 = y^2$ in $\mathbb{A}^2(k)$ under the Zariski topology as the union of two lines.
+    - (Page 5) Verify the axioms of the Zariski topology: $V(\emptyset) = \mathbb{A}^n$, $V(1) = \emptyset$, $\bigcap V(S_i) = V(\bigcup S_i)$, and $V(I) \cup V(J) = V(I J)$.
+    - (Page 5) Prove that $V(I) \cup V(J) = V(I \cap J) = V(I J)$ for any two ideals $I, J \subseteq k[X_1, \dots, X_n]$.
+    - (Page 5) Define the radical of an ideal $\sqrt{I} = \{f \in R \mid f^m \in I \text{ for some } m \ge 1\}$ and show $V(I) = V(\sqrt{I})$.
+    - (Page 6) State Hilbert's Nullstellensatz: for an algebraically closed field $k$ and ideal $I \subseteq k[X_1, \dots, X_n]$, $I(V(I)) = \sqrt{I}$.
+    - (Page 6) State the Weak Nullstellensatz: if $I \subsetneq k[X_1, \dots, X_n]$ is a proper ideal, then $V(I) \ne \emptyset$.
+    - (Page 6) Prove using Noether normalization that every maximal ideal $\mathfrak{m} \subset k[X_1, \dots, X_n]$ is of the form $(X_1 - a_1, \dots, X_n - a_n)$ for $a_i \in k$.
+    - (Page 7) Prove the bijection between radical ideals in $k[X_1, \dots, X_n]$ and algebraic sets in $\mathbb{A}^n(k)$.
+    - (Page 7) Use the Rabinowitsch trick to deduce the Strong Nullstellensatz from the Weak Nullstellensatz by adjoining an auxiliary variable $Y$ and considering $(I, 1 - Y f)$.
+    - (Page 8) Show that an affine coordinate ring $A(V) = k[X_1, \dots, X_n] / I(V)$ is reduced ($\operatorname{nil}(A(V)) = 0$).
+    - (Page 10) Define the coordinate ring $\mathcal{O}(V)$ as the ring of polynomial functions on an algebraic set $V \subseteq \mathbb{A}^n(k)$.
+    - (Page 10) Identify $V(I)$ with $\operatorname{Hom}_{k\text{-alg}}(k[X_1, \dots, X_n]/I, k)$.
+    - (Page 10) Define the prime spectrum $\operatorname{Spec}(A)$ of a commutative ring $A$ as the set of all prime ideals of $A$.
+    - (Page 10) Prove that the kernel of any ring homomorphism $f: A \to K$ into a field $K$ is a prime ideal $\mathfrak{p} \in \operatorname{Spec}(A)$.
+    - (Page 11) Define the residue field $\kappa(\mathfrak{p}) = \operatorname{Frac}(A/\mathfrak{p})$ at a prime ideal $\mathfrak{p} \in \operatorname{Spec}(A)$.
+    - (Page 11) Compute $\operatorname{Spec}(\mathbb{Z})$, identifying its closed points $(p)$ and generic point $(0)$.
+    - (Page 11) Define the maximal spectrum $\operatorname{Spec}_{\max}(A)$ as the set of maximal ideals of $A$.
+    - (Page 12) Compute the continuous map $\operatorname{Spec}(\mathbb{Q}) \to \operatorname{Spec}(\mathbb{Z})$ induced by the inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$.
+    - (Page 12) Prove that for any ring homomorphism $f: A \to B$, the preimage $f^{-1}(\mathfrak{q})$ of a prime ideal $\mathfrak{q} \subseteq B$ is a prime ideal in $A$.
+    - (Page 18) Define a presheaf and a sheaf of rings on a topological space $X$, stating the locality and gluing axioms.
+    - (Page 18) Verify that the assignment $U \mapsto C^0(U, \mathbb{R})$ (and $U \mapsto C^\infty(U, \mathbb{R})$) defines a sheaf of rings.
+    - (Page 18) Express the sheaf condition for $\mathcal{F}(U)$ as the equalizer of $\prod \mathcal{F}(U_i) \rightrightarrows \prod \mathcal{F}(U_i \cap U_j)$.
+    - (Page 19) Show that for any sheaf $\mathcal{F}$, $\mathcal{F}(\emptyset) = 0$ is the terminal object.
+    - (Page 26) Define the localization $A_\mathfrak{p} = S^{-1} A$ at a prime ideal $\mathfrak{p}$ where $S = A \setminus \mathfrak{p}$, and show that $A_\mathfrak{p}$ is a local ring with maximal ideal $\mathfrak{p} A_\mathfrak{p}$.
+    - (Page 27) Define a locally ringed space $(X, \mathcal{O}_X)$ as a ringed space whose stalks $\mathcal{O}_{X, x}$ are local rings.
+    - (Page 27) Define the structure sheaf $\mathcal{O}_{\operatorname{Spec}(A)}$ on the spectrum of a ring $A$, with stalks $\mathcal{O}_{\operatorname{Spec}(A), \mathfrak{p}} \cong A_\mathfrak{p}$.
+    - (Page 42) Define quasi-coherent $\mathcal{O}_X$-modules as sheaves that locally admit presentations $\mathcal{O}_X^{\oplus I} \to \mathcal{O}_X^{\oplus J} \to \mathcal{F} \to 0$, or $\widetilde{M}$ on affine schemes.
+    - (Page 55) Use Noether normalization to define the Krull dimension of an affine variety as the transcendence degree of its function field.
+    - (Page 62) Prove that the Segre embedding $\mathbb{P}^n \times \mathbb{P}^m \hookrightarrow \mathbb{P}^{(n+1)(m+1)-1}$ is a closed immersion, showing products of projective schemes are projective.
+    - (Page 62) Prove that closed immersions of schemes are stable under composition and base change.
+    - (Page 63) Construct the affine line with a doubled origin by gluing two copies of $\mathbb{A}^1$ along $\mathbb{A}^1 \setminus \{0\}$, demonstrating a non-separated scheme.
+    - (Page 73) Define a valuation ring $A \subset K$ of a field $K$ by the property that for every $x \in K^\times$, either $x \in A$ or $x^{-1} \in A$.
+    - (Page 80) Define the normalization of an integral scheme $X$ as the scheme $\widetilde{X}$ whose affine charts are the integral closures of $\mathcal{O}_X(U)$ in $\operatorname{Frac}(\mathcal{O}_X(U))$.
+    - (Page 103) Define the divisor group $\operatorname{Div}(C)$ of a smooth algebraic curve $C$ as the free abelian group on closed points $D = \sum n_x [x]$.
+    - (Page 103) Define effective divisors ($n_x \ge 0$) and the associated invertible sheaf $\mathcal{O}_C(D)(U) = \{f \in K(C)^\times \mid \operatorname{div}(f)|_U + D|_U \ge 0\} \cup \{0\}$.
+    - (Page 104) Prove the natural isomorphism $\mathcal{O}_C(D) \otimes_{\mathcal{O}_C} \mathcal{O}_C(D') \cong \mathcal{O}_C(D + D')$.
+    - (Page 107) Prove that the degree of any principal divisor $\operatorname{div}(f)$ on a proper smooth curve is zero: $\deg(\operatorname{div}(f)) = 0$.
+    - (Page 108) State the Riemann-Roch theorem for a smooth projective curve $C$: $\dim H^0(C, \mathcal{L}) - \dim H^1(C, \mathcal{L}) = \deg(\mathcal{L}) + 1 - g$.
+    - (Page 108) Prove that the degree of the canonical divisor $K_C$ is $2g - 2$ by setting $\mathcal{L} = \omega_C$ in the Riemann-Roch formula.
+    - (Page 109) Use the Riemann-Roch theorem to prove that any smooth projective curve of genus 1 with a rational point is isomorphic to a plane cubic in Weierstrass form $y^2 = x^3 + a x + b$.
+    - (Page 109) Prove the group law on an elliptic curve $E$: three points $P, Q, R$ sum to zero if and only if they are collinear in $\mathbb{P}^2$.
+
+https://www.math.uni-bonn.de/people/ja/alggeoII/notes_II.pdf, Scholze's notes on algebraic geometry with étale cohomology
+    - (Warm up) Compute the global sections $H^0(\mathbb{P}^d, \mathcal{O}(n))$ as homogeneous polynomials of degree $n$, and reconstruct $\mathbb{P}^d \cong \operatorname{Proj}(k[x_0, \dots, x_d])$.
+    - (Page 7) Define the fiber $X_s = X \times_S \operatorname{Spec}(\kappa(s))$ of a morphism $f: X \to S$ at a point $s \in S$.
+    - (Page 8) Define flatness of a module and a morphism of schemes $f: X \to S$: $\mathcal{O}_{X, x}$ is a flat $\mathcal{O}_{S, f(x)}$-module for all $x \in X$.
+    - (Page 8) Show that for a domain $A$, $M = \mathbb{Z}/p\mathbb{Z}$ is not a flat $\mathbb{Z}$-module because $p \cdot: \mathbb{Z} \to \mathbb{Z}$ is injective but $p \cdot: \mathbb{Z}/p\mathbb{Z} \to \mathbb{Z}/p\mathbb{Z}$ is zero.
+    - (Page 8) Show that over a field $k$, every module is flat, so any morphism $X \to \operatorname{Spec}(k)$ is flat.
+    - (Page 8) Consider the family of elliptic curves $y^2 = x^3 + x^2 + t$; compute the singular nodal fiber at $t = 0$ and verify that the family is flat over $\mathbb{A}^1$.
+    - (Page 9) State Ehresmann's theorem: a smooth proper morphism over $\mathbb{C}$ is a smooth fiber bundle of differentiable manifolds.
+    - (Page 10) Prove that localization $S^{-1} A$ is a flat $A$-algebra, so open immersions of schemes are flat.
+    - (Page 10) Prove that filtered colimits of flat modules are flat.
+    - (Page 10) State Lazard's theorem: an $A$-module $M$ is flat if and only if it is a filtered colimit of finitely generated free $A$-modules.
+    - (Page 11) Formulate faithfully flat descent for quasi-coherent modules: given a faithfully flat morphism $f: X \to Y$, the category $\mathbf{QCoh}(Y)$ is equivalent to $\mathbf{QCoh}(X)$ with descent data.
+    - (Page 19) Define first-order thickenings and formal smoothness via the infinitesimal lifting criterion for nilpotent ideals $I^2 = 0$.
+    - (Page 19) Define formally étale, formally unramified, and formally smooth morphisms via existence and uniqueness of lifts in infinitesimal commutative diagrams.
+    - (Page 40) Compute the first sheaf cohomology group $H^1(X, G)$ with coefficients in an abelian sheaf $G$ as classifying $G$-torsors.
+    - (Page 40) Prove that for an affine scheme $X = \operatorname{Spec}(A)$ and quasi-coherent sheaf $\mathcal{F} = \widetilde{M}$, $H^i(X, \mathcal{F}) = 0$ for all $i > 0$ (Serre's criterion).
+    - (Page 62) Define double complexes and compute total complexes and spectral sequences associated with vertical and horizontal differentials ($d_v d_h + d_h d_v = 0$).
+
+https://www.math.ias.edu/~bhatt/teaching/mat549f22/lectures.pdf, prismatic F-gauges, in 151 pages
+    - (Page 11) Review smooth morphisms of schemes and verify that the Hodge-de Rham spectral sequence $E_1^{p, q} = H^q(X, \Omega_{X/S}^p) \implies H_{\mathrm{dR}}^{p+q}(X/S)$ degenerates at $E_1$ for smooth proper schemes in characteristic zero.
+    - (Page 12) Compute the algebraic de Rham cohomology and Hodge filtration for the multiplicative group $\mathbb{G}_m$ and the torus $T = \mathbb{G}_m^d$.
+    - (Page 13) Compute the conjugate filtration for $X = \mathbb{G}_m$ over $S = \operatorname{Spec}(\mathbb{F}_p)$ via the Cartier isomorphism.
+
+https://arxiv.org/pdf/1712.03708, Scholze's p-adic geometry in 29 pages
+    - (Page 2) Describe rigid-analytic varieties over complete algebraically closed non-archimedean fields $C / \mathbb{Q}_p$ as non-archimedean analogues of complex manifolds.
+    - (Page 3) Construct non-archimedean Hopf surfaces $X = (\mathbb{A}^{2, \mathrm{an}} \setminus \{(0, 0)\}) / q^\mathbb{Z}$ for $0 < |q| < 1$, and show they are non-Kähler ($h^{1, 0} \ne h^{0, 1}$).
+    - (Page 3) Define $p$-adic étale cohomology with coefficients in $\mathbb{C}_p$ via $H_{\text{ét}}^n(X, \mathbb{C}_p) = \left(\varprojlim_m H_{\text{ét}}^n(X, \mathbb{Z}/p^m\mathbb{Z})\right) \otimes_{\mathbb{Z}_p} \mathbb{C}_p$.
+
+https://www.math.uni-bonn.de/people/scholze/CDM.pdf, Scholze's perfectoid spaces survey in 38 pages
+
+https://www.math.uni-bonn.de/people/scholze/ICM.pdf, Scholze's perfectoid spaces survey in 31 pages
+
+https://math.stanford.edu/~conrad/Perfseminar/refs/padiccompare.pdf, p-adic Hodge theory for rigid analytic varieties in 77 pages
+    - (Page 2, Theorem 1.1) For a proper smooth rigid-analytic variety $X$ over $K / \mathbb{Q}_p$, state the finiteness and vanishing theorems for étale cohomology $H_{\text{ét}}^i(X_{\mathbb{C}_p}, \mathbb{F}_p)$.
+    - (Page 3, Theorem 1.2) Compute $p$-adic étale cohomology with coefficients in a constructible $\mathbb{F}_p$-local system $\mathbb{L}$ on a connected affinoid rigid-analytic space using the étale fundamental group.
+
+https://arxiv.org/pdf/1606.01796, Scholze's q-analogues in 18 pages, MUST READ
+    - (Page 1) Define the $q$-analogues of integers $[n]_q = \frac{q^n - 1}{q - 1} = 1 + q + \dots + q^{n-1}$, $q$-factorials $[n]_q! = \prod_{k=1}^n [k]_q$, and Gaussian $q$-binomial coefficients $\binom{n}{k}_q = \frac{[n]_q!}{[k]_q! [n-k]_q!}$.
+    - (Page 1) Show that the $q$-binomial coefficient $\binom{n}{k}_q$ counts the number of $k$-dimensional subspaces of $\mathbb{F}_q^n$.
+    - (Page 1) Define the Jackson $q$-derivative $D_q f(x) = \frac{f(qx) - f(x)}{qx - x}$, compute $D_q(x^n) = [n]_q x^{n-1}$, and verify that $\lim_{q \to 1} D_q f(x) = f'(x)$.
+    - (Page 2) Formulate the $q$-de Rham complex $q\text{-}\Omega_{R/\mathbb{Z}}^\bullet$ over $\mathbb{Z}[[q-1]]$ specializing to de Rham cohomology at $q \to 1$.
+    - (Page 2) Compute the $q$-de Rham complex for $R = \mathbb{Z}[x]$ using the Jackson $q$-derivative.
+    - (Page 3) Relate the $q$-de Rham complex to the de Rham-Witt complex $W\Omega_{R/\mathbb{F}_p}^\bullet$ and crystalline cohomology.
+    - (Page 4) Compare classical Betti-de Rham comparisons over $\mathbb{C}$ with $p$-adic comparisons between étale, crystalline, and de Rham cohomology.
+
+https://arxiv.org/pdf/1003.1935, Langlands-Kottwitz for modular curves in 39 pages
+    - Fix a prime $p$ and integer $m \ge 3$. Describe the moduli space $\mathcal{M}_m / \mathbb{Z}[1/m]$ of elliptic curves with level-$m$ structure, and compute the Galois group of the Drinfeld level-$p^n$ covering $\pi_n: \mathcal{M}_{\Gamma(p^n), m} \to \mathcal{M}_m$ as $\mathrm{GL}_2(\mathbb{Z}/p^n\mathbb{Z})$.
+    - Compute the local Euler factor of the Hasse-Weil zeta function $\zeta_p(X, s)$ for a smooth projective variety $X / \mathbb{Q}$ with good reduction at $p$ via $\log \zeta_p(X, s) = \sum_{r=1}^\infty |\mathcal{X}(\mathbb{F}_{p^r})| \frac{p^{-r s}}{r}$.
+
+https://arxiv.org/pdf/1010.1540, local Langlands in GL_n, in 37 pages
+    - (Page 2) State the local Langlands correspondence for $\mathrm{GL}_n(F)$: the bijection between irreducible smooth representations of $\mathrm{GL}_n(F)$ and $n$-dimensional Frobenius-semisimple Weil-Deligne representations of $W_F$.
+    - (Page 2) Describe normalized parabolic induction $\pi_1 \boxplus \dots \boxplus \pi_t$ and its compatibility with direct sums of Weil-Deligne representations.
+
+https://people.mpim-bonn.mpg.de/scholze/DeformationSpaces.pdf, Weil groups to be fixed on bad reduction using deformation spaces in 33 pages
+
+https://people.mpim-bonn.mpg.de/scholze/GaloisTop.pdf, topological realizations of Galois groups in 76 pages
+    - (Page 2) State the Fontaine-Wintenberger theorem: the absolute Galois group of $K = \mathbb{Q}_p(\mu_{p^\infty})$ is canonically isomorphic to that of the tilt $K^\flat = \mathbb{F}_p((t^{1/p^\infty}))$.
+    - (Page 2) Construct the ring of big Witt vectors $W(A)$ for a commutative ring $A$ via formal power series with constant term 1.
+    - (Page 2) Compute addition and multiplication in the big Witt ring $W(A)$ and define the Teichmüller representative $[a] = (1 - at) \in W(A)$.
+    - (Page 2) Compute the ghost map $w: W(A) \to A^\mathbb{N}$ and show that it is an isomorphism when $A$ is a $\mathbb{Q}$-algebra.
+
+https://arxiv.org/pdf/2409.10557, stacky approach to p-adic Hodge theory, 105 pages
+    - (Page 3, Theorem 1.0.1) Compute the Fontaine comparison isomorphism $H_{\text{ét}}^i(X_{\mathbb{C}_p}, \mathbb{Q}_p) \otimes_{\mathbb{Q}_p} B_{\mathrm{cris}} \cong H_{\mathrm{cris}}^i(X/\mathcal{O}_K) \otimes_{\mathcal{O}_K} B_{\mathrm{cris}}$ for proper smooth varieties.
+
+https://people.mpim-bonn.mpg.de/scholze/Gestalten.pdf, Scholze's Gestalten, 121 pages
+    - State Gelfand duality between compact Hausdorff spaces and commutative $C^*$-algebras.
+    - State Stone duality between Stone spaces (profinite sets) and Boolean algebras.
+    - State the duality between affine schemes and commutative rings: $\mathbf{Aff} \cong \mathbf{CRing}^{\mathrm{op}}$.
+    - Describe Tannakian reconstruction of an affine group scheme $G$ from the symmetric monoidal category of its finite-dimensional representations $\mathbf{Rep}(G)$.
+    - Define Stefanich rings and describe Gestalten using canonical Grothendieck topologies and deloopings.
+    - Define $\kappa$-compactness, $\kappa$-filtered colimits, and $\kappa$-presentability in presentable $\infty$-categories.
+
+https://people.mpim-bonn.mpg.de/scholze/SixFunctors.pdf, Scholze's six functor formalisms, in 111 pages
+    - (Warm up, Schapira) Describe the six-functor formalism for ordinary functions: tensor product (pointwise product), direct image with compact support (integration), pullback (composition with $f$), and exceptional pullback.
+    - Define the base change isomorphism $g^* f_* \cong f'_* g'^*$ for a Cartesian diagram in a six-functor formalism.
+    - Formulate the projection formula $f_!(A \otimes f^* B) \cong f_! A \otimes B$.
+    - Define the category of correspondences $\mathbf{Corr}(\mathcal{C}, E)$ and composition of correspondences via fiber products.
+    - (Proper Base Change) Prove that for a proper morphism $f: X \to Y$, the stalk $(f_* \mathcal{F})_y$ is isomorphic to $H^0(X_y, \mathcal{F}|_{X_y})$.
+    - Formulate Verdier duality: the right adjoint $f^!$ to $f_!$ satisfying $\mathbf{R}\operatorname{Hom}(f_! A, B) \cong \mathbf{R}\operatorname{Hom}(A, f^! B)$.
+
+https://www.math.uni-bonn.de/people/scholze/padic_ktheory.pdf, Scholze's lecture on p-adic K-theory of p-adic rings
+    - Compute projective $R$-modules up to isomorphism as the group completion of the $\mathbb{E}_\infty$-monoid of isomorphism classes of vector bundles, yielding algebraic $K$-theory.
+    - State the Thomason-Trobaugh theorem: algebraic $K$-theory satisfies Nisnevich and cdh descent, but fails étale descent.
+    - For a strictly Henselian local ring $R$ with $\ell \in R^\times$, compute the $\ell$-adic completed $K$-theory homotopy groups: $\pi_{2i}(K(R)_\ell^\wedge) \cong \mathbb{Z}_\ell(i)$ and $\pi_{2i+1}(K(R)_\ell^\wedge) = 0$.
+
+https://people.mpim-bonn.mpg.de/scholze/Complex.pdf, Scholze's Complex Geometry, in 148 pages
+    - Construct the sheaf $\mathcal{O}$ on closed polydiscs in $\mathbb{C}^n$ and prove the vanishing of higher sheaf cohomology using Cauchy's integral formula and the $\bar{\partial}$-operator.
+    - Show that topological abelian groups do not form an abelian category (the first isomorphism theorem fails), and contrast this with the abelian category of condensed abelian groups.
+    - Define condensed sets as sheaves on the site of compact Hausdorff spaces with finite joint surjective covers.
+
+https://www.math.uni-bonn.de/people/scholze/PerfectoidSpaces.pdf, Scholze's perfectoid spaces
+
+https://people.mpim-bonn.mpg.de/scholze/Exp1252_Scholze.pdf, geometric Langlands summary in 56 pages
+
+https://arxiv.org/pdf/2412.03382, Berkovich motives in 65 pages
+
+https://people.mpim-bonn.mpg.de/scholze/RealLocalLanglands.pdf, geometrisation of real Langlands in 91 pages
+
+https://www.math.uni-bonn.de/people/scholze/Torsion.pdf, torsion in cohomology of locally symmetric varieties in 107 pages
+
+https://people.mpim-bonn.mpg.de/scholze/AnalyticDeRham.pdf, analytic de Rham stacks of Fargues-Fontaine curves in 129 pages
+
+https://arxiv.org/pdf/1812.09999, potential automorphy over CM fields in 218 pages
+
+https://www.math.uni-bonn.de/people/scholze/Berkeley.pdf, Scholze's Berkeley lectures in 260 pages
+
+https://www.math.uni-bonn.de/people/scholze/Geometrization.pdf, Fargues-Scholze geometrisation of the local Langlands correspondence in 350 pages
+
+https://janschuetz.perso.math.cnrs.fr/lehre/lecture_notes_topcond.pdf, topoi and condensed math in 53 pages
+    - (Page 2) Give an example of a continuous bijection of topological spaces that is not a homeomorphism (e.g., $[0, 1) \to S^1$).
+    - (Page 2) Define a Grothendieck topos as a category of sheaves on a small site.
+    - (Page 3) State Giraud's axioms characterizing a Grothendieck topos: universal colimits, disjoint coproducts, and effective equivalence relations.
+
+https://janschuetz.perso.math.cnrs.fr/skripte/vorlesung_the_curve.pdf, Fargues-Fontaine curve in 85 pages
+
+https://arxiv.org/pdf/math/0201175, almost ring theory by Gabber in 234 pages
+
+https://www.math.ias.edu/~bhatt/teaching/mat679w17/lectures.pdf, perfectoid spaces notes by Bhatt in 135 pages
+
+https://arxiv.org/pdf/2206.02022, p-adic 6 functor formalism (Mann's thesis)
+
+https://math.stanford.edu/~conrad/Perfseminar/refs/Huberformalrigid.pdf, formal schemes and rigid analytic varieties in 39 pages
+
+https://www.kwlan.org/articles/intro-sh-ex.pdf, example based introduction to Shimura varieties, Lan Kai-Wen
+    - (Page 4) Compute the profinite completion of the integers $\widehat{\mathbb{Z}} = \varprojlim \mathbb{Z}/N\mathbb{Z}$ and the ring of finite adeles $\mathbb{A}^\infty = \widehat{\mathbb{Z}} \otimes_\mathbb{Z} \mathbb{Q}$.
+    - (Page 4) Define the full ring of adeles $\mathbb{A} = \mathbb{A}^\infty \times \mathbb{R}$ via the restricted direct product.
+    - (Page 5) Define the symplectic group $\mathrm{Sp}_{2n}(\mathbb{R})$ and general symplectic group $\mathrm{GSp}_{2n}(\mathbb{R})$ preserving the standard skew-symmetric form $J_n = \begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix}$.
+    - (Page 5) Compute the similitude character $\nu: \operatorname{GSp}_{2n}(\mathbb{R}) \to \mathbb{R}^\times$ defined by $g^T J_n g = \nu(g) J_n$.
+    - (Page 6) Define the orthogonal groups $\mathrm{O}_n(\mathbb{R})$ and $\mathrm{O}_{p, q}(\mathbb{R})$ and their special orthogonal subgroups.
+    - (Page 6) Compute the symmetric space $S_n = \{X \in M_n(\mathbb{R}) \mid X^T = X, X > 0, \det X = 1\} \cong \mathrm{SL}_n(\mathbb{R})/\mathrm{SO}(n)$.
+    - (Page 7) Describe the action of $\mathrm{SL}_2(\mathbb{R})$ on the Poincaré upper half-plane $\mathbb{H} = \{z \in \mathbb{C} \mid \operatorname{Im}(z) > 0\}$ via Möbius transformations $z \mapsto \frac{az+b}{cz+d}$, with stabilizer $\mathrm{SO}(2)$ at $z = i$, giving $\mathbb{H} \cong \mathrm{SL}_2(\mathbb{R})/\mathrm{SO}(2)$.
+    - (Page 7) Define the Shimura variety double coset space $X_U = G(\mathbb{Q}) \backslash (D \times G(\mathbb{A}^\infty)) / U$ for a compact open subgroup $U \subset G(\mathbb{A}^\infty)$, and describe the Hecke action of $g \in G(\mathbb{A}^\infty)$ mapping $X_U \to X_{g U g^{-1}}$.
+
+https://www.math.uni-bonn.de/people/scholze/GL2.pdf, modular curve via the Langlands-Kottwitz methods in 39 pages
+
+https://people.mpim-bonn.mpg.de/scholze/CyclotomicSpectra.pdf, topological cyclic homology in 165 pages
+
+https://math.bu.edu/people/jsweinst/Moduli/Moduli.pdf, moduli of p-divisible groups, in 93 pages
+
+https://www.math.uni-bonn.de/people/scholze/Analytic.pdf, analytic geometry in 110 pages
+
+https://github.com/wgabrielong/Bonn-Winter-24-25/blob/build/V5A2-Habiro-Rings/Habiro_Rings_Notes.pdf, Habiro ring of a number field
+
+https://wgabrielong.github.io/Bonn-Summer-25/V5A4-Habiro-Cohomology/Habiro_Cohomology_Notes.pdf, Habiro cohomology in 50 pages
+
+https://math.bu.edu/people/jsweinst/Math274/ScholzeLectures.pdf, Scholze lectures on shtukas
+
+https://www.math.uni-bonn.de/people/scholze/Condensed.pdf, Scholze's notes on condensed mathematics
+
+https://www.math.ias.edu/~bhatt/teaching/mat517f25/pHT-notes.pdf, aspects of p-adic Hodge theory in 138 pages
+
+http://www.math.columbia.edu/algebraic_geometry/stacks-git/etale.pdf, stacks on etale morphisms in 31 pages
+
+https://arxiv.org/pdf/2401.07738, analytic de Rham stack in rigid geometry, in 110 pages, Juan Esteban Rodriguez Camargo
+
+https://www.math.ias.edu/~bhatt/teaching/mat731f17/lectures.pdf, abelian varieties by Bhatt
+
+https://www.math.ias.edu/~bhatt/teaching/prismatic-columbia/, Bhatt's prismatic cohomology notes
+
+https://arxiv.org/pdf/2603.03012, notes on solid geometry, in 130 pages. Condensed Mathematics
+
+https://web.ma.utexas.edu/users/benzvi/CurrentEvents021426.pdf, geometric Langlands in 34 pages
+
+https://arxiv.org/pdf/2602.21894, cyclosyntomic regulator in 29 pages
+
+https://arxiv.org/pdf/2603.01877, Berkovich 2-motives and normed ring stacks, Ko Aoki, in 50 pages
+
+https://bonndoc.ulb.uni-bonn.de/xmlui/bitstream/handle/20.500.11811/10125/6739.pdf?sequence=2&isAllowed=y, full 6-functor formalism for p-torsion étale sheaves in rigid-analytic geometry
+
+https://arxiv.org/pdf/2010.01906, stack of local systems of geometric Langlands theory, 346 pages
+
+https://janschuetz.perso.math.cnrs.fr/skripte/lecture_notes_arithlang.pdf, notes on Arithmetic Langlands in 103 pages. Anschutz
+
+https://rezk.web.illinois.edu/sag-chapter-web.pdf, Rezk's spectral algebraic geometry
+
+https://www.jmilne.org/math/CourseNotes/GT.pdf, group theory
+    - Compute the rotational symmetry group of a regular $n$-gon as the cyclic group $C_n$, and its full symmetry group as the dihedral group $D_n$ of order $2n$.
+    - Compute the quaternion group $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ as a subgroup of $\mathrm{GL}_2(\mathbb{C})$, and show all its subgroups are normal even though $Q_8$ is non-abelian.
+    - State Lagrange's theorem: for any subgroup $H \le G$, $|G| = [G : H] \cdot |H|$.
+    - Prove that any subgroup of index 2 is normal ($g H = H g = G \setminus H$).
+    - State the First Isomorphism Theorem: for any group homomorphism $\phi: G \to H$, $G/\ker(\phi) \cong \operatorname{im}(\phi)$.
+    - State the structure theorem for finitely generated abelian groups: $M \cong \mathbb{Z}^r \oplus \bigoplus_{i=1}^k \mathbb{Z}/d_i\mathbb{Z}$ with invariant factors $d_1 \mid d_2 \mid \dots \mid d_k$.
+    - Prove that every finite subgroup of the multiplicative group of a field $F^\times$ is cyclic.
+    - State Cayley's theorem: every finite group of order $n$ embeds as a subgroup of the symmetric group $S_n$.
+    - State the Burnside problem on whether every finitely generated group of finite exponent is finite.
+    - Compute the conjugacy classes, cycle types, and character table of the symmetric group $S_4$.
+    - State Schur's lemma for group representations over a field.
+
+https://florianadler.github.io/AlgebraBonn/KTheory.pdf, Wagner's algebraic and hermitian K-theory in 257 pages
+
+https://www.jmilne.org/math/CourseNotes/FTe6.pdf, field theory
+
+https://www.jmilne.org/math/Books/tcdraft.pdf, Milne's Tannakian categories
+
+https://www.jmilne.org/math/Books/iAG2022.pdf, Milne's algebraic groups
+
+https://www.jmilne.org/math/CourseNotes/MF.pdf, Milne's modular forms
+
+https://www.jmilne.org/math/Books/ectext6.pdf, Milne's elliptic curves
+
+https://www.jmilne.org/math/CourseNotes/ANTc.pdf, algebraic number theory by Milne
+    - Compute the ring of integers $\mathcal{O}_K$ of a quadratic field $K = \mathbb{Q}(\sqrt{d})$: $\mathbb{Z}[\sqrt{d}]$ if $d \equiv 2, 3 \pmod 4$, and $\mathbb{Z}[(1+\sqrt{d})/2]$ if $d \equiv 1 \pmod 4$.
+    - Compute the discriminant of a number field and prove that an element $\alpha \in \mathbb{Q}(\sqrt{d})$ is an algebraic integer if and only if $\operatorname{Tr}(\alpha), \operatorname{Nm}(\alpha) \in \mathbb{Z}$.
+    - Compute the ideal class group and class number $h_K = |\operatorname{Cl}(\mathcal{O}_K)|$ for $K = \mathbb{Q}(\sqrt{-5})$ and $\mathbb{Q}(\sqrt{2})$.
+    - State the Dedekind-Kummer theorem for the prime ideal factorization of $(p)$ in $\mathcal{O}_K$ via the polynomial factorization of the generating minimal polynomial mod $p$.
+
+https://math.uchicago.edu/~may/REU2018/REUPapers/Li%2CChe.pdf, class field theory and primes of the form x^2 + ny^2 by Che Li
+    - Compute the class group and Hilbert class field for $\mathbb{Q}(\sqrt{-5})$ and solve the prime representation problem $p = x^2 + 5y^2$.
+    - Compute the Minkowski bound for quadratic fields $\mathbb{Q}(\sqrt{-d})$ to determine class numbers.
+    - Compute the ring class field of the order $\mathbb{Z}[\sqrt{-27}]$ to solve $p = x^2 + 27y^2$.
+
+https://kskedlaya.org/condensed/condensed-2.html, condensed mathematics
+
+https://kskedlaya.org/prismatic/prismatic-2.html, prismatic cohomology
+
+https://kskedlaya.org/ant/, analytic number theory
+
+https://kskedlaya.org/weil-cohom/Weil-cohom-2.html, Weil cohomology in practice
+
+https://kskedlaya.org/cft/sec_kronweb.html, Kronecker-Weber Theorem
+    - State the Kronecker-Weber theorem: every finite abelian extension $K / \mathbb{Q}$ is contained in a cyclotomic field $\mathbb{Q}(\mu_n)$.
+    - Classify quadratic extensions of $\mathbb{Q}$ contained in $\mathbb{Q}(\mu_n)$ using the sign of the discriminant.
+    - Define the Artin map on unramified prime ideals $\mathfrak{p} \mapsto \left(\frac{L/K}{\mathfrak{p}}\right) = \operatorname{Frob}_\mathfrak{p}$ and state the Artin Reciprocity Law.
+    - Prove that if $\gcd(m, n) = 1$, then $1 - \zeta_m$ and $n$ are coprime in $\mathbb{Z}[\zeta_m]$, and if $m$ is not a prime power, $1 - \zeta_m$ is a unit.
+
+https://www.jmilne.org/math/CourseNotes/CFTc.pdf, class field theory
+    - Compute prime ideal ramification in quadratic fields $\mathbb{Q}(\sqrt{m})$.
+    - Compute the Hilbert class field of $\mathbb{Q}(\sqrt{-5})$ and show that only 2, 5, and $\infty$ ramify in $L$.
+    - Compute the group homology $H_1(G, \mathbb{Z}) \cong G^{\mathrm{ab}}$ via the augmentation sequence $0 \to I_G \to \mathbb{Z}[G] \to \mathbb{Z} \to 0$.
+    - State the local Artin isomorphism $K^\times / \operatorname{Nm}_{L/K}(L^\times) \cong \operatorname{Gal}(L/K)^{\mathrm{ab}}$ and the local fundamental class in $H^2(\operatorname{Gal}(L/K), L^\times) \cong \frac{1}{[L:K]}\mathbb{Z}/\mathbb{Z}$.
+
+https://yufeizhao.com/gtacbook/gtacbook.pdf, graph theory and additive combinatorics
+
+https://math.bme.hu/~gabor/oktatas/SztoM/TaoVu.AddComb.pdf, Tao-Vu additive combinatorics
+    - (Page 2) Prove Markov's inequality: $\mathbb{P}(X \ge a) \le \frac{\mathbb{E}[X]}{a}$ for a non-negative random variable $X$.
+    - (Page 3) Prove the Union Bound (Boole's inequality) using linearity of expectation on indicator functions: $\mathbb{P}(\bigcup E_i) \le \sum \mathbb{P}(E_i)$.
+    - (Page 3) State and prove the Borel-Cantelli lemmas for sequences of events $(E_n)_{n \ge 1}$.
+    - (Exercise 1.1.1) Compute Chebyshev's inequality $\mathbb{P}(|X - \mathbb{E}[X]| \ge \lambda \sigma) \le \frac{1}{\lambda^2}$ from Markov's inequality applied to $(X - \mathbb{E}[X])^2$.
+    - (Theorem 1.8) Derive Chernoff bounds by applying Markov's inequality to the moment generating function $\mathbb{E}[e^{t X}]$.
+    - State the Lovász Local Lemma (symmetric and asymmetric versions) for avoiding mutually dependent bad events.
+    - (Lemma 2.1) Prove the sumset bounds $|A + B| \ge |A| + |B| - 1$ in $\mathbb{Z}$ and $|n A| \le \binom{|A| + n - 1}{n}$.
+    - (Definition 2.5) Define the Ruzsa distance $d(A, B) = \ln \frac{|A - B|}{|A|^{1/2} |B|^{1/2}}$ and prove the Ruzsa triangle inequality $d(A, C) \le d(A, B) + d(B, C)$.
+    - (Lemma 4.5) Define the discrete Fourier transform $\widehat{f}(\xi) = \mathbb{E}_{x \in G}[f(x) e(-\xi \cdot x)]$ on finite abelian groups and prove Parseval's and Plancherel's identities.
+
+https://www.math.cmu.edu/~ttkocz/teaching/1819/read-sem-notes.pdf, Minkowski's theorem and lattice points
+    - State Minkowski's Theorem: any symmetric convex body $C \subset \mathbb{R}^d$ with $\operatorname{vol}(C) > 2^d$ contains a non-zero lattice point in $\mathbb{Z}^d$.
+    - Prove Fermat's Two-Square Theorem (primes $p \equiv 1 \pmod 4$ are sums of two squares) using Minkowski's theorem.
+
+https://kskedlaya.org/cft/sec_Kummer_theory.html, Kummer theory
+    - State and prove Hilbert's Theorem 90: $H^1(\operatorname{Gal}(L/K), L^\times) = 0$ for cyclic Galois extensions.
+    - Formulate Kummer theory: abelian extensions of exponent $n$ of a field $K$ containing $\mu_n$ correspond bijectively to subgroups of $K^\times / (K^\times)^n$.
+
+https://www.jmilne.org/math/CourseNotes/LECc.pdf, etale cohomology lecture
+
+https://www.jmilne.org/math/xnotes/svi.pdf, Milne's Shimura varieties notes in 172 pages
+
+https://www.jmilne.org/math/Documents/DeligneArcata.pdf, Deligne's Arcata for etale cohomology
+    - Define a sieve on an object $U$ in a category, and formulate the sheaf condition using covering sieves.
+    - Compare the sieve perspective of Grothendieck topologies with the Čech covering perspective.
+
+https://math.uchicago.edu/~emerton/gl2.pdf, adelic translation for GL2 by Emerton
+
+https://www.math.ucla.edu/~tao/247a.1.06f/notes0.pdf, Fourier summation introduction and its key examples, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247a.1.06f/notes1.pdf, Calderon-Zygmund-Stein theory, estimating output functions, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247a.1.06f/notes2.pdf, complex and real interpolation methods, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247a.1.06f/notes3.pdf, Hardy-Littlewood maximal inequality and averaging operators, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247a.1.06f/notes4.pdf, Hilbert transform and singular integral operators, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247a.1.06f/notes5.pdf, weighted inequalities and weighted Lp estimates, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247b.1.07w/notes6.pdf, paraproducts and multilinear operators, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247b.1.07w/notes7.pdf, T(1) theorem and Calderon-Zygmund operators, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247b.1.07w/notes8.pdf, oscillatory integrals and stationary phase estimates, Tao harmonic analysis
+
+https://www.math.ucla.edu/~tao/247b.1.07w/notes9.pdf, Fourier analysis on finite abelian groups, Tao harmonic analysis
+    - (Page 1) Define normalized Haar measure on a finite group $G$: $\int_G f(x) \, dx = \frac{1}{|G|} \sum_{x \in G} f(x)$.
+    - (Page 3) State the Gelfand-Mazur theorem for finite abelian groups, showing that all irreducible translation-invariant subspaces are 1-dimensional.
+    - (Page 5) State the Peter-Weyl theorem for finite abelian groups: the characters $\widehat{G}$ form an orthonormal basis of $L^2(G)$, yielding $f(x) = \sum_{\chi \in \widehat{G}} \widehat{f}(\chi) \chi(x)$.
+
+https://www.math.ucla.edu/~tao/247b.1.07w/notes10.pdf, representation theory for finite non-abelian groups, Tao harmonic analysis
+    - (Page 2) Prove Weyl's unitary trick: every finite-dimensional representation of a finite group can be made unitary by averaging the inner product.
+    - (Page 4) State Schur's Lemma for representations of finite groups over $\mathbb{C}$.
+    - (Page 4) Prove the Jordan-Hölder and Maschke theorems: every representation of a finite group over $\mathbb{C}$ decomposes uniquely into a direct sum of irreducible representations.
+    - (Page 6) Define the matrix-valued Fourier transform $\widehat{f}(\rho) = \int_G f(x) \rho(x)^* \, dx$ and prove the non-abelian Fourier inversion formula.
+
+https://www.jmilne.org/math/Documents/fac.pdf, Serre's sheaf theory (FAC), translated by Milne
+
+https://www.ms.uky.edu/~sohum/ma561/notes/workspace/books/serre_galois_theory.pdf, Serre's Galois Theory topics
+
+https://web.stanford.edu/~bvchurch/assets/files/talks/Galois-Reps.pdf, Galois representations summary
+
+https://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf, elliptic curves Silverman slides
+    - (Slide 9) Compute the discriminant $\Delta = -16(4A^3 + 27B^2)$ of the Weierstrass elliptic curve $y^2 = x^3 + Ax + B$.
+    - (Slide 16) Describe the geometric chord-and-tangent group law on an elliptic curve.
+    - (Slide 27) Derive the algebraic addition formulas for $P_1 + P_2 = P_3 = (x_3, y_3)$ using the slope $\lambda = \frac{y_2 - y_1}{x_2 - x_1}$ (or $\lambda = \frac{3x_1^2 + A}{2y_1}$ if $P_1 = P_2$).
+    - (Slide 41) Define the Weierstrass $\wp$-function $\wp(z; \Lambda) = \frac{1}{z^2} + \sum_{\omega \in \Lambda \setminus \{0\}} \left( \frac{1}{(z-\omega)^2} - \frac{1}{\omega^2} \right)$ and its differential equation $(\wp')^2 = 4\wp^3 - g_2\wp - g_3$.
+    - (Slide 42) Show that $E(\mathbb{C}) \cong \mathbb{C}/\Lambda \cong S^1 \times S^1$, and compute its $N$-torsion subgroup $E[N] \cong \mathbb{Z}/N\mathbb{Z} \times \mathbb{Z}/N\mathbb{Z}$.
+    - (Slide 43) State the Mordell-Weil Theorem: for an elliptic curve $E / \mathbb{Q}$, $E(\mathbb{Q}) \cong E(\mathbb{Q})_{\mathrm{tors}} \oplus \mathbb{Z}^r$.
+    - (Slide 45) State Mazur's Torsion Theorem classifying the 15 possible torsion subgroups $E(\mathbb{Q})_{\mathrm{tors}}$.
+    - (Slide 49) State Hasse's Theorem: for an elliptic curve over $\mathbb{F}_p$, $|E(\mathbb{F}_p) - (p + 1)| \le 2\sqrt{p}$.
+    - (Slide 64) Define the Weil pairing $e_N: E[N] \times E[N] \to \mu_N$ as a non-degenerate, alternating, Galois-equivariant bilinear form.
+    - (Slide 76) Define the logarithmic height $h(P) = \ln \max(|a|, |b|)$ for $x(P) = a/b \in \mathbb{Q}$, and the Néron-Tate canonical height $\widehat{h}(P) = \lim_{n \to \infty} \frac{h(2^n P)}{4^n}$.
+    - (Slide 93) State the Birch and Swinnerton-Dyer (BSD) Conjecture relating the algebraic rank of $E(\mathbb{Q})$ to the order of vanishing of $L(E, s)$ at $s = 1$.
+
+https://static1.squarespace.com/static/57bf2a6de3df281593b7f57d/t/600db4f1676f6519410f71e9/1611511026377/serre_1972_translation.pdf, Serre's Galois representations of elliptic curves
+    - (Page 5) For an elliptic curve $E$ with good reduction at a finite place $v$, describe the reduction $\widetilde{E}_v / k(v)$ and the action of the inertia group.
+
+https://www.math.mcgill.ca/barr/papers/gk.pdf, Grothendieck's Tohoku, homological algebra
+
+https://math24.wordpress.com/wp-content/uploads/2013/02/algebra-serge-lang.pdf, Lang's algebra
+
+https://kerodon.net/kerodon.pdf, Kerodon, Lurie
+
+https://case.edu/artsci/math/mwmeckes/matrix-analysis.pdf, matrix analysis notes
+
+https://webusers.imj-prg.fr/~julien.marche/Ref_GL_GT/Bump.pdf, Bump's automorphic forms
+
+https://www.math.stonybrook.edu/~aknapp/download/Beyond2-clickable.pdf, Knapp's Lie groups
+
+https://math.stanford.edu/~vakil/216blog/FOAGoct2125public.pdf, Vakil's algebraic geometry
+
+https://stacks.math.columbia.edu/tag/07JV, the Snake Lemma in abelian categories
+    - State the Snake Lemma: given a commutative diagram with exact rows in an abelian category, construct the natural connecting homomorphism $\delta: \ker(c) \to \operatorname{coker}(a)$ yielding the six-term exact sequence $0 \to \ker(a) \to \ker(b) \to \ker(c) \xrightarrow{\delta} \operatorname{coker}(a) \to \operatorname{coker}(b) \to \operatorname{coker}(c) \to 0$.
+
+https://stacks.math.columbia.edu/tag/0517, finite modules and finitely presented modules
+    - Prove that an $R$-module $M$ is finitely presented if and only if it is finitely generated and the module of relations among the generators is finitely generated ($R^m \to R^n \to M \to 0$).
+    - (Lemma 10.5.3) Prove that in a short exact sequence $0 \to M_1 \to M_2 \to M_3 \to 0$, if $M_1$ and $M_3$ are finitely generated (resp. finitely presented), then so is $M_2$.
+
+https://stacks.math.columbia.edu/tag/00F2, ring maps of finite type and finite presentation
+    - Define a ring map $R \to S$ to be of finite type if $S \cong R[x_1, \dots, x_n]/I$, and of finite presentation if $I$ is finitely generated ($S \cong R[x_1, \dots, x_n]/(f_1, \dots, f_m)$).
+
+https://stacks.math.columbia.edu/tag/0562, finite ring maps
+
+https://stacks.math.columbia.edu/tag/07N7, colimits
+    - (Lemma 10.8.2) Construct the directed colimit $\varinjlim M_i$ of a filtered system of $R$-modules as a quotient $\bigoplus M_i / \sim$.
+
+https://stacks.math.columbia.edu/tag/00CM, localisation
+    - Construct the localization $S^{-1} A$ of a ring $A$ with respect to a multiplicative subset $S$, and prove its universal property.
+    - Prove that localization is an exact functor: $S^{-1}(0 \to M' \to M \to M'' \to 0)$ remains exact.
+
+https://stacks.math.columbia.edu/tag/00CV, tensor products
+    - (Lemma 10.12.2) Construct the tensor product of modules $M \otimes_R N$ and prove its universal property for $R$-bilinear maps.
+    - (Lemma 10.12.8) State and prove the Tensor-Hom adjunction: $\operatorname{Hom}_R(M \otimes_R N, P) \cong \operatorname{Hom}_R(M, \operatorname{Hom}_R(N, P))$.
+    - Prove that the tensor product functor $-\otimes_R N$ is right exact and preserves all colimits.
+
+https://stacks.math.columbia.edu/tag/05G3, base change
+    - (Definition 10.14.1) Define the base change of an $R$-algebra $S$ along $R \to R'$ via the tensor product $S' = S \otimes_R R'$.
+
+https://stacks.math.columbia.edu/tag/00H9, flat modules and flat ring maps
+    - Define a flat $R$-module $M$ by the exactness of the functor $-\otimes_R M$, and a faithfully flat module by the property that $-\otimes_R M$ is exact and reflects non-zero modules.
+    - (Lemma 10.39.2) Prove that for a flat module $M$ and ideals $I, J \subseteq R$, $(I \cap J)M = IM \cap JM$.
+
+https://stacks.math.columbia.edu/tag/07BH, local rings
+    - Define a local ring $(R, \mathfrak{m}, k)$ and show that $x \in R$ is a unit if and only if $x \notin \mathfrak{m}$.
+
+https://stacks.math.columbia.edu/tag/00DR, prime avoidance and algebraic lemmas
+
+https://stacks.math.columbia.edu/tag/07RC, Nakayama's lemma
+    - Prove Nakayama's Lemma: if $M$ is a finitely generated $R$-module and $I M = M$ for $I \subseteq \operatorname{Jac}(R)$, then $M = 0$.
+
+https://stacks.math.columbia.edu/tag/00FM, Noetherian rings
+    - (Lemma 10.31.1) State the Hilbert Basis Theorem: if $R$ is Noetherian, then the polynomial ring $R[X]$ and power series ring $R[[X]]$ are Noetherian.
+
+https://stacks.math.columbia.edu/tag/0594, Mittag-Leffler systems
+    - Define the Mittag-Leffler condition for an inverse system of abelian groups $(A_i, \phi_{ij})$, and prove that if $(A_i)$ is Mittag-Leffler, then $\varprojlim^1 A_i = 0$.
+
+https://stacks.math.columbia.edu/tag/00LO, Ext groups
+    - Define $\operatorname{Ext}_R^n(M, N)$ as the right derived functors of $\operatorname{Hom}_R(M, -)$, classifying $n$-fold extensions.
+
+https://stacks.math.columbia.edu/tag/00LY, Tor groups and flatness
+    - Define $\operatorname{Tor}_n^R(M, N)$ as the left derived functors of $M \otimes_R -$, and show that $\operatorname{Tor}_1^R(M, N) = 0$ for flat modules.
+
+https://stacks.math.columbia.edu/tag/0AUH, regular sequences
+    - Define an $M$-regular sequence $(x_1, \dots, x_n)$ on an $R$-module $M$: $x_i$ is a non-zerodivisor on $M/(x_1, \dots, x_{i-1})M$ for all $1 \le i \le n$.
+
+https://stacks.math.columbia.edu/tag/00LE, depth of an ideal in a finite R-module
+    - Define the depth $\operatorname{depth}_I(M)$ as the maximal length of an $M$-regular sequence in $I$.
+
+https://stacks.math.columbia.edu/tag/02M4, embedded primes
+
+https://stacks.math.columbia.edu/tag/00L9, associated primes
+
+https://stacks.math.columbia.edu/tag/05CU, coherent rings
+
+https://stacks.math.columbia.edu/tag/00N7, Cohen-Macaulay rings
+
+https://www.fuw.edu.pl/~derezins/mat-t.pdf, general topology
+    - Compute the cardinality of open sets in the discrete topology ($2^X$) and indiscrete topology ($\{\emptyset, X\}$).
+    - Explain why topologies are defined with arbitrary unions and finite intersections of open sets.
+
+https://www.fuw.edu.pl/~derezins/mat-c.pdf, C*-algebras
+    - Define a $C^*$-algebra as a Banach $*$-algebra satisfying the $C^*$-identity $\|A^* A\| = \|A\|^2$.
+    - Compute the spectral radius $r(A) = \lim \|A^n\|^{1/n}$ for normal, self-adjoint, unitary, and projection operators.
+
+https://www.fuw.edu.pl/~derezins/mat-o.pdf, bounded operator algebras
+
+https://www.fuw.edu.pl/~derezins/mat-r.pdf, L^2(R^d) operators
+
+https://www.fuw.edu.pl/~derezins/mat-u.pdf, unbounded operators
+
+https://www.fuw.edu.pl/~derezins/mat-m.pdf, measure theory
+    - Define rings and $\sigma$-algebras of sets and verify that every field of sets is a ring closed under complements.
+
+https://lawverearchives.com/wp-content/uploads/2024/12/1970-quantifiers-and-sheaves.pdf, Lawvere and Tierney's Quantifiers and Sheaves
+    - Define an elementary topos as a Cartesian closed category with finite limits and a subobject classifier $\Omega$.
+    - Compute the subobject classifier $\Omega$ for the topos of sheaves $\operatorname{Sh}(X)$ on a topological space.
+
+https://www.math.cmu.edu/~af1p/Teaching/Combinatorics/Slides/Basic-Counting.pdf, basic counting and combinatorics
+    - (Page 2) Compute the number of functions $[n] \to [m]$ as $m^n$, and subsets of $[n]$ as $2^n$.
+    - (Page 5) Show that the number of even subsets of a non-empty finite set equals the number of odd subsets ($2^{n-1}$).
+    - Compute the binomial coefficients $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ and Pascal's identity $\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$.
+    - State Vandermonde's convolution formula: $\sum_{r=0}^k \binom{m}{r}\binom{n}{k-r} = \binom{m+n}{k}$.
+
+https://www.math.stonybrook.edu/~kamenova/homepage_files/Hartshorne_engl.pdf, Hartshorne chapter 1.1 to 1.7
+    - (Example 1.1.1) Classify the closed algebraic sets of $\mathbb{A}^1(k)$ over an algebraically closed field as finite sets of points or $\mathbb{A}^1(k)$ itself.
+    - (Proposition 1.5) Prove that every algebraic set $Y$ in a Noetherian topological space decomposes uniquely as a finite union of irreducible components $Y = Y_1 \cup \dots \cup Y_r$.
+    - (Theorem 1.8A) Prove that the dimension of an affine variety $Y$ equals the transcendence degree of its function field $K(Y)$ over $k$, and $\dim \mathbb{A}^n = n$.
+    - (Exercise 2.14) Define the Segre embedding $\psi: \mathbb{P}^n \times \mathbb{P}^m \to \mathbb{P}^{nm+n+m}$ and compute its defining equations.
+    - (Proposition 2.2) Prove that the standard projective charts $U_i = \{x_i \ne 0\} \subset \mathbb{P}^n$ are homeomorphic to affine space $\mathbb{A}^n$.
+    - (Theorem 5.1) Prove that a point $P$ on an affine variety $Y \subset \mathbb{A}^n$ is non-singular if and only if the local ring $\mathcal{O}_{Y, P}$ is a regular local ring ($\dim_{\kappa(P)} \mathfrak{m}/\mathfrak{m}^2 = \dim Y$).
+    - (Theorem 7.7) State Bézout's Theorem: for projective curves $Y, Z \subset \mathbb{P}^2$ of degrees $d, e$ intersecting transversely, $\sum_{P \in Y \cap Z} i(Y, Z; P) = d \cdot e$.
+
+https://www.math.purdue.edu/~jlipman/MA598/Serre-Course%20in%20Arithmetic.pdf, Serre's A Course in Arithmetic, Chapters I to VI
+    - (Chapter I, Theorem 2) Compute the order of the multiplicative group of a finite field: $|\mathbb{F}_q^\times| = q - 1$.
+    - (Chapter I, Theorem 3) State the Chevalley-Warning Theorem: if $f_\alpha \in \mathbb{F}_q[X_1, \dots, X_n]$ satisfy $\sum \deg(f_\alpha) < n$, then the number of common zeros $|V|$ is $0 \pmod p$.
+    - (Chapter I, Theorem 4) Define the Legendre symbol $\left(\frac{x}{p}\right) \equiv x^{(p-1)/2} \pmod p$ for $x \in \mathbb{F}_p^\times$.
+    - (Chapter I, Theorem 5) State the Law of Quadratic Reciprocity: $\left(\frac{p}{q}\right)\left(\frac{q}{p}\right) = (-1)^{\frac{p-1}{2}\frac{q-1}{2}}$ for odd primes $p, q$, and compute the Gauss sum proof.
+    - (Chapter II) Define the field of $p$-adic numbers $\mathbb{Q}_p$ and the ring of $p$-adic integers $\mathbb{Z}_p = \varprojlim \mathbb{Z}/p^n\mathbb{Z}$.
+    - (Chapter III) Define the Hilbert symbol $(a, b)_v \in \{\pm 1\}$ over local fields and prove Hilbert's reciprocity law $\prod_v (a, b)_v = 1$.
+    - (Chapter IV) State the Hasse-Minkowski Theorem: a quadratic form over $\mathbb{Q}$ has a non-trivial zero in $\mathbb{Q}$ if and only if it has a non-trivial zero in $\mathbb{R}$ and in $\mathbb{Q}_p$ for all primes $p$.
+
+https://prclare.people.wm.edu/m410f23/Serre_Complex_semisimple_Lie_algebras.pdf, Serre's Complex Semisimple Lie Algebras, Chapters 1 to 3
+    - (Chapter 1) Define nilpotent Lie algebras via the lower central series $C^{n+1}\mathfrak{g} = [\mathfrak{g}, C^n\mathfrak{g}]$ and solvable Lie algebras via the derived series $D^{n+1}\mathfrak{g} = [D^n\mathfrak{g}, D^n\mathfrak{g}]$.
+    - (Chapter 1, Theorem 1) State Engel's Theorem: a finite-dimensional Lie algebra $\mathfrak{g}$ is nilpotent if and only if $\operatorname{ad}(x)$ is nilpotent for all $x \in \mathfrak{g}$.
+    - (Chapter 1, Theorem 2) State Lie's Theorem: every finite-dimensional representation of a solvable Lie algebra over $\mathbb{C}$ has a simultaneous eigenvector.
+    - (Chapter 2) Define the Killing form $B(x, y) = \operatorname{Tr}(\operatorname{ad}(x)\operatorname{ad}(y))$ and state Cartan's criterion for semisimplicity ($B$ is non-degenerate).
+    - (Chapter 3) Define Cartan subalgebras $\mathfrak{h} \subset \mathfrak{g}$ as nilpotent self-normalizing subalgebras, and decompose $\mathfrak{g} = \mathfrak{h} \oplus \bigoplus_{\alpha \in \Phi} \mathfrak{g}_\alpha$ into root spaces.
+
+https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnortop.pdf, Milnor's Topology from a Differentiable Viewpoint
+    - Define regular and critical values of a smooth map $f: M \to N$.
+    - State Sard's Theorem: the set of critical values of a smooth map has Lebesgue measure zero.
+    - Define the Brouwer degree $\deg(f) \pmod 2$ and integer degree $\deg(f) = \sum_{x \in f^{-1}(y)} \operatorname{sgn}(df_x)$ for maps between compact oriented manifolds of the same dimension.
+    - Classify connected 1-dimensional smooth manifolds as the circle $S^1$ or the real line $\mathbb{R}$.
+
+https://www.math.auckland.ac.nz/~hekmati/Books/BottTu.pdf, Bott and Tu, differential topology
+
+https://opus.bibliothek.uni-augsburg.de/opus4/files/42513/notes.pdf, Blechschmidt's thesis on the internal language of schemes
+    - (Page 11) Explain the internal translation in $\operatorname{Sh}(X)$: an $\mathcal{O}_X$-module $\mathcal{F}$ is of finite type if and only if it is internally a finitely generated module over the ring object $\mathcal{O}_X$.
+    - (Page 19) Translate Kripke-Joyal semantics for open sets $U \subseteq X$: $U \Vdash \phi \land \psi \iff (U \Vdash \phi \text{ and } U \Vdash \psi)$, and $U \Vdash \exists x \, \phi(x) \iff$ there is an open cover $U = \bigcup U_i$ with sections $s_i \in \mathcal{F}(U_i)$ such that $U_i \Vdash \phi(s_i)$.
+    - (Page 28) Formulate the internal property that $\mathcal{O}_X$ is a local ring: $1 \ne 0$ and $x + y \text{ is invertible} \implies (x \text{ is invertible} \lor y \text{ is invertible})$.
+
+https://www.mimuw.edu.pl/~gael/xxi/files/slides_posters/Blechschmidt.pdf, Blechschmidt's slides on the internal language of schemes
+    - (Slide 19) Translate finite presentation and finite freeness of modules into internal language over the Zariski topos $\operatorname{Zar}(S)$.
+    - (Slide 27) Show that any finitely generated module over an internal field in $\operatorname{Zar}(S)$ is internally not-not free (generic freeness).
+
+https://math.berkeley.edu/~reb/courses/256A/256A.pdf, Borcherds algebraic geometry notes
+    - Solve $x^2 + y^2 = z^2$ in $\mathbb{Z}$ by factoring $x^2 = (z - y)(z + y)$ into coprime factors to obtain primitive Pythagorean triples.
+
+https://alainconnes.org/wp-content/uploads/segals-GammaRings.pdf, Segal's Gamma rings
+    - Compute the extension of the field with one element $\mathbb{F}_1$ to $\mathbb{Z}$ via Borger's $\Lambda$-rings.
+
+https://www.cambridge.org/core/books/galois-groups-and-fundamental-groups/2511B1C10ACF174A0F444A045D9C1F89, Galois groups and fundamental groups
+    - State Grothendieck's Galois-étale correspondence: the category of finite étale coverings of a connected scheme $X$ is anti-equivalent to the category of finite sets with a continuous action of the étale fundamental group $\pi_1^{\text{ét}}(X, \bar{x})$.
+    - Prove that every finite separable extension $L/k$ is generated by a single element (Primitive Element Theorem).
+    - State the Artin-Schreier theorem for cyclic extensions of degree $p$ in characteristic $p$ via $x^p - x = a$.
+    - Compute the absolute Galois group $\operatorname{Gal}(\mathbb{F}_q^{\mathrm{sep}}/\mathbb{F}_q) \cong \widehat{\mathbb{Z}}$ generated by the Frobenius automorphism $x \mapsto x^q$.
+
+https://www.math.ias.edu/~bhatt/math/etalestcksproj.pdf, Bhatt's notes on etale topology
+    - Define unramified and étale morphisms of schemes via the vanishing and freeness of the module of relative Kähler differentials $\Omega_{X/Y}^1 = 0$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides4.pdf, elliptic curves lecture 4
+    - (Page 3) Compute the group law formulas for addition and doubling on a Weierstrass elliptic curve $y^2 = x^3 + A x + B$.
+    - (Page 10) Define the $q$-th power Frobenius endomorphism $\pi_q: E \to E$ by $(x, y) \mapsto (x^q, y^q)$ and show $\deg(\pi_q) = q$.
+    - (Page 13) Define isogenies $\alpha: E_1 \to E_2$ as non-constant regular group homomorphisms, and decompose them into separable and purely inseparable parts $\alpha = \alpha_{\mathrm{sep}} \circ \pi_p^r$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides5.pdf, elliptic curves lecture 5
+    - (Page 2) Prove that every isogeny $\alpha: E_1 \to E_2$ has a finite kernel with $|\ker(\alpha)| = \deg_s(\alpha)$.
+    - (Page 5) Show that the degree map is multiplicative under composition of isogenies: $\deg(\alpha \circ \beta) = \deg(\alpha)\deg(\beta)$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides6.pdf, elliptic curves lecture 6
+    - (Page 3) Compute the degree of the multiplication-by-$n$ map: $\deg([n]) = n^2$.
+    - (Page 3) Compute the $n$-torsion subgroup $E[n] \cong \mathbb{Z}/n\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}$ for $\gcd(n, p) = 1$, and $E[p^r] \cong \mathbb{Z}/p^r\mathbb{Z}$ (ordinary) or $0$ (supersingular).
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides7.pdf, elliptic curves lecture 7
+    - (Page 2) Define the dual isogeny $\widehat{\alpha}: E_2 \to E_1$ satisfying $\widehat{\alpha} \circ \alpha = [\deg \alpha]$, and compute the trace of an isogeny $\operatorname{Tr}(\alpha) = \alpha + \widehat{\alpha}$.
+    - (Page 3) State Hasse's Theorem: the trace of Frobenius satisfies $|a_p| \le 2\sqrt{p}$ with $|E(\mathbb{F}_p)| = p + 1 - a_p$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides8.pdf, elliptic curves lecture 8
+    - (Page 3) State the Prime Number Theorem: $\pi(x) \sim \frac{x}{\ln x}$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides9.pdf, elliptic curves lecture 9
+    - (Page 2) Formulate the Discrete Logarithm Problem (DLP) in a cyclic group $\langle \alpha \rangle$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides10.pdf, elliptic curves lecture 10
+    - State generic bounds for solving the Discrete Logarithm Problem via the Baby-step Giant-step algorithm and Pollard's rho algorithm ($O(\sqrt{N})$).
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides11.pdf, elliptic curves lecture 11
+    - (Page 4) State Fermat's Little Theorem: $a^{p-1} \equiv 1 \pmod p$ for $\gcd(a, p) = 1$, and define Carmichael numbers.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides12.pdf, elliptic curves lecture 12
+    - (Page 2) Prove that the endomorphism ring $\operatorname{End}(E)$ of an elliptic curve is either $\mathbb{Z}$, an order in an imaginary quadratic field (CM), or a maximal order in a quaternion algebra (supersingular in characteristic $p$).
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides13.pdf, elliptic curves lecture 13
+    - (Page 2) Distinguish ordinary elliptic curves ($E[p] \cong \mathbb{Z}/p\mathbb{Z}$) and supersingular elliptic curves ($E[p] = 0$) in characteristic $p$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides14.pdf, elliptic curves lecture 14
+    - (Page 3) Define complex elliptic curves via lattices $E(\mathbb{C}) \cong \mathbb{C}/\Lambda$, and compute the $j$-invariant $j(\Lambda) = 1728 \frac{g_2^3}{g_2^3 - 27g_3^2}$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides16.pdf, elliptic curves lecture 16
+    - (Page 2) Prove that the field of meromorphic functions on $\mathbb{C}/\Lambda$ is generated by $\wp(z)$ and $\wp'(z)$: $\mathbb{C}(\Lambda) = \mathbb{C}(\wp, \wp')$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides17.pdf, elliptic curves lecture 17
+    - (Page 2) State the bijection between the ideal class group $\operatorname{Cl}(\mathcal{O})$ of an imaginary quadratic order and the set of homothety classes of lattices with CM by $\mathcal{O}$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides18.pdf, elliptic curves lecture 18
+    - (Page 3) Compute the action of the modular group $\mathrm{SL}_2(\mathbb{Z})$ on the upper half-plane $\mathbb{H}$ and the fundamental domain $\mathcal{F}$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides19.pdf, elliptic curves lecture 19
+    - (Page 2) Define principal congruence subgroups $\Gamma(N)$ and modular curves $Y(N) = \Gamma(N) \backslash \mathbb{H}$.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides20.pdf, elliptic curves lecture 20
+    - (Page 2) Define the modular polynomial $\Phi_N(X, Y)$ parameterizing pairs of $N$-isogenous elliptic curves.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides21.pdf, elliptic curves lecture 21
+    - (Page 2) Compute residue fields of maximal ideals in ring extensions of number fields.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides22.pdf, elliptic curves lecture 22
+    - (Page 2) Compute $\ell$-isogeny graphs of elliptic curves over finite fields using roots of modular polynomials.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides23.pdf, elliptic curves lecture 23
+    - (Page 3) Prove that every rational map from a smooth curve to a projective variety extends uniquely to a regular morphism.
+
+https://math.mit.edu/classes/18.783/2025/LectureSlides24.pdf, elliptic curves lecture 24
+    - (Page 2) Define modular forms of weight $k$ for $\Gamma \le \mathrm{SL}_2(\mathbb{Z})$ satisfying $f\left(\frac{a\tau+b}{c\tau+d}\right) = (c\tau+d)^k f(\tau)$ and holomorphy at cusps.
+
+https://aareyanmanzoor.github.io/assets/matsumura-CA.pdf, Matsumura's Commutative Algebra
+
+https://aareyanmanzoor.github.io/assets/hicks.pdf, Hicks' Differential Geometry
+
+https://aareyanmanzoor.github.io/assets/books/homotopical-algebra.pdf, Quillen's homotopical algebra
+
+https://aareyanmanzoor.github.io/assets/books/characteristic-classes.pdf, Milnor's Characteristic Classes
+
+https://morel.perso.math.cnrs.fr/MAT_217_notes.pdf, linear algebra by Sophie Morel
+    - (Page 2) Verify the field axioms and vector space axioms over a field $K$.
+    - (Page 7) Define the subspace $K^{(I)} \subseteq K^I$ of functions with finite support $\operatorname{supp}(f) = \{i \in I \mid f(i) \ne 0\}$.
+    - (Page 8) Define the transpose of an $m \times n$ matrix $A^T \in M_{nm}(K)$ and show $(A B)^T = B^T A^T$.
+    - (Page 12) State the Rank-Nullity Theorem: for any linear map $f: V \to W$, $\dim V = \dim \ker(f) + \operatorname{rank}(f)$.
+    - (Page 13) Define elementary row operations and their corresponding invertible elementary matrices in Reduced Row Echelon Form (RREF).
+    - (Page 20) Prove that any two bases of a finite-dimensional vector space have the same cardinality, defining $\dim_K(V)$.
+    - (Page 25) Prove Grassmann's formula: $\dim(W_1 + W_2) = \dim W_1 + \dim W_2 - \dim(W_1 \cap W_2)$.
+    - (Page 41) Define the dual space $V^* = \operatorname{Hom}_K(V, K)$ and dual basis $\{v_1^*, \dots, v_n^*\}$ satisfying $v_i^*(v_j) = \delta_{ij}$.
+    - (Page 54) Define the determinant $\det(A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \prod_{i=1}^n A_{i, \sigma(i)}$ as the unique alternating multilinear $n$-form on $K^n$ normalized by $\det(I_n) = 1$.
+    - (Page 62) State Cramer's rule and the adjugate formula $A \operatorname{adj}(A) = \det(A) I_n$.
+    - (Page 65) Define the characteristic polynomial $P_A(\lambda) = \det(\lambda I_n - A)$ and minimal polynomial $\mu_A(\lambda)$.
+    - (Page 81) State and prove the Cayley-Hamilton Theorem: every square matrix satisfies its own characteristic polynomial, $P_A(A) = 0$.
+    - (Page 86) State the Jordan-Chevalley decomposition: every endomorphism $T$ on a vector space over an algebraically closed field decomposes uniquely as $T = T_s + T_n$ where $T_s$ is diagonalizable (semisimple), $T_n$ is nilpotent, and $T_s T_n = T_n T_s$.
+    - (Page 87) State the Jordan Normal Form theorem for matrices over an algebraically closed field.
+    - (Page 94) Define non-degenerate symmetric bilinear forms and the orthogonal complement $W^\perp = \{v \in V \mid f(v, w) = 0 \text{ for all } w \in W\}$, showing $\dim W + \dim W^\perp = \dim V$.
+    - (Page 114) State the Spectral Theorem: every Hermitian matrix $A \in M_n(\mathbb{C})$ is unitarily diagonalizable with real eigenvalues ($U^* A U = D$).
+
+https://www.math.ens.psl.eu/~benoist/refs/Eisenbud.pdf, Eisenbud's Commutative Algebra
+    - (Page 22) Factor $x^p + y^p = \prod_{i=0}^{p-1} (x + \zeta^i y)$ in cyclotomic fields in connection with Fermat's Last Theorem.
+
+https://www.math.toronto.edu/~ila/Lang%20--%20Algebraic%20number%20theory.pdf, Lang's algebraic number theory
+    - (Page 5) Define an element $x \in B$ to be integral over $A \subseteq B$ if $x$ satisfies a monic polynomial with coefficients in $A$.
+    - (Page 6) Prove that the integral closure of $A$ in $B$ is a subring of $B$.
+    - (Page 6) Prove that if $L/K$ is a finite separable field extension and $\alpha \in \mathcal{O}_L$, then $\operatorname{Tr}_{L/K}(\alpha) \in \mathcal{O}_K$ and $\operatorname{Nm}_{L/K}(\alpha) \in \mathcal{O}_K$.
+    - (Page 8) State the Lying Over and Going Up theorems for integral extensions of commutative rings.
+    - (Page 11) State the Chinese Remainder Theorem for pairwise comaximal ideals in a commutative ring: $A/\bigcap \mathfrak{a}_i \cong \prod A/\mathfrak{a}_i$.
+
+https://agag-gathmann.math.rptu.de/class/commalg-2013/commalg-2013.pdf, Gathmann's commutative algebra
+
+https://stacks.math.columbia.edu/download/chow.pdf, Chow homology and Chern classes in Stacks
+
+https://www.mit.edu/~9.520/fall16/slides/mathcamp/mathcamp2016-fa-slides.pdf, functional analysis review
+
+https://stacks.math.columbia.edu/download/intersection.pdf, intersection theory in Stacks
+    - (Page 2) Define Serre's Tor-formula for the intersection multiplicity of two subvarieties $V, W \subseteq X$: $i(V, W; Z) = \sum_{i=0}^{\dim X} (-1)^i \operatorname{length}_{\mathcal{O}_{X, Z}}\left(\operatorname{Tor}_i^{\mathcal{O}_{X, Z}}(\mathcal{O}_{V, Z}, \mathcal{O}_{W, Z})\right)$.
+    - (Page 3) Define the group of $k$-cycles $Z_k(X)$ as the free abelian group on $k$-dimensional closed subvarieties, and define rational equivalence to obtain Chow groups $A_k(X)$.
+
+https://www.its.caltech.edu/~matilde/IntroNCGCaltech1.pdf, Marcolli's summary of differential geometry in 33 slides
+    - (Slide 5) Define smooth manifolds via smooth atlases and transition functions.
+
+https://math.gmu.edu/~rallen2/slides/gmu/lie%20algebra.pdf, Lie algebra in 81 slides
+
+https://dspace.mit.edu/bitstream/handle/1721.1/116075.2/WWCM.pdf?sequence=6&isAllowed=y, A Term of Commutative Algebra
+    - (Page 240) Verify the Frobenius identity $(a_1 + a_2)^p = a_1^p + a_2^p$ in characteristic $p$.
+
+https://www.maths.ox.ac.uk/system/files/media/HarmAnSlides.pdf, harmonic analysis
+    - (Page 4) Define the Fourier coefficients of a periodic function $f \in L^1(\mathbb{T})$: $\widehat{f}(n) = \int_0^1 f(x) e^{-2\pi i n x} \, dx$.
+    - (Page 6) Show that continuous characters $\chi: G \to \mathbb{C}^\times$ on a locally compact abelian group are eigenfunctions of all translation-invariant linear operators.
+    - (Page 8) Compute the dual groups $\widehat{\mathbb{R}^d} \cong \mathbb{R}^d$, $\widehat{\mathbb{T}^d} \cong \mathbb{Z}^d$, and $\widehat{\mathbb{Z}/N\mathbb{Z}} \cong \mathbb{Z}/N\mathbb{Z}$.
+    - (Page 13) Prove that the Fourier transform converts convolutions to pointwise products: $\widehat{f * g} = \widehat{f} \cdot \widehat{g}$.
+    - (Page 14) State Young's Convolution Inequality: $\|f * g\|_{L^r} \le \|f\|_{L^p} \|g\|_{L^q}$ for $1 + \frac{1}{r} = \frac{1}{p} + \frac{1}{q}$.
+    - (Page 33) Compute the Dirichlet kernel $D_N(t) = \sum_{n=-N}^N e^{2\pi i n t} = \frac{\sin((2N+1)\pi t)}{\sin(\pi t)}$ and the Fejér kernel $F_N(t) = \frac{1}{N+1} \sum_{n=0}^N D_n(t)$.
+    - (Page 54) Define the Schwartz space $\mathcal{S}(\mathbb{R}^d)$ and prove Plancherel's Theorem: the Fourier transform extends to a unitary isomorphism on $L^2(\mathbb{R}^d)$.
+    - (Page 62) Define tempered distributions $\mathcal{S}'(\mathbb{R}^d)$ and compute the distributional derivative of the Heaviside step function $H'(x) = \delta(x)$.
+    - (Page 78) State the Malgrange-Ehrenpreis Theorem: every non-zero linear differential operator with constant coefficients $P(D)$ admits a fundamental solution $P(D)E = \delta$.
+
+https://websites.umich.edu/~viktorb/etale_summer2020/Notes/cohomology-of-number-fields.pdf, etale cohomology with coefficients in G_m
+    - (Page 1) Define Tate cohomology groups $\widehat{H}^r(G, M)$ for a finite group $G$ acting on an abelian group $M$, with $\widehat{H}^0(G, M) = M^G / N_G M$ and $\widehat{H}^{-1}(G, M) = \ker(N_G) / I_G M$.
+    - (Page 1) Compute the Tate cohomology of $C_2$ acting on $\mathbb{C}^\times$ by complex conjugation: $\widehat{H}^0(C_2, \mathbb{C}^\times) = \mathbb{R}^\times / \operatorname{Nm}(\mathbb{C}^\times) \cong \mathbb{R}^\times / \mathbb{R}_{>0} \cong \mathbb{Z}/2\mathbb{Z}$, and $\widehat{H}^1(C_2, \mathbb{C}^\times) = 0$ by Hilbert's Theorem 90.
+
+https://arxiv.org/pdf/1703.02325, homological algebra for characteristic one
+
+https://people.brandeis.edu/~igusa/Math131b2021/A-SlidesComplete.pdf, homological algebra slides
+    - (Page 2) Define products and coproducts via their universal properties in a category $\mathcal{C}$.
+    - (Page 7) Define kernels and cokernels in an additive/abelian category.
+    - (Page 11) Define projective objects $P$ ($\operatorname{Hom}(P, -)$ is exact) and injective objects $I$ ($\operatorname{Hom}(-, I)$ is exact).
+    - (Page 13) Prove that every abelian group embeds into an injective abelian group (divisible $\mathbb{Z}$-module).
+    - (Page 21) Define chain complexes $(C_\bullet, d_\bullet)$ with $d^2 = 0$, chain maps, chain homotopies, and homology groups $H_n(C_\bullet) = \ker(d_n)/\operatorname{im}(d_{n+1})$.
+    - (Page 28) State the Snake Lemma and construct the connecting homomorphism for the long exact sequence in homology.
+    - (Page 36) Define left derived functors $L_n F(A) = H_n(F(P_\bullet))$ using projective resolutions, and right derived functors $R^n F(A) = H^n(F(I^\bullet))$ using injective resolutions.
+
+https://www.andrew.cmu.edu/user/avigad/Talks/fields_hott.pdf, Homotopy Type Theory summary in 39 slides
+    - (Slide 4) Explain the fundamental propositions-as-types / homotopy type theory correspondence: types are spaces, terms are points, identity types are path spaces, and equivalences are homotopies.
+    - (Slide 9) State the Awodey-Warren theorem establishing that identity types in Martin-Löf type theory satisfy the axioms of a Quillen model category.
+    - (Slide 34) State Voevodsky's Univalence Axiom: $(A \simeq B) \simeq (A = B)$.
+
+https://www.andrew.cmu.edu/user/avigad/Talks/survey1.pdf, subsystems of second order arithmetic in 29 slides
+    - (Slide 6) Define the formal systems of Second-Order Arithmetic: $\mathrm{RCA}_0$ (Recursive Comprehension), $\mathrm{WKL}_0$ (Weak König's Lemma), $\mathrm{ACA}_0$ (Arithmetical Comprehension), $\mathrm{ATR}_0$ (Arithmetical Transfinite Recursion), and $\Pi_1^1\text{-}\mathrm{CA}_0$.
+    - (Slide 8) Prove that $\mathrm{ACA}_0$ is a conservative extension of Peano Arithmetic ($\mathrm{PA}$) for first-order arithmetical sentences.
+
+https://www.andrew.cmu.edu/user/avigad/Talks/semantic.pdf, semantics of proof theory in 27 slides
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect1.pdf, homological algebra lecture 1
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect2.pdf, homological algebra lecture 2
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect3.pdf, homological algebra lecture 3
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect4.pdf, homological algebra lecture 4
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect5.pdf, homological algebra lecture 5
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect6.pdf, homological algebra lecture 6
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect7.pdf, homological algebra lecture 7
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect8.pdf, homological algebra lecture 8
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect9.pdf, homological algebra lecture 9
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect10.pdf, homological algebra lecture 10
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect11.pdf, homological algebra lecture 11
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect12.pdf, homological algebra lecture 12
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect13.pdf, homological algebra lecture 13
+
+https://people.clas.ufl.edu/rcrew/files/homology-lect14.pdf, homological algebra lecture 14
+
+https://stacks.math.columbia.edu/download/dualizing.pdf, dualizing complexes in commutative algebra
+
+https://people.brandeis.edu/~igusa/Math131b2021/B-SlidesComplete.pdf, commutative algebra summary
+    - (Page 3) Compute $\mathbb{Q}(i) \cong \mathbb{Q}[x]/(x^2 + 1)$ as a degree 2 field extension of $\mathbb{Q}$.
+    - (Page 4) Prove that the degree $[K(\alpha) : K]$ equals the degree of the minimal polynomial of $\alpha$ over $K$.
+    - (Page 5) Show that a finite field extension $L/K$ is separable if and only if the number of distinct $K$-embeddings $L \hookrightarrow \overline{K}$ equals $[L : K]$.
+
+https://people.brandeis.edu/~igusa/Math131b2021/C-SlidesComplete.pdf, Wedderburn structure theorem summary
+
+https://wstein.org/edu/2010/582e/lectures/all/galois_cohomology.pdf, Galois cohomology in 75 pages
+    - (Page 5) Define the 0-th Galois cohomology group $H^0(G, A) = A^G$ as the subgroup of $G$-invariants.
+    - (Page 5) Define 1-cocycles $Z^1(G, A) = \{f: G \to A \mid f(\sigma \tau) = f(\sigma) + \sigma f(\tau)\}$ and 1-coboundaries $B^1(G, A) = \{f(\sigma) = \sigma a - a\}$, and compute $H^1(G, A) = Z^1(G, A) / B^1(G, A)$.
+
+https://pages.uoregon.edu/ncp/Courses/KThyReading_W24_Web/IntroLectureSlides/Talk_slides.pdf, summary of algebraic K theory in 33 slides
+
+http://mat.msgsu.edu.tr/~aad/2012/Slides/paganin.pdf, class field theory in 33 slides
+    - (Slide 2) Define $G$-modules as abelian groups equipped with an action of a group $G$, equivalently modules over the group ring $\mathbb{Z}[G]$.
+    - (Slide 5) Define group cohomology $H^n(G, A) = \operatorname{Ext}_{\mathbb{Z}[G]}^n(\mathbb{Z}, A)$ as the right derived functors of the fixed point functor $A \mapsto A^G$.
+    - (Slide 7) State the Lyndon-Hochschild-Serre spectral sequence $E_2^{p, q} = H^p(G/H, H^q(H, A)) \implies H^{p+q}(G, A)$ for a normal subgroup $H \triangleleft G$.
+    - (Slide 9) State Hilbert's Theorem 90: $H^1(G_K, (K^{\mathrm{sep}})^\times) = 0$, and relate $H^2(G_K, (K^{\mathrm{sep}})^\times) \cong \operatorname{Br}(K)$ to the Brauer group of $K$.
+
+https://ctta.igrothendieck.org/wp-content/uploads/2024/09/Slides_ConnesAlain-1.pdf, primes, knots, and the adele class space
+    - (Slide 4) State Grothendieck's Galois-étale duality: the category of finite étale coverings of $X$ is equivalent to finite $\pi_1^{\text{ét}}(X, \bar{x})$-sets.
+    - (Slide 9) Explore the Mazur-Kapranov-Reznikov analogy between number fields and 3-manifolds: $\operatorname{Spec}(\mathbb{Z})$ is analogous to $S^3$, primes $p$ correspond to knots $K_p \hookrightarrow S^3$, and $\operatorname{Spec}(\mathbb{F}_p)$ corresponds to the knot $S^1$.
+    - (Slide 10) Show that the étale fundamental group $\pi_1^{\text{ét}}(\operatorname{Spec}(\mathbb{Z}[1/p]))$ is analogous to the fundamental group of a knot complement $\pi_1(S^3 \setminus K_p)$, and the Legendre symbol corresponds to the linking number of knots.
+    - (Slide 14) Describe the adèle class space $\mathbb{Q}^\times \backslash \mathbb{A}_\mathbb{Q} / \widehat{\mathbb{Z}}^\times$ in noncommutative geometry.
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-1.pdf, differential geometry tutorial, geometry of manifolds
+    - (Slide 6) Define a smooth atlas on a topological manifold $M$ as a collection of charts whose transition maps $\varphi_j \circ \varphi_i^{-1}: \varphi_i(U_i \cap U_j) \to \varphi_j(U_i \cap U_j)$ are $C^\infty$-diffeomorphisms on $\mathbb{R}^n$.
+    - (Slide 8) Define smooth maps between smooth manifolds $f: M \to N$ via coordinate representations in local charts.
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-2.pdf, differential geometry tutorial, manifolds and ringed spaces
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-3.pdf, differential geometry tutorial, partitions of unity
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-4.pdf, differential geometry tutorial, Hausdorff measure and Whitney's theorem
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-5.pdf, differential geometry tutorial, derivations in rings
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-6.pdf, differential geometry tutorial, germs and duality
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-7.pdf, differential geometry tutorial, category theory and locally trivial fibrations
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-8.pdf, differential geometry tutorial, vector bundles and locally trivial fibrations
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-9.pdf, differential geometry tutorial, Serre-Swan
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-10.pdf, differential geometry tutorial, de Rham algebra
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-11.pdf, differential geometry tutorial, Lie derivative
+
+http://verbit.ru/MATH/GEOM-2013/slides-pde-en-12.pdf, differential geometry tutorial, Poincare lemma
+
+https://webee.technion.ac.il/people/sason/raginsky_sason_ISIT_2015_tutorial_part_1.pdf, concentration of measure
+
+https://webee.technion.ac.il/people/sason/raginsky_sason_ISIT_2015_tutorial_part_2.pdf, concentration of measure by Chernoff bound
+
+https://www.its.caltech.edu/~matilde/InformationAlgebras2021Ma148.pdf, thermodynamic semirings and information algebras, Marcolli, in 111 slides
+
+https://math.mit.edu/~drew/vantage/ShinSlides.pdf, Shimura varieties PowerPoint slides
+
+https://www.its.caltech.edu/~matilde/ICMtalkMarcolliSlides.pdf, noncommutative geometry in arithmetic
+    - (Slide 3) Describe complex multiplication (CM) for elliptic curves $E_\tau = \mathbb{C}/(\mathbb{Z} + \tau \mathbb{Z})$ where $\operatorname{End}(E_\tau) \otimes \mathbb{Q} \cong K = \mathbb{Q}(\tau)$ is an imaginary quadratic field.
+    - (Slide 4) State the main theorem of complex multiplication: the $j$-invariant $j(\tau)$ generates the Hilbert class field $H = K(j(\tau))$ of $K$, and abelian extensions are generated by $j(\tau)$ and torsion coordinates.
+    - (Slide 6) Define the noncommutative torus $A_\theta$ as the universal $C^*$-algebra generated by unitaries $U, V$ satisfying $V U = e^{2\pi i \theta} U V$.
+
+https://www.math.fsu.edu/~marcolli/NCGNTslides.pdf, noncommutative geometry in arithmetic focusing on Shimura varieties
+
+https://www.andrej.com/assets/slides/laughable-theorems.pdf, Lawvere's fixed point theorem
+    - (Slide 9) State and prove Lawvere's Fixed Point Theorem: if there exists a point-surjective morphism $e: A \to Y^A$ in a Cartesian closed category, then every endomorphism $f: Y \to Y$ has a fixed point $y \in Y$ such that $f(y) = y$. Deduce Cantor's theorem, Russell's paradox, and Gödel's incompleteness theorem as corollaries.
+
+https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/weibel-homv2.pdf, Weibel's Homological Algebra
+
+https://stacks.math.columbia.edu/download/homology.pdf, Stacks Project Homological Algebra
+
+https://www.jmilne.org/math/xnotes/EOM95.pdf, Milne's definition of a Shimura variety in 2 pages
+    - Define a Shimura variety as a double coset space $\operatorname{Sh}_K(G, X) = G(\mathbb{Q}) \backslash (X \times G(\mathbb{A}_f)) / K$ for a reductive group $G / \mathbb{Q}$, a symmetric domain $X$, and a compact open subgroup $K \subset G(\mathbb{A}_f)$.
+    - State the Baily-Borel theorem: every Shimura variety has a canonical realization as a quasi-projective algebraic variety over $\mathbb{C}$ with a canonical model over its reflex field $E(G, X)$.
+
+https://www.imo.universite-paris-saclay.fr/~francois.charles/TLDR9.pdf, local class field theory in 3 pages
+    - Define the invariant map $\operatorname{inv}_K: \operatorname{Br}(K) \xrightarrow{\sim} \mathbb{Q}/\mathbb{Z}$ on the Brauer group of a non-archimedean local field $K$.
+    - State the Local Artin Reciprocity Theorem: the local Artin map $\theta_K: K^\times \to \operatorname{Gal}(K^{\mathrm{ab}}/K)$ is an injective homomorphism with dense image, identifying $\mathcal{O}_K^\times \cong I_K^{\mathrm{ab}}$ and sending uniformizers $\pi_K$ to geometric Frobenius elements.
+
+https://arxiv.org/pdf/1211.6357, Scholze's and Weinstein's notes of moduli of p-divisible groups
+
+https://www.jmilne.org/math/xnotes/1995IAS.pdf, Milne's expository articles on Shimura varieties
+    - (Page 2) Define the local zeta function $Z_v(Y, T) = \exp\left(\sum_{m=1}^\infty N_m \frac{T^m}{m}\right)$ of a smooth projective variety $Y$ over a finite residue field $k(v)$, where $N_m = |Y(k(v)_m)|$.
+    - (Page 3) Express the local zeta function via the characteristic polynomials of Frobenius on $\ell$-adic étale cohomology: $Z_v(Y, T) = \prod_{i=0}^{2\dim Y} P_i(T)^{(-1)^{i+1}}$ where $P_i(T) = \det(1 - T \cdot \operatorname{Frob}_v \mid H_{\text{ét}}^i(Y_{\overline{k}}, \mathbb{Q}_\ell))$.
+    - (Page 4) Classify Hermitian symmetric domains $X = G(\mathbb{R}) / K$ and their associated simple Lie groups via Dynkin diagrams and special nodes.
+
+https://www.jmilne.org/math/xnotes/Tate100.pdf, arithmetic duality summary by Milne in 23 pages
+    - (Page 2) Define the Weil-Châtelet group $\operatorname{WC}(A/K) \cong H^1(K, A)$ classifying principal homogeneous spaces (torsors) for an abelian variety $A / K$.
+    - (Page 2) State the Tate Local Duality theorem: for an abelian variety $A$ over a local field $K$, the cup product pairing $H^1(K, A) \times A'(K) \to H^2(K, \mathbb{G}_m) \cong \mathbb{Q}/\mathbb{Z}$ is a perfect pairing of locally compact groups, where $A'$ is the dual abelian variety.
+    - (Page 3) State the Barsotti-Weil formula: the dual abelian variety $A'$ represents the functor $\operatorname{Ext}^1(A, \mathbb{G}_m)$ of extensions of $A$ by $\mathbb{G}_m$.
+    - (Page 4) Formulate the Poitou-Tate 9-term exact sequence of global arithmetic duality for Galois cohomology over number fields.
+
+https://www.jmilne.org/math/xnotes/MOT.pdf, motives in 15 pages summary by Milne
+    - (Page 1) Formulate Poincaré duality and the Hard Lefschetz theorem on Betti cohomology of compact Kähler manifolds.
+    - (Page 2) State the Weil Conjectures for smooth projective varieties over finite fields (rationality, functional equation, Riemann hypothesis, and Betti numbers) as proven by Dwork, Grothendieck, and Deligne.
+    - (Page 3) Describe Grothendieck's category of pure Chow motives $\mathbf{Mot}(k)$ constructed from smooth projective varieties with correspondences modulo rational/algebraic/numerical equivalence.
+
+https://example.com/davenport-multiplicative-number-theory, Davenport's Multiplicative Number Theory
+    - (Page 2) Explain Euler's proof of the infinitude of primes using the divergence of the harmonic series via the Euler product $\zeta(s) = \prod_p (1 - p^{-s})^{-1}$ as $s \to 1^+$.
+    - (Page 2) Describe Dirichlet's extension of Euler's proof to primes in arithmetic progressions $a \pmod q$ using Dirichlet $L$-functions $L(s, \chi) = \sum \chi(n) n^{-s}$ and showing $L(1, \chi) \ne 0$.
+
+https://math.jhu.edu/~jmb/note/torext.pdf, Tor and Ext group computations
+    - (Page 1) Compute the tensor products $\mathbb{Z} \otimes_\mathbb{Z} H \cong H$, $\mathbb{Q} \otimes_\mathbb{Z} \mathbb{Q} \cong \mathbb{Q}$, and $\mathbb{Z}/n\mathbb{Z} \otimes_\mathbb{Z} \mathbb{Z}/m\mathbb{Z} \cong \mathbb{Z}/\gcd(n, m)\mathbb{Z}$.
+    - (Page 2) Compute $\operatorname{Tor}_1^\mathbb{Z}(\mathbb{Z}/n\mathbb{Z}, H) \cong H[n] = \{h \in H \mid n h = 0\}$, giving $\operatorname{Tor}_1^\mathbb{Z}(\mathbb{Z}/n\mathbb{Z}, \mathbb{Z}/m\mathbb{Z}) \cong \mathbb{Z}/\gcd(n, m)\mathbb{Z}$.
+    - (Page 2) Prove that $\operatorname{Tor}_1^\mathbb{Z}(\mathbb{Z}, H) = 0$ and $\operatorname{Tor}_1^\mathbb{Z}(\mathbb{Q}, H) = 0$ since $\mathbb{Z}$ is projective and $\mathbb{Q}$ is a flat $\mathbb{Z}$-module.
+    - (Page 4) Compute $\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z}, H) \cong H[n]$ and $\operatorname{Ext}_\mathbb{Z}^1(\mathbb{Z}/n\mathbb{Z}, H) \cong H / n H$.
+    - (Page 4) Compute $\operatorname{Ext}_\mathbb{Z}^1(\mathbb{Z}/n\mathbb{Z}, \mathbb{Z}) \cong \mathbb{Z}/n\mathbb{Z}$ and $\operatorname{Ext}_\mathbb{Z}^1(\mathbb{Z}/n\mathbb{Z}, \mathbb{Z}/m\mathbb{Z}) \cong \mathbb{Z}/\gcd(n, m)\mathbb{Z}$.
+    - (Page 5) Compute $\operatorname{Hom}_\mathbb{Z}(\mathbb{Q}, \mathbb{Z}) = 0$ and $\operatorname{Ext}_\mathbb{Z}^1(\mathbb{Q}, \mathbb{Z}) \cong \mathbb{A}_\mathbb{Q}^\infty / \mathbb{Q} \cong \mathbb{R} \oplus \dots$, which is an uncountably infinite-dimensional $\mathbb{Q}$-vector space.
+
+https://www.jmilne.org/math/xnotes/svn.pdf, Shimura varieties in 3 pages
+    - (Page 1) Classify simply connected 1-dimensional Riemann surfaces as the Riemann sphere $\mathbb{P}^1(\mathbb{C})$, the complex plane $\mathbb{C}$, and the unit disk/upper half-plane $\mathbb{D} \cong \mathbb{H}$.
+    - (Page 1) Construct Shimura curves as quotients $\Gamma \backslash \mathbb{H}$ where $\Gamma \subset B^\times$ is a discrete arithmetic subgroup arising from a quaternion algebra $B$ over a totally real field.
+    - (Page 2) Define automorphic forms on Shimura curves and characterize their $q$-expansions and rationality properties over number fields.
+    - (Page 3) Formulate Deligne's general axiomatic definition of Shimura varieties as algebraic moduli of abelian varieties with Hodge cycles.
+
+https://www.jmilne.org/math/xnotes/AVs.pdf, abelian varieties in 49 pages as a summary
+
+https://math.mit.edu/~sdlh/notes/shtukas_intro.pdf, shtukas in 18 slides
+
+https://websites.umich.edu/~asnowden/seminar/2017/drinfeld/ODM.pdf, Drinfeld module notes in 35 pages
+
+https://www.impan.pl/images/Notatki-z-wykadw/IMPANGA/ngo.pdf, stacks of shtukas in 20 pages
+
+https://www.ams.org/notices/200301/what-is.pdf, What is a Shtuka? by David Goss
+    - Explain the analogy between the differential operator $\frac{d}{dt}$ in characteristic zero and the Frobenius $p$-power operator $\tau(x) = x^p$ in characteristic $p$.
+    - Define the non-commutative polynomial ring $L\{\tau\}$ over a field of characteristic $p$ satisfying the commutation relation $\tau \cdot c = c^p \cdot \tau$.
+    - Define a Drinfeld $A$-module of rank $d$ over $L$ as an $\mathbb{F}_p$-algebra homomorphism $\psi: A \to L\{\tau\}$ such that $\psi_T = i(T) + a_1 \tau + \dots + a_d \tau^d$ with $a_d \ne 0$.
+    - Define a Drinfeld shtuka of rank $d$ on a curve $X / \mathbb{F}_p$ as a diagram of vector bundles $\mathcal{E} \xrightarrow{j} \mathcal{E}' \xleftarrow{\tau} \mathcal{E}$ where $j$ and $\tau$ are sheaf morphisms with cokernels supported on the pole $\infty$ and zero (characteristic point).
+
+https://www.ams.org/notices/200410/what-is.pdf, What is a Motive? by Barry Mazur
+    - Explain how the Jacobian variety $J(C) = \operatorname{Pic}^0(C)$ linearizes a smooth projective curve $C$, providing the universal 1-dimensional abelian variety quotient for degree zero divisors.
+    - Formulate Grothendieck's vision of motives as the universal cohomology theory factoring all classical Weil cohomology functors (Betti, de Rham, $\ell$-adic, crystalline) through an intermediate abelian category $\mathbf{Mot}(k)$.
+
+https://arxiv.org/pdf/0904.4265, gerbes and Cheeger-Simons theory
+
+https://www.ams.org/notices/200302/what-is.pdf, What is a Gerbe? by Nigel Hitchin
+    - Describe line bundles via transition functions $g_{\alpha\beta} \in \mathcal{O}^*$ on double overlaps $U_\alpha \cap U_\beta$ satisfying the 1-cocycle condition $g_{\alpha\beta} g_{\beta\gamma} g_{\gamma\alpha} = 1$, classified by $H^1(M, \mathcal{O}^*)$.
+    - Define a holomorphic gerbe via transition functions $g_{\alpha\beta\gamma} \in \mathcal{O}^*$ on triple overlaps $U_\alpha \cap U_\beta \cap U_\gamma$ satisfying the 2-cocycle condition $g_{\beta\gamma\delta} g_{\alpha\gamma\delta}^{-1} g_{\alpha\beta\delta} g_{\alpha\beta\gamma}^{-1} = 1$, classified by $H^2(M, \mathcal{O}^*)$.
+    - Describe how a bundle of projective spaces $P \to M$ with structure group $\operatorname{PGL}_{n+1}(\mathbb{C})$ defines an obstruction class in $H^2(M, \mathcal{O}^*)$ to lifting to a vector bundle $\mathrm{GL}_{n+1}(\mathbb{C})$.
+    - Define connective structures and curving on a gerbe to construct the 3-form curvature $H \in \Omega^3(M)$, representing a characteristic class in de Rham cohomology $[H/2\pi] \in H_{\mathrm{dR}}^3(M)$.
+    - Connect gerbes to the Dixmier-Douady class in $H^3(M, \mathbb{Z})$ and twisted $K$-theory.
+
+https://www.keerthimadapusi.com/assets/talks/2025-02-19-darmstadt.pdf, introduction to F-gauges in 17 pages, MUST READ
+
+https://www.keerthimadapusi.com/assets/lecture/padic_hodge_theory.pdf, p-adic Hodge theory in 85 pages, MUST READ
+
+https://maths.anu.edu.au/sites/prod.maths.sca-lws06.anu.edu.au/files/Gurney-talk-ntdu.pdf, q-de Rham in 95 slides
+    - (Slide 4) Compute the decomposition of differential $k$-forms on $\mathbb{A}_\mathbb{Z}^n$.
+    - (Slide 5) Compute the exterior derivative $d: \Omega^k \to \Omega^{k+1}$ on $\mathbb{Z}[x_1, \dots, x_n]$.
+
+https://simonsfoundation.s3.amazonaws.com/share/mps/conferences/2017_Conference_on_Number_Theory_Geometry_Moonshine_and_Strings/Kim.pdf, Arithmetic Chern-Simons theory by Minhyong Kim
+    - (Slide 4) Define the spectrum $\operatorname{Spec}(A)$ as the topological space of prime ideals of $A$ equipped with the Zariski topology.
+    - (Slide 24) Define the arithmetic zeta function $\zeta(X, s) = \prod_{x \in X_0} \frac{1}{1 - N(x)^{-s}}$ for an arithmetic scheme $X / \mathbb{Z}$.
+    - (Slide 34) Define the étale fundamental group $\pi_1^{\text{ét}}(X, \bar{x}) = \varprojlim \operatorname{Aut}_X(Y)$ classifying finite étale coverings $Y \to X$.
+    - (Slide 45) Prove that $\operatorname{Spec}(\mathbb{Z})$ is simply connected in the étale topology: $\pi_1^{\text{ét}}(\operatorname{Spec}(\mathbb{Z})) = 0$ (Minkowski's theorem on discriminants).
+
+https://perso.ens-lyon.fr/laurent.berger/articles/article05.pdf, p-adic representations Berger in 37 pages, MUST READ
+
+https://academicweb.nd.edu/~andyp/teaching/2020FallMath10850/ClarkNotes.pdf, Pete L Clark's calculus course
+
+https://www.ams.org/notices/200304/what-is.pdf, What is a Stack? by Barbara Fantechi
+    - Explain why the coarse moduli space of elliptic curves $\mathcal{M}_{1, 1} \cong \mathbb{A}^1$ (via the $j$-invariant) fails to admit a universal family: elliptic curves possess non-trivial automorphisms ($\pm \operatorname{id}$), preventing fine moduli spaces of schemes.
+    - Define the moduli stack of elliptic curves $\mathcal{M}_{1, 1}$ as a category fibered in groupoids over $\mathbf{Sch}$ where objects over $S$ are smooth proper families of elliptic curves $E \to S$, capturing all automorphism groups.
+
+https://www.ams.org/notices/201107/rtx110700955p.pdf, What is a Derived Stack? by Bertrand Toën
+    - Explain why classical moduli spaces and intersection theory fail for non-transverse intersections, motivating derived algebraic geometry.
+    - Define derived schemes and derived stacks as functors from simplicial commutative rings (or $\mathbb{E}_\infty$-rings) to simplicial sets ($\infty$-groupoids), replacing the classical truncation with homotopically smooth derived moduli spaces.
+
+https://www.ams.org/notices/200307/what-is.pdf, What is a Dessin d'Enfant? by Leila Schneps
+    - Define a Grothendieck dessin d'enfant as a bipartite graph embedded in a compact oriented topological surface whose complement is a union of topological disks.
+    - State Belyi's Theorem: a smooth projective algebraic curve $X / \mathbb{C}$ is defined over $\overline{\mathbb{Q}}$ if and only if there exists a non-constant meromorphic function $\beta: X \to \mathbb{P}^1$ (a Belyi map) ramified at most over $\{0, 1, \infty\}$.
+    - Explain how the absolute Galois group $\operatorname{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})$ acts faithfully on dessins d'enfants.
+
+https://www.ams.org/notices/200805/tx080500586p.pdf, What is a Toric Variety? by David Cox
+    - Define an affine toric variety $X_\sigma = \operatorname{Spec}(\mathbb{C}[S_\sigma])$ from a strongly convex rational polyhedral cone $\sigma \subset N_\mathbb{R}$, and a general toric variety $X_\Sigma$ from a fan $\Sigma$.
+    - Connect projective toric varieties to lattice polyhedra $P$ and moment maps $\mu: X_P \to P$ in symplectic geometry with fiber $T^n = (S^1)^n$.
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture001a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture002a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture003a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture004a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture005a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture006a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture007a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture008a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture009a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture010a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture011a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/lecture012a.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/spt-lec001.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/spt-lec002.pdf, Jardine lectures in homotopy theory
+
+https://math.sci.uwo.ca/~jardine/HomTh/spt-lec003.pdf, Jardine lectures in homotopy theory
+
+https://cdn.jsdelivr.net/gh/iblech/talk-homological-algebra@master/notes-derived-functors.pdf, derived functors in 16 pages
+
+https://www.jmilne.org/math/xnotes/CA210.pdf, commutative algebra by Milne for 65 pages
+
+https://math.mit.edu/juvitop/pastseminars/notes_2021_Spring/etale_thomason.pdf, etale cohomology in 13 pages
+
+https://www.math.columbia.edu/~dejong/wordpress/wp-content/uploads/2015/04/EtaleCohomology.pdf, etale cohomology in 71 pages
+
+https://shmakov.us/docs/Slides/Moduli.pdf, computations in moduli of curves
+
+https://www.math.wustl.edu/~matkerr/sl2notes.pdf, SL_2(R) notes in 36 pages
+
+https://arxiv.org/pdf/2205.14578, geometric Langlands notes in 83 pages
+
+https://www.jmilne.org/math/xnotes/tc2022.pdf, Tannakian categories in 78 pages
+
+https://www.benasque.org/2015numbers/slides/BrunoJoyal.pdf, p-adic Hodge theory and Bloch-Kato theory in 42 slides
+    - (Slide 3) Define Fontaine's period rings $B_{\mathrm{HT}}$, $B_{\mathrm{dR}}$, and $B_{\mathrm{cris}}$ and the associated functor $D_B(V) = (V \otimes_{\mathbb{Q}_p} B)^{G_K}$ for $p$-adic Galois representations $V$.
+    - (Slide 7) Compute the dimension inequality $\dim_K D_{\mathrm{dR}}(V) \le \dim_{\mathbb{Q}_p}(V)$, with equality if and only if $V$ is a de Rham representation.
+    - (Slide 8) Define Hodge-Tate representations and Hodge-Tate weights via the graded ring $B_{\mathrm{HT}} \cong \bigoplus_{j \in \mathbb{Z}} \mathbb{C}_p(j)$.
+
+https://ymsc.tsinghua.edu.cn/__local/7/B5/04/0890A5CE2893D5380292FD983CD_99A1AD7E_31656.pdf, pedagogical introduction to p-adic Hodge theory
+    - (Page 1) Recall the classical Hodge decomposition for a smooth projective variety $X / \mathbb{C}$: $H^n(X, \mathbb{C}) \cong \bigoplus_{p+q=n} H^{p, q}(X)$.
+    - (Page 2) Define the $p$-adic valuation $v_p: \mathbb{Q}_p \to \mathbb{Z} \cup \{\infty\}$ and the field $\mathbb{C}_p = \widehat{\overline{\mathbb{Q}_p}}$ as the completion of the algebraic closure of $\mathbb{Q}_p$.
+    - (Page 2) State the Hodge-Tate comparison theorem: for a smooth projective variety $X / K$, $H_{\text{ét}}^n(X_{\overline{K}}, \mathbb{Q}_p) \otimes_{\mathbb{Q}_p} \mathbb{C}_p \cong \bigoplus_{p+q=n} H^q(X, \Omega_{X/K}^p) \otimes_K \mathbb{C}_p(-p)$.
+
+https://utrechtgeometrycentre.nl/wp-content/uploads/2025/07/six-functors-for-etale-groupoids.pdf, etale groupoids
+
+https://swc-math.github.io/aws/2020/2020KimNotes1.pdf, Selmer schemes and non-abelian Chabauty
+    - Explain the geometric classification of Diophantine equations by genus: genus 0 (rational points via the Hasse principle), genus 1 (elliptic curves via Mordell-Weil $E(\mathbb{Q}) \cong E(\mathbb{Q})_{\mathrm{tors}} \oplus \mathbb{Z}^r$ and BSD), and genus $g \ge 2$ (Faltings' theorem: $X(\mathbb{Q})$ is finite).
+    - Define arithmetic principal $U$-bundles over $\operatorname{Spec}(K)$ for a topological group $U$ with continuous $G_K$-action, classified by the non-abelian Galois cohomology set $H^1(G_K, U)$.
+    - Describe the non-abelian Chabauty method (Chabauty-Kim) constructing the unipotent Albanese map $j: X(\mathbb{Q}) \to H^1(G_\mathbb{Q}, U)$ into the Selmer variety $\operatorname{Sel}(U)$ and intersecting with local $p$-adic points $X(\mathbb{Q}_p) \hookrightarrow H^1(G_{\mathbb{Q}_p}, U)$.
+
+https://swc-math.github.io/aws/2020/2020KimLecture2Slides.pdf, Kim-Chabauty Slide 2
+    - Explain the necessity of base points in universal covering spaces to obtain universal categorical properties and define fiber functors $F_x: \mathbf{Cov}(X) \to \mathbf{Set}$.
+
+https://swc-math.github.io/aws/2020/2020KimLecture4Slides.pdf, Kim-Chabauty Slide 4
+    - Formulate non-abelian reciprocity and generalized Selmer schemes for curves over number fields.
+
+https://ncatlab.org/nlab/show/arithmetic+gauge+theory, arithmetic gauge theory
+    - Describe the arithmetic gauge theory framework: view arithmetic curves $\operatorname{Spec}(\mathcal{O}_K)$ as 3-manifolds, and view Galois representations $\rho: G_K \to G$ as principal $G$-bundles with flat connections.
+    - Compare classical gauge fields (principal bundles with connections) to arithmetic gauge fields (continuous homomorphisms of absolute Galois groups).
+
+https://arxiv.org/pdf/1712.07602, arithmetic Chern-Simons theory and Diophantine geometry
+    - Formulate arithmetic gauge theory and arithmetic Chern-Simons actions on Galois representations of number fields.
+    - Translate Euler-Lagrange equations to Selmer conditions via $p$-adic Hodge theory.
+
+https://physics.stackexchange.com/questions/77368/intuitively-why-are-bundles-so-important-in-physics, fiber bundles in physics, Urs Schreiber answer
+    - Explain why fiber bundles and connections are essential in physics: global topology prevents fields from being globally trivial functions, requiring gauge fields to be connection 1-forms on non-trivial principal bundles.

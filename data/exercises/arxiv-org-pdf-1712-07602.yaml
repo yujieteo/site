@@ -1,0 +1,21 @@
+url: https://arxiv.org/pdf/1712.07602
+title: arithmetic Chern-Simons theory and Diophantine geometry
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-1712-07602#000
+  text: Formulate arithmetic gauge theory and arithmetic Chern-Simons actions on Galois representations
+    of number fields
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: formulate arithmetic gauge theory and arithmetic chern-simons actions on galois representations
+    of number fields
+- id: arxiv-org-pdf-1712-07602#001
+  text: Translate Euler-Lagrange equations to Selmer conditions via $p$-adic Hodge theory
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: translate euler-lagrange equations to selmer conditions via $p$-adic hodge theory

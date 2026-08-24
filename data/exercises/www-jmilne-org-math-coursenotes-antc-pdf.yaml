@@ -1,0 +1,41 @@
+url: https://www.jmilne.org/math/CourseNotes/ANTc.pdf
+title: algebraic number theory by Milne
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-jmilne-org-math-coursenotes-antc-pdf#000
+  text: 'Compute the ring of integers $\mathcal{O}_K$ of a quadratic field $K = \mathbb{Q}(\sqrt{d})$:
+    $\mathbb{Z}[\sqrt{d}]$ if $d \equiv 2, 3 \pmod 4$, and $\mathbb{Z}[(1+\sqrt{d})/2]$ if $d \equiv 1
+    \pmod 4$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'compute the ring of integers $\mathcal{o}_k$ of a quadratic field $k = \mathbb{q}(\sqrt{d})$:
+    $\mathbb{z}[\sqrt{d}]$ if $d \equiv 2, 3 \pmod 4$, and $\mathbb{z}[(1+\sqrt{d})/2]$ if $d \equiv 1
+    \pmod 4$'
+- id: www-jmilne-org-math-coursenotes-antc-pdf#001
+  text: Compute the discriminant of a number field and prove that an element $\alpha \in \mathbb{Q}(\sqrt{d})$
+    is an algebraic integer if and only if $\operatorname{Tr}(\alpha), \operatorname{Nm}(\alpha) \in \mathbb{Z}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the discriminant of a number field and prove that an element $\alpha \in \mathbb{q}(\sqrt{d})$
+    is an algebraic integer if and only if $\operatorname{tr}(\alpha), \operatorname{nm}(\alpha) \in \mathbb{z}$
+- id: www-jmilne-org-math-coursenotes-antc-pdf#002
+  text: Compute the ideal class group and class number $h_K = |\operatorname{Cl}(\mathcal{O}_K)|$ for
+    $K = \mathbb{Q}(\sqrt{-5})$ and $\mathbb{Q}(\sqrt{2})$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the ideal class group and class number $h_k = |\operatorname{cl}(\mathcal{o}_k)|$
+    for $k = \mathbb{q}(\sqrt{-5})$ and $\mathbb{q}(\sqrt{2})$
+- id: www-jmilne-org-math-coursenotes-antc-pdf#003
+  text: State the Dedekind-Kummer theorem for the prime ideal factorization of $(p)$ in $\mathcal{O}_K$
+    via the polynomial factorization of the generating minimal polynomial mod $p$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: state the dedekind-kummer theorem for the prime ideal factorization of $(p)$ in $\mathcal{o}_k$
+    via the polynomial factorization of the generating minimal polynomial mod $p$

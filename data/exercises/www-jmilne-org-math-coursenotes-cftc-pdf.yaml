@@ -1,0 +1,37 @@
+url: https://www.jmilne.org/math/CourseNotes/CFTc.pdf
+title: class field theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-jmilne-org-math-coursenotes-cftc-pdf#000
+  text: Compute prime ideal ramification in quadratic fields $\mathbb{Q}(\sqrt{m})$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute prime ideal ramification in quadratic fields $\mathbb{q}(\sqrt{m})$
+- id: www-jmilne-org-math-coursenotes-cftc-pdf#001
+  text: Compute the Hilbert class field of $\mathbb{Q}(\sqrt{-5})$ and show that only 2, 5, and $\infty$
+    ramify in $L$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the hilbert class field of $\mathbb{q}(\sqrt{-5})$ and show that only 2, 5, and
+    $\infty$ ramify in $l$
+- id: www-jmilne-org-math-coursenotes-cftc-pdf#002
+  text: Compute the group homology $H_1(G, \mathbb{Z}) \cong G^{\mathrm{ab}}$ via the augmentation sequence
+    $0 \to I_G \to \mathbb{Z}[G] \to \mathbb{Z} \to 0$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the group homology $h_1(g, \mathbb{z}) \cong g^{\mathrm{ab}}$ via the augmentation
+    sequence $0 \to i_g \to \mathbb{z}[g] \to \mathbb{z} \to 0$
+- id: www-jmilne-org-math-coursenotes-cftc-pdf#003
+  text: State the local Artin isomorphism $K^\times / \operatorname{Nm}_{L/K}(L^\times) \cong \operatorname{Gal}(L/K)^{\mathrm{ab}}$
+    and the local fundamental class in $H^2(\operatorname{Gal}(L/K), L^\times) \cong \frac{1}{[L:K]}\mathbb{Z}/\mathbb{Z}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: state the local artin isomorphism $k^\times / \operatorname{nm}_{l/k}(l^\times) \cong \operatorname{gal}(l/k)^{\mathrm{ab}}$
+    and the local fundamental class in $h^2(\operatorname{gal}(l/k), l^\times) \cong \frac{1}{[l:k]}\mathbb{z}/\mathbb{z}$

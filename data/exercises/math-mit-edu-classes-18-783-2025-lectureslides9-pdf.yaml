@@ -1,0 +1,16 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides9.pdf
+title: elliptic curves lecture 9
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides9-pdf#000
+  text: Formulate the Discrete Logarithm Problem (DLP) in a cyclic group $\langle \alpha \rangle$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: formulate the discrete logarithm problem (dlp) in a cyclic group $\langle \alpha \rangle$

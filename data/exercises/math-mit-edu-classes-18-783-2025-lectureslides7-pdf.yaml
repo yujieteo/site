@@ -1,0 +1,30 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides7.pdf
+title: elliptic curves lecture 7
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides7-pdf#000
+  text: 'Define the dual isogeny $\widehat{\alpha}: E_2 \to E_1$ satisfying $\widehat{\alpha} \circ \alpha
+    = [\deg \alpha]$, and compute the trace of an isogeny $\operatorname{Tr}(\alpha) = \alpha + \widehat{\alpha}$'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: 'define the dual isogeny $\widehat{\alpha}: e_2 \to e_1$ satisfying $\widehat{\alpha} \circ
+    \alpha = [\deg \alpha]$, and compute the trace of an isogeny $\operatorname{tr}(\alpha) = \alpha +
+    \widehat{\alpha}$'
+- id: math-mit-edu-classes-18-783-2025-lectureslides7-pdf#001
+  text: 'State Hasse''s Theorem: the trace of Frobenius satisfies $|a_p| \le 2\sqrt{p}$ with $|E(\mathbb{F}_p)|
+    = p + 1 - a_p$'
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: 'state hasse''s theorem: the trace of frobenius satisfies $|a_p| \le 2\sqrt{p}$ with $|e(\mathbb{f}_p)|
+    = p + 1 - a_p$'

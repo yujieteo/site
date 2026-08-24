@@ -1,0 +1,106 @@
+url: https://www.maths.ox.ac.uk/system/files/media/HarmAnSlides.pdf
+title: harmonic analysis
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#000
+  text: 'Define the Fourier coefficients of a periodic function $f \in L^1(\mathbb{T})$: $\widehat{f}(n)
+    = \int_0^1 f(x) e^{-2\pi i n x} \, dx$'
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: 'define the fourier coefficients of a periodic function $f \in l^1(\mathbb{t})$: $\widehat{f}(n)
+    = \int_0^1 f(x) e^{-2\pi i n x} \, dx$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#001
+  text: 'Show that continuous characters $\chi: G \to \mathbb{C}^\times$ on a locally compact abelian
+    group are eigenfunctions of all translation-invariant linear operators'
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: 'show that continuous characters $\chi: g \to \mathbb{c}^\times$ on a locally compact abelian
+    group are eigenfunctions of all translation-invariant linear operators'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#002
+  text: Compute the dual groups $\widehat{\mathbb{R}^d} \cong \mathbb{R}^d$, $\widehat{\mathbb{T}^d} \cong
+    \mathbb{Z}^d$, and $\widehat{\mathbb{Z}/N\mathbb{Z}} \cong \mathbb{Z}/N\mathbb{Z}$
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: compute the dual groups $\widehat{\mathbb{r}^d} \cong \mathbb{r}^d$, $\widehat{\mathbb{t}^d}
+    \cong \mathbb{z}^d$, and $\widehat{\mathbb{z}/n\mathbb{z}} \cong \mathbb{z}/n\mathbb{z}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#003
+  text: 'Prove that the Fourier transform converts convolutions to pointwise products: $\widehat{f * g}
+    = \widehat{f} \cdot \widehat{g}$'
+  hint: null
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 0
+  search_text: 'prove that the fourier transform converts convolutions to pointwise products: $\widehat{f
+    * g} = \widehat{f} \cdot \widehat{g}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#004
+  text: 'State Young''s Convolution Inequality: $\|f * g\|_{L^r} \le \|f\|_{L^p} \|g\|_{L^q}$ for $1 +
+    \frac{1}{r} = \frac{1}{p} + \frac{1}{q}$'
+  hint: null
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 0
+  search_text: 'state young''s convolution inequality: $\|f * g\|_{l^r} \le \|f\|_{l^p} \|g\|_{l^q}$ for
+    $1 + \frac{1}{r} = \frac{1}{p} + \frac{1}{q}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#005
+  text: Compute the Dirichlet kernel $D_N(t) = \sum_{n=-N}^N e^{2\pi i n t} = \frac{\sin((2N+1)\pi t)}{\sin(\pi
+    t)}$ and the Fejér kernel $F_N(t) = \frac{1}{N+1} \sum_{n=0}^N D_n(t)$
+  hint: null
+  locator:
+    kind: page
+    value: '33'
+    number: 33
+  sub_index: 0
+  search_text: compute the dirichlet kernel $d_n(t) = \sum_{n=-n}^n e^{2\pi i n t} = \frac{\sin((2n+1)\pi
+    t)}{\sin(\pi t)}$ and the fejér kernel $f_n(t) = \frac{1}{n+1} \sum_{n=0}^n d_n(t)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#006
+  text: 'Define the Schwartz space $\mathcal{S}(\mathbb{R}^d)$ and prove Plancherel''s Theorem: the Fourier
+    transform extends to a unitary isomorphism on $L^2(\mathbb{R}^d)$'
+  hint: null
+  locator:
+    kind: page
+    value: '54'
+    number: 54
+  sub_index: 0
+  search_text: 'define the schwartz space $\mathcal{s}(\mathbb{r}^d)$ and prove plancherel''s theorem:
+    the fourier transform extends to a unitary isomorphism on $l^2(\mathbb{r}^d)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#007
+  text: Define tempered distributions $\mathcal{S}'(\mathbb{R}^d)$ and compute the distributional derivative
+    of the Heaviside step function $H'(x) = \delta(x)$
+  hint: null
+  locator:
+    kind: page
+    value: '62'
+    number: 62
+  sub_index: 0
+  search_text: define tempered distributions $\mathcal{s}'(\mathbb{r}^d)$ and compute the distributional
+    derivative of the heaviside step function $h'(x) = \delta(x)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#008
+  text: 'State the Malgrange-Ehrenpreis Theorem: every non-zero linear differential operator with constant
+    coefficients $P(D)$ admits a fundamental solution $P(D)E = \delta$'
+  hint: null
+  locator:
+    kind: page
+    value: '78'
+    number: 78
+  sub_index: 0
+  search_text: 'state the malgrange-ehrenpreis theorem: every non-zero linear differential operator with
+    constant coefficients $p(d)$ admits a fundamental solution $p(d)e = \delta$'

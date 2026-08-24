@@ -1,0 +1,29 @@
+url: https://wstein.org/edu/2010/582e/lectures/all/galois_cohomology.pdf
+title: Galois cohomology in 75 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: wstein-org-edu-2010-582e-lectures-all-galois-cohomology-pdf#000
+  text: Define the 0-th Galois cohomology group $H^0(G, A) = A^G$ as the subgroup of $G$-invariants
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: define the 0-th galois cohomology group $h^0(g, a) = a^g$ as the subgroup of $g$-invariants
+- id: wstein-org-edu-2010-582e-lectures-all-galois-cohomology-pdf#001
+  text: 'Define 1-cocycles $Z^1(G, A) = \{f: G \to A \mid f(\sigma \tau) = f(\sigma) + \sigma f(\tau)\}$
+    and 1-coboundaries $B^1(G, A) = \{f(\sigma) = \sigma a - a\}$, and compute $H^1(G, A) = Z^1(G, A)
+    / B^1(G, A)$'
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 1
+  search_text: 'define 1-cocycles $z^1(g, a) = \{f: g \to a \mid f(\sigma \tau) = f(\sigma) + \sigma f(\tau)\}$
+    and 1-coboundaries $b^1(g, a) = \{f(\sigma) = \sigma a - a\}$, and compute $h^1(g, a) = z^1(g, a)
+    / b^1(g, a)$'

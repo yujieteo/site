@@ -1,0 +1,18 @@
+url: https://static1.squarespace.com/static/57bf2a6de3df281593b7f57d/t/600db4f1676f6519410f71e9/1611511026377/serre_1972_translation.pdf
+title: Serre's Galois representations of elliptic curves
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: static1-squarespace-com-static-57bf2a6de3df281593b7f57d-t-600db4f1676f6519410f71#000
+  text: For an elliptic curve $E$ with good reduction at a finite place $v$, describe the reduction $\widetilde{E}_v
+    / k(v)$ and the action of the inertia group
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: for an elliptic curve $e$ with good reduction at a finite place $v$, describe the reduction
+    $\widetilde{e}_v / k(v)$ and the action of the inertia group

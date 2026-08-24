@@ -1,0 +1,28 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides5.pdf
+title: elliptic curves lecture 5
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides5-pdf#000
+  text: 'Prove that every isogeny $\alpha: E_1 \to E_2$ has a finite kernel with $|\ker(\alpha)| = \deg_s(\alpha)$'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: 'prove that every isogeny $\alpha: e_1 \to e_2$ has a finite kernel with $|\ker(\alpha)|
+    = \deg_s(\alpha)$'
+- id: math-mit-edu-classes-18-783-2025-lectureslides5-pdf#001
+  text: 'Show that the degree map is multiplicative under composition of isogenies: $\deg(\alpha \circ
+    \beta) = \deg(\alpha)\deg(\beta)$'
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: 'show that the degree map is multiplicative under composition of isogenies: $\deg(\alpha
+    \circ \beta) = \deg(\alpha)\deg(\beta)$'

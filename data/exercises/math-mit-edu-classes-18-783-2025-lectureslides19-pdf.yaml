@@ -1,0 +1,18 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides19.pdf
+title: elliptic curves lecture 19
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides19-pdf#000
+  text: Define principal congruence subgroups $\Gamma(N)$ and modular curves $Y(N) = \Gamma(N) \backslash
+    \mathbb{H}$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: define principal congruence subgroups $\gamma(n)$ and modular curves $y(n) = \gamma(n)
+    \backslash \mathbb{h}$

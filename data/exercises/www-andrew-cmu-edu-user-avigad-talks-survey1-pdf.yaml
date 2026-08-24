@@ -1,0 +1,31 @@
+url: https://www.andrew.cmu.edu/user/avigad/Talks/survey1.pdf
+title: subsystems of second order arithmetic in 29 slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: www-andrew-cmu-edu-user-avigad-talks-survey1-pdf#000
+  text: 'Define the formal systems of Second-Order Arithmetic: $\mathrm{RCA}_0$ (Recursive Comprehension),
+    $\mathrm{WKL}_0$ (Weak König''s Lemma), $\mathrm{ACA}_0$ (Arithmetical Comprehension), $\mathrm{ATR}_0$
+    (Arithmetical Transfinite Recursion), and $\Pi_1^1\text{-}\mathrm{CA}_0$'
+  hint: null
+  locator:
+    kind: slide
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: 'define the formal systems of second-order arithmetic: $\mathrm{rca}_0$ (recursive comprehension),
+    $\mathrm{wkl}_0$ (weak könig''s lemma), $\mathrm{aca}_0$ (arithmetical comprehension), $\mathrm{atr}_0$
+    (arithmetical transfinite recursion), and $\pi_1^1\text{-}\mathrm{ca}_0$'
+- id: www-andrew-cmu-edu-user-avigad-talks-survey1-pdf#001
+  text: Prove that $\mathrm{ACA}_0$ is a conservative extension of Peano Arithmetic ($\mathrm{PA}$) for
+    first-order arithmetical sentences
+  hint: null
+  locator:
+    kind: slide
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: prove that $\mathrm{aca}_0$ is a conservative extension of peano arithmetic ($\mathrm{pa}$)
+    for first-order arithmetical sentences

@@ -1,0 +1,51 @@
+url: https://www.ams.org/notices/200302/what-is.pdf
+title: What is a Gerbe? by Nigel Hitchin
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ams-org-notices-200302-what-is-pdf#000
+  text: Describe line bundles via transition functions $g_{\alpha\beta} \in \mathcal{O}^*$ on double overlaps
+    $U_\alpha \cap U_\beta$ satisfying the 1-cocycle condition $g_{\alpha\beta} g_{\beta\gamma} g_{\gamma\alpha}
+    = 1$, classified by $H^1(M, \mathcal{O}^*)$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: describe line bundles via transition functions $g_{\alpha\beta} \in \mathcal{o}^*$ on double
+    overlaps $u_\alpha \cap u_\beta$ satisfying the 1-cocycle condition $g_{\alpha\beta} g_{\beta\gamma}
+    g_{\gamma\alpha} = 1$, classified by $h^1(m, \mathcal{o}^*)$
+- id: www-ams-org-notices-200302-what-is-pdf#001
+  text: Define a holomorphic gerbe via transition functions $g_{\alpha\beta\gamma} \in \mathcal{O}^*$
+    on triple overlaps $U_\alpha \cap U_\beta \cap U_\gamma$ satisfying the 2-cocycle condition $g_{\beta\gamma\delta}
+    g_{\alpha\gamma\delta}^{-1} g_{\alpha\beta\delta} g_{\alpha\beta\gamma}^{-1} = 1$, classified by $H^2(M,
+    \mathcal{O}^*)$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a holomorphic gerbe via transition functions $g_{\alpha\beta\gamma} \in \mathcal{o}^*$
+    on triple overlaps $u_\alpha \cap u_\beta \cap u_\gamma$ satisfying the 2-cocycle condition $g_{\beta\gamma\delta}
+    g_{\alpha\gamma\delta}^{-1} g_{\alpha\beta\delta} g_{\alpha\beta\gamma}^{-1} = 1$, classified by $h^2(m,
+    \mathcal{o}^*)$
+- id: www-ams-org-notices-200302-what-is-pdf#002
+  text: Describe how a bundle of projective spaces $P \to M$ with structure group $\operatorname{PGL}_{n+1}(\mathbb{C})$
+    defines an obstruction class in $H^2(M, \mathcal{O}^*)$ to lifting to a vector bundle $\mathrm{GL}_{n+1}(\mathbb{C})$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: describe how a bundle of projective spaces $p \to m$ with structure group $\operatorname{pgl}_{n+1}(\mathbb{c})$
+    defines an obstruction class in $h^2(m, \mathcal{o}^*)$ to lifting to a vector bundle $\mathrm{gl}_{n+1}(\mathbb{c})$
+- id: www-ams-org-notices-200302-what-is-pdf#003
+  text: Define connective structures and curving on a gerbe to construct the 3-form curvature $H \in \Omega^3(M)$,
+    representing a characteristic class in de Rham cohomology $[H/2\pi] \in H_{\mathrm{dR}}^3(M)$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define connective structures and curving on a gerbe to construct the 3-form curvature $h
+    \in \omega^3(m)$, representing a characteristic class in de rham cohomology $[h/2\pi] \in h_{\mathrm{dr}}^3(m)$
+- id: www-ams-org-notices-200302-what-is-pdf#004
+  text: Connect gerbes to the Dixmier-Douady class in $H^3(M, \mathbb{Z})$ and twisted $K$-theory
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: connect gerbes to the dixmier-douady class in $h^3(m, \mathbb{z})$ and twisted $k$-theory

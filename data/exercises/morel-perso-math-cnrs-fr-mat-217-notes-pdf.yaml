@@ -1,0 +1,177 @@
+url: https://morel.perso.math.cnrs.fr/MAT_217_notes.pdf
+title: linear algebra by Sophie Morel
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#000
+  text: Verify the field axioms and vector space axioms over a field $K$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: verify the field axioms and vector space axioms over a field $k$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#001
+  text: Define the subspace $K^{(I)} \subseteq K^I$ of functions with finite support $\operatorname{supp}(f)
+    = \{i \in I \mid f(i) \ne 0\}$
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: define the subspace $k^{(i)} \subseteq k^i$ of functions with finite support $\operatorname{supp}(f)
+    = \{i \in i \mid f(i) \ne 0\}$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#002
+  text: Define the transpose of an $m \times n$ matrix $A^T \in M_{nm}(K)$ and show $(A B)^T = B^T A^T$
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: define the transpose of an $m \times n$ matrix $a^t \in m_{nm}(k)$ and show $(a b)^t =
+    b^t a^t$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#003
+  text: 'State the Rank-Nullity Theorem: for any linear map $f: V \to W$, $\dim V = \dim \ker(f) + \operatorname{rank}(f)$'
+  hint: null
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 0
+  search_text: 'state the rank-nullity theorem: for any linear map $f: v \to w$, $\dim v = \dim \ker(f)
+    + \operatorname{rank}(f)$'
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#004
+  text: Define elementary row operations and their corresponding invertible elementary matrices in Reduced
+    Row Echelon Form (RREF)
+  hint: null
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 0
+  search_text: define elementary row operations and their corresponding invertible elementary matrices
+    in reduced row echelon form (rref)
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#005
+  text: Prove that any two bases of a finite-dimensional vector space have the same cardinality, defining
+    $\dim_K(V)$
+  hint: null
+  locator:
+    kind: page
+    value: '20'
+    number: 20
+  sub_index: 0
+  search_text: prove that any two bases of a finite-dimensional vector space have the same cardinality,
+    defining $\dim_k(v)$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#006
+  text: 'Prove Grassmann''s formula: $\dim(W_1 + W_2) = \dim W_1 + \dim W_2 - \dim(W_1 \cap W_2)$'
+  hint: null
+  locator:
+    kind: page
+    value: '25'
+    number: 25
+  sub_index: 0
+  search_text: 'prove grassmann''s formula: $\dim(w_1 + w_2) = \dim w_1 + \dim w_2 - \dim(w_1 \cap w_2)$'
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#007
+  text: Define the dual space $V^* = \operatorname{Hom}_K(V, K)$ and dual basis $\{v_1^*, \dots, v_n^*\}$
+    satisfying $v_i^*(v_j) = \delta_{ij}$
+  hint: null
+  locator:
+    kind: page
+    value: '41'
+    number: 41
+  sub_index: 0
+  search_text: define the dual space $v^* = \operatorname{hom}_k(v, k)$ and dual basis $\{v_1^*, \dots,
+    v_n^*\}$ satisfying $v_i^*(v_j) = \delta_{ij}$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#008
+  text: Define the determinant $\det(A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \prod_{i=1}^n
+    A_{i, \sigma(i)}$ as the unique alternating multilinear $n$-form on $K^n$ normalized by $\det(I_n)
+    = 1$
+  hint: null
+  locator:
+    kind: page
+    value: '54'
+    number: 54
+  sub_index: 0
+  search_text: define the determinant $\det(a) = \sum_{\sigma \in s_n} \operatorname{sgn}(\sigma) \prod_{i=1}^n
+    a_{i, \sigma(i)}$ as the unique alternating multilinear $n$-form on $k^n$ normalized by $\det(i_n)
+    = 1$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#009
+  text: State Cramer's rule and the adjugate formula $A \operatorname{adj}(A) = \det(A) I_n$
+  hint: null
+  locator:
+    kind: page
+    value: '62'
+    number: 62
+  sub_index: 0
+  search_text: state cramer's rule and the adjugate formula $a \operatorname{adj}(a) = \det(a) i_n$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#010
+  text: Define the characteristic polynomial $P_A(\lambda) = \det(\lambda I_n - A)$ and minimal polynomial
+    $\mu_A(\lambda)$
+  hint: null
+  locator:
+    kind: page
+    value: '65'
+    number: 65
+  sub_index: 0
+  search_text: define the characteristic polynomial $p_a(\lambda) = \det(\lambda i_n - a)$ and minimal
+    polynomial $\mu_a(\lambda)$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#011
+  text: 'State and prove the Cayley-Hamilton Theorem: every square matrix satisfies its own characteristic
+    polynomial, $P_A(A) = 0$'
+  hint: null
+  locator:
+    kind: page
+    value: '81'
+    number: 81
+  sub_index: 0
+  search_text: 'state and prove the cayley-hamilton theorem: every square matrix satisfies its own characteristic
+    polynomial, $p_a(a) = 0$'
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#012
+  text: 'State the Jordan-Chevalley decomposition: every endomorphism $T$ on a vector space over an algebraically
+    closed field decomposes uniquely as $T = T_s + T_n$ where $T_s$ is diagonalizable (semisimple), $T_n$
+    is nilpotent, and $T_s T_n = T_n T_s$'
+  hint: null
+  locator:
+    kind: page
+    value: '86'
+    number: 86
+  sub_index: 0
+  search_text: 'state the jordan-chevalley decomposition: every endomorphism $t$ on a vector space over
+    an algebraically closed field decomposes uniquely as $t = t_s + t_n$ where $t_s$ is diagonalizable
+    (semisimple), $t_n$ is nilpotent, and $t_s t_n = t_n t_s$'
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#013
+  text: State the Jordan Normal Form theorem for matrices over an algebraically closed field
+  hint: null
+  locator:
+    kind: page
+    value: '87'
+    number: 87
+  sub_index: 0
+  search_text: state the jordan normal form theorem for matrices over an algebraically closed field
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#014
+  text: Define non-degenerate symmetric bilinear forms and the orthogonal complement $W^\perp = \{v \in
+    V \mid f(v, w) = 0 \text{ for all } w \in W\}$, showing $\dim W + \dim W^\perp = \dim V$
+  hint: null
+  locator:
+    kind: page
+    value: '94'
+    number: 94
+  sub_index: 0
+  search_text: define non-degenerate symmetric bilinear forms and the orthogonal complement $w^\perp =
+    \{v \in v \mid f(v, w) = 0 \text{ for all } w \in w\}$, showing $\dim w + \dim w^\perp = \dim v$
+- id: morel-perso-math-cnrs-fr-mat-217-notes-pdf#015
+  text: 'State the Spectral Theorem: every Hermitian matrix $A \in M_n(\mathbb{C})$ is unitarily diagonalizable
+    with real eigenvalues ($U^* A U = D$)'
+  hint: null
+  locator:
+    kind: page
+    value: '114'
+    number: 114
+  sub_index: 0
+  search_text: 'state the spectral theorem: every hermitian matrix $a \in m_n(\mathbb{c})$ is unitarily
+    diagonalizable with real eigenvalues ($u^* a u = d$)'

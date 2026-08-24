@@ -1,0 +1,15 @@
+url: https://www.math.ias.edu/~bhatt/math/etalestcksproj.pdf
+title: Bhatt's notes on etale topology
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-math-ias-edu-bhatt-math-etalestcksproj-pdf#000
+  text: Define unramified and étale morphisms of schemes via the vanishing and freeness of the module
+    of relative Kähler differentials $\Omega_{X/Y}^1 = 0$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define unramified and étale morphisms of schemes via the vanishing and freeness of the
+    module of relative kähler differentials $\omega_{x/y}^1 = 0$

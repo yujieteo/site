@@ -1,0 +1,22 @@
+url: https://www.fuw.edu.pl/~derezins/mat-c.pdf
+title: C*-algebras
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-fuw-edu-pl-derezins-mat-c-pdf#000
+  text: Define a $C^*$-algebra as a Banach $*$-algebra satisfying the $C^*$-identity $\|A^* A\| = \|A\|^2$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a $c^*$-algebra as a banach $*$-algebra satisfying the $c^*$-identity $\|a^* a\|
+    = \|a\|^2$
+- id: www-fuw-edu-pl-derezins-mat-c-pdf#001
+  text: Compute the spectral radius $r(A) = \lim \|A^n\|^{1/n}$ for normal, self-adjoint, unitary, and
+    projection operators
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the spectral radius $r(a) = \lim \|a^n\|^{1/n}$ for normal, self-adjoint, unitary,
+    and projection operators

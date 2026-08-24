@@ -1,0 +1,51 @@
+url: http://mat.msgsu.edu.tr/~aad/2012/Slides/paganin.pdf
+title: class field theory in 33 slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: mat-msgsu-edu-tr-aad-2012-slides-paganin-pdf#000
+  text: Define $G$-modules as abelian groups equipped with an action of a group $G$, equivalently modules
+    over the group ring $\mathbb{Z}[G]$
+  hint: null
+  locator:
+    kind: slide
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: define $g$-modules as abelian groups equipped with an action of a group $g$, equivalently
+    modules over the group ring $\mathbb{z}[g]$
+- id: mat-msgsu-edu-tr-aad-2012-slides-paganin-pdf#001
+  text: Define group cohomology $H^n(G, A) = \operatorname{Ext}_{\mathbb{Z}[G]}^n(\mathbb{Z}, A)$ as the
+    right derived functors of the fixed point functor $A \mapsto A^G$
+  hint: null
+  locator:
+    kind: slide
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: define group cohomology $h^n(g, a) = \operatorname{ext}_{\mathbb{z}[g]}^n(\mathbb{z}, a)$
+    as the right derived functors of the fixed point functor $a \mapsto a^g$
+- id: mat-msgsu-edu-tr-aad-2012-slides-paganin-pdf#002
+  text: State the Lyndon-Hochschild-Serre spectral sequence $E_2^{p, q} = H^p(G/H, H^q(H, A)) \implies
+    H^{p+q}(G, A)$ for a normal subgroup $H \triangleleft G$
+  hint: null
+  locator:
+    kind: slide
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: state the lyndon-hochschild-serre spectral sequence $e_2^{p, q} = h^p(g/h, h^q(h, a)) \implies
+    h^{p+q}(g, a)$ for a normal subgroup $h \triangleleft g$
+- id: mat-msgsu-edu-tr-aad-2012-slides-paganin-pdf#003
+  text: 'State Hilbert''s Theorem 90: $H^1(G_K, (K^{\mathrm{sep}})^\times) = 0$, and relate $H^2(G_K,
+    (K^{\mathrm{sep}})^\times) \cong \operatorname{Br}(K)$ to the Brauer group of $K$'
+  hint: null
+  locator:
+    kind: slide
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: 'state hilbert''s theorem 90: $h^1(g_k, (k^{\mathrm{sep}})^\times) = 0$, and relate $h^2(g_k,
+    (k^{\mathrm{sep}})^\times) \cong \operatorname{br}(k)$ to the brauer group of $k$'

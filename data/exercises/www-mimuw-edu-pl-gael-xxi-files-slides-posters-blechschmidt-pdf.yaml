@@ -1,0 +1,29 @@
+url: https://www.mimuw.edu.pl/~gael/xxi/files/slides_posters/Blechschmidt.pdf
+title: Blechschmidt's slides on the internal language of schemes
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: www-mimuw-edu-pl-gael-xxi-files-slides-posters-blechschmidt-pdf#000
+  text: Translate finite presentation and finite freeness of modules into internal language over the Zariski
+    topos $\operatorname{Zar}(S)$
+  hint: null
+  locator:
+    kind: slide
+    value: '19'
+    number: 19
+  sub_index: 0
+  search_text: translate finite presentation and finite freeness of modules into internal language over
+    the zariski topos $\operatorname{zar}(s)$
+- id: www-mimuw-edu-pl-gael-xxi-files-slides-posters-blechschmidt-pdf#001
+  text: Show that any finitely generated module over an internal field in $\operatorname{Zar}(S)$ is internally
+    not-not free (generic freeness)
+  hint: null
+  locator:
+    kind: slide
+    value: '27'
+    number: 27
+  sub_index: 0
+  search_text: show that any finitely generated module over an internal field in $\operatorname{zar}(s)$
+    is internally not-not free (generic freeness)

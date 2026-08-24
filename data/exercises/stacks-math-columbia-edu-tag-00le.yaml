@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/00LE
+title: depth of an ideal in a finite R-module
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-00le#000
+  text: Define the depth $\operatorname{depth}_I(M)$ as the maximal length of an $M$-regular sequence
+    in $I$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define the depth $\operatorname{depth}_i(m)$ as the maximal length of an $m$-regular sequence
+    in $i$

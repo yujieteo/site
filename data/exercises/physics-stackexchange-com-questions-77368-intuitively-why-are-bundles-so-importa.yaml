@@ -1,0 +1,17 @@
+url: https://physics.stackexchange.com/questions/77368/intuitively-why-are-bundles-so-important-in-physics
+title: fiber bundles in physics
+note: Urs Schreiber answer
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: physics-stackexchange-com-questions-77368-intuitively-why-are-bundles-so-importa#000
+  text: 'Explain why fiber bundles and connections are essential in physics: global topology prevents
+    fields from being globally trivial functions, requiring gauge fields to be connection 1-forms on non-trivial
+    principal bundles'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'explain why fiber bundles and connections are essential in physics: global topology prevents
+    fields from being globally trivial functions, requiring gauge fields to be connection 1-forms on non-trivial
+    principal bundles'

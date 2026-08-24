@@ -1,0 +1,18 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides17.pdf
+title: elliptic curves lecture 17
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides17-pdf#000
+  text: State the bijection between the ideal class group $\operatorname{Cl}(\mathcal{O})$ of an imaginary
+    quadratic order and the set of homothety classes of lattices with CM by $\mathcal{O}$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: state the bijection between the ideal class group $\operatorname{cl}(\mathcal{o})$ of an
+    imaginary quadratic order and the set of homothety classes of lattices with cm by $\mathcal{o}$

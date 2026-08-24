@@ -1,0 +1,29 @@
+url: https://math.stanford.edu/~conrad/Perfseminar/refs/padiccompare.pdf
+title: p-adic Hodge theory for rigid analytic varieties in 77 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-stanford-edu-conrad-perfseminar-refs-padiccompare-pdf#000
+  text: For a proper smooth rigid-analytic variety $X$ over $K / \mathbb{Q}_p$, state the finiteness and
+    vanishing theorems for étale cohomology $H_{\text{ét}}^i(X_{\mathbb{C}_p}, \mathbb{F}_p)$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: for a proper smooth rigid-analytic variety $x$ over $k / \mathbb{q}_p$, state the finiteness
+    and vanishing theorems for étale cohomology $h_{\text{ét}}^i(x_{\mathbb{c}_p}, \mathbb{f}_p)$
+- id: math-stanford-edu-conrad-perfseminar-refs-padiccompare-pdf#001
+  text: Compute $p$-adic étale cohomology with coefficients in a constructible $\mathbb{F}_p$-local system
+    $\mathbb{L}$ on a connected affinoid rigid-analytic space using the étale fundamental group
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: compute $p$-adic étale cohomology with coefficients in a constructible $\mathbb{f}_p$-local
+    system $\mathbb{l}$ on a connected affinoid rigid-analytic space using the étale fundamental group

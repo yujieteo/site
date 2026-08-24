@@ -1,0 +1,35 @@
+url: https://websites.umich.edu/~viktorb/etale_summer2020/Notes/cohomology-of-number-fields.pdf
+title: etale cohomology with coefficients in G_m
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: websites-umich-edu-viktorb-etale-summer2020-notes-cohomology-of-number-fields-pd#000
+  text: Define Tate cohomology groups $\widehat{H}^r(G, M)$ for a finite group $G$ acting on an abelian
+    group $M$, with $\widehat{H}^0(G, M) = M^G / N_G M$ and $\widehat{H}^{-1}(G, M) = \ker(N_G) / I_G
+    M$
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: define tate cohomology groups $\widehat{h}^r(g, m)$ for a finite group $g$ acting on an
+    abelian group $m$, with $\widehat{h}^0(g, m) = m^g / n_g m$ and $\widehat{h}^{-1}(g, m) = \ker(n_g)
+    / i_g m$
+- id: websites-umich-edu-viktorb-etale-summer2020-notes-cohomology-of-number-fields-pd#001
+  text: 'Compute the Tate cohomology of $C_2$ acting on $\mathbb{C}^\times$ by complex conjugation: $\widehat{H}^0(C_2,
+    \mathbb{C}^\times) = \mathbb{R}^\times / \operatorname{Nm}(\mathbb{C}^\times) \cong \mathbb{R}^\times
+    / \mathbb{R}_{>0} \cong \mathbb{Z}/2\mathbb{Z}$, and $\widehat{H}^1(C_2, \mathbb{C}^\times) = 0$ by
+    Hilbert''s Theorem 90'
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 1
+  search_text: 'compute the tate cohomology of $c_2$ acting on $\mathbb{c}^\times$ by complex conjugation:
+    $\widehat{h}^0(c_2, \mathbb{c}^\times) = \mathbb{r}^\times / \operatorname{nm}(\mathbb{c}^\times)
+    \cong \mathbb{r}^\times / \mathbb{r}_{>0} \cong \mathbb{z}/2\mathbb{z}$, and $\widehat{h}^1(c_2, \mathbb{c}^\times)
+    = 0$ by hilbert''s theorem 90'

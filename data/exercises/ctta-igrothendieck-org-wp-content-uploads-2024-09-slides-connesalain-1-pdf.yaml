@@ -1,0 +1,55 @@
+url: https://ctta.igrothendieck.org/wp-content/uploads/2024/09/Slides_ConnesAlain-1.pdf
+title: primes
+note: knots, and the adele class space
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: ctta-igrothendieck-org-wp-content-uploads-2024-09-slides-connesalain-1-pdf#000
+  text: 'State Grothendieck''s Galois-étale duality: the category of finite étale coverings of $X$ is
+    equivalent to finite $\pi_1^{\text{ét}}(X, \bar{x})$-sets'
+  hint: null
+  locator:
+    kind: slide
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: 'state grothendieck''s galois-étale duality: the category of finite étale coverings of
+    $x$ is equivalent to finite $\pi_1^{\text{ét}}(x, \bar{x})$-sets'
+- id: ctta-igrothendieck-org-wp-content-uploads-2024-09-slides-connesalain-1-pdf#001
+  text: 'Explore the Mazur-Kapranov-Reznikov analogy between number fields and 3-manifolds: $\operatorname{Spec}(\mathbb{Z})$
+    is analogous to $S^3$, primes $p$ correspond to knots $K_p \hookrightarrow S^3$, and $\operatorname{Spec}(\mathbb{F}_p)$
+    corresponds to the knot $S^1$'
+  hint: null
+  locator:
+    kind: slide
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: 'explore the mazur-kapranov-reznikov analogy between number fields and 3-manifolds: $\operatorname{spec}(\mathbb{z})$
+    is analogous to $s^3$, primes $p$ correspond to knots $k_p \hookrightarrow s^3$, and $\operatorname{spec}(\mathbb{f}_p)$
+    corresponds to the knot $s^1$'
+- id: ctta-igrothendieck-org-wp-content-uploads-2024-09-slides-connesalain-1-pdf#002
+  text: Show that the étale fundamental group $\pi_1^{\text{ét}}(\operatorname{Spec}(\mathbb{Z}[1/p]))$
+    is analogous to the fundamental group of a knot complement $\pi_1(S^3 \setminus K_p)$, and the Legendre
+    symbol corresponds to the linking number of knots
+  hint: null
+  locator:
+    kind: slide
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: show that the étale fundamental group $\pi_1^{\text{ét}}(\operatorname{spec}(\mathbb{z}[1/p]))$
+    is analogous to the fundamental group of a knot complement $\pi_1(s^3 \setminus k_p)$, and the legendre
+    symbol corresponds to the linking number of knots
+- id: ctta-igrothendieck-org-wp-content-uploads-2024-09-slides-connesalain-1-pdf#003
+  text: Describe the adèle class space $\mathbb{Q}^\times \backslash \mathbb{A}_\mathbb{Q} / \widehat{\mathbb{Z}}^\times$
+    in noncommutative geometry
+  hint: null
+  locator:
+    kind: slide
+    value: '14'
+    number: 14
+  sub_index: 0
+  search_text: describe the adèle class space $\mathbb{q}^\times \backslash \mathbb{a}_\mathbb{q} / \widehat{\mathbb{z}}^\times$
+    in noncommutative geometry

@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/0AUH
+title: regular sequences
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-0auh#000
+  text: 'Define an $M$-regular sequence $(x_1, \dots, x_n)$ on an $R$-module $M$: $x_i$ is a non-zerodivisor
+    on $M/(x_1, \dots, x_{i-1})M$ for all $1 \le i \le n$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'define an $m$-regular sequence $(x_1, \dots, x_n)$ on an $r$-module $m$: $x_i$ is a non-zerodivisor
+    on $m/(x_1, \dots, x_{i-1})m$ for all $1 \le i \le n$'

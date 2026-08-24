@@ -1,0 +1,36 @@
+url: https://swc-math.github.io/aws/2020/2020KimNotes1.pdf
+title: Selmer schemes and non-abelian Chabauty
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: swc-math-github-io-aws-2020-2020kimnotes1-pdf#000
+  text: 'Explain the geometric classification of Diophantine equations by genus: genus 0 (rational points
+    via the Hasse principle), genus 1 (elliptic curves via Mordell-Weil $E(\mathbb{Q}) \cong E(\mathbb{Q})_{\mathrm{tors}}
+    \oplus \mathbb{Z}^r$ and BSD), and genus $g \ge 2$ (Faltings'' theorem: $X(\mathbb{Q})$ is finite)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'explain the geometric classification of diophantine equations by genus: genus 0 (rational
+    points via the hasse principle), genus 1 (elliptic curves via mordell-weil $e(\mathbb{q}) \cong e(\mathbb{q})_{\mathrm{tors}}
+    \oplus \mathbb{z}^r$ and bsd), and genus $g \ge 2$ (faltings'' theorem: $x(\mathbb{q})$ is finite)'
+- id: swc-math-github-io-aws-2020-2020kimnotes1-pdf#001
+  text: Define arithmetic principal $U$-bundles over $\operatorname{Spec}(K)$ for a topological group
+    $U$ with continuous $G_K$-action, classified by the non-abelian Galois cohomology set $H^1(G_K, U)$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define arithmetic principal $u$-bundles over $\operatorname{spec}(k)$ for a topological
+    group $u$ with continuous $g_k$-action, classified by the non-abelian galois cohomology set $h^1(g_k,
+    u)$
+- id: swc-math-github-io-aws-2020-2020kimnotes1-pdf#002
+  text: 'Describe the non-abelian Chabauty method (Chabauty-Kim) constructing the unipotent Albanese map
+    $j: X(\mathbb{Q}) \to H^1(G_\mathbb{Q}, U)$ into the Selmer variety $\operatorname{Sel}(U)$ and intersecting
+    with local $p$-adic points $X(\mathbb{Q}_p) \hookrightarrow H^1(G_{\mathbb{Q}_p}, U)$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'describe the non-abelian chabauty method (chabauty-kim) constructing the unipotent albanese
+    map $j: x(\mathbb{q}) \to h^1(g_\mathbb{q}, u)$ into the selmer variety $\operatorname{sel}(u)$ and
+    intersecting with local $p$-adic points $x(\mathbb{q}_p) \hookrightarrow h^1(g_{\mathbb{q}_p}, u)$'

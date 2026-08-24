@@ -1,0 +1,15 @@
+url: https://math.berkeley.edu/~reb/courses/256A/256A.pdf
+title: Borcherds algebraic geometry notes
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: math-berkeley-edu-reb-courses-256a-256a-pdf#000
+  text: Solve $x^2 + y^2 = z^2$ in $\mathbb{Z}$ by factoring $x^2 = (z - y)(z + y)$ into coprime factors
+    to obtain primitive Pythagorean triples
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: solve $x^2 + y^2 = z^2$ in $\mathbb{z}$ by factoring $x^2 = (z - y)(z + y)$ into coprime
+    factors to obtain primitive pythagorean triples

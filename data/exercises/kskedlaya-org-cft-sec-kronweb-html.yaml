@@ -1,0 +1,39 @@
+url: https://kskedlaya.org/cft/sec_kronweb.html
+title: Kronecker-Weber Theorem
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: kskedlaya-org-cft-sec-kronweb-html#000
+  text: 'State the Kronecker-Weber theorem: every finite abelian extension $K / \mathbb{Q}$ is contained
+    in a cyclotomic field $\mathbb{Q}(\mu_n)$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state the kronecker-weber theorem: every finite abelian extension $k / \mathbb{q}$ is
+    contained in a cyclotomic field $\mathbb{q}(\mu_n)$'
+- id: kskedlaya-org-cft-sec-kronweb-html#001
+  text: Classify quadratic extensions of $\mathbb{Q}$ contained in $\mathbb{Q}(\mu_n)$ using the sign
+    of the discriminant
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: classify quadratic extensions of $\mathbb{q}$ contained in $\mathbb{q}(\mu_n)$ using the
+    sign of the discriminant
+- id: kskedlaya-org-cft-sec-kronweb-html#002
+  text: Define the Artin map on unramified prime ideals $\mathfrak{p} \mapsto \left(\frac{L/K}{\mathfrak{p}}\right)
+    = \operatorname{Frob}_\mathfrak{p}$ and state the Artin Reciprocity Law
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define the artin map on unramified prime ideals $\mathfrak{p} \mapsto \left(\frac{l/k}{\mathfrak{p}}\right)
+    = \operatorname{frob}_\mathfrak{p}$ and state the artin reciprocity law
+- id: kskedlaya-org-cft-sec-kronweb-html#003
+  text: Prove that if $\gcd(m, n) = 1$, then $1 - \zeta_m$ and $n$ are coprime in $\mathbb{Z}[\zeta_m]$,
+    and if $m$ is not a prime power, $1 - \zeta_m$ is a unit
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: prove that if $\gcd(m, n) = 1$, then $1 - \zeta_m$ and $n$ are coprime in $\mathbb{z}[\zeta_m]$,
+    and if $m$ is not a prime power, $1 - \zeta_m$ is a unit

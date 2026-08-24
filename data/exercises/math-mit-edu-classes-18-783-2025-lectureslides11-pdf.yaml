@@ -1,0 +1,18 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides11.pdf
+title: elliptic curves lecture 11
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides11-pdf#000
+  text: 'State Fermat''s Little Theorem: $a^{p-1} \equiv 1 \pmod p$ for $\gcd(a, p) = 1$, and define Carmichael
+    numbers'
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: 'state fermat''s little theorem: $a^{p-1} \equiv 1 \pmod p$ for $\gcd(a, p) = 1$, and define
+    carmichael numbers'

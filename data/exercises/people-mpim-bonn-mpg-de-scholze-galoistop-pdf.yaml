@@ -1,0 +1,51 @@
+url: https://people.mpim-bonn.mpg.de/scholze/GaloisTop.pdf
+title: topological realizations of Galois groups in 76 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: people-mpim-bonn-mpg-de-scholze-galoistop-pdf#000
+  text: 'State the Fontaine-Wintenberger theorem: the absolute Galois group of $K = \mathbb{Q}_p(\mu_{p^\infty})$
+    is canonically isomorphic to that of the tilt $K^\flat = \mathbb{F}_p((t^{1/p^\infty}))$'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: 'state the fontaine-wintenberger theorem: the absolute galois group of $k = \mathbb{q}_p(\mu_{p^\infty})$
+    is canonically isomorphic to that of the tilt $k^\flat = \mathbb{f}_p((t^{1/p^\infty}))$'
+- id: people-mpim-bonn-mpg-de-scholze-galoistop-pdf#001
+  text: Construct the ring of big Witt vectors $W(A)$ for a commutative ring $A$ via formal power series
+    with constant term 1
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: construct the ring of big witt vectors $w(a)$ for a commutative ring $a$ via formal power
+    series with constant term 1
+- id: people-mpim-bonn-mpg-de-scholze-galoistop-pdf#002
+  text: Compute addition and multiplication in the big Witt ring $W(A)$ and define the Teichmüller representative
+    $[a] = (1 - at) \in W(A)$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 2
+  search_text: compute addition and multiplication in the big witt ring $w(a)$ and define the teichmüller
+    representative $[a] = (1 - at) \in w(a)$
+- id: people-mpim-bonn-mpg-de-scholze-galoistop-pdf#003
+  text: 'Compute the ghost map $w: W(A) \to A^\mathbb{N}$ and show that it is an isomorphism when $A$
+    is a $\mathbb{Q}$-algebra'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 3
+  search_text: 'compute the ghost map $w: w(a) \to a^\mathbb{n}$ and show that it is an isomorphism when
+    $a$ is a $\mathbb{q}$-algebra'

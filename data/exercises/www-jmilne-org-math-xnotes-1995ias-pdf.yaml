@@ -1,0 +1,42 @@
+url: https://www.jmilne.org/math/xnotes/1995IAS.pdf
+title: Milne's expository articles on Shimura varieties
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-jmilne-org-math-xnotes-1995ias-pdf#000
+  text: Define the local zeta function $Z_v(Y, T) = \exp\left(\sum_{m=1}^\infty N_m \frac{T^m}{m}\right)$
+    of a smooth projective variety $Y$ over a finite residue field $k(v)$, where $N_m = |Y(k(v)_m)|$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: define the local zeta function $z_v(y, t) = \exp\left(\sum_{m=1}^\infty n_m \frac{t^m}{m}\right)$
+    of a smooth projective variety $y$ over a finite residue field $k(v)$, where $n_m = |y(k(v)_m)|$
+- id: www-jmilne-org-math-xnotes-1995ias-pdf#001
+  text: 'Express the local zeta function via the characteristic polynomials of Frobenius on $\ell$-adic
+    étale cohomology: $Z_v(Y, T) = \prod_{i=0}^{2\dim Y} P_i(T)^{(-1)^{i+1}}$ where $P_i(T) = \det(1 -
+    T \cdot \operatorname{Frob}_v \mid H_{\text{ét}}^i(Y_{\overline{k}}, \mathbb{Q}_\ell))$'
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: 'express the local zeta function via the characteristic polynomials of frobenius on $\ell$-adic
+    étale cohomology: $z_v(y, t) = \prod_{i=0}^{2\dim y} p_i(t)^{(-1)^{i+1}}$ where $p_i(t) = \det(1 -
+    t \cdot \operatorname{frob}_v \mid h_{\text{ét}}^i(y_{\overline{k}}, \mathbb{q}_\ell))$'
+- id: www-jmilne-org-math-xnotes-1995ias-pdf#002
+  text: Classify Hermitian symmetric domains $X = G(\mathbb{R}) / K$ and their associated simple Lie groups
+    via Dynkin diagrams and special nodes
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: classify hermitian symmetric domains $x = g(\mathbb{r}) / k$ and their associated simple
+    lie groups via dynkin diagrams and special nodes

@@ -1,0 +1,20 @@
+url: https://arxiv.org/pdf/2409.10557
+title: stacky approach to p-adic Hodge theory
+note: 105 pages
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: arxiv-org-pdf-2409-10557#000
+  text: Compute the Fontaine comparison isomorphism $H_{\text{ét}}^i(X_{\mathbb{C}_p}, \mathbb{Q}_p) \otimes_{\mathbb{Q}_p}
+    B_{\mathrm{cris}} \cong H_{\mathrm{cris}}^i(X/\mathcal{O}_K) \otimes_{\mathcal{O}_K} B_{\mathrm{cris}}$
+    for proper smooth varieties
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: compute the fontaine comparison isomorphism $h_{\text{ét}}^i(x_{\mathbb{c}_p}, \mathbb{q}_p)
+    \otimes_{\mathbb{q}_p} b_{\mathrm{cris}} \cong h_{\mathrm{cris}}^i(x/\mathcal{o}_k) \otimes_{\mathcal{o}_k}
+    b_{\mathrm{cris}}$ for proper smooth varieties

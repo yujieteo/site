@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/00LO
+title: Ext groups
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-00lo#000
+  text: Define $\operatorname{Ext}_R^n(M, N)$ as the right derived functors of $\operatorname{Hom}_R(M,
+    -)$, classifying $n$-fold extensions
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define $\operatorname{ext}_r^n(m, n)$ as the right derived functors of $\operatorname{hom}_r(m,
+    -)$, classifying $n$-fold extensions

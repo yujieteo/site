@@ -1,0 +1,31 @@
+url: http://verbit.ru/MATH/GEOM-2013/slides-pde-en-1.pdf
+title: differential geometry tutorial
+note: geometry of manifolds
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: verbit-ru-math-geom-2013-slides-pde-en-1-pdf#000
+  text: 'Define a smooth atlas on a topological manifold $M$ as a collection of charts whose transition
+    maps $\varphi_j \circ \varphi_i^{-1}: \varphi_i(U_i \cap U_j) \to \varphi_j(U_i \cap U_j)$ are $C^\infty$-diffeomorphisms
+    on $\mathbb{R}^n$'
+  hint: null
+  locator:
+    kind: slide
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: 'define a smooth atlas on a topological manifold $m$ as a collection of charts whose transition
+    maps $\varphi_j \circ \varphi_i^{-1}: \varphi_i(u_i \cap u_j) \to \varphi_j(u_i \cap u_j)$ are $c^\infty$-diffeomorphisms
+    on $\mathbb{r}^n$'
+- id: verbit-ru-math-geom-2013-slides-pde-en-1-pdf#001
+  text: 'Define smooth maps between smooth manifolds $f: M \to N$ via coordinate representations in local
+    charts'
+  hint: null
+  locator:
+    kind: slide
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: 'define smooth maps between smooth manifolds $f: m \to n$ via coordinate representations
+    in local charts'

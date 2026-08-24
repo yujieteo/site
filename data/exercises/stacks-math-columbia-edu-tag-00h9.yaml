@@ -1,0 +1,23 @@
+url: https://stacks.math.columbia.edu/tag/00H9
+title: flat modules and flat ring maps
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-00h9#000
+  text: Define a flat $R$-module $M$ by the exactness of the functor $-\otimes_R M$, and a faithfully
+    flat module by the property that $-\otimes_R M$ is exact and reflects non-zero modules
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a flat $r$-module $m$ by the exactness of the functor $-\otimes_r m$, and a faithfully
+    flat module by the property that $-\otimes_r m$ is exact and reflects non-zero modules
+- id: stacks-math-columbia-edu-tag-00h9#001
+  text: (Lemma 10.39.2) Prove that for a flat module $M$ and ideals $I, J \subseteq R$, $(I \cap J)M =
+    IM \cap JM$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (lemma 10.39.2) prove that for a flat module $m$ and ideals $i, j \subseteq r$, $(i \cap
+    j)m = im \cap jm$

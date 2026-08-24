@@ -1,0 +1,84 @@
+url: https://arxiv.org/pdf/1606.01796
+title: Scholze's q-analogues in 18 pages
+note: MUST READ
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: arxiv-org-pdf-1606-01796#000
+  text: Define the $q$-analogues of integers $[n]_q = \frac{q^n - 1}{q - 1} = 1 + q + \dots + q^{n-1}$,
+    $q$-factorials $[n]_q! = \prod_{k=1}^n [k]_q$, and Gaussian $q$-binomial coefficients $\binom{n}{k}_q
+    = \frac{[n]_q!}{[k]_q! [n-k]_q!}$
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: define the $q$-analogues of integers $[n]_q = \frac{q^n - 1}{q - 1} = 1 + q + \dots + q^{n-1}$,
+    $q$-factorials $[n]_q! = \prod_{k=1}^n [k]_q$, and gaussian $q$-binomial coefficients $\binom{n}{k}_q
+    = \frac{[n]_q!}{[k]_q! [n-k]_q!}$
+- id: arxiv-org-pdf-1606-01796#001
+  text: Show that the $q$-binomial coefficient $\binom{n}{k}_q$ counts the number of $k$-dimensional subspaces
+    of $\mathbb{F}_q^n$
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 1
+  search_text: show that the $q$-binomial coefficient $\binom{n}{k}_q$ counts the number of $k$-dimensional
+    subspaces of $\mathbb{f}_q^n$
+- id: arxiv-org-pdf-1606-01796#002
+  text: Define the Jackson $q$-derivative $D_q f(x) = \frac{f(qx) - f(x)}{qx - x}$, compute $D_q(x^n)
+    = [n]_q x^{n-1}$, and verify that $\lim_{q \to 1} D_q f(x) = f'(x)$
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 2
+  search_text: define the jackson $q$-derivative $d_q f(x) = \frac{f(qx) - f(x)}{qx - x}$, compute $d_q(x^n)
+    = [n]_q x^{n-1}$, and verify that $\lim_{q \to 1} d_q f(x) = f'(x)$
+- id: arxiv-org-pdf-1606-01796#003
+  text: Formulate the $q$-de Rham complex $q\text{-}\Omega_{R/\mathbb{Z}}^\bullet$ over $\mathbb{Z}[[q-1]]$
+    specializing to de Rham cohomology at $q \to 1$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: formulate the $q$-de rham complex $q\text{-}\omega_{r/\mathbb{z}}^\bullet$ over $\mathbb{z}[[q-1]]$
+    specializing to de rham cohomology at $q \to 1$
+- id: arxiv-org-pdf-1606-01796#004
+  text: Compute the $q$-de Rham complex for $R = \mathbb{Z}[x]$ using the Jackson $q$-derivative
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: compute the $q$-de rham complex for $r = \mathbb{z}[x]$ using the jackson $q$-derivative
+- id: arxiv-org-pdf-1606-01796#005
+  text: Relate the $q$-de Rham complex to the de Rham-Witt complex $W\Omega_{R/\mathbb{F}_p}^\bullet$
+    and crystalline cohomology
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: relate the $q$-de rham complex to the de rham-witt complex $w\omega_{r/\mathbb{f}_p}^\bullet$
+    and crystalline cohomology
+- id: arxiv-org-pdf-1606-01796#006
+  text: Compare classical Betti-de Rham comparisons over $\mathbb{C}$ with $p$-adic comparisons between
+    étale, crystalline, and de Rham cohomology
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: compare classical betti-de rham comparisons over $\mathbb{c}$ with $p$-adic comparisons
+    between étale, crystalline, and de rham cohomology

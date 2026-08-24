@@ -1,0 +1,42 @@
+url: https://www.benasque.org/2015numbers/slides/BrunoJoyal.pdf
+title: p-adic Hodge theory and Bloch-Kato theory in 42 slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: www-benasque-org-2015numbers-slides-brunojoyal-pdf#000
+  text: Define Fontaine's period rings $B_{\mathrm{HT}}$, $B_{\mathrm{dR}}$, and $B_{\mathrm{cris}}$ and
+    the associated functor $D_B(V) = (V \otimes_{\mathbb{Q}_p} B)^{G_K}$ for $p$-adic Galois representations
+    $V$
+  hint: null
+  locator:
+    kind: slide
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: define fontaine's period rings $b_{\mathrm{ht}}$, $b_{\mathrm{dr}}$, and $b_{\mathrm{cris}}$
+    and the associated functor $d_b(v) = (v \otimes_{\mathbb{q}_p} b)^{g_k}$ for $p$-adic galois representations
+    $v$
+- id: www-benasque-org-2015numbers-slides-brunojoyal-pdf#001
+  text: Compute the dimension inequality $\dim_K D_{\mathrm{dR}}(V) \le \dim_{\mathbb{Q}_p}(V)$, with
+    equality if and only if $V$ is a de Rham representation
+  hint: null
+  locator:
+    kind: slide
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: compute the dimension inequality $\dim_k d_{\mathrm{dr}}(v) \le \dim_{\mathbb{q}_p}(v)$,
+    with equality if and only if $v$ is a de rham representation
+- id: www-benasque-org-2015numbers-slides-brunojoyal-pdf#002
+  text: Define Hodge-Tate representations and Hodge-Tate weights via the graded ring $B_{\mathrm{HT}}
+    \cong \bigoplus_{j \in \mathbb{Z}} \mathbb{C}_p(j)$
+  hint: null
+  locator:
+    kind: slide
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: define hodge-tate representations and hodge-tate weights via the graded ring $b_{\mathrm{ht}}
+    \cong \bigoplus_{j \in \mathbb{z}} \mathbb{c}_p(j)$

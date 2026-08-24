@@ -1,0 +1,26 @@
+url: https://www.imo.universite-paris-saclay.fr/~francois.charles/TLDR9.pdf
+title: local class field theory in 3 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-imo-universite-paris-saclay-fr-francois-charles-tldr9-pdf#000
+  text: 'Define the invariant map $\operatorname{inv}_K: \operatorname{Br}(K) \xrightarrow{\sim} \mathbb{Q}/\mathbb{Z}$
+    on the Brauer group of a non-archimedean local field $K$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'define the invariant map $\operatorname{inv}_k: \operatorname{br}(k) \xrightarrow{\sim}
+    \mathbb{q}/\mathbb{z}$ on the brauer group of a non-archimedean local field $k$'
+- id: www-imo-universite-paris-saclay-fr-francois-charles-tldr9-pdf#001
+  text: 'State the Local Artin Reciprocity Theorem: the local Artin map $\theta_K: K^\times \to \operatorname{Gal}(K^{\mathrm{ab}}/K)$
+    is an injective homomorphism with dense image, identifying $\mathcal{O}_K^\times \cong I_K^{\mathrm{ab}}$
+    and sending uniformizers $\pi_K$ to geometric Frobenius elements'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state the local artin reciprocity theorem: the local artin map $\theta_k: k^\times \to
+    \operatorname{gal}(k^{\mathrm{ab}}/k)$ is an injective homomorphism with dense image, identifying
+    $\mathcal{o}_k^\times \cong i_k^{\mathrm{ab}}$ and sending uniformizers $\pi_k$ to geometric frobenius
+    elements'

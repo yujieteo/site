@@ -1,0 +1,26 @@
+url: https://maths.anu.edu.au/sites/prod.maths.sca-lws06.anu.edu.au/files/Gurney-talk-ntdu.pdf
+title: q-de Rham in 95 slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: maths-anu-edu-au-sites-prod-maths-sca-lws06-anu-edu-au-files-gurney-talk-ntdu-pd#000
+  text: Compute the decomposition of differential $k$-forms on $\mathbb{A}_\mathbb{Z}^n$
+  hint: null
+  locator:
+    kind: slide
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: compute the decomposition of differential $k$-forms on $\mathbb{a}_\mathbb{z}^n$
+- id: maths-anu-edu-au-sites-prod-maths-sca-lws06-anu-edu-au-files-gurney-talk-ntdu-pd#001
+  text: 'Compute the exterior derivative $d: \Omega^k \to \Omega^{k+1}$ on $\mathbb{Z}[x_1, \dots, x_n]$'
+  hint: null
+  locator:
+    kind: slide
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: 'compute the exterior derivative $d: \omega^k \to \omega^{k+1}$ on $\mathbb{z}[x_1, \dots,
+    x_n]$'

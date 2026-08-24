@@ -1,0 +1,16 @@
+url: https://dspace.mit.edu/bitstream/handle/1721.1/116075.2/WWCM.pdf?sequence=6&isAllowed=y
+title: A Term of Commutative Algebra
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: dspace-mit-edu-bitstream-handle-1721-1-116075-2-wwcm-pdf#000
+  text: Verify the Frobenius identity $(a_1 + a_2)^p = a_1^p + a_2^p$ in characteristic $p$
+  hint: null
+  locator:
+    kind: page
+    value: '240'
+    number: 240
+  sub_index: 0
+  search_text: verify the frobenius identity $(a_1 + a_2)^p = a_1^p + a_2^p$ in characteristic $p$

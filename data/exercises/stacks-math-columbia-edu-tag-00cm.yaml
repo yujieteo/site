@@ -1,0 +1,23 @@
+url: https://stacks.math.columbia.edu/tag/00CM
+title: localisation
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-00cm#000
+  text: Construct the localization $S^{-1} A$ of a ring $A$ with respect to a multiplicative subset $S$,
+    and prove its universal property
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: construct the localization $s^{-1} a$ of a ring $a$ with respect to a multiplicative subset
+    $s$, and prove its universal property
+- id: stacks-math-columbia-edu-tag-00cm#001
+  text: 'Prove that localization is an exact functor: $S^{-1}(0 \to M'' \to M \to M'''' \to 0)$ remains
+    exact'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'prove that localization is an exact functor: $s^{-1}(0 \to m'' \to m \to m'''' \to 0)$
+    remains exact'

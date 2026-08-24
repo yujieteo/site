@@ -1,0 +1,19 @@
+url: https://stacks.math.columbia.edu/tag/07JV
+title: the Snake Lemma in abelian categories
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-07jv#000
+  text: 'State the Snake Lemma: given a commutative diagram with exact rows in an abelian category, construct
+    the natural connecting homomorphism $\delta: \ker(c) \to \operatorname{coker}(a)$ yielding the six-term
+    exact sequence $0 \to \ker(a) \to \ker(b) \to \ker(c) \xrightarrow{\delta} \operatorname{coker}(a)
+    \to \operatorname{coker}(b) \to \operatorname{coker}(c) \to 0$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state the snake lemma: given a commutative diagram with exact rows in an abelian category,
+    construct the natural connecting homomorphism $\delta: \ker(c) \to \operatorname{coker}(a)$ yielding
+    the six-term exact sequence $0 \to \ker(a) \to \ker(b) \to \ker(c) \xrightarrow{\delta} \operatorname{coker}(a)
+    \to \operatorname{coker}(b) \to \operatorname{coker}(c) \to 0$'

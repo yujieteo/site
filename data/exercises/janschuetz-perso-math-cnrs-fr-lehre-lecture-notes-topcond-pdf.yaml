@@ -1,0 +1,38 @@
+url: https://janschuetz.perso.math.cnrs.fr/lehre/lecture_notes_topcond.pdf
+title: topoi and condensed math in 53 pages
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: janschuetz-perso-math-cnrs-fr-lehre-lecture-notes-topcond-pdf#000
+  text: Give an example of a continuous bijection of topological spaces that is not a homeomorphism (e.g.,
+    $[0, 1) \to S^1$)
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: give an example of a continuous bijection of topological spaces that is not a homeomorphism
+    (e.g., $[0, 1) \to s^1$)
+- id: janschuetz-perso-math-cnrs-fr-lehre-lecture-notes-topcond-pdf#001
+  text: Define a Grothendieck topos as a category of sheaves on a small site
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: define a grothendieck topos as a category of sheaves on a small site
+- id: janschuetz-perso-math-cnrs-fr-lehre-lecture-notes-topcond-pdf#002
+  text: 'State Giraud''s axioms characterizing a Grothendieck topos: universal colimits, disjoint coproducts,
+    and effective equivalence relations'
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: 'state giraud''s axioms characterizing a grothendieck topos: universal colimits, disjoint
+    coproducts, and effective equivalence relations'

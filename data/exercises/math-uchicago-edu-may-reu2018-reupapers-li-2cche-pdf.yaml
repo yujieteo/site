@@ -1,0 +1,29 @@
+url: https://math.uchicago.edu/~may/REU2018/REUPapers/Li%2CChe.pdf
+title: class field theory and primes of the form x^2 + ny^2 by Che Li
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: math-uchicago-edu-may-reu2018-reupapers-li-2cche-pdf#000
+  text: Compute the class group and Hilbert class field for $\mathbb{Q}(\sqrt{-5})$ and solve the prime
+    representation problem $p = x^2 + 5y^2$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the class group and hilbert class field for $\mathbb{q}(\sqrt{-5})$ and solve the
+    prime representation problem $p = x^2 + 5y^2$
+- id: math-uchicago-edu-may-reu2018-reupapers-li-2cche-pdf#001
+  text: Compute the Minkowski bound for quadratic fields $\mathbb{Q}(\sqrt{-d})$ to determine class numbers
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the minkowski bound for quadratic fields $\mathbb{q}(\sqrt{-d})$ to determine class
+    numbers
+- id: math-uchicago-edu-may-reu2018-reupapers-li-2cche-pdf#002
+  text: Compute the ring class field of the order $\mathbb{Z}[\sqrt{-27}]$ to solve $p = x^2 + 27y^2$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the ring class field of the order $\mathbb{z}[\sqrt{-27}]$ to solve $p = x^2 +
+    27y^2$

@@ -1,0 +1,33 @@
+url: https://www.math.uni-bonn.de/people/scholze/padic_ktheory.pdf
+title: Scholze's lecture on p-adic K-theory of p-adic rings
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-math-uni-bonn-de-people-scholze-padic-ktheory-pdf#000
+  text: Compute projective $R$-modules up to isomorphism as the group completion of the $\mathbb{E}_\infty$-monoid
+    of isomorphism classes of vector bundles, yielding algebraic $K$-theory
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute projective $r$-modules up to isomorphism as the group completion of the $\mathbb{e}_\infty$-monoid
+    of isomorphism classes of vector bundles, yielding algebraic $k$-theory
+- id: www-math-uni-bonn-de-people-scholze-padic-ktheory-pdf#001
+  text: 'State the Thomason-Trobaugh theorem: algebraic $K$-theory satisfies Nisnevich and cdh descent,
+    but fails étale descent'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state the thomason-trobaugh theorem: algebraic $k$-theory satisfies nisnevich and cdh
+    descent, but fails étale descent'
+- id: www-math-uni-bonn-de-people-scholze-padic-ktheory-pdf#002
+  text: 'For a strictly Henselian local ring $R$ with $\ell \in R^\times$, compute the $\ell$-adic completed
+    $K$-theory homotopy groups: $\pi_{2i}(K(R)_\ell^\wedge) \cong \mathbb{Z}_\ell(i)$ and $\pi_{2i+1}(K(R)_\ell^\wedge)
+    = 0$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'for a strictly henselian local ring $r$ with $\ell \in r^\times$, compute the $\ell$-adic
+    completed $k$-theory homotopy groups: $\pi_{2i}(k(r)_\ell^\wedge) \cong \mathbb{z}_\ell(i)$ and $\pi_{2i+1}(k(r)_\ell^\wedge)
+    = 0$'

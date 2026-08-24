@@ -1,0 +1,569 @@
+url: https://www.preschema.com/papers/stacksncts.pdf
+title: Adeel Khan's stacks
+note: in 76 pages
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-preschema-com-papers-stacksncts-pdf#000
+  text: Imagine the moduli space of 1-dimensional linear subspaces in $\mathbb{C}^{n+1}$. What is this
+    object?
+  hint: Think about lines through the origin in projective space $\mathbb{P}^n$.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: imagine the moduli space of 1-dimensional linear subspaces in $\mathbb{c}^{n+1}$. what
+    is this object? think about lines through the origin in projective space $\mathbb{p}^n$.
+- id: www-preschema-com-papers-stacksncts-pdf#001
+  text: Imagine the moduli space of $k$-dimensional linear subspaces of a vector space and show that it
+    is equivalently the $(k-1)$-dimensional linear subspaces of the projectivization of the vector space.
+    What is this object?
+  hint: The Grassmannian $\operatorname{Gr}(k, V) \cong \operatorname{Gr}(k-1, \mathbb{P}(V))$.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: imagine the moduli space of $k$-dimensional linear subspaces of a vector space and show
+    that it is equivalently the $(k-1)$-dimensional linear subspaces of the projectivization of the vector
+    space. what is this object? the grassmannian $\operatorname{gr}(k, v) \cong \operatorname{gr}(k-1,
+    \mathbb{p}(v))$.
+- id: www-preschema-com-papers-stacksncts-pdf#002
+  text: Imagine a family or fibration of sets parametrized by commutative algebras. What is this object?
+    What happens if you imagine a fibration of groupoids parameterized by a suitable commutative algebra
+    instead?
+  hint: A functor of points/presheaf of sets vs. a fibration in groupoids/stack.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 2
+  search_text: imagine a family or fibration of sets parametrized by commutative algebras. what is this
+    object? what happens if you imagine a fibration of groupoids parameterized by a suitable commutative
+    algebra instead? a functor of points/presheaf of sets vs. a fibration in groupoids/stack.
+- id: www-preschema-com-papers-stacksncts-pdf#003
+  text: Compute the moduli space of vector bundles on an algebraic variety $X$, and compute the moduli
+    space of principal $G$-bundles on $X$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 3
+  search_text: compute the moduli space of vector bundles on an algebraic variety $x$, and compute the
+    moduli space of principal $g$-bundles on $x$
+- id: www-preschema-com-papers-stacksncts-pdf#004
+  text: Compute the moduli space of coherent sheaves on an algebraic variety by removing an equivalence
+    relation
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 4
+  search_text: compute the moduli space of coherent sheaves on an algebraic variety by removing an equivalence
+    relation
+- id: www-preschema-com-papers-stacksncts-pdf#005
+  text: Consider the example in Theorem 0.0.6. How does one specify complex projective $n$-space as a
+    scheme?
+  hint: 'Compute its functor of points: these are $A$-linear surjections $A^{n+1} \twoheadrightarrow L$,
+    where $L$ is a locally free $A$-module of rank 1.'
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: 'consider the example in theorem 0.0.6. how does one specify complex projective $n$-space
+    as a scheme? compute its functor of points: these are $a$-linear surjections $a^{n+1} \twoheadrightarrow
+    l$, where $l$ is a locally free $a$-module of rank 1.'
+- id: www-preschema-com-papers-stacksncts-pdf#006
+  text: Compute the diagram of a groupoid as a category. What are the objects of a groupoid for an equivalence
+    relation $R \subseteq X \times X$?
+  hint: Objects are elements of $X$, and morphisms are elements of $R$.
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 1
+  search_text: compute the diagram of a groupoid as a category. what are the objects of a groupoid for
+    an equivalence relation $r \subseteq x \times x$? objects are elements of $x$, and morphisms are elements
+    of $r$.
+- id: www-preschema-com-papers-stacksncts-pdf#007
+  text: Compute for the case of $\mathcal{M}_{\operatorname{Bun}_G}(C)$ taking a commutative algebra $A$
+    to the groupoid of principal $G$-bundles on the scheme $C \otimes_k A$ under base change. What do
+    you get for $G = \mathrm{GL}_n$?
+  hint: One gets the moduli stack $\operatorname{Bun}_n(C)$ of rank $n$ vector bundles on $C$.
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: compute for the case of $\mathcal{m}_{\operatorname{bun}_g}(c)$ taking a commutative algebra
+    $a$ to the groupoid of principal $g$-bundles on the scheme $c \otimes_k a$ under base change. what
+    do you get for $g = \mathrm{gl}_n$? one gets the moduli stack $\operatorname{bun}_n(c)$ of rank $n$
+    vector bundles on $c$.
+- id: www-preschema-com-papers-stacksncts-pdf#008
+  text: What class of functors does homological algebra allow us to derive, and what do $\infty$-categories
+    let us derive?
+  hint: Homological algebra derives functors between abelian categories, whereas $\infty$-categories allow
+    deriving non-abelian functors such as the tangent bundle and non-linear moduli.
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: what class of functors does homological algebra allow us to derive, and what do $\infty$-categories
+    let us derive? homological algebra derives functors between abelian categories, whereas $\infty$-categories
+    allow deriving non-abelian functors such as the tangent bundle and non-linear moduli.
+- id: www-preschema-com-papers-stacksncts-pdf#009
+  text: Compute the classical moduli stack $\mathcal{M}_{\mathrm{cl}}$ of vector bundles (respectively,
+    coherent sheaves and principal $G$-bundles). There is a closed immersion $\mathcal{M}_{\mathrm{cl}}
+    \hookrightarrow \mathcal{M}$ which is an isomorphism if and only if $X$ is a curve (if and only if
+    $\mathcal{M}$ is smooth). What happens when $\dim X \ge 2$?
+  hint: It retains hidden/homotopical smoothness when formulated as a derived stack.
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: compute the classical moduli stack $\mathcal{m}_{\mathrm{cl}}$ of vector bundles (respectively,
+    coherent sheaves and principal $g$-bundles). there is a closed immersion $\mathcal{m}_{\mathrm{cl}}
+    \hookrightarrow \mathcal{m}$ which is an isomorphism if and only if $x$ is a curve (if and only if
+    $\mathcal{m}$ is smooth). what happens when $\dim x \ge 2$? it retains hidden/homotopical smoothness
+    when formulated as a derived stack.
+- id: www-preschema-com-papers-stacksncts-pdf#010
+  text: 'Describe the simplex category $\Delta$ whose objects are finite non-empty ordinals $[n] = \{0,
+    1, \dots, n\}$ with order-preserving maps. Construct a simplicial set $X: \Delta^{\mathrm{op}} \to
+    \mathbf{Set}$ with $X_n := X([n])$, and describe its face and degeneracy maps'
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: 'describe the simplex category $\delta$ whose objects are finite non-empty ordinals $[n]
+    = \{0, 1, \dots, n\}$ with order-preserving maps. construct a simplicial set $x: \delta^{\mathrm{op}}
+    \to \mathbf{set}$ with $x_n := x([n])$, and describe its face and degeneracy maps'
+- id: www-preschema-com-papers-stacksncts-pdf#011
+  text: 'Construct the injective coface maps $d^i: [n-1] \to [n]$ skipping vertex $i$ and surjective codegeneracy
+    maps $s^i: [n+1] \to [n]$ doubling vertex $i$, then compute the induced face maps $d_i$ and degeneracy
+    maps $s_i$ satisfying the simplicial identities'
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 1
+  search_text: 'construct the injective coface maps $d^i: [n-1] \to [n]$ skipping vertex $i$ and surjective
+    codegeneracy maps $s^i: [n+1] \to [n]$ doubling vertex $i$, then compute the induced face maps $d_i$
+    and degeneracy maps $s_i$ satisfying the simplicial identities'
+- id: www-preschema-com-papers-stacksncts-pdf#012
+  text: Construct the standard $n$-simplex $\Delta^n$ using hom-sets out of $[k]$. What is this object?
+  hint: $\Delta_k^n = \operatorname{Hom}_\Delta([k], [n])$ via the Yoneda embedding.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: construct the standard $n$-simplex $\delta^n$ using hom-sets out of $[k]$. what is this
+    object? $\delta_k^n = \operatorname{hom}_\delta([k], [n])$ via the yoneda embedding.
+- id: www-preschema-com-papers-stacksncts-pdf#013
+  text: Compute the union of faces of $\Delta^n$ excluding the $k$-th face to define the $k$-th horn $\Lambda_k^n$
+  hint: $\Lambda_k^n = \bigcup_{j \ne k} \partial_j \Delta^n \subset \partial \Delta^n$.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 1
+  search_text: compute the union of faces of $\delta^n$ excluding the $k$-th face to define the $k$-th
+    horn $\lambda_k^n$ $\lambda_k^n = \bigcup_{j \ne k} \partial_j \delta^n \subset \partial \delta^n$.
+- id: www-preschema-com-papers-stacksncts-pdf#014
+  text: Construct the boundary $\partial \Delta^n$ of the standard $n$-simplex as the union of all its
+    faces
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 2
+  search_text: construct the boundary $\partial \delta^n$ of the standard $n$-simplex as the union of
+    all its faces
+- id: www-preschema-com-papers-stacksncts-pdf#015
+  text: 'Construct the morphism $\sigma: \Delta^n \to X$ corresponding to an $n$-simplex. What lemma is
+    required for this identification?'
+  hint: The Yoneda lemma.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 3
+  search_text: 'construct the morphism $\sigma: \delta^n \to x$ corresponding to an $n$-simplex. what
+    lemma is required for this identification? the yoneda lemma.'
+- id: www-preschema-com-papers-stacksncts-pdf#016
+  text: Construct the functor category $\operatorname{Fun}([n], \mathcal{C})$ for a small category $\mathcal{C}$,
+    and define the nerve $N(\mathcal{C})$ as a simplicial set whose $n$-simplices are strings of $n$ composable
+    morphisms
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 4
+  search_text: construct the functor category $\operatorname{fun}([n], \mathcal{c})$ for a small category
+    $\mathcal{c}$, and define the nerve $n(\mathcal{c})$ as a simplicial set whose $n$-simplices are strings
+    of $n$ composable morphisms
+- id: www-preschema-com-papers-stacksncts-pdf#017
+  text: 'Take the left Kan extension along the inclusion $\Delta \hookrightarrow \mathbf{Cat}$ to construct
+    the left adjoint of the nerve functor $N: \mathbf{Cat} \to \mathbf{sSet}$. Why is the nerve fully
+    faithful?'
+  hint: 0-simplices are objects, 1-simplices are morphisms, and 2-simplices uniquely determine composition.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 5
+  search_text: 'take the left kan extension along the inclusion $\delta \hookrightarrow \mathbf{cat}$
+    to construct the left adjoint of the nerve functor $n: \mathbf{cat} \to \mathbf{sset}$. why is the
+    nerve fully faithful? 0-simplices are objects, 1-simplices are morphisms, and 2-simplices uniquely
+    determine composition.'
+- id: www-preschema-com-papers-stacksncts-pdf#018
+  text: Construct the composition of two morphisms as a horn filling $\Lambda_1^2 \to \Delta^2$ or as
+    a pushout of simplicial sets $\Delta^1 \cup_{\Delta^0} \Delta^1 \cong \Lambda_1^2$
+  hint: null
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: construct the composition of two morphisms as a horn filling $\lambda_1^2 \to \delta^2$
+    or as a pushout of simplicial sets $\delta^1 \cup_{\delta^0} \delta^1 \cong \lambda_1^2$
+- id: www-preschema-com-papers-stacksncts-pdf#019
+  text: Prove that a simplicial set $X$ is isomorphic to the nerve of a 1-category if and only if the
+    inner horn restriction maps $X_n = \operatorname{Hom}(\Delta^n, X) \to \operatorname{Hom}(\Lambda_k^n,
+    X)$ are bijections for all $0 < k < n$ and $n \ge 2$ (Grothendieck-Segal theorem)
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: prove that a simplicial set $x$ is isomorphic to the nerve of a 1-category if and only
+    if the inner horn restriction maps $x_n = \operatorname{hom}(\delta^n, x) \to \operatorname{hom}(\lambda_k^n,
+    x)$ are bijections for all $0 < k < n$ and $n \ge 2$ (grothendieck-segal theorem)
+- id: www-preschema-com-papers-stacksncts-pdf#020
+  text: What condition defines a Kan complex?
+  hint: The restriction maps $\operatorname{Hom}(\Delta^n, X) \to \operatorname{Hom}(\Lambda_k^n, X)$
+    are surjective for all $0 \le k \le n$ and $n \ge 1$, ensuring all horns have fillers.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 1
+  search_text: what condition defines a kan complex? the restriction maps $\operatorname{hom}(\delta^n,
+    x) \to \operatorname{hom}(\lambda_k^n, x)$ are surjective for all $0 \le k \le n$ and $n \ge 1$, ensuring
+    all horns have fillers.
+- id: www-preschema-com-papers-stacksncts-pdf#021
+  text: Why is the nerve of an $\infty$-groupoid (or 1-groupoid) a Kan complex?
+  hint: Invertibility of all morphisms guarantees that outer horns also admit fillers.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 2
+  search_text: why is the nerve of an $\infty$-groupoid (or 1-groupoid) a kan complex? invertibility of
+    all morphisms guarantees that outer horns also admit fillers.
+- id: www-preschema-com-papers-stacksncts-pdf#022
+  text: Describe Milnor's theorem relating the homotopy categories of CW complexes and Kan complexes via
+    the singular simplicial set functor $\operatorname{Sing}(X)$ and geometric realization $|K|$
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 3
+  search_text: describe milnor's theorem relating the homotopy categories of cw complexes and kan complexes
+    via the singular simplicial set functor $\operatorname{sing}(x)$ and geometric realization $|k|$
+- id: www-preschema-com-papers-stacksncts-pdf#023
+  text: Compute the $n$-simplices of the singular simplicial set $\operatorname{Sing}(X)$ using continuous
+    maps $|\Delta^n| \to X$
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 4
+  search_text: compute the $n$-simplices of the singular simplicial set $\operatorname{sing}(x)$ using
+    continuous maps $|\delta^n| \to x$
+- id: www-preschema-com-papers-stacksncts-pdf#024
+  text: Why are Kan complexes regarded as algebraic models of spaces?
+  hint: 0-simplices correspond to points, 1-simplices to paths, 2-simplices to homotopies between paths,
+    and composition is unique up to coherent homotopy.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: why are kan complexes regarded as algebraic models of spaces? 0-simplices correspond to
+    points, 1-simplices to paths, 2-simplices to homotopies between paths, and composition is unique up
+    to coherent homotopy.
+- id: www-preschema-com-papers-stacksncts-pdf#025
+  text: Define a quasi-category (weak Kan complex / $(\infty, 1)$-category) via inner horn filling
+  hint: The restriction maps $\operatorname{Hom}(\Delta^n, X) \to \operatorname{Hom}(\Lambda_k^n, X)$
+    are surjective for all inner horns $0 < k < n$.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 1
+  search_text: define a quasi-category (weak kan complex / $(\infty, 1)$-category) via inner horn filling
+    the restriction maps $\operatorname{hom}(\delta^n, x) \to \operatorname{hom}(\lambda_k^n, x)$ are
+    surjective for all inner horns $0 < k < n$.
+- id: www-preschema-com-papers-stacksncts-pdf#026
+  text: Construct a diagram describing homotopies between morphisms as 2-simplices, and define composition
+    up to coherent homotopy in an $\infty$-category
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 2
+  search_text: construct a diagram describing homotopies between morphisms as 2-simplices, and define
+    composition up to coherent homotopy in an $\infty$-category
+- id: www-preschema-com-papers-stacksncts-pdf#027
+  text: Describe the Duskin nerve of a 2-category as a simplicial set whose 0-simplices are objects, 1-simplices
+    are 1-morphisms, and 2-simplices are 2-morphisms with coherence data
+  hint: null
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 0
+  search_text: describe the duskin nerve of a 2-category as a simplicial set whose 0-simplices are objects,
+    1-simplices are 1-morphisms, and 2-simplices are 2-morphisms with coherence data
+- id: www-preschema-com-papers-stacksncts-pdf#028
+  text: Compute the compatibility relations satisfied by 3-simplices in the Duskin nerve
+  hint: null
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 1
+  search_text: compute the compatibility relations satisfied by 3-simplices in the duskin nerve
+- id: www-preschema-com-papers-stacksncts-pdf#029
+  text: Describe how a 1-groupoid is viewed as a $(2, 1)$-category by discarding non-invertible 2-morphisms
+  hint: null
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 0
+  search_text: describe how a 1-groupoid is viewed as a $(2, 1)$-category by discarding non-invertible
+    2-morphisms
+- id: www-preschema-com-papers-stacksncts-pdf#030
+  text: Describe the large simplicial set $\mathbf{Kan}$ whose vertices are Kan complexes and $n$-simplices
+    are coherent diagrams of maps
+  hint: null
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 1
+  search_text: describe the large simplicial set $\mathbf{kan}$ whose vertices are kan complexes and $n$-simplices
+    are coherent diagrams of maps
+- id: www-preschema-com-papers-stacksncts-pdf#031
+  text: What conditions define a Grothendieck topology on a category $\mathcal{C}$?
+  hint: Existence of fiber products, stable covers under base change, and stability under composition.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 0
+  search_text: what conditions define a grothendieck topology on a category $\mathcal{c}$? existence of
+    fiber products, stable covers under base change, and stability under composition.
+- id: www-preschema-com-papers-stacksncts-pdf#032
+  text: 'Construct the prototypical site: the category of open subsets $\operatorname{Open}(X)$ of a topological
+    space with covering families given by open covers'
+  hint: null
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 1
+  search_text: 'construct the prototypical site: the category of open subsets $\operatorname{open}(x)$
+    of a topological space with covering families given by open covers'
+- id: www-preschema-com-papers-stacksncts-pdf#033
+  text: Construct the étale site of a scheme with coverings given by étale surjections (or faithfully
+    flat morphisms)
+  hint: null
+  locator:
+    kind: page
+    value: 14/15
+    number: 14
+  sub_index: 0
+  search_text: construct the étale site of a scheme with coverings given by étale surjections (or faithfully
+    flat morphisms)
+- id: www-preschema-com-papers-stacksncts-pdf#034
+  text: Construct the Čech nerve $\check{C}(U \to X)$ of a covering morphism. What is its $n$-th term,
+    and how does it define an $\infty$-sheaf?
+  hint: $U_n = U \times_X \dots \times_X U$, and the sheaf condition is given by a limit/descent condition.
+  locator:
+    kind: page
+    value: '17'
+    number: 17
+  sub_index: 0
+  search_text: construct the čech nerve $\check{c}(u \to x)$ of a covering morphism. what is its $n$-th
+    term, and how does it define an $\infty$-sheaf? $u_n = u \times_x \dots \times_x u$, and the sheaf
+    condition is given by a limit/descent condition.
+- id: www-preschema-com-papers-stacksncts-pdf#035
+  text: Compute the limit of a cosimplicial diagram in a 1-category as an equalizer
+  hint: $\lim X^\bullet \cong \operatorname{eq}(X^0 \rightrightarrows X^1)$.
+  locator:
+    kind: page
+    value: '18'
+    number: 18
+  sub_index: 0
+  search_text: compute the limit of a cosimplicial diagram in a 1-category as an equalizer $\lim x^\bullet
+    \cong \operatorname{eq}(x^0 \rightrightarrows x^1)$.
+- id: www-preschema-com-papers-stacksncts-pdf#036
+  text: Define a stack as a sheaf of groupoids satisfying descent with respect to covering sieves
+  hint: null
+  locator:
+    kind: page
+    value: '18'
+    number: 18
+  sub_index: 1
+  search_text: define a stack as a sheaf of groupoids satisfying descent with respect to covering sieves
+- id: www-preschema-com-papers-stacksncts-pdf#037
+  text: Prove the equivalence of categories between $\operatorname{Fun}(\mathcal{C}^{\mathrm{op}}, \mathbf{Cat})$
+    and Cartesian fibrations over $\mathcal{C}$ via the Grothendieck construction
+  hint: null
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 0
+  search_text: prove the equivalence of categories between $\operatorname{fun}(\mathcal{c}^{\mathrm{op}},
+    \mathbf{cat})$ and cartesian fibrations over $\mathcal{c}$ via the grothendieck construction
+- id: www-preschema-com-papers-stacksncts-pdf#038
+  text: Compare the étale topology (flat, unramified, locally of finite presentation) and the fpqc topology
+    (faithfully flat, quasi-compact). Which topology is finer?
+  hint: null
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 1
+  search_text: compare the étale topology (flat, unramified, locally of finite presentation) and the fpqc
+    topology (faithfully flat, quasi-compact). which topology is finer?
+- id: www-preschema-com-papers-stacksncts-pdf#039
+  text: Describe augmented simplicial diagrams $X_\bullet \to X_{-1}$ and their totalizations/limits as
+    descent conditions
+  hint: null
+  locator:
+    kind: page
+    value: '20'
+    number: 20
+  sub_index: 0
+  search_text: describe augmented simplicial diagrams $x_\bullet \to x_{-1}$ and their totalizations/limits
+    as descent conditions
+- id: www-preschema-com-papers-stacksncts-pdf#040
+  text: Prove that the module functor $R \mapsto \operatorname{Mod}_R$ satisfies faithfully flat descent
+    on the category of commutative rings
+  hint: null
+  locator:
+    kind: page
+    value: '20'
+    number: 20
+  sub_index: 1
+  search_text: prove that the module functor $r \mapsto \operatorname{mod}_r$ satisfies faithfully flat
+    descent on the category of commutative rings
+- id: www-preschema-com-papers-stacksncts-pdf#041
+  text: 'Prove that the pullback functor $f^*$ on quasi-coherent sheaves is conservative when $f: X \to
+    Y$ is faithfully flat and quasi-compact'
+  hint: null
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 0
+  search_text: 'prove that the pullback functor $f^*$ on quasi-coherent sheaves is conservative when $f:
+    x \to y$ is faithfully flat and quasi-compact'
+- id: www-preschema-com-papers-stacksncts-pdf#042
+  text: Compute the right Kan extension of $\mathbf{Aff}^{\mathrm{op}} \to \mathbf{Cat}$ along $\mathbf{Aff}
+    \hookrightarrow \mathbf{Sch}$ to construct quasi-coherent sheaves on arbitrary schemes and stacks
+  hint: null
+  locator:
+    kind: page
+    value: '23'
+    number: 23
+  sub_index: 0
+  search_text: compute the right kan extension of $\mathbf{aff}^{\mathrm{op}} \to \mathbf{cat}$ along
+    $\mathbf{aff} \hookrightarrow \mathbf{sch}$ to construct quasi-coherent sheaves on arbitrary schemes
+    and stacks
+- id: www-preschema-com-papers-stacksncts-pdf#043
+  text: Compute the colimit of a group action $X/G$ in the $\infty$-category of $\infty$-groupoids, and
+    identify it with the geometric realization of the Čech nerve $X \times_Y X \rightrightarrows X$
+  hint: null
+  locator:
+    kind: page
+    value: '25'
+    number: 25
+  sub_index: 0
+  search_text: compute the colimit of a group action $x/g$ in the $\infty$-category of $\infty$-groupoids,
+    and identify it with the geometric realization of the čech nerve $x \times_y x \rightrightarrows x$
+- id: www-preschema-com-papers-stacksncts-pdf#044
+  text: Define a groupoid object in an $\infty$-category via Cartesian squares associated with ordered
+    partitions of $[n]$
+  hint: null
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 0
+  search_text: define a groupoid object in an $\infty$-category via cartesian squares associated with
+    ordered partitions of $[n]$
+- id: www-preschema-com-papers-stacksncts-pdf#045
+  text: Compute the nerve $B G$ of a group $G$ as a simplicial object with $B G_n = G^n$, with face maps
+    given by group multiplication and degeneracies by identity insertions
+  hint: null
+  locator:
+    kind: page
+    value: '30'
+    number: 30
+  sub_index: 0
+  search_text: compute the nerve $b g$ of a group $g$ as a simplicial object with $b g_n = g^n$, with
+    face maps given by group multiplication and degeneracies by identity insertions
+- id: www-preschema-com-papers-stacksncts-pdf#046
+  text: State Lurie's theorem on effective epimorphisms in $\infty$-topoi and the equivalence between
+    groupoid objects and quotients
+  hint: null
+  locator:
+    kind: page
+    value: '32'
+    number: 32
+  sub_index: 0
+  search_text: state lurie's theorem on effective epimorphisms in $\infty$-topoi and the equivalence between
+    groupoid objects and quotients
+- id: www-preschema-com-papers-stacksncts-pdf#047
+  text: Construct group objects in $\operatorname{Shv}(\mathbf{Sch}; \mathbf{Set})$ and describe their
+    actions on objects
+  hint: null
+  locator:
+    kind: page
+    value: '35'
+    number: 35
+  sub_index: 0
+  search_text: construct group objects in $\operatorname{shv}(\mathbf{sch}; \mathbf{set})$ and describe
+    their actions on objects
+- id: www-preschema-com-papers-stacksncts-pdf#048
+  text: Construct groupoid actions and Cartesian squares describing group actions up to coherent homotopy
+  hint: null
+  locator:
+    kind: page
+    value: '38'
+    number: 38
+  sub_index: 0
+  search_text: construct groupoid actions and cartesian squares describing group actions up to coherent
+    homotopy

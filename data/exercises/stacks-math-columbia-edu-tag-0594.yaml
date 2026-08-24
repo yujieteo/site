@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/0594
+title: Mittag-Leffler systems
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-0594#000
+  text: Define the Mittag-Leffler condition for an inverse system of abelian groups $(A_i, \phi_{ij})$,
+    and prove that if $(A_i)$ is Mittag-Leffler, then $\varprojlim^1 A_i = 0$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define the mittag-leffler condition for an inverse system of abelian groups $(a_i, \phi_{ij})$,
+    and prove that if $(a_i)$ is mittag-leffler, then $\varprojlim^1 a_i = 0$

@@ -1,0 +1,15 @@
+url: https://alainconnes.org/wp-content/uploads/segals-GammaRings.pdf
+title: Segal's Gamma rings
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: alainconnes-org-wp-content-uploads-segals-gammarings-pdf#000
+  text: Compute the extension of the field with one element $\mathbb{F}_1$ to $\mathbb{Z}$ via Borger's
+    $\Lambda$-rings
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the extension of the field with one element $\mathbb{f}_1$ to $\mathbb{z}$ via
+    borger's $\lambda$-rings

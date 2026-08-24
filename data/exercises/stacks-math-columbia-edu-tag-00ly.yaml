@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/00LY
+title: Tor groups and flatness
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-00ly#000
+  text: Define $\operatorname{Tor}_n^R(M, N)$ as the left derived functors of $M \otimes_R -$, and show
+    that $\operatorname{Tor}_1^R(M, N) = 0$ for flat modules
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define $\operatorname{tor}_n^r(m, n)$ as the left derived functors of $m \otimes_r -$,
+    and show that $\operatorname{tor}_1^r(m, n) = 0$ for flat modules

@@ -237,3 +237,13 @@ footer.site-footer {
   header.site-header h1 { font-size: 1.85rem; }
   nav.site-nav { flex-wrap: wrap; }
 }
+
+.filters-toggle {
+  cursor: pointer;
+}
+.filters-toggle.open { /* optional active-state styling */ }
+.tag-filter-bar {
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0.5em 0 1em;
+}

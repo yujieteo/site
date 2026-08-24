@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/07RC
+title: Nakayama's lemma
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-07rc#000
+  text: 'Prove Nakayama''s Lemma: if $M$ is a finitely generated $R$-module and $I M = M$ for $I \subseteq
+    \operatorname{Jac}(R)$, then $M = 0$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'prove nakayama''s lemma: if $m$ is a finitely generated $r$-module and $i m = m$ for $i
+    \subseteq \operatorname{jac}(r)$, then $m = 0$'

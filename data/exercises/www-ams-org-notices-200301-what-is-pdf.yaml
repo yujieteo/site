@@ -1,0 +1,41 @@
+url: https://www.ams.org/notices/200301/what-is.pdf
+title: What is a Shtuka? by David Goss
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ams-org-notices-200301-what-is-pdf#000
+  text: Explain the analogy between the differential operator $\frac{d}{dt}$ in characteristic zero and
+    the Frobenius $p$-power operator $\tau(x) = x^p$ in characteristic $p$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: explain the analogy between the differential operator $\frac{d}{dt}$ in characteristic
+    zero and the frobenius $p$-power operator $\tau(x) = x^p$ in characteristic $p$
+- id: www-ams-org-notices-200301-what-is-pdf#001
+  text: Define the non-commutative polynomial ring $L\{\tau\}$ over a field of characteristic $p$ satisfying
+    the commutation relation $\tau \cdot c = c^p \cdot \tau$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define the non-commutative polynomial ring $l\{\tau\}$ over a field of characteristic $p$
+    satisfying the commutation relation $\tau \cdot c = c^p \cdot \tau$
+- id: www-ams-org-notices-200301-what-is-pdf#002
+  text: 'Define a Drinfeld $A$-module of rank $d$ over $L$ as an $\mathbb{F}_p$-algebra homomorphism $\psi:
+    A \to L\{\tau\}$ such that $\psi_T = i(T) + a_1 \tau + \dots + a_d \tau^d$ with $a_d \ne 0$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'define a drinfeld $a$-module of rank $d$ over $l$ as an $\mathbb{f}_p$-algebra homomorphism
+    $\psi: a \to l\{\tau\}$ such that $\psi_t = i(t) + a_1 \tau + \dots + a_d \tau^d$ with $a_d \ne 0$'
+- id: www-ams-org-notices-200301-what-is-pdf#003
+  text: Define a Drinfeld shtuka of rank $d$ on a curve $X / \mathbb{F}_p$ as a diagram of vector bundles
+    $\mathcal{E} \xrightarrow{j} \mathcal{E}' \xleftarrow{\tau} \mathcal{E}$ where $j$ and $\tau$ are
+    sheaf morphisms with cokernels supported on the pole $\infty$ and zero (characteristic point)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a drinfeld shtuka of rank $d$ on a curve $x / \mathbb{f}_p$ as a diagram of vector
+    bundles $\mathcal{e} \xrightarrow{j} \mathcal{e}' \xleftarrow{\tau} \mathcal{e}$ where $j$ and $\tau$
+    are sheaf morphisms with cokernels supported on the pole $\infty$ and zero (characteristic point)

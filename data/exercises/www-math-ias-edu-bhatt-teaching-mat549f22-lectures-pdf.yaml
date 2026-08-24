@@ -1,0 +1,42 @@
+url: https://www.math.ias.edu/~bhatt/teaching/mat549f22/lectures.pdf
+title: prismatic F-gauges
+note: in 151 pages
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-math-ias-edu-bhatt-teaching-mat549f22-lectures-pdf#000
+  text: Review smooth morphisms of schemes and verify that the Hodge-de Rham spectral sequence $E_1^{p,
+    q} = H^q(X, \Omega_{X/S}^p) \implies H_{\mathrm{dR}}^{p+q}(X/S)$ degenerates at $E_1$ for smooth proper
+    schemes in characteristic zero
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: review smooth morphisms of schemes and verify that the hodge-de rham spectral sequence
+    $e_1^{p, q} = h^q(x, \omega_{x/s}^p) \implies h_{\mathrm{dr}}^{p+q}(x/s)$ degenerates at $e_1$ for
+    smooth proper schemes in characteristic zero
+- id: www-math-ias-edu-bhatt-teaching-mat549f22-lectures-pdf#001
+  text: Compute the algebraic de Rham cohomology and Hodge filtration for the multiplicative group $\mathbb{G}_m$
+    and the torus $T = \mathbb{G}_m^d$
+  hint: null
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 0
+  search_text: compute the algebraic de rham cohomology and hodge filtration for the multiplicative group
+    $\mathbb{g}_m$ and the torus $t = \mathbb{g}_m^d$
+- id: www-math-ias-edu-bhatt-teaching-mat549f22-lectures-pdf#002
+  text: Compute the conjugate filtration for $X = \mathbb{G}_m$ over $S = \operatorname{Spec}(\mathbb{F}_p)$
+    via the Cartier isomorphism
+  hint: null
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 0
+  search_text: compute the conjugate filtration for $x = \mathbb{g}_m$ over $s = \operatorname{spec}(\mathbb{f}_p)$
+    via the cartier isomorphism

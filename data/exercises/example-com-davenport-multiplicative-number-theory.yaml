@@ -1,0 +1,30 @@
+url: https://example.com/davenport-multiplicative-number-theory
+title: Davenport's Multiplicative Number Theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: example-com-davenport-multiplicative-number-theory#000
+  text: Explain Euler's proof of the infinitude of primes using the divergence of the harmonic series
+    via the Euler product $\zeta(s) = \prod_p (1 - p^{-s})^{-1}$ as $s \to 1^+$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: explain euler's proof of the infinitude of primes using the divergence of the harmonic
+    series via the euler product $\zeta(s) = \prod_p (1 - p^{-s})^{-1}$ as $s \to 1^+$
+- id: example-com-davenport-multiplicative-number-theory#001
+  text: Describe Dirichlet's extension of Euler's proof to primes in arithmetic progressions $a \pmod
+    q$ using Dirichlet $L$-functions $L(s, \chi) = \sum \chi(n) n^{-s}$ and showing $L(1, \chi) \ne 0$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: describe dirichlet's extension of euler's proof to primes in arithmetic progressions $a
+    \pmod q$ using dirichlet $l$-functions $l(s, \chi) = \sum \chi(n) n^{-s}$ and showing $l(1, \chi)
+    \ne 0$

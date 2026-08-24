@@ -1,0 +1,27 @@
+url: https://www.ams.org/notices/200304/what-is.pdf
+title: What is a Stack? by Barbara Fantechi
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ams-org-notices-200304-what-is-pdf#000
+  text: 'Explain why the coarse moduli space of elliptic curves $\mathcal{M}_{1, 1} \cong \mathbb{A}^1$
+    (via the $j$-invariant) fails to admit a universal family: elliptic curves possess non-trivial automorphisms
+    ($\pm \operatorname{id}$), preventing fine moduli spaces of schemes'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'explain why the coarse moduli space of elliptic curves $\mathcal{m}_{1, 1} \cong \mathbb{a}^1$
+    (via the $j$-invariant) fails to admit a universal family: elliptic curves possess non-trivial automorphisms
+    ($\pm \operatorname{id}$), preventing fine moduli spaces of schemes'
+- id: www-ams-org-notices-200304-what-is-pdf#001
+  text: Define the moduli stack of elliptic curves $\mathcal{M}_{1, 1}$ as a category fibered in groupoids
+    over $\mathbf{Sch}$ where objects over $S$ are smooth proper families of elliptic curves $E \to S$,
+    capturing all automorphism groups
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define the moduli stack of elliptic curves $\mathcal{m}_{1, 1}$ as a category fibered in
+    groupoids over $\mathbf{sch}$ where objects over $s$ are smooth proper families of elliptic curves
+    $e \to s$, capturing all automorphism groups

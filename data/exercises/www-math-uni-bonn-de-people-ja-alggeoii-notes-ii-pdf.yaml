@@ -1,0 +1,180 @@
+url: https://www.math.uni-bonn.de/people/ja/alggeoII/notes_II.pdf
+title: Scholze's notes on algebraic geometry with étale cohomology
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#000
+  text: (Warm up) Compute the global sections $H^0(\mathbb{P}^d, \mathcal{O}(n))$ as homogeneous polynomials
+    of degree $n$, and reconstruct $\mathbb{P}^d \cong \operatorname{Proj}(k[x_0, \dots, x_d])$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (warm up) compute the global sections $h^0(\mathbb{p}^d, \mathcal{o}(n))$ as homogeneous
+    polynomials of degree $n$, and reconstruct $\mathbb{p}^d \cong \operatorname{proj}(k[x_0, \dots, x_d])$
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#001
+  text: 'Define the fiber $X_s = X \times_S \operatorname{Spec}(\kappa(s))$ of a morphism $f: X \to S$
+    at a point $s \in S$'
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: 'define the fiber $x_s = x \times_s \operatorname{spec}(\kappa(s))$ of a morphism $f: x
+    \to s$ at a point $s \in s$'
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#002
+  text: 'Define flatness of a module and a morphism of schemes $f: X \to S$: $\mathcal{O}_{X, x}$ is a
+    flat $\mathcal{O}_{S, f(x)}$-module for all $x \in X$'
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: 'define flatness of a module and a morphism of schemes $f: x \to s$: $\mathcal{o}_{x, x}$
+    is a flat $\mathcal{o}_{s, f(x)}$-module for all $x \in x$'
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#003
+  text: 'Show that for a domain $A$, $M = \mathbb{Z}/p\mathbb{Z}$ is not a flat $\mathbb{Z}$-module because
+    $p \cdot: \mathbb{Z} \to \mathbb{Z}$ is injective but $p \cdot: \mathbb{Z}/p\mathbb{Z} \to \mathbb{Z}/p\mathbb{Z}$
+    is zero'
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 1
+  search_text: 'show that for a domain $a$, $m = \mathbb{z}/p\mathbb{z}$ is not a flat $\mathbb{z}$-module
+    because $p \cdot: \mathbb{z} \to \mathbb{z}$ is injective but $p \cdot: \mathbb{z}/p\mathbb{z} \to
+    \mathbb{z}/p\mathbb{z}$ is zero'
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#004
+  text: Show that over a field $k$, every module is flat, so any morphism $X \to \operatorname{Spec}(k)$
+    is flat
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 2
+  search_text: show that over a field $k$, every module is flat, so any morphism $x \to \operatorname{spec}(k)$
+    is flat
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#005
+  text: Consider the family of elliptic curves $y^2 = x^3 + x^2 + t$; compute the singular nodal fiber
+    at $t = 0$ and verify that the family is flat over $\mathbb{A}^1$
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 3
+  search_text: consider the family of elliptic curves $y^2 = x^3 + x^2 + t$; compute the singular nodal
+    fiber at $t = 0$ and verify that the family is flat over $\mathbb{a}^1$
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#006
+  text: 'State Ehresmann''s theorem: a smooth proper morphism over $\mathbb{C}$ is a smooth fiber bundle
+    of differentiable manifolds'
+  hint: null
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: 'state ehresmann''s theorem: a smooth proper morphism over $\mathbb{c}$ is a smooth fiber
+    bundle of differentiable manifolds'
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#007
+  text: Prove that localization $S^{-1} A$ is a flat $A$-algebra, so open immersions of schemes are flat
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: prove that localization $s^{-1} a$ is a flat $a$-algebra, so open immersions of schemes
+    are flat
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#008
+  text: Prove that filtered colimits of flat modules are flat
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 1
+  search_text: prove that filtered colimits of flat modules are flat
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#009
+  text: 'State Lazard''s theorem: an $A$-module $M$ is flat if and only if it is a filtered colimit of
+    finitely generated free $A$-modules'
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 2
+  search_text: 'state lazard''s theorem: an $a$-module $m$ is flat if and only if it is a filtered colimit
+    of finitely generated free $a$-modules'
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#010
+  text: 'Formulate faithfully flat descent for quasi-coherent modules: given a faithfully flat morphism
+    $f: X \to Y$, the category $\mathbf{QCoh}(Y)$ is equivalent to $\mathbf{QCoh}(X)$ with descent data'
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: 'formulate faithfully flat descent for quasi-coherent modules: given a faithfully flat
+    morphism $f: x \to y$, the category $\mathbf{qcoh}(y)$ is equivalent to $\mathbf{qcoh}(x)$ with descent
+    data'
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#011
+  text: Define first-order thickenings and formal smoothness via the infinitesimal lifting criterion for
+    nilpotent ideals $I^2 = 0$
+  hint: null
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 0
+  search_text: define first-order thickenings and formal smoothness via the infinitesimal lifting criterion
+    for nilpotent ideals $i^2 = 0$
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#012
+  text: Define formally étale, formally unramified, and formally smooth morphisms via existence and uniqueness
+    of lifts in infinitesimal commutative diagrams
+  hint: null
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 1
+  search_text: define formally étale, formally unramified, and formally smooth morphisms via existence
+    and uniqueness of lifts in infinitesimal commutative diagrams
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#013
+  text: Compute the first sheaf cohomology group $H^1(X, G)$ with coefficients in an abelian sheaf $G$
+    as classifying $G$-torsors
+  hint: null
+  locator:
+    kind: page
+    value: '40'
+    number: 40
+  sub_index: 0
+  search_text: compute the first sheaf cohomology group $h^1(x, g)$ with coefficients in an abelian sheaf
+    $g$ as classifying $g$-torsors
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#014
+  text: Prove that for an affine scheme $X = \operatorname{Spec}(A)$ and quasi-coherent sheaf $\mathcal{F}
+    = \widetilde{M}$, $H^i(X, \mathcal{F}) = 0$ for all $i > 0$ (Serre's criterion)
+  hint: null
+  locator:
+    kind: page
+    value: '40'
+    number: 40
+  sub_index: 1
+  search_text: prove that for an affine scheme $x = \operatorname{spec}(a)$ and quasi-coherent sheaf $\mathcal{f}
+    = \widetilde{m}$, $h^i(x, \mathcal{f}) = 0$ for all $i > 0$ (serre's criterion)
+- id: www-math-uni-bonn-de-people-ja-alggeoii-notes-ii-pdf#015
+  text: Define double complexes and compute total complexes and spectral sequences associated with vertical
+    and horizontal differentials ($d_v d_h + d_h d_v = 0$)
+  hint: null
+  locator:
+    kind: page
+    value: '62'
+    number: 62
+  sub_index: 0
+  search_text: define double complexes and compute total complexes and spectral sequences associated with
+    vertical and horizontal differentials ($d_v d_h + d_h d_v = 0$)

@@ -1,0 +1,17 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides22.pdf
+title: elliptic curves lecture 22
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides22-pdf#000
+  text: Compute $\ell$-isogeny graphs of elliptic curves over finite fields using roots of modular polynomials
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: compute $\ell$-isogeny graphs of elliptic curves over finite fields using roots of modular
+    polynomials

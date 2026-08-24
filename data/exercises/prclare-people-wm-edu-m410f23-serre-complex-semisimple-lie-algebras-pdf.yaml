@@ -1,0 +1,51 @@
+url: https://prclare.people.wm.edu/m410f23/Serre_Complex_semisimple_Lie_algebras.pdf
+title: Serre's Complex Semisimple Lie Algebras
+note: Chapters 1 to 3
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: prclare-people-wm-edu-m410f23-serre-complex-semisimple-lie-algebras-pdf#000
+  text: (Chapter 1) Define nilpotent Lie algebras via the lower central series $C^{n+1}\mathfrak{g} =
+    [\mathfrak{g}, C^n\mathfrak{g}]$ and solvable Lie algebras via the derived series $D^{n+1}\mathfrak{g}
+    = [D^n\mathfrak{g}, D^n\mathfrak{g}]$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (chapter 1) define nilpotent lie algebras via the lower central series $c^{n+1}\mathfrak{g}
+    = [\mathfrak{g}, c^n\mathfrak{g}]$ and solvable lie algebras via the derived series $d^{n+1}\mathfrak{g}
+    = [d^n\mathfrak{g}, d^n\mathfrak{g}]$
+- id: prclare-people-wm-edu-m410f23-serre-complex-semisimple-lie-algebras-pdf#001
+  text: '(Chapter 1, Theorem 1) State Engel''s Theorem: a finite-dimensional Lie algebra $\mathfrak{g}$
+    is nilpotent if and only if $\operatorname{ad}(x)$ is nilpotent for all $x \in \mathfrak{g}$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(chapter 1, theorem 1) state engel''s theorem: a finite-dimensional lie algebra $\mathfrak{g}$
+    is nilpotent if and only if $\operatorname{ad}(x)$ is nilpotent for all $x \in \mathfrak{g}$'
+- id: prclare-people-wm-edu-m410f23-serre-complex-semisimple-lie-algebras-pdf#002
+  text: '(Chapter 1, Theorem 2) State Lie''s Theorem: every finite-dimensional representation of a solvable
+    Lie algebra over $\mathbb{C}$ has a simultaneous eigenvector'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(chapter 1, theorem 2) state lie''s theorem: every finite-dimensional representation of
+    a solvable lie algebra over $\mathbb{c}$ has a simultaneous eigenvector'
+- id: prclare-people-wm-edu-m410f23-serre-complex-semisimple-lie-algebras-pdf#003
+  text: (Chapter 2) Define the Killing form $B(x, y) = \operatorname{Tr}(\operatorname{ad}(x)\operatorname{ad}(y))$
+    and state Cartan's criterion for semisimplicity ($B$ is non-degenerate)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (chapter 2) define the killing form $b(x, y) = \operatorname{tr}(\operatorname{ad}(x)\operatorname{ad}(y))$
+    and state cartan's criterion for semisimplicity ($b$ is non-degenerate)
+- id: prclare-people-wm-edu-m410f23-serre-complex-semisimple-lie-algebras-pdf#004
+  text: (Chapter 3) Define Cartan subalgebras $\mathfrak{h} \subset \mathfrak{g}$ as nilpotent self-normalizing
+    subalgebras, and decompose $\mathfrak{g} = \mathfrak{h} \oplus \bigoplus_{\alpha \in \Phi} \mathfrak{g}_\alpha$
+    into root spaces
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (chapter 3) define cartan subalgebras $\mathfrak{h} \subset \mathfrak{g}$ as nilpotent
+    self-normalizing subalgebras, and decompose $\mathfrak{g} = \mathfrak{h} \oplus \bigoplus_{\alpha
+    \in \phi} \mathfrak{g}_\alpha$ into root spaces

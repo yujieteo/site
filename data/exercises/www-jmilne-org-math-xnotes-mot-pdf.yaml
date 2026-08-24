@@ -1,0 +1,41 @@
+url: https://www.jmilne.org/math/xnotes/MOT.pdf
+title: motives in 15 pages summary by Milne
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-jmilne-org-math-xnotes-mot-pdf#000
+  text: Formulate Poincaré duality and the Hard Lefschetz theorem on Betti cohomology of compact Kähler
+    manifolds
+  hint: null
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: formulate poincaré duality and the hard lefschetz theorem on betti cohomology of compact
+    kähler manifolds
+- id: www-jmilne-org-math-xnotes-mot-pdf#001
+  text: State the Weil Conjectures for smooth projective varieties over finite fields (rationality, functional
+    equation, Riemann hypothesis, and Betti numbers) as proven by Dwork, Grothendieck, and Deligne
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: state the weil conjectures for smooth projective varieties over finite fields (rationality,
+    functional equation, riemann hypothesis, and betti numbers) as proven by dwork, grothendieck, and
+    deligne
+- id: www-jmilne-org-math-xnotes-mot-pdf#002
+  text: Describe Grothendieck's category of pure Chow motives $\mathbf{Mot}(k)$ constructed from smooth
+    projective varieties with correspondences modulo rational/algebraic/numerical equivalence
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: describe grothendieck's category of pure chow motives $\mathbf{mot}(k)$ constructed from
+    smooth projective varieties with correspondences modulo rational/algebraic/numerical equivalence

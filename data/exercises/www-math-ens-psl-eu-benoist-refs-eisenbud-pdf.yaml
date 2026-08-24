@@ -1,0 +1,18 @@
+url: https://www.math.ens.psl.eu/~benoist/refs/Eisenbud.pdf
+title: Eisenbud's Commutative Algebra
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-math-ens-psl-eu-benoist-refs-eisenbud-pdf#000
+  text: Factor $x^p + y^p = \prod_{i=0}^{p-1} (x + \zeta^i y)$ in cyclotomic fields in connection with
+    Fermat's Last Theorem
+  hint: null
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 0
+  search_text: factor $x^p + y^p = \prod_{i=0}^{p-1} (x + \zeta^i y)$ in cyclotomic fields in connection
+    with fermat's last theorem

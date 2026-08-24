@@ -1,0 +1,86 @@
+url: https://math.bme.hu/~gabor/oktatas/SztoM/TaoVu.AddComb.pdf
+title: Tao-Vu additive combinatorics
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#000
+  text: 'Prove Markov''s inequality: $\mathbb{P}(X \ge a) \le \frac{\mathbb{E}[X]}{a}$ for a non-negative
+    random variable $X$'
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: 'prove markov''s inequality: $\mathbb{p}(x \ge a) \le \frac{\mathbb{e}[x]}{a}$ for a non-negative
+    random variable $x$'
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#001
+  text: 'Prove the Union Bound (Boole''s inequality) using linearity of expectation on indicator functions:
+    $\mathbb{P}(\bigcup E_i) \le \sum \mathbb{P}(E_i)$'
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: 'prove the union bound (boole''s inequality) using linearity of expectation on indicator
+    functions: $\mathbb{p}(\bigcup e_i) \le \sum \mathbb{p}(e_i)$'
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#002
+  text: State and prove the Borel-Cantelli lemmas for sequences of events $(E_n)_{n \ge 1}$
+  hint: null
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 1
+  search_text: state and prove the borel-cantelli lemmas for sequences of events $(e_n)_{n \ge 1}$
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#003
+  text: (Exercise 1.1.1) Compute Chebyshev's inequality $\mathbb{P}(|X - \mathbb{E}[X]| \ge \lambda \sigma)
+    \le \frac{1}{\lambda^2}$ from Markov's inequality applied to $(X - \mathbb{E}[X])^2$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (exercise 1.1.1) compute chebyshev's inequality $\mathbb{p}(|x - \mathbb{e}[x]| \ge \lambda
+    \sigma) \le \frac{1}{\lambda^2}$ from markov's inequality applied to $(x - \mathbb{e}[x])^2$
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#004
+  text: (Theorem 1.8) Derive Chernoff bounds by applying Markov's inequality to the moment generating
+    function $\mathbb{E}[e^{t X}]$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (theorem 1.8) derive chernoff bounds by applying markov's inequality to the moment generating
+    function $\mathbb{e}[e^{t x}]$
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#005
+  text: State the Lovász Local Lemma (symmetric and asymmetric versions) for avoiding mutually dependent
+    bad events
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: state the lovász local lemma (symmetric and asymmetric versions) for avoiding mutually
+    dependent bad events
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#006
+  text: (Lemma 2.1) Prove the sumset bounds $|A + B| \ge |A| + |B| - 1$ in $\mathbb{Z}$ and $|n A| \le
+    \binom{|A| + n - 1}{n}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (lemma 2.1) prove the sumset bounds $|a + b| \ge |a| + |b| - 1$ in $\mathbb{z}$ and $|n
+    a| \le \binom{|a| + n - 1}{n}$
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#007
+  text: (Definition 2.5) Define the Ruzsa distance $d(A, B) = \ln \frac{|A - B|}{|A|^{1/2} |B|^{1/2}}$
+    and prove the Ruzsa triangle inequality $d(A, C) \le d(A, B) + d(B, C)$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (definition 2.5) define the ruzsa distance $d(a, b) = \ln \frac{|a - b|}{|a|^{1/2} |b|^{1/2}}$
+    and prove the ruzsa triangle inequality $d(a, c) \le d(a, b) + d(b, c)$
+- id: math-bme-hu-gabor-oktatas-sztom-taovu-addcomb-pdf#008
+  text: (Lemma 4.5) Define the discrete Fourier transform $\widehat{f}(\xi) = \mathbb{E}_{x \in G}[f(x)
+    e(-\xi \cdot x)]$ on finite abelian groups and prove Parseval's and Plancherel's identities
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (lemma 4.5) define the discrete fourier transform $\widehat{f}(\xi) = \mathbb{e}_{x \in
+    g}[f(x) e(-\xi \cdot x)]$ on finite abelian groups and prove parseval's and plancherel's identities

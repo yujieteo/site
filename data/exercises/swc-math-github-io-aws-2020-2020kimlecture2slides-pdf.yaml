@@ -1,0 +1,15 @@
+url: https://swc-math.github.io/aws/2020/2020KimLecture2Slides.pdf
+title: Kim-Chabauty Slide 2
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: swc-math-github-io-aws-2020-2020kimlecture2slides-pdf#000
+  text: 'Explain the necessity of base points in universal covering spaces to obtain universal categorical
+    properties and define fiber functors $F_x: \mathbf{Cov}(X) \to \mathbf{Set}$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'explain the necessity of base points in universal covering spaces to obtain universal
+    categorical properties and define fiber functors $f_x: \mathbf{cov}(x) \to \mathbf{set}$'

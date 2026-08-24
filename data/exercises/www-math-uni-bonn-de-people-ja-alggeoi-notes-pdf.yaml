@@ -1,0 +1,529 @@
+url: https://www.math.uni-bonn.de/people/ja/alggeoI/notes.pdf
+title: Scholze's algebraic geometry notes
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#000
+  text: Define an affine algebraic set $V(S) \subseteq \mathbb{A}^n(k)$ as the zero locus of a subset
+    of polynomials $S \subseteq k[X_1, \dots, X_n]$ over an algebraically closed field $k$
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: define an affine algebraic set $v(s) \subseteq \mathbb{a}^n(k)$ as the zero locus of a
+    subset of polynomials $s \subseteq k[x_1, \dots, x_n]$ over an algebraically closed field $k$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#001
+  text: Use Hilbert's Basis Theorem to prove that every ideal $\mathfrak{a} \subseteq k[X_1, \dots, X_n]$
+    is finitely generated, and hence $V(S) = V(f_1, \dots, f_m)$ for a finite set of polynomials
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 1
+  search_text: use hilbert's basis theorem to prove that every ideal $\mathfrak{a} \subseteq k[x_1, \dots,
+    x_n]$ is finitely generated, and hence $v(s) = v(f_1, \dots, f_m)$ for a finite set of polynomials
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#002
+  text: Prove that every ascending chain of ideals in $k[X_1, \dots, X_n]$ stabilizes since $k[X_1, \dots,
+    X_n]$ is Noetherian
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 2
+  search_text: prove that every ascending chain of ideals in $k[x_1, \dots, x_n]$ stabilizes since $k[x_1,
+    \dots, x_n]$ is noetherian
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#003
+  text: Show that every algebraic subset of $\mathbb{A}^1(k)$ is either a finite set of points or the
+    entire affine line
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 3
+  search_text: show that every algebraic subset of $\mathbb{a}^1(k)$ is either a finite set of points
+    or the entire affine line
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#004
+  text: Compute the zero set $V(f)$ for $f \in k[X]$ using its factorization into linear factors in a
+    PID
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 4
+  search_text: compute the zero set $v(f)$ for $f \in k[x]$ using its factorization into linear factors
+    in a pid
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#005
+  text: Compute the geometric zero loci in $\mathbb{A}^2(\mathbb{C})$ for $x + y = 0$, $x^2 + y^2 = 1$,
+    and $x^2 + y^2 = -1$
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 5
+  search_text: compute the geometric zero loci in $\mathbb{a}^2(\mathbb{c})$ for $x + y = 0$, $x^2 + y^2
+    = 1$, and $x^2 + y^2 = -1$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#006
+  text: Show that a non-singular cubic curve (elliptic curve) forms an affine algebraic set in $\mathbb{A}^2(k)$
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: show that a non-singular cubic curve (elliptic curve) forms an affine algebraic set in
+    $\mathbb{a}^2(k)$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#007
+  text: Describe the zero locus of $x^2 = y^2$ in $\mathbb{A}^2(k)$ under the Zariski topology as the
+    union of two lines
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 1
+  search_text: describe the zero locus of $x^2 = y^2$ in $\mathbb{a}^2(k)$ under the zariski topology
+    as the union of two lines
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#008
+  text: 'Verify the axioms of the Zariski topology: $V(\emptyset) = \mathbb{A}^n$, $V(1) = \emptyset$,
+    $\bigcap V(S_i) = V(\bigcup S_i)$, and $V(I) \cup V(J) = V(I J)$'
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 2
+  search_text: 'verify the axioms of the zariski topology: $v(\emptyset) = \mathbb{a}^n$, $v(1) = \emptyset$,
+    $\bigcap v(s_i) = v(\bigcup s_i)$, and $v(i) \cup v(j) = v(i j)$'
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#009
+  text: Prove that $V(I) \cup V(J) = V(I \cap J) = V(I J)$ for any two ideals $I, J \subseteq k[X_1, \dots,
+    X_n]$
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 3
+  search_text: prove that $v(i) \cup v(j) = v(i \cap j) = v(i j)$ for any two ideals $i, j \subseteq k[x_1,
+    \dots, x_n]$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#010
+  text: Define the radical of an ideal $\sqrt{I} = \{f \in R \mid f^m \in I \text{ for some } m \ge 1\}$
+    and show $V(I) = V(\sqrt{I})$
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 4
+  search_text: define the radical of an ideal $\sqrt{i} = \{f \in r \mid f^m \in i \text{ for some } m
+    \ge 1\}$ and show $v(i) = v(\sqrt{i})$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#011
+  text: 'State Hilbert''s Nullstellensatz: for an algebraically closed field $k$ and ideal $I \subseteq
+    k[X_1, \dots, X_n]$, $I(V(I)) = \sqrt{I}$'
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: 'state hilbert''s nullstellensatz: for an algebraically closed field $k$ and ideal $i \subseteq
+    k[x_1, \dots, x_n]$, $i(v(i)) = \sqrt{i}$'
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#012
+  text: 'State the Weak Nullstellensatz: if $I \subsetneq k[X_1, \dots, X_n]$ is a proper ideal, then
+    $V(I) \ne \emptyset$'
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 1
+  search_text: 'state the weak nullstellensatz: if $i \subsetneq k[x_1, \dots, x_n]$ is a proper ideal,
+    then $v(i) \ne \emptyset$'
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#013
+  text: Prove using Noether normalization that every maximal ideal $\mathfrak{m} \subset k[X_1, \dots,
+    X_n]$ is of the form $(X_1 - a_1, \dots, X_n - a_n)$ for $a_i \in k$
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 2
+  search_text: prove using noether normalization that every maximal ideal $\mathfrak{m} \subset k[x_1,
+    \dots, x_n]$ is of the form $(x_1 - a_1, \dots, x_n - a_n)$ for $a_i \in k$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#014
+  text: Prove the bijection between radical ideals in $k[X_1, \dots, X_n]$ and algebraic sets in $\mathbb{A}^n(k)$
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: prove the bijection between radical ideals in $k[x_1, \dots, x_n]$ and algebraic sets in
+    $\mathbb{a}^n(k)$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#015
+  text: Use the Rabinowitsch trick to deduce the Strong Nullstellensatz from the Weak Nullstellensatz
+    by adjoining an auxiliary variable $Y$ and considering $(I, 1 - Y f)$
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 1
+  search_text: use the rabinowitsch trick to deduce the strong nullstellensatz from the weak nullstellensatz
+    by adjoining an auxiliary variable $y$ and considering $(i, 1 - y f)$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#016
+  text: Show that an affine coordinate ring $A(V) = k[X_1, \dots, X_n] / I(V)$ is reduced ($\operatorname{nil}(A(V))
+    = 0$)
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: show that an affine coordinate ring $a(v) = k[x_1, \dots, x_n] / i(v)$ is reduced ($\operatorname{nil}(a(v))
+    = 0$)
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#017
+  text: Define the coordinate ring $\mathcal{O}(V)$ as the ring of polynomial functions on an algebraic
+    set $V \subseteq \mathbb{A}^n(k)$
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: define the coordinate ring $\mathcal{o}(v)$ as the ring of polynomial functions on an algebraic
+    set $v \subseteq \mathbb{a}^n(k)$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#018
+  text: Identify $V(I)$ with $\operatorname{Hom}_{k\text{-alg}}(k[X_1, \dots, X_n]/I, k)$
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 1
+  search_text: identify $v(i)$ with $\operatorname{hom}_{k\text{-alg}}(k[x_1, \dots, x_n]/i, k)$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#019
+  text: Define the prime spectrum $\operatorname{Spec}(A)$ of a commutative ring $A$ as the set of all
+    prime ideals of $A$
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 2
+  search_text: define the prime spectrum $\operatorname{spec}(a)$ of a commutative ring $a$ as the set
+    of all prime ideals of $a$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#020
+  text: 'Prove that the kernel of any ring homomorphism $f: A \to K$ into a field $K$ is a prime ideal
+    $\mathfrak{p} \in \operatorname{Spec}(A)$'
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 3
+  search_text: 'prove that the kernel of any ring homomorphism $f: a \to k$ into a field $k$ is a prime
+    ideal $\mathfrak{p} \in \operatorname{spec}(a)$'
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#021
+  text: Define the residue field $\kappa(\mathfrak{p}) = \operatorname{Frac}(A/\mathfrak{p})$ at a prime
+    ideal $\mathfrak{p} \in \operatorname{Spec}(A)$
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: define the residue field $\kappa(\mathfrak{p}) = \operatorname{frac}(a/\mathfrak{p})$ at
+    a prime ideal $\mathfrak{p} \in \operatorname{spec}(a)$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#022
+  text: Compute $\operatorname{Spec}(\mathbb{Z})$, identifying its closed points $(p)$ and generic point
+    $(0)$
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 1
+  search_text: compute $\operatorname{spec}(\mathbb{z})$, identifying its closed points $(p)$ and generic
+    point $(0)$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#023
+  text: Define the maximal spectrum $\operatorname{Spec}_{\max}(A)$ as the set of maximal ideals of $A$
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 2
+  search_text: define the maximal spectrum $\operatorname{spec}_{\max}(a)$ as the set of maximal ideals
+    of $a$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#024
+  text: Compute the continuous map $\operatorname{Spec}(\mathbb{Q}) \to \operatorname{Spec}(\mathbb{Z})$
+    induced by the inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$
+  hint: null
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 0
+  search_text: compute the continuous map $\operatorname{spec}(\mathbb{q}) \to \operatorname{spec}(\mathbb{z})$
+    induced by the inclusion $\mathbb{z} \hookrightarrow \mathbb{q}$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#025
+  text: 'Prove that for any ring homomorphism $f: A \to B$, the preimage $f^{-1}(\mathfrak{q})$ of a prime
+    ideal $\mathfrak{q} \subseteq B$ is a prime ideal in $A$'
+  hint: null
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 1
+  search_text: 'prove that for any ring homomorphism $f: a \to b$, the preimage $f^{-1}(\mathfrak{q})$
+    of a prime ideal $\mathfrak{q} \subseteq b$ is a prime ideal in $a$'
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#026
+  text: Define a presheaf and a sheaf of rings on a topological space $X$, stating the locality and gluing
+    axioms
+  hint: null
+  locator:
+    kind: page
+    value: '18'
+    number: 18
+  sub_index: 0
+  search_text: define a presheaf and a sheaf of rings on a topological space $x$, stating the locality
+    and gluing axioms
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#027
+  text: Verify that the assignment $U \mapsto C^0(U, \mathbb{R})$ (and $U \mapsto C^\infty(U, \mathbb{R})$)
+    defines a sheaf of rings
+  hint: null
+  locator:
+    kind: page
+    value: '18'
+    number: 18
+  sub_index: 1
+  search_text: verify that the assignment $u \mapsto c^0(u, \mathbb{r})$ (and $u \mapsto c^\infty(u, \mathbb{r})$)
+    defines a sheaf of rings
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#028
+  text: Express the sheaf condition for $\mathcal{F}(U)$ as the equalizer of $\prod \mathcal{F}(U_i) \rightrightarrows
+    \prod \mathcal{F}(U_i \cap U_j)$
+  hint: null
+  locator:
+    kind: page
+    value: '18'
+    number: 18
+  sub_index: 2
+  search_text: express the sheaf condition for $\mathcal{f}(u)$ as the equalizer of $\prod \mathcal{f}(u_i)
+    \rightrightarrows \prod \mathcal{f}(u_i \cap u_j)$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#029
+  text: Show that for any sheaf $\mathcal{F}$, $\mathcal{F}(\emptyset) = 0$ is the terminal object
+  hint: null
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 0
+  search_text: show that for any sheaf $\mathcal{f}$, $\mathcal{f}(\emptyset) = 0$ is the terminal object
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#030
+  text: Define the localization $A_\mathfrak{p} = S^{-1} A$ at a prime ideal $\mathfrak{p}$ where $S =
+    A \setminus \mathfrak{p}$, and show that $A_\mathfrak{p}$ is a local ring with maximal ideal $\mathfrak{p}
+    A_\mathfrak{p}$
+  hint: null
+  locator:
+    kind: page
+    value: '26'
+    number: 26
+  sub_index: 0
+  search_text: define the localization $a_\mathfrak{p} = s^{-1} a$ at a prime ideal $\mathfrak{p}$ where
+    $s = a \setminus \mathfrak{p}$, and show that $a_\mathfrak{p}$ is a local ring with maximal ideal
+    $\mathfrak{p} a_\mathfrak{p}$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#031
+  text: Define a locally ringed space $(X, \mathcal{O}_X)$ as a ringed space whose stalks $\mathcal{O}_{X,
+    x}$ are local rings
+  hint: null
+  locator:
+    kind: page
+    value: '27'
+    number: 27
+  sub_index: 0
+  search_text: define a locally ringed space $(x, \mathcal{o}_x)$ as a ringed space whose stalks $\mathcal{o}_{x,
+    x}$ are local rings
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#032
+  text: Define the structure sheaf $\mathcal{O}_{\operatorname{Spec}(A)}$ on the spectrum of a ring $A$,
+    with stalks $\mathcal{O}_{\operatorname{Spec}(A), \mathfrak{p}} \cong A_\mathfrak{p}$
+  hint: null
+  locator:
+    kind: page
+    value: '27'
+    number: 27
+  sub_index: 1
+  search_text: define the structure sheaf $\mathcal{o}_{\operatorname{spec}(a)}$ on the spectrum of a
+    ring $a$, with stalks $\mathcal{o}_{\operatorname{spec}(a), \mathfrak{p}} \cong a_\mathfrak{p}$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#033
+  text: Define quasi-coherent $\mathcal{O}_X$-modules as sheaves that locally admit presentations $\mathcal{O}_X^{\oplus
+    I} \to \mathcal{O}_X^{\oplus J} \to \mathcal{F} \to 0$, or $\widetilde{M}$ on affine schemes
+  hint: null
+  locator:
+    kind: page
+    value: '42'
+    number: 42
+  sub_index: 0
+  search_text: define quasi-coherent $\mathcal{o}_x$-modules as sheaves that locally admit presentations
+    $\mathcal{o}_x^{\oplus i} \to \mathcal{o}_x^{\oplus j} \to \mathcal{f} \to 0$, or $\widetilde{m}$
+    on affine schemes
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#034
+  text: Use Noether normalization to define the Krull dimension of an affine variety as the transcendence
+    degree of its function field
+  hint: null
+  locator:
+    kind: page
+    value: '55'
+    number: 55
+  sub_index: 0
+  search_text: use noether normalization to define the krull dimension of an affine variety as the transcendence
+    degree of its function field
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#035
+  text: Prove that the Segre embedding $\mathbb{P}^n \times \mathbb{P}^m \hookrightarrow \mathbb{P}^{(n+1)(m+1)-1}$
+    is a closed immersion, showing products of projective schemes are projective
+  hint: null
+  locator:
+    kind: page
+    value: '62'
+    number: 62
+  sub_index: 0
+  search_text: prove that the segre embedding $\mathbb{p}^n \times \mathbb{p}^m \hookrightarrow \mathbb{p}^{(n+1)(m+1)-1}$
+    is a closed immersion, showing products of projective schemes are projective
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#036
+  text: Prove that closed immersions of schemes are stable under composition and base change
+  hint: null
+  locator:
+    kind: page
+    value: '62'
+    number: 62
+  sub_index: 1
+  search_text: prove that closed immersions of schemes are stable under composition and base change
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#037
+  text: Construct the affine line with a doubled origin by gluing two copies of $\mathbb{A}^1$ along $\mathbb{A}^1
+    \setminus \{0\}$, demonstrating a non-separated scheme
+  hint: null
+  locator:
+    kind: page
+    value: '63'
+    number: 63
+  sub_index: 0
+  search_text: construct the affine line with a doubled origin by gluing two copies of $\mathbb{a}^1$
+    along $\mathbb{a}^1 \setminus \{0\}$, demonstrating a non-separated scheme
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#038
+  text: Define a valuation ring $A \subset K$ of a field $K$ by the property that for every $x \in K^\times$,
+    either $x \in A$ or $x^{-1} \in A$
+  hint: null
+  locator:
+    kind: page
+    value: '73'
+    number: 73
+  sub_index: 0
+  search_text: define a valuation ring $a \subset k$ of a field $k$ by the property that for every $x
+    \in k^\times$, either $x \in a$ or $x^{-1} \in a$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#039
+  text: Define the normalization of an integral scheme $X$ as the scheme $\widetilde{X}$ whose affine
+    charts are the integral closures of $\mathcal{O}_X(U)$ in $\operatorname{Frac}(\mathcal{O}_X(U))$
+  hint: null
+  locator:
+    kind: page
+    value: '80'
+    number: 80
+  sub_index: 0
+  search_text: define the normalization of an integral scheme $x$ as the scheme $\widetilde{x}$ whose
+    affine charts are the integral closures of $\mathcal{o}_x(u)$ in $\operatorname{frac}(\mathcal{o}_x(u))$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#040
+  text: Define the divisor group $\operatorname{Div}(C)$ of a smooth algebraic curve $C$ as the free abelian
+    group on closed points $D = \sum n_x [x]$
+  hint: null
+  locator:
+    kind: page
+    value: '103'
+    number: 103
+  sub_index: 0
+  search_text: define the divisor group $\operatorname{div}(c)$ of a smooth algebraic curve $c$ as the
+    free abelian group on closed points $d = \sum n_x [x]$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#041
+  text: Define effective divisors ($n_x \ge 0$) and the associated invertible sheaf $\mathcal{O}_C(D)(U)
+    = \{f \in K(C)^\times \mid \operatorname{div}(f)|_U + D|_U \ge 0\} \cup \{0\}$
+  hint: null
+  locator:
+    kind: page
+    value: '103'
+    number: 103
+  sub_index: 1
+  search_text: define effective divisors ($n_x \ge 0$) and the associated invertible sheaf $\mathcal{o}_c(d)(u)
+    = \{f \in k(c)^\times \mid \operatorname{div}(f)|_u + d|_u \ge 0\} \cup \{0\}$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#042
+  text: Prove the natural isomorphism $\mathcal{O}_C(D) \otimes_{\mathcal{O}_C} \mathcal{O}_C(D') \cong
+    \mathcal{O}_C(D + D')$
+  hint: null
+  locator:
+    kind: page
+    value: '104'
+    number: 104
+  sub_index: 0
+  search_text: prove the natural isomorphism $\mathcal{o}_c(d) \otimes_{\mathcal{o}_c} \mathcal{o}_c(d')
+    \cong \mathcal{o}_c(d + d')$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#043
+  text: 'Prove that the degree of any principal divisor $\operatorname{div}(f)$ on a proper smooth curve
+    is zero: $\deg(\operatorname{div}(f)) = 0$'
+  hint: null
+  locator:
+    kind: page
+    value: '107'
+    number: 107
+  sub_index: 0
+  search_text: 'prove that the degree of any principal divisor $\operatorname{div}(f)$ on a proper smooth
+    curve is zero: $\deg(\operatorname{div}(f)) = 0$'
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#044
+  text: 'State the Riemann-Roch theorem for a smooth projective curve $C$: $\dim H^0(C, \mathcal{L}) -
+    \dim H^1(C, \mathcal{L}) = \deg(\mathcal{L}) + 1 - g$'
+  hint: null
+  locator:
+    kind: page
+    value: '108'
+    number: 108
+  sub_index: 0
+  search_text: 'state the riemann-roch theorem for a smooth projective curve $c$: $\dim h^0(c, \mathcal{l})
+    - \dim h^1(c, \mathcal{l}) = \deg(\mathcal{l}) + 1 - g$'
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#045
+  text: Prove that the degree of the canonical divisor $K_C$ is $2g - 2$ by setting $\mathcal{L} = \omega_C$
+    in the Riemann-Roch formula
+  hint: null
+  locator:
+    kind: page
+    value: '108'
+    number: 108
+  sub_index: 1
+  search_text: prove that the degree of the canonical divisor $k_c$ is $2g - 2$ by setting $\mathcal{l}
+    = \omega_c$ in the riemann-roch formula
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#046
+  text: Use the Riemann-Roch theorem to prove that any smooth projective curve of genus 1 with a rational
+    point is isomorphic to a plane cubic in Weierstrass form $y^2 = x^3 + a x + b$
+  hint: null
+  locator:
+    kind: page
+    value: '109'
+    number: 109
+  sub_index: 0
+  search_text: use the riemann-roch theorem to prove that any smooth projective curve of genus 1 with
+    a rational point is isomorphic to a plane cubic in weierstrass form $y^2 = x^3 + a x + b$
+- id: www-math-uni-bonn-de-people-ja-alggeoi-notes-pdf#047
+  text: 'Prove the group law on an elliptic curve $E$: three points $P, Q, R$ sum to zero if and only
+    if they are collinear in $\mathbb{P}^2$'
+  hint: null
+  locator:
+    kind: page
+    value: '109'
+    number: 109
+  sub_index: 1
+  search_text: 'prove the group law on an elliptic curve $e$: three points $p, q, r$ sum to zero if and
+    only if they are collinear in $\mathbb{p}^2$'

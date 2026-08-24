@@ -1,0 +1,65 @@
+url: https://www.math.stonybrook.edu/~kamenova/homepage_files/Hartshorne_engl.pdf
+title: Hartshorne chapter 1.1 to 1.7
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-math-stonybrook-edu-kamenova-homepage-files-hartshorne-engl-pdf#000
+  text: (Example 1.1.1) Classify the closed algebraic sets of $\mathbb{A}^1(k)$ over an algebraically
+    closed field as finite sets of points or $\mathbb{A}^1(k)$ itself
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (example 1.1.1) classify the closed algebraic sets of $\mathbb{a}^1(k)$ over an algebraically
+    closed field as finite sets of points or $\mathbb{a}^1(k)$ itself
+- id: www-math-stonybrook-edu-kamenova-homepage-files-hartshorne-engl-pdf#001
+  text: (Proposition 1.5) Prove that every algebraic set $Y$ in a Noetherian topological space decomposes
+    uniquely as a finite union of irreducible components $Y = Y_1 \cup \dots \cup Y_r$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (proposition 1.5) prove that every algebraic set $y$ in a noetherian topological space
+    decomposes uniquely as a finite union of irreducible components $y = y_1 \cup \dots \cup y_r$
+- id: www-math-stonybrook-edu-kamenova-homepage-files-hartshorne-engl-pdf#002
+  text: (Theorem 1.8A) Prove that the dimension of an affine variety $Y$ equals the transcendence degree
+    of its function field $K(Y)$ over $k$, and $\dim \mathbb{A}^n = n$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (theorem 1.8a) prove that the dimension of an affine variety $y$ equals the transcendence
+    degree of its function field $k(y)$ over $k$, and $\dim \mathbb{a}^n = n$
+- id: www-math-stonybrook-edu-kamenova-homepage-files-hartshorne-engl-pdf#003
+  text: '(Exercise 2.14) Define the Segre embedding $\psi: \mathbb{P}^n \times \mathbb{P}^m \to \mathbb{P}^{nm+n+m}$
+    and compute its defining equations'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(exercise 2.14) define the segre embedding $\psi: \mathbb{p}^n \times \mathbb{p}^m \to
+    \mathbb{p}^{nm+n+m}$ and compute its defining equations'
+- id: www-math-stonybrook-edu-kamenova-homepage-files-hartshorne-engl-pdf#004
+  text: (Proposition 2.2) Prove that the standard projective charts $U_i = \{x_i \ne 0\} \subset \mathbb{P}^n$
+    are homeomorphic to affine space $\mathbb{A}^n$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (proposition 2.2) prove that the standard projective charts $u_i = \{x_i \ne 0\} \subset
+    \mathbb{p}^n$ are homeomorphic to affine space $\mathbb{a}^n$
+- id: www-math-stonybrook-edu-kamenova-homepage-files-hartshorne-engl-pdf#005
+  text: (Theorem 5.1) Prove that a point $P$ on an affine variety $Y \subset \mathbb{A}^n$ is non-singular
+    if and only if the local ring $\mathcal{O}_{Y, P}$ is a regular local ring ($\dim_{\kappa(P)} \mathfrak{m}/\mathfrak{m}^2
+    = \dim Y$)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (theorem 5.1) prove that a point $p$ on an affine variety $y \subset \mathbb{a}^n$ is non-singular
+    if and only if the local ring $\mathcal{o}_{y, p}$ is a regular local ring ($\dim_{\kappa(p)} \mathfrak{m}/\mathfrak{m}^2
+    = \dim y$)
+- id: www-math-stonybrook-edu-kamenova-homepage-files-hartshorne-engl-pdf#006
+  text: '(Theorem 7.7) State Bézout''s Theorem: for projective curves $Y, Z \subset \mathbb{P}^2$ of degrees
+    $d, e$ intersecting transversely, $\sum_{P \in Y \cap Z} i(Y, Z; P) = d \cdot e$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(theorem 7.7) state bézout''s theorem: for projective curves $y, z \subset \mathbb{p}^2$
+    of degrees $d, e$ intersecting transversely, $\sum_{p \in y \cap z} i(y, z; p) = d \cdot e$'

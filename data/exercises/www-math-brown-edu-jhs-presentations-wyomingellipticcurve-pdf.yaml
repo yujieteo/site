@@ -1,0 +1,126 @@
+url: https://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
+title: elliptic curves Silverman slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#000
+  text: Compute the discriminant $\Delta = -16(4A^3 + 27B^2)$ of the Weierstrass elliptic curve $y^2 =
+    x^3 + Ax + B$
+  hint: null
+  locator:
+    kind: slide
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: compute the discriminant $\delta = -16(4a^3 + 27b^2)$ of the weierstrass elliptic curve
+    $y^2 = x^3 + ax + b$
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#001
+  text: Describe the geometric chord-and-tangent group law on an elliptic curve
+  hint: null
+  locator:
+    kind: slide
+    value: '16'
+    number: 16
+  sub_index: 0
+  search_text: describe the geometric chord-and-tangent group law on an elliptic curve
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#002
+  text: Derive the algebraic addition formulas for $P_1 + P_2 = P_3 = (x_3, y_3)$ using the slope $\lambda
+    = \frac{y_2 - y_1}{x_2 - x_1}$ (or $\lambda = \frac{3x_1^2 + A}{2y_1}$ if $P_1 = P_2$)
+  hint: null
+  locator:
+    kind: slide
+    value: '27'
+    number: 27
+  sub_index: 0
+  search_text: derive the algebraic addition formulas for $p_1 + p_2 = p_3 = (x_3, y_3)$ using the slope
+    $\lambda = \frac{y_2 - y_1}{x_2 - x_1}$ (or $\lambda = \frac{3x_1^2 + a}{2y_1}$ if $p_1 = p_2$)
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#003
+  text: Define the Weierstrass $\wp$-function $\wp(z; \Lambda) = \frac{1}{z^2} + \sum_{\omega \in \Lambda
+    \setminus \{0\}} \left( \frac{1}{(z-\omega)^2} - \frac{1}{\omega^2} \right)$ and its differential
+    equation $(\wp')^2 = 4\wp^3 - g_2\wp - g_3$
+  hint: null
+  locator:
+    kind: slide
+    value: '41'
+    number: 41
+  sub_index: 0
+  search_text: define the weierstrass $\wp$-function $\wp(z; \lambda) = \frac{1}{z^2} + \sum_{\omega \in
+    \lambda \setminus \{0\}} \left( \frac{1}{(z-\omega)^2} - \frac{1}{\omega^2} \right)$ and its differential
+    equation $(\wp')^2 = 4\wp^3 - g_2\wp - g_3$
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#004
+  text: Show that $E(\mathbb{C}) \cong \mathbb{C}/\Lambda \cong S^1 \times S^1$, and compute its $N$-torsion
+    subgroup $E[N] \cong \mathbb{Z}/N\mathbb{Z} \times \mathbb{Z}/N\mathbb{Z}$
+  hint: null
+  locator:
+    kind: slide
+    value: '42'
+    number: 42
+  sub_index: 0
+  search_text: show that $e(\mathbb{c}) \cong \mathbb{c}/\lambda \cong s^1 \times s^1$, and compute its
+    $n$-torsion subgroup $e[n] \cong \mathbb{z}/n\mathbb{z} \times \mathbb{z}/n\mathbb{z}$
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#005
+  text: 'State the Mordell-Weil Theorem: for an elliptic curve $E / \mathbb{Q}$, $E(\mathbb{Q}) \cong
+    E(\mathbb{Q})_{\mathrm{tors}} \oplus \mathbb{Z}^r$'
+  hint: null
+  locator:
+    kind: slide
+    value: '43'
+    number: 43
+  sub_index: 0
+  search_text: 'state the mordell-weil theorem: for an elliptic curve $e / \mathbb{q}$, $e(\mathbb{q})
+    \cong e(\mathbb{q})_{\mathrm{tors}} \oplus \mathbb{z}^r$'
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#006
+  text: State Mazur's Torsion Theorem classifying the 15 possible torsion subgroups $E(\mathbb{Q})_{\mathrm{tors}}$
+  hint: null
+  locator:
+    kind: slide
+    value: '45'
+    number: 45
+  sub_index: 0
+  search_text: state mazur's torsion theorem classifying the 15 possible torsion subgroups $e(\mathbb{q})_{\mathrm{tors}}$
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#007
+  text: 'State Hasse''s Theorem: for an elliptic curve over $\mathbb{F}_p$, $|E(\mathbb{F}_p) - (p + 1)|
+    \le 2\sqrt{p}$'
+  hint: null
+  locator:
+    kind: slide
+    value: '49'
+    number: 49
+  sub_index: 0
+  search_text: 'state hasse''s theorem: for an elliptic curve over $\mathbb{f}_p$, $|e(\mathbb{f}_p) -
+    (p + 1)| \le 2\sqrt{p}$'
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#008
+  text: 'Define the Weil pairing $e_N: E[N] \times E[N] \to \mu_N$ as a non-degenerate, alternating, Galois-equivariant
+    bilinear form'
+  hint: null
+  locator:
+    kind: slide
+    value: '64'
+    number: 64
+  sub_index: 0
+  search_text: 'define the weil pairing $e_n: e[n] \times e[n] \to \mu_n$ as a non-degenerate, alternating,
+    galois-equivariant bilinear form'
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#009
+  text: Define the logarithmic height $h(P) = \ln \max(|a|, |b|)$ for $x(P) = a/b \in \mathbb{Q}$, and
+    the Néron-Tate canonical height $\widehat{h}(P) = \lim_{n \to \infty} \frac{h(2^n P)}{4^n}$
+  hint: null
+  locator:
+    kind: slide
+    value: '76'
+    number: 76
+  sub_index: 0
+  search_text: define the logarithmic height $h(p) = \ln \max(|a|, |b|)$ for $x(p) = a/b \in \mathbb{q}$,
+    and the néron-tate canonical height $\widehat{h}(p) = \lim_{n \to \infty} \frac{h(2^n p)}{4^n}$
+- id: www-math-brown-edu-jhs-presentations-wyomingellipticcurve-pdf#010
+  text: State the Birch and Swinnerton-Dyer (BSD) Conjecture relating the algebraic rank of $E(\mathbb{Q})$
+    to the order of vanishing of $L(E, s)$ at $s = 1$
+  hint: null
+  locator:
+    kind: slide
+    value: '93'
+    number: 93
+  sub_index: 0
+  search_text: state the birch and swinnerton-dyer (bsd) conjecture relating the algebraic rank of $e(\mathbb{q})$
+    to the order of vanishing of $l(e, s)$ at $s = 1$

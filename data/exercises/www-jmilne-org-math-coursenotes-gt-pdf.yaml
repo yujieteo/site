@@ -1,0 +1,86 @@
+url: https://www.jmilne.org/math/CourseNotes/GT.pdf
+title: group theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-jmilne-org-math-coursenotes-gt-pdf#000
+  text: Compute the rotational symmetry group of a regular $n$-gon as the cyclic group $C_n$, and its
+    full symmetry group as the dihedral group $D_n$ of order $2n$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the rotational symmetry group of a regular $n$-gon as the cyclic group $c_n$, and
+    its full symmetry group as the dihedral group $d_n$ of order $2n$
+- id: www-jmilne-org-math-coursenotes-gt-pdf#001
+  text: Compute the quaternion group $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ as a subgroup of $\mathrm{GL}_2(\mathbb{C})$,
+    and show all its subgroups are normal even though $Q_8$ is non-abelian
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the quaternion group $q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ as a subgroup of $\mathrm{gl}_2(\mathbb{c})$,
+    and show all its subgroups are normal even though $q_8$ is non-abelian
+- id: www-jmilne-org-math-coursenotes-gt-pdf#002
+  text: 'State Lagrange''s theorem: for any subgroup $H \le G$, $|G| = [G : H] \cdot |H|$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state lagrange''s theorem: for any subgroup $h \le g$, $|g| = [g : h] \cdot |h|$'
+- id: www-jmilne-org-math-coursenotes-gt-pdf#003
+  text: Prove that any subgroup of index 2 is normal ($g H = H g = G \setminus H$)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: prove that any subgroup of index 2 is normal ($g h = h g = g \setminus h$)
+- id: www-jmilne-org-math-coursenotes-gt-pdf#004
+  text: 'State the First Isomorphism Theorem: for any group homomorphism $\phi: G \to H$, $G/\ker(\phi)
+    \cong \operatorname{im}(\phi)$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state the first isomorphism theorem: for any group homomorphism $\phi: g \to h$, $g/\ker(\phi)
+    \cong \operatorname{im}(\phi)$'
+- id: www-jmilne-org-math-coursenotes-gt-pdf#005
+  text: 'State the structure theorem for finitely generated abelian groups: $M \cong \mathbb{Z}^r \oplus
+    \bigoplus_{i=1}^k \mathbb{Z}/d_i\mathbb{Z}$ with invariant factors $d_1 \mid d_2 \mid \dots \mid d_k$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state the structure theorem for finitely generated abelian groups: $m \cong \mathbb{z}^r
+    \oplus \bigoplus_{i=1}^k \mathbb{z}/d_i\mathbb{z}$ with invariant factors $d_1 \mid d_2 \mid \dots
+    \mid d_k$'
+- id: www-jmilne-org-math-coursenotes-gt-pdf#006
+  text: Prove that every finite subgroup of the multiplicative group of a field $F^\times$ is cyclic
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: prove that every finite subgroup of the multiplicative group of a field $f^\times$ is cyclic
+- id: www-jmilne-org-math-coursenotes-gt-pdf#007
+  text: 'State Cayley''s theorem: every finite group of order $n$ embeds as a subgroup of the symmetric
+    group $S_n$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state cayley''s theorem: every finite group of order $n$ embeds as a subgroup of the symmetric
+    group $s_n$'
+- id: www-jmilne-org-math-coursenotes-gt-pdf#008
+  text: State the Burnside problem on whether every finitely generated group of finite exponent is finite
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: state the burnside problem on whether every finitely generated group of finite exponent
+    is finite
+- id: www-jmilne-org-math-coursenotes-gt-pdf#009
+  text: Compute the conjugacy classes, cycle types, and character table of the symmetric group $S_4$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the conjugacy classes, cycle types, and character table of the symmetric group
+    $s_4$
+- id: www-jmilne-org-math-coursenotes-gt-pdf#010
+  text: State Schur's lemma for group representations over a field
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: state schur's lemma for group representations over a field

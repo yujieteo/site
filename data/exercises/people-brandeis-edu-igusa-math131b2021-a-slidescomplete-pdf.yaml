@@ -1,0 +1,78 @@
+url: https://people.brandeis.edu/~igusa/Math131b2021/A-SlidesComplete.pdf
+title: homological algebra slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: people-brandeis-edu-igusa-math131b2021-a-slidescomplete-pdf#000
+  text: Define products and coproducts via their universal properties in a category $\mathcal{C}$
+  hint: null
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: define products and coproducts via their universal properties in a category $\mathcal{c}$
+- id: people-brandeis-edu-igusa-math131b2021-a-slidescomplete-pdf#001
+  text: Define kernels and cokernels in an additive/abelian category
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: define kernels and cokernels in an additive/abelian category
+- id: people-brandeis-edu-igusa-math131b2021-a-slidescomplete-pdf#002
+  text: Define projective objects $P$ ($\operatorname{Hom}(P, -)$ is exact) and injective objects $I$
+    ($\operatorname{Hom}(-, I)$ is exact)
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: define projective objects $p$ ($\operatorname{hom}(p, -)$ is exact) and injective objects
+    $i$ ($\operatorname{hom}(-, i)$ is exact)
+- id: people-brandeis-edu-igusa-math131b2021-a-slidescomplete-pdf#003
+  text: Prove that every abelian group embeds into an injective abelian group (divisible $\mathbb{Z}$-module)
+  hint: null
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 0
+  search_text: prove that every abelian group embeds into an injective abelian group (divisible $\mathbb{z}$-module)
+- id: people-brandeis-edu-igusa-math131b2021-a-slidescomplete-pdf#004
+  text: Define chain complexes $(C_\bullet, d_\bullet)$ with $d^2 = 0$, chain maps, chain homotopies,
+    and homology groups $H_n(C_\bullet) = \ker(d_n)/\operatorname{im}(d_{n+1})$
+  hint: null
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 0
+  search_text: define chain complexes $(c_\bullet, d_\bullet)$ with $d^2 = 0$, chain maps, chain homotopies,
+    and homology groups $h_n(c_\bullet) = \ker(d_n)/\operatorname{im}(d_{n+1})$
+- id: people-brandeis-edu-igusa-math131b2021-a-slidescomplete-pdf#005
+  text: State the Snake Lemma and construct the connecting homomorphism for the long exact sequence in
+    homology
+  hint: null
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 0
+  search_text: state the snake lemma and construct the connecting homomorphism for the long exact sequence
+    in homology
+- id: people-brandeis-edu-igusa-math131b2021-a-slidescomplete-pdf#006
+  text: Define left derived functors $L_n F(A) = H_n(F(P_\bullet))$ using projective resolutions, and
+    right derived functors $R^n F(A) = H^n(F(I^\bullet))$ using injective resolutions
+  hint: null
+  locator:
+    kind: page
+    value: '36'
+    number: 36
+  sub_index: 0
+  search_text: define left derived functors $l_n f(a) = h_n(f(p_\bullet))$ using projective resolutions,
+    and right derived functors $r^n f(a) = h^n(f(i^\bullet))$ using injective resolutions

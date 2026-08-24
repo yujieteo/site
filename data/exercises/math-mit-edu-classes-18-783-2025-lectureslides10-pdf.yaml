@@ -1,0 +1,15 @@
+url: https://math.mit.edu/classes/18.783/2025/LectureSlides10.pdf
+title: elliptic curves lecture 10
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: math-mit-edu-classes-18-783-2025-lectureslides10-pdf#000
+  text: State generic bounds for solving the Discrete Logarithm Problem via the Baby-step Giant-step algorithm
+    and Pollard's rho algorithm ($O(\sqrt{N})$)
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: state generic bounds for solving the discrete logarithm problem via the baby-step giant-step
+    algorithm and pollard's rho algorithm ($o(\sqrt{n})$)

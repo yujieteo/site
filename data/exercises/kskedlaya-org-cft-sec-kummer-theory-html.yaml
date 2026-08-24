@@ -1,0 +1,23 @@
+url: https://kskedlaya.org/cft/sec_Kummer_theory.html
+title: Kummer theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: kskedlaya-org-cft-sec-kummer-theory-html#000
+  text: 'State and prove Hilbert''s Theorem 90: $H^1(\operatorname{Gal}(L/K), L^\times) = 0$ for cyclic
+    Galois extensions'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'state and prove hilbert''s theorem 90: $h^1(\operatorname{gal}(l/k), l^\times) = 0$ for
+    cyclic galois extensions'
+- id: kskedlaya-org-cft-sec-kummer-theory-html#001
+  text: 'Formulate Kummer theory: abelian extensions of exponent $n$ of a field $K$ containing $\mu_n$
+    correspond bijectively to subgroups of $K^\times / (K^\times)^n$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'formulate kummer theory: abelian extensions of exponent $n$ of a field $k$ containing
+    $\mu_n$ correspond bijectively to subgroups of $k^\times / (k^\times)^n$'

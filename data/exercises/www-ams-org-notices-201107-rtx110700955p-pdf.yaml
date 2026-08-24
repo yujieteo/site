@@ -1,0 +1,25 @@
+url: https://www.ams.org/notices/201107/rtx110700955p.pdf
+title: What is a Derived Stack? by Bertrand Toën
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ams-org-notices-201107-rtx110700955p-pdf#000
+  text: Explain why classical moduli spaces and intersection theory fail for non-transverse intersections,
+    motivating derived algebraic geometry
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: explain why classical moduli spaces and intersection theory fail for non-transverse intersections,
+    motivating derived algebraic geometry
+- id: www-ams-org-notices-201107-rtx110700955p-pdf#001
+  text: Define derived schemes and derived stacks as functors from simplicial commutative rings (or $\mathbb{E}_\infty$-rings)
+    to simplicial sets ($\infty$-groupoids), replacing the classical truncation with homotopically smooth
+    derived moduli spaces
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define derived schemes and derived stacks as functors from simplicial commutative rings
+    (or $\mathbb{e}_\infty$-rings) to simplicial sets ($\infty$-groupoids), replacing the classical truncation
+    with homotopically smooth derived moduli spaces

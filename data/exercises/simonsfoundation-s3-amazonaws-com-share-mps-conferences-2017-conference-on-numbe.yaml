@@ -1,0 +1,51 @@
+url: https://simonsfoundation.s3.amazonaws.com/share/mps/conferences/2017_Conference_on_Number_Theory_Geometry_Moonshine_and_Strings/Kim.pdf
+title: Arithmetic Chern-Simons theory by Minhyong Kim
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: slide
+exercises:
+- id: simonsfoundation-s3-amazonaws-com-share-mps-conferences-2017-conference-on-numbe#000
+  text: Define the spectrum $\operatorname{Spec}(A)$ as the topological space of prime ideals of $A$ equipped
+    with the Zariski topology
+  hint: null
+  locator:
+    kind: slide
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: define the spectrum $\operatorname{spec}(a)$ as the topological space of prime ideals of
+    $a$ equipped with the zariski topology
+- id: simonsfoundation-s3-amazonaws-com-share-mps-conferences-2017-conference-on-numbe#001
+  text: Define the arithmetic zeta function $\zeta(X, s) = \prod_{x \in X_0} \frac{1}{1 - N(x)^{-s}}$
+    for an arithmetic scheme $X / \mathbb{Z}$
+  hint: null
+  locator:
+    kind: slide
+    value: '24'
+    number: 24
+  sub_index: 0
+  search_text: define the arithmetic zeta function $\zeta(x, s) = \prod_{x \in x_0} \frac{1}{1 - n(x)^{-s}}$
+    for an arithmetic scheme $x / \mathbb{z}$
+- id: simonsfoundation-s3-amazonaws-com-share-mps-conferences-2017-conference-on-numbe#002
+  text: Define the étale fundamental group $\pi_1^{\text{ét}}(X, \bar{x}) = \varprojlim \operatorname{Aut}_X(Y)$
+    classifying finite étale coverings $Y \to X$
+  hint: null
+  locator:
+    kind: slide
+    value: '34'
+    number: 34
+  sub_index: 0
+  search_text: define the étale fundamental group $\pi_1^{\text{ét}}(x, \bar{x}) = \varprojlim \operatorname{aut}_x(y)$
+    classifying finite étale coverings $y \to x$
+- id: simonsfoundation-s3-amazonaws-com-share-mps-conferences-2017-conference-on-numbe#003
+  text: 'Prove that $\operatorname{Spec}(\mathbb{Z})$ is simply connected in the étale topology: $\pi_1^{\text{ét}}(\operatorname{Spec}(\mathbb{Z}))
+    = 0$ (Minkowski''s theorem on discriminants)'
+  hint: null
+  locator:
+    kind: slide
+    value: '45'
+    number: 45
+  sub_index: 0
+  search_text: 'prove that $\operatorname{spec}(\mathbb{z})$ is simply connected in the étale topology:
+    $\pi_1^{\text{ét}}(\operatorname{spec}(\mathbb{z})) = 0$ (minkowski''s theorem on discriminants)'

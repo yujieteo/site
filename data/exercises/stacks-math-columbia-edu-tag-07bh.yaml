@@ -1,0 +1,15 @@
+url: https://stacks.math.columbia.edu/tag/07BH
+title: local rings
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-tag-07bh#000
+  text: Define a local ring $(R, \mathfrak{m}, k)$ and show that $x \in R$ is a unit if and only if $x
+    \notin \mathfrak{m}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: define a local ring $(r, \mathfrak{m}, k)$ and show that $x \in r$ is a unit if and only
+    if $x \notin \mathfrak{m}$
