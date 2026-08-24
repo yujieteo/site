@@ -4,6 +4,8 @@ a papers page, and an exercises page, all with live search and
 tag/category filtering."""
 
 import os
+from collections import Counter
+
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -65,6 +67,65 @@ FILTER_SCRIPT = """
 </script>
 """
 
+# Toggle behavior for a collapsed-by-default tag/filter bar, inspired by
+# theoremsearch.com's single "Filters" disclosure button.
+FILTERS_TOGGLE_SCRIPT = """
+<script>
+(function() {{
+  const toggle = document.getElementById('{toggle_id}');
+  const tagBar = document.getElementById('{tagbar_id}');
+  if (!toggle || !tagBar) return;
+  toggle.addEventListener('click', function() {{
+    const isOpen = tagBar.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }});
+}})();
+</script>
+"""
+
+COLLAPSIBLE_FILTER_STYLE = """
+<style>
+.filters-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.35em 0.8em;
+  font-size: 0.9em;
+  cursor: pointer;
+  margin: 0.5em 0;
+}
+.filters-toggle-btn .chevron {
+  transition: transform 0.15s ease;
+  display: inline-block;
+}
+.filters-toggle-btn.open .chevron {
+  transform: rotate(180deg);
+}
+.tag-filter-bar.collapsible {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.2s ease, opacity 0.2s ease;
+  margin: 0;
+}
+.tag-filter-bar.collapsible.open {
+  max-height: 400px;
+  overflow-y: auto;
+  opacity: 1;
+  margin: 0.5em 0 1em;
+}
+.tag-count {
+  opacity: 0.6;
+  font-size: 0.85em;
+  margin-left: 0.25em;
+}
+</style>
+"""
+
 
 def load_yaml(path):
     with open(path) as f:
@@ -96,35 +157,72 @@ def render_page(title, content, root="", tagline="", name="", nav_home="", nav_p
 
 
 def render_filterable_list(rows_html, tag_buttons_html, id_prefix, search_placeholder,
-                            empty_message, total):
+                            empty_message, total, collapsible_filters=False):
     search_id = f"{id_prefix}-search"
     tagbar_id = f"{id_prefix}-tagbar"
     list_id = f"{id_prefix}-list"
     noresults_id = f"{id_prefix}-noresults"
     count_id = f"{id_prefix}-count"
+    toggle_id = f"{id_prefix}-filters-toggle"
 
     script = FILTER_SCRIPT.format(
         search_id=search_id, tagbar_id=tagbar_id, list_id=list_id,
         noresults_id=noresults_id, count_id=count_id,
     )
 
+    if collapsible_filters:
+        # Tag bar starts collapsed; a single "Filters" button reveals it,
+        # instead of rendering every tag inline on page load.
+        toggle_html = (
+            f'<button type="button" id="{toggle_id}" class="filters-toggle-btn" '
+            f'aria-expanded="false">Filters <span class="chevron">\u25be</span></button>'
+        )
+        tagbar_class = "tag-filter-bar collapsible"
+        toggle_script = FILTERS_TOGGLE_SCRIPT.format(toggle_id=toggle_id, tagbar_id=tagbar_id)
+        style_block = COLLAPSIBLE_FILTER_STYLE
+    else:
+        toggle_html = ""
+        tagbar_class = "tag-filter-bar"
+        toggle_script = ""
+        style_block = ""
+
     return f"""
+    {style_block}
     <div class="search-row">
       <input type="text" id="{search_id}" class="search-box" placeholder="{search_placeholder}">
       <span class="result-count" id="{count_id}">{total} / {total}</span>
     </div>
-    <div class="tag-filter-bar" id="{tagbar_id}">{tag_buttons_html}</div>
+    {toggle_html}
+    <div class="{tagbar_class}" id="{tagbar_id}">{tag_buttons_html}</div>
     <div id="{list_id}">{rows_html}</div>
     <div class="no-results" id="{noresults_id}">{empty_message}</div>
     {script}
+    {toggle_script}
     """
 
 
-def render_link_list(entries, id_prefix, search_placeholder, empty_message):
-    """Build the filterable list for {title, url, category, note} entries."""
-    categories = sorted({e["category"] for e in entries})
+def render_link_list(entries, id_prefix, search_placeholder, empty_message,
+                      collapsible_filters=False, sort_tags_by_frequency=False):
+    """Build the filterable list for {title, url, category, note} entries.
+
+    If sort_tags_by_frequency is True, tag/category buttons are ordered by
+    how many entries use them (most common first) instead of alphabetically,
+    and each button shows a count badge.
+    """
+    counts = Counter(e["category"] for e in entries)
+
+    if sort_tags_by_frequency:
+        categories = [c for c, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))]
+    else:
+        categories = sorted(counts.keys())
+
+    def label(c):
+        if sort_tags_by_frequency:
+            return f'{c} <span class="tag-count">{counts[c]}</span>'
+        return c
+
     tag_buttons = '<button class="tag active" data-tag="__all__" type="button">all</button>' + "".join(
-        f'<button class="tag" data-tag="{c}" type="button">{c}</button>' for c in categories
+        f'<button class="tag" data-tag="{c}" type="button">{label(c)}</button>' for c in categories
     )
 
     rows = ""
@@ -139,8 +237,10 @@ def render_link_list(entries, id_prefix, search_placeholder, empty_message):
         </div>
         """
 
-    return render_filterable_list(rows, tag_buttons, id_prefix, search_placeholder,
-                                   empty_message, len(entries))
+    return render_filterable_list(
+        rows, tag_buttons, id_prefix, search_placeholder, empty_message, len(entries),
+        collapsible_filters=collapsible_filters,
+    )
 
 
 def render_exercise_list(records):
@@ -228,6 +328,8 @@ def build_papers(cv, papers):
         papers, "paper",
         "Search title or note...",
         "No papers match your search.",
+        collapsible_filters=True,
+        sort_tags_by_frequency=True,
     )
     content = f'<h2 class="section-title">Papers</h2>{body}'
     return render_page(

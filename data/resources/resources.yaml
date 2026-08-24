@@ -142,3 +142,13 @@
   url: "https://dec41.user.srcf.net/notes/"
   category: "math"
   note: "Dexter Chua's notes on various mathematical topics."
+
+- title: "Theorem Search"
+  url: "https://www.theoremsearch.com/"
+  category: "math"
+  note: "Quickly search across theorems."
+
+- title: "Openrouter"
+  url: "https://openrouter.ai/"
+  category: "computational"
+  note: "Access to LLM APIs."
