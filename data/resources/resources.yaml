@@ -137,3 +137,8 @@
   url: "https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/prod_page.html?pn=Mechanical%20APDL&pid=MechanicalAPDL&lang=en"
   category: "engineering"
   note: "The first finite element software learnt in depth, with mentorship during an internship."
+
+- title: "Dexter Chua's Notes"
+  url: "https://dec41.user.srcf.net/notes/"
+  category: "math"
+  note: "Dexter Chua's notes on various mathematical topics."
