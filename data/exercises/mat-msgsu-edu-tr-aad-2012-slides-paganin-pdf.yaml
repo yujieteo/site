@@ -49,3 +49,35 @@ exercises:
   sub_index: 0
   search_text: 'state hilbert''s theorem 90: $h^1(g_k, (k^{\mathrm{sep}})^\times) = 0$, and relate $h^2(g_k,
     (k^{\mathrm{sep}})^\times) \cong \operatorname{br}(k)$ to the brauer group of $k$'
+- id: mat-msgsu-edu-tr-aad-2012-slides-paganin-pdf#004
+  text: Rewrite Hilbert's Theorem 90 as the following. Suppose $K$ is a finite Galois extension of a field
+    $k$ with Galois group $G$. Regard the general linear group $\mathrm{GL}(n,K)$ as a $G$-module, then
+    compute the first Galois cohomology with coefficients in $\mathrm{GL}(n,K)$
+  hint: null
+  locator:
+    kind: slide
+    value: '9'
+    number: 9
+  sub_index: 1
+  search_text: rewrite hilbert's theorem 90 as the following. suppose $k$ is a finite galois extension
+    of a field $k$ with galois group $g$. regard the general linear group $\mathrm{gl}(n,k)$ as a $g$-module,
+    then compute the first galois cohomology with coefficients in $\mathrm{gl}(n,k)$
+- id: mat-msgsu-edu-tr-aad-2012-slides-paganin-pdf#005
+  text: What is the geometry significance of Hilbert's Theorem 90 and what is the purpose of the first
+    Galois cohomology?
+  hint: vector spaces descend uniquely from the finite Galois extension $K$ to the field $k$, and there
+    are no nontrivial $k$-forms of $K^n$. Note that this changes for other algebraic groups. For example,   the
+    projective linear group which classifies central simple algebras via the first Galois cohomology.
+    The orthogonal group classifies the quadratic forms. The unitary group classifies the hermitian forms.
+    Therefore, the first Galois cohomology is used to classify forms.
+  locator:
+    kind: slide
+    value: '9'
+    number: 9
+  sub_index: 2
+  search_text: what is the geometry significance of hilbert's theorem 90 and what is the purpose of the
+    first galois cohomology? vector spaces descend uniquely from the finite galois extension $k$ to the
+    field $k$, and there are no nontrivial $k$-forms of $k^n$. note that this changes for other algebraic
+    groups. for example,   the projective linear group which classifies central simple algebras via the
+    first galois cohomology. the orthogonal group classifies the quadratic forms. the unitary group classifies
+    the hermitian forms. therefore, the first galois cohomology is used to classify forms.

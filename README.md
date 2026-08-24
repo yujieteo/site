@@ -21,8 +21,8 @@ static/css/style.css    # the look and feel
 pip3 install -r requirements.txt
 python3 scripts/validate.py
 python3 scripts/build.py
-python3 scripts/parse_notes.py
-python3 scripts/parse_exercise.py
+python3 scripts/parse_notes.py annotbib.txt data/paper-links/paper-links.yaml
+python3 scripts/parse_exercise.py exercises.txt /data/exercises/exercises.yaml
 python3 scripts/clean_notes.py
 open site/index.html
 ```
