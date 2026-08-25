@@ -1,0 +1,207 @@
+url: https://ncatlab.org/nlab/files/SymmetricSpectra.pdf
+title: Symmetric Spectra by Alexander Kupers
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#000
+  text: '(Section 1) Explain how the Freudenthal suspension theorem motivates the construction of the
+    stable homotopy category. (Hint: The sequence of pointed homotopy classes $[ \Sigma^k X, \Sigma^k
+    Y ]_+$ is eventually constant for finite-dimensional CW-complexes, suggesting the construction of
+    a localized category where the suspension functor $\Sigma = S^1 \wedge -$ is formally inverted)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 1) explain how the freudenthal suspension theorem motivates the construction
+    of the stable homotopy category. (hint: the sequence of pointed homotopy classes $[ \sigma^k x, \sigma^k
+    y ]_+$ is eventually constant for finite-dimensional cw-complexes, suggesting the construction of
+    a localized category where the suspension functor $\sigma = s^1 \wedge -$ is formally inverted)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#001
+  text: '(Section 1) How does Brown''s representability theorem connect generalized reduced cohomology
+    theories to spectra? (Hint: Every generalized reduced cohomology theory $H^*$ on pointed spaces is
+    stably representable by a spectrum $E$ such that $\widetilde{H}^n(Z) \cong [Z, E_n]_+$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 1) how does brown''s representability theorem connect generalized reduced cohomology
+    theories to spectra? (hint: every generalized reduced cohomology theory $h^*$ on pointed spaces is
+    stably representable by a spectrum $e$ such that $\widetilde{h}^n(z) \cong [z, e_n]_+$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#002
+  text: '(Section 1) List the four key properties that define a "good" category of spectra. (Hint: It
+    should be an elementary model category whose homotopy category is the stable homotopy category, it
+    must possess a compatible closed symmetric monoidal smash product, and spectra arising from generalized
+    cohomology theories like $KO$ and $HA$ should be easily described)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 1) list the four key properties that define a "good" category of spectra. (hint:
+    it should be an elementary model category whose homotopy category is the stable homotopy category,
+    it must possess a compatible closed symmetric monoidal smash product, and spectra arising from generalized
+    cohomology theories like $ko$ and $ha$ should be easily described)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#003
+  text: '(Section 2.1) Review the category of pointed simplicial sets $\mathcal{S}_*$. Show that $\mathcal{S}_*$
+    is a closed symmetric monoidal category under the smash product $X \wedge Y = (X \times Y)/(X \times
+    * \cup * \times Y)$. (Hint: The unit object is $S^0 = \Delta[0]_+$, and the right adjoint to $-\wedge
+    X$ is the mapping simplicial set $\operatorname{Map}_{\mathcal{S}_*}(X, Y)_n = \mathcal{S}_*(X \wedge
+    \Delta[n]_+, Y)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 2.1) review the category of pointed simplicial sets $\mathcal{s}_*$. show that
+    $\mathcal{s}_*$ is a closed symmetric monoidal category under the smash product $x \wedge y = (x \times
+    y)/(x \times * \cup * \times y)$. (hint: the unit object is $s^0 = \delta[0]_+$, and the right adjoint
+    to $-\wedge x$ is the mapping simplicial set $\operatorname{map}_{\mathcal{s}_*}(x, y)_n = \mathcal{s}_*(x
+    \wedge \delta[n]_+, y)$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#004
+  text: '(Section 2.2) Define the category of ordinary (naive) spectra $\mathrm{Sp}^{\mathbb{N}}$ in the
+    simplicial context. (Hint: An object is a sequence of pointed simplicial sets $(X_n)_{n \ge 0}$ equipped
+    with structure maps $\sigma: S^1 \wedge X_n \to X_{n+1}$, where $S^1 = \Delta[1]/\partial\Delta[1]$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 2.2) define the category of ordinary (naive) spectra $\mathrm{sp}^{\mathbb{n}}$
+    in the simplicial context. (hint: an object is a sequence of pointed simplicial sets $(x_n)_{n \ge
+    0}$ equipped with structure maps $\sigma: s^1 \wedge x_n \to x_{n+1}$, where $s^1 = \delta[1]/\partial\delta[1]$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#005
+  text: '(Section 2.2) Define the category of symmetric spectra $\mathrm{Sp}^\Sigma$. (Hint: In addition
+    to the structure maps $\sigma$, each $X_n$ is equipped with a basepoint-preserving left action of
+    the symmetric group $\Sigma_n$ such that the iterated structure maps $\sigma^p: S^p \wedge X_n \to
+    X_{p+n}$ are $\Sigma_p \times \Sigma_n$-equivariant for all $p \ge 1, n \ge 0$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 2.2) define the category of symmetric spectra $\mathrm{sp}^\sigma$. (hint: in
+    addition to the structure maps $\sigma$, each $x_n$ is equipped with a basepoint-preserving left action
+    of the symmetric group $\sigma_n$ such that the iterated structure maps $\sigma^p: s^p \wedge x_n
+    \to x_{p+n}$ are $\sigma_p \times \sigma_n$-equivariant for all $p \ge 1, n \ge 0$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#006
+  text: '(Section 2.2) Explain why verifying equivariance for $\sigma$ and $\sigma^2$ suffices in the
+    definition of a symmetric spectrum. (Hint: The transpositions / 2-cycles generate the symmetric group
+    $\Sigma_n$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 2.2) explain why verifying equivariance for $\sigma$ and $\sigma^2$ suffices
+    in the definition of a symmetric spectrum. (hint: the transpositions / 2-cycles generate the symmetric
+    group $\sigma_n$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#007
+  text: '(Section 2.2) Describe the canonical forgetful functor $U: \mathrm{Sp}^\Sigma \to \mathrm{Sp}^{\mathbb{N}}$.
+    (Hint: The functor forgets the $\Sigma_n$-actions while preserving the underlying sequence of pointed
+    simplicial sets and structure maps)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 2.2) describe the canonical forgetful functor $u: \mathrm{sp}^\sigma \to \mathrm{sp}^{\mathbb{n}}$.
+    (hint: the functor forgets the $\sigma_n$-actions while preserving the underlying sequence of pointed
+    simplicial sets and structure maps)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#008
+  text: '(Section 2.3) Define the sphere spectrum $\mathbb{S}$ as a symmetric spectrum. (Hint: Set $\mathbb{S}_n
+    = S^n = (S^1)^{\wedge n}$ with $\Sigma_n$ acting by permuting the $n$ smash factors of $S^1$, and
+    canonical isomorphisms $\sigma: S^1 \wedge S^n \to S^{n+1}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 2.3) define the sphere spectrum $\mathbb{s}$ as a symmetric spectrum. (hint:
+    set $\mathbb{s}_n = s^n = (s^1)^{\wedge n}$ with $\sigma_n$ acting by permuting the $n$ smash factors
+    of $s^1$, and canonical isomorphisms $\sigma: s^1 \wedge s^n \to s^{n+1}$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#009
+  text: '(Section 2.3) Define the suspension spectrum functor $\Sigma^\infty: \mathcal{S}_* \to \mathrm{Sp}^\Sigma$
+    and the Eilenberg–MacLane spectrum $HA$ for an abelian group $A$. (Hint: For $\Sigma^\infty K$, set
+    $(\Sigma^\infty K)_n = S^n \wedge K$; for $HA$, set $(HA)_n = A \otimes_\mathbb{Z} \mathbb{Z}(S^n)$,
+    where $\mathbb{Z}(S^n)$ is the free simplicial abelian group generated by the non-basepoint simplices)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 2.3) define the suspension spectrum functor $\sigma^\infty: \mathcal{s}_* \to
+    \mathrm{sp}^\sigma$ and the eilenberg–maclane spectrum $ha$ for an abelian group $a$. (hint: for $\sigma^\infty
+    k$, set $(\sigma^\infty k)_n = s^n \wedge k$; for $ha$, set $(ha)_n = a \otimes_\mathbb{z} \mathbb{z}(s^n)$,
+    where $\mathbb{z}(s^n)$ is the free simplicial abelian group generated by the non-basepoint simplices)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#010
+  text: '(Section 3.1) Explain the technique of prolongation for a functor $R: \mathcal{S}_* \to \mathcal{S}_*$.
+    Use it to prove that $\mathrm{Sp}^\Sigma$ is complete and cocomplete. (Hint: Extend $R$ levelwise
+    by $(RX)_n = R(X_n)$; limits and colimits in $\mathrm{Sp}^\Sigma$ are computed levelwise from $\mathcal{S}_*$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 3.1) explain the technique of prolongation for a functor $r: \mathcal{s}_* \to
+    \mathcal{s}_*$. use it to prove that $\mathrm{sp}^\sigma$ is complete and cocomplete. (hint: extend
+    $r$ levelwise by $(rx)_n = r(x_n)$; limits and colimits in $\mathrm{sp}^\sigma$ are computed levelwise
+    from $\mathcal{s}_*$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#011
+  text: '(Section 3.2) Describe the simplicial action on symmetric spectra and the mapping space $\operatorname{Map}_{\mathrm{Sp}^\Sigma}(X,
+    Y)$. (Hint: Define the tensor $X \wedge K$ and power spectrum $X^K$ by prolongation, yielding an enrichment
+    of $\mathrm{Sp}^\Sigma$ over pointed simplicial sets via $\operatorname{Map}_{\mathrm{Sp}^\Sigma}(X,
+    Y)_n = \mathrm{Sp}^\Sigma(X \wedge \Delta[n]_+, Y)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 3.2) describe the simplicial action on symmetric spectra and the mapping space
+    $\operatorname{map}_{\mathrm{sp}^\sigma}(x, y)$. (hint: define the tensor $x \wedge k$ and power spectrum
+    $x^k$ by prolongation, yielding an enrichment of $\mathrm{sp}^\sigma$ over pointed simplicial sets
+    via $\operatorname{map}_{\mathrm{sp}^\sigma}(x, y)_n = \mathrm{sp}^\sigma(x \wedge \delta[n]_+, y)$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#012
+  text: '(Section 3.3) Define the category of symmetric sequences $\mathcal{S}_*^\Sigma = \operatorname{Fun}(\Sigma,
+    \mathcal{S}_*)$ and its convolution tensor product $\otimes$. (Hint: $(X \otimes Y)_n = \bigvee_{p+q=n}
+    (\Sigma_n)_+ \wedge_{\Sigma_p \times \Sigma_q} (X_p \wedge Y_q)$, with unit $(S^0, *, *, \dots)$ and
+    twist isomorphism given by the block transposition $\rho_{q,p}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 3.3) define the category of symmetric sequences $\mathcal{s}_*^\sigma = \operatorname{fun}(\sigma,
+    \mathcal{s}_*)$ and its convolution tensor product $\otimes$. (hint: $(x \otimes y)_n = \bigvee_{p+q=n}
+    (\sigma_n)_+ \wedge_{\sigma_p \times \sigma_q} (x_p \wedge y_q)$, with unit $(s^0, *, *, \dots)$ and
+    twist isomorphism given by the block transposition $\rho_{q,p}$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#013
+  text: '(Section 3.3) Prove that the sphere spectrum $\mathbb{S}$ is a commutative monoid in the category
+    of symmetric sequences $(\mathcal{S}_*^\Sigma, \otimes)$. (Hint: The structure maps $S^p \wedge S^q
+    \to S^{p+q}$ assemble into an associative multiplication $m: \mathbb{S} \otimes \mathbb{S} \to \mathbb{S}$,
+    and the symmetric group action absorbs the block permutation twist $\rho_{p,q}$ to guarantee commutativity)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 3.3) prove that the sphere spectrum $\mathbb{s}$ is a commutative monoid in the
+    category of symmetric sequences $(\mathcal{s}_*^\sigma, \otimes)$. (hint: the structure maps $s^p
+    \wedge s^q \to s^{p+q}$ assemble into an associative multiplication $m: \mathbb{s} \otimes \mathbb{s}
+    \to \mathbb{s}$, and the symmetric group action absorbs the block permutation twist $\rho_{p,q}$ to
+    guarantee commutativity)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#014
+  text: '(Section 3.3) Let $\mathcal{C}$ be a bicomplete closed symmetric monoidal category and let $R$
+    be a commutative monoid in $\mathcal{C}$. Formulate the monoidal product $M \otimes_R N$ for $R$-modules
+    as a coequalizer and define the internal hom $\operatorname{Hom}_R(M, N)$ as an equalizer. (Hint:
+    $M \otimes_R N$ is the coequalizer of $M \otimes R \otimes N \rightrightarrows M \otimes N$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 3.3) let $\mathcal{c}$ be a bicomplete closed symmetric monoidal category and
+    let $r$ be a commutative monoid in $\mathcal{c}$. formulate the monoidal product $m \otimes_r n$ for
+    $r$-modules as a coequalizer and define the internal hom $\operatorname{hom}_r(m, n)$ as an equalizer.
+    (hint: $m \otimes_r n$ is the coequalizer of $m \otimes r \otimes n \rightrightarrows m \otimes n$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#015
+  text: '(Section 3.3) Prove that the category of symmetric spectra $\mathrm{Sp}^\Sigma$ is equivalent
+    to the category of $\mathbb{S}$-modules in $(\mathcal{S}_*^\Sigma, \otimes)$. (Hint: The $\Sigma_p
+    \times \Sigma_q$-equivariant structure maps $m_{p,q}: S^p \wedge X_q \to X_{p+q}$ assemble via the
+    universal property of Day convolution into a left $\mathbb{S}$-action map $m: \mathbb{S} \otimes X
+    \to X$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 3.3) prove that the category of symmetric spectra $\mathrm{sp}^\sigma$ is equivalent
+    to the category of $\mathbb{s}$-modules in $(\mathcal{s}_*^\sigma, \otimes)$. (hint: the $\sigma_p
+    \times \sigma_q$-equivariant structure maps $m_{p,q}: s^p \wedge x_q \to x_{p+q}$ assemble via the
+    universal property of day convolution into a left $\mathbb{s}$-action map $m: \mathbb{s} \otimes x
+    \to x$)'
+- id: ncatlab-org-nlab-files-symmetricspectra-pdf#016
+  text: '(Section 3.3) Deduce that $\mathrm{Sp}^\Sigma$ possesses a closed symmetric monoidal smash product
+    $\wedge = \otimes_\mathbb{S}$. Why does this construction fail for ordinary spectra $\mathrm{Sp}^{\mathbb{N}}$?
+    (Hint: In ordinary spectra, the sphere spectrum is not a commutative monoid because the twist map
+    $\tau: S^1 \wedge S^1 \to S^1 \wedge S^1$ has degree $-1$ and is not the identity; symmetric spectra
+    fix this by incorporating the $\Sigma_n$-actions)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(section 3.3) deduce that $\mathrm{sp}^\sigma$ possesses a closed symmetric monoidal smash
+    product $\wedge = \otimes_\mathbb{s}$. why does this construction fail for ordinary spectra $\mathrm{sp}^{\mathbb{n}}$?
+    (hint: in ordinary spectra, the sphere spectrum is not a commutative monoid because the twist map
+    $\tau: s^1 \wedge s^1 \to s^1 \wedge s^1$ has degree $-1$ and is not the identity; symmetric spectra
+    fix this by incorporating the $\sigma_n$-actions)'

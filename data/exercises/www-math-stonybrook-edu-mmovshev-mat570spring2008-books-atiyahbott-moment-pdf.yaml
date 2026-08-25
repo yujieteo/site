@@ -1,0 +1,168 @@
+url: https://www.math.stonybrook.edu/~mmovshev/MAT570Spring2008/BOOKS/atiyahbott_moment.pdf
+title: The Moment Map and Equivariant Cohomology by Atiyah and Bott
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#000
+  text: '(The Borel Construction and Equivariant Cohomology) Define the equivariant cohomology $H_G^*(M)$
+    of a $G$-space $M$ using the Borel homotopy quotient construction. (Hint: Form the mixed space $M_G
+    = EG \times_G M = (EG \times M)/G$, where $G$ acts freely on the right of the contractible universal
+    space $EG$ and on the left of $M$. Define $H_G^*(M) := H^*(M_G)$ as the ordinary cohomology of the
+    fiber bundle $M_G \to BG$ with fiber $M$ over the classifying space $BG$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the borel construction and equivariant cohomology) define the equivariant cohomology
+    $h_g^*(m)$ of a $g$-space $m$ using the borel homotopy quotient construction. (hint: form the mixed
+    space $m_g = eg \times_g m = (eg \times m)/g$, where $g$ acts freely on the right of the contractible
+    universal space $eg$ and on the left of $m$. define $h_g^*(m) := h^*(m_g)$ as the ordinary cohomology
+    of the fiber bundle $m_g \to bg$ with fiber $m$ over the classifying space $bg$)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#001
+  text: '(Equivariant Coefficient Rings) What is the coefficient ring of equivariant cohomology when $M
+    = \{*\}$ is a single point, and how does this enlarge the coefficient structure for general $G$-spaces?
+    (Hint: $H_G^*(\{*\}) \cong H^*(BG)$; for a compact Lie group $G$ with maximal torus $T$ and Weyl group
+    $W$, show that $H_G^*(\{*\} ; \mathbb{R}) \cong S(\mathfrak{t}^*)^W$ is the polynomial ring of $W$-invariant
+    polynomials on the Lie algebra $\mathfrak{g}$, turning $H_G^*(M)$ into a module over $H^*(BG)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(equivariant coefficient rings) what is the coefficient ring of equivariant cohomology
+    when $m = \{*\}$ is a single point, and how does this enlarge the coefficient structure for general
+    $g$-spaces? (hint: $h_g^*(\{*\}) \cong h^*(bg)$; for a compact lie group $g$ with maximal torus $t$
+    and weyl group $w$, show that $h_g^*(\{*\} ; \mathbb{r}) \cong s(\mathfrak{t}^*)^w$ is the polynomial
+    ring of $w$-invariant polynomials on the lie algebra $\mathfrak{g}$, turning $h_g^*(m)$ into a module
+    over $h^*(bg)$)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#002
+  text: '(The Cartan Model and Equivariant de Rham Complex) Formulate the de Rham model of equivariant
+    cohomology for a smooth $G$-manifold $M$ with compact Lie group $G$. (Hint: Define the space of equivariant
+    differential forms $\Omega_G^*(M) = (S(\mathfrak{g}^*) \otimes \Omega^*(M))^G$ as polynomial maps
+    $\alpha: \mathfrak{g} \to \Omega^*(M)$ invariant under the diagonal adjoint/$G$-action. Define the
+    Cartan differential $d_G \alpha(X) = d(\alpha(X)) - \iota_{X_M}(\alpha(X))$ for $X \in \mathfrak{g}$,
+    and prove that $d_G^2 = 0$ on invariant forms)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the cartan model and equivariant de rham complex) formulate the de rham model of equivariant
+    cohomology for a smooth $g$-manifold $m$ with compact lie group $g$. (hint: define the space of equivariant
+    differential forms $\omega_g^*(m) = (s(\mathfrak{g}^*) \otimes \omega^*(m))^g$ as polynomial maps
+    $\alpha: \mathfrak{g} \to \omega^*(m)$ invariant under the diagonal adjoint/$g$-action. define the
+    cartan differential $d_g \alpha(x) = d(\alpha(x)) - \iota_{x_m}(\alpha(x))$ for $x \in \mathfrak{g}$,
+    and prove that $d_g^2 = 0$ on invariant forms)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#003
+  text: '(Equivariantly Closed Forms and the Moment Map) Let $(M, \omega)$ be a symplectic manifold equipped
+    with a Hamiltonian action of a compact Lie group $G$ with equivariant moment map $\mu: M \to \mathfrak{g}^*$.
+    Show that the modified symplectic 2-form $\widetilde{\omega}(X) = \omega + \langle \mu, X \rangle$
+    is an equivariantly closed form in the Cartan model. (Hint: Compute $d_G \widetilde{\omega}(X) = (d
+    - \iota_{X_M})(\omega + \langle \mu, X \rangle) = d\omega - \iota_{X_M}\omega + d\langle \mu, X \rangle$;
+    verify that this vanishes identically using $d\omega = 0$ and Hamilton''s equation $d\langle \mu,
+    X \rangle = \iota_{X_M}\omega$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(equivariantly closed forms and the moment map) let $(m, \omega)$ be a symplectic manifold
+    equipped with a hamiltonian action of a compact lie group $g$ with equivariant moment map $\mu: m
+    \to \mathfrak{g}^*$. show that the modified symplectic 2-form $\widetilde{\omega}(x) = \omega + \langle
+    \mu, x \rangle$ is an equivariantly closed form in the cartan model. (hint: compute $d_g \widetilde{\omega}(x)
+    = (d - \iota_{x_m})(\omega + \langle \mu, x \rangle) = d\omega - \iota_{x_m}\omega + d\langle \mu,
+    x \rangle$; verify that this vanishes identically using $d\omega = 0$ and hamilton''s equation $d\langle
+    \mu, x \rangle = \iota_{x_m}\omega$)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#004
+  text: '(The Atiyah-Bott / Berline-Vergne Localization Formula) State and prove the Atiyah–Bott localization
+    theorem in equivariant de Rham cohomology for an equivariantly closed form $\alpha \in \Omega_G^*(M)$
+    on a compact oriented manifold $M$. (Hint: For isolated fixed points $p \in M^G$, the integral over
+    $M$ localizes completely to the fixed-point set: $\int_M \alpha(X) = \sum_{p \in M^G} \frac{\alpha(X)(p)}{\det\left(\frac{1}{2\pi}
+    L_p(X)\right)}$, where $L_p(X) \in \mathfrak{so}(T_p M)$ is the infinitesimal rotation induced by
+    $X \in \mathfrak{g}$ on the tangent space)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the atiyah-bott / berline-vergne localization formula) state and prove the atiyah–bott
+    localization theorem in equivariant de rham cohomology for an equivariantly closed form $\alpha \in
+    \omega_g^*(m)$ on a compact oriented manifold $m$. (hint: for isolated fixed points $p \in m^g$, the
+    integral over $m$ localizes completely to the fixed-point set: $\int_m \alpha(x) = \sum_{p \in m^g}
+    \frac{\alpha(x)(p)}{\det\left(\frac{1}{2\pi} l_p(x)\right)}$, where $l_p(x) \in \mathfrak{so}(t_p
+    m)$ is the infinitesimal rotation induced by $x \in \mathfrak{g}$ on the tangent space)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#005
+  text: '(Duistermaat-Heckman Theorem and Exact Stationary Phase) Explain how the localization formula
+    proves the Duistermaat–Heckman theorem, establishing that the stationary phase approximation for oscillatory
+    Hamiltonian path integrals is exact. (Hint: For an $S^1$-action on a symplectic manifold $(M, \omega)$
+    with moment map $H$, the Fourier transform of the Liouville pushforward measure $\int_M e^{i t H}
+    \frac{\omega^n}{n!}$ is evaluated exactly by the localized sum over the critical points of $H$, which
+    are the fixed points of the circle action)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(duistermaat-heckman theorem and exact stationary phase) explain how the localization
+    formula proves the duistermaat–heckman theorem, establishing that the stationary phase approximation
+    for oscillatory hamiltonian path integrals is exact. (hint: for an $s^1$-action on a symplectic manifold
+    $(m, \omega)$ with moment map $h$, the fourier transform of the liouville pushforward measure $\int_m
+    e^{i t h} \frac{\omega^n}{n!}$ is evaluated exactly by the localized sum over the critical points
+    of $h$, which are the fixed points of the circle action)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#006
+  text: '(Algebraic Mechanism of Localization: Inverting Primes in H*(BG)) Detail the commutative algebra
+    underpinning the localization theorem in the case of a circle group $G = S^1$. (Hint: The coefficient
+    ring is $H^*(BS^1; \mathbb{Q}) \cong \mathbb{Q}[u]$ (a PID). Every finitely generated module over
+    $\mathbb{Q}[u]$ decomposes into a free part and a torsion part; localizing by inverting the polynomial
+    generator $u$ kills all $\mathbb{Q}[u]$-torsion supported outside the fixed-point set $M^{S^1}$, establishing
+    an isomorphism $H_{S^1}^*(M) \otimes_{\mathbb{Q}[u]} \mathbb{Q}[u, u^{-1}] \cong H^*(M^{S^1}) \otimes
+    \mathbb{Q}[u, u^{-1}]$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(algebraic mechanism of localization: inverting primes in h*(bg)) detail the commutative
+    algebra underpinning the localization theorem in the case of a circle group $g = s^1$. (hint: the
+    coefficient ring is $h^*(bs^1; \mathbb{q}) \cong \mathbb{q}[u]$ (a pid). every finitely generated
+    module over $\mathbb{q}[u]$ decomposes into a free part and a torsion part; localizing by inverting
+    the polynomial generator $u$ kills all $\mathbb{q}[u]$-torsion supported outside the fixed-point set
+    $m^{s^1}$, establishing an isomorphism $h_{s^1}^*(m) \otimes_{\mathbb{q}[u]} \mathbb{q}[u, u^{-1}]
+    \cong h^*(m^{s^1}) \otimes \mathbb{q}[u, u^{-1}]$)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#007
+  text: '(Moment Maps, Morse Theory, and Norm-Square Functional) Let $\mu: M \to \mathfrak{g}^*$ be an
+    equivariant moment map. How did Atiyah and Bott utilize the norm-square functional $f = \|\mu\|^2:
+    M \to \mathbb{R}$ to compute the topology of moduli spaces? (Hint: $f$ is a $G$-invariant, minimally
+    degenerate Morse–Bott function whose critical points correspond to the stratification of $M$ into
+    unstable and semistable loci in Geometric Invariant Theory; this provides equivariant Morse inequalities
+    that compute the Betti numbers of the symplectic quotient $M /\!\!/ G = \mu^{-1}(0)/G$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(moment maps, morse theory, and norm-square functional) let $\mu: m \to \mathfrak{g}^*$
+    be an equivariant moment map. how did atiyah and bott utilize the norm-square functional $f = \|\mu\|^2:
+    m \to \mathbb{r}$ to compute the topology of moduli spaces? (hint: $f$ is a $g$-invariant, minimally
+    degenerate morse–bott function whose critical points correspond to the stratification of $m$ into
+    unstable and semistable loci in geometric invariant theory; this provides equivariant morse inequalities
+    that compute the betti numbers of the symplectic quotient $m /\!\!/ g = \mu^{-1}(0)/g$)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#008
+  text: '(Moduli Spaces of Bundles and the Narasimhan-Seshadri Theorem) How does the Atiyah–Bott framework
+    link infinite-dimensional equivariant localization to Donaldson''s proof of the Narasimhan–Seshadri
+    theorem on Riemann surfaces? (Hint: Consider the infinite-dimensional affine space of unitary connections
+    $\mathcal{A}$ on a principal bundle over a Riemann surface $\Sigma$, acted on by the gauge group $\mathcal{G}$.
+    The curvature $F_A$ acts as the moment map for the gauge action, and the symplectic reduction $\mathcal{A}
+    /\!\!/ \mathcal{G} = \mu^{-1}(0)/\mathcal{G}$ yields the moduli space of flat/stable holomorphic vector
+    bundles)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(moduli spaces of bundles and the narasimhan-seshadri theorem) how does the atiyah–bott
+    framework link infinite-dimensional equivariant localization to donaldson''s proof of the narasimhan–seshadri
+    theorem on riemann surfaces? (hint: consider the infinite-dimensional affine space of unitary connections
+    $\mathcal{a}$ on a principal bundle over a riemann surface $\sigma$, acted on by the gauge group $\mathcal{g}$.
+    the curvature $f_a$ acts as the moment map for the gauge action, and the symplectic reduction $\mathcal{a}
+    /\!\!/ \mathcal{g} = \mu^{-1}(0)/\mathcal{g}$ yields the moduli space of flat/stable holomorphic vector
+    bundles)'
+- id: www-math-stonybrook-edu-mmovshev-mat570spring2008-books-atiyahbott-moment-pdf#009
+  text: '(Equivariant Index Theory and the Atiyah-Segal Fixed Point Formula) How does the de Rham localization
+    theorem mirror the Atiyah–Segal equivariant index theorem in $K$-theory? (Hint: The index of an equivariant
+    elliptic operator $D$ on a $G$-manifold is expressed as a character of $G$, and its evaluation at
+    an element $g \in G$ localizes to an integral of topological characteristic classes over the fixed-point
+    submanifold $M^g$, divided by the equivariant Euler class of the normal bundle)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(equivariant index theory and the atiyah-segal fixed point formula) how does the de rham
+    localization theorem mirror the atiyah–segal equivariant index theorem in $k$-theory? (hint: the index
+    of an equivariant elliptic operator $d$ on a $g$-manifold is expressed as a character of $g$, and
+    its evaluation at an element $g \in g$ localizes to an integral of topological characteristic classes
+    over the fixed-point submanifold $m^g$, divided by the equivariant euler class of the normal bundle)'

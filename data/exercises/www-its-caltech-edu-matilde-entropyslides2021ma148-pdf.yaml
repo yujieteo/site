@@ -1,0 +1,198 @@
+url: https://www.its.caltech.edu/~matilde/EntropySlides2021Ma148.pdf
+title: Entropy
+note: Information Algebras, and the Field with One Element by Matilde Marcolli
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#000
+  text: '(Information, Shannon Entropy, and Khinchin Axioms) Define Shannon information $I(p_i) = -\log
+    p_i$ and the Shannon entropy $S(P) = -\sum_{i=1}^n p_i \log p_i$ for a probability distribution $P
+    = (p_1, \dots, p_n)$. State the Khinchin axioms (continuity, maximality at the uniform distribution,
+    expandability by zero-probability states, and additivity/extensivity for independent subsystems: $S(P
+    \otimes Q) = S(P) + S(Q)$). (Hint: Prove the uniqueness theorem showing that any functional satisfying
+    the Khinchin axioms is a positive constant multiple of the Shannon entropy)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(information, shannon entropy, and khinchin axioms) define shannon information $i(p_i)
+    = -\log p_i$ and the shannon entropy $s(p) = -\sum_{i=1}^n p_i \log p_i$ for a probability distribution
+    $p = (p_1, \dots, p_n)$. state the khinchin axioms (continuity, maximality at the uniform distribution,
+    expandability by zero-probability states, and additivity/extensivity for independent subsystems: $s(p
+    \otimes q) = s(p) + s(q)$). (hint: prove the uniqueness theorem showing that any functional satisfying
+    the khinchin axioms is a positive constant multiple of the shannon entropy)'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#001
+  text: '(Rényi Entropy, Escort Distributions, and Thermodynamics) Define the Rényi entropy of order $\alpha
+    \ge 0$ ($\alpha \ne 1$) by $S_\alpha(P) = \frac{1}{1-\alpha} \log \left( \sum_{i=1}^n p_i^\alpha \right)$.
+    Show that $\lim_{\alpha \to 1} S_\alpha(P) = S(P)$. Define the escort distribution $P^{(\beta)}$ with
+    partition function $Z(\beta) = \sum_{i=1}^n p_i^\beta$, and relate Rényi entropy to the thermodynamic
+    Helmholtz free energy $F(\beta) = -\frac{1}{\beta} \log Z(\beta)$ and the Gibbs equilibrium relation
+    $S = \beta(E - F)$. (Hint: Rényi entropy relaxes strong additivity to additivity for independent subsystems;
+    its derivative with respect to $\alpha$ connects to the Kullback–Leibler divergence $D_{\text{KL}}(P^{(\alpha)}
+    \parallel P) \ge 0$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(rényi entropy, escort distributions, and thermodynamics) define the rényi entropy of
+    order $\alpha \ge 0$ ($\alpha \ne 1$) by $s_\alpha(p) = \frac{1}{1-\alpha} \log \left( \sum_{i=1}^n
+    p_i^\alpha \right)$. show that $\lim_{\alpha \to 1} s_\alpha(p) = s(p)$. define the escort distribution
+    $p^{(\beta)}$ with partition function $z(\beta) = \sum_{i=1}^n p_i^\beta$, and relate rényi entropy
+    to the thermodynamic helmholtz free energy $f(\beta) = -\frac{1}{\beta} \log z(\beta)$ and the gibbs
+    equilibrium relation $s = \beta(e - f)$. (hint: rényi entropy relaxes strong additivity to additivity
+    for independent subsystems; its derivative with respect to $\alpha$ connects to the kullback–leibler
+    divergence $d_{\text{kl}}(p^{(\alpha)} \parallel p) \ge 0$)'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#002
+  text: '(Tsallis Entropy and q-Deformations) Define the Tsallis non-extensive entropy $S_q(P) = \frac{1}{q-1}\left(1
+    - \sum_{i=1}^n p_i^q\right) = -\sum_{i=1}^n p_i^q \ln_q(p_i)$, where $\ln_q(x) = \frac{x^{1-q}-1}{1-q}$
+    is the $q$-logarithm. Show that $\lim_{q \to 1} S_q(P) = S(P)$, and formulate the non-extensive pseudo-additivity
+    rule for independent subsystems: $S_q(A \star B) = S_q(A) + S_q(B) + (1-q)S_q(A)S_q(B)$. (Hint: Tsallis
+    entropy is inspired by Jackson $q$-derivatives and governs non-extensive statistical mechanics)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(tsallis entropy and q-deformations) define the tsallis non-extensive entropy $s_q(p)
+    = \frac{1}{q-1}\left(1 - \sum_{i=1}^n p_i^q\right) = -\sum_{i=1}^n p_i^q \ln_q(p_i)$, where $\ln_q(x)
+    = \frac{x^{1-q}-1}{1-q}$ is the $q$-logarithm. show that $\lim_{q \to 1} s_q(p) = s(p)$, and formulate
+    the non-extensive pseudo-additivity rule for independent subsystems: $s_q(a \star b) = s_q(a) + s_q(b)
+    + (1-q)s_q(a)s_q(b)$. (hint: tsallis entropy is inspired by jackson $q$-derivatives and governs non-extensive
+    statistical mechanics)'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#003
+  text: '(Asymptotics of Multinomial Coefficients and Types) For an alphabet of $N$ symbols and an empirical
+    frequency distribution $P = (k_1/n, \dots, k_N/n)$ of words of length $n = \sum k_i$, evaluate the
+    asymptotic limit of the multinomial coefficient via Stirling''s approximation: $\lim_{n \to \infty}
+    \frac{1}{n} \log \binom{n}{k_1, \dots, k_N} = S(P)$. (Hint: In the method of types, the number of
+    sequences of a given type $P$ scales exponentially as $e^{n S(P)}$; maximizing the multinomial coefficient
+    corresponds to the maximum entropy principle)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(asymptotics of multinomial coefficients and types) for an alphabet of $n$ symbols and
+    an empirical frequency distribution $p = (k_1/n, \dots, k_n/n)$ of words of length $n = \sum k_i$,
+    evaluate the asymptotic limit of the multinomial coefficient via stirling''s approximation: $\lim_{n
+    \to \infty} \frac{1}{n} \log \binom{n}{k_1, \dots, k_n} = s(p)$. (hint: in the method of types, the
+    number of sequences of a given type $p$ scales exponentially as $e^{n s(p)}$; maximizing the multinomial
+    coefficient corresponds to the maximum entropy principle)'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#004
+  text: '(Combinatorics over F1 vs. Fq-Geometry) Detail the dictionary comparing classical information
+    theory to geometry over the field with one element $\mathbb{F}_1$ and its $q$-deformation over finite
+    fields $\mathbb{F}_q$: 1. Messages / Words of length $n \longleftrightarrow$ Basis elements of vector
+    spaces over $\mathbb{F}_1$ vs. $\mathbb{F}_q^n$. 2. Number of 1s (Hamming weight) $\longleftrightarrow$
+    Vector subspace dimension $k$. 3. Number of messages $\binom{n}{k} \longleftrightarrow$ Gaussian binomial
+    coefficients (Grassmannians) $\left[ \begin{matrix} n \\ k \end{matrix} \right]_q = \#\operatorname{Gr}(k,
+    n)(\mathbb{F}_q)$, where $\lim_{q \to 1} \left[ \begin{matrix} n \\ k \end{matrix} \right]_q = \binom{n}{k}$.
+    4. Projective spaces $\mathbb{P}^{n-1}(\mathbb{F}_1) = \{1, \dots, n\}$ as finite sets of cardinality
+    $n$. (Hint: Show how Tsallis $q$-deformed entropy corresponds to counting subspaces in $\mathbb{F}_q$-geometry,
+    while Shannon entropy recovers the classical limit as $q \to 1$ over $\mathbb{F}_1$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(combinatorics over f1 vs. fq-geometry) detail the dictionary comparing classical information
+    theory to geometry over the field with one element $\mathbb{f}_1$ and its $q$-deformation over finite
+    fields $\mathbb{f}_q$: 1. messages / words of length $n \longleftrightarrow$ basis elements of vector
+    spaces over $\mathbb{f}_1$ vs. $\mathbb{f}_q^n$. 2. number of 1s (hamming weight) $\longleftrightarrow$
+    vector subspace dimension $k$. 3. number of messages $\binom{n}{k} \longleftrightarrow$ gaussian binomial
+    coefficients (grassmannians) $\left[ \begin{matrix} n \\ k \end{matrix} \right]_q = \#\operatorname{gr}(k,
+    n)(\mathbb{f}_q)$, where $\lim_{q \to 1} \left[ \begin{matrix} n \\ k \end{matrix} \right]_q = \binom{n}{k}$.
+    4. projective spaces $\mathbb{p}^{n-1}(\mathbb{f}_1) = \{1, \dots, n\}$ as finite sets of cardinality
+    $n$. (hint: show how tsallis $q$-deformed entropy corresponds to counting subspaces in $\mathbb{f}_q$-geometry,
+    while shannon entropy recovers the classical limit as $q \to 1$ over $\mathbb{f}_1$)'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#005
+  text: '(Finite Logarithms and Finite Polylogarithms) On a finite field $\mathbb{F}_p$, define the finite
+    logarithm as a solution to the functional equation $\phi(xy) = \phi(x) + \phi(y)$ for $x, y \in \mathbb{F}_p^\times$.
+    Define the finite polylogarithm $\operatorname{Li}_n^{(p)}(x) = \sum_{k=1}^{p-1} \frac{x^k}{k^n} \in
+    \mathbb{F}_p[x]$, and compute its mod-$p$ differential and Frobenius periodicity relations. (Hint:
+    Regard the functional equation cohomologically as the condition that $\phi$ is an additive 1-cocycle
+    in group cohomology $H^1(\mathbb{F}_p^\times, \mathbb{F}_p)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(finite logarithms and finite polylogarithms) on a finite field $\mathbb{f}_p$, define
+    the finite logarithm as a solution to the functional equation $\phi(xy) = \phi(x) + \phi(y)$ for $x,
+    y \in \mathbb{f}_p^\times$. define the finite polylogarithm $\operatorname{li}_n^{(p)}(x) = \sum_{k=1}^{p-1}
+    \frac{x^k}{k^n} \in \mathbb{f}_p[x]$, and compute its mod-$p$ differential and frobenius periodicity
+    relations. (hint: regard the functional equation cohomologically as the condition that $\phi$ is an
+    additive 1-cocycle in group cohomology $h^1(\mathbb{f}_p^\times, \mathbb{f}_p)$)'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#006
+  text: '(Categorical Characterization of Entropy: Baez-Fritz-Leinster) Let $\mathbf{FinProb}$ be the
+    category of finite probability spaces $(X, P)$, where morphisms $f: (X, P) \to (Y, Q)$ are measure-preserving
+    maps ($Q(y) = \sum_{x \in f^{-1}(y)} P(x)$). State the Baez–Fritz–Leinster theorem characterizing
+    information loss $L(f) = S(P) - S(Q)$: prove that any functor $L: \mathbf{FinProb} \to (\mathbb{R}_{\ge
+    0}, +)$ satisfying convex linearity $L(\lambda f \oplus (1-\lambda) g) = \lambda L(f) + (1-\lambda)
+    L(g)$ and continuity is a constant non-negative multiple of the Shannon information loss. (Hint: Adapt
+    the axioms to Tsallis entropy by replacing convex linearity with $q$-deformed non-extensive convex
+    combinations)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(categorical characterization of entropy: baez-fritz-leinster) let $\mathbf{finprob}$
+    be the category of finite probability spaces $(x, p)$, where morphisms $f: (x, p) \to (y, q)$ are
+    measure-preserving maps ($q(y) = \sum_{x \in f^{-1}(y)} p(x)$). state the baez–fritz–leinster theorem
+    characterizing information loss $l(f) = s(p) - s(q)$: prove that any functor $l: \mathbf{finprob}
+    \to (\mathbb{r}_{\ge 0}, +)$ satisfying convex linearity $l(\lambda f \oplus (1-\lambda) g) = \lambda
+    l(f) + (1-\lambda) l(g)$ and continuity is a constant non-negative multiple of the shannon information
+    loss. (hint: adapt the axioms to tsallis entropy by replacing convex linearity with $q$-deformed non-extensive
+    convex combinations)'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#007
+  text: '(Information Geometry and the Fisher-Rao Metric) On a statistical manifold $\mathcal{M} = \{P_\theta
+    = (p_1(\theta), \dots, p_n(\theta))\}$, define the Fisher–Rao information metric $g_{ij}(\theta) =
+    \sum_{k=1}^n \frac{1}{p_k(\theta)} \frac{\partial p_k}{\partial \theta^i} \frac{\partial p_k}{\partial
+    \theta^j} = \mathbb{E}_\theta \left[ \frac{\partial \log p}{\partial \theta^i} \frac{\partial \log
+    p}{\partial \theta^j} \right]$. Show that the coordinate transformation $X_k = \sqrt{p_k}$ embeds
+    $\mathcal{M}$ isometrically into a positive Euclidean sphere $S^{n-1}$ with metric $ds^2 = 4 \sum
+    dX_k^2$. (Hint: Show that the Fisher–Rao metric is the Hessian of the Kullback–Leibler divergence:
+    $g_{ij}(\theta) = \left. \frac{\partial^2}{\partial \theta_1^i \partial \theta_2^j} D_{\text{KL}}(P_{\theta_1}
+    \parallel P_{\theta_2}) \right|_{\theta_1 = \theta_2 = \theta}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(information geometry and the fisher-rao metric) on a statistical manifold $\mathcal{m}
+    = \{p_\theta = (p_1(\theta), \dots, p_n(\theta))\}$, define the fisher–rao information metric $g_{ij}(\theta)
+    = \sum_{k=1}^n \frac{1}{p_k(\theta)} \frac{\partial p_k}{\partial \theta^i} \frac{\partial p_k}{\partial
+    \theta^j} = \mathbb{e}_\theta \left[ \frac{\partial \log p}{\partial \theta^i} \frac{\partial \log
+    p}{\partial \theta^j} \right]$. show that the coordinate transformation $x_k = \sqrt{p_k}$ embeds
+    $\mathcal{m}$ isometrically into a positive euclidean sphere $s^{n-1}$ with metric $ds^2 = 4 \sum
+    dx_k^2$. (hint: show that the fisher–rao metric is the hessian of the kullback–leibler divergence:
+    $g_{ij}(\theta) = \left. \frac{\partial^2}{\partial \theta_1^i \partial \theta_2^j} d_{\text{kl}}(p_{\theta_1}
+    \parallel p_{\theta_2}) \right|_{\theta_1 = \theta_2 = \theta}$)'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#008
+  text: '(Frobenius Manifolds and Statistical Quantum Cohomology) Define a Frobenius manifold $(M, g,
+    \Phi)$ following Dubrovin and Manin, where $g$ is a flat metric and $\Phi$ is a potential function
+    satisfying the WDVV (Witten–Dijkgraaf–Verlinde–Verlinde) associativity equations: $c_{ijk} = \frac{\partial^3
+    \Phi}{\partial t^i \partial t^j \partial t^k}$ defines an associative, commutative multiplication
+    $\circ$ on the tangent bundle $TM$. Explain how statistical manifolds equipped with Amari–Chentsov
+    cubic tensors $C(\partial_i, \partial_j, \partial_k) = \mathbb{E}\left[\partial_i \log p \cdot \partial_j
+    \log p \cdot \partial_k \log p\right]$ connect to Frobenius structures in Gromov–Witten theory'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(frobenius manifolds and statistical quantum cohomology) define a frobenius manifold $(m,
+    g, \phi)$ following dubrovin and manin, where $g$ is a flat metric and $\phi$ is a potential function
+    satisfying the wdvv (witten–dijkgraaf–verlinde–verlinde) associativity equations: $c_{ijk} = \frac{\partial^3
+    \phi}{\partial t^i \partial t^j \partial t^k}$ defines an associative, commutative multiplication
+    $\circ$ on the tangent bundle $tm$. explain how statistical manifolds equipped with amari–chentsov
+    cubic tensors $c(\partial_i, \partial_j, \partial_k) = \mathbb{e}\left[\partial_i \log p \cdot \partial_j
+    \log p \cdot \partial_k \log p\right]$ connect to frobenius structures in gromov–witten theory'
+- id: www-its-caltech-edu-matilde-entropyslides2021ma148-pdf#009
+  text: '(Hochschild Cohomology of Information Structures: Vigneaux''s Theorem) Let $\mathcal{S}$ be the
+    category of observables (random variables on finite probability spaces) with morphisms given by joint
+    measurements / refinements. Define the Hochschild cochain complex $C^n(\mathcal{S}, \mathcal{F}) =
+    \operatorname{Hom}(\mathcal{S}^{\otimes n}, \mathcal{F})$ for an information structure. State Pierre
+    Baudot and Juan-Pablo Vigneaux''s theorem: 1. The 0-th Hochschild cohomology $H^0(\mathcal{S}, \mathbb{R})
+    \cong \mathbb{R}$ when $\alpha = 1$, and vanishes otherwise. 2. The 1-cocycles $Z^1(\mathcal{S}, \mathbb{R})$
+    satisfying the cocycle condition $F(X \vee Y) = F(X) + F(Y \mid X)$ (the entropy chain rule) are spanned
+    uniquely by the Shannon entropy (for extensive additivity) and by the Tsallis entropy $S_\alpha$ (for
+    non-extensive deformations). (Hint: The entropy chain rule is the 1-cocycle condition in the Hochschild
+    complex of the information algebra)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(hochschild cohomology of information structures: vigneaux''s theorem) let $\mathcal{s}$
+    be the category of observables (random variables on finite probability spaces) with morphisms given
+    by joint measurements / refinements. define the hochschild cochain complex $c^n(\mathcal{s}, \mathcal{f})
+    = \operatorname{hom}(\mathcal{s}^{\otimes n}, \mathcal{f})$ for an information structure. state pierre
+    baudot and juan-pablo vigneaux''s theorem: 1. the 0-th hochschild cohomology $h^0(\mathcal{s}, \mathbb{r})
+    \cong \mathbb{r}$ when $\alpha = 1$, and vanishes otherwise. 2. the 1-cocycles $z^1(\mathcal{s}, \mathbb{r})$
+    satisfying the cocycle condition $f(x \vee y) = f(x) + f(y \mid x)$ (the entropy chain rule) are spanned
+    uniquely by the shannon entropy (for extensive additivity) and by the tsallis entropy $s_\alpha$ (for
+    non-extensive deformations). (hint: the entropy chain rule is the 1-cocycle condition in the hochschild
+    complex of the information algebra)'

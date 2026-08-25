@@ -1,0 +1,181 @@
+url: https://indico.math.cnrs.fr/event/10843/contributions/12868/
+title: Class Field Theory and Zeta Spectral Triples by Alain Connes
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#000
+  text: '(Philosophy of Class Field Theory & Yoneda Lemma) How does class field theory realize the principle
+    that an algebraic number field "possesses within itself the elements of its own surpassing"? (Hint:
+    Abelian extensions are determined entirely by internal invariants of the base field $K$, mirroring
+    the Yoneda lemma; trace the historical progression from Kummer''s ideal numbers and Dedekind''s ideal
+    classes to Chevalley''s idèle class group $C_K = \mathrm{GL}_1(\mathbb{A}_K)/K^\times$, whose quotient
+    by the connected component of the identity yields $\operatorname{Gal}(K^{\text{ab}}/K)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(philosophy of class field theory & yoneda lemma) how does class field theory realize
+    the principle that an algebraic number field "possesses within itself the elements of its own surpassing"?
+    (hint: abelian extensions are determined entirely by internal invariants of the base field $k$, mirroring
+    the yoneda lemma; trace the historical progression from kummer''s ideal numbers and dedekind''s ideal
+    classes to chevalley''s idèle class group $c_k = \mathrm{gl}_1(\mathbb{a}_k)/k^\times$, whose quotient
+    by the connected component of the identity yields $\operatorname{gal}(k^{\text{ab}}/k)$)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#001
+  text: '(Galois Theory as Group Actions on Spaces) Why is it insufficient to view Galois groups merely
+    as abstract groups? (Hint: Galois originally formulated solvability via primitive equations of prime
+    power degree acting transitively on pairs of roots; Galois groups must be understood through their
+    concrete actions on spaces, where the idèle class group plays the fundamental geometric role)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(galois theory as group actions on spaces) why is it insufficient to view galois groups
+    merely as abstract groups? (hint: galois originally formulated solvability via primitive equations
+    of prime power degree acting transitively on pairs of roots; galois groups must be understood through
+    their concrete actions on spaces, where the idèle class group plays the fundamental geometric role)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#002
+  text: '(Adeles and Global Fields) Define the adèle ring $\mathbb{A}_K$ of a global field $K$ as introduced
+    by André Weil. (Hint: $\mathbb{A}_K$ is the restricted direct product of all local completions $K_v$
+    with respect to the integer subrings $\mathcal{O}_v$, where $K$ embeds discretely and cocompactly)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(adeles and global fields) define the adèle ring $\mathbb{a}_k$ of a global field $k$
+    as introduced by andré weil. (hint: $\mathbb{a}_k$ is the restricted direct product of all local completions
+    $k_v$ with respect to the integer subrings $\mathcal{o}_v$, where $k$ embeds discretely and cocompactly)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#003
+  text: '(The Adele Class Space as a Noncommutative Space) Define the adèle class space $X_K = K^\times
+    \backslash \mathbb{A}_K$ introduced by Alain Connes in 1996. Why does classical measure theory fail
+    on this space? (Hint: The action of $K^\times$ on $\mathbb{A}_K$ is ergodic with respect to the Haar
+    measure, meaning any measurable invariant function is almost everywhere constant; $X_K$ behaves as
+    the leaf space of a foliation, serving as a prototype noncommutative space)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the adele class space as a noncommutative space) define the adèle class space $x_k =
+    k^\times \backslash \mathbb{a}_k$ introduced by alain connes in 1996. why does classical measure theory
+    fail on this space? (hint: the action of $k^\times$ on $\mathbb{a}_k$ is ergodic with respect to the
+    haar measure, meaning any measurable invariant function is almost everywhere constant; $x_k$ behaves
+    as the leaf space of a foliation, serving as a prototype noncommutative space)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#004
+  text: '(Local-to-Global Class Field Theory via Isotropy) How does the adèle class space $X_K$ bridge
+    local and global class field theory? (Hint: Local class field theory for a completion $K_v$ is simpler;
+    in the adèle class space, the local multiplicative group $K_v^\times$ embeds canonically as the isotropy
+    group of the local slice at $v$, realizing the local-to-global transition geometrically)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(local-to-global class field theory via isotropy) how does the adèle class space $x_k$
+    bridge local and global class field theory? (hint: local class field theory for a completion $k_v$
+    is simpler; in the adèle class space, the local multiplicative group $k_v^\times$ embeds canonically
+    as the isotropy group of the local slice at $v$, realizing the local-to-global transition geometrically)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#005
+  text: '(Riemann-Weil Explicit Formulas as a Trace Formula) Explain how the local terms $\int_{K_v^\times}
+    \frac{f(u)}{|1-u|}\,d^*u$ in the Riemann–Weil explicit formula arise from the adèle class space. (Hint:
+    The action of the scaling operator $u \in K_v^\times$ on the transverse space has Schwartz kernel
+    $\delta(y - ux)$, whose diagonal trace $\int \delta(x - ux)\,dx = \frac{1}{|1-u|}$ converts Weil''s
+    explicit formula into a geometric trace formula)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(riemann-weil explicit formulas as a trace formula) explain how the local terms $\int_{k_v^\times}
+    \frac{f(u)}{|1-u|}\,d^*u$ in the riemann–weil explicit formula arise from the adèle class space. (hint:
+    the action of the scaling operator $u \in k_v^\times$ on the transverse space has schwartz kernel
+    $\delta(y - ux)$, whose diagonal trace $\int \delta(x - ux)\,dx = \frac{1}{|1-u|}$ converts weil''s
+    explicit formula into a geometric trace formula)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#006
+  text: '(Spectral Realization of Zeros as an Absorption Spectrum) How does the action of the idèle class
+    group on the adèle class space realize the zeros of the Riemann zeta function and $L$-functions? (Hint:
+    The zeros appear spectrally as an absorption spectrum / missing spectral lines, which geometrically
+    explains the minus sign appearing in front of the sum of local orbital integrals in the explicit formula)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(spectral realization of zeros as an absorption spectrum) how does the action of the idèle
+    class group on the adèle class space realize the zeros of the riemann zeta function and $l$-functions?
+    (hint: the zeros appear spectrally as an absorption spectrum / missing spectral lines, which geometrically
+    explains the minus sign appearing in front of the sum of local orbital integrals in the explicit formula)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#007
+  text: '(The Scaling Site without Adeles) Define the scaling site $X_{\mathbb{Q}} = \mathbb{Q}^\times
+    \backslash \mathbb{A}_{\mathbb{Q}} / \widehat{\mathbb{Z}}^\times$ and describe its presentation in
+    terms of rank-1 subgroups of $\mathbb{R}$. (Hint: $X_{\mathbb{Q}}$ can be realized without adèles
+    as the space of rank-1 additive subgroups of $\mathbb{R}$, such as $\mathbb{Z}[1/p]$; the visible
+    generic orbit is $\mathbb{R}_+^*$, and the periodic orbits have lengths $\log p$ corresponding to
+    prime numbers $p$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the scaling site without adeles) define the scaling site $x_{\mathbb{q}} = \mathbb{q}^\times
+    \backslash \mathbb{a}_{\mathbb{q}} / \widehat{\mathbb{z}}^\times$ and describe its presentation in
+    terms of rank-1 subgroups of $\mathbb{r}$. (hint: $x_{\mathbb{q}}$ can be realized without adèles
+    as the space of rank-1 additive subgroups of $\mathbb{r}$, such as $\mathbb{z}[1/p]$; the visible
+    generic orbit is $\mathbb{r}_+^*$, and the periodic orbits have lengths $\log p$ corresponding to
+    prime numbers $p$)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#008
+  text: '(Constructing Finite Covers of the Scaling Site) Let $G$ be a finite abelian group and let $\chi:
+    \widehat{\mathbb{Z}}^\times \twoheadrightarrow G$ be a surjective continuous homomorphism. How is
+    the corresponding finite cover of the scaling site constructed? (Hint: Take the balanced product $X_{\mathbb{Q}}
+    \times_{\widehat{\mathbb{Z}}^\times} G$, yielding a space where $G$ acts transitively on the fibers
+    over the double quotient)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(constructing finite covers of the scaling site) let $g$ be a finite abelian group and
+    let $\chi: \widehat{\mathbb{z}}^\times \twoheadrightarrow g$ be a surjective continuous homomorphism.
+    how is the corresponding finite cover of the scaling site constructed? (hint: take the balanced product
+    $x_{\mathbb{q}} \times_{\widehat{\mathbb{z}}^\times} g$, yielding a space where $g$ acts transitively
+    on the fibers over the double quotient)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#009
+  text: '(Ramification and Periodic Orbits) How does ramification of a number field extension manifest
+    in the finite cover of the scaling site? (Hint: For an unramified prime $p$, the preimage of the periodic
+    orbit $C_p$ (of length $\log p$) decomposes into connected circles corresponding to the places lying
+    over $p$, each acting as the mapping torus of the Frobenius automorphism)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(ramification and periodic orbits) how does ramification of a number field extension manifest
+    in the finite cover of the scaling site? (hint: for an unramified prime $p$, the preimage of the periodic
+    orbit $c_p$ (of length $\log p$) decomposes into connected circles corresponding to the places lying
+    over $p$, each acting as the mapping torus of the frobenius automorphism)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#010
+  text: '(Artin Reciprocity and the Kronecker-Weber Theorem) How does the mapping torus structure of periodic
+    orbits in the scaling site embody the Kronecker–Weber theorem and Artin reciprocity? (Hint: Every
+    finite abelian extension of $\mathbb{Q}$ is cyclotomic; on residue fields $\mathbb{F}_p \hookrightarrow
+    \mathbb{F}_q$, the Galois group is generated by the Frobenius automorphism $x \mapsto x^p$, which
+    matches the monodromy around the periodic orbit $C_p$ in the fiber bundle)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(artin reciprocity and the kronecker-weber theorem) how does the mapping torus structure
+    of periodic orbits in the scaling site embody the kronecker–weber theorem and artin reciprocity? (hint:
+    every finite abelian extension of $\mathbb{q}$ is cyclotomic; on residue fields $\mathbb{f}_p \hookrightarrow
+    \mathbb{f}_q$, the galois group is generated by the frobenius automorphism $x \mapsto x^p$, which
+    matches the monodromy around the periodic orbit $c_p$ in the fiber bundle)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#011
+  text: '(Dense Orbits and the 3D Geometry of Spec Z) How does the generic dense orbit in the adèle class
+    space relate to the étale fundamental group $\pi_1^{\text{ét}}$ and the 3D topology of $\operatorname{Spec}
+    \mathbb{Z}$? (Hint: In the Mazur–Mumford–Artin analogy, $\operatorname{Spec} \mathbb{Z}$ behaves as
+    a 3-manifold where primes are knots; the generic point $\eta$ is everywhere dense, corresponding directly
+    to the generic orbit of the idèle class group that is dense and intersects every periodic orbit $C_p$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(dense orbits and the 3d geometry of spec z) how does the generic dense orbit in the adèle
+    class space relate to the étale fundamental group $\pi_1^{\text{ét}}$ and the 3d topology of $\operatorname{spec}
+    \mathbb{z}$? (hint: in the mazur–mumford–artin analogy, $\operatorname{spec} \mathbb{z}$ behaves as
+    a 3-manifold where primes are knots; the generic point $\eta$ is everywhere dense, corresponding directly
+    to the generic orbit of the idèle class group that is dense and intersects every periodic orbit $c_p$)'
+- id: indico-math-cnrs-fr-event-10843-contributions-12868#012
+  text: '(The Scaling Site Topos and Frequencies) Formulate the scaling site as a semiringed topos over
+    the multiplicative semigroup of natural numbers. (Hint: It is described by the semidirect product
+    $[0, \infty) \rtimes \mathbb{N}^\times$, where $[0, \infty)$ represents continuous scaling/frequencies
+    and $\mathbb{N}^\times$ acts by multiplication/harmonics, evaluating over the tropical semifield $\mathbb{R}_{\max}$
+    associated with $\mathbb{F}_1$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the scaling site topos and frequencies) formulate the scaling site as a semiringed topos
+    over the multiplicative semigroup of natural numbers. (hint: it is described by the semidirect product
+    $[0, \infty) \rtimes \mathbb{n}^\times$, where $[0, \infty)$ represents continuous scaling/frequencies
+    and $\mathbb{n}^\times$ acts by multiplication/harmonics, evaluating over the tropical semifield $\mathbb{r}_{\max}$
+    associated with $\mathbb{f}_1$)'
