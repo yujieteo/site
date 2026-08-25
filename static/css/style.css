@@ -296,12 +296,17 @@ h2.section-title:first-of-type {
   margin-bottom: 16px;
 }
 
+/* Search box: bumped up from 0.95rem/10px-14px so it's comfortably
+   bigger and easier to click/read, and given more flex-basis so it
+   doesn't get squeezed down by the "Filters" button and result count
+   sharing the row on narrower screens. */
 .search-box {
-  flex: 1;
-  min-height: 44px;
+  flex: 1 1 240px;
+  min-width: 200px;
+  min-height: 48px;
   font-family: var(--sans);
-  font-size: 0.95rem;
-  padding: 10px 14px;
+  font-size: 1.05rem;
+  padding: 12px 16px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--scrim-softer);
@@ -320,17 +325,21 @@ h2.section-title:first-of-type {
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
+/* Filters toggle: matched to the search box's new larger size/font so
+   the two feel like one control bar rather than a big box next to a
+   tiny one. */
 .filters-toggle {
   cursor: pointer;
-  min-height: 44px;
+  min-height: 48px;
   font-family: var(--sans);
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--text-secondary);
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 10px 16px;
+  padding: 12px 20px;
+  white-space: nowrap;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
@@ -356,37 +365,40 @@ h2.section-title:first-of-type {
 
 /* The dropdown tag panel. Self-contained (own width/max-height/
    positioning) so it can't inherit a no-wrap / overflow-x-auto rule
-   from elsewhere and run off to the right. Deliberately compact: with
-   only the top few tags shown by default (see render_tag_bar's
-   show_first) the panel rarely needs to scroll at all; the cap here is
-   just a safety net for when a search reveals a lot of matches. */
+   from elsewhere and run off to the right. Widened and heightened
+   considerably from the old min(88vw, 300px) / 260px cap -- that was
+   the main source of the "squeezed into a tiny box" feel, forcing
+   both the tag-search input and every tag button into a cramped
+   300px-wide column. */
 .tag-panel {
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
-  width: min(88vw, 300px);
-  max-height: 260px;
+  width: min(92vw, 460px);
+  max-height: 420px;
   overflow-y: auto;
   box-sizing: border-box;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: 0 8px 24px var(--panel-shadow);
-  padding: 10px;
+  padding: 16px;
   z-index: 50;
 }
 
+/* Enlarged to match the main search box's proportions -- this is the
+   box people type into to find a tag, so it deserves to be just as
+   easy to read/click as the main search field. */
 .tag-search-box {
   display: block;
   position: sticky;
-  top: -10px;
-  width: 100%;
-  min-height: 38px;
+  top: -16px;
+  width: calc(100% + 32px);
+  min-height: 44px;
   font-family: var(--sans);
-  font-size: 0.85rem;
-  padding: 8px 10px;
-  margin: -10px -10px 8px;
-  width: calc(100% + 20px);
+  font-size: 0.98rem;
+  padding: 10px 14px;
+  margin: -16px -16px 12px;
   border: none;
   border-bottom: 1px solid var(--border-subtle);
   border-radius: 12px 12px 0 0;
@@ -403,13 +415,17 @@ h2.section-title:first-of-type {
 .tag-panel-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35em;
+  gap: 0.5em;
 }
 
+/* Tag buttons inside the panel: brought up close to the size of the
+   inline tag chips elsewhere on the page (0.78rem/7px-12px/36px) --
+   the old 0.74rem/5px-10px/30px was noticeably smaller and harder to
+   hit than every other clickable tag on the site. */
 .tag-panel .tag {
-  font-size: 0.74rem;
-  padding: 5px 10px;
-  min-height: 30px;
+  font-size: 0.85rem;
+  padding: 8px 14px;
+  min-height: 38px;
 }
 
 /* Default (no-JS-yet / first paint) state: only the top tags are
@@ -421,8 +437,8 @@ h2.section-title:first-of-type {
 
 .tag-more-hint {
   width: 100%;
-  margin: 6px 0 0;
-  font-size: 0.74rem;
+  margin: 8px 0 0;
+  font-size: 0.8rem;
   color: var(--muted);
 }
 
@@ -458,5 +474,7 @@ footer.site-footer {
 @media (max-width: 480px) {
   header.site-header h1 { font-size: 1.85rem; }
   nav.site-nav { flex-wrap: wrap; }
-  .tag-panel { width: min(94vw, 280px); }
+  /* Still generous on mobile -- 94vw so it nearly fills the screen
+     width rather than shrinking back down to a cramped fixed size. */
+  .tag-panel { width: min(94vw, 420px); }
 }

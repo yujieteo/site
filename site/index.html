@@ -293,7 +293,14 @@
 
   function togglePanel(forceOpen) {
     panelOpen = typeof forceOpen === 'boolean' ? forceOpen : !panelOpen;
-    tagBar.style.display = panelOpen ? 'flex' : 'none';
+    // NOTE: this used to be 'flex'. With no flex-direction set, that
+    // made the tag-search box and the button grid lay out
+    // side-by-side (flex's default row axis) instead of stacked,
+    // which is what was squeezing the whole panel into a sliver.
+    // 'block' lets each child (.tag-search-box, .tag-panel-buttons)
+    // stack vertically and use the panel's full width, per their own
+    // CSS rules in style.css.
+    tagBar.style.display = panelOpen ? 'block' : 'none';
     filtersToggle.classList.toggle('open', panelOpen);
     filtersToggle.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
     if (panelOpen) {
