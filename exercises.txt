@@ -1629,3 +1629,24 @@ https://arxiv.org/pdf/1712.07602, arithmetic Chern-Simons theory and Diophantine
 
 https://physics.stackexchange.com/questions/77368/intuitively-why-are-bundles-so-important-in-physics, fiber bundles in physics, Urs Schreiber answer
     - Explain why fiber bundles and connections are essential in physics: global topology prevents fields from being globally trivial functions, requiring gauge fields to be connection 1-forms on non-trivial principal bundles.
+
+https://www.ms.u-tokyo.ac.jp/~yasuyuki/yamashita-crest2022-3.pdf, differential cohomology (Yamashita)
+	- How does one define holonomy for a $U(1)$-connection? (Hint: $(L, \nabla) \rightarrow X$ be a Hermitian line bundle, with $U(1)$-connection over a manifold. For a closed curve $f: S^1 \rightarrow X$ in $X$, get holonomy in $\mathbb{R}/\mathbb{Z}$ which is isomorphic to $U(1)$.
+	- Why is the Chern-Simons invariant important?
+	- Why is holonomy and the Chern-Simons invariant not topological invariants? Construct a counterexample to the statement that they are topological invariants.
+	- Why does it follow that the field strength is integral? What does integral mean?
+	- What is Dirac charge quantisation?
+	- What values does one recover from holonomy?
+	- What is the motivation for the object $\hat{x}$ that recovers to topological terms in the integral $\int_{M^{n-1}} f^{*} \hat{x}$ that lives inside differential cohomology? (Hint: you want it the integral to be a topological action in a field theory. Using ordinary cohomology classes $x$, one loses all geometric information. If one uses only a differential form, one loses global topology and torsion information. The cohomology class $\hat{x}$ has an underlying topological class, a closed differential form that is usually integral, and a flat and holonomic part. This integral therefore produces a gauge-invariant, geometrically refined topological term. This is what Chern-Simons theory needs.)
+	- How does one motivate the definition of a connection in differential geometry to detect cohomology classes, in particular the first Chern class $c_1(L) = [i \Omega / 2 \pi]$ is in cohomology $H^2(X, \mathbb{Z})$? (Hint: with a connection, one can define the curvature, and recover it up to torsion. A line bundle is a topological object, to compute characteristics via local invariants, one must differentia locally. The de Rham class only sees the real part of the integer Chern class, torsion is invisible to the curvature alone, however, a connection detects the Chern class up to torsion. The torsion is recorded by the holonomy or the information in the flat line bundle.)
+	- How is Dirac charge quantization related to curvature? (Hint: condition on the curvature class. I do not understand this.)
+	- How does flat line bundles fail to recover the topology? (Hint: take tensors with a connection such as $F =0$, taking tensor products with real cohomology means the Chern class vanishes. A flat bundle can only see the torsion cohomology. Flatness is valuable locallly, but it is not general enough to detect the topology of all line bundles.)
+	- Compute the holonomy of a trivial bundle $\mathbb{C} \times S^2 \rightarrow S^2$ that preserves the trivial connection for $X = \mathbb{RP^2} = S/\mathbb{Z_2}$.
+	- How does holonomy $\mathrm{Hol}(L, \nabla)$ remember the isomorphism (= gauge equivalence, recall that picking an isomorphism means one picks a gauge field)?
+	- What values do holonomy recover for a flat connection? (Hint: The monodromy representation which is $\pi_1(X) \rightarrow U(1)$, this is an element of $H^1(X, U(1)$. It also recovers the curvature but I am not sure.) 
+	- What is the condition for holonomy maps from $C^\infty(S^1, X) \rightarrow \mathbb{R/Z}$?
+	- What is the motivation behind the Cheeger-Simons' definition of the second differential cohomology?
+	- How does one invent the notion of isomorphism classes of vector bundles? (Hint: allow for bundle isomorphisms, one can quotient out local trivialisations. These isomorphism classes form a semigroup under direct sum. The Grothendieck group is the group completion of the semigroup of isomorphism classes. This allows one to subtract bundles formally, this is useful for say, index theorems.)
+	- How does one invent the notion of the relative $K^0$-group of $K^0(X,Y)$?
+	- What is the Bunke-Schick axiom of differential cohomology?
+	- What is the Hopkins-Singer model of differential cohomology?
