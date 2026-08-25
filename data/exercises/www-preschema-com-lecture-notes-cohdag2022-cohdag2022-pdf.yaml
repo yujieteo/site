@@ -1,0 +1,783 @@
+url: https://www.preschema.com/lecture-notes/cohdag2022/cohdag2022.pdf
+title: cohomological intersection theory
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#000
+  text: How does one formulate Poincaré duality for a noncompact oriented smooth manifold of dimension
+    $d$?
+  hint: There exists a fundamental class $[X] \in H_d^{\mathrm{BM}}(X)$ in Borel-Moore homology such that
+    the cap product $-\cap [X] \colon H^i(X) \xrightarrow{\sim} H_{d-i}^{\mathrm{BM}}(X)$ is an isomorphism
+    for all $i$.
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: how does one formulate poincaré duality for a noncompact oriented smooth manifold of dimension
+    $d$? there exists a fundamental class $[x] \in h_d^{\mathrm{bm}}(x)$ in borel-moore homology such
+    that the cap product $-\cap [x] \colon h^i(x) \xrightarrow{\sim} h_{d-i}^{\mathrm{bm}}(x)$ is an isomorphism
+    for all $i$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#001
+  text: How does one have a fundamental class for submanifolds?
+  hint: For a closed oriented submanifold $i \colon Y \hookrightarrow X$ of dimension $m$, define $[Y]_X
+    := i_*([Y]) \in H_m^{\mathrm{BM}}(X)$ via the proper pushforward along the inclusion.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: how does one have a fundamental class for submanifolds? for a closed oriented submanifold
+    $i \colon y \hookrightarrow x$ of dimension $m$, define $[y]_x := i_*([y]) \in h_m^{\mathrm{bm}}(x)$
+    via the proper pushforward along the inclusion.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#002
+  text: How does one define a cohomological Bézout theorem?
+  hint: Cup product defines a ring structure on $H^*(X)$. Via Poincaré duality, this induces an intersection
+    product $[Y] \cdot [Z] := \mathrm{PD}^{-1}(\mathrm{PD}([Y]) \cup \mathrm{PD}([Z]))$. If $Y^m$ and
+    $Z^n$ intersect transversely in $X^d$, then $Y \cap Z$ is an oriented submanifold of dimension $m+n-d$
+    and $[Y] \cdot [Z] = [Y \cap Z]$.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: how does one define a cohomological bézout theorem? cup product defines a ring structure
+    on $h^*(x)$. via poincaré duality, this induces an intersection product $[y] \cdot [z] := \mathrm{pd}^{-1}(\mathrm{pd}([y])
+    \cup \mathrm{pd}([z]))$. if $y^m$ and $z^n$ intersect transversely in $x^d$, then $y \cap z$ is an
+    oriented submanifold of dimension $m+n-d$ and $[y] \cdot [z] = [y \cap z]$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#003
+  text: What does Thom's transversality mean in non-transverse case?
+  hint: Smooth maps can be homotoped to transverse ones, so non-transverse intersections can be perturbed
+    away. This fails in algebraic geometry because the Zariski topology is rigid and continuous perturbations
+    are not algebraic morphisms; it fails in equivariant geometry because perturbations must respect group
+    actions.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 2
+  search_text: what does thom's transversality mean in non-transverse case? smooth maps can be homotoped
+    to transverse ones, so non-transverse intersections can be perturbed away. this fails in algebraic
+    geometry because the zariski topology is rigid and continuous perturbations are not algebraic morphisms;
+    it fails in equivariant geometry because perturbations must respect group actions.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#004
+  text: Classify many Borel-Moore type theories?
+  hint: '(1) Topological: $H_*^{\mathrm{BM}}(X(\mathbb{C})^{\mathrm{an}})$; (2) $\ell$-adic: $H_i^{\mathrm{BM}}(X)
+    = H^{-i}(X, \omega_X)$; (3) Motivic / Chow: $H_{2i}^{\mathrm{BM}}(X, \mathbb{Z}(i)) \cong \mathrm{CH}_i(X)$;
+    (4) $G$-theory: $G_0(X) = K_0(\mathbf{Coh}(X))$; (5) Algebraic cobordism: $\Omega_*(X)$ via Voevodsky''s
+    cobordism spectrum $\mathbf{MGL}$, which interpolates between $\mathrm{CH}_*(X)$ and $G_0(X)$.'
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: 'classify many borel-moore type theories? (1) topological: $h_*^{\mathrm{bm}}(x(\mathbb{c})^{\mathrm{an}})$;
+    (2) $\ell$-adic: $h_i^{\mathrm{bm}}(x) = h^{-i}(x, \omega_x)$; (3) motivic / chow: $h_{2i}^{\mathrm{bm}}(x,
+    \mathbb{z}(i)) \cong \mathrm{ch}_i(x)$; (4) $g$-theory: $g_0(x) = k_0(\mathbf{coh}(x))$; (5) algebraic
+    cobordism: $\omega_*(x)$ via voevodsky''s cobordism spectrum $\mathbf{mgl}$, which interpolates between
+    $\mathrm{ch}_*(x)$ and $g_0(x)$.'
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#005
+  text: How does one study $G$-theory?
+  hint: As the algebraic $K$-theory of coherent sheaves $K(\mathbf{Coh}(X))$. It behaves as a homology
+    theory with proper pushforwards, whereas $K$-theory of vector bundles $K(\mathbf{Perf}(X))$ behaves
+    like cohomology with arbitrary pullbacks.
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 1
+  search_text: how does one study $g$-theory? as the algebraic $k$-theory of coherent sheaves $k(\mathbf{coh}(x))$.
+    it behaves as a homology theory with proper pushforwards, whereas $k$-theory of vector bundles $k(\mathbf{perf}(x))$
+    behaves like cohomology with arbitrary pullbacks.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#006
+  text: Write down the implication of Chow's moving lemma in Chow homology for the intersection product?
+  hint: Any two cycles can be moved into proper intersection, yielding $[Y] \cdot [Z] = \sum_\alpha i(W_\alpha,
+    Y \cdot Z; X) [W_\alpha]$, where the multiplicities $i(W_\alpha, Y \cdot Z; X) = \sum_k (-1)^k \mathrm{length}_{\mathcal{O}_{X,
+    W_\alpha}}(\mathrm{Tor}_k^{\mathcal{O}_{X, W_\alpha}}(\mathcal{O}_{Y, W_\alpha}, \mathcal{O}_{Z, W_\alpha}))$
+    are given by Serre's Tor-formula.
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: write down the implication of chow's moving lemma in chow homology for the intersection
+    product? any two cycles can be moved into proper intersection, yielding $[y] \cdot [z] = \sum_\alpha
+    i(w_\alpha, y \cdot z; x) [w_\alpha]$, where the multiplicities $i(w_\alpha, y \cdot z; x) = \sum_k
+    (-1)^k \mathrm{length}_{\mathcal{o}_{x, w_\alpha}}(\mathrm{tor}_k^{\mathcal{o}_{x, w_\alpha}}(\mathcal{o}_{y,
+    w_\alpha}, \mathcal{o}_{z, w_\alpha}))$ are given by serre's tor-formula.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#007
+  text: Apart from using Chow's moving lemma, state another result one can using derived algebraic geometry
+    to get non-transverse intersection theory?
+  hint: Form the derived intersection $Y \times_X^{\mathbf{R}} Z = \mathbf{Spec}_X(\mathcal{O}_Y \otimes_{\mathcal{O}_X}^{\mathbf{L}}
+    \mathcal{O}_Z)$. It is quasi-smooth and carries a virtual fundamental class $[Y \times_X^{\mathbf{R}}
+    Z]^{\mathrm{vir}}$ such that $[Y] \cdot [Z] = [Y \times_X^{\mathbf{R}} Z]^{\mathrm{vir}}$, recovering
+    Serre's Tor-formula without moving cycles.
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 1
+  search_text: apart from using chow's moving lemma, state another result one can using derived algebraic
+    geometry to get non-transverse intersection theory? form the derived intersection $y \times_x^{\mathbf{r}}
+    z = \mathbf{spec}_x(\mathcal{o}_y \otimes_{\mathcal{o}_x}^{\mathbf{l}} \mathcal{o}_z)$. it is quasi-smooth
+    and carries a virtual fundamental class $[y \times_x^{\mathbf{r}} z]^{\mathrm{vir}}$ such that $[y]
+    \cdot [z] = [y \times_x^{\mathbf{r}} z]^{\mathrm{vir}}$, recovering serre's tor-formula without moving
+    cycles.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#008
+  text: What are the sheaf theories of finite type one considers? How does one invent the notion?
+  hint: Topological $\mathcal{D}(X^{\mathrm{an}})$, étale $D_{\text{ét}}(X, \Lambda)$, and motivic $\mathcal{DM}(X)$.
+    Invented to provide a stable $\infty$-categorical coefficient system $D(X)$ satisfying the full Grothendieck
+    six-operation formalism.
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 2
+  search_text: what are the sheaf theories of finite type one considers? how does one invent the notion?
+    topological $\mathcal{d}(x^{\mathrm{an}})$, étale $d_{\text{ét}}(x, \lambda)$, and motivic $\mathcal{dm}(x)$.
+    invented to provide a stable $\infty$-categorical coefficient system $d(x)$ satisfying the full grothendieck
+    six-operation formalism.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#009
+  text: State the pushforward and pullback adjunction in the six operation. How does one invent the notion?
+  hint: Standard adjunction $f^* \colon D(Y) \rightleftarrows D(X) \colon f_*$ and exceptional adjunction
+    $f_! \colon D(X) \rightleftarrows D(Y) \colon f^!$. Invented because $f^*$ preserves colimits (hence
+    has right adjoint $f_*$) and compactly supported integration $f_!$ preserves colimits (hence has right
+    adjoint $f^!$).
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: state the pushforward and pullback adjunction in the six operation. how does one invent
+    the notion? standard adjunction $f^* \colon d(y) \rightleftarrows d(x) \colon f_*$ and exceptional
+    adjunction $f_! \colon d(x) \rightleftarrows d(y) \colon f^!$. invented because $f^*$ preserves colimits
+    (hence has right adjoint $f_*$) and compactly supported integration $f_!$ preserves colimits (hence
+    has right adjoint $f^!$).
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#010
+  text: What requirement is needed for any morphism for compactly supported variants? How does one invent
+    the notion?
+  hint: The morphism $f$ must be compactifiable/of finite type, factoring as an open immersion followed
+    by a proper map $X \xrightarrow{j} \overline{X} \xrightarrow{p} Y$, so $f_! := p_* \circ j_!$.
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 1
+  search_text: what requirement is needed for any morphism for compactly supported variants? how does
+    one invent the notion? the morphism $f$ must be compactifiable/of finite type, factoring as an open
+    immersion followed by a proper map $x \xrightarrow{j} \overline{x} \xrightarrow{p} y$, so $f_! :=
+    p_* \circ j_!$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#011
+  text: What are the compatabilities associated with tensor products and internal hom? State these formulas
+    in full. How does one invent the notion?
+  hint: 'Projection formula: $f_!(\mathcal{F} \otimes f^*\mathcal{G}) \simeq f_!(\mathcal{F}) \otimes
+    \mathcal{G}$. Base change formula for Cartesian squares: $g^* f_! \simeq (f'')_! (g'')^*$ and $f^!
+    g_* \simeq (g'')_* (f'')^!$. Invented to encode that integration commutes with base change and module
+    actions.'
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 2
+  search_text: 'what are the compatabilities associated with tensor products and internal hom? state these
+    formulas in full. how does one invent the notion? projection formula: $f_!(\mathcal{f} \otimes f^*\mathcal{g})
+    \simeq f_!(\mathcal{f}) \otimes \mathcal{g}$. base change formula for cartesian squares: $g^* f_!
+    \simeq (f'')_! (g'')^*$ and $f^! g_* \simeq (g'')_* (f'')^!$. invented to encode that integration
+    commutes with base change and module actions.'
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#012
+  text: State the condition and definition for the "forget supports" map
+  hint: The canonical transformation $\alpha_f \colon f_! \to f_*$ is defined by compactification; it
+    is an isomorphism if and only if $f$ is proper.
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 3
+  search_text: state the condition and definition for the "forget supports" map the canonical transformation
+    $\alpha_f \colon f_! \to f_*$ is defined by compactification; it is an isomorphism if and only if
+    $f$ is proper.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#013
+  text: State the definition of a scheme of finite type. How does one invent the notion?
+  hint: A scheme covered by finitely many affines $\mathbf{Spec}(A_i)$ with each $A_i$ a finitely generated
+    $k$-algebra. Invented to formalize geometries cut out by finitely many polynomial equations.
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 4
+  search_text: state the definition of a scheme of finite type. how does one invent the notion? a scheme
+    covered by finitely many affines $\mathbf{spec}(a_i)$ with each $a_i$ a finitely generated $k$-algebra.
+    invented to formalize geometries cut out by finitely many polynomial equations.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#014
+  text: State the definition of the derived global sections of an object in the derived category. How
+    does one invent the notion?
+  hint: $\mathbf{R}\Gamma(X, \mathcal{F}) := (a_X)_*(\mathcal{F}) \in D(\mathbf{Spec}(k))$, where $a_X
+    \colon X \to \mathbf{Spec}(k)$ is the structure map. Invented as the right adjoint to the constant
+    pullback functor.
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 5
+  search_text: state the definition of the derived global sections of an object in the derived category.
+    how does one invent the notion? $\mathbf{r}\gamma(x, \mathcal{f}) := (a_x)_*(\mathcal{f}) \in d(\mathbf{spec}(k))$,
+    where $a_x \colon x \to \mathbf{spec}(k)$ is the structure map. invented as the right adjoint to the
+    constant pullback functor.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#015
+  text: 'State the definition for the cohomology of a scheme of finite type over a field $k$ given $a:
+    X \rightarrow \mathrm{Spec}(k)$ for the structural morphism. How does one invent the notion?'
+  hint: $C^\bullet(X) := (a_X)_*(\mathbf{1}_X)$, with $H^i(X) = \pi_{-i} C^\bullet(X)$. Invented as derived
+    sections of the monoidal unit.
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 6
+  search_text: 'state the definition for the cohomology of a scheme of finite type over a field $k$ given
+    $a: x \rightarrow \mathrm{spec}(k)$ for the structural morphism. how does one invent the notion? $c^\bullet(x)
+    := (a_x)_*(\mathbf{1}_x)$, with $h^i(x) = \pi_{-i} c^\bullet(x)$. invented as derived sections of
+    the monoidal unit.'
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#016
+  text: State the definition of a structural morphism. How does one invent the notion?
+  hint: The canonical projection $a_X \colon X \to \mathbf{Spec}(k)$, representing $X$ as a family over
+    the base point.
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: state the definition of a structural morphism. how does one invent the notion? the canonical
+    projection $a_x \colon x \to \mathbf{spec}(k)$, representing $x$ as a family over the base point.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#017
+  text: State the definition of a dualising complex for a scheme of finite type in terms of a structural
+    morphism. How does one invent the notion?
+  hint: $\omega_X := a_X^!(\mathbf{1}_{\mathbf{Spec}(k)})$. Invented as the representing object for the
+    Verdier dual of compactly supported sections.
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 1
+  search_text: state the definition of a dualising complex for a scheme of finite type in terms of a structural
+    morphism. how does one invent the notion? $\omega_x := a_x^!(\mathbf{1}_{\mathbf{spec}(k)})$. invented
+    as the representing object for the verdier dual of compactly supported sections.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#018
+  text: State the definition of Borel-Moore homology. And the relative version. How does one invent the
+    notion?
+  hint: 'Absolute: $C_\bullet^{\mathrm{BM}}(X) := (a_X)_* a_X^!(\mathbf{1}_k) = \mathbf{R}\Gamma(X, \omega_X)$,
+    $H_i^{\mathrm{BM}}(X) = H^{-i}(X, \omega_X)$. Relative to $f \colon X \to S$: $C_\bullet^{\mathrm{BM}}(X/S)
+    := f_* f^!(\mathbf{1}_S) \in D(S)$.'
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 2
+  search_text: 'state the definition of borel-moore homology. and the relative version. how does one invent
+    the notion? absolute: $c_\bullet^{\mathrm{bm}}(x) := (a_x)_* a_x^!(\mathbf{1}_k) = \mathbf{r}\gamma(x,
+    \omega_x)$, $h_i^{\mathrm{bm}}(x) = h^{-i}(x, \omega_x)$. relative to $f \colon x \to s$: $c_\bullet^{\mathrm{bm}}(x/s)
+    := f_* f^!(\mathbf{1}_s) \in d(s)$.'
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#019
+  text: State the canonical isomorphism in the motivic case using Bloch linearised higher Chow groups.
+    How does one invent the notion?
+  hint: $H_{2j}^{\mathrm{BM}}(X_{\mathrm{mot}}, \mathbb{Z}(j)) \cong \mathrm{CH}_j(X)$ and $H_i^{\mathrm{BM}}(X_{\mathrm{mot}},
+    \Lambda(j)) \cong \mathrm{CH}_j(X, i-2j; \Lambda)$, identifying motivic Borel-Moore homology with
+    Bloch's higher Chow complexes.
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 3
+  search_text: state the canonical isomorphism in the motivic case using bloch linearised higher chow
+    groups. how does one invent the notion? $h_{2j}^{\mathrm{bm}}(x_{\mathrm{mot}}, \mathbb{z}(j)) \cong
+    \mathrm{ch}_j(x)$ and $h_i^{\mathrm{bm}}(x_{\mathrm{mot}}, \lambda(j)) \cong \mathrm{ch}_j(x, i-2j;
+    \lambda)$, identifying motivic borel-moore homology with bloch's higher chow complexes.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#020
+  text: Does Borel-Moore homology have proper pushforwards? State the definition of proper pushforwards?
+    How does one invent the notion?
+  hint: Yes. For proper $f$, $f_! \simeq f_*$, so the counit $\mathrm{Tr}_f \colon f_* f^! \to \mathrm{id}$
+    induces $f_* \colon (a_X)_* a_X^! \mathbf{1} \simeq (a_Y)_* f_* f^! a_Y^! \mathbf{1} \to (a_Y)_* a_Y^!
+    \mathbf{1}$.
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 4
+  search_text: does borel-moore homology have proper pushforwards? state the definition of proper pushforwards?
+    how does one invent the notion? yes. for proper $f$, $f_! \simeq f_*$, so the counit $\mathrm{tr}_f
+    \colon f_* f^! \to \mathrm{id}$ induces $f_* \colon (a_x)_* a_x^! \mathbf{1} \simeq (a_y)_* f_* f^!
+    a_y^! \mathbf{1} \to (a_y)_* a_y^! \mathbf{1}$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#021
+  text: State the definition of a fundamental class for $X$ smooth of relative dimension $d$? Why are
+    these conditions needed? How does one invent the notion?
+  hint: By purity, $f^!\mathbf{1}_S \simeq \mathbf{1}_X(d)[2d]$; the fundamental class is the image of
+    $\mathrm{id}$ under $\mathrm{Hom}(\mathbf{1}_X, \mathbf{1}_X) \xrightarrow{\sim} \mathrm{Hom}(\mathbf{1}_X,
+    f^!\mathbf{1}_S(-d)[-2d])$. Smoothness is needed so the cotangent complex is locally free.
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 5
+  search_text: state the definition of a fundamental class for $x$ smooth of relative dimension $d$? why
+    are these conditions needed? how does one invent the notion? by purity, $f^!\mathbf{1}_s \simeq \mathbf{1}_x(d)[2d]$;
+    the fundamental class is the image of $\mathrm{id}$ under $\mathrm{hom}(\mathbf{1}_x, \mathbf{1}_x)
+    \xrightarrow{\sim} \mathrm{hom}(\mathbf{1}_x, f^!\mathbf{1}_s(-d)[-2d])$. smoothness is needed so
+    the cotangent complex is locally free.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#022
+  text: State the conditions and requirements for a Gysin map for relative fundamental class. How does
+    one invent the notion?
+  hint: For $f \colon X \to Y$ smooth of dimension $d$, purity gives $f^! \omega_Y \simeq f^* \omega_Y(d)[2d]$,
+    inducing $f^! \colon C_\bullet^{\mathrm{BM}}(Y)(d)[2d] \to C_\bullet^{\mathrm{BM}}(X)$.
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: state the conditions and requirements for a gysin map for relative fundamental class. how
+    does one invent the notion? for $f \colon x \to y$ smooth of dimension $d$, purity gives $f^! \omega_y
+    \simeq f^* \omega_y(d)[2d]$, inducing $f^! \colon c_\bullet^{\mathrm{bm}}(y)(d)[2d] \to c_\bullet^{\mathrm{bm}}(x)$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#023
+  text: State the definition of a relative Poincare duality isomorphism? How does one invent the notion?
+  hint: For smooth $f \colon X \to S$ of dimension $d$, the cap product $-\cap [X/S] \colon f_*(\mathbf{1}_X)(d)[2d]
+    \xrightarrow{\sim} f_* f^!(\mathbf{1}_S) = C_\bullet^{\mathrm{BM}}(X/S)$ is an equivalence in $D(S)$.
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 1
+  search_text: state the definition of a relative poincare duality isomorphism? how does one invent the
+    notion? for smooth $f \colon x \to s$ of dimension $d$, the cap product $-\cap [x/s] \colon f_*(\mathbf{1}_x)(d)[2d]
+    \xrightarrow{\sim} f_* f^!(\mathbf{1}_s) = c_\bullet^{\mathrm{bm}}(x/s)$ is an equivalence in $d(s)$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#024
+  text: State the exact distinguished triangle and the conditions for the property of localisation? How
+    does one invent the notion?
+  hint: For closed immersion $i \colon Z \hookrightarrow X$ with complement open immersion $j \colon U
+    \hookrightarrow X$, there is a fiber sequence $i_* \omega_Z \to \omega_X \to j_* \omega_U$, yielding
+    the exact localization triangle $C_\bullet^{\mathrm{BM}}(Z) \xrightarrow{i_*} C_\bullet^{\mathrm{BM}}(X)
+    \xrightarrow{j^*} C_\bullet^{\mathrm{BM}}(U) \xrightarrow{+1}$.
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 2
+  search_text: state the exact distinguished triangle and the conditions for the property of localisation?
+    how does one invent the notion? for closed immersion $i \colon z \hookrightarrow x$ with complement
+    open immersion $j \colon u \hookrightarrow x$, there is a fiber sequence $i_* \omega_z \to \omega_x
+    \to j_* \omega_u$, yielding the exact localization triangle $c_\bullet^{\mathrm{bm}}(z) \xrightarrow{i_*}
+    c_\bullet^{\mathrm{bm}}(x) \xrightarrow{j^*} c_\bullet^{\mathrm{bm}}(u) \xrightarrow{+1}$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#025
+  text: State the property of descent for cases of Zariski or Nisnevich covers. What is the homotopy limit
+    diagram? What are the conditions? How does one invent the notion?
+  hint: 'Cohomology satisfies descent: for a hypercover $U_\bullet \to X$, $C^\bullet(X) \xrightarrow{\sim}
+    \mathrm{holim}_{[n] \in \mathbf{\Delta}} C^\bullet(U_n)$. Invented to compute global invariants by
+    gluing local sections.'
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 3
+  search_text: 'state the property of descent for cases of zariski or nisnevich covers. what is the homotopy
+    limit diagram? what are the conditions? how does one invent the notion? cohomology satisfies descent:
+    for a hypercover $u_\bullet \to x$, $c^\bullet(x) \xrightarrow{\sim} \mathrm{holim}_{[n] \in \mathbf{\delta}}
+    c^\bullet(u_n)$. invented to compute global invariants by gluing local sections.'
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#026
+  text: State the property of codescent for cases of Zariski or Nisnevich covers. What is the homotopy
+    colimit diagram? What are the conditions? How does one invent the notion?
+  hint: 'Borel-Moore homology satisfies codescent: $\mathrm{hocolim}_{[n] \in \mathbf{\Delta}^{\mathrm{op}}}
+    C_\bullet^{\mathrm{BM}}(U_n) \xrightarrow{\sim} C_\bullet^{\mathrm{BM}}(X)$ for proper covers or Nisnevich
+    hypercovers. Invented as the homological dual to sheaf descent.'
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 4
+  search_text: 'state the property of codescent for cases of zariski or nisnevich covers. what is the
+    homotopy colimit diagram? what are the conditions? how does one invent the notion? borel-moore homology
+    satisfies codescent: $\mathrm{hocolim}_{[n] \in \mathbf{\delta}^{\mathrm{op}}} c_\bullet^{\mathrm{bm}}(u_n)
+    \xrightarrow{\sim} c_\bullet^{\mathrm{bm}}(x)$ for proper covers or nisnevich hypercovers. invented
+    as the homological dual to sheaf descent.'
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#027
+  text: State the definition of a stack? How does one invent the notion?
+  hint: A pseudofunctor (or $\infty$-functor) $\mathcal{X} \colon \mathbf{Aff}^{\mathrm{op}} \to \mathbf{Grpd}$
+    satisfying effective descent along a Grothendieck topology. Invented to parametrize geometric objects
+    with nontrivial automorphisms.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: state the definition of a stack? how does one invent the notion? a pseudofunctor (or $\infty$-functor)
+    $\mathcal{x} \colon \mathbf{aff}^{\mathrm{op}} \to \mathbf{grpd}$ satisfying effective descent along
+    a grothendieck topology. invented to parametrize geometric objects with nontrivial automorphisms.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#028
+  text: State the definition of an Artin stack? How does one invent the notion?
+  hint: A stack $\mathcal{X}$ with representable, smooth diagonal $\mathcal{X} \to \mathcal{X} \times
+    \mathcal{X}$, admitting a smooth surjective atlas $U \to \mathcal{X}$ from a scheme $U$. Invented
+    to do differential/algebraic geometry on quotient spaces by non-finite groups.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 1
+  search_text: state the definition of an artin stack? how does one invent the notion? a stack $\mathcal{x}$
+    with representable, smooth diagonal $\mathcal{x} \to \mathcal{x} \times \mathcal{x}$, admitting a
+    smooth surjective atlas $u \to \mathcal{x}$ from a scheme $u$. invented to do differential/algebraic
+    geometry on quotient spaces by non-finite groups.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#029
+  text: State the definition of a Deligne-Mumford stack? How does one invent the notion?
+  hint: A stack admitting an étale surjective atlas $U \to \mathcal{X}$, equivalently having unramified/discrete
+    automorphism groups. Invented to parametrize objects without infinitesimal automorphisms, such as
+    stable curves $\overline{\mathcal{M}}_g$.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 2
+  search_text: state the definition of a deligne-mumford stack? how does one invent the notion? a stack
+    admitting an étale surjective atlas $u \to \mathcal{x}$, equivalently having unramified/discrete automorphism
+    groups. invented to parametrize objects without infinitesimal automorphisms, such as stable curves
+    $\overline{\mathcal{m}}_g$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#030
+  text: State the definition of a stack for the case of an infinity category? How does one invent the
+    notion?
+  hint: An $\infty$-functor $\mathcal{X} \colon \mathbf{CAlg}_k \to \mathcal{S}$ to the $\infty$-category
+    of spaces/$\infty$-groupoids satisfying $\infty$-sheaf descent for the étale topology.
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: state the definition of a stack for the case of an infinity category? how does one invent
+    the notion? an $\infty$-functor $\mathcal{x} \colon \mathbf{calg}_k \to \mathcal{s}$ to the $\infty$-category
+    of spaces/$\infty$-groupoids satisfying $\infty$-sheaf descent for the étale topology.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#031
+  text: State the definition of the Borel-Moore homology of an Artin stack using infinity stacks? How
+    does one invent the notion?
+  hint: For an Artin stack $\mathcal{X}$ presented by a smooth simplicial scheme atlas $U_\bullet \to
+    \mathcal{X}$, $C_\bullet^{\mathrm{BM}}(\mathcal{X}) := \mathrm{hocolim}_{[n] \in \mathbf{\Delta}^{\mathrm{op}}}
+    C_\bullet^{\mathrm{BM}}(U_n)(-d_n)[-2d_n]$, where $d_n$ is the relative dimension of $U_n \to \mathcal{X}$.
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 1
+  search_text: state the definition of the borel-moore homology of an artin stack using infinity stacks?
+    how does one invent the notion? for an artin stack $\mathcal{x}$ presented by a smooth simplicial
+    scheme atlas $u_\bullet \to \mathcal{x}$, $c_\bullet^{\mathrm{bm}}(\mathcal{x}) := \mathrm{hocolim}_{[n]
+    \in \mathbf{\delta}^{\mathrm{op}}} c_\bullet^{\mathrm{bm}}(u_n)(-d_n)[-2d_n]$, where $d_n$ is the
+    relative dimension of $u_n \to \mathcal{x}$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#032
+  text: State the definition of the cohomology of an Artin stack using infinity stacks? How does one invent
+    the notion?
+  hint: $C^\bullet(\mathcal{X}) := \mathrm{holim}_{[n] \in \mathbf{\Delta}} C^\bullet(U_n) = \mathbf{R}\Gamma(\mathcal{X},
+    \mathbf{1}_{\mathcal{X}})$.
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 2
+  search_text: state the definition of the cohomology of an artin stack using infinity stacks? how does
+    one invent the notion? $c^\bullet(\mathcal{x}) := \mathrm{holim}_{[n] \in \mathbf{\delta}} c^\bullet(u_n)
+    = \mathbf{r}\gamma(\mathcal{x}, \mathbf{1}_{\mathcal{x}})$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#033
+  text: What can one use to resolve objects in some nonabelian categories?
+  hint: Simplicial resolutions / simplicial objects in the category to construct nonabelian derived functors
+    in the sense of Quillen.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: what can one use to resolve objects in some nonabelian categories? simplicial resolutions
+    / simplicial objects in the category to construct nonabelian derived functors in the sense of quillen.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#034
+  text: What is homotopical algebra?
+  hint: Quillen's formalism of model categories and $\infty$-categories that allows doing homological
+    algebra in non-abelian settings by replacing isomorphisms with weak homotopy equivalences.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 1
+  search_text: what is homotopical algebra? quillen's formalism of model categories and $\infty$-categories
+    that allows doing homological algebra in non-abelian settings by replacing isomorphisms with weak
+    homotopy equivalences.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#035
+  text: How does one compute the Dold-Kan equivalence in the abelian case?
+  hint: The functor $N \colon s\mathbf{Ab} \xrightarrow{\sim} \mathrm{Ch}_{\ge 0}(\mathbf{Ab})$ sends
+    a simplicial abelian group $A_\bullet$ to its normalized chain complex $N(A)_n = \bigcap_{i=0}^{n-1}
+    \ker(d_i) \subset A_n$ with differential $d = (-1)^n d_n$.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 2
+  search_text: how does one compute the dold-kan equivalence in the abelian case? the functor $n \colon
+    s\mathbf{ab} \xrightarrow{\sim} \mathrm{ch}_{\ge 0}(\mathbf{ab})$ sends a simplicial abelian group
+    $a_\bullet$ to its normalized chain complex $n(a)_n = \bigcap_{i=0}^{n-1} \ker(d_i) \subset a_n$ with
+    differential $d = (-1)^n d_n$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#036
+  text: Define the notion of finite projective objects. How does one invent the notion?
+  hint: An object $P$ in an $\infty$-category $\mathcal{C}$ such that $\mathrm{Map}_{\mathcal{C}}(P, -)$
+    commutes with filtered colimits (finite/compact) and with geometric realizations/reflexive coequalizers
+    (projective).
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 3
+  search_text: define the notion of finite projective objects. how does one invent the notion? an object
+    $p$ in an $\infty$-category $\mathcal{c}$ such that $\mathrm{map}_{\mathcal{c}}(p, -)$ commutes with
+    filtered colimits (finite/compact) and with geometric realizations/reflexive coequalizers (projective).
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#037
+  text: Define rigorously an algebraic category using the definition of enough finite projective objects.
+    How does one invent the notion?
+  hint: A category $\mathcal{A}$ generated under filtered colimits and sifted colimits by a small subcategory
+    $\mathcal{A}_{\mathrm{fp}}$ of finite projective objects.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 4
+  search_text: define rigorously an algebraic category using the definition of enough finite projective
+    objects. how does one invent the notion? a category $\mathcal{a}$ generated under filtered colimits
+    and sifted colimits by a small subcategory $\mathcal{a}_{\mathrm{fp}}$ of finite projective objects.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#038
+  text: Define the nonabelian derived category of an algebraic category $\mathcal{A}$ as free generation
+    under? How does one invent the notion?
+  hint: $\mathcal{P}_\Sigma(\mathcal{A}_{\mathrm{fp}})$, the free completion of the finite projective
+    objects $\mathcal{A}_{\mathrm{fp}}$ under sifted colimits / simplicial homotopy colimits.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 5
+  search_text: define the nonabelian derived category of an algebraic category $\mathcal{a}$ as free generation
+    under? how does one invent the notion? $\mathcal{p}_\sigma(\mathcal{a}_{\mathrm{fp}})$, the free completion
+    of the finite projective objects $\mathcal{a}_{\mathrm{fp}}$ under sifted colimits / simplicial homotopy
+    colimits.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#039
+  text: Compute using the definition for the derived category of sets
+  hint: The finite projective objects in $\mathbf{Set}$ are finite sets; their sifted/simplicial completion
+    is the $\infty$-category of spaces $\mathcal{S} \simeq \mathbf{sSet}[\mathcal{W}^{-1}]$, so the nonabelian
+    derived category of sets is the $\infty$-category of homotopy types.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 6
+  search_text: compute using the definition for the derived category of sets the finite projective objects
+    in $\mathbf{set}$ are finite sets; their sifted/simplicial completion is the $\infty$-category of
+    spaces $\mathcal{s} \simeq \mathbf{sset}[\mathcal{w}^{-1}]$, so the nonabelian derived category of
+    sets is the $\infty$-category of homotopy types.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#040
+  text: Why is it the "good" or "finite projective objects" are the smooth schemes. Define smooth schemes.
+    How does one invent the notion?
+  hint: Smooth schemes are locally étale over affine space $\mathbb{A}^n$, meaning their coordinate algebras
+    are retracts of polynomial rings, making them projective generators for derived schemes.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 7
+  search_text: why is it the "good" or "finite projective objects" are the smooth schemes. define smooth
+    schemes. how does one invent the notion? smooth schemes are locally étale over affine space $\mathbb{a}^n$,
+    meaning their coordinate algebras are retracts of polynomial rings, making them projective generators
+    for derived schemes.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#041
+  text: How does one define the conormal complex for a derived Artin stack?
+  hint: For an immersion or morphism $f \colon X \to Y$, the conormal complex is the shifted relative
+    cotangent complex $N^*_{X/Y} := L_{X/Y}[-1]$.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: how does one define the conormal complex for a derived artin stack? for an immersion or
+    morphism $f \colon x \to y$, the conormal complex is the shifted relative cotangent complex $n^*_{x/y}
+    := l_{x/y}[-1]$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#042
+  text: How does one define the normal bundle of a derived Artin stack? What does it parameterise?
+  hint: The normal bundle/stack is $\mathbb{N}_{X/Y} := \mathbf{Spec}_X(\mathrm{Sym}_{\mathcal{O}_X}(L_{X/Y}[-1]))
+    = \mathbf{V}(N^*_{X/Y})$. It parameterizes derived normal deformations and cosections.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 1
+  search_text: how does one define the normal bundle of a derived artin stack? what does it parameterise?
+    the normal bundle/stack is $\mathbb{n}_{x/y} := \mathbf{spec}_x(\mathrm{sym}_{\mathcal{o}_x}(l_{x/y}[-1]))
+    = \mathbf{v}(n^*_{x/y})$. it parameterizes derived normal deformations and cosections.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#043
+  text: Define what does it mean for something to be of locally finite presentation?
+  hint: A morphism $f \colon X \to Y$ is locally of finite presentation if its functor of points commutes
+    with filtered colimits of commutative rings.
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 0
+  search_text: define what does it mean for something to be of locally finite presentation? a morphism
+    $f \colon x \to y$ is locally of finite presentation if its functor of points commutes with filtered
+    colimits of commutative rings.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#044
+  text: Define the relative cotangent complex of perfect Tor amplitude less than or equal to 1? Define
+    each term slowly. then all at once
+  hint: '(1) Perfect: $L_{X/Y}$ is locally quasi-isomorphic to a bounded complex of vector bundles; (2)
+    Tor amplitude in $[-1, 0]$: for any quasi-coherent module $M$, $H^i(L_{X/Y} \otimes^{\mathbf{L}} M)
+    = 0$ for $i \notin [-1, 0]$; (3) Together: $L_{X/Y}$ is locally represented by a two-term complex
+    of vector bundles $[E_{-1} \to E_0]$ concentrated in degrees $-1$ and $0$.'
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 1
+  search_text: 'define the relative cotangent complex of perfect tor amplitude less than or equal to 1?
+    define each term slowly. then all at once (1) perfect: $l_{x/y}$ is locally quasi-isomorphic to a
+    bounded complex of vector bundles; (2) tor amplitude in $[-1, 0]$: for any quasi-coherent module $m$,
+    $h^i(l_{x/y} \otimes^{\mathbf{l}} m) = 0$ for $i \notin [-1, 0]$; (3) together: $l_{x/y}$ is locally
+    represented by a two-term complex of vector bundles $[e_{-1} \to e_0]$ concentrated in degrees $-1$
+    and $0$.'
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#045
+  text: Define the notion of a quasi-smooth morphism of derived Artin stacks?
+  hint: A morphism $f \colon X \to Y$ locally of finite presentation whose relative cotangent complex
+    $L_{X/Y}$ has Tor-amplitude concentrated in $[-1, 0]$ (a derived local complete intersection).
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 2
+  search_text: define the notion of a quasi-smooth morphism of derived artin stacks? a morphism $f \colon
+    x \to y$ locally of finite presentation whose relative cotangent complex $l_{x/y}$ has tor-amplitude
+    concentrated in $[-1, 0]$ (a derived local complete intersection).
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#046
+  text: State the generalised Thom isomorphism and compute the Gysin map for the projection using the
+    virtual rank
+  hint: For a perfect complex $E$ of virtual rank $r$ on $X$, there is a Thom isomorphism $C_\bullet^{\mathrm{BM}}(\mathbf{V}(E))
+    \cong C_\bullet^{\mathrm{BM}}(X)(r)[2r]$, making the Gysin map of the zero section $s_0 \colon X \to
+    \mathbf{V}(E)$ an equivalence shifted by the virtual rank.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 0
+  search_text: state the generalised thom isomorphism and compute the gysin map for the projection using
+    the virtual rank for a perfect complex $e$ of virtual rank $r$ on $x$, there is a thom isomorphism
+    $c_\bullet^{\mathrm{bm}}(\mathbf{v}(e)) \cong c_\bullet^{\mathrm{bm}}(x)(r)[2r]$, making the gysin
+    map of the zero section $s_0 \colon x \to \mathbf{v}(e)$ an equivalence shifted by the virtual rank.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#047
+  text: Produce the Gysin map for quasi-smooth morphisms of relative virtual dimension using Borel-Moore
+    homology. How does one give rise to the relative virtual fundamental class from this definition?
+  hint: Factor $f \colon X \to Y$ through a smooth map followed by the zero section of a vector bundle;
+    the specialized Thom map gives $f^! \colon C_\bullet^{\mathrm{BM}}(Y)(d)[2d] \to C_\bullet^{\mathrm{BM}}(X)$
+    where $d = \mathrm{virdim}(f)$. The relative virtual class is $[X/Y]^{\mathrm{vir}} := f^!(\mathbf{1}_Y)$.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 1
+  search_text: produce the gysin map for quasi-smooth morphisms of relative virtual dimension using borel-moore
+    homology. how does one give rise to the relative virtual fundamental class from this definition? factor
+    $f \colon x \to y$ through a smooth map followed by the zero section of a vector bundle; the specialized
+    thom map gives $f^! \colon c_\bullet^{\mathrm{bm}}(y)(d)[2d] \to c_\bullet^{\mathrm{bm}}(x)$ where
+    $d = \mathrm{virdim}(f)$. the relative virtual class is $[x/y]^{\mathrm{vir}} := f^!(\mathbf{1}_y)$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#048
+  text: Why does the virtual fundamental class not satisfy Poincare duality in general?
+  hint: Because quasi-smooth derived stacks are generally singular as classical schemes; $L_X$ is not
+    a locally free sheaf concentrated in degree 0, so the purity isomorphism between $f^!$ and $f^*$ fails.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 2
+  search_text: why does the virtual fundamental class not satisfy poincare duality in general? because
+    quasi-smooth derived stacks are generally singular as classical schemes; $l_x$ is not a locally free
+    sheaf concentrated in degree 0, so the purity isomorphism between $f^!$ and $f^*$ fails.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#049
+  text: Compute the tangent bundle of a scheme or a Deligne-Mumford stack
+  hint: $T_X = \mathbf{Spec}_X(\mathrm{Sym}_{\mathcal{O}_X}(\Omega_X^1)) = \underline{\mathrm{Spec}}_X(\mathrm{Sym}(L_X))$.
+    For a classical smooth DM stack it is concentrated in degree 0; for a general DM stack it is the dual
+    complex $\mathbb{T}_X = L_X^\vee$.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 0
+  search_text: compute the tangent bundle of a scheme or a deligne-mumford stack $t_x = \mathbf{spec}_x(\mathrm{sym}_{\mathcal{o}_x}(\omega_x^1))
+    = \underline{\mathrm{spec}}_x(\mathrm{sym}(l_x))$. for a classical smooth dm stack it is concentrated
+    in degree 0; for a general dm stack it is the dual complex $\mathbb{t}_x = l_x^\vee$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#050
+  text: Define the virtual fundamental class. How does one invent the notion?
+  hint: For a quasi-smooth derived stack $X$ with virtual dimension $d$, $[X]^{\mathrm{vir}} := p^!([*])
+    \in H_{2d}^{\mathrm{BM}}(X, \mathbb{Z}(d))$, where $p \colon X \to \mathbf{Spec}(k)$ is the structure
+    map. Invented to assign an intrinsic cycle class of the expected dimension to moduli spaces with obstruction
+    theories.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 1
+  search_text: define the virtual fundamental class. how does one invent the notion? for a quasi-smooth
+    derived stack $x$ with virtual dimension $d$, $[x]^{\mathrm{vir}} := p^!([*]) \in h_{2d}^{\mathrm{bm}}(x,
+    \mathbb{z}(d))$, where $p \colon x \to \mathbf{spec}(k)$ is the structure map. invented to assign
+    an intrinsic cycle class of the expected dimension to moduli spaces with obstruction theories.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#051
+  text: State the functoriality theorem of the virtual fundamental class of derived Artin stacks. How
+    does one invent the notion?
+  hint: For composable quasi-smooth morphisms $X \xrightarrow{f} Y \xrightarrow{g} Z$, $(g \circ f)^!
+    = f^! \circ g^!$, hence $[X/Z]^{\mathrm{vir}} = f^!([Y/Z]^{\mathrm{vir}})$.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 2
+  search_text: state the functoriality theorem of the virtual fundamental class of derived artin stacks.
+    how does one invent the notion? for composable quasi-smooth morphisms $x \xrightarrow{f} y \xrightarrow{g}
+    z$, $(g \circ f)^! = f^! \circ g^!$, hence $[x/z]^{\mathrm{vir}} = f^!([y/z]^{\mathrm{vir}})$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#052
+  text: State the base change theorem of the virtual fundamental class of derived Artin stacks. How does
+    one invent the notion?
+  hint: Given a derived Cartesian square with $f$ quasi-smooth, the pullback $f'$ is quasi-smooth with
+    the same virtual dimension, and $g^* f^! \simeq (f')^! (g')^*$, so $g^* [X/Y]^{\mathrm{vir}} = [X'/Y']^{\mathrm{vir}}$.
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 0
+  search_text: state the base change theorem of the virtual fundamental class of derived artin stacks.
+    how does one invent the notion? given a derived cartesian square with $f$ quasi-smooth, the pullback
+    $f'$ is quasi-smooth with the same virtual dimension, and $g^* f^! \simeq (f')^! (g')^*$, so $g^*
+    [x/y]^{\mathrm{vir}} = [x'/y']^{\mathrm{vir}}$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#053
+  text: State the excess intersection theorem of the virtual fundamental class of derived Artin stacks.
+    How does one invent the notion?
+  hint: If $i \colon Y \hookrightarrow X$ is a classical regular immersion and $Z \hookrightarrow X$ is
+    a submanifold intersecting $Y$ with excess bundle $E = N_{Y/X}|_{Y \cap Z} / N_{Y \cap Z / Z}$, then
+    the derived intersection $Y \times_X^{\mathbf{R}} Z$ has $[Y \times_X^{\mathbf{R}} Z]^{\mathrm{vir}}
+    = c_{\mathrm{top}}(E) \cap [Y \cap Z]$.
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 1
+  search_text: state the excess intersection theorem of the virtual fundamental class of derived artin
+    stacks. how does one invent the notion? if $i \colon y \hookrightarrow x$ is a classical regular immersion
+    and $z \hookrightarrow x$ is a submanifold intersecting $y$ with excess bundle $e = n_{y/x}|_{y \cap
+    z} / n_{y \cap z / z}$, then the derived intersection $y \times_x^{\mathbf{r}} z$ has $[y \times_x^{\mathbf{r}}
+    z]^{\mathrm{vir}} = c_{\mathrm{top}}(e) \cap [y \cap z]$.
+- id: www-preschema-com-lecture-notes-cohdag2022-cohdag2022-pdf#054
+  text: State the non-transverse Bézout's theorem of the virtual fundamental class of derived Artin stacks.
+    How does one invent the notion?
+  hint: For closed subschemes $Y, Z \subset X$ with $X$ smooth, the derived intersection product satisfies
+    $[Y] \cdot [Z] = \iota_* [Y \times_X^{\mathbf{R}} Z]^{\mathrm{vir}} \in H_*^{\mathrm{BM}}(X)$, holding
+    unconditionally without moving lemmas.
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 2
+  search_text: state the non-transverse bézout's theorem of the virtual fundamental class of derived artin
+    stacks. how does one invent the notion? for closed subschemes $y, z \subset x$ with $x$ smooth, the
+    derived intersection product satisfies $[y] \cdot [z] = \iota_* [y \times_x^{\mathbf{r}} z]^{\mathrm{vir}}
+    \in h_*^{\mathrm{bm}}(x)$, holding unconditionally without moving lemmas.
