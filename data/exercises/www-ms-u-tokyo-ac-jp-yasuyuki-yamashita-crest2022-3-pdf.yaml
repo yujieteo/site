@@ -1,0 +1,238 @@
+url: https://www.ms.u-tokyo.ac.jp/~yasuyuki/yamashita-crest2022-3.pdf
+title: differential cohomology (Yamashita)
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#000
+  text: 'How does one define holonomy for a $U(1)$-connection? (Hint: $(L, \nabla) \rightarrow X$ be a
+    Hermitian line bundle, with $U(1)$-connection over a manifold. For a closed curve $f: S^1 \rightarrow
+    X$ in $X$, get holonomy in $\mathbb{R}/\mathbb{Z}$ which is isomorphic to $U(1)$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'how does one define holonomy for a $u(1)$-connection? (hint: $(l, \nabla) \rightarrow
+    x$ be a hermitian line bundle, with $u(1)$-connection over a manifold. for a closed curve $f: s^1
+    \rightarrow x$ in $x$, get holonomy in $\mathbb{r}/\mathbb{z}$ which is isomorphic to $u(1)$'
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#001
+  text: Why is the Chern-Simons invariant important?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: why is the chern-simons invariant important?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#002
+  text: Why is holonomy and the Chern-Simons invariant not topological invariants? Construct a counterexample
+    to the statement that they are topological invariants
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: why is holonomy and the chern-simons invariant not topological invariants? construct a
+    counterexample to the statement that they are topological invariants
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#003
+  text: Why does it follow that the field strength is integral? What does integral mean?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: why does it follow that the field strength is integral? what does integral mean?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#004
+  text: What is Dirac charge quantisation?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what is dirac charge quantisation?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#005
+  text: What values does one recover from holonomy?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what values does one recover from holonomy?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#006
+  text: What is the motivation for the object $\hat{x}$ that recovers to topological terms in the integral
+    $\int_{M^{n-1}} f^{*} \hat{x}$ that lives inside differential cohomology?
+  hint: you want it the integral to be a topological action in a field theory. Using ordinary cohomology
+    classes $x$, one loses all geometric information. If one uses only a differential form, one loses
+    global topology and torsion information. The cohomology class $\hat{x}$ has an underlying topological
+    class, a closed differential form that is usually integral, and a flat and holonomic part. This integral
+    therefore produces a gauge-invariant, geometrically refined topological term. This is what Chern-Simons
+    theory needs.
+  locator: null
+  sub_index: null
+  search_text: what is the motivation for the object $\hat{x}$ that recovers to topological terms in the
+    integral $\int_{m^{n-1}} f^{*} \hat{x}$ that lives inside differential cohomology? you want it the
+    integral to be a topological action in a field theory. using ordinary cohomology classes $x$, one
+    loses all geometric information. if one uses only a differential form, one loses global topology and
+    torsion information. the cohomology class $\hat{x}$ has an underlying topological class, a closed
+    differential form that is usually integral, and a flat and holonomic part. this integral therefore
+    produces a gauge-invariant, geometrically refined topological term. this is what chern-simons theory
+    needs.
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#007
+  text: How does one motivate the definition of a connection in differential geometry to detect cohomology
+    classes, in particular the first Chern class $c_1(L) = [i \Omega / 2 \pi]$ is in cohomology $H^2(X,
+    \mathbb{Z})$?
+  hint: with a connection, one can define the curvature, and recover it up to torsion. A line bundle is
+    a topological object, to compute characteristics via local invariants, one must differentia locally.
+    The de Rham class only sees the real part of the integer Chern class, torsion is invisible to the
+    curvature alone, however, a connection detects the Chern class up to torsion. The torsion is recorded
+    by the holonomy or the information in the flat line bundle.
+  locator: null
+  sub_index: null
+  search_text: how does one motivate the definition of a connection in differential geometry to detect
+    cohomology classes, in particular the first chern class $c_1(l) = [i \omega / 2 \pi]$ is in cohomology
+    $h^2(x, \mathbb{z})$? with a connection, one can define the curvature, and recover it up to torsion.
+    a line bundle is a topological object, to compute characteristics via local invariants, one must differentia
+    locally. the de rham class only sees the real part of the integer chern class, torsion is invisible
+    to the curvature alone, however, a connection detects the chern class up to torsion. the torsion is
+    recorded by the holonomy or the information in the flat line bundle.
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#008
+  text: How is Dirac charge quantization related to curvature?
+  hint: condition on the curvature class. I do not understand this.
+  locator: null
+  sub_index: null
+  search_text: how is dirac charge quantization related to curvature? condition on the curvature class.
+    i do not understand this.
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#009
+  text: How does flat line bundles fail to recover the topology?
+  hint: take tensors with a connection such as $F =0$, taking tensor products with real cohomology means
+    the Chern class vanishes. A flat bundle can only see the torsion cohomology. Flatness is valuable
+    locallly, but it is not general enough to detect the topology of all line bundles.
+  locator: null
+  sub_index: null
+  search_text: how does flat line bundles fail to recover the topology? take tensors with a connection
+    such as $f =0$, taking tensor products with real cohomology means the chern class vanishes. a flat
+    bundle can only see the torsion cohomology. flatness is valuable locallly, but it is not general enough
+    to detect the topology of all line bundles.
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#010
+  text: Compute the holonomy of a trivial bundle $\mathbb{C} \times S^2 \rightarrow S^2$ that preserves
+    the trivial connection for $X = \mathbb{RP^2} = S/\mathbb{Z_2}$
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: compute the holonomy of a trivial bundle $\mathbb{c} \times s^2 \rightarrow s^2$ that preserves
+    the trivial connection for $x = \mathbb{rp^2} = s/\mathbb{z_2}$
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#011
+  text: How does holonomy $\mathrm{Hol}(L, \nabla)$ remember the isomorphism (= gauge equivalence, recall
+    that picking an isomorphism means one picks a gauge field)?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does holonomy $\mathrm{hol}(l, \nabla)$ remember the isomorphism (= gauge equivalence,
+    recall that picking an isomorphism means one picks a gauge field)?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#012
+  text: 'What values do holonomy recover for a flat connection? (Hint: The monodromy representation which
+    is $\pi_1(X) \rightarrow U(1)$, this is an element of $H^1(X, U(1)$. It also recovers the curvature
+    but I am not sure.)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what values do holonomy recover for a flat connection? (hint: the monodromy representation
+    which is $\pi_1(x) \rightarrow u(1)$, this is an element of $h^1(x, u(1)$. it also recovers the curvature
+    but i am not sure.)'
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#013
+  text: What is the condition for holonomy maps from $C^\infty(S^1, X) \rightarrow \mathbb{R/Z}$?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what is the condition for holonomy maps from $c^\infty(s^1, x) \rightarrow \mathbb{r/z}$?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#014
+  text: What is the motivation behind the Cheeger-Simons' definition of the second differential cohomology?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what is the motivation behind the cheeger-simons' definition of the second differential
+    cohomology?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#015
+  text: How does one invent the notion of isomorphism classes of vector bundles?
+  hint: allow for bundle isomorphisms, one can quotient out local trivialisations. These isomorphism classes
+    form a semigroup under direct sum. The Grothendieck group is the group completion of the semigroup
+    of isomorphism classes. This allows one to subtract bundles formally, this is useful for say, index
+    theorems.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of isomorphism classes of vector bundles? allow for bundle
+    isomorphisms, one can quotient out local trivialisations. these isomorphism classes form a semigroup
+    under direct sum. the grothendieck group is the group completion of the semigroup of isomorphism classes.
+    this allows one to subtract bundles formally, this is useful for say, index theorems.
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#016
+  text: How does one invent the notion of the relative $K^0$-group of $K^0(X,Y)$?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the relative $k^0$-group of $k^0(x,y)$?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#017
+  text: What is the Bunke-Schick axiom of differential cohomology?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what is the bunke-schick axiom of differential cohomology?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#018
+  text: What is the Hopkins-Singer model of differential cohomology?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: what is the hopkins-singer model of differential cohomology?
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#019
+  text: What is the basic dictionary between ordinary topology and differential cohomology for the first
+    Chern class?
+  hint: Line bundles
+  locator: null
+  sub_index: null
+  search_text: what is the basic dictionary between ordinary topology and differential cohomology for
+    the first chern class? line bundles
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#020
+  text: What is the basic dictionary between ordinary topology and differential cohomology for the closed
+    two form?
+  hint: Curvature
+  locator: null
+  sub_index: null
+  search_text: what is the basic dictionary between ordinary topology and differential cohomology for
+    the closed two form? curvature
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#021
+  text: What is the basic dictionary between ordinary topology and differential cohomology for the loops
+    around curve?
+  hint: Holonomy
+  locator: null
+  sub_index: null
+  search_text: what is the basic dictionary between ordinary topology and differential cohomology for
+    the loops around curve? holonomy
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#022
+  text: What is the basic dictionary between ordinary topology and differential cohomology for the flat
+    bundles?
+  hint: Kernel of curvature map. This is because one can think about the curvature map as some classification,
+    those that are killed off and mapped to zero correspond to flat bundles.
+  locator: null
+  sub_index: null
+  search_text: what is the basic dictionary between ordinary topology and differential cohomology for
+    the flat bundles? kernel of curvature map. this is because one can think about the curvature map as
+    some classification, those that are killed off and mapped to zero correspond to flat bundles.
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#023
+  text: What is the basic dictionary between ordinary topology and differential cohomology for the torsion
+    and integrality?
+  hint: the periods of the curvature form integrate to integers over cycles, capturing the quantisation
+    of fields in Physics.
+  locator: null
+  sub_index: null
+  search_text: what is the basic dictionary between ordinary topology and differential cohomology for
+    the torsion and integrality? the periods of the curvature form integrate to integers over cycles,
+    capturing the quantisation of fields in physics.
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#024
+  text: What is the basic dictionary between ordinary topology and differential cohomology for the torsion
+    and integrality?
+  hint: the periods of the curvature form integrate to integers over cycles, capturing the quantisation
+    of fields in Physics.
+  locator: null
+  sub_index: null
+  search_text: what is the basic dictionary between ordinary topology and differential cohomology for
+    the torsion and integrality? the periods of the curvature form integrate to integers over cycles,
+    capturing the quantisation of fields in physics.
+- id: www-ms-u-tokyo-ac-jp-yasuyuki-yamashita-crest2022-3-pdf#025
+  text: How does the first Pontrjagin number of 4-manifolds recover Chern-Simons theory?
+  hint: Differential Pontrjagin classes can be used to show that $SO(3)$ or $\mathbb{R}P^3$ with the usual
+    metric of constant curvature does not admit a conformal immersion in $\mathbb{R}^4$. See Chern, Shiing
+    Shen; Simons, James Characteristic forms and geometric invariants. Ann. of Math. (2) 99 (1974), 48–69
+  locator: null
+  sub_index: null
+  search_text: how does the first pontrjagin number of 4-manifolds recover chern-simons theory? differential
+    pontrjagin classes can be used to show that $so(3)$ or $\mathbb{r}p^3$ with the usual metric of constant
+    curvature does not admit a conformal immersion in $\mathbb{r}^4$. see chern, shiing shen; simons,
+    james characteristic forms and geometric invariants. ann. of math. (2) 99 (1974), 48–69

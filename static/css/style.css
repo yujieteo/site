@@ -1,25 +1,123 @@
+/* Atkinson Hyperlegible Mono: a free, monospace typeface purpose-built
+   by the Braille Institute for readers with low vision and dyslexia
+   (distinct letterforms, generous counters/spacing). Used as the site's
+   default typeface everywhere -- headings included -- with a plain
+   system monospace fallback chain if the web font fails to load. */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
-  /* Apple Palette */
-  --text: #1d1d1f;
-  --text-secondary: #424245;
-  --muted: #86868b;
-  --bg: #ffffff;
-  --bg-alt: #f5f5f7;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-soft: rgba(0, 113, 227, 0.08);
-  --border: #d2d2d7;
-  --border-subtle: #e5e5ea;
+  /* Light theme (default). Warm off-white rather than pure white, and
+     ink rather than pure black -- lower glare, easier for sustained
+     reading, which is the actual goal ("friendly to learning"). */
+  --text: #1c1b18;
+  --text-secondary: #3f3d38;
+  --muted: #66635c;
+  --bg: #fbfaf6;
+  --bg-alt: #f0eee7;
+  --accent: #0a5fb4;
+  --accent-hover: #0b6fd1;
+  --accent-soft: rgba(10, 95, 180, 0.1);
+  --border: #d8d4c8;
+  --border-subtle: #e7e3d8;
+  --focus-ring: #0a5fb4;
   --max-width: 780px;
 
-  /* Apple System Fonts */
-  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --serif: "New York", -apple-system-ui-serif, Georgia, "Times New Roman", serif;
-  --mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --mono: "Atkinson Hyperlegible Mono", "Cascadia Mono", "JetBrains Mono", "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+  /* Kept as an alias so nothing else in this file needs to change --
+     the whole site intentionally uses the monospace face everywhere,
+     for prose and numbers alike. */
+  --sans: var(--mono);
+  --serif: var(--mono);
+
+  /* Theme-aware helpers so nothing below has to hardcode a color that
+     would go wrong in dark mode: readable text to put on top of
+     --accent, a subtle hover wash, and a couple of scrim opacities. */
+  --accent-contrast: #ffffff;
+  --hover-wash: #e9e6db;
+  --scrim-soft: rgba(0, 0, 0, 0.05);
+  --scrim-softer: rgba(0, 0, 0, 0.03);
+  --panel-shadow: rgba(0, 0, 0, 0.16);
+}
+
+/* Dark theme: follows the visitor's OS/browser setting automatically,
+   no toggle. Soft dark rather than pure black, warm light text rather
+   than pure white, to keep long reading comfortable in both modes. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #ece9e2;
+    --text-secondary: #c9c5ba;
+    --muted: #9c988c;
+    --bg: #15161a;
+    --bg-alt: #1e2025;
+    --accent: #6fb2f2;
+    --accent-hover: #8ac0f5;
+    --accent-soft: rgba(111, 178, 242, 0.14);
+    --border: #35373d;
+    --border-subtle: #26282e;
+    --focus-ring: #6fb2f2;
+
+    /* --accent is a light blue in dark mode, so pair it with dark text
+       instead of white to keep the "active" state readable. */
+    --accent-contrast: #0b1420;
+    --hover-wash: #282a30;
+    --scrim-soft: rgba(255, 255, 255, 0.06);
+    --scrim-softer: rgba(255, 255, 255, 0.04);
+    --panel-shadow: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 * { 
   box-sizing: border-box; 
+}
+
+/* Utility: hide visually but keep available to screen readers. Used for
+   <label>s on inputs that already have a visible placeholder. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 12px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  z-index: 200;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Visible, consistent focus rings for every interactive element. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 html { 
@@ -34,9 +132,9 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.011em;
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: 0;
 }
 
 .wrap {
@@ -56,14 +154,14 @@ header.site-header h1 {
   font-size: 2.25rem;
   font-weight: 600;
   margin: 0 0 6px;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   color: var(--text);
 }
 
 header.site-header .subtitle {
   color: var(--muted);
   font-size: 1.05rem;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
 }
 
 nav.site-nav {
@@ -96,7 +194,7 @@ h2.section-title {
   font-family: var(--sans);
   font-size: 1.4rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   margin-top: 52px;
   margin-bottom: 18px;
   color: var(--text);
@@ -118,7 +216,7 @@ h2.section-title:first-of-type {
 .entry-title {
   font-weight: 600;
   font-size: 1.1rem;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
   margin-bottom: 4px;
   color: var(--text);
 }
@@ -137,47 +235,76 @@ h2.section-title:first-of-type {
 }
 
 .tag {
-  display: inline-block;
-  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
   font-family: var(--sans);
   font-weight: 500;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
   color: var(--text-secondary);
   background: var(--bg-alt);
   border: 1px solid transparent;
   border-radius: 980px;
-  padding: 3px 10px;
+  padding: 7px 12px;
+  /* Keep touch targets close to the 44px accessibility guideline even
+     though the label text itself is small. */
+  min-height: 36px;
   margin: 2px 6px 2px 0;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .tag:hover { 
-  background: #e8e8ed; 
+  background: var(--hover-wash); 
   color: var(--text);
 }
 
-.tag.active {
+.tag.active,
+.tag[aria-pressed="true"] {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--accent-contrast);
   border-color: var(--accent);
+}
+
+.tag.active .tag-count,
+.tag[aria-pressed="true"] .tag-count {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Numeric count badge on each tag button. Tabular-nums + mono keeps
+   digits a fixed width so counts line up when scanning a long list of
+   tags -- this is the "easy to judge" numeric alignment, always on
+   regardless of the monospace reading-mode toggle. */
+.tag-count {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--scrim-soft);
+  border-radius: 980px;
+  padding: 1px 6px;
 }
 
 .search-row {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
   margin-bottom: 16px;
 }
 
 .search-box {
   flex: 1;
+  min-height: 44px;
   font-family: var(--sans);
   font-size: 0.95rem;
   padding: 10px 14px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.02);
+  background: var(--scrim-softer);
   color: var(--text);
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
@@ -189,19 +316,114 @@ h2.section-title:first-of-type {
 
 .search-box:focus { 
   border-color: var(--accent); 
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15); /* Apple-style focus ring */
+  background: var(--bg);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.filters-toggle {
+  cursor: pointer;
+  min-height: 44px;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 16px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.filters-toggle:hover {
+  background: var(--hover-wash);
+  color: var(--text);
+}
+
+.filters-toggle.open,
+.filters-toggle[aria-expanded="true"] {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
 }
 
 .result-count { 
-  font-size: 0.8rem; 
+  font-size: 0.82rem; 
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
   color: var(--muted); 
   white-space: nowrap; 
 }
 
-.tag-filter-bar { 
-  margin-bottom: 26px; 
-  line-height: 2.2; 
+/* The dropdown tag panel. Self-contained (own width/max-height/
+   positioning) so it can't inherit a no-wrap / overflow-x-auto rule
+   from elsewhere and run off to the right. Deliberately compact: with
+   only the top few tags shown by default (see render_tag_bar's
+   show_first) the panel rarely needs to scroll at all; the cap here is
+   just a safety net for when a search reveals a lot of matches. */
+.tag-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: min(88vw, 300px);
+  max-height: 260px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--panel-shadow);
+  padding: 10px;
+  z-index: 50;
+}
+
+.tag-search-box {
+  display: block;
+  position: sticky;
+  top: -10px;
+  width: 100%;
+  min-height: 38px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  padding: 8px 10px;
+  margin: -10px -10px 8px;
+  width: calc(100% + 20px);
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 12px 12px 0 0;
+  background: var(--bg-alt);
+  color: var(--text);
+  outline: none;
+}
+
+.tag-search-box:focus {
+  background: var(--accent-soft);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.tag-panel-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+
+.tag-panel .tag {
+  font-size: 0.74rem;
+  padding: 5px 10px;
+  min-height: 30px;
+}
+
+/* Default (no-JS-yet / first paint) state: only the top tags are
+   visible, matching the JS-driven behavior once it runs, so there's no
+   flash of a huge tag list before filterTagButtons() executes. */
+.tag-panel-buttons .tag-extra {
+  display: none;
+}
+
+.tag-more-hint {
+  width: 100%;
+  margin: 6px 0 0;
+  font-size: 0.74rem;
+  color: var(--muted);
 }
 
 .entry.hidden { 
@@ -236,14 +458,5 @@ footer.site-footer {
 @media (max-width: 480px) {
   header.site-header h1 { font-size: 1.85rem; }
   nav.site-nav { flex-wrap: wrap; }
-}
-
-.filters-toggle {
-  cursor: pointer;
-}
-.filters-toggle.open { /* optional active-state styling */ }
-.tag-filter-bar {
-  flex-wrap: wrap;
-  gap: 0.4em;
-  margin: 0.5em 0 1em;
+  .tag-panel { width: min(94vw, 280px); }
 }

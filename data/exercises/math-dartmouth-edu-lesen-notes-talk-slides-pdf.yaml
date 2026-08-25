@@ -1,0 +1,50 @@
+url: https://math.dartmouth.edu/~lesen/notes/talk_slides.pdf
+title: Shimura varieties slides
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: math-dartmouth-edu-lesen-notes-talk-slides-pdf#000
+  text: How does one define multiplication by an imaginary number by defining an endomorphism?
+  hint: pick $J$ such that $J^2 = -1$
+  locator: null
+  sub_index: null
+  search_text: how does one define multiplication by an imaginary number by defining an endomorphism?
+    pick $j$ such that $j^2 = -1$
+- id: math-dartmouth-edu-lesen-notes-talk-slides-pdf#001
+  text: 'Fix a standard symplectic form $\psi$. Define $G = \mathrm{GSp}_2g(\mathbb{R})$. Show that the
+    standard Siegel modular variety $M := \{A + Bi \in \mathrm{Sym}_g(\mathbb{C}): B > 0\}$ is identified
+    with the description as a $G(\mathbb{R})$-conjugacy class of homomorphisms $h: \mathbb{S} \rightarrow
+    G_\mathbb{R}$ (from the Deligne torus). Show that with this identification, if the associated $M /
+    \Gamma(N)$ and $D/K(N)$ both parameterise abelian varieties with level $N$ structure for all $N$,
+    then the moduli functors are represented by the same variety'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'fix a standard symplectic form $\psi$. define $g = \mathrm{gsp}_2g(\mathbb{r})$. show
+    that the standard siegel modular variety $m := \{a + bi \in \mathrm{sym}_g(\mathbb{c}): b > 0\}$ is
+    identified with the description as a $g(\mathbb{r})$-conjugacy class of homomorphisms $h: \mathbb{s}
+    \rightarrow g_\mathbb{r}$ (from the deligne torus). show that with this identification, if the associated
+    $m / \gamma(n)$ and $d/k(n)$ both parameterise abelian varieties with level $n$ structure for all
+    $n$, then the moduli functors are represented by the same variety'
+- id: math-dartmouth-edu-lesen-notes-talk-slides-pdf#002
+  text: Define the unitary Shimura variety
+  hint: Write down the $I_{a,b}$ matrix?
+  locator: null
+  sub_index: null
+  search_text: define the unitary shimura variety write down the $i_{a,b}$ matrix?
+- id: math-dartmouth-edu-lesen-notes-talk-slides-pdf#003
+  text: How does one check and prove the axioms relevant to unitary Shimura varieties?
+  hint: SV1 to SV6
+  locator: null
+  sub_index: null
+  search_text: how does one check and prove the axioms relevant to unitary shimura varieties? sv1 to sv6
+- id: math-dartmouth-edu-lesen-notes-talk-slides-pdf#004
+  text: How does one motivate the Shimura variety axioms as presented by Pierre Deligne? What are the
+    defining conditions of a Shimura datum and why?
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one motivate the shimura variety axioms as presented by pierre deligne? what are
+    the defining conditions of a shimura datum and why?

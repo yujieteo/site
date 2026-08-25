@@ -1,4 +1,4 @@
-# academic-site
+# site
 
 A minimal, single-page personal site: a short bio plus a searchable,
 tag-filterable list of resource links, driven entirely from YAML data.

@@ -21,21 +21,25 @@
       </nav>
     </header>
     <main>
-      <p>This is the personal website of Yu Jie Teo. Broadly interested in mathematics, computing, physics, and engineering. This site is a collection of notes, references, and technical material to revisit and develop over time.
+      
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div id="main-content" tabindex="-1"><p>This is the personal website of Yu Jie Teo. Broadly interested in mathematics, computing, physics, and engineering. This site is a collection of notes, references, and technical material to revisit and develop over time.
 </p>
-    <div class="search-row" id="resource-filters-wrap" style="position:relative; display:flex; align-items:center; gap:0.6em; flex-wrap:wrap;">
-      <input type="text" id="resource-search" class="search-box" placeholder="Search title or note...">
-      <button type="button" id="resource-filters-toggle" class="filters-toggle">Filters</button>
-      <span class="result-count" id="resource-count">31 / 31</span>
+    <div class="search-row" id="resource-filters-wrap" style="position:relative;">
+      <label class="visually-hidden" for="resource-search">Search title or note...</label>
+      <input type="text" id="resource-search" class="search-box" placeholder="Search title or note..."
+             autocomplete="off">
+      <button type="button" id="resource-filters-toggle" class="filters-toggle"
+              aria-haspopup="true" aria-expanded="false" aria-controls="resource-tagbar">
+        Filters
+      </button>
+      <span class="result-count" id="resource-count" aria-live="polite" aria-atomic="true">31 / 31</span>
 
-      <div id="resource-tagbar"
-           style="display:none; position:absolute; top:calc(100% + 6px); left:0;
-                  width:min(90vw, 420px); max-height:320px; overflow-y:auto;
-                  flex-wrap:wrap; gap:0.4em; box-sizing:border-box;
-                  background:#fff; border:1px solid #ddd; border-radius:8px;
-                  box-shadow:0 8px 24px rgba(0,0,0,0.12); padding:0.7em;
-                  z-index:50;">
-        <button class="tag active" data-tag="__all__" type="button">all</button><button class="tag" data-tag="mathematics" type="button">mathematics</button><button class="tag" data-tag="computational" type="button">computational</button><button class="tag" data-tag="systems" type="button">systems</button><button class="tag" data-tag="architecture" type="button">architecture</button><button class="tag" data-tag="engineering" type="button">engineering</button><button class="tag" data-tag="math" type="button">math</button><button class="tag" data-tag="physics" type="button">physics</button>
+      <div id="resource-tagbar" class="tag-panel" role="group" aria-label="Filter by tag" style="display:none;">
+        <label class="visually-hidden" for="resource-tagsearch">Filter the tag list</label>
+        <input type="text" id="resource-tagsearch" class="tag-search-box"
+               placeholder="Find a tag..." autocomplete="off">
+        <div class="tag-panel-buttons"><button class="tag active" data-tag="__all__" type="button" aria-pressed="true">all <span class="tag-count">31</span></button><button class="tag" data-tag="mathematics" type="button" aria-pressed="false">mathematics <span class="tag-count">11</span></button><button class="tag" data-tag="computational" type="button" aria-pressed="false">computational <span class="tag-count">6</span></button><button class="tag" data-tag="systems" type="button" aria-pressed="false">systems <span class="tag-count">6</span></button><button class="tag" data-tag="architecture" type="button" aria-pressed="false">architecture <span class="tag-count">3</span></button><button class="tag" data-tag="engineering" type="button" aria-pressed="false">engineering <span class="tag-count">2</span></button><button class="tag" data-tag="math" type="button" aria-pressed="false">math <span class="tag-count">2</span></button><button class="tag" data-tag="physics" type="button" aria-pressed="false">physics <span class="tag-count">1</span></button></div>
       </div>
     </div>
     <div id="resource-list">
@@ -225,12 +229,13 @@
           <div><span class="tag" data-tag="computational">computational</span></div>
         </div>
         </div>
-    <div class="no-results" id="resource-noresults">No resources match your search.</div>
+    <div class="no-results" id="resource-noresults" role="status" aria-live="polite">No resources match your search.</div>
     
 <script>
 (function() {
   const searchBox = document.getElementById('resource-search');
   const tagBar = document.getElementById('resource-tagbar');
+  const tagSearch = document.getElementById('resource-tagsearch');
   const filtersToggle = document.getElementById('resource-filters-toggle');
   const entries = Array.from(document.querySelectorAll('#resource-list .entry[data-tags]'));
   const noResults = document.getElementById('resource-noresults');
@@ -257,18 +262,51 @@
   function setActiveTag(tag) {
     activeTag = tag;
     tagBar.querySelectorAll('button.tag').forEach(function(b) {
-      b.classList.toggle('active', b.dataset.tag === tag);
+      const isActive = b.dataset.tag === tag;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
     applyFilters();
+  }
+
+  // Filters the *list of tag buttons* inside the panel by label text --
+  // this is what makes a large tag set easy to find your way around,
+  // separate from the main search box which filters entries. With no
+  // query, only the default top tags (not marked tag-extra) show, plus
+  // the "+N more" hint; typing searches across every tag, including the
+  // ones hidden by default.
+  function filterTagButtons() {
+    if (!tagSearch) return;
+    const q = tagSearch.value.trim().toLowerCase();
+    tagBar.querySelectorAll('button.tag[data-tag]').forEach(function(b) {
+      if (b.dataset.tag === '__all__') return;
+      const label = (b.textContent || '').toLowerCase();
+      if (q === '') {
+        b.style.display = b.classList.contains('tag-extra') ? 'none' : '';
+      } else {
+        b.style.display = label.includes(q) ? '' : 'none';
+      }
+    });
+    const hint = tagBar.querySelector('.tag-more-hint');
+    if (hint) hint.style.display = q === '' ? '' : 'none';
   }
 
   function togglePanel(forceOpen) {
     panelOpen = typeof forceOpen === 'boolean' ? forceOpen : !panelOpen;
     tagBar.style.display = panelOpen ? 'flex' : 'none';
     filtersToggle.classList.toggle('open', panelOpen);
+    filtersToggle.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
+    if (panelOpen) {
+      const focusTarget = tagSearch || tagBar.querySelector('button.tag');
+      if (focusTarget) focusTarget.focus();
+    }
   }
 
   searchBox.addEventListener('input', applyFilters);
+
+  if (tagSearch) {
+    tagSearch.addEventListener('input', filterTagButtons);
+  }
 
   filtersToggle.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -282,11 +320,21 @@
     }
   });
 
+  // Close on Escape and return focus to the toggle button, and let
+  // keyboard users close the panel without a mouse.
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && panelOpen) {
+      togglePanel(false);
+      filtersToggle.focus();
+    }
+  });
+
   tagBar.addEventListener('click', function(e) {
     const btn = e.target.closest('button.tag');
     if (!btn) return;
     setActiveTag(btn.dataset.tag);
     togglePanel(false);
+    filtersToggle.focus();
   });
 
   document.getElementById('resource-list').addEventListener('click', function(e) {
@@ -297,10 +345,11 @@
   });
 
   applyFilters();
+  filterTagButtons();
 })();
 </script>
 
-    
+    </div>
 <script>
   window.MathJax = {
     tex: {
@@ -312,12 +361,25 @@
       // Don't try to typeset inside things like search boxes / inputs.
       skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
     },
-    svg: { fontCache: 'global' }
+    // A touch larger than MathJax's default, plus 'global' font caching:
+    // slightly bigger, evenly-spaced glyphs read more easily than the
+    // default size, especially next to the site's own body text.
+    svg: { fontCache: 'global', scale: 1.06 }
   };
 </script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
 </script>
+<style>
+  /* MathJax renders in solid black by default, which is unreadable
+     against the dark-mode background below -- make it follow the
+     page's text color in both themes instead of hardcoding one. Extra
+     vertical margin around display math gives it breathing room from
+     surrounding prose, which is easier to parse than text butted
+     right up against an equation. */
+  mjx-container { color: inherit; }
+  mjx-container[display="true"] { margin: 1em 0 !important; }
+</style>
 <script>
   // Re-typeset after the filter/search script mutates the DOM (e.g.
   // when entries are shown/hidden or tags are clicked), in case any
@@ -331,7 +393,7 @@
 
     </main>
     <footer class="site-footer">
-      Made with love.
+      Made with the assistance of AI.
     </footer>
   </div>
 </body>

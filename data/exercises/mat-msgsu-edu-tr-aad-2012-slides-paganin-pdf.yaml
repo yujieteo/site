@@ -66,8 +66,8 @@ exercises:
   text: What is the geometry significance of Hilbert's Theorem 90 and what is the purpose of the first
     Galois cohomology?
   hint: vector spaces descend uniquely from the finite Galois extension $K$ to the field $k$, and there
-    are no nontrivial $k$-forms of $K^n$. Note that this changes for other algebraic groups. For example,   the
-    projective linear group which classifies central simple algebras via the first Galois cohomology.
+    are no nontrivial $k$-forms of $K^n$. Note that this changes for other algebraic groups. For example,
+    the projective linear group which classifies central simple algebras via the first Galois cohomology.
     The orthogonal group classifies the quadratic forms. The unitary group classifies the hermitian forms.
     Therefore, the first Galois cohomology is used to classify forms.
   locator:
@@ -78,6 +78,6 @@ exercises:
   search_text: what is the geometry significance of hilbert's theorem 90 and what is the purpose of the
     first galois cohomology? vector spaces descend uniquely from the finite galois extension $k$ to the
     field $k$, and there are no nontrivial $k$-forms of $k^n$. note that this changes for other algebraic
-    groups. for example,   the projective linear group which classifies central simple algebras via the
+    groups. for example, the projective linear group which classifies central simple algebras via the
     first galois cohomology. the orthogonal group classifies the quadratic forms. the unitary group classifies
     the hermitian forms. therefore, the first galois cohomology is used to classify forms.
