@@ -4077,3 +4077,25 @@ https://people.maths.ox.ac.uk/joyce/VertexAlgebras2021/VA3+4.pdf, Vertex Algebra
 https://people.maths.ox.ac.uk/joyce/VertexAlgebras2021/VA5+6.pdf, Vertex Algebras Course 5-6. Lattice vertex algebras and the Monster vertex algebra $V^\natural$.
 
 https://people.maths.ox.ac.uk/joyce/VertexAlgebras2021/VA7+8.pdf, Vertex Algebras Course 7-8. Wall-crossing structures and vertex Lie algebras in Donaldson–Thomas
+
+https://math.dartmouth.edu/~lesen/notes/General_Shimura_Varieties_talk.pdf, Eran Assaf, General Shimura Varieties. Introduction to the category of abelian motives. Classification of Shimura varieties based on abelian type.
+
+https://math.dartmouth.edu/~lesen/notes/talk_slides_Aug17.pdf, Ben Breen, Shimura Varieties. Algebras with involutions. Hermitian forms. Introduction to Shimura datum.
+
+https://math.dartmouth.edu/~lesen/notes/ShimuraVarietiesCMBen.pdf, Ben Breen, Complex Multiplication in Shimura Varieties. Introduction to the main theorem of Shimura varieties. 
+
+https://math.dartmouth.edu/~lesen/notes/talk_slides_May29.pdf, Avi Kulkarni, PEL Shimura Varieties. Introduction to PEL Shimura Varieties. Introduction to PEL Shimura datum. Endomorphisms of elliptic curves.
+
+https://math.dartmouth.edu/~lesen/notes/talk_slides_Aug17.pdf, Avi Kulkarni, Uniqueness of Canonical Models. Shimura reciprocity and relation to complex multiplication. Transcendental Galois theory.
+
+http://numr.wdfiles.com/local--files/differential-cohomology/cheeger-simons.pdf, Jeff Cheeger, James Simons, Differential characters and geometric invariants. A classical non-sheaf theoretic approach to differential cohomology.
+
+https://arxiv.org/pdf/1310.7930.pdf, Urs Schreiber, Differential cohomology in a cohesive infinity-topos. Higher stack model of differential cohomology (similar to Brylinski's gerbes, but generalized to higher dimensions).
+
+https://arxiv.org/pdf/1208.3961, Ulrich Bunke, Differential cohomology. These course note first provide an introduction to secondary characteristic classes and differential cohomology. They continue with a presentation of a stable homotopy theoretic approach to the theory of differential extensions of generalized cohomology theories including products and Umkehr maps.
+
+https://arxiv.org/pdf/1605.03444.pdf, Hisham Sati, Spectral sequences in smooth generalized cohomology. Brief summary of Bunke's model for differential cohomology theories.
+
+https://math.mit.edu/juvitop/pastseminars/2019_Fall.html, Juvitop Seminar for differential cohomology. In Fall 2019, Juvitop was about Differential Cohomology. This seminar was organized by Araminta Amabel and Peter Haine.
+
+https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/Park.pdf, Yi Yu Zhang, Introduction to equivariant cohomology and the equivariant first Chern class. The goal of this paper to provide a relatively accessible and integrated introduction to the algebraic topology of spaces with Lie group actions, in both the smooth and the holomorphic category. We present detailed treatment of the basic constructions in equivariant de Rham theory and Dolbeault theory. We also discuss equivariant connections and curvature on vector bundles equipped with infinitesimal lifts, as well as the equivariant first Chern class of line bundles with inﬁnitesimal lifts. A novel feature of this presentation is the deﬁnition of infinitesimal lift via differential operators on the vector bundles.
