@@ -16,6 +16,7 @@ Pages also render LaTeX (via MathJax) so that any $...$ / $$...$$ or
 typeset in the browser.
 """
 
+import html
 import os
 import re
 from collections import Counter
@@ -27,6 +28,30 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 TEMPLATES = os.path.join(ROOT, "templates")
 OUT = os.path.join(ROOT, "site")
+
+
+def esc(value):
+    """Escape a value for safe interpolation into HTML text content or
+    a quoted HTML attribute.
+
+    Every piece of user/YAML-supplied data (titles, notes, exercise
+    text, hints, URLs, category/tag names, ...) gets spliced directly
+    into f-string HTML below. Without escaping, a single unescaped
+    `"`, `<`, `>`, or `&` in that data corrupts the surrounding tag or
+    attribute -- browsers still render the *visible* text just fine
+    (HTML5 parsing is very forgiving), which is why the page looks
+    correct at a glance, but the resulting DOM no longer matches what
+    was written here. In particular a broken `data-tags="..."` /
+    `data-search="..."` attribute means `element.dataset.tags` /
+    `.search` comes back empty or truncated in JS, so the live
+    filter/search silently stops matching that entry (and sometimes
+    ones after it) even though it's genuinely present in the page.
+
+    html.escape only touches & < > " ' -- it leaves $, \\, {{, }} etc.
+    alone, so LaTeX like $a < b$ or \\(x\\) still reaches MathJax
+    intact.
+    """
+    return html.escape("" if value is None else str(value), quote=True)
 
 
 # MathJax v3 configuration + loader. Injected on every page (see
@@ -252,7 +277,7 @@ def render_page(title, content, root="", tagline="", name="", nav_home="", nav_p
         + MATHJAX_SCRIPT
     )
     return base.format(
-        title=title, content=full_content, root=root, tagline=tagline, name=name,
+        title=esc(title), content=full_content, root=root, tagline=esc(tagline), name=esc(name),
         nav_home=nav_home, nav_papers=nav_papers, nav_exercises=nav_exercises,
     )
 
@@ -273,17 +298,24 @@ def render_tag_bar(sorted_tags, all_label="all", total=None, show_first=8):
     to screen readers (the "active" CSS class alone isn't exposed to
     assistive tech), and a tabular-nums count badge so people can see at
     a glance which tags are worth clicking.
+
+    tag_value/label are escaped here before going into the attribute /
+    text content; browsers decode entities back to the original string
+    when exposing them via `.dataset`/`.textContent`, so this is
+    transparent to the FILTER_SCRIPT JS above -- it's purely about
+    keeping the HTML well-formed when a category/tag name itself
+    contains `& < > " '` (rare, but happens, e.g. "Q&A" categories).
     """
     all_count = f' <span class="tag-count">{total}</span>' if total is not None else ""
     buttons = [
         f'<button class="tag active" data-tag="__all__" type="button" '
-        f'aria-pressed="true">{all_label}{all_count}</button>'
+        f'aria-pressed="true">{esc(all_label)}{all_count}</button>'
     ]
     for i, (tag, label, count) in enumerate(sorted_tags):
         extra_cls = " tag-extra" if i >= show_first else ""
         buttons.append(
-            f'<button class="tag{extra_cls}" data-tag="{tag}" type="button" aria-pressed="false">'
-            f'{label} <span class="tag-count">{count}</span></button>'
+            f'<button class="tag{extra_cls}" data-tag="{esc(tag)}" type="button" aria-pressed="false">'
+            f'{esc(label)} <span class="tag-count">{count}</span></button>'
         )
 
     remaining = max(0, len(sorted_tags) - show_first)
@@ -332,8 +364,8 @@ def render_filterable_list(rows_html, tag_bar_html, id_prefix, search_placeholde
     #   the updated count without having to re-find it after every keystroke.
     return f"""
     <div class="search-row" id="{wrap_id}" style="position:relative;">
-      <label class="visually-hidden" for="{search_id}">{search_placeholder}</label>
-      <input type="text" id="{search_id}" class="search-box" placeholder="{search_placeholder}"
+      <label class="visually-hidden" for="{search_id}">{esc(search_placeholder)}</label>
+      <input type="text" id="{search_id}" class="search-box" placeholder="{esc(search_placeholder)}"
              autocomplete="off">
       <button type="button" id="{toggle_id}" class="filters-toggle"
               aria-haspopup="true" aria-expanded="false" aria-controls="{tagbar_id}">
@@ -349,14 +381,27 @@ def render_filterable_list(rows_html, tag_bar_html, id_prefix, search_placeholde
       </div>
     </div>
     <div id="{list_id}">{rows_html}</div>
-    <div class="no-results" id="{noresults_id}" role="status" aria-live="polite">{empty_message}</div>
+    <div class="no-results" id="{noresults_id}" role="status" aria-live="polite">{esc(empty_message)}</div>
     {script}
     """
 
 
 def render_link_list(entries, id_prefix, search_placeholder, empty_message):
     """Build the filterable list for {title, url, category, note} entries.
-    Tags (categories) sorted most-common-first (ties broken alphabetically)."""
+    Tags (categories) sorted most-common-first (ties broken alphabetically).
+
+    Every field pulled from YAML (title, note, category, url) is run
+    through esc() before being spliced into the `data-tags`,
+    `data-search`, `href` attributes or the visible markup. Without
+    this, a single `"`, `<`, `>`, or `&` anywhere in that data (a
+    quoted phrase in a note, a "<" in a math-y title, an "&" in a URL
+    query string, ...) corrupts the entry's HTML: the page still
+    *displays* fine because browsers are lenient when rendering, but
+    the resulting DOM attributes the filter script reads
+    (`entry.dataset.tags` / `.search`) come back empty or truncated,
+    so search/filtering on that entry silently fails even though it's
+    genuinely on the page.
+    """
     counts = Counter(e["category"] for e in entries)
     sorted_cats = [c for c, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))]
     tag_bar_html = render_tag_bar(
@@ -368,10 +413,10 @@ def render_link_list(entries, id_prefix, search_placeholder, empty_message):
         cat = e["category"]
         searchable = " ".join([e.get("title", ""), e.get("note", ""), cat]).lower()
         rows += f"""
-        <div class="entry" data-tags="{cat}" data-search="{searchable}">
-          <div class="entry-title"><a href="{e['url']}">{e['title']}</a></div>
-          <div class="entry-abstract">{e.get('note', '')}</div>
-          <div><span class="tag" data-tag="{cat}">{cat}</span></div>
+        <div class="entry" data-tags="{esc(cat)}" data-search="{esc(searchable)}">
+          <div class="entry-title"><a href="{esc(e['url'])}">{esc(e['title'])}</a></div>
+          <div class="entry-abstract">{esc(e.get('note', ''))}</div>
+          <div><span class="tag" data-tag="{esc(cat)}">{esc(cat)}</span></div>
         </div>
         """
 
@@ -384,7 +429,17 @@ def render_exercise_list(records):
     data/exercises. Filter tags = resource slugs (title as label);
     each exercise is its own entry so search operates at exercise
     granularity, but filtering happens at resource granularity.
-    Resources sorted most-common-first by exercise count."""
+    Resources sorted most-common-first by exercise count.
+
+    As in render_link_list, every YAML-sourced field (title/label,
+    exercise text, hint, url, locator kind/value, and the derived
+    search_text) is escaped before being placed in HTML/attributes --
+    exercise text and hints are LaTeX-heavy and thus especially prone
+    to containing bare `<`, `>`, or `&` (e.g. `$a < b$`), which is
+    exactly the kind of content that silently corrupts an entry's
+    `data-search` attribute and breaks search for that entry without
+    affecting how it looks on the page.
+    """
 
     def slug_for(record):
         parsed = urlparse(record["url"])
@@ -408,27 +463,39 @@ def render_exercise_list(records):
             badge = ""
             if locator:
                 num = locator.get("value", "")
-                badge = f'<span class="tag locator-badge">{locator["kind"].capitalize()} {num}</span>'
+                badge = (
+                    f'<span class="tag locator-badge">'
+                    f'{esc(locator["kind"].capitalize())} {esc(num)}</span>'
+                )
 
             hint_html = ""
             if ex.get("hint"):
                 hint_html = f"""<details class="hint">
                     <summary>Hint</summary>
-                    <div>{ex['hint']}</div>
+                    <div>{esc(ex['hint'])}</div>
                 </details>"""
 
-            search_text = ex.get("search_text") or (ex.get("text", "") + " " + (ex.get("hint") or "")).lower()
+            # NOTE: previously, if a YAML record supplied `search_text`
+            # explicitly it was used as-is (not lowercased), while the
+            # JS filter always lowercases the query before calling
+            # `.includes()`. That mismatch made search silently fail
+            # for any exercise with an explicit, non-lowercase
+            # `search_text`. Lowercasing unconditionally here fixes it.
+            search_text = (
+                ex.get("search_text")
+                or (ex.get("text", "") + " " + (ex.get("hint") or ""))
+            ).lower()
             search_text += " " + label.lower()
 
             rows += f"""
-            <div class="entry" data-tags="{slug}" data-search="{search_text}">
+            <div class="entry" data-tags="{esc(slug)}" data-search="{esc(search_text)}">
               <div class="entry-title">
                 {badge}
-                <span class="tag" data-tag="{slug}">{label}</span>
+                <span class="tag" data-tag="{esc(slug)}">{esc(label)}</span>
               </div>
-              <div class="entry-abstract">{ex.get('text', '')}</div>
+              <div class="entry-abstract">{esc(ex.get('text', ''))}</div>
               {hint_html}
-              <div class="entry-source"><a href="{record['url']}">{record['url']}</a></div>
+              <div class="entry-source"><a href="{esc(record['url'])}">{esc(record['url'])}</a></div>
             </div>
             """
 
@@ -454,7 +521,7 @@ def build_index(cv, resources):
         "Search title or note...",
         "No resources match your search.",
     )
-    content = f"<p>{cv.get('bio', '')}</p>{body}"
+    content = f"<p>{esc(cv.get('bio', ''))}</p>{body}"
     return render_page(
         cv.get("name", "Home"), content,
         name=cv.get("name", ""), tagline=cv.get("title", ""),
