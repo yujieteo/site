@@ -6,101 +6,1551 @@ source_file: exercises.txt
 locator_kind: page
 exercises:
 - id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#000
-  text: 'Define the Fourier coefficients of a periodic function $f \in L^1(\mathbb{T})$: $\widehat{f}(n)
-    = \int_0^1 f(x) e^{-2\pi i n x} \, dx$'
+  text: Define the Fourier coefficients $c_n(f)$ for a periodic function $f$ on $\mathbb{T} = \mathbb{R}/\mathbb{Z}
+    \cong [0,1)$. What is the integral kernel of the Fourier transform in this compact setting, and why
+    is the integration domain restricted to $[0, 1]$? Explain how this representation is used to solve
+    the 1D wave equation (vibrating string) and the heat equation
   hint: null
   locator:
     kind: page
     value: '4'
     number: 4
   sub_index: 0
-  search_text: 'define the fourier coefficients of a periodic function $f \in l^1(\mathbb{t})$: $\widehat{f}(n)
-    = \int_0^1 f(x) e^{-2\pi i n x} \, dx$'
+  search_text: define the fourier coefficients $c_n(f)$ for a periodic function $f$ on $\mathbb{t} = \mathbb{r}/\mathbb{z}
+    \cong [0,1)$. what is the integral kernel of the fourier transform in this compact setting, and why
+    is the integration domain restricted to $[0, 1]$? explain how this representation is used to solve
+    the 1d wave equation (vibrating string) and the heat equation
 - id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#001
-  text: 'Show that continuous characters $\chi: G \to \mathbb{C}^\times$ on a locally compact abelian
-    group are eigenfunctions of all translation-invariant linear operators'
+  text: Write down the continuous Fourier transform $\widehat{f}(\xi)$ and the inversion formula for a
+    non-periodic function $f \in L^1(\mathbb{R}^d)$. How does the integration domain differ from the periodic
+    case?
+  hint: null
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 1
+  search_text: write down the continuous fourier transform $\widehat{f}(\xi)$ and the inversion formula
+    for a non-periodic function $f \in l^1(\mathbb{r}^d)$. how does the integration domain differ from
+    the periodic case?
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#002
+  text: For a function $f$ on a group $G$ and $x \in G$, define the translation operator $\tau_x f(y)$
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: for a function $f$ on a group $g$ and $x \in g$, define the translation operator $\tau_x
+    f(y)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#003
+  text: 'Let $T: E \to E$ be a linear operator on a translation-invariant function space $E$. What does
+    it mean for $T$ to be translation-invariant? Express $\tau_x(Tf)$ in terms of $T$ and $\tau_x f$'
+  hint: null
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 1
+  search_text: 'let $t: e \to e$ be a linear operator on a translation-invariant function space $e$. what
+    does it mean for $t$ to be translation-invariant? express $\tau_x(tf)$ in terms of $t$ and $\tau_x
+    f$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#004
+  text: Let $P(D) = \sum_{|\alpha| \le m} a_\alpha D^\alpha$ be a linear differential operator. Show that
+    $P(D)$ is translation-invariant (time-invariant) if and only if its coefficients $a_\alpha$ are constant.
+    Compute the symbol/characteristic polynomial $P(\xi)$ associated with $P(D)$
   hint: null
   locator:
     kind: page
     value: '6'
     number: 6
   sub_index: 0
-  search_text: 'show that continuous characters $\chi: g \to \mathbb{c}^\times$ on a locally compact abelian
-    group are eigenfunctions of all translation-invariant linear operators'
-- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#002
-  text: Compute the dual groups $\widehat{\mathbb{R}^d} \cong \mathbb{R}^d$, $\widehat{\mathbb{T}^d} \cong
-    \mathbb{Z}^d$, and $\widehat{\mathbb{Z}/N\mathbb{Z}} \cong \mathbb{Z}/N\mathbb{Z}$
+  search_text: let $p(d) = \sum_{|\alpha| \le m} a_\alpha d^\alpha$ be a linear differential operator.
+    show that $p(d)$ is translation-invariant (time-invariant) if and only if its coefficients $a_\alpha$
+    are constant. compute the symbol/characteristic polynomial $p(\xi)$ associated with $p(d)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#005
+  text: Let $T$ be a translation-invariant operator and let $\chi$ be a character of $G$. Show that $\tau_x(T\chi)(y)
+    = \chi(-x)(T\chi)(y)$
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 1
+  search_text: let $t$ be a translation-invariant operator and let $\chi$ be a character of $g$. show
+    that $\tau_x(t\chi)(y) = \chi(-x)(t\chi)(y)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#006
+  text: 'Using the group law $\tau_x \tau_y = \tau_{x+y}$, prove that every character $\chi: G \to \mathbb{C}^\times$
+    is a group homomorphism satisfying $\chi(x+y) = \chi(x)\chi(y)$ and $\chi(-x) = \chi(x)^{-1}$'
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 2
+  search_text: 'using the group law $\tau_x \tau_y = \tau_{x+y}$, prove that every character $\chi: g
+    \to \mathbb{c}^\times$ is a group homomorphism satisfying $\chi(x+y) = \chi(x)\chi(y)$ and $\chi(-x)
+    = \chi(x)^{-1}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#007
+  text: Let $f = T\chi$ for a translation-invariant operator $T$ and a character $\chi$. By evaluating
+    at $y = 0$, prove that $f(x) = \lambda \chi(x)$ where $\lambda = (T\chi)(0)$, and conclude that $\chi$
+    is an eigenfunction of $T$
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 3
+  search_text: let $f = t\chi$ for a translation-invariant operator $t$ and a character $\chi$. by evaluating
+    at $y = 0$, prove that $f(x) = \lambda \chi(x)$ where $\lambda = (t\chi)(0)$, and conclude that $\chi$
+    is an eigenfunction of $t$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#008
+  text: Identify the codomain and the target set of all complex characters $\chi \in \operatorname{Hom}(G,
+    \mathbb{C}^\times)$ on a locally compact abelian group $G$
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 4
+  search_text: identify the codomain and the target set of all complex characters $\chi \in \operatorname{hom}(g,
+    \mathbb{c}^\times)$ on a locally compact abelian group $g$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#009
+  text: 'Identify the target set of all unitary (bounded) characters $\chi: G \to \mathbb{T}$, where $\mathbb{T}
+    = \{z \in \mathbb{C} : |z| = 1\}$'
+  hint: null
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 5
+  search_text: 'identify the target set of all unitary (bounded) characters $\chi: g \to \mathbb{t}$,
+    where $\mathbb{t} = \{z \in \mathbb{c} : |z| = 1\}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#010
+  text: State the conditions under which the characters of a locally compact abelian group $G$ serve as
+    simultaneous eigenfunctions for all bounded translation-invariant linear operators $T$
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: state the conditions under which the characters of a locally compact abelian group $g$
+    serve as simultaneous eigenfunctions for all bounded translation-invariant linear operators $t$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#011
+  text: Simplify $(T\chi)(y - x)$ using the translation invariance of $T$. By evaluating at $y = 0$, deduce
+    the eigenvalue equation $(T\chi)(x) = m(\chi)\chi(x)$ with eigenvalue $m(\chi) = (T\chi)(0)$, and
+    explain why characters diagonalize translation-invariant operators
+  hint: null
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 1
+  search_text: simplify $(t\chi)(y - x)$ using the translation invariance of $t$. by evaluating at $y
+    = 0$, deduce the eigenvalue equation $(t\chi)(x) = m(\chi)\chi(x)$ with eigenvalue $m(\chi) = (t\chi)(0)$,
+    and explain why characters diagonalize translation-invariant operators
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#012
+  text: 'Let $\chi: \mathbb{R} \to \mathbb{C}^\times$ be a continuous character. Using the identity $\int_x^{x+h}
+    \chi(z)\,dz = \chi(x) \int_0^h \chi(y)\,dy$, prove that $\chi$ is smooth and satisfies the differential
+    equation $\chi''(x) = \chi''(0)\chi(x)$. Solve this ODE to find the general functional form of $\chi(x)$'
   hint: null
   locator:
     kind: page
     value: '8'
     number: 8
   sub_index: 0
-  search_text: compute the dual groups $\widehat{\mathbb{r}^d} \cong \mathbb{r}^d$, $\widehat{\mathbb{t}^d}
-    \cong \mathbb{z}^d$, and $\widehat{\mathbb{z}/n\mathbb{z}} \cong \mathbb{z}/n\mathbb{z}$
-- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#003
-  text: 'Prove that the Fourier transform converts convolutions to pointwise products: $\widehat{f * g}
-    = \widehat{f} \cdot \widehat{g}$'
+  search_text: 'let $\chi: \mathbb{r} \to \mathbb{c}^\times$ be a continuous character. using the identity
+    $\int_x^{x+h} \chi(z)\,dz = \chi(x) \int_0^h \chi(y)\,dy$, prove that $\chi$ is smooth and satisfies
+    the differential equation $\chi''(x) = \chi''(0)\chi(x)$. solve this ode to find the general functional
+    form of $\chi(x)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#013
+  text: Find the general form of an unbounded continuous character $\chi$ on $\mathbb{R}^d$ in terms of
+    a vector $\alpha \in \mathbb{C}^d$
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 1
+  search_text: find the general form of an unbounded continuous character $\chi$ on $\mathbb{r}^d$ in
+    terms of a vector $\alpha \in \mathbb{c}^d$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#014
+  text: Impose the boundedness condition $|\chi(x)| \le 1$ to classify all unitary characters on $\mathbb{R}^d$.
+    For the torus $\mathbb{T}^d = \mathbb{R}^d/\mathbb{Z}^d$, explain how periodicity forces $\alpha \in
+    2\pi i \mathbb{Z}^d$, yielding the standard Fourier basis $e_n(x) = e^{2\pi i n \cdot x}$
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 2
+  search_text: impose the boundedness condition $|\chi(x)| \le 1$ to classify all unitary characters on
+    $\mathbb{r}^d$. for the torus $\mathbb{t}^d = \mathbb{r}^d/\mathbb{z}^d$, explain how periodicity
+    forces $\alpha \in 2\pi i \mathbb{z}^d$, yielding the standard fourier basis $e_n(x) = e^{2\pi i n
+    \cdot x}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#015
+  text: Determine the Pontryagin dual group $\widehat{G}$ for $G = \mathbb{R}^d$ and $G = \mathbb{T}^d$
+  hint: null
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 3
+  search_text: determine the pontryagin dual group $\widehat{g}$ for $g = \mathbb{r}^d$ and $g = \mathbb{t}^d$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#016
+  text: For the additive group $G = \mathbb{Z}$, show that every character has the form $\chi_z(n) = z^n$
+    for $z \in \mathbb{C}^\times$, and characterize the bounded characters by identifying $\widehat{\mathbb{Z}}
+    \cong \mathbb{T}$
+  hint: null
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: for the additive group $g = \mathbb{z}$, show that every character has the form $\chi_z(n)
+    = z^n$ for $z \in \mathbb{c}^\times$, and characterize the bounded characters by identifying $\widehat{\mathbb{z}}
+    \cong \mathbb{t}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#017
+  text: For the cyclic group $G = \mathbb{Z}_N = \mathbb{Z}/N\mathbb{Z}$, define the primitive root of
+    unity $\omega_N = e^{2\pi i / N}$ and compute the complete set of characters $\chi_k(n) = \omega_N^{kn}$
+  hint: null
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 1
+  search_text: for the cyclic group $g = \mathbb{z}_n = \mathbb{z}/n\mathbb{z}$, define the primitive
+    root of unity $\omega_n = e^{2\pi i / n}$ and compute the complete set of characters $\chi_k(n) =
+    \omega_n^{kn}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#018
+  text: Compute the dual group $\widehat{\mathbb{Z}_N}$ and establish the self-duality $\widehat{\mathbb{Z}_N}
+    \cong \mathbb{Z}_N$
+  hint: null
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 2
+  search_text: compute the dual group $\widehat{\mathbb{z}_n}$ and establish the self-duality $\widehat{\mathbb{z}_n}
+    \cong \mathbb{z}_n$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#019
+  text: 'Prove that distinct continuous characters $\{\chi_{\eta_k}\}_{k=1}^m$ on $\mathbb{R}^d$ are linearly
+    independent: if $\sum_{k=1}^m c_k e^{2\pi i \eta_k \cdot x} = 0$ for all $x$, then $c_k = 0$ for all
+    $k$'
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: 'prove that distinct continuous characters $\{\chi_{\eta_k}\}_{k=1}^m$ on $\mathbb{r}^d$
+    are linearly independent: if $\sum_{k=1}^m c_k e^{2\pi i \eta_k \cdot x} = 0$ for all $x$, then $c_k
+    = 0$ for all $k$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#020
+  text: For $f \in L^1(G)$ and a unitary character $\chi \in \widehat{G}$, define the Fourier transform
+    $\widehat{f}(\chi) = \langle f, \chi \rangle$ as an integral pairing with respect to the Haar measure
+    $\mu$ on $G$
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 1
+  search_text: for $f \in l^1(g)$ and a unitary character $\chi \in \widehat{g}$, define the fourier transform
+    $\widehat{f}(\chi) = \langle f, \chi \rangle$ as an integral pairing with respect to the haar measure
+    $\mu$ on $g$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#021
+  text: State the abstract Fourier inversion formula expressing $f(x)$ as an integral of $\widehat{f}(\chi)
+    \chi(x)$ over the dual group $\widehat{G}$ with respect to the dual Haar measure $\nu$
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: state the abstract fourier inversion formula expressing $f(x)$ as an integral of $\widehat{f}(\chi)
+    \chi(x)$ over the dual group $\widehat{g}$ with respect to the dual haar measure $\nu$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#022
+  text: Express the Fourier inversion formula evaluated at a point $x \in G$ in terms of the characters
+    $\chi(x)$ and the dual pairing $\langle f, \chi \rangle$
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 1
+  search_text: express the fourier inversion formula evaluated at a point $x \in g$ in terms of the characters
+    $\chi(x)$ and the dual pairing $\langle f, \chi \rangle$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#023
+  text: 'Let $T$ be a bounded linear operator commuting with translations and infinite sums such that
+    $T\chi = m(\chi)\chi$. Derive the spectral representation $\widehat{Tf}(\chi) = m(\chi)\widehat{f}(\chi)$,
+    and define the Fourier multiplier $m: \widehat{G} \to \mathbb{C}$'
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 2
+  search_text: 'let $t$ be a bounded linear operator commuting with translations and infinite sums such
+    that $t\chi = m(\chi)\chi$. derive the spectral representation $\widehat{tf}(\chi) = m(\chi)\widehat{f}(\chi)$,
+    and define the fourier multiplier $m: \widehat{g} \to \mathbb{c}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#024
+  text: Using the continuous Dirac delta decomposition $f = \int_G f(x) \delta_x \, d\mu(x)$, evaluate
+    $Tf(y)$ where $T$ is an integral operator with Schwartz kernel $K(y, x)$
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 3
+  search_text: using the continuous dirac delta decomposition $f = \int_g f(x) \delta_x \, d\mu(x)$, evaluate
+    $tf(y)$ where $t$ is an integral operator with schwartz kernel $k(y, x)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#025
+  text: Formulate the completeness and orthogonality of the character system $\{\chi\}$ in terms of projection
+    formulas, and deduce the inversion formula for the Fourier transform
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 4
+  search_text: formulate the completeness and orthogonality of the character system $\{\chi\}$ in terms
+    of projection formulas, and deduce the inversion formula for the fourier transform
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#026
+  text: Let $T$ be a linear operator commuting with integration and translations. Apply $T$ directly to
+    the Fourier inversion formula for $f(x)$ to prove that $T$ acts as a Fourier multiplier operator $(Tf)(x)
+    = \int_{\widehat{G}} m(\chi) \widehat{f}(\chi) \chi(x) \, d\nu(\chi)$
+  hint: null
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 5
+  search_text: let $t$ be a linear operator commuting with integration and translations. apply $t$ directly
+    to the fourier inversion formula for $f(x)$ to prove that $t$ acts as a fourier multiplier operator
+    $(tf)(x) = \int_{\widehat{g}} m(\chi) \widehat{f}(\chi) \chi(x) \, d\nu(\chi)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#027
+  text: Let $T$ be a translation-invariant linear operator with Schwartz kernel $K(y, x)$ such that $Tf(y)
+    = \int_G K(y, x)f(x)\,d\mu(x)$. Prove that translation invariance forces $K(y, x) = k(y - x)$ for
+    some distribution/function $k = T\delta_0$, establishing that $Tf = f * k$ is a convolution operator
+    with impulse response $k$
+  hint: null
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 0
+  search_text: let $t$ be a translation-invariant linear operator with schwartz kernel $k(y, x)$ such
+    that $tf(y) = \int_g k(y, x)f(x)\,d\mu(x)$. prove that translation invariance forces $k(y, x) = k(y
+    - x)$ for some distribution/function $k = t\delta_0$, establishing that $tf = f * k$ is a convolution
+    operator with impulse response $k$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#028
+  text: Compute the Fourier transform of a convolution $\widehat{f * g}(\chi)$ in terms of $\widehat{f}(\chi)$
+    and $\widehat{g}(\chi)$
   hint: null
   locator:
     kind: page
     value: '13'
     number: 13
   sub_index: 0
-  search_text: 'prove that the fourier transform converts convolutions to pointwise products: $\widehat{f
-    * g} = \widehat{f} \cdot \widehat{g}$'
-- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#004
-  text: 'State Young''s Convolution Inequality: $\|f * g\|_{L^r} \le \|f\|_{L^p} \|g\|_{L^q}$ for $1 +
-    \frac{1}{r} = \frac{1}{p} + \frac{1}{q}$'
+  search_text: compute the fourier transform of a convolution $\widehat{f * g}(\chi)$ in terms of $\widehat{f}(\chi)$
+    and $\widehat{g}(\chi)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#029
+  text: 'Show that the Fourier multiplier $m(\chi)$ of a convolution operator $Tf = f * k$ is given explicitly
+    by the Fourier transform of the impulse response: $m(\chi) = \widehat{k}(\chi)$'
+  hint: null
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 1
+  search_text: 'show that the fourier multiplier $m(\chi)$ of a convolution operator $tf = f * k$ is given
+    explicitly by the fourier transform of the impulse response: $m(\chi) = \widehat{k}(\chi)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#030
+  text: Express the convolution $(f * g)(y) = \int_G f(x) g(y - x) \, d\mu(x)$ as a continuous superposition
+    (integral linear combination) of translates $\tau_x g(y)$
   hint: null
   locator:
     kind: page
     value: '14'
     number: 14
   sub_index: 0
-  search_text: 'state young''s convolution inequality: $\|f * g\|_{l^r} \le \|f\|_{l^p} \|g\|_{l^q}$ for
-    $1 + \frac{1}{r} = \frac{1}{p} + \frac{1}{q}$'
-- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#005
-  text: Compute the Dirichlet kernel $D_N(t) = \sum_{n=-N}^N e^{2\pi i n t} = \frac{\sin((2N+1)\pi t)}{\sin(\pi
-    t)}$ and the Fejér kernel $F_N(t) = \frac{1}{N+1} \sum_{n=0}^N D_n(t)$
+  search_text: express the convolution $(f * g)(y) = \int_g f(x) g(y - x) \, d\mu(x)$ as a continuous
+    superposition (integral linear combination) of translates $\tau_x g(y)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#031
+  text: Prove that convolution is commutative ($f * g = g * f$) and associative ($f * (g * h) = (f * g)
+    * h$) on locally compact abelian groups
+  hint: null
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 1
+  search_text: prove that convolution is commutative ($f * g = g * f$) and associative ($f * (g * h) =
+    (f * g) * h$) on locally compact abelian groups
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#032
+  text: Compute $(f * g)(y)$ for the moving-average kernel $g = \frac{1}{\mu(B)} \mathbf{1}_B$. What does
+    $g$ represent in probability theory, and how does this convolution act as a local averaging/smoothing
+    operator?
+  hint: null
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 2
+  search_text: compute $(f * g)(y)$ for the moving-average kernel $g = \frac{1}{\mu(b)} \mathbf{1}_b$.
+    what does $g$ represent in probability theory, and how does this convolution act as a local averaging/smoothing
+    operator?
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#033
+  text: Express the action of an integral operator $Tf(y) = \int K(y, x) f(x) \, dx$ as a continuous analogue
+    of matrix-vector multiplication
+  hint: null
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 0
+  search_text: express the action of an integral operator $tf(y) = \int k(y, x) f(x) \, dx$ as a continuous
+    analogue of matrix-vector multiplication
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#034
+  text: Let $Tf(y) = \int K(y, x) f(x) \, dx$. Apply Hölder's inequality with conjugate exponents $p$
+    and $p'$ ($\frac{1}{p} + \frac{1}{p'} = 1$) to establish an upper bound for $|Tf(y)|$
+  hint: null
+  locator:
+    kind: page
+    value: '16'
+    number: 16
+  sub_index: 0
+  search_text: let $tf(y) = \int k(y, x) f(x) \, dx$. apply hölder's inequality with conjugate exponents
+    $p$ and $p'$ ($\frac{1}{p} + \frac{1}{p'} = 1$) to establish an upper bound for $|tf(y)|$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#035
+  text: 'State Schur''s Test: if $\sup_y \int |K(y, x)| \, dx \le C_1$ and $\sup_x \int |K(y, x)| \, dy
+    \le C_2$, prove that $\|Tf\|_{L^q} \le C \|f\|_{L^p}$ for appropriate $p, q$, and compute the operator
+    norm bound'
+  hint: null
+  locator:
+    kind: page
+    value: '17'
+    number: 17
+  sub_index: 0
+  search_text: 'state schur''s test: if $\sup_y \int |k(y, x)| \, dx \le c_1$ and $\sup_x \int |k(y, x)|
+    \, dy \le c_2$, prove that $\|tf\|_{l^q} \le c \|f\|_{l^p}$ for appropriate $p, q$, and compute the
+    operator norm bound'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#036
+  text: Detail the factorization of the kernel $|K(y, x)| = |K(y, x)|^{1/p} |K(y, x)|^{1/p'}$ in the standard
+    proof of Schur's Test
+  hint: null
+  locator:
+    kind: page
+    value: '17'
+    number: 17
+  sub_index: 1
+  search_text: detail the factorization of the kernel $|k(y, x)| = |k(y, x)|^{1/p} |k(y, x)|^{1/p'}$ in
+    the standard proof of schur's test
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#037
+  text: Write out the explicit integral formula for the convolution $(f * g)(y)$ on $\mathbb{R}^d$
+  hint: null
+  locator:
+    kind: page
+    value: '17'
+    number: 17
+  sub_index: 2
+  search_text: write out the explicit integral formula for the convolution $(f * g)(y)$ on $\mathbb{r}^d$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#038
+  text: 'State Young''s Convolution Inequality: for $f \in L^p(\mathbb{R}^d)$ and $g \in L^q(\mathbb{R}^d)$
+    with $1 \le p, q, r \le \infty$ and $\frac{1}{p} + \frac{1}{q} = 1 + \frac{1}{r}$, prove that $\|f
+    * g\|_{L^r} \le \|f\|_{L^p} \|g\|_{L^q}$'
+  hint: null
+  locator:
+    kind: page
+    value: '17'
+    number: 17
+  sub_index: 3
+  search_text: 'state young''s convolution inequality: for $f \in l^p(\mathbb{r}^d)$ and $g \in l^q(\mathbb{r}^d)$
+    with $1 \le p, q, r \le \infty$ and $\frac{1}{p} + \frac{1}{q} = 1 + \frac{1}{r}$, prove that $\|f
+    * g\|_{l^r} \le \|f\|_{l^p} \|g\|_{l^q}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#039
+  text: Prove that if $f \in L^1(\mathbb{R}^d)$ and $g \in L^p(\mathbb{R}^d)$, the convolution integral
+    $(f * g)(y) = \int_{\mathbb{R}^d} f(x) g(y - x) \, dx$ converges absolutely for almost every $y \in
+    \mathbb{R}^d$, and identify the $L^p$ space containing $f * g$
+  hint: null
+  locator:
+    kind: page
+    value: '18'
+    number: 18
+  sub_index: 0
+  search_text: prove that if $f \in l^1(\mathbb{r}^d)$ and $g \in l^p(\mathbb{r}^d)$, the convolution
+    integral $(f * g)(y) = \int_{\mathbb{r}^d} f(x) g(y - x) \, dx$ converges absolutely for almost every
+    $y \in \mathbb{r}^d$, and identify the $l^p$ space containing $f * g$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#040
+  text: Let $f \in C^k(\mathbb{R}^d)$ with compact support and $g \in L^1_{\text{loc}}(\mathbb{R}^d)$.
+    Prove that $f * g \in C^k(\mathbb{R}^d)$ and compute $D^\alpha(f * g)$ by differentiating under the
+    integral sign
+  hint: null
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 0
+  search_text: let $f \in c^k(\mathbb{r}^d)$ with compact support and $g \in l^1_{\text{loc}}(\mathbb{r}^d)$.
+    prove that $f * g \in c^k(\mathbb{r}^d)$ and compute $d^\alpha(f * g)$ by differentiating under the
+    integral sign
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#041
+  text: 'Characterize all bounded translation-invariant linear operators $T: \ell^p(\mathbb{Z}) \to \ell^p(\mathbb{Z})$
+    for $p = 1$. Show that $T$ is given uniquely by convolution with a sequence $g = T\delta_0 \in \ell^1(\mathbb{Z})$,
+    and verify convergence using Minkowski''s inequality'
+  hint: null
+  locator:
+    kind: page
+    value: '20'
+    number: 20
+  sub_index: 0
+  search_text: 'characterize all bounded translation-invariant linear operators $t: \ell^p(\mathbb{z})
+    \to \ell^p(\mathbb{z})$ for $p = 1$. show that $t$ is given uniquely by convolution with a sequence
+    $g = t\delta_0 \in \ell^1(\mathbb{z})$, and verify convergence using minkowski''s inequality'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#042
+  text: Define an approximation of the identity (mollifier family) $(k_\varepsilon)_{\varepsilon > 0}$
+    on $\mathbb{R}^d$. State the normalization condition on $\int_{\mathbb{R}^d} k_\varepsilon(x) \, dx$
+  hint: null
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 0
+  search_text: define an approximation of the identity (mollifier family) $(k_\varepsilon)_{\varepsilon
+    > 0}$ on $\mathbb{r}^d$. state the normalization condition on $\int_{\mathbb{r}^d} k_\varepsilon(x)
+    \, dx$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#043
+  text: State the uniform $L^1$-bound condition $\sup_{\varepsilon > 0} \int_{\mathbb{R}^d} |k_\varepsilon(x)|
+    \, dx \le C$ for an approximate identity
+  hint: null
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 1
+  search_text: state the uniform $l^1$-bound condition $\sup_{\varepsilon > 0} \int_{\mathbb{r}^d} |k_\varepsilon(x)|
+    \, dx \le c$ for an approximate identity
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#044
+  text: 'State the mass concentration condition for an approximate identity: $\lim_{\varepsilon \to 0}
+    \int_{|x| > \delta} |k_\varepsilon(x)| \, dx = 0$ for every fixed $\delta > 0$'
+  hint: null
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 2
+  search_text: 'state the mass concentration condition for an approximate identity: $\lim_{\varepsilon
+    \to 0} \int_{|x| > \delta} |k_\varepsilon(x)| \, dx = 0$ for every fixed $\delta > 0$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#045
+  text: Let $k_\varepsilon(x) = \varepsilon^{-d} \mathbf{1}_{B(0, \varepsilon)}(x) / |B(0, \varepsilon)|$.
+    Compute $(f * k_\varepsilon)(x)$ and describe its geometric action as an average over metric balls
+  hint: null
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 0
+  search_text: let $k_\varepsilon(x) = \varepsilon^{-d} \mathbf{1}_{b(0, \varepsilon)}(x) / |b(0, \varepsilon)|$.
+    compute $(f * k_\varepsilon)(x)$ and describe its geometric action as an average over metric balls
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#046
+  text: Write down the explicit formula for the Poisson kernel family $P_y(x)$ on $\mathbb{R}^d \times
+    (0, \infty)$ in terms of the Gamma function $\Gamma\left(\frac{d+1}{2}\right)$
+  hint: null
+  locator:
+    kind: page
+    value: '23'
+    number: 23
+  sub_index: 0
+  search_text: write down the explicit formula for the poisson kernel family $p_y(x)$ on $\mathbb{r}^d
+    \times (0, \infty)$ in terms of the gamma function $\gamma\left(\frac{d+1}{2}\right)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#047
+  text: Let $f \in L^p(\mathbb{R}^d)$ ($1 \le p < \infty$) and let $(k_\varepsilon)_{\varepsilon > 0}$
+    be an approximate identity. Apply the continuous Minkowski inequality to bound $\|f * k_\varepsilon
+    - f\|_{L^p}$, and prove that $f * k_\varepsilon \to f$ in $L^p(\mathbb{R}^d)$ as $\varepsilon \to
+    0$
+  hint: null
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 0
+  search_text: let $f \in l^p(\mathbb{r}^d)$ ($1 \le p < \infty$) and let $(k_\varepsilon)_{\varepsilon
+    > 0}$ be an approximate identity. apply the continuous minkowski inequality to bound $\|f * k_\varepsilon
+    - f\|_{l^p}$, and prove that $f * k_\varepsilon \to f$ in $l^p(\mathbb{r}^d)$ as $\varepsilon \to
+    0$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#048
+  text: 'Let $T: L^p(\mathbb{R}^d) \to L^q(\mathbb{R}^d)$ be a bounded translation-invariant operator
+    ($1 \le p, q < \infty$). Prove that $T(f * g) = (Tf) * g = f * (Tg)$ for all $f, g \in \mathcal{S}(\mathbb{R}^d)$'
+  hint: null
+  locator:
+    kind: page
+    value: '25'
+    number: 25
+  sub_index: 0
+  search_text: 'let $t: l^p(\mathbb{r}^d) \to l^q(\mathbb{r}^d)$ be a bounded translation-invariant operator
+    ($1 \le p, q < \infty$). prove that $t(f * g) = (tf) * g = f * (tg)$ for all $f, g \in \mathcal{s}(\mathbb{r}^d)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#049
+  text: 'Show that if a bounded linear operator $T$ commutes with translations, it commutes with convolutions:
+    $T(\tau_x g) = \tau_x(Tg)$'
+  hint: null
+  locator:
+    kind: page
+    value: '26'
+    number: 26
+  sub_index: 0
+  search_text: 'show that if a bounded linear operator $t$ commutes with translations, it commutes with
+    convolutions: $t(\tau_x g) = \tau_x(tg)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#050
+  text: Let $k_\varepsilon \in C_c^\infty(\mathbb{R}^d)$ be a smooth mollifier. Show that $f * k_\varepsilon
+    \in C^\infty(\mathbb{R}^d)$ for any $f \in L^p(\mathbb{R}^d)$. Use this to prove that $C^\infty(\mathbb{T}^d)$
+    is dense in $L^p(\mathbb{T}^d)$ and $C_c^\infty(\mathbb{R}^d)$ is dense in $L^p(\mathbb{R}^d)$ for
+    $1 \le p < \infty$
+  hint: null
+  locator:
+    kind: page
+    value: '27'
+    number: 27
+  sub_index: 0
+  search_text: let $k_\varepsilon \in c_c^\infty(\mathbb{r}^d)$ be a smooth mollifier. show that $f *
+    k_\varepsilon \in c^\infty(\mathbb{r}^d)$ for any $f \in l^p(\mathbb{r}^d)$. use this to prove that
+    $c^\infty(\mathbb{t}^d)$ is dense in $l^p(\mathbb{t}^d)$ and $c_c^\infty(\mathbb{r}^d)$ is dense in
+    $l^p(\mathbb{r}^d)$ for $1 \le p < \infty$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#051
+  text: 'State and prove the Fundamental Lemma of the Calculus of Variations (du Bois-Reymond): if $f
+    \in L^1_{\text{loc}}(U)$ satisfies $\int_U f(x) \psi(x) \, dx = 0$ for all $\psi \in C_c^\infty(U)$,
+    prove that $f = 0$ almost everywhere on $U$'
+  hint: null
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 0
+  search_text: 'state and prove the fundamental lemma of the calculus of variations (du bois-reymond):
+    if $f \in l^1_{\text{loc}}(u)$ satisfies $\int_u f(x) \psi(x) \, dx = 0$ for all $\psi \in c_c^\infty(u)$,
+    prove that $f = 0$ almost everywhere on $u$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#052
+  text: 'Prove Wendel''s Theorem: every bounded translation-invariant linear operator $T: L^1(G) \to L^1(G)$
+    is given by convolution with a unique finite complex regular Borel measure $\mu \in M(G)$, such that
+    $Tf = f * \mu$'
+  hint: null
+  locator:
+    kind: page
+    value: '29'
+    number: 29
+  sub_index: 0
+  search_text: 'prove wendel''s theorem: every bounded translation-invariant linear operator $t: l^1(g)
+    \to l^1(g)$ is given by convolution with a unique finite complex regular borel measure $\mu \in m(g)$,
+    such that $tf = f * \mu$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#053
+  text: For $f \in L^1(\mathbb{T})$, define its Fourier series $\sum_{n \in \mathbb{Z}} c_n(f) e^{2\pi
+    i n t}$ and the Fourier coefficients $c_n(f) = \int_0^1 f(t) e^{-2\pi i n t} \, dt$
+  hint: null
+  locator:
+    kind: page
+    value: '30'
+    number: 30
+  sub_index: 0
+  search_text: for $f \in l^1(\mathbb{t})$, define its fourier series $\sum_{n \in \mathbb{z}} c_n(f)
+    e^{2\pi i n t}$ and the fourier coefficients $c_n(f) = \int_0^1 f(t) e^{-2\pi i n t} \, dt$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#054
+  text: Show that the characters $e_n(t) = e^{2\pi i n t}$ form an orthonormal basis for $L^2(\mathbb{T})$.
+    State the Stone–Weierstrass theorem implying the density of trigonometric polynomials, and state Parseval's
+    identity $\sum_{n \in \mathbb{Z}} |c_n(f)|^2 = \|f\|_{L^2}^2$ and the Plancherel formula $\sum_{n
+    \in \mathbb{Z}} c_n(f) \overline{c_n(g)} = \langle f, g \rangle_{L^2}$
+  hint: null
+  locator:
+    kind: page
+    value: '31'
+    number: 31
+  sub_index: 0
+  search_text: show that the characters $e_n(t) = e^{2\pi i n t}$ form an orthonormal basis for $l^2(\mathbb{t})$.
+    state the stone–weierstrass theorem implying the density of trigonometric polynomials, and state parseval's
+    identity $\sum_{n \in \mathbb{z}} |c_n(f)|^2 = \|f\|_{l^2}^2$ and the plancherel formula $\sum_{n
+    \in \mathbb{z}} c_n(f) \overline{c_n(g)} = \langle f, g \rangle_{l^2}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#055
+  text: Compute the Fourier coefficients of a convolution $c_n(f * g)$ on $\mathbb{T}$ in terms of $c_n(f)$
+    and $c_n(g)$
+  hint: null
+  locator:
+    kind: page
+    value: '32'
+    number: 32
+  sub_index: 0
+  search_text: compute the fourier coefficients of a convolution $c_n(f * g)$ on $\mathbb{t}$ in terms
+    of $c_n(f)$ and $c_n(g)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#056
+  text: Define the Dirichlet kernel $D_N(t) = \sum_{n=-N}^N e^{2\pi i n t}$. Prove the closed-form trigonometric
+    formula $D_N(t) = \frac{\sin((2N+1)\pi t)}{\sin(\pi t)}$ for $t \notin \mathbb{Z}$
   hint: null
   locator:
     kind: page
     value: '33'
     number: 33
   sub_index: 0
-  search_text: compute the dirichlet kernel $d_n(t) = \sum_{n=-n}^n e^{2\pi i n t} = \frac{\sin((2n+1)\pi
-    t)}{\sin(\pi t)}$ and the fejér kernel $f_n(t) = \frac{1}{n+1} \sum_{n=0}^n d_n(t)$
-- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#006
-  text: 'Define the Schwartz space $\mathcal{S}(\mathbb{R}^d)$ and prove Plancherel''s Theorem: the Fourier
-    transform extends to a unitary isomorphism on $L^2(\mathbb{R}^d)$'
+  search_text: define the dirichlet kernel $d_n(t) = \sum_{n=-n}^n e^{2\pi i n t}$. prove the closed-form
+    trigonometric formula $d_n(t) = \frac{\sin((2n+1)\pi t)}{\sin(\pi t)}$ for $t \notin \mathbb{z}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#057
+  text: Express the $N$-th partial sum of the Fourier series $S_N f(x) = \sum_{n=-N}^N c_n(f) e^{2\pi
+    i n x}$ as an integral convolution $(f * D_N)(x)$
+  hint: null
+  locator:
+    kind: page
+    value: '34'
+    number: 34
+  sub_index: 0
+  search_text: express the $n$-th partial sum of the fourier series $s_n f(x) = \sum_{n=-n}^n c_n(f) e^{2\pi
+    i n x}$ as an integral convolution $(f * d_n)(x)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#058
+  text: Define the Fejér kernel $F_N(t) = \frac{1}{N+1} \sum_{k=0}^N D_k(t)$. Prove that $F_N(t) = \frac{1}{N+1}
+    \left( \frac{\sin((N+1)\pi t)}{\sin(\pi t)} \right)^2 \ge 0$, show that $(F_N)_{N \ge 0}$ forms an
+    approximate identity, and deduce Fejér's theorem on Cesàro summability $\sigma_N f \to f$
+  hint: null
+  locator:
+    kind: page
+    value: '35'
+    number: 35
+  sub_index: 0
+  search_text: define the fejér kernel $f_n(t) = \frac{1}{n+1} \sum_{k=0}^n d_k(t)$. prove that $f_n(t)
+    = \frac{1}{n+1} \left( \frac{\sin((n+1)\pi t)}{\sin(\pi t)} \right)^2 \ge 0$, show that $(f_n)_{n
+    \ge 0}$ forms an approximate identity, and deduce fejér's theorem on cesàro summability $\sigma_n
+    f \to f$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#059
+  text: 'Solve the Dirichlet problem for Laplace''s equation $\Delta u = 0$ on the unit disk $\mathbb{D}
+    = \{z \in \mathbb{C} : |z| < 1\}$ with boundary data $f(e^{2\pi i \theta}) = e^{2\pi i n \theta}$'
+  hint: null
+  locator:
+    kind: page
+    value: '36'
+    number: 36
+  sub_index: 0
+  search_text: 'solve the dirichlet problem for laplace''s equation $\delta u = 0$ on the unit disk $\mathbb{d}
+    = \{z \in \mathbb{c} : |z| < 1\}$ with boundary data $f(e^{2\pi i \theta}) = e^{2\pi i n \theta}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#060
+  text: Derive the Poisson kernel on the unit disk $P_r(\theta) = \sum_{n=-\infty}^\infty r^{|n|} e^{2\pi
+    i n \theta} = \frac{1 - r^2}{1 - 2r\cos(2\pi\theta) + r^2}$ for $0 \le r < 1$, and express the harmonic
+    extension of $f \in L^1(\mathbb{T})$ as $u(r e^{2\pi i \theta}) = (f * P_r)(\theta)$
+  hint: null
+  locator:
+    kind: page
+    value: '37'
+    number: 37
+  sub_index: 0
+  search_text: derive the poisson kernel on the unit disk $p_r(\theta) = \sum_{n=-\infty}^\infty r^{|n|}
+    e^{2\pi i n \theta} = \frac{1 - r^2}{1 - 2r\cos(2\pi\theta) + r^2}$ for $0 \le r < 1$, and express
+    the harmonic extension of $f \in l^1(\mathbb{t})$ as $u(r e^{2\pi i \theta}) = (f * p_r)(\theta)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#061
+  text: Characterize bounded translation-invariant linear operators $T$ on $L^p(\mathbb{T}^d)$ for the
+    endpoint cases $p = 1$ (convolution with measures $\mu \in M(\mathbb{T}^d)$) and $p = 2$ (multipliers
+    with bounded sequences $(m_n) \in \ell^\infty(\mathbb{Z}^d)$)
+  hint: null
+  locator:
+    kind: page
+    value: '41'
+    number: 41
+  sub_index: 0
+  search_text: characterize bounded translation-invariant linear operators $t$ on $l^p(\mathbb{t}^d)$
+    for the endpoint cases $p = 1$ (convolution with measures $\mu \in m(\mathbb{t}^d)$) and $p = 2$ (multipliers
+    with bounded sequences $(m_n) \in \ell^\infty(\mathbb{z}^d)$)
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#062
+  text: Compute the multi-dimensional Fourier series for $f \in L^1(\mathbb{T}^d)$ as $f(x) \sim \sum_{n
+    \in \mathbb{Z}^d} c_n(f) e^{2\pi i n \cdot x}$ with $c_n(f) = \int_{\mathbb{T}^d} f(t) e^{-2\pi i
+    n \cdot t} \, dt$
+  hint: null
+  locator:
+    kind: page
+    value: '42'
+    number: 42
+  sub_index: 0
+  search_text: compute the multi-dimensional fourier series for $f \in l^1(\mathbb{t}^d)$ as $f(x) \sim
+    \sum_{n \in \mathbb{z}^d} c_n(f) e^{2\pi i n \cdot x}$ with $c_n(f) = \int_{\mathbb{t}^d} f(t) e^{-2\pi
+    i n \cdot t} \, dt$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#063
+  text: For $f \in L^p(\mathbb{R}^d)$ and $\lambda > 0$, define the dilation operator $D_\lambda f(x)
+    = f(\lambda x)$. Compute the adjoint operator $D_\lambda^*$ with respect to the $L^2$-inner product,
+    and compute the Fourier transform $\widehat{D_\lambda f}(\xi)$
+  hint: null
+  locator:
+    kind: page
+    value: '46'
+    number: 46
+  sub_index: 0
+  search_text: for $f \in l^p(\mathbb{r}^d)$ and $\lambda > 0$, define the dilation operator $d_\lambda
+    f(x) = f(\lambda x)$. compute the adjoint operator $d_\lambda^*$ with respect to the $l^2$-inner product,
+    and compute the fourier transform $\widehat{d_\lambda f}(\xi)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#064
+  text: Let $P(D) = \sum_{|\alpha| \le m} a_\alpha D^\alpha$ with $D = \frac{1}{2\pi i} \nabla$. Express
+    the action of $P(D)$ on a test function in terms of its polynomial symbol $P(\xi) = \sum a_\alpha
+    \xi^\alpha$
+  hint: null
+  locator:
+    kind: page
+    value: '47'
+    number: 47
+  sub_index: 0
+  search_text: let $p(d) = \sum_{|\alpha| \le m} a_\alpha d^\alpha$ with $d = \frac{1}{2\pi i} \nabla$.
+    express the action of $p(d)$ on a test function in terms of its polynomial symbol $p(\xi) = \sum a_\alpha
+    \xi^\alpha$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#065
+  text: Show that the Fourier multiplier of $P(D)$ is $m(\xi) = P(\xi)$, so that $\widehat{P(D)f}(\xi)
+    = P(\xi)\widehat{f}(\xi)$
+  hint: null
+  locator:
+    kind: page
+    value: '47'
+    number: 47
+  sub_index: 1
+  search_text: show that the fourier multiplier of $p(d)$ is $m(\xi) = p(\xi)$, so that $\widehat{p(d)f}(\xi)
+    = p(\xi)\widehat{f}(\xi)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#066
+  text: 'Let $T$ be a linear operator commuting with rigid motions (translations and rotations $R \in
+    \mathrm{SO}(d)$). Show that $T(f \circ R) = (Tf) \circ R$, and deduce that its Fourier multiplier
+    is radial: $m(\xi) = m_0(|\xi|)$'
+  hint: null
+  locator:
+    kind: page
+    value: '48'
+    number: 48
+  sub_index: 0
+  search_text: 'let $t$ be a linear operator commuting with rigid motions (translations and rotations
+    $r \in \mathrm{so}(d)$). show that $t(f \circ r) = (tf) \circ r$, and deduce that its fourier multiplier
+    is radial: $m(\xi) = m_0(|\xi|)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#067
+  text: Compute the Fourier multiplier of the Laplacian $\Delta = \sum_{j=1}^d \frac{\partial^2}{\partial
+    x_j^2}$, and prove that any rotation-invariant polynomial differential operator must be a polynomial
+    in $\Delta$
+  hint: null
+  locator:
+    kind: page
+    value: '48'
+    number: 48
+  sub_index: 1
+  search_text: compute the fourier multiplier of the laplacian $\delta = \sum_{j=1}^d \frac{\partial^2}{\partial
+    x_j^2}$, and prove that any rotation-invariant polynomial differential operator must be a polynomial
+    in $\delta$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#068
+  text: Describe the geometric shape and decay behavior of the multi-dimensional Dirichlet kernel on $\mathbb{R}^d$
+  hint: null
+  locator:
+    kind: page
+    value: '49'
+    number: 49
+  sub_index: 0
+  search_text: describe the geometric shape and decay behavior of the multi-dimensional dirichlet kernel
+    on $\mathbb{r}^d$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#069
+  text: Express $f(x)$ as an oscillatory integral pairing against the Dirichlet kernel cut-offs
+  hint: null
+  locator:
+    kind: page
+    value: '49'
+    number: 49
+  sub_index: 1
+  search_text: express $f(x)$ as an oscillatory integral pairing against the dirichlet kernel cut-offs
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#070
+  text: Define the cubic partial sum operator $(S_R^c f)(x) = \int_{[-R, R]^d} \widehat{f}(\xi) e^{2\pi
+    i x \cdot \xi} \, d\xi$ as a convolution $f * D_R^c$, and analyze its integrability
+  hint: null
+  locator:
+    kind: page
+    value: '49'
+    number: 49
+  sub_index: 2
+  search_text: define the cubic partial sum operator $(s_r^c f)(x) = \int_{[-r, r]^d} \widehat{f}(\xi)
+    e^{2\pi i x \cdot \xi} \, d\xi$ as a convolution $f * d_r^c$, and analyze its integrability
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#071
+  text: Define the spherical partial sum operator $(S_R^s f)(x) = \int_{B(0, R)} \widehat{f}(\xi) e^{2\pi
+    i x \cdot \xi} \, d\xi = (f * D_R^s)(x)$, where $D_R^s(x)$ is the spherical Dirichlet kernel
+  hint: null
+  locator:
+    kind: page
+    value: '49'
+    number: 49
+  sub_index: 3
+  search_text: define the spherical partial sum operator $(s_r^s f)(x) = \int_{b(0, r)} \widehat{f}(\xi)
+    e^{2\pi i x \cdot \xi} \, d\xi = (f * d_r^s)(x)$, where $d_r^s(x)$ is the spherical dirichlet kernel
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#072
+  text: Formulate the smoothed Dirichlet summability means $S_\Phi^R f(x) = \int_{\mathbb{R}^d} \Phi(\xi/R)
+    \widehat{f}(\xi) e^{2\pi i x \cdot \xi} \, d\xi = (f * \Phi_R)(x)$, and state conditions on $\Phi$
+    under which $\Phi_R$ is an approximate identity
+  hint: null
+  locator:
+    kind: page
+    value: '50'
+    number: 50
+  sub_index: 0
+  search_text: formulate the smoothed dirichlet summability means $s_\phi^r f(x) = \int_{\mathbb{r}^d}
+    \phi(\xi/r) \widehat{f}(\xi) e^{2\pi i x \cdot \xi} \, d\xi = (f * \phi_r)(x)$, and state conditions
+    on $\phi$ under which $\phi_r$ is an approximate identity
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#073
+  text: Define the Poisson means $f_P(\varepsilon, x) = (f * P_\varepsilon)(x)$ for $\Phi(\xi) = e^{-2\pi
+    |\xi|}$
+  hint: null
+  locator:
+    kind: page
+    value: '51'
+    number: 51
+  sub_index: 0
+  search_text: define the poisson means $f_p(\varepsilon, x) = (f * p_\varepsilon)(x)$ for $\phi(\xi)
+    = e^{-2\pi |\xi|}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#074
+  text: Compute the inverse Fourier transform of $\Phi(\varepsilon \xi)$ and $e^{2\pi i x \cdot \xi}\Phi(\varepsilon
+    \xi)$, and show that $f_\Phi(\varepsilon, x) = (f * \phi_\varepsilon)(x)$ where $\phi = \mathcal{F}^{-1}\Phi$
+  hint: null
+  locator:
+    kind: page
+    value: '51'
+    number: 51
+  sub_index: 1
+  search_text: compute the inverse fourier transform of $\phi(\varepsilon \xi)$ and $e^{2\pi i x \cdot
+    \xi}\phi(\varepsilon \xi)$, and show that $f_\phi(\varepsilon, x) = (f * \phi_\varepsilon)(x)$ where
+    $\phi = \mathcal{f}^{-1}\phi$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#075
+  text: State the necessary conditions on $\Phi \in C_0(\mathbb{R}^d)$ with $\Phi(0) = 1$ such that $\phi_\varepsilon(x)
+    = \varepsilon^{-d}\phi(x/\varepsilon)$ forms an approximate identity
+  hint: null
+  locator:
+    kind: page
+    value: '51'
+    number: 51
+  sub_index: 2
+  search_text: state the necessary conditions on $\phi \in c_0(\mathbb{r}^d)$ with $\phi(0) = 1$ such
+    that $\phi_\varepsilon(x) = \varepsilon^{-d}\phi(x/\varepsilon)$ forms an approximate identity
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#076
+  text: For the Gaussian profile $\Phi(\xi) = e^{-\pi |\xi|^2}$, compute its Fourier transform $\phi(x)
+    = \mathcal{F}^{-1}\Phi(x) = e^{-\pi |x|^2}$. Prove the Unicity Theorem and the Inversion Theorem for
+    the Fourier transform on $\mathcal{S}(\mathbb{R}^d)$, and define the Fourier cotransform $\mathcal{F}^*
+    f(x) = \widehat{f}(-x)$
+  hint: null
+  locator:
+    kind: page
+    value: '52'
+    number: 52
+  sub_index: 0
+  search_text: for the gaussian profile $\phi(\xi) = e^{-\pi |\xi|^2}$, compute its fourier transform
+    $\phi(x) = \mathcal{f}^{-1}\phi(x) = e^{-\pi |x|^2}$. prove the unicity theorem and the inversion
+    theorem for the fourier transform on $\mathcal{s}(\mathbb{r}^d)$, and define the fourier cotransform
+    $\mathcal{f}^* f(x) = \widehat{f}(-x)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#077
+  text: Write the solution to the heat equation $\partial_t u = \Delta u$ on $\mathbb{R}^d \times (0,
+    \infty)$ with initial data $u(x, 0) = f(x)$ as a convolution $u(x, t) = (f * W_t)(x)$ using the Weierstrass/heat
+    kernel $W_t(x) = (4\pi t)^{-d/2} e^{-|x|^2/(4t)}$
+  hint: null
+  locator:
+    kind: page
+    value: '52'
+    number: 52
+  sub_index: 1
+  search_text: write the solution to the heat equation $\partial_t u = \delta u$ on $\mathbb{r}^d \times
+    (0, \infty)$ with initial data $u(x, 0) = f(x)$ as a convolution $u(x, t) = (f * w_t)(x)$ using the
+    weierstrass/heat kernel $w_t(x) = (4\pi t)^{-d/2} e^{-|x|^2/(4t)}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#078
+  text: For a continuous summability kernel $\Phi$, prove why the normalization condition $\Phi(0) = 1$
+    is necessary for $\int_{\mathbb{R}^d} \phi(x) \, dx = 1$
+  hint: null
+  locator:
+    kind: page
+    value: '53'
+    number: 53
+  sub_index: 0
+  search_text: for a continuous summability kernel $\phi$, prove why the normalization condition $\phi(0)
+    = 1$ is necessary for $\int_{\mathbb{r}^d} \phi(x) \, dx = 1$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#079
+  text: For $\Phi(\xi) = e^{-2\pi |\xi|}$, compute the Abel means and the explicit inverse Fourier transform
+    to obtain the Poisson kernel for the upper half-space $\mathbb{R}^{d+1}_+$
+  hint: null
+  locator:
+    kind: page
+    value: '53'
+    number: 53
+  sub_index: 1
+  search_text: for $\phi(\xi) = e^{-2\pi |\xi|}$, compute the abel means and the explicit inverse fourier
+    transform to obtain the poisson kernel for the upper half-space $\mathbb{r}^{d+1}_+$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#080
+  text: 'Define the Schwartz space of rapidly decreasing functions $\mathcal{S}(\mathbb{R}^d) = \{f \in
+    C^\infty(\mathbb{R}^d) : \sup_{x} |x^\beta D^\alpha f(x)| < \infty\}$. Prove that the Fourier transform
+    $\mathcal{F}: \mathcal{S}(\mathbb{R}^d) \to \mathcal{S}(\mathbb{R}^d)$ is an isomorphism, and show
+    that $\mathcal{F}(f * g) = \widehat{f} \cdot \widehat{g}$'
   hint: null
   locator:
     kind: page
     value: '54'
     number: 54
   sub_index: 0
-  search_text: 'define the schwartz space $\mathcal{s}(\mathbb{r}^d)$ and prove plancherel''s theorem:
-    the fourier transform extends to a unitary isomorphism on $l^2(\mathbb{r}^d)$'
-- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#007
-  text: Define tempered distributions $\mathcal{S}'(\mathbb{R}^d)$ and compute the distributional derivative
-    of the Heaviside step function $H'(x) = \delta(x)$
+  search_text: 'define the schwartz space of rapidly decreasing functions $\mathcal{s}(\mathbb{r}^d) =
+    \{f \in c^\infty(\mathbb{r}^d) : \sup_{x} |x^\beta d^\alpha f(x)| < \infty\}$. prove that the fourier
+    transform $\mathcal{f}: \mathcal{s}(\mathbb{r}^d) \to \mathcal{s}(\mathbb{r}^d)$ is an isomorphism,
+    and show that $\mathcal{f}(f * g) = \widehat{f} \cdot \widehat{g}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#081
+  text: 'Prove Plancherel''s Theorem: the Fourier transform restricted to $\mathcal{S}(\mathbb{R}^d)$
+    is an $L^2$-isometry ($\|\widehat{f}\|_{L^2} = \|f\|_{L^2}$), and extends uniquely to a unitary isomorphism
+    on $L^2(\mathbb{R}^d)$'
+  hint: null
+  locator:
+    kind: page
+    value: '54'
+    number: 54
+  sub_index: 1
+  search_text: 'prove plancherel''s theorem: the fourier transform restricted to $\mathcal{s}(\mathbb{r}^d)$
+    is an $l^2$-isometry ($\|\widehat{f}\|_{l^2} = \|f\|_{l^2}$), and extends uniquely to a unitary isomorphism
+    on $l^2(\mathbb{r}^d)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#082
+  text: Explain why continuous characters $e_\xi(x) = e^{2\pi i x \cdot \xi}$ do not belong to $L^2(\mathbb{R}^d)$,
+    and explain how the continuous spectral resolution of the identity replaces discrete orthonormal bases
+    via the formal relation $\int_{\mathbb{R}^d} e^{2\pi i x \cdot (\xi - \eta)} \, dx = \delta(\xi -
+    \eta)$
+  hint: null
+  locator:
+    kind: page
+    value: '55'
+    number: 55
+  sub_index: 0
+  search_text: explain why continuous characters $e_\xi(x) = e^{2\pi i x \cdot \xi}$ do not belong to
+    $l^2(\mathbb{r}^d)$, and explain how the continuous spectral resolution of the identity replaces discrete
+    orthonormal bases via the formal relation $\int_{\mathbb{r}^d} e^{2\pi i x \cdot (\xi - \eta)} \,
+    dx = \delta(\xi - \eta)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#083
+  text: Compute the kernel $K(x, \xi) = e^{-2\pi i x \cdot \xi}$ and its modulus. Verify the distributional
+    identity $\int_{\mathbb{R}^d} e^{2\pi i x \cdot \xi} \, d\xi = \delta_0(x)$
+  hint: null
+  locator:
+    kind: page
+    value: '55'
+    number: 55
+  sub_index: 1
+  search_text: compute the kernel $k(x, \xi) = e^{-2\pi i x \cdot \xi}$ and its modulus. verify the distributional
+    identity $\int_{\mathbb{r}^d} e^{2\pi i x \cdot \xi} \, d\xi = \delta_0(x)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#084
+  text: 'Let $T: L^2(\mathbb{R}^d) \to L^2(\mathbb{R}^d)$ be a bounded translation-invariant operator.
+    Prove that $T$ diagonalizes under the Fourier transform: $\widehat{Tf}(\xi) = m(\xi)\widehat{f}(\xi)$
+    for some $m \in L^\infty(\mathbb{R}^d)$ with $\|T\|_{\text{op}} = \|m\|_{L^\infty}$'
+  hint: null
+  locator:
+    kind: page
+    value: '56'
+    number: 56
+  sub_index: 0
+  search_text: 'let $t: l^2(\mathbb{r}^d) \to l^2(\mathbb{r}^d)$ be a bounded translation-invariant operator.
+    prove that $t$ diagonalizes under the fourier transform: $\widehat{tf}(\xi) = m(\xi)\widehat{f}(\xi)$
+    for some $m \in l^\infty(\mathbb{r}^d)$ with $\|t\|_{\text{op}} = \|m\|_{l^\infty}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#085
+  text: Compare the general representation of translation-invariant operators on $L^1(\mathbb{R}^d)$ ($Tf
+    = f * \mu$ for $\mu \in M(\mathbb{R}^d)$) with those on $L^2(\mathbb{R}^d)$ ($Tf = \mathcal{F}^{-1}(m
+    \cdot \widehat{f})$ for $m \in L^\infty(\mathbb{R}^d)$)
+  hint: null
+  locator:
+    kind: page
+    value: '56'
+    number: 56
+  sub_index: 1
+  search_text: compare the general representation of translation-invariant operators on $l^1(\mathbb{r}^d)$
+    ($tf = f * \mu$ for $\mu \in m(\mathbb{r}^d)$) with those on $l^2(\mathbb{r}^d)$ ($tf = \mathcal{f}^{-1}(m
+    \cdot \widehat{f})$ for $m \in l^\infty(\mathbb{r}^d)$)
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#086
+  text: 'Let $P: L^2(\mathbb{R}^d) \to L^2(\mathbb{R}^d)$ be an orthogonal projection operator commuting
+    with translations. Prove that $P^2 = P = P^*$ and characterize the subspace to which $f - Pf$ is orthogonal'
+  hint: null
+  locator:
+    kind: page
+    value: '57'
+    number: 57
+  sub_index: 0
+  search_text: 'let $p: l^2(\mathbb{r}^d) \to l^2(\mathbb{r}^d)$ be an orthogonal projection operator
+    commuting with translations. prove that $p^2 = p = p^*$ and characterize the subspace to which $f
+    - pf$ is orthogonal'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#087
+  text: Show that the Fourier multiplier of an orthogonal projection $P$ on $L^2(\mathbb{R}^d)$ satisfying
+    $P^2 = P$ must be a characteristic function $m(\xi) = \mathbf{1}_E(\xi)$ for some measurable set $E
+    \subseteq \mathbb{R}^d$
+  hint: null
+  locator:
+    kind: page
+    value: '57'
+    number: 57
+  sub_index: 1
+  search_text: show that the fourier multiplier of an orthogonal projection $p$ on $l^2(\mathbb{r}^d)$
+    satisfying $p^2 = p$ must be a characteristic function $m(\xi) = \mathbf{1}_e(\xi)$ for some measurable
+    set $e \subseteq \mathbb{r}^d$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#088
+  text: 'State Beurling''s theorem on translation-invariant subspaces of $L^2(\mathbb{R}^d)$: show that
+    the closed translation-invariant subspace generated by $f \in L^2(\mathbb{R}^d)$ is $\{g \in L^2(\mathbb{R}^d)
+    : \widehat{g}(\xi) = 0 \text{ whenever } \widehat{f}(\xi) = 0\}$'
+  hint: null
+  locator:
+    kind: page
+    value: '57'
+    number: 57
+  sub_index: 2
+  search_text: 'state beurling''s theorem on translation-invariant subspaces of $l^2(\mathbb{r}^d)$: show
+    that the closed translation-invariant subspace generated by $f \in l^2(\mathbb{r}^d)$ is $\{g \in
+    l^2(\mathbb{r}^d) : \widehat{g}(\xi) = 0 \text{ whenever } \widehat{f}(\xi) = 0\}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#089
+  text: Let $f, g \in L^1_{\text{loc}}(U)$. Prove that if $\int_U f(x)\phi(x)\,dx = \int_U g(x)\phi(x)\,dx$
+    for all $\phi \in \mathcal{D}(U) = C_c^\infty(U)$, then $f = g$ a.e., establishing the canonical injection
+    $L^1_{\text{loc}}(U) \hookrightarrow \mathcal{D}'(U)$
+  hint: null
+  locator:
+    kind: page
+    value: '59'
+    number: 59
+  sub_index: 0
+  search_text: let $f, g \in l^1_{\text{loc}}(u)$. prove that if $\int_u f(x)\phi(x)\,dx = \int_u g(x)\phi(x)\,dx$
+    for all $\phi \in \mathcal{d}(u) = c_c^\infty(u)$, then $f = g$ a.e., establishing the canonical injection
+    $l^1_{\text{loc}}(u) \hookrightarrow \mathcal{d}'(u)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#090
+  text: Define the space of distributions $\mathcal{D}'(U)$ as the topological dual of $\mathcal{D}(U)
+    = C_c^\infty(U)$ equipped with the inductive limit topology
+  hint: null
+  locator:
+    kind: page
+    value: '59'
+    number: 59
+  sub_index: 1
+  search_text: define the space of distributions $\mathcal{d}'(u)$ as the topological dual of $\mathcal{d}(u)
+    = c_c^\infty(u)$ equipped with the inductive limit topology
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#091
+  text: 'State the continuity criterion for a linear functional $u: \mathcal{D}(U) \to \mathbb{C}$ to
+    be a distribution: for every compact $K \subset U$, there exist $C > 0$ and $N \in \mathbb{N}_0$ such
+    that $|\langle u, \phi \rangle| \le C \sum_{|\alpha| \le N} \sup_K |D^\alpha \phi|$'
+  hint: null
+  locator:
+    kind: page
+    value: '59'
+    number: 59
+  sub_index: 2
+  search_text: 'state the continuity criterion for a linear functional $u: \mathcal{d}(u) \to \mathbb{c}$
+    to be a distribution: for every compact $k \subset u$, there exist $c > 0$ and $n \in \mathbb{n}_0$
+    such that $|\langle u, \phi \rangle| \le c \sum_{|\alpha| \le n} \sup_k |d^\alpha \phi|$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#092
+  text: Define a discrete Dirac comb / measure distribution $u = \sum_{j} c_j \delta_{a_j}$ for a locally
+    finite set of points $\{a_j\} \subset \mathbb{R}^d$
+  hint: null
+  locator:
+    kind: page
+    value: '60'
+    number: 60
+  sub_index: 0
+  search_text: define a discrete dirac comb / measure distribution $u = \sum_{j} c_j \delta_{a_j}$ for
+    a locally finite set of points $\{a_j\} \subset \mathbb{r}^d$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#093
+  text: Define the Cauchy principal value distribution $\operatorname{p.v.}\left(\frac{1}{x}\right) \in
+    \mathcal{D}'(\mathbb{R})$ by $\langle \operatorname{p.v.}(1/x), \phi \rangle = \lim_{\varepsilon \to
+    0^+} \int_{|x| > \varepsilon} \frac{\phi(x)}{x} \, dx$. Prove that this limit exists for all $\phi
+    \in \mathcal{D}(\mathbb{R})$, and explain why it is not a locally integrable function or a Radon measure
+  hint: null
+  locator:
+    kind: page
+    value: '61'
+    number: 61
+  sub_index: 0
+  search_text: define the cauchy principal value distribution $\operatorname{p.v.}\left(\frac{1}{x}\right)
+    \in \mathcal{d}'(\mathbb{r})$ by $\langle \operatorname{p.v.}(1/x), \phi \rangle = \lim_{\varepsilon
+    \to 0^+} \int_{|x| > \varepsilon} \frac{\phi(x)}{x} \, dx$. prove that this limit exists for all $\phi
+    \in \mathcal{d}(\mathbb{r})$, and explain why it is not a locally integrable function or a radon measure
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#094
+  text: For a distribution $u \in \mathcal{D}'(\mathbb{R}^d)$ and $x \in \mathbb{R}^d$, define the translated
+    distribution $\tau_x u$ via the adjoint pairing $\langle \tau_x u, \phi \rangle = \langle u, \tau_{-x}
+    \phi \rangle$
   hint: null
   locator:
     kind: page
     value: '62'
     number: 62
   sub_index: 0
-  search_text: define tempered distributions $\mathcal{s}'(\mathbb{r}^d)$ and compute the distributional
-    derivative of the heaviside step function $h'(x) = \delta(x)$
-- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#008
-  text: 'State the Malgrange-Ehrenpreis Theorem: every non-zero linear differential operator with constant
-    coefficients $P(D)$ admits a fundamental solution $P(D)E = \delta$'
+  search_text: for a distribution $u \in \mathcal{d}'(\mathbb{r}^d)$ and $x \in \mathbb{r}^d$, define
+    the translated distribution $\tau_x u$ via the adjoint pairing $\langle \tau_x u, \phi \rangle = \langle
+    u, \tau_{-x} \phi \rangle$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#095
+  text: Define the distributional derivative $D^\alpha u$ for $u \in \mathcal{D}'(U)$ by $\langle D^\alpha
+    u, \phi \rangle = (-1)^{|\alpha|} \langle u, D^\alpha \phi \rangle$ for all $\phi \in \mathcal{D}(U)$
+  hint: null
+  locator:
+    kind: page
+    value: '62'
+    number: 62
+  sub_index: 1
+  search_text: define the distributional derivative $d^\alpha u$ for $u \in \mathcal{d}'(u)$ by $\langle
+    d^\alpha u, \phi \rangle = (-1)^{|\alpha|} \langle u, d^\alpha \phi \rangle$ for all $\phi \in \mathcal{d}(u)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#096
+  text: 'Compute the distributional derivative of the Heaviside step function $H(x) = \mathbf{1}_{[0,
+    \infty)}(x)$ on $\mathbb{R}$: show that $\langle H'', \phi \rangle = -\int_0^\infty \phi''(x) \, dx
+    = \phi(0) = \langle \delta_0, \phi \rangle$, hence $H'' = \delta_0$'
+  hint: null
+  locator:
+    kind: page
+    value: '62'
+    number: 62
+  sub_index: 2
+  search_text: 'compute the distributional derivative of the heaviside step function $h(x) = \mathbf{1}_{[0,
+    \infty)}(x)$ on $\mathbb{r}$: show that $\langle h'', \phi \rangle = -\int_0^\infty \phi''(x) \, dx
+    = \phi(0) = \langle \delta_0, \phi \rangle$, hence $h'' = \delta_0$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#097
+  text: Let $f$ be a piecewise $C^1$ function with a jump discontinuity of height $\Delta f(x_0)$ at $x_0$.
+    Compute the distributional derivative $u_f'$ in terms of the classical derivative $f'$ and a Dirac
+    delta mass
+  hint: null
+  locator:
+    kind: page
+    value: '62'
+    number: 62
+  sub_index: 3
+  search_text: let $f$ be a piecewise $c^1$ function with a jump discontinuity of height $\delta f(x_0)$
+    at $x_0$. compute the distributional derivative $u_f'$ in terms of the classical derivative $f'$ and
+    a dirac delta mass
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#098
+  text: Prove in the sense of distributions on $\mathbb{R}$ that $\frac{d}{dx} \ln|x| = \operatorname{p.v.}\left(\frac{1}{x}\right)$
+  hint: null
+  locator:
+    kind: page
+    value: '63'
+    number: 63
+  sub_index: 0
+  search_text: prove in the sense of distributions on $\mathbb{r}$ that $\frac{d}{dx} \ln|x| = \operatorname{p.v.}\left(\frac{1}{x}\right)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#099
+  text: 'Define weak-* convergence $u_n \to u$ in $\mathcal{D}''(U)$ ($\langle u_n, \phi \rangle \to \langle
+    u, \phi \rangle$ for all $\phi \in \mathcal{D}(U)$), and prove that distributional differentiation
+    is continuous under weak-* limits: $u_n \to u \implies D^\alpha u_n \to D^\alpha u$'
+  hint: null
+  locator:
+    kind: page
+    value: '64'
+    number: 64
+  sub_index: 0
+  search_text: 'define weak-* convergence $u_n \to u$ in $\mathcal{d}''(u)$ ($\langle u_n, \phi \rangle
+    \to \langle u, \phi \rangle$ for all $\phi \in \mathcal{d}(u)$), and prove that distributional differentiation
+    is continuous under weak-* limits: $u_n \to u \implies d^\alpha u_n \to d^\alpha u$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#100
+  text: Evaluate the distributional convergence of the partial sums of the formal trigonometric series
+    $\sum_{n \in \mathbb{Z}} e^{2\pi i n x}$ in $\mathcal{D}'(\mathbb{T})$
+  hint: null
+  locator:
+    kind: page
+    value: '64'
+    number: 64
+  sub_index: 1
+  search_text: evaluate the distributional convergence of the partial sums of the formal trigonometric
+    series $\sum_{n \in \mathbb{z}} e^{2\pi i n x}$ in $\mathcal{d}'(\mathbb{t})$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#101
+  text: Define the space of compactly supported distributions $\mathcal{E}'(\mathbb{R}^d)$ as the dual
+    of $C^\infty(\mathbb{R}^d)$. State the continuity condition for $u \in \mathcal{E}'(\mathbb{R}^d)$
+  hint: null
+  locator:
+    kind: page
+    value: '65'
+    number: 65
+  sub_index: 0
+  search_text: define the space of compactly supported distributions $\mathcal{e}'(\mathbb{r}^d)$ as the
+    dual of $c^\infty(\mathbb{r}^d)$. state the continuity condition for $u \in \mathcal{e}'(\mathbb{r}^d)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#102
+  text: Compute the distributional derivative of the Fourier series representation of the sawtooth function
+    $f(x) = \frac{1}{2} + \frac{i}{2\pi} \sum_{n \ne 0} \frac{e^{2\pi i n x/a}}{n}$ on $\mathbb{R}$
+  hint: null
+  locator:
+    kind: page
+    value: '66'
+    number: 66
+  sub_index: 0
+  search_text: compute the distributional derivative of the fourier series representation of the sawtooth
+    function $f(x) = \frac{1}{2} + \frac{i}{2\pi} \sum_{n \ne 0} \frac{e^{2\pi i n x/a}}{n}$ on $\mathbb{r}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#103
+  text: 'Define the Fourier transform $\widehat{u}$ of a tempered distribution $u \in \mathcal{S}''(\mathbb{R}^d)$
+    via duality: $\langle \widehat{u}, \phi \rangle = \langle u, \widehat{\phi} \rangle$ for all $\phi
+    \in \mathcal{S}(\mathbb{R}^d)$. Why must $\mathcal{S}(\mathbb{R}^d)$ be used instead of $\mathcal{D}(\mathbb{R}^d)$?'
+  hint: null
+  locator:
+    kind: page
+    value: '67'
+    number: 67
+  sub_index: 0
+  search_text: 'define the fourier transform $\widehat{u}$ of a tempered distribution $u \in \mathcal{s}''(\mathbb{r}^d)$
+    via duality: $\langle \widehat{u}, \phi \rangle = \langle u, \widehat{\phi} \rangle$ for all $\phi
+    \in \mathcal{s}(\mathbb{r}^d)$. why must $\mathcal{s}(\mathbb{r}^d)$ be used instead of $\mathcal{d}(\mathbb{r}^d)$?'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#104
+  text: State the seminorm convergence condition $\sup_{x \in \mathbb{R}^d} |x^\beta D^\alpha \phi_n(x)|
+    \to 0$ defining the topology on $\mathcal{S}(\mathbb{R}^d)$, and state the continuity criterion for
+    $u \in \mathcal{S}'(\mathbb{R}^d)$
+  hint: null
+  locator:
+    kind: page
+    value: '67'
+    number: 67
+  sub_index: 1
+  search_text: state the seminorm convergence condition $\sup_{x \in \mathbb{r}^d} |x^\beta d^\alpha \phi_n(x)|
+    \to 0$ defining the topology on $\mathcal{s}(\mathbb{r}^d)$, and state the continuity criterion for
+    $u \in \mathcal{s}'(\mathbb{r}^d)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#105
+  text: 'Characterize tempered distributions $u \in \mathcal{S}''(\mathbb{R}^d)$ as distributions of finite
+    order with polynomial growth: $u = D^\alpha f$ where $f$ is a continuous function satisfying $|f(x)|
+    \le C(1 + |x|)^N$'
+  hint: null
+  locator:
+    kind: page
+    value: '68'
+    number: 68
+  sub_index: 0
+  search_text: 'characterize tempered distributions $u \in \mathcal{s}''(\mathbb{r}^d)$ as distributions
+    of finite order with polynomial growth: $u = d^\alpha f$ where $f$ is a continuous function satisfying
+    $|f(x)| \le c(1 + |x|)^n$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#106
+  text: Compute the Fourier transform of the Dirac delta distribution $\delta_0 \in \mathcal{S}'(\mathbb{R}^d)$
+  hint: null
+  locator:
+    kind: page
+    value: '70'
+    number: 70
+  sub_index: 0
+  search_text: compute the fourier transform of the dirac delta distribution $\delta_0 \in \mathcal{s}'(\mathbb{r}^d)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#107
+  text: Compute the Fourier transform of a finite sum of shifted Dirac deltas $\sum_{j=1}^n c_j \delta_{a_j}$,
+    and explicitly compute $\widehat{\delta_1}$ on $\mathbb{R}$
+  hint: null
+  locator:
+    kind: page
+    value: '70'
+    number: 70
+  sub_index: 1
+  search_text: compute the fourier transform of a finite sum of shifted dirac deltas $\sum_{j=1}^n c_j
+    \delta_{a_j}$, and explicitly compute $\widehat{\delta_1}$ on $\mathbb{r}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#108
+  text: Prove that $\mathcal{F}\left(\operatorname{p.v.}\left(\frac{1}{x}\right)\right)(\xi) = -i\pi \operatorname{sgn}(\xi)$
+    in $\mathcal{S}'(\mathbb{R})$
+  hint: null
+  locator:
+    kind: page
+    value: '70'
+    number: 70
+  sub_index: 2
+  search_text: prove that $\mathcal{f}\left(\operatorname{p.v.}\left(\frac{1}{x}\right)\right)(\xi) =
+    -i\pi \operatorname{sgn}(\xi)$ in $\mathcal{s}'(\mathbb{r})$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#109
+  text: 'State the Paley–Wiener Theorem for smooth functions with compact support: show that $\widehat{f}(\zeta)
+    = \int_{\mathbb{R}^d} f(x) e^{-2\pi i x \cdot \zeta} \, dx$ extends to an entire holomorphic function
+    on $\mathbb{C}^d$ satisfying exponential type bounds $|\widehat{f}(\zeta)| \le C_N (1 + |\zeta|)^{-N}
+    e^{2\pi R |\operatorname{Im} \zeta|}$'
+  hint: null
+  locator:
+    kind: page
+    value: '71'
+    number: 71
+  sub_index: 0
+  search_text: 'state the paley–wiener theorem for smooth functions with compact support: show that $\widehat{f}(\zeta)
+    = \int_{\mathbb{r}^d} f(x) e^{-2\pi i x \cdot \zeta} \, dx$ extends to an entire holomorphic function
+    on $\mathbb{c}^d$ satisfying exponential type bounds $|\widehat{f}(\zeta)| \le c_n (1 + |\zeta|)^{-n}
+    e^{2\pi r |\operatorname{im} \zeta|}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#110
+  text: 'State the Paley–Wiener–Schwartz Theorem: prove that $u \in \mathcal{E}''(\mathbb{R}^d)$ if and
+    only if $\widehat{u}(\zeta) = \langle u, e^{-2\pi i \langle \cdot, \zeta \rangle} \rangle$ is an entire
+    function on $\mathbb{C}^d$ of exponential growth $|\widehat{u}(\zeta)| \le C (1 + |\zeta|)^N e^{2\pi
+    R |\operatorname{Im} \zeta|}$'
+  hint: null
+  locator:
+    kind: page
+    value: '72'
+    number: 72
+  sub_index: 0
+  search_text: 'state the paley–wiener–schwartz theorem: prove that $u \in \mathcal{e}''(\mathbb{r}^d)$
+    if and only if $\widehat{u}(\zeta) = \langle u, e^{-2\pi i \langle \cdot, \zeta \rangle} \rangle$
+    is an entire function on $\mathbb{c}^d$ of exponential growth $|\widehat{u}(\zeta)| \le c (1 + |\zeta|)^n
+    e^{2\pi r |\operatorname{im} \zeta|}$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#111
+  text: For $u \in \mathcal{D}'(\mathbb{R}^d)$ and $\phi \in C_c^\infty(\mathbb{R}^d)$, define the convolution
+    $(u * \phi)(x) = \langle u, \tau_x \widetilde{\phi} \rangle$ with $\widetilde{\phi}(y) = \phi(-y)$,
+    and prove that $u * \phi \in C^\infty(\mathbb{R}^d)$
+  hint: null
+  locator:
+    kind: page
+    value: '73'
+    number: 73
+  sub_index: 0
+  search_text: for $u \in \mathcal{d}'(\mathbb{r}^d)$ and $\phi \in c_c^\infty(\mathbb{r}^d)$, define
+    the convolution $(u * \phi)(x) = \langle u, \tau_x \widetilde{\phi} \rangle$ with $\widetilde{\phi}(y)
+    = \phi(-y)$, and prove that $u * \phi \in c^\infty(\mathbb{r}^d)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#112
+  text: 'Prove the differentiation formula for distributional convolution: $D^\alpha(u * \phi) = (D^\alpha
+    u) * \phi = u * (D^\alpha \phi)$'
+  hint: null
+  locator:
+    kind: page
+    value: '73'
+    number: 73
+  sub_index: 1
+  search_text: 'prove the differentiation formula for distributional convolution: $d^\alpha(u * \phi)
+    = (d^\alpha u) * \phi = u * (d^\alpha \phi)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#113
+  text: For $u \in \mathcal{S}'(\mathbb{R}^d)$ and $\phi \in \mathcal{S}(\mathbb{R}^d)$, compute the Fourier
+    transform $\mathcal{F}(u * \phi) = \widehat{u} \cdot \widehat{\phi}$
+  hint: null
+  locator:
+    kind: page
+    value: '73'
+    number: 73
+  sub_index: 2
+  search_text: for $u \in \mathcal{s}'(\mathbb{r}^d)$ and $\phi \in \mathcal{s}(\mathbb{r}^d)$, compute
+    the fourier transform $\mathcal{f}(u * \phi) = \widehat{u} \cdot \widehat{\phi}$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#114
+  text: For $u \in \mathcal{E}'(\mathbb{R}^d)$ and $v \in \mathcal{S}'(\mathbb{R}^d)$, compute the Fourier
+    transform $\mathcal{F}(u \cdot v)$ as a convolution of distributions
+  hint: null
+  locator:
+    kind: page
+    value: '73'
+    number: 73
+  sub_index: 3
+  search_text: for $u \in \mathcal{e}'(\mathbb{r}^d)$ and $v \in \mathcal{s}'(\mathbb{r}^d)$, compute
+    the fourier transform $\mathcal{f}(u \cdot v)$ as a convolution of distributions
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#115
+  text: For $f, g \in L^1(\mathbb{R}^d)$ and $\phi \in \mathcal{D}(\mathbb{R}^d)$, express $\langle f
+    * g, \phi \rangle = \iint f(x) g(y) \phi(x+y) \, dx \, dy$, and use this pairing to define the convolution
+    $u * v$ for $u \in \mathcal{E}'(\mathbb{R}^d)$ and $v \in \mathcal{D}'(\mathbb{R}^d)$
+  hint: null
+  locator:
+    kind: page
+    value: '74'
+    number: 74
+  sub_index: 0
+  search_text: for $f, g \in l^1(\mathbb{r}^d)$ and $\phi \in \mathcal{d}(\mathbb{r}^d)$, express $\langle
+    f * g, \phi \rangle = \iint f(x) g(y) \phi(x+y) \, dx \, dy$, and use this pairing to define the convolution
+    $u * v$ for $u \in \mathcal{e}'(\mathbb{r}^d)$ and $v \in \mathcal{d}'(\mathbb{r}^d)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#116
+  text: Compute the convolution $\delta_0 * u$ for any distribution $u \in \mathcal{D}'(\mathbb{R}^d)$
+  hint: null
+  locator:
+    kind: page
+    value: '74'
+    number: 74
+  sub_index: 1
+  search_text: compute the convolution $\delta_0 * u$ for any distribution $u \in \mathcal{d}'(\mathbb{r}^d)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#117
+  text: 'Prove the Leibniz product rule for distributional derivatives of convolutions: $D^\alpha(u *
+    v) = (D^\alpha u) * v = u * (D^\alpha v)$ for $u \in \mathcal{E}''(\mathbb{R}^d), v \in \mathcal{D}''(\mathbb{R}^d)$'
+  hint: null
+  locator:
+    kind: page
+    value: '74'
+    number: 74
+  sub_index: 2
+  search_text: 'prove the leibniz product rule for distributional derivatives of convolutions: $d^\alpha(u
+    * v) = (d^\alpha u) * v = u * (d^\alpha v)$ for $u \in \mathcal{e}''(\mathbb{r}^d), v \in \mathcal{d}''(\mathbb{r}^d)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#118
+  text: 'Let $T: \mathcal{D}(\mathbb{R}^d) \to \mathcal{D}''(\mathbb{R}^d)$ be a continuous translation-invariant
+    linear operator. Prove that $T\phi = \phi * u$ for a unique distribution $u \in \mathcal{D}''(\mathbb{R}^d)$'
+  hint: null
+  locator:
+    kind: page
+    value: '75'
+    number: 75
+  sub_index: 0
+  search_text: 'let $t: \mathcal{d}(\mathbb{r}^d) \to \mathcal{d}''(\mathbb{r}^d)$ be a continuous translation-invariant
+    linear operator. prove that $t\phi = \phi * u$ for a unique distribution $u \in \mathcal{d}''(\mathbb{r}^d)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#119
+  text: Let $u \in \mathcal{D}'(\mathbb{R}^d)$ and let $\omega \in (\mathcal{D}'(\mathbb{R}^d))'$ be a
+    continuous linear functional on distributions. Use the reflexivity of test function spaces to express
+    $\omega(u)$ as a distributional pairing
+  hint: null
+  locator:
+    kind: page
+    value: '76'
+    number: 76
+  sub_index: 0
+  search_text: let $u \in \mathcal{d}'(\mathbb{r}^d)$ and let $\omega \in (\mathcal{d}'(\mathbb{r}^d))'$
+    be a continuous linear functional on distributions. use the reflexivity of test function spaces to
+    express $\omega(u)$ as a distributional pairing
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#120
+  text: Prove that $\mathcal{D}(\mathbb{R}^d)$ is dense in $\mathcal{E}'(\mathbb{R}^d)$ under the weak-*
+    topology by testing against smooth functions
+  hint: null
+  locator:
+    kind: page
+    value: '76'
+    number: 76
+  sub_index: 1
+  search_text: prove that $\mathcal{d}(\mathbb{r}^d)$ is dense in $\mathcal{e}'(\mathbb{r}^d)$ under the
+    weak-* topology by testing against smooth functions
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#121
+  text: 'State Hörmander''s theorem on translation-invariant operators on $\mathcal{S}(\mathbb{R}^d)$:
+    show that $T(\phi * \psi) = T\phi * \psi$, deduce that $\mathcal{F}(T\psi) = m \cdot \widehat{\psi}$,
+    and determine the space of multipliers $m \in \mathcal{O}_M(\mathbb{R}^d)$ (smooth functions of polynomial
+    growth)'
+  hint: null
+  locator:
+    kind: page
+    value: '77'
+    number: 77
+  sub_index: 0
+  search_text: 'state hörmander''s theorem on translation-invariant operators on $\mathcal{s}(\mathbb{r}^d)$:
+    show that $t(\phi * \psi) = t\phi * \psi$, deduce that $\mathcal{f}(t\psi) = m \cdot \widehat{\psi}$,
+    and determine the space of multipliers $m \in \mathcal{o}_m(\mathbb{r}^d)$ (smooth functions of polynomial
+    growth)'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#122
+  text: 'Define a fundamental solution $E \in \mathcal{D}''(\mathbb{R}^d)$ for a constant-coefficient
+    differential operator $P(D)$: $P(D)E = \delta_0$. Show that for any $f \in \mathcal{E}''(\mathbb{R}^d)$,
+    $u = E * f$ satisfies $P(D)u = f$. State the Malgrange–Ehrenpreis Theorem guaranteeing the existence
+    of a fundamental solution for every non-zero $P(D)$'
   hint: null
   locator:
     kind: page
     value: '78'
     number: 78
   sub_index: 0
-  search_text: 'state the malgrange-ehrenpreis theorem: every non-zero linear differential operator with
-    constant coefficients $p(d)$ admits a fundamental solution $p(d)e = \delta$'
+  search_text: 'define a fundamental solution $e \in \mathcal{d}''(\mathbb{r}^d)$ for a constant-coefficient
+    differential operator $p(d)$: $p(d)e = \delta_0$. show that for any $f \in \mathcal{e}''(\mathbb{r}^d)$,
+    $u = e * f$ satisfies $p(d)u = f$. state the malgrange–ehrenpreis theorem guaranteeing the existence
+    of a fundamental solution for every non-zero $p(d)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#123
+  text: Compute the Fourier multiplier $m(\xi) = -4\pi^2 |\xi|^2$ of the Laplacian $\Delta$ on $\mathbb{R}^d$.
+    Find the fundamental solution $E(x)$ such that $\Delta E = \delta_0$ for $d = 2$ ($E(x) = \frac{1}{2\pi}\ln|x|$)
+    and for $d > 2$ ($E(x) = \frac{1}{(2-d)\omega_d} |x|^{2-d}$), and compute $\Delta(E * f)$
+  hint: null
+  locator:
+    kind: page
+    value: '78'
+    number: 78
+  sub_index: 1
+  search_text: compute the fourier multiplier $m(\xi) = -4\pi^2 |\xi|^2$ of the laplacian $\delta$ on
+    $\mathbb{r}^d$. find the fundamental solution $e(x)$ such that $\delta e = \delta_0$ for $d = 2$ ($e(x)
+    = \frac{1}{2\pi}\ln|x|$) and for $d > 2$ ($e(x) = \frac{1}{(2-d)\omega_d} |x|^{2-d}$), and compute
+    $\delta(e * f)$
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#124
+  text: 'State Weyl''s Lemma for the Laplace equation: if $u \in \mathcal{D}''(U)$ satisfies $\Delta u
+    = f$ distributionally with $f \in C^\infty(U)$, prove that $u \in C^\infty(U)$ is a classical smooth
+    solution'
+  hint: null
+  locator:
+    kind: page
+    value: '78'
+    number: 78
+  sub_index: 2
+  search_text: 'state weyl''s lemma for the laplace equation: if $u \in \mathcal{d}''(u)$ satisfies $\delta
+    u = f$ distributionally with $f \in c^\infty(u)$, prove that $u \in c^\infty(u)$ is a classical smooth
+    solution'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#125
+  text: 'State and prove the Poisson Summation Formula: for $\phi \in \mathcal{S}(\mathbb{R}^d)$, $\sum_{n
+    \in \mathbb{Z}^d} \phi(n) = \sum_{k \in \mathbb{Z}^d} \widehat{\phi}(k)$. Derive the distributional
+    formulation $\sum_{n \in \mathbb{Z}} \delta_{na} = \frac{1}{a} \sum_{k \in \mathbb{Z}} \delta_{k/a}$
+    and compute the Fourier transform of $\sum_{n \in \mathbb{Z}} \phi(x - na)$'
+  hint: null
+  locator:
+    kind: page
+    value: '79'
+    number: 79
+  sub_index: 0
+  search_text: 'state and prove the poisson summation formula: for $\phi \in \mathcal{s}(\mathbb{r}^d)$,
+    $\sum_{n \in \mathbb{z}^d} \phi(n) = \sum_{k \in \mathbb{z}^d} \widehat{\phi}(k)$. derive the distributional
+    formulation $\sum_{n \in \mathbb{z}} \delta_{na} = \frac{1}{a} \sum_{k \in \mathbb{z}} \delta_{k/a}$
+    and compute the fourier transform of $\sum_{n \in \mathbb{z}} \phi(x - na)$'
+- id: www-maths-ox-ac-uk-system-files-media-harmanslides-pdf#126
+  text: 'Let $f \in L^1_{\text{loc}}(\mathbb{R})$ be an $a$-periodic function with Fourier expansion $f(x)
+    \sim \sum_{n \in \mathbb{Z}} c_n(f) e^{2\pi i n x/a}$. Compute the Fourier transform of $f$ in the
+    space of tempered distributions $\mathcal{S}''(\mathbb{R})$ as a weighted sum of Dirac deltas: $\widehat{f}
+    = \frac{1}{a} \sum_{n \in \mathbb{Z}} c_n(f) \delta_{n/a}$'
+  hint: null
+  locator:
+    kind: page
+    value: '80'
+    number: 80
+  sub_index: 0
+  search_text: 'let $f \in l^1_{\text{loc}}(\mathbb{r})$ be an $a$-periodic function with fourier expansion
+    $f(x) \sim \sum_{n \in \mathbb{z}} c_n(f) e^{2\pi i n x/a}$. compute the fourier transform of $f$
+    in the space of tempered distributions $\mathcal{s}''(\mathbb{r})$ as a weighted sum of dirac deltas:
+    $\widehat{f} = \frac{1}{a} \sum_{n \in \mathbb{z}} c_n(f) \delta_{n/a}$'
