@@ -1650,3 +1650,17 @@ https://www.ms.u-tokyo.ac.jp/~yasuyuki/yamashita-crest2022-3.pdf, differential c
 	- How does one invent the notion of the relative $K^0$-group of $K^0(X,Y)$?
 	- What is the Bunke-Schick axiom of differential cohomology?
 	- What is the Hopkins-Singer model of differential cohomology?
+	- What is the basic dictionary between ordinary topology and differential cohomology for the first Chern class? (Hint: Line bundles)
+	- What is the basic dictionary between ordinary topology and differential cohomology for the closed two form? (Hint: Curvature)
+	- What is the basic dictionary between ordinary topology and differential cohomology for the loops around curve? (Hint: Holonomy)
+	- What is the basic dictionary between ordinary topology and differential cohomology for the flat bundles? (Hint: Kernel of curvature map. This is because one can think about the curvature map as some classification, those that are killed off and mapped to zero correspond to flat bundles.)
+	- What is the basic dictionary between ordinary topology and differential cohomology for the torsion and integrality? (Hint: the periods of the curvature form integrate to integers over cycles, capturing the quantisation of fields in Physics.)
+	- What is the basic dictionary between ordinary topology and differential cohomology for the torsion and integrality? (Hint: the periods of the curvature form integrate to integers over cycles, capturing the quantisation of fields in Physics.)
+	- How does the first Pontrjagin number of 4-manifolds recover Chern-Simons theory? (Hint: Differential Pontrjagin classes can be used to show that $SO(3)$ or $\mathbb{R}P^3$ with the usual metric of constant curvature does not admit a conformal immersion in $\mathbb{R}^4$. See Chern, Shiing Shen; Simons, James Characteristic forms and geometric invariants. Ann. of Math. (2) 99 (1974), 48–69)
+
+https://math.dartmouth.edu/~lesen/notes/talk_slides.pdf, Shimura varieties slides
+	- How does one define multiplication by an imaginary number by defining an endomorphism? (Hint: pick $J$ such that $J^2 = -1$)
+	- Fix a standard symplectic form $\psi$. Define $G = \mathrm{GSp}_2g(\mathbb{R})$. Show that the standard Siegel modular variety $M := \{A + Bi \in \mathrm{Sym}_g(\mathbb{C}): B > 0\}$ is identified with the description as a $G(\mathbb{R})$-conjugacy class of homomorphisms $h: \mathbb{S} \rightarrow G_\mathbb{R}$ (from the Deligne torus). Show that with this identification, if the associated $M / \Gamma(N)$ and $D/K(N)$ both parameterise abelian varieties with level $N$ structure for all $N$, then the moduli functors are represented by the same variety.
+	- Define the unitary Shimura variety. (Hint: Write down the $I_{a,b}$ matrix?)
+	- How does one check and prove the axioms relevant to unitary Shimura varieties? (Hint: SV1 to SV6)
+	- How does one motivate the Shimura variety axioms as presented by Pierre Deligne? What are the defining conditions of a Shimura datum and why?
