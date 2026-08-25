@@ -1,44 +1,1512 @@
 url: https://opus.bibliothek.uni-augsburg.de/opus4/files/42513/notes.pdf
-title: Blechschmidt's thesis on the internal language of schemes
+title: Blechschmidt's thesis and slides
 note: null
 tags: []
 source_file: exercises.txt
-locator_kind: page
+locator_kind: mixed
 exercises:
 - id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#000
-  text: 'Explain the internal translation in $\operatorname{Sh}(X)$: an $\mathcal{O}_X$-module $\mathcal{F}$
-    is of finite type if and only if it is internally a finitely generated module over the ring object
-    $\mathcal{O}_X$'
-  hint: null
+  text: Compute the internal meaning of a sheaf of $\mathcal{O}_X$-modules to be of finite type
+  hint: 'An $\mathcal{O}_X$-module $\mathcal{F}$ is locally of finite type externally if and only if internally
+    in $\mathbf{Sh}(X)$ it is a finitely generated $\mathcal{O}_X$-module: $\mathbf{Sh}(X) \models \exists
+    n \in \mathbb{N},\, \exists x_1, \dots, x_n \in \mathcal{F},\, \forall x \in \mathcal{F},\, \exists
+    a_1, \dots, a_n \in \mathcal{O}_X,\, x = \sum_{i=1}^n a_i x_i$.'
   locator:
     kind: page
     value: '11'
     number: 11
   sub_index: 0
-  search_text: 'explain the internal translation in $\operatorname{sh}(x)$: an $\mathcal{o}_x$-module
-    $\mathcal{f}$ is of finite type if and only if it is internally a finitely generated module over the
-    ring object $\mathcal{o}_x$'
+  search_text: 'compute the internal meaning of a sheaf of $\mathcal{o}_x$-modules to be of finite type
+    an $\mathcal{o}_x$-module $\mathcal{f}$ is locally of finite type externally if and only if internally
+    in $\mathbf{sh}(x)$ it is a finitely generated $\mathcal{o}_x$-module: $\mathbf{sh}(x) \models \exists
+    n \in \mathbb{n},\, \exists x_1, \dots, x_n \in \mathcal{f},\, \forall x \in \mathcal{f},\, \exists
+    a_1, \dots, a_n \in \mathcal{o}_x,\, x = \sum_{i=1}^n a_i x_i$.'
 - id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#001
-  text: 'Translate Kripke-Joyal semantics for open sets $U \subseteq X$: $U \Vdash \phi \land \psi \iff
-    (U \Vdash \phi \text{ and } U \Vdash \psi)$, and $U \Vdash \exists x \, \phi(x) \iff$ there is an
-    open cover $U = \bigcup U_i$ with sections $s_i \in \mathcal{F}(U_i)$ such that $U_i \Vdash \phi(s_i)$'
-  hint: null
+  text: Compute using a commutative algebra fact the finite generation of the middle term in a short exact
+    sequence of modules, and deduce the sheaf version
+  hint: In ordinary algebra, if $0 \to M' \to M \to M'' \to 0$ is exact and $M', M''$ are finitely generated,
+    then $M$ is finitely generated; since the internal logic of $\mathbf{Sh}(X)$ validates constructive
+    module algebra, if $\mathcal{F}'$ and $\mathcal{F}''$ are locally of finite type, then $\mathcal{F}$
+    is locally of finite type.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 1
+  search_text: compute using a commutative algebra fact the finite generation of the middle term in a
+    short exact sequence of modules, and deduce the sheaf version in ordinary algebra, if $0 \to m' \to
+    m \to m'' \to 0$ is exact and $m', m''$ are finitely generated, then $m$ is finitely generated; since
+    the internal logic of $\mathbf{sh}(x)$ validates constructive module algebra, if $\mathcal{f}'$ and
+    $\mathcal{f}''$ are locally of finite type, then $\mathcal{f}$ is locally of finite type.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#002
+  text: Compute the external meaning of a plain ring internal to $\mathbf{Sh}(X)$
+  hint: The structure sheaf of rings $\mathcal{O}_X$ itself.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 2
+  search_text: compute the external meaning of a plain ring internal to $\mathbf{sh}(x)$ the structure
+    sheaf of rings $\mathcal{o}_x$ itself.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#003
+  text: Compute the functor of points from $A$ to the category of Sets
+  hint: The functor $h_A = \mathrm{Hom}_{\mathbf{CAlg}}(A, -) \colon \mathbf{CAlg} \to \mathbf{Set}$,
+    evaluating affine schemes on test algebras.
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 0
+  search_text: compute the functor of points from $a$ to the category of sets the functor $h_a = \mathrm{hom}_{\mathbf{calg}}(a,
+    -) \colon \mathbf{calg} \to \mathbf{set}$, evaluating affine schemes on test algebras.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#004
+  text: 'Compute the internal meaning of Grothendieck''s generic freeness lemma: $\mathcal{F}$ is locally
+    free on some dense open subset'
+  hint: 'Any finitely generated vector space over a field is not not free: $\mathbf{Sh}(X) \models \neg\neg(\mathcal{F}
+    \text{ is free})$, since double negation $\neg\neg$ corresponds externally to validity on a dense
+    open subset.'
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 1
+  search_text: 'compute the internal meaning of grothendieck''s generic freeness lemma: $\mathcal{f}$
+    is locally free on some dense open subset any finitely generated vector space over a field is not
+    not free: $\mathbf{sh}(x) \models \neg\neg(\mathcal{f} \text{ is free})$, since double negation $\neg\neg$
+    corresponds externally to validity on a dense open subset.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#005
+  text: Compute the modal translation of a statement $\phi$, denoted $\phi^\square$
+  hint: $\phi^\square$ means the evaluation/validity of $\phi$ over all stalks/germs or over every open
+    neighborhood of a point.
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 2
+  search_text: compute the modal translation of a statement $\phi$, denoted $\phi^\square$ $\phi^\square$
+    means the evaluation/validity of $\phi$ over all stalks/germs or over every open neighborhood of a
+    point.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#006
+  text: Compute the modal translation of the statement $\square\phi$
+  hint: $\square\phi$ means $\phi$ holds over an open neighborhood of the given locus/point.
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 3
+  search_text: compute the modal translation of the statement $\square\phi$ $\square\phi$ means $\phi$
+    holds over an open neighborhood of the given locus/point.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#007
+  text: (Warm Up) Compute the hierarchy of points, infinitesimals, formals, germs/local functions/stalkwise,
+    open neighborhoods of finite sets
+  hint: Points $\subset$ Infinitesimals $\mathbb{D} = \mathrm{Spec}(k[\epsilon]/\epsilon^2) \subset$ Formal
+    neighborhoods $\mathrm{Spf}(\widehat{\mathcal{O}}_{X, x}) \subset$ Germs/stalks $\mathcal{O}_{X, x}
+    = \varinjlim_{U \ni x} \mathcal{O}_X(U) \subset$ Étale/open neighborhoods $U \subset X$.
+  locator: null
+  sub_index: null
+  search_text: (warm up) compute the hierarchy of points, infinitesimals, formals, germs/local functions/stalkwise,
+    open neighborhoods of finite sets points $\subset$ infinitesimals $\mathbb{d} = \mathrm{spec}(k[\epsilon]/\epsilon^2)
+    \subset$ formal neighborhoods $\mathrm{spf}(\widehat{\mathcal{o}}_{x, x}) \subset$ germs/stalks $\mathcal{o}_{x,
+    x} = \varinjlim_{u \ni x} \mathcal{o}_x(u) \subset$ étale/open neighborhoods $u \subset x$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#008
+  text: Compute the internalisation of an affine line
+  hint: The affine line $\mathbb{A}^1$ is the internal scalar field/ring object $\mathcal{O}_X$ in $\mathbf{Zar}(S)$.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 0
+  search_text: compute the internalisation of an affine line the affine line $\mathbb{a}^1$ is the internal
+    scalar field/ring object $\mathcal{o}_x$ in $\mathbf{zar}(s)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#009
+  text: Compute the parameter space of the irreducible closed subsets using the classical set theory approach
+    to schemes
+  hint: The topological space of points of $\mathrm{Spec}(A)$, where closed points correspond to maximal
+    ideals and generic points correspond to non-maximal prime ideals.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 1
+  search_text: compute the parameter space of the irreducible closed subsets using the classical set theory
+    approach to schemes the topological space of points of $\mathrm{spec}(a)$, where closed points correspond
+    to maximal ideals and generic points correspond to non-maximal prime ideals.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#010
+  text: Compute the equaliser diagram of a cover via a functor as the external logic
+  hint: For an open cover $U = \coprod U_i \to X$, the sheaf condition is the equalizer $\mathcal{F}(X)
+    \to \prod_i \mathcal{F}(U_i) \rightrightarrows \prod_{i, j} \mathcal{F}(U_i \cap U_j)$.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 0
+  search_text: compute the equaliser diagram of a cover via a functor as the external logic for an open
+    cover $u = \coprod u_i \to x$, the sheaf condition is the equalizer $\mathcal{f}(x) \to \prod_i \mathcal{f}(u_i)
+    \rightrightarrows \prod_{i, j} \mathcal{f}(u_i \cap u_j)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#011
+  text: Construct the big Zariski topos using ideas from this condition
+  hint: The big Zariski topos $\mathbf{Zar}(S) = \mathbf{Sh}(\mathbf{Sch}/S, \text{Zariski})$ is the topos
+    of sheaves on the category of all $S$-schemes with the Zariski Grothendieck topology.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 1
+  search_text: construct the big zariski topos using ideas from this condition the big zariski topos $\mathbf{zar}(s)
+    = \mathbf{sh}(\mathbf{sch}/s, \text{zariski})$ is the topos of sheaves on the category of all $s$-schemes
+    with the zariski grothendieck topology.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#012
+  text: Compute the value of the object $\mathbb{A}^1$ on an $X$-scheme, its ring object structure in
+    $\mathbf{Zar}(X)$, and its internal meaning
+  hint: Externally, $\mathbb{A}^1(Y) = \Gamma(Y, \mathcal{O}_Y)$; as a ring object it is the affine line
+    scheme $\mathbb{A}_X^1$; internally, $\mathbb{A}^1$ is the base field/continuum of scalars.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 2
+  search_text: compute the value of the object $\mathbb{a}^1$ on an $x$-scheme, its ring object structure
+    in $\mathbf{zar}(x)$, and its internal meaning externally, $\mathbb{a}^1(y) = \gamma(y, \mathcal{o}_y)$;
+    as a ring object it is the affine line scheme $\mathbb{a}_x^1$; internally, $\mathbb{a}^1$ is the
+    base field/continuum of scalars.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#013
+  text: Compute the synthetic spectrum of an $\mathbb{A}_X^1$-algebra $A$
+  hint: $\mathrm{Spec}_{\mathrm{synth}}(A) = \underline{\mathrm{Hom}}_{\mathbf{CAlg}(\mathbb{A}^1)}(A,
+    \mathbb{A}^1)$, the internal scheme/space of homomorphisms into the base line.
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 0
+  search_text: compute the synthetic spectrum of an $\mathbb{a}_x^1$-algebra $a$ $\mathrm{spec}_{\mathrm{synth}}(a)
+    = \underline{\mathrm{hom}}_{\mathbf{calg}(\mathbb{a}^1)}(a, \mathbb{a}^1)$, the internal scheme/space
+    of homomorphisms into the base line.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#014
+  text: Compute the internalisation of a sheaf of modules to be quasi-coherent
+  hint: 'An $\mathcal{O}_X$-module $\mathcal{F}$ is quasi-coherent iff internally it is presented as the
+    cokernel of a morphism between free $\mathcal{O}_X$-modules: $\mathcal{O}_X^{\oplus I} \to \mathcal{O}_X^{\oplus
+    J} \to \mathcal{F} \to 0$.'
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 1
+  search_text: 'compute the internalisation of a sheaf of modules to be quasi-coherent an $\mathcal{o}_x$-module
+    $\mathcal{f}$ is quasi-coherent iff internally it is presented as the cokernel of a morphism between
+    free $\mathcal{o}_x$-modules: $\mathcal{o}_x^{\oplus i} \to \mathcal{o}_x^{\oplus j} \to \mathcal{f}
+    \to 0$.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#015
+  text: Compute the implication of a scheme with internal language having a weak form of disjunction property
+    in mathematical logic
+  hint: If $\mathbf{Sh}(X) \models \phi \lor \psi$ and $X$ is connected, then either $\mathbf{Sh}(X) \models
+    \phi$ or $\mathbf{Sh}(X) \models \psi$; for disconnected schemes it forces a partition of $X$ into
+    open loci where each disjunct holds.
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 2
+  search_text: compute the implication of a scheme with internal language having a weak form of disjunction
+    property in mathematical logic if $\mathbf{sh}(x) \models \phi \lor \psi$ and $x$ is connected, then
+    either $\mathbf{sh}(x) \models \phi$ or $\mathbf{sh}(x) \models \psi$; for disconnected schemes it
+    forces a partition of $x$ into open loci where each disjunct holds.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#016
+  text: Compute the external meaning of $[X, Y]$ (the internal mapping object)
+  hint: The sheaf of local morphisms $\underline{\mathrm{Hom}}(X, Y)$ whose sections over $U$ are $\mathrm{Hom}_{\mathbf{Sh}(U)}(X|_U,
+    Y|_U)$.
+  locator:
+    kind: page
+    value: '16'
+    number: 16
+  sub_index: 0
+  search_text: compute the external meaning of $[x, y]$ (the internal mapping object) the sheaf of local
+    morphisms $\underline{\mathrm{hom}}(x, y)$ whose sections over $u$ are $\mathrm{hom}_{\mathbf{sh}(u)}(x|_u,
+    y|_u)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#017
+  text: Compute the separator of the category of Sets
+  hint: The singleton set $1 = \{*\}$, since $\mathrm{Hom}(1, X) \cong X$ distinguishes all elements and
+    morphisms.
+  locator:
+    kind: page
+    value: '17'
+    number: 17
+  sub_index: 0
+  search_text: compute the separator of the category of sets the singleton set $1 = \{*\}$, since $\mathrm{hom}(1,
+    x) \cong x$ distinguishes all elements and morphisms.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#018
+  text: Compute the external meaning of $U \Vdash (s = t)$ for sections $s, t \in \mathcal{F}$
+  hint: $s|_U = t|_U \in \mathcal{F}(U)$.
   locator:
     kind: page
     value: '19'
     number: 19
   sub_index: 0
-  search_text: 'translate kripke-joyal semantics for open sets $u \subseteq x$: $u \vdash \phi \land \psi
-    \iff (u \vdash \phi \text{ and } u \vdash \psi)$, and $u \vdash \exists x \, \phi(x) \iff$ there is
-    an open cover $u = \bigcup u_i$ with sections $s_i \in \mathcal{f}(u_i)$ such that $u_i \vdash \phi(s_i)$'
-- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#002
-  text: 'Formulate the internal property that $\mathcal{O}_X$ is a local ring: $1 \ne 0$ and $x + y \text{
-    is invertible} \implies (x \text{ is invertible} \lor y \text{ is invertible})$'
-  hint: null
+  search_text: compute the external meaning of $u \vdash (s = t)$ for sections $s, t \in \mathcal{f}$
+    $s|_u = t|_u \in \mathcal{f}(u)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#019
+  text: Compute the external meaning of $U \Vdash (s \in \mathcal{G})$ for a subsheaf $\mathcal{G} \subset
+    \mathcal{F}$
+  hint: $s|_U \in \mathcal{G}(U) \subset \mathcal{F}(U)$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 1
+  search_text: compute the external meaning of $u \vdash (s \in \mathcal{g})$ for a subsheaf $\mathcal{g}
+    \subset \mathcal{f}$ $s|_u \in \mathcal{g}(u) \subset \mathcal{f}(u)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#020
+  text: Compute the external meaning of $U \Vdash \top$
+  hint: Always holds for any open $U \subset X$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 2
+  search_text: compute the external meaning of $u \vdash \top$ always holds for any open $u \subset x$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#021
+  text: Compute the external meaning of $U \Vdash \bot$
+  hint: Holds if and only if $U = \emptyset$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 3
+  search_text: compute the external meaning of $u \vdash \bot$ holds if and only if $u = \emptyset$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#022
+  text: Compute the internal meaning of $U \Vdash \bigwedge_{j \in J} \phi_j$
+  hint: $U \Vdash \phi_j$ holds for all $j \in J$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 4
+  search_text: compute the internal meaning of $u \vdash \bigwedge_{j \in j} \phi_j$ $u \vdash \phi_j$
+    holds for all $j \in j$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#023
+  text: Compute the external meaning of $U \Vdash \phi$ for $U = \bigcup_i U_i$
+  hint: $U \Vdash \phi \iff \forall i,\, U_i \Vdash \phi$ (sheaf locality).
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 5
+  search_text: compute the external meaning of $u \vdash \phi$ for $u = \bigcup_i u_i$ $u \vdash \phi
+    \iff \forall i,\, u_i \vdash \phi$ (sheaf locality).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#024
+  text: Compute the external meaning of $U \Vdash \bigvee_{j \in J} \phi_j$
+  hint: There exists an open cover $U = \bigcup_{i} U_i$ and a choice $j(i) \in J$ such that $U_i \Vdash
+    \phi_{j(i)}$ for each $i$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 6
+  search_text: compute the external meaning of $u \vdash \bigvee_{j \in j} \phi_j$ there exists an open
+    cover $u = \bigcup_{i} u_i$ and a choice $j(i) \in j$ such that $u_i \vdash \phi_{j(i)}$ for each
+    $i$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#025
+  text: Compute the external meaning of $U \Vdash (\phi \implies \psi)$
+  hint: For all open subsets $V \subset U$, if $V \Vdash \phi$ then $V \Vdash \psi$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 7
+  search_text: compute the external meaning of $u \vdash (\phi \implies \psi)$ for all open subsets $v
+    \subset u$, if $v \vdash \phi$ then $v \vdash \psi$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#026
+  text: Compute the meaning of $U \Vdash \forall s \in \mathcal{F},\, \phi(s)$
+  hint: For all open $V \subset U$ and all sections $s \in \mathcal{F}(V)$, $V \Vdash \phi(s)$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 8
+  search_text: compute the meaning of $u \vdash \forall s \in \mathcal{f},\, \phi(s)$ for all open $v
+    \subset u$ and all sections $s \in \mathcal{f}(v)$, $v \vdash \phi(s)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#027
+  text: Compute the meaning of $U \Vdash \exists s \in \mathcal{F},\, \phi(s)$
+  hint: There exists an open cover $U = \bigcup_i U_i$ and sections $s_i \in \mathcal{F}(U_i)$ such that
+    $U_i \Vdash \phi(s_i)$ for all $i$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 9
+  search_text: compute the meaning of $u \vdash \exists s \in \mathcal{f},\, \phi(s)$ there exists an
+    open cover $u = \bigcup_i u_i$ and sections $s_i \in \mathcal{f}(u_i)$ such that $u_i \vdash \phi(s_i)$
+    for all $i$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#028
+  text: Compute the meaning of $U \Vdash \forall \mathcal{F},\, \phi(\mathcal{F})$
+  hint: For all open $V \subset U$ and all sheaves $\mathcal{F}$ over $V$, $V \Vdash \phi(\mathcal{F})$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 10
+  search_text: compute the meaning of $u \vdash \forall \mathcal{f},\, \phi(\mathcal{f})$ for all open
+    $v \subset u$ and all sheaves $\mathcal{f}$ over $v$, $v \vdash \phi(\mathcal{f})$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#029
+  text: Compute the meaning of $U \Vdash \exists \mathcal{F},\, \phi(\mathcal{F})$
+  hint: There exists an open cover $U = \bigcup_i U_i$ and sheaves $\mathcal{F}_i \in \mathbf{Sh}(U_i)$
+    such that $U_i \Vdash \phi(\mathcal{F}_i)$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 11
+  search_text: compute the meaning of $u \vdash \exists \mathcal{f},\, \phi(\mathcal{f})$ there exists
+    an open cover $u = \bigcup_i u_i$ and sheaves $\mathcal{f}_i \in \mathbf{sh}(u_i)$ such that $u_i
+    \vdash \phi(\mathcal{f}_i)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#030
+  text: Compute the external meaning of $\mathbf{Sh}(X) \models \mathcal{F} \text{ is finite free}$
+  hint: '$\mathcal{F}$ is locally free of finite rank: there exists an open cover $X = \bigcup_i U_i$
+    such that $\mathcal{F}|_{U_i} \cong \mathcal{O}_{U_i}^{n_i}$ for $n_i \in \mathbb{N}$.'
+  locator:
+    kind: page
+    value: '20'
+    number: 20
+  sub_index: 0
+  search_text: 'compute the external meaning of $\mathbf{sh}(x) \models \mathcal{f} \text{ is finite free}$
+    $\mathcal{f}$ is locally free of finite rank: there exists an open cover $x = \bigcup_i u_i$ such
+    that $\mathcal{f}|_{u_i} \cong \mathcal{o}_{u_i}^{n_i}$ for $n_i \in \mathbb{n}$.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#031
+  text: Compute the external meaning of $\mathbf{Sh}(X) \models \neg\neg(\mathcal{F} \text{ is finite
+    free})$
+  hint: There exists a dense open subset $U \subset X$ such that $\mathcal{F}|_U$ is locally free of finite
+    rank.
+  locator:
+    kind: page
+    value: '20'
+    number: 20
+  sub_index: 1
+  search_text: compute the external meaning of $\mathbf{sh}(x) \models \neg\neg(\mathcal{f} \text{ is
+    finite free})$ there exists a dense open subset $u \subset x$ such that $\mathcal{f}|_u$ is locally
+    free of finite rank.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#032
+  text: Compute the external meaning of $U \Vdash \forall s \in \mathcal{F},\, \forall t \in \mathcal{G},\,
+    \phi(s, t)$
+  hint: 'Step 1: Germ equivalence; Step 2: For all open $V \subset U$; Step 3: For all $s \in \mathcal{F}(V)$
+    and $t \in \mathcal{G}(V)$, $V \Vdash \phi(s, t)$.'
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 0
+  search_text: 'compute the external meaning of $u \vdash \forall s \in \mathcal{f},\, \forall t \in \mathcal{g},\,
+    \phi(s, t)$ step 1: germ equivalence; step 2: for all open $v \subset u$; step 3: for all $s \in \mathcal{f}(v)$
+    and $t \in \mathcal{g}(v)$, $v \vdash \phi(s, t)$.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#033
+  text: Compute the internalisation of $\phi$ holding nowhere
+  hint: $X \Vdash \neg\phi$, equivalently $\phi \implies \bot$.
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 1
+  search_text: compute the internalisation of $\phi$ holding nowhere $x \vdash \neg\phi$, equivalently
+    $\phi \implies \bot$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#034
+  text: Compute the externalisation of "$\mathbf{Sh}(X) \not\models (f \in \mathcal{O}_X^\times)$" vs.
+    "$\mathbf{Sh}(X) \models \neg(f \in \mathcal{O}_X^\times)$"
+  hint: $\mathbf{Sh}(X) \not\models (f \in \mathcal{O}_X^\times)$ means $f$ is not globally invertible;
+    $\mathbf{Sh}(X) \models \neg(f \in \mathcal{O}_X^\times)$ means $f$ is nowhere invertible (i.e., $f$
+    vanishes on all stalks / is nilpotent on reduced schemes).
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 2
+  search_text: compute the externalisation of "$\mathbf{sh}(x) \not\models (f \in \mathcal{o}_x^\times)$"
+    vs. "$\mathbf{sh}(x) \models \neg(f \in \mathcal{o}_x^\times)$" $\mathbf{sh}(x) \not\models (f \in
+    \mathcal{o}_x^\times)$ means $f$ is not globally invertible; $\mathbf{sh}(x) \models \neg(f \in \mathcal{o}_x^\times)$
+    means $f$ is nowhere invertible (i.e., $f$ vanishes on all stalks / is nilpotent on reduced schemes).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#035
+  text: Compute the external meaning of $U \Vdash \forall s \in \mathcal{F},\, (\phi(s) \implies \psi(s))$
+  hint: For all open $V \subset U$ and all $s \in \mathcal{F}(V)$, if $V \Vdash \phi(s)$ then $V \Vdash
+    \psi(s)$.
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 3
+  search_text: compute the external meaning of $u \vdash \forall s \in \mathcal{f},\, (\phi(s) \implies
+    \psi(s))$ for all open $v \subset u$ and all $s \in \mathcal{f}(v)$, if $v \vdash \phi(s)$ then $v
+    \vdash \psi(s)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#036
+  text: Compute the external meaning of $U \Vdash \exists ! s \in \mathcal{F},\, \phi(s)$
+  hint: There exists a unique global section $s \in \mathcal{F}(U)$ such that $U \Vdash \phi(s)$.
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 4
+  search_text: compute the external meaning of $u \vdash \exists ! s \in \mathcal{f},\, \phi(s)$ there
+    exists a unique global section $s \in \mathcal{f}(u)$ such that $u \vdash \phi(s)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#037
+  text: Compare the strength of $\mathbf{Sh}(X) \models \neg\phi$ vs. $\mathbf{Sh}(X) \not\models \phi$,
+    and identify when they are equivalent
+  hint: $\mathbf{Sh}(X) \models \neg\phi$ implies $\mathbf{Sh}(X) \not\models \phi$ (for $X \neq \emptyset$);
+    the converse holds if $X$ is a point $*$, where $\mathbf{Sh}(*) \simeq \mathbf{Set}$ is Boolean.
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 5
+  search_text: compare the strength of $\mathbf{sh}(x) \models \neg\phi$ vs. $\mathbf{sh}(x) \not\models
+    \phi$, and identify when they are equivalent $\mathbf{sh}(x) \models \neg\phi$ implies $\mathbf{sh}(x)
+    \not\models \phi$ (for $x \neq \emptyset$); the converse holds if $x$ is a point $*$, where $\mathbf{sh}(*)
+    \simeq \mathbf{set}$ is boolean.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#038
+  text: Compute the isomorphism under $X = *$ (one-point space) with constant sheaves
+  hint: $\mathbf{Sh}(*) \simeq \mathbf{Set}$, recovering standard classical logic and set theory.
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 6
+  search_text: compute the isomorphism under $x = *$ (one-point space) with constant sheaves $\mathbf{sh}(*)
+    \simeq \mathbf{set}$, recovering standard classical logic and set theory.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#039
+  text: Compute the external meaning of categorical products and coproducts in $\mathbf{Sh}(X)$
+  hint: Products are computed sectionwise $\left(\prod \mathcal{F}_i\right)(U) = \prod \mathcal{F}_i(U)$;
+    coproducts require sheafifying the presheaf coproduct $U \mapsto \coprod \mathcal{F}_i(U)$.
+  locator:
+    kind: page
+    value: '21'
+    number: 21
+  sub_index: 7
+  search_text: compute the external meaning of categorical products and coproducts in $\mathbf{sh}(x)$
+    products are computed sectionwise $\left(\prod \mathcal{f}_i\right)(u) = \prod \mathcal{f}_i(u)$;
+    coproducts require sheafifying the presheaf coproduct $u \mapsto \coprod \mathcal{f}_i(u)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#040
+  text: Compute the power set construction $\mathcal{P}(\mathcal{F})$ of a sheaf
+  hint: $\mathcal{P}(\mathcal{F})(U)$ is the set of all subsheaves of $\mathcal{F}|_U$ on $U$, isomorphic
+    to $\mathrm{Hom}_{\mathbf{Sh}(U)}(\mathcal{F}|_U, \Omega|_U)$ where $\Omega(U) = \mathcal{O}(U)$.
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 0
+  search_text: compute the power set construction $\mathcal{p}(\mathcal{f})$ of a sheaf $\mathcal{p}(\mathcal{f})(u)$
+    is the set of all subsheaves of $\mathcal{f}|_u$ on $u$, isomorphic to $\mathrm{hom}_{\mathbf{sh}(u)}(\mathcal{f}|_u,
+    \omega|_u)$ where $\omega(u) = \mathcal{o}(u)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#041
+  text: 'Compute for a formula $\phi(s)$ with free variable $s \in \mathcal{F}$ whether $U \mapsto \{s
+    \in \mathcal{F}(U) : U \Vdash \phi(s)\}$ is a sheaf'
+  hint: Yes, it is automatically a subsheaf of $\mathcal{F}$ due to the locality and gluing axioms of
+    Kripke-Joyal semantics.
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 1
+  search_text: 'compute for a formula $\phi(s)$ with free variable $s \in \mathcal{f}$ whether $u \mapsto
+    \{s \in \mathcal{f}(u) : u \vdash \phi(s)\}$ is a sheaf yes, it is automatically a subsheaf of $\mathcal{f}$
+    due to the locality and gluing axioms of kripke-joyal semantics.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#042
+  text: State the Principle of Unique Choice in topoi and its application to morphisms
+  hint: If $\mathbf{Sh}(X) \models \forall s \in \mathcal{F},\, \exists ! t \in \mathcal{G},\, \phi(s,
+    t)$, there exists a unique morphism of sheaves $\alpha \colon \mathcal{F} \to \mathcal{G}$ such that
+    $\mathbf{Sh}(X) \models \forall s,\, \phi(s, \alpha(s))$; two sheaves are isomorphic if there is an
+    internally bijective relation between them.
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 2
+  search_text: state the principle of unique choice in topoi and its application to morphisms if $\mathbf{sh}(x)
+    \models \forall s \in \mathcal{f},\, \exists ! t \in \mathcal{g},\, \phi(s, t)$, there exists a unique
+    morphism of sheaves $\alpha \colon \mathcal{f} \to \mathcal{g}$ such that $\mathbf{sh}(x) \models
+    \forall s,\, \phi(s, \alpha(s))$; two sheaves are isomorphic if there is an internally bijective relation
+    between them.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#043
+  text: Why are geometric morphisms and geometric formulas $(\exists, \top, \bot, \wedge, \bigvee)$ preserved
+    under pullbacks?
+  hint: Because inverse image functors $f^*$ preserve all finite limits and all arbitrary colimits (hence
+    preserve $\exists, \top, \bot, \wedge, \bigvee$).
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 3
+  search_text: why are geometric morphisms and geometric formulas $(\exists, \top, \bot, \wedge, \bigvee)$
+    preserved under pullbacks? because inverse image functors $f^*$ preserve all finite limits and all
+    arbitrary colimits (hence preserve $\exists, \top, \bot, \wedge, \bigvee$).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#044
+  text: Compute the stalkwise substitution of a formula and state the condition for a geometric implication
+    to hold
+  hint: For a geometric implication $\phi \implies \psi$, $\mathbf{Sh}(X) \models (\phi \implies \psi)
+    \iff \forall x \in X,\, \mathcal{F}_x \models (\phi_x \implies \psi_x)$.
+  locator:
+    kind: page
+    value: 22/23
+    number: 22
+  sub_index: 0
+  search_text: compute the stalkwise substitution of a formula and state the condition for a geometric
+    implication to hold for a geometric implication $\phi \implies \psi$, $\mathbf{sh}(x) \models (\phi
+    \implies \psi) \iff \forall x \in x,\, \mathcal{f}_x \models (\phi_x \implies \psi_x)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#045
+  text: Infer a standard sheaf fact from injectivity and surjectivity being geometric implications
+  hint: A morphism of sheaves $f \colon \mathcal{F} \to \mathcal{G}$ is injective (resp. surjective) if
+    and only if the induced map on stalks $f_x \colon \mathcal{F}_x \to \mathcal{G}_x$ is injective (resp.
+    surjective) for all $x \in X$.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 0
+  search_text: infer a standard sheaf fact from injectivity and surjectivity being geometric implications
+    a morphism of sheaves $f \colon \mathcal{f} \to \mathcal{g}$ is injective (resp. surjective) if and
+    only if the induced map on stalks $f_x \colon \mathcal{f}_x \to \mathcal{g}_x$ is injective (resp.
+    surjective) for all $x \in x$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#046
+  text: Why are arbitrary products $\prod$, power sets $\mathcal{P}$, and internal homs $\underline{\mathrm{Hom}}$
+    not geometric?
+  hint: Because inverse image functors $f^*$ do not generally preserve infinite products, power objects,
+    or internal homs.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 1
+  search_text: why are arbitrary products $\prod$, power sets $\mathcal{p}$, and internal homs $\underline{\mathrm{hom}}$
+    not geometric? because inverse image functors $f^*$ do not generally preserve infinite products, power
+    objects, or internal homs.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#047
+  text: Is finite product $\mathcal{F} \times \mathcal{G}$ geometric?
+  hint: Yes, $f^*$ preserves finite limits.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 2
+  search_text: is finite product $\mathcal{f} \times \mathcal{g}$ geometric? yes, $f^*$ preserves finite
+    limits.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#048
+  text: Is finite coproduct $\mathcal{F} \amalg \mathcal{G}$ geometric?
+  hint: Yes, $f^*$ preserves finite colimits.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 3
+  search_text: is finite coproduct $\mathcal{f} \amalg \mathcal{g}$ geometric? yes, $f^*$ preserves finite
+    colimits.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#049
+  text: Is arbitrary coproduct $\coprod_{i \in I} \mathcal{F}_i$ geometric?
+  hint: Yes, $f^*$ commutes with all colimits.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 4
+  search_text: is arbitrary coproduct $\coprod_{i \in i} \mathcal{f}_i$ geometric? yes, $f^*$ commutes
+    with all colimits.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#050
+  text: 'Is set comprehension $\{x \in \mathcal{F} : \phi(x)\}$ for geometric $\phi$ geometric?'
+  hint: Yes, it is formed by equalizers and pullbacks of geometric formulas.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 5
+  search_text: 'is set comprehension $\{x \in \mathcal{f} : \phi(x)\}$ for geometric $\phi$ geometric?
+    yes, it is formed by equalizers and pullbacks of geometric formulas.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#051
+  text: Is the condition of being a free module geometric?
+  hint: No, because freeness involves universal quantification $\forall$ over linear combinations and
+    non-geometric infinite products.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 6
+  search_text: is the condition of being a free module geometric? no, because freeness involves universal
+    quantification $\forall$ over linear combinations and non-geometric infinite products.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#052
+  text: Is the localization of a module geometric?
+  hint: Yes, localization $S^{-1}M$ is a filtered colimit of module operations, which commutes with $f^*$.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 7
+  search_text: is the localization of a module geometric? yes, localization $s^{-1}m$ is a filtered colimit
+    of module operations, which commutes with $f^*$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#053
+  text: Does the failure of both $p$ and $q$ determine which one holds intuitionistically?
+  hint: No; intuitionistically $\neg(p \land q)$ does not imply $\neg p \lor \neg q$ without the Law of
+    Excluded Middle.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 8
+  search_text: does the failure of both $p$ and $q$ determine which one holds intuitionistically? no;
+    intuitionistically $\neg(p \land q)$ does not imply $\neg p \lor \neg q$ without the law of excluded
+    middle.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#054
+  text: Compute the geometric meaning of double negation $\neg\neg$ in Kripke-Joyal semantics
+  hint: $U \Vdash \neg\neg\phi$ iff $\phi$ holds on a dense open subset of $U$, because $\neg\neg U =
+    \mathrm{Int}(\overline{U}) = X \iff U$ is dense.
+  locator:
+    kind: page
+    value: '25'
+    number: 25
+  sub_index: 0
+  search_text: compute the geometric meaning of double negation $\neg\neg$ in kripke-joyal semantics $u
+    \vdash \neg\neg\phi$ iff $\phi$ holds on a dense open subset of $u$, because $\neg\neg u = \mathrm{int}(\overline{u})
+    = x \iff u$ is dense.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#055
+  text: What happens if every open $U \subset X$ has no proper dense open subsets (e.g., $X$ is a 0-dimensional
+    Noetherian/irreducible scheme)?
+  hint: The double negation modality collapses ($\neg\neg\phi \iff \phi$), the internal logic becomes
+    Boolean, and existential/disjunctive statements hold globally without passing to covers.
+  locator:
+    kind: page
+    value: '25'
+    number: 25
+  sub_index: 1
+  search_text: what happens if every open $u \subset x$ has no proper dense open subsets (e.g., $x$ is
+    a 0-dimensional noetherian/irreducible scheme)? the double negation modality collapses ($\neg\neg\phi
+    \iff \phi$), the internal logic becomes boolean, and existential/disjunctive statements hold globally
+    without passing to covers.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#056
+  text: How does Barr's Theorem justify using the Axiom of Choice to prove geometric statements intuitionistically
+    (e.g., Nullstellensatz)?
+  hint: Barr's Theorem states that if a geometric implication is provable in classical logic with Choice,
+    it is provable intuitionistically without Choice, making classical proofs of the Nullstellensatz internally
+    valid.
+  locator:
+    kind: page
+    value: '25'
+    number: 25
+  sub_index: 2
+  search_text: how does barr's theorem justify using the axiom of choice to prove geometric statements
+    intuitionistically (e.g., nullstellensatz)? barr's theorem states that if a geometric implication
+    is provable in classical logic with choice, it is provable intuitionistically without choice, making
+    classical proofs of the nullstellensatz internally valid.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#057
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \forall x, y \in \mathcal{O}_X,\, x+y =
+    y+x$
+  hint: The structure sheaf $\mathcal{O}_X$ is a commutative ring on all open sections.
   locator:
     kind: page
     value: '28'
     number: 28
   sub_index: 0
-  search_text: 'formulate the internal property that $\mathcal{o}_x$ is a local ring: $1 \ne 0$ and $x
-    + y \text{ is invertible} \implies (x \text{ is invertible} \lor y \text{ is invertible})$'
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \forall x, y \in \mathcal{o}_x,\,
+    x+y = y+x$ the structure sheaf $\mathcal{o}_x$ is a commutative ring on all open sections.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#058
+  text: Compute the externalisation of $U \Vdash \exists g \in \mathcal{O}_X,\, fg = 1$
+  hint: $f|_U \in \mathcal{O}_X(U)^\times$ is an invertible regular function on $U$.
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 1
+  search_text: compute the externalisation of $u \vdash \exists g \in \mathcal{o}_x,\, fg = 1$ $f|_u \in
+    \mathcal{o}_x(u)^\times$ is an invertible regular function on $u$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#059
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \forall s \in \mathcal{O}_X,\, (\bigvee_{n
+    \ge 1} s^n = 0 \implies s = 0)$
+  hint: $X$ is a reduced scheme (its stalks $\mathcal{O}_{X, x}$ have no non-zero nilpotent elements).
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 2
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \forall s \in \mathcal{o}_x,\, (\bigvee_{n
+    \ge 1} s^n = 0 \implies s = 0)$ $x$ is a reduced scheme (its stalks $\mathcal{o}_{x, x}$ have no non-zero
+    nilpotent elements).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#060
+  text: Compute the externalisation of $(x+y \in \mathcal{O}_X^\times \implies x \in \mathcal{O}_X^\times
+    \lor y \in \mathcal{O}_X^\times)$
+  hint: All stalks $\mathcal{O}_{X, x}$ are local rings.
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 3
+  search_text: compute the externalisation of $(x+y \in \mathcal{o}_x^\times \implies x \in \mathcal{o}_x^\times
+    \lor y \in \mathcal{o}_x^\times)$ all stalks $\mathcal{o}_{x, x}$ are local rings.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#061
+  text: Compute the internalisation of $\mathcal{O}_X(U)$ and infer why stalks, not sections, are local
+    rings
+  hint: $\mathcal{O}_X(U) = \mathrm{Hom}_{\mathbf{Sh}(U)}(1, \mathcal{O}_X|_U)$; the section ring $\mathcal{O}_X(U)$
+    is generally not a local ring, but internally $\mathcal{O}_X$ is a local ring because its stalks are
+    local rings.
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 4
+  search_text: compute the internalisation of $\mathcal{o}_x(u)$ and infer why stalks, not sections, are
+    local rings $\mathcal{o}_x(u) = \mathrm{hom}_{\mathbf{sh}(u)}(1, \mathcal{o}_x|_u)$; the section ring
+    $\mathcal{o}_x(u)$ is generally not a local ring, but internally $\mathcal{o}_x$ is a local ring because
+    its stalks are local rings.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#062
+  text: Where does $\mathcal{O}_X$ fail to be a field, and what happens to non-invertible elements?
+  hint: $\mathcal{O}_X$ is not a classical field because non-units are not necessarily zero; however,
+    every non-unit is nilpotent on stalks of reduced schemes, making $\mathcal{O}_X$ a residue field internally.
+  locator:
+    kind: page
+    value: '28'
+    number: 28
+  sub_index: 5
+  search_text: where does $\mathcal{o}_x$ fail to be a field, and what happens to non-invertible elements?
+    $\mathcal{o}_x$ is not a classical field because non-units are not necessarily zero; however, every
+    non-unit is nilpotent on stalks of reduced schemes, making $\mathcal{o}_x$ a residue field internally.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#063
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \forall s \in \mathcal{O}_X,\, (\neg(s
+    \in \mathcal{O}_X^\times) \implies \exists n,\, s^n = 0)$
+  hint: For any $s$, the complement of $D(s)$ has empty interior, meaning $s$ belongs to the nilradical
+    $\sqrt{(0)} = \bigcap \mathfrak{p}$; this holds for all schemes.
+  locator:
+    kind: page
+    value: 28/29
+    number: 28
+  sub_index: 0
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \forall s \in \mathcal{o}_x,\, (\neg(s
+    \in \mathcal{o}_x^\times) \implies \exists n,\, s^n = 0)$ for any $s$, the complement of $d(s)$ has
+    empty interior, meaning $s$ belongs to the nilradical $\sqrt{(0)} = \bigcap \mathfrak{p}$; this holds
+    for all schemes.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#064
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \forall s \in \mathcal{O}_X,\, (\neg(s
+    \in \mathcal{O}_X^\times) \implies s = 0)$
+  hint: $X$ is an integral scheme (every stalk is an integral domain/field).
+  locator:
+    kind: page
+    value: '29'
+    number: 29
+  sub_index: 0
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \forall s \in \mathcal{o}_x,\, (\neg(s
+    \in \mathcal{o}_x^\times) \implies s = 0)$ $x$ is an integral scheme (every stalk is an integral domain/field).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#065
+  text: Compute the quasi-coherence externalisation of $\forall f, s \in \mathcal{O}_X,\, (f \in \mathcal{O}_X^\times
+    \implies s = 0) \implies \bigvee_{n} f^n s = 0$
+  hint: If $s|_{D(f)} = 0$, then $f^n s = 0$ on affine opens; for $s = 1$, it states that if $D(f) = \emptyset$
+    then $f$ is nilpotent.
+  locator:
+    kind: page
+    value: '29'
+    number: 29
+  sub_index: 1
+  search_text: compute the quasi-coherence externalisation of $\forall f, s \in \mathcal{o}_x,\, (f \in
+    \mathcal{o}_x^\times \implies s = 0) \implies \bigvee_{n} f^n s = 0$ if $s|_{d(f)} = 0$, then $f^n
+    s = 0$ on affine opens; for $s = 1$, it states that if $d(f) = \emptyset$ then $f$ is nilpotent.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#066
+  text: Compute the Krull dimension of a ring $R$ via complementary sequences of radical ideals
+  hint: $\mathrm{dim}_{\mathrm{Krull}}(R) \le n$ iff for every sequence $a_0, \dots, a_n \in R$, there
+    exist $b_0, \dots, b_n \in R$ such that $b_i \in \sqrt{(a_0, \dots, a_i)}$ and $1 \in \sqrt{(b_0,
+    \dots, b_n)}$; dimension is $-1$ iff $1 = 0$ in $R$.
+  locator:
+    kind: page
+    value: '30'
+    number: 30
+  sub_index: 0
+  search_text: compute the krull dimension of a ring $r$ via complementary sequences of radical ideals
+    $\mathrm{dim}_{\mathrm{krull}}(r) \le n$ iff for every sequence $a_0, \dots, a_n \in r$, there exist
+    $b_0, \dots, b_n \in r$ such that $b_i \in \sqrt{(a_0, \dots, a_i)}$ and $1 \in \sqrt{(b_0, \dots,
+    b_n)}$; dimension is $-1$ iff $1 = 0$ in $r$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#067
+  text: Construct an open cover of $\mathrm{Spec}(R)$ from $D(a_0)$ and $D(b_0)$ using complementary sequences
+  hint: Since $1 \in \sqrt{(a_0, b_0)}$, the basic opens $D(a_0) \cup D(b_0) = \mathrm{Spec}(R)$ form
+    an open cover.
+  locator:
+    kind: page
+    value: '31'
+    number: 31
+  sub_index: 0
+  search_text: construct an open cover of $\mathrm{spec}(r)$ from $d(a_0)$ and $d(b_0)$ using complementary
+    sequences since $1 \in \sqrt{(a_0, b_0)}$, the basic opens $d(a_0) \cup d(b_0) = \mathrm{spec}(r)$
+    form an open cover.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#068
+  text: Compute the externalisation of $\mathrm{dim}_{\mathrm{Krull}}(\mathcal{O}_X) \le n$
+  hint: $X$ is a scheme of Krull dimension $\le n$; internally $\forall f, g, h \in \mathcal{O}_X,\, \exists
+    a, b \in \mathcal{O}_X,\, \bigvee_m f^m = a g + b h$.
+  locator:
+    kind: page
+    value: '32'
+    number: 32
+  sub_index: 0
+  search_text: compute the externalisation of $\mathrm{dim}_{\mathrm{krull}}(\mathcal{o}_x) \le n$ $x$
+    is a scheme of krull dimension $\le n$; internally $\forall f, g, h \in \mathcal{o}_x,\, \exists a,
+    b \in \mathcal{o}_x,\, \bigvee_m f^m = a g + b h$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#069
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \forall s \in \mathcal{O}_X,\, (s \in \mathcal{O}_X^\times
+    \lor \exists n,\, s^n = 0)$
+  hint: $X$ is a disjoint union of spectrums of local rings where every element is either a unit or nilpotent;
+    if $X$ is reduced, $X$ is a 0-dimensional scheme.
+  locator:
+    kind: page
+    value: '33'
+    number: 33
+  sub_index: 0
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \forall s \in \mathcal{o}_x,\, (s
+    \in \mathcal{o}_x^\times \lor \exists n,\, s^n = 0)$ $x$ is a disjoint union of spectrums of local
+    rings where every element is either a unit or nilpotent; if $x$ is reduced, $x$ is a 0-dimensional
+    scheme.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#070
+  text: When is $\mathbf{Sh}(X)$ a Boolean topos?
+  hint: $\mathbf{Sh}(X)$ is Boolean ($\Omega \cong 1 \amalg 1$) if and only if $X$ is a discrete topological
+    space.
+  locator:
+    kind: page
+    value: '33'
+    number: 33
+  sub_index: 1
+  search_text: when is $\mathbf{sh}(x)$ a boolean topos? $\mathbf{sh}(x)$ is boolean ($\omega \cong 1
+    \amalg 1$) if and only if $x$ is a discrete topological space.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#071
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \forall x, y \in \mathcal{O}_X,\, (xy =
+    0 \implies x = 0 \lor y = 0)$
+  hint: Every stalk $\mathcal{O}_{X, x}$ is an integral domain and $X$ is locally irreducible.
+  locator:
+    kind: page
+    value: '34'
+    number: 34
+  sub_index: 0
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \forall x, y \in \mathcal{o}_x,\,
+    (xy = 0 \implies x = 0 \lor y = 0)$ every stalk $\mathcal{o}_{x, x}$ is an integral domain and $x$
+    is locally irreducible.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#072
+  text: Compute the externalisation of $\mathcal{O}_X$ being a strong domain ($\forall x,\, x = 0 \lor
+    x \text{ is regular}$)
+  hint: Every stalk is a field / $X$ is a reduced 0-dimensional scheme.
+  locator:
+    kind: page
+    value: '34'
+    number: 34
+  sub_index: 1
+  search_text: compute the externalisation of $\mathcal{o}_x$ being a strong domain ($\forall x,\, x =
+    0 \lor x \text{ is regular}$) every stalk is a field / $x$ is a reduced 0-dimensional scheme.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#073
+  text: Compute the externalisation of $f \in A$ is regular $\iff f \in \mathcal{O}_X$ is internally regular
+  hint: $f \in A$ is not a zero divisor in $A$ iff on all stalks multiplication by $f$ is injective.
+  locator:
+    kind: page
+    value: '34'
+    number: 34
+  sub_index: 2
+  search_text: compute the externalisation of $f \in a$ is regular $\iff f \in \mathcal{o}_x$ is internally
+    regular $f \in a$ is not a zero divisor in $a$ iff on all stalks multiplication by $f$ is injective.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#074
+  text: Compute the internal GCD property for $\mathcal{O}_X$
+  hint: $\mathcal{O}_X$ is internally a Bézout domain / GCD domain, meaning every finitely generated ideal
+    is principal.
+  locator:
+    kind: page
+    value: '34'
+    number: 34
+  sub_index: 3
+  search_text: compute the internal gcd property for $\mathcal{o}_x$ $\mathcal{o}_x$ is internally a bézout
+    domain / gcd domain, meaning every finitely generated ideal is principal.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#075
+  text: Compute the internalisation of $X$ being a Dedekind scheme
+  hint: Internally, $\mathcal{O}_X$ is a Dedekind domain (or PID), so every matrix over $\mathcal{O}_X$
+    can be put into Smith normal form locally.
+  locator:
+    kind: page
+    value: '34'
+    number: 34
+  sub_index: 4
+  search_text: compute the internalisation of $x$ being a dedekind scheme internally, $\mathcal{o}_x$
+    is a dedekind domain (or pid), so every matrix over $\mathcal{o}_x$ can be put into smith normal form
+    locally.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#076
+  text: Which properties pass from rings $R$ to the sheaf of locally constant $R$-valued functions?
+  hint: First-order horn and geometric properties (e.g., commutativity, regularity, von Neumann regularity).
+  locator:
+    kind: page
+    value: '35'
+    number: 35
+  sub_index: 0
+  search_text: which properties pass from rings $r$ to the sheaf of locally constant $r$-valued functions?
+    first-order horn and geometric properties (e.g., commutativity, regularity, von neumann regularity).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#077
+  text: What is a processly Noetherian ring vs. a classical Noetherian ring?
+  hint: Processly Noetherian means any constructively defined ascending chain of finitely generated ideals
+    eventually stabilizes, avoiding classical Choice.
+  locator:
+    kind: page
+    value: '36'
+    number: 36
+  sub_index: 0
+  search_text: what is a processly noetherian ring vs. a classical noetherian ring? processly noetherian
+    means any constructively defined ascending chain of finitely generated ideals eventually stabilizes,
+    avoiding classical choice.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#078
+  text: What is the constructive alternative to "every ideal of $\mathbb{Z}$ is principal"?
+  hint: Every ideal of $\mathbb{Z}$ is *anonymously* principal (it is not not generated by a single element).
+  locator:
+    kind: page
+    value: '36'
+    number: 36
+  sub_index: 1
+  search_text: what is the constructive alternative to "every ideal of $\mathbb{z}$ is principal"? every
+    ideal of $\mathbb{z}$ is *anonymously* principal (it is not not generated by a single element).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#079
+  text: Compute the externalisation of $\mathcal{O}_X$ being processly Noetherian
+  hint: $X$ is a locally Noetherian scheme.
+  locator:
+    kind: page
+    value: '37'
+    number: 37
+  sub_index: 0
+  search_text: compute the externalisation of $\mathcal{o}_x$ being processly noetherian $x$ is a locally
+    noetherian scheme.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#080
+  text: Compute the externalisation of quasi-coherent ideals satisfying the ascending chain condition
+  hint: $X$ is a Noetherian scheme.
+  locator:
+    kind: page
+    value: '38'
+    number: 38
+  sub_index: 0
+  search_text: compute the externalisation of quasi-coherent ideals satisfying the ascending chain condition
+    $x$ is a noetherian scheme.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#081
+  text: Why is $\mathbb{Z}$ internally anonymously Noetherian?
+  hint: For every ideal $I \subset \mathbb{Z}$, $\neg\neg(\exists x \in \mathbb{Z},\, I = (x))$, which
+    holds intuitionistically.
+  locator:
+    kind: page
+    value: '38'
+    number: 38
+  sub_index: 1
+  search_text: why is $\mathbb{z}$ internally anonymously noetherian? for every ideal $i \subset \mathbb{z}$,
+    $\neg\neg(\exists x \in \mathbb{z},\, i = (x))$, which holds intuitionistically.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#082
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \forall s \in \mathcal{O}_X,\, (\neg\neg(s
+    = 0) \implies s = 0)$
+  hint: The scheme $X$ has no embedded points and its structure sheaf has no non-zero sections supported
+    on nowhere dense subsets (reduced and unmixed).
+  locator:
+    kind: page
+    value: '39'
+    number: 39
+  sub_index: 0
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \forall s \in \mathcal{o}_x,\, (\neg\neg(s
+    = 0) \implies s = 0)$ the scheme $x$ has no embedded points and its structure sheaf has no non-zero
+    sections supported on nowhere dense subsets (reduced and unmixed).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#083
+  text: State Hilbert's Basis Theorem for anonymously Noetherian rings
+  hint: If $R$ is an anonymously Noetherian ring internally, then the polynomial ring $R[T]$ is anonymously
+    Noetherian.
+  locator:
+    kind: page
+    value: '39'
+    number: 39
+  sub_index: 1
+  search_text: state hilbert's basis theorem for anonymously noetherian rings if $r$ is an anonymously
+    noetherian ring internally, then the polynomial ring $r[t]$ is anonymously noetherian.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#084
+  text: Compute the externalisation of the 2-out-of-3 property for anonymously Noetherian modules in a
+    short exact sequence
+  hint: If $\mathcal{F}'$ and $\mathcal{F}''$ are coherent, then $\mathcal{F}$ is coherent in $0 \to \mathcal{F}'
+    \to \mathcal{F} \to \mathcal{F}'' \to 0$.
+  locator:
+    kind: page
+    value: '40'
+    number: 40
+  sub_index: 0
+  search_text: compute the externalisation of the 2-out-of-3 property for anonymously noetherian modules
+    in a short exact sequence if $\mathcal{f}'$ and $\mathcal{f}''$ are coherent, then $\mathcal{f}$ is
+    coherent in $0 \to \mathcal{f}' \to \mathcal{f} \to \mathcal{f}'' \to 0$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#085
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \bigvee_{n \ge 0} \mathcal{F} \cong \mathcal{O}_X^n$
+  hint: $\mathcal{F}$ is locally free of constant finite rank $n$ on each connected component of $X$.
+  locator:
+    kind: page
+    value: '40'
+    number: 40
+  sub_index: 1
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \bigvee_{n \ge 0} \mathcal{f} \cong
+    \mathcal{o}_x^n$ $\mathcal{f}$ is locally free of constant finite rank $n$ on each connected component
+    of $x$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#086
+  text: Why is global generation of $\mathcal{O}_X$-modules not purely internal?
+  hint: Global generation depends on the global section space $\Gamma(X, \mathcal{F}) = \mathrm{Hom}_{\mathbf{Sh}(X)}(1,
+    \mathcal{F})$, which is not a local stalkwise property and requires external section data.
+  locator:
+    kind: page
+    value: '41'
+    number: 41
+  sub_index: 0
+  search_text: why is global generation of $\mathcal{o}_x$-modules not purely internal? global generation
+    depends on the global section space $\gamma(x, \mathcal{f}) = \mathrm{hom}_{\mathbf{sh}(x)}(1, \mathcal{f})$,
+    which is not a local stalkwise property and requires external section data.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#087
+  text: Compute the externalisation of $U \Vdash \exists a_1, \dots, a_n \in \mathcal{O}_X,\, x = \sum_{j=1}^n
+    a_j s_j$
+  hint: The section $x|_U$ is in the $\mathcal{O}_X(U)$-submodule generated by $s_1|_U, \dots, s_n|_U$.
+  locator:
+    kind: page
+    value: '41'
+    number: 41
+  sub_index: 1
+  search_text: compute the externalisation of $u \vdash \exists a_1, \dots, a_n \in \mathcal{o}_x,\, x
+    = \sum_{j=1}^n a_j s_j$ the section $x|_u$ is in the $\mathcal{o}_x(u)$-submodule generated by $s_1|_u,
+    \dots, s_n|_u$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#088
+  text: Compute the externalisation of $\phi \colon \mathcal{F} \to \mathcal{G}$ being $\mathcal{O}_X$-linear
+    and bijective over $U$
+  hint: $\phi|_U \colon \mathcal{F}|_U \xrightarrow{\sim} \mathcal{G}|_U$ is an isomorphism of $\mathcal{O}_U$-modules.
+  locator:
+    kind: page
+    value: '41'
+    number: 41
+  sub_index: 2
+  search_text: compute the externalisation of $\phi \colon \mathcal{f} \to \mathcal{g}$ being $\mathcal{o}_x$-linear
+    and bijective over $u$ $\phi|_u \colon \mathcal{f}|_u \xrightarrow{\sim} \mathcal{g}|_u$ is an isomorphism
+    of $\mathcal{o}_u$-modules.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#089
+  text: Compute the externalisation of $(\mathcal{O}_X|_U)^n \to \mathcal{F}|_U \to 0$
+  hint: $\mathcal{F}|_U$ is generated by $n$ sections over $U$.
+  locator:
+    kind: page
+    value: '41'
+    number: 41
+  sub_index: 3
+  search_text: compute the externalisation of $(\mathcal{o}_x|_u)^n \to \mathcal{f}|_u \to 0$ $\mathcal{f}|_u$
+    is generated by $n$ sections over $u$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#090
+  text: Compute the externalisation of $(\mathcal{O}_X|_U)^m \to (\mathcal{O}_X|_U)^n \to \mathcal{F}|_U
+    \to 0$
+  hint: $\mathcal{F}|_U$ is a finitely presented $\mathcal{O}_U$-module.
+  locator:
+    kind: page
+    value: '41'
+    number: 41
+  sub_index: 4
+  search_text: compute the externalisation of $(\mathcal{o}_x|_u)^m \to (\mathcal{o}_x|_u)^n \to \mathcal{f}|_u
+    \to 0$ $\mathcal{f}|_u$ is a finitely presented $\mathcal{o}_u$-module.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#091
+  text: What is the external meaning of $\mathcal{F}$ being coherent?
+  hint: $\mathcal{F}$ is locally of finite type and for every open $U$ and every morphism $(\mathcal{O}_X|_U)^n
+    \to \mathcal{F}|_U$, the kernel is locally of finite type.
+  locator:
+    kind: page
+    value: '42'
+    number: 42
+  sub_index: 0
+  search_text: what is the external meaning of $\mathcal{f}$ being coherent? $\mathcal{f}$ is locally
+    of finite type and for every open $u$ and every morphism $(\mathcal{o}_x|_u)^n \to \mathcal{f}|_u$,
+    the kernel is locally of finite type.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#092
+  text: Compute the externalisation of $\mathcal{F}$ being internally coherent
+  hint: '$\mathcal{F}$ is internally a coherent $\mathcal{O}_X$-module: finitely generated and every homomorphism
+    $\mathcal{O}_X^n \to \mathcal{F}$ has a finitely generated kernel.'
+  locator:
+    kind: page
+    value: '42'
+    number: 42
+  sub_index: 1
+  search_text: 'compute the externalisation of $\mathcal{f}$ being internally coherent $\mathcal{f}$ is
+    internally a coherent $\mathcal{o}_x$-module: finitely generated and every homomorphism $\mathcal{o}_x^n
+    \to \mathcal{f}$ has a finitely generated kernel.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#093
+  text: Compute the topological modal operator $\Box \phi$ for sublocales/subspaces
+  hint: $\Box \phi$ means $\phi$ holds when restricted to the designated subspace $j \colon Y \hookrightarrow
+    X$ via $j^*$.
+  locator:
+    kind: page
+    value: '53'
+    number: 53
+  sub_index: 0
+  search_text: compute the topological modal operator $\box \phi$ for sublocales/subspaces $\box \phi$
+    means $\phi$ holds when restricted to the designated subspace $j \colon y \hookrightarrow x$ via $j^*$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#094
+  text: What is the set of truth values $\Omega$ in a sheaf topos?
+  hint: $\Omega$ is the subobject classifier, whose sections $\Omega(U) = \mathcal{O}(U)$ are the open
+    subsets of $U$.
+  locator:
+    kind: page
+    value: '54'
+    number: 54
+  sub_index: 0
+  search_text: what is the set of truth values $\omega$ in a sheaf topos? $\omega$ is the subobject classifier,
+    whose sections $\omega(u) = \mathcal{o}(u)$ are the open subsets of $u$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#095
+  text: What is a Lawvere-Tierney topology $j \colon \Omega \to \Omega$?
+  hint: 'A morphism satisfying: (1) $p \le j(p)$; (2) $j(j(p)) \le j(p)$; (3) $j(p \land q) = j(p) \land
+    j(q)$.'
+  locator:
+    kind: page
+    value: '55'
+    number: 55
+  sub_index: 0
+  search_text: 'what is a lawvere-tierney topology $j \colon \omega \to \omega$? a morphism satisfying:
+    (1) $p \le j(p)$; (2) $j(j(p)) \le j(p)$; (3) $j(p \land q) = j(p) \land j(q)$.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#096
+  text: 'State the geometric interpretations of standard modal operators: (1) $\alpha \implies \phi$;
+    (2) $\phi \lor \alpha$; (3) $\neg\neg\phi$; (4) $(\phi \implies \alpha) \implies \alpha$'
+  hint: (1) Open subtopos $U \subset X$; (2) Closed subtopos $X \setminus U$; (3) Dense open subtopos
+    / double negation; (4) Quasi-closed subtopos.
+  locator:
+    kind: page
+    value: '56'
+    number: 56
+  sub_index: 0
+  search_text: 'state the geometric interpretations of standard modal operators: (1) $\alpha \implies
+    \phi$; (2) $\phi \lor \alpha$; (3) $\neg\neg\phi$; (4) $(\phi \implies \alpha) \implies \alpha$ (1)
+    open subtopos $u \subset x$; (2) closed subtopos $x \setminus u$; (3) dense open subtopos / double
+    negation; (4) quasi-closed subtopos.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#097
+  text: Translate Proposition 6.5 into topology over open $V \subset X$
+  hint: (1) $V \cap U \Vdash \phi$; (2) $V \setminus A \Vdash \phi$; (3) $\phi$ holds on a dense open
+    in $V$; (4) $\phi$ holds on the subspace complement of $x$.
+  locator:
+    kind: page
+    value: '56'
+    number: 56
+  sub_index: 1
+  search_text: translate proposition 6.5 into topology over open $v \subset x$ (1) $v \cap u \vdash \phi$;
+    (2) $v \setminus a \vdash \phi$; (3) $\phi$ holds on a dense open in $v$; (4) $\phi$ holds on the
+    subspace complement of $x$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#098
+  text: Compute the subspace induced by a modal operator $j$
+  hint: The subtopos $\mathbf{Sh}_j(X) \hookrightarrow \mathbf{Sh}(X)$ of $j$-sheaves, which corresponds
+    to an open, closed, or dense sublocale of $X$.
+  locator:
+    kind: page
+    value: '56'
+    number: 56
+  sub_index: 2
+  search_text: compute the subspace induced by a modal operator $j$ the subtopos $\mathbf{sh}_j(x) \hookrightarrow
+    \mathbf{sh}(x)$ of $j$-sheaves, which corresponds to an open, closed, or dense sublocale of $x$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#099
+  text: Translate the $j$-separated and $j$-sheaf conditions into classical terms
+  hint: A sheaf $\mathcal{F}$ is $j$-separated if local sections with matching restrictions on the $j$-dense
+    sublocale are unique; it is a $j$-sheaf if matching sections on the $j$-dense sublocale extend uniquely.
+  locator:
+    kind: page
+    value: '57'
+    number: 57
+  sub_index: 0
+  search_text: translate the $j$-separated and $j$-sheaf conditions into classical terms a sheaf $\mathcal{f}$
+    is $j$-separated if local sections with matching restrictions on the $j$-dense sublocale are unique;
+    it is a $j$-sheaf if matching sections on the $j$-dense sublocale extend uniquely.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#100
+  text: Compute the externalisation of $j$-sheafification (+ construction)
+  hint: $\mathcal{F}^+(U) = \varinjlim_{V \subset_{\mathrm{dense}} U} \mathcal{F}(V)$, forming the localized
+    sheaf on the subtopos.
+  locator:
+    kind: page
+    value: '58'
+    number: 58
+  sub_index: 0
+  search_text: compute the externalisation of $j$-sheafification (+ construction) $\mathcal{f}^+(u) =
+    \varinjlim_{v \subset_{\mathrm{dense}} u} \mathcal{f}(v)$, forming the localized sheaf on the subtopos.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#101
+  text: How are finite limits, colimits, and Heyting structure characterized in a topos?
+  hint: A topos is a locally cartesian closed category with a subobject classifier $\Omega$, which implies
+    finite limits, finite colimits, power objects, and Heyting algebra structures on subobjects.
+  locator:
+    kind: slide
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: how are finite limits, colimits, and heyting structure characterized in a topos? a topos
+    is a locally cartesian closed category with a subobject classifier $\omega$, which implies finite
+    limits, finite colimits, power objects, and heyting algebra structures on subobjects.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#102
+  text: What adjective ensures coproducts are stable under pullback in a topos?
+  hint: '**Extensive** (coproducts are disjoint and pullbacks commute with coproducts).'
+  locator:
+    kind: slide
+    value: '5'
+    number: 5
+  sub_index: 1
+  search_text: what adjective ensures coproducts are stable under pullback in a topos? **extensive** (coproducts
+    are disjoint and pullbacks commute with coproducts).
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#103
+  text: 'What adjective ensures the First Isomorphism Theorem holds in a topos? (Hint: **Exact** (every
+    equivalence relation is effective / is the kernel pair of its quotient)'
+  hint: null
+  locator:
+    kind: slide
+    value: '5'
+    number: 5
+  sub_index: 2
+  search_text: 'what adjective ensures the first isomorphism theorem holds in a topos? (hint: **exact**
+    (every equivalence relation is effective / is the kernel pair of its quotient)'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#104
+  text: Compute the externalisation of an injective ring map in $\mathbf{Sh}(X)$
+  hint: A sheaf homomorphism $f \colon \mathcal{R} \hookrightarrow \mathcal{S}$ that is injective on all
+    stalks $f_x \colon \mathcal{R}_x \hookrightarrow \mathcal{S}_x$.
+  locator:
+    kind: slide
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: compute the externalisation of an injective ring map in $\mathbf{sh}(x)$ a sheaf homomorphism
+    $f \colon \mathcal{r} \hookrightarrow \mathcal{s}$ that is injective on all stalks $f_x \colon \mathcal{r}_x
+    \hookrightarrow \mathcal{s}_x$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#105
+  text: Compute the externalisation of a surjective ring map in $\mathbf{Sh}(X)$
+  hint: A sheaf homomorphism $f \colon \mathcal{R} \twoheadrightarrow \mathcal{S}$ that is surjective
+    on all stalks $f_x \twoheadrightarrow \mathcal{S}_x$.
+  locator:
+    kind: slide
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: compute the externalisation of a surjective ring map in $\mathbf{sh}(x)$ a sheaf homomorphism
+    $f \colon \mathcal{r} \twoheadrightarrow \mathcal{s}$ that is surjective on all stalks $f_x \twoheadrightarrow
+    \mathcal{s}_x$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#106
+  text: Compute the externalisation of $U \Vdash (f = 0)$
+  hint: $f|_U = 0 \in \mathcal{O}_X(U)$.
+  locator:
+    kind: slide
+    value: '14'
+    number: 14
+  sub_index: 0
+  search_text: compute the externalisation of $u \vdash (f = 0)$ $f|_u = 0 \in \mathcal{o}_x(u)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#107
+  text: Compute the externalisation of $U \Vdash (f = 0 \lor g = 0)$
+  hint: There exists an open cover $U = U_1 \cup U_2$ such that $f|_{U_1} = 0$ and $g|_{U_2} = 0$.
+  locator:
+    kind: slide
+    value: '14'
+    number: 14
+  sub_index: 1
+  search_text: compute the externalisation of $u \vdash (f = 0 \lor g = 0)$ there exists an open cover
+    $u = u_1 \cup u_2$ such that $f|_{u_1} = 0$ and $g|_{u_2} = 0$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#108
+  text: Compute the externalisation of $U \Vdash \neg\neg(f = 0)$
+  hint: 'The vanishing locus $\{x \in U : f(x) = 0\}$ is dense in $U$.'
+  locator:
+    kind: slide
+    value: '14'
+    number: 14
+  sub_index: 2
+  search_text: 'compute the externalisation of $u \vdash \neg\neg(f = 0)$ the vanishing locus $\{x \in
+    u : f(x) = 0\}$ is dense in $u$.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#109
+  text: Compute the externalisation of an internally finitely free $\mathcal{O}_X$-module
+  hint: $\mathcal{F}$ is locally free of finite rank externally.
+  locator:
+    kind: slide
+    value: '19'
+    number: 19
+  sub_index: 0
+  search_text: compute the externalisation of an internally finitely free $\mathcal{o}_x$-module $\mathcal{f}$
+    is locally free of finite rank externally.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#110
+  text: Compute the externalisation of an internally finitely presentable $\mathcal{O}_X$-module
+  hint: $\mathcal{F}$ is locally finitely presented externally.
+  locator:
+    kind: slide
+    value: '19'
+    number: 19
+  sub_index: 1
+  search_text: compute the externalisation of an internally finitely presentable $\mathcal{o}_x$-module
+    $\mathcal{f}$ is locally finitely presented externally.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#111
+  text: Compute the externalisation of an internally finite type $\mathcal{O}_X$-module
+  hint: $\mathcal{F}$ is locally of finite type externally.
+  locator:
+    kind: slide
+    value: '19'
+    number: 19
+  sub_index: 2
+  search_text: compute the externalisation of an internally finite type $\mathcal{o}_x$-module $\mathcal{f}$
+    is locally of finite type externally.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#112
+  text: Compute the externalisation of $\mathbf{Sh}(X) \models \mathcal{F} \text{ is fg } \land \forall
+    f \colon \mathcal{O}_X^n \to \mathcal{F},\, \ker(f) \text{ is fg}$
+  hint: $\mathcal{F}$ is a coherent $\mathcal{O}_X$-module externally.
+  locator:
+    kind: slide
+    value: '20'
+    number: 20
+  sub_index: 0
+  search_text: compute the externalisation of $\mathbf{sh}(x) \models \mathcal{f} \text{ is fg } \land
+    \forall f \colon \mathcal{o}_x^n \to \mathcal{f},\, \ker(f) \text{ is fg}$ $\mathcal{f}$ is a coherent
+    $\mathcal{o}_x$-module externally.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#113
+  text: Externalise the fact that middle terms of short exact sequences of finitely generated modules
+    are finitely generated
+  hint: If $0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F}'' \to 0$ is exact and $\mathcal{F}', \mathcal{F}''$
+    are locally of finite type, then $\mathcal{F}$ is locally of finite type.
+  locator:
+    kind: slide
+    value: '21'
+    number: 21
+  sub_index: 0
+  search_text: externalise the fact that middle terms of short exact sequences of finitely generated modules
+    are finitely generated if $0 \to \mathcal{f}' \to \mathcal{f} \to \mathcal{f}'' \to 0$ is exact and
+    $\mathcal{f}', \mathcal{f}''$ are locally of finite type, then $\mathcal{f}$ is locally of finite
+    type.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#114
+  text: Compute the externalisation of the total quotient ring of $\mathcal{O}_X$
+  hint: The sheaf of meromorphic functions $\mathcal{K}_X = S^{-1}\mathcal{O}_X$, where $S \subset \mathcal{O}_X$
+    is the subsheaf of regular elements.
+  locator:
+    kind: slide
+    value: '23'
+    number: 23
+  sub_index: 0
+  search_text: compute the externalisation of the total quotient ring of $\mathcal{o}_x$ the sheaf of
+    meromorphic functions $\mathcal{k}_x = s^{-1}\mathcal{o}_x$, where $s \subset \mathcal{o}_x$ is the
+    subsheaf of regular elements.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#115
+  text: Compute the externalisation of the tensor product of modules
+  hint: The sheaf tensor product $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$, defined as the sheafification
+    of $U \mapsto \mathcal{F}(U) \otimes_{\mathcal{O}_X(U)} \mathcal{G}(U)$.
+  locator:
+    kind: slide
+    value: '24'
+    number: 24
+  sub_index: 0
+  search_text: compute the externalisation of the tensor product of modules the sheaf tensor product $\mathcal{f}
+    \otimes_{\mathcal{o}_x} \mathcal{g}$, defined as the sheafification of $u \mapsto \mathcal{f}(u) \otimes_{\mathcal{o}_x(u)}
+    \mathcal{g}(u)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#116
+  text: Compute the externalisation of $\mathcal{O}_X$ being a local ring and an internal field
+  hint: Stalks $\mathcal{O}_{X, x}$ are local rings; on reduced schemes, non-units are nilpotent, so internally
+    $\mathcal{O}_X$ satisfies $\neg(x \in \mathcal{O}_X^\times) \implies x = 0$.
+  locator:
+    kind: slide
+    value: '26'
+    number: 26
+  sub_index: 0
+  search_text: compute the externalisation of $\mathcal{o}_x$ being a local ring and an internal field
+    stalks $\mathcal{o}_{x, x}$ are local rings; on reduced schemes, non-units are nilpotent, so internally
+    $\mathcal{o}_x$ satisfies $\neg(x \in \mathcal{o}_x^\times) \implies x = 0$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#117
+  text: 'Externalise: $M$ finitely generated over a field is free $\iff$ its rank is in $\mathbb{N}$;
+    and $M$ is always $\neg\neg$-free'
+  hint: On a reduced scheme, a coherent sheaf is locally free on connected components $\iff$ its rank
+    is locally constant; and it is always locally free on a dense open set.
+  locator:
+    kind: slide
+    value: '27'
+    number: 27
+  sub_index: 0
+  search_text: 'externalise: $m$ finitely generated over a field is free $\iff$ its rank is in $\mathbb{n}$;
+    and $m$ is always $\neg\neg$-free on a reduced scheme, a coherent sheaf is locally free on connected
+    components $\iff$ its rank is locally constant; and it is always locally free on a dense open set.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#118
+  text: What does it mean that a scheme is covered by quasi-compact opens but is not quasi-compact?
+  hint: The scheme is locally quasi-compact/locally Noetherian but requires infinitely many affine charts
+    to cover globally.
+  locator:
+    kind: slide
+    value: '34'
+    number: 34
+  sub_index: 0
+  search_text: what does it mean that a scheme is covered by quasi-compact opens but is not quasi-compact?
+    the scheme is locally quasi-compact/locally noetherian but requires infinitely many affine charts
+    to cover globally.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#119
+  text: Compute the directed limit property for quasi-compact schemes in internal logic
+  hint: If $X$ is quasi-compact and $\mathbf{Sh}(X) \models \bigvee_{i \in I} \phi_i$ for an upward-directed
+    family $\{\phi_i\}$, then there exists $i_0 \in I$ such that $\mathbf{Sh}(X) \models \phi_{i_0}$.
+  locator:
+    kind: slide
+    value: '34'
+    number: 34
+  sub_index: 1
+  search_text: compute the directed limit property for quasi-compact schemes in internal logic if $x$
+    is quasi-compact and $\mathbf{sh}(x) \models \bigvee_{i \in i} \phi_i$ for an upward-directed family
+    $\{\phi_i\}$, then there exists $i_0 \in i$ such that $\mathbf{sh}(x) \models \phi_{i_0}$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#120
+  text: Compute the externalisation of $\varinjlim M_i \text{ is fg} \implies \exists i,\, M_i \twoheadrightarrow
+    M$
+  hint: On a quasi-compact scheme, if a filtered colimit of $\mathcal{O}_X$-modules is locally of finite
+    type, it is generated by some finite stage $\mathcal{F}_{i_0} \twoheadrightarrow \mathcal{F}$.
+  locator:
+    kind: slide
+    value: '35'
+    number: 35
+  sub_index: 0
+  search_text: compute the externalisation of $\varinjlim m_i \text{ is fg} \implies \exists i,\, m_i
+    \twoheadrightarrow m$ on a quasi-compact scheme, if a filtered colimit of $\mathcal{o}_x$-modules
+    is locally of finite type, it is generated by some finite stage $\mathcal{f}_{i_0} \twoheadrightarrow
+    \mathcal{f}$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#121
+  text: Compute the externalisation of the affine line $\mathbb{A}_S^1$ in $\mathbf{Zar}(S)$
+  hint: The scheme $\mathbb{A}_S^1 = \mathrm{Spec}_S(\mathcal{O}_S[T])$, representing the forgetful functor
+    of global sections $X \mapsto \Gamma(X, \mathcal{O}_X)$.
+  locator:
+    kind: slide
+    value: '36'
+    number: 36
+  sub_index: 0
+  search_text: compute the externalisation of the affine line $\mathbb{a}_s^1$ in $\mathbf{zar}(s)$ the
+    scheme $\mathbb{a}_s^1 = \mathrm{spec}_s(\mathcal{o}_s[t])$, representing the forgetful functor of
+    global sections $x \mapsto \gamma(x, \mathcal{o}_x)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#122
+  text: Compute the functor of points of $\mathbb{A}_S^1$ as an additive group in $\mathbf{Zar}(S)$
+  hint: The additive group scheme $\mathbb{G}_a = (\mathbb{A}^1, +)$, representing $X \mapsto (\Gamma(X,
+    \mathcal{O}_X), +)$.
+  locator:
+    kind: slide
+    value: '40'
+    number: 40
+  sub_index: 0
+  search_text: compute the functor of points of $\mathbb{a}_s^1$ as an additive group in $\mathbf{zar}(s)$
+    the additive group scheme $\mathbb{g}_a = (\mathbb{a}^1, +)$, representing $x \mapsto (\gamma(x, \mathcal{o}_x),
+    +)$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#123
+  text: Compute the functor of points of $\mathbb{A}_S^{1\times}$ in $\mathbf{Zar}(S)$
+  hint: The multiplicative group scheme $\mathbb{G}_m = \mathbb{A}^1 \setminus \{0\}$, representing $X
+    \mapsto \Gamma(X, \mathcal{O}_X)^\times$.
+  locator:
+    kind: slide
+    value: '40'
+    number: 40
+  sub_index: 1
+  search_text: compute the functor of points of $\mathbb{a}_s^{1\times}$ in $\mathbf{zar}(s)$ the multiplicative
+    group scheme $\mathbb{g}_m = \mathbb{a}^1 \setminus \{0\}$, representing $x \mapsto \gamma(x, \mathcal{o}_x)^\times$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#124
+  text: 'Compute the functor of points of $\mu_n = \{x \in \mathbb{A}^1 : x^n = 1\}$ in $\mathbf{Zar}(S)$'
+  hint: 'The group scheme of $n$-th roots of unity $\mu_n = \mathrm{Spec}_S(\mathcal{O}_S[T]/(T^n - 1))$,
+    representing $X \mapsto \{f \in \Gamma(X, \mathcal{O}_X) : f^n = 1\}$.'
+  locator:
+    kind: slide
+    value: '40'
+    number: 40
+  sub_index: 2
+  search_text: 'compute the functor of points of $\mu_n = \{x \in \mathbb{a}^1 : x^n = 1\}$ in $\mathbf{zar}(s)$
+    the group scheme of $n$-th roots of unity $\mu_n = \mathrm{spec}_s(\mathcal{o}_s[t]/(t^n - 1))$, representing
+    $x \mapsto \{f \in \gamma(x, \mathcal{o}_x) : f^n = 1\}$.'
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#125
+  text: Compute the functor of points of $\mathrm{GL}_n$ in $\mathbf{Zar}(S)$
+  hint: The general linear group scheme $\mathrm{GL}_{n, S} = \mathrm{Spec}_S(\mathcal{O}_S[T_{ij}][1/\det])$,
+    representing $X \mapsto \mathrm{GL}_n(\Gamma(X, \mathcal{O}_X))$.
+  locator:
+    kind: slide
+    value: '40'
+    number: 40
+  sub_index: 3
+  search_text: compute the functor of points of $\mathrm{gl}_n$ in $\mathbf{zar}(s)$ the general linear
+    group scheme $\mathrm{gl}_{n, s} = \mathrm{spec}_s(\mathcal{o}_s[t_{ij}][1/\det])$, representing $x
+    \mapsto \mathrm{gl}_n(\gamma(x, \mathcal{o}_x))$.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#126
+  text: Compute the externalisation of $p \colon Y \to X$ being injective with an open image in $\mathbf{Zar}(S)$
+  hint: $p \colon Y \hookrightarrow X$ is an open immersion of schemes.
+  locator:
+    kind: slide
+    value: '41'
+    number: 41
+  sub_index: 0
+  search_text: compute the externalisation of $p \colon y \to x$ being injective with an open image in
+    $\mathbf{zar}(s)$ $p \colon y \hookrightarrow x$ is an open immersion of schemes.
+- id: opus-bibliothek-uni-augsburg-de-opus4-files-42513-notes-pdf#127
+  text: Compute the externalisation of the internal mapping object $[X, \mathbb{A}_S^1]$ in $\mathbf{Zar}(S)$
+  hint: The global section space $\Gamma(X, \mathcal{O}_X)$, identifying maps to the affine line with
+    regular functions on $X$.
+  locator:
+    kind: slide
+    value: '42'
+    number: 42
+  sub_index: 0
+  search_text: compute the externalisation of the internal mapping object $[x, \mathbb{a}_s^1]$ in $\mathbf{zar}(s)$
+    the global section space $\gamma(x, \mathcal{o}_x)$, identifying maps to the affine line with regular
+    functions on $x$.

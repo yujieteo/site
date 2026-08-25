@@ -1,0 +1,759 @@
+url: https://arxiv.org/pdf/2605.11731
+title: Complex Geometry and Condensed Mathematics
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: arxiv-org-pdf-2605-11731#000
+  text: How does one characterize the sheaf of holomorphic functions locally and globally on complex domains?
+  hint: A holomorphic function is locally given on open polydiscs by power series converging absolutely
+    and uniformly; since holomorphicity is local, it glues to a sheaf $\mathcal{O}_X$ whose higher sheaf
+    cohomology vanishes on Stein domains by Cartan's Theorem B.
+  locator:
+    kind: page
+    value: '6'
+    number: 6
+  sub_index: 0
+  search_text: how does one characterize the sheaf of holomorphic functions locally and globally on complex
+    domains? a holomorphic function is locally given on open polydiscs by power series converging absolutely
+    and uniformly; since holomorphicity is local, it glues to a sheaf $\mathcal{o}_x$ whose higher sheaf
+    cohomology vanishes on stein domains by cartan's theorem b.
+- id: arxiv-org-pdf-2605-11731#001
+  text: How does one establish the existence and cohomological vanishing of the sheaf of holomorphic functions?
+  hint: Analyticity follows from the Cauchy integral formula; using smooth bump functions and partitions
+    of unity, one constructs the Dolbeault resolution $0 \to \mathcal{O} \to \Omega^{0,0} \xrightarrow{\bar{\partial}}
+    \Omega^{0,1} \xrightarrow{\bar{\partial}} \dots$, reducing higher cohomology vanishing to the solvability
+    of the $\bar{\partial}$-equation on Stein/polydisc domains.
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: how does one establish the existence and cohomological vanishing of the sheaf of holomorphic
+    functions? analyticity follows from the cauchy integral formula; using smooth bump functions and partitions
+    of unity, one constructs the dolbeault resolution $0 \to \mathcal{o} \to \omega^{0,0} \xrightarrow{\bar{\partial}}
+    \omega^{0,1} \xrightarrow{\bar{\partial}} \dots$, reducing higher cohomology vanishing to the solvability
+    of the $\bar{\partial}$-equation on stein/polydisc domains.
+- id: arxiv-org-pdf-2605-11731#002
+  text: What is the motivating idea behind an analytic ring structure on a topological ring?
+  hint: An analytic ring structure specifies a functorial topological module of "measures" $\mathcal{M}(S)$
+    for every profinite set $S$, enabling a unique integration/extension map from functions on $S$ to
+    summable series and integrals in the module category.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 0
+  search_text: what is the motivating idea behind an analytic ring structure on a topological ring? an
+    analytic ring structure specifies a functorial topological module of "measures" $\mathcal{m}(s)$ for
+    every profinite set $s$, enabling a unique integration/extension map from functions on $s$ to summable
+    series and integrals in the module category.
+- id: arxiv-org-pdf-2605-11731#003
+  text: Why is the one-point compactification $\mathbb{N} \cup \{\infty\}$ relevant as a test space?
+  hint: $\mathbb{N} \cup \{\infty\}$ is a countable cofiltered limit of finite discrete sets (hence profinite),
+    serving as the universal test space for convergent sequences and summability.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 1
+  search_text: why is the one-point compactification $\mathbb{n} \cup \{\infty\}$ relevant as a test space?
+    $\mathbb{n} \cup \{\infty\}$ is a countable cofiltered limit of finite discrete sets (hence profinite),
+    serving as the universal test space for convergent sequences and summability.
+- id: arxiv-org-pdf-2605-11731#004
+  text: Why does the naive topological module of Radon measures fail over $\mathbb{R}$?
+  hint: The space of Radon measures on a profinite set is not complete under general algebraic operations
+    and lacks good categorical exactness properties because topological abelian groups do not form an
+    abelian category.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 2
+  search_text: why does the naive topological module of radon measures fail over $\mathbb{r}$? the space
+    of radon measures on a profinite set is not complete under general algebraic operations and lacks
+    good categorical exactness properties because topological abelian groups do not form an abelian category.
+- id: arxiv-org-pdf-2605-11731#005
+  text: Why do topological abelian groups fail to form an abelian category?
+  hint: A continuous bijective homomorphism between topological abelian groups (e.g., from discrete $\mathbb{R}$
+    to standard $\mathbb{R}$) has trivial kernel and cokernel but is not an open isomorphism, so the First
+    Isomorphism Theorem fails.
+  locator:
+    kind: page
+    value: '8'
+    number: 8
+  sub_index: 3
+  search_text: why do topological abelian groups fail to form an abelian category? a continuous bijective
+    homomorphism between topological abelian groups (e.g., from discrete $\mathbb{r}$ to standard $\mathbb{r}$)
+    has trivial kernel and cokernel but is not an open isomorphism, so the first isomorphism theorem fails.
+- id: arxiv-org-pdf-2605-11731#006
+  text: How does condensed mathematics resolve the failure of the First Isomorphism Theorem for topological
+    groups?
+  hint: By embedding topological groups into condensed abelian groups via their functor of points on profinite
+    sets; the quotient of standard $\mathbb{R}$ by discrete $\mathbb{R}$ becomes a non-trivial condensed
+    abelian group sheaf.
+  locator:
+    kind: page
+    value: '9'
+    number: 9
+  sub_index: 0
+  search_text: how does condensed mathematics resolve the failure of the first isomorphism theorem for
+    topological groups? by embedding topological groups into condensed abelian groups via their functor
+    of points on profinite sets; the quotient of standard $\mathbb{r}$ by discrete $\mathbb{r}$ becomes
+    a non-trivial condensed abelian group sheaf.
+- id: arxiv-org-pdf-2605-11731#007
+  text: What is the rigorous preliminary definition of an analytic ring?
+  hint: An analytic ring is a condensed ring $\mathcal{A}$ equipped with a family of condensed $\mathcal{A}$-modules
+    $\mathcal{M}(S)$ of "measures" for profinite sets $S$, together with Dirac-delta maps $S \to \mathcal{M}(S)$
+    such that the category of $\mathcal{M}$-complete $\mathcal{A}$-modules forms an abelian subcategory/heart
+    of $\mathbf{Cond}(\mathcal{A})$ stable under limits, colimits, and extensions.
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: what is the rigorous preliminary definition of an analytic ring? an analytic ring is a
+    condensed ring $\mathcal{a}$ equipped with a family of condensed $\mathcal{a}$-modules $\mathcal{m}(s)$
+    of "measures" for profinite sets $s$, together with dirac-delta maps $s \to \mathcal{m}(s)$ such that
+    the category of $\mathcal{m}$-complete $\mathcal{a}$-modules forms an abelian subcategory/heart of
+    $\mathbf{cond}(\mathcal{a})$ stable under limits, colimits, and extensions.
+- id: arxiv-org-pdf-2605-11731#008
+  text: Why promote the classical sheaf of holomorphic functions to an abelian tensor category?
+  hint: To obtain a category of modules with well-behaved completed tensor products and homological algebra
+    (derived categories) that unifies functional analysis with algebraic geometry.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 0
+  search_text: why promote the classical sheaf of holomorphic functions to an abelian tensor category?
+    to obtain a category of modules with well-behaved completed tensor products and homological algebra
+    (derived categories) that unifies functional analysis with algebraic geometry.
+- id: arxiv-org-pdf-2605-11731#009
+  text: How are profinite sets characterized as a cofiltered limit of finite sets?
+  hint: Every compact Hausdorff totally disconnected space $S$ is canonically isomorphic to $\varprojlim_{i}
+    S_i$, where $S_i$ runs over all finite partitions of $S$ into clopen subsets ordered by refinement.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 1
+  search_text: how are profinite sets characterized as a cofiltered limit of finite sets? every compact
+    hausdorff totally disconnected space $s$ is canonically isomorphic to $\varprojlim_{i} s_i$, where
+    $s_i$ runs over all finite partitions of $s$ into clopen subsets ordered by refinement.
+- id: arxiv-org-pdf-2605-11731#010
+  text: What is the finitary Grothendieck topology on the category of $\kappa$-small profinite sets $\mathbf{Prof}_\kappa$?
+  hint: A covering of a profinite set $S$ is a finite family of continuous maps $\{f_i \colon S_i \to
+    S\}$ such that the induced map $\coprod_{i=1}^n S_i \to S$ is surjective.
+  locator:
+    kind: page
+    value: '11'
+    number: 11
+  sub_index: 2
+  search_text: what is the finitary grothendieck topology on the category of $\kappa$-small profinite
+    sets $\mathbf{prof}_\kappa$? a covering of a profinite set $s$ is a finite family of continuous maps
+    $\{f_i \colon s_i \to s\}$ such that the induced map $\coprod_{i=1}^n s_i \to s$ is surjective.
+- id: arxiv-org-pdf-2605-11731#011
+  text: What is the category of $\kappa$-condensed sets and how does it behave under cardinal cutoffs?
+  hint: $\mathbf{Cond}_\kappa(\mathbf{Set})$ is the category of sheaves on $(\mathbf{Prof}_\kappa, \text{finitary
+    étale})$, i.e., contravariant functors $X \colon \mathbf{Prof}_\kappa^{\mathrm{op}} \to \mathbf{Set}$
+    sending finite coproducts to finite products and preserving covers; taking the colimit over strong
+    limit cardinals $\kappa$ yields the fully faithful category $\mathbf{Cond}(\mathbf{Set})$.
+  locator:
+    kind: page
+    value: '12'
+    number: 12
+  sub_index: 0
+  search_text: what is the category of $\kappa$-condensed sets and how does it behave under cardinal cutoffs?
+    $\mathbf{cond}_\kappa(\mathbf{set})$ is the category of sheaves on $(\mathbf{prof}_\kappa, \text{finitary
+    étale})$, i.e., contravariant functors $x \colon \mathbf{prof}_\kappa^{\mathrm{op}} \to \mathbf{set}$
+    sending finite coproducts to finite products and preserving covers; taking the colimit over strong
+    limit cardinals $\kappa$ yields the fully faithful category $\mathbf{cond}(\mathbf{set})$.
+- id: arxiv-org-pdf-2605-11731#012
+  text: What is a quasi-compact condensed set?
+  hint: A condensed set $X$ such that for every collection of open coverings, any covering surjection
+    $\coprod_{i} U_i \to X$ admits a finite sub-surjection; equivalently, $X$ admits a surjection from
+    a single profinite set.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 0
+  search_text: what is a quasi-compact condensed set? a condensed set $x$ such that for every collection
+    of open coverings, any covering surjection $\coprod_{i} u_i \to x$ admits a finite sub-surjection;
+    equivalently, $x$ admits a surjection from a single profinite set.
+- id: arxiv-org-pdf-2605-11731#013
+  text: Why is a condensed set quasi-compact if and only if it is a quotient of a profinite set?
+  hint: Profinite sets are quasi-compact projective generators; every condensed set is a canonical colimit
+    of profinite sets, so finite subcoverings correspond precisely to surjections $S \twoheadrightarrow
+    X$ from a profinite set $S$.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 1
+  search_text: why is a condensed set quasi-compact if and only if it is a quotient of a profinite set?
+    profinite sets are quasi-compact projective generators; every condensed set is a canonical colimit
+    of profinite sets, so finite subcoverings correspond precisely to surjections $s \twoheadrightarrow
+    x$ from a profinite set $s$.
+- id: arxiv-org-pdf-2605-11731#014
+  text: What is a quasi-separated condensed set?
+  hint: A condensed set $X$ whose diagonal morphism $\Delta \colon X \to X \times X$ is quasi-compact,
+    meaning for any two maps from profinite sets $S, T \to X$, the fiber product $S \times_X T$ is quasi-compact.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 2
+  search_text: what is a quasi-separated condensed set? a condensed set $x$ whose diagonal morphism $\delta
+    \colon x \to x \times x$ is quasi-compact, meaning for any two maps from profinite sets $s, t \to
+    x$, the fiber product $s \times_x t$ is quasi-compact.
+- id: arxiv-org-pdf-2605-11731#015
+  text: How are compact Hausdorff spaces embedded into condensed sets?
+  hint: The subcategory of quasi-compact quasi-separated (qcqs) condensed sets is equivalent to the category
+    of compact Hausdorff topological spaces via $X \mapsto \underline{X}(S) = C(S, X)$, representing closed
+    equivalence relations on profinite sets.
+  locator:
+    kind: page
+    value: '13'
+    number: 13
+  sub_index: 3
+  search_text: how are compact hausdorff spaces embedded into condensed sets? the subcategory of quasi-compact
+    quasi-separated (qcqs) condensed sets is equivalent to the category of compact hausdorff topological
+    spaces via $x \mapsto \underline{x}(s) = c(s, x)$, representing closed equivalence relations on profinite
+    sets.
+- id: arxiv-org-pdf-2605-11731#016
+  text: What does it mean for a condensed set $X$ to be projective?
+  hint: For every surjective map of condensed sets $Y \twoheadrightarrow Z$, the induced map $\mathrm{Hom}(X,
+    Y) \to \mathrm{Hom}(X, Z)$ is surjective; equivalently, any surjection $Y \twoheadrightarrow X$ admits
+    a section.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 0
+  search_text: what does it mean for a condensed set $x$ to be projective? for every surjective map of
+    condensed sets $y \twoheadrightarrow z$, the induced map $\mathrm{hom}(x, y) \to \mathrm{hom}(x, z)$
+    is surjective; equivalently, any surjection $y \twoheadrightarrow x$ admits a section.
+- id: arxiv-org-pdf-2605-11731#017
+  text: Why does the Stone-Čech compactification $\beta I$ serve as a projective generator for condensed
+    sets?
+  hint: For any discrete set $I$, the Stone-Čech compactification $\beta I$ is an extremally disconnected
+    profinite set, and Gleason's theorem implies $\beta I$ is a projective object in the category of compact
+    Hausdorff spaces and condensed sets.
+  locator:
+    kind: page
+    value: '14'
+    number: 14
+  sub_index: 1
+  search_text: why does the stone-čech compactification $\beta i$ serve as a projective generator for
+    condensed sets? for any discrete set $i$, the stone-čech compactification $\beta i$ is an extremally
+    disconnected profinite set, and gleason's theorem implies $\beta i$ is a projective object in the
+    category of compact hausdorff spaces and condensed sets.
+- id: arxiv-org-pdf-2605-11731#018
+  text: Why does the category of condensed abelian groups $\mathbf{Cond}(\mathbf{Ab})$ possess good homological
+    properties?
+  hint: $\mathbf{Cond}(\mathbf{Ab})$ is a Grothendieck abelian category with enough compact projective
+    objects given by the free condensed abelian groups $\mathbb{Z}[S]$ for extremally disconnected profinite
+    sets $S$.
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 0
+  search_text: why does the category of condensed abelian groups $\mathbf{cond}(\mathbf{ab})$ possess
+    good homological properties? $\mathbf{cond}(\mathbf{ab})$ is a grothendieck abelian category with
+    enough compact projective objects given by the free condensed abelian groups $\mathbb{z}[s]$ for extremally
+    disconnected profinite sets $s$.
+- id: arxiv-org-pdf-2605-11731#019
+  text: Why is $\mathbb{Z}[S]$ compact projective for an extremally disconnected profinite set $S$?
+  hint: The functor $\mathrm{Hom}_{\mathbf{Cond}(\mathbf{Ab})}(\mathbb{Z}[S], -) \cong \underline{(-)}(S)$
+    preserves all colimits and all exact sequences because $S$ is extremally disconnected and compact.
+  locator:
+    kind: page
+    value: '15'
+    number: 15
+  sub_index: 1
+  search_text: why is $\mathbb{z}[s]$ compact projective for an extremally disconnected profinite set
+    $s$? the functor $\mathrm{hom}_{\mathbf{cond}(\mathbf{ab})}(\mathbb{z}[s], -) \cong \underline{(-)}(s)$
+    preserves all colimits and all exact sequences because $s$ is extremally disconnected and compact.
+- id: arxiv-org-pdf-2605-11731#020
+  text: 'What is the concept of a liquid vector space over $\mathbb{R}$? (Hint: A condensed $\mathbb{R}$-vector
+    space $V$ that is complete with respect to $p$-summable measures, meaning for every $p \in (0, 1]$,
+    infinite sums of $p$-convex combinations converge uniquely in $V$.)'
+  hint: null
+  locator:
+    kind: page
+    value: '16'
+    number: 16
+  sub_index: 0
+  search_text: 'what is the concept of a liquid vector space over $\mathbb{r}$? (hint: a condensed $\mathbb{r}$-vector
+    space $v$ that is complete with respect to $p$-summable measures, meaning for every $p \in (0, 1]$,
+    infinite sums of $p$-convex combinations converge uniquely in $v$.)'
+- id: arxiv-org-pdf-2605-11731#021
+  text: How are signed Radon measures with bounded $p$-variation defined algebraically on profinite sets?
+  hint: 'For a profinite set $S = \varprojlim S_i$, the condensed module of $p$-measures is $\mathcal{M}_{\le
+    p}(S) = \bigcup_{C > 0} \varprojlim_{i} \{ (a_s) \in \mathbb{R}[S_i] : \sum |a_s|^p \le C \}$, forming
+    the unit balls of $\ell^p(S)$ under non-convex $p$-norms.'
+  locator:
+    kind: page
+    value: '16'
+    number: 16
+  sub_index: 1
+  search_text: 'how are signed radon measures with bounded $p$-variation defined algebraically on profinite
+    sets? for a profinite set $s = \varprojlim s_i$, the condensed module of $p$-measures is $\mathcal{m}_{\le
+    p}(s) = \bigcup_{c > 0} \varprojlim_{i} \{ (a_s) \in \mathbb{r}[s_i] : \sum |a_s|^p \le c \}$, forming
+    the unit balls of $\ell^p(s)$ under non-convex $p$-norms.'
+- id: arxiv-org-pdf-2605-11731#022
+  text: What is the condensed ring module of $p$-Radon measures $\mathcal{M}_{<p}(S)$?
+  hint: $\mathcal{M}_{<p}(S) := \varinjlim_{p' < p} \mathcal{M}_{\le p'}(S)$, defined as the filtered
+    colimit of bounded $\ell^{p'}$-variation measure balls to ensure exactness and monoidal properties.
+  locator:
+    kind: page
+    value: '18'
+    number: 18
+  sub_index: 0
+  search_text: what is the condensed ring module of $p$-radon measures $\mathcal{m}_{<p}(s)$? $\mathcal{m}_{<p}(s)
+    := \varinjlim_{p' < p} \mathcal{m}_{\le p'}(s)$, defined as the filtered colimit of bounded $\ell^{p'}$-variation
+    measure balls to ensure exactness and monoidal properties.
+- id: arxiv-org-pdf-2605-11731#023
+  text: State the fundamental definition of a $p$-liquid vector space
+  hint: A condensed abelian group $V$ is $p$-liquid if for every profinite set $S$, the natural evaluation
+    map $\mathrm{Hom}_{\mathbf{Cond}(\mathbf{Ab})}(\mathcal{M}_{<p}(S), V) \xrightarrow{\sim} \mathrm{Map}(S,
+    V)$ is an isomorphism of condensed abelian groups.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 0
+  search_text: state the fundamental definition of a $p$-liquid vector space a condensed abelian group
+    $v$ is $p$-liquid if for every profinite set $s$, the natural evaluation map $\mathrm{hom}_{\mathbf{cond}(\mathbf{ab})}(\mathcal{m}_{<p}(s),
+    v) \xrightarrow{\sim} \mathrm{map}(s, v)$ is an isomorphism of condensed abelian groups.
+- id: arxiv-org-pdf-2605-11731#024
+  text: Why are $p$-Banach spaces and their inverse limits $p$-liquid?
+  hint: A $p$-Banach space $(B, \|\cdot\|)$ is sequentially complete under its $p$-norm ($\|x+y\| \le
+    \|x\| + \|y\|$), ensuring all series with $\sum \|x_n\|^p < \infty$ converge uniquely, which matches
+    the integration axiom against $\mathcal{M}_{<p}(S)$.
+  locator:
+    kind: page
+    value: '19'
+    number: 19
+  sub_index: 1
+  search_text: why are $p$-banach spaces and their inverse limits $p$-liquid? a $p$-banach space $(b,
+    \|\cdot\|)$ is sequentially complete under its $p$-norm ($\|x+y\| \le \|x\| + \|y\|$), ensuring all
+    series with $\sum \|x_n\|^p < \infty$ converge uniquely, which matches the integration axiom against
+    $\mathcal{m}_{<p}(s)$.
+- id: arxiv-org-pdf-2605-11731#025
+  text: Why is $\mathcal{M}_{<p}(S)$ not Banach, and how is its internal dual characterized?
+  hint: $\mathcal{M}_{<p}(S)$ is a strict inductive limit of non-convex metric spaces; its internal continuous
+    dual is $\underline{\mathrm{Hom}}_{\mathbb{R}}(\mathcal{M}_{<p}(S), \mathbb{R}) \cong C(S, \mathbb{R})$,
+    recovering the classical Banach space of continuous real functions on $S$.
+  locator:
+    kind: page
+    value: '20'
+    number: 20
+  sub_index: 0
+  search_text: why is $\mathcal{m}_{<p}(s)$ not banach, and how is its internal dual characterized? $\mathcal{m}_{<p}(s)$
+    is a strict inductive limit of non-convex metric spaces; its internal continuous dual is $\underline{\mathrm{hom}}_{\mathbb{r}}(\mathcal{m}_{<p}(s),
+    \mathbb{r}) \cong c(s, \mathbb{r})$, recovering the classical banach space of continuous real functions
+    on $s$.
+- id: arxiv-org-pdf-2605-11731#026
+  text: How is a condensed set characterized via extremally disconnected test spaces?
+  hint: A condensed set is uniquely determined as a contravariant functor from the category of extremally
+    disconnected profinite sets $\mathbf{ExtrProf}^{\mathrm{op}}$ to $\mathbf{Set}$ that preserves finite
+    products.
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 0
+  search_text: how is a condensed set characterized via extremally disconnected test spaces? a condensed
+    set is uniquely determined as a contravariant functor from the category of extremally disconnected
+    profinite sets $\mathbf{extrprof}^{\mathrm{op}}$ to $\mathbf{set}$ that preserves finite products.
+- id: arxiv-org-pdf-2605-11731#027
+  text: What is the algebraic duality between profinite sets and Boolean algebras?
+  hint: 'Stone duality: $\mathbf{Prof}^{\mathrm{op}} \simeq \mathbf{Bool}$ (Boolean algebras via clopen
+    subsets) and $\mathbf{ExtrProf}^{\mathrm{op}} \simeq \mathbf{CBool}$ (complete Boolean algebras).'
+  locator:
+    kind: page
+    value: '22'
+    number: 22
+  sub_index: 1
+  search_text: 'what is the algebraic duality between profinite sets and boolean algebras? stone duality:
+    $\mathbf{prof}^{\mathrm{op}} \simeq \mathbf{bool}$ (boolean algebras via clopen subsets) and $\mathbf{extrprof}^{\mathrm{op}}
+    \simeq \mathbf{cbool}$ (complete boolean algebras).'
+- id: arxiv-org-pdf-2605-11731#028
+  text: Why can the free condensed abelian group $\mathbb{Z}[S]$ be written as a countable union of profinite
+    sets?
+  hint: For $S$ profinite, $\mathbb{Z}[S] = \bigcup_{n \ge 1} (\sum_{i=1}^n \pm S)$, which is a countable
+    union of compact Hausdorff/profinite subspaces inside the condensed group.
+  locator:
+    kind: page
+    value: '23'
+    number: 23
+  sub_index: 0
+  search_text: why can the free condensed abelian group $\mathbb{z}[s]$ be written as a countable union
+    of profinite sets? for $s$ profinite, $\mathbb{z}[s] = \bigcup_{n \ge 1} (\sum_{i=1}^n \pm s)$, which
+    is a countable union of compact hausdorff/profinite subspaces inside the condensed group.
+- id: arxiv-org-pdf-2605-11731#029
+  text: When is a condensed abelian group flat?
+  hint: $M \in \mathbf{Cond}(\mathbf{Ab})$ is flat if and only if for every extremally disconnected profinite
+    set $S$, the evaluation $M(S)$ is a torsion-free discrete abelian group.
+  locator:
+    kind: page
+    value: '24'
+    number: 24
+  sub_index: 0
+  search_text: when is a condensed abelian group flat? $m \in \mathbf{cond}(\mathbf{ab})$ is flat if and
+    only if for every extremally disconnected profinite set $s$, the evaluation $m(s)$ is a torsion-free
+    discrete abelian group.
+- id: arxiv-org-pdf-2605-11731#030
+  text: How are compact projective condensed abelian groups characterized?
+  hint: An object is compact projective in $\mathbf{Cond}(\mathbf{Ab})$ if and only if it is a retract
+    of $\mathbb{Z}[\beta I]$ for some set $I$, where $\beta I$ is the Stone-Čech compactification of discrete
+    $I$.
+  locator:
+    kind: page
+    value: '25'
+    number: 25
+  sub_index: 0
+  search_text: how are compact projective condensed abelian groups characterized? an object is compact
+    projective in $\mathbf{cond}(\mathbf{ab})$ if and only if it is a retract of $\mathbb{z}[\beta i]$
+    for some set $i$, where $\beta i$ is the stone-čech compactification of discrete $i$.
+- id: arxiv-org-pdf-2605-11731#031
+  text: Why are internal Ext groups non-zero in condensed mathematics?
+  hint: Because $\mathbf{Cond}(\mathbf{Ab})$ contains topological data; for example, $\underline{\mathrm{Ext}}^1(\underline{\mathbb{R}},
+    \underline{\mathbb{Z}}) \cong \underline{\mathbb{R}}/\underline{\mathbb{Z}} \cong \mathbb{S}^1 \neq
+    0$, capturing non-trivial extensions of topological groups.
+  locator:
+    kind: page
+    value: '26'
+    number: 26
+  sub_index: 0
+  search_text: why are internal ext groups non-zero in condensed mathematics? because $\mathbf{cond}(\mathbf{ab})$
+    contains topological data; for example, $\underline{\mathrm{ext}}^1(\underline{\mathbb{r}}, \underline{\mathbb{z}})
+    \cong \underline{\mathbb{r}}/\underline{\mathbb{z}} \cong \mathbb{s}^1 \neq 0$, capturing non-trivial
+    extensions of topological groups.
+- id: arxiv-org-pdf-2605-11731#032
+  text: Why is the projective tensor product $\mathbb{Z}[\beta I] \otimes \mathbb{Z}[\beta J]$ not projective?
+  hint: The product of two extremally disconnected compact spaces $\beta I \times \beta J$ is generally
+    not extremally disconnected, destroying projectivity under naive tensor products.
+  locator:
+    kind: page
+    value: '26'
+    number: 26
+  sub_index: 1
+  search_text: why is the projective tensor product $\mathbb{z}[\beta i] \otimes \mathbb{z}[\beta j]$
+    not projective? the product of two extremally disconnected compact spaces $\beta i \times \beta j$
+    is generally not extremally disconnected, destroying projectivity under naive tensor products.
+- id: arxiv-org-pdf-2605-11731#033
+  text: State Theorem 3.11 on the structure of the category $\mathbf{Liq}_p$ of $p$-liquid vector spaces
+  hint: $\mathbf{Liq}_p$ is an abelian subcategory of $\mathbf{Cond}(\mathbf{Ab})$ stable under all limits,
+    colimits, extensions, and internal $\underline{\mathrm{Hom}}$ and $\underline{\mathrm{Ext}}$; the
+    inclusion derived functor $\mathcal{D}(\mathbf{Liq}_p) \hookrightarrow \mathcal{D}(\mathbf{Cond}(\mathbf{Ab}))$
+    is fully faithful and admits a left adjoint $p$-liquification functor $(-)_{{\mathrm{liq}}_p}$ that
+    is symmetric monoidal with unit $\mathbb{R}$.
+  locator:
+    kind: page
+    value: '27'
+    number: 27
+  sub_index: 0
+  search_text: state theorem 3.11 on the structure of the category $\mathbf{liq}_p$ of $p$-liquid vector
+    spaces $\mathbf{liq}_p$ is an abelian subcategory of $\mathbf{cond}(\mathbf{ab})$ stable under all
+    limits, colimits, extensions, and internal $\underline{\mathrm{hom}}$ and $\underline{\mathrm{ext}}$;
+    the inclusion derived functor $\mathcal{d}(\mathbf{liq}_p) \hookrightarrow \mathcal{d}(\mathbf{cond}(\mathbf{ab}))$
+    is fully faithful and admits a left adjoint $p$-liquification functor $(-)_{{\mathrm{liq}}_p}$ that
+    is symmetric monoidal with unit $\mathbb{r}$.
+- id: arxiv-org-pdf-2605-11731#034
+  text: What are gaseous and solid vector spaces over $\mathbb{Q}_p$?
+  hint: Over nonarchimedean fields like $\mathbb{Q}_p$, the measures $\mathcal{M}(S) = \mathbb{Z}_p[[S]]$
+    produce the abelian category of solid vector spaces $\mathbf{Solid}_{\mathbb{Q}_p}$; intermediate
+    growth rate conditions yield $p$-liquid / gaseous structures.
+  locator:
+    kind: page
+    value: '35'
+    number: 35
+  sub_index: 0
+  search_text: what are gaseous and solid vector spaces over $\mathbb{q}_p$? over nonarchimedean fields
+    like $\mathbb{q}_p$, the measures $\mathcal{m}(s) = \mathbb{z}_p[[s]]$ produce the abelian category
+    of solid vector spaces $\mathbf{solid}_{\mathbb{q}_p}$; intermediate growth rate conditions yield
+    $p$-liquid / gaseous structures.
+- id: arxiv-org-pdf-2605-11731#035
+  text: How is the liquid tensor product defined?
+  hint: The liquid tensor product $V \otimes_{\mathbf{Liq}_p}^{\mathbf{L}} W := (V \otimes_{\mathbf{Cond}(\mathbf{Ab})}^{\mathbf{L}}
+    W)_{{\mathrm{liq}}_p}$ is the liquification of the condensed derived tensor product, completing it
+    with respect to $p$-summable measures.
+  locator:
+    kind: page
+    value: '38'
+    number: 38
+  sub_index: 0
+  search_text: how is the liquid tensor product defined? the liquid tensor product $v \otimes_{\mathbf{liq}_p}^{\mathbf{l}}
+    w := (v \otimes_{\mathbf{cond}(\mathbf{ab})}^{\mathbf{l}} w)_{{\mathrm{liq}}_p}$ is the liquification
+    of the condensed derived tensor product, completing it with respect to $p$-summable measures.
+- id: arxiv-org-pdf-2605-11731#036
+  text: How are $p$-measures defined on locally profinite topological spaces?
+  hint: For a locally profinite space $X = \bigcup U_i$, a $p$-measure is a finitely additive measure
+    of bounded $p$-variation on compact open subsets, forming a condensed $\mathbb{R}$-module $\mathcal{M}_{<p}(X)
+    = \varinjlim_{K \subset X} \mathcal{M}_{<p}(K)$.
+  locator:
+    kind: page
+    value: '40'
+    number: 40
+  sub_index: 0
+  search_text: how are $p$-measures defined on locally profinite topological spaces? for a locally profinite
+    space $x = \bigcup u_i$, a $p$-measure is a finitely additive measure of bounded $p$-variation on
+    compact open subsets, forming a condensed $\mathbb{r}$-module $\mathcal{m}_{<p}(x) = \varinjlim_{k
+    \subset x} \mathcal{m}_{<p}(k)$.
+- id: arxiv-org-pdf-2605-11731#037
+  text: How does Poincaré duality motivate liquid analytic geometry?
+  hint: Liquid modules allow the formulation of a six-operation formalism $(f^*, f_*, f_!, f^!, \otimes,
+    \underline{\mathrm{Hom}})$ on non-archimedean and complex analytic spaces, realizing Poincaré and
+    Serre duality via derived trace maps.
+  locator:
+    kind: page
+    value: '44'
+    number: 44
+  sub_index: 0
+  search_text: how does poincaré duality motivate liquid analytic geometry? liquid modules allow the formulation
+    of a six-operation formalism $(f^*, f_*, f_!, f^!, \otimes, \underline{\mathrm{hom}})$ on non-archimedean
+    and complex analytic spaces, realizing poincaré and serre duality via derived trace maps.
+- id: arxiv-org-pdf-2605-11731#038
+  text: What role does the one-point compactification play in functional analysis on liquid spaces?
+  hint: It compactifies non-compact domains (like $\mathbb{C}$ or $\mathbb{R}$), transforming compactly
+    supported smooth/analytic distributions into global sections on a compact base.
+  locator:
+    kind: page
+    value: '48'
+    number: 48
+  sub_index: 0
+  search_text: what role does the one-point compactification play in functional analysis on liquid spaces?
+    it compactifies non-compact domains (like $\mathbb{c}$ or $\mathbb{r}$), transforming compactly supported
+    smooth/analytic distributions into global sections on a compact base.
+- id: arxiv-org-pdf-2605-11731#039
+  text: How do nuclear spaces resolve the non-isomorphism of sequence spaces?
+  hint: Nuclear spaces are projective/inductive limits of Hilbert spaces with trace-class transition maps;
+    their tensor products are uniquely defined without completing differently under projective vs. injective
+    topologies.
+  locator:
+    kind: page
+    value: '50'
+    number: 50
+  sub_index: 0
+  search_text: how do nuclear spaces resolve the non-isomorphism of sequence spaces? nuclear spaces are
+    projective/inductive limits of hilbert spaces with trace-class transition maps; their tensor products
+    are uniquely defined without completing differently under projective vs. injective topologies.
+- id: arxiv-org-pdf-2605-11731#040
+  text: What is a locale and how is it used in analytic geometry?
+  hint: A locale is a lattice/point-free space formalizing the frame of open sets; it avoids point-set
+    pathologies when taking fiber products and spectrum constructions in non-archimedean/complex geometry.
+  locator:
+    kind: page
+    value: '52'
+    number: 52
+  sub_index: 0
+  search_text: what is a locale and how is it used in analytic geometry? a locale is a lattice/point-free
+    space formalizing the frame of open sets; it avoids point-set pathologies when taking fiber products
+    and spectrum constructions in non-archimedean/complex geometry.
+- id: arxiv-org-pdf-2605-11731#041
+  text: What is the Berkovich spectrum $\mathcal{M}(A)$ in terms of locales?
+  hint: For a Banach/liquid algebra $A$, the Berkovich spectrum $\mathcal{M}(A)$ is the compact Hausdorff
+    locale of bounded multiplicative semi-norms on $A$.
+  locator:
+    kind: page
+    value: '52'
+    number: 52
+  sub_index: 1
+  search_text: what is the berkovich spectrum $\mathcal{m}(a)$ in terms of locales? for a banach/liquid
+    algebra $a$, the berkovich spectrum $\mathcal{m}(a)$ is the compact hausdorff locale of bounded multiplicative
+    semi-norms on $a$.
+- id: arxiv-org-pdf-2605-11731#042
+  text: How is the categorified locale $S(C)$ defined for a symmetric monoidal category $C$?
+  hint: $S(C)$ is the locale whose closed sublocales correspond to idempotent algebras/monoids $A \in
+    C$ such that tensoring with $A$ defines a localization of $C$.
+  locator:
+    kind: page
+    value: '59'
+    number: 59
+  sub_index: 0
+  search_text: how is the categorified locale $s(c)$ defined for a symmetric monoidal category $c$? $s(c)$
+    is the locale whose closed sublocales correspond to idempotent algebras/monoids $a \in c$ such that
+    tensoring with $a$ defines a localization of $c$.
+- id: arxiv-org-pdf-2605-11731#043
+  text: What is an analytic space viewed as a categorified locale?
+  hint: A categorified locale $(X, \mathcal{C}_X)$ over $(* , \mathcal{D}(\mathbf{Liq}_p))$ equipped with
+    a structure sheaf of $\mathbb{E}_\infty$-algebras $\mathcal{O}_X := \underline{\mathrm{End}}_{\mathcal{C}_X}(\mathbf{1}_X)$
+    that is locally equivalent to an affinoid model.
+  locator:
+    kind: page
+    value: '63'
+    number: 63
+  sub_index: 0
+  search_text: what is an analytic space viewed as a categorified locale? a categorified locale $(x, \mathcal{c}_x)$
+    over $(* , \mathcal{d}(\mathbf{liq}_p))$ equipped with a structure sheaf of $\mathbb{e}_\infty$-algebras
+    $\mathcal{o}_x := \underline{\mathrm{end}}_{\mathcal{c}_x}(\mathbf{1}_x)$ that is locally equivalent
+    to an affinoid model.
+- id: arxiv-org-pdf-2605-11731#044
+  text: State the liquid GAGA theorem for proper complex schemes
+  hint: For a proper scheme $X$ over $\mathbb{C}$, the analytification functor induces an equivalence
+    between the derived category of coherent algebraic sheaves $\mathcal{D}_{\mathbf{Coh}}^b(X)$ and the
+    category of discrete/nuclear liquid coherent analytic sheaves $\mathcal{D}_{\mathbf{Coh}}^b(X^{\mathrm{an}})$.
+  locator:
+    kind: page
+    value: '85'
+    number: 85
+  sub_index: 0
+  search_text: state the liquid gaga theorem for proper complex schemes for a proper scheme $x$ over $\mathbb{c}$,
+    the analytification functor induces an equivalence between the derived category of coherent algebraic
+    sheaves $\mathcal{d}_{\mathbf{coh}}^b(x)$ and the category of discrete/nuclear liquid coherent analytic
+    sheaves $\mathcal{d}_{\mathbf{coh}}^b(x^{\mathrm{an}})$.
+- id: arxiv-org-pdf-2605-11731#045
+  text: How does the relation "Finite = Compact + Discrete" characterize coherent sheaves?
+  hint: In the liquid category, coherent sheaves are precisely the objects that are simultaneously compact
+    (dualizable/finitely presented) and discrete (algebraic), bridging functional analysis and algebraic
+    geometry.
+  locator:
+    kind: page
+    value: '90'
+    number: 90
+  sub_index: 0
+  search_text: how does the relation "finite = compact + discrete" characterize coherent sheaves? in the
+    liquid category, coherent sheaves are precisely the objects that are simultaneously compact (dualizable/finitely
+    presented) and discrete (algebraic), bridging functional analysis and algebraic geometry.
+- id: arxiv-org-pdf-2605-11731#046
+  text: What is a nuclear module in liquid complex geometry?
+  hint: A $p$-liquid vector space $V$ isomorphic to a filtered colimit of Banach/Hilbert spaces with nuclear/trace-class
+    transition maps (e.g., spaces of overconvergent holomorphic functions $\mathcal{O}(D)$ on closed discs).
+  locator:
+    kind: page
+    value: '95'
+    number: 95
+  sub_index: 0
+  search_text: what is a nuclear module in liquid complex geometry? a $p$-liquid vector space $v$ isomorphic
+    to a filtered colimit of banach/hilbert spaces with nuclear/trace-class transition maps (e.g., spaces
+    of overconvergent holomorphic functions $\mathcal{o}(d)$ on closed discs).
+- id: arxiv-org-pdf-2605-11731#047
+  text: What is a trace-class / nuclear morphism in a closed symmetric monoidal category?
+  hint: A morphism $f \colon X \to Y$ is nuclear if it lies in the image of the canonical evaluation map
+    $X^\vee \otimes Y \to \underline{\mathrm{Hom}}(X, Y)$.
+  locator:
+    kind: page
+    value: '98'
+    number: 98
+  sub_index: 0
+  search_text: what is a trace-class / nuclear morphism in a closed symmetric monoidal category? a morphism
+    $f \colon x \to y$ is nuclear if it lies in the image of the canonical evaluation map $x^\vee \otimes
+    y \to \underline{\mathrm{hom}}(x, y)$.
+- id: arxiv-org-pdf-2605-11731#048
+  text: What is a dual nuclear Fréchet (DNF) space?
+  hint: A condensed vector space that is a sequential filtered colimit of Hilbert spaces $H_0 \to H_1
+    \to H_2 \to \dots$ along injective transition maps that are of $p$-Schatten class.
+  locator:
+    kind: page
+    value: '100'
+    number: 100
+  sub_index: 0
+  search_text: what is a dual nuclear fréchet (dnf) space? a condensed vector space that is a sequential
+    filtered colimit of hilbert spaces $h_0 \to h_1 \to h_2 \to \dots$ along injective transition maps
+    that are of $p$-schatten class.
+- id: arxiv-org-pdf-2605-11731#049
+  text: What is a $p$-Schatten operator between Hilbert spaces?
+  hint: A compact operator $T \colon H_1 \to H_2$ whose singular values $(\sigma_n)_{n \ge 0}$ satisfy
+    $\sum_{n=0}^\infty \sigma_n^p < \infty$.
+  locator:
+    kind: page
+    value: '101'
+    number: 101
+  sub_index: 0
+  search_text: what is a $p$-schatten operator between hilbert spaces? a compact operator $t \colon h_1
+    \to h_2$ whose singular values $(\sigma_n)_{n \ge 0}$ satisfy $\sum_{n=0}^\infty \sigma_n^p < \infty$.
+- id: arxiv-org-pdf-2605-11731#050
+  text: When is an object in a compactly generated stable $\infty$-category $C$ called discrete?
+  hint: An object $M \in C$ is discrete if it lies in the essential image of the base change functor $\mathcal{D}(\mathrm{End}(1))
+    \to C$ generated by colimits and shifts of the unit object $\mathbf{1}$.
+  locator:
+    kind: page
+    value: '102'
+    number: 102
+  sub_index: 0
+  search_text: when is an object in a compactly generated stable $\infty$-category $c$ called discrete?
+    an object $m \in c$ is discrete if it lies in the essential image of the base change functor $\mathcal{d}(\mathrm{end}(1))
+    \to c$ generated by colimits and shifts of the unit object $\mathbf{1}$.
+- id: arxiv-org-pdf-2605-11731#051
+  text: When is an object in $C$ a perfect complex?
+  hint: An object $V \in C$ is a perfect complex if and only if it is both compact and discrete, i.e.,
+    in the thick subcategory generated by the unit object under finite colimits, shifts, and retracts.
+  locator:
+    kind: page
+    value: '102'
+    number: 102
+  sub_index: 1
+  search_text: when is an object in $c$ a perfect complex? an object $v \in c$ is a perfect complex if
+    and only if it is both compact and discrete, i.e., in the thick subcategory generated by the unit
+    object under finite colimits, shifts, and retracts.
+- id: arxiv-org-pdf-2605-11731#052
+  text: How are compact nuclear objects characterized via trace-class maps?
+  hint: An object is compact and nuclear if and only if it is dualizable in the liquid category, which
+    occurs precisely when it is a retract of the fiber/cone of $\mathrm{id} - f \colon V \to V$ for a
+    nuclear operator $f$.
+  locator:
+    kind: page
+    value: '103'
+    number: 103
+  sub_index: 0
+  search_text: how are compact nuclear objects characterized via trace-class maps? an object is compact
+    and nuclear if and only if it is dualizable in the liquid category, which occurs precisely when it
+    is a retract of the fiber/cone of $\mathrm{id} - f \colon v \to v$ for a nuclear operator $f$.
+- id: arxiv-org-pdf-2605-11731#053
+  text: When is a liquid category Fredholm?
+  hint: A category is Fredholm if every dualizable object is discrete, ensuring that index theorems and
+    finite-dimensionality of cohomology hold.
+  locator:
+    kind: page
+    value: '103'
+    number: 103
+  sub_index: 1
+  search_text: when is a liquid category fredholm? a category is fredholm if every dualizable object is
+    discrete, ensuring that index theorems and finite-dimensionality of cohomology hold.
+- id: arxiv-org-pdf-2605-11731#054
+  text: What is the precise definition of an affinoid algebra in liquid complex geometry?
+  hint: A commutative algebra $A \in \mathbf{CAlg}(\mathcal{D}(\mathbf{Liq}_p))$ that is quasi-isomorphic
+    to a quotient of the algebra of overconvergent power series $\mathbb{C}\{T_1, \dots, T_n\}^\dagger$
+    on a polydisc by a finitely generated ideal.
+  locator:
+    kind: page
+    value: '103'
+    number: 103
+  sub_index: 2
+  search_text: what is the precise definition of an affinoid algebra in liquid complex geometry? a commutative
+    algebra $a \in \mathbf{calg}(\mathcal{d}(\mathbf{liq}_p))$ that is quasi-isomorphic to a quotient
+    of the algebra of overconvergent power series $\mathbb{c}\{t_1, \dots, t_n\}^\dagger$ on a polydisc
+    by a finitely generated ideal.
+- id: arxiv-org-pdf-2605-11731#055
+  text: State the global definition of a complex analytic space
+  hint: A complex analytic space is a categorified locale $(X, \mathcal{C}_X)$ over $(* , \mathcal{D}(\mathbf{Liq}_p))$
+    that is locally isomorphic to the categorified spectrum $\mathrm{Spec}(A, \mathcal{M}_{<p})$ of an
+    affinoid liquid algebra $A$.
+  locator:
+    kind: page
+    value: '105'
+    number: 105
+  sub_index: 0
+  search_text: state the global definition of a complex analytic space a complex analytic space is a categorified
+    locale $(x, \mathcal{c}_x)$ over $(* , \mathcal{d}(\mathbf{liq}_p))$ that is locally isomorphic to
+    the categorified spectrum $\mathrm{spec}(a, \mathcal{m}_{<p})$ of an affinoid liquid algebra $a$.
+- id: arxiv-org-pdf-2605-11731#056
+  text: How are open and closed immersions defined for liquid complex analytic spaces?
+  hint: An open immersion is a local isomorphism of categorified locales corresponding to restriction
+    to an open sublocale; a closed immersion is a morphism corresponding to a surjective quotient of structure
+    sheaves $A \twoheadrightarrow A/I$ in $\mathbf{Liq}_p$.
+  locator:
+    kind: page
+    value: '111'
+    number: 111
+  sub_index: 0
+  search_text: how are open and closed immersions defined for liquid complex analytic spaces? an open
+    immersion is a local isomorphism of categorified locales corresponding to restriction to an open sublocale;
+    a closed immersion is a morphism corresponding to a surjective quotient of structure sheaves $a \twoheadrightarrow
+    a/i$ in $\mathbf{liq}_p$.

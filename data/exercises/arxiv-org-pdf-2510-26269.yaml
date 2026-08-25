@@ -1,0 +1,456 @@
+url: https://arxiv.org/pdf/2510.26269
+title: Scholze's six functor formalisms (mini)
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-2510-26269#000
+  text: What are the classical analogues of the six operations in Schapira's warm-up of ordinary functions?
+  hint: The tensor product $\otimes$ corresponds to the pointwise product of functions $(f \cdot g)(x)
+    = f(x)g(x)$; the pullback $f^*$ corresponds to precomposition $f^*(g) = g \circ f$; the compactly
+    supported pushforward $f_!$ corresponds to integration along fibers $\int_{f^{-1}(y)} \phi(x) dx$.
+  locator: null
+  sub_index: null
+  search_text: what are the classical analogues of the six operations in schapira's warm-up of ordinary
+    functions? the tensor product $\otimes$ corresponds to the pointwise product of functions $(f \cdot
+    g)(x) = f(x)g(x)$; the pullback $f^*$ corresponds to precomposition $f^*(g) = g \circ f$; the compactly
+    supported pushforward $f_!$ corresponds to integration along fibers $\int_{f^{-1}(y)} \phi(x) dx$.
+- id: arxiv-org-pdf-2510-26269#001
+  text: How does the exceptional pullback $f^!$ arise from Poincaré duality in Schapira's warm-up?
+  hint: Poincaré duality identifies homology (integration/compact supports) with cohomology; the exceptional
+    pullback $f^!$ is the right adjoint to derived pushforward with compact supports $f_!$, serving as
+    the pullback on distribution/dualizing complexes that exists only in derived categories.
+  locator: null
+  sub_index: null
+  search_text: how does the exceptional pullback $f^!$ arise from poincaré duality in schapira's warm-up?
+    poincaré duality identifies homology (integration/compact supports) with cohomology; the exceptional
+    pullback $f^!$ is the right adjoint to derived pushforward with compact supports $f_!$, serving as
+    the pullback on distribution/dualizing complexes that exists only in derived categories.
+- id: arxiv-org-pdf-2510-26269#002
+  text: How is proper base change formulated for a Cartesian diagram in étale cohomology?
+  hint: For a Cartesian square with $f \colon X \to Y$ proper and $g \colon Y' \to Y$, the base change
+    morphism $g^* f_* \xrightarrow{\sim} f'_* g'^*$ is a natural isomorphism in $D_{\text{ét}}(Y', \Lambda)$.
+  locator: null
+  sub_index: null
+  search_text: how is proper base change formulated for a cartesian diagram in étale cohomology? for a
+    cartesian square with $f \colon x \to y$ proper and $g \colon y' \to y$, the base change morphism
+    $g^* f_* \xrightarrow{\sim} f'_* g'^*$ is a natural isomorphism in $d_{\text{ét}}(y', \lambda)$.
+- id: arxiv-org-pdf-2510-26269#003
+  text: What is one concrete setting for the geometric category $\mathcal{C}$ and class of admissible
+    maps $E$?
+  hint: The category of $p$-adic analytic spaces / $p$-adic Lie groups, or schemes with $E$ being morphisms
+    of finite type / compactifiable morphisms.
+  locator: null
+  sub_index: null
+  search_text: what is one concrete setting for the geometric category $\mathcal{c}$ and class of admissible
+    maps $e$? the category of $p$-adic analytic spaces / $p$-adic lie groups, or schemes with $e$ being
+    morphisms of finite type / compactifiable morphisms.
+- id: arxiv-org-pdf-2510-26269#004
+  text: What is the right adjoint to the lax symmetric monoidal tensor functor $\otimes \colon \mathcal{D}(X)
+    \times \mathcal{D}(X) \to \mathcal{D}(X)$?
+  hint: The internal hom functor $\underline{\mathrm{Hom}}(-, -) \colon \mathcal{D}(X)^{\mathrm{op}} \times
+    \mathcal{D}(X) \to \mathcal{D}(X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the right adjoint to the lax symmetric monoidal tensor functor $\otimes \colon
+    \mathcal{d}(x) \times \mathcal{d}(x) \to \mathcal{d}(x)$? the internal hom functor $\underline{\mathrm{hom}}(-,
+    -) \colon \mathcal{d}(x)^{\mathrm{op}} \times \mathcal{d}(x) \to \mathcal{d}(x)$.
+- id: arxiv-org-pdf-2510-26269#005
+  text: How is the projection formula formulated in étale cohomology?
+  hint: For any morphism $f \colon X \to Y$, $A \in D(X)$, and $B \in D(Y)$, the canonical map $f_!(A
+    \otimes^{\mathbf{L}} f^*B) \xrightarrow{\sim} f_!(A) \otimes^{\mathbf{L}} B$ is an isomorphism in
+    $D(Y)$.
+  locator: null
+  sub_index: null
+  search_text: how is the projection formula formulated in étale cohomology? for any morphism $f \colon
+    x \to y$, $a \in d(x)$, and $b \in d(y)$, the canonical map $f_!(a \otimes^{\mathbf{l}} f^*b) \xrightarrow{\sim}
+    f_!(a) \otimes^{\mathbf{l}} b$ is an isomorphism in $d(y)$.
+- id: arxiv-org-pdf-2510-26269#006
+  text: What are the objects and morphisms in the category of correspondences $\mathrm{Corr}(\mathcal{C},
+    E)$?
+  hint: Objects are objects of $\mathcal{C}$; a morphism from $X$ to $Y$ is a correspondence diagram $X
+    \xleftarrow{g} W \xrightarrow{f} Y$ where the forward arrow $f$ belongs to the distinguished class
+    $E$.
+  locator: null
+  sub_index: null
+  search_text: what are the objects and morphisms in the category of correspondences $\mathrm{corr}(\mathcal{c},
+    e)$? objects are objects of $\mathcal{c}$; a morphism from $x$ to $y$ is a correspondence diagram
+    $x \xleftarrow{g} w \xrightarrow{f} y$ where the forward arrow $f$ belongs to the distinguished class
+    $e$.
+- id: arxiv-org-pdf-2510-26269#007
+  text: Where must the backward and forward arrows belong in a correspondence $X \leftarrow W \to Y$ in
+    $\mathrm{Corr}(\mathcal{C}, E)$?
+  hint: The backward arrow $g \colon W \to X$ is an arbitrary morphism in $\mathcal{C}$ (inducing pullback
+    $g^*$), while the forward arrow $f \colon W \to Y$ must belong to the class $E$ (inducing pushforward
+    $f_!$).
+  locator: null
+  sub_index: null
+  search_text: where must the backward and forward arrows belong in a correspondence $x \leftarrow w \to
+    y$ in $\mathrm{corr}(\mathcal{c}, e)$? the backward arrow $g \colon w \to x$ is an arbitrary morphism
+    in $\mathcal{c}$ (inducing pullback $g^*$), while the forward arrow $f \colon w \to y$ must belong
+    to the class $e$ (inducing pushforward $f_!$).
+- id: arxiv-org-pdf-2510-26269#008
+  text: Why is the category of correspondences $\mathrm{Corr}(\mathcal{C}, E)$ endowed with a symmetric
+    monoidal structure via Cartesian products $X \times Y$?
+  hint: Cartesian products define symmetric monoidal structures on both $\mathcal{C}$ and its correspondences,
+    ensuring the assignment $X \mapsto \mathcal{D}(X)$ is a symmetric monoidal functor preserving external
+    products $\mathcal{D}(X) \boxtimes \mathcal{D}(Y) \simeq \mathcal{D}(X \times Y)$.
+  locator: null
+  sub_index: null
+  search_text: why is the category of correspondences $\mathrm{corr}(\mathcal{c}, e)$ endowed with a symmetric
+    monoidal structure via cartesian products $x \times y$? cartesian products define symmetric monoidal
+    structures on both $\mathcal{c}$ and its correspondences, ensuring the assignment $x \mapsto \mathcal{d}(x)$
+    is a symmetric monoidal functor preserving external products $\mathcal{d}(x) \boxtimes \mathcal{d}(y)
+    \simeq \mathcal{d}(x \times y)$.
+- id: arxiv-org-pdf-2510-26269#009
+  text: How is the composition of two correspondences defined in $\mathrm{Corr}(\mathcal{C}, E)$?
+  hint: 'Given $X \xleftarrow{g} W \xrightarrow{f} Y$ and $Y \xleftarrow{g''} Z \xrightarrow{f''} T$,
+    their composite is formed by the pullback/fiber product $W \times_Y Z$ in the middle: $X \leftarrow
+    W \times_Y Z \to T$, where $W \times_Y Z \to T$ remains in $E$ because $E$ is stable under base change
+    and composition.'
+  locator: null
+  sub_index: null
+  search_text: 'how is the composition of two correspondences defined in $\mathrm{corr}(\mathcal{c}, e)$?
+    given $x \xleftarrow{g} w \xrightarrow{f} y$ and $y \xleftarrow{g''} z \xrightarrow{f''} t$, their
+    composite is formed by the pullback/fiber product $w \times_y z$ in the middle: $x \leftarrow w \times_y
+    z \to t$, where $w \times_y z \to t$ remains in $e$ because $e$ is stable under base change and composition.'
+- id: arxiv-org-pdf-2510-26269#010
+  text: How are derived global sections related to the constant sheaf $\underline{\mathbb{Z}}$?
+  hint: The derived global section functor is $\mathbf{R}\Gamma(X, -) := (a_X)_*(-)$; evaluating on the
+    constant sheaf $\underline{\mathbb{Z}}_X = a_X^*(\mathbb{Z})$ computes the Betti/cohomology complex
+    $\mathbf{R}\Gamma(X, \underline{\mathbb{Z}}_X)$, whose homology groups give $H^i(X, \mathbb{Z})$.
+  locator: null
+  sub_index: null
+  search_text: how are derived global sections related to the constant sheaf $\underline{\mathbb{z}}$?
+    the derived global section functor is $\mathbf{r}\gamma(x, -) := (a_x)_*(-)$; evaluating on the constant
+    sheaf $\underline{\mathbb{z}}_x = a_x^*(\mathbb{z})$ computes the betti/cohomology complex $\mathbf{r}\gamma(x,
+    \underline{\mathbb{z}}_x)$, whose homology groups give $h^i(x, \mathbb{z})$.
+- id: arxiv-org-pdf-2510-26269#011
+  text: What functor provides functorial composition in $\mathcal{D}(\mathbf{Ab})$ and what is its right
+    adjoint?
+  hint: The derived tensor product $-\otimes^{\mathbf{L}} -$ provides composition/monoidal product; its
+    right adjoint is the derived internal hom $\mathbf{R}\underline{\mathrm{Hom}}(-, -)$.
+  locator: null
+  sub_index: null
+  search_text: what functor provides functorial composition in $\mathcal{d}(\mathbf{ab})$ and what is
+    its right adjoint? the derived tensor product $-\otimes^{\mathbf{l}} -$ provides composition/monoidal
+    product; its right adjoint is the derived internal hom $\mathbf{r}\underline{\mathrm{hom}}(-, -)$.
+- id: arxiv-org-pdf-2510-26269#012
+  text: How is the stalk $(f_* A)_y$ computed via proper base change for a proper map $f \colon X \to
+    Y$?
+  hint: Let $i_y \colon \{y\} \hookrightarrow Y$ and $i_{X_y} \colon X_y = X \times_Y \{y\} \hookrightarrow
+    X$; proper base change gives $(f_* A)_y \cong i_y^* f_* A \xrightarrow{\sim} \mathbf{R}\Gamma(X_y,
+    i_{X_y}^* A)$.
+  locator: null
+  sub_index: null
+  search_text: how is the stalk $(f_* a)_y$ computed via proper base change for a proper map $f \colon
+    x \to y$? let $i_y \colon \{y\} \hookrightarrow y$ and $i_{x_y} \colon x_y = x \times_y \{y\} \hookrightarrow
+    x$; proper base change gives $(f_* a)_y \cong i_y^* f_* a \xrightarrow{\sim} \mathbf{r}\gamma(x_y,
+    i_{x_y}^* a)$.
+- id: arxiv-org-pdf-2510-26269#013
+  text: What is the natural proper base change isomorphism for a Cartesian square $X' \xrightarrow{g'}
+    X$, $X \xrightarrow{f} Y$, $Y' \xrightarrow{g} Y$, $X' \xrightarrow{f'} Y'$?
+  hint: $g^* f_* \xrightarrow{\sim} f'_* g'^*$ (or $g^* f_! \xrightarrow{\sim} f'_! g'^*$ in general).
+  locator: null
+  sub_index: null
+  search_text: what is the natural proper base change isomorphism for a cartesian square $x' \xrightarrow{g'}
+    x$, $x \xrightarrow{f} y$, $y' \xrightarrow{g} y$, $x' \xrightarrow{f'} y'$? $g^* f_* \xrightarrow{\sim}
+    f'_* g'^*$ (or $g^* f_! \xrightarrow{\sim} f'_! g'^*$ in general).
+- id: arxiv-org-pdf-2510-26269#014
+  text: How is the derived tensor product computed via right derived functors under $\mathbb{Z}$-coefficients?
+  hint: Via the derived tensor product $\mathcal{F} \otimes^{\mathbf{L}} \mathcal{G}$, which resolves
+    sheaves by flat/projective complexes and satisfies $\mathbf{R}\Gamma(X, \mathcal{F} \otimes^{\mathbf{L}}
+    \mathcal{G})$ via the Künneth formula.
+  locator: null
+  sub_index: null
+  search_text: how is the derived tensor product computed via right derived functors under $\mathbb{z}$-coefficients?
+    via the derived tensor product $\mathcal{f} \otimes^{\mathbf{l}} \mathcal{g}$, which resolves sheaves
+    by flat/projective complexes and satisfies $\mathbf{r}\gamma(x, \mathcal{f} \otimes^{\mathbf{l}} \mathcal{g})$
+    via the künneth formula.
+- id: arxiv-org-pdf-2510-26269#015
+  text: What is the right adjoint to $-\otimes^{\mathbf{L}} \mathcal{F}$ in $\mathcal{D}(X)$?
+  hint: The derived internal hom $\mathbf{R}\underline{\mathrm{Hom}}(\mathcal{F}, -)$.
+  locator: null
+  sub_index: null
+  search_text: what is the right adjoint to $-\otimes^{\mathbf{l}} \mathcal{f}$ in $\mathcal{d}(x)$? the
+    derived internal hom $\mathbf{r}\underline{\mathrm{hom}}(\mathcal{f}, -)$.
+- id: arxiv-org-pdf-2510-26269#016
+  text: How is $f_!(A \otimes^{\mathbf{L}} f^*B) \cong f_!(A) \otimes^{\mathbf{L}} B$ deduced using the
+    projection formula?
+  hint: By identifying $\mathcal{D}(X)$ as a module category over $\mathcal{D}(Y)$ via the symmetric monoidal
+    structure of the correspondence functor $f_!$.
+  locator: null
+  sub_index: null
+  search_text: how is $f_!(a \otimes^{\mathbf{l}} f^*b) \cong f_!(a) \otimes^{\mathbf{l}} b$ deduced using
+    the projection formula? by identifying $\mathcal{d}(x)$ as a module category over $\mathcal{d}(y)$
+    via the symmetric monoidal structure of the correspondence functor $f_!$.
+- id: arxiv-org-pdf-2510-26269#017
+  text: How is the dual of derived global sections $\mathbf{R}\Gamma(X, \underline{\mathbb{Z}}_X)^\vee$
+    computed via Poincaré-Verdier duality?
+  hint: $\mathbf{R}\underline{\mathrm{Hom}}(\mathbf{R}\Gamma_c(X, \underline{\mathbb{Z}}), \mathbb{Z})
+    \cong \mathbf{R}\Gamma(X, \omega_X)$, where $\omega_X = a_X^! \mathbb{Z}$ is the dualizing complex.
+  locator: null
+  sub_index: null
+  search_text: how is the dual of derived global sections $\mathbf{r}\gamma(x, \underline{\mathbb{z}}_x)^\vee$
+    computed via poincaré-verdier duality? $\mathbf{r}\underline{\mathrm{hom}}(\mathbf{r}\gamma_c(x, \underline{\mathbb{z}}),
+    \mathbb{z}) \cong \mathbf{r}\gamma(x, \omega_x)$, where $\omega_x = a_x^! \mathbb{z}$ is the dualizing
+    complex.
+- id: arxiv-org-pdf-2510-26269#018
+  text: How is the right adjoint $f^!$ of a smooth manifold bundle $f \colon X \to Y$ computed locally?
+  hint: Locally, $X \cong Y \times \mathbb{R}^d$, so $f^! B \cong f^*B \otimes \omega_{X/Y} \cong f^*B[d]$
+    by the Thom isomorphism / Poincaré duality.
+  locator: null
+  sub_index: null
+  search_text: how is the right adjoint $f^!$ of a smooth manifold bundle $f \colon x \to y$ computed
+    locally? locally, $x \cong y \times \mathbb{r}^d$, so $f^! b \cong f^*b \otimes \omega_{x/y} \cong
+    f^*b[d]$ by the thom isomorphism / poincaré duality.
+- id: arxiv-org-pdf-2510-26269#019
+  text: How is $\mathcal{D}(X, \mathbb{Z})$ related to Betti cohomology for a finite-dimensional LCH space
+    $X$?
+  hint: $\mathcal{D}(X, \mathbb{Z})$ is the derived category of sheaves of $\mathbb{Z}$-modules on $X$;
+    its morphisms $\mathrm{Hom}_{\mathcal{D}(X)}(\underline{\mathbb{Z}}_X, \underline{\mathbb{Z}}_X[i])$
+    compute the classical singular/Betti cohomology $H^i(X, \mathbb{Z})$.
+  locator: null
+  sub_index: null
+  search_text: how is $\mathcal{d}(x, \mathbb{z})$ related to betti cohomology for a finite-dimensional
+    lch space $x$? $\mathcal{d}(x, \mathbb{z})$ is the derived category of sheaves of $\mathbb{z}$-modules
+    on $x$; its morphisms $\mathrm{hom}_{\mathcal{d}(x)}(\underline{\mathbb{z}}_x, \underline{\mathbb{z}}_x[i])$
+    compute the classical singular/betti cohomology $h^i(x, \mathbb{z})$.
+- id: arxiv-org-pdf-2510-26269#020
+  text: What conditions are captured by the functor $\mathcal{C}^{\mathrm{op}} \to \mathbf{CMon}(\mathbf{Cat}_\infty)$?
+  hint: It assigns to each space $X$ a symmetric monoidal $\infty$-category $(\mathcal{D}(X), \otimes,
+    \mathbf{1})$ with functorial pullbacks $f^*$ compatible with symmetric monoidal structures.
+  locator: null
+  sub_index: null
+  search_text: what conditions are captured by the functor $\mathcal{c}^{\mathrm{op}} \to \mathbf{cmon}(\mathbf{cat}_\infty)$?
+    it assigns to each space $x$ a symmetric monoidal $\infty$-category $(\mathcal{d}(x), \otimes, \mathbf{1})$
+    with functorial pullbacks $f^*$ compatible with symmetric monoidal structures.
+- id: arxiv-org-pdf-2510-26269#021
+  text: What is the central coherence difficulty in defining a six-functor formalism?
+  hint: Ensuring that all natural isomorphisms (base change, projection formula, unit/associativity constraints,
+    and adjoint equivalences) satisfy higher coherence homotopies without conflicting cocycle choices.
+  locator: null
+  sub_index: null
+  search_text: what is the central coherence difficulty in defining a six-functor formalism? ensuring
+    that all natural isomorphisms (base change, projection formula, unit/associativity constraints, and
+    adjoint equivalences) satisfy higher coherence homotopies without conflicting cocycle choices.
+- id: arxiv-org-pdf-2510-26269#022
+  text: What are the objects and morphisms of the simplex category $\mathbf{\Delta}$?
+  hint: Objects are non-empty finite linearly ordered sets $[n] = \{0, 1, \dots, n\}$ for $n \ge 0$; morphisms
+    are order-preserving maps $f \colon [n] \to [m]$.
+  locator: null
+  sub_index: null
+  search_text: what are the objects and morphisms of the simplex category $\mathbf{\delta}$? objects are
+    non-empty finite linearly ordered sets $[n] = \{0, 1, \dots, n\}$ for $n \ge 0$; morphisms are order-preserving
+    maps $f \colon [n] \to [m]$.
+- id: arxiv-org-pdf-2510-26269#023
+  text: What is the geometric interpretation of the 2-simplices $\Delta^2$ in an $\infty$-category?
+  hint: A 2-simplex represents a composable pair of 1-morphisms $f \colon x \to y$ and $g \colon y \to
+    z$ together with a specified composite $h \colon x \to z$ and a 2-morphism/homotopy $\alpha \colon
+    g \circ f \Rightarrow h$.
+  locator: null
+  sub_index: null
+  search_text: what is the geometric interpretation of the 2-simplices $\delta^2$ in an $\infty$-category?
+    a 2-simplex represents a composable pair of 1-morphisms $f \colon x \to y$ and $g \colon y \to z$
+    together with a specified composite $h \colon x \to z$ and a 2-morphism/homotopy $\alpha \colon g
+    \circ f \rightarrow h$.
+- id: arxiv-org-pdf-2510-26269#024
+  text: What is the coproduct $\Delta^1 \amalg_{\Delta^0} \Delta^1$ and what does it naturally embed into?
+  hint: The boundary spine $\Lambda_1^2 \subset \Delta^2$ consisting of two composable edges $\{0 \to
+    1\}$ and $\{1 \to 2\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the coproduct $\delta^1 \amalg_{\delta^0} \delta^1$ and what does it naturally
+    embed into? the boundary spine $\lambda_1^2 \subset \delta^2$ consisting of two composable edges $\{0
+    \to 1\}$ and $\{1 \to 2\}$.
+- id: arxiv-org-pdf-2510-26269#025
+  text: What lifting property defines a trivial Kan fibration and what is its prototypical example?
+  hint: A map $p \colon X \to Y$ having the right lifting property with respect to all boundary inclusions
+    $\partial\Delta^n \hookrightarrow \Delta^n$; the prototypical example is the evaluation/projection
+    map from a space of paths/equivalences.
+  locator: null
+  sub_index: null
+  search_text: what lifting property defines a trivial kan fibration and what is its prototypical example?
+    a map $p \colon x \to y$ having the right lifting property with respect to all boundary inclusions
+    $\partial\delta^n \hookrightarrow \delta^n$; the prototypical example is the evaluation/projection
+    map from a space of paths/equivalences.
+- id: arxiv-org-pdf-2510-26269#026
+  text: How is an ordinary simplicial category $\mathcal{D}$ mapped to an $\infty$-category $\mathcal{C}$?
+  hint: Via the simplicial nerve functor $\mathrm{N}_{\Delta}(\mathcal{D}) \in \mathbf{sSet}$, which is
+    an $\infty$-category (quasicategory) if $\mathcal{D}$ is fibrant.
+  locator: null
+  sub_index: null
+  search_text: how is an ordinary simplicial category $\mathcal{d}$ mapped to an $\infty$-category $\mathcal{c}$?
+    via the simplicial nerve functor $\mathrm{n}_{\delta}(\mathcal{d}) \in \mathbf{sset}$, which is an
+    $\infty$-category (quasicategory) if $\mathcal{d}$ is fibrant.
+- id: arxiv-org-pdf-2510-26269#027
+  text: What is the horn filling condition for a Kan complex $C$?
+  hint: Every horn inclusion $\Lambda_k^n \hookrightarrow \Delta^n$ ($0 \le k \le n$) admits a filler
+    $\Delta^n \to C$, ensuring all morphisms are invertible up to homotopy.
+  locator: null
+  sub_index: null
+  search_text: what is the horn filling condition for a kan complex $c$? every horn inclusion $\lambda_k^n
+    \hookrightarrow \delta^n$ ($0 \le k \le n$) admits a filler $\delta^n \to c$, ensuring all morphisms
+    are invertible up to homotopy.
+- id: arxiv-org-pdf-2510-26269#028
+  text: How is the space of projective $R$-modules represented in $p$-adic $K$-theory?
+  hint: As the groupoid/classifying space $\mathbf{Proj}_R \simeq \coprod_{[P]} B\mathrm{Aut}_R(P)$, decomposed
+    as a disjoint union of classifying spaces of automorphism groups over isomorphism classes of finitely
+    generated projective $R$-modules.
+  locator: null
+  sub_index: null
+  search_text: how is the space of projective $r$-modules represented in $p$-adic $k$-theory? as the groupoid/classifying
+    space $\mathbf{proj}_r \simeq \coprod_{[p]} b\mathrm{aut}_r(p)$, decomposed as a disjoint union of
+    classifying spaces of automorphism groups over isomorphism classes of finitely generated projective
+    $r$-modules.
+- id: arxiv-org-pdf-2510-26269#029
+  text: How is $\mathbf{Proj}_R$ viewed as a commutative $\mathbb{E}_\infty$-monoid in spaces?
+  hint: The direct sum of projective modules $\oplus$ endows $\mathbf{Proj}_R$ with the structure of an
+    $\mathbb{E}_\infty$-space ($\mathbb{E}_\infty$-monoid in the $\infty$-category of spaces $\mathcal{S}$).
+  locator: null
+  sub_index: null
+  search_text: how is $\mathbf{proj}_r$ viewed as a commutative $\mathbb{e}_\infty$-monoid in spaces?
+    the direct sum of projective modules $\oplus$ endows $\mathbf{proj}_r$ with the structure of an $\mathbb{e}_\infty$-space
+    ($\mathbb{e}_\infty$-monoid in the $\infty$-category of spaces $\mathcal{s}$).
+- id: arxiv-org-pdf-2510-26269#030
+  text: What is a space in the context of $\infty$-categories?
+  hint: A Kan simplicial set / $\infty$-groupoid in the $\infty$-category $\mathcal{S} \simeq \mathbf{sSet}[\mathcal{W}^{-1}]$.
+  locator: null
+  sub_index: null
+  search_text: what is a space in the context of $\infty$-categories? a kan simplicial set / $\infty$-groupoid
+    in the $\infty$-category $\mathcal{s} \simeq \mathbf{sset}[\mathcal{w}^{-1}]$.
+- id: arxiv-org-pdf-2510-26269#031
+  text: How is algebraic $K$-theory $K(R)$ defined as an $\mathbb{E}_\infty$-group completion?
+  hint: $K(R)$ is the $\mathbb{E}_\infty$-group completion (left adjoint to the forgetful functor from
+    $\mathbb{E}_\infty$-groups to $\mathbb{E}_\infty$-monoids) of $\mathbf{Proj}_R$, whose homotopy groups
+    are $\pi_i K(R) = K_i(R)$.
+  locator: null
+  sub_index: null
+  search_text: how is algebraic $k$-theory $k(r)$ defined as an $\mathbb{e}_\infty$-group completion?
+    $k(r)$ is the $\mathbb{e}_\infty$-group completion (left adjoint to the forgetful functor from $\mathbb{e}_\infty$-groups
+    to $\mathbb{e}_\infty$-monoids) of $\mathbf{proj}_r$, whose homotopy groups are $\pi_i k(r) = k_i(r)$.
+- id: arxiv-org-pdf-2510-26269#032
+  text: State the Thomason-Trobaugh theorem on $K$-theory as a sheaf of spaces
+  hint: The presheaf $X \mapsto K(X) = K(\mathbf{Perf}(X))$ satisfies Nisnevich descent and Zariski descent
+    on qcqs schemes, but generally fails étale descent.
+  locator: null
+  sub_index: null
+  search_text: state the thomason-trobaugh theorem on $k$-theory as a sheaf of spaces the presheaf $x
+    \mapsto k(x) = k(\mathbf{perf}(x))$ satisfies nisnevich descent and zariski descent on qcqs schemes,
+    but generally fails étale descent.
+- id: arxiv-org-pdf-2510-26269#033
+  text: How is the $K$-theory of a scheme defined via derived global sections?
+  hint: $K(X) \simeq \mathbf{R}\Gamma(X_{\mathrm{Zar}}, \mathcal{K}) \simeq K(\mathbf{Perf}(X))$; its
+    étale version is the étale hypersheafification $K_{\text{ét}}(X) \simeq \mathbf{R}\Gamma(X_{\text{ét}},
+    \mathcal{K})$.
+  locator: null
+  sub_index: null
+  search_text: how is the $k$-theory of a scheme defined via derived global sections? $k(x) \simeq \mathbf{r}\gamma(x_{\mathrm{zar}},
+    \mathcal{k}) \simeq k(\mathbf{perf}(x))$; its étale version is the étale hypersheafification $k_{\text{ét}}(x)
+    \simeq \mathbf{r}\gamma(x_{\text{ét}}, \mathcal{k})$.
+- id: arxiv-org-pdf-2510-26269#034
+  text: How is the $\ell$-adic completion of an $\mathbb{E}_\infty$-ring spectrum $A$ constructed?
+  hint: By taking the homotopy limit $A_{\ell}^\wedge := \varprojlim_n (A \otimes^{\mathbf{L}} \mathbb{Z}/\ell^n\mathbb{Z})$
+    over powers $\ell^n$.
+  locator: null
+  sub_index: null
+  search_text: how is the $\ell$-adic completion of an $\mathbb{e}_\infty$-ring spectrum $a$ constructed?
+    by taking the homotopy limit $a_{\ell}^\wedge := \varprojlim_n (a \otimes^{\mathbf{l}} \mathbb{z}/\ell^n\mathbb{z})$
+    over powers $\ell^n$.
+- id: arxiv-org-pdf-2510-26269#035
+  text: What are the homotopy groups of the $\ell$-adic completed $K$-theory of a strictly Henselian local
+    ring $R$ (with $\ell \in R^\times$)?
+  hint: Gabber-Suslin rigidity shows $\pi_i K(R)_{\ell}^\wedge \cong \pi_i K(k)_{\ell}^\wedge \cong \mathbb{Z}_\ell(j)$
+    for $i = 2j$ even, and $0$ for $i$ odd (matching topological complex $K$-theory).
+  locator: null
+  sub_index: null
+  search_text: what are the homotopy groups of the $\ell$-adic completed $k$-theory of a strictly henselian
+    local ring $r$ (with $\ell \in r^\times$)? gabber-suslin rigidity shows $\pi_i k(r)_{\ell}^\wedge
+    \cong \pi_i k(k)_{\ell}^\wedge \cong \mathbb{z}_\ell(j)$ for $i = 2j$ even, and $0$ for $i$ odd (matching
+    topological complex $k$-theory).
+- id: arxiv-org-pdf-2510-26269#036
+  text: What is the local-to-global spectral sequence relating étale cohomology to $\ell$-adic $K$-theory?
+  hint: The Quillen-Lichtenbaum / motivic spectral sequence $E_2^{p, q} = H^{p-q}(X_{\text{ét}}, \mathbb{Z}_\ell(-q))
+    \implies \pi_{-(p+q)} K(X)_{\ell}^\wedge$ for $p \le q \le 0$.
+  locator: null
+  sub_index: null
+  search_text: what is the local-to-global spectral sequence relating étale cohomology to $\ell$-adic
+    $k$-theory? the quillen-lichtenbaum / motivic spectral sequence $e_2^{p, q} = h^{p-q}(x_{\text{ét}},
+    \mathbb{z}_\ell(-q)) \implies \pi_{-(p+q)} k(x)_{\ell}^\wedge$ for $p \le q \le 0$.
+- id: arxiv-org-pdf-2510-26269#037
+  text: How is a six-functor formalism encoded as a lax symmetric monoidal functor on correspondences?
+  hint: As a lax symmetric monoidal $\infty$-functor $\mathcal{D} \colon \mathrm{Corr}(\mathcal{C}, E)
+    \to \mathbf{Cat}_\infty$, where 1-morphisms encode $(g^*, f_!)$, right adjoints produce $f^!$ and
+    $g_*$, and monoidality encodes the projection formula and Künneth isomorphisms.
+  locator: null
+  sub_index: null
+  search_text: how is a six-functor formalism encoded as a lax symmetric monoidal functor on correspondences?
+    as a lax symmetric monoidal $\infty$-functor $\mathcal{d} \colon \mathrm{corr}(\mathcal{c}, e) \to
+    \mathbf{cat}_\infty$, where 1-morphisms encode $(g^*, f_!)$, right adjoints produce $f^!$ and $g_*$,
+    and monoidality encodes the projection formula and künneth isomorphisms.
+- id: arxiv-org-pdf-2510-26269#038
+  text: How do Grothendieck's Cartesian fibrations and Lurie's straightening/unstraightening equivalence
+    work?
+  hint: The straightening/unstraightening theorem provides an equivalence of $\infty$-categories between
+    Cartesian/coCartesian fibrations over $\mathcal{C}$ and functors $\mathcal{C}^{\mathrm{op}} \to \mathbf{Cat}_\infty$
+    (resp. $\mathcal{C} \to \mathbf{Cat}_\infty$).
+  locator: null
+  sub_index: null
+  search_text: how do grothendieck's cartesian fibrations and lurie's straightening/unstraightening equivalence
+    work? the straightening/unstraightening theorem provides an equivalence of $\infty$-categories between
+    cartesian/cocartesian fibrations over $\mathcal{c}$ and functors $\mathcal{c}^{\mathrm{op}} \to \mathbf{cat}_\infty$
+    (resp. $\mathcal{c} \to \mathbf{cat}_\infty$).
+- id: arxiv-org-pdf-2510-26269#039
+  text: How is a symmetric monoidal $\infty$-category defined via coCartesian fibrations over $\mathbf{Fin}_*$?
+  hint: As a coCartesian fibration $C^\otimes \to \mathbf{Fin}_*$ such that for every finite pointed set
+    $\langle n \rangle$, the induced maps $\rho^i \colon \langle n \rangle \to \langle 1 \rangle$ induce
+    an equivalence $C_{\langle n \rangle}^\otimes \xrightarrow{\sim} (C_{\langle 1 \rangle}^\otimes)^n$.
+  locator: null
+  sub_index: null
+  search_text: how is a symmetric monoidal $\infty$-category defined via cocartesian fibrations over $\mathbf{fin}_*$?
+    as a cocartesian fibration $c^\otimes \to \mathbf{fin}_*$ such that for every finite pointed set $\langle
+    n \rangle$, the induced maps $\rho^i \colon \langle n \rangle \to \langle 1 \rangle$ induce an equivalence
+    $c_{\langle n \rangle}^\otimes \xrightarrow{\sim} (c_{\langle 1 \rangle}^\otimes)^n$.
+- id: arxiv-org-pdf-2510-26269#040
+  text: How does the combinatorics of correspondences automatically produce the projection formula?
+  hint: The composition of the diagonal correspondence and the product correspondence in $\mathrm{Corr}(\mathcal{C},
+    E)$ yields $f_!(A \otimes f^*B) \cong f_!(A) \otimes B$ as a formal consequence of functoriality.
+  locator: null
+  sub_index: null
+  search_text: how does the combinatorics of correspondences automatically produce the projection formula?
+    the composition of the diagonal correspondence and the product correspondence in $\mathrm{corr}(\mathcal{c},
+    e)$ yields $f_!(a \otimes f^*b) \cong f_!(a) \otimes b$ as a formal consequence of functoriality.
+- id: arxiv-org-pdf-2510-26269#041
+  text: What are the minimal geometric axioms on $(I, P)$ needed to construct a six-functor formalism?
+  hint: $I$ (open immersions) and $P$ (proper maps) must be stable under compositions, base change, and
+    diagonals, satisfy $I \cap P = \mathrm{Isom}$, and ensure every $f \in E$ factors as $f = p \circ
+    j$ with $j \in I$ and $p \in P$ (Nagata compactification).
+  locator: null
+  sub_index: null
+  search_text: what are the minimal geometric axioms on $(i, p)$ needed to construct a six-functor formalism?
+    $i$ (open immersions) and $p$ (proper maps) must be stable under compositions, base change, and diagonals,
+    satisfy $i \cap p = \mathrm{isom}$, and ensure every $f \in e$ factors as $f = p \circ j$ with $j
+    \in i$ and $p \in p$ (nagata compactification).
+- id: arxiv-org-pdf-2510-26269#042
+  text: What is the definition of cohomological smoothness for a morphism $f \colon X \to Y$?
+  hint: A morphism $f$ is cohomologically smooth if $f_!$ admits a right adjoint $f^!$, the relative dualizing
+    object $\omega_{f} := f^!(\mathbf{1}_Y)$ is $\otimes$-invertible in $\mathcal{D}(X)$, and the canonical
+    map $f^*(-) \otimes \omega_f \xrightarrow{\sim} f^!(-)$ is an isomorphism compatible with arbitrary
+    base change.
+  locator: null
+  sub_index: null
+  search_text: what is the definition of cohomological smoothness for a morphism $f \colon x \to y$? a
+    morphism $f$ is cohomologically smooth if $f_!$ admits a right adjoint $f^!$, the relative dualizing
+    object $\omega_{f} := f^!(\mathbf{1}_y)$ is $\otimes$-invertible in $\mathcal{d}(x)$, and the canonical
+    map $f^*(-) \otimes \omega_f \xrightarrow{\sim} f^!(-)$ is an isomorphism compatible with arbitrary
+    base change.
+- id: arxiv-org-pdf-2510-26269#043
+  text: Why is cohomological smoothness more general than classical geometric smoothness?
+  hint: Because it is defined purely through the existence of Poincaré-Verdier duality and invertible
+    dualizing sheaves, holding for rigid analytic and perfectoid spaces without requiring smooth charts.
+  locator: null
+  sub_index: null
+  search_text: why is cohomological smoothness more general than classical geometric smoothness? because
+    it is defined purely through the existence of poincaré-verdier duality and invertible dualizing sheaves,
+    holding for rigid analytic and perfectoid spaces without requiring smooth charts.

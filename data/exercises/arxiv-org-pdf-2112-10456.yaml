@@ -1,0 +1,406 @@
+url: https://arxiv.org/pdf/2112.10456
+title: Gallauer
+note: six functor formalisms
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-2112-10456#000
+  text: How did Emmy Noether conceptualize Betti numbers in the development of homology?
+  hint: Noether showed that Betti numbers are numeric shadows of the underlying homology groups $H_n(X)$,
+    which are abelian groups measuring the difference between closed cycles and exact boundaries; homology
+    is a strictly richer algebraic invariant that cannot be recovered from Betti numbers alone.
+  locator: null
+  sub_index: null
+  search_text: how did emmy noether conceptualize betti numbers in the development of homology? noether
+    showed that betti numbers are numeric shadows of the underlying homology groups $h_n(x)$, which are
+    abelian groups measuring the difference between closed cycles and exact boundaries; homology is a
+    strictly richer algebraic invariant that cannot be recovered from betti numbers alone.
+- id: arxiv-org-pdf-2112-10456#001
+  text: How does the Weil zeta function of a variety over a finite field motivate cohomology theories
+    in arithmetic geometry?
+  hint: The zeta function $\zeta_X(T) = \exp\left(\sum_{n \ge 1} \frac{\#X(\mathbb{F}_{q^n})}{n} T^n\right)$
+    packages point counts over all finite extensions; Weil's proof for curves and his conjectures for
+    higher-dimensional varieties predicted that $\zeta_X(T)$ is a rational function whose zeroes and poles
+    are governed by a well-behaved Weil cohomology theory ($\ell$-adic étale cohomology).
+  locator: null
+  sub_index: null
+  search_text: how does the weil zeta function of a variety over a finite field motivate cohomology theories
+    in arithmetic geometry? the zeta function $\zeta_x(t) = \exp\left(\sum_{n \ge 1} \frac{\#x(\mathbb{f}_{q^n})}{n}
+    t^n\right)$ packages point counts over all finite extensions; weil's proof for curves and his conjectures
+    for higher-dimensional varieties predicted that $\zeta_x(t)$ is a rational function whose zeroes and
+    poles are governed by a well-behaved weil cohomology theory ($\ell$-adic étale cohomology).
+- id: arxiv-org-pdf-2112-10456#002
+  text: What is the categorification principle from numbers to abelian groups and cohomology?
+  hint: While numbers have few interesting maps between them, abelian groups and chain complexes possess
+    rich morphism spaces and derived invariants; passing from numbers to derived categories of sheaves
+    categorifies numerical invariants into six-functor formalisms.
+  locator: null
+  sub_index: null
+  search_text: what is the categorification principle from numbers to abelian groups and cohomology? while
+    numbers have few interesting maps between them, abelian groups and chain complexes possess rich morphism
+    spaces and derived invariants; passing from numbers to derived categories of sheaves categorifies
+    numerical invariants into six-functor formalisms.
+- id: arxiv-org-pdf-2112-10456#003
+  text: Why does Grothendieck's relative point of view require the six operations?
+  hint: Rather than studying isolated varieties $X$, one studies families and morphisms $f \colon X \to
+    Y$; on non-proper varieties, global invariants fail to behave well without compactly supported pushforwards
+    $f_!$ and exceptional pullbacks $f^!$, completing the six operations $(f^*, f_*, f_!, f^!, \otimes,
+    \underline{\mathrm{Hom}})$.
+  locator: null
+  sub_index: null
+  search_text: why does grothendieck's relative point of view require the six operations? rather than
+    studying isolated varieties $x$, one studies families and morphisms $f \colon x \to y$; on non-proper
+    varieties, global invariants fail to behave well without compactly supported pushforwards $f_!$ and
+    exceptional pullbacks $f^!$, completing the six operations $(f^*, f_*, f_!, f^!, \otimes, \underline{\mathrm{hom}})$.
+- id: arxiv-org-pdf-2112-10456#004
+  text: What are the classical sheaf operations and how does the exceptional pushforward $f_!$ relate
+    to its right adjoint $f^!$?
+  hint: $f^*$ (inverse image) and $f_*$ (direct image) form a standard adjoint pair; on locally compact
+    Hausdorff spaces / schemes, $f_!$ (compactly supported pushforward) preserves colimits and admits
+    a right adjoint $f^!$ (exceptional pullback/twist) only in the derived $\infty$-category setting.
+  locator: null
+  sub_index: null
+  search_text: what are the classical sheaf operations and how does the exceptional pushforward $f_!$
+    relate to its right adjoint $f^!$? $f^*$ (inverse image) and $f_*$ (direct image) form a standard
+    adjoint pair; on locally compact hausdorff spaces / schemes, $f_!$ (compactly supported pushforward)
+    preserves colimits and admits a right adjoint $f^!$ (exceptional pullback/twist) only in the derived
+    $\infty$-category setting.
+- id: arxiv-org-pdf-2112-10456#005
+  text: How are cohomology, compactly supported cohomology, Borel-Moore homology, and homology expressed
+    in terms of the six operations on the tensor unit $\mathbf{1}$?
+  hint: 'Let $p \colon X \to *$ be the structure map. (1) Cohomology: $C^*(X) = p_* p^*(\mathbf{1})$;
+    (2) Compactly supported cohomology: $C_c^*(X) = p_! p^*(\mathbf{1})$; (3) Borel-Moore homology: $C_*^{\mathrm{BM}}(X)
+    = p_* p^!(\mathbf{1})$; (4) Homology with compact supports: $C_*(X) = p_! p^!(\mathbf{1})$.'
+  locator: null
+  sub_index: null
+  search_text: 'how are cohomology, compactly supported cohomology, borel-moore homology, and homology
+    expressed in terms of the six operations on the tensor unit $\mathbf{1}$? let $p \colon x \to *$ be
+    the structure map. (1) cohomology: $c^*(x) = p_* p^*(\mathbf{1})$; (2) compactly supported cohomology:
+    $c_c^*(x) = p_! p^*(\mathbf{1})$; (3) borel-moore homology: $c_*^{\mathrm{bm}}(x) = p_* p^!(\mathbf{1})$;
+    (4) homology with compact supports: $c_*(x) = p_! p^!(\mathbf{1})$.'
+- id: arxiv-org-pdf-2112-10456#006
+  text: How does Verdier duality operate between these four theories via the dualizing object $\omega_X
+    = p^!\mathbf{1}$?
+  hint: The adjunctions induce a canonical pairing $\mathbf{R}\underline{\mathrm{Hom}}(p_! p^* \mathbf{1},
+    \mathbf{1}) \simeq p_* \mathbf{R}\underline{\mathrm{Hom}}(p^* \mathbf{1}, p^! \mathbf{1}) = p_* p^!
+    \mathbf{1}$, identifying the dual of compactly supported cohomology $C_c^*(X)^\vee$ with Borel-Moore
+    homology $C_*^{\mathrm{BM}}(X)$.
+  locator: null
+  sub_index: null
+  search_text: how does verdier duality operate between these four theories via the dualizing object $\omega_x
+    = p^!\mathbf{1}$? the adjunctions induce a canonical pairing $\mathbf{r}\underline{\mathrm{hom}}(p_!
+    p^* \mathbf{1}, \mathbf{1}) \simeq p_* \mathbf{r}\underline{\mathrm{hom}}(p^* \mathbf{1}, p^! \mathbf{1})
+    = p_* p^! \mathbf{1}$, identifying the dual of compactly supported cohomology $c_c^*(x)^\vee$ with
+    borel-moore homology $c_*^{\mathrm{bm}}(x)$.
+- id: arxiv-org-pdf-2112-10456#007
+  text: How do different geometric coefficient systems determine specific cohomology theories?
+  hint: (1) Constructible $\ell$-adic sheaves $\mathcal{D}_c^b(X, \mathbb{Q}_\ell) \implies$ étale cohomology;
+    (2) Constructible topological sheaves $\mathcal{D}_c^b(X^{\mathrm{an}}, \Lambda) \implies$ Betti cohomology;
+    (3) Holonomic $\mathcal{D}$-modules $\mathcal{D}_{\mathrm{hol}}^b(\mathcal{D}_X) \implies$ algebraic
+    de Rham cohomology; (4) Voevodsky motives $\mathcal{DM}(X) \implies$ motivic cohomology.
+  locator: null
+  sub_index: null
+  search_text: how do different geometric coefficient systems determine specific cohomology theories?
+    (1) constructible $\ell$-adic sheaves $\mathcal{d}_c^b(x, \mathbb{q}_\ell) \implies$ étale cohomology;
+    (2) constructible topological sheaves $\mathcal{d}_c^b(x^{\mathrm{an}}, \lambda) \implies$ betti cohomology;
+    (3) holonomic $\mathcal{d}$-modules $\mathcal{d}_{\mathrm{hol}}^b(\mathcal{d}_x) \implies$ algebraic
+    de rham cohomology; (4) voevodsky motives $\mathcal{dm}(x) \implies$ motivic cohomology.
+- id: arxiv-org-pdf-2112-10456#008
+  text: How are vanishing/nearby cycle functors, Chern classes, and regulator maps viewed in the six-functor
+    context?
+  hint: Nearby/vanishing cycles are specialized gluing functors across degenerations; Chern classes and
+    cycle/regulator maps are natural transformations between different six-functor coefficient systems
+    (e.g., from motivic cohomology to étale or de Rham cohomology).
+  locator: null
+  sub_index: null
+  search_text: how are vanishing/nearby cycle functors, chern classes, and regulator maps viewed in the
+    six-functor context? nearby/vanishing cycles are specialized gluing functors across degenerations;
+    chern classes and cycle/regulator maps are natural transformations between different six-functor coefficient
+    systems (e.g., from motivic cohomology to étale or de rham cohomology).
+- id: arxiv-org-pdf-2112-10456#009
+  text: What does proper pushforward mean for the transformation $f_! \to f_*$?
+  hint: The canonical "forget supports" natural transformation $\alpha_f \colon f_! \to f_*$ is an isomorphism
+    if and only if $f$ is proper.
+  locator: null
+  sub_index: null
+  search_text: what does proper pushforward mean for the transformation $f_! \to f_*$? the canonical "forget
+    supports" natural transformation $\alpha_f \colon f_! \to f_*$ is an isomorphism if and only if $f$
+    is proper.
+- id: arxiv-org-pdf-2112-10456#010
+  text: How does Grothendieck duality specialize to Poincaré and Serre dualities?
+  hint: For a smooth morphism $f \colon X \to *$, relative purity computes $f^!\mathbf{1} \simeq \mathbf{1}(d)[2d]$;
+    for $\ell$-adic coefficients, this yields $H^n(X, \mathbb{Q}_\ell)^\vee \cong H_c^{2d-n}(X, \mathbb{Q}_\ell(d))$
+    (Poincaré duality), and for coherent sheaves on proper $X$, it yields $\mathrm{Ext}^i(\mathcal{F},
+    \omega_X) \cong H^{n-i}(X, \mathcal{F})^\vee$ (Serre duality).
+  locator: null
+  sub_index: null
+  search_text: how does grothendieck duality specialize to poincaré and serre dualities? for a smooth
+    morphism $f \colon x \to *$, relative purity computes $f^!\mathbf{1} \simeq \mathbf{1}(d)[2d]$; for
+    $\ell$-adic coefficients, this yields $h^n(x, \mathbb{q}_\ell)^\vee \cong h_c^{2d-n}(x, \mathbb{q}_\ell(d))$
+    (poincaré duality), and for coherent sheaves on proper $x$, it yields $\mathrm{ext}^i(\mathcal{f},
+    \omega_x) \cong h^{n-i}(x, \mathcal{f})^\vee$ (serre duality).
+- id: arxiv-org-pdf-2112-10456#011
+  text: What is the proper projection formula and what does it assert?
+  hint: For any morphism $f \colon X \to Y$, there is a natural isomorphism $f_!(A \otimes^{\mathbf{L}}
+    f^*B) \xrightarrow{\sim} f_!(A) \otimes^{\mathbf{L}} B$, asserting that $f_!$ is an enriched $\mathcal{D}(Y)$-linear
+    module functor.
+  locator: null
+  sub_index: null
+  search_text: what is the proper projection formula and what does it assert? for any morphism $f \colon
+    x \to y$, there is a natural isomorphism $f_!(a \otimes^{\mathbf{l}} f^*b) \xrightarrow{\sim} f_!(a)
+    \otimes^{\mathbf{l}} b$, asserting that $f_!$ is an enriched $\mathcal{d}(y)$-linear module functor.
+- id: arxiv-org-pdf-2112-10456#012
+  text: What is relative purity and how is it measured by the relative dualizing object?
+  hint: For a smooth morphism $f$ of relative dimension $d$, relative purity is the natural equivalence
+    $f^!(-) \simeq f^*(-) \otimes f^!(\mathbf{1}) \simeq f^*(-)(d)[2d]$, identifying $f^!$ as a Tate-twisted
+    shift of $f^*$.
+  locator: null
+  sub_index: null
+  search_text: what is relative purity and how is it measured by the relative dualizing object? for a
+    smooth morphism $f$ of relative dimension $d$, relative purity is the natural equivalence $f^!(-)
+    \simeq f^*(-) \otimes f^!(\mathbf{1}) \simeq f^*(-)(d)[2d]$, identifying $f^!$ as a tate-twisted shift
+    of $f^*$.
+- id: arxiv-org-pdf-2112-10456#013
+  text: How do open covers give rise to Mayer-Vietoris exact triangles in six-functor formalisms?
+  hint: For an open cover $X = U \cup V$ with intersection $W = U \cap V$, the localization sequences
+    for open immersions glue to produce the distinguished triangle $C^*(X) \to C^*(U) \oplus C^*(V) \to
+    C^*(W) \xrightarrow{+1}$.
+  locator: null
+  sub_index: null
+  search_text: how do open covers give rise to mayer-vietoris exact triangles in six-functor formalisms?
+    for an open cover $x = u \cup v$ with intersection $w = u \cap v$, the localization sequences for
+    open immersions glue to produce the distinguished triangle $c^*(x) \to c^*(u) \oplus c^*(v) \to c^*(w)
+    \xrightarrow{+1}$.
+- id: arxiv-org-pdf-2112-10456#014
+  text: How is the homology of a closed subscheme $Z$ relative to $X$ defined?
+  hint: As the Borel-Moore homology of the closed immersion $i \colon Z \hookrightarrow X$, computed by
+    $C_*^{\mathrm{BM}}(Z) \simeq p_* i_* i^! p^!\mathbf{1} \simeq p_* i_! i^! \omega_X$.
+  locator: null
+  sub_index: null
+  search_text: how is the homology of a closed subscheme $z$ relative to $x$ defined? as the borel-moore
+    homology of the closed immersion $i \colon z \hookrightarrow x$, computed by $c_*^{\mathrm{bm}}(z)
+    \simeq p_* i_* i^! p^!\mathbf{1} \simeq p_* i_! i^! \omega_x$.
+- id: arxiv-org-pdf-2112-10456#015
+  text: Why can the localization axiom be difficult to establish in non-topological contexts (e.g., Kashiwara's
+    lemma)?
+  hint: Localization requires that for a closed immersion $i$, $i_*$ is fully faithful with left adjoint
+    $i^*$; for $\mathcal{D}$-modules, this full faithfulness is Kashiwara's equivalence, which requires
+    deep analytic/algebraic regularity theorems.
+  locator: null
+  sub_index: null
+  search_text: why can the localization axiom be difficult to establish in non-topological contexts (e.g.,
+    kashiwara's lemma)? localization requires that for a closed immersion $i$, $i_*$ is fully faithful
+    with left adjoint $i^*$; for $\mathcal{d}$-modules, this full faithfulness is kashiwara's equivalence,
+    which requires deep analytic/algebraic regularity theorems.
+- id: arxiv-org-pdf-2112-10456#016
+  text: How does the abstract blow-up square encode blow-up excision in cohomology via proper base change?
+  hint: For a blow-up $\widetilde{X} \to X$ with center $Z$ and exceptional divisor $E$, the Cartesian
+    square is an abstract cdh-distinguished square; proper base change and localization formally produce
+    the excision fiber sequence $C^*(X) \to C^*(\widetilde{X}) \oplus C^*(Z) \to C^*(E) \xrightarrow{+1}$.
+  locator: null
+  sub_index: null
+  search_text: how does the abstract blow-up square encode blow-up excision in cohomology via proper base
+    change? for a blow-up $\widetilde{x} \to x$ with center $z$ and exceptional divisor $e$, the cartesian
+    square is an abstract cdh-distinguished square; proper base change and localization formally produce
+    the excision fiber sequence $c^*(x) \to c^*(\widetilde{x}) \oplus c^*(z) \to c^*(e) \xrightarrow{+1}$.
+- id: arxiv-org-pdf-2112-10456#017
+  text: What is the Beck-Chevalley condition for a Cartesian square?
+  hint: For a Cartesian square with projections $f, g, f', g'$, the natural transformation $g^* f_* \to
+    f'_* g'^*$ (or $g^* f_! \to f'_! g'^*$) formed by adjunction units and counits is an isomorphism.
+  locator: null
+  sub_index: null
+  search_text: what is the beck-chevalley condition for a cartesian square? for a cartesian square with
+    projections $f, g, f', g'$, the natural transformation $g^* f_* \to f'_* g'^*$ (or $g^* f_! \to f'_!
+    g'^*$) formed by adjunction units and counits is an isomorphism.
+- id: arxiv-org-pdf-2112-10456#018
+  text: What is proper base change vs. smooth base change?
+  hint: Proper base change states $g^* f_* \xrightarrow{\sim} f'_* g'^*$ when $f$ is proper; smooth base
+    change states $g'_! f'^! \xrightarrow{\sim} f^! g_!$ (and $g^* f_* \xrightarrow{\sim} f'_* g'^*$)
+    when $g$ is smooth.
+  locator: null
+  sub_index: null
+  search_text: what is proper base change vs. smooth base change? proper base change states $g^* f_* \xrightarrow{\sim}
+    f'_* g'^*$ when $f$ is proper; smooth base change states $g'_! f'^! \xrightarrow{\sim} f^! g_!$ (and
+    $g^* f_* \xrightarrow{\sim} f'_* g'^*$) when $g$ is smooth.
+- id: arxiv-org-pdf-2112-10456#019
+  text: Why does the pullback along a smooth morphism admit a left adjoint $p_\#$?
+  hint: By relative purity, $p^*(-) \simeq p^!(-)(-d)[-2d]$; since $p^!$ is right adjoint to $p_!$, $p^*$
+    admits the left adjoint $p_\#(-) := p_!(-)(d)[2d]$.
+  locator: null
+  sub_index: null
+  search_text: why does the pullback along a smooth morphism admit a left adjoint $p_\#$? by relative
+    purity, $p^*(-) \simeq p^!(-)(-d)[-2d]$; since $p^!$ is right adjoint to $p_!$, $p^*$ admits the left
+    adjoint $p_\#(-) := p_!(-)(d)[2d]$.
+- id: arxiv-org-pdf-2112-10456#020
+  text: What is a Nisnevich-Mayer-Vietoris square?
+  hint: An elementary distinguished square where $U \hookrightarrow X$ is an open immersion, $V \to X$
+    is an étale morphism, and $(V \setminus V \times_X U) \to (X \setminus U)$ is an isomorphism; coefficient
+    systems satisfy descent on these squares.
+  locator: null
+  sub_index: null
+  search_text: what is a nisnevich-mayer-vietoris square? an elementary distinguished square where $u
+    \hookrightarrow x$ is an open immersion, $v \to x$ is an étale morphism, and $(v \setminus v \times_x
+    u) \to (x \setminus u)$ is an isomorphism; coefficient systems satisfy descent on these squares.
+- id: arxiv-org-pdf-2112-10456#021
+  text: What are the axiomatic conditions defining a coefficient system in Gallauer's framework?
+  hint: 'A functor $\mathcal{D} \colon \mathbf{Sch}_S^{\mathrm{op}} \to \mathbf{CAlg}(\mathbf{Pr}_{\mathrm{st}}^{\mathrm{L}})$
+    assigning presentable stable symmetric monoidal $\infty$-categories satisfying: (1) smooth base change;
+    (2) smooth projection formula; (3) localization; (4) $\mathbb{A}^1$-homotopy invariance; and (5) Tate
+    stability ($\mathbf{1}(1)$ is $\otimes$-invertible).'
+  locator: null
+  sub_index: null
+  search_text: 'what are the axiomatic conditions defining a coefficient system in gallauer''s framework?
+    a functor $\mathcal{d} \colon \mathbf{sch}_s^{\mathrm{op}} \to \mathbf{calg}(\mathbf{pr}_{\mathrm{st}}^{\mathrm{l}})$
+    assigning presentable stable symmetric monoidal $\infty$-categories satisfying: (1) smooth base change;
+    (2) smooth projection formula; (3) localization; (4) $\mathbb{a}^1$-homotopy invariance; and (5) tate
+    stability ($\mathbf{1}(1)$ is $\otimes$-invertible).'
+- id: arxiv-org-pdf-2112-10456#022
+  text: State Gallauer's main theorem (Theorem 2.13) on the extension of coefficient systems to six-functor
+    formalisms
+  hint: Any coefficient system $\mathcal{D}$ uniquely extends to a full six-functor formalism equipped
+    with $(f^*, f_*, f_!, f^!, \otimes, \underline{\mathrm{Hom}})$, Grothendieck duality, proper base
+    change, and the projection formula; morphisms of coefficient systems induce morphisms of six-functor
+    formalisms.
+  locator: null
+  sub_index: null
+  search_text: state gallauer's main theorem (theorem 2.13) on the extension of coefficient systems to
+    six-functor formalisms any coefficient system $\mathcal{d}$ uniquely extends to a full six-functor
+    formalism equipped with $(f^*, f_*, f_!, f^!, \otimes, \underline{\mathrm{hom}})$, grothendieck duality,
+    proper base change, and the projection formula; morphisms of coefficient systems induce morphisms
+    of six-functor formalisms.
+- id: arxiv-org-pdf-2112-10456#023
+  text: How does Ind-completion resolve presentability issues for small coefficient systems?
+  hint: By replacing a small category of constructible/dualizable sheaves $\mathcal{D}_c(X)$ with its
+    Ind-completion $\mathrm{Ind}(\mathcal{D}_c(X)) \simeq \mathcal{D}(X)$, ensuring all limits, colimits,
+    and adjoints exist via the Adjoint Functor Theorem.
+  locator: null
+  sub_index: null
+  search_text: how does ind-completion resolve presentability issues for small coefficient systems? by
+    replacing a small category of constructible/dualizable sheaves $\mathcal{d}_c(x)$ with its ind-completion
+    $\mathrm{ind}(\mathcal{d}_c(x)) \simeq \mathcal{d}(x)$, ensuring all limits, colimits, and adjoints
+    exist via the adjoint functor theorem.
+- id: arxiv-org-pdf-2112-10456#024
+  text: Why can Grothendieck/Verdier duality only be expected on constructible or dualizable subcategories?
+  hint: The infinite-dimensional unit $\mathbf{1}$ is not compact in $\mathrm{Ind}$-categories; the biduality
+    isomorphism $M \xrightarrow{\sim} \mathbb{D}\mathbb{D}(M)$ holds only for dualizable/constructible
+    objects, where $\mathbb{D}(-) = \underline{\mathrm{Hom}}(-, \omega_X)$.
+  locator: null
+  sub_index: null
+  search_text: why can grothendieck/verdier duality only be expected on constructible or dualizable subcategories?
+    the infinite-dimensional unit $\mathbf{1}$ is not compact in $\mathrm{ind}$-categories; the biduality
+    isomorphism $m \xrightarrow{\sim} \mathbb{d}\mathbb{d}(m)$ holds only for dualizable/constructible
+    objects, where $\mathbb{d}(-) = \underline{\mathrm{hom}}(-, \omega_x)$.
+- id: arxiv-org-pdf-2112-10456#025
+  text: How did Voevodsky establish that exceptional functoriality $f_!$ arises from localization and
+    $\mathbb{A}^1$-homotopy?
+  hint: Voevodsky proved that compactifications and purity formulas can be reconstructed purely from the
+    localization sequences of open/closed immersions combined with $\mathbb{A}^1$-invariance, defining
+    $f_!$ as a localized homotopy pushforward without manual compactifications.
+  locator: null
+  sub_index: null
+  search_text: how did voevodsky establish that exceptional functoriality $f_!$ arises from localization
+    and $\mathbb{a}^1$-homotopy? voevodsky proved that compactifications and purity formulas can be reconstructed
+    purely from the localization sequences of open/closed immersions combined with $\mathbb{a}^1$-invariance,
+    defining $f_!$ as a localized homotopy pushforward without manual compactifications.
+- id: arxiv-org-pdf-2112-10456#026
+  text: What are the three conceptual perspectives on the Stable Motivic Homotopy Category $\mathcal{SH}(S)$
+    (Remark 2.25)?
+  hint: (1) The universal presentable stable $\infty$-category generated by smooth $S$-schemes with $\mathbb{A}^1$-invariance
+    and Nisnevich descent; (2) The $\mathbb{P}^1$-stabilization (Tate spectrum inversion) of motivic spaces;
+    (3) The category of motivic $\mathbb{E}_\infty$-sheaves of spectra on $\mathbf{Sm}_S$.
+  locator: null
+  sub_index: null
+  search_text: what are the three conceptual perspectives on the stable motivic homotopy category $\mathcal{sh}(s)$
+    (remark 2.25)? (1) the universal presentable stable $\infty$-category generated by smooth $s$-schemes
+    with $\mathbb{a}^1$-invariance and nisnevich descent; (2) the $\mathbb{p}^1$-stabilization (tate spectrum
+    inversion) of motivic spaces; (3) the category of motivic $\mathbb{e}_\infty$-sheaves of spectra on
+    $\mathbf{sm}_s$.
+- id: arxiv-org-pdf-2112-10456#027
+  text: How does cdh-descent allow extending coefficient systems from schemes to algebraic stacks?
+  hint: Coefficient systems with cdh-descent and smooth/étale descent extend to Artin stacks by computing
+    homotopy limits over simplicial scheme atlases $U_\bullet \to \mathcal{X}$.
+  locator: null
+  sub_index: null
+  search_text: how does cdh-descent allow extending coefficient systems from schemes to algebraic stacks?
+    coefficient systems with cdh-descent and smooth/étale descent extend to artin stacks by computing
+    homotopy limits over simplicial scheme atlases $u_\bullet \to \mathcal{x}$.
+- id: arxiv-org-pdf-2112-10456#028
+  text: What is a linear coefficient system and how does scalar extension apply?
+  hint: A coefficient system enriched over a base ring/spectrum $\Lambda$ (e.g., $\mathbf{Mod}_\Lambda$-linear);
+    scalar extension along $\Lambda \to \Lambda'$ preserves the six-functor axioms via $\mathcal{D}(X)
+    \otimes_{\mathcal{D}(*)} \mathcal{D}'(*)$.
+  locator: null
+  sub_index: null
+  search_text: what is a linear coefficient system and how does scalar extension apply? a coefficient
+    system enriched over a base ring/spectrum $\lambda$ (e.g., $\mathbf{mod}_\lambda$-linear); scalar
+    extension along $\lambda \to \lambda'$ preserves the six-functor axioms via $\mathcal{d}(x) \otimes_{\mathcal{d}(*)}
+    \mathcal{d}'(*)$.
+- id: arxiv-org-pdf-2112-10456#029
+  text: What characterizes an orientable coefficient system?
+  hint: A coefficient system where every vector bundle $E \to X$ of rank $d$ has a Thom class trivializing
+    the Thom space $\mathrm{Th}(E) \cong \mathbf{1}_X(d)[2d]$, making all geometric twists isomorphic
+    to standard Tate twists.
+  locator: null
+  sub_index: null
+  search_text: what characterizes an orientable coefficient system? a coefficient system where every vector
+    bundle $e \to x$ of rank $d$ has a thom class trivializing the thom space $\mathrm{th}(e) \cong \mathbf{1}_x(d)[2d]$,
+    making all geometric twists isomorphic to standard tate twists.
+- id: arxiv-org-pdf-2112-10456#030
+  text: What is an exponential coefficient system (exponential motives) and its 7th operation?
+  hint: 'A coefficient system enriched with exponential motives $e^f$ for regular functions $f \colon
+    X \to \mathbb{A}^1$; it possesses a 7th geometric operation: the **Fourier-Deligne transform**, exchanging
+    additive convolution with tensor products.'
+  locator: null
+  sub_index: null
+  search_text: 'what is an exponential coefficient system (exponential motives) and its 7th operation?
+    a coefficient system enriched with exponential motives $e^f$ for regular functions $f \colon x \to
+    \mathbb{a}^1$; it possesses a 7th geometric operation: the **fourier-deligne transform**, exchanging
+    additive convolution with tensor products.'
+- id: arxiv-org-pdf-2112-10456#031
+  text: Why does exceptional functoriality require the support property?
+  hint: To guarantee that $f_!$ is independent of the choice of compactification $X \xrightarrow{j} \overline{X}
+    \xrightarrow{p} Y$, the pushforward must vanish on the boundary complement, which is guaranteed by
+    proper base change and localization.
+  locator: null
+  sub_index: null
+  search_text: why does exceptional functoriality require the support property? to guarantee that $f_!$
+    is independent of the choice of compactification $x \xrightarrow{j} \overline{x} \xrightarrow{p} y$,
+    the pushforward must vanish on the boundary complement, which is guaranteed by proper base change
+    and localization.
+- id: arxiv-org-pdf-2112-10456#032
+  text: How does the pullback lift structures while the pushforward quantifies local-to-global obstructions?
+  hint: $p^*(\mathbf{1})$ equips the space with constant coefficients; $p_*$ collects global sections,
+    and its higher derived cohomology groups $R^i p_*$ quantify the homological obstructions to gluing
+    local sections into global ones.
+  locator: null
+  sub_index: null
+  search_text: how does the pullback lift structures while the pushforward quantifies local-to-global
+    obstructions? $p^*(\mathbf{1})$ equips the space with constant coefficients; $p_*$ collects global
+    sections, and its higher derived cohomology groups $r^i p_*$ quantify the homological obstructions
+    to gluing local sections into global ones.
+- id: arxiv-org-pdf-2112-10456#033
+  text: How are integral transforms and logical quantifiers realized in six-functor formalisms?
+  hint: An integral kernel transform along a correspondence $X \xleftarrow{g} W \xrightarrow{f} Y$ is
+    the functor $\Phi_K(-) = f_!(g^*(-) \otimes K)$; in logic, $f_!$ acts as the existential quantifier
+    $\exists_f$ and $f_*$ acts as the universal quantifier $\forall_f$.
+  locator: null
+  sub_index: null
+  search_text: how are integral transforms and logical quantifiers realized in six-functor formalisms?
+    an integral kernel transform along a correspondence $x \xleftarrow{g} w \xrightarrow{f} y$ is the
+    functor $\phi_k(-) = f_!(g^*(-) \otimes k)$; in logic, $f_!$ acts as the existential quantifier $\exists_f$
+    and $f_*$ acts as the universal quantifier $\forall_f$.
+- id: arxiv-org-pdf-2112-10456#034
+  text: Why does cohomology possess a ring structure (cup product) while homology possesses a coalgebra
+    structure?
+  hint: The diagonal map $\Delta \colon X \to X \times X$ pulls back under the contravariant functor $p_*
+    p^*$, yielding the product $C^*(X) \otimes C^*(X) \xrightarrow{\Delta^*} C^*(X)$ (cup product); conversely,
+    homology is covariant under $\Delta_*$, which pushes forward classes to $C_*(X) \xrightarrow{\Delta_*}
+    C_*(X) \otimes C_*(X)$, splitting classes apart into a coalgebra.
+  locator: null
+  sub_index: null
+  search_text: why does cohomology possess a ring structure (cup product) while homology possesses a coalgebra
+    structure? the diagonal map $\delta \colon x \to x \times x$ pulls back under the contravariant functor
+    $p_* p^*$, yielding the product $c^*(x) \otimes c^*(x) \xrightarrow{\delta^*} c^*(x)$ (cup product);
+    conversely, homology is covariant under $\delta_*$, which pushes forward classes to $c_*(x) \xrightarrow{\delta_*}
+    c_*(x) \otimes c_*(x)$, splitting classes apart into a coalgebra.

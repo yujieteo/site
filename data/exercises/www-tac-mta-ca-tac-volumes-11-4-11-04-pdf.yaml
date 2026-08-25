@@ -1,0 +1,184 @@
+url: http://www.tac.mta.ca/tac/volumes/11/4/11-04.pdf
+title: six functor formalisms in Wirthmueller contexts.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#000
+  text: What is the formal categorical goal of Fausk-Hu-May in axiomatic six-functor formalisms?
+  hint: To systematically isolate the formal categorical machinery of the projection formula and duality
+    isomorphisms from specific geometric contexts, showing how right adjoints $f^!$ or $f_*$ can be identified
+    as twists/shifts of left adjoints $f_!$ or $f^*$ via an intrinsic dualizing object.
+  locator: null
+  sub_index: null
+  search_text: what is the formal categorical goal of fausk-hu-may in axiomatic six-functor formalisms?
+    to systematically isolate the formal categorical machinery of the projection formula and duality isomorphisms
+    from specific geometric contexts, showing how right adjoints $f^!$ or $f_*$ can be identified as twists/shifts
+    of left adjoints $f_!$ or $f^*$ via an intrinsic dualizing object.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#001
+  text: Why is the right adjoint generally harder to understand than the left adjoint?
+  hint: The left adjoint (e.g., free construction, scalar extension, pullback $f^*$, or extension-by-zero
+    $j_!$) is explicitly defined by generators and preserves colimits; its right adjoint (e.g., coextension,
+    pushforward $f_*$, or exceptional pullback $f^!$) is given abstractly via the adjoint functor theorem
+    and requires deep descent/duality theorems to compute.
+  locator: null
+  sub_index: null
+  search_text: why is the right adjoint generally harder to understand than the left adjoint? the left
+    adjoint (e.g., free construction, scalar extension, pullback $f^*$, or extension-by-zero $j_!$) is
+    explicitly defined by generators and preserves colimits; its right adjoint (e.g., coextension, pushforward
+    $f_*$, or exceptional pullback $f^!$) is given abstractly via the adjoint functor theorem and requires
+    deep descent/duality theorems to compute.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#002
+  text: How do Neeman's techniques establish the formal nature of Verdier and Grothendieck isomorphisms?
+  hint: Neeman proved that in triangulated and derived categories with Brown representability, the existence
+    of right adjoints $f^!$ and their duality isomorphisms with twisted left adjoints are purely formal
+    consequences of closed symmetric monoidal structures and compactly generated categories.
+  locator: null
+  sub_index: null
+  search_text: how do neeman's techniques establish the formal nature of verdier and grothendieck isomorphisms?
+    neeman proved that in triangulated and derived categories with brown representability, the existence
+    of right adjoints $f^!$ and their duality isomorphisms with twisted left adjoints are purely formal
+    consequences of closed symmetric monoidal structures and compactly generated categories.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#003
+  text: How is the standard pullback-pushforward pair $(f^*, f_*)$ structured in a closed symmetric monoidal
+    category?
+  hint: Let $f \colon \mathcal{A} \to \mathcal{B}$ be a geometric morphism; the pullback functor $f^*
+    \colon \mathcal{B} \to \mathcal{A}$ is strong symmetric monoidal ($f^*(Y \otimes_{\mathcal{B}} Z)
+    \cong f^*Y \otimes_{\mathcal{A}} f^*Z$ and $f^*\mathbf{1}_{\mathcal{B}} \cong \mathbf{1}_{\mathcal{A}}$),
+    and its right adjoint $f_* \colon \mathcal{A} \to \mathcal{B}$ is lax monoidal with an adjunction
+    $\mathrm{Hom}_{\mathcal{A}}(f^*Y, X) \cong \mathrm{Hom}_{\mathcal{B}}(Y, f_*X)$.
+  locator: null
+  sub_index: null
+  search_text: how is the standard pullback-pushforward pair $(f^*, f_*)$ structured in a closed symmetric
+    monoidal category? let $f \colon \mathcal{a} \to \mathcal{b}$ be a geometric morphism; the pullback
+    functor $f^* \colon \mathcal{b} \to \mathcal{a}$ is strong symmetric monoidal ($f^*(y \otimes_{\mathcal{b}}
+    z) \cong f^*y \otimes_{\mathcal{a}} f^*z$ and $f^*\mathbf{1}_{\mathcal{b}} \cong \mathbf{1}_{\mathcal{a}}$),
+    and its right adjoint $f_* \colon \mathcal{a} \to \mathcal{b}$ is lax monoidal with an adjunction
+    $\mathrm{hom}_{\mathcal{a}}(f^*y, x) \cong \mathrm{hom}_{\mathcal{b}}(y, f_*x)$.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#004
+  text: What is the categorical relationship between $(f^*, f_*, f_!, f^!)$ when $f$ is a proper morphism?
+  hint: When $f$ is proper, the exceptional pushforward coincides with the ordinary pushforward ($f_!
+    \cong f_*$); consequently, the exceptional pullback $f^!$ is the right adjoint to the right adjoint
+    of pullback, $f^! \colon \mathcal{B} \to \mathcal{A}$ being right adjoint to $f_* \cong f_!$.
+  locator: null
+  sub_index: null
+  search_text: what is the categorical relationship between $(f^*, f_*, f_!, f^!)$ when $f$ is a proper
+    morphism? when $f$ is proper, the exceptional pushforward coincides with the ordinary pushforward
+    ($f_! \cong f_*$); consequently, the exceptional pullback $f^!$ is the right adjoint to the right
+    adjoint of pullback, $f^! \colon \mathcal{b} \to \mathcal{a}$ being right adjoint to $f_* \cong f_!$.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#005
+  text: What is the Grothendieck context versus the Verdier-Grothendieck context?
+  hint: The **Grothendieck context** is an adjoint triple $(f^* \dashv f_* \dashv f^!)$ where $f_*$ has
+    a right adjoint $f^!$ (modeling proper morphisms or global module duality); the **Verdier-Grothendieck
+    context** includes the full four-functor setup $(f_! \dashv f^!)$ and $(f^* \dashv f_*)$ with an isomorphism
+    $f_! \xrightarrow{\sim} f_*$ on proper subcategories.
+  locator: null
+  sub_index: null
+  search_text: what is the grothendieck context versus the verdier-grothendieck context? the **grothendieck
+    context** is an adjoint triple $(f^* \dashv f_* \dashv f^!)$ where $f_*$ has a right adjoint $f^!$
+    (modeling proper morphisms or global module duality); the **verdier-grothendieck context** includes
+    the full four-functor setup $(f_! \dashv f^!)$ and $(f^* \dashv f_*)$ with an isomorphism $f_! \xrightarrow{\sim}
+    f_*$ on proper subcategories.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#006
+  text: How do extension and coextension of scalars model $f_!$, $f^*$, and $f_*$ in module categories?
+  hint: For a ring homomorphism $\phi \colon R \to S$, the forgetful/restriction functor is $f^*$; its
+    left adjoint is extension of scalars $f_!(M) = S \otimes_R M$ (left adjoint/induction), and its right
+    adjoint is coextension of scalars $f_*(M) = \mathrm{Hom}_R(S, M)$ (right adjoint/coinduction). Notice
+    that here $f^*$ is generally not strong monoidal unless $S$ is flat/étale.
+  locator: null
+  sub_index: null
+  search_text: how do extension and coextension of scalars model $f_!$, $f^*$, and $f_*$ in module categories?
+    for a ring homomorphism $\phi \colon r \to s$, the forgetful/restriction functor is $f^*$; its left
+    adjoint is extension of scalars $f_!(m) = s \otimes_r m$ (left adjoint/induction), and its right adjoint
+    is coextension of scalars $f_*(m) = \mathrm{hom}_r(s, m)$ (right adjoint/coinduction). notice that
+    here $f^*$ is generally not strong monoidal unless $s$ is flat/étale.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#007
+  text: What is the Wirthmüller context and how did it originate in equivariant topology?
+  hint: Originating from Wirthmüller's theorem for compact Lie groups $G/H$, a **Wirthmüller context**
+    is an adjoint triple $(f_! \dashv f^* \dashv f_*)$ where the strong symmetric monoidal pullback $f^*$
+    has both a left adjoint $f_!$ and a right adjoint $f_*$, together with a natural twist isomorphism
+    $f_!(X) \cong f_*(X \otimes D)$ for a dualizing object $D$.
+  locator: null
+  sub_index: null
+  search_text: what is the wirthmüller context and how did it originate in equivariant topology? originating
+    from wirthmüller's theorem for compact lie groups $g/h$, a **wirthmüller context** is an adjoint triple
+    $(f_! \dashv f^* \dashv f_*)$ where the strong symmetric monoidal pullback $f^*$ has both a left adjoint
+    $f_!$ and a right adjoint $f_*$, together with a natural twist isomorphism $f_!(x) \cong f_*(x \otimes
+    d)$ for a dualizing object $d$.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#008
+  text: How does strong symmetric monoidality of $f^*$ yield the internal hom adjunction and projection
+    maps?
+  hint: Since $f^*$ commutes with $\otimes$, the $(f^* \dashv f_*)$ adjunction formally induces a natural
+    morphism $\pi \colon f_*(X) \otimes Y \to f_*(X \otimes f^*Y)$ and a dual morphism on internal homs
+    $f^* \underline{\mathrm{Hom}}_{\mathcal{B}}(Y, Z) \to \underline{\mathrm{Hom}}_{\mathcal{A}}(f^*Y,
+    f^*Z)$ via the Barr-Beck/monad comparison apparatus.
+  locator: null
+  sub_index: null
+  search_text: how does strong symmetric monoidality of $f^*$ yield the internal hom adjunction and projection
+    maps? since $f^*$ commutes with $\otimes$, the $(f^* \dashv f_*)$ adjunction formally induces a natural
+    morphism $\pi \colon f_*(x) \otimes y \to f_*(x \otimes f^*y)$ and a dual morphism on internal homs
+    $f^* \underline{\mathrm{hom}}_{\mathcal{b}}(y, z) \to \underline{\mathrm{hom}}_{\mathcal{a}}(f^*y,
+    f^*z)$ via the barr-beck/monad comparison apparatus.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#009
+  text: State Definition 4.6 of the Projection Formula in the abstract axiomatic context
+  hint: In an adjoint setup $(f^* \dashv f_*)$, the **projection formula** is the assertion that the canonical
+    morphism $\pi \colon f_!(X) \otimes_{\mathcal{B}} Y \xrightarrow{\sim} f_!(X \otimes_{\mathcal{A}}
+    f^*Y)$ is a natural isomorphism for all $X \in \mathcal{A}$ and $Y \in \mathcal{B}$.
+  locator: null
+  sub_index: null
+  search_text: state definition 4.6 of the projection formula in the abstract axiomatic context in an
+    adjoint setup $(f^* \dashv f_*)$, the **projection formula** is the assertion that the canonical morphism
+    $\pi \colon f_!(x) \otimes_{\mathcal{b}} y \xrightarrow{\sim} f_!(x \otimes_{\mathcal{a}} f^*y)$ is
+    a natural isomorphism for all $x \in \mathcal{a}$ and $y \in \mathcal{b}$.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#010
+  text: When does a Wirthmüller context arise in algebra and representation theory?
+  hint: When $f^* \colon \mathbf{Mod}_S \to \mathbf{Mod}_R$ is the restriction of scalars along a Frobenius
+    algebra/finite flat map $\phi \colon R \to S$, where extension of scalars $f_!(-) = S \otimes_R -$
+    is isomorphic to coextension of scalars $f_*(-) = \mathrm{Hom}_R(S, -)$ up to tensoring with the dualizing
+    module $\omega_{S/R}$.
+  locator: null
+  sub_index: null
+  search_text: when does a wirthmüller context arise in algebra and representation theory? when $f^* \colon
+    \mathbf{mod}_s \to \mathbf{mod}_r$ is the restriction of scalars along a frobenius algebra/finite
+    flat map $\phi \colon r \to s$, where extension of scalars $f_!(-) = s \otimes_r -$ is isomorphic
+    to coextension of scalars $f_*(-) = \mathrm{hom}_r(s, -)$ up to tensoring with the dualizing module
+    $\omega_{s/r}$.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#011
+  text: How does the dualizing object interact with the Chu construction and star-autonomous categories?
+  hint: An intrinsic dualizing object $D \in \mathcal{A}$ defines a duality functor $\mathbb{D}(-) = \underline{\mathrm{Hom}}(-,
+    D)$; the Chu construction formally completes a closed symmetric monoidal category into a $*$-autonomous
+    category where the Wirthmüller and Grothendieck contexts become dual via $\mathbb{D} \circ f^* \cong
+    f^! \circ \mathbb{D}$.
+  locator: null
+  sub_index: null
+  search_text: how does the dualizing object interact with the chu construction and star-autonomous categories?
+    an intrinsic dualizing object $d \in \mathcal{a}$ defines a duality functor $\mathbb{d}(-) = \underline{\mathrm{hom}}(-,
+    d)$; the chu construction formally completes a closed symmetric monoidal category into a $*$-autonomous
+    category where the wirthmüller and grothendieck contexts become dual via $\mathbb{d} \circ f^* \cong
+    f^! \circ \mathbb{d}$.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#012
+  text: Why is the Projection Formula recognized categorically as Frobenius reciprocity?
+  hint: The projection formula is the tensor-categorical generalization of classical Frobenius reciprocity
+    $\mathrm{Ind}(V \otimes \mathrm{Res}(W)) \cong \mathrm{Ind}(V) \otimes W$ for representations; categorically,
+    it states that $f_!$ is an enriched $\mathcal{B}$-module functor.
+  locator: null
+  sub_index: null
+  search_text: why is the projection formula recognized categorically as frobenius reciprocity? the projection
+    formula is the tensor-categorical generalization of classical frobenius reciprocity $\mathrm{ind}(v
+    \otimes \mathrm{res}(w)) \cong \mathrm{ind}(v) \otimes w$ for representations; categorically, it states
+    that $f_!$ is an enriched $\mathcal{b}$-module functor.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#013
+  text: How does the Projection Formula allow moving target objects and computing Reynolds operators/Haar
+    integrals?
+  hint: It allows pullbacks of base objects $f^*Y$ to be factored outside the pushforward integration
+    $f_!(f^*Y \otimes X) \cong Y \otimes f_!(X)$; for $X = \mathbf{1}$, $f_!(f^*Y) \cong Y \otimes f_!(\mathbf{1})$,
+    which identifies the pushforward with a generalized Reynolds averaging operator / integration against
+    the Haar measure $f_!(\mathbf{1})$.
+  locator: null
+  sub_index: null
+  search_text: how does the projection formula allow moving target objects and computing reynolds operators/haar
+    integrals? it allows pullbacks of base objects $f^*y$ to be factored outside the pushforward integration
+    $f_!(f^*y \otimes x) \cong y \otimes f_!(x)$; for $x = \mathbf{1}$, $f_!(f^*y) \cong y \otimes f_!(\mathbf{1})$,
+    which identifies the pushforward with a generalized reynolds averaging operator / integration against
+    the haar measure $f_!(\mathbf{1})$.
