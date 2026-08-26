@@ -1,0 +1,296 @@
+url: https://stacks.math.columbia.edu/download/topology.pdf
+title: Topology in the Stacks Project
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: stacks-math-columbia-edu-download-topology-pdf#000
+  text: '(Hausdorff Spaces and the Closed Diagonal: Section 5.3) Prove that a topological space $X$ is
+    Hausdorff if and only if the diagonal $\Delta_X = \{(x, x) : x \in X\}$ is a closed subset of $X \times
+    X$. (Hint: Show that $(X \times X) \setminus \Delta_X$ is open by finding disjoint open neighborhoods
+    $U_x, U_y \subset X$ for $x \ne y$ such that $U_x \times U_y \subseteq (X \times X) \setminus \Delta_X$;
+    conversely, if $\Delta_X$ is closed, any basic open neighborhood in the complement yields disjoint
+    open sets)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(hausdorff spaces and the closed diagonal: section 5.3) prove that a topological space
+    $x$ is hausdorff if and only if the diagonal $\delta_x = \{(x, x) : x \in x\}$ is a closed subset
+    of $x \times x$. (hint: show that $(x \times x) \setminus \delta_x$ is open by finding disjoint open
+    neighborhoods $u_x, u_y \subset x$ for $x \ne y$ such that $u_x \times u_y \subseteq (x \times x)
+    \setminus \delta_x$; conversely, if $\delta_x$ is closed, any basic open neighborhood in the complement
+    yields disjoint open sets)'
+- id: stacks-math-columbia-edu-download-topology-pdf#001
+  text: '(Closed Graphs and Separated Morphisms: Section 5.3) For a continuous map $f: X \to Y$, define
+    its graph $\Gamma_f = \{(x, f(x)) : x \in X\} \subset X \times Y$ as the preimage of $\Delta_Y$ under
+    $f \times \operatorname{id}_Y$. Prove that if $Y$ is Hausdorff, $\Gamma_f$ is closed. Define a continuous
+    map $f: X \to Y$ to be separated if the relative diagonal $\Delta_{X/Y}: X \to X \times_Y X$ is a
+    closed immersion, and prove that if $X$ is Hausdorff, every map $f: X \to Y$ is separated. (Hint:
+    Show that separatedness is stable under base change and composition)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(closed graphs and separated morphisms: section 5.3) for a continuous map $f: x \to y$,
+    define its graph $\gamma_f = \{(x, f(x)) : x \in x\} \subset x \times y$ as the preimage of $\delta_y$
+    under $f \times \operatorname{id}_y$. prove that if $y$ is hausdorff, $\gamma_f$ is closed. define
+    a continuous map $f: x \to y$ to be separated if the relative diagonal $\delta_{x/y}: x \to x \times_y
+    x$ is a closed immersion, and prove that if $x$ is hausdorff, every map $f: x \to y$ is separated.
+    (hint: show that separatedness is stable under base change and composition)'
+- id: stacks-math-columbia-edu-download-topology-pdf#002
+  text: '(Bases of Topologies and Intersection Properties: Section 5.5) Let $\mathcal{B}$ be a collection
+    of subsets of a set $X$ such that $X = \bigcup_{B \in \mathcal{B}} B$ and for any $B_1, B_2 \in \mathcal{B}$
+    and $x \in B_1 \cap B_2$, there exists $B_3 \in \mathcal{B}$ such that $x \in B_3 \subseteq B_1 \cap
+    B_2$. Prove that there exists a unique topology on $X$ for which $\mathcal{B}$ is a basis of open
+    sets'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(bases of topologies and intersection properties: section 5.5) let $\mathcal{b}$ be a
+    collection of subsets of a set $x$ such that $x = \bigcup_{b \in \mathcal{b}} b$ and for any $b_1,
+    b_2 \in \mathcal{b}$ and $x \in b_1 \cap b_2$, there exists $b_3 \in \mathcal{b}$ such that $x \in
+    b_3 \subseteq b_1 \cap b_2$. prove that there exists a unique topology on $x$ for which $\mathcal{b}$
+    is a basis of open sets'
+- id: stacks-math-columbia-edu-download-topology-pdf#003
+  text: '(Subspace, Quotient, and Submersive/Strict Topologies: Section 5.6) Compare the subspace topology
+    (weakest/coarsest topology making the inclusion continuous) with the quotient topology on $Y = X/\sim$
+    (strongest/finest topology making the projection $\pi: X \twoheadrightarrow Y$ continuous). Define
+    a continuous map $f: X \to Y$ to be submersive (strict) if $f$ is surjective and $Y$ carries the quotient
+    topology ($V \subseteq Y$ is open if and only if $f^{-1}(V)$ is open in $X$). (Hint: Note that this
+    topological definition of submersive is purely quotient-theoretic and distinct from differential submersions
+    with surjective differentials)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(subspace, quotient, and submersive/strict topologies: section 5.6) compare the subspace
+    topology (weakest/coarsest topology making the inclusion continuous) with the quotient topology on
+    $y = x/\sim$ (strongest/finest topology making the projection $\pi: x \twoheadrightarrow y$ continuous).
+    define a continuous map $f: x \to y$ to be submersive (strict) if $f$ is surjective and $y$ carries
+    the quotient topology ($v \subseteq y$ is open if and only if $f^{-1}(v)$ is open in $x$). (hint:
+    note that this topological definition of submersive is purely quotient-theoretic and distinct from
+    differential submersions with surjective differentials)'
+- id: stacks-math-columbia-edu-download-topology-pdf#004
+  text: '(Connectedness and Total Disconnectedness: Section 5.7) Define a topological space $X$ to be
+    totally disconnected if every connected component is a singleton $\{x\}$. Contrast discrete spaces
+    (which are totally disconnected) with $\mathbb{Q} \subset \mathbb{R}$ (totally disconnected but not
+    discrete), and define $X$ to be locally connected if every point admits a fundamental neighborhood
+    system of connected open sets'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(connectedness and total disconnectedness: section 5.7) define a topological space $x$
+    to be totally disconnected if every connected component is a singleton $\{x\}$. contrast discrete
+    spaces (which are totally disconnected) with $\mathbb{q} \subset \mathbb{r}$ (totally disconnected
+    but not discrete), and define $x$ to be locally connected if every point admits a fundamental neighborhood
+    system of connected open sets'
+- id: stacks-math-columbia-edu-download-topology-pdf#005
+  text: '(Irreducible Sets and Irreducible Components: Section 5.8) Define a non-empty topological space
+    $X$ to be irreducible if $X$ cannot be written as the union $X = Z_1 \cup Z_2$ of two proper closed
+    subsets, or equivalently if every non-empty open subset is dense. Prove that the closure $\overline{Y}$
+    of an irreducible set $Y$ is irreducible, and that every space $X$ decomposes into a union $X = \bigcup
+    Y_\alpha$ of maximal irreducible subsets called the irreducible components of $X$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(irreducible sets and irreducible components: section 5.8) define a non-empty topological
+    space $x$ to be irreducible if $x$ cannot be written as the union $x = z_1 \cup z_2$ of two proper
+    closed subsets, or equivalently if every non-empty open subset is dense. prove that the closure $\overline{y}$
+    of an irreducible set $y$ is irreducible, and that every space $x$ decomposes into a union $x = \bigcup
+    y_\alpha$ of maximal irreducible subsets called the irreducible components of $x$'
+- id: stacks-math-columbia-edu-download-topology-pdf#006
+  text: '(Kolmogorov, Quasisober, and Sober Spaces: Section 5.8 & 5.9) Define the separation axioms: 1.
+    $T_0$ (Kolmogorov): For any $x \ne y$, there is an open set containing one but not the other. 2. Quasisober:
+    Every irreducible closed subset $Z \subseteq X$ has at least one generic point $\eta \in Z$ such that
+    $\overline{\{\eta\}} = Z$. 3. Sober: Every irreducible closed subset $Z \subseteq X$ has a unique
+    generic point $\eta \in Z$. (Hint: Show that sobriety embodies the Yoneda lemma for topology; state
+    Lemma 5.8.16 constructing the canonical soberification functor $\operatorname{Sober}(X) \to X$ reflecting
+    sober spaces as a reflective subcategory)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(kolmogorov, quasisober, and sober spaces: section 5.8 & 5.9) define the separation axioms:
+    1. $t_0$ (kolmogorov): for any $x \ne y$, there is an open set containing one but not the other. 2.
+    quasisober: every irreducible closed subset $z \subseteq x$ has at least one generic point $\eta \in
+    z$ such that $\overline{\{\eta\}} = z$. 3. sober: every irreducible closed subset $z \subseteq x$
+    has a unique generic point $\eta \in z$. (hint: show that sobriety embodies the yoneda lemma for topology;
+    state lemma 5.8.16 constructing the canonical soberification functor $\operatorname{sober}(x) \to
+    x$ reflecting sober spaces as a reflective subcategory)'
+- id: stacks-math-columbia-edu-download-topology-pdf#007
+  text: '(Noetherian Spaces and Krull Dimension: Section 5.9 & 5.10) Define a topological space $X$ to
+    be Noetherian if it satisfies the descending chain condition on closed subsets (DCC). Define the Krull
+    dimension $\dim(X)$ as the supremum of lengths of strict chains of irreducible closed subsets $Z_0
+    \subsetneq Z_1 \subsetneq \dots \subsetneq Z_n \subseteq X$. For a closed subset $Y \subseteq X$,
+    define the codimension $\operatorname{codim}(Y, X) = \inf_{y \in Y} \sup \{n : Z_0 \subsetneq \dots
+    \subsetneq Z_n \subseteq X \text{ with } Z_0 \subseteq Y\}$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(noetherian spaces and krull dimension: section 5.9 & 5.10) define a topological space
+    $x$ to be noetherian if it satisfies the descending chain condition on closed subsets (dcc). define
+    the krull dimension $\dim(x)$ as the supremum of lengths of strict chains of irreducible closed subsets
+    $z_0 \subsetneq z_1 \subsetneq \dots \subsetneq z_n \subseteq x$. for a closed subset $y \subseteq
+    x$, define the codimension $\operatorname{codim}(y, x) = \inf_{y \in y} \sup \{n : z_0 \subsetneq
+    \dots \subsetneq z_n \subseteq x \text{ with } z_0 \subseteq y\}$'
+- id: stacks-math-columbia-edu-download-topology-pdf#008
+  text: '(Quasicompactness vs. Compactness: Section 5.12) State the Stacks Project convention: a space
+    $X$ is quasicompact if every open cover has a finite subcover, and compact if it is both quasicompact
+    and Hausdorff. Define a continuous map $f: X \to Y$ to be quasicompact if the preimage $f^{-1}(U)$
+    of every quasicompact open $U \subseteq Y$ is quasicompact'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(quasicompactness vs. compactness: section 5.12) state the stacks project convention:
+    a space $x$ is quasicompact if every open cover has a finite subcover, and compact if it is both quasicompact
+    and hausdorff. define a continuous map $f: x \to y$ to be quasicompact if the preimage $f^{-1}(u)$
+    of every quasicompact open $u \subseteq y$ is quasicompact'
+- id: stacks-math-columbia-edu-download-topology-pdf#009
+  text: '(Baire Category Theorem for Locally Quasicompact Hausdorff Spaces: Section 5.12) State and prove
+    the Baire Category Theorem (Lemma 5.12.6): if $X$ is a locally quasicompact Hausdorff space and $\{U_n\}_{n=1}^\infty$
+    is a countable collection of dense open subsets of $X$, then the intersection $\bigcap_{n=1}^\infty
+    U_n$ is dense in $X$. (Hint: For any non-empty open $V \subseteq X$, construct a nested sequence of
+    non-empty closed quasicompact neighborhoods $\overline{E_n} \subseteq E_{n-1} \cap U_n \cap V$ using
+    Hausdorff separation (Lemma 5.12.4); apply the finite intersection property of quasicompact spaces
+    to show $\bigcap E_n \ne \emptyset$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(baire category theorem for locally quasicompact hausdorff spaces: section 5.12) state
+    and prove the baire category theorem (lemma 5.12.6): if $x$ is a locally quasicompact hausdorff space
+    and $\{u_n\}_{n=1}^\infty$ is a countable collection of dense open subsets of $x$, then the intersection
+    $\bigcap_{n=1}^\infty u_n$ is dense in $x$. (hint: for any non-empty open $v \subseteq x$, construct
+    a nested sequence of non-empty closed quasicompact neighborhoods $\overline{e_n} \subseteq e_{n-1}
+    \cap u_n \cap v$ using hausdorff separation (lemma 5.12.4); apply the finite intersection property
+    of quasicompact spaces to show $\bigcap e_n \ne \emptyset$)'
+- id: stacks-math-columbia-edu-download-topology-pdf#010
+  text: '(Tychonoff''s Theorem and Product Quasicompactness: Section 5.14) State Tychonoff''s Theorem:
+    the product $\prod_{i \in I} X_i$ of any family of quasicompact topological spaces is quasicompact
+    with respect to the product topology. (Hint: Formulate the product topology via the universal property
+    as the categorical limit of the forgetful functor)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(tychonoff''s theorem and product quasicompactness: section 5.14) state tychonoff''s theorem:
+    the product $\prod_{i \in i} x_i$ of any family of quasicompact topological spaces is quasicompact
+    with respect to the product topology. (hint: formulate the product topology via the universal property
+    as the categorical limit of the forgetful functor)'
+- id: stacks-math-columbia-edu-download-topology-pdf#011
+  text: '(Constructible Sets and Retrocompact Opens: Section 5.15) Let $X$ be a topological space. An
+    open subset $U \subseteq X$ is retrocompact if the inclusion $j: U \hookrightarrow X$ is a quasicompact
+    map (i.e. $U \cap K$ is quasicompact for every quasicompact open $K \subseteq X$). Define a constructible
+    subset of $X$ as a finite union of subsets of the form $U \cap V^c$, where $U, V \subseteq X$ are
+    open and retrocompact'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(constructible sets and retrocompact opens: section 5.15) let $x$ be a topological space.
+    an open subset $u \subseteq x$ is retrocompact if the inclusion $j: u \hookrightarrow x$ is a quasicompact
+    map (i.e. $u \cap k$ is quasicompact for every quasicompact open $k \subseteq x$). define a constructible
+    subset of $x$ as a finite union of subsets of the form $u \cap v^c$, where $u, v \subseteq x$ are
+    open and retrocompact'
+- id: stacks-math-columbia-edu-download-topology-pdf#012
+  text: '(Proper Maps and Universally Closed Morphisms: Section 5.17) Define a continuous map $f: X \to
+    Y$ to be universally closed if for every topological space $Z$, the fiber product map $f \times \operatorname{id}_Z:
+    X \times_Y Z \to Z$ is closed. Define $f: X \to Y$ to be proper if $f$ is separated and universally
+    closed. (Hint: Explain how this definition of properness ensures that proper base change and Verdier
+    duality hold in sheaf theory)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(proper maps and universally closed morphisms: section 5.17) define a continuous map $f:
+    x \to y$ to be universally closed if for every topological space $z$, the fiber product map $f \times
+    \operatorname{id}_z: x \times_y z \to z$ is closed. define $f: x \to y$ to be proper if $f$ is separated
+    and universally closed. (hint: explain how this definition of properness ensures that proper base
+    change and verdier duality hold in sheaf theory)'
+- id: stacks-math-columbia-edu-download-topology-pdf#013
+  text: '(Specialization Orders and Nowhere Dense Sets: Section 5.19 & 5.20) Define the specialization
+    preorder on $X$ by $x \le y \iff x \in \overline{\{y\}}$. Show that $\le$ is a partial order if and
+    only if $X$ is $T_0$. Define a subset $E \subset X$ to be nowhere dense if its closure has empty interior
+    ($\operatorname{Int}(\overline{E}) = \emptyset$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(specialization orders and nowhere dense sets: section 5.19 & 5.20) define the specialization
+    preorder on $x$ by $x \le y \iff x \in \overline{\{y\}}$. show that $\le$ is a partial order if and
+    only if $x$ is $t_0$. define a subset $e \subset x$ to be nowhere dense if its closure has empty interior
+    ($\operatorname{int}(\overline{e}) = \emptyset$)'
+- id: stacks-math-columbia-edu-download-topology-pdf#014
+  text: '(Profinite Spaces and Stone Duality: Section 5.22) Define a profinite space as a topological
+    space homeomorphic to a cofiltered limit $\varprojlim X_i$ of finite discrete spaces. Prove that a
+    topological space $X$ is profinite if and only if it is compact (quasicompact and Hausdorff) and totally
+    disconnected. (Hint: Use Stone duality: every profinite space is the Stone space of the Boolean algebra
+    of its clopen subsets)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(profinite spaces and stone duality: section 5.22) define a profinite space as a topological
+    space homeomorphic to a cofiltered limit $\varprojlim x_i$ of finite discrete spaces. prove that a
+    topological space $x$ is profinite if and only if it is compact (quasicompact and hausdorff) and totally
+    disconnected. (hint: use stone duality: every profinite space is the stone space of the boolean algebra
+    of its clopen subsets)'
+- id: stacks-math-columbia-edu-download-topology-pdf#015
+  text: '(Spectral Spaces after Hochster: Section 5.23) Define a spectral space (in the sense of Melvin
+    Hochster) as a topological space $X$ satisfying: 1. $X$ is sober. 2. $X$ is quasicompact. 3. The collection
+    of quasicompact open subsets $\mathcal{B} = \operatorname{Op}_{\text{qc}}(X)$ forms a basis of the
+    topology and is closed under finite intersections. (Hint: State Hochster''s theorem: a space is spectral
+    if and only if it is homeomorphic to $\operatorname{Spec}(R)$ for some commutative ring $R$, if and
+    only if it is a cofiltered limit $\varprojlim X_i$ of finite $T_0$ spaces)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(spectral spaces after hochster: section 5.23) define a spectral space (in the sense of
+    melvin hochster) as a topological space $x$ satisfying: 1. $x$ is sober. 2. $x$ is quasicompact. 3.
+    the collection of quasicompact open subsets $\mathcal{b} = \operatorname{op}_{\text{qc}}(x)$ forms
+    a basis of the topology and is closed under finite intersections. (hint: state hochster''s theorem:
+    a space is spectral if and only if it is homeomorphic to $\operatorname{spec}(r)$ for some commutative
+    ring $r$, if and only if it is a cofiltered limit $\varprojlim x_i$ of finite $t_0$ spaces)'
+- id: stacks-math-columbia-edu-download-topology-pdf#016
+  text: '(The Constructible Topology on a Spectral Space: Section 5.23) Let $X$ be a spectral space. Define
+    the constructible (or patch) topology $X_{\text{cons}}$ on the underlying set of $X$ by declaring
+    all constructible subsets to be clopen. Prove that $X_{\text{cons}}$ is a compact, totally disconnected
+    Hausdorff space (a profinite space) and that $\pi_0(X)$ is a profinite space'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the constructible topology on a spectral space: section 5.23) let $x$ be a spectral space.
+    define the constructible (or patch) topology $x_{\text{cons}}$ on the underlying set of $x$ by declaring
+    all constructible subsets to be clopen. prove that $x_{\text{cons}}$ is a compact, totally disconnected
+    hausdorff space (a profinite space) and that $\pi_0(x)$ is a profinite space'
+- id: stacks-math-columbia-edu-download-topology-pdf#017
+  text: '(Stone-Cech Compactification and Extremal Disconnectedness: Section 5.25) Construct the Stone–Čech
+    compactification $\beta(X)$ of a topological space $X$ as the universal map $j: X \to \beta(X)$ into
+    a compact Hausdorff space satisfying $\operatorname{Map}(\beta(X), Y) \cong \operatorname{Map}(X,
+    Y)$ for all compact Hausdorff $Y$. Prove Lemma 5.25.2: if $X$ is locally quasicompact and Hausdorff,
+    $X$ embeds as an open dense subspace of $\beta(X)$. Define an extremally disconnected space (a space
+    where the closure of every open set is open), and show that extremally disconnected compact spaces
+    are the projective objects in the category of compact Hausdorff spaces'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(stone-cech compactification and extremal disconnectedness: section 5.25) construct the
+    stone–čech compactification $\beta(x)$ of a topological space $x$ as the universal map $j: x \to \beta(x)$
+    into a compact hausdorff space satisfying $\operatorname{map}(\beta(x), y) \cong \operatorname{map}(x,
+    y)$ for all compact hausdorff $y$. prove lemma 5.25.2: if $x$ is locally quasicompact and hausdorff,
+    $x$ embeds as an open dense subspace of $\beta(x)$. define an extremally disconnected space (a space
+    where the closure of every open set is open), and show that extremally disconnected compact spaces
+    are the projective objects in the category of compact hausdorff spaces'
+- id: stacks-math-columbia-edu-download-topology-pdf#018
+  text: '(Partitions and Stratifications: Section 5.27 & 5.28) Define a partition of a topological space
+    $X$ into locally closed subsets $X = \coprod_{i \in I} X_i$. Define a stratification of $X$ as a partition
+    such that the closure of every stratum $\overline{X_i}$ is a union of strata $\bigcup_{j \in J} X_j$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(partitions and stratifications: section 5.27 & 5.28) define a partition of a topological
+    space $x$ into locally closed subsets $x = \coprod_{i \in i} x_i$. define a stratification of $x$
+    as a partition such that the closure of every stratum $\overline{x_i}$ is a union of strata $\bigcup_{j
+    \in j} x_j$'
+- id: stacks-math-columbia-edu-download-topology-pdf#019
+  text: '(Topological Groups and Topological Rings: Section 5.30 & 5.31) Define a topological group $G$
+    and a topological ring $R$. Show that for any subgroup $H \le G$, the quotient space $G/H$ is Hausdorff
+    if and only if $H$ is closed in $G$, and that $G$ is a regular topological space'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(topological groups and topological rings: section 5.30 & 5.31) define a topological group
+    $g$ and a topological ring $r$. show that for any subgroup $h \le g$, the quotient space $g/h$ is
+    hausdorff if and only if $h$ is closed in $g$, and that $g$ is a regular topological space'

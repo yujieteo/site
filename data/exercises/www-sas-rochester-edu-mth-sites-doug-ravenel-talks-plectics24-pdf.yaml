@@ -1,0 +1,251 @@
+url: https://www.sas.rochester.edu/mth/sites/doug-ravenel/Talks/plectics24.pdf
+title: Chromatic Homotopy Theory by Douglas Ravenel
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#000
+  text: '(Homotopy Groups of Spheres and the Adams-Novikov Spectral Sequence) Trace the classification
+    of the stable homotopy groups of spheres $\pi_*^s(\mathbb{S}) = \varinjlim \pi_{n+k}(S^n)$, originating
+    from Hurewicz''s higher homotopy groups $\pi_m(X)$. Explain why computing $\pi_*^s(\mathbb{S})$ directly
+    is challenging, and how the Adams–Novikov Spectral Sequence (ANSS) based on complex cobordism $\operatorname{MU}$
+    provides a systematic algebraic approach. (Hint: Complex cobordism detects stable homotopy classes
+    via formal group laws, resolving classical Adams spectral sequence convergence issues)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(homotopy groups of spheres and the adams-novikov spectral sequence) trace the classification
+    of the stable homotopy groups of spheres $\pi_*^s(\mathbb{s}) = \varinjlim \pi_{n+k}(s^n)$, originating
+    from hurewicz''s higher homotopy groups $\pi_m(x)$. explain why computing $\pi_*^s(\mathbb{s})$ directly
+    is challenging, and how the adams–novikov spectral sequence (anss) based on complex cobordism $\operatorname{mu}$
+    provides a systematic algebraic approach. (hint: complex cobordism detects stable homotopy classes
+    via formal group laws, resolving classical adams spectral sequence convergence issues)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#001
+  text: '(Quillen''s Theorem and the Brown-Peterson Spectrum BP) State Daniel Quillen''s theorem identifying
+    the complex cobordism ring $\operatorname{MU}_*$ with the Lazard ring $L$ classifying 1-dimensional
+    commutative formal group laws $F(x, y) = x + y + \sum a_{ij} x^i y^j$. At a fixed prime $p$, describe
+    the $p$-local Brown–Peterson spectrum $\operatorname{BP}$ with coefficient ring: $$\pi_*(\operatorname{BP})
+    \cong \mathbb{Z}_{(p)}[v_1, v_2, \dots], \quad |v_n| = 2(p^n - 1),$$ and explain its connection to
+    Lubin–Tate formal group laws and $p$-typical formal groups. (Hint: The generators $v_n$ correspond
+    to the Hazewinkel/Araki generators of $p$-typical formal groups)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(quillen''s theorem and the brown-peterson spectrum bp) state daniel quillen''s theorem
+    identifying the complex cobordism ring $\operatorname{mu}_*$ with the lazard ring $l$ classifying
+    1-dimensional commutative formal group laws $f(x, y) = x + y + \sum a_{ij} x^i y^j$. at a fixed prime
+    $p$, describe the $p$-local brown–peterson spectrum $\operatorname{bp}$ with coefficient ring: $$\pi_*(\operatorname{bp})
+    \cong \mathbb{z}_{(p)}[v_1, v_2, \dots], \quad |v_n| = 2(p^n - 1),$$ and explain its connection to
+    lubin–tate formal group laws and $p$-typical formal groups. (hint: the generators $v_n$ correspond
+    to the hazewinkel/araki generators of $p$-typical formal groups)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#002
+  text: '(Morava K-Theories and Height Classification) Define the Morava $K$-theory spectra $K(n)$ at
+    a prime $p$ for $n \ge 0$, with coefficients: $$\pi_*(K(n)) \cong \mathbb{F}_p[v_n^{\pm 1}], \quad
+    |v_n| = 2(p^n - 1) \quad (\text{for } n \ge 1), \quad \text{and} \quad K(0) = H\mathbb{Q}.$$ Explain
+    how $K(n)$ corresponds to the unique 1-dimensional formal group of height $n$ over $\overline{\mathbb{F}}_p$,
+    acting as categorical "prime fields" in stable homotopy theory. (Hint: By the Landweber–Morava classification,
+    Morava $K$-theories are field objects satisfying a Künneth isomorphism $K(n)_*(X \times Y) \cong K(n)_*(X)
+    \otimes_{K(n)_*} K(n)_*(Y)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(morava k-theories and height classification) define the morava $k$-theory spectra $k(n)$
+    at a prime $p$ for $n \ge 0$, with coefficients: $$\pi_*(k(n)) \cong \mathbb{f}_p[v_n^{\pm 1}], \quad
+    |v_n| = 2(p^n - 1) \quad (\text{for } n \ge 1), \quad \text{and} \quad k(0) = h\mathbb{q}.$$ explain
+    how $k(n)$ corresponds to the unique 1-dimensional formal group of height $n$ over $\overline{\mathbb{f}}_p$,
+    acting as categorical "prime fields" in stable homotopy theory. (hint: by the landweber–morava classification,
+    morava $k$-theories are field objects satisfying a künneth isomorphism $k(n)_*(x \times y) \cong k(n)_*(x)
+    \otimes_{k(n)_*} k(n)_*(y)$)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#003
+  text: '(The Chromatic Spectral Sequence and Astronomical Analogy) Describe the chromatic spectral sequence
+    constructed by Miller, Ravenel, and Wilson. Explain why each column displays $v_n$-periodic families
+    and how the $n$-th chromatic layer is controlled by the continuous cohomology of the $n$-th Morava
+    stabilizer group $\mathbb{S}_n = \operatorname{Aut}(\mathbb{G}_n) \cong \mathcal{O}_{D_{1/n}}^\times$.
+    (Hint: The name "chromatic" comes from the decomposition of the stable homotopy of spheres into periodic
+    monochromatic components, analogous to decomposing light into spectral lines)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the chromatic spectral sequence and astronomical analogy) describe the chromatic spectral
+    sequence constructed by miller, ravenel, and wilson. explain why each column displays $v_n$-periodic
+    families and how the $n$-th chromatic layer is controlled by the continuous cohomology of the $n$-th
+    morava stabilizer group $\mathbb{s}_n = \operatorname{aut}(\mathbb{g}_n) \cong \mathcal{o}_{d_{1/n}}^\times$.
+    (hint: the name "chromatic" comes from the decomposition of the stable homotopy of spheres into periodic
+    monochromatic components, analogous to decomposing light into spectral lines)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#004
+  text: '(The Hopf Algebroid of BP and the Chromatic Resolution) Define the Hopf algebroid $(A, \Gamma)
+    = (\operatorname{BP}_*, \operatorname{BP}_*(\operatorname{BP}))$ representing the moduli of $p$-typical
+    formal group laws and their strict isomorphisms. Show that the $E_2$-term of the ANSS is given by
+    algebraic $\operatorname{Ext}$ groups: $$E_2^{s, t} = \operatorname{Ext}_{\operatorname{BP}_*(\operatorname{BP})}^{s,
+    t}(\operatorname{BP}_*, \operatorname{BP}_*).$$ Explain how the chromatic resolution of $\operatorname{BP}_*$
+    decomposes this $\operatorname{Ext}$ group into long exact sequences of comodules. (Hint: The chromatic
+    resolution successively inverts the generators $v_n$ and computes cohomology on monochromatic quotients)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the hopf algebroid of bp and the chromatic resolution) define the hopf algebroid $(a,
+    \gamma) = (\operatorname{bp}_*, \operatorname{bp}_*(\operatorname{bp}))$ representing the moduli of
+    $p$-typical formal group laws and their strict isomorphisms. show that the $e_2$-term of the anss
+    is given by algebraic $\operatorname{ext}$ groups: $$e_2^{s, t} = \operatorname{ext}_{\operatorname{bp}_*(\operatorname{bp})}^{s,
+    t}(\operatorname{bp}_*, \operatorname{bp}_*).$$ explain how the chromatic resolution of $\operatorname{bp}_*$
+    decomposes this $\operatorname{ext}$ group into long exact sequences of comodules. (hint: the chromatic
+    resolution successively inverts the generators $v_n$ and computes cohomology on monochromatic quotients)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#005
+  text: '(Bousfield Localization and E-Local Spectra) Define an $E$-local spectrum and the Bousfield localization
+    functor $L_E: \mathbf{Sp} \to \mathbf{Sp}$ for a generalized homology theory $E$. (Hint: A spectrum
+    $Z$ is $E$-local if every $E_*$-equivalence $f: A \to B$ induces an isomorphism $f^*: [B, Z] \to [A,
+    Z]$; the canonical map $X \to L_E X$ is the universal $E_*$-equivalence into an $E$-local spectrum.
+    For connective spectra, show that $L_E$ reduces to arithmetic operations like inverting a set of primes
+    or $p$-adic completion)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(bousfield localization and e-local spectra) define an $e$-local spectrum and the bousfield
+    localization functor $l_e: \mathbf{sp} \to \mathbf{sp}$ for a generalized homology theory $e$. (hint:
+    a spectrum $z$ is $e$-local if every $e_*$-equivalence $f: a \to b$ induces an isomorphism $f^*: [b,
+    z] \to [a, z]$; the canonical map $x \to l_e x$ is the universal $e_*$-equivalence into an $e$-local
+    spectrum. for connective spectra, show that $l_e$ reduces to arithmetic operations like inverting
+    a set of primes or $p$-adic completion)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#006
+  text: '(Johnson-Wilson Spectra and Chromatic Layers) Define the Johnson–Wilson spectrum $E(n)$ with
+    $\pi_*(E(n)) \cong \mathbb{Z}_{(p)}[v_1, \dots, v_{n-1}, v_n^{\pm 1}]$ and the Lubin–Tate/Morava $E$-theory
+    spectrum $E_n$. Show that $L_{E(n)}$ and $L_{E_n}$ define the exact same Bousfield localization functor
+    $L_n$, isolating the $n$-th chromatic stage of the stable homotopy category. (Hint: The localization
+    $L_n X$ captures all $v_i$-periodic information for $i \le n$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(johnson-wilson spectra and chromatic layers) define the johnson–wilson spectrum $e(n)$
+    with $\pi_*(e(n)) \cong \mathbb{z}_{(p)}[v_1, \dots, v_{n-1}, v_n^{\pm 1}]$ and the lubin–tate/morava
+    $e$-theory spectrum $e_n$. show that $l_{e(n)}$ and $l_{e_n}$ define the exact same bousfield localization
+    functor $l_n$, isolating the $n$-th chromatic stage of the stable homotopy category. (hint: the localization
+    $l_n x$ captures all $v_i$-periodic information for $i \le n$)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#007
+  text: '(Bousfield Equivalence Classes and the Lattice of Spectra) Define the Bousfield equivalence class
+    $\langle E \rangle$ of a spectrum $E$, where $\langle E \rangle = \langle F \rangle$ if they have
+    the same acyclic spectra ($E_* X = 0 \iff F_* X = 0$). 1. Define the partial order $\langle E \rangle
+    \ge \langle F \rangle$, with maximal class $\langle \mathbb{S} \rangle$ and minimal class $\langle
+    * \rangle$. 2. Prove that for a cofiber sequence $W \to X \to Y \xrightarrow{f} \Sigma W$, $\langle
+    X \rangle \le \langle W \rangle \vee \langle Y \rangle$, with equality holding if and only if $f$
+    is smash-nilpotent ($f^{\wedge k} = 0$). 3. Verify the Bousfield decompositions: $$\langle \mathbb{S}
+    \rangle = \langle H\mathbb{Q} \rangle \vee \bigvee_{p \text{ prime}} \langle S/p \rangle, \quad \langle
+    \operatorname{BP} \rangle \ge \langle H\mathbb{F}_p \rangle \vee \bigvee_{n=1}^\infty \langle K(n)
+    \rangle, \quad \langle E(n) \rangle = \bigvee_{i=0}^n \langle K(i) \rangle.$$ (Hint: Show that $\langle
+    K(i) \wedge K(j) \rangle = \langle * \rangle$ for $i \ne j$, meaning Morava $K$-theories are mutually
+    orthogonal)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(bousfield equivalence classes and the lattice of spectra) define the bousfield equivalence
+    class $\langle e \rangle$ of a spectrum $e$, where $\langle e \rangle = \langle f \rangle$ if they
+    have the same acyclic spectra ($e_* x = 0 \iff f_* x = 0$). 1. define the partial order $\langle e
+    \rangle \ge \langle f \rangle$, with maximal class $\langle \mathbb{s} \rangle$ and minimal class
+    $\langle * \rangle$. 2. prove that for a cofiber sequence $w \to x \to y \xrightarrow{f} \sigma w$,
+    $\langle x \rangle \le \langle w \rangle \vee \langle y \rangle$, with equality holding if and only
+    if $f$ is smash-nilpotent ($f^{\wedge k} = 0$). 3. verify the bousfield decompositions: $$\langle
+    \mathbb{s} \rangle = \langle h\mathbb{q} \rangle \vee \bigvee_{p \text{ prime}} \langle s/p \rangle,
+    \quad \langle \operatorname{bp} \rangle \ge \langle h\mathbb{f}_p \rangle \vee \bigvee_{n=1}^\infty
+    \langle k(n) \rangle, \quad \langle e(n) \rangle = \bigvee_{i=0}^n \langle k(i) \rangle.$$ (hint:
+    show that $\langle k(i) \wedge k(j) \rangle = \langle * \rangle$ for $i \ne j$, meaning morava $k$-theories
+    are mutually orthogonal)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#008
+  text: '(Harmonic vs. Dissonant Spectra) Define the harmonic localization $L_\infty X = \operatorname{holim}_n
+    L_n X$ of a $p$-local spectrum $X$. A spectrum $X$ is harmonic if $X \xrightarrow{\sim} L_\infty X$
+    is an equivalence, and dissonant if $L_\infty X \simeq *$, or equivalently if $K(n)_* X = 0$ for all
+    $n \ge 0$. Prove that: 1. There are no non-trivial maps from any dissonant spectrum to any harmonic
+    spectrum: $[D, H] = 0$. 2. Every finite $p$-local spectrum is harmonic (Ravenel''s Theorem). 3. The
+    mod-$p$ Eilenberg–MacLane spectrum $H\mathbb{F}_p$ is dissonant, as is any spectrum with bounded torsion
+    homotopy groups. (Hint: Harmonic spectra are built from the chromatic tower, whereas dissonant spectra
+    are invisible to all Morava $K$-theories)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(harmonic vs. dissonant spectra) define the harmonic localization $l_\infty x = \operatorname{holim}_n
+    l_n x$ of a $p$-local spectrum $x$. a spectrum $x$ is harmonic if $x \xrightarrow{\sim} l_\infty x$
+    is an equivalence, and dissonant if $l_\infty x \simeq *$, or equivalently if $k(n)_* x = 0$ for all
+    $n \ge 0$. prove that: 1. there are no non-trivial maps from any dissonant spectrum to any harmonic
+    spectrum: $[d, h] = 0$. 2. every finite $p$-local spectrum is harmonic (ravenel''s theorem). 3. the
+    mod-$p$ eilenberg–maclane spectrum $h\mathbb{f}_p$ is dissonant, as is any spectrum with bounded torsion
+    homotopy groups. (hint: harmonic spectra are built from the chromatic tower, whereas dissonant spectra
+    are invisible to all morava $k$-theories)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#009
+  text: '(The Devinatz-Hopkins-Smith Nilpotence and Periodicity Theorems) State the fundamental theorems
+    of chromatic homotopy theory: 1. **Nilpotence Theorem:** $\langle \operatorname{MU} \rangle = \langle
+    \mathbb{S} \rangle$. A ring spectrum map or self-map $f: \Sigma^d X \to X$ on a finite $p$-local complex
+    is smash-nilpotent if and only if $\operatorname{MU}_*(f) = 0$ (or equivalently $\operatorname{BP}_*(f)
+    = 0$). 2. **Periodicity Theorem:** Every finite $p$-local spectrum $X$ of chromatic type $n$ (meaning
+    $K(n-1)_* X = 0$ and $K(n)_* X \ne 0$) admits a $v_n$-periodic self-map $v: \Sigma^{d} X \to X$ such
+    that $K(n)_*(v)$ is an isomorphism and $K(m)_*(v) = 0$ for $m \ne n$. (Hint: Constructing finite complexes
+    of arbitrary chromatic type $n$ was first achieved by Mitchell via the Steinberg idempotent on flag
+    manifolds)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the devinatz-hopkins-smith nilpotence and periodicity theorems) state the fundamental
+    theorems of chromatic homotopy theory: 1. **nilpotence theorem:** $\langle \operatorname{mu} \rangle
+    = \langle \mathbb{s} \rangle$. a ring spectrum map or self-map $f: \sigma^d x \to x$ on a finite $p$-local
+    complex is smash-nilpotent if and only if $\operatorname{mu}_*(f) = 0$ (or equivalently $\operatorname{bp}_*(f)
+    = 0$). 2. **periodicity theorem:** every finite $p$-local spectrum $x$ of chromatic type $n$ (meaning
+    $k(n-1)_* x = 0$ and $k(n)_* x \ne 0$) admits a $v_n$-periodic self-map $v: \sigma^{d} x \to x$ such
+    that $k(n)_*(v)$ is an isomorphism and $k(m)_*(v) = 0$ for $m \ne n$. (hint: constructing finite complexes
+    of arbitrary chromatic type $n$ was first achieved by mitchell via the steinberg idempotent on flag
+    manifolds)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#010
+  text: '(Smith-Toda Complexes and Finite Realizations) Define the Smith–Toda complexes $V(n)$ as finite
+    $p$-local spectra characterized by $\operatorname{BP}_*(V(n)) \cong \operatorname{BP}_*/(p, v_1, \dots,
+    v_n)$. 1. Show that $V(0) = S/p$ is the mod-$p$ Moore spectrum (cofiber of $p: \mathbb{S} \to \mathbb{S}$).
+    2. Show that $V(1)$ is the cofiber of the Adams self-map $v_1: \Sigma^{2p-2} V(0) \to V(0)$. (Hint:
+    Explain why $V(n)$ exists only for small heights depending on the prime $p$, as higher $v_n$-maps
+    can fail to be ring maps)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(smith-toda complexes and finite realizations) define the smith–toda complexes $v(n)$
+    as finite $p$-local spectra characterized by $\operatorname{bp}_*(v(n)) \cong \operatorname{bp}_*/(p,
+    v_1, \dots, v_n)$. 1. show that $v(0) = s/p$ is the mod-$p$ moore spectrum (cofiber of $p: \mathbb{s}
+    \to \mathbb{s}$). 2. show that $v(1)$ is the cofiber of the adams self-map $v_1: \sigma^{2p-2} v(0)
+    \to v(0)$. (hint: explain why $v(n)$ exists only for small heights depending on the prime $p$, as
+    higher $v_n$-maps can fail to be ring maps)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#011
+  text: '(The Smash Product Conjecture and the Telescope Conjecture)  1. **Smash Product Conjecture:**
+    State the conjecture asserting that localization commutes with smash products: $L_n X \simeq X \wedge
+    L_n \mathbb{S}$. 2. **Telescope Conjecture:** For a finite type-$n$ spectrum $X$ with $v_n$-periodic
+    self-map $v$, compare the telescope localization $v^{-1}X = \operatorname{hocolim}(X \xrightarrow{v}
+    \Sigma^{-d}X \to \dots)$ with the chromatic localization $L_{K(n)} X$. State the recent resolution
+    of the Telescope Conjecture (disproven for $n \ge 2$ at all primes by Burklund, Hahn, Levy, and Schlank).
+    (Hint: The telescope localization $v^{-1}X$ detects unstable algebraic phenomena that are completed
+    away in the Morava $K$-theory localization $L_{K(n)} X$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the smash product conjecture and the telescope conjecture)  1. **smash product conjecture:**
+    state the conjecture asserting that localization commutes with smash products: $l_n x \simeq x \wedge
+    l_n \mathbb{s}$. 2. **telescope conjecture:** for a finite type-$n$ spectrum $x$ with $v_n$-periodic
+    self-map $v$, compare the telescope localization $v^{-1}x = \operatorname{hocolim}(x \xrightarrow{v}
+    \sigma^{-d}x \to \dots)$ with the chromatic localization $l_{k(n)} x$. state the recent resolution
+    of the telescope conjecture (disproven for $n \ge 2$ at all primes by burklund, hahn, levy, and schlank).
+    (hint: the telescope localization $v^{-1}x$ detects unstable algebraic phenomena that are completed
+    away in the morava $k$-theory localization $l_{k(n)} x$)'
+- id: www-sas-rochester-edu-mth-sites-doug-ravenel-talks-plectics24-pdf#012
+  text: '(Representation Theory in Mixed Characteristic and Height Stratification) Contrast the representation
+    theory of finite groups in characteristic 0 (where Maschke''s theorem ensures every representation
+    is semisimple and extensions vanish) with modular representation theory in characteristic $p$ (where
+    projective covers are non-trivial and extensions abound). Explain how chromatic homotopy theory organizes
+    this behavior by stratifying the moduli stack of formal groups $\mathcal{M}_{\text{fg}}$ by height,
+    with height 0 corresponding to rational semisimple representations and height $\infty$ to $p$-modular
+    phenomena. (Hint: Formal groups of height $n$ over $\mathbb{F}_p$ correspond to the geometric points
+    of $\mathcal{M}_{\text{fg}}$, with the Morava stabilizer groups $\mathbb{S}_n$ acting as their automorphism
+    groups)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(representation theory in mixed characteristic and height stratification) contrast the
+    representation theory of finite groups in characteristic 0 (where maschke''s theorem ensures every
+    representation is semisimple and extensions vanish) with modular representation theory in characteristic
+    $p$ (where projective covers are non-trivial and extensions abound). explain how chromatic homotopy
+    theory organizes this behavior by stratifying the moduli stack of formal groups $\mathcal{m}_{\text{fg}}$
+    by height, with height 0 corresponding to rational semisimple representations and height $\infty$
+    to $p$-modular phenomena. (hint: formal groups of height $n$ over $\mathbb{f}_p$ correspond to the
+    geometric points of $\mathcal{m}_{\text{fg}}$, with the morava stabilizer groups $\mathbb{s}_n$ acting
+    as their automorphism groups)'

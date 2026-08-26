@@ -1,0 +1,295 @@
+url: https://www.youtube.com/watch?v=XPVfElqM264
+title: 'Geometry of the Adele Class Space: Part II by Alain Connes'
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-youtube-com-watch#000
+  text: '(Kummer''s Ideal Numbers and Failure of Unique Factorization) Explain Kummer''s motivation for
+    introducing ideal numbers using the ring of integers $\mathcal{O}_K = \mathbb{Z}[\sqrt{-5}]$ in $K
+    = \mathbb{Q}(\sqrt{-5})$. (Hint: Consider the non-unique factorization $6 = 2 \times 3 = (1 + \sqrt{-5})(1
+    - \sqrt{-5})$; Dedekind resolved this by replacing numbers with prime ideals $\mathfrak{p}_2 = (2,
+    1+\sqrt{-5})$, $\mathfrak{p}_3 = (3, 1+\sqrt{-5})$, and $\mathfrak{p}_3'' = (3, 1-\sqrt{-5})$, where
+    factorization is restored via Legendre symbols)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(kummer''s ideal numbers and failure of unique factorization) explain kummer''s motivation
+    for introducing ideal numbers using the ring of integers $\mathcal{o}_k = \mathbb{z}[\sqrt{-5}]$ in
+    $k = \mathbb{q}(\sqrt{-5})$. (hint: consider the non-unique factorization $6 = 2 \times 3 = (1 + \sqrt{-5})(1
+    - \sqrt{-5})$; dedekind resolved this by replacing numbers with prime ideals $\mathfrak{p}_2 = (2,
+    1+\sqrt{-5})$, $\mathfrak{p}_3 = (3, 1+\sqrt{-5})$, and $\mathfrak{p}_3'' = (3, 1-\sqrt{-5})$, where
+    factorization is restored via legendre symbols)'
+- id: www-youtube-com-watch#001
+  text: '(Intrinsic Characterization of Global Fields via Adeles) Formulate André Weil''s analytic definition
+    of a global field $K$. (Hint: A global field is a countable field that embeds discretely and cocompactly
+    into a locally compact, non-discrete topological ring—namely, the adèle ring $\mathbb{A}_K = {\prod}''
+    (K_v, \mathcal{O}_v)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(intrinsic characterization of global fields via adeles) formulate andré weil''s analytic
+    definition of a global field $k$. (hint: a global field is a countable field that embeds discretely
+    and cocompactly into a locally compact, non-discrete topological ring—namely, the adèle ring $\mathbb{a}_k
+    = {\prod}'' (k_v, \mathcal{o}_v)$)'
+- id: www-youtube-com-watch#002
+  text: '(Ergodicity of K-Cross on the Adeles and Noncommutative Spaces) Let $\mathbb{A}_K$ be equipped
+    with its additive Haar measure. Explain why the quotient space $X_K = K^\times \backslash \mathbb{A}_K$
+    must be treated as a noncommutative space. (Hint: The multiplicative action of $K^\times$ on $\mathbb{A}_K$
+    is ergodic, so every measurable $K^\times$-invariant function is almost everywhere constant; no non-trivial
+    measurable injection into $\mathbb{R}$ exists, requiring $X_K$ to be treated as the leaf space of
+    a foliation or a crossed-product $C^*$-algebra)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(ergodicity of k-cross on the adeles and noncommutative spaces) let $\mathbb{a}_k$ be
+    equipped with its additive haar measure. explain why the quotient space $x_k = k^\times \backslash
+    \mathbb{a}_k$ must be treated as a noncommutative space. (hint: the multiplicative action of $k^\times$
+    on $\mathbb{a}_k$ is ergodic, so every measurable $k^\times$-invariant function is almost everywhere
+    constant; no non-trivial measurable injection into $\mathbb{r}$ exists, requiring $x_k$ to be treated
+    as the leaf space of a foliation or a crossed-product $c^*$-algebra)'
+- id: www-youtube-com-watch#003
+  text: '(Local-to-Global Principle via Isotropy Subgroups) How does the adèle class space $X_K = K^\times
+    \backslash \mathbb{A}_K$ geometrically encode the Hasse local-to-global principle in class field theory?
+    (Hint: The multiplicative group of the local field $K_v^\times$ embeds canonically into the idèle
+    class group $C_K = \mathbb{A}_K^\times / K^\times$ as the local isotropy subgroup of the slice at
+    the place $v$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(local-to-global principle via isotropy subgroups) how does the adèle class space $x_k
+    = k^\times \backslash \mathbb{a}_k$ geometrically encode the hasse local-to-global principle in class
+    field theory? (hint: the multiplicative group of the local field $k_v^\times$ embeds canonically into
+    the idèle class group $c_k = \mathbb{a}_k^\times / k^\times$ as the local isotropy subgroup of the
+    slice at the place $v$)'
+- id: www-youtube-com-watch#004
+  text: '(Schwartz Kernels, Scaling Operators, and Orbital Traces) Compute the trace of the scaling operator
+    $x \mapsto \lambda x$ on the local field $K_v$. (Hint: The scaling operator on $K_v$ is represented
+    by the Schwartz distribution kernel $\delta(y - \lambda x)$; its distributional trace on the diagonal
+    is given by $\int_{K_v} \delta(x - \lambda x)\,dx = \frac{1}{|1 - \lambda|}$, which directly recovers
+    the local terms in the Riemann–Weil explicit formula)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(schwartz kernels, scaling operators, and orbital traces) compute the trace of the scaling
+    operator $x \mapsto \lambda x$ on the local field $k_v$. (hint: the scaling operator on $k_v$ is represented
+    by the schwartz distribution kernel $\delta(y - \lambda x)$; its distributional trace on the diagonal
+    is given by $\int_{k_v} \delta(x - \lambda x)\,dx = \frac{1}{|1 - \lambda|}$, which directly recovers
+    the local terms in the riemann–weil explicit formula)'
+- id: www-youtube-com-watch#005
+  text: '(Spectral Realization of L-Function Zeros as an Absorption Spectrum) Explain why the zeros of
+    $L$-functions appear as an absorption spectrum in the action of the idèle class group on the adèle
+    class space. (Hint: The scaling module $C_K \to \mathbb{R}_+^*$ has a compact kernel parameterizing
+    characters; the zeros of the $L$-functions appear as missing spectral lines/absorption lines, explaining
+    the minus sign in the explicit formula $-\sum_v \int \frac{f(u)}{|1-u|}\,d^*u$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(spectral realization of l-function zeros as an absorption spectrum) explain why the zeros
+    of $l$-functions appear as an absorption spectrum in the action of the idèle class group on the adèle
+    class space. (hint: the scaling module $c_k \to \mathbb{r}_+^*$ has a compact kernel parameterizing
+    characters; the zeros of the $l$-functions appear as missing spectral lines/absorption lines, explaining
+    the minus sign in the explicit formula $-\sum_v \int \frac{f(u)}{|1-u|}\,d^*u$)'
+- id: www-youtube-com-watch#006
+  text: '(The Scaling Site without Adeles: Rank-1 Subgroups of R) Define the scaling site $X_{\mathbb{Q}}
+    = \mathbb{Q}^\times \backslash \mathbb{A}_{\mathbb{Q}} / \widehat{\mathbb{Z}}^\times$ and describe
+    its realization purely in terms of real subgroups. (Hint: $X_{\mathbb{Q}}$ is isomorphic to the noncommutative
+    space of rank-1 additive subgroups of $\mathbb{R}$, such as $H = \mathbb{Z}[1/p]$; the visible generic
+    orbit is $\mathbb{R}_+^*$, and the periodic orbits $C_p$ have length $\log p$ corresponding to prime
+    numbers $p$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the scaling site without adeles: rank-1 subgroups of r) define the scaling site $x_{\mathbb{q}}
+    = \mathbb{q}^\times \backslash \mathbb{a}_{\mathbb{q}} / \widehat{\mathbb{z}}^\times$ and describe
+    its realization purely in terms of real subgroups. (hint: $x_{\mathbb{q}}$ is isomorphic to the noncommutative
+    space of rank-1 additive subgroups of $\mathbb{r}$, such as $h = \mathbb{z}[1/p]$; the visible generic
+    orbit is $\mathbb{r}_+^*$, and the periodic orbits $c_p$ have length $\log p$ corresponding to prime
+    numbers $p$)'
+- id: www-youtube-com-watch#007
+  text: '(The Mapping Torus of Frobenius and Periodic Orbits) For a prime $p$, consider the localized
+    ring $\mathbb{Z}_{(p)}$ where all primes $q \ne p$ are inverted. Show that the preimage of the periodic
+    orbit $C_p$ in the adèle class space is the mapping torus of the Frobenius endomorphism in the abelianized
+    étale fundamental group $\pi_1^{\text{ét}}(\operatorname{Spec} \mathbb{Z}_{(p)})^{\text{ab}}$. (Hint:
+    The circle $C_p$ represents the Frobenius automorphism acting on the fiber, linking the geometry of
+    $X_{\mathbb{Q}}$ directly to Grothendieck''s étale fundamental group)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the mapping torus of frobenius and periodic orbits) for a prime $p$, consider the localized
+    ring $\mathbb{z}_{(p)}$ where all primes $q \ne p$ are inverted. show that the preimage of the periodic
+    orbit $c_p$ in the adèle class space is the mapping torus of the frobenius endomorphism in the abelianized
+    étale fundamental group $\pi_1^{\text{ét}}(\operatorname{spec} \mathbb{z}_{(p)})^{\text{ab}}$. (hint:
+    the circle $c_p$ represents the frobenius automorphism acting on the fiber, linking the geometry of
+    $x_{\mathbb{q}}$ directly to grothendieck''s étale fundamental group)'
+- id: www-youtube-com-watch#008
+  text: '(Dense Orbits and Intersections across Multiple Primes) Explain how the single generic orbit
+    $\mathbb{R}_+^*$ in the adèle class space winds densely around every periodic orbit $C_p$. (Hint:
+    In the product of $p$-adic spaces $\prod_p \mathbb{Q}_p$, the diagonally embedded rationals produce
+    a single dense orbit that intersects all periodic orbits $C_2, C_3, C_5, \dots$, modeled noncommutatively
+    via matrix algebras / groupoid equivalence relations)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(dense orbits and intersections across multiple primes) explain how the single generic
+    orbit $\mathbb{r}_+^*$ in the adèle class space winds densely around every periodic orbit $c_p$. (hint:
+    in the product of $p$-adic spaces $\prod_p \mathbb{q}_p$, the diagonally embedded rationals produce
+    a single dense orbit that intersects all periodic orbits $c_2, c_3, c_5, \dots$, modeled noncommutatively
+    via matrix algebras / groupoid equivalence relations)'
+- id: www-youtube-com-watch#009
+  text: '(Refined Kronecker-Weber Theorem and Minkowski''s Discriminant Bound) State the refined Kronecker–Weber
+    theorem without increasing ramification. (Hint: Every finite abelian extension $L/\mathbb{Q}$ is contained
+    in a cyclotomic field $\mathbb{Q}(\zeta_m)$ ramified at the exact same primes; if an extension of
+    $\mathbb{Q}$ is everywhere unramified, Minkowski''s discriminant bound $|\Delta_K| > 1$ proves that
+    $L = \mathbb{Q}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(refined kronecker-weber theorem and minkowski''s discriminant bound) state the refined
+    kronecker–weber theorem without increasing ramification. (hint: every finite abelian extension $l/\mathbb{q}$
+    is contained in a cyclotomic field $\mathbb{q}(\zeta_m)$ ramified at the exact same primes; if an
+    extension of $\mathbb{q}$ is everywhere unramified, minkowski''s discriminant bound $|\delta_k| >
+    1$ proves that $l = \mathbb{q}$)'
+- id: www-youtube-com-watch#010
+  text: '(Diagonal Embedding of Frobenius and Artin Reciprocity) In the abelianized fundamental group
+    $\pi_1^{\text{ét}}(\operatorname{Spec} \mathbb{Z} \setminus S)^{\text{ab}} \cong \prod_{q \in S} \mathbb{Z}_q^\times$,
+    explain how the image of the Frobenius at $p$ is represented. (Hint: The prime $p$ embeds diagonally
+    into $\prod_{q \ne p} \mathbb{Z}_q^\times$ as an invertible element; since $p$ is non-trivial in every
+    component, the periodic orbit circle $C_p$ is topologically linked to every other prime, establishing
+    the global Artin reciprocity law)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(diagonal embedding of frobenius and artin reciprocity) in the abelianized fundamental
+    group $\pi_1^{\text{ét}}(\operatorname{spec} \mathbb{z} \setminus s)^{\text{ab}} \cong \prod_{q \in
+    s} \mathbb{z}_q^\times$, explain how the image of the frobenius at $p$ is represented. (hint: the
+    prime $p$ embeds diagonally into $\prod_{q \ne p} \mathbb{z}_q^\times$ as an invertible element; since
+    $p$ is non-trivial in every component, the periodic orbit circle $c_p$ is topologically linked to
+    every other prime, establishing the global artin reciprocity law)'
+- id: www-youtube-com-watch#011
+  text: '(Finite Covers of the Scaling Site and Splitting of Primes) For a finite abelian group $G$ and
+    a surjective character $\chi: \widehat{\mathbb{Z}}^\times \twoheadrightarrow G$, construct the finite
+    covering space $X_{\mathbb{Q}} \times_{\widehat{\mathbb{Z}}^\times} G$. (Hint: Over an unramified
+    prime $p$, the lift of the periodic orbit $C_p$ splits into a disjoint union of circles labeled by
+    the places $\mathfrak{P} \mid p$ in the field extension, with the Galois group $G$ permuting the components
+    transitively)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(finite covers of the scaling site and splitting of primes) for a finite abelian group
+    $g$ and a surjective character $\chi: \widehat{\mathbb{z}}^\times \twoheadrightarrow g$, construct
+    the finite covering space $x_{\mathbb{q}} \times_{\widehat{\mathbb{z}}^\times} g$. (hint: over an
+    unramified prime $p$, the lift of the periodic orbit $c_p$ splits into a disjoint union of circles
+    labeled by the places $\mathfrak{p} \mid p$ in the field extension, with the galois group $g$ permuting
+    the components transitively)'
+- id: www-youtube-com-watch#012
+  text: '(The Role of the Generic Point Eta and Cartier Divisors on Spec Z) Consider the pushforward of
+    the sheaf $\mathbb{G}_m$ from the generic point $\eta = \operatorname{Spec} \mathbb{Q}$ to $\operatorname{Spec}
+    \mathbb{Z}$. Show how this exact sequence defines Cartier divisors on $\operatorname{Spec} \mathbb{Z}$
+    and connects étale cohomology $H_{\text{ét}}^2(\operatorname{Spec} \mathbb{Z}, \mathbb{G}_m)$ to the
+    Brauer group $\operatorname{Br}(\mathbb{Q})$ and Artin–Verdier duality $H_{\text{ét}}^3(\operatorname{Spec}
+    \mathbb{Z}, \mathbb{G}_m) \cong \mathbb{Q}/\mathbb{Z}$. (Hint: In local division algebras $\mathbb{Q}_p$,
+    the Frobenius is implemented by the division algebra; local invariants sum to $0 \pmod 1$ in the global
+    Brauer–Hasse–Noether theorem)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the role of the generic point eta and cartier divisors on spec z) consider the pushforward
+    of the sheaf $\mathbb{g}_m$ from the generic point $\eta = \operatorname{spec} \mathbb{q}$ to $\operatorname{spec}
+    \mathbb{z}$. show how this exact sequence defines cartier divisors on $\operatorname{spec} \mathbb{z}$
+    and connects étale cohomology $h_{\text{ét}}^2(\operatorname{spec} \mathbb{z}, \mathbb{g}_m)$ to the
+    brauer group $\operatorname{br}(\mathbb{q})$ and artin–verdier duality $h_{\text{ét}}^3(\operatorname{spec}
+    \mathbb{z}, \mathbb{g}_m) \cong \mathbb{q}/\mathbb{z}$. (hint: in local division algebras $\mathbb{q}_p$,
+    the frobenius is implemented by the division algebra; local invariants sum to $0 \pmod 1$ in the global
+    brauer–hasse–noether theorem)'
+- id: www-youtube-com-watch#013
+  text: '(Topos Theory and Semidirect Products) Explain why topos theory is necessary to define the scaling
+    site as $[0, \infty) \rtimes \mathbb{N}^\times$. (Hint: Classical topological quotients of non-group
+    monoid actions fail; topos theory allows semidirect products by monoids $\mathbb{N}^\times$, where
+    $[0, \infty)$ represents continuous scaling/frequencies and $\mathbb{N}^\times$ represents discrete
+    harmonics/octaves)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(topos theory and semidirect products) explain why topos theory is necessary to define
+    the scaling site as $[0, \infty) \rtimes \mathbb{n}^\times$. (hint: classical topological quotients
+    of non-group monoid actions fail; topos theory allows semidirect products by monoids $\mathbb{n}^\times$,
+    where $[0, \infty)$ represents continuous scaling/frequencies and $\mathbb{n}^\times$ represents discrete
+    harmonics/octaves)'
+- id: www-youtube-com-watch#014
+  text: '(Characteristic One and the Boolean Semifield) Define the Boolean semifield $\mathbb{B} = \{0,
+    1\}$ with $1 + 1 = 1$. Prove that the Frobenius endomorphisms $x \mapsto x^n$ for $n \in \mathbb{N}^\times$
+    are injective endomorphisms on semifields of characteristic 1. (Hint: The role of finite fields $\mathbb{F}_q$
+    is played by $\mathbb{B}$; the abelianized Weil group at the Archimedean place is $\mathbb{R}_+^{\max}
+    = ([0, \infty), \max, \times)$, whose automorphisms $\operatorname{Aut}_{\mathbb{B}}(\mathbb{R}_+^{\max})
+    \cong \mathbb{R}_+^\times$ are given by $\operatorname{Fr}_\lambda(x) = x^\lambda$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(characteristic one and the boolean semifield) define the boolean semifield $\mathbb{b}
+    = \{0, 1\}$ with $1 + 1 = 1$. prove that the frobenius endomorphisms $x \mapsto x^n$ for $n \in \mathbb{n}^\times$
+    are injective endomorphisms on semifields of characteristic 1. (hint: the role of finite fields $\mathbb{f}_q$
+    is played by $\mathbb{b}$; the abelianized weil group at the archimedean place is $\mathbb{r}_+^{\max}
+    = ([0, \infty), \max, \times)$, whose automorphisms $\operatorname{aut}_{\mathbb{b}}(\mathbb{r}_+^{\max})
+    \cong \mathbb{r}_+^\times$ are given by $\operatorname{fr}_\lambda(x) = x^\lambda$)'
+- id: www-youtube-com-watch#015
+  text: '(The Characteristic 1 Witt Formula and Entropy) State Connes'' characteristic 1 deformation formula
+    for addition: $$\log(x + y) = \max_{\alpha \in [0, 1]} \big( \alpha \log x + (1 - \alpha) \log y +
+    S(\alpha) \big),$$ where $S(\alpha) = -\alpha \log \alpha - (1 - \alpha) \log(1 - \alpha)$ is the
+    binary Shannon entropy. Show that exponentiating yields $x \oplus y = \max_{\alpha \in [0, 1]} \big(
+    e^{S(\alpha)} x^\alpha y^{1-\alpha} \big)$, and compare this with the classical Witt vector addition
+    formula and the Legendre–Fenchel transform. (Hint: As the base $q \to 1$, the $L^p$-norm $(x^p + y^p)^{1/p}$
+    converges to $\max(x, y)$, and the Legendre transform replaces the Fourier transform)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the characteristic 1 witt formula and entropy) state connes'' characteristic 1 deformation
+    formula for addition: $$\log(x + y) = \max_{\alpha \in [0, 1]} \big( \alpha \log x + (1 - \alpha)
+    \log y + s(\alpha) \big),$$ where $s(\alpha) = -\alpha \log \alpha - (1 - \alpha) \log(1 - \alpha)$
+    is the binary shannon entropy. show that exponentiating yields $x \oplus y = \max_{\alpha \in [0,
+    1]} \big( e^{s(\alpha)} x^\alpha y^{1-\alpha} \big)$, and compare this with the classical witt vector
+    addition formula and the legendre–fenchel transform. (hint: as the base $q \to 1$, the $l^p$-norm
+    $(x^p + y^p)^{1/p}$ converges to $\max(x, y)$, and the legendre transform replaces the fourier transform)'
+- id: www-youtube-com-watch#016
+  text: '(The Arithmetic Site as a Semiringed Topos) Define the arithmetic site $(\widehat{\mathbb{N}^\times},
+    \mathcal{O})$ as the presheaf topos on the multiplicative monoid $\mathbb{N}^\times$ endowed with
+    the structure sheaf of tropical integers $\mathcal{O} = \mathbb{Z}_{\max} = (\mathbb{Z} \cup \{-\infty\},
+    \max, +)$. (Hint: The structure sheaf $\mathcal{O}$ prevents arbitrary permutations of prime numbers
+    by locking the Frobenius action $n \mapsto \operatorname{Fr}_n$ to the integers)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the arithmetic site as a semiringed topos) define the arithmetic site $(\widehat{\mathbb{n}^\times},
+    \mathcal{o})$ as the presheaf topos on the multiplicative monoid $\mathbb{n}^\times$ endowed with
+    the structure sheaf of tropical integers $\mathcal{o} = \mathbb{z}_{\max} = (\mathbb{z} \cup \{-\infty\},
+    \max, +)$. (hint: the structure sheaf $\mathcal{o}$ prevents arbitrary permutations of prime numbers
+    by locking the frobenius action $n \mapsto \operatorname{fr}_n$ to the integers)'
+- id: www-youtube-com-watch#017
+  text: '(Function Fields and Cartier Divisors on the Scaling Site) Describe the structure sheaf $\mathcal{O}(Z)$
+    on the scaling site as the semiring of continuous, convex, piecewise affine functions on $\mathbb{R}_+$
+    with integer slopes and finitely many singularities of the derivative. (Hint: The function field consists
+    of differences of convex functions (general piecewise affine functions with rational slopes); Cartier
+    divisors are global sections of $\mathcal{K}^\times / \mathcal{O}^\times$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(function fields and cartier divisors on the scaling site) describe the structure sheaf
+    $\mathcal{o}(z)$ on the scaling site as the semiring of continuous, convex, piecewise affine functions
+    on $\mathbb{r}_+$ with integer slopes and finitely many singularities of the derivative. (hint: the
+    function field consists of differences of convex functions (general piecewise affine functions with
+    rational slopes); cartier divisors are global sections of $\mathcal{k}^\times / \mathcal{o}^\times$)'
+- id: www-youtube-com-watch#018
+  text: '(Tropical Elliptic Curves and the Riemann-Roch Theorem) For the scaling site viewed as a tropical
+    analogue of a Jacobi elliptic curve, define the degree map $\operatorname{deg}: \operatorname{Div}
+    \to \mathbb{R}$ and the character invariant $\chi \in \mathbb{Z}/(p-1)\mathbb{Z}$. (Hint: Principal
+    divisors lie in the kernel of the map $(\operatorname{deg}, \chi)$, yielding a tropical Riemann–Roch
+    theorem with theta functions on $\mathbb{Q}_p \times \mathbb{R}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(tropical elliptic curves and the riemann-roch theorem) for the scaling site viewed as
+    a tropical analogue of a jacobi elliptic curve, define the degree map $\operatorname{deg}: \operatorname{div}
+    \to \mathbb{r}$ and the character invariant $\chi \in \mathbb{z}/(p-1)\mathbb{z}$. (hint: principal
+    divisors lie in the kernel of the map $(\operatorname{deg}, \chi)$, yielding a tropical riemann–roch
+    theorem with theta functions on $\mathbb{q}_p \times \mathbb{r}$)'

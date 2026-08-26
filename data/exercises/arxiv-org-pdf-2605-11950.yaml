@@ -1,0 +1,307 @@
+url: https://arxiv.org/pdf/2605.11950
+title: Weil-Moore anima (paper)
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: page
+exercises:
+- id: arxiv-org-pdf-2605-11950#000
+  text: Define the Weil group of the rational number field $\mathbb{Q}$
+  hint: a locally compact Hausdorff group that refines the absolute Galois group by a surjective homomorphism
+    with a connected kernel
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 0
+  search_text: define the weil group of the rational number field $\mathbb{q}$ a locally compact hausdorff
+    group that refines the absolute galois group by a surjective homomorphism with a connected kernel
+- id: arxiv-org-pdf-2605-11950#001
+  text: How does the Weil group of the rational number field $\mathbb{Q}$ determine an analogous Weil
+    group for an arbitrary number field?
+  hint: take a pullback along an inclusion.
+  locator:
+    kind: page
+    value: '1'
+    number: 1
+  sub_index: 1
+  search_text: how does the weil group of the rational number field $\mathbb{q}$ determine an analogous
+    weil group for an arbitrary number field? take a pullback along an inclusion.
+- id: arxiv-org-pdf-2605-11950#002
+  text: How does one do unite Artin L-functions attached to complex Galois representations, and Hecke
+    L-functions attached to Hecker characters?
+  hint: agree one a one dimensional representation of the Weil group, to be composed with the Artin map
+    to get a Hecke character. So there is a one to one correspondence between 1 dimensional Galois representations
+    and Hecke characters OF FINITE IMAGE. Artin reciprocity says that the corresponding Artin and Hecke
+    L-functions are equal.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 0
+  search_text: how does one do unite artin l-functions attached to complex galois representations, and
+    hecke l-functions attached to hecker characters? agree one a one dimensional representation of the
+    weil group, to be composed with the artin map to get a hecke character. so there is a one to one correspondence
+    between 1 dimensional galois representations and hecke characters of finite image. artin reciprocity
+    says that the corresponding artin and hecke l-functions are equal.
+- id: arxiv-org-pdf-2605-11950#003
+  text: What are the possible generalisations of the Weil group?
+  hint: not all Artin representations are 1D and built from direct sums and inductions, not all Hecke
+    characters have finite image.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 1
+  search_text: what are the possible generalisations of the weil group? not all artin representations
+    are 1d and built from direct sums and inductions, not all hecke characters have finite image.
+- id: arxiv-org-pdf-2605-11950#004
+  text: What is the key idea of the absolute Galois group?
+  hint: absolute Galois group of inverse limit of coarser terms, $\mathrm{Gal}(K^ab/\mathbb{Q})$ in short
+    exact sequences of groups with finite quotient and abelian kernel. These are classified up to isomorphism
+    by a group cohomology classes and cohomological calass field theory produces canonical such classes.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 2
+  search_text: what is the key idea of the absolute galois group? absolute galois group of inverse limit
+    of coarser terms, $\mathrm{gal}(k^ab/\mathbb{q})$ in short exact sequences of groups with finite quotient
+    and abelian kernel. these are classified up to isomorphism by a group cohomology classes and cohomological
+    calass field theory produces canonical such classes.
+- id: arxiv-org-pdf-2605-11950#005
+  text: What is Clausen thinking of the Weil group?
+  hint: number field should not be a $K(\pi,1)$ and the Weil group should not be the fundamental group,
+    there should be higher homotopy groups. But the problem is that you do not want topological groups,
+    you want condensed anima.
+  locator:
+    kind: page
+    value: '2'
+    number: 2
+  sub_index: 3
+  search_text: what is clausen thinking of the weil group? number field should not be a $k(\pi,1)$ and
+    the weil group should not be the fundamental group, there should be higher homotopy groups. but the
+    problem is that you do not want topological groups, you want condensed anima.
+- id: arxiv-org-pdf-2605-11950#006
+  text: Why use the definition condensed? How does one invent condensed sets?
+  hint: Start with a set. Do not specify opens, specifies families of points that "condense" to form a
+    compact Hausdorff space, since this is what you want. Using the fact that every compact Hausdorff
+    space is a quotient of a profinite set by a profinite equivalence relation, you can explode these
+    compact Hausdorff spaces into profinite sets
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 0
+  search_text: why use the definition condensed? how does one invent condensed sets? start with a set.
+    do not specify opens, specifies families of points that "condense" to form a compact hausdorff space,
+    since this is what you want. using the fact that every compact hausdorff space is a quotient of a
+    profinite set by a profinite equivalence relation, you can explode these compact hausdorff spaces
+    into profinite sets
+- id: arxiv-org-pdf-2605-11950#007
+  text: What is an anima?
+  hint: it is a homotopy type viewed as an object in the natural ambient infinity-category, Beilison describes
+    set as static as unable to move around. Consider an anima $A$, with its underlying set $\pi_0 A$,
+    the point is free to move around within its connected component. If we have a $CW-complex$, the anima
+    is what remains when you remove the point-set incarnation.
+  locator:
+    kind: page
+    value: '3'
+    number: 3
+  sub_index: 1
+  search_text: what is an anima? it is a homotopy type viewed as an object in the natural ambient infinity-category,
+    beilison describes set as static as unable to move around. consider an anima $a$, with its underlying
+    set $\pi_0 a$, the point is free to move around within its connected component. if we have a $cw-complex$,
+    the anima is what remains when you remove the point-set incarnation.
+- id: arxiv-org-pdf-2605-11950#008
+  text: What is the important point in the Weil group definition?
+  hint: it must have an Artin map from the domain of Hecke characters $\mathbb{A}^\times_K / K^\times$
+    to the absolute Galois group, this is phrased as a cohomology calculation. The first cohomology of
+    the classifying space $BW_\mathbb{K}$ with its coefficients in a torus $\mathbb{R}/\mathbb{Z}$ is
+    Pontryagin dual to idele class group $\mathbb{A}_K^*/K^*$. The higher cohomology groups are not to
+    vanish. Add higher homotopy groups to make the abelisation better cvrrespond to idele class group
+    of a global field$\mathbb{A}_K^*/K^*$. This Pontryagin duality is of course the starting point of
+    doing harmonic analysis here.
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 0
+  search_text: what is the important point in the weil group definition? it must have an artin map from
+    the domain of hecke characters $\mathbb{a}^\times_k / k^\times$ to the absolute galois group, this
+    is phrased as a cohomology calculation. the first cohomology of the classifying space $bw_\mathbb{k}$
+    with its coefficients in a torus $\mathbb{r}/\mathbb{z}$ is pontryagin dual to idele class group $\mathbb{a}_k^*/k^*$.
+    the higher cohomology groups are not to vanish. add higher homotopy groups to make the abelisation
+    better cvrrespond to idele class group of a global field$\mathbb{a}_k^*/k^*$. this pontryagin duality
+    is of course the starting point of doing harmonic analysis here.
+- id: arxiv-org-pdf-2605-11950#009
+  text: Summarise Theorem 1.2 in the Weil-Moore anima paper
+  hint: condensed anima $X_\mathbb{Q}$ exist such that $\pi_0 X_\mathbb{Q}$ as a condensed set is a point,
+    $\pi_1 X_\mathbb{Q}$ as a condensed set is a Weil group of the rational numbers, $\pi_n X_\mathbb{Q}$
+    as a condensed set for $n > 1$ is compact Hausdorff, and for any number field if $X_K \rightarrow
+    X_\mathbb{Q}$ denotes the corresponding finite etale cover, then the higher cohomology groups vanish.
+    This last property essentially is to force canonical isomorphisms to refine the Artin map.
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 1
+  search_text: summarise theorem 1.2 in the weil-moore anima paper condensed anima $x_\mathbb{q}$ exist
+    such that $\pi_0 x_\mathbb{q}$ as a condensed set is a point, $\pi_1 x_\mathbb{q}$ as a condensed
+    set is a weil group of the rational numbers, $\pi_n x_\mathbb{q}$ as a condensed set for $n > 1$ is
+    compact hausdorff, and for any number field if $x_k \rightarrow x_\mathbb{q}$ denotes the corresponding
+    finite etale cover, then the higher cohomology groups vanish. this last property essentially is to
+    force canonical isomorphisms to refine the artin map.
+- id: arxiv-org-pdf-2605-11950#010
+  text: How does one build spheres using Eilenberg-Maclane spaces by homotopy?
+  hint: inductive procedure to build up the Postnikov tower of $S^n$.
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 2
+  search_text: how does one build spheres using eilenberg-maclane spaces by homotopy? inductive procedure
+    to build up the postnikov tower of $s^n$.
+- id: arxiv-org-pdf-2605-11950#011
+  text: How does one build the Weil-Moore anima using this idea of Serre with building spheres using Eilenberg-Maclane
+    spaces by homotopy?
+  hint: inductive procedure to build up the Postnikov tower of $S^n$, instead, build the Weil-Moore anima
+    $X_\mathbb{Q}$ from $BW_\mathbb{Q} = K(W_\mathbb{Q}, 1)$
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 3
+  search_text: how does one build the weil-moore anima using this idea of serre with building spheres
+    using eilenberg-maclane spaces by homotopy? inductive procedure to build up the postnikov tower of
+    $s^n$, instead, build the weil-moore anima $x_\mathbb{q}$ from $bw_\mathbb{q} = k(w_\mathbb{q}, 1)$
+- id: arxiv-org-pdf-2605-11950#012
+  text: How is the Fargues-Fontaine curve related to this?
+  hint: it should be the condensed homotopy type underlying the space of closed points in the global analogue
+    of the Fargues-Fontaine curve.
+  locator:
+    kind: page
+    value: '4'
+    number: 4
+  sub_index: 4
+  search_text: how is the fargues-fontaine curve related to this? it should be the condensed homotopy
+    type underlying the space of closed points in the global analogue of the fargues-fontaine curve.
+- id: arxiv-org-pdf-2605-11950#013
+  text: How does the cohomology of the Weil-Moore anima improve Galois cohomology (imprecisely)?
+  hint: simpler version of Tate's global Euler characteristic formula similar to that of function fields,
+    versions of global and local Poitou-Tate duality, cohomological dimensions
+  locator:
+    kind: page
+    value: '5'
+    number: 5
+  sub_index: 0
+  search_text: how does the cohomology of the weil-moore anima improve galois cohomology (imprecisely)?
+    simpler version of tate's global euler characteristic formula similar to that of function fields,
+    versions of global and local poitou-tate duality, cohomological dimensions
+- id: arxiv-org-pdf-2605-11950#014
+  text: What is the "fundamental class" for Poitou-Tate duality?
+  hint: calculation of the Brauer group of a number field, specifically the kernel of the sum of the invariant
+    maps from the local Brauer groups.
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 0
+  search_text: what is the "fundamental class" for poitou-tate duality? calculation of the brauer group
+    of a number field, specifically the kernel of the sum of the invariant maps from the local brauer
+    groups.
+- id: arxiv-org-pdf-2605-11950#015
+  text: According to Fontaine, how much information does the $p$-adic representations of the absolute
+    Galois group of $\mathbb{Q_p}$ have?
+  hint: a lot of $p$-adic Hodge theory information
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 1
+  search_text: according to fontaine, how much information does the $p$-adic representations of the absolute
+    galois group of $\mathbb{q_p}$ have? a lot of $p$-adic hodge theory information
+- id: arxiv-org-pdf-2605-11950#016
+  text: Summarise where does Galois cohomology appear?
+  hint: (1) reformulation of the Dirichlet class number formula, Kato's generalised Iwasawa main conjecture.
+    Reformulate Kato's conjecture as having trivialisations using the non-compactly supported cohomology
+    of the Weil-Moore anima. Replace Galois representation with a Weil-Moore representation, for a $p$-adic,
+    discrete coefficient ring it gives Galois representations, but one can try to find a "spectral decomposition"
+    of the compactly supported cohomology of Shimura varieties.
+  locator:
+    kind: page
+    value: '7'
+    number: 7
+  sub_index: 2
+  search_text: summarise where does galois cohomology appear? (1) reformulation of the dirichlet class
+    number formula, kato's generalised iwasawa main conjecture. reformulate kato's conjecture as having
+    trivialisations using the non-compactly supported cohomology of the weil-moore anima. replace galois
+    representation with a weil-moore representation, for a $p$-adic, discrete coefficient ring it gives
+    galois representations, but one can try to find a "spectral decomposition" of the compactly supported
+    cohomology of shimura varieties.
+- id: arxiv-org-pdf-2605-11950#017
+  text: 'What is a twistor line? (Hint: nontrivial real form of $\mathbb{P}^1$)'
+  hint: null
+  locator:
+    kind: page
+    value: '10'
+    number: 10
+  sub_index: 0
+  search_text: 'what is a twistor line? (hint: nontrivial real form of $\mathbb{p}^1$)'
+- id: arxiv-org-pdf-2605-11950#018
+  text: What is a definition of a almost compact, locally compact Hausdorff group? Note that the words
+    locally compact is omitted for brevity usually
+  hint: admits compact normal subgroup that is i.e. itself compact, the quotient with the compact normal
+    subgroup is the additive integers, or the quotient with the compact normal subgroup is the additive
+    reals.
+  locator:
+    kind: page
+    value: '23'
+    number: 23
+  sub_index: 0
+  search_text: what is a definition of a almost compact, locally compact hausdorff group? note that the
+    words locally compact is omitted for brevity usually admits compact normal subgroup that is i.e. itself
+    compact, the quotient with the compact normal subgroup is the additive integers, or the quotient with
+    the compact normal subgroup is the additive reals.
+- id: arxiv-org-pdf-2605-11950#019
+  text: How does one produce the Moore anima?
+  hint: obstruction theory from homotopy theory based on the Postnikov tower.
+  locator:
+    kind: page
+    value: '38'
+    number: 38
+  sub_index: 0
+  search_text: how does one produce the moore anima? obstruction theory from homotopy theory based on
+    the postnikov tower.
+- id: arxiv-org-pdf-2605-11950#020
+  text: How does one motivate the notion of class formations?
+  hint: give a collection of generators for the cyclic group of  the second cohomology, one can then use
+    the Tate-Nakayama to deduce the cup product induces an isomorphism in Tate cohomology. Reformulate
+    it as a Galois category instead, one can then use Grothendieck-Galois theory and the theory of fibre
+    functors. One also needs cocycle-level version of the data from the $H^2$.
+  locator:
+    kind: page
+    value: '45'
+    number: 45
+  sub_index: 0
+  search_text: how does one motivate the notion of class formations? give a collection of generators for
+    the cyclic group of  the second cohomology, one can then use the tate-nakayama to deduce the cup product
+    induces an isomorphism in tate cohomology. reformulate it as a galois category instead, one can then
+    use grothendieck-galois theory and the theory of fibre functors. one also needs cocycle-level version
+    of the data from the $h^2$.
+- id: arxiv-org-pdf-2605-11950#021
+  text: How does one associate Galois groupoids to Galois categories?
+  hint: $2$-category of Galois categories where objects are Galois categories, $1$-morphisms are exact
+    functors is a $(2,1)$-category identifying with the opposite whose objects are the profinite groups,
+    morphisms are continuous morphisms. Now, use this topological category to be realised as the full
+    subcategory of condensed anima spanned by the objects of the form $BG$, where $G$ is profinite group.
+  locator:
+    kind: page
+    value: '70'
+    number: 70
+  sub_index: 0
+  search_text: how does one associate galois groupoids to galois categories? $2$-category of galois categories
+    where objects are galois categories, $1$-morphisms are exact functors is a $(2,1)$-category identifying
+    with the opposite whose objects are the profinite groups, morphisms are continuous morphisms. now,
+    use this topological category to be realised as the full subcategory of condensed anima spanned by
+    the objects of the form $bg$, where $g$ is profinite group.
