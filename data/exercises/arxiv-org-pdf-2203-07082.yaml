@@ -1,0 +1,261 @@
+url: https://arxiv.org/pdf/2203.07082
+title: Survey on Modern Representation Theory by Geordie Williamson
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-2203-07082#000
+  text: '(Galois''s Philosophy of Groups and the Monster) How does Galois''s perspective define a group
+    not just abstractly by its axioms, but through its actions on sets ("what are you made of and how
+    do you behave")? (Hint: Subgroups of $\mathrm{GL}_n$ are linear groups, while subgroups of the symmetric
+    group $S_n$ are finite permutation groups; discuss how the Monster group—the largest sporadic simple
+    group—connects finite group theory to modular functions and Monstrous Moonshine)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(galois''s philosophy of groups and the monster) how does galois''s perspective define
+    a group not just abstractly by its axioms, but through its actions on sets ("what are you made of
+    and how do you behave")? (hint: subgroups of $\mathrm{gl}_n$ are linear groups, while subgroups of
+    the symmetric group $s_n$ are finite permutation groups; discuss how the monster group—the largest
+    sporadic simple group—connects finite group theory to modular functions and monstrous moonshine)'
+- id: arxiv-org-pdf-2203-07082#001
+  text: '(GL(n) as a Quantum Deformation of S(n) and Tits'' F1-Philosophy) Explain Jacques Tits'' heuristic
+    that the symmetric group is the general linear group over the field with one element: $S_n = \mathrm{GL}_n(\mathbb{F}_1)$.
+    (Hint: For a Chevalley group scheme $G$ over $\mathbb{Z}$, the point count $\#G(\mathbb{F}_q)$ polynomial
+    in $q$ evaluates at $q = 1$ to the order of its Weyl group $W$; show that the determinant map $\det:
+    \mathrm{GL}_n(\mathbb{F}_q) \to \mathbb{F}_q^\times$ is a $q$-deformation of the signature homomorphism
+    $\operatorname{sgn}: S_n \to \{\pm 1\}$, and that the alternating group $A_n = \ker(\operatorname{sgn})$
+    corresponds to $\operatorname{PSL}_n(\mathbb{F}_q)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(gl(n) as a quantum deformation of s(n) and tits'' f1-philosophy) explain jacques tits''
+    heuristic that the symmetric group is the general linear group over the field with one element: $s_n
+    = \mathrm{gl}_n(\mathbb{f}_1)$. (hint: for a chevalley group scheme $g$ over $\mathbb{z}$, the point
+    count $\#g(\mathbb{f}_q)$ polynomial in $q$ evaluates at $q = 1$ to the order of its weyl group $w$;
+    show that the determinant map $\det: \mathrm{gl}_n(\mathbb{f}_q) \to \mathbb{f}_q^\times$ is a $q$-deformation
+    of the signature homomorphism $\operatorname{sgn}: s_n \to \{\pm 1\}$, and that the alternating group
+    $a_n = \ker(\operatorname{sgn})$ corresponds to $\operatorname{psl}_n(\mathbb{f}_q)$)'
+- id: arxiv-org-pdf-2203-07082#002
+  text: '(The Barratt-Priddy-Quillen Theorem and F1-Homotopy) State the Barratt–Priddy–Quillen (BPQ) theorem
+    in the context of $\mathbb{F}_1$-geometry: $K_i(\mathbb{F}_1) \cong \pi_i^s(\mathbb{S})$. (Hint: Quillen''s
+    plus construction on the classifying space of the infinite symmetric group $B\Sigma_\infty^+$ yields
+    the sphere spectrum $\mathbb{S}$, identifying the higher algebraic $K$-theory of $\mathbb{F}_1$ with
+    the stable homotopy groups of spheres)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the barratt-priddy-quillen theorem and f1-homotopy) state the barratt–priddy–quillen
+    (bpq) theorem in the context of $\mathbb{f}_1$-geometry: $k_i(\mathbb{f}_1) \cong \pi_i^s(\mathbb{s})$.
+    (hint: quillen''s plus construction on the classifying space of the infinite symmetric group $b\sigma_\infty^+$
+    yields the sphere spectrum $\mathbb{s}$, identifying the higher algebraic $k$-theory of $\mathbb{f}_1$
+    with the stable homotopy groups of spheres)'
+- id: arxiv-org-pdf-2203-07082#003
+  text: '(The Bruhat Decomposition as Categorified Gaussian Elimination) State the Bruhat decomposition
+    for $\mathrm{GL}_n(\mathbb{F}_q)$ (and $\mathrm{GL}_n(\mathbb{C})$): $$\mathrm{GL}_n = \bigsqcup_{w
+    \in S_n} B w B,$$ where $B$ is the Borel subgroup of upper-triangular matrices and $w \in S_n$ is
+    represented by a permutation matrix. (Hint: Show that the Bruhat decomposition is the coordinate-free
+    geometric formulation of Gaussian elimination with row/column permutations, reducing structural questions
+    about $\mathrm{GL}_n$ to the Weyl group $S_n$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the bruhat decomposition as categorified gaussian elimination) state the bruhat decomposition
+    for $\mathrm{gl}_n(\mathbb{f}_q)$ (and $\mathrm{gl}_n(\mathbb{c})$): $$\mathrm{gl}_n = \bigsqcup_{w
+    \in s_n} b w b,$$ where $b$ is the borel subgroup of upper-triangular matrices and $w \in s_n$ is
+    represented by a permutation matrix. (hint: show that the bruhat decomposition is the coordinate-free
+    geometric formulation of gaussian elimination with row/column permutations, reducing structural questions
+    about $\mathrm{gl}_n$ to the weyl group $s_n$)'
+- id: arxiv-org-pdf-2203-07082#004
+  text: '(Schur-Weyl Duality and Group Algebras) State classical Schur–Weyl duality on tensor space $V^{\otimes
+    n}$, where $V = \mathbb{C}^d$: 1. The natural action of $\mathrm{GL}(V)$ commutes with the permutation
+    action of the symmetric group $S_n$. 2. The canonical maps $\mathbb{C}[\mathrm{GL}(V)] \twoheadrightarrow
+    \operatorname{End}_{S_n}(V^{\otimes n})$ and $\mathbb{C}[S_n] \twoheadrightarrow \operatorname{End}_{\mathrm{GL}(V)}(V^{\otimes
+    n})$ are surjective with centralizer properties. (Hint: Decompose $V^{\otimes n} \cong \bigoplus_\lambda
+    L_{\mathrm{GL}(V)}(\lambda) \otimes S^\lambda$ as a multiplicity-free module over $\mathrm{GL}(V)
+    \times S_n$, where $S^\lambda$ are Specht modules and $L(\lambda)$ are irreducible polynomial representations)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(schur-weyl duality and group algebras) state classical schur–weyl duality on tensor space
+    $v^{\otimes n}$, where $v = \mathbb{c}^d$: 1. the natural action of $\mathrm{gl}(v)$ commutes with
+    the permutation action of the symmetric group $s_n$. 2. the canonical maps $\mathbb{c}[\mathrm{gl}(v)]
+    \twoheadrightarrow \operatorname{end}_{s_n}(v^{\otimes n})$ and $\mathbb{c}[s_n] \twoheadrightarrow
+    \operatorname{end}_{\mathrm{gl}(v)}(v^{\otimes n})$ are surjective with centralizer properties. (hint:
+    decompose $v^{\otimes n} \cong \bigoplus_\lambda l_{\mathrm{gl}(v)}(\lambda) \otimes s^\lambda$ as
+    a multiplicity-free module over $\mathrm{gl}(v) \times s_n$, where $s^\lambda$ are specht modules
+    and $l(\lambda)$ are irreducible polynomial representations)'
+- id: arxiv-org-pdf-2203-07082#005
+  text: (Specht Modules and Flag Varieties) Contrast Maschke's theorem for $\mathbb{C}[S_n]$ (semisimplicity
+    in characteristic 0) with modular representations. Explain how Specht modules $S^\lambda$ are constructed
+    geometrically via the action of $S_n$ on the cohomology of partial flag varieties rather than naive
+    $n!$-dimensional permutation representations
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (specht modules and flag varieties) contrast maschke's theorem for $\mathbb{c}[s_n]$ (semisimplicity
+    in characteristic 0) with modular representations. explain how specht modules $s^\lambda$ are constructed
+    geometrically via the action of $s_n$ on the cohomology of partial flag varieties rather than naive
+    $n!$-dimensional permutation representations
+- id: arxiv-org-pdf-2203-07082#006
+  text: '(Steinberg''s Theorem and Modular Representations of SL(n, Fq)) State Robert Steinberg''s theorem
+    on the representations of finite groups of Lie type: every irreducible representation of $\mathrm{SL}_n(\mathbb{F}_q)$
+    in characteristic $p$ is obtained by restricting an irreducible algebraic representation of the algebraic
+    group $\mathrm{SL}_n(\overline{\mathbb{F}}_p)$ whose highest weights are $p$-restricted ($0 \le \langle
+    \lambda, \alpha^\vee \rangle < q$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(steinberg''s theorem and modular representations of sl(n, fq)) state robert steinberg''s
+    theorem on the representations of finite groups of lie type: every irreducible representation of $\mathrm{sl}_n(\mathbb{f}_q)$
+    in characteristic $p$ is obtained by restricting an irreducible algebraic representation of the algebraic
+    group $\mathrm{sl}_n(\overline{\mathbb{f}}_p)$ whose highest weights are $p$-restricted ($0 \le \langle
+    \lambda, \alpha^\vee \rangle < q$)'
+- id: arxiv-org-pdf-2203-07082#007
+  text: '(Coxeter Systems and Bruhat Order) Define a Coxeter system $(W, S)$ as a group $W$ with generating
+    set $S = \{s_i\}$ and presentation: $$(s_i s_j)^{m(s_i, s_j)} = 1, \quad m(s_i, s_i) = 1, \quad m(s_i,
+    s_j) \ge 2 \text{ for } i \ne j.$$ Define the length function $\ell(w)$ via reduced expressions $w
+    = s_{i_1} \dots s_{i_k}$, and define the Bruhat partial order $u \le w$ on $W$. (Hint: The affine
+    Weyl group $\widetilde{W} = W \ltimes Q^\vee$ is obtained by adjoining the affine reflection $s_0$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(coxeter systems and bruhat order) define a coxeter system $(w, s)$ as a group $w$ with
+    generating set $s = \{s_i\}$ and presentation: $$(s_i s_j)^{m(s_i, s_j)} = 1, \quad m(s_i, s_i) =
+    1, \quad m(s_i, s_j) \ge 2 \text{ for } i \ne j.$$ define the length function $\ell(w)$ via reduced
+    expressions $w = s_{i_1} \dots s_{i_k}$, and define the bruhat partial order $u \le w$ on $w$. (hint:
+    the affine weyl group $\widetilde{w} = w \ltimes q^\vee$ is obtained by adjoining the affine reflection
+    $s_0$)'
+- id: arxiv-org-pdf-2203-07082#008
+  text: '(The Affine Grassmannian and Geometric Satake) Define the affine Grassmannian $\operatorname{Gr}_G
+    = G(\mathcal{K})/G(\mathcal{O})$, where $\mathcal{O} = \mathbb{C}[[t]]$ is the ring of formal power
+    series and $\mathcal{K} = \mathbb{C}((t))$ is the field of formal Laurent series. 1. Define the Iwahori
+    subgroup $\mathcal{I} \subset G(\mathcal{O})$ as the preimage of the Borel subgroup $B \subset G(\mathbb{C})$
+    under the evaluation map $t \mapsto 0$. 2. State the Geometric Satake Equivalence of Mirković and
+    Vilonen: the category of $G(\mathcal{O})$-equivariant perverse sheaves on $\operatorname{Gr}_G$ equipped
+    with the convolution product is equivalent as a symmetric monoidal category to the representation
+    category of the Langlands dual group: $$\left( \operatorname{Perv}_{G(\mathcal{O})}(\operatorname{Gr}_G),
+    \star \right) \cong (\operatorname{Rep}(G^\vee), \otimes).$$ (Hint: Perverse sheaves provide the natural
+    abelian category to compute intersection forms and geometric weight spaces via Mirković–Vilonen cycles)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the affine grassmannian and geometric satake) define the affine grassmannian $\operatorname{gr}_g
+    = g(\mathcal{k})/g(\mathcal{o})$, where $\mathcal{o} = \mathbb{c}[[t]]$ is the ring of formal power
+    series and $\mathcal{k} = \mathbb{c}((t))$ is the field of formal laurent series. 1. define the iwahori
+    subgroup $\mathcal{i} \subset g(\mathcal{o})$ as the preimage of the borel subgroup $b \subset g(\mathbb{c})$
+    under the evaluation map $t \mapsto 0$. 2. state the geometric satake equivalence of mirković and
+    vilonen: the category of $g(\mathcal{o})$-equivariant perverse sheaves on $\operatorname{gr}_g$ equipped
+    with the convolution product is equivalent as a symmetric monoidal category to the representation
+    category of the langlands dual group: $$\left( \operatorname{perv}_{g(\mathcal{o})}(\operatorname{gr}_g),
+    \star \right) \cong (\operatorname{rep}(g^\vee), \otimes).$$ (hint: perverse sheaves provide the natural
+    abelian category to compute intersection forms and geometric weight spaces via mirković–vilonen cycles)'
+- id: arxiv-org-pdf-2203-07082#009
+  text: '(Iwahori-Hecke Algebras and Braid Deformations) Define the Iwahori–Hecke algebra $\mathcal{H}(W,
+    S)$ of a Coxeter system as the $\mathbb{Z}[v, v^{-1}]$-algebra with standard basis $\{H_w\}_{w \in
+    W}$ satisfying: 1. **Braid Relations:** $H_s H_t H_s \dots = H_t H_s H_t \dots$ for $m(s, t)$ factors.
+    2. **Deformed Quadratic Relations:** $(H_s - v^{-1})(H_s + v) = 0$, or equivalently $H_s^2 = (v^{-1}
+    - v)H_s + 1$. (Hint: Show that setting $v = 1$ recovers the group algebra of the Coxeter group $\mathbb{Z}[W]$;
+    the braid relations remain undeformed while the involution $s^2 = 1$ is deformed quadratically)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(iwahori-hecke algebras and braid deformations) define the iwahori–hecke algebra $\mathcal{h}(w,
+    s)$ of a coxeter system as the $\mathbb{z}[v, v^{-1}]$-algebra with standard basis $\{h_w\}_{w \in
+    w}$ satisfying: 1. **braid relations:** $h_s h_t h_s \dots = h_t h_s h_t \dots$ for $m(s, t)$ factors.
+    2. **deformed quadratic relations:** $(h_s - v^{-1})(h_s + v) = 0$, or equivalently $h_s^2 = (v^{-1}
+    - v)h_s + 1$. (hint: show that setting $v = 1$ recovers the group algebra of the coxeter group $\mathbb{z}[w]$;
+    the braid relations remain undeformed while the involution $s^2 = 1$ is deformed quadratically)'
+- id: arxiv-org-pdf-2203-07082#010
+  text: '(Shimura''s Double Coset Hecke Rings) Review Goro Shimura''s definition of the Hecke ring $\mathcal{H}(G,
+    \Gamma)$ for a discrete group $G$ and an almost-normal subgroup $\Gamma$ (such that $[\Gamma : \Gamma
+    \cap g \Gamma g^{-1}] < \infty$ for all $g \in G$). Show how taking $G = \mathrm{GL}_2(\mathbb{Q})$
+    and $\Gamma = \mathrm{GL}_2(\mathbb{Z})$ constructs the classical Hecke operators $T_p, T_{p,p}$ acting
+    on modular forms'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(shimura''s double coset hecke rings) review goro shimura''s definition of the hecke ring
+    $\mathcal{h}(g, \gamma)$ for a discrete group $g$ and an almost-normal subgroup $\gamma$ (such that
+    $[\gamma : \gamma \cap g \gamma g^{-1}] < \infty$ for all $g \in g$). show how taking $g = \mathrm{gl}_2(\mathbb{q})$
+    and $\gamma = \mathrm{gl}_2(\mathbb{z})$ constructs the classical hecke operators $t_p, t_{p,p}$ acting
+    on modular forms'
+- id: arxiv-org-pdf-2203-07082#011
+  text: '(Kazhdan-Lusztig Polynomials and Canonical Bases) State the Kazhdan–Lusztig theorem: there exists
+    a unique canonical self-dual basis $\{C_w\}_{w \in W}$ in the Hecke algebra $\mathcal{H}(W, S)$ invariant
+    under the bar-involution $\overline{v} = v^{-1}, \overline{H_s} = H_s^{-1}$, expressed as: $$C_w =
+    v^{\ell(w)} \sum_{y \le w} P_{y, w}(v^{-2}) H_y,$$ where $P_{y, w}(q) \in \mathbb{Z}[q]$ are the Kazhdan–Lusztig
+    polynomials. (Hint: The coefficients of $P_{y, w}$ compute the local intersection cohomology dimensions
+    of Schubert varieties)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(kazhdan-lusztig polynomials and canonical bases) state the kazhdan–lusztig theorem: there
+    exists a unique canonical self-dual basis $\{c_w\}_{w \in w}$ in the hecke algebra $\mathcal{h}(w,
+    s)$ invariant under the bar-involution $\overline{v} = v^{-1}, \overline{h_s} = h_s^{-1}$, expressed
+    as: $$c_w = v^{\ell(w)} \sum_{y \le w} p_{y, w}(v^{-2}) h_y,$$ where $p_{y, w}(q) \in \mathbb{z}[q]$
+    are the kazhdan–lusztig polynomials. (hint: the coefficients of $p_{y, w}$ compute the local intersection
+    cohomology dimensions of schubert varieties)'
+- id: arxiv-org-pdf-2203-07082#012
+  text: (Vaughan Jones, Braid Groups, and the Jones Polynomial) Explain how representations of the Artin
+    braid group $B_n = \langle \sigma_1, \dots, \sigma_{n-1} \mid \sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1}
+    \sigma_i \sigma_{i+1} \rangle$ factoring through the Temperley–Lieb quotient of the Hecke algebra
+    led Vaughan Jones to construct the Jones knot polynomial via Markov traces on $C^*$-algebras
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (vaughan jones, braid groups, and the jones polynomial) explain how representations of
+    the artin braid group $b_n = \langle \sigma_1, \dots, \sigma_{n-1} \mid \sigma_i \sigma_{i+1} \sigma_i
+    = \sigma_{i+1} \sigma_i \sigma_{i+1} \rangle$ factoring through the temperley–lieb quotient of the
+    hecke algebra led vaughan jones to construct the jones knot polynomial via markov traces on $c^*$-algebras
+- id: arxiv-org-pdf-2203-07082#013
+  text: '(Soergel Bimodules and Categorification of the Hecke Algebra) Let $R = \operatorname{Sym}(\mathfrak{h}^*)$
+    be the polynomial ring on the reflection representation of $W$. Define the category of Soergel bimodules
+    $\mathcal{B}\operatorname{im}$ as the additive Karoubian category of graded $R$-bimodules generated
+    by the Bott–Samelson bimodules $B_s = R \otimes_{R^s} R(1)$ for $s \in S$. State Soergel''s Categorification
+    Theorem: the split Grothendieck group $K_0(\mathcal{B}\operatorname{im})$ is canonically isomorphic
+    to the Iwahori–Hecke algebra $\mathcal{H}(W, S)$, sending indecomposable Soergel bimodules $B_w$ to
+    the Kazhdan–Lusztig basis elements $C_w$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(soergel bimodules and categorification of the hecke algebra) let $r = \operatorname{sym}(\mathfrak{h}^*)$
+    be the polynomial ring on the reflection representation of $w$. define the category of soergel bimodules
+    $\mathcal{b}\operatorname{im}$ as the additive karoubian category of graded $r$-bimodules generated
+    by the bott–samelson bimodules $b_s = r \otimes_{r^s} r(1)$ for $s \in s$. state soergel''s categorification
+    theorem: the split grothendieck group $k_0(\mathcal{b}\operatorname{im})$ is canonically isomorphic
+    to the iwahori–hecke algebra $\mathcal{h}(w, s)$, sending indecomposable soergel bimodules $b_w$ to
+    the kazhdan–lusztig basis elements $c_w$'
+- id: arxiv-org-pdf-2203-07082#014
+  text: '(Quantum Groups and Roots of Unity Analogies) Compare the quantum group $U_q(\mathfrak{sl}_n)$
+    at a root of unity with the modular representation theory of $\mathrm{SL}_n(\mathbb{F}_p)$. $$\begin{matrix}
+    S_n & \longleftrightarrow & \mathrm{GL}_n(\mathbb{F}_q) \\ U_q(\mathfrak{sl}_n) \text{ at } q = e^{2\pi
+    i/p} & \longleftrightarrow & \mathrm{SL}_n(\overline{\mathbb{F}}_p) \text{ in char } p \end{matrix}$$
+    (Hint: Both settings exhibit non-semisimplicity, linkage principles, and tilting modules governed
+    by the same affine Weyl group combinatorics)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(quantum groups and roots of unity analogies) compare the quantum group $u_q(\mathfrak{sl}_n)$
+    at a root of unity with the modular representation theory of $\mathrm{sl}_n(\mathbb{f}_p)$. $$\begin{matrix}
+    s_n & \longleftrightarrow & \mathrm{gl}_n(\mathbb{f}_q) \\ u_q(\mathfrak{sl}_n) \text{ at } q = e^{2\pi
+    i/p} & \longleftrightarrow & \mathrm{sl}_n(\overline{\mathbb{f}}_p) \text{ in char } p \end{matrix}$$
+    (hint: both settings exhibit non-semisimplicity, linkage principles, and tilting modules governed
+    by the same affine weyl group combinatorics)'
+- id: arxiv-org-pdf-2203-07082#015
+  text: '(Categorification of Lie Algebras via 2-Kac-Moody Categories) Explain how passing from sets to
+    categories enables the categorification of Lie algebras (Khovanov–Lauda and Rouquier): replace the
+    vector space $\mathfrak{sl}_n$ with a 2-category $\mathcal{U}(\mathfrak{sl}_n)$ where 1-morphisms
+    are generating functors $\mathcal{E}_i, \mathcal{F}_i$ and 2-morphisms are string diagrams (diagrammatic
+    Hecke algebras). Show that the action of $\mathcal{U}(\mathfrak{sl}_n)$ on derived categories categorifies
+    irreducible highest-weight modules'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(categorification of lie algebras via 2-kac-moody categories) explain how passing from
+    sets to categories enables the categorification of lie algebras (khovanov–lauda and rouquier): replace
+    the vector space $\mathfrak{sl}_n$ with a 2-category $\mathcal{u}(\mathfrak{sl}_n)$ where 1-morphisms
+    are generating functors $\mathcal{e}_i, \mathcal{f}_i$ and 2-morphisms are string diagrams (diagrammatic
+    hecke algebras). show that the action of $\mathcal{u}(\mathfrak{sl}_n)$ on derived categories categorifies
+    irreducible highest-weight modules'
