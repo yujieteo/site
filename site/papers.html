@@ -12337,19 +12337,43 @@
   let activeTag = '__all__';
   let panelOpen = false;
 
+  // Do not render a huge unfiltered list. Once the user actually filters,
+  // show at most this many matching entries.
+  const DISPLAY_CAP = 200;
+
   function applyFilters() {
     const q = searchBox.value.trim().toLowerCase();
+    const hasEntryFilter = q !== '' || activeTag !== '__all__';
+
+    let matchCount = 0;
     let visibleCount = 0;
+
     entries.forEach(function(entry) {
       const tags = entry.dataset.tags.split(',').filter(Boolean);
       const matchesTag = activeTag === '__all__' || tags.includes(activeTag);
       const matchesSearch = q === '' || entry.dataset.search.includes(q);
-      const show = matchesTag && matchesSearch;
+      const matches = matchesTag && matchesSearch;
+
+      if (matches) matchCount++;
+
+      // With no search/tag filter, hide every entry.
+      // With a filter, show only the first DISPLAY_CAP matches.
+      const show = hasEntryFilter && matches && visibleCount < DISPLAY_CAP;
       entry.classList.toggle('hidden', !show);
+
       if (show) visibleCount++;
     });
-    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-    countLabel.textContent = visibleCount + ' / ' + total;
+
+    noResults.style.display = matchCount === 0 ? 'block' : 'none';
+
+    if (!hasEntryFilter) {
+      countLabel.textContent = 'Filter to show entries';
+    } else if (matchCount > DISPLAY_CAP) {
+      countLabel.textContent =
+        visibleCount + ' / ' + matchCount + ' matches (cap ' + DISPLAY_CAP + ')';
+    } else {
+      countLabel.textContent = visibleCount + ' / ' + matchCount + ' matches';
+    }
   }
 
   function setActiveTag(tag) {

@@ -1,0 +1,324 @@
+url: https://adjectivesproject.org
+title: Adjectives Project
+note: Very Hard
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: adjectivesproject-org#000
+  text: Does "flat" imply "universally open"? If so, cite the strongest hypothesis needed; if not, exhibit
+    a counterexample from the database
+  hint: False in general — flatness alone does not give universally open. The correct implication is "flat
+    morphisms locally of finite presentation are universally open." Without local finite presentation,
+    flatness can fail to be open, e.g. $\operatorname{Spec} \mathbb{Q}(x) \to \mathbb{A}^1_\mathbb{Q}$
+    is flat (localization) but not of finite presentation, and its image is a single non-open point.
+  locator: null
+  sub_index: null
+  search_text: does "flat" imply "universally open"? if so, cite the strongest hypothesis needed; if not,
+    exhibit a counterexample from the database false in general — flatness alone does not give universally
+    open. the correct implication is "flat morphisms locally of finite presentation are universally open."
+    without local finite presentation, flatness can fail to be open, e.g. $\operatorname{spec} \mathbb{q}(x)
+    \to \mathbb{a}^1_\mathbb{q}$ is flat (localization) but not of finite presentation, and its image
+    is a single non-open point.
+- id: adjectivesproject-org#001
+  text: Is every injective morphism separated? Conversely, is every separated morphism injective?
+  hint: 'Injective $\implies$ separated, via "injective morphisms are separated." The converse is false:
+    closed immersions and quasi-affine morphisms are separated but need not be injective on points, e.g.
+    $\operatorname{Spec} \mathbb{C} \to \operatorname{Spec} \mathbb{R}$ is separated (affine target) but
+    its underlying map need not be injective on the relevant fiber structure — more simply, $\mathbb{A}^1_\mathbb{Q}
+    \to \operatorname{Spec}\mathbb{Q}$ is separated but wildly non-injective.'
+  locator: null
+  sub_index: null
+  search_text: 'is every injective morphism separated? conversely, is every separated morphism injective?
+    injective $\implies$ separated, via "injective morphisms are separated." the converse is false: closed
+    immersions and quasi-affine morphisms are separated but need not be injective on points, e.g. $\operatorname{spec}
+    \mathbb{c} \to \operatorname{spec} \mathbb{r}$ is separated (affine target) but its underlying map
+    need not be injective on the relevant fiber structure — more simply, $\mathbb{a}^1_\mathbb{q} \to
+    \operatorname{spec}\mathbb{q}$ is separated but wildly non-injective.'
+- id: adjectivesproject-org#002
+  text: The affine line with doubled origin is a classic non-separated scheme. Which theorem in the "morphism"
+    adjectives list, when applied to the doubling map $\mathbb{A}^1_\mathbb{Q} \to \mathbb{A}^1_\mathbb{Q}$-with-doubled-origin,
+    explains the failure of separatedness, and what does this say about "surjective immersions are closed
+    immersions"?
+  hint: 'The two copies of $\mathbb{A}^1$ glue along $\mathbb{A}^1 \setminus \{0\}$, an open immersion
+    that is not closed, so its diagonal is not closed and the doubled-origin scheme fails separatedness.
+    This shows the hypothesis of surjectivity in "surjective immersions are closed immersions" is essential:
+    the open immersion $\mathbb{A}^1 \setminus \{0\} \hookrightarrow \mathbb{A}^1$ is an immersion that
+    is not surjective and indeed not closed.'
+  locator: null
+  sub_index: null
+  search_text: 'the affine line with doubled origin is a classic non-separated scheme. which theorem in
+    the "morphism" adjectives list, when applied to the doubling map $\mathbb{a}^1_\mathbb{q} \to \mathbb{a}^1_\mathbb{q}$-with-doubled-origin,
+    explains the failure of separatedness, and what does this say about "surjective immersions are closed
+    immersions"? the two copies of $\mathbb{a}^1$ glue along $\mathbb{a}^1 \setminus \{0\}$, an open immersion
+    that is not closed, so its diagonal is not closed and the doubled-origin scheme fails separatedness.
+    this shows the hypothesis of surjectivity in "surjective immersions are closed immersions" is essential:
+    the open immersion $\mathbb{a}^1 \setminus \{0\} \hookrightarrow \mathbb{a}^1$ is an immersion that
+    is not surjective and indeed not closed.'
+- id: adjectivesproject-org#003
+  text: Give an example of a morphism that is universally closed and injective but NOT a closed immersion,
+    testing the limits of "universally homeomorphism is integral, universally injective and surjective."
+  hint: The normalization-type map "cusp to $\mathbb{A}^1_\mathbb{Q}$" (parametrizing the cuspidal cubic
+    $y^2=x^3$ by $t \mapsto (t^2,t^3)$) is a bijective, universally closed, integral morphism (finite,
+    hence proper) that is a universally injective homeomorphism but not an isomorphism, since it is not
+    formally unramified at the cusp point — the induced map on tangent spaces is not injective, so it
+    fails to be unramified/étale and hence is not a closed immersion despite being bijective.
+  locator: null
+  sub_index: null
+  search_text: give an example of a morphism that is universally closed and injective but not a closed
+    immersion, testing the limits of "universally homeomorphism is integral, universally injective and
+    surjective." the normalization-type map "cusp to $\mathbb{a}^1_\mathbb{q}$" (parametrizing the cuspidal
+    cubic $y^2=x^3$ by $t \mapsto (t^2,t^3)$) is a bijective, universally closed, integral morphism (finite,
+    hence proper) that is a universally injective homeomorphism but not an isomorphism, since it is not
+    formally unramified at the cusp point — the induced map on tangent spaces is not injective, so it
+    fails to be unramified/étale and hence is not a closed immersion despite being bijective.
+- id: adjectivesproject-org#004
+  text: Is "finite fibers" equivalent to "quasi-finite"? Use the database's definitions to pin down the
+    discrepancy
+  hint: 'They differ by finiteness conditions on the morphism itself. "Injective morphisms have finite
+    fibers" shows finite fibers is a weak, purely set-theoretic condition following from injectivity alone.
+    "Definition quasi-finite" additionally requires the morphism to be of finite type (or finite presentation)
+    with locally finite fibers, a scheme-theoretic condition. An example distinguishing them: $\operatorname{Spec}\overline{\mathbb{Q}}
+    \to \operatorname{Spec}\mathbb{Q}$ has finite (indeed infinite but each residue field finite over
+    the base only in the algebraic sense) — more precisely $\operatorname{Spec}\mathbb{Q}(x) \to \operatorname{Spec}\mathbb{Q}$
+    has one point with infinite residue field extension, so it has "finite fibers" as a set but is not
+    quasi-finite since it fails finite type.'
+  locator: null
+  sub_index: null
+  search_text: 'is "finite fibers" equivalent to "quasi-finite"? use the database''s definitions to pin
+    down the discrepancy they differ by finiteness conditions on the morphism itself. "injective morphisms
+    have finite fibers" shows finite fibers is a weak, purely set-theoretic condition following from injectivity
+    alone. "definition quasi-finite" additionally requires the morphism to be of finite type (or finite
+    presentation) with locally finite fibers, a scheme-theoretic condition. an example distinguishing
+    them: $\operatorname{spec}\overline{\mathbb{q}} \to \operatorname{spec}\mathbb{q}$ has finite (indeed
+    infinite but each residue field finite over the base only in the algebraic sense) — more precisely
+    $\operatorname{spec}\mathbb{q}(x) \to \operatorname{spec}\mathbb{q}$ has one point with infinite residue
+    field extension, so it has "finite fibers" as a set but is not quasi-finite since it fails finite
+    type.'
+- id: adjectivesproject-org#005
+  text: Formulate and verify the chain "closed immersion $\implies$ finite $\implies$ proper $\implies$
+    universally closed" using only theorems listed under "morphism" adjectives, and identify which single
+    theorem could be skipped without breaking the chain
+  hint: Use "closed immersions are finite," then "finite is proper and quasi-finite" (or "finite is proper
+    and affine"), then properness includes universal closedness by "definition proper." The step "finite
+    is proper and affine" is redundant once you have "finite is proper and quasi-finite," since either
+    one alone recovers properness; either theorem may be skipped.
+  locator: null
+  sub_index: null
+  search_text: formulate and verify the chain "closed immersion $\implies$ finite $\implies$ proper $\implies$
+    universally closed" using only theorems listed under "morphism" adjectives, and identify which single
+    theorem could be skipped without breaking the chain use "closed immersions are finite," then "finite
+    is proper and quasi-finite" (or "finite is proper and affine"), then properness includes universal
+    closedness by "definition proper." the step "finite is proper and affine" is redundant once you have
+    "finite is proper and quasi-finite," since either one alone recovers properness; either theorem may
+    be skipped.
+- id: adjectivesproject-org#006
+  text: Exhibit a scheme from the database that is reduced and irreducible but NOT normal, and name the
+    theorem whose converse this violates
+  hint: 'The nodal cubic $\operatorname{Spec}\mathbb{Q}[x,y]/(y^2-x^2(x+1))$-type scheme, represented
+    in the database as "nodal cubic," is reduced and irreducible (integral) but singular at the node,
+    hence not normal, since two branches meet there and normalization separates them. This shows the converse
+    of "locally factorial schemes are normal" (and of "normal schemes are reduced") fails: reduced does
+    not imply normal, only normal implies reduced.'
+  locator: null
+  sub_index: null
+  search_text: 'exhibit a scheme from the database that is reduced and irreducible but not normal, and
+    name the theorem whose converse this violates the nodal cubic $\operatorname{spec}\mathbb{q}[x,y]/(y^2-x^2(x+1))$-type
+    scheme, represented in the database as "nodal cubic," is reduced and irreducible (integral) but singular
+    at the node, hence not normal, since two branches meet there and normalization separates them. this
+    shows the converse of "locally factorial schemes are normal" (and of "normal schemes are reduced")
+    fails: reduced does not imply normal, only normal implies reduced.'
+- id: adjectivesproject-org#007
+  text: The database lists $\operatorname{Spec}\left(\prod_{i=1}^\infty \mathbb{Q}\right)$ as an example
+    scheme. Determine whether it is Noetherian, and use "Hilbert basis theorem" and "definition Noetherian"
+    to justify your answer, then explain why $\bigsqcup_{i=1}^\infty \operatorname{Spec}\mathbb{Q} \to
+    \operatorname{Spec}\left(\prod_{i=1}^\infty\mathbb{Q}\right)$ is relevant
+  hint: '$\prod_{i=1}^\infty \mathbb{Q}$ is not Noetherian: the chain of ideals $I_n = \{(a_i) : a_i =
+    0 \text{ for } i \le n\}$ is strictly increasing and never stabilizes, violating the ascending chain
+    condition in "definition Noetherian." The Hilbert basis theorem only guarantees Noetherianity is preserved
+    under finitely generated polynomial extensions of Noetherian rings, which does not apply to this infinite
+    product. The disjoint union map is the natural comparison map from the "constructible" countable disjoint
+    union into the Zariski spectrum of the product ring, illustrating that $\operatorname{Spec}$ of an
+    infinite product has "extra" points (ultrafilter points) beyond the union of the factors.'
+  locator: null
+  sub_index: null
+  search_text: 'the database lists $\operatorname{spec}\left(\prod_{i=1}^\infty \mathbb{q}\right)$ as
+    an example scheme. determine whether it is noetherian, and use "hilbert basis theorem" and "definition
+    noetherian" to justify your answer, then explain why $\bigsqcup_{i=1}^\infty \operatorname{spec}\mathbb{q}
+    \to \operatorname{spec}\left(\prod_{i=1}^\infty\mathbb{q}\right)$ is relevant $\prod_{i=1}^\infty
+    \mathbb{q}$ is not noetherian: the chain of ideals $i_n = \{(a_i) : a_i = 0 \text{ for } i \le n\}$
+    is strictly increasing and never stabilizes, violating the ascending chain condition in "definition
+    noetherian." the hilbert basis theorem only guarantees noetherianity is preserved under finitely generated
+    polynomial extensions of noetherian rings, which does not apply to this infinite product. the disjoint
+    union map is the natural comparison map from the "constructible" countable disjoint union into the
+    zariski spectrum of the product ring, illustrating that $\operatorname{spec}$ of an infinite product
+    has "extra" points (ultrafilter points) beyond the union of the factors.'
+- id: adjectivesproject-org#008
+  text: Is every quasi-compact immersion an affine morphism? Chain together the relevant theorems to prove
+    or refute this
+  hint: 'Not directly claimed, but one can chain "quasi-compact immersions are quasi-affine" together
+    with "affine morphisms are quasi-affine" run in reverse — quasi-affine does NOT imply affine in general
+    (quasi-affine is strictly weaker). A counterexample: $\mathbb{A}^2_\mathbb{Q}\setminus\{0\} \to \mathbb{A}^2_\mathbb{Q}$
+    is a quasi-compact open immersion (hence a quasi-compact immersion, hence quasi-affine) but its source
+    is not affine (removing a codimension-2 point from an affine scheme of dimension $\ge 2$ leaves a
+    non-affine scheme, since $H^1$ of the structure sheaf is nonzero), so the morphism itself is not affine.'
+  locator: null
+  sub_index: null
+  search_text: 'is every quasi-compact immersion an affine morphism? chain together the relevant theorems
+    to prove or refute this not directly claimed, but one can chain "quasi-compact immersions are quasi-affine"
+    together with "affine morphisms are quasi-affine" run in reverse — quasi-affine does not imply affine
+    in general (quasi-affine is strictly weaker). a counterexample: $\mathbb{a}^2_\mathbb{q}\setminus\{0\}
+    \to \mathbb{a}^2_\mathbb{q}$ is a quasi-compact open immersion (hence a quasi-compact immersion, hence
+    quasi-affine) but its source is not affine (removing a codimension-2 point from an affine scheme of
+    dimension $\ge 2$ leaves a non-affine scheme, since $h^1$ of the structure sheaf is nonzero), so the
+    morphism itself is not affine.'
+- id: adjectivesproject-org#009
+  text: Verify the implication "smooth is regular and locally of finite presentation" is NOT reversible
+    by finding a scheme-theoretic obstruction using $\operatorname{Spec}\mathbb{F}_2(t_1^{1/2}, t_2^{1/2},
+    \ldots) \to \operatorname{Spec}\mathbb{F}_2(t_1,t_2,\ldots)$
+  hint: This morphism has regular source and target (both are fields, hence regular local rings) and can
+    be of finite presentation in suitable truncations, yet it is a purely inseparable extension in positive
+    characteristic, so $\Omega^1_{X/Y} \ne 0$ and it fails to be smooth (in fact it is not even unramified).
+    This shows regular + locally of finite presentation is not enough without also being (generically)
+    separable / flat with smooth geometric fibers — regularity of the rings alone does not see inseparability.
+  locator: null
+  sub_index: null
+  search_text: verify the implication "smooth is regular and locally of finite presentation" is not reversible
+    by finding a scheme-theoretic obstruction using $\operatorname{spec}\mathbb{f}_2(t_1^{1/2}, t_2^{1/2},
+    \ldots) \to \operatorname{spec}\mathbb{f}_2(t_1,t_2,\ldots)$ this morphism has regular source and
+    target (both are fields, hence regular local rings) and can be of finite presentation in suitable
+    truncations, yet it is a purely inseparable extension in positive characteristic, so $\omega^1_{x/y}
+    \ne 0$ and it fails to be smooth (in fact it is not even unramified). this shows regular + locally
+    of finite presentation is not enough without also being (generically) separable / flat with smooth
+    geometric fibers — regularity of the rings alone does not see inseparability.
+- id: adjectivesproject-org#010
+  text: The database records both "$\mathbb{A}^1_\mathbb{Q}$ to cusp" and "$\mathbb{A}^1_\mathbb{Q}$ to
+    nodal cubic" as morphisms. Are these open immersions, closed immersions, or neither? Use "definition
+    étale" and "surjective immersions are closed immersions" to argue your answer
+  hint: Neither. Both are the normalization maps $t \mapsto (t^2, t^3)$ and $t \mapsto (t^2-1, t(t^2-1))$
+    respectively, which are bijective on closed points but not isomorphisms locally at the singular point,
+    so they cannot be immersions (an immersion would realize the source as a subscheme, but the local
+    ring maps are not surjective/injective as required, and in particular they are not unramified there,
+    violating "definition étale"). Since they are not immersions at all, "surjective immersions are closed
+    immersions" does not apply — the surjectivity alone is insufficient without the immersion hypothesis.
+  locator: null
+  sub_index: null
+  search_text: the database records both "$\mathbb{a}^1_\mathbb{q}$ to cusp" and "$\mathbb{a}^1_\mathbb{q}$
+    to nodal cubic" as morphisms. are these open immersions, closed immersions, or neither? use "definition
+    étale" and "surjective immersions are closed immersions" to argue your answer neither. both are the
+    normalization maps $t \mapsto (t^2, t^3)$ and $t \mapsto (t^2-1, t(t^2-1))$ respectively, which are
+    bijective on closed points but not isomorphisms locally at the singular point, so they cannot be immersions
+    (an immersion would realize the source as a subscheme, but the local ring maps are not surjective/injective
+    as required, and in particular they are not unramified there, violating "definition étale"). since
+    they are not immersions at all, "surjective immersions are closed immersions" does not apply — the
+    surjectivity alone is insufficient without the immersion hypothesis.
+- id: adjectivesproject-org#011
+  text: Is $\mathbb{A}^2_\mathbb{Q} \to \mathbb{A}^2_\mathbb{Q}/S_2$ (the quotient by the swap action)
+    étale? Use "étale is formally étale and locally of finite presentation" together with ramification
+    along the diagonal to decide
+  hint: No. The quotient map is ramified exactly along the diagonal $\{x=y\}$, where the stabilizer is
+    nontrivial ($\mathbb{Z}/2$), so the residue field extension / tangent map fails the infinitesimal
+    lifting criterion for formal étaleness there, i.e. $\Omega^1_{X/Y} \ne 0$ along the diagonal. It is
+    locally of finite presentation (finite morphism of finite type schemes) but fails formal étaleness,
+    hence by "étale is formally étale and locally of finite presentation" it cannot be étale, even though
+    it is étale away from the diagonal.
+  locator: null
+  sub_index: null
+  search_text: is $\mathbb{a}^2_\mathbb{q} \to \mathbb{a}^2_\mathbb{q}/s_2$ (the quotient by the swap
+    action) étale? use "étale is formally étale and locally of finite presentation" together with ramification
+    along the diagonal to decide no. the quotient map is ramified exactly along the diagonal $\{x=y\}$,
+    where the stabilizer is nontrivial ($\mathbb{z}/2$), so the residue field extension / tangent map
+    fails the infinitesimal lifting criterion for formal étaleness there, i.e. $\omega^1_{x/y} \ne 0$
+    along the diagonal. it is locally of finite presentation (finite morphism of finite type schemes)
+    but fails formal étaleness, hence by "étale is formally étale and locally of finite presentation"
+    it cannot be étale, even though it is étale away from the diagonal.
+- id: adjectivesproject-org#012
+  text: 'The scheme $\operatorname{Spec}\mathbb{Q}[x_1,x_2,\ldots]/(x_i^2 - x_i,\, x_ix_j : i\ne j)$ is
+    listed in the database. Is it Noetherian? Is it reduced? Use these to test "excellent schemes are
+    locally Noetherian" vacuously or not'
+  hint: It is reduced, since the relations $x_i^2=x_i$ and $x_ix_j=0$ generate a radical ideal (a Boolean-type
+    ring, isomorphic to functions on a countable discrete set with a basepoint). It is NOT Noetherian,
+    since the ideal $(x_1,x_2,\ldots)$ is not finitely generated (infinitely many independent idempotent-like
+    generators). Consequently it cannot be excellent, since "excellent schemes are locally Noetherian"
+    forces excellence to fail here — this scheme is a genuine witness that reduced does not imply Noetherian,
+    hence not excellent.
+  locator: null
+  sub_index: null
+  search_text: 'the scheme $\operatorname{spec}\mathbb{q}[x_1,x_2,\ldots]/(x_i^2 - x_i,\, x_ix_j : i\ne
+    j)$ is listed in the database. is it noetherian? is it reduced? use these to test "excellent schemes
+    are locally noetherian" vacuously or not it is reduced, since the relations $x_i^2=x_i$ and $x_ix_j=0$
+    generate a radical ideal (a boolean-type ring, isomorphic to functions on a countable discrete set
+    with a basepoint). it is not noetherian, since the ideal $(x_1,x_2,\ldots)$ is not finitely generated
+    (infinitely many independent idempotent-like generators). consequently it cannot be excellent, since
+    "excellent schemes are locally noetherian" forces excellence to fail here — this scheme is a genuine
+    witness that reduced does not imply noetherian, hence not excellent.'
+- id: adjectivesproject-org#013
+  text: Chain the theorems "finite locally free is finite, flat and locally of finite presentation," "finite
+    is proper and quasi-finite," and "flat morphisms locally of finite presentation are universally open"
+    to conclude something about finite locally free morphisms; then check this against "finite morphisms
+    with affine target are H-projective" for consistency
+  hint: A finite locally free morphism is simultaneously proper (hence universally closed) AND universally
+    open (from flat + locally of finite presentation), so its image in each connected component is a union
+    of connected components — i.e. finite locally free morphisms are "clopen" onto unions of components
+    of the target. This is consistent with "finite morphisms with affine target are H-projective," since
+    H-projective morphisms are always proper, and here properness is independently confirmed via the finite
+    $\Rightarrow$ proper route.
+  locator: null
+  sub_index: null
+  search_text: chain the theorems "finite locally free is finite, flat and locally of finite presentation,"
+    "finite is proper and quasi-finite," and "flat morphisms locally of finite presentation are universally
+    open" to conclude something about finite locally free morphisms; then check this against "finite morphisms
+    with affine target are h-projective" for consistency a finite locally free morphism is simultaneously
+    proper (hence universally closed) and universally open (from flat + locally of finite presentation),
+    so its image in each connected component is a union of connected components — i.e. finite locally
+    free morphisms are "clopen" onto unions of components of the target. this is consistent with "finite
+    morphisms with affine target are h-projective," since h-projective morphisms are always proper, and
+    here properness is independently confirmed via the finite $\rightarrow$ proper route.
+- id: adjectivesproject-org#014
+  text: Using "morphisms with quasi-compact source and quasi-separated target are quasi-compact" and the
+    scheme $\bigsqcup_{i=1}^\infty \operatorname{Spec}\mathbb{Q} \to \operatorname{Spec}\mathbb{Q}$, determine
+    whether this morphism is quasi-compact, and explain why the countable disjoint union example is the
+    minimal counterexample to naive intuitions about compactness
+  hint: '$\bigsqcup_{i=1}^\infty \operatorname{Spec}\mathbb{Q} \to \operatorname{Spec}\mathbb{Q}$ is NOT
+    quasi-compact: the source has no finite subcover by affine opens covering all countably many components
+    (each $\operatorname{Spec}\mathbb{Q}$ summand is itself clopen, so a finite union of them can never
+    cover the whole disjoint union). This shows the hypothesis "quasi-compact source" in the cited theorem
+    is not automatic — a disjoint union of infinitely many affines is not itself quasi-compact even though
+    each piece is affine, making it the standard minimal witness that infinite disjoint unions break quasi-compactness.'
+  locator: null
+  sub_index: null
+  search_text: 'using "morphisms with quasi-compact source and quasi-separated target are quasi-compact"
+    and the scheme $\bigsqcup_{i=1}^\infty \operatorname{spec}\mathbb{q} \to \operatorname{spec}\mathbb{q}$,
+    determine whether this morphism is quasi-compact, and explain why the countable disjoint union example
+    is the minimal counterexample to naive intuitions about compactness $\bigsqcup_{i=1}^\infty \operatorname{spec}\mathbb{q}
+    \to \operatorname{spec}\mathbb{q}$ is not quasi-compact: the source has no finite subcover by affine
+    opens covering all countably many components (each $\operatorname{spec}\mathbb{q}$ summand is itself
+    clopen, so a finite union of them can never cover the whole disjoint union). this shows the hypothesis
+    "quasi-compact source" in the cited theorem is not automatic — a disjoint union of infinitely many
+    affines is not itself quasi-compact even though each piece is affine, making it the standard minimal
+    witness that infinite disjoint unions break quasi-compactness.'
+- id: adjectivesproject-org#015
+  text: 'Is "Noetherian" a property that is preserved by taking $\operatorname{Spec}$ of a non-finitely-generated
+    $\mathbb{Q}$-algebra like $\mathbb{Q}[x^q : q \in \mathbb{Q}_{>0}]$? Contrast with "definition of
+    finite type" applied to $\operatorname{Spec}\mathbb{Q}[x^q : q \in \mathbb{Q}_{>0}] \to \operatorname{Spec}\mathbb{Q}$'
+  hint: 'No — $\mathbb{Q}[x^q : q\in\mathbb{Q}_{>0}]$ is generated by infinitely many independent monomials
+    with fractional exponents, so as a $\mathbb{Q}$-algebra it is not finitely generated, hence $\operatorname{Spec}\mathbb{Q}[x^q:q\in\mathbb{Q}_{>0}]
+    \to \operatorname{Spec}\mathbb{Q}$ fails "definition of finite type" (finite type requires a surjection
+    from a polynomial ring in finitely many variables). Since finite type is necessary for a Noetherian
+    scheme of finite type over a field to have a Noetherian coordinate ring via Hilbert basis theorem,
+    and here finite type already fails, one cannot even invoke Hilbert basis theorem to conclude Noetherianity;
+    direct inspection shows the ideal generated by $\{x^q : q < 1\}$ is not finitely generated, confirming
+    non-Noetherian.'
+  locator: null
+  sub_index: null
+  search_text: 'is "noetherian" a property that is preserved by taking $\operatorname{spec}$ of a non-finitely-generated
+    $\mathbb{q}$-algebra like $\mathbb{q}[x^q : q \in \mathbb{q}_{>0}]$? contrast with "definition of
+    finite type" applied to $\operatorname{spec}\mathbb{q}[x^q : q \in \mathbb{q}_{>0}] \to \operatorname{spec}\mathbb{q}$
+    no — $\mathbb{q}[x^q : q\in\mathbb{q}_{>0}]$ is generated by infinitely many independent monomials
+    with fractional exponents, so as a $\mathbb{q}$-algebra it is not finitely generated, hence $\operatorname{spec}\mathbb{q}[x^q:q\in\mathbb{q}_{>0}]
+    \to \operatorname{spec}\mathbb{q}$ fails "definition of finite type" (finite type requires a surjection
+    from a polynomial ring in finitely many variables). since finite type is necessary for a noetherian
+    scheme of finite type over a field to have a noetherian coordinate ring via hilbert basis theorem,
+    and here finite type already fails, one cannot even invoke hilbert basis theorem to conclude noetherianity;
+    direct inspection shows the ideal generated by $\{x^q : q < 1\}$ is not finitely generated, confirming
+    non-noetherian.'
