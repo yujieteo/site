@@ -1,0 +1,204 @@
+url: https://math.uchicago.edu/~emerton/gl2.pdf
+title: Adelic and classical translation for GL(2
+note: Q), by Matt Emerton.
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: math-uchicago-edu-emerton-gl2-pdf#000
+  text: How is the space $\mathcal{B}$ of $\mathbb{R}$-linear bases of $\mathbb{C}$ defined and parameterized
+    as a complex analytic manifold?
+  hint: 'A basis $i \colon \mathbb{R}^2 \xrightarrow{\sim} \mathbb{C}$ is identified with the pair of
+    complex numbers $(\omega_1, \omega_2) = (i(1, 0), i(0, 1)) \in \mathbb{C}^2$; since $i$ is an $\mathbb{R}$-isomorphism,
+    $\mathrm{Im}(\omega_1/\omega_2) \neq 0$, realizing $\mathcal{B}$ as the open complex submanifold $\{(\omega_1,
+    \omega_2) \in \mathbb{C}^2 : \mathrm{Im}(\omega_1 \overline{\omega}_2) \neq 0\} \cong \mathbb{C}^\times
+    \times (\mathbb{C} \setminus \mathbb{R})$.'
+  locator: null
+  sub_index: null
+  search_text: 'how is the space $\mathcal{b}$ of $\mathbb{r}$-linear bases of $\mathbb{c}$ defined and
+    parameterized as a complex analytic manifold? a basis $i \colon \mathbb{r}^2 \xrightarrow{\sim} \mathbb{c}$
+    is identified with the pair of complex numbers $(\omega_1, \omega_2) = (i(1, 0), i(0, 1)) \in \mathbb{c}^2$;
+    since $i$ is an $\mathbb{r}$-isomorphism, $\mathrm{im}(\omega_1/\omega_2) \neq 0$, realizing $\mathcal{b}$
+    as the open complex submanifold $\{(\omega_1, \omega_2) \in \mathbb{c}^2 : \mathrm{im}(\omega_1 \overline{\omega}_2)
+    \neq 0\} \cong \mathbb{c}^\times \times (\mathbb{c} \setminus \mathbb{r})$.'
+- id: math-uchicago-edu-emerton-gl2-pdf#001
+  text: How do $\mathrm{GL}_2(\mathbb{R})$ and $\mathbb{C}^\times$ act on the basis space $\mathcal{B}$?
+  hint: The group $\mathrm{GL}_2(\mathbb{R})$ acts on the right by precomposition $(i \cdot g)(v) = i(g
+    v)$ for $g = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$, mapping $(\omega_1,
+    \omega_2) \mapsto (a\omega_1 + c\omega_2, b\omega_1 + d\omega_2)$; the group $\mathbb{C}^\times =
+    \mathrm{GL}_\mathbb{C}(\mathbb{C})$ acts on the left by postcomposition/scaling $(\lambda \cdot i)(v)
+    = \lambda i(v)$, mapping $(\omega_1, \omega_2) \mapsto (\lambda \omega_1, \lambda \omega_2)$.
+  locator: null
+  sub_index: null
+  search_text: how do $\mathrm{gl}_2(\mathbb{r})$ and $\mathbb{c}^\times$ act on the basis space $\mathcal{b}$?
+    the group $\mathrm{gl}_2(\mathbb{r})$ acts on the right by precomposition $(i \cdot g)(v) = i(g v)$
+    for $g = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$, mapping $(\omega_1, \omega_2)
+    \mapsto (a\omega_1 + c\omega_2, b\omega_1 + d\omega_2)$; the group $\mathbb{c}^\times = \mathrm{gl}_\mathbb{c}(\mathbb{c})$
+    acts on the left by postcomposition/scaling $(\lambda \cdot i)(v) = \lambda i(v)$, mapping $(\omega_1,
+    \omega_2) \mapsto (\lambda \omega_1, \lambda \omega_2)$.
+- id: math-uchicago-edu-emerton-gl2-pdf#002
+  text: How does the coordinate chart $(\tau, z) \in \mathfrak{h}^\pm \times \mathbb{C}^\times$ describe
+    the right $\mathrm{GL}_2(\mathbb{R})$-action on $\mathcal{B}$?
+  hint: Writing $(\omega_1, \omega_2) = (z\tau, z)$ where $\tau = \omega_1/\omega_2 \in \mathfrak{h}^\pm$
+    and $z = \omega_2 \in \mathbb{C}^\times$, the right action of $g = \left(\begin{smallmatrix} a & b
+    \\ c & d \end{smallmatrix}\right)$ is given by $(\tau, z) \cdot g = \left(\frac{a\tau + b}{c\tau +
+    d}, (c\tau + d)z\right)$, which factors the Möbius transformation on $\tau$ with the automorphy factor
+    $(c\tau + d)$ on $z$.
+  locator: null
+  sub_index: null
+  search_text: how does the coordinate chart $(\tau, z) \in \mathfrak{h}^\pm \times \mathbb{c}^\times$
+    describe the right $\mathrm{gl}_2(\mathbb{r})$-action on $\mathcal{b}$? writing $(\omega_1, \omega_2)
+    = (z\tau, z)$ where $\tau = \omega_1/\omega_2 \in \mathfrak{h}^\pm$ and $z = \omega_2 \in \mathbb{c}^\times$,
+    the right action of $g = \left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)$ is given
+    by $(\tau, z) \cdot g = \left(\frac{a\tau + b}{c\tau + d}, (c\tau + d)z\right)$, which factors the
+    möbius transformation on $\tau$ with the automorphy factor $(c\tau + d)$ on $z$.
+- id: math-uchicago-edu-emerton-gl2-pdf#003
+  text: How is the Lie algebra $\mathfrak{gl}_2(\mathbb{C})$ decomposed into holomorphic and anti-holomorphic
+    tangent spaces at a basepoint $i_0 \in \mathcal{B}$?
+  hint: Fixing the standard basis $i_0 \colon (x, y) \mapsto x + iy$ identifies $\mathcal{B} \cong \mathrm{GL}_2(\mathbb{R})$
+    as a principal homogeneous space; the complexified tangent space $T_{i_0} \mathcal{B} \cong \mathfrak{gl}_2(\mathbb{C})$
+    decomposes under the complex structure into $T_{i_0}^{1, 0} \mathcal{B} \oplus T_{i_0}^{0, 1} \mathcal{B}$,
+    where the subspace $V_{i_0} \subset \mathfrak{gl}_2(\mathbb{C})$ corresponding to holomorphic tangent
+    vectors is spanned by the Lie algebra elements generating rotations and dilations.
+  locator: null
+  sub_index: null
+  search_text: how is the lie algebra $\mathfrak{gl}_2(\mathbb{c})$ decomposed into holomorphic and anti-holomorphic
+    tangent spaces at a basepoint $i_0 \in \mathcal{b}$? fixing the standard basis $i_0 \colon (x, y)
+    \mapsto x + iy$ identifies $\mathcal{b} \cong \mathrm{gl}_2(\mathbb{r})$ as a principal homogeneous
+    space; the complexified tangent space $t_{i_0} \mathcal{b} \cong \mathfrak{gl}_2(\mathbb{c})$ decomposes
+    under the complex structure into $t_{i_0}^{1, 0} \mathcal{b} \oplus t_{i_0}^{0, 1} \mathcal{b}$, where
+    the subspace $v_{i_0} \subset \mathfrak{gl}_2(\mathbb{c})$ corresponding to holomorphic tangent vectors
+    is spanned by the lie algebra elements generating rotations and dilations.
+- id: math-uchicago-edu-emerton-gl2-pdf#004
+  text: What are the standard basis elements $(Z, H, Y_+, Y_-)$ of $\mathfrak{sl}_2(\mathbb{C})$ / $\mathfrak{gl}_2(\mathbb{C})$
+    and the center $\mathcal{Z}(\mathfrak{gl}_2)$ of the universal enveloping algebra?
+  hint: $Z = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)$, $H = \left(\begin{smallmatrix}
+    1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$, $Y_+ = \left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right)$,
+    $Y_- = \left(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}\right)$; the center $\mathcal{Z}(\mathfrak{gl}_2(\mathbb{C}))
+    \cong \mathbb{C}[Z, \Delta]$ is a polynomial algebra in two variables generated by the central element
+    $Z$ and the Casimir element $\Delta = \frac{1}{4}H^2 + \frac{1}{2}H + Y_- Y_+$.
+  locator: null
+  sub_index: null
+  search_text: what are the standard basis elements $(z, h, y_+, y_-)$ of $\mathfrak{sl}_2(\mathbb{c})$
+    / $\mathfrak{gl}_2(\mathbb{c})$ and the center $\mathcal{z}(\mathfrak{gl}_2)$ of the universal enveloping
+    algebra? $z = \left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)$, $h = \left(\begin{smallmatrix}
+    1 & 0 \\ 0 & -1 \end{smallmatrix}\right)$, $y_+ = \left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right)$,
+    $y_- = \left(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}\right)$; the center $\mathcal{z}(\mathfrak{gl}_2(\mathbb{c}))
+    \cong \mathbb{c}[z, \delta]$ is a polynomial algebra in two variables generated by the central element
+    $z$ and the casimir element $\delta = \frac{1}{4}h^2 + \frac{1}{2}h + y_- y_+$.
+- id: math-uchicago-edu-emerton-gl2-pdf#005
+  text: How is the moduli space of discrete rank-2 lattices $\mathcal{L} \subset \mathbb{C}$ identified
+    with the quotient space $\mathcal{B} / \mathrm{GL}_2(\mathbb{Z})$?
+  hint: The map assigning a basis $(\omega_1, \omega_2)$ to the lattice $\Lambda = \mathbb{Z}\omega_1
+    \oplus \mathbb{Z}\omega_2$ is surjective; two bases span the same lattice if and only if they differ
+    by a change-of-basis matrix in $\mathrm{GL}_2(\mathbb{Z})$, inducing a bijection $\mathcal{B}/\mathrm{GL}_2(\mathbb{Z})
+    \xrightarrow{\sim} \mathcal{L}$ that endows $\mathcal{L}$ with the structure of a complex analytic
+    surface.
+  locator: null
+  sub_index: null
+  search_text: how is the moduli space of discrete rank-2 lattices $\mathcal{l} \subset \mathbb{c}$ identified
+    with the quotient space $\mathcal{b} / \mathrm{gl}_2(\mathbb{z})$? the map assigning a basis $(\omega_1,
+    \omega_2)$ to the lattice $\lambda = \mathbb{z}\omega_1 \oplus \mathbb{z}\omega_2$ is surjective;
+    two bases span the same lattice if and only if they differ by a change-of-basis matrix in $\mathrm{gl}_2(\mathbb{z})$,
+    inducing a bijection $\mathcal{b}/\mathrm{gl}_2(\mathbb{z}) \xrightarrow{\sim} \mathcal{l}$ that endows
+    $\mathcal{l}$ with the structure of a complex analytic surface.
+- id: math-uchicago-edu-emerton-gl2-pdf#006
+  text: How is a classical modular form of weight $k$ defined geometrically as a function on lattices
+    $\mathcal{L}$?
+  hint: A modular form of weight $k$ for $\mathrm{SL}_2(\mathbb{Z})$ is a holomorphic function $F \colon
+    \mathcal{L} \to \mathbb{C}$ satisfying the homogeneity condition $F(\lambda \Lambda) = \lambda^{-k}
+    F(\Lambda)$ for all $\lambda \in \mathbb{C}^\times$, together with a regularity/boundedness condition
+    as the lattice degenerates.
+  locator: null
+  sub_index: null
+  search_text: how is a classical modular form of weight $k$ defined geometrically as a function on lattices
+    $\mathcal{l}$? a modular form of weight $k$ for $\mathrm{sl}_2(\mathbb{z})$ is a holomorphic function
+    $f \colon \mathcal{l} \to \mathbb{c}$ satisfying the homogeneity condition $f(\lambda \lambda) = \lambda^{-k}
+    f(\lambda)$ for all $\lambda \in \mathbb{c}^\times$, together with a regularity/boundedness condition
+    as the lattice degenerates.
+- id: math-uchicago-edu-emerton-gl2-pdf#007
+  text: How does the lattice function $F(\Lambda)$ translate into a classical holomorphic modular form
+    $f(\tau)$ on the upper half-plane $\mathfrak{h}$?
+  hint: Define $f(\tau) := F(\mathbb{Z}\tau \oplus \mathbb{Z})$ for $\tau \in \mathfrak{h}$. Homogeneity
+    implies $f\left(\frac{a\tau+b}{c\tau+d}\right) = F\left(\mathbb{Z}\frac{a\tau+b}{c\tau+d} \oplus \mathbb{Z}\right)
+    = F\left((c\tau+d)^{-1}(\mathbb{Z}(a\tau+b) \oplus \mathbb{Z}(c\tau+d))\right) = (c\tau+d)^k F(\mathbb{Z}\tau
+    \oplus \mathbb{Z}) = (c\tau+d)^k f(\tau)$, which is the classical modular transformation law.
+  locator: null
+  sub_index: null
+  search_text: how does the lattice function $f(\lambda)$ translate into a classical holomorphic modular
+    form $f(\tau)$ on the upper half-plane $\mathfrak{h}$? define $f(\tau) := f(\mathbb{z}\tau \oplus
+    \mathbb{z})$ for $\tau \in \mathfrak{h}$. homogeneity implies $f\left(\frac{a\tau+b}{c\tau+d}\right)
+    = f\left(\mathbb{z}\frac{a\tau+b}{c\tau+d} \oplus \mathbb{z}\right) = f\left((c\tau+d)^{-1}(\mathbb{z}(a\tau+b)
+    \oplus \mathbb{z}(c\tau+d))\right) = (c\tau+d)^k f(\mathbb{z}\tau \oplus \mathbb{z}) = (c\tau+d)^k
+    f(\tau)$, which is the classical modular transformation law.
+- id: math-uchicago-edu-emerton-gl2-pdf#008
+  text: How does Strong Approximation decompose the adelic group $\mathrm{GL}_2(\mathbb{A}_\mathbb{Q})$
+    into classical components?
+  hint: Strong approximation for $\mathrm{SL}_2$ implies $\mathrm{GL}_2(\mathbb{A}_\mathbb{Q}) = \mathrm{GL}_2(\mathbb{Q})
+    \cdot \mathrm{GL}_2^+(\mathbb{R}) \cdot K_0(N)$, where $K_0(N) = \prod_{p<\infty} K_p \subset \mathrm{GL}_2(\mathbb{A}_f)$
+    is a compact open subgroup; taking quotients yields the topological bijection $\mathrm{GL}_2(\mathbb{Q})
+    \backslash \mathrm{GL}_2(\mathbb{A}_\mathbb{Q}) / K_0(N) K_\infty \cong \Gamma_0(N) \backslash \mathfrak{h}
+    = Y_0(N)$.
+  locator: null
+  sub_index: null
+  search_text: how does strong approximation decompose the adelic group $\mathrm{gl}_2(\mathbb{a}_\mathbb{q})$
+    into classical components? strong approximation for $\mathrm{sl}_2$ implies $\mathrm{gl}_2(\mathbb{a}_\mathbb{q})
+    = \mathrm{gl}_2(\mathbb{q}) \cdot \mathrm{gl}_2^+(\mathbb{r}) \cdot k_0(n)$, where $k_0(n) = \prod_{p<\infty}
+    k_p \subset \mathrm{gl}_2(\mathbb{a}_f)$ is a compact open subgroup; taking quotients yields the topological
+    bijection $\mathrm{gl}_2(\mathbb{q}) \backslash \mathrm{gl}_2(\mathbb{a}_\mathbb{q}) / k_0(n) k_\infty
+    \cong \gamma_0(n) \backslash \mathfrak{h} = y_0(n)$.
+- id: math-uchicago-edu-emerton-gl2-pdf#009
+  text: How is an automorphic form on $\mathrm{GL}_2(\mathbb{A}_\mathbb{Q})$ rigorously defined?
+  hint: 'A smooth function $\phi \colon \mathrm{GL}_2(\mathbb{A}_\mathbb{Q}) \to \mathbb{C}$ satisfying:
+    (1) Left $\mathrm{GL}_2(\mathbb{Q})$-invariance: $\phi(\gamma g) = \phi(g)$ for all $\gamma \in \mathrm{GL}_2(\mathbb{Q})$;
+    (2) Right $K$-finiteness: the right translates under $K_\infty \times K_f = \mathrm{O}_2(\mathbb{R})
+    \times \prod_{p} \mathrm{GL}_2(\mathbb{Z}_p)$ span a finite-dimensional space; (3) $\mathcal{Z}(\mathfrak{gl}_2)$-finiteness:
+    the action of the center of the universal enveloping algebra $\mathcal{Z}(\mathfrak{gl}_2)$ generates
+    a finite-dimensional space (eigenfunction of the Casimir operator); (4) Moderate growth / slow decrease:
+    $|\phi(g)| \le C \|g\|^r$ for constants $C, r > 0$ with respect to a standard adelic height/norm.'
+  locator: null
+  sub_index: null
+  search_text: 'how is an automorphic form on $\mathrm{gl}_2(\mathbb{a}_\mathbb{q})$ rigorously defined?
+    a smooth function $\phi \colon \mathrm{gl}_2(\mathbb{a}_\mathbb{q}) \to \mathbb{c}$ satisfying: (1)
+    left $\mathrm{gl}_2(\mathbb{q})$-invariance: $\phi(\gamma g) = \phi(g)$ for all $\gamma \in \mathrm{gl}_2(\mathbb{q})$;
+    (2) right $k$-finiteness: the right translates under $k_\infty \times k_f = \mathrm{o}_2(\mathbb{r})
+    \times \prod_{p} \mathrm{gl}_2(\mathbb{z}_p)$ span a finite-dimensional space; (3) $\mathcal{z}(\mathfrak{gl}_2)$-finiteness:
+    the action of the center of the universal enveloping algebra $\mathcal{z}(\mathfrak{gl}_2)$ generates
+    a finite-dimensional space (eigenfunction of the casimir operator); (4) moderate growth / slow decrease:
+    $|\phi(g)| \le c \|g\|^r$ for constants $c, r > 0$ with respect to a standard adelic height/norm.'
+- id: math-uchicago-edu-emerton-gl2-pdf#010
+  text: How does a classical modular form $f(\tau)$ lift to an adelic automorphic function $\phi_f \colon
+    \mathrm{GL}_2(\mathbb{A}_\mathbb{Q}) \to \mathbb{C}$?
+  hint: Using the decomposition $g = \gamma \cdot g_\infty \cdot k_f$ with $\gamma \in \mathrm{GL}_2(\mathbb{Q})$,
+    $g_\infty = \left(\begin{smallmatrix} y & x \\ 0 & 1 \end{smallmatrix}\right) \in \mathrm{GL}_2^+(\mathbb{R})$,
+    and $k_f \in K_0(N)$, define $\phi_f(g) := (cz+d)^{-k} f(g_\infty \cdot i) = y^{k/2} f(x + iy)$; the
+    transformation law of $f$ guarantees that $\phi_f$ is well-defined, left $\mathrm{GL}_2(\mathbb{Q})$-invariant,
+    and an eigenfunction of the Casimir operator $\Delta$ with eigenvalue $\frac{k}{2}\left(\frac{k}{2}-1\right)$.
+  locator: null
+  sub_index: null
+  search_text: how does a classical modular form $f(\tau)$ lift to an adelic automorphic function $\phi_f
+    \colon \mathrm{gl}_2(\mathbb{a}_\mathbb{q}) \to \mathbb{c}$? using the decomposition $g = \gamma \cdot
+    g_\infty \cdot k_f$ with $\gamma \in \mathrm{gl}_2(\mathbb{q})$, $g_\infty = \left(\begin{smallmatrix}
+    y & x \\ 0 & 1 \end{smallmatrix}\right) \in \mathrm{gl}_2^+(\mathbb{r})$, and $k_f \in k_0(n)$, define
+    $\phi_f(g) := (cz+d)^{-k} f(g_\infty \cdot i) = y^{k/2} f(x + iy)$; the transformation law of $f$
+    guarantees that $\phi_f$ is well-defined, left $\mathrm{gl}_2(\mathbb{q})$-invariant, and an eigenfunction
+    of the casimir operator $\delta$ with eigenvalue $\frac{k}{2}\left(\frac{k}{2}-1\right)$.
+- id: math-uchicago-edu-emerton-gl2-pdf#011
+  text: How are adelic Eisenstein series constructed as induced representations and automorphic forms?
+  hint: Let $B(\mathbb{A}) = T(\mathbb{A}) U(\mathbb{A})$ be the standard Borel subgroup. For a pair of
+    Hecke characters $\chi_1, \chi_2 \colon \mathbb{Q}^\times \backslash \mathbb{A}^\times \to \mathbb{C}^\times$,
+    form the normalized parabolically induced representation $I(\chi_1, \chi_2) = \mathrm{Ind}_{B(\mathbb{A})}^{\mathrm{GL}_2(\mathbb{A})}(\chi_1
+    \otimes \chi_2)$; the Eisenstein series is defined by the average $E(g, \Phi) = \sum_{\gamma \in B(\mathbb{Q})\backslash
+    \mathrm{GL}_2(\mathbb{Q})} \Phi(\gamma g)$, which converges for $\mathrm{Re}(s) \gg 0$, admits a meromorphic
+    continuation to all $s \in \mathbb{C}$, and recovers classical Eisenstein series $E_k(\tau)$ upon
+    restriction to the archimedean component.
+  locator: null
+  sub_index: null
+  search_text: how are adelic eisenstein series constructed as induced representations and automorphic
+    forms? let $b(\mathbb{a}) = t(\mathbb{a}) u(\mathbb{a})$ be the standard borel subgroup. for a pair
+    of hecke characters $\chi_1, \chi_2 \colon \mathbb{q}^\times \backslash \mathbb{a}^\times \to \mathbb{c}^\times$,
+    form the normalized parabolically induced representation $i(\chi_1, \chi_2) = \mathrm{ind}_{b(\mathbb{a})}^{\mathrm{gl}_2(\mathbb{a})}(\chi_1
+    \otimes \chi_2)$; the eisenstein series is defined by the average $e(g, \phi) = \sum_{\gamma \in b(\mathbb{q})\backslash
+    \mathrm{gl}_2(\mathbb{q})} \phi(\gamma g)$, which converges for $\mathrm{re}(s) \gg 0$, admits a meromorphic
+    continuation to all $s \in \mathbb{c}$, and recovers classical eisenstein series $e_k(\tau)$ upon
+    restriction to the archimedean component.

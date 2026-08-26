@@ -1,41 +1,505 @@
 url: https://www.math.cmu.edu/~af1p/Teaching/Combinatorics/Slides/Basic-Counting.pdf
-title: basic counting and combinatorics
-note: null
+title: Basic Counting
+note: Alan Frieze.
 tags: []
 source_file: exercises.txt
-locator_kind: page
+locator_kind: none
 exercises:
 - id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#000
-  text: Compute the number of functions $[n] \to [m]$ as $m^n$, and subsets of $[n]$ as $2^n$
-  hint: null
-  locator:
-    kind: page
-    value: '2'
-    number: 2
-  sub_index: 0
-  search_text: compute the number of functions $[n] \to [m]$ as $m^n$, and subsets of $[n]$ as $2^n$
+  text: How is the total number of functions from an $n$-element set to an $m$-element set computed by
+    induction?
+  hint: There are $m$ choices for each of the $n$ domain elements, giving $|\mathrm{Hom}(N, M)| = m^n$.
+  locator: null
+  sub_index: null
+  search_text: how is the total number of functions from an $n$-element set to an $m$-element set computed
+    by induction? there are $m$ choices for each of the $n$ domain elements, giving $|\mathrm{hom}(n,
+    m)| = m^n$.
 - id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#001
-  text: Show that the number of even subsets of a non-empty finite set equals the number of odd subsets
-    ($2^{n-1}$)
-  hint: null
-  locator:
-    kind: page
-    value: '5'
-    number: 5
-  sub_index: 0
-  search_text: show that the number of even subsets of a non-empty finite set equals the number of odd
-    subsets ($2^{n-1}$)
+  text: How does the characteristic / indicator function establish the cardinality of the power set $\mathcal{P}(X)$?
+  hint: The map assigning each subset $A \subset X$ to its indicator function $\mathbf{1}_A \colon X \to
+    \{0, 1\}$ is a bijection, proving $|\mathcal{P}(X)| = 2^{|X|}$ via Yoneda-style embedding into truth
+    values.
+  locator: null
+  sub_index: null
+  search_text: how does the characteristic / indicator function establish the cardinality of the power
+    set $\mathcal{p}(x)$? the map assigning each subset $a \subset x$ to its indicator function $\mathbf{1}_a
+    \colon x \to \{0, 1\}$ is a bijection, proving $|\mathcal{p}(x)| = 2^{|x|}$ via yoneda-style embedding
+    into truth values.
 - id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#002
-  text: Compute the binomial coefficients $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ and Pascal's identity $\binom{n}{k}
-    = \binom{n-1}{k} + \binom{n-1}{k-1}$
-  hint: null
+  text: Why do the number of even subsets and odd subsets of a non-empty finite set $X$ of size $n$ both
+    equal $2^{n-1}$?
+  hint: Pairing each subset $A$ with $A \oplus \{x_0\}$ for a fixed element $x_0 \in X$ defines a bijection
+    reversing parity; algebraically, $\sum_{k=0}^n \binom{n}{k} (-1)^k = (1 - 1)^n = 0$.
   locator: null
   sub_index: null
-  search_text: compute the binomial coefficients $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ and pascal's identity
-    $\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$
+  search_text: why do the number of even subsets and odd subsets of a non-empty finite set $x$ of size
+    $n$ both equal $2^{n-1}$? pairing each subset $a$ with $a \oplus \{x_0\}$ for a fixed element $x_0
+    \in x$ defines a bijection reversing parity; algebraically, $\sum_{k=0}^n \binom{n}{k} (-1)^k = (1
+    - 1)^n = 0$.
 - id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#003
-  text: 'State Vandermonde''s convolution formula: $\sum_{r=0}^k \binom{m}{r}\binom{n}{k-r} = \binom{m+n}{k}$'
+  text: How is the number of injective (one-to-one) maps from an $n$-element set to an $m$-element set
+    computed?
+  hint: 'By the multiplication principle: $m(m-1)(m-2)\cdots(m-n+1) = \frac{m!}{(m-n)!} = (m)_n$ for $m
+    \ge n$, and $0$ if $m < n$.'
+  locator: null
+  sub_index: null
+  search_text: 'how is the number of injective (one-to-one) maps from an $n$-element set to an $m$-element
+    set computed? by the multiplication principle: $m(m-1)(m-2)\cdots(m-n+1) = \frac{m!}{(m-n)!} = (m)_n$
+    for $m \ge n$, and $0$ if $m < n$.'
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#004
+  text: How does the count of injective mappings relate to the definition of the binomial coefficient
+    $\binom{n}{k}$?
+  hint: The number of injections from a $k$-element set to an $n$-element set is $(n)_k$; since each $k$-element
+    subset corresponds to $k!$ distinct injections, $\binom{n}{k} = \frac{(n)_k}{k!} = \frac{n!}{k!(n-k)!}$.
+  locator: null
+  sub_index: null
+  search_text: how does the count of injective mappings relate to the definition of the binomial coefficient
+    $\binom{n}{k}$? the number of injections from a $k$-element set to an $n$-element set is $(n)_k$;
+    since each $k$-element subset corresponds to $k!$ distinct injections, $\binom{n}{k} = \frac{(n)_k}{k!}
+    = \frac{n!}{k!(n-k)!}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#005
+  text: How are integer compositions/partitions $\sum_{j=1}^n i_j = m$ with non-negative integers $i_j
+    \ge 0$ counted via "stars and bars"?
+  hint: Placing $m$ indistinguishable stars and $n-1$ indistinguishable dividing bars in a line yields
+    $\binom{m+n-1}{n-1} = \binom{m+n-1}{m}$ total ways to distribute $m$ balls into $n$ distinct boxes.
+  locator: null
+  sub_index: null
+  search_text: how are integer compositions/partitions $\sum_{j=1}^n i_j = m$ with non-negative integers
+    $i_j \ge 0$ counted via "stars and bars"? placing $m$ indistinguishable stars and $n-1$ indistinguishable
+    dividing bars in a line yields $\binom{m+n-1}{n-1} = \binom{m+n-1}{m}$ total ways to distribute $m$
+    balls into $n$ distinct boxes.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#006
+  text: How does one count non-consecutive selections of $k$ items along a cycle of length $n$ (Kaplansky's
+    second lemma)?
+  hint: By breaking the cycle into a path at a designated element, the number of subsets containing no
+    two adjacent elements is $\frac{n}{n-k}\binom{n-k}{k} = \frac{n}{k}\binom{n-k-1}{k-1}$.
+  locator: null
+  sub_index: null
+  search_text: how does one count non-consecutive selections of $k$ items along a cycle of length $n$
+    (kaplansky's second lemma)? by breaking the cycle into a path at a designated element, the number
+    of subsets containing no two adjacent elements is $\frac{n}{n-k}\binom{n-k}{k} = \frac{n}{k}\binom{n-k-1}{k-1}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#007
+  text: How is the algebraic and combinatorial symmetry $\binom{n}{r} = \binom{n}{n-r}$ established?
+  hint: Selecting $r$ elements to include in a subset is in canonical bijection with selecting the remaining
+    $n-r$ elements to exclude via complementation $A \mapsto X \setminus A$.
+  locator: null
+  sub_index: null
+  search_text: how is the algebraic and combinatorial symmetry $\binom{n}{r} = \binom{n}{n-r}$ established?
+    selecting $r$ elements to include in a subset is in canonical bijection with selecting the remaining
+    $n-r$ elements to exclude via complementation $a \mapsto x \setminus a$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#008
+  text: What is Pascal's Identity and what is its combinatorial interpretation?
+  hint: $\binom{n+1}{k+1} = \binom{n}{k+1} + \binom{n}{k}$; a $(k+1)$-subset of $\{1, \dots, n+1\}$ either
+    omits the element $n+1$ (giving $\binom{n}{k+1}$ choices) or contains $n+1$ (giving $\binom{n}{k}$
+    choices for the remaining $k$ elements).
+  locator: null
+  sub_index: null
+  search_text: what is pascal's identity and what is its combinatorial interpretation? $\binom{n+1}{k+1}
+    = \binom{n}{k+1} + \binom{n}{k}$; a $(k+1)$-subset of $\{1, \dots, n+1\}$ either omits the element
+    $n+1$ (giving $\binom{n}{k+1}$ choices) or contains $n+1$ (giving $\binom{n}{k}$ choices for the remaining
+    $k$ elements).
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#009
+  text: How is Vandermonde's Identity $\sum_{r=0}^k \binom{m}{r}\binom{n}{k-r} = \binom{m+n}{k}$ proved
+    combinatorially?
+  hint: Choosing $k$ elements from a disjoint union of sets $A \amalg B$ with $|A|=m$ and $|B|=n$ decomposes
+    into choosing $r$ elements from $A$ and $k-r$ elements from $B$ across all $0 \le r \le k$.
+  locator: null
+  sub_index: null
+  search_text: how is vandermonde's identity $\sum_{r=0}^k \binom{m}{r}\binom{n}{k-r} = \binom{m+n}{k}$
+    proved combinatorially? choosing $k$ elements from a disjoint union of sets $a \amalg b$ with $|a|=m$
+    and $|b|=n$ decomposes into choosing $r$ elements from $a$ and $k-r$ elements from $b$ across all
+    $0 \le r \le k$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#010
+  text: How does the Binomial Theorem $(1+x)^n = \sum_{k=0}^n \binom{n}{k} x^k$ yield summation and derivative
+    identities?
+  hint: Setting $x=1$ yields $\sum \binom{n}{k} = 2^n$; setting $x=-1$ yields the parity vanishing $\sum
+    (-1)^k \binom{n}{k} = 0$; differentiating with respect to $x$ yields $n(1+x)^{n-1} = \sum k \binom{n}{k}
+    x^{k-1}$, giving $\sum k \binom{n}{k} = n 2^{n-1}$ at $x=1$.
+  locator: null
+  sub_index: null
+  search_text: how does the binomial theorem $(1+x)^n = \sum_{k=0}^n \binom{n}{k} x^k$ yield summation
+    and derivative identities? setting $x=1$ yields $\sum \binom{n}{k} = 2^n$; setting $x=-1$ yields the
+    parity vanishing $\sum (-1)^k \binom{n}{k} = 0$; differentiating with respect to $x$ yields $n(1+x)^{n-1}
+    = \sum k \binom{n}{k} x^{k-1}$, giving $\sum k \binom{n}{k} = n 2^{n-1}$ at $x=1$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#011
+  text: How is the number of monotone grid paths from $(0,0)$ to $(a,b)$ computed?
+  hint: Any monotone path consists of $a$ horizontal steps and $b$ vertical steps in any order, giving
+    $\binom{a+b}{a} = \binom{a+b}{b}$ total paths.
+  locator: null
+  sub_index: null
+  search_text: how is the number of monotone grid paths from $(0,0)$ to $(a,b)$ computed? any monotone
+    path consists of $a$ horizontal steps and $b$ vertical steps in any order, giving $\binom{a+b}{a}
+    = \binom{a+b}{b}$ total paths.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#012
+  text: How does the Andre reflection principle compute paths strictly below the diagonal and derive Catalan
+    numbers?
+  hint: Paths from $(0,0)$ to $(n,n)$ that do not cross the diagonal $y=x$ are computed by subtracting
+    the "bad" paths that touch $y=x+1$; reflecting the path after its first contact with $y=x+1$ gives
+    a bijection to paths from $(-1,1)$ to $(n,n)$, yielding $\binom{2n}{n} - \binom{2n}{n+1} = \frac{1}{n+1}\binom{2n}{n}
+    = C_n$.
+  locator: null
+  sub_index: null
+  search_text: how does the andre reflection principle compute paths strictly below the diagonal and derive
+    catalan numbers? paths from $(0,0)$ to $(n,n)$ that do not cross the diagonal $y=x$ are computed by
+    subtracting the "bad" paths that touch $y=x+1$; reflecting the path after its first contact with $y=x+1$
+    gives a bijection to paths from $(-1,1)$ to $(n,n)$, yielding $\binom{2n}{n} - \binom{2n}{n+1} = \frac{1}{n+1}\binom{2n}{n}
+    = c_n$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#013
+  text: How are multiset permutations counted using multinomial coefficients?
+  hint: The number of distinct permutations of $n$ items containing $k_1$ items of type 1, $k_2$ items
+    of type 2, $\dots$, $k_r$ items of type $r$ (with $\sum k_i = n$) is given by the multinomial coefficient
+    $\binom{n}{k_1, k_2, \dots, k_r} = \frac{n!}{k_1! k_2! \cdots k_r!}$.
+  locator: null
+  sub_index: null
+  search_text: how are multiset permutations counted using multinomial coefficients? the number of distinct
+    permutations of $n$ items containing $k_1$ items of type 1, $k_2$ items of type 2, $\dots$, $k_r$
+    items of type $r$ (with $\sum k_i = n$) is given by the multinomial coefficient $\binom{n}{k_1, k_2,
+    \dots, k_r} = \frac{n!}{k_1! k_2! \cdots k_r!}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#014
+  text: State Cayley's Formula for the number of labeled trees on $n$ vertices
+  hint: The number of spanning trees on the complete graph $K_n$ is $\tau(K_n) = n^{n-2}$.
+  locator: null
+  sub_index: null
+  search_text: state cayley's formula for the number of labeled trees on $n$ vertices the number of spanning
+    trees on the complete graph $k_n$ is $\tau(k_n) = n^{n-2}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#015
+  text: How does the Prüfer sequence establish a bijection for Cayley's Formula?
+  hint: Every labeled tree on $n$ vertices corresponds bijectively to a Prüfer sequence of length $n-2$
+    with entries in $\{1, \dots, n\}$ by iteratively removing the smallest leaf and recording its unique
+    neighbor.
+  locator: null
+  sub_index: null
+  search_text: how does the prüfer sequence establish a bijection for cayley's formula? every labeled
+    tree on $n$ vertices corresponds bijectively to a prüfer sequence of length $n-2$ with entries in
+    $\{1, \dots, n\}$ by iteratively removing the smallest leaf and recording its unique neighbor.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#016
+  text: How are labeled trees with a prescribed degree sequence $(d_1, \dots, d_n)$ counted?
+  hint: In the Prüfer sequence of length $n-2$, vertex $i$ appears precisely $d_i - 1$ times; the number
+    of such trees is given by the multinomial coefficient $\binom{n-2}{d_1-1, d_2-1, \dots, d_n-1}$.
+  locator: null
+  sub_index: null
+  search_text: how are labeled trees with a prescribed degree sequence $(d_1, \dots, d_n)$ counted? in
+    the prüfer sequence of length $n-2$, vertex $i$ appears precisely $d_i - 1$ times; the number of such
+    trees is given by the multinomial coefficient $\binom{n-2}{d_1-1, d_2-1, \dots, d_n-1}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#017
+  text: State the Principle of Inclusion-Exclusion (PIE) for finite sets
+  hint: $|\bigcup_{i=1}^n A_i| = \sum_{k=1}^n (-1)^{k-1} \sum_{1 \le i_1 < \dots < i_k \le n} |A_{i_1}
+    \cap \dots \cap A_{i_k}|$; dually, the number of elements in none of the sets is $|\bigcap A_i^c|
+    = \sum_{k=0}^n (-1)^k \sum_{|S|=k} |\bigcap_{i \in S} A_i|$.
+  locator: null
+  sub_index: null
+  search_text: state the principle of inclusion-exclusion (pie) for finite sets $|\bigcup_{i=1}^n a_i|
+    = \sum_{k=1}^n (-1)^{k-1} \sum_{1 \le i_1 < \dots < i_k \le n} |a_{i_1} \cap \dots \cap a_{i_k}|$;
+    dually, the number of elements in none of the sets is $|\bigcap a_i^c| = \sum_{k=0}^n (-1)^k \sum_{|s|=k}
+    |\bigcap_{i \in s} a_i|$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#018
+  text: How is the number of derangements $D_n$ (permutations with no fixed points) computed via PIE?
+  hint: Let $A_i = \{\pi \in S_n \mid \pi(i) = i\}$; for any subset $S \subset [n]$ of size $k$, $|\bigcap_{i
+    \in S} A_i| = (n-k)!$, so $D_n = \sum_{k=0}^n (-1)^k \binom{n}{k} (n-k)! = n! \sum_{k=0}^n \frac{(-1)^k}{k!}
+    \approx \frac{n!}{e}$.
+  locator: null
+  sub_index: null
+  search_text: how is the number of derangements $d_n$ (permutations with no fixed points) computed via
+    pie? let $a_i = \{\pi \in s_n \mid \pi(i) = i\}$; for any subset $s \subset [n]$ of size $k$, $|\bigcap_{i
+    \in s} a_i| = (n-k)!$, so $d_n = \sum_{k=0}^n (-1)^k \binom{n}{k} (n-k)! = n! \sum_{k=0}^n \frac{(-1)^k}{k!}
+    \approx \frac{n!}{e}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#019
+  text: How is Euler's totient function $\phi(n)$ derived via the Principle of Inclusion-Exclusion?
+  hint: Let $n = p_1^{a_1} \cdots p_r^{a_r}$ and let $A_i = \{x \in [n] \mid p_i \mid x\}$; since $|A_i|
+    = \frac{n}{p_i}$ and $|\bigcap_{i \in S} A_i| = \frac{n}{\prod_{i \in S} p_i}$, PIE gives $\phi(n)
+    = n \sum_{S \subset [r]} \frac{(-1)^{|S|}}{\prod_{i \in S} p_i} = n \prod_{i=1}^r \left(1 - \frac{1}{p_i}\right)$.
+  locator: null
+  sub_index: null
+  search_text: how is euler's totient function $\phi(n)$ derived via the principle of inclusion-exclusion?
+    let $n = p_1^{a_1} \cdots p_r^{a_r}$ and let $a_i = \{x \in [n] \mid p_i \mid x\}$; since $|a_i| =
+    \frac{n}{p_i}$ and $|\bigcap_{i \in s} a_i| = \frac{n}{\prod_{i \in s} p_i}$, pie gives $\phi(n) =
+    n \sum_{s \subset [r]} \frac{(-1)^{|s|}}{\prod_{i \in s} p_i} = n \prod_{i=1}^r \left(1 - \frac{1}{p_i}\right)$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#020
+  text: How is the number of surjective functions from an $n$-element set to an $m$-element set counted
+    via PIE?
+  hint: Let $A_j = \{f \colon [n] \to [m] \mid j \notin \mathrm{im}(f)\}$; for any $S \subset [m]$ of
+    size $k$, $|\bigcap_{j \in S} A_j| = (m-k)^n$, giving the surjection count $\mathrm{Surj}(n, m) =
+    \sum_{k=0}^m (-1)^k \binom{m}{k} (m-k)^n = m! \, S(n, m)$, where $S(n, m)$ is the Stirling number
+    of the second kind.
+  locator: null
+  sub_index: null
+  search_text: how is the number of surjective functions from an $n$-element set to an $m$-element set
+    counted via pie? let $a_j = \{f \colon [n] \to [m] \mid j \notin \mathrm{im}(f)\}$; for any $s \subset
+    [m]$ of size $k$, $|\bigcap_{j \in s} a_j| = (m-k)^n$, giving the surjection count $\mathrm{surj}(n,
+    m) = \sum_{k=0}^m (-1)^k \binom{m}{k} (m-k)^n = m! \, s(n, m)$, where $s(n, m)$ is the stirling number
+    of the second kind.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#021
+  text: What are the Bonferroni Inequalities?
+  hint: Truncating the Principle of Inclusion-Exclusion after an odd (resp. even) number of terms yields
+    alternating upper and lower bounds on the measure/cardinality of the union $|\bigcup A_i|$.
+  locator: null
+  sub_index: null
+  search_text: what are the bonferroni inequalities? truncating the principle of inclusion-exclusion after
+    an odd (resp. even) number of terms yields alternating upper and lower bounds on the measure/cardinality
+    of the union $|\bigcup a_i|$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#022
+  text: 'What is the Problème des Ménages? (Hint: The problem of counting the number of seatings of $n$
+    married couples at a round table such that men and women alternate and no husband sits next to his
+    wife, solvable by PIE with hit-polynomials along cycle graphs giving $M_n = \sum_{k=0}^n (-1)^k \frac{2n}{2n-k}\binom{2n-k}{k}(n-k)!$.)
+    https://www.math.cmu.edu/~af1p/Teaching/Combinatorics/Slides/Probabilistic-Method.pdf(opens in new
+    tab), Additive Combinatorics, Frieze'
   hint: null
   locator: null
   sub_index: null
-  search_text: 'state vandermonde''s convolution formula: $\sum_{r=0}^k \binom{m}{r}\binom{n}{k-r} = \binom{m+n}{k}$'
+  search_text: 'what is the problème des ménages? (hint: the problem of counting the number of seatings
+    of $n$ married couples at a round table such that men and women alternate and no husband sits next
+    to his wife, solvable by pie with hit-polynomials along cycle graphs giving $m_n = \sum_{k=0}^n (-1)^k
+    \frac{2n}{2n-k}\binom{2n-k}{k}(n-k)!$.) https://www.math.cmu.edu/~af1p/teaching/combinatorics/slides/probabilistic-method.pdf(opens
+    in new tab), additive combinatorics, frieze'
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#023
+  text: How is Erdős's lower bound on diagonal Ramsey numbers $R(k, k) > 2^{k/2}$ proved via the basic
+    probabilistic method?
+  hint: Color the edges of $K_n$ independently and uniformly at random with two colors (red/blue); the
+    probability that a fixed $k$-clique is monochromatic is $2^{1-\binom{k}{2}}$. By the union bound,
+    $\mathbb{P}(\text{monochromatic } K_k) \le \binom{n}{k} 2^{1-\binom{k}{2}} < 1$ whenever $n < 2^{k/2}$,
+    implying there exists a 2-coloring with no monochromatic $K_k$.
+  locator: null
+  sub_index: null
+  search_text: how is erdős's lower bound on diagonal ramsey numbers $r(k, k) > 2^{k/2}$ proved via the
+    basic probabilistic method? color the edges of $k_n$ independently and uniformly at random with two
+    colors (red/blue); the probability that a fixed $k$-clique is monochromatic is $2^{1-\binom{k}{2}}$.
+    by the union bound, $\mathbb{p}(\text{monochromatic } k_k) \le \binom{n}{k} 2^{1-\binom{k}{2}} < 1$
+    whenever $n < 2^{k/2}$, implying there exists a 2-coloring with no monochromatic $k_k$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#024
+  text: How does the method of conditional expectations derandomize the probabilistic 2-coloring construction
+    in polynomial time?
+  hint: Order the edges $e_1, \dots, e_m$; iteratively color $e_i$ red or blue to minimize the conditional
+    expectation $\mathbb{E}[\text{bad cliques} \mid c(e_1), \dots, c(e_i)]$, computing each step in $O(n^k)$
+    time to deterministically produce a valid coloring.
+  locator: null
+  sub_index: null
+  search_text: how does the method of conditional expectations derandomize the probabilistic 2-coloring
+    construction in polynomial time? order the edges $e_1, \dots, e_m$; iteratively color $e_i$ red or
+    blue to minimize the conditional expectation $\mathbb{e}[\text{bad cliques} \mid c(e_1), \dots, c(e_i)]$,
+    computing each step in $o(n^k)$ time to deterministically produce a valid coloring.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#025
+  text: How is the tournament property $S_k$ (for every $k$ players, there is a player beating all $k$)
+    proved to exist for large $n$?
+  hint: Consider a random tournament on $n$ vertices where each directed edge is chosen with probability
+    $1/2$. For a fixed $k$-subset $S$, the probability that a vertex $v \notin S$ beats all vertices in
+    $S$ is $2^{-k}$; the probability that no such $v$ exists is $(1 - 2^{-k})^{n-k}$. By the union bound,
+    $\mathbb{P}(\text{bad } S) \le \binom{n}{k} (1 - 2^{-k})^{n-k} < 1$ for $n > k^2 2^k \ln 2$, proving
+    the existence of an $S_k$-tournament.
+  locator: null
+  sub_index: null
+  search_text: how is the tournament property $s_k$ (for every $k$ players, there is a player beating
+    all $k$) proved to exist for large $n$? consider a random tournament on $n$ vertices where each directed
+    edge is chosen with probability $1/2$. for a fixed $k$-subset $s$, the probability that a vertex $v
+    \notin s$ beats all vertices in $s$ is $2^{-k}$; the probability that no such $v$ exists is $(1 -
+    2^{-k})^{n-k}$. by the union bound, $\mathbb{p}(\text{bad } s) \le \binom{n}{k} (1 - 2^{-k})^{n-k}
+    < 1$ for $n > k^2 2^k \ln 2$, proving the existence of an $s_k$-tournament.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#026
+  text: How is the height/depth of a random binary search tree (BST) on $n$ keys bounded probabilistically?
+  hint: The probability that an element reaches depth $\ge t$ is bounded by the probability of $t$ coin
+    tosses forming a monotone comparison chain; union bounding over all branches yields $\mathbb{P}(D_n
+    \ge t) \le 2^t \binom{n}{t} 2^{-t}$, which is strictly less than 1 when $t = C \log n$.
+  locator: null
+  sub_index: null
+  search_text: how is the height/depth of a random binary search tree (bst) on $n$ keys bounded probabilistically?
+    the probability that an element reaches depth $\ge t$ is bounded by the probability of $t$ coin tosses
+    forming a monotone comparison chain; union bounding over all branches yields $\mathbb{p}(d_n \ge t)
+    \le 2^t \binom{n}{t} 2^{-t}$, which is strictly less than 1 when $t = c \log n$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#027
+  text: How is the optimal stopping threshold and success probability derived in the classical Secretary
+    Problem?
+  hint: Reject the first $r-1$ candidates and select the first subsequent candidate who is better than
+    all previous ones. The probability of choosing the absolute best candidate is $P(r) = \frac{r-1}{n}
+    \sum_{k=r}^n \frac{1}{k-1} \approx -\frac{r}{n} \ln\left(\frac{r}{n}\right)$; setting $x = r/n$ and
+    maximizing $-x \ln x$ yields $x = 1/e \approx 0.368$ with optimal success probability $1/e$.
+  locator: null
+  sub_index: null
+  search_text: how is the optimal stopping threshold and success probability derived in the classical
+    secretary problem? reject the first $r-1$ candidates and select the first subsequent candidate who
+    is better than all previous ones. the probability of choosing the absolute best candidate is $p(r)
+    = \frac{r-1}{n} \sum_{k=r}^n \frac{1}{k-1} \approx -\frac{r}{n} \ln\left(\frac{r}{n}\right)$; setting
+    $x = r/n$ and maximizing $-x \ln x$ yields $x = 1/e \approx 0.368$ with optimal success probability
+    $1/e$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#028
+  text: What is the First Moment Method for non-negative integer-valued random variables?
+  hint: For any integer-valued random variable $X \ge 0$, $\mathbb{P}(X \ge 1) \le \mathbb{E}[X]$ (derived
+    directly from Markov's inequality $\mathbb{P}(X \ge a) \le \frac{\mathbb{E}[X]}{a}$ with $a = 1$).
+    If $\mathbb{E}[X] \to 0$, then $X = 0$ asymptotically almost surely.
+  locator: null
+  sub_index: null
+  search_text: what is the first moment method for non-negative integer-valued random variables? for any
+    integer-valued random variable $x \ge 0$, $\mathbb{p}(x \ge 1) \le \mathbb{e}[x]$ (derived directly
+    from markov's inequality $\mathbb{p}(x \ge a) \le \frac{\mathbb{e}[x]}{a}$ with $a = 1$). if $\mathbb{e}[x]
+    \to 0$, then $x = 0$ asymptotically almost surely.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#029
+  text: How is the hat-check / permutation fixed-point problem solved via linearity of expectation?
+  hint: Let $X = \sum_{i=1}^n X_i$, where $X_i = \mathbf{1}_{\{\pi(i) = i\}}$; since $\mathbb{P}(\pi(i)
+    = i) = \frac{1}{n}$, $\mathbb{E}[X] = \sum_{i=1}^n \mathbb{E}[X_i] = n \cdot \frac{1}{n} = 1$ for
+    all $n \ge 1$, regardless of dependencies.
+  locator: null
+  sub_index: null
+  search_text: how is the hat-check / permutation fixed-point problem solved via linearity of expectation?
+    let $x = \sum_{i=1}^n x_i$, where $x_i = \mathbf{1}_{\{\pi(i) = i\}}$; since $\mathbb{p}(\pi(i) =
+    i) = \frac{1}{n}$, $\mathbb{e}[x] = \sum_{i=1}^n \mathbb{e}[x_i] = n \cdot \frac{1}{n} = 1$ for all
+    $n \ge 1$, regardless of dependencies.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#030
+  text: How does Euler's formula $V - E + F = 2$ derive the planar graph edge bound and simple crossing
+    bound?
+  hint: In a planar graph, every face has at least 3 boundary edges, so $2E \ge 3F \implies F \le \frac{2}{3}E$;
+    substituting into $V - E + F = 2$ gives $E \le 3V - 6 < 3V$. Removing one edge per crossing in a non-planar
+    drawing yields the elementary crossing number bound $\mathrm{cr}(G) \ge |E| - 3|V|$.
+  locator: null
+  sub_index: null
+  search_text: how does euler's formula $v - e + f = 2$ derive the planar graph edge bound and simple
+    crossing bound? in a planar graph, every face has at least 3 boundary edges, so $2e \ge 3f \implies
+    f \le \frac{2}{3}e$; substituting into $v - e + f = 2$ gives $e \le 3v - 6 < 3v$. removing one edge
+    per crossing in a non-planar drawing yields the elementary crossing number bound $\mathrm{cr}(g) \ge
+    |e| - 3|v|$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#031
+  text: How does probabilistic amplification (subsampling) prove the Crossing Number Inequality $\mathrm{cr}(G)
+    \ge \frac{1}{64} \frac{|E|^3}{|V|^2}$?
+  hint: Draw $G$ with $\mathrm{cr}(G)$ crossings. Construct a random induced subgraph $G_p$ by including
+    each vertex independently with probability $p$. Then $\mathbb{E}[|V_p|] = p|V|$, $\mathbb{E}[|E_p|]
+    = p^2|E|$, and $\mathbb{E}[\mathrm{cr}(G_p)] \le p^4 \mathrm{cr}(G)$. Applying the elementary bound
+    $\mathbb{E}[\mathrm{cr}(G_p)] \ge \mathbb{E}[|E_p|] - 3\mathbb{E}[|V_p|]$ gives $p^4 \mathrm{cr}(G)
+    \ge p^2|E| - 3p|V|$; choosing $p = \frac{4|V|}{|E|} \le 1$ optimizes the bound to $\mathrm{cr}(G)
+    \ge \frac{1}{64} \frac{|E|^3}{|V|^2}$.
+  locator: null
+  sub_index: null
+  search_text: how does probabilistic amplification (subsampling) prove the crossing number inequality
+    $\mathrm{cr}(g) \ge \frac{1}{64} \frac{|e|^3}{|v|^2}$? draw $g$ with $\mathrm{cr}(g)$ crossings. construct
+    a random induced subgraph $g_p$ by including each vertex independently with probability $p$. then
+    $\mathbb{e}[|v_p|] = p|v|$, $\mathbb{e}[|e_p|] = p^2|e|$, and $\mathbb{e}[\mathrm{cr}(g_p)] \le p^4
+    \mathrm{cr}(g)$. applying the elementary bound $\mathbb{e}[\mathrm{cr}(g_p)] \ge \mathbb{e}[|e_p|]
+    - 3\mathbb{e}[|v_p|]$ gives $p^4 \mathrm{cr}(g) \ge p^2|e| - 3p|v|$; choosing $p = \frac{4|v|}{|e|}
+    \le 1$ optimizes the bound to $\mathrm{cr}(g) \ge \frac{1}{64} \frac{|e|^3}{|v|^2}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#032
+  text: How is the existence of exponentially large intersection-safe families proved?
+  hint: A family $\mathcal{F} \subset \mathcal{P}([n])$ is intersection-safe if no $A \cap B \subset C$
+    for distinct $A, B, C \in \mathcal{F}$. Sampling $M$ random subsets of size $k$ independently and
+    applying the union bound / first moment method over all triples $(A, B, C)$ shows that bad triples
+    occur with small probability, yielding an intersection-safe family of size $M \ge c^n$ for some $c
+    > 1$.
+  locator: null
+  sub_index: null
+  search_text: how is the existence of exponentially large intersection-safe families proved? a family
+    $\mathcal{f} \subset \mathcal{p}([n])$ is intersection-safe if no $a \cap b \subset c$ for distinct
+    $a, b, c \in \mathcal{f}$. sampling $m$ random subsets of size $k$ independently and applying the
+    union bound / first moment method over all triples $(a, b, c)$ shows that bad triples occur with small
+    probability, yielding an intersection-safe family of size $m \ge c^n$ for some $c > 1$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#033
+  text: How is the threshold for isolated vertices and connectivity determined in the Erdős-Rényi random
+    graph $G(n, p)$?
+  hint: Let $p = \frac{\ln n + c}{n}$. The number of isolated vertices $X = \sum_{v} \mathbf{1}_{\{\deg(v)=0\}}$
+    has expectation $\mathbb{E}[X] = n(1-p)^{n-1} \sim n e^{-np} = e^{-c}$. The First Moment Method and
+    Poisson approximation via Inclusion-Exclusion / Bonferroni inequalities show $\mathbb{P}(X = 0) \to
+    e^{-e^{-c}}$, which is the exact threshold where connectivity appears.
+  locator: null
+  sub_index: null
+  search_text: how is the threshold for isolated vertices and connectivity determined in the erdős-rényi
+    random graph $g(n, p)$? let $p = \frac{\ln n + c}{n}$. the number of isolated vertices $x = \sum_{v}
+    \mathbf{1}_{\{\deg(v)=0\}}$ has expectation $\mathbb{e}[x] = n(1-p)^{n-1} \sim n e^{-np} = e^{-c}$.
+    the first moment method and poisson approximation via inclusion-exclusion / bonferroni inequalities
+    show $\mathbb{p}(x = 0) \to e^{-e^{-c}}$, which is the exact threshold where connectivity appears.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#034
+  text: What is the Second Moment Method / Paley-Zygmund Inequality and how does it bound the non-vanishing
+    of $X$?
+  hint: For a non-negative random variable $X \ge 0$, $\mathbb{P}(X > 0) \ge \frac{\mathbb{E}[X]^2}{\mathbb{E}[X^2]}
+    = \frac{\mathbb{E}[X]^2}{\mathrm{Var}(X) + \mathbb{E}[X]^2}$; equivalently, Chebyshev's inequality
+    yields $\mathbb{P}(X = 0) \le \frac{\mathrm{Var}(X)}{\mathbb{E}[X]^2}$, so $\mathrm{Var}(X) = o(\mathbb{E}[X]^2)$
+    implies $X > 0$ asymptotically almost surely.
+  locator: null
+  sub_index: null
+  search_text: what is the second moment method / paley-zygmund inequality and how does it bound the non-vanishing
+    of $x$? for a non-negative random variable $x \ge 0$, $\mathbb{p}(x > 0) \ge \frac{\mathbb{e}[x]^2}{\mathbb{e}[x^2]}
+    = \frac{\mathbb{e}[x]^2}{\mathrm{var}(x) + \mathbb{e}[x]^2}$; equivalently, chebyshev's inequality
+    yields $\mathbb{p}(x = 0) \le \frac{\mathrm{var}(x)}{\mathbb{e}[x]^2}$, so $\mathrm{var}(x) = o(\mathbb{e}[x]^2)$
+    implies $x > 0$ asymptotically almost surely.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#035
+  text: How is the average-case comparison complexity of Quicksort computed using indicator variables?
+  hint: Let $X_{ij} = \mathbf{1}_{\{i\text{-th smallest element is compared to } j\text{-th smallest}\}}$
+    for $i < j$. Elements $i$ and $j$ are compared if and only if one of them is chosen as pivot before
+    any element between them in the sorted order, so $\mathbb{P}(X_{ij} = 1) = \frac{2}{j-i+1}$. By linearity
+    of expectation, $\mathbb{E}[C] = \sum_{i=1}^{n-1} \sum_{j=i+1}^n \frac{2}{j-i+1} = 2(n+1) H_n - 4n
+    \sim 2n \ln n$.
+  locator: null
+  sub_index: null
+  search_text: how is the average-case comparison complexity of quicksort computed using indicator variables?
+    let $x_{ij} = \mathbf{1}_{\{i\text{-th smallest element is compared to } j\text{-th smallest}\}}$
+    for $i < j$. elements $i$ and $j$ are compared if and only if one of them is chosen as pivot before
+    any element between them in the sorted order, so $\mathbb{p}(x_{ij} = 1) = \frac{2}{j-i+1}$. by linearity
+    of expectation, $\mathbb{e}[c] = \sum_{i=1}^{n-1} \sum_{j=i+1}^n \frac{2}{j-i+1} = 2(n+1) h_n - 4n
+    \sim 2n \ln n$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#036
+  text: How is collision probability minimized in universal hashing?
+  hint: A 2-universal hash family $\mathcal{H} = \{h \colon U \to [m]\}$ satisfies $\mathbb{P}_{h \in
+    \mathcal{H}}(h(x) = h(y)) \le \frac{1}{m}$ for all $x \neq y$. For any subset $S \subset U$ of size
+    $n$, the expected number of collisions is $\mathbb{E}[\text{collisions}] = \sum_{x \neq y} \mathbb{P}(h(x)=h(y))
+    \le \binom{n}{2} \frac{1}{m} < \frac{n^2}{2m}$, so setting $m \ge n^2$ ensures a collision-free hash
+    table with probability $> 1/2$.
+  locator: null
+  sub_index: null
+  search_text: how is collision probability minimized in universal hashing? a 2-universal hash family
+    $\mathcal{h} = \{h \colon u \to [m]\}$ satisfies $\mathbb{p}_{h \in \mathcal{h}}(h(x) = h(y)) \le
+    \frac{1}{m}$ for all $x \neq y$. for any subset $s \subset u$ of size $n$, the expected number of
+    collisions is $\mathbb{e}[\text{collisions}] = \sum_{x \neq y} \mathbb{p}(h(x)=h(y)) \le \binom{n}{2}
+    \frac{1}{m} < \frac{n^2}{2m}$, so setting $m \ge n^2$ ensures a collision-free hash table with probability
+    $> 1/2$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#037
+  text: How is Markov's Inequality proved step-by-step?
+  hint: For a non-negative random variable $X \ge 0$ and $t > 0$, $\mathbb{E}[X] = \int_0^\infty x dF(x)
+    \ge \int_t^\infty x dF(x) \ge \int_t^\infty t dF(x) = t \mathbb{P}(X \ge t)$; dividing by $t$ gives
+    $\mathbb{P}(X \ge t) \le \frac{\mathbb{E}[X]}{t}$.
+  locator: null
+  sub_index: null
+  search_text: how is markov's inequality proved step-by-step? for a non-negative random variable $x \ge
+    0$ and $t > 0$, $\mathbb{e}[x] = \int_0^\infty x df(x) \ge \int_t^\infty x df(x) \ge \int_t^\infty
+    t df(x) = t \mathbb{p}(x \ge t)$; dividing by $t$ gives $\mathbb{p}(x \ge t) \le \frac{\mathbb{e}[x]}{t}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#038
+  text: How is Chebyshev's Inequality and the Weak Law of Large Numbers derived from Markov's Inequality?
+  hint: Applying Markov's inequality to the non-negative random variable $(X - \mu)^2$ with threshold
+    $t^2$ yields $\mathbb{P}(|X - \mu| \ge t) = \mathbb{P}((X - \mu)^2 \ge t^2) \le \frac{\mathbb{E}[(X
+    - \mu)^2]}{t^2} = \frac{\mathrm{Var}(X)}{t^2}$. For the sample average $\overline{X}_n = \frac{1}{n}\sum_{i=1}^n
+    X_i$ of i.i.d. variables with variance $\sigma^2$, $\mathrm{Var}(\overline{X}_n) = \frac{\sigma^2}{n}
+    \to 0$, proving $\mathbb{P}(|\overline{X}_n - \mu| \ge \epsilon) \le \frac{\sigma^2}{n \epsilon^2}
+    \to 0$.
+  locator: null
+  sub_index: null
+  search_text: how is chebyshev's inequality and the weak law of large numbers derived from markov's inequality?
+    applying markov's inequality to the non-negative random variable $(x - \mu)^2$ with threshold $t^2$
+    yields $\mathbb{p}(|x - \mu| \ge t) = \mathbb{p}((x - \mu)^2 \ge t^2) \le \frac{\mathbb{e}[(x - \mu)^2]}{t^2}
+    = \frac{\mathrm{var}(x)}{t^2}$. for the sample average $\overline{x}_n = \frac{1}{n}\sum_{i=1}^n x_i$
+    of i.i.d. variables with variance $\sigma^2$, $\mathrm{var}(\overline{x}_n) = \frac{\sigma^2}{n} \to
+    0$, proving $\mathbb{p}(|\overline{x}_n - \mu| \ge \epsilon) \le \frac{\sigma^2}{n \epsilon^2} \to
+    0$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#039
+  text: How is the Chernoff-Hoeffding Bound derived for sums of independent Rademacher variables?
+  hint: Let $X = \sum_{i=1}^n X_i$ with independent $X_i \in \{-1, +1\}$. The moment generating function
+    satisfies $\mathbb{E}[e^{\lambda X_i}] = \frac{e^\lambda + e^{-\lambda}}{2} = \cosh(\lambda) \le e^{\lambda^2/2}$.
+    By independence, $\mathbb{E}[e^{\lambda X}] = \prod_{i=1}^n \mathbb{E}[e^{\lambda X_i}] \le e^{\lambda^2
+    n / 2}$. Applying Markov's inequality gives $\mathbb{P}(X \ge t) = \mathbb{P}(e^{\lambda X} \ge e^{\lambda
+    t}) \le e^{-\lambda t + \lambda^2 n / 2}$; setting $\lambda = \frac{t}{n}$ minimizes the exponent
+    to yield $\mathbb{P}(X \ge t) \le e^{-t^2 / (2n)}$.
+  locator: null
+  sub_index: null
+  search_text: how is the chernoff-hoeffding bound derived for sums of independent rademacher variables?
+    let $x = \sum_{i=1}^n x_i$ with independent $x_i \in \{-1, +1\}$. the moment generating function satisfies
+    $\mathbb{e}[e^{\lambda x_i}] = \frac{e^\lambda + e^{-\lambda}}{2} = \cosh(\lambda) \le e^{\lambda^2/2}$.
+    by independence, $\mathbb{e}[e^{\lambda x}] = \prod_{i=1}^n \mathbb{e}[e^{\lambda x_i}] \le e^{\lambda^2
+    n / 2}$. applying markov's inequality gives $\mathbb{p}(x \ge t) = \mathbb{p}(e^{\lambda x} \ge e^{\lambda
+    t}) \le e^{-\lambda t + \lambda^2 n / 2}$; setting $\lambda = \frac{t}{n}$ minimizes the exponent
+    to yield $\mathbb{p}(x \ge t) \le e^{-t^2 / (2n)}$.
+- id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#040
+  text: How does Hoeffding's inequality bound the discrepancy in set system 2-colorings?
+  hint: For a set system $\mathcal{F} = \{S_1, \dots, S_m\}$ on $n$ elements, color elements uniformly
+    at random with $\chi(v) \in \{-1, +1\}$. For each set $S_j$, Hoeffding's inequality gives $\mathbb{P}(|\chi(S_j)|
+    > t) \le 2 e^{-t^2 / (2|S_j|)} \le 2 e^{-t^2 / (2n)}$. Choosing $t = \sqrt{2n \ln(2m)}$ makes the
+    union bound over all $m$ sets strictly less than 1, proving there exists a coloring with discrepancy
+    $\mathrm{disc}(\mathcal{F}) \le \sqrt{2n \ln(2m)}$.
+  locator: null
+  sub_index: null
+  search_text: how does hoeffding's inequality bound the discrepancy in set system 2-colorings? for a
+    set system $\mathcal{f} = \{s_1, \dots, s_m\}$ on $n$ elements, color elements uniformly at random
+    with $\chi(v) \in \{-1, +1\}$. for each set $s_j$, hoeffding's inequality gives $\mathbb{p}(|\chi(s_j)|
+    > t) \le 2 e^{-t^2 / (2|s_j|)} \le 2 e^{-t^2 / (2n)}$. choosing $t = \sqrt{2n \ln(2m)}$ makes the
+    union bound over all $m$ sets strictly less than 1, proving there exists a coloring with discrepancy
+    $\mathrm{disc}(\mathcal{f}) \le \sqrt{2n \ln(2m)}$.

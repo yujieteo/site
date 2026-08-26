@@ -1,48 +1,217 @@
 url: https://people.mpim-bonn.mpg.de/scholze/Gestalten.pdf
-title: Scholze's Gestalten
-note: 121 pages
+title: Scholze's Gestalten.
+note: null
 tags: []
 source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#000
-  text: State Gelfand duality between compact Hausdorff spaces and commutative $C^*$-algebras
-  hint: null
+  text: How is Tannakian reconstruction formulated as a fully faithful functor from commutative rings
+    to presentable categories?
+  hint: The functor $A \mapsto \mathbf{Mod}(A)$ (or $A \mapsto \mathcal{D}(A)$) from commutative rings
+    to symmetric monoidal presentable abelian/stable categories is fully faithful, embedding algebra into
+    categorical representation theory via $\mathrm{End}_{\mathbf{Mod}(A)}(\mathbf{1}) \cong A$.
   locator: null
   sub_index: null
-  search_text: state gelfand duality between compact hausdorff spaces and commutative $c^*$-algebras
+  search_text: how is tannakian reconstruction formulated as a fully faithful functor from commutative
+    rings to presentable categories? the functor $a \mapsto \mathbf{mod}(a)$ (or $a \mapsto \mathcal{d}(a)$)
+    from commutative rings to symmetric monoidal presentable abelian/stable categories is fully faithful,
+    embedding algebra into categorical representation theory via $\mathrm{end}_{\mathbf{mod}(a)}(\mathbf{1})
+    \cong a$.
 - id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#001
-  text: State Stone duality between Stone spaces (profinite sets) and Boolean algebras
-  hint: null
+  text: How does Tannakian duality extend from affine schemes to quasi-compact quasi-separated (qcqs)
+    schemes and higher stacks?
+  hint: The assignment $X \mapsto \mathbf{QCoh}(X)$ satisfies descent for flat/étale topologies; for qcqs
+    schemes and Artin stacks, the geometric space $X$ is completely determined by its symmetric monoidal
+    stable category $\mathbf{QCoh}(X)$ equipped with its structure sheaf unit $\mathcal{O}_X$ and global
+    section ring $\Gamma(X, \mathcal{O}_X) \cong \mathrm{End}_{\mathbf{QCoh}(X)}(\mathbf{1})$.
   locator: null
   sub_index: null
-  search_text: state stone duality between stone spaces (profinite sets) and boolean algebras
+  search_text: how does tannakian duality extend from affine schemes to quasi-compact quasi-separated
+    (qcqs) schemes and higher stacks? the assignment $x \mapsto \mathbf{qcoh}(x)$ satisfies descent for
+    flat/étale topologies; for qcqs schemes and artin stacks, the geometric space $x$ is completely determined
+    by its symmetric monoidal stable category $\mathbf{qcoh}(x)$ equipped with its structure sheaf unit
+    $\mathcal{o}_x$ and global section ring $\gamma(x, \mathcal{o}_x) \cong \mathrm{end}_{\mathbf{qcoh}(x)}(\mathbf{1})$.
 - id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#002
-  text: 'State the duality between affine schemes and commutative rings: $\mathbf{Aff} \cong \mathbf{CRing}^{\mathrm{op}}$'
-  hint: null
+  text: Why does the classical definition of $\mathrm{Spec}(A)$ evolve from maps to a fixed base field
+    into equivalence classes of maps to all fields?
+  hint: Evaluating $A$ on all residue fields $\kappa(\mathfrak{p})$ rather than a single algebraically
+    closed base field removes basepoint dependence, capturing the full scheme $\mathrm{Spec}(A)$ intrinsically
+    through categorical representation theory.
   locator: null
   sub_index: null
-  search_text: 'state the duality between affine schemes and commutative rings: $\mathbf{aff} \cong \mathbf{cring}^{\mathrm{op}}$'
+  search_text: why does the classical definition of $\mathrm{spec}(a)$ evolve from maps to a fixed base
+    field into equivalence classes of maps to all fields? evaluating $a$ on all residue fields $\kappa(\mathfrak{p})$
+    rather than a single algebraically closed base field removes basepoint dependence, capturing the full
+    scheme $\mathrm{spec}(a)$ intrinsically through categorical representation theory.
 - id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#003
-  text: Describe Tannakian reconstruction of an affine group scheme $G$ from the symmetric monoidal category
-    of its finite-dimensional representations $\mathbf{Rep}(G)$
-  hint: null
+  text: Why is passing to stable $\infty$-categories necessary when truncations to the abelian heart fail
+    to preserve exactness?
+  hint: The derived tensor product and gluing operations do not preserve the heart of a $t$-structure;
+    working in stable $\infty$-categories $\mathbf{Pr}_{\mathrm{st}}^{\mathrm{L}}$ retains all higher
+    homotopies and obstruction data without losing information upon truncation.
   locator: null
   sub_index: null
-  search_text: describe tannakian reconstruction of an affine group scheme $g$ from the symmetric monoidal
-    category of its finite-dimensional representations $\mathbf{rep}(g)$
+  search_text: why is passing to stable $\infty$-categories necessary when truncations to the abelian
+    heart fail to preserve exactness? the derived tensor product and gluing operations do not preserve
+    the heart of a $t$-structure; working in stable $\infty$-categories $\mathbf{pr}_{\mathrm{st}}^{\mathrm{l}}$
+    retains all higher homotopies and obstruction data without losing information upon truncation.
 - id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#004
-  text: Define Stefanich rings and describe Gestalten using canonical Grothendieck topologies and deloopings
-  hint: null
+  text: How does Deligne's program of generalized affine schemes $\mathbf{CAlg}(\mathcal{C})^{\mathrm{op}}$
+    motivate higher analytic geometry?
+  hint: For a symmetric monoidal presentable category $\mathcal{C}$, $\mathbf{CAlg}(\mathcal{C})^{\mathrm{op}}$
+    defines $\mathcal{C}$-affine schemes (producing Faltings' almost mathematics for $\mathcal{C} = \mathbf{Mod}_K^\circ$);
+    however, analytic spaces require non-flat localizations and non-flat gluings, necessitating passing
+    from $\mathbf{CAlg}(\mathcal{C})$ to higher categories of categories $\mathbf{CAlg}(n\mathbf{Pr})$.
   locator: null
   sub_index: null
-  search_text: define stefanich rings and describe gestalten using canonical grothendieck topologies and
-    deloopings
+  search_text: how does deligne's program of generalized affine schemes $\mathbf{calg}(\mathcal{c})^{\mathrm{op}}$
+    motivate higher analytic geometry? for a symmetric monoidal presentable category $\mathcal{c}$, $\mathbf{calg}(\mathcal{c})^{\mathrm{op}}$
+    defines $\mathcal{c}$-affine schemes (producing faltings' almost mathematics for $\mathcal{c} = \mathbf{mod}_k^\circ$);
+    however, analytic spaces require non-flat localizations and non-flat gluings, necessitating passing
+    from $\mathbf{calg}(\mathcal{c})$ to higher categories of categories $\mathbf{calg}(n\mathbf{pr})$.
 - id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#005
-  text: Define $\kappa$-compactness, $\kappa$-filtered colimits, and $\kappa$-presentability in presentable
-    $\infty$-categories
+  text: 'How does Aoki resolve size and typing issues for higher presentable categories via $\kappa$-compact
+    objects? (Hint: By defining $1\mathbf{Pr}_\kappa$ as the $\infty$-category of $\kappa$-compactly generated
+    presentable categories and setting inductively $n\mathbf{Pr}_A := \mathbf{Mod}_{(n-1)\mathbf{Pr}_A}(n\mathbf{Pr})
+    \in \mathbf{CAlg}((n+1)\mathbf{Pr})$, allowing iterated Tannakian duality to be applied across all
+    higher levels $(n\mathbf{Pr})$'
   hint: null
   locator: null
   sub_index: null
-  search_text: define $\kappa$-compactness, $\kappa$-filtered colimits, and $\kappa$-presentability in
-    presentable $\infty$-categories
+  search_text: 'how does aoki resolve size and typing issues for higher presentable categories via $\kappa$-compact
+    objects? (hint: by defining $1\mathbf{pr}_\kappa$ as the $\infty$-category of $\kappa$-compactly generated
+    presentable categories and setting inductively $n\mathbf{pr}_a := \mathbf{mod}_{(n-1)\mathbf{pr}_a}(n\mathbf{pr})
+    \in \mathbf{calg}((n+1)\mathbf{pr})$, allowing iterated tannakian duality to be applied across all
+    higher levels $(n\mathbf{pr})$'
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#006
+  text: What is a Stefanich ring ($\mathbf{StRing}$)?
+  hint: A sequence $\mathcal{A} = (A_1, A_2, \dots)$ where each $A_n \in \mathbf{CAlg}(n\mathbf{Pr})$
+    is a symmetric monoidal $\kappa$-presentable $(\infty, n)$-category equipped with equivalences $A_n
+    \xrightarrow{\sim} \mathrm{End}_{A_{n+1}}(\mathbf{1})$ for all $n \ge 1$; equivalently, $\mathbf{StRing}
+    := \varprojlim_{\mathrm{End}_{-}(\mathbf{1})} \mathbf{CAlg}(n\mathbf{Pr})$.
+  locator: null
+  sub_index: null
+  search_text: what is a stefanich ring ($\mathbf{string}$)? a sequence $\mathcal{a} = (a_1, a_2, \dots)$
+    where each $a_n \in \mathbf{calg}(n\mathbf{pr})$ is a symmetric monoidal $\kappa$-presentable $(\infty,
+    n)$-category equipped with equivalences $a_n \xrightarrow{\sim} \mathrm{end}_{a_{n+1}}(\mathbf{1})$
+    for all $n \ge 1$; equivalently, $\mathbf{string} := \varprojlim_{\mathrm{end}_{-}(\mathbf{1})} \mathbf{calg}(n\mathbf{pr})$.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#007
+  text: How does a Stefanich ring fully deloop both addition and multiplication of a commutative ring?
+  hint: If $A_1$ is stable, the ring of scalars is $A_0 = \mathrm{End}_{A_1}(\mathbf{1})$; addition on
+    $A_0$ is delooped via the stable category $A_1 \simeq \Omega A_2$, while multiplication on $A_0$ is
+    simultaneously delooped through the iterated endomorphism algebras $A_0 = \mathrm{End}_{A_1}(\mathbf{1})
+    = \mathrm{End}_{\mathrm{End}_{A_2}(\mathbf{1})}(\mathbf{1}) = \dots$.
+  locator: null
+  sub_index: null
+  search_text: how does a stefanich ring fully deloop both addition and multiplication of a commutative
+    ring? if $a_1$ is stable, the ring of scalars is $a_0 = \mathrm{end}_{a_1}(\mathbf{1})$; addition
+    on $a_0$ is delooped via the stable category $a_1 \simeq \omega a_2$, while multiplication on $a_0$
+    is simultaneously delooped through the iterated endomorphism algebras $a_0 = \mathrm{end}_{a_1}(\mathbf{1})
+    = \mathrm{end}_{\mathrm{end}_{a_2}(\mathbf{1})}(\mathbf{1}) = \dots$.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#008
+  text: How does the functor from $\mathbb{E}_\infty$-ring spectra to Stefanich rings operate?
+  hint: It sends an $\mathbb{E}_\infty$-ring $A$ to the canonical Stefanich sequence $(A, \mathcal{D}(A),
+    1\mathbf{Pr}_A, 2\mathbf{Pr}_A, \dots)$, embedding derived commutative algebra into higher category
+    theory.
+  locator: null
+  sub_index: null
+  search_text: how does the functor from $\mathbb{e}_\infty$-ring spectra to stefanich rings operate?
+    it sends an $\mathbb{e}_\infty$-ring $a$ to the canonical stefanich sequence $(a, \mathcal{d}(a),
+    1\mathbf{pr}_a, 2\mathbf{pr}_a, \dots)$, embedding derived commutative algebra into higher category
+    theory.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#009
+  text: Why does descent for analytic stacks require $\aleph_1$-cardinality / countable colimits of affines?
+  hint: The left Kan extension $\mathbf{PSh}(\mathbf{AnRing}^{\mathrm{op}}) \to \mathbf{StRing}^{\mathrm{op}}$
+    is conservative on $\aleph_1$-compact objects because geometric analytic stacks are countable colimits
+    of affines, ensuring descent matches the $\infty$-topos topology.
+  locator: null
+  sub_index: null
+  search_text: why does descent for analytic stacks require $\aleph_1$-cardinality / countable colimits
+    of affines? the left kan extension $\mathbf{psh}(\mathbf{anring}^{\mathrm{op}}) \to \mathbf{string}^{\mathrm{op}}$
+    is conservative on $\aleph_1$-compact objects because geometric analytic stacks are countable colimits
+    of affines, ensuring descent matches the $\infty$-topos topology.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#010
+  text: What is Gabriel-Ulmer duality in the context of $\kappa$-inductive products and colimits of categories?
+  hint: The equivalence between $\kappa$-compactly generated categories with colimits and small categories
+    with finite limits, ensuring that inductive tensor products and limits of presentable categories commute
+    with compact generation.
+  locator: null
+  sub_index: null
+  search_text: what is gabriel-ulmer duality in the context of $\kappa$-inductive products and colimits
+    of categories? the equivalence between $\kappa$-compactly generated categories with colimits and small
+    categories with finite limits, ensuring that inductive tensor products and limits of presentable categories
+    commute with compact generation.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#011
+  text: What characterizes dualizable objects in higher symmetric monoidal categories $\mathbf{CAlg}(n\mathbf{Pr})$?
+  hint: An object $X$ is dualizable if the evaluation map $\mathrm{ev} \colon X^\vee \otimes X \to \mathbf{1}$
+    and coevaluation $\mathrm{coev} \colon \mathbf{1} \to X \otimes X^\vee$ satisfy the triangle identities;
+    for $A \in 1\mathbf{Pr}$, dualizability in $2\mathbf{Pr}$ corresponds to being smooth and proper.
+  locator: null
+  sub_index: null
+  search_text: what characterizes dualizable objects in higher symmetric monoidal categories $\mathbf{calg}(n\mathbf{pr})$?
+    an object $x$ is dualizable if the evaluation map $\mathrm{ev} \colon x^\vee \otimes x \to \mathbf{1}$
+    and coevaluation $\mathrm{coev} \colon \mathbf{1} \to x \otimes x^\vee$ satisfy the triangle identities;
+    for $a \in 1\mathbf{pr}$, dualizability in $2\mathbf{pr}$ corresponds to being smooth and proper.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#012
+  text: Why do colimits in Stefanich rings require spectrification / stabilization?
+  hint: Forming colimits of higher monoidal categories generally destroys invertibility of loops; stabilizing/spectrifying
+    the endomorphism spaces ensures the resulting sequence remains in the limit of the loop/endomorphism
+    tower.
+  locator: null
+  sub_index: null
+  search_text: why do colimits in stefanich rings require spectrification / stabilization? forming colimits
+    of higher monoidal categories generally destroys invertibility of loops; stabilizing/spectrifying
+    the endomorphism spaces ensures the resulting sequence remains in the limit of the loop/endomorphism
+    tower.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#013
+  text: 'What is a Gestalt (plural: Gestalten) and why does $\mathbf{Gest} = \mathbf{StRing}^{\mathrm{op}}$
+    form an $\infty$-topos?'
+  hint: The $\infty$-category of Gestalten is defined as $\mathbf{Gest} := \mathbf{StRing}^{\mathrm{op}}$;
+    Theorem 1.24 (Scholze-Stefanich) proves that $\mathbf{Gest}$ is an $(\infty, 1)$-topos without needing
+    to manually choose a Grothendieck topology or pass to sheafification, restoring full geometric-algebraic
+    duality.
+  locator: null
+  sub_index: null
+  search_text: 'what is a gestalt (plural: gestalten) and why does $\mathbf{gest} = \mathbf{string}^{\mathrm{op}}$
+    form an $\infty$-topos? the $\infty$-category of gestalten is defined as $\mathbf{gest} := \mathbf{string}^{\mathrm{op}}$;
+    theorem 1.24 (scholze-stefanich) proves that $\mathbf{gest}$ is an $(\infty, 1)$-topos without needing
+    to manually choose a grothendieck topology or pass to sheafification, restoring full geometric-algebraic
+    duality.'
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#014
+  text: How does every presentable six-functor formalism induce a transmutation functor into Gestalten?
+  hint: Any six-functor formalism $\mathcal{D} \colon \mathcal{C}^{\mathrm{op}} \to 1\mathbf{Pr}$ factors
+    canonically through Gestalten as $\mathcal{C} \to \mathbf{Gest} \xrightarrow{\mathcal{A} \mapsto A_1}
+    1\mathbf{Pr}$ via a transmutation map $X \mapsto [X]_{\mathcal{D}}$, sending geometric spaces to universal
+    ring-stacks representing their cohomology theories.
+  locator: null
+  sub_index: null
+  search_text: how does every presentable six-functor formalism induce a transmutation functor into gestalten?
+    any six-functor formalism $\mathcal{d} \colon \mathcal{c}^{\mathrm{op}} \to 1\mathbf{pr}$ factors
+    canonically through gestalten as $\mathcal{c} \to \mathbf{gest} \xrightarrow{\mathcal{a} \mapsto a_1}
+    1\mathbf{pr}$ via a transmutation map $x \mapsto [x]_{\mathcal{d}}$, sending geometric spaces to universal
+    ring-stacks representing their cohomology theories.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#015
+  text: What is Aoki's Theorem on the motivic Gestalt $[\mathrm{Spec}(\mathbb{Z})]_{\mathcal{SH}}$?
+  hint: The Gestalt $[\mathrm{Spec}(\mathbb{Z})]_{\mathcal{SH}}$ represents the functor assigning to any
+    Gestalt $\mathcal{X}$ the space of Ringgestalten $\mathcal{R} \to \mathcal{X}$ that are 1-affine,
+    cohomologically smooth, and homologically contractible, such that the zero section is a closed immersion
+    and the unit group is an open immersion forming a stratification.
+  locator: null
+  sub_index: null
+  search_text: what is aoki's theorem on the motivic gestalt $[\mathrm{spec}(\mathbb{z})]_{\mathcal{sh}}$?
+    the gestalt $[\mathrm{spec}(\mathbb{z})]_{\mathcal{sh}}$ represents the functor assigning to any gestalt
+    $\mathcal{x}$ the space of ringgestalten $\mathcal{r} \to \mathcal{x}$ that are 1-affine, cohomologically
+    smooth, and homologically contractible, such that the zero section is a closed immersion and the unit
+    group is an open immersion forming a stratification.
+- id: people-mpim-bonn-mpg-de-scholze-gestalten-pdf#016
+  text: What role do shtukas and Cartier duality play in higher categorical Gestalten?
+  hint: Shtukas represent Frobenius-fixed points of Gestalten over $\mathbb{F}_p$; Cartier duality on
+    commutative group stacks extends to higher categorical levels as duality between $n$-affine group
+    Gestalten and their character categories.
+  locator: null
+  sub_index: null
+  search_text: what role do shtukas and cartier duality play in higher categorical gestalten? shtukas
+    represent frobenius-fixed points of gestalten over $\mathbb{f}_p$; cartier duality on commutative
+    group stacks extends to higher categorical levels as duality between $n$-affine group gestalten and
+    their character categories.

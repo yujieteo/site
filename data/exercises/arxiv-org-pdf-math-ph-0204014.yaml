@@ -1,0 +1,200 @@
+url: https://arxiv.org/pdf/math-ph/0204014
+title: Borcherds on quantum field theory.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-math-ph-0204014#000
+  text: What is Borcherds' "life cycle of a mathematical physicist" in perturbative quantum field theory?
+  hint: (1) Write down a classical Lagrangian density $\mathcal{L}(\phi, \partial \phi)$; (2) form the
+    Feynman path integral $Z = \int \mathcal{D}\phi \, e^{i \int \mathcal{L} dx}$; (3) expand perturbatively
+    as a formal power series $\sum a_n \lambda^n$ where each coefficient $a_n$ is a sum of finite-dimensional
+    Feynman integrals labeled by graphs; (4) observe that the loop integrals diverge (ultraviolet divergences);
+    (5) introduce a regulator/cutoff $\epsilon > 0$ to make the integrals finite; (6) absorb divergences
+    into $\epsilon$-dependent bare parameters (mass, coupling constants, field normalization) via the
+    renormalization group; (7) observe that the $\epsilon$-independent renormalized coefficients $a_n$
+    are finite; (8) observe that the resulting renormalized perturbation series $\sum a_n \lambda^n$ still
+    has zero radius of convergence (Dyson's divergence argument); (9) truncate the divergent asymptotic
+    series at a finite order to compare with experimental measurements.
+  locator: null
+  sub_index: null
+  search_text: what is borcherds' "life cycle of a mathematical physicist" in perturbative quantum field
+    theory? (1) write down a classical lagrangian density $\mathcal{l}(\phi, \partial \phi)$; (2) form
+    the feynman path integral $z = \int \mathcal{d}\phi \, e^{i \int \mathcal{l} dx}$; (3) expand perturbatively
+    as a formal power series $\sum a_n \lambda^n$ where each coefficient $a_n$ is a sum of finite-dimensional
+    feynman integrals labeled by graphs; (4) observe that the loop integrals diverge (ultraviolet divergences);
+    (5) introduce a regulator/cutoff $\epsilon > 0$ to make the integrals finite; (6) absorb divergences
+    into $\epsilon$-dependent bare parameters (mass, coupling constants, field normalization) via the
+    renormalization group; (7) observe that the $\epsilon$-independent renormalized coefficients $a_n$
+    are finite; (8) observe that the resulting renormalized perturbation series $\sum a_n \lambda^n$ still
+    has zero radius of convergence (dyson's divergence argument); (9) truncate the divergent asymptotic
+    series at a finite order to compare with experimental measurements.
+- id: arxiv-org-pdf-math-ph-0204014#001
+  text: How does Borcherds resolve the non-existence of an infinite-dimensional translation-invariant
+    Lebesgue measure in the path integral?
+  hint: By treating the functional integral not as an analytical measure, but algebraically as a formal
+    perturbative generating series of finite-dimensional Feynman amplitudes evaluated with cutoffs, quotiented
+    by the group of finite renormalization transformations acting simultaneously on Lagrangians and cutoff
+    functions.
+  locator: null
+  sub_index: null
+  search_text: how does borcherds resolve the non-existence of an infinite-dimensional translation-invariant
+    lebesgue measure in the path integral? by treating the functional integral not as an analytical measure,
+    but algebraically as a formal perturbative generating series of finite-dimensional feynman amplitudes
+    evaluated with cutoffs, quotiented by the group of finite renormalization transformations acting simultaneously
+    on lagrangians and cutoff functions.
+- id: arxiv-org-pdf-math-ph-0204014#002
+  text: What is the difference between ultraviolet (UV) divergences and the asymptotic divergence of the
+    perturbation series?
+  hint: UV divergences are local short-distance singularities in individual loop momentum integrals that
+    are removed by regularizing and adding local counterterms to the Lagrangian; asymptotic divergence
+    is the divergence of the sum $\sum a_n \lambda^n$ due to the factorial growth $a_n \sim n!$ of the
+    number of Feynman diagrams, requiring Borel summation or non-perturbative completions rather than
+    renormalization.
+  locator: null
+  sub_index: null
+  search_text: what is the difference between ultraviolet (uv) divergences and the asymptotic divergence
+    of the perturbation series? uv divergences are local short-distance singularities in individual loop
+    momentum integrals that are removed by regularizing and adding local counterterms to the lagrangian;
+    asymptotic divergence is the divergence of the sum $\sum a_n \lambda^n$ due to the factorial growth
+    $a_n \sim n!$ of the number of feynman diagrams, requiring borel summation or non-perturbative completions
+    rather than renormalization.
+- id: arxiv-org-pdf-math-ph-0204014#003
+  text: How are fundamental particles classified by spin and statistics in the Standard Model?
+  hint: Matter fields are fermions with half-integer spin ($s = 1/2$, such as quarks, electrons, and neutrinos)
+    governed by Grassmann/anticommuting variables and Fermi-Dirac statistics; force carriers are bosons
+    with integer spin ($s = 1$ gauge bosons $\gamma, W^\pm, Z^0, g$ and $s = 0$ Higgs scalar) governed
+    by symmetric variables and Bose-Einstein statistics.
+  locator: null
+  sub_index: null
+  search_text: how are fundamental particles classified by spin and statistics in the standard model?
+    matter fields are fermions with half-integer spin ($s = 1/2$, such as quarks, electrons, and neutrinos)
+    governed by grassmann/anticommuting variables and fermi-dirac statistics; force carriers are bosons
+    with integer spin ($s = 1$ gauge bosons $\gamma, w^\pm, z^0, g$ and $s = 0$ higgs scalar) governed
+    by symmetric variables and bose-einstein statistics.
+- id: arxiv-org-pdf-math-ph-0204014#004
+  text: How does Borcherds rigorously define the algebra of Lagrangian densities using polynomial differential
+    operators?
+  hint: Let $V$ be a finite-dimensional real spacetime ($V \cong \mathbb{R}^n$) and $W$ a finite-dimensional
+    complex representation of abstract field values equipped with complex conjugation. Let $\mathrm{Diff}(V)$
+    be the polynomial ring of translation-invariant differential operators $\mathbb{C}[\partial_1, \dots,
+    \partial_n]$. The space of field variables is $J(W) = \mathrm{Diff}(V) \otimes_\mathbb{C} W$, and
+    a classical Lagrangian density $\mathcal{L}$ is an element of the symmetric algebra $\mathrm{Sym}^\bullet(J(W))$.
+  locator: null
+  sub_index: null
+  search_text: how does borcherds rigorously define the algebra of lagrangian densities using polynomial
+    differential operators? let $v$ be a finite-dimensional real spacetime ($v \cong \mathbb{r}^n$) and
+    $w$ a finite-dimensional complex representation of abstract field values equipped with complex conjugation.
+    let $\mathrm{diff}(v)$ be the polynomial ring of translation-invariant differential operators $\mathbb{c}[\partial_1,
+    \dots, \partial_n]$. the space of field variables is $j(w) = \mathrm{diff}(v) \otimes_\mathbb{c} w$,
+    and a classical lagrangian density $\mathcal{l}$ is an element of the symmetric algebra $\mathrm{sym}^\bullet(j(w))$.
+- id: arxiv-org-pdf-math-ph-0204014#005
+  text: How does the vibrating string Lagrangian on $\mathbb{R}^2$ produce the wave equation via Hamilton's
+    principle?
+  hint: Let $W \cong \mathbb{R}$ with coordinate $\phi(t, x)$ on $\mathbb{R}^2$. The Lagrangian density
+    is $\mathcal{L} = \frac{1}{2} (\partial_t \phi)^2 - \frac{1}{2} (\partial_x \phi)^2$. Setting the
+    variation of the action $\delta S = \delta \int \mathcal{L} \, dt\,dx = 0$ and applying integration
+    by parts yields the Euler-Lagrange equation $\partial_t^2 \phi - \partial_x^2 \phi = 0$.
+  locator: null
+  sub_index: null
+  search_text: how does the vibrating string lagrangian on $\mathbb{r}^2$ produce the wave equation via
+    hamilton's principle? let $w \cong \mathbb{r}$ with coordinate $\phi(t, x)$ on $\mathbb{r}^2$. the
+    lagrangian density is $\mathcal{l} = \frac{1}{2} (\partial_t \phi)^2 - \frac{1}{2} (\partial_x \phi)^2$.
+    setting the variation of the action $\delta s = \delta \int \mathcal{l} \, dt\,dx = 0$ and applying
+    integration by parts yields the euler-lagrange equation $\partial_t^2 \phi - \partial_x^2 \phi = 0$.
+- id: arxiv-org-pdf-math-ph-0204014#006
+  text: How is the real scalar field generalized to $\phi^4$-theory on $\mathbb{R}^n$?
+  hint: The Lagrangian density is $\mathcal{L} = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2}
+    m^2 \phi^2 - \frac{\lambda}{4!} \phi^4$, whose Euler-Lagrange equation is the non-linear Klein-Gordon
+    equation $(\Box + m^2)\phi + \frac{\lambda}{3!} \phi^3 = 0$, where $\Box = \partial_\mu \partial^\mu$.
+  locator: null
+  sub_index: null
+  search_text: how is the real scalar field generalized to $\phi^4$-theory on $\mathbb{r}^n$? the lagrangian
+    density is $\mathcal{l} = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2
+    - \frac{\lambda}{4!} \phi^4$, whose euler-lagrange equation is the non-linear klein-gordon equation
+    $(\box + m^2)\phi + \frac{\lambda}{3!} \phi^3 = 0$, where $\box = \partial_\mu \partial^\mu$.
+- id: arxiv-org-pdf-math-ph-0204014#007
+  text: How is the conserved Noether current $j^\mu$ derived for a complex scalar field $\phi$?
+  hint: For $\mathcal{L} = \partial_\mu \phi^* \partial^\mu \phi - m^2 \phi^* \phi$, global $\mathrm{U}(1)$-phase
+    invariance $\phi \mapsto e^{i\alpha} \phi$ has infinitesimal generator $\delta \phi = i\phi, \delta
+    \phi^* = -i\phi^*$. The resulting Noether current $j^\mu = i(\phi^* \partial^\mu \phi - \phi \partial^\mu
+    \phi^*)$ satisfies the continuity equation $\partial_\mu j^\mu = 0$ on shell (modulo the Euler-Lagrange
+    ideal).
+  locator: null
+  sub_index: null
+  search_text: how is the conserved noether current $j^\mu$ derived for a complex scalar field $\phi$?
+    for $\mathcal{l} = \partial_\mu \phi^* \partial^\mu \phi - m^2 \phi^* \phi$, global $\mathrm{u}(1)$-phase
+    invariance $\phi \mapsto e^{i\alpha} \phi$ has infinitesimal generator $\delta \phi = i\phi, \delta
+    \phi^* = -i\phi^*$. the resulting noether current $j^\mu = i(\phi^* \partial^\mu \phi - \phi \partial^\mu
+    \phi^*)$ satisfies the continuity equation $\partial_\mu j^\mu = 0$ on shell (modulo the euler-lagrange
+    ideal).
+- id: arxiv-org-pdf-math-ph-0204014#008
+  text: Why is the Noether current $j^\mu$ mathematically an $(n-1)$-form defined modulo exact forms?
+  hint: Conserved currents integrate over spacelike $(n-1)$-dimensional hypersurfaces $\Sigma \subset
+    \mathbb{R}^n$ to yield the conserved charge $Q = \int_\Sigma *j$; changing $j$ by an identically conserved
+    term $\partial_\nu K^{[\mu\nu]}$ alters $j$ by the exterior derivative $d(*K)$ of an $(n-2)$-form,
+    so Noether currents canonically represent cohomology classes in $\Omega^{n-1}(V) / d\Omega^{n-2}(V)$.
+  locator: null
+  sub_index: null
+  search_text: why is the noether current $j^\mu$ mathematically an $(n-1)$-form defined modulo exact
+    forms? conserved currents integrate over spacelike $(n-1)$-dimensional hypersurfaces $\sigma \subset
+    \mathbb{r}^n$ to yield the conserved charge $q = \int_\sigma *j$; changing $j$ by an identically conserved
+    term $\partial_\nu k^{[\mu\nu]}$ alters $j$ by the exterior derivative $d(*k)$ of an $(n-2)$-form,
+    so noether currents canonically represent cohomology classes in $\omega^{n-1}(v) / d\omega^{n-2}(v)$.
+- id: arxiv-org-pdf-math-ph-0204014#009
+  text: Why does physics depend on the action integral $\int \mathcal{L}\, d^n x$ rather than the Lagrangian
+    density $\mathcal{L}$ itself?
+  hint: Adding a total spacetime divergence $\partial_\mu K^\mu$ to $\mathcal{L}$ leaves the Euler-Lagrange
+    equations, classical equations of motion, and quantum amplitudes completely invariant, meaning Lagrangian
+    densities are physically defined modulo the image of the total divergence operator $d \colon \Omega^{n-1}
+    \to \Omega^n$.
+  locator: null
+  sub_index: null
+  search_text: why does physics depend on the action integral $\int \mathcal{l}\, d^n x$ rather than the
+    lagrangian density $\mathcal{l}$ itself? adding a total spacetime divergence $\partial_\mu k^\mu$
+    to $\mathcal{l}$ leaves the euler-lagrange equations, classical equations of motion, and quantum amplitudes
+    completely invariant, meaning lagrangian densities are physically defined modulo the image of the
+    total divergence operator $d \colon \omega^{n-1} \to \omega^n$.
+- id: arxiv-org-pdf-math-ph-0204014#010
+  text: How is the stress-energy-momentum tensor $T^{\mu\nu}$ constructed from spacetime translational
+    symmetry?
+  hint: Infinitesimal spacetime translations $x^\mu \mapsto x^\mu + \epsilon^\mu$ induce $\delta \phi
+    = \partial_\nu \phi$; the corresponding canonical Noether currents form the tensor $T^\mu_{\ \nu}
+    = \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \partial_\nu \phi - \delta^\mu_\nu \mathcal{L}$,
+    satisfying $\partial_\mu T^{\mu\nu} = 0$ on shell.
+  locator: null
+  sub_index: null
+  search_text: how is the stress-energy-momentum tensor $t^{\mu\nu}$ constructed from spacetime translational
+    symmetry? infinitesimal spacetime translations $x^\mu \mapsto x^\mu + \epsilon^\mu$ induce $\delta
+    \phi = \partial_\nu \phi$; the corresponding canonical noether currents form the tensor $t^\mu_{\
+    \nu} = \frac{\partial \mathcal{l}}{\partial(\partial_\mu \phi)} \partial_\nu \phi - \delta^\mu_\nu
+    \mathcal{l}$, satisfying $\partial_\mu t^{\mu\nu} = 0$ on shell.
+- id: arxiv-org-pdf-math-ph-0204014#011
+  text: How is the electromagnetic field strength $F_{\mu\nu}$ and its Euler-Lagrange equation formulated
+    homologically?
+  hint: The gauge potential $A = A_\mu dx^\mu$ has curvature $F = dA = \frac{1}{2} F_{\mu\nu} dx^\mu \wedge
+    dx^\nu$ where $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$. The Maxwell Lagrangian $\mathcal{L}
+    = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu}$ yields the Euler-Lagrange equation $\partial_\mu F^{\mu\nu}
+    = 0$, which expresses the cocycle condition $d * F = 0$ in the de Rham complex.
+  locator: null
+  sub_index: null
+  search_text: how is the electromagnetic field strength $f_{\mu\nu}$ and its euler-lagrange equation
+    formulated homologically? the gauge potential $a = a_\mu dx^\mu$ has curvature $f = da = \frac{1}{2}
+    f_{\mu\nu} dx^\mu \wedge dx^\nu$ where $f_{\mu\nu} = \partial_\mu a_\nu - \partial_\nu a_\mu$. the
+    maxwell lagrangian $\mathcal{l} = -\frac{1}{4} f_{\mu\nu} f^{\mu\nu}$ yields the euler-lagrange equation
+    $\partial_\mu f^{\mu\nu} = 0$, which expresses the cocycle condition $d * f = 0$ in the de rham complex.
+- id: arxiv-org-pdf-math-ph-0204014#012
+  text: How does Borcherds formulate the Euler-Lagrange equations via the universal derivation module
+    $\Omega^1(\mathcal{A})$ of the jet algebra?
+  hint: The variational derivative is realized algebraically as the quotient map $\delta \colon \mathcal{A}
+    \to \Omega^1(\mathcal{A}) / (\mathrm{Im}(d) + \mathcal{I}_{\mathrm{EL}})$, where $\mathcal{I}_{\mathrm{EL}}$
+    is the differential ideal generated by the Euler-Lagrange relations, recasting variational calculus
+    into commutative and homological algebra.
+  locator: null
+  sub_index: null
+  search_text: how does borcherds formulate the euler-lagrange equations via the universal derivation
+    module $\omega^1(\mathcal{a})$ of the jet algebra? the variational derivative is realized algebraically
+    as the quotient map $\delta \colon \mathcal{a} \to \omega^1(\mathcal{a}) / (\mathrm{im}(d) + \mathcal{i}_{\mathrm{el}})$,
+    where $\mathcal{i}_{\mathrm{el}}$ is the differential ideal generated by the euler-lagrange relations,
+    recasting variational calculus into commutative and homological algebra.

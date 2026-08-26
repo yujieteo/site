@@ -1,0 +1,335 @@
+url: https://arxiv.org/pdf/0803.0297
+title: Goncharov
+note: '"Hodge correlators" (arXiv:0803.0297v4).'
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-0803-0297#000
+  text: 'Verify the base case of the operator $\omega_m$: from Definition 2.1 (p. 28), compute $\omega_1(\varphi_0)$
+    directly from the formula $\omega_{m+1}(\varphi_0,\dots,\varphi_m)=\frac{1}{(m+1)!}\mathrm{Sym}_{m+1}\sum_{k=0}^m(-1)^k\,\varphi_0\wedge\partial''\varphi_1\wedge\cdots\wedge\partial''\varphi_k\wedge\partial''''\varphi_{k+1}\wedge\cdots\wedge\partial''''\varphi_m$,
+    and check it matches the stated value $\omega_1(\varphi_0)=\varphi_0$'
+  hint: Set $m=0$. The sum over $k$ has only the term $k=0$, and with no $\varphi_i$ for $i\ge1$ there
+    are no wedge factors, so the summand is just $\varphi_0$. $\mathrm{Sym}_1$ on one element is the identity,
+    and $1/(0+1)!=1$. Hence $\omega_1(\varphi_0)=\varphi_0$, matching Example 2.2, p. 28.
+  locator: null
+  sub_index: null
+  search_text: 'verify the base case of the operator $\omega_m$: from definition 2.1 (p. 28), compute
+    $\omega_1(\varphi_0)$ directly from the formula $\omega_{m+1}(\varphi_0,\dots,\varphi_m)=\frac{1}{(m+1)!}\mathrm{sym}_{m+1}\sum_{k=0}^m(-1)^k\,\varphi_0\wedge\partial''\varphi_1\wedge\cdots\wedge\partial''\varphi_k\wedge\partial''''\varphi_{k+1}\wedge\cdots\wedge\partial''''\varphi_m$,
+    and check it matches the stated value $\omega_1(\varphi_0)=\varphi_0$ set $m=0$. the sum over $k$
+    has only the term $k=0$, and with no $\varphi_i$ for $i\ge1$ there are no wedge factors, so the summand
+    is just $\varphi_0$. $\mathrm{sym}_1$ on one element is the identity, and $1/(0+1)!=1$. hence $\omega_1(\varphi_0)=\varphi_0$,
+    matching example 2.2, p. 28.'
+- id: arxiv-org-pdf-0803-0297#001
+  text: Derive the explicit two-term formula for $\omega_2(\varphi_0,\varphi_1)$ stated in Example 2.2
+    (p. 28), starting from Definition 2.1
+  hint: Set $m=1$. The $k=0$ term is $\varphi_0\wedge\partial''\varphi_1$ and the $k=1$ term is $-\varphi_0\wedge\partial'\varphi_1$,
+    so before symmetrizing we have $\varphi_0\wedge\partial''\varphi_1-\varphi_0\wedge\partial'\varphi_1$.
+    Applying $\mathrm{Sym}_2$ from (55) adds the term with $\varphi_0,\varphi_1$ swapped, carrying the
+    sign $(-1)^{(|\varphi_0|+1)(|\varphi_1|+1)}$ from the shifted-degree convention. Dividing by $2!=2$
+    gives $\omega_2(\varphi_0,\varphi_1)=\frac12\big(\varphi_0\wedge\partial''\varphi_1-\varphi_0\wedge\partial'\varphi_1+(-1)^{(|\varphi_0|+1)(|\varphi_1|+1)}(\varphi_1\wedge\partial''\varphi_0-\varphi_1\wedge\partial'\varphi_0)\big)$,
+    matching the text.
+  locator: null
+  sub_index: null
+  search_text: derive the explicit two-term formula for $\omega_2(\varphi_0,\varphi_1)$ stated in example
+    2.2 (p. 28), starting from definition 2.1 set $m=1$. the $k=0$ term is $\varphi_0\wedge\partial''\varphi_1$
+    and the $k=1$ term is $-\varphi_0\wedge\partial'\varphi_1$, so before symmetrizing we have $\varphi_0\wedge\partial''\varphi_1-\varphi_0\wedge\partial'\varphi_1$.
+    applying $\mathrm{sym}_2$ from (55) adds the term with $\varphi_0,\varphi_1$ swapped, carrying the
+    sign $(-1)^{(|\varphi_0|+1)(|\varphi_1|+1)}$ from the shifted-degree convention. dividing by $2!=2$
+    gives $\omega_2(\varphi_0,\varphi_1)=\frac12\big(\varphi_0\wedge\partial''\varphi_1-\varphi_0\wedge\partial'\varphi_1+(-1)^{(|\varphi_0|+1)(|\varphi_1|+1)}(\varphi_1\wedge\partial''\varphi_0-\varphi_1\wedge\partial'\varphi_0)\big)$,
+    matching the text.
+- id: arxiv-org-pdf-0803-0297#002
+  text: Using the differential equation for $\omega_{m+1}$ in Lemma 2.3 (p. 28), specialize to $m=1$ and
+    write out $d\,\omega_2(\varphi_0,\varphi_1)$ explicitly in terms of $\partial'\partial''\varphi_0$,
+    $\partial'\partial''\varphi_1$, and top wedge terms
+  hint: 'Lemma 2.3 states $d\,\omega_{m+1}(\varphi_0,\dots,\varphi_m)=\frac1{m!}\mathrm{Sym}_{m+1}\big[(-1)^{|\varphi_0|}\partial''''\partial''\varphi_0\wedge\omega_m(\varphi_1,\dots,\varphi_m)\big]+(-1)^m\partial''\varphi_0\wedge\cdots\wedge\partial''\varphi_m+\partial''''\varphi_0\wedge\cdots\wedge\partial''''\varphi_m$.
+    For $m=1$: $d\,\omega_2(\varphi_0,\varphi_1)=\mathrm{Sym}_2\big[(-1)^{|\varphi_0|}\partial''''\partial''\varphi_0\wedge\varphi_1\big]-\partial''\varphi_0\wedge\partial''\varphi_1+\partial''''\varphi_0\wedge\partial''''\varphi_1$,
+    where $\omega_1(\varphi_1)=\varphi_1$ was used. The $\mathrm{Sym}_2$ term expands to $(-1)^{|\varphi_0|}\partial''''\partial''\varphi_0\wedge\varphi_1+(-1)^{|\varphi_1|+(|\varphi_0|+1)(|\varphi_1|+1)}\partial''''\partial''\varphi_1\wedge\varphi_0$.'
+  locator: null
+  sub_index: null
+  search_text: 'using the differential equation for $\omega_{m+1}$ in lemma 2.3 (p. 28), specialize to
+    $m=1$ and write out $d\,\omega_2(\varphi_0,\varphi_1)$ explicitly in terms of $\partial''\partial''''\varphi_0$,
+    $\partial''\partial''''\varphi_1$, and top wedge terms lemma 2.3 states $d\,\omega_{m+1}(\varphi_0,\dots,\varphi_m)=\frac1{m!}\mathrm{sym}_{m+1}\big[(-1)^{|\varphi_0|}\partial''''\partial''\varphi_0\wedge\omega_m(\varphi_1,\dots,\varphi_m)\big]+(-1)^m\partial''\varphi_0\wedge\cdots\wedge\partial''\varphi_m+\partial''''\varphi_0\wedge\cdots\wedge\partial''''\varphi_m$.
+    for $m=1$: $d\,\omega_2(\varphi_0,\varphi_1)=\mathrm{sym}_2\big[(-1)^{|\varphi_0|}\partial''''\partial''\varphi_0\wedge\varphi_1\big]-\partial''\varphi_0\wedge\partial''\varphi_1+\partial''''\varphi_0\wedge\partial''''\varphi_1$,
+    where $\omega_1(\varphi_1)=\varphi_1$ was used. the $\mathrm{sym}_2$ term expands to $(-1)^{|\varphi_0|}\partial''''\partial''\varphi_0\wedge\varphi_1+(-1)^{|\varphi_1|+(|\varphi_0|+1)(|\varphi_1|+1)}\partial''''\partial''\varphi_1\wedge\varphi_0$.'
+- id: arxiv-org-pdf-0803-0297#003
+  text: The twistor operator $\widehat\omega_m$ is defined in (64), p. 30-31, using $D^{\mathbb C}=w\partial'-z\partial''+(z\,dw-w\,dz)$.
+    Show that $D^{\mathbb C}$ has cohomological degree $+1$ and Hodge bidegree $(1,1)$, and use this to
+    confirm that $\widehat\omega_m$ preserves the total (cohomological + Hodge) grading, as claimed in
+    Lemma 2.6 (p. 31)
+  hint: $\partial'$ raises cohomological degree by 1 and has Hodge bidegree $(1,0)$; multiplying by $w$,
+    which under the $\mathbb C^*\times\mathbb C^*$ action has weight $(0,1)$, shifts this to bidegree
+    $(1,1)$ overall, degree $+1$ cohomologically. Similarly $z\partial''$ has bidegree $(1,0)+(0,1)$...
+    actually $z$ has weight $(1,0)$ and $\partial''$ has bidegree $(0,1)$, giving $(1,1)$ again, cohomological
+    degree $+1$. The 1-form $z\,dw-w\,dz$ has de Rham degree 1 and total weight $(1,1)$ under the diagonal
+    action, matching. Since $D^{\mathbb C}$ is homogeneous of bidegree $(1,1)$ and degree $+1$, wedging
+    $m$ copies in $\widehat\omega_m=D^{\mathbb C}\varphi_1\wedge\cdots\wedge D^{\mathbb C}\varphi_m$ shifts
+    the total degree of each $\varphi_i$ uniformly, so the map is grading-preserving as stated.
+  locator: null
+  sub_index: null
+  search_text: the twistor operator $\widehat\omega_m$ is defined in (64), p. 30-31, using $d^{\mathbb
+    c}=w\partial'-z\partial''+(z\,dw-w\,dz)$. show that $d^{\mathbb c}$ has cohomological degree $+1$
+    and hodge bidegree $(1,1)$, and use this to confirm that $\widehat\omega_m$ preserves the total (cohomological
+    + hodge) grading, as claimed in lemma 2.6 (p. 31) $\partial'$ raises cohomological degree by 1 and
+    has hodge bidegree $(1,0)$; multiplying by $w$, which under the $\mathbb c^*\times\mathbb c^*$ action
+    has weight $(0,1)$, shifts this to bidegree $(1,1)$ overall, degree $+1$ cohomologically. similarly
+    $z\partial''$ has bidegree $(1,0)+(0,1)$... actually $z$ has weight $(1,0)$ and $\partial''$ has bidegree
+    $(0,1)$, giving $(1,1)$ again, cohomological degree $+1$. the 1-form $z\,dw-w\,dz$ has de rham degree
+    1 and total weight $(1,1)$ under the diagonal action, matching. since $d^{\mathbb c}$ is homogeneous
+    of bidegree $(1,1)$ and degree $+1$, wedging $m$ copies in $\widehat\omega_m=d^{\mathbb c}\varphi_1\wedge\cdots\wedge
+    d^{\mathbb c}\varphi_m$ shifts the total degree of each $\varphi_i$ uniformly, so the map is grading-preserving
+    as stated.
+- id: arxiv-org-pdf-0803-0297#004
+  text: Verify the integral identity $\int_0^1(1-u)^su^t\,du=\frac{1}{s+t+1}\binom{s+t}{s}^{-1}$ used
+    in the proof of Lemma 2.8 (p. 31-32) to relate $\widehat\omega_{m+1}$ integrated over the twistor
+    line segment to $\omega_{m+1}$
+  hint: This is the Beta function identity $B(s+1,t+1)=\int_0^1(1-u)^su^t\,du=\frac{\Gamma(s+1)\Gamma(t+1)}{\Gamma(s+t+2)}=\frac{s!\,t!}{(s+t+1)!}$.
+    Rewrite $\frac{s!\,t!}{(s+t+1)!}=\frac1{s+t+1}\cdot\frac{s!\,t!}{(s+t)!}=\frac1{s+t+1}\binom{s+t}{s}^{-1}$,
+    matching the stated formula (70).
+  locator: null
+  sub_index: null
+  search_text: verify the integral identity $\int_0^1(1-u)^su^t\,du=\frac{1}{s+t+1}\binom{s+t}{s}^{-1}$
+    used in the proof of lemma 2.8 (p. 31-32) to relate $\widehat\omega_{m+1}$ integrated over the twistor
+    line segment to $\omega_{m+1}$ this is the beta function identity $b(s+1,t+1)=\int_0^1(1-u)^su^t\,du=\frac{\gamma(s+1)\gamma(t+1)}{\gamma(s+t+2)}=\frac{s!\,t!}{(s+t+1)!}$.
+    rewrite $\frac{s!\,t!}{(s+t+1)!}=\frac1{s+t+1}\cdot\frac{s!\,t!}{(s+t)!}=\frac1{s+t+1}\binom{s+t}{s}^{-1}$,
+    matching the stated formula (70).
+- id: arxiv-org-pdf-0803-0297#005
+  text: 'State and verify the normalization property of the pointed Green function $G_a(x,y)$ from Section
+    3.1 (p. 33-34): show $\mathrm{Sp}^{x\to a}_v\,G_v(x,y)=0$ using the defining property that $G_v(x,y)-(2\pi
+    i)^{-1}\log|t|$ vanishes at $x=a$, where $t$ is the local parameter with $dt(v)=1$'
+  hint: By definition (p. 34), $G_v(x,y)$ is chosen so that $G_v(x,y)-(2\pi i)^{-1}\log|t(x)|$ is smooth
+    and vanishes at $x=a$. The specialization operator $\mathrm{Sp}^{t\to0}_v F(t)$ extracts the coefficient
+    $F_0(0)$ of the $\log^0|t|$ term in the asymptotic expansion $F(t)=\sum_n F_n(t)\log^n|t|$. Since
+    $G_v(x,y)=(2\pi i)^{-1}\log|t|+(\text{smooth, vanishing at }x=a)$, the $\log^0|t|$-coefficient at
+    $x=a$ is exactly the smooth remainder evaluated at $a$, which is $0$ by construction. This gives (77).
+  locator: null
+  sub_index: null
+  search_text: 'state and verify the normalization property of the pointed green function $g_a(x,y)$ from
+    section 3.1 (p. 33-34): show $\mathrm{sp}^{x\to a}_v\,g_v(x,y)=0$ using the defining property that
+    $g_v(x,y)-(2\pi i)^{-1}\log|t|$ vanishes at $x=a$, where $t$ is the local parameter with $dt(v)=1$
+    by definition (p. 34), $g_v(x,y)$ is chosen so that $g_v(x,y)-(2\pi i)^{-1}\log|t(x)|$ is smooth and
+    vanishes at $x=a$. the specialization operator $\mathrm{sp}^{t\to0}_v f(t)$ extracts the coefficient
+    $f_0(0)$ of the $\log^0|t|$ term in the asymptotic expansion $f(t)=\sum_n f_n(t)\log^n|t|$. since
+    $g_v(x,y)=(2\pi i)^{-1}\log|t|+(\text{smooth, vanishing at }x=a)$, the $\log^0|t|$-coefficient at
+    $x=a$ is exactly the smooth remainder evaluated at $a$, which is $0$ by construction. this gives (77).'
+- id: arxiv-org-pdf-0803-0297#006
+  text: The Arakelov Green function satisfies the normalization $p_{2*}(G_{Ar}(x,y)p_1^*\mathrm{vol}_X)=0$
+    (equation (75), p. 33). Explain why this normalization is needed in addition to the defining PDE (74),
+    i.e. why (74) alone does not pin down $G_{Ar}$ uniquely
+  hint: 'Equation (74), $\partial\bar\partial G_\mu(x,y)=\delta_{\Delta_X}-(\cdots)$, determines $G_\mu$
+    only up to adding a constant, because the kernel of the Laplacian $\partial\bar\partial$ on the compact
+    curve $X\times X$ consists of constants (stated explicitly on p. 33: "the kernel of the Laplacian
+    $\partial\bar\partial$ on $X\times X$ consists of constants"). The extra condition (75), that the
+    fiber integral of $G_{Ar}$ against the volume form vanishes, is exactly one linear condition that
+    fixes this additive constant, singling out a unique representative.'
+  locator: null
+  sub_index: null
+  search_text: 'the arakelov green function satisfies the normalization $p_{2*}(g_{ar}(x,y)p_1^*\mathrm{vol}_x)=0$
+    (equation (75), p. 33). explain why this normalization is needed in addition to the defining pde (74),
+    i.e. why (74) alone does not pin down $g_{ar}$ uniquely equation (74), $\partial\bar\partial g_\mu(x,y)=\delta_{\delta_x}-(\cdots)$,
+    determines $g_\mu$ only up to adding a constant, because the kernel of the laplacian $\partial\bar\partial$
+    on the compact curve $x\times x$ consists of constants (stated explicitly on p. 33: "the kernel of
+    the laplacian $\partial\bar\partial$ on $x\times x$ consists of constants"). the extra condition (75),
+    that the fiber integral of $g_{ar}$ against the volume form vanishes, is exactly one linear condition
+    that fixes this additive constant, singling out a unique representative.'
+- id: arxiv-org-pdf-0803-0297#007
+  text: Using formula (76), p. 33, $G_a(x,y)=G_{Ar}(x,y)-G_{Ar}(a,y)-G_{Ar}(x,a)+C$, verify by direct
+    substitution that the right-hand side satisfies the same differential equation (74) as $G_a(x,y)$
+    (with $\mu=\delta_a$), assuming $G_{Ar}$ solves (74) for $\mu=\mathrm{vol}_X$
+  hint: Apply $\partial\bar\partial$ in the $x$ (and $y$) variables to each term. $\partial\bar\partial_x\partial\bar\partial_y
+    G_{Ar}(x,y)$ produces the delta-diagonal minus volume-form terms from (74) with $\mu=\mathrm{vol}_X$.
+    The terms $G_{Ar}(a,y)$ and $G_{Ar}(x,a)$ are each pulled back from a single copy of $X$ (constant
+    in the other variable), so their mixed $\partial\bar\partial$ (in both $x$ and $y$ jointly) vanishes
+    except through the single-variable Laplacian, which reproduces exactly the $p_1^*\mathrm{vol}_X$ and
+    $p_2^*\mathrm{vol}_X$ correction terms in (74), leaving $\delta_{\Delta_X}$ as the only surviving
+    singular term — matching (74) for $\mu=\delta_a$, since $\delta_a$ replaces the smooth volume form.
+  locator: null
+  sub_index: null
+  search_text: using formula (76), p. 33, $g_a(x,y)=g_{ar}(x,y)-g_{ar}(a,y)-g_{ar}(x,a)+c$, verify by
+    direct substitution that the right-hand side satisfies the same differential equation (74) as $g_a(x,y)$
+    (with $\mu=\delta_a$), assuming $g_{ar}$ solves (74) for $\mu=\mathrm{vol}_x$ apply $\partial\bar\partial$
+    in the $x$ (and $y$) variables to each term. $\partial\bar\partial_x\partial\bar\partial_y g_{ar}(x,y)$
+    produces the delta-diagonal minus volume-form terms from (74) with $\mu=\mathrm{vol}_x$. the terms
+    $g_{ar}(a,y)$ and $g_{ar}(x,a)$ are each pulled back from a single copy of $x$ (constant in the other
+    variable), so their mixed $\partial\bar\partial$ (in both $x$ and $y$ jointly) vanishes except through
+    the single-variable laplacian, which reproduces exactly the $p_1^*\mathrm{vol}_x$ and $p_2^*\mathrm{vol}_x$
+    correction terms in (74), leaving $\delta_{\delta_x}$ as the only surviving singular term — matching
+    (74) for $\mu=\delta_a$, since $\delta_a$ replaces the smooth volume form.
+- id: arxiv-org-pdf-0803-0297#008
+  text: 'Lemma 3.1 (p. 34) states: if $D_0$ is a degree-zero divisor, then $G_\mu(D_0,y)-G_{\mu''}(D_0,y)$
+    does not depend on $y$. Reprove this'
+  hint: Apply $\bar\partial_y\partial_y$ to $G_\mu(D_0,y)-G_{\mu'}(D_0,y)$. By linearity and (74), $\partial\bar\partial_y
+    G_\mu(D_0,y)=\deg(D_0)\cdot p_2^*\mu-(\text{terms from the divisor's own points, which cancel between
+    }\mu,\mu'\text{ only in the diagonal term, absent here since }D_0\text{ has no support constraint
+    relative to }y\text{ generically})$. Concretely $\partial\bar\partial_y\big(G_\mu(D_0,y)-G_{\mu'}(D_0,y)\big)=\deg(D_0)\,p_2^*(\mu-\mu')$...
+    but since $\deg(D_0)=0$ this vanishes identically, so the difference is a $\partial\bar\partial$-harmonic
+    function of $y$ on the compact curve $X$, hence constant.
+  locator: null
+  sub_index: null
+  search_text: 'lemma 3.1 (p. 34) states: if $d_0$ is a degree-zero divisor, then $g_\mu(d_0,y)-g_{\mu''}(d_0,y)$
+    does not depend on $y$. reprove this apply $\bar\partial_y\partial_y$ to $g_\mu(d_0,y)-g_{\mu''}(d_0,y)$.
+    by linearity and (74), $\partial\bar\partial_y g_\mu(d_0,y)=\deg(d_0)\cdot p_2^*\mu-(\text{terms from
+    the divisor''s own points, which cancel between }\mu,\mu''\text{ only in the diagonal term, absent
+    here since }d_0\text{ has no support constraint relative to }y\text{ generically})$. concretely $\partial\bar\partial_y\big(g_\mu(d_0,y)-g_{\mu''}(d_0,y)\big)=\deg(d_0)\,p_2^*(\mu-\mu'')$...
+    but since $\deg(d_0)=0$ this vanishes identically, so the difference is a $\partial\bar\partial$-harmonic
+    function of $y$ on the compact curve $x$, hence constant.'
+- id: arxiv-org-pdf-0803-0297#009
+  text: 'The cyclic envelope construction: for a free associative algebra $A=T(V)$, the space $C(A)=A_+/[A_+,A_+]$
+    has a basis of cyclic words (Section 1.6, p. 11). Show directly that $C(T(V))$ for $V$ two-dimensional
+    with basis $\{x,y\}$ has $C(xy)=C(yx)$ by exhibiting $xy-yx$ as a commutator in $A_+$'
+  hint: In the free associative algebra, $xy-yx=[x,y]$ is by definition an element of $[A_+,A_+]$ (the
+    span of commutators $ab-ba$ for $a,b\in A_+$). Hence in the quotient $C(A)=A_+/[A_+,A_+]$, the classes
+    of $xy$ and $yx$ coincide, giving $C(xy)=C(yx)$, illustrating the cyclic-word description of $C(A)$.
+  locator: null
+  sub_index: null
+  search_text: 'the cyclic envelope construction: for a free associative algebra $a=t(v)$, the space $c(a)=a_+/[a_+,a_+]$
+    has a basis of cyclic words (section 1.6, p. 11). show directly that $c(t(v))$ for $v$ two-dimensional
+    with basis $\{x,y\}$ has $c(xy)=c(yx)$ by exhibiting $xy-yx$ as a commutator in $a_+$ in the free
+    associative algebra, $xy-yx=[x,y]$ is by definition an element of $[a_+,a_+]$ (the span of commutators
+    $ab-ba$ for $a,b\in a_+$). hence in the quotient $c(a)=a_+/[a_+,a_+]$, the classes of $xy$ and $yx$
+    coincide, giving $c(xy)=c(yx)$, illustrating the cyclic-word description of $c(a)$.'
+- id: arxiv-org-pdf-0803-0297#010
+  text: 'Prove the shuffle-relation special case stated implicitly around Proposition 3.5 (p. 37): for
+    $p=q=1$, show that $\mathrm{Cor}_{\mathcal H}\big(C(v_0\otimes v_1\otimes v_2)\big)+\mathrm{Cor}_{\mathcal
+    H}\big(C(v_0\otimes v_2\otimes v_1)\big)=0$'
+  hint: The $(1,1)$-shuffles of $\{1,2\}$ are the identity permutation and the transposition, i.e. $\Sigma_{1,1}=\{\mathrm{id},(12)\}$.
+    Proposition 3.5's sum $\sum_{\sigma\in\Sigma_{p,q}}\mathrm{Cor}_{\mathcal H}\!\big(C(v_0\otimes v_{\sigma(1)}\otimes\cdots)\big)=0$
+    with $p=q=1$ becomes exactly $\mathrm{Cor}_{\mathcal H}(C(v_0\otimes v_1\otimes v_2))+\mathrm{Cor}_{\mathcal
+    H}(C(v_0\otimes v_2\otimes v_1))=0$, which is the $m=2$ case of the general shuffle relation (83).
+  locator: null
+  sub_index: null
+  search_text: 'prove the shuffle-relation special case stated implicitly around proposition 3.5 (p. 37):
+    for $p=q=1$, show that $\mathrm{cor}_{\mathcal h}\big(c(v_0\otimes v_1\otimes v_2)\big)+\mathrm{cor}_{\mathcal
+    h}\big(c(v_0\otimes v_2\otimes v_1)\big)=0$ the $(1,1)$-shuffles of $\{1,2\}$ are the identity permutation
+    and the transposition, i.e. $\sigma_{1,1}=\{\mathrm{id},(12)\}$. proposition 3.5''s sum $\sum_{\sigma\in\sigma_{p,q}}\mathrm{cor}_{\mathcal
+    h}\!\big(c(v_0\otimes v_{\sigma(1)}\otimes\cdots)\big)=0$ with $p=q=1$ becomes exactly $\mathrm{cor}_{\mathcal
+    h}(c(v_0\otimes v_1\otimes v_2))+\mathrm{cor}_{\mathcal h}(c(v_0\otimes v_2\otimes v_1))=0$, which
+    is the $m=2$ case of the general shuffle relation (83).'
+- id: arxiv-org-pdf-0803-0297#011
+  text: Lemma 3.6 (p. 37) asserts $CLie^*_{m+1}=CAss^*_{m+1}/(\text{shuffle relations})$. Explain, for
+    $m=2$, why $CAss_3$ is two-dimensional (spanned by $(v_1v_2,v_0)$ and $(v_2v_1,v_0)$) while $CLie_3$
+    is one-dimensional (spanned by $([v_1,v_2],v_0)$), consistent with the quotient by shuffle relations
+  hint: '$Ass_2\{v_1,v_2\}$ (associative words in $v_1,v_2$ each used once) is 2-dimensional: $v_1v_2$
+    and $v_2v_1$. So $CAss_3\cong Ass_2\{v_1,v_2\}$ is 2-dimensional (p. 37, "Example"). $Lie_2\{v_1,v_2\}$
+    is 1-dimensional, spanned by $[v_1,v_2]=v_1v_2-v_2v_1$ (the only nontrivial bracket), so $CLie_3$
+    is 1-dimensional. The shuffle relation in $CAss_3^*$ kills exactly the symmetric combination, leaving
+    the antisymmetric (Lie) part — dually this matches $Lie_2=\ker(\Delta:Ass_2\to Ass_1\otimes Ass_1)$
+    being the primitives for the shuffle coproduct.'
+  locator: null
+  sub_index: null
+  search_text: 'lemma 3.6 (p. 37) asserts $clie^*_{m+1}=cass^*_{m+1}/(\text{shuffle relations})$. explain,
+    for $m=2$, why $cass_3$ is two-dimensional (spanned by $(v_1v_2,v_0)$ and $(v_2v_1,v_0)$) while $clie_3$
+    is one-dimensional (spanned by $([v_1,v_2],v_0)$), consistent with the quotient by shuffle relations
+    $ass_2\{v_1,v_2\}$ (associative words in $v_1,v_2$ each used once) is 2-dimensional: $v_1v_2$ and
+    $v_2v_1$. so $cass_3\cong ass_2\{v_1,v_2\}$ is 2-dimensional (p. 37, "example"). $lie_2\{v_1,v_2\}$
+    is 1-dimensional, spanned by $[v_1,v_2]=v_1v_2-v_2v_1$ (the only nontrivial bracket), so $clie_3$
+    is 1-dimensional. the shuffle relation in $cass_3^*$ kills exactly the symmetric combination, leaving
+    the antisymmetric (lie) part — dually this matches $lie_2=\ker(\delta:ass_2\to ass_1\otimes ass_1)$
+    being the primitives for the shuffle coproduct.'
+- id: arxiv-org-pdf-0803-0297#012
+  text: 'Definition 4.7 (p. 45) defines the homogeneous twistor transform $\widehat\gamma$. Check the
+    degree-zero (Hodge bidegree $(0,0)$) part of formula (101) is just the identity: $\widehat\gamma(\varphi_{0,0})=\varphi_{0,0}$'
+  hint: 'In (101), the sum $\sum_{s,t\ge0}z^sw^t[\cdots]$ only involves terms $\varphi_{s+1,t+1}$ for
+    $s,t\ge0$, i.e. bidegree $(-1,-1)$ or lower (more negative). The $\varphi_{0,0}$ term sits outside
+    this sum, appearing as a standalone additive term in the formula for $\widehat\gamma$, so it is carried
+    through unchanged: $\widehat\gamma(\varphi_{0,0})=\varphi_{0,0}$, matching the direct summand in (101).'
+  locator: null
+  sub_index: null
+  search_text: 'definition 4.7 (p. 45) defines the homogeneous twistor transform $\widehat\gamma$. check
+    the degree-zero (hodge bidegree $(0,0)$) part of formula (101) is just the identity: $\widehat\gamma(\varphi_{0,0})=\varphi_{0,0}$
+    in (101), the sum $\sum_{s,t\ge0}z^sw^t[\cdots]$ only involves terms $\varphi_{s+1,t+1}$ for $s,t\ge0$,
+    i.e. bidegree $(-1,-1)$ or lower (more negative). the $\varphi_{0,0}$ term sits outside this sum,
+    appearing as a standalone additive term in the formula for $\widehat\gamma$, so it is carried through
+    unchanged: $\widehat\gamma(\varphi_{0,0})=\varphi_{0,0}$, matching the direct summand in (101).'
+- id: arxiv-org-pdf-0803-0297#013
+  text: 'Verify Lemma 4.8 (p. 45): the reality condition $(c\otimes\sigma)^*\widehat\gamma(\varphi)=\widehat\gamma(\varphi)$
+    holds iff $\varphi\in C^\bullet_{H;\mathbb R}(A^{*,*})$, using the definition of $\sigma:(z,w)\mapsto(w,z)$
+    and the reality condition (93), p. 42'
+  hint: 'Recall (93): $\varphi\in C^\bullet_{H;\mathbb R}$ iff $\overline{\varphi_{s,t}}=-\varphi_{s,t}$
+    for $(s,t)\ne(0,0)$ (and $\overline{\varphi_{0,0}}=\varphi_{0,0}$). The involution $\sigma$ swaps
+    $z\leftrightarrow w$, hence swaps the roles of $s,t$ in each monomial $z^sw^t$ of (101); combined
+    with complex conjugation $c$, which conjugates the coefficients $\varphi_{s+1,t+1}\mapsto\overline{\varphi_{s+1,t+1}}$,
+    invariance of $\widehat\gamma(\varphi)$ under $c\otimes\sigma$ term-by-term forces $\overline{\varphi_{s+1,t+1}}=-\varphi_{t+1,s+1}$-type
+    relations that reduce, using the bicomplex symmetry $A^{s,t}=\overline{A^{t,s}}$, exactly to the reality
+    condition (93).'
+  locator: null
+  sub_index: null
+  search_text: 'verify lemma 4.8 (p. 45): the reality condition $(c\otimes\sigma)^*\widehat\gamma(\varphi)=\widehat\gamma(\varphi)$
+    holds iff $\varphi\in c^\bullet_{h;\mathbb r}(a^{*,*})$, using the definition of $\sigma:(z,w)\mapsto(w,z)$
+    and the reality condition (93), p. 42 recall (93): $\varphi\in c^\bullet_{h;\mathbb r}$ iff $\overline{\varphi_{s,t}}=-\varphi_{s,t}$
+    for $(s,t)\ne(0,0)$ (and $\overline{\varphi_{0,0}}=\varphi_{0,0}$). the involution $\sigma$ swaps
+    $z\leftrightarrow w$, hence swaps the roles of $s,t$ in each monomial $z^sw^t$ of (101); combined
+    with complex conjugation $c$, which conjugates the coefficients $\varphi_{s+1,t+1}\mapsto\overline{\varphi_{s+1,t+1}}$,
+    invariance of $\widehat\gamma(\varphi)$ under $c\otimes\sigma$ term-by-term forces $\overline{\varphi_{s+1,t+1}}=-\varphi_{t+1,s+1}$-type
+    relations that reduce, using the bicomplex symmetry $a^{s,t}=\overline{a^{t,s}}$, exactly to the reality
+    condition (93).'
+- id: arxiv-org-pdf-0803-0297#014
+  text: Definition 1.7 (p. 16) defines a twistor connection via flatness of $\mathrm{Res}_{z+w=1}\nabla_G$.
+    Show that flatness of this restricted connection (39) is equivalent to $\{G_{p,q},g_{0,0}\}$ satisfying
+    a Maurer-Cartan-type system, by expanding $(\mathrm{Res}\,\nabla_G)^2=0$ in powers of $u$ and matching
+    coefficients (structurally, without computing every term)
+  hint: $\mathrm{Res}_{z+w=1}\nabla_G=d+g_{0,0}+\sum_{s,t\ge0}(1-u)^su^t\big[(s+t+1)G_{s+1,t+1}\,du+(u\partial'-(1-u)\partial'')G_{s+1,t+1}\big]$,
+    a connection depending polynomially/power-series on $u$. Flatness means the curvature 2-form vanishes
+    identically in $u$; since $(1-u)^su^t$ for varying $s,t$ are linearly independent functions of $u$,
+    the vanishing of the curvature forces the vanishing of each coefficient separately, giving one quadratic
+    equation in the $G_{p,q}$'s (and $g_{0,0}$) per power of $u$ precisely the Maurer-Cartan system referenced
+    right after Definition 1.7 on p. 16.
+  locator: null
+  sub_index: null
+  search_text: definition 1.7 (p. 16) defines a twistor connection via flatness of $\mathrm{res}_{z+w=1}\nabla_g$.
+    show that flatness of this restricted connection (39) is equivalent to $\{g_{p,q},g_{0,0}\}$ satisfying
+    a maurer-cartan-type system, by expanding $(\mathrm{res}\,\nabla_g)^2=0$ in powers of $u$ and matching
+    coefficients (structurally, without computing every term) $\mathrm{res}_{z+w=1}\nabla_g=d+g_{0,0}+\sum_{s,t\ge0}(1-u)^su^t\big[(s+t+1)g_{s+1,t+1}\,du+(u\partial'-(1-u)\partial'')g_{s+1,t+1}\big]$,
+    a connection depending polynomially/power-series on $u$. flatness means the curvature 2-form vanishes
+    identically in $u$; since $(1-u)^su^t$ for varying $s,t$ are linearly independent functions of $u$,
+    the vanishing of the curvature forces the vanishing of each coefficient separately, giving one quadratic
+    equation in the $g_{p,q}$'s (and $g_{0,0}$) per power of $u$ precisely the maurer-cartan system referenced
+    right after definition 1.7 on p. 16.
+- id: arxiv-org-pdf-0803-0297#015
+  text: Example 1.6 (p. 11-12) describes the Hodge correlator for a cyclic word $W=C(\{a_0\}\otimes\cdots\otimes\{a_n\})$
+    as a sum over plane trivalent trees with $n+1$ external, $S^*$-decorated edges. Using the stated fact
+    ("a trivalent tree with $m+1$ external vertices has $2m-1$ edges," p. 34), compute the number of edges
+    and the number of internal vertices for $n=5$ (six decorating points, as in Figure 1)
+  hint: 'Here $m+1=6$ so $m=5$. Edges: $2m-1=9$. A trivalent tree with $k$ internal (valence-3) vertices
+    and $m+1$ external (valence-1) vertices has, by the handshake lemma, $3k+(m+1)=2\cdot(\text{number
+    of edges})=2(2m-1)$, giving $3k=2(2m-1)-(m+1)=3m-3$, so $k=m-1=4$ internal vertices — matching Figure
+    1''s picture of a tree with 6 external legs and 4 internal trivalent nodes.'
+  locator: null
+  sub_index: null
+  search_text: 'example 1.6 (p. 11-12) describes the hodge correlator for a cyclic word $w=c(\{a_0\}\otimes\cdots\otimes\{a_n\})$
+    as a sum over plane trivalent trees with $n+1$ external, $s^*$-decorated edges. using the stated fact
+    ("a trivalent tree with $m+1$ external vertices has $2m-1$ edges," p. 34), compute the number of edges
+    and the number of internal vertices for $n=5$ (six decorating points, as in figure 1) here $m+1=6$
+    so $m=5$. edges: $2m-1=9$. a trivalent tree with $k$ internal (valence-3) vertices and $m+1$ external
+    (valence-1) vertices has, by the handshake lemma, $3k+(m+1)=2\cdot(\text{number of edges})=2(2m-1)$,
+    giving $3k=2(2m-1)-(m+1)=3m-3$, so $k=m-1=4$ internal vertices — matching figure 1''s picture of a
+    tree with 6 external legs and 4 internal trivalent nodes.'
+- id: arxiv-org-pdf-0803-0297#016
+  text: 'Motivic correlators: verify the K-theory identification (52), p. 21, $\mathrm{Ext}^1_{Mot/\mathbb
+    Q}(\mathbb Q(0),H^1(M)(1))=K_2(M)\otimes\mathbb Q$, is consistent with the general formula (13)-(15)
+    specialized to a curve, by working out the case $X=M$ a modular curve, $n=2$, $m=1$'
+  hint: 'From (13), $\mathrm{Ext}^m(\mathbb Q(0)_X,\mathbb Q(n)_X)=\mathrm{gr}^n_\gamma K_{2n-m}(X)\otimes\mathbb
+    Q$. The text derives (p. 22) $K_2(X)\otimes\mathbb Q=\mathrm{Ext}^2_{Mot/F}(\mathbb Q(0),p_*\mathbb
+    Q(2)_X)=\mathrm{Ext}^1_{Mot/F}(\mathbb Q(0),H^1(X)(2))$ using the Leray spectral sequence (15) and
+    the vanishing of $\mathrm{Ext}^i$ for $i\ne1$ on pure motives over a number field, plus Poincare duality
+    $H^1(X)=H^1(X)(-1)^\vee$-type identification to trade $(2)$ for $(1)$ on the dual motive $H^1(M)$
+    vs. its twist. Setting $m=1,n=2$ in (13) directly gives $\mathrm{gr}^2_\gamma K_3(X)$, which is NOT
+    what''s claimed; the correct route is via (14)-(15) as the text does, not a naive single application
+    of (13) — this is precisely the point of the exercise: showing why the paper needs the two-step spectral-sequence
+    argument (13)+(14)+(15) rather than one direct formula, and why the Poincare-duality step $H^1(X)=H^1(X)(-1)$
+    on p. 22 is required to land on (52).'
+  locator: null
+  sub_index: null
+  search_text: 'motivic correlators: verify the k-theory identification (52), p. 21, $\mathrm{ext}^1_{mot/\mathbb
+    q}(\mathbb q(0),h^1(m)(1))=k_2(m)\otimes\mathbb q$, is consistent with the general formula (13)-(15)
+    specialized to a curve, by working out the case $x=m$ a modular curve, $n=2$, $m=1$ from (13), $\mathrm{ext}^m(\mathbb
+    q(0)_x,\mathbb q(n)_x)=\mathrm{gr}^n_\gamma k_{2n-m}(x)\otimes\mathbb q$. the text derives (p. 22)
+    $k_2(x)\otimes\mathbb q=\mathrm{ext}^2_{mot/f}(\mathbb q(0),p_*\mathbb q(2)_x)=\mathrm{ext}^1_{mot/f}(\mathbb
+    q(0),h^1(x)(2))$ using the leray spectral sequence (15) and the vanishing of $\mathrm{ext}^i$ for
+    $i\ne1$ on pure motives over a number field, plus poincare duality $h^1(x)=h^1(x)(-1)^\vee$-type identification
+    to trade $(2)$ for $(1)$ on the dual motive $h^1(m)$ vs. its twist. setting $m=1,n=2$ in (13) directly
+    gives $\mathrm{gr}^2_\gamma k_3(x)$, which is not what''s claimed; the correct route is via (14)-(15)
+    as the text does, not a naive single application of (13) — this is precisely the point of the exercise:
+    showing why the paper needs the two-step spectral-sequence argument (13)+(14)+(15) rather than one
+    direct formula, and why the poincare-duality step $h^1(x)=h^1(x)(-1)$ on p. 22 is required to land
+    on (52).'

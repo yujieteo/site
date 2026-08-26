@@ -1,0 +1,1082 @@
+url: https://www.ihes.fr/~gromov/wp-content/uploads/2018/08/probability-huge-Lecture-Nov-2014.pdf
+title: probability theory by Gromov.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#000
+  text: Why is "classical probability" said to depend on quasi-invariant Haar-like measures?
+  hint: the infinite product measure on the space $X = \{\circ, \bullet\}^{\mathbb{N}}$ of binary sequences
+    is invariant under the compact group $\mathbb{Z}_2^{\mathbb{N}}$ and is also acted on by the infinite
+    permutation group of $\mathbb{N}$, exhibiting both a genuine group-invariance and a combinatorial
+    symmetry that a naive definition of "randomness" would not predict.
+  locator: null
+  sub_index: null
+  search_text: why is "classical probability" said to depend on quasi-invariant haar-like measures? the
+    infinite product measure on the space $x = \{\circ, \bullet\}^{\mathbb{n}}$ of binary sequences is
+    invariant under the compact group $\mathbb{z}_2^{\mathbb{n}}$ and is also acted on by the infinite
+    permutation group of $\mathbb{n}$, exhibiting both a genuine group-invariance and a combinatorial
+    symmetry that a naive definition of "randomness" would not predict.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#001
+  text: What is "tensorization symmetry," and how does it survive even for a biased Bernoulli measure
+    $X = \{\circ_p, \bullet_{1-p}\}^S$ with $p \ne 1/2$?
+  hint: although the full Haar symmetry visible at $p = 1/2$ disappears, $X$ can still be decomposed in
+    many ways as a Cartesian product of copies of itself, since every partition of the countable set $S$
+    into infinite subsets $S = S_1 \sqcup S_2$ induces $X \cong X_{S_1} \times X_{S_2}$.
+  locator: null
+  sub_index: null
+  search_text: what is "tensorization symmetry," and how does it survive even for a biased bernoulli measure
+    $x = \{\circ_p, \bullet_{1-p}\}^s$ with $p \ne 1/2$? although the full haar symmetry visible at $p
+    = 1/2$ disappears, $x$ can still be decomposed in many ways as a cartesian product of copies of itself,
+    since every partition of the countable set $s$ into infinite subsets $s = s_1 \sqcup s_2$ induces
+    $x \cong x_{s_1} \times x_{s_2}$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#002
+  text: Beyond biased coin-flip sequences, which classical measures most strongly exhibit tensorization
+    symmetry?
+  hint: Gaussian measures and Brownian/Wiener measures exhibit it prominently, and Gibbsian (Boltzmann)
+    measures exhibit it to a lesser degree; this tensorization underlies both the Bernoulli Approximation
+    Theorem and Boltzmann entropy.
+  locator: null
+  sub_index: null
+  search_text: beyond biased coin-flip sequences, which classical measures most strongly exhibit tensorization
+    symmetry? gaussian measures and brownian/wiener measures exhibit it prominently, and gibbsian (boltzmann)
+    measures exhibit it to a lesser degree; this tensorization underlies both the bernoulli approximation
+    theorem and boltzmann entropy.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#003
+  text: In Kolmogorov's 1933 set-theoretic formulation (extending Buffon's 1733 needle problem), how is
+    the probability of an event $Y$ defined?
+  hint: random events are represented as subdomains $Y$ of a reference space (e.g. a unit square), and
+    the probability of $Y$ is simply defined to be its area/measure.
+  locator: null
+  sub_index: null
+  search_text: in kolmogorov's 1933 set-theoretic formulation (extending buffon's 1733 needle problem),
+    how is the probability of an event $y$ defined? random events are represented as subdomains $y$ of
+    a reference space (e.g. a unit square), and the probability of $y$ is simply defined to be its area/measure.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#004
+  text: Why does Gromov argue that Boltzmann's statistical mechanics is more naturally modeled by nonstandard
+    analysis and Grothendieck-style category theory than by Kolmogorov's set theory?
+  hint: the "space of states" of a physical system is not literally a mathematician's set but rather a
+    class of mutually equivalent idealized experimental protocols, which is better captured by nonstandard
+    infinitesimal structures or categorical formalism than by an explicit measure space.
+  locator: null
+  sub_index: null
+  search_text: why does gromov argue that boltzmann's statistical mechanics is more naturally modeled
+    by nonstandard analysis and grothendieck-style category theory than by kolmogorov's set theory? the
+    "space of states" of a physical system is not literally a mathematician's set but rather a class of
+    mutually equivalent idealized experimental protocols, which is better captured by nonstandard infinitesimal
+    structures or categorical formalism than by an explicit measure space.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#005
+  text: Why does Chomsky's remark that "the probability of a sentence is a useless notion" motivate replacing
+    number-valued probabilities for linguistic events with something else?
+  hint: linguistic events form category-theoretic "ensembles" structurally unlike physical events; their
+    "probabilities" should instead be modeled as functors from a category of linguistic events into a
+    smaller combinatorial category, e.g. of weighted trees, rather than as real numbers.
+  locator: null
+  sub_index: null
+  search_text: why does chomsky's remark that "the probability of a sentence is a useless notion" motivate
+    replacing number-valued probabilities for linguistic events with something else? linguistic events
+    form category-theoretic "ensembles" structurally unlike physical events; their "probabilities" should
+    instead be modeled as functors from a category of linguistic events into a smaller combinatorial category,
+    e.g. of weighted trees, rather than as real numbers.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#006
+  text: List the five proposed alternatives to classical Kolmogorov probability and Shannon entropy
+  hint: (1) entropy defined via a Grothendieck semigroup; (2) probability spaces modeled as covariant
+    functors; (3) large deviations and nonstandard analysis for classical and quantum entropies; (4) linearized
+    measures, probabilities, and entropies; (5) combinatorial probability with limited symmetry groups.
+  locator: null
+  sub_index: null
+  search_text: list the five proposed alternatives to classical kolmogorov probability and shannon entropy
+    (1) entropy defined via a grothendieck semigroup; (2) probability spaces modeled as covariant functors;
+    (3) large deviations and nonstandard analysis for classical and quantum entropies; (4) linearized
+    measures, probabilities, and entropies; (5) combinatorial probability with limited symmetry groups.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#007
+  text: What is a finite measure space $P$ in this formalism?
+  hint: a finite set $\mathrm{set}(P)$ of "atoms" $p$, together with a positive weight function $\mathrm{set}(P)
+    \to \mathbb{R}_+$, $p \mapsto |p| > 0$, called the mass of atom $p$.
+  locator: null
+  sub_index: null
+  search_text: what is a finite measure space $p$ in this formalism? a finite set $\mathrm{set}(p)$ of
+    "atoms" $p$, together with a positive weight function $\mathrm{set}(p) \to \mathbb{r}_+$, $p \mapsto
+    |p| > 0$, called the mass of atom $p$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#008
+  text: Why are "massless atoms" ($|p| = 0$) discarded classically but not in quantum probability?
+  hint: classically a zero-mass atom contributes nothing and can be dropped harmlessly, but in quantum
+    probability zero-amplitude basis states may still contribute nontrivial interference terms with other
+    states and cannot always be discarded.
+  locator: null
+  sub_index: null
+  search_text: why are "massless atoms" ($|p| = 0$) discarded classically but not in quantum probability?
+    classically a zero-mass atom contributes nothing and can be dropped harmlessly, but in quantum probability
+    zero-amplitude basis states may still contribute nontrivial interference terms with other states and
+    cannot always be discarded.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#009
+  text: Define the total mass $|P|$, and state when $P$ is called a probability space
+  hint: $|P| = \sum_p |p|$; $P$ is a probability space exactly when $|P| = 1$.
+  locator: null
+  sub_index: null
+  search_text: define the total mass $|p|$, and state when $p$ is called a probability space $|p| = \sum_p
+    |p|$; $p$ is a probability space exactly when $|p| = 1$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#010
+  text: How does $\mathbb{R}^\times_+$ act on measure spaces by scaling, and which scaling factor normalizes
+    $P$?
+  hint: '$\lambda \cdot P = \{\lambda p : p \in P\}$ for $\lambda \in \mathbb{R}^\times_+$; taking $\lambda
+    = 1/|P|$ rescales any finite measure space into a probability space, called its normalization.'
+  locator: null
+  sub_index: null
+  search_text: 'how does $\mathbb{r}^\times_+$ act on measure spaces by scaling, and which scaling factor
+    normalizes $p$? $\lambda \cdot p = \{\lambda p : p \in p\}$ for $\lambda \in \mathbb{r}^\times_+$;
+    taking $\lambda = 1/|p|$ rescales any finite measure space into a probability space, called its normalization.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#011
+  text: 'Why do empirical probabilities, defined via ratios $n_i : n_j$ of occurrence counts, naturally
+    live in a projective space rather than in $\mathbb{R}^I$?'
+  hint: since the normalizing total $\sum_i n_i$ (and sometimes even the full index set $I$) is often
+    unavailable, only the ratios among the $n_i$ are meaningful, so probability distributions on $I$ properly
+    reside in the projective space $(\mathbb{R}^I \setminus 0)/\mathbb{R}^\times_+$ rather than in the
+    vector space $\mathbb{R}^I$.
+  locator: null
+  sub_index: null
+  search_text: 'why do empirical probabilities, defined via ratios $n_i : n_j$ of occurrence counts, naturally
+    live in a projective space rather than in $\mathbb{r}^i$? since the normalizing total $\sum_i n_i$
+    (and sometimes even the full index set $i$) is often unavailable, only the ratios among the $n_i$
+    are meaningful, so probability distributions on $i$ properly reside in the projective space $(\mathbb{r}^i
+    \setminus 0)/\mathbb{r}^\times_+$ rather than in the vector space $\mathbb{r}^i$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#012
+  text: 'Define a reduction $f: P \to Q$ of finite measure spaces'
+  hint: 'a map of underlying sets $f: \mathrm{set}(P) \to \mathrm{set}(Q)$ such that for every $q \in
+    Q$, the fiber $P_q = f^{-1}(q)$ satisfies $|P_q| = |q|$, i.e. the total mass of the preimage of $q$
+    equals the mass assigned to $q$ in $Q$.'
+  locator: null
+  sub_index: null
+  search_text: 'define a reduction $f: p \to q$ of finite measure spaces a map of underlying sets $f:
+    \mathrm{set}(p) \to \mathrm{set}(q)$ such that for every $q \in q$, the fiber $p_q = f^{-1}(q)$ satisfies
+    $|p_q| = |q|$, i.e. the total mass of the preimage of $q$ equals the mass assigned to $q$ in $q$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#013
+  text: 'In what sense is $Q$ an "apparatus observing $P$" when $f: P \to Q$ is a reduction?'
+  hint: $Q$ is uniquely determined by $P$ together with the underlying set map $f$, and $Q$ displays only
+    the coarser information about $P$ that is visible through the partition into fibers induced by $f$
+    — a "reduced picture" of $P$.
+  locator: null
+  sub_index: null
+  search_text: 'in what sense is $q$ an "apparatus observing $p$" when $f: p \to q$ is a reduction? $q$
+    is uniquely determined by $p$ together with the underlying set map $f$, and $q$ displays only the
+    coarser information about $p$ that is visible through the partition into fibers induced by $f$ — a
+    "reduced picture" of $p$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#014
+  text: 'Define the conditioning of $P$ along a reduction $f: P \to Q$'
+  hint: rescale each fiber $P_q$ by $\lambda_q = 1/|P_q|$ so every fiber becomes its own probability space;
+    this fiberwise normalization is the conditioning of $P$ associated to $f$, and it depends only on
+    the underlying map of sets, not on the measure structure of $Q$.
+  locator: null
+  sub_index: null
+  search_text: 'define the conditioning of $p$ along a reduction $f: p \to q$ rescale each fiber $p_q$
+    by $\lambda_q = 1/|p_q|$ so every fiber becomes its own probability space; this fiberwise normalization
+    is the conditioning of $p$ associated to $f$, and it depends only on the underlying map of sets, not
+    on the measure structure of $q$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#015
+  text: Why is the category $\mathcal{P}$ of finite probability spaces and reductions not sufficient to
+    formalize all of probability theory?
+  hint: 'notions such as conditioning genuinely require maps from probability spaces to bare, unweighted
+    sets $J$ — so-called $J$-partitions $f: P \to J$ into fibers $P_j = f^{-1}(j)$ — which is more general
+    data than a reduction between two probability spaces.'
+  locator: null
+  sub_index: null
+  search_text: 'why is the category $\mathcal{p}$ of finite probability spaces and reductions not sufficient
+    to formalize all of probability theory? notions such as conditioning genuinely require maps from probability
+    spaces to bare, unweighted sets $j$ — so-called $j$-partitions $f: p \to j$ into fibers $p_j = f^{-1}(j)$
+    — which is more general data than a reduction between two probability spaces.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#016
+  text: Define the Cartesian product $P \times Q$ of two finite measure spaces, and what physical situation
+    does it model?
+  hint: $\mathrm{set}(P \times Q) = \mathrm{set}(P) \times \mathrm{set}(Q)$ with masses $|(p,q)| = |p|
+    \cdot |q|$; it models a joint system consisting of two non-interacting components $P$ and $Q$.
+  locator: null
+  sub_index: null
+  search_text: define the cartesian product $p \times q$ of two finite measure spaces, and what physical
+    situation does it model? $\mathrm{set}(p \times q) = \mathrm{set}(p) \times \mathrm{set}(q)$ with
+    masses $|(p,q)| = |p| \cdot |q|$; it models a joint system consisting of two non-interacting components
+    $p$ and $q$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#017
+  text: Why is "$\mathrm{ent}(P_1 \vee P_2) \le \mathrm{ent}(P_1) + \mathrm{ent}(P_2)$" meaningless until
+    a relation $\vee$ is specified?
+  hint: '"$\vee$" is not a canonical operation by itself — it must be implemented by a particular relation/interaction
+    $\rho$ between $P_1$ and $P_2$ (e.g. $P_1 \times P_2$ if non-interacting, or $P_1$ itself if $P_1
+    \to P_2$ is a reduction); formally $P_1 \vee P_2$ is any probability space $Q$ with $\mathrm{set}(Q)
+    \subset \mathrm{set}(P_1) \times \mathrm{set}(P_2)$ whose two coordinate projections to $P_1$ and
+    $P_2$ are both reductions.'
+  locator: null
+  sub_index: null
+  search_text: why is "$\mathrm{ent}(p_1 \vee p_2) \le \mathrm{ent}(p_1) + \mathrm{ent}(p_2)$" meaningless
+    until a relation $\vee$ is specified? "$\vee$" is not a canonical operation by itself — it must be
+    implemented by a particular relation/interaction $\rho$ between $p_1$ and $p_2$ (e.g. $p_1 \times
+    p_2$ if non-interacting, or $p_1$ itself if $p_1 \to p_2$ is a reduction); formally $p_1 \vee p_2$
+    is any probability space $q$ with $\mathrm{set}(q) \subset \mathrm{set}(p_1) \times \mathrm{set}(p_2)$
+    whose two coordinate projections to $p_1$ and $p_2$ are both reductions.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#018
+  text: State the additivity axiom of entropy for non-interacting systems
+  hint: $\mathrm{ent}(P_1 \times P_2) = \mathrm{ent}(P_1) + \mathrm{ent}(P_2)$.
+  locator: null
+  sub_index: null
+  search_text: state the additivity axiom of entropy for non-interacting systems $\mathrm{ent}(p_1 \times
+    p_2) = \mathrm{ent}(p_1) + \mathrm{ent}(p_2)$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#019
+  text: State the subadditivity axiom of entropy for jointly interacting systems
+  hint: $\mathrm{ent}(P_1 \vee P_2) \le \mathrm{ent}(P_1) + \mathrm{ent}(P_2)$, for any joint system $P_1
+    \vee P_2$ whose coordinate projections to $P_1$ and $P_2$ are reductions.
+  locator: null
+  sub_index: null
+  search_text: state the subadditivity axiom of entropy for jointly interacting systems $\mathrm{ent}(p_1
+    \vee p_2) \le \mathrm{ent}(p_1) + \mathrm{ent}(p_2)$, for any joint system $p_1 \vee p_2$ whose coordinate
+    projections to $p_1$ and $p_2$ are reductions.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#020
+  text: State strong subadditivity of entropy for a triple joint system $[123]$
+  hint: $\mathrm{ent}[123] + \mathrm{ent}[2] \le \mathrm{ent}[12] + \mathrm{ent}[23]$, where the coordinate
+    projections $[123] \to [12] \to [1]$, etc., are all reductions.
+  locator: null
+  sub_index: null
+  search_text: state strong subadditivity of entropy for a triple joint system $[123]$ $\mathrm{ent}[123]
+    + \mathrm{ent}[2] \le \mathrm{ent}[12] + \mathrm{ent}[23]$, where the coordinate projections $[123]
+    \to [12] \to [1]$, etc., are all reductions.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#021
+  text: Derive a symmetric three-term corollary of strong subadditivity by summing over the three ways
+    of omitting an index
+  hint: $2 \cdot \mathrm{ent}[123] \le \mathrm{ent}[12] + \mathrm{ent}[23] + \mathrm{ent}[13]$.
+  locator: null
+  sub_index: null
+  search_text: derive a symmetric three-term corollary of strong subadditivity by summing over the three
+    ways of omitting an index $2 \cdot \mathrm{ent}[123] \le \mathrm{ent}[12] + \mathrm{ent}[23] + \mathrm{ent}[13]$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#022
+  text: How does entropy compare to the cardinality of the underlying set, and when is this inequality
+    sharp?
+  hint: $\mathrm{ent}(P) \le \log|\mathrm{set}(P)|$, with equality exactly when $P$ is equidistributed/homogeneous,
+    i.e. every atom has mass $1/|\mathrm{set}(P)|$; this connects $P$ with the category of finite sets.
+  locator: null
+  sub_index: null
+  search_text: how does entropy compare to the cardinality of the underlying set, and when is this inequality
+    sharp? $\mathrm{ent}(p) \le \log|\mathrm{set}(p)|$, with equality exactly when $p$ is equidistributed/homogeneous,
+    i.e. every atom has mass $1/|\mathrm{set}(p)|$; this connects $p$ with the category of finite sets.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#023
+  text: State the Loomis-Whitney inequality
+  hint: among measurable $Y \subset \mathbb{R}^k$ with prescribed measures of its $k$ coordinate-hyperplane
+    projections, the maximal measure of $Y$ is achieved by rectangular boxes, and by measurable transformations
+    of $\mathbb{R}^k$ that preserve the coordinate-line partition applied to such boxes.
+  locator: null
+  sub_index: null
+  search_text: state the loomis-whitney inequality among measurable $y \subset \mathbb{r}^k$ with prescribed
+    measures of its $k$ coordinate-hyperplane projections, the maximal measure of $y$ is achieved by rectangular
+    boxes, and by measurable transformations of $\mathbb{r}^k$ that preserve the coordinate-line partition
+    applied to such boxes.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#024
+  text: Sketch how Loomis-Whitney follows from strong subadditivity plus $\mathrm{ent}(P) \le \log|\mathrm{set}(P)|$
+  hint: approximate $Y$ by a finite equidistributed subset $[123]_\bullet \subset \mathbb{R}_1 \times
+    \mathbb{R}_2 \times \mathbb{R}_3$; then $|[123]_\bullet|^2 \le |[12]_\bullet| \cdot |[13]_\bullet|
+    \cdot |[23]_\bullet|$ follows from $2 \cdot \mathrm{ent}[123] \le \mathrm{ent}[12] + \mathrm{ent}[23]
+    + \mathrm{ent}[13]$, using $\mathrm{ent}[123] = \log|[123]_\bullet|$ (sharpness at equidistribution)
+    and $\mathrm{ent}[ij] \ge \log|[ij]_\bullet|$ for the coordinate-projection reductions; passing to
+    the continuum limit recovers the volume/area inequality.
+  locator: null
+  sub_index: null
+  search_text: sketch how loomis-whitney follows from strong subadditivity plus $\mathrm{ent}(p) \le \log|\mathrm{set}(p)|$
+    approximate $y$ by a finite equidistributed subset $[123]_\bullet \subset \mathbb{r}_1 \times \mathbb{r}_2
+    \times \mathbb{r}_3$; then $|[123]_\bullet|^2 \le |[12]_\bullet| \cdot |[13]_\bullet| \cdot |[23]_\bullet|$
+    follows from $2 \cdot \mathrm{ent}[123] \le \mathrm{ent}[12] + \mathrm{ent}[23] + \mathrm{ent}[13]$,
+    using $\mathrm{ent}[123] = \log|[123]_\bullet|$ (sharpness at equidistribution) and $\mathrm{ent}[ij]
+    \ge \log|[ij]_\bullet|$ for the coordinate-projection reductions; passing to the continuum limit recovers
+    the volume/area inequality.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#025
+  text: What open question does Gromov raise about the symmetry group of Loomis-Whitney-type inequalities?
+  hint: Loomis-Whitney is invariant only under the symmetric group $S_k$ permuting the $k$ coordinate
+    factors of $\mathbb{R}^k$; is there a sharper inequality invariant under a larger group — e.g. an
+    orthogonally-invariant version implying the sharp isoperimetric inequality?
+  locator: null
+  sub_index: null
+  search_text: what open question does gromov raise about the symmetry group of loomis-whitney-type inequalities?
+    loomis-whitney is invariant only under the symmetric group $s_k$ permuting the $k$ coordinate factors
+    of $\mathbb{r}^k$; is there a sharper inequality invariant under a larger group — e.g. an orthogonally-invariant
+    version implying the sharp isoperimetric inequality?
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#026
+  text: How is the Linearized Loomis-Whitney inequality formulated via multilinear forms?
+  hint: encode $Y \subset R = R_1 \times \cdots \times R_k$ by the $(k+1)$-linear form $\Phi_Y(z, x_1,
+    \dots, x_k) = \sum_{(r_1,\dots,r_k) \in Y} z(r_1,\dots,r_k) \cdot x_1(r_1) \cdots x_k(r_k)$; the inequality
+    then generalizes to bound $|\Phi(x_1,x_2)|^2$ by products of ranks of associated bilinear forms of
+    $\Phi$, for an arbitrary multilinear form $\Phi$ over any field.
+  locator: null
+  sub_index: null
+  search_text: how is the linearized loomis-whitney inequality formulated via multilinear forms? encode
+    $y \subset r = r_1 \times \cdots \times r_k$ by the $(k+1)$-linear form $\phi_y(z, x_1, \dots, x_k)
+    = \sum_{(r_1,\dots,r_k) \in y} z(r_1,\dots,r_k) \cdot x_1(r_1) \cdots x_k(r_k)$; the inequality then
+    generalizes to bound $|\phi(x_1,x_2)|^2$ by products of ranks of associated bilinear forms of $\phi$,
+    for an arbitrary multilinear form $\phi$ over any field.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#027
+  text: State the algebraic (rank-based) 3D Loomis-Whitney inequality for an arbitrary 4-linear form $\Phi$
+  hint: $|\Phi(x_1,x_2)|^2 \le |\Phi(x_1 \otimes x_2, x_3 \otimes x_4)| \cdot |\Phi(x_1 \otimes x_3, x_2
+    \otimes x_4)| \cdot |\Phi(x_1 \otimes x_4, x_2 \otimes x_3)|$, where $|\Phi(-,-)|$ denotes the rank
+    of the corresponding bilinear form.
+  locator: null
+  sub_index: null
+  search_text: state the algebraic (rank-based) 3d loomis-whitney inequality for an arbitrary 4-linear
+    form $\phi$ $|\phi(x_1,x_2)|^2 \le |\phi(x_1 \otimes x_2, x_3 \otimes x_4)| \cdot |\phi(x_1 \otimes
+    x_3, x_2 \otimes x_4)| \cdot |\phi(x_1 \otimes x_4, x_2 \otimes x_3)|$, where $|\phi(-,-)|$ denotes
+    the rank of the corresponding bilinear form.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#028
+  text: Define a homogeneous probability space categorically
+  hint: $P$ is homogeneous if every morphism $P \to Q$ invariant under $\mathrm{Aut}(P)$ factors through
+    the map $P \to \bullet$ to a terminal object; concretely, this means all atoms of $P$ have equal mass.
+  locator: null
+  sub_index: null
+  search_text: define a homogeneous probability space categorically $p$ is homogeneous if every morphism
+    $p \to q$ invariant under $\mathrm{aut}(p)$ factors through the map $p \to \bullet$ to a terminal
+    object; concretely, this means all atoms of $p$ have equal mass.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#029
+  text: Why does a reduction between homogeneous spaces automatically (non-canonically) split as a Cartesian
+    product?
+  hint: 'homogeneity forces all fibers of the reduction $f: P \to Q$ to have equal size and internal mass
+    distribution, so one can identify each fiber with a fixed space $P''$, giving $P \cong P'' \times
+    Q$ with $f$ the projection.'
+  locator: null
+  sub_index: null
+  search_text: 'why does a reduction between homogeneous spaces automatically (non-canonically) split
+    as a cartesian product? homogeneity forces all fibers of the reduction $f: p \to q$ to have equal
+    size and internal mass distribution, so one can identify each fiber with a fixed space $p''$, giving
+    $p \cong p'' \times q$ with $f$ the projection.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#030
+  text: Define the entropy of a homogeneous space, and explain how this defines entropy in general
+  hint: $\mathrm{ent}(P) := \log|\mathrm{set}(P)|$ for homogeneous $P$; the entropy of a general $P$ is
+    then defined via Bernoulli approximation by a sequence of homogeneous spaces, reducing to this formula.
+  locator: null
+  sub_index: null
+  search_text: define the entropy of a homogeneous space, and explain how this defines entropy in general
+    $\mathrm{ent}(p) := \log|\mathrm{set}(p)|$ for homogeneous $p$; the entropy of a general $p$ is then
+    defined via bernoulli approximation by a sequence of homogeneous spaces, reducing to this formula.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#031
+  text: 'Define additive distance $|P-Q|_\pi$ and normalized multiplicative distance $|\log P{:}Q|_\pi$
+    for a partial injective correspondence $\pi: P'' \leftrightarrow Q''$'
+  hint: $|P-Q|_\pi = |P \setminus P'| + |Q \setminus Q'|$; $|\log P{:}Q|_\pi = \sup_{p \in P'} \log|p{:}q|
+    / \log M$, where $|p{:}q| = \max(p/q, q/p)$, $M = \min(|\mathrm{set}(P)|, |\mathrm{set}(Q)|)$, and
+    $0/0 := 0$.
+  locator: null
+  sub_index: null
+  search_text: 'define additive distance $|p-q|_\pi$ and normalized multiplicative distance $|\log p{:}q|_\pi$
+    for a partial injective correspondence $\pi: p'' \leftrightarrow q''$ $|p-q|_\pi = |p \setminus p''|
+    + |q \setminus q''|$; $|\log p{:}q|_\pi = \sup_{p \in p''} \log|p{:}q| / \log m$, where $|p{:}q| =
+    \max(p/q, q/p)$, $m = \min(|\mathrm{set}(p)|, |\mathrm{set}(q)|)$, and $0/0 := 0$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#032
+  text: Define total distance $\mathrm{dist}_\pi$ and $\mathrm{DIST}$ between finite measure spaces
+  hint: $\mathrm{dist}_\pi(P,Q) = |P-Q|_\pi + |\log P{:}Q|_\pi$ for fixed $\pi$; $\mathrm{DIST}(P,Q) =
+    \inf_\pi \mathrm{dist}_\pi(P,Q)$ over all partial injective correspondences $\pi$.
+  locator: null
+  sub_index: null
+  search_text: define total distance $\mathrm{dist}_\pi$ and $\mathrm{dist}$ between finite measure spaces
+    $\mathrm{dist}_\pi(p,q) = |p-q|_\pi + |\log p{:}q|_\pi$ for fixed $\pi$; $\mathrm{dist}(p,q) = \inf_\pi
+    \mathrm{dist}_\pi(p,q)$ over all partial injective correspondences $\pi$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#033
+  text: When is a sequence $\{P_N\}$ asymptotically equivalent to $\{Q_N\}$?
+  hint: when $\mathrm{DIST}(P_N, Q_N) \to 0$ as $N \to \infty$.
+  locator: null
+  sub_index: null
+  search_text: when is a sequence $\{p_n\}$ asymptotically equivalent to $\{q_n\}$? when $\mathrm{dist}(p_n,
+    q_n) \to 0$ as $n \to \infty$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#034
+  text: Define the Bernoulli topological semigroup $\mathrm{Ber}(\mathcal{P})$
+  hint: the set of asymptotic-equivalence classes of sequences $\{P^N\}$ for $P \in \mathcal{P}$, with
+    product induced by the Cartesian product $P \times Q$, and topology induced by $\mathrm{DIST}(P_N,
+    Q_N)$ as $N \to \infty$.
+  locator: null
+  sub_index: null
+  search_text: define the bernoulli topological semigroup $\mathrm{ber}(\mathcal{p})$ the set of asymptotic-equivalence
+    classes of sequences $\{p^n\}$ for $p \in \mathcal{p}$, with product induced by the cartesian product
+    $p \times q$, and topology induced by $\mathrm{dist}(p_n, q_n)$ as $n \to \infty$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#035
+  text: Define Boltzmann entropy of $P$ via $\mathrm{Ber}(\mathcal{P})$
+  hint: $\mathrm{ent}(P)$ is (a representative of) the Bernoulli class of $P$ in $\mathrm{Ber}(\mathcal{P})$.
+  locator: null
+  sub_index: null
+  search_text: define boltzmann entropy of $p$ via $\mathrm{ber}(\mathcal{p})$ $\mathrm{ent}(p)$ is (a
+    representative of) the bernoulli class of $p$ in $\mathrm{ber}(\mathcal{p})$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#036
+  text: State the Bernoulli Approximation (Equipartition) Theorem, and identify the classical theorem
+    it reformulates
+  hint: every finite probability space $P$ admits a sequence $H_N$ of homogeneous probability spaces asymptotically
+    equivalent to the Cartesian powers $P^N$; this is exactly the (weak) Law of Large Numbers applied
+    to the random variable $p \mapsto \log p$ on $P$.
+  locator: null
+  sub_index: null
+  search_text: state the bernoulli approximation (equipartition) theorem, and identify the classical theorem
+    it reformulates every finite probability space $p$ admits a sequence $h_n$ of homogeneous probability
+    spaces asymptotically equivalent to the cartesian powers $p^n$; this is exactly the (weak) law of
+    large numbers applied to the random variable $p \mapsto \log p$ on $p$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#037
+  text: How can this same approximation theorem be stated without ever introducing a logarithm?
+  hint: apply the law of large numbers to the tautological map $\mathbb{R}_+ \to \mathbb{R}^\times_+$,
+    $p \mapsto p$, working entirely within the multiplicative group $\mathbb{R}^\times_+$.
+  locator: null
+  sub_index: null
+  search_text: how can this same approximation theorem be stated without ever introducing a logarithm?
+    apply the law of large numbers to the tautological map $\mathbb{r}_+ \to \mathbb{r}^\times_+$, $p
+    \mapsto p$, working entirely within the multiplicative group $\mathbb{r}^\times_+$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#038
+  text: Describe the $\mathrm{Sym}_N$-symmetry of Bernoulli approximating sets $B_N$
+  hint: $B_N = \mathrm{set}(H_N) \subset (\mathrm{set}(P))^N$ can be chosen invariant under the symmetric
+    group $\mathrm{Sym}_N$ permuting the $N$ Cartesian factors, since the power measure of $P^N$ is $\mathrm{Sym}_N$-invariant
+    and all standard LLN constructions can be arranged to yield $\mathrm{Sym}_N$-invariant sets.
+  locator: null
+  sub_index: null
+  search_text: describe the $\mathrm{sym}_n$-symmetry of bernoulli approximating sets $b_n$ $b_n = \mathrm{set}(h_n)
+    \subset (\mathrm{set}(p))^n$ can be chosen invariant under the symmetric group $\mathrm{sym}_n$ permuting
+    the $n$ cartesian factors, since the power measure of $p^n$ is $\mathrm{sym}_n$-invariant and all
+    standard lln constructions can be arranged to yield $\mathrm{sym}_n$-invariant sets.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#039
+  text: Define Bernoulli entropy as a limit, and explain why this definition makes subadditivity effortless
+  hint: $\mathrm{ent}(P) = \lim_{N \to \infty} N^{-1} \log|\mathrm{set}(H_N)|$; subadditivity-type inequalities
+    are obvious for homogeneous spaces (they become inequalities of cardinalities), and Bernoulli approximation
+    automatically transports these obvious inequalities to the general case.
+  locator: null
+  sub_index: null
+  search_text: define bernoulli entropy as a limit, and explain why this definition makes subadditivity
+    effortless $\mathrm{ent}(p) = \lim_{n \to \infty} n^{-1} \log|\mathrm{set}(h_n)|$; subadditivity-type
+    inequalities are obvious for homogeneous spaces (they become inequalities of cardinalities), and bernoulli
+    approximation automatically transports these obvious inequalities to the general case.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#040
+  text: State the "Boltzmann = Bernoulli" identification and its consequence
+  hint: $H \mapsto |\mathrm{set}(H)|$ extends to a topological isomorphism $\mathrm{Ber}(\mathcal{P})
+    \cong \mathbb{R}^\times_{\ge 1}$; consequently $\mathrm{ent}(P) = -\sum_{p \in P} |p| \log|p|$, the
+    classical Boltzmann/Shannon formula, which may be (mis)taken for the definition but is here derived
+    from Bernoulli approximation.
+  locator: null
+  sub_index: null
+  search_text: state the "boltzmann = bernoulli" identification and its consequence $h \mapsto |\mathrm{set}(h)|$
+    extends to a topological isomorphism $\mathrm{ber}(\mathcal{p}) \cong \mathbb{r}^\times_{\ge 1}$;
+    consequently $\mathrm{ent}(p) = -\sum_{p \in p} |p| \log|p|$, the classical boltzmann/shannon formula,
+    which may be (mis)taken for the definition but is here derived from bernoulli approximation.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#041
+  text: Restate asymptotic equivalence $\{P^N\} \sim \{Q^N\}$ directly using Boltzmann sums
+  hint: $\{P^N\}$ is asymptotically equivalent to $\{Q^N\}$ iff $\sum_p |p| \log|p| = \sum_q |q| \log|q|$,
+    i.e. iff $P$ and $Q$ have equal Boltzmann entropy.
+  locator: null
+  sub_index: null
+  search_text: restate asymptotic equivalence $\{p^n\} \sim \{q^n\}$ directly using boltzmann sums $\{p^n\}$
+    is asymptotically equivalent to $\{q^n\}$ iff $\sum_p |p| \log|p| = \sum_q |q| \log|q|$, i.e. iff
+    $p$ and $q$ have equal boltzmann entropy.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#042
+  text: Why does the Bernoulli-approximation proof of subadditivity not immediately determine when equality
+    holds?
+  hint: the approximation shows the inequality only in a limiting sense; pinning down exact equality cases
+    requires a direct analytic computation with Boltzmann's explicit formula rather than the approximation
+    argument itself.
+  locator: null
+  sub_index: null
+  search_text: why does the bernoulli-approximation proof of subadditivity not immediately determine when
+    equality holds? the approximation shows the inequality only in a limiting sense; pinning down exact
+    equality cases requires a direct analytic computation with boltzmann's explicit formula rather than
+    the approximation argument itself.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#043
+  text: Define relative entropy $\mathrm{ent}_\lambda(\mu)$ when $\mu = f \cdot \lambda$ with $f$ constant
+    on its support $S$
+  hint: $\mathrm{ent}_\lambda(\mu) := \log|S| = \log \lambda(S)$, which equals $\log \mu(S) - \mu(S)^{-1}\int_S
+    \log f\, d\mu$, since $f = \mu(S)/|S|$ on $S$.
+  locator: null
+  sub_index: null
+  search_text: define relative entropy $\mathrm{ent}_\lambda(\mu)$ when $\mu = f \cdot \lambda$ with $f$
+    constant on its support $s$ $\mathrm{ent}_\lambda(\mu) := \log|s| = \log \lambda(s)$, which equals
+    $\log \mu(s) - \mu(s)^{-1}\int_s \log f\, d\mu$, since $f = \mu(s)/|s|$ on $s$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#044
+  text: Define relative entropy $\mathrm{ent}_\lambda(\mu)$ in general ($f$ not constant), and state Boltzmann's
+    formula for it when $\mu$ is a probability measure
+  hint: define via Bernoulli approximation of the tensor powers $\mu^{\otimes N}$ on $(X^{\times N}, \lambda^{\otimes
+    N})$ as $N \to \infty$; if $\int f\, d\lambda = 1$, then $\mathrm{ent}_\lambda(\mu) = \int_S f \log(1/f)\,
+    d\lambda$.
+  locator: null
+  sub_index: null
+  search_text: define relative entropy $\mathrm{ent}_\lambda(\mu)$ in general ($f$ not constant), and
+    state boltzmann's formula for it when $\mu$ is a probability measure define via bernoulli approximation
+    of the tensor powers $\mu^{\otimes n}$ on $(x^{\times n}, \lambda^{\otimes n})$ as $n \to \infty$;
+    if $\int f\, d\lambda = 1$, then $\mathrm{ent}_\lambda(\mu) = \int_s f \log(1/f)\, d\lambda$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#045
+  text: For measures $P$ (weights $p_i$) and $Q$ (weights $q_i$) on the same finite index set, compute
+    $\mathrm{ent}_Q(P)$ when $Q$ is the counting measure and when $Q$ is homogeneous on $m$ atoms
+  hint: if all $q_i = 1$, $\mathrm{ent}_Q(P) = \mathrm{ent}(P)$; if $Q$ is homogeneous with $q_i = 1/m$
+    for all $i$, then $\mathrm{ent}_Q(P) = \mathrm{ent}(P) - \log m$.
+  locator: null
+  sub_index: null
+  search_text: for measures $p$ (weights $p_i$) and $q$ (weights $q_i$) on the same finite index set,
+    compute $\mathrm{ent}_q(p)$ when $q$ is the counting measure and when $q$ is homogeneous on $m$ atoms
+    if all $q_i = 1$, $\mathrm{ent}_q(p) = \mathrm{ent}(p)$; if $q$ is homogeneous with $q_i = 1/m$ for
+    all $i$, then $\mathrm{ent}_q(p) = \mathrm{ent}(p) - \log m$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#046
+  text: Why is $-\mathrm{ent}_\lambda(\mu) \ge 0$ when $\lambda, \mu$ are both probability measures, and
+    what is this quantity called?
+  hint: for two probability measures, $\mathrm{ent}_\lambda(\mu) \le 0$ always, and $-\mathrm{ent}_\lambda(\mu)$
+    is the Kullback-Leibler information divergence between $\lambda$ and $\mu$.
+  locator: null
+  sub_index: null
+  search_text: why is $-\mathrm{ent}_\lambda(\mu) \ge 0$ when $\lambda, \mu$ are both probability measures,
+    and what is this quantity called? for two probability measures, $\mathrm{ent}_\lambda(\mu) \le 0$
+    always, and $-\mathrm{ent}_\lambda(\mu)$ is the kullback-leibler information divergence between $\lambda$
+    and $\mu$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#047
+  text: Define the Mellin transform $\zeta_P(s)$ of a finite measure space $P$
+  hint: $\zeta_P(s) = \sum_{p \in P} |p|^s$, defined purely from the multiset of weights $\{|p|\}$, so
+    any symmetric function of the weights can in principle be recovered from $\zeta_P$.
+  locator: null
+  sub_index: null
+  search_text: define the mellin transform $\zeta_p(s)$ of a finite measure space $p$ $\zeta_p(s) = \sum_{p
+    \in p} |p|^s$, defined purely from the multiset of weights $\{|p|\}$, so any symmetric function of
+    the weights can in principle be recovered from $\zeta_p$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#048
+  text: Show $\zeta_P$ is multiplicative under Cartesian products, and use this to re-derive additivity
+    of entropy
+  hint: $\zeta_{P \times Q}(s) = \zeta_P(s) \cdot \zeta_Q(s)$, so $\log \zeta_P(s)$ is additive; since
+    $-\mathrm{ent}(P) = \left.\frac{d}{ds}\zeta_P(s)\right|_{s=1}$ (using $\zeta_P(1) = |P| = 1$), differentiating
+    the multiplicative identity at $s=1$ recovers additivity of entropy.
+  locator: null
+  sub_index: null
+  search_text: show $\zeta_p$ is multiplicative under cartesian products, and use this to re-derive additivity
+    of entropy $\zeta_{p \times q}(s) = \zeta_p(s) \cdot \zeta_q(s)$, so $\log \zeta_p(s)$ is additive;
+    since $-\mathrm{ent}(p) = \left.\frac{d}{ds}\zeta_p(s)\right|_{s=1}$ (using $\zeta_p(1) = |p| = 1$),
+    differentiating the multiplicative identity at $s=1$ recovers additivity of entropy.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#049
+  text: Explain how the Riemann zeta function arises from $\zeta_{\mathbb{N}}(-s)$ for the infinite measure
+    space $\mathbb{N} = \{1,2,3,\dots\}$, and identify Euler's product formula as a multiplicativity statement
+  hint: $\mathbb{N}$ decomposes as a restricted Cartesian product of "prime measure spaces" $P_p = \{1,
+    p, p^2, p^3, \dots\}$, so multiplicativity of $\zeta_{\mathbb{N}}(-s) = \sum_n n^{-s}$ over this restricted
+    product is exactly Euler's product formula $\zeta(s) = \prod_p (1-p^{-s})^{-1}$.
+  locator: null
+  sub_index: null
+  search_text: explain how the riemann zeta function arises from $\zeta_{\mathbb{n}}(-s)$ for the infinite
+    measure space $\mathbb{n} = \{1,2,3,\dots\}$, and identify euler's product formula as a multiplicativity
+    statement $\mathbb{n}$ decomposes as a restricted cartesian product of "prime measure spaces" $p_p
+    = \{1, p, p^2, p^3, \dots\}$, so multiplicativity of $\zeta_{\mathbb{n}}(-s) = \sum_n n^{-s}$ over
+    this restricted product is exactly euler's product formula $\zeta(s) = \prod_p (1-p^{-s})^{-1}$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#050
+  text: What open question does Gromov pose about entropy-like invariants over other semirings?
+  hint: whether there is an interesting analogue of entropy for spaces $X^I$ with coordinates in a general
+    topological semiring $R$ (e.g. $p$-adic numbers, adelic rings, or a truncated polynomial ring with
+    exponential/log-like structure motivated by Mendelian dynamics), and whether finite index sets $I$
+    could be replaced by algebraic varieties with $R$-valued functions.
+  locator: null
+  sub_index: null
+  search_text: what open question does gromov pose about entropy-like invariants over other semirings?
+    whether there is an interesting analogue of entropy for spaces $x^i$ with coordinates in a general
+    topological semiring $r$ (e.g. $p$-adic numbers, adelic rings, or a truncated polynomial ring with
+    exponential/log-like structure motivated by mendelian dynamics), and whether finite index sets $i$
+    could be replaced by algebraic varieties with $r$-valued functions.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#051
+  text: Define the Grothendieck group $\mathrm{Gr}(\mathcal{P})$ generated by reductions
+  hint: 'generated by symbols $[f]$ for reductions $f: P_1 \to P_2$, subject to $[f_1 \circ f_2]_{\mathrm{Gr}}
+    = [f_1]_{\mathrm{Gr}} + [f_2]_{\mathrm{Gr}}$ and $[f \times \mathrm{id}_Q]_{\mathrm{Gr}} = [f]_{\mathrm{Gr}}$;
+    objects $P$ give classes $[P]_{\mathrm{Gr}} := [P \to \bullet]_{\mathrm{Gr}}$ for the map to the one-atom
+    terminal space.'
+  locator: null
+  sub_index: null
+  search_text: 'define the grothendieck group $\mathrm{gr}(\mathcal{p})$ generated by reductions generated
+    by symbols $[f]$ for reductions $f: p_1 \to p_2$, subject to $[f_1 \circ f_2]_{\mathrm{gr}} = [f_1]_{\mathrm{gr}}
+    + [f_2]_{\mathrm{gr}}$ and $[f \times \mathrm{id}_q]_{\mathrm{gr}} = [f]_{\mathrm{gr}}$; objects $p$
+    give classes $[p]_{\mathrm{gr}} := [p \to \bullet]_{\mathrm{gr}}$ for the map to the one-atom terminal
+    space.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#052
+  text: How does $\mathrm{DIST}$ extend from objects to morphisms of $\mathrm{Gr}(\mathcal{P})$?
+  hint: 'a distance between $f_1: P_1 \to Q_1$ and $f_2: P_2 \to Q_2$ is implemented by a pair of partial
+    correspondences $\pi: P_1 \leftrightarrow P_2$, $\chi: Q_1 \leftrightarrow Q_2$ making the natural
+    square commute, possibly up to an added $\varepsilon$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does $\mathrm{dist}$ extend from objects to morphisms of $\mathrm{gr}(\mathcal{p})$?
+    a distance between $f_1: p_1 \to q_1$ and $f_2: p_2 \to q_2$ is implemented by a pair of partial correspondences
+    $\pi: p_1 \leftrightarrow p_2$, $\chi: q_1 \leftrightarrow q_2$ making the natural square commute,
+    possibly up to an added $\varepsilon$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#053
+  text: Define the Grothendieck-Bernoulli group $\mathrm{GroBer}(\mathcal{P})$, and identify it explicitly
+  hint: quotient $\mathrm{Gr}(\mathcal{P})$ by the equivalence $g_1 \sim_\infty g_2 \iff \mathrm{DIST}(N
+    \cdot g_1, N \cdot g_2) \to 0$; using $[f^N]_{\mathrm{Gr}} = N \cdot [f]_{\mathrm{Gr}}$ for Cartesian
+    powers, $\mathrm{GroBer}(\mathcal{P})$ is isomorphic to $\mathbb{R}^\times_+$, with the image of $\mathcal{P}$
+    consisting of numbers $\ge 1$.
+  locator: null
+  sub_index: null
+  search_text: define the grothendieck-bernoulli group $\mathrm{grober}(\mathcal{p})$, and identify it
+    explicitly quotient $\mathrm{gr}(\mathcal{p})$ by the equivalence $g_1 \sim_\infty g_2 \iff \mathrm{dist}(n
+    \cdot g_1, n \cdot g_2) \to 0$; using $[f^n]_{\mathrm{gr}} = n \cdot [f]_{\mathrm{gr}}$ for cartesian
+    powers, $\mathrm{grober}(\mathcal{p})$ is isomorphic to $\mathbb{r}^\times_+$, with the image of $\mathcal{p}$
+    consisting of numbers $\ge 1$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#054
+  text: 'Express $\mathrm{ent}(f: P \to Q)$ both categorically and numerically, and explain why the categorical
+    version is more general'
+  hint: numerically $\mathrm{ent}(f) = \mathrm{ent}(P) - \mathrm{ent}(Q)$; categorically it is the class
+    of $f$ in $\mathrm{GroBer}(\mathcal{P})$; the categorical definition extends to reductions between
+    countably infinite measure spaces even when both $P$ and $Q$ individually have infinite entropy, as
+    long as $\mathrm{ent}(f)$ itself remains finite.
+  locator: null
+  sub_index: null
+  search_text: 'express $\mathrm{ent}(f: p \to q)$ both categorically and numerically, and explain why
+    the categorical version is more general numerically $\mathrm{ent}(f) = \mathrm{ent}(p) - \mathrm{ent}(q)$;
+    categorically it is the class of $f$ in $\mathrm{grober}(\mathcal{p})$; the categorical definition
+    extends to reductions between countably infinite measure spaces even when both $p$ and $q$ individually
+    have infinite entropy, as long as $\mathrm{ent}(f)$ itself remains finite.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#055
+  text: Define an $x$-fan over a family $\{b_i\}$, and define what it means for an object $a$ to lie "between"
+    $x$ and $\{b_i\}$
+  hint: 'an $x$-fan is a family of morphisms $f_i: x \to b_i$; an $a$-fan $f_i'': a \to b_i$ lies between
+    $x$ and $\{b_i\}$ if there is $g: x \to a$ with $f_i'' \circ g = f_i$ for all $i$, and $a$ itself
+    is then said to lie between $x$ and $\{b_i\}$.'
+  locator: null
+  sub_index: null
+  search_text: 'define an $x$-fan over a family $\{b_i\}$, and define what it means for an object $a$
+    to lie "between" $x$ and $\{b_i\}$ an $x$-fan is a family of morphisms $f_i: x \to b_i$; an $a$-fan
+    $f_i'': a \to b_i$ lies between $x$ and $\{b_i\}$ if there is $g: x \to a$ with $f_i'' \circ g = f_i$
+    for all $i$, and $a$ itself is then said to lie between $x$ and $\{b_i\}$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#056
+  text: Define a minimal fan, and state its key injectivity property
+  hint: 'an $x$-fan $\{f_i: x \to b_i\}$ is minimal if every $a$ lying between $x$ and $\{b_i\}$ is isomorphic
+    to $x$; for a minimal fan $Q \to P_i$, the induced map $\mathrm{set}(Q) \to \prod_i \mathrm{set}(P_i)$
+    is injective (though generally not itself a reduction).'
+  locator: null
+  sub_index: null
+  search_text: 'define a minimal fan, and state its key injectivity property an $x$-fan $\{f_i: x \to
+    b_i\}$ is minimal if every $a$ lying between $x$ and $\{b_i\}$ is isomorphic to $x$; for a minimal
+    fan $q \to p_i$, the induced map $\mathrm{set}(q) \to \prod_i \mathrm{set}(p_i)$ is injective (though
+    generally not itself a reduction).'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#057
+  text: State the Bernoulli functoriality question for a finite family of reductions
+  hint: whether the $N$-th powers $f_i^N$ of a family $\{f_i\}$, $i \in I$, admit compatible homogeneous
+    Bernoulli approximations $\varphi_{iN}$ preserving composition ($\varphi_{iN} = \varphi_{jN} \circ
+    \varphi_{kN}$ whenever $f_i = f_j \circ f_k$) and preserving injectivity/minimality of fans; this
+    is likely not always possible, but Gromov notes it holds in the cases needed, following from the law
+    of large numbers.
+  locator: null
+  sub_index: null
+  search_text: state the bernoulli functoriality question for a finite family of reductions whether the
+    $n$-th powers $f_i^n$ of a family $\{f_i\}$, $i \in i$, admit compatible homogeneous bernoulli approximations
+    $\varphi_{in}$ preserving composition ($\varphi_{in} = \varphi_{jn} \circ \varphi_{kn}$ whenever $f_i
+    = f_j \circ f_k$) and preserving injectivity/minimality of fans; this is likely not always possible,
+    but gromov notes it holds in the cases needed, following from the law of large numbers.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#058
+  text: Define $Q = \bigvee_i P_i$ as a minimal fan and state the resulting subadditivity for both spaces
+    and reductions
+  hint: 'minimality (equivalently $\mathrm{set}(Q) = \bigtimes_i \mathrm{set}(P_i)$) implies $\mathrm{ent}(\bigvee_i
+    P_i) \le \sum_i \mathrm{ent}(P_i)$; for reductions $f_i: P_i \to Q_i$, $\mathrm{ent}(\bigvee_i f_i)
+    \le \sum_i \mathrm{ent}(f_i)$, using $\mathrm{ent}(f_i) = \mathrm{ent}(P_i) - \mathrm{ent}(Q_i)$.'
+  locator: null
+  sub_index: null
+  search_text: 'define $q = \bigvee_i p_i$ as a minimal fan and state the resulting subadditivity for
+    both spaces and reductions minimality (equivalently $\mathrm{set}(q) = \bigtimes_i \mathrm{set}(p_i)$)
+    implies $\mathrm{ent}(\bigvee_i p_i) \le \sum_i \mathrm{ent}(p_i)$; for reductions $f_i: p_i \to q_i$,
+    $\mathrm{ent}(\bigvee_i f_i) \le \sum_i \mathrm{ent}(f_i)$, using $\mathrm{ent}(f_i) = \mathrm{ent}(p_i)
+    - \mathrm{ent}(q_i)$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#059
+  text: Derive strong subadditivity from ordinary subadditivity of reductions, using $(P_1 \vee P_2) \vee
+    (P_2 \vee P_3) = P_1 \vee P_2 \vee P_3$
+  hint: 'form the joint reduction $f_{12} \vee f_{23}: P_1 \vee P_2 \vee P_3 \to P_2$ from $f_{12}: P_1
+    \vee P_2 \to P_2$ and $f_{23}: P_2 \vee P_3 \to P_2$; subadditivity for this joint reduction gives
+    $\mathrm{ent}(P_1 \vee P_2 \vee P_3) - \mathrm{ent}(P_2) \le [\mathrm{ent}(P_1 \vee P_2) - \mathrm{ent}(P_2)]
+    + [\mathrm{ent}(P_2 \vee P_3) - \mathrm{ent}(P_2)]$, which is exactly strong subadditivity.'
+  locator: null
+  sub_index: null
+  search_text: 'derive strong subadditivity from ordinary subadditivity of reductions, using $(p_1 \vee
+    p_2) \vee (p_2 \vee p_3) = p_1 \vee p_2 \vee p_3$ form the joint reduction $f_{12} \vee f_{23}: p_1
+    \vee p_2 \vee p_3 \to p_2$ from $f_{12}: p_1 \vee p_2 \to p_2$ and $f_{23}: p_2 \vee p_3 \to p_2$;
+    subadditivity for this joint reduction gives $\mathrm{ent}(p_1 \vee p_2 \vee p_3) - \mathrm{ent}(p_2)
+    \le [\mathrm{ent}(p_1 \vee p_2) - \mathrm{ent}(p_2)] + [\mathrm{ent}(p_2 \vee p_3) - \mathrm{ent}(p_2)]$,
+    which is exactly strong subadditivity.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#060
+  text: Define a "space over $\mathcal{P}$" as a covariant functor
+  hint: 'a covariant functor $X: \mathcal{P} \to \mathbf{Set}$ from finite probability spaces and reductions
+    to sets, with $X(P)$ thought of as the set of $P$-valued measurements of $X$; equivalently, an object
+    augmenting $\mathcal{P}$ so that at most one morphism goes from $X$ to each (copy of a) $P$.'
+  locator: null
+  sub_index: null
+  search_text: 'define a "space over $\mathcal{p}$" as a covariant functor a covariant functor $x: \mathcal{p}
+    \to \mathbf{set}$ from finite probability spaces and reductions to sets, with $x(p)$ thought of as
+    the set of $p$-valued measurements of $x$; equivalently, an object augmenting $\mathcal{p}$ so that
+    at most one morphism goes from $x$ to each (copy of a) $p$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#061
+  text: If $X$ is an ordinary measure space, what is the corresponding functor $X(P)$?
+  hint: '$X(P)$ is the set of (a.e.-equivalence classes of) measure-preserving maps $f: X \to P$, for
+    each finite probability space $P$.'
+  locator: null
+  sub_index: null
+  search_text: 'if $x$ is an ordinary measure space, what is the corresponding functor $x(p)$? $x(p)$
+    is the set of (a.e.-equivalence classes of) measure-preserving maps $f: x \to p$, for each finite
+    probability space $p$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#062
+  text: Define what it means for the functor corresponding to $X$ to actually be a measure space, using
+    $\vee$-categories
+  hint: $X$ is a measure space iff $\mathcal{P}/X$ is a $\vee$-category, meaning every $X$-fan over finitely
+    many $P_i \in \mathcal{P}$ admits a $Q$ lying between $X$ and $\{P_i\}$; this $Q$, the "$\vee$-coproduct"
+    $\bigvee_i P_i$ in $\mathcal{P}/X$, is unique up to canonical isomorphism.
+  locator: null
+  sub_index: null
+  search_text: define what it means for the functor corresponding to $x$ to actually be a measure space,
+    using $\vee$-categories $x$ is a measure space iff $\mathcal{p}/x$ is a $\vee$-category, meaning every
+    $x$-fan over finitely many $p_i \in \mathcal{p}$ admits a $q$ lying between $x$ and $\{p_i\}$; this
+    $q$, the "$\vee$-coproduct" $\bigvee_i p_i$ in $\mathcal{p}/x$, is unique up to canonical isomorphism.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#063
+  text: Define a resolution of an infinite space $X$
+  hint: a family $P^\infty = \{P_i\}$ resolves an object $Q$ lying under $X$ if $\mathrm{ent}(Q \vee P_i)
+    - \mathrm{ent}(P_i) \to 0$ as $i \to \infty$; $P^\infty$ is a resolution of $X$ if it resolves every
+    such $Q$, meaning the observations $P_i$ eventually capture the full information content of $X$.
+  locator: null
+  sub_index: null
+  search_text: define a resolution of an infinite space $x$ a family $p^\infty = \{p_i\}$ resolves an
+    object $q$ lying under $x$ if $\mathrm{ent}(q \vee p_i) - \mathrm{ent}(p_i) \to 0$ as $i \to \infty$;
+    $p^\infty$ is a resolution of $x$ if it resolves every such $q$, meaning the observations $p_i$ eventually
+    capture the full information content of $x$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#064
+  text: Define $X$ being representable as an infinite Cartesian product $\prod_{s \in S} P_s$
+  hint: all finite truncations $\Pi_T = \prod_{s \in T} P_s$ ($T \subset S$ finite) lie under $X$, and
+    some exhaustion $T_i \subset S$ resolves $X$, i.e. $\{\Pi_{T_i}\}$ is a resolution.
+  locator: null
+  sub_index: null
+  search_text: define $x$ being representable as an infinite cartesian product $\prod_{s \in s} p_s$ all
+    finite truncations $\pi_t = \prod_{s \in t} p_s$ ($t \subset s$ finite) lie under $x$, and some exhaustion
+    $t_i \subset s$ resolves $x$, i.e. $\{\pi_{t_i}\}$ is a resolution.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#065
+  text: Distinguish a minimal Cartesian product from the classical Lebesgue-Kolmogorov product
+  hint: $X = \prod_{s \in S} P_s$ is minimal if $Q$ lies under $X$ exactly when it lies under some finite
+    $\Pi_T$; the classical Lebesgue-Kolmogorov product also satisfies the resolution property but via
+    Lebesgue's density lemma rather than by this stricter minimality condition.
+  locator: null
+  sub_index: null
+  search_text: distinguish a minimal cartesian product from the classical lebesgue-kolmogorov product
+    $x = \prod_{s \in s} p_s$ is minimal if $q$ lies under $x$ exactly when it lies under some finite
+    $\pi_t$; the classical lebesgue-kolmogorov product also satisfies the resolution property but via
+    lebesgue's density lemma rather than by this stricter minimality condition.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#066
+  text: State Lebesgue's density lemma in this entropy language
+  hint: 'for a minimal $R$-fan $P \leftarrow R \to Q$ with subspace $P'' \subset P$, fibers $R_{p''}$,
+    and $M_{II}(p'')$ the second-largest atom mass in $R_{p''}$: if $|P \setminus P''| \le \lambda|P|$
+    and $M_{II}(p'') \le \lambda|R_{p''}|$ for all $p'' \in P''$, then $\mathrm{ent}(f) \le (\lambda +
+    \varepsilon)|\mathrm{set}(Q)|$ with $\varepsilon = \varepsilon(\lambda) \to 0$ as $\lambda \to 0$.'
+  locator: null
+  sub_index: null
+  search_text: 'state lebesgue''s density lemma in this entropy language for a minimal $r$-fan $p \leftarrow
+    r \to q$ with subspace $p'' \subset p$, fibers $r_{p''}$, and $m_{ii}(p'')$ the second-largest atom
+    mass in $r_{p''}$: if $|p \setminus p''| \le \lambda|p|$ and $m_{ii}(p'') \le \lambda|r_{p''}|$ for
+    all $p'' \in p''$, then $\mathrm{ent}(f) \le (\lambda + \varepsilon)|\mathrm{set}(q)|$ with $\varepsilon
+    = \varepsilon(\lambda) \to 0$ as $\lambda \to 0$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#067
+  text: 'State the Entropy Summation Formula for a reduction $f: R \to P$'
+  hint: $\mathrm{ent}(f) = \sum_p |p| \cdot \mathrm{ent}(|R_p|^{-1} R_p)$, the $|p|$-weighted average
+    of the entropies of the normalized fibers.
+  locator: null
+  sub_index: null
+  search_text: 'state the entropy summation formula for a reduction $f: r \to p$ $\mathrm{ent}(f) = \sum_p
+    |p| \cdot \mathrm{ent}(|r_p|^{-1} r_p)$, the $|p|$-weighted average of the entropies of the normalized
+    fibers.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#068
+  text: What classical construction does Gromov suggest reformulating and reproving using the Entropy
+    Summation Formula?
+  hint: he suggests reformulating the definition of the Lebesgue integral in these terms and reproving
+    its basic properties as an exercise.
+  locator: null
+  sub_index: null
+  search_text: what classical construction does gromov suggest reformulating and reproving using the entropy
+    summation formula? he suggests reformulating the definition of the lebesgue integral in these terms
+    and reproving its basic properties as an exercise.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#069
+  text: Define the entropy of an infinite system $X$ relative to a transformation group $\Delta_\infty$
+    and a single finite probe $P$
+  hint: '$\mathrm{ent}_P(X : \Delta_\infty) = \lim_{N \to \infty} |\Delta_N|^{-1} \, \mathrm{ent}\!\left(\bigvee_{\delta
+    \in \Delta_N} \delta(P)\right)$ for an exhausting sequence of finite subsets $\Delta_N \subset \Delta_\infty$
+    with $|\Delta_N| \to \infty$.'
+  locator: null
+  sub_index: null
+  search_text: 'define the entropy of an infinite system $x$ relative to a transformation group $\delta_\infty$
+    and a single finite probe $p$ $\mathrm{ent}_p(x : \delta_\infty) = \lim_{n \to \infty} |\delta_n|^{-1}
+    \, \mathrm{ent}\!\left(\bigvee_{\delta \in \delta_n} \delta(p)\right)$ for an exhausting sequence
+    of finite subsets $\delta_n \subset \delta_\infty$ with $|\delta_n| \to \infty$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#070
+  text: 'Define the fully renormalized entropy $\mathrm{ent}(X : \Delta_\infty)$ via a resolution, and
+    why is it independent of the chosen resolution?'
+  hint: '$\mathrm{ent}(X : \Delta_\infty) := \lim_{i \to \infty} \mathrm{ent}_{P_i}(X : \Delta_\infty)$
+    for a resolution $P^\infty = \{P_i\}$; two resolutions $P^\infty, Q^\infty$ give the same limit because
+    $\mathrm{ent}(P_i \vee Q_j) - \mathrm{ent}(P_i) \to 0$ as $i \to \infty$ and $\Delta_\infty$-invariance
+    lets one interchange the roles of the two resolutions in the limit.'
+  locator: null
+  sub_index: null
+  search_text: 'define the fully renormalized entropy $\mathrm{ent}(x : \delta_\infty)$ via a resolution,
+    and why is it independent of the chosen resolution? $\mathrm{ent}(x : \delta_\infty) := \lim_{i \to
+    \infty} \mathrm{ent}_{p_i}(x : \delta_\infty)$ for a resolution $p^\infty = \{p_i\}$; two resolutions
+    $p^\infty, q^\infty$ give the same limit because $\mathrm{ent}(p_i \vee q_j) - \mathrm{ent}(p_i) \to
+    0$ as $i \to \infty$ and $\delta_\infty$-invariance lets one interchange the roles of the two resolutions
+    in the limit.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#071
+  text: State Kolmogorov's 1958 theorem for Bernoulli shift systems
+  hint: if $X = P^{\mathbb{Z}}$ and $Y = Q^{\mathbb{Z}}$, each with the shift action of $\mathbb{Z}$,
+    are $\mathbb{Z}$-equivariantly isomorphic as probability spaces, then $\mathrm{ent}(P) = \mathrm{ent}(Q)$.
+  locator: null
+  sub_index: null
+  search_text: state kolmogorov's 1958 theorem for bernoulli shift systems if $x = p^{\mathbb{z}}$ and
+    $y = q^{\mathbb{z}}$, each with the shift action of $\mathbb{z}$, are $\mathbb{z}$-equivariantly isomorphic
+    as probability spaces, then $\mathrm{ent}(p) = \mathrm{ent}(q)$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#072
+  text: Sketch the proof of Kolmogorov's theorem via renormalized entropy
+  hint: 'with $\Delta_N = \{1,\dots,N\}$ and $P_i = P^{\{-i,\dots,i\}}$, one computes $\bigvee_{\delta
+    \in \Delta_N} \delta(P_i) = P^{\{-i,\dots,i+N\}}$, giving $\mathrm{ent}\!\left(\bigvee_{\delta \in
+    \Delta_N} \delta(P_i)\right) = (N+i) \cdot \mathrm{ent}(P)$, hence $\mathrm{ent}_{P_i}(X : \Delta_\infty)
+    = \mathrm{ent}(P)$ for all $i$, and so $\mathrm{ent}(X : \Delta_\infty) = \mathrm{ent}(P)$; the same
+    computation for $Y$ gives $\mathrm{ent}(Y : \Delta_\infty) = \mathrm{ent}(Q)$; the $\mathbb{Z}$-equivariant
+    isomorphism forces these two renormalized entropies to agree, giving $\mathrm{ent}(P) = \mathrm{ent}(Q)$.'
+  locator: null
+  sub_index: null
+  search_text: 'sketch the proof of kolmogorov''s theorem via renormalized entropy with $\delta_n = \{1,\dots,n\}$
+    and $p_i = p^{\{-i,\dots,i\}}$, one computes $\bigvee_{\delta \in \delta_n} \delta(p_i) = p^{\{-i,\dots,i+n\}}$,
+    giving $\mathrm{ent}\!\left(\bigvee_{\delta \in \delta_n} \delta(p_i)\right) = (n+i) \cdot \mathrm{ent}(p)$,
+    hence $\mathrm{ent}_{p_i}(x : \delta_\infty) = \mathrm{ent}(p)$ for all $i$, and so $\mathrm{ent}(x
+    : \delta_\infty) = \mathrm{ent}(p)$; the same computation for $y$ gives $\mathrm{ent}(y : \delta_\infty)
+    = \mathrm{ent}(q)$; the $\mathbb{z}$-equivariant isomorphism forces these two renormalized entropies
+    to agree, giving $\mathrm{ent}(p) = \mathrm{ent}(q)$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#073
+  text: For which class of groups $\Gamma$ does this same style of argument show entropy is non-increasing
+    under $\Gamma$-reductions, and what property of $\Gamma$ is needed?
+  hint: amenable groups $\Gamma$ (e.g. abelian or solvable), which admit exhausting finite sets $\Delta_N$
+    with $|\Delta_N \cdot \Delta| / |\Delta_N| \to 1$ for every finite $\Delta \subset \Gamma$; for such
+    $\Gamma$, entropy decreases under $\Gamma$-equivariant reductions $Q^\Gamma \leftarrow P^\Gamma$.
+  locator: null
+  sub_index: null
+  search_text: for which class of groups $\gamma$ does this same style of argument show entropy is non-increasing
+    under $\gamma$-reductions, and what property of $\gamma$ is needed? amenable groups $\gamma$ (e.g.
+    abelian or solvable), which admit exhausting finite sets $\delta_n$ with $|\delta_n \cdot \delta|
+    / |\delta_n| \to 1$ for every finite $\delta \subset \gamma$; for such $\gamma$, entropy decreases
+    under $\gamma$-equivariant reductions $q^\gamma \leftarrow p^\gamma$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#074
+  text: What did Lewis Bowen prove about entropy of Bernoulli systems for sofic groups?
+  hint: that a $\Gamma$-equivariant isomorphism $P_1^\Gamma \cong P_2^\Gamma$ forces $\mathrm{ent}(P_1)
+    = \mathrm{ent}(P_2)$ for every sofic group $\Gamma$, including non-amenable groups such as free groups,
+    even though entropy need not be monotone under $\Gamma$-reductions in the non-amenable case.
+  locator: null
+  sub_index: null
+  search_text: what did lewis bowen prove about entropy of bernoulli systems for sofic groups? that a
+    $\gamma$-equivariant isomorphism $p_1^\gamma \cong p_2^\gamma$ forces $\mathrm{ent}(p_1) = \mathrm{ent}(p_2)$
+    for every sofic group $\gamma$, including non-amenable groups such as free groups, even though entropy
+    need not be monotone under $\gamma$-reductions in the non-amenable case.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#075
+  text: Define a sofic group via $\varepsilon$-approximate finite actions
+  hint: '$\Gamma$ is sofic if for every finite $\Delta \subset \Gamma$ and $\varepsilon > 0$ there exist
+    a finite set $X$ and $A: \Gamma \to \mathrm{Maps}(X,X)$ such that $A(\delta_1\delta_2)$ and $A(\delta_1)
+    \circ A(\delta_2)$ agree up to $\varepsilon$ for all $\delta_1, \delta_2 \in \Delta$, $A(\mathrm{id})$
+    agrees with $\mathrm{id}_X$ up to $\varepsilon$, and $A$ is injective up to $\varepsilon$ on $\Delta
+    \setminus \{\mathrm{id}\}$, where two maps "agree up to $\varepsilon$" if they differ on at most an
+    $\varepsilon$-fraction of $X$.'
+  locator: null
+  sub_index: null
+  search_text: 'define a sofic group via $\varepsilon$-approximate finite actions $\gamma$ is sofic if
+    for every finite $\delta \subset \gamma$ and $\varepsilon > 0$ there exist a finite set $x$ and $a:
+    \gamma \to \mathrm{maps}(x,x)$ such that $a(\delta_1\delta_2)$ and $a(\delta_1) \circ a(\delta_2)$
+    agree up to $\varepsilon$ for all $\delta_1, \delta_2 \in \delta$, $a(\mathrm{id})$ agrees with $\mathrm{id}_x$
+    up to $\varepsilon$, and $a$ is injective up to $\varepsilon$ on $\delta \setminus \{\mathrm{id}\}$,
+    where two maps "agree up to $\varepsilon$" if they differ on at most an $\varepsilon$-fraction of
+    $x$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#076
+  text: Why are amenable and residually finite groups automatically sofic, and what remains open about
+    the class of sofic groups?
+  hint: amenable groups realize the required approximate actions directly via Følner exhaustions, and
+    residually finite groups (including all subgroups of linear groups, e.g. free groups) admit faithful
+    actions on compact metric spaces approximable by finite ones; it remains an open problem whether every
+    countable group is sofic, i.e. whether a non-sofic group exists.
+  locator: null
+  sub_index: null
+  search_text: why are amenable and residually finite groups automatically sofic, and what remains open
+    about the class of sofic groups? amenable groups realize the required approximate actions directly
+    via følner exhaustions, and residually finite groups (including all subgroups of linear groups, e.g.
+    free groups) admit faithful actions on compact metric spaces approximable by finite ones; it remains
+    an open problem whether every countable group is sofic, i.e. whether a non-sofic group exists.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#077
+  text: How is a probability space $P$ on a fixed finite background $I$ visualized geometrically?
+  hint: as a point $\{p_i\}$ in the standard simplex $\Delta(I) \subset \mathbb{R}^I = \mathbb{R}^m$ ($m
+    = |I|$), defined by $p_i \ge 0$ and $\sum_i p_i = 1$.
+  locator: null
+  sub_index: null
+  search_text: how is a probability space $p$ on a fixed finite background $i$ visualized geometrically?
+    as a point $\{p_i\}$ in the standard simplex $\delta(i) \subset \mathbb{r}^i = \mathbb{r}^m$ ($m =
+    |i|$), defined by $p_i \ge 0$ and $\sum_i p_i = 1$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#078
+  text: Reinterpret the category $\mathcal{P}$ of finite probability spaces and reductions in terms of
+    marked simplices
+  hint: 'an object becomes a simplex $\Delta(I)$ with a marked point $P \in \Delta(I)$, and a morphism
+    $P_1 \to P_2$ becomes a simplicial map $f: \Delta(I_1) \to \Delta(I_2)$ with $f(P_1) = P_2$.'
+  locator: null
+  sub_index: null
+  search_text: 'reinterpret the category $\mathcal{p}$ of finite probability spaces and reductions in
+    terms of marked simplices an object becomes a simplex $\delta(i)$ with a marked point $p \in \delta(i)$,
+    and a morphism $p_1 \to p_2$ becomes a simplicial map $f: \delta(i_1) \to \delta(i_2)$ with $f(p_1)
+    = p_2$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#079
+  text: How can the simplex $\Delta(I)$ be reconstructed combinatorially as a limit of symmetrized power
+    sets?
+  hint: $\Delta(I) = \lim_{N \to \infty} \frac{1}{N}\left(I^N/\mathrm{Sym}_N\right)$, where $I^N/\mathrm{Sym}_N$
+    embeds into the integer lattice $\mathbb{Z}^m$ as the intersection of $\mathbb{Z}^m$ with the scaled
+    simplex $N \cdot \Delta(I)$.
+  locator: null
+  sub_index: null
+  search_text: how can the simplex $\delta(i)$ be reconstructed combinatorially as a limit of symmetrized
+    power sets? $\delta(i) = \lim_{n \to \infty} \frac{1}{n}\left(i^n/\mathrm{sym}_n\right)$, where $i^n/\mathrm{sym}_n$
+    embeds into the integer lattice $\mathbb{z}^m$ as the intersection of $\mathbb{z}^m$ with the scaled
+    simplex $n \cdot \delta(i)$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#080
+  text: Compare the cardinality of $I^N$ to that of its symmetrization $I^N/\mathrm{Sym}_N$
+  hint: $|I^N| = m^N$ grows exponentially in $N$, while $|I^N/\mathrm{Sym}_N| = \binom{m+N-1}{N-1}$ grows
+    only polynomially in $N$ — symmetrization tremendously shrinks the power set.
+  locator: null
+  sub_index: null
+  search_text: compare the cardinality of $i^n$ to that of its symmetrization $i^n/\mathrm{sym}_n$ $|i^n|
+    = m^n$ grows exponentially in $n$, while $|i^n/\mathrm{sym}_n| = \binom{m+n-1}{n-1}$ grows only polynomially
+    in $n$ — symmetrization tremendously shrinks the power set.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#081
+  text: Describe how Bernoulli approximating sets $B_N$ project, in the limit, onto a subset of the simplex,
+    and identify this subset via Boltzmann's formula
+  hint: project the $\mathrm{Sym}_N$-invariant $B_N \subset I^N$ to $I^N/\mathrm{Sym}_N \subset \mathbb{Z}^m$
+    and rescale by $1/N$ into $\Delta(I)$; the resulting limit set $B_{\mathrm{sym}}(P)$ equals $\Delta(I)$
+    intersected with the affine tangent hyperplane $T_P$ to the level set $E_P = \{\sum_i x_i \log x_i
+    = -\mathrm{ent}(P)\}$ at the point $\{p_i\}$, where $T_P$ is defined by $\sum_i x_i \log p_i = -\mathrm{ent}(P)$.
+  locator: null
+  sub_index: null
+  search_text: describe how bernoulli approximating sets $b_n$ project, in the limit, onto a subset of
+    the simplex, and identify this subset via boltzmann's formula project the $\mathrm{sym}_n$-invariant
+    $b_n \subset i^n$ to $i^n/\mathrm{sym}_n \subset \mathbb{z}^m$ and rescale by $1/n$ into $\delta(i)$;
+    the resulting limit set $b_{\mathrm{sym}}(p)$ equals $\delta(i)$ intersected with the affine tangent
+    hyperplane $t_p$ to the level set $e_p = \{\sum_i x_i \log x_i = -\mathrm{ent}(p)\}$ at the point
+    $\{p_i\}$, where $t_p$ is defined by $\sum_i x_i \log p_i = -\mathrm{ent}(p)$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#082
+  text: Define the averaging map $\sigma$ used to project $P^N/\mathrm{Sym}_N$ into the simplex, and the
+    resulting measure $P^{\blacktriangle}_N$
+  hint: '$\sigma: \mathbb{R}^{mN} \to \mathbb{R}^m$, $\sigma(x_1,\dots,x_N) = (x_1 + \cdots + x_N)/N$;
+    $P^{\blacktriangle}_N := \sigma_*(P^{\Delta \otimes N})$, equivalently the $1/N$-scaled $N$-th convolution
+    power of the vertex-supported measure $P^\Delta$, representing $P^N/\mathrm{Sym}_N$ inside $\Delta(I)$.'
+  locator: null
+  sub_index: null
+  search_text: 'define the averaging map $\sigma$ used to project $p^n/\mathrm{sym}_n$ into the simplex,
+    and the resulting measure $p^{\blacktriangle}_n$ $\sigma: \mathbb{r}^{mn} \to \mathbb{r}^m$, $\sigma(x_1,\dots,x_n)
+    = (x_1 + \cdots + x_n)/n$; $p^{\blacktriangle}_n := \sigma_*(p^{\delta \otimes n})$, equivalently
+    the $1/n$-scaled $n$-th convolution power of the vertex-supported measure $p^\delta$, representing
+    $p^n/\mathrm{sym}_n$ inside $\delta(i)$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#083
+  text: Define the logarithmic rate function $\mathrm{rate}_P$ on the simplex $\Delta(I)$
+  hint: $\mathrm{rate}_P(\{q_i\}) = \inf$ over neighborhoods $U$ of $\{q_i\}$ of $\lim_{N \to \infty}
+    N^{-1} \log P^{\blacktriangle}_N(U)$ — the exponential decay rate of $P^{\blacktriangle}_N$ near the
+    point $\{q_i\}$.
+  locator: null
+  sub_index: null
+  search_text: define the logarithmic rate function $\mathrm{rate}_p$ on the simplex $\delta(i)$ $\mathrm{rate}_p(\{q_i\})
+    = \inf$ over neighborhoods $u$ of $\{q_i\}$ of $\lim_{n \to \infty} n^{-1} \log p^{\blacktriangle}_n(u)$
+    — the exponential decay rate of $p^{\blacktriangle}_n$ near the point $\{q_i\}$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#084
+  text: State the large-deviations identity relating $\mathrm{rate}_P$ to relative entropy
+  hint: $\mathrm{rate}_P(\{q_i\}) = -\mathrm{ent}_P(\{q_i\}) = \sum_i q_i \log(q_i/p_i)$.
+  locator: null
+  sub_index: null
+  search_text: state the large-deviations identity relating $\mathrm{rate}_p$ to relative entropy $\mathrm{rate}_p(\{q_i\})
+    = -\mathrm{ent}_p(\{q_i\}) = \sum_i q_i \log(q_i/p_i)$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#085
+  text: Sketch why this large-deviations formula follows from Boltzmann's relative-entropy formula and
+    Stirling's approximation
+  hint: apply $\mathrm{ent}_P(\{q_i\}) = \sum_i q_i \log(p_i/q_i)$ and the rough Stirling estimate $(1/M)\log
+    M! = \log M - 1 + o(1)$ to the multinomial coefficients $N!/\prod_i M_i!$ ($\sum_i M_i = N$) counting
+    sequences of empirical type $\{q_i\}$, matching the exponential growth rate of $P^{\blacktriangle}_N$
+    near $\{q_i\}$.
+  locator: null
+  sub_index: null
+  search_text: sketch why this large-deviations formula follows from boltzmann's relative-entropy formula
+    and stirling's approximation apply $\mathrm{ent}_p(\{q_i\}) = \sum_i q_i \log(p_i/q_i)$ and the rough
+    stirling estimate $(1/m)\log m! = \log m - 1 + o(1)$ to the multinomial coefficients $n!/\prod_i m_i!$
+    ($\sum_i m_i = n$) counting sequences of empirical type $\{q_i\}$, matching the exponential growth
+    rate of $p^{\blacktriangle}_n$ near $\{q_i\}$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#086
+  text: Describe the Segre map and how Cartesian multiplication of probability spaces embeds into it
+  hint: the Segre (tensor product) map $\mathbb{R}^{m_1} \times \cdots \times \mathbb{R}^{m_N} \to \mathbb{R}^{m_1
+    \otimes \cdots \otimes m_N}$ restricts, on the simplices $\Delta_k = \Delta(I_k)$, to a map $\Delta_1
+    \times \cdots \times \Delta_N \to \Delta(I_1 \times \cdots \times I_N)$ representing Cartesian multiplication
+    $(P_1,\dots,P_N) \mapsto P_1 \times \cdots \times P_N$ of probability spaces.
+  locator: null
+  sub_index: null
+  search_text: describe the segre map and how cartesian multiplication of probability spaces embeds into
+    it the segre (tensor product) map $\mathbb{r}^{m_1} \times \cdots \times \mathbb{r}^{m_n} \to \mathbb{r}^{m_1
+    \otimes \cdots \otimes m_n}$ restricts, on the simplices $\delta_k = \delta(i_k)$, to a map $\delta_1
+    \times \cdots \times \delta_n \to \delta(i_1 \times \cdots \times i_n)$ representing cartesian multiplication
+    $(p_1,\dots,p_n) \mapsto p_1 \times \cdots \times p_n$ of probability spaces.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#087
+  text: Define the Veronese $N$-power map and relate it to symmetric tensors and homogeneous polynomials
+  hint: 'restricting the Segre map to the diagonal (all factors equal) gives $V_N: \mathbb{R}^m \to (\mathbb{R}^m)^{\otimes
+    N}$ landing in the symmetric-tensor subspace $(\mathbb{R}^m)^{\mathrm{Sym}_N} \cong \{\text{homogeneous
+    degree-}N\text{ polynomials in } m \text{ variables}\}$; $V_N$ sends the linear form $\sum_i p_i x_i$
+    to its $N$-th power $\left(\sum_i p_i x_i\right)^N$.'
+  locator: null
+  sub_index: null
+  search_text: 'define the veronese $n$-power map and relate it to symmetric tensors and homogeneous polynomials
+    restricting the segre map to the diagonal (all factors equal) gives $v_n: \mathbb{r}^m \to (\mathbb{r}^m)^{\otimes
+    n}$ landing in the symmetric-tensor subspace $(\mathbb{r}^m)^{\mathrm{sym}_n} \cong \{\text{homogeneous
+    degree-}n\text{ polynomials in } m \text{ variables}\}$; $v_n$ sends the linear form $\sum_i p_i x_i$
+    to its $n$-th power $\left(\sum_i p_i x_i\right)^n$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#088
+  text: Why is the dimension of symmetric $N$-tensors, $\binom{m+N-1}{N-1}$, so much smaller than the
+    full tensor power dimension $m^N$ for large $N$, and how does this relate to the earlier symmetrization
+    discussion?
+  hint: the symmetric-tensor dimension grows only polynomially in $N$, exactly matching the earlier comparison
+    of $|I^N|$ (exponential) to $|I^N/\mathrm{Sym}_N|$ (polynomial) via the identification of symmetric
+    powers with symmetrized Cartesian powers.
+  locator: null
+  sub_index: null
+  search_text: why is the dimension of symmetric $n$-tensors, $\binom{m+n-1}{n-1}$, so much smaller than
+    the full tensor power dimension $m^n$ for large $n$, and how does this relate to the earlier symmetrization
+    discussion? the symmetric-tensor dimension grows only polynomially in $n$, exactly matching the earlier
+    comparison of $|i^n|$ (exponential) to $|i^n/\mathrm{sym}_n|$ (polynomial) via the identification
+    of symmetric powers with symmetrized cartesian powers.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#089
+  text: Up to the introduction of the Fisher metric, is the logarithm in the definition of entropy essential,
+    or could one work purely multiplicatively?
+  hint: 'purely cosmetic up to this point — one could remain entirely in the multiplicative group $\mathbb{R}^\times_+$
+    without using $\log: \mathbb{R}^\times_+ \to \mathbb{R}_+$; the logarithm becomes essential only for
+    the Fisher information metric, whose curvature properties depend specifically on the logarithmic structure.'
+  locator: null
+  sub_index: null
+  search_text: 'up to the introduction of the fisher metric, is the logarithm in the definition of entropy
+    essential, or could one work purely multiplicatively? purely cosmetic up to this point — one could
+    remain entirely in the multiplicative group $\mathbb{r}^\times_+$ without using $\log: \mathbb{r}^\times_+
+    \to \mathbb{r}_+$; the logarithm becomes essential only for the fisher information metric, whose curvature
+    properties depend specifically on the logarithmic structure.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#090
+  text: Define the Fisher information metric $h$ on $\Delta(I)$ as the Hessian of minus entropy
+  hint: $h = \mathrm{Hess}(e)$, $e(P) = \sum_i p_i \log p_i$; in $p$-coordinates, $h = \sum_i \dfrac{dp_i^2}{p_i}$.
+  locator: null
+  sub_index: null
+  search_text: define the fisher information metric $h$ on $\delta(i)$ as the hessian of minus entropy
+    $h = \mathrm{hess}(e)$, $e(p) = \sum_i p_i \log p_i$; in $p$-coordinates, $h = \sum_i \dfrac{dp_i^2}{p_i}$.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#091
+  text: State the remarkable curvature property of the Fisher metric on the simplex
+  hint: $(\Delta(I), h)$ has constant positive curvature.
+  locator: null
+  sub_index: null
+  search_text: state the remarkable curvature property of the fisher metric on the simplex $(\delta(i),
+    h)$ has constant positive curvature.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#092
+  text: Describe the isometry realizing this curvature fact via the Euclidean moment map
+  hint: 'the moment map $M_{\mathbb{R}}: \mathbb{R}^I \to \mathbb{R}^I$, $\{x_i\} \mapsto \{p_i = x_i^2\}$,
+    restricted to the positive quadrant of the unit Euclidean sphere in $\mathbb{R}^I$, is (up to a $1/4$
+    scale factor) an isometry onto $(\Delta(I), h)$, since $\sum_i (d\sqrt{p_i})^2 = \sum_i \dfrac{dp_i^2}{4p_i}$.'
+  locator: null
+  sub_index: null
+  search_text: 'describe the isometry realizing this curvature fact via the euclidean moment map the moment
+    map $m_{\mathbb{r}}: \mathbb{r}^i \to \mathbb{r}^i$, $\{x_i\} \mapsto \{p_i = x_i^2\}$, restricted
+    to the positive quadrant of the unit euclidean sphere in $\mathbb{r}^i$, is (up to a $1/4$ scale factor)
+    an isometry onto $(\delta(i), h)$, since $\sum_i (d\sqrt{p_i})^2 = \sum_i \dfrac{dp_i^2}{4p_i}$.'
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#093
+  text: Why is $h = \mathrm{Hess}(e)$ positive definite, making it a genuine Riemannian metric?
+  hint: strict convexity of $p \mapsto p \log p$ gives $\dfrac{d^2(p\log p)}{dp^2} = \dfrac{1}{p} > 0$,
+    so the diagonal Hessian $\sum_i \dfrac{dp_i^2}{p_i}$ is positive-definite.
+  locator: null
+  sub_index: null
+  search_text: why is $h = \mathrm{hess}(e)$ positive definite, making it a genuine riemannian metric?
+    strict convexity of $p \mapsto p \log p$ gives $\dfrac{d^2(p\log p)}{dp^2} = \dfrac{1}{p} > 0$, so
+    the diagonal hessian $\sum_i \dfrac{dp_i^2}{p_i}$ is positive-definite.
+- id: www-ihes-fr-gromov-wp-content-uploads-2018-08-probability-huge-lecture-nov-2014-#094
+  text: How does the Euclidean moment map extend to a "full" complex moment map, and what classical projective
+    space does this factor through?
+  hint: '$M: \mathbb{C}^I \to \mathbb{R}_+^I = \mathbb{C}^I / T^I$, $z \mapsto (z_i \bar{z}_i)$, where
+    $T^I$ is the torus acting on $\mathbb{C}^I$; restricted to the unit sphere, $M$ factors through the
+    complex projective space $\mathbb{CP}(I)$ of complex dimension $|I|-1$, giving a map $\mathbb{CP}(I)
+    \to \Delta(I)$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the euclidean moment map extend to a "full" complex moment map, and what classical
+    projective space does this factor through? $m: \mathbb{c}^i \to \mathbb{r}_+^i = \mathbb{c}^i / t^i$,
+    $z \mapsto (z_i \bar{z}_i)$, where $t^i$ is the torus acting on $\mathbb{c}^i$; restricted to the
+    unit sphere, $m$ factors through the complex projective space $\mathbb{cp}(i)$ of complex dimension
+    $|i|-1$, giving a map $\mathbb{cp}(i) \to \delta(i)$.'
