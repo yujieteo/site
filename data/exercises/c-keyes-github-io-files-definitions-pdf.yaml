@@ -1,0 +1,965 @@
+url: https://c-keyes.github.io/files/definitions.pdf
+title: Algebraic geometry definitions.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: c-keyes-github-io-files-definitions-pdf#000
+  text: What is an abelian category vs. a semiadditive category?
+  hint: A category is semiadditive if finite coproducts and products are canonically isomorphic (biproducts
+    $\oplus$); it is abelian if it is semiadditive, enriched over abelian groups, every morphism has a
+    kernel and a cokernel, and every monomorphism is the kernel of its cokernel and every epimorphism
+    is the cokernel of its kernel.
+  locator: null
+  sub_index: null
+  search_text: what is an abelian category vs. a semiadditive category? a category is semiadditive if
+    finite coproducts and products are canonically isomorphic (biproducts $\oplus$); it is abelian if
+    it is semiadditive, enriched over abelian groups, every morphism has a kernel and a cokernel, and
+    every monomorphism is the kernel of its cokernel and every epimorphism is the cokernel of its kernel.
+- id: c-keyes-github-io-files-definitions-pdf#001
+  text: What is an $F$-acyclic object in an abelian category?
+  hint: An object $A$ such that $R^i F(A) = 0$ (or $L_i F(A) = 0$) for all $i > 0$; injective objects
+    are acyclic for left-exact functors and projective objects are acyclic for right-exact functors.
+  locator: null
+  sub_index: null
+  search_text: what is an $f$-acyclic object in an abelian category? an object $a$ such that $r^i f(a)
+    = 0$ (or $l_i f(a) = 0$) for all $i > 0$; injective objects are acyclic for left-exact functors and
+    projective objects are acyclic for right-exact functors.
+- id: c-keyes-github-io-files-definitions-pdf#002
+  text: What is an affine scheme and an affine morphism?
+  hint: An affine scheme is isomorphic to $\mathrm{Spec}(A)$ for a commutative ring $A$; a morphism $f
+    \colon X \to Y$ is affine if for every affine open $U = \mathrm{Spec}(B) \subset Y$, the preimage
+    $f^{-1}(U)$ is affine, isomorphic to $\mathrm{Spec}(A)$.
+  locator: null
+  sub_index: null
+  search_text: what is an affine scheme and an affine morphism? an affine scheme is isomorphic to $\mathrm{spec}(a)$
+    for a commutative ring $a$; a morphism $f \colon x \to y$ is affine if for every affine open $u =
+    \mathrm{spec}(b) \subset y$, the preimage $f^{-1}(u)$ is affine, isomorphic to $\mathrm{spec}(a)$.
+- id: c-keyes-github-io-files-definitions-pdf#003
+  text: When is a line bundle $\mathcal{L}$ very ample, ample, and basepoint-free?
+  hint: $\mathcal{L}$ is basepoint-free if global sections generate each stalk; very ample if global sections
+    define a closed embedding $i \colon X \hookrightarrow \mathbb{P}_A^n$; ample if $\mathcal{L}^{\otimes
+    m}$ is very ample for some $m \ge 1$.
+  locator: null
+  sub_index: null
+  search_text: when is a line bundle $\mathcal{l}$ very ample, ample, and basepoint-free? $\mathcal{l}$
+    is basepoint-free if global sections generate each stalk; very ample if global sections define a closed
+    embedding $i \colon x \hookrightarrow \mathbb{p}_a^n$; ample if $\mathcal{l}^{\otimes m}$ is very
+    ample for some $m \ge 1$.
+- id: c-keyes-github-io-files-definitions-pdf#004
+  text: What is the canonical bundle $\omega_{X/k}$ of a smooth variety of dimension $n$?
+  hint: The top exterior power $\omega_{X/k} := \det(\Omega_{X/k}^1) = \bigwedge^n \Omega_{X/k}^1$, which
+    serves as the dualizing sheaf for Serre duality on smooth proper varieties.
+  locator: null
+  sub_index: null
+  search_text: what is the canonical bundle $\omega_{x/k}$ of a smooth variety of dimension $n$? the top
+    exterior power $\omega_{x/k} := \det(\omega_{x/k}^1) = \bigwedge^n \omega_{x/k}^1$, which serves as
+    the dualizing sheaf for serre duality on smooth proper varieties.
+- id: c-keyes-github-io-files-definitions-pdf#005
+  text: What is a Cartier divisor and its associated class group?
+  hint: A global section of $\mathcal{K}_X^\times / \mathcal{O}_X^\times$ represented by data $\{(U_i,
+    f_i)\}$ with $f_i / f_j \in \mathcal{O}_X^\times(U_i \cap U_j)$; the group of Cartier divisors modulo
+    principal divisors $\mathcal{K}_X^\times(X)$ is canonically isomorphic to the Picard group $\mathrm{Pic}(X)$
+    on locally factorial integral schemes.
+  locator: null
+  sub_index: null
+  search_text: what is a cartier divisor and its associated class group? a global section of $\mathcal{k}_x^\times
+    / \mathcal{o}_x^\times$ represented by data $\{(u_i, f_i)\}$ with $f_i / f_j \in \mathcal{o}_x^\times(u_i
+    \cap u_j)$; the group of cartier divisors modulo principal divisors $\mathcal{k}_x^\times(x)$ is canonically
+    isomorphic to the picard group $\mathrm{pic}(x)$ on locally factorial integral schemes.
+- id: c-keyes-github-io-files-definitions-pdf#006
+  text: How is Čech cohomology defined on a separated scheme with an affine cover?
+  hint: The cohomology of the complex $C^p(\mathcal{U}, \mathcal{F}) = \prod_{i_0 < \dots < i_p} \mathcal{F}(U_{i_0}
+    \cap \dots \cap U_{i_p})$ with differential $d\alpha = \sum_{j=0}^{p+1} (-1)^j \alpha|_{U_{i_0} \dots
+    \hat{U}_{i_j} \dots U_{i_{p+1}}}$; it computes sheaf cohomology $H^p(X, \mathcal{F})$.
+  locator: null
+  sub_index: null
+  search_text: how is čech cohomology defined on a separated scheme with an affine cover? the cohomology
+    of the complex $c^p(\mathcal{u}, \mathcal{f}) = \prod_{i_0 < \dots < i_p} \mathcal{f}(u_{i_0} \cap
+    \dots \cap u_{i_p})$ with differential $d\alpha = \sum_{j=0}^{p+1} (-1)^j \alpha|_{u_{i_0} \dots \hat{u}_{i_j}
+    \dots u_{i_{p+1}}}$; it computes sheaf cohomology $h^p(x, \mathcal{f})$.
+- id: c-keyes-github-io-files-definitions-pdf#007
+  text: What is a closed embedding of schemes?
+  hint: An affine morphism $f \colon X \to Y$ such that for every affine open $\mathrm{Spec}(B) \subset
+    Y$, $f^{-1}(\mathrm{Spec}(B)) \cong \mathrm{Spec}(B/I)$ for an ideal $I \subset B$, identifying $X$
+    with the vanishing locus of an ideal sheaf $\mathcal{I} \subset \mathcal{O}_Y$.
+  locator: null
+  sub_index: null
+  search_text: what is a closed embedding of schemes? an affine morphism $f \colon x \to y$ such that
+    for every affine open $\mathrm{spec}(b) \subset y$, $f^{-1}(\mathrm{spec}(b)) \cong \mathrm{spec}(b/i)$
+    for an ideal $i \subset b$, identifying $x$ with the vanishing locus of an ideal sheaf $\mathcal{i}
+    \subset \mathcal{o}_y$.
+- id: c-keyes-github-io-files-definitions-pdf#008
+  text: When is an $\mathcal{O}_X$-module coherent?
+  hint: An $\mathcal{O}_X$-module $\mathcal{F}$ is coherent if it is of finite type and for every open
+    $U$ and morphism $\mathcal{O}_U^n \to \mathcal{F}|_U$, the kernel is of finite type; on locally Noetherian
+    schemes, coherence is equivalent to being quasi-coherent and locally of finite type.
+  locator: null
+  sub_index: null
+  search_text: when is an $\mathcal{o}_x$-module coherent? an $\mathcal{o}_x$-module $\mathcal{f}$ is
+    coherent if it is of finite type and for every open $u$ and morphism $\mathcal{o}_u^n \to \mathcal{f}|_u$,
+    the kernel is of finite type; on locally noetherian schemes, coherence is equivalent to being quasi-coherent
+    and locally of finite type.
+- id: c-keyes-github-io-files-definitions-pdf#009
+  text: What is a constructible set in a Noetherian topological space?
+  hint: A finite disjoint union of locally closed subsets (intersections of open and closed sets); equivalently,
+    a subset in the Boolean algebra generated by open sets.
+  locator: null
+  sub_index: null
+  search_text: what is a constructible set in a noetherian topological space? a finite disjoint union
+    of locally closed subsets (intersections of open and closed sets); equivalently, a subset in the boolean
+    algebra generated by open sets.
+- id: c-keyes-github-io-files-definitions-pdf#010
+  text: How is the degree of a point, a map, and a line bundle defined on a projective curve $C$?
+  hint: The degree of a closed point $p$ is $[k(p):k]$; the degree of a finite map $\pi \colon C \to C'$
+    is the rank of $\pi_* \mathcal{O}_C$; the degree of a line bundle $\mathcal{L}$ is $\deg(\mathcal{L})
+    = \chi(C, \mathcal{L}) - \chi(C, \mathcal{O}_C)$, matching $\sum n_i [k(p_i):k]$ for $\mathcal{L}
+    \cong \mathcal{O}_C(\sum n_i p_i)$.
+  locator: null
+  sub_index: null
+  search_text: how is the degree of a point, a map, and a line bundle defined on a projective curve $c$?
+    the degree of a closed point $p$ is $[k(p):k]$; the degree of a finite map $\pi \colon c \to c'$ is
+    the rank of $\pi_* \mathcal{o}_c$; the degree of a line bundle $\mathcal{l}$ is $\deg(\mathcal{l})
+    = \chi(c, \mathcal{l}) - \chi(c, \mathcal{o}_c)$, matching $\sum n_i [k(p_i):k]$ for $\mathcal{l}
+    \cong \mathcal{o}_c(\sum n_i p_i)$.
+- id: c-keyes-github-io-files-definitions-pdf#011
+  text: What is a dualizing sheaf for a proper $k$-scheme $X$ of dimension $n$?
+  hint: A coherent sheaf $\omega_X$ equipped with a trace map $\mathrm{Tr} \colon H^n(X, \omega_X) \to
+    k$ inducing the Serre duality isomorphism $\mathrm{Hom}_{\mathcal{O}_X}(\mathcal{F}, \omega_X) \xrightarrow{\sim}
+    H^n(X, \mathcal{F})^\vee$ for all coherent sheaves $\mathcal{F}$.
+  locator: null
+  sub_index: null
+  search_text: what is a dualizing sheaf for a proper $k$-scheme $x$ of dimension $n$? a coherent sheaf
+    $\omega_x$ equipped with a trace map $\mathrm{tr} \colon h^n(x, \omega_x) \to k$ inducing the serre
+    duality isomorphism $\mathrm{hom}_{\mathcal{o}_x}(\mathcal{f}, \omega_x) \xrightarrow{\sim} h^n(x,
+    \mathcal{f})^\vee$ for all coherent sheaves $\mathcal{f}$.
+- id: c-keyes-github-io-files-definitions-pdf#012
+  text: When is a morphism of schemes étale?
+  hint: A morphism $f \colon X \to Y$ that is flat and unramified (formally étale and locally of finite
+    presentation), equivalently smooth of relative dimension $0$.
+  locator: null
+  sub_index: null
+  search_text: when is a morphism of schemes étale? a morphism $f \colon x \to y$ that is flat and unramified
+    (formally étale and locally of finite presentation), equivalently smooth of relative dimension $0$.
+- id: c-keyes-github-io-files-definitions-pdf#013
+  text: What is the Euler characteristic $\chi(X, \mathcal{F})$ of a coherent sheaf?
+  hint: The alternating sum of the dimensions of its cohomology spaces $\chi(X, \mathcal{F}) := \sum_{i=0}^{\dim
+    X} (-1)^i \dim_k H^i(X, \mathcal{F})$.
+  locator: null
+  sub_index: null
+  search_text: what is the euler characteristic $\chi(x, \mathcal{f})$ of a coherent sheaf? the alternating
+    sum of the dimensions of its cohomology spaces $\chi(x, \mathcal{f}) := \sum_{i=0}^{\dim x} (-1)^i
+    \dim_k h^i(x, \mathcal{f})$.
+- id: c-keyes-github-io-files-definitions-pdf#014
+  text: What is the extension by zero functor $j_!$ for an open immersion $j \colon U \hookrightarrow
+    X$?
+  hint: The exact functor $j_! \colon \mathbf{Sh}(U) \to \mathbf{Sh}(X)$ defined as the sheafification
+    of $V \mapsto \mathcal{F}(V)$ if $V \subset U$ and $0$ otherwise; it is the left adjoint to the restriction/pullback
+    functor $j^*$.
+  locator: null
+  sub_index: null
+  search_text: what is the extension by zero functor $j_!$ for an open immersion $j \colon u \hookrightarrow
+    x$? the exact functor $j_! \colon \mathbf{sh}(u) \to \mathbf{sh}(x)$ defined as the sheafification
+    of $v \mapsto \mathcal{f}(v)$ if $v \subset u$ and $0$ otherwise; it is the left adjoint to the restriction/pullback
+    functor $j^*$.
+- id: c-keyes-github-io-files-definitions-pdf#015
+  text: When is a scheme factorial and what does it imply about normalities?
+  hint: A scheme $X$ is factorial if all its local rings $\mathcal{O}_{X, x}$ are unique factorization
+    domains (UFDs); since UFDs are integrally closed, every factorial scheme is normal and its Weil divisors
+    coincide with Cartier divisors.
+  locator: null
+  sub_index: null
+  search_text: when is a scheme factorial and what does it imply about normalities? a scheme $x$ is factorial
+    if all its local rings $\mathcal{o}_{x, x}$ are unique factorization domains (ufds); since ufds are
+    integrally closed, every factorial scheme is normal and its weil divisors coincide with cartier divisors.
+- id: c-keyes-github-io-files-definitions-pdf#016
+  text: When is a morphism of schemes faithfully flat?
+  hint: A morphism $f \colon X \to Y$ that is flat ($\mathcal{O}_{X, x}$ is a flat $\mathcal{O}_{Y, f(x)}$-module
+    for all $x$) and surjective on underlying topological spaces.
+  locator: null
+  sub_index: null
+  search_text: when is a morphism of schemes faithfully flat? a morphism $f \colon x \to y$ that is flat
+    ($\mathcal{o}_{x, x}$ is a flat $\mathcal{o}_{y, f(x)}$-module for all $x$) and surjective on underlying
+    topological spaces.
+- id: c-keyes-github-io-files-definitions-pdf#017
+  text: What is the fiber and the generic fiber of a morphism $f \colon X \to Y$?
+  hint: The fiber over $y \in Y$ is the fiber product $X_y := X \times_Y \mathrm{Spec}(k(y))$; if $Y$
+    is integral with generic point $\eta$, the generic fiber is $X_\eta := X \times_Y \mathrm{Spec}(K(Y))$.
+  locator: null
+  sub_index: null
+  search_text: what is the fiber and the generic fiber of a morphism $f \colon x \to y$? the fiber over
+    $y \in y$ is the fiber product $x_y := x \times_y \mathrm{spec}(k(y))$; if $y$ is integral with generic
+    point $\eta$, the generic fiber is $x_\eta := x \times_y \mathrm{spec}(k(y))$.
+- id: c-keyes-github-io-files-definitions-pdf#018
+  text: When is a morphism finite, locally of finite type, and locally of finite presentation?
+  hint: Finite if affine and $\mathcal{O}_X(f^{-1}(U))$ is a finitely generated module over $\mathcal{O}_Y(U)$;
+    locally of finite type if $\mathcal{O}_X(f^{-1}(U))$ is a finitely generated algebra; locally of finite
+    presentation if $\mathcal{O}_X(f^{-1}(U))$ is a finitely presented algebra.
+  locator: null
+  sub_index: null
+  search_text: when is a morphism finite, locally of finite type, and locally of finite presentation?
+    finite if affine and $\mathcal{o}_x(f^{-1}(u))$ is a finitely generated module over $\mathcal{o}_y(u)$;
+    locally of finite type if $\mathcal{o}_x(f^{-1}(u))$ is a finitely generated algebra; locally of finite
+    presentation if $\mathcal{o}_x(f^{-1}(u))$ is a finitely presented algebra.
+- id: c-keyes-github-io-files-definitions-pdf#019
+  text: What is a flasque (flabby) sheaf?
+  hint: A sheaf $\mathcal{F}$ on $X$ such that for every open inclusion $V \subset U$, the restriction
+    map $\mathcal{F}(U) \twoheadrightarrow \mathcal{F}(V)$ is surjective; flasque sheaves are acyclic
+    for the global section functor $\Gamma(X, -)$.
+  locator: null
+  sub_index: null
+  search_text: what is a flasque (flabby) sheaf? a sheaf $\mathcal{f}$ on $x$ such that for every open
+    inclusion $v \subset u$, the restriction map $\mathcal{f}(u) \twoheadrightarrow \mathcal{f}(v)$ is
+    surjective; flasque sheaves are acyclic for the global section functor $\gamma(x, -)$.
+- id: c-keyes-github-io-files-definitions-pdf#020
+  text: When is a coherent sheaf $\mathcal{F}$ locally free of rank $r$?
+  hint: When $X$ admits an open covering $\{U_i\}$ such that $\mathcal{F}|_{U_i} \cong \mathcal{O}_{U_i}^{\oplus
+    r}$; locally free sheaves of rank $r$ correspond bijectively to algebraic vector bundles of rank $r$.
+  locator: null
+  sub_index: null
+  search_text: when is a coherent sheaf $\mathcal{f}$ locally free of rank $r$? when $x$ admits an open
+    covering $\{u_i\}$ such that $\mathcal{f}|_{u_i} \cong \mathcal{o}_{u_i}^{\oplus r}$; locally free
+    sheaves of rank $r$ correspond bijectively to algebraic vector bundles of rank $r$.
+- id: c-keyes-github-io-files-definitions-pdf#021
+  text: What is the geometric genus and the arithmetic genus of a smooth projective variety $X$?
+  hint: Geometric genus is $p_g(X) := \dim_k H^0(X, \omega_X) = \dim_k H^n(X, \mathcal{O}_X)$; arithmetic
+    genus is $p_a(X) := (-1)^n (\chi(X, \mathcal{O}_X) - 1)$.
+  locator: null
+  sub_index: null
+  search_text: what is the geometric genus and the arithmetic genus of a smooth projective variety $x$?
+    geometric genus is $p_g(x) := \dim_k h^0(x, \omega_x) = \dim_k h^n(x, \mathcal{o}_x)$; arithmetic
+    genus is $p_a(x) := (-1)^n (\chi(x, \mathcal{o}_x) - 1)$.
+- id: c-keyes-github-io-files-definitions-pdf#022
+  text: What is the Hilbert polynomial $P_{\mathcal{F}}(m)$ of a coherent sheaf on $\mathbb{P}_k^n$?
+  hint: The polynomial that for $m \gg 0$ equals the Euler characteristic $P_{\mathcal{F}}(m) = \chi(X,
+    \mathcal{F}(m)) = \dim_k H^0(X, \mathcal{F}(m))$; its leading coefficient gives $(\dim X)! \cdot \deg(X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the hilbert polynomial $p_{\mathcal{f}}(m)$ of a coherent sheaf on $\mathbb{p}_k^n$?
+    the polynomial that for $m \gg 0$ equals the euler characteristic $p_{\mathcal{f}}(m) = \chi(x, \mathcal{f}(m))
+    = \dim_k h^0(x, \mathcal{f}(m))$; its leading coefficient gives $(\dim x)! \cdot \deg(x)$.
+- id: c-keyes-github-io-files-definitions-pdf#023
+  text: What is an injective object and an injective resolution in an abelian category?
+  hint: An object $I$ such that $\mathrm{Hom}(-, I)$ is an exact functor; an injective resolution of $A$
+    is an exact sequence $0 \to A \to I^0 \to I^1 \to I^2 \to \dots$ with each $I^k$ injective, used to
+    compute right derived functors $R^i F(A) = H^i(F(I^\bullet))$.
+  locator: null
+  sub_index: null
+  search_text: what is an injective object and an injective resolution in an abelian category? an object
+    $i$ such that $\mathrm{hom}(-, i)$ is an exact functor; an injective resolution of $a$ is an exact
+    sequence $0 \to a \to i^0 \to i^1 \to i^2 \to \dots$ with each $i^k$ injective, used to compute right
+    derived functors $r^i f(a) = h^i(f(i^\bullet))$.
+- id: c-keyes-github-io-files-definitions-pdf#024
+  text: When is a morphism integral and what is a normal scheme?
+  hint: An affine morphism $f \colon X \to Y$ where every local ring extension $\mathcal{O}_Y(U) \to \mathcal{O}_X(f^{-1}(U))$
+    is an integral ring extension; a scheme is normal if all its local rings $\mathcal{O}_{X, x}$ are
+    integrally closed domains (satisfying Serre's conditions $R_1 + S_2$).
+  locator: null
+  sub_index: null
+  search_text: when is a morphism integral and what is a normal scheme? an affine morphism $f \colon x
+    \to y$ where every local ring extension $\mathcal{o}_y(u) \to \mathcal{o}_x(f^{-1}(u))$ is an integral
+    ring extension; a scheme is normal if all its local rings $\mathcal{o}_{x, x}$ are integrally closed
+    domains (satisfying serre's conditions $r_1 + s_2$).
+- id: c-keyes-github-io-files-definitions-pdf#025
+  text: What is the module of relative Kähler differentials $\Omega_{X/Y}^1$?
+  hint: The quasi-coherent $\mathcal{O}_X$-module generated locally by symbols $df$ ($f \in \mathcal{O}_X$)
+    satisfying $d(f+g) = df+dg$, $d(fg) = f\,dg + g\,df$, and $d(h) = 0$ for $h \in \mathcal{O}_Y$; equivalently
+    defined via the diagonal conormal sheaf $\mathcal{I}/\mathcal{I}^2$ on $X \times_Y X$.
+  locator: null
+  sub_index: null
+  search_text: what is the module of relative kähler differentials $\omega_{x/y}^1$? the quasi-coherent
+    $\mathcal{o}_x$-module generated locally by symbols $df$ ($f \in \mathcal{o}_x$) satisfying $d(f+g)
+    = df+dg$, $d(fg) = f\,dg + g\,df$, and $d(h) = 0$ for $h \in \mathcal{o}_y$; equivalently defined
+    via the diagonal conormal sheaf $\mathcal{i}/\mathcal{i}^2$ on $x \times_y x$.
+- id: c-keyes-github-io-files-definitions-pdf#026
+  text: What is a locally closed embedding and a normal bundle?
+  hint: A morphism factoring as a closed embedding into an open subscheme $X \hookrightarrow U \subset
+    Y$; for a closed embedding $i \colon X \hookrightarrow Y$ cut out by ideal sheaf $\mathcal{I}$, the
+    conormal sheaf is $\mathcal{N}_{X/Y}^* = \mathcal{I}/\mathcal{I}^2$ and the normal bundle is its dual
+    $\mathcal{N}_{X/Y} = (\mathcal{I}/\mathcal{I}^2)^\vee$.
+  locator: null
+  sub_index: null
+  search_text: what is a locally closed embedding and a normal bundle? a morphism factoring as a closed
+    embedding into an open subscheme $x \hookrightarrow u \subset y$; for a closed embedding $i \colon
+    x \hookrightarrow y$ cut out by ideal sheaf $\mathcal{i}$, the conormal sheaf is $\mathcal{n}_{x/y}^*
+    = \mathcal{i}/\mathcal{i}^2$ and the normal bundle is its dual $\mathcal{n}_{x/y} = (\mathcal{i}/\mathcal{i}^2)^\vee$.
+- id: c-keyes-github-io-files-definitions-pdf#027
+  text: What is the Picard group $\mathrm{Pic}(X)$?
+  hint: The abelian group of isomorphism classes of invertible sheaves (line bundles) on $X$ under the
+    tensor product operation $\mathcal{L} \otimes_{\mathcal{O}_X} \mathcal{M}$, with identity $\mathcal{O}_X$
+    and inverse $\mathcal{L}^\vee = \underline{\mathrm{Hom}}(\mathcal{L}, \mathcal{O}_X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the picard group $\mathrm{pic}(x)$? the abelian group of isomorphism classes of
+    invertible sheaves (line bundles) on $x$ under the tensor product operation $\mathcal{l} \otimes_{\mathcal{o}_x}
+    \mathcal{m}$, with identity $\mathcal{o}_x$ and inverse $\mathcal{l}^\vee = \underline{\mathrm{hom}}(\mathcal{l},
+    \mathcal{o}_x)$.
+- id: c-keyes-github-io-files-definitions-pdf#028
+  text: When is a morphism of schemes proper?
+  hint: A morphism $f \colon X \to Y$ that is separated, of finite type, and universally closed (meaning
+    for every base change $Y' \to Y$, the map $X \times_Y Y' \to Y'$ is closed in the Zariski topology).
+  locator: null
+  sub_index: null
+  search_text: when is a morphism of schemes proper? a morphism $f \colon x \to y$ that is separated,
+    of finite type, and universally closed (meaning for every base change $y' \to y$, the map $x \times_y
+    y' \to y'$ is closed in the zariski topology).
+- id: c-keyes-github-io-files-definitions-pdf#029
+  text: When is a morphism of schemes separated?
+  hint: A morphism $f \colon X \to Y$ whose diagonal morphism $\Delta_{X/Y} \colon X \to X \times_Y X$
+    is a closed embedding, formalizing the Hausdorff separation property in algebraic geometry.
+  locator: null
+  sub_index: null
+  search_text: when is a morphism of schemes separated? a morphism $f \colon x \to y$ whose diagonal morphism
+    $\delta_{x/y} \colon x \to x \times_y x$ is a closed embedding, formalizing the hausdorff separation
+    property in algebraic geometry.
+- id: c-keyes-github-io-files-definitions-pdf#030
+  text: What is a quasi-coherent sheaf vs. a coherent sheaf?
+  hint: An $\mathcal{O}_X$-module $\mathcal{F}$ is quasi-coherent if it is locally presented as the cokernel
+    of a map between free $\mathcal{O}_X$-modules $\mathcal{O}_X^{\oplus I} \to \mathcal{O}_X^{\oplus
+    J} \to \mathcal{F} \to 0$; it is coherent if the indexing sets $I, J$ can be chosen finite locally.
+  locator: null
+  sub_index: null
+  search_text: what is a quasi-coherent sheaf vs. a coherent sheaf? an $\mathcal{o}_x$-module $\mathcal{f}$
+    is quasi-coherent if it is locally presented as the cokernel of a map between free $\mathcal{o}_x$-modules
+    $\mathcal{o}_x^{\oplus i} \to \mathcal{o}_x^{\oplus j} \to \mathcal{f} \to 0$; it is coherent if the
+    indexing sets $i, j$ can be chosen finite locally.
+- id: c-keyes-github-io-files-definitions-pdf#031
+  text: What is the Zariski tangent space and cotangent space at a point $p \in X$?
+  hint: The Zariski cotangent space is $\mathfrak{m}_p / \mathfrak{m}_p^2$ over the residue field $k(p)
+    = \mathcal{O}_{X, p}/\mathfrak{m}_p$; the Zariski tangent space is its linear dual $T_p X = (\mathfrak{m}_p
+    / \mathfrak{m}_p^2)^* = \mathrm{Der}_k(\mathcal{O}_{X, p}, k(p))$.
+  locator: null
+  sub_index: null
+  search_text: what is the zariski tangent space and cotangent space at a point $p \in x$? the zariski
+    cotangent space is $\mathfrak{m}_p / \mathfrak{m}_p^2$ over the residue field $k(p) = \mathcal{o}_{x,
+    p}/\mathfrak{m}_p$; the zariski tangent space is its linear dual $t_p x = (\mathfrak{m}_p / \mathfrak{m}_p^2)^*
+    = \mathrm{der}_k(\mathcal{o}_{x, p}, k(p))$.
+- id: c-keyes-github-io-files-definitions-pdf#032
+  text: When is a scheme smooth over a field $k$ of dimension $d$?
+  hint: When $X$ is locally of finite presentation over $k$, flat, and its module of Kähler differentials
+    $\Omega_{X/k}^1$ is a locally free $\mathcal{O}_X$-module of rank $d$; equivalently, when all geometric
+    fibers are regular local rings.
+  locator: null
+  sub_index: null
+  search_text: when is a scheme smooth over a field $k$ of dimension $d$? when $x$ is locally of finite
+    presentation over $k$, flat, and its module of kähler differentials $\omega_{x/k}^1$ is a locally
+    free $\mathcal{o}_x$-module of rank $d$; equivalently, when all geometric fibers are regular local
+    rings.
+- id: c-keyes-github-io-files-definitions-pdf#033
+  text: What is a Weil divisor and when does it define a line bundle $\mathcal{O}(D)$?
+  hint: A formal integer linear combination $D = \sum n_i Y_i$ of codimension 1 irreducible closed subvarieties
+    $Y_i$ on a Noetherian integral separated scheme regular in codimension 1; on a locally factorial scheme,
+    every Weil divisor is Cartier and defines an invertible sheaf $\mathcal{O}_X(D)$.
+  locator: null
+  sub_index: null
+  search_text: what is a weil divisor and when does it define a line bundle $\mathcal{o}(d)$? a formal
+    integer linear combination $d = \sum n_i y_i$ of codimension 1 irreducible closed subvarieties $y_i$
+    on a noetherian integral separated scheme regular in codimension 1; on a locally factorial scheme,
+    every weil divisor is cartier and defines an invertible sheaf $\mathcal{o}_x(d)$.
+- id: c-keyes-github-io-files-definitions-pdf#034
+  text: What is a regular local ring and a regular embedding of schemes?
+  hint: A Noetherian local ring $(A, \mathfrak{m})$ is regular if $\dim_{k} \mathfrak{m}/\mathfrak{m}^2
+    = \dim(A)$; a closed embedding $i \colon X \hookrightarrow Y$ is regular of codimension $r$ if its
+    defining ideal sheaf $\mathcal{I}$ is locally generated by a regular sequence of length $r$, making
+    $\mathcal{I}/\mathcal{I}^2$ locally free of rank $r$.
+  locator: null
+  sub_index: null
+  search_text: what is a regular local ring and a regular embedding of schemes? a noetherian local ring
+    $(a, \mathfrak{m})$ is regular if $\dim_{k} \mathfrak{m}/\mathfrak{m}^2 = \dim(a)$; a closed embedding
+    $i \colon x \hookrightarrow y$ is regular of codimension $r$ if its defining ideal sheaf $\mathcal{i}$
+    is locally generated by a regular sequence of length $r$, making $\mathcal{i}/\mathcal{i}^2$ locally
+    free of rank $r$.
+- id: c-keyes-github-io-files-definitions-pdf#035
+  text: What are the Veronese and Segre embeddings?
+  hint: The Veronese embedding $\nu_d \colon \mathbb{P}^n \to \mathbb{P}^{\binom{n+d}{n}-1}$ is given
+    by all degree-$d$ monomials, proving $\mathcal{O}_{\mathbb{P}^n}(d)$ is very ample; the Segre embedding
+    $\sigma \colon \mathbb{P}^n \times \mathbb{P}^m \to \mathbb{P}^{(n+1)(m+1)-1}$ is given by products
+    of coordinates $([x_i], [y_j]) \mapsto [x_i y_j]$, realizing product varieties as closed projective
+    subschemes.
+  locator: null
+  sub_index: null
+  search_text: what are the veronese and segre embeddings? the veronese embedding $\nu_d \colon \mathbb{p}^n
+    \to \mathbb{p}^{\binom{n+d}{n}-1}$ is given by all degree-$d$ monomials, proving $\mathcal{o}_{\mathbb{p}^n}(d)$
+    is very ample; the segre embedding $\sigma \colon \mathbb{p}^n \times \mathbb{p}^m \to \mathbb{p}^{(n+1)(m+1)-1}$
+    is given by products of coordinates $([x_i], [y_j]) \mapsto [x_i y_j]$, realizing product varieties
+    as closed projective subschemes.
+- id: c-keyes-github-io-files-definitions-pdf#036
+  text: What is the derived category $\mathcal{D}(X)$ and the $\infty$-category $\mathbf{QCoh}(X)$ in
+    higher algebraic geometry?
+  hint: $\mathcal{D}(X) = \mathcal{D}(\mathbf{QCoh}(X))$ is the stable $\infty$-category obtained by inverting
+    quasi-isomorphisms; for an affine derived scheme $\mathbf{Spec}(A)$ with $A \in \mathbf{CAlg}$, $\mathbf{QCoh}(\mathbf{Spec}(A))
+    \simeq \mathbf{Mod}_A$ in the $\infty$-categorical sense.
+  locator: null
+  sub_index: null
+  search_text: what is the derived category $\mathcal{d}(x)$ and the $\infty$-category $\mathbf{qcoh}(x)$
+    in higher algebraic geometry? $\mathcal{d}(x) = \mathcal{d}(\mathbf{qcoh}(x))$ is the stable $\infty$-category
+    obtained by inverting quasi-isomorphisms; for an affine derived scheme $\mathbf{spec}(a)$ with $a
+    \in \mathbf{calg}$, $\mathbf{qcoh}(\mathbf{spec}(a)) \simeq \mathbf{mod}_a$ in the $\infty$-categorical
+    sense.
+- id: c-keyes-github-io-files-definitions-pdf#037
+  text: What is a simplicial commutative ring and an $\mathbb{E}_\infty$-ring in derived algebraic geometry?
+  hint: A simplicial commutative ring $A \in \mathbf{sCAlg}_k$ is a simplicial object in commutative $k$-algebras
+    modeling connective derived commutative algebras; an $\mathbb{E}_\infty$-ring spectrum $A \in \mathbf{CAlg}(\mathbf{Sp})$
+    is a strictly commutative ring object in spectra, generalizing rings to arbitrary virtual/non-connective
+    cohomological degrees.
+  locator: null
+  sub_index: null
+  search_text: what is a simplicial commutative ring and an $\mathbb{e}_\infty$-ring in derived algebraic
+    geometry? a simplicial commutative ring $a \in \mathbf{scalg}_k$ is a simplicial object in commutative
+    $k$-algebras modeling connective derived commutative algebras; an $\mathbb{e}_\infty$-ring spectrum
+    $a \in \mathbf{calg}(\mathbf{sp})$ is a strictly commutative ring object in spectra, generalizing
+    rings to arbitrary virtual/non-connective cohomological degrees.
+- id: c-keyes-github-io-files-definitions-pdf#038
+  text: What is the cotangent complex $\mathbb{L}_{X/Y}$ of a morphism in derived algebraic geometry?
+  hint: The left derived functor of the Kähler differentials functor $\mathbb{L}_{X/Y} \in \mathbf{QCoh}(X)$;
+    its degree $0$ cohomology computes the classical Kähler differentials $H^0(\mathbb{L}_{X/Y}) \cong
+    \Omega_{\pi_0(X)/\pi_0(Y)}^1$ and its negative cohomology groups $H^{-i}(\mathbb{L}_{X/Y})$ capture
+    obstruction theories and non-transverse derived intersections.
+  locator: null
+  sub_index: null
+  search_text: what is the cotangent complex $\mathbb{l}_{x/y}$ of a morphism in derived algebraic geometry?
+    the left derived functor of the kähler differentials functor $\mathbb{l}_{x/y} \in \mathbf{qcoh}(x)$;
+    its degree $0$ cohomology computes the classical kähler differentials $h^0(\mathbb{l}_{x/y}) \cong
+    \omega_{\pi_0(x)/\pi_0(y)}^1$ and its negative cohomology groups $h^{-i}(\mathbb{l}_{x/y})$ capture
+    obstruction theories and non-transverse derived intersections.
+- id: c-keyes-github-io-files-definitions-pdf#039
+  text: What is a quasi-smooth morphism and a derived local complete intersection?
+  hint: A morphism $f \colon X \to Y$ locally of finite presentation between derived schemes/stacks whose
+    relative cotangent complex $\mathbb{L}_{X/Y}$ has Tor-amplitude concentrated in $[-1, 0]$; it carries
+    an intrinsic virtual fundamental class of virtual dimension $\mathrm{virdim}(f) = \mathrm{rank}(H^0(\mathbb{L}_{X/Y}))
+    - \mathrm{rank}(H^{-1}(\mathbb{L}_{X/Y}))$.
+  locator: null
+  sub_index: null
+  search_text: what is a quasi-smooth morphism and a derived local complete intersection? a morphism $f
+    \colon x \to y$ locally of finite presentation between derived schemes/stacks whose relative cotangent
+    complex $\mathbb{l}_{x/y}$ has tor-amplitude concentrated in $[-1, 0]$; it carries an intrinsic virtual
+    fundamental class of virtual dimension $\mathrm{virdim}(f) = \mathrm{rank}(h^0(\mathbb{l}_{x/y}))
+    - \mathrm{rank}(h^{-1}(\mathbb{l}_{x/y}))$.
+- id: c-keyes-github-io-files-definitions-pdf#040
+  text: What is an algebraic stack and a derived Artin stack?
+  hint: A classical algebraic/Artin stack is a 1-sheaf of groupoids with a smooth atlas $U \to \mathcal{X}$
+    from a scheme; a derived Artin stack is an $\infty$-sheaf of spaces $\mathcal{X} \colon \mathbf{CAlg}_k^{\mathrm{cn}}
+    \to \mathcal{S}$ admitting a smooth surjective atlas $U \to \mathcal{X}$ from a derived scheme, with
+    an obstruction theory controlled by its global cotangent complex $\mathbb{L}_{\mathcal{X}}$.
+  locator: null
+  sub_index: null
+  search_text: what is an algebraic stack and a derived artin stack? a classical algebraic/artin stack
+    is a 1-sheaf of groupoids with a smooth atlas $u \to \mathcal{x}$ from a scheme; a derived artin stack
+    is an $\infty$-sheaf of spaces $\mathcal{x} \colon \mathbf{calg}_k^{\mathrm{cn}} \to \mathcal{s}$
+    admitting a smooth surjective atlas $u \to \mathcal{x}$ from a derived scheme, with an obstruction
+    theory controlled by its global cotangent complex $\mathbb{l}_{\mathcal{x}}$.
+- id: c-keyes-github-io-files-definitions-pdf#041
+  text: What is a perfect complex in higher algebra?
+  hint: An object $E \in \mathbf{QCoh}(X)$ that is compact and dualizable in the symmetric monoidal stable
+    $\infty$-category $\mathbf{QCoh}(X)$; on a classical scheme it is locally quasi-isomorphic to a bounded
+    complex of algebraic vector bundles.
+  locator: null
+  sub_index: null
+  search_text: what is a perfect complex in higher algebra? an object $e \in \mathbf{qcoh}(x)$ that is
+    compact and dualizable in the symmetric monoidal stable $\infty$-category $\mathbf{qcoh}(x)$; on a
+    classical scheme it is locally quasi-isomorphic to a bounded complex of algebraic vector bundles.
+- id: c-keyes-github-io-files-definitions-pdf#042
+  text: What is the derived loop space $\mathcal{L}X$ and its relation to Hochschild homology?
+  hint: The derived mapping stack $\mathcal{L}X := \mathbf{Map}(S^1, X) \simeq X \times_{X \times X}^{\mathbf{R}}
+    X$; by the HKR theorem, functions on the derived loop space compute the Hochschild homology $\mathcal{O}(\mathcal{L}X)
+    \simeq \mathbf{HH}_*(X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the derived loop space $\mathcal{l}x$ and its relation to hochschild homology?
+    the derived mapping stack $\mathcal{l}x := \mathbf{map}(s^1, x) \simeq x \times_{x \times x}^{\mathbf{r}}
+    x$; by the hkr theorem, functions on the derived loop space compute the hochschild homology $\mathcal{o}(\mathcal{l}x)
+    \simeq \mathbf{hh}_*(x)$.
+- id: c-keyes-github-io-files-definitions-pdf#043
+  text: What is a shifted symplectic structure on a derived Artin stack?
+  hint: In the sense of Pantev-Toën-Vaquié-Vezzosi (PTVV), an $n$-shifted symplectic structure on a derived
+    stack $X$ is a non-degenerate, closed 2-form $\omega \in \mathrm{Sym}^2(\mathbb{T}_X[-n])$ of degree
+    $n$, generalizing classical symplectic structures ($n=0$) and lagrangian intersection structures ($n=-1$).
+  locator: null
+  sub_index: null
+  search_text: what is a shifted symplectic structure on a derived artin stack? in the sense of pantev-toën-vaquié-vezzosi
+    (ptvv), an $n$-shifted symplectic structure on a derived stack $x$ is a non-degenerate, closed 2-form
+    $\omega \in \mathrm{sym}^2(\mathbb{t}_x[-n])$ of degree $n$, generalizing classical symplectic structures
+    ($n=0$) and lagrangian intersection structures ($n=-1$).
+- id: c-keyes-github-io-files-definitions-pdf#044
+  text: What is a stable $\infty$-category?
+  hint: An $\infty$-category $\mathcal{C}$ that has a zero object, admits all finite limits and colimits,
+    and where a square is a pushout square if and only if it is a pullback square, formalizing triangulated
+    categories equipped with functorial shifts $\Sigma$ and canonical fiber/cofiber sequences.
+  locator: null
+  sub_index: null
+  search_text: what is a stable $\infty$-category? an $\infty$-category $\mathcal{c}$ that has a zero
+    object, admits all finite limits and colimits, and where a square is a pushout square if and only
+    if it is a pullback square, formalizing triangulated categories equipped with functorial shifts $\sigma$
+    and canonical fiber/cofiber sequences.
+- id: c-keyes-github-io-files-definitions-pdf#045
+  text: What is the t-structure on a stable $\infty$-category?
+  hint: A pair of full subcategories $(\mathcal{C}_{\ge 0}, \mathcal{C}_{\le 0})$ satisfying $\mathrm{Map}(X,
+    Y) \simeq *$ for $X \in \mathcal{C}_{\ge 1}, Y \in \mathcal{C}_{\le 0}$ and producing canonical truncation
+    fiber sequences $\tau_{\ge 0} X \to X \to \tau_{\le -1} X$; its heart $\mathcal{C}^\heartsuit = \mathcal{C}_{\ge
+    0} \cap \mathcal{C}_{\le 0}$ is an ordinary abelian category.
+  locator: null
+  sub_index: null
+  search_text: what is the t-structure on a stable $\infty$-category? a pair of full subcategories $(\mathcal{c}_{\ge
+    0}, \mathcal{c}_{\le 0})$ satisfying $\mathrm{map}(x, y) \simeq *$ for $x \in \mathcal{c}_{\ge 1},
+    y \in \mathcal{c}_{\le 0}$ and producing canonical truncation fiber sequences $\tau_{\ge 0} x \to
+    x \to \tau_{\le -1} x$; its heart $\mathcal{c}^\heartsuit = \mathcal{c}_{\ge 0} \cap \mathcal{c}_{\le
+    0}$ is an ordinary abelian category.
+- id: c-keyes-github-io-files-definitions-pdf#046
+  text: What is a presheaf of sets on a topological space $X$?
+  hint: A contravariant functor $\mathcal{F} \colon \mathbf{Open}(X)^{\mathrm{op}} \to \mathbf{Set}$ assigning
+    to each open set $U \subset X$ a set of sections $\mathcal{F}(U)$, and to each inclusion $V \subset
+    U$ a restriction map $\mathrm{res}_{U,V} \colon \mathcal{F}(U) \to \mathcal{F}(V)$ satisfying $\mathrm{res}_{U,U}
+    = \mathrm{id}_{\mathcal{F}(U)}$ and $\mathrm{res}_{V,W} \circ \mathrm{res}_{U,V} = \mathrm{res}_{U,W}$.
+  locator: null
+  sub_index: null
+  search_text: what is a presheaf of sets on a topological space $x$? a contravariant functor $\mathcal{f}
+    \colon \mathbf{open}(x)^{\mathrm{op}} \to \mathbf{set}$ assigning to each open set $u \subset x$ a
+    set of sections $\mathcal{f}(u)$, and to each inclusion $v \subset u$ a restriction map $\mathrm{res}_{u,v}
+    \colon \mathcal{f}(u) \to \mathcal{f}(v)$ satisfying $\mathrm{res}_{u,u} = \mathrm{id}_{\mathcal{f}(u)}$
+    and $\mathrm{res}_{v,w} \circ \mathrm{res}_{u,v} = \mathrm{res}_{u,w}$.
+- id: c-keyes-github-io-files-definitions-pdf#047
+  text: What is a sheaf of sets on a topological space $X$?
+  hint: 'A presheaf $\mathcal{F}$ satisfying two axioms for every open cover $U = \bigcup_{i \in I} U_i$:
+    (1) Locality/Separation: if $s, t \in \mathcal{F}(U)$ satisfy $s|_{U_i} = t|_{U_i}$ for all $i$, then
+    $s = t$; (2) Gluing: if sections $s_i \in \mathcal{F}(U_i)$ satisfy $s_i|_{U_i \cap U_j} = s_j|_{U_i
+    \cap U_j}$ for all $i, j$, there exists a unique $s \in \mathcal{F}(U)$ such that $s|_{U_i} = s_i$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a sheaf of sets on a topological space $x$? a presheaf $\mathcal{f}$ satisfying
+    two axioms for every open cover $u = \bigcup_{i \in i} u_i$: (1) locality/separation: if $s, t \in
+    \mathcal{f}(u)$ satisfy $s|_{u_i} = t|_{u_i}$ for all $i$, then $s = t$; (2) gluing: if sections $s_i
+    \in \mathcal{f}(u_i)$ satisfy $s_i|_{u_i \cap u_j} = s_j|_{u_i \cap u_j}$ for all $i, j$, there exists
+    a unique $s \in \mathcal{f}(u)$ such that $s|_{u_i} = s_i$.'
+- id: c-keyes-github-io-files-definitions-pdf#048
+  text: What is the stalk of a presheaf $\mathcal{F}$ at a point $x \in X$?
+  hint: The filtered colimit $\mathcal{F}_x := \varinjlim_{U \ni x} \mathcal{F}(U)$ over all open neighborhoods
+    containing $x$, whose elements are germs $\langle U, s \rangle_x$ modulo the equivalence relation
+    $\langle U, s \rangle \sim \langle V, t \rangle \iff \exists W \subset U \cap V$ containing $x$ with
+    $s|_W = t|_W$.
+  locator: null
+  sub_index: null
+  search_text: what is the stalk of a presheaf $\mathcal{f}$ at a point $x \in x$? the filtered colimit
+    $\mathcal{f}_x := \varinjlim_{u \ni x} \mathcal{f}(u)$ over all open neighborhoods containing $x$,
+    whose elements are germs $\langle u, s \rangle_x$ modulo the equivalence relation $\langle u, s \rangle
+    \sim \langle v, t \rangle \iff \exists w \subset u \cap v$ containing $x$ with $s|_w = t|_w$.
+- id: c-keyes-github-io-files-definitions-pdf#049
+  text: What is the sheafification $\mathcal{F}^+$ of a presheaf $\mathcal{F}$?
+  hint: The sheaf $\mathcal{F}^+(U) := \{ s \colon U \to \coprod_{x \in U} \mathcal{F}_x \mid \forall
+    x \in U, s(x) \in \mathcal{F}_x \text{ and } s \text{ is locally matched by sections of } \mathcal{F}
+    \}$; it is the left adjoint to the forgetful inclusion functor $\mathbf{Sh}(X) \hookrightarrow \mathbf{PSh}(X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the sheafification $\mathcal{f}^+$ of a presheaf $\mathcal{f}$? the sheaf $\mathcal{f}^+(u)
+    := \{ s \colon u \to \coprod_{x \in u} \mathcal{f}_x \mid \forall x \in u, s(x) \in \mathcal{f}_x
+    \text{ and } s \text{ is locally matched by sections of } \mathcal{f} \}$; it is the left adjoint
+    to the forgetful inclusion functor $\mathbf{sh}(x) \hookrightarrow \mathbf{psh}(x)$.
+- id: c-keyes-github-io-files-definitions-pdf#050
+  text: What is a locally ringed space?
+  hint: A pair $(X, \mathcal{O}_X)$ where $X$ is a topological space and $\mathcal{O}_X$ is a sheaf of
+    rings such that for every point $x \in X$, the stalk $\mathcal{O}_{X, x}$ is a local ring (possesses
+    a unique maximal ideal $\mathfrak{m}_x$).
+  locator: null
+  sub_index: null
+  search_text: what is a locally ringed space? a pair $(x, \mathcal{o}_x)$ where $x$ is a topological
+    space and $\mathcal{o}_x$ is a sheaf of rings such that for every point $x \in x$, the stalk $\mathcal{o}_{x,
+    x}$ is a local ring (possesses a unique maximal ideal $\mathfrak{m}_x$).
+- id: c-keyes-github-io-files-definitions-pdf#051
+  text: What is a morphism of locally ringed spaces $(f, f^\sharp) \colon (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$?
+  hint: A continuous map $f \colon X \to Y$ together with a sheaf homomorphism $f^\sharp \colon \mathcal{O}_Y
+    \to f_* \mathcal{O}_X$ such that for every $x \in X$, the induced stalk map $f_x^\sharp \colon \mathcal{O}_{Y,
+    f(x)} \to \mathcal{O}_{X, x}$ is a local ring homomorphism (satisfying $(f_x^\sharp)^{-1}(\mathfrak{m}_x)
+    = \mathfrak{m}_{f(x)}$).
+  locator: null
+  sub_index: null
+  search_text: what is a morphism of locally ringed spaces $(f, f^\sharp) \colon (x, \mathcal{o}_x) \to
+    (y, \mathcal{o}_y)$? a continuous map $f \colon x \to y$ together with a sheaf homomorphism $f^\sharp
+    \colon \mathcal{o}_y \to f_* \mathcal{o}_x$ such that for every $x \in x$, the induced stalk map $f_x^\sharp
+    \colon \mathcal{o}_{y, f(x)} \to \mathcal{o}_{x, x}$ is a local ring homomorphism (satisfying $(f_x^\sharp)^{-1}(\mathfrak{m}_x)
+    = \mathfrak{m}_{f(x)}$).
+- id: c-keyes-github-io-files-definitions-pdf#052
+  text: What is the prime spectrum $\mathrm{Spec}(A)$ of a commutative ring $A$?
+  hint: The set of all prime ideals $\mathfrak{p} \subset A$ equipped with the Zariski topology (where
+    closed sets are $V(I) = \{\mathfrak{p} \in \mathrm{Spec}(A) \mid I \subset \mathfrak{p}\}$) and the
+    structure sheaf $\mathcal{O}_{\mathrm{Spec}(A)}$ whose stalks are the localizations $\mathcal{O}_{\mathrm{Spec}(A),
+    \mathfrak{p}} \cong A_\mathfrak{p}$.
+  locator: null
+  sub_index: null
+  search_text: what is the prime spectrum $\mathrm{spec}(a)$ of a commutative ring $a$? the set of all
+    prime ideals $\mathfrak{p} \subset a$ equipped with the zariski topology (where closed sets are $v(i)
+    = \{\mathfrak{p} \in \mathrm{spec}(a) \mid i \subset \mathfrak{p}\}$) and the structure sheaf $\mathcal{o}_{\mathrm{spec}(a)}$
+    whose stalks are the localizations $\mathcal{o}_{\mathrm{spec}(a), \mathfrak{p}} \cong a_\mathfrak{p}$.
+- id: c-keyes-github-io-files-definitions-pdf#053
+  text: What is a distinguished open set $D(f)$ in $\mathrm{Spec}(A)$?
+  hint: The basic open set $D(f) := \mathrm{Spec}(A) \setminus V(f) = \{\mathfrak{p} \in \mathrm{Spec}(A)
+    \mid f \notin \mathfrak{p}\}$, which is canonically isomorphic to the affine scheme $\mathrm{Spec}(A_f)$.
+  locator: null
+  sub_index: null
+  search_text: what is a distinguished open set $d(f)$ in $\mathrm{spec}(a)$? the basic open set $d(f)
+    := \mathrm{spec}(a) \setminus v(f) = \{\mathfrak{p} \in \mathrm{spec}(a) \mid f \notin \mathfrak{p}\}$,
+    which is canonically isomorphic to the affine scheme $\mathrm{spec}(a_f)$.
+- id: c-keyes-github-io-files-definitions-pdf#054
+  text: What is a scheme?
+  hint: A locally ringed space $(X, \mathcal{O}_X)$ that admits an open cover $\{U_i\}$ such that each
+    open subspace $(U_i, \mathcal{O}_X|_{U_i})$ is isomorphic as a locally ringed space to an affine scheme
+    $\mathrm{Spec}(A_i)$.
+  locator: null
+  sub_index: null
+  search_text: what is a scheme? a locally ringed space $(x, \mathcal{o}_x)$ that admits an open cover
+    $\{u_i\}$ such that each open subspace $(u_i, \mathcal{o}_x|_{u_i})$ is isomorphic as a locally ringed
+    space to an affine scheme $\mathrm{spec}(a_i)$.
+- id: c-keyes-github-io-files-definitions-pdf#055
+  text: What is the sheaf $\widetilde{M}$ associated to an $A$-module $M$ on $\mathrm{Spec}(A)$?
+  hint: The quasi-coherent $\mathcal{O}_{\mathrm{Spec}(A)}$-module whose sections on basic opens are $\widetilde{M}(D(f))
+    = M_f$ and whose stalks are $\widetilde{M}_\mathfrak{p} = M_\mathfrak{p}$; the functor $M \mapsto
+    \widetilde{M}$ defines an equivalence of categories between $A\mathbf{-Mod}$ and $\mathbf{QCoh}(\mathrm{Spec}(A))$.
+  locator: null
+  sub_index: null
+  search_text: what is the sheaf $\widetilde{m}$ associated to an $a$-module $m$ on $\mathrm{spec}(a)$?
+    the quasi-coherent $\mathcal{o}_{\mathrm{spec}(a)}$-module whose sections on basic opens are $\widetilde{m}(d(f))
+    = m_f$ and whose stalks are $\widetilde{m}_\mathfrak{p} = m_\mathfrak{p}$; the functor $m \mapsto
+    \widetilde{m}$ defines an equivalence of categories between $a\mathbf{-mod}$ and $\mathbf{qcoh}(\mathrm{spec}(a))$.
+- id: c-keyes-github-io-files-definitions-pdf#056
+  text: What is the homogeneous spectrum $\mathrm{Proj}(S_\bullet)$ of a $\mathbb{N}$-graded ring $S_\bullet$?
+  hint: The set of all homogeneous prime ideals $\mathfrak{p} \subset S_\bullet$ that do not contain the
+    irrelevant ideal $S_+ = \bigoplus_{d \ge 1} S_d$, endowed with the Zariski topology generated by $D_+(f)
+    = \{\mathfrak{p} \mid f \notin \mathfrak{p}\}$ for homogeneous $f \in S_+$, and structure sheaf with
+    stalks $\mathcal{O}_{\mathrm{Proj}(S_\bullet), \mathfrak{p}} \cong (S_\mathfrak{p})_{(0)}$.
+  locator: null
+  sub_index: null
+  search_text: what is the homogeneous spectrum $\mathrm{proj}(s_\bullet)$ of a $\mathbb{n}$-graded ring
+    $s_\bullet$? the set of all homogeneous prime ideals $\mathfrak{p} \subset s_\bullet$ that do not
+    contain the irrelevant ideal $s_+ = \bigoplus_{d \ge 1} s_d$, endowed with the zariski topology generated
+    by $d_+(f) = \{\mathfrak{p} \mid f \notin \mathfrak{p}\}$ for homogeneous $f \in s_+$, and structure
+    sheaf with stalks $\mathcal{o}_{\mathrm{proj}(s_\bullet), \mathfrak{p}} \cong (s_\mathfrak{p})_{(0)}$.
+- id: c-keyes-github-io-files-definitions-pdf#057
+  text: What is the Serre twisting sheaf $\mathcal{O}_X(n)$ on $X = \mathrm{Proj}(S_\bullet)$?
+  hint: The invertible sheaf associated to the shifted graded module $S(n)_\bullet$ where $S(n)_d = S_{n+d}$,
+    given by $\mathcal{O}_X(n) := \widetilde{S(n)}$; on $\mathbb{P}_A^r = \mathrm{Proj}(A[x_0, \dots,
+    x_r])$, $\mathcal{O}(1)$ is the dual of the tautological line bundle.
+  locator: null
+  sub_index: null
+  search_text: what is the serre twisting sheaf $\mathcal{o}_x(n)$ on $x = \mathrm{proj}(s_\bullet)$?
+    the invertible sheaf associated to the shifted graded module $s(n)_\bullet$ where $s(n)_d = s_{n+d}$,
+    given by $\mathcal{o}_x(n) := \widetilde{s(n)}$; on $\mathbb{p}_a^r = \mathrm{proj}(a[x_0, \dots,
+    x_r])$, $\mathcal{o}(1)$ is the dual of the tautological line bundle.
+- id: c-keyes-github-io-files-definitions-pdf#058
+  text: What is an open immersion of schemes?
+  hint: A morphism of schemes $f \colon U \to X$ that is a homeomorphism of $U$ onto an open subset $V
+    \subset X$ and induces an isomorphism of sheaves $\mathcal{O}_X|_V \xrightarrow{\sim} f_* \mathcal{O}_U$.
+  locator: null
+  sub_index: null
+  search_text: what is an open immersion of schemes? a morphism of schemes $f \colon u \to x$ that is
+    a homeomorphism of $u$ onto an open subset $v \subset x$ and induces an isomorphism of sheaves $\mathcal{o}_x|_v
+    \xrightarrow{\sim} f_* \mathcal{o}_u$.
+- id: c-keyes-github-io-files-definitions-pdf#059
+  text: What is the scheme-theoretic image of a morphism $f \colon X \to Y$?
+  hint: The unique smallest closed subscheme $Z \subset Y$ through which $f$ factors; locally on $\mathrm{Spec}(B)
+    \subset Y$ with $f^{-1}(\mathrm{Spec}(B)) = \mathrm{Spec}(A)$, it is defined by the ideal $\ker(B
+    \to A)$.
+  locator: null
+  sub_index: null
+  search_text: what is the scheme-theoretic image of a morphism $f \colon x \to y$? the unique smallest
+    closed subscheme $z \subset y$ through which $f$ factors; locally on $\mathrm{spec}(b) \subset y$
+    with $f^{-1}(\mathrm{spec}(b)) = \mathrm{spec}(a)$, it is defined by the ideal $\ker(b \to a)$.
+- id: c-keyes-github-io-files-definitions-pdf#060
+  text: What is the scheme-theoretic closure of a subscheme $W \subset X$?
+  hint: The scheme-theoretic image of the immersion morphism $i \colon W \hookrightarrow X$, corresponding
+    to the smallest closed subscheme containing $W$.
+  locator: null
+  sub_index: null
+  search_text: what is the scheme-theoretic closure of a subscheme $w \subset x$? the scheme-theoretic
+    image of the immersion morphism $i \colon w \hookrightarrow x$, corresponding to the smallest closed
+    subscheme containing $w$.
+- id: c-keyes-github-io-files-definitions-pdf#061
+  text: What is the reduction $X_{\mathrm{red}}$ of a scheme $X$?
+  hint: The closed subscheme cut out by the nilradical ideal sheaf $\mathcal{N} = \sqrt{(0)} \subset \mathcal{O}_X$;
+    it has the same underlying topological space as $X$ and its stalks are the reduced local rings $\mathcal{O}_{X,
+    x} / \mathrm{Nil}(\mathcal{O}_{X, x})$.
+  locator: null
+  sub_index: null
+  search_text: what is the reduction $x_{\mathrm{red}}$ of a scheme $x$? the closed subscheme cut out
+    by the nilradical ideal sheaf $\mathcal{n} = \sqrt{(0)} \subset \mathcal{o}_x$; it has the same underlying
+    topological space as $x$ and its stalks are the reduced local rings $\mathcal{o}_{x, x} / \mathrm{nil}(\mathcal{o}_{x,
+    x})$.
+- id: c-keyes-github-io-files-definitions-pdf#062
+  text: What is the dimension and codimension of a scheme $X$?
+  hint: The Krull dimension $\dim(X)$ is the supremum of lengths $n$ of chains of irreducible closed subsets
+    $Z_0 \subsetneq Z_1 \subsetneq \dots \subsetneq Z_n \subset X$; the codimension $\mathrm{codim}(Y,
+    X)$ of an irreducible closed subset $Y$ is the supremum of lengths of chains $Y = Z_0 \subsetneq Z_1
+    \subsetneq \dots \subsetneq Z_k \subset X$.
+  locator: null
+  sub_index: null
+  search_text: what is the dimension and codimension of a scheme $x$? the krull dimension $\dim(x)$ is
+    the supremum of lengths $n$ of chains of irreducible closed subsets $z_0 \subsetneq z_1 \subsetneq
+    \dots \subsetneq z_n \subset x$; the codimension $\mathrm{codim}(y, x)$ of an irreducible closed subset
+    $y$ is the supremum of lengths of chains $y = z_0 \subsetneq z_1 \subsetneq \dots \subsetneq z_k \subset
+    x$.
+- id: c-keyes-github-io-files-definitions-pdf#063
+  text: What is a regular sequence on a module $M$?
+  hint: A sequence of elements $x_1, \dots, x_r \in A$ such that $x_1$ is not a zero-divisor on $M$, and
+    for each $i \in \{2, \dots, r\}$, $x_i$ is not a zero-divisor on $M / (x_1, \dots, x_{i-1})M$, with
+    $M/(x_1, \dots, x_r)M \neq 0$.
+  locator: null
+  sub_index: null
+  search_text: what is a regular sequence on a module $m$? a sequence of elements $x_1, \dots, x_r \in
+    a$ such that $x_1$ is not a zero-divisor on $m$, and for each $i \in \{2, \dots, r\}$, $x_i$ is not
+    a zero-divisor on $m / (x_1, \dots, x_{i-1})m$, with $m/(x_1, \dots, x_r)m \neq 0$.
+- id: c-keyes-github-io-files-definitions-pdf#064
+  text: What is the depth of a local ring $(A, \mathfrak{m})$ on a module $M$?
+  hint: The maximal length of an $M$-regular sequence with elements in the maximal ideal $\mathfrak{m}$,
+    denoted $\mathrm{depth}(M) = \min \{ i \ge 0 \mid \mathrm{Ext}_A^i(A/\mathfrak{m}, M) \neq 0 \}$.
+  locator: null
+  sub_index: null
+  search_text: what is the depth of a local ring $(a, \mathfrak{m})$ on a module $m$? the maximal length
+    of an $m$-regular sequence with elements in the maximal ideal $\mathfrak{m}$, denoted $\mathrm{depth}(m)
+    = \min \{ i \ge 0 \mid \mathrm{ext}_a^i(a/\mathfrak{m}, m) \neq 0 \}$.
+- id: c-keyes-github-io-files-definitions-pdf#065
+  text: What is a Cohen-Macaulay scheme?
+  hint: A locally Noetherian scheme $X$ whose local rings $\mathcal{O}_{X, x}$ satisfy $\mathrm{depth}(\mathcal{O}_{X,
+    x}) = \dim(\mathcal{O}_{X, x})$ for all $x \in X$.
+  locator: null
+  sub_index: null
+  search_text: what is a cohen-macaulay scheme? a locally noetherian scheme $x$ whose local rings $\mathcal{o}_{x,
+    x}$ satisfy $\mathrm{depth}(\mathcal{o}_{x, x}) = \dim(\mathcal{o}_{x, x})$ for all $x \in x$.
+- id: c-keyes-github-io-files-definitions-pdf#066
+  text: What is a Gorenstein scheme?
+  hint: A Cohen-Macaulay locally Noetherian scheme $X$ whose local rings $\mathcal{O}_{X, x}$ have finite
+    injective dimension as modules over themselves (equivalently, the canonical module $\omega_{\mathcal{O}_{X,
+    x}}$ is an invertible module of rank 1).
+  locator: null
+  sub_index: null
+  search_text: what is a gorenstein scheme? a cohen-macaulay locally noetherian scheme $x$ whose local
+    rings $\mathcal{o}_{x, x}$ have finite injective dimension as modules over themselves (equivalently,
+    the canonical module $\omega_{\mathcal{o}_{x, x}}$ is an invertible module of rank 1).
+- id: c-keyes-github-io-files-definitions-pdf#067
+  text: What are Serre's conditions $R_k$ and $S_k$?
+  hint: 'A Noetherian ring $A$ satisfies: (1) $R_k$ (Regular in codimension $\le k$) if $A_\mathfrak{p}$
+    is a regular local ring for all $\mathfrak{p}$ with $\mathrm{height}(\mathfrak{p}) \le k$; (2) $S_k$
+    (Serre''s depth condition) if $\mathrm{depth}(A_\mathfrak{p}) \ge \min(k, \mathrm{dim}(A_\mathfrak{p}))$
+    for all $\mathfrak{p}$. Serre''s Criterion states: $A$ is reduced $\iff R_0 + S_1$, and $A$ is normal
+    $\iff R_1 + S_2$.'
+  locator: null
+  sub_index: null
+  search_text: 'what are serre''s conditions $r_k$ and $s_k$? a noetherian ring $a$ satisfies: (1) $r_k$
+    (regular in codimension $\le k$) if $a_\mathfrak{p}$ is a regular local ring for all $\mathfrak{p}$
+    with $\mathrm{height}(\mathfrak{p}) \le k$; (2) $s_k$ (serre''s depth condition) if $\mathrm{depth}(a_\mathfrak{p})
+    \ge \min(k, \mathrm{dim}(a_\mathfrak{p}))$ for all $\mathfrak{p}$. serre''s criterion states: $a$
+    is reduced $\iff r_0 + s_1$, and $a$ is normal $\iff r_1 + s_2$.'
+- id: c-keyes-github-io-files-definitions-pdf#068
+  text: What is the normalization of an integral scheme $X$ in a field extension $L$ of its function field
+    $K(X)$?
+  hint: The unique normal scheme $\widetilde{X}$ equipped with a dominant morphism $\pi \colon \widetilde{X}
+    \to X$ such that for every affine open $\mathrm{Spec}(A) \subset X$, $\pi^{-1}(\mathrm{Spec}(A)) =
+    \mathrm{Spec}(A')$, where $A'$ is the integral closure of $A$ in $L$.
+  locator: null
+  sub_index: null
+  search_text: what is the normalization of an integral scheme $x$ in a field extension $l$ of its function
+    field $k(x)$? the unique normal scheme $\widetilde{x}$ equipped with a dominant morphism $\pi \colon
+    \widetilde{x} \to x$ such that for every affine open $\mathrm{spec}(a) \subset x$, $\pi^{-1}(\mathrm{spec}(a))
+    = \mathrm{spec}(a')$, where $a'$ is the integral closure of $a$ in $l$.
+- id: c-keyes-github-io-files-definitions-pdf#069
+  text: What is a local complete intersection (lci) morphism?
+  hint: A morphism of schemes $f \colon X \to Y$ that factors locally as a regular closed embedding $i
+    \colon X \hookrightarrow P$ followed by a smooth morphism $p \colon P \to Y$.
+  locator: null
+  sub_index: null
+  search_text: what is a local complete intersection (lci) morphism? a morphism of schemes $f \colon x
+    \to y$ that factors locally as a regular closed embedding $i \colon x \hookrightarrow p$ followed
+    by a smooth morphism $p \colon p \to y$.
+- id: c-keyes-github-io-files-definitions-pdf#070
+  text: What is a flat module and a flat morphism?
+  hint: An $A$-module $M$ is flat if the functor $- \otimes_A M$ is exact on $A\mathbf{-Mod}$; a morphism
+    $f \colon X \to Y$ is flat if for all $x \in X$, $\mathcal{O}_{X, x}$ is a flat $\mathcal{O}_{Y, f(x)}$-module
+    via $f_x^\sharp$.
+  locator: null
+  sub_index: null
+  search_text: what is a flat module and a flat morphism? an $a$-module $m$ is flat if the functor $-
+    \otimes_a m$ is exact on $a\mathbf{-mod}$; a morphism $f \colon x \to y$ is flat if for all $x \in
+    x$, $\mathcal{o}_{x, x}$ is a flat $\mathcal{o}_{y, f(x)}$-module via $f_x^\sharp$.
+- id: c-keyes-github-io-files-definitions-pdf#071
+  text: What is an unramified morphism?
+  hint: 'A morphism $f \colon X \to Y$ locally of finite presentation such that for every $x \in X$, $\mathfrak{m}_{f(x)}
+    \mathcal{O}_{X, x} = \mathfrak{m}_x$ and the residue field extension $k(x) / k(f(x))$ is finite and
+    separable; equivalently, the relative Kähler differentials vanish: $\Omega_{X/Y}^1 = 0$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is an unramified morphism? a morphism $f \colon x \to y$ locally of finite presentation
+    such that for every $x \in x$, $\mathfrak{m}_{f(x)} \mathcal{o}_{x, x} = \mathfrak{m}_x$ and the residue
+    field extension $k(x) / k(f(x))$ is finite and separable; equivalently, the relative kähler differentials
+    vanish: $\omega_{x/y}^1 = 0$.'
+- id: c-keyes-github-io-files-definitions-pdf#072
+  text: What is a smooth morphism of relative dimension $d$?
+  hint: A morphism $f \colon X \to Y$ that is flat, locally of finite presentation, and whose geometric
+    fibers $X_{\overline{y}} := X \times_Y \mathrm{Spec}(\overline{k(y)})$ are smooth varieties of pure
+    dimension $d$ over $\overline{k(y)}$ (equivalently, $\Omega_{X/Y}^1$ is locally free of rank $d$ and
+    $f$ satisfies infinitesimal lifting).
+  locator: null
+  sub_index: null
+  search_text: what is a smooth morphism of relative dimension $d$? a morphism $f \colon x \to y$ that
+    is flat, locally of finite presentation, and whose geometric fibers $x_{\overline{y}} := x \times_y
+    \mathrm{spec}(\overline{k(y)})$ are smooth varieties of pure dimension $d$ over $\overline{k(y)}$
+    (equivalently, $\omega_{x/y}^1$ is locally free of rank $d$ and $f$ satisfies infinitesimal lifting).
+- id: c-keyes-github-io-files-definitions-pdf#073
+  text: What is formal smoothness, formal etaleness, and formal unramifiedness (Infinitesimal Lifting
+    Criterion)?
+  hint: 'For every commutative ring $A$ and square-zero ideal $I \subset A$ ($I^2 = 0$), the map $\mathrm{Hom}_Y(\mathrm{Spec}(A),
+    X) \to \mathrm{Hom}_Y(\mathrm{Spec}(A/I), X)$ is: (1) surjective if $f$ is formally smooth; (2) bijective
+    if $f$ is formally étale; (3) injective if $f$ is formally unramified.'
+  locator: null
+  sub_index: null
+  search_text: 'what is formal smoothness, formal etaleness, and formal unramifiedness (infinitesimal
+    lifting criterion)? for every commutative ring $a$ and square-zero ideal $i \subset a$ ($i^2 = 0$),
+    the map $\mathrm{hom}_y(\mathrm{spec}(a), x) \to \mathrm{hom}_y(\mathrm{spec}(a/i), x)$ is: (1) surjective
+    if $f$ is formally smooth; (2) bijective if $f$ is formally étale; (3) injective if $f$ is formally
+    unramified.'
+- id: c-keyes-github-io-files-definitions-pdf#074
+  text: What is a valuative criterion of separatedness?
+  hint: A morphism of finite type $f \colon X \to Y$ between Noetherian schemes is separated if and only
+    if for every valuation ring $R$ with fraction field $K$, and every commutative diagram $\mathrm{Spec}(K)
+    \to X$, $\mathrm{Spec}(R) \to Y$, there exists at most one lift $\mathrm{Spec}(R) \to X$.
+  locator: null
+  sub_index: null
+  search_text: what is a valuative criterion of separatedness? a morphism of finite type $f \colon x \to
+    y$ between noetherian schemes is separated if and only if for every valuation ring $r$ with fraction
+    field $k$, and every commutative diagram $\mathrm{spec}(k) \to x$, $\mathrm{spec}(r) \to y$, there
+    exists at most one lift $\mathrm{spec}(r) \to x$.
+- id: c-keyes-github-io-files-definitions-pdf#075
+  text: What is a valuative criterion of properness?
+  hint: A morphism of finite type $f \colon X \to Y$ between Noetherian schemes is proper if and only
+    if for every valuation ring $R$ with fraction field $K$, and every commutative diagram $\mathrm{Spec}(K)
+    \to X$, $\mathrm{Spec}(R) \to Y$, there exists a unique lift $\mathrm{Spec}(R) \to X$.
+  locator: null
+  sub_index: null
+  search_text: what is a valuative criterion of properness? a morphism of finite type $f \colon x \to
+    y$ between noetherian schemes is proper if and only if for every valuation ring $r$ with fraction
+    field $k$, and every commutative diagram $\mathrm{spec}(k) \to x$, $\mathrm{spec}(r) \to y$, there
+    exists a unique lift $\mathrm{spec}(r) \to x$.
+- id: c-keyes-github-io-files-definitions-pdf#076
+  text: What is a projective morphism of schemes?
+  hint: A morphism $f \colon X \to Y$ that factors as a closed embedding $i \colon X \hookrightarrow \mathbb{P}_Y^n
+    = \mathbb{P}_{\mathbb{Z}}^n \times_{\mathrm{Spec}(\mathbb{Z})} Y$ followed by the canonical projection
+    $\mathbb{P}_Y^n \to Y$.
+  locator: null
+  sub_index: null
+  search_text: what is a projective morphism of schemes? a morphism $f \colon x \to y$ that factors as
+    a closed embedding $i \colon x \hookrightarrow \mathbb{p}_y^n = \mathbb{p}_{\mathbb{z}}^n \times_{\mathrm{spec}(\mathbb{z})}
+    y$ followed by the canonical projection $\mathbb{p}_y^n \to y$.
+- id: c-keyes-github-io-files-definitions-pdf#077
+  text: What is a quasi-projective morphism?
+  hint: A morphism $f \colon X \to Y$ that factors as an open immersion $j \colon X \hookrightarrow \overline{X}$
+    into a scheme $\overline{X}$ that is projective over $Y$.
+  locator: null
+  sub_index: null
+  search_text: what is a quasi-projective morphism? a morphism $f \colon x \to y$ that factors as an open
+    immersion $j \colon x \hookrightarrow \overline{x}$ into a scheme $\overline{x}$ that is projective
+    over $y$.
+- id: c-keyes-github-io-files-definitions-pdf#078
+  text: What is an invertible sheaf (algebraic line bundle)?
+  hint: A locally free $\mathcal{O}_X$-module $\mathcal{L}$ of rank 1, meaning $X$ is covered by open
+    sets $U$ on which $\mathcal{L}|_U \cong \mathcal{O}_U$.
+  locator: null
+  sub_index: null
+  search_text: what is an invertible sheaf (algebraic line bundle)? a locally free $\mathcal{o}_x$-module
+    $\mathcal{l}$ of rank 1, meaning $x$ is covered by open sets $u$ on which $\mathcal{l}|_u \cong \mathcal{o}_u$.
+- id: c-keyes-github-io-files-definitions-pdf#079
+  text: What is the transition function cocycle of a locally free sheaf?
+  hint: For a trivializing open cover $\{U_i\}$ with isomorphisms $\psi_i \colon \mathcal{F}|_{U_i} \xrightarrow{\sim}
+    \mathcal{O}_{U_i}^r$, the transition functions are $g_{ij} = \psi_i \circ \psi_j^{-1} \in \mathrm{GL}_r(\mathcal{O}_X(U_i
+    \cap U_j))$, satisfying the 1-cocycle condition $g_{ij} g_{jk} = g_{ik}$ on $U_i \cap U_j \cap U_k$.
+  locator: null
+  sub_index: null
+  search_text: what is the transition function cocycle of a locally free sheaf? for a trivializing open
+    cover $\{u_i\}$ with isomorphisms $\psi_i \colon \mathcal{f}|_{u_i} \xrightarrow{\sim} \mathcal{o}_{u_i}^r$,
+    the transition functions are $g_{ij} = \psi_i \circ \psi_j^{-1} \in \mathrm{gl}_r(\mathcal{o}_x(u_i
+    \cap u_j))$, satisfying the 1-cocycle condition $g_{ij} g_{jk} = g_{ik}$ on $u_i \cap u_j \cap u_k$.
+- id: c-keyes-github-io-files-definitions-pdf#080
+  text: What is the dual sheaf $\mathcal{F}^\vee$ and internal Hom $\underline{\mathrm{Hom}}_{\mathcal{O}_X}(\mathcal{F},
+    \mathcal{G})$?
+  hint: $\underline{\mathrm{Hom}}_{\mathcal{O}_X}(\mathcal{F}, \mathcal{G})$ is the sheaf $U \mapsto \mathrm{Hom}_{\mathcal{O}_U}(\mathcal{F}|_U,
+    \mathcal{G}|_U)$; the dual sheaf is $\mathcal{F}^\vee := \underline{\mathrm{Hom}}_{\mathcal{O}_X}(\mathcal{F},
+    \mathcal{O}_X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the dual sheaf $\mathcal{f}^\vee$ and internal hom $\underline{\mathrm{hom}}_{\mathcal{o}_x}(\mathcal{f},
+    \mathcal{g})$? $\underline{\mathrm{hom}}_{\mathcal{o}_x}(\mathcal{f}, \mathcal{g})$ is the sheaf $u
+    \mapsto \mathrm{hom}_{\mathcal{o}_u}(\mathcal{f}|_u, \mathcal{g}|_u)$; the dual sheaf is $\mathcal{f}^\vee
+    := \underline{\mathrm{hom}}_{\mathcal{o}_x}(\mathcal{f}, \mathcal{o}_x)$.
+- id: c-keyes-github-io-files-definitions-pdf#081
+  text: What is the dualizing complex $\omega_X^\bullet$ on a Noetherian scheme?
+  hint: An object $\omega_X^\bullet \in D_c^b(X)$ of finite injective dimension such that the natural
+    biduality evaluation map $\mathcal{F} \to \mathbf{R}\underline{\mathrm{Hom}}(\mathbf{R}\underline{\mathrm{Hom}}(\mathcal{F},
+    \omega_X^\bullet), \omega_X^\bullet)$ is a quasi-isomorphism for all $\mathcal{F} \in D_c^b(X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the dualizing complex $\omega_x^\bullet$ on a noetherian scheme? an object $\omega_x^\bullet
+    \in d_c^b(x)$ of finite injective dimension such that the natural biduality evaluation map $\mathcal{f}
+    \to \mathbf{r}\underline{\mathrm{hom}}(\mathbf{r}\underline{\mathrm{hom}}(\mathcal{f}, \omega_x^\bullet),
+    \omega_x^\bullet)$ is a quasi-isomorphism for all $\mathcal{f} \in d_c^b(x)$.
+- id: c-keyes-github-io-files-definitions-pdf#082
+  text: What is Serre duality for smooth projective varieties?
+  hint: For a smooth projective variety $X$ of dimension $n$ over a field $k$ with canonical bundle $\omega_X
+    = \bigwedge^n \Omega_{X/k}^1$, there is a canonical trace map $\mathrm{Tr} \colon H^n(X, \omega_X)
+    \xrightarrow{\sim} k$ inducing perfect pairings $H^i(X, \mathcal{F}) \times \mathrm{Ext}^{n-i}(\mathcal{F},
+    \omega_X) \to k$ for every coherent sheaf $\mathcal{F}$.
+  locator: null
+  sub_index: null
+  search_text: what is serre duality for smooth projective varieties? for a smooth projective variety
+    $x$ of dimension $n$ over a field $k$ with canonical bundle $\omega_x = \bigwedge^n \omega_{x/k}^1$,
+    there is a canonical trace map $\mathrm{tr} \colon h^n(x, \omega_x) \xrightarrow{\sim} k$ inducing
+    perfect pairings $h^i(x, \mathcal{f}) \times \mathrm{ext}^{n-i}(\mathcal{f}, \omega_x) \to k$ for
+    every coherent sheaf $\mathcal{f}$.
+- id: c-keyes-github-io-files-definitions-pdf#083
+  text: What is the Riemann-Roch Theorem for smooth projective curves?
+  hint: 'For an invertible sheaf $\mathcal{L} \cong \mathcal{O}_C(D)$ on a smooth projective curve $C$
+    of genus $g$ over $k$: $\dim_k H^0(C, \mathcal{L}) - \dim_k H^1(C, \mathcal{L}) = \deg(\mathcal{L})
+    + 1 - g$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the riemann-roch theorem for smooth projective curves? for an invertible sheaf
+    $\mathcal{l} \cong \mathcal{o}_c(d)$ on a smooth projective curve $c$ of genus $g$ over $k$: $\dim_k
+    h^0(c, \mathcal{l}) - \dim_k h^1(c, \mathcal{l}) = \deg(\mathcal{l}) + 1 - g$.'
+- id: c-keyes-github-io-files-definitions-pdf#084
+  text: What is the Riemann-Hurwitz Formula for a finite separable morphism $\pi \colon C \to C'$ of curves?
+  hint: $2g(C) - 2 = \deg(\pi)(2g(C') - 2) + \deg(R)$, where $R = \sum_{p \in C} (e_p - 1) p$ is the ramification
+    divisor and $e_p$ is the ramification index at $p$.
+  locator: null
+  sub_index: null
+  search_text: what is the riemann-hurwitz formula for a finite separable morphism $\pi \colon c \to c'$
+    of curves? $2g(c) - 2 = \deg(\pi)(2g(c') - 2) + \deg(r)$, where $r = \sum_{p \in c} (e_p - 1) p$ is
+    the ramification divisor and $e_p$ is the ramification index at $p$.
+- id: c-keyes-github-io-files-definitions-pdf#085
+  text: What is the blow-up $\mathrm{Bl}_Z(X)$ of a scheme $X$ along a closed subscheme $Z$?
+  hint: If $Z \subset X$ is cut out by the ideal sheaf $\mathcal{I} \subset \mathcal{O}_X$, the blow-up
+    is the scheme $\mathrm{Bl}_Z(X) := \mathrm{Proj}_X\left(\bigoplus_{d \ge 0} \mathcal{I}^d\right)$
+    equipped with the canonical projection $\pi \colon \mathrm{Bl}_Z(X) \to X$; the preimage $E = \pi^{-1}(Z)
+    \cong \mathrm{Proj}_Z\left(\bigoplus_{d \ge 0} \mathcal{I}^d / \mathcal{I}^{d+1}\right)$ is an effective
+    Cartier divisor called the exceptional divisor.
+  locator: null
+  sub_index: null
+  search_text: what is the blow-up $\mathrm{bl}_z(x)$ of a scheme $x$ along a closed subscheme $z$? if
+    $z \subset x$ is cut out by the ideal sheaf $\mathcal{i} \subset \mathcal{o}_x$, the blow-up is the
+    scheme $\mathrm{bl}_z(x) := \mathrm{proj}_x\left(\bigoplus_{d \ge 0} \mathcal{i}^d\right)$ equipped
+    with the canonical projection $\pi \colon \mathrm{bl}_z(x) \to x$; the preimage $e = \pi^{-1}(z) \cong
+    \mathrm{proj}_z\left(\bigoplus_{d \ge 0} \mathcal{i}^d / \mathcal{i}^{d+1}\right)$ is an effective
+    cartier divisor called the exceptional divisor.
+- id: c-keyes-github-io-files-definitions-pdf#086
+  text: What is a linear system $|D|$ and a complete linear system on a variety $X$?
+  hint: The complete linear system of an effective divisor $D$ is the projective space $|D| := \mathbb{P}(H^0(X,
+    \mathcal{O}_X(D))) = \{ D' \ge 0 \mid D' \sim D \}$; a linear system $\mathfrak{d} \subset |D|$ is
+    a projective linear subspace corresponding to a vector subspace $V \subset H^0(X, \mathcal{O}_X(D))$.
+  locator: null
+  sub_index: null
+  search_text: what is a linear system $|d|$ and a complete linear system on a variety $x$? the complete
+    linear system of an effective divisor $d$ is the projective space $|d| := \mathbb{p}(h^0(x, \mathcal{o}_x(d)))
+    = \{ d' \ge 0 \mid d' \sim d \}$; a linear system $\mathfrak{d} \subset |d|$ is a projective linear
+    subspace corresponding to a vector subspace $v \subset h^0(x, \mathcal{o}_x(d))$.
+- id: c-keyes-github-io-files-definitions-pdf#087
+  text: What is the Grassmannian variety $\mathbf{Gr}(k, V)$?
+  hint: The projective scheme representing the functor that assigns to any scheme $S$ the set of rank-$k$
+    locally free quotient sheaves of $V \otimes_k \mathcal{O}_S$ (or rank-$k$ sub-bundles of $V$).
+  locator: null
+  sub_index: null
+  search_text: what is the grassmannian variety $\mathbf{gr}(k, v)$? the projective scheme representing
+    the functor that assigns to any scheme $s$ the set of rank-$k$ locally free quotient sheaves of $v
+    \otimes_k \mathcal{o}_s$ (or rank-$k$ sub-bundles of $v$).

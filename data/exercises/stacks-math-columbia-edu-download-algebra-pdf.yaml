@@ -214,7 +214,11 @@ exercises:
     Prove that restriction of scalars $\phi_*: \operatorname{Mod}_S \to \operatorname{Mod}_R$ forms an
     adjoint triple $(\phi^* \dashv \phi_* \dashv \phi^!)$, where base change $\phi^*(N) = N \otimes_R
     S$ is the left adjoint and $\phi^!(N) = \operatorname{Hom}_R(S, N)$ is the right adjoint. (Hint: Compare
-    this with pushforward and pullback of sheaves on open sets)'
+    this with pushforward and pullback of sheaves on open sets. For the geometric pushforward it looks
+    like integration. Note that this is RIGHT ADJOINT AND PRESERVES LIMITS, since one takes sections over
+    opens for the integration which preserves limits. For the geometric pullback, it looks like restriction
+    or subspace, it also looks like recovering all the points before killing it or identifying it and
+    IT IS CHECKED STALKWISE, LEFT ADJOINTS PRESERVE COLIMITS.)'
   hint: null
   locator: null
   sub_index: null
@@ -222,7 +226,11 @@ exercises:
     prove that restriction of scalars $\phi_*: \operatorname{mod}_s \to \operatorname{mod}_r$ forms an
     adjoint triple $(\phi^* \dashv \phi_* \dashv \phi^!)$, where base change $\phi^*(n) = n \otimes_r
     s$ is the left adjoint and $\phi^!(n) = \operatorname{hom}_r(s, n)$ is the right adjoint. (hint: compare
-    this with pushforward and pullback of sheaves on open sets)'
+    this with pushforward and pullback of sheaves on open sets. for the geometric pushforward it looks
+    like integration. note that this is right adjoint and preserves limits, since one takes sections over
+    opens for the integration which preserves limits. for the geometric pullback, it looks like restriction
+    or subspace, it also looks like recovering all the points before killing it or identifying it and
+    it is checked stalkwise, left adjoints preserve colimits.)'
 - id: stacks-math-columbia-edu-download-algebra-pdf#014
   text: '(Prime Ideals and Ideal Products) Let $I, J \subseteq R$ be ideals and $\mathfrak{p} \subseteq
     R$ a prime ideal. Prove that if $IJ \subseteq \mathfrak{p}$, then $I \subseteq \mathfrak{p}$ or $J

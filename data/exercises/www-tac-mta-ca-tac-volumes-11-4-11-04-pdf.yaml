@@ -6,6 +6,40 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#000
+  text: Why is there a difference between pushforwards in sheaves which is right adjoint and preserve
+    limits, and pushforwards in measures, which is left adjoint and preserves colimits?
+  hint: Grothendieck/Verdier duality make it such that exceptional pushforward corresponds to be left
+    adjoint and preserves colimit to extraordinary pullback in the derived category. However, in ordinary
+    sheaves, pullbacks are evaluating points on sections and checked on sections so it is LEFT ADJOINT
+    and preserves colimits. Pushforwards involve taking sections of opens in a sheaf. Sheafs are functional
+    in nature, functionals are contravariant when one thinks about linear algebra, unlike measures which
+    are covariant. Therefore, the six functor formalism works differently.
+  locator: null
+  sub_index: null
+  search_text: why is there a difference between pushforwards in sheaves which is right adjoint and preserve
+    limits, and pushforwards in measures, which is left adjoint and preserves colimits? grothendieck/verdier
+    duality make it such that exceptional pushforward corresponds to be left adjoint and preserves colimit
+    to extraordinary pullback in the derived category. however, in ordinary sheaves, pullbacks are evaluating
+    points on sections and checked on sections so it is left adjoint and preserves colimits. pushforwards
+    involve taking sections of opens in a sheaf. sheafs are functional in nature, functionals are contravariant
+    when one thinks about linear algebra, unlike measures which are covariant. therefore, the six functor
+    formalism works differently.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#001
+  text: How does one think of the adjoint triple of the restriction of scalars?
+  hint: extension of scalars is left adjoint i.e. tensor products preserve colimits. Firstly, one identifies
+    algebra as the covariant context. Then, extension of scalars preserve sums is as per tensor hom adjunction.
+    Pushforward extends it to more scalars. However, homs are also pushforwards that preserve limits.
+    Integration is a functional, homs are functionals, and limits of homs are preserved. Resrtiction of
+    scalars is a rare Frobenisu functor that preserves limits and colimits.
+  locator: null
+  sub_index: null
+  search_text: how does one think of the adjoint triple of the restriction of scalars? extension of scalars
+    is left adjoint i.e. tensor products preserve colimits. firstly, one identifies algebra as the covariant
+    context. then, extension of scalars preserve sums is as per tensor hom adjunction. pushforward extends
+    it to more scalars. however, homs are also pushforwards that preserve limits. integration is a functional,
+    homs are functionals, and limits of homs are preserved. resrtiction of scalars is a rare frobenisu
+    functor that preserves limits and colimits.
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#002
   text: What is the formal categorical goal of Fausk-Hu-May in axiomatic six-functor formalisms?
   hint: To systematically isolate the formal categorical machinery of the projection formula and duality
     isomorphisms from specific geometric contexts, showing how right adjoints $f^!$ or $f_*$ can be identified
@@ -16,7 +50,7 @@ exercises:
     to systematically isolate the formal categorical machinery of the projection formula and duality isomorphisms
     from specific geometric contexts, showing how right adjoints $f^!$ or $f_*$ can be identified as twists/shifts
     of left adjoints $f_!$ or $f^*$ via an intrinsic dualizing object.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#001
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#003
   text: Why is the right adjoint generally harder to understand than the left adjoint?
   hint: The left adjoint (e.g., free construction, scalar extension, pullback $f^*$, or extension-by-zero
     $j_!$) is explicitly defined by generators and preserves colimits; its right adjoint (e.g., coextension,
@@ -29,7 +63,7 @@ exercises:
     explicitly defined by generators and preserves colimits; its right adjoint (e.g., coextension, pushforward
     $f_*$, or exceptional pullback $f^!$) is given abstractly via the adjoint functor theorem and requires
     deep descent/duality theorems to compute.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#002
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#004
   text: How do Neeman's techniques establish the formal nature of Verdier and Grothendieck isomorphisms?
   hint: Neeman proved that in triangulated and derived categories with Brown representability, the existence
     of right adjoints $f^!$ and their duality isomorphisms with twisted left adjoints are purely formal
@@ -40,7 +74,7 @@ exercises:
     neeman proved that in triangulated and derived categories with brown representability, the existence
     of right adjoints $f^!$ and their duality isomorphisms with twisted left adjoints are purely formal
     consequences of closed symmetric monoidal structures and compactly generated categories.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#003
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#005
   text: How is the standard pullback-pushforward pair $(f^*, f_*)$ structured in a closed symmetric monoidal
     category?
   hint: Let $f \colon \mathcal{A} \to \mathcal{B}$ be a geometric morphism; the pullback functor $f^*
@@ -56,7 +90,7 @@ exercises:
     z) \cong f^*y \otimes_{\mathcal{a}} f^*z$ and $f^*\mathbf{1}_{\mathcal{b}} \cong \mathbf{1}_{\mathcal{a}}$),
     and its right adjoint $f_* \colon \mathcal{a} \to \mathcal{b}$ is lax monoidal with an adjunction
     $\mathrm{hom}_{\mathcal{a}}(f^*y, x) \cong \mathrm{hom}_{\mathcal{b}}(y, f_*x)$.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#004
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#006
   text: What is the categorical relationship between $(f^*, f_*, f_!, f^!)$ when $f$ is a proper morphism?
   hint: When $f$ is proper, the exceptional pushforward coincides with the ordinary pushforward ($f_!
     \cong f_*$); consequently, the exceptional pullback $f^!$ is the right adjoint to the right adjoint
@@ -67,7 +101,7 @@ exercises:
     morphism? when $f$ is proper, the exceptional pushforward coincides with the ordinary pushforward
     ($f_! \cong f_*$); consequently, the exceptional pullback $f^!$ is the right adjoint to the right
     adjoint of pullback, $f^! \colon \mathcal{b} \to \mathcal{a}$ being right adjoint to $f_* \cong f_!$.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#005
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#007
   text: What is the Grothendieck context versus the Verdier-Grothendieck context?
   hint: The **Grothendieck context** is an adjoint triple $(f^* \dashv f_* \dashv f^!)$ where $f_*$ has
     a right adjoint $f^!$ (modeling proper morphisms or global module duality); the **Verdier-Grothendieck
@@ -80,7 +114,7 @@ exercises:
     (modeling proper morphisms or global module duality); the **verdier-grothendieck context** includes
     the full four-functor setup $(f_! \dashv f^!)$ and $(f^* \dashv f_*)$ with an isomorphism $f_! \xrightarrow{\sim}
     f_*$ on proper subcategories.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#006
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#008
   text: How do extension and coextension of scalars model $f_!$, $f^*$, and $f_*$ in module categories?
   hint: For a ring homomorphism $\phi \colon R \to S$, the forgetful/restriction functor is $f^*$; its
     left adjoint is extension of scalars $f_!(M) = S \otimes_R M$ (left adjoint/induction), and its right
@@ -93,7 +127,7 @@ exercises:
     adjoint is extension of scalars $f_!(m) = s \otimes_r m$ (left adjoint/induction), and its right adjoint
     is coextension of scalars $f_*(m) = \mathrm{hom}_r(s, m)$ (right adjoint/coinduction). notice that
     here $f^*$ is generally not strong monoidal unless $s$ is flat/étale.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#007
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#009
   text: What is the Wirthmüller context and how did it originate in equivariant topology?
   hint: Originating from Wirthmüller's theorem for compact Lie groups $G/H$, a **Wirthmüller context**
     is an adjoint triple $(f_! \dashv f^* \dashv f_*)$ where the strong symmetric monoidal pullback $f^*$
@@ -106,7 +140,7 @@ exercises:
     $(f_! \dashv f^* \dashv f_*)$ where the strong symmetric monoidal pullback $f^*$ has both a left adjoint
     $f_!$ and a right adjoint $f_*$, together with a natural twist isomorphism $f_!(x) \cong f_*(x \otimes
     d)$ for a dualizing object $d$.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#008
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#010
   text: How does strong symmetric monoidality of $f^*$ yield the internal hom adjunction and projection
     maps?
   hint: Since $f^*$ commutes with $\otimes$, the $(f^* \dashv f_*)$ adjunction formally induces a natural
@@ -120,7 +154,7 @@ exercises:
     morphism $\pi \colon f_*(x) \otimes y \to f_*(x \otimes f^*y)$ and a dual morphism on internal homs
     $f^* \underline{\mathrm{hom}}_{\mathcal{b}}(y, z) \to \underline{\mathrm{hom}}_{\mathcal{a}}(f^*y,
     f^*z)$ via the barr-beck/monad comparison apparatus.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#009
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#011
   text: State Definition 4.6 of the Projection Formula in the abstract axiomatic context
   hint: In an adjoint setup $(f^* \dashv f_*)$, the **projection formula** is the assertion that the canonical
     morphism $\pi \colon f_!(X) \otimes_{\mathcal{B}} Y \xrightarrow{\sim} f_!(X \otimes_{\mathcal{A}}
@@ -131,7 +165,7 @@ exercises:
     adjoint setup $(f^* \dashv f_*)$, the **projection formula** is the assertion that the canonical morphism
     $\pi \colon f_!(x) \otimes_{\mathcal{b}} y \xrightarrow{\sim} f_!(x \otimes_{\mathcal{a}} f^*y)$ is
     a natural isomorphism for all $x \in \mathcal{a}$ and $y \in \mathcal{b}$.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#010
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#012
   text: When does a Wirthmüller context arise in algebra and representation theory?
   hint: When $f^* \colon \mathbf{Mod}_S \to \mathbf{Mod}_R$ is the restriction of scalars along a Frobenius
     algebra/finite flat map $\phi \colon R \to S$, where extension of scalars $f_!(-) = S \otimes_R -$
@@ -144,7 +178,7 @@ exercises:
     flat map $\phi \colon r \to s$, where extension of scalars $f_!(-) = s \otimes_r -$ is isomorphic
     to coextension of scalars $f_*(-) = \mathrm{hom}_r(s, -)$ up to tensoring with the dualizing module
     $\omega_{s/r}$.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#011
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#013
   text: How does the dualizing object interact with the Chu construction and star-autonomous categories?
   hint: An intrinsic dualizing object $D \in \mathcal{A}$ defines a duality functor $\mathbb{D}(-) = \underline{\mathrm{Hom}}(-,
     D)$; the Chu construction formally completes a closed symmetric monoidal category into a $*$-autonomous
@@ -157,7 +191,7 @@ exercises:
     d)$; the chu construction formally completes a closed symmetric monoidal category into a $*$-autonomous
     category where the wirthmüller and grothendieck contexts become dual via $\mathbb{d} \circ f^* \cong
     f^! \circ \mathbb{d}$.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#012
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#014
   text: Why is the Projection Formula recognized categorically as Frobenius reciprocity?
   hint: The projection formula is the tensor-categorical generalization of classical Frobenius reciprocity
     $\mathrm{Ind}(V \otimes \mathrm{Res}(W)) \cong \mathrm{Ind}(V) \otimes W$ for representations; categorically,
@@ -168,7 +202,7 @@ exercises:
     formula is the tensor-categorical generalization of classical frobenius reciprocity $\mathrm{ind}(v
     \otimes \mathrm{res}(w)) \cong \mathrm{ind}(v) \otimes w$ for representations; categorically, it states
     that $f_!$ is an enriched $\mathcal{b}$-module functor.
-- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#013
+- id: www-tac-mta-ca-tac-volumes-11-4-11-04-pdf#015
   text: How does the Projection Formula allow moving target objects and computing Reynolds operators/Haar
     integrals?
   hint: It allows pullbacks of base objects $f^*Y$ to be factored outside the pushforward integration
