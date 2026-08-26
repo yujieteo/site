@@ -1,0 +1,77 @@
+url: https://arxiv.org/pdf/2510.17778v1
+title: Deglise on Motivic Homotopy Theory and Stable Homotopy Groups.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-2510-17778v1#000
+  text: How does one introduce homotopy into algebraic geometry?
+  hint: Defining homotopies on the affine line.
+  locator: null
+  sub_index: null
+  search_text: how does one introduce homotopy into algebraic geometry? defining homotopies on the affine
+    line.
+- id: arxiv-org-pdf-2510-17778v1#001
+  text: What is the primary topos used in motivic theory?
+  hint: Topos of sheaves over smooth schemes.
+  locator: null
+  sub_index: null
+  search_text: what is the primary topos used in motivic theory? topos of sheaves over smooth schemes.
+- id: arxiv-org-pdf-2510-17778v1#002
+  text: How does one use the topological space underlying complex algebraic varieties?
+  hint: Consider real or complex embedding of our base field and consider the varieties over it. One can
+    take functor of points with natural analytic topology and define its Betti homotopy type. This is
+    a purely topological invariant of schemes of finite type. Now one must define a homotopy type telling
+    us that the affine line should be contractible.
+  locator: null
+  sub_index: null
+  search_text: how does one use the topological space underlying complex algebraic varieties? consider
+    real or complex embedding of our base field and consider the varieties over it. one can take functor
+    of points with natural analytic topology and define its betti homotopy type. this is a purely topological
+    invariant of schemes of finite type. now one must define a homotopy type telling us that the affine
+    line should be contractible.
+- id: arxiv-org-pdf-2510-17778v1#003
+  text: How is motivic homotopy theory related to quadratic forms?
+  hint: one defines the Witt ring and Grothendieck-Witt ring as the group completion of the additive monoid
+    of the semiring structured induced by the tensor product when one considers isomorphism classes of
+    finite dimension non-degenerate symmetric bilinear forms over a field. With this Grothendieck-Witt
+    ring. The rest of the details of the relation, I am not sure.
+  locator: null
+  sub_index: null
+  search_text: how is motivic homotopy theory related to quadratic forms? one defines the witt ring and
+    grothendieck-witt ring as the group completion of the additive monoid of the semiring structured induced
+    by the tensor product when one considers isomorphism classes of finite dimension non-degenerate symmetric
+    bilinear forms over a field. with this grothendieck-witt ring. the rest of the details of the relation,
+    i am not sure.
+- id: arxiv-org-pdf-2510-17778v1#004
+  text: Why does one use the Nisnevich topology?
+  hint: Algebraic K-theory satisfies Nisnevich descent and the spectrum of a field or the cohomology of
+    a point is trivial.
+  locator: null
+  sub_index: null
+  search_text: why does one use the nisnevich topology? algebraic k-theory satisfies nisnevich descent
+    and the spectrum of a field or the cohomology of a point is trivial.
+- id: arxiv-org-pdf-2510-17778v1#005
+  text: 'Recap: define a smooth scheme'
+  hint: Finite type over $k$ and extend scalars to algebraic closure one gets a regular scheme where all
+    local rings are regular local rings OR finite type over a field $k$, smooth with relative dimension
+    $n$ if sheaf of Kahler differentials is locally free of rank $n$ and the morphism is flat.
+  locator: null
+  sub_index: null
+  search_text: 'recap: define a smooth scheme finite type over $k$ and extend scalars to algebraic closure
+    one gets a regular scheme where all local rings are regular local rings or finite type over a field
+    $k$, smooth with relative dimension $n$ if sheaf of kahler differentials is locally free of rank $n$
+    and the morphism is flat.'
+- id: arxiv-org-pdf-2510-17778v1#006
+  text: 'Recap: define a Kahler differential'
+  hint: $R$-derivation for a ring homomorphism from $R$ to $S$ so $S$ is an $R$-algebra, $M$ is an $S$-module,
+    $R$-derivation is a map from $S$ to $M$ as an $S$-module satisfying the product rule. The module of
+    $\Omega_{S/R}$ mimics the definition of differential forms, it is simply an $S$-module with a universal
+    $R$-derivation.
+  locator: null
+  sub_index: null
+  search_text: 'recap: define a kahler differential $r$-derivation for a ring homomorphism from $r$ to
+    $s$ so $s$ is an $r$-algebra, $m$ is an $s$-module, $r$-derivation is a map from $s$ to $m$ as an
+    $s$-module satisfying the product rule. the module of $\omega_{s/r}$ mimics the definition of differential
+    forms, it is simply an $s$-module with a universal $r$-derivation.'

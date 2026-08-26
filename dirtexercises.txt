@@ -1,3 +1,25 @@
 dirty exercises
 ---------------
 To be cleaned up when before adding to main exercises.txt.
+
+Lazard ring
+
+Lubin Tate formal group laws
+
+Hazewinkel/Araki generators
+
+Morava-K theories and Morava classification? Why define Kunneth?
+
+Hopf-Algebras
+
+Bousfield localisation
+
+https://arxiv.org/pdf/2210.13259, geometric cycle
+
+https://people.math.harvard.edu/~lurie/252x.html
+
+https://arxiv.org/pdf/0711.1134, Landweber exact group laws
+
+https://arxiv.org/pdf/2210.13259,geometric complex
+
+https://people.math.harvard.edu/~lurie/papers/survey.pdf, elliptic cohomology

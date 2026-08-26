@@ -1,0 +1,26 @@
+url: https://people.math.harvard.edu/~lurie/252xnotes/Lecture6.pdf
+title: Lurie's 252x Lecture 6 on the complex orientations and $MU$.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: people-math-harvard-edu-lurie-252xnotes-lecture6-pdf#000
+  text: What is $MU(0)$ equivalent to?
+  hint: sphere spectrum
+  locator: null
+  sub_index: null
+  search_text: what is $mu(0)$ equivalent to? sphere spectrum
+- id: people-math-harvard-edu-lurie-252xnotes-lecture6-pdf#001
+  text: What is $MU(1)$ equvialent to?
+  hint: desuspension of $\mathbb{CP}^{\infty - 2}$ or $BU(1)$
+  locator: null
+  sub_index: null
+  search_text: what is $mu(1)$ equvialent to? desuspension of $\mathbb{cp}^{\infty - 2}$ or $bu(1)$
+- id: people-math-harvard-edu-lurie-252xnotes-lecture6-pdf#002
+  text: How does one classify the direct sum of complex vector bundles?
+  hint: Multiplication in $BU(a) \times BU(b) \rightarrow BU(a+b)$.
+  locator: null
+  sub_index: null
+  search_text: how does one classify the direct sum of complex vector bundles? multiplication in $bu(a)
+    \times bu(b) \rightarrow bu(a+b)$.

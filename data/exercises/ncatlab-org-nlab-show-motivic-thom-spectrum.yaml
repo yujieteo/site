@@ -1,0 +1,27 @@
+url: https://ncatlab.org/nlab/show/motivic+Thom+spectrum
+title: motivic Thom spectrum.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-motivic-thom-spectrum#000
+  text: What is the motivic Thom spectrum the algebraic analogue of?
+  hint: motivic Thom spectrum $MGL$ in stable homotopy category which represents the Thom spectrum or
+    $MU$
+  locator: null
+  sub_index: null
+  search_text: what is the motivic thom spectrum the algebraic analogue of? motivic thom spectrum $mgl$
+    in stable homotopy category which represents the thom spectrum or $mu$
+- id: ncatlab-org-nlab-show-motivic-thom-spectrum#001
+  text: How does one define the algebraic cobordism spectrum $MGL_S$?
+  hint: colimit of the infinite suspension of the Thom space of the tautological vector bundle $V_n$ over
+    the infinite Grassmannian of $n$-planes $Gr(n)$ as the colimit of smooth $S$-schemes as $k$ tends
+    to infinity. This is used by Voevodsky in his proof of the Bloch-Kato conjecture and is the starting
+    point of chromatic motivic homotopy theory.
+  locator: null
+  sub_index: null
+  search_text: how does one define the algebraic cobordism spectrum $mgl_s$? colimit of the infinite suspension
+    of the thom space of the tautological vector bundle $v_n$ over the infinite grassmannian of $n$-planes
+    $gr(n)$ as the colimit of smooth $s$-schemes as $k$ tends to infinity. this is used by voevodsky in
+    his proof of the bloch-kato conjecture and is the starting point of chromatic motivic homotopy theory.

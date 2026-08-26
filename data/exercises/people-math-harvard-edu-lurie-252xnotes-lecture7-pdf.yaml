@@ -1,0 +1,93 @@
+url: https://people.math.harvard.edu/~lurie/252xnotes/Lecture7.pdf
+title: Lurie's 252x Lecture 7 on the homology of $MU$.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: people-math-harvard-edu-lurie-252xnotes-lecture7-pdf#000
+  text: What is the map that classifies the formal group law over the complex oriented cohomology theory
+    $\pi_* MU$?
+  hint: Isomorphism to the Lazard ring.
+  locator: null
+  sub_index: null
+  search_text: what is the map that classifies the formal group law over the complex oriented cohomology
+    theory $\pi_* mu$? isomorphism to the lazard ring.
+- id: people-math-harvard-edu-lurie-252xnotes-lecture7-pdf#001
+  text: What does the Quillen-Thom theorem mean?
+  hint: Homotopy groups only in even degrees.
+  locator: null
+  sub_index: null
+  search_text: what does the quillen-thom theorem mean? homotopy groups only in even degrees.
+- id: people-math-harvard-edu-lurie-252xnotes-lecture7-pdf#002
+  text: How does one prove that the Lazard ring is isomorphic to $\pi_* MU$ or the Milnor-Quillen theorem?
+  hint: $MU$ is the homotopy colimit of the sequence. Compute the homology for $E_*(MU)$ which is arbitrary
+    complex oriented cohomology theory. Consider a canonical isomorphism using the fact that every complex
+    vector bundle has a canonical $E$-orientation, with dual basis to topological basis. Pass to bordism
+    spectrum $MU$, one then understands transition maps to higher $MU(n)$. Take the dual of the topological
+    basis $t_i$ for the case of $E_*(MU(n))$, so one can get a image of the $b_i$ determining a ring isomorphism
+    $\pi_* E{b_1, \cdots}$ to $E_*(MU)$. Compute for $H_*(MU, \mathbb{Z})$ to be isomorphic to infinite
+    power series ring $\mathbb{Z}[b_1, \cdots]$. Using the fact that smash product is another multiplicative
+    cohomology theory with two complex orientation, one can find two classes that determine isomorphisms.
+    Construct a map associated with the Lazard ring and repeatedly tensor with $\mathbb{Q}$ to get the
+    result.
+  locator: null
+  sub_index: null
+  search_text: how does one prove that the lazard ring is isomorphic to $\pi_* mu$ or the milnor-quillen
+    theorem? $mu$ is the homotopy colimit of the sequence. compute the homology for $e_*(mu)$ which is
+    arbitrary complex oriented cohomology theory. consider a canonical isomorphism using the fact that
+    every complex vector bundle has a canonical $e$-orientation, with dual basis to topological basis.
+    pass to bordism spectrum $mu$, one then understands transition maps to higher $mu(n)$. take the dual
+    of the topological basis $t_i$ for the case of $e_*(mu(n))$, so one can get a image of the $b_i$ determining
+    a ring isomorphism $\pi_* e{b_1, \cdots}$ to $e_*(mu)$. compute for $h_*(mu, \mathbb{z})$ to be isomorphic
+    to infinite power series ring $\mathbb{z}[b_1, \cdots]$. using the fact that smash product is another
+    multiplicative cohomology theory with two complex orientation, one can find two classes that determine
+    isomorphisms. construct a map associated with the lazard ring and repeatedly tensor with $\mathbb{q}$
+    to get the result.
+- id: people-math-harvard-edu-lurie-252xnotes-lecture7-pdf#003
+  text: How does one prove that the Lazard ring is isomorphic to the stable homotopy groups of the complex
+    bordism spectrum integrally after $p$-adic completion using the Adams spectral sequence? https://ncatlab.org/nlab/show/Brown-Peterson+spectrum
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: how does one prove that the lazard ring is isomorphic to the stable homotopy groups of
+    the complex bordism spectrum integrally after $p$-adic completion using the adams spectral sequence?
+    https://ncatlab.org/nlab/show/brown-peterson+spectrum
+- id: people-math-harvard-edu-lurie-252xnotes-lecture7-pdf#004
+  text: What is the Brown-Peterson spectrum?
+  hint: direct summands of the $p$-localisation of the complex cobordism cohomology theory at a prime
+    $p$
+  locator: null
+  sub_index: null
+  search_text: what is the brown-peterson spectrum? direct summands of the $p$-localisation of the complex
+    cobordism cohomology theory at a prime $p$
+- id: people-math-harvard-edu-lurie-252xnotes-lecture7-pdf#005
+  text: What is $p$-localisation?
+  hint: 'localisation at a prime ideal $p$, for example $\mathbb{Z}_{(p)}$ which means inverting all primes
+    except $p$ which is the ring of functions defined on the open complement of the point. Mote that away
+    from $p$ it is different which means one ignores $p$-torsion, this gives you the subring whose fractions
+    are powers of $1/p$ in the denominator. NOTE: this is not the Laurent/power series ring which is $Z[1/p][[x]]$.
+    $Z_p$ is the functions on the formal neighbourhood of $(p)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is $p$-localisation? localisation at a prime ideal $p$, for example $\mathbb{z}_{(p)}$
+    which means inverting all primes except $p$ which is the ring of functions defined on the open complement
+    of the point. mote that away from $p$ it is different which means one ignores $p$-torsion, this gives
+    you the subring whose fractions are powers of $1/p$ in the denominator. note: this is not the laurent/power
+    series ring which is $z[1/p][[x]]$. $z_p$ is the functions on the formal neighbourhood of $(p)$.'
+- id: people-math-harvard-edu-lurie-252xnotes-lecture7-pdf#006
+  text: What is $MU$?
+  hint: universal Thom spectrum for complex vector bundles, representing complex cobordism cohomology
+    theory, $U$ mean unitary. $MO$ is for orthogonal group where one takes the homotopy colimit of the
+    $J$-homomorphism in spectra.
+  locator: null
+  sub_index: null
+  search_text: what is $mu$? universal thom spectrum for complex vector bundles, representing complex
+    cobordism cohomology theory, $u$ mean unitary. $mo$ is for orthogonal group where one takes the homotopy
+    colimit of the $j$-homomorphism in spectra.
+- id: people-math-harvard-edu-lurie-252xnotes-lecture7-pdf#007
+  text: What happens if you localise at the empty set?
+  hint: the integers will be made to be the rationals
+  locator: null
+  sub_index: null
+  search_text: what happens if you localise at the empty set? the integers will be made to be the rationals
