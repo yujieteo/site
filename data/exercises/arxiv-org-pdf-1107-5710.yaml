@@ -6,180 +6,542 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: arxiv-org-pdf-1107-5710#000
-  text: What is the analogy between Hodge and etale theories? acting on the etale cohomology for $X$ a
-    variety over $\mathbb{Q}$. This is equivalent to the statement tha tthe Hodge Galois group has a real
-    mixed Hodge structure. Beilinson emphasised that we do not have a Hodge site.)
-  hint: The category of $l$-adic Galois modules is analogous to the abelian category $\mathcal{MH}_\mathbb{R}$
-    of real mixed Hodge structures. One has the absolute Galois group over the rationals $\mathrm{Gal}(\mathbb{\overline{Q}}{Q})$
+  text: What is the analogy between Hodge and étale theories?
+  hint: The category of l-adic Galois modules is analogous to the abelian category MH_R of real mixed
+    Hodge structures. The absolute Galois group Gal(\bar{Q}/Q) acting on étale cohomology of a variety
+    over Q corresponds to the Hodge Galois group acting on real mixed Hodge structures. As Beilinson emphasized,
+    we lack a geometric "Hodge site" analogous to the étale site.
   locator: null
   sub_index: null
-  search_text: what is the analogy between hodge and etale theories? acting on the etale cohomology for
-    $x$ a variety over $\mathbb{q}$. this is equivalent to the statement tha tthe hodge galois group has
-    a real mixed hodge structure. beilinson emphasised that we do not have a hodge site.) the category
-    of $l$-adic galois modules is analogous to the abelian category $\mathcal{mh}_\mathbb{r}$ of real
-    mixed hodge structures. one has the absolute galois group over the rationals $\mathrm{gal}(\mathbb{\overline{q}}{q})$
+  search_text: what is the analogy between hodge and étale theories? the category of l-adic galois modules
+    is analogous to the abelian category mh_r of real mixed hodge structures. the absolute galois group
+    gal(\bar{q}/q) acting on étale cohomology of a variety over q corresponds to the hodge galois group
+    acting on real mixed hodge structures. as beilinson emphasized, we lack a geometric "hodge site" analogous
+    to the étale site.
 - id: arxiv-org-pdf-1107-5710#001
   text: How does one decompose a real Hodge structure?
-  hint: Direct sum of weight $n$ pure structure.
+  hint: It decomposes as a direct sum of pure Hodge structures of weight n.
   locator: null
   sub_index: null
-  search_text: how does one decompose a real hodge structure? direct sum of weight $n$ pure structure.
+  search_text: how does one decompose a real hodge structure? it decomposes as a direct sum of pure hodge
+    structures of weight n.
 - id: arxiv-org-pdf-1107-5710#002
-  text: What is a weight $n$ pure Hodge structure?
-  hint: Real vector space with a decrease filtration on its complexification.
+  text: What is a weight n pure real Hodge structure?
+  hint: A finite-dimensional real vector space V equipped with a decreasing filtration F^\bullet on its
+    complexification V_C such that V_C = F^p \oplus \overline{F^{n-p+1}} for all p.
   locator: null
   sub_index: null
-  search_text: what is a weight $n$ pure hodge structure? real vector space with a decrease filtration
-    on its complexification.
+  search_text: what is a weight n pure real hodge structure? a finite-dimensional real vector space v
+    equipped with a decreasing filtration f^\bullet on its complexification v_c such that v_c = f^p \oplus
+    \overline{f^{n-p+1}} for all p.
 - id: arxiv-org-pdf-1107-5710#003
   text: What is a real mixed Hodge structure?
-  hint: Real vector space with weight filtration and Hodge filtration of its complexification so that
-    the Hodge filtration induces on a weight $n$ real Hodge structure.
+  hint: A real vector space V with an increasing weight filtration W_\bullet on V and a decreasing Hodge
+    filtration F^\bullet on V_C such that F^\bullet induces a pure real Hodge structure of weight n on
+    each graded piece Gr_n^W(V).
   locator: null
   sub_index: null
-  search_text: what is a real mixed hodge structure? real vector space with weight filtration and hodge
-    filtration of its complexification so that the hodge filtration induces on a weight $n$ real hodge
-    structure.
+  search_text: what is a real mixed hodge structure? a real vector space v with an increasing weight filtration
+    w_\bullet on v and a decreasing hodge filtration f^\bullet on v_c such that f^\bullet induces a pure
+    real hodge structure of weight n on each graded piece gr_n^w(v).
 - id: arxiv-org-pdf-1107-5710#004
   text: What is special about the category of real mixed Hodge structures?
-  hint: It is an abelian rigid tensor category.
+  hint: It forms a neutral Tannakian, rigid abelian R-linear tensor category.
   locator: null
   sub_index: null
-  search_text: what is special about the category of real mixed hodge structures? it is an abelian rigid
-    tensor category.
+  search_text: what is special about the category of real mixed hodge structures? it forms a neutral tannakian,
+    rigid abelian r-linear tensor category.
 - id: arxiv-org-pdf-1107-5710#005
   text: How does one define the Hodge Galois group?
-  hint: Take the fibre functor taking a real mixed Hodge structure to a graded vector space. The Hodge
-    Galois group is a real algebraic group given by the automorphisms of the fibre functor. This fubre
-    functor provides an equivalence of categories.
+  hint: 'Take the fiber functor \omega: MH_R -> Vec_R mapping a mixed Hodge structure V to \bigoplus_n
+    Gr_n^W(V). The Hodge Galois group G_Hod is the affine real algebraic group of tensor automorphisms
+    Aut^\otimes(\omega).'
   locator: null
   sub_index: null
-  search_text: how does one define the hodge galois group? take the fibre functor taking a real mixed
-    hodge structure to a graded vector space. the hodge galois group is a real algebraic group given by
-    the automorphisms of the fibre functor. this fubre functor provides an equivalence of categories.
+  search_text: 'how does one define the hodge galois group? take the fiber functor \omega: mh_r -> vec_r
+    mapping a mixed hodge structure v to \bigoplus_n gr_n^w(v). the hodge galois group g_hod is the affine
+    real algebraic group of tensor automorphisms aut^\otimes(\omega).'
 - id: arxiv-org-pdf-1107-5710#006
   text: How does one decompose the Hodge Galois group as a semidirect product?
-  hint: the unipotent radical $U_\mathrm{Hod}$ and $\mathbb{C}^*_{\mathbb{C}/\mathbb{R}}$.
+  hint: G_Hod = U_Hod \rtimes S, where U_Hod is the unipotent radical and S = Res_{C/R}(G_m) is the Deligne
+    torus.
   locator: null
   sub_index: null
-  search_text: how does one decompose the hodge galois group as a semidirect product? the unipotent radical
-    $u_\mathrm{hod}$ and $\mathbb{c}^*_{\mathbb{c}/\mathbb{r}}$.
+  search_text: how does one decompose the hodge galois group as a semidirect product? g_hod = u_hod \rtimes
+    s, where u_hod is the unipotent radical and s = res_{c/r}(g_m) is the deligne torus.
 - id: arxiv-org-pdf-1107-5710#007
-  text: What is a unipotent radical of a real algebraic group.?
-  hint: This consists of all unipotent element where subtract the identity and take $n$-powers give 0,
-    or torsion under subtraction of identity inside the radical which is the maximal connected normal
-    solvable subgroup. Every affine algebraic group has a unique maximal unipotent radical.
+  text: What is the unipotent radical of an affine real algebraic group?
+  hint: The maximal connected normal unipotent subgroup, consisting of all unipotent elements inside the
+    solvable radical.
   locator: null
   sub_index: null
-  search_text: what is a unipotent radical of a real algebraic group.? this consists of all unipotent
-    element where subtract the identity and take $n$-powers give 0, or torsion under subtraction of identity
-    inside the radical which is the maximal connected normal solvable subgroup. every affine algebraic
-    group has a unique maximal unipotent radical.
+  search_text: what is the unipotent radical of an affine real algebraic group? the maximal connected
+    normal unipotent subgroup, consisting of all unipotent elements inside the solvable radical.
 - id: arxiv-org-pdf-1107-5710#008
   text: How does one define the twistor Galois group?
-  hint: denote $\mathbb{C}^*$ to be the real algebraic group with the group of complex points. The extension
-    induced by the diagonal embedding into $\mathbb{C}^*_{\mathbb{C}/\mathbb{R}}$ is called the twistor
-    Galois group. It is a semidirect product of the groups the unipotent radical $U_\mathrm{Hod}$ and
-    $\mathbb{C}^*$
+  hint: It is the semidirect product G_tw = U_Hod \rtimes C^*, obtained by restricting the Deligne torus
+    S to the subgroup C^* acting via the diagonal/twistor scaling.
   locator: null
   sub_index: null
-  search_text: how does one define the twistor galois group? denote $\mathbb{c}^*$ to be the real algebraic
-    group with the group of complex points. the extension induced by the diagonal embedding into $\mathbb{c}^*_{\mathbb{c}/\mathbb{r}}$
-    is called the twistor galois group. it is a semidirect product of the groups the unipotent radical
-    $u_\mathrm{hod}$ and $\mathbb{c}^*$
+  search_text: how does one define the twistor galois group? it is the semidirect product g_tw = u_hod
+    \rtimes c^*, obtained by restricting the deligne torus s to the subgroup c^* acting via the diagonal/twistor
+    scaling.
 - id: arxiv-org-pdf-1107-5710#009
   text: How does one produce the category of representations for the twistor Galois group?
-  hint: It is equivalent to the category of mixed twistor structures.
+  hint: The category of finite-dimensional representations of G_tw is equivalent to the category of real
+    mixed twistor structures.
   locator: null
   sub_index: null
-  search_text: how does one produce the category of representations for the twistor galois group? it is
-    equivalent to the category of mixed twistor structures.
+  search_text: how does one produce the category of representations for the twistor galois group? the
+    category of finite-dimensional representations of g_tw is equivalent to the category of real mixed
+    twistor structures.
 - id: arxiv-org-pdf-1107-5710#010
   text: What is Saito's twistor Galois group conjecture?
-  hint: There exists a functorial homotopy action of the twistor Galois group that can be equivalent to
-    Saito's category of real mixed Hodge sheaves. We want a natural construction of the action first.
+  hint: There exists a functorial homotopy action of the twistor Galois group G_tw on the derived category
+    of complexes of sheaves whose fixed/graded objects model Saito's category of mixed Hodge modules.
   locator: null
   sub_index: null
   search_text: what is saito's twistor galois group conjecture? there exists a functorial homotopy action
-    of the twistor galois group that can be equivalent to saito's category of real mixed hodge sheaves.
-    we want a natural construction of the action first.
+    of the twistor galois group g_tw on the derived category of complexes of sheaves whose fixed/graded
+    objects model saito's category of mixed hodge modules.
 - id: arxiv-org-pdf-1107-5710#011
-  text: What is a theorem for the case of the category of smooth complexes of sheaves on $X$ whose cohomology
-    are local systems?
-  hint: There exists functoriality for pullbacks of the homotopy action of the twistor Galois group by
-    $A_\infty$-equivalences for an $A_\infty$ enhancement of the category of smooth complexes of sheaves.
+  text: What is the structural theorem for smooth complexes of sheaves whose cohomology are local systems?
+  hint: There exists a functorial homotopy action of the twistor Galois group by A_\infty-equivalences
+    on the A_\infty-enhancement of the dg-category of smooth complexes of sheaves, compatible with pullbacks.
   locator: null
   sub_index: null
-  search_text: what is a theorem for the case of the category of smooth complexes of sheaves on $x$ whose
-    cohomology are local systems? there exists functoriality for pullbacks of the homotopy action of the
-    twistor galois group by $a_\infty$-equivalences for an $a_\infty$ enhancement of the category of smooth
-    complexes of sheaves.
+  search_text: what is the structural theorem for smooth complexes of sheaves whose cohomology are local
+    systems? there exists a functorial homotopy action of the twistor galois group by a_\infty-equivalences
+    on the a_\infty-enhancement of the dg-category of smooth complexes of sheaves, compatible with pullbacks.
 - id: arxiv-org-pdf-1107-5710#012
   text: What is a Hodge correlator for semisimple local systems?
-  hint: The action of the Lie algebra of the unipotent radical determined by a collection of numbers.
-    The Hodge correlators are called correlators since they can be interpreted as correlators for a Feynman
-    integral that is probably responsible for the "Hodge site". This is the basic example of the theory.
-    For the trivial local system, this was carried out in a paper of Goncharov. For curves with constant
-    sheaves and $\delta$-functions, this was carried out in another paper. For the case where $X$. is
-    the universal modular curve i.e. basic examples of Shimura varieties? The Hodge correlators contain
-    the special values of $L(f,n)$ of weight $k \geq 2$ modular forms for $GL_2(\mathbb{Q})$ outside of
-    the critical strip. The simplest Hodge correlators coincide with Rankin-Selberg integrals.
+  hint: The action of the Lie algebra Lie(U_Hod) on local systems is encoded by a collection of numbers
+    called Hodge correlators. They are defined via Feynman amplitudes on Riemann surfaces, generalizing
+    Green functions. For modular curves, they yield special values L(f, n) outside the critical strip
+    and coincide with Rankin-Selberg integrals.
   locator: null
   sub_index: null
   search_text: what is a hodge correlator for semisimple local systems? the action of the lie algebra
-    of the unipotent radical determined by a collection of numbers. the hodge correlators are called correlators
-    since they can be interpreted as correlators for a feynman integral that is probably responsible for
-    the "hodge site". this is the basic example of the theory. for the trivial local system, this was
-    carried out in a paper of goncharov. for curves with constant sheaves and $\delta$-functions, this
-    was carried out in another paper. for the case where $x$. is the universal modular curve i.e. basic
-    examples of shimura varieties? the hodge correlators contain the special values of $l(f,n)$ of weight
-    $k \geq 2$ modular forms for $gl_2(\mathbb{q})$ outside of the critical strip. the simplest hodge
-    correlators coincide with rankin-selberg integrals.
+    lie(u_hod) on local systems is encoded by a collection of numbers called hodge correlators. they are
+    defined via feynman amplitudes on riemann surfaces, generalizing green functions. for modular curves,
+    they yield special values l(f, n) outside the critical strip and coincide with rankin-selberg integrals.
 - id: arxiv-org-pdf-1107-5710#013
-  text: What are the tensor products of irreducible local systems?
-  hint: Semisimple local systems.
+  text: What are the tensor products of irreducible unitary local systems?
+  hint: Semisimple local systems, which decompose into direct sums of simple objects.
   locator: null
   sub_index: null
-  search_text: what are the tensor products of irreducible local systems? semisimple local systems.
+  search_text: what are the tensor products of irreducible unitary local systems? semisimple local systems,
+    which decompose into direct sums of simple objects.
 - id: arxiv-org-pdf-1107-5710#014
-  text: What are the category of harmonic bundles?
-  hint: Graded category whose objects are semisimple local systems and their shifts. The morphisms are
-    given by hom sets of graded vector spaces.
+  text: What is the category of harmonic bundles?
+  hint: The differential graded category whose objects are semisimple flat bundles/local systems equipped
+    with harmonic metrics in the sense of Corlette-Simpson, with morphisms given by the Dolbeault/de Rham
+    complexes.
   locator: null
   sub_index: null
-  search_text: what are the category of harmonic bundles? graded category whose objects are semisimple
-    local systems and their shifts. the morphisms are given by hom sets of graded vector spaces.
+  search_text: what is the category of harmonic bundles? the differential graded category whose objects
+    are semisimple flat bundles/local systems equipped with harmonic metrics in the sense of corlette-simpson,
+    with morphisms given by the dolbeault/de rham complexes.
 - id: arxiv-org-pdf-1107-5710#015
-  text: What is a Hodge correlator map?
-  hint: a map from the zeroth cyclic homology of harmonic bundles tensored with a pairing. One has to
-    study the cyclic homology of a small $dg$-category. With the pairing one can get a cohomology class.
-    One also has a homotopy action of the twistor Galois group by $A_\infty$ class. The restriction to
-    the subgroup $\mathbb{C}^*$ is the Simpson action on the category of harmonic bundles. There are restrictions
-    to the Lie algebra on the unipotent radical and the action is functorial with respect to the pullbacks.
+  text: What is the Hodge correlator map?
+  hint: A pairing-induced evaluation map on the zeroth cyclic homology HC_0 of the dg-category of harmonic
+    bundles, computing the Lie(U_Hod)-invariants via propagators and A_\infty-operations.
   locator: null
   sub_index: null
-  search_text: what is a hodge correlator map? a map from the zeroth cyclic homology of harmonic bundles
-    tensored with a pairing. one has to study the cyclic homology of a small $dg$-category. with the pairing
-    one can get a cohomology class. one also has a homotopy action of the twistor galois group by $a_\infty$
-    class. the restriction to the subgroup $\mathbb{c}^*$ is the simpson action on the category of harmonic
-    bundles. there are restrictions to the lie algebra on the unipotent radical and the action is functorial
-    with respect to the pullbacks.
+  search_text: what is the hodge correlator map? a pairing-induced evaluation map on the zeroth cyclic
+    homology hc_0 of the dg-category of harmonic bundles, computing the lie(u_hod)-invariants via propagators
+    and a_\infty-operations.
 - id: arxiv-org-pdf-1107-5710#016
-  text: How does one construct a Hodge correlator map?
-  hint: Use a decorated plane trivalent tree where the vertices are the harmonic bundles and the oriented
-    sides are the graded vector space $\mathrm{Ext}^*(V_i, V_{i+1}). Take a plen trivalent tree dual to
-    the tirangulation of the polygon. The complement ot the plane trivalent tree is ta union of connected
-    domains parametrised by the vertices of the polygon and thus decorated by the harmonic bundles. The
-    corresponding harmonic bundles is such that the cyclic order of the bundles agree with the clockwise
-    rotation. One constructes a natural trace map invariant under the cyclic shift. For each edge, choose
-    a graded splitting of the de Rham complex, then there is a decomposable class with a harmonic representative.$
+  text: How does one construct a Hodge correlator map via trivalent trees?
+  hint: Choose a planar trivalent ribbon tree dual to a triangulation of a polygon. Decorate vertices
+    with harmonic bundles, edges with Green propagators / harmonic splittings of the de Rham complex,
+    and compute the cyclic trace integral over the Riemann surface.
   locator: null
   sub_index: null
-  search_text: how does one construct a hodge correlator map? use a decorated plane trivalent tree where
-    the vertices are the harmonic bundles and the oriented sides are the graded vector space $\mathrm{ext}^*(v_i,
-    v_{i+1}). take a plen trivalent tree dual to the tirangulation of the polygon. the complement ot the
-    plane trivalent tree is ta union of connected domains parametrised by the vertices of the polygon
-    and thus decorated by the harmonic bundles. the corresponding harmonic bundles is such that the cyclic
-    order of the bundles agree with the clockwise rotation. one constructes a natural trace map invariant
-    under the cyclic shift. for each edge, choose a graded splitting of the de rham complex, then there
-    is a decomposable class with a harmonic representative.$
+  search_text: how does one construct a hodge correlator map via trivalent trees? choose a planar trivalent
+    ribbon tree dual to a triangulation of a polygon. decorate vertices with harmonic bundles, edges with
+    green propagators / harmonic splittings of the de rham complex, and compute the cyclic trace integral
+    over the riemann surface.
+- id: arxiv-org-pdf-1107-5710#017
+  text: What is the Hodge decomposition on a compact Kähler manifold?
+  hint: H^k(X, C) \cong \bigoplus_{p+q=k} H^{p,q}(X) with \overline{H^{p,q}(X)} = H^{q,p}(X), where H^{p,q}(X)
+    is the space of harmonic (p,q)-forms.
+  locator: null
+  sub_index: null
+  search_text: what is the hodge decomposition on a compact kähler manifold? h^k(x, c) \cong \bigoplus_{p+q=k}
+    h^{p,q}(x) with \overline{h^{p,q}(x)} = h^{q,p}(x), where h^{p,q}(x) is the space of harmonic (p,q)-forms.
+- id: arxiv-org-pdf-1107-5710#018
+  text: What is the dd^c-lemma (or \partial\bar{\partial}-lemma) in Hodge theory?
+  hint: On a compact Kähler manifold, any form that is both d-closed and \partial-exact, \bar{\partial}-exact,
+    or d^c-exact is equal to \partial\bar{\partial}\eta for some smooth form \eta.
+  locator: null
+  sub_index: null
+  search_text: what is the dd^c-lemma (or \partial\bar{\partial}-lemma) in hodge theory? on a compact
+    kähler manifold, any form that is both d-closed and \partial-exact, \bar{\partial}-exact, or d^c-exact
+    is equal to \partial\bar{\partial}\eta for some smooth form \eta.
+- id: arxiv-org-pdf-1107-5710#019
+  text: What is a polarization on a pure real Hodge structure of weight n?
+  hint: 'A bilinear pairing Q: V \otimes V -> R, symmetric for even n and skew-symmetric for odd n, satisfying
+    the Hodge-Riemann bilinear relations: Q(F^p, F^{n-p+1}) = 0 and i^{p-q} Q(v, \bar{v}) > 0 for non-zero
+    v \in H^{p,q}.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a polarization on a pure real hodge structure of weight n? a bilinear pairing
+    q: v \otimes v -> r, symmetric for even n and skew-symmetric for odd n, satisfying the hodge-riemann
+    bilinear relations: q(f^p, f^{n-p+1}) = 0 and i^{p-q} q(v, \bar{v}) > 0 for non-zero v \in h^{p,q}.'
+- id: arxiv-org-pdf-1107-5710#020
+  text: What is the Deligne canonical splitting of a real mixed Hodge structure?
+  hint: V_C decomposes uniquely as \bigoplus_{p,q} I^{p,q} such that F^p = \bigoplus_{r \ge p, s} I^{r,s},
+    W_n \otimes C = \bigoplus_{r+s \le n} I^{r,s}, and I^{p,q} \equiv \overline{I^{q,p}} \pmod{W_{p+q-2}}.
+  locator: null
+  sub_index: null
+  search_text: what is the deligne canonical splitting of a real mixed hodge structure? v_c decomposes
+    uniquely as \bigoplus_{p,q} i^{p,q} such that f^p = \bigoplus_{r \ge p, s} i^{r,s}, w_n \otimes c
+    = \bigoplus_{r+s \le n} i^{r,s}, and i^{p,q} \equiv \overline{i^{q,p}} \pmod{w_{p+q-2}}.
+- id: arxiv-org-pdf-1107-5710#021
+  text: What is the Tate twist Q(m) in Hodge theory?
+  hint: The pure Hodge structure of weight -2m given by the underlying lattice (2\pi i)^m Q \subset C
+    of type (-m, -m).
+  locator: null
+  sub_index: null
+  search_text: what is the tate twist q(m) in hodge theory? the pure hodge structure of weight -2m given
+    by the underlying lattice (2\pi i)^m q \subset c of type (-m, -m).
+- id: arxiv-org-pdf-1107-5710#022
+  text: What is the comparison isomorphism between Betti and l-adic étale cohomology?
+  hint: For a smooth proper variety X over C, H^k_{et}(X, Q_l) \cong H^k_{sing}(X, Q) \otimes_Q Q_l as
+    Q_l-vector spaces.
+  locator: null
+  sub_index: null
+  search_text: what is the comparison isomorphism between betti and l-adic étale cohomology? for a smooth
+    proper variety x over c, h^k_{et}(x, q_l) \cong h^k_{sing}(x, q) \otimes_q q_l as q_l-vector spaces.
+- id: arxiv-org-pdf-1107-5710#023
+  text: What are the weights of Frobenius on l-adic étale cohomology (Deligne's theorem / Weil conjectures)?
+  hint: For a smooth projective variety X over F_q, the eigenvalues of the geometric Frobenius acting
+    on H^k_{et}(X \times \bar{F}_q, Q_l) are algebraic numbers with absolute value q^{k/2} under any complex
+    embedding.
+  locator: null
+  sub_index: null
+  search_text: what are the weights of frobenius on l-adic étale cohomology (deligne's theorem / weil
+    conjectures)? for a smooth projective variety x over f_q, the eigenvalues of the geometric frobenius
+    acting on h^k_{et}(x \times \bar{f}_q, q_l) are algebraic numbers with absolute value q^{k/2} under
+    any complex embedding.
+- id: arxiv-org-pdf-1107-5710#024
+  text: What is the Tate twist Q_l(1) in l-adic cohomology?
+  hint: 'The 1-dimensional Q_l-Galois representation given by the l-adic cyclotomic character \chi_l:
+    Gal(\bar{K}/K) -> Z_l^\times \subset Q_l^\times.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the tate twist q_l(1) in l-adic cohomology? the 1-dimensional q_l-galois representation
+    given by the l-adic cyclotomic character \chi_l: gal(\bar{k}/k) -> z_l^\times \subset q_l^\times.'
+- id: arxiv-org-pdf-1107-5710#025
+  text: What is the Grothendieck-Lefschetz trace formula in l-adic cohomology?
+  hint: 'The number of rational points #X(F_{q^n}) equals \sum_{k=0}^{2\dim X} (-1)^k \mathrm{Tr}(\mathrm{Frob}_q^n
+    | H^k_{et}(X \times \bar{F}_q, Q_l)).'
+  locator: null
+  sub_index: null
+  search_text: 'what is the grothendieck-lefschetz trace formula in l-adic cohomology? the number of rational
+    points #x(f_{q^n}) equals \sum_{k=0}^{2\dim x} (-1)^k \mathrm{tr}(\mathrm{frob}_q^n | h^k_{et}(x \times
+    \bar{f}_q, q_l)).'
+- id: arxiv-org-pdf-1107-5710#026
+  text: How are l-adic local systems related to representations of the étale fundamental group?
+  hint: Smooth l-adic sheaves on a connected normal scheme X correspond bijectively to continuous finite-dimensional
+    representations of \pi_1^{et}(X, \bar{x}) over finite extensions of Q_l.
+  locator: null
+  sub_index: null
+  search_text: how are l-adic local systems related to representations of the étale fundamental group?
+    smooth l-adic sheaves on a connected normal scheme x correspond bijectively to continuous finite-dimensional
+    representations of \pi_1^{et}(x, \bar{x}) over finite extensions of q_l.
+- id: arxiv-org-pdf-1107-5710#027
+  text: What is the canonical symplectic structure on the de Rham cohomology H^1(X, R) of a compact Riemann
+    surface?
+  hint: The non-degenerate skew-symmetric intersection pairing \omega(\alpha, \beta) = \int_X \alpha \wedge
+    \beta.
+  locator: null
+  sub_index: null
+  search_text: what is the canonical symplectic structure on the de rham cohomology h^1(x, r) of a compact
+    riemann surface? the non-degenerate skew-symmetric intersection pairing \omega(\alpha, \beta) = \int_x
+    \alpha \wedge \beta.
+- id: arxiv-org-pdf-1107-5710#028
+  text: What is the Lefschetz sl_2-triple (L, \Lambda, H) in Kähler/symplectic geometry?
+  hint: L = \omega \wedge - (cupping with the symplectic form), \Lambda = L^* is the adjoint contraction,
+    and H = [L, \Lambda] = \sum_k (k - n) \Pi_k acting by degree shift on differential forms.
+  locator: null
+  sub_index: null
+  search_text: what is the lefschetz sl_2-triple (l, \lambda, h) in kähler/symplectic geometry? l = \omega
+    \wedge - (cupping with the symplectic form), \lambda = l^* is the adjoint contraction, and h = [l,
+    \lambda] = \sum_k (k - n) \pi_k acting by degree shift on differential forms.
+- id: arxiv-org-pdf-1107-5710#029
+  text: What is the Hard Lefschetz theorem on a compact 2n-dimensional symplectic/Kähler manifold?
+  hint: 'The map L^k: H^{n-k}(X, R) -> H^{n+k}(X, R) given by \alpha \mapsto \alpha \wedge [\omega]^k
+    is an isomorphism for every 0 \le k \le n.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the hard lefschetz theorem on a compact 2n-dimensional symplectic/kähler manifold?
+    the map l^k: h^{n-k}(x, r) -> h^{n+k}(x, r) given by \alpha \mapsto \alpha \wedge [\omega]^k is an
+    isomorphism for every 0 \le k \le n.'
+- id: arxiv-org-pdf-1107-5710#030
+  text: What is the Goldman symplectic form on the moduli space of flat G-connections on a surface?
+  hint: For a compact surface \Sigma, the tangent space at [\nabla] is H^1_{dR}(\Sigma, ad(P_\nabla)),
+    and the symplectic form is given by the cup product followed by the Lie algebra Killing form trace
+    \int_\Sigma \mathrm{Tr}(\alpha \wedge \beta).
+  locator: null
+  sub_index: null
+  search_text: what is the goldman symplectic form on the moduli space of flat g-connections on a surface?
+    for a compact surface \sigma, the tangent space at [\nabla] is h^1_{dr}(\sigma, ad(p_\nabla)), and
+    the symplectic form is given by the cup product followed by the lie algebra killing form trace \int_\sigma
+    \mathrm{tr}(\alpha \wedge \beta).
+- id: arxiv-org-pdf-1107-5710#031
+  text: What is the relation between the Green propagator and the symplectic intersection form?
+  hint: The integral kernel of the Green operator G on 1-forms on a Riemann surface serves as the fundamental
+    propagator in Feynman-type Hodge correlators, inverting the Hodge Laplacian modulo harmonic forms.
+  locator: null
+  sub_index: null
+  search_text: what is the relation between the green propagator and the symplectic intersection form?
+    the integral kernel of the green operator g on 1-forms on a riemann surface serves as the fundamental
+    propagator in feynman-type hodge correlators, inverting the hodge laplacian modulo harmonic forms.
+- id: arxiv-org-pdf-1107-5710#032
+  text: What is a symplectic manifold?
+  hint: A smooth manifold $M$ equipped with a closed, non-degenerate 2-form $\omega$, so $d\omega = 0$
+    and $\omega^{\wedge n} \neq 0$.
+  locator: null
+  sub_index: null
+  search_text: what is a symplectic manifold? a smooth manifold $m$ equipped with a closed, non-degenerate
+    2-form $\omega$, so $d\omega = 0$ and $\omega^{\wedge n} \neq 0$.
+- id: arxiv-org-pdf-1107-5710#033
+  text: What does Darboux's theorem state?
+  hint: Every symplectic manifold is locally symplectomorphic to $\mathbb{R}^{2n}$ with the standard form
+    $\omega_0 = \sum_{i=1}^n dp_i \wedge dq_i$.
+  locator: null
+  sub_index: null
+  search_text: what does darboux's theorem state? every symplectic manifold is locally symplectomorphic
+    to $\mathbb{r}^{2n}$ with the standard form $\omega_0 = \sum_{i=1}^n dp_i \wedge dq_i$.
+- id: arxiv-org-pdf-1107-5710#034
+  text: What is a Lagrangian subspace?
+  hint: An $n$-dimensional subspace $L \subset V^{2n}$ on which the symplectic form vanishes, $\omega|_{L}
+    = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is a lagrangian subspace? an $n$-dimensional subspace $l \subset v^{2n}$ on which
+    the symplectic form vanishes, $\omega|_{l} = 0$.
+- id: arxiv-org-pdf-1107-5710#035
+  text: What is the canonical symplectic form on a cotangent bundle $T^*M$?
+  hint: $\omega = -d\lambda$, where $\lambda = \sum p_i dq_i$ is the tautological Liouville 1-form.
+  locator: null
+  sub_index: null
+  search_text: what is the canonical symplectic form on a cotangent bundle $t^*m$? $\omega = -d\lambda$,
+    where $\lambda = \sum p_i dq_i$ is the tautological liouville 1-form.
+- id: arxiv-org-pdf-1107-5710#036
+  text: What is a Hamiltonian vector field?
+  hint: The unique vector field $X_H$ satisfying $\iota_{X_H}\omega = dH$ for a smooth function $H$.
+  locator: null
+  sub_index: null
+  search_text: what is a hamiltonian vector field? the unique vector field $x_h$ satisfying $\iota_{x_h}\omega
+    = dh$ for a smooth function $h$.
+- id: arxiv-org-pdf-1107-5710#037
+  text: What is an almost complex structure $J$ compatible with $\omega$?
+  hint: $J^2 = -\mathrm{id}$, $\omega(Ju, Jv) = \omega(u, v)$, and $g(u, v) = \omega(u, Jv)$ defines a
+    positive-definite metric.
+  locator: null
+  sub_index: null
+  search_text: what is an almost complex structure $j$ compatible with $\omega$? $j^2 = -\mathrm{id}$,
+    $\omega(ju, jv) = \omega(u, v)$, and $g(u, v) = \omega(u, jv)$ defines a positive-definite metric.
+- id: arxiv-org-pdf-1107-5710#038
+  text: What is the Poisson bracket of two functions on a symplectic manifold?
+  hint: $\{f, g\} = \omega(X_f, X_g) = X_g(f)$.
+  locator: null
+  sub_index: null
+  search_text: what is the poisson bracket of two functions on a symplectic manifold? $\{f, g\} = \omega(x_f,
+    x_g) = x_g(f)$.
+- id: arxiv-org-pdf-1107-5710#039
+  text: What is a symplectomorphism?
+  hint: 'A diffeomorphism $\phi: M \to N$ preserving the symplectic form, $\phi^*\omega_N = \omega_M$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a symplectomorphism? a diffeomorphism $\phi: m \to n$ preserving the symplectic
+    form, $\phi^*\omega_n = \omega_m$.'
+- id: arxiv-org-pdf-1107-5710#040
+  text: What is the Hodge star operator $\star$?
+  hint: 'The unique linear isometry $\star: \Omega^k(M) \to \Omega^{n-k}(M)$ on an oriented Riemannian
+    manifold satisfying $\alpha \wedge \star\beta = \langle \alpha, \beta \rangle \mathrm{vol}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the hodge star operator $\star$? the unique linear isometry $\star: \omega^k(m)
+    \to \omega^{n-k}(m)$ on an oriented riemannian manifold satisfying $\alpha \wedge \star\beta = \langle
+    \alpha, \beta \rangle \mathrm{vol}$.'
+- id: arxiv-org-pdf-1107-5710#041
+  text: What is the Hodge Laplacian $\Delta$?
+  hint: $\Delta = d d^* + d^* d$, where $d^* = (-1)^{n(k-1)+1}\star d \star$ is the formal adjoint of
+    $d$.
+  locator: null
+  sub_index: null
+  search_text: what is the hodge laplacian $\delta$? $\delta = d d^* + d^* d$, where $d^* = (-1)^{n(k-1)+1}\star
+    d \star$ is the formal adjoint of $d$.
+- id: arxiv-org-pdf-1107-5710#042
+  text: What is a harmonic form?
+  hint: A differential form $\alpha$ satisfying $\Delta \alpha = 0$, or equivalently $d\alpha = 0$ and
+    $d^*\alpha = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is a harmonic form? a differential form $\alpha$ satisfying $\delta \alpha = 0$, or
+    equivalently $d\alpha = 0$ and $d^*\alpha = 0$.
+- id: arxiv-org-pdf-1107-5710#043
+  text: What is the Hodge theorem for compact Riemannian manifolds?
+  hint: Every de Rham cohomology class contains a unique harmonic representative, giving $H^k_{dR}(M)
+    \cong \mathcal{H}^k(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is the hodge theorem for compact riemannian manifolds? every de rham cohomology class
+    contains a unique harmonic representative, giving $h^k_{dr}(m) \cong \mathcal{h}^k(m)$.
+- id: arxiv-org-pdf-1107-5710#044
+  text: What are Hodge numbers $h^{p,q}$?
+  hint: The complex dimensions $h^{p,q} = \dim_{\mathbb{C}} H^{p,q}(X) = \dim_{\mathbb{C}} H^q(X, \Omega_X^p)$.
+  locator: null
+  sub_index: null
+  search_text: what are hodge numbers $h^{p,q}$? the complex dimensions $h^{p,q} = \dim_{\mathbb{c}} h^{p,q}(x)
+    = \dim_{\mathbb{c}} h^q(x, \omega_x^p)$.
+- id: arxiv-org-pdf-1107-5710#045
+  text: What are the basic symmetries of the Hodge diamond for a compact Kähler $n$-manifold?
+  hint: $h^{p,q} = h^{q,p}$ by complex conjugation, and $h^{p,q} = h^{n-p,n-q}$ by Serre/Poincaré duality.
+  locator: null
+  sub_index: null
+  search_text: what are the basic symmetries of the hodge diamond for a compact kähler $n$-manifold? $h^{p,q}
+    = h^{q,p}$ by complex conjugation, and $h^{p,q} = h^{n-p,n-q}$ by serre/poincaré duality.
+- id: arxiv-org-pdf-1107-5710#046
+  text: What is the relation between Betti numbers $b_k$ and Hodge numbers $h^{p,q}$?
+  hint: $b_k = \sum_{p+q=k} h^{p,q}$.
+  locator: null
+  sub_index: null
+  search_text: what is the relation between betti numbers $b_k$ and hodge numbers $h^{p,q}$? $b_k = \sum_{p+q=k}
+    h^{p,q}$.
+- id: arxiv-org-pdf-1107-5710#047
+  text: What is a primitive cohomology class on a Kähler manifold?
+  hint: A class $\alpha \in H^k(X, \mathbb{C})$ killed by the dual Lefschetz operator, $\Lambda \alpha
+    = 0$, or equivalently $\alpha \wedge [\omega]^{n-k+1} = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is a primitive cohomology class on a kähler manifold? a class $\alpha \in h^k(x, \mathbb{c})$
+    killed by the dual lefschetz operator, $\lambda \alpha = 0$, or equivalently $\alpha \wedge [\omega]^{n-k+1}
+    = 0$.
+- id: arxiv-org-pdf-1107-5710#048
+  text: What is the weight of the cohomology $H^k(X)$ of a smooth projective variety?
+  hint: It is a pure Hodge structure of single weight $k$.
+  locator: null
+  sub_index: null
+  search_text: what is the weight of the cohomology $h^k(x)$ of a smooth projective variety? it is a pure
+    hodge structure of single weight $k$.
+- id: arxiv-org-pdf-1107-5710#049
+  text: What is the Deligne torus $\mathbb{S}$?
+  hint: The real algebraic group $\mathbb{S} = \mathrm{Res}_{\mathbb{C}/\mathbb{R}}(\mathbb{G}_m)$, with
+    real points $\mathbb{S}(\mathbb{R}) = \mathbb{C}^*$.
+  locator: null
+  sub_index: null
+  search_text: what is the deligne torus $\mathbb{s}$? the real algebraic group $\mathbb{s} = \mathrm{res}_{\mathbb{c}/\mathbb{r}}(\mathbb{g}_m)$,
+    with real points $\mathbb{s}(\mathbb{r}) = \mathbb{c}^*$.
+- id: arxiv-org-pdf-1107-5710#050
+  text: Why is $\ell$-adic cohomology needed for varieties over finite fields $\mathbb{F}_q$?
+  hint: Classical singular cohomology requires topological spaces, while étale cohomology with $\mathbb{Q}_\ell$-coefficients
+    ($\ell \neq p$) provides a Weil cohomology theory with $\mathbb{Q}$-like characteristic zero coefficients.
+  locator: null
+  sub_index: null
+  search_text: why is $\ell$-adic cohomology needed for varieties over finite fields $\mathbb{f}_q$? classical
+    singular cohomology requires topological spaces, while étale cohomology with $\mathbb{q}_\ell$-coefficients
+    ($\ell \neq p$) provides a weil cohomology theory with $\mathbb{q}$-like characteristic zero coefficients.
+- id: arxiv-org-pdf-1107-5710#051
+  text: How is the $\ell$-adic cohomology group $H^k_{et}(X, \mathbb{Q}_\ell)$ defined?
+  hint: As the inverse limit $H^k_{et}(X, \mathbb{Q}_\ell) = (\varprojlim_n H^k_{et}(X, \mathbb{Z}/\ell^n\mathbb{Z}))
+    \otimes_{\mathbb{Z}_\ell} \mathbb{Q}_\ell$.
+  locator: null
+  sub_index: null
+  search_text: how is the $\ell$-adic cohomology group $h^k_{et}(x, \mathbb{q}_\ell)$ defined? as the
+    inverse limit $h^k_{et}(x, \mathbb{q}_\ell) = (\varprojlim_n h^k_{et}(x, \mathbb{z}/\ell^n\mathbb{z}))
+    \otimes_{\mathbb{z}_\ell} \mathbb{q}_\ell$.
+- id: arxiv-org-pdf-1107-5710#052
+  text: What is the difference between geometric and arithmetic Frobenius?
+  hint: Arithmetic Frobenius is $x \mapsto x^q$ on $\bar{\mathbb{F}}_q$; geometric Frobenius is its inverse
+    $\mathrm{Frob}_q \in \mathrm{Gal}(\bar{\mathbb{F}}_q/\mathbb{F}_q)$, which acts covariantly on geometry.
+  locator: null
+  sub_index: null
+  search_text: what is the difference between geometric and arithmetic frobenius? arithmetic frobenius
+    is $x \mapsto x^q$ on $\bar{\mathbb{f}}_q$; geometric frobenius is its inverse $\mathrm{frob}_q \in
+    \mathrm{gal}(\bar{\mathbb{f}}_q/\mathbb{f}_q)$, which acts covariantly on geometry.
+- id: arxiv-org-pdf-1107-5710#053
+  text: What is the $\ell$-adic cohomology of projective space $\mathbb{P}^n$?
+  hint: $H^{2k}_{et}(\mathbb{P}^n, \mathbb{Q}_\ell) \cong \mathbb{Q}_\ell(-k)$ for $0 \le k \le n$, and
+    $0$ for odd degrees.
+  locator: null
+  sub_index: null
+  search_text: what is the $\ell$-adic cohomology of projective space $\mathbb{p}^n$? $h^{2k}_{et}(\mathbb{p}^n,
+    \mathbb{q}_\ell) \cong \mathbb{q}_\ell(-k)$ for $0 \le k \le n$, and $0$ for odd degrees.
+- id: arxiv-org-pdf-1107-5710#054
+  text: What is an $\ell$-adic local system?
+  hint: 'A smooth $\ell$-adic sheaf, corresponding to a continuous representation $\rho: \pi_1^{et}(X,
+    \bar{x}) \to \mathrm{GL}_n(\mathbb{Q}_\ell)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is an $\ell$-adic local system? a smooth $\ell$-adic sheaf, corresponding to a continuous
+    representation $\rho: \pi_1^{et}(x, \bar{x}) \to \mathrm{gl}_n(\mathbb{q}_\ell)$.'
+- id: arxiv-org-pdf-1107-5710#055
+  text: What does it mean for an $\ell$-adic sheaf to be pure of weight $w$?
+  hint: For every closed point $x$, the eigenvalues of $\mathrm{Frob}_x$ on the stalk are algebraic numbers
+    whose complex absolute values are all $|k(x)|^{w/2}$.
+  locator: null
+  sub_index: null
+  search_text: what does it mean for an $\ell$-adic sheaf to be pure of weight $w$? for every closed point
+    $x$, the eigenvalues of $\mathrm{frob}_x$ on the stalk are algebraic numbers whose complex absolute
+    values are all $|k(x)|^{w/2}$.
+- id: arxiv-org-pdf-1107-5710#056
+  text: What is a flat connection (local system)?
+  hint: A connection $\nabla$ on a vector bundle $E$ with vanishing curvature $F_\nabla = \nabla^2 = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is a flat connection (local system)? a connection $\nabla$ on a vector bundle $e$
+    with vanishing curvature $f_\nabla = \nabla^2 = 0$.
+- id: arxiv-org-pdf-1107-5710#057
+  text: What is the holonomy representation of a flat bundle?
+  hint: 'A group homomorphism $\rho: \pi_1(X, x_0) \to \mathrm{GL}(V)$ obtained by parallel transport
+    along loops.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the holonomy representation of a flat bundle? a group homomorphism $\rho: \pi_1(x,
+    x_0) \to \mathrm{gl}(v)$ obtained by parallel transport along loops.'
+- id: arxiv-org-pdf-1107-5710#058
+  text: What is a Green function on a compact Riemann surface?
+  hint: The integral kernel $G(x, y)$ solving $\Delta_x G(x, y) = \delta_y(x) - \frac{1}{\mathrm{vol}(X)}$,
+    inverting the Laplacian on orthogonal complements of constants.
+  locator: null
+  sub_index: null
+  search_text: what is a green function on a compact riemann surface? the integral kernel $g(x, y)$ solving
+    $\delta_x g(x, y) = \delta_y(x) - \frac{1}{\mathrm{vol}(x)}$, inverting the laplacian on orthogonal
+    complements of constants.
+- id: arxiv-org-pdf-1107-5710#059
+  text: What is an $A_\infty$-algebra?
+  hint: 'A graded vector space $A$ equipped with higher multilinear maps $m_k: A^{\otimes k} \to A$ of
+    degree $2-k$ satisfying generalized associativity relations up to homotopy.'
+  locator: null
+  sub_index: null
+  search_text: 'what is an $a_\infty$-algebra? a graded vector space $a$ equipped with higher multilinear
+    maps $m_k: a^{\otimes k} \to a$ of degree $2-k$ satisfying generalized associativity relations up
+    to homotopy.'
+- id: arxiv-org-pdf-1107-5710#060
+  text: What is the zeroth cyclic homology $HC_0(A)$ of an algebra $A$?
+  hint: The quotient space $A / [A, A]$ of elements modulo commutators.
+  locator: null
+  sub_index: null
+  search_text: what is the zeroth cyclic homology $hc_0(a)$ of an algebra $a$? the quotient space $a /
+    [a, a]$ of elements modulo commutators.
+- id: arxiv-org-pdf-1107-5710#061
+  text: What is a ribbon (fat) graph in Hodge correlators?
+  hint: A graph with a cyclic ordering of half-edges at each vertex, defining a 2D surface with boundary
+    used to organize Feynman integrals.
+  locator: null
+  sub_index: null
+  search_text: what is a ribbon (fat) graph in hodge correlators? a graph with a cyclic ordering of half-edges
+    at each vertex, defining a 2d surface with boundary used to organize feynman integrals.
+- id: arxiv-org-pdf-1107-5710#062
+  text: What is the basic role of the propagator in Hodge correlators?
+  hint: It is a 1-form version of the Green kernel that regularizes singularities when integrating differential
+    forms over Riemann surfaces.
+  locator: null
+  sub_index: null
+  search_text: what is the basic role of the propagator in hodge correlators? it is a 1-form version of
+    the green kernel that regularizes singularities when integrating differential forms over riemann surfaces.
