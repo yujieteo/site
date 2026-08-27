@@ -240,14 +240,14 @@ exercises:
     galois representations, but one can try to find a "spectral decomposition" of the compactly supported
     cohomology of shimura varieties.
 - id: arxiv-org-pdf-2605-11950#017
-  text: 'What is a twistor line? (Hint: nontrivial real form of $\mathbb{P}^1$)'
-  hint: null
+  text: 'What is a twistor line? '
+  hint: nontrivial real form of $\mathbb{P}^1$
   locator:
     kind: page
     value: '10'
     number: 10
   sub_index: 0
-  search_text: 'what is a twistor line? (hint: nontrivial real form of $\mathbb{p}^1$)'
+  search_text: what is a twistor line?  nontrivial real form of $\mathbb{p}^1$
 - id: arxiv-org-pdf-2605-11950#018
   text: What is a definition of a almost compact, locally compact Hausdorff group? Note that the words
     locally compact is omitted for brevity usually

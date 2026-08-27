@@ -12,9 +12,8 @@ exercises:
     continuous maps $f_n: E_n \to F_n$ commuting with the structure maps: $f_{n+1} \circ \sigma_n^E =
     \sigma_n^F \circ (\operatorname{id}_{S^1} \wedge f_n)$. 2. Define a strict equivalence of spectra
     as a map $f$ where each level map $f_n: E_n \xrightarrow{\sim} F_n$ is a weak homotopy equivalence
-    of spaces. (Hint: Structure maps specify how higher-dimensional cells suspend into the next level
-    of the spectrum)'
-  hint: null
+    of spaces. '
+  hint: Structure maps specify how higher-dimensional cells suspend into the next level of the spectrum
   locator: null
   sub_index: null
   search_text: '(classical spectra and maps of spectra) define an ordinary spectrum $e$ as a sequence
@@ -23,17 +22,17 @@ exercises:
     of pointed continuous maps $f_n: e_n \to f_n$ commuting with the structure maps: $f_{n+1} \circ \sigma_n^e
     = \sigma_n^f \circ (\operatorname{id}_{s^1} \wedge f_n)$. 2. define a strict equivalence of spectra
     as a map $f$ where each level map $f_n: e_n \xrightarrow{\sim} f_n$ is a weak homotopy equivalence
-    of spaces. (hint: structure maps specify how higher-dimensional cells suspend into the next level
-    of the spectrum)'
+    of spaces.  structure maps specify how higher-dimensional cells suspend into the next level of the
+    spectrum'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#001
   text: '(Stable Equivalences: Homotopy Groups vs. Mapping Telescopes) Contrast the two classical definitions
     of a stable equivalence $f: E \to F$: 1. **Homotopy Groups:** $f$ induces an isomorphism on all stable
     homotopy groups $\pi_k(f): \pi_k(E) \xrightarrow{\sim} \pi_k(F)$, where $\pi_k(E) = \varinjlim_n \pi_{n+k}(E_n)$.
     2. **Spectrifying / Spectrification Functor:** The spectrification map $\Lambda f: \Lambda E \to \Lambda
     F$ is a strict equivalence, where $(\Lambda E)_n = \operatorname{hocolim}_k \Omega^k E_{n+k}$ is the
-    homotopy mapping telescope. (Hint: Explain why these two definitions coincide for classical CW-spectra
-    but bifurcate in generalized diagram categories like symmetric spectra without extra fibrancy hypotheses)'
-  hint: null
+    homotopy mapping telescope. '
+  hint: Explain why these two definitions coincide for classical CW-spectra but bifurcate in generalized
+    diagram categories like symmetric spectra without extra fibrancy hypotheses
   locator: null
   sub_index: null
   search_text: '(stable equivalences: homotopy groups vs. mapping telescopes) contrast the two classical
@@ -41,9 +40,9 @@ exercises:
     on all stable homotopy groups $\pi_k(f): \pi_k(e) \xrightarrow{\sim} \pi_k(f)$, where $\pi_k(e) =
     \varinjlim_n \pi_{n+k}(e_n)$. 2. **spectrifying / spectrification functor:** the spectrification map
     $\lambda f: \lambda e \to \lambda f$ is a strict equivalence, where $(\lambda e)_n = \operatorname{hocolim}_k
-    \omega^k e_{n+k}$ is the homotopy mapping telescope. (hint: explain why these two definitions coincide
-    for classical cw-spectra but bifurcate in generalized diagram categories like symmetric spectra without
-    extra fibrancy hypotheses)'
+    \omega^k e_{n+k}$ is the homotopy mapping telescope.  explain why these two definitions coincide for
+    classical cw-spectra but bifurcate in generalized diagram categories like symmetric spectra without
+    extra fibrancy hypotheses'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#002
   text: '(Axioms of Quillen Model Categories) State the five foundational axioms (MC1–MC5) of a Quillen
     model category $\mathcal{M}$ equipped with three distinguished classes of morphisms: weak equivalences
@@ -59,10 +58,9 @@ exercises:
     trivial fibration ($p \in \mathcal{F}\text{ib} \cap \mathcal{W}$). 5. **MC5 (Functorial Factorization):**
     Every morphism $f: X \to Y$ factors functorially as $f = p \circ i$ where $i \in \mathcal{C}\text{of}
     \cap \mathcal{W}$ and $p \in \mathcal{F}\text{ib}$, and as $f = q \circ j$ where $j \in \mathcal{C}\text{of}$
-    and $q \in \mathcal{F}\text{ib} \cap \mathcal{W}$. (Hint: Factorization is the model-categorical analogue
-    of the first isomorphism theorem, replacing arbitrary objects with weakly equivalent fibrant-cofibrant
-    replacements)'
-  hint: null
+    and $q \in \mathcal{F}\text{ib} \cap \mathcal{W}$. '
+  hint: Factorization is the model-categorical analogue of the first isomorphism theorem, replacing arbitrary
+    objects with weakly equivalent fibrant-cofibrant replacements
   locator: null
   sub_index: null
   search_text: '(axioms of quillen model categories) state the five foundational axioms (mc1–mc5) of a
@@ -79,19 +77,18 @@ exercises:
     trivial fibration ($p \in \mathcal{f}\text{ib} \cap \mathcal{w}$). 5. **mc5 (functorial factorization):**
     every morphism $f: x \to y$ factors functorially as $f = p \circ i$ where $i \in \mathcal{c}\text{of}
     \cap \mathcal{w}$ and $p \in \mathcal{f}\text{ib}$, and as $f = q \circ j$ where $j \in \mathcal{c}\text{of}$
-    and $q \in \mathcal{f}\text{ib} \cap \mathcal{w}$. (hint: factorization is the model-categorical analogue
+    and $q \in \mathcal{f}\text{ib} \cap \mathcal{w}$.  factorization is the model-categorical analogue
     of the first isomorphism theorem, replacing arbitrary objects with weakly equivalent fibrant-cofibrant
-    replacements)'
+    replacements'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#003
   text: '(Classical Model Structures on Top and sSet) In the category of compactly generated weakly Hausdorff
     topological spaces $\mathbf{Top}_*$ (or pointed simplicial sets $\mathbf{sSet}_*$): 1. Show that weak
     equivalences are maps inducing isomorphisms on all homotopy groups $\pi_*$. 2. Show that fibrations
     are Serre fibrations (possessing the right lifting property with respect to horn inclusions / disk
     inclusions). 3. Show that cofibrations are retracts of relative cell complexes (left lifting property
-    with respect to trivial fibrations). (Hint: Every space in $\mathbf{Top}_*$ is fibrant ($\emptyset
-    \to X \to *$ has $X \to *$ a fibration); cofibrant objects are precisely spaces that have the homotopy
-    type of retracts of CW-complexes)'
-  hint: null
+    with respect to trivial fibrations). '
+  hint: Every space in $\mathbf{Top}_*$ is fibrant ($\emptyset \to X \to *$ has $X \to *$ a fibration);
+    cofibrant objects are precisely spaces that have the homotopy type of retracts of CW-complexes
   locator: null
   sub_index: null
   search_text: '(classical model structures on top and sset) in the category of compactly generated weakly
@@ -99,29 +96,29 @@ exercises:
     that weak equivalences are maps inducing isomorphisms on all homotopy groups $\pi_*$. 2. show that
     fibrations are serre fibrations (possessing the right lifting property with respect to horn inclusions
     / disk inclusions). 3. show that cofibrations are retracts of relative cell complexes (left lifting
-    property with respect to trivial fibrations). (hint: every space in $\mathbf{top}_*$ is fibrant ($\emptyset
+    property with respect to trivial fibrations).  every space in $\mathbf{top}_*$ is fibrant ($\emptyset
     \to x \to *$ has $x \to *$ a fibration); cofibrant objects are precisely spaces that have the homotopy
-    type of retracts of cw-complexes)'
+    type of retracts of cw-complexes'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#004
   text: '(Fibrant and Cofibrant Replacements via Factorization) For any object $X \in \mathcal{M}$, use
     axiom MC5 to factor the unique maps $\emptyset \to X$ and $X \to *$: $$\emptyset \xrightarrow{\in
     \mathcal{C}\text{of}} QX \xrightarrow{\in \mathcal{W} \cap \mathcal{F}\text{ib}} X \quad \text{and}
     \quad X \xrightarrow{\in \mathcal{W} \cap \mathcal{C}\text{of}} RX \xrightarrow{\in \mathcal{F}\text{ib}}
-    *.$$ (Hint: $QX$ is the cofibrant replacement (CW approximation) and $RX$ is the fibrant replacement;
-    the homotopy category $\operatorname{Ho}(\mathcal{M}) = \mathcal{M}[\mathcal{W}^{-1}]$ has mapping
-    sets $\operatorname{Hom}_{\operatorname{Ho}(\mathcal{M})}(X, Y) \cong \operatorname{Hom}_{\mathcal{M}}(QX,
-    RY)/\sim_{\text{homotopy}}$)'
-  hint: null
+    *.$$ '
+  hint: $QX$ is the cofibrant replacement (CW approximation) and $RX$ is the fibrant replacement; the
+    homotopy category $\operatorname{Ho}(\mathcal{M}) = \mathcal{M}[\mathcal{W}^{-1}]$ has mapping sets
+    $\operatorname{Hom}_{\operatorname{Ho}(\mathcal{M})}(X, Y) \cong \operatorname{Hom}_{\mathcal{M}}(QX,
+    RY)/\sim_{\text{homotopy}}$
   locator: null
   sub_index: null
   search_text: '(fibrant and cofibrant replacements via factorization) for any object $x \in \mathcal{m}$,
     use axiom mc5 to factor the unique maps $\emptyset \to x$ and $x \to *$: $$\emptyset \xrightarrow{\in
     \mathcal{c}\text{of}} qx \xrightarrow{\in \mathcal{w} \cap \mathcal{f}\text{ib}} x \quad \text{and}
     \quad x \xrightarrow{\in \mathcal{w} \cap \mathcal{c}\text{of}} rx \xrightarrow{\in \mathcal{f}\text{ib}}
-    *.$$ (hint: $qx$ is the cofibrant replacement (cw approximation) and $rx$ is the fibrant replacement;
-    the homotopy category $\operatorname{ho}(\mathcal{m}) = \mathcal{m}[\mathcal{w}^{-1}]$ has mapping
-    sets $\operatorname{hom}_{\operatorname{ho}(\mathcal{m})}(x, y) \cong \operatorname{hom}_{\mathcal{m}}(qx,
-    ry)/\sim_{\text{homotopy}}$)'
+    *.$$  $qx$ is the cofibrant replacement (cw approximation) and $rx$ is the fibrant replacement; the
+    homotopy category $\operatorname{ho}(\mathcal{m}) = \mathcal{m}[\mathcal{w}^{-1}]$ has mapping sets
+    $\operatorname{hom}_{\operatorname{ho}(\mathcal{m})}(x, y) \cong \operatorname{hom}_{\mathcal{m}}(qx,
+    ry)/\sim_{\text{homotopy}}$'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#005
   text: '(Bousfield Localization of Model Categories) Formulate left Bousfield localization on a model
     category $\mathcal{M}$ with respect to a class of morphisms $S$: 1. **Enlarging Weak Equivalences:**
@@ -130,9 +127,9 @@ exercises:
     2. **Cofibrations:** Keep the class of cofibrations unchanged: $\mathcal{C}\text{of}_{L_S \mathcal{M}}
     = \mathcal{C}\text{of}_{\mathcal{M}}$. 3. **Fibrations:** Define the new fibrations ($S$-local fibrations)
     as maps having the right lifting property with respect to trivial cofibrations in the localized model
-    structure. (Hint: Localizing enlarges weak equivalences, adds more trivial cofibrations, and produces
-    fewer fibrant objects; the fibrant replacement functor becomes the localization functor $L_S$)'
-  hint: null
+    structure. '
+  hint: Localizing enlarges weak equivalences, adds more trivial cofibrations, and produces fewer fibrant
+    objects; the fibrant replacement functor becomes the localization functor $L_S$
   locator: null
   sub_index: null
   search_text: '(bousfield localization of model categories) formulate left bousfield localization on
@@ -142,8 +139,8 @@ exercises:
     2. **cofibrations:** keep the class of cofibrations unchanged: $\mathcal{c}\text{of}_{l_s \mathcal{m}}
     = \mathcal{c}\text{of}_{\mathcal{m}}$. 3. **fibrations:** define the new fibrations ($s$-local fibrations)
     as maps having the right lifting property with respect to trivial cofibrations in the localized model
-    structure. (hint: localizing enlarges weak equivalences, adds more trivial cofibrations, and produces
-    fewer fibrant objects; the fibrant replacement functor becomes the localization functor $l_s$)'
+    structure.  localizing enlarges weak equivalences, adds more trivial cofibrations, and produces fewer
+    fibrant objects; the fibrant replacement functor becomes the localization functor $l_s$'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#006
   text: '(Concrete Examples of Bousfield Localization: Slide 121) Describe the fibrant replacement functor
     $L_S X$ for standard choices of localizing classes $S$ on $\mathbf{Top}_*$: 1. **Postnikov Sections:**
@@ -153,9 +150,9 @@ exercises:
     mod-$p$ homology $H_*(-; \mathbb{F}_p)$. For simply connected spaces, the fibrant replacement $L_{\mathbb{F}_p}
     X$ is the $p$-adic completion $X_p^{\wedge}$. 3. **Generalized Homology Localization:** Let $E$ be
     a generalized homology theory and let $S$ be the class of $E_*$-equivalences. The fibrant replacement
-    is the Bousfield $E$-localization $L_E X$. (Hint: Whenever one needs to force homological equivalences
-    into isomorphisms in homotopy theory, apply left Bousfield localization)'
-  hint: null
+    is the Bousfield $E$-localization $L_E X$. '
+  hint: Whenever one needs to force homological equivalences into isomorphisms in homotopy theory, apply
+    left Bousfield localization
   locator: null
   sub_index: null
   search_text: '(concrete examples of bousfield localization: slide 121) describe the fibrant replacement
@@ -166,8 +163,8 @@ exercises:
     on mod-$p$ homology $h_*(-; \mathbb{f}_p)$. for simply connected spaces, the fibrant replacement $l_{\mathbb{f}_p}
     x$ is the $p$-adic completion $x_p^{\wedge}$. 3. **generalized homology localization:** let $e$ be
     a generalized homology theory and let $s$ be the class of $e_*$-equivalences. the fibrant replacement
-    is the bousfield $e$-localization $l_e x$. (hint: whenever one needs to force homological equivalences
-    into isomorphisms in homotopy theory, apply left bousfield localization)'
+    is the bousfield $e$-localization $l_e x$.  whenever one needs to force homological equivalences into
+    isomorphisms in homotopy theory, apply left bousfield localization'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#007
   text: '(Enriched Categories and Closed Symmetric Monoidal Categories) Let $(\mathcal{V}, \otimes, \mathbf{1})$
     be a closed symmetric monoidal category with internal hom $[-, -]_{\mathcal{V}}$. 1. Define a $\mathcal{V}$-enriched
@@ -175,10 +172,9 @@ exercises:
     and associative composition morphisms $\operatorname{Map}(Y, Z) \otimes \operatorname{Map}(X, Y) \to
     \operatorname{Map}(X, Z)$. 2. Explain what it means for $\mathcal{C}$ to be closed (enriched over
     itself), and give the standard examples: pointed topological spaces $\mathbf{Top}_*$ enriched over
-    $\mathbf{Top}_*$, and simplicial sets $\mathbf{sSet}_*$ enriched over $\mathbf{sSet}_*$. (Hint: In
-    a closed symmetric monoidal category, tensor products and internal homs satisfy the adjunction $\operatorname{Hom}_{\mathcal{V}}(X
-    \otimes Y, Z) \cong \operatorname{Hom}_{\mathcal{V}}(X, [Y, Z]_{\mathcal{V}})$)'
-  hint: null
+    $\mathbf{Top}_*$, and simplicial sets $\mathbf{sSet}_*$ enriched over $\mathbf{sSet}_*$. '
+  hint: In a closed symmetric monoidal category, tensor products and internal homs satisfy the adjunction
+    $\operatorname{Hom}_{\mathcal{V}}(X \otimes Y, Z) \cong \operatorname{Hom}_{\mathcal{V}}(X, [Y, Z]_{\mathcal{V}})$
   locator: null
   sub_index: null
   search_text: '(enriched categories and closed symmetric monoidal categories) let $(\mathcal{v}, \otimes,
@@ -187,9 +183,9 @@ exercises:
     y) \in \mathcal{v}$ and associative composition morphisms $\operatorname{map}(y, z) \otimes \operatorname{map}(x,
     y) \to \operatorname{map}(x, z)$. 2. explain what it means for $\mathcal{c}$ to be closed (enriched
     over itself), and give the standard examples: pointed topological spaces $\mathbf{top}_*$ enriched
-    over $\mathbf{top}_*$, and simplicial sets $\mathbf{sset}_*$ enriched over $\mathbf{sset}_*$. (hint:
-    in a closed symmetric monoidal category, tensor products and internal homs satisfy the adjunction
-    $\operatorname{hom}_{\mathcal{v}}(x \otimes y, z) \cong \operatorname{hom}_{\mathcal{v}}(x, [y, z]_{\mathcal{v}})$)'
+    over $\mathbf{top}_*$, and simplicial sets $\mathbf{sset}_*$ enriched over $\mathbf{sset}_*$.  in
+    a closed symmetric monoidal category, tensor products and internal homs satisfy the adjunction $\operatorname{hom}_{\mathcal{v}}(x
+    \otimes y, z) \cong \operatorname{hom}_{\mathcal{v}}(x, [y, z]_{\mathcal{v}})$'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#008
   text: '(The Naive Indexing Category $J^{\mathbb{N}}$ and Yoneda Spectra) Define the naive indexing category
     $J^{\mathbb{N}}$ for spectra: 1. Objects are natural numbers $n \in \mathbb{N}_0$. 2. Morphism objects
@@ -197,11 +193,10 @@ exercises:
     3. Show that a classical spectrum $E$ is precisely a pointed enriched functor $E: J^{\mathbb{N}} \to
     \mathbf{Top}_*$, interpreting spectra as diagrams of pointed spaces. 4. Define the Yoneda representable
     spectrum $S^{-m} = \operatorname{Map}_{J^{\mathbb{N}}}(m, -)$ (where $S^{-0} = \mathbb{S}$ is the
-    sphere spectrum, and $S^{-m}$ is the formal $m$-fold desuspension of the sphere). (Hint: While $\mathbf{Top}_*$
-    is symmetric monoidal under $\wedge$, the indexing category $J^{\mathbb{N}}$ is monoidal under addition
-    of integers but lacks a symmetric twist isomorphism, because the coordinate-swap map $\tau: S^1 \wedge
-    S^1 \to S^1 \wedge S^1$ has degree $-1$)'
-  hint: null
+    sphere spectrum, and $S^{-m}$ is the formal $m$-fold desuspension of the sphere). '
+  hint: 'While $\mathbf{Top}_*$ is symmetric monoidal under $\wedge$, the indexing category $J^{\mathbb{N}}$
+    is monoidal under addition of integers but lacks a symmetric twist isomorphism, because the coordinate-swap
+    map $\tau: S^1 \wedge S^1 \to S^1 \wedge S^1$ has degree $-1$'
   locator: null
   sub_index: null
   search_text: '(the naive indexing category $j^{\mathbb{n}}$ and yoneda spectra) define the naive indexing
@@ -210,24 +205,23 @@ exercises:
     otherwise. 3. show that a classical spectrum $e$ is precisely a pointed enriched functor $e: j^{\mathbb{n}}
     \to \mathbf{top}_*$, interpreting spectra as diagrams of pointed spaces. 4. define the yoneda representable
     spectrum $s^{-m} = \operatorname{map}_{j^{\mathbb{n}}}(m, -)$ (where $s^{-0} = \mathbb{s}$ is the
-    sphere spectrum, and $s^{-m}$ is the formal $m$-fold desuspension of the sphere). (hint: while $\mathbf{top}_*$
+    sphere spectrum, and $s^{-m}$ is the formal $m$-fold desuspension of the sphere).  while $\mathbf{top}_*$
     is symmetric monoidal under $\wedge$, the indexing category $j^{\mathbb{n}}$ is monoidal under addition
     of integers but lacks a symmetric twist isomorphism, because the coordinate-swap map $\tau: s^1 \wedge
-    s^1 \to s^1 \wedge s^1$ has degree $-1$)'
+    s^1 \to s^1 \wedge s^1$ has degree $-1$'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#009
   text: '(Failure of the Smash Product on Classical Spectra) Explain why the category of naive spectra
-    $\operatorname{Fun}(J^{\mathbb{N}}, \mathbf{Top}_*)$ does not admit a symmetric monoidal smash product.
-    (Hint: The naive indexing category $J^{\mathbb{N}}$ lacks symmetric group actions; coordinate swaps
-    on $S^p \wedge S^q \cong S^{p+q}$ introduce sign permutations $(p, q) \mapsto (q, p)$ of degree $(-1)^{pq}$
-    that cannot be absorbed without symmetric group equivariance on the diagram)'
-  hint: null
+    $\operatorname{Fun}(J^{\mathbb{N}}, \mathbf{Top}_*)$ does not admit a symmetric monoidal smash product. '
+  hint: The naive indexing category $J^{\mathbb{N}}$ lacks symmetric group actions; coordinate swaps on
+    $S^p \wedge S^q \cong S^{p+q}$ introduce sign permutations $(p, q) \mapsto (q, p)$ of degree $(-1)^{pq}$
+    that cannot be absorbed without symmetric group equivariance on the diagram
   locator: null
   sub_index: null
-  search_text: '(failure of the smash product on classical spectra) explain why the category of naive
-    spectra $\operatorname{fun}(j^{\mathbb{n}}, \mathbf{top}_*)$ does not admit a symmetric monoidal smash
-    product. (hint: the naive indexing category $j^{\mathbb{n}}$ lacks symmetric group actions; coordinate
-    swaps on $s^p \wedge s^q \cong s^{p+q}$ introduce sign permutations $(p, q) \mapsto (q, p)$ of degree
-    $(-1)^{pq}$ that cannot be absorbed without symmetric group equivariance on the diagram)'
+  search_text: (failure of the smash product on classical spectra) explain why the category of naive spectra
+    $\operatorname{fun}(j^{\mathbb{n}}, \mathbf{top}_*)$ does not admit a symmetric monoidal smash product.  the
+    naive indexing category $j^{\mathbb{n}}$ lacks symmetric group actions; coordinate swaps on $s^p \wedge
+    s^q \cong s^{p+q}$ introduce sign permutations $(p, q) \mapsto (q, p)$ of degree $(-1)^{pq}$ that
+    cannot be absorbed without symmetric group equivariance on the diagram
 - id: iwoat-github-io-2018-slides-ravenel-pdf#010
   text: '(The Symmetric Indexing Category $J^\Sigma$ and Symmetric Spectra: Hovey-Shipley-Smith) Construct
     the symmetric indexing category $J^\Sigma$: 1. Objects are natural numbers $n \in \mathbb{N}_0$. 2.
@@ -235,9 +229,9 @@ exercises:
     = (\Sigma_n)_+ \wedge_{\Sigma_{n-m}} S^{n-m}$ for $n \ge m$, and $*$ otherwise. 3. Show that $J^\Sigma$
     is a symmetric monoidal category enriched over $\mathbf{Top}_*$, where the symmetric group actions
     absorb the permutation signs of the smash product. 4. Define a symmetric spectrum as an enriched functor
-    $E: J^\Sigma \to \mathbf{Top}_*$. (Hint: Symmetric spectra incorporate the symmetric group actions
-    $\Sigma_n \curvearrowright E_n$ from the ground up, making the diagram category itself symmetric monoidal)'
-  hint: null
+    $E: J^\Sigma \to \mathbf{Top}_*$. '
+  hint: Symmetric spectra incorporate the symmetric group actions $\Sigma_n \curvearrowright E_n$ from
+    the ground up, making the diagram category itself symmetric monoidal
   locator: null
   sub_index: null
   search_text: '(the symmetric indexing category $j^\sigma$ and symmetric spectra: hovey-shipley-smith)
@@ -246,8 +240,8 @@ exercises:
     n) = (\sigma_n)_+ \wedge_{\sigma_{n-m}} s^{n-m}$ for $n \ge m$, and $*$ otherwise. 3. show that $j^\sigma$
     is a symmetric monoidal category enriched over $\mathbf{top}_*$, where the symmetric group actions
     absorb the permutation signs of the smash product. 4. define a symmetric spectrum as an enriched functor
-    $e: j^\sigma \to \mathbf{top}_*$. (hint: symmetric spectra incorporate the symmetric group actions
-    $\sigma_n \curvearrowright e_n$ from the ground up, making the diagram category itself symmetric monoidal)'
+    $e: j^\sigma \to \mathbf{top}_*$.  symmetric spectra incorporate the symmetric group actions $\sigma_n
+    \curvearrowright e_n$ from the ground up, making the diagram category itself symmetric monoidal'
 - id: iwoat-github-io-2018-slides-ravenel-pdf#011
   text: '(Day Convolution and the Symmetric Monoidal Smash Product) Let $(\mathcal{V}, \otimes, \mathbf{1})$
     be a closed symmetric monoidal category and let $\mathcal{J}$ be a small symmetric monoidal $\mathcal{V}$-category.
@@ -257,10 +251,9 @@ exercises:
     \oplus q, n) \otimes F(p) \otimes G(q).$$ 2. Deduce that the category of symmetric spectra $\mathbf{Sp}^\Sigma
     = \operatorname{Fun}(J^\Sigma, \mathbf{Top}_*)$ inherits a strictly associative, commutative, and
     closed symmetric monoidal smash product $\wedge = \otimes_{\text{Day}}$ with unit the sphere spectrum
-    $\mathbb{S} = \operatorname{Map}_{J^\Sigma}(0, -)$. (Hint: Day convolution on enriched functor categories
-    solves the decades-old problem of defining a symmetric monoidal category of spectra before passing
-    to the homotopy category)'
-  hint: null
+    $\mathbb{S} = \operatorname{Map}_{J^\Sigma}(0, -)$. '
+  hint: Day convolution on enriched functor categories solves the decades-old problem of defining a symmetric
+    monoidal category of spectra before passing to the homotopy category
   locator: null
   sub_index: null
   search_text: '(day convolution and the symmetric monoidal smash product) let $(\mathcal{v}, \otimes,
@@ -271,6 +264,6 @@ exercises:
     \oplus q, n) \otimes f(p) \otimes g(q).$$ 2. deduce that the category of symmetric spectra $\mathbf{sp}^\sigma
     = \operatorname{fun}(j^\sigma, \mathbf{top}_*)$ inherits a strictly associative, commutative, and
     closed symmetric monoidal smash product $\wedge = \otimes_{\text{day}}$ with unit the sphere spectrum
-    $\mathbb{s} = \operatorname{map}_{j^\sigma}(0, -)$. (hint: day convolution on enriched functor categories
+    $\mathbb{s} = \operatorname{map}_{j^\sigma}(0, -)$.  day convolution on enriched functor categories
     solves the decades-old problem of defining a symmetric monoidal category of spectra before passing
-    to the homotopy category)'
+    to the homotopy category'

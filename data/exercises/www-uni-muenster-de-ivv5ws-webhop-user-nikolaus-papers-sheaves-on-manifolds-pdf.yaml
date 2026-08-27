@@ -10,190 +10,183 @@ exercises:
     compact Hausdorff space. Define the $\infty$-category $\operatorname{Shv}(X; \mathcal{D}(\mathbb{Z}))$
     as the $\infty$-category of functors $F: \operatorname{Open}(X)^{\text{op}} \to \mathcal{D}(\mathbb{Z})$
     satisfying descent: for any open cover $U \cup V$, the Mayer–Vietoris square is a pullback in $\mathcal{D}(\mathbb{Z})$,
-    and more generally $F(\bigcup_i U_i) \xrightarrow{\sim} \lim_{I} F(U_i)$. (Hint: Contrast $\operatorname{Shv}(X;
-    \mathcal{D}(\mathbb{Z}))$ with the ordinary derived category of sheaves of abelian groups $\mathcal{D}(\operatorname{Shv}(X,
-    \mathbf{Ab}))$. Show that the latter is the Bousfield localization of $\operatorname{Shv}(X; \mathcal{D}(\mathbb{Z}))$
-    at hypercovers, i.e. the $\infty$-category of hypersheaves, and that both coincide when $X$ is paracompact
-    with finite covering dimension)'
-  hint: null
+    and more generally $F(\bigcup_i U_i) \xrightarrow{\sim} \lim_{I} F(U_i)$. '
+  hint: Contrast $\operatorname{Shv}(X; \mathcal{D}(\mathbb{Z}))$ with the ordinary derived category of
+    sheaves of abelian groups $\mathcal{D}(\operatorname{Shv}(X, \mathbf{Ab}))$. Show that the latter
+    is the Bousfield localization of $\operatorname{Shv}(X; \mathcal{D}(\mathbb{Z}))$ at hypercovers,
+    i.e. the $\infty$-category of hypersheaves, and that both coincide when $X$ is paracompact with finite
+    covering dimension
   locator: null
   sub_index: null
   search_text: '(sheaves with values in the derived category vs. derived category of sheaves) let $x$
     be a locally compact hausdorff space. define the $\infty$-category $\operatorname{shv}(x; \mathcal{d}(\mathbb{z}))$
     as the $\infty$-category of functors $f: \operatorname{open}(x)^{\text{op}} \to \mathcal{d}(\mathbb{z})$
     satisfying descent: for any open cover $u \cup v$, the mayer–vietoris square is a pullback in $\mathcal{d}(\mathbb{z})$,
-    and more generally $f(\bigcup_i u_i) \xrightarrow{\sim} \lim_{i} f(u_i)$. (hint: contrast $\operatorname{shv}(x;
+    and more generally $f(\bigcup_i u_i) \xrightarrow{\sim} \lim_{i} f(u_i)$.  contrast $\operatorname{shv}(x;
     \mathcal{d}(\mathbb{z}))$ with the ordinary derived category of sheaves of abelian groups $\mathcal{d}(\operatorname{shv}(x,
     \mathbf{ab}))$. show that the latter is the bousfield localization of $\operatorname{shv}(x; \mathcal{d}(\mathbb{z}))$
     at hypercovers, i.e. the $\infty$-category of hypersheaves, and that both coincide when $x$ is paracompact
-    with finite covering dimension)'
+    with finite covering dimension'
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#001
   text: '(Pushforward, Pullback, and Global Sections) Let $f: Y \to \{*\}$ be the projection to a point.
     Show that $\operatorname{Shv}(\{*\}, \mathcal{D}(\mathbb{Z})) \simeq \mathcal{D}(\mathbb{Z})$. For
     $F \in \operatorname{Shv}(Y; \mathcal{D}(\mathbb{Z}))$, verify that the pushforward $f_* F \simeq
     F(Y)$ recovers global sections, and describe the pullback functor $f^*: \mathcal{D}(\mathbb{Z}) \to
-    \operatorname{Shv}(Y; \mathcal{D}(\mathbb{Z}))$ assigning constant sheaves. (Hint: Formulate $f^*$
-    and $f_*$ as an adjoint pair $(f^* \dashv f_*)$ on presentable stable $\infty$-categories)'
-  hint: null
+    \operatorname{Shv}(Y; \mathcal{D}(\mathbb{Z}))$ assigning constant sheaves. '
+  hint: Formulate $f^*$ and $f_*$ as an adjoint pair $(f^* \dashv f_*)$ on presentable stable $\infty$-categories
   locator: null
   sub_index: null
   search_text: '(pushforward, pullback, and global sections) let $f: y \to \{*\}$ be the projection to
     a point. show that $\operatorname{shv}(\{*\}, \mathcal{d}(\mathbb{z})) \simeq \mathcal{d}(\mathbb{z})$.
     for $f \in \operatorname{shv}(y; \mathcal{d}(\mathbb{z}))$, verify that the pushforward $f_* f \simeq
     f(y)$ recovers global sections, and describe the pullback functor $f^*: \mathcal{d}(\mathbb{z}) \to
-    \operatorname{shv}(y; \mathcal{d}(\mathbb{z}))$ assigning constant sheaves. (hint: formulate $f^*$
-    and $f_*$ as an adjoint pair $(f^* \dashv f_*)$ on presentable stable $\infty$-categories)'
+    \operatorname{shv}(y; \mathcal{d}(\mathbb{z}))$ assigning constant sheaves.  formulate $f^*$ and $f_*$
+    as an adjoint pair $(f^* \dashv f_*)$ on presentable stable $\infty$-categories'
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#002
   text: '(Presentable Stable Categories and the Category Pr^L) Define the $\infty$-category $\mathbf{Pr}^L$
     whose objects are presentable $\infty$-categories and whose morphisms are left adjoints (colimit-preserving
-    functors). (Hint: Explain how the Adjoint Functor Theorem ensures that any colimit-preserving functor
-    between presentable categories is uniquely determined by its restriction to the subcategory of $\kappa$-compact
-    generators via the Yoneda embedding, and discuss the Beck–Chevalley condition for commutative squares)'
-  hint: null
+    functors). '
+  hint: Explain how the Adjoint Functor Theorem ensures that any colimit-preserving functor between presentable
+    categories is uniquely determined by its restriction to the subcategory of $\kappa$-compact generators
+    via the Yoneda embedding, and discuss the Beck–Chevalley condition for commutative squares
   locator: null
   sub_index: null
-  search_text: '(presentable stable categories and the category pr^l) define the $\infty$-category $\mathbf{pr}^l$
+  search_text: (presentable stable categories and the category pr^l) define the $\infty$-category $\mathbf{pr}^l$
     whose objects are presentable $\infty$-categories and whose morphisms are left adjoints (colimit-preserving
-    functors). (hint: explain how the adjoint functor theorem ensures that any colimit-preserving functor
-    between presentable categories is uniquely determined by its restriction to the subcategory of $\kappa$-compact
-    generators via the yoneda embedding, and discuss the beck–chevalley condition for commutative squares)'
+    functors).  explain how the adjoint functor theorem ensures that any colimit-preserving functor between
+    presentable categories is uniquely determined by its restriction to the subcategory of $\kappa$-compact
+    generators via the yoneda embedding, and discuss the beck–chevalley condition for commutative squares
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#003
   text: '(Compactly Assembled Infinity-Categories) Define what it means for a morphism $f: C \to D$ in
-    an $\infty$-category to be compact, and define a compactly assembled $\infty$-category. (Hint: A morphism
-    $f$ is compact if $\operatorname{Map}(D, -)$ maps filtered colimits along $f$ to colimits in spaces.
-    An object $X$ is weakly/strongly compact if $\operatorname{id}_X$ satisfies the compact morphism condition;
-    this generalizes compact generation to categories lacking enough compact objects, such as $\operatorname{Shv}(X;
-    \mathcal{D}(\mathbb{Z}))$ for non-compact $X$)'
-  hint: null
+    an $\infty$-category to be compact, and define a compactly assembled $\infty$-category. '
+  hint: A morphism $f$ is compact if $\operatorname{Map}(D, -)$ maps filtered colimits along $f$ to colimits
+    in spaces. An object $X$ is weakly/strongly compact if $\operatorname{id}_X$ satisfies the compact
+    morphism condition; this generalizes compact generation to categories lacking enough compact objects,
+    such as $\operatorname{Shv}(X; \mathcal{D}(\mathbb{Z}))$ for non-compact $X$
   locator: null
   sub_index: null
   search_text: '(compactly assembled infinity-categories) define what it means for a morphism $f: c \to
-    d$ in an $\infty$-category to be compact, and define a compactly assembled $\infty$-category. (hint:
-    a morphism $f$ is compact if $\operatorname{map}(d, -)$ maps filtered colimits along $f$ to colimits
-    in spaces. an object $x$ is weakly/strongly compact if $\operatorname{id}_x$ satisfies the compact
-    morphism condition; this generalizes compact generation to categories lacking enough compact objects,
-    such as $\operatorname{shv}(x; \mathcal{d}(\mathbb{z}))$ for non-compact $x$)'
+    d$ in an $\infty$-category to be compact, and define a compactly assembled $\infty$-category.  a morphism
+    $f$ is compact if $\operatorname{map}(d, -)$ maps filtered colimits along $f$ to colimits in spaces.
+    an object $x$ is weakly/strongly compact if $\operatorname{id}_x$ satisfies the compact morphism condition;
+    this generalizes compact generation to categories lacking enough compact objects, such as $\operatorname{shv}(x;
+    \mathcal{d}(\mathbb{z}))$ for non-compact $x$'
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#004
   text: '(Compact Assembly and Continuous Posets) Explain why a poset viewed as a category is compactly
-    assembled if and only if it is a continuous poset / continuous domain. (Hint: In a continuous poset,
-    every element is the directed supremum of elements that are "way below" it, mirroring how objects
-    in a compactly assembled category are filtered colimits of compact morphisms)'
-  hint: null
+    assembled if and only if it is a continuous poset / continuous domain. '
+  hint: In a continuous poset, every element is the directed supremum of elements that are "way below"
+    it, mirroring how objects in a compactly assembled category are filtered colimits of compact morphisms
   locator: null
   sub_index: null
-  search_text: '(compact assembly and continuous posets) explain why a poset viewed as a category is compactly
-    assembled if and only if it is a continuous poset / continuous domain. (hint: in a continuous poset,
-    every element is the directed supremum of elements that are "way below" it, mirroring how objects
-    in a compactly assembled category are filtered colimits of compact morphisms)'
+  search_text: (compact assembly and continuous posets) explain why a poset viewed as a category is compactly
+    assembled if and only if it is a continuous poset / continuous domain.  in a continuous poset, every
+    element is the directed supremum of elements that are "way below" it, mirroring how objects in a compactly
+    assembled category are filtered colimits of compact morphisms
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#005
   text: '(Limits, Colimits, and Tensor Products in Pr_ca^L) Describe the limits, colimits, and Lurie symmetric
     monoidal tensor products $\mathcal{C} \otimes \mathcal{D}$ in the $\infty$-category $\mathbf{Pr}_{\text{ca}}^L$
-    of compactly assembled presentable categories. (Hint: Limits in $\mathbf{Pr}^L$ are computed on underlying
-    categories, whereas colimits pass to limits of right adjoints; discuss how $\mathbf{Pr}_{\text{ca}}^L$
-    inherits a closed symmetric monoidal structure where dualizable objects exhibit monoidal duality)'
-  hint: null
+    of compactly assembled presentable categories. '
+  hint: Limits in $\mathbf{Pr}^L$ are computed on underlying categories, whereas colimits pass to limits
+    of right adjoints; discuss how $\mathbf{Pr}_{\text{ca}}^L$ inherits a closed symmetric monoidal structure
+    where dualizable objects exhibit monoidal duality
   locator: null
   sub_index: null
-  search_text: '(limits, colimits, and tensor products in pr_ca^l) describe the limits, colimits, and
-    lurie symmetric monoidal tensor products $\mathcal{c} \otimes \mathcal{d}$ in the $\infty$-category
-    $\mathbf{pr}_{\text{ca}}^l$ of compactly assembled presentable categories. (hint: limits in $\mathbf{pr}^l$
-    are computed on underlying categories, whereas colimits pass to limits of right adjoints; discuss
-    how $\mathbf{pr}_{\text{ca}}^l$ inherits a closed symmetric monoidal structure where dualizable objects
-    exhibit monoidal duality)'
+  search_text: (limits, colimits, and tensor products in pr_ca^l) describe the limits, colimits, and lurie
+    symmetric monoidal tensor products $\mathcal{c} \otimes \mathcal{d}$ in the $\infty$-category $\mathbf{pr}_{\text{ca}}^l$
+    of compactly assembled presentable categories.  limits in $\mathbf{pr}^l$ are computed on underlying
+    categories, whereas colimits pass to limits of right adjoints; discuss how $\mathbf{pr}_{\text{ca}}^l$
+    inherits a closed symmetric monoidal structure where dualizable objects exhibit monoidal duality
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#006
   text: '(Verdier Sequences and Verdier Quotients) Define a Verdier sequence in the $\infty$-category
     $\mathbf{Cat}_\infty^{\text{ex}}$ of small idempotent-complete stable $\infty$-categories: $$\mathcal{A}
-    \hookrightarrow \mathcal{B} \twoheadrightarrow \mathcal{C}.$$ (Hint: A Verdier sequence is both a
-    fiber and cofiber sequence in $\mathbf{Cat}_\infty^{\text{ex}}$; the quotient $\mathcal{C} \simeq
-    \mathcal{B}/\mathcal{A}$ is obtained via Dwyer–Kan localization / Verdier localization at the morphisms
-    whose cones lie in $\mathcal{A}$)'
-  hint: null
+    \hookrightarrow \mathcal{B} \twoheadrightarrow \mathcal{C}.$$ '
+  hint: A Verdier sequence is both a fiber and cofiber sequence in $\mathbf{Cat}_\infty^{\text{ex}}$;
+    the quotient $\mathcal{C} \simeq \mathcal{B}/\mathcal{A}$ is obtained via Dwyer–Kan localization /
+    Verdier localization at the morphisms whose cones lie in $\mathcal{A}$
   locator: null
   sub_index: null
   search_text: '(verdier sequences and verdier quotients) define a verdier sequence in the $\infty$-category
     $\mathbf{cat}_\infty^{\text{ex}}$ of small idempotent-complete stable $\infty$-categories: $$\mathcal{a}
-    \hookrightarrow \mathcal{b} \twoheadrightarrow \mathcal{c}.$$ (hint: a verdier sequence is both a
-    fiber and cofiber sequence in $\mathbf{cat}_\infty^{\text{ex}}$; the quotient $\mathcal{c} \simeq
-    \mathcal{b}/\mathcal{a}$ is obtained via dwyer–kan localization / verdier localization at the morphisms
-    whose cones lie in $\mathcal{a}$)'
+    \hookrightarrow \mathcal{b} \twoheadrightarrow \mathcal{c}.$$  a verdier sequence is both a fiber
+    and cofiber sequence in $\mathbf{cat}_\infty^{\text{ex}}$; the quotient $\mathcal{c} \simeq \mathcal{b}/\mathcal{a}$
+    is obtained via dwyer–kan localization / verdier localization at the morphisms whose cones lie in
+    $\mathcal{a}$'
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#007
   text: '(Connective vs. Non-Connective Algebraic K-Theory) Recall Quillen''s connective algebraic $K$-theory
     functor $K: \mathbf{Cat}_\infty^{\text{perf}} \to \mathbf{Sp}_{\ge 0}$. Why does connective $K$-theory
-    fail to send Verdier sequences to fiber sequences of spectra? (Hint: The negative $K$-groups $K_{-n}$
-    are non-trivial for non-regular schemes or non-smooth algebras; the Eilenberg swindle can kill positive
-    $K$-theory on infinite-dimensional Calkin-type categories without vanishing homotopically)'
-  hint: null
+    fail to send Verdier sequences to fiber sequences of spectra? '
+  hint: The negative $K$-groups $K_{-n}$ are non-trivial for non-regular schemes or non-smooth algebras;
+    the Eilenberg swindle can kill positive $K$-theory on infinite-dimensional Calkin-type categories
+    without vanishing homotopically
   locator: null
   sub_index: null
   search_text: '(connective vs. non-connective algebraic k-theory) recall quillen''s connective algebraic
     $k$-theory functor $k: \mathbf{cat}_\infty^{\text{perf}} \to \mathbf{sp}_{\ge 0}$. why does connective
-    $k$-theory fail to send verdier sequences to fiber sequences of spectra? (hint: the negative $k$-groups
+    $k$-theory fail to send verdier sequences to fiber sequences of spectra?  the negative $k$-groups
     $k_{-n}$ are non-trivial for non-regular schemes or non-smooth algebras; the eilenberg swindle can
-    kill positive $k$-theory on infinite-dimensional calkin-type categories without vanishing homotopically)'
+    kill positive $k$-theory on infinite-dimensional calkin-type categories without vanishing homotopically'
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#008
   text: '(Efimov Continuous K-Theory) Define Alexander Efimov''s continuous (non-connective) $K$-theory
     functor $K^{\text{cont}}: \mathbf{Pr}_{\text{dual}}^L \to \mathbf{Sp}$ on the $\infty$-category of
-    dualizable presentable stable $\infty$-categories. (Hint: Efimov $K$-theory is the universal localizing
-    invariant preserving filtered colimits and mapping Verdier/fiber sequences of dualizable categories
-    to fiber/cofiber sequences of spectra, extending the Blumberg–Gepner–Tabuada framework of noncommutative
-    motives $\mathbf{NcMot}$)'
-  hint: null
+    dualizable presentable stable $\infty$-categories. '
+  hint: Efimov $K$-theory is the universal localizing invariant preserving filtered colimits and mapping
+    Verdier/fiber sequences of dualizable categories to fiber/cofiber sequences of spectra, extending
+    the Blumberg–Gepner–Tabuada framework of noncommutative motives $\mathbf{NcMot}$
   locator: null
   sub_index: null
   search_text: '(efimov continuous k-theory) define alexander efimov''s continuous (non-connective) $k$-theory
     functor $k^{\text{cont}}: \mathbf{pr}_{\text{dual}}^l \to \mathbf{sp}$ on the $\infty$-category of
-    dualizable presentable stable $\infty$-categories. (hint: efimov $k$-theory is the universal localizing
+    dualizable presentable stable $\infty$-categories.  efimov $k$-theory is the universal localizing
     invariant preserving filtered colimits and mapping verdier/fiber sequences of dualizable categories
     to fiber/cofiber sequences of spectra, extending the blumberg–gepner–tabuada framework of noncommutative
-    motives $\mathbf{ncmot}$)'
+    motives $\mathbf{ncmot}$'
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#009
   text: '(Local Rigidity and Frobenius Algebras) Define a locally rigid symmetric monoidal presentable
-    category $\mathcal{C}$. (Hint: A category is locally rigid if its compact objects are dualizable;
-    explain how local rigidity turns $\mathcal{C}$ into a commutative Frobenius algebra object in $\mathbf{Pr}^L$,
-    equipped with a non-degenerate evaluation/coevaluation pairing)'
-  hint: null
+    category $\mathcal{C}$. '
+  hint: A category is locally rigid if its compact objects are dualizable; explain how local rigidity
+    turns $\mathcal{C}$ into a commutative Frobenius algebra object in $\mathbf{Pr}^L$, equipped with
+    a non-degenerate evaluation/coevaluation pairing
   locator: null
   sub_index: null
-  search_text: '(local rigidity and frobenius algebras) define a locally rigid symmetric monoidal presentable
-    category $\mathcal{c}$. (hint: a category is locally rigid if its compact objects are dualizable;
-    explain how local rigidity turns $\mathcal{c}$ into a commutative frobenius algebra object in $\mathbf{pr}^l$,
-    equipped with a non-degenerate evaluation/coevaluation pairing)'
+  search_text: (local rigidity and frobenius algebras) define a locally rigid symmetric monoidal presentable
+    category $\mathcal{c}$.  a category is locally rigid if its compact objects are dualizable; explain
+    how local rigidity turns $\mathcal{c}$ into a commutative frobenius algebra object in $\mathbf{pr}^l$,
+    equipped with a non-degenerate evaluation/coevaluation pairing
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#010
   text: '(String Diagrams and Poincaré Duality of Morphisms) How does the Frobenius algebra structure
-    on a locally rigid category $\mathcal{C}$ enable a string diagram calculus for the six operations?
-    (Hint: Morphisms and adjoints $(f^* \dashv f_*)$ and $(f_! \dashv f^!)$ are represented as 2D string
-    diagrams / bordisms, where Poincaré–Verdier duality corresponds to rotating strings by $180^\circ$)'
-  hint: null
+    on a locally rigid category $\mathcal{C}$ enable a string diagram calculus for the six operations? '
+  hint: Morphisms and adjoints $(f^* \dashv f_*)$ and $(f_! \dashv f^!)$ are represented as 2D string
+    diagrams / bordisms, where Poincaré–Verdier duality corresponds to rotating strings by $180^\circ$
   locator: null
   sub_index: null
-  search_text: '(string diagrams and poincaré duality of morphisms) how does the frobenius algebra structure
-    on a locally rigid category $\mathcal{c}$ enable a string diagram calculus for the six operations?
-    (hint: morphisms and adjoints $(f^* \dashv f_*)$ and $(f_! \dashv f^!)$ are represented as 2d string
-    diagrams / bordisms, where poincaré–verdier duality corresponds to rotating strings by $180^\circ$)'
+  search_text: (string diagrams and poincaré duality of morphisms) how does the frobenius algebra structure
+    on a locally rigid category $\mathcal{c}$ enable a string diagram calculus for the six operations?  morphisms
+    and adjoints $(f^* \dashv f_*)$ and $(f_! \dashv f^!)$ are represented as 2d string diagrams / bordisms,
+    where poincaré–verdier duality corresponds to rotating strings by $180^\circ$
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#011
   text: '(Verdier Self-Duality of Sheaves of Spectra) Formulate the Verdier self-duality theorem for the
     $\infty$-category $\operatorname{Shv}(X; \mathbf{Sp})$ of sheaves of spectra on a locally compact
-    manifold $X$. (Hint: Show that $\operatorname{Shv}(X; \mathbf{Sp})$ is a dualizable, locally rigid
-    presentable category whose categorical dual is canonically equivalent to $\operatorname{Shv}(X; \mathbf{Sp})$
-    itself, exchanging compact pushforward $f_!$ with exceptional pullback $f^!$)'
-  hint: null
+    manifold $X$. '
+  hint: Show that $\operatorname{Shv}(X; \mathbf{Sp})$ is a dualizable, locally rigid presentable category
+    whose categorical dual is canonically equivalent to $\operatorname{Shv}(X; \mathbf{Sp})$ itself, exchanging
+    compact pushforward $f_!$ with exceptional pullback $f^!$
   locator: null
   sub_index: null
-  search_text: '(verdier self-duality of sheaves of spectra) formulate the verdier self-duality theorem
+  search_text: (verdier self-duality of sheaves of spectra) formulate the verdier self-duality theorem
     for the $\infty$-category $\operatorname{shv}(x; \mathbf{sp})$ of sheaves of spectra on a locally
-    compact manifold $x$. (hint: show that $\operatorname{shv}(x; \mathbf{sp})$ is a dualizable, locally
-    rigid presentable category whose categorical dual is canonically equivalent to $\operatorname{shv}(x;
-    \mathbf{sp})$ itself, exchanging compact pushforward $f_!$ with exceptional pullback $f^!$)'
+    compact manifold $x$.  show that $\operatorname{shv}(x; \mathbf{sp})$ is a dualizable, locally rigid
+    presentable category whose categorical dual is canonically equivalent to $\operatorname{shv}(x; \mathbf{sp})$
+    itself, exchanging compact pushforward $f_!$ with exceptional pullback $f^!$
 - id: www-uni-muenster-de-ivv5ws-webhop-user-nikolaus-papers-sheaves-on-manifolds-pdf#012
   text: '(Cohomology with Compact Support and Borel-Moore Homology via Six Functors) Let $t: X \to \{*\}$
     be the unique terminal map. Express standard topological invariants in terms of the six operations
     on the tensor unit $\mathbf{1} = \mathbb{S} \in \operatorname{Shv}(\{*\}, \mathbf{Sp})$: 1. Ordinary
     cohomology: $H^*(X) \simeq t_* t^* \mathbf{1}$. 2. Cohomology with compact support: $H_c^*(X) \simeq
     t_! t^* \mathbf{1}$. 3. Locally finite (Borel–Moore) homology: $H_*^{\text{BM}}(X) \simeq t_* t^!
-    \mathbf{1}$. 4. Standard homology: $H_*(X) \simeq t_! t^! \mathbf{1}$. (Hint: Use the adjunctions
-    $(t^* \dashv t_*)$ and $(t_! \dashv t^!)$ together with the self-duality of $\operatorname{Shv}(X;
-    \mathbf{Sp})$ to prove Poincaré duality $H_c^*(X)^\vee \cong H_*(X)$ and $H^*(X)^\vee \cong H_*^{\text{BM}}(X)$)'
-  hint: null
+    \mathbf{1}$. 4. Standard homology: $H_*(X) \simeq t_! t^! \mathbf{1}$. '
+  hint: Use the adjunctions $(t^* \dashv t_*)$ and $(t_! \dashv t^!)$ together with the self-duality of
+    $\operatorname{Shv}(X; \mathbf{Sp})$ to prove Poincaré duality $H_c^*(X)^\vee \cong H_*(X)$ and $H^*(X)^\vee
+    \cong H_*^{\text{BM}}(X)$
   locator: null
   sub_index: null
   search_text: '(cohomology with compact support and borel-moore homology via six functors) let $t: x
@@ -201,6 +194,6 @@ exercises:
     operations on the tensor unit $\mathbf{1} = \mathbb{s} \in \operatorname{shv}(\{*\}, \mathbf{sp})$:
     1. ordinary cohomology: $h^*(x) \simeq t_* t^* \mathbf{1}$. 2. cohomology with compact support: $h_c^*(x)
     \simeq t_! t^* \mathbf{1}$. 3. locally finite (borel–moore) homology: $h_*^{\text{bm}}(x) \simeq t_*
-    t^! \mathbf{1}$. 4. standard homology: $h_*(x) \simeq t_! t^! \mathbf{1}$. (hint: use the adjunctions
-    $(t^* \dashv t_*)$ and $(t_! \dashv t^!)$ together with the self-duality of $\operatorname{shv}(x;
-    \mathbf{sp})$ to prove poincaré duality $h_c^*(x)^\vee \cong h_*(x)$ and $h^*(x)^\vee \cong h_*^{\text{bm}}(x)$)'
+    t^! \mathbf{1}$. 4. standard homology: $h_*(x) \simeq t_! t^! \mathbf{1}$.  use the adjunctions $(t^*
+    \dashv t_*)$ and $(t_! \dashv t^!)$ together with the self-duality of $\operatorname{shv}(x; \mathbf{sp})$
+    to prove poincaré duality $h_c^*(x)^\vee \cong h_*(x)$ and $h^*(x)^\vee \cong h_*^{\text{bm}}(x)$'

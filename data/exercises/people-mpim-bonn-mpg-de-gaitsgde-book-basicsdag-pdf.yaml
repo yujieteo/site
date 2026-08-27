@@ -6,254 +6,242 @@ source_file: exercises.txt
 locator_kind: page
 exercises:
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#000
-  text: 'Define the $\infty$-category of prestacks $\mathbf{PreStk}$. (Hint: A prestack is defined as
-    a functor $\mathcal{Y}: (\mathbf{Sch}^{\text{aff}})^{\text{op}} \to \mathbf{Grpd}_\infty \cong \mathcal{S}$
-    from the opposite of derived affine schemes to $\infty$-groupoids / spaces)'
-  hint: null
+  text: 'Define the $\infty$-category of prestacks $\mathbf{PreStk}$. '
+  hint: 'A prestack is defined as a functor $\mathcal{Y}: (\mathbf{Sch}^{\text{aff}})^{\text{op}} \to
+    \mathbf{Grpd}_\infty \cong \mathcal{S}$ from the opposite of derived affine schemes to $\infty$-groupoids
+    / spaces'
   locator:
     kind: page
     value: '4'
     number: 4
   sub_index: 0
-  search_text: 'define the $\infty$-category of prestacks $\mathbf{prestk}$. (hint: a prestack is defined
-    as a functor $\mathcal{y}: (\mathbf{sch}^{\text{aff}})^{\text{op}} \to \mathbf{grpd}_\infty \cong
-    \mathcal{s}$ from the opposite of derived affine schemes to $\infty$-groupoids / spaces)'
+  search_text: 'define the $\infty$-category of prestacks $\mathbf{prestk}$.  a prestack is defined as
+    a functor $\mathcal{y}: (\mathbf{sch}^{\text{aff}})^{\text{op}} \to \mathbf{grpd}_\infty \cong \mathcal{s}$
+    from the opposite of derived affine schemes to $\infty$-groupoids / spaces'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#001
   text: 'Define the category of quasicoherent sheaves $\operatorname{QCoh}(\mathcal{Y})$ on a prestack
-    $\mathcal{Y}$. (Hint: Formulate $\operatorname{QCoh}: \mathbf{PreStk}^{\text{op}} \to \mathbf{DGCat}_{\text{cont}}$
+    $\mathcal{Y}$. '
+  hint: 'Formulate $\operatorname{QCoh}: \mathbf{PreStk}^{\text{op}} \to \mathbf{DGCat}_{\text{cont}}$
     as the right Kan extension of the functor $S \mapsto \operatorname{QCoh}(S) = \operatorname{Mod}_A$
-    from derived affine schemes $\mathbf{Sch}^{\text{aff}}$ to continuous dg-categories)'
-  hint: null
+    from derived affine schemes $\mathbf{Sch}^{\text{aff}}$ to continuous dg-categories'
   locator:
     kind: page
     value: '4'
     number: 4
   sub_index: 1
   search_text: 'define the category of quasicoherent sheaves $\operatorname{qcoh}(\mathcal{y})$ on a prestack
-    $\mathcal{y}$. (hint: formulate $\operatorname{qcoh}: \mathbf{prestk}^{\text{op}} \to \mathbf{dgcat}_{\text{cont}}$
+    $\mathcal{y}$.  formulate $\operatorname{qcoh}: \mathbf{prestk}^{\text{op}} \to \mathbf{dgcat}_{\text{cont}}$
     as the right kan extension of the functor $s \mapsto \operatorname{qcoh}(s) = \operatorname{mod}_a$
-    from derived affine schemes $\mathbf{sch}^{\text{aff}}$ to continuous dg-categories)'
+    from derived affine schemes $\mathbf{sch}^{\text{aff}}$ to continuous dg-categories'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#002
-  text: 'Define $n$-connective and $n$-coconnective prestacks via Kan extensions. (Hint: The inclusion
-    of $n$-connective derived affine schemes into all derived affine schemes admits a fully faithful left
-    adjoint; a prestack is $n$-coconnective if it is completely determined by its values on $n$-coconnective
-    affine schemes)'
-  hint: null
+  text: 'Define $n$-connective and $n$-coconnective prestacks via Kan extensions. '
+  hint: The inclusion of $n$-connective derived affine schemes into all derived affine schemes admits
+    a fully faithful left adjoint; a prestack is $n$-coconnective if it is completely determined by its
+    values on $n$-coconnective affine schemes
   locator:
     kind: page
     value: '4'
     number: 4
   sub_index: 2
-  search_text: 'define $n$-connective and $n$-coconnective prestacks via kan extensions. (hint: the inclusion
+  search_text: define $n$-connective and $n$-coconnective prestacks via kan extensions.  the inclusion
     of $n$-connective derived affine schemes into all derived affine schemes admits a fully faithful left
     adjoint; a prestack is $n$-coconnective if it is completely determined by its values on $n$-coconnective
-    affine schemes)'
+    affine schemes
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#003
-  text: 'Explain the convergence condition for prestacks in derived deformation theory. (Hint: A prestack
-    $\mathcal{Y}$ is convergent if the natural evaluation map $\mathcal{Y}(S) \to \lim_{n} \mathcal{Y}(\tau_{\le
-    n} S)$ to its Postnikov $n$-coconnective truncations is an equivalence for every affine scheme $S$,
-    ensuring formal deformation theory works)'
-  hint: null
+  text: 'Explain the convergence condition for prestacks in derived deformation theory. '
+  hint: A prestack $\mathcal{Y}$ is convergent if the natural evaluation map $\mathcal{Y}(S) \to \lim_{n}
+    \mathcal{Y}(\tau_{\le n} S)$ to its Postnikov $n$-coconnective truncations is an equivalence for every
+    affine scheme $S$, ensuring formal deformation theory works
   locator:
     kind: page
     value: '4'
     number: 4
   sub_index: 3
-  search_text: 'explain the convergence condition for prestacks in derived deformation theory. (hint:
-    a prestack $\mathcal{y}$ is convergent if the natural evaluation map $\mathcal{y}(s) \to \lim_{n}
-    \mathcal{y}(\tau_{\le n} s)$ to its postnikov $n$-coconnective truncations is an equivalence for every
-    affine scheme $s$, ensuring formal deformation theory works)'
+  search_text: explain the convergence condition for prestacks in derived deformation theory.  a prestack
+    $\mathcal{y}$ is convergent if the natural evaluation map $\mathcal{y}(s) \to \lim_{n} \mathcal{y}(\tau_{\le
+    n} s)$ to its postnikov $n$-coconnective truncations is an equivalence for every affine scheme $s$,
+    ensuring formal deformation theory works
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#004
-  text: 'Describe the hierarchy of Grothendieck topologies in derived algebraic geometry. (Hint: Order
-    the topologies by increasing refinement: $\text{Zariski} \le \text{étale} \le \text{smooth} \le \text{fppf}
-    \le \text{fpqc}$)'
-  hint: null
+  text: 'Describe the hierarchy of Grothendieck topologies in derived algebraic geometry. '
+  hint: 'Order the topologies by increasing refinement: $\text{Zariski} \le \text{étale} \le \text{smooth}
+    \le \text{fppf} \le \text{fpqc}$'
   locator:
     kind: page
     value: '5'
     number: 5
   sub_index: 0
-  search_text: 'describe the hierarchy of grothendieck topologies in derived algebraic geometry. (hint:
-    order the topologies by increasing refinement: $\text{zariski} \le \text{étale} \le \text{smooth}
-    \le \text{fppf} \le \text{fpqc}$)'
+  search_text: 'describe the hierarchy of grothendieck topologies in derived algebraic geometry.  order
+    the topologies by increasing refinement: $\text{zariski} \le \text{étale} \le \text{smooth} \le \text{fppf}
+    \le \text{fpqc}$'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#005
-  text: 'Define an $n$-coconnective derived scheme. (Hint: A derived scheme is a derived stack that admits
-    a Zariski atlas $\coprod S_i \to \mathcal{X}$ by open embeddings of derived affine schemes; it is
-    $n$-coconnective if all affine charts $S_i \cong \operatorname{Spec} A_i$ are $n$-coconnective)'
-  hint: null
+  text: 'Define an $n$-coconnective derived scheme. '
+  hint: A derived scheme is a derived stack that admits a Zariski atlas $\coprod S_i \to \mathcal{X}$
+    by open embeddings of derived affine schemes; it is $n$-coconnective if all affine charts $S_i \cong
+    \operatorname{Spec} A_i$ are $n$-coconnective
   locator:
     kind: page
     value: '5'
     number: 5
   sub_index: 1
-  search_text: 'define an $n$-coconnective derived scheme. (hint: a derived scheme is a derived stack
-    that admits a zariski atlas $\coprod s_i \to \mathcal{x}$ by open embeddings of derived affine schemes;
-    it is $n$-coconnective if all affine charts $s_i \cong \operatorname{spec} a_i$ are $n$-coconnective)'
+  search_text: define an $n$-coconnective derived scheme.  a derived scheme is a derived stack that admits
+    a zariski atlas $\coprod s_i \to \mathcal{x}$ by open embeddings of derived affine schemes; it is
+    $n$-coconnective if all affine charts $s_i \cong \operatorname{spec} a_i$ are $n$-coconnective
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#006
-  text: 'Define the category of derived affine schemes $\mathbf{Sch}^{\text{aff}}$. (Hint: $\mathbf{Sch}^{\text{aff}}$
-    is defined as the opposite category of connective commutative differential graded algebras $\mathbf{CDGA}^{\le
-    0}$ over $k$, localized at quasi-isomorphisms)'
-  hint: null
+  text: 'Define the category of derived affine schemes $\mathbf{Sch}^{\text{aff}}$. '
+  hint: $\mathbf{Sch}^{\text{aff}}$ is defined as the opposite category of connective commutative differential
+    graded algebras $\mathbf{CDGA}^{\le 0}$ over $k$, localized at quasi-isomorphisms
   locator:
     kind: page
     value: '6'
     number: 6
   sub_index: 0
-  search_text: 'define the category of derived affine schemes $\mathbf{sch}^{\text{aff}}$. (hint: $\mathbf{sch}^{\text{aff}}$
+  search_text: define the category of derived affine schemes $\mathbf{sch}^{\text{aff}}$.  $\mathbf{sch}^{\text{aff}}$
     is defined as the opposite category of connective commutative differential graded algebras $\mathbf{cdga}^{\le
-    0}$ over $k$, localized at quasi-isomorphisms)'
+    0}$ over $k$, localized at quasi-isomorphisms
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#007
-  text: 'State Lemma 1.4.4 on the convergence of representable derived affine schemes. (Hint: Show that
-    every derived affine scheme $S = \operatorname{Spec} A$ represented by a connective CDGA is automatically
-    convergent: $\operatorname{Map}(S, T) \xrightarrow{\sim} \lim_n \operatorname{Map}(S, \tau_{\le n}
-    T)$)'
-  hint: null
+  text: 'State Lemma 1.4.4 on the convergence of representable derived affine schemes. '
+  hint: 'Show that every derived affine scheme $S = \operatorname{Spec} A$ represented by a connective
+    CDGA is automatically convergent: $\operatorname{Map}(S, T) \xrightarrow{\sim} \lim_n \operatorname{Map}(S,
+    \tau_{\le n} T)$'
   locator:
     kind: page
     value: '9'
     number: 9
   sub_index: 0
-  search_text: 'state lemma 1.4.4 on the convergence of representable derived affine schemes. (hint: show
-    that every derived affine scheme $s = \operatorname{spec} a$ represented by a connective cdga is automatically
+  search_text: 'state lemma 1.4.4 on the convergence of representable derived affine schemes.  show that
+    every derived affine scheme $s = \operatorname{spec} a$ represented by a connective cdga is automatically
     convergent: $\operatorname{map}(s, t) \xrightarrow{\sim} \lim_n \operatorname{map}(s, \tau_{\le n}
-    t)$)'
+    t)$'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#008
-  text: 'Define what it means for a prestack or derived affine scheme to be locally of finite type (lft).
-    (Hint: An affine derived scheme $\operatorname{Spec} A$ is lft if $\pi_0(A)$ is a finitely generated
+  text: 'Define what it means for a prestack or derived affine scheme to be locally of finite type (lft). '
+  hint: An affine derived scheme $\operatorname{Spec} A$ is lft if $\pi_0(A)$ is a finitely generated
     $k$-algebra and all higher homotopy groups $\pi_i(A)$ are finitely generated modules over $\pi_0(A)$;
-    extend to prestacks via left Kan extension)'
-  hint: null
+    extend to prestacks via left Kan extension
   locator:
     kind: page
     value: '9'
     number: 9
   sub_index: 1
-  search_text: 'define what it means for a prestack or derived affine scheme to be locally of finite type
-    (lft). (hint: an affine derived scheme $\operatorname{spec} a$ is lft if $\pi_0(a)$ is a finitely
-    generated $k$-algebra and all higher homotopy groups $\pi_i(a)$ are finitely generated modules over
-    $\pi_0(a)$; extend to prestacks via left kan extension)'
+  search_text: define what it means for a prestack or derived affine scheme to be locally of finite type
+    (lft).  an affine derived scheme $\operatorname{spec} a$ is lft if $\pi_0(a)$ is a finitely generated
+    $k$-algebra and all higher homotopy groups $\pi_i(a)$ are finitely generated modules over $\pi_0(a)$;
+    extend to prestacks via left kan extension
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#009
-  text: 'Define flatness for morphisms of derived affine schemes $S'' \to S$. (Hint: A morphism $\operatorname{Spec}
-    B \to \operatorname{Spec} A$ is flat if $\pi_0(B)$ is flat over $\pi_0(A)$ in the classical sense
-    and the natural base change map $\pi_i(A) \otimes_{\pi_0(A)} \pi_0(B) \xrightarrow{\sim} \pi_i(B)$
-    is an isomorphism for all $i$)'
-  hint: null
+  text: 'Define flatness for morphisms of derived affine schemes $S'' \to S$. '
+  hint: A morphism $\operatorname{Spec} B \to \operatorname{Spec} A$ is flat if $\pi_0(B)$ is flat over
+    $\pi_0(A)$ in the classical sense and the natural base change map $\pi_i(A) \otimes_{\pi_0(A)} \pi_0(B)
+    \xrightarrow{\sim} \pi_i(B)$ is an isomorphism for all $i$
   locator:
     kind: page
     value: '10'
     number: 10
   sub_index: 0
-  search_text: 'define flatness for morphisms of derived affine schemes $s'' \to s$. (hint: a morphism
-    $\operatorname{spec} b \to \operatorname{spec} a$ is flat if $\pi_0(b)$ is flat over $\pi_0(a)$ in
-    the classical sense and the natural base change map $\pi_i(a) \otimes_{\pi_0(a)} \pi_0(b) \xrightarrow{\sim}
-    \pi_i(b)$ is an isomorphism for all $i$)'
+  search_text: define flatness for morphisms of derived affine schemes $s' \to s$.  a morphism $\operatorname{spec}
+    b \to \operatorname{spec} a$ is flat if $\pi_0(b)$ is flat over $\pi_0(a)$ in the classical sense
+    and the natural base change map $\pi_i(a) \otimes_{\pi_0(a)} \pi_0(b) \xrightarrow{\sim} \pi_i(b)$
+    is an isomorphism for all $i$
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#010
   text: 'State the descent and locality properties of morphisms (flat, smooth, étale, open immersion)
-    under base change. (Hint: Morphism properties are stable under derived base change and local with
-    respect to the chosen topology; note that open embeddings are not Zariski-local on the source, and
-    the Zariski topology is not étale-local on the target)'
-  hint: null
+    under base change. '
+  hint: Morphism properties are stable under derived base change and local with respect to the chosen
+    topology; note that open embeddings are not Zariski-local on the source, and the Zariski topology
+    is not étale-local on the target
   locator:
     kind: page
     value: '17'
     number: 17
   sub_index: 0
-  search_text: 'state the descent and locality properties of morphisms (flat, smooth, étale, open immersion)
-    under base change. (hint: morphism properties are stable under derived base change and local with
-    respect to the chosen topology; note that open embeddings are not zariski-local on the source, and
-    the zariski topology is not étale-local on the target)'
+  search_text: state the descent and locality properties of morphisms (flat, smooth, étale, open immersion)
+    under base change.  morphism properties are stable under derived base change and local with respect
+    to the chosen topology; note that open embeddings are not zariski-local on the source, and the zariski
+    topology is not étale-local on the target
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#011
   text: 'Formulate the Čech descent condition for a prestack $\mathcal{Y}$ with respect to a flat/étale
-    covering $S'' \to S$. (Hint: The prestack must send disjoint unions to products, and send the cover
-    $S'' \to S$ to the totalization of the Čech nerve: $\mathcal{Y}(S) \xrightarrow{\sim} \operatorname{Tot}(\mathcal{Y}(S''^{\bullet/S}))$)'
-  hint: null
+    covering $S'' \to S$. '
+  hint: 'The prestack must send disjoint unions to products, and send the cover $S'' \to S$ to the totalization
+    of the Čech nerve: $\mathcal{Y}(S) \xrightarrow{\sim} \operatorname{Tot}(\mathcal{Y}(S''^{\bullet/S}))$'
   locator:
     kind: page
     value: '18'
     number: 18
   sub_index: 0
   search_text: 'formulate the čech descent condition for a prestack $\mathcal{y}$ with respect to a flat/étale
-    covering $s'' \to s$. (hint: the prestack must send disjoint unions to products, and send the cover
-    $s'' \to s$ to the totalization of the čech nerve: $\mathcal{y}(s) \xrightarrow{\sim} \operatorname{tot}(\mathcal{y}(s''^{\bullet/s}))$)'
+    covering $s'' \to s$.  the prestack must send disjoint unions to products, and send the cover $s''
+    \to s$ to the totalization of the čech nerve: $\mathcal{y}(s) \xrightarrow{\sim} \operatorname{tot}(\mathcal{y}(s''^{\bullet/s}))$'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#012
   text: 'Explain why the inclusion of stacks into prestacks $\mathbf{Stk} \hookrightarrow \mathbf{PreStk}$
-    admits a left adjoint. (Hint: The left adjoint is the sheafification/stackification functor with respect
-    to the chosen Grothendieck topology, making $\mathbf{Stk}$ a left-exact localization / reflective
-    subcategory of $\mathbf{PreStk}$)'
-  hint: null
+    admits a left adjoint. '
+  hint: The left adjoint is the sheafification/stackification functor with respect to the chosen Grothendieck
+    topology, making $\mathbf{Stk}$ a left-exact localization / reflective subcategory of $\mathbf{PreStk}$
   locator:
     kind: page
     value: '18'
     number: 18
   sub_index: 1
-  search_text: 'explain why the inclusion of stacks into prestacks $\mathbf{stk} \hookrightarrow \mathbf{prestk}$
-    admits a left adjoint. (hint: the left adjoint is the sheafification/stackification functor with respect
+  search_text: explain why the inclusion of stacks into prestacks $\mathbf{stk} \hookrightarrow \mathbf{prestk}$
+    admits a left adjoint.  the left adjoint is the sheafification/stackification functor with respect
     to the chosen grothendieck topology, making $\mathbf{stk}$ a left-exact localization / reflective
-    subcategory of $\mathbf{prestk}$)'
+    subcategory of $\mathbf{prestk}$
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#013
-  text: 'Formulate the sheafification functor on prestacks. (Hint: Define stackification as the composite
-    left adjoint $\mathbf{PreStk} \to \mathbf{Stk} \hookrightarrow \mathbf{PreStk}$ enforcing the Čech
-    descent condition)'
-  hint: null
+  text: 'Formulate the sheafification functor on prestacks. '
+  hint: Define stackification as the composite left adjoint $\mathbf{PreStk} \to \mathbf{Stk} \hookrightarrow
+    \mathbf{PreStk}$ enforcing the Čech descent condition
   locator:
     kind: page
     value: '19'
     number: 19
   sub_index: 0
-  search_text: 'formulate the sheafification functor on prestacks. (hint: define stackification as the
-    composite left adjoint $\mathbf{prestk} \to \mathbf{stk} \hookrightarrow \mathbf{prestk}$ enforcing
-    the čech descent condition)'
+  search_text: formulate the sheafification functor on prestacks.  define stackification as the composite
+    left adjoint $\mathbf{prestk} \to \mathbf{stk} \hookrightarrow \mathbf{prestk}$ enforcing the čech
+    descent condition
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#014
-  text: 'Analyze the relationship between descent conditions and Postnikov connectivity. (Hint: Examine
+  text: 'Analyze the relationship between descent conditions and Postnikov connectivity. '
+  hint: Examine how étale and flat descent interact with the connectivity of truncated derived affine
+    schemes $\tau_{\le n} S$
+  locator:
+    kind: page
+    value: '20'
+    number: 20
+  sub_index: 0
+  search_text: analyze the relationship between descent conditions and postnikov connectivity.  examine
     how étale and flat descent interact with the connectivity of truncated derived affine schemes $\tau_{\le
-    n} S$)'
-  hint: null
-  locator:
-    kind: page
-    value: '20'
-    number: 20
-  sub_index: 0
-  search_text: 'analyze the relationship between descent conditions and postnikov connectivity. (hint:
-    examine how étale and flat descent interact with the connectivity of truncated derived affine schemes
-    $\tau_{\le n} s$)'
+    n} s$
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#015
-  text: 'Define a schematic morphism of prestacks $\mathcal{Y} \to \mathcal{Z}$. (Hint: A morphism is
-    schematic if for every derived affine scheme $S$ and morphism $S \to \mathcal{Z}$, the derived fiber
-    product $\mathcal{Y} \times_{\mathcal{Z}} S$ is representable by a derived scheme)'
-  hint: null
+  text: 'Define a schematic morphism of prestacks $\mathcal{Y} \to \mathcal{Z}$. '
+  hint: A morphism is schematic if for every derived affine scheme $S$ and morphism $S \to \mathcal{Z}$,
+    the derived fiber product $\mathcal{Y} \times_{\mathcal{Z}} S$ is representable by a derived scheme
   locator:
     kind: page
     value: '20'
     number: 20
   sub_index: 1
-  search_text: 'define a schematic morphism of prestacks $\mathcal{y} \to \mathcal{z}$. (hint: a morphism
-    is schematic if for every derived affine scheme $s$ and morphism $s \to \mathcal{z}$, the derived
-    fiber product $\mathcal{y} \times_{\mathcal{z}} s$ is representable by a derived scheme)'
+  search_text: define a schematic morphism of prestacks $\mathcal{y} \to \mathcal{z}$.  a morphism is
+    schematic if for every derived affine scheme $s$ and morphism $s \to \mathcal{z}$, the derived fiber
+    product $\mathcal{y} \times_{\mathcal{z}} s$ is representable by a derived scheme
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#016
-  text: 'Define a derived Artin stack. (Hint: A derived stack $\mathcal{X}$ is an Artin stack if its diagonal
-    morphism $\Delta: \mathcal{X} \to \mathcal{X} \times \mathcal{X}$ is representable/schematic, and
-    it admits a smooth surjective atlas $\coprod S_i \to \mathcal{X}$ from derived affine schemes)'
-  hint: null
+  text: 'Define a derived Artin stack. '
+  hint: 'A derived stack $\mathcal{X}$ is an Artin stack if its diagonal morphism $\Delta: \mathcal{X}
+    \to \mathcal{X} \times \mathcal{X}$ is representable/schematic, and it admits a smooth surjective
+    atlas $\coprod S_i \to \mathcal{X}$ from derived affine schemes'
   locator:
     kind: page
     value: '36'
     number: 36
   sub_index: 0
-  search_text: 'define a derived artin stack. (hint: a derived stack $\mathcal{x}$ is an artin stack if
-    its diagonal morphism $\delta: \mathcal{x} \to \mathcal{x} \times \mathcal{x}$ is representable/schematic,
-    and it admits a smooth surjective atlas $\coprod s_i \to \mathcal{x}$ from derived affine schemes)'
+  search_text: 'define a derived artin stack.  a derived stack $\mathcal{x}$ is an artin stack if its
+    diagonal morphism $\delta: \mathcal{x} \to \mathcal{x} \times \mathcal{x}$ is representable/schematic,
+    and it admits a smooth surjective atlas $\coprod s_i \to \mathcal{x}$ from derived affine schemes'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-basicsdag-pdf#017
-  text: 'Characterize derived affine schemes $\mathbf{Sch}^{\text{aff}}$ via model categories of CDGAs.
-    (Hint: Derived affine schemes are the formal opposites of connective CDGAs concentrated in non-positive
+  text: 'Characterize derived affine schemes $\mathbf{Sch}^{\text{aff}}$ via model categories of CDGAs. '
+  hint: Derived affine schemes are the formal opposites of connective CDGAs concentrated in non-positive
     degrees $\mathbf{CDGA}_k^{\le 0}$, localized by inverting quasi-isomorphisms or spanned by cofibrant
-    objects)'
-  hint: null
+    objects
   locator:
     kind: page
     value: '36'
     number: 36
   sub_index: 1
-  search_text: 'characterize derived affine schemes $\mathbf{sch}^{\text{aff}}$ via model categories of
-    cdgas. (hint: derived affine schemes are the formal opposites of connective cdgas concentrated in
-    non-positive degrees $\mathbf{cdga}_k^{\le 0}$, localized by inverting quasi-isomorphisms or spanned
-    by cofibrant objects)'
+  search_text: characterize derived affine schemes $\mathbf{sch}^{\text{aff}}$ via model categories of
+    cdgas.  derived affine schemes are the formal opposites of connective cdgas concentrated in non-positive
+    degrees $\mathbf{cdga}_k^{\le 0}$, localized by inverting quasi-isomorphisms or spanned by cofibrant
+    objects

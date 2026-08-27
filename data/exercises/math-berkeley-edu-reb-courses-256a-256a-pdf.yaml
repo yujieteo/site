@@ -9,46 +9,44 @@ exercises:
   text: '(The Circle as an Algebraic Group and Weierstrass Substitution) Realize the unit circle $S^1
     \subset \mathbb{R}^2$ as an affine algebraic variety defined by $x^2 + y^2 = 1$, and equip it with
     an algebraic group law. Use the stereographic/Weierstrass substitution $t = \tan(\theta/2)$ to construct
-    a rational parametrization $t \mapsto \left(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\right)$. (Hint:
-    Show that this birational map from $\mathbb{A}^1$ to $S^1$ parametrizes all rational points on the
-    circle and connects Pythagorean triples to the geometry of algebraic groups)'
-  hint: null
+    a rational parametrization $t \mapsto \left(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\right)$. '
+  hint: Show that this birational map from $\mathbb{A}^1$ to $S^1$ parametrizes all rational points on
+    the circle and connects Pythagorean triples to the geometry of algebraic groups
   locator: null
   sub_index: null
-  search_text: '(the circle as an algebraic group and weierstrass substitution) realize the unit circle
+  search_text: (the circle as an algebraic group and weierstrass substitution) realize the unit circle
     $s^1 \subset \mathbb{r}^2$ as an affine algebraic variety defined by $x^2 + y^2 = 1$, and equip it
     with an algebraic group law. use the stereographic/weierstrass substitution $t = \tan(\theta/2)$ to
-    construct a rational parametrization $t \mapsto \left(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\right)$.
-    (hint: show that this birational map from $\mathbb{a}^1$ to $s^1$ parametrizes all rational points
-    on the circle and connects pythagorean triples to the geometry of algebraic groups)'
+    construct a rational parametrization $t \mapsto \left(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\right)$.  show
+    that this birational map from $\mathbb{a}^1$ to $s^1$ parametrizes all rational points on the circle
+    and connects pythagorean triples to the geometry of algebraic groups
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#001
   text: '(Resolving the Nodal Singularity of the Cubic Curve) Consider the nodal cubic curve $y^2 = x^3
     + x^2$ in $\mathbb{A}^2$, which has a singular node at the origin $(0, 0)$. Show that the map $t \mapsto
     (t^2 - 1, t(t^2 - 1))$ is a polynomial map from $\mathbb{A}^1$ to the curve that is $2:1$ at the origin
-    ($t = \pm 1 \mapsto (0, 0)$) and $1:1$ elsewhere. (Hint: This normalization map is a birational isomorphism
-    and provides the simplest example of a resolution of singularities in characteristic 0)'
-  hint: null
+    ($t = \pm 1 \mapsto (0, 0)$) and $1:1$ elsewhere. '
+  hint: This normalization map is a birational isomorphism and provides the simplest example of a resolution
+    of singularities in characteristic 0
   locator: null
   sub_index: null
-  search_text: '(resolving the nodal singularity of the cubic curve) consider the nodal cubic curve $y^2
+  search_text: (resolving the nodal singularity of the cubic curve) consider the nodal cubic curve $y^2
     = x^3 + x^2$ in $\mathbb{a}^2$, which has a singular node at the origin $(0, 0)$. show that the map
     $t \mapsto (t^2 - 1, t(t^2 - 1))$ is a polynomial map from $\mathbb{a}^1$ to the curve that is $2:1$
-    at the origin ($t = \pm 1 \mapsto (0, 0)$) and $1:1$ elsewhere. (hint: this normalization map is a
-    birational isomorphism and provides the simplest example of a resolution of singularities in characteristic
-    0)'
+    at the origin ($t = \pm 1 \mapsto (0, 0)$) and $1:1$ elsewhere.  this normalization map is a birational
+    isomorphism and provides the simplest example of a resolution of singularities in characteristic 0
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#002
   text: '(Birational Maps vs. Isomorphisms) Define a rational map $f: X \dashrightarrow Y$ and a birational
     map between irreducible algebraic varieties. Explain why birational maps can fail to be regular isomorphisms
-    only on subvarieties of codimension $\ge 1$. (Hint: Contrast this with differential topology, where
-    every smooth bijective map between manifolds with non-vanishing Jacobian is a global diffeomorphism)'
-  hint: null
+    only on subvarieties of codimension $\ge 1$. '
+  hint: Contrast this with differential topology, where every smooth bijective map between manifolds with
+    non-vanishing Jacobian is a global diffeomorphism
   locator: null
   sub_index: null
   search_text: '(birational maps vs. isomorphisms) define a rational map $f: x \dashrightarrow y$ and
     a birational map between irreducible algebraic varieties. explain why birational maps can fail to
-    be regular isomorphisms only on subvarieties of codimension $\ge 1$. (hint: contrast this with differential
+    be regular isomorphisms only on subvarieties of codimension $\ge 1$.  contrast this with differential
     topology, where every smooth bijective map between manifolds with non-vanishing jacobian is a global
-    diffeomorphism)'
+    diffeomorphism'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#003
   text: (Abelian Varieties and Projective Group Varieties) Explain how adding points at infinity compactifies
     smooth affine cubic curves into elliptic curves (smooth projective curves of genus 1 with a group
@@ -65,16 +63,16 @@ exercises:
     as $\mathrm{gl}_n$), which can be non-abelian
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#004
   text: '(Schemes vs. Vector Bundles and Tangent Sheaves) Explain why schemes and sheaves are necessary
-    when studying singular varieties. (Hint: On a singular algebraic variety $X$, the tangent/cotangent
-    bundle does not exist as a locally trivial vector bundle, whereas the cotangent sheaf $\Omega_{X/k}^1$
-    and the module of Kähler differentials are well-defined everywhere)'
-  hint: null
+    when studying singular varieties. '
+  hint: On a singular algebraic variety $X$, the tangent/cotangent bundle does not exist as a locally
+    trivial vector bundle, whereas the cotangent sheaf $\Omega_{X/k}^1$ and the module of Kähler differentials
+    are well-defined everywhere
   locator: null
   sub_index: null
-  search_text: '(schemes vs. vector bundles and tangent sheaves) explain why schemes and sheaves are necessary
-    when studying singular varieties. (hint: on a singular algebraic variety $x$, the tangent/cotangent
-    bundle does not exist as a locally trivial vector bundle, whereas the cotangent sheaf $\omega_{x/k}^1$
-    and the module of kähler differentials are well-defined everywhere)'
+  search_text: (schemes vs. vector bundles and tangent sheaves) explain why schemes and sheaves are necessary
+    when studying singular varieties.  on a singular algebraic variety $x$, the tangent/cotangent bundle
+    does not exist as a locally trivial vector bundle, whereas the cotangent sheaf $\omega_{x/k}^1$ and
+    the module of kähler differentials are well-defined everywhere
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#005
   text: '(The Non-Hausdorff Zariski Topology and Separated Schemes) Show that the Zariski topology on
     a product variety $X \times Y$ is strictly finer than the product topology of the Zariski topologies
@@ -92,226 +90,218 @@ exercises:
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#006
   text: '(Determinantal Varieties) Define determinantal varieties in the affine space $M_{m, n}(k) \cong
     \mathbb{A}^{mn}$ of $m \times n$ matrices as the zero loci of all $(r+1) \times (r+1)$ determinantal
-    minors. (Hint: Determinantal varieties parameterize linear maps $k^n \to k^m$ of rank $\le r$)'
-  hint: null
+    minors. '
+  hint: Determinantal varieties parameterize linear maps $k^n \to k^m$ of rank $\le r$
   locator: null
   sub_index: null
-  search_text: '(determinantal varieties) define determinantal varieties in the affine space $m_{m, n}(k)
+  search_text: (determinantal varieties) define determinantal varieties in the affine space $m_{m, n}(k)
     \cong \mathbb{a}^{mn}$ of $m \times n$ matrices as the zero loci of all $(r+1) \times (r+1)$ determinantal
-    minors. (hint: determinantal varieties parameterize linear maps $k^n \to k^m$ of rank $\le r$)'
+    minors.  determinantal varieties parameterize linear maps $k^n \to k^m$ of rank $\le r$
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#007
   text: '(Short Proof of Hilbert''s Basis Theorem) State and prove Hilbert''s Basis Theorem: if $R$ is
-    a Noetherian ring, then $R[x]$ is Noetherian. (Hint: For any ideal $I \subseteq R[x]$, consider the
-    ideal $J \subseteq R$ of leading coefficients of polynomials in $I$; since $R$ is Noetherian, $J$
-    is finitely generated, and an inductive degree argument shows $I$ is finitely generated. Adapt the
-    same argument to formal power series rings $R[[x]]$ by considering the lowest-degree non-zero coefficients)'
-  hint: null
+    a Noetherian ring, then $R[x]$ is Noetherian. '
+  hint: For any ideal $I \subseteq R[x]$, consider the ideal $J \subseteq R$ of leading coefficients of
+    polynomials in $I$; since $R$ is Noetherian, $J$ is finitely generated, and an inductive degree argument
+    shows $I$ is finitely generated. Adapt the same argument to formal power series rings $R[[x]]$ by
+    considering the lowest-degree non-zero coefficients
   locator: null
   sub_index: null
   search_text: '(short proof of hilbert''s basis theorem) state and prove hilbert''s basis theorem: if
-    $r$ is a noetherian ring, then $r[x]$ is noetherian. (hint: for any ideal $i \subseteq r[x]$, consider
-    the ideal $j \subseteq r$ of leading coefficients of polynomials in $i$; since $r$ is noetherian,
-    $j$ is finitely generated, and an inductive degree argument shows $i$ is finitely generated. adapt
-    the same argument to formal power series rings $r[[x]]$ by considering the lowest-degree non-zero
-    coefficients)'
+    $r$ is a noetherian ring, then $r[x]$ is noetherian.  for any ideal $i \subseteq r[x]$, consider the
+    ideal $j \subseteq r$ of leading coefficients of polynomials in $i$; since $r$ is noetherian, $j$
+    is finitely generated, and an inductive degree argument shows $i$ is finitely generated. adapt the
+    same argument to formal power series rings $r[[x]]$ by considering the lowest-degree non-zero coefficients'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#008
   text: '(Noetherian Topological Spaces and Irreducible Components) Define a Noetherian topological space
     as a space satisfying the descending chain condition on closed subsets. Prove that every closed subset
     of a Noetherian space decomposes uniquely as a finite union of irreducible closed subvarieties $Y
-    = Y_1 \cup \dots \cup Y_m$. (Hint: Use Noetherian induction on a minimal counterexample)'
-  hint: null
+    = Y_1 \cup \dots \cup Y_m$. '
+  hint: Use Noetherian induction on a minimal counterexample
   locator: null
   sub_index: null
-  search_text: '(noetherian topological spaces and irreducible components) define a noetherian topological
+  search_text: (noetherian topological spaces and irreducible components) define a noetherian topological
     space as a space satisfying the descending chain condition on closed subsets. prove that every closed
     subset of a noetherian space decomposes uniquely as a finite union of irreducible closed subvarieties
-    $y = y_1 \cup \dots \cup y_m$. (hint: use noetherian induction on a minimal counterexample)'
+    $y = y_1 \cup \dots \cup y_m$.  use noetherian induction on a minimal counterexample
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#009
   text: '(Failure of the Nullstellensatz over Non-Algebraically Closed Fields) Consider the maximal ideal
     $\langle x^2 + 1 \rangle \subset \mathbb{R}[x]$. Explain why this maximal ideal does not correspond
     to any point in $\mathbb{A}^1(\mathbb{R})$, demonstrating that the classical Nullstellensatz requires
-    the base field to be algebraically closed. (Hint: The residue field $\mathbb{R}[x]/\langle x^2 + 1
-    \rangle \cong \mathbb{C}$ is a non-trivial algebraic extension of $\mathbb{R}$)'
-  hint: null
+    the base field to be algebraically closed. '
+  hint: The residue field $\mathbb{R}[x]/\langle x^2 + 1 \rangle \cong \mathbb{C}$ is a non-trivial algebraic
+    extension of $\mathbb{R}$
   locator: null
   sub_index: null
-  search_text: '(failure of the nullstellensatz over non-algebraically closed fields) consider the maximal
+  search_text: (failure of the nullstellensatz over non-algebraically closed fields) consider the maximal
     ideal $\langle x^2 + 1 \rangle \subset \mathbb{r}[x]$. explain why this maximal ideal does not correspond
     to any point in $\mathbb{a}^1(\mathbb{r})$, demonstrating that the classical nullstellensatz requires
-    the base field to be algebraically closed. (hint: the residue field $\mathbb{r}[x]/\langle x^2 + 1
-    \rangle \cong \mathbb{c}$ is a non-trivial algebraic extension of $\mathbb{r}$)'
+    the base field to be algebraically closed.  the residue field $\mathbb{r}[x]/\langle x^2 + 1 \rangle
+    \cong \mathbb{c}$ is a non-trivial algebraic extension of $\mathbb{r}$
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#010
   text: '(Proof of the Weak Nullstellensatz via Zariski''s Lemma) Prove the Weak Nullstellensatz: if $k$
     is an algebraically closed field and $\mathfrak{m} \subset k[x_1, \dots, x_n]$ is a maximal ideal,
-    then the quotient field $K = k[x_1, \dots, x_n]/\mathfrak{m}$ is isomorphic to $k$. (Hint: Use Zariski''s
-    Lemma: if a field $K$ is finitely generated as an algebra over $k$, then $K$ is a finite algebraic
-    extension of $k$; since $k$ is algebraically closed, $K = k$)'
-  hint: null
+    then the quotient field $K = k[x_1, \dots, x_n]/\mathfrak{m}$ is isomorphic to $k$. '
+  hint: 'Use Zariski''s Lemma: if a field $K$ is finitely generated as an algebra over $k$, then $K$ is
+    a finite algebraic extension of $k$; since $k$ is algebraically closed, $K = k$'
   locator: null
   sub_index: null
   search_text: '(proof of the weak nullstellensatz via zariski''s lemma) prove the weak nullstellensatz:
     if $k$ is an algebraically closed field and $\mathfrak{m} \subset k[x_1, \dots, x_n]$ is a maximal
-    ideal, then the quotient field $k = k[x_1, \dots, x_n]/\mathfrak{m}$ is isomorphic to $k$. (hint:
-    use zariski''s lemma: if a field $k$ is finitely generated as an algebra over $k$, then $k$ is a finite
-    algebraic extension of $k$; since $k$ is algebraically closed, $k = k$)'
+    ideal, then the quotient field $k = k[x_1, \dots, x_n]/\mathfrak{m}$ is isomorphic to $k$.  use zariski''s
+    lemma: if a field $k$ is finitely generated as an algebra over $k$, then $k$ is a finite algebraic
+    extension of $k$; since $k$ is algebraically closed, $k = k$'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#011
   text: '(The Strong Nullstellensatz and the Rabinowitsch Trick) State the Strong Nullstellensatz: for
     any ideal $I \subseteq k[x_1, \dots, x_n]$ over an algebraically closed field $k$, $\mathbf{I}(\mathbf{V}(I))
-    = \sqrt{I}$. Prove this from the Weak Nullstellensatz using the Rabinowitsch trick. (Hint: Introduce
-    an auxiliary variable $y$ and apply the Weak Nullstellensatz to the ideal $J = \langle I, 1 - y f
-    \rangle \subset k[x_1, \dots, x_n, y]$ for $f \in \mathbf{I}(\mathbf{V}(I))$)'
-  hint: null
+    = \sqrt{I}$. Prove this from the Weak Nullstellensatz using the Rabinowitsch trick. '
+  hint: Introduce an auxiliary variable $y$ and apply the Weak Nullstellensatz to the ideal $J = \langle
+    I, 1 - y f \rangle \subset k[x_1, \dots, x_n, y]$ for $f \in \mathbf{I}(\mathbf{V}(I))$
   locator: null
   sub_index: null
   search_text: '(the strong nullstellensatz and the rabinowitsch trick) state the strong nullstellensatz:
     for any ideal $i \subseteq k[x_1, \dots, x_n]$ over an algebraically closed field $k$, $\mathbf{i}(\mathbf{v}(i))
-    = \sqrt{i}$. prove this from the weak nullstellensatz using the rabinowitsch trick. (hint: introduce
-    an auxiliary variable $y$ and apply the weak nullstellensatz to the ideal $j = \langle i, 1 - y f
-    \rangle \subset k[x_1, \dots, x_n, y]$ for $f \in \mathbf{i}(\mathbf{v}(i))$)'
+    = \sqrt{i}$. prove this from the weak nullstellensatz using the rabinowitsch trick.  introduce an
+    auxiliary variable $y$ and apply the weak nullstellensatz to the ideal $j = \langle i, 1 - y f \rangle
+    \subset k[x_1, \dots, x_n, y]$ for $f \in \mathbf{i}(\mathbf{v}(i))$'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#012
   text: '(Lasker-Noether Primary Decomposition and Nilpotent Fuzz) State the Lasker–Noether theorem: every
     ideal $I$ in a Noetherian ring $R$ admits a primary decomposition $I = \mathfrak{q}_1 \cap \dots \cap
     \mathfrak{q}_m$, where each $\mathfrak{q}_i$ is a primary ideal ($\sqrt{\mathfrak{q}_i} = \mathfrak{p}_i$
     is prime). Distinguish between isolated/minimal primes (representing geometric irreducible components)
-    and embedded primes (representing non-reduced nilpotent fuzz supported on lower-dimensional loci).
-    (Hint: Primary decomposition generalizes the prime factorization of integers in $\mathbb{Z}/n\mathbb{Z}$)'
-  hint: null
+    and embedded primes (representing non-reduced nilpotent fuzz supported on lower-dimensional loci). '
+  hint: Primary decomposition generalizes the prime factorization of integers in $\mathbb{Z}/n\mathbb{Z}$
   locator: null
   sub_index: null
   search_text: '(lasker-noether primary decomposition and nilpotent fuzz) state the lasker–noether theorem:
     every ideal $i$ in a noetherian ring $r$ admits a primary decomposition $i = \mathfrak{q}_1 \cap \dots
     \cap \mathfrak{q}_m$, where each $\mathfrak{q}_i$ is a primary ideal ($\sqrt{\mathfrak{q}_i} = \mathfrak{p}_i$
     is prime). distinguish between isolated/minimal primes (representing geometric irreducible components)
-    and embedded primes (representing non-reduced nilpotent fuzz supported on lower-dimensional loci).
-    (hint: primary decomposition generalizes the prime factorization of integers in $\mathbb{z}/n\mathbb{z}$)'
+    and embedded primes (representing non-reduced nilpotent fuzz supported on lower-dimensional loci).  primary
+    decomposition generalizes the prime factorization of integers in $\mathbb{z}/n\mathbb{z}$'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#013
   text: '(Nagata''s Counterexample to Finite Generation of Invariants) Explain David Mumford''s geometric
-    invariant theory (GIT) setup for constructing moduli spaces as quotients $X/\!\!/G$. (Hint: When $G$
-    is a non-compact or non-reductive group, the ring of invariants $R^G$ may fail to be finitely generated,
-    as shown by Nagata''s counterexample to Hilbert''s fourteenth problem; for compact/reductive groups,
-    finite generation is restored via the Reynolds operator / Weyl''s unitary trick)'
-  hint: null
+    invariant theory (GIT) setup for constructing moduli spaces as quotients $X/\!\!/G$. '
+  hint: When $G$ is a non-compact or non-reductive group, the ring of invariants $R^G$ may fail to be
+    finitely generated, as shown by Nagata's counterexample to Hilbert's fourteenth problem; for compact/reductive
+    groups, finite generation is restored via the Reynolds operator / Weyl's unitary trick
   locator: null
   sub_index: null
-  search_text: '(nagata''s counterexample to finite generation of invariants) explain david mumford''s
-    geometric invariant theory (git) setup for constructing moduli spaces as quotients $x/\!\!/g$. (hint:
-    when $g$ is a non-compact or non-reductive group, the ring of invariants $r^g$ may fail to be finitely
-    generated, as shown by nagata''s counterexample to hilbert''s fourteenth problem; for compact/reductive
-    groups, finite generation is restored via the reynolds operator / weyl''s unitary trick)'
+  search_text: (nagata's counterexample to finite generation of invariants) explain david mumford's geometric
+    invariant theory (git) setup for constructing moduli spaces as quotients $x/\!\!/g$.  when $g$ is
+    a non-compact or non-reductive group, the ring of invariants $r^g$ may fail to be finitely generated,
+    as shown by nagata's counterexample to hilbert's fourteenth problem; for compact/reductive groups,
+    finite generation is restored via the reynolds operator / weyl's unitary trick
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#014
   text: '(Topological Dimension vs. Krull Dimension) Compare the Lebesgue covering dimension of topological
-    spaces with the Krull dimension of algebraic varieties. (Hint: Peano space-filling curves provide
-    continuous surjections $\mathbb{R} \to \mathbb{R}^2$, showing that topological dimension requires
-    metric/covering refinements; in algebraic geometry, $\dim(X)$ is the transcendence degree of the function
-    field $k(X)$ over $k$, or the supremum of lengths of chains of irreducible closed subvarieties)'
-  hint: null
+    spaces with the Krull dimension of algebraic varieties. '
+  hint: Peano space-filling curves provide continuous surjections $\mathbb{R} \to \mathbb{R}^2$, showing
+    that topological dimension requires metric/covering refinements; in algebraic geometry, $\dim(X)$
+    is the transcendence degree of the function field $k(X)$ over $k$, or the supremum of lengths of chains
+    of irreducible closed subvarieties
   locator: null
   sub_index: null
-  search_text: '(topological dimension vs. krull dimension) compare the lebesgue covering dimension of
-    topological spaces with the krull dimension of algebraic varieties. (hint: peano space-filling curves
-    provide continuous surjections $\mathbb{r} \to \mathbb{r}^2$, showing that topological dimension requires
+  search_text: (topological dimension vs. krull dimension) compare the lebesgue covering dimension of
+    topological spaces with the krull dimension of algebraic varieties.  peano space-filling curves provide
+    continuous surjections $\mathbb{r} \to \mathbb{r}^2$, showing that topological dimension requires
     metric/covering refinements; in algebraic geometry, $\dim(x)$ is the transcendence degree of the function
-    field $k(x)$ over $k$, or the supremum of lengths of chains of irreducible closed subvarieties)'
+    field $k(x)$ over $k$, or the supremum of lengths of chains of irreducible closed subvarieties
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#015
   text: '(Synthetic Projective Geometry and Pappus''s Theorem) Explain how Pappus''s hexagon theorem in
     synthetic projective geometry guarantees that a projective space $\mathbb{P}^n$ arises from a commutative
-    coordinate field $k$. (Hint: Non-Desarguesian projective planes exist, but Pappus''s theorem enforces
-    commutativity of multiplication in the underlying division ring)'
-  hint: null
+    coordinate field $k$. '
+  hint: Non-Desarguesian projective planes exist, but Pappus's theorem enforces commutativity of multiplication
+    in the underlying division ring
   locator: null
   sub_index: null
-  search_text: '(synthetic projective geometry and pappus''s theorem) explain how pappus''s hexagon theorem
+  search_text: (synthetic projective geometry and pappus's theorem) explain how pappus's hexagon theorem
     in synthetic projective geometry guarantees that a projective space $\mathbb{p}^n$ arises from a commutative
-    coordinate field $k$. (hint: non-desarguesian projective planes exist, but pappus''s theorem enforces
-    commutativity of multiplication in the underlying division ring)'
+    coordinate field $k$.  non-desarguesian projective planes exist, but pappus's theorem enforces commutativity
+    of multiplication in the underlying division ring
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#016
   text: '(Moduli Spaces and Hironaka''s Non-Projective Smooth Variety) Define the Hilbert scheme parameterizing
     subschemes of $\mathbb{P}^n$ with a fixed Hilbert polynomial, and the Picard scheme parameterizing
     invertible sheaves. Describe Heisuke Hironaka''s counterexample of a smooth, complete 3-dimensional
-    algebraic variety over $\mathbb{C}$ that cannot be embedded into any projective space $\mathbb{P}^n$.
-    (Hint: Construct a variety with a pair of curves whose intersection numbers prevent the existence
-    of an ample line bundle)'
-  hint: null
+    algebraic variety over $\mathbb{C}$ that cannot be embedded into any projective space $\mathbb{P}^n$. '
+  hint: Construct a variety with a pair of curves whose intersection numbers prevent the existence of
+    an ample line bundle
   locator: null
   sub_index: null
-  search_text: '(moduli spaces and hironaka''s non-projective smooth variety) define the hilbert scheme
+  search_text: (moduli spaces and hironaka's non-projective smooth variety) define the hilbert scheme
     parameterizing subschemes of $\mathbb{p}^n$ with a fixed hilbert polynomial, and the picard scheme
-    parameterizing invertible sheaves. describe heisuke hironaka''s counterexample of a smooth, complete
+    parameterizing invertible sheaves. describe heisuke hironaka's counterexample of a smooth, complete
     3-dimensional algebraic variety over $\mathbb{c}$ that cannot be embedded into any projective space
-    $\mathbb{p}^n$. (hint: construct a variety with a pair of curves whose intersection numbers prevent
-    the existence of an ample line bundle)'
+    $\mathbb{p}^n$.  construct a variety with a pair of curves whose intersection numbers prevent the
+    existence of an ample line bundle
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#017
   text: '(The Segre Embedding of Product Varieties) Construct the Segre embedding $\sigma: \mathbb{P}^m
     \times \mathbb{P}^n \hookrightarrow \mathbb{P}^{(m+1)(n+1)-1}$ given in homogeneous coordinates by
     $([x_0 : \dots : x_m], [y_0 : \dots : y_n]) \mapsto [x_0 y_0 : x_0 y_1 : \dots : x_m y_n]$. Prove
     that the image is a projective variety defined by the quadratic relations $z_{ij} z_{kl} - z_{il}
-    z_{kj} = 0$. (Hint: Show that the Segre variety satisfies the universal property of the categorical
-    product of projective varieties, and verify that $\mathbb{P}^1 \times \mathbb{P}^1$ is a smooth quadric
-    surface in $\mathbb{P}^3$, which is not isomorphic to $\mathbb{P}^2$)'
-  hint: null
+    z_{kj} = 0$. '
+  hint: Show that the Segre variety satisfies the universal property of the categorical product of projective
+    varieties, and verify that $\mathbb{P}^1 \times \mathbb{P}^1$ is a smooth quadric surface in $\mathbb{P}^3$,
+    which is not isomorphic to $\mathbb{P}^2$
   locator: null
   sub_index: null
   search_text: '(the segre embedding of product varieties) construct the segre embedding $\sigma: \mathbb{p}^m
     \times \mathbb{p}^n \hookrightarrow \mathbb{p}^{(m+1)(n+1)-1}$ given in homogeneous coordinates by
     $([x_0 : \dots : x_m], [y_0 : \dots : y_n]) \mapsto [x_0 y_0 : x_0 y_1 : \dots : x_m y_n]$. prove
     that the image is a projective variety defined by the quadratic relations $z_{ij} z_{kl} - z_{il}
-    z_{kj} = 0$. (hint: show that the segre variety satisfies the universal property of the categorical
-    product of projective varieties, and verify that $\mathbb{p}^1 \times \mathbb{p}^1$ is a smooth quadric
-    surface in $\mathbb{p}^3$, which is not isomorphic to $\mathbb{p}^2$)'
+    z_{kj} = 0$.  show that the segre variety satisfies the universal property of the categorical product
+    of projective varieties, and verify that $\mathbb{p}^1 \times \mathbb{p}^1$ is a smooth quadric surface
+    in $\mathbb{p}^3$, which is not isomorphic to $\mathbb{p}^2$'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#018
   text: '(The Ax-Grothendieck Theorem and the Lefschetz Principle) State the Ax–Grothendieck theorem:
-    every injective polynomial endomorphism $f: \mathbb{C}^n \to \mathbb{C}^n$ is surjective. (Hint: Use
-    the Lefschetz principle and model theory to reduce the statement to finite fields $\mathbb{F}_q$,
+    every injective polynomial endomorphism $f: \mathbb{C}^n \to \mathbb{C}^n$ is surjective. '
+  hint: Use the Lefschetz principle and model theory to reduce the statement to finite fields $\mathbb{F}_q$,
     where any injective map from a finite set to itself is automatically bijective, and spread out the
-    result to characteristic 0)'
-  hint: null
+    result to characteristic 0
   locator: null
   sub_index: null
   search_text: '(the ax-grothendieck theorem and the lefschetz principle) state the ax–grothendieck theorem:
-    every injective polynomial endomorphism $f: \mathbb{c}^n \to \mathbb{c}^n$ is surjective. (hint: use
-    the lefschetz principle and model theory to reduce the statement to finite fields $\mathbb{f}_q$,
-    where any injective map from a finite set to itself is automatically bijective, and spread out the
-    result to characteristic 0)'
+    every injective polynomial endomorphism $f: \mathbb{c}^n \to \mathbb{c}^n$ is surjective.  use the
+    lefschetz principle and model theory to reduce the statement to finite fields $\mathbb{f}_q$, where
+    any injective map from a finite set to itself is automatically bijective, and spread out the result
+    to characteristic 0'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#019
   text: '(Blowing Up and Resolution of Singularities) Define the blow-up $\operatorname{Bl}_p(X)$ of an
-    algebraic variety $X$ at a point $p$. (Hint: Replace the point $p$ with the projective space of all
+    algebraic variety $X$ at a point $p$. '
+  hint: Replace the point $p$ with the projective space of all tangent directions passing through $p$;
+    explain how iterated blow-ups along smooth centers resolve singularities of algebraic varieties in
+    characteristic 0 (Hironaka's theorem) and how proper pushforwards of resolutions allow integration/analytic
+    continuation of distributions like $|f|^s$
+  locator: null
+  sub_index: null
+  search_text: (blowing up and resolution of singularities) define the blow-up $\operatorname{bl}_p(x)$
+    of an algebraic variety $x$ at a point $p$.  replace the point $p$ with the projective space of all
     tangent directions passing through $p$; explain how iterated blow-ups along smooth centers resolve
-    singularities of algebraic varieties in characteristic 0 (Hironaka''s theorem) and how proper pushforwards
-    of resolutions allow integration/analytic continuation of distributions like $|f|^s$)'
-  hint: null
-  locator: null
-  sub_index: null
-  search_text: '(blowing up and resolution of singularities) define the blow-up $\operatorname{bl}_p(x)$
-    of an algebraic variety $x$ at a point $p$. (hint: replace the point $p$ with the projective space
-    of all tangent directions passing through $p$; explain how iterated blow-ups along smooth centers
-    resolve singularities of algebraic varieties in characteristic 0 (hironaka''s theorem) and how proper
-    pushforwards of resolutions allow integration/analytic continuation of distributions like $|f|^s$)'
+    singularities of algebraic varieties in characteristic 0 (hironaka's theorem) and how proper pushforwards
+    of resolutions allow integration/analytic continuation of distributions like $|f|^s$
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#020
-  text: '(The Atiyah Flop) Describe the Atiyah flop as a birational transformation between smooth 3-folds.
-    (Hint: Blow up the 3D node $xy - zw = 0$ along a plane to produce an exceptional $\mathbb{P}^1 \times
+  text: '(The Atiyah Flop) Describe the Atiyah flop as a birational transformation between smooth 3-folds. '
+  hint: Blow up the 3D node $xy - zw = 0$ along a plane to produce an exceptional $\mathbb{P}^1 \times
     \mathbb{P}^1$, and blow it down along the transverse ruling to produce a non-isomorphic smooth 3-fold
-    with the same canonical class)'
-  hint: null
+    with the same canonical class
   locator: null
   sub_index: null
-  search_text: '(the atiyah flop) describe the atiyah flop as a birational transformation between smooth
-    3-folds. (hint: blow up the 3d node $xy - zw = 0$ along a plane to produce an exceptional $\mathbb{p}^1
+  search_text: (the atiyah flop) describe the atiyah flop as a birational transformation between smooth
+    3-folds.  blow up the 3d node $xy - zw = 0$ along a plane to produce an exceptional $\mathbb{p}^1
     \times \mathbb{p}^1$, and blow it down along the transverse ruling to produce a non-isomorphic smooth
-    3-fold with the same canonical class)'
+    3-fold with the same canonical class
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#021
   text: '(Zariski Tangent Space as a Dual Vector Space) For a point $p$ on an algebraic variety $X$ with
     local ring $\mathcal{O}_{X, p}$ and maximal ideal $\mathfrak{m}_p$, define the intrinsic Zariski tangent
     space as $T_p X = (\mathfrak{m}_p / \mathfrak{m}_p^2)^* = \operatorname{Hom}_k(\mathfrak{m}_p / \mathfrak{m}_p^2,
-    k)$. (Hint: Show that $T_p X$ is canonically isomorphic to the space of $k$-derivations from $\mathcal{O}_{X,
-    p}$ into the residue field $k$, defined without any ambient affine embedding)'
-  hint: null
+    k)$. '
+  hint: Show that $T_p X$ is canonically isomorphic to the space of $k$-derivations from $\mathcal{O}_{X,
+    p}$ into the residue field $k$, defined without any ambient affine embedding
   locator: null
   sub_index: null
-  search_text: '(zariski tangent space as a dual vector space) for a point $p$ on an algebraic variety
+  search_text: (zariski tangent space as a dual vector space) for a point $p$ on an algebraic variety
     $x$ with local ring $\mathcal{o}_{x, p}$ and maximal ideal $\mathfrak{m}_p$, define the intrinsic
     zariski tangent space as $t_p x = (\mathfrak{m}_p / \mathfrak{m}_p^2)^* = \operatorname{hom}_k(\mathfrak{m}_p
-    / \mathfrak{m}_p^2, k)$. (hint: show that $t_p x$ is canonically isomorphic to the space of $k$-derivations
-    from $\mathcal{o}_{x, p}$ into the residue field $k$, defined without any ambient affine embedding)'
+    / \mathfrak{m}_p^2, k)$.  show that $t_p x$ is canonically isomorphic to the space of $k$-derivations
+    from $\mathcal{o}_{x, p}$ into the residue field $k$, defined without any ambient affine embedding
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#022
   text: (The Malgrange-Ehrenpreis Theorem via Blow-Ups) Connect the problem of finding a fundamental solution
     to a constant-coefficient partial differential operator $P(D)u = \delta_0$ to finding a distributional
@@ -327,74 +317,72 @@ exercises:
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#023
   text: '(Hensel''s Lemma as Power Series Lifting) State Hensel''s Lemma for a complete local ring $(R,
     \mathfrak{m})$: if a polynomial $f(x) \in R[x]$ has a root $a_0 \in R/\mathfrak{m}$ such that $f''(a_0)
-    \ne 0 \pmod{\mathfrak{m}}$, then $a_0$ lifts uniquely to a root $a \in R$ such that $f(a) = 0$. (Hint:
-    Show that this is the algebraic incarnation of Newton''s method, lifting solutions successively through
-    $R/\mathfrak{m}^n$)'
-  hint: null
+    \ne 0 \pmod{\mathfrak{m}}$, then $a_0$ lifts uniquely to a root $a \in R$ such that $f(a) = 0$. '
+  hint: Show that this is the algebraic incarnation of Newton's method, lifting solutions successively
+    through $R/\mathfrak{m}^n$
   locator: null
   sub_index: null
   search_text: '(hensel''s lemma as power series lifting) state hensel''s lemma for a complete local ring
     $(r, \mathfrak{m})$: if a polynomial $f(x) \in r[x]$ has a root $a_0 \in r/\mathfrak{m}$ such that
     $f''(a_0) \ne 0 \pmod{\mathfrak{m}}$, then $a_0$ lifts uniquely to a root $a \in r$ such that $f(a)
-    = 0$. (hint: show that this is the algebraic incarnation of newton''s method, lifting solutions successively
-    through $r/\mathfrak{m}^n$)'
+    = 0$.  show that this is the algebraic incarnation of newton''s method, lifting solutions successively
+    through $r/\mathfrak{m}^n$'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#024
   text: '(The Structure of Spec(Z[x])) Describe the rich geometric and arithmetic topology of the 2-dimensional
-    scheme $\operatorname{Spec}(\mathbb{Z}[x])$. (Hint: Minimal primes correspond to $(0)$, height-1 primes
-    correspond to $(p)$ for prime integers or $(f(x))$ for irreducible polynomials, and closed/maximal
-    points correspond to $(p, f(x))$ where $f$ is irreducible modulo $p$)'
-  hint: null
+    scheme $\operatorname{Spec}(\mathbb{Z}[x])$. '
+  hint: Minimal primes correspond to $(0)$, height-1 primes correspond to $(p)$ for prime integers or
+    $(f(x))$ for irreducible polynomials, and closed/maximal points correspond to $(p, f(x))$ where $f$
+    is irreducible modulo $p$
   locator: null
   sub_index: null
-  search_text: '(the structure of spec(z[x])) describe the rich geometric and arithmetic topology of the
-    2-dimensional scheme $\operatorname{spec}(\mathbb{z}[x])$. (hint: minimal primes correspond to $(0)$,
-    height-1 primes correspond to $(p)$ for prime integers or $(f(x))$ for irreducible polynomials, and
-    closed/maximal points correspond to $(p, f(x))$ where $f$ is irreducible modulo $p$)'
+  search_text: (the structure of spec(z[x])) describe the rich geometric and arithmetic topology of the
+    2-dimensional scheme $\operatorname{spec}(\mathbb{z}[x])$.  minimal primes correspond to $(0)$, height-1
+    primes correspond to $(p)$ for prime integers or $(f(x))$ for irreducible polynomials, and closed/maximal
+    points correspond to $(p, f(x))$ where $f$ is irreducible modulo $p$
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#025
   text: '(The Twisting Line Bundles O(1) and O(-1)) For projective space $\mathbb{P}^n = \operatorname{Proj}(k[x_0,
     \dots, x_n])$, define the Serre twisting sheaf $\mathcal{O}(1)$ and the tautological line bundle $\mathcal{O}(-1)
-    = \mathcal{O}(1)^*$. (Hint: $\mathcal{O}(1)$ is an invertible sheaf whose global sections $H^0(\mathbb{P}^n,
-    \mathcal{O}(1))$ are linear forms, whereas $\mathcal{O}(-1)$ has no non-zero global sections; on $\mathbb{P}^1$,
-    $\mathcal{O}(-1)$ corresponds to the complex Möbius line bundle)'
-  hint: null
+    = \mathcal{O}(1)^*$. '
+  hint: $\mathcal{O}(1)$ is an invertible sheaf whose global sections $H^0(\mathbb{P}^n, \mathcal{O}(1))$
+    are linear forms, whereas $\mathcal{O}(-1)$ has no non-zero global sections; on $\mathbb{P}^1$, $\mathcal{O}(-1)$
+    corresponds to the complex Möbius line bundle
   locator: null
   sub_index: null
-  search_text: '(the twisting line bundles o(1) and o(-1)) for projective space $\mathbb{p}^n = \operatorname{proj}(k[x_0,
+  search_text: (the twisting line bundles o(1) and o(-1)) for projective space $\mathbb{p}^n = \operatorname{proj}(k[x_0,
     \dots, x_n])$, define the serre twisting sheaf $\mathcal{o}(1)$ and the tautological line bundle $\mathcal{o}(-1)
-    = \mathcal{o}(1)^*$. (hint: $\mathcal{o}(1)$ is an invertible sheaf whose global sections $h^0(\mathbb{p}^n,
+    = \mathcal{o}(1)^*$.  $\mathcal{o}(1)$ is an invertible sheaf whose global sections $h^0(\mathbb{p}^n,
     \mathcal{o}(1))$ are linear forms, whereas $\mathcal{o}(-1)$ has no non-zero global sections; on $\mathbb{p}^1$,
-    $\mathcal{o}(-1)$ corresponds to the complex möbius line bundle)'
+    $\mathcal{o}(-1)$ corresponds to the complex möbius line bundle
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#026
   text: '(Free Sheaves are Not Projective) Explain why free sheaves of $\mathcal{O}_X$-modules are generally
     not projective objects in the abelian category $\operatorname{Mod}(\mathcal{O}_X)$, even though free
-    modules are projective in $\operatorname{Mod}_R$. (Hint: Global section functors $\Gamma(X, -)$ fail
-    to be right exact when higher sheaf cohomology $H^1(X, \mathcal{F}) \ne 0$ is non-trivial)'
-  hint: null
+    modules are projective in $\operatorname{Mod}_R$. '
+  hint: Global section functors $\Gamma(X, -)$ fail to be right exact when higher sheaf cohomology $H^1(X,
+    \mathcal{F}) \ne 0$ is non-trivial
   locator: null
   sub_index: null
-  search_text: '(free sheaves are not projective) explain why free sheaves of $\mathcal{o}_x$-modules
-    are generally not projective objects in the abelian category $\operatorname{mod}(\mathcal{o}_x)$,
-    even though free modules are projective in $\operatorname{mod}_r$. (hint: global section functors
-    $\gamma(x, -)$ fail to be right exact when higher sheaf cohomology $h^1(x, \mathcal{f}) \ne 0$ is
-    non-trivial)'
+  search_text: (free sheaves are not projective) explain why free sheaves of $\mathcal{o}_x$-modules are
+    generally not projective objects in the abelian category $\operatorname{mod}(\mathcal{o}_x)$, even
+    though free modules are projective in $\operatorname{mod}_r$.  global section functors $\gamma(x,
+    -)$ fail to be right exact when higher sheaf cohomology $h^1(x, \mathcal{f}) \ne 0$ is non-trivial
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#027
   text: '(Weil Divisors, Cartier Divisors, and the Picard Group)  1. Define a Weil divisor on a normal
     variety $X$ as a formal linear combination $D = \sum n_i Y_i$ of codimension-1 subvarieties. 2. Define
     a Cartier divisor as a global section of the quotient sheaf $\mathcal{K}_X^\times / \mathcal{O}_X^\times$.
     3. Formulate the Picard group $\operatorname{Pic}(X)$ as the group of isomorphism classes of invertible
     sheaves under tensor product, and prove that on smooth varieties, Cartier divisor classes coincide
-    with Weil divisor classes modulo linear equivalence. (Hint: Associate an invertible sheaf $\mathcal{O}_X(D)$
-    to every divisor $D$, and formulate the Riemann–Roch problem as computing $\dim H^0(X, \mathcal{O}_X(D))$)'
-  hint: null
+    with Weil divisor classes modulo linear equivalence. '
+  hint: Associate an invertible sheaf $\mathcal{O}_X(D)$ to every divisor $D$, and formulate the Riemann–Roch
+    problem as computing $\dim H^0(X, \mathcal{O}_X(D))$
   locator: null
   sub_index: null
-  search_text: '(weil divisors, cartier divisors, and the picard group)  1. define a weil divisor on a
+  search_text: (weil divisors, cartier divisors, and the picard group)  1. define a weil divisor on a
     normal variety $x$ as a formal linear combination $d = \sum n_i y_i$ of codimension-1 subvarieties.
     2. define a cartier divisor as a global section of the quotient sheaf $\mathcal{k}_x^\times / \mathcal{o}_x^\times$.
     3. formulate the picard group $\operatorname{pic}(x)$ as the group of isomorphism classes of invertible
     sheaves under tensor product, and prove that on smooth varieties, cartier divisor classes coincide
-    with weil divisor classes modulo linear equivalence. (hint: associate an invertible sheaf $\mathcal{o}_x(d)$
-    to every divisor $d$, and formulate the riemann–roch problem as computing $\dim h^0(x, \mathcal{o}_x(d))$)'
+    with weil divisor classes modulo linear equivalence.  associate an invertible sheaf $\mathcal{o}_x(d)$
+    to every divisor $d$, and formulate the riemann–roch problem as computing $\dim h^0(x, \mathcal{o}_x(d))$
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#028
   text: '(Point Counting on Projective Spaces and the Weil Conjectures) Compute the number of $\mathbb{F}_q$-rational
     points on projective space: $$\#\mathbb{P}^n(\mathbb{F}_q) = \frac{q^{n+1} - 1}{q - 1} = 1 + q + q^2
@@ -414,45 +402,42 @@ exercises:
     be the Grassmannian of 2-planes in $k^4$ (lines in $\mathbb{P}^3$). Construct the Plücker embedding
     $\operatorname{Gr}(2, 4) \hookrightarrow \mathbb{P}^5$ given by $v_1 \wedge v_2 \mapsto [p_{01} :
     p_{02} : p_{03} : p_{12} : p_{13} : p_{23}]$, and show that its image is the smooth Klein quadric
-    defined by the single Plücker relation $p_{01} p_{23} - p_{02} p_{13} + p_{03} p_{12} = 0$. (Hint:
-    Show that general Grassmannians $\operatorname{Gr}(k, n)$ are projective varieties defined as intersections
-    of quadrics)'
-  hint: null
+    defined by the single Plücker relation $p_{01} p_{23} - p_{02} p_{13} + p_{03} p_{12} = 0$. '
+  hint: Show that general Grassmannians $\operatorname{Gr}(k, n)$ are projective varieties defined as
+    intersections of quadrics
   locator: null
   sub_index: null
   search_text: '(grassmannians, plücker coordinates, and quadric intersections) let $\operatorname{gr}(2,
     4)$ be the grassmannian of 2-planes in $k^4$ (lines in $\mathbb{p}^3$). construct the plücker embedding
     $\operatorname{gr}(2, 4) \hookrightarrow \mathbb{p}^5$ given by $v_1 \wedge v_2 \mapsto [p_{01} :
     p_{02} : p_{03} : p_{12} : p_{13} : p_{23}]$, and show that its image is the smooth klein quadric
-    defined by the single plücker relation $p_{01} p_{23} - p_{02} p_{13} + p_{03} p_{12} = 0$. (hint:
-    show that general grassmannians $\operatorname{gr}(k, n)$ are projective varieties defined as intersections
-    of quadrics)'
+    defined by the single plücker relation $p_{01} p_{23} - p_{02} p_{13} + p_{03} p_{12} = 0$.  show
+    that general grassmannians $\operatorname{gr}(k, n)$ are projective varieties defined as intersections
+    of quadrics'
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#030
   text: '(Hirzebruch Surfaces) Define the Hirzebruch surface $\mathbb{F}_n = \mathbb{P}(\mathcal{O}_{\mathbb{P}^1}
-    \oplus \mathcal{O}_{\mathbb{P}^1}(-n))$ as a $\mathbb{P}^1$-bundle over $\mathbb{P}^1$. (Hint: $\mathbb{F}_n$
-    is a smooth projective surface with an exceptional curve $E$ of negative self-intersection $E^2 =
-    -n$, acting as a twisted product of two spheres)'
-  hint: null
+    \oplus \mathcal{O}_{\mathbb{P}^1}(-n))$ as a $\mathbb{P}^1$-bundle over $\mathbb{P}^1$. '
+  hint: $\mathbb{F}_n$ is a smooth projective surface with an exceptional curve $E$ of negative self-intersection
+    $E^2 = -n$, acting as a twisted product of two spheres
   locator: null
   sub_index: null
-  search_text: '(hirzebruch surfaces) define the hirzebruch surface $\mathbb{f}_n = \mathbb{p}(\mathcal{o}_{\mathbb{p}^1}
-    \oplus \mathcal{o}_{\mathbb{p}^1}(-n))$ as a $\mathbb{p}^1$-bundle over $\mathbb{p}^1$. (hint: $\mathbb{f}_n$
+  search_text: (hirzebruch surfaces) define the hirzebruch surface $\mathbb{f}_n = \mathbb{p}(\mathcal{o}_{\mathbb{p}^1}
+    \oplus \mathcal{o}_{\mathbb{p}^1}(-n))$ as a $\mathbb{p}^1$-bundle over $\mathbb{p}^1$.  $\mathbb{f}_n$
     is a smooth projective surface with an exceptional curve $e$ of negative self-intersection $e^2 =
-    -n$, acting as a twisted product of two spheres)'
+    -n$, acting as a twisted product of two spheres
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#031
   text: '(Toric Varieties and Polyhedral Fans) Define a toric variety $X_\Sigma$ from a rational polyhedral
-    fan $\Sigma$ in a lattice $N \cong \mathbb{Z}^n$. (Hint: Each cone $\sigma \in \Sigma$ determines
-    an affine toric variety $U_\sigma = \operatorname{Spec}(k[S_\sigma])$ where $S_\sigma = \sigma^\vee
-    \cap M$ is the dual semigroup; the origin $\{0\}$ corresponds to the dense open algebraic torus $T
-    \cong (k^\times)^n$)'
-  hint: null
+    fan $\Sigma$ in a lattice $N \cong \mathbb{Z}^n$. '
+  hint: Each cone $\sigma \in \Sigma$ determines an affine toric variety $U_\sigma = \operatorname{Spec}(k[S_\sigma])$
+    where $S_\sigma = \sigma^\vee \cap M$ is the dual semigroup; the origin $\{0\}$ corresponds to the
+    dense open algebraic torus $T \cong (k^\times)^n$
   locator: null
   sub_index: null
-  search_text: '(toric varieties and polyhedral fans) define a toric variety $x_\sigma$ from a rational
-    polyhedral fan $\sigma$ in a lattice $n \cong \mathbb{z}^n$. (hint: each cone $\sigma \in \sigma$
-    determines an affine toric variety $u_\sigma = \operatorname{spec}(k[s_\sigma])$ where $s_\sigma =
-    \sigma^\vee \cap m$ is the dual semigroup; the origin $\{0\}$ corresponds to the dense open algebraic
-    torus $t \cong (k^\times)^n$)'
+  search_text: (toric varieties and polyhedral fans) define a toric variety $x_\sigma$ from a rational
+    polyhedral fan $\sigma$ in a lattice $n \cong \mathbb{z}^n$.  each cone $\sigma \in \sigma$ determines
+    an affine toric variety $u_\sigma = \operatorname{spec}(k[s_\sigma])$ where $s_\sigma = \sigma^\vee
+    \cap m$ is the dual semigroup; the origin $\{0\}$ corresponds to the dense open algebraic torus $t
+    \cong (k^\times)^n$
 - id: math-berkeley-edu-reb-courses-256a-256a-pdf#032
   text: '(Automorphisms of Affine Spaces and the Jacobian Conjecture) Describe the automorphism group
     $\operatorname{Aut}(\mathbb{A}^1) = \{ x \mapsto ax + b : a \in k^\times, b \in k \}$. For $n \ge

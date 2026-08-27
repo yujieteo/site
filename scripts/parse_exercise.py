@@ -36,10 +36,6 @@ LOCATOR_RE = re.compile(
     re.IGNORECASE,
 )
 
-# Matches a trailing/inline hint clause: "(Hint: ...)" -- greedy to the
-# matching close paren, allowing nested parens up to depth 2.
-HINT_RE = re.compile(r"\(\s*Hint\s*:\s*(.*)\)\s*$", re.IGNORECASE | re.DOTALL)
-
 
 def slugify(url):
     parsed = urlparse(url)
@@ -64,50 +60,40 @@ def extract_locator(text):
 
 
 def extract_hint(text):
-    """Pull a trailing (Hint: ...) clause off the end of text.
-
-    Handles one level of nested parens inside the hint by balancing.
-    """
-    text = text.rstrip()
-    if not text.endswith(")"):
-        return None, text
-
-    # Find the matching "(Hint:" by scanning from the back with paren
-    # depth tracking, since hints may themselves contain parens.
+    """Extract a (Hint: ...) clause from anywhere in the text while balancing parens."""
     lower = text.lower()
-    search_from = 0
-    best_start = None
-    while True:
-        idx = lower.find("(hint", search_from)
-        if idx == -1:
-            break
-        # Check this "(hint" has balanced parens through end of string
-        depth = 0
-        ok = False
-        for j in range(idx, len(text)):
-            if text[j] == "(":
-                depth += 1
-            elif text[j] == ")":
-                depth -= 1
-                if depth == 0 and j == len(text) - 1:
-                    ok = True
-                    break
-                if depth == 0:
-                    break
-        if ok:
-            best_start = idx
-        search_from = idx + 1
-
-    if best_start is None:
+    idx = lower.find("(hint")
+    if idx == -1:
         return None, text
 
-    hint_clause = text[best_start:]
-    remainder = text[:best_start].rstrip()
-    m = re.match(r"\(\s*Hint\s*:\s*(.*)\)\s*$", hint_clause, re.IGNORECASE | re.DOTALL)
-    if not m:
+    depth = 0
+    end_idx = None
+    for j in range(idx, len(text)):
+        if text[j] == "(":
+            depth += 1
+        elif text[j] == ")":
+            depth -= 1
+            if depth == 0:
+                end_idx = j + 1
+                break
+
+    # If parentheses were unmatched, fall back to searching the remainder
+    if end_idx is None:
         return None, text
-    hint = m.group(1).strip()
-    return hint, remainder
+
+    hint_clause = text[idx:end_idx]
+    
+    # Remove the hint clause from the main text and clean up whitespace
+    before = text[:idx].rstrip()
+    after = text[end_idx:].lstrip()
+    remainder = f"{before} {after}".strip()
+
+    # Extract hint content by stripping "(Hint:" prefix and outer closing ")"
+    hint_content = re.sub(r"^\(\s*hint\s*:\s*", "", hint_clause, flags=re.IGNORECASE)
+    if hint_content.endswith(")"):
+        hint_content = hint_content[:-1]
+
+    return hint_content.strip(), remainder
 
 
 def parse_exercise_line(raw_text):
@@ -210,7 +196,7 @@ def dump_record(record, out_dir):
     slug = slugify(record["url"])
     path = os.path.join(out_dir, f"{slug}.yaml")
     # Clean Nones for tidier YAML (schema allows null explicitly though)
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         yaml.safe_dump(
             record, f, sort_keys=False, allow_unicode=True,
             default_flow_style=False, width=100,

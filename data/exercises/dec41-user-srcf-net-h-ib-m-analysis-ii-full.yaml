@@ -84,10 +84,10 @@ exercises:
   search_text: what is lebesgue's criterion for riemann integrability? a bounded function on a compact
     interval is riemann integrable if and only if its set of discontinuities has lebesgue measure zero.
 - id: dec41-user-srcf-net-h-ib-m-analysis-ii-full#010
-  text: 'What is a normed vector space? (Hint: A vector space equipped with a function $\|\cdot\|: V \to
-    [0, \infty)$ satisfying positive definiteness, absolute scalability, and the triangle inequality.)'
-  hint: null
+  text: What is a normed vector space? $ satisfying positive definiteness, absolute scalability, and the
+    triangle inequality.)
+  hint: 'A vector space equipped with a function $\|\cdot\|: V \to [0, \infty'
   locator: null
   sub_index: null
-  search_text: 'what is a normed vector space? (hint: a vector space equipped with a function $\|\cdot\|:
-    v \to [0, \infty)$ satisfying positive definiteness, absolute scalability, and the triangle inequality.)'
+  search_text: 'what is a normed vector space? $ satisfying positive definiteness, absolute scalability,
+    and the triangle inequality.) a vector space equipped with a function $\|\cdot\|: v \to [0, \infty'

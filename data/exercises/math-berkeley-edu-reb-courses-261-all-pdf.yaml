@@ -9,86 +9,80 @@ exercises:
   text: '(Foundations of Lie Groups) Define a Lie group $G$ as a smooth manifold equipped with a group
     structure such that multiplication $m: G \times G \to G$ and inversion $i: G \to G$ are smooth maps.
     Explain why $\mathrm{GL}_2(\mathbb{R})$ and any finite-dimensional real vector space under addition
-    $(\mathbb{R}^n, +)$ serve as prototypical examples. (Hint: Lie groups represent continuous, differentiable
-    symmetries of geometric objects)'
-  hint: null
+    $(\mathbb{R}^n, +)$ serve as prototypical examples. '
+  hint: Lie groups represent continuous, differentiable symmetries of geometric objects
   locator: null
   sub_index: null
   search_text: '(foundations of lie groups) define a lie group $g$ as a smooth manifold equipped with
     a group structure such that multiplication $m: g \times g \to g$ and inversion $i: g \to g$ are smooth
     maps. explain why $\mathrm{gl}_2(\mathbb{r})$ and any finite-dimensional real vector space under addition
-    $(\mathbb{r}^n, +)$ serve as prototypical examples. (hint: lie groups represent continuous, differentiable
-    symmetries of geometric objects)'
+    $(\mathbb{r}^n, +)$ serve as prototypical examples.  lie groups represent continuous, differentiable
+    symmetries of geometric objects'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#001
   text: '(Identity Components and Discrete Quotients) Let $G$ be a Lie group. Show that the connected
     component of the identity $G_{\text{conn}} = G_0$ is a connected, open, and closed normal subgroup,
     and that the quotient $G/G_{\text{conn}}$ is a discrete group fitting into the exact sequence $1 \to
-    G_{\text{conn}} \to G \to G_{\text{discrete}} \to 1$. (Hint: Connected components of topological groups
-    are always cosets of the identity component)'
-  hint: null
+    G_{\text{conn}} \to G \to G_{\text{discrete}} \to 1$. '
+  hint: Connected components of topological groups are always cosets of the identity component
   locator: null
   sub_index: null
-  search_text: '(identity components and discrete quotients) let $g$ be a lie group. show that the connected
+  search_text: (identity components and discrete quotients) let $g$ be a lie group. show that the connected
     component of the identity $g_{\text{conn}} = g_0$ is a connected, open, and closed normal subgroup,
     and that the quotient $g/g_{\text{conn}}$ is a discrete group fitting into the exact sequence $1 \to
-    g_{\text{conn}} \to g \to g_{\text{discrete}} \to 1$. (hint: connected components of topological groups
-    are always cosets of the identity component)'
+    g_{\text{conn}} \to g \to g_{\text{discrete}} \to 1$.  connected components of topological groups
+    are always cosets of the identity component
 - id: math-berkeley-edu-reb-courses-261-all-pdf#002
   text: '(Classical Groups, Projective Quotients, and Extensions) Define the classical Lie groups as subgroups
     of $\mathrm{GL}_n(\mathbb{R})$ or $\mathrm{GL}_n(\mathbb{C})$ preserving bilinear, quadratic, or Hermitian
     forms.  1. Define the special linear group $\mathrm{SL}_n(\mathbb{R}) = \ker(\det)$. 2. Define the
     projective general linear group $\mathrm{PGL}_n(\mathbb{R}) = \mathrm{GL}_n(\mathbb{R}) / Z(\mathrm{GL}_n(\mathbb{R}))$
     by quotienting out the center of scalar matrices. 3. Define the general symplectic group $\operatorname{GSp}_{2n}(\mathbb{R})$
-    as the group of matrices scaling a symplectic form $\omega$ by a non-zero scalar. (Hint: Projective
-    groups act faithfully on projective space $\mathbb{P}^{n-1}$; central extensions enlarge the center,
-    as seen in Spin double covers $\operatorname{Spin}(n) \twoheadrightarrow \mathrm{SO}(n)$)'
-  hint: null
+    as the group of matrices scaling a symplectic form $\omega$ by a non-zero scalar. '
+  hint: Projective groups act faithfully on projective space $\mathbb{P}^{n-1}$; central extensions enlarge
+    the center, as seen in Spin double covers $\operatorname{Spin}(n) \twoheadrightarrow \mathrm{SO}(n)$
   locator: null
   sub_index: null
-  search_text: '(classical groups, projective quotients, and extensions) define the classical lie groups
+  search_text: (classical groups, projective quotients, and extensions) define the classical lie groups
     as subgroups of $\mathrm{gl}_n(\mathbb{r})$ or $\mathrm{gl}_n(\mathbb{c})$ preserving bilinear, quadratic,
     or hermitian forms.  1. define the special linear group $\mathrm{sl}_n(\mathbb{r}) = \ker(\det)$.
     2. define the projective general linear group $\mathrm{pgl}_n(\mathbb{r}) = \mathrm{gl}_n(\mathbb{r})
     / z(\mathrm{gl}_n(\mathbb{r}))$ by quotienting out the center of scalar matrices. 3. define the general
     symplectic group $\operatorname{gsp}_{2n}(\mathbb{r})$ as the group of matrices scaling a symplectic
-    form $\omega$ by a non-zero scalar. (hint: projective groups act faithfully on projective space $\mathbb{p}^{n-1}$;
+    form $\omega$ by a non-zero scalar.  projective groups act faithfully on projective space $\mathbb{p}^{n-1}$;
     central extensions enlarge the center, as seen in spin double covers $\operatorname{spin}(n) \twoheadrightarrow
-    \mathrm{so}(n)$)'
+    \mathrm{so}(n)$
 - id: math-berkeley-edu-reb-courses-261-all-pdf#003
   text: '(Solvable and Nilpotent Lie Groups) Define solvable and nilpotent Lie groups in terms of derived
     series and lower central series. Give the standard matrix models: the group of upper triangular invertible
-    matrices $B$ (solvable) and strictly upper triangular matrices with ones on the diagonal $N$ (nilpotent/unipotent).
-    (Hint: In a nilpotent group, repeatedly quotienting by the center terminates at the trivial group)'
-  hint: null
+    matrices $B$ (solvable) and strictly upper triangular matrices with ones on the diagonal $N$ (nilpotent/unipotent). '
+  hint: In a nilpotent group, repeatedly quotienting by the center terminates at the trivial group
   locator: null
   sub_index: null
   search_text: '(solvable and nilpotent lie groups) define solvable and nilpotent lie groups in terms
     of derived series and lower central series. give the standard matrix models: the group of upper triangular
     invertible matrices $b$ (solvable) and strictly upper triangular matrices with ones on the diagonal
-    $n$ (nilpotent/unipotent). (hint: in a nilpotent group, repeatedly quotienting by the center terminates
-    at the trivial group)'
+    $n$ (nilpotent/unipotent).  in a nilpotent group, repeatedly quotienting by the center terminates
+    at the trivial group'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#004
   text: '(Erlangen Program vs. Riemannian Geometry) Compare Felix Klein''s Erlangen Program (defining
-    geometries via homogeneous spaces $G/H$ and transformation groups) with Riemannian geometry. (Hint:
-    Klein''s program classifies spaces by global continuous symmetries, which fails for generic Riemannian
-    manifolds whose curvature tensors destroy all non-trivial continuous isometry groups)'
-  hint: null
+    geometries via homogeneous spaces $G/H$ and transformation groups) with Riemannian geometry. '
+  hint: Klein's program classifies spaces by global continuous symmetries, which fails for generic Riemannian
+    manifolds whose curvature tensors destroy all non-trivial continuous isometry groups
   locator: null
   sub_index: null
-  search_text: '(erlangen program vs. riemannian geometry) compare felix klein''s erlangen program (defining
-    geometries via homogeneous spaces $g/h$ and transformation groups) with riemannian geometry. (hint:
-    klein''s program classifies spaces by global continuous symmetries, which fails for generic riemannian
-    manifolds whose curvature tensors destroy all non-trivial continuous isometry groups)'
+  search_text: (erlangen program vs. riemannian geometry) compare felix klein's erlangen program (defining
+    geometries via homogeneous spaces $g/h$ and transformation groups) with riemannian geometry.  klein's
+    program classifies spaces by global continuous symmetries, which fails for generic riemannian manifolds
+    whose curvature tensors destroy all non-trivial continuous isometry groups
 - id: math-berkeley-edu-reb-courses-261-all-pdf#005
   text: '(The Solvable Radical and Structure of General Lie Groups) Define the solvable radical $\operatorname{Rad}(G)$
     as the unique maximal connected normal solvable subgroup of a connected Lie group $G$. Establish the
     canonical structural filtration: $$1 \subseteq G_{\text{nil}} \subseteq G_{\text{sol}} \subseteq G_{\text{conn}}
     \subseteq G,$$ where $G_{\text{nil}} = [G_{\text{sol}}, G_{\text{sol}}]$ is nilpotent, $G_{\text{sol}}
     = \operatorname{Rad}(G)$, and $G_{\text{conn}}/G_{\text{sol}}$ is semisimple. Analyze this filtration
-    for the Euclidean isometry group of $\mathbb{R}^4$: $G = \mathbb{R}^4 \rtimes \mathrm{GO}_4(\mathbb{R})$.
-    (Hint: Translations form the abelian/solvable normal part, and orthogonal rotations form the reductive/semisimple
-    quotient)'
-  hint: null
+    for the Euclidean isometry group of $\mathbb{R}^4$: $G = \mathbb{R}^4 \rtimes \mathrm{GO}_4(\mathbb{R})$. '
+  hint: Translations form the abelian/solvable normal part, and orthogonal rotations form the reductive/semisimple
+    quotient
   locator: null
   sub_index: null
   search_text: '(the solvable radical and structure of general lie groups) define the solvable radical
@@ -97,31 +91,31 @@ exercises:
     \subseteq g_{\text{conn}} \subseteq g,$$ where $g_{\text{nil}} = [g_{\text{sol}}, g_{\text{sol}}]$
     is nilpotent, $g_{\text{sol}} = \operatorname{rad}(g)$, and $g_{\text{conn}}/g_{\text{sol}}$ is semisimple.
     analyze this filtration for the euclidean isometry group of $\mathbb{r}^4$: $g = \mathbb{r}^4 \rtimes
-    \mathrm{go}_4(\mathbb{r})$. (hint: translations form the abelian/solvable normal part, and orthogonal
-    rotations form the reductive/semisimple quotient)'
+    \mathrm{go}_4(\mathbb{r})$.  translations form the abelian/solvable normal part, and orthogonal rotations
+    form the reductive/semisimple quotient'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#006
   text: '(Dynkin Diagrams and Classification) Describe the role of Dynkin diagrams in classifying complex
     simple Lie algebras. Explain why nodes represent $\mathfrak{sl}_2$-subalgebras, lines represent non-trivial
-    commutation relations, and multiple edges represent root length ratios. (Hint: Dynkin diagrams classify
-    diverse mathematical objects: finite 3D rotation groups, crystallographic reflection groups, du Val
-    surface singularities, Macdonald polynomials, and singular fibers of elliptic surfaces)'
-  hint: null
+    commutation relations, and multiple edges represent root length ratios. '
+  hint: 'Dynkin diagrams classify diverse mathematical objects: finite 3D rotation groups, crystallographic
+    reflection groups, du Val surface singularities, Macdonald polynomials, and singular fibers of elliptic
+    surfaces'
   locator: null
   sub_index: null
   search_text: '(dynkin diagrams and classification) describe the role of dynkin diagrams in classifying
     complex simple lie algebras. explain why nodes represent $\mathfrak{sl}_2$-subalgebras, lines represent
-    non-trivial commutation relations, and multiple edges represent root length ratios. (hint: dynkin
-    diagrams classify diverse mathematical objects: finite 3d rotation groups, crystallographic reflection
-    groups, du val surface singularities, macdonald polynomials, and singular fibers of elliptic surfaces)'
+    non-trivial commutation relations, and multiple edges represent root length ratios.  dynkin diagrams
+    classify diverse mathematical objects: finite 3d rotation groups, crystallographic reflection groups,
+    du val surface singularities, macdonald polynomials, and singular fibers of elliptic surfaces'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#007
   text: '(Infinite-Dimensional Lie Groups) Give foundational examples of infinite-dimensional Lie groups:
     1. Diffeomorphism groups $\operatorname{Diff}(M)$ of smooth manifolds. 2. Gauge groups $\operatorname{Map}(M,
     K)$ of smooth maps into a compact Lie group $K$. 3. The Virasoro algebra as the unique non-trivial
     1-dimensional central extension $0 \to \mathbb{C} \cdot c \to \operatorname{Vir} \to \operatorname{Vect}(S^1)
     \to 0$ of vector fields on the circle. 4. Affine Kac–Moody algebras as central extensions of loop
-    groups $LK = \operatorname{Map}(S^1, K)$. (Hint: Infinitesimal generators of gauge transformations
-    and circle diffeomorphisms require smooth loop/vector field algebras)'
-  hint: null
+    groups $LK = \operatorname{Map}(S^1, K)$. '
+  hint: Infinitesimal generators of gauge transformations and circle diffeomorphisms require smooth loop/vector
+    field algebras
   locator: null
   sub_index: null
   search_text: '(infinite-dimensional lie groups) give foundational examples of infinite-dimensional lie
@@ -129,22 +123,22 @@ exercises:
     k)$ of smooth maps into a compact lie group $k$. 3. the virasoro algebra as the unique non-trivial
     1-dimensional central extension $0 \to \mathbb{c} \cdot c \to \operatorname{vir} \to \operatorname{vect}(s^1)
     \to 0$ of vector fields on the circle. 4. affine kac–moody algebras as central extensions of loop
-    groups $lk = \operatorname{map}(s^1, k)$. (hint: infinitesimal generators of gauge transformations
-    and circle diffeomorphisms require smooth loop/vector field algebras)'
+    groups $lk = \operatorname{map}(s^1, k)$.  infinitesimal generators of gauge transformations and circle
+    diffeomorphisms require smooth loop/vector field algebras'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#008
   text: '(Accidental Isomorphisms) Analyze accidental isomorphisms between low-order finite groups of
     Lie type, such as $\operatorname{PSL}_2(\mathbb{F}_4) \cong \operatorname{PSL}_2(\mathbb{F}_5) \cong
-    A_5$. (Hint: Compare the permutation actions of $\operatorname{PSL}_2(\mathbb{F}_4)$ on the 5 points
-    of $\mathbb{P}^1(\mathbb{F}_4)$ and $\operatorname{PSL}_2(\mathbb{F}_5)$ on the 6 points of $\mathbb{P}^1(\mathbb{F}_5)$
-    with the alternating group on 5 letters)'
-  hint: null
+    A_5$. '
+  hint: Compare the permutation actions of $\operatorname{PSL}_2(\mathbb{F}_4)$ on the 5 points of $\mathbb{P}^1(\mathbb{F}_4)$
+    and $\operatorname{PSL}_2(\mathbb{F}_5)$ on the 6 points of $\mathbb{P}^1(\mathbb{F}_5)$ with the
+    alternating group on 5 letters
   locator: null
   sub_index: null
-  search_text: '(accidental isomorphisms) analyze accidental isomorphisms between low-order finite groups
+  search_text: (accidental isomorphisms) analyze accidental isomorphisms between low-order finite groups
     of lie type, such as $\operatorname{psl}_2(\mathbb{f}_4) \cong \operatorname{psl}_2(\mathbb{f}_5)
-    \cong a_5$. (hint: compare the permutation actions of $\operatorname{psl}_2(\mathbb{f}_4)$ on the
-    5 points of $\mathbb{p}^1(\mathbb{f}_4)$ and $\operatorname{psl}_2(\mathbb{f}_5)$ on the 6 points
-    of $\mathbb{p}^1(\mathbb{f}_5)$ with the alternating group on 5 letters)'
+    \cong a_5$.  compare the permutation actions of $\operatorname{psl}_2(\mathbb{f}_4)$ on the 5 points
+    of $\mathbb{p}^1(\mathbb{f}_4)$ and $\operatorname{psl}_2(\mathbb{f}_5)$ on the 6 points of $\mathbb{p}^1(\mathbb{f}_5)$
+    with the alternating group on 5 letters
 - id: math-berkeley-edu-reb-courses-261-all-pdf#009
   text: '(Algebraic Groups vs. Lie Groups) Compare linear algebraic groups (algebraic varieties over $\mathbb{R}$
     with polynomial group operations) with smooth Lie groups.  1. Contrast unipotent and semisimple abelian
@@ -152,31 +146,29 @@ exercises:
     which are isomorphic as real Lie groups but not as algebraic groups. 2. Explain why abelian varieties
     (compact projective algebraic groups) differ from affine algebraic groups. 3. Give examples of Lie
     groups that do not arise as algebraic groups (e.g., the Heisenberg group with non-trivial central
-    action, or the universal covering group $\widetilde{\mathrm{SL}}_2(\mathbb{R})$). (Hint: Algebraic
-    representations must be given by regular rational functions, while Lie group representations require
-    only smoothness)'
-  hint: null
+    action, or the universal covering group $\widetilde{\mathrm{SL}}_2(\mathbb{R})$). '
+  hint: Algebraic representations must be given by regular rational functions, while Lie group representations
+    require only smoothness
   locator: null
   sub_index: null
-  search_text: '(algebraic groups vs. lie groups) compare linear algebraic groups (algebraic varieties
+  search_text: (algebraic groups vs. lie groups) compare linear algebraic groups (algebraic varieties
     over $\mathbb{r}$ with polynomial group operations) with smooth lie groups.  1. contrast unipotent
     and semisimple abelian algebraic groups (e.g. $(\mathbb{r}, +) \cong \mathbb{g}_a$ vs. $(\mathbb{r}_{>0},
     \times) \cong \mathbb{g}_m$), which are isomorphic as real lie groups but not as algebraic groups.
     2. explain why abelian varieties (compact projective algebraic groups) differ from affine algebraic
     groups. 3. give examples of lie groups that do not arise as algebraic groups (e.g., the heisenberg
-    group with non-trivial central action, or the universal covering group $\widetilde{\mathrm{sl}}_2(\mathbb{r})$).
-    (hint: algebraic representations must be given by regular rational functions, while lie group representations
-    require only smoothness)'
+    group with non-trivial central action, or the universal covering group $\widetilde{\mathrm{sl}}_2(\mathbb{r})$).  algebraic
+    representations must be given by regular rational functions, while lie group representations require
+    only smoothness
 - id: math-berkeley-edu-reb-courses-261-all-pdf#010
   text: '(The Heisenberg Group in Quantum Mechanics) Define the 3-dimensional continuous Heisenberg group
     and its Lie algebra $\mathfrak{h}_3 = \operatorname{span}\{X, Y, Z\}$ with commutation relations $[X,
     Y] = Z$ and $[X, Z] = [Y, Z] = 0$. 1. Realize the generators as quantum operators on $L^2(\mathbb{R})$:
     $X = x$ (position), $Y = \frac{d}{dx}$ (momentum), and $Z = 1$ (identity) via the Leibniz rule $[x,
     \frac{d}{dx}] = -1$. 2. State the Stone–von Neumann theorem and prove that $\mathfrak{h}_3$ admits
-    no finite-dimensional unitary representations where $Z$ acts as the non-zero identity scalar $\operatorname{Id}$.
-    (Hint: For finite-dimensional matrices, the trace of a commutator $\operatorname{Tr}([X, Y]) = \operatorname{Tr}(XY
-    - YX) = 0$, whereas $\operatorname{Tr}(Z) = \operatorname{Tr}(\operatorname{Id}) = n \ne 0$)'
-  hint: null
+    no finite-dimensional unitary representations where $Z$ acts as the non-zero identity scalar $\operatorname{Id}$. '
+  hint: For finite-dimensional matrices, the trace of a commutator $\operatorname{Tr}([X, Y]) = \operatorname{Tr}(XY
+    - YX) = 0$, whereas $\operatorname{Tr}(Z) = \operatorname{Tr}(\operatorname{Id}) = n \ne 0$
   locator: null
   sub_index: null
   search_text: '(the heisenberg group in quantum mechanics) define the 3-dimensional continuous heisenberg
@@ -184,19 +176,18 @@ exercises:
     $[x, y] = z$ and $[x, z] = [y, z] = 0$. 1. realize the generators as quantum operators on $l^2(\mathbb{r})$:
     $x = x$ (position), $y = \frac{d}{dx}$ (momentum), and $z = 1$ (identity) via the leibniz rule $[x,
     \frac{d}{dx}] = -1$. 2. state the stone–von neumann theorem and prove that $\mathfrak{h}_3$ admits
-    no finite-dimensional unitary representations where $z$ acts as the non-zero identity scalar $\operatorname{id}$.
-    (hint: for finite-dimensional matrices, the trace of a commutator $\operatorname{tr}([x, y]) = \operatorname{tr}(xy
-    - yx) = 0$, whereas $\operatorname{tr}(z) = \operatorname{tr}(\operatorname{id}) = n \ne 0$)'
+    no finite-dimensional unitary representations where $z$ acts as the non-zero identity scalar $\operatorname{id}$.  for
+    finite-dimensional matrices, the trace of a commutator $\operatorname{tr}([x, y]) = \operatorname{tr}(xy
+    - yx) = 0$, whereas $\operatorname{tr}(z) = \operatorname{tr}(\operatorname{id}) = n \ne 0$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#011
   text: '(The Iwasawa Decomposition: G = KAN) State the Iwasawa decomposition theorem for a connected
     semisimple Lie group $G$: there exist closed subgroups $K$ (compact), $A$ (abelian and isomorphic
     to $\mathbb{R}^r$), and $N$ (nilpotent/unipotent) such that the multiplication map $$K \times A \times
     N \xrightarrow{\sim} G$$ is a surjective diffeomorphism. For $G = \mathrm{SL}_n(\mathbb{R})$, identify
     $K = \mathrm{SO}(n)$, $A = \{ \operatorname{diag}(a_1, \dots, a_n) : a_i > 0, \prod a_i = 1 \}$, and
-    $N = \{ (u_{ij}) : u_{ii} = 1, u_{ij} = 0 \text{ for } i > j \}$. (Hint: Show that $G = KAN$ is the
-    geometric matrix reformulation of the Gram–Schmidt orthonormalization process, and deduce that $\pi_1(G)
-    \cong \pi_1(K)$)'
-  hint: null
+    $N = \{ (u_{ij}) : u_{ii} = 1, u_{ij} = 0 \text{ for } i > j \}$. '
+  hint: Show that $G = KAN$ is the geometric matrix reformulation of the Gram–Schmidt orthonormalization
+    process, and deduce that $\pi_1(G) \cong \pi_1(K)$
   locator: null
   sub_index: null
   search_text: '(the iwasawa decomposition: g = kan) state the iwasawa decomposition theorem for a connected
@@ -204,75 +195,72 @@ exercises:
     to $\mathbb{r}^r$), and $n$ (nilpotent/unipotent) such that the multiplication map $$k \times a \times
     n \xrightarrow{\sim} g$$ is a surjective diffeomorphism. for $g = \mathrm{sl}_n(\mathbb{r})$, identify
     $k = \mathrm{so}(n)$, $a = \{ \operatorname{diag}(a_1, \dots, a_n) : a_i > 0, \prod a_i = 1 \}$, and
-    $n = \{ (u_{ij}) : u_{ii} = 1, u_{ij} = 0 \text{ for } i > j \}$. (hint: show that $g = kan$ is the
-    geometric matrix reformulation of the gram–schmidt orthonormalization process, and deduce that $\pi_1(g)
-    \cong \pi_1(k)$)'
+    $n = \{ (u_{ij}) : u_{ii} = 1, u_{ij} = 0 \text{ for } i > j \}$.  show that $g = kan$ is the geometric
+    matrix reformulation of the gram–schmidt orthonormalization process, and deduce that $\pi_1(g) \cong
+    \pi_1(k)$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#012
   text: '(The Metaplectic Double Cover) Define the metaplectic group $\mathrm{Mp}_2(\mathbb{R})$ as the
     unique connected double cover of $\mathrm{SL}_2(\mathbb{R})$, fitting into $1 \to \mathbb{Z}/2\mathbb{Z}
     \to \mathrm{Mp}_2(\mathbb{R}) \to \mathrm{SL}_2(\mathbb{R}) \to 1$. Explain why $\mathrm{Mp}_2(\mathbb{R})$
     is essential for defining modular forms of half-integral weight (such as the Dedekind $\eta$-function
-    and theta series). (Hint: Compute the fundamental group $\pi_1(\mathrm{SL}_2(\mathbb{R})) \cong \pi_1(\mathrm{SO}(2))
-    \cong \mathbb{Z}$)'
-  hint: null
+    and theta series). '
+  hint: Compute the fundamental group $\pi_1(\mathrm{SL}_2(\mathbb{R})) \cong \pi_1(\mathrm{SO}(2)) \cong
+    \mathbb{Z}$
   locator: null
   sub_index: null
-  search_text: '(the metaplectic double cover) define the metaplectic group $\mathrm{mp}_2(\mathbb{r})$
+  search_text: (the metaplectic double cover) define the metaplectic group $\mathrm{mp}_2(\mathbb{r})$
     as the unique connected double cover of $\mathrm{sl}_2(\mathbb{r})$, fitting into $1 \to \mathbb{z}/2\mathbb{z}
     \to \mathrm{mp}_2(\mathbb{r}) \to \mathrm{sl}_2(\mathbb{r}) \to 1$. explain why $\mathrm{mp}_2(\mathbb{r})$
     is essential for defining modular forms of half-integral weight (such as the dedekind $\eta$-function
-    and theta series). (hint: compute the fundamental group $\pi_1(\mathrm{sl}_2(\mathbb{r})) \cong \pi_1(\mathrm{so}(2))
-    \cong \mathbb{z}$)'
+    and theta series).  compute the fundamental group $\pi_1(\mathrm{sl}_2(\mathbb{r})) \cong \pi_1(\mathrm{so}(2))
+    \cong \mathbb{z}$
 - id: math-berkeley-edu-reb-courses-261-all-pdf#013
   text: '(p-Adic Lie Groups and Galois Representations) Define a $p$-adic Lie group as a topological group
     equipped with an analytic manifold structure over $\mathbb{Q}_p$. Explain how continuous Galois representations
     $\rho: \operatorname{Gal}(\overline{\mathbb{Q}}/K) \to \mathrm{GL}_n(\mathbb{Q}_p)$ arising from the
     étale cohomology $H_{\text{ét}}^m(X_{\overline{K}}, \mathbb{Q}_p)$ of algebraic varieties take values
-    in $p$-adic Lie groups. (Hint: Compact $p$-adic Lie groups possess open normal subgroups that are
-    pro-$p$ groups)'
-  hint: null
+    in $p$-adic Lie groups. '
+  hint: Compact $p$-adic Lie groups possess open normal subgroups that are pro-$p$ groups
   locator: null
   sub_index: null
   search_text: '(p-adic lie groups and galois representations) define a $p$-adic lie group as a topological
     group equipped with an analytic manifold structure over $\mathbb{q}_p$. explain how continuous galois
     representations $\rho: \operatorname{gal}(\overline{\mathbb{q}}/k) \to \mathrm{gl}_n(\mathbb{q}_p)$
     arising from the étale cohomology $h_{\text{ét}}^m(x_{\overline{k}}, \mathbb{q}_p)$ of algebraic varieties
-    take values in $p$-adic lie groups. (hint: compact $p$-adic lie groups possess open normal subgroups
-    that are pro-$p$ groups)'
+    take values in $p$-adic lie groups.  compact $p$-adic lie groups possess open normal subgroups that
+    are pro-$p$ groups'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#014
   text: '(The Lie Bracket from Group Commutators) Let $G = \mathrm{GL}_n(\mathbb{R})$ with Lie algebra
     $\mathfrak{g} = \mathfrak{gl}_n(\mathbb{R}) = M_n(\mathbb{R})$. For small $A, B \in \mathfrak{g}$,
     compute the Taylor expansion of the group commutator: $$(I + A)(I + B)(I + A)^{-1}(I + B)^{-1} = I
     + [A, B] + \mathcal{O}(\|(A, B)\|^3),$$ where $[A, B] = AB - BA$. Prove that $[A, B] = -[B, A]$ and
-    deduce the Jacobi identity $[A, [B, C]] + [B, [C, A]] + [C, [A, B]] = 0$. (Hint: The Lie bracket measures
-    the leading-order obstruction to the commutativity of the group multiplication)'
-  hint: null
+    deduce the Jacobi identity $[A, [B, C]] + [B, [C, A]] + [C, [A, B]] = 0$. '
+  hint: The Lie bracket measures the leading-order obstruction to the commutativity of the group multiplication
   locator: null
   sub_index: null
   search_text: '(the lie bracket from group commutators) let $g = \mathrm{gl}_n(\mathbb{r})$ with lie
     algebra $\mathfrak{g} = \mathfrak{gl}_n(\mathbb{r}) = m_n(\mathbb{r})$. for small $a, b \in \mathfrak{g}$,
     compute the taylor expansion of the group commutator: $$(i + a)(i + b)(i + a)^{-1}(i + b)^{-1} = i
     + [a, b] + \mathcal{o}(\|(a, b)\|^3),$$ where $[a, b] = ab - ba$. prove that $[a, b] = -[b, a]$ and
-    deduce the jacobi identity $[a, [b, c]] + [b, [c, a]] + [c, [a, b]] = 0$. (hint: the lie bracket measures
-    the leading-order obstruction to the commutativity of the group multiplication)'
+    deduce the jacobi identity $[a, [b, c]] + [b, [c, a]] + [c, [a, b]] = 0$.  the lie bracket measures
+    the leading-order obstruction to the commutativity of the group multiplication'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#015
   text: '(Vector Fields, Derivations, and the Adjoint Map) Show that the space of smooth vector fields
     $\mathfrak{X}(M)$ is isomorphic to the space of derivations $\operatorname{Der}(C^\infty(M))$. 1.
     Prove that the commutator of two derivations $[D_1, D_2] = D_1 \circ D_2 - D_2 \circ D_1$ is a derivation
     of order 1. 2. Define the adjoint map $\operatorname{ad}_x(y) = [x, y]$ for $x \in \mathfrak{g}$,
     and prove that $\operatorname{ad}_x \in \operatorname{Der}(\mathfrak{g})$ is an inner derivation of
-    the Lie algebra, acting as the infinitesimal counterpart of conjugation $g x g^{-1}$. (Hint: Second-order
-    partial derivatives cancel in the commutator $[D_1, D_2]$ via Schwarz''s theorem)'
-  hint: null
+    the Lie algebra, acting as the infinitesimal counterpart of conjugation $g x g^{-1}$. '
+  hint: Second-order partial derivatives cancel in the commutator $[D_1, D_2]$ via Schwarz's theorem
   locator: null
   sub_index: null
-  search_text: '(vector fields, derivations, and the adjoint map) show that the space of smooth vector
+  search_text: (vector fields, derivations, and the adjoint map) show that the space of smooth vector
     fields $\mathfrak{x}(m)$ is isomorphic to the space of derivations $\operatorname{der}(c^\infty(m))$.
     1. prove that the commutator of two derivations $[d_1, d_2] = d_1 \circ d_2 - d_2 \circ d_1$ is a
     derivation of order 1. 2. define the adjoint map $\operatorname{ad}_x(y) = [x, y]$ for $x \in \mathfrak{g}$,
     and prove that $\operatorname{ad}_x \in \operatorname{der}(\mathfrak{g})$ is an inner derivation of
-    the lie algebra, acting as the infinitesimal counterpart of conjugation $g x g^{-1}$. (hint: second-order
-    partial derivatives cancel in the commutator $[d_1, d_2]$ via schwarz''s theorem)'
+    the lie algebra, acting as the infinitesimal counterpart of conjugation $g x g^{-1}$.  second-order
+    partial derivatives cancel in the commutator $[d_1, d_2]$ via schwarz's theorem
 - id: math-berkeley-edu-reb-courses-261-all-pdf#016
   text: '(Lie Groups vs. Formal Groups vs. Lie Algebras) Compare Lie groups, formal group laws, and Lie
     algebras: $$\mathbf{LieGrp} \longrightarrow \mathbf{FormalGrp} \longrightarrow \mathbf{LieAlg}.$$
@@ -280,9 +268,9 @@ exercises:
     and $\mathrm{O}(n)$ have the same Lie algebra $\mathfrak{so}(n)$, and $G$ and $G/Z$ share the same
     Lie algebra for any discrete central subgroup $Z$). 2. Define a 1-dimensional formal group law over
     a ring $R$ as a formal power series $F(X, Y) = X + Y + \sum_{i, j \ge 1} c_{ij} X^i Y^j \in R[[X,
-    Y]]$ satisfying associativity $F(X, F(Y, Z)) = F(F(X, Y), Z)$ and identity $F(X, 0) = X$. (Hint: Formal
-    groups retain the infinitesimal formal neighborhood of the identity without requiring analytic convergence)'
-  hint: null
+    Y]]$ satisfying associativity $F(X, F(Y, Z)) = F(F(X, Y), Z)$ and identity $F(X, 0) = X$. '
+  hint: Formal groups retain the infinitesimal formal neighborhood of the identity without requiring analytic
+    convergence
   locator: null
   sub_index: null
   search_text: '(lie groups vs. formal groups vs. lie algebras) compare lie groups, formal group laws,
@@ -291,8 +279,8 @@ exercises:
     and $\mathrm{o}(n)$ have the same lie algebra $\mathfrak{so}(n)$, and $g$ and $g/z$ share the same
     lie algebra for any discrete central subgroup $z$). 2. define a 1-dimensional formal group law over
     a ring $r$ as a formal power series $f(x, y) = x + y + \sum_{i, j \ge 1} c_{ij} x^i y^j \in r[[x,
-    y]]$ satisfying associativity $f(x, f(y, z)) = f(f(x, y), z)$ and identity $f(x, 0) = x$. (hint: formal
-    groups retain the infinitesimal formal neighborhood of the identity without requiring analytic convergence)'
+    y]]$ satisfying associativity $f(x, f(y, z)) = f(f(x, y), z)$ and identity $f(x, 0) = x$.  formal
+    groups retain the infinitesimal formal neighborhood of the identity without requiring analytic convergence'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#017
   text: '(Classification of Low-Dimensional Connected Lie Groups) Classify all connected real Lie groups
     up to dimension 3: 1. **Dimension 1:** The abelian groups $(\mathbb{R}, +)$ (simply connected) and
@@ -302,11 +290,10 @@ exercises:
     \rtimes \mathbb{R}_{>0}$. 3. **Dimension 3:** $\mathrm{SU}(2) \cong S^3 \cong \operatorname{Spin}(3)$
     (compact and simply connected), $\mathrm{SL}_2(\mathbb{R})$ (simple, non-compact, $\pi_1 \cong \mathbb{Z}$),
     the 3D Heisenberg group $\mathbb{H}_3$, the Euclidean motion group $\mathrm{SE}(2) = \mathbb{R}^2
-    \rtimes \mathrm{SO}(2)$, and the Bianchi classification of 3D solvable Lie algebras. (Hint: Relate
-    the 3D Lie groups to Thurston''s eight 3-manifold geometries: $\mathbb{R}^3, S^3, \mathbb{H}^3, S^2
-    \times \mathbb{R}, \mathbb{H}^2 \times \mathbb{R}, \widetilde{\mathrm{SL}}_2(\mathbb{R}), \text{Nil}$,
-    and $\text{Sol}$)'
-  hint: null
+    \rtimes \mathrm{SO}(2)$, and the Bianchi classification of 3D solvable Lie algebras. '
+  hint: 'Relate the 3D Lie groups to Thurston''s eight 3-manifold geometries: $\mathbb{R}^3, S^3, \mathbb{H}^3,
+    S^2 \times \mathbb{R}, \mathbb{H}^2 \times \mathbb{R}, \widetilde{\mathrm{SL}}_2(\mathbb{R}), \text{Nil}$,
+    and $\text{Sol}$'
   locator: null
   sub_index: null
   search_text: '(classification of low-dimensional connected lie groups) classify all connected real lie
@@ -318,9 +305,9 @@ exercises:
     \cong s^3 \cong \operatorname{spin}(3)$ (compact and simply connected), $\mathrm{sl}_2(\mathbb{r})$
     (simple, non-compact, $\pi_1 \cong \mathbb{z}$), the 3d heisenberg group $\mathbb{h}_3$, the euclidean
     motion group $\mathrm{se}(2) = \mathbb{r}^2 \rtimes \mathrm{so}(2)$, and the bianchi classification
-    of 3d solvable lie algebras. (hint: relate the 3d lie groups to thurston''s eight 3-manifold geometries:
+    of 3d solvable lie algebras.  relate the 3d lie groups to thurston''s eight 3-manifold geometries:
     $\mathbb{r}^3, s^3, \mathbb{h}^3, s^2 \times \mathbb{r}, \mathbb{h}^2 \times \mathbb{r}, \widetilde{\mathrm{sl}}_2(\mathbb{r}),
-    \text{nil}$, and $\text{sol}$)'
+    \text{nil}$, and $\text{sol}$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#018
   text: '(Differential Operators and Universal Enveloping Algebras) Define a linear differential operator
     of order $\le n$ on a commutative ring $R$: an operator $D$ such that for every $r \in R$, the commutator
@@ -328,9 +315,9 @@ exercises:
     being multiplication by elements of $R$. 1. Prove that the composition of differential operators of
     order $\le m$ and $\le n$ has order $\le m+n$. 2. Define the Universal Enveloping Algebra $U(\mathfrak{g})
     = T(\mathfrak{g}) / \langle x \otimes y - y \otimes x - [x, y] \rangle$ as the initial associative
-    algebra receiving Lie algebra homomorphisms from $\mathfrak{g}$. (Hint: $U(\mathfrak{g})$ is canonically
-    isomorphic to the algebra of left-invariant differential operators on the Lie group $G$)'
-  hint: null
+    algebra receiving Lie algebra homomorphisms from $\mathfrak{g}$. '
+  hint: $U(\mathfrak{g})$ is canonically isomorphic to the algebra of left-invariant differential operators
+    on the Lie group $G$
   locator: null
   sub_index: null
   search_text: '(differential operators and universal enveloping algebras) define a linear differential
@@ -339,38 +326,35 @@ exercises:
     order $\le 0$ being multiplication by elements of $r$. 1. prove that the composition of differential
     operators of order $\le m$ and $\le n$ has order $\le m+n$. 2. define the universal enveloping algebra
     $u(\mathfrak{g}) = t(\mathfrak{g}) / \langle x \otimes y - y \otimes x - [x, y] \rangle$ as the initial
-    associative algebra receiving lie algebra homomorphisms from $\mathfrak{g}$. (hint: $u(\mathfrak{g})$
-    is canonically isomorphic to the algebra of left-invariant differential operators on the lie group
-    $g$)'
+    associative algebra receiving lie algebra homomorphisms from $\mathfrak{g}$.  $u(\mathfrak{g})$ is
+    canonically isomorphic to the algebra of left-invariant differential operators on the lie group $g$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#019
   text: '(The Poincaré-Birkhoff-Witt Theorem) State the Poincaré–Birkhoff–Witt (PBW) Theorem: let $\mathfrak{g}$
     be a Lie algebra over a field $k$ with ordered basis $(x_1, x_2, \dots, x_n)$. Prove that the set
     of ordered monomials $$\{ x_1^{i_1} x_2^{i_2} \cdots x_n^{i_n} : i_j \ge 0 \}$$ forms a vector space
     basis for the universal enveloping algebra $U(\mathfrak{g})$, and that the associated graded algebra
-    is isomorphic to the symmetric algebra: $\operatorname{gr}(U(\mathfrak{g})) \cong \operatorname{Sym}(\mathfrak{g})$.
-    (Hint: Represent $U(\mathfrak{g})$ on the polynomial algebra $\operatorname{Sym}(\mathfrak{g})$ using
-    the PBW filtration to prove linear independence)'
-  hint: null
+    is isomorphic to the symmetric algebra: $\operatorname{gr}(U(\mathfrak{g})) \cong \operatorname{Sym}(\mathfrak{g})$. '
+  hint: Represent $U(\mathfrak{g})$ on the polynomial algebra $\operatorname{Sym}(\mathfrak{g})$ using
+    the PBW filtration to prove linear independence
   locator: null
   sub_index: null
   search_text: '(the poincaré-birkhoff-witt theorem) state the poincaré–birkhoff–witt (pbw) theorem: let
     $\mathfrak{g}$ be a lie algebra over a field $k$ with ordered basis $(x_1, x_2, \dots, x_n)$. prove
     that the set of ordered monomials $$\{ x_1^{i_1} x_2^{i_2} \cdots x_n^{i_n} : i_j \ge 0 \}$$ forms
     a vector space basis for the universal enveloping algebra $u(\mathfrak{g})$, and that the associated
-    graded algebra is isomorphic to the symmetric algebra: $\operatorname{gr}(u(\mathfrak{g})) \cong \operatorname{sym}(\mathfrak{g})$.
-    (hint: represent $u(\mathfrak{g})$ on the polynomial algebra $\operatorname{sym}(\mathfrak{g})$ using
-    the pbw filtration to prove linear independence)'
+    graded algebra is isomorphic to the symmetric algebra: $\operatorname{gr}(u(\mathfrak{g})) \cong \operatorname{sym}(\mathfrak{g})$.  represent
+    $u(\mathfrak{g})$ on the polynomial algebra $\operatorname{sym}(\mathfrak{g})$ using the pbw filtration
+    to prove linear independence'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#020
   text: '(Hopf Algebra Structure on U(g)) Equip the universal enveloping algebra $U(\mathfrak{g})$ with
     the structure of a cocommutative Hopf algebra: 1. Define the coproduct $\Delta: U(\mathfrak{g}) \to
     U(\mathfrak{g}) \otimes U(\mathfrak{g})$ by $\Delta(x) = x \otimes 1 + 1 \otimes x$ for $x \in \mathfrak{g}$.
     2. Define the counit $\epsilon: U(\mathfrak{g}) \to k$ by $\epsilon(x) = 0$ for $x \in \mathfrak{g}$
     and $\epsilon(1) = 1$. 3. Define the antipode $S: U(\mathfrak{g}) \to U(\mathfrak{g})$ by $S(x) =
-    -x$ for $x \in \mathfrak{g}$, satisfying $S(xy) = S(y)S(x)$. (Hint: State the Milnor–Moore theorem:
-    every connected, cocommutative graded Hopf algebra over a field of characteristic 0 is isomorphic
-    to the universal enveloping algebra of its Lie algebra of primitive elements $P(H) = \{x \in H : \Delta(x)
-    = x \otimes 1 + 1 \otimes x\}$)'
-  hint: null
+    -x$ for $x \in \mathfrak{g}$, satisfying $S(xy) = S(y)S(x)$. '
+  hint: 'State the Milnor–Moore theorem: every connected, cocommutative graded Hopf algebra over a field
+    of characteristic 0 is isomorphic to the universal enveloping algebra of its Lie algebra of primitive
+    elements $P(H) = \{x \in H : \Delta(x) = x \otimes 1 + 1 \otimes x\}$'
   locator: null
   sub_index: null
   search_text: '(hopf algebra structure on u(g)) equip the universal enveloping algebra $u(\mathfrak{g})$
@@ -378,18 +362,18 @@ exercises:
     \to u(\mathfrak{g}) \otimes u(\mathfrak{g})$ by $\delta(x) = x \otimes 1 + 1 \otimes x$ for $x \in
     \mathfrak{g}$. 2. define the counit $\epsilon: u(\mathfrak{g}) \to k$ by $\epsilon(x) = 0$ for $x
     \in \mathfrak{g}$ and $\epsilon(1) = 1$. 3. define the antipode $s: u(\mathfrak{g}) \to u(\mathfrak{g})$
-    by $s(x) = -x$ for $x \in \mathfrak{g}$, satisfying $s(xy) = s(y)s(x)$. (hint: state the milnor–moore
-    theorem: every connected, cocommutative graded hopf algebra over a field of characteristic 0 is isomorphic
+    by $s(x) = -x$ for $x \in \mathfrak{g}$, satisfying $s(xy) = s(y)s(x)$.  state the milnor–moore theorem:
+    every connected, cocommutative graded hopf algebra over a field of characteristic 0 is isomorphic
     to the universal enveloping algebra of its lie algebra of primitive elements $p(h) = \{x \in h : \delta(x)
-    = x \otimes 1 + 1 \otimes x\}$)'
+    = x \otimes 1 + 1 \otimes x\}$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#021
   text: '(Matrix Exponentials and the Exponential Map) For a matrix $A \in M_n(\mathbb{R})$, define the
     matrix exponential $\exp(A) = \sum_{k=0}^\infty \frac{A^k}{k!}$. 1. Prove that the series converges
     absolutely for any matrix norm. 2. Prove Jacobi''s formula: $\det(\exp(A)) = \exp(\operatorname{Tr}(A))$.
     3. Compute $\exp(A)$ explicitly using the Lagrange interpolation polynomial on the eigenvalues of
     $A$. 4. If $A$ is a nilpotent matrix ($A^n = 0$), show that $\exp(tA)$ is a polynomial matrix in $t$
-    with unipotent values. (Hint: For non-commuting matrices, $\exp(A+B) \ne \exp(A)\exp(B)$ in general)'
-  hint: null
+    with unipotent values. '
+  hint: For non-commuting matrices, $\exp(A+B) \ne \exp(A)\exp(B)$ in general
   locator: null
   sub_index: null
   search_text: '(matrix exponentials and the exponential map) for a matrix $a \in m_n(\mathbb{r})$, define
@@ -397,16 +381,16 @@ exercises:
     absolutely for any matrix norm. 2. prove jacobi''s formula: $\det(\exp(a)) = \exp(\operatorname{tr}(a))$.
     3. compute $\exp(a)$ explicitly using the lagrange interpolation polynomial on the eigenvalues of
     $a$. 4. if $a$ is a nilpotent matrix ($a^n = 0$), show that $\exp(ta)$ is a polynomial matrix in $t$
-    with unipotent values. (hint: for non-commuting matrices, $\exp(a+b) \ne \exp(a)\exp(b)$ in general)'
+    with unipotent values.  for non-commuting matrices, $\exp(a+b) \ne \exp(a)\exp(b)$ in general'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#022
   text: '(The Campbell-Baker-Hausdorff Formula) State the Campbell–Baker–Hausdorff (CBH) formula: in the
     completion of the free Lie algebra generated by formal variables $A$ and $B$, $$\log(\exp(A)\exp(B))
     = A + B + \frac{1}{2}[A, B] + \frac{1}{12}[A, [A, B]] - \frac{1}{12}[B, [A, B]] + \dots$$ Prove that
     all terms in the series are Lie polynomials built purely from iterated Lie brackets. Explain how the
     CBH formula proves that the Lie algebra $\mathfrak{g}$ uniquely determines the local multiplication
-    law of the Lie group $G$. (Hint: Show that $\exp(A)\exp(B) = \exp(C)$ has $C$ as a primitive element
-    in the completed Hopf algebra $\widehat{U(\mathfrak{g})}$)'
-  hint: null
+    law of the Lie group $G$. '
+  hint: Show that $\exp(A)\exp(B) = \exp(C)$ has $C$ as a primitive element in the completed Hopf algebra
+    $\widehat{U(\mathfrak{g})}$
   locator: null
   sub_index: null
   search_text: '(the campbell-baker-hausdorff formula) state the campbell–baker–hausdorff (cbh) formula:
@@ -414,34 +398,34 @@ exercises:
     = a + b + \frac{1}{2}[a, b] + \frac{1}{12}[a, [a, b]] - \frac{1}{12}[b, [a, b]] + \dots$$ prove that
     all terms in the series are lie polynomials built purely from iterated lie brackets. explain how the
     cbh formula proves that the lie algebra $\mathfrak{g}$ uniquely determines the local multiplication
-    law of the lie group $g$. (hint: show that $\exp(a)\exp(b) = \exp(c)$ has $c$ as a primitive element
-    in the completed hopf algebra $\widehat{u(\mathfrak{g})}$)'
+    law of the lie group $g$.  show that $\exp(a)\exp(b) = \exp(c)$ has $c$ as a primitive element in
+    the completed hopf algebra $\widehat{u(\mathfrak{g})}$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#023
   text: '(Lower Central Series and Graded Lie Rings) Let $G$ be a group with descending central series
     $G = G_1 \supseteq G_2 \supseteq G_3 \supseteq \dots$, where $G_{i+1} = [G, G_i]$. Construct the associated
     graded Lie ring: $$L(G) = \bigoplus_{i=1}^\infty G_i / G_{i+1},$$ where addition is the abelian group
     operation in each quotient and the Lie bracket is induced by the group commutator $[x G_{i+1}, y G_{j+1}]
-    = (x y x^{-1} y^{-1}) G_{i+j+1}$. (Hint: Verify the Jacobi identity on $L(G)$ using Hall''s three-subgroups
-    commutator identity $[x, [y^{-1}, z]]^y [y, [z^{-1}, x]]^z [z, [x^{-1}, y]]^x = 1$)'
-  hint: null
+    = (x y x^{-1} y^{-1}) G_{i+j+1}$. '
+  hint: Verify the Jacobi identity on $L(G)$ using Hall's three-subgroups commutator identity $[x, [y^{-1},
+    z]]^y [y, [z^{-1}, x]]^z [z, [x^{-1}, y]]^x = 1$
   locator: null
   sub_index: null
   search_text: '(lower central series and graded lie rings) let $g$ be a group with descending central
     series $g = g_1 \supseteq g_2 \supseteq g_3 \supseteq \dots$, where $g_{i+1} = [g, g_i]$. construct
     the associated graded lie ring: $$l(g) = \bigoplus_{i=1}^\infty g_i / g_{i+1},$$ where addition is
     the abelian group operation in each quotient and the lie bracket is induced by the group commutator
-    $[x g_{i+1}, y g_{j+1}] = (x y x^{-1} y^{-1}) g_{i+j+1}$. (hint: verify the jacobi identity on $l(g)$
-    using hall''s three-subgroups commutator identity $[x, [y^{-1}, z]]^y [y, [z^{-1}, x]]^z [z, [x^{-1},
-    y]]^x = 1$)'
+    $[x g_{i+1}, y g_{j+1}] = (x y x^{-1} y^{-1}) g_{i+j+1}$.  verify the jacobi identity on $l(g)$ using
+    hall''s three-subgroups commutator identity $[x, [y^{-1}, z]]^y [y, [z^{-1}, x]]^z [z, [x^{-1}, y]]^x
+    = 1$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#024
   text: '(Engel''s Theorem on Nilpotent Lie Algebras) State and prove Engel''s Theorem: let $\mathfrak{g}
     \subset \mathfrak{gl}(V)$ be a Lie algebra of nilpotent endomorphisms on a non-zero finite-dimensional
     vector space $V$. Prove that there exists a non-zero vector $v \in V \setminus \{0\}$ such that $\mathfrak{g}
     \cdot v = 0$. Deduce that there exists a complete flag $0 = V_0 \subset V_1 \subset \dots \subset
     V_n = V$ such that $\mathfrak{g} \cdot V_i \subseteq V_{i-1}$, meaning $\mathfrak{g}$ is conjugate
-    to an algebra of strictly upper-triangular matrices. (Hint: Use induction on $\dim \mathfrak{g}$ and
-    apply the induction hypothesis to a maximal Lie subalgebra $\mathfrak{h} \subset \mathfrak{g}$)'
-  hint: null
+    to an algebra of strictly upper-triangular matrices. '
+  hint: Use induction on $\dim \mathfrak{g}$ and apply the induction hypothesis to a maximal Lie subalgebra
+    $\mathfrak{h} \subset \mathfrak{g}$
   locator: null
   sub_index: null
   search_text: '(engel''s theorem on nilpotent lie algebras) state and prove engel''s theorem: let $\mathfrak{g}
@@ -449,17 +433,17 @@ exercises:
     vector space $v$. prove that there exists a non-zero vector $v \in v \setminus \{0\}$ such that $\mathfrak{g}
     \cdot v = 0$. deduce that there exists a complete flag $0 = v_0 \subset v_1 \subset \dots \subset
     v_n = v$ such that $\mathfrak{g} \cdot v_i \subseteq v_{i-1}$, meaning $\mathfrak{g}$ is conjugate
-    to an algebra of strictly upper-triangular matrices. (hint: use induction on $\dim \mathfrak{g}$ and
-    apply the induction hypothesis to a maximal lie subalgebra $\mathfrak{h} \subset \mathfrak{g}$)'
+    to an algebra of strictly upper-triangular matrices.  use induction on $\dim \mathfrak{g}$ and apply
+    the induction hypothesis to a maximal lie subalgebra $\mathfrak{h} \subset \mathfrak{g}$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#025
   text: '(Nilpotence, p-Groups, and Zassenhaus''s Theorem)  1. Show that every finite $p$-group is nilpotent
     using the class equation and the non-triviality of its center $Z(G) \ne 1$. 2. State Zassenhaus''s
     Theorem: there exists an open neighborhood of the identity $U \subset G$ in any Lie group such that
     any discrete subgroup generated by elements in $U$ is nilpotent. 3. State Gromov''s Theorem on groups
     of polynomial growth: a finitely generated group $G$ has polynomial growth if and only if $G$ contains
-    a nilpotent subgroup of finite index. (Hint: In small neighborhoods of the identity, the CBH series
-    converges and forces commutators to contract into nilpotent sub-algebras)'
-  hint: null
+    a nilpotent subgroup of finite index. '
+  hint: In small neighborhoods of the identity, the CBH series converges and forces commutators to contract
+    into nilpotent sub-algebras
   locator: null
   sub_index: null
   search_text: '(nilpotence, p-groups, and zassenhaus''s theorem)  1. show that every finite $p$-group
@@ -467,42 +451,40 @@ exercises:
     zassenhaus''s theorem: there exists an open neighborhood of the identity $u \subset g$ in any lie
     group such that any discrete subgroup generated by elements in $u$ is nilpotent. 3. state gromov''s
     theorem on groups of polynomial growth: a finitely generated group $g$ has polynomial growth if and
-    only if $g$ contains a nilpotent subgroup of finite index. (hint: in small neighborhoods of the identity,
-    the cbh series converges and forces commutators to contract into nilpotent sub-algebras)'
+    only if $g$ contains a nilpotent subgroup of finite index.  in small neighborhoods of the identity,
+    the cbh series converges and forces commutators to contract into nilpotent sub-algebras'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#026
   text: '(Solvable Lie Algebras and Lie''s Theorem) State Lie''s Theorem: let $\mathfrak{g}$ be a solvable
     Lie algebra over an algebraically closed field $k$ of characteristic 0, and let $V$ be a non-zero
     finite-dimensional $\mathfrak{g}$-module. Prove that $V$ contains a common eigenvector for all elements
     of $\mathfrak{g}$, and deduce that $\mathfrak{g}$ is conjugate to an algebra of upper-triangular matrices.
-    Explain why Lie''s theorem fails in characteristic $p > 0$. (Hint: In characteristic $p$, the trace
-    of the identity $\operatorname{Tr}(\operatorname{Id}) = p = 0$ allows non-trivial simple representations
-    of solvable Lie algebras)'
-  hint: null
+    Explain why Lie''s theorem fails in characteristic $p > 0$. '
+  hint: In characteristic $p$, the trace of the identity $\operatorname{Tr}(\operatorname{Id}) = p = 0$
+    allows non-trivial simple representations of solvable Lie algebras
   locator: null
   sub_index: null
   search_text: '(solvable lie algebras and lie''s theorem) state lie''s theorem: let $\mathfrak{g}$ be
     a solvable lie algebra over an algebraically closed field $k$ of characteristic 0, and let $v$ be
     a non-zero finite-dimensional $\mathfrak{g}$-module. prove that $v$ contains a common eigenvector
     for all elements of $\mathfrak{g}$, and deduce that $\mathfrak{g}$ is conjugate to an algebra of upper-triangular
-    matrices. explain why lie''s theorem fails in characteristic $p > 0$. (hint: in characteristic $p$,
-    the trace of the identity $\operatorname{tr}(\operatorname{id}) = p = 0$ allows non-trivial simple
-    representations of solvable lie algebras)'
+    matrices. explain why lie''s theorem fails in characteristic $p > 0$.  in characteristic $p$, the
+    trace of the identity $\operatorname{tr}(\operatorname{id}) = p = 0$ allows non-trivial simple representations
+    of solvable lie algebras'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#027
   text: '(Haar Measures on Nilpotent vs. Solvable Groups) Define the left and right Haar measures on a
     locally compact Lie group $G$. Prove that all connected nilpotent Lie groups are unimodular (left
     Haar measure equals right Haar measure), whereas non-abelian solvable Lie groups (such as the affine
-    group $ax+b$) are generally non-unimodular with a non-trivial modular function $\Delta_G: G \to \mathbb{R}_{>0}$.
-    (Hint: Show that the modular function $\Delta(g) = |\det(\operatorname{Ad}_g)|$ is identically 1 on
-    nilpotent groups because $\operatorname{ad}_X$ is nilpotent)'
-  hint: null
+    group $ax+b$) are generally non-unimodular with a non-trivial modular function $\Delta_G: G \to \mathbb{R}_{>0}$. '
+  hint: Show that the modular function $\Delta(g) = |\det(\operatorname{Ad}_g)|$ is identically 1 on nilpotent
+    groups because $\operatorname{ad}_X$ is nilpotent
   locator: null
   sub_index: null
   search_text: '(haar measures on nilpotent vs. solvable groups) define the left and right haar measures
     on a locally compact lie group $g$. prove that all connected nilpotent lie groups are unimodular (left
     haar measure equals right haar measure), whereas non-abelian solvable lie groups (such as the affine
-    group $ax+b$) are generally non-unimodular with a non-trivial modular function $\delta_g: g \to \mathbb{r}_{>0}$.
-    (hint: show that the modular function $\delta(g) = |\det(\operatorname{ad}_g)|$ is identically 1 on
-    nilpotent groups because $\operatorname{ad}_x$ is nilpotent)'
+    group $ax+b$) are generally non-unimodular with a non-trivial modular function $\delta_g: g \to \mathbb{r}_{>0}$.  show
+    that the modular function $\delta(g) = |\det(\operatorname{ad}_g)|$ is identically 1 on nilpotent
+    groups because $\operatorname{ad}_x$ is nilpotent'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#028
   text: '(Picard-Vessiot Theory and Differential Galois Theory) Formulate Picard–Vessiot theory for linear
     differential equations: let $k$ be a differential field and let $L(y) = y^{(n)} + a_{n-1}y^{(n-1)}
@@ -510,9 +492,9 @@ exercises:
     generated by $n$ linearly independent solutions. 2. Define the differential Galois group $\operatorname{Gal}_{\text{diff}}(K/k)$
     as the group of field automorphisms of $K$ commuting with the derivation. 3. Prove that $L(y) = 0$
     is solvable by quadratures, radicals, and exponentials of integrals if and only if the algebraic group
-    $\operatorname{Gal}_{\text{diff}}(K/k)$ is a solvable algebraic group. (Hint: Illustrate this for
-    Bessel''s differential equation and analyze the monodromy representation around singular points)'
-  hint: null
+    $\operatorname{Gal}_{\text{diff}}(K/k)$ is a solvable algebraic group. '
+  hint: Illustrate this for Bessel's differential equation and analyze the monodromy representation around
+    singular points
   locator: null
   sub_index: null
   search_text: '(picard-vessiot theory and differential galois theory) formulate picard–vessiot theory
@@ -521,35 +503,35 @@ exercises:
     generated by $n$ linearly independent solutions. 2. define the differential galois group $\operatorname{gal}_{\text{diff}}(k/k)$
     as the group of field automorphisms of $k$ commuting with the derivation. 3. prove that $l(y) = 0$
     is solvable by quadratures, radicals, and exponentials of integrals if and only if the algebraic group
-    $\operatorname{gal}_{\text{diff}}(k/k)$ is a solvable algebraic group. (hint: illustrate this for
-    bessel''s differential equation and analyze the monodromy representation around singular points)'
+    $\operatorname{gal}_{\text{diff}}(k/k)$ is a solvable algebraic group.  illustrate this for bessel''s
+    differential equation and analyze the monodromy representation around singular points'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#029
   text: '(Additive and Multiplicative Jordan Decompositions) Let $V$ be a finite-dimensional vector space
     over a perfect field $k$. 1. **Additive Jordan Decomposition:** For any endomorphism $x \in \operatorname{End}(V)$,
     prove there exists a unique decomposition $x = x_s + x_n$ where $x_s$ is semisimple, $x_n$ is nilpotent,
     and $[x_s, x_n] = 0$. 2. **Multiplicative Jordan Decomposition:** For any invertible $g \in \mathrm{GL}(V)$,
     prove there exists a unique decomposition $g = g_s g_u = g_u g_s$ where $g_s$ is semisimple and $g_u$
-    is unipotent (all eigenvalues equal to 1). (Hint: Construct $x_s$ and $x_n$ as polynomials in $x$
-    without constant terms using the Chinese Remainder Theorem on the minimal polynomial)'
-  hint: null
+    is unipotent (all eigenvalues equal to 1). '
+  hint: Construct $x_s$ and $x_n$ as polynomials in $x$ without constant terms using the Chinese Remainder
+    Theorem on the minimal polynomial
   locator: null
   sub_index: null
-  search_text: '(additive and multiplicative jordan decompositions) let $v$ be a finite-dimensional vector
+  search_text: (additive and multiplicative jordan decompositions) let $v$ be a finite-dimensional vector
     space over a perfect field $k$. 1. **additive jordan decomposition:** for any endomorphism $x \in
     \operatorname{end}(v)$, prove there exists a unique decomposition $x = x_s + x_n$ where $x_s$ is semisimple,
     $x_n$ is nilpotent, and $[x_s, x_n] = 0$. 2. **multiplicative jordan decomposition:** for any invertible
     $g \in \mathrm{gl}(v)$, prove there exists a unique decomposition $g = g_s g_u = g_u g_s$ where $g_s$
-    is semisimple and $g_u$ is unipotent (all eigenvalues equal to 1). (hint: construct $x_s$ and $x_n$
-    as polynomials in $x$ without constant terms using the chinese remainder theorem on the minimal polynomial)'
+    is semisimple and $g_u$ is unipotent (all eigenvalues equal to 1).  construct $x_s$ and $x_n$ as polynomials
+    in $x$ without constant terms using the chinese remainder theorem on the minimal polynomial
 - id: math-berkeley-edu-reb-courses-261-all-pdf#030
   text: '(Cartan''s Criteria for Solvability and Semisimplicity) Define the Killing form $B(x, y) = \operatorname{Tr}(\operatorname{ad}_x
     \circ \operatorname{ad}_y)$ on a finite-dimensional Lie algebra $\mathfrak{g}$. 1. State Cartan''s
     Criterion for Solvability: $\mathfrak{g}$ is solvable if and only if $B(\mathfrak{g}, [\mathfrak{g},
     \mathfrak{g}]) = 0$. 2. State Cartan''s Criterion for Semisimplicity: $\mathfrak{g}$ is semisimple
     (a direct sum of simple Lie algebras) if and only if the Killing form $B$ is non-degenerate ($\ker
-    B = \{0\}$). (Hint: Use Lie''s theorem to compute traces of commutators for the solvability criterion,
-    and use ideals $I^\perp$ orthogonal with respect to $B$ to decompose semisimple algebras)'
-  hint: null
+    B = \{0\}$). '
+  hint: Use Lie's theorem to compute traces of commutators for the solvability criterion, and use ideals
+    $I^\perp$ orthogonal with respect to $B$ to decompose semisimple algebras
   locator: null
   sub_index: null
   search_text: '(cartan''s criteria for solvability and semisimplicity) define the killing form $b(x,
@@ -557,9 +539,9 @@ exercises:
     algebra $\mathfrak{g}$. 1. state cartan''s criterion for solvability: $\mathfrak{g}$ is solvable if
     and only if $b(\mathfrak{g}, [\mathfrak{g}, \mathfrak{g}]) = 0$. 2. state cartan''s criterion for
     semisimplicity: $\mathfrak{g}$ is semisimple (a direct sum of simple lie algebras) if and only if
-    the killing form $b$ is non-degenerate ($\ker b = \{0\}$). (hint: use lie''s theorem to compute traces
-    of commutators for the solvability criterion, and use ideals $i^\perp$ orthogonal with respect to
-    $b$ to decompose semisimple algebras)'
+    the killing form $b$ is non-degenerate ($\ker b = \{0\}$).  use lie''s theorem to compute traces of
+    commutators for the solvability criterion, and use ideals $i^\perp$ orthogonal with respect to $b$
+    to decompose semisimple algebras'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#031
   text: '(Cartan Subalgebras, Root Decompositions, and Maximal Tori) Define a Cartan subalgebra $\mathfrak{h}
     \subset \mathfrak{g}$ as a nilpotent subalgebra that is equal to its own normalizer: $N_\mathfrak{g}(\mathfrak{h})
@@ -568,9 +550,9 @@ exercises:
     where $\mathfrak{g}_\alpha = \{ x \in \mathfrak{g} : [h, x] = \alpha(h)x \text{ for all } h \in \mathfrak{h}
     \}$. 2. For a compact connected Lie group $K$, show that the Lie algebra of a maximal torus $T \subset
     K$ is a Cartan subalgebra $\mathfrak{t} \subset \mathfrak{k}$, and state the theorem that all maximal
-    tori in $K$ are conjugate. (Hint: In finite group theory, Carter subgroups are defined as self-normalizing
-    nilpotent subgroups, but finite simple groups like $A_5$ possess no Carter subgroups)'
-  hint: null
+    tori in $K$ are conjugate. '
+  hint: In finite group theory, Carter subgroups are defined as self-normalizing nilpotent subgroups,
+    but finite simple groups like $A_5$ possess no Carter subgroups
   locator: null
   sub_index: null
   search_text: '(cartan subalgebras, root decompositions, and maximal tori) define a cartan subalgebra
@@ -580,9 +562,9 @@ exercises:
     \mathfrak{g}_\alpha$, where $\mathfrak{g}_\alpha = \{ x \in \mathfrak{g} : [h, x] = \alpha(h)x \text{
     for all } h \in \mathfrak{h} \}$. 2. for a compact connected lie group $k$, show that the lie algebra
     of a maximal torus $t \subset k$ is a cartan subalgebra $\mathfrak{t} \subset \mathfrak{k}$, and state
-    the theorem that all maximal tori in $k$ are conjugate. (hint: in finite group theory, carter subgroups
+    the theorem that all maximal tori in $k$ are conjugate.  in finite group theory, carter subgroups
     are defined as self-normalizing nilpotent subgroups, but finite simple groups like $a_5$ possess no
-    carter subgroups)'
+    carter subgroups'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#032
   text: '(The Bruhat Decomposition and Schubert Cells) State the Bruhat decomposition for $G = \mathrm{GL}_n(\mathbb{C})$:
     $$G = \bigsqcup_{w \in W} B w B,$$ where $B$ is the standard Borel subgroup of upper-triangular matrices
@@ -590,9 +572,9 @@ exercises:
     $G/B$ decomposes into a disjoint union of $n!$ affine Schubert cells $C_w = B w B / B \cong \mathbb{A}^{\ell(w)}$,
     where $\ell(w)$ is the length of the permutation. 2. Compute the point count $\#(G/B)(\mathbb{F}_q)
     = \sum_{w \in S_n} q^{\ell(w)} = [n]_q!$, and connect this to the compactly supported cohomology $H_c^*(G/B;
-    \mathbb{C})$ via the Weil conjectures. (Hint: The Bruhat decomposition is the geometric coordinate-free
-    formulation of Gaussian elimination with row/column permutations)'
-  hint: null
+    \mathbb{C})$ via the Weil conjectures. '
+  hint: The Bruhat decomposition is the geometric coordinate-free formulation of Gaussian elimination
+    with row/column permutations
   locator: null
   sub_index: null
   search_text: '(the bruhat decomposition and schubert cells) state the bruhat decomposition for $g =
@@ -601,9 +583,9 @@ exercises:
     1. show that the flag manifold $g/b$ decomposes into a disjoint union of $n!$ affine schubert cells
     $c_w = b w b / b \cong \mathbb{a}^{\ell(w)}$, where $\ell(w)$ is the length of the permutation. 2.
     compute the point count $\#(g/b)(\mathbb{f}_q) = \sum_{w \in s_n} q^{\ell(w)} = [n]_q!$, and connect
-    this to the compactly supported cohomology $h_c^*(g/b; \mathbb{c})$ via the weil conjectures. (hint:
-    the bruhat decomposition is the geometric coordinate-free formulation of gaussian elimination with
-    row/column permutations)'
+    this to the compactly supported cohomology $h_c^*(g/b; \mathbb{c})$ via the weil conjectures.  the
+    bruhat decomposition is the geometric coordinate-free formulation of gaussian elimination with row/column
+    permutations'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#033
   text: '(Real Forms of Orthogonal Groups and Pythagorean Triples)  1. Classify real quadratic forms of
     dimension $n$ via Sylvester''s law of inertia into signatures $(p, q)$ with group $\mathrm{O}(p, q)$.
@@ -611,9 +593,8 @@ exercises:
     points $\mathrm{SO}_2(\mathbb{Q})$ using the stereographic Weierstrass $t$-substitution $t = \tan(\theta/2)$:
     $$\cos\theta = \frac{1-t^2}{1+t^2}, \quad \sin\theta = \frac{2t}{1+t^2}, \quad t \in \mathbb{Q},$$
     and prove that rational points on $\mathrm{SO}_2$ parametrize all primitive Pythagorean triples $(a,
-    b, c)$ with $a^2 + b^2 = c^2$. (Hint: Rational points on plane conics are parameterized by lines through
-    a fixed rational point)'
-  hint: null
+    b, c)$ with $a^2 + b^2 = c^2$. '
+  hint: Rational points on plane conics are parameterized by lines through a fixed rational point
   locator: null
   sub_index: null
   search_text: '(real forms of orthogonal groups and pythagorean triples)  1. classify real quadratic
@@ -622,24 +603,23 @@ exercises:
     points $\mathrm{so}_2(\mathbb{q})$ using the stereographic weierstrass $t$-substitution $t = \tan(\theta/2)$:
     $$\cos\theta = \frac{1-t^2}{1+t^2}, \quad \sin\theta = \frac{2t}{1+t^2}, \quad t \in \mathbb{q},$$
     and prove that rational points on $\mathrm{so}_2$ parametrize all primitive pythagorean triples $(a,
-    b, c)$ with $a^2 + b^2 = c^2$. (hint: rational points on plane conics are parameterized by lines through
-    a fixed rational point)'
+    b, c)$ with $a^2 + b^2 = c^2$.  rational points on plane conics are parameterized by lines through
+    a fixed rational point'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#034
   text: '(Isospectral Non-Isometric Flat Tori in Dimension 16) Explain how John Milnor disproved Kac''s
-    question "Can one hear the shape of a drum?" in dimension 16. (Hint: The two even unimodular lattices
-    $E_8 \oplus E_8$ and $D_{16}^+$ in $\mathbb{R}^{16}$ are non-isometric, but their theta functions
-    $\Theta_\Lambda(\tau) = \sum_{v \in \Lambda} e^{\pi i \tau \|v\|^2}$ are identical modular forms of
-    weight 8 for $\mathrm{SL}_2(\mathbb{Z})$, proving that the flat tori $\mathbb{R}^{16}/(E_8 \oplus
-    E_8)$ and $\mathbb{R}^{16}/D_{16}^+$ share the exact same Laplace spectrum)'
-  hint: null
+    question "Can one hear the shape of a drum?" in dimension 16. '
+  hint: The two even unimodular lattices $E_8 \oplus E_8$ and $D_{16}^+$ in $\mathbb{R}^{16}$ are non-isometric,
+    but their theta functions $\Theta_\Lambda(\tau) = \sum_{v \in \Lambda} e^{\pi i \tau \|v\|^2}$ are
+    identical modular forms of weight 8 for $\mathrm{SL}_2(\mathbb{Z})$, proving that the flat tori $\mathbb{R}^{16}/(E_8
+    \oplus E_8)$ and $\mathbb{R}^{16}/D_{16}^+$ share the exact same Laplace spectrum
   locator: null
   sub_index: null
-  search_text: '(isospectral non-isometric flat tori in dimension 16) explain how john milnor disproved
-    kac''s question "can one hear the shape of a drum?" in dimension 16. (hint: the two even unimodular
-    lattices $e_8 \oplus e_8$ and $d_{16}^+$ in $\mathbb{r}^{16}$ are non-isometric, but their theta functions
+  search_text: (isospectral non-isometric flat tori in dimension 16) explain how john milnor disproved
+    kac's question "can one hear the shape of a drum?" in dimension 16.  the two even unimodular lattices
+    $e_8 \oplus e_8$ and $d_{16}^+$ in $\mathbb{r}^{16}$ are non-isometric, but their theta functions
     $\theta_\lambda(\tau) = \sum_{v \in \lambda} e^{\pi i \tau \|v\|^2}$ are identical modular forms of
     weight 8 for $\mathrm{sl}_2(\mathbb{z})$, proving that the flat tori $\mathbb{r}^{16}/(e_8 \oplus
-    e_8)$ and $\mathbb{r}^{16}/d_{16}^+$ share the exact same laplace spectrum)'
+    e_8)$ and $\mathbb{r}^{16}/d_{16}^+$ share the exact same laplace spectrum
 - id: math-berkeley-edu-reb-courses-261-all-pdf#035
   text: '(Clifford Algebras and Their Z/2-Grading) Let $V$ be a vector space over a field $k$ equipped
     with a quadratic form $N: V \to k$. Define the Clifford algebra $\operatorname{Cl}(V, N) = T(V) /
@@ -647,9 +627,8 @@ exercises:
     $\mathbb{Z}/2\mathbb{Z}$-grading $\operatorname{Cl}(V) = \operatorname{Cl}^0(V) \oplus \operatorname{Cl}^1(V)$
     into even and odd subalgebras. 2. For $V = \mathbb{R}^n$ with negative-definite metric $N(v) = -\|v\|^2$,
     show that the generators satisfy Dirac''s relations $\gamma_i^2 = -1$ and $\gamma_i \gamma_j + \gamma_j
-    \gamma_i = 0$ for $i \ne j$. (Hint: Dirac constructed the Clifford algebra to extract the square root
-    of the Laplacian $\Delta = D^2$)'
-  hint: null
+    \gamma_i = 0$ for $i \ne j$. '
+  hint: Dirac constructed the Clifford algebra to extract the square root of the Laplacian $\Delta = D^2$
   locator: null
   sub_index: null
   search_text: '(clifford algebras and their z/2-grading) let $v$ be a vector space over a field $k$ equipped
@@ -658,8 +637,8 @@ exercises:
     $\mathbb{z}/2\mathbb{z}$-grading $\operatorname{cl}(v) = \operatorname{cl}^0(v) \oplus \operatorname{cl}^1(v)$
     into even and odd subalgebras. 2. for $v = \mathbb{r}^n$ with negative-definite metric $n(v) = -\|v\|^2$,
     show that the generators satisfy dirac''s relations $\gamma_i^2 = -1$ and $\gamma_i \gamma_j + \gamma_j
-    \gamma_i = 0$ for $i \ne j$. (hint: dirac constructed the clifford algebra to extract the square root
-    of the laplacian $\delta = d^2$)'
+    \gamma_i = 0$ for $i \ne j$.  dirac constructed the clifford algebra to extract the square root of
+    the laplacian $\delta = d^2$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#036
   text: '(Bott Periodicity Modulo 8 and the Super Brauer Group) Describe the 8-fold Bott periodicity of
     real Clifford algebras $\operatorname{Cl}_{p, q}(\mathbb{R}) \cong \operatorname{Cl}_{p-1, q-1}(\mathbb{R})
@@ -669,9 +648,9 @@ exercises:
     \cong M_8(\mathbb{R}), \; \operatorname{Cl}_7 \cong M_8(\mathbb{R}) \oplus M_8(\mathbb{R}), \; \operatorname{Cl}_8
     \cong M_{16}(\mathbb{R}).$$ Explain how this mod 8 periodicity governs super Morita equivalence, real
     topological $K$-theory $KO^{-n}(\{*\})$, even unimodular lattices, and the super Brauer group of central
-    simple superalgebras. (Hint: Complex Clifford algebras exhibit mod 2 periodicity $\operatorname{Cl}_n(\mathbb{C})
-    \cong \operatorname{Cl}_{n-2}(\mathbb{C}) \otimes M_2(\mathbb{C})$ matching $KU$)'
-  hint: null
+    simple superalgebras. '
+  hint: Complex Clifford algebras exhibit mod 2 periodicity $\operatorname{Cl}_n(\mathbb{C}) \cong \operatorname{Cl}_{n-2}(\mathbb{C})
+    \otimes M_2(\mathbb{C})$ matching $KU$
   locator: null
   sub_index: null
   search_text: '(bott periodicity modulo 8 and the super brauer group) describe the 8-fold bott periodicity
@@ -682,8 +661,8 @@ exercises:
     \cong m_8(\mathbb{r}), \; \operatorname{cl}_7 \cong m_8(\mathbb{r}) \oplus m_8(\mathbb{r}), \; \operatorname{cl}_8
     \cong m_{16}(\mathbb{r}).$$ explain how this mod 8 periodicity governs super morita equivalence, real
     topological $k$-theory $ko^{-n}(\{*\})$, even unimodular lattices, and the super brauer group of central
-    simple superalgebras. (hint: complex clifford algebras exhibit mod 2 periodicity $\operatorname{cl}_n(\mathbb{c})
-    \cong \operatorname{cl}_{n-2}(\mathbb{c}) \otimes m_2(\mathbb{c})$ matching $ku$)'
+    simple superalgebras.  complex clifford algebras exhibit mod 2 periodicity $\operatorname{cl}_n(\mathbb{c})
+    \cong \operatorname{cl}_{n-2}(\mathbb{c}) \otimes m_2(\mathbb{c})$ matching $ku$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#037
   text: '(Spin Groups, Spinor Norms, and Galois Cohomology) Define the Clifford group (Lipschitz group)
     $\Gamma_V = \{ g \in \operatorname{Cl}(V)^\times : g V \alpha(g)^{-1} \subseteq V \}$, the spinor
@@ -691,11 +670,10 @@ exercises:
     \operatorname{Cl}^0(V) : g \alpha(g) = 1 \text{ and } g V g^{-1} \subseteq V \}$. 1. Establish the
     short exact sequence of algebraic group schemes: $$1 \to \mathbb{G}_m \to \Gamma_V \to \mathrm{O}(V)
     \to 1.$$ 2. Use Galois cohomology $H^1(k, \mathbb{G}_m) = 0$ (Hilbert''s Theorem 90) to show that
-    the connecting homomorphism gives the spinor norm $\mathrm{O}(V)(k) \to k^\times / (k^\times)^2$.
-    (Hint: For non-compact real signatures such as $\operatorname{Spin}(2, 2)$, the real Lie group $\operatorname{Spin}(2,
+    the connecting homomorphism gives the spinor norm $\mathrm{O}(V)(k) \to k^\times / (k^\times)^2$. '
+  hint: For non-compact real signatures such as $\operatorname{Spin}(2, 2)$, the real Lie group $\operatorname{Spin}(2,
     2)(\mathbb{R})$ is not simply connected, whereas compact Spin groups $\operatorname{Spin}(n)$ are
-    always simply connected for $n \ge 3$)'
-  hint: null
+    always simply connected for $n \ge 3$
   locator: null
   sub_index: null
   search_text: '(spin groups, spinor norms, and galois cohomology) define the clifford group (lipschitz
@@ -704,10 +682,10 @@ exercises:
     \{ g \in \operatorname{cl}^0(v) : g \alpha(g) = 1 \text{ and } g v g^{-1} \subseteq v \}$. 1. establish
     the short exact sequence of algebraic group schemes: $$1 \to \mathbb{g}_m \to \gamma_v \to \mathrm{o}(v)
     \to 1.$$ 2. use galois cohomology $h^1(k, \mathbb{g}_m) = 0$ (hilbert''s theorem 90) to show that
-    the connecting homomorphism gives the spinor norm $\mathrm{o}(v)(k) \to k^\times / (k^\times)^2$.
-    (hint: for non-compact real signatures such as $\operatorname{spin}(2, 2)$, the real lie group $\operatorname{spin}(2,
+    the connecting homomorphism gives the spinor norm $\mathrm{o}(v)(k) \to k^\times / (k^\times)^2$.  for
+    non-compact real signatures such as $\operatorname{spin}(2, 2)$, the real lie group $\operatorname{spin}(2,
     2)(\mathbb{r})$ is not simply connected, whereas compact spin groups $\operatorname{spin}(n)$ are
-    always simply connected for $n \ge 3$)'
+    always simply connected for $n \ge 3$'
 - id: math-berkeley-edu-reb-courses-261-all-pdf#038
   text: '(Triality in Dimension 8 and String Groups) Explain the triality automorphism of the Dynkin diagram
     $D_4$ (corresponding to $\mathfrak{so}_8(\mathbb{C})$), which permutes the vector representation $V
@@ -715,9 +693,9 @@ exercises:
     half-spinor representation $S^- \cong \mathbb{R}^8$. Explain how successively killing homotopy groups
     of orthogonal groups produces the topological hierarchy: $$\mathrm{O}(n) \xleftarrow{\pi_0} \mathrm{SO}(n)
     \xleftarrow{\pi_1} \operatorname{Spin}(n) \xleftarrow{\pi_3} \operatorname{String}(n) \xleftarrow{\pi_7}
-    \operatorname{Fivebrane}(n).$$ (Hint: The outer automorphism group $\operatorname{Out}(\mathfrak{so}_8)
-    \cong S_3$ is the symmetry group of the 3-bladed $D_4$ Dynkin diagram)'
-  hint: null
+    \operatorname{Fivebrane}(n).$$ '
+  hint: The outer automorphism group $\operatorname{Out}(\mathfrak{so}_8) \cong S_3$ is the symmetry group
+    of the 3-bladed $D_4$ Dynkin diagram
   locator: null
   sub_index: null
   search_text: '(triality in dimension 8 and string groups) explain the triality automorphism of the dynkin
@@ -726,5 +704,5 @@ exercises:
     negative half-spinor representation $s^- \cong \mathbb{r}^8$. explain how successively killing homotopy
     groups of orthogonal groups produces the topological hierarchy: $$\mathrm{o}(n) \xleftarrow{\pi_0}
     \mathrm{so}(n) \xleftarrow{\pi_1} \operatorname{spin}(n) \xleftarrow{\pi_3} \operatorname{string}(n)
-    \xleftarrow{\pi_7} \operatorname{fivebrane}(n).$$ (hint: the outer automorphism group $\operatorname{out}(\mathfrak{so}_8)
-    \cong s_3$ is the symmetry group of the 3-bladed $d_4$ dynkin diagram)'
+    \xleftarrow{\pi_7} \operatorname{fivebrane}(n).$$  the outer automorphism group $\operatorname{out}(\mathfrak{so}_8)
+    \cong s_3$ is the symmetry group of the 3-bladed $d_4$ dynkin diagram'

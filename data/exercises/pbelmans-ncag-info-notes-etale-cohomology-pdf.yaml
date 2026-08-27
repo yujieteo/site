@@ -7,28 +7,28 @@ locator_kind: none
 exercises:
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#000
   text: '(Definition of a Grothendieck Topology and Sites: Page 11) Formulate the precise definition of
-    a Grothendieck topology on a category $\mathcal{C}$ via covering families. (Hint: A Grothendieck topology
-    specifies a collection of covering families $\{U_i \to U\}_{i \in I}$ such that: 1. Any isomorphism
-    $\{V \xrightarrow{\sim} U\}$ is a covering family. 2. If $\{U_i \to U\}$ is a covering family and
-    $V \to U$ is any morphism, all fiber products $U_i \times_U V$ exist and the induced projections $\{U_i
-    \times_U V \to V\}$ form a covering family. 3. If $\{U_i \to U\}_{i \in I}$ is a covering family and
-    for each $i$, $\{V_{ij} \to U_i\}_{j \in J_i}$ is a covering family, then the composite family $\{V_{ij}
-    \to U\}_{i \in I, j \in J_i}$ is a covering family. Illustrate this with the prototypical category
-    of open sets $\operatorname{Open}(X)$ where morphisms are inclusions, fiber products are intersections
-    $U_i \cap V$, and coverings are jointly surjective open covers $\bigcup U_i = U$)'
-  hint: null
+    a Grothendieck topology on a category $\mathcal{C}$ via covering families. '
+  hint: 'A Grothendieck topology specifies a collection of covering families $\{U_i \to U\}_{i \in I}$
+    such that: 1. Any isomorphism $\{V \xrightarrow{\sim} U\}$ is a covering family. 2. If $\{U_i \to
+    U\}$ is a covering family and $V \to U$ is any morphism, all fiber products $U_i \times_U V$ exist
+    and the induced projections $\{U_i \times_U V \to V\}$ form a covering family. 3. If $\{U_i \to U\}_{i
+    \in I}$ is a covering family and for each $i$, $\{V_{ij} \to U_i\}_{j \in J_i}$ is a covering family,
+    then the composite family $\{V_{ij} \to U\}_{i \in I, j \in J_i}$ is a covering family. Illustrate
+    this with the prototypical category of open sets $\operatorname{Open}(X)$ where morphisms are inclusions,
+    fiber products are intersections $U_i \cap V$, and coverings are jointly surjective open covers $\bigcup
+    U_i = U$'
   locator: null
   sub_index: null
   search_text: '(definition of a grothendieck topology and sites: page 11) formulate the precise definition
-    of a grothendieck topology on a category $\mathcal{c}$ via covering families. (hint: a grothendieck
-    topology specifies a collection of covering families $\{u_i \to u\}_{i \in i}$ such that: 1. any isomorphism
+    of a grothendieck topology on a category $\mathcal{c}$ via covering families.  a grothendieck topology
+    specifies a collection of covering families $\{u_i \to u\}_{i \in i}$ such that: 1. any isomorphism
     $\{v \xrightarrow{\sim} u\}$ is a covering family. 2. if $\{u_i \to u\}$ is a covering family and
     $v \to u$ is any morphism, all fiber products $u_i \times_u v$ exist and the induced projections $\{u_i
     \times_u v \to v\}$ form a covering family. 3. if $\{u_i \to u\}_{i \in i}$ is a covering family and
     for each $i$, $\{v_{ij} \to u_i\}_{j \in j_i}$ is a covering family, then the composite family $\{v_{ij}
     \to u\}_{i \in i, j \in j_i}$ is a covering family. illustrate this with the prototypical category
     of open sets $\operatorname{open}(x)$ where morphisms are inclusions, fiber products are intersections
-    $u_i \cap v$, and coverings are jointly surjective open covers $\bigcup u_i = u$)'
+    $u_i \cap v$, and coverings are jointly surjective open covers $\bigcup u_i = u$'
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#001
   text: '(Comparison of Grothendieck Topologies on Schemes) Define and compare the standard Grothendieck
     sites on schemes: 1. **Small Zariski Site $(X)_{\text{Zar}}$:** Full subcategory of $\mathbf{Sch}/X$
@@ -39,10 +39,10 @@ exercises:
     of finite presentation), with coverings given by jointly surjective families of étale morphisms. 4.
     **Big fppf Site $(\mathbf{Sch}/X)_{\text{fppf}}$:** Jointly surjective families of flat morphisms
     locally of finite presentation. 5. **Big fpqc Site $(\mathbf{Sch}/X)_{\text{fpqc}}$:** Jointly surjective
-    families of faithfully flat and quasi-compact morphisms. (Hint: Define a topology to be subcanonical
-    if every representable functor $h_Y = \operatorname{Hom}(-, Y)$ is a sheaf; explain why the fpqc and
-    fppf topologies are subcanonical, and why topologies involving proper morphisms can fail to be subcanonical)'
-  hint: null
+    families of faithfully flat and quasi-compact morphisms. '
+  hint: Define a topology to be subcanonical if every representable functor $h_Y = \operatorname{Hom}(-,
+    Y)$ is a sheaf; explain why the fpqc and fppf topologies are subcanonical, and why topologies involving
+    proper morphisms can fail to be subcanonical
   locator: null
   sub_index: null
   search_text: '(comparison of grothendieck topologies on schemes) define and compare the standard grothendieck
@@ -54,27 +54,26 @@ exercises:
     of finite presentation), with coverings given by jointly surjective families of étale morphisms. 4.
     **big fppf site $(\mathbf{sch}/x)_{\text{fppf}}$:** jointly surjective families of flat morphisms
     locally of finite presentation. 5. **big fpqc site $(\mathbf{sch}/x)_{\text{fpqc}}$:** jointly surjective
-    families of faithfully flat and quasi-compact morphisms. (hint: define a topology to be subcanonical
-    if every representable functor $h_y = \operatorname{hom}(-, y)$ is a sheaf; explain why the fpqc and
-    fppf topologies are subcanonical, and why topologies involving proper morphisms can fail to be subcanonical)'
+    families of faithfully flat and quasi-compact morphisms.  define a topology to be subcanonical if
+    every representable functor $h_y = \operatorname{hom}(-, y)$ is a sheaf; explain why the fpqc and
+    fppf topologies are subcanonical, and why topologies involving proper morphisms can fail to be subcanonical'
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#002
   text: '(Failure of the Zariski Topology for Non-Coherent Cohomology) Why does the Zariski topology fail
-    to produce the correct cohomology groups for constant sheaves or smooth group schemes? (Hint: The
-    inverse function theorem fails algebraically in the Zariski topology; on an irreducible variety $X$,
-    every constant sheaf $\underline{A}$ is flasque, forcing $H_{\text{Zar}}^i(X, \underline{A}) = 0$
-    for all $i \ge 1$. For example, the Frobenius map $x \mapsto x^p$ on $\mathbb{A}^1$ is étale away
-    from $0$ but is nowhere a local isomorphism in the Zariski topology. Étale morphisms formally add
-    local algebraic inverses, resolving this failure)'
-  hint: null
+    to produce the correct cohomology groups for constant sheaves or smooth group schemes? '
+  hint: The inverse function theorem fails algebraically in the Zariski topology; on an irreducible variety
+    $X$, every constant sheaf $\underline{A}$ is flasque, forcing $H_{\text{Zar}}^i(X, \underline{A})
+    = 0$ for all $i \ge 1$. For example, the Frobenius map $x \mapsto x^p$ on $\mathbb{A}^1$ is étale
+    away from $0$ but is nowhere a local isomorphism in the Zariski topology. Étale morphisms formally
+    add local algebraic inverses, resolving this failure
   locator: null
   sub_index: null
-  search_text: '(failure of the zariski topology for non-coherent cohomology) why does the zariski topology
-    fail to produce the correct cohomology groups for constant sheaves or smooth group schemes? (hint:
-    the inverse function theorem fails algebraically in the zariski topology; on an irreducible variety
-    $x$, every constant sheaf $\underline{a}$ is flasque, forcing $h_{\text{zar}}^i(x, \underline{a})
-    = 0$ for all $i \ge 1$. for example, the frobenius map $x \mapsto x^p$ on $\mathbb{a}^1$ is étale
-    away from $0$ but is nowhere a local isomorphism in the zariski topology. étale morphisms formally
-    add local algebraic inverses, resolving this failure)'
+  search_text: (failure of the zariski topology for non-coherent cohomology) why does the zariski topology
+    fail to produce the correct cohomology groups for constant sheaves or smooth group schemes?  the inverse
+    function theorem fails algebraically in the zariski topology; on an irreducible variety $x$, every
+    constant sheaf $\underline{a}$ is flasque, forcing $h_{\text{zar}}^i(x, \underline{a}) = 0$ for all
+    $i \ge 1$. for example, the frobenius map $x \mapsto x^p$ on $\mathbb{a}^1$ is étale away from $0$
+    but is nowhere a local isomorphism in the zariski topology. étale morphisms formally add local algebraic
+    inverses, resolving this failure
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#003
   text: '(Sheaves, Topoi, and the Six-Functor Formalism: Page 14) Define presheaves, separated presheaves,
     and sheaves on a Grothendieck site. Define a Grothendieck topos as a category equivalent to the category
@@ -100,20 +99,19 @@ exercises:
     y \mapsto (x \sigma(y))_{\sigma \in G}$. 2. Deduce that the Čech complex for the étale cover $\operatorname{Spec}(K)
     \to \operatorname{Spec}(k)$ coincides with the standard algebraic bar resolution computing group cohomology,
     establishing the canonical isomorphism $H_{\text{ét}}^n(\operatorname{Spec}(k), \mathcal{F}) \cong
-    H^n(\operatorname{Gal}(k^{\text{sep}}/k), M)$. (Hint: Higher intersections in the Čech nerve correspond
-    to iterated products indexed by $G^n$)'
-  hint: null
+    H^n(\operatorname{Gal}(k^{\text{sep}}/k), M)$. '
+  hint: Higher intersections in the Čech nerve correspond to iterated products indexed by $G^n$
   locator: null
   sub_index: null
-  search_text: '(galois cohomology as a special case of étale cohomology) let $k/k$ be a finite galois
+  search_text: (galois cohomology as a special case of étale cohomology) let $k/k$ be a finite galois
     extension with galois group $g = \operatorname{gal}(k/k)$. show that $\operatorname{spec}(k) \to \operatorname{spec}(k)$
     is an étale covering. 1. prove that the fiber product decomposes as $\operatorname{spec}(k) \times_{\operatorname{spec}(k)}
     \operatorname{spec}(k) \cong \coprod_{\sigma \in g} \operatorname{spec}(k)$ via the map $x \otimes
     y \mapsto (x \sigma(y))_{\sigma \in g}$. 2. deduce that the čech complex for the étale cover $\operatorname{spec}(k)
     \to \operatorname{spec}(k)$ coincides with the standard algebraic bar resolution computing group cohomology,
     establishing the canonical isomorphism $h_{\text{ét}}^n(\operatorname{spec}(k), \mathcal{f}) \cong
-    h^n(\operatorname{gal}(k^{\text{sep}}/k), m)$. (hint: higher intersections in the čech nerve correspond
-    to iterated products indexed by $g^n$)'
+    h^n(\operatorname{gal}(k^{\text{sep}}/k), m)$.  higher intersections in the čech nerve correspond
+    to iterated products indexed by $g^n$
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#005
   text: '(Axioms of a Weil Cohomology Theory) Define a Weil cohomology theory $H^*$ as a contravariant
     functor from the category of smooth projective varieties over a field $k$ to finite-dimensional graded-commutative
@@ -124,10 +122,10 @@ exercises:
     \to H^{2n}(X) \xrightarrow{\operatorname{Tr}} K$ is a non-degenerate bilinear form. 5. **Künneth Formula:**
     The exterior cup product $H^*(X) \otimes_K H^*(Y) \xrightarrow{\sim} H^*(X \times Y)$ is an isomorphism.
     6. **Cycle Class Maps:** A functorial cycle map $\gamma: \operatorname{CH}^r(X) \to H^{2r}(X)$ compatible
-    with intersections and Chern classes. (Hint: List the four classical Weil cohomology theories: $\ell$-adic
-    étale cohomology, singular cohomology of the analytification $X(\mathbb{C})$, algebraic de Rham cohomology
-    in characteristic 0, and crystalline cohomology over perfect fields)'
-  hint: null
+    with intersections and Chern classes. '
+  hint: 'List the four classical Weil cohomology theories: $\ell$-adic étale cohomology, singular cohomology
+    of the analytification $X(\mathbb{C})$, algebraic de Rham cohomology in characteristic 0, and crystalline
+    cohomology over perfect fields'
   locator: null
   sub_index: null
   search_text: '(axioms of a weil cohomology theory) define a weil cohomology theory $h^*$ as a contravariant
@@ -139,29 +137,28 @@ exercises:
     \to h^{2n}(x) \xrightarrow{\operatorname{tr}} k$ is a non-degenerate bilinear form. 5. **künneth formula:**
     the exterior cup product $h^*(x) \otimes_k h^*(y) \xrightarrow{\sim} h^*(x \times y)$ is an isomorphism.
     6. **cycle class maps:** a functorial cycle map $\gamma: \operatorname{ch}^r(x) \to h^{2r}(x)$ compatible
-    with intersections and chern classes. (hint: list the four classical weil cohomology theories: $\ell$-adic
+    with intersections and chern classes.  list the four classical weil cohomology theories: $\ell$-adic
     étale cohomology, singular cohomology of the analytification $x(\mathbb{c})$, algebraic de rham cohomology
-    in characteristic 0, and crystalline cohomology over perfect fields)'
+    in characteristic 0, and crystalline cohomology over perfect fields'
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#006
   text: '(Constructible Sheaves and l-Adic Cohomology) Explain why constant $\mathbb{Q}_\ell$-sheaves
-    are insufficient and how constructible sheaves resolve the failure of pushforwards. (Hint: Locally
-    constant sheaves are not stable under pushforward along open immersions or closed embeddings. A sheaf
-    $\mathcal{F}$ on $X_{\text{ét}}$ is constructible if $X$ can be stratified into a finite disjoint
+    are insufficient and how constructible sheaves resolve the failure of pushforwards. '
+  hint: 'Locally constant sheaves are not stable under pushforward along open immersions or closed embeddings.
+    A sheaf $\mathcal{F}$ on $X_{\text{ét}}$ is constructible if $X$ can be stratified into a finite disjoint
     union of locally closed subschemes $X = \coprod X_i$ such that $\mathcal{F}|_{X_i}$ is a finite locally
     constant sheaf. $\ell$-adic cohomology is defined via the projective system of constructible torsion
     sheaves: $H^i(X, \mathbb{Q}_\ell) := (\varprojlim_n H_{\text{ét}}^i(X, \mathbb{Z}/\ell^n\mathbb{Z}))
-    \otimes_{\mathbb{Z}_\ell} \mathbb{Q}_\ell$)'
-  hint: null
+    \otimes_{\mathbb{Z}_\ell} \mathbb{Q}_\ell$'
   locator: null
   sub_index: null
   search_text: '(constructible sheaves and l-adic cohomology) explain why constant $\mathbb{q}_\ell$-sheaves
-    are insufficient and how constructible sheaves resolve the failure of pushforwards. (hint: locally
-    constant sheaves are not stable under pushforward along open immersions or closed embeddings. a sheaf
-    $\mathcal{f}$ on $x_{\text{ét}}$ is constructible if $x$ can be stratified into a finite disjoint
-    union of locally closed subschemes $x = \coprod x_i$ such that $\mathcal{f}|_{x_i}$ is a finite locally
-    constant sheaf. $\ell$-adic cohomology is defined via the projective system of constructible torsion
-    sheaves: $h^i(x, \mathbb{q}_\ell) := (\varprojlim_n h_{\text{ét}}^i(x, \mathbb{z}/\ell^n\mathbb{z}))
-    \otimes_{\mathbb{z}_\ell} \mathbb{q}_\ell$)'
+    are insufficient and how constructible sheaves resolve the failure of pushforwards.  locally constant
+    sheaves are not stable under pushforward along open immersions or closed embeddings. a sheaf $\mathcal{f}$
+    on $x_{\text{ét}}$ is constructible if $x$ can be stratified into a finite disjoint union of locally
+    closed subschemes $x = \coprod x_i$ such that $\mathcal{f}|_{x_i}$ is a finite locally constant sheaf.
+    $\ell$-adic cohomology is defined via the projective system of constructible torsion sheaves: $h^i(x,
+    \mathbb{q}_\ell) := (\varprojlim_n h_{\text{ét}}^i(x, \mathbb{z}/\ell^n\mathbb{z})) \otimes_{\mathbb{z}_\ell}
+    \mathbb{q}_\ell$'
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#007
   text: '(Compactification and Cohomology with Compact Support: Page 14) By Nagata''s Compactification
     Theorem, every separated scheme $X$ of finite type over a field $k$ admits an open immersion $j: X
@@ -169,9 +166,9 @@ exercises:
     \hookrightarrow X$, define the extension by zero functor $j_!$ (exceptional pushforward) as the exact
     left adjoint to $j^*$. 2. Define the cohomology with compact support $H_c^i(X, \mathcal{F}) := H_{\text{ét}}^i(\overline{X},
     j_! \mathcal{F})$, and prove that this definition is independent of the choice of compactification
-    $\overline{X}$. (Hint: Show that $j_! \mathcal{F}$ has stalks $(j_!\mathcal{F})_x = \mathcal{F}_x$
-    for $x \in U$ and $(j_!\mathcal{F})x = 0$ for $x \notin U$)'
-  hint: null
+    $\overline{X}$. '
+  hint: Show that $j_! \mathcal{F}$ has stalks $(j_!\mathcal{F})_x = \mathcal{F}_x$ for $x \in U$ and
+    $(j_!\mathcal{F})x = 0$ for $x \notin U$
   locator: null
   sub_index: null
   search_text: '(compactification and cohomology with compact support: page 14) by nagata''s compactification
@@ -180,81 +177,80 @@ exercises:
     \hookrightarrow x$, define the extension by zero functor $j_!$ (exceptional pushforward) as the exact
     left adjoint to $j^*$. 2. define the cohomology with compact support $h_c^i(x, \mathcal{f}) := h_{\text{ét}}^i(\overline{x},
     j_! \mathcal{f})$, and prove that this definition is independent of the choice of compactification
-    $\overline{x}$. (hint: show that $j_! \mathcal{f}$ has stalks $(j_!\mathcal{f})_x = \mathcal{f}_x$
-    for $x \in u$ and $(j_!\mathcal{f})x = 0$ for $x \notin u$)'
+    $\overline{x}$.  show that $j_! \mathcal{f}$ has stalks $(j_!\mathcal{f})_x = \mathcal{f}_x$ for $x
+    \in u$ and $(j_!\mathcal{f})x = 0$ for $x \notin u$'
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#008
   text: '(Proper Base Change Theorem: Theorem 27) State the Proper Base Change Theorem (SGA 4, Artin):
     let $f: Y \to X$ be a proper morphism of schemes and let $g: X'' \to X$ be any morphism. For any constructible
     sheaf $\mathcal{F}$ on $Y_{\text{ét}}$, prove that the canonical base change map $$g^* R^i f_* \mathcal{F}
     \xrightarrow{\sim} R^i f''_* (g''^* \mathcal{F})$$ is an isomorphism of constructible sheaves on $X''_{\text{ét}}$
-    for all $i \ge 0$. (Hint: When $X'' = \operatorname{Spec}(\kappa(\overline{x}))$ is a geometric point,
-    this reduces the stalk $(R^i f_* \mathcal{F})_{\overline{x}}$ to the étale cohomology of the geometric
-    fiber $H_{\text{ét}}^i(Y_{\overline{x}}, \mathcal{F})$)'
-  hint: null
+    for all $i \ge 0$. '
+  hint: When $X' = \operatorname{Spec}(\kappa(\overline{x}))$ is a geometric point, this reduces the stalk
+    $(R^i f_* \mathcal{F})_{\overline{x}}$ to the étale cohomology of the geometric fiber $H_{\text{ét}}^i(Y_{\overline{x}},
+    \mathcal{F})$
   locator: null
   sub_index: null
   search_text: '(proper base change theorem: theorem 27) state the proper base change theorem (sga 4,
     artin): let $f: y \to x$ be a proper morphism of schemes and let $g: x'' \to x$ be any morphism. for
     any constructible sheaf $\mathcal{f}$ on $y_{\text{ét}}$, prove that the canonical base change map
     $$g^* r^i f_* \mathcal{f} \xrightarrow{\sim} r^i f''_* (g''^* \mathcal{f})$$ is an isomorphism of
-    constructible sheaves on $x''_{\text{ét}}$ for all $i \ge 0$. (hint: when $x'' = \operatorname{spec}(\kappa(\overline{x}))$
+    constructible sheaves on $x''_{\text{ét}}$ for all $i \ge 0$.  when $x'' = \operatorname{spec}(\kappa(\overline{x}))$
     is a geometric point, this reduces the stalk $(r^i f_* \mathcal{f})_{\overline{x}}$ to the étale cohomology
-    of the geometric fiber $h_{\text{ét}}^i(y_{\overline{x}}, \mathcal{f})$)'
+    of the geometric fiber $h_{\text{ét}}^i(y_{\overline{x}}, \mathcal{f})$'
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#009
   text: '(Torsion Prime to Characteristic and Smooth Specialization) Let $X$ be a scheme and $\mathcal{F}$
     a torsion sheaf on $X_{\text{ét}}$. What does it mean for the torsion of $\mathcal{F}$ to be prime
-    to the characteristic of $X$? (Hint: The characteristic $\operatorname{char}(X)$ is the image of $X
-    \to \operatorname{Spec} \mathbb{Z}$; the torsion of $\mathcal{F}$ is prime to $\operatorname{char}(X)$
-    if multiplication by $p$ on $\mathcal{F}$ is an isomorphism for every prime $p \in \operatorname{char}(X)$.
-    Under this hypothesis, smooth base change and the smooth specialization theorem hold, ensuring that
-    the cohomology of affine spaces $H_{\text{ét}}^i(\mathbb{A}_X^n, \mathcal{F}) \cong H_{\text{ét}}^i(X,
-    \mathcal{F})$ is acyclic)'
-  hint: null
+    to the characteristic of $X$? '
+  hint: The characteristic $\operatorname{char}(X)$ is the image of $X \to \operatorname{Spec} \mathbb{Z}$;
+    the torsion of $\mathcal{F}$ is prime to $\operatorname{char}(X)$ if multiplication by $p$ on $\mathcal{F}$
+    is an isomorphism for every prime $p \in \operatorname{char}(X)$. Under this hypothesis, smooth base
+    change and the smooth specialization theorem hold, ensuring that the cohomology of affine spaces $H_{\text{ét}}^i(\mathbb{A}_X^n,
+    \mathcal{F}) \cong H_{\text{ét}}^i(X, \mathcal{F})$ is acyclic
   locator: null
   sub_index: null
-  search_text: '(torsion prime to characteristic and smooth specialization) let $x$ be a scheme and $\mathcal{f}$
+  search_text: (torsion prime to characteristic and smooth specialization) let $x$ be a scheme and $\mathcal{f}$
     a torsion sheaf on $x_{\text{ét}}$. what does it mean for the torsion of $\mathcal{f}$ to be prime
-    to the characteristic of $x$? (hint: the characteristic $\operatorname{char}(x)$ is the image of $x
-    \to \operatorname{spec} \mathbb{z}$; the torsion of $\mathcal{f}$ is prime to $\operatorname{char}(x)$
+    to the characteristic of $x$?  the characteristic $\operatorname{char}(x)$ is the image of $x \to
+    \operatorname{spec} \mathbb{z}$; the torsion of $\mathcal{f}$ is prime to $\operatorname{char}(x)$
     if multiplication by $p$ on $\mathcal{f}$ is an isomorphism for every prime $p \in \operatorname{char}(x)$.
     under this hypothesis, smooth base change and the smooth specialization theorem hold, ensuring that
     the cohomology of affine spaces $h_{\text{ét}}^i(\mathbb{a}_x^n, \mathcal{f}) \cong h_{\text{ét}}^i(x,
-    \mathcal{f})$ is acyclic)'
+    \mathcal{f})$ is acyclic
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#010
   text: '(Cohomological Purity and Gysin Sequences: Page 21) State the Cohomological Purity Theorem: let
     $i: Z \hookrightarrow X$ be a closed immersion of smooth schemes over a field $k$ of pure codimension
     $c$, and let $n$ be an integer prime to $\operatorname{char}(k)$. Prove that $R^q i^! (\mathbb{Z}/n\mathbb{Z})
     = 0$ for $q \ne 2c$, and $R^{2c} i^! (\mathbb{Z}/n\mathbb{Z}) \cong \mathbb{Z}/n\mathbb{Z}(-c)$ (Tate
-    twist). (Hint: Deduce the long exact Gysin sequence $$\dots \to H_{\text{ét}}^{i-2c}(Z, \mathbb{Z}/n\mathbb{Z}(-c))
+    twist). '
+  hint: Deduce the long exact Gysin sequence $$\dots \to H_{\text{ét}}^{i-2c}(Z, \mathbb{Z}/n\mathbb{Z}(-c))
     \xrightarrow{i_*} H_{\text{ét}}^i(X, \mathbb{Z}/n\mathbb{Z}) \xrightarrow{j^*} H_{\text{ét}}^i(X \setminus
     Z, \mathbb{Z}/n\mathbb{Z}) \to H_{\text{ét}}^{i-2c+1}(Z, \mathbb{Z}/n\mathbb{Z}(-c)) \to \dots$$ generalizing
-    the topological Thom isomorphism and Gysin sequence)'
-  hint: null
+    the topological Thom isomorphism and Gysin sequence
   locator: null
   sub_index: null
   search_text: '(cohomological purity and gysin sequences: page 21) state the cohomological purity theorem:
     let $i: z \hookrightarrow x$ be a closed immersion of smooth schemes over a field $k$ of pure codimension
     $c$, and let $n$ be an integer prime to $\operatorname{char}(k)$. prove that $r^q i^! (\mathbb{z}/n\mathbb{z})
     = 0$ for $q \ne 2c$, and $r^{2c} i^! (\mathbb{z}/n\mathbb{z}) \cong \mathbb{z}/n\mathbb{z}(-c)$ (tate
-    twist). (hint: deduce the long exact gysin sequence $$\dots \to h_{\text{ét}}^{i-2c}(z, \mathbb{z}/n\mathbb{z}(-c))
+    twist).  deduce the long exact gysin sequence $$\dots \to h_{\text{ét}}^{i-2c}(z, \mathbb{z}/n\mathbb{z}(-c))
     \xrightarrow{i_*} h_{\text{ét}}^i(x, \mathbb{z}/n\mathbb{z}) \xrightarrow{j^*} h_{\text{ét}}^i(x \setminus
     z, \mathbb{z}/n\mathbb{z}) \to h_{\text{ét}}^{i-2c+1}(z, \mathbb{z}/n\mathbb{z}(-c)) \to \dots$$ generalizing
-    the topological thom isomorphism and gysin sequence)'
+    the topological thom isomorphism and gysin sequence'
 - id: pbelmans-ncag-info-notes-etale-cohomology-pdf#011
   text: '(Poincaré-Verdier Duality in the Derived Category) Formulate Poincaré–Verdier duality for étale
     cohomology: for a smooth morphism $f: X \to S$ of pure relative dimension $d$ and an integer $n$ invertible
     on $S$, prove that the exceptional pullback is a twisted shift of the ordinary pullback: $$f^! \mathcal{F}
-    \cong f^* \mathcal{F}(d)[2d].$$ (Hint: Use derived categories $\mathcal{D}_c^b(X_{\text{ét}}, \mathbb{Z}/n\mathbb{Z})$
-    and the adjunction $(R f_! \dashv f^!)$ to deduce the trace map $R f_! \mathbb{Z}/n\mathbb{Z}(d)[2d]
-    \to \mathbb{Z}/n\mathbb{Z}$ and the global Poincaré duality pairing $H_c^i(X, \mathbb{Z}/n\mathbb{Z})
-    \times H^{2d-i}(X, \mathbb{Z}/n\mathbb{Z}(d)) \to \mathbb{Z}/n\mathbb{Z}$)'
-  hint: null
+    \cong f^* \mathcal{F}(d)[2d].$$ '
+  hint: Use derived categories $\mathcal{D}_c^b(X_{\text{ét}}, \mathbb{Z}/n\mathbb{Z})$ and the adjunction
+    $(R f_! \dashv f^!)$ to deduce the trace map $R f_! \mathbb{Z}/n\mathbb{Z}(d)[2d] \to \mathbb{Z}/n\mathbb{Z}$
+    and the global Poincaré duality pairing $H_c^i(X, \mathbb{Z}/n\mathbb{Z}) \times H^{2d-i}(X, \mathbb{Z}/n\mathbb{Z}(d))
+    \to \mathbb{Z}/n\mathbb{Z}$
   locator: null
   sub_index: null
   search_text: '(poincaré-verdier duality in the derived category) formulate poincaré–verdier duality
     for étale cohomology: for a smooth morphism $f: x \to s$ of pure relative dimension $d$ and an integer
     $n$ invertible on $s$, prove that the exceptional pullback is a twisted shift of the ordinary pullback:
-    $$f^! \mathcal{f} \cong f^* \mathcal{f}(d)[2d].$$ (hint: use derived categories $\mathcal{d}_c^b(x_{\text{ét}},
+    $$f^! \mathcal{f} \cong f^* \mathcal{f}(d)[2d].$$  use derived categories $\mathcal{d}_c^b(x_{\text{ét}},
     \mathbb{z}/n\mathbb{z})$ and the adjunction $(r f_! \dashv f^!)$ to deduce the trace map $r f_! \mathbb{z}/n\mathbb{z}(d)[2d]
     \to \mathbb{z}/n\mathbb{z}$ and the global poincaré duality pairing $h_c^i(x, \mathbb{z}/n\mathbb{z})
-    \times h^{2d-i}(x, \mathbb{z}/n\mathbb{z}(d)) \to \mathbb{z}/n\mathbb{z}$)'
+    \times h^{2d-i}(x, \mathbb{z}/n\mathbb{z}(d)) \to \mathbb{z}/n\mathbb{z}$'

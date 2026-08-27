@@ -9,235 +9,222 @@ exercises:
   text: '(Subanalytic Sets) Define a semi-analytic subset $S \subseteq M$ of a real analytic manifold
     $M$ as a locally closed subset defined locally by finitely many analytic inequalities $\{f_i(x) <
     0, g_j(x) \le 0\}$. Explain why the family of semi-analytic sets is inadequate for geometric operations
-    and how the family of subanalytic sets $\operatorname{SbA}(M)$ resolves this. (Hint: Semi-analytic
-    sets are not stable under proper direct images except when $\dim M \le 2$; $\operatorname{SbA}(M)$
+    and how the family of subanalytic sets $\operatorname{SbA}(M)$ resolves this. '
+  hint: Semi-analytic sets are not stable under proper direct images except when $\dim M \le 2$; $\operatorname{SbA}(M)$
     is the smallest family containing semi-analytic sets that is stable under proper direct images, preimages,
-    finite unions/intersections, complements, interiors, and closures)'
-  hint: null
+    finite unions/intersections, complements, interiors, and closures
   locator: null
   sub_index: null
-  search_text: '(subanalytic sets) define a semi-analytic subset $s \subseteq m$ of a real analytic manifold
+  search_text: (subanalytic sets) define a semi-analytic subset $s \subseteq m$ of a real analytic manifold
     $m$ as a locally closed subset defined locally by finitely many analytic inequalities $\{f_i(x) <
     0, g_j(x) \le 0\}$. explain why the family of semi-analytic sets is inadequate for geometric operations
-    and how the family of subanalytic sets $\operatorname{sba}(m)$ resolves this. (hint: semi-analytic
-    sets are not stable under proper direct images except when $\dim m \le 2$; $\operatorname{sba}(m)$
-    is the smallest family containing semi-analytic sets that is stable under proper direct images, preimages,
-    finite unions/intersections, complements, interiors, and closures)'
+    and how the family of subanalytic sets $\operatorname{sba}(m)$ resolves this.  semi-analytic sets
+    are not stable under proper direct images except when $\dim m \le 2$; $\operatorname{sba}(m)$ is the
+    smallest family containing semi-analytic sets that is stable under proper direct images, preimages,
+    finite unions/intersections, complements, interiors, and closures
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#001
   text: '(Topological Regularity of Subanalytic Sets) State the topological properties of compact subanalytic
-    sets. (Hint: Every compact subanalytic set is homeomorphic to a finite simplicial complex / CW-complex,
-    and in particular has only finitely many connected components, ensuring well-behaved homology)'
-  hint: null
+    sets. '
+  hint: Every compact subanalytic set is homeomorphic to a finite simplicial complex / CW-complex, and
+    in particular has only finitely many connected components, ensuring well-behaved homology
   locator: null
   sub_index: null
-  search_text: '(topological regularity of subanalytic sets) state the topological properties of compact
-    subanalytic sets. (hint: every compact subanalytic set is homeomorphic to a finite simplicial complex
-    / cw-complex, and in particular has only finitely many connected components, ensuring well-behaved
-    homology)'
+  search_text: (topological regularity of subanalytic sets) state the topological properties of compact
+    subanalytic sets.  every compact subanalytic set is homeomorphic to a finite simplicial complex /
+    cw-complex, and in particular has only finitely many connected components, ensuring well-behaved homology
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#002
   text: '(Lojasiewicz Inequalities on Coverings) Let $U = \bigcup_{j \in J} U_j$ be a finite covering
     of relatively compact open subanalytic sets. State the Łojasiewicz inequality relating distances to
-    the boundaries. (Hint: There exist constants $C > 0$ and $N \in \mathbb{N}$ such that $\operatorname{dist}(x,
-    M \setminus U)^N \le C \cdot \max_{j \in J} \operatorname{dist}(x, M \setminus U_j)$)'
-  hint: null
+    the boundaries. '
+  hint: There exist constants $C > 0$ and $N \in \mathbb{N}$ such that $\operatorname{dist}(x, M \setminus
+    U)^N \le C \cdot \max_{j \in J} \operatorname{dist}(x, M \setminus U_j)$
   locator: null
   sub_index: null
-  search_text: '(lojasiewicz inequalities on coverings) let $u = \bigcup_{j \in j} u_j$ be a finite covering
+  search_text: (lojasiewicz inequalities on coverings) let $u = \bigcup_{j \in j} u_j$ be a finite covering
     of relatively compact open subanalytic sets. state the łojasiewicz inequality relating distances to
-    the boundaries. (hint: there exist constants $c > 0$ and $n \in \mathbb{n}$ such that $\operatorname{dist}(x,
-    m \setminus u)^n \le c \cdot \max_{j \in j} \operatorname{dist}(x, m \setminus u_j)$)'
+    the boundaries.  there exist constants $c > 0$ and $n \in \mathbb{n}$ such that $\operatorname{dist}(x,
+    m \setminus u)^n \le c \cdot \max_{j \in j} \operatorname{dist}(x, m \setminus u_j)$
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#003
   text: '(Sites and Generalizing Local Properties) Explain why constructing sheaf theories for analysis
-    does not require taking all topological open sets or all arbitrary coverings. (Hint: Sheaf axioms
-    only require a notion of open subobjects and a collection of covering families satisfying Grothendieck
-    topology axioms, allowing one to restrict to tame subanalytic opens and finite covers)'
-  hint: null
+    does not require taking all topological open sets or all arbitrary coverings. '
+  hint: Sheaf axioms only require a notion of open subobjects and a collection of covering families satisfying
+    Grothendieck topology axioms, allowing one to restrict to tame subanalytic opens and finite covers
   locator: null
   sub_index: null
-  search_text: '(sites and generalizing local properties) explain why constructing sheaf theories for
-    analysis does not require taking all topological open sets or all arbitrary coverings. (hint: sheaf
-    axioms only require a notion of open subobjects and a collection of covering families satisfying grothendieck
-    topology axioms, allowing one to restrict to tame subanalytic opens and finite covers)'
+  search_text: (sites and generalizing local properties) explain why constructing sheaf theories for analysis
+    does not require taking all topological open sets or all arbitrary coverings.  sheaf axioms only require
+    a notion of open subobjects and a collection of covering families satisfying grothendieck topology
+    axioms, allowing one to restrict to tame subanalytic opens and finite covers
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#004
   text: '(R-Constructible Sheaves) Define an $\mathbb{R}$-constructible sheaf $\mathcal{F}$ on a real
-    analytic manifold $M$. (Hint: $\mathcal{F}$ admits a stratification $M = \bigsqcup_\alpha M_\alpha$
-    into locally closed subanalytic strata such that each restriction $\mathcal{F}|_{M_\alpha}$ is a locally
-    constant sheaf of finite rank; the category $\mathbb{R}\text{-}\mathbf{C}(k_M)$ forms an abelian subcategory
-    of $\operatorname{Mod}(k_M)$)'
-  hint: null
+    analytic manifold $M$. '
+  hint: $\mathcal{F}$ admits a stratification $M = \bigsqcup_\alpha M_\alpha$ into locally closed subanalytic
+    strata such that each restriction $\mathcal{F}|_{M_\alpha}$ is a locally constant sheaf of finite
+    rank; the category $\mathbb{R}\text{-}\mathbf{C}(k_M)$ forms an abelian subcategory of $\operatorname{Mod}(k_M)$
   locator: null
   sub_index: null
-  search_text: '(r-constructible sheaves) define an $\mathbb{r}$-constructible sheaf $\mathcal{f}$ on
-    a real analytic manifold $m$. (hint: $\mathcal{f}$ admits a stratification $m = \bigsqcup_\alpha m_\alpha$
+  search_text: (r-constructible sheaves) define an $\mathbb{r}$-constructible sheaf $\mathcal{f}$ on a
+    real analytic manifold $m$.  $\mathcal{f}$ admits a stratification $m = \bigsqcup_\alpha m_\alpha$
     into locally closed subanalytic strata such that each restriction $\mathcal{f}|_{m_\alpha}$ is a locally
     constant sheaf of finite rank; the category $\mathbb{r}\text{-}\mathbf{c}(k_m)$ forms an abelian subcategory
-    of $\operatorname{mod}(k_m)$)'
+    of $\operatorname{mod}(k_m)$
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#005
   text: '(The Subanalytic Site) Define the subanalytic site $M_{\text{sa}}$ and the canonical morphism
-    of sites $\rho_{\text{sa}}: M \to M_{\text{sa}}$. (Hint: The category $\operatorname{Op}_{M_{\text{sa}}}$
-    consists of relatively compact, open subanalytic subsets with inclusion morphisms, and coverings are
-    families $\{U_i\}_{i \in I}$ admitting a finite subcover $\bigcup_{j \in J} U_j = U$. This yields
-    an adjoint pair $(\rho_{\text{sa}}^{-1}, \rho_{\text{sa}*})$ between $\operatorname{Mod}(k_M)$ and
-    $\operatorname{Mod}(k_{M_{\text{sa}}})$)'
-  hint: null
+    of sites $\rho_{\text{sa}}: M \to M_{\text{sa}}$. '
+  hint: The category $\operatorname{Op}_{M_{\text{sa}}}$ consists of relatively compact, open subanalytic
+    subsets with inclusion morphisms, and coverings are families $\{U_i\}_{i \in I}$ admitting a finite
+    subcover $\bigcup_{j \in J} U_j = U$. This yields an adjoint pair $(\rho_{\text{sa}}^{-1}, \rho_{\text{sa}*})$
+    between $\operatorname{Mod}(k_M)$ and $\operatorname{Mod}(k_{M_{\text{sa}}})$
   locator: null
   sub_index: null
   search_text: '(the subanalytic site) define the subanalytic site $m_{\text{sa}}$ and the canonical morphism
-    of sites $\rho_{\text{sa}}: m \to m_{\text{sa}}$. (hint: the category $\operatorname{op}_{m_{\text{sa}}}$
+    of sites $\rho_{\text{sa}}: m \to m_{\text{sa}}$.  the category $\operatorname{op}_{m_{\text{sa}}}$
     consists of relatively compact, open subanalytic subsets with inclusion morphisms, and coverings are
     families $\{u_i\}_{i \in i}$ admitting a finite subcover $\bigcup_{j \in j} u_j = u$. this yields
     an adjoint pair $(\rho_{\text{sa}}^{-1}, \rho_{\text{sa}*})$ between $\operatorname{mod}(k_m)$ and
-    $\operatorname{mod}(k_{m_{\text{sa}}})$)'
+    $\operatorname{mod}(k_{m_{\text{sa}}})$'
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#006
   text: '(Temperate Functions and Distributions on M_sa) Let $U \in \operatorname{Op}_{M_{\text{sa}}}$.
     Define what it means for a smooth function $f \in \mathcal{C}^\infty(U)$ to have polynomial growth
     of order $N$ at a boundary point $p \in M$, and define temperate functions $\mathcal{C}_{M_{\text{sa}}}^{\infty,
-    \text{tp}}(U)$ and temperate distributions $\mathcal{D}b_{M_{\text{sa}}}^{\text{tp}}(U)$. (Hint: Polynomial
-    growth requires $\sup_{x \in K \cap U} \operatorname{dist}(x, K \setminus U)^N |f(x)| < \infty$ for
-    a compact neighborhood $K$; a function is temperate if all its derivatives have polynomial growth)'
-  hint: null
+    \text{tp}}(U)$ and temperate distributions $\mathcal{D}b_{M_{\text{sa}}}^{\text{tp}}(U)$. '
+  hint: Polynomial growth requires $\sup_{x \in K \cap U} \operatorname{dist}(x, K \setminus U)^N |f(x)|
+    < \infty$ for a compact neighborhood $K$; a function is temperate if all its derivatives have polynomial
+    growth
   locator: null
   sub_index: null
-  search_text: '(temperate functions and distributions on m_sa) let $u \in \operatorname{op}_{m_{\text{sa}}}$.
+  search_text: (temperate functions and distributions on m_sa) let $u \in \operatorname{op}_{m_{\text{sa}}}$.
     define what it means for a smooth function $f \in \mathcal{c}^\infty(u)$ to have polynomial growth
     of order $n$ at a boundary point $p \in m$, and define temperate functions $\mathcal{c}_{m_{\text{sa}}}^{\infty,
-    \text{tp}}(u)$ and temperate distributions $\mathcal{d}b_{m_{\text{sa}}}^{\text{tp}}(u)$. (hint: polynomial
+    \text{tp}}(u)$ and temperate distributions $\mathcal{d}b_{m_{\text{sa}}}^{\text{tp}}(u)$.  polynomial
     growth requires $\sup_{x \in k \cap u} \operatorname{dist}(x, k \setminus u)^n |f(x)| < \infty$ for
-    a compact neighborhood $k$; a function is temperate if all its derivatives have polynomial growth)'
+    a compact neighborhood $k$; a function is temperate if all its derivatives have polynomial growth
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#007
   text: '(Sheaf Property via Lojasiewicz Inequalities) Prove that the presheaves $U \mapsto \mathcal{C}_{M_{\text{sa}}}^{\infty,
     \text{tp}}(U)$ and $U \mapsto \mathcal{D}b_{M_{\text{sa}}}^{\text{tp}}(U)$ form genuine sheaves on
-    the subanalytic site $M_{\text{sa}}$. (Hint: The gluing condition and separation on overlapping charts
-    are guaranteed by the Łojasiewicz inequality for finite subanalytic coverings)'
-  hint: null
+    the subanalytic site $M_{\text{sa}}$. '
+  hint: The gluing condition and separation on overlapping charts are guaranteed by the Łojasiewicz inequality
+    for finite subanalytic coverings
   locator: null
   sub_index: null
-  search_text: '(sheaf property via lojasiewicz inequalities) prove that the presheaves $u \mapsto \mathcal{c}_{m_{\text{sa}}}^{\infty,
+  search_text: (sheaf property via lojasiewicz inequalities) prove that the presheaves $u \mapsto \mathcal{c}_{m_{\text{sa}}}^{\infty,
     \text{tp}}(u)$ and $u \mapsto \mathcal{d}b_{m_{\text{sa}}}^{\text{tp}}(u)$ form genuine sheaves on
-    the subanalytic site $m_{\text{sa}}$. (hint: the gluing condition and separation on overlapping charts
-    are guaranteed by the łojasiewicz inequality for finite subanalytic coverings)'
+    the subanalytic site $m_{\text{sa}}$.  the gluing condition and separation on overlapping charts are
+    guaranteed by the łojasiewicz inequality for finite subanalytic coverings
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#008
   text: '(Fiber Integration of Distributions) For a projection $f: N \times \mathbb{R}^d \to N$ and a
     closed subanalytic set $Z$ proper over $N$, show that fiber integration of temperate distribution
-    forms induces a quasi-isomorphism with $\mathbf{R}\mathcal{H}om(R f_* \mathbb{C}_Z, \mathcal{D}b_N^{\text{tp}})$.
-    (Hint: This reduces the analytic characterization of pushforwards of distributions to the purely topological
-    computation of $R f_* \mathbb{C}_Z$)'
-  hint: null
+    forms induces a quasi-isomorphism with $\mathbf{R}\mathcal{H}om(R f_* \mathbb{C}_Z, \mathcal{D}b_N^{\text{tp}})$. '
+  hint: This reduces the analytic characterization of pushforwards of distributions to the purely topological
+    computation of $R f_* \mathbb{C}_Z$
   locator: null
   sub_index: null
   search_text: '(fiber integration of distributions) for a projection $f: n \times \mathbb{r}^d \to n$
     and a closed subanalytic set $z$ proper over $n$, show that fiber integration of temperate distribution
-    forms induces a quasi-isomorphism with $\mathbf{r}\mathcal{h}om(r f_* \mathbb{c}_z, \mathcal{d}b_n^{\text{tp}})$.
-    (hint: this reduces the analytic characterization of pushforwards of distributions to the purely topological
-    computation of $r f_* \mathbb{c}_z$)'
+    forms induces a quasi-isomorphism with $\mathbf{r}\mathcal{h}om(r f_* \mathbb{c}_z, \mathcal{d}b_n^{\text{tp}})$.  this
+    reduces the analytic characterization of pushforwards of distributions to the purely topological computation
+    of $r f_* \mathbb{c}_z$'
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#009
   text: '(Temperate Holomorphic Functions and Algebraic Cohomology) On a complex manifold $X$, define
     the sheaf of temperate holomorphic functions $\mathcal{O}_{X_{\text{sa}}}^{\text{tp}}$ via the Dolbeault
     complex with coefficients in $\mathcal{C}_{X_{\text{sa}}}^{\infty, \text{tp}}$. For a closed complex
     analytic subset $Z \subset X$, compute $\rho_{\text{sa}}^{-1} \mathbf{R}\mathcal{H}om_{\mathbb{C}_{X_{\text{sa}}}}(\mathbb{C}_Z,
-    \mathcal{O}_{X_{\text{sa}}}^{\text{tp}})$. (Hint: The result is isomorphic to the algebraic local
-    cohomology $R\Gamma_{[Z]}(\mathcal{O}_X)$; for a hypersurface, this recovers the sheaf of meromorphic
-    functions with poles along $Z$)'
-  hint: null
+    \mathcal{O}_{X_{\text{sa}}}^{\text{tp}})$. '
+  hint: The result is isomorphic to the algebraic local cohomology $R\Gamma_{[Z]}(\mathcal{O}_X)$; for
+    a hypersurface, this recovers the sheaf of meromorphic functions with poles along $Z$
   locator: null
   sub_index: null
-  search_text: '(temperate holomorphic functions and algebraic cohomology) on a complex manifold $x$,
-    define the sheaf of temperate holomorphic functions $\mathcal{o}_{x_{\text{sa}}}^{\text{tp}}$ via
-    the dolbeault complex with coefficients in $\mathcal{c}_{x_{\text{sa}}}^{\infty, \text{tp}}$. for
-    a closed complex analytic subset $z \subset x$, compute $\rho_{\text{sa}}^{-1} \mathbf{r}\mathcal{h}om_{\mathbb{c}_{x_{\text{sa}}}}(\mathbb{c}_z,
-    \mathcal{o}_{x_{\text{sa}}}^{\text{tp}})$. (hint: the result is isomorphic to the algebraic local
-    cohomology $r\gamma_{[z]}(\mathcal{o}_x)$; for a hypersurface, this recovers the sheaf of meromorphic
-    functions with poles along $z$)'
+  search_text: (temperate holomorphic functions and algebraic cohomology) on a complex manifold $x$, define
+    the sheaf of temperate holomorphic functions $\mathcal{o}_{x_{\text{sa}}}^{\text{tp}}$ via the dolbeault
+    complex with coefficients in $\mathcal{c}_{x_{\text{sa}}}^{\infty, \text{tp}}$. for a closed complex
+    analytic subset $z \subset x$, compute $\rho_{\text{sa}}^{-1} \mathbf{r}\mathcal{h}om_{\mathbb{c}_{x_{\text{sa}}}}(\mathbb{c}_z,
+    \mathcal{o}_{x_{\text{sa}}}^{\text{tp}})$.  the result is isomorphic to the algebraic local cohomology
+    $r\gamma_{[z]}(\mathcal{o}_x)$; for a hypersurface, this recovers the sheaf of meromorphic functions
+    with poles along $z$
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#010
   text: '(Distribution Theory without Functional Analysis) For a real analytic manifold $M$ and complexification
     $X$, show that $\rho_{\text{sa}}^{-1} \mathbf{R}\mathcal{H}om_{\mathbb{C}_{X_{\text{sa}}}}(\mathcal{D}''_X
-    \mathbb{C}_M, \mathcal{O}_{X_{\text{sa}}}^{\text{tp}}) \cong \mathcal{D}b_M$. (Hint: Schwartz distributions
-    $\mathcal{D}b_M$ and Sato hyperfunctions $\mathcal{B}_M$ are constructed in parallel cohomological
-    frameworks without relying on topological vector spaces or functional analysis)'
-  hint: null
+    \mathbb{C}_M, \mathcal{O}_{X_{\text{sa}}}^{\text{tp}}) \cong \mathcal{D}b_M$. '
+  hint: Schwartz distributions $\mathcal{D}b_M$ and Sato hyperfunctions $\mathcal{B}_M$ are constructed
+    in parallel cohomological frameworks without relying on topological vector spaces or functional analysis
   locator: null
   sub_index: null
-  search_text: '(distribution theory without functional analysis) for a real analytic manifold $m$ and
-    complexification $x$, show that $\rho_{\text{sa}}^{-1} \mathbf{r}\mathcal{h}om_{\mathbb{c}_{x_{\text{sa}}}}(\mathcal{d}''_x
-    \mathbb{c}_m, \mathcal{o}_{x_{\text{sa}}}^{\text{tp}}) \cong \mathcal{d}b_m$. (hint: schwartz distributions
+  search_text: (distribution theory without functional analysis) for a real analytic manifold $m$ and
+    complexification $x$, show that $\rho_{\text{sa}}^{-1} \mathbf{r}\mathcal{h}om_{\mathbb{c}_{x_{\text{sa}}}}(\mathcal{d}'_x
+    \mathbb{c}_m, \mathcal{o}_{x_{\text{sa}}}^{\text{tp}}) \cong \mathcal{d}b_m$.  schwartz distributions
     $\mathcal{d}b_m$ and sato hyperfunctions $\mathcal{b}_m$ are constructed in parallel cohomological
-    frameworks without relying on topological vector spaces or functional analysis)'
+    frameworks without relying on topological vector spaces or functional analysis
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#011
   text: '(The Linear Subanalytic Site) Define the linear subanalytic site $M_{\text{sal}}$ and 1-regularly
-    situated coverings. (Hint: A covering $\{U_i\}_{i \in I_0}$ is 1-regularly situated if $\operatorname{dist}(x,
-    M \setminus \bigcup_{i} U_i) \le C \cdot \max_{i} \operatorname{dist}(x, M \setminus U_i)$; linear
-    coverings refine the subanalytic Grothendieck topology by imposing uniform linear boundary behavior)'
-  hint: null
+    situated coverings. '
+  hint: A covering $\{U_i\}_{i \in I_0}$ is 1-regularly situated if $\operatorname{dist}(x, M \setminus
+    \bigcup_{i} U_i) \le C \cdot \max_{i} \operatorname{dist}(x, M \setminus U_i)$; linear coverings refine
+    the subanalytic Grothendieck topology by imposing uniform linear boundary behavior
   locator: null
   sub_index: null
-  search_text: '(the linear subanalytic site) define the linear subanalytic site $m_{\text{sal}}$ and
-    1-regularly situated coverings. (hint: a covering $\{u_i\}_{i \in i_0}$ is 1-regularly situated if
-    $\operatorname{dist}(x, m \setminus \bigcup_{i} u_i) \le c \cdot \max_{i} \operatorname{dist}(x, m
-    \setminus u_i)$; linear coverings refine the subanalytic grothendieck topology by imposing uniform
-    linear boundary behavior)'
+  search_text: (the linear subanalytic site) define the linear subanalytic site $m_{\text{sal}}$ and 1-regularly
+    situated coverings.  a covering $\{u_i\}_{i \in i_0}$ is 1-regularly situated if $\operatorname{dist}(x,
+    m \setminus \bigcup_{i} u_i) \le c \cdot \max_{i} \operatorname{dist}(x, m \setminus u_i)$; linear
+    coverings refine the subanalytic grothendieck topology by imposing uniform linear boundary behavior
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#012
   text: '(Acyclicity and Brown Representability on M_sal) Formulate the exact sequence characterizing
-    sheaves on $M_{\text{sal}}$ and explain the construction of the right adjoint $\rho_{\text{sal}}^!$.
-    (Hint: A presheaf $\mathcal{F}$ is a sheaf on $M_{\text{sal}}$ if $0 \to \mathcal{F}(U_1 \cup U_2)
-    \to \mathcal{F}(U_1) \oplus \mathcal{F}(U_2) \to \mathcal{F}(U_1 \cap U_2)$ is exact for linear coverings;
+    sheaves on $M_{\text{sal}}$ and explain the construction of the right adjoint $\rho_{\text{sal}}^!$. '
+  hint: 'A presheaf $\mathcal{F}$ is a sheaf on $M_{\text{sal}}$ if $0 \to \mathcal{F}(U_1 \cup U_2) \to
+    \mathcal{F}(U_1) \oplus \mathcal{F}(U_2) \to \mathcal{F}(U_1 \cap U_2)$ is exact for linear coverings;
     by Brown representability, $\mathbf{R}\rho_{\text{sal}*}: \mathcal{D}^+(k_{M_{\text{sa}}}) \to \mathcal{D}^+(k_{M_{\text{sal}}})$
-    admits a right adjoint $\rho_{\text{sal}}^!$)'
-  hint: null
+    admits a right adjoint $\rho_{\text{sal}}^!$'
   locator: null
   sub_index: null
   search_text: '(acyclicity and brown representability on m_sal) formulate the exact sequence characterizing
-    sheaves on $m_{\text{sal}}$ and explain the construction of the right adjoint $\rho_{\text{sal}}^!$.
-    (hint: a presheaf $\mathcal{f}$ is a sheaf on $m_{\text{sal}}$ if $0 \to \mathcal{f}(u_1 \cup u_2)
-    \to \mathcal{f}(u_1) \oplus \mathcal{f}(u_2) \to \mathcal{f}(u_1 \cap u_2)$ is exact for linear coverings;
-    by brown representability, $\mathbf{r}\rho_{\text{sal}*}: \mathcal{d}^+(k_{m_{\text{sa}}}) \to \mathcal{d}^+(k_{m_{\text{sal}}})$
-    admits a right adjoint $\rho_{\text{sal}}^!$)'
+    sheaves on $m_{\text{sal}}$ and explain the construction of the right adjoint $\rho_{\text{sal}}^!$.  a
+    presheaf $\mathcal{f}$ is a sheaf on $m_{\text{sal}}$ if $0 \to \mathcal{f}(u_1 \cup u_2) \to \mathcal{f}(u_1)
+    \oplus \mathcal{f}(u_2) \to \mathcal{f}(u_1 \cap u_2)$ is exact for linear coverings; by brown representability,
+    $\mathbf{r}\rho_{\text{sal}*}: \mathcal{d}^+(k_{m_{\text{sa}}}) \to \mathcal{d}^+(k_{m_{\text{sal}}})$
+    admits a right adjoint $\rho_{\text{sal}}^!$'
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#013
   text: '(Open Sets with Lipschitz Boundary) Let $U \in \operatorname{Op}_{M_{\text{sa}}}$ have Lipschitz
     boundary. Prove that $\mathbf{R}\rho_{\text{sal}*} k_U \cong k_U$ and compute $\mathbf{R}\Gamma(U;
-    \rho_{\text{sal}}^! \mathcal{F})$ for a $\Gamma$-acyclic sheaf $\mathcal{F}$ on $M_{\text{sal}}$.
-    (Hint: Parusinski''s theorem implies $\mathbf{R}\Gamma(U; \rho_{\text{sal}}^! \mathcal{F}) \cong \mathcal{F}(U)$
+    \rho_{\text{sal}}^! \mathcal{F})$ for a $\Gamma$-acyclic sheaf $\mathcal{F}$ on $M_{\text{sal}}$. '
+  hint: Parusinski's theorem implies $\mathbf{R}\Gamma(U; \rho_{\text{sal}}^! \mathcal{F}) \cong \mathcal{F}(U)$
     for Lipschitz opens, meaning derived objects $\rho_{\text{sal}}^! \mathcal{F} \in \mathcal{D}^+(k_{M_{\text{sa}}})$
-    coincide with classical sections on Lipschitz domains)'
-  hint: null
+    coincide with classical sections on Lipschitz domains
   locator: null
   sub_index: null
-  search_text: '(open sets with lipschitz boundary) let $u \in \operatorname{op}_{m_{\text{sa}}}$ have
+  search_text: (open sets with lipschitz boundary) let $u \in \operatorname{op}_{m_{\text{sa}}}$ have
     lipschitz boundary. prove that $\mathbf{r}\rho_{\text{sal}*} k_u \cong k_u$ and compute $\mathbf{r}\gamma(u;
-    \rho_{\text{sal}}^! \mathcal{f})$ for a $\gamma$-acyclic sheaf $\mathcal{f}$ on $m_{\text{sal}}$.
-    (hint: parusinski''s theorem implies $\mathbf{r}\gamma(u; \rho_{\text{sal}}^! \mathcal{f}) \cong \mathcal{f}(u)$
-    for lipschitz opens, meaning derived objects $\rho_{\text{sal}}^! \mathcal{f} \in \mathcal{d}^+(k_{m_{\text{sa}}})$
-    coincide with classical sections on lipschitz domains)'
+    \rho_{\text{sal}}^! \mathcal{f})$ for a $\gamma$-acyclic sheaf $\mathcal{f}$ on $m_{\text{sal}}$.  parusinski's
+    theorem implies $\mathbf{r}\gamma(u; \rho_{\text{sal}}^! \mathcal{f}) \cong \mathcal{f}(u)$ for lipschitz
+    opens, meaning derived objects $\rho_{\text{sal}}^! \mathcal{f} \in \mathcal{d}^+(k_{m_{\text{sa}}})$
+    coincide with classical sections on lipschitz domains
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#014
   text: '(Temperate Functions of Precise Order s) Define the sheaf $\mathcal{C}_{M_{\text{sal}}}^{\infty,
-    s}$ of smooth functions tempered of order $s \ge 0$ on the linear subanalytic site $M_{\text{sal}}$.
-    (Hint: A function has growth of order $\le s$ if $\sup_{x \in K \cap U} \operatorname{dist}(x, K \setminus
+    s}$ of smooth functions tempered of order $s \ge 0$ on the linear subanalytic site $M_{\text{sal}}$. '
+  hint: A function has growth of order $\le s$ if $\sup_{x \in K \cap U} \operatorname{dist}(x, K \setminus
     U)^s |f(x)| < \infty$; $\mathcal{C}_{M_{\text{sal}}}^{\infty, 0}$ is a sheaf of rings, $\mathcal{C}_{M_{\text{sal}}}^{\infty,
-    s}$ is a $\mathcal{C}_{M_{\text{sal}}}^{\infty, 0}$-module, and partitions of unity guarantee $\Gamma$-acyclicity)'
-  hint: null
+    s}$ is a $\mathcal{C}_{M_{\text{sal}}}^{\infty, 0}$-module, and partitions of unity guarantee $\Gamma$-acyclicity
   locator: null
   sub_index: null
-  search_text: '(temperate functions of precise order s) define the sheaf $\mathcal{c}_{m_{\text{sal}}}^{\infty,
-    s}$ of smooth functions tempered of order $s \ge 0$ on the linear subanalytic site $m_{\text{sal}}$.
-    (hint: a function has growth of order $\le s$ if $\sup_{x \in k \cap u} \operatorname{dist}(x, k \setminus
+  search_text: (temperate functions of precise order s) define the sheaf $\mathcal{c}_{m_{\text{sal}}}^{\infty,
+    s}$ of smooth functions tempered of order $s \ge 0$ on the linear subanalytic site $m_{\text{sal}}$.  a
+    function has growth of order $\le s$ if $\sup_{x \in k \cap u} \operatorname{dist}(x, k \setminus
     u)^s |f(x)| < \infty$; $\mathcal{c}_{m_{\text{sal}}}^{\infty, 0}$ is a sheaf of rings, $\mathcal{c}_{m_{\text{sal}}}^{\infty,
-    s}$ is a $\mathcal{c}_{m_{\text{sal}}}^{\infty, 0}$-module, and partitions of unity guarantee $\gamma$-acyclicity)'
+    s}$ is a $\mathcal{c}_{m_{\text{sal}}}^{\infty, 0}$-module, and partitions of unity guarantee $\gamma$-acyclicity
 - id: webusers-imj-prg-fr-pierre-schapira-confsurveys-grtopan-pdf#015
   text: '(Sobolev Sheaves after Gilles Lebeau) For $s \le 0$, state Lebeau''s theorem constructing Sobolev
     sheaves $\mathcal{H}_{M_{\text{sal}}}^s$ on the linear subanalytic site $M_{\text{sal}}$ and their
     derived realization $\mathcal{H}_{M_{\text{sa}}}^s := \rho_{\text{sal}}^! \mathcal{H}_{M_{\text{sal}}}^s
-    \in \mathcal{D}^+(\mathbb{C}_{M_{\text{sa}}})$. (Hint: For any Lipschitz open set $U$, $\mathcal{H}_{M_{\text{sal}}}^s(U)
-    = H^s(U)$ coincides with the classical Sobolev space of distributions extendable to $H^s(\mathbb{R}^n)$;
-    for non-Lipschitz intersections $U_1 \cap U_2$, the derived complex $\mathcal{H}^s(U_1 \cup U_2) \to
-    \mathcal{H}^s(U_1) \oplus \mathcal{H}^s(U_2)$ provides the canonical replacement for $H^s(U_1 \cap
-    U_2)$)'
-  hint: null
+    \in \mathcal{D}^+(\mathbb{C}_{M_{\text{sa}}})$. '
+  hint: For any Lipschitz open set $U$, $\mathcal{H}_{M_{\text{sal}}}^s(U) = H^s(U)$ coincides with the
+    classical Sobolev space of distributions extendable to $H^s(\mathbb{R}^n)$; for non-Lipschitz intersections
+    $U_1 \cap U_2$, the derived complex $\mathcal{H}^s(U_1 \cup U_2) \to \mathcal{H}^s(U_1) \oplus \mathcal{H}^s(U_2)$
+    provides the canonical replacement for $H^s(U_1 \cap U_2)$
   locator: null
   sub_index: null
-  search_text: '(sobolev sheaves after gilles lebeau) for $s \le 0$, state lebeau''s theorem constructing
+  search_text: (sobolev sheaves after gilles lebeau) for $s \le 0$, state lebeau's theorem constructing
     sobolev sheaves $\mathcal{h}_{m_{\text{sal}}}^s$ on the linear subanalytic site $m_{\text{sal}}$ and
     their derived realization $\mathcal{h}_{m_{\text{sa}}}^s := \rho_{\text{sal}}^! \mathcal{h}_{m_{\text{sal}}}^s
-    \in \mathcal{d}^+(\mathbb{c}_{m_{\text{sa}}})$. (hint: for any lipschitz open set $u$, $\mathcal{h}_{m_{\text{sal}}}^s(u)
+    \in \mathcal{d}^+(\mathbb{c}_{m_{\text{sa}}})$.  for any lipschitz open set $u$, $\mathcal{h}_{m_{\text{sal}}}^s(u)
     = h^s(u)$ coincides with the classical sobolev space of distributions extendable to $h^s(\mathbb{r}^n)$;
     for non-lipschitz intersections $u_1 \cap u_2$, the derived complex $\mathcal{h}^s(u_1 \cup u_2) \to
     \mathcal{h}^s(u_1) \oplus \mathcal{h}^s(u_2)$ provides the canonical replacement for $h^s(u_1 \cap
-    u_2)$)'
+    u_2)$

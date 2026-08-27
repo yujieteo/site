@@ -238,19 +238,17 @@ exercises:
     an odd (resp. even) number of terms yields alternating upper and lower bounds on the measure/cardinality
     of the union $|\bigcup a_i|$.
 - id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#022
-  text: 'What is the Problème des Ménages? (Hint: The problem of counting the number of seatings of $n$
-    married couples at a round table such that men and women alternate and no husband sits next to his
-    wife, solvable by PIE with hit-polynomials along cycle graphs giving $M_n = \sum_{k=0}^n (-1)^k \frac{2n}{2n-k}\binom{2n-k}{k}(n-k)!$.)
-    https://www.math.cmu.edu/~af1p/Teaching/Combinatorics/Slides/Probabilistic-Method.pdf(opens in new
-    tab), Additive Combinatorics, Frieze'
-  hint: null
+  text: What is the Problème des Ménages? https://www.math.cmu.edu/~af1p/Teaching/Combinatorics/Slides/Probabilistic-Method.pdf(opens
+    in new tab), Additive Combinatorics, Frieze
+  hint: The problem of counting the number of seatings of $n$ married couples at a round table such that
+    men and women alternate and no husband sits next to his wife, solvable by PIE with hit-polynomials
+    along cycle graphs giving $M_n = \sum_{k=0}^n (-1)^k \frac{2n}{2n-k}\binom{2n-k}{k}(n-k)!$.
   locator: null
   sub_index: null
-  search_text: 'what is the problème des ménages? (hint: the problem of counting the number of seatings
-    of $n$ married couples at a round table such that men and women alternate and no husband sits next
-    to his wife, solvable by pie with hit-polynomials along cycle graphs giving $m_n = \sum_{k=0}^n (-1)^k
-    \frac{2n}{2n-k}\binom{2n-k}{k}(n-k)!$.) https://www.math.cmu.edu/~af1p/teaching/combinatorics/slides/probabilistic-method.pdf(opens
-    in new tab), additive combinatorics, frieze'
+  search_text: what is the problème des ménages? https://www.math.cmu.edu/~af1p/teaching/combinatorics/slides/probabilistic-method.pdf(opens
+    in new tab), additive combinatorics, frieze the problem of counting the number of seatings of $n$
+    married couples at a round table such that men and women alternate and no husband sits next to his
+    wife, solvable by pie with hit-polynomials along cycle graphs giving $m_n = \sum_{k=0}^n (-1)^k \frac{2n}{2n-k}\binom{2n-k}{k}(n-k)!$.
 - id: www-math-cmu-edu-af1p-teaching-combinatorics-slides-basic-counting-pdf#023
   text: How is Erdős's lower bound on diagonal Ramsey numbers $R(k, k) > 2^{k/2}$ proved via the basic
     probabilistic method?

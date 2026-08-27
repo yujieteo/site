@@ -534,21 +534,20 @@ exercises:
     terms; the $g_n$ are the coupling constants, and the expansion in the field looks like a/parametric
     series.
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#053
-  text: 'How does one introduce correlation functions in an $0$-dimensional QFT? (Hint: Pick any function
-    $f$ whose expectation you want; a very good one, however, is a weight of the form $\exp(-S(\phi)/\hbar)$,
-    so that these expectations become convergent integrals. This then motivates the use of more complicated
-    $f$ later; the point is to ask how the field at different points is correlated.) Later, $\langle f\rangle$,
+  text: How does one introduce correlation functions in an $0$-dimensional QFT? Later, $\langle f\rangle$,
     or the correlation, depends on $m^2$, $g_n$, and other quantities, but nothing depends on the individual
-    field value since the integral is over all possible fields $\mathbb{R}$.)'
-  hint: null
+    field value since the integral is over all possible fields $\mathbb{R}$.)
+  hint: Pick any function $f$ whose expectation you want; a very good one, however, is a weight of the
+    form $\exp(-S(\phi)/\hbar)$, so that these expectations become convergent integrals. This then motivates
+    the use of more complicated $f$ later; the point is to ask how the field at different points is correlated.
   locator: null
   sub_index: null
-  search_text: 'how does one introduce correlation functions in an $0$-dimensional qft? (hint: pick any
+  search_text: how does one introduce correlation functions in an $0$-dimensional qft? later, $\langle
+    f\rangle$, or the correlation, depends on $m^2$, $g_n$, and other quantities, but nothing depends
+    on the individual field value since the integral is over all possible fields $\mathbb{r}$.) pick any
     function $f$ whose expectation you want; a very good one, however, is a weight of the form $\exp(-s(\phi)/\hbar)$,
     so that these expectations become convergent integrals. this then motivates the use of more complicated
-    $f$ later; the point is to ask how the field at different points is correlated.) later, $\langle f\rangle$,
-    or the correlation, depends on $m^2$, $g_n$, and other quantities, but nothing depends on the individual
-    field value since the integral is over all possible fields $\mathbb{r}$.)'
+    $f$ later; the point is to ask how the field at different points is correlated.
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#054
   text: What is the classical interpretation of free QFTs?
   hint: The action is at most quadratic in $\phi$, the equations of motion are linear, superposition implies
@@ -1279,33 +1278,31 @@ exercises:
     the computed predictions to experimentally the results, or by requiring that the mass be the physical
     pole of the operator at some momentum.'
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#120
-  text: 'How / why does one choose the UV cutoff and the renormalisation scale? (Hint: The objective is
-    to absorb divergences more broadly the couplings and to make the coefficient nonzero (e.g. retain
-    the more relevant part) of some operators. The renormalisation scale $\zeta)$ is arbitrary; it gives
-    the running of couplings.)'
-  hint: null
+  text: How / why does one choose the UV cutoff and the renormalisation scale? $ is arbitrary; it gives
+    the running of couplings.)
+  hint: The objective is to absorb divergences more broadly the couplings and to make the coefficient
+    nonzero (e.g. retain the more relevant part) of some operators. The renormalisation scale $\zeta
   locator: null
   sub_index: null
-  search_text: 'how / why does one choose the uv cutoff and the renormalisation scale? (hint: the objective
-    is to absorb divergences more broadly the couplings and to make the coefficient nonzero (e.g. retain
-    the more relevant part) of some operators. the renormalisation scale $\zeta)$ is arbitrary; it gives
-    the running of couplings.)'
+  search_text: how / why does one choose the uv cutoff and the renormalisation scale? $ is arbitrary;
+    it gives the running of couplings.) the objective is to absorb divergences more broadly the couplings
+    and to make the coefficient nonzero (e.g. retain the more relevant part) of some operators. the renormalisation
+    scale $\zeta
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#121
-  text: 'How would does one invent the renormalisation? / What theory does a renormalisation choose? (Hint:
-    one keeps the low-energy scale fixed and watches the theory as the UV cutoff is taken to infinity;
-    choose field/mass/coupling, renormalisation = define procedure.) One introduces wavefunction renormalisation:
-    scale the fields so the kinetic term has the same normalisation; then the new Lagrangian reproduces
-    the same low-energy IR physics. The flow gives the Callan–Symanzik beta functions, i.e. the $\beta
-    = \partial g/\partial \log \mu$'
-  hint: null
+  text: 'How would does one invent the renormalisation? / What theory does a renormalisation choose? One
+    introduces wavefunction renormalisation: scale the fields so the kinetic term has the same normalisation;
+    then the new Lagrangian reproduces the same low-energy IR physics. The flow gives the Callan–Symanzik
+    beta functions, i.e. the $\beta = \partial g/\partial \log \mu$'
+  hint: one keeps the low-energy scale fixed and watches the theory as the UV cutoff is taken to infinity;
+    choose field/mass/coupling, renormalisation = define procedure.
   locator: null
   sub_index: null
   search_text: 'how would does one invent the renormalisation? / what theory does a renormalisation choose?
-    (hint: one keeps the low-energy scale fixed and watches the theory as the uv cutoff is taken to infinity;
-    choose field/mass/coupling, renormalisation = define procedure.) one introduces wavefunction renormalisation:
-    scale the fields so the kinetic term has the same normalisation; then the new lagrangian reproduces
-    the same low-energy ir physics. the flow gives the callan–symanzik beta functions, i.e. the $\beta
-    = \partial g/\partial \log \mu$'
+    one introduces wavefunction renormalisation: scale the fields so the kinetic term has the same normalisation;
+    then the new lagrangian reproduces the same low-energy ir physics. the flow gives the callan–symanzik
+    beta functions, i.e. the $\beta = \partial g/\partial \log \mu$ one keeps the low-energy scale fixed
+    and watches the theory as the uv cutoff is taken to infinity; choose field/mass/coupling, renormalisation
+    = define procedure.'
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#122
   text: How does one solve the beta functions?
   hint: Solve the Callan–Symanzik equation for $g(\mu)$ and write the RG flow as $\ln(\zeta)= \int^{g}
@@ -1316,21 +1313,22 @@ exercises:
     and write the rg flow as $\ln(\zeta)= \int^{g} \frac{dg}{\beta(g)}$; this shows the explicit running
     and gives the relation of $g$ at different scales.
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#123
-  text: 'What is the simplest nontrivial example of performing RG flow? (Hint: Take a Gaussian/Lagrangian
-    $\frac{1}{2}\langle \partial\phi)^2$ free field: split it into $\phi_{\rm IR}$ and $\phi_{UV}$. They
-    do not couple; integrating out $\phi_{UV}$ gives only a constant in the partition function. Rescale
-    the field/coordinates so low modes keep the same kinetic form. Then add a perturbingly tiny mass $m^2\\phi^2$,
-    which is a relevant coupling: $g(\zeta) = g_0 \zeta^{-2}$ flows to zero in the IR, $\beta(g)= -2g$,
-    and the fixed point $g=0$ is the Gaussian fixed point. Analogously for a $\phi^4$ theory near $d=4$.)'
-  hint: null
+  text: 'What is the simplest nontrivial example of performing RG flow? ^2$ free field: split it into
+    $\phi_{\rm IR}$ and $\phi_{UV}$. They do not couple; integrating out $\phi_{UV}$ gives only a constant
+    in the partition function. Rescale the field/coordinates so low modes keep the same kinetic form.
+    Then add a perturbingly tiny mass $m^2\\phi^2$, which is a relevant coupling: $g(\zeta) = g_0 \zeta^{-2}$
+    flows to zero in the IR, $\beta(g)= -2g$, and the fixed point $g=0$ is the Gaussian fixed point. Analogously
+    for a $\phi^4$ theory near $d=4$.)'
+  hint: Take a Gaussian/Lagrangian $\frac{1}{2}\langle \partial\phi
   locator: null
   sub_index: null
-  search_text: 'what is the simplest nontrivial example of performing rg flow? (hint: take a gaussian/lagrangian
-    $\frac{1}{2}\langle \partial\phi)^2$ free field: split it into $\phi_{\rm ir}$ and $\phi_{uv}$. they
-    do not couple; integrating out $\phi_{uv}$ gives only a constant in the partition function. rescale
-    the field/coordinates so low modes keep the same kinetic form. then add a perturbingly tiny mass $m^2\\phi^2$,
-    which is a relevant coupling: $g(\zeta) = g_0 \zeta^{-2}$ flows to zero in the ir, $\beta(g)= -2g$,
-    and the fixed point $g=0$ is the gaussian fixed point. analogously for a $\phi^4$ theory near $d=4$.)'
+  search_text: 'what is the simplest nontrivial example of performing rg flow? ^2$ free field: split it
+    into $\phi_{\rm ir}$ and $\phi_{uv}$. they do not couple; integrating out $\phi_{uv}$ gives only a
+    constant in the partition function. rescale the field/coordinates so low modes keep the same kinetic
+    form. then add a perturbingly tiny mass $m^2\\phi^2$, which is a relevant coupling: $g(\zeta) = g_0
+    \zeta^{-2}$ flows to zero in the ir, $\beta(g)= -2g$, and the fixed point $g=0$ is the gaussian fixed
+    point. analogously for a $\phi^4$ theory near $d=4$.) take a gaussian/lagrangian $\frac{1}{2}\langle
+    \partial\phi'
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#124
   text: What are non-fractic examples of fixed points?
   hint: the Wilson–Fisher fixed point describes scaling of self-avoiding random walks and for polymers
@@ -1383,15 +1381,14 @@ exercises:
     flow in the space of all effective lagrangians; exactly as in lattice field theory, one constructs
     by successive integration and these flows reduce to low-terms.
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#129
-  text: 'What are the cases called with an IR and may be an ultra? UV fixed points? (Hint: the UV and
-    IR fixed points are the fixed points of the RG flow at high or low bond energy.)  (This bullet may
-    be redundant; keep if present.)'
-  hint: null
+  text: What are the cases called with an IR and may be an ultra? UV fixed points? (This bullet may be
+    redundant; keep if present.)
+  hint: the UV and IR fixed points are the fixed points of the RG flow at high or low bond energy.
   locator: null
   sub_index: null
-  search_text: 'what are the cases called with an ir and may be an ultra? uv fixed points? (hint: the
-    uv and ir fixed points are the fixed points of the rg flow at high or low bond energy.)  (this bullet
-    may be redundant; keep if present.)'
+  search_text: what are the cases called with an ir and may be an ultra? uv fixed points? (this bullet
+    may be redundant; keep if present.) the uv and ir fixed points are the fixed points of the rg flow
+    at high or low bond energy.
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#130
   text: How does one define a "critical point"?
   hint: 'In the $0$-dim (probability) case, the starting point uses the Gaussian (no interactions) as
@@ -1487,25 +1484,25 @@ exercises:
     cannot be determined by low energies; one must make an assumption and see if $\gamma_0\to\infty$ holds
     after renormalisation.
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#138
-  text: 'Compute the RG flow for a local-potential approximation (Hint: For $d>2$ one restricts to a Lagrangian
-    of the form $\frac{1}{2}(\partial\phi)^2 + V(\phi)$; the local potential approximation—ignore higher
-    derivative terms—and split into low/high mode fields as before, then integrate the high modes)'
-  hint: null
+  text: 'Compute the RG flow for a local-potential approximation '
+  hint: For $d>2$ one restricts to a Lagrangian of the form $\frac{1}{2}(\partial\phi)^2 + V(\phi)$; the
+    local potential approximation—ignore higher derivative terms—and split into low/high mode fields as
+    before, then integrate the high modes
   locator: null
   sub_index: null
-  search_text: 'compute the rg flow for a local-potential approximation (hint: for $d>2$ one restricts
-    to a lagrangian of the form $\frac{1}{2}(\partial\phi)^2 + v(\phi)$; the local potential approximation—ignore
-    higher derivative terms—and split into low/high mode fields as before, then integrate the high modes)'
+  search_text: compute the rg flow for a local-potential approximation  for $d>2$ one restricts to a lagrangian
+    of the form $\frac{1}{2}(\partial\phi)^2 + v(\phi)$; the local potential approximation—ignore higher
+    derivative terms—and split into low/high mode fields as before, then integrate the high modes
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#139
-  text: 'What does the infrared fixed point (IR) have do with the quasi-integrable? (Hint: Infrared: the
-    fields h) are almost constant; the low-energy $\phi$ can be taken as a constant global mode, and the
-    high modes $\chi$ have nonzero momenta.)'
-  hint: null
+  text: What does the infrared fixed point (IR) have do with the quasi-integrable? are almost constant;
+    the low-energy $\phi$ can be taken as a constant global mode, and the high modes $\chi$ have nonzero
+    momenta.)
+  hint: 'Infrared: the fields h'
   locator: null
   sub_index: null
-  search_text: 'what does the infrared fixed point (ir) have do with the quasi-integrable? (hint: infrared:
-    the fields h) are almost constant; the low-energy $\phi$ can be taken as a constant global mode, and
-    the high modes $\chi$ have nonzero momenta.)'
+  search_text: 'what does the infrared fixed point (ir) have do with the quasi-integrable? are almost
+    constant; the low-energy $\phi$ can be taken as a constant global mode, and the high modes $\chi$
+    have nonzero momenta.) infrared: the fields h'
 - id: dec41-user-srcf-net-h-iii-l-advanced-quantum-field-theory-full#140
   text: How does one keep the $\chi$-path integral well defined/finite?
   hint: Operate on a compact space, e.g., a torus $T^d$L with length $L$; the eigenvalues are discrete

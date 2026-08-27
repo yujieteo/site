@@ -8,17 +8,16 @@ exercises:
 - id: stacks-math-columbia-edu-download-algebra-pdf#000
   text: '(Notational Conventions for Contraction of Primes) Let $\phi: R \to S$ be a ring map and let
     $\mathfrak{q} \in \operatorname{Spec}(S)$ be a prime ideal. Explain the Stacks Project convention
-    of writing the contraction $\phi^{-1}(\mathfrak{q})$ as $R \cap \mathfrak{q}$. (Hint: This notation
-    is standardly used even when $R$ is not a subring of $S$ and $\phi$ is not injective; ideals geometrically
-    correspond to kernels of maps to integral domains)'
-  hint: null
+    of writing the contraction $\phi^{-1}(\mathfrak{q})$ as $R \cap \mathfrak{q}$. '
+  hint: This notation is standardly used even when $R$ is not a subring of $S$ and $\phi$ is not injective;
+    ideals geometrically correspond to kernels of maps to integral domains
   locator: null
   sub_index: null
   search_text: '(notational conventions for contraction of primes) let $\phi: r \to s$ be a ring map and
     let $\mathfrak{q} \in \operatorname{spec}(s)$ be a prime ideal. explain the stacks project convention
-    of writing the contraction $\phi^{-1}(\mathfrak{q})$ as $r \cap \mathfrak{q}$. (hint: this notation
-    is standardly used even when $r$ is not a subring of $s$ and $\phi$ is not injective; ideals geometrically
-    correspond to kernels of maps to integral domains)'
+    of writing the contraction $\phi^{-1}(\mathfrak{q})$ as $r \cap \mathfrak{q}$.  this notation is standardly
+    used even when $r$ is not a subring of $s$ and $\phi$ is not injective; ideals geometrically correspond
+    to kernels of maps to integral domains'
 - id: stacks-math-columbia-edu-download-algebra-pdf#001
   text: '(The Snake Lemma and Connecting Homomorphisms) State the Snake Lemma for commutative diagrams
     of $R$-modules with exact rows: $$\begin{matrix} & M_1 & \xrightarrow{f_1} & M_2 & \xrightarrow{g_1}
@@ -26,10 +25,10 @@ exercises:
     Prove that the connecting homomorphism $\delta: \ker(\gamma) \to \operatorname{coker}(\alpha)$ factors
     as $i'' \circ \beta \circ s''$, where $s''$ is a preimage lift from $M_3$ to $M_2$ via surjectivity
     (unique modulo $\ker(g_1) = \operatorname{im}(f_1)$), $\beta$ is the central vertical map, and $i''$
-    is the projection into $\operatorname{coker}(\alpha)$. (Hint: Show that $\beta(s''(z))$ maps to $0$
-    in $N_3$ and therefore lifts uniquely to $N_1$, proving that $\delta$ is well-defined, yields a 6-term
-    exact sequence, and characterizes abelian categories as categories where the Snake Lemma holds)'
-  hint: null
+    is the projection into $\operatorname{coker}(\alpha)$. '
+  hint: Show that $\beta(s'(z))$ maps to $0$ in $N_3$ and therefore lifts uniquely to $N_1$, proving that
+    $\delta$ is well-defined, yields a 6-term exact sequence, and characterizes abelian categories as
+    categories where the Snake Lemma holds
   locator: null
   sub_index: null
   search_text: '(the snake lemma and connecting homomorphisms) state the snake lemma for commutative diagrams
@@ -38,36 +37,34 @@ exercises:
     prove that the connecting homomorphism $\delta: \ker(\gamma) \to \operatorname{coker}(\alpha)$ factors
     as $i'' \circ \beta \circ s''$, where $s''$ is a preimage lift from $m_3$ to $m_2$ via surjectivity
     (unique modulo $\ker(g_1) = \operatorname{im}(f_1)$), $\beta$ is the central vertical map, and $i''$
-    is the projection into $\operatorname{coker}(\alpha)$. (hint: show that $\beta(s''(z))$ maps to $0$
-    in $n_3$ and therefore lifts uniquely to $n_1$, proving that $\delta$ is well-defined, yields a 6-term
-    exact sequence, and characterizes abelian categories as categories where the snake lemma holds)'
+    is the projection into $\operatorname{coker}(\alpha)$.  show that $\beta(s''(z))$ maps to $0$ in $n_3$
+    and therefore lifts uniquely to $n_1$, proving that $\delta$ is well-defined, yields a 6-term exact
+    sequence, and characterizes abelian categories as categories where the snake lemma holds'
 - id: stacks-math-columbia-edu-download-algebra-pdf#002
   text: '(Presentations and Lemma 10.5.2) Let $M$ be an $R$-module with a presentation $R^{\oplus m} \to
     R^{\oplus n} \to M \to 0$, where $n$ represents the number of generators and $m$ the number of relations.
     Prove Lemma 10.5.2: if $\alpha: R^{\oplus n} \to M$ and $\beta: N \to M$ are $R$-module maps such
     that $\operatorname{im}(\alpha) \subseteq \operatorname{im}(\beta)$, then $\alpha$ lifts to a map
-    $\gamma: R^{\oplus n} \to N$ such that $\alpha = \beta \circ \gamma$. (Hint: Express the image of
-    each standard basis element $e_i \in R^{\oplus n}$ as a linear combination over the generators of
-    $N$)'
-  hint: null
+    $\gamma: R^{\oplus n} \to N$ such that $\alpha = \beta \circ \gamma$. '
+  hint: Express the image of each standard basis element $e_i \in R^{\oplus n}$ as a linear combination
+    over the generators of $N$
   locator: null
   sub_index: null
   search_text: '(presentations and lemma 10.5.2) let $m$ be an $r$-module with a presentation $r^{\oplus
     m} \to r^{\oplus n} \to m \to 0$, where $n$ represents the number of generators and $m$ the number
     of relations. prove lemma 10.5.2: if $\alpha: r^{\oplus n} \to m$ and $\beta: n \to m$ are $r$-module
     maps such that $\operatorname{im}(\alpha) \subseteq \operatorname{im}(\beta)$, then $\alpha$ lifts
-    to a map $\gamma: r^{\oplus n} \to n$ such that $\alpha = \beta \circ \gamma$. (hint: express the
-    image of each standard basis element $e_i \in r^{\oplus n}$ as a linear combination over the generators
-    of $n$)'
+    to a map $\gamma: r^{\oplus n} \to n$ such that $\alpha = \beta \circ \gamma$.  express the image
+    of each standard basis element $e_i \in r^{\oplus n}$ as a linear combination over the generators
+    of $n$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#003
   text: '(Finiteness Conditions and Lemma 10.5.3) Prove Lemma 10.5.3: for a short exact sequence of $R$-modules
     $0 \to M_1 \to M_2 \to M_3 \to 0$, 1. If $M_2$ is finitely generated, then $M_3 \cong M_2/M_1$ is
     finitely generated. 2. If $M_1$ and $M_3$ are finitely generated, then $M_2$ is finitely generated.
     3. If $M_2$ is finitely presented and $M_1$ is finitely generated, then $M_3$ is finitely presented.
     4. If $M_1$ and $M_3$ are finitely presented, then $M_2$ is finitely presented. 5. If $M_2$ is finitely
-    presented and $M_3$ is finitely generated, then $M_1$ is finitely generated. (Hint: Use the Snake
-    Lemma and presentations of modules to prove each clause)'
-  hint: null
+    presented and $M_3$ is finitely generated, then $M_1$ is finitely generated. '
+  hint: Use the Snake Lemma and presentations of modules to prove each clause
   locator: null
   sub_index: null
   search_text: '(finiteness conditions and lemma 10.5.3) prove lemma 10.5.3: for a short exact sequence
@@ -75,287 +72,275 @@ exercises:
     m_2/m_1$ is finitely generated. 2. if $m_1$ and $m_3$ are finitely generated, then $m_2$ is finitely
     generated. 3. if $m_2$ is finitely presented and $m_1$ is finitely generated, then $m_3$ is finitely
     presented. 4. if $m_1$ and $m_3$ are finitely presented, then $m_2$ is finitely presented. 5. if $m_2$
-    is finitely presented and $m_3$ is finitely generated, then $m_1$ is finitely generated. (hint: use
-    the snake lemma and presentations of modules to prove each clause)'
+    is finitely presented and $m_3$ is finitely generated, then $m_1$ is finitely generated.  use the
+    snake lemma and presentations of modules to prove each clause'
 - id: stacks-math-columbia-edu-download-algebra-pdf#004
   text: '(Descending Induction on Finite Modules: Lemma 10.5.4) Let $M$ be a finitely generated $R$-module.
     Prove Lemma 10.5.4: there exists a finite filtration $0 = M_0 \subseteq M_1 \subseteq \dots \subseteq
     M_r = M$ such that each quotient $M_i/M_{i-1}$ is a cyclic $R$-module isomorphic to $R/I_i$ for some
-    ideal $I_i \subseteq R$. (Hint: Induct on the minimal number of generators of $M$; quotient out by
-    $r-1$ generators and use the first isomorphism theorem on the cyclic kernel)'
-  hint: null
+    ideal $I_i \subseteq R$. '
+  hint: Induct on the minimal number of generators of $M$; quotient out by $r-1$ generators and use the
+    first isomorphism theorem on the cyclic kernel
   locator: null
   sub_index: null
   search_text: '(descending induction on finite modules: lemma 10.5.4) let $m$ be a finitely generated
     $r$-module. prove lemma 10.5.4: there exists a finite filtration $0 = m_0 \subseteq m_1 \subseteq
     \dots \subseteq m_r = m$ such that each quotient $m_i/m_{i-1}$ is a cyclic $r$-module isomorphic to
-    $r/i_i$ for some ideal $i_i \subseteq r$. (hint: induct on the minimal number of generators of $m$;
-    quotient out by $r-1$ generators and use the first isomorphism theorem on the cyclic kernel)'
+    $r/i_i$ for some ideal $i_i \subseteq r$.  induct on the minimal number of generators of $m$; quotient
+    out by $r-1$ generators and use the first isomorphism theorem on the cyclic kernel'
 - id: stacks-math-columbia-edu-download-algebra-pdf#005
   text: '(Module Generators under Base Change: Lemma 10.5.5) Let $\phi: R \to S$ be a ring map and let
     $M$ be an $S$-module. Prove that if $M$ is generated as an $R$-module by a subset $E \subset M$, then
-    $E$ also generates $M$ as an $S$-module. (Hint: Regard the $R$-module structure on $M$ as the restriction
-    of scalars along $\phi$ into the endomorphism ring $\operatorname{End}(M)$)'
-  hint: null
+    $E$ also generates $M$ as an $S$-module. '
+  hint: Regard the $R$-module structure on $M$ as the restriction of scalars along $\phi$ into the endomorphism
+    ring $\operatorname{End}(M)$
   locator: null
   sub_index: null
   search_text: '(module generators under base change: lemma 10.5.5) let $\phi: r \to s$ be a ring map
     and let $m$ be an $s$-module. prove that if $m$ is generated as an $r$-module by a subset $e \subset
-    m$, then $e$ also generates $m$ as an $s$-module. (hint: regard the $r$-module structure on $m$ as
-    the restriction of scalars along $\phi$ into the endomorphism ring $\operatorname{end}(m)$)'
+    m$, then $e$ also generates $m$ as an $s$-module.  regard the $r$-module structure on $m$ as the restriction
+    of scalars along $\phi$ into the endomorphism ring $\operatorname{end}(m)$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#006
   text: '(Finite Type and Finitely Presented Algebras: Lemma 10.6.2) Let $S$ be an $R$-algebra. Distinguish
-    between $S$ being of finite type and of finite presentation over $R$. (Hint: $S$ is of finite type
-    if there is a surjection $R[x_1, \dots, x_n] \twoheadrightarrow S$ (analogous to existence conditions
-    in Stone–Čech compactifications); $S$ is of finite presentation if in addition the kernel ideal of
-    relations is finitely generated. Prove Lemma 10.6.2: compositions of finite type/presentation maps
-    are of finite type/presentation)'
-  hint: null
+    between $S$ being of finite type and of finite presentation over $R$. '
+  hint: '$S$ is of finite type if there is a surjection $R[x_1, \dots, x_n] \twoheadrightarrow S$ (analogous
+    to existence conditions in Stone–Čech compactifications); $S$ is of finite presentation if in addition
+    the kernel ideal of relations is finitely generated. Prove Lemma 10.6.2: compositions of finite type/presentation
+    maps are of finite type/presentation'
   locator: null
   sub_index: null
   search_text: '(finite type and finitely presented algebras: lemma 10.6.2) let $s$ be an $r$-algebra.
-    distinguish between $s$ being of finite type and of finite presentation over $r$. (hint: $s$ is of
-    finite type if there is a surjection $r[x_1, \dots, x_n] \twoheadrightarrow s$ (analogous to existence
-    conditions in stone–čech compactifications); $s$ is of finite presentation if in addition the kernel
-    ideal of relations is finitely generated. prove lemma 10.6.2: compositions of finite type/presentation
-    maps are of finite type/presentation)'
+    distinguish between $s$ being of finite type and of finite presentation over $r$.  $s$ is of finite
+    type if there is a surjection $r[x_1, \dots, x_n] \twoheadrightarrow s$ (analogous to existence conditions
+    in stone–čech compactifications); $s$ is of finite presentation if in addition the kernel ideal of
+    relations is finitely generated. prove lemma 10.6.2: compositions of finite type/presentation maps
+    are of finite type/presentation'
 - id: stacks-math-columbia-edu-download-algebra-pdf#007
   text: '(Directed Systems, Colimits, and Homology: Lemma 10.8.8) Let $(C_\bullet^{(i)})_{i \in I}$ be
     a directed system of chain complexes of $R$-modules over a filtered poset $I$, with $C_\bullet^{(i)}
     = (L_i \to M_i \to N_i)$ and homology $H(C_\bullet^{(i)})$. Prove Lemma 10.8.8: the colimit of the
     homology groups is canonically isomorphic to the homology of the colimit complex: $\varinjlim H(C_\bullet^{(i)})
-    \cong H(\varinjlim C_\bullet^{(i)})$. (Hint: Filtered colimits are exact in $\operatorname{Mod}_R$,
-    but explain why colimits fail to be exact in general non-abelian categories)'
-  hint: null
+    \cong H(\varinjlim C_\bullet^{(i)})$. '
+  hint: Filtered colimits are exact in $\operatorname{Mod}_R$, but explain why colimits fail to be exact
+    in general non-abelian categories
   locator: null
   sub_index: null
   search_text: '(directed systems, colimits, and homology: lemma 10.8.8) let $(c_\bullet^{(i)})_{i \in
     i}$ be a directed system of chain complexes of $r$-modules over a filtered poset $i$, with $c_\bullet^{(i)}
     = (l_i \to m_i \to n_i)$ and homology $h(c_\bullet^{(i)})$. prove lemma 10.8.8: the colimit of the
     homology groups is canonically isomorphic to the homology of the colimit complex: $\varinjlim h(c_\bullet^{(i)})
-    \cong h(\varinjlim c_\bullet^{(i)})$. (hint: filtered colimits are exact in $\operatorname{mod}_r$,
-    but explain why colimits fail to be exact in general non-abelian categories)'
+    \cong h(\varinjlim c_\bullet^{(i)})$.  filtered colimits are exact in $\operatorname{mod}_r$, but
+    explain why colimits fail to be exact in general non-abelian categories'
 - id: stacks-math-columbia-edu-download-algebra-pdf#008
   text: '(Localization as a Directed System: Lemma 10.9.9) Let $S \subset R$ be a multiplicative subset.
     Define the localization $S^{-1}R$ via its universal property. Prove Lemma 10.9.9: $S^{-1}M$ is canonically
     isomorphic to the directed colimit of principal localizations $\varinjlim_{f \in S} M_f$ along transition
-    maps $\frac{m}{f''} \mapsto \frac{m(f'''')^e}{f^e}$ where $f = f'' f''''$. (Hint: Show that localization
-    preserves quotients and is an exact functor $S^{-1}(-) \cong - \otimes_R S^{-1}R$ as in Lemma 10.9.12)'
-  hint: null
+    maps $\frac{m}{f''} \mapsto \frac{m(f'''')^e}{f^e}$ where $f = f'' f''''$. '
+  hint: Show that localization preserves quotients and is an exact functor $S^{-1}(-) \cong - \otimes_R
+    S^{-1}R$ as in Lemma 10.9.12
   locator: null
   sub_index: null
   search_text: '(localization as a directed system: lemma 10.9.9) let $s \subset r$ be a multiplicative
     subset. define the localization $s^{-1}r$ via its universal property. prove lemma 10.9.9: $s^{-1}m$
     is canonically isomorphic to the directed colimit of principal localizations $\varinjlim_{f \in s}
-    m_f$ along transition maps $\frac{m}{f''} \mapsto \frac{m(f'''')^e}{f^e}$ where $f = f'' f''''$. (hint:
-    show that localization preserves quotients and is an exact functor $s^{-1}(-) \cong - \otimes_r s^{-1}r$
-    as in lemma 10.9.12)'
+    m_f$ along transition maps $\frac{m}{f''} \mapsto \frac{m(f'''')^e}{f^e}$ where $f = f'' f''''$.  show
+    that localization preserves quotients and is an exact functor $s^{-1}(-) \cong - \otimes_r s^{-1}r$
+    as in lemma 10.9.12'
 - id: stacks-math-columbia-edu-download-algebra-pdf#009
   text: '(Internal Hom Functors and Filtered Colimits: Lemma 10.10.1 & 10.11.4) Define the internal hom
     $\operatorname{Hom}_R(M, N)$ as an $R$-module. Prove that $\operatorname{Hom}_R(M, -)$ is a left exact
     additive functor. Prove Lemma 10.11.4: an $R$-module $M$ is finitely presented if and only if the
     canonical map $\varinjlim \operatorname{Hom}_R(M, N_i) \to \operatorname{Hom}_R(M, \varinjlim N_i)$
-    is an isomorphism for all filtered directed systems $(N_i)_{i \in I}$. (Hint: Apply the Yoneda lemma)'
-  hint: null
+    is an isomorphism for all filtered directed systems $(N_i)_{i \in I}$. '
+  hint: Apply the Yoneda lemma
   locator: null
   sub_index: null
   search_text: '(internal hom functors and filtered colimits: lemma 10.10.1 & 10.11.4) define the internal
     hom $\operatorname{hom}_r(m, n)$ as an $r$-module. prove that $\operatorname{hom}_r(m, -)$ is a left
     exact additive functor. prove lemma 10.11.4: an $r$-module $m$ is finitely presented if and only if
     the canonical map $\varinjlim \operatorname{hom}_r(m, n_i) \to \operatorname{hom}_r(m, \varinjlim
-    n_i)$ is an isomorphism for all filtered directed systems $(n_i)_{i \in i}$. (hint: apply the yoneda
-    lemma)'
+    n_i)$ is an isomorphism for all filtered directed systems $(n_i)_{i \in i}$.  apply the yoneda lemma'
 - id: stacks-math-columbia-edu-download-algebra-pdf#010
   text: '(Multilinear Maps and Bimodule Associativity: Lemma 10.12.7) Let $M$ be an $(R, S)$-bimodule,
     $N$ an $(S, T)$-bimodule, and $P$ a $(T, U)$-bimodule. Construct the tensor product $M \otimes_S N$
     and prove Lemma 10.12.7: there is a canonical associativity isomorphism $(M \otimes_S N) \otimes_T
-    P \cong M \otimes_S (N \otimes_T P)$. (Hint: Show that tensor products factor multilinear maps through
-    universal bilinear maps)'
-  hint: null
+    P \cong M \otimes_S (N \otimes_T P)$. '
+  hint: Show that tensor products factor multilinear maps through universal bilinear maps
   locator: null
   sub_index: null
   search_text: '(multilinear maps and bimodule associativity: lemma 10.12.7) let $m$ be an $(r, s)$-bimodule,
     $n$ an $(s, t)$-bimodule, and $p$ a $(t, u)$-bimodule. construct the tensor product $m \otimes_s n$
     and prove lemma 10.12.7: there is a canonical associativity isomorphism $(m \otimes_s n) \otimes_t
-    p \cong m \otimes_s (n \otimes_t p)$. (hint: show that tensor products factor multilinear maps through
-    universal bilinear maps)'
+    p \cong m \otimes_s (n \otimes_t p)$.  show that tensor products factor multilinear maps through universal
+    bilinear maps'
 - id: stacks-math-columbia-edu-download-algebra-pdf#011
   text: '(Tensor-Hom Adjunction and Left Exactness: Lemma 10.12.8 & 10.12.11) Prove the tensor-hom adjunction
     $\operatorname{Hom}_S(M \otimes_R N, P) \cong \operatorname{Hom}_R(M, \operatorname{Hom}_S(N, P))$
     (Lemma 10.12.8). Show that $-\otimes_R N$ preserves all colimits and is right exact. Give a counterexample
     (Lemma 10.12.11) showing that $-\otimes_R N$ is not left exact in general, and define $N$ to be flat
-    if $-\otimes_R N$ is exact. (Hint: Consider $0 \to \mathbb{Z} \xrightarrow{\times 2} \mathbb{Z}$ tensored
-    with $\mathbb{Z}/2\mathbb{Z}$)'
-  hint: null
+    if $-\otimes_R N$ is exact. '
+  hint: Consider $0 \to \mathbb{Z} \xrightarrow{\times 2} \mathbb{Z}$ tensored with $\mathbb{Z}/2\mathbb{Z}$
   locator: null
   sub_index: null
   search_text: '(tensor-hom adjunction and left exactness: lemma 10.12.8 & 10.12.11) prove the tensor-hom
     adjunction $\operatorname{hom}_s(m \otimes_r n, p) \cong \operatorname{hom}_r(m, \operatorname{hom}_s(n,
     p))$ (lemma 10.12.8). show that $-\otimes_r n$ preserves all colimits and is right exact. give a counterexample
     (lemma 10.12.11) showing that $-\otimes_r n$ is not left exact in general, and define $n$ to be flat
-    if $-\otimes_r n$ is exact. (hint: consider $0 \to \mathbb{z} \xrightarrow{\times 2} \mathbb{z}$ tensored
-    with $\mathbb{z}/2\mathbb{z}$)'
+    if $-\otimes_r n$ is exact.  consider $0 \to \mathbb{z} \xrightarrow{\times 2} \mathbb{z}$ tensored
+    with $\mathbb{z}/2\mathbb{z}$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#012
   text: '(Tensor, Symmetric, and Exterior Algebras) For an $R$-module $M$, define the non-commutative
     tensor algebra $T(M) = \bigoplus_{n \ge 0} M^{\otimes n}$, the symmetric algebra $\operatorname{Sym}(M)
     = T(M)/\langle x \otimes y - y \otimes x \rangle$, and the exterior algebra $\bigwedge(M) = T(M)/\langle
     x \otimes x \rangle$. Formulate their universal properties, and compute $\bigwedge^r(M)$ for a finite
-    free module $M \cong R^{\oplus n}$. (Hint: Use induction on tensor power components)'
-  hint: null
+    free module $M \cong R^{\oplus n}$. '
+  hint: Use induction on tensor power components
   locator: null
   sub_index: null
-  search_text: '(tensor, symmetric, and exterior algebras) for an $r$-module $m$, define the non-commutative
+  search_text: (tensor, symmetric, and exterior algebras) for an $r$-module $m$, define the non-commutative
     tensor algebra $t(m) = \bigoplus_{n \ge 0} m^{\otimes n}$, the symmetric algebra $\operatorname{sym}(m)
     = t(m)/\langle x \otimes y - y \otimes x \rangle$, and the exterior algebra $\bigwedge(m) = t(m)/\langle
     x \otimes x \rangle$. formulate their universal properties, and compute $\bigwedge^r(m)$ for a finite
-    free module $m \cong r^{\oplus n}$. (hint: use induction on tensor power components)'
+    free module $m \cong r^{\oplus n}$.  use induction on tensor power components
 - id: stacks-math-columbia-edu-download-algebra-pdf#013
   text: '(Base Change and the Adjoint Triple) Let $\phi: R \to S$ be a ring map and $M$ an $S$-module.
     Prove that restriction of scalars $\phi_*: \operatorname{Mod}_S \to \operatorname{Mod}_R$ forms an
     adjoint triple $(\phi^* \dashv \phi_* \dashv \phi^!)$, where base change $\phi^*(N) = N \otimes_R
-    S$ is the left adjoint and $\phi^!(N) = \operatorname{Hom}_R(S, N)$ is the right adjoint. (Hint: Compare
-    this with pushforward and pullback of sheaves on open sets. For the geometric pushforward it looks
-    like integration. Note that this is RIGHT ADJOINT AND PRESERVES LIMITS, since one takes sections over
-    opens for the integration which preserves limits. For the geometric pullback, it looks like restriction
+    S$ is the left adjoint and $\phi^!(N) = \operatorname{Hom}_R(S, N)$ is the right adjoint. '
+  hint: Compare this with pushforward and pullback of sheaves on open sets. For the geometric pushforward
+    it looks like integration. Note that this is RIGHT ADJOINT AND PRESERVES LIMITS, since one takes sections
+    over opens for the integration which preserves limits. For the geometric pullback, it looks like restriction
     or subspace, it also looks like recovering all the points before killing it or identifying it and
-    IT IS CHECKED STALKWISE, LEFT ADJOINTS PRESERVE COLIMITS.)'
-  hint: null
+    IT IS CHECKED STALKWISE, LEFT ADJOINTS PRESERVE COLIMITS.
   locator: null
   sub_index: null
   search_text: '(base change and the adjoint triple) let $\phi: r \to s$ be a ring map and $m$ an $s$-module.
     prove that restriction of scalars $\phi_*: \operatorname{mod}_s \to \operatorname{mod}_r$ forms an
     adjoint triple $(\phi^* \dashv \phi_* \dashv \phi^!)$, where base change $\phi^*(n) = n \otimes_r
-    s$ is the left adjoint and $\phi^!(n) = \operatorname{hom}_r(s, n)$ is the right adjoint. (hint: compare
+    s$ is the left adjoint and $\phi^!(n) = \operatorname{hom}_r(s, n)$ is the right adjoint.  compare
     this with pushforward and pullback of sheaves on open sets. for the geometric pushforward it looks
     like integration. note that this is right adjoint and preserves limits, since one takes sections over
     opens for the integration which preserves limits. for the geometric pullback, it looks like restriction
     or subspace, it also looks like recovering all the points before killing it or identifying it and
-    it is checked stalkwise, left adjoints preserve colimits.)'
+    it is checked stalkwise, left adjoints preserve colimits.'
 - id: stacks-math-columbia-edu-download-algebra-pdf#014
   text: '(Prime Ideals and Ideal Products) Let $I, J \subseteq R$ be ideals and $\mathfrak{p} \subseteq
     R$ a prime ideal. Prove that if $IJ \subseteq \mathfrak{p}$, then $I \subseteq \mathfrak{p}$ or $J
-    \subseteq \mathfrak{p}$. (Hint: Prove by contradiction: assume there exist $x \in I \setminus \mathfrak{p}$
-    and $y \in J \setminus \mathfrak{p}$, and consider $xy \in IJ$)'
-  hint: null
+    \subseteq \mathfrak{p}$. '
+  hint: 'Prove by contradiction: assume there exist $x \in I \setminus \mathfrak{p}$ and $y \in J \setminus
+    \mathfrak{p}$, and consider $xy \in IJ$'
   locator: null
   sub_index: null
   search_text: '(prime ideals and ideal products) let $i, j \subseteq r$ be ideals and $\mathfrak{p} \subseteq
     r$ a prime ideal. prove that if $ij \subseteq \mathfrak{p}$, then $i \subseteq \mathfrak{p}$ or $j
-    \subseteq \mathfrak{p}$. (hint: prove by contradiction: assume there exist $x \in i \setminus \mathfrak{p}$
-    and $y \in j \setminus \mathfrak{p}$, and consider $xy \in ij$)'
+    \subseteq \mathfrak{p}$.  prove by contradiction: assume there exist $x \in i \setminus \mathfrak{p}$
+    and $y \in j \setminus \mathfrak{p}$, and consider $xy \in ij$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#015
   text: '(The Prime Avoidance Lemma) State and prove the Prime Avoidance Lemma: if an ideal $I \subseteq
     R$ is contained in a finite union of prime ideals $\bigcup_{i=1}^n \mathfrak{p}_i$, then $I \subseteq
-    \mathfrak{p}_j$ for some $j$. (Hint: Induct on $n$; if $I \not\subseteq \mathfrak{p}_i$ for each $i$,
-    construct an element $x = y_k + \prod_{j \ne k} y_j \in I \setminus \bigcup \mathfrak{p}_i$ to reach
-    a contradiction)'
-  hint: null
+    \mathfrak{p}_j$ for some $j$. '
+  hint: Induct on $n$; if $I \not\subseteq \mathfrak{p}_i$ for each $i$, construct an element $x = y_k
+    + \prod_{j \ne k} y_j \in I \setminus \bigcup \mathfrak{p}_i$ to reach a contradiction
   locator: null
   sub_index: null
   search_text: '(the prime avoidance lemma) state and prove the prime avoidance lemma: if an ideal $i
     \subseteq r$ is contained in a finite union of prime ideals $\bigcup_{i=1}^n \mathfrak{p}_i$, then
-    $i \subseteq \mathfrak{p}_j$ for some $j$. (hint: induct on $n$; if $i \not\subseteq \mathfrak{p}_i$
-    for each $i$, construct an element $x = y_k + \prod_{j \ne k} y_j \in i \setminus \bigcup \mathfrak{p}_i$
-    to reach a contradiction)'
+    $i \subseteq \mathfrak{p}_j$ for some $j$.  induct on $n$; if $i \not\subseteq \mathfrak{p}_i$ for
+    each $i$, construct an element $x = y_k + \prod_{j \ne k} y_j \in i \setminus \bigcup \mathfrak{p}_i$
+    to reach a contradiction'
 - id: stacks-math-columbia-edu-download-algebra-pdf#016
   text: '(Chinese Remainder Theorem as Geometric Decomposition) State the Chinese Remainder Theorem: if
     $I_1, \dots, I_n \subseteq R$ are pairwise comaximal ideals ($I_j + I_k = R$ for $j \ne k$), then
-    $\bigcap_{j=1}^n I_j = \prod_{j=1}^n I_j$ and $R/\bigcap I_j \cong \prod R/I_j$. (Hint: Interpret
-    this geometrically as decomposing a ring into disconnected spatial points / components, and show by
-    induction that $R$ contains $2^n$ idempotents corresponding to subsets of comaximal components)'
-  hint: null
+    $\bigcap_{j=1}^n I_j = \prod_{j=1}^n I_j$ and $R/\bigcap I_j \cong \prod R/I_j$. '
+  hint: Interpret this geometrically as decomposing a ring into disconnected spatial points / components,
+    and show by induction that $R$ contains $2^n$ idempotents corresponding to subsets of comaximal components
   locator: null
   sub_index: null
   search_text: '(chinese remainder theorem as geometric decomposition) state the chinese remainder theorem:
     if $i_1, \dots, i_n \subseteq r$ are pairwise comaximal ideals ($i_j + i_k = r$ for $j \ne k$), then
-    $\bigcap_{j=1}^n i_j = \prod_{j=1}^n i_j$ and $r/\bigcap i_j \cong \prod r/i_j$. (hint: interpret
-    this geometrically as decomposing a ring into disconnected spatial points / components, and show by
-    induction that $r$ contains $2^n$ idempotents corresponding to subsets of comaximal components)'
+    $\bigcap_{j=1}^n i_j = \prod_{j=1}^n i_j$ and $r/\bigcap i_j \cong \prod r/i_j$.  interpret this geometrically
+    as decomposing a ring into disconnected spatial points / components, and show by induction that $r$
+    contains $2^n$ idempotents corresponding to subsets of comaximal components'
 - id: stacks-math-columbia-edu-download-algebra-pdf#017
   text: '(Cayley-Hamilton Theorem over Rings) Let $R$ be a commutative ring, $M$ an $R$-module generated
     by $n$ elements, and $\phi: M \to M$ an $R$-linear endomorphism with $\phi(M) \subseteq IM$ for an
     ideal $I \subseteq R$. Prove the Cayley–Hamilton identity: there exists a monic polynomial $P(T) =
-    T^n + a_1 T^{n-1} + \dots + a_n \in R[T]$ with $a_j \in I^j$ such that $P(\phi) = 0$ on $M$. (Hint:
-    Represent $\phi$ as an $n \times n$ matrix $A$ over $R$, multiply by the adjugate matrix $\operatorname{adj}(T
-    \cdot I_n - A)$, and apply Cramer''s rule; reduce general rings to polynomial rings over $\mathbb{Z}$)'
-  hint: null
+    T^n + a_1 T^{n-1} + \dots + a_n \in R[T]$ with $a_j \in I^j$ such that $P(\phi) = 0$ on $M$. '
+  hint: Represent $\phi$ as an $n \times n$ matrix $A$ over $R$, multiply by the adjugate matrix $\operatorname{adj}(T
+    \cdot I_n - A)$, and apply Cramer's rule; reduce general rings to polynomial rings over $\mathbb{Z}$
   locator: null
   sub_index: null
   search_text: '(cayley-hamilton theorem over rings) let $r$ be a commutative ring, $m$ an $r$-module
     generated by $n$ elements, and $\phi: m \to m$ an $r$-linear endomorphism with $\phi(m) \subseteq
     im$ for an ideal $i \subseteq r$. prove the cayley–hamilton identity: there exists a monic polynomial
-    $p(t) = t^n + a_1 t^{n-1} + \dots + a_n \in r[t]$ with $a_j \in i^j$ such that $p(\phi) = 0$ on $m$.
-    (hint: represent $\phi$ as an $n \times n$ matrix $a$ over $r$, multiply by the adjugate matrix $\operatorname{adj}(t
-    \cdot i_n - a)$, and apply cramer''s rule; reduce general rings to polynomial rings over $\mathbb{z}$)'
+    $p(t) = t^n + a_1 t^{n-1} + \dots + a_n \in r[t]$ with $a_j \in i^j$ such that $p(\phi) = 0$ on $m$.  represent
+    $\phi$ as an $n \times n$ matrix $a$ over $r$, multiply by the adjugate matrix $\operatorname{adj}(t
+    \cdot i_n - a)$, and apply cramer''s rule; reduce general rings to polynomial rings over $\mathbb{z}$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#018
   text: '(The Zariski Topology, Distinguished Opens, and Quasicompactness) Define the Zariski topology
     on $\operatorname{Spec}(R)$ via closed varieties $V(I) = \{\mathfrak{p} \in \operatorname{Spec}(R)
     : I \subseteq \mathfrak{p}\}$ and distinguished open sets $D(f) = \{\mathfrak{p} : f \notin \mathfrak{p}\}$.
     Prove that $\operatorname{Spec}(R)$ is quasicompact and that $\{D(f)\}_{f \in R}$ forms a basis of
-    quasicompact open sets satisfying $D(f) \cong \operatorname{Spec}(R_f)$ and $D(fg) = D(f) \cap D(g)$.
-    (Hint: Use posets and radical ideal inclusions to analyze finite subcovers)'
-  hint: null
+    quasicompact open sets satisfying $D(f) \cong \operatorname{Spec}(R_f)$ and $D(fg) = D(f) \cap D(g)$. '
+  hint: Use posets and radical ideal inclusions to analyze finite subcovers
   locator: null
   sub_index: null
   search_text: '(the zariski topology, distinguished opens, and quasicompactness) define the zariski topology
     on $\operatorname{spec}(r)$ via closed varieties $v(i) = \{\mathfrak{p} \in \operatorname{spec}(r)
     : i \subseteq \mathfrak{p}\}$ and distinguished open sets $d(f) = \{\mathfrak{p} : f \notin \mathfrak{p}\}$.
     prove that $\operatorname{spec}(r)$ is quasicompact and that $\{d(f)\}_{f \in r}$ forms a basis of
-    quasicompact open sets satisfying $d(f) \cong \operatorname{spec}(r_f)$ and $d(fg) = d(f) \cap d(g)$.
-    (hint: use posets and radical ideal inclusions to analyze finite subcovers)'
+    quasicompact open sets satisfying $d(f) \cong \operatorname{spec}(r_f)$ and $d(fg) = d(f) \cap d(g)$.  use
+    posets and radical ideal inclusions to analyze finite subcovers'
 - id: stacks-math-columbia-edu-download-algebra-pdf#019
   text: '(Local Rings and the Stacks Fundamental Fiber Square: Remark 10.18.5) Define a local ring $(R,
     \mathfrak{m}, \kappa)$ and a local homomorphism $\phi: R \to S$. For a prime $\mathfrak{p} \in \operatorname{Spec}(R)$,
     prove that the fiber of $\operatorname{Spec}(S) \to \operatorname{Spec}(R)$ over $\mathfrak{p}$ is
     canonically homeomorphic to $\operatorname{Spec}(S \otimes_R \kappa(\mathfrak{p}))$, where $\kappa(\mathfrak{p})
-    = R_\mathfrak{p}/\mathfrak{p}R_\mathfrak{p}$. (Hint: Analyze the commutative diagram of Remark 10.18.5
-    identifying the fiber square of spectra)'
-  hint: null
+    = R_\mathfrak{p}/\mathfrak{p}R_\mathfrak{p}$. '
+  hint: Analyze the commutative diagram of Remark 10.18.5 identifying the fiber square of spectra
   locator: null
   sub_index: null
   search_text: '(local rings and the stacks fundamental fiber square: remark 10.18.5) define a local ring
     $(r, \mathfrak{m}, \kappa)$ and a local homomorphism $\phi: r \to s$. for a prime $\mathfrak{p} \in
     \operatorname{spec}(r)$, prove that the fiber of $\operatorname{spec}(s) \to \operatorname{spec}(r)$
     over $\mathfrak{p}$ is canonically homeomorphic to $\operatorname{spec}(s \otimes_r \kappa(\mathfrak{p}))$,
-    where $\kappa(\mathfrak{p}) = r_\mathfrak{p}/\mathfrak{p}r_\mathfrak{p}$. (hint: analyze the commutative
-    diagram of remark 10.18.5 identifying the fiber square of spectra)'
+    where $\kappa(\mathfrak{p}) = r_\mathfrak{p}/\mathfrak{p}r_\mathfrak{p}$.  analyze the commutative
+    diagram of remark 10.18.5 identifying the fiber square of spectra'
 - id: stacks-math-columbia-edu-download-algebra-pdf#020
   text: '(The Jacobson Radical and Nakayama''s Lemma) Define the Jacobson radical $\operatorname{Rad}(R)
     = \bigcap_{\mathfrak{m} \text{ max}} \mathfrak{m}$. State Nakayama''s Lemma: if $M$ is a finitely
     generated $R$-module and $I \subseteq \operatorname{Rad}(R)$ is an ideal such that $IM = M$, prove
-    that $M = 0$. (Hint: Apply Cayley–Hamilton to an $n$-element generating set to find $r \in I$ such
-    that $(1-r)M = 0$, and observe that elements of $I$ act as infinitesimal scalars making $1-r$ invertible
-    in $R$)'
-  hint: null
+    that $M = 0$. '
+  hint: Apply Cayley–Hamilton to an $n$-element generating set to find $r \in I$ such that $(1-r)M = 0$,
+    and observe that elements of $I$ act as infinitesimal scalars making $1-r$ invertible in $R$
   locator: null
   sub_index: null
   search_text: '(the jacobson radical and nakayama''s lemma) define the jacobson radical $\operatorname{rad}(r)
     = \bigcap_{\mathfrak{m} \text{ max}} \mathfrak{m}$. state nakayama''s lemma: if $m$ is a finitely
     generated $r$-module and $i \subseteq \operatorname{rad}(r)$ is an ideal such that $im = m$, prove
-    that $m = 0$. (hint: apply cayley–hamilton to an $n$-element generating set to find $r \in i$ such
-    that $(1-r)m = 0$, and observe that elements of $i$ act as infinitesimal scalars making $1-r$ invertible
-    in $r$)'
+    that $m = 0$.  apply cayley–hamilton to an $n$-element generating set to find $r \in i$ such that
+    $(1-r)m = 0$, and observe that elements of $i$ act as infinitesimal scalars making $1-r$ invertible
+    in $r$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#021
   text: '(Idempotents and Clopen Sets of Spec R) Establish the 1-to-1 correspondence between orthogonal
     idempotents $e^2 = e \in R$ and clopen (closed and open) subsets $D(e) = V(1-e) \subseteq \operatorname{Spec}(R)$.
     Prove that $\operatorname{Spec}(R)$ is connected as a topological space if and only if $R$ contains
-    no non-trivial idempotents (i.e. only $0$ and $1$). (Hint: Decompose $R \cong Re \times R(1-e)$)'
-  hint: null
+    no non-trivial idempotents (i.e. only $0$ and $1$). '
+  hint: Decompose $R \cong Re \times R(1-e)$
   locator: null
   sub_index: null
-  search_text: '(idempotents and clopen sets of spec r) establish the 1-to-1 correspondence between orthogonal
+  search_text: (idempotents and clopen sets of spec r) establish the 1-to-1 correspondence between orthogonal
     idempotents $e^2 = e \in r$ and clopen (closed and open) subsets $d(e) = v(1-e) \subseteq \operatorname{spec}(r)$.
     prove that $\operatorname{spec}(r)$ is connected as a topological space if and only if $r$ contains
-    no non-trivial idempotents (i.e. only $0$ and $1$). (hint: decompose $r \cong re \times r(1-e)$)'
+    no non-trivial idempotents (i.e. only $0$ and $1$).  decompose $r \cong re \times r(1-e)$
 - id: stacks-math-columbia-edu-download-algebra-pdf#022
   text: '(Minimal Primes, Nilpotents, and Irreducible Components: Section 10.26) Prove that the irreducible
     components of $\operatorname{Spec}(R)$ are precisely the closed sets $V(\mathfrak{p})$ where $\mathfrak{p}$
     is a minimal prime ideal of $R$. Prove that in the local ring $R_\mathfrak{p}$ at a minimal prime
     $\mathfrak{p}$, the maximal ideal $\mathfrak{p} R_\mathfrak{p}$ consists entirely of nilpotents, and
-    deduce that if $R$ is reduced, $R_\mathfrak{p} \cong \kappa(\mathfrak{p})$ is a field. (Hint: Show
-    that if $R$ is reduced and $\mathfrak{p}$ is minimal, the localization $R_\mathfrak{p}$ has no non-zero
-    zero divisors, so $\mathfrak{p}R_\mathfrak{p} = 0$)'
-  hint: null
+    deduce that if $R$ is reduced, $R_\mathfrak{p} \cong \kappa(\mathfrak{p})$ is a field. '
+  hint: Show that if $R$ is reduced and $\mathfrak{p}$ is minimal, the localization $R_\mathfrak{p}$ has
+    no non-zero zero divisors, so $\mathfrak{p}R_\mathfrak{p} = 0$
   locator: null
   sub_index: null
   search_text: '(minimal primes, nilpotents, and irreducible components: section 10.26) prove that the
@@ -363,521 +348,500 @@ exercises:
     where $\mathfrak{p}$ is a minimal prime ideal of $r$. prove that in the local ring $r_\mathfrak{p}$
     at a minimal prime $\mathfrak{p}$, the maximal ideal $\mathfrak{p} r_\mathfrak{p}$ consists entirely
     of nilpotents, and deduce that if $r$ is reduced, $r_\mathfrak{p} \cong \kappa(\mathfrak{p})$ is a
-    field. (hint: show that if $r$ is reduced and $\mathfrak{p}$ is minimal, the localization $r_\mathfrak{p}$
-    has no non-zero zero divisors, so $\mathfrak{p}r_\mathfrak{p} = 0$)'
+    field.  show that if $r$ is reduced and $\mathfrak{p}$ is minimal, the localization $r_\mathfrak{p}$
+    has no non-zero zero divisors, so $\mathfrak{p}r_\mathfrak{p} = 0$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#023
   text: '(Oka Families and Primes Disjoint from Multiplicative Sets) Let $S \subset R$ be a multiplicative
     subset. Prove that any ideal $\mathfrak{p} \subset R$ that is maximal with respect to the property
-    $\mathfrak{p} \cap S = \emptyset$ is a prime ideal. (Hint: Show that $\mathfrak{p} = R \cap \mathfrak{m}$
-    for some maximal ideal $\mathfrak{m} \subset S^{-1}R$, and apply Zorn''s lemma)'
-  hint: null
+    $\mathfrak{p} \cap S = \emptyset$ is a prime ideal. '
+  hint: Show that $\mathfrak{p} = R \cap \mathfrak{m}$ for some maximal ideal $\mathfrak{m} \subset S^{-1}R$,
+    and apply Zorn's lemma
   locator: null
   sub_index: null
-  search_text: '(oka families and primes disjoint from multiplicative sets) let $s \subset r$ be a multiplicative
+  search_text: (oka families and primes disjoint from multiplicative sets) let $s \subset r$ be a multiplicative
     subset. prove that any ideal $\mathfrak{p} \subset r$ that is maximal with respect to the property
-    $\mathfrak{p} \cap s = \emptyset$ is a prime ideal. (hint: show that $\mathfrak{p} = r \cap \mathfrak{m}$
-    for some maximal ideal $\mathfrak{m} \subset s^{-1}r$, and apply zorn''s lemma)'
+    $\mathfrak{p} \cap s = \emptyset$ is a prime ideal.  show that $\mathfrak{p} = r \cap \mathfrak{m}$
+    for some maximal ideal $\mathfrak{m} \subset s^{-1}r$, and apply zorn's lemma
 - id: stacks-math-columbia-edu-download-algebra-pdf#024
   text: '(Chevalley''s Constructibility Theorem) State Chevalley''s Theorem: let $\phi: R \to S$ be a
     ring map of finite presentation. Prove that the induced continuous map $f: \operatorname{Spec}(S)
     \to \operatorname{Spec}(R)$ is a constructible map, sending constructible subsets of $\operatorname{Spec}(S)$
-    to constructible subsets of $\operatorname{Spec}(R)$. (Hint: A subset is constructible if it is a
-    finite union of locally closed subsets $U \cap V^c$)'
-  hint: null
+    to constructible subsets of $\operatorname{Spec}(R)$. '
+  hint: A subset is constructible if it is a finite union of locally closed subsets $U \cap V^c$
   locator: null
   sub_index: null
   search_text: '(chevalley''s constructibility theorem) state chevalley''s theorem: let $\phi: r \to s$
     be a ring map of finite presentation. prove that the induced continuous map $f: \operatorname{spec}(s)
     \to \operatorname{spec}(r)$ is a constructible map, sending constructible subsets of $\operatorname{spec}(s)$
-    to constructible subsets of $\operatorname{spec}(r)$. (hint: a subset is constructible if it is a
-    finite union of locally closed subsets $u \cap v^c$)'
+    to constructible subsets of $\operatorname{spec}(r)$.  a subset is constructible if it is a finite
+    union of locally closed subsets $u \cap v^c$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#025
   text: '(Noetherian Rings and Absolute Noetherian Reduction) State the equivalent definitions of a Noetherian
     ring (ACC on ideals, every ideal is finitely generated, every prime ideal is finitely generated).
     State Hilbert''s Basis Theorem ($R$ Noetherian $\implies R[x_1, \dots, x_n]$ Noetherian) and prove
     that formal power series rings $R[[x]]$ are Noetherian. Explain the principle of absolute Noetherian
-    reduction: why every finite-type algebra over a field or over $\mathbb{Z}$ is Noetherian. (Hint: Exploit
-    $\mathbb{Z}$ as the initial object in rings and $\operatorname{Spec}(\mathbb{Z})$ as the terminal
-    scheme)'
-  hint: null
+    reduction: why every finite-type algebra over a field or over $\mathbb{Z}$ is Noetherian. '
+  hint: Exploit $\mathbb{Z}$ as the initial object in rings and $\operatorname{Spec}(\mathbb{Z})$ as the
+    terminal scheme
   locator: null
   sub_index: null
   search_text: '(noetherian rings and absolute noetherian reduction) state the equivalent definitions
     of a noetherian ring (acc on ideals, every ideal is finitely generated, every prime ideal is finitely
     generated). state hilbert''s basis theorem ($r$ noetherian $\implies r[x_1, \dots, x_n]$ noetherian)
     and prove that formal power series rings $r[[x]]$ are noetherian. explain the principle of absolute
-    noetherian reduction: why every finite-type algebra over a field or over $\mathbb{z}$ is noetherian.
-    (hint: exploit $\mathbb{z}$ as the initial object in rings and $\operatorname{spec}(\mathbb{z})$ as
-    the terminal scheme)'
+    noetherian reduction: why every finite-type algebra over a field or over $\mathbb{z}$ is noetherian.  exploit
+    $\mathbb{z}$ as the initial object in rings and $\operatorname{spec}(\mathbb{z})$ as the terminal
+    scheme'
 - id: stacks-math-columbia-edu-download-algebra-pdf#026
   text: '(Locally Nilpotent Ideals and Idempotent Lifts) Let $I \subset R$ be a locally nilpotent ideal
     (every $x \in I$ satisfies $x^n = 0$ for some $n$). Prove that the reduction map $R \to R/I$ induces
-    a bijection on idempotents: $\operatorname{Idemp}(R) \xrightarrow{\sim} \operatorname{Idemp}(R/I)$.
-    (Hint: Use successive polynomial lifts $e_{k+1} = 3e_k^2 - 2e_k^3$)'
-  hint: null
+    a bijection on idempotents: $\operatorname{Idemp}(R) \xrightarrow{\sim} \operatorname{Idemp}(R/I)$. '
+  hint: Use successive polynomial lifts $e_{k+1} = 3e_k^2 - 2e_k^3$
   locator: null
   sub_index: null
   search_text: '(locally nilpotent ideals and idempotent lifts) let $i \subset r$ be a locally nilpotent
     ideal (every $x \in i$ satisfies $x^n = 0$ for some $n$). prove that the reduction map $r \to r/i$
-    induces a bijection on idempotents: $\operatorname{idemp}(r) \xrightarrow{\sim} \operatorname{idemp}(r/i)$.
-    (hint: use successive polynomial lifts $e_{k+1} = 3e_k^2 - 2e_k^3$)'
+    induces a bijection on idempotents: $\operatorname{idemp}(r) \xrightarrow{\sim} \operatorname{idemp}(r/i)$.  use
+    successive polynomial lifts $e_{k+1} = 3e_k^2 - 2e_k^3$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#027
   text: '(Jacobson Rings and Finite-Type Algebras) Define a Jacobson ring as a ring in which every radical
     ideal is the intersection of maximal ideals. Prove that if $k$ is a field (not necessarily algebraically
     closed), the polynomial ring $k[x_1, \dots, x_n]$ is a Jacobson ring, and every maximal ideal $\mathfrak{m}$
-    has a finite residue field extension $\kappa(\mathfrak{m})/k$. (Hint: Use induction via Euclidean
-    division / Noether normalization to prove that finite-type algebras over Jacobson rings are Jacobson)'
-  hint: null
+    has a finite residue field extension $\kappa(\mathfrak{m})/k$. '
+  hint: Use induction via Euclidean division / Noether normalization to prove that finite-type algebras
+    over Jacobson rings are Jacobson
   locator: null
   sub_index: null
-  search_text: '(jacobson rings and finite-type algebras) define a jacobson ring as a ring in which every
+  search_text: (jacobson rings and finite-type algebras) define a jacobson ring as a ring in which every
     radical ideal is the intersection of maximal ideals. prove that if $k$ is a field (not necessarily
     algebraically closed), the polynomial ring $k[x_1, \dots, x_n]$ is a jacobson ring, and every maximal
-    ideal $\mathfrak{m}$ has a finite residue field extension $\kappa(\mathfrak{m})/k$. (hint: use induction
+    ideal $\mathfrak{m}$ has a finite residue field extension $\kappa(\mathfrak{m})/k$.  use induction
     via euclidean division / noether normalization to prove that finite-type algebras over jacobson rings
-    are jacobson)'
+    are jacobson
 - id: stacks-math-columbia-edu-download-algebra-pdf#028
   text: '(Integral Extensions, Lying-Over, and Going-Up) Let $R \subseteq S$ be an integral ring extension.
     State the Lying-Over Theorem ($\operatorname{Spec}(S) \to \operatorname{Spec}(R)$ is surjective) and
-    the Going-Up Theorem for chains of prime ideals $\mathfrak{p}_0 \subsetneq \dots \subsetneq \mathfrak{p}_n$.
-    (Hint: Show that $\dim(R) = \dim(S)$ and that finite morphism maps between schemes are closed)'
-  hint: null
+    the Going-Up Theorem for chains of prime ideals $\mathfrak{p}_0 \subsetneq \dots \subsetneq \mathfrak{p}_n$. '
+  hint: Show that $\dim(R) = \dim(S)$ and that finite morphism maps between schemes are closed
   locator: null
   sub_index: null
-  search_text: '(integral extensions, lying-over, and going-up) let $r \subseteq s$ be an integral ring
+  search_text: (integral extensions, lying-over, and going-up) let $r \subseteq s$ be an integral ring
     extension. state the lying-over theorem ($\operatorname{spec}(s) \to \operatorname{spec}(r)$ is surjective)
-    and the going-up theorem for chains of prime ideals $\mathfrak{p}_0 \subsetneq \dots \subsetneq \mathfrak{p}_n$.
-    (hint: show that $\dim(r) = \dim(s)$ and that finite morphism maps between schemes are closed)'
+    and the going-up theorem for chains of prime ideals $\mathfrak{p}_0 \subsetneq \dots \subsetneq \mathfrak{p}_n$.  show
+    that $\dim(r) = \dim(s)$ and that finite morphism maps between schemes are closed
 - id: stacks-math-columbia-edu-download-algebra-pdf#029
   text: '(Normal Domains and the Almost Integral Criterion) Define a normal domain as an integral domain
     that is integrally closed in its field of fractions $K = \operatorname{Frac}(R)$. Define an element
     $x \in K$ to be almost integral over $R$ if there exists a non-zero $r \in R$ such that $r x^n \in
     R$ for all $n \ge 1$. Prove that if $R$ is Noetherian, an element is almost integral if and only if
-    it is integral. (Hint: $R[x] \subseteq r^{-1}R$ is a finitely generated $R$-module)'
-  hint: null
+    it is integral. '
+  hint: $R[x] \subseteq r^{-1}R$ is a finitely generated $R$-module
   locator: null
   sub_index: null
-  search_text: '(normal domains and the almost integral criterion) define a normal domain as an integral
+  search_text: (normal domains and the almost integral criterion) define a normal domain as an integral
     domain that is integrally closed in its field of fractions $k = \operatorname{frac}(r)$. define an
     element $x \in k$ to be almost integral over $r$ if there exists a non-zero $r \in r$ such that $r
     x^n \in r$ for all $n \ge 1$. prove that if $r$ is noetherian, an element is almost integral if and
-    only if it is integral. (hint: $r[x] \subseteq r^{-1}r$ is a finitely generated $r$-module)'
+    only if it is integral.  $r[x] \subseteq r^{-1}r$ is a finitely generated $r$-module
 - id: stacks-math-columbia-edu-download-algebra-pdf#030
   text: '(Going-Down for Normal Domains) State the Going-Down Theorem: let $R$ be an integrally closed
     normal domain, $S$ an integral domain containing $R$ such that $S$ is integral over $R$, and assume
     no non-zero element of $R$ is a zero-divisor in $S$. For any chain of primes $\mathfrak{p}_1 \supsetneq
     \mathfrak{p}_2$ in $R$ and $\mathfrak{q}_1 \in \operatorname{Spec}(S)$ lying over $\mathfrak{p}_1$,
-    prove there exists $\mathfrak{q}_2 \subsetneq \mathfrak{q}_1$ lying over $\mathfrak{p}_2$. (Hint:
-    Use Galois theory / field extensions of fraction fields)'
-  hint: null
+    prove there exists $\mathfrak{q}_2 \subsetneq \mathfrak{q}_1$ lying over $\mathfrak{p}_2$. '
+  hint: Use Galois theory / field extensions of fraction fields
   locator: null
   sub_index: null
   search_text: '(going-down for normal domains) state the going-down theorem: let $r$ be an integrally
     closed normal domain, $s$ an integral domain containing $r$ such that $s$ is integral over $r$, and
     assume no non-zero element of $r$ is a zero-divisor in $s$. for any chain of primes $\mathfrak{p}_1
     \supsetneq \mathfrak{p}_2$ in $r$ and $\mathfrak{q}_1 \in \operatorname{spec}(s)$ lying over $\mathfrak{p}_1$,
-    prove there exists $\mathfrak{q}_2 \subsetneq \mathfrak{q}_1$ lying over $\mathfrak{p}_2$. (hint:
-    use galois theory / field extensions of fraction fields)'
+    prove there exists $\mathfrak{q}_2 \subsetneq \mathfrak{q}_1$ lying over $\mathfrak{p}_2$.  use galois
+    theory / field extensions of fraction fields'
 - id: stacks-math-columbia-edu-download-algebra-pdf#031
   text: '(Equational Criterion of Flatness: Relations in Modules) Let $M$ be an $R$-module. Prove that
     $M$ is flat if and only if every linear relation $\sum_{i=1}^n r_i x_i = 0$ in $M$ ($r_i \in R, x_i
     \in M$) factors through trivial relations: there exist elements $y_1, \dots, y_m \in M$ and coefficients
     $a_{ij} \in R$ such that $x_i = \sum_{j=1}^m a_{ij} y_j$ and $\sum_{i=1}^n r_i a_{ij} = 0$ for all
-    $j$. (Hint: Show that flatness over a PID is equivalent to torsion-freeness)'
-  hint: null
+    $j$. '
+  hint: Show that flatness over a PID is equivalent to torsion-freeness
   locator: null
   sub_index: null
   search_text: '(equational criterion of flatness: relations in modules) let $m$ be an $r$-module. prove
     that $m$ is flat if and only if every linear relation $\sum_{i=1}^n r_i x_i = 0$ in $m$ ($r_i \in
     r, x_i \in m$) factors through trivial relations: there exist elements $y_1, \dots, y_m \in m$ and
     coefficients $a_{ij} \in r$ such that $x_i = \sum_{j=1}^m a_{ij} y_j$ and $\sum_{i=1}^n r_i a_{ij}
-    = 0$ for all $j$. (hint: show that flatness over a pid is equivalent to torsion-freeness)'
+    = 0$ for all $j$.  show that flatness over a pid is equivalent to torsion-freeness'
 - id: stacks-math-columbia-edu-download-algebra-pdf#032
   text: '(Support and Annihilators of Modules) For an $R$-module $M$, define the support $\operatorname{Supp}(M)
     = \{\mathfrak{p} \in \operatorname{Spec}(R) : M_\mathfrak{p} \ne 0\}$ and the annihilator ideal $\operatorname{Ann}_R(M)
     = \{r \in R : rM = 0\}$. Prove that if $M$ is finitely generated, $\operatorname{Supp}(M) = V(\operatorname{Ann}_R(M))$
-    is a closed Zariski subset. (Hint: For an element $x \in M$, $\operatorname{Ann}(x) = \ker(R \xrightarrow{\cdot
-    x} M)$)'
-  hint: null
+    is a closed Zariski subset. '
+  hint: For an element $x \in M$, $\operatorname{Ann}(x) = \ker(R \xrightarrow{\cdot x} M)$
   locator: null
   sub_index: null
   search_text: '(support and annihilators of modules) for an $r$-module $m$, define the support $\operatorname{supp}(m)
     = \{\mathfrak{p} \in \operatorname{spec}(r) : m_\mathfrak{p} \ne 0\}$ and the annihilator ideal $\operatorname{ann}_r(m)
     = \{r \in r : rm = 0\}$. prove that if $m$ is finitely generated, $\operatorname{supp}(m) = v(\operatorname{ann}_r(m))$
-    is a closed zariski subset. (hint: for an element $x \in m$, $\operatorname{ann}(x) = \ker(r \xrightarrow{\cdot
-    x} m)$)'
+    is a closed zariski subset.  for an element $x \in m$, $\operatorname{ann}(x) = \ker(r \xrightarrow{\cdot
+    x} m)$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#033
   text: '(Geometrically Reduced, Irreducible, and Connected Algebras) Let $S$ be an algebra of finite
     type over a field $k$. Formulate the definitions for $S$ to be geometrically reduced, geometrically
-    irreducible, and geometrically connected over $k$. (Hint: These require $S \otimes_k K$ to remain
-    reduced, have a unique minimal prime, and have only trivial idempotents for every field extension
-    $K/k$; use the exactness of tensor products with filtered colimits to reduce to finite extensions)'
-  hint: null
+    irreducible, and geometrically connected over $k$. '
+  hint: These require $S \otimes_k K$ to remain reduced, have a unique minimal prime, and have only trivial
+    idempotents for every field extension $K/k$; use the exactness of tensor products with filtered colimits
+    to reduce to finite extensions
   locator: null
   sub_index: null
-  search_text: '(geometrically reduced, irreducible, and connected algebras) let $s$ be an algebra of
-    finite type over a field $k$. formulate the definitions for $s$ to be geometrically reduced, geometrically
-    irreducible, and geometrically connected over $k$. (hint: these require $s \otimes_k k$ to remain
-    reduced, have a unique minimal prime, and have only trivial idempotents for every field extension
-    $k/k$; use the exactness of tensor products with filtered colimits to reduce to finite extensions)'
+  search_text: (geometrically reduced, irreducible, and connected algebras) let $s$ be an algebra of finite
+    type over a field $k$. formulate the definitions for $s$ to be geometrically reduced, geometrically
+    irreducible, and geometrically connected over $k$.  these require $s \otimes_k k$ to remain reduced,
+    have a unique minimal prime, and have only trivial idempotents for every field extension $k/k$; use
+    the exactness of tensor products with filtered colimits to reduce to finite extensions
 - id: stacks-math-columbia-edu-download-algebra-pdf#034
   text: '(Valuation Rings and Domination of Local Rings) Define a valuation ring $A \subset K$ of a field
     $K$ via the domination of local rings ($A \subseteq B \subset K$ and $\mathfrak{m}_A = A \cap \mathfrak{m}_B$).
     Prove that $A$ is a valuation ring if and only if for every $x \in K^\times$, either $x \in A$ or
-    $x^{-1} \in A$. (Hint: Show that a valuation ring is a local domain whose ideals are totally ordered
-    by inclusion, making every finitely generated ideal principal)'
-  hint: null
+    $x^{-1} \in A$. '
+  hint: Show that a valuation ring is a local domain whose ideals are totally ordered by inclusion, making
+    every finitely generated ideal principal
   locator: null
   sub_index: null
-  search_text: '(valuation rings and domination of local rings) define a valuation ring $a \subset k$
-    of a field $k$ via the domination of local rings ($a \subseteq b \subset k$ and $\mathfrak{m}_a =
-    a \cap \mathfrak{m}_b$). prove that $a$ is a valuation ring if and only if for every $x \in k^\times$,
-    either $x \in a$ or $x^{-1} \in a$. (hint: show that a valuation ring is a local domain whose ideals
-    are totally ordered by inclusion, making every finitely generated ideal principal)'
+  search_text: (valuation rings and domination of local rings) define a valuation ring $a \subset k$ of
+    a field $k$ via the domination of local rings ($a \subseteq b \subset k$ and $\mathfrak{m}_a = a \cap
+    \mathfrak{m}_b$). prove that $a$ is a valuation ring if and only if for every $x \in k^\times$, either
+    $x \in a$ or $x^{-1} \in a$.  show that a valuation ring is a local domain whose ideals are totally
+    ordered by inclusion, making every finitely generated ideal principal
 - id: stacks-math-columbia-edu-download-algebra-pdf#035
   text: '(Artin-Rees Lemma and Exactness of Completions) State the Artin–Rees Lemma for an ideal $I$ in
     a Noetherian ring $R$ and a submodule $N \subseteq M$: there exists $k \ge 0$ such that $I^n M \cap
     N = I^{n-k}(I^k M \cap N)$ for all $n \ge k$. Use this to prove that the $I$-adic completion functor
-    $\widehat{(-)} = \varprojlim (-)/I^n(-)$ is exact on finitely generated modules over Noetherian rings.
-    (Hint: Use the graded Rees algebra $R[It] = \bigoplus_{n \ge 0} I^n t^n$)'
-  hint: null
+    $\widehat{(-)} = \varprojlim (-)/I^n(-)$ is exact on finitely generated modules over Noetherian rings. '
+  hint: Use the graded Rees algebra $R[It] = \bigoplus_{n \ge 0} I^n t^n$
   locator: null
   sub_index: null
   search_text: '(artin-rees lemma and exactness of completions) state the artin–rees lemma for an ideal
     $i$ in a noetherian ring $r$ and a submodule $n \subseteq m$: there exists $k \ge 0$ such that $i^n
     m \cap n = i^{n-k}(i^k m \cap n)$ for all $n \ge k$. use this to prove that the $i$-adic completion
     functor $\widehat{(-)} = \varprojlim (-)/i^n(-)$ is exact on finitely generated modules over noetherian
-    rings. (hint: use the graded rees algebra $r[it] = \bigoplus_{n \ge 0} i^n t^n$)'
+    rings.  use the graded rees algebra $r[it] = \bigoplus_{n \ge 0} i^n t^n$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#036
   text: '(Length of Modules and Structure of Artinian Rings) Define the length $\operatorname{length}_R(M)$
     of an $R$-module $M$ via composition series. State the structure theorem for Artinian rings: a commutative
     ring $R$ is Artinian if and only if it is Noetherian of Krull dimension 0, in which case $R \cong
     \prod_{i=1}^k R_{\mathfrak{m}_i}$ is a finite product of Artinian local rings with nilpotent maximal
-    ideals $\mathfrak{m}_i$. (Hint: Show that descending chains of ideals stabilize)'
-  hint: null
+    ideals $\mathfrak{m}_i$. '
+  hint: Show that descending chains of ideals stabilize
   locator: null
   sub_index: null
   search_text: '(length of modules and structure of artinian rings) define the length $\operatorname{length}_r(m)$
     of an $r$-module $m$ via composition series. state the structure theorem for artinian rings: a commutative
     ring $r$ is artinian if and only if it is noetherian of krull dimension 0, in which case $r \cong
     \prod_{i=1}^k r_{\mathfrak{m}_i}$ is a finite product of artinian local rings with nilpotent maximal
-    ideals $\mathfrak{m}_i$. (hint: show that descending chains of ideals stabilize)'
+    ideals $\mathfrak{m}_i$.  show that descending chains of ideals stabilize'
 - id: stacks-math-columbia-edu-download-algebra-pdf#037
   text: '(Grothendieck Groups K0 and Module Ranks) Define the Grothendieck group $K_0(R)$ of finitely
     generated $R$-modules modulo short exact sequences $0 \to M'' \to M \to M'''' \to 0$ ($[M] = [M'']
     + [M'''']$). Prove that if $k$ is a field, $K_0(k) \cong \mathbb{Z}$ via the dimension function $\dim_k$,
-    and if $R$ is a PID, $K_0(R) \cong \mathbb{Z}$ via the free rank. (Hint: Apply the structure theorem
-    for finitely generated modules over a PID)'
-  hint: null
+    and if $R$ is a PID, $K_0(R) \cong \mathbb{Z}$ via the free rank. '
+  hint: Apply the structure theorem for finitely generated modules over a PID
   locator: null
   sub_index: null
-  search_text: '(grothendieck groups k0 and module ranks) define the grothendieck group $k_0(r)$ of finitely
-    generated $r$-modules modulo short exact sequences $0 \to m'' \to m \to m'''' \to 0$ ($[m] = [m'']
-    + [m'''']$). prove that if $k$ is a field, $k_0(k) \cong \mathbb{z}$ via the dimension function $\dim_k$,
-    and if $r$ is a pid, $k_0(r) \cong \mathbb{z}$ via the free rank. (hint: apply the structure theorem
-    for finitely generated modules over a pid)'
+  search_text: (grothendieck groups k0 and module ranks) define the grothendieck group $k_0(r)$ of finitely
+    generated $r$-modules modulo short exact sequences $0 \to m' \to m \to m'' \to 0$ ($[m] = [m'] + [m'']$).
+    prove that if $k$ is a field, $k_0(k) \cong \mathbb{z}$ via the dimension function $\dim_k$, and if
+    $r$ is a pid, $k_0(r) \cong \mathbb{z}$ via the free rank.  apply the structure theorem for finitely
+    generated modules over a pid
 - id: stacks-math-columbia-edu-download-algebra-pdf#038
   text: '(Graded Rings and the Proj Construction) Let $S = \bigoplus_{d \ge 0} S_d$ be a graded ring with
     irrelevant ideal $S_+ = \bigoplus_{d > 0} S_d$. Define the homogeneous spectrum $\operatorname{Proj}(S)$
     as the set of homogeneous prime ideals $\mathfrak{p} \not\supseteq S_+$. Show that $\operatorname{Proj}(S)$
     is covered by affine charts $D_+(f) \cong \operatorname{Spec}((S_f)_0)$ for homogeneous elements $f
-    \in S_+$. (Hint: Relate this to the geometry of projective schemes)'
-  hint: null
+    \in S_+$. '
+  hint: Relate this to the geometry of projective schemes
   locator: null
   sub_index: null
-  search_text: '(graded rings and the proj construction) let $s = \bigoplus_{d \ge 0} s_d$ be a graded
+  search_text: (graded rings and the proj construction) let $s = \bigoplus_{d \ge 0} s_d$ be a graded
     ring with irrelevant ideal $s_+ = \bigoplus_{d > 0} s_d$. define the homogeneous spectrum $\operatorname{proj}(s)$
     as the set of homogeneous prime ideals $\mathfrak{p} \not\supseteq s_+$. show that $\operatorname{proj}(s)$
     is covered by affine charts $d_+(f) \cong \operatorname{spec}((s_f)_0)$ for homogeneous elements $f
-    \in s_+$. (hint: relate this to the geometry of projective schemes)'
+    \in s_+$.  relate this to the geometry of projective schemes
 - id: stacks-math-columbia-edu-download-algebra-pdf#039
   text: '(Hilbert Functions and Polynomials) Let $S = k[x_0, \dots, x_n]$ be standard graded and $M =
     \bigoplus_{d \ge 0} M_d$ a finitely generated graded $S$-module. Define the Hilbert function $h_M(d)
     = \dim_k(M_d)$. Prove that for $d \gg 0$, $h_M(d) = P_M(d)$ is a polynomial in $d$ of degree $\dim(\operatorname{Supp}(M))
-    - 1$. (Hint: Use exact sequences $0 \to K_d \to M_d \xrightarrow{x_n} M_{d+1} \to C_{d+1} \to 0$ and
-    induction on the dimension)'
-  hint: null
+    - 1$. '
+  hint: Use exact sequences $0 \to K_d \to M_d \xrightarrow{x_n} M_{d+1} \to C_{d+1} \to 0$ and induction
+    on the dimension
   locator: null
   sub_index: null
-  search_text: '(hilbert functions and polynomials) let $s = k[x_0, \dots, x_n]$ be standard graded and
+  search_text: (hilbert functions and polynomials) let $s = k[x_0, \dots, x_n]$ be standard graded and
     $m = \bigoplus_{d \ge 0} m_d$ a finitely generated graded $s$-module. define the hilbert function
     $h_m(d) = \dim_k(m_d)$. prove that for $d \gg 0$, $h_m(d) = p_m(d)$ is a polynomial in $d$ of degree
-    $\dim(\operatorname{supp}(m)) - 1$. (hint: use exact sequences $0 \to k_d \to m_d \xrightarrow{x_n}
-    m_{d+1} \to c_{d+1} \to 0$ and induction on the dimension)'
+    $\dim(\operatorname{supp}(m)) - 1$.  use exact sequences $0 \to k_d \to m_d \xrightarrow{x_n} m_{d+1}
+    \to c_{d+1} \to 0$ and induction on the dimension
 - id: stacks-math-columbia-edu-download-algebra-pdf#040
   text: '(Krull Dimension and Regular Local Rings) Define the Krull dimension $\dim(R)$ as the supremum
     of lengths of chains of prime ideals $\mathfrak{p}_0 \subsetneq \dots \subsetneq \mathfrak{p}_n$.
     For a Noetherian local ring $(R, \mathfrak{m}, \kappa)$, prove the fundamental inequality $\dim(R)
     \le \dim_\kappa(\mathfrak{m}/\mathfrak{m}^2)$. Define $R$ to be a regular local ring if $\dim(R) =
     \dim_\kappa(\mathfrak{m}/\mathfrak{m}^2)$, and prove that every regular local ring is an integral
-    domain. (Hint: Use Nakayama''s lemma on minimal generating sets of $\mathfrak{m}$)'
-  hint: null
+    domain. '
+  hint: Use Nakayama's lemma on minimal generating sets of $\mathfrak{m}$
   locator: null
   sub_index: null
-  search_text: '(krull dimension and regular local rings) define the krull dimension $\dim(r)$ as the
-    supremum of lengths of chains of prime ideals $\mathfrak{p}_0 \subsetneq \dots \subsetneq \mathfrak{p}_n$.
+  search_text: (krull dimension and regular local rings) define the krull dimension $\dim(r)$ as the supremum
+    of lengths of chains of prime ideals $\mathfrak{p}_0 \subsetneq \dots \subsetneq \mathfrak{p}_n$.
     for a noetherian local ring $(r, \mathfrak{m}, \kappa)$, prove the fundamental inequality $\dim(r)
     \le \dim_\kappa(\mathfrak{m}/\mathfrak{m}^2)$. define $r$ to be a regular local ring if $\dim(r) =
     \dim_\kappa(\mathfrak{m}/\mathfrak{m}^2)$, and prove that every regular local ring is an integral
-    domain. (hint: use nakayama''s lemma on minimal generating sets of $\mathfrak{m}$)'
+    domain.  use nakayama's lemma on minimal generating sets of $\mathfrak{m}$
 - id: stacks-math-columbia-edu-download-algebra-pdf#041
   text: '(Associated Primes and Symbolic Powers) For an $R$-module $M$, define an associated prime $\mathfrak{p}
     \in \operatorname{Ass}_R(M)$ as a prime ideal of the form $\mathfrak{p} = \operatorname{Ann}_R(x)$
     for some $x \in M \setminus \{0\}$. Define the $n$-th symbolic power of a prime ideal $\mathfrak{p}$
     as $\mathfrak{p}^{(n)} = \ker(R \to R_\mathfrak{p}/\mathfrak{p}^n R_\mathfrak{p}) = \mathfrak{p}^n
-    R_\mathfrak{p} \cap R$. (Hint: Show that associated primes isolate minimal primes (irreducible components)
-    and embedded primes (nilpotent fuzz))'
-  hint: null
+    R_\mathfrak{p} \cap R$. '
+  hint: Show that associated primes isolate minimal primes (irreducible components) and embedded primes
+    (nilpotent fuzz)
   locator: null
   sub_index: null
-  search_text: '(associated primes and symbolic powers) for an $r$-module $m$, define an associated prime
+  search_text: (associated primes and symbolic powers) for an $r$-module $m$, define an associated prime
     $\mathfrak{p} \in \operatorname{ass}_r(m)$ as a prime ideal of the form $\mathfrak{p} = \operatorname{ann}_r(x)$
     for some $x \in m \setminus \{0\}$. define the $n$-th symbolic power of a prime ideal $\mathfrak{p}$
     as $\mathfrak{p}^{(n)} = \ker(r \to r_\mathfrak{p}/\mathfrak{p}^n r_\mathfrak{p}) = \mathfrak{p}^n
-    r_\mathfrak{p} \cap r$. (hint: show that associated primes isolate minimal primes (irreducible components)
-    and embedded primes (nilpotent fuzz))'
+    r_\mathfrak{p} \cap r$.  show that associated primes isolate minimal primes (irreducible components)
+    and embedded primes (nilpotent fuzz)
 - id: stacks-math-columbia-edu-download-algebra-pdf#042
   text: '(Regular Sequences, Depth, and Ext Functors) Let $M$ be an $R$-module. Define an $M$-regular
     sequence $x_1, \dots, x_r \in R$. Define the depth $\operatorname{depth}_I(M)$ of an ideal $I \subseteq
     R$ on $M$, and prove that $\operatorname{depth}_I(M) = \min \{i \ge 0 : \operatorname{Ext}_R^i(R/I,
-    M) \ne 0\}$. (Hint: Show that regular sequences successively cut down the dimension of $M$ by 1 without
-    introducing zero-divisors)'
-  hint: null
+    M) \ne 0\}$. '
+  hint: Show that regular sequences successively cut down the dimension of $M$ by 1 without introducing
+    zero-divisors
   locator: null
   sub_index: null
   search_text: '(regular sequences, depth, and ext functors) let $m$ be an $r$-module. define an $m$-regular
     sequence $x_1, \dots, x_r \in r$. define the depth $\operatorname{depth}_i(m)$ of an ideal $i \subseteq
     r$ on $m$, and prove that $\operatorname{depth}_i(m) = \min \{i \ge 0 : \operatorname{ext}_r^i(r/i,
-    m) \ne 0\}$. (hint: show that regular sequences successively cut down the dimension of $m$ by 1 without
-    introducing zero-divisors)'
+    m) \ne 0\}$.  show that regular sequences successively cut down the dimension of $m$ by 1 without
+    introducing zero-divisors'
 - id: stacks-math-columbia-edu-download-algebra-pdf#043
   text: '(Rees Blow-Up Algebras and Tangent Cones) Define the Rees algebra (blow-up algebra) $R[It] =
     \bigoplus_{n \ge 0} I^n t^n$ and the associated graded ring $\operatorname{gr}_I(R) = \bigoplus_{n
-    \ge 0} I^n/I^{n+1}$. (Hint: Show that $\operatorname{Proj}(R[It])$ represents the blow-up $\operatorname{Bl}_V(X)$
-    of a scheme along the subscheme defined by $I$, replacing a point with the projective space of all
-    incoming tangent lines)'
-  hint: null
+    \ge 0} I^n/I^{n+1}$. '
+  hint: Show that $\operatorname{Proj}(R[It])$ represents the blow-up $\operatorname{Bl}_V(X)$ of a scheme
+    along the subscheme defined by $I$, replacing a point with the projective space of all incoming tangent
+    lines
   locator: null
   sub_index: null
-  search_text: '(rees blow-up algebras and tangent cones) define the rees algebra (blow-up algebra) $r[it]
+  search_text: (rees blow-up algebras and tangent cones) define the rees algebra (blow-up algebra) $r[it]
     = \bigoplus_{n \ge 0} i^n t^n$ and the associated graded ring $\operatorname{gr}_i(r) = \bigoplus_{n
-    \ge 0} i^n/i^{n+1}$. (hint: show that $\operatorname{proj}(r[it])$ represents the blow-up $\operatorname{bl}_v(x)$
+    \ge 0} i^n/i^{n+1}$.  show that $\operatorname{proj}(r[it])$ represents the blow-up $\operatorname{bl}_v(x)$
     of a scheme along the subscheme defined by $i$, replacing a point with the projective space of all
-    incoming tangent lines)'
+    incoming tangent lines
 - id: stacks-math-columbia-edu-download-algebra-pdf#044
   text: '(Tor Groups, Filtered Colimits, and Flatness) Define $\operatorname{Tor}_i^R(M, N)$ as the $i$-th
     homology group of $P_\bullet \otimes_R N$, where $P_\bullet \to M$ is a projective resolution. Prove
     that $\operatorname{Tor}_i^R(-, N)$ commutes with filtered colimits, and show that an $R$-module $M$
-    is flat if and only if $\operatorname{Tor}_1^R(M, N) = 0$ for all $R$-modules $N$. (Hint: Use the
-    fact that tensoring preserves direct sums)'
-  hint: null
+    is flat if and only if $\operatorname{Tor}_1^R(M, N) = 0$ for all $R$-modules $N$. '
+  hint: Use the fact that tensoring preserves direct sums
   locator: null
   sub_index: null
-  search_text: '(tor groups, filtered colimits, and flatness) define $\operatorname{tor}_i^r(m, n)$ as
+  search_text: (tor groups, filtered colimits, and flatness) define $\operatorname{tor}_i^r(m, n)$ as
     the $i$-th homology group of $p_\bullet \otimes_r n$, where $p_\bullet \to m$ is a projective resolution.
     prove that $\operatorname{tor}_i^r(-, n)$ commutes with filtered colimits, and show that an $r$-module
-    $m$ is flat if and only if $\operatorname{tor}_1^r(m, n) = 0$ for all $r$-modules $n$. (hint: use
-    the fact that tensoring preserves direct sums)'
+    $m$ is flat if and only if $\operatorname{tor}_1^r(m, n) = 0$ for all $r$-modules $n$.  use the fact
+    that tensoring preserves direct sums
 - id: stacks-math-columbia-edu-download-algebra-pdf#045
   text: '(Lazard''s Theorem on Flat Modules and Universal Invariance) State Lazard''s Theorem: an $R$-module
     $M$ is flat if and only if $M$ is a filtered colimit of finitely generated free $R$-modules. Define
     universally exact sequences: prove that $M$ is flat if and only if every short exact sequence $0 \to
-    K \to P \to M \to 0$ ending in $M$ is universally exact under tensoring with any $R$-module. (Hint:
-    Use equational criteria to factor relations through free modules)'
-  hint: null
+    K \to P \to M \to 0$ ending in $M$ is universally exact under tensoring with any $R$-module. '
+  hint: Use equational criteria to factor relations through free modules
   locator: null
   sub_index: null
   search_text: '(lazard''s theorem on flat modules and universal invariance) state lazard''s theorem:
     an $r$-module $m$ is flat if and only if $m$ is a filtered colimit of finitely generated free $r$-modules.
     define universally exact sequences: prove that $m$ is flat if and only if every short exact sequence
-    $0 \to k \to p \to m \to 0$ ending in $m$ is universally exact under tensoring with any $r$-module.
-    (hint: use equational criteria to factor relations through free modules)'
+    $0 \to k \to p \to m \to 0$ ending in $m$ is universally exact under tensoring with any $r$-module.  use
+    equational criteria to factor relations through free modules'
 - id: stacks-math-columbia-edu-download-algebra-pdf#046
   text: '(Descent of Projectivity and Mittag-Leffler Modules: Section 10.87 & 10.88) Let $\phi: R \to
     S$ be a faithfully flat ring map. State the criteria under which projectivity of $M \otimes_R S$ descends
     to projectivity of $M$ over $R$. Define an $R$-module $M$ to be a Mittag–Leffler module (Lemma 10.88.6),
     and prove that $M$ is projective if and only if it is flat, Mittag–Leffler, and a direct sum of countably
-    generated modules via Kaplansky devissage. (Hint: The Mittag–Leffler condition ensures that inverse
-    limits of dual modules are exact and non-empty, replacing topological compactness in algebra)'
-  hint: null
+    generated modules via Kaplansky devissage. '
+  hint: The Mittag–Leffler condition ensures that inverse limits of dual modules are exact and non-empty,
+    replacing topological compactness in algebra
   locator: null
   sub_index: null
   search_text: '(descent of projectivity and mittag-leffler modules: section 10.87 & 10.88) let $\phi:
     r \to s$ be a faithfully flat ring map. state the criteria under which projectivity of $m \otimes_r
     s$ descends to projectivity of $m$ over $r$. define an $r$-module $m$ to be a mittag–leffler module
     (lemma 10.88.6), and prove that $m$ is projective if and only if it is flat, mittag–leffler, and a
-    direct sum of countably generated modules via kaplansky devissage. (hint: the mittag–leffler condition
-    ensures that inverse limits of dual modules are exact and non-empty, replacing topological compactness
-    in algebra)'
+    direct sum of countably generated modules via kaplansky devissage.  the mittag–leffler condition ensures
+    that inverse limits of dual modules are exact and non-empty, replacing topological compactness in
+    algebra'
 - id: stacks-math-columbia-edu-download-algebra-pdf#047
   text: '(Coherent Modules and Coherent Rings) Define an $R$-module $M$ to be coherent if it is finitely
     generated and every finitely generated submodule of $M$ is finitely presented. Define a ring $R$ to
     be coherent if it is coherent as a module over itself. Prove that $R$ is coherent if and only if every
     finitely generated ideal of $R$ is finitely presented, if and only if the product $\prod_{i \in I}
-    M_i$ of any family of flat $R$-modules is flat. (Hint: Show that Noetherian rings and valuation rings
-    are coherent)'
-  hint: null
+    M_i$ of any family of flat $R$-modules is flat. '
+  hint: Show that Noetherian rings and valuation rings are coherent
   locator: null
   sub_index: null
-  search_text: '(coherent modules and coherent rings) define an $r$-module $m$ to be coherent if it is
+  search_text: (coherent modules and coherent rings) define an $r$-module $m$ to be coherent if it is
     finitely generated and every finitely generated submodule of $m$ is finitely presented. define a ring
     $r$ to be coherent if it is coherent as a module over itself. prove that $r$ is coherent if and only
     if every finitely generated ideal of $r$ is finitely presented, if and only if the product $\prod_{i
-    \in i} m_i$ of any family of flat $r$-modules is flat. (hint: show that noetherian rings and valuation
-    rings are coherent)'
+    \in i} m_i$ of any family of flat $r$-modules is flat.  show that noetherian rings and valuation rings
+    are coherent
 - id: stacks-math-columbia-edu-download-algebra-pdf#048
   text: '(Completeness Criteria and Acyclicity over Artinian Local Rings) Let $(R, \mathfrak{m})$ be an
     Artinian local ring. Prove that any exact complex of free modules $R^{\oplus n_e} \to \dots \to R^{\oplus
     n_1} \to R^{\oplus n_0} \to 0$ splits into a direct sum of trivial complexes, because $R$ has depth
-    0. (Hint: Show that the rank of maps of finite free modules is determined by the vanishing of $r \times
-    r$ determinantal minors)'
-  hint: null
+    0. '
+  hint: Show that the rank of maps of finite free modules is determined by the vanishing of $r \times
+    r$ determinantal minors
   locator: null
   sub_index: null
-  search_text: '(completeness criteria and acyclicity over artinian local rings) let $(r, \mathfrak{m})$
+  search_text: (completeness criteria and acyclicity over artinian local rings) let $(r, \mathfrak{m})$
     be an artinian local ring. prove that any exact complex of free modules $r^{\oplus n_e} \to \dots
     \to r^{\oplus n_1} \to r^{\oplus n_0} \to 0$ splits into a direct sum of trivial complexes, because
-    $r$ has depth 0. (hint: show that the rank of maps of finite free modules is determined by the vanishing
-    of $r \times r$ determinantal minors)'
+    $r$ has depth 0.  show that the rank of maps of finite free modules is determined by the vanishing
+    of $r \times r$ determinantal minors
 - id: stacks-math-columbia-edu-download-algebra-pdf#049
   text: '(Cohen-Macaulay Rings and Modules) Define an $R$-module $M$ over a Noetherian local ring $(R,
     \mathfrak{m})$ to be Cohen–Macaulay if $\operatorname{depth}_\mathfrak{m}(M) = \dim(\operatorname{Supp}(M))$.
     Prove that polynomial rings over Cohen–Macaulay rings are Cohen–Macaulay, and state the Auslander–Buchsbaum
     formula $\operatorname{pd}_R(M) + \operatorname{depth}_\mathfrak{m}(M) = \operatorname{depth}_\mathfrak{m}(R)$
-    for modules of finite projective dimension. (Hint: Depth and codimension are complementary in Cohen–Macaulay
-    rings)'
-  hint: null
+    for modules of finite projective dimension. '
+  hint: Depth and codimension are complementary in Cohen–Macaulay rings
   locator: null
   sub_index: null
-  search_text: '(cohen-macaulay rings and modules) define an $r$-module $m$ over a noetherian local ring
+  search_text: (cohen-macaulay rings and modules) define an $r$-module $m$ over a noetherian local ring
     $(r, \mathfrak{m})$ to be cohen–macaulay if $\operatorname{depth}_\mathfrak{m}(m) = \dim(\operatorname{supp}(m))$.
     prove that polynomial rings over cohen–macaulay rings are cohen–macaulay, and state the auslander–buchsbaum
     formula $\operatorname{pd}_r(m) + \operatorname{depth}_\mathfrak{m}(m) = \operatorname{depth}_\mathfrak{m}(r)$
-    for modules of finite projective dimension. (hint: depth and codimension are complementary in cohen–macaulay
-    rings)'
+    for modules of finite projective dimension.  depth and codimension are complementary in cohen–macaulay
+    rings
 - id: stacks-math-columbia-edu-download-algebra-pdf#050
   text: '(Catenary and Universally Catenary Rings) Define a commutative ring $R$ to be catenary if for
     any pair of prime ideals $\mathfrak{p} \subseteq \mathfrak{q}$, all maximal chains of prime ideals
     between $\mathfrak{p}$ and $\mathfrak{q}$ have the same finite length. Define $R$ to be universally
-    catenary if every finitely generated $R$-algebra is catenary. (Hint: Show that Cohen–Macaulay rings
-    and regular rings are universally catenary)'
-  hint: null
+    catenary if every finitely generated $R$-algebra is catenary. '
+  hint: Show that Cohen–Macaulay rings and regular rings are universally catenary
   locator: null
   sub_index: null
-  search_text: '(catenary and universally catenary rings) define a commutative ring $r$ to be catenary
+  search_text: (catenary and universally catenary rings) define a commutative ring $r$ to be catenary
     if for any pair of prime ideals $\mathfrak{p} \subseteq \mathfrak{q}$, all maximal chains of prime
     ideals between $\mathfrak{p}$ and $\mathfrak{q}$ have the same finite length. define $r$ to be universally
-    catenary if every finitely generated $r$-algebra is catenary. (hint: show that cohen–macaulay rings
-    and regular rings are universally catenary)'
+    catenary if every finitely generated $r$-algebra is catenary.  show that cohen–macaulay rings and
+    regular rings are universally catenary
 - id: stacks-math-columbia-edu-download-algebra-pdf#051
   text: '(Pure Ideals and Closed Subsets of Spec R) Define an ideal $I \subseteq R$ to be a pure ideal
     if $R/I$ is flat as an $R$-module. Prove that $I$ is pure if and only if $V(I) \subseteq \operatorname{Spec}(R)$
     is a closed subset that is also closed under generalizations (i.e. if $\mathfrak{p} \in V(I)$ and
-    $\mathfrak{q} \subseteq \mathfrak{p}$, then $\mathfrak{q} \in V(I)$). (Hint: Connect pure ideals to
-    direct limits of idempotent elements)'
-  hint: null
+    $\mathfrak{q} \subseteq \mathfrak{p}$, then $\mathfrak{q} \in V(I)$). '
+  hint: Connect pure ideals to direct limits of idempotent elements
   locator: null
   sub_index: null
-  search_text: '(pure ideals and closed subsets of spec r) define an ideal $i \subseteq r$ to be a pure
+  search_text: (pure ideals and closed subsets of spec r) define an ideal $i \subseteq r$ to be a pure
     ideal if $r/i$ is flat as an $r$-module. prove that $i$ is pure if and only if $v(i) \subseteq \operatorname{spec}(r)$
     is a closed subset that is also closed under generalizations (i.e. if $\mathfrak{p} \in v(i)$ and
-    $\mathfrak{q} \subseteq \mathfrak{p}$, then $\mathfrak{q} \in v(i)$). (hint: connect pure ideals to
-    direct limits of idempotent elements)'
+    $\mathfrak{q} \subseteq \mathfrak{p}$, then $\mathfrak{q} \in v(i)$).  connect pure ideals to direct
+    limits of idempotent elements
 - id: stacks-math-columbia-edu-download-algebra-pdf#052
   text: '(Schanuel''s Lemma and Global Dimension) State Schanuel''s Lemma: given two exact sequences $0
     \to K_1 \to P_1 \to M \to 0$ and $0 \to K_2 \to P_2 \to M \to 0$ with $P_1, P_2$ projective, prove
     there is an isomorphism $K_1 \oplus P_2 \cong K_2 \oplus P_1$. Define the global dimension $\operatorname{gl.dim}(R)$
-    as the supremum of projective dimensions of all $R$-modules. (Hint: Construct a fiber product / pullback
-    module $P_1 \times_M P_2$)'
-  hint: null
+    as the supremum of projective dimensions of all $R$-modules. '
+  hint: Construct a fiber product / pullback module $P_1 \times_M P_2$
   locator: null
   sub_index: null
   search_text: '(schanuel''s lemma and global dimension) state schanuel''s lemma: given two exact sequences
     $0 \to k_1 \to p_1 \to m \to 0$ and $0 \to k_2 \to p_2 \to m \to 0$ with $p_1, p_2$ projective, prove
     there is an isomorphism $k_1 \oplus p_2 \cong k_2 \oplus p_1$. define the global dimension $\operatorname{gl.dim}(r)$
-    as the supremum of projective dimensions of all $r$-modules. (hint: construct a fiber product / pullback
-    module $p_1 \times_m p_2$)'
+    as the supremum of projective dimensions of all $r$-modules.  construct a fiber product / pullback
+    module $p_1 \times_m p_2$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#053
   text: '(Local Rings of Fibers and Dimension Formulas) Let $\phi: R \to S$ be a ring map, $\mathfrak{q}
     \in \operatorname{Spec}(S)$, and $\mathfrak{p} = \phi^{-1}(\mathfrak{q})$. Define the local ring of
     the fiber at $\mathfrak{q}$ as $S_\mathfrak{q}/\mathfrak{p} S_\mathfrak{q} \cong (S \otimes_R \kappa(\mathfrak{p}))_\mathfrak{q}$.
     If $\phi$ satisfies Going-Up and Going-Down, prove the dimension relation $\dim(S_\mathfrak{q}) =
-    \dim(R_\mathfrak{p}) + \dim(S_\mathfrak{q}/\mathfrak{p} S_\mathfrak{q})$. (Hint: Analyze maximal chains
-    of prime ideals passing through $\mathfrak{q}$)'
-  hint: null
+    \dim(R_\mathfrak{p}) + \dim(S_\mathfrak{q}/\mathfrak{p} S_\mathfrak{q})$. '
+  hint: Analyze maximal chains of prime ideals passing through $\mathfrak{q}$
   locator: null
   sub_index: null
   search_text: '(local rings of fibers and dimension formulas) let $\phi: r \to s$ be a ring map, $\mathfrak{q}
     \in \operatorname{spec}(s)$, and $\mathfrak{p} = \phi^{-1}(\mathfrak{q})$. define the local ring of
     the fiber at $\mathfrak{q}$ as $s_\mathfrak{q}/\mathfrak{p} s_\mathfrak{q} \cong (s \otimes_r \kappa(\mathfrak{p}))_\mathfrak{q}$.
     if $\phi$ satisfies going-up and going-down, prove the dimension relation $\dim(s_\mathfrak{q}) =
-    \dim(r_\mathfrak{p}) + \dim(s_\mathfrak{q}/\mathfrak{p} s_\mathfrak{q})$. (hint: analyze maximal chains
-    of prime ideals passing through $\mathfrak{q}$)'
+    \dim(r_\mathfrak{p}) + \dim(s_\mathfrak{q}/\mathfrak{p} s_\mathfrak{q})$.  analyze maximal chains
+    of prime ideals passing through $\mathfrak{q}$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#054
   text: '(Generic Flatness) State the Generic Flatness Theorem: let $R$ be an integral domain and $S$
     an $R$-algebra of finite type. Prove there exists a non-zero element $f \in R \setminus \{0\}$ such
-    that the localized algebra $S_f$ is a free (and hence flat) $R_f$-module. (Hint: Use Noether normalization
-    and induction on the transcendence degree)'
-  hint: null
+    that the localized algebra $S_f$ is a free (and hence flat) $R_f$-module. '
+  hint: Use Noether normalization and induction on the transcendence degree
   locator: null
   sub_index: null
   search_text: '(generic flatness) state the generic flatness theorem: let $r$ be an integral domain and
     $s$ an $r$-algebra of finite type. prove there exists a non-zero element $f \in r \setminus \{0\}$
-    such that the localized algebra $s_f$ is a free (and hence flat) $r_f$-module. (hint: use noether
-    normalization and induction on the transcendence degree)'
+    such that the localized algebra $s_f$ is a free (and hence flat) $r_f$-module.  use noether normalization
+    and induction on the transcendence degree'
 - id: stacks-math-columbia-edu-download-algebra-pdf#055
   text: '(Krull-Akizuki Theorem on 1-Dimensional Domains) State the Krull–Akizuki Theorem: let $R$ be
     a 1-dimensional Noetherian integral domain with fraction field $K$, and let $L/K$ be a finite field
     extension. For any subring $A \subseteq L$ containing $R$, prove that $A$ is a 1-dimensional Noetherian
-    domain and for every non-zero ideal $I \subseteq A$, $A/I$ is a finite-length $R$-module. (Hint: Apply
-    this to show that integral closures of 1D Noetherian domains are Dedekind domains)'
-  hint: null
+    domain and for every non-zero ideal $I \subseteq A$, $A/I$ is a finite-length $R$-module. '
+  hint: Apply this to show that integral closures of 1D Noetherian domains are Dedekind domains
   locator: null
   sub_index: null
   search_text: '(krull-akizuki theorem on 1-dimensional domains) state the krull–akizuki theorem: let
     $r$ be a 1-dimensional noetherian integral domain with fraction field $k$, and let $l/k$ be a finite
     field extension. for any subring $a \subseteq l$ containing $r$, prove that $a$ is a 1-dimensional
-    noetherian domain and for every non-zero ideal $i \subseteq a$, $a/i$ is a finite-length $r$-module.
-    (hint: apply this to show that integral closures of 1d noetherian domains are dedekind domains)'
+    noetherian domain and for every non-zero ideal $i \subseteq a$, $a/i$ is a finite-length $r$-module.  apply
+    this to show that integral closures of 1d noetherian domains are dedekind domains'
 - id: stacks-math-columbia-edu-download-algebra-pdf#056
   text: '(Unique Factorization Domains and Nagata''s Criterion) Define a Unique Factorization Domain (UFD
     / factorial domain). State Nagata''s Criterion for Factoriality: let $R$ be a Noetherian domain and
     $S \subset R$ a multiplicative subset generated by prime elements. If $S^{-1}R$ is a UFD, prove that
-    $R$ is a UFD. (Hint: Show that an integral domain is a UFD if and only if every height-1 prime ideal
-    is principal)'
-  hint: null
+    $R$ is a UFD. '
+  hint: Show that an integral domain is a UFD if and only if every height-1 prime ideal is principal
   locator: null
   sub_index: null
   search_text: '(unique factorization domains and nagata''s criterion) define a unique factorization domain
     (ufd / factorial domain). state nagata''s criterion for factoriality: let $r$ be a noetherian domain
     and $s \subset r$ a multiplicative subset generated by prime elements. if $s^{-1}r$ is a ufd, prove
-    that $r$ is a ufd. (hint: show that an integral domain is a ufd if and only if every height-1 prime
-    ideal is principal)'
+    that $r$ is a ufd.  show that an integral domain is a ufd if and only if every height-1 prime ideal
+    is principal'
 - id: stacks-math-columbia-edu-download-algebra-pdf#057
   text: '(Dedekind Domains and Order of Vanishing) Define a Dedekind domain as a Noetherian, integrally
     closed domain of Krull dimension 1. For a prime ideal $\mathfrak{p}$, define the discrete valuation
     (order of vanishing) $\operatorname{ord}_\mathfrak{p}(x) = \operatorname{length}_{R_\mathfrak{p}}(R_\mathfrak{p}/x
     R_\mathfrak{p})$ for $x \in K^\times$, and show that every non-zero ideal factors uniquely as $\mathfrak{a}
-    = \prod \mathfrak{p}_i^{\operatorname{ord}_{\mathfrak{p}_i}(\mathfrak{a})}$. (Hint: Use the fact that
-    localizations $R_\mathfrak{p}$ are DVRs)'
-  hint: null
+    = \prod \mathfrak{p}_i^{\operatorname{ord}_{\mathfrak{p}_i}(\mathfrak{a})}$. '
+  hint: Use the fact that localizations $R_\mathfrak{p}$ are DVRs
   locator: null
   sub_index: null
-  search_text: '(dedekind domains and order of vanishing) define a dedekind domain as a noetherian, integrally
+  search_text: (dedekind domains and order of vanishing) define a dedekind domain as a noetherian, integrally
     closed domain of krull dimension 1. for a prime ideal $\mathfrak{p}$, define the discrete valuation
     (order of vanishing) $\operatorname{ord}_\mathfrak{p}(x) = \operatorname{length}_{r_\mathfrak{p}}(r_\mathfrak{p}/x
     r_\mathfrak{p})$ for $x \in k^\times$, and show that every non-zero ideal factors uniquely as $\mathfrak{a}
-    = \prod \mathfrak{p}_i^{\operatorname{ord}_{\mathfrak{p}_i}(\mathfrak{a})}$. (hint: use the fact that
-    localizations $r_\mathfrak{p}$ are dvrs)'
+    = \prod \mathfrak{p}_i^{\operatorname{ord}_{\mathfrak{p}_i}(\mathfrak{a})}$.  use the fact that localizations
+    $r_\mathfrak{p}$ are dvrs
 - id: stacks-math-columbia-edu-download-algebra-pdf#058
   text: '(Zariski''s Main Theorem for Quasifinite Morphisms) Let $\phi: R \to S$ be an algebra of finite
     type. Define $\phi$ to be quasifinite at $\mathfrak{q} \in \operatorname{Spec}(S)$ if $\mathfrak{q}$
     is an isolated point in its fiber $\operatorname{Spec}(S \otimes_R \kappa(\mathfrak{p}))$. State Zariski''s
     Main Theorem: prove that if $\phi$ is quasifinite at $\mathfrak{q}$, there exists an integral closure
     factorization $R \to S'' \to S$ and an element $g \in S'' \setminus \mathfrak{q}''$ such that $S''_g
-    \cong S_g$. (Hint: Deduce that the locus of points where a morphism is quasifinite is an open subset
-    of $\operatorname{Spec}(S)$)'
-  hint: null
+    \cong S_g$. '
+  hint: Deduce that the locus of points where a morphism is quasifinite is an open subset of $\operatorname{Spec}(S)$
   locator: null
   sub_index: null
   search_text: '(zariski''s main theorem for quasifinite morphisms) let $\phi: r \to s$ be an algebra
@@ -885,54 +849,51 @@ exercises:
     is an isolated point in its fiber $\operatorname{spec}(s \otimes_r \kappa(\mathfrak{p}))$. state zariski''s
     main theorem: prove that if $\phi$ is quasifinite at $\mathfrak{q}$, there exists an integral closure
     factorization $r \to s'' \to s$ and an element $g \in s'' \setminus \mathfrak{q}''$ such that $s''_g
-    \cong s_g$. (hint: deduce that the locus of points where a morphism is quasifinite is an open subset
-    of $\operatorname{spec}(s)$)'
+    \cong s_g$.  deduce that the locus of points where a morphism is quasifinite is an open subset of
+    $\operatorname{spec}(s)$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#059
   text: '(Openness of the Flat and Cohen-Macaulay Loci) Let $\phi: R \to S$ be a ring map of finite presentation.
     State the theorems establishing that the flat locus $\{\mathfrak{q} \in \operatorname{Spec}(S) : S_\mathfrak{q}
     \text{ is flat over } R\}$ and the Cohen–Macaulay locus $\{\mathfrak{q} \in \operatorname{Spec}(S)
-    : S_\mathfrak{q} \text{ is Cohen-Macaulay}\}$ are open subsets of $\operatorname{Spec}(S)$. (Hint:
-    Use constructibility and stability under generalizations)'
-  hint: null
+    : S_\mathfrak{q} \text{ is Cohen-Macaulay}\}$ are open subsets of $\operatorname{Spec}(S)$. '
+  hint: Use constructibility and stability under generalizations
   locator: null
   sub_index: null
   search_text: '(openness of the flat and cohen-macaulay loci) let $\phi: r \to s$ be a ring map of finite
     presentation. state the theorems establishing that the flat locus $\{\mathfrak{q} \in \operatorname{spec}(s)
     : s_\mathfrak{q} \text{ is flat over } r\}$ and the cohen–macaulay locus $\{\mathfrak{q} \in \operatorname{spec}(s)
-    : s_\mathfrak{q} \text{ is cohen-macaulay}\}$ are open subsets of $\operatorname{spec}(s)$. (hint:
-    use constructibility and stability under generalizations)'
+    : s_\mathfrak{q} \text{ is cohen-macaulay}\}$ are open subsets of $\operatorname{spec}(s)$.  use constructibility
+    and stability under generalizations'
 - id: stacks-math-columbia-edu-download-algebra-pdf#060
   text: '(Derivations, Kähler Differentials, and the de Rham Complex) For an $R$-algebra $S$, define an
     $R$-derivation $D: S \to M$ satisfying the Leibniz rule $D(ab) = a D(b) + b D(a)$ and $D(R) = 0$.
     Construct the module of relative Kähler differentials $\Omega_{S/R}^1 \cong I/I^2$, where $I = \ker(S
     \otimes_R S \xrightarrow{\text{mult}} S)$, and construct the universal de Rham complex $(\Omega_{S/R}^\bullet,
-    d)$ with $d^2 = 0$. (Hint: Show that $\operatorname{Hom}_S(\Omega_{S/R}^1, M) \cong \operatorname{Der}_R(S,
-    M)$)'
-  hint: null
+    d)$ with $d^2 = 0$. '
+  hint: Show that $\operatorname{Hom}_S(\Omega_{S/R}^1, M) \cong \operatorname{Der}_R(S, M)$
   locator: null
   sub_index: null
   search_text: '(derivations, kähler differentials, and the de rham complex) for an $r$-algebra $s$, define
     an $r$-derivation $d: s \to m$ satisfying the leibniz rule $d(ab) = a d(b) + b d(a)$ and $d(r) = 0$.
     construct the module of relative kähler differentials $\omega_{s/r}^1 \cong i/i^2$, where $i = \ker(s
     \otimes_r s \xrightarrow{\text{mult}} s)$, and construct the universal de rham complex $(\omega_{s/r}^\bullet,
-    d)$ with $d^2 = 0$. (hint: show that $\operatorname{hom}_s(\omega_{s/r}^1, m) \cong \operatorname{der}_r(s,
-    m)$)'
+    d)$ with $d^2 = 0$.  show that $\operatorname{hom}_s(\omega_{s/r}^1, m) \cong \operatorname{der}_r(s,
+    m)$'
 - id: stacks-math-columbia-edu-download-algebra-pdf#061
   text: '(Local Complete Intersections and Syntomic Morphisms) Define a Noetherian local ring $(R, \mathfrak{m})$
     to be a local complete intersection (LCI) if its $\mathfrak{m}$-adic completion $\widehat{R}$ is isomorphic
     to $P/(f_1, \dots, f_c)$, where $P$ is a regular local ring and $f_1, \dots, f_c$ is a regular sequence.
     Define a ring map $\phi: R \to S$ to be syntomic if it is flat, of finite presentation, and all its
-    fibers are local complete intersections. (Hint: Show that syntomic morphisms are stable under base
-    change and composition)'
-  hint: null
+    fibers are local complete intersections. '
+  hint: Show that syntomic morphisms are stable under base change and composition
   locator: null
   sub_index: null
   search_text: '(local complete intersections and syntomic morphisms) define a noetherian local ring $(r,
     \mathfrak{m})$ to be a local complete intersection (lci) if its $\mathfrak{m}$-adic completion $\widehat{r}$
     is isomorphic to $p/(f_1, \dots, f_c)$, where $p$ is a regular local ring and $f_1, \dots, f_c$ is
     a regular sequence. define a ring map $\phi: r \to s$ to be syntomic if it is flat, of finite presentation,
-    and all its fibers are local complete intersections. (hint: show that syntomic morphisms are stable
-    under base change and composition)'
+    and all its fibers are local complete intersections.  show that syntomic morphisms are stable under
+    base change and composition'
 - id: stacks-math-columbia-edu-download-algebra-pdf#062
   text: '(Smooth, Étale, and Formally Unramified Morphisms) Let $\phi: R \to S$ be a ring map of finite
     presentation. Formulate the differential criteria for: 1. **Smooth:** $\phi$ is flat and the naive
@@ -940,9 +901,8 @@ exercises:
     0 (so $\Omega_{S/R}^1$ is locally free). 2. **Étale:** $\phi$ is smooth of relative dimension 0 ($\Omega_{S/R}^1
     = 0$ and $H_1(NL_{S/R}) = 0$). 3. **Formally Unramified:** For every ideal $I \subset A$ with $I^2
     = 0$, there exists at most one lifting morphism $\operatorname{Spec}(A) \to \operatorname{Spec}(S)$
-    commuting over $\operatorname{Spec}(R)$ (i.e. $\Omega_{S/R}^1 = 0$). (Hint: An étale map of local
-    rings induces isomorphisms on residue fields and completions)'
-  hint: null
+    commuting over $\operatorname{Spec}(R)$ (i.e. $\Omega_{S/R}^1 = 0$). '
+  hint: An étale map of local rings induces isomorphisms on residue fields and completions
   locator: null
   sub_index: null
   search_text: '(smooth, étale, and formally unramified morphisms) let $\phi: r \to s$ be a ring map of
@@ -951,48 +911,46 @@ exercises:
     degree 0 (so $\omega_{s/r}^1$ is locally free). 2. **étale:** $\phi$ is smooth of relative dimension
     0 ($\omega_{s/r}^1 = 0$ and $h_1(nl_{s/r}) = 0$). 3. **formally unramified:** for every ideal $i \subset
     a$ with $i^2 = 0$, there exists at most one lifting morphism $\operatorname{spec}(a) \to \operatorname{spec}(s)$
-    commuting over $\operatorname{spec}(r)$ (i.e. $\omega_{s/r}^1 = 0$). (hint: an étale map of local
-    rings induces isomorphisms on residue fields and completions)'
+    commuting over $\operatorname{spec}(r)$ (i.e. $\omega_{s/r}^1 = 0$).  an étale map of local rings
+    induces isomorphisms on residue fields and completions'
 - id: stacks-math-columbia-edu-download-algebra-pdf#063
   text: '(Henselian Rings, Strict Henselization, and Etale Colimits) Define a local ring $(R, \mathfrak{m},
     \kappa)$ to be Henselian if Hensel''s Lemma holds for monic polynomials. Define the Henselization
     $R^h$ (resp. strict Henselization $R^{\text{sh}}$) as the filtered colimit of all étale (resp. strictly
     étale) $R$-algebras. Prove that $R^{\text{sh}}$ is a local ring with separably closed residue field
-    $\kappa^{\text{sep}}$, representing the étale stalk of the structure sheaf of a scheme. (Hint: Show
-    that roots of polynomials with simple reduction modulo $\mathfrak{m}$ lift uniquely to $R^h$)'
-  hint: null
+    $\kappa^{\text{sep}}$, representing the étale stalk of the structure sheaf of a scheme. '
+  hint: Show that roots of polynomials with simple reduction modulo $\mathfrak{m}$ lift uniquely to $R^h$
   locator: null
   sub_index: null
-  search_text: '(henselian rings, strict henselization, and etale colimits) define a local ring $(r, \mathfrak{m},
-    \kappa)$ to be henselian if hensel''s lemma holds for monic polynomials. define the henselization
-    $r^h$ (resp. strict henselization $r^{\text{sh}}$) as the filtered colimit of all étale (resp. strictly
+  search_text: (henselian rings, strict henselization, and etale colimits) define a local ring $(r, \mathfrak{m},
+    \kappa)$ to be henselian if hensel's lemma holds for monic polynomials. define the henselization $r^h$
+    (resp. strict henselization $r^{\text{sh}}$) as the filtered colimit of all étale (resp. strictly
     étale) $r$-algebras. prove that $r^{\text{sh}}$ is a local ring with separably closed residue field
-    $\kappa^{\text{sep}}$, representing the étale stalk of the structure sheaf of a scheme. (hint: show
-    that roots of polynomials with simple reduction modulo $\mathfrak{m}$ lift uniquely to $r^h$)'
+    $\kappa^{\text{sep}}$, representing the étale stalk of the structure sheaf of a scheme.  show that
+    roots of polynomials with simple reduction modulo $\mathfrak{m}$ lift uniquely to $r^h$
 - id: stacks-math-columbia-edu-download-algebra-pdf#064
   text: '(Serre''s Criterion for Normality: R_k and S_k) State Serre''s Criterion for Normality: a Noetherian
     ring $R$ is normal if and only if it satisfies properties $(R_1)$ (regular in codimension 1: $R_\mathfrak{p}$
     is a regular local ring for all $\operatorname{height}(\mathfrak{p}) \le 1$) and $(S_2)$ (Serre depth
     condition: $\operatorname{depth}_{\mathfrak{p} R_\mathfrak{p}}(R_\mathfrak{p}) \ge \min(2, \operatorname{height}(\mathfrak{p}))$
-    for all $\mathfrak{p} \in \operatorname{Spec}(R)$). (Hint: Deduce that normal domains have no embedded
-    prime components)'
-  hint: null
+    for all $\mathfrak{p} \in \operatorname{Spec}(R)$). '
+  hint: Deduce that normal domains have no embedded prime components
   locator: null
   sub_index: null
   search_text: '(serre''s criterion for normality: r_k and s_k) state serre''s criterion for normality:
     a noetherian ring $r$ is normal if and only if it satisfies properties $(r_1)$ (regular in codimension
     1: $r_\mathfrak{p}$ is a regular local ring for all $\operatorname{height}(\mathfrak{p}) \le 1$) and
     $(s_2)$ (serre depth condition: $\operatorname{depth}_{\mathfrak{p} r_\mathfrak{p}}(r_\mathfrak{p})
-    \ge \min(2, \operatorname{height}(\mathfrak{p}))$ for all $\mathfrak{p} \in \operatorname{spec}(r)$).
-    (hint: deduce that normal domains have no embedded prime components)'
+    \ge \min(2, \operatorname{height}(\mathfrak{p}))$ for all $\mathfrak{p} \in \operatorname{spec}(r)$).  deduce
+    that normal domains have no embedded prime components'
 - id: stacks-math-columbia-edu-download-algebra-pdf#065
   text: '(Cohen Structure Theorem for Complete Local Rings) State the Cohen Structure Theorem: let $(R,
     \mathfrak{m}, \kappa)$ be a complete Noetherian local ring. Prove that $R$ contains a coefficient
     ring $\Lambda$ (where $\Lambda \cong \kappa$ if $\operatorname{char}(R) = \operatorname{char}(\kappa)$,
     or $\Lambda$ is a complete DVR with uniformizer $p$ if $\operatorname{char}(\kappa) = p$ and $\operatorname{char}(\operatorname{Frac}
     R) = 0$), and prove that $R \cong \Lambda[[x_1, \dots, x_n]]/I$ is a quotient of a formal power series
-    ring. (Hint: Construct coefficient lifts via successive Henselian approximations)'
-  hint: null
+    ring. '
+  hint: Construct coefficient lifts via successive Henselian approximations
   locator: null
   sub_index: null
   search_text: '(cohen structure theorem for complete local rings) state the cohen structure theorem:
@@ -1000,20 +958,20 @@ exercises:
     ring $\lambda$ (where $\lambda \cong \kappa$ if $\operatorname{char}(r) = \operatorname{char}(\kappa)$,
     or $\lambda$ is a complete dvr with uniformizer $p$ if $\operatorname{char}(\kappa) = p$ and $\operatorname{char}(\operatorname{frac}
     r) = 0$), and prove that $r \cong \lambda[[x_1, \dots, x_n]]/i$ is a quotient of a formal power series
-    ring. (hint: construct coefficient lifts via successive henselian approximations)'
+    ring.  construct coefficient lifts via successive henselian approximations'
 - id: stacks-math-columbia-edu-download-algebra-pdf#066
   text: '(Japanese and Nagata Rings: Condition N-2) Define an integral domain $R$ with fraction field
     $K$ to be Japanese (condition $N\text{-}2$) if for every finite field extension $L/K$, the integral
     closure of $R$ in $L$ is a finitely generated $R$-module. Define a Nagata ring as a Noetherian ring
     $R$ such that for every prime ideal $\mathfrak{p} \in \operatorname{Spec}(R)$, the quotient domain
-    $R/\mathfrak{p}$ is Japanese. (Hint: Prove that fields, complete Noetherian local rings, $\mathbb{Z}$,
-    and finite-type algebras over Nagata rings are Nagata)'
-  hint: null
+    $R/\mathfrak{p}$ is Japanese. '
+  hint: Prove that fields, complete Noetherian local rings, $\mathbb{Z}$, and finite-type algebras over
+    Nagata rings are Nagata
   locator: null
   sub_index: null
   search_text: '(japanese and nagata rings: condition n-2) define an integral domain $r$ with fraction
     field $k$ to be japanese (condition $n\text{-}2$) if for every finite field extension $l/k$, the integral
     closure of $r$ in $l$ is a finitely generated $r$-module. define a nagata ring as a noetherian ring
     $r$ such that for every prime ideal $\mathfrak{p} \in \operatorname{spec}(r)$, the quotient domain
-    $r/\mathfrak{p}$ is japanese. (hint: prove that fields, complete noetherian local rings, $\mathbb{z}$,
-    and finite-type algebras over nagata rings are nagata)'
+    $r/\mathfrak{p}$ is japanese.  prove that fields, complete noetherian local rings, $\mathbb{z}$, and
+    finite-type algebras over nagata rings are nagata'

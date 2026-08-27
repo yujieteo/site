@@ -18,170 +18,156 @@ exercises:
     canonically except up to homotopy so one requires homotopy colimits, whereas in -categories gluing
     is canonically defined via diagrams of affine schemes
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#001
-  text: '(2, Page 7) How is a monoid object encoded in an $\infty$-category $\mathcal{C}$? (Hint: Formulate
-    it as a functor from the opposite category of simplicial sets $\Delta^{\text{op}} \to \mathcal{C}$
-    satisfying the Segal induction condition from $0$ to $i-1$ and $i$ to $1$)'
-  hint: null
+  text: '(2, Page 7) How is a monoid object encoded in an $\infty$-category $\mathcal{C}$? '
+  hint: Formulate it as a functor from the opposite category of simplicial sets $\Delta^{\text{op}} \to
+    \mathcal{C}$ satisfying the Segal induction condition from $0$ to $i-1$ and $i$ to $1$
   locator: null
   sub_index: null
-  search_text: '(2, page 7) how is a monoid object encoded in an $\infty$-category $\mathcal{c}$? (hint:
-    formulate it as a functor from the opposite category of simplicial sets $\delta^{\text{op}} \to \mathcal{c}$
-    satisfying the segal induction condition from $0$ to $i-1$ and $i$ to $1$)'
+  search_text: (2, page 7) how is a monoid object encoded in an $\infty$-category $\mathcal{c}$?  formulate
+    it as a functor from the opposite category of simplicial sets $\delta^{\text{op}} \to \mathcal{c}$
+    satisfying the segal induction condition from $0$ to $i-1$ and $i$ to $1$
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#002
-  text: '(3, Page 7) Define what it means for an object in a monoidal $\infty$-category to be dualizable.
-    (Hint: Dualizability mirrors the classical dual of an object or module, characterized by evaluation
-    and coevaluation maps fixing an adjoint 1-morphism)'
-  hint: null
+  text: '(3, Page 7) Define what it means for an object in a monoidal $\infty$-category to be dualizable. '
+  hint: Dualizability mirrors the classical dual of an object or module, characterized by evaluation and
+    coevaluation maps fixing an adjoint 1-morphism
   locator: null
   sub_index: null
-  search_text: '(3, page 7) define what it means for an object in a monoidal $\infty$-category to be dualizable.
-    (hint: dualizability mirrors the classical dual of an object or module, characterized by evaluation
-    and coevaluation maps fixing an adjoint 1-morphism)'
+  search_text: (3, page 7) define what it means for an object in a monoidal $\infty$-category to be dualizable.  dualizability
+    mirrors the classical dual of an object or module, characterized by evaluation and coevaluation maps
+    fixing an adjoint 1-morphism
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#003
   text: '(4, Page 8) Explain why stability is an intrinsic property of an $\infty$-category rather than
-    extra structure. (Hint: Stable $\infty$-categories are automatically enriched over the category of
-    spectra $\mathbf{Sp}$ without needing to specify spectrum mapping spaces by hand)'
-  hint: null
+    extra structure. '
+  hint: Stable $\infty$-categories are automatically enriched over the category of spectra $\mathbf{Sp}$
+    without needing to specify spectrum mapping spaces by hand
   locator: null
   sub_index: null
-  search_text: '(4, page 8) explain why stability is an intrinsic property of an $\infty$-category rather
-    than extra structure. (hint: stable $\infty$-categories are automatically enriched over the category
-    of spectra $\mathbf{sp}$ without needing to specify spectrum mapping spaces by hand)'
+  search_text: (4, page 8) explain why stability is an intrinsic property of an $\infty$-category rather
+    than extra structure.  stable $\infty$-categories are automatically enriched over the category of
+    spectra $\mathbf{sp}$ without needing to specify spectrum mapping spaces by hand
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#004
   text: '(5, Page 8) Define a $t$-structure on a stable $\infty$-category $\mathcal{C}$ and characterize
-    its heart. (Hint: A $t$-structure is a substructure of connective chain complexes whose intersection
-    $\mathcal{C}^{\le 0} \cap \mathcal{C}^{\ge 0}$ satisfies the axioms of an abelian category)'
-  hint: null
+    its heart. '
+  hint: A $t$-structure is a substructure of connective chain complexes whose intersection $\mathcal{C}^{\le
+    0} \cap \mathcal{C}^{\ge 0}$ satisfies the axioms of an abelian category
   locator: null
   sub_index: null
-  search_text: '(5, page 8) define a $t$-structure on a stable $\infty$-category $\mathcal{c}$ and characterize
-    its heart. (hint: a $t$-structure is a substructure of connective chain complexes whose intersection
-    $\mathcal{c}^{\le 0} \cap \mathcal{c}^{\ge 0}$ satisfies the axioms of an abelian category)'
+  search_text: (5, page 8) define a $t$-structure on a stable $\infty$-category $\mathcal{c}$ and characterize
+    its heart.  a $t$-structure is a substructure of connective chain complexes whose intersection $\mathcal{c}^{\le
+    0} \cap \mathcal{c}^{\ge 0}$ satisfies the axioms of an abelian category
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#005
-  text: '(6, Page 8) Describe the Lurie tensor product on stable presentable $\infty$-categories. (Hint:
-    The tensor product of module categories satisfies $\operatorname{Mod}_A \otimes \operatorname{Mod}_B
+  text: '(6, Page 8) Describe the Lurie tensor product on stable presentable $\infty$-categories. '
+  hint: The tensor product of module categories satisfies $\operatorname{Mod}_A \otimes \operatorname{Mod}_B
     \simeq \operatorname{Mod}_{A \otimes B}$, naturally endowing presentable stable categories with a
-    symmetric monoidal structure)'
-  hint: null
+    symmetric monoidal structure
   locator: null
   sub_index: null
-  search_text: '(6, page 8) describe the lurie tensor product on stable presentable $\infty$-categories.
-    (hint: the tensor product of module categories satisfies $\operatorname{mod}_a \otimes \operatorname{mod}_b
-    \simeq \operatorname{mod}_{a \otimes b}$, naturally endowing presentable stable categories with a
-    symmetric monoidal structure)'
+  search_text: (6, page 8) describe the lurie tensor product on stable presentable $\infty$-categories.  the
+    tensor product of module categories satisfies $\operatorname{mod}_a \otimes \operatorname{mod}_b \simeq
+    \operatorname{mod}_{a \otimes b}$, naturally endowing presentable stable categories with a symmetric
+    monoidal structure
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#006
-  text: '(7, Page 9) How is the category of spectra $\mathbf{Sp}$ characterized as a unit object? (Hint:
-    $\mathbf{Sp}$ is the unit object in $\mathbf{1}\text{-}\mathbf{Cat}_{\text{cont}}^{\text{St}}$, meaning
-    every cocomplete stable $\infty$-category is automatically an $\mathbf{Sp}$-module possessing a relative
-    internal hom)'
-  hint: null
+  text: '(7, Page 9) How is the category of spectra $\mathbf{Sp}$ characterized as a unit object? '
+  hint: $\mathbf{Sp}$ is the unit object in $\mathbf{1}\text{-}\mathbf{Cat}_{\text{cont}}^{\text{St}}$,
+    meaning every cocomplete stable $\infty$-category is automatically an $\mathbf{Sp}$-module possessing
+    a relative internal hom
   locator: null
   sub_index: null
-  search_text: '(7, page 9) how is the category of spectra $\mathbf{sp}$ characterized as a unit object?
-    (hint: $\mathbf{sp}$ is the unit object in $\mathbf{1}\text{-}\mathbf{cat}_{\text{cont}}^{\text{st}}$,
-    meaning every cocomplete stable $\infty$-category is automatically an $\mathbf{sp}$-module possessing
-    a relative internal hom)'
+  search_text: (7, page 9) how is the category of spectra $\mathbf{sp}$ characterized as a unit object?  $\mathbf{sp}$
+    is the unit object in $\mathbf{1}\text{-}\mathbf{cat}_{\text{cont}}^{\text{st}}$, meaning every cocomplete
+    stable $\infty$-category is automatically an $\mathbf{sp}$-module possessing a relative internal hom
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#007
-  text: '(8, Page 8–9) Explain why compactly generated stable $\infty$-categories are dualizable in $\mathbf{Pr}_{\text{st}}^L$.
-    (Hint: Every compactly generated category is the ind-completion $\operatorname{Ind}(\mathcal{C}^c)$,
+  text: '(8, Page 8–9) Explain why compactly generated stable $\infty$-categories are dualizable in $\mathbf{Pr}_{\text{st}}^L$. '
+  hint: Every compactly generated category is the ind-completion $\operatorname{Ind}(\mathcal{C}^c)$,
     which can be realized as the category of exact functors $(\mathcal{C}^c)^{\text{op}} \to \mathbf{Sp}$,
-    making its dual its own ind-completion)'
-  hint: null
+    making its dual its own ind-completion
   locator: null
   sub_index: null
-  search_text: '(8, page 8–9) explain why compactly generated stable $\infty$-categories are dualizable
-    in $\mathbf{pr}_{\text{st}}^l$. (hint: every compactly generated category is the ind-completion $\operatorname{ind}(\mathcal{c}^c)$,
+  search_text: (8, page 8–9) explain why compactly generated stable $\infty$-categories are dualizable
+    in $\mathbf{pr}_{\text{st}}^l$.  every compactly generated category is the ind-completion $\operatorname{ind}(\mathcal{c}^c)$,
     which can be realized as the category of exact functors $(\mathcal{c}^c)^{\text{op}} \to \mathbf{sp}$,
-    making its dual its own ind-completion)'
+    making its dual its own ind-completion
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#008
-  text: '(9, Page 9–10) Describe Verdier duality on the compact objects of $\mathcal{D}$-modules $(\mathcal{D}\text{-}\mathbf{Mod}(X))^c$.
-    (Hint: Compact objects have finitely many non-zero cohomology sheaves with respect to the $t$-structure
+  text: '(9, Page 9–10) Describe Verdier duality on the compact objects of $\mathcal{D}$-modules $(\mathcal{D}\text{-}\mathbf{Mod}(X))^c$. '
+  hint: Compact objects have finitely many non-zero cohomology sheaves with respect to the $t$-structure
     and consist of coherent $\mathcal{D}$-modules; Verdier duality gives an auto-equivalence on compact
-    objects where compact pushforward and exceptional pushforward act as Verdier conjugates)'
-  hint: null
+    objects where compact pushforward and exceptional pushforward act as Verdier conjugates
   locator: null
   sub_index: null
-  search_text: '(9, page 9–10) describe verdier duality on the compact objects of $\mathcal{d}$-modules
-    $(\mathcal{d}\text{-}\mathbf{mod}(x))^c$. (hint: compact objects have finitely many non-zero cohomology
+  search_text: (9, page 9–10) describe verdier duality on the compact objects of $\mathcal{d}$-modules
+    $(\mathcal{d}\text{-}\mathbf{mod}(x))^c$.  compact objects have finitely many non-zero cohomology
     sheaves with respect to the $t$-structure and consist of coherent $\mathcal{d}$-modules; verdier duality
     gives an auto-equivalence on compact objects where compact pushforward and exceptional pushforward
-    act as verdier conjugates)'
+    act as verdier conjugates
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#009
-  text: '(10, Page 10) What is the motivation behind defining rigid monoidal categories? (Hint: Rigidity
-    imposes finiteness conditions on objects, ensuring every object is dualizable)'
-  hint: null
+  text: '(10, Page 10) What is the motivation behind defining rigid monoidal categories? '
+  hint: Rigidity imposes finiteness conditions on objects, ensuring every object is dualizable
   locator: null
   sub_index: null
-  search_text: '(10, page 10) what is the motivation behind defining rigid monoidal categories? (hint:
-    rigidity imposes finiteness conditions on objects, ensuring every object is dualizable)'
+  search_text: (10, page 10) what is the motivation behind defining rigid monoidal categories?  rigidity
+    imposes finiteness conditions on objects, ensuring every object is dualizable
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#010
-  text: '(11, Page 14) Define the Yoneda embedding functor for $\infty$-categories into spaces. (Hint:
-    Construct the functor $j: \mathcal{C} \hookrightarrow \operatorname{Fun}(\mathcal{C}^{\text{op}},
-    \mathcal{S})$ sending each object to its representable space of morphisms)'
-  hint: null
+  text: '(11, Page 14) Define the Yoneda embedding functor for $\infty$-categories into spaces. '
+  hint: 'Construct the functor $j: \mathcal{C} \hookrightarrow \operatorname{Fun}(\mathcal{C}^{\text{op}},
+    \mathcal{S})$ sending each object to its representable space of morphisms'
   locator: null
   sub_index: null
-  search_text: '(11, page 14) define the yoneda embedding functor for $\infty$-categories into spaces.
-    (hint: construct the functor $j: \mathcal{c} \hookrightarrow \operatorname{fun}(\mathcal{c}^{\text{op}},
-    \mathcal{s})$ sending each object to its representable space of morphisms)'
+  search_text: '(11, page 14) define the yoneda embedding functor for $\infty$-categories into spaces.  construct
+    the functor $j: \mathcal{c} \hookrightarrow \operatorname{fun}(\mathcal{c}^{\text{op}}, \mathcal{s})$
+    sending each object to its representable space of morphisms'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#011
   text: '(12, Page 16) What is the primary motivation for the Grothendieck construction in higher category
-    theory? (Hint: It provides the bridge between fibrations over a base category and functors taking
-    values in categories)'
-  hint: null
+    theory? '
+  hint: It provides the bridge between fibrations over a base category and functors taking values in categories
   locator: null
   sub_index: null
-  search_text: '(12, page 16) what is the primary motivation for the grothendieck construction in higher
-    category theory? (hint: it provides the bridge between fibrations over a base category and functors
-    taking values in categories)'
+  search_text: (12, page 16) what is the primary motivation for the grothendieck construction in higher
+    category theory?  it provides the bridge between fibrations over a base category and functors taking
+    values in categories
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#012
   text: '(13, Page 17) How are the Yoneda functor, adjoints, and smash products constructed via straightening
-    and unstraightening? (Hint: Straightening and unstraightening converts Cartesian and coCartesian fibrations
-    into diagrammatic functors to $\mathbf{Cat}_\infty$, resolving the coherence difficulties of defining
-    monoidal smash products in stable homotopy theory)'
-  hint: null
+    and unstraightening? '
+  hint: Straightening and unstraightening converts Cartesian and coCartesian fibrations into diagrammatic
+    functors to $\mathbf{Cat}_\infty$, resolving the coherence difficulties of defining monoidal smash
+    products in stable homotopy theory
   locator: null
   sub_index: null
-  search_text: '(13, page 17) how are the yoneda functor, adjoints, and smash products constructed via
-    straightening and unstraightening? (hint: straightening and unstraightening converts cartesian and
-    cocartesian fibrations into diagrammatic functors to $\mathbf{cat}_\infty$, resolving the coherence
-    difficulties of defining monoidal smash products in stable homotopy theory)'
+  search_text: (13, page 17) how are the yoneda functor, adjoints, and smash products constructed via
+    straightening and unstraightening?  straightening and unstraightening converts cartesian and cocartesian
+    fibrations into diagrammatic functors to $\mathbf{cat}_\infty$, resolving the coherence difficulties
+    of defining monoidal smash products in stable homotopy theory
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#013
   text: '(14, Page 22) How are limits and colimits formulated as Kan extensions, and what do geometric
-    realizations and totalizations look like? (Hint: Colimits over $\Delta^{\text{op}}$ are geometric
-    realizations, while limits over the category $\Delta$ are totalizations)'
-  hint: null
+    realizations and totalizations look like? '
+  hint: Colimits over $\Delta^{\text{op}}$ are geometric realizations, while limits over the category
+    $\Delta$ are totalizations
   locator: null
   sub_index: null
-  search_text: '(14, page 22) how are limits and colimits formulated as kan extensions, and what do geometric
-    realizations and totalizations look like? (hint: colimits over $\delta^{\text{op}}$ are geometric
-    realizations, while limits over the category $\delta$ are totalizations)'
+  search_text: (14, page 22) how are limits and colimits formulated as kan extensions, and what do geometric
+    realizations and totalizations look like?  colimits over $\delta^{\text{op}}$ are geometric realizations,
+    while limits over the category $\delta$ are totalizations
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#014
-  text: '(15, Page 22) State the role of cofinality in computing limits and colimits. (Hint: Cofinality
-    allows one to replace a limit or colimit over a large indexing diagram with a limit or colimit over
-    a smaller sub-diagram)'
-  hint: null
+  text: '(15, Page 22) State the role of cofinality in computing limits and colimits. '
+  hint: Cofinality allows one to replace a limit or colimit over a large indexing diagram with a limit
+    or colimit over a smaller sub-diagram
   locator: null
   sub_index: null
-  search_text: '(15, page 22) state the role of cofinality in computing limits and colimits. (hint: cofinality
+  search_text: (15, page 22) state the role of cofinality in computing limits and colimits.  cofinality
     allows one to replace a limit or colimit over a large indexing diagram with a limit or colimit over
-    a smaller sub-diagram)'
+    a smaller sub-diagram
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#015
-  text: '(16, Page 29) How is a monoidal category represented as a simplicial object? (Hint: A monoidal
-    category is encoded as a functor from $\Delta^{\text{op}}$ to $\mathbf{1}\text{-}\mathbf{Cat}$ satisfying
-    Segal-type product equivalences)'
-  hint: null
+  text: '(16, Page 29) How is a monoidal category represented as a simplicial object? '
+  hint: A monoidal category is encoded as a functor from $\Delta^{\text{op}}$ to $\mathbf{1}\text{-}\mathbf{Cat}$
+    satisfying Segal-type product equivalences
   locator: null
   sub_index: null
-  search_text: '(16, page 29) how is a monoidal category represented as a simplicial object? (hint: a
-    monoidal category is encoded as a functor from $\delta^{\text{op}}$ to $\mathbf{1}\text{-}\mathbf{cat}$
-    satisfying segal-type product equivalences)'
+  search_text: (16, page 29) how is a monoidal category represented as a simplicial object?  a monoidal
+    category is encoded as a functor from $\delta^{\text{op}}$ to $\mathbf{1}\text{-}\mathbf{cat}$ satisfying
+    segal-type product equivalences
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#016
   text: '(17, Page 32) How does replacing $\Delta^{\text{op}}$ with finite pointed sets yield symmetric
-    monoidal categories? (Hint: Symmetric monoidal categories correspond to operadic fibrations over the
-    category of finite pointed sets $\operatorname{Fin}_*$). (18, Page 38) What is the role of the Barr–Beck–Lurie
-    theorem in higher algebra?'
-  hint: It characterizes when an $\infty$-category of modules over a monad is equivalent to the original
+    monoidal categories? . (18, Page 38) What is the role of the Barr–Beck–Lurie theorem in higher algebra?
+    (Hint: It characterizes when an $\infty$-category of modules over a monad is equivalent to the original
     category via monadic descent. More precisely, you do not need to check Cech-cocycles. The basic example
     is to prove the category of modules is equivalent to descent data for modules over $B$, for $A \rightarrow
     B$ to be a fiathfully flat ring map, formally one can consider the pullback and erxtension of scalars
@@ -190,160 +176,152 @@ exercises:
     that the adjunction exists, the right adjoint is conservative i.e. maps of $B$-modules is equivalence
     iff maps of $A$-modules is equivalence using faithful flatness. Flatness ensure exactness, faithfulness
     means no nonzero module maps are sent to $0$. $Mod(B)$ and $f_*$ preserve totalisations of cosimplicial
-    objects, to see Khan's notes for a review of totalisation. Barr-Beck-Lurie is then used to prove this.
+    objects, to see Khan''s notes for a review of totalisation. Barr-Beck-Lurie is then used to prove
+    this.)'
+  hint: Symmetric monoidal categories correspond to operadic fibrations over the category of finite pointed
+    sets $\operatorname{Fin}_*$
   locator: null
   sub_index: null
   search_text: '(17, page 32) how does replacing $\delta^{\text{op}}$ with finite pointed sets yield symmetric
-    monoidal categories? (hint: symmetric monoidal categories correspond to operadic fibrations over the
-    category of finite pointed sets $\operatorname{fin}_*$). (18, page 38) what is the role of the barr–beck–lurie
-    theorem in higher algebra? it characterizes when an $\infty$-category of modules over a monad is equivalent
-    to the original category via monadic descent. more precisely, you do not need to check cech-cocycles.
-    the basic example is to prove the category of modules is equivalent to descent data for modules over
-    $b$, for $a \rightarrow b$ to be a fiathfully flat ring map, formally one can consider the pullback
-    and erxtension of scalars adjunction of categories of modules. pushforward is forgetful or restriction,
-    pullback is extension off scalars. then one wants to show that $mod(a)$ is equivalent to comodules
-    over the comonad, show that the adjunction exists, the right adjoint is conservative i.e. maps of
-    $b$-modules is equivalence iff maps of $a$-modules is equivalence using faithful flatness. flatness
-    ensure exactness, faithfulness means no nonzero module maps are sent to $0$. $mod(b)$ and $f_*$ preserve
-    totalisations of cosimplicial objects, to see khan''s notes for a review of totalisation. barr-beck-lurie
-    is then used to prove this.'
+    monoidal categories? . (18, page 38) what is the role of the barr–beck–lurie theorem in higher algebra?
+    (hint: it characterizes when an $\infty$-category of modules over a monad is equivalent to the original
+    category via monadic descent. more precisely, you do not need to check cech-cocycles. the basic example
+    is to prove the category of modules is equivalent to descent data for modules over $b$, for $a \rightarrow
+    b$ to be a fiathfully flat ring map, formally one can consider the pullback and erxtension of scalars
+    adjunction of categories of modules. pushforward is forgetful or restriction, pullback is extension
+    off scalars. then one wants to show that $mod(a)$ is equivalent to comodules over the comonad, show
+    that the adjunction exists, the right adjoint is conservative i.e. maps of $b$-modules is equivalence
+    iff maps of $a$-modules is equivalence using faithful flatness. flatness ensure exactness, faithfulness
+    means no nonzero module maps are sent to $0$. $mod(b)$ and $f_*$ preserve totalisations of cosimplicial
+    objects, to see khan''s notes for a review of totalisation. barr-beck-lurie is then used to prove
+    this.) symmetric monoidal categories correspond to operadic fibrations over the category of finite
+    pointed sets $\operatorname{fin}_*$'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#017
   text: '(19, Page 57) What is the motivation for the $\operatorname{Ind}$-completion functor on a non-cocomplete
-    stable category? (Hint: It canonically produces a cocomplete category by formally adjoining all filtered
-    colimits)'
-  hint: null
+    stable category? '
+  hint: It canonically produces a cocomplete category by formally adjoining all filtered colimits
   locator: null
   sub_index: null
-  search_text: '(19, page 57) what is the motivation for the $\operatorname{ind}$-completion functor on
-    a non-cocomplete stable category? (hint: it canonically produces a cocomplete category by formally
-    adjoining all filtered colimits)'
+  search_text: (19, page 57) what is the motivation for the $\operatorname{ind}$-completion functor on
+    a non-cocomplete stable category?  it canonically produces a cocomplete category by formally adjoining
+    all filtered colimits
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#018
   text: '(20, Page 59) How does $\operatorname{Ind}$-completion yield a categorical version of Verdier
-    duality? (Hint: The pairing on compact objects $\mathcal{C}^c \times (\mathcal{C}^c)^{\text{op}} \to
-    \mathbf{Sp}$ extends by ind-completion to identify the dual of a compactly generated category)'
-  hint: null
+    duality? '
+  hint: The pairing on compact objects $\mathcal{C}^c \times (\mathcal{C}^c)^{\text{op}} \to \mathbf{Sp}$
+    extends by ind-completion to identify the dual of a compactly generated category
   locator: null
   sub_index: null
-  search_text: '(20, page 59) how does $\operatorname{ind}$-completion yield a categorical version of
-    verdier duality? (hint: the pairing on compact objects $\mathcal{c}^c \times (\mathcal{c}^c)^{\text{op}}
-    \to \mathbf{sp}$ extends by ind-completion to identify the dual of a compactly generated category)'
+  search_text: (20, page 59) how does $\operatorname{ind}$-completion yield a categorical version of verdier
+    duality?  the pairing on compact objects $\mathcal{c}^c \times (\mathcal{c}^c)^{\text{op}} \to \mathbf{sp}$
+    extends by ind-completion to identify the dual of a compactly generated category
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#019
-  text: '(21, Page 71) What distinguishes rigid monoidal categories in Gaitsgory''s framework? (Hint:
-    Rigid monoidal categories act as categorical analogues of Frobenius algebras in the stable setting)'
-  hint: null
+  text: '(21, Page 71) What distinguishes rigid monoidal categories in Gaitsgory''s framework? '
+  hint: Rigid monoidal categories act as categorical analogues of Frobenius algebras in the stable setting
   locator: null
   sub_index: null
-  search_text: '(21, page 71) what distinguishes rigid monoidal categories in gaitsgory''s framework?
-    (hint: rigid monoidal categories act as categorical analogues of frobenius algebras in the stable
-    setting)'
+  search_text: (21, page 71) what distinguishes rigid monoidal categories in gaitsgory's framework?  rigid
+    monoidal categories act as categorical analogues of frobenius algebras in the stable setting
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#020
-  text: '(22, Page 79) Give a concrete example of the heart of a $t$-structure on a stable derived category.
-    (Hint: For the derived category of a ring $\mathcal{D}(R)$ with its standard $t$-structure, the heart
-    $\mathcal{D}^{\le 0} \cap \mathcal{D}^{\ge 0}$ recovers the abelian category of $R$-modules)'
-  hint: null
+  text: '(22, Page 79) Give a concrete example of the heart of a $t$-structure on a stable derived category. '
+  hint: For the derived category of a ring $\mathcal{D}(R)$ with its standard $t$-structure, the heart
+    $\mathcal{D}^{\le 0} \cap \mathcal{D}^{\ge 0}$ recovers the abelian category of $R$-modules
   locator: null
   sub_index: null
-  search_text: '(22, page 79) give a concrete example of the heart of a $t$-structure on a stable derived
-    category. (hint: for the derived category of a ring $\mathcal{d}(r)$ with its standard $t$-structure,
-    the heart $\mathcal{d}^{\le 0} \cap \mathcal{d}^{\ge 0}$ recovers the abelian category of $r$-modules)'
+  search_text: (22, page 79) give a concrete example of the heart of a $t$-structure on a stable derived
+    category.  for the derived category of a ring $\mathcal{d}(r)$ with its standard $t$-structure, the
+    heart $\mathcal{d}^{\le 0} \cap \mathcal{d}^{\ge 0}$ recovers the abelian category of $r$-modules
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#021
   text: '(23, Page 4) Why can the $G$-equivariant derived category of sheaves not be constructed purely
-    from the ordinary derived category of sheaves? (Hint: Group equivariance requires higher homotopies
-    and chain-level constructions that are lost in the homotopy category)'
-  hint: null
+    from the ordinary derived category of sheaves? '
+  hint: Group equivariance requires higher homotopies and chain-level constructions that are lost in the
+    homotopy category
   locator: null
   sub_index: null
-  search_text: '(23, page 4) why can the $g$-equivariant derived category of sheaves not be constructed
-    purely from the ordinary derived category of sheaves? (hint: group equivariance requires higher homotopies
-    and chain-level constructions that are lost in the homotopy category)'
+  search_text: (23, page 4) why can the $g$-equivariant derived category of sheaves not be constructed
+    purely from the ordinary derived category of sheaves?  group equivariance requires higher homotopies
+    and chain-level constructions that are lost in the homotopy category
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#022
   text: '(24, Page 4) Why does derived base change for quasicoherent sheaves require connective commutative
-    differential graded algebras? (Hint: Ordinary base change fails without flatness; derived tensor products
-    require CDGAs concentrated in non-positive degrees, which define derived affine schemes)'
-  hint: null
+    differential graded algebras? '
+  hint: Ordinary base change fails without flatness; derived tensor products require CDGAs concentrated
+    in non-positive degrees, which define derived affine schemes
   locator: null
   sub_index: null
-  search_text: '(24, page 4) why does derived base change for quasicoherent sheaves require connective
-    commutative differential graded algebras? (hint: ordinary base change fails without flatness; derived
-    tensor products require cdgas concentrated in non-positive degrees, which define derived affine schemes)'
+  search_text: (24, page 4) why does derived base change for quasicoherent sheaves require connective
+    commutative differential graded algebras?  ordinary base change fails without flatness; derived tensor
+    products require cdgas concentrated in non-positive degrees, which define derived affine schemes
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#023
-  text: '(25, Page 71) How do rigid monoidal categories relate to Frobenius algebras and continuous dg-categories?
-    (Hint: Rigid monoidal categories behave as Frobenius algebras in stable categories, forming the foundation
-    of continuous dg-categories $\mathbf{DGCat}_{\text{cont}}$ in the Gaitsgory–Rozenblyum program)'
-  hint: null
+  text: '(25, Page 71) How do rigid monoidal categories relate to Frobenius algebras and continuous dg-categories? '
+  hint: Rigid monoidal categories behave as Frobenius algebras in stable categories, forming the foundation
+    of continuous dg-categories $\mathbf{DGCat}_{\text{cont}}$ in the Gaitsgory–Rozenblyum program
   locator: null
   sub_index: null
-  search_text: '(25, page 71) how do rigid monoidal categories relate to frobenius algebras and continuous
-    dg-categories? (hint: rigid monoidal categories behave as frobenius algebras in stable categories,
-    forming the foundation of continuous dg-categories $\mathbf{dgcat}_{\text{cont}}$ in the gaitsgory–rozenblyum
-    program)'
+  search_text: (25, page 71) how do rigid monoidal categories relate to frobenius algebras and continuous
+    dg-categories?  rigid monoidal categories behave as frobenius algebras in stable categories, forming
+    the foundation of continuous dg-categories $\mathbf{dgcat}_{\text{cont}}$ in the gaitsgory–rozenblyum
+    program
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#024
-  text: '(26, Page 4) Why did Lurie develop quasicategories as the foundational model for higher algebra?
-    (Hint: Quasicategories provide an explicit simplicial syntax where higher homotopies and coherences
-    can be checked using horn-filling conditions)'
-  hint: null
+  text: '(26, Page 4) Why did Lurie develop quasicategories as the foundational model for higher algebra? '
+  hint: Quasicategories provide an explicit simplicial syntax where higher homotopies and coherences can
+    be checked using horn-filling conditions
   locator: null
   sub_index: null
-  search_text: '(26, page 4) why did lurie develop quasicategories as the foundational model for higher
-    algebra? (hint: quasicategories provide an explicit simplicial syntax where higher homotopies and
-    coherences can be checked using horn-filling conditions)'
+  search_text: (26, page 4) why did lurie develop quasicategories as the foundational model for higher
+    algebra?  quasicategories provide an explicit simplicial syntax where higher homotopies and coherences
+    can be checked using horn-filling conditions
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#025
-  text: '(27, Page 4) Why is the language of $(\infty, 2)$-categories required to guarantee canonicity?
-    (Hint: Categorical dualities, adjunctions between $\infty$-categories, and correspondences require
-    2-morphisms to be formulated canonically)'
-  hint: null
+  text: '(27, Page 4) Why is the language of $(\infty, 2)$-categories required to guarantee canonicity? '
+  hint: Categorical dualities, adjunctions between $\infty$-categories, and correspondences require 2-morphisms
+    to be formulated canonically
   locator: null
   sub_index: null
-  search_text: '(27, page 4) why is the language of $(\infty, 2)$-categories required to guarantee canonicity?
-    (hint: categorical dualities, adjunctions between $\infty$-categories, and correspondences require
-    2-morphisms to be formulated canonically)'
+  search_text: (27, page 4) why is the language of $(\infty, 2)$-categories required to guarantee canonicity?  categorical
+    dualities, adjunctions between $\infty$-categories, and correspondences require 2-morphisms to be
+    formulated canonically
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#026
   text: '(28, Page 8) Explain how stable $\infty$-categories are enriched over spectra and how this simplifies
-    $t$-structures. (Hint: Mapping spaces automatically lift to spectrum objects, allowing triangulated
-    structures and $t$-structures to be defined intrinsically)'
-  hint: null
+    $t$-structures. '
+  hint: Mapping spaces automatically lift to spectrum objects, allowing triangulated structures and $t$-structures
+    to be defined intrinsically
   locator: null
   sub_index: null
-  search_text: '(28, page 8) explain how stable $\infty$-categories are enriched over spectra and how
-    this simplifies $t$-structures. (hint: mapping spaces automatically lift to spectrum objects, allowing
-    triangulated structures and $t$-structures to be defined intrinsically)'
+  search_text: (28, page 8) explain how stable $\infty$-categories are enriched over spectra and how this
+    simplifies $t$-structures.  mapping spaces automatically lift to spectrum objects, allowing triangulated
+    structures and $t$-structures to be defined intrinsically
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#027
-  text: '(29, Page 9) How does Gaitsgory''s ind-completion construct compactly generated stable categories?
-    (Hint: $\operatorname{Ind}$-completion is necessary to describe all colimit-preserving functors out
-    of the category of compact objects)'
-  hint: null
+  text: '(29, Page 9) How does Gaitsgory''s ind-completion construct compactly generated stable categories? '
+  hint: $\operatorname{Ind}$-completion is necessary to describe all colimit-preserving functors out of
+    the category of compact objects
   locator: null
   sub_index: null
-  search_text: '(29, page 9) how does gaitsgory''s ind-completion construct compactly generated stable
-    categories? (hint: $\operatorname{ind}$-completion is necessary to describe all colimit-preserving
-    functors out of the category of compact objects)'
+  search_text: (29, page 9) how does gaitsgory's ind-completion construct compactly generated stable categories?  $\operatorname{ind}$-completion
+    is necessary to describe all colimit-preserving functors out of the category of compact objects
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#028
-  text: '(30, Page 9–10) How is Verdier duality realized on the category of $\mathcal{D}$-modules? (Hint:
-    It is an anti-equivalence on the subcategory of coherent $\mathcal{D}$-modules with bounded cohomology
-    under the standard $t$-structure)'
-  hint: null
+  text: '(30, Page 9–10) How is Verdier duality realized on the category of $\mathcal{D}$-modules? '
+  hint: It is an anti-equivalence on the subcategory of coherent $\mathcal{D}$-modules with bounded cohomology
+    under the standard $t$-structure
   locator: null
   sub_index: null
-  search_text: '(30, page 9–10) how is verdier duality realized on the category of $\mathcal{d}$-modules?
-    (hint: it is an anti-equivalence on the subcategory of coherent $\mathcal{d}$-modules with bounded
-    cohomology under the standard $t$-structure)'
+  search_text: (30, page 9–10) how is verdier duality realized on the category of $\mathcal{d}$-modules?  it
+    is an anti-equivalence on the subcategory of coherent $\mathcal{d}$-modules with bounded cohomology
+    under the standard $t$-structure
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#029
   text: '(31, Page 84) Define the category $\mathbf{DGCat}_{\text{cont}}$ of continuous differential graded
-    categories. (Hint: $\mathbf{DGCat}_{\text{cont}}$ is defined as the stable, cocomplete, symmetric
-    monoidal $\infty$-category of $\mathbf{Vect}_k$-modules in $\mathbf{1}\text{-}\mathbf{Cat}_{\text{cont}}^{\text{St}}$).
-    (Page 4) Why does base change as isomorphism fail for derived category of quasicoherent sheaves?'
-  hint: classical underived fiber product of schemes does not capture higher homotopical Tor contributions.
-    The natural map from the derived tensor product to the zeroth cohomology sheaf of the right-hand side
-    is not an equivalence in general.
+    categories. . (Page 4) Why does base change as isomorphism fail for derived category of quasicoherent
+    sheaves? (Hint: classical underived fiber product of schemes does not capture higher homotopical Tor
+    contributions. The natural map from the derived tensor product to the zeroth cohomology sheaf of the
+    right-hand side is not an equivalence in general.)'
+  hint: $\mathbf{DGCat}_{\text{cont}}$ is defined as the stable, cocomplete, symmetric monoidal $\infty$-category
+    of $\mathbf{Vect}_k$-modules in $\mathbf{1}\text{-}\mathbf{Cat}_{\text{cont}}^{\text{St}}$
   locator: null
   sub_index: null
   search_text: '(31, page 84) define the category $\mathbf{dgcat}_{\text{cont}}$ of continuous differential
-    graded categories. (hint: $\mathbf{dgcat}_{\text{cont}}$ is defined as the stable, cocomplete, symmetric
-    monoidal $\infty$-category of $\mathbf{vect}_k$-modules in $\mathbf{1}\text{-}\mathbf{cat}_{\text{cont}}^{\text{st}}$).
-    (page 4) why does base change as isomorphism fail for derived category of quasicoherent sheaves? classical
-    underived fiber product of schemes does not capture higher homotopical tor contributions. the natural
-    map from the derived tensor product to the zeroth cohomology sheaf of the right-hand side is not an
-    equivalence in general.'
+    graded categories. . (page 4) why does base change as isomorphism fail for derived category of quasicoherent
+    sheaves? (hint: classical underived fiber product of schemes does not capture higher homotopical tor
+    contributions. the natural map from the derived tensor product to the zeroth cohomology sheaf of the
+    right-hand side is not an equivalence in general.) $\mathbf{dgcat}_{\text{cont}}$ is defined as the
+    stable, cocomplete, symmetric monoidal $\infty$-category of $\mathbf{vect}_k$-modules in $\mathbf{1}\text{-}\mathbf{cat}_{\text{cont}}^{\text{st}}$'
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#030
   text: What is an easy example of a dualisable object?
   hint: infinite dimensional vector spaces are not dualisable in the category of finite dimensional vector
@@ -421,10 +399,9 @@ exercises:
     of spectra.
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#036
   text: Why is it true that the Verdier conjugate of the direct image is the exceptional direct image?
-    (Hint; the functors of the corresponding pullback and exceptional pushforward are each other duals.
+  hint: (Hint; the functors of the corresponding pullback and exceptional pushforward are each other duals.
     Then Verdier duality gives the completed conjugation of the direct image with the exceptional direct
-    image.)
-  hint: null
+    image.
   locator:
     kind: page
     value: '9'
@@ -433,7 +410,7 @@ exercises:
   search_text: why is it true that the verdier conjugate of the direct image is the exceptional direct
     image? (hint; the functors of the corresponding pullback and exceptional pushforward are each other
     duals. then verdier duality gives the completed conjugation of the direct image with the exceptional
-    direct image.)
+    direct image.
 - id: people-mpim-bonn-mpg-de-gaitsgde-book-ha-pdf#037
   text: Recap the definitions of limits, colimits, filtered colimits, sifted colimits. What is the relation
     of limits with respect to a pullbacks and pushforwards?

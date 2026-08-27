@@ -11,11 +11,10 @@ exercises:
     establishes an anti-equivalence between Boolean algebras (propositional syntax) and compact totally
     disconnected Hausdorff spaces (Stone spaces of models/points). Explain how Michael Makkai generalized
     this duality from propositional logic to first-order coherent logic by replacing Boolean algebras
-    with small pretopoi $\mathcal{E}$ and Stone spaces with ultracategories of models $\operatorname{Mod}(\mathcal{E})$.
-    (Hint: Points/models in $\operatorname{Spec}(B)$ are 2-valued homomorphisms $B \to \{0, 1\}$; in coherent
+    with small pretopoi $\mathcal{E}$ and Stone spaces with ultracategories of models $\operatorname{Mod}(\mathcal{E})$. '
+  hint: Points/models in $\operatorname{Spec}(B)$ are 2-valued homomorphisms $B \to \{0, 1\}$; in coherent
     logic, models of a pretopos $\mathcal{E}$ are coherent/left-exact functors $\mathcal{E} \to \mathbf{Set}$
-    preserving finite disjoint coproducts and effective quotients)'
-  hint: null
+    preserving finite disjoint coproducts and effective quotients
   locator: null
   sub_index: null
   search_text: '(from stone duality to conceptual completeness) review classical stone duality for boolean
@@ -24,36 +23,35 @@ exercises:
     compact totally disconnected hausdorff spaces (stone spaces of models/points). explain how michael
     makkai generalized this duality from propositional logic to first-order coherent logic by replacing
     boolean algebras with small pretopoi $\mathcal{e}$ and stone spaces with ultracategories of models
-    $\operatorname{mod}(\mathcal{e})$. (hint: points/models in $\operatorname{spec}(b)$ are 2-valued homomorphisms
+    $\operatorname{mod}(\mathcal{e})$.  points/models in $\operatorname{spec}(b)$ are 2-valued homomorphisms
     $b \to \{0, 1\}$; in coherent logic, models of a pretopos $\mathcal{e}$ are coherent/left-exact functors
-    $\mathcal{e} \to \mathbf{set}$ preserving finite disjoint coproducts and effective quotients)'
+    $\mathcal{e} \to \mathbf{set}$ preserving finite disjoint coproducts and effective quotients'
 - id: people-math-harvard-edu-lurie-papers-conceptual-pdf#001
   text: '(Definition of Ultracategories and Ultraproducts) Define an ultracategory $\mathcal{C}$ in the
-    sense of Makkai and Lurie. (Hint: An ultracategory is a category $\mathcal{C}$ equipped with an ultrastructure
-    functor $\int_{\mathcal{U}}: \mathcal{C}^I \to \mathcal{C}$ for every set $I$ and every ultrafilter
-    $\mathcal{U}$ on $I$, specifying ultraproducts $\prod_{\mathcal{U}} X_i$ that satisfy transitivity/coherence
-    under Fubini-type iterations of ultrafilters and principal ultrafilter trivializations $\int_{\delta_i}
-    (X_j)_{j \in I} \cong X_i$)'
-  hint: null
+    sense of Makkai and Lurie. '
+  hint: 'An ultracategory is a category $\mathcal{C}$ equipped with an ultrastructure functor $\int_{\mathcal{U}}:
+    \mathcal{C}^I \to \mathcal{C}$ for every set $I$ and every ultrafilter $\mathcal{U}$ on $I$, specifying
+    ultraproducts $\prod_{\mathcal{U}} X_i$ that satisfy transitivity/coherence under Fubini-type iterations
+    of ultrafilters and principal ultrafilter trivializations $\int_{\delta_i} (X_j)_{j \in I} \cong X_i$'
   locator: null
   sub_index: null
   search_text: '(definition of ultracategories and ultraproducts) define an ultracategory $\mathcal{c}$
-    in the sense of makkai and lurie. (hint: an ultracategory is a category $\mathcal{c}$ equipped with
-    an ultrastructure functor $\int_{\mathcal{u}}: \mathcal{c}^i \to \mathcal{c}$ for every set $i$ and
-    every ultrafilter $\mathcal{u}$ on $i$, specifying ultraproducts $\prod_{\mathcal{u}} x_i$ that satisfy
-    transitivity/coherence under fubini-type iterations of ultrafilters and principal ultrafilter trivializations
-    $\int_{\delta_i} (x_j)_{j \in i} \cong x_i$)'
+    in the sense of makkai and lurie.  an ultracategory is a category $\mathcal{c}$ equipped with an ultrastructure
+    functor $\int_{\mathcal{u}}: \mathcal{c}^i \to \mathcal{c}$ for every set $i$ and every ultrafilter
+    $\mathcal{u}$ on $i$, specifying ultraproducts $\prod_{\mathcal{u}} x_i$ that satisfy transitivity/coherence
+    under fubini-type iterations of ultrafilters and principal ultrafilter trivializations $\int_{\delta_i}
+    (x_j)_{j \in i} \cong x_i$'
 - id: people-math-harvard-edu-lurie-papers-conceptual-pdf#002
   text: '(Ultrafunctors and Symmetries of Ultraproducts) Define an ultrafunctor $F: \mathcal{C} \to \mathcal{D}$
-    between ultracategories. (Hint: $F$ is a functor equipped with coherent natural isomorphisms $F\left(\int_{\mathcal{U}}
-    X_i\right) \cong \int_{\mathcal{U}} F(X_i)$ commuting with all ultraproduct operations)'
-  hint: null
+    between ultracategories. '
+  hint: $F$ is a functor equipped with coherent natural isomorphisms $F\left(\int_{\mathcal{U}} X_i\right)
+    \cong \int_{\mathcal{U}} F(X_i)$ commuting with all ultraproduct operations
   locator: null
   sub_index: null
   search_text: '(ultrafunctors and symmetries of ultraproducts) define an ultrafunctor $f: \mathcal{c}
-    \to \mathcal{d}$ between ultracategories. (hint: $f$ is a functor equipped with coherent natural isomorphisms
+    \to \mathcal{d}$ between ultracategories.  $f$ is a functor equipped with coherent natural isomorphisms
     $f\left(\int_{\mathcal{u}} x_i\right) \cong \int_{\mathcal{u}} f(x_i)$ commuting with all ultraproduct
-    operations)'
+    operations'
 - id: people-math-harvard-edu-lurie-papers-conceptual-pdf#003
   text: '(Makkai''s Conceptual Completeness Theorem) State Makkai''s Conceptual Completeness Theorem as
     formulated by Lurie: for any small pretopos $\mathcal{E}$, let $\operatorname{Mod}(\mathcal{E}) =
@@ -61,10 +59,9 @@ exercises:
     ultracategory structure via pointwise ultraproducts in $\mathbf{Set}$. Prove that the evaluation functor
     $$\operatorname{ev}: \mathcal{E} \xrightarrow{\sim} \mathbf{Ult}(\operatorname{Mod}(\mathcal{E}),
     \mathbf{Set})$$ is an equivalence of categories between the small pretopos $\mathcal{E}$ and the category
-    of ultrafunctors from $\operatorname{Mod}(\mathcal{E})$ to $\mathbf{Set}$. (Hint: This proves that
-    a coherent first-order theory $\mathcal{E}$ is entirely and uniquely recoverable from its category
-    of models together with the ultraproduct operations on those models)'
-  hint: null
+    of ultrafunctors from $\operatorname{Mod}(\mathcal{E})$ to $\mathbf{Set}$. '
+  hint: This proves that a coherent first-order theory $\mathcal{E}$ is entirely and uniquely recoverable
+    from its category of models together with the ultraproduct operations on those models
   locator: null
   sub_index: null
   search_text: '(makkai''s conceptual completeness theorem) state makkai''s conceptual completeness theorem
@@ -73,76 +70,73 @@ exercises:
     ultracategory structure via pointwise ultraproducts in $\mathbf{set}$. prove that the evaluation functor
     $$\operatorname{ev}: \mathcal{e} \xrightarrow{\sim} \mathbf{ult}(\operatorname{mod}(\mathcal{e}),
     \mathbf{set})$$ is an equivalence of categories between the small pretopos $\mathcal{e}$ and the category
-    of ultrafunctors from $\operatorname{mod}(\mathcal{e})$ to $\mathbf{set}$. (hint: this proves that
-    a coherent first-order theory $\mathcal{e}$ is entirely and uniquely recoverable from its category
-    of models together with the ultraproduct operations on those models)'
+    of ultrafunctors from $\operatorname{mod}(\mathcal{e})$ to $\mathbf{set}$.  this proves that a coherent
+    first-order theory $\mathcal{e}$ is entirely and uniquely recoverable from its category of models
+    together with the ultraproduct operations on those models'
 - id: people-math-harvard-edu-lurie-papers-conceptual-pdf#004
   text: '(Ultrastructures as Categorical Integration / Stokes'' Formula) Detail Lurie''s formulation of
-    ultrastructures as a family of categorical integration operations. (Hint: Think of ultrafilters as
-    $\{0, 1\}$-valued finitely additive measures $\mathcal{U}: \mathcal{P}(I) \to \{0, 1\}$; the ultraproduct
-    functor $\int_{\mathcal{U}}: \mathcal{C}^I \to \mathcal{C}$ acts as an integration operator with respect
-    to $\mathcal{U}$, and the coherence axioms mirror Fubini''s theorem and Stokes''-type boundary-compatibility
-    conditions on ultracategories)'
-  hint: null
+    ultrastructures as a family of categorical integration operations. '
+  hint: 'Think of ultrafilters as $\{0, 1\}$-valued finitely additive measures $\mathcal{U}: \mathcal{P}(I)
+    \to \{0, 1\}$; the ultraproduct functor $\int_{\mathcal{U}}: \mathcal{C}^I \to \mathcal{C}$ acts as
+    an integration operator with respect to $\mathcal{U}$, and the coherence axioms mirror Fubini''s theorem
+    and Stokes''-type boundary-compatibility conditions on ultracategories'
   locator: null
   sub_index: null
   search_text: '(ultrastructures as categorical integration / stokes'' formula) detail lurie''s formulation
-    of ultrastructures as a family of categorical integration operations. (hint: think of ultrafilters
-    as $\{0, 1\}$-valued finitely additive measures $\mathcal{u}: \mathcal{p}(i) \to \{0, 1\}$; the ultraproduct
+    of ultrastructures as a family of categorical integration operations.  think of ultrafilters as $\{0,
+    1\}$-valued finitely additive measures $\mathcal{u}: \mathcal{p}(i) \to \{0, 1\}$; the ultraproduct
     functor $\int_{\mathcal{u}}: \mathcal{c}^i \to \mathcal{c}$ acts as an integration operator with respect
     to $\mathcal{u}$, and the coherence axioms mirror fubini''s theorem and stokes''-type boundary-compatibility
-    conditions on ultracategories)'
+    conditions on ultracategories'
 - id: people-math-harvard-edu-lurie-papers-conceptual-pdf#005
   text: '(Stone Duality as a Chu Construction / *-Autonomous Duality) Explain how Stone duality and Gödel''s
     completeness theorem can be viewed through the lens of the Chu construction over $\mathbf{Set}$ with
-    dualizing object $2 = \{0, 1\}$. (Hint: A Chu space $(\mathcal{A}, \mathcal{X}, e)$ pairs a syntactic
-    object $\mathcal{A}$ with a semantic space $\mathcal{X}$ via an evaluation pairing $e: \mathcal{A}
-    \times \mathcal{X} \to \{0, 1\}$; in Stone duality, $\mathcal{A}$ is a Boolean algebra, $\mathcal{X}
-    = \operatorname{Hom}_{\mathbf{Bool}}(\mathcal{A}, 2)$ is the set of prime filters/models, and the
-    bidual evaluation $\mathcal{A} \xrightarrow{\sim} \operatorname{Hom}_{\mathbf{Stone}}(\operatorname{Spec}(\mathcal{A}),
-    2)$ is an isomorphism of *-autonomous systems)'
-  hint: null
+    dualizing object $2 = \{0, 1\}$. '
+  hint: 'A Chu space $(\mathcal{A}, \mathcal{X}, e)$ pairs a syntactic object $\mathcal{A}$ with a semantic
+    space $\mathcal{X}$ via an evaluation pairing $e: \mathcal{A} \times \mathcal{X} \to \{0, 1\}$; in
+    Stone duality, $\mathcal{A}$ is a Boolean algebra, $\mathcal{X} = \operatorname{Hom}_{\mathbf{Bool}}(\mathcal{A},
+    2)$ is the set of prime filters/models, and the bidual evaluation $\mathcal{A} \xrightarrow{\sim}
+    \operatorname{Hom}_{\mathbf{Stone}}(\operatorname{Spec}(\mathcal{A}), 2)$ is an isomorphism of *-autonomous
+    systems'
   locator: null
   sub_index: null
   search_text: '(stone duality as a chu construction / *-autonomous duality) explain how stone duality
     and gödel''s completeness theorem can be viewed through the lens of the chu construction over $\mathbf{set}$
-    with dualizing object $2 = \{0, 1\}$. (hint: a chu space $(\mathcal{a}, \mathcal{x}, e)$ pairs a syntactic
+    with dualizing object $2 = \{0, 1\}$.  a chu space $(\mathcal{a}, \mathcal{x}, e)$ pairs a syntactic
     object $\mathcal{a}$ with a semantic space $\mathcal{x}$ via an evaluation pairing $e: \mathcal{a}
     \times \mathcal{x} \to \{0, 1\}$; in stone duality, $\mathcal{a}$ is a boolean algebra, $\mathcal{x}
     = \operatorname{hom}_{\mathbf{bool}}(\mathcal{a}, 2)$ is the set of prime filters/models, and the
     bidual evaluation $\mathcal{a} \xrightarrow{\sim} \operatorname{hom}_{\mathbf{stone}}(\operatorname{spec}(\mathcal{a}),
-    2)$ is an isomorphism of *-autonomous systems)'
+    2)$ is an isomorphism of *-autonomous systems'
 - id: people-math-harvard-edu-lurie-papers-conceptual-pdf#006
   text: '(Ultrafilters as Codensity Monads and Leinster''s Heuristic) State Tom Leinster''s theorem characterizing
     the ultrafilter monad $\beta: \mathbf{Set} \to \mathbf{Set}$ as the codensity monad of the inclusion
-    functor $\mathbf{FinSet} \hookrightarrow \mathbf{Set}$. (Hint: The Stone–Čech compactification $\beta(X)$
-    is the maximal compactification of a discrete set $X$; integrating a bounded or finite-image function
-    $f: X \to \mathbb{R}$ against an ultrafilter $\mathcal{U} \in \beta(X)$ picks out the unique value
-    $r \in \mathbb{R}$ such that $f^{-1}(r) \in \mathcal{U}$, acting as an ultra-mode / point-evaluation
-    on large sets)'
-  hint: null
+    functor $\mathbf{FinSet} \hookrightarrow \mathbf{Set}$. '
+  hint: 'The Stone–Čech compactification $\beta(X)$ is the maximal compactification of a discrete set
+    $X$; integrating a bounded or finite-image function $f: X \to \mathbb{R}$ against an ultrafilter $\mathcal{U}
+    \in \beta(X)$ picks out the unique value $r \in \mathbb{R}$ such that $f^{-1}(r) \in \mathcal{U}$,
+    acting as an ultra-mode / point-evaluation on large sets'
   locator: null
   sub_index: null
   search_text: '(ultrafilters as codensity monads and leinster''s heuristic) state tom leinster''s theorem
     characterizing the ultrafilter monad $\beta: \mathbf{set} \to \mathbf{set}$ as the codensity monad
-    of the inclusion functor $\mathbf{finset} \hookrightarrow \mathbf{set}$. (hint: the stone–čech compactification
+    of the inclusion functor $\mathbf{finset} \hookrightarrow \mathbf{set}$.  the stone–čech compactification
     $\beta(x)$ is the maximal compactification of a discrete set $x$; integrating a bounded or finite-image
     function $f: x \to \mathbb{r}$ against an ultrafilter $\mathcal{u} \in \beta(x)$ picks out the unique
     value $r \in \mathbb{r}$ such that $f^{-1}(r) \in \mathcal{u}$, acting as an ultra-mode / point-evaluation
-    on large sets)'
+    on large sets'
 - id: people-math-harvard-edu-lurie-papers-conceptual-pdf#007
   text: '(Connections to Condensed Mathematics and Liquid Vector Spaces) How does Makkai''s ultracategory
-    framework relate to Clausen–Scholze condensed mathematics? (Hint: Condensed sets are sheaves on the
-    pro-étale site of a point, testable against extremally disconnected compact Hausdorff spaces $\beta
-    I$; in Makkai''s framework, ultraproducts $\prod_{\mathcal{U}} X_i$ handle infinite limits and compact
-    projections without topological pathologies, providing an alternate categorical path to measure theory
-    and liquid vector spaces via ultrafilter integration)'
-  hint: null
+    framework relate to Clausen–Scholze condensed mathematics? '
+  hint: Condensed sets are sheaves on the pro-étale site of a point, testable against extremally disconnected
+    compact Hausdorff spaces $\beta I$; in Makkai's framework, ultraproducts $\prod_{\mathcal{U}} X_i$
+    handle infinite limits and compact projections without topological pathologies, providing an alternate
+    categorical path to measure theory and liquid vector spaces via ultrafilter integration
   locator: null
   sub_index: null
-  search_text: '(connections to condensed mathematics and liquid vector spaces) how does makkai''s ultracategory
-    framework relate to clausen–scholze condensed mathematics? (hint: condensed sets are sheaves on the
-    pro-étale site of a point, testable against extremally disconnected compact hausdorff spaces $\beta
-    i$; in makkai''s framework, ultraproducts $\prod_{\mathcal{u}} x_i$ handle infinite limits and compact
-    projections without topological pathologies, providing an alternate categorical path to measure theory
-    and liquid vector spaces via ultrafilter integration)'
+  search_text: (connections to condensed mathematics and liquid vector spaces) how does makkai's ultracategory
+    framework relate to clausen–scholze condensed mathematics?  condensed sets are sheaves on the pro-étale
+    site of a point, testable against extremally disconnected compact hausdorff spaces $\beta i$; in makkai's
+    framework, ultraproducts $\prod_{\mathcal{u}} x_i$ handle infinite limits and compact projections
+    without topological pathologies, providing an alternate categorical path to measure theory and liquid
+    vector spaces via ultrafilter integration
