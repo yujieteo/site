@@ -1,0 +1,39 @@
+url: https://ncatlab.org/nlab/show/twisted+cohomology
+title: twisted cohomology in nlab.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-twisted-cohomology#000
+  text: What is twisted cohomology?
+  hint: Homotopy types of spaces of sections in comparison to mapping spaces. The basic assumption is
+    that for nonabelian cohomology, one looks at hom-spaces. For generalised Eilnberg-Steenrod cohomology
+    one looks at stabilisations. But for twisted cohomology one looks at spaces of sections, not just
+    hom spaces.
+  locator: null
+  sub_index: null
+  search_text: what is twisted cohomology? homotopy types of spaces of sections in comparison to mapping
+    spaces. the basic assumption is that for nonabelian cohomology, one looks at hom-spaces. for generalised
+    eilnberg-steenrod cohomology one looks at stabilisations. but for twisted cohomology one looks at
+    spaces of sections, not just hom spaces.
+- id: ncatlab-org-nlab-show-twisted-cohomology#001
+  text: What is stable cohomology?
+  hint: Cohomology by the Eilenberg-Steenrod axioms. This is the lowest order Goodwillie approximation
+    to nonabelian cohomology. A cocycle in nonabelian cohomology is a map to any homotopy type. A cocycle
+    in generalised Eilenberg-Steenrod cohomology is a map into a stable homotopy type.
+  locator: null
+  sub_index: null
+  search_text: what is stable cohomology? cohomology by the eilenberg-steenrod axioms. this is the lowest
+    order goodwillie approximation to nonabelian cohomology. a cocycle in nonabelian cohomology is a map
+    to any homotopy type. a cocycle in generalised eilenberg-steenrod cohomology is a map into a stable
+    homotopy type.
+- id: ncatlab-org-nlab-show-twisted-cohomology#002
+  text: What is the hope of Chern-Weil theory in nonabelian cohomology?
+  hint: Chern-Weil theory approximate classes of principal infinity-bundles not just by universal characteristic
+    classes. One wwants to consider the whole Goodwillie-Taylor tower of approximations.
+  locator: null
+  sub_index: null
+  search_text: what is the hope of chern-weil theory in nonabelian cohomology? chern-weil theory approximate
+    classes of principal infinity-bundles not just by universal characteristic classes. one wwants to
+    consider the whole goodwillie-taylor tower of approximations.

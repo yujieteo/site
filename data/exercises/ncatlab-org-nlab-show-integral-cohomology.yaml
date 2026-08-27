@@ -1,0 +1,30 @@
+url: https://ncatlab.org/nlab/show/integral+cohomology
+title: integral cohomology
+note: nlab.
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-integral-cohomology#000
+  text: What is integral cohomology?
+  hint: Ordinary version of Whitehead-generalized cohomology. The one represented by the Eilenberg-Maclane
+    spectrum with coefficeints in the integers.
+  locator: null
+  sub_index: null
+  search_text: what is integral cohomology? ordinary version of whitehead-generalized cohomology. the
+    one represented by the eilenberg-maclane spectrum with coefficeints in the integers.
+- id: ncatlab-org-nlab-show-integral-cohomology#001
+  text: What is the incarnation of integral cohomology?
+  hint: Singular cohomology or Cech cohomology with coefficients in the integers.
+  locator: null
+  sub_index: null
+  search_text: what is the incarnation of integral cohomology? singular cohomology or cech cohomology
+    with coefficients in the integers.
+- id: ncatlab-org-nlab-show-integral-cohomology#002
+  text: What is the geometry model of integral cohomology?
+  hint: In degree 2, classifies complex line bundles. In degree 3, classify complex line bundle gerbes
+    or line 2-bundles. Else, line circle n-bundles.
+  locator: null
+  sub_index: null
+  search_text: what is the geometry model of integral cohomology? in degree 2, classifies complex line
+    bundles. in degree 3, classify complex line bundle gerbes or line 2-bundles. else, line circle n-bundles.

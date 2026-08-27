@@ -3613,6 +3613,40 @@ https://empslocal.ex.ac.uk/people/staff/mrwatkin/zeta/deninger3.pdf, Motivic L-F
 	2. **Connes:** Formulates an operator-algebraic trace formula for the scaling action of the idèle class group $C_K$, where zeros of $L(s)$ appear as an absorption spectrum (missing spectral lines).
 	(Hint: Both frameworks use periodic orbits of length $\log N(\mathfrak{p})$ to model prime ideals $\mathfrak{p}$ and translate the Riemann–Weil explicit formulas into Lefschetz-type trace formulas).
 
+https://ncatlab.org/nlab/show/local+system, local systems in nlab.
+	- What happens when one uses a locally constant sheaf? (Hint: Cohomology with coefficients ina. local system is the corresponding sheaf cohomology.)
+	- What is a locally constant $\infty$-stack? (Hint: Using Lurie's theory, a generalisation of a system of coefficients for twisted cohomology.)
+	- What is the requirement for local systems to correspond to functors out of the fundamental groupoid? (Hint: You need a Galois theory. These are equivalently the flat connections. This is called the Riemann-Hilbert correspondences.)
+	- What is the notion of cohomology that exists intrinsically in any $(\infty,1)$-topos? (Hint: there iss a duality between the global sections functor and the constant stack funcotr for the termianl geometric morphism.)
+	- What is the notion of cohomology and local systems in abelian contexts? (Hint: It is a locally constant sheaf on a topological space. The stalks are finite dimensional vector space. REgarded as a sheaf with values in abelian groups, a linear local system serves as the coefficient for abelian sheaf cohomology. This is nothing but the intrinsic cohomology of a higher dimensional topos with ceofficients in the Eilenberg-Maclane object.)
+	- What happens on the case of a conencted topological space? (Hint: Sheaf of sections of a finite dimensional vector bundle equipped with flat connection ona. bundle. This corresponds to the representations of the fundamental group on a typical stalk. On an analytic manifold or a variety. There is an equivalence of categories of non-singular coherent $D_X$-modules and local systems on $X$.)
+	- What else should one look for? (Hint: Flat vector bundles, twisted cohomology and local coefficient bundles.)
+
+https://ncatlab.org/nlab/show/twisted+cohomology, twisted cohomology in nlab.
+	- What is twisted cohomology? (Hint: Homotopy types of spaces of sections in comparison to mapping spaces. The basic assumption is that for nonabelian cohomology, one looks at hom-spaces. For generalised Eilnberg-Steenrod cohomology one looks at stabilisations. But for twisted cohomology one looks at spaces of sections, not just hom spaces.)
+	- What is stable cohomology? (Hint: Cohomology by the Eilenberg-Steenrod axioms. This is the lowest order Goodwillie approximation to nonabelian cohomology. A cocycle in nonabelian cohomology is a map to any homotopy type. A cocycle in generalised Eilenberg-Steenrod cohomology is a map into a stable homotopy type.)
+	- What is the hope of Chern-Weil theory in nonabelian cohomology? (Hint: Chern-Weil theory approximate classes of principal infinity-bundles not just by universal characteristic classes. One wwants to consider the whole Goodwillie-Taylor tower of approximations.)
+
+https://ncatlab.org/nlab/show/Chern-Weil+theory, Chern-Weil theory, nlab.
+	- What is Chern-Weil theory? (Hint: Refine characteristic classes of principal bundles in ordinary cohomology to ordinary differential cohomology.)
+	- How does one build a Chern-Weil theory? (Hint: Choose a connection. Evaluate its curvature in the invariant polynomials of the Lie algebra. Its de Rham cohomology class refines a characteristic class in integral cohomology.)
+
+https://ncatlab.org/nlab/show/integral+cohomology, integral cohomology, nlab.
+	- What is integral cohomology? (Hint: Ordinary version of Whitehead-generalized cohomology. The one represented by the Eilenberg-Maclane spectrum with coefficeints in the integers.)
+	- What is the incarnation of integral cohomology? (Hint: Singular cohomology or Cech cohomology with coefficients in the integers.)
+	- What is the geometry model of integral cohomology? (Hint: In degree 2, classifies complex line bundles. In degree 3, classify complex line bundle gerbes or line 2-bundles. Else, line circle n-bundles.)
+
+https://ncatlab.org/nlab/show/twisted+K-theory, twisted K-theory in nlab.
+	- What is twisted K-theory? (Hint: Twisted cohomology in topological K-theory.) 
+	- What is the most famous twist in K-theory? (Hint: The most famous twist is by a class in degree 3 ordinary cohomology. Geometrically a $U(1)$-bundle gerbe. Or a circle 2-group princiapl 2 bundle. This failure to glue cleanly is tracked by a 3D grid of data where one has $g_{ab} g_{bc} g_{ca} = C_{abc} I$ to be off by a phase factor where $C_{abc}$ is off by absolute value $1$.) 
+
+https://ncatlab.org/nlab/show/local+coefficient+bundle, local coefficient bundle in nlab.
+	- What is a local coefficient bundle? (Hint: A section of a $V$-fiber $\infty$-bundle $E \rightarrow X$. The cohomology class chosen is the twist. The prototypical simpler example is the Mobius band in ordinary line bundle theory.)
+
+https://ncatlab.org/nlab/show/homotopy+type, homotopy type.
+	- What is the traditional definition of homotopy types? (Hint: Topological space up to weak equivalence.)
+	- What is the definition of homotopy types via the homotopy hypothesis? (Hint: $\infty$-groupoids. Otherwise it is an $n$-truncated object, all homotopy groups for topological spaces above degree $n$ are trivial for the cofiniteness condition.)
+
 https://arxiv.org/pdf/1107.5710, Hidden Hodge Symmetries and Hodge Correlators by Goncharov.
 	- What is the analogy between Hodge and etale theories? (Hint: The category of $l$-adic Galois modules is analogous to the abelian category $\mathcal{MH}_\mathbb{R}$ of real mixed Hodge structures. One has the absolute Galois group over the rationals $\mathrm{Gal}(\mathbb{\overline{Q}}{Q})$) acting on the etale cohomology for $X$ a variety over $\mathbb{Q}$. This is equivalent to the statement tha tthe Hodge Galois group has a real mixed Hodge structure. Beilinson emphasised that we do not have a Hodge site.)
 	- How does one decompose a real Hodge structure? (Hint: Direct sum of weight $n$ pure structure.)
@@ -3631,3 +3665,19 @@ https://arxiv.org/pdf/1107.5710, Hidden Hodge Symmetries and Hodge Correlators b
 	- What are the category of harmonic bundles? (Hint: Graded category whose objects are semisimple local systems and their shifts. The morphisms are given by hom sets of graded vector spaces.)
 	- What is a Hodge correlator map? (Hint: a map from the zeroth cyclic homology of harmonic bundles tensored with a pairing. One has to study the cyclic homology of a small $dg$-category. With the pairing one can get a cohomology class. One also has a homotopy action of the twistor Galois group by $A_\infty$ class. The restriction to the subgroup $\mathbb{C}^*$ is the Simpson action on the category of harmonic bundles. There are restrictions to the Lie algebra on the unipotent radical and the action is functorial with respect to the pullbacks.)
 	- How does one construct a Hodge correlator map? (Hint: Use a decorated plane trivalent tree where the vertices are the harmonic bundles and the oriented sides are the graded vector space $\mathrm{Ext}^*(V_i, V_{i+1}). Take a plen trivalent tree dual to the tirangulation of the polygon. The complement ot the plane trivalent tree is ta union of connected domains parametrised by the vertices of the polygon and thus decorated by the harmonic bundles. The corresponding harmonic bundles is such that the cyclic order of the bundles agree with the clockwise rotation. One constructes a natural trace map invariant under the cyclic shift. For each edge, choose a graded splitting of the de Rham complex, then there is a decomposable class with a harmonic representative.$)
+
+https://www.mimuw.edu.pl/~pwit/TOK/sem5/files/Loday_cht_1.pdf, Cyclic Homology — Part I
+
+https://www.mimuw.edu.pl/~pwit/TOK/sem5/files/Loday_cht_2.pdf, Cyclic Homology — Part II
+
+https://www.mimuw.edu.pl/~pwit/TOK/sem5/files/Wodzicki_cht_1.pdf, Homology of Symbols
+
+https://www.mimuw.edu.pl/~pwit/TOK/sem6/files/Baum_ekk.pdf, Equivariant KK-Theory
+
+https://www.mimuw.edu.pl/~pwit/TOK/sem7/files/Maszczyk_gs.pdf, Hopf–Galois
+
+https://www.mimuw.edu.pl/~pwit/TOK/sem7/files/Brzezinski_gs.pdf, Hopf–Galois II
+
+https://www.mimuw.edu.pl/~pwit/TOK/sem8/files/Meyer_bcclcqg.pdf, Noncommutative Algebraic Topology
+
+https://alainconnes.org/wp-content/uploads/Cyclic-homology-Serre-local-2014.pdf, Cyclic Homology, Connes.

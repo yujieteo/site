@@ -1,0 +1,25 @@
+url: https://ncatlab.org/nlab/show/twisted+K-theory
+title: twisted K-theory in nlab.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-twisted-k-theory#000
+  text: What is twisted K-theory?
+  hint: Twisted cohomology in topological K-theory.
+  locator: null
+  sub_index: null
+  search_text: what is twisted k-theory? twisted cohomology in topological k-theory.
+- id: ncatlab-org-nlab-show-twisted-k-theory#001
+  text: What is the most famous twist in K-theory?
+  hint: The most famous twist is by a class in degree 3 ordinary cohomology. Geometrically a $U(1)$-bundle
+    gerbe. Or a circle 2-group princiapl 2 bundle. This failure to glue cleanly is tracked by a 3D grid
+    of data where one has $g_{ab} g_{bc} g_{ca} = C_{abc} I$ to be off by a phase factor where $C_{abc}$
+    is off by absolute value $1$.
+  locator: null
+  sub_index: null
+  search_text: what is the most famous twist in k-theory? the most famous twist is by a class in degree
+    3 ordinary cohomology. geometrically a $u(1)$-bundle gerbe. or a circle 2-group princiapl 2 bundle.
+    this failure to glue cleanly is tracked by a 3d grid of data where one has $g_{ab} g_{bc} g_{ca} =
+    c_{abc} i$ to be off by a phase factor where $c_{abc}$ is off by absolute value $1$.

@@ -1,0 +1,22 @@
+url: https://ncatlab.org/nlab/show/homotopy+type
+title: homotopy type.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-homotopy-type#000
+  text: What is the traditional definition of homotopy types?
+  hint: Topological space up to weak equivalence.
+  locator: null
+  sub_index: null
+  search_text: what is the traditional definition of homotopy types? topological space up to weak equivalence.
+- id: ncatlab-org-nlab-show-homotopy-type#001
+  text: What is the definition of homotopy types via the homotopy hypothesis?
+  hint: $\infty$-groupoids. Otherwise it is an $n$-truncated object, all homotopy groups for topological
+    spaces above degree $n$ are trivial for the cofiniteness condition.
+  locator: null
+  sub_index: null
+  search_text: what is the definition of homotopy types via the homotopy hypothesis? $\infty$-groupoids.
+    otherwise it is an $n$-truncated object, all homotopy groups for topological spaces above degree $n$
+    are trivial for the cofiniteness condition.

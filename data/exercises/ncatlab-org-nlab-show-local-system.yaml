@@ -1,0 +1,71 @@
+url: https://ncatlab.org/nlab/show/local+system
+title: local systems in nlab.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-local-system#000
+  text: What happens when one uses a locally constant sheaf?
+  hint: Cohomology with coefficients ina. local system is the corresponding sheaf cohomology.
+  locator: null
+  sub_index: null
+  search_text: what happens when one uses a locally constant sheaf? cohomology with coefficients ina.
+    local system is the corresponding sheaf cohomology.
+- id: ncatlab-org-nlab-show-local-system#001
+  text: What is a locally constant $\infty$-stack?
+  hint: Using Lurie's theory, a generalisation of a system of coefficients for twisted cohomology.
+  locator: null
+  sub_index: null
+  search_text: what is a locally constant $\infty$-stack? using lurie's theory, a generalisation of a
+    system of coefficients for twisted cohomology.
+- id: ncatlab-org-nlab-show-local-system#002
+  text: What is the requirement for local systems to correspond to functors out of the fundamental groupoid?
+  hint: You need a Galois theory. These are equivalently the flat connections. This is called the Riemann-Hilbert
+    correspondences.
+  locator: null
+  sub_index: null
+  search_text: what is the requirement for local systems to correspond to functors out of the fundamental
+    groupoid? you need a galois theory. these are equivalently the flat connections. this is called the
+    riemann-hilbert correspondences.
+- id: ncatlab-org-nlab-show-local-system#003
+  text: What is the notion of cohomology that exists intrinsically in any $(\infty,1)$-topos?
+  hint: there iss a duality between the global sections functor and the constant stack funcotr for the
+    termianl geometric morphism.
+  locator: null
+  sub_index: null
+  search_text: what is the notion of cohomology that exists intrinsically in any $(\infty,1)$-topos? there
+    iss a duality between the global sections functor and the constant stack funcotr for the termianl
+    geometric morphism.
+- id: ncatlab-org-nlab-show-local-system#004
+  text: What is the notion of cohomology and local systems in abelian contexts?
+  hint: It is a locally constant sheaf on a topological space. The stalks are finite dimensional vector
+    space. REgarded as a sheaf with values in abelian groups, a linear local system serves as the coefficient
+    for abelian sheaf cohomology. This is nothing but the intrinsic cohomology of a higher dimensional
+    topos with ceofficients in the Eilenberg-Maclane object.
+  locator: null
+  sub_index: null
+  search_text: what is the notion of cohomology and local systems in abelian contexts? it is a locally
+    constant sheaf on a topological space. the stalks are finite dimensional vector space. regarded as
+    a sheaf with values in abelian groups, a linear local system serves as the coefficient for abelian
+    sheaf cohomology. this is nothing but the intrinsic cohomology of a higher dimensional topos with
+    ceofficients in the eilenberg-maclane object.
+- id: ncatlab-org-nlab-show-local-system#005
+  text: What happens on the case of a conencted topological space?
+  hint: Sheaf of sections of a finite dimensional vector bundle equipped with flat connection ona. bundle.
+    This corresponds to the representations of the fundamental group on a typical stalk. On an analytic
+    manifold or a variety. There is an equivalence of categories of non-singular coherent $D_X$-modules
+    and local systems on $X$.
+  locator: null
+  sub_index: null
+  search_text: what happens on the case of a conencted topological space? sheaf of sections of a finite
+    dimensional vector bundle equipped with flat connection ona. bundle. this corresponds to the representations
+    of the fundamental group on a typical stalk. on an analytic manifold or a variety. there is an equivalence
+    of categories of non-singular coherent $d_x$-modules and local systems on $x$.
+- id: ncatlab-org-nlab-show-local-system#006
+  text: What else should one look for?
+  hint: Flat vector bundles, twisted cohomology and local coefficient bundles.
+  locator: null
+  sub_index: null
+  search_text: what else should one look for? flat vector bundles, twisted cohomology and local coefficient
+    bundles.

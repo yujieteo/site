@@ -1,0 +1,16 @@
+url: https://ncatlab.org/nlab/show/local+coefficient+bundle
+title: local coefficient bundle in nlab.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-local-coefficient-bundle#000
+  text: What is a local coefficient bundle?
+  hint: A section of a $V$-fiber $\infty$-bundle $E \rightarrow X$. The cohomology class chosen is the
+    twist. The prototypical simpler example is the Mobius band in ordinary line bundle theory.
+  locator: null
+  sub_index: null
+  search_text: what is a local coefficient bundle? a section of a $v$-fiber $\infty$-bundle $e \rightarrow
+    x$. the cohomology class chosen is the twist. the prototypical simpler example is the mobius band
+    in ordinary line bundle theory.

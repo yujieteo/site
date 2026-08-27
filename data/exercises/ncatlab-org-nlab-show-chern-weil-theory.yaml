@@ -1,0 +1,24 @@
+url: https://ncatlab.org/nlab/show/Chern-Weil+theory
+title: Chern-Weil theory
+note: nlab.
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-chern-weil-theory#000
+  text: What is Chern-Weil theory?
+  hint: Refine characteristic classes of principal bundles in ordinary cohomology to ordinary differential
+    cohomology.
+  locator: null
+  sub_index: null
+  search_text: what is chern-weil theory? refine characteristic classes of principal bundles in ordinary
+    cohomology to ordinary differential cohomology.
+- id: ncatlab-org-nlab-show-chern-weil-theory#001
+  text: How does one build a Chern-Weil theory?
+  hint: Choose a connection. Evaluate its curvature in the invariant polynomials of the Lie algebra. Its
+    de Rham cohomology class refines a characteristic class in integral cohomology.
+  locator: null
+  sub_index: null
+  search_text: how does one build a chern-weil theory? choose a connection. evaluate its curvature in
+    the invariant polynomials of the lie algebra. its de rham cohomology class refines a characteristic
+    class in integral cohomology.
