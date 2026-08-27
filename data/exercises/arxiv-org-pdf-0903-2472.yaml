@@ -1,0 +1,378 @@
+url: https://arxiv.org/pdf/0903.2472
+title: Exact Results for Perturbative Chern-Simons Theory with Complex Gauge Group by Dimofte
+note: Gukov, Lenells, and Zagier
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-0903-2472#000
+  text: '(Complex Connection Decomposition) Let $\mathcal{A} \in \Omega^1(M, \mathfrak{sl}_2(\mathbb{C}))$
+    be a complex connection on a 3-manifold $M$. Decompose $\mathcal{A} = A + iB$ into $\mathfrak{su}(2)$-valued
+    1-forms. (Hint: $A$ is a compact gauge connection and $B$ is a frame field)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(complex connection decomposition) let $\mathcal{a} \in \omega^1(m, \mathfrak{sl}_2(\mathbb{c}))$
+    be a complex connection on a 3-manifold $m$. decompose $\mathcal{a} = a + ib$ into $\mathfrak{su}(2)$-valued
+    1-forms. (hint: $a$ is a compact gauge connection and $b$ is a frame field)'
+- id: arxiv-org-pdf-0903-2472#001
+  text: '(Complex Chern-Simons Action) Write the classical Chern–Simons action $\operatorname{CS}(\mathcal{A})
+    = \frac{1}{4\pi}\int_M \operatorname{Tr}(\mathcal{A} \wedge d\mathcal{A} + \frac{2}{3}\mathcal{A}
+    \wedge \mathcal{A} \wedge \mathcal{A})$. (Hint: The Euler–Lagrange equations $\delta \operatorname{CS}
+    = 0$ yield the flat connection condition $\mathcal{F} = d\mathcal{A} + \mathcal{A} \wedge \mathcal{A}
+    = 0$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(complex chern-simons action) write the classical chern–simons action $\operatorname{cs}(\mathcal{a})
+    = \frac{1}{4\pi}\int_m \operatorname{tr}(\mathcal{a} \wedge d\mathcal{a} + \frac{2}{3}\mathcal{a}
+    \wedge \mathcal{a} \wedge \mathcal{a})$. (hint: the euler–lagrange equations $\delta \operatorname{cs}
+    = 0$ yield the flat connection condition $\mathcal{f} = d\mathcal{a} + \mathcal{a} \wedge \mathcal{a}
+    = 0$)'
+- id: arxiv-org-pdf-0903-2472#002
+  text: '(Holomorphic Factorization) Show that the physical partition function with action $S = \frac{t}{2}\operatorname{CS}(\mathcal{A})
+    + \frac{\bar{t}}{2}\operatorname{CS}(\bar{\mathcal{A}})$ factorizes as $Z(M) = Z(M; t)Z(M; \bar{t})$.
+    (Hint: Chiral components decouple in perturbation theory)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(holomorphic factorization) show that the physical partition function with action $s =
+    \frac{t}{2}\operatorname{cs}(\mathcal{a}) + \frac{\bar{t}}{2}\operatorname{cs}(\bar{\mathcal{a}})$
+    factorizes as $z(m) = z(m; t)z(m; \bar{t})$. (hint: chiral components decouple in perturbation theory)'
+- id: arxiv-org-pdf-0903-2472#003
+  text: '(Expansion Parameter) Define the semiclassical expansion parameter $\hbar = \frac{2\pi i}{t}$
+    for complex Chern–Simons theory. (Hint: As $t \to \infty$, $\hbar \to 0$ plays the role of Planck''s
+    constant)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(expansion parameter) define the semiclassical expansion parameter $\hbar = \frac{2\pi
+    i}{t}$ for complex chern–simons theory. (hint: as $t \to \infty$, $\hbar \to 0$ plays the role of
+    planck''s constant)'
+- id: arxiv-org-pdf-0903-2472#004
+  text: '(All-Loop Asymptotic Ansatz) State the asymptotic expansion $Z^{(\alpha)}(M; \hbar) = \exp(\frac{1}{\hbar}S_0^{(\alpha)}
+    - \frac{1}{2}\delta^{(\alpha)}\log \hbar + \sum_{n=0}^\infty S_{n+1}^{(\alpha)}\hbar^n)$ around a
+    flat connection $\alpha$. (Hint: $S_0$ is the classical action, $S_1$ is the 1-loop determinant, and
+    $S_{n+1}$ is the $(n+1)$-loop vacuum contribution)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(all-loop asymptotic ansatz) state the asymptotic expansion $z^{(\alpha)}(m; \hbar) =
+    \exp(\frac{1}{\hbar}s_0^{(\alpha)} - \frac{1}{2}\delta^{(\alpha)}\log \hbar + \sum_{n=0}^\infty s_{n+1}^{(\alpha)}\hbar^n)$
+    around a flat connection $\alpha$. (hint: $s_0$ is the classical action, $s_1$ is the 1-loop determinant,
+    and $s_{n+1}$ is the $(n+1)$-loop vacuum contribution)'
+- id: arxiv-org-pdf-0903-2472#005
+  text: '(1-Loop Torsion Identification) Identify the 1-loop coefficient $S_1^{(\alpha)}$ with the Ray–Singer
+    / Reidemeister torsion $\tau(M; \alpha)$. (Hint: Gaussian path integration around $\mathcal{A}^{(\alpha)}$
+    yields the regularized determinant of the covariant Laplacian)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(1-loop torsion identification) identify the 1-loop coefficient $s_1^{(\alpha)}$ with
+    the ray–singer / reidemeister torsion $\tau(m; \alpha)$. (hint: gaussian path integration around $\mathcal{a}^{(\alpha)}$
+    yields the regularized determinant of the covariant laplacian)'
+- id: arxiv-org-pdf-0903-2472#006
+  text: '(Torus Boundary Holonomies) For a knot complement $M = S^3 \setminus K$ with boundary $T^2 =
+    \partial M$, parametrize abelian $\mathrm{SL}(2,\mathbb{C})$ holonomies by diagonal matrices with
+    eigenvalues $m$ (meridian) and $l$ (longitude). (Hint: Commuting $\mathrm{SL}(2,\mathbb{C})$ matrices
+    diagonalize simultaneously)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(torus boundary holonomies) for a knot complement $m = s^3 \setminus k$ with boundary
+    $t^2 = \partial m$, parametrize abelian $\mathrm{sl}(2,\mathbb{c})$ holonomies by diagonal matrices
+    with eigenvalues $m$ (meridian) and $l$ (longitude). (hint: commuting $\mathrm{sl}(2,\mathbb{c})$
+    matrices diagonalize simultaneously)'
+- id: arxiv-org-pdf-0903-2472#007
+  text: '(Classical A-Polynomial) Define the $A$-polynomial $A(l, m) = 0$ as the defining polynomial of
+    the $\mathrm{SL}(2, \mathbb{C})$ character variety restricted to the boundary torus. (Hint: It cuts
+    out boundary eigenvalue pairs $(l, m)$ extending to flat connections on the interior of $M$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(classical a-polynomial) define the $a$-polynomial $a(l, m) = 0$ as the defining polynomial
+    of the $\mathrm{sl}(2, \mathbb{c})$ character variety restricted to the boundary torus. (hint: it
+    cuts out boundary eigenvalue pairs $(l, m)$ extending to flat connections on the interior of $m$)'
+- id: arxiv-org-pdf-0903-2472#008
+  text: '(Logarithmic Holonomy Coordinates) Define $u = \log m$ and $v = \log l$ on the boundary torus
+    $T^2$. (Hint: The symplectic form on the boundary phase space is $\omega = \frac{1}{4\pi\hbar} du
+    \wedge dv$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(logarithmic holonomy coordinates) define $u = \log m$ and $v = \log l$ on the boundary
+    torus $t^2$. (hint: the symplectic form on the boundary phase space is $\omega = \frac{1}{4\pi\hbar}
+    du \wedge dv$)'
+- id: arxiv-org-pdf-0903-2472#009
+  text: '(Canonical Commutation Relations) State the quantum commutation relation $[\hat{u}, \hat{v}]
+    = \hbar$ for the operators $\hat{u} = \log \hat{m}$ and $\hat{v} = \log \hat{l}$. (Hint: On functions
+    of $u$, represent $\hat{u} = u$ and $\hat{v} = \hbar \partial_u$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(canonical commutation relations) state the quantum commutation relation $[\hat{u}, \hat{v}]
+    = \hbar$ for the operators $\hat{u} = \log \hat{m}$ and $\hat{v} = \log \hat{l}$. (hint: on functions
+    of $u$, represent $\hat{u} = u$ and $\hat{v} = \hbar \partial_u$)'
+- id: arxiv-org-pdf-0903-2472#010
+  text: '(Quantum Operator q-Commutator) Deduce the $q$-commutation relation $\hat{l}\hat{m} = q \hat{m}\hat{l}$
+    where $q = e^\hbar$. (Hint: Apply the Baker–Campbell–Hausdorff formula to $e^{\hat{v}}e^{\hat{u}}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(quantum operator q-commutator) deduce the $q$-commutation relation $\hat{l}\hat{m} =
+    q \hat{m}\hat{l}$ where $q = e^\hbar$. (hint: apply the baker–campbell–hausdorff formula to $e^{\hat{v}}e^{\hat{u}}$)'
+- id: arxiv-org-pdf-0903-2472#011
+  text: '(The Quantum \hat{A}-Polynomial) Define the quantum operator $\widehat{A}(\hat{l}, \hat{m}; q)$
+    satisfying the difference equation $\widehat{A} Z(M; \hbar, u) = 0$. (Hint: $\widehat{A}$ is an operator-ordered
+    polynomial in $\hat{l}$ and $\hat{m}$ with coefficients in $\mathbb{Z}[q^{\pm 1/2}]$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the quantum \hat{a}-polynomial) define the quantum operator $\widehat{a}(\hat{l}, \hat{m};
+    q)$ satisfying the difference equation $\widehat{a} z(m; \hbar, u) = 0$. (hint: $\widehat{a}$ is an
+    operator-ordered polynomial in $\hat{l}$ and $\hat{m}$ with coefficients in $\mathbb{z}[q^{\pm 1/2}]$)'
+- id: arxiv-org-pdf-0903-2472#012
+  text: '(Recovering Classical A-Polynomial) Show that the $\hbar \to 0$ limit of $\widehat{A}(\hat{l},
+    \hat{m}; q) Z = 0$ recovers $A(e^{S_0''(u)}, e^u) = 0$. (Hint: The shift $\hat{l} = e^{\hbar \partial_u}$
+    acts on $e^{S_0(u)/\hbar}$ by multiplication by $e^{S_0''(u)}$ at leading order)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(recovering classical a-polynomial) show that the $\hbar \to 0$ limit of $\widehat{a}(\hat{l},
+    \hat{m}; q) z = 0$ recovers $a(e^{s_0''(u)}, e^u) = 0$. (hint: the shift $\hat{l} = e^{\hbar \partial_u}$
+    acts on $e^{s_0(u)/\hbar}$ by multiplication by $e^{s_0''(u)}$ at leading order)'
+- id: arxiv-org-pdf-0903-2472#013
+  text: '(Action-Slope Relation) Verify the action-slope identity $S_0''(u) = v = \log l$. (Hint: Differentiating
+    the classical Chern–Simons action with respect to boundary holonomy $u$ produces the conjugate holonomy
+    $v$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(action-slope relation) verify the action-slope identity $s_0''(u) = v = \log l$. (hint:
+    differentiating the classical chern–simons action with respect to boundary holonomy $u$ produces the
+    conjugate holonomy $v$)'
+- id: arxiv-org-pdf-0903-2472#014
+  text: '(Recursion for S_n) Explain how the operator equation $\widehat{A} Z = 0$ iteratively determines
+    the higher-loop coefficients $S_n(u)$ by recursion. (Hint: Expand $\widehat{A}$ order-by-order in
+    powers of $\hbar$ and match coefficients)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(recursion for s_n) explain how the operator equation $\widehat{a} z = 0$ iteratively
+    determines the higher-loop coefficients $s_n(u)$ by recursion. (hint: expand $\widehat{a}$ order-by-order
+    in powers of $\hbar$ and match coefficients)'
+- id: arxiv-org-pdf-0903-2472#015
+  text: '(Ideal Tetrahedron Modulus) Let $\Delta(z)$ be an ideal tetrahedron in hyperbolic 3-space $\mathbb{H}^3$.
+    Define its complex shape parameter $z \in \mathbb{C} \setminus \{0, 1\}$ as the cross-ratio of its
+    four ideal vertices on $\mathbb{CP}^1$. (Hint: The three pairs of opposite dihedral angles are determined
+    by $z, \frac{1}{1-z}, 1-\frac{1}{z}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(ideal tetrahedron modulus) let $\delta(z)$ be an ideal tetrahedron in hyperbolic 3-space
+    $\mathbb{h}^3$. define its complex shape parameter $z \in \mathbb{c} \setminus \{0, 1\}$ as the cross-ratio
+    of its four ideal vertices on $\mathbb{cp}^1$. (hint: the three pairs of opposite dihedral angles
+    are determined by $z, \frac{1}{1-z}, 1-\frac{1}{z}$)'
+- id: arxiv-org-pdf-0903-2472#016
+  text: '(Tetrahedron Hyperbolic Volume) Write the hyperbolic volume $\operatorname{Vol}(\Delta(z))$ using
+    the Bloch–Wigner dilogarithm $D(z) = \operatorname{Im}(\operatorname{Li}_2(z)) + \arg(1-z)\log|z|$.
+    (Hint: $\operatorname{Vol}(\Delta(z)) = D(z)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(tetrahedron hyperbolic volume) write the hyperbolic volume $\operatorname{vol}(\delta(z))$
+    using the bloch–wigner dilogarithm $d(z) = \operatorname{im}(\operatorname{li}_2(z)) + \arg(1-z)\log|z|$.
+    (hint: $\operatorname{vol}(\delta(z)) = d(z)$)'
+- id: arxiv-org-pdf-0903-2472#017
+  text: '(Thurston''s Gluing Equations) State Thurston''s edge gluing equations $\prod_{j=1}^N z_j^{A_{ij}}(1-z_j)^{B_{ij}}
+    = \pm 1$ for a triangulated 3-manifold $M = \bigcup_{j=1}^N \Delta_j(z_j)$. (Hint: The total dihedral
+    angle sum around each interior geodesic edge must equal $2\pi$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(thurston''s gluing equations) state thurston''s edge gluing equations $\prod_{j=1}^n
+    z_j^{a_{ij}}(1-z_j)^{b_{ij}} = \pm 1$ for a triangulated 3-manifold $m = \bigcup_{j=1}^n \delta_j(z_j)$.
+    (hint: the total dihedral angle sum around each interior geodesic edge must equal $2\pi$)'
+- id: arxiv-org-pdf-0903-2472#018
+  text: '(Completeness Condition) State the boundary completeness condition relating the shape parameters
+    $z_j$ to the boundary meridian eigenvalue $m$. (Hint: The holonomy along a contractible boundary cycle
+    must equal $1$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(completeness condition) state the boundary completeness condition relating the shape
+    parameters $z_j$ to the boundary meridian eigenvalue $m$. (hint: the holonomy along a contractible
+    boundary cycle must equal $1$)'
+- id: arxiv-org-pdf-0903-2472#019
+  text: '(Figure-8 Knot Gluing Equations) Write Thurston''s equations for the figure-8 knot complement
+    $M = S^3 \setminus 4_1$ using two ideal tetrahedra of shapes $z_1, z_2$. (Hint: $z_1(1-z_1)z_2(1-z_2)
+    = 1$ and $\frac{z_1(1-z_2)}{z_2(1-z_1)} = m^2$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(figure-8 knot gluing equations) write thurston''s equations for the figure-8 knot complement
+    $m = s^3 \setminus 4_1$ using two ideal tetrahedra of shapes $z_1, z_2$. (hint: $z_1(1-z_1)z_2(1-z_2)
+    = 1$ and $\frac{z_1(1-z_2)}{z_2(1-z_1)} = m^2$)'
+- id: arxiv-org-pdf-0903-2472#020
+  text: '(Complete Hyperbolic Structure on 4_1) Compute the complete hyperbolic shape parameters $z_1,
+    z_2$ for the figure-8 knot at $m = 1$. (Hint: Symmetry forces $z_1 = z_2 = e^{\pi i/3} = \frac{1 +
+    i\sqrt{3}}{2}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(complete hyperbolic structure on 4_1) compute the complete hyperbolic shape parameters
+    $z_1, z_2$ for the figure-8 knot at $m = 1$. (hint: symmetry forces $z_1 = z_2 = e^{\pi i/3} = \frac{1
+    + i\sqrt{3}}{2}$)'
+- id: arxiv-org-pdf-0903-2472#021
+  text: '(Volume of 4_1) Compute the total hyperbolic volume $\operatorname{Vol}(S^3 \setminus 4_1)$ from
+    its two ideal tetrahedra. (Hint: $\operatorname{Vol}(S^3 \setminus 4_1) = 2 D(e^{\pi i/3}) = 2.0298832\dots$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(volume of 4_1) compute the total hyperbolic volume $\operatorname{vol}(s^3 \setminus
+    4_1)$ from its two ideal tetrahedra. (hint: $\operatorname{vol}(s^3 \setminus 4_1) = 2 d(e^{\pi i/3})
+    = 2.0298832\dots$)'
+- id: arxiv-org-pdf-0903-2472#022
+  text: '(Classical Dilogarithm Derivative) Verify the derivative identity $\frac{d}{dx} \operatorname{Li}_2(e^x)
+    = -\log(1 - e^x)$. (Hint: Differentiate the series $\operatorname{Li}_2(e^x) = \sum_{n=1}^\infty \frac{e^{nx}}{n^2}$
+    term-by-term)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(classical dilogarithm derivative) verify the derivative identity $\frac{d}{dx} \operatorname{li}_2(e^x)
+    = -\log(1 - e^x)$. (hint: differentiate the series $\operatorname{li}_2(e^x) = \sum_{n=1}^\infty \frac{e^{nx}}{n^2}$
+    term-by-term)'
+- id: arxiv-org-pdf-0903-2472#023
+  text: '(The Quantum Dilogarithm Difference Equation) Define the quantum dilogarithm $\Phi_\hbar(x)$
+    via the difference equation $\frac{\Phi_\hbar(x+\hbar)}{\Phi_\hbar(x)} = \frac{1}{1 - e^x}$. (Hint:
+    $\Phi_\hbar(x)$ is the non-compact quantum dilogarithm / Faddeev''s modular quantum dilogarithm)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the quantum dilogarithm difference equation) define the quantum dilogarithm $\phi_\hbar(x)$
+    via the difference equation $\frac{\phi_\hbar(x+\hbar)}{\phi_\hbar(x)} = \frac{1}{1 - e^x}$. (hint:
+    $\phi_\hbar(x)$ is the non-compact quantum dilogarithm / faddeev''s modular quantum dilogarithm)'
+- id: arxiv-org-pdf-0903-2472#024
+  text: '(Integral Representation of Quantum Dilogarithm) Write the contour integral representation for
+    $\Phi_\hbar(x)$. (Hint: $\Phi_\hbar(x) = \exp\left( -\frac{1}{4} \int_{\mathbb{R}+i0} \frac{e^{-ixz}}{\sinh(\pi
+    z)\sinh(\hbar z)}\frac{dz}{z} \right)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(integral representation of quantum dilogarithm) write the contour integral representation
+    for $\phi_\hbar(x)$. (hint: $\phi_\hbar(x) = \exp\left( -\frac{1}{4} \int_{\mathbb{r}+i0} \frac{e^{-ixz}}{\sinh(\pi
+    z)\sinh(\hbar z)}\frac{dz}{z} \right)$)'
+- id: arxiv-org-pdf-0903-2472#025
+  text: '(Asymptotic Expansion of \Phi_\hbar) State the asymptotic expansion of $\Phi_\hbar(x)$ as $\hbar
+    \to 0$. (Hint: $\Phi_\hbar(x) = \exp\left( -\frac{1}{\hbar}\operatorname{Li}_2(e^x) + \sum_{k=1}^\infty
+    \hbar^{2k-1}\frac{B_{2k}}{(2k)!}\operatorname{Li}_{2-2k}(e^x) \right)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(asymptotic expansion of \phi_\hbar) state the asymptotic expansion of $\phi_\hbar(x)$
+    as $\hbar \to 0$. (hint: $\phi_\hbar(x) = \exp\left( -\frac{1}{\hbar}\operatorname{li}_2(e^x) + \sum_{k=1}^\infty
+    \hbar^{2k-1}\frac{b_{2k}}{(2k)!}\operatorname{li}_{2-2k}(e^x) \right)$)'
+- id: arxiv-org-pdf-0903-2472#026
+  text: '(State Integral for Ideal Tetrahedra) Show that an ideal tetrahedron with modulus $z = e^x$ contributes
+    a quantum dilogarithm factor $\Phi_\hbar(x)$ to the state integral. (Hint: The leading term $-\frac{1}{\hbar}\operatorname{Li}_2(e^x)$
+    matches the hyperbolic volume action)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(state integral for ideal tetrahedra) show that an ideal tetrahedron with modulus $z =
+    e^x$ contributes a quantum dilogarithm factor $\phi_\hbar(x)$ to the state integral. (hint: the leading
+    term $-\frac{1}{\hbar}\operatorname{li}_2(e^x)$ matches the hyperbolic volume action)'
+- id: arxiv-org-pdf-0903-2472#027
+  text: '(The State Integral Model Formula) Write down the general state integral formula $Z(M; \hbar,
+    u) = \int \frac{d^k p}{(4\pi\hbar)^{k/2}} e^{\frac{1}{2\hbar}Q(p, u)} \prod_{j=1}^N \Phi_\hbar(L_j(p,
+    u))^{\pm 1}$. (Hint: $Q(p, u)$ is a quadratic form from edge gluings and $L_j$ are affine linear forms
+    in internal parameters $p$ and boundary holonomy $u$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the state integral model formula) write down the general state integral formula $z(m;
+    \hbar, u) = \int \frac{d^k p}{(4\pi\hbar)^{k/2}} e^{\frac{1}{2\hbar}q(p, u)} \prod_{j=1}^n \phi_\hbar(l_j(p,
+    u))^{\pm 1}$. (hint: $q(p, u)$ is a quadratic form from edge gluings and $l_j$ are affine linear forms
+    in internal parameters $p$ and boundary holonomy $u$)'
+- id: arxiv-org-pdf-0903-2472#028
+  text: '(Saddle-Point Equations in State Integrals) Prove that the critical point equations $\partial_{p_i}
+    S_0(p, u) = 0$ for the state integral recover Thurston''s gluing equations. (Hint: Differentiating
+    the classical dilogarithm contributions yields linear combinations of $\log(1 - e^{L_j})$ matching
+    edge relations)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(saddle-point equations in state integrals) prove that the critical point equations $\partial_{p_i}
+    s_0(p, u) = 0$ for the state integral recover thurston''s gluing equations. (hint: differentiating
+    the classical dilogarithm contributions yields linear combinations of $\log(1 - e^{l_j})$ matching
+    edge relations)'
+- id: arxiv-org-pdf-0903-2472#029
+  text: '(State Integral of the Figure-8 Knot) Write down the 1-variable state integral for $Z(4_1; \hbar,
+    u)$. (Hint: $Z(4_1; \hbar, u) = \int_\mathbb{R} \frac{dp}{\sqrt{4\pi\hbar}} e^{-\frac{1}{\hbar} p
+    u} \frac{\Phi_\hbar(p)}{\Phi_\hbar(p-u)}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(state integral of the figure-8 knot) write down the 1-variable state integral for $z(4_1;
+    \hbar, u)$. (hint: $z(4_1; \hbar, u) = \int_\mathbb{r} \frac{dp}{\sqrt{4\pi\hbar}} e^{-\frac{1}{\hbar}
+    p u} \frac{\phi_\hbar(p)}{\phi_\hbar(p-u)}$)'
+- id: arxiv-org-pdf-0903-2472#030
+  text: '(Critical Point of Figure-8 State Integral) Compute the saddle point $p_*$ of the figure-8 state
+    integral at $u = 0$. (Hint: The saddle-point equation is $\frac{1-e^{-p}}{1-e^p} = -e^{-p}$, giving
+    $e^{p_*} = e^{\pi i/3}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(critical point of figure-8 state integral) compute the saddle point $p_*$ of the figure-8
+    state integral at $u = 0$. (hint: the saddle-point equation is $\frac{1-e^{-p}}{1-e^p} = -e^{-p}$,
+    giving $e^{p_*} = e^{\pi i/3}$)'
+- id: arxiv-org-pdf-0903-2472#031
+  text: '(1-Loop Coefficient of 4_1) Compute the 1-loop coefficient $S_1 = -\frac{1}{2}\log S_0''''(p_*)$
+    for the figure-8 knot at $u = 0$. (Hint: $S_0''''(p_*) = \sqrt{3}$, so $S_1 = \log(3^{1/4})$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(1-loop coefficient of 4_1) compute the 1-loop coefficient $s_1 = -\frac{1}{2}\log s_0''''(p_*)$
+    for the figure-8 knot at $u = 0$. (hint: $s_0''''(p_*) = \sqrt{3}$, so $s_1 = \log(3^{1/4})$)'
+- id: arxiv-org-pdf-0903-2472#032
+  text: '(2-Loop Coefficient of 4_1) Evaluate the 2-loop Feynman diagram contribution $S_2$ for the figure-8
+    knot at $u = 0$. (Hint: $S_2 = \frac{11\sqrt{-3}}{216}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(2-loop coefficient of 4_1) evaluate the 2-loop feynman diagram contribution $s_2$ for
+    the figure-8 knot at $u = 0$. (hint: $s_2 = \frac{11\sqrt{-3}}{216}$)'
+- id: arxiv-org-pdf-0903-2472#033
+  text: '(Arithmetic Trace Field Property) Prove that for the figure-8 knot, all higher-loop coefficients
+    $S_n$ for $n \ge 2$ lie in the trace field $K = \mathbb{Q}(\sqrt{-3})$. (Hint: Higher saddle-point
+    derivatives evaluate as rational functions of the algebraic shape parameter $z = e^{\pi i/3}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(arithmetic trace field property) prove that for the figure-8 knot, all higher-loop coefficients
+    $s_n$ for $n \ge 2$ lie in the trace field $k = \mathbb{q}(\sqrt{-3})$. (hint: higher saddle-point
+    derivatives evaluate as rational functions of the algebraic shape parameter $z = e^{\pi i/3}$)'
+- id: arxiv-org-pdf-0903-2472#034
+  text: '(Perturbative CS vs. Colored Jones Polynomial) State the Volume Conjecture connecting the large-$N$
+    asymptotics of the colored Jones polynomial $J_N(K; e^{2\pi i/N})$ to the complex Chern–Simons partition
+    function $Z(M; \hbar = \frac{2\pi i}{N})$. (Hint: $\lim_{N \to \infty} \frac{2\pi}{N}\log J_N(K; e^{2\pi
+    i/N}) = \operatorname{Vol}(S^3 \setminus K)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(perturbative cs vs. colored jones polynomial) state the volume conjecture connecting
+    the large-$n$ asymptotics of the colored jones polynomial $j_n(k; e^{2\pi i/n})$ to the complex chern–simons
+    partition function $z(m; \hbar = \frac{2\pi i}{n})$. (hint: $\lim_{n \to \infty} \frac{2\pi}{n}\log
+    j_n(k; e^{2\pi i/n}) = \operatorname{vol}(s^3 \setminus k)$)'
+- id: arxiv-org-pdf-0903-2472#035
+  text: '(Resurgence and Borel Summation) Explain why the perturbative series $\sum S_n \hbar^n$ is divergent
+    and how Borel resummation across Stokes lines connects different flat connections $\alpha$. (Hint:
+    Singularities in the Borel plane correspond to differences of classical Chern–Simons actions $S_0^{(\alpha)}
+    - S_0^{(\beta)}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(resurgence and borel summation) explain why the perturbative series $\sum s_n \hbar^n$
+    is divergent and how borel resummation across stokes lines connects different flat connections $\alpha$.
+    (hint: singularities in the borel plane correspond to differences of classical chern–simons actions
+    $s_0^{(\alpha)} - s_0^{(\beta)}$)'

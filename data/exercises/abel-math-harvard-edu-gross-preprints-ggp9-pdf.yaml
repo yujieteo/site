@@ -1,0 +1,282 @@
+url: https://abel.math.harvard.edu/~gross/preprints/ggp9.pdf
+title: Sur les Conjectures de Gross-Prasad by Benedict Gross
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#000
+  text: '(Orthogonal and Unitary Groups) Let $F$ be a local field of characteristic 0. Define the classical
+    groups $G = \mathrm{SO}(V)$ for a quadratic space $V$ over $F$, and $G = \mathrm{U}(V)$ for a Hermitian
+    space $V$ over a quadratic extension $E/F$. (Hint: Quadratic forms are symmetric bilinear pairings;
+    Hermitian forms satisfy $\langle x, y \rangle = \tau(\langle y, x \rangle)$ for the non-trivial automorphism
+    $\tau \in \operatorname{Gal}(E/F)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(orthogonal and unitary groups) let $f$ be a local field of characteristic 0. define the
+    classical groups $g = \mathrm{so}(v)$ for a quadratic space $v$ over $f$, and $g = \mathrm{u}(v)$
+    for a hermitian space $v$ over a quadratic extension $e/f$. (hint: quadratic forms are symmetric bilinear
+    pairings; hermitian forms satisfy $\langle x, y \rangle = \tau(\langle y, x \rangle)$ for the non-trivial
+    automorphism $\tau \in \operatorname{gal}(e/f)$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#001
+  text: '(Subgroups and Codimension 1 Pairs) Let $W \subset V$ be a non-degenerate subspace of codimension
+    1. Define the subgroup embedding $H \subset G$, where $H = \mathrm{SO}(W)$ into $G = \mathrm{SO}(V)$,
+    or $H = \mathrm{U}(W)$ into $G = \mathrm{U}(V)$. (Hint: $H$ is the stabilizer in $G$ of a non-zero
+    orthogonal vector $v_0 \in W^\perp$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(subgroups and codimension 1 pairs) let $w \subset v$ be a non-degenerate subspace of
+    codimension 1. define the subgroup embedding $h \subset g$, where $h = \mathrm{so}(w)$ into $g = \mathrm{so}(v)$,
+    or $h = \mathrm{u}(w)$ into $g = \mathrm{u}(v)$. (hint: $h$ is the stabilizer in $g$ of a non-zero
+    orthogonal vector $v_0 \in w^\perp$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#002
+  text: '(Bessel and Fourier-Jacobi Models) Distinguish the two geometric settings of the Gan–Gross–Prasad
+    conjectures: the Bessel case (codimension 1 embeddings $H \hookrightarrow G$) and the Fourier–Jacobi
+    case (symplectic and metaplectic groups $\mathrm{Sp}(W) \hookrightarrow \mathrm{Sp}(V)$). (Hint: The
+    Bessel case concerns spherical pairs with trivial unipotent radicals, while Fourier–Jacobi pairs involve
+    Heisenberg unipotent radicals)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(bessel and fourier-jacobi models) distinguish the two geometric settings of the gan–gross–prasad
+    conjectures: the bessel case (codimension 1 embeddings $h \hookrightarrow g$) and the fourier–jacobi
+    case (symplectic and metaplectic groups $\mathrm{sp}(w) \hookrightarrow \mathrm{sp}(v)$). (hint: the
+    bessel case concerns spherical pairs with trivial unipotent radicals, while fourier–jacobi pairs involve
+    heisenberg unipotent radicals)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#003
+  text: '(The Hom Space of Intertwiners) Let $\pi$ be an irreducible admissible representation of $G(F)$
+    and $\sigma$ an irreducible admissible representation of $H(F)$. Define the branching space $\operatorname{Hom}_{H(F)}(\pi
+    \otimes \sigma, \mathbb{C})$. (Hint: Elements are continuous linear functionals $\ell: \pi \otimes
+    \sigma \to \mathbb{C}$ satisfying $\ell(\pi(h)v \otimes \sigma(h)w) = \ell(v \otimes w)$ for all $h
+    \in H(F)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the hom space of intertwiners) let $\pi$ be an irreducible admissible representation
+    of $g(f)$ and $\sigma$ an irreducible admissible representation of $h(f)$. define the branching space
+    $\operatorname{hom}_{h(f)}(\pi \otimes \sigma, \mathbb{c})$. (hint: elements are continuous linear
+    functionals $\ell: \pi \otimes \sigma \to \mathbb{c}$ satisfying $\ell(\pi(h)v \otimes \sigma(h)w)
+    = \ell(v \otimes w)$ for all $h \in h(f)$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#004
+  text: '(Multiplicity One Theorems) State the local multiplicity one theorem (proved by Aizenbud–Gourevitch–Rallis–Schiffmann
+    and Waldspurger) for orthogonal and unitary groups: $\dim \operatorname{Hom}_{H(F)}(\pi \otimes \sigma,
+    \mathbb{C}) \le 1$. (Hint: The pair $(G \times H, \operatorname{diag}(H))$ is a Gelfand pair, meaning
+    the invariant distribution space on the double coset is 1-dimensional)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(multiplicity one theorems) state the local multiplicity one theorem (proved by aizenbud–gourevitch–rallis–schiffmann
+    and waldspurger) for orthogonal and unitary groups: $\dim \operatorname{hom}_{h(f)}(\pi \otimes \sigma,
+    \mathbb{c}) \le 1$. (hint: the pair $(g \times h, \operatorname{diag}(h))$ is a gelfand pair, meaning
+    the invariant distribution space on the double coset is 1-dimensional)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#005
+  text: '(The Local Langlands Correspondence) Let $W_F''$ be the Weil–Deligne group of $F$. State the
+    Local Langlands Correspondence mapping an irreducible admissible representation $\pi$ of $G(F)$ to
+    an $L$-parameter $\phi: W_F'' \to {}^L G$. (Hint: ${}^L G = G^\vee(\mathbb{C}) \rtimes W_F$ is the
+    Langlands dual group, where $\mathrm{SO}(2n+1)^\vee \cong \operatorname{Sp}_{2n}(\mathbb{C})$ and
+    $\mathrm{SO}(2n)^\vee \cong \mathrm{SO}_{2n}(\mathbb{C})$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the local langlands correspondence) let $w_f''$ be the weil–deligne group of $f$. state
+    the local langlands correspondence mapping an irreducible admissible representation $\pi$ of $g(f)$
+    to an $l$-parameter $\phi: w_f'' \to {}^l g$. (hint: ${}^l g = g^\vee(\mathbb{c}) \rtimes w_f$ is
+    the langlands dual group, where $\mathrm{so}(2n+1)^\vee \cong \operatorname{sp}_{2n}(\mathbb{c})$
+    and $\mathrm{so}(2n)^\vee \cong \mathrm{so}_{2n}(\mathbb{c})$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#006
+  text: '(Local L-Packets) Define a local $L$-packet $\Pi_\phi(G)$ as the finite set of irreducible representations
+    of $G(F)$ sharing the same $L$-parameter $\phi$. (Hint: For quasi-split groups, $L$-packets are partitioned
+    into distinct representations parameterized by the characters of the component group of the centralizer
+    of $\phi$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(local l-packets) define a local $l$-packet $\pi_\phi(g)$ as the finite set of irreducible
+    representations of $g(f)$ sharing the same $l$-parameter $\phi$. (hint: for quasi-split groups, $l$-packets
+    are partitioned into distinct representations parameterized by the characters of the component group
+    of the centralizer of $\phi$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#007
+  text: '(The Component Group S_\phi) Let $\phi: W_F'' \to {}^L G$ be an $L$-parameter. Define the centralizer
+    group $C_\phi = \operatorname{Cent}( \operatorname{im}(\phi), G^\vee )$ and its finite component group
+    $S_\phi = C_\phi / C_\phi^\circ Z(G^\vee)$. (Hint: For orthogonal and unitary groups, $S_\phi$ is
+    an elementary abelian 2-group $(\mathbb{Z}/2\mathbb{Z})^k$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the component group s_\phi) let $\phi: w_f'' \to {}^l g$ be an $l$-parameter. define
+    the centralizer group $c_\phi = \operatorname{cent}( \operatorname{im}(\phi), g^\vee )$ and its finite
+    component group $s_\phi = c_\phi / c_\phi^\circ z(g^\vee)$. (hint: for orthogonal and unitary groups,
+    $s_\phi$ is an elementary abelian 2-group $(\mathbb{z}/2\mathbb{z})^k$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#008
+  text: '(Vogan Packets and Pure Inner Forms) Explain why the Gan–Gross–Prasad conjectures require working
+    with Vogan packets across all pure inner forms of $G$ and $H$. (Hint: A Vogan packet is the disjoint
+    union $\Pi_\phi = \bigsqcup_{G''} \Pi_\phi(G'')$ over all pure inner forms $G''$ of $G$; working with
+    Vogan packets guarantees that the branching space is non-zero for a unique pair in the packet)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(vogan packets and pure inner forms) explain why the gan–gross–prasad conjectures require
+    working with vogan packets across all pure inner forms of $g$ and $h$. (hint: a vogan packet is the
+    disjoint union $\pi_\phi = \bigsqcup_{g''} \pi_\phi(g'')$ over all pure inner forms $g''$ of $g$;
+    working with vogan packets guarantees that the branching space is non-zero for a unique pair in the
+    packet)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#009
+  text: '(Character Parameterization of Representations in a Packet) For a generic $L$-packet $\Pi_\phi$,
+    state the bijection $\Pi_\phi \longleftrightarrow \widehat{S}_\phi$ between representations $\pi \in
+    \Pi_\phi$ and irreducible characters $\eta \in \widehat{S}_\phi = \operatorname{Hom}(S_\phi, \{\pm
+    1\})$. (Hint: The trivial character corresponds to the unique generic/unramified representation in
+    the packet associated with a fixed Whittaker datum)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(character parameterization of representations in a packet) for a generic $l$-packet $\pi_\phi$,
+    state the bijection $\pi_\phi \longleftrightarrow \widehat{s}_\phi$ between representations $\pi \in
+    \pi_\phi$ and irreducible characters $\eta \in \widehat{s}_\phi = \operatorname{hom}(s_\phi, \{\pm
+    1\})$. (hint: the trivial character corresponds to the unique generic/unramified representation in
+    the packet associated with a fixed whittaker datum)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#010
+  text: '(The Local GGP Conjecture Formulation) Let $\phi$ and $\psi$ be generic $L$-parameters for $G$
+    and $H$, respectively. State the local Gan–Gross–Prasad conjecture: $$\sum_{\pi \in \Pi_\phi, \, \sigma
+    \in \Pi_\psi} \dim \operatorname{Hom}_{H(F)}(\pi \otimes \sigma, \mathbb{C}) = 1.$$ (Hint: There is
+    a unique representation $\pi \in \Pi_\phi$ and a unique representation $\sigma \in \Pi_\psi$ on a
+    unique pair of inner forms $(G'', H'')$ such that $\operatorname{Hom}_{H''(F)}(\pi \otimes \sigma,
+    \mathbb{C})$ is exactly 1-dimensional)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the local ggp conjecture formulation) let $\phi$ and $\psi$ be generic $l$-parameters
+    for $g$ and $h$, respectively. state the local gan–gross–prasad conjecture: $$\sum_{\pi \in \pi_\phi,
+    \, \sigma \in \pi_\psi} \dim \operatorname{hom}_{h(f)}(\pi \otimes \sigma, \mathbb{c}) = 1.$$ (hint:
+    there is a unique representation $\pi \in \pi_\phi$ and a unique representation $\sigma \in \pi_\psi$
+    on a unique pair of inner forms $(g'', h'')$ such that $\operatorname{hom}_{h''(f)}(\pi \otimes \sigma,
+    \mathbb{c})$ is exactly 1-dimensional)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#011
+  text: '(Distinguished Characters and Local Root Numbers) How is the unique pair $(\pi, \sigma)$ with
+    $\operatorname{Hom}_H(\pi \otimes \sigma, \mathbb{C}) \ne 0$ characterized via characters of $S_\phi
+    \times S_\psi$? (Hint: The pair is selected by a specific character $\eta = (\epsilon_1, \dots, \epsilon_k)
+    \in \widehat{S}_\phi \times \widehat{S}_\psi$ computed explicitly from local Deligne–Langlands epsilon
+    factors $\epsilon(1/2, \phi_i \otimes \psi_j, \psi_F)$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(distinguished characters and local root numbers) how is the unique pair $(\pi, \sigma)$
+    with $\operatorname{hom}_h(\pi \otimes \sigma, \mathbb{c}) \ne 0$ characterized via characters of
+    $s_\phi \times s_\psi$? (hint: the pair is selected by a specific character $\eta = (\epsilon_1, \dots,
+    \epsilon_k) \in \widehat{s}_\phi \times \widehat{s}_\psi$ computed explicitly from local deligne–langlands
+    epsilon factors $\epsilon(1/2, \phi_i \otimes \psi_j, \psi_f)$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#012
+  text: '(Rankin-Selberg L-Functions for Product Parameters) Let $\phi: W_F'' \to \mathrm{GL}(M)$ and
+    $\psi: W_F'' \to \mathrm{GL}(N)$ be the standard representations of the $L$-parameters. Define the
+    Rankin–Selberg tensor product $L$-function $L(s, \phi \otimes \psi)$ and its local root number $\epsilon(s,
+    \phi \otimes \psi, \psi_F)$. (Hint: The local root number at the central critical point $s = 1/2$
+    takes values in $\{\pm 1\}$ and dictates the local branching law)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(rankin-selberg l-functions for product parameters) let $\phi: w_f'' \to \mathrm{gl}(m)$
+    and $\psi: w_f'' \to \mathrm{gl}(n)$ be the standard representations of the $l$-parameters. define
+    the rankin–selberg tensor product $l$-function $l(s, \phi \otimes \psi)$ and its local root number
+    $\epsilon(s, \phi \otimes \psi, \psi_f)$. (hint: the local root number at the central critical point
+    $s = 1/2$ takes values in $\{\pm 1\}$ and dictates the local branching law)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#013
+  text: '(The Global GGP Conjecture: Period Integrals) Let $F$ be a global number field with adèle ring
+    $\mathbb{A}_F$. For automorphic cusp forms $\varphi \in \pi$ on $G(\mathbb{A}_F)$ and $\phi \in \sigma$
+    on $H(\mathbb{A}_F)$, define the global period integral: $$\mathcal{P}(\varphi, \phi) = \int_{H(F)
+    \backslash H(\mathbb{A}_F)} \varphi(h) \phi(h) \, dh.$$ (Hint: The non-vanishing of $\mathcal{P}(\varphi,
+    \phi)$ measures the non-triviality of the global branching law $\pi|_{H(\mathbb{A}_F)}$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the global ggp conjecture: period integrals) let $f$ be a global number field with adèle
+    ring $\mathbb{a}_f$. for automorphic cusp forms $\varphi \in \pi$ on $g(\mathbb{a}_f)$ and $\phi \in
+    \sigma$ on $h(\mathbb{a}_f)$, define the global period integral: $$\mathcal{p}(\varphi, \phi) = \int_{h(f)
+    \backslash h(\mathbb{a}_f)} \varphi(h) \phi(h) \, dh.$$ (hint: the non-vanishing of $\mathcal{p}(\varphi,
+    \phi)$ measures the non-triviality of the global branching law $\pi|_{h(\mathbb{a}_f)}$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#014
+  text: '(The Central L-Value Formula: Global GGP) State the global Gan–Gross–Prasad conjecture relating
+    the period integral $\mathcal{P}(\varphi, \phi)$ to the central value of the automorphic tensor product
+    $L$-function: $$\frac{|\mathcal{P}(\varphi, \phi)|^2}{\langle \varphi, \varphi \rangle \langle \phi,
+    \phi \rangle} = C \cdot \frac{L(1/2, \pi \otimes \sigma)}{L(1, \pi, \operatorname{Ad}) L(1, \sigma,
+    \operatorname{Ad})}.$$ (Hint: The global period is non-zero on the cuspidal packet if and only if
+    $L(1/2, \pi \otimes \sigma) \ne 0$ and the local conditions are satisfied at all places $v$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(the central l-value formula: global ggp) state the global gan–gross–prasad conjecture
+    relating the period integral $\mathcal{p}(\varphi, \phi)$ to the central value of the automorphic
+    tensor product $l$-function: $$\frac{|\mathcal{p}(\varphi, \phi)|^2}{\langle \varphi, \varphi \rangle
+    \langle \phi, \phi \rangle} = c \cdot \frac{l(1/2, \pi \otimes \sigma)}{l(1, \pi, \operatorname{ad})
+    l(1, \sigma, \operatorname{ad})}.$$ (hint: the global period is non-zero on the cuspidal packet if
+    and only if $l(1/2, \pi \otimes \sigma) \ne 0$ and the local conditions are satisfied at all places
+    $v$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#015
+  text: '(Waldspurger''s Theorem as GGP for SO(3) x SO(2)) Show that when $G = \mathrm{SO}(3) \cong \mathrm{PGL}_2$
+    and $H = \mathrm{SO}(2)$ (a torus $T$ associated with a quadratic extension), the GGP conjecture reduces
+    to Waldspurger''s classical formula for toric periods and central $L$-values $L(1/2, \pi \otimes \chi)$.
+    (Hint: The local packet of $\mathrm{SO}(3)$ consists of representations of $\mathrm{PGL}_2(F)$ and
+    its inner form $D^\times / F^\times$ for a quaternion division algebra $D$)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(waldspurger''s theorem as ggp for so(3) x so(2)) show that when $g = \mathrm{so}(3) \cong
+    \mathrm{pgl}_2$ and $h = \mathrm{so}(2)$ (a torus $t$ associated with a quadratic extension), the
+    ggp conjecture reduces to waldspurger''s classical formula for toric periods and central $l$-values
+    $l(1/2, \pi \otimes \chi)$. (hint: the local packet of $\mathrm{so}(3)$ consists of representations
+    of $\mathrm{pgl}_2(f)$ and its inner form $d^\times / f^\times$ for a quaternion division algebra
+    $d$)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#016
+  text: '(Gross-Zagier Formula as the Arithmetic GGP) Explain how the arithmetic Gan–Gross–Prasad conjecture
+    generalizes the Gross–Zagier theorem on heights of Heegner points: when $L(1/2, \pi \otimes \sigma)
+    = 0$, the first derivative $L''(1/2, \pi \otimes \sigma)$ is proportional to the Néron–Tate height
+    of an arithmetic cycle on a Shimura variety. (Hint: The classical period integral is replaced by the
+    arithmetic intersection pairing of special cycles on unitary/orthogonal Shimura varieties)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(gross-zagier formula as the arithmetic ggp) explain how the arithmetic gan–gross–prasad
+    conjecture generalizes the gross–zagier theorem on heights of heegner points: when $l(1/2, \pi \otimes
+    \sigma) = 0$, the first derivative $l''(1/2, \pi \otimes \sigma)$ is proportional to the néron–tate
+    height of an arithmetic cycle on a shimura variety. (hint: the classical period integral is replaced
+    by the arithmetic intersection pairing of special cycles on unitary/orthogonal shimura varieties)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#017
+  text: '(Theta Correspondence and Local Packets) Explain the role of the local Howe correspondence (theta
+    lift) between dual reductive pairs $(G, G'')$ in constructing representations inside local GGP packets.
+    (Hint: Theta lifting from smaller rank groups provides explicit realizations of the representations
+    in $\Pi_\phi$ and verifies local root number identities)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(theta correspondence and local packets) explain the role of the local howe correspondence
+    (theta lift) between dual reductive pairs $(g, g'')$ in constructing representations inside local
+    ggp packets. (hint: theta lifting from smaller rank groups provides explicit realizations of the representations
+    in $\pi_\phi$ and verifies local root number identities)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#018
+  text: '(Epsilon Factor Parity and Obstructions) Prove that the global root number $\epsilon(1/2, \pi
+    \otimes \sigma) = \prod_v \epsilon_v(1/2, \pi_v \otimes \sigma_v, \psi_v)$ must equal $+1$ for the
+    global period integral to be non-zero on the quasi-split form. (Hint: If the global epsilon factor
+    is $-1$, the central $L$-value vanishes to odd order by the functional equation, forcing the period
+    integral to vanish identically on the standard group)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(epsilon factor parity and obstructions) prove that the global root number $\epsilon(1/2,
+    \pi \otimes \sigma) = \prod_v \epsilon_v(1/2, \pi_v \otimes \sigma_v, \psi_v)$ must equal $+1$ for
+    the global period integral to be non-zero on the quasi-split form. (hint: if the global epsilon factor
+    is $-1$, the central $l$-value vanishes to odd order by the functional equation, forcing the period
+    integral to vanish identically on the standard group)'
+- id: abel-math-harvard-edu-gross-preprints-ggp9-pdf#019
+  text: '(Symplectic-Orthogonal Duality in GGP) Contrast the GGP branching problem for orthogonal groups
+    $\mathrm{SO}(2n+1) \times \mathrm{SO}(2n)$ (where $M \otimes N$ has symplectic type) with unitary
+    groups $\mathrm{U}(n+1) \times \mathrm{U}(n)$ (where $M \otimes N$ has linear/conjugate-symplectic
+    type). (Hint: The Frobenius–Schur indicator of the tensor product representation dictates the structure
+    of the local epsilon factors)'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: '(symplectic-orthogonal duality in ggp) contrast the ggp branching problem for orthogonal
+    groups $\mathrm{so}(2n+1) \times \mathrm{so}(2n)$ (where $m \otimes n$ has symplectic type) with unitary
+    groups $\mathrm{u}(n+1) \times \mathrm{u}(n)$ (where $m \otimes n$ has linear/conjugate-symplectic
+    type). (hint: the frobenius–schur indicator of the tensor product representation dictates the structure
+    of the local epsilon factors)'
