@@ -1,0 +1,506 @@
+url: https://en.wikipedia.org/wiki/Chromatic_homotopy_theory
+title: Stable Homotopy and Chromatic Homotopy Motivations.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#000
+  text: What is the idempotent Quillen reflector?
+  hint: The idempotent map of ring spectra $e \colon M U_{(p)} \to M U_{(p)}$ constructed by Quillen using
+    Cartier's theorem on $p$-typical formal group laws, which canonically splits the $p$-local complex
+    cobordism spectrum into a wedge of suspensions of the Brown-Peterson spectrum $B P$.
+  locator: null
+  sub_index: null
+  search_text: what is the idempotent quillen reflector? the idempotent map of ring spectra $e \colon
+    m u_{(p)} \to m u_{(p)}$ constructed by quillen using cartier's theorem on $p$-typical formal group
+    laws, which canonically splits the $p$-local complex cobordism spectrum into a wedge of suspensions
+    of the brown-peterson spectrum $b p$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#001
+  text: What is the Brown-Peterson ($B P$) spectrum?
+  hint: The $p$-local direct summand spectrum of $M U_{(p)}$ whose coefficient ring is $\pi_*(B P) \cong
+    \mathbb{Z}_{(p)}[v_1, v_2, \dots]$ with $|v_n| = 2(p^n - 1)$, representing the universal $p$-typical
+    1-dimensional formal group law.
+  locator: null
+  sub_index: null
+  search_text: what is the brown-peterson ($b p$) spectrum? the $p$-local direct summand spectrum of $m
+    u_{(p)}$ whose coefficient ring is $\pi_*(b p) \cong \mathbb{z}_{(p)}[v_1, v_2, \dots]$ with $|v_n|
+    = 2(p^n - 1)$, representing the universal $p$-typical 1-dimensional formal group law.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#002
+  text: Why does Morava $K$-theory act as a field object in stable homotopy theory?
+  hint: Because $\pi_*(K(n)) \cong \mathbb{F}_p[v_n^{\pm 1}]$ is a graded field where every non-zero homogeneous
+    element is invertible; consequently, every $K(n)_*$-module is free, $K(n)$ satisfies a Künneth isomorphism
+    $K(n)_*(X \times Y) \cong K(n)_*(X) \otimes_{K(n)_*} K(n)_*(Y)$, and it defines a minimal/prime element
+    in the Bousfield lattice.
+  locator: null
+  sub_index: null
+  search_text: why does morava $k$-theory act as a field object in stable homotopy theory? because $\pi_*(k(n))
+    \cong \mathbb{f}_p[v_n^{\pm 1}]$ is a graded field where every non-zero homogeneous element is invertible;
+    consequently, every $k(n)_*$-module is free, $k(n)$ satisfies a künneth isomorphism $k(n)_*(x \times
+    y) \cong k(n)_*(x) \otimes_{k(n)_*} k(n)_*(y)$, and it defines a minimal/prime element in the bousfield
+    lattice.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#003
+  text: What is the Johnson-Wilson spectrum $E(n)$ and how is it used to define the chromatic tower?
+  hint: The Landweber exact spectrum with coefficients $\pi_*(E(n)) \cong \mathbb{Z}_{(p)}[v_1, \dots,
+    v_n, v_n^{-1}]$; the chromatic tower of a spectrum $X$ is the projective tower of successive Bousfield
+    localizations $\dots \to L_{E(n)} X \to L_{E(n-1)} X \to \dots \to L_{E(0)} X = L_{H\mathbb{Q}} X$,
+    which reassembles $X$ by the Chromatic Convergence Theorem.
+  locator: null
+  sub_index: null
+  search_text: what is the johnson-wilson spectrum $e(n)$ and how is it used to define the chromatic tower?
+    the landweber exact spectrum with coefficients $\pi_*(e(n)) \cong \mathbb{z}_{(p)}[v_1, \dots, v_n,
+    v_n^{-1}]$; the chromatic tower of a spectrum $x$ is the projective tower of successive bousfield
+    localizations $\dots \to l_{e(n)} x \to l_{e(n-1)} x \to \dots \to l_{e(0)} x = l_{h\mathbb{q}} x$,
+    which reassembles $x$ by the chromatic convergence theorem.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#004
+  text: Why do we care about the Honda formal group $\Gamma_n$?
+  hint: Because over an algebraically closed field of characteristic $p$, every formal group of height
+    $n$ is isomorphic to $\Gamma_n$ (defined by $[p]_{\Gamma_n}(x) = x^{p^n}$), making it the single canonical
+    basepoint whose deformation space defines Morava $E$-theory and whose automorphism group defines the
+    Morava stabilizer group.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the honda formal group $\gamma_n$? because over an algebraically closed
+    field of characteristic $p$, every formal group of height $n$ is isomorphic to $\gamma_n$ (defined
+    by $[p]_{\gamma_n}(x) = x^{p^n}$), making it the single canonical basepoint whose deformation space
+    defines morava $e$-theory and whose automorphism group defines the morava stabilizer group.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#005
+  text: Why do we care about thick subcategories?
+  hint: Thick subcategories formalize the notion of "support" and prime ideals in triangulated categories;
+    classifying them via the Hopkins-Smith Thick Subcategory Theorem proves that chromatic height filtration
+    is the intrinsic, universal classification of all finite $p$-local spectra.
+  locator: null
+  sub_index: null
+  search_text: why do we care about thick subcategories? thick subcategories formalize the notion of "support"
+    and prime ideals in triangulated categories; classifying them via the hopkins-smith thick subcategory
+    theorem proves that chromatic height filtration is the intrinsic, universal classification of all
+    finite $p$-local spectra.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#006
+  text: How is Bousfield localization defined as an initial map and what is its relation to acyclic commutators?
+  hint: The localization $L_E X$ is the initial terminal-target map $\eta \colon X \to L_E X$ in the homotopy
+    category such that $\eta$ is an $E$-equivalence and $L_E X$ is $E$-local; $E$-local means $[Z, L_E
+    X]_* = 0$ for all $E$-acyclic spectra $Z$, so acyclic mapping commutators vanish identically.
+  locator: null
+  sub_index: null
+  search_text: how is bousfield localization defined as an initial map and what is its relation to acyclic
+    commutators? the localization $l_e x$ is the initial terminal-target map $\eta \colon x \to l_e x$
+    in the homotopy category such that $\eta$ is an $e$-equivalence and $l_e x$ is $e$-local; $e$-local
+    means $[z, l_e x]_* = 0$ for all $e$-acyclic spectra $z$, so acyclic mapping commutators vanish identically.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#007
+  text: What is a Hopf algebroid and what is its purpose in stable homotopy theory?
+  hint: A cogroupoid object in commutative rings $(A, \Gamma)$ representing affine groupoid schemes; its
+    purpose is to classify formal group laws and their coordinate isomorphisms (e.g., $(M U_*, M U_* M
+    U)$ and $(B P_*, B P_* B P)$), allowing Adams-Novikov $E_2$-pages to be computed as algebraic $\mathrm{Ext}_{\Gamma}^*(A,
+    A)$ groups.
+  locator: null
+  sub_index: null
+  search_text: what is a hopf algebroid and what is its purpose in stable homotopy theory? a cogroupoid
+    object in commutative rings $(a, \gamma)$ representing affine groupoid schemes; its purpose is to
+    classify formal group laws and their coordinate isomorphisms (e.g., $(m u_*, m u_* m u)$ and $(b p_*,
+    b p_* b p)$), allowing adams-novikov $e_2$-pages to be computed as algebraic $\mathrm{ext}_{\gamma}^*(a,
+    a)$ groups.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#008
+  text: What is the relation of the Toda-Smith spectrum $V(n)$ to the $B P$ spectrum?
+  hint: $V(n)$ is a finite spectrum realizing the quotient of $B P_*$ by its invariant Landweber regular
+    sequence, $B P_*(V(n)) \cong B P_*/(p, v_1, \dots, v_n) = B P_*/I_{n+1}$; they provide explicit finite
+    geometric test objects of pure chromatic type $n+1$.
+  locator: null
+  sub_index: null
+  search_text: what is the relation of the toda-smith spectrum $v(n)$ to the $b p$ spectrum? $v(n)$ is
+    a finite spectrum realizing the quotient of $b p_*$ by its invariant landweber regular sequence, $b
+    p_*(v(n)) \cong b p_*/(p, v_1, \dots, v_n) = b p_*/i_{n+1}$; they provide explicit finite geometric
+    test objects of pure chromatic type $n+1$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#009
+  text: Why do we care about the Ravenel Conjectures?
+  hint: Formulated by Douglas Ravenel in 1984 and largely solved by Devinatz, Hopkins, and Smith, they
+    established that complex cobordism $M U$ completely controls nilpotence, periodicity, and localization
+    across the entire stable homotopy category.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the ravenel conjectures? formulated by douglas ravenel in 1984 and
+    largely solved by devinatz, hopkins, and smith, they established that complex cobordism $m u$ completely
+    controls nilpotence, periodicity, and localization across the entire stable homotopy category.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#010
+  text: Why do we care about chromatic filtrations?
+  hint: Chromatic filtration organizes the impossibly complicated, chaotic stable homotopy groups of spheres
+    $\pi_*^s$ into a systematic, stratified sequence of periodic layers governed by the geometry of 1-dimensional
+    formal groups of heights $n = 0, 1, 2, \dots, \infty$.
+  locator: null
+  sub_index: null
+  search_text: why do we care about chromatic filtrations? chromatic filtration organizes the impossibly
+    complicated, chaotic stable homotopy groups of spheres $\pi_*^s$ into a systematic, stratified sequence
+    of periodic layers governed by the geometry of 1-dimensional formal groups of heights $n = 0, 1, 2,
+    \dots, \infty$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#011
+  text: Why do we care about topological modular forms ($TMF$)?
+  hint: $TMF = \mathbf{R}\Gamma(\mathcal{M}_{\mathrm{ell}}, \mathcal{O}^{\mathrm{top}})$ is the universal
+    $\mathbb{E}_\infty$-ring spectrum of derived elliptic curves; it captures chromatic height $\le 2$
+    phenomena, provides the target for the String orientation / Witten genus in string theory, and inverting
+    $\Delta$ yields $TMF[\Delta^{-1}]$, which represents the moduli of smooth elliptic curves.
+  locator: null
+  sub_index: null
+  search_text: why do we care about topological modular forms ($tmf$)? $tmf = \mathbf{r}\gamma(\mathcal{m}_{\mathrm{ell}},
+    \mathcal{o}^{\mathrm{top}})$ is the universal $\mathbb{e}_\infty$-ring spectrum of derived elliptic
+    curves; it captures chromatic height $\le 2$ phenomena, provides the target for the string orientation
+    / witten genus in string theory, and inverting $\delta$ yields $tmf[\delta^{-1}]$, which represents
+    the moduli of smooth elliptic curves.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#012
+  text: What is Anderson duality $I_{\mathbb{Z}}$ and how does it relate to Brown-Comenetz duality?
+  hint: $I_{\mathbb{Z}}$ is the spectrum representing integer-valued duals via the exact sequence $0 \to
+    \mathrm{Ext}^1(\pi_{-(n+1)} X, \mathbb{Z}) \to I_{\mathbb{Z}}^n(X) \to \mathrm{Hom}(\pi_{-n} X, \mathbb{Z})
+    \to 0$; it is the integral refinement of Brown-Comenetz duality $I_{\mathbb{Q}/\mathbb{Z}}$, which
+    represents Pontryagin duality $[X, I_{\mathbb{Q}/\mathbb{Z}}] \cong \mathrm{Hom}(\pi_0 X, \mathbb{Q}/\mathbb{Z})$.
+  locator: null
+  sub_index: null
+  search_text: what is anderson duality $i_{\mathbb{z}}$ and how does it relate to brown-comenetz duality?
+    $i_{\mathbb{z}}$ is the spectrum representing integer-valued duals via the exact sequence $0 \to \mathrm{ext}^1(\pi_{-(n+1)}
+    x, \mathbb{z}) \to i_{\mathbb{z}}^n(x) \to \mathrm{hom}(\pi_{-n} x, \mathbb{z}) \to 0$; it is the
+    integral refinement of brown-comenetz duality $i_{\mathbb{q}/\mathbb{z}}$, which represents pontryagin
+    duality $[x, i_{\mathbb{q}/\mathbb{z}}] \cong \mathrm{hom}(\pi_0 x, \mathbb{q}/\mathbb{z})$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#013
+  text: What is Brown-Comenetz duality and why does every generalized cohomology functor admit a spectrum
+    representation?
+  hint: By Brown representability, every contravariant additive functor to abelian groups is representable
+    by a spectrum; Brown-Comenetz duality applies this to the Pontryagin dual of homotopy groups $\pi_n(X)^\vee
+    = \mathrm{Hom}(\pi_n X, \mathbb{Q}/\mathbb{Z})$, providing an indispensable tool for analyzing the
+    monochromatic layers of the sphere.
+  locator: null
+  sub_index: null
+  search_text: what is brown-comenetz duality and why does every generalized cohomology functor admit
+    a spectrum representation? by brown representability, every contravariant additive functor to abelian
+    groups is representable by a spectrum; brown-comenetz duality applies this to the pontryagin dual
+    of homotopy groups $\pi_n(x)^\vee = \mathrm{hom}(\pi_n x, \mathbb{q}/\mathbb{z})$, providing an indispensable
+    tool for analyzing the monochromatic layers of the sphere.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#014
+  text: What is the Wood equivalence and why is it important?
+  hint: The equivalence of $K O$-module spectra $K O \wedge \mathbb{C}\mathbb{P}^2 \simeq \Sigma^2 K U$
+    (or $K O \wedge C(\eta) \simeq K U$ where $C(\eta) = S^0 \cup_\eta e^2$); it shows that complex $K$-theory
+    is obtained from real $K$-theory by attaching a single cell along the first Hopf map $\eta \in \pi_1^s$.
+  locator: null
+  sub_index: null
+  search_text: what is the wood equivalence and why is it important? the equivalence of $k o$-module spectra
+    $k o \wedge \mathbb{c}\mathbb{p}^2 \simeq \sigma^2 k u$ (or $k o \wedge c(\eta) \simeq k u$ where
+    $c(\eta) = s^0 \cup_\eta e^2$); it shows that complex $k$-theory is obtained from real $k$-theory
+    by attaching a single cell along the first hopf map $\eta \in \pi_1^s$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#015
+  text: Why do we need connective spectra?
+  hint: Connective spectra ($\pi_{<0}(E) = 0$) model infinite loop spaces, connective covers of cohomology
+    theories ($k u, k o, tmf$), and connective $\mathbb{E}_\infty$-ring spectra, allowing Postnikov towers,
+    $H$-space structures, and algebraic obstruction theory to be applied before inverting Bott/periodicity
+    elements.
+  locator: null
+  sub_index: null
+  search_text: why do we need connective spectra? connective spectra ($\pi_{<0}(e) = 0$) model infinite
+    loop spaces, connective covers of cohomology theories ($k u, k o, tmf$), and connective $\mathbb{e}_\infty$-ring
+    spectra, allowing postnikov towers, $h$-space structures, and algebraic obstruction theory to be applied
+    before inverting bott/periodicity elements.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#016
+  text: Why do we care about cofiber and fiber sequences in stable categories?
+  hint: In a stable $\infty$-category, cofiber (pushout) squares coincide with fiber (pullback) squares;
+    this equivalence produces functorial long exact sequences on homotopy groups and allows spaces and
+    spectra to be decomposed into elementary cell attachments without dimension shifts.
+  locator: null
+  sub_index: null
+  search_text: why do we care about cofiber and fiber sequences in stable categories? in a stable $\infty$-category,
+    cofiber (pushout) squares coincide with fiber (pullback) squares; this equivalence produces functorial
+    long exact sequences on homotopy groups and allows spaces and spectra to be decomposed into elementary
+    cell attachments without dimension shifts.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#017
+  text: Why do we care about Hazewinkel generators?
+  hint: Hazewinkel generators provide an explicit polynomial coordinate system $\mathbb{Z}_{(p)}[v_1,
+    v_2, \dots]$ for $B P_*$ via recursive formulas on the logarithm series, enabling explicit algorithmic
+    computations of the $p$-series, Quillen idempotents, and Landweber invariant ideals.
+  locator: null
+  sub_index: null
+  search_text: why do we care about hazewinkel generators? hazewinkel generators provide an explicit polynomial
+    coordinate system $\mathbb{z}_{(p)}[v_1, v_2, \dots]$ for $b p_*$ via recursive formulas on the logarithm
+    series, enabling explicit algorithmic computations of the $p$-series, quillen idempotents, and landweber
+    invariant ideals.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#018
+  text: Why does the Hopf algebroid $M U_* M U$ classify strict isomorphisms between formal group laws?
+  hint: Because $M U_* M U \cong M U_*[b_1, b_2, \dots]$ represents the functor assigning to a ring $R$
+    the set of pairs of formal group laws $(F, G)$ together with a strict isomorphism $\phi(x) = x + \sum
+    b_i x^{i+1}$ between them, making algebraic topology a faithful mirror of formal deformation geometry.
+  locator: null
+  sub_index: null
+  search_text: why does the hopf algebroid $m u_* m u$ classify strict isomorphisms between formal group
+    laws? because $m u_* m u \cong m u_*[b_1, b_2, \dots]$ represents the functor assigning to a ring
+    $r$ the set of pairs of formal group laws $(f, g)$ together with a strict isomorphism $\phi(x) = x
+    + \sum b_i x^{i+1}$ between them, making algebraic topology a faithful mirror of formal deformation
+    geometry.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#019
+  text: Why do we care about Milnor primitives $Q_n$ in the Steenrod algebra?
+  hint: The Milnor primitives $Q_n \in \mathcal{A}_p$ generate an exterior Hopf subalgebra $E(Q_0, Q_1,
+    \dots)$ that algebraically detects the homotopy generators $v_n \in \pi_{2(p^n-1)}(B P)$ in the classical
+    Adams spectral sequence, bridging stable cohomology operations with chromatic homotopy generators.
+  locator: null
+  sub_index: null
+  search_text: why do we care about milnor primitives $q_n$ in the steenrod algebra? the milnor primitives
+    $q_n \in \mathcal{a}_p$ generate an exterior hopf subalgebra $e(q_0, q_1, \dots)$ that algebraically
+    detects the homotopy generators $v_n \in \pi_{2(p^n-1)}(b p)$ in the classical adams spectral sequence,
+    bridging stable cohomology operations with chromatic homotopy generators.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#020
+  text: Why do we care about the telescope $T(n)$ of a type-$n$ spectrum?
+  hint: $T(n) = v_n^{-1} X$ is the explicit homotopy colimit inverting a $v_n$-self map on a finite spectrum;
+    it provides the direct geometric construction of $v_n$-periodic stable homotopy theory and was the
+    subject of Ravenel's Telescope Conjecture.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the telescope $t(n)$ of a type-$n$ spectrum? $t(n) = v_n^{-1} x$ is
+    the explicit homotopy colimit inverting a $v_n$-self map on a finite spectrum; it provides the direct
+    geometric construction of $v_n$-periodic stable homotopy theory and was the subject of ravenel's telescope
+    conjecture.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#021
+  text: Why do we care about periodic fields in stable homotopy theory?
+  hint: Periodic Morava $K$-theories $K(n)$ act as graded fields because their homotopy rings have no
+    non-trivial homogeneous ideals, making $K(n)_*(X)$ a graded vector space and eliminating all homological
+    Tor/Ext obstructions via the Künneth formula.
+  locator: null
+  sub_index: null
+  search_text: why do we care about periodic fields in stable homotopy theory? periodic morava $k$-theories
+    $k(n)$ act as graded fields because their homotopy rings have no non-trivial homogeneous ideals, making
+    $k(n)_*(x)$ a graded vector space and eliminating all homological tor/ext obstructions via the künneth
+    formula.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#022
+  text: What is the Kervaire invariant and what is the Kervaire invariant 1 phenomenon?
+  hint: A $\mathbb{Z}/2\mathbb{Z}$-valued invariant measuring the quadratic refinement of the intersection
+    pairing on the middle homology of a $(4k+2)$-dimensional framed manifold; the Kervaire invariant 1
+    problem asked in which dimensions such manifolds exist with non-zero invariant, solved by Hill-Hopkins-Ravenel
+    who proved they exist only in dimensions $2, 6, 14, 30, 62$, and possibly $126$.
+  locator: null
+  sub_index: null
+  search_text: what is the kervaire invariant and what is the kervaire invariant 1 phenomenon? a $\mathbb{z}/2\mathbb{z}$-valued
+    invariant measuring the quadratic refinement of the intersection pairing on the middle homology of
+    a $(4k+2)$-dimensional framed manifold; the kervaire invariant 1 problem asked in which dimensions
+    such manifolds exist with non-zero invariant, solved by hill-hopkins-ravenel who proved they exist
+    only in dimensions $2, 6, 14, 30, 62$, and possibly $126$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#023
+  text: Why do we care about the Morava stabilizer group $\mathbb{G}_n$?
+  hint: $\mathbb{G}_n = \mathrm{Aut}(\Gamma_n) \rtimes \mathrm{Gal}(\mathbb{F}_{p^n}/\mathbb{F}_p)$ is
+    the automorphism group of the height-$n$ formal group; it acts continuously on Morava $E$-theory $E_n$,
+    and its continuous group cohomology computes the homotopy groups of the $K(n)$-local sphere via the
+    descent spectral sequence $H_c^s(\mathbb{G}_n, (E_n)_t) \implies \pi_{t-s}(L_{K(n)}\mathbb{S})$.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the morava stabilizer group $\mathbb{g}_n$? $\mathbb{g}_n = \mathrm{aut}(\gamma_n)
+    \rtimes \mathrm{gal}(\mathbb{f}_{p^n}/\mathbb{f}_p)$ is the automorphism group of the height-$n$ formal
+    group; it acts continuously on morava $e$-theory $e_n$, and its continuous group cohomology computes
+    the homotopy groups of the $k(n)$-local sphere via the descent spectral sequence $h_c^s(\mathbb{g}_n,
+    (e_n)_t) \implies \pi_{t-s}(l_{k(n)}\mathbb{s})$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#024
+  text: Why do we care about elliptic spectra?
+  hint: An elliptic spectrum $(E, C, t)$ links a 2-periodic ring spectrum $E$ to an algebraic elliptic
+    curve $C$ whose formal group matches $E$; they form the stalks of the derived structure sheaf $\mathcal{O}^{\mathrm{top}}$
+    on the moduli stack $\mathcal{M}_{\mathrm{ell}}$, realizing chromatic height 2 homotopy theory.
+  locator: null
+  sub_index: null
+  search_text: why do we care about elliptic spectra? an elliptic spectrum $(e, c, t)$ links a 2-periodic
+    ring spectrum $e$ to an algebraic elliptic curve $c$ whose formal group matches $e$; they form the
+    stalks of the derived structure sheaf $\mathcal{o}^{\mathrm{top}}$ on the moduli stack $\mathcal{m}_{\mathrm{ell}}$,
+    realizing chromatic height 2 homotopy theory.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#025
+  text: Why do we care about chromatic heights and how do examples illustrate them?
+  hint: Height measures the power of $p$ in the $p$-series $[p]_F(x) = a x^{p^h} + \dots$; singular cohomology
+    $H\mathbb{F}_p$ has height $\infty$, complex $K$-theory $K U$ has height 1 ($\widehat{\mathbb{G}}_m$),
+    ordinary elliptic curves have height 1, and supersingular elliptic curves have height 2, demonstrating
+    that chromatic height interpolates between classical topology, $K$-theory, and modular forms.
+  locator: null
+  sub_index: null
+  search_text: why do we care about chromatic heights and how do examples illustrate them? height measures
+    the power of $p$ in the $p$-series $[p]_f(x) = a x^{p^h} + \dots$; singular cohomology $h\mathbb{f}_p$
+    has height $\infty$, complex $k$-theory $k u$ has height 1 ($\widehat{\mathbb{g}}_m$), ordinary elliptic
+    curves have height 1, and supersingular elliptic curves have height 2, demonstrating that chromatic
+    height interpolates between classical topology, $k$-theory, and modular forms.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#026
+  text: What is special about Gross-Hopkins duality in $K(n)$-local homotopy theory?
+  hint: 'It proves that the $K(n)$-local sphere is self-dual with an $(n^2 - n)$-dimensional shift: $L_{K(n)}\mathbb{S}
+    \simeq I_n \wedge \Sigma^{n^2 - n} L_{K(n)}\mathbb{S}$, showing that $K(n)$-local stable homotopy
+    theory satisfies Poincaré duality matching the virtual cohomological dimension $n^2$ of $\mathbb{G}_n$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is special about gross-hopkins duality in $k(n)$-local homotopy theory? it proves
+    that the $k(n)$-local sphere is self-dual with an $(n^2 - n)$-dimensional shift: $l_{k(n)}\mathbb{s}
+    \simeq i_n \wedge \sigma^{n^2 - n} l_{k(n)}\mathbb{s}$, showing that $k(n)$-local stable homotopy
+    theory satisfies poincaré duality matching the virtual cohomological dimension $n^2$ of $\mathbb{g}_n$.'
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#027
+  text: Why do we care about the Landweber Invariant Ideal Theorem?
+  hint: It classifies all invariant prime ideals in $B P_*$ as precisely the sequence $I_n = (p, v_1,
+    \dots, v_{n-1})$, proving that the geometry of the stack $\mathcal{M}_{\mathrm{fg}}$ has only a single,
+    nested sequence of closed invariant substacks ordered by chromatic height.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the landweber invariant ideal theorem? it classifies all invariant
+    prime ideals in $b p_*$ as precisely the sequence $i_n = (p, v_1, \dots, v_{n-1})$, proving that the
+    geometry of the stack $\mathcal{m}_{\mathrm{fg}}$ has only a single, nested sequence of closed invariant
+    substacks ordered by chromatic height.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#028
+  text: Why do we care about height in formal group theory?
+  hint: Because Lazard's classification theorem shows that over an algebraically closed field $\overline{\mathbb{F}}_p$,
+    the height $h \in \{1, 2, \dots, \infty\}$ is the complete isomorphism invariant of 1-dimensional
+    formal group laws.
+  locator: null
+  sub_index: null
+  search_text: why do we care about height in formal group theory? because lazard's classification theorem
+    shows that over an algebraically closed field $\overline{\mathbb{f}}_p$, the height $h \in \{1, 2,
+    \dots, \infty\}$ is the complete isomorphism invariant of 1-dimensional formal group laws.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#029
+  text: How do Lubin-Tate deformation rings relate to Lubin-Tate theory?
+  hint: Lubin-Tate theory proves that the universal deformation ring of a formal group $\Gamma_n$ of height
+    $n$ over $\mathbb{F}_{p^n}$ is non-canonically isomorphic to $W(\mathbb{F}_{p^n})[[u_1, \dots, u_{n-1}]]$,
+    whose formal spectrum parameterizes all equicharacteristic and mixed-characteristic deformations.
+  locator: null
+  sub_index: null
+  search_text: how do lubin-tate deformation rings relate to lubin-tate theory? lubin-tate theory proves
+    that the universal deformation ring of a formal group $\gamma_n$ of height $n$ over $\mathbb{f}_{p^n}$
+    is non-canonically isomorphic to $w(\mathbb{f}_{p^n})[[u_1, \dots, u_{n-1}]]$, whose formal spectrum
+    parameterizes all equicharacteristic and mixed-characteristic deformations.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#030
+  text: What is Bousfield localization and why is it fundamental?
+  hint: It is the idempotent operation $X \mapsto L_E X$ that isolates the $E$-homology information of
+    a spectrum while discarding $E$-acyclic components, providing the universal mechanism for constructing
+    localized and completed stable homotopy categories.
+  locator: null
+  sub_index: null
+  search_text: what is bousfield localization and why is it fundamental? it is the idempotent operation
+    $x \mapsto l_e x$ that isolates the $e$-homology information of a spectrum while discarding $e$-acyclic
+    components, providing the universal mechanism for constructing localized and completed stable homotopy
+    categories.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#031
+  text: Why do we care about the height stratification on $\mathcal{M}_{\mathrm{fg}}$ over $\mathbb{F}_p$?
+  hint: The descending stratification $\mathcal{M}_{\mathrm{fg}} \supset \mathcal{M}_{\mathrm{fg}}^{\ge
+    1} \supset \mathcal{M}_{\mathrm{fg}}^{\ge 2} \supset \dots \supset \mathcal{M}_{\mathrm{fg}}^{\ge
+    \infty}$ directly mirrors the chromatic filtration of stable homotopy theory, identifying chromatic
+    layers with geometric strata on the moduli stack.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the height stratification on $\mathcal{m}_{\mathrm{fg}}$ over $\mathbb{f}_p$?
+    the descending stratification $\mathcal{m}_{\mathrm{fg}} \supset \mathcal{m}_{\mathrm{fg}}^{\ge 1}
+    \supset \mathcal{m}_{\mathrm{fg}}^{\ge 2} \supset \dots \supset \mathcal{m}_{\mathrm{fg}}^{\ge \infty}$
+    directly mirrors the chromatic filtration of stable homotopy theory, identifying chromatic layers
+    with geometric strata on the moduli stack.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#032
+  text: Why do we care about Morava $E$-theory $E_n$?
+  hint: Because $E_n$ is a Landweber exact, complex oriented $\mathbb{E}_\infty$-ring spectrum that universalizes
+    all height-$n$ phenomena and allows the $K(n)$-local sphere to be recovered via homotopy fixed points
+    under the Morava stabilizer group.
+  locator: null
+  sub_index: null
+  search_text: why do we care about morava $e$-theory $e_n$? because $e_n$ is a landweber exact, complex
+    oriented $\mathbb{e}_\infty$-ring spectrum that universalizes all height-$n$ phenomena and allows
+    the $k(n)$-local sphere to be recovered via homotopy fixed points under the morava stabilizer group.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#033
+  text: Why do we care about the chromatic dimension of $K(n)$-local spheres?
+  hint: The chromatic dimension equals $n^2$ (the dimension of the $p$-adic Lie group $\mathbb{G}_n$),
+    which dictates the exact vanishing line on the $E_2$-page of the $K(n)$-local Adams-Novikov spectral
+    sequence.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the chromatic dimension of $k(n)$-local spheres? the chromatic dimension
+    equals $n^2$ (the dimension of the $p$-adic lie group $\mathbb{g}_n$), which dictates the exact vanishing
+    line on the $e_2$-page of the $k(n)$-local adams-novikov spectral sequence.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#034
+  text: Why do we care about the Balmer spectrum $\mathrm{Spc}(\mathcal{C})$?
+  hint: It provides an intrinsic geometric topological space reconstructing the lattice of thick tensor
+    ideals of a tensor triangulated category $\mathcal{C}$; for $\mathbf{Sp}_{(p)}^{\mathrm{fin}}$, it
+    yields the 1-dimensional Alexandroff space of chromatic heights, proving that chromatic homotopy theory
+    is the algebraic geometry of spectra.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the balmer spectrum $\mathrm{spc}(\mathcal{c})$? it provides an intrinsic
+    geometric topological space reconstructing the lattice of thick tensor ideals of a tensor triangulated
+    category $\mathcal{c}$; for $\mathbf{sp}_{(p)}^{\mathrm{fin}}$, it yields the 1-dimensional alexandroff
+    space of chromatic heights, proving that chromatic homotopy theory is the algebraic geometry of spectra.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#035
+  text: How does a graded ring correspond to homotopy groups and a graded module to generalized homology?
+  hint: For a ring spectrum $E$, its homotopy groups $\pi_*(E) = \bigoplus_{n \in \mathbb{Z}} \pi_n(E)$
+    form a graded-commutative ring via the smash product multiplication; for any spectrum $X$, $E_*(X)
+    = \pi_*(E \wedge X)$ is naturally a graded module over the ring $\pi_*(E)$.
+  locator: null
+  sub_index: null
+  search_text: how does a graded ring correspond to homotopy groups and a graded module to generalized
+    homology? for a ring spectrum $e$, its homotopy groups $\pi_*(e) = \bigoplus_{n \in \mathbb{z}} \pi_n(e)$
+    form a graded-commutative ring via the smash product multiplication; for any spectrum $x$, $e_*(x)
+    = \pi_*(e \wedge x)$ is naturally a graded module over the ring $\pi_*(e)$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#036
+  text: Why does a generalized cohomology theory require suspension isomorphisms and wedge axioms?
+  hint: The suspension isomorphism $E^{n+1}(\Sigma X) \cong E^n(X)$ ensures compatibility with dimension
+    shifts and loop spaces, while the wedge axiom $E^n(\bigvee X_i) \cong \prod E^n(X_i)$ guarantees that
+    cohomology turns topological coproducts into algebraic direct products, ensuring representability
+    by spectra.
+  locator: null
+  sub_index: null
+  search_text: why does a generalized cohomology theory require suspension isomorphisms and wedge axioms?
+    the suspension isomorphism $e^{n+1}(\sigma x) \cong e^n(x)$ ensures compatibility with dimension shifts
+    and loop spaces, while the wedge axiom $e^n(\bigvee x_i) \cong \prod e^n(x_i)$ guarantees that cohomology
+    turns topological coproducts into algebraic direct products, ensuring representability by spectra.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#037
+  text: Why do we care about the Conner-Floyd isomorphism?
+  hint: 'It proves that complex $K$-theory is purely algebraic over complex cobordism: $K U_*(X) \cong
+    M U_*(X) \otimes_{M U_*} K U_*$, demonstrating that complex oriented theories can be constructed algebraically
+    via tensor products from $M U$.'
+  locator: null
+  sub_index: null
+  search_text: 'why do we care about the conner-floyd isomorphism? it proves that complex $k$-theory is
+    purely algebraic over complex cobordism: $k u_*(x) \cong m u_*(x) \otimes_{m u_*} k u_*$, demonstrating
+    that complex oriented theories can be constructed algebraically via tensor products from $m u$.'
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#038
+  text: Why is a formal Lie group over a ring $R$ defined as a formal group scheme and how does it relate
+    to classical Lie groups?
+  hint: A classical Lie group $G$ has a Lie algebra and an exponential map that defines a local group
+    law on a neighborhood of the identity; formalizing this on the infinitesimal neighborhood $\mathrm{Spf}(R[[x]])$
+    of the identity via complete topological Hopf algebras defines a formal Lie group over any commutative
+    ring.
+  locator: null
+  sub_index: null
+  search_text: why is a formal lie group over a ring $r$ defined as a formal group scheme and how does
+    it relate to classical lie groups? a classical lie group $g$ has a lie algebra and an exponential
+    map that defines a local group law on a neighborhood of the identity; formalizing this on the infinitesimal
+    neighborhood $\mathrm{spf}(r[[x]])$ of the identity via complete topological hopf algebras defines
+    a formal lie group over any commutative ring.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#039
+  text: Why do we care about the dual Steenrod algebra $\mathcal{A}_p^*$?
+  hint: Milnor's dual Steenrod algebra $\mathcal{A}_p^* \cong \mathbb{F}_p[\xi_1, \xi_2, \dots] \otimes
+    \Lambda(\tau_0, \tau_1, \dots)$ is a commutative polynomial/exterior Hopf algebra whose coproduct
+    formulas make computing Adams spectral sequence $E_2$-pages via cobar complexes vastly simpler than
+    using the non-commutative Steenrod algebra $\mathcal{A}_p$.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the dual steenrod algebra $\mathcal{a}_p^*$? milnor's dual steenrod
+    algebra $\mathcal{a}_p^* \cong \mathbb{f}_p[\xi_1, \xi_2, \dots] \otimes \lambda(\tau_0, \tau_1, \dots)$
+    is a commutative polynomial/exterior hopf algebra whose coproduct formulas make computing adams spectral
+    sequence $e_2$-pages via cobar complexes vastly simpler than using the non-commutative steenrod algebra
+    $\mathcal{a}_p$.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#040
+  text: What is Spanier-Whitehead duality and why do we care about it on spectra?
+  hint: The duality functor $X^\vee = \underline{\mathrm{Map}}(X, \mathbb{S})$ on finite spectra satisfying
+    $[X \wedge Y, Z] \cong [Y, X^\vee \wedge Z]$; it provides an exact algebraic duality between homology
+    and cohomology ($E_*(X^\vee) \cong E^{-*}(X)$) without dimension shifts.
+  locator: null
+  sub_index: null
+  search_text: what is spanier-whitehead duality and why do we care about it on spectra? the duality functor
+    $x^\vee = \underline{\mathrm{map}}(x, \mathbb{s})$ on finite spectra satisfying $[x \wedge y, z] \cong
+    [y, x^\vee \wedge z]$; it provides an exact algebraic duality between homology and cohomology ($e_*(x^\vee)
+    \cong e^{-*}(x)$) without dimension shifts.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#041
+  text: Why do we care about the Adams Conjecture?
+  hint: Proved by Quillen and Sullivan, it states that the spherical fibrations associated to vector bundles
+    $V$ and $\psi^k(V)$ become fiber-homotopically equivalent after sufficient fiberwise suspension, which
+    completely computed the image of the $J$-homomorphism $\mathrm{im}(J) \subset \pi_*^s$ in terms of
+    Bernoulli numbers.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the adams conjecture? proved by quillen and sullivan, it states that
+    the spherical fibrations associated to vector bundles $v$ and $\psi^k(v)$ become fiber-homotopically
+    equivalent after sufficient fiberwise suspension, which completely computed the image of the $j$-homomorphism
+    $\mathrm{im}(j) \subset \pi_*^s$ in terms of bernoulli numbers.
+- id: en-wikipedia-org-wiki-chromatic-homotopy-theory#042
+  text: What is Cartier duality in stable homotopy theory and why do we care about it?
+  hint: Cartier duality $G^\vee = \underline{\mathrm{Hom}}(G, \mathbb{G}_m)$ on finite flat group schemes
+    extends to formal group laws and chromatic spectra, establishing the dualities between formal groups,
+    their Dieudonné modules, and $K(n)$-local Spanier-Whitehead dualities.
+  locator: null
+  sub_index: null
+  search_text: what is cartier duality in stable homotopy theory and why do we care about it? cartier
+    duality $g^\vee = \underline{\mathrm{hom}}(g, \mathbb{g}_m)$ on finite flat group schemes extends
+    to formal group laws and chromatic spectra, establishing the dualities between formal groups, their
+    dieudonné modules, and $k(n)$-local spanier-whitehead dualities.

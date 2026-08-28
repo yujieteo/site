@@ -1,0 +1,2732 @@
+url: https://ncatlab.org/nlab/files/StableChromaticGlossary.pdf
+title: Stable Homotopy and Chromatic Homotopy Glossary.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#000
+  text: What is a spectrum in stable homotopy theory?
+  hint: A sequence of pointed spaces $(E_0, E_1, E_2, \dots)$ equipped with structure maps $\Sigma E_n
+    \to E_{n+1}$, or an object in the stable $\infty$-category of spectra $\mathbf{Sp}$; its homotopy
+    groups are $\pi_k(E) = \varinjlim_n \pi_{n+k}(E_n)$ for $k \in \mathbb{Z}$.
+  locator: null
+  sub_index: null
+  search_text: what is a spectrum in stable homotopy theory? a sequence of pointed spaces $(e_0, e_1,
+    e_2, \dots)$ equipped with structure maps $\sigma e_n \to e_{n+1}$, or an object in the stable $\infty$-category
+    of spectra $\mathbf{sp}$; its homotopy groups are $\pi_k(e) = \varinjlim_n \pi_{n+k}(e_n)$ for $k
+    \in \mathbb{z}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#001
+  text: What is the sphere spectrum $\mathbb{S}$?
+  hint: The suspension spectrum of the 0-sphere $S^0 = \{*, +\}$, whose homotopy groups $\pi_*(\mathbb{S})$
+    are the stable homotopy groups of spheres $\pi_*^s$; it serves as the symmetric monoidal unit $\mathbf{1}$
+    of $\mathbf{Sp}$.
+  locator: null
+  sub_index: null
+  search_text: what is the sphere spectrum $\mathbb{s}$? the suspension spectrum of the 0-sphere $s^0
+    = \{*, +\}$, whose homotopy groups $\pi_*(\mathbb{s})$ are the stable homotopy groups of spheres $\pi_*^s$;
+    it serves as the symmetric monoidal unit $\mathbf{1}$ of $\mathbf{sp}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#002
+  text: What is the Eilenberg-MacLane spectrum $H R$ for an abelian group $R$?
+  hint: The spectrum whose homotopy groups are $\pi_0(H R) \cong R$ and $\pi_n(H R) = 0$ for all $n \neq
+    0$; it represents ordinary singular cohomology $H^n(X; R) \cong [X, \Sigma^n H R]$. An example would
+    be picking the integers will give integral cohomology.
+  locator: null
+  sub_index: null
+  search_text: what is the eilenberg-maclane spectrum $h r$ for an abelian group $r$? the spectrum whose
+    homotopy groups are $\pi_0(h r) \cong r$ and $\pi_n(h r) = 0$ for all $n \neq 0$; it represents ordinary
+    singular cohomology $h^n(x; r) \cong [x, \sigma^n h r]$. an example would be picking the integers
+    will give integral cohomology.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#003
+  text: What is complex cobordism $M U$ and its coefficient ring $\pi_*(M U)$?
+  hint: The Thom spectrum associated to the universal unitary bundles $B\mathrm{U}(n)$; by Quillen's theorem,
+    its coefficient ring is the Lazard ring $\pi_*(M U) \cong L \cong \mathbb{Z}[x_1, x_2, \dots]$ with
+    $|x_i| = 2i$, which classifies 1-dimensional commutative formal group laws.
+  locator: null
+  sub_index: null
+  search_text: what is complex cobordism $m u$ and its coefficient ring $\pi_*(m u)$? the thom spectrum
+    associated to the universal unitary bundles $b\mathrm{u}(n)$; by quillen's theorem, its coefficient
+    ring is the lazard ring $\pi_*(m u) \cong l \cong \mathbb{z}[x_1, x_2, \dots]$ with $|x_i| = 2i$,
+    which classifies 1-dimensional commutative formal group laws.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#004
+  text: What is Brown-Peterson spectrum $B P$ at a prime $p$?
+  hint: The $p$-local direct summand of $M U_{(p)}$ split off by the idempotent Quillen reflector; its
+    coefficient ring is $\pi_*(B P) \cong \mathbb{Z}_{(p)}[v_1, v_2, \dots]$ where $|v_n| = 2(p^n - 1)$,
+    classifying $p$-typical formal group laws.
+  locator: null
+  sub_index: null
+  search_text: what is brown-peterson spectrum $b p$ at a prime $p$? the $p$-local direct summand of $m
+    u_{(p)}$ split off by the idempotent quillen reflector; its coefficient ring is $\pi_*(b p) \cong
+    \mathbb{z}_{(p)}[v_1, v_2, \dots]$ where $|v_n| = 2(p^n - 1)$, classifying $p$-typical formal group
+    laws.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#005
+  text: What is a formal group law (FGL) of dimension 1?
+  hint: 'A formal power series $F(x, y) \in R[[x, y]]$ satisfying: (1) $F(x, 0) = x$ and $F(0, y) = y$;
+    (2) $F(x, y) = F(y, x)$; (3) $F(F(x, y), z) = F(x, F(y, z))$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a formal group law (fgl) of dimension 1? a formal power series $f(x, y) \in r[[x,
+    y]]$ satisfying: (1) $f(x, 0) = x$ and $f(0, y) = y$; (2) $f(x, y) = f(y, x)$; (3) $f(f(x, y), z)
+    = f(x, f(y, z))$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#006
+  text: What is the height $h$ of a formal group law over a field $k$ of characteristic $p > 0$?
+  hint: The $p$-series satisfies $[p]_F(x) = a x^{p^h} + O(x^{p^h+1})$ with $a \neq 0$; the height is
+    $h \in \{1, 2, \dots, \infty\}$, with height 1 corresponding to the multiplicative group $\widehat{\mathbb{G}}_m$
+    and height $\infty$ to the additive group $\widehat{\mathbb{G}}_a$.
+  locator: null
+  sub_index: null
+  search_text: what is the height $h$ of a formal group law over a field $k$ of characteristic $p > 0$?
+    the $p$-series satisfies $[p]_f(x) = a x^{p^h} + o(x^{p^h+1})$ with $a \neq 0$; the height is $h \in
+    \{1, 2, \dots, \infty\}$, with height 1 corresponding to the multiplicative group $\widehat{\mathbb{g}}_m$
+    and height $\infty$ to the additive group $\widehat{\mathbb{g}}_a$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#007
+  text: What is the Landweber Exact Functor Theorem (LEFT)?
+  hint: An invariant prime ideal condition ensuring that for a $B P_*$-module $M$, the functor $X \mapsto
+    B P_*(X) \otimes_{B P_*} M$ defines a homology theory on spaces; the condition requires that multiplication
+    by $v_n$ on $M/(p, v_1, \dots, v_{n-1})M$ is injective for all $n \ge 0$.
+  locator: null
+  sub_index: null
+  search_text: what is the landweber exact functor theorem (left)? an invariant prime ideal condition
+    ensuring that for a $b p_*$-module $m$, the functor $x \mapsto b p_*(x) \otimes_{b p_*} m$ defines
+    a homology theory on spaces; the condition requires that multiplication by $v_n$ on $m/(p, v_1, \dots,
+    v_{n-1})m$ is injective for all $n \ge 0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#008
+  text: What is the Morava $K$-theory spectrum $K(n)$ at height $n$ and prime $p$?
+  hint: The periodic ring spectrum with coefficient ring $\pi_*(K(n)) \cong \mathbb{F}_p[v_n, v_n^{-1}]$
+    where $|v_n| = 2(p^n - 1)$; it acts as a "field object" in stable homotopy theory satisfying a Künneth
+    isomorphism $K(n)_*(X \times Y) \cong K(n)_*(X) \otimes_{K(n)_*} K(n)_*(Y)$.
+  locator: null
+  sub_index: null
+  search_text: what is the morava $k$-theory spectrum $k(n)$ at height $n$ and prime $p$? the periodic
+    ring spectrum with coefficient ring $\pi_*(k(n)) \cong \mathbb{f}_p[v_n, v_n^{-1}]$ where $|v_n| =
+    2(p^n - 1)$; it acts as a "field object" in stable homotopy theory satisfying a künneth isomorphism
+    $k(n)_*(x \times y) \cong k(n)_*(x) \otimes_{k(n)_*} k(n)_*(y)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#009
+  text: What is the Johnson-Wilson spectrum $E(n)$?
+  hint: The Landweber exact $B P$-algebra spectrum with coefficients $\pi_*(E(n)) \cong \mathbb{Z}_{(p)}[v_1,
+    \dots, v_{n-1}, v_n, v_n^{-1}]$, interpolating between $B P$ and height-$n$ phenomena.
+  locator: null
+  sub_index: null
+  search_text: what is the johnson-wilson spectrum $e(n)$? the landweber exact $b p$-algebra spectrum
+    with coefficients $\pi_*(e(n)) \cong \mathbb{z}_{(p)}[v_1, \dots, v_{n-1}, v_n, v_n^{-1}]$, interpolating
+    between $b p$ and height-$n$ phenomena.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#010
+  text: What is the Lubin-Tate / Morava $E$-theory spectrum $E_n$?
+  hint: The $\mathbb{E}_\infty$-ring spectrum whose coefficient ring $\pi_*(E_n) \cong W(k)[[u_1, \dots,
+    u_{n-1}]][u, u^{-1}]$ is the universal deformation ring of a formal group of height $n$ over a finite
+    field $k = \mathbb{F}_{p^n}$, with $|u| = -2$ and $|u_i| = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is the lubin-tate / morava $e$-theory spectrum $e_n$? the $\mathbb{e}_\infty$-ring
+    spectrum whose coefficient ring $\pi_*(e_n) \cong w(k)[[u_1, \dots, u_{n-1}]][u, u^{-1}]$ is the universal
+    deformation ring of a formal group of height $n$ over a finite field $k = \mathbb{f}_{p^n}$, with
+    $|u| = -2$ and $|u_i| = 0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#011
+  text: What is the Morava stabilizer group $\mathbb{G}_n$?
+  hint: The extended automorphism group $\mathbb{G}_n = \mathrm{Aut}(\Gamma_n) \rtimes \mathrm{Gal}(k/\mathbb{F}_p)$
+    of the Honda formal group $\Gamma_n$ of height $n$; it acts by $\mathbb{E}_\infty$-ring automorphisms
+    on Morava $E$-theory $E_n$.
+  locator: null
+  sub_index: null
+  search_text: what is the morava stabilizer group $\mathbb{g}_n$? the extended automorphism group $\mathbb{g}_n
+    = \mathrm{aut}(\gamma_n) \rtimes \mathrm{gal}(k/\mathbb{f}_p)$ of the honda formal group $\gamma_n$
+    of height $n$; it acts by $\mathbb{e}_\infty$-ring automorphisms on morava $e$-theory $e_n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#012
+  text: What is a thick subcategory in a triangulated category $\mathcal{C}$?
+  hint: A full triangulated subcategory $\mathcal{D} \subset \mathcal{C}$ that is closed under isomorphisms,
+    shifts $\Sigma^{\pm 1}$, mapping cones/cofibers, and direct summands / retracts.
+  locator: null
+  sub_index: null
+  search_text: what is a thick subcategory in a triangulated category $\mathcal{c}$? a full triangulated
+    subcategory $\mathcal{d} \subset \mathcal{c}$ that is closed under isomorphisms, shifts $\sigma^{\pm
+    1}$, mapping cones/cofibers, and direct summands / retracts.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#013
+  text: State the Thick Subcategory Theorem of Hopkins-Smith for finite $p$-local spectra $\mathbf{Sp}_{(p)}^{\mathrm{fin}}$
+  hint: Every non-trivial thick subcategory of $\mathbf{Sp}_{(p)}^{\mathrm{fin}}$ is of the form $\mathcal{C}_n
+    = \{ X \in \mathbf{Sp}_{(p)}^{\mathrm{fin}} \mid K(n-1)_*(X) = 0 \}$ for some integer $0 \le n \le
+    \infty$, yielding a strict filtration $\dots \subset \mathcal{C}_{n+1} \subset \mathcal{C}_n \subset
+    \dots \subset \mathcal{C}_1 \subset \mathcal{C}_0 = \mathbf{Sp}_{(p)}^{\mathrm{fin}}$.
+  locator: null
+  sub_index: null
+  search_text: state the thick subcategory theorem of hopkins-smith for finite $p$-local spectra $\mathbf{sp}_{(p)}^{\mathrm{fin}}$
+    every non-trivial thick subcategory of $\mathbf{sp}_{(p)}^{\mathrm{fin}}$ is of the form $\mathcal{c}_n
+    = \{ x \in \mathbf{sp}_{(p)}^{\mathrm{fin}} \mid k(n-1)_*(x) = 0 \}$ for some integer $0 \le n \le
+    \infty$, yielding a strict filtration $\dots \subset \mathcal{c}_{n+1} \subset \mathcal{c}_n \subset
+    \dots \subset \mathcal{c}_1 \subset \mathcal{c}_0 = \mathbf{sp}_{(p)}^{\mathrm{fin}}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#014
+  text: What is a $v_n$-self map on a finite spectrum $X$?
+  hint: A map $f \colon \Sigma^{k+d} X \to X$ (for $d = 2(p^n - 1)p^r$) such that $K(n)_*(f)$ is an isomorphism
+    (multiplication by $v_n^{p^r}$) and $K(m)_*(f) = 0$ for all $m \neq n$.
+  locator: null
+  sub_index: null
+  search_text: what is a $v_n$-self map on a finite spectrum $x$? a map $f \colon \sigma^{k+d} x \to x$
+    (for $d = 2(p^n - 1)p^r$) such that $k(n)_*(f)$ is an isomorphism (multiplication by $v_n^{p^r}$)
+    and $k(m)_*(f) = 0$ for all $m \neq n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#015
+  text: State the Periodicity Theorem of Hopkins-Smith
+  hint: Every finite $p$-local spectrum $X$ of type $n$ (meaning $K(n-1)_*(X) = 0$ but $K(n)_*(X) \neq
+    0$) admits a $v_n$-self map $f \colon \Sigma^{d} X \to X$ for sufficiently large $d$, and such self-maps
+    are unique up to high powers and homotopy.
+  locator: null
+  sub_index: null
+  search_text: state the periodicity theorem of hopkins-smith every finite $p$-local spectrum $x$ of type
+    $n$ (meaning $k(n-1)_*(x) = 0$ but $k(n)_*(x) \neq 0$) admits a $v_n$-self map $f \colon \sigma^{d}
+    x \to x$ for sufficiently large $d$, and such self-maps are unique up to high powers and homotopy.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#016
+  text: What is the chromatic tower of a spectrum $X$?
+  hint: 'The sequence of Bousfield localizations with respect to Johnson-Wilson spectra $E(n)$: $\dots
+    \to L_{E(n)} X \to L_{E(n-1)} X \to \dots \to L_{E(1)} X \to L_{E(0)} X = L_\mathbb{Q} X$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the chromatic tower of a spectrum $x$? the sequence of bousfield localizations
+    with respect to johnson-wilson spectra $e(n)$: $\dots \to l_{e(n)} x \to l_{e(n-1)} x \to \dots \to
+    l_{e(1)} x \to l_{e(0)} x = l_\mathbb{q} x$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#017
+  text: State the Chromatic Convergence Theorem for finite $p$-local spectra $X$
+  hint: For any finite $p$-local spectrum $X$, the natural map $X \xrightarrow{\sim} \mathrm{holim}_n
+    L_{E(n)} X$ is an equivalence, reconstructing $X$ from its chromatic layers.
+  locator: null
+  sub_index: null
+  search_text: state the chromatic convergence theorem for finite $p$-local spectra $x$ for any finite
+    $p$-local spectrum $x$, the natural map $x \xrightarrow{\sim} \mathrm{holim}_n l_{e(n)} x$ is an equivalence,
+    reconstructing $x$ from its chromatic layers.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#018
+  text: What is the monochromatic layer $M_n(X)$ and the chromatic fracture square?
+  hint: The monochromatic layer is the fiber $M_n(X) = \mathrm{fib}(L_{E(n)} X \to L_{E(n-1)} X)$; the
+    chromatic fracture square is the homotopy pullback expressing $L_{E(n)} X$ as the pullback of $L_{K(n)}
+    X$ and $L_{E(n-1)} X$ over $L_{E(n-1)} L_{K(n)} X$.
+  locator: null
+  sub_index: null
+  search_text: what is the monochromatic layer $m_n(x)$ and the chromatic fracture square? the monochromatic
+    layer is the fiber $m_n(x) = \mathrm{fib}(l_{e(n)} x \to l_{e(n-1)} x)$; the chromatic fracture square
+    is the homotopy pullback expressing $l_{e(n)} x$ as the pullback of $l_{k(n)} x$ and $l_{e(n-1)} x$
+    over $l_{e(n-1)} l_{k(n)} x$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#019
+  text: What is Bousfield localization $L_E(X)$ with respect to a homology theory $E$?
+  hint: The initial map $X \to L_E X$ to an $E$-local spectrum (a spectrum $Y$ such that $[Z, Y]_* = 0$
+    for all $E$-acyclic $Z$, where $E_*(Z) = 0$).
+  locator: null
+  sub_index: null
+  search_text: what is bousfield localization $l_e(x)$ with respect to a homology theory $e$? the initial
+    map $x \to l_e x$ to an $e$-local spectrum (a spectrum $y$ such that $[z, y]_* = 0$ for all $e$-acyclic
+    $z$, where $e_*(z) = 0$).
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#020
+  text: What is a smash product of spectra $X \wedge Y$?
+  hint: The symmetric monoidal tensor product $\otimes$ on the stable $\infty$-category of spectra $\mathbf{Sp}$,
+    satisfying $\pi_0(X \wedge Y) \cong \pi_0(X) \otimes \pi_0(Y)$ for connective spectra and $\mathbb{S}
+    \wedge X \simeq X$. The easy way to remember is to use distributive in zeroth-homotopy where the sphere
+    spectrum acts as homotopy.
+  locator: null
+  sub_index: null
+  search_text: what is a smash product of spectra $x \wedge y$? the symmetric monoidal tensor product
+    $\otimes$ on the stable $\infty$-category of spectra $\mathbf{sp}$, satisfying $\pi_0(x \wedge y)
+    \cong \pi_0(x) \otimes \pi_0(y)$ for connective spectra and $\mathbb{s} \wedge x \simeq x$. the easy
+    way to remember is to use distributive in zeroth-homotopy where the sphere spectrum acts as homotopy.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#021
+  text: What is the Adams Spectral Sequence (ASS) based on ordinary cohomology $H\mathbb{F}_p$?
+  hint: The spectral sequence $E_2^{s, t} = \mathrm{Ext}_{\mathcal{A}_p}^{s, t}(\mathbb{F}_p, \mathbb{F}_p)
+    \implies \pi_{t-s}(\mathbb{S})_p^\wedge$, where $\mathcal{A}_p = H\mathbb{F}_p^*(H\mathbb{F}_p)$ is
+    the Steenrod algebra at prime $p$.
+  locator: null
+  sub_index: null
+  search_text: what is the adams spectral sequence (ass) based on ordinary cohomology $h\mathbb{f}_p$?
+    the spectral sequence $e_2^{s, t} = \mathrm{ext}_{\mathcal{a}_p}^{s, t}(\mathbb{f}_p, \mathbb{f}_p)
+    \implies \pi_{t-s}(\mathbb{s})_p^\wedge$, where $\mathcal{a}_p = h\mathbb{f}_p^*(h\mathbb{f}_p)$ is
+    the steenrod algebra at prime $p$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#022
+  text: What is the Adams-Novikov Spectral Sequence (ANSS) based on $M U$ or $B P$?
+  hint: The spectral sequence $E_2^{s, t} = \mathrm{Ext}_{B P_* B P}^{s, t}(B P_*, B P_*) \implies \pi_{t-s}(\mathbb{S})_{(p)}$,
+    where $(B P_*, B P_* B P)$ is the Hopf algebroid of $p$-typical formal group laws and their strict
+    isomorphisms.
+  locator: null
+  sub_index: null
+  search_text: what is the adams-novikov spectral sequence (anss) based on $m u$ or $b p$? the spectral
+    sequence $e_2^{s, t} = \mathrm{ext}_{b p_* b p}^{s, t}(b p_*, b p_*) \implies \pi_{t-s}(\mathbb{s})_{(p)}$,
+    where $(b p_*, b p_* b p)$ is the hopf algebroid of $p$-typical formal group laws and their strict
+    isomorphisms.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#023
+  text: What is a Hopf algebroid $(A, \Gamma)$?
+  hint: A cogroupoid object in commutative rings, consisting of a base ring $A$ (objects) and an algebra
+    $\Gamma$ (morphisms) equipped with left/right units $\eta_L, \eta_R \colon A \to \Gamma$, coproduct
+    $\Delta \colon \Gamma \to \Gamma \otimes_A \Gamma$, counit $\epsilon \colon \Gamma \to A$, and antipode
+    $c \colon \Gamma \to \Gamma$.
+  locator: null
+  sub_index: null
+  search_text: what is a hopf algebroid $(a, \gamma)$? a cogroupoid object in commutative rings, consisting
+    of a base ring $a$ (objects) and an algebra $\gamma$ (morphisms) equipped with left/right units $\eta_l,
+    \eta_r \colon a \to \gamma$, coproduct $\delta \colon \gamma \to \gamma \otimes_a \gamma$, counit
+    $\epsilon \colon \gamma \to a$, and antipode $c \colon \gamma \to \gamma$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#024
+  text: What is the Chromatic Spectral Sequence?
+  hint: 'An algebraic spectral sequence computing the $E_2$-term of the Adams-Novikov spectral sequence:
+    $E_1^{n, s, t} = \mathrm{Ext}_{B P_* B P}^{s, t}(B P_*, v_n^{-1} B P_*/(p^\infty, \dots, v_{n-1}^\infty))
+    \implies \mathrm{Ext}_{B P_* B P}^{n+s, t}(B P_*, B P_*)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the chromatic spectral sequence? an algebraic spectral sequence computing the
+    $e_2$-term of the adams-novikov spectral sequence: $e_1^{n, s, t} = \mathrm{ext}_{b p_* b p}^{s, t}(b
+    p_*, v_n^{-1} b p_*/(p^\infty, \dots, v_{n-1}^\infty)) \implies \mathrm{ext}_{b p_* b p}^{n+s, t}(b
+    p_*, b p_*)$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#025
+  text: What is the Toda-Smith spectrum $V(n)$?
+  hint: A finite spectrum characterized by $B P_*(V(n)) \cong B P_*/(p, v_1, \dots, v_n)$; $V(0) = S^0/p$
+    is the mod-$p$ Moore spectrum, $V(1) = S^0/(p, v_1)$, and higher $V(n)$ exist only for sufficiently
+    large primes relative to $n$.
+  locator: null
+  sub_index: null
+  search_text: what is the toda-smith spectrum $v(n)$? a finite spectrum characterized by $b p_*(v(n))
+    \cong b p_*/(p, v_1, \dots, v_n)$; $v(0) = s^0/p$ is the mod-$p$ moore spectrum, $v(1) = s^0/(p, v_1)$,
+    and higher $v(n)$ exist only for sufficiently large primes relative to $n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#026
+  text: What is the Ravenel Conjectures / Nilpotence Theorem of Devinatz-Hopkins-Smith?
+  hint: A map $f \colon \Sigma^k X \to X$ on a finite spectrum $X$ is smash-nilpotent ($f^{\wedge N} \simeq
+    0$ for some $N$) if and only if $M U_*(f) = 0$ (equivalently, $K(n)_*(f) = 0$ for all $0 \le n \le
+    \infty$).
+  locator: null
+  sub_index: null
+  search_text: what is the ravenel conjectures / nilpotence theorem of devinatz-hopkins-smith? a map $f
+    \colon \sigma^k x \to x$ on a finite spectrum $x$ is smash-nilpotent ($f^{\wedge n} \simeq 0$ for
+    some $n$) if and only if $m u_*(f) = 0$ (equivalently, $k(n)_*(f) = 0$ for all $0 \le n \le \infty$).
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#027
+  text: What is the Telescope Conjecture in chromatic homotopy theory?
+  hint: The conjecture that for any finite spectrum $X$ of type $n$ with $v_n$-self map $v$, the telescope
+    localization $v^{-1} X$ coincides with the Bousfield localization $L_{K(n)} X$; disproved at height
+    $n \ge 2$ by Burklund-Hahn-Levy-Schlank.
+  locator: null
+  sub_index: null
+  search_text: what is the telescope conjecture in chromatic homotopy theory? the conjecture that for
+    any finite spectrum $x$ of type $n$ with $v_n$-self map $v$, the telescope localization $v^{-1} x$
+    coincides with the bousfield localization $l_{k(n)} x$; disproved at height $n \ge 2$ by burklund-hahn-levy-schlank.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#028
+  text: What is the moduli stack of formal groups $\mathcal{M}_{\mathrm{fg}}$?
+  hint: The algebraic stack $\mathcal{M}_{\mathrm{fg}} \cong [\mathrm{Spec}(L) / \mathrm{Spec}(W)]$ presenting
+    1-dimensional formal group laws modulo coordinate isomorphisms; quasi-coherent sheaves on $\mathcal{M}_{\mathrm{fg}}$
+    correspond to $M U_* M U$-comodules.
+  locator: null
+  sub_index: null
+  search_text: what is the moduli stack of formal groups $\mathcal{m}_{\mathrm{fg}}$? the algebraic stack
+    $\mathcal{m}_{\mathrm{fg}} \cong [\mathrm{spec}(l) / \mathrm{spec}(w)]$ presenting 1-dimensional formal
+    group laws modulo coordinate isomorphisms; quasi-coherent sheaves on $\mathcal{m}_{\mathrm{fg}}$ correspond
+    to $m u_* m u$-comodules.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#029
+  text: What is the chromatic filtration on the moduli stack $\mathcal{M}_{\mathrm{fg}}$?
+  hint: The stratification by height loci $\mathcal{M}_{\mathrm{fg}}^{\ge n} = \{ (F, R) \mid \mathrm{height}(F)
+    \ge n \}$, where the open strata are parameterized by Lubin-Tate deformation spaces and the closed
+    substack $\mathcal{M}_{\mathrm{fg}}^{\ge \infty}$ represents the additive group $\widehat{\mathbb{G}}_a$.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic filtration on the moduli stack $\mathcal{m}_{\mathrm{fg}}$? the stratification
+    by height loci $\mathcal{m}_{\mathrm{fg}}^{\ge n} = \{ (f, r) \mid \mathrm{height}(f) \ge n \}$, where
+    the open strata are parameterized by lubin-tate deformation spaces and the closed substack $\mathcal{m}_{\mathrm{fg}}^{\ge
+    \infty}$ represents the additive group $\widehat{\mathbb{g}}_a$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#030
+  text: What is topological modular forms $TMF$?
+  hint: The global sections $\mathbb{E}_\infty$-ring spectrum $TMF := \mathbf{R}\Gamma(\mathcal{M}_{\mathrm{ell}},
+    \mathcal{O}^{\mathrm{top}})$ of the sheaf of derived elliptic curves $\mathcal{O}^{\mathrm{top}}$
+    on the moduli stack of elliptic curves $\mathcal{M}_{\mathrm{ell}}$, realizing chromatic height $\le
+    2$ phenomena.
+  locator: null
+  sub_index: null
+  search_text: what is topological modular forms $tmf$? the global sections $\mathbb{e}_\infty$-ring spectrum
+    $tmf := \mathbf{r}\gamma(\mathcal{m}_{\mathrm{ell}}, \mathcal{o}^{\mathrm{top}})$ of the sheaf of
+    derived elliptic curves $\mathcal{o}^{\mathrm{top}}$ on the moduli stack of elliptic curves $\mathcal{m}_{\mathrm{ell}}$,
+    realizing chromatic height $\le 2$ phenomena.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#031
+  text: What is the derived Goerss-Hopkins-Miller theorem?
+  hint: The theorem stating that the functor assigning a formal group of height $n$ over a perfect field
+    to its Lubin-Tate deformation ring lifts uniquely and functorially to a sheaf of $\mathbb{E}_\infty$-ring
+    spectra $E_n$ with a continuous action of the Morava stabilizer group $\mathbb{G}_n$.
+  locator: null
+  sub_index: null
+  search_text: what is the derived goerss-hopkins-miller theorem? the theorem stating that the functor
+    assigning a formal group of height $n$ over a perfect field to its lubin-tate deformation ring lifts
+    uniquely and functorially to a sheaf of $\mathbb{e}_\infty$-ring spectra $e_n$ with a continuous action
+    of the morava stabilizer group $\mathbb{g}_n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#032
+  text: What is the Picard group $\mathrm{Pic}(\mathbf{Sp})$ and the $K(n)$-local Picard group $\mathrm{Pic}(L_{K(n)}
+    \mathbf{Sp})$?
+  hint: The abelian group of equivalence classes of $\otimes$-invertible objects in the stable $\infty$-category;
+    $\mathrm{Pic}(\mathbf{Sp}) \cong \mathbb{Z}$ generated by $S^1$, while $\mathrm{Pic}(L_{K(n)} \mathbf{Sp})$
+    is an abelian Lie group capturing exotic twisted spheres and continuous representations of $\mathbb{G}_n$.
+  locator: null
+  sub_index: null
+  search_text: what is the picard group $\mathrm{pic}(\mathbf{sp})$ and the $k(n)$-local picard group
+    $\mathrm{pic}(l_{k(n)} \mathbf{sp})$? the abelian group of equivalence classes of $\otimes$-invertible
+    objects in the stable $\infty$-category; $\mathrm{pic}(\mathbf{sp}) \cong \mathbb{z}$ generated by
+    $s^1$, while $\mathrm{pic}(l_{k(n)} \mathbf{sp})$ is an abelian lie group capturing exotic twisted
+    spheres and continuous representations of $\mathbb{g}_n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#033
+  text: What is the Anderson duality $I_{\mathbb{Z}}$ in stable homotopy theory?
+  hint: The spectrum representing the dualizing object for Brown-Comenetz duality over $\mathbb{Z}$, providing
+    a short exact sequence $0 \to \mathrm{Ext}^1(\pi_{-(n+1)} X, \mathbb{Z}) \to I_{\mathbb{Z}}^n(X) \to
+    \mathrm{Hom}(\pi_{-n} X, \mathbb{Z}) \to 0$ for any spectrum $X$.
+  locator: null
+  sub_index: null
+  search_text: what is the anderson duality $i_{\mathbb{z}}$ in stable homotopy theory? the spectrum representing
+    the dualizing object for brown-comenetz duality over $\mathbb{z}$, providing a short exact sequence
+    $0 \to \mathrm{ext}^1(\pi_{-(n+1)} x, \mathbb{z}) \to i_{\mathbb{z}}^n(x) \to \mathrm{hom}(\pi_{-n}
+    x, \mathbb{z}) \to 0$ for any spectrum $x$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#034
+  text: What is the Brown-Comenetz duality $I_{\mathbb{Q}/\mathbb{Z}}$?
+  hint: The spectrum representing the Pontryagin dual of stable homotopy groups, satisfying $[X, I_{\mathbb{Q}/\mathbb{Z}}]
+    \cong \mathrm{Hom}_{\mathbf{Ab}}(\pi_0(X), \mathbb{Q}/\mathbb{Z})$.
+  locator: null
+  sub_index: null
+  search_text: what is the brown-comenetz duality $i_{\mathbb{q}/\mathbb{z}}$? the spectrum representing
+    the pontryagin dual of stable homotopy groups, satisfying $[x, i_{\mathbb{q}/\mathbb{z}}] \cong \mathrm{hom}_{\mathbf{ab}}(\pi_0(x),
+    \mathbb{q}/\mathbb{z})$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#035
+  text: What is topological $K$-theory $K U$ and real $K$-theory $K O$?
+  hint: The $\mathbb{E}_\infty$-ring spectra representing complex and real vector bundles on compact spaces;
+    $\pi_*(K U) \cong \mathbb{Z}[u, u^{-1}]$ with $|u| = 2$ (Bott periodicity of period 2), and $\pi_*(K
+    O)$ is 8-periodic capturing real Clifford algebras.
+  locator: null
+  sub_index: null
+  search_text: what is topological $k$-theory $k u$ and real $k$-theory $k o$? the $\mathbb{e}_\infty$-ring
+    spectra representing complex and real vector bundles on compact spaces; $\pi_*(k u) \cong \mathbb{z}[u,
+    u^{-1}]$ with $|u| = 2$ (bott periodicity of period 2), and $\pi_*(k o)$ is 8-periodic capturing real
+    clifford algebras.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#036
+  text: What is the Wood equivalence between $K U$ and $K O$?
+  hint: The equivalence of $K O$-module spectra $K O \wedge \Sigma^{-2} \mathbb{C}\mathbb{P}^2 \simeq
+    K U$, or $K O \wedge C(\eta) \simeq K U$ where $C(\eta)$ is the cone of the Hopf map $\eta \in \pi_1^s$.
+  locator: null
+  sub_index: null
+  search_text: what is the wood equivalence between $k u$ and $k o$? the equivalence of $k o$-module spectra
+    $k o \wedge \sigma^{-2} \mathbb{c}\mathbb{p}^2 \simeq k u$, or $k o \wedge c(\eta) \simeq k u$ where
+    $c(\eta)$ is the cone of the hopf map $\eta \in \pi_1^s$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#037
+  text: What is the image of $J$ spectrum $\mathrm{im}(J)$?
+  hint: The fiber/localization of the real $K$-theory spectrum $K O_{(p)}$ under the operation $\psi^k
+    - 1$ for an Adams operation $\psi^k$, capturing the cyclic subgroup of the stable homotopy groups
+    of spheres detected by the $e$-invariant.
+  locator: null
+  sub_index: null
+  search_text: what is the image of $j$ spectrum $\mathrm{im}(j)$? the fiber/localization of the real
+    $k$-theory spectrum $k o_{(p)}$ under the operation $\psi^k - 1$ for an adams operation $\psi^k$,
+    capturing the cyclic subgroup of the stable homotopy groups of spheres detected by the $e$-invariant.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#038
+  text: What is the Greek letter element $\alpha_t, \beta_t, \gamma_t$ in the stable homotopy groups of
+    spheres?
+  hint: Family of elements in $\pi_*^s$ constructed via the chromatic spectral sequence from the chromatic
+    layers $M_1, M_2, M_3$; $\alpha_t \in \pi_{2t(p-1)-1}^s$ is generated by $v_1$, $\beta_t$ by $v_2$,
+    and $\gamma_t$ by $v_3$.
+  locator: null
+  sub_index: null
+  search_text: what is the greek letter element $\alpha_t, \beta_t, \gamma_t$ in the stable homotopy groups
+    of spheres? family of elements in $\pi_*^s$ constructed via the chromatic spectral sequence from the
+    chromatic layers $m_1, m_2, m_3$; $\alpha_t \in \pi_{2t(p-1)-1}^s$ is generated by $v_1$, $\beta_t$
+    by $v_2$, and $\gamma_t$ by $v_3$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#039
+  text: What is the Ambidexterity Theorem of Hopkins-Lurie in $T(n)$-local stable homotopy theory?
+  hint: In the $T(n)$-local stable homotopy category $\mathbf{Sp}_{T(n)}$, for every $\pi$-finite space
+    $K$, the parameterized colimit and limit functors along $K \to *$ are canonically equivalent (meaning
+    integration and summation coincide, producing higher semiadditivity at all chromatic heights).
+  locator: null
+  sub_index: null
+  search_text: what is the ambidexterity theorem of hopkins-lurie in $t(n)$-local stable homotopy theory?
+    in the $t(n)$-local stable homotopy category $\mathbf{sp}_{t(n)}$, for every $\pi$-finite space $k$,
+    the parameterized colimit and limit functors along $k \to *$ are canonically equivalent (meaning integration
+    and summation coincide, producing higher semiadditivity at all chromatic heights).
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#040
+  text: What is a connective spectrum?
+  hint: A spectrum $E \in \mathbf{Sp}$ such that $\pi_n(E) = 0$ for all $n < 0$; the inclusion of connective
+    spectra $\mathbf{Sp}_{\ge 0} \hookrightarrow \mathbf{Sp}$ admits a right adjoint connective cover
+    functor $\tau_{\ge 0}$.
+  locator: null
+  sub_index: null
+  search_text: what is a connective spectrum? a spectrum $e \in \mathbf{sp}$ such that $\pi_n(e) = 0$
+    for all $n < 0$; the inclusion of connective spectra $\mathbf{sp}_{\ge 0} \hookrightarrow \mathbf{sp}$
+    admits a right adjoint connective cover functor $\tau_{\ge 0}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#041
+  text: What is the suspension functor $\Sigma$ and loop functor $\Omega$ on spectra?
+  hint: On the stable $\infty$-category $\mathbf{Sp}$, the suspension $\Sigma X = X \wedge S^1$ and loop
+    functor $\Omega X = \underline{\mathrm{Map}}(S^1, X)$ are mutual inverse equivalences, making $\mathbf{Sp}$
+    stable with shift $\Sigma \cong [1]$ and $\Omega \cong [-1]$.
+  locator: null
+  sub_index: null
+  search_text: what is the suspension functor $\sigma$ and loop functor $\omega$ on spectra? on the stable
+    $\infty$-category $\mathbf{sp}$, the suspension $\sigma x = x \wedge s^1$ and loop functor $\omega
+    x = \underline{\mathrm{map}}(s^1, x)$ are mutual inverse equivalences, making $\mathbf{sp}$ stable
+    with shift $\sigma \cong [1]$ and $\omega \cong [-1]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#042
+  text: What is a cofiber / fiber sequence in a stable $\infty$-category?
+  hint: A sequence $X \xrightarrow{f} Y \xrightarrow{g} Z$ that is simultaneously a pushout (cofiber/mapping
+    cone) and a pullback (fiber) square, yielding long exact sequences on homotopy groups $\dots \to \pi_n(X)
+    \to \pi_n(Y) \to \pi_n(Z) \to \pi_{n-1}(X) \to \dots$.
+  locator: null
+  sub_index: null
+  search_text: what is a cofiber / fiber sequence in a stable $\infty$-category? a sequence $x \xrightarrow{f}
+    y \xrightarrow{g} z$ that is simultaneously a pushout (cofiber/mapping cone) and a pullback (fiber)
+    square, yielding long exact sequences on homotopy groups $\dots \to \pi_n(x) \to \pi_n(y) \to \pi_n(z)
+    \to \pi_{n-1}(x) \to \dots$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#043
+  text: What is the Moore spectrum $S^0/n$ (or $M(\mathbb{Z}/n\mathbb{Z})$)?
+  hint: 'The cofiber of the multiplication-by-$n$ map on the sphere spectrum: $\mathbb{S} \xrightarrow{\cdot
+    n} \mathbb{S} \to S^0/n$, satisfying $\pi_0(S^0/n) \cong \mathbb{Z}/n\mathbb{Z}$ and $\pi_k(S^0/n)
+    = 0$ for $k < 0$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the moore spectrum $s^0/n$ (or $m(\mathbb{z}/n\mathbb{z})$)? the cofiber of the
+    multiplication-by-$n$ map on the sphere spectrum: $\mathbb{s} \xrightarrow{\cdot n} \mathbb{s} \to
+    s^0/n$, satisfying $\pi_0(s^0/n) \cong \mathbb{z}/n\mathbb{z}$ and $\pi_k(s^0/n) = 0$ for $k < 0$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#044
+  text: What is an $\mathbb{E}_\infty$-ring spectrum vs. an $\mathbb{A}_\infty$-ring spectrum?
+  hint: An $\mathbb{A}_\infty$-ring spectrum is an associative algebra object in $(\mathbf{Sp}, \wedge,
+    \mathbb{S})$; an $\mathbb{E}_\infty$-ring spectrum is a commutative algebra object in $\mathbf{CAlg}(\mathbf{Sp})$,
+    possessing strictly commutative and associative multiplications up to coherent higher homotopies.
+  locator: null
+  sub_index: null
+  search_text: what is an $\mathbb{e}_\infty$-ring spectrum vs. an $\mathbb{a}_\infty$-ring spectrum?
+    an $\mathbb{a}_\infty$-ring spectrum is an associative algebra object in $(\mathbf{sp}, \wedge, \mathbb{s})$;
+    an $\mathbb{e}_\infty$-ring spectrum is a commutative algebra object in $\mathbf{calg}(\mathbf{sp})$,
+    possessing strictly commutative and associative multiplications up to coherent higher homotopies.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#045
+  text: What is the algebraic Lazard ring $L$ and its universal property?
+  hint: The commutative ring $L \cong \mathbb{Z}[x_1, x_2, \dots]$ representing the functor of 1-dimensional
+    commutative formal group laws $\mathbf{FGL} \cong \mathrm{Hom}_{\mathbf{CAlg}}(L, -)$; Quillen's theorem
+    provides a canonical isomorphism $\pi_*(M U) \cong L$.
+  locator: null
+  sub_index: null
+  search_text: what is the algebraic lazard ring $l$ and its universal property? the commutative ring
+    $l \cong \mathbb{z}[x_1, x_2, \dots]$ representing the functor of 1-dimensional commutative formal
+    group laws $\mathbf{fgl} \cong \mathrm{hom}_{\mathbf{calg}}(l, -)$; quillen's theorem provides a canonical
+    isomorphism $\pi_*(m u) \cong l$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#046
+  text: What is the Hazewinkel generator formula for $B P_*$?
+  hint: 'The generators $v_n \in \pi_{2(p^n-1)}(B P)$ defined recursively via the logarithm series of
+    the $p$-typical formal group law: $\log_{B P}(x) = \sum_{n=0}^\infty \ell_n x^{p^n}$, where $p\ell_n
+    = \sum_{i=0}^{n-1} \ell_i v_{n-i}^{p^i}$ with $\ell_0 = 1$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the hazewinkel generator formula for $b p_*$? the generators $v_n \in \pi_{2(p^n-1)}(b
+    p)$ defined recursively via the logarithm series of the $p$-typical formal group law: $\log_{b p}(x)
+    = \sum_{n=0}^\infty \ell_n x^{p^n}$, where $p\ell_n = \sum_{i=0}^{n-1} \ell_i v_{n-i}^{p^i}$ with
+    $\ell_0 = 1$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#047
+  text: What is Araki's coordinate system for $B P_*$?
+  hint: An alternative choice of $p$-typical generators $v_n \in B P_*$ defined directly from the $p$-series
+    $[p]_F(x) = p x +_F v_1 x^p +_F v_2 x^{p^2} +_F \dots$.
+  locator: null
+  sub_index: null
+  search_text: what is araki's coordinate system for $b p_*$? an alternative choice of $p$-typical generators
+    $v_n \in b p_*$ defined directly from the $p$-series $[p]_f(x) = p x +_f v_1 x^p +_f v_2 x^{p^2} +_f
+    \dots$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#048
+  text: What is a strict isomorphism of formal group laws?
+  hint: A power series $\phi(x) = x + b_1 x^2 + b_2 x^3 + \dots \in R[[x]]$ such that $\phi(F(x, y)) =
+    G(\phi(x), \phi(y))$; the Hopf algebroid $M U_* M U \cong M U_*[b_1, b_2, \dots]$ classifies strict
+    isomorphisms between formal group laws.
+  locator: null
+  sub_index: null
+  search_text: what is a strict isomorphism of formal group laws? a power series $\phi(x) = x + b_1 x^2
+    + b_2 x^3 + \dots \in r[[x]]$ such that $\phi(f(x, y)) = g(\phi(x), \phi(y))$; the hopf algebroid
+    $m u_* m u \cong m u_*[b_1, b_2, \dots]$ classifies strict isomorphisms between formal group laws.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#049
+  text: What is the Landweber-Novikov algebra $S$?
+  hint: The algebra of stable cohomology operations on complex cobordism $S = M U^*(M U)$, dual to the
+    homology Cooperations algebra $M U_* M U$.
+  locator: null
+  sub_index: null
+  search_text: what is the landweber-novikov algebra $s$? the algebra of stable cohomology operations
+    on complex cobordism $s = m u^*(m u)$, dual to the homology cooperations algebra $m u_* m u$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#050
+  text: What is the Dyer-Lashof algebra for an $\mathbb{E}_\infty$-ring spectrum?
+  hint: The algebra of natural power operations $Q^i$ acting on the mod-$p$ homology $H_*(X; \mathbb{F}_p)$
+    of an $\mathbb{E}_\infty$-space or $\mathbb{E}_\infty$-spectrum, formalizing higher commutativity
+    operations.
+  locator: null
+  sub_index: null
+  search_text: what is the dyer-lashof algebra for an $\mathbb{e}_\infty$-ring spectrum? the algebra of
+    natural power operations $q^i$ acting on the mod-$p$ homology $h_*(x; \mathbb{f}_p)$ of an $\mathbb{e}_\infty$-space
+    or $\mathbb{e}_\infty$-spectrum, formalizing higher commutativity operations.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#051
+  text: What is the Milnor primitive $Q_n$ in the mod-$p$ Steenrod algebra $\mathcal{A}_p$?
+  hint: The cohomology operations defined inductively by $Q_0 = \beta$ (Bockstein) and $Q_{n+1} = [P^{p^n},
+    Q_n]$, satisfying $Q_n^2 = 0$ and generating an exterior subalgebra $E(Q_0, Q_1, \dots) \subset \mathcal{A}_p$.
+  locator: null
+  sub_index: null
+  search_text: what is the milnor primitive $q_n$ in the mod-$p$ steenrod algebra $\mathcal{a}_p$? the
+    cohomology operations defined inductively by $q_0 = \beta$ (bockstein) and $q_{n+1} = [p^{p^n}, q_n]$,
+    satisfying $q_n^2 = 0$ and generating an exterior subalgebra $e(q_0, q_1, \dots) \subset \mathcal{a}_p$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#052
+  text: What is the relationship between the Milnor primitives $Q_n$ and the generators $v_n$ of $B P_*$?
+  hint: In the Adams spectral sequence for $B P$, the Milnor primitives $Q_n$ are the algebraic duals/detectors
+    of the homotopy generators $v_n \in \pi_{2(p^n-1)}(B P)$.
+  locator: null
+  sub_index: null
+  search_text: what is the relationship between the milnor primitives $q_n$ and the generators $v_n$ of
+    $b p_*$? in the adams spectral sequence for $b p$, the milnor primitives $q_n$ are the algebraic duals/detectors
+    of the homotopy generators $v_n \in \pi_{2(p^n-1)}(b p)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#053
+  text: What is the connective complex $K$-theory spectrum $k u$ and connective real $K$-theory $k o$?
+  hint: The connective covers $\tau_{\ge 0} K U$ and $\tau_{\ge 0} K O$; $\pi_*(k u) \cong \mathbb{Z}[u]$
+    with $|u| = 2$, and $k u$ is the chromatic height-1 truncated layer.
+  locator: null
+  sub_index: null
+  search_text: what is the connective complex $k$-theory spectrum $k u$ and connective real $k$-theory
+    $k o$? the connective covers $\tau_{\ge 0} k u$ and $\tau_{\ge 0} k o$; $\pi_*(k u) \cong \mathbb{z}[u]$
+    with $|u| = 2$, and $k u$ is the chromatic height-1 truncated layer.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#054
+  text: What is the connective Morava $K$-theory spectrum $k(n)$?
+  hint: The connective cover of Morava $K$-theory with coefficients $\pi_*(k(n)) \cong \mathbb{F}_p[v_n]$;
+    it fits into a cofiber sequence $k(n) \xrightarrow{\cdot v_n} k(n) \to H\mathbb{F}_p$.
+  locator: null
+  sub_index: null
+  search_text: what is the connective morava $k$-theory spectrum $k(n)$? the connective cover of morava
+    $k$-theory with coefficients $\pi_*(k(n)) \cong \mathbb{f}_p[v_n]$; it fits into a cofiber sequence
+    $k(n) \xrightarrow{\cdot v_n} k(n) \to h\mathbb{f}_p$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#055
+  text: What is the telescope $T(n)$ of a type-$n$ spectrum?
+  hint: Given a finite spectrum $X$ of type $n$ with $v_n$-self map $v \colon \Sigma^d X \to X$, the telescope
+    is the homotopy colimit $T(n) := v^{-1} X = \mathrm{hocolim}(X \xrightarrow{v} \Sigma^{-d} X \xrightarrow{v}
+    \Sigma^{-2d} X \to \dots)$.
+  locator: null
+  sub_index: null
+  search_text: what is the telescope $t(n)$ of a type-$n$ spectrum? given a finite spectrum $x$ of type
+    $n$ with $v_n$-self map $v \colon \sigma^d x \to x$, the telescope is the homotopy colimit $t(n) :=
+    v^{-1} x = \mathrm{hocolim}(x \xrightarrow{v} \sigma^{-d} x \xrightarrow{v} \sigma^{-2d} x \to \dots)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#056
+  text: What is the $T(n)$-localization $L_{T(n)}$ vs. $K(n)$-localization $L_{K(n)}$?
+  hint: $L_{T(n)}$ is the Bousfield localization with respect to the telescope $T(n)$; $L_{K(n)}$ is localization
+    with respect to the periodic field $K(n)$. The Telescope Conjecture asserted $L_{T(n)} \simeq L_{K(n)}$.
+  locator: null
+  sub_index: null
+  search_text: what is the $t(n)$-localization $l_{t(n)}$ vs. $k(n)$-localization $l_{k(n)}$? $l_{t(n)}$
+    is the bousfield localization with respect to the telescope $t(n)$; $l_{k(n)}$ is localization with
+    respect to the periodic field $k(n)$. the telescope conjecture asserted $l_{t(n)} \simeq l_{k(n)}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#057
+  text: What is a $p$-local spectrum vs. a $p$-complete spectrum?
+  hint: A spectrum $X$ is $p$-local if $\pi_*(X)$ are $\mathbb{Z}_{(p)}$-modules (Bousfield localization
+    at $H\mathbb{Q} \vee H\mathbb{F}_p$); $X$ is $p$-complete if $X \simeq L_{S^0/p} X = \mathrm{holim}_k
+    (X \wedge S^0/p^k)$.
+  locator: null
+  sub_index: null
+  search_text: what is a $p$-local spectrum vs. a $p$-complete spectrum? a spectrum $x$ is $p$-local if
+    $\pi_*(x)$ are $\mathbb{z}_{(p)}$-modules (bousfield localization at $h\mathbb{q} \vee h\mathbb{f}_p$);
+    $x$ is $p$-complete if $x \simeq l_{s^0/p} x = \mathrm{holim}_k (x \wedge s^0/p^k)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#058
+  text: What is the rationalization $L_{\mathbb{Q}} X$ of a spectrum $X$?
+  hint: The localization $X \wedge H\mathbb{Q}$; for any spectrum $X$, $L_\mathbb{Q} X \simeq \bigvee_{n
+    \in \mathbb{Z}} \Sigma^n H(\pi_n(X) \otimes \mathbb{Q})$, so rational stable homotopy theory is completely
+    algebraic.
+  locator: null
+  sub_index: null
+  search_text: what is the rationalization $l_{\mathbb{q}} x$ of a spectrum $x$? the localization $x \wedge
+    h\mathbb{q}$; for any spectrum $x$, $l_\mathbb{q} x \simeq \bigvee_{n \in \mathbb{z}} \sigma^n h(\pi_n(x)
+    \otimes \mathbb{q})$, so rational stable homotopy theory is completely algebraic.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#059
+  text: What is Serre's theorem on the finiteness of stable homotopy groups of spheres?
+  hint: The stable homotopy groups $\pi_n^s = \pi_n(\mathbb{S})$ are finite abelian groups for all $n
+    > 0$; the only infinite group is $\pi_0^s \cong \mathbb{Z}$.
+  locator: null
+  sub_index: null
+  search_text: what is serre's theorem on the finiteness of stable homotopy groups of spheres? the stable
+    homotopy groups $\pi_n^s = \pi_n(\mathbb{s})$ are finite abelian groups for all $n > 0$; the only
+    infinite group is $\pi_0^s \cong \mathbb{z}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#060
+  text: What is the Hopf invariant 1 problem?
+  hint: The determination of dimensions $n$ in which maps $f \colon S^{2n-1} \to S^n$ have odd Hopf invariant;
+    Adams proved using Steenrod operations / $K$-theory that this occurs only for $n = 1, 2, 4, 8$ (corresponding
+    to $\mathbb{R}, \mathbb{C}, \mathbb{H}, \mathbb{O}$ and the classical Hopf maps $\eta, \nu, \sigma$).
+  locator: null
+  sub_index: null
+  search_text: what is the hopf invariant 1 problem? the determination of dimensions $n$ in which maps
+    $f \colon s^{2n-1} \to s^n$ have odd hopf invariant; adams proved using steenrod operations / $k$-theory
+    that this occurs only for $n = 1, 2, 4, 8$ (corresponding to $\mathbb{r}, \mathbb{c}, \mathbb{h},
+    \mathbb{o}$ and the classical hopf maps $\eta, \nu, \sigma$).
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#061
+  text: What is the Kervaire invariant 1 problem?
+  hint: The question of whether framed $(4k+2)$-manifolds with non-zero Kervaire invariant exist; Hill-Hopkins-Ravenel
+    proved using equivariant chromatic homotopy theory that they exist only in dimensions $2, 6, 14, 30,
+    62$, and possibly $126$, vanishing in all dimensions $2^j - 2 \ge 254$.
+  locator: null
+  sub_index: null
+  search_text: what is the kervaire invariant 1 problem? the question of whether framed $(4k+2)$-manifolds
+    with non-zero kervaire invariant exist; hill-hopkins-ravenel proved using equivariant chromatic homotopy
+    theory that they exist only in dimensions $2, 6, 14, 30, 62$, and possibly $126$, vanishing in all
+    dimensions $2^j - 2 \ge 254$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#062
+  text: What is the Norm functor $N_H^G$ in equivariant stable homotopy theory?
+  hint: The multiplicative induction / symmetric monoidal tensor induction functor $N_H^G \colon \mathbf{Sp}^H
+    \to \mathbf{Sp}^G$ for a finite group $H \subset G$, crucial for constructing the Real cobordism spectrum
+    $M U_{\mathbb{R}}$ in the proof of the Kervaire invariant theorem.
+  locator: null
+  sub_index: null
+  search_text: what is the norm functor $n_h^g$ in equivariant stable homotopy theory? the multiplicative
+    induction / symmetric monoidal tensor induction functor $n_h^g \colon \mathbf{sp}^h \to \mathbf{sp}^g$
+    for a finite group $h \subset g$, crucial for constructing the real cobordism spectrum $m u_{\mathbb{r}}$
+    in the proof of the kervaire invariant theorem.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#063
+  text: What is the Real cobordism spectrum $M U_{\mathbb{R}}$?
+  hint: The $C_2$-equivariant Thom spectrum associated to the universal Real vector bundles with complex
+    conjugation action; its fixed points and norm $N_{C_2}^{C_{2^n}} M U_{\mathbb{R}}$ detect higher chromatic
+    and Kervaire phenomena.
+  locator: null
+  sub_index: null
+  search_text: what is the real cobordism spectrum $m u_{\mathbb{r}}$? the $c_2$-equivariant thom spectrum
+    associated to the universal real vector bundles with complex conjugation action; its fixed points
+    and norm $n_{c_2}^{c_{2^n}} m u_{\mathbb{r}}$ detect higher chromatic and kervaire phenomena.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#064
+  text: What is the chromatic spectral sequence for the sphere spectrum $\mathbb{S}$?
+  hint: The spectral sequence applying the functors $\mathrm{Ext}_{B P_* B P}^{s, t}(B P_*, M_n^k)$ to
+    compute the chromatic filtration $E_1^{n, s, t} \implies E_2^{n+s, t}(\mathrm{ANSS}) \implies \pi_{t-s-n}(\mathbb{S})_{(p)}$.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic spectral sequence for the sphere spectrum $\mathbb{s}$? the spectral
+    sequence applying the functors $\mathrm{ext}_{b p_* b p}^{s, t}(b p_*, m_n^k)$ to compute the chromatic
+    filtration $e_1^{n, s, t} \implies e_2^{n+s, t}(\mathrm{anss}) \implies \pi_{t-s-n}(\mathbb{s})_{(p)}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#065
+  text: What is the Mahowald uncertainty principle / chromatic resolution of the sphere?
+  hint: The conceptual resolution of the sphere spectrum by a tower of spectra built from the chromatic
+    layers $L_{K(n)} \mathbb{S}$, each governed by the continuous cohomology of the Morava stabilizer
+    group $H_c^*( \mathbb{G}_n, (E_n)_*)$.
+  locator: null
+  sub_index: null
+  search_text: what is the mahowald uncertainty principle / chromatic resolution of the sphere? the conceptual
+    resolution of the sphere spectrum by a tower of spectra built from the chromatic layers $l_{k(n)}
+    \mathbb{s}$, each governed by the continuous cohomology of the morava stabilizer group $h_c^*( \mathbb{g}_n,
+    (e_n)_*)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#066
+  text: How does the Morava Change of Rings Theorem simplify $K(n)$-local Ext groups?
+  hint: $\mathrm{Ext}_{B P_* B P}^{s, t}(B P_*, v_n^{-1} B P_*/(p^\infty, \dots, v_{n-1}^\infty)) \cong
+    H_c^s(\mathbb{G}_n, (K(n))_t)$, identifying abstract Hopf algebroid Ext groups with the continuous
+    group cohomology of the $p$-adic Lie group $\mathbb{G}_n$.
+  locator: null
+  sub_index: null
+  search_text: how does the morava change of rings theorem simplify $k(n)$-local ext groups? $\mathrm{ext}_{b
+    p_* b p}^{s, t}(b p_*, v_n^{-1} b p_*/(p^\infty, \dots, v_{n-1}^\infty)) \cong h_c^s(\mathbb{g}_n,
+    (k(n))_t)$, identifying abstract hopf algebroid ext groups with the continuous group cohomology of
+    the $p$-adic lie group $\mathbb{g}_n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#067
+  text: What is the Honda formal group $\Gamma_n$ over $\mathbb{F}_{p^n}$?
+  hint: The unique (up to isomorphism) 1-dimensional formal group law over $\mathbb{F}_{p^n}$ of height
+    $n$ whose $p$-series is $[p]_{\Gamma_n}(x) = x^{p^n}$.
+  locator: null
+  sub_index: null
+  search_text: what is the honda formal group $\gamma_n$ over $\mathbb{f}_{p^n}$? the unique (up to isomorphism)
+    1-dimensional formal group law over $\mathbb{f}_{p^n}$ of height $n$ whose $p$-series is $[p]_{\gamma_n}(x)
+    = x^{p^n}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#068
+  text: What is the maximal division algebra $D_n$ associated with the Morava stabilizer group $\mathbb{G}_n$?
+  hint: The central division algebra over $\mathbb{Q}_p$ with invariant $1/n$ and Hasse invariant $1/n$;
+    the endomorphism ring $\mathrm{End}(\Gamma_n)$ is isomorphic to the maximal order $\mathcal{O}_n \subset
+    D_n$, so $\mathbb{G}_n \cong \mathcal{O}_n^\times \rtimes \mathrm{Gal}(\mathbb{F}_{p^n}/\mathbb{F}_p)$.
+  locator: null
+  sub_index: null
+  search_text: what is the maximal division algebra $d_n$ associated with the morava stabilizer group
+    $\mathbb{g}_n$? the central division algebra over $\mathbb{q}_p$ with invariant $1/n$ and hasse invariant
+    $1/n$; the endomorphism ring $\mathrm{end}(\gamma_n)$ is isomorphic to the maximal order $\mathcal{o}_n
+    \subset d_n$, so $\mathbb{g}_n \cong \mathcal{o}_n^\times \rtimes \mathrm{gal}(\mathbb{f}_{p^n}/\mathbb{f}_p)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#069
+  text: What is the $E(n)$-splitting theorem of Hovey-Sadofsky?
+  hint: The Bousfield localization $L_{E(n)}$ decomposes on finite spectra as a finite limit over $K(j)$-localizations
+    for $0 \le j \le n$, formalizing the chromatic fracture square for all heights.
+  locator: null
+  sub_index: null
+  search_text: what is the $e(n)$-splitting theorem of hovey-sadofsky? the bousfield localization $l_{e(n)}$
+    decomposes on finite spectra as a finite limit over $k(j)$-localizations for $0 \le j \le n$, formalizing
+    the chromatic fracture square for all heights.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#070
+  text: What is the Gross-Hopkins period map in Lubin-Tate deformation theory?
+  hint: The $\mathbb{G}_n$-equivariant rigid analytic étale map $\pi \colon \mathcal{X}_n \to \mathbb{P}^{n-1}$
+    from the generic fiber of the deformation space to projective space, mapping a deformation to the
+    Hodge filtration of its crystalline Dieudonné module.
+  locator: null
+  sub_index: null
+  search_text: what is the gross-hopkins period map in lubin-tate deformation theory? the $\mathbb{g}_n$-equivariant
+    rigid analytic étale map $\pi \colon \mathcal{x}_n \to \mathbb{p}^{n-1}$ from the generic fiber of
+    the deformation space to projective space, mapping a deformation to the hodge filtration of its crystalline
+    dieudonné module.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#071
+  text: What is the derived stack of elliptic curves $\mathcal{M}_{\mathrm{ell}}^{\mathrm{der}}$?
+  hint: The derived Deligne-Mumford stack $(\mathcal{M}_{\mathrm{ell}}, \mathcal{O}^{\mathrm{top}})$ equipped
+    with a sheaf of $\mathbb{E}_\infty$-ring spectra whose stalk at an elliptic curve $E$ is the elliptic
+    spectrum associated to the formal group $\widehat{E}$.
+  locator: null
+  sub_index: null
+  search_text: what is the derived stack of elliptic curves $\mathcal{m}_{\mathrm{ell}}^{\mathrm{der}}$?
+    the derived deligne-mumford stack $(\mathcal{m}_{\mathrm{ell}}, \mathcal{o}^{\mathrm{top}})$ equipped
+    with a sheaf of $\mathbb{e}_\infty$-ring spectra whose stalk at an elliptic curve $e$ is the elliptic
+    spectrum associated to the formal group $\widehat{e}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#072
+  text: What is the Witten genus and the string orientation of $TMF$?
+  hint: The map of $\mathbb{E}_\infty$-ring spectra $\sigma \colon M\mathrm{String} \to TMF$ constructed
+    by Ando-Hopkins-Rezk, refining the classical Witten genus $\sigma(M) \in \mathbb{Q}[[q]]$ on string
+    manifolds to a topological invariant in $\pi_*(TMF)$.
+  locator: null
+  sub_index: null
+  search_text: what is the witten genus and the string orientation of $tmf$? the map of $\mathbb{e}_\infty$-ring
+    spectra $\sigma \colon m\mathrm{string} \to tmf$ constructed by ando-hopkins-rezk, refining the classical
+    witten genus $\sigma(m) \in \mathbb{q}[[q]]$ on string manifolds to a topological invariant in $\pi_*(tmf)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#073
+  text: What is the connective topological modular forms spectrum $tmf$?
+  hint: The connective cover $\tau_{\ge 0} TMF$; its coefficient ring $\pi_*(tmf)$ contains 576-periodic
+    torsion elements capturing the torsion in $\pi_*^s$ through dimension 24.
+  locator: null
+  sub_index: null
+  search_text: what is the connective topological modular forms spectrum $tmf$? the connective cover $\tau_{\ge
+    0} tmf$; its coefficient ring $\pi_*(tmf)$ contains 576-periodic torsion elements capturing the torsion
+    in $\pi_*^s$ through dimension 24.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#074
+  text: What is the periodic topological modular forms spectrum $T M F$ (with capital letters)?
+  hint: 'The strictly periodic spectrum obtained by inverting the discriminant modular form $\Delta^{24}$
+    in $TMF$: $T M F = TMF[\Delta^{-1}]$, representing the moduli of smooth elliptic curves.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the periodic topological modular forms spectrum $t m f$ (with capital letters)?
+    the strictly periodic spectrum obtained by inverting the discriminant modular form $\delta^{24}$ in
+    $tmf$: $t m f = tmf[\delta^{-1}]$, representing the moduli of smooth elliptic curves.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#075
+  text: What is a formal groupoid / stacky perspective on chromatic homotopy theory? (IMPORTANT QUESTION)
+  hint: The perspective pioneered by Hopkins, Goerss, and Lurie identifying chromatic stable homotopy
+    theory as the quasi-coherent sheaf theory $\mathbf{QCoh}(\mathcal{M}_{\mathrm{fg}})$ over the moduli
+    stack of 1-dimensional formal groups.
+  locator: null
+  sub_index: null
+  search_text: what is a formal groupoid / stacky perspective on chromatic homotopy theory? (important
+    question) the perspective pioneered by hopkins, goerss, and lurie identifying chromatic stable homotopy
+    theory as the quasi-coherent sheaf theory $\mathbf{qcoh}(\mathcal{m}_{\mathrm{fg}})$ over the moduli
+    stack of 1-dimensional formal groups.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#076
+  text: What is the chromatic height of a 1-dimensional torus $\mathbb{G}_m$ vs. an elliptic curve $E$?
+  hint: The formal completion $\widehat{\mathbb{G}}_m$ has height $h = 1$ (ordinary complex $K$-theory);
+    the formal group $\widehat{E}$ of an elliptic curve has height $h = 1$ if $E$ is ordinary, and height
+    $h = 2$ if $E$ is supersingular.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic height of a 1-dimensional torus $\mathbb{g}_m$ vs. an elliptic curve
+    $e$? the formal completion $\widehat{\mathbb{g}}_m$ has height $h = 1$ (ordinary complex $k$-theory);
+    the formal group $\widehat{e}$ of an elliptic curve has height $h = 1$ if $e$ is ordinary, and height
+    $h = 2$ if $e$ is supersingular.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#077
+  text: What is the Gross-Hopkins duality in $K(n)$-local homotopy theory?
+  hint: 'The self-duality of the $K(n)$-local sphere: $L_{K(n)} \mathbb{S} \simeq I_n \wedge \Sigma^{n^2
+    - n} L_{K(n)} \mathbb{S}$, where $I_n$ is the Spanier-Whitehead / Brown-Comenetz dualizing object
+    representing Pontryagin duality on $K(n)$-local homotopy groups.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the gross-hopkins duality in $k(n)$-local homotopy theory? the self-duality of
+    the $k(n)$-local sphere: $l_{k(n)} \mathbb{s} \simeq i_n \wedge \sigma^{n^2 - n} l_{k(n)} \mathbb{s}$,
+    where $i_n$ is the spanier-whitehead / brown-comenetz dualizing object representing pontryagin duality
+    on $k(n)$-local homotopy groups.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#078
+  text: 'What is the Balmer spectrum $\mathrm{Spc}(\mathcal{C})$ of a tensor triangulated category? (Hint:
+    The topological space of prime thick tensor ideals $\mathcal{P} \subset \mathcal{C}$ endowed with
+    the Zariski-type topology generated by supports $\mathrm{supp}(a) = \{ \mathcal{P} \mid a \notin \mathcal{P}
+    \}$'
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: 'what is the balmer spectrum $\mathrm{spc}(\mathcal{c})$ of a tensor triangulated category?
+    (hint: the topological space of prime thick tensor ideals $\mathcal{p} \subset \mathcal{c}$ endowed
+    with the zariski-type topology generated by supports $\mathrm{supp}(a) = \{ \mathcal{p} \mid a \notin
+    \mathcal{p} \}$'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#079
+  text: What is a formal group law over a commutative ring $R$?
+  hint: A power series $F(x,y) \in R[[x,y]]$ satisfying $F(x,0)=x$, $F(0,y)=y$, $F(x,y)=F(y,x)$, and $F(F(x,y),z)=F(x,F(y,z))$.
+  locator: null
+  sub_index: null
+  search_text: what is a formal group law over a commutative ring $r$? a power series $f(x,y) \in r[[x,y]]$
+    satisfying $f(x,0)=x$, $f(0,y)=y$, $f(x,y)=f(y,x)$, and $f(f(x,y),z)=f(x,f(y,z))$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#080
+  text: What is the additive formal group law $\widehat{\mathbb{G}}_a$?
+  hint: The formal group law $F(x,y) = x + y$, corresponding to ordinary singular cohomology $H\mathbb{Q}$
+    and $H\mathbb{F}_p$.
+  locator: null
+  sub_index: null
+  search_text: what is the additive formal group law $\widehat{\mathbb{g}}_a$? the formal group law $f(x,y)
+    = x + y$, corresponding to ordinary singular cohomology $h\mathbb{q}$ and $h\mathbb{f}_p$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#081
+  text: What is the multiplicative formal group law $\widehat{\mathbb{G}}_m$?
+  hint: The formal group law $F(x,y) = x + y + xy = (1+x)(1+y) - 1$, corresponding to complex $K$-theory
+    $K U$.
+  locator: null
+  sub_index: null
+  search_text: what is the multiplicative formal group law $\widehat{\mathbb{g}}_m$? the formal group
+    law $f(x,y) = x + y + xy = (1+x)(1+y) - 1$, corresponding to complex $k$-theory $k u$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#082
+  text: What is an isomorphism between two formal group laws $F$ and $G$ over $R$?
+  hint: A power series $f(x) \in R[[x]]$ with $f(x) = u x + O(x^2)$ for $u \in R^\times$ such that $f(F(x,y))
+    = G(f(x), f(y))$.
+  locator: null
+  sub_index: null
+  search_text: what is an isomorphism between two formal group laws $f$ and $g$ over $r$? a power series
+    $f(x) \in r[[x]]$ with $f(x) = u x + o(x^2)$ for $u \in r^\times$ such that $f(f(x,y)) = g(f(x), f(y))$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#083
+  text: When is an isomorphism of formal group laws called strict?
+  hint: When the leading coefficient is 1, i.e., $f(x) = x + b_1 x^2 + b_2 x^3 + \dots \in R[[x]]$.
+  locator: null
+  sub_index: null
+  search_text: when is an isomorphism of formal group laws called strict? when the leading coefficient
+    is 1, i.e., $f(x) = x + b_1 x^2 + b_2 x^3 + \dots \in r[[x]]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#084
+  text: What is the formal logarithm $\log_F(x)$ of a formal group law over a $\mathbb{Q}$-algebra $R$?
+  hint: 'The unique strict power series $\log_F(x) = x + O(x^2) \in R[[x]]$ providing a strict isomorphism
+    from $F$ to the additive law: $\log_F(F(x,y)) = \log_F(x) + \log_F(y)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the formal logarithm $\log_f(x)$ of a formal group law over a $\mathbb{q}$-algebra
+    $r$? the unique strict power series $\log_f(x) = x + o(x^2) \in r[[x]]$ providing a strict isomorphism
+    from $f$ to the additive law: $\log_f(f(x,y)) = \log_f(x) + \log_f(y)$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#085
+  text: What is the formal exponential $\exp_F(x)$ of a formal group law?
+  hint: The functional inverse of $\log_F(x)$ satisfying $\log_F(\exp_F(x)) = x$ and $F(x,y) = \exp_F(\log_F(x)
+    + \log_F(y))$.
+  locator: null
+  sub_index: null
+  search_text: what is the formal exponential $\exp_f(x)$ of a formal group law? the functional inverse
+    of $\log_f(x)$ satisfying $\log_f(\exp_f(x)) = x$ and $f(x,y) = \exp_f(\log_f(x) + \log_f(y))$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#086
+  text: What is the invariant differential of a formal group law $F(x,y)$?
+  hint: The formal 1-form $\omega(x) = \frac{dx}{F_2(x,0)}$, where $F_2(x,y) = \frac{\partial F}{\partial
+    y}(x,y)$, satisfying $\omega(F(x,y)) = \omega(x)$ in $R[[x,y]]$; in characteristic 0, $\omega(x) =
+    d\log_F(x)$.
+  locator: null
+  sub_index: null
+  search_text: what is the invariant differential of a formal group law $f(x,y)$? the formal 1-form $\omega(x)
+    = \frac{dx}{f_2(x,0)}$, where $f_2(x,y) = \frac{\partial f}{\partial y}(x,y)$, satisfying $\omega(f(x,y))
+    = \omega(x)$ in $r[[x,y]]$; in characteristic 0, $\omega(x) = d\log_f(x)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#087
+  text: What is the $n$-series $[n]_F(x)$ of a formal group law?
+  hint: The power series defined inductively by $[0]_F(x) = 0$, $[1]_F(x) = x$, and $[n]_F(x) = F(x, [n-1]_F(x))$;
+    for $n = -1$, $[-1]_F(x)$ is the formal inverse satisfying $F(x, [-1]_F(x)) = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is the $n$-series $[n]_f(x)$ of a formal group law? the power series defined inductively
+    by $[0]_f(x) = 0$, $[1]_f(x) = x$, and $[n]_f(x) = f(x, [n-1]_f(x))$; for $n = -1$, $[-1]_f(x)$ is
+    the formal inverse satisfying $f(x, [-1]_f(x)) = 0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#088
+  text: What is a $p$-typical formal group law?
+  hint: 'A formal group law over a $\mathbb{Z}_{(p)}$-algebra whose logarithm series has only $p$-power
+    terms: $\log_F(x) = \sum_{k=0}^\infty \ell_k x^{p^k}$ with $\ell_0 = 1$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a $p$-typical formal group law? a formal group law over a $\mathbb{z}_{(p)}$-algebra
+    whose logarithm series has only $p$-power terms: $\log_f(x) = \sum_{k=0}^\infty \ell_k x^{p^k}$ with
+    $\ell_0 = 1$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#089
+  text: What is Cartier's Theorem on $p$-typical formal group laws?
+  hint: Every formal group law over a $\mathbb{Z}_{(p)}$-algebra is strictly isomorphic to a $p$-typical
+    formal group law.
+  locator: null
+  sub_index: null
+  search_text: what is cartier's theorem on $p$-typical formal group laws? every formal group law over
+    a $\mathbb{z}_{(p)}$-algebra is strictly isomorphic to a $p$-typical formal group law.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#090
+  text: What is the universal property of the Lazard ring $L$?
+  hint: The commutative ring $L$ carries a universal formal group law $F_U(x,y) \in L[[x,y]]$ such that
+    for any ring $R$ and FGL $F$ over $R$, there is a unique ring homomorphism $\theta \colon L \to R$
+    classifying $F$.
+  locator: null
+  sub_index: null
+  search_text: what is the universal property of the lazard ring $l$? the commutative ring $l$ carries
+    a universal formal group law $f_u(x,y) \in l[[x,y]]$ such that for any ring $r$ and fgl $f$ over $r$,
+    there is a unique ring homomorphism $\theta \colon l \to r$ classifying $f$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#091
+  text: What is the algebraic structure of the Lazard ring $L$?
+  hint: Lazard's Theorem states that $L \cong \mathbb{Z}[x_1, x_2, x_3, \dots]$ is a polynomial ring on
+    infinitely many generators with $\deg(x_i) = 2i$.
+  locator: null
+  sub_index: null
+  search_text: what is the algebraic structure of the lazard ring $l$? lazard's theorem states that $l
+    \cong \mathbb{z}[x_1, x_2, x_3, \dots]$ is a polynomial ring on infinitely many generators with $\deg(x_i)
+    = 2i$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#092
+  text: What is Quillen's Theorem on complex cobordism $M U$?
+  hint: The natural map $L \to \pi_*(M U)$ classifying the formal group law of $M U$ from the first Chern
+    class of the tensor product of line bundles is an isomorphism of graded rings.
+  locator: null
+  sub_index: null
+  search_text: what is quillen's theorem on complex cobordism $m u$? the natural map $l \to \pi_*(m u)$
+    classifying the formal group law of $m u$ from the first chern class of the tensor product of line
+    bundles is an isomorphism of graded rings.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#093
+  text: What is the Quillen idempotent on $M U_{(p)}$?
+  hint: 'An idempotent map of ring spectra $e \colon M U_{(p)} \to M U_{(p)}$ that splits off the Brown-Peterson
+    spectrum $B P$ as a retract: $M U_{(p)} \simeq \bigvee_i \Sigma^{d_i} B P$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the quillen idempotent on $m u_{(p)}$? an idempotent map of ring spectra $e \colon
+    m u_{(p)} \to m u_{(p)}$ that splits off the brown-peterson spectrum $b p$ as a retract: $m u_{(p)}
+    \simeq \bigvee_i \sigma^{d_i} b p$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#094
+  text: What is the coefficient ring $\pi_*(B P)$ and its generators?
+  hint: $\pi_*(B P) \cong \mathbb{Z}_{(p)}[v_1, v_2, v_3, \dots]$ where the Hazewinkel/Araki generators
+    have degrees $|v_n| = 2(p^n - 1)$.
+  locator: null
+  sub_index: null
+  search_text: what is the coefficient ring $\pi_*(b p)$ and its generators? $\pi_*(b p) \cong \mathbb{z}_{(p)}[v_1,
+    v_2, v_3, \dots]$ where the hazewinkel/araki generators have degrees $|v_n| = 2(p^n - 1)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#095
+  text: What is the Hopf algebroid $(M U_*, M U_* M U)$?
+  hint: $M U_* M U \cong M U_*[b_1, b_2, \dots]$ with $|b_i| = 2i$; it represents the functor assigning
+    to any ring $R$ the groupoid of formal group laws over $R$ and strict isomorphisms between them.
+  locator: null
+  sub_index: null
+  search_text: what is the hopf algebroid $(m u_*, m u_* m u)$? $m u_* m u \cong m u_*[b_1, b_2, \dots]$
+    with $|b_i| = 2i$; it represents the functor assigning to any ring $r$ the groupoid of formal group
+    laws over $r$ and strict isomorphisms between them.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#096
+  text: What is the Hopf algebroid $(B P_*, B P_* B P)$?
+  hint: $B P_* B P \cong B P_*[t_1, t_2, \dots]$ where $|t_n| = 2(p^n - 1)$; it classifies $p$-typical
+    formal group laws and strict isomorphisms between them.
+  locator: null
+  sub_index: null
+  search_text: what is the hopf algebroid $(b p_*, b p_* b p)$? $b p_* b p \cong b p_*[t_1, t_2, \dots]$
+    where $|t_n| = 2(p^n - 1)$; it classifies $p$-typical formal group laws and strict isomorphisms between
+    them.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#097
+  text: What is an invariant ideal in $B P_*$?
+  hint: An ideal $I \subset B P_*$ such that $\eta_R(I) \subset I \cdot B P_* B P$ under the right unit
+    map; the only prime invariant ideals in $B P_*$ are the Landweber ideals $I_n = (p, v_1, v_2, \dots,
+    v_{n-1})$ for $0 \le n \le \infty$.
+  locator: null
+  sub_index: null
+  search_text: what is an invariant ideal in $b p_*$? an ideal $i \subset b p_*$ such that $\eta_r(i)
+    \subset i \cdot b p_* b p$ under the right unit map; the only prime invariant ideals in $b p_*$ are
+    the landweber ideals $i_n = (p, v_1, v_2, \dots, v_{n-1})$ for $0 \le n \le \infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#098
+  text: What is the Landweber Invariant Ideal Theorem?
+  hint: Every proper invariant prime ideal of $B P_*$ is precisely of the form $I_n = (p, v_1, \dots,
+    v_{n-1})$ for some $n \ge 0$.
+  locator: null
+  sub_index: null
+  search_text: what is the landweber invariant ideal theorem? every proper invariant prime ideal of $b
+    p_*$ is precisely of the form $i_n = (p, v_1, \dots, v_{n-1})$ for some $n \ge 0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#099
+  text: What is the height of a formal group law $F$ over a field $k$ of characteristic $p$?
+  hint: The unique integer $h \ge 1$ such that $[p]_F(x) = c x^{p^h} + O(x^{p^h+1})$ with $c \neq 0$;
+    if $[p]_F(x) = 0$, the height is $\infty$.
+  locator: null
+  sub_index: null
+  search_text: what is the height of a formal group law $f$ over a field $k$ of characteristic $p$? the
+    unique integer $h \ge 1$ such that $[p]_f(x) = c x^{p^h} + o(x^{p^h+1})$ with $c \neq 0$; if $[p]_f(x)
+    = 0$, the height is $\infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#100
+  text: How is the height of a formal group law classified up to isomorphism over an algebraically closed
+    field $\overline{\mathbb{F}}_p$?
+  hint: By Lazard's classification theorem, two formal group laws over $\overline{\mathbb{F}}_p$ are isomorphic
+    if and only if they have the exact same height $h \in \{1, 2, \dots, \infty\}$.
+  locator: null
+  sub_index: null
+  search_text: how is the height of a formal group law classified up to isomorphism over an algebraically
+    closed field $\overline{\mathbb{f}}_p$? by lazard's classification theorem, two formal group laws
+    over $\overline{\mathbb{f}}_p$ are isomorphic if and only if they have the exact same height $h \in
+    \{1, 2, \dots, \infty\}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#101
+  text: What is the Lubin-Tate ring $E_n^*$ (or $(E_n)_0$)?
+  hint: The universal deformation ring of a height-$n$ formal group over $\mathbb{F}_{p^n}$, isomorphic
+    to the complete local Noetherian ring $W(\mathbb{F}_{p^n})[[u_1, u_2, \dots, u_{n-1}]]$.
+  locator: null
+  sub_index: null
+  search_text: what is the lubin-tate ring $e_n^*$ (or $(e_n)_0$)? the universal deformation ring of a
+    height-$n$ formal group over $\mathbb{f}_{p^n}$, isomorphic to the complete local noetherian ring
+    $w(\mathbb{f}_{p^n})[[u_1, u_2, \dots, u_{n-1}]]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#102
+  text: What is Morava $E$-theory $E_n$ (Lubin-Tate spectrum)?
+  hint: The Landweber exact periodic 2-periodic cohomology theory with $\pi_0(E_n) = W(\mathbb{F}_{p^n})[[u_1,
+    \dots, u_{n-1}]]$ and $\pi_*(E_n) \cong \pi_0(E_n)[u, u^{-1}]$ with $|u| = -2$.
+  locator: null
+  sub_index: null
+  search_text: what is morava $e$-theory $e_n$ (lubin-tate spectrum)? the landweber exact periodic 2-periodic
+    cohomology theory with $\pi_0(e_n) = w(\mathbb{f}_{p^n})[[u_1, \dots, u_{n-1}]]$ and $\pi_*(e_n) \cong
+    \pi_0(e_n)[u, u^{-1}]$ with $|u| = -2$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#103
+  text: What is Morava $K$-theory $K(n)$ at height $n$?
+  hint: The spectrum with coefficients $\pi_*(K(n)) \cong \mathbb{F}_p[v_n, v_n^{-1}]$ with $|v_n| = 2(p^n-1)$;
+    for $n=0$, $K(0) = H\mathbb{Q}$, and for $n=\infty$, $K(\infty) = H\mathbb{F}_p$.
+  locator: null
+  sub_index: null
+  search_text: what is morava $k$-theory $k(n)$ at height $n$? the spectrum with coefficients $\pi_*(k(n))
+    \cong \mathbb{f}_p[v_n, v_n^{-1}]$ with $|v_n| = 2(p^n-1)$; for $n=0$, $k(0) = h\mathbb{q}$, and for
+    $n=\infty$, $k(\infty) = h\mathbb{f}_p$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#104
+  text: Why are Morava $K$-theories $K(n)$ called the "primes" of stable homotopy theory?
+  hint: Because $K(n)_*(X)$ satisfies a field-like Künneth theorem $K(n)_*(X \wedge Y) \cong K(n)_*(X)
+    \otimes_{K(n)_*} K(n)_*(Y)$, and they classify all prime thick subcategories of finite spectra.
+  locator: null
+  sub_index: null
+  search_text: why are morava $k$-theories $k(n)$ called the "primes" of stable homotopy theory? because
+    $k(n)_*(x)$ satisfies a field-like künneth theorem $k(n)_*(x \wedge y) \cong k(n)_*(x) \otimes_{k(n)_*}
+    k(n)_*(y)$, and they classify all prime thick subcategories of finite spectra.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#105
+  text: What is a finite spectrum $X$?
+  hint: A spectrum $X$ that is compact / dualizable in $\mathbf{Sp}$, meaning it can be built from the
+    sphere spectrum $\mathbb{S}$ using finitely many cofiber sequences / cells.
+  locator: null
+  sub_index: null
+  search_text: what is a finite spectrum $x$? a spectrum $x$ that is compact / dualizable in $\mathbf{sp}$,
+    meaning it can be built from the sphere spectrum $\mathbb{s}$ using finitely many cofiber sequences
+    / cells.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#106
+  text: What is the type of a finite $p$-local spectrum $X$?
+  hint: The smallest integer $n \ge 0$ such that $K(n)_*(X) \neq 0$; if $X \simeq *$, its type is $\infty$.
+  locator: null
+  sub_index: null
+  search_text: what is the type of a finite $p$-local spectrum $x$? the smallest integer $n \ge 0$ such
+    that $k(n)_*(x) \neq 0$; if $x \simeq *$, its type is $\infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#107
+  text: State the Hopkins-Smith Thick Subcategory Theorem
+  hint: The only thick subcategories of the category of finite $p$-local spectra $\mathbf{Sp}_{(p)}^{\mathrm{fin}}$
+    are $\mathcal{C}_n = \{X \in \mathbf{Sp}_{(p)}^{\mathrm{fin}} \mid \mathrm{type}(X) \ge n\} = \{X
+    \mid K(n-1)_*(X) = 0\}$ for $0 \le n \le \infty$.
+  locator: null
+  sub_index: null
+  search_text: state the hopkins-smith thick subcategory theorem the only thick subcategories of the category
+    of finite $p$-local spectra $\mathbf{sp}_{(p)}^{\mathrm{fin}}$ are $\mathcal{c}_n = \{x \in \mathbf{sp}_{(p)}^{\mathrm{fin}}
+    \mid \mathrm{type}(x) \ge n\} = \{x \mid k(n-1)_*(x) = 0\}$ for $0 \le n \le \infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#108
+  text: What is a $v_n$-self map $v \colon \Sigma^d X \to X$ on a finite spectrum of type $n$?
+  hint: A map inducing an isomorphism on $K(n)_*(X)$ and the zero map on $K(m)_*(X)$ for all $m \neq n$.
+  locator: null
+  sub_index: null
+  search_text: what is a $v_n$-self map $v \colon \sigma^d x \to x$ on a finite spectrum of type $n$?
+    a map inducing an isomorphism on $k(n)_*(x)$ and the zero map on $k(m)_*(x)$ for all $m \neq n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#109
+  text: State the Hopkins-Smith Periodicity Theorem
+  hint: Every finite $p$-local spectrum of type $n$ admits a $v_n$-self map for some suspension shift
+    $d > 0$, and this map is asymptotically unique up to powers and homotopy.
+  locator: null
+  sub_index: null
+  search_text: state the hopkins-smith periodicity theorem every finite $p$-local spectrum of type $n$
+    admits a $v_n$-self map for some suspension shift $d > 0$, and this map is asymptotically unique up
+    to powers and homotopy.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#110
+  text: What is the Devinatz-Hopkins-Smith Nilpotence Theorem (for self-maps)?
+  hint: A self-map $f \colon \Sigma^k X \to X$ on a finite spectrum is nilpotent ($f^N \simeq 0$) if and
+    only if $M U_*(f) = 0$, or equivalently $K(n)_*(f) = 0$ for all $0 \le n \le \infty$.
+  locator: null
+  sub_index: null
+  search_text: what is the devinatz-hopkins-smith nilpotence theorem (for self-maps)? a self-map $f \colon
+    \sigma^k x \to x$ on a finite spectrum is nilpotent ($f^n \simeq 0$) if and only if $m u_*(f) = 0$,
+    or equivalently $k(n)_*(f) = 0$ for all $0 \le n \le \infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#111
+  text: What is the Devinatz-Hopkins-Smith Nilpotence Theorem (for smash products)?
+  hint: A map $\alpha \colon S^k \to \mathbb{S}$ is smash-nilpotent ($\alpha^{\wedge N} \simeq 0$) if
+    and only if its image in $M U_*$ is zero; every positive-degree element in $\pi_*(\mathbb{S})$ is
+    smash-nilpotent.
+  locator: null
+  sub_index: null
+  search_text: what is the devinatz-hopkins-smith nilpotence theorem (for smash products)? a map $\alpha
+    \colon s^k \to \mathbb{s}$ is smash-nilpotent ($\alpha^{\wedge n} \simeq 0$) if and only if its image
+    in $m u_*$ is zero; every positive-degree element in $\pi_*(\mathbb{s})$ is smash-nilpotent.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#112
+  text: What is Bousfield localization $L_E X$ with respect to an arbitrary spectrum $E$?
+  hint: The universal $E$-local spectrum equipped with an $E$-equivalence $\eta \colon X \to L_E X$, where
+    $Y$ is $E$-local if $[Z, Y]_* = 0$ for all $Z$ with $E_*(Z) = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is bousfield localization $l_e x$ with respect to an arbitrary spectrum $e$? the universal
+    $e$-local spectrum equipped with an $e$-equivalence $\eta \colon x \to l_e x$, where $y$ is $e$-local
+    if $[z, y]_* = 0$ for all $z$ with $e_*(z) = 0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#113
+  text: What is the Johnson-Wilson spectrum $E(n)$?
+  hint: The Landweber exact spectrum obtained from $B P$ by killing $v_{n+1}, v_{n+2}, \dots$ and inverting
+    $v_n$, with $\pi_*(E(n)) \cong \mathbb{Z}_{(p)}[v_1, \dots, v_n, v_n^{-1}]$.
+  locator: null
+  sub_index: null
+  search_text: what is the johnson-wilson spectrum $e(n)$? the landweber exact spectrum obtained from
+    $b p$ by killing $v_{n+1}, v_{n+2}, \dots$ and inverting $v_n$, with $\pi_*(e(n)) \cong \mathbb{z}_{(p)}[v_1,
+    \dots, v_n, v_n^{-1}]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#114
+  text: What is the Chromatic Tower of a spectrum $X$?
+  hint: The tower of Bousfield localizations $\dots \to L_{E(n)} X \to L_{E(n-1)} X \to \dots \to L_{E(1)}
+    X \to L_{E(0)} X = L_{H\mathbb{Q}} X$.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic tower of a spectrum $x$? the tower of bousfield localizations $\dots
+    \to l_{e(n)} x \to l_{e(n-1)} x \to \dots \to l_{e(1)} x \to l_{e(0)} x = l_{h\mathbb{q}} x$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#115
+  text: State the Chromatic Convergence Theorem
+  hint: For any finite $p$-local spectrum $X$, the canonical map $X \xrightarrow{\sim} \mathrm{holim}_n
+    L_{E(n)} X$ is a homotopy equivalence.
+  locator: null
+  sub_index: null
+  search_text: state the chromatic convergence theorem for any finite $p$-local spectrum $x$, the canonical
+    map $x \xrightarrow{\sim} \mathrm{holim}_n l_{e(n)} x$ is a homotopy equivalence.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#116
+  text: What is the chromatic fracture square for height $n$?
+  hint: The homotopy pullback square expressing $L_{E(n)} X$ as the pullback of $L_{K(n)} X$ and $L_{E(n-1)}
+    X$ over $L_{E(n-1)} L_{K(n)} X$.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic fracture square for height $n$? the homotopy pullback square expressing
+    $l_{e(n)} x$ as the pullback of $l_{k(n)} x$ and $l_{e(n-1)} x$ over $l_{e(n-1)} l_{k(n)} x$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#117
+  text: What is the Adams Spectral Sequence based on $E$?
+  hint: The spectral sequence $E_2^{s,t} = \mathrm{Ext}_{E_* E}^{s,t}(E_*, E_* X) \implies \pi_{t-s}(L_E
+    X)$ arising from the $E$-nilpotent resolution of $X$.
+  locator: null
+  sub_index: null
+  search_text: what is the adams spectral sequence based on $e$? the spectral sequence $e_2^{s,t} = \mathrm{ext}_{e_*
+    e}^{s,t}(e_*, e_* x) \implies \pi_{t-s}(l_e x)$ arising from the $e$-nilpotent resolution of $x$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#118
+  text: What is the Adams-Novikov Spectral Sequence (ANSS)?
+  hint: 'The Adams spectral sequence based on $M U$ or $B P$: $E_2^{s,t} = \mathrm{Ext}_{B P_* B P}^{s,t}(B
+    P_*, B P_*) \implies \pi_{t-s}(\mathbb{S})_{(p)}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the adams-novikov spectral sequence (anss)? the adams spectral sequence based
+    on $m u$ or $b p$: $e_2^{s,t} = \mathrm{ext}_{b p_* b p}^{s,t}(b p_*, b p_*) \implies \pi_{t-s}(\mathbb{s})_{(p)}$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#119
+  text: What is the moduli stack of formal groups $\mathcal{M}_{\mathrm{fg}}$?
+  hint: The 1-dimensional algebraic stack presenting formal group laws and their coordinate isomorphisms,
+    with affine cover $\mathrm{Spec}(L) \to \mathcal{M}_{\mathrm{fg}}$ where $L$ is the Lazard ring.
+  locator: null
+  sub_index: null
+  search_text: what is the moduli stack of formal groups $\mathcal{m}_{\mathrm{fg}}$? the 1-dimensional
+    algebraic stack presenting formal group laws and their coordinate isomorphisms, with affine cover
+    $\mathrm{spec}(l) \to \mathcal{m}_{\mathrm{fg}}$ where $l$ is the lazard ring.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#120
+  text: How are $M U_* M U$-comodules related to quasi-coherent sheaves on $\mathcal{M}_{\mathrm{fg}}$?
+  hint: The category of graded quasi-coherent sheaves on $\mathcal{M}_{\mathrm{fg}}$ is equivalent to
+    the category of evenly graded $M U_* M U$-comodules.
+  locator: null
+  sub_index: null
+  search_text: how are $m u_* m u$-comodules related to quasi-coherent sheaves on $\mathcal{m}_{\mathrm{fg}}$?
+    the category of graded quasi-coherent sheaves on $\mathcal{m}_{\mathrm{fg}}$ is equivalent to the
+    category of evenly graded $m u_* m u$-comodules.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#121
+  text: What is the height stratification on $\mathcal{M}_{\mathrm{fg}}$ over $\mathbb{F}_p$?
+  hint: The descending filtration by closed substacks $\mathcal{M}_{\mathrm{fg}} \supset \mathcal{M}_{\mathrm{fg}}^{\ge
+    1} \supset \mathcal{M}_{\mathrm{fg}}^{\ge 2} \supset \dots \supset \mathcal{M}_{\mathrm{fg}}^{\ge
+    \infty}$, where $\mathcal{M}_{\mathrm{fg}}^{\ge n}$ is the locus where $v_0 = p, v_1, \dots, v_{n-1}$
+    vanish.
+  locator: null
+  sub_index: null
+  search_text: what is the height stratification on $\mathcal{m}_{\mathrm{fg}}$ over $\mathbb{f}_p$? the
+    descending filtration by closed substacks $\mathcal{m}_{\mathrm{fg}} \supset \mathcal{m}_{\mathrm{fg}}^{\ge
+    1} \supset \mathcal{m}_{\mathrm{fg}}^{\ge 2} \supset \dots \supset \mathcal{m}_{\mathrm{fg}}^{\ge
+    \infty}$, where $\mathcal{m}_{\mathrm{fg}}^{\ge n}$ is the locus where $v_0 = p, v_1, \dots, v_{n-1}$
+    vanish.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#122
+  text: What is the Morava stabilizer group $\mathbb{G}_n$?
+  hint: The automorphism group $\mathrm{Aut}_{\overline{\mathbb{F}}_p}(\Gamma_n) \rtimes \mathrm{Gal}(\mathbb{F}_{p^n}/\mathbb{F}_p)$
+    of the Honda formal group of height $n$, isomorphic to $\mathcal{O}_n^\times \rtimes \mathbb{Z}/n\mathbb{Z}$
+    where $\mathcal{O}_n$ is the maximal order in the division algebra $D_{1/n}$.
+  locator: null
+  sub_index: null
+  search_text: what is the morava stabilizer group $\mathbb{g}_n$? the automorphism group $\mathrm{aut}_{\overline{\mathbb{f}}_p}(\gamma_n)
+    \rtimes \mathrm{gal}(\mathbb{f}_{p^n}/\mathbb{f}_p)$ of the honda formal group of height $n$, isomorphic
+    to $\mathcal{o}_n^\times \rtimes \mathbb{z}/n\mathbb{z}$ where $\mathcal{o}_n$ is the maximal order
+    in the division algebra $d_{1/n}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#123
+  text: How is Morava $E$-theory $E_n$ related to the Morava stabilizer group $\mathbb{G}_n$?
+  hint: The Goerss-Hopkins-Miller theorem equips $E_n$ with a continuous action of $\mathbb{G}_n$ by $\mathbb{E}_\infty$-ring
+    automorphisms, with homotopy fixed points $E_n^{h\mathbb{G}_n} \simeq L_{K(n)} \mathbb{S}$.
+  locator: null
+  sub_index: null
+  search_text: how is morava $e$-theory $e_n$ related to the morava stabilizer group $\mathbb{g}_n$? the
+    goerss-hopkins-miller theorem equips $e_n$ with a continuous action of $\mathbb{g}_n$ by $\mathbb{e}_\infty$-ring
+    automorphisms, with homotopy fixed points $e_n^{h\mathbb{g}_n} \simeq l_{k(n)} \mathbb{s}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#124
+  text: What is the Hopkins-Miller / Goerss-Hopkins Theorem?
+  hint: The functor from the category of pairs $(k, \Gamma)$ (height-$n$ formal groups over perfect fields)
+    to $\mathbb{E}_\infty$-ring spectra is canonically defined and the space of $\mathbb{E}_\infty$-automorphisms
+    of $E_n$ is weakly equivalent to the discrete group $\mathbb{G}_n$.
+  locator: null
+  sub_index: null
+  search_text: what is the hopkins-miller / goerss-hopkins theorem? the functor from the category of pairs
+    $(k, \gamma)$ (height-$n$ formal groups over perfect fields) to $\mathbb{e}_\infty$-ring spectra is
+    canonically defined and the space of $\mathbb{e}_\infty$-automorphisms of $e_n$ is weakly equivalent
+    to the discrete group $\mathbb{g}_n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#125
+  text: What is an elliptic spectrum?
+  hint: A triple $(E, C, t)$ consisting of an even periodic ring spectrum $E$, an elliptic curve $C$ over
+    $\pi_0(E)$, and an isomorphism $t \colon \widehat{C} \xrightarrow{\sim} \mathrm{Spf}(E^0(\mathbb{C}\mathbb{P}^\infty))$
+    between the formal group of $C$ and the formal group of $E$.
+  locator: null
+  sub_index: null
+  search_text: what is an elliptic spectrum? a triple $(e, c, t)$ consisting of an even periodic ring
+    spectrum $e$, an elliptic curve $c$ over $\pi_0(e)$, and an isomorphism $t \colon \widehat{c} \xrightarrow{\sim}
+    \mathrm{spf}(e^0(\mathbb{c}\mathbb{p}^\infty))$ between the formal group of $c$ and the formal group
+    of $e$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#126
+  text: What is the topological modular forms spectrum $TMF$?
+  hint: The $\mathbb{E}_\infty$-ring spectrum of global derived sections $TMF = \mathbf{R}\Gamma(\mathcal{M}_{\mathrm{ell}},
+    \mathcal{O}^{\mathrm{top}})$ of the derived structure sheaf on the moduli stack of elliptic curves
+    $\mathcal{M}_{\mathrm{ell}}$.
+  locator: null
+  sub_index: null
+  search_text: what is the topological modular forms spectrum $tmf$? the $\mathbb{e}_\infty$-ring spectrum
+    of global derived sections $tmf = \mathbf{r}\gamma(\mathcal{m}_{\mathrm{ell}}, \mathcal{o}^{\mathrm{top}})$
+    of the derived structure sheaf on the moduli stack of elliptic curves $\mathcal{m}_{\mathrm{ell}}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#127
+  text: What is the String orientation of $TMF$?
+  hint: The map of $\mathbb{E}_\infty$-ring spectra $M\mathrm{String} \to TMF$ constructed by Ando-Hopkins-Rezk,
+    providing the universal orientation for string manifolds and refining the Witten genus.
+  locator: null
+  sub_index: null
+  search_text: what is the string orientation of $tmf$? the map of $\mathbb{e}_\infty$-ring spectra $m\mathrm{string}
+    \to tmf$ constructed by ando-hopkins-rezk, providing the universal orientation for string manifolds
+    and refining the witten genus.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#128
+  text: What is the Toda-Smith spectrum $V(n)$?
+  hint: A finite spectrum whose $B P$-homology is $B P_*(V(n)) \cong B P_*/(p, v_1, \dots, v_n) = B P_*/I_{n+1}$;
+    $V(0) = S^0/p$, $V(1) = S^0/(p, v_1)$ exists for $p \ge 3$, $V(2)$ exists for $p \ge 5$, and $V(3)$
+    exists for $p \ge 7$.
+  locator: null
+  sub_index: null
+  search_text: what is the toda-smith spectrum $v(n)$? a finite spectrum whose $b p$-homology is $b p_*(v(n))
+    \cong b p_*/(p, v_1, \dots, v_n) = b p_*/i_{n+1}$; $v(0) = s^0/p$, $v(1) = s^0/(p, v_1)$ exists for
+    $p \ge 3$, $v(2)$ exists for $p \ge 5$, and $v(3)$ exists for $p \ge 7$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#129
+  text: What is the chromatic dimension of $K(n)$-local spheres?
+  hint: The continuous group cohomology of $\mathbb{G}_n$ has virtual cohomological dimension $n^2$, which
+    determines the length of the $K(n)$-local Adams-Novikov spectral sequence.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic dimension of $k(n)$-local spheres? the continuous group cohomology
+    of $\mathbb{g}_n$ has virtual cohomological dimension $n^2$, which determines the length of the $k(n)$-local
+    adams-novikov spectral sequence.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#130
+  text: What is the Gross-Hopkins duality in $K(n)$-local homotopy theory?
+  hint: The Spanier-Whitehead dual of $L_{K(n)} \mathbb{S}$ is an $(n^2 - n)$-shifted invertible $K(n)$-local
+    spectrum $I_n \wedge \Sigma^{n^2 - n} L_{K(n)} \mathbb{S}$, realizing Poincaré duality for $\mathbb{G}_n$.
+  locator: null
+  sub_index: null
+  search_text: what is the gross-hopkins duality in $k(n)$-local homotopy theory? the spanier-whitehead
+    dual of $l_{k(n)} \mathbb{s}$ is an $(n^2 - n)$-shifted invertible $k(n)$-local spectrum $i_n \wedge
+    \sigma^{n^2 - n} l_{k(n)} \mathbb{s}$, realizing poincaré duality for $\mathbb{g}_n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#131
+  text: What is the Balmer spectrum $\mathrm{Spc}(\mathbf{Sp}_{(p)}^{\mathrm{fin}})$?
+  hint: The topological space of prime thick tensor ideals of finite $p$-local spectra, which is homeomorphic
+    to the space $\{ \mathcal{C}_0, \mathcal{C}_1, \mathcal{C}_2, \dots, \mathcal{C}_\infty \}$ where
+    the closure of the point $\mathcal{C}_n$ is precisely $\{ \mathcal{C}_m \mid m \ge n \}$.
+  locator: null
+  sub_index: null
+  search_text: what is the balmer spectrum $\mathrm{spc}(\mathbf{sp}_{(p)}^{\mathrm{fin}})$? the topological
+    space of prime thick tensor ideals of finite $p$-local spectra, which is homeomorphic to the space
+    $\{ \mathcal{c}_0, \mathcal{c}_1, \mathcal{c}_2, \dots, \mathcal{c}_\infty \}$ where the closure of
+    the point $\mathcal{c}_n$ is precisely $\{ \mathcal{c}_m \mid m \ge n \}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#132
+  text: What is higher semiadditivity and ambidexterity in chromatic homotopy theory (Hopkins-Lurie)?
+  hint: The property that for any $\pi$-finite space $K$ of truncatedness $m$, integration along $K$ is
+    canonically equivalent to summation along $K$ in $T(n)$-local and $K(n)$-local stable homotopy categories,
+    yielding an $\infty$-categorical analogue of semiadditive categories at each chromatic height $n$.
+  locator: null
+  sub_index: null
+  search_text: what is higher semiadditivity and ambidexterity in chromatic homotopy theory (hopkins-lurie)?
+    the property that for any $\pi$-finite space $k$ of truncatedness $m$, integration along $k$ is canonically
+    equivalent to summation along $k$ in $t(n)$-local and $k(n)$-local stable homotopy categories, yielding
+    an $\infty$-categorical analogue of semiadditive categories at each chromatic height $n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#133
+  text: What is a graded ring and a graded module in stable homotopy theory?
+  hint: A ring $R_* = \bigoplus_{n \in \mathbb{Z}} R_n$ and module $M_* = \bigoplus_{n \in \mathbb{Z}}
+    M_n$ graded by integers, representing the homotopy groups $\pi_*(E)$ and generalized homology groups
+    $E_*(X)$ of a spectrum $E$.
+  locator: null
+  sub_index: null
+  search_text: what is a graded ring and a graded module in stable homotopy theory? a ring $r_* = \bigoplus_{n
+    \in \mathbb{z}} r_n$ and module $m_* = \bigoplus_{n \in \mathbb{z}} m_n$ graded by integers, representing
+    the homotopy groups $\pi_*(e)$ and generalized homology groups $e_*(x)$ of a spectrum $e$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#134
+  text: What is a generalized cohomology theory on topological spaces?
+  hint: A sequence of contravariant functors $E^n$ from pointed spaces to abelian groups satisfying homotopy
+    invariance, suspension isomorphism $E^n(X) \cong E^{n+1}(\Sigma X)$, exactness for cofiber sequences,
+    and the wedge axiom $E^n(\bigvee X_i) \cong \prod E^n(X_i)$.
+  locator: null
+  sub_index: null
+  search_text: what is a generalized cohomology theory on topological spaces? a sequence of contravariant
+    functors $e^n$ from pointed spaces to abelian groups satisfying homotopy invariance, suspension isomorphism
+    $e^n(x) \cong e^{n+1}(\sigma x)$, exactness for cofiber sequences, and the wedge axiom $e^n(\bigvee
+    x_i) \cong \prod e^n(x_i)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#135
+  text: What is the Brown Representability Theorem?
+  hint: Every generalized cohomology theory $E^*$ on the category of pointed CW-complexes is uniquely
+    representable by an $\Omega$-spectrum $E = (E_n)_{n \in \mathbb{Z}}$ via natural isomorphisms $E^n(X)
+    \cong [X, E_n]$.
+  locator: null
+  sub_index: null
+  search_text: what is the brown representability theorem? every generalized cohomology theory $e^*$ on
+    the category of pointed cw-complexes is uniquely representable by an $\omega$-spectrum $e = (e_n)_{n
+    \in \mathbb{z}}$ via natural isomorphisms $e^n(x) \cong [x, e_n]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#136
+  text: What is an $\Omega$-spectrum?
+  hint: A sequence of pointed spaces $(E_n)_{n \in \mathbb{Z}}$ equipped with weak homotopy equivalences
+    $E_n \xrightarrow{\sim} \Omega E_{n+1}$ for all $n$.
+  locator: null
+  sub_index: null
+  search_text: what is an $\omega$-spectrum? a sequence of pointed spaces $(e_n)_{n \in \mathbb{z}}$ equipped
+    with weak homotopy equivalences $e_n \xrightarrow{\sim} \omega e_{n+1}$ for all $n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#137
+  text: What is the complex projective space $\mathbb{C}\mathbb{P}^\infty$ and its role as a classifying
+    space?
+  hint: $\mathbb{C}\mathbb{P}^\infty \simeq B\mathrm{U}(1) \simeq K(\mathbb{Z}, 2)$, the classifying space
+    for complex line bundles on topological spaces.
+  locator: null
+  sub_index: null
+  search_text: what is the complex projective space $\mathbb{c}\mathbb{p}^\infty$ and its role as a classifying
+    space? $\mathbb{c}\mathbb{p}^\infty \simeq b\mathrm{u}(1) \simeq k(\mathbb{z}, 2)$, the classifying
+    space for complex line bundles on topological spaces.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#138
+  text: What is a complex oriented cohomology theory?
+  hint: A multiplicative generalized cohomology theory $E$ equipped with a chosen class $x \in \widetilde{E}^2(\mathbb{C}\mathbb{P}^\infty)$
+    (a complex orientation) whose restriction to $\mathbb{C}\mathbb{P}^1 \cong S^2$ generates $\widetilde{E}^2(S^2)
+    \cong \pi_0(E)$.
+  locator: null
+  sub_index: null
+  search_text: what is a complex oriented cohomology theory? a multiplicative generalized cohomology theory
+    $e$ equipped with a chosen class $x \in \widetilde{e}^2(\mathbb{c}\mathbb{p}^\infty)$ (a complex orientation)
+    whose restriction to $\mathbb{c}\mathbb{p}^1 \cong s^2$ generates $\widetilde{e}^2(s^2) \cong \pi_0(e)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#139
+  text: How does a complex orientation determine the cohomology of $\mathbb{C}\mathbb{P}^\infty$?
+  hint: The orientation $x$ induces a canonical isomorphism of graded rings $E^*(\mathbb{C}\mathbb{P}^\infty)
+    \cong E_*[[x]]$ where $|x| = 2$.
+  locator: null
+  sub_index: null
+  search_text: how does a complex orientation determine the cohomology of $\mathbb{c}\mathbb{p}^\infty$?
+    the orientation $x$ induces a canonical isomorphism of graded rings $e^*(\mathbb{c}\mathbb{p}^\infty)
+    \cong e_*[[x]]$ where $|x| = 2$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#140
+  text: How does a complex oriented cohomology theory determine a formal group law?
+  hint: The tensor product of complex line bundles defines an $H$-space multiplication $m \colon \mathbb{C}\mathbb{P}^\infty
+    \times \mathbb{C}\mathbb{P}^\infty \to \mathbb{C}\mathbb{P}^\infty$; pulling back the orientation
+    gives $m^*(x) = F(x_1, x_2) \in E_*[[x_1, x_2]]$, which satisfies the axioms of a 1-dimensional commutative
+    formal group law over $E_* = \pi_*(E)$.
+  locator: null
+  sub_index: null
+  search_text: how does a complex oriented cohomology theory determine a formal group law? the tensor
+    product of complex line bundles defines an $h$-space multiplication $m \colon \mathbb{c}\mathbb{p}^\infty
+    \times \mathbb{c}\mathbb{p}^\infty \to \mathbb{c}\mathbb{p}^\infty$; pulling back the orientation
+    gives $m^*(x) = f(x_1, x_2) \in e_*[[x_1, x_2]]$, which satisfies the axioms of a 1-dimensional commutative
+    formal group law over $e_* = \pi_*(e)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#141
+  text: What is the first Chern class $c_1^E(L)$ of a complex line bundle in a complex oriented theory
+    $E$?
+  hint: The pullback $c_1^E(L) := f^*(x) \in E^2(X)$ along the classifying map $f \colon X \to \mathbb{C}\mathbb{P}^\infty$
+    of the line bundle $L \to X$.
+  locator: null
+  sub_index: null
+  search_text: what is the first chern class $c_1^e(l)$ of a complex line bundle in a complex oriented
+    theory $e$? the pullback $c_1^e(l) := f^*(x) \in e^2(x)$ along the classifying map $f \colon x \to
+    \mathbb{c}\mathbb{p}^\infty$ of the line bundle $l \to x$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#142
+  text: How does the first Chern class behave on tensor products of line bundles?
+  hint: $c_1^E(L_1 \otimes L_2) = F(c_1^E(L_1), c_1^E(L_2))$, where $F$ is the formal group law associated
+    to the orientation on $E$.
+  locator: null
+  sub_index: null
+  search_text: how does the first chern class behave on tensor products of line bundles? $c_1^e(l_1 \otimes
+    l_2) = f(c_1^e(l_1), c_1^e(l_2))$, where $f$ is the formal group law associated to the orientation
+    on $e$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#143
+  text: What is the Thom space $\mathrm{Th}(V)$ (or $X^V$) of a vector bundle $V \to X$?
+  hint: The one-point compactification of the total space of $V$, or the quotient space $D(V)/S(V)$ of
+    the disk bundle by the sphere bundle.
+  locator: null
+  sub_index: null
+  search_text: what is the thom space $\mathrm{th}(v)$ (or $x^v$) of a vector bundle $v \to x$? the one-point
+    compactification of the total space of $v$, or the quotient space $d(v)/s(v)$ of the disk bundle by
+    the sphere bundle.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#144
+  text: What is a Thom class in a cohomology theory $E$?
+  hint: For a rank-$r$ vector bundle $V \to X$, a class $u_V \in \widetilde{E}^r(\mathrm{Th}(V))$ whose
+    restriction to each fiber sphere $\mathrm{Th}(V_x) \cong S^r$ generates $\widetilde{E}^r(S^r) \cong
+    \pi_0(E)$ as a free module.
+  locator: null
+  sub_index: null
+  search_text: what is a thom class in a cohomology theory $e$? for a rank-$r$ vector bundle $v \to x$,
+    a class $u_v \in \widetilde{e}^r(\mathrm{th}(v))$ whose restriction to each fiber sphere $\mathrm{th}(v_x)
+    \cong s^r$ generates $\widetilde{e}^r(s^r) \cong \pi_0(e)$ as a free module.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#145
+  text: State the Thom Isomorphism Theorem for complex oriented theories
+  hint: For every complex vector bundle $V \to X$ of rank $r$, cup product with the Thom class $u_V$ induces
+    an isomorphism $E^*(X) \xrightarrow{\sim} \widetilde{E}^{*+2r}(\mathrm{Th}(V))$.
+  locator: null
+  sub_index: null
+  search_text: state the thom isomorphism theorem for complex oriented theories for every complex vector
+    bundle $v \to x$ of rank $r$, cup product with the thom class $u_v$ induces an isomorphism $e^*(x)
+    \xrightarrow{\sim} \widetilde{e}^{*+2r}(\mathrm{th}(v))$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#146
+  text: What is the Thom spectrum $M\mathrm{U}(n)$?
+  hint: The Thom space $\mathrm{Th}(\gamma_n)$ of the universal complex vector bundle $\gamma_n \to B\mathrm{U}(n)$.
+  locator: null
+  sub_index: null
+  search_text: what is the thom spectrum $m\mathrm{u}(n)$? the thom space $\mathrm{th}(\gamma_n)$ of the
+    universal complex vector bundle $\gamma_n \to b\mathrm{u}(n)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#147
+  text: How is the complex cobordism spectrum $M U$ assembled as a spectrum?
+  hint: The sequence of spaces $(M\mathrm{U}(n))_{n \ge 0}$ with structure maps $\Sigma^2 M\mathrm{U}(n)
+    \to M\mathrm{U}(n+1)$ induced by the bundle inclusion $\gamma_n \oplus \underline{\mathbb{C}} \to
+    \gamma_{n+1}$.
+  locator: null
+  sub_index: null
+  search_text: how is the complex cobordism spectrum $m u$ assembled as a spectrum? the sequence of spaces
+    $(m\mathrm{u}(n))_{n \ge 0}$ with structure maps $\sigma^2 m\mathrm{u}(n) \to m\mathrm{u}(n+1)$ induced
+    by the bundle inclusion $\gamma_n \oplus \underline{\mathbb{c}} \to \gamma_{n+1}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#148
+  text: Why is complex cobordism $M U$ the universal complex oriented cohomology theory?
+  hint: For any complex oriented ring spectrum $E$ with formal group law $F$, there exists a unique map
+    of ring spectra $\theta \colon M U \to E$ preserving the complex orientation.
+  locator: null
+  sub_index: null
+  search_text: why is complex cobordism $m u$ the universal complex oriented cohomology theory? for any
+    complex oriented ring spectrum $e$ with formal group law $f$, there exists a unique map of ring spectra
+    $\theta \colon m u \to e$ preserving the complex orientation.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#149
+  text: What is the Conner-Floyd isomorphism for complex $K$-theory?
+  hint: The canonical isomorphism of cohomology theories $M U_*(X) \otimes_{M U_*} K U_* \xrightarrow{\sim}
+    K U_*(X)$ where the map $M U_* \to K U_*$ classifies the multiplicative formal group law.
+  locator: null
+  sub_index: null
+  search_text: what is the conner-floyd isomorphism for complex $k$-theory? the canonical isomorphism
+    of cohomology theories $m u_*(x) \otimes_{m u_*} k u_* \xrightarrow{\sim} k u_*(x)$ where the map
+    $m u_* \to k u_*$ classifies the multiplicative formal group law.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#150
+  text: What is an unoriented formal group law?
+  hint: A 1-dimensional formal group law without a specified coordinate, defined geometrically as a formal
+    Lie group of dimension 1 over a scheme/ring.
+  locator: null
+  sub_index: null
+  search_text: what is an unoriented formal group law? a 1-dimensional formal group law without a specified
+    coordinate, defined geometrically as a formal lie group of dimension 1 over a scheme/ring.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#151
+  text: What is a formal Lie group over a ring $R$?
+  hint: A group object in the category of formal schemes over $\mathrm{Spf}(R)$ that is non-canonically
+    isomorphic to the formal affine line $\widehat{\mathbb{A}}^1 = \mathrm{Spf}(R[[x]])$.
+  locator: null
+  sub_index: null
+  search_text: what is a formal lie group over a ring $r$? a group object in the category of formal schemes
+    over $\mathrm{spf}(r)$ that is non-canonically isomorphic to the formal affine line $\widehat{\mathbb{a}}^1
+    = \mathrm{spf}(r[[x]])$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#152
+  text: What is the coordinate ring of a 1-dimensional formal group $\widehat{G}$?
+  hint: The complete topological ring $\mathcal{O}(\widehat{G}) \cong R[[x]]$ equipped with a continuous
+    comultiplication $\Delta \colon R[[x]] \to R[[x]] \widehat{\otimes}_R R[[x]] \cong R[[x, y]]$ corresponding
+    to group addition.
+  locator: null
+  sub_index: null
+  search_text: what is the coordinate ring of a 1-dimensional formal group $\widehat{g}$? the complete
+    topological ring $\mathcal{o}(\widehat{g}) \cong r[[x]]$ equipped with a continuous comultiplication
+    $\delta \colon r[[x]] \to r[[x]] \widehat{\otimes}_r r[[x]] \cong r[[x, y]]$ corresponding to group
+    addition.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#153
+  text: What is the height of the additive formal group $\widehat{\mathbb{G}}_a$ over $\mathbb{F}_p$?
+  hint: The $p$-series is $[p]_{\widehat{\mathbb{G}}_a}(x) = p x = 0$ in $\mathbb{F}_p[[x]]$, so its height
+    is $h = \infty$.
+  locator: null
+  sub_index: null
+  search_text: what is the height of the additive formal group $\widehat{\mathbb{g}}_a$ over $\mathbb{f}_p$?
+    the $p$-series is $[p]_{\widehat{\mathbb{g}}_a}(x) = p x = 0$ in $\mathbb{f}_p[[x]]$, so its height
+    is $h = \infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#154
+  text: What is the height of the multiplicative formal group $\widehat{\mathbb{G}}_m$ over $\mathbb{F}_p$?
+  hint: The $p$-series is $[p]_{\widehat{\mathbb{G}}_m}(x) = (1+x)^p - 1 = x^p$ in $\mathbb{F}_p[[x]]$,
+    so its leading term is $x^{p^1}$ and its height is $h = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the height of the multiplicative formal group $\widehat{\mathbb{g}}_m$ over $\mathbb{f}_p$?
+    the $p$-series is $[p]_{\widehat{\mathbb{g}}_m}(x) = (1+x)^p - 1 = x^p$ in $\mathbb{f}_p[[x]]$, so
+    its leading term is $x^{p^1}$ and its height is $h = 1$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#155
+  text: What is an ordinary elliptic curve in characteristic $p > 0$?
+  hint: An elliptic curve $E/\mathbb{F}_p$ whose formal group $\widehat{E}$ has height $h = 1$, equivalently
+    $E[p](\overline{\mathbb{F}}_p) \cong \mathbb{Z}/p\mathbb{Z}$.
+  locator: null
+  sub_index: null
+  search_text: what is an ordinary elliptic curve in characteristic $p > 0$? an elliptic curve $e/\mathbb{f}_p$
+    whose formal group $\widehat{e}$ has height $h = 1$, equivalently $e[p](\overline{\mathbb{f}}_p) \cong
+    \mathbb{z}/p\mathbb{z}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#156
+  text: What is a supersingular elliptic curve in characteristic $p > 0$?
+  hint: An elliptic curve $E/\mathbb{F}_p$ whose formal group $\widehat{E}$ has height $h = 2$, equivalently
+    $E[p](\overline{\mathbb{F}}_p) = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is a supersingular elliptic curve in characteristic $p > 0$? an elliptic curve $e/\mathbb{f}_p$
+    whose formal group $\widehat{e}$ has height $h = 2$, equivalently $e[p](\overline{\mathbb{f}}_p) =
+    0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#157
+  text: What is the Serre-Tate Theorem on deformations of ordinary elliptic curves?
+  hint: The deformation theory of an ordinary elliptic curve $E$ over a complete local ring $R$ is canonically
+    equivalent to the deformation theory of its 1-dimensional formal group $\widehat{E}$.
+  locator: null
+  sub_index: null
+  search_text: what is the serre-tate theorem on deformations of ordinary elliptic curves? the deformation
+    theory of an ordinary elliptic curve $e$ over a complete local ring $r$ is canonically equivalent
+    to the deformation theory of its 1-dimensional formal group $\widehat{e}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#158
+  text: What is the formal group of a formal Cartier curve?
+  hint: A curve in a formal group $\widehat{G}$ is a homomorphism of formal schemes $\gamma \colon \widehat{\mathbb{A}}^1
+    \to \widehat{G}$; the module of Cartier curves provides an algebraic reconstruction of formal groups
+    via curves.
+  locator: null
+  sub_index: null
+  search_text: what is the formal group of a formal cartier curve? a curve in a formal group $\widehat{g}$
+    is a homomorphism of formal schemes $\gamma \colon \widehat{\mathbb{a}}^1 \to \widehat{g}$; the module
+    of cartier curves provides an algebraic reconstruction of formal groups via curves.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#159
+  text: What is a comodule over a Hopf algebroid $(A, \Gamma)$?
+  hint: An $A$-module $M$ equipped with a coaction map $\psi \colon M \to \Gamma \otimes_A M$ that is
+    coassociative and counital with respect to the comultiplication $\Delta$ and counit $\epsilon$ of
+    $\Gamma$.
+  locator: null
+  sub_index: null
+  search_text: what is a comodule over a hopf algebroid $(a, \gamma)$? an $a$-module $m$ equipped with
+    a coaction map $\psi \colon m \to \gamma \otimes_a m$ that is coassociative and counital with respect
+    to the comultiplication $\delta$ and counit $\epsilon$ of $\gamma$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#160
+  text: What is the cotensor product $M \square_\Gamma N$ of two comodules?
+  hint: The kernel / equalizer $M \square_\Gamma N := \ker\left( M \otimes_A N \xrightarrow{\psi_M \otimes
+    \mathrm{id} - \mathrm{id} \otimes \psi_N} \Gamma \otimes_A M \otimes_A N \right)$.
+  locator: null
+  sub_index: null
+  search_text: what is the cotensor product $m \square_\gamma n$ of two comodules? the kernel / equalizer
+    $m \square_\gamma n := \ker\left( m \otimes_a n \xrightarrow{\psi_m \otimes \mathrm{id} - \mathrm{id}
+    \otimes \psi_n} \gamma \otimes_a m \otimes_a n \right)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#161
+  text: What is the cobar complex of a Hopf algebroid $(A, \Gamma)$?
+  hint: The cosimplicial resolution $C^\bullet(\Gamma, M) = \Gamma^{\otimes_A \bullet} \otimes_A M$ whose
+    cohomology groups compute the derived functors $\mathrm{Ext}_\Gamma^*(A, M)$.
+  locator: null
+  sub_index: null
+  search_text: what is the cobar complex of a hopf algebroid $(a, \gamma)$? the cosimplicial resolution
+    $c^\bullet(\gamma, m) = \gamma^{\otimes_a \bullet} \otimes_a m$ whose cohomology groups compute the
+    derived functors $\mathrm{ext}_\gamma^*(a, m)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#162
+  text: How is the $E_2$-term of the Adams Spectral Sequence computed using the cobar complex?
+  hint: The cohomology of the cobar complex $C^*(\mathcal{A}_p, \mathbb{F}_p)$ of the dual Steenrod algebra
+    $\mathcal{A}_p^*$ computes $\mathrm{Ext}_{\mathcal{A}_p}^{s, t}(\mathbb{F}_p, \mathbb{F}_p)$.
+  locator: null
+  sub_index: null
+  search_text: how is the $e_2$-term of the adams spectral sequence computed using the cobar complex?
+    the cohomology of the cobar complex $c^*(\mathcal{a}_p, \mathbb{f}_p)$ of the dual steenrod algebra
+    $\mathcal{a}_p^*$ computes $\mathrm{ext}_{\mathcal{a}_p}^{s, t}(\mathbb{f}_p, \mathbb{f}_p)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#163
+  text: What is the dual Steenrod algebra $\mathcal{A}_2^*$ at the prime 2?
+  hint: Milnor's polynomial algebra $\mathcal{A}_2^* \cong \mathbb{F}_2[\xi_1, \xi_2, \xi_3, \dots]$ where
+    $|\xi_k| = 2^k - 1$, with coproduct $\Delta(\xi_k) = \sum_{i=0}^k \xi_{k-i}^{2^i} \otimes \xi_i$ with
+    $\xi_0 = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the dual steenrod algebra $\mathcal{a}_2^*$ at the prime 2? milnor's polynomial
+    algebra $\mathcal{a}_2^* \cong \mathbb{f}_2[\xi_1, \xi_2, \xi_3, \dots]$ where $|\xi_k| = 2^k - 1$,
+    with coproduct $\delta(\xi_k) = \sum_{i=0}^k \xi_{k-i}^{2^i} \otimes \xi_i$ with $\xi_0 = 1$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#164
+  text: What is the dual Steenrod algebra $\mathcal{A}_p^*$ at an odd prime $p$?
+  hint: $\mathcal{A}_p^* \cong \mathbb{F}_p[\xi_1, \xi_2, \dots] \otimes \Lambda(\tau_0, \tau_1, \dots)$
+    where $|\xi_k| = 2(p^k - 1)$ and $|\tau_k| = 2p^k - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the dual steenrod algebra $\mathcal{a}_p^*$ at an odd prime $p$? $\mathcal{a}_p^*
+    \cong \mathbb{f}_p[\xi_1, \xi_2, \dots] \otimes \lambda(\tau_0, \tau_1, \dots)$ where $|\xi_k| = 2(p^k
+    - 1)$ and $|\tau_k| = 2p^k - 1$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#165
+  text: What is the chromatic filtration on a spectrum $X$?
+  hint: The filtration on $\pi_*(X)$ induced by the chromatic tower, sorting homotopy elements according
+    to their chromatic height / detection in Morava $K$-theories.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic filtration on a spectrum $x$? the filtration on $\pi_*(x)$ induced
+    by the chromatic tower, sorting homotopy elements according to their chromatic height / detection
+    in morava $k$-theories.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#166
+  text: What is the Bousfield class $\langle E \rangle$ of a spectrum $E$?
+  hint: 'The equivalence class of spectra having the same acyclic spectra as $E$: $\langle E \rangle =
+    \langle F \rangle \iff (\forall X, E_*(X) = 0 \iff F_*(X) = 0)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the bousfield class $\langle e \rangle$ of a spectrum $e$? the equivalence class
+    of spectra having the same acyclic spectra as $e$: $\langle e \rangle = \langle f \rangle \iff (\forall
+    x, e_*(x) = 0 \iff f_*(x) = 0)$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#167
+  text: What is the Bousfield lattice $\mathbf{BL}$?
+  hint: The partially ordered set of all Bousfield classes $\langle E \rangle$ equipped with join $\langle
+    E \rangle \vee \langle F \rangle = \langle E \vee F \rangle$ and meet $\langle E \rangle \wedge \langle
+    F \rangle = \langle E \wedge F \rangle$.
+  locator: null
+  sub_index: null
+  search_text: what is the bousfield lattice $\mathbf{bl}$? the partially ordered set of all bousfield
+    classes $\langle e \rangle$ equipped with join $\langle e \rangle \vee \langle f \rangle = \langle
+    e \vee f \rangle$ and meet $\langle e \rangle \wedge \langle f \rangle = \langle e \wedge f \rangle$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#168
+  text: What is the smash product of Bousfield classes?
+  hint: $\langle E \rangle \wedge \langle F \rangle := \langle E \wedge F \rangle$, which is associative,
+    commutative, and has unit $\langle \mathbb{S} \rangle$.
+  locator: null
+  sub_index: null
+  search_text: what is the smash product of bousfield classes? $\langle e \rangle \wedge \langle f \rangle
+    := \langle e \wedge f \rangle$, which is associative, commutative, and has unit $\langle \mathbb{s}
+    \rangle$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#169
+  text: What does it mean for a spectrum $E$ to be Bousfield regular / a field object?
+  hint: For every spectrum $X$, either $E \wedge X \simeq *$ or $\langle E \wedge X \rangle = \langle
+    E \rangle$; Morava $K$-theories $K(n)$ are field objects in the Bousfield lattice.
+  locator: null
+  sub_index: null
+  search_text: what does it mean for a spectrum $e$ to be bousfield regular / a field object? for every
+    spectrum $x$, either $e \wedge x \simeq *$ or $\langle e \wedge x \rangle = \langle e \rangle$; morava
+    $k$-theories $k(n)$ are field objects in the bousfield lattice.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#170
+  text: What is the relation between the Bousfield classes of $E(n)$ and $K(i)$?
+  hint: $\langle E(n) \rangle = \bigvee_{i=0}^n \langle K(i) \rangle = \langle K(0) \vee K(1) \vee \dots
+    \vee K(n) \rangle$.
+  locator: null
+  sub_index: null
+  search_text: what is the relation between the bousfield classes of $e(n)$ and $k(i)$? $\langle e(n)
+    \rangle = \bigvee_{i=0}^n \langle k(i) \rangle = \langle k(0) \vee k(1) \vee \dots \vee k(n) \rangle$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#171
+  text: What is the monochromatic Bousfield localization $L_{M_n}$?
+  hint: The localization functor with respect to the monochromatic layer $M_n = \mathrm{fib}(L_{E(n)}
+    \to L_{E(n-1)})$, extracting the pure height-$n$ information of a spectrum.
+  locator: null
+  sub_index: null
+  search_text: what is the monochromatic bousfield localization $l_{m_n}$? the localization functor with
+    respect to the monochromatic layer $m_n = \mathrm{fib}(l_{e(n)} \to l_{e(n-1)})$, extracting the pure
+    height-$n$ information of a spectrum.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#172
+  text: What is the Spanier-Whitehead dual $X^\vee$ of a finite spectrum $X$?
+  hint: The spectrum $X^\vee := \underline{\mathrm{Map}}(X, \mathbb{S})$ satisfying $[X \wedge Y, Z] \cong
+    [Y, X^\vee \wedge Z]$; on homology, $E_*(X^\vee) \cong E^{-*}(X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the spanier-whitehead dual $x^\vee$ of a finite spectrum $x$? the spectrum $x^\vee
+    := \underline{\mathrm{map}}(x, \mathbb{s})$ satisfying $[x \wedge y, z] \cong [y, x^\vee \wedge z]$;
+    on homology, $e_*(x^\vee) \cong e^{-*}(x)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#173
+  text: What is the Atiyah-Hirzebruch Spectral Sequence (AHSS) for a spectrum $E$?
+  hint: The spectral sequence $E_2^{p, q} = H^p(X; \pi_{-q}(E)) \implies E^{p+q}(X)$ computing the generalized
+    cohomology of a space from its ordinary singular cohomology.
+  locator: null
+  sub_index: null
+  search_text: what is the atiyah-hirzebruch spectral sequence (ahss) for a spectrum $e$? the spectral
+    sequence $e_2^{p, q} = h^p(x; \pi_{-q}(e)) \implies e^{p+q}(x)$ computing the generalized cohomology
+    of a space from its ordinary singular cohomology.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#174
+  text: How does the differential $d_2$ in the AHSS for complex $K$-theory $K U$ behave?
+  hint: $d_2 \colon H^p(X; \mathbb{Z}) \to H^{p+3}(X; \mathbb{Z})$ is given by the integral Steenrod square
+    / third integral Stiefel-Whitney operation $\mathrm{Sq}_\mathbb{Z}^3 = \beta \circ \mathrm{Sq}^2$.
+  locator: null
+  sub_index: null
+  search_text: how does the differential $d_2$ in the ahss for complex $k$-theory $k u$ behave? $d_2 \colon
+    h^p(x; \mathbb{z}) \to h^{p+3}(x; \mathbb{z})$ is given by the integral steenrod square / third integral
+    stiefel-whitney operation $\mathrm{sq}_\mathbb{z}^3 = \beta \circ \mathrm{sq}^2$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#175
+  text: How does the differential $d_3$ in the AHSS for topological modular forms $TMF$ behave?
+  hint: $d_3$ is determined by the cohomology operation $\mathrm{Sq}^5 + \mathrm{Sq}^1 \mathrm{Sq}^4$,
+    detecting obstructions to lifting string structures to $TMF$-classes.
+  locator: null
+  sub_index: null
+  search_text: how does the differential $d_3$ in the ahss for topological modular forms $tmf$ behave?
+    $d_3$ is determined by the cohomology operation $\mathrm{sq}^5 + \mathrm{sq}^1 \mathrm{sq}^4$, detecting
+    obstructions to lifting string structures to $tmf$-classes.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#176
+  text: What is an Adams operation $\psi^k$ on complex $K$-theory $K U$?
+  hint: The unique ring spectrum endomorphism $\psi^k \colon K U \to K U$ characterized on line bundles
+    by $\psi^k(L) = L^{\otimes k}$, acting on $\pi_{2n}(K U) \cong \mathbb{Z}$ by multiplication by $k^n$.
+  locator: null
+  sub_index: null
+  search_text: what is an adams operation $\psi^k$ on complex $k$-theory $k u$? the unique ring spectrum
+    endomorphism $\psi^k \colon k u \to k u$ characterized on line bundles by $\psi^k(l) = l^{\otimes
+    k}$, acting on $\pi_{2n}(k u) \cong \mathbb{z}$ by multiplication by $k^n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#177
+  text: What is the $e$-invariant of Adams?
+  hint: The invariant $e \colon \pi_{2n-1}^s \to \mathbb{Q}/\mathbb{Z}$ assigning to a stable stem element
+    $\alpha$ the fractional Chern character discrepancy in the $K$-theory of the mapping cone $C(\alpha)
+    = S^{2n} \cup_\alpha e^0$.
+  locator: null
+  sub_index: null
+  search_text: what is the $e$-invariant of adams? the invariant $e \colon \pi_{2n-1}^s \to \mathbb{q}/\mathbb{z}$
+    assigning to a stable stem element $\alpha$ the fractional chern character discrepancy in the $k$-theory
+    of the mapping cone $c(\alpha) = s^{2n} \cup_\alpha e^0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#178
+  text: What is the Adams conjecture (proven by Quillen and Sullivan)?
+  hint: For any vector bundle $V$ and integer $k$, there exists an integer $N$ such that the fiberwise
+    spherical suspensions of $k^N(\psi^k(V) - V)$ are fiber-homotopically trivial, identifying the image
+    of $J$ with the localized units of $K O$.
+  locator: null
+  sub_index: null
+  search_text: what is the adams conjecture (proven by quillen and sullivan)? for any vector bundle $v$
+    and integer $k$, there exists an integer $n$ such that the fiberwise spherical suspensions of $k^n(\psi^k(v)
+    - v)$ are fiber-homotopically trivial, identifying the image of $j$ with the localized units of $k
+    o$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#179
+  text: What is the $J$-homomorphism $J \colon \pi_k(\mathrm{SO}(n)) \to \pi_{n+k}(S^n)$?
+  hint: The geometric map assigning to an orthogonal matrix family $f \colon S^k \to \mathrm{SO}(n)$ the
+    fiberwise one-point compactification sphere map $S^{n+k} \to S^n$.
+  locator: null
+  sub_index: null
+  search_text: what is the $j$-homomorphism $j \colon \pi_k(\mathrm{so}(n)) \to \pi_{n+k}(s^n)$? the geometric
+    map assigning to an orthogonal matrix family $f \colon s^k \to \mathrm{so}(n)$ the fiberwise one-point
+    compactification sphere map $s^{n+k} \to s^n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#180
+  text: What is the stable $J$-homomorphism $J \colon \pi_k(\mathrm{O}) \to \pi_k^s$?
+  hint: The stable colimit $\varinjlim_n J_n$, mapping the stable orthogonal groups $\pi_*(\mathrm{O})$
+    into the stable homotopy groups of spheres.
+  locator: null
+  sub_index: null
+  search_text: what is the stable $j$-homomorphism $j \colon \pi_k(\mathrm{o}) \to \pi_k^s$? the stable
+    colimit $\varinjlim_n j_n$, mapping the stable orthogonal groups $\pi_*(\mathrm{o})$ into the stable
+    homotopy groups of spheres.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#181
+  text: What is the image of $J$ in degree $4k-1$?
+  hint: A cyclic subgroup of $\pi_{4k-1}^s$ of order equal to the denominator of $\frac{B_{2k}}{4k}$,
+    where $B_{2k}$ is the $2k$-th Bernoulli number.
+  locator: null
+  sub_index: null
+  search_text: what is the image of $j$ in degree $4k-1$? a cyclic subgroup of $\pi_{4k-1}^s$ of order
+    equal to the denominator of $\frac{b_{2k}}{4k}$, where $b_{2k}$ is the $2k$-th bernoulli number.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#182
+  text: What is a formal group of multiplicative type?
+  hint: A formal group $\widehat{G}$ that is isomorphic over $\overline{k}$ to a product of copies of
+    the formal multiplicative group $\widehat{\mathbb{G}}_m$.
+  locator: null
+  sub_index: null
+  search_text: what is a formal group of multiplicative type? a formal group $\widehat{g}$ that is isomorphic
+    over $\overline{k}$ to a product of copies of the formal multiplicative group $\widehat{\mathbb{g}}_m$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#183
+  text: What is the Cartier dual of a finite flat group scheme $G$?
+  hint: The group scheme $G^\vee := \underline{\mathrm{Hom}}(G, \mathbb{G}_m)$, whose coordinate algebra
+    is the linear dual Hopf algebra $\mathcal{O}(G)^*$.
+  locator: null
+  sub_index: null
+  search_text: what is the cartier dual of a finite flat group scheme $g$? the group scheme $g^\vee :=
+    \underline{\mathrm{hom}}(g, \mathbb{g}_m)$, whose coordinate algebra is the linear dual hopf algebra
+    $\mathcal{o}(g)^*$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#184
+  text: What is the Honda logarithm $\log_{\Gamma_n}(x)$ of the Honda formal group $\Gamma_n$?
+  hint: The power series $\log_{\Gamma_n}(x) = \sum_{k=0}^\infty \frac{x^{p^{nk}}}{p^k}$, whose coefficient
+    denominators record the height-$n$ Honda system.
+  locator: null
+  sub_index: null
+  search_text: what is the honda logarithm $\log_{\gamma_n}(x)$ of the honda formal group $\gamma_n$?
+    the power series $\log_{\gamma_n}(x) = \sum_{k=0}^\infty \frac{x^{p^{nk}}}{p^k}$, whose coefficient
+    denominators record the height-$n$ honda system.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#185
+  text: What is the Hazewinkel map $B P_* \to B P_* B P$?
+  hint: The right unit homomorphism $\eta_R \colon B P_* \to B P_* B P$ computing the transformation of
+    coordinates under the strict isomorphism $x \mapsto x +_F \sum^F t_i x^{p^i}$.
+  locator: null
+  sub_index: null
+  search_text: what is the hazewinkel map $b p_* \to b p_* b p$? the right unit homomorphism $\eta_r \colon
+    b p_* \to b p_* b p$ computing the transformation of coordinates under the strict isomorphism $x \mapsto
+    x +_f \sum^f t_i x^{p^i}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#186
+  text: What is the chromatic spectral sequence $E_1$-page element $M_0^0$?
+  hint: The module $M_0^0 = B P_* \otimes \mathbb{Q}$, representing the 0-th rational chromatic layer.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic spectral sequence $e_1$-page element $m_0^0$? the module $m_0^0 =
+    b p_* \otimes \mathbb{q}$, representing the 0-th rational chromatic layer.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#187
+  text: What is a pointed topological space $(X, x_0)$?
+  hint: A topological space $X$ equipped with a distinguished basepoint $x_0 \in X$; morphisms are continuous
+    maps preserving basepoints $f(x_0) = y_0$.
+  locator: null
+  sub_index: null
+  search_text: what is a pointed topological space $(x, x_0)$? a topological space $x$ equipped with a
+    distinguished basepoint $x_0 \in x$; morphisms are continuous maps preserving basepoints $f(x_0) =
+    y_0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#188
+  text: What is the smash product $X \wedge Y$ of two pointed spaces?
+  hint: The quotient space $X \wedge Y := (X \times Y) / (X \vee Y) = (X \times Y) / ((X \times \{y_0\})
+    \cup (\{x_0\} \times Y))$, serving as the tensor product for pointed spaces.
+  locator: null
+  sub_index: null
+  search_text: what is the smash product $x \wedge y$ of two pointed spaces? the quotient space $x \wedge
+    y := (x \times y) / (x \vee y) = (x \times y) / ((x \times \{y_0\}) \cup (\{x_0\} \times y))$, serving
+    as the tensor product for pointed spaces.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#189
+  text: What is the wedge sum $X \vee Y$ of pointed spaces?
+  hint: 'The coproduct / disjoint union with basepoints identified: $X \vee Y := (X \amalg Y) / (x_0 \sim
+    y_0)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the wedge sum $x \vee y$ of pointed spaces? the coproduct / disjoint union with
+    basepoints identified: $x \vee y := (x \amalg y) / (x_0 \sim y_0)$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#190
+  text: What is the reduced suspension $\Sigma X$ of a pointed space $X$?
+  hint: The smash product $\Sigma X := X \wedge S^1 \cong (X \times [0, 1]) / (X \times \{0, 1\} \cup
+    \{x_0\} \times [0, 1])$.
+  locator: null
+  sub_index: null
+  search_text: what is the reduced suspension $\sigma x$ of a pointed space $x$? the smash product $\sigma
+    x := x \wedge s^1 \cong (x \times [0, 1]) / (x \times \{0, 1\} \cup \{x_0\} \times [0, 1])$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#191
+  text: What is the based loop space $\Omega X$ of a pointed space $X$?
+  hint: The space of basepoint-preserving continuous maps $\Omega X := \mathrm{Map}_*((S^1, *), (X, x_0))$
+    equipped with the compact-open topology.
+  locator: null
+  sub_index: null
+  search_text: what is the based loop space $\omega x$ of a pointed space $x$? the space of basepoint-preserving
+    continuous maps $\omega x := \mathrm{map}_*((s^1, *), (x, x_0))$ equipped with the compact-open topology.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#192
+  text: What is the loop-suspension adjunction for pointed spaces?
+  hint: The natural bijection of pointed mapping sets $\mathrm{Map}_*(\Sigma X, Y) \cong \mathrm{Map}_*(X,
+    \Omega Y)$.
+  locator: null
+  sub_index: null
+  search_text: what is the loop-suspension adjunction for pointed spaces? the natural bijection of pointed
+    mapping sets $\mathrm{map}_*(\sigma x, y) \cong \mathrm{map}_*(x, \omega y)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#193
+  text: What is the $n$-th homotopy group $\pi_n(X, x_0)$ of a pointed space?
+  hint: The set of homotopy classes of pointed maps $\pi_n(X, x_0) := [(S^n, *), (X, x_0)]_*$, which forms
+    a group for $n \ge 1$ and an abelian group for $n \ge 2$.
+  locator: null
+  sub_index: null
+  search_text: what is the $n$-th homotopy group $\pi_n(x, x_0)$ of a pointed space? the set of homotopy
+    classes of pointed maps $\pi_n(x, x_0) := [(s^n, *), (x, x_0)]_*$, which forms a group for $n \ge
+    1$ and an abelian group for $n \ge 2$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#194
+  text: State the Freudenthal Suspension Theorem
+  hint: If $X$ is an $(n-1)$-connected pointed CW-complex, the suspension homomorphism $\Sigma \colon
+    \pi_k(X) \to \pi_{k+1}(\Sigma X)$ is an isomorphism for $k < 2n - 1$ and a surjection for $k = 2n
+    - 1$.
+  locator: null
+  sub_index: null
+  search_text: state the freudenthal suspension theorem if $x$ is an $(n-1)$-connected pointed cw-complex,
+    the suspension homomorphism $\sigma \colon \pi_k(x) \to \pi_{k+1}(\sigma x)$ is an isomorphism for
+    $k < 2n - 1$ and a surjection for $k = 2n - 1$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#195
+  text: What is the stable $n$-stem / stable homotopy group of spheres $\pi_n^s$?
+  hint: The colimit $\pi_n^s := \varinjlim_k \pi_{n+k}(S^k)$ under the suspension homomorphism $\Sigma$,
+    stabilizing by the Freudenthal Suspension Theorem.
+  locator: null
+  sub_index: null
+  search_text: what is the stable $n$-stem / stable homotopy group of spheres $\pi_n^s$? the colimit $\pi_n^s
+    := \varinjlim_k \pi_{n+k}(s^k)$ under the suspension homomorphism $\sigma$, stabilizing by the freudenthal
+    suspension theorem.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#196
+  text: What is a sequential spectrum $E$?
+  hint: A sequence of pointed spaces $(E_0, E_1, E_2, \dots)$ together with structure maps $\sigma_n \colon
+    \Sigma E_n \to E_{n+1}$ for all $n \ge 0$.
+  locator: null
+  sub_index: null
+  search_text: what is a sequential spectrum $e$? a sequence of pointed spaces $(e_0, e_1, e_2, \dots)$
+    together with structure maps $\sigma_n \colon \sigma e_n \to e_{n+1}$ for all $n \ge 0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#197
+  text: What is an $\Omega$-spectrum?
+  hint: A spectrum $E = (E_n)_{n \ge 0}$ whose adjoint structure maps $\widetilde{\sigma}_n \colon E_n
+    \xrightarrow{\sim} \Omega E_{n+1}$ are weak homotopy equivalences for all $n \ge 0$.
+  locator: null
+  sub_index: null
+  search_text: what is an $\omega$-spectrum? a spectrum $e = (e_n)_{n \ge 0}$ whose adjoint structure
+    maps $\widetilde{\sigma}_n \colon e_n \xrightarrow{\sim} \omega e_{n+1}$ are weak homotopy equivalences
+    for all $n \ge 0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#198
+  text: What is the $k$-th homotopy group $\pi_k(E)$ of a spectrum $E$?
+  hint: The colimit $\pi_k(E) := \varinjlim_{n \to \infty} \pi_{n+k}(E_n)$ over the maps $\pi_{n+k}(E_n)
+    \xrightarrow{\Sigma} \pi_{n+k+1}(\Sigma E_n) \xrightarrow{(\sigma_n)_*} \pi_{n+k+1}(E_{n+1})$ for
+    any $k \in \mathbb{Z}$.
+  locator: null
+  sub_index: null
+  search_text: what is the $k$-th homotopy group $\pi_k(e)$ of a spectrum $e$? the colimit $\pi_k(e) :=
+    \varinjlim_{n \to \infty} \pi_{n+k}(e_n)$ over the maps $\pi_{n+k}(e_n) \xrightarrow{\sigma} \pi_{n+k+1}(\sigma
+    e_n) \xrightarrow{(\sigma_n)_*} \pi_{n+k+1}(e_{n+1})$ for any $k \in \mathbb{z}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#199
+  text: What is the suspension / shift $\Sigma E$ of a spectrum $E$?
+  hint: The spectrum $(\Sigma E)_n := E_{n+1}$ (or $(\Sigma E)_n := \Sigma E_n$), satisfying $\pi_k(\Sigma
+    E) \cong \pi_{k-1}(E)$.
+  locator: null
+  sub_index: null
+  search_text: what is the suspension / shift $\sigma e$ of a spectrum $e$? the spectrum $(\sigma e)_n
+    := e_{n+1}$ (or $(\sigma e)_n := \sigma e_n$), satisfying $\pi_k(\sigma e) \cong \pi_{k-1}(e)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#200
+  text: What is the loop / desuspension $\Omega E$ (or $\Sigma^{-1}E$) of a spectrum $E$?
+  hint: The spectrum with $(\Sigma^{-1}E)_n := E_{n-1}$ for $n \ge 1$, satisfying $\pi_k(\Sigma^{-1}E)
+    \cong \pi_{k+1}(E)$.
+  locator: null
+  sub_index: null
+  search_text: what is the loop / desuspension $\omega e$ (or $\sigma^{-1}e$) of a spectrum $e$? the spectrum
+    with $(\sigma^{-1}e)_n := e_{n-1}$ for $n \ge 1$, satisfying $\pi_k(\sigma^{-1}e) \cong \pi_{k+1}(e)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#201
+  text: What is the sphere spectrum $\mathbb{S}$?
+  hint: The suspension spectrum of $S^0 = \{*, +\}$, given by the sequence of spheres $\mathbb{S} = (S^0,
+    S^1, S^2, S^3, \dots)$ with identity structure maps $\Sigma S^n = S^{n+1}$; its homotopy groups are
+    $\pi_k(\mathbb{S}) = \pi_k^s$.
+  locator: null
+  sub_index: null
+  search_text: what is the sphere spectrum $\mathbb{s}$? the suspension spectrum of $s^0 = \{*, +\}$,
+    given by the sequence of spheres $\mathbb{s} = (s^0, s^1, s^2, s^3, \dots)$ with identity structure
+    maps $\sigma s^n = s^{n+1}$; its homotopy groups are $\pi_k(\mathbb{s}) = \pi_k^s$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#202
+  text: What is the Eilenberg-MacLane spectrum $H G$ for an abelian group $G$?
+  hint: The $\Omega$-spectrum $(K(G, 0), K(G, 1), K(G, 2), \dots)$ where $K(G, n)$ is the Eilenberg-MacLane
+    space; its homotopy is $\pi_0(H G) \cong G$ and $\pi_k(H G) = 0$ for $k \neq 0$.
+  locator: null
+  sub_index: null
+  search_text: what is the eilenberg-maclane spectrum $h g$ for an abelian group $g$? the $\omega$-spectrum
+    $(k(g, 0), k(g, 1), k(g, 2), \dots)$ where $k(g, n)$ is the eilenberg-maclane space; its homotopy
+    is $\pi_0(h g) \cong g$ and $\pi_k(h g) = 0$ for $k \neq 0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#203
+  text: What is the suspension spectrum $\Sigma^\infty X$ of a pointed space $X$?
+  hint: The spectrum $(\Sigma^\infty X)_n := \Sigma^n X$ with canonical identity structure maps $\Sigma(\Sigma^n
+    X) = \Sigma^{n+1} X$; it defines the left adjoint to the zeroth-space functor $\Omega^\infty E = E_0$.
+  locator: null
+  sub_index: null
+  search_text: what is the suspension spectrum $\sigma^\infty x$ of a pointed space $x$? the spectrum
+    $(\sigma^\infty x)_n := \sigma^n x$ with canonical identity structure maps $\sigma(\sigma^n x) = \sigma^{n+1}
+    x$; it defines the left adjoint to the zeroth-space functor $\omega^\infty e = e_0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#204
+  text: What is the zeroth space $\Omega^\infty E$ of a spectrum $E$?
+  hint: The infinite loop space $\Omega^\infty E := \varinjlim_n \Omega^n E_n$, representing the right
+    adjoint to the suspension spectrum functor $\Sigma^\infty$.
+  locator: null
+  sub_index: null
+  search_text: what is the zeroth space $\omega^\infty e$ of a spectrum $e$? the infinite loop space $\omega^\infty
+    e := \varinjlim_n \omega^n e_n$, representing the right adjoint to the suspension spectrum functor
+    $\sigma^\infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#205
+  text: What is a generalized cohomology theory $E^*$ on pointed CW-complexes?
+  hint: A sequence of contravariant functors $E^n$ satisfying homotopy invariance, suspension isomorphisms
+    $E^n(X) \cong E^{n+1}(\Sigma X)$, exactness for cofiber sequences $A \to X \to X/A$, and the wedge
+    axiom $E^n(\bigvee X_i) \cong \prod E^n(X_i)$.
+  locator: null
+  sub_index: null
+  search_text: what is a generalized cohomology theory $e^*$ on pointed cw-complexes? a sequence of contravariant
+    functors $e^n$ satisfying homotopy invariance, suspension isomorphisms $e^n(x) \cong e^{n+1}(\sigma
+    x)$, exactness for cofiber sequences $a \to x \to x/a$, and the wedge axiom $e^n(\bigvee x_i) \cong
+    \prod e^n(x_i)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#206
+  text: What is a generalized homology theory $E_*$ on pointed CW-complexes?
+  hint: A sequence of covariant functors $E_n$ satisfying homotopy invariance, suspension isomorphisms
+    $E_n(X) \cong E_{n-1}(\Sigma X)$, exactness for cofiber sequences, and the additivity axiom $E_n(\bigvee
+    X_i) \cong \bigoplus E_n(X_i)$.
+  locator: null
+  sub_index: null
+  search_text: what is a generalized homology theory $e_*$ on pointed cw-complexes? a sequence of covariant
+    functors $e_n$ satisfying homotopy invariance, suspension isomorphisms $e_n(x) \cong e_{n-1}(\sigma
+    x)$, exactness for cofiber sequences, and the additivity axiom $e_n(\bigvee x_i) \cong \bigoplus e_n(x_i)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#207
+  text: State the Brown Representability Theorem for cohomology theories
+  hint: Every generalized cohomology theory $E^*$ on pointed CW-complexes is uniquely representable by
+    an $\Omega$-spectrum $E$ via natural isomorphisms $E^n(X) \cong [X, E_n]_* \cong [\Sigma^\infty X,
+    \Sigma^n E]$.
+  locator: null
+  sub_index: null
+  search_text: state the brown representability theorem for cohomology theories every generalized cohomology
+    theory $e^*$ on pointed cw-complexes is uniquely representable by an $\omega$-spectrum $e$ via natural
+    isomorphisms $e^n(x) \cong [x, e_n]_* \cong [\sigma^\infty x, \sigma^n e]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#208
+  text: How are the generalized homology and cohomology of a space $X$ computed from a spectrum $E$?
+  hint: $E_n(X) := \pi_n(E \wedge \Sigma^\infty X)$ and $E^n(X) := [\Sigma^\infty X, \Sigma^n E] = \pi_{-n}\underline{\mathrm{Map}}(\Sigma^\infty
+    X, E)$.
+  locator: null
+  sub_index: null
+  search_text: how are the generalized homology and cohomology of a space $x$ computed from a spectrum
+    $e$? $e_n(x) := \pi_n(e \wedge \sigma^\infty x)$ and $e^n(x) := [\sigma^\infty x, \sigma^n e] = \pi_{-n}\underline{\mathrm{map}}(\sigma^\infty
+    x, e)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#209
+  text: What is the coefficient ring of a generalized cohomology theory $E$?
+  hint: The graded ring $E_* := \pi_*(E) = E^{-*}(*) = E_*(S^0)$, computing the cohomology of a single
+    point.
+  locator: null
+  sub_index: null
+  search_text: what is the coefficient ring of a generalized cohomology theory $e$? the graded ring $e_*
+    := \pi_*(e) = e^{-*}(*) = e_*(s^0)$, computing the cohomology of a single point.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#210
+  text: What is a ring spectrum (multiplicative spectrum) $E$?
+  hint: A spectrum $E$ equipped with a multiplication map $\mu \colon E \wedge E \to E$ and unit map $\eta
+    \colon \mathbb{S} \to E$ satisfying associativity and unitality up to homotopy in $\mathbf{Sp}$.
+  locator: null
+  sub_index: null
+  search_text: what is a ring spectrum (multiplicative spectrum) $e$? a spectrum $e$ equipped with a multiplication
+    map $\mu \colon e \wedge e \to e$ and unit map $\eta \colon \mathbb{s} \to e$ satisfying associativity
+    and unitality up to homotopy in $\mathbf{sp}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#211
+  text: What is a commutative ring spectrum ($\mathbb{E}_\infty$-ring spectrum)?
+  hint: A ring spectrum $(E, \mu, \eta)$ whose multiplication $\mu \colon E \wedge E \to E$ is strictly
+    commutative and associative up to coherent higher homotopies.
+  locator: null
+  sub_index: null
+  search_text: what is a commutative ring spectrum ($\mathbb{e}_\infty$-ring spectrum)? a ring spectrum
+    $(e, \mu, \eta)$ whose multiplication $\mu \colon e \wedge e \to e$ is strictly commutative and associative
+    up to coherent higher homotopies.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#212
+  text: What is a module spectrum $M$ over a ring spectrum $E$?
+  hint: A spectrum $M$ equipped with an action map $E \wedge M \to M$ satisfying associativity and unit
+    axioms with respect to $\mu_E$ and $\eta_E$.
+  locator: null
+  sub_index: null
+  search_text: what is a module spectrum $m$ over a ring spectrum $e$? a spectrum $m$ equipped with an
+    action map $e \wedge m \to m$ satisfying associativity and unit axioms with respect to $\mu_e$ and
+    $\eta_e$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#213
+  text: What is the smash product of spectra $E \wedge F$?
+  hint: The symmetric monoidal tensor product on the stable category $\mathbf{Sp}$ satisfying $\Sigma^\infty(X
+    \wedge Y) \simeq \Sigma^\infty X \wedge \Sigma^\infty Y$ and $\mathbb{S} \wedge E \simeq E$.
+  locator: null
+  sub_index: null
+  search_text: what is the smash product of spectra $e \wedge f$? the symmetric monoidal tensor product
+    on the stable category $\mathbf{sp}$ satisfying $\sigma^\infty(x \wedge y) \simeq \sigma^\infty x
+    \wedge \sigma^\infty y$ and $\mathbb{s} \wedge e \simeq e$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#214
+  text: What is a cofiber sequence (mapping cone) $X \xrightarrow{f} Y \to C(f)$ of spectra?
+  hint: The stable analogue of a pushout square; $C(f) := Y \cup_f CX$ fits into a distinguished triangle
+    $X \xrightarrow{f} Y \to C(f) \to \Sigma X$, inducing a long exact sequence on homotopy groups.
+  locator: null
+  sub_index: null
+  search_text: what is a cofiber sequence (mapping cone) $x \xrightarrow{f} y \to c(f)$ of spectra? the
+    stable analogue of a pushout square; $c(f) := y \cup_f cx$ fits into a distinguished triangle $x \xrightarrow{f}
+    y \to c(f) \to \sigma x$, inducing a long exact sequence on homotopy groups.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#215
+  text: What is the mapping spectrum (internal Hom) $\underline{\mathrm{Map}}(E, F)$ (or $F^E$)?
+  hint: 'The spectrum representing the right adjoint to the smash product: $[X \wedge E, F] \cong [X,
+    \underline{\mathrm{Map}}(E, F)]$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the mapping spectrum (internal hom) $\underline{\mathrm{map}}(e, f)$ (or $f^e$)?
+    the spectrum representing the right adjoint to the smash product: $[x \wedge e, f] \cong [x, \underline{\mathrm{map}}(e,
+    f)]$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#216
+  text: What is the Spanier-Whitehead dual $X^\vee$ of a finite spectrum $X$?
+  hint: The spectrum $X^\vee := \underline{\mathrm{Map}}(X, \mathbb{S})$; for any spectrum $E$, $E_*(X^\vee)
+    \cong E^{-*}(X)$ and $E^*(X^\vee) \cong E_{-*}(X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the spanier-whitehead dual $x^\vee$ of a finite spectrum $x$? the spectrum $x^\vee
+    := \underline{\mathrm{map}}(x, \mathbb{s})$; for any spectrum $e$, $e_*(x^\vee) \cong e^{-*}(x)$ and
+    $e^*(x^\vee) \cong e_{-*}(x)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#217
+  text: What is the infinite complex projective space $\mathbb{C}\mathbb{P}^\infty$?
+  hint: The classifying space $B\mathrm{U}(1) \simeq K(\mathbb{Z}, 2)$ of complex line bundles, constructed
+    as the colimit $\varinjlim_n \mathbb{C}\mathbb{P}^n$.
+  locator: null
+  sub_index: null
+  search_text: what is the infinite complex projective space $\mathbb{c}\mathbb{p}^\infty$? the classifying
+    space $b\mathrm{u}(1) \simeq k(\mathbb{z}, 2)$ of complex line bundles, constructed as the colimit
+    $\varinjlim_n \mathbb{c}\mathbb{p}^n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#218
+  text: What is the tautological / canonical line bundle $\gamma_1$ over $\mathbb{C}\mathbb{P}^\infty$?
+  hint: The universal complex line bundle whose total space is $(\mathbb{C}^{\infty+1} \setminus \{0\})
+    \times_{\mathbb{C}^\times} \mathbb{C} \to \mathbb{C}\mathbb{P}^\infty$, classifying all isomorphism
+    classes of line bundles via $[X, \mathbb{C}\mathbb{P}^\infty] \cong \mathrm{Vect}_1^\mathbb{C}(X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the tautological / canonical line bundle $\gamma_1$ over $\mathbb{c}\mathbb{p}^\infty$?
+    the universal complex line bundle whose total space is $(\mathbb{c}^{\infty+1} \setminus \{0\}) \times_{\mathbb{c}^\times}
+    \mathbb{c} \to \mathbb{c}\mathbb{p}^\infty$, classifying all isomorphism classes of line bundles via
+    $[x, \mathbb{c}\mathbb{p}^\infty] \cong \mathrm{vect}_1^\mathbb{c}(x)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#219
+  text: What is a complex oriented cohomology theory $(E, x)$?
+  hint: A multiplicative generalized cohomology theory $E$ equipped with a chosen orientation class $x
+    \in \widetilde{E}^2(\mathbb{C}\mathbb{P}^\infty)$ whose restriction to $\mathbb{C}\mathbb{P}^1 \cong
+    S^2$ yields the unit $1 \in \pi_0(E) \cong \widetilde{E}^2(S^2)$.
+  locator: null
+  sub_index: null
+  search_text: what is a complex oriented cohomology theory $(e, x)$? a multiplicative generalized cohomology
+    theory $e$ equipped with a chosen orientation class $x \in \widetilde{e}^2(\mathbb{c}\mathbb{p}^\infty)$
+    whose restriction to $\mathbb{c}\mathbb{p}^1 \cong s^2$ yields the unit $1 \in \pi_0(e) \cong \widetilde{e}^2(s^2)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#220
+  text: What is the $E$-cohomology ring of $\mathbb{C}\mathbb{P}^\infty$ for a complex oriented theory
+    $E$?
+  hint: The formal power series ring $E^*(\mathbb{C}\mathbb{P}^\infty) \cong E_*[[x]]$ where $|x| = 2$
+    and $E_* = \pi_*(E)$.
+  locator: null
+  sub_index: null
+  search_text: what is the $e$-cohomology ring of $\mathbb{c}\mathbb{p}^\infty$ for a complex oriented
+    theory $e$? the formal power series ring $e^*(\mathbb{c}\mathbb{p}^\infty) \cong e_*[[x]]$ where $|x|
+    = 2$ and $e_* = \pi_*(e)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#221
+  text: What is the $E$-cohomology ring of $\mathbb{C}\mathbb{P}^n$ for a complex oriented theory $E$?
+  hint: The truncated polynomial ring $E^*(\mathbb{C}\mathbb{P}^n) \cong E_*[x]/(x^{n+1})$.
+  locator: null
+  sub_index: null
+  search_text: what is the $e$-cohomology ring of $\mathbb{c}\mathbb{p}^n$ for a complex oriented theory
+    $e$? the truncated polynomial ring $e^*(\mathbb{c}\mathbb{p}^n) \cong e_*[x]/(x^{n+1})$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#222
+  text: What is the first Chern class $c_1^E(L)$ of a complex line bundle $L \to X$ in a complex oriented
+    theory $E$?
+  hint: The class $c_1^E(L) := f^*(x) \in E^2(X)$, where $f \colon X \to \mathbb{C}\mathbb{P}^\infty$
+    is the classifying map of $L$.
+  locator: null
+  sub_index: null
+  search_text: what is the first chern class $c_1^e(l)$ of a complex line bundle $l \to x$ in a complex
+    oriented theory $e$? the class $c_1^e(l) := f^*(x) \in e^2(x)$, where $f \colon x \to \mathbb{c}\mathbb{p}^\infty$
+    is the classifying map of $l$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#223
+  text: How does a complex orientation produce a 1-dimensional formal group law $F(u, v)$?
+  hint: The tensor product of line bundles induces the $H$-space map $m \colon \mathbb{C}\mathbb{P}^\infty
+    \times \mathbb{C}\mathbb{P}^\infty \to \mathbb{C}\mathbb{P}^\infty$; the pullback of the orientation
+    class is $m^*(x) = F(x_1, x_2) \in E^*(\mathbb{C}\mathbb{P}^\infty \times \mathbb{C}\mathbb{P}^\infty)
+    \cong E_*[[x_1, x_2]]$.
+  locator: null
+  sub_index: null
+  search_text: how does a complex orientation produce a 1-dimensional formal group law $f(u, v)$? the
+    tensor product of line bundles induces the $h$-space map $m \colon \mathbb{c}\mathbb{p}^\infty \times
+    \mathbb{c}\mathbb{p}^\infty \to \mathbb{c}\mathbb{p}^\infty$; the pullback of the orientation class
+    is $m^*(x) = f(x_1, x_2) \in e^*(\mathbb{c}\mathbb{p}^\infty \times \mathbb{c}\mathbb{p}^\infty) \cong
+    e_*[[x_1, x_2]]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#224
+  text: What is a 1-dimensional formal group law (FGL) $F$ over a commutative ring $R$?
+  hint: 'A formal power series $F(x, y) \in R[[x, y]]$ satisfying: (1) $F(x, 0) = x$ and $F(0, y) = y$;
+    (2) $F(x, y) = F(y, x)$; (3) $F(F(x, y), z) = F(x, F(y, z))$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a 1-dimensional formal group law (fgl) $f$ over a commutative ring $r$? a formal
+    power series $f(x, y) \in r[[x, y]]$ satisfying: (1) $f(x, 0) = x$ and $f(0, y) = y$; (2) $f(x, y)
+    = f(y, x)$; (3) $f(f(x, y), z) = f(x, f(y, z))$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#225
+  text: What is the additive formal group law $\widehat{\mathbb{G}}_a$?
+  hint: $F(x, y) = x + y$, corresponding to ordinary singular cohomology $H\mathbb{Q}$ and $H\mathbb{F}_p$.
+  locator: null
+  sub_index: null
+  search_text: what is the additive formal group law $\widehat{\mathbb{g}}_a$? $f(x, y) = x + y$, corresponding
+    to ordinary singular cohomology $h\mathbb{q}$ and $h\mathbb{f}_p$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#226
+  text: What is the multiplicative formal group law $\widehat{\mathbb{G}}_m$?
+  hint: $F(x, y) = x + y + xy = (1+x)(1+y) - 1$, corresponding to topological complex $K$-theory $K U$.
+  locator: null
+  sub_index: null
+  search_text: what is the multiplicative formal group law $\widehat{\mathbb{g}}_m$? $f(x, y) = x + y
+    + xy = (1+x)(1+y) - 1$, corresponding to topological complex $k$-theory $k u$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#227
+  text: What is the formal inverse $[-1]_F(x)$ of an FGL $F$?
+  hint: The unique power series $i(x) \in R[[x]]$ such that $F(x, i(x)) = 0$; for $\widehat{\mathbb{G}}_a$,
+    $[-1](x) = -x$; for $\widehat{\mathbb{G}}_m$, $[-1](x) = \frac{-x}{1+x} = -x + x^2 - x^3 + \dots$.
+  locator: null
+  sub_index: null
+  search_text: what is the formal inverse $[-1]_f(x)$ of an fgl $f$? the unique power series $i(x) \in
+    r[[x]]$ such that $f(x, i(x)) = 0$; for $\widehat{\mathbb{g}}_a$, $[-1](x) = -x$; for $\widehat{\mathbb{g}}_m$,
+    $[-1](x) = \frac{-x}{1+x} = -x + x^2 - x^3 + \dots$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#228
+  text: What is the 2-series $[2]_F(x)$ of an FGL $F$?
+  hint: $[2]_F(x) := F(x, x) = 2x + a_{1, 1} x^2 + \dots \in R[[x]]$.
+  locator: null
+  sub_index: null
+  search_text: what is the 2-series $[2]_f(x)$ of an fgl $f$? $[2]_f(x) := f(x, x) = 2x + a_{1, 1} x^2
+    + \dots \in r[[x]]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#229
+  text: What is the $n$-series $[n]_F(x)$ of an FGL $F$?
+  hint: Defined recursively by $[0]_F(x) = 0$ and $[n]_F(x) = F(x, [n-1]_F(x)) = n x + O(x^2)$.
+  locator: null
+  sub_index: null
+  search_text: what is the $n$-series $[n]_f(x)$ of an fgl $f$? defined recursively by $[0]_f(x) = 0$
+    and $[n]_f(x) = f(x, [n-1]_f(x)) = n x + o(x^2)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#230
+  text: What is the $p$-series $[p]_F(x)$ for the additive law $\widehat{\mathbb{G}}_a$ over a field $k$
+    of characteristic $p$?
+  hint: $[p]_{\widehat{\mathbb{G}}_a}(x) = p x = 0$ in $k[[x]]$.
+  locator: null
+  sub_index: null
+  search_text: what is the $p$-series $[p]_f(x)$ for the additive law $\widehat{\mathbb{g}}_a$ over a
+    field $k$ of characteristic $p$? $[p]_{\widehat{\mathbb{g}}_a}(x) = p x = 0$ in $k[[x]]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#231
+  text: What is the $p$-series $[p]_F(x)$ for the multiplicative law $\widehat{\mathbb{G}}_m$ over a field
+    $k$ of characteristic $p$?
+  hint: $[p]_{\widehat{\mathbb{G}}_m}(x) = (1+x)^p - 1 = 1 + x^p - 1 = x^p$ in $k[[x]]$.
+  locator: null
+  sub_index: null
+  search_text: what is the $p$-series $[p]_f(x)$ for the multiplicative law $\widehat{\mathbb{g}}_m$ over
+    a field $k$ of characteristic $p$? $[p]_{\widehat{\mathbb{g}}_m}(x) = (1+x)^p - 1 = 1 + x^p - 1 =
+    x^p$ in $k[[x]]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#232
+  text: What is the height $h$ of an FGL $F$ over a field $k$ of characteristic $p > 0$?
+  hint: The unique integer $h \ge 1$ such that $[p]_F(x) = a x^{p^h} + O(x^{p^h+1})$ with $a \neq 0$;
+    if $[p]_F(x) = 0$, the height is $h = \infty$.
+  locator: null
+  sub_index: null
+  search_text: what is the height $h$ of an fgl $f$ over a field $k$ of characteristic $p > 0$? the unique
+    integer $h \ge 1$ such that $[p]_f(x) = a x^{p^h} + o(x^{p^h+1})$ with $a \neq 0$; if $[p]_f(x) =
+    0$, the height is $h = \infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#233
+  text: What is the formal logarithm $\log_F(x)$ of an FGL $F$ over a $\mathbb{Q}$-algebra $R$?
+  hint: The unique power series $\log_F(x) = x + \sum_{n=1}^\infty \frac{a_n}{n+1} x^{n+1} \in (R \otimes
+    \mathbb{Q})[[x]]$ such that $\log_F(F(x, y)) = \log_F(x) + \log_F(y)$.
+  locator: null
+  sub_index: null
+  search_text: what is the formal logarithm $\log_f(x)$ of an fgl $f$ over a $\mathbb{q}$-algebra $r$?
+    the unique power series $\log_f(x) = x + \sum_{n=1}^\infty \frac{a_n}{n+1} x^{n+1} \in (r \otimes
+    \mathbb{q})[[x]]$ such that $\log_f(f(x, y)) = \log_f(x) + \log_f(y)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#234
+  text: What is the formal exponential $\exp_F(x)$ of an FGL $F$?
+  hint: The compositional inverse of $\log_F(x)$, satisfying $\log_F(\exp_F(x)) = x$ and $F(x, y) = \exp_F(\log_F(x)
+    + \log_F(y))$.
+  locator: null
+  sub_index: null
+  search_text: what is the formal exponential $\exp_f(x)$ of an fgl $f$? the compositional inverse of
+    $\log_f(x)$, satisfying $\log_f(\exp_f(x)) = x$ and $f(x, y) = \exp_f(\log_f(x) + \log_f(y))$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#235
+  text: What is the invariant differential $\omega(x)$ of an FGL $F(x, y)$?
+  hint: The differential 1-form $\omega(x) = \frac{dx}{\frac{\partial F}{\partial y}(x, 0)} = d\log_F(x)$,
+    which is invariant under translation $x \mapsto F(x, y)$.
+  locator: null
+  sub_index: null
+  search_text: what is the invariant differential $\omega(x)$ of an fgl $f(x, y)$? the differential 1-form
+    $\omega(x) = \frac{dx}{\frac{\partial f}{\partial y}(x, 0)} = d\log_f(x)$, which is invariant under
+    translation $x \mapsto f(x, y)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#236
+  text: What is an isomorphism $f \colon F \to G$ between two formal group laws?
+  hint: A power series $f(x) = c_1 x + c_2 x^2 + \dots \in R[[x]]$ with $c_1 \in R^\times$ such that $f(F(x,
+    y)) = G(f(x), f(y))$.
+  locator: null
+  sub_index: null
+  search_text: what is an isomorphism $f \colon f \to g$ between two formal group laws? a power series
+    $f(x) = c_1 x + c_2 x^2 + \dots \in r[[x]]$ with $c_1 \in r^\times$ such that $f(f(x, y)) = g(f(x),
+    f(y))$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#237
+  text: What is a strict isomorphism of formal group laws?
+  hint: An isomorphism $f(x) = x + b_1 x^2 + b_2 x^3 + \dots \in R[[x]]$ whose leading linear coefficient
+    is $c_1 = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is a strict isomorphism of formal group laws? an isomorphism $f(x) = x + b_1 x^2 +
+    b_2 x^3 + \dots \in r[[x]]$ whose leading linear coefficient is $c_1 = 1$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#238
+  text: What is the Lazard ring $L$?
+  hint: 'The commutative ring representing the functor of 1-dimensional formal group laws: $\mathrm{Hom}_{\mathbf{CAlg}}(L,
+    R) \cong \mathbf{FGL}(R)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the lazard ring $l$? the commutative ring representing the functor of 1-dimensional
+    formal group laws: $\mathrm{hom}_{\mathbf{calg}}(l, r) \cong \mathbf{fgl}(r)$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#239
+  text: State Lazard's Theorem on the structure of the Lazard ring $L$
+  hint: $L \cong \mathbb{Z}[x_1, x_2, x_3, \dots]$ is an infinitely generated polynomial ring with generators
+    in degrees $|x_i| = 2i$.
+  locator: null
+  sub_index: null
+  search_text: state lazard's theorem on the structure of the lazard ring $l$ $l \cong \mathbb{z}[x_1,
+    x_2, x_3, \dots]$ is an infinitely generated polynomial ring with generators in degrees $|x_i| = 2i$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#240
+  text: What is the Thom space $\mathrm{Th}(V)$ of a real vector bundle $V \to X$?
+  hint: The quotient space of the unit disk bundle by the unit sphere bundle $\mathrm{Th}(V) := D(V)/S(V)$,
+    homeomorphic to the one-point compactification of the total space when $X$ is compact.
+  locator: null
+  sub_index: null
+  search_text: what is the thom space $\mathrm{th}(v)$ of a real vector bundle $v \to x$? the quotient
+    space of the unit disk bundle by the unit sphere bundle $\mathrm{th}(v) := d(v)/s(v)$, homeomorphic
+    to the one-point compactification of the total space when $x$ is compact.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#241
+  text: What is a Thom class $u_V$ for a rank-$n$ bundle $V \to X$ in a cohomology theory $E$?
+  hint: A class $u_V \in \widetilde{E}^n(\mathrm{Th}(V))$ whose restriction to every fiber sphere $\mathrm{Th}(V_x)
+    \cong S^n$ is a generator of $\widetilde{E}^n(S^n) \cong \pi_0(E)$ as an $E_*$-module.
+  locator: null
+  sub_index: null
+  search_text: what is a thom class $u_v$ for a rank-$n$ bundle $v \to x$ in a cohomology theory $e$?
+    a class $u_v \in \widetilde{e}^n(\mathrm{th}(v))$ whose restriction to every fiber sphere $\mathrm{th}(v_x)
+    \cong s^n$ is a generator of $\widetilde{e}^n(s^n) \cong \pi_0(e)$ as an $e_*$-module.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#242
+  text: State the Thom Isomorphism Theorem for a complex oriented theory $E$
+  hint: For every complex vector bundle $V \to X$ of rank $r$, the cup product with the Thom class $u_V$
+    induces an isomorphism $\Phi \colon E^*(X) \xrightarrow{\sim} \widetilde{E}^{*+2r}(\mathrm{Th}(V))$.
+  locator: null
+  sub_index: null
+  search_text: state the thom isomorphism theorem for a complex oriented theory $e$ for every complex
+    vector bundle $v \to x$ of rank $r$, the cup product with the thom class $u_v$ induces an isomorphism
+    $\phi \colon e^*(x) \xrightarrow{\sim} \widetilde{e}^{*+2r}(\mathrm{th}(v))$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#243
+  text: What is the complex cobordism spectrum $M U$?
+  hint: The Thom spectrum $M U = (M\mathrm{U}(n))_{n \ge 0}$ where $M\mathrm{U}(n) = \mathrm{Th}(\gamma_n)$
+    is the Thom space of the universal bundle $\gamma_n \to B\mathrm{U}(n)$.
+  locator: null
+  sub_index: null
+  search_text: what is the complex cobordism spectrum $m u$? the thom spectrum $m u = (m\mathrm{u}(n))_{n
+    \ge 0}$ where $m\mathrm{u}(n) = \mathrm{th}(\gamma_n)$ is the thom space of the universal bundle $\gamma_n
+    \to b\mathrm{u}(n)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#244
+  text: State Quillen's Theorem on complex cobordism $M U$
+  hint: 'The canonical map $L \to \pi_*(M U)$ classifying the formal group law of $M U$ is an isomorphism
+    of graded rings: $\pi_*(M U) \cong L \cong \mathbb{Z}[x_1, x_2, \dots]$ with $|x_i| = 2i$.'
+  locator: null
+  sub_index: null
+  search_text: 'state quillen''s theorem on complex cobordism $m u$ the canonical map $l \to \pi_*(m u)$
+    classifying the formal group law of $m u$ is an isomorphism of graded rings: $\pi_*(m u) \cong l \cong
+    \mathbb{z}[x_1, x_2, \dots]$ with $|x_i| = 2i$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#245
+  text: What is the Brown-Peterson spectrum $B P$ at a prime $p$?
+  hint: The $p$-local direct summand of $M U_{(p)}$ split off by the Quillen idempotent; its homotopy
+    ring is $\pi_*(B P) \cong \mathbb{Z}_{(p)}[v_1, v_2, \dots]$ where $|v_n| = 2(p^n - 1)$.
+  locator: null
+  sub_index: null
+  search_text: what is the brown-peterson spectrum $b p$ at a prime $p$? the $p$-local direct summand
+    of $m u_{(p)}$ split off by the quillen idempotent; its homotopy ring is $\pi_*(b p) \cong \mathbb{z}_{(p)}[v_1,
+    v_2, \dots]$ where $|v_n| = 2(p^n - 1)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#246
+  text: What is a $p$-typical formal group law?
+  hint: An FGL over a $\mathbb{Z}_{(p)}$-algebra whose logarithm has the form $\log_F(x) = \sum_{k=0}^\infty
+    \ell_k x^{p^k}$ with $\ell_0 = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is a $p$-typical formal group law? an fgl over a $\mathbb{z}_{(p)}$-algebra whose
+    logarithm has the form $\log_f(x) = \sum_{k=0}^\infty \ell_k x^{p^k}$ with $\ell_0 = 1$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#247
+  text: State Cartier's Theorem on $p$-typical formal group laws
+  hint: Every formal group law over a $\mathbb{Z}_{(p)}$-algebra is strictly isomorphic to a unique $p$-typical
+    formal group law.
+  locator: null
+  sub_index: null
+  search_text: state cartier's theorem on $p$-typical formal group laws every formal group law over a
+    $\mathbb{z}_{(p)}$-algebra is strictly isomorphic to a unique $p$-typical formal group law.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#248
+  text: What is the Hazewinkel generator $v_n \in \pi_{2(p^n-1)}(B P)$?
+  hint: The polynomial generators of $B P_*$ defined via the logarithm coefficients by the recursion $p
+    \ell_n = \sum_{i=0}^{n-1} \ell_i v_{n-i}^{p^i}$ with $\ell_0 = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the hazewinkel generator $v_n \in \pi_{2(p^n-1)}(b p)$? the polynomial generators
+    of $b p_*$ defined via the logarithm coefficients by the recursion $p \ell_n = \sum_{i=0}^{n-1} \ell_i
+    v_{n-i}^{p^i}$ with $\ell_0 = 1$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#249
+  text: What is the Araki generator $v_n \in \pi_{2(p^n-1)}(B P)$?
+  hint: The generators of $B P_*$ defined directly from the $p$-series expansion $[p]_F(x) = p x +_F v_1
+    x^p +_F v_2 x^{p^2} +_F \dots$.
+  locator: null
+  sub_index: null
+  search_text: what is the araki generator $v_n \in \pi_{2(p^n-1)}(b p)$? the generators of $b p_*$ defined
+    directly from the $p$-series expansion $[p]_f(x) = p x +_f v_1 x^p +_f v_2 x^{p^2} +_f \dots$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#250
+  text: What is the Landweber invariant ideal $I_n \subset B P_*$?
+  hint: The prime ideal $I_n = (p, v_1, v_2, \dots, v_{n-1}) \subset B P_*$ for $0 \le n \le \infty$,
+    with $I_0 = (0)$ and $I_\infty = (p, v_1, v_2, \dots)$.
+  locator: null
+  sub_index: null
+  search_text: what is the landweber invariant ideal $i_n \subset b p_*$? the prime ideal $i_n = (p, v_1,
+    v_2, \dots, v_{n-1}) \subset b p_*$ for $0 \le n \le \infty$, with $i_0 = (0)$ and $i_\infty = (p,
+    v_1, v_2, \dots)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#251
+  text: State the Landweber Invariant Ideal Theorem
+  hint: The only prime ideals in $B P_*$ that are invariant under the coaction of $B P_* B P$ are precisely
+    the Landweber ideals $I_n = (p, v_1, \dots, v_{n-1})$.
+  locator: null
+  sub_index: null
+  search_text: state the landweber invariant ideal theorem the only prime ideals in $b p_*$ that are invariant
+    under the coaction of $b p_* b p$ are precisely the landweber ideals $i_n = (p, v_1, \dots, v_{n-1})$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#252
+  text: State the Landweber Exact Functor Theorem (LEFT)
+  hint: A $B P_*$-module $M$ defines a generalized homology theory $X \mapsto B P_*(X) \otimes_{B P_*}
+    M$ if and only if for all primes $p$ and integers $n \ge 0$, multiplication by $v_n$ is injective
+    on $M / (p, v_1, \dots, v_{n-1})M$.
+  locator: null
+  sub_index: null
+  search_text: state the landweber exact functor theorem (left) a $b p_*$-module $m$ defines a generalized
+    homology theory $x \mapsto b p_*(x) \otimes_{b p_*} m$ if and only if for all primes $p$ and integers
+    $n \ge 0$, multiplication by $v_n$ is injective on $m / (p, v_1, \dots, v_{n-1})m$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#253
+  text: What is the Johnson-Wilson spectrum $E(n)$?
+  hint: The Landweber exact $B P$-algebra spectrum with homotopy ring $\pi_*(E(n)) \cong \mathbb{Z}_{(p)}[v_1,
+    \dots, v_n, v_n^{-1}]$ where $|v_i| = 2(p^i - 1)$.
+  locator: null
+  sub_index: null
+  search_text: what is the johnson-wilson spectrum $e(n)$? the landweber exact $b p$-algebra spectrum
+    with homotopy ring $\pi_*(e(n)) \cong \mathbb{z}_{(p)}[v_1, \dots, v_n, v_n^{-1}]$ where $|v_i| =
+    2(p^i - 1)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#254
+  text: What is the Morava $K$-theory spectrum $K(n)$ at height $n$?
+  hint: The periodic ring spectrum with coefficient ring $\pi_*(K(n)) \cong \mathbb{F}_p[v_n, v_n^{-1}]$
+    where $|v_n| = 2(p^n - 1)$; $K(0) = H\mathbb{Q}$ and $K(\infty) = H\mathbb{F}_p$.
+  locator: null
+  sub_index: null
+  search_text: what is the morava $k$-theory spectrum $k(n)$ at height $n$? the periodic ring spectrum
+    with coefficient ring $\pi_*(k(n)) \cong \mathbb{f}_p[v_n, v_n^{-1}]$ where $|v_n| = 2(p^n - 1)$;
+    $k(0) = h\mathbb{q}$ and $k(\infty) = h\mathbb{f}_p$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#255
+  text: Why does Morava $K$-theory $K(n)$ satisfy a field-like Künneth formula?
+  hint: Because $\pi_*(K(n))$ is a graded field (every non-zero homogeneous element is invertible), every
+    $K(n)_*$-module is free, so $K(n)_*(X \times Y) \cong K(n)_*(X) \otimes_{K(n)_*} K(n)_*(Y)$.
+  locator: null
+  sub_index: null
+  search_text: why does morava $k$-theory $k(n)$ satisfy a field-like künneth formula? because $\pi_*(k(n))$
+    is a graded field (every non-zero homogeneous element is invertible), every $k(n)_*$-module is free,
+    so $k(n)_*(x \times y) \cong k(n)_*(x) \otimes_{k(n)_*} k(n)_*(y)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#256
+  text: What is the Honda formal group $\Gamma_n$ over $\mathbb{F}_{p^n}$?
+  hint: The unique 1-dimensional formal group law of height $n$ over $\mathbb{F}_{p^n}$ characterized
+    by the $p$-series $[p]_{\Gamma_n}(x) = x^{p^n}$.
+  locator: null
+  sub_index: null
+  search_text: what is the honda formal group $\gamma_n$ over $\mathbb{f}_{p^n}$? the unique 1-dimensional
+    formal group law of height $n$ over $\mathbb{f}_{p^n}$ characterized by the $p$-series $[p]_{\gamma_n}(x)
+    = x^{p^n}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#257
+  text: What is Lubin-Tate / Morava $E$-theory $E_n$?
+  hint: The Landweber exact spectrum with $\pi_0(E_n) \cong W(\mathbb{F}_{p^n})[[u_1, \dots, u_{n-1}]]$
+    and $\pi_*(E_n) \cong \pi_0(E_n)[u, u^{-1}]$ with $|u| = -2$, representing universal deformations
+    of $\Gamma_n$.
+  locator: null
+  sub_index: null
+  search_text: what is lubin-tate / morava $e$-theory $e_n$? the landweber exact spectrum with $\pi_0(e_n)
+    \cong w(\mathbb{f}_{p^n})[[u_1, \dots, u_{n-1}]]$ and $\pi_*(e_n) \cong \pi_0(e_n)[u, u^{-1}]$ with
+    $|u| = -2$, representing universal deformations of $\gamma_n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#258
+  text: What is the Morava stabilizer group $\mathbb{G}_n$?
+  hint: The extended automorphism group $\mathbb{G}_n = \mathrm{Aut}_{\overline{\mathbb{F}}_p}(\Gamma_n)
+    \rtimes \mathrm{Gal}(\mathbb{F}_{p^n}/\mathbb{F}_p) \cong \mathcal{O}_n^\times \rtimes \mathbb{Z}/n\mathbb{Z}$,
+    where $\mathcal{O}_n$ is the maximal order in the division algebra $D_{1/n}$.
+  locator: null
+  sub_index: null
+  search_text: what is the morava stabilizer group $\mathbb{g}_n$? the extended automorphism group $\mathbb{g}_n
+    = \mathrm{aut}_{\overline{\mathbb{f}}_p}(\gamma_n) \rtimes \mathrm{gal}(\mathbb{f}_{p^n}/\mathbb{f}_p)
+    \cong \mathcal{o}_n^\times \rtimes \mathbb{z}/n\mathbb{z}$, where $\mathcal{o}_n$ is the maximal order
+    in the division algebra $d_{1/n}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#259
+  text: State the Goerss-Hopkins-Miller Theorem
+  hint: The spectrum $E_n$ carries an essentially unique $\mathbb{E}_\infty$-ring spectrum structure,
+    and the Morava stabilizer group $\mathbb{G}_n$ acts on $E_n$ by $\mathbb{E}_\infty$-ring automorphisms.
+  locator: null
+  sub_index: null
+  search_text: state the goerss-hopkins-miller theorem the spectrum $e_n$ carries an essentially unique
+    $\mathbb{e}_\infty$-ring spectrum structure, and the morava stabilizer group $\mathbb{g}_n$ acts on
+    $e_n$ by $\mathbb{e}_\infty$-ring automorphisms.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#260
+  text: What is a thick subcategory of a triangulated category $\mathcal{T}$?
+  hint: A full triangulated subcategory $\mathcal{D} \subset \mathcal{T}$ closed under shifts $\Sigma^{\pm
+    1}$, cofiber triangles, and direct summands / retracts.
+  locator: null
+  sub_index: null
+  search_text: what is a thick subcategory of a triangulated category $\mathcal{t}$? a full triangulated
+    subcategory $\mathcal{d} \subset \mathcal{t}$ closed under shifts $\sigma^{\pm 1}$, cofiber triangles,
+    and direct summands / retracts.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#261
+  text: What is a finite spectrum?
+  hint: A spectrum $X$ that can be obtained from the sphere spectrum $\mathbb{S}$ by a finite number of
+    suspensions, desuspensions, and cofiber attachments; equivalently, a compact/dualizable object in
+    $\mathbf{Sp}$.
+  locator: null
+  sub_index: null
+  search_text: what is a finite spectrum? a spectrum $x$ that can be obtained from the sphere spectrum
+    $\mathbb{s}$ by a finite number of suspensions, desuspensions, and cofiber attachments; equivalently,
+    a compact/dualizable object in $\mathbf{sp}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#262
+  text: What is the type of a finite $p$-local spectrum $X$?
+  hint: The minimal integer $n \ge 0$ such that $K(n)_*(X) \neq 0$; if $X \simeq *$, $\mathrm{type}(X)
+    = \infty$.
+  locator: null
+  sub_index: null
+  search_text: what is the type of a finite $p$-local spectrum $x$? the minimal integer $n \ge 0$ such
+    that $k(n)_*(x) \neq 0$; if $x \simeq *$, $\mathrm{type}(x) = \infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#263
+  text: State the Hopkins-Smith Thick Subcategory Theorem
+  hint: The only non-zero thick subcategories of the category of finite $p$-local spectra $\mathbf{Sp}_{(p)}^{\mathrm{fin}}$
+    are $\mathcal{C}_n = \{ X \in \mathbf{Sp}_{(p)}^{\mathrm{fin}} \mid \mathrm{type}(X) \ge n \} = \{
+    X \mid K(n-1)_*(X) = 0 \}$ for $0 \le n \le \infty$.
+  locator: null
+  sub_index: null
+  search_text: state the hopkins-smith thick subcategory theorem the only non-zero thick subcategories
+    of the category of finite $p$-local spectra $\mathbf{sp}_{(p)}^{\mathrm{fin}}$ are $\mathcal{c}_n
+    = \{ x \in \mathbf{sp}_{(p)}^{\mathrm{fin}} \mid \mathrm{type}(x) \ge n \} = \{ x \mid k(n-1)_*(x)
+    = 0 \}$ for $0 \le n \le \infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#264
+  text: What is a $v_n$-self map on a finite spectrum $X$ of type $n$?
+  hint: A map $f \colon \Sigma^d X \to X$ such that $K(n)_*(f)$ is an isomorphism and $K(m)_*(f) = 0$
+    for all $m \neq n$.
+  locator: null
+  sub_index: null
+  search_text: what is a $v_n$-self map on a finite spectrum $x$ of type $n$? a map $f \colon \sigma^d
+    x \to x$ such that $k(n)_*(f)$ is an isomorphism and $k(m)_*(f) = 0$ for all $m \neq n$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#265
+  text: State the Hopkins-Smith Periodicity Theorem
+  hint: Every finite $p$-local spectrum $X$ of type $n$ admits a $v_n$-self map $v \colon \Sigma^d X \to
+    X$ for some $d > 0$, and such self-maps are asymptotically unique up to powers and homotopy.
+  locator: null
+  sub_index: null
+  search_text: state the hopkins-smith periodicity theorem every finite $p$-local spectrum $x$ of type
+    $n$ admits a $v_n$-self map $v \colon \sigma^d x \to x$ for some $d > 0$, and such self-maps are asymptotically
+    unique up to powers and homotopy.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#266
+  text: State the Devinatz-Hopkins-Smith Nilpotence Theorem
+  hint: A self-map $f \colon \Sigma^k X \to X$ on a finite spectrum $X$ is nilpotent ($f^N \simeq 0$)
+    if and only if $M U_*(f) = 0$, or equivalently $K(n)_*(f) = 0$ for all $0 \le n \le \infty$.
+  locator: null
+  sub_index: null
+  search_text: state the devinatz-hopkins-smith nilpotence theorem a self-map $f \colon \sigma^k x \to
+    x$ on a finite spectrum $x$ is nilpotent ($f^n \simeq 0$) if and only if $m u_*(f) = 0$, or equivalently
+    $k(n)_*(f) = 0$ for all $0 \le n \le \infty$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#267
+  text: What is an $E$-acyclic spectrum?
+  hint: A spectrum $Z$ such that $E_*(Z) = \pi_*(E \wedge Z) = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is an $e$-acyclic spectrum? a spectrum $z$ such that $e_*(z) = \pi_*(e \wedge z) =
+    0$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#268
+  text: What is an $E$-local spectrum?
+  hint: A spectrum $Y$ such that $[Z, Y]_* = 0$ for all $E$-acyclic spectra $Z$.
+  locator: null
+  sub_index: null
+  search_text: what is an $e$-local spectrum? a spectrum $y$ such that $[z, y]_* = 0$ for all $e$-acyclic
+    spectra $z$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#269
+  text: What is the Bousfield localization $L_E X$?
+  hint: The universal $E$-local spectrum equipped with an $E$-equivalence $\eta \colon X \to L_E X$ (i.e.,
+    $E_*(X) \xrightarrow{\sim} E_*(L_E X)$).
+  locator: null
+  sub_index: null
+  search_text: what is the bousfield localization $l_e x$? the universal $e$-local spectrum equipped with
+    an $e$-equivalence $\eta \colon x \to l_e x$ (i.e., $e_*(x) \xrightarrow{\sim} e_*(l_e x)$).
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#270
+  text: What is the chromatic tower of a spectrum $X$?
+  hint: The tower of successive Bousfield localizations $\dots \to L_{E(n)} X \to L_{E(n-1)} X \to \dots
+    \to L_{E(1)} X \to L_{E(0)} X = L_{H\mathbb{Q}} X$.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic tower of a spectrum $x$? the tower of successive bousfield localizations
+    $\dots \to l_{e(n)} x \to l_{e(n-1)} x \to \dots \to l_{e(1)} x \to l_{e(0)} x = l_{h\mathbb{q}} x$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#271
+  text: State the Chromatic Convergence Theorem
+  hint: For every finite $p$-local spectrum $X$, the canonical comparison map $X \xrightarrow{\sim} \mathrm{holim}_n
+    L_{E(n)} X$ is a weak homotopy equivalence.
+  locator: null
+  sub_index: null
+  search_text: state the chromatic convergence theorem for every finite $p$-local spectrum $x$, the canonical
+    comparison map $x \xrightarrow{\sim} \mathrm{holim}_n l_{e(n)} x$ is a weak homotopy equivalence.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#272
+  text: What is the monochromatic layer $M_n(X)$?
+  hint: The homotopy fiber $M_n(X) := \mathrm{fib}(L_{E(n)} X \to L_{E(n-1)} X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the monochromatic layer $m_n(x)$? the homotopy fiber $m_n(x) := \mathrm{fib}(l_{e(n)}
+    x \to l_{e(n-1)} x)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#273
+  text: What is the chromatic fracture square for $L_{E(n)} X$?
+  hint: The homotopy pullback square with vertices $(L_{E(n)} X, L_{K(n)} X, L_{E(n-1)} X, L_{E(n-1)}
+    L_{K(n)} X)$.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic fracture square for $l_{e(n)} x$? the homotopy pullback square with
+    vertices $(l_{e(n)} x, l_{k(n)} x, l_{e(n-1)} x, l_{e(n-1)} l_{k(n)} x)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#274
+  text: What is the telescope $T(n)$ of a type-$n$ spectrum $X$ with $v_n$-self map $v$?
+  hint: The homotopy colimit $T(n) := v^{-1} X = \mathrm{hocolim}(X \xrightarrow{v} \Sigma^{-d} X \xrightarrow{v}
+    \Sigma^{-2d} X \to \dots)$.
+  locator: null
+  sub_index: null
+  search_text: what is the telescope $t(n)$ of a type-$n$ spectrum $x$ with $v_n$-self map $v$? the homotopy
+    colimit $t(n) := v^{-1} x = \mathrm{hocolim}(x \xrightarrow{v} \sigma^{-d} x \xrightarrow{v} \sigma^{-2d}
+    x \to \dots)$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#275
+  text: What is the Telescope Conjecture?
+  hint: The conjecture that $L_{T(n)} X \simeq L_{K(n)} X$ for all $n$; proven true for $n \le 1$ and
+    disproved for all $n \ge 2$ by Burklund-Hahn-Levy-Schlank.
+  locator: null
+  sub_index: null
+  search_text: what is the telescope conjecture? the conjecture that $l_{t(n)} x \simeq l_{k(n)} x$ for
+    all $n$; proven true for $n \le 1$ and disproved for all $n \ge 2$ by burklund-hahn-levy-schlank.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#276
+  text: What is the Adams Spectral Sequence based on $H\mathbb{F}_p$?
+  hint: The spectral sequence $E_2^{s, t} = \mathrm{Ext}_{\mathcal{A}_p}^{s, t}(\mathbb{F}_p, \mathbb{F}_p)
+    \implies \pi_{t-s}(\mathbb{S})_p^\wedge$, where $\mathcal{A}_p$ is the mod-$p$ Steenrod algebra.
+  locator: null
+  sub_index: null
+  search_text: what is the adams spectral sequence based on $h\mathbb{f}_p$? the spectral sequence $e_2^{s,
+    t} = \mathrm{ext}_{\mathcal{a}_p}^{s, t}(\mathbb{f}_p, \mathbb{f}_p) \implies \pi_{t-s}(\mathbb{s})_p^\wedge$,
+    where $\mathcal{a}_p$ is the mod-$p$ steenrod algebra.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#277
+  text: What is the Adams-Novikov Spectral Sequence (ANSS)?
+  hint: The spectral sequence $E_2^{s, t} = \mathrm{Ext}_{B P_* B P}^{s, t}(B P_*, B P_*) \implies \pi_{t-s}(\mathbb{S})_{(p)}$.
+  locator: null
+  sub_index: null
+  search_text: what is the adams-novikov spectral sequence (anss)? the spectral sequence $e_2^{s, t} =
+    \mathrm{ext}_{b p_* b p}^{s, t}(b p_*, b p_*) \implies \pi_{t-s}(\mathbb{s})_{(p)}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#278
+  text: What is the algebraic structure of the Hopf algebroid $(B P_*, B P_* B P)$?
+  hint: $B P_* = \mathbb{Z}_{(p)}[v_1, v_2, \dots]$ and $B P_* B P \cong B P_*[t_1, t_2, \dots]$ with
+    $|t_n| = 2(p^n - 1)$, classifying $p$-typical FGLs and strict isomorphisms.
+  locator: null
+  sub_index: null
+  search_text: what is the algebraic structure of the hopf algebroid $(b p_*, b p_* b p)$? $b p_* = \mathbb{z}_{(p)}[v_1,
+    v_2, \dots]$ and $b p_* b p \cong b p_*[t_1, t_2, \dots]$ with $|t_n| = 2(p^n - 1)$, classifying $p$-typical
+    fgls and strict isomorphisms.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#279
+  text: What is the Chromatic Spectral Sequence?
+  hint: The spectral sequence $E_1^{n, s, t} = \mathrm{Ext}_{B P_* B P}^{s, t}(B P_*, M_{n-1}^1) \implies
+    \mathrm{Ext}_{B P_* B P}^{n+s, t}(B P_*, B P_*)$ computing the $E_2$-term of the ANSS.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic spectral sequence? the spectral sequence $e_1^{n, s, t} = \mathrm{ext}_{b
+    p_* b p}^{s, t}(b p_*, m_{n-1}^1) \implies \mathrm{ext}_{b p_* b p}^{n+s, t}(b p_*, b p_*)$ computing
+    the $e_2$-term of the anss.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#280
+  text: What is the chromatic module $M_0^0$?
+  hint: $M_0^0 := B P_* \otimes \mathbb{Q}$, computing the height-0 rational layer.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic module $m_0^0$? $m_0^0 := b p_* \otimes \mathbb{q}$, computing the
+    height-0 rational layer.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#281
+  text: What is the chromatic module $M_0^1$?
+  hint: The quotient module $M_0^1 := (B P_* \otimes \mathbb{Q}) / B P_* \cong B P_* \otimes (\mathbb{Q}/\mathbb{Z}_{(p)}$,
+    generating the $\alpha$-family elements.)
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic module $m_0^1$? the quotient module $m_0^1 := (b p_* \otimes \mathbb{q})
+    / b p_* \cong b p_* \otimes (\mathbb{q}/\mathbb{z}_{(p)}$, generating the $\alpha$-family elements.)
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#282
+  text: What is the chromatic module $M_1^1$?
+  hint: The quotient module $M_1^1 := (v_1^{-1} B P_* / (p^\infty)) / (B P_*/(p^\infty))$, generating
+    the $\beta$-family elements in $\pi_*^s$.
+  locator: null
+  sub_index: null
+  search_text: what is the chromatic module $m_1^1$? the quotient module $m_1^1 := (v_1^{-1} b p_* / (p^\infty))
+    / (b p_*/(p^\infty))$, generating the $\beta$-family elements in $\pi_*^s$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#283
+  text: What is the Toda-Smith spectrum $V(0)$?
+  hint: The mod-$p$ Moore spectrum $S^0/p = \mathrm{cofib}(\mathbb{S} \xrightarrow{\cdot p} \mathbb{S})$.
+  locator: null
+  sub_index: null
+  search_text: what is the toda-smith spectrum $v(0)$? the mod-$p$ moore spectrum $s^0/p = \mathrm{cofib}(\mathbb{s}
+    \xrightarrow{\cdot p} \mathbb{s})$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#284
+  text: What is the Toda-Smith spectrum $V(1)$?
+  hint: 'The cofiber of the $v_1$-self map on $V(0)$: $V(1) := \mathrm{cofib}(\Sigma^{2p-2} V(0) \xrightarrow{v_1}
+    V(0))$, which exists for all primes $p \ge 3$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the toda-smith spectrum $v(1)$? the cofiber of the $v_1$-self map on $v(0)$: $v(1)
+    := \mathrm{cofib}(\sigma^{2p-2} v(0) \xrightarrow{v_1} v(0))$, which exists for all primes $p \ge
+    3$.'
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#285
+  text: What is the moduli stack of formal groups $\mathcal{M}_{\mathrm{fg}}$?
+  hint: The algebraic stack $\mathcal{M}_{\mathrm{fg}} = [\mathrm{Spec}(L)/\mathrm{Spec}(M U_* M U)]$
+    classifying 1-dimensional formal group laws modulo coordinate isomorphisms.
+  locator: null
+  sub_index: null
+  search_text: what is the moduli stack of formal groups $\mathcal{m}_{\mathrm{fg}}$? the algebraic stack
+    $\mathcal{m}_{\mathrm{fg}} = [\mathrm{spec}(l)/\mathrm{spec}(m u_* m u)]$ classifying 1-dimensional
+    formal group laws modulo coordinate isomorphisms.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#286
+  text: What is an elliptic spectrum $(E, C, t)$?
+  hint: An even periodic ring spectrum $E$ equipped with an elliptic curve $C$ over $\pi_0(E)$ and an
+    isomorphism $t \colon \widehat{C} \xrightarrow{\sim} \mathrm{Spf}(E^0(\mathbb{C}\mathbb{P}^\infty))$.
+  locator: null
+  sub_index: null
+  search_text: what is an elliptic spectrum $(e, c, t)$? an even periodic ring spectrum $e$ equipped with
+    an elliptic curve $c$ over $\pi_0(e)$ and an isomorphism $t \colon \widehat{c} \xrightarrow{\sim}
+    \mathrm{spf}(e^0(\mathbb{c}\mathbb{p}^\infty))$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#287
+  text: What is the topological modular forms spectrum $TMF$?
+  hint: The $\mathbb{E}_\infty$-ring spectrum of global derived sections $TMF := \mathbf{R}\Gamma(\mathcal{M}_{\mathrm{ell}},
+    \mathcal{O}^{\mathrm{top}})$ over the moduli stack of elliptic curves.
+  locator: null
+  sub_index: null
+  search_text: what is the topological modular forms spectrum $tmf$? the $\mathbb{e}_\infty$-ring spectrum
+    of global derived sections $tmf := \mathbf{r}\gamma(\mathcal{m}_{\mathrm{ell}}, \mathcal{o}^{\mathrm{top}})$
+    over the moduli stack of elliptic curves.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#288
+  text: What is the connective spectrum $tmf$?
+  hint: The connective cover $tmf := \tau_{\ge 0} TMF$, satisfying $\pi_*(tmf) \otimes \mathbb{Q} \cong
+    \mathbb{Q}[c_4, c_6]$.
+  locator: null
+  sub_index: null
+  search_text: what is the connective spectrum $tmf$? the connective cover $tmf := \tau_{\ge 0} tmf$,
+    satisfying $\pi_*(tmf) \otimes \mathbb{q} \cong \mathbb{q}[c_4, c_6]$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#289
+  text: What is the periodic spectrum $T M F$?
+  hint: The localization $T M F := TMF[\Delta^{-1}]$ obtained by inverting the discriminant modular form
+    $\Delta^{24}$.
+  locator: null
+  sub_index: null
+  search_text: what is the periodic spectrum $t m f$? the localization $t m f := tmf[\delta^{-1}]$ obtained
+    by inverting the discriminant modular form $\delta^{24}$.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#290
+  text: What is the String orientation $M\mathrm{String} \to TMF$?
+  hint: The map of $\mathbb{E}_\infty$-ring spectra constructed by Ando-Hopkins-Rezk refining the classical
+    Witten genus on string manifolds.
+  locator: null
+  sub_index: null
+  search_text: what is the string orientation $m\mathrm{string} \to tmf$? the map of $\mathbb{e}_\infty$-ring
+    spectra constructed by ando-hopkins-rezk refining the classical witten genus on string manifolds.
+- id: ncatlab-org-nlab-files-stablechromaticglossary-pdf#291
+  text: What is the Balmer spectrum $\mathrm{Spc}(\mathbf{Sp}_{(p)}^{\mathrm{fin}})$ of finite $p$-local
+    spectra?
+  hint: The topological space of prime thick tensor ideals $\{ \mathcal{C}_0, \mathcal{C}_1, \mathcal{C}_2,
+    \dots, \mathcal{C}_\infty \}$ whose topology is the specialization order $\overline{\{\mathcal{C}_n\}}
+    = \{\mathcal{C}_m \mid m \ge n\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the balmer spectrum $\mathrm{spc}(\mathbf{sp}_{(p)}^{\mathrm{fin}})$ of finite
+    $p$-local spectra? the topological space of prime thick tensor ideals $\{ \mathcal{c}_0, \mathcal{c}_1,
+    \mathcal{c}_2, \dots, \mathcal{c}_\infty \}$ whose topology is the specialization order $\overline{\{\mathcal{c}_n\}}
+    = \{\mathcal{c}_m \mid m \ge n\}$.

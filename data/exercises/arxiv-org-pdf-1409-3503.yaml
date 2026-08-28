@@ -1,0 +1,2591 @@
+url: https://arxiv.org/pdf/1409.3503
+title: Matroid Theory for algebraic geometers.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: arxiv-org-pdf-1409-3503#000
+  text: Why do we care about the Basis Exchange Axiom?
+  hint: It isolates the core combinatorial property of linear bases in vector spaces and spanning trees
+    in graphs, ensuring that greedy algorithms always find optimal solutions and that all maximal independent
+    sets have the exact same size.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the basis exchange axiom? it isolates the core combinatorial property
+    of linear bases in vector spaces and spanning trees in graphs, ensuring that greedy algorithms always
+    find optimal solutions and that all maximal independent sets have the exact same size.
+- id: arxiv-org-pdf-1409-3503#001
+  text: How does one invent the notion of the Basis Exchange Axiom?
+  hint: Try to abstract what makes Gaussian elimination and the Steinitz exchange lemma work when swapping
+    one spanning vector for another in a basis without changing the linear span.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the basis exchange axiom? try to abstract what makes
+    gaussian elimination and the steinitz exchange lemma work when swapping one spanning vector for another
+    in a basis without changing the linear span.
+- id: arxiv-org-pdf-1409-3503#002
+  text: Why do we study matroids?
+  hint: Matroids provide a unifying combinatorial framework that simultaneously generalizes linear independence
+    in vector spaces, cycle structures in graphs, algebraic dependence in field extensions, and hyperplane
+    arrangements in algebraic geometry.
+  locator: null
+  sub_index: null
+  search_text: why do we study matroids? matroids provide a unifying combinatorial framework that simultaneously
+    generalizes linear independence in vector spaces, cycle structures in graphs, algebraic dependence
+    in field extensions, and hyperplane arrangements in algebraic geometry.
+- id: arxiv-org-pdf-1409-3503#003
+  text: How does one invent the notion of a matroid?
+  hint: Whitney observed that the greedy algorithm works for finding minimum spanning trees and that linear
+    independence in matrices satisfies purely set-theoretic exchange axioms; he abstracted these common
+    axioms away from the underlying field.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a matroid? whitney observed that the greedy algorithm
+    works for finding minimum spanning trees and that linear independence in matrices satisfies purely
+    set-theoretic exchange axioms; he abstracted these common axioms away from the underlying field.
+- id: arxiv-org-pdf-1409-3503#004
+  text: Why do we care about the Rank Axioms?
+  hint: They characterize the integer-valued dimension function $r \colon \mathcal{P}(E) \to \mathbb{Z}_{\ge
+    0}$ via submodularity $r(A \cup B) + r(A \cap B) \le r(A) + r(B)$, which serves as the discrete analogue
+    of concave energy functionals in convex optimization.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the rank axioms? they characterize the integer-valued dimension function
+    $r \colon \mathcal{p}(e) \to \mathbb{z}_{\ge 0}$ via submodularity $r(a \cup b) + r(a \cap b) \le
+    r(a) + r(b)$, which serves as the discrete analogue of concave energy functionals in convex optimization.
+- id: arxiv-org-pdf-1409-3503#005
+  text: How does one invent the notion of Rank Axioms?
+  hint: Take the dimension formula for vector subspaces $\dim(U + V) = \dim(U) + \dim(V) - \dim(U \cap
+    V)$ and relax the equality to an inequality $\dim(\mathrm{span}(A \cup B)) \le \dim(\mathrm{span}(A))
+    + \dim(\mathrm{span}(B)) - \dim(\mathrm{span}(A) \cap \mathrm{span}(B))$ for arbitrary non-linear
+    subsets.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of rank axioms? take the dimension formula for vector subspaces
+    $\dim(u + v) = \dim(u) + \dim(v) - \dim(u \cap v)$ and relax the equality to an inequality $\dim(\mathrm{span}(a
+    \cup b)) \le \dim(\mathrm{span}(a)) + \dim(\mathrm{span}(b)) - \dim(\mathrm{span}(a) \cap \mathrm{span}(b))$
+    for arbitrary non-linear subsets.
+- id: arxiv-org-pdf-1409-3503#006
+  text: Why do we care about the Circuit Elimination Axiom?
+  hint: It formalizes how overlapping minimal dependencies can be combined and reduced, which is the combinatorial
+    essence of eliminating variables in systems of linear equations and cycle-canceling in network flows.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the circuit elimination axiom? it formalizes how overlapping minimal
+    dependencies can be combined and reduced, which is the combinatorial essence of eliminating variables
+    in systems of linear equations and cycle-canceling in network flows.
+- id: arxiv-org-pdf-1409-3503#007
+  text: How does one invent the notion of Circuit Elimination?
+  hint: Consider two distinct simple cycles in a graph sharing an edge $e$; removing $e$ from their union
+    leaves a subgraph that must still contain a simple cycle.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of circuit elimination? consider two distinct simple cycles
+    in a graph sharing an edge $e$; removing $e$ from their union leaves a subgraph that must still contain
+    a simple cycle.
+- id: arxiv-org-pdf-1409-3503#008
+  text: Why does the closure operator feel like a topological closure and represent the smallest flat
+    containing a set?
+  hint: 'Because $\mathrm{cl}(S) = \{e \in E : r(S \cup \{e\}) = r(S)\}$ satisfies the Kuratowski closure
+    axioms ($S \subseteq \mathrm{cl}(S)$, $\mathrm{cl}(\mathrm{cl}(S)) = \mathrm{cl}(S)$, and monotonicity),
+    formalizing linear spans as closed geometric subspaces.'
+  locator: null
+  sub_index: null
+  search_text: 'why does the closure operator feel like a topological closure and represent the smallest
+    flat containing a set? because $\mathrm{cl}(s) = \{e \in e : r(s \cup \{e\}) = r(s)\}$ satisfies the
+    kuratowski closure axioms ($s \subseteq \mathrm{cl}(s)$, $\mathrm{cl}(\mathrm{cl}(s)) = \mathrm{cl}(s)$,
+    and monotonicity), formalizing linear spans as closed geometric subspaces.'
+- id: arxiv-org-pdf-1409-3503#009
+  text: How does one invent the notion of the matroid closure operator?
+  hint: Generalize the algebraic span $\mathrm{span}(S)$ of a set of vectors by collecting all elements
+    that add zero new dimensions to $S$.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the matroid closure operator? generalize the algebraic
+    span $\mathrm{span}(s)$ of a set of vectors by collecting all elements that add zero new dimensions
+    to $s$.
+- id: arxiv-org-pdf-1409-3503#010
+  text: Why is a flat of rank $r(M) - 1$ called a hyperplane?
+  hint: In a projective geometry or vector space of dimension $r$, a maximal proper linear subspace has
+    codimension 1 (dimension $r-1$) and geometrically forms a hyperplane cutting the ambient space.
+  locator: null
+  sub_index: null
+  search_text: why is a flat of rank $r(m) - 1$ called a hyperplane? in a projective geometry or vector
+    space of dimension $r$, a maximal proper linear subspace has codimension 1 (dimension $r-1$) and geometrically
+    forms a hyperplane cutting the ambient space.
+- id: arxiv-org-pdf-1409-3503#011
+  text: How does one invent the notion of a matroid hyperplane?
+  hint: Identify the maximal proper flats $H \subsetneq E$ that cannot be enlarged without spanning the
+    entire ground set $E$.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a matroid hyperplane? identify the maximal proper flats
+    $h \subsetneq e$ that cannot be enlarged without spanning the entire ground set $e$.
+- id: arxiv-org-pdf-1409-3503#012
+  text: Why do we care about the uniform matroid $U_{k, n}$?
+  hint: It models points in general position in $k$-dimensional space where every $k$-element subset is
+    a basis, serving as the universal baseline for matroid theory and algebraic geometry.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the uniform matroid $u_{k, n}$? it models points in general position
+    in $k$-dimensional space where every $k$-element subset is a basis, serving as the universal baseline
+    for matroid theory and algebraic geometry.
+- id: arxiv-org-pdf-1409-3503#013
+  text: How does one invent the notion of uniform matroids?
+  hint: 'Ask for the most unconstrained matroid possible: declare every subset of size $\le k$ on an $n$-element
+    set to be independent.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the notion of uniform matroids? ask for the most unconstrained matroid
+    possible: declare every subset of size $\le k$ on an $n$-element set to be independent.'
+- id: arxiv-org-pdf-1409-3503#014
+  text: Why do we care about the Fano matroid $F_7$?
+  hint: It represents the finite projective plane $\mathbb{P}^2(\mathbb{F}_2)$ and serves as the fundamental
+    forbidden minor that characterizes when a matroid can be represented over fields of characteristic
+    2 versus other characteristics.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the fano matroid $f_7$? it represents the finite projective plane
+    $\mathbb{p}^2(\mathbb{f}_2)$ and serves as the fundamental forbidden minor that characterizes when
+    a matroid can be represented over fields of characteristic 2 versus other characteristics.
+- id: arxiv-org-pdf-1409-3503#015
+  text: How does one invent the notion of the Fano matroid?
+  hint: Take the 7 non-zero vectors in the 3-dimensional vector space $\mathbb{F}_2^3$ and record their
+    linear dependencies to see the geometry of lines in the smallest finite projective plane.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the fano matroid? take the 7 non-zero vectors in the
+    3-dimensional vector space $\mathbb{f}_2^3$ and record their linear dependencies to see the geometry
+    of lines in the smallest finite projective plane.
+- id: arxiv-org-pdf-1409-3503#016
+  text: How does one prove that the dual matroid $M^*$ exists and is a matroid?
+  hint: 'Define $\mathcal{B}^* = \{E \setminus B : B \in \mathcal{B}(M)\}$; applying the Basis Exchange
+    Axiom on $\mathcal{B}(M)$ translates by set complementation into the Basis Exchange Axiom for $\mathcal{B}^*$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one prove that the dual matroid $m^*$ exists and is a matroid? define $\mathcal{b}^*
+    = \{e \setminus b : b \in \mathcal{b}(m)\}$; applying the basis exchange axiom on $\mathcal{b}(m)$
+    translates by set complementation into the basis exchange axiom for $\mathcal{b}^*$.'
+- id: arxiv-org-pdf-1409-3503#017
+  text: How does one invent the notion of the dual matroid?
+  hint: In graph theory, planar graphs have planar duals where spanning trees correspond to the complements
+    of spanning trees in the dual graph; abstracting $B \mapsto E \setminus B$ generalizes planar duality
+    to all matroids.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the dual matroid? in graph theory, planar graphs have
+    planar duals where spanning trees correspond to the complements of spanning trees in the dual graph;
+    abstracting $b \mapsto e \setminus b$ generalizes planar duality to all matroids.
+- id: arxiv-org-pdf-1409-3503#018
+  text: What is the difference between matroid contraction and deletion intuitively?
+  hint: Deletion $M \setminus e$ removes the element $e$ and ignores it (like deleting an edge in a graph);
+    contraction $M / e$ forces $e$ to be part of the independent structure and projects the rest of the
+    geometry onto the quotient space along $e$.
+  locator: null
+  sub_index: null
+  search_text: what is the difference between matroid contraction and deletion intuitively? deletion $m
+    \setminus e$ removes the element $e$ and ignores it (like deleting an edge in a graph); contraction
+    $m / e$ forces $e$ to be part of the independent structure and projects the rest of the geometry onto
+    the quotient space along $e$.
+- id: arxiv-org-pdf-1409-3503#019
+  text: How does one invent the notion of contraction and deletion?
+  hint: Observe how Gaussian elimination deletes a non-pivot column versus pivoting on a column to eliminate
+    a variable and project onto a lower-dimensional subspace.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of contraction and deletion? observe how gaussian elimination
+    deletes a non-pivot column versus pivoting on a column to eliminate a variable and project onto a
+    lower-dimensional subspace.
+- id: arxiv-org-pdf-1409-3503#020
+  text: Why do we care about the rank function of a matroid?
+  hint: It is the primary numeric invariant that determines independence, flats, closures, duality, and
+    geometric dimensions in a single submodular function.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the rank function of a matroid? it is the primary numeric invariant
+    that determines independence, flats, closures, duality, and geometric dimensions in a single submodular
+    function.
+- id: arxiv-org-pdf-1409-3503#021
+  text: How does one invent the notion of the rank function?
+  hint: Define a function that counts the maximum number of independent elements contained inside any
+    arbitrary subset of vectors or edges.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the rank function? define a function that counts the
+    maximum number of independent elements contained inside any arbitrary subset of vectors or edges.
+- id: arxiv-org-pdf-1409-3503#022
+  text: Why do we care about the Möbius function $\mu$ of a matroid and where else does it appear in mathematics?
+  hint: It computes topological Euler characteristics, counts colorings, and drives inclusion-exclusion
+    on posets; it is the direct poset generalization of the classical number-theoretic Möbius function
+    $\mu(n)$ on the divisibility lattice.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the möbius function $\mu$ of a matroid and where else does it appear
+    in mathematics? it computes topological euler characteristics, counts colorings, and drives inclusion-exclusion
+    on posets; it is the direct poset generalization of the classical number-theoretic möbius function
+    $\mu(n)$ on the divisibility lattice.
+- id: arxiv-org-pdf-1409-3503#023
+  text: How does one invent the notion of the Möbius function on a poset?
+  hint: Invert the zeta matrix $\zeta(x, y) = \mathbf{1}_{\{x \le y\}}$ in the incidence algebra of the
+    poset to solve the general reconstruction problem $g(x) = \sum_{y \le x} f(y) \implies f(x) = \sum_{y
+    \le x} g(y) \mu(y, x)$.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the möbius function on a poset? invert the zeta matrix
+    $\zeta(x, y) = \mathbf{1}_{\{x \le y\}}$ in the incidence algebra of the poset to solve the general
+    reconstruction problem $g(x) = \sum_{y \le x} f(y) \implies f(x) = \sum_{y \le x} g(y) \mu(y, x)$.
+- id: arxiv-org-pdf-1409-3503#024
+  text: Why do we care about the characteristic polynomial $\chi_M(t)$ of a matroid?
+  hint: It generalizes the chromatic polynomial of a graph ($P_G(t) = t^{c(G)}\chi_{M(G)}(t)$) and counts
+    the number of points in complements of subspace arrangements over finite fields $\mathbb{F}_q$.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the characteristic polynomial $\chi_m(t)$ of a matroid? it generalizes
+    the chromatic polynomial of a graph ($p_g(t) = t^{c(g)}\chi_{m(g)}(t)$) and counts the number of points
+    in complements of subspace arrangements over finite fields $\mathbb{f}_q$.
+- id: arxiv-org-pdf-1409-3503#025
+  text: How does one invent the notion of the characteristic polynomial?
+  hint: Compute the number of proper vertex colorings of a graph using $t$ colors via the deletion-contraction
+    recurrence $P_G(t) = P_{G \setminus e}(t) - P_{G / e}(t)$ and translate this recurrence to matroids.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of the characteristic polynomial? compute the number of
+    proper vertex colorings of a graph using $t$ colors via the deletion-contraction recurrence $p_g(t)
+    = p_{g \setminus e}(t) - p_{g / e}(t)$ and translate this recurrence to matroids.
+- id: arxiv-org-pdf-1409-3503#026
+  text: What is the relation of matroid theory to Ramsey theory?
+  hint: Matroid Ramsey theory investigates whether large matroids must contain large uniform or graphic
+    minors, connecting combinatorial partition regularity with geometric configurations.
+  locator: null
+  sub_index: null
+  search_text: what is the relation of matroid theory to ramsey theory? matroid ramsey theory investigates
+    whether large matroids must contain large uniform or graphic minors, connecting combinatorial partition
+    regularity with geometric configurations.
+- id: arxiv-org-pdf-1409-3503#027
+  text: How does one invent the connection between matroids and Ramsey theory?
+  hint: Ask whether every sufficiently large matroid of bounded rank contains a large projective geometry
+    or a large uniform matroid minor, mimicking Ramsey's theorem for graphs.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the connection between matroids and ramsey theory? ask whether every
+    sufficiently large matroid of bounded rank contains a large projective geometry or a large uniform
+    matroid minor, mimicking ramsey's theorem for graphs.
+- id: arxiv-org-pdf-1409-3503#028
+  text: Why is the characteristic polynomial recovered from the Tutte polynomial by the $(-1)^r$ formula
+    and what is its relation to homology?
+  hint: $\chi_M(t) = (-1)^{r(M)} T_M(1-t, 0)$; the sign $(-1)^r$ reflects the Euler-Poincaré characteristic
+    and the alternating dimensions of the graded cohomology of the complement of the corresponding hyperplane
+    arrangement.
+  locator: null
+  sub_index: null
+  search_text: why is the characteristic polynomial recovered from the tutte polynomial by the $(-1)^r$
+    formula and what is its relation to homology? $\chi_m(t) = (-1)^{r(m)} t_m(1-t, 0)$; the sign $(-1)^r$
+    reflects the euler-poincaré characteristic and the alternating dimensions of the graded cohomology
+    of the complement of the corresponding hyperplane arrangement.
+- id: arxiv-org-pdf-1409-3503#029
+  text: How does one invent the relationship between Tutte polynomials and characteristic polynomials?
+  hint: Set $y=0$ in the two-variable deletion-contraction invariant $T_M(x, y) = T_{M \setminus e}(x,
+    y) + T_{M / e}(x, y)$ and adjust the base cases to match the chromatic recurrence $P_G(t) = P_{G \setminus
+    e}(t) - P_{G / e}(t)$.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the relationship between tutte polynomials and characteristic polynomials?
+    set $y=0$ in the two-variable deletion-contraction invariant $t_m(x, y) = t_{m \setminus e}(x, y)
+    + t_{m / e}(x, y)$ and adjust the base cases to match the chromatic recurrence $p_g(t) = p_{g \setminus
+    e}(t) - p_{g / e}(t)$.
+- id: arxiv-org-pdf-1409-3503#030
+  text: Why do we care about the Gelfand-Goresky-MacPherson-Serganova (GGMS) Theorem?
+  hint: It bridges matroid theory with algebraic geometry and representation theory by proving that matroid
+    polytopes are precisely the moment map images of torus orbits in the Grassmannian $\mathrm{Gr}(r,
+    n)$.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the gelfand-goresky-macpherson-serganova (ggms) theorem? it bridges
+    matroid theory with algebraic geometry and representation theory by proving that matroid polytopes
+    are precisely the moment map images of torus orbits in the grassmannian $\mathrm{gr}(r, n)$.
+- id: arxiv-org-pdf-1409-3503#031
+  text: How does one invent the GGMS Theorem?
+  hint: Map the algebraic torus orbit $\overline{T \cdot V} \subset \mathrm{Gr}(r, n)$ of a linear subspace
+    $V$ under the moment map of symplectic geometry and observe that the non-vanishing Plücker coordinates
+    determine a 0/1-polytope whose edges are all parallel to $e_i - e_j$.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the ggms theorem? map the algebraic torus orbit $\overline{t \cdot
+    v} \subset \mathrm{gr}(r, n)$ of a linear subspace $v$ under the moment map of symplectic geometry
+    and observe that the non-vanishing plücker coordinates determine a 0/1-polytope whose edges are all
+    parallel to $e_i - e_j$.
+- id: arxiv-org-pdf-1409-3503#032
+  text: What is a matroid spectrum (or realization space) and why do we care?
+  hint: It is the moduli space $\mathcal{R}(M) = S_M / T$ of all linear representations of $M$; Mnëv's
+    Universality Theorem shows these spaces can have arbitrary singularities, proving that linear realization
+    is universally wild.
+  locator: null
+  sub_index: null
+  search_text: what is a matroid spectrum (or realization space) and why do we care? it is the moduli
+    space $\mathcal{r}(m) = s_m / t$ of all linear representations of $m$; mnëv's universality theorem
+    shows these spaces can have arbitrary singularities, proving that linear realization is universally
+    wild.
+- id: arxiv-org-pdf-1409-3503#033
+  text: How does one invent the notion of matroid realization spaces?
+  hint: Write down the Plücker relations and determinant equations forcing certain minors to be non-zero
+    and other minors to vanish, and treat the resulting algebraic equations as a scheme.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of matroid realization spaces? write down the plücker relations
+    and determinant equations forcing certain minors to be non-zero and other minors to vanish, and treat
+    the resulting algebraic equations as a scheme.
+- id: arxiv-org-pdf-1409-3503#034
+  text: How do permutations relate to the permutohedron?
+  hint: The permutohedron $\Pi_{n-1} \subset \mathbb{R}^n$ is the convex hull of all permutation vectors
+    $(\pi(1), \dots, \pi(n)) \in \mathbb{R}^n$ for $\pi \in S_n$; its normal fan $\Sigma_{n-1}$ is the
+    fan of flags of subsets.
+  locator: null
+  sub_index: null
+  search_text: how do permutations relate to the permutohedron? the permutohedron $\pi_{n-1} \subset \mathbb{r}^n$
+    is the convex hull of all permutation vectors $(\pi(1), \dots, \pi(n)) \in \mathbb{r}^n$ for $\pi
+    \in s_n$; its normal fan $\sigma_{n-1}$ is the fan of flags of subsets.
+- id: arxiv-org-pdf-1409-3503#035
+  text: How does one invent the permutohedron?
+  hint: Take the barycentric subdivision of the simplex and look at the convex hull of the vertices generated
+    by permuting the coordinates of $(1, 2, \dots, n)$.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the permutohedron? take the barycentric subdivision of the simplex
+    and look at the convex hull of the vertices generated by permuting the coordinates of $(1, 2, \dots,
+    n)$.
+- id: arxiv-org-pdf-1409-3503#036
+  text: Why do we care about the Bergman fan $\widetilde{\Sigma}_M$ of a matroid?
+  hint: It provides the purely combinatorial tropical linear space $\mathrm{Trop}(M)$ associated with
+    any matroid, allowing tropical intersection theory and algebraic geometry to be applied even to non-realizable
+    matroids.
+  locator: null
+  sub_index: null
+  search_text: why do we care about the bergman fan $\widetilde{\sigma}_m$ of a matroid? it provides the
+    purely combinatorial tropical linear space $\mathrm{trop}(m)$ associated with any matroid, allowing
+    tropical intersection theory and algebraic geometry to be applied even to non-realizable matroids.
+- id: arxiv-org-pdf-1409-3503#037
+  text: How does one invent the Bergman fan?
+  hint: Take the polyhedral complex of coordinate valuations of points in a linear subspace over a non-archimedean
+    field and realize that its combinatorial structure depends only on the flags of flats of the underlying
+    matroid.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the bergman fan? take the polyhedral complex of coordinate valuations
+    of points in a linear subspace over a non-archimedean field and realize that its combinatorial structure
+    depends only on the flags of flats of the underlying matroid.
+- id: arxiv-org-pdf-1409-3503#038
+  text: What is the tropical balancing condition and why do we care about it?
+  hint: It states that around every codimension-1 cone of a fan, the sum of outgoing primitive ray generators
+    weighted by multiplicity lies in the span of the cone; this balancing condition is the tropical conservation
+    law that guarantees well-defined intersection numbers.
+  locator: null
+  sub_index: null
+  search_text: what is the tropical balancing condition and why do we care about it? it states that around
+    every codimension-1 cone of a fan, the sum of outgoing primitive ray generators weighted by multiplicity
+    lies in the span of the cone; this balancing condition is the tropical conservation law that guarantees
+    well-defined intersection numbers.
+- id: arxiv-org-pdf-1409-3503#039
+  text: How does one invent the tropical balancing condition?
+  hint: Mirror the fact that the boundary of a boundary is zero in homology ($\partial^2 = 0$) and that
+    the intersection product of algebraic cycle classes is independent of rational equivalence.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the tropical balancing condition? mirror the fact that the boundary
+    of a boundary is zero in homology ($\partial^2 = 0$) and that the intersection product of algebraic
+    cycle classes is independent of rational equivalence.
+- id: arxiv-org-pdf-1409-3503#040
+  text: How does the Chow ring of a matroid $A^*(M)$ compare to traditional Chow rings?
+  hint: The classical Chow ring of a variety measures algebraic cycles modulo rational equivalence; the
+    Chow ring of a matroid $A^*(M)$ is a purely combinatorial presentation mimicking the intersection
+    theory of the wonderful compactification of a hyperplane arrangement.
+  locator: null
+  sub_index: null
+  search_text: how does the chow ring of a matroid $a^*(m)$ compare to traditional chow rings? the classical
+    chow ring of a variety measures algebraic cycles modulo rational equivalence; the chow ring of a matroid
+    $a^*(m)$ is a purely combinatorial presentation mimicking the intersection theory of the wonderful
+    compactification of a hyperplane arrangement.
+- id: arxiv-org-pdf-1409-3503#041
+  text: How does one invent the Chow ring of a matroid?
+  hint: Take the cohomology ring of the de Concini-Procesi wonderful model of a hyperplane arrangement
+    complement and write down its generators $x_F$ (for flats $F$) and relations without using coordinates
+    or fields.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the chow ring of a matroid? take the cohomology ring of the de concini-procesi
+    wonderful model of a hyperplane arrangement complement and write down its generators $x_f$ (for flats
+    $f$) and relations without using coordinates or fields.
+- id: arxiv-org-pdf-1409-3503#042
+  text: How does one prove Poincaré Duality on $A^*(M)$ via the degree map?
+  hint: One establishes that $A^{r-1}(M) \cong \mathbb{Z}$ generated by complete flags of flats and proves
+    by induction on deletions and contractions that the pairing $A^k(M) \times A^{r-1-k}(M) \to \mathbb{Z}$
+    has determinant $\pm 1$.
+  locator: null
+  sub_index: null
+  search_text: how does one prove poincaré duality on $a^*(m)$ via the degree map? one establishes that
+    $a^{r-1}(m) \cong \mathbb{z}$ generated by complete flags of flats and proves by induction on deletions
+    and contractions that the pairing $a^k(m) \times a^{r-1-k}(m) \to \mathbb{z}$ has determinant $\pm
+    1$.
+- id: arxiv-org-pdf-1409-3503#043
+  text: How does one invent the degree map on $A^*(M)$?
+  hint: Identify maximal flags of flats with top-dimensional intersection points of boundary divisors
+    in a compactified arrangement and send their class to 1.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the degree map on $a^*(m)$? identify maximal flags of flats with top-dimensional
+    intersection points of boundary divisors in a compactified arrangement and send their class to 1.
+- id: arxiv-org-pdf-1409-3503#044
+  text: Why do we care about Hard Lefschetz, Poincaré Duality, and Hodge-Riemann relations on the Chow
+    ring of a matroid?
+  hint: They establish the Kähler package for matroids, which Adiprasito, Huh, and Katz used to prove
+    the 50-year-old Heron-Rota-Welsh conjecture on the log-concavity of the characteristic polynomial.
+  locator: null
+  sub_index: null
+  search_text: why do we care about hard lefschetz, poincaré duality, and hodge-riemann relations on the
+    chow ring of a matroid? they establish the kähler package for matroids, which adiprasito, huh, and
+    katz used to prove the 50-year-old heron-rota-welsh conjecture on the log-concavity of the characteristic
+    polynomial.
+- id: arxiv-org-pdf-1409-3503#045
+  text: How does one invent the application of Hodge theory to matroids?
+  hint: Observe that log-concave inequalities $\mu_k^2 \ge \mu_{k-1} \mu_{k+1}$ mimic the Hodge Index
+    Theorem $D_1^2 \cdot D_2^2 \le (D_1 \cdot D_2)^2$ for algebraic surfaces, and build a combinatorial
+    Hodge theory to supply the missing Kähler metric.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the application of hodge theory to matroids? observe that log-concave
+    inequalities $\mu_k^2 \ge \mu_{k-1} \mu_{k+1}$ mimic the hodge index theorem $d_1^2 \cdot d_2^2 \le
+    (d_1 \cdot d_2)^2$ for algebraic surfaces, and build a combinatorial hodge theory to supply the missing
+    kähler metric.
+- id: arxiv-org-pdf-1409-3503#046
+  text: How does one prove that deletion and contraction commute?
+  hint: 'Check the rank functions: $r_{(M \setminus e) / f}(S) = r_M(S \cup \{f\}) - r_M(\{f\}) = r_{(M
+    / f) \setminus e}(S)$ for disjoint elements $e \neq f$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one prove that deletion and contraction commute? check the rank functions: $r_{(m
+    \setminus e) / f}(s) = r_m(s \cup \{f\}) - r_m(\{f\}) = r_{(m / f) \setminus e}(s)$ for disjoint elements
+    $e \neq f$.'
+- id: arxiv-org-pdf-1409-3503#047
+  text: How does one invent the commutativity of deletion and contraction?
+  hint: In a graph, deleting edge $e$ and contracting edge $f$ produces the same topological quotient
+    graph regardless of which operation is done first.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the commutativity of deletion and contraction? in a graph, deleting
+    edge $e$ and contracting edge $f$ produces the same topological quotient graph regardless of which
+    operation is done first.
+- id: arxiv-org-pdf-1409-3503#048
+  text: Why does duality commute with direct sums, $(M_1 \oplus M_2)^* = M_1^* \oplus M_2^*$?
+  hint: The bases of $M_1 \oplus M_2$ are $B_1 \cup B_2$; their complements in $E_1 \amalg E_2$ are $(E_1
+    \setminus B_1) \cup (E_2 \setminus B_2)$, which are precisely the bases of $M_1^* \oplus M_2^*$.
+  locator: null
+  sub_index: null
+  search_text: why does duality commute with direct sums, $(m_1 \oplus m_2)^* = m_1^* \oplus m_2^*$? the
+    bases of $m_1 \oplus m_2$ are $b_1 \cup b_2$; their complements in $e_1 \amalg e_2$ are $(e_1 \setminus
+    b_1) \cup (e_2 \setminus b_2)$, which are precisely the bases of $m_1^* \oplus m_2^*$.
+- id: arxiv-org-pdf-1409-3503#049
+  text: How does one invent the direct sum duality formula?
+  hint: Take the orthogonal direct sum of two vector spaces and observe that the orthogonal complement
+    splits into the direct sum of the individual orthogonal complements.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the direct sum duality formula? take the orthogonal direct sum of two
+    vector spaces and observe that the orthogonal complement splits into the direct sum of the individual
+    orthogonal complements.
+- id: arxiv-org-pdf-1409-3503#050
+  text: Are matroids generalizations of matrices?
+  hint: Yes; every matrix over a field defines a column matroid where linear independence of columns matches
+    matroid independence, but most matroids do not come from any matrix over any field.
+  locator: null
+  sub_index: null
+  search_text: are matroids generalizations of matrices? yes; every matrix over a field defines a column
+    matroid where linear independence of columns matches matroid independence, but most matroids do not
+    come from any matrix over any field.
+- id: arxiv-org-pdf-1409-3503#051
+  text: How does one invent the perspective of matroids as generalized matrices?
+  hint: Take a matrix, keep only the record of which submatrices have non-zero determinants, and throw
+    away the actual numerical entries.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the perspective of matroids as generalized matrices? take a matrix,
+    keep only the record of which submatrices have non-zero determinants, and throw away the actual numerical
+    entries.
+- id: arxiv-org-pdf-1409-3503#052
+  text: Why must the join $F_1 \vee F_2$ in the lattice of flats consider the closure of the union $\mathrm{cl}(F_1
+    \cup F_2)$?
+  hint: Because the union of two linear subspaces or flats is not a linear subspace; one must take their
+    linear span (closure) to obtain the smallest flat containing both.
+  locator: null
+  sub_index: null
+  search_text: why must the join $f_1 \vee f_2$ in the lattice of flats consider the closure of the union
+    $\mathrm{cl}(f_1 \cup f_2)$? because the union of two linear subspaces or flats is not a linear subspace;
+    one must take their linear span (closure) to obtain the smallest flat containing both.
+- id: arxiv-org-pdf-1409-3503#053
+  text: How does one invent the join operation on flats?
+  hint: Mimic the span of two vector subspaces $U \vee V = \mathrm{span}(U \cup V) = U + V$.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the join operation on flats? mimic the span of two vector subspaces
+    $u \vee v = \mathrm{span}(u \cup v) = u + v$.
+- id: arxiv-org-pdf-1409-3503#054
+  text: What is the fundamental recursive property of the Möbius function?
+  hint: $\sum_{x \le z \le y} \mu(z, y) = 0$ for all $x < y$, with $\mu(x, x) = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the fundamental recursive property of the möbius function? $\sum_{x \le z \le y}
+    \mu(z, y) = 0$ for all $x < y$, with $\mu(x, x) = 1$.
+- id: arxiv-org-pdf-1409-3503#055
+  text: How does one invent the recursive definition of the Möbius function?
+  hint: Demand that the convolution of the Möbius function with the constant zeta function $\zeta(x, y)
+    = 1$ yields the identity matrix $\delta(x, y)$ in the incidence algebra.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the recursive definition of the möbius function? demand that the convolution
+    of the möbius function with the constant zeta function $\zeta(x, y) = 1$ yields the identity matrix
+    $\delta(x, y)$ in the incidence algebra.
+- id: arxiv-org-pdf-1409-3503#056
+  text: What is a spanning set of a matroid and why do we care?
+  hint: A subset $S \subseteq E$ such that $\mathrm{cl}(S) = E$ (or $r(S) = r(M)$); they represent generating
+    sets that contain at least one basis.
+  locator: null
+  sub_index: null
+  search_text: what is a spanning set of a matroid and why do we care? a subset $s \subseteq e$ such that
+    $\mathrm{cl}(s) = e$ (or $r(s) = r(m)$); they represent generating sets that contain at least one
+    basis.
+- id: arxiv-org-pdf-1409-3503#057
+  text: How does one invent the notion of a spanning set?
+  hint: Generalize spanning sets of vectors in linear algebra to arbitrary subsets containing a maximal
+    independent set.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the notion of a spanning set? generalize spanning sets of vectors in
+    linear algebra to arbitrary subsets containing a maximal independent set.
+- id: arxiv-org-pdf-1409-3503#058
+  text: What does the evaluation of the Tutte polynomial $T_M(x, y)$ generalize?
+  hint: It unifies the number of bases $T(1, 1)$, independent sets $T(2, 1)$, spanning sets $T(1, 2)$,
+    graph colorings $T(1-t, 0)$, network reliability, and the partition function of the Potts model in
+    physics.
+  locator: null
+  sub_index: null
+  search_text: what does the evaluation of the tutte polynomial $t_m(x, y)$ generalize? it unifies the
+    number of bases $t(1, 1)$, independent sets $t(2, 1)$, spanning sets $t(1, 2)$, graph colorings $t(1-t,
+    0)$, network reliability, and the partition function of the potts model in physics.
+- id: arxiv-org-pdf-1409-3503#059
+  text: How does one invent the multivariable evaluations of the Tutte polynomial?
+  hint: Write down a universal deletion-contraction polynomial $T(M) = a T(M \setminus e) + b T(M / e)$
+    and discover that different choices of $(x, y)$ simultaneously specialize to distinct classical invariants.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the multivariable evaluations of the tutte polynomial? write down a
+    universal deletion-contraction polynomial $t(m) = a t(m \setminus e) + b t(m / e)$ and discover that
+    different choices of $(x, y)$ simultaneously specialize to distinct classical invariants.
+- id: arxiv-org-pdf-1409-3503#060
+  text: How does one build the Chow ring of a matroid from its geometric lattice?
+  hint: Take the free polynomial ring on generators $x_F$ for non-empty proper flats $F$, quotient out
+    by linear relations $\sum_{i \in F} x_F = \sum_{j \in F} x_F$ ensuring well-defined degrees, and quotient
+    out by incomparable quadratic products $x_{F_1} x_{F_2} = 0$.
+  locator: null
+  sub_index: null
+  search_text: how does one build the chow ring of a matroid from its geometric lattice? take the free
+    polynomial ring on generators $x_f$ for non-empty proper flats $f$, quotient out by linear relations
+    $\sum_{i \in f} x_f = \sum_{j \in f} x_f$ ensuring well-defined degrees, and quotient out by incomparable
+    quadratic products $x_{f_1} x_{f_2} = 0$.
+- id: arxiv-org-pdf-1409-3503#061
+  text: How does one invent the construction of the Chow ring of a matroid?
+  hint: Study the intersection ring of the boundary divisors of the toric variety $X_{\Sigma_M}$ and isolate
+    the purely combinatorial equations satisfied by the divisor classes.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the construction of the chow ring of a matroid? study the intersection
+    ring of the boundary divisors of the toric variety $x_{\sigma_m}$ and isolate the purely combinatorial
+    equations satisfied by the divisor classes.
+- id: arxiv-org-pdf-1409-3503#062
+  text: What are all the dualities associated with a matroid?
+  hint: Matroid orthogonal duality $M \leftrightarrow M^*$, Poincaré duality on the Chow ring $A^k(M)
+    \cong A^{r-1-k}(M)^\vee$, planar graph duality $G \leftrightarrow G^*$, and Serre duality on the wonderful
+    compactification.
+  locator: null
+  sub_index: null
+  search_text: what are all the dualities associated with a matroid? matroid orthogonal duality $m \leftrightarrow
+    m^*$, poincaré duality on the chow ring $a^k(m) \cong a^{r-1-k}(m)^\vee$, planar graph duality $g
+    \leftrightarrow g^*$, and serre duality on the wonderful compactification.
+- id: arxiv-org-pdf-1409-3503#063
+  text: How does one invent the web of dualities in matroid theory?
+  hint: Connect the orthogonal complement of vector spaces, the complementation of bases, and the top-degree
+    non-degenerate cup product pairing of differential forms.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the web of dualities in matroid theory? connect the orthogonal complement
+    of vector spaces, the complementation of bases, and the top-degree non-degenerate cup product pairing
+    of differential forms.
+- id: arxiv-org-pdf-1409-3503#064
+  text: What is the Whitney Numbers Theorem for matroids?
+  hint: 'The Whitney numbers of the second kind $W_k = |\{F \in \mathcal{L}(M) : r(F) = k\}|$ and of the
+    first kind $w_k = \sum_{r(F)=k} |\mu(\emptyset, F)|$ are non-negative and satisfy the top-heavy inequality
+    $W_k \le W_{r-k}$ for $k \le r/2$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the whitney numbers theorem for matroids? the whitney numbers of the second kind
+    $w_k = |\{f \in \mathcal{l}(m) : r(f) = k\}|$ and of the first kind $w_k = \sum_{r(f)=k} |\mu(\emptyset,
+    f)|$ are non-negative and satisfy the top-heavy inequality $w_k \le w_{r-k}$ for $k \le r/2$.'
+- id: arxiv-org-pdf-1409-3503#065
+  text: How does one invent the study of Whitney numbers?
+  hint: Count the number of $k$-dimensional flats in a geometry and analyze the coefficients of the characteristic
+    polynomial $\chi_M(t) = \sum_{k=0}^r (-1)^k w_k t^{r-k}$.
+  locator: null
+  sub_index: null
+  search_text: how does one invent the study of whitney numbers? count the number of $k$-dimensional flats
+    in a geometry and analyze the coefficients of the characteristic polynomial $\chi_m(t) = \sum_{k=0}^r
+    (-1)^k w_k t^{r-k}$.
+- id: arxiv-org-pdf-1409-3503#066
+  text: What is a matroid defined via its ground set and independent sets?
+  hint: 'A pair $M = (E, \mathcal{I})$ where $E$ is a finite set and $\mathcal{I} \subseteq \mathcal{P}(E)$
+    is a non-empty collection of subsets (called independent sets) satisfying: (1) if $I \in \mathcal{I}$
+    and $J \subseteq I$, then $J \in \mathcal{I}$; (2) the Independent Set Exchange Axiom: if $I_1, I_2
+    \in \mathcal{I}$ with $|I_1| < |I_2|$, there exists $e \in I_2 \setminus I_1$ such that $I_1 \cup
+    \{e\} \in \mathcal{I}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a matroid defined via its ground set and independent sets? a pair $m = (e, \mathcal{i})$
+    where $e$ is a finite set and $\mathcal{i} \subseteq \mathcal{p}(e)$ is a non-empty collection of
+    subsets (called independent sets) satisfying: (1) if $i \in \mathcal{i}$ and $j \subseteq i$, then
+    $j \in \mathcal{i}$; (2) the independent set exchange axiom: if $i_1, i_2 \in \mathcal{i}$ with $|i_1|
+    < |i_2|$, there exists $e \in i_2 \setminus i_1$ such that $i_1 \cup \{e\} \in \mathcal{i}$.'
+- id: arxiv-org-pdf-1409-3503#067
+  text: What is a basis of a matroid $M$?
+  hint: A maximal independent set under inclusion; by the exchange axiom, all bases have the exact same
+    cardinality, called the rank of the matroid $r(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is a basis of a matroid $m$? a maximal independent set under inclusion; by the exchange
+    axiom, all bases have the exact same cardinality, called the rank of the matroid $r(m)$.
+- id: arxiv-org-pdf-1409-3503#068
+  text: State the Basis Exchange Axiom characterizing matroids cryptomorphically via bases $\mathcal{B}$
+  hint: A non-empty collection of subsets $\mathcal{B} \subseteq \mathcal{P}(E)$ forms the set of bases
+    of a matroid if and only if for all $B_1, B_2 \in \mathcal{B}$ and any $x \in B_1 \setminus B_2$,
+    there exists $y \in B_2 \setminus B_1$ such that $(B_1 \setminus \{x\}) \cup \{y\} \in \mathcal{B}$.
+  locator: null
+  sub_index: null
+  search_text: state the basis exchange axiom characterizing matroids cryptomorphically via bases $\mathcal{b}$
+    a non-empty collection of subsets $\mathcal{b} \subseteq \mathcal{p}(e)$ forms the set of bases of
+    a matroid if and only if for all $b_1, b_2 \in \mathcal{b}$ and any $x \in b_1 \setminus b_2$, there
+    exists $y \in b_2 \setminus b_1$ such that $(b_1 \setminus \{x\}) \cup \{y\} \in \mathcal{b}$.
+- id: arxiv-org-pdf-1409-3503#069
+  text: What is the rank function $r \colon \mathcal{P}(E) \to \mathbb{Z}_{\ge 0}$ of a matroid?
+  hint: 'The function $r(S) := \max \{ |I| : I \subseteq S, I \in \mathcal{I} \}$, measuring the size
+    of the largest independent subset contained in $S$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the rank function $r \colon \mathcal{p}(e) \to \mathbb{z}_{\ge 0}$ of a matroid?
+    the function $r(s) := \max \{ |i| : i \subseteq s, i \in \mathcal{i} \}$, measuring the size of the
+    largest independent subset contained in $s$.'
+- id: arxiv-org-pdf-1409-3503#070
+  text: State the Rank Axioms characterizing a matroid rank function
+  hint: 'A function $r \colon \mathcal{P}(E) \to \mathbb{Z}_{\ge 0}$ is a matroid rank function if and
+    only if for all $A, B \subseteq E$: (1) $0 \le r(A) \le |A|$ (boundedness); (2) if $A \subseteq B$,
+    then $r(A) \le r(B)$ (monotonicity); (3) $r(A \cup B) + r(A \cap B) \le r(A) + r(B)$ (submodularity).'
+  locator: null
+  sub_index: null
+  search_text: 'state the rank axioms characterizing a matroid rank function a function $r \colon \mathcal{p}(e)
+    \to \mathbb{z}_{\ge 0}$ is a matroid rank function if and only if for all $a, b \subseteq e$: (1)
+    $0 \le r(a) \le |a|$ (boundedness); (2) if $a \subseteq b$, then $r(a) \le r(b)$ (monotonicity); (3)
+    $r(a \cup b) + r(a \cap b) \le r(a) + r(b)$ (submodularity).'
+- id: arxiv-org-pdf-1409-3503#071
+  text: What is a circuit of a matroid?
+  hint: A minimally dependent subset $C \subseteq E$ (meaning $C \notin \mathcal{I}$, but for every proper
+    subset $C' \subsetneq C$, $C' \in \mathcal{I}$).
+  locator: null
+  sub_index: null
+  search_text: what is a circuit of a matroid? a minimally dependent subset $c \subseteq e$ (meaning $c
+    \notin \mathcal{i}$, but for every proper subset $c' \subsetneq c$, $c' \in \mathcal{i}$).
+- id: arxiv-org-pdf-1409-3503#072
+  text: State the Circuit Elimination Axiom
+  hint: A collection $\mathcal{C} \subseteq \mathcal{P}(E)$ is the set of circuits of a matroid if and
+    only if no circuit properly contains another and for any distinct $C_1, C_2 \in \mathcal{C}$ with
+    $e \in C_1 \cap C_2$, there exists $C_3 \in \mathcal{C}$ such that $C_3 \subseteq (C_1 \cup C_2) \setminus
+    \{e\}$.
+  locator: null
+  sub_index: null
+  search_text: state the circuit elimination axiom a collection $\mathcal{c} \subseteq \mathcal{p}(e)$
+    is the set of circuits of a matroid if and only if no circuit properly contains another and for any
+    distinct $c_1, c_2 \in \mathcal{c}$ with $e \in c_1 \cap c_2$, there exists $c_3 \in \mathcal{c}$
+    such that $c_3 \subseteq (c_1 \cup c_2) \setminus \{e\}$.
+- id: arxiv-org-pdf-1409-3503#073
+  text: What is a flat (or closed set) of a matroid?
+  hint: A subset $F \subseteq E$ such that for all $e \in E \setminus F$, $r(F \cup \{e\}) = r(F) + 1$,
+    meaning adding any element outside $F$ strictly increases the rank.
+  locator: null
+  sub_index: null
+  search_text: what is a flat (or closed set) of a matroid? a subset $f \subseteq e$ such that for all
+    $e \in e \setminus f$, $r(f \cup \{e\}) = r(f) + 1$, meaning adding any element outside $f$ strictly
+    increases the rank.
+- id: arxiv-org-pdf-1409-3503#074
+  text: What is the closure operator $\mathrm{cl} \colon \mathcal{P}(E) \to \mathcal{P}(E)$ of a matroid?
+  hint: 'The operator $\mathrm{cl}(S) := \{ e \in E : r(S \cup \{e\}) = r(S) \}$, which is the unique
+    smallest flat containing $S$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the closure operator $\mathrm{cl} \colon \mathcal{p}(e) \to \mathcal{p}(e)$ of
+    a matroid? the operator $\mathrm{cl}(s) := \{ e \in e : r(s \cup \{e\}) = r(s) \}$, which is the unique
+    smallest flat containing $s$.'
+- id: arxiv-org-pdf-1409-3503#075
+  text: What is a hyperplane of a matroid?
+  hint: A flat of rank $r(M) - 1$, which is a maximal proper flat of the matroid.
+  locator: null
+  sub_index: null
+  search_text: what is a hyperplane of a matroid? a flat of rank $r(m) - 1$, which is a maximal proper
+    flat of the matroid.
+- id: arxiv-org-pdf-1409-3503#076
+  text: What is a loop and a coloop (isthmus) in a matroid?
+  hint: A loop is an element $e \in E$ with $r(\{e\}) = 0$ (a circuit of size 1); a coloop is an element
+    $e \in E$ that belongs to every basis of $M$ (equivalently, $r(E \setminus \{e\}) = r(E) - 1$).
+  locator: null
+  sub_index: null
+  search_text: what is a loop and a coloop (isthmus) in a matroid? a loop is an element $e \in e$ with
+    $r(\{e\}) = 0$ (a circuit of size 1); a coloop is an element $e \in e$ that belongs to every basis
+    of $m$ (equivalently, $r(e \setminus \{e\}) = r(e) - 1$).
+- id: arxiv-org-pdf-1409-3503#077
+  text: What is a uniform matroid $U_{k, n}$?
+  hint: The matroid on a ground set of $n$ elements where the independent sets are all subsets of size
+    $\le k$, and the bases are all subsets of size exactly $k$.
+  locator: null
+  sub_index: null
+  search_text: what is a uniform matroid $u_{k, n}$? the matroid on a ground set of $n$ elements where
+    the independent sets are all subsets of size $\le k$, and the bases are all subsets of size exactly
+    $k$.
+- id: arxiv-org-pdf-1409-3503#078
+  text: What is a graphic (or cycle) matroid $M(G)$ of a finite graph $G = (V, E)$?
+  hint: The matroid whose ground set is the edge set $E$, whose independent sets are forests (acyclic
+    subgraphs), whose bases are spanning forests, and whose circuits are simple cycles of $G$.
+  locator: null
+  sub_index: null
+  search_text: what is a graphic (or cycle) matroid $m(g)$ of a finite graph $g = (v, e)$? the matroid
+    whose ground set is the edge set $e$, whose independent sets are forests (acyclic subgraphs), whose
+    bases are spanning forests, and whose circuits are simple cycles of $g$.
+- id: arxiv-org-pdf-1409-3503#079
+  text: What is a representable (or linear) matroid over a field $\mathbf{k}$?
+  hint: A matroid $M$ on $E = \{1, \dots, n\}$ that can be realized by an $r \times n$ matrix $A$ over
+    $\mathbf{k}$ (or a collection of vectors $(v_1, \dots, v_n) \subset \mathbf{k}^r$), where a subset
+    $I \subseteq E$ is independent if and only if the column vectors $\{v_i\}_{i \in I}$ are linearly
+    independent in $\mathbf{k}^r$.
+  locator: null
+  sub_index: null
+  search_text: what is a representable (or linear) matroid over a field $\mathbf{k}$? a matroid $m$ on
+    $e = \{1, \dots, n\}$ that can be realized by an $r \times n$ matrix $a$ over $\mathbf{k}$ (or a collection
+    of vectors $(v_1, \dots, v_n) \subset \mathbf{k}^r$), where a subset $i \subseteq e$ is independent
+    if and only if the column vectors $\{v_i\}_{i \in i}$ are linearly independent in $\mathbf{k}^r$.
+- id: arxiv-org-pdf-1409-3503#080
+  text: What is the Fano matroid and over which fields is it representable?
+  hint: The rank-3 matroid on 7 elements corresponding to the Fano plane $\mathbb{P}^2(\mathbb{F}_2)$;
+    it is representable over a field $\mathbf{k}$ if and only if $\mathrm{char}(\mathbf{k}) = 2$.
+  locator: null
+  sub_index: null
+  search_text: what is the fano matroid and over which fields is it representable? the rank-3 matroid
+    on 7 elements corresponding to the fano plane $\mathbb{p}^2(\mathbb{f}_2)$; it is representable over
+    a field $\mathbf{k}$ if and only if $\mathrm{char}(\mathbf{k}) = 2$.
+- id: arxiv-org-pdf-1409-3503#081
+  text: What is the non-Fano matroid and over which fields is it representable?
+  hint: The matroid obtained from the Fano plane by relaxing its unique non-degenerate line into a non-collinear
+    triple; it is representable over $\mathbf{k}$ if and only if $\mathrm{char}(\mathbf{k}) \neq 2$.
+  locator: null
+  sub_index: null
+  search_text: what is the non-fano matroid and over which fields is it representable? the matroid obtained
+    from the fano plane by relaxing its unique non-degenerate line into a non-collinear triple; it is
+    representable over $\mathbf{k}$ if and only if $\mathrm{char}(\mathbf{k}) \neq 2$.
+- id: arxiv-org-pdf-1409-3503#082
+  text: What is the dual matroid $M^*$?
+  hint: 'The matroid on the same ground set $E$ whose bases are the complements of the bases of $M$: $\mathcal{B}(M^*)
+    = \{ E \setminus B : B \in \mathcal{B}(M) \}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the dual matroid $m^*$? the matroid on the same ground set $e$ whose bases are
+    the complements of the bases of $m$: $\mathcal{b}(m^*) = \{ e \setminus b : b \in \mathcal{b}(m) \}$.'
+- id: arxiv-org-pdf-1409-3503#083
+  text: How is the rank function $r^*$ of the dual matroid $M^*$ computed from $r$?
+  hint: For any $S \subseteq E$, $r^*(S) = |S| - r(M) + r(E \setminus S)$.
+  locator: null
+  sub_index: null
+  search_text: how is the rank function $r^*$ of the dual matroid $m^*$ computed from $r$? for any $s
+    \subseteq e$, $r^*(s) = |s| - r(m) + r(e \setminus s)$.
+- id: arxiv-org-pdf-1409-3503#084
+  text: What is the deletion $M \setminus e$ of an element $e \in E$?
+  hint: 'The matroid on $E \setminus \{e\}$ whose independent sets are $\{ I \in \mathcal{I}(M) : e \notin
+    I \}$, with rank function $r_{M \setminus e}(S) = r_M(S)$ for all $S \subseteq E \setminus \{e\}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the deletion $m \setminus e$ of an element $e \in e$? the matroid on $e \setminus
+    \{e\}$ whose independent sets are $\{ i \in \mathcal{i}(m) : e \notin i \}$, with rank function $r_{m
+    \setminus e}(s) = r_m(s)$ for all $s \subseteq e \setminus \{e\}$.'
+- id: arxiv-org-pdf-1409-3503#085
+  text: What is the contraction $M / e$ of an element $e \in E$?
+  hint: The matroid on $E \setminus \{e\}$ with rank function $r_{M / e}(S) = r_M(S \cup \{e\}) - r_M(\{e\})$;
+    by duality, $M / e = (M^* \setminus e)^*$.
+  locator: null
+  sub_index: null
+  search_text: what is the contraction $m / e$ of an element $e \in e$? the matroid on $e \setminus \{e\}$
+    with rank function $r_{m / e}(s) = r_m(s \cup \{e\}) - r_m(\{e\})$; by duality, $m / e = (m^* \setminus
+    e)^*$.
+- id: arxiv-org-pdf-1409-3503#086
+  text: What is a matroid minor?
+  hint: Any matroid obtained from $M$ by a sequence of deletions and contractions; the operations of deletion
+    and contraction commute.
+  locator: null
+  sub_index: null
+  search_text: what is a matroid minor? any matroid obtained from $m$ by a sequence of deletions and contractions;
+    the operations of deletion and contraction commute.
+- id: arxiv-org-pdf-1409-3503#087
+  text: What is the direct sum $M_1 \oplus M_2$ of two matroids?
+  hint: 'The matroid on the disjoint union $E_1 \amalg E_2$ whose bases are $\{ B_1 \cup B_2 : B_1 \in
+    \mathcal{B}(M_1), B_2 \in \mathcal{B}(M_2) \}$, with rank function $r_{M_1 \oplus M_2}(S_1 \cup S_2)
+    = r_{M_1}(S_1) + r_{M_2}(S_2)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the direct sum $m_1 \oplus m_2$ of two matroids? the matroid on the disjoint union
+    $e_1 \amalg e_2$ whose bases are $\{ b_1 \cup b_2 : b_1 \in \mathcal{b}(m_1), b_2 \in \mathcal{b}(m_2)
+    \}$, with rank function $r_{m_1 \oplus m_2}(s_1 \cup s_2) = r_{m_1}(s_1) + r_{m_2}(s_2)$.'
+- id: arxiv-org-pdf-1409-3503#088
+  text: When is a matroid connected?
+  hint: A matroid $M$ is connected if it cannot be written as a direct sum of two non-empty matroids $M_1
+    \oplus M_2$; equivalently, for any two distinct elements $e, f \in E$, there exists a circuit containing
+    both $e$ and $f$.
+  locator: null
+  sub_index: null
+  search_text: when is a matroid connected? a matroid $m$ is connected if it cannot be written as a direct
+    sum of two non-empty matroids $m_1 \oplus m_2$; equivalently, for any two distinct elements $e, f
+    \in e$, there exists a circuit containing both $e$ and $f$.
+- id: arxiv-org-pdf-1409-3503#089
+  text: What is the lattice of flats $\mathcal{L}(M)$ of a matroid?
+  hint: The set of all flats of $M$ ordered by inclusion $\subseteq$; it forms a geometric lattice (a
+    finite, atomic, and upper-semimodular lattice).
+  locator: null
+  sub_index: null
+  search_text: what is the lattice of flats $\mathcal{l}(m)$ of a matroid? the set of all flats of $m$
+    ordered by inclusion $\subseteq$; it forms a geometric lattice (a finite, atomic, and upper-semimodular
+    lattice).
+- id: arxiv-org-pdf-1409-3503#090
+  text: What is the Möbius function $\mu$ on the lattice of flats $\mathcal{L}(M)$?
+  hint: The integer-valued function defined recursively on pairs of flats $F_1 \le F_2$ by $\mu(F, F)
+    = 1$ and $\sum_{F_1 \le F \le F_2} \mu(F_1, F) = 0$ for $F_1 < F_2$.
+  locator: null
+  sub_index: null
+  search_text: what is the möbius function $\mu$ on the lattice of flats $\mathcal{l}(m)$? the integer-valued
+    function defined recursively on pairs of flats $f_1 \le f_2$ by $\mu(f, f) = 1$ and $\sum_{f_1 \le
+    f \le f_2} \mu(f_1, f) = 0$ for $f_1 < f_2$.
+- id: arxiv-org-pdf-1409-3503#091
+  text: What is the characteristic polynomial $\chi_M(t)$ of a matroid?
+  hint: 'The polynomial $\chi_M(t) := \sum_{F \in \mathcal{L}(M)} \mu(\emptyset, F) t^{r(M) - r(F)}$,
+    generalizing the chromatic polynomial of a graph: $P_G(t) = t^{c(G)} \chi_{M(G)}(t)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the characteristic polynomial $\chi_m(t)$ of a matroid? the polynomial $\chi_m(t)
+    := \sum_{f \in \mathcal{l}(m)} \mu(\emptyset, f) t^{r(m) - r(f)}$, generalizing the chromatic polynomial
+    of a graph: $p_g(t) = t^{c(g)} \chi_{m(g)}(t)$.'
+- id: arxiv-org-pdf-1409-3503#092
+  text: What is the Tutte polynomial $T_M(x, y)$ of a matroid?
+  hint: The two-variable polynomial $T_M(x, y) := \sum_{S \subseteq E} (x - 1)^{r(E) - r(S)} (y - 1)^{|S|
+    - r(S)}$, satisfying the deletion-contraction relation $T_M(x, y) = T_{M \setminus e}(x, y) + T_{M
+    / e}(x, y)$ for any element $e$ that is neither a loop nor a coloop.
+  locator: null
+  sub_index: null
+  search_text: what is the tutte polynomial $t_m(x, y)$ of a matroid? the two-variable polynomial $t_m(x,
+    y) := \sum_{s \subseteq e} (x - 1)^{r(e) - r(s)} (y - 1)^{|s| - r(s)}$, satisfying the deletion-contraction
+    relation $t_m(x, y) = t_{m \setminus e}(x, y) + t_{m / e}(x, y)$ for any element $e$ that is neither
+    a loop nor a coloop.
+- id: arxiv-org-pdf-1409-3503#093
+  text: How is the characteristic polynomial recovered from the Tutte polynomial?
+  hint: $\chi_M(t) = (-1)^{r(M)} T_M(1 - t, 0)$.
+  locator: null
+  sub_index: null
+  search_text: how is the characteristic polynomial recovered from the tutte polynomial? $\chi_m(t) =
+    (-1)^{r(m)} t_m(1 - t, 0)$.
+- id: arxiv-org-pdf-1409-3503#094
+  text: What is the matroid polytope $P_M \subset \mathbb{R}^E$?
+  hint: 'The convex hull of the 0/1-indicator vectors of the bases of $M$: $P_M := \mathrm{conv}\left\{
+    e_B = \sum_{i \in B} e_i \in \mathbb{R}^E : B \in \mathcal{B}(M) \right\}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the matroid polytope $p_m \subset \mathbb{r}^e$? the convex hull of the 0/1-indicator
+    vectors of the bases of $m$: $p_m := \mathrm{conv}\left\{ e_b = \sum_{i \in b} e_i \in \mathbb{r}^e
+    : b \in \mathcal{b}(m) \right\}$.'
+- id: arxiv-org-pdf-1409-3503#095
+  text: State the Gelfand-Goresky-MacPherson-Serganova (GGMS) Theorem characterizing matroid polytopes
+  hint: A 0/1-polytope $P \subset [0, 1]^E$ whose vertices have constant coordinate sum $r$ is a matroid
+    polytope if and only if every edge of $P$ is parallel to $e_i - e_j$ for some $i, j \in E$.
+  locator: null
+  sub_index: null
+  search_text: state the gelfand-goresky-macpherson-serganova (ggms) theorem characterizing matroid polytopes
+    a 0/1-polytope $p \subset [0, 1]^e$ whose vertices have constant coordinate sum $r$ is a matroid polytope
+    if and only if every edge of $p$ is parallel to $e_i - e_j$ for some $i, j \in e$.
+- id: arxiv-org-pdf-1409-3503#096
+  text: How is a matroid polytope related to the algebraic torus action on the Grassmannian $\mathrm{Gr}(r,
+    n)$?
+  hint: A point $V \in \mathrm{Gr}(r, n)$ defines a torus orbit $T \cdot V \subset \mathrm{Gr}(r, n)$
+    under $T = (\mathbf{k}^*)^n / \mathbf{k}^*$; the momentum map image / character support of the closure
+    $\overline{T \cdot V}$ is precisely the matroid polytope $P_{M(V)}$.
+  locator: null
+  sub_index: null
+  search_text: how is a matroid polytope related to the algebraic torus action on the grassmannian $\mathrm{gr}(r,
+    n)$? a point $v \in \mathrm{gr}(r, n)$ defines a torus orbit $t \cdot v \subset \mathrm{gr}(r, n)$
+    under $t = (\mathbf{k}^*)^n / \mathbf{k}^*$; the momentum map image / character support of the closure
+    $\overline{t \cdot v}$ is precisely the matroid polytope $p_{m(v)}$.
+- id: arxiv-org-pdf-1409-3503#097
+  text: What is a thin Schubert cell (or matroid stratum) $S_M \subset \mathrm{Gr}(r, n)$?
+  hint: 'The locally closed subvariety of the Grassmannian $S_M := \{ V \in \mathrm{Gr}(r, n) : \Delta_I(V)
+    \neq 0 \iff I \in \mathcal{B}(M) \}$, where $\Delta_I$ are the Plücker coordinates.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a thin schubert cell (or matroid stratum) $s_m \subset \mathrm{gr}(r, n)$? the
+    locally closed subvariety of the grassmannian $s_m := \{ v \in \mathrm{gr}(r, n) : \delta_i(v) \neq
+    0 \iff i \in \mathcal{b}(m) \}$, where $\delta_i$ are the plücker coordinates.'
+- id: arxiv-org-pdf-1409-3503#098
+  text: State Mnëv's Universality Theorem for matroid realization spaces
+  hint: For any affine algebraic variety $X$ defined over $\mathbb{Z}$, there exists a matroid $M$ whose
+    realization space $\mathcal{R}(M) = S_M / T$ is stably birational / homotopy equivalent to $X$, showing
+    that matroid strata can be arbitrarily singular and non-reduced.
+  locator: null
+  sub_index: null
+  search_text: state mnëv's universality theorem for matroid realization spaces for any affine algebraic
+    variety $x$ defined over $\mathbb{z}$, there exists a matroid $m$ whose realization space $\mathcal{r}(m)
+    = s_m / t$ is stably birational / homotopy equivalent to $x$, showing that matroid strata can be arbitrarily
+    singular and non-reduced.
+- id: arxiv-org-pdf-1409-3503#099
+  text: What is a valuative invariant of matroids in the sense of Derksen-Fink?
+  hint: 'A function $f$ from matroids on $E$ to an abelian group that behaves additively under polyhedral
+    subdivisions of matroid polytopes: $f(M) = \sum_i f(M_i) - \sum_{i < j} f(M_i \cap M_j) + \dots$ whenever
+    $P_M = \bigcup P_{M_i}$ is a matroid subdivision.'
+  locator: null
+  sub_index: null
+  search_text: 'what is a valuative invariant of matroids in the sense of derksen-fink? a function $f$
+    from matroids on $e$ to an abelian group that behaves additively under polyhedral subdivisions of
+    matroid polytopes: $f(m) = \sum_i f(m_i) - \sum_{i < j} f(m_i \cap m_j) + \dots$ whenever $p_m = \bigcup
+    p_{m_i}$ is a matroid subdivision.'
+- id: arxiv-org-pdf-1409-3503#100
+  text: What is the permutohedral toric variety $X_{A_{n-1}}$?
+  hint: The smooth projective toric variety associated to the fan $\Sigma_{n-1}$ of the permutohedron,
+    whose rays are generated by $e_S = \sum_{i \in S} e_i$ for all non-empty proper subsets $S \subsetneq
+    E$.
+  locator: null
+  sub_index: null
+  search_text: what is the permutohedral toric variety $x_{a_{n-1}}$? the smooth projective toric variety
+    associated to the fan $\sigma_{n-1}$ of the permutohedron, whose rays are generated by $e_s = \sum_{i
+    \in s} e_i$ for all non-empty proper subsets $s \subsetneq e$.
+- id: arxiv-org-pdf-1409-3503#101
+  text: What is the Bergman fan $\widetilde{\Sigma}_M$ of a matroid?
+  hint: The subfan of the permutohedral fan $\Sigma_{n-1}$ supported on the tropical linear space $\mathrm{Trop}(M)
+    \subset \mathbb{R}^E / \mathbb{R}(1, \dots, 1)$, whose maximal cones correspond to flags of non-empty
+    proper flats $\emptyset \subsetneq F_1 \subsetneq F_2 \subsetneq \dots \subsetneq F_{r-1} \subsetneq
+    E$.
+  locator: null
+  sub_index: null
+  search_text: what is the bergman fan $\widetilde{\sigma}_m$ of a matroid? the subfan of the permutohedral
+    fan $\sigma_{n-1}$ supported on the tropical linear space $\mathrm{trop}(m) \subset \mathbb{r}^e /
+    \mathbb{r}(1, \dots, 1)$, whose maximal cones correspond to flags of non-empty proper flats $\emptyset
+    \subsetneq f_1 \subsetneq f_2 \subsetneq \dots \subsetneq f_{r-1} \subsetneq e$.
+- id: arxiv-org-pdf-1409-3503#102
+  text: Why does the Bergman fan $\widetilde{\Sigma}_M$ define a tropical cycle / Minkowski weight?
+  hint: Because $\widetilde{\Sigma}_M$ is pure of dimension $r(M) - 1$ and satisfies the tropical balancing
+    condition of weight 1 around every codimension-1 cone, making it represent a cycle class $[\widetilde{\Sigma}_M]
+    \in A^{n - r}(X_{A_{n-1}})$.
+  locator: null
+  sub_index: null
+  search_text: why does the bergman fan $\widetilde{\sigma}_m$ define a tropical cycle / minkowski weight?
+    because $\widetilde{\sigma}_m$ is pure of dimension $r(m) - 1$ and satisfies the tropical balancing
+    condition of weight 1 around every codimension-1 cone, making it represent a cycle class $[\widetilde{\sigma}_m]
+    \in a^{n - r}(x_{a_{n-1}})$.
+- id: arxiv-org-pdf-1409-3503#103
+  text: What is the Chow ring $A^*(M)$ of a matroid?
+  hint: The graded-commutative ring generated by variables $x_F$ for each non-empty proper flat $F \subsetneq
+    E$, modulo linear relations $\sum_{i \in F} x_F = \sum_{j \in F} x_F$ and quadratic relations $x_{F_1}
+    x_{F_2} = 0$ for incomparable flats $F_1 \not\subseteq F_2$ and $F_2 \not\subseteq F_1$.
+  locator: null
+  sub_index: null
+  search_text: what is the chow ring $a^*(m)$ of a matroid? the graded-commutative ring generated by variables
+    $x_f$ for each non-empty proper flat $f \subsetneq e$, modulo linear relations $\sum_{i \in f} x_f
+    = \sum_{j \in f} x_f$ and quadratic relations $x_{f_1} x_{f_2} = 0$ for incomparable flats $f_1 \not\subseteq
+    f_2$ and $f_2 \not\subseteq f_1$.
+- id: arxiv-org-pdf-1409-3503#104
+  text: State the Poincaré Duality, Hard Lefschetz Theorem, and Hodge-Riemann Relations for the Chow ring
+    $A^*(M)$ (Adiprasito-Huh-Katz)
+  hint: '(1) Poincaré Duality: $A^{r-1}(M) \cong \mathbb{Z}$ via degree map $\deg$, and the pairing $A^k(M)
+    \times A^{r-1-k}(M) \to \mathbb{Z}$ is non-degenerate; (2) Hard Lefschetz: for an ample/strictly submodular
+    class $\ell \in A^1(M)$, $\cdot \ell^{r-1-2k} \colon A^k(M) \xrightarrow{\sim} A^{r-1-k}(M)$ is an
+    isomorphism; (3) Hodge-Riemann: the quadratic form $(x, y) \mapsto \deg(x \cdot \ell^{r-1-2k} \cdot
+    y)$ is positive definite on the primitive subspace $\ker(\cdot \ell^{r-2k+1}) \subset A^k(M)$.'
+  locator: null
+  sub_index: null
+  search_text: 'state the poincaré duality, hard lefschetz theorem, and hodge-riemann relations for the
+    chow ring $a^*(m)$ (adiprasito-huh-katz) (1) poincaré duality: $a^{r-1}(m) \cong \mathbb{z}$ via degree
+    map $\deg$, and the pairing $a^k(m) \times a^{r-1-k}(m) \to \mathbb{z}$ is non-degenerate; (2) hard
+    lefschetz: for an ample/strictly submodular class $\ell \in a^1(m)$, $\cdot \ell^{r-1-2k} \colon a^k(m)
+    \xrightarrow{\sim} a^{r-1-k}(m)$ is an isomorphism; (3) hodge-riemann: the quadratic form $(x, y)
+    \mapsto \deg(x \cdot \ell^{r-1-2k} \cdot y)$ is positive definite on the primitive subspace $\ker(\cdot
+    \ell^{r-2k+1}) \subset a^k(m)$.'
+- id: arxiv-org-pdf-1409-3503#105
+  text: How does the Hodge-Riemann theorem on $A^*(M)$ prove the log-concavity of the characteristic polynomial
+    (the Rota-Heron-Welsh Conjecture)?
+  hint: 'The absolute coefficients $\mu_k = |\mu_k(M)|$ of $\chi_M(t) = \sum_{k=0}^r (-1)^k \mu_k t^{r-k}$
+    are represented by intersection numbers of ample divisor classes $\alpha, \beta \in A^1(M)$: $\mu_k
+    = \deg(\alpha^{r-1-k} \cdot \beta^k)$; the Hodge-Riemann relations at degree 1 immediately imply the
+    quadratic inequality $\mu_k^2 \ge \mu_{k-1} \mu_{k+1}$ for all $1 \le k \le r-1$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the hodge-riemann theorem on $a^*(m)$ prove the log-concavity of the characteristic
+    polynomial (the rota-heron-welsh conjecture)? the absolute coefficients $\mu_k = |\mu_k(m)|$ of $\chi_m(t)
+    = \sum_{k=0}^r (-1)^k \mu_k t^{r-k}$ are represented by intersection numbers of ample divisor classes
+    $\alpha, \beta \in a^1(m)$: $\mu_k = \deg(\alpha^{r-1-k} \cdot \beta^k)$; the hodge-riemann relations
+    at degree 1 immediately imply the quadratic inequality $\mu_k^2 \ge \mu_{k-1} \mu_{k+1}$ for all $1
+    \le k \le r-1$.'
+- id: arxiv-org-pdf-1409-3503#106
+  text: What is a loop in a matroid?
+  hint: An element $e \in E$ such that $\{e\}$ is a dependent set, i.e., $r(\{e\}) = 0$; in a graphic
+    matroid, it corresponds to a self-loop edge.
+  locator: null
+  sub_index: null
+  search_text: what is a loop in a matroid? an element $e \in e$ such that $\{e\}$ is a dependent set,
+    i.e., $r(\{e\}) = 0$; in a graphic matroid, it corresponds to a self-loop edge.
+- id: arxiv-org-pdf-1409-3503#107
+  text: What is a parallel pair of elements in a matroid?
+  hint: Two distinct non-loop elements $e, f \in E$ such that $r(\{e, f\}) = 1$; in a graphic matroid,
+    they correspond to multiple edges between the same pair of vertices.
+  locator: null
+  sub_index: null
+  search_text: what is a parallel pair of elements in a matroid? two distinct non-loop elements $e, f
+    \in e$ such that $r(\{e, f\}) = 1$; in a graphic matroid, they correspond to multiple edges between
+    the same pair of vertices.
+- id: arxiv-org-pdf-1409-3503#108
+  text: What is a simple matroid?
+  hint: A matroid containing no loops and no parallel pairs; equivalently, the empty set and all singletons
+    are flats, and $r(S) = |S|$ for all subsets $S$ with $|S| \le 2$.
+  locator: null
+  sub_index: null
+  search_text: what is a simple matroid? a matroid containing no loops and no parallel pairs; equivalently,
+    the empty set and all singletons are flats, and $r(s) = |s|$ for all subsets $s$ with $|s| \le 2$.
+- id: arxiv-org-pdf-1409-3503#109
+  text: What is the simplification $\mathrm{si}(M)$ of a matroid $M$?
+  hint: The simple matroid obtained from $M$ by deleting all loops and deleting all but one element from
+    each parallel class; $\mathrm{si}(M)$ has the exact same lattice of flats $\mathcal{L}(M)$ as $M$.
+  locator: null
+  sub_index: null
+  search_text: what is the simplification $\mathrm{si}(m)$ of a matroid $m$? the simple matroid obtained
+    from $m$ by deleting all loops and deleting all but one element from each parallel class; $\mathrm{si}(m)$
+    has the exact same lattice of flats $\mathcal{l}(m)$ as $m$.
+- id: arxiv-org-pdf-1409-3503#110
+  text: What is a coloop (or bridge / isthmus) in a matroid?
+  hint: An element $e \in E$ that belongs to every basis of $M$, equivalently $r(E \setminus \{e\}) =
+    r(E) - 1$; in a graphic matroid, it is a bridge whose removal increases the number of connected components.
+  locator: null
+  sub_index: null
+  search_text: what is a coloop (or bridge / isthmus) in a matroid? an element $e \in e$ that belongs
+    to every basis of $m$, equivalently $r(e \setminus \{e\}) = r(e) - 1$; in a graphic matroid, it is
+    a bridge whose removal increases the number of connected components.
+- id: arxiv-org-pdf-1409-3503#111
+  text: What is the rank of a subset $S \subseteq E$ in the uniform matroid $U_{k, n}$?
+  hint: $r(S) = \min(|S|, k)$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of a subset $s \subseteq e$ in the uniform matroid $u_{k, n}$? $r(s) =
+    \min(|s|, k)$.
+- id: arxiv-org-pdf-1409-3503#112
+  text: What are the circuits of the uniform matroid $U_{k, n}$?
+  hint: All subsets of $E$ of size exactly $k+1$.
+  locator: null
+  sub_index: null
+  search_text: what are the circuits of the uniform matroid $u_{k, n}$? all subsets of $e$ of size exactly
+    $k+1$.
+- id: arxiv-org-pdf-1409-3503#113
+  text: What are the flats of the uniform matroid $U_{k, n}$?
+  hint: All subsets $F \subseteq E$ with $|F| \le k-1$, together with the entire ground set $E$.
+  locator: null
+  sub_index: null
+  search_text: what are the flats of the uniform matroid $u_{k, n}$? all subsets $f \subseteq e$ with
+    $|f| \le k-1$, together with the entire ground set $e$.
+- id: arxiv-org-pdf-1409-3503#114
+  text: What is the dual of the uniform matroid $U_{k, n}$?
+  hint: The uniform matroid $U_{n-k, n}$.
+  locator: null
+  sub_index: null
+  search_text: what is the dual of the uniform matroid $u_{k, n}$? the uniform matroid $u_{n-k, n}$.
+- id: arxiv-org-pdf-1409-3503#115
+  text: What is the rank of the empty set in any matroid?
+  hint: $r(\emptyset) = 0$, by the boundedness axiom $0 \le r(\emptyset) \le |\emptyset| = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of the empty set in any matroid? $r(\emptyset) = 0$, by the boundedness
+    axiom $0 \le r(\emptyset) \le |\emptyset| = 0$.
+- id: arxiv-org-pdf-1409-3503#116
+  text: What is the closure of the empty set $\mathrm{cl}(\emptyset)$ in a matroid?
+  hint: 'The set of all loops in $M$: $\mathrm{cl}(\emptyset) = \{ e \in E : r(\{e\}) = 0 \}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the closure of the empty set $\mathrm{cl}(\emptyset)$ in a matroid? the set of
+    all loops in $m$: $\mathrm{cl}(\emptyset) = \{ e \in e : r(\{e\}) = 0 \}$.'
+- id: arxiv-org-pdf-1409-3503#117
+  text: Why is the closure operator idempotent ($\mathrm{cl}(\mathrm{cl}(S)) = \mathrm{cl}(S)$)?
+  hint: Because $\mathrm{cl}(S)$ is a flat, and by definition the closure of any flat $F$ is the closure
+    of the flat itself.
+  locator: null
+  sub_index: null
+  search_text: why is the closure operator idempotent ($\mathrm{cl}(\mathrm{cl}(s)) = \mathrm{cl}(s)$)?
+    because $\mathrm{cl}(s)$ is a flat, and by definition the closure of any flat $f$ is the closure of
+    the flat itself.
+- id: arxiv-org-pdf-1409-3503#118
+  text: What is a hyperplane of a matroid?
+  hint: A flat $H \subsetneq E$ of rank $r(H) = r(M) - 1$, which is a maximal proper flat.
+  locator: null
+  sub_index: null
+  search_text: what is a hyperplane of a matroid? a flat $h \subsetneq e$ of rank $r(h) = r(m) - 1$, which
+    is a maximal proper flat.
+- id: arxiv-org-pdf-1409-3503#119
+  text: What is the relationship between hyperplanes of $M$ and circuits of the dual matroid $M^*$?
+  hint: A subset $H \subseteq E$ is a hyperplane of $M$ if and only if its complement $E \setminus H$
+    is a circuit (cocircuit) of $M^*$.
+  locator: null
+  sub_index: null
+  search_text: what is the relationship between hyperplanes of $m$ and circuits of the dual matroid $m^*$?
+    a subset $h \subseteq e$ is a hyperplane of $m$ if and only if its complement $e \setminus h$ is a
+    circuit (cocircuit) of $m^*$.
+- id: arxiv-org-pdf-1409-3503#120
+  text: What is a dependent set in a matroid?
+  hint: Any subset $S \subseteq E$ that is not independent, meaning $|S| > r(S)$.
+  locator: null
+  sub_index: null
+  search_text: what is a dependent set in a matroid? any subset $s \subseteq e$ that is not independent,
+    meaning $|s| > r(s)$.
+- id: arxiv-org-pdf-1409-3503#121
+  text: What is the deletion $M \setminus e$ when $e$ is a loop?
+  hint: The matroid on $E \setminus \{e\}$ with rank function $r_{M \setminus e}(S) = r_M(S)$ for all
+    $S \subseteq E \setminus \{e\}$, leaving the rank of all sets unchanged.
+  locator: null
+  sub_index: null
+  search_text: what is the deletion $m \setminus e$ when $e$ is a loop? the matroid on $e \setminus \{e\}$
+    with rank function $r_{m \setminus e}(s) = r_m(s)$ for all $s \subseteq e \setminus \{e\}$, leaving
+    the rank of all sets unchanged.
+- id: arxiv-org-pdf-1409-3503#122
+  text: What is the contraction $M / e$ when $e$ is a loop?
+  hint: 'Contraction of a loop $e$ coincides with deletion: $M / e = M \setminus e$, because $r_M(S \cup
+    \{e\}) - r_M(\{e\}) = r_M(S) - 0 = r_M(S)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the contraction $m / e$ when $e$ is a loop? contraction of a loop $e$ coincides
+    with deletion: $m / e = m \setminus e$, because $r_m(s \cup \{e\}) - r_m(\{e\}) = r_m(s) - 0 = r_m(s)$.'
+- id: arxiv-org-pdf-1409-3503#123
+  text: What is the contraction $M / e$ when $e$ is a coloop?
+  hint: 'The matroid on $E \setminus \{e\}$ with total rank $r(M/e) = r(M) - 1$, where independent sets
+    are $\{ I \setminus \{e\} : I \in \mathcal{I}(M), e \in I \}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the contraction $m / e$ when $e$ is a coloop? the matroid on $e \setminus \{e\}$
+    with total rank $r(m/e) = r(m) - 1$, where independent sets are $\{ i \setminus \{e\} : i \in \mathcal{i}(m),
+    e \in i \}$.'
+- id: arxiv-org-pdf-1409-3503#124
+  text: How do deletion and contraction commute on disjoint subsets $A, B \subset E$?
+  hint: $(M \setminus A) / B = (M / B) \setminus A$, meaning the order of minor operations does not matter.
+  locator: null
+  sub_index: null
+  search_text: how do deletion and contraction commute on disjoint subsets $a, b \subset e$? $(m \setminus
+    a) / b = (m / b) \setminus a$, meaning the order of minor operations does not matter.
+- id: arxiv-org-pdf-1409-3503#125
+  text: What is the direct sum $M_1 \oplus M_2$ of two matroids on disjoint ground sets $E_1$ and $E_2$?
+  hint: 'The matroid on $E_1 \amalg E_2$ whose independent sets are $\{ I_1 \cup I_2 : I_1 \in \mathcal{I}(M_1),
+    I_2 \in \mathcal{I}(M_2) \}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the direct sum $m_1 \oplus m_2$ of two matroids on disjoint ground sets $e_1$
+    and $e_2$? the matroid on $e_1 \amalg e_2$ whose independent sets are $\{ i_1 \cup i_2 : i_1 \in \mathcal{i}(m_1),
+    i_2 \in \mathcal{i}(m_2) \}$.'
+- id: arxiv-org-pdf-1409-3503#126
+  text: What is the rank of the direct sum $M_1 \oplus M_2$?
+  hint: $r(M_1 \oplus M_2) = r(M_1) + r(M_2)$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of the direct sum $m_1 \oplus m_2$? $r(m_1 \oplus m_2) = r(m_1) + r(m_2)$.
+- id: arxiv-org-pdf-1409-3503#127
+  text: What is the dual of a direct sum of matroids?
+  hint: $(M_1 \oplus M_2)^* = M_1^* \oplus M_2^*$.
+  locator: null
+  sub_index: null
+  search_text: what is the dual of a direct sum of matroids? $(m_1 \oplus m_2)^* = m_1^* \oplus m_2^*$.
+- id: arxiv-org-pdf-1409-3503#128
+  text: What is a graphic matroid $M(K_3)$ of the triangle graph $K_3$?
+  hint: The graphic matroid on 3 edges $\{e_1, e_2, e_3\}$ where every pair of edges is independent, but
+    the whole set $\{e_1, e_2, e_3\}$ is a circuit; isomorphic to $U_{2, 3}$.
+  locator: null
+  sub_index: null
+  search_text: what is a graphic matroid $m(k_3)$ of the triangle graph $k_3$? the graphic matroid on
+    3 edges $\{e_1, e_2, e_3\}$ where every pair of edges is independent, but the whole set $\{e_1, e_2,
+    e_3\}$ is a circuit; isomorphic to $u_{2, 3}$.
+- id: arxiv-org-pdf-1409-3503#129
+  text: What is the graphic matroid $M(K_4)$ of the complete graph on 4 vertices?
+  hint: A simple matroid of rank $4 - 1 = 3$ on $\binom{4}{2} = 6$ edges, isomorphic to the cycle matroid
+    of $K_4$.
+  locator: null
+  sub_index: null
+  search_text: what is the graphic matroid $m(k_4)$ of the complete graph on 4 vertices? a simple matroid
+    of rank $4 - 1 = 3$ on $\binom{4}{2} = 6$ edges, isomorphic to the cycle matroid of $k_4$.
+- id: arxiv-org-pdf-1409-3503#130
+  text: When is a graphic matroid planar?
+  hint: When the underlying graph $G$ is a planar graph; its matroid dual $M(G)^*$ is the graphic matroid
+    $M(G^*)$ of the planar dual graph $G^*$.
+  locator: null
+  sub_index: null
+  search_text: when is a graphic matroid planar? when the underlying graph $g$ is a planar graph; its
+    matroid dual $m(g)^*$ is the graphic matroid $m(g^*)$ of the planar dual graph $g^*$.
+- id: arxiv-org-pdf-1409-3503#131
+  text: What is a linear representation of a matroid $M$ over a field $\mathbf{k}$?
+  hint: A map $\phi \colon E \to \mathbf{k}^r$ such that a subset $I \subseteq E$ is independent in $M$
+    if and only if the vectors $\{\phi(e)\}_{i \in I}$ are linearly independent in $\mathbf{k}^r$.
+  locator: null
+  sub_index: null
+  search_text: what is a linear representation of a matroid $m$ over a field $\mathbf{k}$? a map $\phi
+    \colon e \to \mathbf{k}^r$ such that a subset $i \subseteq e$ is independent in $m$ if and only if
+    the vectors $\{\phi(e)\}_{i \in i}$ are linearly independent in $\mathbf{k}^r$.
+- id: arxiv-org-pdf-1409-3503#132
+  text: Is every matroid representable over some field?
+  hint: No; the Vámos matroid and the non-Pappus matroid are non-representable over every field.
+  locator: null
+  sub_index: null
+  search_text: is every matroid representable over some field? no; the vámos matroid and the non-pappus
+    matroid are non-representable over every field.
+- id: arxiv-org-pdf-1409-3503#133
+  text: Over which fields is the uniform matroid $U_{2, 4}$ representable?
+  hint: Over any field $\mathbf{k}$ with at least 3 elements ($|\mathbf{k}| \ge 3$), but not over $\mathbb{F}_2$.
+  locator: null
+  sub_index: null
+  search_text: over which fields is the uniform matroid $u_{2, 4}$ representable? over any field $\mathbf{k}$
+    with at least 3 elements ($|\mathbf{k}| \ge 3$), but not over $\mathbb{f}_2$.
+- id: arxiv-org-pdf-1409-3503#134
+  text: What is a binary matroid?
+  hint: A matroid representable over the finite field $\mathbb{F}_2$; Tutte's criterion states that $M$
+    is binary if and only if it has no $U_{2, 4}$ minor.
+  locator: null
+  sub_index: null
+  search_text: what is a binary matroid? a matroid representable over the finite field $\mathbb{f}_2$;
+    tutte's criterion states that $m$ is binary if and only if it has no $u_{2, 4}$ minor.
+- id: arxiv-org-pdf-1409-3503#135
+  text: What is a regular matroid?
+  hint: A matroid representable over every field; equivalently, representable by a totally unimodular
+    matrix over $\mathbb{Z}$, with excluded minors $U_{2, 4}$, Fano $F_7$, and non-Fano $F_7^*$.
+  locator: null
+  sub_index: null
+  search_text: what is a regular matroid? a matroid representable over every field; equivalently, representable
+    by a totally unimodular matrix over $\mathbb{z}$, with excluded minors $u_{2, 4}$, fano $f_7$, and
+    non-fano $f_7^*$.
+- id: arxiv-org-pdf-1409-3503#136
+  text: What is the lattice of flats $\mathcal{L}(M)$ ordered by?
+  hint: Ordered by inclusion $\subseteq$, with minimum element $\hat{0} = \mathrm{cl}(\emptyset)$ and
+    maximum element $\hat{1} = E$.
+  locator: null
+  sub_index: null
+  search_text: what is the lattice of flats $\mathcal{l}(m)$ ordered by? ordered by inclusion $\subseteq$,
+    with minimum element $\hat{0} = \mathrm{cl}(\emptyset)$ and maximum element $\hat{1} = e$.
+- id: arxiv-org-pdf-1409-3503#137
+  text: What is the meet $\wedge$ and join $\vee$ of two flats $F_1, F_2 \in \mathcal{L}(M)$?
+  hint: The meet is the intersection $F_1 \wedge F_2 = F_1 \cap F_2$; the join is the closure of the union
+    $F_1 \vee F_2 = \mathrm{cl}(F_1 \cup F_2)$.
+  locator: null
+  sub_index: null
+  search_text: what is the meet $\wedge$ and join $\vee$ of two flats $f_1, f_2 \in \mathcal{l}(m)$? the
+    meet is the intersection $f_1 \wedge f_2 = f_1 \cap f_2$; the join is the closure of the union $f_1
+    \vee f_2 = \mathrm{cl}(f_1 \cup f_2)$.
+- id: arxiv-org-pdf-1409-3503#138
+  text: Why is the lattice of flats $\mathcal{L}(M)$ an atomic lattice?
+  hint: 'Every flat $F \in \mathcal{L}(M)$ is the join of the rank-1 flats (atoms / points) contained
+    in it: $F = \bigvee_{p \in F, r(p)=1} p$.'
+  locator: null
+  sub_index: null
+  search_text: 'why is the lattice of flats $\mathcal{l}(m)$ an atomic lattice? every flat $f \in \mathcal{l}(m)$
+    is the join of the rank-1 flats (atoms / points) contained in it: $f = \bigvee_{p \in f, r(p)=1} p$.'
+- id: arxiv-org-pdf-1409-3503#139
+  text: What is the Möbius inversion formula on the poset of flats?
+  hint: For functions $f, g \colon \mathcal{L}(M) \to \mathbb{Z}$, $g(F) = \sum_{G \le F} f(G) \iff f(F)
+    = \sum_{G \le F} g(G) \mu(G, F)$.
+  locator: null
+  sub_index: null
+  search_text: what is the möbius inversion formula on the poset of flats? for functions $f, g \colon
+    \mathcal{l}(m) \to \mathbb{z}$, $g(f) = \sum_{g \le f} f(g) \iff f(f) = \sum_{g \le f} g(g) \mu(g,
+    f)$.
+- id: arxiv-org-pdf-1409-3503#140
+  text: What is $\mu(\emptyset, \emptyset)$ for any matroid?
+  hint: $\mu(\emptyset, \emptyset) = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is $\mu(\emptyset, \emptyset)$ for any matroid? $\mu(\emptyset, \emptyset) = 1$.
+- id: arxiv-org-pdf-1409-3503#141
+  text: What is $\mu(\emptyset, p)$ for an atom (rank-1 flat) $p \in \mathcal{L}(M)$?
+  hint: $\mu(\emptyset, p) = -1$, because $\mu(\emptyset, \emptyset) + \mu(\emptyset, p) = 1 + \mu(\emptyset,
+    p) = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is $\mu(\emptyset, p)$ for an atom (rank-1 flat) $p \in \mathcal{l}(m)$? $\mu(\emptyset,
+    p) = -1$, because $\mu(\emptyset, \emptyset) + \mu(\emptyset, p) = 1 + \mu(\emptyset, p) = 0$.
+- id: arxiv-org-pdf-1409-3503#142
+  text: What is the characteristic polynomial of the uniform matroid $U_{1, 1}$ (a single non-loop element)?
+  hint: $\chi_{U_{1, 1}}(t) = t - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the characteristic polynomial of the uniform matroid $u_{1, 1}$ (a single non-loop
+    element)? $\chi_{u_{1, 1}}(t) = t - 1$.
+- id: arxiv-org-pdf-1409-3503#143
+  text: What is the characteristic polynomial of a matroid containing a loop?
+  hint: $\chi_M(t) = 0$, because the bottom flat $\mathrm{cl}(\emptyset)$ has rank $\ge 1$ or atoms cancel
+    identically.
+  locator: null
+  sub_index: null
+  search_text: what is the characteristic polynomial of a matroid containing a loop? $\chi_m(t) = 0$,
+    because the bottom flat $\mathrm{cl}(\emptyset)$ has rank $\ge 1$ or atoms cancel identically.
+- id: arxiv-org-pdf-1409-3503#144
+  text: What is the value $\chi_M(1)$ for any non-empty loopless matroid?
+  hint: $\chi_M(1) = \sum_{F \in \mathcal{L}(M)} \mu(\emptyset, F) = 0$, by the fundamental recursive
+    property of the Möbius function.
+  locator: null
+  sub_index: null
+  search_text: what is the value $\chi_m(1)$ for any non-empty loopless matroid? $\chi_m(1) = \sum_{f
+    \in \mathcal{l}(m)} \mu(\emptyset, f) = 0$, by the fundamental recursive property of the möbius function.
+- id: arxiv-org-pdf-1409-3503#145
+  text: What is the Tutte polynomial $T_M(x, y)$ of a single coloop $e$?
+  hint: $T_{e}(x, y) = x$.
+  locator: null
+  sub_index: null
+  search_text: what is the tutte polynomial $t_m(x, y)$ of a single coloop $e$? $t_{e}(x, y) = x$.
+- id: arxiv-org-pdf-1409-3503#146
+  text: What is the Tutte polynomial $T_M(x, y)$ of a single loop $e$?
+  hint: $T_{e}(x, y) = y$.
+  locator: null
+  sub_index: null
+  search_text: what is the tutte polynomial $t_m(x, y)$ of a single loop $e$? $t_{e}(x, y) = y$.
+- id: arxiv-org-pdf-1409-3503#147
+  text: How does the Tutte polynomial behave under direct sums $M_1 \oplus M_2$?
+  hint: 'It is multiplicative: $T_{M_1 \oplus M_2}(x, y) = T_{M_1}(x, y) \cdot T_{M_2}(x, y)$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the tutte polynomial behave under direct sums $m_1 \oplus m_2$? it is multiplicative:
+    $t_{m_1 \oplus m_2}(x, y) = t_{m_1}(x, y) \cdot t_{m_2}(x, y)$.'
+- id: arxiv-org-pdf-1409-3503#148
+  text: How are the Tutte polynomials of a matroid $M$ and its dual $M^*$ related?
+  hint: 'By swapping variables: $T_{M^*}(x, y) = T_M(y, x)$.'
+  locator: null
+  sub_index: null
+  search_text: 'how are the tutte polynomials of a matroid $m$ and its dual $m^*$ related? by swapping
+    variables: $t_{m^*}(x, y) = t_m(y, x)$.'
+- id: arxiv-org-pdf-1409-3503#149
+  text: What does the evaluation $T_M(1, 1)$ count for any matroid?
+  hint: 'The total number of bases of $M$: $T_M(1, 1) = |\mathcal{B}(M)|$.'
+  locator: null
+  sub_index: null
+  search_text: 'what does the evaluation $t_m(1, 1)$ count for any matroid? the total number of bases
+    of $m$: $t_m(1, 1) = |\mathcal{b}(m)|$.'
+- id: arxiv-org-pdf-1409-3503#150
+  text: What does the evaluation $T_M(2, 1)$ count?
+  hint: 'The total number of independent sets of $M$: $T_M(2, 1) = |\mathcal{I}(M)|$.'
+  locator: null
+  sub_index: null
+  search_text: 'what does the evaluation $t_m(2, 1)$ count? the total number of independent sets of $m$:
+    $t_m(2, 1) = |\mathcal{i}(m)|$.'
+- id: arxiv-org-pdf-1409-3503#151
+  text: What does the evaluation $T_M(1, 2)$ count?
+  hint: The total number of spanning sets of $M$ (subsets $S \subseteq E$ with $r(S) = r(M)$).
+  locator: null
+  sub_index: null
+  search_text: what does the evaluation $t_m(1, 2)$ count? the total number of spanning sets of $m$ (subsets
+    $s \subseteq e$ with $r(s) = r(m)$).
+- id: arxiv-org-pdf-1409-3503#152
+  text: What does the evaluation $T_M(2, 2)$ count?
+  hint: 'The total number of subsets of the ground set: $T_M(2, 2) = 2^{|E|}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what does the evaluation $t_m(2, 2)$ count? the total number of subsets of the ground
+    set: $t_m(2, 2) = 2^{|e|}$.'
+- id: arxiv-org-pdf-1409-3503#153
+  text: What are the vertices of the matroid polytope $P_M \subset \mathbb{R}^E$?
+  hint: The 0/1-characteristic vectors $e_B = \sum_{i \in B} e_i \in \mathbb{R}^E$ for all bases $B \in
+    \mathcal{B}(M)$.
+  locator: null
+  sub_index: null
+  search_text: what are the vertices of the matroid polytope $p_m \subset \mathbb{r}^e$? the 0/1-characteristic
+    vectors $e_b = \sum_{i \in b} e_i \in \mathbb{r}^e$ for all bases $b \in \mathcal{b}(m)$.
+- id: arxiv-org-pdf-1409-3503#154
+  text: What is the dimension of the matroid polytope $P_M$ for a connected matroid on ground set $E$?
+  hint: $\dim(P_M) = |E| - 1$, since all vertices lie on the hyperplane $\sum_{i \in E} x_i = r(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is the dimension of the matroid polytope $p_m$ for a connected matroid on ground set
+    $e$? $\dim(p_m) = |e| - 1$, since all vertices lie on the hyperplane $\sum_{i \in e} x_i = r(m)$.
+- id: arxiv-org-pdf-1409-3503#155
+  text: What is the matroid polytope of the uniform matroid $U_{k, n}$?
+  hint: 'The hypersimplex $\Delta(k, n) = \{ x \in [0, 1]^n : \sum_{i=1}^n x_i = k \}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the matroid polytope of the uniform matroid $u_{k, n}$? the hypersimplex $\delta(k,
+    n) = \{ x \in [0, 1]^n : \sum_{i=1}^n x_i = k \}$.'
+- id: arxiv-org-pdf-1409-3503#156
+  text: What is the tropical linear space $\mathrm{Trop}(V)$ of a realizable matroid $M(V)$?
+  hint: The support of the Bergman fan $\widetilde{\Sigma}_M$ in $\mathbb{R}^E / \mathbb{R}\mathbf{1}$,
+    obtained as the non-archimedean valuation image of the linear subspace $V \subset \mathbf{k}^E$.
+  locator: null
+  sub_index: null
+  search_text: what is the tropical linear space $\mathrm{trop}(v)$ of a realizable matroid $m(v)$? the
+    support of the bergman fan $\widetilde{\sigma}_m$ in $\mathbb{r}^e / \mathbb{r}\mathbf{1}$, obtained
+    as the non-archimedean valuation image of the linear subspace $v \subset \mathbf{k}^e$.
+- id: arxiv-org-pdf-1409-3503#157
+  text: What are the rays (1-dimensional cones) of the Bergman fan $\widetilde{\Sigma}_M$?
+  hint: The rays generated by the indicator vectors $e_F = \sum_{i \in F} e_i \pmod{\mathbb{R}\mathbf{1}}$
+    for each non-empty proper flat $F \subsetneq E$.
+  locator: null
+  sub_index: null
+  search_text: what are the rays (1-dimensional cones) of the bergman fan $\widetilde{\sigma}_m$? the
+    rays generated by the indicator vectors $e_f = \sum_{i \in f} e_i \pmod{\mathbb{r}\mathbf{1}}$ for
+    each non-empty proper flat $f \subsetneq e$.
+- id: arxiv-org-pdf-1409-3503#158
+  text: What is a flag of flats and how does it define a cone in the Bergman fan $\widetilde{\Sigma}_M$?
+  hint: A strictly increasing chain of non-empty proper flats $\mathcal{F} = \{ \emptyset \subsetneq F_1
+    \subsetneq F_2 \subsetneq \dots \subsetneq F_k \subsetneq E \}$; it defines the simplicial cone $\sigma_{\mathcal{F}}
+    = \mathrm{cone}(e_{F_1}, e_{F_2}, \dots, e_{F_k})$.
+  locator: null
+  sub_index: null
+  search_text: what is a flag of flats and how does it define a cone in the bergman fan $\widetilde{\sigma}_m$?
+    a strictly increasing chain of non-empty proper flats $\mathcal{f} = \{ \emptyset \subsetneq f_1 \subsetneq
+    f_2 \subsetneq \dots \subsetneq f_k \subsetneq e \}$; it defines the simplicial cone $\sigma_{\mathcal{f}}
+    = \mathrm{cone}(e_{f_1}, e_{f_2}, \dots, e_{f_k})$.
+- id: arxiv-org-pdf-1409-3503#159
+  text: What is the top dimension of the cones in the Bergman fan $\widetilde{\Sigma}_M$?
+  hint: $\dim(\widetilde{\Sigma}_M) = r(M) - 1$, corresponding to maximal flags of flats of length $r(M)
+    - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the top dimension of the cones in the bergman fan $\widetilde{\sigma}_m$? $\dim(\widetilde{\sigma}_m)
+    = r(m) - 1$, corresponding to maximal flags of flats of length $r(m) - 1$.
+- id: arxiv-org-pdf-1409-3503#160
+  text: What are the generators of the Chow ring $A^*(M)$ of a matroid?
+  hint: One generator $x_F$ of degree 1 for each non-empty proper flat $F \subsetneq E$.
+  locator: null
+  sub_index: null
+  search_text: what are the generators of the chow ring $a^*(m)$ of a matroid? one generator $x_f$ of
+    degree 1 for each non-empty proper flat $f \subsetneq e$.
+- id: arxiv-org-pdf-1409-3503#161
+  text: What are the quadratic relations in the Chow ring $A^*(M)$?
+  hint: $x_{F_1} x_{F_2} = 0$ whenever $F_1$ and $F_2$ are incomparable flats ($F_1 \not\subseteq F_2$
+    and $F_2 \not\subseteq F_1$).
+  locator: null
+  sub_index: null
+  search_text: what are the quadratic relations in the chow ring $a^*(m)$? $x_{f_1} x_{f_2} = 0$ whenever
+    $f_1$ and $f_2$ are incomparable flats ($f_1 \not\subseteq f_2$ and $f_2 \not\subseteq f_1$).
+- id: arxiv-org-pdf-1409-3503#162
+  text: What are the linear relations in the Chow ring $A^*(M)$?
+  hint: For any two distinct elements $i, j \in E$, $\sum_{i \in F} x_F = \sum_{j \in F} x_F$.
+  locator: null
+  sub_index: null
+  search_text: what are the linear relations in the chow ring $a^*(m)$? for any two distinct elements
+    $i, j \in e$, $\sum_{i \in f} x_f = \sum_{j \in f} x_f$.
+- id: arxiv-org-pdf-1409-3503#163
+  text: What is the top-degree component $A^{r-1}(M)$ of the Chow ring of a matroid of rank $r$?
+  hint: $A^{r-1}(M) \cong \mathbb{Z}$, canonically generated by the class of any maximal flag of flats
+    $x_{F_1} x_{F_2} \cdots x_{F_{r-1}}$.
+  locator: null
+  sub_index: null
+  search_text: what is the top-degree component $a^{r-1}(m)$ of the chow ring of a matroid of rank $r$?
+    $a^{r-1}(m) \cong \mathbb{z}$, canonically generated by the class of any maximal flag of flats $x_{f_1}
+    x_{f_2} \cdots x_{f_{r-1}}$.
+- id: arxiv-org-pdf-1409-3503#164
+  text: What is the degree map $\deg \colon A^{r-1}(M) \xrightarrow{\sim} \mathbb{Z}$?
+  hint: The isomorphism that sends the product $x_{F_1} \cdots x_{F_{r-1}}$ of any complete flag of flats
+    to $1$.
+  locator: null
+  sub_index: null
+  search_text: what is the degree map $\deg \colon a^{r-1}(m) \xrightarrow{\sim} \mathbb{z}$? the isomorphism
+    that sends the product $x_{f_1} \cdots x_{f_{r-1}}$ of any complete flag of flats to $1$.
+- id: arxiv-org-pdf-1409-3503#165
+  text: What does the log-concavity of a sequence of positive numbers $(a_0, a_1, \dots, a_r)$ mean?
+  hint: $a_k^2 \ge a_{k-1} a_{k+1}$ for all $1 \le k \le r-1$.
+  locator: null
+  sub_index: null
+  search_text: what does the log-concavity of a sequence of positive numbers $(a_0, a_1, \dots, a_r)$
+    mean? $a_k^2 \ge a_{k-1} a_{k+1}$ for all $1 \le k \le r-1$.
+- id: arxiv-org-pdf-1409-3503#166
+  text: State the Welsh Conjecture on the independent sets of a matroid
+  hint: 'The sequence $(I_0, I_1, \dots, I_r)$, where $I_k$ is the number of independent sets of size
+    $k$ in $M$, is log-concave: $I_k^2 \ge I_{k-1} I_{k+1}$ for all $k$.'
+  locator: null
+  sub_index: null
+  search_text: 'state the welsh conjecture on the independent sets of a matroid the sequence $(i_0, i_1,
+    \dots, i_r)$, where $i_k$ is the number of independent sets of size $k$ in $m$, is log-concave: $i_k^2
+    \ge i_{k-1} i_{k+1}$ for all $k$.'
+- id: arxiv-org-pdf-1409-3503#167
+  text: State the Heron-Rota-Welsh Conjecture on the characteristic polynomial of a matroid
+  hint: 'The absolute coefficients $\mu_k = |\mu_k(M)|$ of $\chi_M(t) = \sum_{k=0}^r (-1)^k \mu_k t^{r-k}$
+    form a log-concave sequence: $\mu_k^2 \ge \mu_{k-1} \mu_{k+1}$, proved by Adiprasito, Huh, and Katz
+    using Hodge theory on $A^*(M)$.'
+  locator: null
+  sub_index: null
+  search_text: 'state the heron-rota-welsh conjecture on the characteristic polynomial of a matroid the
+    absolute coefficients $\mu_k = |\mu_k(m)|$ of $\chi_m(t) = \sum_{k=0}^r (-1)^k \mu_k t^{r-k}$ form
+    a log-concave sequence: $\mu_k^2 \ge \mu_{k-1} \mu_{k+1}$, proved by adiprasito, huh, and katz using
+    hodge theory on $a^*(m)$.'
+- id: arxiv-org-pdf-1409-3503#168
+  text: What is the ground set of a matroid?
+  hint: The underlying finite set $E$ on which the independent sets, bases, circuits, and rank function
+    are defined.
+  locator: null
+  sub_index: null
+  search_text: what is the ground set of a matroid? the underlying finite set $e$ on which the independent
+    sets, bases, circuits, and rank function are defined.
+- id: arxiv-org-pdf-1409-3503#169
+  text: Can the empty set $\emptyset$ be a dependent set in a matroid?
+  hint: No, because by the independent set axioms, $\mathcal{I} \neq \emptyset$ and is hereditary, so
+    $\emptyset \in \mathcal{I}$ is always independent.
+  locator: null
+  sub_index: null
+  search_text: can the empty set $\emptyset$ be a dependent set in a matroid? no, because by the independent
+    set axioms, $\mathcal{i} \neq \emptyset$ and is hereditary, so $\emptyset \in \mathcal{i}$ is always
+    independent.
+- id: arxiv-org-pdf-1409-3503#170
+  text: Is a subset of an independent set always independent?
+  hint: 'Yes, by the hereditary axiom: if $I \in \mathcal{I}$ and $J \subseteq I$, then $J \in \mathcal{I}$.'
+  locator: null
+  sub_index: null
+  search_text: 'is a subset of an independent set always independent? yes, by the hereditary axiom: if
+    $i \in \mathcal{i}$ and $j \subseteq i$, then $j \in \mathcal{i}$.'
+- id: arxiv-org-pdf-1409-3503#171
+  text: What is the rank of a single element $e \in E$?
+  hint: $r(\{e\}) = 0$ if $e$ is a loop, and $r(\{e\}) = 1$ if $e$ is not a loop.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of a single element $e \in e$? $r(\{e\}) = 0$ if $e$ is a loop, and $r(\{e\})
+    = 1$ if $e$ is not a loop.
+- id: arxiv-org-pdf-1409-3503#172
+  text: Can two bases of the same matroid have different cardinalities?
+  hint: No; by the basis exchange axiom, all bases have the exact same size, equal to the rank $r(M)$.
+  locator: null
+  sub_index: null
+  search_text: can two bases of the same matroid have different cardinalities? no; by the basis exchange
+    axiom, all bases have the exact same size, equal to the rank $r(m)$.
+- id: arxiv-org-pdf-1409-3503#173
+  text: What is a maximal independent set in a subset $S \subseteq E$?
+  hint: An independent set $I \subseteq S$ such that no independent set $I' \subseteq S$ strictly contains
+    $I$; every such maximal independent set has size $r(S)$.
+  locator: null
+  sub_index: null
+  search_text: what is a maximal independent set in a subset $s \subseteq e$? an independent set $i \subseteq
+    s$ such that no independent set $i' \subseteq s$ strictly contains $i$; every such maximal independent
+    set has size $r(s)$.
+- id: arxiv-org-pdf-1409-3503#174
+  text: What is a minimal dependent set in a matroid?
+  hint: A circuit $C \subseteq E$, meaning $C$ is dependent but every proper subset of $C$ is independent.
+  locator: null
+  sub_index: null
+  search_text: what is a minimal dependent set in a matroid? a circuit $c \subseteq e$, meaning $c$ is
+    dependent but every proper subset of $c$ is independent.
+- id: arxiv-org-pdf-1409-3503#175
+  text: Can a circuit of a matroid be empty?
+  hint: No, because the empty set is always independent.
+  locator: null
+  sub_index: null
+  search_text: can a circuit of a matroid be empty? no, because the empty set is always independent.
+- id: arxiv-org-pdf-1409-3503#176
+  text: What is a circuit of size 1?
+  hint: A loop $e \in E$, since $\{e\}$ is dependent and its only proper subset $\emptyset$ is independent.
+  locator: null
+  sub_index: null
+  search_text: what is a circuit of size 1? a loop $e \in e$, since $\{e\}$ is dependent and its only
+    proper subset $\emptyset$ is independent.
+- id: arxiv-org-pdf-1409-3503#177
+  text: What is a circuit of size 2?
+  hint: A pair of parallel elements $\{e, f\}$, meaning neither is a loop, but $\{e, f\}$ is dependent.
+  locator: null
+  sub_index: null
+  search_text: what is a circuit of size 2? a pair of parallel elements $\{e, f\}$, meaning neither is
+    a loop, but $\{e, f\}$ is dependent.
+- id: arxiv-org-pdf-1409-3503#178
+  text: What is the rank of a circuit $C$?
+  hint: $r(C) = |C| - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of a circuit $c$? $r(c) = |c| - 1$.
+- id: arxiv-org-pdf-1409-3503#179
+  text: Can a basis contain a circuit?
+  hint: No, because every basis is independent and every circuit is dependent.
+  locator: null
+  sub_index: null
+  search_text: can a basis contain a circuit? no, because every basis is independent and every circuit
+    is dependent.
+- id: arxiv-org-pdf-1409-3503#180
+  text: Can a circuit be contained in another circuit?
+  hint: No; circuits are minimal dependent sets, so no circuit properly contains another.
+  locator: null
+  sub_index: null
+  search_text: can a circuit be contained in another circuit? no; circuits are minimal dependent sets,
+    so no circuit properly contains another.
+- id: arxiv-org-pdf-1409-3503#181
+  text: What is the span / closure $\mathrm{cl}(S)$ of a set $S \subseteq E$?
+  hint: The set of all elements $e \in E$ such that $r(S \cup \{e\}) = r(S)$.
+  locator: null
+  sub_index: null
+  search_text: what is the span / closure $\mathrm{cl}(s)$ of a set $s \subseteq e$? the set of all elements
+    $e \in e$ such that $r(s \cup \{e\}) = r(s)$.
+- id: arxiv-org-pdf-1409-3503#182
+  text: If $S \subseteq T$, is $\mathrm{cl}(S) \subseteq \mathrm{cl}(T)$?
+  hint: Yes, the closure operator is order-preserving / monotone.
+  locator: null
+  sub_index: null
+  search_text: if $s \subseteq t$, is $\mathrm{cl}(s) \subseteq \mathrm{cl}(t)$? yes, the closure operator
+    is order-preserving / monotone.
+- id: arxiv-org-pdf-1409-3503#183
+  text: Is $S \subseteq \mathrm{cl}(S)$ always true?
+  hint: Yes, adding an element already in $S$ does not increase the rank of $S$.
+  locator: null
+  sub_index: null
+  search_text: is $s \subseteq \mathrm{cl}(s)$ always true? yes, adding an element already in $s$ does
+    not increase the rank of $s$.
+- id: arxiv-org-pdf-1409-3503#184
+  text: What is the closure of the entire ground set $\mathrm{cl}(E)$?
+  hint: $\mathrm{cl}(E) = E$, since $E$ is already the maximal flat.
+  locator: null
+  sub_index: null
+  search_text: what is the closure of the entire ground set $\mathrm{cl}(e)$? $\mathrm{cl}(e) = e$, since
+    $e$ is already the maximal flat.
+- id: arxiv-org-pdf-1409-3503#185
+  text: When is a subset $F \subseteq E$ called a flat?
+  hint: When $\mathrm{cl}(F) = F$, meaning $r(F \cup \{e\}) > r(F)$ for every $e \in E \setminus F$.
+  locator: null
+  sub_index: null
+  search_text: when is a subset $f \subseteq e$ called a flat? when $\mathrm{cl}(f) = f$, meaning $r(f
+    \cup \{e\}) > r(f)$ for every $e \in e \setminus f$.
+- id: arxiv-org-pdf-1409-3503#186
+  text: Is the whole ground set $E$ always a flat?
+  hint: Yes, it is the unique flat of maximal rank $r(E) = r(M)$.
+  locator: null
+  sub_index: null
+  search_text: is the whole ground set $e$ always a flat? yes, it is the unique flat of maximal rank $r(e)
+    = r(m)$.
+- id: arxiv-org-pdf-1409-3503#187
+  text: Is the intersection of two flats $F_1 \cap F_2$ always a flat?
+  hint: Yes; the intersection of any collection of flats is always a flat.
+  locator: null
+  sub_index: null
+  search_text: is the intersection of two flats $f_1 \cap f_2$ always a flat? yes; the intersection of
+    any collection of flats is always a flat.
+- id: arxiv-org-pdf-1409-3503#188
+  text: Is the union of two flats $F_1 \cup F_2$ always a flat?
+  hint: No, in general the union is not a flat; its closure $\mathrm{cl}(F_1 \cup F_2)$ is the smallest
+    flat containing both.
+  locator: null
+  sub_index: null
+  search_text: is the union of two flats $f_1 \cup f_2$ always a flat? no, in general the union is not
+    a flat; its closure $\mathrm{cl}(f_1 \cup f_2)$ is the smallest flat containing both.
+- id: arxiv-org-pdf-1409-3503#189
+  text: What is the rank of a hyperplane in a matroid of rank $r$?
+  hint: $r(H) = r - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of a hyperplane in a matroid of rank $r$? $r(h) = r - 1$.
+- id: arxiv-org-pdf-1409-3503#190
+  text: What is a coloop in terms of hyperplanes?
+  hint: An element $e \in E$ that is not contained in any hyperplane of $M$.
+  locator: null
+  sub_index: null
+  search_text: what is a coloop in terms of hyperplanes? an element $e \in e$ that is not contained in
+    any hyperplane of $m$.
+- id: arxiv-org-pdf-1409-3503#191
+  text: What is a loop in terms of hyperplanes?
+  hint: An element $e \in E$ that is contained in every hyperplane of $M$.
+  locator: null
+  sub_index: null
+  search_text: what is a loop in terms of hyperplanes? an element $e \in e$ that is contained in every
+    hyperplane of $m$.
+- id: arxiv-org-pdf-1409-3503#192
+  text: What is a spanning set of a matroid?
+  hint: A subset $S \subseteq E$ such that $r(S) = r(M)$, or equivalently $\mathrm{cl}(S) = E$.
+  locator: null
+  sub_index: null
+  search_text: what is a spanning set of a matroid? a subset $s \subseteq e$ such that $r(s) = r(m)$,
+    or equivalently $\mathrm{cl}(s) = e$.
+- id: arxiv-org-pdf-1409-3503#193
+  text: Is every basis a spanning set?
+  hint: Yes, every basis is a minimal spanning set.
+  locator: null
+  sub_index: null
+  search_text: is every basis a spanning set? yes, every basis is a minimal spanning set.
+- id: arxiv-org-pdf-1409-3503#194
+  text: Is every spanning set a basis?
+  hint: No; a spanning set may contain dependent elements or excess elements.
+  locator: null
+  sub_index: null
+  search_text: is every spanning set a basis? no; a spanning set may contain dependent elements or excess
+    elements.
+- id: arxiv-org-pdf-1409-3503#195
+  text: What are the independent sets of the uniform matroid $U_{0, n}$?
+  hint: Only the empty set $\emptyset$, since the rank is 0.
+  locator: null
+  sub_index: null
+  search_text: what are the independent sets of the uniform matroid $u_{0, n}$? only the empty set $\emptyset$,
+    since the rank is 0.
+- id: arxiv-org-pdf-1409-3503#196
+  text: What are the bases of the uniform matroid $U_{n, n}$?
+  hint: Only the full set $E$ itself, since every subset is independent.
+  locator: null
+  sub_index: null
+  search_text: what are the bases of the uniform matroid $u_{n, n}$? only the full set $e$ itself, since
+    every subset is independent.
+- id: arxiv-org-pdf-1409-3503#197
+  text: What is the rank of the dual matroid $r(M^*)$ in terms of $r(M)$ and $|E|$?
+  hint: $r(M^*) = |E| - r(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of the dual matroid $r(m^*)$ in terms of $r(m)$ and $|e|$? $r(m^*) = |e|
+    - r(m)$.
+- id: arxiv-org-pdf-1409-3503#198
+  text: What is the double dual of a matroid $(M^*)^*$?
+  hint: $(M^*)^* = M$.
+  locator: null
+  sub_index: null
+  search_text: what is the double dual of a matroid $(m^*)^*$? $(m^*)^* = m$.
+- id: arxiv-org-pdf-1409-3503#199
+  text: What is a cobasis of $M$?
+  hint: A basis of the dual matroid $M^*$, which is the complement $E \setminus B$ of a basis $B$ of $M$.
+  locator: null
+  sub_index: null
+  search_text: what is a cobasis of $m$? a basis of the dual matroid $m^*$, which is the complement $e
+    \setminus b$ of a basis $b$ of $m$.
+- id: arxiv-org-pdf-1409-3503#200
+  text: What is a cocircuit of $M$?
+  hint: A circuit of the dual matroid $M^*$, which is the complement $E \setminus H$ of a hyperplane $H$
+    of $M$.
+  locator: null
+  sub_index: null
+  search_text: what is a cocircuit of $m$? a circuit of the dual matroid $m^*$, which is the complement
+    $e \setminus h$ of a hyperplane $h$ of $m$.
+- id: arxiv-org-pdf-1409-3503#201
+  text: What is a coloop of $M$ in terms of the dual matroid $M^*$?
+  hint: A loop of $M^*$.
+  locator: null
+  sub_index: null
+  search_text: what is a coloop of $m$ in terms of the dual matroid $m^*$? a loop of $m^*$.
+- id: arxiv-org-pdf-1409-3503#202
+  text: What is a loop of $M$ in terms of the dual matroid $M^*$?
+  hint: A coloop of $M^*$.
+  locator: null
+  sub_index: null
+  search_text: what is a loop of $m$ in terms of the dual matroid $m^*$? a coloop of $m^*$.
+- id: arxiv-org-pdf-1409-3503#203
+  text: In a graphic matroid $M(G)$, what corresponds to a vertex cut / bond in $G$?
+  hint: A minimal edge cut (bond) in $G$ corresponds to a cocircuit of $M(G)$.
+  locator: null
+  sub_index: null
+  search_text: in a graphic matroid $m(g)$, what corresponds to a vertex cut / bond in $g$? a minimal
+    edge cut (bond) in $g$ corresponds to a cocircuit of $m(g)$.
+- id: arxiv-org-pdf-1409-3503#204
+  text: In a graphic matroid $M(G)$, what corresponds to a spanning tree of a connected graph $G$?
+  hint: A basis of $M(G)$.
+  locator: null
+  sub_index: null
+  search_text: in a graphic matroid $m(g)$, what corresponds to a spanning tree of a connected graph $g$?
+    a basis of $m(g)$.
+- id: arxiv-org-pdf-1409-3503#205
+  text: In a graphic matroid $M(G)$, what corresponds to a cycle of $G$?
+  hint: A circuit of $M(G)$.
+  locator: null
+  sub_index: null
+  search_text: in a graphic matroid $m(g)$, what corresponds to a cycle of $g$? a circuit of $m(g)$.
+- id: arxiv-org-pdf-1409-3503#206
+  text: In a graphic matroid $M(G)$, what corresponds to a forest in $G$?
+  hint: An independent set of $M(G)$.
+  locator: null
+  sub_index: null
+  search_text: in a graphic matroid $m(g)$, what corresponds to a forest in $g$? an independent set of
+    $m(g)$.
+- id: arxiv-org-pdf-1409-3503#207
+  text: What is the deletion $M \setminus e$ intuitively?
+  hint: Removing the element $e$ from the ground set without altering the independence of the remaining
+    subsets.
+  locator: null
+  sub_index: null
+  search_text: what is the deletion $m \setminus e$ intuitively? removing the element $e$ from the ground
+    set without altering the independence of the remaining subsets.
+- id: arxiv-org-pdf-1409-3503#208
+  text: What is the contraction $M / e$ intuitively?
+  hint: Forcing the element $e$ into the independent sets and projecting/quotienting the remaining structure
+    along $e$.
+  locator: null
+  sub_index: null
+  search_text: what is the contraction $m / e$ intuitively? forcing the element $e$ into the independent
+    sets and projecting/quotienting the remaining structure along $e$.
+- id: arxiv-org-pdf-1409-3503#209
+  text: If $e$ is a coloop, what is the rank of $M \setminus e$?
+  hint: $r(M \setminus e) = r(M) - 1$.
+  locator: null
+  sub_index: null
+  search_text: if $e$ is a coloop, what is the rank of $m \setminus e$? $r(m \setminus e) = r(m) - 1$.
+- id: arxiv-org-pdf-1409-3503#210
+  text: If $e$ is not a coloop, what is the rank of $M \setminus e$?
+  hint: $r(M \setminus e) = r(M)$.
+  locator: null
+  sub_index: null
+  search_text: if $e$ is not a coloop, what is the rank of $m \setminus e$? $r(m \setminus e) = r(m)$.
+- id: arxiv-org-pdf-1409-3503#211
+  text: If $e$ is a loop, what is the rank of $M / e$?
+  hint: $r(M / e) = r(M)$.
+  locator: null
+  sub_index: null
+  search_text: if $e$ is a loop, what is the rank of $m / e$? $r(m / e) = r(m)$.
+- id: arxiv-org-pdf-1409-3503#212
+  text: If $e$ is not a loop, what is the rank of $M / e$?
+  hint: $r(M / e) = r(M) - 1$.
+  locator: null
+  sub_index: null
+  search_text: if $e$ is not a loop, what is the rank of $m / e$? $r(m / e) = r(m) - 1$.
+- id: arxiv-org-pdf-1409-3503#213
+  text: What is the ground set size of $M \setminus e$ and $M / e$?
+  hint: Both have ground set size $|E| - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the ground set size of $m \setminus e$ and $m / e$? both have ground set size $|e|
+    - 1$.
+- id: arxiv-org-pdf-1409-3503#214
+  text: What is a minor of a graphic matroid $M(G)$?
+  hint: A graphic matroid $M(H)$ where $H$ is a graph minor obtained from $G$ by edge deletions and edge
+    contractions.
+  locator: null
+  sub_index: null
+  search_text: what is a minor of a graphic matroid $m(g)$? a graphic matroid $m(h)$ where $h$ is a graph
+    minor obtained from $g$ by edge deletions and edge contractions.
+- id: arxiv-org-pdf-1409-3503#215
+  text: What is the direct sum of two uniform matroids $U_{1, 2} \oplus U_{1, 2}$?
+  hint: A matroid on 4 elements of rank $1 + 1 = 2$, whose bases are pairs $\{e_i, e_j\}$ with one element
+    from each 2-element component.
+  locator: null
+  sub_index: null
+  search_text: what is the direct sum of two uniform matroids $u_{1, 2} \oplus u_{1, 2}$? a matroid on
+    4 elements of rank $1 + 1 = 2$, whose bases are pairs $\{e_i, e_j\}$ with one element from each 2-element
+    component.
+- id: arxiv-org-pdf-1409-3503#216
+  text: Can a connected matroid contain a loop?
+  hint: Only if $|E| = 1$; for $|E| \ge 2$, a loop forms an isolated direct summand, so the matroid is
+    disconnected.
+  locator: null
+  sub_index: null
+  search_text: can a connected matroid contain a loop? only if $|e| = 1$; for $|e| \ge 2$, a loop forms
+    an isolated direct summand, so the matroid is disconnected.
+- id: arxiv-org-pdf-1409-3503#217
+  text: Can a connected matroid contain a coloop?
+  hint: Only if $|E| = 1$; for $|E| \ge 2$, a coloop forms an isolated direct summand, so the matroid
+    is disconnected.
+  locator: null
+  sub_index: null
+  search_text: can a connected matroid contain a coloop? only if $|e| = 1$; for $|e| \ge 2$, a coloop
+    forms an isolated direct summand, so the matroid is disconnected.
+- id: arxiv-org-pdf-1409-3503#218
+  text: What is the bottom element $\hat{0}$ in the lattice of flats $\mathcal{L}(M)$?
+  hint: $\hat{0} = \mathrm{cl}(\emptyset)$, the set of all loops of $M$.
+  locator: null
+  sub_index: null
+  search_text: what is the bottom element $\hat{0}$ in the lattice of flats $\mathcal{l}(m)$? $\hat{0}
+    = \mathrm{cl}(\emptyset)$, the set of all loops of $m$.
+- id: arxiv-org-pdf-1409-3503#219
+  text: What is the top element $\hat{1}$ in the lattice of flats $\mathcal{L}(M)$?
+  hint: $\hat{1} = E$, the entire ground set.
+  locator: null
+  sub_index: null
+  search_text: what is the top element $\hat{1}$ in the lattice of flats $\mathcal{l}(m)$? $\hat{1} =
+    e$, the entire ground set.
+- id: arxiv-org-pdf-1409-3503#220
+  text: What are the atoms of the lattice of flats $\mathcal{L}(M)$?
+  hint: The flats of rank 1, corresponding to non-empty parallel classes of non-loop elements.
+  locator: null
+  sub_index: null
+  search_text: what are the atoms of the lattice of flats $\mathcal{l}(m)$? the flats of rank 1, corresponding
+    to non-empty parallel classes of non-loop elements.
+- id: arxiv-org-pdf-1409-3503#221
+  text: What are the coatoms of the lattice of flats $\mathcal{L}(M)$?
+  hint: The hyperplanes of $M$ (the flats of rank $r(M) - 1$).
+  locator: null
+  sub_index: null
+  search_text: what are the coatoms of the lattice of flats $\mathcal{l}(m)$? the hyperplanes of $m$ (the
+    flats of rank $r(m) - 1$).
+- id: arxiv-org-pdf-1409-3503#222
+  text: What is the height/length of the lattice of flats $\mathcal{L}(M)$?
+  hint: The rank $r(M)$ of the matroid.
+  locator: null
+  sub_index: null
+  search_text: what is the height/length of the lattice of flats $\mathcal{l}(m)$? the rank $r(m)$ of
+    the matroid.
+- id: arxiv-org-pdf-1409-3503#223
+  text: What is the value of the Möbius function $\mu(F, F)$ for any flat $F$?
+  hint: $\mu(F, F) = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the value of the möbius function $\mu(f, f)$ for any flat $f$? $\mu(f, f) = 1$.
+- id: arxiv-org-pdf-1409-3503#224
+  text: What is the sign of $\mu(\emptyset, F)$ for a flat $F$ of rank $k$?
+  hint: By the Whitney numbers theorem, $(-1)^k \mu(\emptyset, F) > 0$, so $\mu(\emptyset, F)$ has sign
+    $(-1)^k$.
+  locator: null
+  sub_index: null
+  search_text: what is the sign of $\mu(\emptyset, f)$ for a flat $f$ of rank $k$? by the whitney numbers
+    theorem, $(-1)^k \mu(\emptyset, f) > 0$, so $\mu(\emptyset, f)$ has sign $(-1)^k$.
+- id: arxiv-org-pdf-1409-3503#225
+  text: What is the degree of the characteristic polynomial $\chi_M(t)$ for a loopless matroid of rank
+    $r$?
+  hint: $\deg(\chi_M(t)) = r(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is the degree of the characteristic polynomial $\chi_m(t)$ for a loopless matroid
+    of rank $r$? $\deg(\chi_m(t)) = r(m)$.
+- id: arxiv-org-pdf-1409-3503#226
+  text: What is the leading coefficient of the characteristic polynomial $\chi_M(t)$?
+  hint: The coefficient of $t^{r(M)}$ is $\mu(\emptyset, \emptyset) = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the leading coefficient of the characteristic polynomial $\chi_m(t)$? the coefficient
+    of $t^{r(m)}$ is $\mu(\emptyset, \emptyset) = 1$.
+- id: arxiv-org-pdf-1409-3503#227
+  text: What is the constant term of the characteristic polynomial $\chi_M(t)$?
+  hint: $\chi_M(0) = \mu(\emptyset, E) = \mu(\hat{0}, \hat{1})$.
+  locator: null
+  sub_index: null
+  search_text: what is the constant term of the characteristic polynomial $\chi_m(t)$? $\chi_m(0) = \mu(\emptyset,
+    e) = \mu(\hat{0}, \hat{1})$.
+- id: arxiv-org-pdf-1409-3503#228
+  text: What is the Tutte polynomial of the empty matroid $M = (\emptyset, \{\emptyset\})$?
+  hint: $T_\emptyset(x, y) = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the tutte polynomial of the empty matroid $m = (\emptyset, \{\emptyset\})$? $t_\emptyset(x,
+    y) = 1$.
+- id: arxiv-org-pdf-1409-3503#229
+  text: What is the coefficient of $x^1 y^0$ in the Tutte polynomial $T_M(x, y)$ for a connected matroid?
+  hint: The beta invariant $\beta(M) = (-1)^{r(M)} \sum_{S \subseteq E} (-1)^{|S|} r(S)$.
+  locator: null
+  sub_index: null
+  search_text: what is the coefficient of $x^1 y^0$ in the tutte polynomial $t_m(x, y)$ for a connected
+    matroid? the beta invariant $\beta(m) = (-1)^{r(m)} \sum_{s \subseteq e} (-1)^{|s|} r(s)$.
+- id: arxiv-org-pdf-1409-3503#230
+  text: What is a 0/1-polytope?
+  hint: A convex polytope whose vertices are all points in $\{0, 1\}^n \subset \mathbb{R}^n$.
+  locator: null
+  sub_index: null
+  search_text: what is a 0/1-polytope? a convex polytope whose vertices are all points in $\{0, 1\}^n
+    \subset \mathbb{r}^n$.
+- id: arxiv-org-pdf-1409-3503#231
+  text: How many vertices does the matroid polytope $P_{U_{k, n}}$ have?
+  hint: $\binom{n}{k}$ vertices, corresponding to all $k$-element subsets of $\{1, \dots, n\}$.
+  locator: null
+  sub_index: null
+  search_text: how many vertices does the matroid polytope $p_{u_{k, n}}$ have? $\binom{n}{k}$ vertices,
+    corresponding to all $k$-element subsets of $\{1, \dots, n\}$.
+- id: arxiv-org-pdf-1409-3503#232
+  text: What is the dimension of the matroid polytope $P_{U_{k, n}}$ for $0 < k < n$?
+  hint: $\dim(P_{U_{k, n}}) = n - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the dimension of the matroid polytope $p_{u_{k, n}}$ for $0 < k < n$? $\dim(p_{u_{k,
+    n}}) = n - 1$.
+- id: arxiv-org-pdf-1409-3503#233
+  text: Are all face figures of a matroid polytope also matroid polytopes?
+  hint: Yes, every face of a matroid polytope is a matroid polytope (or a product of matroid polytopes).
+  locator: null
+  sub_index: null
+  search_text: are all face figures of a matroid polytope also matroid polytopes? yes, every face of a
+    matroid polytope is a matroid polytope (or a product of matroid polytopes).
+- id: arxiv-org-pdf-1409-3503#234
+  text: What is a tropical number?
+  hint: An element of the tropical semiring $(\mathbb{R} \cup \{\infty\}, \oplus, \odot)$ where $a \oplus
+    b = \min(a, b)$ and $a \odot b = a + b$.
+  locator: null
+  sub_index: null
+  search_text: what is a tropical number? an element of the tropical semiring $(\mathbb{r} \cup \{\infty\},
+    \oplus, \odot)$ where $a \oplus b = \min(a, b)$ and $a \odot b = a + b$.
+- id: arxiv-org-pdf-1409-3503#235
+  text: What is the dimension of the Bergman fan $\widetilde{\Sigma}_M$ of a matroid of rank $r$?
+  hint: $\dim(\widetilde{\Sigma}_M) = r - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the dimension of the bergman fan $\widetilde{\sigma}_m$ of a matroid of rank $r$?
+    $\dim(\widetilde{\sigma}_m) = r - 1$.
+- id: arxiv-org-pdf-1409-3503#236
+  text: What is the lineality space of the Bergman fan before projectivization?
+  hint: The 1-dimensional diagonal subspace $\mathbb{R}(1, 1, \dots, 1) \subset \mathbb{R}^E$.
+  locator: null
+  sub_index: null
+  search_text: what is the lineality space of the bergman fan before projectivization? the 1-dimensional
+    diagonal subspace $\mathbb{r}(1, 1, \dots, 1) \subset \mathbb{r}^e$.
+- id: arxiv-org-pdf-1409-3503#237
+  text: For a rank-2 matroid, what does the Bergman fan $\widetilde{\Sigma}_M$ look like?
+  hint: A 1-dimensional fan in $\mathbb{R}^E/\mathbb{R}\mathbf{1}$ consisting of rays pointing in directions
+    $e_F$ for each atom $F$, forming a balanced tropical tree / star graph.
+  locator: null
+  sub_index: null
+  search_text: for a rank-2 matroid, what does the bergman fan $\widetilde{\sigma}_m$ look like? a 1-dimensional
+    fan in $\mathbb{r}^e/\mathbb{r}\mathbf{1}$ consisting of rays pointing in directions $e_f$ for each
+    atom $f$, forming a balanced tropical tree / star graph.
+- id: arxiv-org-pdf-1409-3503#238
+  text: What is the degree of the generator $x_F$ in the Chow ring $A^*(M)$?
+  hint: $\deg(x_F) = 1$ for every non-empty proper flat $F$.
+  locator: null
+  sub_index: null
+  search_text: what is the degree of the generator $x_f$ in the chow ring $a^*(m)$? $\deg(x_f) = 1$ for
+    every non-empty proper flat $f$.
+- id: arxiv-org-pdf-1409-3503#239
+  text: In the Chow ring $A^*(M)$, what is $x_{F_1} x_{F_2}$ if $F_1 \subseteq F_2$?
+  hint: It is generally non-zero, representing a chain/flag of flats of length 2.
+  locator: null
+  sub_index: null
+  search_text: in the chow ring $a^*(m)$, what is $x_{f_1} x_{f_2}$ if $f_1 \subseteq f_2$? it is generally
+    non-zero, representing a chain/flag of flats of length 2.
+- id: arxiv-org-pdf-1409-3503#240
+  text: In the Chow ring $A^*(M)$, what is $x_{F_1} x_{F_2}$ if $F_1 \cap F_2 = \emptyset$ and neither
+    is empty?
+  hint: $x_{F_1} x_{F_2} = 0$, because disjoint non-empty flats are incomparable.
+  locator: null
+  sub_index: null
+  search_text: in the chow ring $a^*(m)$, what is $x_{f_1} x_{f_2}$ if $f_1 \cap f_2 = \emptyset$ and
+    neither is empty? $x_{f_1} x_{f_2} = 0$, because disjoint non-empty flats are incomparable.
+- id: arxiv-org-pdf-1409-3503#241
+  text: What is the degree of the top cohomology group $A^k(M)$ where $A^k(M) \neq 0$?
+  hint: $k = r(M) - 1$, so the top non-zero degree is $r(M) - 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the degree of the top cohomology group $a^k(m)$ where $a^k(m) \neq 0$? $k = r(m)
+    - 1$, so the top non-zero degree is $r(m) - 1$.
+- id: arxiv-org-pdf-1409-3503#242
+  text: What is the value of $\deg(x_{F_1} x_{F_2} \cdots x_{F_{r-1}})$ for a maximal chain of flats $\emptyset
+    \subsetneq F_1 \subsetneq F_2 \subsetneq \dots \subsetneq F_{r-1} \subsetneq E$?
+  hint: $\deg(x_{F_1} \cdots x_{F_{r-1}}) = 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the value of $\deg(x_{f_1} x_{f_2} \cdots x_{f_{r-1}})$ for a maximal chain of
+    flats $\emptyset \subsetneq f_1 \subsetneq f_2 \subsetneq \dots \subsetneq f_{r-1} \subsetneq e$?
+    $\deg(x_{f_1} \cdots x_{f_{r-1}}) = 1$.
+- id: arxiv-org-pdf-1409-3503#243
+  text: For a positive sequence $(a_0, a_1, a_2)$, what is the log-concavity condition at $k=1$?
+  hint: $a_1^2 \ge a_0 a_2$.
+  locator: null
+  sub_index: null
+  search_text: for a positive sequence $(a_0, a_1, a_2)$, what is the log-concavity condition at $k=1$?
+    $a_1^2 \ge a_0 a_2$.
+- id: arxiv-org-pdf-1409-3503#244
+  text: Does log-concavity of a positive sequence imply unimodality?
+  hint: Yes; every positive log-concave sequence with no internal zeros is unimodal (it non-decreases
+    to a peak and then non-increases).
+  locator: null
+  sub_index: null
+  search_text: does log-concavity of a positive sequence imply unimodality? yes; every positive log-concave
+    sequence with no internal zeros is unimodal (it non-decreases to a peak and then non-increases).
+- id: arxiv-org-pdf-1409-3503#245
+  text: For the uniform matroid $U_{2, 3}$, what are the coefficients of the characteristic polynomial
+    $\chi_{U_{2, 3}}(t)$?
+  hint: $\chi_{U_{2, 3}}(t) = t^2 - 3t + 2$, whose absolute coefficients are $(\mu_0, \mu_1, \mu_2) =
+    (1, 3, 2)$.
+  locator: null
+  sub_index: null
+  search_text: for the uniform matroid $u_{2, 3}$, what are the coefficients of the characteristic polynomial
+    $\chi_{u_{2, 3}}(t)$? $\chi_{u_{2, 3}}(t) = t^2 - 3t + 2$, whose absolute coefficients are $(\mu_0,
+    \mu_1, \mu_2) = (1, 3, 2)$.
+- id: arxiv-org-pdf-1409-3503#246
+  text: 'Check the log-concavity for $\chi_{U_{2, 3}}(t)$: is $3^2 \ge 1 \cdot 2$?'
+  hint: Yes, $3^2 = 9 \ge 2 = 1 \cdot 2$, verifying the Heron-Rota-Welsh conjecture for $U_{2, 3}$.
+  locator: null
+  sub_index: null
+  search_text: 'check the log-concavity for $\chi_{u_{2, 3}}(t)$: is $3^2 \ge 1 \cdot 2$? yes, $3^2 =
+    9 \ge 2 = 1 \cdot 2$, verifying the heron-rota-welsh conjecture for $u_{2, 3}$.'
+- id: arxiv-org-pdf-1409-3503#247
+  text: What is a finite set?
+  hint: A set $E$ containing a finite number of elements, $|E| < \infty$, which serves as the ground set
+    of a matroid.
+  locator: null
+  sub_index: null
+  search_text: what is a finite set? a set $e$ containing a finite number of elements, $|e| < \infty$,
+    which serves as the ground set of a matroid.
+- id: arxiv-org-pdf-1409-3503#248
+  text: What is the power set $\mathcal{P}(E)$?
+  hint: The collection of all subsets of $E$, containing exactly $2^{|E|}$ subsets.
+  locator: null
+  sub_index: null
+  search_text: what is the power set $\mathcal{p}(e)$? the collection of all subsets of $e$, containing
+    exactly $2^{|e|}$ subsets.
+- id: arxiv-org-pdf-1409-3503#249
+  text: What is the cardinality $|S|$ of a subset $S \subseteq E$?
+  hint: The non-negative integer counting the number of distinct elements in $S$.
+  locator: null
+  sub_index: null
+  search_text: what is the cardinality $|s|$ of a subset $s \subseteq e$? the non-negative integer counting
+    the number of distinct elements in $s$.
+- id: arxiv-org-pdf-1409-3503#250
+  text: In any matroid $M = (E, \mathcal{I})$, what is the rank $r(\emptyset)$ of the empty set?
+  hint: $r(\emptyset) = 0$.
+  locator: null
+  sub_index: null
+  search_text: in any matroid $m = (e, \mathcal{i})$, what is the rank $r(\emptyset)$ of the empty set?
+    $r(\emptyset) = 0$.
+- id: arxiv-org-pdf-1409-3503#251
+  text: In any matroid $M = (E, \mathcal{I})$, what is the maximum possible rank $r(S)$ of a subset $S$?
+  hint: $r(S) \le |S|$, bounded by the number of elements in $S$.
+  locator: null
+  sub_index: null
+  search_text: in any matroid $m = (e, \mathcal{i})$, what is the maximum possible rank $r(s)$ of a subset
+    $s$? $r(s) \le |s|$, bounded by the number of elements in $s$.
+- id: arxiv-org-pdf-1409-3503#252
+  text: If $A \subseteq B$, how are their ranks $r(A)$ and $r(B)$ related?
+  hint: $r(A) \le r(B)$, by the monotonicity axiom.
+  locator: null
+  sub_index: null
+  search_text: if $a \subseteq b$, how are their ranks $r(a)$ and $r(b)$ related? $r(a) \le r(b)$, by
+    the monotonicity axiom.
+- id: arxiv-org-pdf-1409-3503#253
+  text: What is the rank of the full ground set $r(E)$ called?
+  hint: The rank of the matroid, denoted $r(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of the full ground set $r(e)$ called? the rank of the matroid, denoted
+    $r(m)$.
+- id: arxiv-org-pdf-1409-3503#254
+  text: When is a subset $I \subseteq E$ called independent in terms of its rank?
+  hint: When $r(I) = |I|$.
+  locator: null
+  sub_index: null
+  search_text: when is a subset $i \subseteq e$ called independent in terms of its rank? when $r(i) =
+    |i|$.
+- id: arxiv-org-pdf-1409-3503#255
+  text: When is a subset $D \subseteq E$ called dependent in terms of its rank?
+  hint: When $r(D) < |D|$.
+  locator: null
+  sub_index: null
+  search_text: when is a subset $d \subseteq e$ called dependent in terms of its rank? when $r(d) < |d|$.
+- id: arxiv-org-pdf-1409-3503#256
+  text: If a subset $I$ is independent, is every element $e \in I$ a non-loop?
+  hint: Yes, because every loop has rank 0 and cannot be in any independent set.
+  locator: null
+  sub_index: null
+  search_text: if a subset $i$ is independent, is every element $e \in i$ a non-loop? yes, because every
+    loop has rank 0 and cannot be in any independent set.
+- id: arxiv-org-pdf-1409-3503#257
+  text: If $r(S) = 0$, what kinds of elements can $S$ contain?
+  hint: Only loops.
+  locator: null
+  sub_index: null
+  search_text: if $r(s) = 0$, what kinds of elements can $s$ contain? only loops.
+- id: arxiv-org-pdf-1409-3503#258
+  text: If $S$ contains no loops, what is the rank of a single element $r(\{e\})$ for $e \in S$?
+  hint: $r(\{e\}) = 1$.
+  locator: null
+  sub_index: null
+  search_text: if $s$ contains no loops, what is the rank of a single element $r(\{e\})$ for $e \in s$?
+    $r(\{e\}) = 1$.
+- id: arxiv-org-pdf-1409-3503#259
+  text: What is a basis $B$ in terms of its rank and size?
+  hint: A subset $B \subseteq E$ with $|B| = r(M)$ and $r(B) = r(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is a basis $b$ in terms of its rank and size? a subset $b \subseteq e$ with $|b| =
+    r(m)$ and $r(b) = r(m)$.
+- id: arxiv-org-pdf-1409-3503#260
+  text: If $M$ has rank $r(M) = 0$, what are the bases of $M$?
+  hint: Only the empty set $B = \emptyset$.
+  locator: null
+  sub_index: null
+  search_text: if $m$ has rank $r(m) = 0$, what are the bases of $m$? only the empty set $b = \emptyset$.
+- id: arxiv-org-pdf-1409-3503#261
+  text: If $M$ has rank $r(M) = 0$, what are all the elements of $E$?
+  hint: Every element in $E$ is a loop.
+  locator: null
+  sub_index: null
+  search_text: if $m$ has rank $r(m) = 0$, what are all the elements of $e$? every element in $e$ is a
+    loop.
+- id: arxiv-org-pdf-1409-3503#262
+  text: What is the rank of a basis $B$ of $M$?
+  hint: $r(B) = r(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of a basis $b$ of $m$? $r(b) = r(m)$.
+- id: arxiv-org-pdf-1409-3503#263
+  text: What is the size $|B|$ of every basis of $M$?
+  hint: $|B| = r(M)$.
+  locator: null
+  sub_index: null
+  search_text: what is the size $|b|$ of every basis of $m$? $|b| = r(m)$.
+- id: arxiv-org-pdf-1409-3503#264
+  text: If $B$ is a basis and $e \notin B$, is $B \cup \{e\}$ independent or dependent?
+  hint: Dependent, because $|B \cup \{e\}| = r(M) + 1 > r(M)$.
+  locator: null
+  sub_index: null
+  search_text: if $b$ is a basis and $e \notin b$, is $b \cup \{e\}$ independent or dependent? dependent,
+    because $|b \cup \{e\}| = r(m) + 1 > r(m)$.
+- id: arxiv-org-pdf-1409-3503#265
+  text: How many circuits are contained in $B \cup \{e\}$ for a basis $B$ and $e \notin B$?
+  hint: Exactly one unique circuit, called the fundamental circuit $C(e, B)$.
+  locator: null
+  sub_index: null
+  search_text: how many circuits are contained in $b \cup \{e\}$ for a basis $b$ and $e \notin b$? exactly
+    one unique circuit, called the fundamental circuit $c(e, b)$.
+- id: arxiv-org-pdf-1409-3503#266
+  text: What is the fundamental circuit $C(e, B)$?
+  hint: The unique minimal dependent set contained in $B \cup \{e\}$, which always contains the element
+    $e$.
+  locator: null
+  sub_index: null
+  search_text: what is the fundamental circuit $c(e, b)$? the unique minimal dependent set contained in
+    $b \cup \{e\}$, which always contains the element $e$.
+- id: arxiv-org-pdf-1409-3503#267
+  text: What is the size of a circuit $C$ relative to its rank $r(C)$?
+  hint: $|C| = r(C) + 1$.
+  locator: null
+  sub_index: null
+  search_text: what is the size of a circuit $c$ relative to its rank $r(c)$? $|c| = r(c) + 1$.
+- id: arxiv-org-pdf-1409-3503#268
+  text: If $|C| = 1$, what is the element in $C$?
+  hint: A loop.
+  locator: null
+  sub_index: null
+  search_text: if $|c| = 1$, what is the element in $c$? a loop.
+- id: arxiv-org-pdf-1409-3503#269
+  text: If $|C| = 2$, what are the two elements in $C$?
+  hint: A parallel pair $\{e, f\}$.
+  locator: null
+  sub_index: null
+  search_text: if $|c| = 2$, what are the two elements in $c$? a parallel pair $\{e, f\}$.
+- id: arxiv-org-pdf-1409-3503#270
+  text: If $|C| = 3$, what is the rank of $C$?
+  hint: $r(C) = 3 - 1 = 2$, representing three points on a line / a 3-cycle in a graph.
+  locator: null
+  sub_index: null
+  search_text: if $|c| = 3$, what is the rank of $c$? $r(c) = 3 - 1 = 2$, representing three points on
+    a line / a 3-cycle in a graph.
+- id: arxiv-org-pdf-1409-3503#271
+  text: Can a single non-loop element form a circuit?
+  hint: No, a single non-loop has $r(\{e\}) = 1 = |\{e\}|$, so it is independent.
+  locator: null
+  sub_index: null
+  search_text: can a single non-loop element form a circuit? no, a single non-loop has $r(\{e\}) = 1 =
+    |\{e\}|$, so it is independent.
+- id: arxiv-org-pdf-1409-3503#272
+  text: Is a proper subset of a circuit always independent?
+  hint: Yes, by the definition of a circuit as a minimally dependent set.
+  locator: null
+  sub_index: null
+  search_text: is a proper subset of a circuit always independent? yes, by the definition of a circuit
+    as a minimally dependent set.
+- id: arxiv-org-pdf-1409-3503#273
+  text: If $C$ is a circuit, what is the rank of any subset $S \subsetneq C$ of size $|C| - 1$?
+  hint: $r(S) = |S| = |C| - 1$.
+  locator: null
+  sub_index: null
+  search_text: if $c$ is a circuit, what is the rank of any subset $s \subsetneq c$ of size $|c| - 1$?
+    $r(s) = |s| = |c| - 1$.
+- id: arxiv-org-pdf-1409-3503#274
+  text: What is the closure of a single loop $\{e\}$?
+  hint: $\mathrm{cl}(\{e\}) = \mathrm{cl}(\emptyset)$, the flat of all loops.
+  locator: null
+  sub_index: null
+  search_text: what is the closure of a single loop $\{e\}$? $\mathrm{cl}(\{e\}) = \mathrm{cl}(\emptyset)$,
+    the flat of all loops.
+- id: arxiv-org-pdf-1409-3503#275
+  text: What is the closure of a single non-loop $\{e\}$?
+  hint: The rank-1 flat containing $e$ and all elements parallel to $e$.
+  locator: null
+  sub_index: null
+  search_text: what is the closure of a single non-loop $\{e\}$? the rank-1 flat containing $e$ and all
+    elements parallel to $e$.
+- id: arxiv-org-pdf-1409-3503#276
+  text: If $e \in \mathrm{cl}(S)$, does adding $e$ to $S$ change the rank?
+  hint: No, $r(S \cup \{e\}) = r(S)$.
+  locator: null
+  sub_index: null
+  search_text: if $e \in \mathrm{cl}(s)$, does adding $e$ to $s$ change the rank? no, $r(s \cup \{e\})
+    = r(s)$.
+- id: arxiv-org-pdf-1409-3503#277
+  text: If $e \notin \mathrm{cl}(S)$, what is the rank of $S \cup \{e\}$?
+  hint: $r(S \cup \{e\}) = r(S) + 1$.
+  locator: null
+  sub_index: null
+  search_text: if $e \notin \mathrm{cl}(s)$, what is the rank of $s \cup \{e\}$? $r(s \cup \{e\}) = r(s)
+    + 1$.
+- id: arxiv-org-pdf-1409-3503#278
+  text: What is a flat of rank 0 called?
+  hint: The zero flat $\hat{0} = \mathrm{cl}(\emptyset)$, consisting of all loops.
+  locator: null
+  sub_index: null
+  search_text: what is a flat of rank 0 called? the zero flat $\hat{0} = \mathrm{cl}(\emptyset)$, consisting
+    of all loops.
+- id: arxiv-org-pdf-1409-3503#279
+  text: What is a flat of rank 1 called?
+  hint: A point / atom of the lattice of flats.
+  locator: null
+  sub_index: null
+  search_text: what is a flat of rank 1 called? a point / atom of the lattice of flats.
+- id: arxiv-org-pdf-1409-3503#280
+  text: What is a flat of rank 2 called?
+  hint: A line.
+  locator: null
+  sub_index: null
+  search_text: what is a flat of rank 2 called? a line.
+- id: arxiv-org-pdf-1409-3503#281
+  text: What is a flat of rank 3 called?
+  hint: A plane.
+  locator: null
+  sub_index: null
+  search_text: what is a flat of rank 3 called? a plane.
+- id: arxiv-org-pdf-1409-3503#282
+  text: What is a flat of rank $r(M) - 1$ called?
+  hint: A hyperplane / coatom of the lattice of flats.
+  locator: null
+  sub_index: null
+  search_text: what is a flat of rank $r(m) - 1$ called? a hyperplane / coatom of the lattice of flats.
+- id: arxiv-org-pdf-1409-3503#283
+  text: What is the flat of rank $r(M)$?
+  hint: The whole ground set $E = \hat{1}$.
+  locator: null
+  sub_index: null
+  search_text: what is the flat of rank $r(m)$? the whole ground set $e = \hat{1}$.
+- id: arxiv-org-pdf-1409-3503#284
+  text: How many flats of rank $r(M)$ does a matroid have?
+  hint: Exactly one, the whole set $E$.
+  locator: null
+  sub_index: null
+  search_text: how many flats of rank $r(m)$ does a matroid have? exactly one, the whole set $e$.
+- id: arxiv-org-pdf-1409-3503#285
+  text: If a matroid is simple, what is the flat of rank 0?
+  hint: $\hat{0} = \emptyset$, because there are no loops.
+  locator: null
+  sub_index: null
+  search_text: if a matroid is simple, what is the flat of rank 0? $\hat{0} = \emptyset$, because there
+    are no loops.
+- id: arxiv-org-pdf-1409-3503#286
+  text: If a matroid is simple, what are the flats of rank 1?
+  hint: The singleton sets $\{e\}$ for each $e \in E$, because there are no parallel elements.
+  locator: null
+  sub_index: null
+  search_text: if a matroid is simple, what are the flats of rank 1? the singleton sets $\{e\}$ for each
+    $e \in e$, because there are no parallel elements.
+- id: arxiv-org-pdf-1409-3503#287
+  text: What is the uniform matroid $U_{1, 1}$?
+  hint: A matroid on ground set $E = \{1\}$ with rank 1; its only basis is $\{1\}$, its only independent
+    sets are $\emptyset$ and $\{1\}$, and it has no circuits.
+  locator: null
+  sub_index: null
+  search_text: what is the uniform matroid $u_{1, 1}$? a matroid on ground set $e = \{1\}$ with rank 1;
+    its only basis is $\{1\}$, its only independent sets are $\emptyset$ and $\{1\}$, and it has no circuits.
+- id: arxiv-org-pdf-1409-3503#288
+  text: What is the uniform matroid $U_{1, 2}$?
+  hint: A matroid on $E = \{1, 2\}$ with rank 1; its bases are $\{1\}$ and $\{2\}$, its only circuit is
+    $\{1, 2\}$, and $\{1, 2\}$ is a parallel pair.
+  locator: null
+  sub_index: null
+  search_text: what is the uniform matroid $u_{1, 2}$? a matroid on $e = \{1, 2\}$ with rank 1; its bases
+    are $\{1\}$ and $\{2\}$, its only circuit is $\{1, 2\}$, and $\{1, 2\}$ is a parallel pair.
+- id: arxiv-org-pdf-1409-3503#289
+  text: What is the uniform matroid $U_{2, 2}$?
+  hint: A matroid on $E = \{1, 2\}$ with rank 2; its only basis is $\{1, 2\}$, and all subsets are independent.
+  locator: null
+  sub_index: null
+  search_text: what is the uniform matroid $u_{2, 2}$? a matroid on $e = \{1, 2\}$ with rank 2; its only
+    basis is $\{1, 2\}$, and all subsets are independent.
+- id: arxiv-org-pdf-1409-3503#290
+  text: What is the uniform matroid $U_{1, 3}$?
+  hint: A matroid on $E = \{1, 2, 3\}$ with rank 1; its bases are singletons $\{1\}, \{2\}, \{3\}$, and
+    all pairs are circuits (three parallel elements).
+  locator: null
+  sub_index: null
+  search_text: what is the uniform matroid $u_{1, 3}$? a matroid on $e = \{1, 2, 3\}$ with rank 1; its
+    bases are singletons $\{1\}, \{2\}, \{3\}$, and all pairs are circuits (three parallel elements).
+- id: arxiv-org-pdf-1409-3503#291
+  text: What is the uniform matroid $U_{2, 3}$?
+  hint: A matroid on $E = \{1, 2, 3\}$ of rank 2; its bases are all pairs $\{1, 2\}, \{1, 3\}, \{2, 3\}$,
+    and its unique circuit is $\{1, 2, 3\}$ (a triangle graph $K_3$).
+  locator: null
+  sub_index: null
+  search_text: what is the uniform matroid $u_{2, 3}$? a matroid on $e = \{1, 2, 3\}$ of rank 2; its bases
+    are all pairs $\{1, 2\}, \{1, 3\}, \{2, 3\}$, and its unique circuit is $\{1, 2, 3\}$ (a triangle
+    graph $k_3$).
+- id: arxiv-org-pdf-1409-3503#292
+  text: What is the uniform matroid $U_{3, 3}$?
+  hint: A matroid on $E = \{1, 2, 3\}$ of rank 3; its unique basis is $\{1, 2, 3\}$, and all 8 subsets
+    are independent.
+  locator: null
+  sub_index: null
+  search_text: what is the uniform matroid $u_{3, 3}$? a matroid on $e = \{1, 2, 3\}$ of rank 3; its unique
+    basis is $\{1, 2, 3\}$, and all 8 subsets are independent.
+- id: arxiv-org-pdf-1409-3503#293
+  text: For $U_{2, 3}$, how many independent sets are there in total?
+  hint: $1$ of size 0 ($\emptyset$) + $3$ of size 1 + $3$ of size 2 = $7$ independent sets.
+  locator: null
+  sub_index: null
+  search_text: for $u_{2, 3}$, how many independent sets are there in total? $1$ of size 0 ($\emptyset$)
+    + $3$ of size 1 + $3$ of size 2 = $7$ independent sets.
+- id: arxiv-org-pdf-1409-3503#294
+  text: For $U_{2, 3}$, how many bases are there?
+  hint: $\binom{3}{2} = 3$ bases.
+  locator: null
+  sub_index: null
+  search_text: for $u_{2, 3}$, how many bases are there? $\binom{3}{2} = 3$ bases.
+- id: arxiv-org-pdf-1409-3503#295
+  text: For $U_{2, 3}$, how many circuits are there?
+  hint: Exactly $1$ circuit, $\{1, 2, 3\}$.
+  locator: null
+  sub_index: null
+  search_text: for $u_{2, 3}$, how many circuits are there? exactly $1$ circuit, $\{1, 2, 3\}$.
+- id: arxiv-org-pdf-1409-3503#296
+  text: For $U_{2, 3}$, what are all the flats?
+  hint: $\emptyset$ (rank 0); $\{1\}, \{2\}, \{3\}$ (rank 1); and $\{1, 2, 3\}$ (rank 2); total of 5 flats.
+  locator: null
+  sub_index: null
+  search_text: for $u_{2, 3}$, what are all the flats? $\emptyset$ (rank 0); $\{1\}, \{2\}, \{3\}$ (rank
+    1); and $\{1, 2, 3\}$ (rank 2); total of 5 flats.
+- id: arxiv-org-pdf-1409-3503#297
+  text: For $U_{2, 3}$, what are the values of the Möbius function on the flats?
+  hint: $\mu(\emptyset, \emptyset) = 1$; $\mu(\emptyset, \{i\}) = -1$ for $i=1, 2, 3$; and $\mu(\emptyset,
+    E) = -(1 - 3) = 2$.
+  locator: null
+  sub_index: null
+  search_text: for $u_{2, 3}$, what are the values of the möbius function on the flats? $\mu(\emptyset,
+    \emptyset) = 1$; $\mu(\emptyset, \{i\}) = -1$ for $i=1, 2, 3$; and $\mu(\emptyset, e) = -(1 - 3) =
+    2$.
+- id: arxiv-org-pdf-1409-3503#298
+  text: For $U_{2, 3}$, compute the characteristic polynomial $\chi_{U_{2, 3}}(t)$ directly from its flats
+  hint: $\chi(t) = \mu(\emptyset, \emptyset) t^2 + (\sum_{i=1}^3 \mu(\emptyset, \{i\})) t^1 + \mu(\emptyset,
+    E) t^0 = t^2 - 3t + 2 = (t-1)(t-2)$.
+  locator: null
+  sub_index: null
+  search_text: for $u_{2, 3}$, compute the characteristic polynomial $\chi_{u_{2, 3}}(t)$ directly from
+    its flats $\chi(t) = \mu(\emptyset, \emptyset) t^2 + (\sum_{i=1}^3 \mu(\emptyset, \{i\})) t^1 + \mu(\emptyset,
+    e) t^0 = t^2 - 3t + 2 = (t-1)(t-2)$.
+- id: arxiv-org-pdf-1409-3503#299
+  text: For $U_{2, 3}$, verify that $\chi_{U_{2, 3}}(1) = 0$
+  hint: $1^2 - 3(1) + 2 = 1 - 3 + 2 = 0$.
+  locator: null
+  sub_index: null
+  search_text: for $u_{2, 3}$, verify that $\chi_{u_{2, 3}}(1) = 0$ $1^2 - 3(1) + 2 = 1 - 3 + 2 = 0$.
+- id: arxiv-org-pdf-1409-3503#300
+  text: For $U_{2, 3}$, what is the dual matroid $(U_{2, 3})^*$?
+  hint: $U_{3-2, 3} = U_{1, 3}$.
+  locator: null
+  sub_index: null
+  search_text: for $u_{2, 3}$, what is the dual matroid $(u_{2, 3})^*$? $u_{3-2, 3} = u_{1, 3}$.
+- id: arxiv-org-pdf-1409-3503#301
+  text: For a graph with 2 vertices and 1 edge between them, what is its graphic matroid?
+  hint: $U_{1, 1}$, a single coloop.
+  locator: null
+  sub_index: null
+  search_text: for a graph with 2 vertices and 1 edge between them, what is its graphic matroid? $u_{1,
+    1}$, a single coloop.
+- id: arxiv-org-pdf-1409-3503#302
+  text: For a graph with 1 vertex and 1 self-loop edge, what is its graphic matroid?
+  hint: $U_{0, 1}$, a single loop.
+  locator: null
+  sub_index: null
+  search_text: for a graph with 1 vertex and 1 self-loop edge, what is its graphic matroid? $u_{0, 1}$,
+    a single loop.
+- id: arxiv-org-pdf-1409-3503#303
+  text: For a graph with 2 vertices and 2 parallel edges between them, what is its graphic matroid?
+  hint: $U_{1, 2}$, a parallel pair of rank 1.
+  locator: null
+  sub_index: null
+  search_text: for a graph with 2 vertices and 2 parallel edges between them, what is its graphic matroid?
+    $u_{1, 2}$, a parallel pair of rank 1.
+- id: arxiv-org-pdf-1409-3503#304
+  text: For a tree with $n$ vertices and $n-1$ edges, what is its graphic matroid?
+  hint: The uniform matroid $U_{n-1, n-1}$, where every edge is a coloop and all subsets of edges are
+    independent.
+  locator: null
+  sub_index: null
+  search_text: for a tree with $n$ vertices and $n-1$ edges, what is its graphic matroid? the uniform
+    matroid $u_{n-1, n-1}$, where every edge is a coloop and all subsets of edges are independent.
+- id: arxiv-org-pdf-1409-3503#305
+  text: What is the deletion $M \setminus e$ on ground set $E = \{1, 2\}$ with $M = U_{2, 2}$ and $e =
+    2$?
+  hint: $U_{1, 1}$ on ground set $\{1\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the deletion $m \setminus e$ on ground set $e = \{1, 2\}$ with $m = u_{2, 2}$ and
+    $e = 2$? $u_{1, 1}$ on ground set $\{1\}$.
+- id: arxiv-org-pdf-1409-3503#306
+  text: What is the contraction $M / e$ on ground set $E = \{1, 2\}$ with $M = U_{2, 2}$ and $e = 2$?
+  hint: $U_{1, 1}$ on ground set $\{1\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the contraction $m / e$ on ground set $e = \{1, 2\}$ with $m = u_{2, 2}$ and $e
+    = 2$? $u_{1, 1}$ on ground set $\{1\}$.
+- id: arxiv-org-pdf-1409-3503#307
+  text: What is the deletion $M \setminus e$ on $M = U_{1, 2}$ (parallel pair) with $e = 2$?
+  hint: $U_{1, 1}$ on ground set $\{1\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the deletion $m \setminus e$ on $m = u_{1, 2}$ (parallel pair) with $e = 2$? $u_{1,
+    1}$ on ground set $\{1\}$.
+- id: arxiv-org-pdf-1409-3503#308
+  text: What is the contraction $M / e$ on $M = U_{1, 2}$ (parallel pair) with $e = 2$?
+  hint: $U_{0, 1}$ (a loop) on ground set $\{1\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the contraction $m / e$ on $m = u_{1, 2}$ (parallel pair) with $e = 2$? $u_{0,
+    1}$ (a loop) on ground set $\{1\}$.
+- id: arxiv-org-pdf-1409-3503#309
+  text: What is the deletion-contraction recurrence for the Tutte polynomial $T_M(x, y)$?
+  hint: $T_M(x, y) = T_{M \setminus e}(x, y) + T_{M / e}(x, y)$ for any element $e$ that is not a loop
+    and not a coloop.
+  locator: null
+  sub_index: null
+  search_text: what is the deletion-contraction recurrence for the tutte polynomial $t_m(x, y)$? $t_m(x,
+    y) = t_{m \setminus e}(x, y) + t_{m / e}(x, y)$ for any element $e$ that is not a loop and not a coloop.
+- id: arxiv-org-pdf-1409-3503#310
+  text: For $M = U_{1, 2}$, compute $T_{U_{1, 2}}(x, y)$ using deletion and contraction of element 2
+  hint: $T_{U_{1, 2}}(x, y) = T_{U_{1, 1}}(x, y) + T_{U_{0, 1}}(x, y) = x + y$.
+  locator: null
+  sub_index: null
+  search_text: for $m = u_{1, 2}$, compute $t_{u_{1, 2}}(x, y)$ using deletion and contraction of element
+    2 $t_{u_{1, 2}}(x, y) = t_{u_{1, 1}}(x, y) + t_{u_{0, 1}}(x, y) = x + y$.
+- id: arxiv-org-pdf-1409-3503#311
+  text: For $M = U_{2, 2}$, compute $T_{U_{2, 2}}(x, y)$
+  hint: Since both elements are coloops, $T_{U_{2, 2}}(x, y) = x \cdot x = x^2$.
+  locator: null
+  sub_index: null
+  search_text: for $m = u_{2, 2}$, compute $t_{u_{2, 2}}(x, y)$ since both elements are coloops, $t_{u_{2,
+    2}}(x, y) = x \cdot x = x^2$.
+- id: arxiv-org-pdf-1409-3503#312
+  text: For $M = U_{0, 2}$ (two loops), compute $T_{U_{0, 2}}(x, y)$
+  hint: Since both elements are loops, $T_{U_{0, 2}}(x, y) = y \cdot y = y^2$.
+  locator: null
+  sub_index: null
+  search_text: for $m = u_{0, 2}$ (two loops), compute $t_{u_{0, 2}}(x, y)$ since both elements are loops,
+    $t_{u_{0, 2}}(x, y) = y \cdot y = y^2$.
+- id: arxiv-org-pdf-1409-3503#313
+  text: For $M = U_{2, 3}$, compute $T_{U_{2, 3}}(x, y)$ using $M \setminus 3 = U_{2, 2}$ and $M / 3 =
+    U_{1, 2}$
+  hint: $T_{U_{2, 3}}(x, y) = T_{U_{2, 2}}(x, y) + T_{U_{1, 2}}(x, y) = x^2 + x + y$.
+  locator: null
+  sub_index: null
+  search_text: for $m = u_{2, 3}$, compute $t_{u_{2, 3}}(x, y)$ using $m \setminus 3 = u_{2, 2}$ and $m
+    / 3 = u_{1, 2}$ $t_{u_{2, 3}}(x, y) = t_{u_{2, 2}}(x, y) + t_{u_{1, 2}}(x, y) = x^2 + x + y$.
+- id: arxiv-org-pdf-1409-3503#314
+  text: For $M = U_{2, 3}$, verify $T_{U_{2, 3}}(1, 1)$ counts the number of bases
+  hint: $T(1, 1) = 1^2 + 1 + 1 = 3 = |\mathcal{B}(U_{2, 3})|$.
+  locator: null
+  sub_index: null
+  search_text: for $m = u_{2, 3}$, verify $t_{u_{2, 3}}(1, 1)$ counts the number of bases $t(1, 1) = 1^2
+    + 1 + 1 = 3 = |\mathcal{b}(u_{2, 3})|$.
+- id: arxiv-org-pdf-1409-3503#315
+  text: For $M = U_{2, 3}$, verify $T_{U_{2, 3}}(2, 1)$ counts the number of independent sets
+  hint: $T(2, 1) = 2^2 + 2 + 1 = 7 = |\mathcal{I}(U_{2, 3})|$.
+  locator: null
+  sub_index: null
+  search_text: for $m = u_{2, 3}$, verify $t_{u_{2, 3}}(2, 1)$ counts the number of independent sets $t(2,
+    1) = 2^2 + 2 + 1 = 7 = |\mathcal{i}(u_{2, 3})|$.
+- id: arxiv-org-pdf-1409-3503#316
+  text: For $M = U_{2, 3}$, verify $T_{U_{2, 3}}(2, 2)$ counts the total number of subsets
+  hint: $T(2, 2) = 2^2 + 2 + 2 = 8 = 2^3$.
+  locator: null
+  sub_index: null
+  search_text: for $m = u_{2, 3}$, verify $t_{u_{2, 3}}(2, 2)$ counts the total number of subsets $t(2,
+    2) = 2^2 + 2 + 2 = 8 = 2^3$.
+- id: arxiv-org-pdf-1409-3503#317
+  text: What is the characteristic polynomial of $U_{2, 3}$ computed from its Tutte polynomial via $(-1)^2
+    T_{U_{2, 3}}(1-t, 0)$?
+  hint: $(1-t)^2 + (1-t) + 0 = (1 - 2t + t^2) + 1 - t = t^2 - 3t + 2$.
+  locator: null
+  sub_index: null
+  search_text: what is the characteristic polynomial of $u_{2, 3}$ computed from its tutte polynomial
+    via $(-1)^2 t_{u_{2, 3}}(1-t, 0)$? $(1-t)^2 + (1-t) + 0 = (1 - 2t + t^2) + 1 - t = t^2 - 3t + 2$.
+- id: arxiv-org-pdf-1409-3503#318
+  text: For a sequence $(a_0, a_1, a_2) = (1, 3, 2)$, compute $a_1^2 - a_0 a_2$
+  hint: $3^2 - 1 \cdot 2 = 9 - 2 = 7 \ge 0$, demonstrating strict log-concavity.
+  locator: null
+  sub_index: null
+  search_text: for a sequence $(a_0, a_1, a_2) = (1, 3, 2)$, compute $a_1^2 - a_0 a_2$ $3^2 - 1 \cdot
+    2 = 9 - 2 = 7 \ge 0$, demonstrating strict log-concavity.
