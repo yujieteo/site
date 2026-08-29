@@ -1,0 +1,565 @@
+url: https://math.stanford.edu/~vakil/725/course.html
+title: Vakil AG Course (Placeholder Questions).
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: math-stanford-edu-vakil-725-course-html#000
+  text: What is the unified definition of an immersion and how does it combine open and closed immersions?
+  hint: Fix the ideal sheaf $\mathcal{I} \subset \mathcal{O}_Y$ of a locally closed subset $Z \subset
+    Y$. An immersion is a homeomorphism $X \xrightarrow{\sim} Z$ together with a surjective sheaf map
+    $\mathcal{O}_Y|_Z \twoheadrightarrow \mathcal{O}_X$ having kernel $\mathcal{I}$; setting $\mathcal{I}
+    = 0$ gives an open immersion, while taking $Z$ closed in $Y$ gives a closed immersion.
+  locator: null
+  sub_index: null
+  search_text: what is the unified definition of an immersion and how does it combine open and closed
+    immersions? fix the ideal sheaf $\mathcal{i} \subset \mathcal{o}_y$ of a locally closed subset $z
+    \subset y$. an immersion is a homeomorphism $x \xrightarrow{\sim} z$ together with a surjective sheaf
+    map $\mathcal{o}_y|_z \twoheadrightarrow \mathcal{o}_x$ having kernel $\mathcal{i}$; setting $\mathcal{i}
+    = 0$ gives an open immersion, while taking $z$ closed in $y$ gives a closed immersion.
+- id: math-stanford-edu-vakil-725-course-html#001
+  text: Why must an immersion factor as a closed immersion into an open subscheme rather than an open
+    immersion into a closed subscheme?
+  hint: A locally closed set $Z$ is defined as being closed inside some chosen open neighborhood $U \supset
+    Z$; one cannot define an open subset of a closed subscheme that has not yet been specified globally.
+  locator: null
+  sub_index: null
+  search_text: why must an immersion factor as a closed immersion into an open subscheme rather than an
+    open immersion into a closed subscheme? a locally closed set $z$ is defined as being closed inside
+    some chosen open neighborhood $u \supset z$; one cannot define an open subset of a closed subscheme
+    that has not yet been specified globally.
+- id: math-stanford-edu-vakil-725-course-html#002
+  text: How does the diagonal morphism $\Delta \colon X \to X \times_Y X$ define the separation hierarchy
+    of schemes?
+  hint: 'The diagonal $\Delta$ is always a locally closed immersion; the separation adjectives correspond
+    to the property of $\Delta$: monomorphism $\iff \Delta$ is an isomorphism; separated $\iff \Delta$
+    is a closed immersion; semi-separated $\iff \Delta$ is an affine morphism; quasi-separated $\iff \Delta$
+    is a quasi-compact morphism. Since an isomorphism is a closed immersion, a closed immersion of schemes
+    is affine, and an affine morphism is quasi-compact, this yields the strict implication chain: monomorphism
+    $\implies$ separated $\implies$ semi-separated $\implies$ quasi-separated.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the diagonal morphism $\delta \colon x \to x \times_y x$ define the separation
+    hierarchy of schemes? the diagonal $\delta$ is always a locally closed immersion; the separation adjectives
+    correspond to the property of $\delta$: monomorphism $\iff \delta$ is an isomorphism; separated $\iff
+    \delta$ is a closed immersion; semi-separated $\iff \delta$ is an affine morphism; quasi-separated
+    $\iff \delta$ is a quasi-compact morphism. since an isomorphism is a closed immersion, a closed immersion
+    of schemes is affine, and an affine morphism is quasi-compact, this yields the strict implication
+    chain: monomorphism $\implies$ separated $\implies$ semi-separated $\implies$ quasi-separated.'
+- id: math-stanford-edu-vakil-725-course-html#003
+  text: How does the diagonal ideal sheaf $\mathcal{I}_\Delta$ compute the module of relative Kähler differentials
+    $\Omega_{X/Y}^1$?
+  hint: Restricting to an open neighborhood of the diagonal where $\Delta$ is closed with ideal sheaf
+    $\mathcal{I}_\Delta$, the relative differentials are given by $\Omega_{X/Y}^1 \cong \mathcal{I}_\Delta
+    / \mathcal{I}_\Delta^2$.
+  locator: null
+  sub_index: null
+  search_text: how does the diagonal ideal sheaf $\mathcal{i}_\delta$ compute the module of relative kähler
+    differentials $\omega_{x/y}^1$? restricting to an open neighborhood of the diagonal where $\delta$
+    is closed with ideal sheaf $\mathcal{i}_\delta$, the relative differentials are given by $\omega_{x/y}^1
+    \cong \mathcal{i}_\delta / \mathcal{i}_\delta^2$.
+- id: math-stanford-edu-vakil-725-course-html#004
+  text: How is separatedness checked affine-locally on overlapping charts?
+  hint: A morphism $X \to Y$ is separated if and only if for every pair of affine opens $U, V \subset
+    X$ mapping into a common affine open $\mathrm{Spec}(R) \subset Y$, the intersection $U \cap V$ is
+    affine and the multiplication map $\mathcal{O}(U) \otimes_R \mathcal{O}(V) \twoheadrightarrow \mathcal{O}(U
+    \cap V)$ is surjective.
+  locator: null
+  sub_index: null
+  search_text: how is separatedness checked affine-locally on overlapping charts? a morphism $x \to y$
+    is separated if and only if for every pair of affine opens $u, v \subset x$ mapping into a common
+    affine open $\mathrm{spec}(r) \subset y$, the intersection $u \cap v$ is affine and the multiplication
+    map $\mathcal{o}(u) \otimes_r \mathcal{o}(v) \twoheadrightarrow \mathcal{o}(u \cap v)$ is surjective.
+- id: math-stanford-edu-vakil-725-course-html#005
+  text: Why is the affine line with the doubled origin non-separated?
+  hint: For the two open charts $U \cong \mathbb{A}^1$ and $V \cong \mathbb{A}^1$ glued along $\mathbb{A}^1
+    \setminus \{0\}$, the ring map $k[x] \otimes_k k[y] \to k[x, x^{-1}]$ ($x \mapsto x, y \mapsto x$)
+    has image $k[x]$, which misses $x^{-1}$ and fails to be surjective.
+  locator: null
+  sub_index: null
+  search_text: why is the affine line with the doubled origin non-separated? for the two open charts $u
+    \cong \mathbb{a}^1$ and $v \cong \mathbb{a}^1$ glued along $\mathbb{a}^1 \setminus \{0\}$, the ring
+    map $k[x] \otimes_k k[y] \to k[x, x^{-1}]$ ($x \mapsto x, y \mapsto x$) has image $k[x]$, which misses
+    $x^{-1}$ and fails to be surjective.
+- id: math-stanford-edu-vakil-725-course-html#006
+  text: Why does an injective morphism of schemes imply that the morphism is separated?
+  hint: If $f \colon X \to Y$ is injective on underlying sets, the fiber product $X \times_Y X$ coincides
+    with $\Delta(X)$ set-theoretically, and locally the diagonal ideal is generated by coordinate differences,
+    making $\Delta$ a closed immersion.
+  locator: null
+  sub_index: null
+  search_text: why does an injective morphism of schemes imply that the morphism is separated? if $f \colon
+    x \to y$ is injective on underlying sets, the fiber product $x \times_y x$ coincides with $\delta(x)$
+    set-theoretically, and locally the diagonal ideal is generated by coordinate differences, making $\delta$
+    a closed immersion.
+- id: math-stanford-edu-vakil-725-course-html#007
+  text: Why does a continuous map that is bijective and closed (or open) define a homeomorphism?
+  hint: For every closed set $C \subset X$, $(f^{-1})^{-1}(C) = f(C)$ is closed in $Y$, which directly
+    proves that the inverse map $f^{-1}$ is continuous.
+  locator: null
+  sub_index: null
+  search_text: why does a continuous map that is bijective and closed (or open) define a homeomorphism?
+    for every closed set $c \subset x$, $(f^{-1})^{-1}(c) = f(c)$ is closed in $y$, which directly proves
+    that the inverse map $f^{-1}$ is continuous.
+- id: math-stanford-edu-vakil-725-course-html#008
+  text: What does it mean for a morphism property $P$ to hold universally?
+  hint: The property $P$ holds for every base change $X \times_Y Y' \to Y'$ along any morphism $Y' \to
+    Y$; this is necessary because openness, closedness, and injectivity are not preserved under general
+    base changes.
+  locator: null
+  sub_index: null
+  search_text: what does it mean for a morphism property $p$ to hold universally? the property $p$ holds
+    for every base change $x \times_y y' \to y'$ along any morphism $y' \to y$; this is necessary because
+    openness, closedness, and injectivity are not preserved under general base changes.
+- id: math-stanford-edu-vakil-725-course-html#009
+  text: What is an affine morphism and what is a quasi-affine morphism?
+  hint: A morphism $f \colon X \to Y$ is affine if $f^{-1}(V)$ is affine for every affine open $V \subset
+    Y$; it is quasi-affine if it factors as a quasi-compact open immersion into an affine $Y$-scheme.
+  locator: null
+  sub_index: null
+  search_text: what is an affine morphism and what is a quasi-affine morphism? a morphism $f \colon x
+    \to y$ is affine if $f^{-1}(v)$ is affine for every affine open $v \subset y$; it is quasi-affine
+    if it factors as a quasi-compact open immersion into an affine $y$-scheme.
+- id: math-stanford-edu-vakil-725-course-html#010
+  text: Why is the punctured affine plane $\mathbb{A}^2 \setminus \{0\}$ quasi-affine but not affine?
+  hint: It is a quasi-compact open subscheme of $\mathbb{A}^2$, but on the cover $\{D(x), D(y)\}$ the
+    Čech class $\frac{1}{xy}$ is not a coboundary in $k[x, x^{-1}] \oplus k[y, y^{-1}]$, so $H^1(\mathbb{A}^2
+    \setminus \{0\}, \mathcal{O}) \neq 0$, violating Serre's affineness criterion.
+  locator: null
+  sub_index: null
+  search_text: why is the punctured affine plane $\mathbb{a}^2 \setminus \{0\}$ quasi-affine but not affine?
+    it is a quasi-compact open subscheme of $\mathbb{a}^2$, but on the cover $\{d(x), d(y)\}$ the čech
+    class $\frac{1}{xy}$ is not a coboundary in $k[x, x^{-1}] \oplus k[y, y^{-1}]$, so $h^1(\mathbb{a}^2
+    \setminus \{0\}, \mathcal{o}) \neq 0$, violating serre's affineness criterion.
+- id: math-stanford-edu-vakil-725-course-html#011
+  text: What is a finite morphism and why does finite imply integral?
+  hint: A morphism is finite if it is affine and $f_* \mathcal{O}_X$ is a finitely generated $\mathcal{O}_Y$-module;
+    by the Cayley-Hamilton theorem, multiplication by any local section satisfies its own monic characteristic
+    polynomial, making it integral.
+  locator: null
+  sub_index: null
+  search_text: what is a finite morphism and why does finite imply integral? a morphism is finite if it
+    is affine and $f_* \mathcal{o}_x$ is a finitely generated $\mathcal{o}_y$-module; by the cayley-hamilton
+    theorem, multiplication by any local section satisfies its own monic characteristic polynomial, making
+    it integral.
+- id: math-stanford-edu-vakil-725-course-html#012
+  text: What is a quasi-finite morphism?
+  hint: A morphism $f \colon X \to Y$ that is locally of finite type and has discrete, finite fibers $f^{-1}(y)$
+    for every point $y \in Y$.
+  locator: null
+  sub_index: null
+  search_text: what is a quasi-finite morphism? a morphism $f \colon x \to y$ that is locally of finite
+    type and has discrete, finite fibers $f^{-1}(y)$ for every point $y \in y$.
+- id: math-stanford-edu-vakil-725-course-html#013
+  text: What is the difference between locally of finite type and locally of finite presentation?
+  hint: On affine charts $A = R[x_1, \dots, x_n]/I$, finite type requires finitely many generators $x_i$
+    with arbitrary ideal $I$, while finite presentation requires both finitely many generators and a finitely
+    generated ideal $I$.
+  locator: null
+  sub_index: null
+  search_text: what is the difference between locally of finite type and locally of finite presentation?
+    on affine charts $a = r[x_1, \dots, x_n]/i$, finite type requires finitely many generators $x_i$ with
+    arbitrary ideal $i$, while finite presentation requires both finitely many generators and a finitely
+    generated ideal $i$.
+- id: math-stanford-edu-vakil-725-course-html#014
+  text: Why does locally of finite type equal locally of finite presentation over a Noetherian base?
+  hint: By the Hilbert Basis Theorem, $R[x_1, \dots, x_n]$ is Noetherian whenever $R$ is Noetherian, so
+    every ideal $I$ is automatically finitely generated.
+  locator: null
+  sub_index: null
+  search_text: why does locally of finite type equal locally of finite presentation over a noetherian
+    base? by the hilbert basis theorem, $r[x_1, \dots, x_n]$ is noetherian whenever $r$ is noetherian,
+    so every ideal $i$ is automatically finitely generated.
+- id: math-stanford-edu-vakil-725-course-html#015
+  text: What are the factorizations characterizing finite morphisms?
+  hint: Finite $\iff$ proper $+$ quasi-finite $\iff$ affine $+$ proper; finiteness implies universal closedness
+    via the Lying Over and Going Up theorems for integral ring extensions.
+  locator: null
+  sub_index: null
+  search_text: what are the factorizations characterizing finite morphisms? finite $\iff$ proper $+$ quasi-finite
+    $\iff$ affine $+$ proper; finiteness implies universal closedness via the lying over and going up
+    theorems for integral ring extensions.
+- id: math-stanford-edu-vakil-725-course-html#016
+  text: Why are closed immersions always finite and affine?
+  hint: For $\mathrm{Spec}(A/I) \hookrightarrow \mathrm{Spec}(A)$, the target is affine and the pushforward
+    sheaf $(A/I)$ is generated by the single element $1$ as an $A$-module, which is finite.
+  locator: null
+  sub_index: null
+  search_text: why are closed immersions always finite and affine? for $\mathrm{spec}(a/i) \hookrightarrow
+    \mathrm{spec}(a)$, the target is affine and the pushforward sheaf $(a/i)$ is generated by the single
+    element $1$ as an $a$-module, which is finite.
+- id: math-stanford-edu-vakil-725-course-html#017
+  text: What is a flat morphism and what is a faithfully flat morphism?
+  hint: Flat means the local ring $\mathcal{O}_{X, x}$ is a flat $\mathcal{O}_{Y, f(x)}$-module for all
+    $x$ ($\mathrm{Tor}_1 = 0$); faithfully flat means flat and surjective, which is equivalent to being
+    flat and reflecting non-zero modules ($M \otimes_R S = 0 \implies M = 0$).
+  locator: null
+  sub_index: null
+  search_text: what is a flat morphism and what is a faithfully flat morphism? flat means the local ring
+    $\mathcal{o}_{x, x}$ is a flat $\mathcal{o}_{y, f(x)}$-module for all $x$ ($\mathrm{tor}_1 = 0$);
+    faithfully flat means flat and surjective, which is equivalent to being flat and reflecting non-zero
+    modules ($m \otimes_r s = 0 \implies m = 0$).
+- id: math-stanford-edu-vakil-725-course-html#018
+  text: What is an unramified morphism and how does it relate to the diagonal?
+  hint: A morphism locally of finite type with $\Omega_{X/Y}^1 = 0$; via the diagonal formula $\Omega_{X/Y}^1
+    \cong \mathcal{I}_\Delta / \mathcal{I}_\Delta^2$, $\Omega_{X/Y}^1 = 0 \iff \Delta$ is an open immersion
+    which comes from Nakayama's lemma.
+  locator: null
+  sub_index: null
+  search_text: what is an unramified morphism and how does it relate to the diagonal? a morphism locally
+    of finite type with $\omega_{x/y}^1 = 0$; via the diagonal formula $\omega_{x/y}^1 \cong \mathcal{i}_\delta
+    / \mathcal{i}_\delta^2$, $\omega_{x/y}^1 = 0 \iff \delta$ is an open immersion which comes from nakayama's
+    lemma.
+- id: math-stanford-edu-vakil-725-course-html#019
+  text: What is formal unramifiedness and how do square-zero extensions detect derivatives?
+  hint: A morphism is formally unramified if two lifts of any square-zero thickening $J^2 = 0$ are unique;
+    two lifts differ by a $Y$-derivation in $\mathrm{Hom}(\Omega_{X/Y}^1, J)$, which vanishes for all
+    $J$ if and only if $\Omega_{X/Y}^1 = 0$.
+  locator: null
+  sub_index: null
+  search_text: what is formal unramifiedness and how do square-zero extensions detect derivatives? a morphism
+    is formally unramified if two lifts of any square-zero thickening $j^2 = 0$ are unique; two lifts
+    differ by a $y$-derivation in $\mathrm{hom}(\omega_{x/y}^1, j)$, which vanishes for all $j$ if and
+    only if $\omega_{x/y}^1 = 0$.
+- id: math-stanford-edu-vakil-725-course-html#020
+  text: What is a smooth morphism and its characterization via the Jacobian criterion?
+  hint: A morphism that is flat, locally of finite presentation, and whose geometric fibers are smooth
+    varieties; locally on $V(f_1, \dots, f_r) \subset \mathbb{A}_Y^n$, smoothness of relative dimension
+    $n-r$ is equivalent to the Jacobian matrix $(\partial f_i / \partial x_j)$ having rank $r$ at all
+    points.
+  locator: null
+  sub_index: null
+  search_text: what is a smooth morphism and its characterization via the jacobian criterion? a morphism
+    that is flat, locally of finite presentation, and whose geometric fibers are smooth varieties; locally
+    on $v(f_1, \dots, f_r) \subset \mathbb{a}_y^n$, smoothness of relative dimension $n-r$ is equivalent
+    to the jacobian matrix $(\partial f_i / \partial x_j)$ having rank $r$ at all points.
+- id: math-stanford-edu-vakil-725-course-html#021
+  text: What is the local criterion of regularity for flat local homomorphisms $(R, \mathfrak{m}) \to
+    (S, \mathfrak{n})$?
+  hint: $S$ is a regular local ring if and only if $R$ is regular and the fiber ring $S/\mathfrak{m}S$
+    is regular, proved via the polynomial isomorphism $\mathrm{gr}_\mathfrak{m}(R) \otimes \mathrm{gr}(S/\mathfrak{m}S)
+    \cong \mathrm{gr}_\mathfrak{n}(S)$.
+  locator: null
+  sub_index: null
+  search_text: what is the local criterion of regularity for flat local homomorphisms $(r, \mathfrak{m})
+    \to (s, \mathfrak{n})$? $s$ is a regular local ring if and only if $r$ is regular and the fiber ring
+    $s/\mathfrak{m}s$ is regular, proved via the polynomial isomorphism $\mathrm{gr}_\mathfrak{m}(r) \otimes
+    \mathrm{gr}(s/\mathfrak{m}s) \cong \mathrm{gr}_\mathfrak{n}(s)$.
+- id: math-stanford-edu-vakil-725-course-html#022
+  text: Why does regular local imply Cohen-Macaulay, UFD, and normal?
+  hint: The maximal ideal of a regular local ring is generated by a regular sequence of length $d = \dim(R)$,
+    so $\mathrm{depth}(R) = \dim(R)$ (Cohen-Macaulay); by the Auslander-Buchsbaum theorem, regular local
+    rings are UFDs, and UFDs are integrally closed (normal).
+  locator: null
+  sub_index: null
+  search_text: why does regular local imply cohen-macaulay, ufd, and normal? the maximal ideal of a regular
+    local ring is generated by a regular sequence of length $d = \dim(r)$, so $\mathrm{depth}(r) = \dim(r)$
+    (cohen-macaulay); by the auslander-buchsbaum theorem, regular local rings are ufds, and ufds are integrally
+    closed (normal).
+- id: math-stanford-edu-vakil-725-course-html#023
+  text: What is a syntomic morphism and why is it important in prismatic $F$-gauges?
+  hint: A morphism that is flat, locally of finite presentation, and has local complete intersection (lci)
+    fibers; in prismatic theory, syntomic $\iff$ the cotangent complex $\mathbb{L}_{X/Y}$ has Tor-amplitude
+    in $[-1, 0]$, which ensures the Nygaard filtration produces well-behaved syntomic cohomology sheaves.
+  locator: null
+  sub_index: null
+  search_text: what is a syntomic morphism and why is it important in prismatic $f$-gauges? a morphism
+    that is flat, locally of finite presentation, and has local complete intersection (lci) fibers; in
+    prismatic theory, syntomic $\iff$ the cotangent complex $\mathbb{l}_{x/y}$ has tor-amplitude in $[-1,
+    0]$, which ensures the nygaard filtration produces well-behaved syntomic cohomology sheaves.
+- id: math-stanford-edu-vakil-725-course-html#024
+  text: Why does flat plus locally of finite presentation imply universally open?
+  hint: By Chevalley's theorem, finite presentation ensures images are constructible; generic flatness
+    combined with the Going-Down property for flat extensions ensures that constructible sets are open.
+  locator: null
+  sub_index: null
+  search_text: why does flat plus locally of finite presentation imply universally open? by chevalley's
+    theorem, finite presentation ensures images are constructible; generic flatness combined with the
+    going-down property for flat extensions ensures that constructible sets are open.
+- id: math-stanford-edu-vakil-725-course-html#025
+  text: What is an étale morphism as a local algebraic isomorphism?
+  hint: A morphism $f \colon X \to Y$ that is flat and unramified; locally it factors as an open immersion
+    into $\mathrm{Spec}(\mathcal{O}_Y[t]/(p(t)))$ where the derivative $p'(t)$ is a unit, formalizing
+    the inverse function theorem.
+  locator: null
+  sub_index: null
+  search_text: what is an étale morphism as a local algebraic isomorphism? a morphism $f \colon x \to
+    y$ that is flat and unramified; locally it factors as an open immersion into $\mathrm{spec}(\mathcal{o}_y[t]/(p(t)))$
+    where the derivative $p'(t)$ is a unit, formalizing the inverse function theorem.
+- id: math-stanford-edu-vakil-725-course-html#026
+  text: Why are open immersions automatically étale?
+  hint: An open immersion has $\Omega_{X/Y}^1 = 0$, is locally an isomorphism on stalks (flat), and is
+    locally of finite presentation.
+  locator: null
+  sub_index: null
+  search_text: why are open immersions automatically étale? an open immersion has $\omega_{x/y}^1 = 0$,
+    is locally an isomorphism on stalks (flat), and is locally of finite presentation.
+- id: math-stanford-edu-vakil-725-course-html#027
+  text: What is a proper morphism and its characterization via the Valuative Criterion?
+  hint: A morphism that is separated, of finite type, and universally closed; it is proper if and only
+    if for every valuation ring $R$ with fraction field $K$, every commutative square $\mathrm{Spec}(K)
+    \to X$, $\mathrm{Spec}(R) \to Y$ admits a unique lift $\mathrm{Spec}(R) \to X$.
+  locator: null
+  sub_index: null
+  search_text: what is a proper morphism and its characterization via the valuative criterion? a morphism
+    that is separated, of finite type, and universally closed; it is proper if and only if for every valuation
+    ring $r$ with fraction field $k$, every commutative square $\mathrm{spec}(k) \to x$, $\mathrm{spec}(r)
+    \to y$ admits a unique lift $\mathrm{spec}(r) \to x$.
+- id: math-stanford-edu-vakil-725-course-html#028
+  text: What is the difference between an EGA-projective morphism and a Hartshorne-projective morphism?
+  hint: EGA-projective means factoring as a closed immersion into $\mathbb{P}(E) = \mathrm{Proj}(\mathrm{Sym}(E))$
+    for a finite locally free sheaf $E$; Hartshorne-projective restricts $E$ to be a free sheaf, factoring
+    into $\mathbb{P}_Y^n$.
+  locator: null
+  sub_index: null
+  search_text: what is the difference between an ega-projective morphism and a hartshorne-projective morphism?
+    ega-projective means factoring as a closed immersion into $\mathbb{p}(e) = \mathrm{proj}(\mathrm{sym}(e))$
+    for a finite locally free sheaf $e$; hartshorne-projective restricts $e$ to be a free sheaf, factoring
+    into $\mathbb{p}_y^n$.
+- id: math-stanford-edu-vakil-725-course-html#029
+  text: Why is a proper scheme not necessarily projective (Hironaka's 3-fold)?
+  hint: Hironaka constructed a smooth proper 3-fold by blowing up two disjoint curves in $\mathbb{P}^3$
+    in opposite orders and gluing them; it contains an effective 1-cycle numerically equivalent to zero,
+    violating Kleiman's criterion that an ample bundle must intersect all curves positively.
+  locator: null
+  sub_index: null
+  search_text: why is a proper scheme not necessarily projective (hironaka's 3-fold)? hironaka constructed
+    a smooth proper 3-fold by blowing up two disjoint curves in $\mathbb{p}^3$ in opposite orders and
+    gluing them; it contains an effective 1-cycle numerically equivalent to zero, violating kleiman's
+    criterion that an ample bundle must intersect all curves positively.
+- id: math-stanford-edu-vakil-725-course-html#030
+  text: What are the four types of scheme-theoretic points?
+  hint: '(1) $k$-rational point: a section $\mathrm{Spec}(k) \to X$ with residue field $k$; (2) Closed
+    point: a point whose residue field is algebraic over the base field; (3) Geometric point: a morphism
+    $\mathrm{Spec}(\overline{k}) \to X$; (4) Generic point: the unique dense point of an irreducible component
+    whose local ring is the function field $K(X)$.'
+  locator: null
+  sub_index: null
+  search_text: 'what are the four types of scheme-theoretic points? (1) $k$-rational point: a section
+    $\mathrm{spec}(k) \to x$ with residue field $k$; (2) closed point: a point whose residue field is
+    algebraic over the base field; (3) geometric point: a morphism $\mathrm{spec}(\overline{k}) \to x$;
+    (4) generic point: the unique dense point of an irreducible component whose local ring is the function
+    field $k(x)$.'
+- id: math-stanford-edu-vakil-725-course-html#031
+  text: What is a normal scheme and what is the universal property of normalization?
+  hint: A scheme is normal if all local rings are integrally closed domains; the normalization $\widetilde{X}
+    \to X$ is the unique initial scheme among all finite birational morphisms from normal schemes to $X$,
+    and $X$ is normal if and only if $\widetilde{X} \to X$ is an isomorphism.
+  locator: null
+  sub_index: null
+  search_text: what is a normal scheme and what is the universal property of normalization? a scheme is
+    normal if all local rings are integrally closed domains; the normalization $\widetilde{x} \to x$ is
+    the unique initial scheme among all finite birational morphisms from normal schemes to $x$, and $x$
+    is normal if and only if $\widetilde{x} \to x$ is an isomorphism.
+- id: math-stanford-edu-vakil-725-course-html#032
+  text: How does the tangent cone distinguish a node from a cusp?
+  hint: The tangent cone is the zero locus of the lowest-degree homogeneous terms of the local equation;
+    for a nodal cubic $y^2 = x^2(x+1)$, the tangent cone $y^2 - x^2 = (y-x)(y+x)$ splits into two distinct
+    lines, whereas for a cuspidal cubic $y^2 = x^3$, the tangent cone $y^2 = 0$ is a double line.
+  locator: null
+  sub_index: null
+  search_text: how does the tangent cone distinguish a node from a cusp? the tangent cone is the zero
+    locus of the lowest-degree homogeneous terms of the local equation; for a nodal cubic $y^2 = x^2(x+1)$,
+    the tangent cone $y^2 - x^2 = (y-x)(y+x)$ splits into two distinct lines, whereas for a cuspidal cubic
+    $y^2 = x^3$, the tangent cone $y^2 = 0$ is a double line.
+- id: math-stanford-edu-vakil-725-course-html#033
+  text: What is Zariski's Main Theorem?
+  hint: 'Every separated quasi-finite morphism of finite type $f \colon X \to Y$ between Noetherian schemes
+    factors as an open immersion followed by a finite morphism: $X \hookrightarrow X'' \to Y$.'
+  locator: null
+  sub_index: null
+  search_text: 'what is zariski''s main theorem? every separated quasi-finite morphism of finite type
+    $f \colon x \to y$ between noetherian schemes factors as an open immersion followed by a finite morphism:
+    $x \hookrightarrow x'' \to y$.'
+- id: math-stanford-edu-vakil-725-course-html#034
+  text: What is fpqc descent and why is it important?
+  hint: Descent along faithfully flat and quasi-compact morphisms; it is the finest standard topology
+    for which quasi-coherent sheaves, module finiteness, and affineness satisfy effective descent.
+  locator: null
+  sub_index: null
+  search_text: what is fpqc descent and why is it important? descent along faithfully flat and quasi-compact
+    morphisms; it is the finest standard topology for which quasi-coherent sheaves, module finiteness,
+    and affineness satisfy effective descent.
+- id: math-stanford-edu-vakil-725-course-html#035
+  text: How does Grothendieck-Verdier duality specialize to Serre duality on smooth varieties?
+  hint: For $f \colon X \to \mathrm{Spec}(k)$ smooth of dimension $d$, relative purity gives $f^!(k) \cong
+    \omega_X[d]$ where $\omega_X = \Omega_{X/k}^d$; applying the $(f_!, f^!)$ adjunction to $f_! \cong
+    f_*$ on proper varieties yields $H^i(X, \mathcal{F})^\vee \cong H^{d-i}(X, \mathcal{F}^\vee \otimes
+    \omega_X)$.
+  locator: null
+  sub_index: null
+  search_text: how does grothendieck-verdier duality specialize to serre duality on smooth varieties?
+    for $f \colon x \to \mathrm{spec}(k)$ smooth of dimension $d$, relative purity gives $f^!(k) \cong
+    \omega_x[d]$ where $\omega_x = \omega_{x/k}^d$; applying the $(f_!, f^!)$ adjunction to $f_! \cong
+    f_*$ on proper varieties yields $h^i(x, \mathcal{f})^\vee \cong h^{d-i}(x, \mathcal{f}^\vee \otimes
+    \omega_x)$.
+- id: math-stanford-edu-vakil-725-course-html#036
+  text: What are the general rules for stability of morphism properties under base change?
+  hint: (1) Properties defined by module tensor products ($\mathrm{Tor}=0$, finite generation, $\Omega=0$)
+    are stable; (2) Properties defined by the diagonal $\Delta$ having a stable property are stable; (3)
+    Properties depending on non-algebraically closed fields (irreducibility, reducedness in char $p$)
+    fail under base change and require "geometric" hypotheses.
+  locator: null
+  sub_index: null
+  search_text: what are the general rules for stability of morphism properties under base change? (1)
+    properties defined by module tensor products ($\mathrm{tor}=0$, finite generation, $\omega=0$) are
+    stable; (2) properties defined by the diagonal $\delta$ having a stable property are stable; (3) properties
+    depending on non-algebraically closed fields (irreducibility, reducedness in char $p$) fail under
+    base change and require "geometric" hypotheses.
+- id: math-stanford-edu-vakil-725-course-html#037
+  text: Why does the squaring map $x \mapsto x^2$ on $\mathbb{A}^1$ fail to be unramified at the origin?
+  hint: The differential satisfies $d(x^2) = 2x\,dx$; at $x = 0$, $2x\,dx = 0$, so $\Omega^1$ cannot be
+    generated by $d(x^2)$, leaving a non-zero fiber $\Omega^1 \otimes k(0) \neq 0$.
+  locator: null
+  sub_index: null
+  search_text: why does the squaring map $x \mapsto x^2$ on $\mathbb{a}^1$ fail to be unramified at the
+    origin? the differential satisfies $d(x^2) = 2x\,dx$; at $x = 0$, $2x\,dx = 0$, so $\omega^1$ cannot
+    be generated by $d(x^2)$, leaving a non-zero fiber $\omega^1 \otimes k(0) \neq 0$.
+- id: math-stanford-edu-vakil-725-course-html#038
+  text: What is a quasi-coherent sheaf and why are $A$-modules equivalent to quasi-coherent sheaves on
+    $\mathrm{Spec}(A)$?
+  hint: A sheaf that is locally isomorphic to $\widetilde{M}$ on affine charts; the functor $M \mapsto
+    \widetilde{M}$ is an exact equivalence with quasi-inverse $\Gamma(\mathrm{Spec}(A), -)$, which implies
+    that all higher cohomology groups $H^{i>0}(\mathrm{Spec}(A), \mathcal{F}) = 0$ vanish on affines.
+  locator: null
+  sub_index: null
+  search_text: what is a quasi-coherent sheaf and why are $a$-modules equivalent to quasi-coherent sheaves
+    on $\mathrm{spec}(a)$? a sheaf that is locally isomorphic to $\widetilde{m}$ on affine charts; the
+    functor $m \mapsto \widetilde{m}$ is an exact equivalence with quasi-inverse $\gamma(\mathrm{spec}(a),
+    -)$, which implies that all higher cohomology groups $h^{i>0}(\mathrm{spec}(a), \mathcal{f}) = 0$
+    vanish on affines.
+- id: math-stanford-edu-vakil-725-course-html#039
+  text: State Serre's criterion for affineness
+  hint: A Noetherian scheme $X$ is affine if and only if $H^i(X, \mathcal{F}) = 0$ for all $i > 0$ and
+    all quasi-coherent sheaves $\mathcal{F}$.
+  locator: null
+  sub_index: null
+  search_text: state serre's criterion for affineness a noetherian scheme $x$ is affine if and only if
+    $h^i(x, \mathcal{f}) = 0$ for all $i > 0$ and all quasi-coherent sheaves $\mathcal{f}$.
+- id: math-stanford-edu-vakil-725-course-html#040
+  text: Why does Čech cohomology compute derived functor sheaf cohomology on separated schemes with affine
+    covers?
+  hint: Separatedness guarantees that finite intersections of affine open sets in the cover remain affine;
+    since affines have vanishing higher cohomology, the Čech resolution is acyclic and computes $\mathbf{R}\Gamma(X,
+    \mathcal{F})$.
+  locator: null
+  sub_index: null
+  search_text: why does čech cohomology compute derived functor sheaf cohomology on separated schemes
+    with affine covers? separatedness guarantees that finite intersections of affine open sets in the
+    cover remain affine; since affines have vanishing higher cohomology, the čech resolution is acyclic
+    and computes $\mathbf{r}\gamma(x, \mathcal{f})$.
+- id: math-stanford-edu-vakil-725-course-html#041
+  text: What is the relationship between Cartier divisors and Weil divisors on normal schemes?
+  hint: A Cartier divisor is a global section of $\mathcal{K}_X^\times / \mathcal{O}_X^\times$; a Weil
+    divisor is a formal sum $\sum n_i Z_i$ of codimension-1 cycles; on normal schemes, Cartier divisors
+    inject into Weil divisors via $\operatorname{div}(f) = \sum \mathrm{ord}_{Z_i}(f) Z_i$, and they coincide
+    if and only if the scheme is locally factorial (e.g., regular).
+  locator: null
+  sub_index: null
+  search_text: what is the relationship between cartier divisors and weil divisors on normal schemes?
+    a cartier divisor is a global section of $\mathcal{k}_x^\times / \mathcal{o}_x^\times$; a weil divisor
+    is a formal sum $\sum n_i z_i$ of codimension-1 cycles; on normal schemes, cartier divisors inject
+    into weil divisors via $\operatorname{div}(f) = \sum \mathrm{ord}_{z_i}(f) z_i$, and they coincide
+    if and only if the scheme is locally factorial (e.g., regular).
+- id: math-stanford-edu-vakil-725-course-html#042
+  text: What is an ample line bundle and Serre's criterion for ampleness?
+  hint: A line bundle $\mathcal{L}$ is ample if $\mathcal{L}^{\otimes m}$ is very ample for some $m \ge
+    1$; Serre's criterion states that $\mathcal{L}$ is ample if and only if for every coherent sheaf $\mathcal{F}$,
+    $\mathcal{F} \otimes \mathcal{L}^{\otimes n}$ is generated by global sections and $H^{i>0}(X, \mathcal{F}
+    \otimes \mathcal{L}^{\otimes n}) = 0$ for all $n \gg 0$.
+  locator: null
+  sub_index: null
+  search_text: what is an ample line bundle and serre's criterion for ampleness? a line bundle $\mathcal{l}$
+    is ample if $\mathcal{l}^{\otimes m}$ is very ample for some $m \ge 1$; serre's criterion states that
+    $\mathcal{l}$ is ample if and only if for every coherent sheaf $\mathcal{f}$, $\mathcal{f} \otimes
+    \mathcal{l}^{\otimes n}$ is generated by global sections and $h^{i>0}(x, \mathcal{f} \otimes \mathcal{l}^{\otimes
+    n}) = 0$ for all $n \gg 0$.
+- id: math-stanford-edu-vakil-725-course-html#043
+  text: State Kleiman's criterion for ampleness
+  hint: A line bundle $\mathcal{L}$ on a projective scheme is ample if and only if its numerical cycle
+    class lies in the interior of the cone of curves $\overline{\mathrm{NE}}(X)$, having strictly positive
+    intersection $\mathcal{L} \cdot C > 0$ with every non-zero effective curve class.
+  locator: null
+  sub_index: null
+  search_text: state kleiman's criterion for ampleness a line bundle $\mathcal{l}$ on a projective scheme
+    is ample if and only if its numerical cycle class lies in the interior of the cone of curves $\overline{\mathrm{ne}}(x)$,
+    having strictly positive intersection $\mathcal{l} \cdot c > 0$ with every non-zero effective curve
+    class.
+- id: math-stanford-edu-vakil-725-course-html#044
+  text: State the Riemann-Roch Theorem for smooth projective curves
+  hint: $\ell(D) - \ell(K_X - D) = \deg(D) + 1 - g$, where $\ell(D) = \dim H^0(X, \mathcal{O}_X(D))$ and
+    $g = \dim H^1(X, \mathcal{O}_X)$ is the genus; the correction term $\ell(K_X - D) = \dim H^1(X, \mathcal{O}_X(D))$
+    is identified via Serre duality.
+  locator: null
+  sub_index: null
+  search_text: state the riemann-roch theorem for smooth projective curves $\ell(d) - \ell(k_x - d) =
+    \deg(d) + 1 - g$, where $\ell(d) = \dim h^0(x, \mathcal{o}_x(d))$ and $g = \dim h^1(x, \mathcal{o}_x)$
+    is the genus; the correction term $\ell(k_x - d) = \dim h^1(x, \mathcal{o}_x(d))$ is identified via
+    serre duality.
+- id: math-stanford-edu-vakil-725-course-html#045
+  text: How is the dimension of an algebraic variety computed via function fields?
+  hint: For an integral scheme $X$ of finite type over a field $k$, $\dim(X) = \mathrm{trdeg}_k(K(X))$,
+    the transcendence degree of its function field over $k$.
+  locator: null
+  sub_index: null
+  search_text: how is the dimension of an algebraic variety computed via function fields? for an integral
+    scheme $x$ of finite type over a field $k$, $\dim(x) = \mathrm{trdeg}_k(k(x))$, the transcendence
+    degree of its function field over $k$.
+- id: math-stanford-edu-vakil-725-course-html#046
+  text: State Krull's Principal Ideal Theorem (Hauptidealsatz)
+  hint: In a Noetherian ring $R$, every minimal prime ideal $\mathfrak{p}$ containing an element $f$ has
+    height $\mathrm{height}(\mathfrak{p}) \le 1$; for an ideal generated by $r$ elements, $\mathrm{height}(\mathfrak{p})
+    \le r$, proving that $\dim(\mathfrak{m}/\mathfrak{m}^2) \ge \dim(R)$.
+  locator: null
+  sub_index: null
+  search_text: state krull's principal ideal theorem (hauptidealsatz) in a noetherian ring $r$, every
+    minimal prime ideal $\mathfrak{p}$ containing an element $f$ has height $\mathrm{height}(\mathfrak{p})
+    \le 1$; for an ideal generated by $r$ elements, $\mathrm{height}(\mathfrak{p}) \le r$, proving that
+    $\dim(\mathfrak{m}/\mathfrak{m}^2) \ge \dim(r)$.
+- id: math-stanford-edu-vakil-725-course-html#047
+  text: What is the blow-up of a scheme $X$ along a closed subscheme $Z$?
+  hint: The projective scheme $\mathrm{Bl}_Z(X) := \mathrm{Proj}_X\left(\bigoplus_{n \ge 0} \mathcal{I}_Z^n\right)$
+    over $X$, whose exceptional divisor $E = \mathrm{Proj}_Z\left(\bigoplus_{n \ge 0} \mathcal{I}_Z^n
+    / \mathcal{I}_Z^{n+1}\right)$ is the projectivized normal cone.
+  locator: null
+  sub_index: null
+  search_text: what is the blow-up of a scheme $x$ along a closed subscheme $z$? the projective scheme
+    $\mathrm{bl}_z(x) := \mathrm{proj}_x\left(\bigoplus_{n \ge 0} \mathcal{i}_z^n\right)$ over $x$, whose
+    exceptional divisor $e = \mathrm{proj}_z\left(\bigoplus_{n \ge 0} \mathcal{i}_z^n / \mathcal{i}_z^{n+1}\right)$
+    is the projectivized normal cone.
+- id: math-stanford-edu-vakil-725-course-html#048
+  text: What is the constant Hilbert polynomial criterion for flatness in projective families?
+  hint: For a projective morphism $f \colon X \to Y$ into an integral Noetherian scheme $Y$, $f$ is flat
+    if and only if the Hilbert polynomial $P_{X_y}(m)$ of the fibers with respect to a relative $\mathcal{O}(1)$
+    is constant for all $y \in Y$.
+  locator: null
+  sub_index: null
+  search_text: what is the constant hilbert polynomial criterion for flatness in projective families?
+    for a projective morphism $f \colon x \to y$ into an integral noetherian scheme $y$, $f$ is flat if
+    and only if the hilbert polynomial $p_{x_y}(m)$ of the fibers with respect to a relative $\mathcal{o}(1)$
+    is constant for all $y \in y$.
+- id: math-stanford-edu-vakil-725-course-html#049
+  text: What is the Upper Semicontinuity Theorem for cohomology in proper families?
+  hint: For a proper flat morphism $f \colon X \to Y$ and a flat coherent sheaf $\mathcal{F}$, the function
+    $y \mapsto \dim_{k(y)} H^i(X_y, \mathcal{F}_y)$ is upper semicontinuous, and the Euler characteristic
+    $y \mapsto \chi(X_y, \mathcal{F}_y)$ is locally constant.
+  locator: null
+  sub_index: null
+  search_text: what is the upper semicontinuity theorem for cohomology in proper families? for a proper
+    flat morphism $f \colon x \to y$ and a flat coherent sheaf $\mathcal{f}$, the function $y \mapsto
+    \dim_{k(y)} h^i(x_y, \mathcal{f}_y)$ is upper semicontinuous, and the euler characteristic $y \mapsto
+    \chi(x_y, \mathcal{f}_y)$ is locally constant.
+- id: math-stanford-edu-vakil-725-course-html#050
+  text: What is the Cohomology and Base Change Theorem?
+  hint: If the dimension $\dim_{k(y)} H^i(X_y, \mathcal{F}_y)$ is constant on a neighborhood of $y$, then
+    the base change map $(R^i f_* \mathcal{F}) \otimes k(y) \xrightarrow{\sim} H^i(X_y, \mathcal{F}_y)$
+    is an isomorphism and $R^i f_* \mathcal{F}$ is locally free near $y$; if $H^{i+1}(X_y, \mathcal{F}_y)
+    = 0$, the same base change isomorphism holds for $R^i f_* \mathcal{F}$.
+  locator: null
+  sub_index: null
+  search_text: what is the cohomology and base change theorem? if the dimension $\dim_{k(y)} h^i(x_y,
+    \mathcal{f}_y)$ is constant on a neighborhood of $y$, then the base change map $(r^i f_* \mathcal{f})
+    \otimes k(y) \xrightarrow{\sim} h^i(x_y, \mathcal{f}_y)$ is an isomorphism and $r^i f_* \mathcal{f}$
+    is locally free near $y$; if $h^{i+1}(x_y, \mathcal{f}_y) = 0$, the same base change isomorphism holds
+    for $r^i f_* \mathcal{f}$.
