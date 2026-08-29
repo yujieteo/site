@@ -332,15 +332,15 @@ exercises:
   search_text: construct a diagram describing homotopies between morphisms as 2-simplices, and define
     composition up to coherent homotopy in an $\infty$-category
 - id: www-preschema-com-papers-stacksncts-pdf#027
-  text: Describe the Duskin nerve of a 2-category as a simplicial set whose 0-simplices are objects, 1-simplices
-    are 1-morphisms, and 2-simplices are 2-morphisms with coherence data
+  text: Describe the Duskin nerve of a 2-ca`tegory as a simplicial set whose 0-simplices are objects,
+    1-simplices are 1-morphisms, and 2-simplices are 2-morphisms with coherence data
   hint: null
   locator:
     kind: page
     value: '12'
     number: 12
   sub_index: 0
-  search_text: describe the duskin nerve of a 2-category as a simplicial set whose 0-simplices are objects,
+  search_text: describe the duskin nerve of a 2-ca`tegory as a simplicial set whose 0-simplices are objects,
     1-simplices are 1-morphisms, and 2-simplices are 2-morphisms with coherence data
 - id: www-preschema-com-papers-stacksncts-pdf#028
   text: Compute the compatibility relations satisfied by 3-simplices in the Duskin nerve
