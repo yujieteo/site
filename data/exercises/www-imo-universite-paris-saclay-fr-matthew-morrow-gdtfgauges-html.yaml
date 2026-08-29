@@ -77,19 +77,6 @@ exercises:
     product of differential forms with the lie bracket of matrices to define $a \wedge a = \sum_{a, b}
     (t^a t^b) a^a \wedge a^b$.'
 - id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#006
-  text: Is the statement of the first de Rham cohomology related to the Fundamental Theorem of Calculus?
-  hint: Yes; $H_{\mathrm{dR}}^1(X) = \ker(d_1)/\mathrm{im}(d_0)$ measures the exact obstruction to finding
-    a global potential function $f$ whose derivative is a given closed 1-form $\omega$ ($df = \omega$),
-    which is the global topological obstruction to the Fundamental Theorem of Calculus $\int_a^b \omega
-    = f(b) - f(a)$.
-  locator: null
-  sub_index: null
-  search_text: is the statement of the first de rham cohomology related to the fundamental theorem of
-    calculus? yes; $h_{\mathrm{dr}}^1(x) = \ker(d_1)/\mathrm{im}(d_0)$ measures the exact obstruction
-    to finding a global potential function $f$ whose derivative is a given closed 1-form $\omega$ ($df
-    = \omega$), which is the global topological obstruction to the fundamental theorem of calculus $\int_a^b
-    \omega = f(b) - f(a)$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#007
   text: How does one invent de Rham cohomology from the Fundamental Theorem of Calculus?
   hint: 'Motivation: determine when path integrals depend only on endpoints. Invention: form the quotient
     of closed forms (conservative fields $\nabla \times F = 0$) by exact forms (gradient fields $F = \nabla
@@ -100,7 +87,7 @@ exercises:
     determine when path integrals depend only on endpoints. invention: form the quotient of closed forms
     (conservative fields $\nabla \times f = 0$) by exact forms (gradient fields $f = \nabla f$), turning
     calculus into homology.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#008
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#007
   text: Why is $\delta()$ related to $p$-derivations?
   hint: A $p$-derivation $\delta(x) = \frac{\phi(x) - x^p}{p}$ satisfies $\delta(xy) = x^p \delta(y) +
     y^p \delta(x) + p\delta(x)\delta(y)$, which modulo $p$ reduces to the classical Leibniz rule $\delta(xy)
@@ -112,7 +99,7 @@ exercises:
     - x^p}{p}$ satisfies $\delta(xy) = x^p \delta(y) + y^p \delta(x) + p\delta(x)\delta(y)$, which modulo
     $p$ reduces to the classical leibniz rule $\delta(xy) \equiv x^p \delta(y) + y^p \delta(x) \pmod p$,
     acting as a non-linear arithmetic derivative with respect to the prime $p$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#009
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#008
   text: How does one invent $p$-derivations and what is the motivation?
   hint: 'Motivation: do differential calculus with respect to primes rather than geometric variables.
     Invention: take a Frobenius lift $\phi(x) = x^p + p\delta(x)$, solve for $\delta(x)$, and observe
@@ -123,7 +110,7 @@ exercises:
     calculus with respect to primes rather than geometric variables. invention: take a frobenius lift
     $\phi(x) = x^p + p\delta(x)$, solve for $\delta(x)$, and observe that $\delta$ acts on the prime $p$
     like an arithmetic gradient $\delta(x) \approx \frac{d x}{d p}$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#010
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#009
   text: Why care about crystalline cohomology and what are its direct applications to differential equations
     and vector bundles?
   hint: Crystalline cohomology computes the de Rham cohomology of a characteristic-$p$ variety lifted
@@ -137,7 +124,7 @@ exercises:
     variety lifted to characteristic 0; its crystals directly classify algebraic differential equations
     with regular singular points and vector bundles equipped with flat gauss-manin connections through
     their $p$-adic frobenius actions.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#011
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#010
   text: How does one invent crystalline cohomology and what is the motivation?
   hint: 'Motivation: construct a Weil cohomology theory with characteristic-0 coefficients for varieties
     in characteristic $p$. Invention: Grothendieck evaluated structure sheaves on the category of all
@@ -149,7 +136,7 @@ exercises:
     a weil cohomology theory with characteristic-0 coefficients for varieties in characteristic $p$. invention:
     grothendieck evaluated structure sheaves on the category of all infinitesimal divided-power thickenings
     $x \hookrightarrow t$, turning local differential equations into global geometric crystals.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#012
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#011
   text: How can one apply crystalline cohomology to solve concrete problems?
   hint: It proves the rationality and functional equations of Weil zeta functions for smooth projective
     varieties over $\mathbb{F}_q$, classifies $p$-divisible groups via Dieudonné theory, and computes
@@ -160,7 +147,7 @@ exercises:
     and functional equations of weil zeta functions for smooth projective varieties over $\mathbb{f}_q$,
     classifies $p$-divisible groups via dieudonné theory, and computes the dimension of the moduli space
     of deformations of abelian varieties.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#013
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#012
   text: How does one invent applications of crystalline cohomology?
   hint: 'Motivation: count solutions to polynomial equations over finite fields. Invention: express the
     number of rational points $\#X(\mathbb{F}_{q^n})$ as the alternating trace of the Frobenius operator
@@ -171,7 +158,7 @@ exercises:
     to polynomial equations over finite fields. invention: express the number of rational points $\#x(\mathbb{f}_{q^n})$
     as the alternating trace of the frobenius operator acting on the crystalline cohomology vector spaces
     $h_{\mathrm{crys}}^i(x/w(k))$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#014
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#013
   text: How can one use infinite towers of $p$-power roots?
   hint: Infinite towers of $p$-power roots $(x, x^{1/p}, x^{1/p^2}, \dots)$ eliminate ramification and
     $p$-torsion barriers, allowing mixed-characteristic rings $R$ to tilt into characteristic-$p$ perfectoid
@@ -182,7 +169,7 @@ exercises:
     $(x, x^{1/p}, x^{1/p^2}, \dots)$ eliminate ramification and $p$-torsion barriers, allowing mixed-characteristic
     rings $r$ to tilt into characteristic-$p$ perfectoid rings $r^\flat$ via the perfection of the frobenius
     map.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#015
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#014
   text: How does one invent the use of infinite towers of $p$-power roots?
   hint: 'Motivation: simplify $p$-adic Galois representations by passing to characteristic $p$. Invention:
     Fontaine and Scholze extracted all $p$-power roots simultaneously, defining $R^\flat = \varprojlim_{x
@@ -193,7 +180,7 @@ exercises:
     $p$-adic galois representations by passing to characteristic $p$. invention: fontaine and scholze
     extracted all $p$-power roots simultaneously, defining $r^\flat = \varprojlim_{x \mapsto x^p} r/pr$,
     turning arithmetic geometry into linear algebra over perfect fields.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#016
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#015
   text: Why care about Teichmüller representatives?
   hint: The Teichmüller map $[\cdot] \colon k \to W(k)$ provides the unique multiplicative section of
     the residue map $W(k) \twoheadrightarrow k$, allowing every $p$-adic element to be uniquely expanded
@@ -204,7 +191,7 @@ exercises:
     provides the unique multiplicative section of the residue map $w(k) \twoheadrightarrow k$, allowing
     every $p$-adic element to be uniquely expanded as a canonical power series $\sum a_n p^n$ without
     coordinate ambiguities.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#017
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#016
   text: How does one invent Teichmüller representatives and what is the motivation?
   hint: 'Motivation: write $p$-adic numbers in a canonical base-$p$ digit system. Invention: take the
     unique limit $[x] = \lim_{n \to \infty} \widetilde{x}^{p^n}$ of any lift $\widetilde{x} \in W(k)$,
@@ -215,7 +202,7 @@ exercises:
     write $p$-adic numbers in a canonical base-$p$ digit system. invention: take the unique limit $[x]
     = \lim_{n \to \infty} \widetilde{x}^{p^n}$ of any lift $\widetilde{x} \in w(k)$, which forces exact
     multiplicativity $[xy] = [x][y]$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#018
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#017
   text: Why care about entire Witt vector rings $W(R)$?
   hint: $W(R)$ is the universal functorial machine that takes a characteristic-$p$ ring $R$ and produces
     a strict $p$-torsion-free characteristic-0 ring $W(R)$ equipped with a canonical Frobenius lift $\phi$,
@@ -226,7 +213,7 @@ exercises:
     that takes a characteristic-$p$ ring $r$ and produces a strict $p$-torsion-free characteristic-0 ring
     $w(r)$ equipped with a canonical frobenius lift $\phi$, serving as the arithmetic base for all $p$-adic
     hodge theory.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#019
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#018
   text: How does one invent Witt vector rings and what is the motivation?
   hint: 'Motivation: find a functorial characteristic-0 lift of arbitrary commutative rings over $\mathbb{F}_p$.
     Invention: define universal polynomials for addition and multiplication on infinite sequences of coordinates
@@ -237,7 +224,7 @@ exercises:
     characteristic-0 lift of arbitrary commutative rings over $\mathbb{f}_p$. invention: define universal
     polynomials for addition and multiplication on infinite sequences of coordinates such that the ghost
     components $w_n(x) = \sum_{i=0}^n p^i x_i^{p^{n-i}}$ become ring homomorphisms.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#020
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#019
   text: Why care about the relationship and interpolation between algebraic de Rham cohomology and crystalline
     cohomology?
   hint: Prismatic cohomology $\mathbin{\Delta}_X$ acts as the universal master theory; specializing $\mathbin{\Delta}_X$
@@ -251,7 +238,7 @@ exercises:
     theory; specializing $\mathbin{\delta}_x$ along the frobenius-shifted divisor $v(\phi(i))$ yields
     algebraic de rham cohomology, while specializing at $i = (p)$ recovers crystalline cohomology, proving
     they are different fibers of a single 2-dimensional analytic space.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#021
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#020
   text: How does one invent the interpolation between de Rham and crystalline cohomology?
   hint: 'Motivation: understand how the Hodge filtration and crystalline Frobenius interact across mixed
     characteristic. Invention: construct a $\delta$-ring module over $A = W(k)[[u]]$ whose specialization
@@ -262,7 +249,7 @@ exercises:
     understand how the hodge filtration and crystalline frobenius interact across mixed characteristic.
     invention: construct a $\delta$-ring module over $a = w(k)[[u]]$ whose specialization at $u = 0$ is
     crystalline and whose specialization at $u = \pi$ is de rham.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#022
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#021
   text: What is a prismatic structure sheaf and how does it compare to the crystalline structure sheaf?
   hint: The crystalline structure sheaf $\mathcal{O}_{\mathrm{crys}}$ evaluates on divided-power thickenings
     $(U \hookrightarrow T, \delta)$ to return $T$; the prismatic structure sheaf $\mathcal{O}_{\mathbin{\Delta}}$
@@ -275,7 +262,7 @@ exercises:
     $(u \hookrightarrow t, \delta)$ to return $t$; the prismatic structure sheaf $\mathcal{o}_{\mathbin{\delta}}$
     evaluates on $\delta$-pair thickenings $(b, ib)$ to return the $\delta$-ring $b$, which does not require
     divided powers and thus works for arbitrarily ramified $p$-adic bases.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#023
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#022
   text: How does one invent the prismatic structure sheaf?
   hint: 'Motivation: eliminate divided-power singularities when $p$ ramifies ($e \ge p$). Invention: replace
     the divided-power condition on thickenings with the condition that $B$ is a $\delta$-ring and the
@@ -286,7 +273,7 @@ exercises:
     singularities when $p$ ramifies ($e \ge p$). invention: replace the divided-power condition on thickenings
     with the condition that $b$ is a $\delta$-ring and the ideal $i$ is a cartier divisor satisfying $p
     \in i + \phi(i)b$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#024
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#023
   text: What is the motivation behind inventing initial prisms?
   hint: The initial prism $(\mathbb{Z}_p, (p))$ (or $(W(k), (p))$) represents the final object in the
     category of prisms, ensuring that evaluating prismatic cohomology on the absolute base recovers the
@@ -296,7 +283,7 @@ exercises:
   search_text: what is the motivation behind inventing initial prisms? the initial prism $(\mathbb{z}_p,
     (p))$ (or $(w(k), (p))$) represents the final object in the category of prisms, ensuring that evaluating
     prismatic cohomology on the absolute base recovers the universal constant coefficients $\mathbb{z}_p$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#025
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#024
   text: How does one invent the initial prism?
   hint: 'Motivation: ground all prismatic cohomology theories over a canonical base ring of scalars. Invention:
     equip $\mathbb{Z}_p$ with the identity Frobenius lift $\phi(x) = x$ and the maximal ideal $I = (p)$,
@@ -306,7 +293,7 @@ exercises:
   search_text: 'how does one invent the initial prism? motivation: ground all prismatic cohomology theories
     over a canonical base ring of scalars. invention: equip $\mathbb{z}_p$ with the identity frobenius
     lift $\phi(x) = x$ and the maximal ideal $i = (p)$, satisfying $\delta(p) = 1 - p^{p-1} \in \mathbb{z}_p^\times$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#026
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#025
   text: What is the motivation for the Breuil-Kisin prism $(\mathfrak{S}, (E(u)))$?
   hint: It provides an explicit 2-dimensional coordinate prism $\mathfrak{S} = W(k)[[u]]$ with $I = (E(u))$
     for any totally ramified $p$-adic field $K = K_0(\pi)$, allowing crystalline and semi-stable Galois
@@ -317,7 +304,7 @@ exercises:
     an explicit 2-dimensional coordinate prism $\mathfrak{s} = w(k)[[u]]$ with $i = (e(u))$ for any totally
     ramified $p$-adic field $k = k_0(\pi)$, allowing crystalline and semi-stable galois representations
     to be computed using linear algebra over power series rings.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#027
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#026
   text: How does one invent the Breuil-Kisin prism?
   hint: 'Motivation: linearize Galois representations of ramified $p$-adic fields $\mathcal{O}_K \cong
     W(k)[[u]]/(E(u))$. Invention: equip $W(k)[[u]]$ with the Frobenius lift $\phi(u) = u^p$ and declare
@@ -328,7 +315,7 @@ exercises:
     of ramified $p$-adic fields $\mathcal{o}_k \cong w(k)[[u]]/(e(u))$. invention: equip $w(k)[[u]]$ with
     the frobenius lift $\phi(u) = u^p$ and declare the eisenstein polynomial $e(u)$ to be the principal
     cartier ideal.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#028
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#027
   text: Why care about the Nygaard filtration?
   hint: The Nygaard filtration $\mathcal{N}^{\ge i} \mathbin{\Delta}_X = \{x \mid \phi(x) \in I^i \mathbin{\Delta}_X\}$
     tracks the precise divisibility of the prismatic Frobenius by powers of the Cartier ideal, deforming
@@ -339,7 +326,7 @@ exercises:
     = \{x \mid \phi(x) \in i^i \mathbin{\delta}_x\}$ tracks the precise divisibility of the prismatic
     frobenius by powers of the cartier ideal, deforming directly into the classical hodge filtration upon
     reduction modulo $i$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#029
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#028
   text: How does one invent the Nygaard filtration?
   hint: 'Motivation: reconstruct the Hodge filtration from the Frobenius operator in mixed characteristic.
     Invention: measure the order of the zero of $\phi(x)$ along the Cartier divisor $V(I)$ and define
@@ -350,7 +337,7 @@ exercises:
     from the frobenius operator in mixed characteristic. invention: measure the order of the zero of $\phi(x)$
     along the cartier divisor $v(i)$ and define the $i$-th filtered step as the preimage of $i^i$ under
     $\phi$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#030
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#029
   text: Why care about Eisenstein polynomials $E(u) = u^e + p(a_{e-1}u^{e-1} + \dots + a_0)$?
   hint: An Eisenstein polynomial generates the principal ideal defining the ring of integers of a totally
     ramified extension $\mathcal{O}_K \cong W(k)[[u]]/(E(u))$ and satisfies the exact transversality condition
@@ -361,7 +348,7 @@ exercises:
     eisenstein polynomial generates the principal ideal defining the ring of integers of a totally ramified
     extension $\mathcal{o}_k \cong w(k)[[u]]/(e(u))$ and satisfies the exact transversality condition
     $\delta(e(u)) \in \mathfrak{s}^\times$ required for a prism.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#031
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#030
   text: How does one invent Eisenstein polynomials in prismatic geometry?
   hint: 'Motivation: construct a minimal algebraic equation for a chosen uniformizer $\pi \in \mathcal{O}_K$.
     Invention: require all lower coefficients to be divisible by $p$ and the constant term to be coprime
@@ -372,7 +359,7 @@ exercises:
     a minimal algebraic equation for a chosen uniformizer $\pi \in \mathcal{o}_k$. invention: require
     all lower coefficients to be divisible by $p$ and the constant term to be coprime to $p^2$, which
     forces the polynomial to define a cartier divisor transversal to $p$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#032
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#031
   text: What is the Artin-Schreier-Witt sequence and why care about it?
   hint: The short exact sequence $0 \to \mathbb{Z}_p \to W(\mathcal{O}) \xrightarrow{\phi - 1} W(\mathcal{O})
     \to 0$; it extracts the discrete topological $\mathbb{Z}_p$-étale local system from the Frobenius-fixed
@@ -383,7 +370,7 @@ exercises:
     $0 \to \mathbb{z}_p \to w(\mathcal{o}) \xrightarrow{\phi - 1} w(\mathcal{o}) \to 0$; it extracts the
     discrete topological $\mathbb{z}_p$-étale local system from the frobenius-fixed points of the coherent
     prismatic structure sheaf.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#033
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#032
   text: How does one invent the Artin-Schreier-Witt sequence?
   hint: 'Motivation: compute étale cohomology from coherent differential forms. Invention: generalize
     the classical Artin-Schreier sequence $0 \to \mathbb{F}_p \to \mathcal{O} \xrightarrow{F - 1} \mathcal{O}
@@ -394,7 +381,7 @@ exercises:
     from coherent differential forms. invention: generalize the classical artin-schreier sequence $0 \to
     \mathbb{f}_p \to \mathcal{o} \xrightarrow{f - 1} \mathcal{o} \to 0$ to higher $p$-power torsion and
     characteristic 0 using the witt vector frobenius lift $\phi$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#034
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#033
   text: Why care about syntomic complexes $\mathbb{Z}_p(n)(X)$?
   hint: Syntomic complexes compute $p$-adic motivic cohomology and algebraic $K$-theory for schemes over
     $\mathcal{O}_K$, providing the universal $p$-adic Chern classes and regulators that bridge arithmetic
@@ -404,7 +391,7 @@ exercises:
   search_text: why care about syntomic complexes $\mathbb{z}_p(n)(x)$? syntomic complexes compute $p$-adic
     motivic cohomology and algebraic $k$-theory for schemes over $\mathcal{o}_k$, providing the universal
     $p$-adic chern classes and regulators that bridge arithmetic geometry with galois representations.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#035
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#034
   text: How does one invent syntomic complexes?
   hint: 'Motivation: construct $p$-adic étale motivic cohomology without inverting $p$. Invention: Fontaine,
     Messing, and Bhatt define $\mathbb{Z}_p(n)$ as the homotopy equalizer $\mathrm{fib}\left( \mathcal{N}^{\ge
@@ -416,7 +403,7 @@ exercises:
     without inverting $p$. invention: fontaine, messing, and bhatt define $\mathbb{z}_p(n)$ as the homotopy
     equalizer $\mathrm{fib}\left( \mathcal{n}^{\ge n} \mathbin{\delta}_x\{n\} \xrightarrow{\phi_n - 1}
     \mathbin{\delta}_x\{n\} \right)$ between the divided frobenius and the canonical filtration inclusion.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#036
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#035
   text: Why invent $q$-deformations and what is their relation to prismatic ideals?
   hint: $q$-deformations replace classical derivatives with difference operators $D_q$; the $q$-analogue
     of the prime number $[p]_q = \frac{q^p - 1}{q - 1}$ generates the prismatic Cartier ideal $I = ([p]_q)$,
@@ -427,7 +414,7 @@ exercises:
     replace classical derivatives with difference operators $d_q$; the $q$-analogue of the prime number
     $[p]_q = \frac{q^p - 1}{q - 1}$ generates the prismatic cartier ideal $i = ([p]_q)$, showing that
     prismatic geometry is the geometric realization of $q$-calculus.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#037
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#036
   text: How does one invent the relation between $q$-deformations and prismatic ideals?
   hint: 'Motivation: deform de Rham cohomology into crystalline cohomology continuously. Invention: set
     $A = \mathbb{Z}_p[[q-1]]$ with $\phi(q) = q^p$ and observe that the Frobenius image of $q-1$ factors
@@ -438,7 +425,7 @@ exercises:
     deform de rham cohomology into crystalline cohomology continuously. invention: set $a = \mathbb{z}_p[[q-1]]$
     with $\phi(q) = q^p$ and observe that the frobenius image of $q-1$ factors as $(q-1)[p]_q$, making
     $[p]_q$ the canonical generator of the deformation kernel.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#038
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#037
   text: How are $q$-deformed primes a generalization of primes and why care about this?
   hint: $[p]_q = 1 + q + q^2 + \dots + q^{p-1}$ is an irreducible polynomial in $\mathbb{Z}[q]$ that evaluates
     to the prime number $p$ when $q=1$; it allows one to vary the prime $p$ as an algebraic curve parameter
@@ -449,7 +436,7 @@ exercises:
     = 1 + q + q^2 + \dots + q^{p-1}$ is an irreducible polynomial in $\mathbb{z}[q]$ that evaluates to
     the prime number $p$ when $q=1$; it allows one to vary the prime $p$ as an algebraic curve parameter
     across different characteristics.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#039
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#038
   text: How does one invent $q$-deformed primes?
   hint: 'Motivation: find an algebraic polynomial in a variable $q$ that degenerates to the prime $p$
     when the variable is evaluated at the identity. Invention: take the cyclotomic polynomial $\Phi_p(q)
@@ -459,7 +446,7 @@ exercises:
   search_text: 'how does one invent $q$-deformed primes? motivation: find an algebraic polynomial in a
     variable $q$ that degenerates to the prime $p$ when the variable is evaluated at the identity. invention:
     take the cyclotomic polynomial $\phi_p(q) = \frac{q^p - 1}{q - 1}$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#040
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#039
   text: Why care about cyclotomic prisms?
   hint: The cyclotomic prism $(\mathbb{Z}_p[[\mu]], ([p]_q))$ (where $\mu = q-1$) provides the universal
     prismatic background for the cyclotomic character, $q$-de Rham cohomology, and the construction of
@@ -469,7 +456,7 @@ exercises:
   search_text: why care about cyclotomic prisms? the cyclotomic prism $(\mathbb{z}_p[[\mu]], ([p]_q))$
     (where $\mu = q-1$) provides the universal prismatic background for the cyclotomic character, $q$-de
     rham cohomology, and the construction of fontaine's period ring $a_{\mathrm{inf}}$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#041
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#040
   text: How does one invent the cyclotomic prism?
   hint: 'Motivation: study the deformation space of the $p$-th roots of unity $\zeta_p$. Invention: set
     $\mu = [\varepsilon] - 1$ where $\varepsilon = (1, \zeta_p, \zeta_{p^2}, \dots)$ and compute its $\delta$-structure
@@ -479,7 +466,7 @@ exercises:
   search_text: 'how does one invent the cyclotomic prism? motivation: study the deformation space of the
     $p$-th roots of unity $\zeta_p$. invention: set $\mu = [\varepsilon] - 1$ where $\varepsilon = (1,
     \zeta_p, \zeta_{p^2}, \dots)$ and compute its $\delta$-structure via $\phi(\mu) = (1+\mu)^p - 1$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#042
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#041
   text: What does the specialization map $\theta \colon A \to A/I$ generalize?
   hint: It generalizes Fontaine's classical $\theta$-map $\theta \colon W(R^\flat) \to R$, the evaluation
     of power series at a point $u \mapsto \pi$, and the specialization of a family of varieties over a
@@ -490,7 +477,7 @@ exercises:
     classical $\theta$-map $\theta \colon w(r^\flat) \to r$, the evaluation of power series at a point
     $u \mapsto \pi$, and the specialization of a family of varieties over a curve to a single central
     fiber.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#043
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#042
   text: How does one invent the specialization map?
   hint: 'Motivation: project characteristic-0 deformation coordinates back to the original geometric space.
     Invention: quotient the prism $A$ by the Cartier ideal $I = \ker(\theta)$.'
@@ -499,7 +486,7 @@ exercises:
   search_text: 'how does one invent the specialization map? motivation: project characteristic-0 deformation
     coordinates back to the original geometric space. invention: quotient the prism $a$ by the cartier
     ideal $i = \ker(\theta)$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#044
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#043
   text: Why care about equipping rings with $\delta$-structures?
   hint: Equipping a ring with a $\delta$-structure is the algebraic data needed to define an intrinsic
     Frobenius lift $\phi(x) = x^p + p\delta(x)$, which fixes the choice of $p$-adic differential calculus
@@ -509,7 +496,7 @@ exercises:
   search_text: why care about equipping rings with $\delta$-structures? equipping a ring with a $\delta$-structure
     is the algebraic data needed to define an intrinsic frobenius lift $\phi(x) = x^p + p\delta(x)$, which
     fixes the choice of $p$-adic differential calculus without requiring coordinates.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#045
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#044
   text: How does one invent $\delta$-structures?
   hint: 'Motivation: capture the algebraic structure of Frobenius lifts on rings with $p$-torsion. Invention:
     write down Joyal''s axioms for the unary operator $\delta(x) = \frac{\phi(x) - x^p}{p}$.'
@@ -518,7 +505,7 @@ exercises:
   search_text: 'how does one invent $\delta$-structures? motivation: capture the algebraic structure of
     frobenius lifts on rings with $p$-torsion. invention: write down joyal''s axioms for the unary operator
     $\delta(x) = \frac{\phi(x) - x^p}{p}$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#046
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#045
   text: Why care about Witt vectors and lifting from characteristic $p$ to characteristic 0?
   hint: Characteristic-$p$ geometry has pathology (nilpotents, $d^2 = 0$ with $df^p = 0$, non-semisimple
     representations); lifting to characteristic 0 via Witt vectors $W(R)$ provides a flat, characteristic-0
@@ -529,7 +516,7 @@ exercises:
     geometry has pathology (nilpotents, $d^2 = 0$ with $df^p = 0$, non-semisimple representations); lifting
     to characteristic 0 via witt vectors $w(r)$ provides a flat, characteristic-0 linear environment where
     classical hodge and de rham methods apply.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#047
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#046
   text: How does one invent the strategy of lifting to characteristic 0?
   hint: 'Motivation: compute topological Betti numbers for varieties over finite fields $\mathbb{F}_q$.
     Invention: Grothendieck lifted algebraic varieties over $\mathbb{F}_p$ to schemes over the Witt ring
@@ -540,7 +527,7 @@ exercises:
     betti numbers for varieties over finite fields $\mathbb{f}_q$. invention: grothendieck lifted algebraic
     varieties over $\mathbb{f}_p$ to schemes over the witt ring $w(\mathbb{f}_p) = \mathbb{z}_p$ and computed
     their characteristic-0 de rham cohomology.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#048
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#047
   text: Why care about semi-stable Galois representations?
   hint: Semi-stable representations are the $p$-adic Galois representations that arise from the étale
     cohomology of algebraic varieties with semi-stable reduction (bad reduction with normal crossings);
@@ -551,7 +538,7 @@ exercises:
     $p$-adic galois representations that arise from the étale cohomology of algebraic varieties with semi-stable
     reduction (bad reduction with normal crossings); they are classified by breuil-kisin-fargues modules
     with monodromy operators.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#049
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#048
   text: How does one invent the study of semi-stable representations?
   hint: 'Motivation: extend the Fontaine-Mazur conjecture and Langlands program beyond good reduction
     primes. Invention: Fontaine introduced $(\phi, N)$-modules equipped with a nilpotent monodromy operator
@@ -562,7 +549,7 @@ exercises:
     conjecture and langlands program beyond good reduction primes. invention: fontaine introduced $(\phi,
     n)$-modules equipped with a nilpotent monodromy operator $n$ measuring the degeneration of the frobenius
     action.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#050
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#049
   text: What is a Tate twist and how does one invent it?
   hint: A Tate twist $M(n) = M \otimes \mathbb{Z}_p(1)^{\otimes n}$ is an algebraic shift that modifies
     the Galois or Frobenius action by the $n$-th power of the cyclotomic character $\chi_{\mathrm{cyc}}^n$;
@@ -574,7 +561,7 @@ exercises:
     n}$ is an algebraic shift that modifies the galois or frobenius action by the $n$-th power of the
     cyclotomic character $\chi_{\mathrm{cyc}}^n$; invented by john tate to track the geometric weight
     and codimension shifts under poincaré duality and cycle class maps.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#051
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#050
   text: How does one invent the Tate twist from first principles?
   hint: 'Motivation: make the cycle class of a codimension-$d$ algebraic subvariety $[Z] \in H^{2d}(X)$
     Galois-invariant. Invention: tensor the cohomology group by the inverse of the Galois action on the
@@ -585,7 +572,7 @@ exercises:
     of a codimension-$d$ algebraic subvariety $[z] \in h^{2d}(x)$ galois-invariant. invention: tensor
     the cohomology group by the inverse of the galois action on the roots of unity $t_p(\mathbb{g}_m)^{\otimes
     d}$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#052
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#051
   text: Why care about prismatic cohomology and its prismatic versions?
   hint: Prismatic cohomology is the integral $p$-adic cohomology theory that unifies, interpolates, and
     explains all prior theories (étale, de Rham, crystalline, Hodge-Tate) while eliminating all ramification
@@ -595,7 +582,7 @@ exercises:
   search_text: why care about prismatic cohomology and its prismatic versions? prismatic cohomology is
     the integral $p$-adic cohomology theory that unifies, interpolates, and explains all prior theories
     (étale, de rham, crystalline, hodge-tate) while eliminating all ramification restrictions.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#053
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#052
   text: How does one invent prismatic cohomology?
   hint: 'Motivation: find an integral $p$-adic cohomology theory for ramified schemes over $\mathcal{O}_K$.
     Invention: Bhatt and Scholze defined the derived global sections of the structure sheaf on the prismatic
@@ -605,7 +592,7 @@ exercises:
   search_text: 'how does one invent prismatic cohomology? motivation: find an integral $p$-adic cohomology
     theory for ramified schemes over $\mathcal{o}_k$. invention: bhatt and scholze defined the derived
     global sections of the structure sheaf on the prismatic site $(x/a)_{\mathbin{\delta}}$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#054
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#053
   text: What does gauge theory have to do with prismatic $F$-gauges?
   hint: Gauge theory studies vector bundles equipped with connections and gauge transformations under
     group actions; prismatic $F$-gauges study vector bundles over the 2-dimensional stack $WCart$ equipped
@@ -617,7 +604,7 @@ exercises:
     bundles equipped with connections and gauge transformations under group actions; prismatic $f$-gauges
     study vector bundles over the 2-dimensional stack $wcart$ equipped with a "frobenius gauge connection"
     whose gauge transformations match the nygaard filtration with the frobenius pullback.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#055
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#054
   text: How does one invent the gauge theory perspective in arithmetic geometry?
   hint: 'Motivation: treat the Frobenius map and the Hodge filtration as gauge fields over a moduli stack.
     Invention: Bhatt and Lurie formulated $F$-gauges as equivariant vector bundles over the quotient stack
@@ -627,7 +614,7 @@ exercises:
   search_text: 'how does one invent the gauge theory perspective in arithmetic geometry? motivation: treat
     the frobenius map and the hodge filtration as gauge fields over a moduli stack. invention: bhatt and
     lurie formulated $f$-gauges as equivariant vector bundles over the quotient stack $[\sigma_x / \mathbb{g}_m^\sharp]$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#056
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#055
   text: Why care about Cartier operators?
   hint: The Cartier operator $C \colon \Omega_{X/\mathbb{F}_p}^i \to \Omega_{X/\mathbb{F}_p}^i$ establishes
     an isomorphism between the de Rham cohomology sheaves and differential forms on the Frobenius twist
@@ -639,7 +626,7 @@ exercises:
     \to \omega_{x/\mathbb{f}_p}^i$ establishes an isomorphism between the de rham cohomology sheaves and
     differential forms on the frobenius twist ($h^i(\omega_{x}^\bullet) \cong \omega_{x'}^i$), which drives
     the degeneration of the hodge-de rham spectral sequence.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#057
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#056
   text: How does one invent the Cartier operator?
   hint: 'Motivation: compute the kernel and image of the exterior derivative $d$ in characteristic $p$.
     Invention: observe that $d(f^p) = p f^{p-1} df = 0$, so $p$-th powers behave as constants, producing
@@ -650,7 +637,7 @@ exercises:
     the exterior derivative $d$ in characteristic $p$. invention: observe that $d(f^p) = p f^{p-1} df
     = 0$, so $p$-th powers behave as constants, producing a canonical inverse derivative operator $c(x^p
     \omega) = x c(\omega)$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#058
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#057
   text: Why do Postnikov truncations and towers happen here, what are they, and why are they important?
   hint: A Postnikov truncation $\tau_{\le n} C^\bullet$ cuts off a chain complex at degree $n$ while preserving
     its lower homology groups; they are important because the conjugate filtration on de Rham cohomology
@@ -663,7 +650,7 @@ exercises:
     its lower homology groups; they are important because the conjugate filtration on de rham cohomology
     is defined as the postnikov filtration $\tau_{\le i} \mathbf{r}f_* \omega_x^\bullet$, which decomposes
     the pushforward into graded hodge-tate pieces.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#059
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#058
   text: How does one invent Postnikov truncations?
   hint: 'Motivation: decompose a complex into its individual cohomology layers step-by-step. Invention:
     replace the $n$-th term of a complex with the kernel of the differential $d_n \colon C^n \to C^{n+1}$
@@ -673,7 +660,7 @@ exercises:
   search_text: 'how does one invent postnikov truncations? motivation: decompose a complex into its individual
     cohomology layers step-by-step. invention: replace the $n$-th term of a complex with the kernel of
     the differential $d_n \colon c^n \to c^{n+1}$ and set all higher terms to zero.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#060
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#059
   text: What is hypercohomology?
   hint: The derived functor $\mathbf{R}\Gamma(X, \mathcal{F}^\bullet)$ that computes the total cohomology
     of a complex of sheaves $\mathcal{F}^\bullet$, taking into account both the internal differentials
@@ -683,7 +670,7 @@ exercises:
   search_text: what is hypercohomology? the derived functor $\mathbf{r}\gamma(x, \mathcal{f}^\bullet)$
     that computes the total cohomology of a complex of sheaves $\mathcal{f}^\bullet$, taking into account
     both the internal differentials of the complex and the sheaf cohomology of the space simultaneously.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#061
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#060
   text: How does one invent hypercohomology?
   hint: 'Motivation: compute the cohomology of the de Rham complex $\Omega_X^\bullet$ where terms are
     sheaves and differentials are differential operators. Invention: replace the complex of sheaves by
@@ -694,7 +681,7 @@ exercises:
     complex $\omega_x^\bullet$ where terms are sheaves and differentials are differential operators. invention:
     replace the complex of sheaves by an injective resolution double complex and take the cohomology of
     the total single complex.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#062
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#061
   text: Why care about Rees modules and their fibers?
   hint: The Rees module $\mathrm{Rees}(M, F^\star) = \bigoplus F^n M \cdot t^{-n}$ translates a filtered
     module into a single graded $\mathbb{Z}[t]$-module; its fiber at $t=1$ is the unfiltered module $M$
@@ -706,7 +693,7 @@ exercises:
     = \bigoplus f^n m \cdot t^{-n}$ translates a filtered module into a single graded $\mathbb{z}[t]$-module;
     its fiber at $t=1$ is the unfiltered module $m$ and its fiber at $t=0$ is the associated graded module
     $\mathrm{gr}_f^\bullet(m)$, geometrically realizing filtration degenerations.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#063
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#062
   text: How does one invent Rees modules?
   hint: 'Motivation: view a filtration as an algebraic deformation over the affine line $\mathbb{A}^1$.
     Invention: multiply the $n$-th filtered piece by $t^{-n}$ inside $M[t, t^{-1}]$, creating a polynomial
@@ -716,7 +703,7 @@ exercises:
   search_text: 'how does one invent rees modules? motivation: view a filtration as an algebraic deformation
     over the affine line $\mathbb{a}^1$. invention: multiply the $n$-th filtered piece by $t^{-n}$ inside
     $m[t, t^{-1}]$, creating a polynomial module parameterized by the scaling variable $t$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#064
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#063
   text: Why care about the Rees stack $[\mathbb{A}^1 / \mathbb{G}_m]$ and where are filtered vector spaces
     used in prismatic $F$-gauges?
   hint: The quotient stack $[\mathbb{A}^1/\mathbb{G}_m]$ is the universal moduli stack of filtered vector
@@ -728,7 +715,7 @@ exercises:
     spaces used in prismatic $f$-gauges? the quotient stack $[\mathbb{a}^1/\mathbb{g}_m]$ is the universal
     moduli stack of filtered vector spaces; in prismatic $f$-gauges, it is used to parameterize the nygaard
     filtration on prismatic crystals and deform it into the hodge filtration on the de rham fiber.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#065
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#064
   text: How does one invent the Rees stack $[\mathbb{A}^1 / \mathbb{G}_m]$?
   hint: 'Motivation: construct a geometric space whose category of quasi-coherent sheaves is equivalent
     to filtered vector spaces. Invention: Simpson took the quotient of the deformation line $\mathbb{A}^1$
@@ -740,7 +727,7 @@ exercises:
     a geometric space whose category of quasi-coherent sheaves is equivalent to filtered vector spaces.
     invention: simpson took the quotient of the deformation line $\mathbb{a}^1$ by the scaling group $\mathbb{g}_m$,
     identifying graded $\mathbb{z}[t]$-modules with $\mathbb{g}_m$-equivariant sheaves.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#066
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#065
   text: Where is the gauge theory in prismatic $F$-gauges?
   hint: The gauge theory is the geometric interaction between the $\mathbb{G}_m^\sharp$-scaling action
     on the Rees stack and the Frobenius modification $\Phi \colon F^* \mathcal{E}[1/\mathcal{I}] \xrightarrow{\sim}
@@ -752,7 +739,7 @@ exercises:
     between the $\mathbb{g}_m^\sharp$-scaling action on the rees stack and the frobenius modification
     $\phi \colon f^* \mathcal{e}[1/\mathcal{i}] \xrightarrow{\sim} \mathcal{e}[1/\mathcal{i}]$ on the
     cartier-witt stack, which acts as a non-abelian gauge transformation across mixed characteristic.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#067
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#066
   text: How does one invent the gauge theory formulation of arithmetic crystals?
   hint: 'Motivation: unify the Hodge filtration and Frobenius action into a single geometric connection.
     Invention: package the modification data of a vector bundle along the Cartier divisor $\Sigma \subset
@@ -763,7 +750,7 @@ exercises:
     the hodge filtration and frobenius action into a single geometric connection. invention: package the
     modification data of a vector bundle along the cartier divisor $\sigma \subset wcart$ as an equivariant
     principal bundle over the quotient stack $[\sigma_x / \mathbb{g}_m^\sharp]$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#068
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#067
   text: Why care about inseparability issues in field extensions?
   hint: In characteristic $p$, purely inseparable extensions (like $k(x^{1/p})/k(x)$) have zero differentials
     ($d(x^{1/p}) = 0$), causing classical differential forms and Galois theory to collapse; tilting to
@@ -774,7 +761,7 @@ exercises:
     inseparable extensions (like $k(x^{1/p})/k(x)$) have zero differentials ($d(x^{1/p}) = 0$), causing
     classical differential forms and galois theory to collapse; tilting to perfectoid rings adjoins all
     $p$-power roots to completely eliminate inseparability.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#069
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#068
   text: How does one invent the elimination of inseparability?
   hint: 'Motivation: restore Galois theory and smooth differential calculus in characteristic $p$. Invention:
     replace imperfect fields with their perfections $k_{\mathrm{perf}} = \bigcup k^{1/p^n}$, where every
@@ -785,7 +772,7 @@ exercises:
     and smooth differential calculus in characteristic $p$. invention: replace imperfect fields with their
     perfections $k_{\mathrm{perf}} = \bigcup k^{1/p^n}$, where every element has a unique $p$-th root
     and all algebraic extensions are separable.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#070
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#069
   text: What does it mean to perturb topologically nilpotent elements in the Jacobson radical?
   hint: If $x \in \mathrm{Jac}(R)$, then for any unit $u \in R^\times$, the perturbed element $u + x =
     u(1 + u^{-1}x)$ remains strictly invertible; in $p$-adic rings, adding multiples of $p$ or elements
@@ -796,7 +783,7 @@ exercises:
     if $x \in \mathrm{jac}(r)$, then for any unit $u \in r^\times$, the perturbed element $u + x = u(1
     + u^{-1}x)$ remains strictly invertible; in $p$-adic rings, adding multiples of $p$ or elements of
     the ideal $i$ cannot change the invertibility of a matrix or section.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#071
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#070
   text: How does one invent the Jacobson radical perturbation property?
   hint: 'Motivation: identify elements that behave like "infinitesimals" that never disturb algebraic
     invertibility. Invention: collect all elements $x$ such that $1 - xy$ is a unit for every $y$, proving
@@ -807,7 +794,7 @@ exercises:
     that behave like "infinitesimals" that never disturb algebraic invertibility. invention: collect all
     elements $x$ such that $1 - xy$ is a unit for every $y$, proving that $r^\times + \mathrm{jac}(r)
     \subseteq r^\times$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#072
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#071
   text: How does one lift solutions of algebraic equations from the residue field via Newton's method
     in a Henselian ring and why is this important?
   hint: If $f(a) \equiv 0 \pmod{\mathfrak{m}}$ and $f'(a) \not\equiv 0 \pmod{\mathfrak{m}}$, the iterative
@@ -822,7 +809,7 @@ exercises:
     converges uniquely in the $\mathfrak{m}$-adic topology to a true root $f(x) = 0$ in $r$; this is important
     because it allows geometric points, idempotent splittings, and étale covers to be lifted uniquely
     from characteristic $p$ to characteristic 0.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#073
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#072
   text: How does one invent Hensel's Lemma via Newton's method?
   hint: 'Motivation: solve polynomial equations over $p$-adic integers $\mathbb{Z}_p$. Invention: adapt
     Newton''s classical tangent-line root-finding algorithm from real calculus to $p$-adic metrics, observing
@@ -833,7 +820,7 @@ exercises:
     equations over $p$-adic integers $\mathbb{z}_p$. invention: adapt newton''s classical tangent-line
     root-finding algorithm from real calculus to $p$-adic metrics, observing that $v_p(f(x_n))$ doubles
     at each iteration.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#074
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#073
   text: What is a Verschiebung map?
   hint: The Verschiebung $V \colon W(R) \to W(R)$ is the additive shift operator $V(x_0, x_1, \dots) =
     (0, x_0, x_1, \dots)$ on Witt vectors satisfying $F \circ V = V \circ F = p$, serving as the transfer/dual
@@ -843,7 +830,7 @@ exercises:
   search_text: what is a verschiebung map? the verschiebung $v \colon w(r) \to w(r)$ is the additive shift
     operator $v(x_0, x_1, \dots) = (0, x_0, x_1, \dots)$ on witt vectors satisfying $f \circ v = v \circ
     f = p$, serving as the transfer/dual map to the frobenius.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#075
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#074
   text: How does one invent the Verschiebung map?
   hint: 'Motivation: find an algebraic operator $V$ that inverts the Frobenius $F$ up to multiplication
     by $p$. Invention: define the coordinate shift on Witt vectors so that the composite with the Frobenius
@@ -853,7 +840,7 @@ exercises:
   search_text: 'how does one invent the verschiebung map? motivation: find an algebraic operator $v$ that
     inverts the frobenius $f$ up to multiplication by $p$. invention: define the coordinate shift on witt
     vectors so that the composite with the frobenius lift satisfies $f(v(x)) = p x$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#076
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#075
   text: Why do we want the Frobenius lift to be transversal to $I$ modulo $p$ for $I$ generated by Eisenstein
     polynomials?
   hint: Transversality ($p \in I + \phi(I)A$) guarantees that the Hodge-Tate locus $V(I)$ and the de Rham
@@ -865,7 +852,7 @@ exercises:
     by eisenstein polynomials? transversality ($p \in i + \phi(i)a$) guarantees that the hodge-tate locus
     $v(i)$ and the de rham locus $v(\phi(i))$ do not intersect modulo $p$, which ensures that the prismatic
     complex specialized at $\phi(i)$ is a smooth deformation of de rham cohomology without singular degenerations.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#077
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#076
   text: How does one invent the transversality condition $p \in I + \phi(I)A$?
   hint: 'Motivation: prevent the Hodge-Tate specialization and the de Rham specialization from colliding
     in characteristic $p$. Invention: compute $\phi(E(u)) = u^{pe} + p(\dots) \equiv u^{pe} \pmod p$ and
@@ -878,7 +865,7 @@ exercises:
     invention: compute $\phi(e(u)) = u^{pe} + p(\dots) \equiv u^{pe} \pmod p$ and observe that $\gcd(u^e,
     u^{pe}) = u^e$, so adding $p$ forces $(e(u), \phi(e(u))) = (u^e, p) = \mathfrak{m}$, which contains
     $p$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#078
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#077
   text: What is a Frobenius transform and why care about it?
   hint: The Frobenius transform is the pullback operation $M \mapsto \phi^*(M) = M \otimes_{A, \phi} A$
     on modules over a $\delta$-ring; it is fundamental because comparison theorems in $p$-adic Hodge theory
@@ -889,7 +876,7 @@ exercises:
     operation $m \mapsto \phi^*(m) = m \otimes_{a, \phi} a$ on modules over a $\delta$-ring; it is fundamental
     because comparison theorems in $p$-adic hodge theory are formulated as frobenius modifications $\phi
     \colon \phi^*(m)[1/i] \xrightarrow{\sim} m[1/i]$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#079
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#078
   text: How does one invent the Frobenius transform on modules?
   hint: 'Motivation: change the coordinates of a differential equation along the Frobenius flow. Invention:
     apply extension of scalars along the Frobenius ring endomorphism $\phi \colon A \to A$.'
@@ -898,7 +885,7 @@ exercises:
   search_text: 'how does one invent the frobenius transform on modules? motivation: change the coordinates
     of a differential equation along the frobenius flow. invention: apply extension of scalars along the
     frobenius ring endomorphism $\phi \colon a \to a$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#080
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#079
   text: Why care about $q$-difference calculus?
   hint: $q$-difference calculus replaces differential operators with discrete difference operators $D_q(f)
     = \frac{f(qx) - f(x)}{(q-1)x}$; it provides the explicit coordinate-level algebraic deformation that
@@ -909,7 +896,7 @@ exercises:
     with discrete difference operators $d_q(f) = \frac{f(qx) - f(x)}{(q-1)x}$; it provides the explicit
     coordinate-level algebraic deformation that connects crystalline cohomology at $q=1$ with $p$-adic
     étale cohomology at $q = \zeta_p$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#081
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#080
   text: How does one invent $q$-difference calculus?
   hint: 'Motivation: solve differential equations on non-smooth or discrete lattices. Invention: Jackson
     replaced infinitesimal derivatives with scaling operators $f(qx)$, building a complete calculus of
@@ -919,7 +906,7 @@ exercises:
   search_text: 'how does one invent $q$-difference calculus? motivation: solve differential equations
     on non-smooth or discrete lattices. invention: jackson replaced infinitesimal derivatives with scaling
     operators $f(qx)$, building a complete calculus of $q$-integrals and $q$-hypergeometric functions.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#082
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#081
   text: What is a universal coefficient ring?
   hint: A ring $A$ equipped with a universal cohomology theory $\mathbin{\Delta}_X$ such that every other
     specialized cohomology theory (de Rham, crystalline, étale) is obtained by a base change / tensor
@@ -930,7 +917,7 @@ exercises:
     $\mathbin{\delta}_x$ such that every other specialized cohomology theory (de rham, crystalline, étale)
     is obtained by a base change / tensor product $-\otimes_a^{\mathbf{l}} b$ along a specialization homomorphism
     $a \to b$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#083
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#082
   text: How does one invent universal coefficient rings?
   hint: 'Motivation: eliminate the need to prove separate comparison theorems between every pair of cohomology
     theories. Invention: construct a master cohomology theory valued in $\delta$-rings that specializes
@@ -940,7 +927,7 @@ exercises:
   search_text: 'how does one invent universal coefficient rings? motivation: eliminate the need to prove
     separate comparison theorems between every pair of cohomology theories. invention: construct a master
     cohomology theory valued in $\delta$-rings that specializes to all known theories upon base extension.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#084
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#083
   text: How do Breuil-Kisin-Fargues modules classify all crystalline and semi-stable Galois representations?
   hint: A Breuil-Kisin-Fargues module is a free $A_{\mathrm{inf}}$-module $M$ equipped with an isomorphism
     $\Phi \colon \phi^*(M)[1/\xi] \xrightarrow{\sim} M[1/\xi]$; the functor $M \mapsto (M \otimes_{A_{\mathrm{inf}}}
@@ -953,7 +940,7 @@ exercises:
     $\phi \colon \phi^*(m)[1/\xi] \xrightarrow{\sim} m[1/\xi]$; the functor $m \mapsto (m \otimes_{a_{\mathrm{inf}}}
     b_{\mathrm{crys}})^{\phi = 1}$ defines an exact equivalence of categories between bkf-modules and
     crystalline galois representations.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#085
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#084
   text: How does one invent Breuil-Kisin-Fargues modules?
   hint: 'Motivation: classify $p$-adic Galois representations using vector bundles on the Fargues-Fontaine
     curve $X_{\mathrm{FF}}$. Invention: translate vector bundles on $X_{\mathrm{FF}}$ into $A_{\mathrm{inf}}$-modules
@@ -964,7 +951,7 @@ exercises:
     representations using vector bundles on the fargues-fontaine curve $x_{\mathrm{ff}}$. invention: translate
     vector bundles on $x_{\mathrm{ff}}$ into $a_{\mathrm{inf}}$-modules with frobenius modifications along
     the cartier divisor $\xi = 0$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#086
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#085
   text: What is a classical Tate twist?
   hint: The 1-dimensional $p$-adic Galois representation $\mathbb{Z}_p(1) := \varprojlim_n \mu_{p^n}$
     defined by the Tate module of the multiplicative group $\mathbb{G}_m$, on which the absolute Galois
@@ -975,7 +962,7 @@ exercises:
     := \varprojlim_n \mu_{p^n}$ defined by the tate module of the multiplicative group $\mathbb{g}_m$,
     on which the absolute galois group acts via the cyclotomic character $\sigma(x) = \chi_{\mathrm{cyc}}(\sigma)
     x$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#087
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#086
   text: How does one invent the classical Tate twist?
   hint: 'Motivation: identify the 1-dimensional representation that shifts the weight of algebraic cycles
     under the cycle class map. Invention: take the projective limit of the group of $p^n$-th roots of
@@ -985,7 +972,7 @@ exercises:
   search_text: 'how does one invent the classical tate twist? motivation: identify the 1-dimensional representation
     that shifts the weight of algebraic cycles under the cycle class map. invention: take the projective
     limit of the group of $p^n$-th roots of unity in $\overline{\mathbb{q}}_p$.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#088
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#087
   text: Distinguish between the Hodge filtration on de Rham, the Nygaard filtration on crystalline, and
     the Frobenius action on étale cohomology
   hint: (1) The Hodge filtration $F^p H_{\mathrm{dR}}^n$ is a descending filtration by degree of differential
@@ -1002,7 +989,7 @@ exercises:
     frobenius by $p^p$; (3) the frobenius action on étale cohomology $h_{\text{ét}}^n(x_{\overline{k}},
     \mathbb{z}_p)$ is a discrete linear automorphism with no filtration; prismatic $f$-gauges unify all
     three into a single filtered crystal.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#089
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#088
   text: How does one invent the unification of Hodge, Nygaard, and étale structures?
   hint: 'Motivation: understand why the Hodge numbers and Frobenius eigenvalues of a variety are intrinsically
     coupled. Invention: construct the $F$-gauge stack $\mathcal{X}^{\mathrm{gauge}}$ whose geometric fibers
@@ -1015,7 +1002,7 @@ exercises:
     invention: construct the $f$-gauge stack $\mathcal{x}^{\mathrm{gauge}}$ whose geometric fibers over
     different boundary points recover the hodge filtration, nygaard filtration, and étale frobenius action
     respectively.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#090
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#089
   text: What is a gauge action in general and how does it apply in prismatic $F$-gauges?
   hint: In physics and geometry, a gauge action is the action of an infinite-dimensional symmetry group
     (like $\mathrm{Map}(X, G)$) on the space of connections / fields; in prismatic $F$-gauges, the gauge
@@ -1028,7 +1015,7 @@ exercises:
     g)$) on the space of connections / fields; in prismatic $f$-gauges, the gauge action is the action
     of the scaling group $\mathbb{g}_m^\sharp$ on the rees construction of the nygaard filtration, which
     rescales the cartier divisor $\sigma$ and parameterizes all frobenius modifications.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#091
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#090
   text: How does one invent the gauge action in arithmetic geometry?
   hint: 'Motivation: make the Rees filtration parameter $t$ act as a dynamical symmetry on the moduli
     stack of crystals. Invention: form the quotient stack $[\Sigma_X / \mathbb{G}_m^\sharp]$, treating
@@ -1039,7 +1026,7 @@ exercises:
     filtration parameter $t$ act as a dynamical symmetry on the moduli stack of crystals. invention: form
     the quotient stack $[\sigma_x / \mathbb{g}_m^\sharp]$, treating the filtration index as a continuous
     $\mathbb{g}_m$-weight.'
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#092
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#091
   text: What is the relationship between Fontaine's period rings, Nygaard complexes, and Breuil-Kisin
     modules?
   hint: Fontaine's period rings ($A_{\mathrm{inf}}, B_{\mathrm{dR}}, B_{\mathrm{crys}}$) are the generic
@@ -1054,7 +1041,7 @@ exercises:
     specializations of prismatic cohomology along the cartier divisor $\sigma$; and breuil-kisin modules
     are the coordinate representations of prismatic $f$-crystals over the specific local prism $\mathfrak{s}
     = w(k)[[u]]$.
-- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#093
+- id: www-imo-universite-paris-saclay-fr-matthew-morrow-gdtfgauges-html#092
   text: How does one invent the synthesis of period rings, Nygaard complexes, and Kisin modules?
   hint: 'Motivation: eliminate the disparate ad-hoc definitions of 1980s–2000s $p$-adic Hodge theory.
     Invention: Bhatt, Morrow, and Scholze showed that all these objects arise as local coordinate charts
