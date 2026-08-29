@@ -152,3 +152,213 @@
   url: "https://openrouter.ai/"
   category: "computational"
   note: "Access to LLM APIs."
+
+- title: "Lean Community Mathlib Overview"
+  url: "https://leanprover-community.github.io/mathlib-overview.html"
+  category: "lean"
+  note: "Access to Lean community resources."
+
+- title: "OSDev Wiki"
+  url: "https://wiki.osdev.org/"
+  category: "systems"
+  note: "Community-driven knowledge base for operating system development, bootloaders, and low-level hardware interfacing."
+
+- title: "Agner Fog's Software Optimization Resources"
+  url: "https://www.agner.org/optimize/"
+  category: "systems"
+  note: "Definitive instruction tables, microarchitecture details, and assembly optimization guides for x86/x86-64 processors."
+
+- title: "Compiler Explorer (Godbolt)"
+  url: "https://godbolt.org/"
+  category: "systems"
+  note: "Interactive tool for inspecting assembly generation, optimization passes, and compiler behavior across targets."
+
+- title: "The Linux Kernel Documentation"
+  url: "https://docs.kernel.org/"
+  category: "systems"
+  note: "Official documentation covering kernel internals, memory management, subsystem APIs, and device drivers."
+
+- title: "RISC-V Technical Specifications"
+  url: "https://riscv.org/technical/specifications/"
+  category: "architecture"
+  note: "Open-standard instruction set architecture specifications, privilege levels, and vector extensions."
+
+- title: "MathOverflow"
+  url: "https://mathoverflow.net/"
+  category: "mathematics"
+  note: "A question-and-answer platform targeted at research mathematicians and graduate-level topics."
+
+- title: "The Knot Atlas"
+  url: "http://katlas.org/wiki/Main_Page"
+  category: "mathematics"
+  note: "A database of knot and link invariants, braid groups, and topological computations."
+
+- title: "Terence Tao's Blog"
+  url: "https://terrytao.wordpress.com/"
+  category: "mathematics"
+  note: "Expository articles and research notes on analysis, PDE, combinatorics, and formalized mathematics."
+
+- title: "Mathematics in Lean"
+  url: "https://leanprover-community.github.io/mathematics_in_lean/"
+  category: "lean"
+  note: "A companion textbook teaching formal mathematics through practical Mathlib examples."
+
+- title: "Software Foundations (Benjamin C. Pierce et al.)"
+  url: "https://softwarefoundations.cis.upenn.edu/"
+  category: "computational"
+  note: "A series covering functional programming, operational semantics, and formal proof via interactive theorem provers."
+
+- title: "Julia Documentation"
+  url: "https://docs.julialang.org/en/v1/"
+  category: "computational"
+  note: "Language manual for high-performance numerical computing, multiple dispatch, and scientific programming."
+
+- title: "John Baez - This Week's Finds in Mathematical Physics"
+  url: "https://math.ucr.edu/home/baez/TWF.html"
+  category: "physics"
+  note: "Deep expository archives on quantum gravity, topological quantum field theory, and $n$-categories."
+
+- title: "uops.info"
+  url: "https://uops.info/"
+  category: "systems"
+  note: "Precise empirical latency, throughput, and port usage data for x86/x64 instructions across microarchitectures."
+
+- title: "LWN.net"
+  url: "https://lwn.net/"
+  category: "systems"
+  note: "In-depth technical coverage of Linux kernel architecture, systems internals, and low-level development."
+
+- title: "eBPF Documentation"
+  url: "https://ebpf.io/"
+  category: "systems"
+  note: "Reference material for in-kernel programmable execution, tracing, observability, and networking."
+
+- title: "Arm Architecture Reference Manuals"
+  url: "https://developer.arm.com/documentation"
+  category: "architecture"
+  note: "Core reference manual for Arm A-profile, R-profile, and M-profile ISA designs and memory architectures."
+
+- title: "Functional Programming in Lean"
+  url: "https://lean-lang.org/functional_programming_in_lean/"
+  category: "lean"
+  note: "A hands-on textbook exploring Lean 4 as a pure functional, dependently typed general-purpose programming language."
+
+- title: "Programming Language Foundations in Agda (PLFA)"
+  url: "https://plfa.github.io/"
+  category: "computational"
+  note: "An interactive textbook introducing type theory, operational semantics, and verified programming using Agda."
+
+- title: "The Groupprops Project"
+  url: "https://groupprops.subwiki.org/wiki/Main_Page"
+  category: "mathematics"
+  note: "An exhaustive wiki encyclopedia of group theory properties, examples, and theorems."
+
+- title: "Manifold Atlas"
+  url: "http://www.map.mpim-bonn.mpg.de/"
+  category: "mathematics"
+  note: "A collaborative reference work on manifold invariants, surgery theory, and geometric topology from MPI Bonn."
+
+- title: "Database of Ring Theory"
+  url: "https://ringtheory.herokuapp.com/"
+  category: "mathematics"
+  note: "A searchable database of rings and modules providing counterexamples and verified properties."
+
+- title: "PhysicsOverflow"
+  url: "https://physicsoverflow.org/"
+  category: "physics"
+  note: "A graduate- and research-level Q&A platform and open preprint peer-review forum for theoretical physics."
+
+- title: "Intel Intrinsics Guide"
+  url: "https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html"
+  category: "systems"
+  note: "Interactive reference for SIMD vector instructions (SSE, AVX-512, AMX), latencies, and compiler intrinsics."
+
+- title: "cppreference.com"
+  url: "https://en.cppreference.com/w/"
+  category: "systems"
+  note: "Comprehensive community reference for C and C++ language standards, core library features, and memory models."
+
+- title: "Linux Insides"
+  url: "https://0xax.gitbooks.io/linux-insides/content/"
+  category: "systems"
+  note: "Deep-dive documentation covering the boot process, initialization, interrupts, and memory paging in the Linux kernel."
+
+- title: "OpenAI Triton Documentation"
+  url: "https://triton-lang.org/"
+  category: "architecture"
+  note: "Language and compiler infrastructure for writing highly efficient custom GPU kernels without low-level CUDA boilerplate."
+
+- title: "Onur Mutlu's Computer Architecture Lectures"
+  url: "https://safari.ethz.ch/architecture/"
+  category: "architecture"
+  note: "In-depth university lectures on modern microarchitecture, memory systems, processing-in-memory, and cache design."
+
+- title: "Verilator Documentation"
+  url: "https://verilator.org/guide/latest/"
+  category: "architecture"
+  note: "Documentation for the fastest open-source cycle-accurate Verilog/SystemVerilog simulator and C++ transcompiler."
+
+- title: "Keith Conrad's Expository Papers"
+  url: "https://kconrad.math.uconn.edu/blurbs/"
+  category: "mathematics"
+  note: "Meticulously written modular expository notes on abstract algebra, field theory, $p$-adic analysis, and number theory."
+
+- title: "ProofWiki"
+  url: "https://proofwiki.org/wiki/Main_Page"
+  category: "mathematics"
+  note: "An open online compendium dedicated to collecting rigorous formal and informal mathematical proofs."
+
+- title: "The Lean 4 Reference Manual"
+  url: "https://lean-lang.org/lean4/doc/"
+  category: "lean"
+  note: "Official documentation covering Lean 4 syntax, macro system, elaborator, and compiler internals."
+
+- title: "Loogle"
+  url: "https://loogle.lean-lang.org/"
+  category: "lean"
+  note: "Semantic type-directed search engine for querying definitions, lemmas, and theorems within Mathlib."
+
+- title: "Perimeter Institute Recorded Seminar Archive (PIRSA)"
+  url: "https://pirsa.org/"
+  category: "physics"
+  note: "Extensive video and lecture archive covering modern theoretical physics, quantum gravity, and string theory."
+
+- title: "Brendan Gregg - Systems Performance"
+  url: "https://www.brendangregg.com/"
+  category: "systems"
+  note: "Comprehensive guides, methodologies, and flame graph tools for Linux kernel profiling, BPF tracing, and performance analysis."
+
+- title: "Ian Lance Taylor - Linkers"
+  url: "https://www.airs.com/blog/archives/38"
+  category: "systems"
+  note: "A foundational multi-part essay series explaining executable formats (ELF), dynamic linkers, symbol resolution, and relocations."
+
+- title: "Felix Cloutier's x86 Instruction Reference"
+  url: "https://www.felixcloutier.com/x86/"
+  category: "systems"
+  note: "A fast, hyperlinked, and searchable web version of Intel's Volume 2 instruction set reference."
+
+- title: "Eli Bendersky's Website"
+  url: "https://eli.thegreenplace.net/"
+  category: "systems"
+  note: "Deep technical articles on compiler design, ELF internals, assembly hacking, and concurrency primitives."
+
+- title: "PARI/GP Reference Guide"
+  url: "https://pari.math.u-bordeaux.fr/doc.html"
+  category: "mathematics"
+  note: "Specialized computer algebra system geared toward fast computations in number theory, elliptic curves, and modular forms."
+
+- title: "Lean 4 Metaprogramming Book"
+  url: "https://leanprover-community.github.io/lean4-metaprogramming-book/"
+  category: "lean"
+  note: "A comprehensive guide on writing macros, elaboration handlers, and custom tactics inside Lean 4."
+
+- title: "Formalising Mathematics (Kevin Buzzard)"
+  url: "https://formalising-mathematics.github.io/"
+  category: "lean"
+  note: "Course notes and workshop exercises introducing pure mathematicians to formalizing proofs in Lean 4."
+
+- title: "TypeTopology (Martin Escardo)"
+  url: "https://www.cs.bham.ac.uk/~mhe/TypeTopology/"
+  category: "computational"
+  note: "Agda development of constructive univalent foundations, topology, and synthetic domain theory."
