@@ -1,0 +1,961 @@
+url: https://gofling.me/paper/Proj%20Cech%20Cohom.pdf
+title: cohomology of line bundles.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#000
+  text: What was the original geometric motivation for Serre and Grothendieck computing the Čech cohomology
+    $H^*(\mathbb{P}^n, \mathcal{O}(d))$, and why does the multi-grading by monomial weights make the entire
+    infinite-dimensional calculation computable?
+  hint: 'Motivation: find an exact algebraic formula for sheaf cohomology on projective space without
+    using continuous analysis or transcendental Hodge theory. Invention: cover $\mathbb{P}^n$ by the $n+1$
+    standard affine opens $U_i = D_+(T_i)$; on intersections $U_{i_0} \cap \dots \cap U_{i_p}$, sections
+    are localized Laurent polynomials. The key insight is that the Čech differential preserves the multi-exponent
+    vector $\vec{e} = (e_0, \dots, e_n)$ of each monomial $T_0^{e_0} \cdots T_n^{e_n}$, splitting the
+    infinite Čech complex into a direct sum of independent 1-dimensional subcomplexes $\check{\mathcal{C}}^\bullet(\vec{e})$
+    classified solely by the negative index set $\mathrm{NEG}(\vec{e}) = \{i \mid e_i < 0\}$.'
+  locator: null
+  sub_index: null
+  search_text: 'what was the original geometric motivation for serre and grothendieck computing the čech
+    cohomology $h^*(\mathbb{p}^n, \mathcal{o}(d))$, and why does the multi-grading by monomial weights
+    make the entire infinite-dimensional calculation computable? motivation: find an exact algebraic formula
+    for sheaf cohomology on projective space without using continuous analysis or transcendental hodge
+    theory. invention: cover $\mathbb{p}^n$ by the $n+1$ standard affine opens $u_i = d_+(t_i)$; on intersections
+    $u_{i_0} \cap \dots \cap u_{i_p}$, sections are localized laurent polynomials. the key insight is
+    that the čech differential preserves the multi-exponent vector $\vec{e} = (e_0, \dots, e_n)$ of each
+    monomial $t_0^{e_0} \cdots t_n^{e_n}$, splitting the infinite čech complex into a direct sum of independent
+    1-dimensional subcomplexes $\check{\mathcal{c}}^\bullet(\vec{e})$ classified solely by the negative
+    index set $\mathrm{neg}(\vec{e}) = \{i \mid e_i < 0\}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#001
+  text: How does the negative support set $\mathrm{NEG}(\vec{e}) = \{i \mid e_i < 0\}$ classify the cohomology
+    of a monomial into three distinct cases, and how do you evaluate it in your head?
+  hint: 'Motivation: eliminate all intermediate homological boundary checks. Invention: (1) Case $\mathrm{NEG}(\vec{e})
+    = \emptyset$ (all $e_i \ge 0$): the monomial has no denominators, belongs to every affine chart, and
+    survives in $H^0$; (2) Case $\mathrm{NEG}(\vec{e}) = \{0, 1, \dots, n\}$ (all $e_i < 0$): the monomial
+    has poles along every coordinate hyperplane, lives only on the $(n+1)$-fold intersection $U_0 \cap
+    \dots \cap U_n$, and has nowhere to map, surviving in $H^n$; (3) Case $\emptyset \subsetneq \mathrm{NEG}(\vec{e})
+    \subsetneq \{0, 1, \dots, n\}$: choosing any non-negative coordinate index $j \notin \mathrm{NEG}(\vec{e})$
+    acts as a contracting cone vertex, producing an explicit null-homotopy $h(s) = s \cup \{j\}$ that
+    proves $H^q = 0$ for all $0 < q < n$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the negative support set $\mathrm{neg}(\vec{e}) = \{i \mid e_i < 0\}$ classify
+    the cohomology of a monomial into three distinct cases, and how do you evaluate it in your head? motivation:
+    eliminate all intermediate homological boundary checks. invention: (1) case $\mathrm{neg}(\vec{e})
+    = \emptyset$ (all $e_i \ge 0$): the monomial has no denominators, belongs to every affine chart, and
+    survives in $h^0$; (2) case $\mathrm{neg}(\vec{e}) = \{0, 1, \dots, n\}$ (all $e_i < 0$): the monomial
+    has poles along every coordinate hyperplane, lives only on the $(n+1)$-fold intersection $u_0 \cap
+    \dots \cap u_n$, and has nowhere to map, surviving in $h^n$; (3) case $\emptyset \subsetneq \mathrm{neg}(\vec{e})
+    \subsetneq \{0, 1, \dots, n\}$: choosing any non-negative coordinate index $j \notin \mathrm{neg}(\vec{e})$
+    acts as a contracting cone vertex, producing an explicit null-homotopy $h(s) = s \cup \{j\}$ that
+    proves $h^q = 0$ for all $0 < q < n$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#002
+  text: How does one compute $H^0(\mathbb{P}^n, \mathcal{O}(d))$ in your head in two seconds for any dimension
+    $n$ and twist $d$?
+  hint: 'Motivation: count global sections of line bundles on $\mathbb{P}^n$. Invention: global sections
+    of $\mathcal{O}(d)$ are ordinary homogeneous polynomials of degree $d$ in $n+1$ variables $T_0, \dots,
+    T_n$. Mental trick: by stars-and-bars, placing $d$ identical powers into $n+1$ distinct variables
+    gives $\binom{n+d}{n} = \binom{n+d}{d}$ for $d \ge 0$, and $0$ for $d < 0$. Quick check: on $\mathbb{P}^2$,
+    $H^0(\mathcal{O}(2))$ has dimension $\binom{2+2}{2} = \binom{4}{2} = 6$ (the 6 quadratic monomials);
+    for $d = -1$, it is $0$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute $h^0(\mathbb{p}^n, \mathcal{o}(d))$ in your head in two seconds for
+    any dimension $n$ and twist $d$? motivation: count global sections of line bundles on $\mathbb{p}^n$.
+    invention: global sections of $\mathcal{o}(d)$ are ordinary homogeneous polynomials of degree $d$
+    in $n+1$ variables $t_0, \dots, t_n$. mental trick: by stars-and-bars, placing $d$ identical powers
+    into $n+1$ distinct variables gives $\binom{n+d}{n} = \binom{n+d}{d}$ for $d \ge 0$, and $0$ for $d
+    < 0$. quick check: on $\mathbb{p}^2$, $h^0(\mathcal{o}(2))$ has dimension $\binom{2+2}{2} = \binom{4}{2}
+    = 6$ (the 6 quadratic monomials); for $d = -1$, it is $0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#003
+  text: Why is the intermediate cohomology $H^q(\mathbb{P}^n, \mathcal{O}(d)) = 0$ always zero for all
+    $0 < q < n$ and all degrees $d \in \mathbb{Z}$?
+  hint: 'Motivation: understand why projective space has no intermediate topological holes. Invention:
+    every monomial in an intermediate degree has at least one positive exponent $e_j \ge 0$ (so it is
+    not top-degree) and at least one negative exponent $e_k < 0$ (so it is not global); any non-negative
+    coordinate index $j$ provides a contracting homotopy $h$ on the Čech subcomplex, making the homology
+    vanish identically for all $0 < q < n$.'
+  locator: null
+  sub_index: null
+  search_text: 'why is the intermediate cohomology $h^q(\mathbb{p}^n, \mathcal{o}(d)) = 0$ always zero
+    for all $0 < q < n$ and all degrees $d \in \mathbb{z}$? motivation: understand why projective space
+    has no intermediate topological holes. invention: every monomial in an intermediate degree has at
+    least one positive exponent $e_j \ge 0$ (so it is not top-degree) and at least one negative exponent
+    $e_k < 0$ (so it is not global); any non-negative coordinate index $j$ provides a contracting homotopy
+    $h$ on the čech subcomplex, making the homology vanish identically for all $0 < q < n$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#004
+  text: How does one compute the top cohomology $H^n(\mathbb{P}^n, \mathcal{O}(d))$ in your head using
+    the canonical shift $-n-1$?
+  hint: 'Motivation: compute the obstruction space / top cohomology of line bundles. Invention: top cohomology
+    classes in $H^n$ are spanned by inverse Laurent monomials $\frac{1}{T_0^{a_0} \cdots T_n^{a_n}}$ with
+    all strictly positive integer exponents $a_i \ge 1$ summing to $\sum a_i = -d$. Substituting $a_i
+    = b_i + 1$ with $b_i \ge 0$ shifts the total degree to $\sum b_i = -d - (n+1) = -n-1-d$. Mental trick:
+    $H^n(\mathbb{P}^n, \mathcal{O}(d)) = 0$ for $d \ge -n$, and for $d \le -n-1$ its dimension is $\binom{n
+    + (-n-1-d)}{n} = \binom{-d-1}{n}$. Quick check: on $\mathbb{P}^2$ for $d = -4$, compute $-d-1 = 3
+    \implies \binom{3}{2} = 3$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the top cohomology $h^n(\mathbb{p}^n, \mathcal{o}(d))$ in your head
+    using the canonical shift $-n-1$? motivation: compute the obstruction space / top cohomology of line
+    bundles. invention: top cohomology classes in $h^n$ are spanned by inverse laurent monomials $\frac{1}{t_0^{a_0}
+    \cdots t_n^{a_n}}$ with all strictly positive integer exponents $a_i \ge 1$ summing to $\sum a_i =
+    -d$. substituting $a_i = b_i + 1$ with $b_i \ge 0$ shifts the total degree to $\sum b_i = -d - (n+1)
+    = -n-1-d$. mental trick: $h^n(\mathbb{p}^n, \mathcal{o}(d)) = 0$ for $d \ge -n$, and for $d \le -n-1$
+    its dimension is $\binom{n + (-n-1-d)}{n} = \binom{-d-1}{n}$. quick check: on $\mathbb{p}^2$ for $d
+    = -4$, compute $-d-1 = 3 \implies \binom{3}{2} = 3$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#005
+  text: What is the residue map on top cohomology and how does it prove that $\omega_{\mathbb{P}^n} \cong
+    \mathcal{O}(-n-1)$?
+  hint: 'Motivation: find the canonical trace map $\mathrm{Tr} \colon H^n(\mathbb{P}^n, \omega_{\mathbb{P}^n})
+    \to k$ for Serre duality. Invention: evaluating top cohomology at $d = -n-1$ yields dimension $\binom{-(-n-1)-1}{n}
+    = \binom{n}{n} = 1$, spanned by the unique fundamental inverse volume element $\frac{1}{T_0 T_1 \cdots
+    T_n}$; sending $\frac{1}{T_0 \cdots T_n} \mapsto 1$ defines the non-degenerate residue trace map.'
+  locator: null
+  sub_index: null
+  search_text: 'what is the residue map on top cohomology and how does it prove that $\omega_{\mathbb{p}^n}
+    \cong \mathcal{o}(-n-1)$? motivation: find the canonical trace map $\mathrm{tr} \colon h^n(\mathbb{p}^n,
+    \omega_{\mathbb{p}^n}) \to k$ for serre duality. invention: evaluating top cohomology at $d = -n-1$
+    yields dimension $\binom{-(-n-1)-1}{n} = \binom{n}{n} = 1$, spanned by the unique fundamental inverse
+    volume element $\frac{1}{t_0 t_1 \cdots t_n}$; sending $\frac{1}{t_0 \cdots t_n} \mapsto 1$ defines
+    the non-degenerate residue trace map.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#006
+  text: How does the single polynomial $\chi(\mathbb{P}^n, \mathcal{O}(d)) = \binom{n+d}{n}$ compute the
+    entire Euler characteristic and explain the "vanishing window"?
+  hint: 'Motivation: compute the alternating sum of cohomology dimensions $\chi(d) = \sum (-1)^q h^q(d)$
+    uniformly for all $d \in \mathbb{Z}$. Invention: the Euler characteristic is given by the single polynomial
+    $\chi(d) = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$, which has $n$ roots at $d = -1, -2, \dots, -n$. Mental
+    trick: (1) For $d \ge 0$, $\chi(d) = h^0(d) = \binom{n+d}{n}$; (2) For $-n \le d \le -1$, $\chi(d)
+    = 0$ (the vanishing window where all cohomology groups vanish); (3) For $d \le -n-1$, $(-1)^n \chi(d)
+    = h^n(d) = (-1)^n \binom{n+d}{n} = \binom{-d-1}{n}$ by upper index negation.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the single polynomial $\chi(\mathbb{p}^n, \mathcal{o}(d)) = \binom{n+d}{n}$ compute
+    the entire euler characteristic and explain the "vanishing window"? motivation: compute the alternating
+    sum of cohomology dimensions $\chi(d) = \sum (-1)^q h^q(d)$ uniformly for all $d \in \mathbb{z}$.
+    invention: the euler characteristic is given by the single polynomial $\chi(d) = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$,
+    which has $n$ roots at $d = -1, -2, \dots, -n$. mental trick: (1) for $d \ge 0$, $\chi(d) = h^0(d)
+    = \binom{n+d}{n}$; (2) for $-n \le d \le -1$, $\chi(d) = 0$ (the vanishing window where all cohomology
+    groups vanish); (3) for $d \le -n-1$, $(-1)^n \chi(d) = h^n(d) = (-1)^n \binom{n+d}{n} = \binom{-d-1}{n}$
+    by upper index negation.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#007
+  text: How does the Čech computation work concretely on $\mathbb{P}^1$ using two charts, and how does
+    it generalize to higher dimensions?
+  hint: 'Motivation: understand the base case $n=1$ before attacking general $n$. Invention: on $\mathbb{P}^1$,
+    the covering is $U_0 = \mathrm{Spec}(k[t])$ and $U_1 = \mathrm{Spec}(k[t^{-1}])$ with overlap $U_0
+    \cap U_1 = \mathrm{Spec}(k[t, t^{-1}])$. The Čech complex is $k[t] \oplus k[t^{-1}] \xrightarrow{d}
+    k[t, t^{-1}]$ where $d(f, g) = g - t^d f$. Mental trick: $H^0$ is polynomials of degree $\le d$ (dimension
+    $d+1$ for $d \ge 0$); $H^1$ is the space of un-cancelable negative Laurent poles $\{t^{-1}, \dots,
+    t^{d+1}\}$ (dimension $-d-1$ for $d \le -2$). For $d = -1$, both $H^0 = 0$ and $H^1 = 0$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the čech computation work concretely on $\mathbb{p}^1$ using two charts, and
+    how does it generalize to higher dimensions? motivation: understand the base case $n=1$ before attacking
+    general $n$. invention: on $\mathbb{p}^1$, the covering is $u_0 = \mathrm{spec}(k[t])$ and $u_1 =
+    \mathrm{spec}(k[t^{-1}])$ with overlap $u_0 \cap u_1 = \mathrm{spec}(k[t, t^{-1}])$. the čech complex
+    is $k[t] \oplus k[t^{-1}] \xrightarrow{d} k[t, t^{-1}]$ where $d(f, g) = g - t^d f$. mental trick:
+    $h^0$ is polynomials of degree $\le d$ (dimension $d+1$ for $d \ge 0$); $h^1$ is the space of un-cancelable
+    negative laurent poles $\{t^{-1}, \dots, t^{d+1}\}$ (dimension $-d-1$ for $d \le -2$). for $d = -1$,
+    both $h^0 = 0$ and $h^1 = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#008
+  text: How does one compute the genus $g$ of a smooth degree-$d$ plane curve $C \subset \mathbb{P}^2$
+    in your head using the cohomology of $\mathbb{P}^2$?
+  hint: 'Motivation: compute the topological genus of an algebraic curve directly from its defining polynomial
+    degree. Invention: write the ideal sheaf sequence $0 \to \mathcal{O}_{\mathbb{P}^2}(-d) \to \mathcal{O}_{\mathbb{P}^2}
+    \to \mathcal{O}_C \to 0$; taking the long exact sequence in cohomology yields $H^1(C, \mathcal{O}_C)
+    \cong H^2(\mathbb{P}^2, \mathcal{O}(-d))$. By Serre duality on $\mathbb{P}^2$, $H^2(\mathbb{P}^2,
+    \mathcal{O}(-d)) \cong H^0(\mathbb{P}^2, \mathcal{O}(d-3))^\vee$. Mental trick: $g = h^0(\mathbb{P}^2,
+    \mathcal{O}(d-3)) = \binom{(d-3)+2}{2} = \frac{(d-1)(d-2)}{2}$; for line $d=1 \implies g=0$; conic
+    $d=2 \implies g=0$; cubic $d=3 \implies g=1$; quartic $d=4 \implies g=3$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the genus $g$ of a smooth degree-$d$ plane curve $c \subset \mathbb{p}^2$
+    in your head using the cohomology of $\mathbb{p}^2$? motivation: compute the topological genus of
+    an algebraic curve directly from its defining polynomial degree. invention: write the ideal sheaf
+    sequence $0 \to \mathcal{o}_{\mathbb{p}^2}(-d) \to \mathcal{o}_{\mathbb{p}^2} \to \mathcal{o}_c \to
+    0$; taking the long exact sequence in cohomology yields $h^1(c, \mathcal{o}_c) \cong h^2(\mathbb{p}^2,
+    \mathcal{o}(-d))$. by serre duality on $\mathbb{p}^2$, $h^2(\mathbb{p}^2, \mathcal{o}(-d)) \cong h^0(\mathbb{p}^2,
+    \mathcal{o}(d-3))^\vee$. mental trick: $g = h^0(\mathbb{p}^2, \mathcal{o}(d-3)) = \binom{(d-3)+2}{2}
+    = \frac{(d-1)(d-2)}{2}$; for line $d=1 \implies g=0$; conic $d=2 \implies g=0$; cubic $d=3 \implies
+    g=1$; quartic $d=4 \implies g=3$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#009
+  text: How does one compute the canonical bundle $\omega_X$ of a complete intersection $X = V(f_1, \dots,
+    f_r) \subset \mathbb{P}^n$ of degrees $(d_1, \dots, d_r)$ in your head?
+  hint: 'Motivation: determine whether a variety is Fano, Calabi-Yau, or of general type. Invention: apply
+    the Adjunction Formula $\omega_X \cong \omega_{\mathbb{P}^n} \otimes \det(N_{X/\mathbb{P}^n}) \cong
+    \mathcal{O}(-n-1) \otimes \mathcal{O}(\sum d_i) \cong \mathcal{O}_X(\sum d_i - n - 1)$. Mental trick:
+    add the degrees of all defining equations and subtract $n+1$; $X$ is Calabi-Yau ($\omega_X \cong \mathcal{O}_X$)
+    $\iff \sum d_i = n+1$. Examples: cubic curve in $\mathbb{P}^2$ ($3 = 2+1$), quartic surface in $\mathbb{P}^3$
+    ($4 = 3+1$), quintic 3-fold in $\mathbb{P}^4$ ($5 = 4+1$), and complete intersection of a quadric
+    and a cubic in $\mathbb{P}^4$ ($2+3 = 5 = 4+1$).'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the canonical bundle $\omega_x$ of a complete intersection $x = v(f_1,
+    \dots, f_r) \subset \mathbb{p}^n$ of degrees $(d_1, \dots, d_r)$ in your head? motivation: determine
+    whether a variety is fano, calabi-yau, or of general type. invention: apply the adjunction formula
+    $\omega_x \cong \omega_{\mathbb{p}^n} \otimes \det(n_{x/\mathbb{p}^n}) \cong \mathcal{o}(-n-1) \otimes
+    \mathcal{o}(\sum d_i) \cong \mathcal{o}_x(\sum d_i - n - 1)$. mental trick: add the degrees of all
+    defining equations and subtract $n+1$; $x$ is calabi-yau ($\omega_x \cong \mathcal{o}_x$) $\iff \sum
+    d_i = n+1$. examples: cubic curve in $\mathbb{p}^2$ ($3 = 2+1$), quartic surface in $\mathbb{p}^3$
+    ($4 = 3+1$), quintic 3-fold in $\mathbb{p}^4$ ($5 = 4+1$), and complete intersection of a quadric
+    and a cubic in $\mathbb{p}^4$ ($2+3 = 5 = 4+1$).'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#010
+  text: How does the Koszul resolution compute the cohomology and Hilbert polynomial of a complete intersection
+    $X = V(f_1, \dots, f_r) \subset \mathbb{P}^n$?
+  hint: 'Motivation: calculate sheaf cohomology on subvarieties without leaving the ambient projective
+    space. Invention: resolve the structure sheaf $\mathcal{O}_X$ by the Koszul complex $0 \to \bigwedge^r
+    \mathcal{E}^\vee \to \dots \to \mathcal{E}^\vee \to \mathcal{O}_{\mathbb{P}^n} \to \mathcal{O}_X \to
+    0$ where $\mathcal{E} = \bigoplus_{i=1}^r \mathcal{O}(d_i)$. Since all terms are direct sums of line
+    bundles $\mathcal{O}(-k)$ whose cohomology on $\mathbb{P}^n$ is known, break the complex into short
+    exact sequences to compute $H^*(X, \mathcal{O}_X(m))$ and Euler characteristics inductively.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the koszul resolution compute the cohomology and hilbert polynomial of a complete
+    intersection $x = v(f_1, \dots, f_r) \subset \mathbb{p}^n$? motivation: calculate sheaf cohomology
+    on subvarieties without leaving the ambient projective space. invention: resolve the structure sheaf
+    $\mathcal{o}_x$ by the koszul complex $0 \to \bigwedge^r \mathcal{e}^\vee \to \dots \to \mathcal{e}^\vee
+    \to \mathcal{o}_{\mathbb{p}^n} \to \mathcal{o}_x \to 0$ where $\mathcal{e} = \bigoplus_{i=1}^r \mathcal{o}(d_i)$.
+    since all terms are direct sums of line bundles $\mathcal{o}(-k)$ whose cohomology on $\mathbb{p}^n$
+    is known, break the complex into short exact sequences to compute $h^*(x, \mathcal{o}_x(m))$ and euler
+    characteristics inductively.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#011
+  text: How does one compute the higher direct images $R^q \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d))$
+    for a projective bundle $\pi \colon \mathbb{P}(\mathcal{E}) \to S$ in your head?
+  hint: 'Motivation: compute pushforwards along families of projective spaces. Invention: relative projective
+    space behaves fiberwise like standard $\mathbb{P}^n$; for a rank-$(n+1)$ vector bundle $\mathcal{E}$
+    on $S$: (1) $R^0 \pi_*(\mathcal{O}(d)) \cong \mathrm{Sym}^d(\mathcal{E})$ for $d \ge 0$; (2) $R^n
+    \pi_*(\mathcal{O}(d)) \cong \mathrm{Sym}^{-n-1-d}(\mathcal{E})^\vee \otimes \det(\mathcal{E})^{-1}$
+    for $d \le -n-1$; (3) $R^q \pi_*(\mathcal{O}(d)) = 0$ for all $0 < q < n$, reducing relative projective
+    geometry to symmetric and determinant powers of $\mathcal{E}$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the higher direct images $r^q \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(d))$
+    for a projective bundle $\pi \colon \mathbb{p}(\mathcal{e}) \to s$ in your head? motivation: compute
+    pushforwards along families of projective spaces. invention: relative projective space behaves fiberwise
+    like standard $\mathbb{p}^n$; for a rank-$(n+1)$ vector bundle $\mathcal{e}$ on $s$: (1) $r^0 \pi_*(\mathcal{o}(d))
+    \cong \mathrm{sym}^d(\mathcal{e})$ for $d \ge 0$; (2) $r^n \pi_*(\mathcal{o}(d)) \cong \mathrm{sym}^{-n-1-d}(\mathcal{e})^\vee
+    \otimes \det(\mathcal{e})^{-1}$ for $d \le -n-1$; (3) $r^q \pi_*(\mathcal{o}(d)) = 0$ for all $0 <
+    q < n$, reducing relative projective geometry to symmetric and determinant powers of $\mathcal{e}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#012
+  text: How does one invent the Čech computation of $H^*(\mathbb{P}^1, \mathcal{O}(d))$ using two affine
+    charts and compute all cohomology groups in your head?
+  hint: 'Motivation: compute the simplest non-affine sheaf cohomology by gluing two copies of $\mathbb{A}^1$.
+    Invention: cover $\mathbb{P}^1$ by $U_0 = \mathrm{Spec}(k[t])$ and $U_1 = \mathrm{Spec}(k[t^{-1}])$
+    with intersection $U_0 \cap U_1 = \mathrm{Spec}(k[t, t^{-1}])$; the Čech complex is $k[t] \oplus k[t^{-1}]
+    \xrightarrow{d} k[t, t^{-1}]$ where $d(f, g) = g - f$. For $\mathcal{O}(d)$, the transition function
+    is $t^d$, so $d(f, g) = g - t^d f$. Mental trick: (1) $H^0 = \ker(d)$ is polynomials of degree $\le
+    d$, which has dimension $d+1$ for $d \ge 0$, and $0$ for $d < 0$; (2) $H^1 = \mathrm{coker}(d)$ is
+    the missing Laurent poles $t^{-1}, \dots, t^{d+1}$, which has dimension $-d-1$ for $d \le -2$, and
+    $0$ for $d \ge -1$. For $d = -1$, both $H^0 = 0$ and $H^1 = 0$, revealing the fundamental "vanishing
+    gap".'
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the čech computation of $h^*(\mathbb{p}^1, \mathcal{o}(d))$ using
+    two affine charts and compute all cohomology groups in your head? motivation: compute the simplest
+    non-affine sheaf cohomology by gluing two copies of $\mathbb{a}^1$. invention: cover $\mathbb{p}^1$
+    by $u_0 = \mathrm{spec}(k[t])$ and $u_1 = \mathrm{spec}(k[t^{-1}])$ with intersection $u_0 \cap u_1
+    = \mathrm{spec}(k[t, t^{-1}])$; the čech complex is $k[t] \oplus k[t^{-1}] \xrightarrow{d} k[t, t^{-1}]$
+    where $d(f, g) = g - f$. for $\mathcal{o}(d)$, the transition function is $t^d$, so $d(f, g) = g -
+    t^d f$. mental trick: (1) $h^0 = \ker(d)$ is polynomials of degree $\le d$, which has dimension $d+1$
+    for $d \ge 0$, and $0$ for $d < 0$; (2) $h^1 = \mathrm{coker}(d)$ is the missing laurent poles $t^{-1},
+    \dots, t^{d+1}$, which has dimension $-d-1$ for $d \le -2$, and $0$ for $d \ge -1$. for $d = -1$,
+    both $h^0 = 0$ and $h^1 = 0$, revealing the fundamental "vanishing gap".'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#013
+  text: How does one invent the Euler sequence on $\mathbb{P}^n$ and use it to compute the canonical bundle
+    $\omega_{\mathbb{P}^n} \cong \mathcal{O}(-n-1)$ in your head?
+  hint: 'Motivation: find the tangent and cotangent bundles of projective space using homogeneous coordinates
+    without choosing charts. Invention: map $n+1$ constant vector fields $\frac{\partial}{\partial T_i}$
+    of degree 1 into the tangent bundle $T\mathbb{P}^n$; the only relation is the Euler vector field $\sum
+    T_i \frac{\partial}{\partial T_i} = 0$, producing the exact sequence $0 \to \mathcal{O}_{\mathbb{P}^n}
+    \to \mathcal{O}_{\mathbb{P}^n}(1)^{\oplus (n+1)} \to T\mathbb{P}^n \to 0$. Mental trick: take determinants:
+    $\det(T\mathbb{P}^n) \cong \det(\mathcal{O}(1)^{\oplus (n+1)}) \otimes \det(\mathcal{O})^{-1} \cong
+    \mathcal{O}(n+1)$; dualizing gives $\omega_{\mathbb{P}^n} = \det(\Omega^1_{\mathbb{P}^n}) = \mathcal{O}(-n-1)$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the euler sequence on $\mathbb{p}^n$ and use it to compute the canonical
+    bundle $\omega_{\mathbb{p}^n} \cong \mathcal{o}(-n-1)$ in your head? motivation: find the tangent
+    and cotangent bundles of projective space using homogeneous coordinates without choosing charts. invention:
+    map $n+1$ constant vector fields $\frac{\partial}{\partial t_i}$ of degree 1 into the tangent bundle
+    $t\mathbb{p}^n$; the only relation is the euler vector field $\sum t_i \frac{\partial}{\partial t_i}
+    = 0$, producing the exact sequence $0 \to \mathcal{o}_{\mathbb{p}^n} \to \mathcal{o}_{\mathbb{p}^n}(1)^{\oplus
+    (n+1)} \to t\mathbb{p}^n \to 0$. mental trick: take determinants: $\det(t\mathbb{p}^n) \cong \det(\mathcal{o}(1)^{\oplus
+    (n+1)}) \otimes \det(\mathcal{o})^{-1} \cong \mathcal{o}(n+1)$; dualizing gives $\omega_{\mathbb{p}^n}
+    = \det(\omega^1_{\mathbb{p}^n}) = \mathcal{o}(-n-1)$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#014
+  text: How does one invent the Adjunction Formula for hypersurfaces $X \subset \mathbb{P}^n$ and compute
+    the canonical bundle $\omega_X$ in your head?
+  hint: 'Motivation: compute the dualizing/canonical bundle of a subvariety from the ambient space. Invention:
+    restrict the ambient differential forms along the normal bundle exact sequence $0 \to T_X \to T\mathbb{P}^n|_X
+    \to N_{X/\mathbb{P}^n} \to 0$; taking top exterior powers yields $\det(T\mathbb{P}^n)|_X \cong \det(T_X)
+    \otimes N_{X/\mathbb{P}^n}$. Since $N_{X/\mathbb{P}^n} \cong \mathcal{O}_X(d)$ for a degree-$d$ hypersurface
+    and $\omega_{\mathbb{P}^n} = \mathcal{O}(-n-1)$, dualizing yields $\omega_X \cong \mathcal{O}_X(d
+    - n - 1)$. Mental trick: subtract $n+1$ from the hypersurface degree $d$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the adjunction formula for hypersurfaces $x \subset \mathbb{p}^n$
+    and compute the canonical bundle $\omega_x$ in your head? motivation: compute the dualizing/canonical
+    bundle of a subvariety from the ambient space. invention: restrict the ambient differential forms
+    along the normal bundle exact sequence $0 \to t_x \to t\mathbb{p}^n|_x \to n_{x/\mathbb{p}^n} \to
+    0$; taking top exterior powers yields $\det(t\mathbb{p}^n)|_x \cong \det(t_x) \otimes n_{x/\mathbb{p}^n}$.
+    since $n_{x/\mathbb{p}^n} \cong \mathcal{o}_x(d)$ for a degree-$d$ hypersurface and $\omega_{\mathbb{p}^n}
+    = \mathcal{o}(-n-1)$, dualizing yields $\omega_x \cong \mathcal{o}_x(d - n - 1)$. mental trick: subtract
+    $n+1$ from the hypersurface degree $d$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#015
+  text: Why are plane cubics, quartic surfaces in $\mathbb{P}^3$, and quintic 3-folds in $\mathbb{P}^4$
+    all Calabi-Yau varieties with $\omega_X \cong \mathcal{O}_X$?
+  hint: 'By the Adjunction Formula $\omega_X \cong \mathcal{O}_X(d - n - 1)$, the canonical bundle is
+    trivial ($\omega_X \cong \mathcal{O}_X$) if and only if $d = n + 1$. Mental calculation: (1) $n=2,
+    d=3 \implies \omega_C = \mathcal{O}_C(3 - 3) = \mathcal{O}_C$ (elliptic curves of genus 1); (2) $n=3,
+    d=4 \implies \omega_S = \mathcal{O}_S(4 - 4) = \mathcal{O}_S$ (K3 surfaces); (3) $n=4, d=5 \implies
+    \omega_X = \mathcal{O}_X(5 - 5) = \mathcal{O}_X$ (quintic Calabi-Yau 3-folds in string theory).'
+  locator: null
+  sub_index: null
+  search_text: 'why are plane cubics, quartic surfaces in $\mathbb{p}^3$, and quintic 3-folds in $\mathbb{p}^4$
+    all calabi-yau varieties with $\omega_x \cong \mathcal{o}_x$? by the adjunction formula $\omega_x
+    \cong \mathcal{o}_x(d - n - 1)$, the canonical bundle is trivial ($\omega_x \cong \mathcal{o}_x$)
+    if and only if $d = n + 1$. mental calculation: (1) $n=2, d=3 \implies \omega_c = \mathcal{o}_c(3
+    - 3) = \mathcal{o}_c$ (elliptic curves of genus 1); (2) $n=3, d=4 \implies \omega_s = \mathcal{o}_s(4
+    - 4) = \mathcal{o}_s$ (k3 surfaces); (3) $n=4, d=5 \implies \omega_x = \mathcal{o}_x(5 - 5) = \mathcal{o}_x$
+    (quintic calabi-yau 3-folds in string theory).'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#016
+  text: How does one invent the genus formula $g = \frac{(d-1)(d-2)}{2}$ for a smooth plane curve $C \subset
+    \mathbb{P}^2$ of degree $d$?
+  hint: 'Motivation: compute the topological genus of an algebraic curve directly from its polynomial
+    degree. Invention: write the ideal sheaf sequence $0 \to \mathcal{O}_{\mathbb{P}^2}(-d) \to \mathcal{O}_{\mathbb{P}^2}
+    \to \mathcal{O}_C \to 0$; taking the long exact sequence in cohomology yields an isomorphism $H^1(C,
+    \mathcal{O}_C) \cong H^2(\mathbb{P}^2, \mathcal{O}(-d))$. By Serre duality on $\mathbb{P}^2$, $H^2(\mathbb{P}^2,
+    \mathcal{O}(-d)) \cong H^0(\mathbb{P}^2, \mathcal{O}(d-3))^\vee$. Mental trick: $g = h^0(\mathbb{P}^2,
+    \mathcal{O}(d-3)) = \binom{(d-3)+2}{2} = \frac{(d-1)(d-2)}{2}$; for line $d=1 \implies g=0$; conic
+    $d=2 \implies g=0$; cubic $d=3 \implies g=1$; quartic $d=4 \implies g=3$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one invent the genus formula $g = \frac{(d-1)(d-2)}{2}$ for a smooth plane curve
+    $c \subset \mathbb{p}^2$ of degree $d$? motivation: compute the topological genus of an algebraic
+    curve directly from its polynomial degree. invention: write the ideal sheaf sequence $0 \to \mathcal{o}_{\mathbb{p}^2}(-d)
+    \to \mathcal{o}_{\mathbb{p}^2} \to \mathcal{o}_c \to 0$; taking the long exact sequence in cohomology
+    yields an isomorphism $h^1(c, \mathcal{o}_c) \cong h^2(\mathbb{p}^2, \mathcal{o}(-d))$. by serre duality
+    on $\mathbb{p}^2$, $h^2(\mathbb{p}^2, \mathcal{o}(-d)) \cong h^0(\mathbb{p}^2, \mathcal{o}(d-3))^\vee$.
+    mental trick: $g = h^0(\mathbb{p}^2, \mathcal{o}(d-3)) = \binom{(d-3)+2}{2} = \frac{(d-1)(d-2)}{2}$;
+    for line $d=1 \implies g=0$; conic $d=2 \implies g=0$; cubic $d=3 \implies g=1$; quartic $d=4 \implies
+    g=3$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#017
+  text: How does one compute the Hilbert polynomial $P_X(m) = \chi(X, \mathcal{O}_X(m))$ in your head
+    and read off the dimension and degree?
+  hint: 'Motivation: capture the asymptotic growth of global sections in a single polynomial. Invention:
+    for $\mathbb{P}^n$, $P_{\mathbb{P}^n}(m) = \binom{m+n}{n} = \frac{m^n}{n!} + \frac{n+1}{2(n-1)!}m^{n-1}
+    + \dots$; for a degree-$d$ hypersurface $X \subset \mathbb{P}^n$, the exact sequence $0 \to \mathcal{O}(m-d)
+    \to \mathcal{O}(m) \to \mathcal{O}_X(m) \to 0$ gives $P_X(m) = \binom{m+n}{n} - \binom{m-d+n}{n}$.
+    Mental trick: the leading term is $\frac{d}{(n-1)!} m^{n-1}$, where the power of $m$ gives $\dim(X)
+    = n-1$ and the leading coefficient gives $\frac{\deg(X)}{(\dim X)!} = \frac{d}{(n-1)!}$; the constant
+    term $P_X(0) = \chi(X, \mathcal{O}_X) = 1 - g$ gives the arithmetic genus.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the hilbert polynomial $p_x(m) = \chi(x, \mathcal{o}_x(m))$ in your
+    head and read off the dimension and degree? motivation: capture the asymptotic growth of global sections
+    in a single polynomial. invention: for $\mathbb{p}^n$, $p_{\mathbb{p}^n}(m) = \binom{m+n}{n} = \frac{m^n}{n!}
+    + \frac{n+1}{2(n-1)!}m^{n-1} + \dots$; for a degree-$d$ hypersurface $x \subset \mathbb{p}^n$, the
+    exact sequence $0 \to \mathcal{o}(m-d) \to \mathcal{o}(m) \to \mathcal{o}_x(m) \to 0$ gives $p_x(m)
+    = \binom{m+n}{n} - \binom{m-d+n}{n}$. mental trick: the leading term is $\frac{d}{(n-1)!} m^{n-1}$,
+    where the power of $m$ gives $\dim(x) = n-1$ and the leading coefficient gives $\frac{\deg(x)}{(\dim
+    x)!} = \frac{d}{(n-1)!}$; the constant term $p_x(0) = \chi(x, \mathcal{o}_x) = 1 - g$ gives the arithmetic
+    genus.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#018
+  text: How does the exact sequence for a hyperplane section $0 \to \mathcal{O}_X(-1) \to \mathcal{O}_X
+    \to \mathcal{O}_H \to 0$ compute global sections inductively?
+  hint: 'Motivation: compute cohomology on a high-dimensional variety by reducing to a lower-dimensional
+    hyperplane section $H = X \cap \mathbb{P}^{n-1}$. Invention: multiply by the defining linear form
+    $L$; twisting by $\mathcal{O}(m)$ gives $0 \to \mathcal{O}_X(m-1) \to \mathcal{O}_X(m) \to \mathcal{O}_H(m)
+    \to 0$. If $H^1(X, \mathcal{O}_X(m-1)) = 0$, the global sections sequence $0 \to H^0(\mathcal{O}_X(m-1))
+    \to H^0(\mathcal{O}_X(m)) \to H^0(H, \mathcal{O}_H(m)) \to 0$ is exact, proving $h^0(X, \mathcal{O}(m))
+    = h^0(X, \mathcal{O}(m-1)) + h^0(H, \mathcal{O}(m))$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the exact sequence for a hyperplane section $0 \to \mathcal{o}_x(-1) \to \mathcal{o}_x
+    \to \mathcal{o}_h \to 0$ compute global sections inductively? motivation: compute cohomology on a
+    high-dimensional variety by reducing to a lower-dimensional hyperplane section $h = x \cap \mathbb{p}^{n-1}$.
+    invention: multiply by the defining linear form $l$; twisting by $\mathcal{o}(m)$ gives $0 \to \mathcal{o}_x(m-1)
+    \to \mathcal{o}_x(m) \to \mathcal{o}_h(m) \to 0$. if $h^1(x, \mathcal{o}_x(m-1)) = 0$, the global
+    sections sequence $0 \to h^0(\mathcal{o}_x(m-1)) \to h^0(\mathcal{o}_x(m)) \to h^0(h, \mathcal{o}_h(m))
+    \to 0$ is exact, proving $h^0(x, \mathcal{o}(m)) = h^0(x, \mathcal{o}(m-1)) + h^0(h, \mathcal{o}(m))$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#019
+  text: How does one compute the cohomology of a complete intersection of two quadrics $X = V(Q_1, Q_2)
+    \subset \mathbb{P}^3$ (an elliptic curve of degree 4)?
+  hint: 'Motivation: compute invariants of non-hypersurface complete intersections. Invention: resolve
+    $\mathcal{O}_X$ via the Koszul complex $0 \to \mathcal{O}(-4) \to \mathcal{O}(-2)^{\oplus 2} \to \mathcal{O}_{\mathbb{P}^3}
+    \to \mathcal{O}_X \to 0$. Breaking into two short exact sequences with $K = \ker(\mathcal{O}(-2)^{\oplus
+    2} \to \mathcal{O})$: (1) $0 \to \mathcal{O}(-4) \to \mathcal{O}(-2)^{\oplus 2} \to K \to 0 \implies
+    H^1(K) \cong H^0(\mathcal{O}(-4)) = 0$ and $H^2(K) \cong H^3(\mathcal{O}(-4)) \cong k$; (2) $0 \to
+    K \to \mathcal{O} \to \mathcal{O}_X \to 0 \implies H^1(\mathcal{O}_X) \cong H^2(K) \cong k$, proving
+    $g = h^1(\mathcal{O}_X) = 1$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the cohomology of a complete intersection of two quadrics $x = v(q_1,
+    q_2) \subset \mathbb{p}^3$ (an elliptic curve of degree 4)? motivation: compute invariants of non-hypersurface
+    complete intersections. invention: resolve $\mathcal{o}_x$ via the koszul complex $0 \to \mathcal{o}(-4)
+    \to \mathcal{o}(-2)^{\oplus 2} \to \mathcal{o}_{\mathbb{p}^3} \to \mathcal{o}_x \to 0$. breaking into
+    two short exact sequences with $k = \ker(\mathcal{o}(-2)^{\oplus 2} \to \mathcal{o})$: (1) $0 \to
+    \mathcal{o}(-4) \to \mathcal{o}(-2)^{\oplus 2} \to k \to 0 \implies h^1(k) \cong h^0(\mathcal{o}(-4))
+    = 0$ and $h^2(k) \cong h^3(\mathcal{o}(-4)) \cong k$; (2) $0 \to k \to \mathcal{o} \to \mathcal{o}_x
+    \to 0 \implies h^1(\mathcal{o}_x) \cong h^2(k) \cong k$, proving $g = h^1(\mathcal{o}_x) = 1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#020
+  text: Why does every algebraic vector bundle $\mathcal{E}$ on $\mathbb{P}^1$ split uniquely into a direct
+    sum of line bundles $\bigoplus_{i=1}^r \mathcal{O}(a_i)$ (Grothendieck's Theorem)?
+  hint: 'Motivation: classify vector bundles on projective curves. Invention: find a line subbundle $\mathcal{O}(a_1)
+    \hookrightarrow \mathcal{E}$ of maximal degree $a_1$; the quotient $\mathcal{E}/\mathcal{O}(a_1)$
+    is a vector bundle of rank $r-1$. The extension class lives in $\mathrm{Ext}^1(\mathcal{E}'', \mathcal{O}(a_1))
+    \cong H^1(\mathbb{P}^1, (\mathcal{E}'')^\vee \otimes \mathcal{O}(a_1)) = 0$ by maximality of $a_1$,
+    forcing the extension to split. Mental trick: test $h^0(\mathbb{P}^1, \mathcal{E}(k))$ for various
+    twists $k$ to identify the jumping degrees $a_i$.'
+  locator: null
+  sub_index: null
+  search_text: 'why does every algebraic vector bundle $\mathcal{e}$ on $\mathbb{p}^1$ split uniquely
+    into a direct sum of line bundles $\bigoplus_{i=1}^r \mathcal{o}(a_i)$ (grothendieck''s theorem)?
+    motivation: classify vector bundles on projective curves. invention: find a line subbundle $\mathcal{o}(a_1)
+    \hookrightarrow \mathcal{e}$ of maximal degree $a_1$; the quotient $\mathcal{e}/\mathcal{o}(a_1)$
+    is a vector bundle of rank $r-1$. the extension class lives in $\mathrm{ext}^1(\mathcal{e}'', \mathcal{o}(a_1))
+    \cong h^1(\mathbb{p}^1, (\mathcal{e}'')^\vee \otimes \mathcal{o}(a_1)) = 0$ by maximality of $a_1$,
+    forcing the extension to split. mental trick: test $h^0(\mathbb{p}^1, \mathcal{e}(k))$ for various
+    twists $k$ to identify the jumping degrees $a_i$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#021
+  text: How does one compute the cohomology of the blow-up $\widetilde{X} = \mathrm{Bl}_p(\mathbb{P}^2)$
+    of the projective plane at a point in your head?
+  hint: 'Motivation: determine how resolving a point changes the topological and algebraic cohomology
+    of a surface. Invention: the blow-up morphism $\pi \colon \widetilde{X} \to \mathbb{P}^2$ has exceptional
+    divisor $E \cong \mathbb{P}^1$ with normal bundle $N_{E/\widetilde{X}} \cong \mathcal{O}_{\mathbb{P}^1}(-1)$
+    ($E^2 = -1$). By proper base change and Leray spectral sequence, $\mathbf{R}\pi_* \mathcal{O}_{\widetilde{X}}
+    \cong \mathcal{O}_{\mathbb{P}^2}$, so $H^i(\widetilde{X}, \mathcal{O}_{\widetilde{X}}) \cong H^i(\mathbb{P}^2,
+    \mathcal{O}_{\mathbb{P}^2})$, meaning $h^0 = 1, h^1 = 0, h^2 = 0$. On the Picard group, $\mathrm{Pic}(\widetilde{X})
+    \cong \mathbb{Z} H \oplus \mathbb{Z} E$, adding exactly one new algebraic cycle class.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the cohomology of the blow-up $\widetilde{x} = \mathrm{bl}_p(\mathbb{p}^2)$
+    of the projective plane at a point in your head? motivation: determine how resolving a point changes
+    the topological and algebraic cohomology of a surface. invention: the blow-up morphism $\pi \colon
+    \widetilde{x} \to \mathbb{p}^2$ has exceptional divisor $e \cong \mathbb{p}^1$ with normal bundle
+    $n_{e/\widetilde{x}} \cong \mathcal{o}_{\mathbb{p}^1}(-1)$ ($e^2 = -1$). by proper base change and
+    leray spectral sequence, $\mathbf{r}\pi_* \mathcal{o}_{\widetilde{x}} \cong \mathcal{o}_{\mathbb{p}^2}$,
+    so $h^i(\widetilde{x}, \mathcal{o}_{\widetilde{x}}) \cong h^i(\mathbb{p}^2, \mathcal{o}_{\mathbb{p}^2})$,
+    meaning $h^0 = 1, h^1 = 0, h^2 = 0$. on the picard group, $\mathrm{pic}(\widetilde{x}) \cong \mathbb{z}
+    h \oplus \mathbb{z} e$, adding exactly one new algebraic cycle class.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#022
+  text: Why does Serre Vanishing $H^i(X, \mathcal{F}(m)) = 0$ for all $i > 0$ and $m \gg 0$ hold geometrically
+    on any projective scheme $X \subset \mathbb{P}^n$?
+  hint: 'Motivation: understand why sufficiently positive twists eliminate all homological obstructions.
+    Invention: embed $X \hookrightarrow \mathbb{P}^n$ and resolve the coherent sheaf $\mathcal{F}$ by
+    a finite sequence of free sheaves $\bigoplus \mathcal{O}(-k_j)$; twisting by $\mathcal{O}(m)$ shifts
+    the line bundles into $\mathcal{O}(m - k_j)$. For $m > \max(k_j)$, all line bundle twists lie in the
+    positive range where $H^{i>0}(\mathbb{P}^n, \mathcal{O}(m - k_j)) = 0$, forcing the hypercohomology
+    spectral sequence to vanish in all positive degrees.'
+  locator: null
+  sub_index: null
+  search_text: 'why does serre vanishing $h^i(x, \mathcal{f}(m)) = 0$ for all $i > 0$ and $m \gg 0$ hold
+    geometrically on any projective scheme $x \subset \mathbb{p}^n$? motivation: understand why sufficiently
+    positive twists eliminate all homological obstructions. invention: embed $x \hookrightarrow \mathbb{p}^n$
+    and resolve the coherent sheaf $\mathcal{f}$ by a finite sequence of free sheaves $\bigoplus \mathcal{o}(-k_j)$;
+    twisting by $\mathcal{o}(m)$ shifts the line bundles into $\mathcal{o}(m - k_j)$. for $m > \max(k_j)$,
+    all line bundle twists lie in the positive range where $h^{i>0}(\mathbb{p}^n, \mathcal{o}(m - k_j))
+    = 0$, forcing the hypercohomology spectral sequence to vanish in all positive degrees.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#023
+  text: How did Serre and Grothendieck invent the computation of $H^*(\mathbb{P}^n, \mathcal{O}(d))$ and
+    what is the core breakthrough that makes it computable?
+  hint: 'Motivation: compute sheaf cohomology on the fundamental compact space of algebraic geometry.
+    Invention: cover $\mathbb{P}^n$ by the $n+1$ standard affine charts $D_+(T_0), \dots, D_+(T_n)$; on
+    intersections, sections are Laurent polynomials whose denominators are products of the chart variables.
+    Breakthrough: the Čech complex decomposes into a direct sum of 1-dimensional subcomplexes $\check{\mathcal{C}}^\bullet(\vec{e})$
+    indexed by the multi-weight exponents $\vec{e} = (e_0, \dots, e_n)$ of monomials $T_0^{e_0} \cdots
+    T_n^{e_n}$ with $\sum e_i = d$, reducing the entire infinite-dimensional cohomology calculation to
+    analyzing the set of negative exponents $\mathrm{NEG}(\vec{e}) = \{i \mid e_i < 0\}$.'
+  locator: null
+  sub_index: null
+  search_text: 'how did serre and grothendieck invent the computation of $h^*(\mathbb{p}^n, \mathcal{o}(d))$
+    and what is the core breakthrough that makes it computable? motivation: compute sheaf cohomology on
+    the fundamental compact space of algebraic geometry. invention: cover $\mathbb{p}^n$ by the $n+1$
+    standard affine charts $d_+(t_0), \dots, d_+(t_n)$; on intersections, sections are laurent polynomials
+    whose denominators are products of the chart variables. breakthrough: the čech complex decomposes
+    into a direct sum of 1-dimensional subcomplexes $\check{\mathcal{c}}^\bullet(\vec{e})$ indexed by
+    the multi-weight exponents $\vec{e} = (e_0, \dots, e_n)$ of monomials $t_0^{e_0} \cdots t_n^{e_n}$
+    with $\sum e_i = d$, reducing the entire infinite-dimensional cohomology calculation to analyzing
+    the set of negative exponents $\mathrm{neg}(\vec{e}) = \{i \mid e_i < 0\}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#024
+  text: How does one classify the cohomology of a monomial $T_0^{e_0} \cdots T_n^{e_n}$ in your head using
+    the negative index set $\mathrm{NEG}(\vec{e})$?
+  hint: 'Mental rule: (1) If $\mathrm{NEG}(\vec{e}) = \emptyset$ (all $e_i \ge 0$), the monomial has no
+    denominators, lives in all charts, and contributes to $H^0$; (2) If $\mathrm{NEG}(\vec{e}) = \{0,
+    1, \dots, n\}$ (all $e_i < 0$), the monomial requires all denominators simultaneously, lives only
+    on the $(n+1)$-fold intersection, has nowhere to map, and contributes to $H^n$; (3) If $\emptyset
+    \subsetneq \mathrm{NEG}(\vec{e}) \subsetneq \{0, \dots, n\}$ (some negative, some non-negative), choosing
+    any non-negative index $i_{\mathrm{fix}} \notin \mathrm{NEG}(\vec{e})$ defines a contracting homotopy
+    $h(s) = s \cup \{i_{\mathrm{fix}}\}$ that kills the subcomplex, making all intermediate cohomology
+    $H^q = 0$ for $0 < q < n$ vanish identically.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one classify the cohomology of a monomial $t_0^{e_0} \cdots t_n^{e_n}$ in your
+    head using the negative index set $\mathrm{neg}(\vec{e})$? mental rule: (1) if $\mathrm{neg}(\vec{e})
+    = \emptyset$ (all $e_i \ge 0$), the monomial has no denominators, lives in all charts, and contributes
+    to $h^0$; (2) if $\mathrm{neg}(\vec{e}) = \{0, 1, \dots, n\}$ (all $e_i < 0$), the monomial requires
+    all denominators simultaneously, lives only on the $(n+1)$-fold intersection, has nowhere to map,
+    and contributes to $h^n$; (3) if $\emptyset \subsetneq \mathrm{neg}(\vec{e}) \subsetneq \{0, \dots,
+    n\}$ (some negative, some non-negative), choosing any non-negative index $i_{\mathrm{fix}} \notin
+    \mathrm{neg}(\vec{e})$ defines a contracting homotopy $h(s) = s \cup \{i_{\mathrm{fix}}\}$ that kills
+    the subcomplex, making all intermediate cohomology $h^q = 0$ for $0 < q < n$ vanish identically.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#025
+  text: How does one compute $H^0(\mathbb{P}^n, \mathcal{O}(d))$ in your head in two seconds for any $n$
+    and $d$?
+  hint: 'Mental trick: $H^0(\mathbb{P}^n, \mathcal{O}(d))$ is the space of ordinary homogeneous polynomials
+    of degree $d$ in $n+1$ variables. By "stars and bars", the number of monomials of degree $d$ in $n+1$
+    variables is $\binom{n+d}{n} = \binom{n+d}{d}$ for $d \ge 0$, and is $0$ for $d < 0$. Example: for
+    $\mathbb{P}^2$ and $d=2$, compute $\binom{2+2}{2} = \binom{4}{2} = 6$; for $d=-1$, it is $0$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute $h^0(\mathbb{p}^n, \mathcal{o}(d))$ in your head in two seconds for
+    any $n$ and $d$? mental trick: $h^0(\mathbb{p}^n, \mathcal{o}(d))$ is the space of ordinary homogeneous
+    polynomials of degree $d$ in $n+1$ variables. by "stars and bars", the number of monomials of degree
+    $d$ in $n+1$ variables is $\binom{n+d}{n} = \binom{n+d}{d}$ for $d \ge 0$, and is $0$ for $d < 0$.
+    example: for $\mathbb{p}^2$ and $d=2$, compute $\binom{2+2}{2} = \binom{4}{2} = 6$; for $d=-1$, it
+    is $0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#026
+  text: Why is the intermediate cohomology $H^q(\mathbb{P}^n, \mathcal{O}(d)) = 0$ always zero for all
+    $0 < q < n$ and all degrees $d \in \mathbb{Z}$?
+  hint: Because every monomial in an intermediate degree has at least one positive exponent $e_j \ge 0$
+    (so it is not top-degree) and at least one negative exponent $e_k < 0$ (so it is not global); any
+    non-negative coordinate acts as an algebraic cone point / contracting homotopy that makes the Čech
+    subcomplex contractible and acyclic.
+  locator: null
+  sub_index: null
+  search_text: why is the intermediate cohomology $h^q(\mathbb{p}^n, \mathcal{o}(d)) = 0$ always zero
+    for all $0 < q < n$ and all degrees $d \in \mathbb{z}$? because every monomial in an intermediate
+    degree has at least one positive exponent $e_j \ge 0$ (so it is not top-degree) and at least one negative
+    exponent $e_k < 0$ (so it is not global); any non-negative coordinate acts as an algebraic cone point
+    / contracting homotopy that makes the čech subcomplex contractible and acyclic.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#027
+  text: How does one compute the top cohomology $H^n(\mathbb{P}^n, \mathcal{O}(d))$ in your head using
+    the canonical shift $-n-1$?
+  hint: 'Mental trick: $H^n(\mathbb{P}^n, \mathcal{O}(d))$ is spanned by inverse monomials $\frac{1}{T_0^{a_0}
+    \cdots T_n^{a_n}}$ with all strictly positive powers $a_i \ge 1$ summing to $\sum a_i = -d$. Setting
+    $a_i = b_i + 1$ with $b_i \ge 0$ reduces this to $\sum b_i = -d - (n+1) = -n-1-d$. Thus, $H^n(\mathbb{P}^n,
+    \mathcal{O}(d)) = 0$ for $d \ge -n$, and for $d \le -n-1$ its rank is $\binom{n + (-n-1-d)}{n} = \binom{-d-1}{n}$.
+    Example: for $\mathbb{P}^2$ and $d=-4$, $-d-1 = 3$, so the rank is $\binom{3}{2} = 3$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the top cohomology $h^n(\mathbb{p}^n, \mathcal{o}(d))$ in your head
+    using the canonical shift $-n-1$? mental trick: $h^n(\mathbb{p}^n, \mathcal{o}(d))$ is spanned by
+    inverse monomials $\frac{1}{t_0^{a_0} \cdots t_n^{a_n}}$ with all strictly positive powers $a_i \ge
+    1$ summing to $\sum a_i = -d$. setting $a_i = b_i + 1$ with $b_i \ge 0$ reduces this to $\sum b_i
+    = -d - (n+1) = -n-1-d$. thus, $h^n(\mathbb{p}^n, \mathcal{o}(d)) = 0$ for $d \ge -n$, and for $d \le
+    -n-1$ its rank is $\binom{n + (-n-1-d)}{n} = \binom{-d-1}{n}$. example: for $\mathbb{p}^2$ and $d=-4$,
+    $-d-1 = 3$, so the rank is $\binom{3}{2} = 3$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#028
+  text: Why is the canonical dualizing sheaf of projective space $\omega_{\mathbb{P}^n} \cong \mathcal{O}(-n-1)$
+    and how does it explain the Serre duality pairing?
+  hint: The top cohomology $H^n(\mathbb{P}^n, \mathcal{O}(-n-1))$ has rank $\binom{-(-n-1)-1}{n} = \binom{n}{n}
+    = 1$, spanned by the canonical trace element $\frac{1}{T_0 T_1 \cdots T_n}$; multiplying a polynomial
+    of degree $d$ with an inverse monomial of degree $-n-1-d$ produces a scalar multiple of $\frac{1}{T_0
+    \cdots T_n}$, giving the non-degenerate Serre duality pairing $H^0(\mathbb{P}^n, \mathcal{O}(d)) \times
+    H^n(\mathbb{P}^n, \mathcal{O}(-n-1-d)) \to R$.
+  locator: null
+  sub_index: null
+  search_text: why is the canonical dualizing sheaf of projective space $\omega_{\mathbb{p}^n} \cong \mathcal{o}(-n-1)$
+    and how does it explain the serre duality pairing? the top cohomology $h^n(\mathbb{p}^n, \mathcal{o}(-n-1))$
+    has rank $\binom{-(-n-1)-1}{n} = \binom{n}{n} = 1$, spanned by the canonical trace element $\frac{1}{t_0
+    t_1 \cdots t_n}$; multiplying a polynomial of degree $d$ with an inverse monomial of degree $-n-1-d$
+    produces a scalar multiple of $\frac{1}{t_0 \cdots t_n}$, giving the non-degenerate serre duality
+    pairing $h^0(\mathbb{p}^n, \mathcal{o}(d)) \times h^n(\mathbb{p}^n, \mathcal{o}(-n-1-d)) \to r$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#029
+  text: How does the single polynomial formula $\chi(\mathbb{P}^n, \mathcal{O}(d)) = \binom{n+d}{n}$ compute
+    the entire Euler characteristic and explain the "vanishing window"?
+  hint: 'Mental trick: the Euler characteristic $\chi(d) = \sum (-1)^q h^q(d) = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$
+    is a polynomial in $d$ of degree $n$ with roots at $d = -1, -2, \dots, -n$. For $d \ge 0$, $\chi(d)
+    = h^0(d) = \binom{n+d}{n}$; for $-n \le d \le -1$, $\chi(d) = 0$ (the vanishing window where all cohomology
+    is 0); for $d \le -n-1$, $(-1)^n \chi(d) = h^n(d) = (-1)^n \binom{n+d}{n} = \binom{-d-1}{n}$ by upper
+    index negation.'
+  locator: null
+  sub_index: null
+  search_text: 'how does the single polynomial formula $\chi(\mathbb{p}^n, \mathcal{o}(d)) = \binom{n+d}{n}$
+    compute the entire euler characteristic and explain the "vanishing window"? mental trick: the euler
+    characteristic $\chi(d) = \sum (-1)^q h^q(d) = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$ is a polynomial in
+    $d$ of degree $n$ with roots at $d = -1, -2, \dots, -n$. for $d \ge 0$, $\chi(d) = h^0(d) = \binom{n+d}{n}$;
+    for $-n \le d \le -1$, $\chi(d) = 0$ (the vanishing window where all cohomology is 0); for $d \le
+    -n-1$, $(-1)^n \chi(d) = h^n(d) = (-1)^n \binom{n+d}{n} = \binom{-d-1}{n}$ by upper index negation.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#030
+  text: How does the computation of $H^*(\mathbb{P}^1, \mathcal{O}(d))$ work concretely on the two charts
+    $U_0 = \mathrm{Spec}(k[t])$ and $U_1 = \mathrm{Spec}(k[t^{-1}])$?
+  hint: The Čech complex is $k[t] \oplus k[t^{-1}] \xrightarrow{d} k[t, t^{-1}]$ where $d(f, g) = g -
+    f$. (1) $H^0 = \ker(d) = k[t] \cap k[t^{-1}] = k$, which extends to degree-$d$ polynomials of dimension
+    $d+1$ for $\mathcal{O}(d)$; (2) $H^1 = \mathrm{coker}(d) = k[t, t^{-1}] / (k[t] + k[t^{-1}])$, which
+    has basis $\{t^{-1}, t^{-2}, \dots, t^{-(m-1)}\}$ of dimension $m-1$ for $\mathcal{O}(-m)$, giving
+    $h^1(\mathcal{O}(-m)) = m-1$ and dualizing sheaf $\omega_{\mathbb{P}^1} \cong \mathcal{O}(-2)$.
+  locator: null
+  sub_index: null
+  search_text: how does the computation of $h^*(\mathbb{p}^1, \mathcal{o}(d))$ work concretely on the
+    two charts $u_0 = \mathrm{spec}(k[t])$ and $u_1 = \mathrm{spec}(k[t^{-1}])$? the čech complex is $k[t]
+    \oplus k[t^{-1}] \xrightarrow{d} k[t, t^{-1}]$ where $d(f, g) = g - f$. (1) $h^0 = \ker(d) = k[t]
+    \cap k[t^{-1}] = k$, which extends to degree-$d$ polynomials of dimension $d+1$ for $\mathcal{o}(d)$;
+    (2) $h^1 = \mathrm{coker}(d) = k[t, t^{-1}] / (k[t] + k[t^{-1}])$, which has basis $\{t^{-1}, t^{-2},
+    \dots, t^{-(m-1)}\}$ of dimension $m-1$ for $\mathcal{o}(-m)$, giving $h^1(\mathcal{o}(-m)) = m-1$
+    and dualizing sheaf $\omega_{\mathbb{p}^1} \cong \mathcal{o}(-2)$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#031
+  text: How does one compute the genus $g$ of a smooth degree-$d$ plane curve $C \subset \mathbb{P}^2$
+    in your head using the cohomology of $\mathbb{P}^2$?
+  hint: Take the ideal sheaf short exact sequence $0 \to \mathcal{O}_{\mathbb{P}^2}(-d) \to \mathcal{O}_{\mathbb{P}^2}
+    \to \mathcal{O}_C \to 0$; taking the long exact sequence in cohomology yields $0 \to H^0(\mathcal{O})
+    \to H^0(\mathcal{O}_C) \to H^1(\mathcal{O}(-d)) \to H^1(\mathcal{O}) \to H^1(\mathcal{O}_C) \to H^2(\mathcal{O}(-d))
+    \to H^2(\mathcal{O})$. Since $H^1(\mathcal{O}(-d)) = H^1(\mathcal{O}) = H^2(\mathcal{O}) = 0$, this
+    gives $H^0(\mathcal{O}_C) \cong k$ and an isomorphism $H^1(C, \mathcal{O}_C) \cong H^2(\mathbb{P}^2,
+    \mathcal{O}(-d))$; by Serre duality on $\mathbb{P}^2$, $g = h^1(\mathcal{O}_C) = h^2(\mathbb{P}^2,
+    \mathcal{O}(-d)) = h^0(\mathbb{P}^2, \mathcal{O}(d-3)) = \binom{(d-3)+2}{2} = \frac{(d-1)(d-2)}{2}$.
+  locator: null
+  sub_index: null
+  search_text: how does one compute the genus $g$ of a smooth degree-$d$ plane curve $c \subset \mathbb{p}^2$
+    in your head using the cohomology of $\mathbb{p}^2$? take the ideal sheaf short exact sequence $0
+    \to \mathcal{o}_{\mathbb{p}^2}(-d) \to \mathcal{o}_{\mathbb{p}^2} \to \mathcal{o}_c \to 0$; taking
+    the long exact sequence in cohomology yields $0 \to h^0(\mathcal{o}) \to h^0(\mathcal{o}_c) \to h^1(\mathcal{o}(-d))
+    \to h^1(\mathcal{o}) \to h^1(\mathcal{o}_c) \to h^2(\mathcal{o}(-d)) \to h^2(\mathcal{o})$. since
+    $h^1(\mathcal{o}(-d)) = h^1(\mathcal{o}) = h^2(\mathcal{o}) = 0$, this gives $h^0(\mathcal{o}_c) \cong
+    k$ and an isomorphism $h^1(c, \mathcal{o}_c) \cong h^2(\mathbb{p}^2, \mathcal{o}(-d))$; by serre duality
+    on $\mathbb{p}^2$, $g = h^1(\mathcal{o}_c) = h^2(\mathbb{p}^2, \mathcal{o}(-d)) = h^0(\mathbb{p}^2,
+    \mathcal{o}(d-3)) = \binom{(d-3)+2}{2} = \frac{(d-1)(d-2)}{2}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#032
+  text: How does one compute the dimension of the space of degree-$m$ polynomials vanishing on a degree-$d$
+    hypersurface $X \subset \mathbb{P}^n$?
+  hint: 'Twist the hypersurface exact sequence by $\mathcal{O}(m)$ to get $0 \to \mathcal{O}_{\mathbb{P}^n}(m-d)
+    \to \mathcal{O}_{\mathbb{P}^n}(m) \to \mathcal{O}_X(m) \to 0$. Since $H^1(\mathbb{P}^n, \mathcal{O}(m-d))
+    = 0$ for all $n \ge 2$, taking global sections is always short exact on $H^0$: $0 \to H^0(\mathcal{O}(m-d))
+    \to H^0(\mathcal{O}(m)) \to H^0(X, \mathcal{O}_X(m)) \to 0$, meaning every section on $X$ lifts to
+    a polynomial on $\mathbb{P}^n$, and $\dim H^0(X, \mathcal{O}_X(m)) = \binom{n+m}{n} - \binom{n+m-d}{n}$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the dimension of the space of degree-$m$ polynomials vanishing on
+    a degree-$d$ hypersurface $x \subset \mathbb{p}^n$? twist the hypersurface exact sequence by $\mathcal{o}(m)$
+    to get $0 \to \mathcal{o}_{\mathbb{p}^n}(m-d) \to \mathcal{o}_{\mathbb{p}^n}(m) \to \mathcal{o}_x(m)
+    \to 0$. since $h^1(\mathbb{p}^n, \mathcal{o}(m-d)) = 0$ for all $n \ge 2$, taking global sections
+    is always short exact on $h^0$: $0 \to h^0(\mathcal{o}(m-d)) \to h^0(\mathcal{o}(m)) \to h^0(x, \mathcal{o}_x(m))
+    \to 0$, meaning every section on $x$ lifts to a polynomial on $\mathbb{p}^n$, and $\dim h^0(x, \mathcal{o}_x(m))
+    = \binom{n+m}{n} - \binom{n+m-d}{n}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#033
+  text: How does the Koszul resolution generalize the cohomology computation of $\mathbb{P}^n$ to complete
+    intersections $X = V(f_1, \dots, f_r) \subset \mathbb{P}^n$?
+  hint: Resolve the structure sheaf $\mathcal{O}_X$ by the Koszul complex $0 \to \bigwedge^r \mathcal{E}^\vee
+    \to \dots \to \mathcal{E}^\vee \to \mathcal{O}_{\mathbb{P}^n} \to \mathcal{O}_X \to 0$ where $\mathcal{E}
+    = \bigoplus_{i=1}^r \mathcal{O}(d_i)$; since all intermediate terms are direct sums of line bundles
+    $\mathcal{O}(-k)$ whose cohomology on $\mathbb{P}^n$ is completely known, the hypercohomology spectral
+    sequence breaks into finite 2-term sequences that compute $H^i(X, \mathcal{O}_X(m))$ algorithmically.
+  locator: null
+  sub_index: null
+  search_text: how does the koszul resolution generalize the cohomology computation of $\mathbb{p}^n$
+    to complete intersections $x = v(f_1, \dots, f_r) \subset \mathbb{p}^n$? resolve the structure sheaf
+    $\mathcal{o}_x$ by the koszul complex $0 \to \bigwedge^r \mathcal{e}^\vee \to \dots \to \mathcal{e}^\vee
+    \to \mathcal{o}_{\mathbb{p}^n} \to \mathcal{o}_x \to 0$ where $\mathcal{e} = \bigoplus_{i=1}^r \mathcal{o}(d_i)$;
+    since all intermediate terms are direct sums of line bundles $\mathcal{o}(-k)$ whose cohomology on
+    $\mathbb{p}^n$ is completely known, the hypercohomology spectral sequence breaks into finite 2-term
+    sequences that compute $h^i(x, \mathcal{o}_x(m))$ algorithmically.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#034
+  text: How does one compute the higher direct image sheaves $R^q \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d))$
+    for a projective bundle $\pi \colon \mathbb{P}(\mathcal{E}) \to S$ in your head?
+  hint: 'Mental trick: projective bundles behave fiberwise like standard $\mathbb{P}^n$. For a vector
+    bundle $\mathcal{E}$ of rank $n+1$: (1) $R^0 \pi_*(\mathcal{O}(d)) \cong \mathrm{Sym}^d(\mathcal{E})$
+    for $d \ge 0$; (2) $R^n \pi_*(\mathcal{O}(d)) \cong \mathrm{Sym}^{-n-1-d}(\mathcal{E})^\vee \otimes
+    \det(\mathcal{E})^{-1}$ for $d \le -n-1$; (3) $R^q \pi_*(\mathcal{O}(d)) = 0$ for all $0 < q < n$,
+    reducing relative projective bundle calculations to symmetric and exterior powers of $\mathcal{E}$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does one compute the higher direct image sheaves $r^q \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(d))$
+    for a projective bundle $\pi \colon \mathbb{p}(\mathcal{e}) \to s$ in your head? mental trick: projective
+    bundles behave fiberwise like standard $\mathbb{p}^n$. for a vector bundle $\mathcal{e}$ of rank $n+1$:
+    (1) $r^0 \pi_*(\mathcal{o}(d)) \cong \mathrm{sym}^d(\mathcal{e})$ for $d \ge 0$; (2) $r^n \pi_*(\mathcal{o}(d))
+    \cong \mathrm{sym}^{-n-1-d}(\mathcal{e})^\vee \otimes \det(\mathcal{e})^{-1}$ for $d \le -n-1$; (3)
+    $r^q \pi_*(\mathcal{o}(d)) = 0$ for all $0 < q < n$, reducing relative projective bundle calculations
+    to symmetric and exterior powers of $\mathcal{e}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#035
+  text: What is the cohomology group $H^0(\mathbb{P}_R^n, \mathcal{O}(d))$ for $d \ge 0$ over a ring $R$?
+  hint: $H^0(\mathbb{P}_R^n, \mathcal{O}(d)) \cong (R[T_0, \dots, T_n])_d$, the free $R$-module of homogeneous
+    degree-$d$ polynomials generated by all monomials $T_0^{e_0} \cdots T_n^{e_n}$ with $\sum e_i = d$,
+    which has rank $\binom{n+d}{d}$.
+  locator: null
+  sub_index: null
+  search_text: what is the cohomology group $h^0(\mathbb{p}_r^n, \mathcal{o}(d))$ for $d \ge 0$ over a
+    ring $r$? $h^0(\mathbb{p}_r^n, \mathcal{o}(d)) \cong (r[t_0, \dots, t_n])_d$, the free $r$-module
+    of homogeneous degree-$d$ polynomials generated by all monomials $t_0^{e_0} \cdots t_n^{e_n}$ with
+    $\sum e_i = d$, which has rank $\binom{n+d}{d}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#036
+  text: What is the cohomology group $H^0(\mathbb{P}_R^n, \mathcal{O}(d))$ for $d < 0$?
+  hint: $H^0(\mathbb{P}_R^n, \mathcal{O}(d)) = 0$, because there are no non-zero polynomials of negative
+    degree.
+  locator: null
+  sub_index: null
+  search_text: what is the cohomology group $h^0(\mathbb{p}_r^n, \mathcal{o}(d))$ for $d < 0$? $h^0(\mathbb{p}_r^n,
+    \mathcal{o}(d)) = 0$, because there are no non-zero polynomials of negative degree.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#037
+  text: What is the intermediate cohomology $H^q(\mathbb{P}_R^n, \mathcal{O}(d))$ for all $0 < q < n$
+    and all $d \in \mathbb{Z}$?
+  hint: $H^q(\mathbb{P}_R^n, \mathcal{O}(d)) = 0$, because the graded Čech subcomplexes $\check{\mathcal{C}}^\bullet(\vec{e})$
+    are acyclic whenever the negative index set $\mathrm{NEG}(\vec{e}) = \{i \mid e_i < 0\}$ is neither
+    empty nor the full set $\{0, \dots, n\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the intermediate cohomology $h^q(\mathbb{p}_r^n, \mathcal{o}(d))$ for all $0 <
+    q < n$ and all $d \in \mathbb{z}$? $h^q(\mathbb{p}_r^n, \mathcal{o}(d)) = 0$, because the graded čech
+    subcomplexes $\check{\mathcal{c}}^\bullet(\vec{e})$ are acyclic whenever the negative index set $\mathrm{neg}(\vec{e})
+    = \{i \mid e_i < 0\}$ is neither empty nor the full set $\{0, \dots, n\}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#038
+  text: What is the top cohomology group $H^n(\mathbb{P}_R^n, \mathcal{O}(d))$ for $d \ge -n$?
+  hint: $H^n(\mathbb{P}_R^n, \mathcal{O}(d)) = 0$, because any monomial $\frac{1}{T_0^{-e_0} \cdots T_n^{-e_n}}$
+    with all strictly negative exponents $e_i \le -1$ must have degree $\sum e_i \le -(n+1)$, so no non-zero
+    classes exist in degrees $d \ge -n$.
+  locator: null
+  sub_index: null
+  search_text: what is the top cohomology group $h^n(\mathbb{p}_r^n, \mathcal{o}(d))$ for $d \ge -n$?
+    $h^n(\mathbb{p}_r^n, \mathcal{o}(d)) = 0$, because any monomial $\frac{1}{t_0^{-e_0} \cdots t_n^{-e_n}}$
+    with all strictly negative exponents $e_i \le -1$ must have degree $\sum e_i \le -(n+1)$, so no non-zero
+    classes exist in degrees $d \ge -n$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#039
+  text: What is the top cohomology group $H^n(\mathbb{P}_R^n, \mathcal{O}(-n-1))$?
+  hint: $H^n(\mathbb{P}_R^n, \mathcal{O}(-n-1)) \cong R \cdot \frac{1}{T_0 T_1 \cdots T_n}$, a free $R$-module
+    of rank 1 spanned by the single canonical generator $\frac{1}{T_0 \cdots T_n}$.
+  locator: null
+  sub_index: null
+  search_text: what is the top cohomology group $h^n(\mathbb{p}_r^n, \mathcal{o}(-n-1))$? $h^n(\mathbb{p}_r^n,
+    \mathcal{o}(-n-1)) \cong r \cdot \frac{1}{t_0 t_1 \cdots t_n}$, a free $r$-module of rank 1 spanned
+    by the single canonical generator $\frac{1}{t_0 \cdots t_n}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#040
+  text: What is the top cohomology group $H^n(\mathbb{P}_R^n, \mathcal{O}(d))$ for $d \le -n-1$?
+  hint: $H^n(\mathbb{P}_R^n, \mathcal{O}(d)) \cong \left(\frac{1}{T_0 \cdots T_n} R\left[\frac{1}{T_0},
+    \dots, \frac{1}{T_n}\right]\right)_d \cong \mathrm{Hom}_R((R[T_0, \dots, T_n])_{-n-1-d}, R)$, which
+    is a free $R$-module of rank $\binom{-d-1}{n} = (-1)^n \binom{n+d}{d}$.
+  locator: null
+  sub_index: null
+  search_text: what is the top cohomology group $h^n(\mathbb{p}_r^n, \mathcal{o}(d))$ for $d \le -n-1$?
+    $h^n(\mathbb{p}_r^n, \mathcal{o}(d)) \cong \left(\frac{1}{t_0 \cdots t_n} r\left[\frac{1}{t_0}, \dots,
+    \frac{1}{t_n}\right]\right)_d \cong \mathrm{hom}_r((r[t_0, \dots, t_n])_{-n-1-d}, r)$, which is a
+    free $r$-module of rank $\binom{-d-1}{n} = (-1)^n \binom{n+d}{d}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#041
+  text: How is the standard affine covering $\mathcal{U}$ of $\mathbb{P}_R^n$ defined for the Čech complex
+    computation?
+  hint: $\mathcal{U} = \{ D_+(T_i) \}_{i=0}^n$, where each $D_+(T_i) = \mathrm{Spec}(R[T_0/T_i, \dots,
+    T_n/T_i])$ is an affine open subscheme isomorphic to $\mathbb{A}_R^n$.
+  locator: null
+  sub_index: null
+  search_text: how is the standard affine covering $\mathcal{u}$ of $\mathbb{p}_r^n$ defined for the čech
+    complex computation? $\mathcal{u} = \{ d_+(t_i) \}_{i=0}^n$, where each $d_+(t_i) = \mathrm{spec}(r[t_0/t_i,
+    \dots, t_n/t_i])$ is an affine open subscheme isomorphic to $\mathbb{a}_r^n$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#042
+  text: What are the terms of the ordered Čech complex $\check{\mathcal{C}}_{\mathrm{ord}}^p(\mathcal{U},
+    \mathcal{O}_{\mathbb{P}^n}(d))$?
+  hint: $\check{\mathcal{C}}_{\mathrm{ord}}^p(\mathcal{U}, \mathcal{O}_{\mathbb{P}^n}(d)) = \bigoplus_{i_0
+    < \dots < i_p} \left(R\left[T_0, \dots, T_n, \frac{1}{T_{i_0} \cdots T_{i_p}}\right]\right)_d$, consisting
+    of degree-$d$ homogeneous elements with denominators supported on the index subset $\{i_0, \dots,
+    i_p\}$.
+  locator: null
+  sub_index: null
+  search_text: what are the terms of the ordered čech complex $\check{\mathcal{c}}_{\mathrm{ord}}^p(\mathcal{u},
+    \mathcal{o}_{\mathbb{p}^n}(d))$? $\check{\mathcal{c}}_{\mathrm{ord}}^p(\mathcal{u}, \mathcal{o}_{\mathbb{p}^n}(d))
+    = \bigoplus_{i_0 < \dots < i_p} \left(r\left[t_0, \dots, t_n, \frac{1}{t_{i_0} \cdots t_{i_p}}\right]\right)_d$,
+    consisting of degree-$d$ homogeneous elements with denominators supported on the index subset $\{i_0,
+    \dots, i_p\}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#043
+  text: What is the Čech differential $d \colon \check{\mathcal{C}}^p \to \check{\mathcal{C}}^{p+1}$ on
+    a section $s$?
+  hint: $d(s)_{i_0 \dots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j s_{i_0 \dots \widehat{i_j} \dots i_{p+1}}$,
+    which preserves the multi-weight degree vector $\vec{e} = (e_0, \dots, e_n) \in \mathbb{Z}^{n+1}$.
+  locator: null
+  sub_index: null
+  search_text: what is the čech differential $d \colon \check{\mathcal{c}}^p \to \check{\mathcal{c}}^{p+1}$
+    on a section $s$? $d(s)_{i_0 \dots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j s_{i_0 \dots \widehat{i_j} \dots
+    i_{p+1}}$, which preserves the multi-weight degree vector $\vec{e} = (e_0, \dots, e_n) \in \mathbb{z}^{n+1}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#044
+  text: How does the Čech complex decompose into a direct sum of multi-graded subcomplexes?
+  hint: $\check{\mathcal{C}}_{\mathrm{ord}}^\bullet(\mathcal{U}, \mathcal{O}_{\mathbb{P}^n}(d)) = \bigoplus_{\vec{e}
+    \in \mathbb{Z}^{n+1}, \sum e_i = d} \check{\mathcal{C}}^\bullet(\vec{e})$, where each monomial $T_0^{e_0}
+    \cdots T_n^{e_n}$ forms an independent 1-dimensional subcomplex over $R$.
+  locator: null
+  sub_index: null
+  search_text: how does the čech complex decompose into a direct sum of multi-graded subcomplexes? $\check{\mathcal{c}}_{\mathrm{ord}}^\bullet(\mathcal{u},
+    \mathcal{o}_{\mathbb{p}^n}(d)) = \bigoplus_{\vec{e} \in \mathbb{z}^{n+1}, \sum e_i = d} \check{\mathcal{c}}^\bullet(\vec{e})$,
+    where each monomial $t_0^{e_0} \cdots t_n^{e_n}$ forms an independent 1-dimensional subcomplex over
+    $r$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#045
+  text: For a weight vector $\vec{e} = (e_0, \dots, e_n)$, what is the definition of $\mathrm{NEG}(\vec{e})$?
+  hint: $\mathrm{NEG}(\vec{e}) := \{ i \in \{0, \dots, n\} \mid e_i < 0 \}$, recording the indices where
+    the variable $T_i$ appears with a strictly negative exponent.
+  locator: null
+  sub_index: null
+  search_text: for a weight vector $\vec{e} = (e_0, \dots, e_n)$, what is the definition of $\mathrm{neg}(\vec{e})$?
+    $\mathrm{neg}(\vec{e}) := \{ i \in \{0, \dots, n\} \mid e_i < 0 \}$, recording the indices where the
+    variable $t_i$ appears with a strictly negative exponent.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#046
+  text: What are the terms of the subcomplex $\check{\mathcal{C}}^p(\vec{e})$ in terms of $\mathrm{NEG}(\vec{e})$?
+  hint: $\check{\mathcal{C}}^p(\vec{e}) = \bigoplus_{i_0 < \dots < i_p, \, \mathrm{NEG}(\vec{e}) \subseteq
+    \{i_0, \dots, i_p\}} R \cdot T_0^{e_0} \cdots T_n^{e_n}$; the term is zero unless all negative coordinate
+    indices appear in the intersection.
+  locator: null
+  sub_index: null
+  search_text: what are the terms of the subcomplex $\check{\mathcal{c}}^p(\vec{e})$ in terms of $\mathrm{neg}(\vec{e})$?
+    $\check{\mathcal{c}}^p(\vec{e}) = \bigoplus_{i_0 < \dots < i_p, \, \mathrm{neg}(\vec{e}) \subseteq
+    \{i_0, \dots, i_p\}} r \cdot t_0^{e_0} \cdots t_n^{e_n}$; the term is zero unless all negative coordinate
+    indices appear in the intersection.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#047
+  text: Why is the complex $\check{\mathcal{C}}^\bullet(\vec{e})$ concentrated in a single degree when
+    $\mathrm{NEG}(\vec{e}) = \{0, \dots, n\}$?
+  hint: Because the condition $\mathrm{NEG}(\vec{e}) \subseteq \{i_0, \dots, i_p\}$ requires $\{i_0, \dots,
+    i_p\} = \{0, \dots, n\}$, which occurs only at the top stage $p = n$, so $\check{\mathcal{C}}^n(\vec{e})
+    = R \cdot \frac{1}{T_0^{-e_0} \cdots T_n^{-e_n}}$ and $\check{\mathcal{C}}^p(\vec{e}) = 0$ for all
+    $p < n$.
+  locator: null
+  sub_index: null
+  search_text: why is the complex $\check{\mathcal{c}}^\bullet(\vec{e})$ concentrated in a single degree
+    when $\mathrm{neg}(\vec{e}) = \{0, \dots, n\}$? because the condition $\mathrm{neg}(\vec{e}) \subseteq
+    \{i_0, \dots, i_p\}$ requires $\{i_0, \dots, i_p\} = \{0, \dots, n\}$, which occurs only at the top
+    stage $p = n$, so $\check{\mathcal{c}}^n(\vec{e}) = r \cdot \frac{1}{t_0^{-e_0} \cdots t_n^{-e_n}}$
+    and $\check{\mathcal{c}}^p(\vec{e}) = 0$ for all $p < n$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#048
+  text: Why is the complex $\check{\mathcal{C}}^\bullet(\vec{e})$ isomorphic to the Čech complex of $\mathrm{Spec}(R)$
+    when $\mathrm{NEG}(\vec{e}) = \emptyset$?
+  hint: When all $e_i \ge 0$, $\mathrm{NEG}(\vec{e}) = \emptyset \subseteq \{i_0, \dots, i_p\}$ holds
+    for all tuples, making $\check{\mathcal{C}}^\bullet(\vec{e})$ identical to the Čech complex of the
+    covering of $\mathrm{Spec}(R)$ by $n+1$ copies of itself, which has cohomology $R$ in degree 0 and
+    0 in degrees $p > 0$.
+  locator: null
+  sub_index: null
+  search_text: why is the complex $\check{\mathcal{c}}^\bullet(\vec{e})$ isomorphic to the čech complex
+    of $\mathrm{spec}(r)$ when $\mathrm{neg}(\vec{e}) = \emptyset$? when all $e_i \ge 0$, $\mathrm{neg}(\vec{e})
+    = \emptyset \subseteq \{i_0, \dots, i_p\}$ holds for all tuples, making $\check{\mathcal{c}}^\bullet(\vec{e})$
+    identical to the čech complex of the covering of $\mathrm{spec}(r)$ by $n+1$ copies of itself, which
+    has cohomology $r$ in degree 0 and 0 in degrees $p > 0$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#049
+  text: How is the explicit null-homotopy $h \colon \check{\mathcal{C}}^{p+1}(\vec{e}) \to \check{\mathcal{C}}^p(\vec{e})$
+    constructed when $\emptyset \subsetneq \mathrm{NEG}(\vec{e}) \subsetneq \{0, \dots, n\}$?
+  hint: Pick a fixed index $i_{\mathrm{fix}} \notin \mathrm{NEG}(\vec{e})$; define $h(s)_{i_0 \dots i_p}
+    = (-1)^a s_{i_0 \dots i_{a-1} i_{\mathrm{fix}} i_a \dots i_p}$ if $i_{\mathrm{fix}} \notin \{i_0,
+    \dots, i_p\}$ and $0$ otherwise; checking $(dh + hd)(s) = s$ proves the subcomplex is acyclic.
+  locator: null
+  sub_index: null
+  search_text: how is the explicit null-homotopy $h \colon \check{\mathcal{c}}^{p+1}(\vec{e}) \to \check{\mathcal{c}}^p(\vec{e})$
+    constructed when $\emptyset \subsetneq \mathrm{neg}(\vec{e}) \subsetneq \{0, \dots, n\}$? pick a fixed
+    index $i_{\mathrm{fix}} \notin \mathrm{neg}(\vec{e})$; define $h(s)_{i_0 \dots i_p} = (-1)^a s_{i_0
+    \dots i_{a-1} i_{\mathrm{fix}} i_a \dots i_p}$ if $i_{\mathrm{fix}} \notin \{i_0, \dots, i_p\}$ and
+    $0$ otherwise; checking $(dh + hd)(s) = s$ proves the subcomplex is acyclic.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#050
+  text: What is the Serre duality pairing between $H^0(\mathbb{P}^n, \mathcal{O}(d))$ and $H^n(\mathbb{P}^n,
+    \mathcal{O}(-n-1-d))$?
+  hint: The pairing $(f, g) \mapsto \mathrm{Coeff}\left(\frac{1}{T_0 \cdots T_n}, f \cdot g\right) \in
+    R$, which sends a pair of monomials $T_0^{e_0} \cdots T_n^{e_n}$ and $T_0^{d_0} \cdots T_n^{d_n}$
+    to $1$ if $e_i + d_i = -1$ for all $i$, and to $0$ otherwise.
+  locator: null
+  sub_index: null
+  search_text: what is the serre duality pairing between $h^0(\mathbb{p}^n, \mathcal{o}(d))$ and $h^n(\mathbb{p}^n,
+    \mathcal{o}(-n-1-d))$? the pairing $(f, g) \mapsto \mathrm{coeff}\left(\frac{1}{t_0 \cdots t_n}, f
+    \cdot g\right) \in r$, which sends a pair of monomials $t_0^{e_0} \cdots t_n^{e_n}$ and $t_0^{d_0}
+    \cdots t_n^{d_n}$ to $1$ if $e_i + d_i = -1$ for all $i$, and to $0$ otherwise.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#051
+  text: What is the rank of $H^0(\mathbb{P}_k^2, \mathcal{O}(2))$ over a field $k$?
+  hint: The space of homogeneous quadratic polynomials in 3 variables, with rank $\binom{2+2}{2} = \binom{4}{2}
+    = 6$, spanned by $\{T_0^2, T_1^2, T_2^2, T_0 T_1, T_0 T_2, T_1 T_2\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of $h^0(\mathbb{p}_k^2, \mathcal{o}(2))$ over a field $k$? the space of
+    homogeneous quadratic polynomials in 3 variables, with rank $\binom{2+2}{2} = \binom{4}{2} = 6$, spanned
+    by $\{t_0^2, t_1^2, t_2^2, t_0 t_1, t_0 t_2, t_1 t_2\}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#052
+  text: What is the rank of $H^2(\mathbb{P}_k^2, \mathcal{O}(-4))$ over a field $k$?
+  hint: Here $n = 2, d = -4$; by Serre duality, $\dim_k H^2(\mathbb{P}^2, \mathcal{O}(-4)) = \dim_k H^0(\mathbb{P}^2,
+    \mathcal{O}(-2-1-(-4))) = \dim_k H^0(\mathbb{P}^2, \mathcal{O}(1)) = \binom{2+1}{1} = 3$, spanned
+    by $\{\frac{1}{T_0^2 T_1 T_2}, \frac{1}{T_0 T_1^2 T_2}, \frac{1}{T_0 T_1 T_2^2}\}$.
+  locator: null
+  sub_index: null
+  search_text: what is the rank of $h^2(\mathbb{p}_k^2, \mathcal{o}(-4))$ over a field $k$? here $n =
+    2, d = -4$; by serre duality, $\dim_k h^2(\mathbb{p}^2, \mathcal{o}(-4)) = \dim_k h^0(\mathbb{p}^2,
+    \mathcal{o}(-2-1-(-4))) = \dim_k h^0(\mathbb{p}^2, \mathcal{o}(1)) = \binom{2+1}{1} = 3$, spanned
+    by $\{\frac{1}{t_0^2 t_1 t_2}, \frac{1}{t_0 t_1^2 t_2}, \frac{1}{t_0 t_1 t_2^2}\}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#053
+  text: What is $H^1(\mathbb{P}_k^2, \mathcal{O}(d))$ for any integer $d \in \mathbb{Z}$?
+  hint: $H^1(\mathbb{P}_k^2, \mathcal{O}(d)) = 0$ for all $d \in \mathbb{Z}$, because $0 < 1 < 2$ is an
+    intermediate degree.
+  locator: null
+  sub_index: null
+  search_text: what is $h^1(\mathbb{p}_k^2, \mathcal{o}(d))$ for any integer $d \in \mathbb{z}$? $h^1(\mathbb{p}_k^2,
+    \mathcal{o}(d)) = 0$ for all $d \in \mathbb{z}$, because $0 < 1 < 2$ is an intermediate degree.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#054
+  text: What is the Euler characteristic $\chi(\mathbb{P}_k^n, \mathcal{O}(d)) = \sum_{q=0}^n (-1)^q \dim_k
+    H^q(\mathbb{P}^n, \mathcal{O}(d))$?
+  hint: $\chi(\mathbb{P}_k^n, \mathcal{O}(d)) = \binom{n+d}{n} = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$ for
+    all $d \in \mathbb{Z}$, which is a polynomial in $d$ of degree $n$.
+  locator: null
+  sub_index: null
+  search_text: what is the euler characteristic $\chi(\mathbb{p}_k^n, \mathcal{o}(d)) = \sum_{q=0}^n (-1)^q
+    \dim_k h^q(\mathbb{p}^n, \mathcal{o}(d))$? $\chi(\mathbb{p}_k^n, \mathcal{o}(d)) = \binom{n+d}{n}
+    = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$ for all $d \in \mathbb{z}$, which is a polynomial in $d$ of degree
+    $n$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#055
+  text: How does multiplication by a degree-$m$ homogeneous polynomial $f \in R[T_0, \dots, T_n]_m$ act
+    on the top cohomology $H^n(\mathbb{P}^n, \mathcal{O}(d))$?
+  hint: 'It acts as the contragredient (transpose) of multiplication by $f$: $\mathrm{Hom}_R((R[T])_{-n-1-d-m},
+    R) \to \mathrm{Hom}_R((R[T])_{-n-1-d}, R)$.'
+  locator: null
+  sub_index: null
+  search_text: 'how does multiplication by a degree-$m$ homogeneous polynomial $f \in r[t_0, \dots, t_n]_m$
+    act on the top cohomology $h^n(\mathbb{p}^n, \mathcal{o}(d))$? it acts as the contragredient (transpose)
+    of multiplication by $f$: $\mathrm{hom}_r((r[t])_{-n-1-d-m}, r) \to \mathrm{hom}_r((r[t])_{-n-1-d},
+    r)$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#056
+  text: What are the higher direct image sheaves $R^q f_*(\mathcal{O}_{\mathbb{P}_S^n}(d))$ for the structural
+    morphism $f \colon \mathbb{P}_S^n \to S$ over any base scheme $S$?
+  hint: $R^0 f_* \mathcal{O}(d) \cong (\mathcal{O}_S[T_0, \dots, T_n])_d$; $R^n f_* \mathcal{O}(d) \cong
+    \underline{\mathcal{H}\mathrm{om}}_{\mathcal{O}_S}((\mathcal{O}_S[T_0, \dots, T_n])_{-n-1-d}, \mathcal{O}_S)$;
+    and $R^q f_* \mathcal{O}(d) = 0$ for all $q \neq 0, n$.
+  locator: null
+  sub_index: null
+  search_text: what are the higher direct image sheaves $r^q f_*(\mathcal{o}_{\mathbb{p}_s^n}(d))$ for
+    the structural morphism $f \colon \mathbb{p}_s^n \to s$ over any base scheme $s$? $r^0 f_* \mathcal{o}(d)
+    \cong (\mathcal{o}_s[t_0, \dots, t_n])_d$; $r^n f_* \mathcal{o}(d) \cong \underline{\mathcal{h}\mathrm{om}}_{\mathcal{o}_s}((\mathcal{o}_s[t_0,
+    \dots, t_n])_{-n-1-d}, \mathcal{o}_s)$; and $r^q f_* \mathcal{o}(d) = 0$ for all $q \neq 0, n$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#057
+  text: For a finite locally free sheaf $\mathcal{E}$ of rank $n+1$ on $S$, what is $R^0 \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d))$
+    on the projective bundle $\pi \colon \mathbb{P}(\mathcal{E}) \to S$ for $d \ge 0$?
+  hint: $R^0 \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d)) \cong \mathrm{Sym}^d(\mathcal{E})$, a finite
+    locally free sheaf on $S$ of rank $\binom{n+d}{d}$.
+  locator: null
+  sub_index: null
+  search_text: for a finite locally free sheaf $\mathcal{e}$ of rank $n+1$ on $s$, what is $r^0 \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(d))$
+    on the projective bundle $\pi \colon \mathbb{p}(\mathcal{e}) \to s$ for $d \ge 0$? $r^0 \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(d))
+    \cong \mathrm{sym}^d(\mathcal{e})$, a finite locally free sheaf on $s$ of rank $\binom{n+d}{d}$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#058
+  text: For a projective bundle $\pi \colon \mathbb{P}(\mathcal{E}) \to S$ of relative dimension $n$,
+    what is the top pushforward $R^n \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(-n-1))$?
+  hint: $R^n \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(-n-1)) \cong (\bigwedge^{n+1} \mathcal{E})^\vee
+    = \det(\mathcal{E})^{-1}$, an invertible line bundle on $S$.
+  locator: null
+  sub_index: null
+  search_text: for a projective bundle $\pi \colon \mathbb{p}(\mathcal{e}) \to s$ of relative dimension
+    $n$, what is the top pushforward $r^n \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(-n-1))$? $r^n \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(-n-1))
+    \cong (\bigwedge^{n+1} \mathcal{e})^\vee = \det(\mathcal{e})^{-1}$, an invertible line bundle on $s$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#059
+  text: How is the relative Serre duality isomorphism formulated for the projective bundle $\pi \colon
+    \mathbb{P}(\mathcal{E}) \to S$ in degree $n$?
+  hint: $R^n \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d)) \cong \underline{\mathcal{H}\mathrm{om}}_{\mathcal{O}_S}\left(
+    \mathrm{Sym}^{-n-1-d}(\mathcal{E}) \otimes_{\mathcal{O}_S} \bigwedge^{n+1}\mathcal{E}, \, \mathcal{O}_S
+    \right)$ for all $d \le -n-1$.
+  locator: null
+  sub_index: null
+  search_text: how is the relative serre duality isomorphism formulated for the projective bundle $\pi
+    \colon \mathbb{p}(\mathcal{e}) \to s$ in degree $n$? $r^n \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(d))
+    \cong \underline{\mathcal{h}\mathrm{om}}_{\mathcal{o}_s}\left( \mathrm{sym}^{-n-1-d}(\mathcal{e})
+    \otimes_{\mathcal{o}_s} \bigwedge^{n+1}\mathcal{e}, \, \mathcal{o}_s \right)$ for all $d \le -n-1$.
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#060
+  text: How does the Koszul resolution of the surjective evaluation map $\pi^* \mathcal{E}(-1) \twoheadrightarrow
+    \mathcal{O}_{\mathbb{P}(\mathcal{E})}$ prove the canonical isomorphism $R^n \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(-n-1))
+    \otimes \bigwedge^{n+1}\mathcal{E} \cong \mathcal{O}_S$?
+  hint: The Koszul complex $0 \to \pi^*(\bigwedge^{n+1}\mathcal{E})(-n-1) \to \dots \to \pi^*\mathcal{E}(-1)
+    \to \mathcal{O}_{\mathbb{P}(\mathcal{E})} \to 0$ is exact; computing higher direct images via the
+    spectral sequence $E_1^{p, q} = \bigwedge^{-p}\mathcal{E} \otimes R^q \pi_*(\mathcal{O}(p)) \implies
+    0$ yields only two non-zero terms $E_1^{0, 0} = \mathcal{O}_S$ and $E_1^{-n-1, n} = \bigwedge^{n+1}\mathcal{E}
+    \otimes R^n \pi_*(\mathcal{O}(-n-1))$, forcing the differential $d_{n+1}$ to be an isomorphism.
+  locator: null
+  sub_index: null
+  search_text: how does the koszul resolution of the surjective evaluation map $\pi^* \mathcal{e}(-1)
+    \twoheadrightarrow \mathcal{o}_{\mathbb{p}(\mathcal{e})}$ prove the canonical isomorphism $r^n \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(-n-1))
+    \otimes \bigwedge^{n+1}\mathcal{e} \cong \mathcal{o}_s$? the koszul complex $0 \to \pi^*(\bigwedge^{n+1}\mathcal{e})(-n-1)
+    \to \dots \to \pi^*\mathcal{e}(-1) \to \mathcal{o}_{\mathbb{p}(\mathcal{e})} \to 0$ is exact; computing
+    higher direct images via the spectral sequence $e_1^{p, q} = \bigwedge^{-p}\mathcal{e} \otimes r^q
+    \pi_*(\mathcal{o}(p)) \implies 0$ yields only two non-zero terms $e_1^{0, 0} = \mathcal{o}_s$ and
+    $e_1^{-n-1, n} = \bigwedge^{n+1}\mathcal{e} \otimes r^n \pi_*(\mathcal{o}(-n-1))$, forcing the differential
+    $d_{n+1}$ to be an isomorphism.
