@@ -1,0 +1,57 @@
+url: https://math.stanford.edu/~vakil/216blog/FOAGoct2125public.pdf
+title: Vakil's algebraic geometry
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#000
+  text: (2.2A) Presheaf is contravariant functor
+  hint: Restriction maps of sets as the reverse of the inclusions. Self restriction gives same set. Hence,
+    contravariant functor.
+  locator: null
+  sub_index: null
+  search_text: (2.2a) presheaf is contravariant functor restriction maps of sets as the reverse of the
+    inclusions. self restriction gives same set. hence, contravariant functor.
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#001
+  text: (2.2B) Presheaf of bounded functions not sheaf. Presheaf admitting holomorphic square root not
+    sheaf
+  hint: fails global bounded function, fails global holomorphic square root due to winding number. Repair
+    with sheafification.
+  locator: null
+  sub_index: null
+  search_text: (2.2b) presheaf of bounded functions not sheaf. presheaf admitting holomorphic square root
+    not sheaf fails global bounded function, fails global holomorphic square root due to winding number.
+    repair with sheafification.
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#002
+  text: (2.2C) Identity and gluability axioms as limit
+  hint: Limit of Cech cocycle equalizer is section.
+  locator: null
+  sub_index: null
+  search_text: (2.2c) identity and gluability axioms as limit limit of cech cocycle equalizer is section.
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#003
+  text: (2.2D) Verify examples are sheaves?
+  hint: Separation and global gluing via gluing of charts due to definition of manifold. For real continuous
+    functions, think of them as covers or arrows, same gluing and separation applies.
+  locator: null
+  sub_index: null
+  search_text: (2.2d) verify examples are sheaves? separation and global gluing via gluing of charts due
+    to definition of manifold. for real continuous functions, think of them as covers or arrows, same
+    gluing and separation applies.
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#004
+  text: (2.2E) Locally constant sheaf (local systems) is sheaf
+  hint: locally isomorphic to a sheafified constant PREsheaf, satisfies sheaf axioms. Constant presheaf
+    fails separatedness on empty set and require sheafification. Note consistency of definition needed
+  locator: null
+  sub_index: null
+  search_text: (2.2e) locally constant sheaf (local systems) is sheaf locally isomorphic to a sheafified
+    constant presheaf, satisfies sheaf axioms. constant presheaf fails separatedness on empty set and
+    require sheafification. note consistency of definition needed
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#005
+  text: (2.2F) Verify sheaf axioms for sheaf of continuous functions of topological spaces, arbitrary
+    topology
+  hint: null
+  locator: null
+  sub_index: null
+  search_text: (2.2f) verify sheaf axioms for sheaf of continuous functions of topological spaces, arbitrary
+    topology

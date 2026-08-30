@@ -1,0 +1,439 @@
+url: https://ncatlab.org/nlab/show/six+operations
+title: six operations nlab.
+note: null
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: ncatlab-org-nlab-show-six-operations#000
+  text: How is an isomorphism of schemes $f \colon X \xrightarrow{\sim} Y$ characterized in the six-functor
+    formalism?
+  hint: $f^*, f_*, f_!, f^!$ are all equivalences of symmetric monoidal $\infty$-categories, with $f^*
+    \cong f^!$ and $f_* \cong f_!$, and the unit/counit maps $\mathrm{id} \xrightarrow{\sim} f_* f^*$
+    and $f^* f_* \xrightarrow{\sim} \mathrm{id}$ are natural isomorphisms.
+  locator: null
+  sub_index: null
+  search_text: how is an isomorphism of schemes $f \colon x \xrightarrow{\sim} y$ characterized in the
+    six-functor formalism? $f^*, f_*, f_!, f^!$ are all equivalences of symmetric monoidal $\infty$-categories,
+    with $f^* \cong f^!$ and $f_* \cong f_!$, and the unit/counit maps $\mathrm{id} \xrightarrow{\sim}
+    f_* f^*$ and $f^* f_* \xrightarrow{\sim} \mathrm{id}$ are natural isomorphisms.
+- id: ncatlab-org-nlab-show-six-operations#001
+  text: How is a monomorphism of schemes $f \colon X \to Y$ characterized in the six-functor formalism?
+  hint: The diagonal six-functor pullback along $\Delta_f \colon X \to X \times_Y X$ satisfies $\Delta_f^*
+    \cong \Delta_f^! \cong \mathrm{id}_{\mathcal{D}(X)}$ and $(\Delta_f)_* \cong (\Delta_f)_! \cong \mathrm{id}_{\mathcal{D}(X)}$,
+    meaning the diagonal functorially acts as the identity functor on all sheaves.
+  locator: null
+  sub_index: null
+  search_text: how is a monomorphism of schemes $f \colon x \to y$ characterized in the six-functor formalism?
+    the diagonal six-functor pullback along $\delta_f \colon x \to x \times_y x$ satisfies $\delta_f^*
+    \cong \delta_f^! \cong \mathrm{id}_{\mathcal{d}(x)}$ and $(\delta_f)_* \cong (\delta_f)_! \cong \mathrm{id}_{\mathcal{d}(x)}$,
+    meaning the diagonal functorially acts as the identity functor on all sheaves.
+- id: ncatlab-org-nlab-show-six-operations#002
+  text: How is an open immersion $j \colon U \hookrightarrow X$ characterized in the six-functor formalism?
+  hint: $j^* \cong j^!$ is exact and preserves all limits and colimits; its left adjoint $j_!$ is fully
+    faithful (extension-by-zero), satisfying $j^* j_! \cong \mathrm{id}_{\mathcal{D}(U)}$, and $j_!$ admits
+    a right adjoint $j^* \cong j^!$ with counit $j_! j^* \hookrightarrow \mathrm{id}_{\mathcal{D}(X)}$.
+  locator: null
+  sub_index: null
+  search_text: how is an open immersion $j \colon u \hookrightarrow x$ characterized in the six-functor
+    formalism? $j^* \cong j^!$ is exact and preserves all limits and colimits; its left adjoint $j_!$
+    is fully faithful (extension-by-zero), satisfying $j^* j_! \cong \mathrm{id}_{\mathcal{d}(u)}$, and
+    $j_!$ admits a right adjoint $j^* \cong j^!$ with counit $j_! j^* \hookrightarrow \mathrm{id}_{\mathcal{d}(x)}$.
+- id: ncatlab-org-nlab-show-six-operations#003
+  text: How is a closed immersion $i \colon Z \hookrightarrow X$ characterized in the six-functor formalism?
+  hint: $i_* \cong i_!$ is fully faithful (meaning $i^* i_* \cong \mathrm{id}_{\mathcal{D}(Z)}$ and $i^!
+    i_! \cong \mathrm{id}_{\mathcal{D}(Z)}$); the counit $i_! i^! \to \mathrm{id}_{\mathcal{D}(X)}$ and
+    unit $\mathrm{id}_{\mathcal{D}(X)} \to i_* i^*$ form the co-support and support projectors.
+  locator: null
+  sub_index: null
+  search_text: how is a closed immersion $i \colon z \hookrightarrow x$ characterized in the six-functor
+    formalism? $i_* \cong i_!$ is fully faithful (meaning $i^* i_* \cong \mathrm{id}_{\mathcal{d}(z)}$
+    and $i^! i_! \cong \mathrm{id}_{\mathcal{d}(z)}$); the counit $i_! i^! \to \mathrm{id}_{\mathcal{d}(x)}$
+    and unit $\mathrm{id}_{\mathcal{d}(x)} \to i_* i^*$ form the co-support and support projectors.
+- id: ncatlab-org-nlab-show-six-operations#004
+  text: How is a locally closed immersion (immersion) $f \colon X \to Y$ characterized in the six-functor
+    formalism?
+  hint: $f$ factors as $f = j \circ i$ where $i_* \cong i_!$ is fully faithful and $j^* \cong j^!$ with
+    $j_!$ fully faithful; the composite $f_! \simeq j_! i_*$ is fully faithful.
+  locator: null
+  sub_index: null
+  search_text: how is a locally closed immersion (immersion) $f \colon x \to y$ characterized in the six-functor
+    formalism? $f$ factors as $f = j \circ i$ where $i_* \cong i_!$ is fully faithful and $j^* \cong j^!$
+    with $j_!$ fully faithful; the composite $f_! \simeq j_! i_*$ is fully faithful.
+- id: ncatlab-org-nlab-show-six-operations#005
+  text: How is the complementary open-closed localization property expressed purely in six-functor operators?
+  hint: 'For a closed immersion $i \colon Z \hookrightarrow X$ with open complement $j \colon U \hookrightarrow
+    X$, there are two canonical fiber sequences of identity functors: $j_! j^! \to \mathrm{id}_{\mathcal{D}(X)}
+    \to i_* i^*$ (counit-unit sequence) and $i_! i^! \to \mathrm{id}_{\mathcal{D}(X)} \to j_* j^*$ (Verdier
+    dual sequence).'
+  locator: null
+  sub_index: null
+  search_text: 'how is the complementary open-closed localization property expressed purely in six-functor
+    operators? for a closed immersion $i \colon z \hookrightarrow x$ with open complement $j \colon u
+    \hookrightarrow x$, there are two canonical fiber sequences of identity functors: $j_! j^! \to \mathrm{id}_{\mathcal{d}(x)}
+    \to i_* i^*$ (counit-unit sequence) and $i_! i^! \to \mathrm{id}_{\mathcal{d}(x)} \to j_* j^*$ (verdier
+    dual sequence).'
+- id: ncatlab-org-nlab-show-six-operations#006
+  text: How is a proper morphism $f \colon X \to Y$ characterized in the six-functor formalism?
+  hint: The canonical "forget supports" natural transformation $\alpha_f \colon f_! \xrightarrow{\sim}
+    f_*$ is an isomorphism of functors; consequently, $f^!$ is the right adjoint to the ordinary pushforward
+    $f_*$.
+  locator: null
+  sub_index: null
+  search_text: how is a proper morphism $f \colon x \to y$ characterized in the six-functor formalism?
+    the canonical "forget supports" natural transformation $\alpha_f \colon f_! \xrightarrow{\sim} f_*$
+    is an isomorphism of functors; consequently, $f^!$ is the right adjoint to the ordinary pushforward
+    $f_*$.
+- id: ncatlab-org-nlab-show-six-operations#007
+  text: How is the Proper Base Change Theorem encoded as a six-functor operator identity?
+  hint: For any Cartesian square with $f$ proper ($f_! \cong f_*$) and $g$ arbitrary, the natural base-change
+    transformation $g^* f_* \xrightarrow{\sim} (f')_* (g')^*$ is an isomorphism in $\mathcal{D}(Y')$.
+  locator: null
+  sub_index: null
+  search_text: how is the proper base change theorem encoded as a six-functor operator identity? for any
+    cartesian square with $f$ proper ($f_! \cong f_*$) and $g$ arbitrary, the natural base-change transformation
+    $g^* f_* \xrightarrow{\sim} (f')_* (g')^*$ is an isomorphism in $\mathcal{d}(y')$.
+- id: ncatlab-org-nlab-show-six-operations#008
+  text: How is the Projection Formula encoded as an enriched module action in the six-functor formalism?
+  hint: The natural transformation $f_!(A \otimes f^* B) \xrightarrow{\sim} f_!(A) \otimes B$ is an isomorphism
+    for all $A \in \mathcal{D}(X), B \in \mathcal{D}(Y)$, making $f_!$ an enriched $\mathcal{D}(Y)$-module
+    functor; if $f$ is proper, $f_*(A \otimes f^* B) \cong f_*(A) \otimes B$.
+  locator: null
+  sub_index: null
+  search_text: how is the projection formula encoded as an enriched module action in the six-functor formalism?
+    the natural transformation $f_!(a \otimes f^* b) \xrightarrow{\sim} f_!(a) \otimes b$ is an isomorphism
+    for all $a \in \mathcal{d}(x), b \in \mathcal{d}(y)$, making $f_!$ an enriched $\mathcal{d}(y)$-module
+    functor; if $f$ is proper, $f_*(a \otimes f^* b) \cong f_*(a) \otimes b$.
+- id: ncatlab-org-nlab-show-six-operations#009
+  text: How is a separated morphism $f \colon X \to Y$ characterized in the six-functor formalism?
+  hint: The diagonal pushforward $(\Delta_f)_* \cong (\Delta_f)_!$ is fully faithful, satisfying $\Delta_f^*
+    (\Delta_f)_* \cong \mathrm{id}_{\mathcal{D}(X)}$, meaning the self-intersection of sheaves on $X$
+    over $Y$ is controlled by a closed immersion.
+  locator: null
+  sub_index: null
+  search_text: how is a separated morphism $f \colon x \to y$ characterized in the six-functor formalism?
+    the diagonal pushforward $(\delta_f)_* \cong (\delta_f)_!$ is fully faithful, satisfying $\delta_f^*
+    (\delta_f)_* \cong \mathrm{id}_{\mathcal{d}(x)}$, meaning the self-intersection of sheaves on $x$
+    over $y$ is controlled by a closed immersion.
+- id: ncatlab-org-nlab-show-six-operations#010
+  text: How is a semi-separated morphism $f \colon X \to Y$ characterized in the six-functor formalism?
+  hint: The diagonal pushforward $(\Delta_f)_*$ is t-exact and monadic on the abelian category of quasi-coherent
+    sheaves, so $X \times_Y X \simeq \mathbf{Spec}_X((\Delta_f)_* \mathcal{O}_X)$ is affine over $X$.
+  locator: null
+  sub_index: null
+  search_text: how is a semi-separated morphism $f \colon x \to y$ characterized in the six-functor formalism?
+    the diagonal pushforward $(\delta_f)_*$ is t-exact and monadic on the abelian category of quasi-coherent
+    sheaves, so $x \times_y x \simeq \mathbf{spec}_x((\delta_f)_* \mathcal{o}_x)$ is affine over $x$.
+- id: ncatlab-org-nlab-show-six-operations#011
+  text: How is a quasi-separated morphism $f \colon X \to Y$ characterized in the six-functor formalism?
+  hint: The diagonal pushforward $(\Delta_f)_*$ commutes with filtered colimits of quasi-coherent sheaves,
+    preserving compact objects in $\mathcal{D}(X \times_Y X)$.
+  locator: null
+  sub_index: null
+  search_text: how is a quasi-separated morphism $f \colon x \to y$ characterized in the six-functor formalism?
+    the diagonal pushforward $(\delta_f)_*$ commutes with filtered colimits of quasi-coherent sheaves,
+    preserving compact objects in $\mathcal{d}(x \times_y x)$.
+- id: ncatlab-org-nlab-show-six-operations#012
+  text: How is an affine morphism $f \colon X \to Y$ characterized in the six-functor formalism?
+  hint: The pushforward $f_*$ is t-exact (has no higher cohomology $R^{i>0} f_* = 0$) and conservative
+    on $\mathbf{QCoh}(X)$, inducing an equivalence between $\mathbf{QCoh}(X)$ and modules over the commutative
+    algebra object $f_* \mathcal{O}_X \in \mathbf{CAlg}(\mathbf{QCoh}(Y))$ via the Barr-Beck-Lurie monadicity
+    theorem.
+  locator: null
+  sub_index: null
+  search_text: how is an affine morphism $f \colon x \to y$ characterized in the six-functor formalism?
+    the pushforward $f_*$ is t-exact (has no higher cohomology $r^{i>0} f_* = 0$) and conservative on
+    $\mathbf{qcoh}(x)$, inducing an equivalence between $\mathbf{qcoh}(x)$ and modules over the commutative
+    algebra object $f_* \mathcal{o}_x \in \mathbf{calg}(\mathbf{qcoh}(y))$ via the barr-beck-lurie monadicity
+    theorem.
+- id: ncatlab-org-nlab-show-six-operations#013
+  text: How is a finite morphism $f \colon X \to Y$ characterized in the six-functor formalism?
+  hint: $f_* \cong f_!$ is t-exact, conservative, and its algebra object $f_* \mathcal{O}_X$ is a dualizable
+    / compact object in the symmetric monoidal category $\mathbf{QCoh}(Y)$.
+  locator: null
+  sub_index: null
+  search_text: how is a finite morphism $f \colon x \to y$ characterized in the six-functor formalism?
+    $f_* \cong f_!$ is t-exact, conservative, and its algebra object $f_* \mathcal{o}_x$ is a dualizable
+    / compact object in the symmetric monoidal category $\mathbf{qcoh}(y)$.
+- id: ncatlab-org-nlab-show-six-operations#014
+  text: How is a finite locally free (finite flat) morphism characterized in the six-functor formalism?
+  hint: $f_* \cong f_!$ is t-exact, conservative, and $f_* \mathcal{O}_X$ is a dualizable object of constant
+    finite rank $d$ in $\mathbf{QCoh}(Y)$, equipped with a non-degenerate trace pairing $\mathrm{Tr} \colon
+    f_* \mathcal{O}_X \to \mathcal{O}_Y$ making $(f_*, f^*)$ an ambidextrous adjoint pair up to twist.
+  locator: null
+  sub_index: null
+  search_text: how is a finite locally free (finite flat) morphism characterized in the six-functor formalism?
+    $f_* \cong f_!$ is t-exact, conservative, and $f_* \mathcal{o}_x$ is a dualizable object of constant
+    finite rank $d$ in $\mathbf{qcoh}(y)$, equipped with a non-degenerate trace pairing $\mathrm{tr} \colon
+    f_* \mathcal{o}_x \to \mathcal{o}_y$ making $(f_*, f^*)$ an ambidextrous adjoint pair up to twist.
+- id: ncatlab-org-nlab-show-six-operations#015
+  text: How is an integral morphism characterized in the six-functor formalism?
+  hint: $f_* \cong f_!$ is t-exact, conservative, and $f_* \mathcal{O}_X$ is a filtered colimit of dualizable
+    algebra subobjects in $\mathbf{QCoh}(Y)$.
+  locator: null
+  sub_index: null
+  search_text: how is an integral morphism characterized in the six-functor formalism? $f_* \cong f_!$
+    is t-exact, conservative, and $f_* \mathcal{o}_x$ is a filtered colimit of dualizable algebra subobjects
+    in $\mathbf{qcoh}(y)$.
+- id: ncatlab-org-nlab-show-six-operations#016
+  text: How is a flat morphism $f \colon X \to Y$ characterized in the six-functor formalism?
+  hint: The pullback functor $f^* \colon \mathcal{D}(Y) \to \mathcal{D}(X)$ is t-exact with respect to
+    the standard t-structure (meaning $f^*(\mathcal{F}[0]) \cong (f^*\mathcal{F})[0]$ has no higher derived
+    Tor terms for quasi-coherent sheaves).
+  locator: null
+  sub_index: null
+  search_text: how is a flat morphism $f \colon x \to y$ characterized in the six-functor formalism? the
+    pullback functor $f^* \colon \mathcal{d}(y) \to \mathcal{d}(x)$ is t-exact with respect to the standard
+    t-structure (meaning $f^*(\mathcal{f}[0]) \cong (f^*\mathcal{f})[0]$ has no higher derived tor terms
+    for quasi-coherent sheaves).
+- id: ncatlab-org-nlab-show-six-operations#017
+  text: How is a faithfully flat morphism characterized in the six-functor formalism?
+  hint: $f^*$ is t-exact and conservative (meaning $f^*(\mathcal{F}) \simeq 0 \implies \mathcal{F} \simeq
+    0$), so the comonad $f^* f_*$ satisfies the Barr-Beck-Lurie theorem, realizing $\mathcal{D}(Y) \simeq
+    \varprojlim_{[n] \in \mathbf{\Delta}} \mathcal{D}(X_n)$ via descent on the Čech nerve.
+  locator: null
+  sub_index: null
+  search_text: how is a faithfully flat morphism characterized in the six-functor formalism? $f^*$ is
+    t-exact and conservative (meaning $f^*(\mathcal{f}) \simeq 0 \implies \mathcal{f} \simeq 0$), so the
+    comonad $f^* f_*$ satisfies the barr-beck-lurie theorem, realizing $\mathcal{d}(y) \simeq \varprojlim_{[n]
+    \in \mathbf{\delta}} \mathcal{d}(x_n)$ via descent on the čech nerve.
+- id: ncatlab-org-nlab-show-six-operations#018
+  text: How is a smooth morphism of relative dimension $d$ (cohomological smoothness) characterized in
+    the six-functor formalism?
+  hint: $f^*$ admits a left adjoint $f_\#$ in the stable category, $f_!$ admits a right adjoint $f^!$,
+    the relative dualizing object $\omega_{X/Y} := f^!(\mathbf{1}_Y)$ is $\otimes$-invertible in $\mathcal{D}(X)$,
+    and there is a canonical purity isomorphism $f^!(\mathcal{G}) \xrightarrow{\sim} f^*(\mathcal{G})
+    \otimes \omega_{X/Y} \simeq f^*(\mathcal{G})(d)[2d]$ for all $\mathcal{G} \in \mathcal{D}(Y)$.
+  locator: null
+  sub_index: null
+  search_text: how is a smooth morphism of relative dimension $d$ (cohomological smoothness) characterized
+    in the six-functor formalism? $f^*$ admits a left adjoint $f_\#$ in the stable category, $f_!$ admits
+    a right adjoint $f^!$, the relative dualizing object $\omega_{x/y} := f^!(\mathbf{1}_y)$ is $\otimes$-invertible
+    in $\mathcal{d}(x)$, and there is a canonical purity isomorphism $f^!(\mathcal{g}) \xrightarrow{\sim}
+    f^*(\mathcal{g}) \otimes \omega_{x/y} \simeq f^*(\mathcal{g})(d)[2d]$ for all $\mathcal{g} \in \mathcal{d}(y)$.
+- id: ncatlab-org-nlab-show-six-operations#019
+  text: How is an étale morphism characterized in the six-functor formalism?
+  hint: '$f$ is smooth of relative dimension $0$ with trivial dualizing twist, meaning the exceptional
+    pullback coincides with the ordinary pullback: $f^! \xrightarrow{\sim} f^*$, and $f^*$ is t-exact
+    and commutes with all limits and colimits.'
+  locator: null
+  sub_index: null
+  search_text: 'how is an étale morphism characterized in the six-functor formalism? $f$ is smooth of
+    relative dimension $0$ with trivial dualizing twist, meaning the exceptional pullback coincides with
+    the ordinary pullback: $f^! \xrightarrow{\sim} f^*$, and $f^*$ is t-exact and commutes with all limits
+    and colimits.'
+- id: ncatlab-org-nlab-show-six-operations#020
+  text: How is an unramified morphism characterized in the six-functor formalism?
+  hint: The diagonal immersion $\Delta_f$ is an open immersion, so $\Delta_f^* \cong \Delta_f^!$ and $(\Delta_f)_!$
+    is fully faithful; on differentials, $\mathcal{I}_\Delta / \mathcal{I}_\Delta^2 \cong 0$.
+  locator: null
+  sub_index: null
+  search_text: how is an unramified morphism characterized in the six-functor formalism? the diagonal
+    immersion $\delta_f$ is an open immersion, so $\delta_f^* \cong \delta_f^!$ and $(\delta_f)_!$ is
+    fully faithful; on differentials, $\mathcal{i}_\delta / \mathcal{i}_\delta^2 \cong 0$.
+- id: ncatlab-org-nlab-show-six-operations#021
+  text: How is a syntomic (local complete intersection / quasi-smooth) morphism characterized in the six-functor
+    formalism?
+  hint: $f^*$ is t-exact and the relative cotangent complex $\mathbb{L}_{X/Y}$ is a perfect complex of
+    Tor-amplitude in $[-1, 0]$, equipping $f$ with an intrinsic virtual fundamental class $[X/Y]^{\mathrm{vir}}
+    := f^!(\mathbf{1}_Y) \in H_{2d}^{\mathrm{BM}}(X/Y)$ via the localized Thom isomorphism.
+  locator: null
+  sub_index: null
+  search_text: how is a syntomic (local complete intersection / quasi-smooth) morphism characterized in
+    the six-functor formalism? $f^*$ is t-exact and the relative cotangent complex $\mathbb{l}_{x/y}$
+    is a perfect complex of tor-amplitude in $[-1, 0]$, equipping $f$ with an intrinsic virtual fundamental
+    class $[x/y]^{\mathrm{vir}} := f^!(\mathbf{1}_y) \in h_{2d}^{\mathrm{bm}}(x/y)$ via the localized
+    thom isomorphism.
+- id: ncatlab-org-nlab-show-six-operations#022
+  text: How is a quasi-finite morphism characterized in the six-functor formalism?
+  hint: $f_!$ preserves sheaves with discrete 0-dimensional support, and on stalks, the fiber categories
+    $\mathcal{D}(X_y)$ are generated by finitely many point objects.
+  locator: null
+  sub_index: null
+  search_text: how is a quasi-finite morphism characterized in the six-functor formalism? $f_!$ preserves
+    sheaves with discrete 0-dimensional support, and on stalks, the fiber categories $\mathcal{d}(x_y)$
+    are generated by finitely many point objects.
+- id: ncatlab-org-nlab-show-six-operations#023
+  text: How is a surjective morphism of schemes characterized in the six-functor formalism?
+  hint: The pullback functor on étale / fpqc sheaves $f^* \colon \mathbf{Sh}(Y) \to \mathbf{Sh}(X)$ is
+    faithful and conservative on stalks (meaning $\mathcal{F} \neq 0 \implies f^* \mathcal{F} \neq 0$).
+  locator: null
+  sub_index: null
+  search_text: how is a surjective morphism of schemes characterized in the six-functor formalism? the
+    pullback functor on étale / fpqc sheaves $f^* \colon \mathbf{sh}(y) \to \mathbf{sh}(x)$ is faithful
+    and conservative on stalks (meaning $\mathcal{f} \neq 0 \implies f^* \mathcal{f} \neq 0$).
+- id: ncatlab-org-nlab-show-six-operations#024
+  text: How is a universally closed morphism characterized in the six-functor formalism?
+  hint: For every base change $g \colon Y' \to Y$, the base-changed forget-supports map $(f')_! \to (f')_*$
+    has closed image on the support of sections.
+  locator: null
+  sub_index: null
+  search_text: how is a universally closed morphism characterized in the six-functor formalism? for every
+    base change $g \colon y' \to y$, the base-changed forget-supports map $(f')_! \to (f')_*$ has closed
+    image on the support of sections.
+- id: ncatlab-org-nlab-show-six-operations#025
+  text: How is a universally open morphism characterized in the six-functor formalism?
+  hint: For every base change $Y' \to Y$, the pullback $(f')^*$ maps constructible sheaves to constructible
+    sheaves and preserves open support loci.
+  locator: null
+  sub_index: null
+  search_text: how is a universally open morphism characterized in the six-functor formalism? for every
+    base change $y' \to y$, the pullback $(f')^*$ maps constructible sheaves to constructible sheaves
+    and preserves open support loci.
+- id: ncatlab-org-nlab-show-six-operations#026
+  text: How is a universally injective (radicial) morphism characterized in the six-functor formalism?
+  hint: The diagonal $\Delta_f \colon X \to X \times_Y X$ induces an equivalence on all étale topological
+    topoi $\mathbf{Sh}_{\text{ét}}(X) \xrightarrow{\sim} \mathbf{Sh}_{\text{ét}}(X \times_Y X)$, so $(\Delta_f)_*$
+    is an equivalence on étale sheaves.
+  locator: null
+  sub_index: null
+  search_text: how is a universally injective (radicial) morphism characterized in the six-functor formalism?
+    the diagonal $\delta_f \colon x \to x \times_y x$ induces an equivalence on all étale topological
+    topoi $\mathbf{sh}_{\text{ét}}(x) \xrightarrow{\sim} \mathbf{sh}_{\text{ét}}(x \times_y x)$, so $(\delta_f)_*$
+    is an equivalence on étale sheaves.
+- id: ncatlab-org-nlab-show-six-operations#027
+  text: How is a Gorenstein morphism characterized in the six-functor formalism?
+  hint: '$f$ is flat and the relative dualizing complex $\omega_{X/Y} := f^!(\mathbf{1}_Y)$ is an invertible
+    $\mathcal{O}_X$-module shifted by the relative dimension $d$: $\omega_{X/Y} \cong \mathcal{L}_{X/Y}[d]$
+    in $\mathcal{D}(X)$.'
+  locator: null
+  sub_index: null
+  search_text: 'how is a gorenstein morphism characterized in the six-functor formalism? $f$ is flat and
+    the relative dualizing complex $\omega_{x/y} := f^!(\mathbf{1}_y)$ is an invertible $\mathcal{o}_x$-module
+    shifted by the relative dimension $d$: $\omega_{x/y} \cong \mathcal{l}_{x/y}[d]$ in $\mathcal{d}(x)$.'
+- id: ncatlab-org-nlab-show-six-operations#028
+  text: How is a Cohen-Macaulay morphism characterized in the six-functor formalism?
+  hint: $f$ is flat and the relative dualizing complex $\omega_{X/Y} = f^!(\mathbf{1}_Y)$ is concentrated
+    in a single cohomological degree $-d$, so $\mathcal{H}^i(f^!\mathbf{1}_Y) = 0$ for all $i \neq -d$.
+  locator: null
+  sub_index: null
+  search_text: how is a cohen-macaulay morphism characterized in the six-functor formalism? $f$ is flat
+    and the relative dualizing complex $\omega_{x/y} = f^!(\mathbf{1}_y)$ is concentrated in a single
+    cohomological degree $-d$, so $\mathcal{h}^i(f^!\mathbf{1}_y) = 0$ for all $i \neq -d$.
+- id: ncatlab-org-nlab-show-six-operations#029
+  text: How is the relative dimension $d$ of a smooth morphism expressed as a six-functor invariant?
+  hint: The integer $d$ is the unique cohomological shift in the relative purity isomorphism $f^!(\mathbf{1}_Y)
+    \cong f^*(\mathbf{1}_Y)(d)[2d]$, which computes the virtual rank of the cotangent complex $\mathrm{rank}(\mathbb{L}_{X/Y})
+    = d$.
+  locator: null
+  sub_index: null
+  search_text: how is the relative dimension $d$ of a smooth morphism expressed as a six-functor invariant?
+    the integer $d$ is the unique cohomological shift in the relative purity isomorphism $f^!(\mathbf{1}_y)
+    \cong f^*(\mathbf{1}_y)(d)[2d]$, which computes the virtual rank of the cotangent complex $\mathrm{rank}(\mathbb{l}_{x/y})
+    = d$.
+- id: ncatlab-org-nlab-show-six-operations#030
+  text: How is Grothendieck-Verdier Duality formulated as a single six-functor adjoint equivalence?
+  hint: 'For any morphism $f \colon X \to Y$, the duality isomorphism is the canonical equivalence of
+    internal hom sheaves: $f_* \mathbf{R}\underline{\mathrm{Hom}}_X(\mathcal{F}, f^! \mathcal{G}) \xrightarrow{\sim}
+    \mathbf{R}\underline{\mathrm{Hom}}_Y(f_! \mathcal{F}, \mathcal{G})$.'
+  locator: null
+  sub_index: null
+  search_text: 'how is grothendieck-verdier duality formulated as a single six-functor adjoint equivalence?
+    for any morphism $f \colon x \to y$, the duality isomorphism is the canonical equivalence of internal
+    hom sheaves: $f_* \mathbf{r}\underline{\mathrm{hom}}_x(\mathcal{f}, f^! \mathcal{g}) \xrightarrow{\sim}
+    \mathbf{r}\underline{\mathrm{hom}}_y(f_! \mathcal{f}, \mathcal{g})$.'
+- id: ncatlab-org-nlab-show-six-operations#031
+  text: How does Serre Duality emerge as a special case of the six-functor duality formula?
+  hint: Let $f \colon X \to \mathrm{Spec}(k)$ be a smooth proper variety of dimension $d$; setting $\mathcal{G}
+    = k$ gives $f_! \cong f_*$ and $f^!(k) \cong \omega_X[d]$, so $\mathbf{R}\Gamma(X, \mathbf{R}\underline{\mathrm{Hom}}(\mathcal{F},
+    \omega_X[d])) \cong \mathbf{R}\Gamma(X, \mathcal{F})^\vee$, yielding $H^i(X, \mathcal{F})^\vee \cong
+    H^{d-i}(X, \mathcal{F}^\vee \otimes \omega_X)$.
+  locator: null
+  sub_index: null
+  search_text: how does serre duality emerge as a special case of the six-functor duality formula? let
+    $f \colon x \to \mathrm{spec}(k)$ be a smooth proper variety of dimension $d$; setting $\mathcal{g}
+    = k$ gives $f_! \cong f_*$ and $f^!(k) \cong \omega_x[d]$, so $\mathbf{r}\gamma(x, \mathbf{r}\underline{\mathrm{hom}}(\mathcal{f},
+    \omega_x[d])) \cong \mathbf{r}\gamma(x, \mathcal{f})^\vee$, yielding $h^i(x, \mathcal{f})^\vee \cong
+    h^{d-i}(x, \mathcal{f}^\vee \otimes \omega_x)$.
+- id: ncatlab-org-nlab-show-six-operations#032
+  text: How is the Borel-Moore homology complex defined as a six-functor push-pull on the unit object?
+  hint: $C_\bullet^{\mathrm{BM}}(X) := (a_X)_* a_X^!(\mathbf{1}_k) = \mathbf{R}\Gamma(X, \omega_X)$, where
+    $a_X \colon X \to \mathrm{Spec}(k)$ is the structure map; proper pushforward along $f \colon X \to
+    Y$ is induced by the counit $\mathrm{Tr}_f \colon f_* f^! \simeq f_! f^! \to \mathrm{id}$.
+  locator: null
+  sub_index: null
+  search_text: how is the borel-moore homology complex defined as a six-functor push-pull on the unit
+    object? $c_\bullet^{\mathrm{bm}}(x) := (a_x)_* a_x^!(\mathbf{1}_k) = \mathbf{r}\gamma(x, \omega_x)$,
+    where $a_x \colon x \to \mathrm{spec}(k)$ is the structure map; proper pushforward along $f \colon
+    x \to y$ is induced by the counit $\mathrm{tr}_f \colon f_* f^! \simeq f_! f^! \to \mathrm{id}$.
+- id: ncatlab-org-nlab-show-six-operations#033
+  text: How is compactly supported cohomology defined as a six-functor operation on the unit object?
+  hint: $C_c^*(X) := (a_X)_! a_X^*(\mathbf{1}_k) = \mathbf{R}\Gamma_c(X, \mathbf{1}_X)$; Verdier duality
+    pairs $C_c^*(X)$ with $C_\bullet^{\mathrm{BM}}(X)$ via the evaluation counit $(a_X)_! a_X^! \to \mathrm{id}$.
+  locator: null
+  sub_index: null
+  search_text: how is compactly supported cohomology defined as a six-functor operation on the unit object?
+    $c_c^*(x) := (a_x)_! a_x^*(\mathbf{1}_k) = \mathbf{r}\gamma_c(x, \mathbf{1}_x)$; verdier duality pairs
+    $c_c^*(x)$ with $c_\bullet^{\mathrm{bm}}(x)$ via the evaluation counit $(a_x)_! a_x^! \to \mathrm{id}$.
+- id: ncatlab-org-nlab-show-six-operations#034
+  text: How is classical cohomology defined as a six-functor operation on the unit object?
+  hint: $C^*(X) := (a_X)_* a_X^*(\mathbf{1}_k) = \mathbf{R}\Gamma(X, \mathbf{1}_X)$, which is dual to
+    homology with compact supports $C_*(X) := (a_X)_! a_X^!(\mathbf{1}_k)$.
+  locator: null
+  sub_index: null
+  search_text: how is classical cohomology defined as a six-functor operation on the unit object? $c^*(x)
+    := (a_x)_* a_x^*(\mathbf{1}_k) = \mathbf{r}\gamma(x, \mathbf{1}_x)$, which is dual to homology with
+    compact supports $c_*(x) := (a_x)_! a_x^!(\mathbf{1}_k)$.
+- id: ncatlab-org-nlab-show-six-operations#035
+  text: How is the Smooth Base Change isomorphism formulated in the six-functor formalism?
+  hint: For a Cartesian square with $g \colon Y' \to Y$ smooth of relative dimension $d$ ($g^! \cong g^*(d)[2d]$)
+    and $f \colon X \to Y$ arbitrary, the natural transformation $f^! g_! \xrightarrow{\sim} (g')_! (f')^!$
+    is an equivalence in $\mathcal{D}(X)$.
+  locator: null
+  sub_index: null
+  search_text: how is the smooth base change isomorphism formulated in the six-functor formalism? for
+    a cartesian square with $g \colon y' \to y$ smooth of relative dimension $d$ ($g^! \cong g^*(d)[2d]$)
+    and $f \colon x \to y$ arbitrary, the natural transformation $f^! g_! \xrightarrow{\sim} (g')_! (f')^!$
+    is an equivalence in $\mathcal{d}(x)$.
+- id: ncatlab-org-nlab-show-six-operations#036
+  text: How is the Chern character / cycle class of a vector bundle $\mathcal{E}$ formulated via six-functor
+    Gysin maps?
+  hint: The zero section $s_0 \colon X \hookrightarrow \mathbf{V}(\mathcal{E})$ is a regular closed immersion
+    with smooth projection $p \colon \mathbf{V}(\mathcal{E}) \to X$; the Euler class is the composite
+    pullback $c_{\mathrm{top}}(\mathcal{E}) = s_0^* (s_0)_*(\mathbf{1}_X) \in H^{2r}(X, \mathbb{Z}(r))$,
+    matching the derived self-intersection of the zero section.
+  locator: null
+  sub_index: null
+  search_text: how is the chern character / cycle class of a vector bundle $\mathcal{e}$ formulated via
+    six-functor gysin maps? the zero section $s_0 \colon x \hookrightarrow \mathbf{v}(\mathcal{e})$ is
+    a regular closed immersion with smooth projection $p \colon \mathbf{v}(\mathcal{e}) \to x$; the euler
+    class is the composite pullback $c_{\mathrm{top}}(\mathcal{e}) = s_0^* (s_0)_*(\mathbf{1}_x) \in h^{2r}(x,
+    \mathbb{z}(r))$, matching the derived self-intersection of the zero section.
+- id: ncatlab-org-nlab-show-six-operations#037
+  text: How is an integral kernel transform (Fourier-Mukai functor) formulated via six-functor operations?
+  hint: For a correspondence diagram $X \xleftarrow{p_X} X \times Y \xrightarrow{p_Y} Y$ and kernel object
+    $\mathcal{K} \in \mathcal{D}(X \times Y)$, the integral transform is the six-functor composite $\Phi_{\mathcal{K}}(\mathcal{F})
+    := (p_Y)_! (p_X^* \mathcal{F} \otimes \mathcal{K})$.
+  locator: null
+  sub_index: null
+  search_text: how is an integral kernel transform (fourier-mukai functor) formulated via six-functor
+    operations? for a correspondence diagram $x \xleftarrow{p_x} x \times y \xrightarrow{p_y} y$ and kernel
+    object $\mathcal{k} \in \mathcal{d}(x \times y)$, the integral transform is the six-functor composite
+    $\phi_{\mathcal{k}}(\mathcal{f}) := (p_y)_! (p_x^* \mathcal{f} \otimes \mathcal{k})$.
+- id: ncatlab-org-nlab-show-six-operations#038
+  text: How is the derived self-intersection of a subvariety $Y \subset X$ computed via six-functor Tor
+    sheaves?
+  hint: The derived intersection is $Y \times_X^{\mathbf{R}} Y$; its structure sheaf is the six-functor
+    pullback $\mathcal{O}_{Y \times_X^{\mathbf{R}} Y} \simeq i^* i_*(\mathcal{O}_Y) \simeq \bigoplus_{k=0}^d
+    \bigwedge^k N_{Y/X}^*[k]$, computing the Hochschild-Kostant-Rosenberg decomposition via derived self-intersections.
+  locator: null
+  sub_index: null
+  search_text: how is the derived self-intersection of a subvariety $y \subset x$ computed via six-functor
+    tor sheaves? the derived intersection is $y \times_x^{\mathbf{r}} y$; its structure sheaf is the six-functor
+    pullback $\mathcal{o}_{y \times_x^{\mathbf{r}} y} \simeq i^* i_*(\mathcal{o}_y) \simeq \bigoplus_{k=0}^d
+    \bigwedge^k n_{y/x}^*[k]$, computing the hochschild-kostant-rosenberg decomposition via derived self-intersections.
+- id: ncatlab-org-nlab-show-six-operations#039
+  text: Why does the six-functor formalism unconditionally force the stability of smooth, proper, flat,
+    and étale morphisms under base change?
+  hint: Because the six-functor axioms require all natural transformations ($g^* f_! \cong (f')_! (g')^*$,
+    $f^! g_* \cong (g')_* (f')^!$, and $f_!(A \otimes f^* B) \cong f_!(A) \otimes B$) to be isomorphisms
+    for ALL Cartesian squares, so any property defined by an identity of functors ($f_! \cong f_*$, $f^!
+    \cong f^*$, or $f^! \cong f^*(d)[2d]$) is preserved under base change by functorial substitution.
+  locator: null
+  sub_index: null
+  search_text: why does the six-functor formalism unconditionally force the stability of smooth, proper,
+    flat, and étale morphisms under base change? because the six-functor axioms require all natural transformations
+    ($g^* f_! \cong (f')_! (g')^*$, $f^! g_* \cong (g')_* (f')^!$, and $f_!(a \otimes f^* b) \cong f_!(a)
+    \otimes b$) to be isomorphisms for all cartesian squares, so any property defined by an identity of
+    functors ($f_! \cong f_*$, $f^! \cong f^*$, or $f^! \cong f^*(d)[2d]$) is preserved under base change
+    by functorial substitution.
