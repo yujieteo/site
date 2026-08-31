@@ -1,0 +1,235 @@
+url: https://amathew.wordpress.com/2010/11/22/the-cohomology-of-projective-space/
+title: cohomology of projective space (Vakil
+note: Akhil Mathew).
+tags: []
+source_file: exercises.txt
+locator_kind: none
+exercises:
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#000
+  text: 'Exercise 18.3.C (Part 1 - Sections of Twisting Sheaves on Intersection Charts): For any non-empty
+    subset of indices $I = \{j_0, \dots, j_p\} \subset \{0, \dots, n\}$, show that the section module
+    $\Gamma(U_I, \mathcal{O}_{\mathbb{P}_A^n}(m))$ on the distinguished open $U_I = D(\prod_{i \in I}
+    x_i)$ is isomorphic to the $A$-module of homogeneous degree-$m$ Laurent polynomials $(A[x_0, \dots,
+    x_n, \prod_{i \in I} x_i^{-1}])_m$ where negative exponents are allowed only for variables $x_i$ with
+    $i \in I$'
+  hint: On the affine open $U_I = \mathrm{Spec}\left( (A[x_0, \dots, x_n]_{x_I})_0 \right)$, the section
+    module of the associated graded sheaf $\mathcal{O}(m) = \widetilde{S(m)}$ is the degree-$m$ piece
+    of the localized graded ring $(S_{x_I})_m = (A[x_0, \dots, x_n, \prod_{i \in I} x_i^{-1}])_m$; any
+    section is uniquely a linear combination of Laurent monomials $x_0^{e_0} \cdots x_n^{e_n}$ with $\sum
+    e_i = m$ and $e_i \ge 0$ for all $i \notin I$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.c (part 1 - sections of twisting sheaves on intersection charts): for any
+    non-empty subset of indices $i = \{j_0, \dots, j_p\} \subset \{0, \dots, n\}$, show that the section
+    module $\gamma(u_i, \mathcal{o}_{\mathbb{p}_a^n}(m))$ on the distinguished open $u_i = d(\prod_{i
+    \in i} x_i)$ is isomorphic to the $a$-module of homogeneous degree-$m$ laurent polynomials $(a[x_0,
+    \dots, x_n, \prod_{i \in i} x_i^{-1}])_m$ where negative exponents are allowed only for variables
+    $x_i$ with $i \in i$ on the affine open $u_i = \mathrm{spec}\left( (a[x_0, \dots, x_n]_{x_i})_0 \right)$,
+    the section module of the associated graded sheaf $\mathcal{o}(m) = \widetilde{s(m)}$ is the degree-$m$
+    piece of the localized graded ring $(s_{x_i})_m = (a[x_0, \dots, x_n, \prod_{i \in i} x_i^{-1}])_m$;
+    any section is uniquely a linear combination of laurent monomials $x_0^{e_0} \cdots x_n^{e_n}$ with
+    $\sum e_i = m$ and $e_i \ge 0$ for all $i \notin i$.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#001
+  text: 'Exercise 18.3.C (Part 2 - Sheaf Restrictions as Module Inclusions): Show that for an inclusion
+    of index subsets $I \subset J$, the restriction homomorphism $\Gamma(U_I, \mathcal{O}_{\mathbb{P}_A^n}(m))
+    \to \Gamma(U_J, \mathcal{O}_{\mathbb{P}_A^n}(m))$ corresponds to the canonical inclusion of Laurent
+    polynomial submodules inside $A[x_0^{\pm 1}, \dots, x_n^{\pm 1}]_m$'
+  hint: Since $U_J = D(\prod_{j \in J} x_j) \subset U_I = D(\prod_{i \in I} x_i)$ is an open localization,
+    restricting a Laurent polynomial with poles supported inside $I$ places its poles inside the larger
+    set $J$, mapping each monomial $x^{\vec{e}}$ identically to itself in the ambient Laurent ring.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.c (part 2 - sheaf restrictions as module inclusions): show that for an inclusion
+    of index subsets $i \subset j$, the restriction homomorphism $\gamma(u_i, \mathcal{o}_{\mathbb{p}_a^n}(m))
+    \to \gamma(u_j, \mathcal{o}_{\mathbb{p}_a^n}(m))$ corresponds to the canonical inclusion of laurent
+    polynomial submodules inside $a[x_0^{\pm 1}, \dots, x_n^{\pm 1}]_m$ since $u_j = d(\prod_{j \in j}
+    x_j) \subset u_i = d(\prod_{i \in i} x_i)$ is an open localization, restricting a laurent polynomial
+    with poles supported inside $i$ places its poles inside the larger set $j$, mapping each monomial
+    $x^{\vec{e}}$ identically to itself in the ambient laurent ring.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#002
+  text: 'Exercise 18.3.C (Part 3 - Punctured Affine Space Identification): Show that the Čech complex
+    $\check{C}^\bullet(\mathcal{U}, \mathcal{O}_{\mathbb{P}_A^n}(m))$ for the standard open cover $\mathcal{U}
+    = \{U_0, \dots, U_n\}$ is canonically isomorphic to the degree-$m$ homogeneous piece of the Čech complex
+    computing the cohomology of $\mathcal{O}_{\mathbb{A}_A^{n+1}}$ on the punctured affine space $\mathbb{A}_A^{n+1}
+    \setminus \{0\}$'
+  hint: Punctured affine space $\mathbb{A}_A^{n+1} \setminus \{0\}$ has standard affine open cover $\{D(x_i)\}_{i=0}^n$;
+    on intersections, $\Gamma(D(x_{j_0} \cdots x_{j_p}), \mathcal{O}) = A[x_0, \dots, x_n]_{x_{j_0} \cdots
+    x_{j_p}}$; taking the direct sum of degree-$m$ pieces across the Čech complex yields the exact terms
+    and differentials of $\check{C}^\bullet(\mathcal{U}, \mathcal{O}_{\mathbb{P}^n}(m))$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.c (part 3 - punctured affine space identification): show that the čech complex
+    $\check{c}^\bullet(\mathcal{u}, \mathcal{o}_{\mathbb{p}_a^n}(m))$ for the standard open cover $\mathcal{u}
+    = \{u_0, \dots, u_n\}$ is canonically isomorphic to the degree-$m$ homogeneous piece of the čech complex
+    computing the cohomology of $\mathcal{o}_{\mathbb{a}_a^{n+1}}$ on the punctured affine space $\mathbb{a}_a^{n+1}
+    \setminus \{0\}$ punctured affine space $\mathbb{a}_a^{n+1} \setminus \{0\}$ has standard affine open
+    cover $\{d(x_i)\}_{i=0}^n$; on intersections, $\gamma(d(x_{j_0} \cdots x_{j_p}), \mathcal{o}) = a[x_0,
+    \dots, x_n]_{x_{j_0} \cdots x_{j_p}}$; taking the direct sum of degree-$m$ pieces across the čech
+    complex yields the exact terms and differentials of $\check{c}^\bullet(\mathcal{u}, \mathcal{o}_{\mathbb{p}^n}(m))$.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#003
+  text: 'Exercise 18.3.D (Part 1 - Multi-Grading Decomposition): Show that the Čech complex $\check{C}^\bullet(\mathcal{U},
+    \mathcal{O}_{\mathbb{P}_A^n}(m))$ decomposes as a direct sum of independent 1-dimensional subcomplexes
+    $\bigoplus_{\vec{e}, \sum e_i = m} \check{C}^\bullet(\vec{e})$ indexed by the exponent vectors $\vec{e}
+    = (e_0, \dots, e_n) \in \mathbb{Z}^{n+1}$'
+  hint: The Čech differential $d(s)_{i_0 \dots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j s_{i_0 \dots \widehat{i_j}
+    \dots i_{p+1}}$ is $A$-linear and acts on each Laurent monomial $x^{\vec{e}}$ separately without mixing
+    exponents, so the complex splits into the direct sum of subcomplexes $\check{C}^\bullet(\vec{e})$,
+    where the term at stage $p$ has basis $\{x^{\vec{e}}\}$ for each subset $I = \{i_0, \dots, i_p\}$
+    satisfying $\mathrm{NEG}(\vec{e}) \subseteq I$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.d (part 1 - multi-grading decomposition): show that the čech complex $\check{c}^\bullet(\mathcal{u},
+    \mathcal{o}_{\mathbb{p}_a^n}(m))$ decomposes as a direct sum of independent 1-dimensional subcomplexes
+    $\bigoplus_{\vec{e}, \sum e_i = m} \check{c}^\bullet(\vec{e})$ indexed by the exponent vectors $\vec{e}
+    = (e_0, \dots, e_n) \in \mathbb{z}^{n+1}$ the čech differential $d(s)_{i_0 \dots i_{p+1}} = \sum_{j=0}^{p+1}
+    (-1)^j s_{i_0 \dots \widehat{i_j} \dots i_{p+1}}$ is $a$-linear and acts on each laurent monomial
+    $x^{\vec{e}}$ separately without mixing exponents, so the complex splits into the direct sum of subcomplexes
+    $\check{c}^\bullet(\vec{e})$, where the term at stage $p$ has basis $\{x^{\vec{e}}\}$ for each subset
+    $i = \{i_0, \dots, i_p\}$ satisfying $\mathrm{neg}(\vec{e}) \subseteq i$.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#004
+  text: 'Exercise 18.3.D (Part 2 - Computation of $H^0$ for Non-Negative Exponents): Prove Theorem 18.1.2(a):
+    $H^0(\mathbb{P}_A^n, \mathcal{O}_{\mathbb{P}_A^n}(m))$ is a free $A$-module with basis consisting
+    of all degree-$m$ monomials in $x_0, \dots, x_n$, having rank $\binom{n+m}{n}$ for $m \ge 0$, and
+    rank $0$ for $m < 0$'
+  hint: When $\mathrm{NEG}(\vec{e}) = \emptyset$, all $e_i \ge 0$, so $\sum e_i = m \ge 0$; the condition
+    $\emptyset \subseteq I$ holds for every non-empty index set $I$, making the subcomplex $\check{C}^\bullet(\vec{e})$
+    isomorphic to the chain complex of an $n$-simplex $\Delta^n$ with coefficients in $A \cdot x^{\vec{e}}$,
+    which has $H^0 \cong A \cdot x^{\vec{e}}$ and $H^i = 0$ for $i > 0$; counting non-negative solutions
+    to $\sum e_i = m$ gives rank $\binom{n+m}{n}$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.d (part 2 - computation of $h^0$ for non-negative exponents): prove theorem
+    18.1.2(a): $h^0(\mathbb{p}_a^n, \mathcal{o}_{\mathbb{p}_a^n}(m))$ is a free $a$-module with basis
+    consisting of all degree-$m$ monomials in $x_0, \dots, x_n$, having rank $\binom{n+m}{n}$ for $m \ge
+    0$, and rank $0$ for $m < 0$ when $\mathrm{neg}(\vec{e}) = \emptyset$, all $e_i \ge 0$, so $\sum e_i
+    = m \ge 0$; the condition $\emptyset \subseteq i$ holds for every non-empty index set $i$, making
+    the subcomplex $\check{c}^\bullet(\vec{e})$ isomorphic to the chain complex of an $n$-simplex $\delta^n$
+    with coefficients in $a \cdot x^{\vec{e}}$, which has $h^0 \cong a \cdot x^{\vec{e}}$ and $h^i = 0$
+    for $i > 0$; counting non-negative solutions to $\sum e_i = m$ gives rank $\binom{n+m}{n}$.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#005
+  text: 'Exercise 18.3.D (Part 3 - Vanishing of Intermediate Cohomology): Prove Theorem 18.1.2(b): $H^i(\mathbb{P}_A^n,
+    \mathcal{O}_{\mathbb{P}_A^n}(m)) = 0$ for all $0 < i < n$ and all $m \in \mathbb{Z}$'
+  hint: Any monomial in an intermediate degree has $\emptyset \subsetneq \mathrm{NEG}(\vec{e}) \subsetneq
+    \{0, 1, \dots, n\}$; choosing an index $k \notin \mathrm{NEG}(\vec{e})$ (where $e_k \ge 0$) defines
+    the chain homotopy $h(s)_{i_0 \dots i_p} = s_{k i_0 \dots i_p}$ for $k \notin \{i_0, \dots, i_p\}$
+    and $0$ otherwise, which satisfies $dh + hd = \mathrm{id}$, proving $\check{C}^\bullet(\vec{e})$ is
+    contractible and all intermediate cohomology vanishes.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.d (part 3 - vanishing of intermediate cohomology): prove theorem 18.1.2(b):
+    $h^i(\mathbb{p}_a^n, \mathcal{o}_{\mathbb{p}_a^n}(m)) = 0$ for all $0 < i < n$ and all $m \in \mathbb{z}$
+    any monomial in an intermediate degree has $\emptyset \subsetneq \mathrm{neg}(\vec{e}) \subsetneq
+    \{0, 1, \dots, n\}$; choosing an index $k \notin \mathrm{neg}(\vec{e})$ (where $e_k \ge 0$) defines
+    the chain homotopy $h(s)_{i_0 \dots i_p} = s_{k i_0 \dots i_p}$ for $k \notin \{i_0, \dots, i_p\}$
+    and $0$ otherwise, which satisfies $dh + hd = \mathrm{id}$, proving $\check{c}^\bullet(\vec{e})$ is
+    contractible and all intermediate cohomology vanishes.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#006
+  text: 'Exercise 18.3.D (Part 4 - Computation of Top Cohomology $H^n$): Prove Theorem 18.1.2(c): $H^n(\mathbb{P}_A^n,
+    \mathcal{O}_{\mathbb{P}_A^n}(m))$ is a free $A$-module with basis corresponding to all inverse Laurent
+    monomials $x_0^{e_0} \cdots x_n^{e_n}$ with all $e_i < 0$ and $\sum e_i = m$, having rank $\binom{-m-1}{n}$
+    for $m \le -n-1$, and rank $0$ for $m \ge -n$'
+  hint: When $\mathrm{NEG}(\vec{e}) = \{0, 1, \dots, n\}$, every $e_i \le -1$, so $m = \sum e_i \le -(n+1)$;
+    the condition $\mathrm{NEG}(\vec{e}) \subseteq I$ forces $I = \{0, 1, \dots, n\}$, which occurs only
+    at stage $p = n$, giving $\check{C}^p(\vec{e}) = 0$ for $p < n$ and $\check{C}^n(\vec{e}) = A \cdot
+    x^{\vec{e}}$; substituting $e_i = -a_i - 1$ with $a_i \ge 0$ gives $\sum a_i = -m - n - 1$, yielding
+    rank $\binom{n + (-m - n - 1)}{n} = \binom{-m-1}{n}$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.d (part 4 - computation of top cohomology $h^n$): prove theorem 18.1.2(c):
+    $h^n(\mathbb{p}_a^n, \mathcal{o}_{\mathbb{p}_a^n}(m))$ is a free $a$-module with basis corresponding
+    to all inverse laurent monomials $x_0^{e_0} \cdots x_n^{e_n}$ with all $e_i < 0$ and $\sum e_i = m$,
+    having rank $\binom{-m-1}{n}$ for $m \le -n-1$, and rank $0$ for $m \ge -n$ when $\mathrm{neg}(\vec{e})
+    = \{0, 1, \dots, n\}$, every $e_i \le -1$, so $m = \sum e_i \le -(n+1)$; the condition $\mathrm{neg}(\vec{e})
+    \subseteq i$ forces $i = \{0, 1, \dots, n\}$, which occurs only at stage $p = n$, giving $\check{c}^p(\vec{e})
+    = 0$ for $p < n$ and $\check{c}^n(\vec{e}) = a \cdot x^{\vec{e}}$; substituting $e_i = -a_i - 1$ with
+    $a_i \ge 0$ gives $\sum a_i = -m - n - 1$, yielding rank $\binom{n + (-m - n - 1)}{n} = \binom{-m-1}{n}$.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#007
+  text: 'Exercise 18.3.D (Part 5 - Serre Duality Perfect Pairing): Prove Theorem 18.1.2(d): the natural
+    product pairing $H^0(\mathbb{P}_A^n, \mathcal{O}(m)) \times H^n(\mathbb{P}_A^n, \mathcal{O}(-n-1-m))
+    \to H^n(\mathbb{P}_A^n, \mathcal{O}(-n-1)) \cong A$ is a perfect pairing of free $A$-modules for all
+    $m \in \mathbb{Z}$'
+  hint: Multiplying a basis monomial $x^{\vec{e}} \in H^0(\mathcal{O}(m))$ (all $e_i \ge 0$) with an inverse
+    basis monomial $x^{\vec{a}} \in H^n(\mathcal{O}(-n-1-m))$ (all $a_i \le -1$) produces the canonical
+    trace generator $x^{-\mathbf{1}} = \frac{1}{x_0 \cdots x_n} \in H^n(\mathcal{O}(-n-1))$ if and only
+    if $e_i + a_i = -1$ for all $i$, which forces $a_i = -e_i - 1$; the pairing matrix in these monomial
+    bases is the identity matrix, establishing an exact isomorphism $H^0(\mathbb{P}_A^n, \mathcal{O}(m))^\vee
+    \cong H^n(\mathbb{P}_A^n, \mathcal{O}(-n-1-m))$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.d (part 5 - serre duality perfect pairing): prove theorem 18.1.2(d): the
+    natural product pairing $h^0(\mathbb{p}_a^n, \mathcal{o}(m)) \times h^n(\mathbb{p}_a^n, \mathcal{o}(-n-1-m))
+    \to h^n(\mathbb{p}_a^n, \mathcal{o}(-n-1)) \cong a$ is a perfect pairing of free $a$-modules for all
+    $m \in \mathbb{z}$ multiplying a basis monomial $x^{\vec{e}} \in h^0(\mathcal{o}(m))$ (all $e_i \ge
+    0$) with an inverse basis monomial $x^{\vec{a}} \in h^n(\mathcal{o}(-n-1-m))$ (all $a_i \le -1$) produces
+    the canonical trace generator $x^{-\mathbf{1}} = \frac{1}{x_0 \cdots x_n} \in h^n(\mathcal{o}(-n-1))$
+    if and only if $e_i + a_i = -1$ for all $i$, which forces $a_i = -e_i - 1$; the pairing matrix in
+    these monomial bases is the identity matrix, establishing an exact isomorphism $h^0(\mathbb{p}_a^n,
+    \mathcal{o}(m))^\vee \cong h^n(\mathbb{p}_a^n, \mathcal{o}(-n-1-m))$.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#008
+  text: 'Exercise 18.1.A: Show that the six desired axiomatic properties uniquely determine the cohomology
+    groups $H^i(X, \mathcal{F})$ for all quasicoherent sheaves on projective $A$-schemes'
+  hint: Any coherent sheaf on a projective scheme $X \hookrightarrow \mathbb{P}_A^n$ admits a surjection
+    from a finite direct sum of twisted line bundles $\mathcal{E}_0 = \bigoplus \mathcal{O}(-k_j) \twoheadrightarrow
+    \mathcal{F}$; iterating this produces a resolution by split line bundles on $\mathbb{P}^n$, and the
+    long exact sequence axiom combined with the known cohomology of $\mathcal{O}(d)$ and Grothendieck
+    dimension vanishing determines $H^i(X, \mathcal{F})$ uniquely by induction on the homological degree.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.1.a: show that the six desired axiomatic properties uniquely determine the
+    cohomology groups $h^i(x, \mathcal{f})$ for all quasicoherent sheaves on projective $a$-schemes any
+    coherent sheaf on a projective scheme $x \hookrightarrow \mathbb{p}_a^n$ admits a surjection from
+    a finite direct sum of twisted line bundles $\mathcal{e}_0 = \bigoplus \mathcal{o}(-k_j) \twoheadrightarrow
+    \mathcal{f}$; iterating this produces a resolution by split line bundles on $\mathbb{p}^n$, and the
+    long exact sequence axiom combined with the known cohomology of $\mathcal{o}(d)$ and grothendieck
+    dimension vanishing determines $h^i(x, \mathcal{f})$ uniquely by induction on the homological degree.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#009
+  text: 'Lemma 45: Global sections of $O(m)$ are rpecisely degree $m$ polynomials'
+  hint: $O(m)$ is sheaf associated with graded module of $n$ generators. Consider sections over $X_{x_i}$
+    which are basic open affine subsets of projective space each isomorphic to the affine line over the
+    ring A. The sections are isomorphic to $S(m)_(x_i)$ which are the graded part of the graded poly ring
+    module in n generators. $S$ is the intersection of localisations, and make sense as graded ring, if
+    it lies in $S(m)_(x_i)$, then it must lie in $S$ of degree $m$, so the global sections are basically
+    $S = A[x_0, \cdots, x_n]$, which is in fact a RING.
+  locator: null
+  sub_index: null
+  search_text: 'lemma 45: global sections of $o(m)$ are rpecisely degree $m$ polynomials $o(m)$ is sheaf
+    associated with graded module of $n$ generators. consider sections over $x_{x_i}$ which are basic
+    open affine subsets of projective space each isomorphic to the affine line over the ring a. the sections
+    are isomorphic to $s(m)_(x_i)$ which are the graded part of the graded poly ring module in n generators.
+    $s$ is the intersection of localisations, and make sense as graded ring, if it lies in $s(m)_(x_i)$,
+    then it must lie in $s$ of degree $m$, so the global sections are basically $s = a[x_0, \cdots, x_n]$,
+    which is in fact a ring.'
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#010
+  text: Proposition 46, compute Cech cohomology for $k = 0$ to $k = n$, trivial intermediate, isomorphic
+    to graded $A$-module to $S$ (this is lemma 45), $k = n$, means free $A$-module of rational functions
+    $x_0^{-a_0} \cdots x_n^{-a_n}$
+  hint: direct. limit of Koszul cohomologies, of REGULAR sequences $\mathbf{x}$ of length $n+1$, by Koszul
+    cohomology $H^i(x^m, S) = 0$ for some lemma implying banishing of intermediate cohomology. For the
+    $n$-th cohomology, again use Koszul cohomology, check that this is the direct limit, compute colimit
+    as distance to the end, spanned by the negative monomials, this corresponds to the element as desired.
+    For the case $k = 0$, this is lemma $45$ i.e. graded A-module to S.
+  locator: null
+  sub_index: null
+  search_text: proposition 46, compute cech cohomology for $k = 0$ to $k = n$, trivial intermediate, isomorphic
+    to graded $a$-module to $s$ (this is lemma 45), $k = n$, means free $a$-module of rational functions
+    $x_0^{-a_0} \cdots x_n^{-a_n}$ direct. limit of koszul cohomologies, of regular sequences $\mathbf{x}$
+    of length $n+1$, by koszul cohomology $h^i(x^m, s) = 0$ for some lemma implying banishing of intermediate
+    cohomology. for the $n$-th cohomology, again use koszul cohomology, check that this is the direct
+    limit, compute colimit as distance to the end, spanned by the negative monomials, this corresponds
+    to the element as desired. for the case $k = 0$, this is lemma $45$ i.e. graded a-module to s.
+- id: amathew-wordpress-com-2010-11-22-the-cohomology-of-projective-space#011
+  text: Theorem 47, cohomology of line bundle of projective space, for $k = 0$, collection of polynomials
+    of degree $m$ if $m \geq 0$ and $0$ otherwise, for intermediate degrees $0 < k < n-1$, then it vanishes,
+    $k = n-1$ then $H^{n-1}$ is zero for $m > -n-1$, for other $m$, it is free on the set of negative
+    monomials
+  hint: split the gradings, derived functor cohomology coincides with Cech cohomology, all cohomology
+    groups are finitely generated due to working in projective space, working with line bundle of a form
+    $, >> 0$, Serre's vanishing applies.
+  locator: null
+  sub_index: null
+  search_text: theorem 47, cohomology of line bundle of projective space, for $k = 0$, collection of polynomials
+    of degree $m$ if $m \geq 0$ and $0$ otherwise, for intermediate degrees $0 < k < n-1$, then it vanishes,
+    $k = n-1$ then $h^{n-1}$ is zero for $m > -n-1$, for other $m$, it is free on the set of negative
+    monomials split the gradings, derived functor cohomology coincides with cech cohomology, all cohomology
+    groups are finitely generated due to working in projective space, working with line bundle of a form
+    $, >> 0$, serre's vanishing applies.

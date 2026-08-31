@@ -1,11 +1,1331 @@
 url: https://gofling.me/paper/Proj%20Cech%20Cohom.pdf
-title: cohomology of line bundles.
+title: extras on Cech cohomology
 note: null
 tags: []
 source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: gofling-me-paper-proj-20cech-20cohom-pdf#000
+  text: 'Exercise 18.1.B: If $X$ is a quasicompact separated scheme and $\mathcal{F}$ is a quasicoherent
+    sheaf, show that $H^0(X, \mathcal{F})$ computed by the Čech complex coincides with global sections
+    $\Gamma(X, \mathcal{F})$'
+  hint: For any open cover $\mathcal{U} = \{U_i\}$, the Čech 0-coboundary kernel is $\ker(d^0 \colon \prod
+    \mathcal{F}(U_i) \to \prod \mathcal{F}(U_i \cap U_j)) = \{ (s_i) \mid s_i|_{U_{ij}} = s_j|_{U_{ij}}
+    \}$, which is precisely the sheaf condition characterizing global sections $\Gamma(X, \mathcal{F})$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.1.b: if $x$ is a quasicompact separated scheme and $\mathcal{f}$ is a quasicoherent
+    sheaf, show that $h^0(x, \mathcal{f})$ computed by the čech complex coincides with global sections
+    $\gamma(x, \mathcal{f})$ for any open cover $\mathcal{u} = \{u_i\}$, the čech 0-coboundary kernel
+    is $\ker(d^0 \colon \prod \mathcal{f}(u_i) \to \prod \mathcal{f}(u_i \cap u_j)) = \{ (s_i) \mid s_i|_{u_{ij}}
+    = s_j|_{u_{ij}} \}$, which is precisely the sheaf condition characterizing global sections $\gamma(x,
+    \mathcal{f})$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#001
+  text: 'Exercise 18.2.A: For a finite affine open cover $\mathcal{U} = \{U_0, \dots, U_n\}$ of a separated
+    scheme $X$, show that the Čech differential $d \colon \check{C}^p(\mathcal{U}, \mathcal{F}) \to \check{C}^{p+1}(\mathcal{U},
+    \mathcal{F})$ satisfies $d^2 = 0$'
+  hint: Expand $d(d s)_{i_0 \dots i_{p+2}} = \sum_{j < k} (-1)^{j+k} s_{\dots \widehat{i_j} \dots \widehat{i_k}
+    \dots} + \sum_{k < j} (-1)^{j+k-1} s_{\dots \widehat{i_k} \dots \widehat{i_j} \dots}$; swapping the
+    summation dummy variables in the second sum produces an identical sum with opposite sign, so the terms
+    cancel pairwise.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.2.a: for a finite affine open cover $\mathcal{u} = \{u_0, \dots, u_n\}$ of
+    a separated scheme $x$, show that the čech differential $d \colon \check{c}^p(\mathcal{u}, \mathcal{f})
+    \to \check{c}^{p+1}(\mathcal{u}, \mathcal{f})$ satisfies $d^2 = 0$ expand $d(d s)_{i_0 \dots i_{p+2}}
+    = \sum_{j < k} (-1)^{j+k} s_{\dots \widehat{i_j} \dots \widehat{i_k} \dots} + \sum_{k < j} (-1)^{j+k-1}
+    s_{\dots \widehat{i_k} \dots \widehat{i_j} \dots}$; swapping the summation dummy variables in the
+    second sum produces an identical sum with opposite sign, so the terms cancel pairwise.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#002
+  text: 'Exercise 18.2.C: Show that if $0 \to \mathcal{F}'' \to \mathcal{F} \to \mathcal{F}'''' \to 0$
+    is a short exact sequence of quasicoherent sheaves on a separated scheme $X$, then the sequence of
+    Čech complexes $0 \to \check{C}^\bullet(\mathcal{U}, \mathcal{F}'') \to \check{C}^\bullet(\mathcal{U},
+    \mathcal{F}) \to \check{C}^\bullet(\mathcal{U}, \mathcal{F}'''') \to 0$ is exact'
+  hint: Each term $\check{C}^p(\mathcal{U}, \mathcal{F}) = \prod \mathcal{F}(U_{i_0 \dots i_p})$ is a
+    product of sections over affine opens $U_{i_0 \dots i_p} = \mathrm{Spec}(A_{i_0 \dots i_p})$; on affine
+    schemes, the functor $\widetilde{(-)}$ is an exact equivalence between modules and quasicoherent sheaves,
+    so taking sections on affine opens is exact, making the sequence of complexes exact termwise.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.2.c: show that if $0 \to \mathcal{f}'' \to \mathcal{f} \to \mathcal{f}''''
+    \to 0$ is a short exact sequence of quasicoherent sheaves on a separated scheme $x$, then the sequence
+    of čech complexes $0 \to \check{c}^\bullet(\mathcal{u}, \mathcal{f}'') \to \check{c}^\bullet(\mathcal{u},
+    \mathcal{f}) \to \check{c}^\bullet(\mathcal{u}, \mathcal{f}'''') \to 0$ is exact each term $\check{c}^p(\mathcal{u},
+    \mathcal{f}) = \prod \mathcal{f}(u_{i_0 \dots i_p})$ is a product of sections over affine opens $u_{i_0
+    \dots i_p} = \mathrm{spec}(a_{i_0 \dots i_p})$; on affine schemes, the functor $\widetilde{(-)}$ is
+    an exact equivalence between modules and quasicoherent sheaves, so taking sections on affine opens
+    is exact, making the sequence of complexes exact termwise.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#003
+  text: 'Exercise 18.2.D (Independence of Cover): Show that if $\mathcal{V}$ is an affine refinement of
+    an affine cover $\mathcal{U}$, there is a canonical isomorphism $\check{H}^\bullet(\mathcal{U}, \mathcal{F})
+    \xrightarrow{\sim} \check{H}^\bullet(\mathcal{V}, \mathcal{F})$'
+  hint: Form the Čech double complex $C^{p, q} = \prod \mathcal{F}(U_{i_0 \dots i_p} \cap V_{j_0 \dots
+    j_q})$; since each $U_{i_0 \dots i_p}$ is affine, the rows are acyclic in positive degrees with $H^0
+    = \check{C}^p(\mathcal{U}, \mathcal{F})$, while the columns are acyclic in positive degrees with $H^0
+    = \check{C}^q(\mathcal{V}, \mathcal{F})$; by the spectral sequence of a double complex, both edge
+    maps compute the total cohomology, yielding $\check{H}^i(\mathcal{U}, \mathcal{F}) \cong \check{H}^i(\mathcal{V},
+    \mathcal{F})$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.2.d (independence of cover): show that if $\mathcal{v}$ is an affine refinement
+    of an affine cover $\mathcal{u}$, there is a canonical isomorphism $\check{h}^\bullet(\mathcal{u},
+    \mathcal{f}) \xrightarrow{\sim} \check{h}^\bullet(\mathcal{v}, \mathcal{f})$ form the čech double
+    complex $c^{p, q} = \prod \mathcal{f}(u_{i_0 \dots i_p} \cap v_{j_0 \dots j_q})$; since each $u_{i_0
+    \dots i_p}$ is affine, the rows are acyclic in positive degrees with $h^0 = \check{c}^p(\mathcal{u},
+    \mathcal{f})$, while the columns are acyclic in positive degrees with $h^0 = \check{c}^q(\mathcal{v},
+    \mathcal{f})$; by the spectral sequence of a double complex, both edge maps compute the total cohomology,
+    yielding $\check{h}^i(\mathcal{u}, \mathcal{f}) \cong \check{h}^i(\mathcal{v}, \mathcal{f})$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#004
+  text: 'Exercise 18.2.F: Show that Čech cohomology commutes with arbitrary filtered colimits (and arbitrary
+    direct sums) of quasicoherent sheaves on a quasicompact separated scheme'
+  hint: On a quasicompact separated scheme, the affine cover $\mathcal{U}$ is finite; since taking sections
+    on affine opens commutes with filtered colimits of quasicoherent sheaves and a finite direct product
+    of modules commutes with filtered colimits, the finite Čech complex $\check{C}^\bullet(\mathcal{U},
+    \varinjlim \mathcal{F}_i) \cong \varinjlim \check{C}^\bullet(\mathcal{U}, \mathcal{F}_i)$ commutes
+    with colimits, and taking homology of chain complexes preserves filtered colimits.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.2.f: show that čech cohomology commutes with arbitrary filtered colimits (and
+    arbitrary direct sums) of quasicoherent sheaves on a quasicompact separated scheme on a quasicompact
+    separated scheme, the affine cover $\mathcal{u}$ is finite; since taking sections on affine opens
+    commutes with filtered colimits of quasicoherent sheaves and a finite direct product of modules commutes
+    with filtered colimits, the finite čech complex $\check{c}^\bullet(\mathcal{u}, \varinjlim \mathcal{f}_i)
+    \cong \varinjlim \check{c}^\bullet(\mathcal{u}, \mathcal{f}_i)$ commutes with colimits, and taking
+    homology of chain complexes preserves filtered colimits.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#005
+  text: 'Exercise 18.3.A: Explicitly compute the cohomology of line bundles on the projective line $\mathbb{P}_A^1
+    = \mathrm{Proj}(A[x_0, x_1])$ using the two-chart cover $\mathcal{U} = \{D_+(x_0), D_+(x_1)\}$'
+  hint: The Čech complex is $A[t] \oplus A[t^{-1}] \xrightarrow{d} A[t, t^{-1}]$ where $t = x_1/x_0$ and
+    $d(f(t), g(t^{-1})) = g(t^{-1}) - t^d f(t)$. (1) For $d \ge 0$, $\ker(d)$ is polynomials of degree
+    $\le d$ (free of rank $d+1$), and $\mathrm{coker}(d) = 0$; (2) for $d = -1$, $\ker(d) = 0$ and $\mathrm{coker}(d)
+    = 0$; (3) for $d \le -2$, $\ker(d) = 0$ and $\mathrm{coker}(d)$ has basis $\{t^{-1}, t^{-2}, \dots,
+    t^{d+1}\}$ (free of rank $-d-1$).
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.a: explicitly compute the cohomology of line bundles on the projective line
+    $\mathbb{p}_a^1 = \mathrm{proj}(a[x_0, x_1])$ using the two-chart cover $\mathcal{u} = \{d_+(x_0),
+    d_+(x_1)\}$ the čech complex is $a[t] \oplus a[t^{-1}] \xrightarrow{d} a[t, t^{-1}]$ where $t = x_1/x_0$
+    and $d(f(t), g(t^{-1})) = g(t^{-1}) - t^d f(t)$. (1) for $d \ge 0$, $\ker(d)$ is polynomials of degree
+    $\le d$ (free of rank $d+1$), and $\mathrm{coker}(d) = 0$; (2) for $d = -1$, $\ker(d) = 0$ and $\mathrm{coker}(d)
+    = 0$; (3) for $d \le -2$, $\ker(d) = 0$ and $\mathrm{coker}(d)$ has basis $\{t^{-1}, t^{-2}, \dots,
+    t^{d+1}\}$ (free of rank $-d-1$).'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#006
+  text: 'Exercise 18.3.A: Compute the cohomology groups $H^i(\mathbb{P}_A^1, \mathcal{O}_{\mathbb{P}_A^1}(d))$
+    for all $i \ge 0$ and all $d \in \mathbb{Z}$ using the standard affine open cover $\mathcal{U} = \{D_+(x_0),
+    D_+(x_1)\}$'
+  hint: The Čech complex is $A[x_1/x_0] \oplus A[x_0/x_1] \xrightarrow{d^0} A[x_0/x_1, x_1/x_0]$ where
+    $d^0(f, g) = g - f$. For $\mathcal{O}(d)$, identifying sections on the overlap yields $d^0(x_1^a x_0^{d-a},
+    x_0^b x_1^{d-b}) = x_0^b x_1^{d-b} - x_1^a x_0^{d-a}$. If $d \ge 0$, $\ker(d^0)$ is the free $A$-module
+    generated by monomials $\{x_0^d, x_0^{d-1}x_1, \dots, x_1^d\}$ of rank $d+1$, and $\mathrm{coker}(d^0)
+    = 0$. If $d = -1$, $\ker(d^0) = 0$ and $\mathrm{coker}(d^0) = 0$. If $d \le -2$, $\ker(d^0) = 0$ and
+    $\mathrm{coker}(d^0)$ has an $A$-basis $\{x_0^{-1}x_1^{d+1}, x_0^{-2}x_1^{d+2}, \dots, x_0^{d+1}x_1^{-1}\}$
+    of rank $-d-1$. Higher terms $\check{C}^p = 0$ for $p \ge 2$, so $H^i = 0$ for all $i \ge 2$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.a: compute the cohomology groups $h^i(\mathbb{p}_a^1, \mathcal{o}_{\mathbb{p}_a^1}(d))$
+    for all $i \ge 0$ and all $d \in \mathbb{z}$ using the standard affine open cover $\mathcal{u} = \{d_+(x_0),
+    d_+(x_1)\}$ the čech complex is $a[x_1/x_0] \oplus a[x_0/x_1] \xrightarrow{d^0} a[x_0/x_1, x_1/x_0]$
+    where $d^0(f, g) = g - f$. for $\mathcal{o}(d)$, identifying sections on the overlap yields $d^0(x_1^a
+    x_0^{d-a}, x_0^b x_1^{d-b}) = x_0^b x_1^{d-b} - x_1^a x_0^{d-a}$. if $d \ge 0$, $\ker(d^0)$ is the
+    free $a$-module generated by monomials $\{x_0^d, x_0^{d-1}x_1, \dots, x_1^d\}$ of rank $d+1$, and
+    $\mathrm{coker}(d^0) = 0$. if $d = -1$, $\ker(d^0) = 0$ and $\mathrm{coker}(d^0) = 0$. if $d \le -2$,
+    $\ker(d^0) = 0$ and $\mathrm{coker}(d^0)$ has an $a$-basis $\{x_0^{-1}x_1^{d+1}, x_0^{-2}x_1^{d+2},
+    \dots, x_0^{d+1}x_1^{-1}\}$ of rank $-d-1$. higher terms $\check{c}^p = 0$ for $p \ge 2$, so $h^i
+    = 0$ for all $i \ge 2$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#007
+  text: 'Exercise 18.3.B: Show that the Čech complex for $\mathcal{O}_{\mathbb{P}_A^n}(d)$ with respect
+    to the standard affine cover $\mathcal{U} = \{D_+(x_0), \dots, D_+(x_n)\}$ decomposes as a direct
+    sum of subcomplexes indexed by the weight vector $\vec{e} = (e_0, \dots, e_n) \in \mathbb{Z}^{n+1}$
+    with $\sum e_i = d$'
+  hint: The Čech differential $d^p(s)_{i_0 \dots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j s_{i_0 \dots \widehat{i_j}
+    \dots i_{p+1}}$ is linear and preserves the monomial degree in each variable $x_i$ individually. Thus,
+    if a section $s$ is a linear combination of monomials $x_0^{e_0} \cdots x_n^{e_n}$, the differential
+    $d(s)$ involves only terms with the exact same exponent vector $\vec{e}$, splitting the complex into
+    $\check{C}^\bullet(\mathcal{U}, \mathcal{O}(d)) = \bigoplus_{\sum e_i = d} \check{C}^\bullet(\vec{e})$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.b: show that the čech complex for $\mathcal{o}_{\mathbb{p}_a^n}(d)$ with
+    respect to the standard affine cover $\mathcal{u} = \{d_+(x_0), \dots, d_+(x_n)\}$ decomposes as a
+    direct sum of subcomplexes indexed by the weight vector $\vec{e} = (e_0, \dots, e_n) \in \mathbb{z}^{n+1}$
+    with $\sum e_i = d$ the čech differential $d^p(s)_{i_0 \dots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j s_{i_0
+    \dots \widehat{i_j} \dots i_{p+1}}$ is linear and preserves the monomial degree in each variable $x_i$
+    individually. thus, if a section $s$ is a linear combination of monomials $x_0^{e_0} \cdots x_n^{e_n}$,
+    the differential $d(s)$ involves only terms with the exact same exponent vector $\vec{e}$, splitting
+    the complex into $\check{c}^\bullet(\mathcal{u}, \mathcal{o}(d)) = \bigoplus_{\sum e_i = d} \check{c}^\bullet(\vec{e})$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#008
+  text: 'Exercise 18.3.C: For a weight vector $\vec{e} = (e_0, \dots, e_n)$, let $\mathrm{NEG}(\vec{e})
+    = \{i \mid e_i < 0\}$. Show that if $\mathrm{NEG}(\vec{e}) = \emptyset$, then the subcomplex $\check{C}^\bullet(\vec{e})$
+    has $H^0 = A \cdot x^{\vec{e}}$ and $H^i = 0$ for all $i > 0$'
+  hint: When $\mathrm{NEG}(\vec{e}) = \emptyset$, all $e_i \ge 0$, so the monomial $x^{\vec{e}}$ is defined
+    on every open set $D_+(x_i)$ without denominators. The subcomplex $\check{C}^\bullet(\vec{e})$ is
+    isomorphic to the standard simplicial chain complex of an $n$-simplex $\Delta^n$ with coefficients
+    in $A$, which is contractible; hence $H^0 \cong A$ and $H^i = 0$ for $i > 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.c: for a weight vector $\vec{e} = (e_0, \dots, e_n)$, let $\mathrm{neg}(\vec{e})
+    = \{i \mid e_i < 0\}$. show that if $\mathrm{neg}(\vec{e}) = \emptyset$, then the subcomplex $\check{c}^\bullet(\vec{e})$
+    has $h^0 = a \cdot x^{\vec{e}}$ and $h^i = 0$ for all $i > 0$ when $\mathrm{neg}(\vec{e}) = \emptyset$,
+    all $e_i \ge 0$, so the monomial $x^{\vec{e}}$ is defined on every open set $d_+(x_i)$ without denominators.
+    the subcomplex $\check{c}^\bullet(\vec{e})$ is isomorphic to the standard simplicial chain complex
+    of an $n$-simplex $\delta^n$ with coefficients in $a$, which is contractible; hence $h^0 \cong a$
+    and $h^i = 0$ for $i > 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#009
+  text: 'Exercise 18.3.D: Show that if $\mathrm{NEG}(\vec{e}) = \{0, 1, \dots, n\}$, then the subcomplex
+    $\check{C}^\bullet(\vec{e})$ has $H^n = A \cdot x^{\vec{e}}$ and $H^i = 0$ for all $i < n$'
+  hint: When all $e_i < 0$, the monomial $x^{\vec{e}}$ requires all variables $x_0, \dots, x_n$ in the
+    denominator to be regular; it exists only on the $(n+1)$-fold intersection $D_+(x_0 \cdots x_n) =
+    U_{01\dots n}$. Therefore, $\check{C}^p(\vec{e}) = 0$ for all $p < n$, and $\check{C}^n(\vec{e}) =
+    A \cdot x^{\vec{e}}$. The differential into $\check{C}^n$ is 0 and there are no higher terms, giving
+    $H^n \cong A$ and $H^i = 0$ for $i < n$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.d: show that if $\mathrm{neg}(\vec{e}) = \{0, 1, \dots, n\}$, then the subcomplex
+    $\check{c}^\bullet(\vec{e})$ has $h^n = a \cdot x^{\vec{e}}$ and $h^i = 0$ for all $i < n$ when all
+    $e_i < 0$, the monomial $x^{\vec{e}}$ requires all variables $x_0, \dots, x_n$ in the denominator
+    to be regular; it exists only on the $(n+1)$-fold intersection $d_+(x_0 \cdots x_n) = u_{01\dots n}$.
+    therefore, $\check{c}^p(\vec{e}) = 0$ for all $p < n$, and $\check{c}^n(\vec{e}) = a \cdot x^{\vec{e}}$.
+    the differential into $\check{c}^n$ is 0 and there are no higher terms, giving $h^n \cong a$ and $h^i
+    = 0$ for $i < n$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#010
+  text: 'Exercise 18.3.E: Show that if $\emptyset \subsetneq \mathrm{NEG}(\vec{e}) \subsetneq \{0, 1,
+    \dots, n\}$, then the subcomplex $\check{C}^\bullet(\vec{e})$ is acyclic ($H^i = 0$ for all $i$)'
+  hint: 'Choose an index $j \notin \mathrm{NEG}(\vec{e})$, so $e_j \ge 0$. Define a homotopy operator
+    $h \colon \check{C}^{p+1}(\vec{e}) \to \check{C}^p(\vec{e})$ by inserting the index $j$: $(h s)_{i_0
+    \dots i_p} = s_{j i_0 \dots i_p}$ if $j \notin \{i_0, \dots, i_p\}$, and $(h s)_{i_0 \dots i_p} =
+    0$ if $j \in \{i_0, \dots, i_p\}$. A direct calculation using the simplicial boundary identities verifies
+    $d h + h d = \mathrm{id}$, proving that $\check{C}^\bullet(\vec{e})$ is contractible and all its cohomology
+    vanishes.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.e: show that if $\emptyset \subsetneq \mathrm{neg}(\vec{e}) \subsetneq \{0,
+    1, \dots, n\}$, then the subcomplex $\check{c}^\bullet(\vec{e})$ is acyclic ($h^i = 0$ for all $i$)
+    choose an index $j \notin \mathrm{neg}(\vec{e})$, so $e_j \ge 0$. define a homotopy operator $h \colon
+    \check{c}^{p+1}(\vec{e}) \to \check{c}^p(\vec{e})$ by inserting the index $j$: $(h s)_{i_0 \dots i_p}
+    = s_{j i_0 \dots i_p}$ if $j \notin \{i_0, \dots, i_p\}$, and $(h s)_{i_0 \dots i_p} = 0$ if $j \in
+    \{i_0, \dots, i_p\}$. a direct calculation using the simplicial boundary identities verifies $d h
+    + h d = \mathrm{id}$, proving that $\check{c}^\bullet(\vec{e})$ is contractible and all its cohomology
+    vanishes.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#011
+  text: 'Exercise 18.3.F: Combine the above results to write down the complete cohomology $H^i(\mathbb{P}_A^n,
+    \mathcal{O}_{\mathbb{P}_A^n}(d))$ for all $i$ and all $d$'
+  hint: (1) $H^0(\mathbb{P}_A^n, \mathcal{O}(d)) \cong A[x_0, \dots, x_n]_d$, which is a free $A$-module
+    of rank $\binom{n+d}{n}$ for $d \ge 0$, and $0$ for $d < 0$; (2) $H^i(\mathbb{P}_A^n, \mathcal{O}(d))
+    = 0$ for all $0 < i < n$ and all $d \in \mathbb{Z}$; (3) $H^n(\mathbb{P}_A^n, \mathcal{O}(d)) \cong
+    \mathrm{Hom}_A(A[x_0, \dots, x_n]_{-n-1-d}, A)$, which is a free $A$-module of rank $\binom{-d-1}{n}$
+    for $d \le -n-1$, and $0$ for $d \ge -n$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.3.f: combine the above results to write down the complete cohomology $h^i(\mathbb{p}_a^n,
+    \mathcal{o}_{\mathbb{p}_a^n}(d))$ for all $i$ and all $d$ (1) $h^0(\mathbb{p}_a^n, \mathcal{o}(d))
+    \cong a[x_0, \dots, x_n]_d$, which is a free $a$-module of rank $\binom{n+d}{n}$ for $d \ge 0$, and
+    $0$ for $d < 0$; (2) $h^i(\mathbb{p}_a^n, \mathcal{o}(d)) = 0$ for all $0 < i < n$ and all $d \in
+    \mathbb{z}$; (3) $h^n(\mathbb{p}_a^n, \mathcal{o}(d)) \cong \mathrm{hom}_a(a[x_0, \dots, x_n]_{-n-1-d},
+    a)$, which is a free $a$-module of rank $\binom{-d-1}{n}$ for $d \le -n-1$, and $0$ for $d \ge -n$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#012
+  text: 'Exercise 18.4.A: Show that the Euler characteristic $\chi(X, \mathcal{F}) = \sum_{i=0}^{\dim
+    X} (-1)^i \dim_k H^i(X, \mathcal{F})$ is additive on short exact sequences of coherent sheaves on
+    a projective scheme $X$ over a field $k$'
+  hint: For $0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F}'' \to 0$, the long exact sequence in cohomology
+    $0 \to H^0(\mathcal{F}') \to H^0(\mathcal{F}) \to H^0(\mathcal{F}'') \to H^1(\mathcal{F}') \to \dots
+    \to H^n(\mathcal{F}'') \to 0$ is a finite-length exact sequence of finite-dimensional $k$-vector spaces.
+    The alternating sum of dimensions of any finite exact sequence of vector spaces is identically zero,
+    which immediately yields $\chi(X, \mathcal{F}) = \chi(X, \mathcal{F}') + \chi(X, \mathcal{F}'')$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.a: show that the euler characteristic $\chi(x, \mathcal{f}) = \sum_{i=0}^{\dim
+    x} (-1)^i \dim_k h^i(x, \mathcal{f})$ is additive on short exact sequences of coherent sheaves on
+    a projective scheme $x$ over a field $k$ for $0 \to \mathcal{f}'' \to \mathcal{f} \to \mathcal{f}''''
+    \to 0$, the long exact sequence in cohomology $0 \to h^0(\mathcal{f}'') \to h^0(\mathcal{f}) \to h^0(\mathcal{f}'''')
+    \to h^1(\mathcal{f}'') \to \dots \to h^n(\mathcal{f}'''') \to 0$ is a finite-length exact sequence
+    of finite-dimensional $k$-vector spaces. the alternating sum of dimensions of any finite exact sequence
+    of vector spaces is identically zero, which immediately yields $\chi(x, \mathcal{f}) = \chi(x, \mathcal{f}'')
+    + \chi(x, \mathcal{f}'''')$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#013
+  text: 'Exercise 18.4.B: Compute the Euler characteristic $\chi(\mathbb{P}_k^2, \mathcal{O}_C)$ and the
+    arithmetic genus $p_a(C)$ of a smooth plane curve $C \subset \mathbb{P}_k^2$ of degree $d$'
+  hint: The ideal sheaf sequence is $0 \to \mathcal{O}_{\mathbb{P}^2}(-d) \to \mathcal{O}_{\mathbb{P}^2}
+    \to \mathcal{O}_C \to 0$. By additivity, $\chi(C, \mathcal{O}_C) = \chi(\mathbb{P}^2, \mathcal{O})
+    - \chi(\mathbb{P}^2, \mathcal{O}(-d)) = 1 - \binom{-d+2}{2} = 1 - \frac{(d-1)(d-2)}{2}$. Since $p_a(C)
+    = 1 - \chi(C, \mathcal{O}_C)$ for a curve, $p_a(C) = \frac{(d-1)(d-2)}{2}$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.b: compute the euler characteristic $\chi(\mathbb{p}_k^2, \mathcal{o}_c)$
+    and the arithmetic genus $p_a(c)$ of a smooth plane curve $c \subset \mathbb{p}_k^2$ of degree $d$
+    the ideal sheaf sequence is $0 \to \mathcal{o}_{\mathbb{p}^2}(-d) \to \mathcal{o}_{\mathbb{p}^2} \to
+    \mathcal{o}_c \to 0$. by additivity, $\chi(c, \mathcal{o}_c) = \chi(\mathbb{p}^2, \mathcal{o}) - \chi(\mathbb{p}^2,
+    \mathcal{o}(-d)) = 1 - \binom{-d+2}{2} = 1 - \frac{(d-1)(d-2)}{2}$. since $p_a(c) = 1 - \chi(c, \mathcal{o}_c)$
+    for a curve, $p_a(c) = \frac{(d-1)(d-2)}{2}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#014
+  text: 'Exercise 18.4.C: Compute the arithmetic genus $p_a(C)$ of a complete intersection curve $C =
+    V(f_1, f_2) \subset \mathbb{P}_k^3$ of degrees $d_1$ and $d_2$'
+  hint: Resolve $\mathcal{O}_C$ via the Koszul complex $0 \to \mathcal{O}(-d_1-d_2) \to \mathcal{O}(-d_1)
+    \oplus \mathcal{O}(-d_2) \to \mathcal{O}_{\mathbb{P}^3} \to \mathcal{O}_C \to 0$. Taking Euler characteristics
+    yields $\chi(C, \mathcal{O}_C) = \chi(\mathcal{O}) - \chi(\mathcal{O}(-d_1)) - \chi(\mathcal{O}(-d_2))
+    + \chi(\mathcal{O}(-d_1-d_2)) = 1 - \binom{-d_1+3}{3} - \binom{-d_2+3}{3} + \binom{-d_1-d_2+3}{3}
+    = 1 - \frac{1}{2} d_1 d_2 (d_1 + d_2 - 4)$. Thus $p_a(C) = 1 - \chi(C, \mathcal{O}_C) = \frac{1}{2}
+    d_1 d_2 (d_1 + d_2 - 4) + 1$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.c: compute the arithmetic genus $p_a(c)$ of a complete intersection curve
+    $c = v(f_1, f_2) \subset \mathbb{p}_k^3$ of degrees $d_1$ and $d_2$ resolve $\mathcal{o}_c$ via the
+    koszul complex $0 \to \mathcal{o}(-d_1-d_2) \to \mathcal{o}(-d_1) \oplus \mathcal{o}(-d_2) \to \mathcal{o}_{\mathbb{p}^3}
+    \to \mathcal{o}_c \to 0$. taking euler characteristics yields $\chi(c, \mathcal{o}_c) = \chi(\mathcal{o})
+    - \chi(\mathcal{o}(-d_1)) - \chi(\mathcal{o}(-d_2)) + \chi(\mathcal{o}(-d_1-d_2)) = 1 - \binom{-d_1+3}{3}
+    - \binom{-d_2+3}{3} + \binom{-d_1-d_2+3}{3} = 1 - \frac{1}{2} d_1 d_2 (d_1 + d_2 - 4)$. thus $p_a(c)
+    = 1 - \chi(c, \mathcal{o}_c) = \frac{1}{2} d_1 d_2 (d_1 + d_2 - 4) + 1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#015
+  text: 'Exercise 18.4.D: Show that for any line bundles $\mathcal{L}_1, \mathcal{L}_2$ on an integral
+    projective curve $C$ over $k$, the degree satisfies $\deg(\mathcal{L}_1 \otimes \mathcal{L}_2) = \deg(\mathcal{L}_1)
+    + \deg(\mathcal{L}_2)$'
+  hint: Represent $\mathcal{L}_1 \cong \mathcal{O}_C(D)$ as a difference of effective Cartier divisors
+    supported at smooth points. Using the short exact sequence $0 \to \mathcal{L}_2(-p) \to \mathcal{L}_2
+    \to \kappa(p) \to 0$ for a smooth point $p$, we have $\chi(C, \mathcal{L}_2) - \chi(C, \mathcal{L}_2(-p))
+    = \dim_k \kappa(p) = \deg(p)$. Summing over the points in the support of $D$ gives $\chi(C, \mathcal{L}_1
+    \otimes \mathcal{L}_2) = \chi(C, \mathcal{L}_2) + \deg(\mathcal{L}_1) = \chi(C, \mathcal{O}_C) + \deg(\mathcal{L}_2)
+    + \deg(\mathcal{L}_1)$, which implies $\deg(\mathcal{L}_1 \otimes \mathcal{L}_2) = \deg(\mathcal{L}_1)
+    + \deg(\mathcal{L}_2)$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.d: show that for any line bundles $\mathcal{l}_1, \mathcal{l}_2$ on an integral
+    projective curve $c$ over $k$, the degree satisfies $\deg(\mathcal{l}_1 \otimes \mathcal{l}_2) = \deg(\mathcal{l}_1)
+    + \deg(\mathcal{l}_2)$ represent $\mathcal{l}_1 \cong \mathcal{o}_c(d)$ as a difference of effective
+    cartier divisors supported at smooth points. using the short exact sequence $0 \to \mathcal{l}_2(-p)
+    \to \mathcal{l}_2 \to \kappa(p) \to 0$ for a smooth point $p$, we have $\chi(c, \mathcal{l}_2) - \chi(c,
+    \mathcal{l}_2(-p)) = \dim_k \kappa(p) = \deg(p)$. summing over the points in the support of $d$ gives
+    $\chi(c, \mathcal{l}_1 \otimes \mathcal{l}_2) = \chi(c, \mathcal{l}_2) + \deg(\mathcal{l}_1) = \chi(c,
+    \mathcal{o}_c) + \deg(\mathcal{l}_2) + \deg(\mathcal{l}_1)$, which implies $\deg(\mathcal{l}_1 \otimes
+    \mathcal{l}_2) = \deg(\mathcal{l}_1) + \deg(\mathcal{l}_2)$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#016
+  text: 'Exercise 18.4.E: State the Riemann-Roch formula for a coherent sheaf $\mathcal{F}$ of rank $r$
+    on a smooth projective curve $C$ of genus $g$'
+  hint: $\chi(C, \mathcal{F}) = \deg(\mathcal{F}) + r(1 - g) = \deg(\mathcal{F}) + r \chi(C, \mathcal{O}_C)$,
+    where $\deg(\mathcal{F}) = \deg(\det \mathcal{F})$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.e: state the riemann-roch formula for a coherent sheaf $\mathcal{f}$ of
+    rank $r$ on a smooth projective curve $c$ of genus $g$ $\chi(c, \mathcal{f}) = \deg(\mathcal{f}) +
+    r(1 - g) = \deg(\mathcal{f}) + r \chi(c, \mathcal{o}_c)$, where $\deg(\mathcal{f}) = \deg(\det \mathcal{f})$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#017
+  text: 'Exercise 18.4.F: Prove that if $C$ is a smooth projective curve over an algebraically closed
+    field $k$ and $\mathcal{L}$ is a line bundle with $\deg(\mathcal{L}) < 0$, then $H^0(C, \mathcal{L})
+    = 0$'
+  hint: If there exists a non-zero section $s \in H^0(C, \mathcal{L})$, its vanishing locus defines an
+    effective Cartier divisor $D = \mathrm{div}(s) \ge 0$. Then $\mathcal{L} \cong \mathcal{O}_C(D)$,
+    which implies $\deg(\mathcal{L}) = \deg(D) = \sum n_i \ge 0$, contradicting the assumption $\deg(\mathcal{L})
+    < 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.f: prove that if $c$ is a smooth projective curve over an algebraically
+    closed field $k$ and $\mathcal{l}$ is a line bundle with $\deg(\mathcal{l}) < 0$, then $h^0(c, \mathcal{l})
+    = 0$ if there exists a non-zero section $s \in h^0(c, \mathcal{l})$, its vanishing locus defines an
+    effective cartier divisor $d = \mathrm{div}(s) \ge 0$. then $\mathcal{l} \cong \mathcal{o}_c(d)$,
+    which implies $\deg(\mathcal{l}) = \deg(d) = \sum n_i \ge 0$, contradicting the assumption $\deg(\mathcal{l})
+    < 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#018
+  text: 'Exercise 18.4.G: Show that if $C$ is a smooth projective curve of genus $g$ and $\deg(\mathcal{L})
+    > 2g - 2$, then $H^1(C, \mathcal{L}) = 0$'
+  hint: By Serre duality for curves, $H^1(C, \mathcal{L})^\vee \cong H^0(C, \omega_C \otimes \mathcal{L}^\vee)$.
+    The canonical bundle $\omega_C$ has degree $2g - 2$, so $\deg(\omega_C \otimes \mathcal{L}^\vee) =
+    (2g - 2) - \deg(\mathcal{L}) < 0$. By Exercise 18.4.F, $H^0(C, \omega_C \otimes \mathcal{L}^\vee)
+    = 0$, which forces $H^1(C, \mathcal{L}) = 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.g: show that if $c$ is a smooth projective curve of genus $g$ and $\deg(\mathcal{l})
+    > 2g - 2$, then $h^1(c, \mathcal{l}) = 0$ by serre duality for curves, $h^1(c, \mathcal{l})^\vee \cong
+    h^0(c, \omega_c \otimes \mathcal{l}^\vee)$. the canonical bundle $\omega_c$ has degree $2g - 2$, so
+    $\deg(\omega_c \otimes \mathcal{l}^\vee) = (2g - 2) - \deg(\mathcal{l}) < 0$. by exercise 18.4.f,
+    $h^0(c, \omega_c \otimes \mathcal{l}^\vee) = 0$, which forces $h^1(c, \mathcal{l}) = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#019
+  text: 'Exercise 18.4.H: Show that for any line bundle $\mathcal{L}$ of degree $d > 2g - 2$ on a smooth
+    projective curve $C$ of genus $g$, $\dim_k H^0(C, \mathcal{L}) = d + 1 - g$'
+  hint: By Riemann-Roch, $\dim H^0(C, \mathcal{L}) - \dim H^1(C, \mathcal{L}) = d + 1 - g$. Since $d >
+    2g - 2$, Exercise 18.4.G implies $H^1(C, \mathcal{L}) = 0$, directly yielding $\dim H^0(C, \mathcal{L})
+    = d + 1 - g$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.h: show that for any line bundle $\mathcal{l}$ of degree $d > 2g - 2$ on
+    a smooth projective curve $c$ of genus $g$, $\dim_k h^0(c, \mathcal{l}) = d + 1 - g$ by riemann-roch,
+    $\dim h^0(c, \mathcal{l}) - \dim h^1(c, \mathcal{l}) = d + 1 - g$. since $d > 2g - 2$, exercise 18.4.g
+    implies $h^1(c, \mathcal{l}) = 0$, directly yielding $\dim h^0(c, \mathcal{l}) = d + 1 - g$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#020
+  text: 'Exercise 18.4.I: Compute the dimension of $H^0(\mathbb{P}_k^1, \mathcal{O}(d))$ directly using
+    Riemann-Roch'
+  hint: On $\mathbb{P}^1$, the genus is $g = 0$ and $\deg(\mathcal{O}(d)) = d$. For $d \ge 0 > 2(0) -
+    2 = -2$, Riemann-Roch gives $\dim H^0(\mathbb{P}^1, \mathcal{O}(d)) = d + 1 - 0 = d + 1$, matching
+    the count of degree-$d$ binary forms.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.i: compute the dimension of $h^0(\mathbb{p}_k^1, \mathcal{o}(d))$ directly
+    using riemann-roch on $\mathbb{p}^1$, the genus is $g = 0$ and $\deg(\mathcal{o}(d)) = d$. for $d
+    \ge 0 > 2(0) - 2 = -2$, riemann-roch gives $\dim h^0(\mathbb{p}^1, \mathcal{o}(d)) = d + 1 - 0 = d
+    + 1$, matching the count of degree-$d$ binary forms.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#021
+  text: 'Exercise 18.4.J: Show that on an elliptic curve $E$ (genus $g=1$), $\dim_k H^0(E, \mathcal{O}_E(d
+    \cdot p)) = d$ for any point $p \in E$ and any integer $d \ge 1$'
+  hint: For $g=1$, $2g - 2 = 0$. For $d \ge 1 > 0$, Exercise 18.4.H applies, giving $\dim H^0(E, \mathcal{O}_E(d
+    \cdot p)) = d + 1 - 1 = d$. For $d=1$, $H^0(E, \mathcal{O}(p)) = k \cdot 1$ has dimension 1; for $d=2$,
+    basis $\{1, x\}$ (dimension 2); for $d=3$, basis $\{1, x, y\}$ (dimension 3), leading to the Weierstrass
+    equation.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.j: show that on an elliptic curve $e$ (genus $g=1$), $\dim_k h^0(e, \mathcal{o}_e(d
+    \cdot p)) = d$ for any point $p \in e$ and any integer $d \ge 1$ for $g=1$, $2g - 2 = 0$. for $d \ge
+    1 > 0$, exercise 18.4.h applies, giving $\dim h^0(e, \mathcal{o}_e(d \cdot p)) = d + 1 - 1 = d$. for
+    $d=1$, $h^0(e, \mathcal{o}(p)) = k \cdot 1$ has dimension 1; for $d=2$, basis $\{1, x\}$ (dimension
+    2); for $d=3$, basis $\{1, x, y\}$ (dimension 3), leading to the weierstrass equation.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#022
+  text: 'Exercise 18.4.K: Show that every smooth projective curve of genus $0$ over an algebraically closed
+    field $k$ is isomorphic to $\mathbb{P}_k^1$'
+  hint: Let $C$ be a smooth curve of genus $g = 0$ and choose a closed point $p \in C$. The line bundle
+    $\mathcal{L} = \mathcal{O}_C(p)$ has degree $\deg(\mathcal{L}) = 1 > 2(0) - 2 = -2$, so by Riemann-Roch
+    $\dim H^0(C, \mathcal{L}) = 1 + 1 - 0 = 2$. A basis $\{1, f\}$ of $H^0(C, \mathcal{L})$ defines a
+    non-constant morphism $f \colon C \to \mathbb{P}^1$ of degree $\deg(\mathcal{L}) = 1$, which is an
+    isomorphism.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.k: show that every smooth projective curve of genus $0$ over an algebraically
+    closed field $k$ is isomorphic to $\mathbb{p}_k^1$ let $c$ be a smooth curve of genus $g = 0$ and
+    choose a closed point $p \in c$. the line bundle $\mathcal{l} = \mathcal{o}_c(p)$ has degree $\deg(\mathcal{l})
+    = 1 > 2(0) - 2 = -2$, so by riemann-roch $\dim h^0(c, \mathcal{l}) = 1 + 1 - 0 = 2$. a basis $\{1,
+    f\}$ of $h^0(c, \mathcal{l})$ defines a non-constant morphism $f \colon c \to \mathbb{p}^1$ of degree
+    $\deg(\mathcal{l}) = 1$, which is an isomorphism.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#023
+  text: 'Exercise 18.4.L: Show that if $C$ is a smooth curve of genus $1$ and $p \in C(k)$, the linear
+    system $|\mathcal{O}_C(3p)|$ defines a closed embedding of $C$ as a smooth cubic in $\mathbb{P}_k^2$'
+  hint: By Exercise 18.4.J, $\dim H^0(C, \mathcal{O}(3p)) = 3$, with basis $\{1, x, y\}$ where $x$ has
+    a pole of order 2 at $p$ and $y$ has a pole of order 3 at $p$. The 7 monomials $\{1, x, y, x^2, xy,
+    x^3, y^2\}$ in $H^0(C, \mathcal{O}(6p))$ live in a 6-dimensional vector space, forcing a linear relation
+    $y^2 + a_1 xy + a_3 y = x^3 + a_2 x^2 + a_4 x + a_6$, which defines an embedding into $\mathbb{P}^2$
+    as a non-singular cubic curve.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.l: show that if $c$ is a smooth curve of genus $1$ and $p \in c(k)$, the
+    linear system $|\mathcal{o}_c(3p)|$ defines a closed embedding of $c$ as a smooth cubic in $\mathbb{p}_k^2$
+    by exercise 18.4.j, $\dim h^0(c, \mathcal{o}(3p)) = 3$, with basis $\{1, x, y\}$ where $x$ has a pole
+    of order 2 at $p$ and $y$ has a pole of order 3 at $p$. the 7 monomials $\{1, x, y, x^2, xy, x^3,
+    y^2\}$ in $h^0(c, \mathcal{o}(6p))$ live in a 6-dimensional vector space, forcing a linear relation
+    $y^2 + a_1 xy + a_3 y = x^3 + a_2 x^2 + a_4 x + a_6$, which defines an embedding into $\mathbb{p}^2$
+    as a non-singular cubic curve.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#024
+  text: 'Exercise 18.4.M: Show that if $C$ is a smooth curve of genus $2$, the canonical linear system
+    $|\omega_C|$ defines a degree-2 morphism $\pi \colon C \to \mathbb{P}_k^1$ branched at 6 points (a
+    hyperelliptic curve)'
+  hint: On a curve of genus 2, $\deg(\omega_C) = 2(2) - 2 = 2$ and $\dim H^0(C, \omega_C) = g = 2$. The
+    two independent global differentials $\{x_0, x_1\}$ span a basepoint-free linear system defining a
+    morphism $C \to \mathbb{P}^1$ of degree $\deg(\omega_C) = 2$. By the Riemann-Hurwitz formula, $2g(C)
+    - 2 = 2(2g(\mathbb{P}^1) - 2) + \deg(R) \implies 2 = 2(-2) + \deg(R) \implies \deg(R) = 6$, so $\pi$
+    is branched over exactly 6 points.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.m: show that if $c$ is a smooth curve of genus $2$, the canonical linear
+    system $|\omega_c|$ defines a degree-2 morphism $\pi \colon c \to \mathbb{p}_k^1$ branched at 6 points
+    (a hyperelliptic curve) on a curve of genus 2, $\deg(\omega_c) = 2(2) - 2 = 2$ and $\dim h^0(c, \omega_c)
+    = g = 2$. the two independent global differentials $\{x_0, x_1\}$ span a basepoint-free linear system
+    defining a morphism $c \to \mathbb{p}^1$ of degree $\deg(\omega_c) = 2$. by the riemann-hurwitz formula,
+    $2g(c) - 2 = 2(2g(\mathbb{p}^1) - 2) + \deg(r) \implies 2 = 2(-2) + \deg(r) \implies \deg(r) = 6$,
+    so $\pi$ is branched over exactly 6 points.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#025
+  text: 'Exercise 18.4.N: Show that for a degree-$d$ plane curve $C \subset \mathbb{P}^2$, the canonical
+    bundle is $\omega_C \cong \mathcal{O}_C(d-3)$'
+  hint: By the Adjunction Formula, $\omega_C \cong \omega_{\mathbb{P}^2} \otimes \mathcal{N}_{C/\mathbb{P}^2}
+    \cong \mathcal{O}_{\mathbb{P}^2}(-3) \otimes \mathcal{O}_{\mathbb{P}^2}(d)|_C \cong \mathcal{O}_C(d-3)$.
+    Thus $\deg(\omega_C) = d(d-3) = 2g - 2$, which confirms $g = \frac{(d-1)(d-2)}{2}$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.n: show that for a degree-$d$ plane curve $c \subset \mathbb{p}^2$, the
+    canonical bundle is $\omega_c \cong \mathcal{o}_c(d-3)$ by the adjunction formula, $\omega_c \cong
+    \omega_{\mathbb{p}^2} \otimes \mathcal{n}_{c/\mathbb{p}^2} \cong \mathcal{o}_{\mathbb{p}^2}(-3) \otimes
+    \mathcal{o}_{\mathbb{p}^2}(d)|_c \cong \mathcal{o}_c(d-3)$. thus $\deg(\omega_c) = d(d-3) = 2g - 2$,
+    which confirms $g = \frac{(d-1)(d-2)}{2}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#026
+  text: 'Exercise 18.4.O: Show that a smooth plane curve $C \subset \mathbb{P}_k^2$ of degree $d \ge 4$
+    is never hyperelliptic (its canonical map is a closed embedding)'
+  hint: For $d \ge 4$, $\omega_C \cong \mathcal{O}_C(d-3)$ is very ample because $d-3 \ge 1$ and $\mathcal{O}_{\mathbb{P}^2}(1)|_C$
+    is very ample, so the canonical map is the restriction of the Veronese embedding of $\mathbb{P}^2$,
+    which is an immersion; hyperelliptic curves have a degree-2 non-injective canonical map.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.o: show that a smooth plane curve $c \subset \mathbb{p}_k^2$ of degree $d
+    \ge 4$ is never hyperelliptic (its canonical map is a closed embedding) for $d \ge 4$, $\omega_c \cong
+    \mathcal{o}_c(d-3)$ is very ample because $d-3 \ge 1$ and $\mathcal{o}_{\mathbb{p}^2}(1)|_c$ is very
+    ample, so the canonical map is the restriction of the veronese embedding of $\mathbb{p}^2$, which
+    is an immersion; hyperelliptic curves have a degree-2 non-injective canonical map.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#027
+  text: 'Exercise 18.4.P: Compute the arithmetic genus of the union of two smooth projective curves $C_1,
+    C_2 \subset X$ meeting transversally at $k$ points'
+  hint: The ideal sheaves satisfy $0 \to \mathcal{O}_{C_1 \cup C_2} \to \mathcal{O}_{C_1} \oplus \mathcal{O}_{C_2}
+    \to \mathcal{O}_{C_1 \cap C_2} \to 0$. Since $C_1 \cap C_2$ consists of $k$ reduced points, $\chi(\mathcal{O}_{C_1
+    \cap C_2}) = k$. By additivity of $\chi$, $\chi(\mathcal{O}_{C_1 \cup C_2}) = \chi(\mathcal{O}_{C_1})
+    + \chi(\mathcal{O}_{C_2}) - k = (1 - g_1) + (1 - g_2) - k = 1 - (g_1 + g_2 + k - 1)$, so $p_a(C_1
+    \cup C_2) = g_1 + g_2 + k - 1$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.p: compute the arithmetic genus of the union of two smooth projective curves
+    $c_1, c_2 \subset x$ meeting transversally at $k$ points the ideal sheaves satisfy $0 \to \mathcal{o}_{c_1
+    \cup c_2} \to \mathcal{o}_{c_1} \oplus \mathcal{o}_{c_2} \to \mathcal{o}_{c_1 \cap c_2} \to 0$. since
+    $c_1 \cap c_2$ consists of $k$ reduced points, $\chi(\mathcal{o}_{c_1 \cap c_2}) = k$. by additivity
+    of $\chi$, $\chi(\mathcal{o}_{c_1 \cup c_2}) = \chi(\mathcal{o}_{c_1}) + \chi(\mathcal{o}_{c_2}) -
+    k = (1 - g_1) + (1 - g_2) - k = 1 - (g_1 + g_2 + k - 1)$, so $p_a(c_1 \cup c_2) = g_1 + g_2 + k -
+    1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#028
+  text: 'Exercise 18.4.Q: Compute the arithmetic genus of a nodal plane cubic $C \subset \mathbb{P}_k^2$'
+  hint: 'Since $C$ has degree $d = 3$, its arithmetic genus depends only on its Hilbert polynomial: $p_a(C)
+    = \frac{(3-1)(3-2)}{2} = 1$. Its normalization $\widetilde{C} \cong \mathbb{P}^1$ has geometric genus
+    $g(\widetilde{C}) = 0$, and the formula $p_a(C) = g(\widetilde{C}) + \sum \delta_p$ gives $1 = 0 +
+    1$, confirming a single node of delta-invariant $\delta = 1$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.q: compute the arithmetic genus of a nodal plane cubic $c \subset \mathbb{p}_k^2$
+    since $c$ has degree $d = 3$, its arithmetic genus depends only on its hilbert polynomial: $p_a(c)
+    = \frac{(3-1)(3-2)}{2} = 1$. its normalization $\widetilde{c} \cong \mathbb{p}^1$ has geometric genus
+    $g(\widetilde{c}) = 0$, and the formula $p_a(c) = g(\widetilde{c}) + \sum \delta_p$ gives $1 = 0 +
+    1$, confirming a single node of delta-invariant $\delta = 1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#029
+  text: 'Exercise 18.4.R: Compute the arithmetic genus of a cuspidal plane cubic $C \subset \mathbb{P}_k^2$'
+  hint: Like the nodal cubic, $C$ is a plane curve of degree $d = 3$, so $p_a(C) = \frac{(3-1)(3-2)}{2}
+    = 1$. The normalization is $\mathbb{P}^1$ with $g = 0$, and the single cusp has $\delta = 1$, so $p_a(C)
+    = 0 + 1 = 1$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.r: compute the arithmetic genus of a cuspidal plane cubic $c \subset \mathbb{p}_k^2$
+    like the nodal cubic, $c$ is a plane curve of degree $d = 3$, so $p_a(c) = \frac{(3-1)(3-2)}{2} =
+    1$. the normalization is $\mathbb{p}^1$ with $g = 0$, and the single cusp has $\delta = 1$, so $p_a(c)
+    = 0 + 1 = 1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#030
+  text: 'Exercise 18.5.A: State Serre duality for a smooth projective variety $X$ of dimension $n$ over
+    a field $k$'
+  hint: For any locally free sheaf $\mathcal{E}$ on $X$ and every integer $i$, there is a natural non-degenerate
+    pairing $H^i(X, \mathcal{E}) \times H^{n-i}(X, \mathcal{E}^\vee \otimes \omega_X) \to H^n(X, \omega_X)
+    \xrightarrow{\mathrm{Tr}} k$, inducing an isomorphism $H^i(X, \mathcal{E})^\vee \cong H^{n-i}(X, \mathcal{E}^\vee
+    \otimes \omega_X)$, where $\omega_X = \det(\Omega_{X/k}^1)$ is the canonical bundle.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.5.a: state serre duality for a smooth projective variety $x$ of dimension
+    $n$ over a field $k$ for any locally free sheaf $\mathcal{e}$ on $x$ and every integer $i$, there
+    is a natural non-degenerate pairing $h^i(x, \mathcal{e}) \times h^{n-i}(x, \mathcal{e}^\vee \otimes
+    \omega_x) \to h^n(x, \omega_x) \xrightarrow{\mathrm{tr}} k$, inducing an isomorphism $h^i(x, \mathcal{e})^\vee
+    \cong h^{n-i}(x, \mathcal{e}^\vee \otimes \omega_x)$, where $\omega_x = \det(\omega_{x/k}^1)$ is the
+    canonical bundle.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#031
+  text: 'Exercise 18.5.B: Check Serre duality explicitly for line bundles $\mathcal{O}(d)$ on $\mathbb{P}_k^n$'
+  hint: On $\mathbb{P}^n$, $\omega_{\mathbb{P}^n} \cong \mathcal{O}(-n-1)$. Serre duality states $H^i(\mathbb{P}^n,
+    \mathcal{O}(d))^\vee \cong H^{n-i}(\mathbb{P}^n, \mathcal{O}(-n-1-d))$. For $i=0, d \ge 0$, $\dim
+    H^0(\mathcal{O}(d)) = \binom{n+d}{n}$, which equals $\dim H^n(\mathcal{O}(-n-1-d)) = \binom{-(-n-1-d)-1}{n}
+    = \binom{n+d}{n}$. For $0 < i < n$, both sides are $0$. For $i=n, d \le -n-1$, $\dim H^n(\mathcal{O}(d))
+    = \binom{-d-1}{n} = \dim H^0(\mathcal{O}(-n-1-d))$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.5.b: check serre duality explicitly for line bundles $\mathcal{o}(d)$ on $\mathbb{p}_k^n$
+    on $\mathbb{p}^n$, $\omega_{\mathbb{p}^n} \cong \mathcal{o}(-n-1)$. serre duality states $h^i(\mathbb{p}^n,
+    \mathcal{o}(d))^\vee \cong h^{n-i}(\mathbb{p}^n, \mathcal{o}(-n-1-d))$. for $i=0, d \ge 0$, $\dim
+    h^0(\mathcal{o}(d)) = \binom{n+d}{n}$, which equals $\dim h^n(\mathcal{o}(-n-1-d)) = \binom{-(-n-1-d)-1}{n}
+    = \binom{n+d}{n}$. for $0 < i < n$, both sides are $0$. for $i=n, d \le -n-1$, $\dim h^n(\mathcal{o}(d))
+    = \binom{-d-1}{n} = \dim h^0(\mathcal{o}(-n-1-d))$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#032
+  text: 'Exercise 18.5.C: Show that on $\mathbb{P}_k^n$, the cup product pairing $H^0(\mathbb{P}^n, \mathcal{O}(d))
+    \times H^n(\mathbb{P}^n, \mathcal{O}(-n-1-d)) \to H^n(\mathbb{P}^n, \mathcal{O}(-n-1)) \cong k$ is
+    non-degenerate'
+  hint: The monomial basis of $H^0(\mathcal{O}(d))$ is $\{x^{\vec{e}} \mid \sum e_i = d, e_i \ge 0\}$,
+    and the basis of $H^n(\mathcal{O}(-n-1-d))$ is $\{x^{\vec{a}} \mid \sum a_i = -n-1-d, a_i \le -1\}$.
+    The product $x^{\vec{e}} \cdot x^{\vec{a}} = x^{\vec{e}+\vec{a}}$ equals the non-zero generator $\frac{1}{x_0
+    \cdots x_n} = x^{-\mathbf{1}}$ if and only if $\vec{a} = -\vec{e} - \mathbf{1}$, so the pairing matrix
+    in these monomial bases is the identity matrix.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.5.c: show that on $\mathbb{p}_k^n$, the cup product pairing $h^0(\mathbb{p}^n,
+    \mathcal{o}(d)) \times h^n(\mathbb{p}^n, \mathcal{o}(-n-1-d)) \to h^n(\mathbb{p}^n, \mathcal{o}(-n-1))
+    \cong k$ is non-degenerate the monomial basis of $h^0(\mathcal{o}(d))$ is $\{x^{\vec{e}} \mid \sum
+    e_i = d, e_i \ge 0\}$, and the basis of $h^n(\mathcal{o}(-n-1-d))$ is $\{x^{\vec{a}} \mid \sum a_i
+    = -n-1-d, a_i \le -1\}$. the product $x^{\vec{e}} \cdot x^{\vec{a}} = x^{\vec{e}+\vec{a}}$ equals
+    the non-zero generator $\frac{1}{x_0 \cdots x_n} = x^{-\mathbf{1}}$ if and only if $\vec{a} = -\vec{e}
+    - \mathbf{1}$, so the pairing matrix in these monomial bases is the identity matrix.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#033
+  text: 'Exercise 18.5.D: Show that on a smooth projective curve $C$ of genus $g$, $\dim_k H^1(C, \omega_C)
+    = 1$'
+  hint: Applying Serre duality with $\mathcal{E} = \mathcal{O}_C$ and $i = 0$ gives $H^1(C, \omega_C)^\vee
+    \cong H^0(C, \mathcal{O}_C) \cong k$. Dualizing gives $\dim_k H^1(C, \omega_C) = \dim_k k = 1$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.5.d: show that on a smooth projective curve $c$ of genus $g$, $\dim_k h^1(c,
+    \omega_c) = 1$ applying serre duality with $\mathcal{e} = \mathcal{o}_c$ and $i = 0$ gives $h^1(c,
+    \omega_c)^\vee \cong h^0(c, \mathcal{o}_c) \cong k$. dualizing gives $\dim_k h^1(c, \omega_c) = \dim_k
+    k = 1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#034
+  text: 'Exercise 18.5.E: Show that on a smooth projective curve $C$ of genus $g$, $\dim_k H^0(C, \omega_C)
+    = g$'
+  hint: Applying Serre duality with $\mathcal{E} = \mathcal{O}_C$ and $i = 1$ gives $H^0(C, \omega_C)^\vee
+    \cong H^1(C, \mathcal{O}_C)$. By definition of genus, $\dim_k H^1(C, \mathcal{O}_C) = g$, so $\dim_k
+    H^0(C, \omega_C) = g$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.5.e: show that on a smooth projective curve $c$ of genus $g$, $\dim_k h^0(c,
+    \omega_c) = g$ applying serre duality with $\mathcal{e} = \mathcal{o}_c$ and $i = 1$ gives $h^0(c,
+    \omega_c)^\vee \cong h^1(c, \mathcal{o}_c)$. by definition of genus, $\dim_k h^1(c, \mathcal{o}_c)
+    = g$, so $\dim_k h^0(c, \omega_c) = g$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#035
+  text: 'Exercise 18.5.F: Prove that the degree of the canonical bundle of a smooth projective curve $C$
+    of genus $g$ is $\deg(\omega_C) = 2g - 2$'
+  hint: 'Apply the Riemann-Roch formula to the line bundle $\mathcal{L} = \omega_C$: $\chi(C, \omega_C)
+    = \deg(\omega_C) + 1 - g$. By Exercises 18.5.D and 18.5.E, $\chi(C, \omega_C) = \dim H^0(\omega_C)
+    - \dim H^1(\omega_C) = g - 1$. Equating the two yields $g - 1 = \deg(\omega_C) + 1 - g \implies \deg(\omega_C)
+    = 2g - 2$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.5.f: prove that the degree of the canonical bundle of a smooth projective
+    curve $c$ of genus $g$ is $\deg(\omega_c) = 2g - 2$ apply the riemann-roch formula to the line bundle
+    $\mathcal{l} = \omega_c$: $\chi(c, \omega_c) = \deg(\omega_c) + 1 - g$. by exercises 18.5.d and 18.5.e,
+    $\chi(c, \omega_c) = \dim h^0(\omega_c) - \dim h^1(\omega_c) = g - 1$. equating the two yields $g
+    - 1 = \deg(\omega_c) + 1 - g \implies \deg(\omega_c) = 2g - 2$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#036
+  text: 'Exercise 18.6.A: Show that for a coherent sheaf $\mathcal{F}$ on a projective scheme $X \hookrightarrow
+    \mathbb{P}_k^n$, the Hilbert function $h_{\mathcal{F}}(m) = \dim_k H^0(X, \mathcal{F}(m))$ equals
+    the Euler characteristic $\chi(X, \mathcal{F}(m))$ for all $m \gg 0$'
+  hint: By Serre's Vanishing Theorem, there exists an integer $m_0$ such that for all $m \ge m_0$ and
+    all $i > 0$, $H^i(X, \mathcal{F}(m)) = 0$. Therefore, for $m \ge m_0$, $\chi(X, \mathcal{F}(m)) =
+    \sum_{i=0}^{\dim X} (-1)^i \dim H^i(X, \mathcal{F}(m)) = \dim H^0(X, \mathcal{F}(m)) = h_{\mathcal{F}}(m)$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.a: show that for a coherent sheaf $\mathcal{f}$ on a projective scheme $x
+    \hookrightarrow \mathbb{p}_k^n$, the hilbert function $h_{\mathcal{f}}(m) = \dim_k h^0(x, \mathcal{f}(m))$
+    equals the euler characteristic $\chi(x, \mathcal{f}(m))$ for all $m \gg 0$ by serre''s vanishing
+    theorem, there exists an integer $m_0$ such that for all $m \ge m_0$ and all $i > 0$, $h^i(x, \mathcal{f}(m))
+    = 0$. therefore, for $m \ge m_0$, $\chi(x, \mathcal{f}(m)) = \sum_{i=0}^{\dim x} (-1)^i \dim h^i(x,
+    \mathcal{f}(m)) = \dim h^0(x, \mathcal{f}(m)) = h_{\mathcal{f}}(m)$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#037
+  text: 'Exercise 18.6.B: Compute the Hilbert polynomial of the twisted cubic curve $C \subset \mathbb{P}_k^3$'
+  hint: The twisted cubic is isomorphic to $\mathbb{P}^1$ embedded via the complete linear system $|\mathcal{O}_{\mathbb{P}^1}(3)|$,
+    so $\mathcal{O}_C(m) \cong \mathcal{O}_{\mathbb{P}^1}(3m)$. The Hilbert polynomial is $P_C(m) = \chi(\mathbb{P}^1,
+    \mathcal{O}(3m)) = 3m + 1$, confirming dimension 1, degree 3, and arithmetic genus $p_a = 1 - P_C(0)
+    = 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.b: compute the hilbert polynomial of the twisted cubic curve $c \subset
+    \mathbb{p}_k^3$ the twisted cubic is isomorphic to $\mathbb{p}^1$ embedded via the complete linear
+    system $|\mathcal{o}_{\mathbb{p}^1}(3)|$, so $\mathcal{o}_c(m) \cong \mathcal{o}_{\mathbb{p}^1}(3m)$.
+    the hilbert polynomial is $p_c(m) = \chi(\mathbb{p}^1, \mathcal{o}(3m)) = 3m + 1$, confirming dimension
+    1, degree 3, and arithmetic genus $p_a = 1 - p_c(0) = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#038
+  text: 'Exercise 18.6.C: Compute the Hilbert polynomial of the quadric surface $S = \mathbb{P}^1 \times
+    \mathbb{P}^1 \hookrightarrow \mathbb{P}_k^3$ via the Segre embedding'
+  hint: The Segre embedding identifies $\mathcal{O}_S(m) \cong \mathcal{O}_{\mathbb{P}^1 \times \mathbb{P}^1}(m,
+    m)$. By the Künneth formula, $P_S(m) = \chi(\mathbb{P}^1, \mathcal{O}(m)) \cdot \chi(\mathbb{P}^1,
+    \mathcal{O}(m)) = (m+1)^2 = m^2 + 2m + 1$. The degree of the polynomial is 2 (dimension 2), the leading
+    coefficient is $\frac{\deg S}{2!} = 1 \implies \deg(S) = 2$, and $P_S(0) = 1 \implies p_a(S) = 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.c: compute the hilbert polynomial of the quadric surface $s = \mathbb{p}^1
+    \times \mathbb{p}^1 \hookrightarrow \mathbb{p}_k^3$ via the segre embedding the segre embedding identifies
+    $\mathcal{o}_s(m) \cong \mathcal{o}_{\mathbb{p}^1 \times \mathbb{p}^1}(m, m)$. by the künneth formula,
+    $p_s(m) = \chi(\mathbb{p}^1, \mathcal{o}(m)) \cdot \chi(\mathbb{p}^1, \mathcal{o}(m)) = (m+1)^2 =
+    m^2 + 2m + 1$. the degree of the polynomial is 2 (dimension 2), the leading coefficient is $\frac{\deg
+    s}{2!} = 1 \implies \deg(s) = 2$, and $p_s(0) = 1 \implies p_a(s) = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#039
+  text: 'Exercise 18.6.D: Compute the Hilbert polynomial of the Veronese surface $S = \nu_2(\mathbb{P}^2)
+    \subset \mathbb{P}_k^5$'
+  hint: The 2-uple Veronese embedding gives $\mathcal{O}_S(m) \cong \mathcal{O}_{\mathbb{P}^2}(2m)$. Thus
+    $P_S(m) = \chi(\mathbb{P}^2, \mathcal{O}(2m)) = \binom{2m+2}{2} = \frac{(2m+2)(2m+1)}{2} = 2m^2 +
+    3m + 1$. The dimension is 2, the degree is $2 \cdot 2! = 4$, and $p_a(S) = 1 - P_S(0) = 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.d: compute the hilbert polynomial of the veronese surface $s = \nu_2(\mathbb{p}^2)
+    \subset \mathbb{p}_k^5$ the 2-uple veronese embedding gives $\mathcal{o}_s(m) \cong \mathcal{o}_{\mathbb{p}^2}(2m)$.
+    thus $p_s(m) = \chi(\mathbb{p}^2, \mathcal{o}(2m)) = \binom{2m+2}{2} = \frac{(2m+2)(2m+1)}{2} = 2m^2
+    + 3m + 1$. the dimension is 2, the degree is $2 \cdot 2! = 4$, and $p_a(s) = 1 - p_s(0) = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#040
+  text: 'Exercise 18.6.E: Compute the Hilbert polynomial of the $d$-uple Veronese embedding $\nu_d(\mathbb{P}^n)
+    \subset \mathbb{P}^N$'
+  hint: $\mathcal{O}(m)$ pulls back to $\mathcal{O}_{\mathbb{P}^n}(dm)$, so $P(m) = \binom{dm+n}{n} =
+    \frac{d^n}{n!} m^n + O(m^{n-1})$. The dimension is $n$ and the degree is $d^n$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.e: compute the hilbert polynomial of the $d$-uple veronese embedding $\nu_d(\mathbb{p}^n)
+    \subset \mathbb{p}^n$ $\mathcal{o}(m)$ pulls back to $\mathcal{o}_{\mathbb{p}^n}(dm)$, so $p(m) =
+    \binom{dm+n}{n} = \frac{d^n}{n!} m^n + o(m^{n-1})$. the dimension is $n$ and the degree is $d^n$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#041
+  text: 'Exercise 18.6.F: Show that the Hilbert polynomial of a disjoint union $X = X_1 \amalg X_2 \subset
+    \mathbb{P}_k^n$ is $P_X(m) = P_{X_1}(m) + P_{X_2}(m)$'
+  hint: The structure sheaf splits as a direct sum $\mathcal{O}_X \cong \mathcal{O}_{X_1} \oplus \mathcal{O}_{X_2}$.
+    Since twisting and taking Euler characteristics commute with direct sums, $\chi(X, \mathcal{O}_X(m))
+    = \chi(X_1, \mathcal{O}_{X_1}(m)) + \chi(X_2, \mathcal{O}_{X_2}(m))$, so $P_X(m) = P_{X_1}(m) + P_{X_2}(m)$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.f: show that the hilbert polynomial of a disjoint union $x = x_1 \amalg
+    x_2 \subset \mathbb{p}_k^n$ is $p_x(m) = p_{x_1}(m) + p_{x_2}(m)$ the structure sheaf splits as a
+    direct sum $\mathcal{o}_x \cong \mathcal{o}_{x_1} \oplus \mathcal{o}_{x_2}$. since twisting and taking
+    euler characteristics commute with direct sums, $\chi(x, \mathcal{o}_x(m)) = \chi(x_1, \mathcal{o}_{x_1}(m))
+    + \chi(x_2, \mathcal{o}_{x_2}(m))$, so $p_x(m) = p_{x_1}(m) + p_{x_2}(m)$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#042
+  text: 'Exercise 18.6.G: Show that if $X \subset \mathbb{P}_k^n$ is a scheme of dimension $d$ and $H$
+    is a general hyperplane not containing any associated point of $X$, then the Hilbert polynomial of
+    the hyperplane section $X \cap H$ is $\Delta P_X(m) = P_X(m) - P_X(m-1)$'
+  hint: The hyperplane section exact sequence is $0 \to \mathcal{O}_X(-1) \to \mathcal{O}_X \to \mathcal{O}_{X
+    \cap H} \to 0$. Twisting by $\mathcal{O}(m)$ and taking Euler characteristics gives $\chi(X \cap H,
+    \mathcal{O}_{X \cap H}(m)) = \chi(X, \mathcal{O}_X(m)) - \chi(X, \mathcal{O}_X(m-1))$, which proves
+    $P_{X \cap H}(m) = P_X(m) - P_X(m-1)$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.g: show that if $x \subset \mathbb{p}_k^n$ is a scheme of dimension $d$
+    and $h$ is a general hyperplane not containing any associated point of $x$, then the hilbert polynomial
+    of the hyperplane section $x \cap h$ is $\delta p_x(m) = p_x(m) - p_x(m-1)$ the hyperplane section
+    exact sequence is $0 \to \mathcal{o}_x(-1) \to \mathcal{o}_x \to \mathcal{o}_{x \cap h} \to 0$. twisting
+    by $\mathcal{o}(m)$ and taking euler characteristics gives $\chi(x \cap h, \mathcal{o}_{x \cap h}(m))
+    = \chi(x, \mathcal{o}_x(m)) - \chi(x, \mathcal{o}_x(m-1))$, which proves $p_{x \cap h}(m) = p_x(m)
+    - p_x(m-1)$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#043
+  text: 'Exercise 18.6.H: Use Exercise 18.6.G to prove by induction on dimension that $\deg(P_X) = \dim(X)$
+    and that the leading coefficient of $P_X(m)$ is $\frac{\deg(X)}{(\dim X)!}$'
+  hint: 'Base case: if $\dim(X) = 0$, $X$ is a finite collection of points of length $\deg(X)$, so $P_X(m)
+    = \deg(X)$ is constant (degree 0). For $\dim(X) = d$, slicing by a general hyperplane gives $\dim(X
+    \cap H) = d - 1$ with the same degree. By induction, $P_{X \cap H}(m) = \frac{\deg(X)}{(d-1)!} m^{d-1}
+    + \dots$; since $\Delta P_X(m) = P_{X \cap H}(m)$, finite calculus integration yields $P_X(m) = \frac{\deg(X)}{d!}
+    m^d + O(m^{d-1})$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.h: use exercise 18.6.g to prove by induction on dimension that $\deg(p_x)
+    = \dim(x)$ and that the leading coefficient of $p_x(m)$ is $\frac{\deg(x)}{(\dim x)!}$ base case:
+    if $\dim(x) = 0$, $x$ is a finite collection of points of length $\deg(x)$, so $p_x(m) = \deg(x)$
+    is constant (degree 0). for $\dim(x) = d$, slicing by a general hyperplane gives $\dim(x \cap h) =
+    d - 1$ with the same degree. by induction, $p_{x \cap h}(m) = \frac{\deg(x)}{(d-1)!} m^{d-1} + \dots$;
+    since $\delta p_x(m) = p_{x \cap h}(m)$, finite calculus integration yields $p_x(m) = \frac{\deg(x)}{d!}
+    m^d + o(m^{d-1})$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#044
+  text: 'Exercise 18.6.I: Compute the Hilbert polynomial of a complete intersection $X = V(f_1, \dots,
+    f_r) \subset \mathbb{P}_k^n$ of degrees $d_1, \dots, d_r$'
+  hint: 'The Koszul complex $0 \to \mathcal{O}(-\sum d_i) \to \dots \to \bigoplus_{i=1}^r \mathcal{O}(-d_i)
+    \to \mathcal{O}_{\mathbb{P}^n} \to \mathcal{O}_X \to 0$ is a resolution of $\mathcal{O}_X$. By additivity
+    of Euler characteristics, $P_X(m) = \sum_{j=0}^r (-1)^j \sum_{1 \le i_1 < \dots < i_j \le r} \binom{m
+    - (d_{i_1} + \dots + d_{i_j}) + n}{n}$. Its leading term is $\left(\prod_{i=1}^r d_i\right) \frac{m^{n-r}}{(n-r)!}$,
+    proving Bézout''s theorem: $\deg(X) = \prod_{i=1}^r d_i$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.i: compute the hilbert polynomial of a complete intersection $x = v(f_1,
+    \dots, f_r) \subset \mathbb{p}_k^n$ of degrees $d_1, \dots, d_r$ the koszul complex $0 \to \mathcal{o}(-\sum
+    d_i) \to \dots \to \bigoplus_{i=1}^r \mathcal{o}(-d_i) \to \mathcal{o}_{\mathbb{p}^n} \to \mathcal{o}_x
+    \to 0$ is a resolution of $\mathcal{o}_x$. by additivity of euler characteristics, $p_x(m) = \sum_{j=0}^r
+    (-1)^j \sum_{1 \le i_1 < \dots < i_j \le r} \binom{m - (d_{i_1} + \dots + d_{i_j}) + n}{n}$. its leading
+    term is $\left(\prod_{i=1}^r d_i\right) \frac{m^{n-r}}{(n-r)!}$, proving bézout''s theorem: $\deg(x)
+    = \prod_{i=1}^r d_i$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#045
+  text: 'Exercise 18.6.J: Show that the Hilbert polynomial of a flat family of projective schemes $\pi
+    \colon \mathcal{X} \to Y$ over a connected base $Y$ is constant'
+  hint: For every fixed integer $m$, the pushforward $\pi_* \mathcal{O}_{\mathcal{X}}(m)$ has constant
+    Euler characteristic on the fibers $\chi(\mathcal{X}_y, \mathcal{O}_{\mathcal{X}_y}(m))$ by the constancy
+    of Euler characteristics in flat proper families. Since $P_{\mathcal{X}_y}(m)$ is a polynomial agreeing
+    with $\chi(\mathcal{X}_y, \mathcal{O}(m))$ for all $m \gg 0$, the coefficients of $P_{\mathcal{X}_y}$
+    are uniquely determined and constant across all $y \in Y$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.j: show that the hilbert polynomial of a flat family of projective schemes
+    $\pi \colon \mathcal{x} \to y$ over a connected base $y$ is constant for every fixed integer $m$,
+    the pushforward $\pi_* \mathcal{o}_{\mathcal{x}}(m)$ has constant euler characteristic on the fibers
+    $\chi(\mathcal{x}_y, \mathcal{o}_{\mathcal{x}_y}(m))$ by the constancy of euler characteristics in
+    flat proper families. since $p_{\mathcal{x}_y}(m)$ is a polynomial agreeing with $\chi(\mathcal{x}_y,
+    \mathcal{o}(m))$ for all $m \gg 0$, the coefficients of $p_{\mathcal{x}_y}$ are uniquely determined
+    and constant across all $y \in y$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#046
+  text: 'Exercise 18.6.K: Compute the degree and arithmetic genus of a smooth hypersurface $S \subset
+    \mathbb{P}_k^3$ of degree $d$'
+  hint: 'From $0 \to \mathcal{O}_{\mathbb{P}^3}(-d) \to \mathcal{O}_{\mathbb{P}^3} \to \mathcal{O}_S \to
+    0$, we have $P_S(m) = \binom{m+3}{3} - \binom{m-d+3}{3} = \frac{d}{2}m^2 + \frac{d(4-d)}{2}m + \left(1
+    - \binom{d-1}{3}\right)$. Reading off parameters: $\dim(S) = 2$, $\deg(S) = d$, and $p_a(S) = 1 -
+    P_S(0) = \binom{d-1}{3} = \frac{(d-1)(d-2)(d-3)}{6}$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.k: compute the degree and arithmetic genus of a smooth hypersurface $s \subset
+    \mathbb{p}_k^3$ of degree $d$ from $0 \to \mathcal{o}_{\mathbb{p}^3}(-d) \to \mathcal{o}_{\mathbb{p}^3}
+    \to \mathcal{o}_s \to 0$, we have $p_s(m) = \binom{m+3}{3} - \binom{m-d+3}{3} = \frac{d}{2}m^2 + \frac{d(4-d)}{2}m
+    + \left(1 - \binom{d-1}{3}\right)$. reading off parameters: $\dim(s) = 2$, $\deg(s) = d$, and $p_a(s)
+    = 1 - p_s(0) = \binom{d-1}{3} = \frac{(d-1)(d-2)(d-3)}{6}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#047
+  text: 'Exercise 18.6.L: Compute the arithmetic genus of a smooth surface $S \subset \mathbb{P}_k^4$
+    that is a complete intersection of a quadric and a cubic ($d_1 = 2, d_2 = 3$)'
+  hint: The Koszul resolution gives $\chi(S, \mathcal{O}_S) = \binom{4}{4} - \binom{-2+4}{4} - \binom{-3+4}{4}
+    + \binom{-5+4}{4} = 1 - 0 - 0 + \binom{-1}{4} = 1 + 1 = 2$. Thus $p_a(S) = 1 - \chi(S, \mathcal{O}_S)
+    = 1 - 2 = -1$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.l: compute the arithmetic genus of a smooth surface $s \subset \mathbb{p}_k^4$
+    that is a complete intersection of a quadric and a cubic ($d_1 = 2, d_2 = 3$) the koszul resolution
+    gives $\chi(s, \mathcal{o}_s) = \binom{4}{4} - \binom{-2+4}{4} - \binom{-3+4}{4} + \binom{-5+4}{4}
+    = 1 - 0 - 0 + \binom{-1}{4} = 1 + 1 = 2$. thus $p_a(s) = 1 - \chi(s, \mathcal{o}_s) = 1 - 2 = -1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#048
+  text: 'Exercise 18.6.M: Show that two skew lines $L_1, L_2 \subset \mathbb{P}_k^3$ have the same Hilbert
+    polynomial as a plane conic $C \subset \mathbb{P}_k^2 \subset \mathbb{P}_k^3$, but are not flat deformations
+    of each other as subschemes'
+  hint: For two disjoint lines, $P_{L_1 \amalg L_2}(m) = (m+1) + (m+1) = 2m + 2$. For a plane conic, $P_C(m)
+    = \binom{m+2}{2} - \binom{m}{2} = 2m + 1$. Their polynomials differ by 1 (the conic has $p_a = 0$
+    while two disjoint lines have $p_a = -1$), so their Hilbert polynomials are different.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.m: show that two skew lines $l_1, l_2 \subset \mathbb{p}_k^3$ have the same
+    hilbert polynomial as a plane conic $c \subset \mathbb{p}_k^2 \subset \mathbb{p}_k^3$, but are not
+    flat deformations of each other as subschemes for two disjoint lines, $p_{l_1 \amalg l_2}(m) = (m+1)
+    + (m+1) = 2m + 2$. for a plane conic, $p_c(m) = \binom{m+2}{2} - \binom{m}{2} = 2m + 1$. their polynomials
+    differ by 1 (the conic has $p_a = 0$ while two disjoint lines have $p_a = -1$), so their hilbert polynomials
+    are different.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#049
+  text: 'Exercise 18.6.N: Show that a pair of intersecting lines $L_1 \cup L_2 \subset \mathbb{P}_k^3$
+    has the same Hilbert polynomial as a plane conic'
+  hint: For two lines meeting at a point, $P_{L_1 \cup L_2}(m) = P_{L_1}(m) + P_{L_2}(m) - P_{L_1 \cap
+    L_2}(m) = (m+1) + (m+1) - 1 = 2m + 1$. This matches $P_{\mathrm{conic}}(m) = 2m + 1$, and indeed a
+    smooth conic can degenerate flatly to a pair of intersecting lines.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.n: show that a pair of intersecting lines $l_1 \cup l_2 \subset \mathbb{p}_k^3$
+    has the same hilbert polynomial as a plane conic for two lines meeting at a point, $p_{l_1 \cup l_2}(m)
+    = p_{l_1}(m) + p_{l_2}(m) - p_{l_1 \cap l_2}(m) = (m+1) + (m+1) - 1 = 2m + 1$. this matches $p_{\mathrm{conic}}(m)
+    = 2m + 1$, and indeed a smooth conic can degenerate flatly to a pair of intersecting lines.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#050
+  text: 'Exercise 18.7.A: Let $f \colon X \to Y$ be an affine morphism of separated schemes of finite
+    type over $A$. Show that $R^i f_* \mathcal{F} = 0$ for all $i > 0$ and all quasicoherent sheaves $\mathcal{F}$
+    on $X$'
+  hint: For every affine open $V = \mathrm{Spec}(B) \subset Y$, the preimage $f^{-1}(V) = \mathrm{Spec}(C)$
+    is affine because $f$ is affine. The higher direct image sheaf evaluates on $V$ as $(R^i f_* \mathcal{F})|_V
+    \cong \widetilde{H^i(f^{-1}(V), \mathcal{F})} = \widetilde{H^i(\mathrm{Spec}(C), \mathcal{F})}$. Since
+    affine schemes have no higher cohomology for quasicoherent sheaves, $H^i(\mathrm{Spec}(C), \mathcal{F})
+    = 0$ for all $i > 0$, so $R^i f_* \mathcal{F} = 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.7.a: let $f \colon x \to y$ be an affine morphism of separated schemes of
+    finite type over $a$. show that $r^i f_* \mathcal{f} = 0$ for all $i > 0$ and all quasicoherent sheaves
+    $\mathcal{f}$ on $x$ for every affine open $v = \mathrm{spec}(b) \subset y$, the preimage $f^{-1}(v)
+    = \mathrm{spec}(c)$ is affine because $f$ is affine. the higher direct image sheaf evaluates on $v$
+    as $(r^i f_* \mathcal{f})|_v \cong \widetilde{h^i(f^{-1}(v), \mathcal{f})} = \widetilde{h^i(\mathrm{spec}(c),
+    \mathcal{f})}$. since affine schemes have no higher cohomology for quasicoherent sheaves, $h^i(\mathrm{spec}(c),
+    \mathcal{f}) = 0$ for all $i > 0$, so $r^i f_* \mathcal{f} = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#051
+  text: 'Exercise 18.7.B: Show that if $f \colon X \to Y$ is an affine morphism, then $H^i(X, \mathcal{F})
+    \cong H^i(Y, f_* \mathcal{F})$ for all $i \ge 0$'
+  hint: Apply the Leray spectral sequence $E_2^{p, q} = H^p(Y, R^q f_* \mathcal{F}) \implies H^{p+q}(X,
+    \mathcal{F})$. By Exercise 18.7.A, $R^q f_* \mathcal{F} = 0$ for all $q > 0$. Thus the spectral sequence
+    collapses on the $E_2$-page to the line $q = 0$, giving canonical isomorphisms $H^p(Y, f_* \mathcal{F})
+    \cong H^p(X, \mathcal{F})$ for all $p \ge 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.7.b: show that if $f \colon x \to y$ is an affine morphism, then $h^i(x, \mathcal{f})
+    \cong h^i(y, f_* \mathcal{f})$ for all $i \ge 0$ apply the leray spectral sequence $e_2^{p, q} = h^p(y,
+    r^q f_* \mathcal{f}) \implies h^{p+q}(x, \mathcal{f})$. by exercise 18.7.a, $r^q f_* \mathcal{f} =
+    0$ for all $q > 0$. thus the spectral sequence collapses on the $e_2$-page to the line $q = 0$, giving
+    canonical isomorphisms $h^p(y, f_* \mathcal{f}) \cong h^p(x, \mathcal{f})$ for all $p \ge 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#052
+  text: 'Exercise 18.7.C: Show that if $i \colon Z \hookrightarrow X$ is a closed immersion, then $H^i(Z,
+    \mathcal{F}) \cong H^i(X, i_* \mathcal{F})$ for all $i \ge 0$'
+  hint: A closed immersion is an affine morphism because $\mathrm{Spec}(A/I)$ is affine. By Exercise 18.7.B,
+    the pushforward along an affine morphism preserves all cohomology groups, so $H^i(Z, \mathcal{F})
+    \cong H^i(X, i_* \mathcal{F})$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.7.c: show that if $i \colon z \hookrightarrow x$ is a closed immersion, then
+    $h^i(z, \mathcal{f}) \cong h^i(x, i_* \mathcal{f})$ for all $i \ge 0$ a closed immersion is an affine
+    morphism because $\mathrm{spec}(a/i)$ is affine. by exercise 18.7.b, the pushforward along an affine
+    morphism preserves all cohomology groups, so $h^i(z, \mathcal{f}) \cong h^i(x, i_* \mathcal{f})$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#053
+  text: 'Exercise 18.7.D: Compute the higher direct images $R^q \pi_*(\mathcal{O}_{\mathbb{P}_Y^n}(d))$
+    for the projection morphism $\pi \colon \mathbb{P}_Y^n \to Y$'
+  hint: 'On any affine open $V = \mathrm{Spec}(B) \subset Y$, the scheme pulls back to $\mathbb{P}_B^n$.
+    Flat base change gives $(R^q \pi_* \mathcal{O}(d))|_V \cong \widetilde{H^q(\mathbb{P}_B^n, \mathcal{O}(d))}$.
+    Therefore: (1) $R^0 \pi_* \mathcal{O}(d) \cong \mathcal{O}_Y[x_0, \dots, x_n]_d$ for $d \ge 0$, and
+    $0$ for $d < 0$; (2) $R^n \pi_* \mathcal{O}(d) \cong \mathcal{O}_Y[x_0, \dots, x_n]_{-n-1-d}^\vee$
+    for $d \le -n-1$, and $0$ for $d \ge -n$; (3) $R^q \pi_* \mathcal{O}(d) = 0$ for all $0 < q < n$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.7.d: compute the higher direct images $r^q \pi_*(\mathcal{o}_{\mathbb{p}_y^n}(d))$
+    for the projection morphism $\pi \colon \mathbb{p}_y^n \to y$ on any affine open $v = \mathrm{spec}(b)
+    \subset y$, the scheme pulls back to $\mathbb{p}_b^n$. flat base change gives $(r^q \pi_* \mathcal{o}(d))|_v
+    \cong \widetilde{h^q(\mathbb{p}_b^n, \mathcal{o}(d))}$. therefore: (1) $r^0 \pi_* \mathcal{o}(d) \cong
+    \mathcal{o}_y[x_0, \dots, x_n]_d$ for $d \ge 0$, and $0$ for $d < 0$; (2) $r^n \pi_* \mathcal{o}(d)
+    \cong \mathcal{o}_y[x_0, \dots, x_n]_{-n-1-d}^\vee$ for $d \le -n-1$, and $0$ for $d \ge -n$; (3)
+    $r^q \pi_* \mathcal{o}(d) = 0$ for all $0 < q < n$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#054
+  text: 'Exercise 18.7.E: Compute the cohomology of $\mathbb{P}_k^1 \times_k \mathbb{P}_k^1$ using the
+    Leray spectral sequence for the first projection $\pi_1 \colon \mathbb{P}^1 \times \mathbb{P}^1 \to
+    \mathbb{P}^1$'
+  hint: For the line bundle $\mathcal{L} = \mathcal{O}(a, b) = \pi_1^* \mathcal{O}(a) \otimes \pi_2^*
+    \mathcal{O}(b)$, the projection formula gives $R^q (\pi_1)_* \mathcal{L} \cong \mathcal{O}_{\mathbb{P}^1}(a)
+    \otimes_k H^q(\mathbb{P}^1, \mathcal{O}(b))$. The Leray spectral sequence $E_2^{p, q} = H^p(\mathbb{P}^1,
+    R^q (\pi_1)_* \mathcal{L}) \cong H^p(\mathbb{P}^1, \mathcal{O}(a)) \otimes_k H^q(\mathbb{P}^1, \mathcal{O}(b))$
+    collapses at $E_2$ because $\mathbb{P}^1$ has no higher cohomology beyond degree 1, giving the Künneth
+    formula $H^n(\mathbb{P}^1 \times \mathbb{P}^1, \mathcal{O}(a, b)) \cong \bigoplus_{p+q=n} H^p(\mathbb{P}^1,
+    \mathcal{O}(a)) \otimes_k H^q(\mathbb{P}^1, \mathcal{O}(b))$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.7.e: compute the cohomology of $\mathbb{p}_k^1 \times_k \mathbb{p}_k^1$ using
+    the leray spectral sequence for the first projection $\pi_1 \colon \mathbb{p}^1 \times \mathbb{p}^1
+    \to \mathbb{p}^1$ for the line bundle $\mathcal{l} = \mathcal{o}(a, b) = \pi_1^* \mathcal{o}(a) \otimes
+    \pi_2^* \mathcal{o}(b)$, the projection formula gives $r^q (\pi_1)_* \mathcal{l} \cong \mathcal{o}_{\mathbb{p}^1}(a)
+    \otimes_k h^q(\mathbb{p}^1, \mathcal{o}(b))$. the leray spectral sequence $e_2^{p, q} = h^p(\mathbb{p}^1,
+    r^q (\pi_1)_* \mathcal{l}) \cong h^p(\mathbb{p}^1, \mathcal{o}(a)) \otimes_k h^q(\mathbb{p}^1, \mathcal{o}(b))$
+    collapses at $e_2$ because $\mathbb{p}^1$ has no higher cohomology beyond degree 1, giving the künneth
+    formula $h^n(\mathbb{p}^1 \times \mathbb{p}^1, \mathcal{o}(a, b)) \cong \bigoplus_{p+q=n} h^p(\mathbb{p}^1,
+    \mathcal{o}(a)) \otimes_k h^q(\mathbb{p}^1, \mathcal{o}(b))$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#055
+  text: 'Exercise 18.8.A: Prove that if $\mathcal{L}$ is an ample line bundle on a projective scheme $X$
+    over $k$, then for any coherent sheaf $\mathcal{F}$, there exists $m_0$ such that $\mathcal{F} \otimes
+    \mathcal{L}^{\otimes m}$ is generated by global sections for all $m \ge m_0$'
+  hint: Choose an embedding $X \hookrightarrow \mathbb{P}^n$ such that $\mathcal{L}^{\otimes r} \cong
+    \mathcal{O}_X(1)$. There exists a surjection $\mathcal{O}_{\mathbb{P}^n}(-k)^{\oplus N} \twoheadrightarrow
+    i_* \mathcal{F}$. Twisting by $\mathcal{O}(m)$ gives a surjection $\mathcal{O}_{\mathbb{P}^n}(m-k)^{\oplus
+    N} \twoheadrightarrow (i_* \mathcal{F})(m)$. For $m \ge k$, $\mathcal{O}_{\mathbb{P}^n}(m-k)$ is globally
+    generated by monomials, so its quotient $(i_* \mathcal{F})(m) \cong i_* (\mathcal{F} \otimes \mathcal{L}^{\otimes
+    r m})$ is generated by global sections.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.8.a: prove that if $\mathcal{l}$ is an ample line bundle on a projective scheme
+    $x$ over $k$, then for any coherent sheaf $\mathcal{f}$, there exists $m_0$ such that $\mathcal{f}
+    \otimes \mathcal{l}^{\otimes m}$ is generated by global sections for all $m \ge m_0$ choose an embedding
+    $x \hookrightarrow \mathbb{p}^n$ such that $\mathcal{l}^{\otimes r} \cong \mathcal{o}_x(1)$. there
+    exists a surjection $\mathcal{o}_{\mathbb{p}^n}(-k)^{\oplus n} \twoheadrightarrow i_* \mathcal{f}$.
+    twisting by $\mathcal{o}(m)$ gives a surjection $\mathcal{o}_{\mathbb{p}^n}(m-k)^{\oplus n} \twoheadrightarrow
+    (i_* \mathcal{f})(m)$. for $m \ge k$, $\mathcal{o}_{\mathbb{p}^n}(m-k)$ is globally generated by monomials,
+    so its quotient $(i_* \mathcal{f})(m) \cong i_* (\mathcal{f} \otimes \mathcal{l}^{\otimes r m})$ is
+    generated by global sections.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#056
+  text: 'Exercise 18.8.B: Prove Serre''s Vanishing Theorem: if $\mathcal{L}$ is ample on a projective
+    scheme $X$ over a Noetherian ring $A$ and $\mathcal{F}$ is coherent, then for each $i > 0$, $H^i(X,
+    \mathcal{F} \otimes \mathcal{L}^{\otimes m}) = 0$ for all $m \gg 0$'
+  hint: 'Embed $X \hookrightarrow \mathbb{P}_A^n$ and resolve $i_* \mathcal{F}$ by a finite sequence of
+    free sheaves: $0 \to \mathcal{K} \to \bigoplus \mathcal{O}(-k_j) \to i_* \mathcal{F} \to 0$. By descending
+    induction on $i$, for $i = n$, $H^n(\mathbb{P}^n, \mathcal{F}(m)) = 0$ for $m > \max(k_j)$ because
+    $H^{n+1} = 0$. For $i < n$, the long exact sequence gives $H^i(\bigoplus \mathcal{O}(m-k_j)) \to H^i(\mathcal{F}(m))
+    \to H^{i+1}(\mathcal{K}(m))$; for $m \gg 0$, the left term vanishes by the cohomology of $\mathbb{P}^n$
+    and the right term vanishes by induction, forcing $H^i(X, \mathcal{F}(m)) = 0$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.8.b: prove serre''s vanishing theorem: if $\mathcal{l}$ is ample on a projective
+    scheme $x$ over a noetherian ring $a$ and $\mathcal{f}$ is coherent, then for each $i > 0$, $h^i(x,
+    \mathcal{f} \otimes \mathcal{l}^{\otimes m}) = 0$ for all $m \gg 0$ embed $x \hookrightarrow \mathbb{p}_a^n$
+    and resolve $i_* \mathcal{f}$ by a finite sequence of free sheaves: $0 \to \mathcal{k} \to \bigoplus
+    \mathcal{o}(-k_j) \to i_* \mathcal{f} \to 0$. by descending induction on $i$, for $i = n$, $h^n(\mathbb{p}^n,
+    \mathcal{f}(m)) = 0$ for $m > \max(k_j)$ because $h^{n+1} = 0$. for $i < n$, the long exact sequence
+    gives $h^i(\bigoplus \mathcal{o}(m-k_j)) \to h^i(\mathcal{f}(m)) \to h^{i+1}(\mathcal{k}(m))$; for
+    $m \gg 0$, the left term vanishes by the cohomology of $\mathbb{p}^n$ and the right term vanishes
+    by induction, forcing $h^i(x, \mathcal{f}(m)) = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#057
+  text: 'Exercise 18.8.C: Show that if $\mathcal{L}$ is a line bundle on a projective Noetherian scheme
+    $X$ such that for every coherent sheaf $\mathcal{F}$, $H^1(X, \mathcal{F} \otimes \mathcal{L}^{\otimes
+    m}) = 0$ for all $m \gg 0$, then $\mathcal{L}$ is ample'
+  hint: For any point $x \in X$ with ideal sheaf $\mathcal{I}_x$, the exact sequence $0 \to \mathcal{I}_x
+    \otimes \mathcal{F} \otimes \mathcal{L}^m \to \mathcal{F} \otimes \mathcal{L}^m \to (\mathcal{F} \otimes
+    \mathcal{L}^m) \otimes \kappa(x) \to 0$ produces $H^0(X, \mathcal{F} \otimes \mathcal{L}^m) \twoheadrightarrow
+    \mathcal{F}_x \otimes \kappa(x)$ because $H^1(\mathcal{I}_x \otimes \mathcal{F} \otimes \mathcal{L}^m)
+    = 0$ for $m \gg 0$. By Nakayama's lemma, $\mathcal{F} \otimes \mathcal{L}^m$ is globally generated
+    for all $m \gg 0$, which is Cartan-Serre-Grothendieck's criterion for ampleness.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.8.c: show that if $\mathcal{l}$ is a line bundle on a projective noetherian
+    scheme $x$ such that for every coherent sheaf $\mathcal{f}$, $h^1(x, \mathcal{f} \otimes \mathcal{l}^{\otimes
+    m}) = 0$ for all $m \gg 0$, then $\mathcal{l}$ is ample for any point $x \in x$ with ideal sheaf $\mathcal{i}_x$,
+    the exact sequence $0 \to \mathcal{i}_x \otimes \mathcal{f} \otimes \mathcal{l}^m \to \mathcal{f}
+    \otimes \mathcal{l}^m \to (\mathcal{f} \otimes \mathcal{l}^m) \otimes \kappa(x) \to 0$ produces $h^0(x,
+    \mathcal{f} \otimes \mathcal{l}^m) \twoheadrightarrow \mathcal{f}_x \otimes \kappa(x)$ because $h^1(\mathcal{i}_x
+    \otimes \mathcal{f} \otimes \mathcal{l}^m) = 0$ for $m \gg 0$. by nakayama''s lemma, $\mathcal{f}
+    \otimes \mathcal{l}^m$ is globally generated for all $m \gg 0$, which is cartan-serre-grothendieck''s
+    criterion for ampleness.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#058
+  text: 'Exercise 18.8.D: Show that if $f \colon X \to Y$ is a finite morphism and $\mathcal{L}$ is an
+    ample line bundle on $Y$, then $f^* \mathcal{L}$ is an ample line bundle on $X$'
+  hint: For any coherent sheaf $\mathcal{F}$ on $X$, $f_*(\mathcal{F} \otimes (f^* \mathcal{L})^{\otimes
+    m}) \cong (f_* \mathcal{F}) \otimes \mathcal{L}^{\otimes m}$ by the projection formula. Since $f$
+    is finite (hence affine), $H^i(X, \mathcal{F} \otimes (f^* \mathcal{L})^{\otimes m}) \cong H^i(Y,
+    (f_* \mathcal{F}) \otimes \mathcal{L}^{\otimes m})$ by Exercise 18.7.B. Since $\mathcal{L}$ is ample
+    on $Y$ and $f_* \mathcal{F}$ is coherent on $Y$, this cohomology vanishes for all $i > 0$ and $m \gg
+    0$, which proves $f^* \mathcal{L}$ is ample on $X$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.8.d: show that if $f \colon x \to y$ is a finite morphism and $\mathcal{l}$
+    is an ample line bundle on $y$, then $f^* \mathcal{l}$ is an ample line bundle on $x$ for any coherent
+    sheaf $\mathcal{f}$ on $x$, $f_*(\mathcal{f} \otimes (f^* \mathcal{l})^{\otimes m}) \cong (f_* \mathcal{f})
+    \otimes \mathcal{l}^{\otimes m}$ by the projection formula. since $f$ is finite (hence affine), $h^i(x,
+    \mathcal{f} \otimes (f^* \mathcal{l})^{\otimes m}) \cong h^i(y, (f_* \mathcal{f}) \otimes \mathcal{l}^{\otimes
+    m})$ by exercise 18.7.b. since $\mathcal{l}$ is ample on $y$ and $f_* \mathcal{f}$ is coherent on
+    $y$, this cohomology vanishes for all $i > 0$ and $m \gg 0$, which proves $f^* \mathcal{l}$ is ample
+    on $x$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#059
+  text: 'Exercise 18.8.E: Prove that a projective scheme $X$ over a field $k$ is affine if and only if
+    $X$ is a finite discrete set of points ($\dim X = 0$)'
+  hint: If $\dim X = 0$, $X = \coprod_{i=1}^m \mathrm{Spec}(A_i)$ is a finite disjoint union of spectra
+    of Artinian local rings, which is affine. Conversely, if $\dim X \ge 1$, $X$ contains a positive-dimensional
+    irreducible closed curve $C$. If $X$ were affine, $C$ would be an affine projective curve, so $\Gamma(C,
+    \mathcal{O}_C) = k$; but an affine scheme whose global functions are $k$ must be a single point $\mathrm{Spec}(k)$,
+    contradicting $\dim C = 1$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.8.e: prove that a projective scheme $x$ over a field $k$ is affine if and
+    only if $x$ is a finite discrete set of points ($\dim x = 0$) if $\dim x = 0$, $x = \coprod_{i=1}^m
+    \mathrm{spec}(a_i)$ is a finite disjoint union of spectra of artinian local rings, which is affine.
+    conversely, if $\dim x \ge 1$, $x$ contains a positive-dimensional irreducible closed curve $c$. if
+    $x$ were affine, $c$ would be an affine projective curve, so $\gamma(c, \mathcal{o}_c) = k$; but an
+    affine scheme whose global functions are $k$ must be a single point $\mathrm{spec}(k)$, contradicting
+    $\dim c = 1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#060
+  text: 'Exercise 18.9.A (Chow''s Lemma): Let $X$ be a proper scheme over a Noetherian scheme $S$. Show
+    that there exists a projective $S$-scheme $X''$ and a surjective birational $S$-morphism $\pi \colon
+    X'' \to X$ that is an isomorphism over a dense open subscheme $U \subset X$'
+  hint: Cover $X$ by finitely many quasi-projective open subschemes $U_i \hookrightarrow \mathbb{P}_S^{n_i}$.
+    Let $U = \bigcap U_i$ and consider the immersion $U \hookrightarrow X \times_S \mathbb{P}^{n_1} \times_S
+    \dots \times_S \mathbb{P}^{n_m}$. Define $X'$ to be the scheme-theoretic closure of $U$ in $X \times_S
+    \prod \mathbb{P}^{n_i}$. The projection $\pi \colon X' \to X$ is proper and restricts to the identity
+    on $U$. The projection $X' \to \prod \mathbb{P}^{n_i}$ is a closed immersion because $X \to S$ is
+    separated, making $X'$ projective over $S$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.9.a (chow''s lemma): let $x$ be a proper scheme over a noetherian scheme $s$.
+    show that there exists a projective $s$-scheme $x''$ and a surjective birational $s$-morphism $\pi
+    \colon x'' \to x$ that is an isomorphism over a dense open subscheme $u \subset x$ cover $x$ by finitely
+    many quasi-projective open subschemes $u_i \hookrightarrow \mathbb{p}_s^{n_i}$. let $u = \bigcap u_i$
+    and consider the immersion $u \hookrightarrow x \times_s \mathbb{p}^{n_1} \times_s \dots \times_s
+    \mathbb{p}^{n_m}$. define $x''$ to be the scheme-theoretic closure of $u$ in $x \times_s \prod \mathbb{p}^{n_i}$.
+    the projection $\pi \colon x'' \to x$ is proper and restricts to the identity on $u$. the projection
+    $x'' \to \prod \mathbb{p}^{n_i}$ is a closed immersion because $x \to s$ is separated, making $x''$
+    projective over $s$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#061
+  text: 'Exercise 18.9.B: Use Chow''s Lemma to prove Grothendieck''s Coherence Theorem: if $f \colon X
+    \to Y$ is a proper morphism of Noetherian schemes and $\mathcal{F}$ is a coherent sheaf on $X$, then
+    $R^i f_* \mathcal{F}$ is a coherent $\mathcal{O}_Y$-module for all $i \ge 0$'
+  hint: Apply Chow's Lemma to obtain a projective morphism $g \colon X' \to Y$ and a surjective birational
+    morphism $\pi \colon X' \to X$ that is an isomorphism over $U \subset X$. Set $Z = X \setminus U$,
+    so $\dim Z < \dim X$. Consider the short exact sequence $0 \to \mathcal{K} \to \mathcal{F} \to \pi_*
+    \pi^* \mathcal{F} \to \mathcal{C} \to 0$, where $\mathcal{K}$ and $\mathcal{C}$ are supported on $Z$.
+    By Noetherian induction on the dimension of the support, $R^i f_* \mathcal{K}$ and $R^i f_* \mathcal{C}$
+    are coherent. Since $X' \to Y$ is projective, $R^i g_* (\pi^* \mathcal{F})$ is coherent by the projective
+    Čech theorem. The Leray spectral sequence for $g = f \circ \pi$ and the 5-lemma on the long exact
+    sequence prove that $R^i f_* \mathcal{F}$ is coherent on $Y$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.9.b: use chow''s lemma to prove grothendieck''s coherence theorem: if $f \colon
+    x \to y$ is a proper morphism of noetherian schemes and $\mathcal{f}$ is a coherent sheaf on $x$,
+    then $r^i f_* \mathcal{f}$ is a coherent $\mathcal{o}_y$-module for all $i \ge 0$ apply chow''s lemma
+    to obtain a projective morphism $g \colon x'' \to y$ and a surjective birational morphism $\pi \colon
+    x'' \to x$ that is an isomorphism over $u \subset x$. set $z = x \setminus u$, so $\dim z < \dim x$.
+    consider the short exact sequence $0 \to \mathcal{k} \to \mathcal{f} \to \pi_* \pi^* \mathcal{f} \to
+    \mathcal{c} \to 0$, where $\mathcal{k}$ and $\mathcal{c}$ are supported on $z$. by noetherian induction
+    on the dimension of the support, $r^i f_* \mathcal{k}$ and $r^i f_* \mathcal{c}$ are coherent. since
+    $x'' \to y$ is projective, $r^i g_* (\pi^* \mathcal{f})$ is coherent by the projective čech theorem.
+    the leray spectral sequence for $g = f \circ \pi$ and the 5-lemma on the long exact sequence prove
+    that $r^i f_* \mathcal{f}$ is coherent on $y$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#062
+  text: 'Exercise 18.4.A: Show that the Euler characteristic $\chi(X, \mathcal{F})$ is additive on short
+    exact sequences of coherent sheaves on a projective $k$-scheme $X$'
+  hint: For $0 \to \mathcal{F}' \to \mathcal{F} \to \mathcal{F}'' \to 0$, the long exact sequence in cohomology
+    $0 \to H^0(\mathcal{F}') \to H^0(\mathcal{F}) \to H^0(\mathcal{F}'') \to H^1(\mathcal{F}') \to \dots
+    \to H^n(\mathcal{F}'') \to 0$ is a finite exact sequence of finite-dimensional $k$-vector spaces;
+    the alternating sum of dimensions in any finite exact sequence of vector spaces is 0, which immediately
+    yields $\chi(X, \mathcal{F}) = \chi(X, \mathcal{F}') + \chi(X, \mathcal{F}'')$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.a: show that the euler characteristic $\chi(x, \mathcal{f})$ is additive
+    on short exact sequences of coherent sheaves on a projective $k$-scheme $x$ for $0 \to \mathcal{f}''
+    \to \mathcal{f} \to \mathcal{f}'''' \to 0$, the long exact sequence in cohomology $0 \to h^0(\mathcal{f}'')
+    \to h^0(\mathcal{f}) \to h^0(\mathcal{f}'''') \to h^1(\mathcal{f}'') \to \dots \to h^n(\mathcal{f}'''')
+    \to 0$ is a finite exact sequence of finite-dimensional $k$-vector spaces; the alternating sum of
+    dimensions in any finite exact sequence of vector spaces is 0, which immediately yields $\chi(x, \mathcal{f})
+    = \chi(x, \mathcal{f}'') + \chi(x, \mathcal{f}'''')$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#063
+  text: 'Exercise 18.4.B: Compute the arithmetic genus $p_a(C)$ of a smooth plane curve $C = V(f) \subset
+    \mathbb{P}_k^2$ of degree $d$'
+  hint: From the ideal sheaf sequence $0 \to \mathcal{O}_{\mathbb{P}^2}(-d) \to \mathcal{O}_{\mathbb{P}^2}
+    \to \mathcal{O}_C \to 0$, additivity of $\chi$ gives $\chi(C, \mathcal{O}_C) = \chi(\mathbb{P}^2,
+    \mathcal{O}) - \chi(\mathbb{P}^2, \mathcal{O}(-d)) = 1 - \binom{-d+2}{2} = 1 - \frac{(d-1)(d-2)}{2}$;
+    since $p_a(C) = 1 - \chi(C, \mathcal{O}_C)$, this proves $p_a(C) = \frac{(d-1)(d-2)}{2}$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.b: compute the arithmetic genus $p_a(c)$ of a smooth plane curve $c = v(f)
+    \subset \mathbb{p}_k^2$ of degree $d$ from the ideal sheaf sequence $0 \to \mathcal{o}_{\mathbb{p}^2}(-d)
+    \to \mathcal{o}_{\mathbb{p}^2} \to \mathcal{o}_c \to 0$, additivity of $\chi$ gives $\chi(c, \mathcal{o}_c)
+    = \chi(\mathbb{p}^2, \mathcal{o}) - \chi(\mathbb{p}^2, \mathcal{o}(-d)) = 1 - \binom{-d+2}{2} = 1
+    - \frac{(d-1)(d-2)}{2}$; since $p_a(c) = 1 - \chi(c, \mathcal{o}_c)$, this proves $p_a(c) = \frac{(d-1)(d-2)}{2}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#064
+  text: 'Exercise 18.4.C: Compute the arithmetic genus $p_a(C)$ of a complete intersection curve $C =
+    V(f, g) \subset \mathbb{P}_k^3$ of degrees $d_1$ and $d_2$'
+  hint: Resolve $\mathcal{O}_C$ via the Koszul complex $0 \to \mathcal{O}(-d_1-d_2) \to \mathcal{O}(-d_1)
+    \oplus \mathcal{O}(-d_2) \to \mathcal{O}_{\mathbb{P}^3} \to \mathcal{O}_C \to 0$; taking Euler characteristics
+    gives $\chi(C, \mathcal{O}_C) = \binom{3}{3} - \binom{-d_1+3}{3} - \binom{-d_2+3}{3} + \binom{-d_1-d_2+3}{3}
+    = 1 - \frac{1}{2} d_1 d_2 (d_1 + d_2 - 4)$, yielding $p_a(C) = 1 - \chi(C, \mathcal{O}_C) = \frac{1}{2}
+    d_1 d_2 (d_1 + d_2 - 4) + 1$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.c: compute the arithmetic genus $p_a(c)$ of a complete intersection curve
+    $c = v(f, g) \subset \mathbb{p}_k^3$ of degrees $d_1$ and $d_2$ resolve $\mathcal{o}_c$ via the koszul
+    complex $0 \to \mathcal{o}(-d_1-d_2) \to \mathcal{o}(-d_1) \oplus \mathcal{o}(-d_2) \to \mathcal{o}_{\mathbb{p}^3}
+    \to \mathcal{o}_c \to 0$; taking euler characteristics gives $\chi(c, \mathcal{o}_c) = \binom{3}{3}
+    - \binom{-d_1+3}{3} - \binom{-d_2+3}{3} + \binom{-d_1-d_2+3}{3} = 1 - \frac{1}{2} d_1 d_2 (d_1 + d_2
+    - 4)$, yielding $p_a(c) = 1 - \chi(c, \mathcal{o}_c) = \frac{1}{2} d_1 d_2 (d_1 + d_2 - 4) + 1$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#065
+  text: 'Exercise 18.4.D: Show that the degree of a line bundle on an integral projective curve $C$ satisfies
+    $\deg(\mathcal{L}_1 \otimes \mathcal{L}_2) = \deg(\mathcal{L}_1) + \deg(\mathcal{L}_2)$'
+  hint: Write $\mathcal{L}_1 \cong \mathcal{O}_C(\sum n_i p_i)$ as a difference of effective Cartier divisors
+    supported at smooth points; by induction using the sequence $0 \to \mathcal{L} \otimes \mathcal{O}_C(-p)
+    \to \mathcal{L} \to \kappa(p) \to 0$, we have $\chi(C, \mathcal{L}) - \chi(C, \mathcal{L}(-p)) = \deg(p)$,
+    which proves $\chi(C, \mathcal{L}_1 \otimes \mathcal{L}_2) = \chi(C, \mathcal{L}_2) + \deg(\mathcal{L}_1)
+    = \chi(C, \mathcal{O}_C) + \deg(\mathcal{L}_1) + \deg(\mathcal{L}_2)$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.d: show that the degree of a line bundle on an integral projective curve
+    $c$ satisfies $\deg(\mathcal{l}_1 \otimes \mathcal{l}_2) = \deg(\mathcal{l}_1) + \deg(\mathcal{l}_2)$
+    write $\mathcal{l}_1 \cong \mathcal{o}_c(\sum n_i p_i)$ as a difference of effective cartier divisors
+    supported at smooth points; by induction using the sequence $0 \to \mathcal{l} \otimes \mathcal{o}_c(-p)
+    \to \mathcal{l} \to \kappa(p) \to 0$, we have $\chi(c, \mathcal{l}) - \chi(c, \mathcal{l}(-p)) = \deg(p)$,
+    which proves $\chi(c, \mathcal{l}_1 \otimes \mathcal{l}_2) = \chi(c, \mathcal{l}_2) + \deg(\mathcal{l}_1)
+    = \chi(c, \mathcal{o}_c) + \deg(\mathcal{l}_1) + \deg(\mathcal{l}_2)$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#066
+  text: 'Exercise 18.4.F: Prove that if $C$ is a smooth projective curve of genus $g$ over an algebraically
+    closed field $k$ and $\deg(\mathcal{L}) < 0$, then $H^0(C, \mathcal{L}) = 0$'
+  hint: If $H^0(C, \mathcal{L}) \neq 0$, choose a non-zero section $s \in H^0(C, \mathcal{L})$; $s$ defines
+    an effective Cartier divisor $D = \mathrm{div}(s) \ge 0$ such that $\mathcal{L} \cong \mathcal{O}_C(D)$,
+    which forces $\deg(\mathcal{L}) = \deg(D) \ge 0$, contradicting $\deg(\mathcal{L}) < 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.f: prove that if $c$ is a smooth projective curve of genus $g$ over an algebraically
+    closed field $k$ and $\deg(\mathcal{l}) < 0$, then $h^0(c, \mathcal{l}) = 0$ if $h^0(c, \mathcal{l})
+    \neq 0$, choose a non-zero section $s \in h^0(c, \mathcal{l})$; $s$ defines an effective cartier divisor
+    $d = \mathrm{div}(s) \ge 0$ such that $\mathcal{l} \cong \mathcal{o}_c(d)$, which forces $\deg(\mathcal{l})
+    = \deg(d) \ge 0$, contradicting $\deg(\mathcal{l}) < 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#067
+  text: 'Exercise 18.4.G: Show that if $C$ is a smooth projective curve of genus $g$ and $\deg(\mathcal{L})
+    > 2g - 2$, then $H^1(C, \mathcal{L}) = 0$'
+  hint: By Serre duality for curves, $H^1(C, \mathcal{L})^\vee \cong H^0(C, \omega_C \otimes \mathcal{L}^\vee)$;
+    the degree of the dual bundle is $\deg(\omega_C \otimes \mathcal{L}^\vee) = (2g - 2) - \deg(\mathcal{L})
+    < 0$; by Exercise 18.4.F, any line bundle of negative degree has no non-zero global sections, so $H^0(C,
+    \omega_C \otimes \mathcal{L}^\vee) = 0$, forcing $H^1(C, \mathcal{L}) = 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.g: show that if $c$ is a smooth projective curve of genus $g$ and $\deg(\mathcal{l})
+    > 2g - 2$, then $h^1(c, \mathcal{l}) = 0$ by serre duality for curves, $h^1(c, \mathcal{l})^\vee \cong
+    h^0(c, \omega_c \otimes \mathcal{l}^\vee)$; the degree of the dual bundle is $\deg(\omega_c \otimes
+    \mathcal{l}^\vee) = (2g - 2) - \deg(\mathcal{l}) < 0$; by exercise 18.4.f, any line bundle of negative
+    degree has no non-zero global sections, so $h^0(c, \omega_c \otimes \mathcal{l}^\vee) = 0$, forcing
+    $h^1(c, \mathcal{l}) = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#068
+  text: 'Exercise 18.4.H: Show that for any line bundle $\mathcal{L}$ of degree $d > 2g - 2$ on a smooth
+    projective curve $C$ of genus $g$, the dimension of global sections is given exactly by $\dim_k H^0(C,
+    \mathcal{L}) = d + 1 - g$'
+  hint: By the Riemann-Roch formula, $\dim H^0(C, \mathcal{L}) - \dim H^1(C, \mathcal{L}) = d + 1 - g$;
+    since $d > 2g - 2$, Exercise 18.4.G gives $H^1(C, \mathcal{L}) = 0$, leaving $h^0(C, \mathcal{L})
+    = d + 1 - g$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.4.h: show that for any line bundle $\mathcal{l}$ of degree $d > 2g - 2$ on
+    a smooth projective curve $c$ of genus $g$, the dimension of global sections is given exactly by $\dim_k
+    h^0(c, \mathcal{l}) = d + 1 - g$ by the riemann-roch formula, $\dim h^0(c, \mathcal{l}) - \dim h^1(c,
+    \mathcal{l}) = d + 1 - g$; since $d > 2g - 2$, exercise 18.4.g gives $h^1(c, \mathcal{l}) = 0$, leaving
+    $h^0(c, \mathcal{l}) = d + 1 - g$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#069
+  text: 'Exercise 18.5.B: Verify Serre duality explicitly for all line bundles $\mathcal{O}(d)$ on $\mathbb{P}_k^2$'
+  hint: 'Serre duality asserts $H^i(\mathbb{P}^2, \mathcal{O}(d))^\vee \cong H^{2-i}(\mathbb{P}^2, \mathcal{O}(-3-d))$:
+    (1) For $i=0, d \ge 0$, $\dim H^0(\mathcal{O}(d)) = \binom{d+2}{2}$, which matches $\dim H^2(\mathcal{O}(-3-d))
+    = \binom{-(-3-d)-1}{2} = \binom{d+2}{2}$; (2) for $i=1$, $H^1(\mathcal{O}(d)) = 0 = H^1(\mathcal{O}(-3-d))$;
+    (3) for $i=2, d \le -3$, $\dim H^2(\mathcal{O}(d)) = \binom{-d-1}{2}$, matching $\dim H^0(\mathcal{O}(-3-d))
+    = \binom{(-3-d)+2}{2} = \binom{-d-1}{2}$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.5.b: verify serre duality explicitly for all line bundles $\mathcal{o}(d)$
+    on $\mathbb{p}_k^2$ serre duality asserts $h^i(\mathbb{p}^2, \mathcal{o}(d))^\vee \cong h^{2-i}(\mathbb{p}^2,
+    \mathcal{o}(-3-d))$: (1) for $i=0, d \ge 0$, $\dim h^0(\mathcal{o}(d)) = \binom{d+2}{2}$, which matches
+    $\dim h^2(\mathcal{o}(-3-d)) = \binom{-(-3-d)-1}{2} = \binom{d+2}{2}$; (2) for $i=1$, $h^1(\mathcal{o}(d))
+    = 0 = h^1(\mathcal{o}(-3-d))$; (3) for $i=2, d \le -3$, $\dim h^2(\mathcal{o}(d)) = \binom{-d-1}{2}$,
+    matching $\dim h^0(\mathcal{o}(-3-d)) = \binom{(-3-d)+2}{2} = \binom{-d-1}{2}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#070
+  text: 'Exercise 18.5.C: Show that on $\mathbb{P}_k^n$, the natural cup product pairing $H^0(\mathbb{P}^n,
+    \mathcal{O}(d)) \times H^n(\mathbb{P}^n, \mathcal{O}(-n-1-d)) \to H^n(\mathbb{P}^n, \mathcal{O}(-n-1))
+    \cong k$ is a perfect pairing of vector spaces'
+  hint: A basis of $H^0(\mathcal{O}(d))$ is given by monomials $x_0^{e_0} \cdots x_n^{e_n}$ with $\sum
+    e_i = d$; a basis of $H^n(\mathcal{O}(-n-1-d))$ is given by inverse monomials $x_0^{a_0} \cdots x_n^{a_n}$
+    with all $a_i \le -1$ and $\sum a_i = -n-1-d$. The product monomial is $\frac{1}{x_0 \cdots x_n}$
+    if and only if $a_i = -e_i - 1$ for all $i$, which sets up an exact Kronecker delta duality pairing
+    $\langle x^{\vec{e}}, x^{\vec{a}} \rangle = \delta_{\vec{a}, -\vec{e}-\mathbf{1}}$, proving non-degeneracy.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.5.c: show that on $\mathbb{p}_k^n$, the natural cup product pairing $h^0(\mathbb{p}^n,
+    \mathcal{o}(d)) \times h^n(\mathbb{p}^n, \mathcal{o}(-n-1-d)) \to h^n(\mathbb{p}^n, \mathcal{o}(-n-1))
+    \cong k$ is a perfect pairing of vector spaces a basis of $h^0(\mathcal{o}(d))$ is given by monomials
+    $x_0^{e_0} \cdots x_n^{e_n}$ with $\sum e_i = d$; a basis of $h^n(\mathcal{o}(-n-1-d))$ is given by
+    inverse monomials $x_0^{a_0} \cdots x_n^{a_n}$ with all $a_i \le -1$ and $\sum a_i = -n-1-d$. the
+    product monomial is $\frac{1}{x_0 \cdots x_n}$ if and only if $a_i = -e_i - 1$ for all $i$, which
+    sets up an exact kronecker delta duality pairing $\langle x^{\vec{e}}, x^{\vec{a}} \rangle = \delta_{\vec{a},
+    -\vec{e}-\mathbf{1}}$, proving non-degeneracy.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#071
+  text: 'Exercise 18.6.B: Compute the Hilbert polynomial of the twisted cubic curve $C \subset \mathbb{P}_k^3$'
+  hint: The twisted cubic is isomorphic to $\mathbb{P}^1$ embedded via $\mathcal{O}_{\mathbb{P}^1}(3)$,
+    so $\mathcal{O}_C(m) \cong \mathcal{O}_{\mathbb{P}^1}(3m)$; its Hilbert polynomial is $P_C(m) = \chi(\mathbb{P}^1,
+    \mathcal{O}_{\mathbb{P}^1}(3m)) = 3m + 1$, which has degree 1 (dimension 1), leading coefficient 3
+    (degree 3), and constant term $1 - p_a = 1 \implies p_a(C) = 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.b: compute the hilbert polynomial of the twisted cubic curve $c \subset
+    \mathbb{p}_k^3$ the twisted cubic is isomorphic to $\mathbb{p}^1$ embedded via $\mathcal{o}_{\mathbb{p}^1}(3)$,
+    so $\mathcal{o}_c(m) \cong \mathcal{o}_{\mathbb{p}^1}(3m)$; its hilbert polynomial is $p_c(m) = \chi(\mathbb{p}^1,
+    \mathcal{o}_{\mathbb{p}^1}(3m)) = 3m + 1$, which has degree 1 (dimension 1), leading coefficient 3
+    (degree 3), and constant term $1 - p_a = 1 \implies p_a(c) = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#072
+  text: 'Exercise 18.6.C: Compute the Hilbert polynomial of the quadric surface $S = \mathbb{P}^1 \times
+    \mathbb{P}^1 \hookrightarrow \mathbb{P}_k^3$ embedded via the Segre embedding'
+  hint: The Segre embedding gives $\mathcal{O}_S(m) \cong \mathcal{O}_{\mathbb{P}^1 \times \mathbb{P}^1}(m,
+    m)$; by the Künneth formula, $P_S(m) = \chi(\mathbb{P}^1, \mathcal{O}(m)) \cdot \chi(\mathbb{P}^1,
+    \mathcal{O}(m)) = (m+1)^2 = m^2 + 2m + 1$, which has degree 2 (dimension 2), leading coefficient $\frac{\deg
+    S}{2!} = 1 \implies \deg(S) = 2$, and $P_S(0) = 1 \implies p_a(S) = 0$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.c: compute the hilbert polynomial of the quadric surface $s = \mathbb{p}^1
+    \times \mathbb{p}^1 \hookrightarrow \mathbb{p}_k^3$ embedded via the segre embedding the segre embedding
+    gives $\mathcal{o}_s(m) \cong \mathcal{o}_{\mathbb{p}^1 \times \mathbb{p}^1}(m, m)$; by the künneth
+    formula, $p_s(m) = \chi(\mathbb{p}^1, \mathcal{o}(m)) \cdot \chi(\mathbb{p}^1, \mathcal{o}(m)) = (m+1)^2
+    = m^2 + 2m + 1$, which has degree 2 (dimension 2), leading coefficient $\frac{\deg s}{2!} = 1 \implies
+    \deg(s) = 2$, and $p_s(0) = 1 \implies p_a(s) = 0$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#073
+  text: 'Exercise 18.6.F: Show that the Hilbert polynomial of a disjoint union of two projective schemes
+    $X = X_1 \amalg X_2 \hookrightarrow \mathbb{P}_k^n$ is the sum of their individual Hilbert polynomials:
+    $P_X(m) = P_{X_1}(m) + P_{X_2}(m)$'
+  hint: The structure sheaf decomposes as a direct sum $\mathcal{O}_X \cong \mathcal{O}_{X_1} \oplus \mathcal{O}_{X_2}$;
+    twisting preserves direct sums, and since cohomology commutes with direct sums, $H^i(X, \mathcal{O}_X(m))
+    \cong H^i(X_1, \mathcal{O}_{X_1}(m)) \oplus H^i(X_2, \mathcal{O}_{X_2}(m))$, giving $\chi(X, \mathcal{O}_X(m))
+    = \chi(X_1, \mathcal{O}_{X_1}(m)) + \chi(X_2, \mathcal{O}_{X_2}(m))$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.f: show that the hilbert polynomial of a disjoint union of two projective
+    schemes $x = x_1 \amalg x_2 \hookrightarrow \mathbb{p}_k^n$ is the sum of their individual hilbert
+    polynomials: $p_x(m) = p_{x_1}(m) + p_{x_2}(m)$ the structure sheaf decomposes as a direct sum $\mathcal{o}_x
+    \cong \mathcal{o}_{x_1} \oplus \mathcal{o}_{x_2}$; twisting preserves direct sums, and since cohomology
+    commutes with direct sums, $h^i(x, \mathcal{o}_x(m)) \cong h^i(x_1, \mathcal{o}_{x_1}(m)) \oplus h^i(x_2,
+    \mathcal{o}_{x_2}(m))$, giving $\chi(x, \mathcal{o}_x(m)) = \chi(x_1, \mathcal{o}_{x_1}(m)) + \chi(x_2,
+    \mathcal{o}_{x_2}(m))$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#074
+  text: 'Exercise 18.6.J: Show that the Hilbert polynomial is invariant under flat deformations of projective
+    schemes'
+  hint: For a flat projective family $\pi \colon \mathcal{X} \to Y$ over a connected Noetherian scheme
+    $Y$, the Euler characteristic $\chi(\mathcal{X}_y, \mathcal{O}_{\mathcal{X}_y}(m))$ is locally constant
+    on $Y$ for every fixed integer $m$; since a polynomial is uniquely determined by its values at infinitely
+    many integers, the polynomial $P_{\mathcal{X}_y}(m)$ is identical for all fibers $y \in Y$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.j: show that the hilbert polynomial is invariant under flat deformations
+    of projective schemes for a flat projective family $\pi \colon \mathcal{x} \to y$ over a connected
+    noetherian scheme $y$, the euler characteristic $\chi(\mathcal{x}_y, \mathcal{o}_{\mathcal{x}_y}(m))$
+    is locally constant on $y$ for every fixed integer $m$; since a polynomial is uniquely determined
+    by its values at infinitely many integers, the polynomial $p_{\mathcal{x}_y}(m)$ is identical for
+    all fibers $y \in y$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#075
+  text: 'Exercise 18.6.K: Compute the degree and arithmetic genus of a smooth surface $S \subset \mathbb{P}_k^3$
+    of degree $d$'
+  hint: From $0 \to \mathcal{O}_{\mathbb{P}^3}(-d) \to \mathcal{O}_{\mathbb{P}^3} \to \mathcal{O}_S \to
+    0$, the Hilbert polynomial is $P_S(m) = \binom{m+3}{3} - \binom{m-d+3}{3} = \frac{d}{2} m^2 + \frac{d(4-d)}{2}
+    m + \frac{(d-1)(d-2)(d-3)}{6} + 1$; reading off the coefficients gives $\dim(S) = 2$, $\deg(S) = d$,
+    and $p_a(S) = 1 - P_S(0) = \binom{d-1}{3} = \frac{(d-1)(d-2)(d-3)}{6}$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.6.k: compute the degree and arithmetic genus of a smooth surface $s \subset
+    \mathbb{p}_k^3$ of degree $d$ from $0 \to \mathcal{o}_{\mathbb{p}^3}(-d) \to \mathcal{o}_{\mathbb{p}^3}
+    \to \mathcal{o}_s \to 0$, the hilbert polynomial is $p_s(m) = \binom{m+3}{3} - \binom{m-d+3}{3} =
+    \frac{d}{2} m^2 + \frac{d(4-d)}{2} m + \frac{(d-1)(d-2)(d-3)}{6} + 1$; reading off the coefficients
+    gives $\dim(s) = 2$, $\deg(s) = d$, and $p_a(s) = 1 - p_s(0) = \binom{d-1}{3} = \frac{(d-1)(d-2)(d-3)}{6}$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#076
+  text: 'Exercise 18.7.A: Let $f \colon X \to Y$ be an affine morphism between separated schemes of finite
+    type over $A$. Show that $R^i f_* \mathcal{F} = 0$ for all $i > 0$ and all quasicoherent sheaves $\mathcal{F}$
+    on $X$'
+  hint: For every affine open $V = \mathrm{Spec}(B) \subset Y$, the preimage $f^{-1}(V) = \mathrm{Spec}(C)$
+    is affine because $f$ is an affine morphism; since affine schemes have vanishing higher cohomology
+    for quasicoherent sheaves, $H^i(f^{-1}(V), \mathcal{F}) = H^i(\mathrm{Spec}(C), \mathcal{F}) = 0$
+    for all $i > 0$, which proves that the higher pushforward sheaf $R^i f_* \mathcal{F} = \widetilde{H^i(f^{-1}(V),
+    \mathcal{F})} = 0$ vanishes.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.7.a: let $f \colon x \to y$ be an affine morphism between separated schemes
+    of finite type over $a$. show that $r^i f_* \mathcal{f} = 0$ for all $i > 0$ and all quasicoherent
+    sheaves $\mathcal{f}$ on $x$ for every affine open $v = \mathrm{spec}(b) \subset y$, the preimage
+    $f^{-1}(v) = \mathrm{spec}(c)$ is affine because $f$ is an affine morphism; since affine schemes have
+    vanishing higher cohomology for quasicoherent sheaves, $h^i(f^{-1}(v), \mathcal{f}) = h^i(\mathrm{spec}(c),
+    \mathcal{f}) = 0$ for all $i > 0$, which proves that the higher pushforward sheaf $r^i f_* \mathcal{f}
+    = \widetilde{h^i(f^{-1}(v), \mathcal{f})} = 0$ vanishes.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#077
+  text: 'Exercise 18.7.B: Show that if $f \colon X \to Y$ is an affine morphism, then $H^i(X, \mathcal{F})
+    \cong H^i(Y, f_* \mathcal{F})$ for all $i \ge 0$'
+  hint: Apply the Leray spectral sequence $E_2^{p, q} = H^p(Y, R^q f_* \mathcal{F}) \implies H^{p+q}(X,
+    \mathcal{F})$; by Exercise 18.7.A, $R^q f_* \mathcal{F} = 0$ for all $q > 0$, so the spectral sequence
+    collapses at $E_2$ to the single horizontal row $E_2^{p, 0} = H^p(Y, f_* \mathcal{F})$, yielding canonical
+    isomorphisms $H^p(Y, f_* \mathcal{F}) \cong H^p(X, \mathcal{F})$.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.7.b: show that if $f \colon x \to y$ is an affine morphism, then $h^i(x, \mathcal{f})
+    \cong h^i(y, f_* \mathcal{f})$ for all $i \ge 0$ apply the leray spectral sequence $e_2^{p, q} = h^p(y,
+    r^q f_* \mathcal{f}) \implies h^{p+q}(x, \mathcal{f})$; by exercise 18.7.a, $r^q f_* \mathcal{f} =
+    0$ for all $q > 0$, so the spectral sequence collapses at $e_2$ to the single horizontal row $e_2^{p,
+    0} = h^p(y, f_* \mathcal{f})$, yielding canonical isomorphisms $h^p(y, f_* \mathcal{f}) \cong h^p(x,
+    \mathcal{f})$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#078
+  text: 'Exercise 18.7.D: Compute the higher pushforward sheaves $R^q \pi_*(\mathcal{O}_{\mathbb{P}_Y^n}(d))$
+    for the projection morphism $\pi \colon \mathbb{P}_Y^n \to Y$'
+  hint: 'For every affine open $V = \mathrm{Spec}(B) \subset Y$, the preimage is $\pi^{-1}(V) = \mathbb{P}_B^n$;
+    since cohomology commutes with flat base change along $B$, $(R^q \pi_* \mathcal{O}(d))|_V \cong \widetilde{H^q(\mathbb{P}_B^n,
+    \mathcal{O}(d))}$, which yields: (1) $R^0 \pi_* \mathcal{O}(d) \cong \mathcal{O}_Y[x_0, \dots, x_n]_d$
+    for $d \ge 0$; (2) $R^n \pi_* \mathcal{O}(d) \cong \mathcal{O}_Y[x_0, \dots, x_n]_{-n-1-d}^\vee$ for
+    $d \le -n-1$; (3) $R^q \pi_* \mathcal{O}(d) = 0$ for all $0 < q < n$.'
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.7.d: compute the higher pushforward sheaves $r^q \pi_*(\mathcal{o}_{\mathbb{p}_y^n}(d))$
+    for the projection morphism $\pi \colon \mathbb{p}_y^n \to y$ for every affine open $v = \mathrm{spec}(b)
+    \subset y$, the preimage is $\pi^{-1}(v) = \mathbb{p}_b^n$; since cohomology commutes with flat base
+    change along $b$, $(r^q \pi_* \mathcal{o}(d))|_v \cong \widetilde{h^q(\mathbb{p}_b^n, \mathcal{o}(d))}$,
+    which yields: (1) $r^0 \pi_* \mathcal{o}(d) \cong \mathcal{o}_y[x_0, \dots, x_n]_d$ for $d \ge 0$;
+    (2) $r^n \pi_* \mathcal{o}(d) \cong \mathcal{o}_y[x_0, \dots, x_n]_{-n-1-d}^\vee$ for $d \le -n-1$;
+    (3) $r^q \pi_* \mathcal{o}(d) = 0$ for all $0 < q < n$.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#079
+  text: 'Exercise 18.8.B: Prove that if $\mathcal{L}$ is an ample line bundle on a projective Noetherian
+    scheme $X$ and $\mathcal{F}$ is a coherent sheaf, then $H^i(X, \mathcal{F} \otimes \mathcal{L}^{\otimes
+    m}) = 0$ for all $i > 0$ and all $m \gg 0$ (Serre Vanishing)'
+  hint: Embed $X \hookrightarrow \mathbb{P}^n$ using a very ample power $\mathcal{L}^{\otimes r}$; push
+    $\mathcal{F}$ forward to $\mathbb{P}^n$ and resolve it by a finite sequence of split line bundles
+    $\bigoplus \mathcal{O}_{\mathbb{P}^n}(-k_j) \twoheadrightarrow (i_* \mathcal{F})$; twisting by $\mathcal{O}(m)$
+    shifts all degrees into the positive range $m - k_j \ge 0$ where higher cohomology on $\mathbb{P}^n$
+    vanishes, forcing $H^{i>0}(X, \mathcal{F} \otimes \mathcal{L}^{\otimes m}) = 0$ by induction on the
+    resolution length.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.8.b: prove that if $\mathcal{l}$ is an ample line bundle on a projective noetherian
+    scheme $x$ and $\mathcal{f}$ is a coherent sheaf, then $h^i(x, \mathcal{f} \otimes \mathcal{l}^{\otimes
+    m}) = 0$ for all $i > 0$ and all $m \gg 0$ (serre vanishing) embed $x \hookrightarrow \mathbb{p}^n$
+    using a very ample power $\mathcal{l}^{\otimes r}$; push $\mathcal{f}$ forward to $\mathbb{p}^n$ and
+    resolve it by a finite sequence of split line bundles $\bigoplus \mathcal{o}_{\mathbb{p}^n}(-k_j)
+    \twoheadrightarrow (i_* \mathcal{f})$; twisting by $\mathcal{o}(m)$ shifts all degrees into the positive
+    range $m - k_j \ge 0$ where higher cohomology on $\mathbb{p}^n$ vanishes, forcing $h^{i>0}(x, \mathcal{f}
+    \otimes \mathcal{l}^{\otimes m}) = 0$ by induction on the resolution length.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#080
+  text: 'Exercise 18.8.E: Prove that a projective Noetherian scheme $X$ over $k$ with $H^1(X, \mathcal{I})
+    = 0$ for all ideal sheaves $\mathcal{I} \subset \mathcal{O}_X$ is a finite discrete set of points
+    (0-dimensional affine scheme)'
+  hint: If $\dim(X) \ge 1$, choose a non-affine closed curve $C \subset X$ and a point $p \in C$; the
+    ideal sheaf $\mathcal{I}_p \subset \mathcal{O}_C$ fits into $0 \to \mathcal{I}_p \to \mathcal{O}_C
+    \to \kappa(p) \to 0$, whose long exact sequence gives $H^0(\mathcal{O}_C) \to \kappa(p) \to H^1(C,
+    \mathcal{I}_p) \to H^1(C, \mathcal{O}_C)$; if $H^1(X, \mathcal{I}) = 0$ for all ideals, every global
+    function separates points and tangents, forcing $X$ to be affine and 0-dimensional.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.8.e: prove that a projective noetherian scheme $x$ over $k$ with $h^1(x, \mathcal{i})
+    = 0$ for all ideal sheaves $\mathcal{i} \subset \mathcal{o}_x$ is a finite discrete set of points
+    (0-dimensional affine scheme) if $\dim(x) \ge 1$, choose a non-affine closed curve $c \subset x$ and
+    a point $p \in c$; the ideal sheaf $\mathcal{i}_p \subset \mathcal{o}_c$ fits into $0 \to \mathcal{i}_p
+    \to \mathcal{o}_c \to \kappa(p) \to 0$, whose long exact sequence gives $h^0(\mathcal{o}_c) \to \kappa(p)
+    \to h^1(c, \mathcal{i}_p) \to h^1(c, \mathcal{o}_c)$; if $h^1(x, \mathcal{i}) = 0$ for all ideals,
+    every global function separates points and tangents, forcing $x$ to be affine and 0-dimensional.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#081
+  text: 'Exercise 18.9.A: Use Chow''s Lemma to prove that for any proper morphism $f \colon X \to Y$ of
+    Noetherian schemes and any coherent sheaf $\mathcal{F}$ on $X$, the direct image sheaves $R^i f_*
+    \mathcal{F}$ are coherent on $Y$'
+  hint: By Chow's Lemma, choose a projective birational map $\pi \colon X' \to X$ that is an isomorphism
+    on a dense open $U \subset X$; let $Z = X \setminus U$ be the closed complement with $\dim Z < \dim
+    X$. By Noetherian induction on the dimension of the support of $\mathcal{F}$, the higher direct images
+    are coherent on $Z$; since $X' \to Y$ is projective, $R^i (f \circ \pi)_* (\pi^* \mathcal{F})$ is
+    coherent by projective Čech theory, and the Leray spectral sequence for $\pi$ combined with 5-lemma
+    on the excision sequence proves $R^i f_* \mathcal{F}$ is coherent.
+  locator: null
+  sub_index: null
+  search_text: 'exercise 18.9.a: use chow''s lemma to prove that for any proper morphism $f \colon x \to
+    y$ of noetherian schemes and any coherent sheaf $\mathcal{f}$ on $x$, the direct image sheaves $r^i
+    f_* \mathcal{f}$ are coherent on $y$ by chow''s lemma, choose a projective birational map $\pi \colon
+    x'' \to x$ that is an isomorphism on a dense open $u \subset x$; let $z = x \setminus u$ be the closed
+    complement with $\dim z < \dim x$. by noetherian induction on the dimension of the support of $\mathcal{f}$,
+    the higher direct images are coherent on $z$; since $x'' \to y$ is projective, $r^i (f \circ \pi)_*
+    (\pi^* \mathcal{f})$ is coherent by projective čech theory, and the leray spectral sequence for $\pi$
+    combined with 5-lemma on the excision sequence proves $r^i f_* \mathcal{f}$ is coherent.'
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#082
   text: What was the original geometric motivation for Serre and Grothendieck computing the Čech cohomology
     $H^*(\mathbb{P}^n, \mathcal{O}(d))$, and why does the multi-grading by monomial weights make the entire
     infinite-dimensional calculation computable?
@@ -28,7 +1348,7 @@ exercises:
     monomial $t_0^{e_0} \cdots t_n^{e_n}$, splitting the infinite čech complex into a direct sum of independent
     1-dimensional subcomplexes $\check{\mathcal{c}}^\bullet(\vec{e})$ classified solely by the negative
     index set $\mathrm{neg}(\vec{e}) = \{i \mid e_i < 0\}$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#001
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#083
   text: How does the negative support set $\mathrm{NEG}(\vec{e}) = \{i \mid e_i < 0\}$ classify the cohomology
     of a monomial into three distinct cases, and how do you evaluate it in your head?
   hint: 'Motivation: eliminate all intermediate homological boundary checks. Invention: (1) Case $\mathrm{NEG}(\vec{e})
@@ -51,7 +1371,7 @@ exercises:
     \subsetneq \{0, 1, \dots, n\}$: choosing any non-negative coordinate index $j \notin \mathrm{neg}(\vec{e})$
     acts as a contracting cone vertex, producing an explicit null-homotopy $h(s) = s \cup \{j\}$ that
     proves $h^q = 0$ for all $0 < q < n$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#002
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#084
   text: How does one compute $H^0(\mathbb{P}^n, \mathcal{O}(d))$ in your head in two seconds for any dimension
     $n$ and twist $d$?
   hint: 'Motivation: count global sections of line bundles on $\mathbb{P}^n$. Invention: global sections
@@ -69,7 +1389,7 @@ exercises:
     into $n+1$ distinct variables gives $\binom{n+d}{n} = \binom{n+d}{d}$ for $d \ge 0$, and $0$ for $d
     < 0$. quick check: on $\mathbb{p}^2$, $h^0(\mathcal{o}(2))$ has dimension $\binom{2+2}{2} = \binom{4}{2}
     = 6$ (the 6 quadratic monomials); for $d = -1$, it is $0$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#003
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#085
   text: Why is the intermediate cohomology $H^q(\mathbb{P}^n, \mathcal{O}(d)) = 0$ always zero for all
     $0 < q < n$ and all degrees $d \in \mathbb{Z}$?
   hint: 'Motivation: understand why projective space has no intermediate topological holes. Invention:
@@ -85,7 +1405,7 @@ exercises:
     least one positive exponent $e_j \ge 0$ (so it is not top-degree) and at least one negative exponent
     $e_k < 0$ (so it is not global); any non-negative coordinate index $j$ provides a contracting homotopy
     $h$ on the čech subcomplex, making the homology vanish identically for all $0 < q < n$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#004
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#086
   text: How does one compute the top cohomology $H^n(\mathbb{P}^n, \mathcal{O}(d))$ in your head using
     the canonical shift $-n-1$?
   hint: 'Motivation: compute the obstruction space / top cohomology of line bundles. Invention: top cohomology
@@ -105,7 +1425,7 @@ exercises:
     = -n-1-d$. mental trick: $h^n(\mathbb{p}^n, \mathcal{o}(d)) = 0$ for $d \ge -n$, and for $d \le -n-1$
     its dimension is $\binom{n + (-n-1-d)}{n} = \binom{-d-1}{n}$. quick check: on $\mathbb{p}^2$ for $d
     = -4$, compute $-d-1 = 3 \implies \binom{3}{2} = 3$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#005
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#087
   text: What is the residue map on top cohomology and how does it prove that $\omega_{\mathbb{P}^n} \cong
     \mathcal{O}(-n-1)$?
   hint: 'Motivation: find the canonical trace map $\mathrm{Tr} \colon H^n(\mathbb{P}^n, \omega_{\mathbb{P}^n})
@@ -120,7 +1440,7 @@ exercises:
     yields dimension $\binom{-(-n-1)-1}{n} = \binom{n}{n} = 1$, spanned by the unique fundamental inverse
     volume element $\frac{1}{t_0 t_1 \cdots t_n}$; sending $\frac{1}{t_0 \cdots t_n} \mapsto 1$ defines
     the non-degenerate residue trace map.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#006
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#088
   text: How does the single polynomial $\chi(\mathbb{P}^n, \mathcal{O}(d)) = \binom{n+d}{n}$ compute the
     entire Euler characteristic and explain the "vanishing window"?
   hint: 'Motivation: compute the alternating sum of cohomology dimensions $\chi(d) = \sum (-1)^q h^q(d)$
@@ -139,7 +1459,7 @@ exercises:
     = \binom{n+d}{n}$; (2) for $-n \le d \le -1$, $\chi(d) = 0$ (the vanishing window where all cohomology
     groups vanish); (3) for $d \le -n-1$, $(-1)^n \chi(d) = h^n(d) = (-1)^n \binom{n+d}{n} = \binom{-d-1}{n}$
     by upper index negation.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#007
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#089
   text: How does the Čech computation work concretely on $\mathbb{P}^1$ using two charts, and how does
     it generalize to higher dimensions?
   hint: 'Motivation: understand the base case $n=1$ before attacking general $n$. Invention: on $\mathbb{P}^1$,
@@ -158,7 +1478,7 @@ exercises:
     $h^0$ is polynomials of degree $\le d$ (dimension $d+1$ for $d \ge 0$); $h^1$ is the space of un-cancelable
     negative laurent poles $\{t^{-1}, \dots, t^{d+1}\}$ (dimension $-d-1$ for $d \le -2$). for $d = -1$,
     both $h^0 = 0$ and $h^1 = 0$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#008
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#090
   text: How does one compute the genus $g$ of a smooth degree-$d$ plane curve $C \subset \mathbb{P}^2$
     in your head using the cohomology of $\mathbb{P}^2$?
   hint: 'Motivation: compute the topological genus of an algebraic curve directly from its defining polynomial
@@ -179,7 +1499,7 @@ exercises:
     \mathcal{o}(d-3))^\vee$. mental trick: $g = h^0(\mathbb{p}^2, \mathcal{o}(d-3)) = \binom{(d-3)+2}{2}
     = \frac{(d-1)(d-2)}{2}$; for line $d=1 \implies g=0$; conic $d=2 \implies g=0$; cubic $d=3 \implies
     g=1$; quartic $d=4 \implies g=3$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#009
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#091
   text: How does one compute the canonical bundle $\omega_X$ of a complete intersection $X = V(f_1, \dots,
     f_r) \subset \mathbb{P}^n$ of degrees $(d_1, \dots, d_r)$ in your head?
   hint: 'Motivation: determine whether a variety is Fano, Calabi-Yau, or of general type. Invention: apply
@@ -200,7 +1520,7 @@ exercises:
     d_i = n+1$. examples: cubic curve in $\mathbb{p}^2$ ($3 = 2+1$), quartic surface in $\mathbb{p}^3$
     ($4 = 3+1$), quintic 3-fold in $\mathbb{p}^4$ ($5 = 4+1$), and complete intersection of a quadric
     and a cubic in $\mathbb{p}^4$ ($2+3 = 5 = 4+1$).'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#010
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#092
   text: How does the Koszul resolution compute the cohomology and Hilbert polynomial of a complete intersection
     $X = V(f_1, \dots, f_r) \subset \mathbb{P}^n$?
   hint: 'Motivation: calculate sheaf cohomology on subvarieties without leaving the ambient projective
@@ -219,7 +1539,7 @@ exercises:
     since all terms are direct sums of line bundles $\mathcal{o}(-k)$ whose cohomology on $\mathbb{p}^n$
     is known, break the complex into short exact sequences to compute $h^*(x, \mathcal{o}_x(m))$ and euler
     characteristics inductively.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#011
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#093
   text: How does one compute the higher direct images $R^q \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d))$
     for a projective bundle $\pi \colon \mathbb{P}(\mathcal{E}) \to S$ in your head?
   hint: 'Motivation: compute pushforwards along families of projective spaces. Invention: relative projective
@@ -237,7 +1557,7 @@ exercises:
     \cong \mathrm{sym}^d(\mathcal{e})$ for $d \ge 0$; (2) $r^n \pi_*(\mathcal{o}(d)) \cong \mathrm{sym}^{-n-1-d}(\mathcal{e})^\vee
     \otimes \det(\mathcal{e})^{-1}$ for $d \le -n-1$; (3) $r^q \pi_*(\mathcal{o}(d)) = 0$ for all $0 <
     q < n$, reducing relative projective geometry to symmetric and determinant powers of $\mathcal{e}$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#012
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#094
   text: How does one invent the Čech computation of $H^*(\mathbb{P}^1, \mathcal{O}(d))$ using two affine
     charts and compute all cohomology groups in your head?
   hint: 'Motivation: compute the simplest non-affine sheaf cohomology by gluing two copies of $\mathbb{A}^1$.
@@ -261,7 +1581,7 @@ exercises:
     for $d \ge 0$, and $0$ for $d < 0$; (2) $h^1 = \mathrm{coker}(d)$ is the missing laurent poles $t^{-1},
     \dots, t^{d+1}$, which has dimension $-d-1$ for $d \le -2$, and $0$ for $d \ge -1$. for $d = -1$,
     both $h^0 = 0$ and $h^1 = 0$, revealing the fundamental "vanishing gap".'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#013
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#095
   text: How does one invent the Euler sequence on $\mathbb{P}^n$ and use it to compute the canonical bundle
     $\omega_{\mathbb{P}^n} \cong \mathcal{O}(-n-1)$ in your head?
   hint: 'Motivation: find the tangent and cotangent bundles of projective space using homogeneous coordinates
@@ -282,7 +1602,7 @@ exercises:
     (n+1)} \to t\mathbb{p}^n \to 0$. mental trick: take determinants: $\det(t\mathbb{p}^n) \cong \det(\mathcal{o}(1)^{\oplus
     (n+1)}) \otimes \det(\mathcal{o})^{-1} \cong \mathcal{o}(n+1)$; dualizing gives $\omega_{\mathbb{p}^n}
     = \det(\omega^1_{\mathbb{p}^n}) = \mathcal{o}(-n-1)$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#014
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#096
   text: How does one invent the Adjunction Formula for hypersurfaces $X \subset \mathbb{P}^n$ and compute
     the canonical bundle $\omega_X$ in your head?
   hint: 'Motivation: compute the dualizing/canonical bundle of a subvariety from the ambient space. Invention:
@@ -301,7 +1621,7 @@ exercises:
     since $n_{x/\mathbb{p}^n} \cong \mathcal{o}_x(d)$ for a degree-$d$ hypersurface and $\omega_{\mathbb{p}^n}
     = \mathcal{o}(-n-1)$, dualizing yields $\omega_x \cong \mathcal{o}_x(d - n - 1)$. mental trick: subtract
     $n+1$ from the hypersurface degree $d$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#015
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#097
   text: Why are plane cubics, quartic surfaces in $\mathbb{P}^3$, and quintic 3-folds in $\mathbb{P}^4$
     all Calabi-Yau varieties with $\omega_X \cong \mathcal{O}_X$?
   hint: 'By the Adjunction Formula $\omega_X \cong \mathcal{O}_X(d - n - 1)$, the canonical bundle is
@@ -318,7 +1638,7 @@ exercises:
     - 3) = \mathcal{o}_c$ (elliptic curves of genus 1); (2) $n=3, d=4 \implies \omega_s = \mathcal{o}_s(4
     - 4) = \mathcal{o}_s$ (k3 surfaces); (3) $n=4, d=5 \implies \omega_x = \mathcal{o}_x(5 - 5) = \mathcal{o}_x$
     (quintic calabi-yau 3-folds in string theory).'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#016
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#098
   text: How does one invent the genus formula $g = \frac{(d-1)(d-2)}{2}$ for a smooth plane curve $C \subset
     \mathbb{P}^2$ of degree $d$?
   hint: 'Motivation: compute the topological genus of an algebraic curve directly from its polynomial
@@ -339,7 +1659,7 @@ exercises:
     mental trick: $g = h^0(\mathbb{p}^2, \mathcal{o}(d-3)) = \binom{(d-3)+2}{2} = \frac{(d-1)(d-2)}{2}$;
     for line $d=1 \implies g=0$; conic $d=2 \implies g=0$; cubic $d=3 \implies g=1$; quartic $d=4 \implies
     g=3$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#017
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#099
   text: How does one compute the Hilbert polynomial $P_X(m) = \chi(X, \mathcal{O}_X(m))$ in your head
     and read off the dimension and degree?
   hint: 'Motivation: capture the asymptotic growth of global sections in a single polynomial. Invention:
@@ -360,7 +1680,7 @@ exercises:
     where the power of $m$ gives $\dim(x) = n-1$ and the leading coefficient gives $\frac{\deg(x)}{(\dim
     x)!} = \frac{d}{(n-1)!}$; the constant term $p_x(0) = \chi(x, \mathcal{o}_x) = 1 - g$ gives the arithmetic
     genus.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#018
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#100
   text: How does the exact sequence for a hyperplane section $0 \to \mathcal{O}_X(-1) \to \mathcal{O}_X
     \to \mathcal{O}_H \to 0$ compute global sections inductively?
   hint: 'Motivation: compute cohomology on a high-dimensional variety by reducing to a lower-dimensional
@@ -378,7 +1698,7 @@ exercises:
     \to \mathcal{o}_x(m) \to \mathcal{o}_h(m) \to 0$. if $h^1(x, \mathcal{o}_x(m-1)) = 0$, the global
     sections sequence $0 \to h^0(\mathcal{o}_x(m-1)) \to h^0(\mathcal{o}_x(m)) \to h^0(h, \mathcal{o}_h(m))
     \to 0$ is exact, proving $h^0(x, \mathcal{o}(m)) = h^0(x, \mathcal{o}(m-1)) + h^0(h, \mathcal{o}(m))$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#019
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#101
   text: How does one compute the cohomology of a complete intersection of two quadrics $X = V(Q_1, Q_2)
     \subset \mathbb{P}^3$ (an elliptic curve of degree 4)?
   hint: 'Motivation: compute invariants of non-hypersurface complete intersections. Invention: resolve
@@ -398,7 +1718,7 @@ exercises:
     \mathcal{o}(-4) \to \mathcal{o}(-2)^{\oplus 2} \to k \to 0 \implies h^1(k) \cong h^0(\mathcal{o}(-4))
     = 0$ and $h^2(k) \cong h^3(\mathcal{o}(-4)) \cong k$; (2) $0 \to k \to \mathcal{o} \to \mathcal{o}_x
     \to 0 \implies h^1(\mathcal{o}_x) \cong h^2(k) \cong k$, proving $g = h^1(\mathcal{o}_x) = 1$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#020
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#102
   text: Why does every algebraic vector bundle $\mathcal{E}$ on $\mathbb{P}^1$ split uniquely into a direct
     sum of line bundles $\bigoplus_{i=1}^r \mathcal{O}(a_i)$ (Grothendieck's Theorem)?
   hint: 'Motivation: classify vector bundles on projective curves. Invention: find a line subbundle $\mathcal{O}(a_1)
@@ -417,7 +1737,7 @@ exercises:
     \cong h^1(\mathbb{p}^1, (\mathcal{e}'')^\vee \otimes \mathcal{o}(a_1)) = 0$ by maximality of $a_1$,
     forcing the extension to split. mental trick: test $h^0(\mathbb{p}^1, \mathcal{e}(k))$ for various
     twists $k$ to identify the jumping degrees $a_i$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#021
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#103
   text: How does one compute the cohomology of the blow-up $\widetilde{X} = \mathrm{Bl}_p(\mathbb{P}^2)$
     of the projective plane at a point in your head?
   hint: 'Motivation: determine how resolving a point changes the topological and algebraic cohomology
@@ -438,7 +1758,7 @@ exercises:
     so $h^i(\widetilde{x}, \mathcal{o}_{\widetilde{x}}) \cong h^i(\mathbb{p}^2, \mathcal{o}_{\mathbb{p}^2})$,
     meaning $h^0 = 1, h^1 = 0, h^2 = 0$. on the picard group, $\mathrm{pic}(\widetilde{x}) \cong \mathbb{z}
     h \oplus \mathbb{z} e$, adding exactly one new algebraic cycle class.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#022
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#104
   text: Why does Serre Vanishing $H^i(X, \mathcal{F}(m)) = 0$ for all $i > 0$ and $m \gg 0$ hold geometrically
     on any projective scheme $X \subset \mathbb{P}^n$?
   hint: 'Motivation: understand why sufficiently positive twists eliminate all homological obstructions.
@@ -456,7 +1776,7 @@ exercises:
     twisting by $\mathcal{o}(m)$ shifts the line bundles into $\mathcal{o}(m - k_j)$. for $m > \max(k_j)$,
     all line bundle twists lie in the positive range where $h^{i>0}(\mathbb{p}^n, \mathcal{o}(m - k_j))
     = 0$, forcing the hypercohomology spectral sequence to vanish in all positive degrees.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#023
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#105
   text: How did Serre and Grothendieck invent the computation of $H^*(\mathbb{P}^n, \mathcal{O}(d))$ and
     what is the core breakthrough that makes it computable?
   hint: 'Motivation: compute sheaf cohomology on the fundamental compact space of algebraic geometry.
@@ -477,7 +1797,7 @@ exercises:
     the multi-weight exponents $\vec{e} = (e_0, \dots, e_n)$ of monomials $t_0^{e_0} \cdots t_n^{e_n}$
     with $\sum e_i = d$, reducing the entire infinite-dimensional cohomology calculation to analyzing
     the set of negative exponents $\mathrm{neg}(\vec{e}) = \{i \mid e_i < 0\}$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#024
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#106
   text: How does one classify the cohomology of a monomial $T_0^{e_0} \cdots T_n^{e_n}$ in your head using
     the negative index set $\mathrm{NEG}(\vec{e})$?
   hint: 'Mental rule: (1) If $\mathrm{NEG}(\vec{e}) = \emptyset$ (all $e_i \ge 0$), the monomial has no
@@ -499,7 +1819,7 @@ exercises:
     n\}$ (some negative, some non-negative), choosing any non-negative index $i_{\mathrm{fix}} \notin
     \mathrm{neg}(\vec{e})$ defines a contracting homotopy $h(s) = s \cup \{i_{\mathrm{fix}}\}$ that kills
     the subcomplex, making all intermediate cohomology $h^q = 0$ for $0 < q < n$ vanish identically.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#025
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#107
   text: How does one compute $H^0(\mathbb{P}^n, \mathcal{O}(d))$ in your head in two seconds for any $n$
     and $d$?
   hint: 'Mental trick: $H^0(\mathbb{P}^n, \mathcal{O}(d))$ is the space of ordinary homogeneous polynomials
@@ -514,7 +1834,7 @@ exercises:
     $d$ in $n+1$ variables is $\binom{n+d}{n} = \binom{n+d}{d}$ for $d \ge 0$, and is $0$ for $d < 0$.
     example: for $\mathbb{p}^2$ and $d=2$, compute $\binom{2+2}{2} = \binom{4}{2} = 6$; for $d=-1$, it
     is $0$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#026
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#108
   text: Why is the intermediate cohomology $H^q(\mathbb{P}^n, \mathcal{O}(d)) = 0$ always zero for all
     $0 < q < n$ and all degrees $d \in \mathbb{Z}$?
   hint: Because every monomial in an intermediate degree has at least one positive exponent $e_j \ge 0$
@@ -528,7 +1848,7 @@ exercises:
     degree has at least one positive exponent $e_j \ge 0$ (so it is not top-degree) and at least one negative
     exponent $e_k < 0$ (so it is not global); any non-negative coordinate acts as an algebraic cone point
     / contracting homotopy that makes the čech subcomplex contractible and acyclic.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#027
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#109
   text: How does one compute the top cohomology $H^n(\mathbb{P}^n, \mathcal{O}(d))$ in your head using
     the canonical shift $-n-1$?
   hint: 'Mental trick: $H^n(\mathbb{P}^n, \mathcal{O}(d))$ is spanned by inverse monomials $\frac{1}{T_0^{a_0}
@@ -545,7 +1865,7 @@ exercises:
     = -d - (n+1) = -n-1-d$. thus, $h^n(\mathbb{p}^n, \mathcal{o}(d)) = 0$ for $d \ge -n$, and for $d \le
     -n-1$ its rank is $\binom{n + (-n-1-d)}{n} = \binom{-d-1}{n}$. example: for $\mathbb{p}^2$ and $d=-4$,
     $-d-1 = 3$, so the rank is $\binom{3}{2} = 3$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#028
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#110
   text: Why is the canonical dualizing sheaf of projective space $\omega_{\mathbb{P}^n} \cong \mathcal{O}(-n-1)$
     and how does it explain the Serre duality pairing?
   hint: The top cohomology $H^n(\mathbb{P}^n, \mathcal{O}(-n-1))$ has rank $\binom{-(-n-1)-1}{n} = \binom{n}{n}
@@ -561,7 +1881,7 @@ exercises:
     t_1 \cdots t_n}$; multiplying a polynomial of degree $d$ with an inverse monomial of degree $-n-1-d$
     produces a scalar multiple of $\frac{1}{t_0 \cdots t_n}$, giving the non-degenerate serre duality
     pairing $h^0(\mathbb{p}^n, \mathcal{o}(d)) \times h^n(\mathbb{p}^n, \mathcal{o}(-n-1-d)) \to r$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#029
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#111
   text: How does the single polynomial formula $\chi(\mathbb{P}^n, \mathcal{O}(d)) = \binom{n+d}{n}$ compute
     the entire Euler characteristic and explain the "vanishing window"?
   hint: 'Mental trick: the Euler characteristic $\chi(d) = \sum (-1)^q h^q(d) = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$
@@ -577,7 +1897,7 @@ exercises:
     $d$ of degree $n$ with roots at $d = -1, -2, \dots, -n$. for $d \ge 0$, $\chi(d) = h^0(d) = \binom{n+d}{n}$;
     for $-n \le d \le -1$, $\chi(d) = 0$ (the vanishing window where all cohomology is 0); for $d \le
     -n-1$, $(-1)^n \chi(d) = h^n(d) = (-1)^n \binom{n+d}{n} = \binom{-d-1}{n}$ by upper index negation.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#030
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#112
   text: How does the computation of $H^*(\mathbb{P}^1, \mathcal{O}(d))$ work concretely on the two charts
     $U_0 = \mathrm{Spec}(k[t])$ and $U_1 = \mathrm{Spec}(k[t^{-1}])$?
   hint: The Čech complex is $k[t] \oplus k[t^{-1}] \xrightarrow{d} k[t, t^{-1}]$ where $d(f, g) = g -
@@ -594,7 +1914,7 @@ exercises:
     (2) $h^1 = \mathrm{coker}(d) = k[t, t^{-1}] / (k[t] + k[t^{-1}])$, which has basis $\{t^{-1}, t^{-2},
     \dots, t^{-(m-1)}\}$ of dimension $m-1$ for $\mathcal{o}(-m)$, giving $h^1(\mathcal{o}(-m)) = m-1$
     and dualizing sheaf $\omega_{\mathbb{p}^1} \cong \mathcal{o}(-2)$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#031
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#113
   text: How does one compute the genus $g$ of a smooth degree-$d$ plane curve $C \subset \mathbb{P}^2$
     in your head using the cohomology of $\mathbb{P}^2$?
   hint: Take the ideal sheaf short exact sequence $0 \to \mathcal{O}_{\mathbb{P}^2}(-d) \to \mathcal{O}_{\mathbb{P}^2}
@@ -615,7 +1935,7 @@ exercises:
     k$ and an isomorphism $h^1(c, \mathcal{o}_c) \cong h^2(\mathbb{p}^2, \mathcal{o}(-d))$; by serre duality
     on $\mathbb{p}^2$, $g = h^1(\mathcal{o}_c) = h^2(\mathbb{p}^2, \mathcal{o}(-d)) = h^0(\mathbb{p}^2,
     \mathcal{o}(d-3)) = \binom{(d-3)+2}{2} = \frac{(d-1)(d-2)}{2}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#032
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#114
   text: How does one compute the dimension of the space of degree-$m$ polynomials vanishing on a degree-$d$
     hypersurface $X \subset \mathbb{P}^n$?
   hint: 'Twist the hypersurface exact sequence by $\mathcal{O}(m)$ to get $0 \to \mathcal{O}_{\mathbb{P}^n}(m-d)
@@ -632,7 +1952,7 @@ exercises:
     is always short exact on $h^0$: $0 \to h^0(\mathcal{o}(m-d)) \to h^0(\mathcal{o}(m)) \to h^0(x, \mathcal{o}_x(m))
     \to 0$, meaning every section on $x$ lifts to a polynomial on $\mathbb{p}^n$, and $\dim h^0(x, \mathcal{o}_x(m))
     = \binom{n+m}{n} - \binom{n+m-d}{n}$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#033
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#115
   text: How does the Koszul resolution generalize the cohomology computation of $\mathbb{P}^n$ to complete
     intersections $X = V(f_1, \dots, f_r) \subset \mathbb{P}^n$?
   hint: Resolve the structure sheaf $\mathcal{O}_X$ by the Koszul complex $0 \to \bigwedge^r \mathcal{E}^\vee
@@ -649,7 +1969,7 @@ exercises:
     since all intermediate terms are direct sums of line bundles $\mathcal{o}(-k)$ whose cohomology on
     $\mathbb{p}^n$ is completely known, the hypercohomology spectral sequence breaks into finite 2-term
     sequences that compute $h^i(x, \mathcal{o}_x(m))$ algorithmically.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#034
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#116
   text: How does one compute the higher direct image sheaves $R^q \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d))$
     for a projective bundle $\pi \colon \mathbb{P}(\mathcal{E}) \to S$ in your head?
   hint: 'Mental trick: projective bundles behave fiberwise like standard $\mathbb{P}^n$. For a vector
@@ -666,7 +1986,7 @@ exercises:
     \cong \mathrm{sym}^{-n-1-d}(\mathcal{e})^\vee \otimes \det(\mathcal{e})^{-1}$ for $d \le -n-1$; (3)
     $r^q \pi_*(\mathcal{o}(d)) = 0$ for all $0 < q < n$, reducing relative projective bundle calculations
     to symmetric and exterior powers of $\mathcal{e}$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#035
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#117
   text: What is the cohomology group $H^0(\mathbb{P}_R^n, \mathcal{O}(d))$ for $d \ge 0$ over a ring $R$?
   hint: $H^0(\mathbb{P}_R^n, \mathcal{O}(d)) \cong (R[T_0, \dots, T_n])_d$, the free $R$-module of homogeneous
     degree-$d$ polynomials generated by all monomials $T_0^{e_0} \cdots T_n^{e_n}$ with $\sum e_i = d$,
@@ -677,7 +1997,7 @@ exercises:
     ring $r$? $h^0(\mathbb{p}_r^n, \mathcal{o}(d)) \cong (r[t_0, \dots, t_n])_d$, the free $r$-module
     of homogeneous degree-$d$ polynomials generated by all monomials $t_0^{e_0} \cdots t_n^{e_n}$ with
     $\sum e_i = d$, which has rank $\binom{n+d}{d}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#036
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#118
   text: What is the cohomology group $H^0(\mathbb{P}_R^n, \mathcal{O}(d))$ for $d < 0$?
   hint: $H^0(\mathbb{P}_R^n, \mathcal{O}(d)) = 0$, because there are no non-zero polynomials of negative
     degree.
@@ -685,7 +2005,7 @@ exercises:
   sub_index: null
   search_text: what is the cohomology group $h^0(\mathbb{p}_r^n, \mathcal{o}(d))$ for $d < 0$? $h^0(\mathbb{p}_r^n,
     \mathcal{o}(d)) = 0$, because there are no non-zero polynomials of negative degree.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#037
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#119
   text: What is the intermediate cohomology $H^q(\mathbb{P}_R^n, \mathcal{O}(d))$ for all $0 < q < n$
     and all $d \in \mathbb{Z}$?
   hint: $H^q(\mathbb{P}_R^n, \mathcal{O}(d)) = 0$, because the graded Čech subcomplexes $\check{\mathcal{C}}^\bullet(\vec{e})$
@@ -697,7 +2017,7 @@ exercises:
     q < n$ and all $d \in \mathbb{z}$? $h^q(\mathbb{p}_r^n, \mathcal{o}(d)) = 0$, because the graded čech
     subcomplexes $\check{\mathcal{c}}^\bullet(\vec{e})$ are acyclic whenever the negative index set $\mathrm{neg}(\vec{e})
     = \{i \mid e_i < 0\}$ is neither empty nor the full set $\{0, \dots, n\}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#038
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#120
   text: What is the top cohomology group $H^n(\mathbb{P}_R^n, \mathcal{O}(d))$ for $d \ge -n$?
   hint: $H^n(\mathbb{P}_R^n, \mathcal{O}(d)) = 0$, because any monomial $\frac{1}{T_0^{-e_0} \cdots T_n^{-e_n}}$
     with all strictly negative exponents $e_i \le -1$ must have degree $\sum e_i \le -(n+1)$, so no non-zero
@@ -708,7 +2028,7 @@ exercises:
     $h^n(\mathbb{p}_r^n, \mathcal{o}(d)) = 0$, because any monomial $\frac{1}{t_0^{-e_0} \cdots t_n^{-e_n}}$
     with all strictly negative exponents $e_i \le -1$ must have degree $\sum e_i \le -(n+1)$, so no non-zero
     classes exist in degrees $d \ge -n$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#039
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#121
   text: What is the top cohomology group $H^n(\mathbb{P}_R^n, \mathcal{O}(-n-1))$?
   hint: $H^n(\mathbb{P}_R^n, \mathcal{O}(-n-1)) \cong R \cdot \frac{1}{T_0 T_1 \cdots T_n}$, a free $R$-module
     of rank 1 spanned by the single canonical generator $\frac{1}{T_0 \cdots T_n}$.
@@ -717,7 +2037,7 @@ exercises:
   search_text: what is the top cohomology group $h^n(\mathbb{p}_r^n, \mathcal{o}(-n-1))$? $h^n(\mathbb{p}_r^n,
     \mathcal{o}(-n-1)) \cong r \cdot \frac{1}{t_0 t_1 \cdots t_n}$, a free $r$-module of rank 1 spanned
     by the single canonical generator $\frac{1}{t_0 \cdots t_n}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#040
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#122
   text: What is the top cohomology group $H^n(\mathbb{P}_R^n, \mathcal{O}(d))$ for $d \le -n-1$?
   hint: $H^n(\mathbb{P}_R^n, \mathcal{O}(d)) \cong \left(\frac{1}{T_0 \cdots T_n} R\left[\frac{1}{T_0},
     \dots, \frac{1}{T_n}\right]\right)_d \cong \mathrm{Hom}_R((R[T_0, \dots, T_n])_{-n-1-d}, R)$, which
@@ -728,7 +2048,7 @@ exercises:
     $h^n(\mathbb{p}_r^n, \mathcal{o}(d)) \cong \left(\frac{1}{t_0 \cdots t_n} r\left[\frac{1}{t_0}, \dots,
     \frac{1}{t_n}\right]\right)_d \cong \mathrm{hom}_r((r[t_0, \dots, t_n])_{-n-1-d}, r)$, which is a
     free $r$-module of rank $\binom{-d-1}{n} = (-1)^n \binom{n+d}{d}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#041
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#123
   text: How is the standard affine covering $\mathcal{U}$ of $\mathbb{P}_R^n$ defined for the Čech complex
     computation?
   hint: $\mathcal{U} = \{ D_+(T_i) \}_{i=0}^n$, where each $D_+(T_i) = \mathrm{Spec}(R[T_0/T_i, \dots,
@@ -738,7 +2058,7 @@ exercises:
   search_text: how is the standard affine covering $\mathcal{u}$ of $\mathbb{p}_r^n$ defined for the čech
     complex computation? $\mathcal{u} = \{ d_+(t_i) \}_{i=0}^n$, where each $d_+(t_i) = \mathrm{spec}(r[t_0/t_i,
     \dots, t_n/t_i])$ is an affine open subscheme isomorphic to $\mathbb{a}_r^n$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#042
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#124
   text: What are the terms of the ordered Čech complex $\check{\mathcal{C}}_{\mathrm{ord}}^p(\mathcal{U},
     \mathcal{O}_{\mathbb{P}^n}(d))$?
   hint: $\check{\mathcal{C}}_{\mathrm{ord}}^p(\mathcal{U}, \mathcal{O}_{\mathbb{P}^n}(d)) = \bigoplus_{i_0
@@ -752,7 +2072,7 @@ exercises:
     = \bigoplus_{i_0 < \dots < i_p} \left(r\left[t_0, \dots, t_n, \frac{1}{t_{i_0} \cdots t_{i_p}}\right]\right)_d$,
     consisting of degree-$d$ homogeneous elements with denominators supported on the index subset $\{i_0,
     \dots, i_p\}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#043
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#125
   text: What is the Čech differential $d \colon \check{\mathcal{C}}^p \to \check{\mathcal{C}}^{p+1}$ on
     a section $s$?
   hint: $d(s)_{i_0 \dots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j s_{i_0 \dots \widehat{i_j} \dots i_{p+1}}$,
@@ -762,7 +2082,7 @@ exercises:
   search_text: what is the čech differential $d \colon \check{\mathcal{c}}^p \to \check{\mathcal{c}}^{p+1}$
     on a section $s$? $d(s)_{i_0 \dots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j s_{i_0 \dots \widehat{i_j} \dots
     i_{p+1}}$, which preserves the multi-weight degree vector $\vec{e} = (e_0, \dots, e_n) \in \mathbb{z}^{n+1}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#044
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#126
   text: How does the Čech complex decompose into a direct sum of multi-graded subcomplexes?
   hint: $\check{\mathcal{C}}_{\mathrm{ord}}^\bullet(\mathcal{U}, \mathcal{O}_{\mathbb{P}^n}(d)) = \bigoplus_{\vec{e}
     \in \mathbb{Z}^{n+1}, \sum e_i = d} \check{\mathcal{C}}^\bullet(\vec{e})$, where each monomial $T_0^{e_0}
@@ -773,7 +2093,7 @@ exercises:
     \mathcal{o}_{\mathbb{p}^n}(d)) = \bigoplus_{\vec{e} \in \mathbb{z}^{n+1}, \sum e_i = d} \check{\mathcal{c}}^\bullet(\vec{e})$,
     where each monomial $t_0^{e_0} \cdots t_n^{e_n}$ forms an independent 1-dimensional subcomplex over
     $r$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#045
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#127
   text: For a weight vector $\vec{e} = (e_0, \dots, e_n)$, what is the definition of $\mathrm{NEG}(\vec{e})$?
   hint: $\mathrm{NEG}(\vec{e}) := \{ i \in \{0, \dots, n\} \mid e_i < 0 \}$, recording the indices where
     the variable $T_i$ appears with a strictly negative exponent.
@@ -782,7 +2102,7 @@ exercises:
   search_text: for a weight vector $\vec{e} = (e_0, \dots, e_n)$, what is the definition of $\mathrm{neg}(\vec{e})$?
     $\mathrm{neg}(\vec{e}) := \{ i \in \{0, \dots, n\} \mid e_i < 0 \}$, recording the indices where the
     variable $t_i$ appears with a strictly negative exponent.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#046
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#128
   text: What are the terms of the subcomplex $\check{\mathcal{C}}^p(\vec{e})$ in terms of $\mathrm{NEG}(\vec{e})$?
   hint: $\check{\mathcal{C}}^p(\vec{e}) = \bigoplus_{i_0 < \dots < i_p, \, \mathrm{NEG}(\vec{e}) \subseteq
     \{i_0, \dots, i_p\}} R \cdot T_0^{e_0} \cdots T_n^{e_n}$; the term is zero unless all negative coordinate
@@ -793,7 +2113,7 @@ exercises:
     $\check{\mathcal{c}}^p(\vec{e}) = \bigoplus_{i_0 < \dots < i_p, \, \mathrm{neg}(\vec{e}) \subseteq
     \{i_0, \dots, i_p\}} r \cdot t_0^{e_0} \cdots t_n^{e_n}$; the term is zero unless all negative coordinate
     indices appear in the intersection.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#047
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#129
   text: Why is the complex $\check{\mathcal{C}}^\bullet(\vec{e})$ concentrated in a single degree when
     $\mathrm{NEG}(\vec{e}) = \{0, \dots, n\}$?
   hint: Because the condition $\mathrm{NEG}(\vec{e}) \subseteq \{i_0, \dots, i_p\}$ requires $\{i_0, \dots,
@@ -807,7 +2127,7 @@ exercises:
     \{i_0, \dots, i_p\}$ requires $\{i_0, \dots, i_p\} = \{0, \dots, n\}$, which occurs only at the top
     stage $p = n$, so $\check{\mathcal{c}}^n(\vec{e}) = r \cdot \frac{1}{t_0^{-e_0} \cdots t_n^{-e_n}}$
     and $\check{\mathcal{c}}^p(\vec{e}) = 0$ for all $p < n$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#048
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#130
   text: Why is the complex $\check{\mathcal{C}}^\bullet(\vec{e})$ isomorphic to the Čech complex of $\mathrm{Spec}(R)$
     when $\mathrm{NEG}(\vec{e}) = \emptyset$?
   hint: When all $e_i \ge 0$, $\mathrm{NEG}(\vec{e}) = \emptyset \subseteq \{i_0, \dots, i_p\}$ holds
@@ -821,7 +2141,7 @@ exercises:
     = \emptyset \subseteq \{i_0, \dots, i_p\}$ holds for all tuples, making $\check{\mathcal{c}}^\bullet(\vec{e})$
     identical to the čech complex of the covering of $\mathrm{spec}(r)$ by $n+1$ copies of itself, which
     has cohomology $r$ in degree 0 and 0 in degrees $p > 0$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#049
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#131
   text: How is the explicit null-homotopy $h \colon \check{\mathcal{C}}^{p+1}(\vec{e}) \to \check{\mathcal{C}}^p(\vec{e})$
     constructed when $\emptyset \subsetneq \mathrm{NEG}(\vec{e}) \subsetneq \{0, \dots, n\}$?
   hint: Pick a fixed index $i_{\mathrm{fix}} \notin \mathrm{NEG}(\vec{e})$; define $h(s)_{i_0 \dots i_p}
@@ -834,7 +2154,7 @@ exercises:
     index $i_{\mathrm{fix}} \notin \mathrm{neg}(\vec{e})$; define $h(s)_{i_0 \dots i_p} = (-1)^a s_{i_0
     \dots i_{a-1} i_{\mathrm{fix}} i_a \dots i_p}$ if $i_{\mathrm{fix}} \notin \{i_0, \dots, i_p\}$ and
     $0$ otherwise; checking $(dh + hd)(s) = s$ proves the subcomplex is acyclic.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#050
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#132
   text: What is the Serre duality pairing between $H^0(\mathbb{P}^n, \mathcal{O}(d))$ and $H^n(\mathbb{P}^n,
     \mathcal{O}(-n-1-d))$?
   hint: The pairing $(f, g) \mapsto \mathrm{Coeff}\left(\frac{1}{T_0 \cdots T_n}, f \cdot g\right) \in
@@ -846,7 +2166,7 @@ exercises:
     \mathcal{o}(-n-1-d))$? the pairing $(f, g) \mapsto \mathrm{coeff}\left(\frac{1}{t_0 \cdots t_n}, f
     \cdot g\right) \in r$, which sends a pair of monomials $t_0^{e_0} \cdots t_n^{e_n}$ and $t_0^{d_0}
     \cdots t_n^{d_n}$ to $1$ if $e_i + d_i = -1$ for all $i$, and to $0$ otherwise.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#051
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#133
   text: What is the rank of $H^0(\mathbb{P}_k^2, \mathcal{O}(2))$ over a field $k$?
   hint: The space of homogeneous quadratic polynomials in 3 variables, with rank $\binom{2+2}{2} = \binom{4}{2}
     = 6$, spanned by $\{T_0^2, T_1^2, T_2^2, T_0 T_1, T_0 T_2, T_1 T_2\}$.
@@ -855,7 +2175,7 @@ exercises:
   search_text: what is the rank of $h^0(\mathbb{p}_k^2, \mathcal{o}(2))$ over a field $k$? the space of
     homogeneous quadratic polynomials in 3 variables, with rank $\binom{2+2}{2} = \binom{4}{2} = 6$, spanned
     by $\{t_0^2, t_1^2, t_2^2, t_0 t_1, t_0 t_2, t_1 t_2\}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#052
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#134
   text: What is the rank of $H^2(\mathbb{P}_k^2, \mathcal{O}(-4))$ over a field $k$?
   hint: Here $n = 2, d = -4$; by Serre duality, $\dim_k H^2(\mathbb{P}^2, \mathcal{O}(-4)) = \dim_k H^0(\mathbb{P}^2,
     \mathcal{O}(-2-1-(-4))) = \dim_k H^0(\mathbb{P}^2, \mathcal{O}(1)) = \binom{2+1}{1} = 3$, spanned
@@ -866,7 +2186,7 @@ exercises:
     2, d = -4$; by serre duality, $\dim_k h^2(\mathbb{p}^2, \mathcal{o}(-4)) = \dim_k h^0(\mathbb{p}^2,
     \mathcal{o}(-2-1-(-4))) = \dim_k h^0(\mathbb{p}^2, \mathcal{o}(1)) = \binom{2+1}{1} = 3$, spanned
     by $\{\frac{1}{t_0^2 t_1 t_2}, \frac{1}{t_0 t_1^2 t_2}, \frac{1}{t_0 t_1 t_2^2}\}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#053
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#135
   text: What is $H^1(\mathbb{P}_k^2, \mathcal{O}(d))$ for any integer $d \in \mathbb{Z}$?
   hint: $H^1(\mathbb{P}_k^2, \mathcal{O}(d)) = 0$ for all $d \in \mathbb{Z}$, because $0 < 1 < 2$ is an
     intermediate degree.
@@ -874,7 +2194,7 @@ exercises:
   sub_index: null
   search_text: what is $h^1(\mathbb{p}_k^2, \mathcal{o}(d))$ for any integer $d \in \mathbb{z}$? $h^1(\mathbb{p}_k^2,
     \mathcal{o}(d)) = 0$ for all $d \in \mathbb{z}$, because $0 < 1 < 2$ is an intermediate degree.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#054
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#136
   text: What is the Euler characteristic $\chi(\mathbb{P}_k^n, \mathcal{O}(d)) = \sum_{q=0}^n (-1)^q \dim_k
     H^q(\mathbb{P}^n, \mathcal{O}(d))$?
   hint: $\chi(\mathbb{P}_k^n, \mathcal{O}(d)) = \binom{n+d}{n} = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$ for
@@ -885,7 +2205,7 @@ exercises:
     \dim_k h^q(\mathbb{p}^n, \mathcal{o}(d))$? $\chi(\mathbb{p}_k^n, \mathcal{o}(d)) = \binom{n+d}{n}
     = \frac{(d+1)(d+2)\cdots(d+n)}{n!}$ for all $d \in \mathbb{z}$, which is a polynomial in $d$ of degree
     $n$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#055
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#137
   text: How does multiplication by a degree-$m$ homogeneous polynomial $f \in R[T_0, \dots, T_n]_m$ act
     on the top cohomology $H^n(\mathbb{P}^n, \mathcal{O}(d))$?
   hint: 'It acts as the contragredient (transpose) of multiplication by $f$: $\mathrm{Hom}_R((R[T])_{-n-1-d-m},
@@ -896,7 +2216,7 @@ exercises:
     act on the top cohomology $h^n(\mathbb{p}^n, \mathcal{o}(d))$? it acts as the contragredient (transpose)
     of multiplication by $f$: $\mathrm{hom}_r((r[t])_{-n-1-d-m}, r) \to \mathrm{hom}_r((r[t])_{-n-1-d},
     r)$.'
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#056
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#138
   text: What are the higher direct image sheaves $R^q f_*(\mathcal{O}_{\mathbb{P}_S^n}(d))$ for the structural
     morphism $f \colon \mathbb{P}_S^n \to S$ over any base scheme $S$?
   hint: $R^0 f_* \mathcal{O}(d) \cong (\mathcal{O}_S[T_0, \dots, T_n])_d$; $R^n f_* \mathcal{O}(d) \cong
@@ -908,7 +2228,7 @@ exercises:
     the structural morphism $f \colon \mathbb{p}_s^n \to s$ over any base scheme $s$? $r^0 f_* \mathcal{o}(d)
     \cong (\mathcal{o}_s[t_0, \dots, t_n])_d$; $r^n f_* \mathcal{o}(d) \cong \underline{\mathcal{h}\mathrm{om}}_{\mathcal{o}_s}((\mathcal{o}_s[t_0,
     \dots, t_n])_{-n-1-d}, \mathcal{o}_s)$; and $r^q f_* \mathcal{o}(d) = 0$ for all $q \neq 0, n$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#057
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#139
   text: For a finite locally free sheaf $\mathcal{E}$ of rank $n+1$ on $S$, what is $R^0 \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d))$
     on the projective bundle $\pi \colon \mathbb{P}(\mathcal{E}) \to S$ for $d \ge 0$?
   hint: $R^0 \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d)) \cong \mathrm{Sym}^d(\mathcal{E})$, a finite
@@ -918,7 +2238,7 @@ exercises:
   search_text: for a finite locally free sheaf $\mathcal{e}$ of rank $n+1$ on $s$, what is $r^0 \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(d))$
     on the projective bundle $\pi \colon \mathbb{p}(\mathcal{e}) \to s$ for $d \ge 0$? $r^0 \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(d))
     \cong \mathrm{sym}^d(\mathcal{e})$, a finite locally free sheaf on $s$ of rank $\binom{n+d}{d}$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#058
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#140
   text: For a projective bundle $\pi \colon \mathbb{P}(\mathcal{E}) \to S$ of relative dimension $n$,
     what is the top pushforward $R^n \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(-n-1))$?
   hint: $R^n \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(-n-1)) \cong (\bigwedge^{n+1} \mathcal{E})^\vee
@@ -928,7 +2248,7 @@ exercises:
   search_text: for a projective bundle $\pi \colon \mathbb{p}(\mathcal{e}) \to s$ of relative dimension
     $n$, what is the top pushforward $r^n \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(-n-1))$? $r^n \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(-n-1))
     \cong (\bigwedge^{n+1} \mathcal{e})^\vee = \det(\mathcal{e})^{-1}$, an invertible line bundle on $s$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#059
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#141
   text: How is the relative Serre duality isomorphism formulated for the projective bundle $\pi \colon
     \mathbb{P}(\mathcal{E}) \to S$ in degree $n$?
   hint: $R^n \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(d)) \cong \underline{\mathcal{H}\mathrm{om}}_{\mathcal{O}_S}\left(
@@ -940,7 +2260,7 @@ exercises:
     \colon \mathbb{p}(\mathcal{e}) \to s$ in degree $n$? $r^n \pi_*(\mathcal{o}_{\mathbb{p}(\mathcal{e})}(d))
     \cong \underline{\mathcal{h}\mathrm{om}}_{\mathcal{o}_s}\left( \mathrm{sym}^{-n-1-d}(\mathcal{e})
     \otimes_{\mathcal{o}_s} \bigwedge^{n+1}\mathcal{e}, \, \mathcal{o}_s \right)$ for all $d \le -n-1$.
-- id: gofling-me-paper-proj-20cech-20cohom-pdf#060
+- id: gofling-me-paper-proj-20cech-20cohom-pdf#142
   text: How does the Koszul resolution of the surjective evaluation map $\pi^* \mathcal{E}(-1) \twoheadrightarrow
     \mathcal{O}_{\mathbb{P}(\mathcal{E})}$ prove the canonical isomorphism $R^n \pi_*(\mathcal{O}_{\mathbb{P}(\mathcal{E})}(-n-1))
     \otimes \bigwedge^{n+1}\mathcal{E} \cong \mathcal{O}_S$?
