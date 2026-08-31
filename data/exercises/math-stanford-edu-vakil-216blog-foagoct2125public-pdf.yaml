@@ -55,3 +55,65 @@ exercises:
   sub_index: null
   search_text: (2.2f) verify sheaf axioms for sheaf of continuous functions of topological spaces, arbitrary
     topology
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#006
+  text: (8.3.J) Finite morphisms have finite fibers
+  hint: Check local on a base. From finite morphism, finitely generated as R-module, fiber over point,
+    finite dimensional module over field is Artinian admitting finite spectrum, so finite morphisms
+  locator: null
+  sub_index: null
+  search_text: (8.3.j) finite morphisms have finite fibers check local on a base. from finite morphism,
+    finitely generated as r-module, fiber over point, finite dimensional module over field is artinian
+    admitting finite spectrum, so finite morphisms
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#007
+  text: (11.2.13) Intersection of two affine opens is affine opens using separatedness
+  hint: Separated implies semiseparated, separated means diagonal map is closed immersion and intersection
+    is realised over diagonal.
+  locator: null
+  sub_index: null
+  search_text: (11.2.13) intersection of two affine opens is affine opens using separatedness separated
+    implies semiseparated, separated means diagonal map is closed immersion and intersection is realised
+    over diagonal.
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#008
+  text: (17.3.B) Finite morphisms are projective
+  hint: projective local on base, pick Y = Spec R, X = Spec A, where A finitely generated as R-module
+    from finiteness which surjects into A giving the closed immersion to compose with standard open immersion
+    into projective space embedding X as subscheme of projective space, X -> Y proper from finiteness,
+    P^n_Y -> Y is separateed, X to P^n_Y is closed immersion.
+  locator: null
+  sub_index: null
+  search_text: (17.3.b) finite morphisms are projective projective local on base, pick y = spec r, x =
+    spec a, where a finitely generated as r-module from finiteness which surjects into a giving the closed
+    immersion to compose with standard open immersion into projective space embedding x as subscheme of
+    projective space, x -> y proper from finiteness, p^n_y -> y is separateed, x to p^n_y is closed immersion.
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#009
+  text: (18.1.A) Pushforward of coherent sheaves by projective morphisms are coherent
+  hint: Immediate from Grothendieck's coherence theorem by cheating using projective morphism is proper
+    and reduced target to . Coherence is finite type with finitely presented kernel. Reduce case to Noetherian
+    ring using locality in definition of coherence. By Vakil 16.2.1. pushforward of quasicoherent sheaf
+    along projective morphism is quasicoherent, proof is by checking locally since quasicoherence, covered
+    by affine opens, so morphism is qcqs, preimage is qcqs scheme, restriction is quasicoherent sheaf
+    on U, take affine cover, global sections, restriction pushforward is locally isomorphic to R-module.
+    I could not do this without applying the theorem?
+  locator: null
+  sub_index: null
+  search_text: (18.1.a) pushforward of coherent sheaves by projective morphisms are coherent immediate
+    from grothendieck's coherence theorem by cheating using projective morphism is proper and reduced
+    target to . coherence is finite type with finitely presented kernel. reduce case to noetherian ring
+    using locality in definition of coherence. by vakil 16.2.1. pushforward of quasicoherent sheaf along
+    projective morphism is quasicoherent, proof is by checking locally since quasicoherence, covered by
+    affine opens, so morphism is qcqs, preimage is qcqs scheme, restriction is quasicoherent sheaf on
+    u, take affine cover, global sections, restriction pushforward is locally isomorphic to r-module.
+    i could not do this without applying the theorem?
+- id: math-stanford-edu-vakil-216blog-foagoct2125public-pdf#010
+  text: (18.1.C) Exact sequence of quasicoherent sheaf, 0 -> F -> G -> H -> 0 of quasicoherent sheaves
+    on X, projective over A with F coherent, show exact sequence of H^0
+  hint: reduce to proving for n >> 0, H^1(X, F(n)) = 0. Choose finite open cover of X using X projective
+    hence quasicompact, get short exact sequence of complex and long exact sequence in cohomology. Follows
+    from Serre vanishing by considering twisting with integer n using F coherent.
+  locator: null
+  sub_index: null
+  search_text: (18.1.c) exact sequence of quasicoherent sheaf, 0 -> f -> g -> h -> 0 of quasicoherent
+    sheaves on x, projective over a with f coherent, show exact sequence of h^0 reduce to proving for
+    n >> 0, h^1(x, f(n)) = 0. choose finite open cover of x using x projective hence quasicompact, get
+    short exact sequence of complex and long exact sequence in cohomology. follows from serre vanishing
+    by considering twisting with integer n using f coherent.

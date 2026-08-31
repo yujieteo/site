@@ -3,13 +3,19 @@
 a papers page, and an exercises page, all with live search and
 tag/category filtering.
 
-Tag filtering UI: tags are hidden behind a single "Filters" button
-(next to the search box), matching the theoremsearch.com pattern of a
-compact "Filters | Search" bar rather than a wall of always-visible tag
-buttons. Clicking "Filters" opens a small anchored dropdown panel with
-tags sorted most-common-first. The panel is self-contained (fixed
-width, wraps, scrolls) so it can't be broken by unrelated CSS elsewhere
-on the page.
+CHANGE FROM PREVIOUS VERSION: entries are no longer pre-rendered into
+HTML strings at build time. Instead each list is exported once as a
+compact JSON array embedded in a <script> tag, and FILTER_SCRIPT does
+the row rendering (and HTML-escaping) in the browser, building DOM
+nodes only for whatever is currently visible (respecting the existing
+DISPLAY_CAP). This is what actually shrinks the generated pages -- the
+previous version repeated a full `<div class="entry" data-tags="..."
+data-search="...">...</div>` block per entry in the raw HTML, which is
+where most of the page weight came from.
+
+Tag filtering UI, page structure, base.html, and a11y behavior are
+otherwise unchanged: "Filters" button next to the search box, opening
+a small anchored dropdown panel with tags sorted most-common-first.
 
 Pages also render LaTeX (via MathJax) so that any $...$ / $$...$$ or
 \\(...\\) / \\[...\\] math in bios, notes, exercise text, and hints is
@@ -17,6 +23,7 @@ typeset in the browser.
 """
 
 import html
+import json
 import os
 import re
 from collections import Counter
@@ -32,34 +39,14 @@ OUT = os.path.join(ROOT, "site")
 
 def esc(value):
     """Escape a value for safe interpolation into HTML text content or
-    a quoted HTML attribute.
-
-    Every piece of user/YAML-supplied data (titles, notes, exercise
-    text, hints, URLs, category/tag names, ...) gets spliced directly
-    into f-string HTML below. Without escaping, a single unescaped
-    `"`, `<`, `>`, or `&` in that data corrupts the surrounding tag or
-    attribute -- browsers still render the *visible* text just fine
-    (HTML5 parsing is very forgiving), which is why the page looks
-    correct at a glance, but the resulting DOM no longer matches what
-    was written here. In particular a broken `data-tags="..."` /
-    `data-search="..."` attribute means `element.dataset.tags` /
-    `.search` comes back empty or truncated in JS, so the live
-    filter/search silently stops matching that entry (and sometimes
-    ones after it) even though it's genuinely present in the page.
-
-    html.escape only touches & < > " ' -- it leaves $, \\, {{, }} etc.
-    alone, so LaTeX like $a < b$ or \\(x\\) still reaches MathJax
-    intact.
+    a quoted HTML attribute. Still used for the small amount of HTML
+    built directly in Python (page chrome, tag panel buttons, search
+    placeholders) -- NOT for entry rows anymore, since those are now
+    JSON data rendered (and escaped) client-side in JS.
     """
     return html.escape("" if value is None else str(value), quote=True)
 
 
-# MathJax v3 configuration + loader. Injected on every page (see
-# render_page below) so LaTeX in bios / notes / exercise text / hints
-# gets typeset automatically, regardless of where in the DOM it ends
-# up. MathJax scans and typesets the whole document once it loads, so
-# it doesn't matter that this script tag lives at the end of the body
-# rather than in <head>.
 MATHJAX_SCRIPT = r"""
 <script>
   window.MathJax = {
@@ -69,12 +56,8 @@ MATHJAX_SCRIPT = r"""
       processEscapes: true
     },
     options: {
-      // Don't try to typeset inside things like search boxes / inputs.
       skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
     },
-    // A touch larger than MathJax's default, plus 'global' font caching:
-    // slightly bigger, evenly-spaced glyphs read more easily than the
-    // default size, especially next to the site's own body text.
     svg: { fontCache: 'global', scale: 1.06 }
   };
 </script>
@@ -82,19 +65,18 @@ MATHJAX_SCRIPT = r"""
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
 </script>
 <style>
-  /* MathJax renders in solid black by default, which is unreadable
-     against the dark-mode background below -- make it follow the
-     page's text color in both themes instead of hardcoding one. Extra
-     vertical margin around display math gives it breathing room from
-     surrounding prose, which is easier to parse than text butted
-     right up against an equation. */
   mjx-container { color: inherit; }
   mjx-container[display="true"] { margin: 1em 0 !important; }
 </style>
 <script>
-  // Re-typeset after the filter/search script mutates the DOM (e.g.
-  // when entries are shown/hidden or tags are clicked), in case any
-  // math ships inside content that gets toggled later.
+  // Re-typeset whenever the filter/search script (re)renders rows,
+  // since math now ships as data and is only turned into DOM nodes
+  // for whatever's currently visible.
+  document.addEventListener('entries-rendered', function () {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  });
   document.addEventListener('DOMContentLoaded', function () {
     if (window.MathJax && window.MathJax.typesetPromise) {
       window.MathJax.typesetPromise();
@@ -104,17 +86,17 @@ MATHJAX_SCRIPT = r"""
 """
 
 
-# A visually-hidden "skip to content" link, injected at the very start
-# of every page (see render_page). This is navigation, not a user
-# preference, so there's nothing to toggle: the readable typeface,
-# dark/light mode, and math styling are all fixed sensible defaults set
-# in style.css / MATHJAX_SCRIPT below, following the system light/dark
-# setting automatically via prefers-color-scheme.
 SKIP_LINK = """
 <a class="skip-link" href="#main-content">Skip to content</a>
 """
 
 
+# FILTER_SCRIPT now owns row rendering. It reads its dataset from
+# window.__DATA__[data_key] (a plain JSON array embedded right before
+# this script tag) instead of walking pre-built .entry DOM nodes.
+# row_kind picks which little template function builds each row's
+# HTML client-side; all string interpolation into that HTML happens
+# through escHtml, mirroring what esc() used to do in Python.
 FILTER_SCRIPT = """
 <script>
 (function() {{
@@ -122,10 +104,12 @@ FILTER_SCRIPT = """
   const tagBar = document.getElementById('{tagbar_id}');
   const tagSearch = document.getElementById('{tagsearch_id}');
   const filtersToggle = document.getElementById('{toggle_id}');
-  const entries = Array.from(document.querySelectorAll('#{list_id} .entry[data-tags]'));
+  const listEl = document.getElementById('{list_id}');
   const noResults = document.getElementById('{noresults_id}');
   const countLabel = document.getElementById('{count_id}');
-  const total = entries.length;
+  const DATA = window.__DATA__['{data_key}'];
+  const ROW_KIND = '{row_kind}';
+  const total = DATA.length;
   let activeTag = '__all__';
   let panelOpen = false;
 
@@ -133,38 +117,67 @@ FILTER_SCRIPT = """
   // show at most this many matching entries.
   const DISPLAY_CAP = 400;
 
+  function escHtml(s) {{
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c) {{
+      return ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}})[c];
+    }});
+  }}
+
+  function rowHtml(d) {{
+    if (ROW_KIND === 'link') {{
+      return '<div class="entry">'
+        + '<div class="entry-title"><a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a></div>'
+        + '<div class="entry-abstract">' + escHtml(d.note) + '</div>'
+        + '<div><span class="tag" data-tag="' + escHtml(d.cat) + '">' + escHtml(d.cat) + '</span></div>'
+        + '</div>';
+    }}
+    // exercise rows
+    var badge = '';
+    if (d.locator_kind) {{
+      badge = '<span class="tag locator-badge">' + escHtml(d.locator_kind) + ' ' + escHtml(d.locator_value) + '</span>';
+    }}
+    var hintHtml = '';
+    if (d.hint) {{
+      hintHtml = '<details class="hint"><summary>Hint</summary><div>' + escHtml(d.hint) + '</div></details>';
+    }}
+    return '<div class="entry">'
+      + '<div class="entry-title">' + badge
+      + '<span class="tag" data-tag="' + escHtml(d.slug) + '">' + escHtml(d.label) + '</span></div>'
+      + '<div class="entry-abstract">' + escHtml(d.text) + '</div>'
+      + hintHtml
+      + '<div class="entry-source"><a href="' + escHtml(d.url) + '">' + escHtml(d.url) + '</a></div>'
+      + '</div>';
+  }}
+
   function applyFilters() {{
     const q = searchBox.value.trim().toLowerCase();
     const hasEntryFilter = q !== '' || activeTag !== '__all__';
 
     let matchCount = 0;
-    let visibleCount = 0;
+    const shown = [];
 
-    entries.forEach(function(entry) {{
-      const tags = entry.dataset.tags.split(',').filter(Boolean);
+    for (let i = 0; i < DATA.length; i++) {{
+      const d = DATA[i];
+      const tags = d.tags.split(',').filter(Boolean);
       const matchesTag = activeTag === '__all__' || tags.includes(activeTag);
-      const matchesSearch = q === '' || entry.dataset.search.includes(q);
-      const matches = matchesTag && matchesSearch;
+      const matchesSearch = q === '' || d.search.includes(q);
+      if (matchesTag && matchesSearch) {{
+        matchCount++;
+        if (shown.length < DISPLAY_CAP) shown.push(d);
+      }}
+    }}
 
-      if (matches) matchCount++;
+    listEl.innerHTML = hasEntryFilter ? shown.map(rowHtml).join('') : '';
+    document.dispatchEvent(new Event('entries-rendered'));
 
-      // With no search/tag filter, hide every entry.
-      // With a filter, show only the first DISPLAY_CAP matches.
-      const show = hasEntryFilter && matches && visibleCount < DISPLAY_CAP;
-      entry.classList.toggle('hidden', !show);
-
-      if (show) visibleCount++;
-    }});
-
-    noResults.style.display = matchCount === 0 ? 'block' : 'none';
+    noResults.style.display = (hasEntryFilter && matchCount === 0) ? 'block' : 'none';
 
     if (!hasEntryFilter) {{
       countLabel.textContent = 'Filter to show entries';
     }} else if (matchCount > DISPLAY_CAP) {{
-      countLabel.textContent =
-        visibleCount + ' / ' + matchCount + ' matches (cap ' + DISPLAY_CAP + ')';
+      countLabel.textContent = shown.length + ' / ' + matchCount + ' matches (cap ' + DISPLAY_CAP + ')';
     }} else {{
-      countLabel.textContent = visibleCount + ' / ' + matchCount + ' matches';
+      countLabel.textContent = shown.length + ' / ' + matchCount + ' matches';
     }}
   }}
 
@@ -178,12 +191,6 @@ FILTER_SCRIPT = """
     applyFilters();
   }}
 
-  // Filters the *list of tag buttons* inside the panel by label text --
-  // this is what makes a large tag set easy to find your way around,
-  // separate from the main search box which filters entries. With no
-  // query, only the default top tags (not marked tag-extra) show, plus
-  // the "+N more" hint; typing searches across every tag, including the
-  // ones hidden by default.
   function filterTagButtons() {{
     if (!tagSearch) return;
     const q = tagSearch.value.trim().toLowerCase();
@@ -202,13 +209,6 @@ FILTER_SCRIPT = """
 
   function togglePanel(forceOpen) {{
     panelOpen = typeof forceOpen === 'boolean' ? forceOpen : !panelOpen;
-    // NOTE: this used to be 'flex'. With no flex-direction set, that
-    // made the tag-search box and the button grid lay out
-    // side-by-side (flex's default row axis) instead of stacked,
-    // which is what was squeezing the whole panel into a sliver.
-    // 'block' lets each child (.tag-search-box, .tag-panel-buttons)
-    // stack vertically and use the panel's full width, per their own
-    // CSS rules in style.css.
     tagBar.style.display = panelOpen ? 'block' : 'none';
     filtersToggle.classList.toggle('open', panelOpen);
     filtersToggle.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
@@ -229,15 +229,12 @@ FILTER_SCRIPT = """
     togglePanel();
   }});
 
-  // Close the dropdown when clicking anywhere outside it.
   document.addEventListener('click', function(e) {{
     if (panelOpen && !tagBar.contains(e.target) && e.target !== filtersToggle) {{
       togglePanel(false);
     }}
   }});
 
-  // Close on Escape and return focus to the toggle button, and let
-  // keyboard users close the panel without a mouse.
   document.addEventListener('keydown', function(e) {{
     if (e.key === 'Escape' && panelOpen) {{
       togglePanel(false);
@@ -253,7 +250,7 @@ FILTER_SCRIPT = """
     filtersToggle.focus();
   }});
 
-  document.getElementById('{list_id}').addEventListener('click', function(e) {{
+  listEl.addEventListener('click', function(e) {{
     const chip = e.target.closest('.entry .tag[data-tag]');
     if (!chip) return;
     setActiveTag(chip.dataset.tag);
@@ -290,11 +287,6 @@ def load_all(subdir):
 def render_page(title, content, root="", tagline="", name="", nav_home="", nav_papers="", nav_exercises=""):
     with open(os.path.join(TEMPLATES, "base.html")) as f:
         base = f.read()
-    # Append the MathJax loader to the page content so every generated
-    # page renders LaTeX, without requiring changes to base.html. Prepend
-    # the skip-link/a11y toolbar and wrap the real content in a
-    # #main-content landmark so the skip link has somewhere to jump to
-    # and screen-reader users can navigate straight past the nav.
     full_content = (
         SKIP_LINK
         + f'<div id="main-content" tabindex="-1">{content}</div>'
@@ -307,28 +299,10 @@ def render_page(title, content, root="", tagline="", name="", nav_home="", nav_p
 
 
 def render_tag_bar(sorted_tags, all_label="all", total=None, show_first=8):
-    """sorted_tags: list of (tag_value, label, count) already sorted
-    most-common-first.
-
-    With a large tag set, showing every tag button at once is what was
-    making the panel feel oversized -- height was already capped/
-    scrollable, but scrolling past dozens of buttons to find one isn't
-    actually faster than typing. So only the `show_first` most-used tags
-    render as visible by default; the rest get the `tag-extra` class
-    (hidden via CSS) and are revealed by the in-panel tag search instead
-    of by scrolling. A short hint line says how many more exist.
-
-    Each button carries aria-pressed so its selected state is announced
-    to screen readers (the "active" CSS class alone isn't exposed to
-    assistive tech), and a tabular-nums count badge so people can see at
-    a glance which tags are worth clicking.
-
-    tag_value/label are escaped here before going into the attribute /
-    text content; browsers decode entities back to the original string
-    when exposing them via `.dataset`/`.textContent`, so this is
-    transparent to the FILTER_SCRIPT JS above -- it's purely about
-    keeping the HTML well-formed when a category/tag name itself
-    contains `& < > " '` (rare, but happens, e.g. "Q&A" categories).
+    """Unchanged from before -- tag panel buttons are still built in
+    Python since there are only ever a few dozen of them (one per
+    category/resource, not per entry), so this was never the source of
+    page bloat.
     """
     all_count = f' <span class="tag-count">{total}</span>' if total is not None else ""
     buttons = [
@@ -350,8 +324,20 @@ def render_tag_bar(sorted_tags, all_label="all", total=None, show_first=8):
     return "".join(buttons) + hint
 
 
-def render_filterable_list(rows_html, tag_bar_html, id_prefix, search_placeholder,
-                            empty_message, total):
+def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
+                            empty_message, total, row_kind):
+    """data: list of plain dicts (JSON-serializable) -- one per entry.
+    Every dict must have "tags" (comma-joined string) and "search"
+    (pre-lowercased searchable text) keys; the rest of the fields are
+    whatever rowHtml() in FILTER_SCRIPT needs for that row_kind.
+
+    Rows are no longer rendered to HTML here -- `data` is embedded as
+    JSON and FILTER_SCRIPT builds + escapes row HTML in the browser,
+    only for whichever entries are currently visible. This is the
+    actual fix for page size: previously every entry contributed a
+    full HTML block to every generated page regardless of whether it
+    was ever shown.
+    """
     search_id = f"{id_prefix}-search"
     tagbar_id = f"{id_prefix}-tagbar"
     tagsearch_id = f"{id_prefix}-tagsearch"
@@ -360,32 +346,21 @@ def render_filterable_list(rows_html, tag_bar_html, id_prefix, search_placeholde
     count_id = f"{id_prefix}-count"
     toggle_id = f"{id_prefix}-filters-toggle"
     wrap_id = f"{id_prefix}-filters-wrap"
+    data_key = id_prefix
 
     script = FILTER_SCRIPT.format(
         search_id=search_id, tagbar_id=tagbar_id, tagsearch_id=tagsearch_id,
         list_id=list_id, noresults_id=noresults_id, count_id=count_id,
-        toggle_id=toggle_id,
+        toggle_id=toggle_id, data_key=data_key, row_kind=row_kind,
     )
 
-    # The panel's positioning/sizing is written inline (rather than relying
-    # on a `.tag-filter-bar` rule in static/style.css) so it can't inherit
-    # a no-wrap / overflow-x-auto rule from elsewhere and run off infinitely
-    # to the right. It behaves as a fixed-width, wrapping, scrollable
-    # dropdown anchored under the search row.
-    #
-    # Accessibility notes:
-    # - The search box has a visually-hidden <label> instead of relying on
-    #   placeholder text alone (placeholders disappear on input and aren't
-    #   a reliable accessible name in all screen readers).
-    # - The "Filters" toggle is a real <button> with aria-expanded/
-    #   aria-controls/aria-haspopup so assistive tech announces whether the
-    #   tag panel is open and what it controls.
-    # - The tag panel itself starts with its own quick-filter text box
-    #   (tagsearch) -- with many tags, scanning/scrolling a long list is
-    #   the actual usability problem, so letting people type "geo" to
-    #   narrow "Geometry" / "Algebraic Geometry" etc. is the fix.
-    # - The result count is aria-live="polite" so screen-reader users hear
-    #   the updated count without having to re-find it after every keystroke.
+    # json.dumps handles all escaping needed for embedding inside a
+    # <script> tag; the one extra precaution is neutralizing "</" so a
+    # literal "</script>" can never appear inside a JSON string value
+    # (e.g. a note that happens to contain that substring) and
+    # prematurely close the tag.
+    data_json = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+
     return f"""
     <div class="search-row" id="{wrap_id}" style="position:relative;">
       <label class="visually-hidden" for="{search_id}">{esc(search_placeholder)}</label>
@@ -404,8 +379,12 @@ def render_filterable_list(rows_html, tag_bar_html, id_prefix, search_placeholde
         <div class="tag-panel-buttons">{tag_bar_html}</div>
       </div>
     </div>
-    <div id="{list_id}">{rows_html}</div>
-    <div class="no-results" id="{noresults_id}" role="status" aria-live="polite">{esc(empty_message)}</div>
+    <div id="{list_id}"></div>
+    <div class="no-results" id="{noresults_id}" role="status" aria-live="polite" style="display:none;">{esc(empty_message)}</div>
+    <script>
+      window.__DATA__ = window.__DATA__ || {{}};
+      window.__DATA__['{data_key}'] = {data_json};
+    </script>
     {script}
     """
 
@@ -414,17 +393,9 @@ def render_link_list(entries, id_prefix, search_placeholder, empty_message):
     """Build the filterable list for {title, url, category, note} entries.
     Tags (categories) sorted most-common-first (ties broken alphabetically).
 
-    Every field pulled from YAML (title, note, category, url) is run
-    through esc() before being spliced into the `data-tags`,
-    `data-search`, `href` attributes or the visible markup. Without
-    this, a single `"`, `<`, `>`, or `&` anywhere in that data (a
-    quoted phrase in a note, a "<" in a math-y title, an "&" in a URL
-    query string, ...) corrupts the entry's HTML: the page still
-    *displays* fine because browsers are lenient when rendering, but
-    the resulting DOM attributes the filter script reads
-    (`entry.dataset.tags` / `.search`) come back empty or truncated,
-    so search/filtering on that entry silently fails even though it's
-    genuinely on the page.
+    Fields are no longer HTML-escaped here -- they're plain strings
+    going into a JSON array, and get escaped client-side in rowHtml()
+    right before they're placed into HTML.
     """
     counts = Counter(e["category"] for e in entries)
     sorted_cats = [c for c, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))]
@@ -432,20 +403,21 @@ def render_link_list(entries, id_prefix, search_placeholder, empty_message):
         [(c, c, counts[c]) for c in sorted_cats], total=len(entries)
     )
 
-    rows = ""
+    data = []
     for e in entries:
         cat = e["category"]
         searchable = " ".join([e.get("title", ""), e.get("note", ""), cat]).lower()
-        rows += f"""
-        <div class="entry" data-tags="{esc(cat)}" data-search="{esc(searchable)}">
-          <div class="entry-title"><a href="{esc(e['url'])}">{esc(e['title'])}</a></div>
-          <div class="entry-abstract">{esc(e.get('note', ''))}</div>
-          <div><span class="tag" data-tag="{esc(cat)}">{esc(cat)}</span></div>
-        </div>
-        """
+        data.append({
+            "tags": cat,
+            "search": searchable,
+            "url": e["url"],
+            "title": e.get("title", ""),
+            "note": e.get("note", ""),
+            "cat": cat,
+        })
 
-    return render_filterable_list(rows, tag_bar_html, id_prefix, search_placeholder,
-                                   empty_message, len(entries))
+    return render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
+                                   empty_message, len(entries), row_kind="link")
 
 
 def render_exercise_list(records):
@@ -454,15 +426,6 @@ def render_exercise_list(records):
     each exercise is its own entry so search operates at exercise
     granularity, but filtering happens at resource granularity.
     Resources sorted most-common-first by exercise count.
-
-    As in render_link_list, every YAML-sourced field (title/label,
-    exercise text, hint, url, locator kind/value, and the derived
-    search_text) is escaped before being placed in HTML/attributes --
-    exercise text and hints are LaTeX-heavy and thus especially prone
-    to containing bare `<`, `>`, or `&` (e.g. `$a < b$`), which is
-    exactly the kind of content that silently corrupts an entry's
-    `data-search` attribute and breaks search for that entry without
-    affecting how it looks on the page.
     """
 
     def slug_for(record):
@@ -471,7 +434,7 @@ def render_exercise_list(records):
         return s[:60] or "resource"
 
     tag_defs = {}  # slug -> label
-    rows = ""
+    data = []
     total = 0
     resource_counts = Counter()
 
@@ -484,44 +447,30 @@ def render_exercise_list(records):
         for ex in record.get("exercises", []):
             total += 1
             locator = ex.get("locator")
-            badge = ""
-            if locator:
-                num = locator.get("value", "")
-                badge = (
-                    f'<span class="tag locator-badge">'
-                    f'{esc(locator["kind"].capitalize())} {esc(num)}</span>'
-                )
+            locator_kind = locator["kind"].capitalize() if locator else ""
+            locator_value = locator.get("value", "") if locator else ""
 
-            hint_html = ""
-            if ex.get("hint"):
-                hint_html = f"""<details class="hint">
-                    <summary>Hint</summary>
-                    <div>{esc(ex['hint'])}</div>
-                </details>"""
-
-            # NOTE: previously, if a YAML record supplied `search_text`
-            # explicitly it was used as-is (not lowercased), while the
-            # JS filter always lowercases the query before calling
-            # `.includes()`. That mismatch made search silently fail
-            # for any exercise with an explicit, non-lowercase
-            # `search_text`. Lowercasing unconditionally here fixes it.
+            # Preserves the earlier bugfix: search_text is lowercased
+            # unconditionally, regardless of whether it came from an
+            # explicit YAML `search_text` field or was derived here,
+            # so it always matches what the JS lowercases the query to.
             search_text = (
                 ex.get("search_text")
                 or (ex.get("text", "") + " " + (ex.get("hint") or ""))
             ).lower()
             search_text += " " + label.lower()
 
-            rows += f"""
-            <div class="entry" data-tags="{esc(slug)}" data-search="{esc(search_text)}">
-              <div class="entry-title">
-                {badge}
-                <span class="tag" data-tag="{esc(slug)}">{esc(label)}</span>
-              </div>
-              <div class="entry-abstract">{esc(ex.get('text', ''))}</div>
-              {hint_html}
-              <div class="entry-source"><a href="{esc(record['url'])}">{esc(record['url'])}</a></div>
-            </div>
-            """
+            data.append({
+                "tags": slug,
+                "search": search_text,
+                "slug": slug,
+                "label": label,
+                "text": ex.get("text", ""),
+                "hint": ex.get("hint") or "",
+                "url": record["url"],
+                "locator_kind": locator_kind,
+                "locator_value": str(locator_value),
+            })
 
     sorted_slugs = [
         s for s, _ in sorted(resource_counts.items(), key=lambda kv: (-kv[1], tag_defs[kv[0]].lower()))
@@ -532,10 +481,10 @@ def render_exercise_list(records):
     )
 
     return render_filterable_list(
-        rows, tag_bar_html, "exercise",
+        data, tag_bar_html, "exercise",
         "Search exercises, hints, or resource titles...",
         "No exercises match your search.",
-        total,
+        total, row_kind="exercise",
     )
 
 

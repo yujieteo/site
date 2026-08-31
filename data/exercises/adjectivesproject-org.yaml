@@ -6,24 +6,6 @@ source_file: exercises.txt
 locator_kind: none
 exercises:
 - id: adjectivesproject-org#000
-  text: Which geometric properties are stable under base change in algebraic geometry, and how does one
-    remember them?
-  hint: 'Motivation: determine which geometric characteristics of a family of varieties remain true for
-    every sub-family and fiber. A property $\mathbf{P}$ is stable under base change if for any Cartesian
-    square with $f \colon X \to Y$ having $\mathbf{P}$, the pullback $f'' \colon X \times_Y Y'' \to Y''$
-    also has $\mathbf{P}$. Another way to think about this is identities in six functors. The core stable
-    properties are: proper, smooth, étale, unramified, flat, affine, finite, closed immersion, open immersion,
-    quasi-compact, and quasi-separated.'
-  locator: null
-  sub_index: null
-  search_text: 'which geometric properties are stable under base change in algebraic geometry, and how
-    does one remember them? motivation: determine which geometric characteristics of a family of varieties
-    remain true for every sub-family and fiber. a property $\mathbf{p}$ is stable under base change if
-    for any cartesian square with $f \colon x \to y$ having $\mathbf{p}$, the pullback $f'' \colon x \times_y
-    y'' \to y''$ also has $\mathbf{p}$. another way to think about this is identities in six functors.
-    the core stable properties are: proper, smooth, étale, unramified, flat, affine, finite, closed immersion,
-    open immersion, quasi-compact, and quasi-separated.'
-- id: adjectivesproject-org#001
   text: What is the relationship between regular schemes, complete intersections, and Cohen-Macaulay schemes?
   hint: 'Motivation: organize geometric singularities into a hierarchy based on how well homological algebra
     and dimension theory behave. Invention: there is a strict hierarchy of Noetherian local rings: $\mathbf{Regular}
@@ -47,7 +29,7 @@ exercises:
     image: regular = completely smooth manifold; complete intersection = smooth manifold cut out by clean
     transverse equations; cohen-macaulay = singular space with no floating isolated components or embedded
     zero-dimensional spikes.'
-- id: adjectivesproject-org#002
+- id: adjectivesproject-org#001
   text: What is the Auslander-Buchsbaum Formula and how does it characterize regular local rings?
   hint: 'Motivation: relate the projective dimension of a module to the depth of the ring. Invention:
     for a Noetherian local ring $(A, \mathfrak{m})$ and a non-zero finitely generated $A$-module $M$ of
@@ -64,7 +46,7 @@ exercises:
     to prove that $a$ is regular if and only if the residue field $k = a/\mathfrak{m}$ has finite projective
     dimension, in which case $\mathrm{pd}_a(k) = \dim(a)$, establishing that localization of a regular
     local ring is always regular.'
-- id: adjectivesproject-org#003
+- id: adjectivesproject-org#002
   text: What does an unramified morphism mean, and how does it differ from a formally unramified morphism?
   hint: 'Motivation: formalize covering maps without branch points or NILPOTENT TANGENT VECTORS. Invention:
     a morphism $f \colon X \to Y$ is unramified if it is locally of finite presentation and for all $x
@@ -85,7 +67,7 @@ exercises:
     property for any square-zero thickening without requiring finite presentation. mental image: an unramified
     map is a local immersion with discrete fibers: sheets of the cover never pinch together, tangent spaces
     do not collapse, and the jacobian derivative has trivial kernel.'
-- id: adjectivesproject-org#004
+- id: adjectivesproject-org#003
   text: Why is an integral scheme defined as both reduced and irreducible, and how does this relate to
     integral extensions and domains?
   hint: 'Motivation: match the geometric notion of a whole, undivided geometric space with the algebraic
@@ -107,7 +89,7 @@ exercises:
     and minimal); an integral extension $a \subset b$ geometrically corresponds to a finite dominant map
     between integral schemes. mental image: integral = a solid, one-piece geometric object with no ghost
     nilpotents (reduced) and no overlapping multi-component pieces (irreducible).'
-- id: adjectivesproject-org#005
+- id: adjectivesproject-org#004
   text: What is a syntomic morphism and why does it mean flat, locally of finite presentation, with local
     complete intersection (lci) fibers?
   hint: 'Motivation: define the exact geometric class of morphisms where deformation theory is controlled
@@ -129,7 +111,7 @@ exercises:
     $\mathbin{\delta}_{x/y}$ behaves like a smooth deformation, allowing syntomic cohomology $\mathbb{z}_p(n)(x)$
     to compute $p$-adic motivic cohomology. mental image: syntomic = flat family of varieties whose fibers
     are clean local complete intersections, differential forms deform without higher obstructions.'
-- id: adjectivesproject-org#006
+- id: adjectivesproject-org#005
   text: Why are regular local rings always local complete intersections?
   hint: 'Motivation: show that smooth points are the cleanest possible complete intersections. Invention:
     in a regular local ring $(A, \mathfrak{m})$, the maximal ideal $\mathfrak{m}$ is generated by a regular
@@ -145,7 +127,7 @@ exercises:
     $d = \dim(a)$; viewing $a$ as the quotient of itself by the empty sequence $(0)$, the koszul complex
     $k_\bullet(a; x_1, \dots, x_d)$ is exact in positive degrees, proving that $a$ is cut out by zero
     relations inside a regular ring, hence is a complete intersection with $i/i^2 = 0$.'
-- id: adjectivesproject-org#007
+- id: adjectivesproject-org#006
   text: What is a universally catenary scheme and how does it relate to Grothendieck's excellent schemes?
   hint: 'Motivation: ensure that the dimension of a subvariety does not depend on the choice of maximal
     chain of prime ideals connecting it to the ambient space. Invention: a ring $A$ is catenary if all
@@ -166,7 +148,7 @@ exercises:
     are geometrically regular and normalization commutes with finite type maps, ensuring resolution of
     singularities and dimension calculus are well-behaved. mental image: subvariety dim does not depennd
     on maximal chain of prime ideals.'
-- id: adjectivesproject-org#008
+- id: adjectivesproject-org#007
   text: Why is the diagonal morphism $\Delta \colon X \to X \times_S X$ fundamental, and what does it
     mean for the diagonal to be an open or closed immersion?
   hint: 'Motivation: encode separation, unramifiedness, and intersection theory, DIAGONAL MORPHISM IS
@@ -191,7 +173,7 @@ exercises:
     open balls, try thinking of the diagonal is the mirror reflection of the space inside its product;
     if the mirror image is closed, points are separated; if it is open, points are isolated from their
     neighbors.'
-- id: adjectivesproject-org#009
+- id: adjectivesproject-org#008
   text: How does one come up with the idea of a normal scheme and what does it mean to be integrally closed
     in the field of fractions?
   hint: 'Motivation: eliminate codimension-1 singularities (pinches, self-intersections, cusps) where
@@ -213,7 +195,7 @@ exercises:
     rational function extends across codimension $\ge 2$ subsets. mental image: normal = a smooth surface
     where all self-intersecting creases (like $y^2 = x^2(x+1)$) and cusps (like $y^2 = x^3$) have been
     pulled apart and uncreased into smooth separate sheets.'
-- id: adjectivesproject-org#010
+- id: adjectivesproject-org#009
   text: Why does quasi-separatedness always appear alongside quasi-compactness (qcqs)?
   hint: 'Motivation: do Noetherian-style algebraic geometry on general non-Noetherian schemes. Invention:
     a scheme is quasi-compact if it is a finite union of affine opens; it is quasi-separated if the intersection
@@ -232,7 +214,7 @@ exercises:
     opens, making derived functors, limits, and descent constructible. mental image: quasi-compact = finite
     number of charts; quasi-separated = charts overlap along finite pieces, preventing infinitely jagged
     boundaries between local patches.'
-- id: adjectivesproject-org#011
+- id: adjectivesproject-org#010
   text: What is a projective bundle $\mathbb{P}(\mathcal{E})$ and how is a projective morphism defined?
   hint: 'Motivation: construct the algebraic family of lines in a vector bundle over a base scheme. Invention:
     for a quasi-coherent $\mathcal{O}_S$-module $\mathcal{E}$, the projective bundle is $\mathbb{P}(\mathcal{E})
@@ -251,7 +233,7 @@ exercises:
     into a projective bundle of a finite-rank locally free sheaf $\mathcal{e}$ over $s$. mental image:
     projective bundle = a smooth fiber bundle whose fibers are classical projective spaces $\mathbb{p}^n$,
     parameterizing 1-dimensional quotients of the fiber vector spaces.'
-- id: adjectivesproject-org#012
+- id: adjectivesproject-org#011
   text: How does the Cayley-Hamilton Theorem relate to integral ring extensions and module-finite morphisms?
   hint: 'Motivation: prove that an element generating a finite module satisfies a monic polynomial equation.
     Invention: if $M$ is a finitely generated $A$-module and $\phi \colon M \to M$ is an $A$-linear endomorphism,
@@ -272,7 +254,7 @@ exercises:
     $a$-module. mental image: cayley-hamilton takes a linear transformation on a finite-dimensional space
     and turns its characteristic polynomial into an algebraic integral dependence equation, recall that
     integral extensions generalise finite field extensions in galois theory.'
-- id: adjectivesproject-org#013
+- id: adjectivesproject-org#012
   text: What is so special about unique infinitesimal lifting for formally étale morphisms, why does it
     deserve the name "étale", and why care about square-zero extensions?
   hint: 'Motivation: formalize the inverse function theorem algebraically without real/complex numbers.
@@ -295,7 +277,7 @@ exercises:
     tears, or tangent overlaps; square-zero ideals $i^2 = 0$ represent first-order infinitesimal tangent
     vectors ($k[\epsilon]/\epsilon^2$). mental image: étale = an algebraic local diffeomorphism where
     infinitesimal tangent patches lift uniquely with zero deformation and zero obstruction.'
-- id: adjectivesproject-org#014
+- id: adjectivesproject-org#013
   text: Why is flatness paired with surjectivity to form a faithfully flat morphism? What does it mean
     for checking properties on pullback is equivalent to checking on the base?
   hint: 'Motivation: ensure that checking algebraic properties after pullback is completely equivalent
@@ -316,7 +298,7 @@ exercises:
     module categories. mental image: faithfully flat = a family of spaces that covers every point of the
     base and varies with uniform algebraic thickness, so no fiber is missing and no homological information
     is lost.'
-- id: adjectivesproject-org#015
+- id: adjectivesproject-org#014
   text: Why is an étale morphism the algebraic analogue of a local isomorphism?
   hint: 'Motivation: provide local coordinate charts in the étale topology. Invention: on the level of
     complete local rings, an étale morphism $f \colon X \to Y$ at a point $x \mapsto y$ induces an isomorphism
@@ -331,7 +313,7 @@ exercises:
     $\widehat{\mathcal{o}}_{y, y} \xrightarrow{\sim} \widehat{\mathcal{o}}_{x, x}$ and on tangent spaces
     $t_x x \xrightarrow{\sim} t_y y$, meaning that in the formal and étale topologies, $x$ and $y$ are
     indistinguishable.'
-- id: adjectivesproject-org#016
+- id: adjectivesproject-org#015
   text: Why is an open immersion a local isomorphism?
   hint: 'Motivation: identify the most basic coordinate charts. Invention: for an open immersion $j \colon
     U \hookrightarrow X$, the restriction map on stalks $\mathcal{O}_{X, x} \xrightarrow{\sim} \mathcal{O}_{U,
@@ -342,7 +324,7 @@ exercises:
     charts. invention: for an open immersion $j \colon u \hookrightarrow x$, the restriction map on stalks
     $\mathcal{o}_{x, x} \xrightarrow{\sim} \mathcal{o}_{u, x}$ is an isomorphism for all $x \in u$, and
     the map is a homeomorphism onto an open subset of $x$.'
-- id: adjectivesproject-org#017
+- id: adjectivesproject-org#016
   text: How does an open immersion remain injective on points, and is it because of the morphism being
     a monomorphism?
   hint: 'Motivation: show that geometric inclusions do not double points. Invention: an open immersion
@@ -354,7 +336,7 @@ exercises:
     being a monomorphism? motivation: show that geometric inclusions do not double points. invention:
     an open immersion is a monomorphism in the category of schemes, which implies that for every field
     $k$, the map on $k$-rational points $u(k) \hookrightarrow x(k)$ is an injective function of sets.'
-- id: adjectivesproject-org#018
+- id: adjectivesproject-org#017
   text: What is the difference between a regular scheme and a regular morphism?
   hint: 'Motivation: distinguish the intrinsic smoothness of a space from the smoothness of a family over
     a singular base. Invention: a scheme $X$ is regular if all its local rings $\mathcal{O}_{X, x}$ are
@@ -371,7 +353,7 @@ exercises:
     schemes; over a singular base $y$, a regular morphism $x \to y$ can have a singular total space $x$.
     mental image: regular scheme = smooth geometry; regular morphism = smooth family of fibers, even if
     the floor/base of the family is jagged.'
-- id: adjectivesproject-org#019
+- id: adjectivesproject-org#018
   text: What are local complete intersection (lci) fibers and why are they important?
   hint: 'Motivation: control the deformation theory and virtual fundamental classes of singular fibers.
     Invention: a morphism has lci fibers if each fiber $X_y$ is locally cut out inside a smooth variety
@@ -388,7 +370,7 @@ exercises:
     tor-amplitude in $[-1, 0]$, enabling derived gysin maps and intersection theory. mental image: lci
     fiber = a singular fiber whose singularities are no worse than transverse intersections and clean
     polynomial equations.'
-- id: adjectivesproject-org#020
+- id: adjectivesproject-org#019
   text: Why are closed immersions always affine morphisms?
   hint: 'Motivation: verify that closed subschemes are determined by algebraic quotient rings. Invention:
     for a closed immersion $i \colon Z \hookrightarrow X$ defined by an ideal sheaf $\mathcal{I} \subset
@@ -403,7 +385,7 @@ exercises:
     $\mathrm{spec}(b) \subset x$ is $i^{-1}(\mathrm{spec}(b)) \cong \mathrm{spec}(b/i)$, which is an affine
     scheme by definition. mental image: a closed subscheme inside an affine coordinate chart is simply
     the affine zero locus of the defining equations.'
-- id: adjectivesproject-org#021
+- id: adjectivesproject-org#020
   text: How do the "Lying Over" and "Going Up" theorems imply that finite morphisms are universally closed?
   hint: 'Motivation: prove that finite morphisms map closed sets to closed sets under any base change.
     Invention: for an integral extension $A \subset B$, the Cohen-Seidenberg Lying Over and Going Up theorems
@@ -420,7 +402,7 @@ exercises:
     upward; on schemes, this translates to $f(\mathrm{spec}(b)) \subset \mathrm{spec}(a)$ being closed,
     and since finite ring maps remain finite under any base change $a \to a''$, finite morphisms are universally
     closed.'
-- id: adjectivesproject-org#022
+- id: adjectivesproject-org#021
   text: What is a projective morphism versus a locally projective morphism?
   hint: 'Motivation: distinguish global projective embeddings from morphisms that are projective only
     over local charts of the base. Invention: a morphism $f \colon X \to Y$ is projective if it factors
@@ -437,7 +419,7 @@ exercises:
     $y$ admits an open cover $\{u_i\}$ such that each restriction $f^{-1}(u_i) \to u_i$ is projective.
     mental image: projective = one single global set of homogeneous coordinates embeds the entire family
     into projective space.'
-- id: adjectivesproject-org#023
+- id: adjectivesproject-org#022
   text: How does one motivate the definition of properness as separated, of finite type, and universally
     closed?
   hint: 'Motivation: define the algebraic analogue of compact topological spaces ($X$ is compact $\iff
@@ -459,7 +441,7 @@ exercises:
     and finitely many equations (finite type). mental image: proper = algebraic compactness: solutions
     to equations inside $x$ cannot branch into multiple limits (separated) and cannot escape off to infinity
     as parameters vary (universally closed).'
-- id: adjectivesproject-org#024
+- id: adjectivesproject-org#023
   text: What is a rational point $X(k)$, and what are other equivalent definitions?
   hint: 'Motivation: evaluate an algebraic scheme on concrete coordinates in a field $k$. Invention: a
     $k$-rational point is a morphism of schemes $x \colon \mathrm{Spec}(k) \to X$; equivalently, it is
@@ -474,7 +456,7 @@ exercises:
     whose residue field is isomorphic to $k$ ($\kappa(p) \cong k$); by the functor of points, $x(k) =
     \mathrm{hom}_{\mathbf{sch}}(\mathrm{spec}(k), x)$. mental image: rational point = a solution $(x_1,
     \dots, x_n) \in k^n$ satisfying all defining polynomial equations of $x$.'
-- id: adjectivesproject-org#025
+- id: adjectivesproject-org#024
   text: Why are all fields regular local rings?
   hint: 'Motivation: identify the zero-dimensional base cases of regular schemes. Invention: for a field
     $k$, its only ideal is $(0)$, which is the unique maximal ideal $\mathfrak{m} = (0)$; its dimension
@@ -487,7 +469,7 @@ exercises:
     maximal ideal $\mathfrak{m} = (0)$; its dimension is $\dim(k) = 0$, and the dimension of its cotangent
     space is $\dim_k(\mathfrak{m}/\mathfrak{m}^2) = \dim_k(0/0) = 0$; since $0 = 0$, every field is a
     regular local ring of dimension 0.'
-- id: adjectivesproject-org#026
+- id: adjectivesproject-org#025
   text: What is a smooth morphism of schemes?
   hint: 'Motivation: define a family of varieties whose fibers are smooth manifolds of constant dimension.
     Invention: a morphism $f \colon X \to Y$ is smooth of relative dimension $d$ if it is flat, locally
@@ -500,7 +482,7 @@ exercises:
     relative dimension $d$ if it is flat, locally of finite presentation, and its relative module of kähler
     differentials $\omega_{x/y}^1$ is locally free of rank $d$ (equivalently, its geometric fibers are
     smooth algebraic varieties).'
-- id: adjectivesproject-org#027
+- id: adjectivesproject-org#026
   text: What is a formally smooth morphism and what is the difference between smooth and formally smooth?
   hint: 'Motivation: characterize smoothness via infinitesimal coordinate extensions. Invention: a morphism
     $f \colon X \to Y$ is formally smooth if for every ring $A$ and square-zero ideal $I \subset A$, the
@@ -517,7 +499,7 @@ exercises:
     the difference is that a smooth morphism is formally smooth *and* locally of finite presentation.
     mental image: formally smooth = infinitesimal tangent extensions always exist; smooth = formally smooth
     with finitely many variables.'
-- id: adjectivesproject-org#028
+- id: adjectivesproject-org#027
   text: What is Zariski's Main Theorem (ZMT)?
   hint: 'Motivation: understand the geometric structure of quasi-finite morphisms (morphisms with finite
     discrete fibers). Invention: Zariski proved that every quasi-finite separated morphism of finite type
@@ -533,7 +515,7 @@ exercises:
     followed by a finite morphism: $x \xrightarrow{j} \overline{x} \xrightarrow{p} y$, where $j$ is an
     open immersion and $p$ is finite. mental image: zariski''s main theorem says that every morphism with
     finite fibers is simply a finite covering map with some boundary points and components deleted.'
-- id: adjectivesproject-org#029
+- id: adjectivesproject-org#028
   text: Why are quasi-affine schemes defined to be quasi-compact?
   hint: 'Motivation: avoid pathological infinite unions of open sets that cannot be embedded into finite-dimensional
     affine spaces. Invention: an open subscheme $U \subset \mathrm{Spec}(A)$ is quasi-affine if it is
@@ -546,7 +528,7 @@ exercises:
     an open subscheme $u \subset \mathrm{spec}(a)$ is quasi-affine if it is quasi-compact, ensuring that
     $u$ is cut out by the non-vanishing of a finite number of elements $(f_1, \dots, f_r)$, so the canonical
     map $u \to \mathrm{spec}(\gamma(u, \mathcal{o}_u))$ is an open immersion.'
-- id: adjectivesproject-org#030
+- id: adjectivesproject-org#029
   text: What is Grothendieck's Coherence/Finiteness Theorem for proper morphisms?
   hint: 'Motivation: prove that the cohomology groups of coherent sheaves on compact algebraic spaces
     are finite-dimensional. Invention: if $f \colon X \to Y$ is a proper morphism of locally Noetherian
@@ -563,7 +545,7 @@ exercises:
     coherent $\mathcal{o}_y$-modules for all $i \ge 0$. mental image: proper pushforwards preserve coherence:
     integrating coherent sheaves along compact fibers produces finite-dimensional vector bundles on the
     base.'
-- id: adjectivesproject-org#031
+- id: adjectivesproject-org#030
   text: What is the fpqc reformulation of quasi-compactness for schemes?
   hint: 'Motivation: test topological quasi-compactness using flat descent. Invention: a scheme $X$ is
     quasi-compact if and only if every fpqc covering $\{U_i \to X\}$ admits a finite sub-covering, meaning
@@ -575,7 +557,7 @@ exercises:
     quasi-compactness using flat descent. invention: a scheme $x$ is quasi-compact if and only if every
     fpqc covering $\{u_i \to x\}$ admits a finite sub-covering, meaning that the functor represented by
     $x$ preserves filtered colimits of rings with faithfully flat transition maps.'
-- id: adjectivesproject-org#032
+- id: adjectivesproject-org#031
   text: Why does having regular fibers characterize smoothness over a field?
   hint: 'Motivation: connect the differential calculus definition of smoothness with the homological regularity
     of stalks. Invention: over a perfect field $k$, a variety $X$ has regular local rings $\mathcal{O}_{X,
@@ -590,7 +572,7 @@ exercises:
     if and only if its geometric fibers over $\overline{k}$ are regular; since regular local rings over
     a field have cotangent spaces matching their dimension, regular fibers force the jacobian matrix to
     have maximal rank, which is smoothness.'
-- id: adjectivesproject-org#033
+- id: adjectivesproject-org#032
   text: What is the Local Criterion of Flatness?
   hint: 'Motivation: determine when an infinitesimal deformation of a module remains flat. Invention:
     let $(A, \mathfrak{m}) \to (B, \mathfrak{n})$ be a local homomorphism and $M$ a finitely generated
@@ -603,7 +585,7 @@ exercises:
     and $m$ a finitely generated $b$-module; $m$ is flat over $a$ if and only if $\mathrm{tor}_1^a(m,
     a/\mathfrak{m}) = 0$, meaning flatness can be tested entirely on the residue field modulo the maximal
     ideal.'
-- id: adjectivesproject-org#034
+- id: adjectivesproject-org#033
   text: Why is separation over the source required for morphisms, and does the same work over a separated
     target?
   hint: 'Motivation: understand how separatedness behaves under composition and cancellation. Invention:
@@ -619,7 +601,7 @@ exercises:
     then $f$ is separated (the diagonal $\delta_f$ is a pullback of $\delta_{g \circ f}$); if the target
     $z$ is separated, then any morphism $x \to y$ over $z$ inherits separatedness because $x \to x \times_z
     y \to y$ decomposes into closed immersions.'
-- id: adjectivesproject-org#035
+- id: adjectivesproject-org#034
   text: Why does a quasi-affine morphism require an affine target to have a quasi-affine source?
   hint: 'Motivation: preserve the property of being an open subset of an affine scheme under base change.
     Invention: if $f \colon X \to Y$ is quasi-affine and $Y = \mathrm{Spec}(B)$ is affine, then $X$ is
@@ -632,7 +614,7 @@ exercises:
     if $f \colon x \to y$ is quasi-affine and $y = \mathrm{spec}(b)$ is affine, then $x$ is an open subscheme
     of an affine scheme; if $y$ is not affine, $x$ is only locally quasi-affine (covered by quasi-affine
     opens), which does not make $x$ globally quasi-affine.'
-- id: adjectivesproject-org#036
+- id: adjectivesproject-org#035
   text: What are cusps versus nodes in algebraic curves?
   hint: 'Motivation: distinguish between unramified self-intersections and ramified singular points. Invention:
     (1) A **node** is an ordinary double point with distinct tangent lines, analytically isomorphic to
@@ -649,7 +631,7 @@ exercises:
     tangent line, analytically isomorphic to $y^2 = x^3$, whose blow-up is a single tangent point. mental
     image: node = an "x"-crossing where two smooth roads intersect cleanly; cusp = a sharp hairpin turn
     where a road folds back on itself with zero velocity.'
-- id: adjectivesproject-org#037
+- id: adjectivesproject-org#036
   text: Does being normal imply that a scheme is reduced and irreducible?
   hint: 'Motivation: clarify the connectivity of normal schemes. Invention: a normal scheme is always
     reduced (integrally closed domains have no nilpotents), but it is not necessarily irreducible: a normal
@@ -664,7 +646,7 @@ exercises:
     union of irreducible normal components (e.g., $\mathrm{spec}(k) \amalg \mathrm{spec}(k)$ is normal
     and reduced, but has two components). mental image: normal = every connected piece is smooth in codimension
     1 and irreducible, but the space can consist of multiple disjoint smooth pieces.'
-- id: adjectivesproject-org#038
+- id: adjectivesproject-org#037
   text: What is Hironaka's Non-Projective Smooth 3-Fold?
   hint: 'Motivation: construct a smooth, proper algebraic variety that cannot be embedded into any projective
     space. Invention: Hironaka took a smooth 3-fold $X$, selected two smooth curves $C_1, C_2 \subset
@@ -683,7 +665,7 @@ exercises:
     to zero, preventing the existence of an ample line bundle. mental image: an algebraic escher staircase:
     a 3-dimensional manifold glued with an alternating twist that forces closed curves to have zero intersection
     volume with any potential projective hyperplane.'
-- id: adjectivesproject-org#039
+- id: adjectivesproject-org#038
   text: Why do singularities exclude regular morphisms?
   hint: 'Motivation: explain why a morphism with singular fibers cannot be regular. Invention: by definition,
     a regular morphism $f \colon X \to Y$ must have all geometric fibers $X_{\overline{y}}$ regular; if
@@ -696,7 +678,7 @@ exercises:
     must have all geometric fibers $x_{\overline{y}}$ regular; if a fiber contains a singular point (like
     a node or cusp), the stalk $\mathcal{o}_{x_{\overline{y}}, x}$ is not a regular local ring, violating
     the definition.'
-- id: adjectivesproject-org#040
+- id: adjectivesproject-org#039
   text: Why does an injective morphism (monomorphism) of schemes imply separatedness?
   hint: 'Motivation: show that embedding a space with no duplicate points always produces a closed diagonal.
     Invention: if $f \colon X \to Y$ is a monomorphism, the diagonal morphism $\Delta_{X/Y} \colon X \to
@@ -708,7 +690,7 @@ exercises:
     show that embedding a space with no duplicate points always produces a closed diagonal. invention:
     if $f \colon x \to y$ is a monomorphism, the diagonal morphism $\delta_{x/y} \colon x \to x \times_y
     x$ is an isomorphism; since every isomorphism is a closed immersion, $f$ is automatically separated.'
-- id: adjectivesproject-org#041
+- id: adjectivesproject-org#040
   text: 'What is the definition of an affine morphism f: X → Y?'
   hint: there exists an affine open cover {V_i} of Y such that f^{-1}(V_i) is affine for every i; equivalently
     f^{-1}(V) is affine for every affine open V ⊂ Y. Note this is a relative notion — the identity morphism
@@ -719,7 +701,7 @@ exercises:
     {v_i} of y such that f^{-1}(v_i) is affine for every i; equivalently f^{-1}(v) is affine for every
     affine open v ⊂ y. note this is a relative notion — the identity morphism on any scheme is automatically
     affine even if the scheme itself is not affine, since f^{-1}(v) = v.'
-- id: adjectivesproject-org#042
+- id: adjectivesproject-org#041
   text: What is the definition of a bundle-projective morphism?
   hint: f factors as a closed immersion X ↪ P(E) into the projectivization of a finite locally free sheaf
     E on Y, followed by the structure map P(E) → Y; this is the EGA-style definition of "projective" using
@@ -730,7 +712,7 @@ exercises:
     x ↪ p(e) into the projectivization of a finite locally free sheaf e on y, followed by the structure
     map p(e) → y; this is the ega-style definition of "projective" using arbitrary vector bundles rather
     than trivial ones.
-- id: adjectivesproject-org#043
+- id: adjectivesproject-org#042
   text: What is the definition of a closed immersion?
   hint: f is a homeomorphism of X onto a closed subset of Y, and the sheaf map O_Y → f_*O_X is surjective,
     i.e. X is cut out by a sheaf of ideals I ⊂ O_Y.
@@ -738,14 +720,14 @@ exercises:
   sub_index: null
   search_text: what is the definition of a closed immersion? f is a homeomorphism of x onto a closed subset
     of y, and the sheaf map o_y → f_*o_x is surjective, i.e. x is cut out by a sheaf of ideals i ⊂ o_y.
-- id: adjectivesproject-org#044
+- id: adjectivesproject-org#043
   text: What is the definition of a closed morphism?
   hint: the image of every closed subset of X under f is closed in Y; purely topological.
   locator: null
   sub_index: null
   search_text: what is the definition of a closed morphism? the image of every closed subset of x under
     f is closed in y; purely topological.
-- id: adjectivesproject-org#045
+- id: adjectivesproject-org#044
   text: What is the definition of an étale morphism?
   hint: f is flat and unramified, equivalently f is formally étale and locally of finite presentation,
     equivalently f is smooth of relative dimension 0.
@@ -754,13 +736,13 @@ exercises:
   search_text: what is the definition of an étale morphism? f is flat and unramified, equivalently f is
     formally étale and locally of finite presentation, equivalently f is smooth of relative dimension
     0.
-- id: adjectivesproject-org#046
+- id: adjectivesproject-org#045
   text: What is the definition of a faithfully flat morphism?
   hint: f is flat and surjective.
   locator: null
   sub_index: null
   search_text: what is the definition of a faithfully flat morphism? f is flat and surjective.
-- id: adjectivesproject-org#047
+- id: adjectivesproject-org#046
   text: What does it mean for f to have finite fibers?
   hint: for every y ∈ Y, the fiber f^{-1}(y) is a finite set of points (no finiteness on the scheme structure
     of the fiber is required, just cardinality).
@@ -768,28 +750,28 @@ exercises:
   sub_index: null
   search_text: what does it mean for f to have finite fibers? for every y ∈ y, the fiber f^{-1}(y) is
     a finite set of points (no finiteness on the scheme structure of the fiber is required, just cardinality).
-- id: adjectivesproject-org#048
+- id: adjectivesproject-org#047
   text: What is the definition of a finite locally free morphism?
   hint: f is affine and f_*O_X is a locally free O_Y-module of finite rank.
   locator: null
   sub_index: null
   search_text: what is the definition of a finite locally free morphism? f is affine and f_*o_x is a locally
     free o_y-module of finite rank.
-- id: adjectivesproject-org#049
+- id: adjectivesproject-org#048
   text: What is the definition of a finite morphism?
   hint: f is affine and f_*O_X is a finite (finitely generated as a module) O_Y-algebra.
   locator: null
   sub_index: null
   search_text: what is the definition of a finite morphism? f is affine and f_*o_x is a finite (finitely
     generated as a module) o_y-algebra.
-- id: adjectivesproject-org#050
+- id: adjectivesproject-org#049
   text: What is the definition of a flat morphism?
   hint: for every x ∈ X, O_{X,x} is a flat O_{Y,f(x)}-module via f.
   locator: null
   sub_index: null
   search_text: what is the definition of a flat morphism? for every x ∈ x, o_{x,x} is a flat o_{y,f(x)}-module
     via f.
-- id: adjectivesproject-org#051
+- id: adjectivesproject-org#050
   text: What is the definition of a formally étale morphism?
   hint: for every affine scheme Spec(A) and square-zero ideal I ⊂ A, every commutative square Spec(A/I)
     → X, Spec(A) → Y admits a UNIQUE lift Spec(A) → X.
@@ -798,7 +780,7 @@ exercises:
   search_text: what is the definition of a formally étale morphism? for every affine scheme spec(a) and
     square-zero ideal i ⊂ a, every commutative square spec(a/i) → x, spec(a) → y admits a unique lift
     spec(a) → x.
-- id: adjectivesproject-org#052
+- id: adjectivesproject-org#051
   text: What is the definition of a formally smooth morphism?
   hint: same infinitesimal lifting problem as formally étale, but only EXISTENCE of a lift is required,
     not uniqueness.
@@ -806,7 +788,7 @@ exercises:
   sub_index: null
   search_text: what is the definition of a formally smooth morphism? same infinitesimal lifting problem
     as formally étale, but only existence of a lift is required, not uniqueness.
-- id: adjectivesproject-org#053
+- id: adjectivesproject-org#052
   text: What is the definition of a formally unramified morphism?
   hint: same infinitesimal lifting problem, but only UNIQUENESS of a lift (if it exists) is required;
     equivalently Ω_{X/Y} = 0.
@@ -814,7 +796,7 @@ exercises:
   sub_index: null
   search_text: what is the definition of a formally unramified morphism? same infinitesimal lifting problem,
     but only uniqueness of a lift (if it exists) is required; equivalently ω_{x/y} = 0.
-- id: adjectivesproject-org#054
+- id: adjectivesproject-org#053
   text: What is the definition of a G-unramified morphism?
   hint: 'the diagonal morphism Δ: X → X ×_Y X is an open immersion; this is the "geometric" formulation
     of unramifiedness, equivalent to formally unramified + locally of finite type under mild hypotheses.'
@@ -823,7 +805,7 @@ exercises:
   search_text: 'what is the definition of a g-unramified morphism? the diagonal morphism δ: x → x ×_y
     x is an open immersion; this is the "geometric" formulation of unramifiedness, equivalent to formally
     unramified + locally of finite type under mild hypotheses.'
-- id: adjectivesproject-org#055
+- id: adjectivesproject-org#054
   text: What is the definition of an H-projective morphism?
   hint: (Hartshorne's definition) f factors as a closed immersion X ↪ P^n_Y into a TRIVIAL projective
     bundle over Y, followed by the projection P^n_Y → Y.
@@ -832,7 +814,7 @@ exercises:
   search_text: what is the definition of an h-projective morphism? (hartshorne's definition) f factors
     as a closed immersion x ↪ p^n_y into a trivial projective bundle over y, followed by the projection
     p^n_y → y.
-- id: adjectivesproject-org#056
+- id: adjectivesproject-org#055
   text: What is the definition of a homeomorphism of schemes?
   hint: f is a bijective, continuous map of the underlying topological spaces whose inverse is also continuous
     — a purely topological condition on |X| → |Y|.
@@ -841,7 +823,7 @@ exercises:
   search_text: what is the definition of a homeomorphism of schemes? f is a bijective, continuous map
     of the underlying topological spaces whose inverse is also continuous — a purely topological condition
     on |x| → |y|.
-- id: adjectivesproject-org#057
+- id: adjectivesproject-org#056
   text: What is the definition of an immersion?
   hint: f factors as an open immersion followed by a closed immersion (equivalently a closed immersion
     followed by an open immersion), i.e. f identifies X with a locally closed subscheme of Y.
@@ -850,14 +832,14 @@ exercises:
   search_text: what is the definition of an immersion? f factors as an open immersion followed by a closed
     immersion (equivalently a closed immersion followed by an open immersion), i.e. f identifies x with
     a locally closed subscheme of y.
-- id: adjectivesproject-org#058
+- id: adjectivesproject-org#057
   text: What is the definition of an injective morphism?
   hint: the underlying map of sets |X| → |Y| is injective.
   locator: null
   sub_index: null
   search_text: what is the definition of an injective morphism? the underlying map of sets |x| → |y| is
     injective.
-- id: adjectivesproject-org#059
+- id: adjectivesproject-org#058
   text: What is the definition of an integral morphism?
   hint: f is affine and f_*O_X is integral as an O_Y-algebra, i.e. every local section satisfies a monic
     polynomial with coefficients in O_Y.
@@ -865,7 +847,7 @@ exercises:
   sub_index: null
   search_text: what is the definition of an integral morphism? f is affine and f_*o_x is integral as an
     o_y-algebra, i.e. every local section satisfies a monic polynomial with coefficients in o_y.
-- id: adjectivesproject-org#060
+- id: adjectivesproject-org#059
   text: What is the definition of "locally of finite presentation"?
   hint: for every affine open V = Spec(B) ⊂ Y and affine open U = Spec(A) ⊂ f^{-1}(V), A is a finitely
     presented B-algebra (finitely generated with finitely generated ideal of relations).
@@ -874,14 +856,14 @@ exercises:
   search_text: what is the definition of "locally of finite presentation"? for every affine open v = spec(b)
     ⊂ y and affine open u = spec(a) ⊂ f^{-1}(v), a is a finitely presented b-algebra (finitely generated
     with finitely generated ideal of relations).
-- id: adjectivesproject-org#061
+- id: adjectivesproject-org#060
   text: What is the definition of "locally of finite type"?
   hint: same as above but only requiring A to be a finitely generated B-algebra.
   locator: null
   sub_index: null
   search_text: what is the definition of "locally of finite type"? same as above but only requiring a
     to be a finitely generated b-algebra.
-- id: adjectivesproject-org#062
+- id: adjectivesproject-org#061
   text: What is the definition of a locally projective morphism?
   hint: there exists an open cover {V_i} of Y such that f^{-1}(V_i) → V_i is bundle-projective for each
     i.
@@ -889,7 +871,7 @@ exercises:
   sub_index: null
   search_text: what is the definition of a locally projective morphism? there exists an open cover {v_i}
     of y such that f^{-1}(v_i) → v_i is bundle-projective for each i.
-- id: adjectivesproject-org#063
+- id: adjectivesproject-org#062
   text: What is the definition of a monomorphism?
   hint: 'the diagonal Δ: X → X ×_Y X is an isomorphism; equivalently, for every pair of maps a, b: Z →
     X with f∘a = f∘b, one has a = b.'
@@ -897,34 +879,34 @@ exercises:
   sub_index: null
   search_text: 'what is the definition of a monomorphism? the diagonal δ: x → x ×_y x is an isomorphism;
     equivalently, for every pair of maps a, b: z → x with f∘a = f∘b, one has a = b.'
-- id: adjectivesproject-org#064
+- id: adjectivesproject-org#063
   text: What is the definition of "of finite presentation"?
   hint: locally of finite presentation, quasi-compact, and quasi-separated.
   locator: null
   sub_index: null
   search_text: what is the definition of "of finite presentation"? locally of finite presentation, quasi-compact,
     and quasi-separated.
-- id: adjectivesproject-org#065
+- id: adjectivesproject-org#064
   text: What is the definition of "of finite type"?
   hint: locally of finite type and quasi-compact.
   locator: null
   sub_index: null
   search_text: what is the definition of "of finite type"? locally of finite type and quasi-compact.
-- id: adjectivesproject-org#066
+- id: adjectivesproject-org#065
   text: What is the definition of an open immersion?
   hint: f is a homeomorphism of X onto an open subset of Y, and O_Y|_{f(X)} ≅ f_*O_X.
   locator: null
   sub_index: null
   search_text: what is the definition of an open immersion? f is a homeomorphism of x onto an open subset
     of y, and o_y|_{f(x)} ≅ f_*o_x.
-- id: adjectivesproject-org#067
+- id: adjectivesproject-org#066
   text: What is the definition of an open morphism?
   hint: the image of every open subset of X under f is open in Y; purely topological.
   locator: null
   sub_index: null
   search_text: what is the definition of an open morphism? the image of every open subset of x under f
     is open in y; purely topological.
-- id: adjectivesproject-org#068
+- id: adjectivesproject-org#067
   text: What is the definition of a projective morphism?
   hint: f factors as a closed immersion into P^n_Y (for some n) followed by the projection, or more generally
     (EGA) f = Proj of a quasi-coherent graded algebra on Y that is generated in degree 1 by a finite type
@@ -934,14 +916,14 @@ exercises:
   search_text: what is the definition of a projective morphism? f factors as a closed immersion into p^n_y
     (for some n) followed by the projection, or more generally (ega) f = proj of a quasi-coherent graded
     algebra on y that is generated in degree 1 by a finite type piece.
-- id: adjectivesproject-org#069
+- id: adjectivesproject-org#068
   text: What is the definition of a proper morphism?
   hint: f is separated, of finite type, and universally closed.
   locator: null
   sub_index: null
   search_text: what is the definition of a proper morphism? f is separated, of finite type, and universally
     closed.
-- id: adjectivesproject-org#070
+- id: adjectivesproject-org#069
   text: What is the definition of a quasi-affine morphism?
   hint: f factors as a quasi-compact open immersion into an affine morphism, i.e. X is (relatively over
     Y) a quasi-compact open subscheme of an affine Y-scheme.
@@ -950,48 +932,48 @@ exercises:
   search_text: what is the definition of a quasi-affine morphism? f factors as a quasi-compact open immersion
     into an affine morphism, i.e. x is (relatively over y) a quasi-compact open subscheme of an affine
     y-scheme.
-- id: adjectivesproject-org#071
+- id: adjectivesproject-org#070
   text: What is the definition of a quasi-compact morphism?
   hint: the preimage of every quasi-compact open subset of Y is quasi-compact in X.
   locator: null
   sub_index: null
   search_text: what is the definition of a quasi-compact morphism? the preimage of every quasi-compact
     open subset of y is quasi-compact in x.
-- id: adjectivesproject-org#072
+- id: adjectivesproject-org#071
   text: What is the definition of a quasi-finite morphism?
   hint: f is locally of finite type and has finite fibers (each fiber is a finite discrete set of points).
   locator: null
   sub_index: null
   search_text: what is the definition of a quasi-finite morphism? f is locally of finite type and has
     finite fibers (each fiber is a finite discrete set of points).
-- id: adjectivesproject-org#073
+- id: adjectivesproject-org#072
   text: What is the definition of a quasi-separated morphism?
   hint: 'the diagonal Δ: X → X ×_Y X is quasi-compact.'
   locator: null
   sub_index: null
   search_text: 'what is the definition of a quasi-separated morphism? the diagonal δ: x → x ×_y x is quasi-compact.'
-- id: adjectivesproject-org#074
+- id: adjectivesproject-org#073
   text: What is the definition of a regular morphism?
   hint: f is flat and all its fibers X_y are regular schemes.
   locator: null
   sub_index: null
   search_text: what is the definition of a regular morphism? f is flat and all its fibers x_y are regular
     schemes.
-- id: adjectivesproject-org#075
+- id: adjectivesproject-org#074
   text: What is the definition of a semi-separated morphism?
   hint: 'the diagonal Δ: X → X ×_Y X is an affine morphism.'
   locator: null
   sub_index: null
   search_text: 'what is the definition of a semi-separated morphism? the diagonal δ: x → x ×_y x is an
     affine morphism.'
-- id: adjectivesproject-org#076
+- id: adjectivesproject-org#075
   text: What is the definition of a separated morphism?
   hint: 'the diagonal Δ: X → X ×_Y X is a closed immersion.'
   locator: null
   sub_index: null
   search_text: 'what is the definition of a separated morphism? the diagonal δ: x → x ×_y x is a closed
     immersion.'
-- id: adjectivesproject-org#077
+- id: adjectivesproject-org#076
   text: What is the definition of a smooth morphism?
   hint: f is flat, locally of finite presentation, and its geometric fibers are regular of pure relative
     dimension; equivalently formally smooth + locally of finite presentation.
@@ -1000,13 +982,13 @@ exercises:
   search_text: what is the definition of a smooth morphism? f is flat, locally of finite presentation,
     and its geometric fibers are regular of pure relative dimension; equivalently formally smooth + locally
     of finite presentation.
-- id: adjectivesproject-org#078
+- id: adjectivesproject-org#077
   text: What is the definition of a surjective morphism?
   hint: the underlying map |X| → |Y| is surjective.
   locator: null
   sub_index: null
   search_text: what is the definition of a surjective morphism? the underlying map |x| → |y| is surjective.
-- id: adjectivesproject-org#079
+- id: adjectivesproject-org#078
   text: What is the definition of a syntomic morphism?
   hint: f is flat, locally of finite presentation, and its fibers are local complete intersections at
     every point.
@@ -1014,21 +996,21 @@ exercises:
   sub_index: null
   search_text: what is the definition of a syntomic morphism? f is flat, locally of finite presentation,
     and its fibers are local complete intersections at every point.
-- id: adjectivesproject-org#080
+- id: adjectivesproject-org#079
   text: What is the definition of a universally closed morphism?
   hint: for every base change Y' → Y, the induced morphism X ×_Y Y' → Y' is closed.
   locator: null
   sub_index: null
   search_text: what is the definition of a universally closed morphism? for every base change y' → y,
     the induced morphism x ×_y y' → y' is closed.
-- id: adjectivesproject-org#081
+- id: adjectivesproject-org#080
   text: What is the definition of a universally homeomorphism?
   hint: for every base change Y' → Y, the induced morphism X ×_Y Y' → Y' is a homeomorphism.
   locator: null
   sub_index: null
   search_text: what is the definition of a universally homeomorphism? for every base change y' → y, the
     induced morphism x ×_y y' → y' is a homeomorphism.
-- id: adjectivesproject-org#082
+- id: adjectivesproject-org#081
   text: What is the definition of a universally injective morphism?
   hint: for every base change Y' → Y, the induced morphism X ×_Y Y' → Y' is injective; equivalently f
     is injective on points and induces purely inseparable extensions of residue fields.
@@ -1037,14 +1019,14 @@ exercises:
   search_text: what is the definition of a universally injective morphism? for every base change y' →
     y, the induced morphism x ×_y y' → y' is injective; equivalently f is injective on points and induces
     purely inseparable extensions of residue fields.
-- id: adjectivesproject-org#083
+- id: adjectivesproject-org#082
   text: What is the definition of a universally open morphism?
   hint: for every base change Y' → Y, the induced morphism X ×_Y Y' → Y' is open.
   locator: null
   sub_index: null
   search_text: what is the definition of a universally open morphism? for every base change y' → y, the
     induced morphism x ×_y y' → y' is open.
-- id: adjectivesproject-org#084
+- id: adjectivesproject-org#083
   text: What is the definition of an unramified morphism?
   hint: f is locally of finite type and formally unramified, equivalently Ω_{X/Y} = 0 and f is locally
     of finite type.
@@ -1052,21 +1034,21 @@ exercises:
   sub_index: null
   search_text: what is the definition of an unramified morphism? f is locally of finite type and formally
     unramified, equivalently ω_{x/y} = 0 and f is locally of finite type.
-- id: adjectivesproject-org#085
+- id: adjectivesproject-org#084
   text: What is the definition of an affine scheme?
   hint: X is isomorphic to Spec(A) for some commutative ring A.
   locator: null
   sub_index: null
   search_text: what is the definition of an affine scheme? x is isomorphic to spec(a) for some commutative
     ring a.
-- id: adjectivesproject-org#086
+- id: adjectivesproject-org#085
   text: What is the definition of a Cohen-Macaulay scheme?
   hint: every local ring O_{X,x} is Cohen-Macaulay, i.e. depth(O_{X,x}) = dim(O_{X,x}).
   locator: null
   sub_index: null
   search_text: what is the definition of a cohen-macaulay scheme? every local ring o_{x,x} is cohen-macaulay,
     i.e. depth(o_{x,x}) = dim(o_{x,x}).
-- id: adjectivesproject-org#087
+- id: adjectivesproject-org#086
   text: What is the definition of a connected scheme?
   hint: the underlying topological space |X| is connected, i.e. cannot be written as a disjoint union
     of two nonempty open subsets.
@@ -1074,7 +1056,7 @@ exercises:
   sub_index: null
   search_text: what is the definition of a connected scheme? the underlying topological space |x| is connected,
     i.e. cannot be written as a disjoint union of two nonempty open subsets.
-- id: adjectivesproject-org#088
+- id: adjectivesproject-org#087
   text: What is the definition of an excellent scheme?
   hint: X is locally Noetherian, universally catenary, and all its local rings have geometrically regular
     formal fibers (Grothendieck's technical finiteness condition ensuring good behavior under completion
@@ -1084,7 +1066,7 @@ exercises:
   search_text: what is the definition of an excellent scheme? x is locally noetherian, universally catenary,
     and all its local rings have geometrically regular formal fibers (grothendieck's technical finiteness
     condition ensuring good behavior under completion and base change).
-- id: adjectivesproject-org#089
+- id: adjectivesproject-org#088
   text: What is the definition of a finite-dimensional scheme?
   hint: the Krull dimension dim(X), the supremum of lengths of chains of irreducible closed subsets, is
     finite.
@@ -1092,20 +1074,20 @@ exercises:
   sub_index: null
   search_text: what is the definition of a finite-dimensional scheme? the krull dimension dim(x), the
     supremum of lengths of chains of irreducible closed subsets, is finite.
-- id: adjectivesproject-org#090
+- id: adjectivesproject-org#089
   text: What is the definition of an integral scheme?
   hint: X is reduced and irreducible.
   locator: null
   sub_index: null
   search_text: what is the definition of an integral scheme? x is reduced and irreducible.
-- id: adjectivesproject-org#091
+- id: adjectivesproject-org#090
   text: What is the definition of an irreducible scheme?
   hint: '|X| is nonempty and cannot be written as the union of two proper closed subsets.'
   locator: null
   sub_index: null
   search_text: what is the definition of an irreducible scheme? |x| is nonempty and cannot be written
     as the union of two proper closed subsets.
-- id: adjectivesproject-org#092
+- id: adjectivesproject-org#091
   text: What is the definition of a Jacobson scheme?
   hint: every closed subset of X is the closure of its closed points, equivalently every locally closed
     subset that is nonempty contains a closed point of X.
@@ -1114,48 +1096,48 @@ exercises:
   search_text: what is the definition of a jacobson scheme? every closed subset of x is the closure of
     its closed points, equivalently every locally closed subset that is nonempty contains a closed point
     of x.
-- id: adjectivesproject-org#093
+- id: adjectivesproject-org#092
   text: What is the definition of a locally factorial scheme?
   hint: every local ring O_{X,x} is a unique factorization domain.
   locator: null
   sub_index: null
   search_text: what is the definition of a locally factorial scheme? every local ring o_{x,x} is a unique
     factorization domain.
-- id: adjectivesproject-org#094
+- id: adjectivesproject-org#093
   text: What is the definition of a locally Noetherian scheme?
   hint: X admits an open cover by spectra of Noetherian rings.
   locator: null
   sub_index: null
   search_text: what is the definition of a locally noetherian scheme? x admits an open cover by spectra
     of noetherian rings.
-- id: adjectivesproject-org#095
+- id: adjectivesproject-org#094
   text: What is the definition of a Noetherian scheme?
   hint: X is locally Noetherian and quasi-compact.
   locator: null
   sub_index: null
   search_text: what is the definition of a noetherian scheme? x is locally noetherian and quasi-compact.
-- id: adjectivesproject-org#096
+- id: adjectivesproject-org#095
   text: What is the definition of a normal scheme?
   hint: X is reduced and every local ring O_{X,x} is integrally closed in its field of fractions.
   locator: null
   sub_index: null
   search_text: what is the definition of a normal scheme? x is reduced and every local ring o_{x,x} is
     integrally closed in its field of fractions.
-- id: adjectivesproject-org#097
+- id: adjectivesproject-org#096
   text: What is the definition of a quasi-affine scheme?
   hint: X is isomorphic to a quasi-compact open subscheme of an affine scheme.
   locator: null
   sub_index: null
   search_text: what is the definition of a quasi-affine scheme? x is isomorphic to a quasi-compact open
     subscheme of an affine scheme.
-- id: adjectivesproject-org#098
+- id: adjectivesproject-org#097
   text: What is the definition of a quasi-compact scheme?
   hint: every open cover of X admits a finite subcover.
   locator: null
   sub_index: null
   search_text: what is the definition of a quasi-compact scheme? every open cover of x admits a finite
     subcover.
-- id: adjectivesproject-org#099
+- id: adjectivesproject-org#098
   text: What is the definition of a quasi-separated scheme?
   hint: the diagonal X → X × X is quasi-compact, equivalently the intersection of any two affine open
     subsets of X is quasi-compact.
@@ -1163,21 +1145,21 @@ exercises:
   sub_index: null
   search_text: what is the definition of a quasi-separated scheme? the diagonal x → x × x is quasi-compact,
     equivalently the intersection of any two affine open subsets of x is quasi-compact.
-- id: adjectivesproject-org#100
+- id: adjectivesproject-org#099
   text: What is the definition of a reduced scheme?
   hint: every local ring O_{X,x} has no nonzero nilpotent elements.
   locator: null
   sub_index: null
   search_text: what is the definition of a reduced scheme? every local ring o_{x,x} has no nonzero nilpotent
     elements.
-- id: adjectivesproject-org#101
+- id: adjectivesproject-org#100
   text: What is the definition of a regular scheme?
   hint: every local ring O_{X,x} is a regular local ring, i.e. dim_κ(x)(m_x/m_x^2) = dim(O_{X,x}).
   locator: null
   sub_index: null
   search_text: what is the definition of a regular scheme? every local ring o_{x,x} is a regular local
     ring, i.e. dim_κ(x)(m_x/m_x^2) = dim(o_{x,x}).
-- id: adjectivesproject-org#102
+- id: adjectivesproject-org#101
   text: What is the definition of a semi-separated scheme?
   hint: the intersection of any two affine open subsets of X is itself affine, equivalently the diagonal
     X → X × X is an affine morphism.
@@ -1185,7 +1167,7 @@ exercises:
   sub_index: null
   search_text: what is the definition of a semi-separated scheme? the intersection of any two affine open
     subsets of x is itself affine, equivalently the diagonal x → x × x is an affine morphism.
-- id: adjectivesproject-org#103
+- id: adjectivesproject-org#102
   text: What is the definition of a separated scheme?
   hint: X is separated over its base (e.g. over Spec Z), meaning the diagonal morphism is a closed immersion;
     equivalently the intersection of two affine opens U, V is affine and O(U) ⊗ O(V) → O(U ∩ V) is surjective.
@@ -1194,7 +1176,7 @@ exercises:
   search_text: what is the definition of a separated scheme? x is separated over its base (e.g. over spec
     z), meaning the diagonal morphism is a closed immersion; equivalently the intersection of two affine
     opens u, v is affine and o(u) ⊗ o(v) → o(u ∩ v) is surjective.
-- id: adjectivesproject-org#104
+- id: adjectivesproject-org#103
   text: 'State and justify: "homeomorphisms are affine."'
   hint: a homeomorphism is in particular closed, injective and surjective; combined with quasi-finiteness
     this forces the morphism to be finite via Zariski's Main Theorem (proper + quasi-finite ⟹ finite),
@@ -1204,7 +1186,7 @@ exercises:
   search_text: 'state and justify: "homeomorphisms are affine." a homeomorphism is in particular closed,
     injective and surjective; combined with quasi-finiteness this forces the morphism to be finite via
     zariski''s main theorem (proper + quasi-finite ⟹ finite), and finite morphisms are affine by definition.'
-- id: adjectivesproject-org#105
+- id: adjectivesproject-org#104
   text: 'State and justify: "morphisms with affine source and target are affine."'
   hint: 'if X is affine, then for every affine open V ⊂ Y, f^{-1}(V) ⊂ X is a subscheme of an affine scheme;
     but more simply, when X itself is affine, f^{-1}(V) is affine automatically because f factors through
@@ -1221,7 +1203,7 @@ exercises:
     argument is unnecessary; formally: the composite spec(a) → x → y with x affine makes f automatically
     affine since affineness of the source scheme is inherited by all preimages via base change to affine
     opens of an affine scheme.'
-- id: adjectivesproject-org#106
+- id: adjectivesproject-org#105
   text: 'State and justify: "finite locally free morphisms are bundle-projective."'
   hint: if f_*O_X = E is locally free of finite rank, the surjection Sym(E^∨) → O_X onto the ideal generated
     by O_X's relations realizes X as a closed subscheme of the projectivization P(E ⊕ O_Y), giving a bundle-projective
@@ -1232,7 +1214,7 @@ exercises:
     e is locally free of finite rank, the surjection sym(e^∨) → o_x onto the ideal generated by o_x''s
     relations realizes x as a closed subscheme of the projectivization p(e ⊕ o_y), giving a bundle-projective
     structure.'
-- id: adjectivesproject-org#107
+- id: adjectivesproject-org#106
   text: 'State and justify: "H-projective morphisms are bundle-projective."'
   hint: P^n_Y is the trivialization P(O_Y^{n+1}) of the trivial rank n+1 vector bundle, so a closed immersion
     into P^n_Y is a special case of a closed immersion into P(E) for E = O_Y^{n+1}.
@@ -1241,7 +1223,7 @@ exercises:
   search_text: 'state and justify: "h-projective morphisms are bundle-projective." p^n_y is the trivialization
     p(o_y^{n+1}) of the trivial rank n+1 vector bundle, so a closed immersion into p^n_y is a special
     case of a closed immersion into p(e) for e = o_y^{n+1}.'
-- id: adjectivesproject-org#108
+- id: adjectivesproject-org#107
   text: 'State and justify: "finite monomorphisms are closed immersions."'
   hint: a finite morphism is affine with f_*O_X finite over O_Y; a monomorphism additionally forces the
     algebra map O_Y(V) → O_X(f^{-1}V) to be an epimorphism of rings for every affine V, and combined with
@@ -1252,7 +1234,7 @@ exercises:
     affine with f_*o_x finite over o_y; a monomorphism additionally forces the algebra map o_y(v) → o_x(f^{-1}v)
     to be an epimorphism of rings for every affine v, and combined with finiteness (integral + finite
     type) this forces surjectivity, giving a closed immersion.'
-- id: adjectivesproject-org#109
+- id: adjectivesproject-org#108
   text: 'State and justify: "surjective immersions are closed immersions."'
   hint: an immersion is an isomorphism onto a locally closed subscheme; if it is also surjective, the
     locally closed subscheme must be all of Y, and a locally closed subset that equals the whole space
@@ -1262,7 +1244,7 @@ exercises:
   search_text: 'state and justify: "surjective immersions are closed immersions." an immersion is an isomorphism
     onto a locally closed subscheme; if it is also surjective, the locally closed subscheme must be all
     of y, and a locally closed subset that equals the whole space is closed.'
-- id: adjectivesproject-org#110
+- id: adjectivesproject-org#109
   text: 'State and justify: "universally closed morphisms are closed."'
   hint: take the base change along the identity Y → Y; universal closedness applied to this trivial base
     change is exactly the statement that f itself is closed.
@@ -1271,7 +1253,7 @@ exercises:
   search_text: 'state and justify: "universally closed morphisms are closed." take the base change along
     the identity y → y; universal closedness applied to this trivial base change is exactly the statement
     that f itself is closed.'
-- id: adjectivesproject-org#111
+- id: adjectivesproject-org#110
   text: 'State and justify: "étale is formally étale and locally of finite presentation."'
   hint: this is essentially the definition — étale = flat + unramified = formally étale (infinitesimal
     lifting uniquely) + locally of finite presentation.
@@ -1280,7 +1262,7 @@ exercises:
   search_text: 'state and justify: "étale is formally étale and locally of finite presentation." this
     is essentially the definition — étale = flat + unramified = formally étale (infinitesimal lifting
     uniquely) + locally of finite presentation.'
-- id: adjectivesproject-org#112
+- id: adjectivesproject-org#111
   text: State the "definition étale" characterization
   hint: f is étale iff it is flat and unramified, iff Ω_{X/Y} = 0 and f is flat and locally of finite
     presentation.
@@ -1288,7 +1270,7 @@ exercises:
   sub_index: null
   search_text: state the "definition étale" characterization f is étale iff it is flat and unramified,
     iff ω_{x/y} = 0 and f is flat and locally of finite presentation.
-- id: adjectivesproject-org#113
+- id: adjectivesproject-org#112
   text: State the "definition formally étale" characterization
   hint: for every square-zero extension Spec(A/I) ↪ Spec(A), there is a UNIQUE lift of any map Spec(A/I)
     → X compatible with a given map Spec(A) → Y to a map Spec(A) → X.
@@ -1297,7 +1279,7 @@ exercises:
   search_text: state the "definition formally étale" characterization for every square-zero extension
     spec(a/i) ↪ spec(a), there is a unique lift of any map spec(a/i) → x compatible with a given map spec(a)
     → y to a map spec(a) → x.
-- id: adjectivesproject-org#114
+- id: adjectivesproject-org#113
   text: 'State and justify: "injective morphisms have finite fibers."'
   hint: injective on points forces each fiber f^{-1}(y) to contain at most one point, which is (vacuously)
     a finite set.
@@ -1305,7 +1287,7 @@ exercises:
   sub_index: null
   search_text: 'state and justify: "injective morphisms have finite fibers." injective on points forces
     each fiber f^{-1}(y) to contain at most one point, which is (vacuously) a finite set.'
-- id: adjectivesproject-org#115
+- id: adjectivesproject-org#114
   text: State the "definition faithfully flat" characterization
   hint: f is faithfully flat iff f is flat and surjective, iff f is flat and a module M over O_{Y} is
     zero whenever f^*M = 0.
@@ -1313,7 +1295,7 @@ exercises:
   sub_index: null
   search_text: state the "definition faithfully flat" characterization f is faithfully flat iff f is flat
     and surjective, iff f is flat and a module m over o_{y} is zero whenever f^*m = 0.
-- id: adjectivesproject-org#116
+- id: adjectivesproject-org#115
   text: 'State and justify: "regular morphisms are flat."'
   hint: regular fibers over a base are, by definition of "regular morphism," required to be flat as part
     of the definition; the content is that flatness plus regular fibers gives a well-behaved notion refining
@@ -1324,7 +1306,7 @@ exercises:
     of "regular morphism," required to be flat as part of the definition; the content is that flatness
     plus regular fibers gives a well-behaved notion refining smoothness in positive characteristic where
     fibers need not be geometrically reduced.'
-- id: adjectivesproject-org#117
+- id: adjectivesproject-org#116
   text: 'State and justify: "syntomic morphisms are flat."'
   hint: flatness is built directly into the definition of syntomic (flat + locally of finite presentation
     + lci fibers).
@@ -1332,7 +1314,7 @@ exercises:
   sub_index: null
   search_text: 'state and justify: "syntomic morphisms are flat." flatness is built directly into the
     definition of syntomic (flat + locally of finite presentation + lci fibers).'
-- id: adjectivesproject-org#118
+- id: adjectivesproject-org#117
   text: 'State and justify: "finite locally free is finite, flat and locally of finite presentation."'
   hint: a locally free O_Y-module of finite rank is automatically flat (free modules are flat) and finitely
     presented (finite rank free modules are finitely presented), and finite locally free morphisms are
@@ -1343,7 +1325,7 @@ exercises:
     a locally free o_y-module of finite rank is automatically flat (free modules are flat) and finitely
     presented (finite rank free modules are finitely presented), and finite locally free morphisms are
     by definition finite (affine with finite module).'
-- id: adjectivesproject-org#119
+- id: adjectivesproject-org#118
   text: 'State and justify: "closed immersions are finite."'
   hint: a closed immersion is affine (defined by a sheaf of ideals cutting out a closed affine-covered
     subscheme) and f_*O_X = O_Y/I is a quotient of O_Y, hence finitely generated (in fact generated by
@@ -1353,7 +1335,7 @@ exercises:
   search_text: 'state and justify: "closed immersions are finite." a closed immersion is affine (defined
     by a sheaf of ideals cutting out a closed affine-covered subscheme) and f_*o_x = o_y/i is a quotient
     of o_y, hence finitely generated (in fact generated by 1 element, the class of 1) as an o_y-module.'
-- id: adjectivesproject-org#120
+- id: adjectivesproject-org#119
   text: 'State and justify: "finite is integral and locally of finite type."'
   hint: finiteness means f_*O_X is a finite O_Y-module; a finite module is automatically an integral extension
     (Cayley-Hamilton) and finite as a module implies finitely generated as an algebra, hence locally of
@@ -1363,7 +1345,7 @@ exercises:
   search_text: 'state and justify: "finite is integral and locally of finite type." finiteness means f_*o_x
     is a finite o_y-module; a finite module is automatically an integral extension (cayley-hamilton) and
     finite as a module implies finitely generated as an algebra, hence locally of finite type.'
-- id: adjectivesproject-org#121
+- id: adjectivesproject-org#120
   text: 'State and justify: "finite is proper and affine."'
   hint: finite morphisms are trivially affine by definition; properness follows because finite morphisms
     are universally closed (integral extensions satisfy the lying-over/going-up theorems ensuring closedness
@@ -1374,7 +1356,7 @@ exercises:
     by definition; properness follows because finite morphisms are universally closed (integral extensions
     satisfy the lying-over/going-up theorems ensuring closedness under any base change) and separated
     (affine morphisms are always separated).'
-- id: adjectivesproject-org#122
+- id: adjectivesproject-org#121
   text: 'State and justify: "finite is proper and quasi-finite."'
   hint: a finite module over a ring has, at each fiber, finitely many primes lying over a given prime
     (finiteness of fibers of integral extensions), giving quasi-finiteness; properness was shown above.
@@ -1383,14 +1365,14 @@ exercises:
   search_text: 'state and justify: "finite is proper and quasi-finite." a finite module over a ring has,
     at each fiber, finitely many primes lying over a given prime (finiteness of fibers of integral extensions),
     giving quasi-finiteness; properness was shown above.'
-- id: adjectivesproject-org#123
+- id: adjectivesproject-org#122
   text: State the "definition of finite presentation" characterization
   hint: locally of finite presentation + quasi-compact + quasi-separated.
   locator: null
   sub_index: null
   search_text: state the "definition of finite presentation" characterization locally of finite presentation
     + quasi-compact + quasi-separated.
-- id: adjectivesproject-org#124
+- id: adjectivesproject-org#123
   text: 'State and justify: "morphisms of finite presentation are of finite type."'
   hint: a finitely presented algebra (finitely generated with finitely generated relations) is a fortiori
     finitely generated, so locally of finite presentation implies locally of finite type; the quasi-compact/quasi-separated
@@ -1401,13 +1383,13 @@ exercises:
     algebra (finitely generated with finitely generated relations) is a fortiori finitely generated, so
     locally of finite presentation implies locally of finite type; the quasi-compact/quasi-separated hypotheses
     carry over unchanged.'
-- id: adjectivesproject-org#125
+- id: adjectivesproject-org#124
   text: State the "definition of finite type" characterization
   hint: locally of finite type + quasi-compact.
   locator: null
   sub_index: null
   search_text: state the "definition of finite type" characterization locally of finite type + quasi-compact.
-- id: adjectivesproject-org#126
+- id: adjectivesproject-org#125
   text: 'State and justify: "monomorphisms are formally unramified."'
   hint: 'if Δ: X → X ×_Y X is an isomorphism, then any two lifts of an infinitesimal lifting problem factor
     through the diagonal being an iso, forcing uniqueness of lifts, which is exactly formal unramifiedness.'
@@ -1416,14 +1398,14 @@ exercises:
   search_text: 'state and justify: "monomorphisms are formally unramified." if δ: x → x ×_y x is an isomorphism,
     then any two lifts of an infinitesimal lifting problem factor through the diagonal being an iso, forcing
     uniqueness of lifts, which is exactly formal unramifiedness.'
-- id: adjectivesproject-org#127
+- id: adjectivesproject-org#126
   text: State the "definition G-unramified" characterization
   hint: 'f is G-unramified iff the diagonal Δ: X → X ×_Y X is an open immersion.'
   locator: null
   sub_index: null
   search_text: 'state the "definition g-unramified" characterization f is g-unramified iff the diagonal
     δ: x → x ×_y x is an open immersion.'
-- id: adjectivesproject-org#128
+- id: adjectivesproject-org#127
   text: 'State and justify: "surjective injective closed maps are homeomorphisms."'
   hint: 'a continuous bijection that is closed automatically has continuous inverse: for any closed C
     ⊂ X, f(C) is closed in Y, so (f^{-1})^{-1}(C) = f(C) is closed, showing f^{-1} is continuous.'
@@ -1432,7 +1414,7 @@ exercises:
   search_text: 'state and justify: "surjective injective closed maps are homeomorphisms." a continuous
     bijection that is closed automatically has continuous inverse: for any closed c ⊂ x, f(c) is closed
     in y, so (f^{-1})^{-1}(c) = f(c) is closed, showing f^{-1} is continuous.'
-- id: adjectivesproject-org#129
+- id: adjectivesproject-org#128
   text: 'State and justify: "surjective injective open maps are homeomorphisms."'
   hint: 'dually, a continuous bijection that is open has continuous inverse: for any open U ⊂ X, f(U)
     is open, so (f^{-1})^{-1}(U) = f(U) is open, showing f^{-1} is continuous.'
@@ -1441,7 +1423,7 @@ exercises:
   search_text: 'state and justify: "surjective injective open maps are homeomorphisms." dually, a continuous
     bijection that is open has continuous inverse: for any open u ⊂ x, f(u) is open, so (f^{-1})^{-1}(u)
     = f(u) is open, showing f^{-1} is continuous.'
-- id: adjectivesproject-org#130
+- id: adjectivesproject-org#129
   text: 'State and justify: "universally homeomorphisms are homeomorphisms."'
   hint: apply the definition of universally homeomorphism to the trivial base change Y → Y (the identity)
     to recover that f itself is a homeomorphism.
@@ -1450,7 +1432,7 @@ exercises:
   search_text: 'state and justify: "universally homeomorphisms are homeomorphisms." apply the definition
     of universally homeomorphism to the trivial base change y → y (the identity) to recover that f itself
     is a homeomorphism.'
-- id: adjectivesproject-org#131
+- id: adjectivesproject-org#130
   text: 'State and justify: "closed immersions are H-projective."'
   hint: a closed immersion X ↪ Y trivially factors as itself followed by the identity P^0_Y = Y → Y, or
     more generally embeds via Segre-type tricks into P^n_Y for suitable n once Y is quasi-compact quasi-separated;
@@ -1461,7 +1443,7 @@ exercises:
     factors as itself followed by the identity p^0_y = y → y, or more generally embeds via segre-type
     tricks into p^n_y for suitable n once y is quasi-compact quasi-separated; the basic case n=0 already
     realizes closed immersions as h-projective.'
-- id: adjectivesproject-org#132
+- id: adjectivesproject-org#131
   text: 'State and justify: "finite morphisms with affine target are H-projective."'
   hint: if Y = Spec(B) is affine and f is finite, f_*O_X is generated by finitely many elements as a B-module,
     giving a surjection O_Y^n → f_*O_X which dualizes to an embedding of X into P^{n-1}_Y (via a Veronese-type
@@ -1474,7 +1456,7 @@ exercises:
     o_y^n → f_*o_x which dualizes to an embedding of x into p^{n-1}_y (via a veronese-type trick using
     the generators as homogeneous coordinates), realizing x as a closed subscheme of a trivial projective
     bundle.'
-- id: adjectivesproject-org#133
+- id: adjectivesproject-org#132
   text: 'State and justify: "closed immersions are immersions."'
   hint: immediately from the definition of immersion as "open immersion followed by closed immersion"
     — take the open immersion factor to be trivial (identity).
@@ -1483,21 +1465,21 @@ exercises:
   search_text: 'state and justify: "closed immersions are immersions." immediately from the definition
     of immersion as "open immersion followed by closed immersion" — take the open immersion factor to
     be trivial (identity).'
-- id: adjectivesproject-org#134
+- id: adjectivesproject-org#133
   text: 'State and justify: "open immersions are immersions."'
   hint: same as above with the closed immersion factor trivial.
   locator: null
   sub_index: null
   search_text: 'state and justify: "open immersions are immersions." same as above with the closed immersion
     factor trivial.'
-- id: adjectivesproject-org#135
+- id: adjectivesproject-org#134
   text: 'State and justify: "universally injective morphisms are injective."'
   hint: apply universal injectivity to the trivial base change Y → Y.
   locator: null
   sub_index: null
   search_text: 'state and justify: "universally injective morphisms are injective." apply universal injectivity
     to the trivial base change y → y.'
-- id: adjectivesproject-org#136
+- id: adjectivesproject-org#135
   text: 'State and justify: "integral is affine and universally closed."'
   hint: integral morphisms are affine by definition; universal closedness follows from the lying-over
     and going-up theorems for integral ring extensions, which are stable under arbitrary base change (tensoring
@@ -1508,7 +1490,7 @@ exercises:
     affine by definition; universal closedness follows from the lying-over and going-up theorems for integral
     ring extensions, which are stable under arbitrary base change (tensoring an integral extension remains
     integral).'
-- id: adjectivesproject-org#137
+- id: adjectivesproject-org#136
   text: 'State and justify: "morphisms locally of finite type with locally Noetherian target are locally
     of finite presentation."'
   hint: over a Noetherian ring, the Hilbert Basis Theorem guarantees that any finitely generated algebra
@@ -1520,14 +1502,14 @@ exercises:
     locally of finite presentation." over a noetherian ring, the hilbert basis theorem guarantees that
     any finitely generated algebra is automatically finitely presented, since the kernel of a surjection
     from a polynomial ring over a noetherian ring is finitely generated.'
-- id: adjectivesproject-org#138
+- id: adjectivesproject-org#137
   text: 'State and justify: "syntomic morphisms are locally of finite presentation."'
   hint: locally of finite presentation is built directly into the definition of syntomic.
   locator: null
   sub_index: null
   search_text: 'state and justify: "syntomic morphisms are locally of finite presentation." locally of
     finite presentation is built directly into the definition of syntomic.'
-- id: adjectivesproject-org#139
+- id: adjectivesproject-org#138
   text: 'State and justify: "morphisms of locally of finite presentation are locally of finite type."'
   hint: finitely presented algebras are in particular finitely generated, dropping the extra requirement
     on the relations.
@@ -1536,7 +1518,7 @@ exercises:
   search_text: 'state and justify: "morphisms of locally of finite presentation are locally of finite
     type." finitely presented algebras are in particular finitely generated, dropping the extra requirement
     on the relations.'
-- id: adjectivesproject-org#140
+- id: adjectivesproject-org#139
   text: 'State and justify: "projective morphisms are locally projective."'
   hint: take the trivial open cover {Y} of Y; a projective morphism is by definition already bundle-projective/H-projective
     globally, hence trivially "locally projective" with the cover consisting of Y itself.
@@ -1545,7 +1527,7 @@ exercises:
   search_text: 'state and justify: "projective morphisms are locally projective." take the trivial open
     cover {y} of y; a projective morphism is by definition already bundle-projective/h-projective globally,
     hence trivially "locally projective" with the cover consisting of y itself.'
-- id: adjectivesproject-org#141
+- id: adjectivesproject-org#140
   text: 'State and justify: "immersions are monomorphisms."'
   hint: an immersion identifies X with a locally closed subscheme of Y; the diagonal for the inclusion
     of a subscheme into its ambient scheme is always an isomorphism, since two maps into a subscheme agreeing
@@ -1556,7 +1538,7 @@ exercises:
     closed subscheme of y; the diagonal for the inclusion of a subscheme into its ambient scheme is always
     an isomorphism, since two maps into a subscheme agreeing after composing with the (injective-on-points,
     sheaf-surjective) inclusion must already agree.'
-- id: adjectivesproject-org#142
+- id: adjectivesproject-org#141
   text: 'State and justify: "open immersion is universally injective and étale."'
   hint: an open immersion is a local isomorphism, hence étale (Ω=0, flat, locally of finite presentation);
     it is universally injective because after any base change it remains an open immersion, which is injective
@@ -1566,21 +1548,21 @@ exercises:
   search_text: 'state and justify: "open immersion is universally injective and étale." an open immersion
     is a local isomorphism, hence étale (ω=0, flat, locally of finite presentation); it is universally
     injective because after any base change it remains an open immersion, which is injective on points.'
-- id: adjectivesproject-org#143
+- id: adjectivesproject-org#142
   text: 'State and justify: "universally open morphisms are open."'
   hint: apply universal openness to the trivial base change Y → Y.
   locator: null
   sub_index: null
   search_text: 'state and justify: "universally open morphisms are open." apply universal openness to
     the trivial base change y → y.'
-- id: adjectivesproject-org#144
+- id: adjectivesproject-org#143
   text: State the "definition proper" characterization
   hint: proper = separated + of finite type + universally closed.
   locator: null
   sub_index: null
   search_text: state the "definition proper" characterization proper = separated + of finite type + universally
     closed.
-- id: adjectivesproject-org#145
+- id: adjectivesproject-org#144
   text: 'State and justify: "locally projective morphisms are proper."'
   hint: bundle-projective morphisms are proper because P(E) → Y is proper (projective space bundles are
     proper) and closed immersions into proper schemes remain proper; "locally projective" glues this properness
@@ -1591,7 +1573,7 @@ exercises:
     are proper because p(e) → y is proper (projective space bundles are proper) and closed immersions
     into proper schemes remain proper; "locally projective" glues this properness property, which is local
     on the target, hence descends to the whole morphism.'
-- id: adjectivesproject-org#146
+- id: adjectivesproject-org#145
   text: 'State and justify: "bundle-projective morphisms are projective."'
   hint: the projectivization P(E) of a finite locally free sheaf is itself a projective bundle admitting
     local trivializations by P^n's, and being locally trivial as such it satisfies EGA's general definition
@@ -1602,7 +1584,7 @@ exercises:
     p(e) of a finite locally free sheaf is itself a projective bundle admitting local trivializations
     by p^n''s, and being locally trivial as such it satisfies ega''s general definition of projective
     (proj of a quasi-coherent graded algebra).'
-- id: adjectivesproject-org#147
+- id: adjectivesproject-org#146
   text: 'State and justify: "finite morphisms are projective."'
   hint: finite morphisms are proper and quasi-finite; by Zariski's Main Theorem type arguments (or directly),
     a finite morphism to an affine (or general) target embeds into a trivial projective bundle using generators
@@ -1615,7 +1597,7 @@ exercises:
     (or general) target embeds into a trivial projective bundle using generators of the pushforward module
     as homogeneous coordinates, as in "finite morphisms with affine target are h-projective," glued over
     an open cover.'
-- id: adjectivesproject-org#148
+- id: adjectivesproject-org#147
   text: 'State and justify: "affine morphisms are quasi-affine."'
   hint: an affine morphism trivially factors as the identity open immersion (all of X, which is quasi-compact
     when restricted appropriately) followed by itself, i.e. quasi-affine allows the "quasi-compact open
@@ -1626,7 +1608,7 @@ exercises:
     as the identity open immersion (all of x, which is quasi-compact when restricted appropriately) followed
     by itself, i.e. quasi-affine allows the "quasi-compact open immersion" part to be the full (trivial,
     hence quasi-compact) identity.'
-- id: adjectivesproject-org#149
+- id: adjectivesproject-org#148
   text: 'State and justify: "quasi-compact immersions are quasi-affine."'
   hint: a quasi-compact immersion factors through a quasi-compact open immersion into a closed subscheme
     of Y, and closed subschemes of affine schemes are affine, so composing gives a quasi-compact open
@@ -1637,7 +1619,7 @@ exercises:
     factors through a quasi-compact open immersion into a closed subscheme of y, and closed subschemes
     of affine schemes are affine, so composing gives a quasi-compact open immersion into an affine scheme,
     i.e. quasi-affine.'
-- id: adjectivesproject-org#150
+- id: adjectivesproject-org#149
   text: 'State and justify: "immersions with locally Noetherian target are quasi-compact."'
   hint: on a locally Noetherian scheme every open (and closed) subscheme is quasi-compact after intersecting
     with a Noetherian affine cover, because Noetherian topological spaces are automatically quasi-compact;
@@ -1648,7 +1630,7 @@ exercises:
     locally noetherian scheme every open (and closed) subscheme is quasi-compact after intersecting with
     a noetherian affine cover, because noetherian topological spaces are automatically quasi-compact;
     this pins down quasi-compactness of the immersion''s image.'
-- id: adjectivesproject-org#151
+- id: adjectivesproject-org#150
   text: 'State and justify: "quasi-affine morphisms are quasi-compact."'
   hint: a quasi-compact open immersion composed with an affine (hence quasi-compact) morphism remains
     quasi-compact, since quasi-compactness is stable under composition.
@@ -1657,7 +1639,7 @@ exercises:
   search_text: 'state and justify: "quasi-affine morphisms are quasi-compact." a quasi-compact open immersion
     composed with an affine (hence quasi-compact) morphism remains quasi-compact, since quasi-compactness
     is stable under composition.'
-- id: adjectivesproject-org#152
+- id: adjectivesproject-org#151
   text: 'State and justify: "morphisms with quasi-compact source and quasi-separated target are quasi-compact."'
   hint: if X itself is quasi-compact, then in particular the preimage of the whole (quasi-compact, by
     quasi-separatedness controlling intersections) target is quasi-compact, and any quasi-compact open
@@ -1668,7 +1650,7 @@ exercises:
     quasi-compact." if x itself is quasi-compact, then in particular the preimage of the whole (quasi-compact,
     by quasi-separatedness controlling intersections) target is quasi-compact, and any quasi-compact open
     of y pulls back to a subset of the quasi-compact x, hence is quasi-compact.'
-- id: adjectivesproject-org#153
+- id: adjectivesproject-org#152
   text: 'State and justify: "universally closed morphisms are quasi-compact."'
   hint: universal closedness is one of Grothendieck's finiteness criteria that, via the "fpqc" reformulation
     of quasi-compactness (or directly via general topology arguments for schemes), forces the morphism
@@ -1680,7 +1662,7 @@ exercises:
     is one of grothendieck''s finiteness criteria that, via the "fpqc" reformulation of quasi-compactness
     (or directly via general topology arguments for schemes), forces the morphism to already be quasi-compact
     — this is a standard structural fact used in building up "proper" from more primitive pieces.'
-- id: adjectivesproject-org#154
+- id: adjectivesproject-org#153
   text: State the "definition quasi-finite" characterization
   hint: f is quasi-finite iff f is locally of finite type and every fiber f^{-1}(y) is a finite set of
     points.
@@ -1688,7 +1670,7 @@ exercises:
   sub_index: null
   search_text: state the "definition quasi-finite" characterization f is quasi-finite iff f is locally
     of finite type and every fiber f^{-1}(y) is a finite set of points.
-- id: adjectivesproject-org#155
+- id: adjectivesproject-org#154
   text: 'State and justify: "morphisms with quasi-separated source are quasi-separated."'
   hint: the diagonal for X → Y factors through the diagonal for X → X (i.e. through X being quasi-separated
     as an absolute scheme), and quasi-compactness of that diagonal is inherited relatively.
@@ -1697,7 +1679,7 @@ exercises:
   search_text: 'state and justify: "morphisms with quasi-separated source are quasi-separated." the diagonal
     for x → y factors through the diagonal for x → x (i.e. through x being quasi-separated as an absolute
     scheme), and quasi-compactness of that diagonal is inherited relatively.'
-- id: adjectivesproject-org#156
+- id: adjectivesproject-org#155
   text: 'State and justify: "semi-separated morphisms are quasi-separated."'
   hint: an affine diagonal is automatically quasi-compact (affine schemes are quasi-compact), so semi-separated
     (affine diagonal) implies quasi-separated (quasi-compact diagonal).
@@ -1706,7 +1688,7 @@ exercises:
   search_text: 'state and justify: "semi-separated morphisms are quasi-separated." an affine diagonal
     is automatically quasi-compact (affine schemes are quasi-compact), so semi-separated (affine diagonal)
     implies quasi-separated (quasi-compact diagonal).'
-- id: adjectivesproject-org#157
+- id: adjectivesproject-org#156
   text: 'State and justify: "étale morphisms are smooth."'
   hint: étale = smooth of relative dimension 0; more directly, formally étale implies formally smooth
     (uniqueness plus existence of lifts is stronger than just existence), and locally of finite presentation
@@ -1717,7 +1699,7 @@ exercises:
     0; more directly, formally étale implies formally smooth (uniqueness plus existence of lifts is stronger
     than just existence), and locally of finite presentation is shared, so étale ⟹ formally smooth + locally
     of finite presentation = smooth.'
-- id: adjectivesproject-org#158
+- id: adjectivesproject-org#157
   text: 'State and justify: "smooth is formally smooth and locally of finite presentation."'
   hint: this is essentially the standard definition/characterization of smoothness via the infinitesimal
     lifting criterion.
@@ -1726,7 +1708,7 @@ exercises:
   search_text: 'state and justify: "smooth is formally smooth and locally of finite presentation." this
     is essentially the standard definition/characterization of smoothness via the infinitesimal lifting
     criterion.'
-- id: adjectivesproject-org#159
+- id: adjectivesproject-org#158
   text: 'State and justify: "smooth is regular and locally of finite presentation."'
   hint: smooth morphisms have geometric fibers that are regular schemes and are flat, matching the definition
     of "regular morphism," while retaining the finite presentation hypothesis.
@@ -1735,7 +1717,7 @@ exercises:
   search_text: 'state and justify: "smooth is regular and locally of finite presentation." smooth morphisms
     have geometric fibers that are regular schemes and are flat, matching the definition of "regular morphism,"
     while retaining the finite presentation hypothesis.'
-- id: adjectivesproject-org#160
+- id: adjectivesproject-org#159
   text: 'State and justify: "injective morphisms are separated."'
   hint: 'if f is injective on points, the diagonal Δ: X → X ×_Y X has image equal to the whole "matching
     locus," and injectivity forces this locus to already be closed (two points of X mapping to the same
@@ -1746,7 +1728,7 @@ exercises:
     diagonal δ: x → x ×_y x has image equal to the whole "matching locus," and injectivity forces this
     locus to already be closed (two points of x mapping to the same point of y ×... force equality), giving
     a closed immersion diagonal.'
-- id: adjectivesproject-org#161
+- id: adjectivesproject-org#160
   text: 'State and justify: "quasi-affine morphisms are separated."'
   hint: quasi-affine morphisms factor through an affine morphism (which is always separated, since affine
     schemes are separated over any base and diagonals of affine morphisms are affine hence closed immersions)
@@ -1758,7 +1740,7 @@ exercises:
     through an affine morphism (which is always separated, since affine schemes are separated over any
     base and diagonals of affine morphisms are affine hence closed immersions) composed with a quasi-compact
     open immersion (open immersions are separated); composing separated morphisms remains separated.'
-- id: adjectivesproject-org#162
+- id: adjectivesproject-org#161
   text: 'State and justify: "morphisms with separated source are separated."'
   hint: 'separatedness of X (as an absolute scheme, i.e. over the base ring) implies the relative diagonal
     for f: X → Y is a closed immersion once X''s own diagonal is a closed immersion, by a standard diagram-chase
@@ -1769,7 +1751,7 @@ exercises:
     (as an absolute scheme, i.e. over the base ring) implies the relative diagonal for f: x → y is a closed
     immersion once x''s own diagonal is a closed immersion, by a standard diagram-chase comparing absolute
     and relative diagonals.'
-- id: adjectivesproject-org#163
+- id: adjectivesproject-org#162
   text: 'State and justify: "affine morphisms with affine target have affine source."'
   hint: if Y = Spec(B) is affine and f is affine, then f^{-1}(Y) = X is required to be affine by the very
     definition of affine morphism applied to the affine open V = Y.
@@ -1778,7 +1760,7 @@ exercises:
   search_text: 'state and justify: "affine morphisms with affine target have affine source." if y = spec(b)
     is affine and f is affine, then f^{-1}(y) = x is required to be affine by the very definition of affine
     morphism applied to the affine open v = y.'
-- id: adjectivesproject-org#164
+- id: adjectivesproject-org#163
   text: 'State and justify: "excellence lifts along locally finite type maps."'
   hint: 'if Y is excellent and f: X → Y is locally of finite type, then X is excellent, because finite-type
     algebras over excellent rings remain excellent (excellence is stable under finite type base change),
@@ -1789,7 +1771,7 @@ exercises:
     and f: x → y is locally of finite type, then x is excellent, because finite-type algebras over excellent
     rings remain excellent (excellence is stable under finite type base change), by grothendieck''s foundational
     results on excellent rings.'
-- id: adjectivesproject-org#165
+- id: adjectivesproject-org#164
   text: 'State and justify: "quasi-compact and locally of finite type over finite-dimensional is finite-dimensional."'
   hint: dimension is controlled by chains of primes in finitely many affine charts (using quasi-compactness
     to reduce to finitely many charts), and each chart's dimension is bounded in terms of the base's dimension
@@ -1800,7 +1782,7 @@ exercises:
     finite-dimensional." dimension is controlled by chains of primes in finitely many affine charts (using
     quasi-compactness to reduce to finitely many charts), and each chart''s dimension is bounded in terms
     of the base''s dimension plus the (finite) transcendence degree added by a finite-type extension.'
-- id: adjectivesproject-org#166
+- id: adjectivesproject-org#165
   text: 'State and justify: "morphisms locally of finite type with Jacobson target have Jacobson source."'
   hint: finite-type algebras over a Jacobson ring are Jacobson (a classical fact proven via Noether normalization
     / the generic-freeness argument used in the Nullstellensatz), so X inherits the Jacobson property
@@ -1811,7 +1793,7 @@ exercises:
     source." finite-type algebras over a jacobson ring are jacobson (a classical fact proven via noether
     normalization / the generic-freeness argument used in the nullstellensatz), so x inherits the jacobson
     property from y.'
-- id: adjectivesproject-org#167
+- id: adjectivesproject-org#166
   text: State the "Hilbert basis theorem."
   hint: if R is Noetherian, then R[x_1, …, x_n] is Noetherian; consequently every finitely generated R-algebra,
     being a quotient of such a polynomial ring, is Noetherian.
@@ -1819,7 +1801,7 @@ exercises:
   sub_index: null
   search_text: state the "hilbert basis theorem." if r is noetherian, then r[x_1, …, x_n] is noetherian;
     consequently every finitely generated r-algebra, being a quotient of such a polynomial ring, is noetherian.
-- id: adjectivesproject-org#168
+- id: adjectivesproject-org#167
   text: 'State and justify: "quasi-affine morphisms with affine target have quasi-affine source."'
   hint: if Y is affine and f is quasi-affine, then X is a quasi-compact open subscheme of an affine scheme
     over Y, hence X itself (as an absolute scheme) is quasi-affine.
@@ -1828,7 +1810,7 @@ exercises:
   search_text: 'state and justify: "quasi-affine morphisms with affine target have quasi-affine source."
     if y is affine and f is quasi-affine, then x is a quasi-compact open subscheme of an affine scheme
     over y, hence x itself (as an absolute scheme) is quasi-affine.'
-- id: adjectivesproject-org#169
+- id: adjectivesproject-org#168
   text: 'State and justify: "quasi-compact morphisms with quasi-compact target have quasi-compact source."'
   hint: the preimage of the (quasi-compact) whole target Y is X itself, and quasi-compactness of f applied
     to Y (which is quasi-compact by hypothesis) gives quasi-compactness of X.
@@ -1837,7 +1819,7 @@ exercises:
   search_text: 'state and justify: "quasi-compact morphisms with quasi-compact target have quasi-compact
     source." the preimage of the (quasi-compact) whole target y is x itself, and quasi-compactness of
     f applied to y (which is quasi-compact by hypothesis) gives quasi-compactness of x.'
-- id: adjectivesproject-org#170
+- id: adjectivesproject-org#169
   text: 'State and justify: "quasi-separated morphisms with quasi-separated target have quasi-separated
     source."'
   hint: compose the diagonal of X over Y (quasi-compact, by relative quasi-separatedness) with the diagonal
@@ -1849,7 +1831,7 @@ exercises:
     source." compose the diagonal of x over y (quasi-compact, by relative quasi-separatedness) with the
     diagonal of y over the base (quasi-compact, by hypothesis) to bound the diagonal of x over the base,
     using that a composite of quasi-compact immersions/diagonals remains quasi-compact.'
-- id: adjectivesproject-org#171
+- id: adjectivesproject-org#170
   text: 'State and justify: "smooth morphisms with regular target have regular source."'
   hint: smoothness means fibers are regular and f is flat; flatness plus a regular base and regular fibers
     implies the total space is regular by the local criterion of regularity for flat local homomorphisms
@@ -1860,7 +1842,7 @@ exercises:
     means fibers are regular and f is flat; flatness plus a regular base and regular fibers implies the
     total space is regular by the local criterion of regularity for flat local homomorphisms (fiberwise
     regularity + regular base ⟹ regular total ring).'
-- id: adjectivesproject-org#172
+- id: adjectivesproject-org#171
   text: 'State and justify: "separated morphisms with separated target have separated source."'
   hint: 'if Y is separated over the base and f: X → Y is separated, then X → base is separated as the
     composite of two separated morphisms (separated morphisms compose).'
@@ -1869,7 +1851,7 @@ exercises:
   search_text: 'state and justify: "separated morphisms with separated target have separated source."
     if y is separated over the base and f: x → y is separated, then x → base is separated as the composite
     of two separated morphisms (separated morphisms compose).'
-- id: adjectivesproject-org#173
+- id: adjectivesproject-org#172
   text: 'State and justify: "semi-separated morphisms with semi-separated target have semi-separated source."'
   hint: analogous composition-of-affine-diagonals argument as for separatedness, using that affine morphisms
     compose to affine morphisms.
@@ -1878,7 +1860,7 @@ exercises:
   search_text: 'state and justify: "semi-separated morphisms with semi-separated target have semi-separated
     source." analogous composition-of-affine-diagonals argument as for separatedness, using that affine
     morphisms compose to affine morphisms.'
-- id: adjectivesproject-org#174
+- id: adjectivesproject-org#173
   text: 'State and justify: "separated morphisms are semi-separated."'
   hint: a closed immersion (which the diagonal is, under separatedness) is always affine, so a separated
     diagonal (closed immersion) is a fortiori a semi-separated diagonal (affine).
@@ -1887,7 +1869,7 @@ exercises:
   search_text: 'state and justify: "separated morphisms are semi-separated." a closed immersion (which
     the diagonal is, under separatedness) is always affine, so a separated diagonal (closed immersion)
     is a fortiori a semi-separated diagonal (affine).'
-- id: adjectivesproject-org#175
+- id: adjectivesproject-org#174
   text: 'State and justify: "morphisms with semi-separated source are semi-separated."'
   hint: analogous to the separated case — semi-separatedness of X as an absolute scheme propagates to
     the relative diagonal for f via a diagram comparison of absolute and relative diagonals.
@@ -1896,7 +1878,7 @@ exercises:
   search_text: 'state and justify: "morphisms with semi-separated source are semi-separated." analogous
     to the separated case — semi-separatedness of x as an absolute scheme propagates to the relative diagonal
     for f via a diagram comparison of absolute and relative diagonals.'
-- id: adjectivesproject-org#176
+- id: adjectivesproject-org#175
   text: 'State and justify: "smooth morphisms are syntomic."'
   hint: smooth fibers are in particular regular, and regular local rings are complete intersections (indeed
     Cohen-Macaulay of the expected codimension with trivial obstruction), so smooth fibers are automatically
@@ -1908,7 +1890,7 @@ exercises:
     and regular local rings are complete intersections (indeed cohen-macaulay of the expected codimension
     with trivial obstruction), so smooth fibers are automatically local complete intersections, giving
     syntomic once flatness and finite presentation (shared with smoothness) are included.'
-- id: adjectivesproject-org#177
+- id: adjectivesproject-org#176
   text: 'State and justify: "finite surjective morphisms with affine source and noetherian target have
     affine target."'
   hint: 'this is a form of Chevalley''s theorem: if X = Spec(A) is affine, f finite and surjective, and
@@ -1924,7 +1906,7 @@ exercises:
     of an affine scheme with faithfully flat/surjective behavior forces o_y itself to satisfy the sheaf-affineness
     criterion (serre''s criterion for affineness via vanishing of higher cohomology, pulled back through
     the finite surjection).'
-- id: adjectivesproject-org#178
+- id: adjectivesproject-org#177
   text: 'State and justify: "universally homeomorphism is integral, universally injective and surjective."'
   hint: a universal homeomorphism is in particular universally closed and universally injective, which
     (via Zariski's Main Theorem-type arguments) forces it to be integral, and being a homeomorphism in
@@ -1935,7 +1917,7 @@ exercises:
     a universal homeomorphism is in particular universally closed and universally injective, which (via
     zariski''s main theorem-type arguments) forces it to be integral, and being a homeomorphism in particular
     it is surjective.'
-- id: adjectivesproject-org#179
+- id: adjectivesproject-org#178
   text: 'State and justify: "monomorphisms are universally injective."'
   hint: any base change of a monomorphism is again a monomorphism (monomorphisms are stable under base
     change, since the diagonal condition is preserved under pullback), and monomorphisms of schemes are
@@ -1946,7 +1928,7 @@ exercises:
     is again a monomorphism (monomorphisms are stable under base change, since the diagonal condition
     is preserved under pullback), and monomorphisms of schemes are always injective on points, so this
     holds after every base change.'
-- id: adjectivesproject-org#180
+- id: adjectivesproject-org#179
   text: 'State and justify: "flat morphisms locally of finite presentation are universally open."'
   hint: 'this is a theorem of Grothendieck (EGA IV): flatness plus local finite presentation implies the
     morphism is open, and this remains true after any base change since both flatness and local finite
@@ -1957,7 +1939,7 @@ exercises:
     this is a theorem of grothendieck (ega iv): flatness plus local finite presentation implies the morphism
     is open, and this remains true after any base change since both flatness and local finite presentation
     are stable under base change.'
-- id: adjectivesproject-org#181
+- id: adjectivesproject-org#180
   text: 'State and justify: "universally homeomorphisms are universally open."'
   hint: a homeomorphism is in particular open, so if f remains a homeomorphism after every base change,
     it remains open after every base change too.
@@ -1966,14 +1948,14 @@ exercises:
   search_text: 'state and justify: "universally homeomorphisms are universally open." a homeomorphism
     is in particular open, so if f remains a homeomorphism after every base change, it remains open after
     every base change too.'
-- id: adjectivesproject-org#182
+- id: adjectivesproject-org#181
   text: 'State and justify: "unramified is formally unramified and locally of finite type."'
   hint: this is essentially the standard definition/characterization of unramified morphisms.
   locator: null
   sub_index: null
   search_text: 'state and justify: "unramified is formally unramified and locally of finite type." this
     is essentially the standard definition/characterization of unramified morphisms.'
-- id: adjectivesproject-org#183
+- id: adjectivesproject-org#182
   text: 'State and justify: "immersions are unramified."'
   hint: an immersion identifies X with a locally closed subscheme; the relative cotangent sheaf Ω_{X/Y}
     of a subscheme inclusion vanishes because locally the inclusion is cut out by an ideal I with I/I²
@@ -1986,7 +1968,7 @@ exercises:
     the inclusion is cut out by an ideal i with i/i² = 0 upon restriction (the ideal sheaf pulls back
     to zero on the subscheme itself), and immersions are locally of finite type when restricted to a suitable
     open cover.'
-- id: adjectivesproject-org#184
+- id: adjectivesproject-org#183
   text: 'State and justify: "regular schemes are Cohen-Macaulay."'
   hint: in a regular local ring, the maximal ideal is generated by a regular sequence of length equal
     to the dimension, so depth = dimension automatically, which is precisely the Cohen-Macaulay condition.
@@ -1995,7 +1977,7 @@ exercises:
   search_text: 'state and justify: "regular schemes are cohen-macaulay." in a regular local ring, the
     maximal ideal is generated by a regular sequence of length equal to the dimension, so depth = dimension
     automatically, which is precisely the cohen-macaulay condition.'
-- id: adjectivesproject-org#185
+- id: adjectivesproject-org#184
   text: 'State and justify: "irreducible schemes are connected."'
   hint: if X were disconnected, X = U ⊔ V with U, V nonempty disjoint open (hence also closed) subsets,
     contradicting irreducibility (X cannot be a union of two proper closed subsets, and disjoint opens
@@ -2006,7 +1988,7 @@ exercises:
     ⊔ v with u, v nonempty disjoint open (hence also closed) subsets, contradicting irreducibility (x
     cannot be a union of two proper closed subsets, and disjoint opens are in particular closed complements
     of each other).'
-- id: adjectivesproject-org#186
+- id: adjectivesproject-org#185
   text: 'State and justify: "integral is reduced and irreducible."'
   hint: this is the definition of integral — a scheme is integral iff it is both reduced (no nilpotents)
     and irreducible (not a union of two proper closed subsets).
@@ -2015,7 +1997,7 @@ exercises:
   search_text: 'state and justify: "integral is reduced and irreducible." this is the definition of integral
     — a scheme is integral iff it is both reduced (no nilpotents) and irreducible (not a union of two
     proper closed subsets).'
-- id: adjectivesproject-org#187
+- id: adjectivesproject-org#186
   text: 'State and justify: "regular schemes are locally factorial."'
   hint: every regular local ring is a unique factorization domain (Auslander-Buchsbaum theorem), so a
     regular scheme has all its local rings being UFDs, i.e. it is locally factorial.
@@ -2024,7 +2006,7 @@ exercises:
   search_text: 'state and justify: "regular schemes are locally factorial." every regular local ring is
     a unique factorization domain (auslander-buchsbaum theorem), so a regular scheme has all its local
     rings being ufds, i.e. it is locally factorial.'
-- id: adjectivesproject-org#188
+- id: adjectivesproject-org#187
   text: 'State and justify: "Cohen-Macaulay schemes are locally Noetherian."'
   hint: the notion of depth (and hence Cohen-Macaulayness) is typically only defined for Noetherian local
     rings, so being Cohen-Macaulay presupposes and implies local Noetherianity.
@@ -2033,14 +2015,14 @@ exercises:
   search_text: 'state and justify: "cohen-macaulay schemes are locally noetherian." the notion of depth
     (and hence cohen-macaulayness) is typically only defined for noetherian local rings, so being cohen-macaulay
     presupposes and implies local noetherianity.'
-- id: adjectivesproject-org#189
+- id: adjectivesproject-org#188
   text: 'State and justify: "excellent schemes are locally Noetherian."'
   hint: local Noetherianity is one of the base hypotheses built into Grothendieck's definition of excellent.
   locator: null
   sub_index: null
   search_text: 'state and justify: "excellent schemes are locally noetherian." local noetherianity is
     one of the base hypotheses built into grothendieck''s definition of excellent.'
-- id: adjectivesproject-org#190
+- id: adjectivesproject-org#189
   text: 'State and justify: "locally factorial schemes are normal."'
   hint: unique factorization domains are always integrally closed in their fraction field, so all local
     rings of a locally factorial scheme are normal domains, i.e. the scheme is normal.
@@ -2049,7 +2031,7 @@ exercises:
   search_text: 'state and justify: "locally factorial schemes are normal." unique factorization domains
     are always integrally closed in their fraction field, so all local rings of a locally factorial scheme
     are normal domains, i.e. the scheme is normal.'
-- id: adjectivesproject-org#191
+- id: adjectivesproject-org#190
   text: State the "definition Noetherian" characterization
   hint: X is Noetherian iff X is locally Noetherian and quasi-compact, iff X admits a finite cover by
     spectra of Noetherian rings.
@@ -2057,7 +2039,7 @@ exercises:
   sub_index: null
   search_text: state the "definition noetherian" characterization x is noetherian iff x is locally noetherian
     and quasi-compact, iff x admits a finite cover by spectra of noetherian rings.
-- id: adjectivesproject-org#192
+- id: adjectivesproject-org#191
   text: 'State and justify: "affine schemes are quasi-affine."'
   hint: any affine scheme is trivially a quasi-compact (it is itself quasi-compact) open subscheme of
     itself, satisfying the definition of quasi-affine with the identity open immersion.
@@ -2066,7 +2048,7 @@ exercises:
   search_text: 'state and justify: "affine schemes are quasi-affine." any affine scheme is trivially a
     quasi-compact (it is itself quasi-compact) open subscheme of itself, satisfying the definition of
     quasi-affine with the identity open immersion.'
-- id: adjectivesproject-org#193
+- id: adjectivesproject-org#192
   text: 'State and justify: "quasi-affine schemes are quasi-compact."'
   hint: a quasi-compact open subscheme of an affine scheme is quasi-compact by definition of "quasi-compact
     open" (affine schemes are always quasi-compact, and a quasi-compact open subset of a quasi-compact
@@ -2079,7 +2061,7 @@ exercises:
     quasi-compact, and a quasi-compact open subset of a quasi-compact space need not automatically be
     quasi-compact in general topology, but here it is built directly into the definition of quasi-affine
     that the open immersion is quasi-compact).'
-- id: adjectivesproject-org#194
+- id: adjectivesproject-org#193
   text: 'State and justify: "locally Noetherian schemes are quasi-separated."'
   hint: on a locally Noetherian scheme, every open subset is automatically quasi-compact (Noetherian topological
     spaces satisfy the ascending/descending chain condition on opens/closeds, forcing quasi-compactness
@@ -2091,7 +2073,7 @@ exercises:
     scheme, every open subset is automatically quasi-compact (noetherian topological spaces satisfy the
     ascending/descending chain condition on opens/closeds, forcing quasi-compactness of all opens), so
     in particular the intersection of any two affine opens is quasi-compact, giving quasi-separatedness.'
-- id: adjectivesproject-org#195
+- id: adjectivesproject-org#194
   text: 'State and justify: "semi-separated schemes are quasi-separated."'
   hint: an affine scheme is quasi-compact, so if the intersection of two affine opens is affine (semi-separated),
     it is in particular quasi-compact (quasi-separated).
@@ -2100,7 +2082,7 @@ exercises:
   search_text: 'state and justify: "semi-separated schemes are quasi-separated." an affine scheme is quasi-compact,
     so if the intersection of two affine opens is affine (semi-separated), it is in particular quasi-compact
     (quasi-separated).'
-- id: adjectivesproject-org#196
+- id: adjectivesproject-org#195
   text: 'State and justify: "normal schemes are reduced."'
   hint: normality requires local rings to be integrally closed domains, and integral domains have no nonzero
     nilpotents, so normal schemes are automatically reduced.
@@ -2109,7 +2091,7 @@ exercises:
   search_text: 'state and justify: "normal schemes are reduced." normality requires local rings to be
     integrally closed domains, and integral domains have no nonzero nilpotents, so normal schemes are
     automatically reduced.'
-- id: adjectivesproject-org#197
+- id: adjectivesproject-org#196
   text: 'State and justify: "quasi-affine schemes are separated."'
   hint: quasi-affine schemes are (quasi-compact) open subschemes of affine schemes; affine schemes are
     separated, and open subschemes of separated schemes are separated (the diagonal restricts to a closed
@@ -2119,7 +2101,7 @@ exercises:
   search_text: 'state and justify: "quasi-affine schemes are separated." quasi-affine schemes are (quasi-compact)
     open subschemes of affine schemes; affine schemes are separated, and open subschemes of separated
     schemes are separated (the diagonal restricts to a closed immersion on the open locus).'
-- id: adjectivesproject-org#198
+- id: adjectivesproject-org#197
   text: 'State and justify: "separated schemes are semi-separated."'
   hint: a closed immersion (which the diagonal of a separated scheme is) is automatically an affine morphism,
     so a separated diagonal (closed immersion) is in particular a semi-separated diagonal (affine).
@@ -2128,7 +2110,7 @@ exercises:
   search_text: 'state and justify: "separated schemes are semi-separated." a closed immersion (which the
     diagonal of a separated scheme is) is automatically an affine morphism, so a separated diagonal (closed
     immersion) is in particular a semi-separated diagonal (affine).'
-- id: adjectivesproject-org#199
+- id: adjectivesproject-org#198
   text: Is "flat" enough, on its own, to be "universally open"? Use "$\operatorname{Spec}\mathbb{Q}(x)
     \to \mathbb{A}^1_\mathbb{Q}$" to decide
   hint: No. This localization map is flat but not of finite presentation, and its image is the single
@@ -2142,7 +2124,7 @@ exercises:
     and its image is the single generic (non-open) point of $\mathbb{a}^1_\mathbb{q}$, so it is not open;
     this shows the "locally of finite presentation" hypothesis in "flat morphisms locally of finite presentation
     are universally open" cannot be dropped.
-- id: adjectivesproject-org#200
+- id: adjectivesproject-org#199
   text: Is "reduced and irreducible" enough to be "normal"? Test with "nodal cubic."
   hint: No. The nodal cubic $\operatorname{Spec}\mathbb{Q}[x,y]/(y^2-x^2(x+1))$ is integral (reduced+irreducible)
     but singular at the node, where two branches meet, so its local ring there is not integrally closed;
@@ -2155,7 +2137,7 @@ exercises:
     at the node, where two branches meet, so its local ring there is not integrally closed; this refutes
     any converse to "locally factorial schemes are normal" / "normal schemes are reduced," showing reduced+irreducible
     is strictly weaker than normal.
-- id: adjectivesproject-org#201
+- id: adjectivesproject-org#200
   text: Is a universally closed, injective morphism automatically a closed immersion? Test with "cusp
     to $\mathbb{A}^1_\mathbb{Q}$."
   hint: No. The parametrization $t \mapsto (t^2, t^3)$ of the cusp is finite (hence proper, universally
@@ -2173,7 +2155,7 @@ exercises:
     is not unramified at the cuspidal point (the tangent map is not injective there, so $\omega^1_{x/y}\ne
     0$), hence fails "definition g-unramified" and cannot be a closed immersion despite satisfying "universally
     homeomorphism is integral, universally injective and surjective."
-- id: adjectivesproject-org#202
+- id: adjectivesproject-org#201
   text: Does "finite fibers" imply "quasi-finite"? Distinguish using "$\operatorname{Spec}\mathbb{Q}(x)
     \to \operatorname{Spec}\mathbb{Q}$."
   hint: No. This morphism has a single point in its fiber (satisfying "injective morphisms have finite
@@ -2186,7 +2168,7 @@ exercises:
     "injective morphisms have finite fibers"), but it is not locally of finite type ($\mathbb{q}(x)$ is
     not a finitely generated $\mathbb{q}$-algebra), so it fails "definition quasi-finite," which additionally
     requires local finite type.
-- id: adjectivesproject-org#203
+- id: adjectivesproject-org#202
   text: Chain "closed immersion ⟹ finite ⟹ proper ⟹ universally closed" using only the listed theorems,
     and say which step is redundant
   hint: Use "closed immersions are finite," then either "finite is proper and affine" or "finite is proper
@@ -2198,7 +2180,7 @@ exercises:
     and say which step is redundant use "closed immersions are finite," then either "finite is proper
     and affine" or "finite is proper and quasi-finite" (either alone suffices; the other is redundant),
     then "definition proper" includes universal closedness directly.
-- id: adjectivesproject-org#204
+- id: adjectivesproject-org#203
   text: Is $\operatorname{Spec}\left(\prod_{i=1}^\infty \mathbb{Q}\right)$ Noetherian? Use "definition
     Noetherian" and "Hilbert basis theorem" to justify, and relate to "$\bigsqcup_{i=1}^\infty \operatorname{Spec}\mathbb{Q}
     \to \operatorname{Spec}\left(\prod_{i=1}^\infty\mathbb{Q}\right)$."
@@ -2218,7 +2200,7 @@ exercises:
     along finite-type polynomial extensions of already-noetherian rings. the map from the countable disjoint
     union is the natural comparison map into $\operatorname{spec}$ of the infinite product, illustrating
     that the product ring''s spectrum contains extra "ultrafilter" points beyond the union of the factors.'
-- id: adjectivesproject-org#205
+- id: adjectivesproject-org#204
   text: Is every quasi-compact immersion an affine morphism? Test with "$\mathbb{A}^2_\mathbb{Q}\setminus\{0\}
     \to \mathbb{A}^2_\mathbb{Q}$."
   hint: No. This open immersion is quasi-compact (hence "quasi-affine" by the listed theorem), but $\mathbb{A}^2_\mathbb{Q}\setminus\{0\}$
@@ -2231,7 +2213,7 @@ exercises:
     listed theorem), but $\mathbb{a}^2_\mathbb{q}\setminus\{0\}$ is not itself affine (removing a codimension-2
     point leaves $h^1(\mathcal{o})\ne 0$), so the morphism cannot be affine; quasi-affine is strictly
     weaker than affine.
-- id: adjectivesproject-org#206
+- id: adjectivesproject-org#205
   text: Does "smooth is regular and locally of finite presentation" reverse? Test with "$\operatorname{Spec}\mathbb{F}_2(t_1^{1/2},
     t_2^{1/2}, \ldots) \to \operatorname{Spec}\mathbb{F}_2(t_1,t_2,\ldots)$."
   hint: No. Both source and target are fields (hence regular), and the map can be arranged to be finitely
@@ -2245,7 +2227,7 @@ exercises:
     are fields (hence regular), and the map can be arranged to be finitely presented in truncation, yet
     it is a purely inseparable field extension in characteristic 2, so $\omega^1_{x/y}\ne 0$ and the morphism
     is not even unramified, let alone smooth; regular+finite presentation does not detect inseparability.
-- id: adjectivesproject-org#207
+- id: adjectivesproject-org#206
   text: Are "cusp to $\mathbb{A}^1_\mathbb{Q}$" and "nodal cubic to $\mathbb{A}^1_\mathbb{Q}$"-type normalization
     maps immersions? Use "definition étale" and "surjective injective closed maps are homeomorphisms."
   hint: No. Both normalization maps $t\mapsto(t^2,t^3)$ and $t\mapsto(t^2-1,t(t^2-1))$ are bijective on
@@ -2262,7 +2244,7 @@ exercises:
     not étale, and since they are not isomorphisms onto locally closed subschemes there either, they cannot
     be immersions; surjectivity of a non-immersion is irrelevant to "surjective immersions are closed
     immersions," since the immersion hypothesis fails outright.
-- id: adjectivesproject-org#208
+- id: adjectivesproject-org#207
   text: Is "$\mathbb{A}^2_\mathbb{Q} \to \mathbb{A}^2_\mathbb{Q}/S_2$" étale? Use "étale is formally étale
     and locally of finite presentation" and ramification along the diagonal
   hint: No. It is ramified exactly along the diagonal $\{x=y\}$ (nontrivial stabilizer $\mathbb{Z}/2$),
@@ -2275,7 +2257,7 @@ exercises:
     along the diagonal $\{x=y\}$ (nontrivial stabilizer $\mathbb{z}/2$), so $\omega^1_{x/y}\ne0$ there;
     it is locally of finite presentation but fails formal étaleness on the diagonal, hence fails to be
     étale globally, even though it is étale on the complement of the diagonal.
-- id: adjectivesproject-org#209
+- id: adjectivesproject-org#208
   text: 'Is "Boolean" scheme $\operatorname{Spec}\mathbb{Q}[x_1,x_2,\ldots]/(x_i^2 - x_i,\, x_ix_j : i\ne
     j)$ Noetherian, and hence excellent?'
   hint: It is reduced (the defining ideal is radical) but NOT Noetherian, since $(x_1,x_2,\ldots)$ is
@@ -2288,7 +2270,7 @@ exercises:
     noetherian, since $(x_1,x_2,\ldots)$ is not finitely generated; by "excellent schemes are locally
     noetherian," it therefore cannot be excellent — a clean witness that reduced does not imply noetherian,
     let alone excellent.'
-- id: adjectivesproject-org#210
+- id: adjectivesproject-org#209
   text: Chain "finite locally free is finite, flat and locally of finite presentation," "finite is proper
     and quasi-finite," and "flat morphisms locally of finite presentation are universally open" to draw
     a conclusion about finite locally free morphisms, and cross-check against "finite morphisms with affine
@@ -2306,7 +2288,7 @@ exercises:
     closed) and universally open, forcing its image (on each connected component of the source) to be
     a union of connected components of the target. this is consistent with h-projectivity for affine targets,
     since h-projective morphisms are always proper, independently confirming closedness.
-- id: adjectivesproject-org#211
+- id: adjectivesproject-org#210
   text: Is "$\bigsqcup_{i=1}^\infty \operatorname{Spec}\mathbb{Q} \to \operatorname{Spec}\mathbb{Q}$"
     quasi-compact? Use "morphisms with quasi-compact source and quasi-separated target are quasi-compact."
   hint: No. No finite subfamily of the (clopen) summands can cover the whole countably-infinite disjoint
@@ -2321,7 +2303,7 @@ exercises:
     so the source itself is not quasi-compact and the cited theorem's hypothesis fails; this is the standard
     minimal witness that an infinite disjoint union of affines need not be quasi-compact even though every
     summand is affine.
-- id: adjectivesproject-org#212
+- id: adjectivesproject-org#211
   text: 'Does "definition of finite type" hold for "$\operatorname{Spec}\mathbb{Q}[x^q : q \in \mathbb{Q}_{>0}]
     \to \operatorname{Spec}\mathbb{Q}$"?'
   hint: 'No. $\mathbb{Q}[x^q : q\in\mathbb{Q}_{>0}]$ requires infinitely many independent fractional-exponent
@@ -2336,7 +2318,7 @@ exercises:
     $\mathbb{q}$-algebra, failing "definition of finite type"; consequently one cannot even invoke the
     "hilbert basis theorem" to try to salvage noetherianity — direct inspection of the non-finitely-generated
     ideal $(x^q : q<1)$ confirms non-noetherian as well.'
-- id: adjectivesproject-org#213
+- id: adjectivesproject-org#212
   text: Is "$\operatorname{Spec}\overline{\mathbb{Q}} \otimes_\mathbb{Q} \overline{\mathbb{Q}}$ with doubled
     point" separated over $\operatorname{Spec}\overline{\mathbb{Q}} \otimes_\mathbb{Q} \overline{\mathbb{Q}}$?
     Use "surjective injective closed maps are homeomorphisms" and "closed immersions are immersions" as
@@ -2360,7 +2342,7 @@ exercises:
     and showing the underlying open immersion used in the gluing is not closed, matching the failure pattern
     used for "surjective immersions are closed immersions" (the gluing immersion is not surjective onto
     the doubled scheme, so that theorem does not apply and indeed separatedness fails).'
-- id: adjectivesproject-org#214
+- id: adjectivesproject-org#213
   text: Is the map "$\mathbb{A}^\infty_\mathbb{Q}$ with double origin to $\mathbb{A}^\infty_\mathbb{Q}$"
     (collapsing the two origins) injective, and is it a homeomorphism?
   hint: No — it is 2:1 exactly at the origin, so it fails injectivity outright; hence "universally injective
@@ -2376,7 +2358,7 @@ exercises:
     (the hypothesis "universally injective" never held), and "surjective injective closed/open maps are
     homeomorphisms" cannot be invoked since injectivity fails, illustrating why doubled-origin constructions
     are the standard source of failures of separatedness and injectivity simultaneously.
-- id: adjectivesproject-org#215
+- id: adjectivesproject-org#214
   text: 'Is "$\operatorname{Spec}\mathbb{Q}[x]/(x^2) \to \operatorname{Spec}\mathbb{Q}$" a closed immersion,
     and is it unramified? (Hint: It IS a closed immersion (the target ring surjects onto... actually reversed:
     $\mathbb{Q}\hookrightarrow \mathbb{Q}[x]/(x^2)$, so the morphism $\operatorname{Spec}\mathbb{Q}[x]/(x^2)\to\operatorname{Spec}\mathbb{Q}$
@@ -2406,7 +2388,7 @@ exercises:
     the immersion itself, which does hold for the closed immersion $\operatorname{spec}\mathbb{q}\hookrightarrow\operatorname{spec}\mathbb{q}[x]/(x^2)$,
     correctly illustrating the theorem, while the dual numbers scheme is a good example that the ambient
     nonreduced structure is not itself unramified/étale over $\mathbb{q}$.)'
-- id: adjectivesproject-org#216
+- id: adjectivesproject-org#215
   text: Is "$\operatorname{Spec}\mathbb{Q}(x) \to \mathbb{A}^1_\mathbb{Q}$" a monomorphism? Cross-check
     with "monomorphisms are universally injective" and "immersions are monomorphisms."
   hint: 'Yes, it is a monomorphism (localization maps are always monomorphisms of schemes, since $\Delta$
@@ -2424,7 +2406,7 @@ exercises:
     (its image, the single generic point, is not even a locally closed subscheme structure matching the
     induced ring map isomorphism onto an open — it is dense but not open), showing "immersions are monomorphisms"
     is a one-way implication: this is a monomorphism that fails to be an immersion.'
-- id: adjectivesproject-org#217
+- id: adjectivesproject-org#216
   text: Is "Hironaka's non-projective threefold to $\mathbb{P}^3_\mathbb{Q}$" proper? Is it projective?
   hint: The threefold itself is proper (indeed smooth and proper) but famously NOT projective (Hironaka's
     classical example of a smooth proper non-projective threefold), so any morphism realizing it as mapping
@@ -2439,7 +2421,7 @@ exercises:
     to $\mathbb{p}^3_\mathbb{q}$ cannot be a closed immersion or embed it via "finite morphisms are projective"
     or "bundle-projective morphisms are projective" — this witnesses that "proper" is strictly weaker
     than "projective," refuting any naive converse to "locally projective morphisms are proper."
-- id: adjectivesproject-org#218
+- id: adjectivesproject-org#217
   text: Does "Nagata's example" satisfy "locally Noetherian schemes are quasi-separated"?
   hint: Nagata's classical example is a Noetherian scheme that is NOT quasi-affine/well-behaved for other
     reasons (failure of finite generation of a ring of invariants under a non-reductive group action),
@@ -2455,7 +2437,7 @@ exercises:
     itself it is locally noetherian, and the cited theorem correctly predicts it is quasi-separated; the
     pathology in nagata's example lies elsewhere (failure of finiteness for invariant rings), not in quasi-separatedness,
     showing one must be careful about which finiteness property is actually being tested.
-- id: adjectivesproject-org#219
+- id: adjectivesproject-org#218
   text: Is "$\operatorname{Spec} \mathcal{C}^\infty(\mathbb{R})$" (smooth functions on $\mathbb{R}$) Noetherian,
     and is the inclusion of "local ring of $\mathcal{C}^\infty(\mathbb{R})$ at zero" into it a flat morphism?
   hint: $\operatorname{Spec}\mathcal{C}^\infty(\mathbb{R})$ is a vastly non-Noetherian, non-classical
@@ -2474,7 +2456,7 @@ exercises:
     noetherian" fails badly; localizing at the maximal ideal of a point is flat (localizations are always
     flat), matching "regular morphisms are flat" only in the weak formal sense that localization is flat,
     not that the whole scheme is regular in the classical algebraic sense.
-- id: adjectivesproject-org#220
+- id: adjectivesproject-org#219
   text: Is the squaring map "squaring map on affine line" ($x\mapsto x^2$) étale? Universally injective?
     Finite?
   hint: It is finite (hence affine, proper, projective by "finite morphisms are projective") and quasi-finite,
@@ -2494,7 +2476,7 @@ exercises:
     sense but not universally injective in char $\ne 2$ since a base change to $\overline{\mathbb{q}}$
     still identifies $\pm\sqrt{a}$ as two distinct preimages for $a\ne0$) — a clean example separating
     "finite" and "quasi-finite" from "étale" and "universally injective."
-- id: adjectivesproject-org#221
+- id: adjectivesproject-org#220
   text: Is "twisted square from $\mathbb{A}^1_\mathbb{Q}$ to $\mathbb{P}^1_\mathbb{Q}$" proper? Is it
     a closed immersion?
   hint: The target $\mathbb{P}^1_\mathbb{Q}$ is proper over $\operatorname{Spec}\mathbb{Q}$, but the morphism
@@ -2516,7 +2498,7 @@ exercises:
     appropriately), the twisted square map itself is not proper; it also is not a closed immersion since
     $\mathbb{a}^1_\mathbb{q}$ is not compact/closed in $\mathbb{p}^1_\mathbb{q}$ under the usual affine
     chart embedding twisted by the given data.
-- id: adjectivesproject-org#222
+- id: adjectivesproject-org#221
   text: Is "degenerating family of conics" flat? Is every fiber regular?
   hint: 'Such a family (e.g. $xy = t$ degenerating to $xy=0$ at $t=0$) is typically flat over the parameter
     line (flatness for hypersurfaces of constant degree is automatic, by the standard criterion that a
@@ -2532,7 +2514,7 @@ exercises:
     degree in a fixed ambient projective/affine space is flat), yet the fiber at $t=0$ (the union of two
     lines, a node) is singular, so "regular morphisms are flat" cannot be reversed: flat does not imply
     regular fibers, only the other direction (built into the definition) holds.'
-- id: adjectivesproject-org#223
+- id: adjectivesproject-org#222
   text: Is "$\mathbb{A}^2_\mathbb{Q}$ with double origin to $\operatorname{Spec}\mathbb{Q}$" separated?
   hint: No — by the same doubled-origin mechanism as the affine-line case, the diagonal fails to be closed
     because the two origins cannot be separated by disjoint closed conditions in the fiber product; this
@@ -2545,7 +2527,7 @@ exercises:
     because the two origins cannot be separated by disjoint closed conditions in the fiber product; this
     is the higher-dimensional analogue confirming that "affine line with double origin" is not an isolated
     pathology but a general phenomenon of naive gluing constructions.
-- id: adjectivesproject-org#224
+- id: adjectivesproject-org#223
   text: Is "exceptional divisor blowup plane in origin" a closed immersion? Is the blowup morphism itself
     proper?
   hint: The exceptional divisor $E \cong \mathbb{P}^1_\mathbb{Q}$ includes into the blown-up plane as
@@ -2567,7 +2549,7 @@ exercises:
     of the rees algebra) but is not finite (the fiber over the origin is all of $e \cong \mathbb{p}^1$,
     an infinite/positive-dimensional fiber), showing "finite is proper and quasi-finite" fails here precisely
     because quasi-finiteness fails at the origin.
-- id: adjectivesproject-org#225
+- id: adjectivesproject-org#224
   text: Is "$\mathbb{A}^\infty_\mathbb{Q} \setminus \{0\} \to \mathbb{A}^\infty_\mathbb{Q}$" quasi-compact?
   hint: In the infinite-dimensional setting, removing the origin from $\mathbb{A}^\infty_\mathbb{Q}$ removes
     a point of infinite codimension in a highly non-Noetherian ambient ring, and the resulting open immersion
@@ -2586,7 +2568,7 @@ exercises:
     "quasi-compact immersions are quasi-affine" cannot even be invoked — this is an immersion that is
     not quasi-compact, hence a priori not covered by that theorem's hypothesis, unlike the finite-dimensional
     case $\mathbb{a}^2_\mathbb{q}\setminus\{0\}$.
-- id: adjectivesproject-org#226
+- id: adjectivesproject-org#225
   text: Is "$\operatorname{Spec}\mathbb{Q}[x,y]/(xy) \to \mathbb{A}^1_\mathbb{Q}$" (projection to the
     $x$-axis, say) flat?
   hint: No — the fiber over $x=0$ is the whole $y$-axis (1-dimensional), while the fiber over $x\ne 0$
@@ -2602,7 +2584,7 @@ exercises:
     standard flatness criterion (flat families over a smooth curve have constant fiber dimension); this
     shows "regular morphisms are flat" and "syntomic morphisms are flat" have no converse — non-constant
     fiber dimension is an easy witness of non-flatness.
-- id: adjectivesproject-org#227
+- id: adjectivesproject-org#226
   text: Is "$\mathbb{A}^2_\mathbb{Q} \to \mathbb{A}^2_\mathbb{Q}/S_2$" finite? Is it finite locally free
     away from the diagonal?
   hint: Yes, it is finite (the invariant ring $\mathbb{Q}[x,y]^{S_2}$ is a finite extension of degree
@@ -2622,7 +2604,7 @@ exercises:
     "finite locally free is finite, flat and locally of finite presentation"), but it fails to be finite
     locally free globally since it degenerates (ramifies, is not flat of constant fiber-length in the
     naive residue-field sense) exactly along the diagonal where the two sheets come together.
-- id: adjectivesproject-org#228
+- id: adjectivesproject-org#227
   text: Is "union local rings to $\operatorname{Spec}\left(\prod_{i=1}^\infty \mathbb{Q}\right)$" (i.e.
     $\bigsqcup_{x\in\mathbb{A}^1_\mathbb{Q}} \operatorname{Spec}\mathcal{O}_{\mathbb{A}^1_\mathbb{Q},x}
     \to \mathbb{A}^1_\mathbb{Q}$) surjective? Quasi-compact?
@@ -2643,7 +2625,7 @@ exercises:
     target are quasi-compact" because the (uncountable) disjoint union source is not quasi-compact, reinforcing
     that infinite disjoint unions of local rings/points are the generic obstruction to quasi-compactness
     in this database.
-- id: adjectivesproject-org#229
+- id: adjectivesproject-org#228
   text: Does "flat" imply "universally open"? If so, cite the strongest hypothesis needed; if not, exhibit
     a counterexample from the database
   hint: False in general — flatness alone does not give universally open. The correct implication is "flat
@@ -2658,7 +2640,7 @@ exercises:
     without local finite presentation, flatness can fail to be open, e.g. $\operatorname{spec} \mathbb{q}(x)
     \to \mathbb{a}^1_\mathbb{q}$ is flat (localization) but not of finite presentation, and its image
     is a single non-open point.
-- id: adjectivesproject-org#230
+- id: adjectivesproject-org#229
   text: Is every injective morphism separated? Conversely, is every separated morphism injective?
   hint: 'Injective $\implies$ separated, via "injective morphisms are separated." The converse is false:
     closed immersions and quasi-affine morphisms are separated but need not be injective on points, e.g.
@@ -2673,7 +2655,7 @@ exercises:
     \mathbb{c} \to \operatorname{spec} \mathbb{r}$ is separated (affine target) but its underlying map
     need not be injective on the relevant fiber structure — more simply, $\mathbb{a}^1_\mathbb{q} \to
     \operatorname{spec}\mathbb{q}$ is separated but wildly non-injective.'
-- id: adjectivesproject-org#231
+- id: adjectivesproject-org#230
   text: The affine line with doubled origin is a classic non-separated scheme. Which theorem in the "morphism"
     adjectives list, when applied to the doubling map $\mathbb{A}^1_\mathbb{Q} \to \mathbb{A}^1_\mathbb{Q}$-with-doubled-origin,
     explains the failure of separatedness, and what does this say about "surjective immersions are closed
@@ -2693,7 +2675,7 @@ exercises:
     this shows the hypothesis of surjectivity in "surjective immersions are closed immersions" is essential:
     the open immersion $\mathbb{a}^1 \setminus \{0\} \hookrightarrow \mathbb{a}^1$ is an immersion that
     is not surjective and indeed not closed.'
-- id: adjectivesproject-org#232
+- id: adjectivesproject-org#231
   text: Give an example of a morphism that is universally closed and injective but NOT a closed immersion,
     testing the limits of "universally homeomorphism is integral, universally injective and surjective."
   hint: The normalization-type map "cusp to $\mathbb{A}^1_\mathbb{Q}$" (parametrizing the cuspidal cubic
@@ -2710,7 +2692,7 @@ exercises:
     hence proper) that is a universally injective homeomorphism but not an isomorphism, since it is not
     formally unramified at the cusp point — the induced map on tangent spaces is not injective, so it
     fails to be unramified/étale and hence is not a closed immersion despite being bijective.
-- id: adjectivesproject-org#233
+- id: adjectivesproject-org#232
   text: Is "finite fibers" equivalent to "quasi-finite"? Use the database's definitions to pin down the
     discrepancy
   hint: 'They differ by finiteness conditions on the morphism itself. "Injective morphisms have finite
@@ -2733,7 +2715,7 @@ exercises:
     $\operatorname{spec}\mathbb{q}(x) \to \operatorname{spec}\mathbb{q}$ has one point with infinite residue
     field extension, so it has "finite fibers" as a set but is not quasi-finite since it fails finite
     type.'
-- id: adjectivesproject-org#234
+- id: adjectivesproject-org#233
   text: Formulate and verify the chain "closed immersion $\implies$ finite $\implies$ proper $\implies$
     universally closed" using only theorems listed under "morphism" adjectives, and identify which single
     theorem could be skipped without breaking the chain
@@ -2750,7 +2732,7 @@ exercises:
     closedness by "definition proper." the step "finite is proper and affine" is redundant once you have
     "finite is proper and quasi-finite," since either one alone recovers properness; either theorem may
     be skipped.
-- id: adjectivesproject-org#235
+- id: adjectivesproject-org#234
   text: Exhibit a scheme from the database that is reduced and irreducible but NOT normal, and name the
     theorem whose converse this violates
   hint: 'The nodal cubic $\operatorname{Spec}\mathbb{Q}[x,y]/(y^2-x^2(x+1))$-type scheme, represented
@@ -2766,7 +2748,7 @@ exercises:
     at the node, hence not normal, since two branches meet there and normalization separates them. this
     shows the converse of "locally factorial schemes are normal" (and of "normal schemes are reduced")
     fails: reduced does not imply normal, only normal implies reduced.'
-- id: adjectivesproject-org#236
+- id: adjectivesproject-org#235
   text: The database lists $\operatorname{Spec}\left(\prod_{i=1}^\infty \mathbb{Q}\right)$ as an example
     scheme. Determine whether it is Noetherian, and use "Hilbert basis theorem" and "definition Noetherian"
     to justify your answer, then explain why $\bigsqcup_{i=1}^\infty \operatorname{Spec}\mathbb{Q} \to
@@ -2791,7 +2773,7 @@ exercises:
     union map is the natural comparison map from the "constructible" countable disjoint union into the
     zariski spectrum of the product ring, illustrating that $\operatorname{spec}$ of an infinite product
     has "extra" points (ultrafilter points) beyond the union of the factors.'
-- id: adjectivesproject-org#237
+- id: adjectivesproject-org#236
   text: Is every quasi-compact immersion an affine morphism? Chain together the relevant theorems to prove
     or refute this
   hint: 'Not directly claimed, but one can chain "quasi-compact immersions are quasi-affine" together
@@ -2810,7 +2792,7 @@ exercises:
     quasi-affine) but its source is not affine (removing a codimension-2 point from an affine scheme of
     dimension $\ge 2$ leaves a non-affine scheme, since $h^1$ of the structure sheaf is nonzero), so the
     morphism itself is not affine.'
-- id: adjectivesproject-org#238
+- id: adjectivesproject-org#237
   text: Verify the implication "smooth is regular and locally of finite presentation" is NOT reversible
     by finding a scheme-theoretic obstruction using $\operatorname{Spec}\mathbb{F}_2(t_1^{1/2}, t_2^{1/2},
     \ldots) \to \operatorname{Spec}\mathbb{F}_2(t_1,t_2,\ldots)$
@@ -2829,7 +2811,7 @@ exercises:
     \ne 0$ and it fails to be smooth (in fact it is not even unramified). this shows regular + locally
     of finite presentation is not enough without also being (generically) separable / flat with smooth
     geometric fibers — regularity of the rings alone does not see inseparability.
-- id: adjectivesproject-org#239
+- id: adjectivesproject-org#238
   text: The database records both "$\mathbb{A}^1_\mathbb{Q}$ to cusp" and "$\mathbb{A}^1_\mathbb{Q}$ to
     nodal cubic" as morphisms. Are these open immersions, closed immersions, or neither? Use "definition
     étale" and "surjective immersions are closed immersions" to argue your answer
@@ -2850,7 +2832,7 @@ exercises:
     as required, and in particular they are not unramified there, violating "definition étale"). since
     they are not immersions at all, "surjective immersions are closed immersions" does not apply — the
     surjectivity alone is insufficient without the immersion hypothesis.
-- id: adjectivesproject-org#240
+- id: adjectivesproject-org#239
   text: Is $\mathbb{A}^2_\mathbb{Q} \to \mathbb{A}^2_\mathbb{Q}/S_2$ (the quotient by the swap action)
     étale? Use "étale is formally étale and locally of finite presentation" together with ramification
     along the diagonal to decide
@@ -2870,7 +2852,7 @@ exercises:
     along the diagonal. it is locally of finite presentation (finite morphism of finite type schemes)
     but fails formal étaleness, hence by "étale is formally étale and locally of finite presentation"
     it cannot be étale, even though it is étale away from the diagonal.
-- id: adjectivesproject-org#241
+- id: adjectivesproject-org#240
   text: 'The scheme $\operatorname{Spec}\mathbb{Q}[x_1,x_2,\ldots]/(x_i^2 - x_i,\, x_ix_j : i\ne j)$ is
     listed in the database. Is it Noetherian? Is it reduced? Use these to test "excellent schemes are
     locally Noetherian" vacuously or not'
@@ -2890,7 +2872,7 @@ exercises:
     (infinitely many independent idempotent-like generators). consequently it cannot be excellent, since
     "excellent schemes are locally noetherian" forces excellence to fail here — this scheme is a genuine
     witness that reduced does not imply noetherian, hence not excellent.'
-- id: adjectivesproject-org#242
+- id: adjectivesproject-org#241
   text: Chain the theorems "finite locally free is finite, flat and locally of finite presentation," "finite
     is proper and quasi-finite," and "flat morphisms locally of finite presentation are universally open"
     to conclude something about finite locally free morphisms; then check this against "finite morphisms
@@ -2912,7 +2894,7 @@ exercises:
     free morphisms are "clopen" onto unions of components of the target. this is consistent with "finite
     morphisms with affine target are h-projective," since h-projective morphisms are always proper, and
     here properness is independently confirmed via the finite $\rightarrow$ proper route.
-- id: adjectivesproject-org#243
+- id: adjectivesproject-org#242
   text: Using "morphisms with quasi-compact source and quasi-separated target are quasi-compact" and the
     scheme $\bigsqcup_{i=1}^\infty \operatorname{Spec}\mathbb{Q} \to \operatorname{Spec}\mathbb{Q}$, determine
     whether this morphism is quasi-compact, and explain why the countable disjoint union example is the
