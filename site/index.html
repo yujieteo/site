@@ -17,7 +17,6 @@
       <nav class="site-nav">
         <a href="index.html" class="active">Home</a>
         <a href="papers.html" class="">Papers</a>
-        <a href="exercises.html" class="">Exercises</a>
       </nav>
     </header>
     <main>
@@ -75,28 +74,10 @@
   }
 
   function rowHtml(d) {
-    if (ROW_KIND === 'link') {
-      return '<div class="entry">'
-        + '<div class="entry-title"><a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a></div>'
-        + '<div class="entry-abstract">' + escHtml(d.note) + '</div>'
-        + '<div><span class="tag" data-tag="' + escHtml(d.cat) + '">' + escHtml(d.cat) + '</span></div>'
-        + '</div>';
-    }
-    // exercise rows
-    var badge = '';
-    if (d.locator_kind) {
-      badge = '<span class="tag locator-badge">' + escHtml(d.locator_kind) + ' ' + escHtml(d.locator_value) + '</span>';
-    }
-    var hintHtml = '';
-    if (d.hint) {
-      hintHtml = '<details class="hint"><summary>Hint</summary><div>' + escHtml(d.hint) + '</div></details>';
-    }
     return '<div class="entry">'
-      + '<div class="entry-title">' + badge
-      + '<span class="tag" data-tag="' + escHtml(d.slug) + '">' + escHtml(d.label) + '</span></div>'
-      + '<div class="entry-abstract">' + escHtml(d.text) + '</div>'
-      + hintHtml
-      + '<div class="entry-source"><a href="' + escHtml(d.url) + '">' + escHtml(d.url) + '</a></div>'
+      + '<div class="entry-title"><a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a></div>'
+      + '<div class="entry-abstract">' + escHtml(d.note) + '</div>'
+      + '<div><span class="tag" data-tag="' + escHtml(d.cat) + '">' + escHtml(d.cat) + '</span></div>'
       + '</div>';
   }
 

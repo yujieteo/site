@@ -1,3 +1,0 @@
-dirty bibliography
----------------
-To be cleaned up when before adding to main annotbib.txt.
