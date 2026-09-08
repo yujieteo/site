@@ -10401,3 +10401,9 @@
     lifts, as well as the equivariant first Chern class of line bundles with inﬁnitesimal lifts. A novel
     feature of this presentation is the deﬁnition of infinitesimal lift via differential operators on
     the vector bundles.
+- title: Wilsonian renormalisation Perimeter Institute slides
+  url: https://pdf.pirsa.org/files/08040019.pdf
+  category: pirsa.org
+  note: Wilsonian renormalisation Perimeter Institute slides, blocking dynamics and linearization onto
+    IR fixed points giving universal critical exponents. Ferromagnet example. Proof that nonperturbative
+    renormalisable theory in 4D is trivial.
