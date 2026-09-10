@@ -1885,8 +1885,13 @@
 - title: Homotopic Renormalization Group
   url: https://arxiv.org/pdf/1709.00669
   category: arxiv.org
-  note: Homotopic Renormalization Group. Formulating the Wilsonian renormalization group flow within homotopical
-    and $\infty$-categorical frameworks.
+  note: 'Homotopic Renormalization Group. Formulating the Wilsonian renormalization group flow within
+    homotopical and $\infty$-categorical frameworks. Batalin-Vilkosky quantisation. Mirror symmetry gives
+    infinite Fourier transform using QFT, relating symplectic and complex geometry. Key computing example
+    1: classical singularity theory vs BV formalism. Classical observables give Jacobson algebra. Quantum
+    observables isomorphic to formal completion of Brieskorn lattice which is a Hodge filtration for singularity
+    theory. Key computing example 2: BV quantisation of 1D TQFT. Result is associative algebra of quantum
+    observables is Fedosov quantisation, algebraic index theorem.'
 - title: The Tautological Ring of Moduli of Curves
   url: https://websites.umich.edu/~pixton/papers/tautological.pdf
   category: umich.edu
@@ -2005,8 +2010,11 @@
 - title: Renormalization
   url: https://www.its.caltech.edu/~matilde/RenormalizationComputationSlides2021Ma148.pdf
   category: caltech.edu
-  note: Renormalization, Computation and Anyons. Connes–Kreimer Hopf algebras of Feynman graphs, anyon
-    systems, and topological quantum computation.
+  note: 'Renormalization, Computation and Anyons. Connes–Kreimer Hopf algebras of Feynman graphs, anyon
+    systems, and topological quantum computation. Computations on renormalisation. Key example 1: deformation
+    of states on noncommutative torus. Helmholtz free energy gives tropicalisation of Von Neumann trace.
+    Key example 2: Rota-Baxter operators. Witt ring on R^N. Rota-Baxter of weight +1. Multiplicative unit
+    of 1/1-t, geometric series.'
 - title: Entropy and Geometry over the Field with One Element
   url: https://www.its.caltech.edu/~matilde/EntropySlides2021Ma148.pdf
   category: caltech.edu
@@ -7608,7 +7616,9 @@
   category: ihes.fr
   note: Renormalization and the Riemann-Hilbert Problem. Connes and Kreimer's paper establishing that
     perturbative renormalization in QFT is a Riemann–Hilbert problem on the motivic Galois group of Feynman
-    graphs.
+    graphs. Connes-Kreimer decomposition. Key example is the dictionary of homomorphisms from a Hopf algebra
+    to ring of Laurent polynomials to loops of the unit circle to the group of characters of the associated
+    Hopf algebra.
 - title: Hopf Algebras and Renormalization
   url: https://www.math.fsu.edu/~marcolli/KITPslides.pdf
   category: fsu.edu
@@ -10924,3 +10934,87 @@
     $E_2^{1,*}\cong\mathbb{F}_p[\beta]\{\lambda,\gamma\}\oplus k[\beta]\{\alpha_i^{(j)}\mid1\le i\le e,1\le
     j\le d\}$, $E_2^{2,*}\cong\mathbb{F}_p[\beta]\{\lambda\gamma\}$, and $E_2^{i,*}=0$ for $i\ge3$, forcing
     the descent spectral sequence to collapse.'
+- title: Guozhen Wang (joint with Ruochuan Liu)
+  url: https://pouiyter.github.io/CIslides.pdf
+  category: github.io
+  note: 'Guozhen Wang (joint with Ruochuan Liu), topological cyclic homology of local fields: computes
+    the descent spectral sequences for $THH$, $TP$, and $TC$ of a local field''s integers. Key computation:
+    for $K/\mathbb{Q}_p$ with ramification index $e$ and $d=[K(\zeta_p):K]$, the slides obtain a Bott
+    class $\beta\in E_2^{0,2d}(TC(\mathcal{O}_K);\mathbb{F}_p)$ and $E_2^{0,*}\cong\mathbb{F}_p[\beta]$,
+    $E_2^{1,*}\cong\mathbb{F}_p[\beta]\{\lambda,\gamma\}\oplus k[\beta]\{\alpha_i^{(j)}\mid1\le i\le e,1\le
+    j\le d\}$, $E_2^{2,*}\cong\mathbb{F}_p[\beta]\{\lambda\gamma\}$, and $E_2^{i,*}=0$ for $i\ge3$, forcing
+    the descent spectral sequence to collapse.
+
+    https://raphaelponge.org/wp-content/uploads/2019/10/berkeley_ncg4.pdf, Raphaël Ponge, the Connes–Chern
+    character of a finitely summable spectral triple pairs with projective-module $K$-theory to recover
+    the Fredholm index, and for the noncommutative torus is represented by its fundamental cyclic $2$-cocycle.
+    Key computation: for $E=eA^q$ and $k\geq p/2$, $\operatorname{ind}D_{\nabla^E}=\frac12\operatorname{Str}(D^{-1}[D,e])^{2k+1}=\langle\operatorname{Ch}(D),\operatorname{Ch}(E)\rangle$;
+    for $A_\theta$, $HP_0(A_\theta)=\langle\tau_0,\tau_2\rangle$ with $\tau_2(a^0,a^1,a^2)=\tau_0(a^0(\delta_1(a^1)\delta_2(a^2)-\delta_2(a^1)\delta_1(a^2)))$,
+    giving the index pairing explicitly.'
+- title: Raphaël Ponge (joint with Hang Wang)
+  url: https://www.fields.utoronto.ca/programs/scientific/13-14/COSY2014/slides/Ponge.pdf
+  category: utoronto.ca
+  note: 'Raphaël Ponge (joint with Hang Wang), conformal deformation produces a twisted spectral triple
+    whose Connes–Chern character is conformally invariant and is computed by a fixed-point local index
+    cocycle. Key computation: $\widehat g=k^{-2}g$ gives $(C^\infty(M),L^2_{\widehat g}(M,S),D_{\widehat
+    g})\simeq(C^\infty(M),L^2_g(M,S),\sqrt{k}D_g\sqrt{k})$ and, for the crossed product $C^\infty(M)\rtimes
+    G$, $\sigma_g(fu_\phi)=k_\phi^{-1}fu_\phi$; for a $G$-invariant $g$, $\operatorname{Ch}(D_g)_{\sigma_g}$
+    is represented by $\varphi_{2m}(f^0u_{\phi_0},\ldots,f^{2m}u_{\phi_{2m}})=\frac{(-i)^{n/2}}{(2m)!}\sum_a(2\pi)^{-a/2}\int_{M_a^\phi}\widehat
+    A(R^{TM_a^\phi})\wedge\nu_\phi(R^{N^\phi})\wedge f^0d\widehat f^1\wedge\cdots\wedge d\widehat f^{2m}$.'
+- title: Nitin Nitsure
+  url: https://qgm.au.dk/fileadmin/www.qgm.au.dk/Events/2014/Slides_Nitin.pdf
+  category: au.dk
+  note: 'Nitin Nitsure, cotangent-complex Ext groups classify square-zero deformation problems for schemes,
+    morphisms, and coherent sheaves and supply Artin-style tangent–obstruction data for algebraic moduli
+    stacks. Key computation: for a flat $f:Y\to X$ and a square-zero extension $X\hookrightarrow X''$
+    with ideal $I$, the transitivity triangle $f^*L_{X/X''}\to L_{Y/X''}\to L_{Y/X}\xrightarrow{[1]}$
+    yields $0\to\operatorname{Ext}^1(L_{Y/X},f^*I)\to\operatorname{Exal}(Y/X'',f^*I)\to\operatorname{End}(f^*I)\xrightarrow{\partial}\operatorname{Ext}^2(L_{Y/X},f^*I)$;
+    the obstruction is $\partial(\operatorname{id}_{f^*I})$, lifts form a torsor under $\operatorname{Ext}^1$,
+    and infinitesimal automorphisms are $\operatorname{Ext}^0$.'
+- title: Avi Zeff
+  url: https://math.berkeley.edu/~avizeff/seminars/other/prismatic.pdf
+  category: berkeley.edu
+  note: 'Avi Zeff, prisms deperfect perfectoid geometry while prismatic cohomology recovers crystalline
+    cohomology and equips quasiregular semiperfectoid rings with an explicit Nygaard filtration. Key computation:
+    $R\mapsto(A_{\inf}(R),\ker\theta)$ and $(A,I)\mapsto A/I$ give inverse equivalences between perfectoid
+    rings and perfect prisms; for a crystalline prism $(A,I)$, $R\Gamma_{\mathrm{crys}}(R/A)\simeq\varphi^*\Delta_{R/A}=\Delta_{R/A}\widehat\otimes^L_{A,\varphi_A}A$,
+    while for quasiregular semiperfectoid $R$ the site has initial prism $(\Delta_R^{\mathrm{init}},(d))$,
+    so $\Delta_R=\Delta_R^{\mathrm{init}}$ is concentrated in degree $0$ and $N^{\geq i}\Delta_R=\varphi^{-1}(d^i\Delta_R)$.'
+- title: Raphaël Ponge
+  url: https://raphaelponge.org/wp-content/uploads/2019/10/berkeley_ncg1.pdf
+  category: raphaelponge.org
+  note: 'Raphaël Ponge, Connes'' trace theorem identifies the Dixmier-trace noncommutative integral of
+    an order-$-n$ pseudodifferential operator with its Wodzicki residue, recovering Riemannian volume
+    spectrally. Key computation: Weyl''s law gives $\lambda_k(\Delta_g)\sim(k/(c_n\operatorname{Vol}_gM))^{2/n}$,
+    hence $\Delta_g^{-n/2}$ is measurable and $\operatorname{Tr}_\omega(\Delta_g^{-n/2})=c_n\operatorname{Vol}_g(M)$;
+    more generally, for $P\in\Psi^{-n}(M)$, $\operatorname{Tr}_\omega(P)=\frac1n\operatorname{Res}(P)$,
+    so $\operatorname{Tr}_\omega(f\Delta_g^{-n/2})=c_n\int_M f(x)\sqrt{g(x)}\,d^nx$.'
+- title: Raphaël Ponge
+  url: https://raphaelponge.org/wp-content/uploads/2019/10/berkeley_ncg2.pdf
+  category: raphaelponge.org
+  note: 'Raphaël Ponge, the irrational noncommutative torus admits an explicit Dirac spectral triple,
+    while conformal weights produce twisted spectral triples and a conformally invariant zeta value. Key
+    computation: $A_\theta=\{\sum_{m,n}a_{m,n}U^mV^n:(a_{m,n})\in\mathcal{S}(\mathbb{Z}^2)\}$ with $VU=e^{-2\pi
+    i\theta}UV$, $\partial=\delta_1+i\delta_2$, and $D=\begin{psmallmatrix}0&\partial^*\\ \partial&0\end{psmallmatrix}$
+    is isospectral to $\partial+\partial^*$ on $\mathbb{T}^2$; a Weyl factor $k>0$ gives $\sigma(a)=k^{-1}ak$
+    and the twisted triple $(A_\theta^{\mathrm{op}},H_\varphi,D_\varphi)_\sigma$, for which $\zeta(\Delta_\varphi;0)$
+    is independent of $\varphi(a)=\tau_0(ak^{-2})$.'
+- title: Raphaël Ponge
+  url: https://raphaelponge.org/wp-content/uploads/2019/10/berkeley_ncg3.pdf
+  category: raphaelponge.org
+  note: 'Raphaël Ponge, the $(b,B)$ mixed complex identifies periodic cyclic homology of smooth functions
+    with de Rham cohomology and gives an explicit cyclic-homology Chern character for projective modules.
+    Key computation: the HKR map $\alpha(f^0\otimes\cdots\otimes f^m)=\frac1{m!}f^0df^1\wedge\cdots\wedge
+    df^m$ intertwines $(b,B)$ with $(0,d)$, yielding $HP_0(C^\infty(M))\simeq H^{\mathrm{ev}}(M)$ and
+    $HP_1(C^\infty(M))\simeq H^{\mathrm{odd}}(M)$; for $E\simeq eA^q$, $\operatorname{Ch}_{2k}(e)=(-1)^k\frac{(2k)!}{k!}\operatorname{Tr}((e-\frac12)\otimes
+    e^{\otimes 2k})$ satisfies $(b+B)\operatorname{Ch}(e)=0$ and depends only on $E$.'
+- title: Seokbeom Yoon (joint with Stavros Garoufalidis)
+  url: https://aritopo.github.io/2022-12/Yoon.pdf
+  category: github.io
+  note: 'Seokbeom Yoon (joint with Stavros Garoufalidis), twisted Neumann–Zagier matrices compute twisted
+    loop invariants of finite cyclic covers and force higher-loop asymptotic multiplicativity. Key computation:
+    from $A(t)=G(t)-G''(t)$ and $B(t)=G''''(t)-G(t)$ one has $A(t)B(1/t)^T=B(t)A(1/t)^T$; the twisted
+    one-loop invariant is $\Phi_{1,M}(t)=\frac12\det(A(t)\operatorname{diag}(z_1'''',\ldots,z_N'''')+B(t)\operatorname{diag}(z_1^{-1},\ldots,z_N^{-1}))$,
+    and for the $n$-cyclic cover $\Phi_{1,M^{(n)}}=\prod_{\omega^n=1}\Phi_{1,M}(\omega)$; for $M=S^3\setminus4_1$,
+    $\Phi_{2,M^{(n)}}=\frac{55\sqrt3}{1512}n-\frac{8\sqrt3\,n}{63(1-\lambda^n)}+\frac{8\sqrt3\,n}{63(1-\lambda^n)^2}\sim\frac{55\sqrt3}{1512}n$,
+    where $\lambda=(7+3\sqrt5)/2$ is a root of $\Phi_{1,M}(t)$.'
