@@ -78,6 +78,23 @@
   box-sizing: border-box; 
 }
 
+/* Reset native button chrome globally. Safari (and some older Chrome/
+   Edge builds) apply their own OS-level appearance to <button> --
+   rounded corners, a system font, a subtle gradient -- that silently
+   overrides padding/background/border-radius unless appearance is
+   explicitly turned off. Every custom button class below (.search-btn,
+   .filters-toggle, .pager-btn, .tag) already sets its own colors and
+   sizing, so this reset just makes sure nothing native shows through
+   underneath that on any browser. */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font: inherit;
+  color: inherit;
+  margin: 0;
+}
+
 /* Utility: hide visually but keep available to screen readers. Used for
    <label>s on inputs that already have a visible placeholder. */
 .visually-hidden {
@@ -235,6 +252,8 @@ h2.section-title:first-of-type {
 }
 
 .tag {
+  appearance: none;
+  -webkit-appearance: none;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -325,10 +344,43 @@ h2.section-title:first-of-type {
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
+/* Search button: sits next to .search-box, same height/radius/font so
+   the two feel like one control, but filled with --accent since this
+   is the primary action in the row (Filters stays neutral/secondary).
+   appearance:none (also set on the global `button` rule above) makes
+   sure Safari/native chrome can't override this background/radius. */
+.search-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  min-height: 48px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 12px 22px;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.search-btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.search-btn:active {
+  background: var(--accent);
+}
+
 /* Filters toggle: matched to the search box's new larger size/font so
    the two feel like one control bar rather than a big box next to a
    tiny one. */
 .filters-toggle {
+  appearance: none;
+  -webkit-appearance: none;
   cursor: pointer;
   min-height: 48px;
   font-family: var(--sans);
@@ -454,6 +506,57 @@ h2.section-title:first-of-type {
   display: none;
 }
 
+/* Pager: Prev / "Page X / Y" / Next, centered below the results list.
+   Buttons match .tag sizing conventions (36px+ min-height touch
+   target); the page label uses tabular-nums like .tag-count so the
+   "X / Y" text doesn't jitter in width as pages change. Hidden by
+   default -- FILTER_SCRIPT flips it to display:flex once there are
+   results to paginate. */
+.pager {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pager-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  min-height: 38px;
+  min-width: 84px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 980px;
+  padding: 8px 16px;
+  transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.pager-btn:hover:not(:disabled) {
+  background: var(--hover-wash);
+  color: var(--text);
+}
+
+.pager-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pager-label {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 a { 
   color: var(--accent); 
   text-decoration: none;
@@ -477,4 +580,5 @@ footer.site-footer {
   /* Still generous on mobile -- 94vw so it nearly fills the screen
      width rather than shrinking back down to a cramped fixed size. */
   .tag-panel { width: min(94vw, 420px); }
+  .search-btn { flex: 1 1 auto; }
 }
