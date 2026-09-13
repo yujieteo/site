@@ -362,3 +362,223 @@
   url: "https://www.cs.bham.ac.uk/~mhe/TypeTopology/"
   category: "computational"
   note: "Agda development of constructive univalent foundations, topology, and synthetic domain theory."
+
+- title: "Singapore Half-Hourly Electricity System Demand"
+  url: "https://www.ema.gov.sg/resources/statistics/half-hourly-system-demand-data"
+  category: "energy"
+  note: "Half-hourly observed electricity demand in MW for Singapore; a direct, high-frequency measure of power actually drawn by the economy."
+
+- title: "Singapore Electricity Consumption by Sector"
+  url: "https://www.ema.gov.sg/resources/singapore-energy-statistics/chapter3"
+  category: "energy"
+  note: "Physical electricity consumption in TWh, including sector breakdowns for industry, commerce and services, households, and transport."
+
+- title: "EIA Electricity Data Browser"
+  url: "https://www.eia.gov/electricity/data/browser/"
+  category: "energy"
+  note: "US electricity generation, demand, fuel use, plant output, stocks, and power flows; useful for tracking physical economic activity rather than modeled output."
+
+- title: "ENTSO-E Transparency Platform - Actual Total Load"
+  url: "https://transparency.entsoe.eu/load-domain/r2/totalLoadR2/show"
+  category: "energy"
+  note: "Actual electrical load across European control areas, bidding zones, and countries at high frequency; directly records power-system usage."
+
+- title: "Singapore Cargo Throughput"
+  url: "https://data.gov.sg/collections/390/view"
+  category: "trade-logistics"
+  note: "Monthly physical cargo throughput at the Port of Singapore, including breakdowns by cargo type; useful for tracking real trade and industrial flows."
+
+- title: "Singapore Vessel Arrivals"
+  url: "https://data.gov.sg/collections/394/view"
+  category: "trade-logistics"
+  note: "Monthly counts of vessel arrivals above 75 GT and shipping tonnage by vessel type; a direct measure of maritime traffic."
+
+- title: "Association of American Railroads Weekly Rail Traffic"
+  url: "https://www.aar.org/data-center/rail-traffic-data/"
+  category: "trade-logistics"
+  note: "Weekly US and North American rail carloads and intermodal containers/trailers, including commodity groups; directly counts freight moved."
+
+- title: "TSA Checkpoint Travel Numbers"
+  url: "https://www.tsa.gov/travel/passenger-volumes"
+  category: "mobility"
+  note: "Daily count of passengers screened at US airport checkpoints; a direct, near-real-time measure of passenger movement."
+
+- title: "US Quarterly Census of Employment and Wages (QCEW)"
+  url: "https://www.bls.gov/cew/"
+  category: "labour"
+  note: "Employer-reported employment and wages based primarily on unemployment-insurance administrative records, covering more than 95% of US jobs."
+
+- title: "US QCEW Open Data Access"
+  url: "https://www.bls.gov/cew/additional-resources/open-data/home.htm"
+  category: "labour"
+  note: "Downloadable/API access to establishment counts, covered employment, and payroll wages from administrative records at detailed geographic and industry levels."
+
+- title: "US Daily Treasury Statement"
+  url: "https://fiscaldata.treasury.gov/datasets/daily-treasury-statement/"
+  category: "fiscal-cashflow"
+  note: "Daily cash deposits and withdrawals of the US Treasury, including tax-related and customs cash flows; based on actual government cash operations rather than national-account estimates."
+
+- title: "Singapore Bankruptcy Applications, Orders and Discharges"
+  url: "https://data.gov.sg/datasets?resultId=d_86ab55e8deb78e31841a0ac920e09a9a&sort=updatedAt"
+  category: "financial-stress"
+  note: "Monthly administrative counts of bankruptcy applications, orders, and discharges from Singapore's Insolvency Office; directly records household financial distress."
+
+- title: "Singapore Companies in Compulsory Liquidation"
+  url: "https://data.gov.sg/datasets/d_dd022c3c16516b612abfe0f771dd505c/view"
+  category: "financial-stress"
+  note: "Monthly administrative count of companies in compulsory liquidation; a direct measure of severe corporate distress."
+
+- title: "Singapore Private Residential Property Transactions"
+  url: "https://www.ura.gov.sg/property-data/private-residential-properties/"
+  category: "housing"
+  note: "Actual private residential property transactions and rental contracts, with project-level and time-series data; prefer transaction counts and contract records over constructed price indexes."
+
+- title: "US New Residential Construction - Starts and Completions"
+  url: "https://www.census.gov/construction/nrc/data/series.html"
+  category: "construction"
+  note: "Counts of housing units started, under construction, and completed; physical construction activity is more concrete than construction-price or GDP measures."
+
+- title: "US Building Permits Survey"
+  url: "https://www.census.gov/construction/bps/"
+  category: "construction"
+  note: "Administrative/public-record counts of residential building permits at national, state, county, metro, and local levels; useful as a concrete pipeline measure, though permits precede actual construction."
+
+- title: "UN Comtrade Database"
+  url: "https://comtrade.un.org/"
+  category: "global-trade"
+  note: "Analysis: easy-medium. Detailed monthly and annual merchandise trade by product and partner for roughly 200 countries. Prefer physical quantity, net weight, and shipping-weight fields over trade value when you want to minimize inflation and exchange-rate effects."
+
+- title: "UNCTADstat Data Centre - Maritime Transport"
+  url: "https://unctadstat.unctad.org/datacentre/"
+  category: "global-shipping"
+  note: "Analysis: easy. Includes container-port throughput, seaborne trade by cargo type, port calls, vessel size, and time spent in port. Port-call counts and TEU/tonnage are especially concrete cross-country activity measures."
+
+- title: "FAOSTAT"
+  url: "https://www.fao.org/faostat/en/"
+  category: "global-agriculture"
+  note: "Analysis: easy-medium. Global agricultural production, livestock, crop output, fertilizer use, forestry, trade, and producer prices for more than 245 countries and territories. Physical tonnes, hectares, and head counts are preferable to value indices."
+
+- title: "FAOSTAT Agricultural Producer Prices"
+  url: "https://data.fao.org/catalog/dataset/47c17894-8ca1-4bd0-ba4d-6078e919e9b1"
+  category: "global-prices"
+  note: "Analysis: easy. Actual farm-gate producer prices by agricultural product, commonly available in local currency per tonne and USD per tonne. Better for concrete price analysis than a broad inflation index; compare the same commodity across time and also inspect physical production volumes."
+
+- title: "FAO Food Price Monitoring and Analysis"
+  url: "https://www.fao.org/prices/home/food-price-monitoring---analysis-%28fpma%29/"
+  category: "global-prices"
+  note: "Analysis: easy-medium. Retail, wholesale, and international food-price series across many countries. Useful for observing actual prices of staple goods rather than a constructed aggregate CPI."
+
+- title: "World Bank Commodity Markets - Pink Sheet"
+  url: "https://www.worldbank.org/en/research/commodity-markets"
+  category: "global-prices"
+  note: "Analysis: very easy. Monthly benchmark prices for oil, gas, coal, metals, fertilizers, grains, oils, beverages, timber, and other commodities. Raw nominal prices are directly interpretable; for long horizons compare commodity-price ratios or pair prices with physical quantities rather than relying only on CPI deflation."
+
+- title: "Eurostat Energy Statistics - Quantities"
+  url: "https://ec.europa.eu/eurostat/cache/metadata/EN/nrg_quant_simsqu_el.htm"
+  category: "europe-energy"
+  note: "Analysis: easy. Monthly and annual electricity, gas, oil, coal, and renewable-energy quantities in physical units such as GWh, cubic metres, tonnes, and joules across European countries."
+
+- title: "Eurostat Transport Database"
+  url: "https://ec.europa.eu/eurostat/web/transport/database"
+  category: "europe-transport"
+  note: "Analysis: easy-medium. Harmonized road, rail, maritime, inland-waterway, and air-transport statistics across Europe. Prefer tonnes, tonne-kilometres, passenger counts, and vessel movements over composite transport indices."
+
+- title: "Eurostat Building Permits"
+  url: "https://ec.europa.eu/eurostat/cache/metadata/EN/sts_cons_per_esms.htm"
+  category: "europe-construction"
+  note: "Analysis: easy. Administrative or census-style counts of permitted dwellings and useful floor area across European countries. Use absolute counts or square metres where available rather than only the published index."
+
+- title: "ENTSO-E Transparency Platform - Actual Total Load"
+  url: "https://transparency.entsoe.eu/load-domain/r2/totalLoadR2/show"
+  category: "europe-energy"
+  note: "Analysis: very easy. High-frequency actual electricity load across European bidding zones and control areas. One of the cleanest near-real-time measures of physical economic activity, although weather and electrification effects should be controlled for."
+
+- title: "Singapore Half-Hourly Electricity System Demand"
+  url: "https://www.ema.gov.sg/resources/statistics/half-hourly-system-demand-data"
+  category: "singapore-energy"
+  note: "Analysis: very easy. Half-hourly observed electricity demand in MW. Excellent for day-to-day and week-to-week activity analysis after controlling for temperature, weekdays, and holidays."
+
+- title: "Singapore Cargo Throughput - Monthly"
+  url: "https://data.gov.sg/collections/390/view"
+  category: "singapore-trade-logistics"
+  note: "Analysis: very easy. Monthly physical cargo throughput at the Port of Singapore, including containerised, conventional, oil, and non-oil bulk cargo. Tonnes moved are much harder to distort through price changes than trade-value series."
+
+- title: "Singapore Vessel Arrivals"
+  url: "https://data.gov.sg/collections/394/view"
+  category: "singapore-trade-logistics"
+  note: "Analysis: very easy. Monthly vessel-arrival counts and shipping tonnage by vessel type. Useful alongside cargo throughput to distinguish more ships from larger loads."
+
+- title: "Singapore Private Residential Property Transactions"
+  url: "https://www.ura.gov.sg/property-data/private-residential-properties/"
+  category: "singapore-housing-prices"
+  note: "Analysis: easy. Actual private residential transactions, rentals, developer sales, and pipeline supply. Prefer transaction-level sale prices, price per square metre, transaction counts, and rental contracts over a single property-price index."
+
+- title: "Singapore Bankruptcy Applications, Orders and Discharges"
+  url: "https://data.gov.sg/datasets?resultId=d_86ab55e8deb78e31841a0ac920e09a9a&sort=updatedAt"
+  category: "singapore-financial-stress"
+  note: "Analysis: very easy. Administrative monthly counts of bankruptcy applications, orders, and discharges. Directly measures severe household financial stress rather than inferred sentiment."
+
+- title: "Singapore Companies in Compulsory Liquidation"
+  url: "https://data.gov.sg/datasets/d_dd022c3c16516b612abfe0f771dd505c/view"
+  category: "singapore-financial-stress"
+  note: "Analysis: very easy. Administrative count of companies in compulsory liquidation. Useful as a hard distress indicator, especially as a rate relative to the stock of active companies."
+
+- title: "US EIA Electricity Grid Monitor"
+  url: "https://www.eia.gov/electricity/gridmonitor/"
+  category: "united-states-energy"
+  note: "Analysis: very easy. Hourly electricity demand, generation, and interchange by balancing authority. Physical MW/MWh data are useful high-frequency activity measures after adjusting for weather."
+
+- title: "US EIA Petroleum and Other Liquids Prices"
+  url: "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm"
+  category: "united-states-prices"
+  note: "Analysis: very easy. Observed spot prices for crude oil and petroleum products. Use raw prices directly for market analysis; for purchasing-power questions compare them with wages, freight rates, or other concrete prices rather than only CPI-adjusting them."
+
+- title: "Association of American Railroads Weekly Rail Traffic"
+  url: "https://www.aar.org/data-center/rail-traffic-data/"
+  category: "united-states-freight"
+  note: "Analysis: very easy. Weekly rail carloads and intermodal containers/trailers by commodity group in the US and North America. Direct freight counts make this one of the easiest real-economy series to interpret."
+
+- title: "US Census International Trade Data Products"
+  url: "https://www.census.gov/foreign-trade/data/dataproducts.html"
+  category: "united-states-trade"
+  note: "Analysis: easy-medium. Merchandise trade records include product codes, country, transport mode, quantity, shipping weight, and value. Prefer quantities and shipping weights when studying real flows."
+
+- title: "US Quarterly Census of Employment and Wages"
+  url: "https://www.bls.gov/cew/"
+  category: "united-states-labour"
+  note: "Analysis: easy. Employer-reported employment, establishment counts, and payroll wages based mainly on unemployment-insurance administrative records. For wage analysis, use nominal payroll per worker and compare with concrete prices of specific goods or housing rather than a broad CPI alone."
+
+- title: "US QCEW Open Data"
+  url: "https://www.bls.gov/cew/additional-resources/open-data/home.htm"
+  category: "united-states-labour"
+  note: "Analysis: very easy for scripting. Downloadable and API-accessible establishment, employment, and wage data by geography and industry. Good base for building simple wage-per-worker and employment-growth measures."
+
+- title: "US Daily Treasury Statement"
+  url: "https://fiscaldata.treasury.gov/datasets/daily-treasury-statement/"
+  category: "united-states-fiscal-cashflow"
+  note: "Analysis: medium. Daily actual federal cash receipts and outlays. Tax deposits, customs receipts, benefit payments, and other cash flows can reveal economic activity without relying on national-account estimates."
+
+- title: "US New Residential Construction"
+  url: "https://www.census.gov/construction/nrc/data/series.html"
+  category: "united-states-construction"
+  note: "Analysis: very easy. Counts of housing units started, under construction, and completed. Starts and completions are physical construction activity; completions are generally more concrete than permits."
+
+- title: "UK National Energy System Operator - Historic Demand Data"
+  url: "https://www.neso.energy/data-portal/historic-demand-data"
+  category: "united-kingdom-energy"
+  note: "Analysis: very easy. Historic electricity demand plus wind, solar, interconnector, and other system data in downloadable CSV files. Good for high-frequency physical-activity analysis, with documented retrospective revisions."
+
+- title: "HM Land Registry Price Paid Data"
+  url: "https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads"
+  category: "united-kingdom-housing-prices"
+  note: "Analysis: very easy. Individual property sale prices in England and Wales lodged for registration, with date, property type, tenure, and location. This is actual transaction-price data rather than a modeled house-price index."
+
+- title: "Australia AEMO Operational Demand Data"
+  url: "https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-nem/data-nem/operational-demand-data"
+  category: "australia-energy"
+  note: "Analysis: very easy. Measured operational electricity demand by National Electricity Market region at half-hourly and five-minute resolution, with downloadable CSV files and documented adjustments."
+
+- title: "Japan MLIT Real Estate Transaction Price Information"
+  url: "https://www.mlit.go.jp/en/totikensangyo/totikensangyo_fr5_000014.html"
+  category: "japan-housing-prices"
+  note: "Analysis: easy-medium. Transaction-price information collected from parties to actual real-estate transactions, including total value, area, building use, structure, and transaction period. Useful for constructing price-per-square-metre distributions directly."

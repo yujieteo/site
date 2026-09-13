@@ -447,7 +447,7 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
 
     data_json = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 
-    initial_count_label = "Search to show entries" if not default_show else f"{total} entries"
+    initial_count_label = " " if not default_show else f"{total} entries"
 
     return f"""
     <div class="search-row" id="{wrap_id}" style="position:relative;">
