@@ -24,20 +24,1105 @@
     <main>
       
 <a class="skip-link" href="#main-content">Skip to content</a>
-<div id="main-content" tabindex="-1"><h1>Macintosh Setup</h1><div class="post-body"><p>I do not use configuration files. Set up is meant to be maximally replicable in cases of destruction.</p>
-<h2>Checklist</h2>
+<div id="main-content" tabindex="-1"><h1>Macintosh Setup</h1><p class="post-meta">2026-09-13</p><div class="post-body"><hr />
+<p>The Macintosh is disposable.</p>
+<pre><code class="language-text">Git             source + configuration
+~/.secrets      local plaintext secrets
+SSH             authentication
+mise            runtimes
+uv              Python dependencies/tools
+~/src           hot Git working set
+~/data          warm non-Git data
+~/archive       cold data
+~/tmp           disposable data
+</code></pre>
+<p>Review every <strong>90 days</strong>. Clean rebuild approximately <strong>yearly</strong>.</p>
+<h1>1. macOS</h1>
+<pre><code class="language-text">macOS updates: automatic
+Appearance: Dark
+Wallpaper: solid grey
+FileVault: On
+Find My Mac: On
+Time Machine: On
+Battery Charge Limit: 80%
+Optimized Battery Charging: On
+</code></pre>
+<pre><code class="language-sh">xcode-select --install
+</code></pre>
+<pre><code class="language-sh">xcode-select -p
+pmset -g custom
+</code></pre>
+<h1>2. Home directory</h1>
+<pre><code class="language-sh">mkdir -p \
+    ~/src \
+    ~/data \
+    ~/archive \
+    ~/tmp \
+    ~/.config \
+    ~/.secrets \
+    ~/.ssh
+</code></pre>
+<pre><code class="language-sh">chmod 700 ~/.secrets
+chmod 700 ~/.ssh
+</code></pre>
+<pre><code class="language-text">~/
+├── src/        # active Git repositories
+├── data/       # active non-Git data
+├── archive/    # cold data
+├── tmp/        # disposable
+├── .config/    # application configuration
+├── .secrets/   # secrets
+└── .ssh/       # SSH identity
+</code></pre>
+<p>Keep <code>~/src</code> flat:</p>
+<pre><code class="language-text">~/src/
+├── configuration/
+├── website/
+├── project-a/
+└── project-b/
+</code></pre>
+<h1>3. Homebrew</h1>
+<p>Install from:</p>
+<pre><code class="language-text">https://brew.sh/
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-sh">brew update
+brew doctor
+</code></pre>
+<h1>4. Core tooling</h1>
+<pre><code class="language-sh">brew install \
+    git \
+    gh \
+    neovim \
+    mise \
+    uv \
+    jq \
+    ripgrep \
+    fzf \
+    pandoc \
+    texlab
+</code></pre>
+<pre><code class="language-sh">brew install --cask \
+    visual-studio-code \
+    firefox \
+    discord \
+    mactex \
+    ollama-app
+</code></pre>
+<p>Restart shell after MacTeX:</p>
+<pre><code class="language-sh">exec zsh
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">git --version
+gh --version
+nvim --version
+mise --version
+uv --version
+jq --version
+rg --version
+fzf --version
+pandoc --version
+texlab --version
+pdflatex --version
+latexmk --version
+chktex --version
+</code></pre>
+<h1>5. Filesystem policy</h1>
+<pre><code class="language-text">~/src      Git cache
+~/data     valuable working data
+~/archive  cold data
+~/tmp      disposable
+</code></pre>
+<p>Active repository:</p>
+<pre><code class="language-sh">cd ~/src/project
+git pull
+</code></pre>
+<p>Before deleting:</p>
+<pre><code class="language-sh">git status
+git push
+</code></pre>
+<p>Evict:</p>
+<pre><code class="language-sh">cd ~/src
+rm -rf project
+</code></pre>
+<p>Restore:</p>
+<pre><code class="language-sh">gh repo clone USER/project
+</code></pre>
+<h1>6. GitHub</h1>
+<pre><code class="language-sh">gh auth login
+gh auth status
+</code></pre>
+<h1>7. SSH</h1>
+<p>Based on:</p>
+<pre><code class="language-text">https://teoyujie.org/blog/051-ssh-guide.html
+</code></pre>
+<p>Create secure directory:</p>
+<pre><code class="language-sh">mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+</code></pre>
+<p>Check existing keys:</p>
+<pre><code class="language-sh">ls -al ~/.ssh
+</code></pre>
+<p>Generate Ed25519 key:</p>
+<pre><code class="language-sh">ssh-keygen -t ed25519 -C &quot;YOUR_EMAIL&quot;
+</code></pre>
+<p>Start agent:</p>
+<pre><code class="language-sh">eval &quot;$(ssh-agent -s)&quot;
+</code></pre>
+<p>Load key:</p>
+<pre><code class="language-sh">ssh-add ~/.ssh/id_ed25519
+</code></pre>
+<p>Permissions:</p>
+<pre><code class="language-sh">chmod 600 ~/.ssh/id_ed25519
+chmod 644 ~/.ssh/id_ed25519.pub
+</code></pre>
+<p>Add public key to GitHub:</p>
+<pre><code class="language-sh">gh ssh-key add ~/.ssh/id_ed25519.pub \
+    --title &quot;MacBook&quot;
+</code></pre>
+<p>Test:</p>
+<pre><code class="language-sh">ssh -T git@github.com
+</code></pre>
+<p>Clone over SSH:</p>
+<pre><code class="language-sh">git clone git@github.com:USER/REPO.git
+</code></pre>
+<p>Convert existing repository:</p>
+<pre><code class="language-sh">git remote set-url origin git@github.com:USER/REPO.git
+</code></pre>
+<p>Debug:</p>
+<pre><code class="language-sh">ssh-add -l
+ssh -vT git@github.com
+</code></pre>
+<p>For a server:</p>
+<pre><code class="language-sh">cat ~/.ssh/id_ed25519.pub | \
+ssh USER@SERVER \
+'mkdir -p ~/.ssh &amp;&amp;
+chmod 700 ~/.ssh &amp;&amp;
+cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp;
+chmod 600 ~/.ssh/authorized_keys'
+</code></pre>
+<p>Test:</p>
+<pre><code class="language-sh">ssh USER@SERVER
+</code></pre>
+<p>Optional <code>~/.ssh/config</code>:</p>
+<pre><code class="language-sshconfig">Host myserver
+    HostName SERVER
+    User USER
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-sh">ssh myserver
+</code></pre>
+<p>Never commit:</p>
+<pre><code class="language-text">~/.ssh/id_ed25519
+</code></pre>
+<p>The public key may be copied freely:</p>
+<pre><code class="language-text">~/.ssh/id_ed25519.pub
+</code></pre>
+<h1>8. Secrets</h1>
+<p>Secrets remain ordinary text files.</p>
+<p>They are protected by:</p>
+<pre><code class="language-text">FileVault
+Unix permissions
+offline encrypted backup
+</code></pre>
+<p>Create:</p>
+<pre><code class="language-sh">mkdir -p ~/.secrets
+chmod 700 ~/.secrets
+</code></pre>
+<p>Create separate domains:</p>
+<pre><code class="language-sh">touch ~/.secrets/ai.env
+touch ~/.secrets/openclaw.env
+touch ~/.secrets/discord.env
+touch ~/.secrets/domain.env
+</code></pre>
+<p>Lock:</p>
+<pre><code class="language-sh">chmod 600 ~/.secrets/*.env
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-sh">OPENAI_API_KEY='...'
+ANTHROPIC_API_KEY='...'
+</code></pre>
+<p>Check:</p>
+<pre><code class="language-sh">ls -la ~/.secrets
+</code></pre>
+<p>Expected permissions:</p>
+<pre><code class="language-text">drwx------ .secrets
+-rw------- *.env
+</code></pre>
+<p>Do not globally export secrets from <code>.zshrc</code>.</p>
+<p>Add this helper to <code>.zshrc</code>:</p>
+<pre><code class="language-sh">withsecrets() {
+    secret_file=&quot;$HOME/.secrets/$1.env&quot;
+    shift
+
+    if [ ! -f &quot;$secret_file&quot; ]; then
+        echo &quot;Missing $secret_file&quot; &gt;&amp;2
+        return 1
+    fi
+
+    (
+        set -a
+        . &quot;$secret_file&quot;
+        set +a
+        exec &quot;$@&quot;
+    )
+}
+</code></pre>
+<p>Use:</p>
+<pre><code class="language-sh">withsecrets ai python script.py
+</code></pre>
+<p>or:</p>
+<pre><code class="language-sh">withsecrets openclaw openclaw
+</code></pre>
+<p>Secrets exist only in the child process environment.</p>
+<p>Never put secrets in:</p>
+<pre><code class="language-text">Git
+.zshrc
+.gitconfig
+mise.toml
+shell history
+.env committed to Git
+</code></pre>
+<p>Repositories may contain:</p>
+<pre><code class="language-text">.env.example
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-text">OPENAI_API_KEY=
+DISCORD_TOKEN=
+DATABASE_URL=
+</code></pre>
+<p>Offline backup:</p>
 <ol>
-<li>Visit <a href="https://brew.sh">brew.sh</a> (or chocolatey for windows), set up dark mode, set up networking.</li>
-<li><code>brew install git</code></li>
-<li><code>brew install --cask visual-studio-code, alternatively visit [Visual Studio Code](https://code.visualstudio.com). Login to github. VScode all relevant extensions.</code></li>
-<li><code>brew install vim</code></li>
-<li><code>brew install anki</code></li>
-<li>make folders all on home directory, flat directory, git clone into it. git clone repo.</li>
-<li><code>brew install --cask firefox</code></li>
-<li>Set up the pipeline: C code to html to blog work flow. I use saait static page generator.</li>
-<li>Set up custom mail to web domain.</li>
-<li><code>brew install --casks mactex</code></li>
-</ol></div></div>
+<li>Format a USB drive as encrypted APFS.</li>
+<li>Mount it.</li>
+<li>Copy:</li>
+</ol>
+<pre><code class="language-sh">rsync -a ~/.secrets/ /Volumes/SECRETS/secrets/
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">diff -rq ~/.secrets /Volumes/SECRETS/secrets
+</code></pre>
+<p>Keep at least one encrypted copy physically separate from the Mac.</p>
+<h1>9. Global Git ignore</h1>
+<p>Create:</p>
+<pre><code class="language-sh">touch ~/.gitignore_global
+</code></pre>
+<p>Configure:</p>
+<pre><code class="language-sh">git config --global core.excludesfile ~/.gitignore_global
+</code></pre>
+<p>Contents:</p>
+<pre><code class="language-gitignore">.DS_Store
+
+.env
+.env.*
+!.env.example
+
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+*.pem
+*.key
+
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+</code></pre>
+<h1>10. Configuration repository</h1>
+<p>Create:</p>
+<pre><code class="language-sh">mkdir -p ~/src/configuration
+cd ~/src/configuration
+
+mkdir -p config/nvim
+mkdir -p vscode
+mkdir -p ssh
+</code></pre>
+<p>Create:</p>
+<pre><code class="language-sh">touch .zshrc
+touch .gitconfig
+touch .gitignore_global
+touch config/nvim/init.lua
+touch vscode/settings.json
+touch ssh/config
+touch install.sh
+touch .gitignore
+
+chmod +x install.sh
+</code></pre>
+<p>Structure:</p>
+<pre><code class="language-text">configuration/
+├── .zshrc
+├── .gitconfig
+├── .gitignore_global
+├── .gitignore
+├── install.sh
+├── config/
+│   └── nvim/
+│       └── init.lua
+├── vscode/
+│   └── settings.json
+└── ssh/
+    └── config
+</code></pre>
+<h1>11. <code>.zshrc</code></h1>
+<pre><code class="language-sh">export EDITOR=nvim
+export VISUAL=nvim
+
+eval &quot;$(mise activate zsh)&quot;
+
+withsecrets() {
+    secret_file=&quot;$HOME/.secrets/$1.env&quot;
+    shift
+
+    if [ ! -f &quot;$secret_file&quot; ]; then
+        echo &quot;Missing $secret_file&quot; &gt;&amp;2
+        return 1
+    fi
+
+    (
+        set -a
+        . &quot;$secret_file&quot;
+        set +a
+        exec &quot;$@&quot;
+    )
+}
+</code></pre>
+<h1>12. <code>.gitconfig</code></h1>
+<pre><code class="language-ini">[user]
+    name = Yu Jie Teo
+    email = YOUR_EMAIL
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore_global
+
+[pull]
+    rebase = false
+
+[push]
+    autoSetupRemote = true
+</code></pre>
+<h1>13. Configuration whitelist</h1>
+<p><code>.gitignore</code>:</p>
+<pre><code class="language-gitignore">*
+
+!.gitignore
+!.zshrc
+!.gitconfig
+!.gitignore_global
+!install.sh
+
+!config/
+!config/nvim/
+!config/nvim/**
+
+!vscode/
+!vscode/settings.json
+
+!ssh/
+!ssh/config
+</code></pre>
+<p>Never use:</p>
+<pre><code class="language-sh">git add .
+</code></pre>
+<p>Use:</p>
+<pre><code class="language-sh">git add .gitignore
+git add .zshrc
+git add .gitconfig
+git add .gitignore_global
+git add install.sh
+git add config/nvim/init.lua
+git add vscode/settings.json
+git add ssh/config
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-sh">git status
+git diff --cached
+</code></pre>
+<h1>14. <code>install.sh</code></h1>
+<pre><code class="language-sh">#!/bin/sh
+
+set -eu
+
+mkdir -p &quot;$HOME/.config&quot;
+mkdir -p &quot;$HOME/.ssh&quot;
+mkdir -p &quot;$HOME/.secrets&quot;
+mkdir -p &quot;$HOME/Library/Application Support/Code/User&quot;
+
+chmod 700 &quot;$HOME/.ssh&quot;
+chmod 700 &quot;$HOME/.secrets&quot;
+
+ln -sf \
+    &quot;$HOME/src/configuration/.zshrc&quot; \
+    &quot;$HOME/.zshrc&quot;
+
+ln -sf \
+    &quot;$HOME/src/configuration/.gitconfig&quot; \
+    &quot;$HOME/.gitconfig&quot;
+
+ln -sf \
+    &quot;$HOME/src/configuration/.gitignore_global&quot; \
+    &quot;$HOME/.gitignore_global&quot;
+
+rm -rf &quot;$HOME/.config/nvim&quot;
+
+ln -s \
+    &quot;$HOME/src/configuration/config/nvim&quot; \
+    &quot;$HOME/.config/nvim&quot;
+
+ln -sf \
+    &quot;$HOME/src/configuration/vscode/settings.json&quot; \
+    &quot;$HOME/Library/Application Support/Code/User/settings.json&quot;
+
+ln -sf \
+    &quot;$HOME/src/configuration/ssh/config&quot; \
+    &quot;$HOME/.ssh/config&quot;
+
+chmod 600 &quot;$HOME/.ssh/config&quot;
+</code></pre>
+<h1>15. Initialize configuration repository</h1>
+<pre><code class="language-sh">cd ~/src/configuration
+git init
+</code></pre>
+<p>Explicitly stage:</p>
+<pre><code class="language-sh">git add .gitignore
+git add .zshrc
+git add .gitconfig
+git add .gitignore_global
+git add install.sh
+git add config/nvim/init.lua
+git add vscode/settings.json
+git add ssh/config
+</code></pre>
+<p>Inspect:</p>
+<pre><code class="language-sh">git status
+git diff --cached
+</code></pre>
+<p>Commit:</p>
+<pre><code class="language-sh">git commit -m &quot;Initial Macintosh configuration&quot;
+</code></pre>
+<p>Create private repository:</p>
+<pre><code class="language-sh">gh repo create configuration \
+    --private \
+    --source=. \
+    --remote=origin \
+    --push
+</code></pre>
+<h1>16. mise</h1>
+<pre><code class="language-sh">mise use --global python@3.14
+mise use --global node@26
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">mise doctor
+mise current
+
+python --version
+node --version
+npm --version
+</code></pre>
+<p>Project:</p>
+<pre><code class="language-sh">cd ~/src/project
+mise use python@3.14
+</code></pre>
+<p>Creates:</p>
+<pre><code class="language-toml">[tools]
+python = &quot;3.14&quot;
+</code></pre>
+<p>Install:</p>
+<pre><code class="language-sh">mise install
+</code></pre>
+<h1>17. Python</h1>
+<p>Create:</p>
+<pre><code class="language-sh">cd ~/src
+uv init project
+cd project
+</code></pre>
+<p>Runtime:</p>
+<pre><code class="language-sh">mise use python@3.14
+</code></pre>
+<p>Environment:</p>
+<pre><code class="language-sh">uv sync
+</code></pre>
+<p>Dependencies:</p>
+<pre><code class="language-sh">uv add requests
+</code></pre>
+<p>Development:</p>
+<pre><code class="language-sh">uv add --dev pytest
+</code></pre>
+<p>Install global Python development tools:</p>
+<pre><code class="language-sh">uv tool install ruff
+uv tool update-shell
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">ruff --version
+</code></pre>
+<p>Install Python language server:</p>
+<pre><code class="language-sh">npm install -g pyright
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">pyright --version
+</code></pre>
+<p>Run:</p>
+<pre><code class="language-sh">uv run python main.py
+uv run pytest
+ruff check .
+ruff format .
+pyright
+</code></pre>
+<p>Commit:</p>
+<pre><code class="language-text">mise.toml
+pyproject.toml
+uv.lock
+</code></pre>
+<p>Do not commit:</p>
+<pre><code class="language-text">.venv/
+</code></pre>
+<h1>18. Neovim</h1>
+<p>Use Neovim instead of Vim.</p>
+<p>Configuration:</p>
+<pre><code class="language-text">~/.config/nvim/init.lua
+</code></pre>
+<p><code>init.lua</code>:</p>
+<pre><code class="language-lua">vim.g.mapleader = &quot; &quot;
+
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.smartindent = true
+vim.opt.wrap = false
+vim.opt.termguicolors = true
+vim.opt.signcolumn = &quot;yes&quot;
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.undofile = true
+vim.opt.swapfile = false
+
+vim.cmd.colorscheme(&quot;habamax&quot;)
+
+local lazypath = vim.fn.stdpath(&quot;data&quot;) .. &quot;/lazy/lazy.nvim&quot;
+
+if not vim.uv.fs_stat(lazypath) then
+    vim.fn.system({
+        &quot;git&quot;,
+        &quot;clone&quot;,
+        &quot;--filter=blob:none&quot;,
+        &quot;https://github.com/folke/lazy.nvim.git&quot;,
+        &quot;--branch=stable&quot;,
+        lazypath,
+    })
+end
+
+vim.opt.rtp:prepend(lazypath)
+
+require(&quot;lazy&quot;).setup({
+    {
+        &quot;neovim/nvim-lspconfig&quot;,
+        config = function()
+            vim.lsp.enable({
+                &quot;pyright&quot;,
+                &quot;texlab&quot;,
+            })
+        end,
+    },
+
+    {
+        &quot;mfussenegger/nvim-lint&quot;,
+        config = function()
+            local lint = require(&quot;lint&quot;)
+
+            lint.linters_by_ft = {
+                python = { &quot;ruff&quot; },
+                tex = { &quot;chktex&quot; },
+            }
+
+            vim.api.nvim_create_autocmd({
+                &quot;BufEnter&quot;,
+                &quot;BufWritePost&quot;,
+                &quot;InsertLeave&quot;,
+            }, {
+                callback = function()
+                    lint.try_lint()
+                end,
+            })
+        end,
+    },
+})
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+})
+
+vim.keymap.set(&quot;n&quot;, &quot;gd&quot;, vim.lsp.buf.definition)
+vim.keymap.set(&quot;n&quot;, &quot;gr&quot;, vim.lsp.buf.references)
+vim.keymap.set(&quot;n&quot;, &quot;K&quot;, vim.lsp.buf.hover)
+vim.keymap.set(&quot;n&quot;, &quot;&lt;leader&gt;rn&quot;, vim.lsp.buf.rename)
+vim.keymap.set(&quot;n&quot;, &quot;&lt;leader&gt;ca&quot;, vim.lsp.buf.code_action)
+vim.keymap.set(&quot;n&quot;, &quot;&lt;leader&gt;d&quot;, vim.diagnostic.open_float)
+</code></pre>
+<p>Open:</p>
+<pre><code class="language-sh">nvim
+</code></pre>
+<p>Plugin installation is automatic on first launch.</p>
+<p>Check:</p>
+<pre><code class="language-vim">:checkhealth
+</code></pre>
+<p>Python:</p>
+<pre><code class="language-text">Pyright = language server/type checking
+Ruff    = linting + formatting
+</code></pre>
+<p>LaTeX:</p>
+<pre><code class="language-text">texlab  = language server
+chktex  = linting
+</code></pre>
+<p>Modern Neovim uses its built-in LSP client; <code>nvim-lspconfig</code> supplies server configurations. Current <code>mason-lspconfig</code> itself notes that modern Neovim uses <code>vim.lsp.config()</code>/<code>vim.lsp.enable()</code> directly.</p>
+<h1>19. VS Code</h1>
+<p>Install extensions:</p>
+<pre><code class="language-sh">code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension charliermarsh.ruff
+code --install-extension James-Yu.latex-workshop
+</code></pre>
+<p>Tracked settings:</p>
+<pre><code class="language-text">~/src/configuration/vscode/settings.json
+</code></pre>
+<p>Use a neutral grey interface:</p>
+<pre><code class="language-json">{
+    &quot;workbench.colorTheme&quot;: &quot;Default Dark Modern&quot;,
+
+    &quot;editor.fontSize&quot;: 14,
+    &quot;editor.lineHeight&quot;: 22,
+    &quot;editor.minimap.enabled&quot;: false,
+    &quot;editor.wordWrap&quot;: &quot;bounded&quot;,
+    &quot;editor.rulers&quot;: [88],
+    &quot;editor.formatOnSave&quot;: true,
+
+    &quot;files.trimTrailingWhitespace&quot;: true,
+    &quot;files.insertFinalNewline&quot;: true,
+
+    &quot;terminal.integrated.defaultProfile.osx&quot;: &quot;zsh&quot;,
+
+    &quot;git.autofetch&quot;: true,
+
+    &quot;workbench.colorCustomizations&quot;: {
+        &quot;editor.background&quot;: &quot;#202123&quot;,
+        &quot;editor.foreground&quot;: &quot;#ECECF1&quot;,
+
+        &quot;sideBar.background&quot;: &quot;#202123&quot;,
+        &quot;sideBar.foreground&quot;: &quot;#ECECF1&quot;,
+
+        &quot;activityBar.background&quot;: &quot;#202123&quot;,
+        &quot;activityBar.foreground&quot;: &quot;#ECECF1&quot;,
+
+        &quot;panel.background&quot;: &quot;#202123&quot;,
+
+        &quot;titleBar.activeBackground&quot;: &quot;#202123&quot;,
+        &quot;titleBar.inactiveBackground&quot;: &quot;#202123&quot;,
+
+        &quot;statusBar.background&quot;: &quot;#202123&quot;,
+        &quot;statusBar.foreground&quot;: &quot;#ECECF1&quot;,
+
+        &quot;tab.activeBackground&quot;: &quot;#343541&quot;,
+        &quot;tab.inactiveBackground&quot;: &quot;#202123&quot;,
+
+        &quot;editorGroupHeader.tabsBackground&quot;: &quot;#202123&quot;,
+
+        &quot;editor.selectionBackground&quot;: &quot;#444654&quot;,
+
+        &quot;focusBorder&quot;: &quot;#10A37F&quot;,
+
+        &quot;editorCursor.foreground&quot;: &quot;#ECECF1&quot;,
+
+        &quot;input.background&quot;: &quot;#343541&quot;,
+        &quot;dropdown.background&quot;: &quot;#343541&quot;,
+
+        &quot;list.activeSelectionBackground&quot;: &quot;#343541&quot;,
+        &quot;list.inactiveSelectionBackground&quot;: &quot;#2A2B32&quot;,
+
+        &quot;sideBar.border&quot;: &quot;#343541&quot;,
+        &quot;panel.border&quot;: &quot;#343541&quot;
+    },
+
+    &quot;[python]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;charliermarsh.ruff&quot;,
+        &quot;editor.formatOnSave&quot;: true
+    },
+
+    &quot;ruff.lint.run&quot;: &quot;onSave&quot;,
+
+    &quot;[latex]&quot;: {
+        &quot;editor.wordWrap&quot;: &quot;on&quot;
+    },
+
+    &quot;latex-workshop.latex.autoBuild.run&quot;: &quot;onSave&quot;,
+    &quot;latex-workshop.view.pdf.viewer&quot;: &quot;tab&quot;
+}
+</code></pre>
+<p>VS Code supports these UI overrides through <code>workbench.colorCustomizations</code>.</p>
+<h1>20. LaTeX / <code>.tex</code></h1>
+<p>MacTeX provides:</p>
+<pre><code class="language-text">pdflatex
+xelatex
+latexmk
+bibtex
+chktex
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">pdflatex --version
+latexmk --version
+chktex --version
+texlab --version
+</code></pre>
+<p>Create paper:</p>
+<pre><code class="language-sh">mkdir -p ~/src/paper
+cd ~/src/paper
+
+touch main.tex
+touch references.bib
+mkdir figures
+
+git init
+</code></pre>
+<p>Suggested layout:</p>
+<pre><code class="language-text">paper/
+├── main.tex
+├── references.bib
+├── figures/
+└── .gitignore
+</code></pre>
+<p>Minimal <code>main.tex</code>:</p>
+<pre><code class="language-tex">\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\title{Title}
+\author{Yu Jie Teo}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\end{document}
+</code></pre>
+<p>Compile:</p>
+<pre><code class="language-sh">latexmk -pdf main.tex
+</code></pre>
+<p>Continuous compilation:</p>
+<pre><code class="language-sh">latexmk -pdf -pvc main.tex
+</code></pre>
+<p>Clean generated files:</p>
+<pre><code class="language-sh">latexmk -c
+</code></pre>
+<p>Full clean:</p>
+<pre><code class="language-sh">latexmk -C
+</code></pre>
+<p>Lint:</p>
+<pre><code class="language-sh">chktex main.tex
+</code></pre>
+<p>Edit:</p>
+<pre><code class="language-sh">nvim main.tex
+</code></pre>
+<p>or:</p>
+<pre><code class="language-sh">code .
+</code></pre>
+<p>LaTeX generated files remain excluded through the global Git ignore.</p>
+<h1>21. Codex CLI</h1>
+<pre><code class="language-sh">npm install -g @openai/codex
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">codex --version
+</code></pre>
+<p>Use:</p>
+<pre><code class="language-sh">cd ~/src/project
+git status
+codex
+</code></pre>
+<h1>22. OpenClaw</h1>
+<pre><code class="language-sh">curl -fsSL https://openclaw.ai/install.sh | bash
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">openclaw --version
+openclaw doctor
+</code></pre>
+<p>Run with local secrets where appropriate:</p>
+<pre><code class="language-sh">withsecrets openclaw openclaw
+</code></pre>
+<p>Restore:</p>
+<pre><code class="language-text">providers
+Discord
+workspaces
+instructions
+scheduled jobs
+</code></pre>
+<h1>23. Ollama</h1>
+<pre><code class="language-sh">brew install --cask ollama-app
+</code></pre>
+<p>Verify:</p>
+<pre><code class="language-sh">ollama --version
+ollama list
+</code></pre>
+<p>Model files are disposable.</p>
+<h1>24. Browser</h1>
+<pre><code class="language-text">Firefox = primary
+Safari  = clean secondary
+</code></pre>
+<p>Firefox:</p>
+<pre><code class="language-text">Personal profile
+Development profile
+minimal extensions
+durable references → bookmarks
+transient references → tabs
+</code></pre>
+<h1>25. Discord</h1>
+<pre><code class="language-sh">brew install --cask discord
+</code></pre>
+<p>Restore OpenClaw/agent integrations if required.</p>
+<h1>26. qBittorrent</h1>
+<p>Install from:</p>
+<pre><code class="language-text">https://www.qbittorrent.org/
+</code></pre>
+<p>Enable:</p>
+<pre><code class="language-text">View
+→ Search Engine
+</code></pre>
+<p>Install required Python search plugins only.</p>
+<h1>27. New Python repository</h1>
+<pre><code class="language-sh">cd ~/src
+
+uv init project
+cd project
+
+mise use python@3.14
+
+uv sync
+uv add --dev pytest
+</code></pre>
+<pre><code class="language-sh">git init
+</code></pre>
+<p>Inspect:</p>
+<pre><code class="language-sh">git status
+</code></pre>
+<p>Explicitly stage:</p>
+<pre><code class="language-sh">git add pyproject.toml
+git add uv.lock
+git add mise.toml
+git add .gitignore
+git add src
+</code></pre>
+<pre><code class="language-sh">git status
+git diff --cached
+</code></pre>
+<p>Commit:</p>
+<pre><code class="language-sh">git commit -m &quot;Initial commit&quot;
+</code></pre>
+<p>Create:</p>
+<pre><code class="language-sh">gh repo create project \
+    --private \
+    --source=. \
+    --remote=origin \
+    --push
+</code></pre>
+<h1>28. New LaTeX repository</h1>
+<pre><code class="language-sh">mkdir ~/src/paper
+cd ~/src/paper
+
+touch main.tex
+touch references.bib
+mkdir figures
+
+git init
+</code></pre>
+<p>Explicitly stage:</p>
+<pre><code class="language-sh">git add main.tex
+git add references.bib
+git add figures
+</code></pre>
+<p>Never automatically:</p>
+<pre><code class="language-sh">git add .
+</code></pre>
+<p>Inspect:</p>
+<pre><code class="language-sh">git status
+git diff --cached
+</code></pre>
+<h1>29. Restore after wipe</h1>
+<pre><code class="language-sh">mkdir -p \
+    ~/src \
+    ~/data \
+    ~/archive \
+    ~/tmp \
+    ~/.config \
+    ~/.secrets \
+    ~/.ssh
+</code></pre>
+<pre><code class="language-sh">chmod 700 ~/.secrets ~/.ssh
+</code></pre>
+<p>Install Homebrew and core packages.</p>
+<p>Authenticate:</p>
+<pre><code class="language-sh">gh auth login
+</code></pre>
+<p>Recreate SSH identity:</p>
+<pre><code class="language-sh">ssh-keygen -t ed25519 -C &quot;YOUR_EMAIL&quot;
+eval &quot;$(ssh-agent -s)&quot;
+ssh-add ~/.ssh/id_ed25519
+
+gh ssh-key add ~/.ssh/id_ed25519.pub \
+    --title &quot;MacBook&quot;
+</code></pre>
+<p>Clone configuration:</p>
+<pre><code class="language-sh">cd ~/src
+
+gh repo clone USER/configuration
+
+cd configuration
+./install.sh
+</code></pre>
+<p>Restart shell:</p>
+<pre><code class="language-sh">exec zsh
+</code></pre>
+<p>Restore secrets from encrypted offline media:</p>
+<pre><code class="language-sh">rsync -a /Volumes/SECRETS/secrets/ ~/.secrets/
+chmod 700 ~/.secrets
+chmod 600 ~/.secrets/*
+</code></pre>
+<p>Clone projects:</p>
+<pre><code class="language-sh">cd ~/src
+gh repo clone USER/PROJECT
+</code></pre>
+<p>Restore project:</p>
+<pre><code class="language-sh">cd ~/src/PROJECT
+mise install
+uv sync
+</code></pre>
+<h1>30. Verification</h1>
+<pre><code class="language-sh">brew doctor
+
+gh auth status
+
+ssh -T git@github.com
+
+mise doctor
+
+python --version
+uv --version
+ruff --version
+pyright --version
+
+node --version
+npm --version
+
+nvim --version
+texlab --version
+
+jq --version
+rg --version
+fzf --version
+pandoc --version
+
+code --version
+codex --version
+
+openclaw --version
+openclaw doctor
+
+ollama --version
+
+pdflatex --version
+latexmk --version
+chktex --version
+</code></pre>
+<p>Neovim:</p>
+<pre><code class="language-sh">nvim
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-vim">:checkhealth
+</code></pre>
+<h1>31. Quarterly expiry</h1>
+<pre><code class="language-sh">brew update
+brew outdated
+mise outdated
+uv tool upgrade --all
+</code></pre>
+<p>Review:</p>
+<pre><code class="language-text">unused software
+unused runtimes
+inactive ~/src clones
+~/data
+~/archive
+~/.secrets permissions
+offline secrets backup
+SSH access
+GitHub access
+2FA recovery
+OpenClaw
+Codex
+qBittorrent plugins
+domain/email
+Time Machine
+</code></pre>
+<p>Verify permissions:</p>
+<pre><code class="language-sh">ls -ld ~/.secrets ~/.ssh
+ls -l ~/.secrets
+ls -l ~/.ssh
+</code></pre>
+<p>Test clean clone:</p>
+<pre><code class="language-sh">cd ~/tmp
+
+gh repo clone USER/PROJECT project-test
+
+cd project-test
+mise install
+uv sync
+</code></pre>
+<p>Test:</p>
+<pre><code class="language-sh">uv run pytest
+ruff check .
+pyright
+</code></pre>
+<p>Delete:</p>
+<pre><code class="language-sh">rm -rf ~/tmp/project-test
+</code></pre>
+<p>Update:</p>
+<pre><code class="language-yaml">date: &quot;YYYY-MM-DD&quot;
+expires: &quot;YYYY-MM-DD&quot;
+</code></pre>
+<h1>32. Annual wipe</h1>
+<pre><code class="language-text">Next: 2027-09-13
+</code></pre>
+<p>Before wiping:</p>
+<pre><code class="language-text">all repositories pushed
+~/data backed up
+~/.secrets copied to encrypted offline storage
+SSH/server recovery paths known
+2FA recoverable
+GitHub recoverable
+domain/email recoverable
+configuration repo current
+</code></pre>
+<p>Then wipe and reconstruct only from this document.</p>
+<p>Anything needed from the destroyed installation is a bug in this procedure.</p></div></div>
 <script>
   window.MathJax = {
     tex: {

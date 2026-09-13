@@ -1,222 +1,274 @@
 ---
-
-title: "Macintosh Setup"
+title: "Macintosh"
 date: "2026-09-13"
-summary: "Minimal instructions for reconstructing my Macintosh."
-category: "Systems"
-tags: "macos, setup, homebrew, tooling"
-expires: "2026-12-13"
----------------------
+---
 
-1. macOS updates, light mode, networking, FileVault, Find My, Time Machine.
+# Macintosh
 
-2. `xcode-select --install`
+A small, terminal-first Mac setup.
 
-3. Visit [brew.sh](https://brew.sh).
-
-4. `brew install git gh vim uv jq ripgrep pandoc`
-
-5. `brew install --cask visual-studio-code firefox discord mactex`
-
-6. `gh auth login`
-
-7. `mkdir -p ~/src ~/data`
-
-8. `cd ~/src`
-
-9. `mkdir configuration && cd configuration`
-
-10. `touch .zshrc .gitconfig install.sh`
-
-11. `chmod +x install.sh`
-
-12. Add to `.zshrc`:
+## Install
 
 ```sh
-export EDITOR=vim
-eval "$(~/.local/bin/mise activate zsh)"
+xcode-select --install
 ```
-
-13. Add to `.gitconfig`:
-
-```ini
-[user]
-    name = Yu Jie Teo
-    email = YOUR_EMAIL
-
-[init]
-    defaultBranch = main
-
-[core]
-    editor = vim
-```
-
-14. Add to `install.sh`:
 
 ```sh
-#!/bin/sh
-set -e
-
-ln -sf ~/src/configuration/.zshrc ~/.zshrc
-ln -sf ~/src/configuration/.gitconfig ~/.gitconfig
-
-[ -f ~/src/configuration/.vimrc ] && \
-    ln -sf ~/src/configuration/.vimrc ~/.vimrc
-
-mkdir -p ~/.config
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-15. Create configuration repository:
-
-```sh
-git init
-git add .
-git commit -m "Initial Macintosh configuration"
-gh repo create configuration --private --source=. --remote=origin --push
-```
-
-16. Install mise:
-
-```sh
-curl https://mise.run | sh
-```
-
-17. `source ~/.zshrc`
-
-18. `mise doctor`
-
-19. Install Node:
-
-```sh
-mise use --global node@24
-```
-
-20. Install Codex CLI:
-
-```sh
-npm install -g @openai/codex
-```
-
-21. `codex --login`
-
-22. Install OpenClaw:
-
-```sh
-curl -fsSL https://openclaw.ai/install.sh | bash
-```
-
-23. Install Ollama:
-
-```sh
-brew install --cask ollama-app
-```
-
-24. Install qBittorrent from [qbittorrent.org](https://www.qbittorrent.org/).
-
-25. Enable qBittorrent search engine and install required search plugins.
-
-26. Clone repositories into `~/src`:
-
-```sh
-cd ~/src
-gh repo clone USER/REPO
-```
-
-27. Project runtimes go in `mise.toml`:
-
-```toml
-[tools]
-node = "24"
-python = "3.13"
-```
-
-28. Inside each repository:
-
-```sh
-mise install
-```
-
-29. Python repositories:
-
-```sh
-uv sync
-```
-
-30. Secrets: keep API keys, tokens, recovery codes and credentials in a password manager. Never commit `.env`.
-
-31. Commit `.env.example` only:
-
-```text
-OPENAI_API_KEY=
-DISCORD_TOKEN=
-DATABASE_URL=
-```
-
-32. Add to `.gitignore`:
-
-```gitignore
-.env
-.env.*
-!.env.example
-```
-
-33. Optional Vim configuration:
-
-```sh
-cd ~/src/configuration
-touch .vimrc
-```
-
-34. Example `.vimrc`:
-
-```vim
-set number
-set expandtab
-set shiftwidth=4
-set tabstop=4
-```
-
-35. Rebuild dotfiles after a wipe:
-
-```sh
-mkdir -p ~/src ~/data
-cd ~/src
-gh repo clone USER/configuration
-cd configuration
-./install.sh
-```
-
-36. Verify:
-
-```sh
-brew doctor
-gh auth status
-mise doctor
-git --version
-uv --version
-jq --version
-rg --version
-pandoc --version
-node --version
-codex --version
-openclaw --version
-ollama --version
-pdflatex --version
-```
-
-37. Every 90 days:
+Restart the shell, then:
 
 ```sh
 brew update
-brew outdated
-mise outdated
+brew install git gh tmux vim ripgrep fzf jq
+brew install anomalyco/tap/opencode
+brew install --cask firefox
 ```
 
-38. Update:
+## Directories
 
-```yaml
-date: "YYYY-MM-DD"
-expires: "YYYY-MM-DD"
+Geohot publishes flat home dotfiles, not a canonical project tree. Use:
+
+```sh
+mkdir -p "$HOME/src" "$HOME/data" "$HOME/tmp" "$HOME/.ssh"
+chmod 700 "$HOME/data" "$HOME/.ssh"
 ```
 
-39. Full clean rebuild approximately once per year.
+```text
+~/src   Git repositories
+~/data  valuable non-Git files
+~/tmp   disposable work
+```
+
+## Create the configuration files
+
+These commands replace the named configuration files.
+
+```sh
+touch "$HOME/.zshrc"
+touch "$HOME/.vimrc"
+touch "$HOME/.tmux.conf"
+touch "$HOME/.gitconfig"
+touch "$HOME/.gitignore_global"
+touch "$HOME/.ssh/config"
+```
+
+### zsh
+
+```sh
+tee "$HOME/.zshrc" >/dev/null <<'EOF'
+export CLICOLOR=1
+export EDITOR=vim
+export VISUAL=vim
+export PS1=$'%n@%m:\e[0;36m%~\e[0m$ '
+EOF
+```
+
+```sh
+source "$HOME/.zshrc"
+```
+
+### Vim
+
+```sh
+tee "$HOME/.vimrc" >/dev/null <<'EOF'
+syntax on
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set ai
+set number
+set hlsearch
+set ruler
+highlight Comment ctermfg=green
+EOF
+```
+
+```sh
+vim "$HOME/.vimrc"
+```
+
+### tmux
+
+```sh
+tee "$HOME/.tmux.conf" >/dev/null <<'EOF'
+unbind C-b
+set -g prefix `
+bind-key ` last-window
+bind-key e send-prefix
+
+set -g status-position bottom
+set -g status-bg colour234
+set -g status-fg colour137
+set -g status-left ''
+set -g status-right '#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=colour245,bold] %H:%M:%S '
+set -g status-right-length 50
+set -g status-left-length 20
+setw -g mode-keys vi
+
+setw -g window-status-current-format ' #I#[fg=colour250]:#[fg=colour255]#W#[fg=colour50]#F '
+setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+
+set-option -g history-limit 5000
+set -g extended-keys on
+EOF
+```
+
+```sh
+tmux new-session -s main
+```
+
+Inside tmux, reload later with:
+
+```sh
+tmux source-file "$HOME/.tmux.conf"
+```
+
+## Git
+
+Replace the email before running:
+
+```sh
+git config --global user.name "Teo Yu Jie"
+git config --global user.email "YOUR_GITHUB_EMAIL"
+git config --global init.defaultBranch main
+git config --global core.editor vim
+git config --global pull.ff only
+git config --global core.excludesFile "$HOME/.gitignore_global"
+```
+
+```sh
+tee "$HOME/.gitignore_global" >/dev/null <<'EOF'
+.DS_Store
+.env
+.env.*
+!.env.example
+EOF
+```
+
+```sh
+git config --global --list
+```
+
+## SSH and GitHub
+
+```sh
+chmod 700 "$HOME/.ssh"
+ssh-keygen -t ed25519 -a 100 -C "$(git config --global user.email)"
+```
+
+Accept the default path, `~/.ssh/id_ed25519`, and enter a passphrase.
+
+```sh
+tee "$HOME/.ssh/config" >/dev/null <<'EOF'
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes
+  AddKeysToAgent yes
+EOF
+```
+
+```sh
+chmod 600 "$HOME/.ssh/config" "$HOME/.ssh/id_ed25519"
+chmod 644 "$HOME/.ssh/id_ed25519.pub"
+eval "$(ssh-agent -s)"
+ssh-add "$HOME/.ssh/id_ed25519"
+```
+
+```sh
+gh auth login --hostname github.com --git-protocol ssh --web
+gh auth setup-git
+gh auth status
+ssh -T git@github.com
+```
+
+Clone only the current project:
+
+```sh
+cd "$HOME/src"
+gh repo clone USER/REPOSITORY
+cd REPOSITORY
+```
+
+## Project `.env`
+
+Run inside a project:
+
+```sh
+cd "$HOME/src/REPOSITORY"
+touch .env .env.example .gitignore
+chmod 600 .env
+```
+
+```sh
+tee -a .gitignore >/dev/null <<'EOF'
+.env
+.env.*
+!.env.example
+EOF
+```
+
+Put names only in the committed template:
+
+```sh
+tee .env.example >/dev/null <<'EOF'
+OPENAI_API_KEY=
+DATABASE_URL=
+EOF
+```
+
+Create the private local copy:
+
+```sh
+cp .env.example .env
+vim .env
+```
+
+Verify before committing:
+
+```sh
+git check-ignore -v .env
+git add .gitignore .env.example
+git status --short
+```
+
+For a trusted shell-compatible `.env`:
+
+```sh
+set -a
+. ./.env
+set +a
+```
+
+Never put secrets in `~/.zshrc`, `.env.example`, Git, or shell commands.
+OpenCode credentials should instead be configured interactively:
+
+```sh
+opencode auth login
+opencode auth list
+```
+
+## Work
+
+```sh
+cd "$HOME/src/REPOSITORY"
+tmux new-session -A -s work
+vim .
+opencode
+```
+
+Install project compilers, runtimes, linters and TeX tools only when that
+project requires them.
+
+## Check
+
+```sh
+command -v git gh tmux vim rg fzf jq opencode
+git config --global --list
+gh auth status
+ssh -T git@github.com
+firefox --version 2>/dev/null || open -a Firefox
+```
