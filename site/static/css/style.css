@@ -1,49 +1,32 @@
-/* Atkinson Hyperlegible (proportional) + Atkinson Hyperlegible Mono:
-   both free typefaces purpose-built by the Braille Institute for
-   readers with low vision and dyslexia (distinct letterforms,
-   generous counters/spacing). The proportional cut is now the site's
-   default typeface for prose and headings -- genuinely sans-serif,
-   but with the same evenness and disambiguated glyphs (1/l/I, 0/O)
-   that made the mono cut nice to read. The mono cut is kept only for
-   spots that want truly fixed-width digits (tag counts, pagers,
-   result counts), with plain system fallback chains for both if the
-   web fonts fail to load. */
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* OpenAI-inspired design system. Inter closely matches the clear,
+   neutral proportions of OpenAI's product typography while retaining
+   reliable system-font fallbacks. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Light theme (default). Warm off-white rather than pure white, and
-     ink rather than pure black -- lower glare, easier for sustained
-     reading, which is the actual goal ("friendly to learning"). */
-  --text: #1c1b18;
-  --text-secondary: #3f3d38;
-  --muted: #66635c;
-  --bg: #fbfaf6;
-  --bg-alt: #f0eee7;
-  --accent: #0a5fb4;
-  --accent-hover: #0b6fd1;
-  --accent-soft: rgba(10, 95, 180, 0.1);
-  --border: #d8d4c8;
-  --border-subtle: #e7e3d8;
-  --focus-ring: #0a5fb4;
-  --max-width: 780px;
+  --text: #212121;
+  --text-secondary: #424242;
+  --muted: #6f6f6f;
+  --bg: #ffffff;
+  --bg-alt: #f7f7f8;
+  --surface-hover: #ececec;
+  --accent: #212121;
+  --accent-hover: #000000;
+  --accent-soft: rgba(0, 0, 0, 0.06);
+  --border: #d9d9e3;
+  --border-subtle: #ececf1;
+  --focus-ring: #10a37f;
+  --max-width: 768px;
 
-  /* --sans is now the site's real body/heading face (proportional,
-     nearly-mono-but-not). --mono stays a true fixed-width face,
-     reserved for numeric/tabular UI bits that reference it directly
-     (.tag-count, .result-count, .pager-label). --serif is kept as an
-     alias so nothing else has to change if it's referenced elsewhere. */
-  --sans: "Atkinson Hyperlegible", "Seravek", "Noto Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --mono: "Atkinson Hyperlegible Mono", "Cascadia Mono", "JetBrains Mono", "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --serif: var(--sans);
-
-  /* Theme-aware helpers so nothing below has to hardcode a color that
-     would go wrong in dark mode: readable text to put on top of
-     --accent, a subtle hover wash, and a couple of scrim opacities. */
   --accent-contrast: #ffffff;
-  --hover-wash: #e9e6db;
+  --hover-wash: #ececec;
   --scrim-soft: rgba(0, 0, 0, 0.05);
   --scrim-softer: rgba(0, 0, 0, 0.03);
-  --panel-shadow: rgba(0, 0, 0, 0.16);
+  --panel-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+  color-scheme: light dark;
 }
 
 /* Dark theme: follows the visitor's OS/browser setting automatically,
@@ -51,25 +34,23 @@
    than pure white, to keep long reading comfortable in both modes. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #ece9e2;
-    --text-secondary: #c9c5ba;
-    --muted: #9c988c;
-    --bg: #15161a;
-    --bg-alt: #1e2025;
-    --accent: #6fb2f2;
-    --accent-hover: #8ac0f5;
-    --accent-soft: rgba(111, 178, 242, 0.14);
-    --border: #35373d;
-    --border-subtle: #26282e;
-    --focus-ring: #6fb2f2;
-
-    /* --accent is a light blue in dark mode, so pair it with dark text
-       instead of white to keep the "active" state readable. */
-    --accent-contrast: #0b1420;
-    --hover-wash: #282a30;
+    --text: #ececec;
+    --text-secondary: #cdcdcd;
+    --muted: #a0a0a0;
+    --bg: #212121;
+    --bg-alt: #2f2f2f;
+    --surface-hover: #3a3a3a;
+    --accent: #ececec;
+    --accent-hover: #ffffff;
+    --accent-soft: rgba(255, 255, 255, 0.08);
+    --border: #4a4a4a;
+    --border-subtle: #333333;
+    --focus-ring: #19c39a;
+    --accent-contrast: #212121;
+    --hover-wash: #3a3a3a;
     --scrim-soft: rgba(255, 255, 255, 0.06);
     --scrim-softer: rgba(255, 255, 255, 0.04);
-    --panel-shadow: rgba(0, 0, 0, 0.5);
+    --panel-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.22);
   }
 }
 
@@ -100,6 +81,11 @@ button {
   font: inherit;
   color: inherit;
   margin: 0;
+}
+
+button,
+input {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Utility: hide visually but keep available to screen readers. Used for
@@ -139,9 +125,9 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 summary:focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 html { 
@@ -152,56 +138,57 @@ html {
 
 body {
   margin: 0;
-  padding: 0 20px;
+  padding: 0 24px;
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-size: 17px;
-  line-height: 1.6;
-  letter-spacing: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: -0.011em;
 }
 
 .wrap {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 56px 0 96px;
+  padding: 64px 0 104px;
 }
 
 header.site-header {
-  margin-bottom: 40px;
-  padding-bottom: 24px;
+  margin-bottom: 48px;
+  padding-bottom: 28px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 header.site-header h1 {
   font-family: var(--sans);
-  font-size: 2.25rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 600;
-  margin: 0 0 6px;
-  letter-spacing: 0;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  letter-spacing: -0.035em;
   color: var(--text);
 }
 
 header.site-header .subtitle {
   color: var(--muted);
-  font-size: 1.05rem;
-  letter-spacing: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 nav.site-nav {
-  margin-top: 20px;
-  font-size: 0.88rem;
+  margin-top: 24px;
+  font-size: 0.875rem;
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 nav.site-nav a {
   color: var(--muted);
   text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 980px; /* Apple-style pill pills */
-  font-weight: 400;
-  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  padding: 7px 11px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 nav.site-nav a:hover {
@@ -210,17 +197,17 @@ nav.site-nav a:hover {
 }
 
 nav.site-nav a.active {
-  background: var(--text);
-  color: var(--bg);
+  background: var(--bg-alt);
+  color: var(--text);
 }
 
 h2.section-title {
   font-family: var(--sans);
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  letter-spacing: 0;
-  margin-top: 52px;
-  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+  margin-top: 48px;
+  margin-bottom: 16px;
   color: var(--text);
 }
 
@@ -229,7 +216,7 @@ h2.section-title:first-of-type {
 }
 
 .entry {
-  padding: 18px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -239,14 +226,14 @@ h2.section-title:first-of-type {
 
 .entry-title {
   font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: 0;
-  margin-bottom: 4px;
+  font-size: 1.0625rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 5px;
   color: var(--text);
 }
 
 .entry-meta {
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   color: var(--muted);
   margin-bottom: 6px;
 }
@@ -254,16 +241,16 @@ h2.section-title:first-of-type {
 .entry-date {
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--muted);
   margin-bottom: 4px;
 }
 
 .entry-abstract {
-  font-size: 0.94rem;
+  font-size: 0.9375rem;
   color: var(--text-secondary);
-  line-height: 1.55;
-  margin-bottom: 10px;
+  line-height: 1.6;
+  margin-bottom: 12px;
 }
 
 .tag {
@@ -271,27 +258,26 @@ h2.section-title:first-of-type {
   -webkit-appearance: none;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.78rem;
+  gap: 6px;
+  font-size: 0.8125rem;
   font-family: var(--sans);
   font-weight: 500;
   letter-spacing: 0;
-  color: var(--text-secondary);
+  color: var(--text);
   background: var(--bg-alt);
-  border: 1px solid transparent;
-  border-radius: 980px;
-  padding: 7px 12px;
-  /* Keep touch targets close to the 44px accessibility guideline even
-     though the label text itself is small. */
-  min-height: 36px;
-  margin: 2px 6px 2px 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 7px 10px;
+  min-height: 34px;
+  margin: 2px 5px 2px 0;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .tag:hover { 
-  background: var(--hover-wash); 
+  background: var(--surface-hover); 
   color: var(--text);
+  border-color: var(--border);
 }
 
 .tag.active,
@@ -303,8 +289,9 @@ h2.section-title:first-of-type {
 
 .tag.active .tag-count,
 .tag[aria-pressed="true"] .tag-count {
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.18);
+  color: var(--accent-contrast);
+  background: transparent;
+  opacity: 0.72;
 }
 
 /* Numeric count badge on each tag button. Tabular-nums + mono keeps
@@ -318,16 +305,16 @@ h2.section-title:first-of-type {
   font-weight: 600;
   color: var(--muted);
   background: var(--scrim-soft);
-  border-radius: 980px;
-  padding: 1px 6px;
+  border-radius: 5px;
+  padding: 1px 5px;
 }
 
 .search-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 /* Search box: bumped up from 0.95rem/10px-14px so it's comfortably
@@ -335,18 +322,18 @@ h2.section-title:first-of-type {
    doesn't get squeezed down by the "Filters" button and result count
    sharing the row on narrower screens. */
 .search-box {
-  flex: 1 1 240px;
-  min-width: 200px;
-  min-height: 48px;
+  flex: 1 1 260px;
+  min-width: 220px;
+  min-height: 44px;
   font-family: var(--sans);
-  font-size: 1.05rem;
-  padding: 12px 16px;
+  font-size: 0.9375rem;
+  padding: 10px 13px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: var(--scrim-softer);
+  background: var(--bg);
   color: var(--text);
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .search-box::placeholder {
@@ -354,9 +341,9 @@ h2.section-title:first-of-type {
 }
 
 .search-box:focus { 
-  border-color: var(--accent); 
+  border-color: var(--text); 
   background: var(--bg);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  box-shadow: 0 0 0 2px var(--accent-soft);
 }
 
 /* Search button: sits next to .search-box, same height/radius/font so
@@ -368,15 +355,15 @@ h2.section-title:first-of-type {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  min-height: 48px;
+  min-height: 44px;
   font-family: var(--sans);
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--accent-contrast);
   background: var(--accent);
   border: 1px solid var(--accent);
   border-radius: 10px;
-  padding: 12px 22px;
+  padding: 10px 16px;
   white-space: nowrap;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
@@ -387,7 +374,7 @@ h2.section-title:first-of-type {
 }
 
 .search-btn:active {
-  background: var(--accent);
+  transform: translateY(1px);
 }
 
 /* Filters toggle: matched to the search box's new larger size/font so
@@ -397,15 +384,15 @@ h2.section-title:first-of-type {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  min-height: 48px;
+  min-height: 44px;
   font-family: var(--sans);
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-secondary);
-  background: var(--bg-alt);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 12px 20px;
+  padding: 10px 14px;
   white-space: nowrap;
   transition: background 0.15s ease, color 0.15s ease;
 }
@@ -417,13 +404,13 @@ h2.section-title:first-of-type {
 
 .filters-toggle.open,
 .filters-toggle[aria-expanded="true"] {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
+  background: var(--bg-alt);
+  color: var(--text);
+  border-color: var(--border);
 }
 
 .result-count { 
-  font-size: 0.82rem; 
+  font-size: 0.75rem; 
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
   color: var(--muted); 
@@ -439,17 +426,17 @@ h2.section-title:first-of-type {
    300px-wide column. */
 .tag-panel {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 8px);
   left: 0;
-  width: min(92vw, 460px);
-  max-height: 420px;
+  width: min(92vw, 440px);
+  max-height: 400px;
   overflow-y: auto;
   box-sizing: border-box;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 12px;
-  box-shadow: 0 8px 24px var(--panel-shadow);
-  padding: 16px;
+  box-shadow: var(--panel-shadow);
+  padding: 12px;
   z-index: 50;
 }
 
@@ -459,30 +446,30 @@ h2.section-title:first-of-type {
 .tag-search-box {
   display: block;
   position: sticky;
-  top: -16px;
-  width: calc(100% + 32px);
+  top: -12px;
+  width: calc(100% + 24px);
   min-height: 44px;
   font-family: var(--sans);
-  font-size: 0.98rem;
-  padding: 10px 14px;
-  margin: -16px -16px 12px;
+  font-size: 0.875rem;
+  padding: 10px 12px;
+  margin: -12px -12px 12px;
   border: none;
   border-bottom: 1px solid var(--border-subtle);
   border-radius: 12px 12px 0 0;
-  background: var(--bg-alt);
+  background: var(--bg);
   color: var(--text);
   outline: none;
 }
 
 .tag-search-box:focus {
-  background: var(--accent-soft);
-  box-shadow: inset 0 -2px 0 var(--accent);
+  background: var(--bg);
+  box-shadow: inset 0 -2px 0 var(--focus-ring);
 }
 
 .tag-panel-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5em;
+  gap: 6px;
 }
 
 /* Tag buttons inside the panel: brought up close to the size of the
@@ -490,9 +477,9 @@ h2.section-title:first-of-type {
    the old 0.74rem/5px-10px/30px was noticeably smaller and harder to
    hit than every other clickable tag on the site. */
 .tag-panel .tag {
-  font-size: 0.85rem;
-  padding: 8px 14px;
-  min-height: 38px;
+  font-size: 0.8125rem;
+  padding: 7px 10px;
+  min-height: 34px;
 }
 
 /* Default (no-JS-yet / first paint) state: only the top tags are
@@ -516,7 +503,7 @@ h2.section-title:first-of-type {
 .no-results {
   color: var(--muted);
   font-size: 0.9rem;
-  padding: 32px 0;
+  padding: 40px 0;
   text-align: center;
   display: none;
 }
@@ -531,9 +518,9 @@ h2.section-title:first-of-type {
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-top: 24px;
-  padding-top: 20px;
+  gap: 10px;
+  margin-top: 28px;
+  padding-top: 24px;
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -541,33 +528,33 @@ h2.section-title:first-of-type {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  min-height: 38px;
-  min-width: 84px;
+  min-height: 36px;
+  min-width: 76px;
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
-  background: var(--bg-alt);
+  background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 980px;
-  padding: 8px 16px;
+  border-radius: 8px;
+  padding: 7px 12px;
   transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
 }
 
 .pager-btn:hover:not(:disabled) {
-  background: var(--hover-wash);
+  background: var(--bg-alt);
   color: var(--text);
 }
 
 .pager-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: default;
 }
 
 .pager-label {
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -579,57 +566,68 @@ h2.section-title:first-of-type {
 .post-meta {
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   color: var(--muted);
-  margin: -8px 0 28px;
+  margin: -6px 0 32px;
 }
 
 .post-body {
-  font-size: 1.02rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.75;
   color: var(--text-secondary);
 }
 
 .post-body h2 {
   font-family: var(--sans);
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
   color: var(--text);
-  margin-top: 40px;
-  margin-bottom: 14px;
+  margin-top: 44px;
+  margin-bottom: 16px;
 }
 
 .post-body h3 {
   font-family: var(--sans);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
   color: var(--text);
-  margin-top: 32px;
-  margin-bottom: 10px;
+  margin-top: 36px;
+  margin-bottom: 12px;
 }
 
 .post-body p {
-  margin: 0 0 20px;
+  margin: 0 0 1.25em;
 }
 
 .post-body ul,
 .post-body ol {
-  margin: 0 0 20px;
-  padding-left: 1.4em;
+  margin: 0 0 1.25em;
+  padding-left: 1.5em;
 }
 
 .post-body li {
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
 }
 
 .post-body a {
-  color: var(--accent);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--muted);
+  text-underline-offset: 3px;
+}
+
+.post-body a:hover {
+  text-decoration-color: var(--text);
 }
 
 .post-body blockquote {
-  margin: 24px 0;
-  padding: 4px 20px;
-  border-left: 3px solid var(--accent);
+  margin: 28px 0;
+  padding: 2px 0 2px 18px;
+  border-left: 3px solid var(--border);
   color: var(--text-secondary);
   font-style: italic;
 }
@@ -638,50 +636,57 @@ h2.section-title:first-of-type {
   font-family: var(--mono);
   font-size: 0.9em;
   background: var(--bg-alt);
-  padding: 2px 6px;
-  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  padding: 0.15em 0.35em;
+  border-radius: 5px;
 }
 
 .post-body pre {
   background: var(--bg-alt);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  line-height: 1.6;
   overflow-x: auto;
 }
 
 .post-body pre code {
   background: none;
+  border: 0;
   padding: 0;
 }
 
 .post-body img {
   max-width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 a { 
-  color: var(--accent); 
+  color: var(--text); 
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 footer.site-footer {
-  margin-top: 64px;
-  padding-top: 20px;
+  margin-top: 72px;
+  padding-top: 24px;
   border-top: 1px solid var(--border-subtle);
   font-size: 0.75rem;
   color: var(--muted);
 }
 
 @media (max-width: 480px) {
-  header.site-header h1 { font-size: 1.85rem; }
+  body { padding: 0 16px; }
+  .wrap { padding: 40px 0 72px; }
+  header.site-header { margin-bottom: 36px; }
+  header.site-header h1 { font-size: 2rem; }
   nav.site-nav { flex-wrap: wrap; }
   /* Still generous on mobile -- 94vw so it nearly fills the screen
      width rather than shrinking back down to a cramped fixed size. */
-  .tag-panel { width: min(94vw, 420px); }
+  .tag-panel { width: min(calc(100vw - 32px), 420px); }
   .search-btn { flex: 1 1 auto; }
 }
