@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <h1>Yu Jie Teo</h1>
+      <div class="subtitle">Personal website</div>
+      <nav class="site-nav">
+        <a href="index.html" class="">Home</a>
+        <a href="about.html" class="">About</a>
+        <a href="calendar.html" class="">Calendar</a>
+        <a href="blog.html" class="active">Blog</a>
+      </nav>
+    </header>
+    <main>
+      
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div id="main-content" tabindex="-1"><h2 class="section-title">Blog</h2>
+    <div class="search-row" id="blog-filters-wrap" style="position:relative;">
+      <label class="visually-hidden" for="blog-search">Search posts...</label>
+      <input type="text" id="blog-search" class="search-box" placeholder="Search posts..."
+             autocomplete="off">
+      <button type="button" id="blog-searchbtn" class="search-btn">Search</button>
+      <button type="button" id="blog-filters-toggle" class="filters-toggle"
+              aria-haspopup="true" aria-expanded="false" aria-controls="blog-tagbar">
+        Filters
+      </button>
+      <span class="result-count" id="blog-count" aria-live="polite" aria-atomic="true">1 entries</span>
+
+      <div id="blog-tagbar" class="tag-panel" role="group" aria-label="Filter by tag" style="display:none;">
+        <label class="visually-hidden" for="blog-tagsearch">Filter the tag list</label>
+        <input type="text" id="blog-tagsearch" class="tag-search-box"
+               placeholder="Find a tag..." autocomplete="off">
+        <div class="tag-panel-buttons"><button class="tag active" data-tag="__all__" type="button" aria-pressed="true">all <span class="tag-count">1</span></button><button class="tag" data-tag="General" type="button" aria-pressed="false">General <span class="tag-count">1</span></button></div>
+      </div>
+    </div>
+    <div id="blog-list"></div>
+    <div class="no-results" id="blog-noresults" role="status" aria-live="polite" style="display:none;">No posts match your search.</div>
+    <div class="pager" id="blog-pager" role="navigation" aria-label="Result pages" style="display:none;"></div>
+    <script>
+      window.__DATA__ = window.__DATA__ || {};
+      window.__DATA__['blog'] = [{"tags": "meta, general", "search": "hello, world the first post on this site — what to expect here. general 2026-09-13", "url": "blog/hello-world.html", "title": "Hello, world", "note": "The first post on this site — what to expect here.", "cat": "General", "date": "2026-09-13"}];
+    </script>
+    
+<script>
+(function() {
+  const searchBox = document.getElementById('blog-search');
+  const searchBtn = document.getElementById('blog-searchbtn');
+  const tagBar = document.getElementById('blog-tagbar');
+  const tagSearch = document.getElementById('blog-tagsearch');
+  const filtersToggle = document.getElementById('blog-filters-toggle');
+  const listEl = document.getElementById('blog-list');
+  const noResults = document.getElementById('blog-noresults');
+  const countLabel = document.getElementById('blog-count');
+  const pagerEl = document.getElementById('blog-pager');
+  const ROW_KIND = 'blog';
+  const DEFAULT_SHOW = true;
+
+  const DATA = window.__DATA__['blog'].map(function(d) {
+    d.tagsArr = d.tags ? d.tags.split(',').map(function(t){return t.trim();}).filter(Boolean) : [];
+    return d;
+  });
+  const total = DATA.length;
+  const PAGE_SIZE = 10;
+
+  let activeTag = '__all__';
+  let panelOpen = false;
+  let currentMatches = [];
+  let currentPage = 1;
+
+  function escHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c) {
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+  }
+
+  function rowHtml(d) {
+    const dateHtml = d.date ? '<div class="entry-date">' + escHtml(d.date) + '</div>' : '';
+    return '<div class="entry">'
+      + dateHtml
+      + '<div class="entry-title"><a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a></div>'
+      + '<div class="entry-abstract">' + escHtml(d.note) + '</div>'
+      + '<div><span class="tag" data-tag="' + escHtml(d.cat) + '">' + escHtml(d.cat) + '</span></div>'
+      + '</div>';
+  }
+
+  function runSearch() {
+    const q = searchBox.value.trim().toLowerCase();
+    currentMatches = [];
+    for (let i = 0; i < DATA.length; i++) {
+      const d = DATA[i];
+      const matchesTag = activeTag === '__all__' || d.tagsArr.includes(activeTag);
+      const matchesSearch = q === '' || d.search.includes(q);
+      if (matchesTag && matchesSearch) currentMatches.push(d);
+    }
+    currentPage = 1;
+    renderPage();
+  }
+
+  function renderPage() {
+    const hasEntryFilter = DEFAULT_SHOW || searchBox.value.trim() !== '' || activeTag !== '__all__';
+    const matchCount = currentMatches.length;
+    const pageCount = Math.max(1, Math.ceil(matchCount / PAGE_SIZE));
+    if (currentPage > pageCount) currentPage = pageCount;
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const pageItems = currentMatches.slice(start, start + PAGE_SIZE);
+
+    listEl.innerHTML = hasEntryFilter ? pageItems.map(rowHtml).join('') : '';
+    document.dispatchEvent(new CustomEvent('entries-rendered', { detail: { target: listEl } }));
+
+    noResults.style.display = (hasEntryFilter && matchCount === 0) ? 'block' : 'none';
+
+    if (!hasEntryFilter) {
+      countLabel.textContent = 'Search to show entries';
+    } else {
+      const shownEnd = Math.min(start + PAGE_SIZE, matchCount);
+      countLabel.textContent = matchCount === 0
+        ? '0 matches'
+        : (start + 1) + '-' + shownEnd + ' / ' + matchCount + ' matches';
+    }
+
+    renderPager(hasEntryFilter, pageCount);
+  }
+
+  function renderPager(hasEntryFilter, pageCount) {
+    if (!hasEntryFilter || pageCount <= 1) {
+      pagerEl.innerHTML = '';
+      pagerEl.style.display = 'none';
+      return;
+    }
+    pagerEl.style.display = 'flex';
+    pagerEl.innerHTML =
+      '<button type="button" class="pager-btn" data-dir="prev"' + (currentPage <= 1 ? ' disabled' : '') + '>Prev</button>'
+      + '<span class="pager-label">Page ' + currentPage + ' / ' + pageCount + '</span>'
+      + '<button type="button" class="pager-btn" data-dir="next"' + (currentPage >= pageCount ? ' disabled' : '') + '>Next</button>';
+  }
+
+  pagerEl.addEventListener('click', function(e) {
+    const btn = e.target.closest('button.pager-btn');
+    if (!btn || btn.disabled) return;
+    currentPage += (btn.dataset.dir === 'next' ? 1 : -1);
+    renderPage();
+    listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  function setActiveTag(tag) {
+    activeTag = tag;
+    tagBar.querySelectorAll('button.tag').forEach(function(b) {
+      const isActive = b.dataset.tag === tag;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+    runSearch();
+  }
+
+  function filterTagButtons() {
+    if (!tagSearch) return;
+    const q = tagSearch.value.trim().toLowerCase();
+    tagBar.querySelectorAll('button.tag[data-tag]').forEach(function(b) {
+      if (b.dataset.tag === '__all__') return;
+      const label = (b.textContent || '').toLowerCase();
+      if (q === '') {
+        b.style.display = b.classList.contains('tag-extra') ? 'none' : '';
+      } else {
+        b.style.display = label.includes(q) ? '' : 'none';
+      }
+    });
+    const hint = tagBar.querySelector('.tag-more-hint');
+    if (hint) hint.style.display = q === '' ? '' : 'none';
+  }
+
+  function togglePanel(forceOpen) {
+    panelOpen = typeof forceOpen === 'boolean' ? forceOpen : !panelOpen;
+    tagBar.style.display = panelOpen ? 'block' : 'none';
+    filtersToggle.classList.toggle('open', panelOpen);
+    filtersToggle.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
+    if (panelOpen) {
+      const focusTarget = tagSearch || tagBar.querySelector('button.tag');
+      if (focusTarget) focusTarget.focus();
+    }
+  }
+
+  searchBtn.addEventListener('click', runSearch);
+  searchBox.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') runSearch();
+  });
+
+  if (tagSearch) {
+    tagSearch.addEventListener('input', filterTagButtons);
+  }
+
+  filtersToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    togglePanel();
+  });
+
+  document.addEventListener('click', function(e) {
+    if (panelOpen && !tagBar.contains(e.target) && e.target !== filtersToggle) {
+      togglePanel(false);
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && panelOpen) {
+      togglePanel(false);
+      filtersToggle.focus();
+    }
+  });
+
+  tagBar.addEventListener('click', function(e) {
+    const btn = e.target.closest('button.tag');
+    if (!btn) return;
+    setActiveTag(btn.dataset.tag);
+    togglePanel(false);
+    filtersToggle.focus();
+  });
+
+  listEl.addEventListener('click', function(e) {
+    const chip = e.target.closest('.entry .tag[data-tag]');
+    if (!chip) return;
+    setActiveTag(chip.dataset.tag);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  runSearch();
+  filterTagButtons();
+})();
+</script>
+
+    </div>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
+    },
+    svg: { fontCache: 'global', scale: 1.06 }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+</script>
+<style>
+  mjx-container { color: inherit; }
+  mjx-container[display="true"] { margin: 1em 0 !important; }
+</style>
+<script>
+  document.addEventListener('entries-rendered', function (e) {
+    if (!(window.MathJax && window.MathJax.typesetPromise)) return;
+    const target = e && e.detail && e.detail.target;
+    if (window.MathJax.typesetClear) {
+      window.MathJax.typesetClear(target ? [target] : undefined);
+    }
+    window.MathJax.typesetPromise(target ? [target] : undefined);
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  });
+</script>
+
+    </main>
+    <footer class="site-footer">
+      Made with the assistance of AI.
+    </footer>
+  </div>
+</body>
+</html>

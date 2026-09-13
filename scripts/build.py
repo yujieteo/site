@@ -1,36 +1,52 @@
 #!/usr/bin/env python3
-"""Render YAML data files into a static site: a home page of resources
-and a papers page, both with live search and tag/category filtering.
+"""Render YAML/Markdown data files into a static site: Home (resources),
+About, Calendar, and a Blog (posts written as Markdown files).
 
-BUGFIX (this version): render_filterable_list()'s returned HTML was
-missing the <button id="...-searchbtn"> and <div id="...-pager">
-elements entirely, even though FILTER_SCRIPT looks both up via
-getElementById() and immediately calls .addEventListener() on them.
-With those elements absent, both lookups returned null, and calling
-.addEventListener() on null threw -- which killed the whole IIFE
-before any listeners (search, tag clicks, filters toggle, everything)
-got attached. That's why nothing was showing up or working. Both
-elements are now actually emitted in render_filterable_list()'s HTML.
+CHANGES IN THIS VERSION
+------------------------
+- Removed the Papers page entirely (build_papers, nav_papers, paper-links
+  loading are all gone).
+- Added an About page, rendered from a single `data/about/about.yaml`
+  file. It supports a Markdown `intro` plus an optional list of
+  `sections`, each with its own `title`/`content` (also Markdown).
+- Added a Calendar page, built the same way your existing pages are:
+  drop YAML files into `data/calendar/` (a list of events per file,
+  same shape as `data/resources/`) and they get loaded, sorted by
+  date, and rendered through the same filterable-list UI.
+- Added a Blog, built from Markdown files in `data/blog/*.md`. Each
+  file starts with a YAML frontmatter block (between `---` lines) for
+  metadata, followed by the post body in Markdown:
 
-PERF FIX (previous version): search no longer runs on every keystroke.
-Typing just edits the text box; nothing is scanned or rendered until
-the user presses the Search button (or hits Enter). Results are also
-now paginated at 10 entries per page instead of rendering everything
-that matches at once. Still a fully static site -- there's no server,
-no database, no network request involved; "search" here just means
-"run the filter over the JSON already sitting in the page and render
-page 1 of the matches."
+      ---
+      title: The ripple effect
+      date: 2026-09-10
+      summary: How a distant conflict shows up in your kopi price.
+      category: Economy
+      tags: economy, middle east, inflation
+      ---
+      Your post body goes here, in **Markdown**...
 
-Kept from the previous perf pass:
-  - tags are split into a `tagsArr` array once when DATA loads,
-    instead of re-splitting the same comma string on every filter run.
-  - MathJax.typesetPromise() is scoped to just the list element that
-    changed (via the event's `detail.target`), not the whole document.
+  `build.py` converts the body to HTML with the `markdown` package
+  (install with `pip install markdown --break-system-packages`),
+  writes one page per post to `site/blog/<slug>.html`, and writes a
+  browsable index to `site/blog.html` using the same search/tag/pager
+  UI as the resources list.
+- The filterable-list UI (FILTER_SCRIPT) now takes a `default_show`
+  flag. Resources keep the old "search to show entries" behavior
+  (useful when that list is long and this is a quick lookup); the
+  Calendar and Blog default to showing everything immediately, since
+  those are meant to be browsed. Row rendering now also shows a date
+  when the entry has one (blog posts, calendar events).
 
-Everything else (YAML at build time -> one JSON blob embedded per
-page -> client renders only what's visible, tag panel UI, a11y
-behavior, base.html) is unchanged -- that part of the architecture was
-already the right shape and isn't the source of the lag.
+NOTE ON templates/base.html
+----------------------------
+This script fills in `{nav_home}`, `{nav_about}`, `{nav_calendar}`,
+`{nav_blog}` placeholders (each becomes the string "active" on the
+current page, "" elsewhere). Your base.html previously referenced
+`{nav_papers}` -- swap that out for the three new placeholders in the
+nav markup, or the missing-key defaultdict will just render them as
+empty strings and nothing will be marked active/wrong, but the links
+themselves need to exist in the template's <nav> block.
 """
 
 import html
@@ -40,10 +56,24 @@ from collections import Counter, defaultdict
 
 import yaml
 
+try:
+    import markdown as _markdown
+except ImportError:  # pragma: no cover
+    _markdown = None
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 TEMPLATES = os.path.join(ROOT, "templates")
 OUT = os.path.join(ROOT, "site")
+
+
+def render_markdown(text):
+    if _markdown is None:
+        raise RuntimeError(
+            "The 'markdown' package is required for About/Blog content. "
+            "Install it with: pip install markdown --break-system-packages"
+        )
+    return _markdown.markdown(text or "", extensions=["extra", "sane_lists"])
 
 
 def esc(value):
@@ -113,9 +143,10 @@ FILTER_SCRIPT = """
   const countLabel = document.getElementById('{count_id}');
   const pagerEl = document.getElementById('{pager_id}');
   const ROW_KIND = '{row_kind}';
+  const DEFAULT_SHOW = {default_show};
 
   const DATA = window.__DATA__['{data_key}'].map(function(d) {{
-    d.tagsArr = d.tags ? d.tags.split(',').filter(Boolean) : [];
+    d.tagsArr = d.tags ? d.tags.split(',').map(function(t){{return t.trim();}}).filter(Boolean) : [];
     return d;
   }});
   const total = DATA.length;
@@ -133,7 +164,9 @@ FILTER_SCRIPT = """
   }}
 
   function rowHtml(d) {{
+    const dateHtml = d.date ? '<div class="entry-date">' + escHtml(d.date) + '</div>' : '';
     return '<div class="entry">'
+      + dateHtml
       + '<div class="entry-title"><a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a></div>'
       + '<div class="entry-abstract">' + escHtml(d.note) + '</div>'
       + '<div><span class="tag" data-tag="' + escHtml(d.cat) + '">' + escHtml(d.cat) + '</span></div>'
@@ -154,7 +187,7 @@ FILTER_SCRIPT = """
   }}
 
   function renderPage() {{
-    const hasEntryFilter = searchBox.value.trim() !== '' || activeTag !== '__all__';
+    const hasEntryFilter = DEFAULT_SHOW || searchBox.value.trim() !== '' || activeTag !== '__all__';
     const matchCount = currentMatches.length;
     const pageCount = Math.max(1, Math.ceil(matchCount / PAGE_SIZE));
     if (currentPage > pageCount) currentPage = pageCount;
@@ -306,7 +339,54 @@ def load_all(subdir):
     return items
 
 
-def render_page(title, content, root="", tagline="", name="", nav_home="", nav_papers=""):
+def parse_frontmatter(raw_text):
+    """Split a Markdown file into (metadata_dict, body_markdown).
+    Expects a leading `---` / YAML block / `---` frontmatter section.
+    If there's no frontmatter, returns ({}, raw_text) unchanged.
+    """
+    if raw_text.startswith("---"):
+        parts = raw_text.split("---", 2)
+        if len(parts) >= 3:
+            meta = yaml.safe_load(parts[1]) or {}
+            body = parts[2].lstrip("\n")
+            return meta, body
+    return {}, raw_text
+
+
+def load_blog_posts():
+    dirpath = os.path.join(DATA, "blog")
+    if not os.path.isdir(dirpath):
+        return []
+    posts = []
+    for fname in sorted(os.listdir(dirpath)):
+        if not fname.endswith(".md"):
+            continue
+        with open(os.path.join(dirpath, fname), encoding="utf-8") as f:
+            raw = f.read()
+        meta, body = parse_frontmatter(raw)
+        slug = meta.get("slug") or os.path.splitext(fname)[0]
+        category = meta.get("category", "General")
+        posts.append({
+            "slug": slug,
+            "title": meta.get("title", slug),
+            "date": str(meta.get("date", "")),
+            "summary": meta.get("summary", ""),
+            "category": category,
+            "tags": meta.get("tags", category),
+            "body_html": render_markdown(body),
+        })
+    # Newest first.
+    posts.sort(key=lambda p: p["date"], reverse=True)
+    return posts
+
+
+def nav_fields(active):
+    """Returns e.g. {'nav_home': 'active', 'nav_about': '', ...}"""
+    keys = ["home", "about", "calendar", "blog"]
+    return {f"nav_{k}": ("active" if k == active else "") for k in keys}
+
+
+def render_page(title, content, root="", tagline="", name="", **nav):
     with open(os.path.join(TEMPLATES, "base.html")) as f:
         base = f.read()
     full_content = (
@@ -317,7 +397,7 @@ def render_page(title, content, root="", tagline="", name="", nav_home="", nav_p
     fields = defaultdict(str, {
         "title": esc(title), "content": full_content, "root": root,
         "tagline": esc(tagline), "name": esc(name),
-        "nav_home": nav_home, "nav_papers": nav_papers,
+        **nav,
     })
     return base.format_map(fields)
 
@@ -344,7 +424,7 @@ def render_tag_bar(sorted_tags, all_label="all", total=None, show_first=8):
 
 
 def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
-                            empty_message, total, row_kind):
+                            empty_message, total, row_kind, default_show=False):
     search_id = f"{id_prefix}-search"
     searchbtn_id = f"{id_prefix}-searchbtn"
     tagbar_id = f"{id_prefix}-tagbar"
@@ -362,16 +442,13 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
         tagsearch_id=tagsearch_id, list_id=list_id, noresults_id=noresults_id,
         count_id=count_id, toggle_id=toggle_id, pager_id=pager_id,
         data_key=data_key, row_kind=row_kind,
+        default_show=("true" if default_show else "false"),
     )
 
     data_json = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 
-    # FIX: the search button (id={searchbtn_id}) and the pager div
-    # (id={pager_id}) are now actually present here -- previously
-    # FILTER_SCRIPT referenced both ids via getElementById() but
-    # neither element existed in this returned HTML, so both lookups
-    # were null and the .addEventListener() calls on them threw,
-    # aborting the whole script before any handlers were attached.
+    initial_count_label = "Search to show entries" if not default_show else f"{total} entries"
+
     return f"""
     <div class="search-row" id="{wrap_id}" style="position:relative;">
       <label class="visually-hidden" for="{search_id}">{esc(search_placeholder)}</label>
@@ -382,7 +459,7 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
               aria-haspopup="true" aria-expanded="false" aria-controls="{tagbar_id}">
         Filters
       </button>
-      <span class="result-count" id="{count_id}" aria-live="polite" aria-atomic="true">Search to show entries</span>
+      <span class="result-count" id="{count_id}" aria-live="polite" aria-atomic="true">{esc(initial_count_label)}</span>
 
       <div id="{tagbar_id}" class="tag-panel" role="group" aria-label="Filter by tag" style="display:none;">
         <label class="visually-hidden" for="{tagsearch_id}">Filter the tag list</label>
@@ -402,7 +479,11 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
     """
 
 
-def render_link_list(entries, id_prefix, search_placeholder, empty_message):
+def render_entry_list(entries, id_prefix, search_placeholder, empty_message, default_show=False):
+    """Generic filterable list. Each entry dict needs: category, title,
+    note, url. Optional: date, tags (comma string; defaults to category).
+    Used for Resources, Calendar, and the Blog index.
+    """
     counts = Counter(e["category"] for e in entries)
     sorted_cats = [c for c, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))]
     tag_bar_html = render_tag_bar(
@@ -412,63 +493,148 @@ def render_link_list(entries, id_prefix, search_placeholder, empty_message):
     data = []
     for e in entries:
         cat = e["category"]
-        searchable = " ".join([e.get("title", ""), e.get("note", ""), cat]).lower()
+        tags = e.get("tags", cat)
+        date = e.get("date", "")
+        searchable = " ".join([e.get("title", ""), e.get("note", ""), cat, str(date)]).lower()
         data.append({
-            "tags": cat,
+            "tags": tags,
             "search": searchable,
             "url": e["url"],
             "title": e.get("title", ""),
             "note": e.get("note", ""),
             "cat": cat,
+            "date": date,
         })
 
     return render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
-                                   empty_message, len(entries), row_kind="link")
+                                   empty_message, len(entries), row_kind=id_prefix,
+                                   default_show=default_show)
 
 
 def build_index(cv, resources):
-    body = render_link_list(
-        resources, "resource",
+    entries = [{
+        "category": e["category"],
+        "title": e.get("title", ""),
+        "note": e.get("note", ""),
+        "url": e["url"],
+    } for e in resources]
+    body = render_entry_list(
+        entries, "resource",
         "Search title or note...",
         "No resources match your search.",
+        default_show=False,
     )
     content = f"<p>{esc(cv.get('bio', ''))}</p>{body}"
     return render_page(
         cv.get("name", "Home"), content,
         name=cv.get("name", ""), tagline=cv.get("title", ""),
-        nav_home="active", nav_papers="",
+        **nav_fields("home"),
     )
 
 
-def build_papers(cv, papers):
-    body = render_link_list(
-        papers, "paper",
-        "Search title or note...",
-        "No papers match your search.",
-    )
-    content = f'<h2 class="section-title">Papers</h2>{body}'
+def build_about(cv, about):
+    intro_html = render_markdown(about.get("intro", ""))
+    sections_html = ""
+    for sec in about.get("sections", []):
+        sections_html += (
+            f'<h2 class="section-title">{esc(sec.get("title", ""))}</h2>'
+            f'{render_markdown(sec.get("content", ""))}'
+        )
+    content = f'<h1>{esc(cv.get("name", ""))}</h1>{intro_html}{sections_html}'
     return render_page(
-        "Papers", content,
+        "About", content,
         name=cv.get("name", ""), tagline=cv.get("title", ""),
-        nav_home="", nav_papers="active",
+        **nav_fields("about"),
+    )
+
+
+def build_calendar(cv, events):
+    entries = [{
+        "category": e.get("category", "Event"),
+        "tags": e.get("tags", e.get("category", "Event")),
+        "title": e.get("title", ""),
+        "note": e.get("note", e.get("location", "")),
+        "url": e.get("url", "#"),
+        "date": str(e.get("date", "")),
+    } for e in events]
+    entries.sort(key=lambda e: e["date"])
+    body = render_entry_list(
+        entries, "calendar",
+        "Search events...",
+        "No events match your search.",
+        default_show=True,
+    )
+    content = f'<h2 class="section-title">Calendar</h2>{body}'
+    return render_page(
+        "Calendar", content,
+        name=cv.get("name", ""), tagline=cv.get("title", ""),
+        **nav_fields("calendar"),
+    )
+
+
+def build_blog_index(cv, posts):
+    entries = [{
+        "category": p["category"],
+        "tags": p["tags"],
+        "title": p["title"],
+        "note": p["summary"],
+        "url": f"blog/{p['slug']}.html",
+        "date": p["date"],
+    } for p in posts]
+    body = render_entry_list(
+        entries, "blog",
+        "Search posts...",
+        "No posts match your search.",
+        default_show=True,
+    )
+    content = f'<h2 class="section-title">Blog</h2>{body}'
+    return render_page(
+        "Blog", content,
+        name=cv.get("name", ""), tagline=cv.get("title", ""),
+        **nav_fields("blog"),
+    )
+
+
+def build_blog_post(cv, post):
+    meta_line = f'<p class="post-meta">{esc(post["date"])}</p>' if post["date"] else ""
+    content = (
+        f'<h1>{esc(post["title"])}</h1>{meta_line}'
+        f'<div class="post-body">{post["body_html"]}</div>'
+    )
+    return render_page(
+        post["title"], content, root="../",
+        name=cv.get("name", ""), tagline=cv.get("title", ""),
+        **nav_fields("blog"),
     )
 
 
 def main():
     os.makedirs(OUT, exist_ok=True)
+    os.makedirs(os.path.join(OUT, "blog"), exist_ok=True)
     os.system(f"cp -r {os.path.join(ROOT, 'static')} {OUT}/")
 
     cv = load_all("cv")[0]
+    about_list = load_all("about")
+    about = about_list[0] if about_list else {}
     resources = load_all("resources")
-    papers = load_all("paper-links")
+    events = load_all("calendar")
+    posts = load_blog_posts()
 
     with open(os.path.join(OUT, "index.html"), "w") as f:
         f.write(build_index(cv, resources))
-    with open(os.path.join(OUT, "papers.html"), "w") as f:
-        f.write(build_papers(cv, papers))
+    with open(os.path.join(OUT, "about.html"), "w") as f:
+        f.write(build_about(cv, about))
+    with open(os.path.join(OUT, "calendar.html"), "w") as f:
+        f.write(build_calendar(cv, events))
+    with open(os.path.join(OUT, "blog.html"), "w") as f:
+        f.write(build_blog_index(cv, posts))
+    for p in posts:
+        with open(os.path.join(OUT, "blog", f"{p['slug']}.html"), "w") as f:
+            f.write(build_blog_post(cv, p))
 
     print(
-        f"Built site into {OUT}/ ({len(resources)} resources, {len(papers)} papers)"
+        f"Built site into {OUT}/ "
+        f"({len(resources)} resources, {len(events)} calendar events, {len(posts)} blog posts)"
     )
 
 

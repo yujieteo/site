@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <h1>Yu Jie Teo</h1>
+      <div class="subtitle">Personal website</div>
+      <nav class="site-nav">
+        <a href="index.html" class="">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="calendar.html" class="">Calendar</a>
+        <a href="blog.html" class="">Blog</a>
+      </nav>
+    </header>
+    <main>
+      
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div id="main-content" tabindex="-1"><h1>Yu Jie Teo</h1><p>I'm currently based in
+Singapore. This site collects my writing, talks, and a few things
+I've found useful.</p><h2 class="section-title">Interests</h2><ul>
+<li>Mathematics</li>
+<li>Biology (in relation to computation)</li>
+<li>Computation</li>
+<li>Mathematical Physics</li>
+<li>Engineering</li>
+</ul></div>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
+    },
+    svg: { fontCache: 'global', scale: 1.06 }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+</script>
+<style>
+  mjx-container { color: inherit; }
+  mjx-container[display="true"] { margin: 1em 0 !important; }
+</style>
+<script>
+  document.addEventListener('entries-rendered', function (e) {
+    if (!(window.MathJax && window.MathJax.typesetPromise)) return;
+    const target = e && e.detail && e.detail.target;
+    if (window.MathJax.typesetClear) {
+      window.MathJax.typesetClear(target ? [target] : undefined);
+    }
+    window.MathJax.typesetPromise(target ? [target] : undefined);
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  });
+</script>
+
+    </main>
+    <footer class="site-footer">
+      Made with the assistance of AI.
+    </footer>
+  </div>
+</body>
+</html>

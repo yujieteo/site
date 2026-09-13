@@ -1,0 +1,13 @@
+intro: |
+  I'm currently based in
+  Singapore. This site collects my writing, talks, and a few things
+  I've found useful.
+
+sections:
+  - title: Interests
+    content: |
+      - Mathematics
+      - Biology (in relation to computation)
+      - Computation
+      - Mathematical Physics
+      - Engineering

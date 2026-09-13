@@ -1,9 +1,14 @@
-/* Atkinson Hyperlegible Mono: a free, monospace typeface purpose-built
-   by the Braille Institute for readers with low vision and dyslexia
-   (distinct letterforms, generous counters/spacing). Used as the site's
-   default typeface everywhere -- headings included -- with a plain
-   system monospace fallback chain if the web font fails to load. */
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Atkinson Hyperlegible (proportional) + Atkinson Hyperlegible Mono:
+   both free typefaces purpose-built by the Braille Institute for
+   readers with low vision and dyslexia (distinct letterforms,
+   generous counters/spacing). The proportional cut is now the site's
+   default typeface for prose and headings -- genuinely sans-serif,
+   but with the same evenness and disambiguated glyphs (1/l/I, 0/O)
+   that made the mono cut nice to read. The mono cut is kept only for
+   spots that want truly fixed-width digits (tag counts, pagers,
+   result counts), with plain system fallback chains for both if the
+   web fonts fail to load. */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
   /* Light theme (default). Warm off-white rather than pure white, and
@@ -22,12 +27,14 @@
   --focus-ring: #0a5fb4;
   --max-width: 780px;
 
+  /* --sans is now the site's real body/heading face (proportional,
+     nearly-mono-but-not). --mono stays a true fixed-width face,
+     reserved for numeric/tabular UI bits that reference it directly
+     (.tag-count, .result-count, .pager-label). --serif is kept as an
+     alias so nothing else has to change if it's referenced elsewhere. */
+  --sans: "Atkinson Hyperlegible", "Seravek", "Noto Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono: "Atkinson Hyperlegible Mono", "Cascadia Mono", "JetBrains Mono", "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
-  /* Kept as an alias so nothing else in this file needs to change --
-     the whole site intentionally uses the monospace face everywhere,
-     for prose and numbers alike. */
-  --sans: var(--mono);
-  --serif: var(--mono);
+  --serif: var(--sans);
 
   /* Theme-aware helpers so nothing below has to hardcode a color that
      would go wrong in dark mode: readable text to put on top of
@@ -167,7 +174,7 @@ header.site-header {
 }
 
 header.site-header h1 {
-  font-family: var(--sans); /* Apple usually defaults to SF Pro Display for bold headers */
+  font-family: var(--sans);
   font-size: 2.25rem;
   font-weight: 600;
   margin: 0 0 6px;
@@ -244,6 +251,14 @@ h2.section-title:first-of-type {
   margin-bottom: 6px;
 }
 
+.entry-date {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
 .entry-abstract {
   font-size: 0.94rem;
   color: var(--text-secondary);
@@ -294,8 +309,8 @@ h2.section-title:first-of-type {
 
 /* Numeric count badge on each tag button. Tabular-nums + mono keeps
    digits a fixed width so counts line up when scanning a long list of
-   tags -- this is the "easy to judge" numeric alignment, always on
-   regardless of the monospace reading-mode toggle. */
+   tags -- this is the one place that still wants a true monospace
+   face, regardless of the site's main typeface. */
 .tag-count {
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
@@ -555,6 +570,94 @@ h2.section-title:first-of-type {
   font-size: 0.82rem;
   color: var(--muted);
   white-space: nowrap;
+}
+
+/* Blog post / About page prose: content rendered from Markdown
+   (build_blog_post / build_about). Slightly larger line-height than
+   the rest of the site since this is sustained long-form reading,
+   not UI chrome. */
+.post-meta {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: -8px 0 28px;
+}
+
+.post-body {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.post-body h2 {
+  font-family: var(--sans);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+
+.post-body h3 {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 32px;
+  margin-bottom: 10px;
+}
+
+.post-body p {
+  margin: 0 0 20px;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 20px;
+  padding-left: 1.4em;
+}
+
+.post-body li {
+  margin-bottom: 8px;
+}
+
+.post-body a {
+  color: var(--accent);
+}
+
+.post-body blockquote {
+  margin: 24px 0;
+  padding: 4px 20px;
+  border-left: 3px solid var(--accent);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.post-body code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--bg-alt);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.post-body pre {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.post-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 8px;
 }
 
 a { 
