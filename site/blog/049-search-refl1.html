@@ -26,11 +26,7 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <div id="main-content" tabindex="-1"><h1>Search Reflections I</h1><div class="post-body"><h2>Search</h2>
 <h3>Summary approach</h3>
-<p>Define objectives (Pareto optimal and scalarisation) and constraints, lookahead for problems, define time and memory bound, admissibility (never overestimating the true cost, if overestimate it make take a shortcut), for heuristic creation, strategy pruning, lookahead again and define pruning or bisection strategy, lastly define acceptable failure standards and repairability. Implementation: simulated annealing, high randomness explore first, use tabu to forbid revisiting, low randomness to explore later</p>
-<h3>A* optimality condition</h3>
-<p>Evaluate all possible outcomes (large memory) without overestimating cost (admissible) and monotone (always move closer) to objective. Calculate cost now and add heuristic cost.</p>
-<h3>A* fixed time</h3>
-<p>Update dynamics in real time, or look at fixed depth and repeat A* fixed depth search one step at a time.</p>
+<p>Define objectives (Pareto optimal and scalarisation) and constraints, lookahead for problems, define time and memory bound, admissibility (never overestimating the true cost, if overestimate it make take a shortcut), for heuristic creation, strategy pruning, lookahead again and define pruning or bisection strategy, lastly define acceptable failure standards and repairability. Implementation: simulated annealing, high randomness explore first, use tableau to forbid revisiting, low randomness to explore later</p>
 <h3>Pruning and beam search</h3>
 <p>Check bounded many outcomes prune the worst proportion. Or use A*, prune the worst when memory is full.</p>
 <h3>Tabu list</h3>
@@ -42,13 +38,11 @@
 <h3>Repairable improvement and constraint propagation</h3>
 <p>Find a feasible solution first, repair later. Related, find a solution meeting the constraints, backtrack when violated. Key word: define objectives and constraints violations</p>
 <h3>Lookahead</h3>
-<p>Look ahead when you can to avoid problems.</p>
 <h3>Memory and time tradeoffs</h3>
 <p>Think about tradeoffs in memory (evaluating all possible outcomes), and time (opportunity cost of bad search, time needed).</p>
 <h3>Multiple objective Pareto optimality and scalarisation</h3>
 <p>First step is always to identify outcomes, scalarisation means weigh your different outcomes to one outcome, Pareto optimality means I must make adjacent outcomes worse.</p>
-<h3>Bitter lesson in scalability</h3>
-<p>Make sure that all of the experience possible (not just data, scale to the human experience or general experience) at all scales (atomic, molecular, physical, metaphysical) is possible.</p></div></div>
+<h3>Bitter lesson in scalability</h3></div></div>
 <script>
   window.MathJax = {
     tex: {
