@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Macintosh</title>
+  <title>Macintosh Set Up</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
     <main>
       
 <a class="skip-link" href="#main-content">Skip to content</a>
-<div id="main-content" tabindex="-1"><h1>Macintosh</h1><p class="post-meta">2026-09-13</p><div class="post-body"><h1>Macintosh</h1>
+<div id="main-content" tabindex="-1"><h1>Macintosh Set Up</h1><p class="post-meta">2026-09-13</p><div class="post-body"><h1>Macintosh</h1>
 <p>A small, terminal-first Mac setup.</p>
 <h2>Install</h2>
 <pre><code class="language-sh">xcode-select --install
@@ -33,55 +33,99 @@
 </code></pre>
 <p>Restart the shell, then:</p>
 <pre><code class="language-sh">brew update
-brew install git gh tmux vim ripgrep fzf jq
+brew install git gh stow tmux neovim ripgrep fzf jq mise uv
 brew install anomalyco/tap/opencode
-brew install --cask firefox
+brew install --cask firefox alacritty visual-studio-code mactex
+</code></pre>
+<p>Install OpenClaw with its official installer:</p>
+<pre><code class="language-sh">curl -fsSL https://openclaw.ai/install.sh | bash
 </code></pre>
 <h2>Directories</h2>
-<p>Geohot publishes flat home dotfiles, not a canonical project tree. Use:</p>
+<p>Flat home dotfiles, not a canonical project tree. Use:</p>
 <pre><code class="language-sh">mkdir -p &quot;$HOME/src&quot; &quot;$HOME/data&quot; &quot;$HOME/tmp&quot; &quot;$HOME/.ssh&quot;
+mkdir -p &quot;$HOME/.dotfiles/home/.ssh&quot;
+mkdir -p &quot;$HOME/.dotfiles/home/.config/alacritty&quot;
+mkdir -p &quot;$HOME/.dotfiles/home/.config/nvim&quot;
+mkdir -p &quot;$HOME/.dotfiles/vscode/Library/Application Support/Code/User&quot;
 chmod 700 &quot;$HOME/data&quot; &quot;$HOME/.ssh&quot;
 </code></pre>
 <pre><code class="language-text">~/src   Git repositories
 ~/data  valuable non-Git files
 ~/tmp   disposable work
 </code></pre>
-<h2>Create the configuration files</h2>
-<p>These commands replace the named configuration files.</p>
-<pre><code class="language-sh">touch &quot;$HOME/.zshrc&quot;
-touch &quot;$HOME/.vimrc&quot;
-touch &quot;$HOME/.tmux.conf&quot;
-touch &quot;$HOME/.gitconfig&quot;
-touch &quot;$HOME/.gitignore_global&quot;
-touch &quot;$HOME/.ssh/config&quot;
+<h2>Dotfiles</h2>
+<p>The real files live in two small Stow packages: portable home configuration
+and the macOS path adapter for VS Code.</p>
+<pre><code class="language-sh">git init &quot;$HOME/.dotfiles&quot;
+
+touch &quot;$HOME/.dotfiles/home/.zshrc&quot;
+touch &quot;$HOME/.dotfiles/home/.config/nvim/init.lua&quot;
+touch &quot;$HOME/.dotfiles/home/.tmux.conf&quot;
+touch &quot;$HOME/.dotfiles/home/.gitconfig&quot;
+touch &quot;$HOME/.dotfiles/home/.gitignore_global&quot;
+touch &quot;$HOME/.dotfiles/home/.ssh/config&quot;
+touch &quot;$HOME/.dotfiles/home/.config/alacritty/alacritty.toml&quot;
+touch &quot;$HOME/.dotfiles/vscode/Library/Application Support/Code/User/settings.json&quot;
+</code></pre>
+<p>Stow will refuse to overwrite existing files. Move any existing configuration
+into the matching path above first. Do not use <code>--adopt</code> blindly.</p>
+<pre><code class="language-sh">cd &quot;$HOME/.dotfiles&quot;
+stow --target=&quot;$HOME&quot; home vscode
+</code></pre>
+<pre><code class="language-sh">ls -la &quot;$HOME&quot;/.zshrc &quot;$HOME&quot;/.config/nvim/init.lua &quot;$HOME&quot;/.tmux.conf
+ls -la &quot;$HOME&quot;/.gitconfig &quot;$HOME&quot;/.gitignore_global &quot;$HOME&quot;/.ssh/config
+ls -la &quot;$HOME&quot;/.config/alacritty/alacritty.toml
+ls -la &quot;$HOME/Library/Application Support/Code/User/settings.json&quot;
 </code></pre>
 <h3>zsh</h3>
-<pre><code class="language-sh">tee &quot;$HOME/.zshrc&quot; &gt;/dev/null &lt;&lt;'EOF'
+<pre><code class="language-sh">tee &quot;$HOME/.dotfiles/home/.zshrc&quot; &gt;/dev/null &lt;&lt;'EOF'
 export CLICOLOR=1
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export PS1=$'%n@%m:\e[0;36m%~\e[0m$ '
+eval &quot;$(mise activate zsh)&quot;
 EOF
 </code></pre>
 <pre><code class="language-sh">source &quot;$HOME/.zshrc&quot;
 </code></pre>
-<h3>Vim</h3>
-<pre><code class="language-sh">tee &quot;$HOME/.vimrc&quot; &gt;/dev/null &lt;&lt;'EOF'
-syntax on
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set ai
-set number
-set hlsearch
-set ruler
-highlight Comment ctermfg=green
+<h3>Neovim</h3>
+<pre><code class="language-sh">tee &quot;$HOME/.dotfiles/home/.config/nvim/init.lua&quot; &gt;/dev/null &lt;&lt;'EOF'
+vim.g.mapleader = &quot; &quot;
+
+vim.opt.number = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.termguicolors = true
+
+vim.keymap.set(&quot;n&quot;, &quot;&lt;Esc&gt;&quot;, &quot;&lt;cmd&gt;nohlsearch&lt;CR&gt;&quot;)
+
+vim.api.nvim_create_autocmd(&quot;FileType&quot;, {
+  pattern = &quot;python&quot;,
+  callback = function()
+    vim.opt_local.makeprg = &quot;uv run ruff check --output-format=concise %&quot;
+    vim.opt_local.errorformat = &quot;%f:%l:%c: %m&quot;
+  end,
+})
+
+vim.keymap.set(&quot;n&quot;, &quot;&lt;leader&gt;l&quot;, &quot;&lt;cmd&gt;make&lt;CR&gt;&quot;, { desc = &quot;Lint file&quot; })
 EOF
 </code></pre>
-<pre><code class="language-sh">vim &quot;$HOME/.vimrc&quot;
+<pre><code class="language-sh">nvim &quot;$HOME/.config/nvim/init.lua&quot;
+nvim --headless +qa
+</code></pre>
+<p>For Python files:</p>
+<pre><code class="language-vim">:make
+:cnext
+:cprevious
+:cwindow
 </code></pre>
 <h3>tmux</h3>
-<pre><code class="language-sh">tee &quot;$HOME/.tmux.conf&quot; &gt;/dev/null &lt;&lt;'EOF'
+<pre><code class="language-sh">tee &quot;$HOME/.dotfiles/home/.tmux.conf&quot; &gt;/dev/null &lt;&lt;'EOF'
 unbind C-b
 set -g prefix `
 bind-key ` last-window
@@ -108,16 +152,86 @@ EOF
 <p>Inside tmux, reload later with:</p>
 <pre><code class="language-sh">tmux source-file &quot;$HOME/.tmux.conf&quot;
 </code></pre>
+<h2>Alacritty</h2>
+<pre><code class="language-sh">tee &quot;$HOME/.dotfiles/home/.config/alacritty/alacritty.toml&quot; &gt;/dev/null &lt;&lt;'EOF'
+[window]
+padding = { x = 8, y = 8 }
+dynamic_padding = true
+opacity = 1.0
+
+[font]
+normal = { family = &quot;Menlo&quot;, style = &quot;Regular&quot; }
+size = 14.0
+
+[scrolling]
+history = 5000
+
+[selection]
+save_to_clipboard = true
+
+[terminal]
+shell = { program = &quot;/bin/zsh&quot;, args = [&quot;-l&quot;] }
+EOF
+</code></pre>
+<pre><code class="language-sh">open -a Alacritty
+tmux new-session -A -s main
+</code></pre>
+<h2>VS Code</h2>
+<p>Keep the portable JSON in the dotfiles repository; Stow handles VS Code's
+macOS-specific settings path.</p>
+<pre><code class="language-sh">tee &quot;$HOME/.dotfiles/vscode/Library/Application Support/Code/User/settings.json&quot; &gt;/dev/null &lt;&lt;'EOF'
+{
+  &quot;workbench.colorTheme&quot;: &quot;Default Dark Modern&quot;,
+  &quot;workbench.startupEditor&quot;: &quot;none&quot;,
+  &quot;workbench.editor.enablePreview&quot;: false,
+  &quot;breadcrumbs.enabled&quot;: false,
+  &quot;editor.fontFamily&quot;: &quot;Menlo, monospace&quot;,
+  &quot;editor.fontSize&quot;: 14,
+  &quot;editor.lineHeight&quot;: 22,
+  &quot;editor.minimap.enabled&quot;: false,
+  &quot;editor.stickyScroll.enabled&quot;: false,
+  &quot;editor.renderWhitespace&quot;: &quot;selection&quot;,
+  &quot;editor.rulers&quot;: [88],
+  &quot;editor.tabSize&quot;: 2,
+  &quot;editor.insertSpaces&quot;: true,
+  &quot;files.trimTrailingWhitespace&quot;: true,
+  &quot;files.insertFinalNewline&quot;: true,
+  &quot;git.autofetch&quot;: false,
+  &quot;telemetry.telemetryLevel&quot;: &quot;off&quot;,
+  &quot;vim.useSystemClipboard&quot;: true,
+  &quot;vim.handleKeys&quot;: {
+    &quot;&lt;C-p&gt;&quot;: false
+  },
+  &quot;[python]&quot;: {
+    &quot;editor.defaultFormatter&quot;: &quot;charliermarsh.ruff&quot;,
+    &quot;editor.formatOnSave&quot;: true,
+    &quot;editor.codeActionsOnSave&quot;: {
+      &quot;source.fixAll.ruff&quot;: &quot;explicit&quot;,
+      &quot;source.organizeImports.ruff&quot;: &quot;explicit&quot;
+    }
+  }
+}
+EOF
+</code></pre>
+<p>Install only the useful extensions:</p>
+<pre><code class="language-sh">code --install-extension vscodevim.vim
+code --install-extension ms-python.python
+code --install-extension charliermarsh.ruff
+code --list-extensions | sort
+</code></pre>
+<pre><code class="language-sh">cd &quot;$HOME/src/REPOSITORY&quot;
+code .
+</code></pre>
 <h2>Git</h2>
 <p>Replace the email before running:</p>
 <pre><code class="language-sh">git config --global user.name &quot;Teo Yu Jie&quot;
 git config --global user.email &quot;YOUR_GITHUB_EMAIL&quot;
 git config --global init.defaultBranch main
-git config --global core.editor vim
+git config --global core.editor nvim
 git config --global pull.ff only
 git config --global core.excludesFile &quot;$HOME/.gitignore_global&quot;
 </code></pre>
-<pre><code class="language-sh">tee &quot;$HOME/.gitignore_global&quot; &gt;/dev/null &lt;&lt;'EOF'
+<pre><code class="language-sh">tee &quot;$HOME/.dotfiles/home/.gitignore_global&quot; &gt;/dev/null &lt;&lt;'EOF'
 .DS_Store
 .env
 .env.*
@@ -131,7 +245,7 @@ EOF
 ssh-keygen -t ed25519 -a 100 -C &quot;$(git config --global user.email)&quot;
 </code></pre>
 <p>Accept the default path, <code>~/.ssh/id_ed25519</code>, and enter a passphrase.</p>
-<pre><code class="language-sh">tee &quot;$HOME/.ssh/config&quot; &gt;/dev/null &lt;&lt;'EOF'
+<pre><code class="language-sh">tee &quot;$HOME/.dotfiles/home/.ssh/config&quot; &gt;/dev/null &lt;&lt;'EOF'
 Host github.com
   HostName github.com
   User git
@@ -150,10 +264,41 @@ gh auth setup-git
 gh auth status
 ssh -T git@github.com
 </code></pre>
+<p>Save only the explicit dotfiles:</p>
+<pre><code class="language-sh">git -C &quot;$HOME/.dotfiles&quot; add home vscode
+git -C &quot;$HOME/.dotfiles&quot; commit -m &quot;Initial configuration&quot;
+gh repo create dotfiles --private \
+  --source=&quot;$HOME/.dotfiles&quot; \
+  --remote=origin \
+  --push
+</code></pre>
 <p>Clone only the current project:</p>
 <pre><code class="language-sh">cd &quot;$HOME/src&quot;
 gh repo clone USER/REPOSITORY
 cd REPOSITORY
+</code></pre>
+<h2>Python</h2>
+<p>mise owns Python versions. uv owns projects and dependencies.</p>
+<pre><code class="language-sh">mise use --global python@3.14
+mise exec -- python --version
+uv --version
+</code></pre>
+<p>Create a project:</p>
+<pre><code class="language-sh">mkdir -p &quot;$HOME/src/PROJECT&quot;
+cd &quot;$HOME/src/PROJECT&quot;
+mise use python@3.14
+uv init --python &quot;$(mise which python)&quot;
+uv sync
+</code></pre>
+<p>Add and run dependencies:</p>
+<pre><code class="language-sh">uv add requests
+uv add --dev pytest ruff
+uv run pytest
+uv run python
+</code></pre>
+<p>Commit the reproducible project state:</p>
+<pre><code class="language-sh">git add mise.toml pyproject.toml uv.lock
+git commit -m &quot;Set up Python project&quot;
 </code></pre>
 <h2>Project <code>.env</code></h2>
 <p>Run inside a project:</p>
@@ -162,6 +307,7 @@ touch .env .env.example .gitignore
 chmod 600 .env
 </code></pre>
 <pre><code class="language-sh">tee -a .gitignore &gt;/dev/null &lt;&lt;'EOF'
+.venv/
 .env
 .env.*
 !.env.example
@@ -175,7 +321,7 @@ EOF
 </code></pre>
 <p>Create the private local copy:</p>
 <pre><code class="language-sh">cp .env.example .env
-vim .env
+nvim .env
 </code></pre>
 <p>Verify before committing:</p>
 <pre><code class="language-sh">git check-ignore -v .env
@@ -192,21 +338,85 @@ OpenCode credentials should instead be configured interactively:</p>
 <pre><code class="language-sh">opencode auth login
 opencode auth list
 </code></pre>
+<h2>OpenClaw</h2>
+<p>OpenCode is the repository-local coding agent. OpenClaw is the persistent local
+assistant and gateway.</p>
+<p>Create a private, separate workspace:</p>
+<pre><code class="language-sh">mkdir -p &quot;$HOME/.openclaw/workspace&quot;
+chmod 700 &quot;$HOME/.openclaw&quot; &quot;$HOME/.openclaw/workspace&quot;
+</code></pre>
+<p>Run the setup session if the installer did not already start it:</p>
+<pre><code class="language-sh">openclaw onboard --install-daemon
+</code></pre>
+<p>Choose:</p>
+<pre><code class="language-text">Gateway:   Local
+Workspace: ~/.openclaw/workspace
+Model:     authenticate one provider
+Channels:  Skip
+Skills:    Skip
+Daemon:    Install
+</code></pre>
+<p>Lock down the first local session:</p>
+<pre><code class="language-sh">openclaw config set tools.profile coding
+openclaw config set tools.fs.workspaceOnly true
+openclaw config set tools.exec.mode deny
+openclaw config set tools.deny '[&quot;exec&quot;,&quot;process&quot;,&quot;browser&quot;,&quot;group:messaging&quot;]' --strict-json
+chmod 600 &quot;$HOME/.openclaw/openclaw.json&quot;
+openclaw gateway restart
+</code></pre>
+<p>Check the model, gateway and policy:</p>
+<pre><code class="language-sh">openclaw models list
+openclaw gateway status
+openclaw status --all
+openclaw exec-policy show
+openclaw security audit --deep
+openclaw dashboard
+</code></pre>
+<p>Change model authentication later without putting credentials in <code>.env</code>:</p>
+<pre><code class="language-sh">openclaw models auth login --provider PROVIDER --set-default
+openclaw models list
+openclaw gateway restart
+</code></pre>
+<p>OpenClaw keeps config, authentication and memory under <code>~/.openclaw</code>. Do not
+Stow or commit that directory.</p>
 <h2>Work</h2>
 <pre><code class="language-sh">cd &quot;$HOME/src/REPOSITORY&quot;
 tmux new-session -A -s work
-vim .
+nvim .
 opencode
 </code></pre>
-<p>Install project compilers, runtimes, linters and TeX tools only when that
-project requires them.</p>
+<p>Open the persistent assistant separately:</p>
+<pre><code class="language-sh">openclaw gateway status
+openclaw dashboard
+</code></pre>
 <h2>Check</h2>
-<pre><code class="language-sh">command -v git gh tmux vim rg fzf jq opencode
+<pre><code class="language-sh">command -v git gh stow tmux nvim rg fzf jq mise uv python opencode openclaw alacritty code
+mise doctor
+mise current
+uv --version
+python --version
+nvim --version | head -n 1
+nvim --headless +qa
 git config --global --list
 gh auth status
 ssh -T git@github.com
+openclaw gateway status
+openclaw status --all
+openclaw security audit --deep
+alacritty --version
+code --version
+code --list-extensions
 firefox --version 2&gt;/dev/null || open -a Firefox
-</code></pre></div></div>
+</code></pre>
+<h2>Restore</h2>
+<pre><code class="language-sh">mkdir -p &quot;$HOME/.ssh&quot;
+chmod 700 &quot;$HOME/.ssh&quot;
+gh repo clone USER/dotfiles &quot;$HOME/.dotfiles&quot;
+cd &quot;$HOME/.dotfiles&quot;
+stow --target=&quot;$HOME&quot; home vscode
+</code></pre>
+<p>Reinstall and re-onboard OpenClaw separately; never restore its authentication
+from the public dotfiles repository.</p></div></div>
 <script>
   window.MathJax = {
     tex: {

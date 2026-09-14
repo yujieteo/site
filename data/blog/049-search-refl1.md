@@ -9,15 +9,7 @@ tags: "search, algorithms, heuristics, optimisation"
 
 ### Summary approach
 
-Define objectives (Pareto optimal and scalarisation) and constraints, lookahead for problems, define time and memory bound, admissibility (never overestimating the true cost, if overestimate it make take a shortcut), for heuristic creation, strategy pruning, lookahead again and define pruning or bisection strategy, lastly define acceptable failure standards and repairability. Implementation: simulated annealing, high randomness explore first, use tabu to forbid revisiting, low randomness to explore later
-
-### A* optimality condition
-
-Evaluate all possible outcomes (large memory) without overestimating cost (admissible) and monotone (always move closer) to objective. Calculate cost now and add heuristic cost.
-
-### A* fixed time
-
-Update dynamics in real time, or look at fixed depth and repeat A* fixed depth search one step at a time.
+Define objectives (Pareto optimal and scalarisation) and constraints, lookahead for problems, define time and memory bound, admissibility (never overestimating the true cost, if overestimate it make take a shortcut), for heuristic creation, strategy pruning, lookahead again and define pruning or bisection strategy, lastly define acceptable failure standards and repairability. Implementation: simulated annealing, high randomness explore first, use tableau to forbid revisiting, low randomness to explore later
 
 ### Pruning and beam search
 
@@ -41,8 +33,6 @@ Find a feasible solution first, repair later. Related, find a solution meeting t
 
 ### Lookahead
 
-Look ahead when you can to avoid problems.
-
 ### Memory and time tradeoffs
 
 Think about tradeoffs in memory (evaluating all possible outcomes), and time (opportunity cost of bad search, time needed).
@@ -52,5 +42,3 @@ Think about tradeoffs in memory (evaluating all possible outcomes), and time (op
 First step is always to identify outcomes, scalarisation means weigh your different outcomes to one outcome, Pareto optimality means I must make adjacent outcomes worse.
 
 ### Bitter lesson in scalability
-
-Make sure that all of the experience possible (not just data, scale to the human experience or general experience) at all scales (atomic, molecular, physical, metaphysical) is possible.

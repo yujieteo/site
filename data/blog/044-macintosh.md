@@ -1,6 +1,9 @@
 ---
-title: "Macintosh"
+title: "Mac Set Up"
 date: "2026-09-13"
+summary: "Mac set up"
+category: "Computing"
+tags: "mac, setup"
 ---
 
 # Macintosh
@@ -21,7 +24,7 @@ Restart the shell, then:
 
 ```sh
 brew update
-brew install git gh stow tmux neovim ripgrep fzf jq mise uv 
+brew install git gh stow tmux neovim ripgrep fzf jq mise uv
 brew install anomalyco/tap/opencode
 brew install --cask firefox alacritty visual-studio-code mactex
 ```
