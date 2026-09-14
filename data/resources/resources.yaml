@@ -582,3 +582,8 @@
   url: "https://www.mlit.go.jp/en/totikensangyo/totikensangyo_fr5_000014.html"
   category: "japan-housing-prices"
   note: "Analysis: easy-medium. Transaction-price information collected from parties to actual real-estate transactions, including total value, area, building use, structure, and transaction period. Useful for constructing price-per-square-metre distributions directly."
+
+- title: "Inspire - High Energy Physics"
+  url: "https://inspirehep.net/"
+  category: "physics"
+  note: "High energy physics paper search."
