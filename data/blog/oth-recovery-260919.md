@@ -1,3 +1,11 @@
+---
+title: "Recovery Notes for 19 September 2026"
+date: 2026-09-19
+summary: "Recovery notes"
+category: "recovery"
+tags: "recovery notes"
+---
+
 # Recovery
 
 Adapted from Alan Couzens, [Serious Recovery for Serious Athletes](https://alancouzens.blogspot.com/2009/04/serious-recovery-for-serious-athletes.html?m=1).
