@@ -6,25 +6,23 @@
   <title>Finds — 22 September 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-  <div class="wrap">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
     <header class="site-header">
-      <h1>Yu Jie Teo</h1>
-      <div class="subtitle">Personal website</div>
-      <nav class="site-nav">
+      <a class="site-name" href="../index.html">Yu Jie Teo</a>
+      <p class="site-tagline">Personal website</p>
+      <nav class="site-nav" aria-label="Primary">
         <a href="../index.html" class="">Home</a>
         <a href="../about.html" class="">About</a>
         <a href="../papers.html" class="">Paper Links</a>
-        <a href="../blog.html" class="active">Blog</a>
+        <a href="../blog.html" class="active" aria-current="page">Blog</a>
       </nav>
     </header>
-    <main>
-      
-<a class="skip-link" href="#main-content">Skip to content</a>
-<div id="main-content" tabindex="-1"><h1>Finds — 22 September 2026</h1><p class="post-meta">2026-09-22</p><div class="post-body"><h2>AI and tools</h2>
+    <main id="main-content" tabindex="-1"><h1 class="page-title">Finds — 22 September 2026</h1><p class="post-meta"><time datetime="2026-09-22">2026-09-22</time></p><div class="post-body"><h2>AI and tools</h2>
 <ul>
 <li><a href="https://x.com/poteto/status/2102050467505430555?s=46">Agents at scale</a>: impart knowledge through skills, verify work with CLIs and traces, materialise memory, use static analysis, and pave one supported path.</li>
 <li><a href="https://karpathy.bearblog.dev/the-append-and-review-note/">The append-and-review note</a> is a deliberately simple, LRU-like text system.</li>
@@ -62,7 +60,7 @@
 <ul>
 <li><a href="https://youtu.be/2oksetv3i90?si=mNqtLyoU4S_rkUpV">IVE — Sacrifice</a></li>
 <li><a href="https://www.youtube.com/watch?v=IxkSlnrRFqc">Advanced napkin math</a></li>
-</ul></div></div>
+</ul></div>
 <script>
   window.MathJax = {
     tex: {
@@ -75,31 +73,16 @@
     },
     svg: { fontCache: 'global', scale: 1.06 }
   };
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
-</script>
-<style>
-  mjx-container { color: inherit; }
-  mjx-container[display="true"] { margin: 1em 0 !important; }
-</style>
-<script>
-  document.addEventListener('entries-rendered', function (e) {
+  document.addEventListener('entries-rendered', function (event) {
     if (!(window.MathJax && window.MathJax.typesetPromise)) return;
-    const target = e && e.detail && e.detail.target;
-    if (window.MathJax.typesetClear) {
-      window.MathJax.typesetClear(target ? [target] : undefined);
-    }
-    window.MathJax.typesetPromise(target ? [target] : undefined);
-  });
-  document.addEventListener('DOMContentLoaded', function () {
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise();
-    }
+    const target = event.detail && event.detail.target;
+    if (window.MathJax.typesetClear) MathJax.typesetClear(target ? [target] : undefined);
+    MathJax.typesetPromise(target ? [target] : undefined);
   });
 </script>
-
-    </main>
+<script id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+</main>
     <footer class="site-footer">
       Made with the assistance of AI.
     </footer>

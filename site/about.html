@@ -6,25 +6,23 @@
   <title>About</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-  <div class="wrap">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
     <header class="site-header">
-      <h1>Yu Jie Teo</h1>
-      <div class="subtitle">Personal website</div>
-      <nav class="site-nav">
+      <a class="site-name" href="index.html">Yu Jie Teo</a>
+      <p class="site-tagline">Personal website</p>
+      <nav class="site-nav" aria-label="Primary">
         <a href="index.html" class="">Home</a>
-        <a href="about.html" class="active">About</a>
+        <a href="about.html" class="active" aria-current="page">About</a>
         <a href="papers.html" class="">Paper Links</a>
         <a href="blog.html" class="">Blog</a>
       </nav>
     </header>
-    <main>
-      
-<a class="skip-link" href="#main-content">Skip to content</a>
-<div id="main-content" tabindex="-1"><h1>Yu Jie Teo</h1><p>I'm currently based in Singapore. This site collects my writing, talks, and
+    <main id="main-content" tabindex="-1"><h1 class="page-title">Yu Jie Teo</h1><p>I'm currently based in Singapore. This site collects my writing, talks, and
 a few things I've found useful.</p><h2 class="section-title">Values</h2><p>These are not qualities I possess perfectly. They are things I try to
 return to when deciding how to live and work.</p>
 <ul>
@@ -38,44 +36,7 @@ return to when deciding how to live and work.</p>
 <li><strong>Respect.</strong> Try to understand people before judging them and treat their perspectives as real.</li>
 <li><strong>Generosity.</strong> Share useful knowledge, attention, and help when I can.</li>
 <li><strong>Forward movement.</strong> Take the next concrete step instead of waiting to become a different kind of person.</li>
-</ul></div>
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
-    },
-    svg: { fontCache: 'global', scale: 1.06 }
-  };
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
-</script>
-<style>
-  mjx-container { color: inherit; }
-  mjx-container[display="true"] { margin: 1em 0 !important; }
-</style>
-<script>
-  document.addEventListener('entries-rendered', function (e) {
-    if (!(window.MathJax && window.MathJax.typesetPromise)) return;
-    const target = e && e.detail && e.detail.target;
-    if (window.MathJax.typesetClear) {
-      window.MathJax.typesetClear(target ? [target] : undefined);
-    }
-    window.MathJax.typesetPromise(target ? [target] : undefined);
-  });
-  document.addEventListener('DOMContentLoaded', function () {
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise();
-    }
-  });
-</script>
-
-    </main>
+</ul></main>
     <footer class="site-footer">
       Made with the assistance of AI.
     </footer>

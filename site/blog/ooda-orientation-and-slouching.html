@@ -6,25 +6,23 @@
   <title>OODA, Orientation, and Slouching</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-  <div class="wrap">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
     <header class="site-header">
-      <h1>Yu Jie Teo</h1>
-      <div class="subtitle">Personal website</div>
-      <nav class="site-nav">
+      <a class="site-name" href="../index.html">Yu Jie Teo</a>
+      <p class="site-tagline">Personal website</p>
+      <nav class="site-nav" aria-label="Primary">
         <a href="../index.html" class="">Home</a>
         <a href="../about.html" class="">About</a>
         <a href="../papers.html" class="">Paper Links</a>
-        <a href="../blog.html" class="active">Blog</a>
+        <a href="../blog.html" class="active" aria-current="page">Blog</a>
       </nav>
     </header>
-    <main>
-      
-<a class="skip-link" href="#main-content">Skip to content</a>
-<div id="main-content" tabindex="-1"><h1>OODA, Orientation, and Slouching</h1><p class="post-meta">2026-09-13</p><div class="post-body"><h2>OODA</h2>
+    <main id="main-content" tabindex="-1"><h1 class="page-title">OODA, Orientation, and Slouching</h1><p class="post-meta"><time datetime="2026-09-13">2026-09-13</time></p><div class="post-body"><h2>OODA</h2>
 <h3>Vocabulary And Grammar</h3>
 <p>A clarified vocabulary and grammar is provided to help agents or individuals make live decisions effectively, allowing one to navigate complex information flows, act with awareness, and maintain clarity in interpreting events in real time.</p>
 <h3>Turnicate</h3>
@@ -105,7 +103,7 @@
 <h3>Capability Masking</h3>
 <p>Forcing oneself to appear underperforming in the absence of adversaries, through techniques like free recall exercises, tackling difficult problems without preparation, and intentionally skipping foundational practice. This self-imposed underperformance creates an internal signal of mediocrity while still engaging in high-level cognitive activity, testing limits without external evaluation. Capability masking embodies the principle of hidden effort and deliberate under-signaling to oneself, reinforcing the paradoxical slouching strategy.</p>
 <h3>Identifying Ambling</h3>
-<p>Struggling to grasp the concept of ambling, especially in the context of imitative slouches in learning. Ambling represents non-directed, exploratory engagement that superficially appears lazy but may have hidden learning value. This aspect highlights the difficulty in distinguishing between productive slack and unproductive inactivity, and challenges the agent to incorporate playful, flexible approaches to skill and knowledge acquisition without overcommitting or overstructuring practice.</p></div></div>
+<p>Struggling to grasp the concept of ambling, especially in the context of imitative slouches in learning. Ambling represents non-directed, exploratory engagement that superficially appears lazy but may have hidden learning value. This aspect highlights the difficulty in distinguishing between productive slack and unproductive inactivity, and challenges the agent to incorporate playful, flexible approaches to skill and knowledge acquisition without overcommitting or overstructuring practice.</p></div>
 <script>
   window.MathJax = {
     tex: {
@@ -118,31 +116,16 @@
     },
     svg: { fontCache: 'global', scale: 1.06 }
   };
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
-</script>
-<style>
-  mjx-container { color: inherit; }
-  mjx-container[display="true"] { margin: 1em 0 !important; }
-</style>
-<script>
-  document.addEventListener('entries-rendered', function (e) {
+  document.addEventListener('entries-rendered', function (event) {
     if (!(window.MathJax && window.MathJax.typesetPromise)) return;
-    const target = e && e.detail && e.detail.target;
-    if (window.MathJax.typesetClear) {
-      window.MathJax.typesetClear(target ? [target] : undefined);
-    }
-    window.MathJax.typesetPromise(target ? [target] : undefined);
-  });
-  document.addEventListener('DOMContentLoaded', function () {
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise();
-    }
+    const target = event.detail && event.detail.target;
+    if (window.MathJax.typesetClear) MathJax.typesetClear(target ? [target] : undefined);
+    MathJax.typesetPromise(target ? [target] : undefined);
   });
 </script>
-
-    </main>
+<script id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+</main>
     <footer class="site-footer">
       Made with the assistance of AI.
     </footer>

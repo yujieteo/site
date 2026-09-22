@@ -6,25 +6,23 @@
   <title>Finds — 6 November 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-  <div class="wrap">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
     <header class="site-header">
-      <h1>Yu Jie Teo</h1>
-      <div class="subtitle">Personal website</div>
-      <nav class="site-nav">
+      <a class="site-name" href="../index.html">Yu Jie Teo</a>
+      <p class="site-tagline">Personal website</p>
+      <nav class="site-nav" aria-label="Primary">
         <a href="../index.html" class="">Home</a>
         <a href="../about.html" class="">About</a>
         <a href="../papers.html" class="">Paper Links</a>
-        <a href="../blog.html" class="active">Blog</a>
+        <a href="../blog.html" class="active" aria-current="page">Blog</a>
       </nav>
     </header>
-    <main>
-      
-<a class="skip-link" href="#main-content">Skip to content</a>
-<div id="main-content" tabindex="-1"><h1>Finds — 6 November 2025</h1><p class="post-meta">2025-11-06</p><div class="post-body"><h2>Vibe coding</h2>
+    <main id="main-content" tabindex="-1"><h1 class="page-title">Finds — 6 November 2025</h1><p class="post-meta"><time datetime="2025-11-06">2025-11-06</time></p><div class="post-body"><h2>Vibe coding</h2>
 <h3>Plain text</h3>
 <p>Plain text in the directories and in the comments helps a lot with the context for the input.</p>
 <h3>Comments</h3>
@@ -76,7 +74,7 @@
 <h2>Random sprinting and engaging with life</h2>
 <p>I was told recently I’m not engaged in my life, and it’s pretty true. Until I see a solution to this problem, even a sketch of a solution, what’s the point? Why sprint if you aren’t sure where you are going?</p>
 <h2>Criticism of capital deployment</h2>
-<p>Communism is dumb cause it goes to the poor (who routinely demonstrate that they poorly deploy capital). Capitalism is dumb cause it goes to the rent-seekers (who frequently deploy capital to increase or maintain their moat). Acceleration is the way.</p></div></div>
+<p>Communism is dumb cause it goes to the poor (who routinely demonstrate that they poorly deploy capital). Capitalism is dumb cause it goes to the rent-seekers (who frequently deploy capital to increase or maintain their moat). Acceleration is the way.</p></div>
 <script>
   window.MathJax = {
     tex: {
@@ -89,31 +87,16 @@
     },
     svg: { fontCache: 'global', scale: 1.06 }
   };
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
-</script>
-<style>
-  mjx-container { color: inherit; }
-  mjx-container[display="true"] { margin: 1em 0 !important; }
-</style>
-<script>
-  document.addEventListener('entries-rendered', function (e) {
+  document.addEventListener('entries-rendered', function (event) {
     if (!(window.MathJax && window.MathJax.typesetPromise)) return;
-    const target = e && e.detail && e.detail.target;
-    if (window.MathJax.typesetClear) {
-      window.MathJax.typesetClear(target ? [target] : undefined);
-    }
-    window.MathJax.typesetPromise(target ? [target] : undefined);
-  });
-  document.addEventListener('DOMContentLoaded', function () {
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise();
-    }
+    const target = event.detail && event.detail.target;
+    if (window.MathJax.typesetClear) MathJax.typesetClear(target ? [target] : undefined);
+    MathJax.typesetPromise(target ? [target] : undefined);
   });
 </script>
-
-    </main>
+<script id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+</main>
     <footer class="site-footer">
       Made with the assistance of AI.
     </footer>

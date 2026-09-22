@@ -6,24 +6,23 @@
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{root}static/css/style.css">
 </head>
 <body>
-  <div class="wrap">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
     <header class="site-header">
-      <h1>{name}</h1>
-      <div class="subtitle">{tagline}</div>
-      <nav class="site-nav">
-        <a href="{root}index.html" class="{nav_home}">Home</a>
-        <a href="{root}about.html" class="{nav_about}">About</a>
-        <a href="{root}papers.html" class="{nav_paper_links}">Paper Links</a>
-        <a href="{root}blog.html" class="{nav_blog}">Blog</a>
+      <a class="site-name" href="{root}index.html">{name}</a>
+      <p class="site-tagline">{tagline}</p>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="{root}index.html" class="{nav_home}"{aria_home}>Home</a>
+        <a href="{root}about.html" class="{nav_about}"{aria_about}>About</a>
+        <a href="{root}papers.html" class="{nav_paper_links}"{aria_paper_links}>Paper Links</a>
+        <a href="{root}blog.html" class="{nav_blog}"{aria_blog}>Blog</a>
       </nav>
     </header>
-    <main>
-      {content}
-    </main>
+    <main id="main-content" tabindex="-1">{content}</main>
     <footer class="site-footer">
       Made with the assistance of AI.
     </footer>
