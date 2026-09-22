@@ -11,7 +11,6 @@
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
-  --text-base: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.5rem;
   --text-2xl: 2rem;
@@ -73,7 +72,8 @@ a {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-summary:focus-visible {
+summary:focus-visible,
+.entry-title:focus-visible {
   outline: 0.125rem solid var(--focus);
   outline-offset: 0.125rem;
 }
@@ -153,7 +153,7 @@ summary:focus-visible {
 }
 
 .site-nav a:hover,
-.site-nav a.active {
+.site-nav a[aria-current="page"] {
   background: var(--surface);
   color: var(--foreground);
 }
@@ -304,8 +304,8 @@ main:focus {
   list-style: none;
 }
 
-.filters-toggle::-webkit-details-marker {
-  display: none;
+.filters-toggle::marker {
+  content: "";
 }
 
 .filters-toggle:hover,

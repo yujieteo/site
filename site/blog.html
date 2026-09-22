@@ -6,7 +6,7 @@
   <title>Blog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
@@ -16,176 +16,33 @@
       <a class="site-name" href="index.html">Yu Jie Teo</a>
       <p class="site-tagline">Personal website</p>
       <nav class="site-nav" aria-label="Primary">
-        <a href="index.html" class="">Home</a>
-        <a href="about.html" class="">About</a>
-        <a href="papers.html" class="">Paper Links</a>
-        <a href="blog.html" class="active" aria-current="page">Blog</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="papers.html">Paper Links</a>
+        <a href="blog.html" aria-current="page">Blog</a>
       </nav>
     </header>
-    <main id="main-content" tabindex="-1"><h1 class="page-title">Blog</h1><form class="search-row" id="blog-filters-wrap">
-      <label class="visually-hidden" for="blog-search">Search posts...</label>
-      <input type="text" id="blog-search" class="search-box" placeholder="Search posts..."
+    <main id="main-content" tabindex="-1"><h1 class="page-title">Blog</h1><form class="search-row" data-filter-form data-default-show="true">
+      <label class="visually-hidden" for="entry-search">Search posts...</label>
+      <input type="text" id="entry-search" class="search-box" placeholder="Search posts..."
              autocomplete="off">
       <button type="submit" class="search-btn">Search</button>
-      <details id="blog-filters-menu" class="filters-menu">
-        <summary id="blog-filters-toggle" class="filters-toggle">
-          Filters
-        </summary>
-        <div id="blog-tagbar" class="tag-panel" role="group" aria-label="Filter by tag">
-          <label class="visually-hidden" for="blog-tagsearch">Filter the tag list</label>
-          <input type="text" id="blog-tagsearch" class="tag-search-box"
+      <details class="filters-menu">
+        <summary class="filters-toggle">Filters</summary>
+        <div class="tag-panel" data-tag-bar role="group" aria-label="Filter by tag">
+          <label class="visually-hidden" for="tag-search">Filter the tag list</label>
+          <input type="text" id="tag-search" class="tag-search-box"
                  placeholder="Find a tag..." autocomplete="off">
           <div class="tag-panel-buttons"><button class="tag" data-tag="__all__" type="button" aria-pressed="true">all <span class="tag-count">11</span></button><button class="tag" data-tag="finds" type="button" aria-pressed="false">finds <span class="tag-count">3</span></button><button class="tag" data-tag="mathematics" type="button" aria-pressed="false">mathematics <span class="tag-count">3</span></button><button class="tag" data-tag="programming" type="button" aria-pressed="false">programming <span class="tag-count">3</span></button><button class="tag" data-tag="ai" type="button" aria-pressed="false">ai <span class="tag-count">2</span></button><button class="tag" data-tag="learning" type="button" aria-pressed="false">learning <span class="tag-count">2</span></button><button class="tag" data-tag="strategy" type="button" aria-pressed="false">strategy <span class="tag-count">2</span></button><button class="tag" data-tag="systems" type="button" aria-pressed="false">systems <span class="tag-count">2</span></button><button class="tag" data-tag="algorithms" type="button" aria-pressed="false">algorithms <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="art" type="button" aria-pressed="false" hidden>art <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="colour" type="button" aria-pressed="false" hidden>colour <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="computing" type="button" aria-pressed="false" hidden>computing <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="confidence" type="button" aria-pressed="false" hidden>confidence <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="curiosity" type="button" aria-pressed="false" hidden>curiosity <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="definitions" type="button" aria-pressed="false" hidden>definitions <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="github" type="button" aria-pressed="false" hidden>github <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="heuristics" type="button" aria-pressed="false" hidden>heuristics <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="mac" type="button" aria-pressed="false" hidden>mac <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="macos" type="button" aria-pressed="false" hidden>macos <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="metarationality" type="button" aria-pressed="false" hidden>metarationality <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="music" type="button" aria-pressed="false" hidden>music <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="ontology" type="button" aria-pressed="false" hidden>ontology <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="ooda" type="button" aria-pressed="false" hidden>ooda <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="optimisation" type="button" aria-pressed="false" hidden>optimisation <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="orientation" type="button" aria-pressed="false" hidden>orientation <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="physics" type="button" aria-pressed="false" hidden>physics <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="recovery notes" type="button" aria-pressed="false" hidden>recovery notes <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="reflection" type="button" aria-pressed="false" hidden>reflection <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="search" type="button" aria-pressed="false" hidden>search <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="security" type="button" aria-pressed="false" hidden>security <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="server" type="button" aria-pressed="false" hidden>server <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="setup" type="button" aria-pressed="false" hidden>setup <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="slouching" type="button" aria-pressed="false" hidden>slouching <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="ssh" type="button" aria-pressed="false" hidden>ssh <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="tempo" type="button" aria-pressed="false" hidden>tempo <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="willpower" type="button" aria-pressed="false" hidden>willpower <span class="tag-count">1</span></button><p class="tag-more-hint">+27 more &mdash; type above to find one</p></div>
         </div>
       </details>
-      <span class="result-count" id="blog-count" aria-live="polite" aria-atomic="true">11 entries</span>
+      <span class="result-count" data-result-count aria-live="polite" aria-atomic="true">11 entries</span>
     </form>
-    <div id="blog-list"></div>
-    <p class="no-results" id="blog-noresults" role="status" aria-live="polite" hidden>No posts match your search.</p>
-    <nav class="pager" id="blog-pager" aria-label="Result pages" hidden></nav>
-    <script>
-      window.__DATA__ = window.__DATA__ || {};
-      window.__DATA__['blog'] = [{"tags": "finds, ai, mathematics, physics, programming, systems, strategy, music", "search": "finds — 22 september 2026 notes and links on agent verification, mathematical structures, systems, physics, strategy, and media. finds finds, ai, mathematics, physics, programming, systems, strategy, music 2026-09-22", "url": "blog/finds-22-september-2026.html", "title": "Finds — 22 September 2026", "note": "Notes and links on agent verification, mathematical structures, systems, physics, strategy, and media.", "cat": "Finds", "date": "2026-09-22"}, {"tags": "recovery notes", "search": "recovery notes for 19 september 2026 recovery notes recovery recovery notes 2026-09-19", "url": "blog/oth-recovery-260919.html", "title": "Recovery Notes for 19 September 2026", "note": "Recovery notes", "cat": "recovery", "date": "2026-09-19"}, {"tags": "mac, setup", "search": "mac set up mac set up computing mac, setup 2026-09-13", "url": "blog/mac-set-up.html", "title": "Mac Set Up", "note": "Mac set up", "cat": "Computing", "date": "2026-09-13"}, {"tags": "ooda, strategy, orientation, tempo, slouching", "search": "ooda, orientation, and slouching a vocabulary of ooda loops, orientation, tempo, perception, and strategic slack. strategy ooda, strategy, orientation, tempo, slouching 2026-09-13", "url": "blog/ooda-orientation-and-slouching.html", "title": "OODA, Orientation, and Slouching", "note": "A vocabulary of OODA loops, orientation, tempo, perception, and strategic slack.", "cat": "Strategy", "date": "2026-09-13"}, {"tags": "art, colour", "search": "pluvium's workshop on colours summary on how colour from pluvium's tutorial general art, colour 2026-09-13", "url": "blog/pluvium-colour.html", "title": "Pluvium's Workshop on colours", "note": "Summary on how colour from Pluvium's tutorial", "cat": "General", "date": "2026-09-13"}, {"tags": "finds, programming, computing, ai, reflection", "search": "finds — 6 november 2025 collected notes on coding, abstractions, organizations, computing, ai, and personal reflection. finds finds, programming, computing, ai, reflection 2025-11-06", "url": "blog/finds-6-november-2025.html", "title": "Finds — 6 November 2025", "note": "Collected notes on coding, abstractions, organizations, computing, AI, and personal reflection.", "cat": "Finds", "date": "2025-11-06"}, {"tags": "finds, mathematics, programming, learning, systems", "search": "finds — 20 october 2025 notes and links on options, systems performance, mathematics, compilers, and learning. finds finds, mathematics, programming, learning, systems 2025-10-20", "url": "blog/finds-20-october-2025.html", "title": "Finds — 20 October 2025", "note": "Notes and links on options, systems performance, mathematics, compilers, and learning.", "cat": "Finds", "date": "2025-10-20"}, {"tags": "confidence, willpower, curiosity, learning", "search": "groundless confidence notes on confidence, willpower, curiosity, and the value of thinking with companions. reflection confidence, willpower, curiosity, learning ", "url": "blog/groundless-confidence.html", "title": "Groundless Confidence", "note": "Notes on confidence, willpower, curiosity, and the value of thinking with companions.", "cat": "Reflection", "date": ""}, {"tags": "ontology, definitions, mathematics, metarationality", "search": "notes on ontology working notes on definitions, ontological splitting, nebulosity, and purpose-laden categories. philosophy ontology, definitions, mathematics, metarationality ", "url": "blog/notes-on-ontology.html", "title": "Notes on Ontology", "note": "Working notes on definitions, ontological splitting, nebulosity, and purpose-laden categories.", "cat": "Philosophy", "date": ""}, {"tags": "search, algorithms, heuristics, optimisation", "search": "search reflections i a compact survey of objectives, heuristics, pruning, search trade-offs, and repairability. algorithms search, algorithms, heuristics, optimisation ", "url": "blog/search-reflections-i.html", "title": "Search Reflections I", "note": "A compact survey of objectives, heuristics, pruning, search trade-offs, and repairability.", "cat": "Algorithms", "date": ""}, {"tags": "ssh, github, macos, server, security", "search": "ssh setup guide practical steps for github ssh authentication and key-based mac-to-server access. systems ssh, github, macos, server, security ", "url": "blog/ssh-setup-guide.html", "title": "SSH Setup Guide", "note": "Practical steps for GitHub SSH authentication and key-based Mac-to-server access.", "cat": "Systems", "date": ""}];
-    </script>
-    
-<script>
-(function() {
-  const searchBox = document.getElementById('blog-search');
-  const tagBar = document.getElementById('blog-tagbar');
-  const tagSearch = document.getElementById('blog-tagsearch');
-  const filtersMenu = document.getElementById('blog-filters-menu');
-  const filtersToggle = document.getElementById('blog-filters-toggle');
-  const listEl = document.getElementById('blog-list');
-  const noResults = document.getElementById('blog-noresults');
-  const countLabel = document.getElementById('blog-count');
-  const pagerEl = document.getElementById('blog-pager');
-  const DEFAULT_SHOW = true;
-  const PAGE_SIZE = 10;
-  const DATA = window.__DATA__['blog'].map(function(d) {
-    d.tagsArr = d.tags ? d.tags.split(',').map(function(tag) { return tag.trim(); }).filter(Boolean) : [];
-    return d;
-  });
-
-  let activeTag = '__all__';
-  let currentPage = 1;
-
-  function escHtml(value) {
-    return String(value == null ? '' : value).replace(/[&<>"']/g, function(character) {
-      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[character];
-    });
-  }
-
-  function rowHtml(entry) {
-    const date = entry.date
-      ? '<time class="entry-date" datetime="' + escHtml(entry.date) + '">' + escHtml(entry.date) + '</time>'
-      : '';
-    const title = entry.url
-      ? '<a href="' + escHtml(entry.url) + '">' + escHtml(entry.title) + '</a>'
-      : escHtml(entry.title);
-    const note = entry.note ? '<p class="entry-abstract">' + escHtml(entry.note) + '</p>' : '';
-    const tags = entry.tagsArr.map(function(tag) {
-      return '<button type="button" class="tag" data-tag="' + escHtml(tag) + '">' + escHtml(tag) + '</button>';
-    }).join('');
-    return '<article class="entry">' + date
-      + '<h2 class="entry-title">' + title + '</h2>' + note
-      + '<div class="entry-tags" aria-label="Tags">' + tags + '</div></article>';
-  }
-
-  function matchingEntries() {
-    const query = searchBox.value.trim().toLowerCase();
-    return DATA.filter(function(entry) {
-      return (activeTag === '__all__' || entry.tagsArr.includes(activeTag))
-        && (query === '' || entry.search.includes(query));
-    });
-  }
-
-  function render() {
-    const showEntries = DEFAULT_SHOW || searchBox.value.trim() !== '' || activeTag !== '__all__';
-    const matches = matchingEntries();
-    const pageCount = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
-    currentPage = Math.min(currentPage, pageCount);
-    const start = (currentPage - 1) * PAGE_SIZE;
-
-    listEl.innerHTML = showEntries ? matches.slice(start, start + PAGE_SIZE).map(rowHtml).join('') : '';
-    document.dispatchEvent(new CustomEvent('entries-rendered', { detail: { target: listEl } }));
-    noResults.hidden = !(showEntries && matches.length === 0);
-
-    if (!showEntries) countLabel.textContent = 'Search to show entries';
-    else if (!matches.length) countLabel.textContent = '0 matches';
-    else countLabel.textContent = (start + 1) + '-' + Math.min(start + PAGE_SIZE, matches.length)
-      + ' / ' + matches.length + ' matches';
-
-    pagerEl.hidden = !showEntries || pageCount <= 1;
-    pagerEl.innerHTML = pagerEl.hidden ? ''
-      : '<button type="button" class="pager-btn" data-dir="prev"' + (currentPage <= 1 ? ' disabled' : '') + '>Previous</button>'
-        + '<span class="pager-label">Page ' + currentPage + ' / ' + pageCount + '</span>'
-        + '<button type="button" class="pager-btn" data-dir="next"' + (currentPage >= pageCount ? ' disabled' : '') + '>Next</button>';
-  }
-
-  function runSearch() {
-    currentPage = 1;
-    render();
-  }
-
-  function selectTag(tag) {
-    activeTag = tag;
-    tagBar.querySelectorAll('button.tag').forEach(function(button) {
-      button.setAttribute('aria-pressed', button.dataset.tag === tag ? 'true' : 'false');
-    });
-    runSearch();
-  }
-
-  function filterTags() {
-    const query = tagSearch.value.trim().toLowerCase();
-    tagBar.querySelectorAll('button.tag[data-tag]').forEach(function(button) {
-      if (button.dataset.tag === '__all__') return;
-      button.hidden = query ? !button.textContent.toLowerCase().includes(query) : button.classList.contains('tag-extra');
-    });
-    const hint = tagBar.querySelector('.tag-more-hint');
-    if (hint) hint.hidden = query !== '';
-  }
-
-  searchBox.form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    runSearch();
-  });
-  tagSearch.addEventListener('input', filterTags);
-
-  document.addEventListener('click', function(event) {
-    if (filtersMenu.open && !filtersMenu.contains(event.target)) filtersMenu.open = false;
-  });
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && filtersMenu.open) {
-      filtersMenu.open = false;
-      filtersToggle.focus();
-    }
-  });
-
-  tagBar.addEventListener('click', function(event) {
-    const button = event.target.closest('button.tag');
-    if (!button) return;
-    selectTag(button.dataset.tag);
-    filtersMenu.open = false;
-    filtersToggle.focus();
-  });
-  listEl.addEventListener('click', function(event) {
-    const button = event.target.closest('button.tag[data-tag]');
-    if (!button) return;
-    selectTag(button.dataset.tag);
-    window.scrollTo({ top: 0 });
-  });
-  pagerEl.addEventListener('click', function(event) {
-    const button = event.target.closest('button.pager-btn');
-    if (!button || button.disabled) return;
-    currentPage += button.dataset.dir === 'next' ? 1 : -1;
-    render();
-    listEl.scrollIntoView({ block: 'start' });
-  });
-
-  runSearch();
-  filterTags();
-})();
-</script></main>
+    <section data-entry-list aria-label="Results"></section>
+    <p class="no-results" data-no-results hidden>No posts match your search.</p>
+    <nav class="pager" data-pager aria-label="Result pages" hidden></nav>
+    <script type="application/json" data-entry-data>[{"tags":["finds","ai","mathematics","physics","programming","systems","strategy","music"],"category":"Finds","url":"blog/finds-22-september-2026.html","title":"Finds — 22 September 2026","note":"Notes and links on agent verification, mathematical structures, systems, physics, strategy, and media.","date":"2026-09-22"},{"tags":["recovery notes"],"category":"recovery","url":"blog/oth-recovery-260919.html","title":"Recovery Notes for 19 September 2026","note":"Recovery notes","date":"2026-09-19"},{"tags":["mac","setup"],"category":"Computing","url":"blog/mac-set-up.html","title":"Mac Set Up","note":"Mac set up","date":"2026-09-13"},{"tags":["ooda","strategy","orientation","tempo","slouching"],"category":"Strategy","url":"blog/ooda-orientation-and-slouching.html","title":"OODA, Orientation, and Slouching","note":"A vocabulary of OODA loops, orientation, tempo, perception, and strategic slack.","date":"2026-09-13"},{"tags":["art","colour"],"category":"General","url":"blog/pluvium-colour.html","title":"Pluvium's Workshop on colours","note":"Summary on how colour from Pluvium's tutorial","date":"2026-09-13"},{"tags":["finds","programming","computing","ai","reflection"],"category":"Finds","url":"blog/finds-6-november-2025.html","title":"Finds — 6 November 2025","note":"Collected notes on coding, abstractions, organizations, computing, AI, and personal reflection.","date":"2025-11-06"},{"tags":["finds","mathematics","programming","learning","systems"],"category":"Finds","url":"blog/finds-20-october-2025.html","title":"Finds — 20 October 2025","note":"Notes and links on options, systems performance, mathematics, compilers, and learning.","date":"2025-10-20"},{"tags":["confidence","willpower","curiosity","learning"],"category":"Reflection","url":"blog/groundless-confidence.html","title":"Groundless Confidence","note":"Notes on confidence, willpower, curiosity, and the value of thinking with companions.","date":""},{"tags":["ontology","definitions","mathematics","metarationality"],"category":"Philosophy","url":"blog/notes-on-ontology.html","title":"Notes on Ontology","note":"Working notes on definitions, ontological splitting, nebulosity, and purpose-laden categories.","date":""},{"tags":["search","algorithms","heuristics","optimisation"],"category":"Algorithms","url":"blog/search-reflections-i.html","title":"Search Reflections I","note":"A compact survey of objectives, heuristics, pruning, search trade-offs, and repairability.","date":""},{"tags":["ssh","github","macos","server","security"],"category":"Systems","url":"blog/ssh-setup-guide.html","title":"SSH Setup Guide","note":"Practical steps for GitHub SSH authentication and key-based Mac-to-server access.","date":""}]</script>
+    <script src="static/js/filter.js" defer></script></main>
     <footer class="site-footer">
       Made with the assistance of AI.
     </footer>

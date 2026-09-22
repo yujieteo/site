@@ -3,6 +3,7 @@
   "title": "CV",
   "type": "object",
   "required": ["name", "title", "affiliation", "bio", "education"],
+  "additionalProperties": false,
   "properties": {
     "name": { "type": "string" },
     "title": { "type": "string" },
@@ -14,6 +15,7 @@
       "items": {
         "type": "object",
         "required": ["degree", "institution", "year"],
+        "additionalProperties": false,
         "properties": {
           "degree": { "type": "string" },
           "institution": { "type": "string" },
@@ -26,6 +28,7 @@
       "items": {
         "type": "object",
         "required": ["name", "year"],
+        "additionalProperties": false,
         "properties": {
           "name": { "type": "string" },
           "year": { "type": "string" }

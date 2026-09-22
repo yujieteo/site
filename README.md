@@ -16,7 +16,7 @@ scripts/build.py     Static-site generator
 scripts/parse_notes.py
                      Plain-text link notes to YAML converter
 scripts/validate.py  YAML/schema validation
-static/              Source CSS and other static assets
+static/              Source CSS and browser JavaScript
 templates/           Shared HTML templates
 site/                Generated site
 ```
@@ -31,8 +31,8 @@ python3 -m venv .venv
 open site/index.html
 ```
 
-The build replaces generated HTML and static assets under `site/`, preventing
-renamed or deleted posts from leaving stale pages behind.
+The build recreates the generated `site/` directory, preventing renamed or
+deleted content from leaving stale output behind. Keep source files outside it.
 
 ## Blog posts
 

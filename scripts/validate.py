@@ -29,13 +29,7 @@ def load_document(path):
         return None, f"could not parse YAML ({exc})"
 
 
-def as_records(document):
-    if document is None:
-        return []
-    return document if isinstance(document, list) else [document]
-
-
-def validate_file(path, schema):
+def validate_file(path, validator):
     label = path.relative_to(DATA)
     document, load_error = load_document(path)
     if load_error:
@@ -43,8 +37,8 @@ def validate_file(path, schema):
         return 1
 
     errors = 0
-    validator = jsonschema.Draft7Validator(schema)
-    for index, record in enumerate(as_records(document)):
+    records = document if isinstance(document, list) else ([] if document is None else [document])
+    for index, record in enumerate(records):
         for error in sorted(validator.iter_errors(record), key=lambda item: list(item.path)):
             location = ".".join(str(part) for part in error.path)
             suffix = f" at {location}" if location else ""
@@ -63,6 +57,7 @@ def validate_all():
             print(f"[FAIL] {schema_path.name}: invalid schema ({exc.message})")
             errors += 1
             continue
+        validator = jsonschema.Draft7Validator(schema)
 
         data_dir = DATA / schema_path.name.removesuffix(".schema.json")
         if not data_dir.is_dir():
@@ -72,7 +67,7 @@ def validate_all():
         patterns = ("*.md",) if data_dir.name == "blog" else ("*.yaml", "*.yml")
         paths = sorted(path for pattern in patterns for path in data_dir.glob(pattern))
         for path in paths:
-            errors += validate_file(path, schema)
+            errors += validate_file(path, validator)
     return errors
 
 

@@ -6,7 +6,7 @@
   <title>Finds — 20 October 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
@@ -16,10 +16,10 @@
       <a class="site-name" href="../index.html">Yu Jie Teo</a>
       <p class="site-tagline">Personal website</p>
       <nav class="site-nav" aria-label="Primary">
-        <a href="../index.html" class="">Home</a>
-        <a href="../about.html" class="">About</a>
-        <a href="../papers.html" class="">Paper Links</a>
-        <a href="../blog.html" class="active" aria-current="page">Blog</a>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../papers.html">Paper Links</a>
+        <a href="../blog.html" aria-current="page">Blog</a>
       </nav>
     </header>
     <main id="main-content" tabindex="-1"><h1 class="page-title">Finds — 20 October 2025</h1><p class="post-meta"><time datetime="2025-10-20">2025-10-20</time></p><div class="post-body"><h2>Taleb on decay in tail risk hedging</h2>
@@ -41,29 +41,7 @@
 <h2>Schur's lemma — One line proof</h2>
 <p>Every endomorphism has an eigenvalue over the field and eigenspaces as subrepresentations.</p>
 <h2>Karpathy on blog posts and slides</h2>
-<p>Don't write blogs, don't do slides, build the code, arrange it, get it to work.</p></div>
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
-    },
-    svg: { fontCache: 'global', scale: 1.06 }
-  };
-  document.addEventListener('entries-rendered', function (event) {
-    if (!(window.MathJax && window.MathJax.typesetPromise)) return;
-    const target = event.detail && event.detail.target;
-    if (window.MathJax.typesetClear) MathJax.typesetClear(target ? [target] : undefined);
-    MathJax.typesetPromise(target ? [target] : undefined);
-  });
-</script>
-<script id="MathJax-script" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
-</main>
+<p>Don't write blogs, don't do slides, build the code, arrange it, get it to work.</p></div></main>
     <footer class="site-footer">
       Made with the assistance of AI.
     </footer>
