@@ -18,6 +18,8 @@
         <a href="index.html" class="">Home</a>
         <a href="about.html" class="">About</a>
         <a href="calendar.html" class="">Calendar</a>
+        <a href="papers.html" class="">Paper Links</a>
+        <a href="ratings.html" class="">Ratings</a>
         <a href="blog.html" class="active">Blog</a>
       </nav>
     </header>
@@ -30,25 +32,26 @@
       <input type="text" id="blog-search" class="search-box" placeholder="Search posts..."
              autocomplete="off">
       <button type="button" id="blog-searchbtn" class="search-btn">Search</button>
-      <button type="button" id="blog-filters-toggle" class="filters-toggle"
-              aria-haspopup="true" aria-expanded="false" aria-controls="blog-tagbar">
-        Filters
-      </button>
+      <details id="blog-filters-menu" class="filters-menu">
+        <summary id="blog-filters-toggle" class="filters-toggle"
+                 aria-haspopup="true" aria-expanded="false" aria-controls="blog-tagbar">
+          Filters
+        </summary>
+        <div id="blog-tagbar" class="tag-panel" role="group" aria-label="Filter by tag">
+          <label class="visually-hidden" for="blog-tagsearch">Filter the tag list</label>
+          <input type="text" id="blog-tagsearch" class="tag-search-box"
+                 placeholder="Find a tag..." autocomplete="off">
+          <div class="tag-panel-buttons"><button class="tag active" data-tag="__all__" type="button" aria-pressed="true">all <span class="tag-count">10</span></button><button class="tag" data-tag="finds" type="button" aria-pressed="false">finds <span class="tag-count">2</span></button><button class="tag" data-tag="learning" type="button" aria-pressed="false">learning <span class="tag-count">2</span></button><button class="tag" data-tag="mathematics" type="button" aria-pressed="false">mathematics <span class="tag-count">2</span></button><button class="tag" data-tag="programming" type="button" aria-pressed="false">programming <span class="tag-count">2</span></button><button class="tag" data-tag="ai" type="button" aria-pressed="false">ai <span class="tag-count">1</span></button><button class="tag" data-tag="algorithms" type="button" aria-pressed="false">algorithms <span class="tag-count">1</span></button><button class="tag" data-tag="art" type="button" aria-pressed="false">art <span class="tag-count">1</span></button><button class="tag" data-tag="colour" type="button" aria-pressed="false">colour <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="computing" type="button" aria-pressed="false">computing <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="confidence" type="button" aria-pressed="false">confidence <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="curiosity" type="button" aria-pressed="false">curiosity <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="definitions" type="button" aria-pressed="false">definitions <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="github" type="button" aria-pressed="false">github <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="heuristics" type="button" aria-pressed="false">heuristics <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="mac" type="button" aria-pressed="false">mac <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="macos" type="button" aria-pressed="false">macos <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="metarationality" type="button" aria-pressed="false">metarationality <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="ontology" type="button" aria-pressed="false">ontology <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="ooda" type="button" aria-pressed="false">ooda <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="optimisation" type="button" aria-pressed="false">optimisation <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="orientation" type="button" aria-pressed="false">orientation <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="recovery notes" type="button" aria-pressed="false">recovery notes <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="reflection" type="button" aria-pressed="false">reflection <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="search" type="button" aria-pressed="false">search <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="security" type="button" aria-pressed="false">security <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="server" type="button" aria-pressed="false">server <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="setup" type="button" aria-pressed="false">setup <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="slouching" type="button" aria-pressed="false">slouching <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="ssh" type="button" aria-pressed="false">ssh <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="strategy" type="button" aria-pressed="false">strategy <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="systems" type="button" aria-pressed="false">systems <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="tempo" type="button" aria-pressed="false">tempo <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="willpower" type="button" aria-pressed="false">willpower <span class="tag-count">1</span></button><p class="tag-more-hint">+25 more &mdash; type above to find one</p></div>
+        </div>
+      </details>
       <span class="result-count" id="blog-count" aria-live="polite" aria-atomic="true">10 entries</span>
-
-      <div id="blog-tagbar" class="tag-panel" role="group" aria-label="Filter by tag" style="display:none;">
-        <label class="visually-hidden" for="blog-tagsearch">Filter the tag list</label>
-        <input type="text" id="blog-tagsearch" class="tag-search-box"
-               placeholder="Find a tag..." autocomplete="off">
-        <div class="tag-panel-buttons"><button class="tag active" data-tag="__all__" type="button" aria-pressed="true">all <span class="tag-count">10</span></button><button class="tag" data-tag="Finds" type="button" aria-pressed="false">Finds <span class="tag-count">2</span></button><button class="tag" data-tag="General" type="button" aria-pressed="false">General <span class="tag-count">2</span></button><button class="tag" data-tag="Algorithms" type="button" aria-pressed="false">Algorithms <span class="tag-count">1</span></button><button class="tag" data-tag="Computing" type="button" aria-pressed="false">Computing <span class="tag-count">1</span></button><button class="tag" data-tag="Philosophy" type="button" aria-pressed="false">Philosophy <span class="tag-count">1</span></button><button class="tag" data-tag="Reflection" type="button" aria-pressed="false">Reflection <span class="tag-count">1</span></button><button class="tag" data-tag="Strategy" type="button" aria-pressed="false">Strategy <span class="tag-count">1</span></button><button class="tag" data-tag="Systems" type="button" aria-pressed="false">Systems <span class="tag-count">1</span></button></div>
-      </div>
     </div>
     <div id="blog-list"></div>
     <div class="no-results" id="blog-noresults" role="status" aria-live="polite" style="display:none;">No posts match your search.</div>
     <div class="pager" id="blog-pager" role="navigation" aria-label="Result pages" style="display:none;"></div>
     <script>
       window.__DATA__ = window.__DATA__ || {};
-      window.__DATA__['blog'] = [{"tags": "mac, setup", "search": "mac set up mac set up computing 2026-09-13", "url": "blog/044-macintosh.html", "title": "Mac Set Up", "note": "Mac set up", "cat": "Computing", "date": "2026-09-13"}, {"tags": "ooda, strategy, orientation, tempo, slouching", "search": "ooda, orientation, and slouching a vocabulary of ooda loops, orientation, tempo, perception, and strategic slack. strategy 2026-09-13", "url": "blog/058-ooda.html", "title": "OODA, Orientation, and Slouching", "note": "A vocabulary of OODA loops, orientation, tempo, perception, and strategic slack.", "cat": "Strategy", "date": "2026-09-13"}, {"tags": "art, colour", "search": "pluvium's workshop on colours summary on how colour from pluvium's tutorial general 2026-09-13", "url": "blog/pluvium-colour.html", "title": "Pluvium's Workshop on colours", "note": "Summary on how colour from Pluvium's tutorial", "cat": "General", "date": "2026-09-13"}, {"tags": "finds, programming, computing, ai, reflection", "search": "finds — 6 november 2025 collected notes on coding, abstractions, organizations, computing, ai, and personal reflection. finds 2025-11-06", "url": "blog/052-251106_finds.html", "title": "Finds — 6 November 2025", "note": "Collected notes on coding, abstractions, organizations, computing, AI, and personal reflection.", "cat": "Finds", "date": "2025-11-06"}, {"tags": "finds, mathematics, programming, learning, systems", "search": "finds — 20 october 2025 notes and links on options, systems performance, mathematics, compilers, and learning. finds 2025-10-20", "url": "blog/047-251020_finds.html", "title": "Finds — 20 October 2025", "note": "Notes and links on options, systems performance, mathematics, compilers, and learning.", "cat": "Finds", "date": "2025-10-20"}, {"tags": "confidence, willpower, curiosity, learning", "search": "groundless confidence notes on confidence, willpower, curiosity, and the value of thinking with companions. reflection ", "url": "blog/003-groundless.html", "title": "Groundless Confidence", "note": "Notes on confidence, willpower, curiosity, and the value of thinking with companions.", "cat": "Reflection", "date": ""}, {"tags": "ontology, definitions, mathematics, metarationality", "search": "notes on ontology working notes on definitions, ontological splitting, nebulosity, and purpose-laden categories. philosophy ", "url": "blog/039-eggplant.html", "title": "Notes on Ontology", "note": "Working notes on definitions, ontological splitting, nebulosity, and purpose-laden categories.", "cat": "Philosophy", "date": ""}, {"tags": "search, algorithms, heuristics, optimisation", "search": "search reflections i a compact survey of objectives, heuristics, pruning, search trade-offs, and repairability. algorithms ", "url": "blog/049-search-refl1.html", "title": "Search Reflections I", "note": "A compact survey of objectives, heuristics, pruning, search trade-offs, and repairability.", "cat": "Algorithms", "date": ""}, {"tags": "ssh, github, macos, server, security", "search": "ssh setup guide practical steps for github ssh authentication and key-based mac-to-server access. systems ", "url": "blog/051-ssh-guide.html", "title": "SSH Setup Guide", "note": "Practical steps for GitHub SSH authentication and key-based Mac-to-server access.", "cat": "Systems", "date": ""}, {"tags": "General", "search": "oth-recovery-260919  general ", "url": "blog/oth-recovery-260919.html", "title": "oth-recovery-260919", "note": "", "cat": "General", "date": ""}];
+      window.__DATA__['blog'] = [{"tags": "recovery notes", "search": "recovery notes for 19 september 2026 recovery notes recovery recovery notes  2026-09-19", "url": "blog/oth-recovery-260919.html", "title": "Recovery Notes for 19 September 2026", "note": "Recovery notes", "cat": "recovery", "date": "2026-09-19", "rating": ""}, {"tags": "mac, setup", "search": "mac set up mac set up computing mac, setup  2026-09-13", "url": "blog/mac-set-up.html", "title": "Mac Set Up", "note": "Mac set up", "cat": "Computing", "date": "2026-09-13", "rating": ""}, {"tags": "ooda, strategy, orientation, tempo, slouching", "search": "ooda, orientation, and slouching a vocabulary of ooda loops, orientation, tempo, perception, and strategic slack. strategy ooda, strategy, orientation, tempo, slouching  2026-09-13", "url": "blog/ooda-orientation-and-slouching.html", "title": "OODA, Orientation, and Slouching", "note": "A vocabulary of OODA loops, orientation, tempo, perception, and strategic slack.", "cat": "Strategy", "date": "2026-09-13", "rating": ""}, {"tags": "art, colour", "search": "pluvium's workshop on colours summary on how colour from pluvium's tutorial general art, colour  2026-09-13", "url": "blog/pluvium-colour.html", "title": "Pluvium's Workshop on colours", "note": "Summary on how colour from Pluvium's tutorial", "cat": "General", "date": "2026-09-13", "rating": ""}, {"tags": "finds, programming, computing, ai, reflection", "search": "finds — 6 november 2025 collected notes on coding, abstractions, organizations, computing, ai, and personal reflection. finds finds, programming, computing, ai, reflection  2025-11-06", "url": "blog/finds-6-november-2025.html", "title": "Finds — 6 November 2025", "note": "Collected notes on coding, abstractions, organizations, computing, AI, and personal reflection.", "cat": "Finds", "date": "2025-11-06", "rating": ""}, {"tags": "finds, mathematics, programming, learning, systems", "search": "finds — 20 october 2025 notes and links on options, systems performance, mathematics, compilers, and learning. finds finds, mathematics, programming, learning, systems  2025-10-20", "url": "blog/finds-20-october-2025.html", "title": "Finds — 20 October 2025", "note": "Notes and links on options, systems performance, mathematics, compilers, and learning.", "cat": "Finds", "date": "2025-10-20", "rating": ""}, {"tags": "confidence, willpower, curiosity, learning", "search": "groundless confidence notes on confidence, willpower, curiosity, and the value of thinking with companions. reflection confidence, willpower, curiosity, learning  ", "url": "blog/groundless-confidence.html", "title": "Groundless Confidence", "note": "Notes on confidence, willpower, curiosity, and the value of thinking with companions.", "cat": "Reflection", "date": "", "rating": ""}, {"tags": "ontology, definitions, mathematics, metarationality", "search": "notes on ontology working notes on definitions, ontological splitting, nebulosity, and purpose-laden categories. philosophy ontology, definitions, mathematics, metarationality  ", "url": "blog/notes-on-ontology.html", "title": "Notes on Ontology", "note": "Working notes on definitions, ontological splitting, nebulosity, and purpose-laden categories.", "cat": "Philosophy", "date": "", "rating": ""}, {"tags": "search, algorithms, heuristics, optimisation", "search": "search reflections i a compact survey of objectives, heuristics, pruning, search trade-offs, and repairability. algorithms search, algorithms, heuristics, optimisation  ", "url": "blog/search-reflections-i.html", "title": "Search Reflections I", "note": "A compact survey of objectives, heuristics, pruning, search trade-offs, and repairability.", "cat": "Algorithms", "date": "", "rating": ""}, {"tags": "ssh, github, macos, server, security", "search": "ssh setup guide practical steps for github ssh authentication and key-based mac-to-server access. systems ssh, github, macos, server, security  ", "url": "blog/ssh-setup-guide.html", "title": "SSH Setup Guide", "note": "Practical steps for GitHub SSH authentication and key-based Mac-to-server access.", "cat": "Systems", "date": "", "rating": ""}];
     </script>
     
 <script>
@@ -57,6 +60,7 @@
   const searchBtn = document.getElementById('blog-searchbtn');
   const tagBar = document.getElementById('blog-tagbar');
   const tagSearch = document.getElementById('blog-tagsearch');
+  const filtersMenu = document.getElementById('blog-filters-menu');
   const filtersToggle = document.getElementById('blog-filters-toggle');
   const listEl = document.getElementById('blog-list');
   const noResults = document.getElementById('blog-noresults');
@@ -85,11 +89,21 @@
 
   function rowHtml(d) {
     const dateHtml = d.date ? '<div class="entry-date">' + escHtml(d.date) + '</div>' : '';
+    const titleHtml = d.url
+      ? '<a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a>'
+      : escHtml(d.title);
+    const ratingHtml = d.rating
+      ? '<div class="entry-meta"><span class="rating-verdict rating-'
+        + escHtml(d.rating.toLowerCase()) + '">' + escHtml(d.rating) + '</span></div>'
+      : '';
     return '<div class="entry">'
       + dateHtml
-      + '<div class="entry-title"><a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a></div>'
+      + ratingHtml
+      + '<div class="entry-title">' + titleHtml + '</div>'
       + '<div class="entry-abstract">' + escHtml(d.note) + '</div>'
-      + '<div><span class="tag" data-tag="' + escHtml(d.cat) + '">' + escHtml(d.cat) + '</span></div>'
+      + '<div>' + d.tagsArr.map(function(tag) {
+          return '<span class="tag" data-tag="' + escHtml(tag) + '">' + escHtml(tag) + '</span>';
+        }).join(' ') + '</div>'
       + '</div>';
   }
 
@@ -172,7 +186,9 @@
       if (q === '') {
         b.style.display = b.classList.contains('tag-extra') ? 'none' : '';
       } else {
-        b.style.display = label.includes(q) ? '' : 'none';
+        // Use an explicit display value so a matching .tag-extra button
+        // overrides the stylesheet's default display:none rule.
+        b.style.display = label.includes(q) ? 'inline-flex' : 'none';
       }
     });
     const hint = tagBar.querySelector('.tag-more-hint');
@@ -180,8 +196,8 @@
   }
 
   function togglePanel(forceOpen) {
-    panelOpen = typeof forceOpen === 'boolean' ? forceOpen : !panelOpen;
-    tagBar.style.display = panelOpen ? 'block' : 'none';
+    filtersMenu.open = typeof forceOpen === 'boolean' ? forceOpen : !filtersMenu.open;
+    panelOpen = filtersMenu.open;
     filtersToggle.classList.toggle('open', panelOpen);
     filtersToggle.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
     if (panelOpen) {
@@ -199,13 +215,14 @@
     tagSearch.addEventListener('input', filterTagButtons);
   }
 
-  filtersToggle.addEventListener('click', function(e) {
-    e.stopPropagation();
-    togglePanel();
+  filtersMenu.addEventListener('toggle', function() {
+    panelOpen = filtersMenu.open;
+    filtersToggle.classList.toggle('open', panelOpen);
+    filtersToggle.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
   });
 
   document.addEventListener('click', function(e) {
-    if (panelOpen && !tagBar.contains(e.target) && e.target !== filtersToggle) {
+    if (panelOpen && !filtersMenu.contains(e.target)) {
       togglePanel(false);
     }
   });

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calendar</title>
+  <title>Ratings</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet">
@@ -17,59 +17,59 @@
       <nav class="site-nav">
         <a href="index.html" class="">Home</a>
         <a href="about.html" class="">About</a>
-        <a href="calendar.html" class="active">Calendar</a>
+        <a href="calendar.html" class="">Calendar</a>
         <a href="papers.html" class="">Paper Links</a>
-        <a href="ratings.html" class="">Ratings</a>
+        <a href="ratings.html" class="active">Ratings</a>
         <a href="blog.html" class="">Blog</a>
       </nav>
     </header>
     <main>
       
 <a class="skip-link" href="#main-content">Skip to content</a>
-<div id="main-content" tabindex="-1"><h2 class="section-title">Calendar</h2>
-    <div class="search-row" id="calendar-filters-wrap" style="position:relative;">
-      <label class="visually-hidden" for="calendar-search">Search events...</label>
-      <input type="text" id="calendar-search" class="search-box" placeholder="Search events..."
+<div id="main-content" tabindex="-1"><h2 class="section-title">Ratings</h2><p class="ratings-key"><strong>Avoid</strong> — skip it; <strong>Once</strong> — worthwhile once; <strong>Revisit</strong> — return occasionally; <strong>Keep</strong> — a lasting favourite.</p>
+    <div class="search-row" id="rating-filters-wrap" style="position:relative;">
+      <label class="visually-hidden" for="rating-search">Search ratings and reviews...</label>
+      <input type="text" id="rating-search" class="search-box" placeholder="Search ratings and reviews..."
              autocomplete="off">
-      <button type="button" id="calendar-searchbtn" class="search-btn">Search</button>
-      <details id="calendar-filters-menu" class="filters-menu">
-        <summary id="calendar-filters-toggle" class="filters-toggle"
-                 aria-haspopup="true" aria-expanded="false" aria-controls="calendar-tagbar">
+      <button type="button" id="rating-searchbtn" class="search-btn">Search</button>
+      <details id="rating-filters-menu" class="filters-menu">
+        <summary id="rating-filters-toggle" class="filters-toggle"
+                 aria-haspopup="true" aria-expanded="false" aria-controls="rating-tagbar">
           Filters
         </summary>
-        <div id="calendar-tagbar" class="tag-panel" role="group" aria-label="Filter by tag">
-          <label class="visually-hidden" for="calendar-tagsearch">Filter the tag list</label>
-          <input type="text" id="calendar-tagsearch" class="tag-search-box"
+        <div id="rating-tagbar" class="tag-panel" role="group" aria-label="Filter by tag">
+          <label class="visually-hidden" for="rating-tagsearch">Filter the tag list</label>
+          <input type="text" id="rating-tagsearch" class="tag-search-box"
                  placeholder="Find a tag..." autocomplete="off">
-          <div class="tag-panel-buttons"><button class="tag active" data-tag="__all__" type="button" aria-pressed="true">all <span class="tag-count">1</span></button><button class="tag" data-tag="NA" type="button" aria-pressed="false">NA <span class="tag-count">1</span></button></div>
+          <div class="tag-panel-buttons"><button class="tag active" data-tag="__all__" type="button" aria-pressed="true">all <span class="tag-count">6</span></button><button class="tag" data-tag="food" type="button" aria-pressed="false">food <span class="tag-count">6</span></button><button class="tag" data-tag="Keep" type="button" aria-pressed="false">Keep <span class="tag-count">5</span></button><button class="tag" data-tag="Revisit" type="button" aria-pressed="false">Revisit <span class="tag-count">1</span></button></div>
         </div>
       </details>
-      <span class="result-count" id="calendar-count" aria-live="polite" aria-atomic="true">1 entries</span>
+      <span class="result-count" id="rating-count" aria-live="polite" aria-atomic="true">6 entries</span>
     </div>
-    <div id="calendar-list"></div>
-    <div class="no-results" id="calendar-noresults" role="status" aria-live="polite" style="display:none;">No events match your search.</div>
-    <div class="pager" id="calendar-pager" role="navigation" aria-label="Result pages" style="display:none;"></div>
+    <div id="rating-list"></div>
+    <div class="no-results" id="rating-noresults" role="status" aria-live="polite" style="display:none;">No ratings match your search.</div>
+    <div class="pager" id="rating-pager" role="navigation" aria-label="Result pages" style="display:none;"></div>
     <script>
       window.__DATA__ = window.__DATA__ || {};
-      window.__DATA__['calendar'] = [{"tags": "NA", "search": "overseas trip (tbc) work based international travel. na na  2026-11-01", "url": "#", "title": "Overseas Trip (TBC)", "note": "Work based international travel.", "cat": "NA", "date": "2026-11-01", "rating": ""}];
+      window.__DATA__['rating'] = [{"tags": "food, Keep", "search": "tai seng fish soup — tampines 1 don't pick milk, sliced fish only. food food, keep keep ", "url": "", "title": "Tai Seng Fish Soup — Tampines 1", "note": "don't pick milk, sliced fish only.", "cat": "food", "date": "", "rating": "Keep"}, {"tags": "food, Keep", "search": "home porridge with egg — home simple, repeatable, and easy to account for as a daily breakfast. food food, keep keep ", "url": "", "title": "Home porridge with egg — Home", "note": "simple, repeatable, and easy to account for as a daily breakfast.", "cat": "food", "date": "", "rating": "Keep"}, {"tags": "food, Keep", "search": "chicken daily bowl — stuff'd our tampines hub #01-81 a reliable post-training dinner with chicken kebab, rice, beans, salsa, lettuce, and habanero sauce. food food, keep keep ", "url": "", "title": "Chicken Daily Bowl — Stuff'd Our Tampines Hub #01-81", "note": "a reliable post-training dinner with chicken kebab, rice, beans, salsa, lettuce, and habanero sauce.", "cat": "food", "date": "", "rating": "Keep"}, {"tags": "food, Keep", "search": "sliced fish porridge with egg — botak cantonese porridge our tampines hub #01-65 a dependable weekend meal that is light enough before rowing and still provides useful protein. food food, keep keep ", "url": "", "title": "Sliced fish porridge with egg — Botak Cantonese Porridge Our Tampines Hub #01-65", "note": "a dependable weekend meal that is light enough before rowing and still provides useful protein.", "cat": "food", "date": "", "rating": "Keep"}, {"tags": "food, Revisit", "search": "banana cream — good nectar our tampines hub #b1-k12 a satisfying post-swim recovery drink when the day's calorie budget has room for it. food food, revisit revisit ", "url": "", "title": "Banana Cream — Good Nectar Our Tampines Hub #B1-K12", "note": "a satisfying post-swim recovery drink when the day's calorie budget has room for it.", "cat": "food", "date": "", "rating": "Revisit"}, {"tags": "food, Keep", "search": "banana with 100plus — our tampines hub useful light fuel between rowing and swimming without weighing down the next session. food food, keep keep ", "url": "", "title": "Banana with 100PLUS — Our Tampines Hub", "note": "useful light fuel between rowing and swimming without weighing down the next session.", "cat": "food", "date": "", "rating": "Keep"}];
     </script>
     
 <script>
 (function() {
-  const searchBox = document.getElementById('calendar-search');
-  const searchBtn = document.getElementById('calendar-searchbtn');
-  const tagBar = document.getElementById('calendar-tagbar');
-  const tagSearch = document.getElementById('calendar-tagsearch');
-  const filtersMenu = document.getElementById('calendar-filters-menu');
-  const filtersToggle = document.getElementById('calendar-filters-toggle');
-  const listEl = document.getElementById('calendar-list');
-  const noResults = document.getElementById('calendar-noresults');
-  const countLabel = document.getElementById('calendar-count');
-  const pagerEl = document.getElementById('calendar-pager');
-  const ROW_KIND = 'calendar';
+  const searchBox = document.getElementById('rating-search');
+  const searchBtn = document.getElementById('rating-searchbtn');
+  const tagBar = document.getElementById('rating-tagbar');
+  const tagSearch = document.getElementById('rating-tagsearch');
+  const filtersMenu = document.getElementById('rating-filters-menu');
+  const filtersToggle = document.getElementById('rating-filters-toggle');
+  const listEl = document.getElementById('rating-list');
+  const noResults = document.getElementById('rating-noresults');
+  const countLabel = document.getElementById('rating-count');
+  const pagerEl = document.getElementById('rating-pager');
+  const ROW_KIND = 'rating';
   const DEFAULT_SHOW = true;
 
-  const DATA = window.__DATA__['calendar'].map(function(d) {
+  const DATA = window.__DATA__['rating'].map(function(d) {
     d.tagsArr = d.tags ? d.tags.split(',').map(function(t){return t.trim();}).filter(Boolean) : [];
     return d;
   });

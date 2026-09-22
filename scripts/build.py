@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Render YAML/Markdown data files into a static site: Home (resources),
-About, Calendar, and a Blog (posts written as Markdown files).
+About, Calendar, Paper Links, Ratings, and a Blog (posts written as Markdown files).
 
 CHANGES IN THIS VERSION
 ------------------------
-- Removed the Papers page entirely (build_papers, nav_papers, paper-links
-  loading are all gone).
+- Paper links are rendered separately from general resources at
+  `site/papers.html`.
 - Added an About page, rendered from a single `data/about/about.yaml`
   file. It supports a Markdown `intro` plus an optional list of
   `sections`, each with its own `title`/`content` (also Markdown).
@@ -41,17 +41,14 @@ CHANGES IN THIS VERSION
 NOTE ON templates/base.html
 ----------------------------
 This script fills in `{nav_home}`, `{nav_about}`, `{nav_calendar}`,
-`{nav_blog}` placeholders (each becomes the string "active" on the
-current page, "" elsewhere). Your base.html previously referenced
-`{nav_papers}` -- swap that out for the three new placeholders in the
-nav markup, or the missing-key defaultdict will just render them as
-empty strings and nothing will be marked active/wrong, but the links
-themselves need to exist in the template's <nav> block.
+`{nav_paper_links}`, `{nav_ratings}`, and `{nav_blog}` placeholders
+(each becomes the string "active" on the current page and "" elsewhere).
 """
 
 import html
 import json
 import os
+import re
 from collections import Counter, defaultdict
 
 import yaml
@@ -137,6 +134,7 @@ FILTER_SCRIPT = """
   const searchBtn = document.getElementById('{searchbtn_id}');
   const tagBar = document.getElementById('{tagbar_id}');
   const tagSearch = document.getElementById('{tagsearch_id}');
+  const filtersMenu = document.getElementById('{menu_id}');
   const filtersToggle = document.getElementById('{toggle_id}');
   const listEl = document.getElementById('{list_id}');
   const noResults = document.getElementById('{noresults_id}');
@@ -165,11 +163,21 @@ FILTER_SCRIPT = """
 
   function rowHtml(d) {{
     const dateHtml = d.date ? '<div class="entry-date">' + escHtml(d.date) + '</div>' : '';
+    const titleHtml = d.url
+      ? '<a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a>'
+      : escHtml(d.title);
+    const ratingHtml = d.rating
+      ? '<div class="entry-meta"><span class="rating-verdict rating-'
+        + escHtml(d.rating.toLowerCase()) + '">' + escHtml(d.rating) + '</span></div>'
+      : '';
     return '<div class="entry">'
       + dateHtml
-      + '<div class="entry-title"><a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a></div>'
+      + ratingHtml
+      + '<div class="entry-title">' + titleHtml + '</div>'
       + '<div class="entry-abstract">' + escHtml(d.note) + '</div>'
-      + '<div><span class="tag" data-tag="' + escHtml(d.cat) + '">' + escHtml(d.cat) + '</span></div>'
+      + '<div>' + d.tagsArr.map(function(tag) {{
+          return '<span class="tag" data-tag="' + escHtml(tag) + '">' + escHtml(tag) + '</span>';
+        }}).join(' ') + '</div>'
       + '</div>';
   }}
 
@@ -252,7 +260,9 @@ FILTER_SCRIPT = """
       if (q === '') {{
         b.style.display = b.classList.contains('tag-extra') ? 'none' : '';
       }} else {{
-        b.style.display = label.includes(q) ? '' : 'none';
+        // Use an explicit display value so a matching .tag-extra button
+        // overrides the stylesheet's default display:none rule.
+        b.style.display = label.includes(q) ? 'inline-flex' : 'none';
       }}
     }});
     const hint = tagBar.querySelector('.tag-more-hint');
@@ -260,8 +270,8 @@ FILTER_SCRIPT = """
   }}
 
   function togglePanel(forceOpen) {{
-    panelOpen = typeof forceOpen === 'boolean' ? forceOpen : !panelOpen;
-    tagBar.style.display = panelOpen ? 'block' : 'none';
+    filtersMenu.open = typeof forceOpen === 'boolean' ? forceOpen : !filtersMenu.open;
+    panelOpen = filtersMenu.open;
     filtersToggle.classList.toggle('open', panelOpen);
     filtersToggle.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
     if (panelOpen) {{
@@ -279,13 +289,14 @@ FILTER_SCRIPT = """
     tagSearch.addEventListener('input', filterTagButtons);
   }}
 
-  filtersToggle.addEventListener('click', function(e) {{
-    e.stopPropagation();
-    togglePanel();
+  filtersMenu.addEventListener('toggle', function() {{
+    panelOpen = filtersMenu.open;
+    filtersToggle.classList.toggle('open', panelOpen);
+    filtersToggle.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
   }});
 
   document.addEventListener('click', function(e) {{
-    if (panelOpen && !tagBar.contains(e.target) && e.target !== filtersToggle) {{
+    if (panelOpen && !filtersMenu.contains(e.target)) {{
       togglePanel(false);
     }}
   }});
@@ -353,6 +364,28 @@ def parse_frontmatter(raw_text):
     return {}, raw_text
 
 
+def clean_blog_title(title, fallback):
+    """Return a readable post title without a leading numeric index."""
+    value = str(title or fallback).strip()
+    value = re.sub(r"^\d+\s*(?:[-_.:)\]]+\s*|\s+)", "", value).strip()
+    if title:
+        return value or str(fallback)
+
+    # Filename-derived titles should look like titles, not slugs.
+    value = re.sub(r"[-_]+", " ", value)
+    return value.title() or "Untitled"
+
+
+def normalize_tags(tags, fallback):
+    """Return tags as a comma-separated string, falling back when empty."""
+    if isinstance(tags, (list, tuple, set)):
+        values = [str(tag).strip() for tag in tags]
+    else:
+        values = [tag.strip() for tag in str(tags or "").split(",")]
+    values = [tag for tag in values if tag]
+    return ", ".join(values) if values else str(fallback or "General")
+
+
 def load_blog_posts():
     dirpath = os.path.join(DATA, "blog")
     if not os.path.isdir(dirpath):
@@ -366,13 +399,14 @@ def load_blog_posts():
         meta, body = parse_frontmatter(raw)
         slug = meta.get("slug") or os.path.splitext(fname)[0]
         category = meta.get("category", "General")
+        title = clean_blog_title(meta.get("title"), slug)
         posts.append({
             "slug": slug,
-            "title": meta.get("title", slug),
+            "title": title,
             "date": str(meta.get("date", "")),
             "summary": meta.get("summary", ""),
             "category": category,
-            "tags": meta.get("tags", category),
+            "tags": normalize_tags(meta.get("tags"), category),
             "body_html": render_markdown(body),
         })
     # Newest first.
@@ -382,7 +416,7 @@ def load_blog_posts():
 
 def nav_fields(active):
     """Returns e.g. {'nav_home': 'active', 'nav_about': '', ...}"""
-    keys = ["home", "about", "calendar", "blog"]
+    keys = ["home", "about", "calendar", "paper_links", "ratings", "blog"]
     return {f"nav_{k}": ("active" if k == active else "") for k in keys}
 
 
@@ -434,13 +468,14 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
     count_id = f"{id_prefix}-count"
     toggle_id = f"{id_prefix}-filters-toggle"
     wrap_id = f"{id_prefix}-filters-wrap"
+    menu_id = f"{id_prefix}-filters-menu"
     pager_id = f"{id_prefix}-pager"
     data_key = id_prefix
 
     script = FILTER_SCRIPT.format(
         search_id=search_id, searchbtn_id=searchbtn_id, tagbar_id=tagbar_id,
         tagsearch_id=tagsearch_id, list_id=list_id, noresults_id=noresults_id,
-        count_id=count_id, toggle_id=toggle_id, pager_id=pager_id,
+        count_id=count_id, toggle_id=toggle_id, menu_id=menu_id, pager_id=pager_id,
         data_key=data_key, row_kind=row_kind,
         default_show=("true" if default_show else "false"),
     )
@@ -455,18 +490,19 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
       <input type="text" id="{search_id}" class="search-box" placeholder="{esc(search_placeholder)}"
              autocomplete="off">
       <button type="button" id="{searchbtn_id}" class="search-btn">Search</button>
-      <button type="button" id="{toggle_id}" class="filters-toggle"
-              aria-haspopup="true" aria-expanded="false" aria-controls="{tagbar_id}">
-        Filters
-      </button>
+      <details id="{menu_id}" class="filters-menu">
+        <summary id="{toggle_id}" class="filters-toggle"
+                 aria-haspopup="true" aria-expanded="false" aria-controls="{tagbar_id}">
+          Filters
+        </summary>
+        <div id="{tagbar_id}" class="tag-panel" role="group" aria-label="Filter by tag">
+          <label class="visually-hidden" for="{tagsearch_id}">Filter the tag list</label>
+          <input type="text" id="{tagsearch_id}" class="tag-search-box"
+                 placeholder="Find a tag..." autocomplete="off">
+          <div class="tag-panel-buttons">{tag_bar_html}</div>
+        </div>
+      </details>
       <span class="result-count" id="{count_id}" aria-live="polite" aria-atomic="true">{esc(initial_count_label)}</span>
-
-      <div id="{tagbar_id}" class="tag-panel" role="group" aria-label="Filter by tag" style="display:none;">
-        <label class="visually-hidden" for="{tagsearch_id}">Filter the tag list</label>
-        <input type="text" id="{tagsearch_id}" class="tag-search-box"
-               placeholder="Find a tag..." autocomplete="off">
-        <div class="tag-panel-buttons">{tag_bar_html}</div>
-      </div>
     </div>
     <div id="{list_id}"></div>
     <div class="no-results" id="{noresults_id}" role="status" aria-live="polite" style="display:none;">{esc(empty_message)}</div>
@@ -480,30 +516,41 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
 
 
 def render_entry_list(entries, id_prefix, search_placeholder, empty_message, default_show=False):
-    """Generic filterable list. Each entry dict needs: category, title,
-    note, url. Optional: date, tags (comma string; defaults to category).
-    Used for Resources, Calendar, and the Blog index.
+    """Generic filterable list. Each entry dict needs: category and title.
+    Optional: note, url, date, rating, and tags (defaults to category).
+    Used for Resources, Calendar, Paper Links, and the Blog index.
     """
-    counts = Counter(e["category"] for e in entries)
-    sorted_cats = [c for c, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower()))]
+    entry_tags = []
+    counts = Counter()
+    for entry in entries:
+        tags = normalize_tags(entry.get("tags"), entry["category"])
+        parsed_tags = [tag.strip() for tag in tags.split(",") if tag.strip()]
+        entry_tags.append(tags)
+        counts.update(parsed_tags)
+    sorted_tags = [tag for tag, _ in sorted(
+        counts.items(), key=lambda item: (-item[1], item[0].lower())
+    )]
     tag_bar_html = render_tag_bar(
-        [(c, c, counts[c]) for c in sorted_cats], total=len(entries)
+        [(tag, tag, counts[tag]) for tag in sorted_tags], total=len(entries)
     )
 
     data = []
-    for e in entries:
+    for e, tags in zip(entries, entry_tags):
         cat = e["category"]
-        tags = e.get("tags", cat)
         date = e.get("date", "")
-        searchable = " ".join([e.get("title", ""), e.get("note", ""), cat, str(date)]).lower()
+        searchable = " ".join([
+            e.get("title", ""), e.get("note", ""), cat, tags,
+            e.get("rating", ""), str(date)
+        ]).lower()
         data.append({
             "tags": tags,
             "search": searchable,
-            "url": e["url"],
+            "url": e.get("url", ""),
             "title": e.get("title", ""),
             "note": e.get("note", ""),
             "cat": cat,
             "date": date,
+            "rating": e.get("rating", ""),
         })
 
     return render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
@@ -572,6 +619,65 @@ def build_calendar(cv, events):
     )
 
 
+def build_paper_links(cv, papers):
+    entries = [{
+        "category": paper.get("category", "Paper"),
+        "tags": paper.get("tags", paper.get("category", "Paper")),
+        "title": paper.get("title", ""),
+        "note": paper.get("note", ""),
+        "url": paper.get("url", "#"),
+    } for paper in papers]
+    body = render_entry_list(
+        entries, "paper",
+        "Search paper links...",
+        "No paper links match your search.",
+        default_show=False,
+    )
+    content = f'<h2 class="section-title">Paper Links</h2>{body}'
+    return render_page(
+        "Paper Links", content,
+        name=cv.get("name", ""), tagline=cv.get("title", ""),
+        **nav_fields("paper_links"),
+    )
+
+
+def build_ratings(cv, ratings):
+    entries = []
+    for rating in ratings:
+        item_type = rating.get("type", "Other")
+        verdict = rating.get("rating", "")
+        title = rating.get("title", "")
+        location = rating.get("location", "")
+        if location:
+            title = f"{title} — {location}"
+        entries.append({
+            "category": item_type,
+            "tags": normalize_tags([item_type, verdict], item_type),
+            "title": title,
+            "rating": verdict,
+            "note": rating.get("review", ""),
+        })
+
+    body = render_entry_list(
+        entries, "rating",
+        "Search ratings and reviews...",
+        "No ratings match your search.",
+        default_show=True,
+    )
+    intro = (
+        '<p class="ratings-key"><strong>Avoid</strong> — skip it; '
+        '<strong>Once</strong> — worthwhile once; '
+        '<strong>Revisit</strong> — return occasionally; '
+        '<strong>Keep</strong> — a lasting favourite.</p>'
+    )
+    content = f'<h2 class="section-title">Ratings</h2>{intro}{body}'
+    return render_page(
+        "Ratings", content,
+        name=cv.get("name", ""), tagline=cv.get("title", ""),
+        **nav_fields("ratings"),
+    )
+
+
 def build_blog_index(cv, posts):
     entries = [{
         "category": p["category"],
@@ -610,7 +716,13 @@ def build_blog_post(cv, post):
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    os.makedirs(os.path.join(OUT, "blog"), exist_ok=True)
+    blog_out = os.path.join(OUT, "blog")
+    os.makedirs(blog_out, exist_ok=True)
+    # Blog pages are generated artifacts. Remove old pages so renaming a
+    # Markdown source cannot leave a stale URL behind.
+    for fname in os.listdir(blog_out):
+        if fname.endswith(".html"):
+            os.remove(os.path.join(blog_out, fname))
     os.system(f"cp -r {os.path.join(ROOT, 'static')} {OUT}/")
 
     cv = load_all("cv")[0]
@@ -618,6 +730,8 @@ def main():
     about = about_list[0] if about_list else {}
     resources = load_all("resources")
     events = load_all("calendar")
+    papers = load_all("paper-links")
+    ratings = load_all("ratings")
     posts = load_blog_posts()
 
     with open(os.path.join(OUT, "index.html"), "w") as f:
@@ -626,15 +740,20 @@ def main():
         f.write(build_about(cv, about))
     with open(os.path.join(OUT, "calendar.html"), "w") as f:
         f.write(build_calendar(cv, events))
+    with open(os.path.join(OUT, "papers.html"), "w") as f:
+        f.write(build_paper_links(cv, papers))
+    with open(os.path.join(OUT, "ratings.html"), "w") as f:
+        f.write(build_ratings(cv, ratings))
     with open(os.path.join(OUT, "blog.html"), "w") as f:
         f.write(build_blog_index(cv, posts))
     for p in posts:
-        with open(os.path.join(OUT, "blog", f"{p['slug']}.html"), "w") as f:
+        with open(os.path.join(blog_out, f"{p['slug']}.html"), "w") as f:
             f.write(build_blog_post(cv, p))
 
     print(
         f"Built site into {OUT}/ "
-        f"({len(resources)} resources, {len(events)} calendar events, {len(posts)} blog posts)"
+        f"({len(resources)} resources, {len(events)} calendar events, "
+        f"{len(papers)} paper links, {len(ratings)} ratings, {len(posts)} blog posts)"
     )
 
 
