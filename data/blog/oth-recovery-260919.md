@@ -1,6 +1,6 @@
 ---
 title: "Recovery Notes for 19 September 2026"
-date: 2026-09-19
+date: "2026-09-19"
 summary: "Recovery notes"
 category: "recovery"
 tags: "recovery notes"
@@ -268,5 +268,4 @@ weekend dinner = Stuff'd
 Calories for customised local meals are conservative working estimates rather than i
 published laboratory values.
 Adjust only from the two-week trend, not from one meal or one scale reading.
-
 

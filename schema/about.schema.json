@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "About",
+  "type": "object",
+  "required": ["intro"],
+  "additionalProperties": false,
+  "properties": {
+    "intro": { "type": "string", "minLength": 1 },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "content"],
+        "additionalProperties": false,
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "content": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

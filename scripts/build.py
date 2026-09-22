@@ -1,50 +1,12 @@
 #!/usr/bin/env python3
-"""Render YAML/Markdown data files into a static site: Home (resources),
-About, Paper Links, and a Blog (posts written as Markdown files).
-
-CHANGES IN THIS VERSION
-------------------------
-- Paper links are rendered separately from general resources at
-  `site/papers.html`.
-- Added an About page, rendered from a single `data/about/about.yaml`
-  file. It supports a Markdown `intro` plus an optional list of
-  `sections`, each with its own `title`/`content` (also Markdown).
-- Added a Blog, built from Markdown files in `data/blog/*.md`. Each
-  file starts with a YAML frontmatter block (between `---` lines) for
-  metadata, followed by the post body in Markdown:
-
-      ---
-      title: The ripple effect
-      date: 2026-09-10
-      summary: How a distant conflict shows up in your kopi price.
-      category: Economy
-      tags: economy, middle east, inflation
-      ---
-      Your post body goes here, in **Markdown**...
-
-  `build.py` converts the body to HTML with the `markdown` package
-  (install with `pip install markdown --break-system-packages`),
-  writes one page per post to `site/blog/<slug>.html`, and writes a
-  browsable index to `site/blog.html` using the same search/tag/pager
-  UI as the resources list.
-- The filterable-list UI (FILTER_SCRIPT) now takes a `default_show`
-  flag. Resources keep the old "search to show entries" behavior
-  (useful when that list is long and this is a quick lookup); the
-  Blog defaults to showing everything immediately, since it is meant
-  to be browsed. Row rendering also shows a post date when present.
-
-NOTE ON templates/base.html
-----------------------------
-This script fills in `{nav_home}`, `{nav_about}`, `{nav_paper_links}`,
-and `{nav_blog}` placeholders (each becomes the string "active" on the
-current page and "" elsewhere).
-"""
+"""Build the static site from YAML data and Markdown blog posts."""
 
 import html
 import json
-import os
 import re
-from collections import Counter, defaultdict
+import shutil
+from collections import Counter
+from pathlib import Path
 
 import yaml
 
@@ -53,10 +15,11 @@ try:
 except ImportError:  # pragma: no cover
     _markdown = None
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "data")
-TEMPLATES = os.path.join(ROOT, "templates")
-OUT = os.path.join(ROOT, "site")
+ROOT = Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+TEMPLATES = ROOT / "templates"
+STATIC = ROOT / "static"
+OUT = ROOT / "site"
 
 
 def render_markdown(text):
@@ -135,7 +98,6 @@ FILTER_SCRIPT = """
   const noResults = document.getElementById('{noresults_id}');
   const countLabel = document.getElementById('{count_id}');
   const pagerEl = document.getElementById('{pager_id}');
-  const ROW_KIND = '{row_kind}';
   const DEFAULT_SHOW = {default_show};
 
   const DATA = window.__DATA__['{data_key}'].map(function(d) {{
@@ -321,22 +283,22 @@ FILTER_SCRIPT = """
 
 
 def load_yaml(path):
-    with open(path) as f:
-        return yaml.safe_load(f)
+    return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
 def load_all(subdir):
-    dirpath = os.path.join(DATA, subdir)
-    if not os.path.isdir(dirpath):
+    directory = DATA / subdir
+    if not directory.is_dir():
         return []
     items = []
-    for fname in sorted(os.listdir(dirpath)):
-        if fname.endswith((".yaml", ".yml")):
-            data = load_yaml(os.path.join(dirpath, fname))
-            if isinstance(data, list):
-                items.extend(data)
-            else:
-                items.append(data)
+    for path in sorted(directory.iterdir()):
+        if path.suffix not in {".yaml", ".yml"}:
+            continue
+        data = load_yaml(path)
+        if isinstance(data, list):
+            items.extend(data)
+        elif data is not None:
+            items.append(data)
     return items
 
 
@@ -377,17 +339,16 @@ def normalize_tags(tags, fallback):
 
 
 def load_blog_posts():
-    dirpath = os.path.join(DATA, "blog")
-    if not os.path.isdir(dirpath):
+    directory = DATA / "blog"
+    if not directory.is_dir():
         return []
     posts = []
-    for fname in sorted(os.listdir(dirpath)):
-        if not fname.endswith(".md"):
+    for path in sorted(directory.glob("*.md")):
+        if not path.is_file():
             continue
-        with open(os.path.join(dirpath, fname), encoding="utf-8") as f:
-            raw = f.read()
+        raw = path.read_text(encoding="utf-8")
         meta, body = parse_frontmatter(raw)
-        slug = meta.get("slug") or os.path.splitext(fname)[0]
+        slug = meta.get("slug") or path.stem
         category = meta.get("category", "General")
         title = clean_blog_title(meta.get("title"), slug)
         posts.append({
@@ -411,18 +372,17 @@ def nav_fields(active):
 
 
 def render_page(title, content, root="", tagline="", name="", **nav):
-    with open(os.path.join(TEMPLATES, "base.html")) as f:
-        base = f.read()
+    base = (TEMPLATES / "base.html").read_text(encoding="utf-8")
     full_content = (
         SKIP_LINK
         + f'<div id="main-content" tabindex="-1">{content}</div>'
         + MATHJAX_SCRIPT
     )
-    fields = defaultdict(str, {
+    fields = {
         "title": esc(title), "content": full_content, "root": root,
         "tagline": esc(tagline), "name": esc(name),
         **nav,
-    })
+    }
     return base.format_map(fields)
 
 
@@ -448,7 +408,7 @@ def render_tag_bar(sorted_tags, all_label="all", total=None, show_first=8):
 
 
 def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
-                            empty_message, total, row_kind, default_show=False):
+                            empty_message, total, default_show=False):
     search_id = f"{id_prefix}-search"
     searchbtn_id = f"{id_prefix}-searchbtn"
     tagbar_id = f"{id_prefix}-tagbar"
@@ -466,8 +426,8 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
         search_id=search_id, searchbtn_id=searchbtn_id, tagbar_id=tagbar_id,
         tagsearch_id=tagsearch_id, list_id=list_id, noresults_id=noresults_id,
         count_id=count_id, toggle_id=toggle_id, menu_id=menu_id, pager_id=pager_id,
-        data_key=data_key, row_kind=row_kind,
-        default_show=("true" if default_show else "false"),
+        data_key=data_key,
+        default_show="true" if default_show else "false",
     )
 
     data_json = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
@@ -542,8 +502,7 @@ def render_entry_list(entries, id_prefix, search_placeholder, empty_message, def
         })
 
     return render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
-                                   empty_message, len(entries), row_kind=id_prefix,
-                                   default_show=default_show)
+                                  empty_message, len(entries), default_show)
 
 
 def build_index(cv, resources):
@@ -641,35 +600,53 @@ def build_blog_post(cv, post):
     )
 
 
-def main():
-    os.makedirs(OUT, exist_ok=True)
-    blog_out = os.path.join(OUT, "blog")
-    os.makedirs(blog_out, exist_ok=True)
-    # Blog pages are generated artifacts. Remove old pages so renaming a
-    # Markdown source cannot leave a stale URL behind.
-    for fname in os.listdir(blog_out):
-        if fname.endswith(".html"):
-            os.remove(os.path.join(blog_out, fname))
-    os.system(f"cp -r {os.path.join(ROOT, 'static')} {OUT}/")
+def prepare_output():
+    """Reset generated HTML and copy static assets into the output tree."""
+    OUT.mkdir(exist_ok=True)
+    for path in OUT.glob("*.html"):
+        path.unlink()
 
-    cv = load_all("cv")[0]
+    blog_out = OUT / "blog"
+    blog_out.mkdir(exist_ok=True)
+    for path in blog_out.glob("*.html"):
+        path.unlink()
+
+    static_out = OUT / "static"
+    if static_out.exists():
+        shutil.rmtree(static_out)
+    shutil.copytree(STATIC, static_out)
+    return blog_out
+
+
+def write_page(path, content):
+    path.write_text(content, encoding="utf-8")
+
+
+def main():
+    blog_out = prepare_output()
+
+    cv_records = load_all("cv")
+    if not cv_records:
+        raise RuntimeError("No CV data found in data/cv/")
+    cv = cv_records[0]
     about_list = load_all("about")
     about = about_list[0] if about_list else {}
     resources = load_all("resources")
     papers = load_all("paper-links")
     posts = load_blog_posts()
 
-    with open(os.path.join(OUT, "index.html"), "w") as f:
-        f.write(build_index(cv, resources))
-    with open(os.path.join(OUT, "about.html"), "w") as f:
-        f.write(build_about(cv, about))
-    with open(os.path.join(OUT, "papers.html"), "w") as f:
-        f.write(build_paper_links(cv, papers))
-    with open(os.path.join(OUT, "blog.html"), "w") as f:
-        f.write(build_blog_index(cv, posts))
-    for p in posts:
-        with open(os.path.join(blog_out, f"{p['slug']}.html"), "w") as f:
-            f.write(build_blog_post(cv, p))
+    pages = {
+        OUT / "index.html": build_index(cv, resources),
+        OUT / "about.html": build_about(cv, about),
+        OUT / "papers.html": build_paper_links(cv, papers),
+        OUT / "blog.html": build_blog_index(cv, posts),
+    }
+    pages.update({
+        blog_out / f"{post['slug']}.html": build_blog_post(cv, post)
+        for post in posts
+    })
+    for path, content in pages.items():
+        write_page(path, content)
 
     print(
         f"Built site into {OUT}/ "

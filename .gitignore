@@ -1,4 +1,6 @@
 __pycache__/
 *.py[cod]
+.venv/
+.pytest_cache/
 .firecrawl/
 .DS_Store

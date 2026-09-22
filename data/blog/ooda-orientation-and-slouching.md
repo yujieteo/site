@@ -1,6 +1,6 @@
 ---
 title: "OODA, Orientation, and Slouching"
-date: 2026-09-13
+date: "2026-09-13"
 summary: "A vocabulary of OODA loops, orientation, tempo, perception, and strategic slack."
 category: "Strategy"
 tags: "ooda, strategy, orientation, tempo, slouching"

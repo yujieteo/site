@@ -1,180 +1,89 @@
 #!/usr/bin/env python3
-"""Validate all YAML data files against their JSON Schemas, plus a few
-extra structural invariants for the exercises data set."""
+"""Validate YAML data files against matching JSON Schemas."""
 
-import os
-import sys
 import json
-import yaml
+import sys
+from pathlib import Path
+
 import jsonschema
-
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "data")
-SCHEMA = os.path.join(ROOT, "schema")
+import yaml
 
 
-def load_yaml_safe(path, label):
-    """Load a YAML file, reporting a parse error as a normal [FAIL]
-    line instead of letting it crash the whole validation run. Returns
-    (data, error_count) -- data is None if loading failed."""
+ROOT = Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+SCHEMA = ROOT / "schema"
+
+
+def load_document(path):
     try:
-        with open(path) as f:
-            return yaml.safe_load(f), 0
-    except yaml.YAMLError as e:
-        print(f"[FAIL] {label}: could not parse YAML ({e})")
-        return None, 1
+        text = path.read_text(encoding="utf-8")
+        if path.suffix == ".md":
+            if not text.startswith("---"):
+                return None, "missing YAML frontmatter"
+            parts = text.split("---", 2)
+            if len(parts) != 3:
+                return None, "unterminated YAML frontmatter"
+            text = parts[1]
+        return yaml.safe_load(text), None
+    except yaml.YAMLError as exc:
+        return None, f"could not parse YAML ({exc})"
 
 
-def as_records(data):
-    """Normalize a loaded YAML document to a list of records, exactly
-    like the site generator's load_all() does. A file's top level may
-    be either a single mapping or a list of mappings -- both
-    validate_schema() and validate_exercises_invariants() need to
-    agree on this, otherwise a perfectly valid multi-record file
-    crashes one of them."""
-    if data is None:
+def as_records(document):
+    if document is None:
         return []
-    return data if isinstance(data, list) else [data]
+    return document if isinstance(document, list) else [document]
 
 
-def validate_schema():
+def validate_file(path, schema):
+    label = path.relative_to(DATA)
+    document, load_error = load_document(path)
+    if load_error:
+        print(f"[FAIL] {label}: {load_error}")
+        return 1
+
     errors = 0
-    for subdir in sorted(os.listdir(DATA)):
-        dirpath = os.path.join(DATA, subdir)
-        if not os.path.isdir(dirpath):
-            # Skip stray files (.DS_Store, README, etc.) living directly
-            # under data/ instead of crashing on os.listdir() below.
-            continue
-
-        schema_path = os.path.join(SCHEMA, f"{subdir}.schema.json")
-        if not os.path.exists(schema_path):
-            continue
-        with open(schema_path) as f:
-            schema = json.load(f)
-
-        for fname in sorted(os.listdir(dirpath)):
-            if not fname.endswith((".yaml", ".yml")):
-                continue
-            label = f"{subdir}/{fname}"
-            data, load_errors = load_yaml_safe(os.path.join(dirpath, fname), label)
-            errors += load_errors
-            if load_errors:
-                continue
-
-            records = as_records(data)
-            for i, record in enumerate(records):
-                try:
-                    jsonschema.validate(record, schema)
-                except jsonschema.ValidationError as e:
-                    print(f"[FAIL] {label} record {i}: {e.message}")
-                    errors += 1
-                except jsonschema.SchemaError as e:
-                    print(f"[FAIL] {label} record {i}: invalid schema {schema_path}: {e.message}")
-                    errors += 1
+    validator = jsonschema.Draft7Validator(schema)
+    for index, record in enumerate(as_records(document)):
+        for error in sorted(validator.iter_errors(record), key=lambda item: list(item.path)):
+            location = ".".join(str(part) for part in error.path)
+            suffix = f" at {location}" if location else ""
+            print(f"[FAIL] {label} record {index}{suffix}: {error.message}")
+            errors += 1
     return errors
 
 
-def validate_one_exercise_resource(record, label, errors_out):
-    """Run the id/text/locator_kind checks for a single resource
-    record. Pulled out of validate_exercises_invariants() so it can be
-    called once per record whether the file's top level was a single
-    dict or a list of dicts -- this is also what fixes the
-    'seen_ids' / 'kinds' scoping to be per-resource, not per-file."""
-    if not isinstance(record, dict):
-        print(f"[FAIL] {label}: expected a resource mapping, got {type(record).__name__}")
-        errors_out[0] += 1
-        return
-
-    seen_ids = set()
-    kinds = set()
-    exercises = record.get("exercises", [])
-    if not isinstance(exercises, list):
-        print(f"[FAIL] {label}: 'exercises' is not a list")
-        errors_out[0] += 1
-        return
-
-    for ex in exercises:
-        if not isinstance(ex, dict):
-            print(f"[FAIL] {label}: exercise entry is not a mapping ({ex!r})")
-            errors_out[0] += 1
+def validate_all():
+    errors = 0
+    for schema_path in sorted(SCHEMA.glob("*.schema.json")):
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        try:
+            jsonschema.Draft7Validator.check_schema(schema)
+        except jsonschema.SchemaError as exc:
+            print(f"[FAIL] {schema_path.name}: invalid schema ({exc.message})")
+            errors += 1
             continue
 
-        text = ex.get("text")
-        if not isinstance(text, str) or not text.strip():
-            print(f"[FAIL] {label}: empty exercise text (id={ex.get('id')!r})")
-            errors_out[0] += 1
-
-        ex_id = ex.get("id")
-        if ex_id is None:
-            print(f"[FAIL] {label}: exercise missing 'id'")
-            errors_out[0] += 1
-        elif ex_id in seen_ids:
-            print(f"[FAIL] {label}: duplicate exercise id {ex_id!r}")
-            errors_out[0] += 1
-        else:
-            seen_ids.add(ex_id)
-
-        loc = ex.get("locator")
-        if loc is None:
-            kinds.add("none")
-        elif isinstance(loc, dict) and "kind" in loc:
-            kinds.add(loc["kind"])
-        else:
-            print(f"[FAIL] {label}: exercise (id={ex_id!r}) has a malformed 'locator'")
-            errors_out[0] += 1
-            kinds.add("none")
-
-    if not exercises:
-        # Nothing to derive a locator_kind from -- checking declared
-        # vs. derived here would just be a false positive.
-        return
-
-    declared = record.get("locator_kind")
-    actual = "none" if kinds <= {"none"} else (
-        next(iter(kinds - {"none"})) if len(kinds - {"none"}) == 1 else "mixed"
-    )
-    if declared != actual:
-        print(f"[FAIL] {label}: locator_kind={declared!r} but derived={actual!r}")
-        errors_out[0] += 1
-
-
-def validate_exercises_invariants():
-    """Extra checks specific to data/exercises: unique ids within a
-    resource, non-empty text, and locator_kind consistency."""
-    errors = [0]  # boxed so the helper above can mutate it in place
-    dirpath = os.path.join(DATA, "exercises")
-    if not os.path.isdir(dirpath):
-        return 0
-
-    for fname in sorted(os.listdir(dirpath)):
-        if not fname.endswith((".yaml", ".yml")):
+        data_dir = DATA / schema_path.name.removesuffix(".schema.json")
+        if not data_dir.is_dir():
+            print(f"[FAIL] {schema_path.name}: missing data directory {data_dir.relative_to(ROOT)}")
+            errors += 1
             continue
-        path = os.path.join(dirpath, fname)
-        label_base = f"exercises/{fname}"
-        data, load_errors = load_yaml_safe(path, label_base)
-        errors[0] += load_errors
-        if load_errors:
-            continue
-
-        records = as_records(data)
-        if len(records) == 1:
-            validate_one_exercise_resource(records[0], label_base, errors)
-        else:
-            for i, record in enumerate(records):
-                validate_one_exercise_resource(record, f"{label_base} record {i}", errors)
-
-    return errors[0]
+        patterns = ("*.md",) if data_dir.name == "blog" else ("*.yaml", "*.yml")
+        paths = sorted(path for pattern in patterns for path in data_dir.glob(pattern))
+        for path in paths:
+            errors += validate_file(path, schema)
+    return errors
 
 
 def main():
-    errors = validate_schema()
-    errors += validate_exercises_invariants()
-
+    errors = validate_all()
     if errors:
         print(f"\n{errors} validation error(s).")
-        sys.exit(1)
+        return 1
     print("All data files valid.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

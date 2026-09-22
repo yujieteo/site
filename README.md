@@ -1,34 +1,62 @@
-# site
+# Personal site
 
-A minimal, single-page personal site: a short bio plus a searchable,
-tag-filterable list of resource links, driven entirely from YAML data.
+A small static site generated from YAML and Markdown. It includes an About page,
+searchable resource and paper-link collections, and a filterable blog.
 
-## Layout
+## Project layout
 
+```text
+data/about/          About-page YAML
+data/blog/           Markdown posts with YAML frontmatter
+data/cv/             Site name, subtitle, and biography
+data/paper-links/    Paper-link YAML
+data/resources/      General resource YAML
+schema/              JSON Schemas for YAML data
+scripts/build.py     Static-site generator
+scripts/parse_notes.py
+                     Plain-text link notes to YAML converter
+scripts/validate.py  YAML/schema validation
+static/              Source CSS and other static assets
+templates/           Shared HTML templates
+site/                Generated site
 ```
-data/cv/*.yaml          # name, title, bio
-data/resources/*.yaml   # resource links: title, url, category, note
-schema/*.schema.json    # what each type's YAML must contain
-scripts/validate.py     # checks data against schemas
-scripts/build.py        # renders YAML -> static site/index.html
-templates/base.html     # the page template
-static/css/style.css    # the look and feel
-```
 
-## Usage
+## Build
 
-```
-pip3 install -r requirements.txt
-python3 scripts/validate.py
-python3 scripts/build.py
-python3 scripts/parse_notes.py annotbib.txt data/paper-links/paper-links.yaml
-python3 scripts/parse_exercise.py exercises.txt /data/exercises/exercises.yaml
-python3 scripts/clean_notes.py
+```sh
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python scripts/validate.py
+.venv/bin/python scripts/build.py
 open site/index.html
 ```
 
-## Features
+The build replaces generated HTML and static assets under `site/`, preventing
+renamed or deleted posts from leaving stale pages behind.
 
-- Live search across title, note, and category
-- Click a category tag (top bar or on any entry) to filter
-- Result counter shows how many entries match the current filters
+## Blog posts
+
+Add a Markdown file to `data/blog/`:
+
+```markdown
+---
+title: Example post
+date: 2026-09-22
+summary: A short description for the blog index.
+category: Notes
+tags: example, notes
+---
+
+Post content goes here.
+```
+
+Titles, summaries, categories, and tags are searchable. If tags are omitted,
+the category is used as the fallback tag.
+
+## Import paper links
+
+`parse_notes.py` accepts blank-line-separated blocks beginning with a URL:
+
+```sh
+.venv/bin/python scripts/parse_notes.py notes.txt data/paper-links/paper-links.yaml
+```

@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Resource",
+  "title": "Paper Link",
   "type": "object",
-  "required": ["title", "url", "category"],
+  "required": ["title", "url", "category", "note"],
   "additionalProperties": false,
   "properties": {
     "title": { "type": "string", "minLength": 1 },

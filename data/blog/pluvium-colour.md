@@ -1,9 +1,9 @@
 ---
-title: Pluvium's Workshop on colours
-date: 2026-09-13
-summary: Summary on how colour from Pluvium's tutorial
-category: General
-tags: art, colour
+title: "Pluvium's Workshop on colours"
+date: "2026-09-13"
+summary: "Summary on how colour from Pluvium's tutorial"
+category: "General"
+tags: "art, colour"
 ---
 
 (10) How to exaggerate the colours of a painting? (Hint: use more grey, and think about relative colours? Try to target under 25% and use the full colour range.)
