@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Render YAML/Markdown data files into a static site: Home (resources),
-About, Calendar, Paper Links, Ratings, and a Blog (posts written as Markdown files).
+About, Paper Links, and a Blog (posts written as Markdown files).
 
 CHANGES IN THIS VERSION
 ------------------------
@@ -9,10 +9,6 @@ CHANGES IN THIS VERSION
 - Added an About page, rendered from a single `data/about/about.yaml`
   file. It supports a Markdown `intro` plus an optional list of
   `sections`, each with its own `title`/`content` (also Markdown).
-- Added a Calendar page, built the same way your existing pages are:
-  drop YAML files into `data/calendar/` (a list of events per file,
-  same shape as `data/resources/`) and they get loaded, sorted by
-  date, and rendered through the same filterable-list UI.
 - Added a Blog, built from Markdown files in `data/blog/*.md`. Each
   file starts with a YAML frontmatter block (between `---` lines) for
   metadata, followed by the post body in Markdown:
@@ -34,15 +30,14 @@ CHANGES IN THIS VERSION
 - The filterable-list UI (FILTER_SCRIPT) now takes a `default_show`
   flag. Resources keep the old "search to show entries" behavior
   (useful when that list is long and this is a quick lookup); the
-  Calendar and Blog default to showing everything immediately, since
-  those are meant to be browsed. Row rendering now also shows a date
-  when the entry has one (blog posts, calendar events).
+  Blog defaults to showing everything immediately, since it is meant
+  to be browsed. Row rendering also shows a post date when present.
 
 NOTE ON templates/base.html
 ----------------------------
-This script fills in `{nav_home}`, `{nav_about}`, `{nav_calendar}`,
-`{nav_paper_links}`, `{nav_ratings}`, and `{nav_blog}` placeholders
-(each becomes the string "active" on the current page and "" elsewhere).
+This script fills in `{nav_home}`, `{nav_about}`, `{nav_paper_links}`,
+and `{nav_blog}` placeholders (each becomes the string "active" on the
+current page and "" elsewhere).
 """
 
 import html
@@ -166,13 +161,8 @@ FILTER_SCRIPT = """
     const titleHtml = d.url
       ? '<a href="' + escHtml(d.url) + '">' + escHtml(d.title) + '</a>'
       : escHtml(d.title);
-    const ratingHtml = d.rating
-      ? '<div class="entry-meta"><span class="rating-verdict rating-'
-        + escHtml(d.rating.toLowerCase()) + '">' + escHtml(d.rating) + '</span></div>'
-      : '';
     return '<div class="entry">'
       + dateHtml
-      + ratingHtml
       + '<div class="entry-title">' + titleHtml + '</div>'
       + '<div class="entry-abstract">' + escHtml(d.note) + '</div>'
       + '<div>' + d.tagsArr.map(function(tag) {{
@@ -416,7 +406,7 @@ def load_blog_posts():
 
 def nav_fields(active):
     """Returns e.g. {'nav_home': 'active', 'nav_about': '', ...}"""
-    keys = ["home", "about", "calendar", "paper_links", "ratings", "blog"]
+    keys = ["home", "about", "paper_links", "blog"]
     return {f"nav_{k}": ("active" if k == active else "") for k in keys}
 
 
@@ -517,8 +507,8 @@ def render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
 
 def render_entry_list(entries, id_prefix, search_placeholder, empty_message, default_show=False):
     """Generic filterable list. Each entry dict needs: category and title.
-    Optional: note, url, date, rating, and tags (defaults to category).
-    Used for Resources, Calendar, Paper Links, and the Blog index.
+    Optional: note, url, date, and tags (defaults to category).
+    Used for Resources, Paper Links, and the Blog index.
     """
     entry_tags = []
     counts = Counter()
@@ -539,8 +529,7 @@ def render_entry_list(entries, id_prefix, search_placeholder, empty_message, def
         cat = e["category"]
         date = e.get("date", "")
         searchable = " ".join([
-            e.get("title", ""), e.get("note", ""), cat, tags,
-            e.get("rating", ""), str(date)
+            e.get("title", ""), e.get("note", ""), cat, tags, str(date)
         ]).lower()
         data.append({
             "tags": tags,
@@ -550,7 +539,6 @@ def render_entry_list(entries, id_prefix, search_placeholder, empty_message, def
             "note": e.get("note", ""),
             "cat": cat,
             "date": date,
-            "rating": e.get("rating", ""),
         })
 
     return render_filterable_list(data, tag_bar_html, id_prefix, search_placeholder,
@@ -595,30 +583,6 @@ def build_about(cv, about):
     )
 
 
-def build_calendar(cv, events):
-    entries = [{
-        "category": e.get("category", "Event"),
-        "tags": e.get("tags", e.get("category", "Event")),
-        "title": e.get("title", ""),
-        "note": e.get("note", e.get("location", "")),
-        "url": e.get("url", "#"),
-        "date": str(e.get("date", "")),
-    } for e in events]
-    entries.sort(key=lambda e: e["date"])
-    body = render_entry_list(
-        entries, "calendar",
-        "Search events...",
-        "No events match your search.",
-        default_show=True,
-    )
-    content = f'<h2 class="section-title">Calendar</h2>{body}'
-    return render_page(
-        "Calendar", content,
-        name=cv.get("name", ""), tagline=cv.get("title", ""),
-        **nav_fields("calendar"),
-    )
-
-
 def build_paper_links(cv, papers):
     entries = [{
         "category": paper.get("category", "Paper"),
@@ -638,43 +602,6 @@ def build_paper_links(cv, papers):
         "Paper Links", content,
         name=cv.get("name", ""), tagline=cv.get("title", ""),
         **nav_fields("paper_links"),
-    )
-
-
-def build_ratings(cv, ratings):
-    entries = []
-    for rating in ratings:
-        item_type = rating.get("type", "Other")
-        verdict = rating.get("rating", "")
-        title = rating.get("title", "")
-        location = rating.get("location", "")
-        if location:
-            title = f"{title} — {location}"
-        entries.append({
-            "category": item_type,
-            "tags": normalize_tags([item_type, verdict], item_type),
-            "title": title,
-            "rating": verdict,
-            "note": rating.get("review", ""),
-        })
-
-    body = render_entry_list(
-        entries, "rating",
-        "Search ratings and reviews...",
-        "No ratings match your search.",
-        default_show=True,
-    )
-    intro = (
-        '<p class="ratings-key"><strong>Avoid</strong> — skip it; '
-        '<strong>Once</strong> — worthwhile once; '
-        '<strong>Revisit</strong> — return occasionally; '
-        '<strong>Keep</strong> — a lasting favourite.</p>'
-    )
-    content = f'<h2 class="section-title">Ratings</h2>{intro}{body}'
-    return render_page(
-        "Ratings", content,
-        name=cv.get("name", ""), tagline=cv.get("title", ""),
-        **nav_fields("ratings"),
     )
 
 
@@ -729,21 +656,15 @@ def main():
     about_list = load_all("about")
     about = about_list[0] if about_list else {}
     resources = load_all("resources")
-    events = load_all("calendar")
     papers = load_all("paper-links")
-    ratings = load_all("ratings")
     posts = load_blog_posts()
 
     with open(os.path.join(OUT, "index.html"), "w") as f:
         f.write(build_index(cv, resources))
     with open(os.path.join(OUT, "about.html"), "w") as f:
         f.write(build_about(cv, about))
-    with open(os.path.join(OUT, "calendar.html"), "w") as f:
-        f.write(build_calendar(cv, events))
     with open(os.path.join(OUT, "papers.html"), "w") as f:
         f.write(build_paper_links(cv, papers))
-    with open(os.path.join(OUT, "ratings.html"), "w") as f:
-        f.write(build_ratings(cv, ratings))
     with open(os.path.join(OUT, "blog.html"), "w") as f:
         f.write(build_blog_index(cv, posts))
     for p in posts:
@@ -752,8 +673,8 @@ def main():
 
     print(
         f"Built site into {OUT}/ "
-        f"({len(resources)} resources, {len(events)} calendar events, "
-        f"{len(papers)} paper links, {len(ratings)} ratings, {len(posts)} blog posts)"
+        f"({len(resources)} resources, {len(papers)} paper links, "
+        f"{len(posts)} blog posts)"
     )
 
 
