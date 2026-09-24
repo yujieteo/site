@@ -379,6 +379,75 @@ main:focus {
   margin: calc(-1 * var(--space-6)) 0 var(--space-8);
 }
 
+.notes-intro {
+  max-width: 38rem;
+  margin-bottom: var(--space-8);
+  color: var(--secondary);
+}
+
+.notes-intro p {
+  margin-top: 0;
+}
+
+.note-day {
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--border);
+  scroll-margin-top: var(--space-6);
+}
+
+.note-date {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.note-date a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.note-date a:hover {
+  color: var(--foreground);
+}
+
+.note-date a:hover::after {
+  margin-left: var(--space-2);
+  content: "#";
+}
+
+.note-body {
+  line-height: 1.75;
+}
+
+.note-item + .note-item {
+  margin-top: var(--space-6);
+}
+
+.note-item .entry-tags {
+  margin-top: var(--space-3);
+}
+
+.note-body > :first-child {
+  margin-top: 0;
+}
+
+.note-body > :last-child {
+  margin-bottom: 0;
+}
+
+.note-body blockquote {
+  margin-inline: 0;
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--border);
+  color: var(--secondary);
+}
+
+.empty-notes {
+  color: var(--secondary);
+}
+
 .post-body {
   line-height: 1.75;
 }

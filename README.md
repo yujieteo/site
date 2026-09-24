@@ -8,6 +8,7 @@ searchable resource and paper-link collections, and a filterable blog.
 ```text
 data/about/          About-page YAML
 data/blog/           Markdown posts with YAML frontmatter
+data/notes.md        Append-only daily notes
 data/cv/             Site name, subtitle, and biography
 data/paper-links/    Paper-link YAML
 data/resources/      General resource YAML
@@ -52,6 +53,24 @@ Post content goes here.
 
 Titles, summaries, categories, and tags are searchable. If tags are omitted,
 the category is used as the fallback tag.
+
+## Daily notes
+
+Add a dated section to the bottom of `data/notes.md` whenever you have a small
+thought, sentence, or link that does not need to become a full blog post:
+
+```markdown
+## 2026-09-24
+
+One sentence is enough. Normal [Markdown](https://commonmark.org/) works here. #ideas
+
+A second paragraph becomes a separate searchable note. #reading #mathematics
+```
+
+Keep adding to the same date during the day. The build publishes entries
+newest-first and gives each date a stable link such as `notes.html#2026-09-24`.
+Blank lines separate notes. Trailing hashtags become clickable filters and are
+not displayed as part of the prose; use hyphens for multi-word tags.
 
 ## Import paper links
 

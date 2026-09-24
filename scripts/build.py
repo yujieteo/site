@@ -6,6 +6,7 @@ import json
 import re
 import shutil
 from collections import Counter
+from datetime import date
 from pathlib import Path
 
 import yaml
@@ -161,9 +162,73 @@ def load_blog_posts():
     return posts
 
 
+def load_daily_notes():
+    """Load paragraph-sized, tagged notes from dated Markdown sections.
+
+    Notes are written oldest-to-newest so a new day can always be appended to
+    the file. A paragraph may end in tags such as ``#math #reading``. The
+    published page is sorted newest-first.
+    """
+    path = DATA / "notes.md"
+    raw = path.read_text(encoding="utf-8")
+    meta, body = parse_frontmatter(raw)
+    heading = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
+    matches = list(heading.finditer(body))
+
+    leading_text = body[:matches[0].start()].strip() if matches else body.strip()
+    if leading_text and not re.fullmatch(r"(?:<!--.*?-->\s*)+", leading_text, re.DOTALL):
+        raise RuntimeError("data/notes.md content must begin with a ## YYYY-MM-DD heading")
+
+    entries = []
+    seen_dates = set()
+    for index, match in enumerate(matches):
+        iso_date = match.group(1)
+        try:
+            parsed_date = date.fromisoformat(iso_date)
+        except ValueError as exc:
+            raise RuntimeError(f"Invalid note date: {iso_date}") from exc
+        if iso_date in seen_dates:
+            raise RuntimeError(f"Duplicate note date: {iso_date}")
+        seen_dates.add(iso_date)
+
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(body)
+        day_markdown = body[match.end():end].strip()
+        note_blocks = [block.strip() for block in re.split(r"\n\s*\n", day_markdown)
+                       if block.strip()]
+        notes = []
+        for block in note_blocks:
+            tag_match = re.search(
+                r"\s+((?:#[A-Za-z0-9][A-Za-z0-9_-]*(?:\s+|$))+)$",
+                block,
+            )
+            raw_tags = re.findall(r"#([A-Za-z0-9][A-Za-z0-9_-]*)", tag_match.group(1)) \
+                if tag_match else []
+            tags = list(dict.fromkeys(tag.lower() for tag in raw_tags))
+            note_markdown = block[:tag_match.start()].rstrip() if tag_match else block
+            body_html = render_markdown(note_markdown)
+            plain_text = html.unescape(re.sub(r"<[^>]+>", " ", body_html))
+            notes.append({
+                "body_html": body_html,
+                "search_text": re.sub(r"\s+", " ", plain_text).strip().lower(),
+                "tags": tags,
+            })
+        entries.append({
+            "date": iso_date,
+            "display_date": parsed_date.strftime("%-d %B %Y"),
+            "notes": notes,
+        })
+
+    entries.sort(key=lambda entry: entry["date"], reverse=True)
+    return {
+        "title": str(meta.get("title", "Notes")),
+        "intro": str(meta.get("intro", "")),
+        "entries": entries,
+    }
+
+
 def site_fields(cv, active):
     """Return shared site identity and navigation state."""
-    keys = ["home", "about", "paper_links", "blog"]
+    keys = ["home", "about", "paper_links", "notes", "blog"]
     identity = {
         "name": cv["name"],
         "tagline": cv["title"],
@@ -331,6 +396,86 @@ def build_blog_index(cv, posts):
     )
 
 
+def build_notes(cv, notes):
+    counts = Counter(
+        tag
+        for entry in notes["entries"]
+        for note in entry["notes"]
+        for tag in note["tags"]
+    )
+    total = sum(len(entry["notes"]) for entry in notes["entries"])
+    sorted_tags = sorted(counts, key=lambda tag: (-counts[tag], tag.lower()))
+    tag_bar_html = render_tag_bar(sorted_tags, counts, total)
+    filters_html = f'''
+    <form class="search-row" data-notes-filter-form>
+      <label class="visually-hidden" for="notes-search">Search notes</label>
+      <input type="search" id="notes-search" class="search-box"
+             placeholder="Search notes..." autocomplete="off">
+      <button type="submit" class="search-btn">Search</button>
+      <details class="filters-menu">
+        <summary class="filters-toggle">Tags</summary>
+        <div class="tag-panel" data-tag-bar role="group" aria-label="Filter notes by tag">
+          <label class="visually-hidden" for="notes-tag-search">Filter the tag list</label>
+          <input type="search" id="notes-tag-search" class="tag-search-box"
+                 placeholder="Find a tag..." autocomplete="off">
+          <div class="tag-panel-buttons">{tag_bar_html}</div>
+        </div>
+      </details>
+      <span class="result-count" data-result-count aria-live="polite" aria-atomic="true">{total} notes</span>
+    </form>'''
+
+    days_html = []
+    for entry in notes["entries"]:
+        items_html = []
+        for note in entry["notes"]:
+            tag_buttons = "".join(
+                f'<button type="button" class="tag" data-tag="{esc(tag)}">{esc(tag)}</button>'
+                for tag in note["tags"]
+            )
+            tags_html = (
+                f'<div class="entry-tags" aria-label="Tags">{tag_buttons}</div>'
+                if tag_buttons else ""
+            )
+            search_text = " ".join(
+                [note["search_text"], entry["date"], *note["tags"]]
+            )
+            items_html.append(
+                f'<article class="note-item" data-note-entry '
+                f'data-tags="{esc(",".join(note["tags"]))}" '
+                f'data-search="{esc(search_text)}">'
+                f'<div class="note-body">{note["body_html"]}</div>{tags_html}</article>'
+            )
+        if items_html:
+            days_html.append(
+                f'<section class="note-day" data-note-day>'
+                f'<h2 class="note-date" id="{esc(entry["date"])}">'
+                f'<a href="#{esc(entry["date"])}"><time datetime="{esc(entry["date"])}">'
+                f'{esc(entry["display_date"])}</time></a></h2>'
+                f'{"".join(items_html)}</section>'
+            )
+
+    entries_html = "".join(days_html)
+    if not entries_html:
+        entries_html = '<p class="empty-notes">No notes yet.</p>'
+    intro_html = render_markdown(notes["intro"])
+    content = (
+        f'<h1 class="page-title">{esc(notes["title"])}</h1>'
+        f'<div class="notes-intro">{intro_html}</div>'
+        f'{filters_html}<div class="notes-list">{entries_html}</div>'
+        f'<p class="no-results" data-no-results hidden>No notes match your search.</p>'
+        f'<script src="static/js/notes-filter.js" defer></script>'
+    )
+    return render_page(
+        notes["title"], content,
+        math=any(
+            contains_math(note["body_html"])
+            for entry in notes["entries"]
+            for note in entry["notes"]
+        ),
+        **site_fields(cv, "notes"),
+    )
+
+
 def build_blog_post(cv, post):
     meta_line = (
         f'<p class="post-meta"><time datetime="{esc(post["date"])}">{esc(post["date"])}</time></p>'
@@ -367,11 +512,13 @@ def main():
     resources = load_all("resources")
     papers = load_all("paper-links")
     posts = load_blog_posts()
+    notes = load_daily_notes()
 
     pages = {
         OUT / "index.html": build_index(cv, resources),
         OUT / "about.html": build_about(cv, about),
         OUT / "papers.html": build_paper_links(cv, papers),
+        OUT / "notes.html": build_notes(cv, notes),
         OUT / "blog.html": build_blog_index(cv, posts),
     }
     pages.update({
