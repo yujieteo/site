@@ -8,6 +8,10 @@ intro: >
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
 ## 2026-09-24
 
+Identify ambiguous or misleading terms commonly used in mathematics, in critical thinking, in economics, in daily life, or terms that presuppose a viewpoint that is wrong. #todo #language #mathematics
+
+[Intellectual property is a seductive mirage](https://www.gnu.org/philosophy/not-ipr.html). Clear distinctions lead to clear thinking. Patent law and copyright law are different. Intellectual property leads an economical view all these isues. Economics leads to unexamined assumptions. [Words to Avoid (or Use with Care) Because They Are Loaded or Confusing](https://www.gnu.org/philosophy/words-to-avoid.html#piracy) is another great one. #language #todo #read
+
 Wildcard by 8 October 2026. #todo
 
 Find Databricks research papers. [Databricks research papers](https://www.databricks.com/research#publications) can be found here and are to be read. #todo #programming #learning
