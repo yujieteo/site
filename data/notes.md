@@ -8,6 +8,20 @@ intro: >
 <!-- Append each new day at the bottom using a ## YYYY-MM-DD heading. -->
 ## 2026-09-24
 
+To wildcard by 8 October 2026.
+
+Find Databricks research papers. #todo #programming #learning
+
+Find Alice's (woog) interpretability Excel paper rating. #learning #todo #programming.
+
+To learn and build for learning: (1) a production ready full stack web application; (2) DevOps Docker Container; (3) basic compiler; (4) real world automation. #todo #programming #learning
+
+Be firm and express yourself clearly even for small things. #learning #psychology #feedback
+
+To have GitHub repositories for scripts, templates, infra, bibliography, snippets, playground, notes, challenges (LeetCode and Advent of Code) as well as awesome resources. #todo #programming
+
+To have Github repositories for: (1) preferred snippets; (2) asynchronous protocols; (3) SQLite; (4) `pandas` cleaning pipeline; (5) `matplotlib` defaults; (6) multiprocessing templates; (7) subprocess wrapper; (8) shell oneliners for grep; (9) GitHub actions CI files; (10) `yaml` config uploader. #todo #programming
+
 [Maxwell's equations](https://ncatlab.org/nlab/show/Maxwell's+equations) can be derived from U(1) differential cohomology. Local vector potentials differ by a gradient.
 Loop consistency gives Cech 1 cocycle or Dirac quantisation.
 Shifts of local choice of vector potential gives Cech 0-coboundary.
