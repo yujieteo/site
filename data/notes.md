@@ -8,6 +8,16 @@ intro: >
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
 ## 2026-09-25
 
+For the smooth irrational rotation algebra, write $W_{m,n}=U^mV^n$ with $VU=e^{2\pi i\theta}UV$. Moving $U^r$ left through $V^n$ gives the mental multiplication rule $W_{m,n}W_{r,s}=e^{2\pi i\theta nr}W_{m+r,n+s}$. Check: if either $n=0$ or $r=0$, nothing crosses and the phase disappears. This single crossing rule generates every Fourier-monomial product. #math.OA #noncommutative-geometry #mental-computation
+
+The canonical trace on the irrational rotation algebra is the noncommutative shadow of invariant transverse Lebesgue measure: $\tau(W_{m,n})$ is $1$ at $(m,n)=(0,0)$ and $0$ otherwise. Therefore $\tau(W_pW_q)$ vanishes unless $p+q=0$; when the exponents cancel, retain only the crossing phase. The check is geometric: integration kills every nonconstant Fourier mode. #math.OA #measure-theory #foliations #mental-computation
+
+The two torus derivations are mentally diagonal on Fourier modes: $\delta_1(W_{m,n})=2\pi i mW_{m,n}$ and $\delta_2(W_{m,n})=2\pi i nW_{m,n}$. Thus differentiation becomes multiplication by the exponent vector. The Leibniz rule is checked by exponent addition: the weight of $W_pW_q$ is $p+q$, exactly the sum of the two differentiated terms. #math.OA #noncommutative-geometry #mental-computation
+
+Normalize the fundamental area cocycle by $\Phi(a_0,a_1,a_2)=(2\pi i)^{-2}\tau\!\left(a_0(\delta_1a_1\delta_2a_2-\delta_2a_1\delta_1a_2)\right)$. For Fourier modes $W_p,W_q,W_r$, it is zero unless $p+q+r=0$; otherwise it is the product's crossing phase times $\det(q,r)$. Remember: **closure supplies the trace, oriented area supplies the calculus**. Swapping $q,r$ reverses the determinant, providing the sign check. #math.OA #cyclic-cohomology #mental-computation
+
+Let $\lambda=e^{2\pi i\theta}$. For $a_0=U$, $a_1=V$, $a_2=U^{-1}V^{-1}$, the exponent triangle closes and $\det((0,1),(-1,-1))=1$. The crossing rule gives $UVU^{-1}V^{-1}=\lambda^{-1}$, so the normalized area cocycle is $\Phi(U,V,U^{-1}V^{-1})=e^{-2\pi i\theta}$. The trace sees the same surviving scalar; the cocycle additionally records its unit oriented area. #math.OA #foliations #cyclic-cohomology #mental-computation
+
 [Lauren Tan's account of shipping 2,500 production pull requests with coding agents](https://x.com/poteto/status/2102050467505430555) reinforces my conclusion that effective use of language-model tools is becoming a practical skill worth deliberately learning and continually updating. The reported throughput is self-described rather than an independent productivity study; the useful lesson is the combination of agents, verification, and constraints, not PR count alone. #programming #learning #agents #verification
 
 [Skills.sh](https://www.skills.sh/) is a directory for discovering reusable agent skills, while [Agent Skills](https://agentskills.io/home) documents the open folder format built around `SKILL.md`. Together they make procedural knowledge easier to discover, version, and reuse across compatible agents. #agents #skills #tools
