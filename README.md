@@ -56,8 +56,10 @@ the category is used as the fallback tag.
 
 ## Daily notes
 
-Add a dated section to the bottom of `data/notes.md` whenever you have a small
-thought, sentence, or link that does not need to become a full blog post:
+Treat `data/notes.md` as the sole source of truth for notes; `site/notes.html` is
+generated and must not be edited by hand. Insert new dated sections in descending
+order near the top whenever you have a small thought, sentence, or link that does
+not need to become a full blog post:
 
 ```markdown
 ## 2026-09-24
@@ -67,8 +69,9 @@ One sentence is enough. Normal [Markdown](https://commonmark.org/) works here. #
 A second paragraph becomes a separate searchable note. #reading #mathematics
 ```
 
-Keep adding to the same date during the day. The build publishes entries
-newest-first and gives each date a stable link such as `notes.html#2026-09-24`.
+Keep one heading per date and add new entries at the top of that date's section.
+The build publishes entries newest-first and gives each date a stable link such
+as `notes.html#2026-09-24`.
 Blank lines separate notes. Trailing hashtags become clickable filters and are
 not displayed as part of the prose; use hyphens for multi-word tags.
 

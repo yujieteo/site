@@ -165,9 +165,9 @@ def load_blog_posts():
 def load_daily_notes():
     """Load paragraph-sized, tagged notes from dated Markdown sections.
 
-    Notes are written oldest-to-newest so a new day can always be appended to
-    the file. A paragraph may end in tags such as ``#math #reading``. The
-    published page is sorted newest-first.
+    Notes are written newest-to-oldest, with one heading per date. A paragraph
+    may end in tags such as ``#math #reading``. The published page is also sorted
+    newest-first.
     """
     path = DATA / "notes.md"
     raw = path.read_text(encoding="utf-8")
