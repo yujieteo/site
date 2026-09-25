@@ -8,6 +8,14 @@ intro: >
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
 ## 2026-09-25
 
+[Lauren Tan's account of shipping 2,500 production pull requests with coding agents](https://x.com/poteto/status/2102050467505430555) reinforces my conclusion that effective use of language-model tools is becoming a practical skill worth deliberately learning and continually updating. The reported throughput is self-described rather than an independent productivity study; the useful lesson is the combination of agents, verification, and constraints, not PR count alone. #programming #learning #agents #verification
+
+[Skills.sh](https://www.skills.sh/) is a directory for discovering reusable agent skills, while [Agent Skills](https://agentskills.io/home) documents the open folder format built around `SKILL.md`. Together they make procedural knowledge easier to discover, version, and reuse across compatible agents. #agents #skills #tools
+
+[WebMCP](https://webmachinelearning.github.io/webmcp/) is a draft Community Group report for exposing web-application functions as JavaScript tools that agents can invoke. Supporting it may make a website more directly operable by agents, but the proposal is not a W3C Standard and its security and privacy risks need explicit treatment. #agents #web #standards #security
+
+[Treg](https://treg.to/) presents itself as an “OpenRouter for agent tools”: one credential and a metered catalog spanning many data and action providers. Evaluate its provider coverage, reliability measurements, pricing, credential boundary, and failure modes before depending on the aggregation layer. #agents #tools #apis
+
 [Von Neumann Algebra Automorphisms and Time-Thermodynamics Relation in General Covariant Quantum Theories](https://arxiv.org/abs/gr-qc/9406019) proposes the thermal-time hypothesis: a faithful state selects a modular one-parameter automorphism group as physical time. Section 2 distinguishes this state-dependent flow from the state-independent homomorphism $\mathbb{R}\to\operatorname{Out}(M)$ supplied by Connes's cocycle Radon--Nikodym theorem, so “natural time” is canonical only modulo inner automorphisms. #math.OA #mathematical-physics #modular-theory
 
 [Some Entanglement Properties of Quantum Field Theory](https://link.aps.org/accepted/10.1103/RevModPhys.90.045003) makes modular flow computational in finite dimensions: Section IV.B, equation (IV.35), gives $\sigma_s(a)=\rho^{is}a\rho^{-is}$. Thus for $\rho=\operatorname{diag}(p,q)$, diagonal observables are fixed while $E_{12}$ acquires the phase $(p/q)^{is}$; this is the smallest example in which noncommutativity produces nontrivial evolution. #math.OA #mathematical-physics #modular-theory
@@ -35,8 +43,6 @@ Calling software or tokens “consumed” can obscure what changes: software is 
 [Periods](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kontzagi.pdf): Kontsevich and Zagier define periods as complex numbers whose real and imaginary parts are absolutely convergent integrals of rational functions with rational coefficients over domains given by polynomial inequalities with rational coefficients. They form a countable algebra under identities generated conjecturally by additivity, change of variables, and Stokes' theorem. Connections include Picard–Fuchs equations, $L$-values, and the Deligne and Beilinson conjectures; exponential periods provide a broader class. #math.AG #number-theory
 
 [Fourier–Mukai transforms](https://www.math.uni-bonn.de/people/huybrech/Garda2.pdf) express equivalences between derived categories and recover Serre duality through natural dualities of Hom or Ext groups. A Serre functor records these dualities but may not capture all noncommutative information. Investigate whether Hochschild homology supplies the missing invariant and how that compares with the radical of the trace pairing. #math.AG #category-theory #todo
-
-Find the post about managing 2,000 pull requests at X. #todo #management #programming
 
 Find the reference on using Jev to reduce language-model token usage; verify the tool's name and the claimed mechanism. #todo #llms #tools
 
