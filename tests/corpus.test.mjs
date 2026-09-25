@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const source = await readFile(new URL("../static/js/corpus.js", import.meta.url), "utf8");
-const { getItem, searchSite } = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
+const { getItem, loadCorpus, searchSite } = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 
 const corpus = {
   records: [
@@ -12,6 +12,24 @@ const corpus = {
     { id: "paper:x", kind: "paper", title: "Algebra", content: "Groups", tags: ["algebra"] },
   ],
 };
+
+test("loads a compatible corpus after a partial site publish", async () => {
+  globalThis.document = {
+    querySelector(selector) {
+      const metadata = {
+        'meta[name="site-corpus"]': { content: "corpus.json" },
+        'meta[name="site-corpus-revision"]': { content: "older-page-revision" },
+      };
+      return metadata[selector];
+    },
+  };
+  globalThis.fetch = async () => ({
+    ok: true,
+    json: async () => ({ ...corpus, schemaVersion: 1, revision: "newer-corpus-revision" }),
+  });
+
+  assert.equal((await loadCorpus()).revision, "newer-corpus-revision");
+});
 
 test("searches all terms and filters by kind and tag", () => {
   const result = searchSite(corpus, { text: "algebraic moduli", kind: "note", tags: ["math.ag"] });

@@ -52,13 +52,11 @@ export async function loadCorpus() {
   if (corpusPromise) return corpusPromise;
   corpusPromise = (async () => {
     const url = document.querySelector('meta[name="site-corpus"]')?.content;
-    const expectedRevision = document.querySelector('meta[name="site-corpus-revision"]')?.content;
-    if (!url || !expectedRevision) throw new Error("Published corpus metadata is missing");
+    if (!url) throw new Error("Published corpus metadata is missing");
     const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) throw new Error("Published corpus is unavailable");
     const corpus = await response.json();
     if (corpus.schemaVersion !== SCHEMA_VERSION) throw new Error("Published corpus version is unsupported");
-    if (corpus.revision !== expectedRevision) throw new Error("Published corpus changed; reload this page");
     return corpus;
   })();
   corpusPromise.catch(() => { corpusPromise = undefined; });
