@@ -22,6 +22,10 @@ templates/           Shared HTML templates
 site/                Generated site
 ```
 
+`site/corpus.json` is the generated Published Corpus: the explicit public
+projection consumed by the human search interface and the site's read-only
+WebMCP tools. It is never edited by hand.
+
 ## Build
 
 ```sh
@@ -31,6 +35,26 @@ python3 -m venv .venv
 .venv/bin/python scripts/build.py
 open site/index.html
 ```
+
+Run the dependency-free tests with:
+
+```sh
+.venv/bin/python -m unittest discover -s tests -p 'test_*.py'
+node --test tests/corpus.test.mjs
+```
+
+## WebMCP
+
+Every generated page registers two read-only tools when the browser supports
+`document.modelContext`:
+
+- `search_site` searches all public content by text, kind, tags, and sort order.
+- `get_item` retrieves one complete Corpus Record by its stable ID.
+
+Both tools and the visible search controls use `static/js/corpus.js`. The
+browser fetches `corpus.json` without persistent caching and keeps it only for
+the page lifetime. Authenticated authoring is intentionally separate from this
+read interface.
 
 The build recreates the generated `site/` directory, preventing renamed or
 deleted content from leaving stale output behind. Keep source files outside it.

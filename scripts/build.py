@@ -10,6 +10,9 @@ from datetime import date
 from pathlib import Path
 
 import yaml
+from jsonschema import Draft7Validator
+
+from published_corpus import build_published_corpus
 
 try:
     import markdown as _markdown
@@ -149,6 +152,7 @@ def load_blog_posts():
             "summary": meta.get("summary", ""),
             "category": category,
             "tags": normalize_tags(meta.get("tags"), category),
+            "body_markdown": body,
             "body_html": render_markdown(body),
         })
     # Newest first.
@@ -208,7 +212,9 @@ def load_daily_notes():
             body_html = render_markdown(note_markdown)
             plain_text = html.unescape(re.sub(r"<[^>]+>", " ", body_html))
             notes.append({
+                "content": note_markdown,
                 "body_html": body_html,
+                "plain_text": re.sub(r"\s+", " ", plain_text).strip(),
                 "search_text": re.sub(r"\s+", " ", plain_text).strip().lower(),
                 "tags": tags,
             })
@@ -240,11 +246,12 @@ def site_fields(cv, active):
     return identity | navigation
 
 
-def render_page(title, content, root="", tagline="", name="", math=False, **nav):
+def render_page(title, content, corpus_revision, root="", tagline="", name="", math=False, **nav):
     fields = {
         "title": esc(title),
         "content": content + (MATHJAX_SCRIPT if math else ""),
         "root": root,
+        "corpus_revision": corpus_revision,
         "tagline": esc(tagline), "name": esc(name),
         **nav,
     }
@@ -273,13 +280,13 @@ def render_tag_bar(tags, counts, total, show_first=8):
     return "".join(buttons) + hint
 
 
-def render_filterable_list(data, tag_bar_html, search_placeholder, empty_message,
-                            total, default_show=False):
-    data_json = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+def render_filterable_list(kind, tag_bar_html, search_placeholder, empty_message,
+                            total, default_show=False, initial_html=""):
     initial_count_label = "" if not default_show else f"{total} entries"
 
     return f"""
-    <form class="search-row" data-filter-form data-default-show="{str(default_show).lower()}">
+    <form class="search-row" data-filter-form data-kind="{esc(kind)}"
+          data-default-show="{str(default_show).lower()}">
       <label class="visually-hidden" for="entry-search">{esc(search_placeholder)}</label>
       <input type="text" id="entry-search" class="search-box" placeholder="{esc(search_placeholder)}"
              autocomplete="off">
@@ -295,41 +302,32 @@ def render_filterable_list(data, tag_bar_html, search_placeholder, empty_message
       </details>
       <span class="result-count" data-result-count aria-live="polite" aria-atomic="true">{esc(initial_count_label)}</span>
     </form>
-    <section data-entry-list aria-label="Results"></section>
+    <section data-entry-list aria-label="Results">{initial_html}</section>
     <p class="no-results" data-no-results hidden>{esc(empty_message)}</p>
     <nav class="pager" data-pager aria-label="Result pages" hidden></nav>
-    <script type="application/json" data-entry-data>{data_json}</script>
-    <script src="static/js/filter.js" defer></script>
+    <script type="module" src="static/js/filter.js"></script>
     """.strip()
 
 
-def render_entry_list(entries, search_placeholder, empty_message, default_show=False):
+def render_entry_list(kind, entries, search_placeholder, empty_message, default_show=False):
     """Generic filterable list. Each entry dict needs: category and title.
     Optional: note, url, date, and tags (defaults to category).
     Used for Resources, Paper Links, and the Blog index.
     """
     counts = Counter()
-    data = []
     for entry in entries:
         tags = normalize_tags(entry.get("tags"), entry["category"])
         counts.update(tags)
-        data.append({
-            "tags": tags,
-            "category": entry["category"],
-            "url": entry.get("url", ""),
-            "title": entry.get("title", ""),
-            "note": entry.get("note", ""),
-            "date": entry.get("date", ""),
-        })
     sorted_tags = sorted(counts, key=lambda tag: (-counts[tag], tag.lower()))
     tag_bar_html = render_tag_bar(sorted_tags, counts, len(entries))
 
-    return render_filterable_list(data, tag_bar_html, search_placeholder,
+    return render_filterable_list(kind, tag_bar_html, search_placeholder,
                                   empty_message, len(entries), default_show)
 
 
-def build_index(cv, resources):
+def build_index(cv, resources, corpus_revision):
     body = render_entry_list(
+        "resource",
         resources,
         "Search title or note...",
         "No resources match your search.",
@@ -337,30 +335,31 @@ def build_index(cv, resources):
     )
     content = f'<h1 class="visually-hidden">Resources</h1><p>{esc(cv["bio"])}</p>{body}'
     return render_page(
-        cv["name"], content,
+        cv["name"], content, corpus_revision,
         math=True,
         **site_fields(cv, "home"),
     )
 
 
-def build_about(cv, about):
+def build_about(cv, about, corpus_revision):
     intro_html = render_markdown(about["intro"])
     sections_html = "".join(
         (
-            f'<h2 class="section-title">{esc(sec["title"])}</h2>'
+            f'<h2 class="section-title" id="{esc(sec["slug"])}">{esc(sec["title"])}</h2>'
             f'{render_markdown(sec["content"])}'
         )
         for sec in about.get("sections", [])
     )
     content = f'<h1 class="page-title">{esc(cv["name"])}</h1>{intro_html}{sections_html}'
     return render_page(
-        "About", content,
+        "About", content, corpus_revision,
         **site_fields(cv, "about"),
     )
 
 
-def build_paper_links(cv, papers):
+def build_paper_links(cv, papers, corpus_revision):
     body = render_entry_list(
+        "paper",
         papers,
         "Search paper links...",
         "No paper links match your search.",
@@ -368,13 +367,13 @@ def build_paper_links(cv, papers):
     )
     content = f'<h1 class="page-title">Paper Links</h1>{body}'
     return render_page(
-        "Paper Links", content,
+        "Paper Links", content, corpus_revision,
         math=True,
         **site_fields(cv, "paper_links"),
     )
 
 
-def build_blog_index(cv, posts):
+def build_blog_index(cv, posts, corpus_revision):
     entries = [{
         "category": p["category"],
         "tags": p["tags"],
@@ -384,6 +383,7 @@ def build_blog_index(cv, posts):
         "date": p["date"],
     } for p in posts]
     body = render_entry_list(
+        "blog",
         entries,
         "Search posts...",
         "No posts match your search.",
@@ -391,12 +391,12 @@ def build_blog_index(cv, posts):
     )
     content = f'<h1 class="page-title">Blog</h1>{body}'
     return render_page(
-        "Blog", content,
+        "Blog", content, corpus_revision,
         **site_fields(cv, "blog"),
     )
 
 
-def build_notes(cv, notes):
+def build_notes(cv, notes, corpus_revision):
     counts = Counter(
         tag
         for entry in notes["entries"]
@@ -406,67 +406,37 @@ def build_notes(cv, notes):
     total = sum(len(entry["notes"]) for entry in notes["entries"])
     sorted_tags = sorted(counts, key=lambda tag: (-counts[tag], tag.lower()))
     tag_bar_html = render_tag_bar(sorted_tags, counts, total)
-    filters_html = f'''
-    <form class="search-row" data-notes-filter-form>
-      <label class="visually-hidden" for="notes-search">Search notes</label>
-      <input type="search" id="notes-search" class="search-box"
-             placeholder="Search notes..." autocomplete="off">
-      <button type="submit" class="search-btn">Search</button>
-      <details class="filters-menu">
-        <summary class="filters-toggle">Tags</summary>
-        <div class="tag-panel" data-tag-bar role="group" aria-label="Filter notes by tag">
-          <label class="visually-hidden" for="notes-tag-search">Filter the tag list</label>
-          <input type="search" id="notes-tag-search" class="tag-search-box"
-                 placeholder="Find a tag..." autocomplete="off">
-          <div class="tag-panel-buttons">{tag_bar_html}</div>
-        </div>
-      </details>
-      <span class="result-count" data-result-count aria-live="polite" aria-atomic="true">{total} notes</span>
-    </form>'''
-
     days_html = []
     for entry in notes["entries"]:
         items_html = []
         for note in entry["notes"]:
-            tag_buttons = "".join(
+            tags_html = "".join(
                 f'<button type="button" class="tag" data-tag="{esc(tag)}">{esc(tag)}</button>'
                 for tag in note["tags"]
             )
-            tags_html = (
-                f'<div class="entry-tags" aria-label="Tags">{tag_buttons}</div>'
-                if tag_buttons else ""
-            )
-            search_text = " ".join(
-                [note["search_text"], entry["date"], *note["tags"]]
-            )
             items_html.append(
-                f'<article class="note-item" data-note-entry '
-                f'data-tags="{esc(",".join(note["tags"]))}" '
-                f'data-search="{esc(search_text)}">'
-                f'<div class="note-body">{note["body_html"]}</div>{tags_html}</article>'
+                f'<article class="note-item" id="{esc(note["record_id"])}">'
+                f'<div class="note-body">{note["body_html"]}</div>'
+                f'<div class="entry-tags" aria-label="Tags">{tags_html}</div></article>'
             )
         if items_html:
             days_html.append(
-                f'<section class="note-day" data-note-day>'
-                f'<h2 class="note-date" id="{esc(entry["date"])}">'
+                f'<section class="note-day"><h2 class="note-date" id="{esc(entry["date"])}">'
                 f'<a href="#{esc(entry["date"])}"><time datetime="{esc(entry["date"])}">'
-                f'{esc(entry["display_date"])}</time></a></h2>'
-                f'{"".join(items_html)}</section>'
+                f'{esc(entry["display_date"])}</time></a></h2>{"".join(items_html)}</section>'
             )
-
-    entries_html = "".join(days_html)
-    if not entries_html:
-        entries_html = '<p class="empty-notes">No notes yet.</p>'
+    filters_html = render_filterable_list(
+        "note", tag_bar_html, "Search notes...", "No notes match your search.",
+        total, default_show=True, initial_html="".join(days_html),
+    )
     intro_html = render_markdown(notes["intro"])
     content = (
         f'<h1 class="page-title">{esc(notes["title"])}</h1>'
         f'<div class="notes-intro">{intro_html}</div>'
-        f'{filters_html}<div class="notes-list">{entries_html}</div>'
-        f'<p class="no-results" data-no-results hidden>No notes match your search.</p>'
-        f'<script src="static/js/notes-filter.js" defer></script>'
+        f'{filters_html}'
     )
     return render_page(
-        notes["title"], content,
+        notes["title"], content, corpus_revision,
         math=any(
             contains_math(note["body_html"])
             for entry in notes["entries"]
@@ -476,7 +446,7 @@ def build_notes(cv, notes):
     )
 
 
-def build_blog_post(cv, post):
+def build_blog_post(cv, post, corpus_revision):
     meta_line = (
         f'<p class="post-meta"><time datetime="{esc(post["date"])}">{esc(post["date"])}</time></p>'
         if post["date"] else ""
@@ -488,7 +458,7 @@ def build_blog_post(cv, post):
         f'<div class="post-body">{body_html}</div>'
     )
     return render_page(
-        post["title"], content, root="../",
+        post["title"], content, corpus_revision, root="../",
         math=contains_math(body_html),
         **site_fields(cv, "blog"),
     )
@@ -504,25 +474,56 @@ def prepare_output():
     return blog_out
 
 
-def main():
-    blog_out = prepare_output()
+def validate_corpus(corpus):
+    schema = json.loads((ROOT / "schema/generated/corpus.schema.json").read_text(encoding="utf-8"))
+    errors = sorted(Draft7Validator(schema).iter_errors(corpus), key=lambda error: list(error.path))
+    if errors:
+        error = errors[0]
+        location = ".".join(str(part) for part in error.path)
+        raise RuntimeError(f"Invalid generated corpus at {location or '<root>'}: {error.message}")
+    ids = [record["id"] for record in corpus["records"]]
+    if len(ids) != len(set(ids)):
+        duplicate = next(record_id for record_id in ids if ids.count(record_id) > 1)
+        raise RuntimeError(f"Duplicate generated corpus id: {duplicate}")
 
+
+def main():
     cv = load_one("cv")
-    about = load_one("about")
+    cv["bio_html"] = render_markdown(cv["bio"])
+    about_source = load_one("about")
+    about = {
+        **about_source,
+        "intro_html": render_markdown(about_source["intro"]),
+        "sections": [
+            {**section, "slug": re.sub(r"[^a-z0-9]+", "-", section["title"].lower()).strip("-"),
+             "content_html": render_markdown(section["content"])}
+            for section in about_source.get("sections", [])
+        ],
+    }
     resources = load_all("resources")
     papers = load_all("paper-links")
+    for entry in [*resources, *papers]:
+        entry["tags"] = normalize_tags(entry.get("tags"), entry["category"])
     posts = load_blog_posts()
     notes = load_daily_notes()
+    corpus = build_published_corpus(cv, about, resources, papers, posts, notes)
+    validate_corpus(corpus)
+
+    blog_out = prepare_output()
+    (OUT / "corpus.json").write_text(
+        json.dumps(corpus, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+    corpus_revision = corpus["revision"]
 
     pages = {
-        OUT / "index.html": build_index(cv, resources),
-        OUT / "about.html": build_about(cv, about),
-        OUT / "papers.html": build_paper_links(cv, papers),
-        OUT / "notes.html": build_notes(cv, notes),
-        OUT / "blog.html": build_blog_index(cv, posts),
+        OUT / "index.html": build_index(cv, resources, corpus_revision),
+        OUT / "about.html": build_about(cv, about, corpus_revision),
+        OUT / "papers.html": build_paper_links(cv, papers, corpus_revision),
+        OUT / "notes.html": build_notes(cv, notes, corpus_revision),
+        OUT / "blog.html": build_blog_index(cv, posts, corpus_revision),
     }
     pages.update({
-        blog_out / f"{post['slug']}.html": build_blog_post(cv, post)
+        blog_out / f"{post['slug']}.html": build_blog_post(cv, post, corpus_revision)
         for post in posts
     })
     for path, content in pages.items():

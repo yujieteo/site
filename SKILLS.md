@@ -16,7 +16,9 @@ Use this workflow when the user asks to add entries to `data/notes.md` and publi
 - Preserve the user's note text unless they explicitly request editing or invoke
   a skill whose stated purpose includes sharpening it.
 - Do not change unrelated source files. If pre-existing changes are present, inspect them and follow the user's requested commit scope.
-- Deploy only generated files relevant to the change. Never use deletion or mirroring flags, and never remove remote files.
+- Deploy only generated files relevant to the change, including `site/corpus.json`
+  whenever public content changes. Never use deletion or mirroring flags, and
+  never remove remote files.
 
 ## Workflow
 
@@ -33,22 +35,26 @@ Use this workflow when the user asks to add entries to `data/notes.md` and publi
    .venv/bin/python scripts/build.py
    ```
 
-5. Verify that `site/notes.html` contains the new date, text, links, and tags. Run `git diff --check` and review the diff before committing.
+5. Verify that `site/notes.html` contains the new date, text, links, and tags,
+   and that `site/corpus.json` contains matching note records. Run
+   `git diff --check` and review the diff before committing.
 6. Commit the intended changes and push the branch requested by the user. Do not silently substitute another branch name.
-7. Deploy only the changed generated notes page. Upload to a unique temporary
-   file in the same remote directory, verify its checksum, preserve the current
-   page temporarily, and atomically rename the verified upload to `notes.html`:
+7. Deploy `site/corpus.json` first and the changed generated notes page second.
+   Upload each to a unique temporary file in the same remote directory, verify
+   its checksum, preserve the current file temporarily, and atomically rename
+   the verified upload into place:
 
    ```sh
-   scp site/notes.html <ssh-target>:<document-root>/<unique-temp-name>
-   ssh <ssh-target> '<verify temp; preserve current; rename temp to notes.html>'
+   scp site/corpus.json <ssh-target>:<document-root>/<unique-corpus-temp-name>
+   scp site/notes.html <ssh-target>:<document-root>/<unique-notes-temp-name>
+   ssh <ssh-target> '<verify both; preserve current files; rename corpus, then notes>'
    ```
 
    Replace the placeholders at runtime. Do not commit their resolved values.
 
 8. Compare local and remote checksums, then fetch the public HTTPS page and
-   confirm that the new dated section and entries are served. Restore the
-   preserved prior page if the deployed artifact is corrupt or incomplete.
+   corpus and confirm that the new dated section and records are served. Restore
+   the preserved prior files if either deployed artifact is corrupt or incomplete.
 9. Report the commit, pushed branch, deployed files, and verification result. Mention any remaining working-tree changes.
 
 Stop and ask for direction if the requested branch or deployment destination cannot be resolved safely.

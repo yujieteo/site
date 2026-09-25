@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
+  <meta name="site-corpus" content="corpus.json">
+  <meta name="site-corpus-revision" content="35951f035287a1acc71ef879c6f9c50683da32a6173cb03966c80066f4585e36">
+  <script type="module" src="static/js/webmcp.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -23,7 +26,8 @@
         <a href="blog.html" aria-current="page">Blog</a>
       </nav>
     </header>
-    <main id="main-content" tabindex="-1"><h1 class="page-title">Blog</h1><form class="search-row" data-filter-form data-default-show="true">
+    <main id="main-content" tabindex="-1"><h1 class="page-title">Blog</h1><form class="search-row" data-filter-form data-kind="blog"
+          data-default-show="true">
       <label class="visually-hidden" for="entry-search">Search posts...</label>
       <input type="text" id="entry-search" class="search-box" placeholder="Search posts..."
              autocomplete="off">
@@ -42,8 +46,7 @@
     <section data-entry-list aria-label="Results"></section>
     <p class="no-results" data-no-results hidden>No posts match your search.</p>
     <nav class="pager" data-pager aria-label="Result pages" hidden></nav>
-    <script type="application/json" data-entry-data>[{"tags":["recovery notes"],"category":"recovery","url":"blog/oth-recovery-260919.html","title":"Recovery Notes for 19 September 2026","note":"Recovery notes","date":"2026-09-19"},{"tags":["mac","setup"],"category":"Computing","url":"blog/mac-set-up.html","title":"Mac Set Up","note":"Mac set up","date":"2026-09-13"},{"tags":["ooda","strategy","orientation","tempo","slouching"],"category":"Strategy","url":"blog/ooda-orientation-and-slouching.html","title":"OODA, Orientation, and Slouching","note":"A vocabulary of OODA loops, orientation, tempo, perception, and strategic slack.","date":"2026-09-13"},{"tags":["art","colour"],"category":"General","url":"blog/pluvium-colour.html","title":"Pluvium's Workshop on colours","note":"Summary on how colour from Pluvium's tutorial","date":"2026-09-13"},{"tags":["confidence","willpower","curiosity","learning"],"category":"Reflection","url":"blog/groundless-confidence.html","title":"Groundless Confidence","note":"Notes on confidence, willpower, curiosity, and the value of thinking with companions.","date":""},{"tags":["ontology","definitions","mathematics","metarationality"],"category":"Philosophy","url":"blog/notes-on-ontology.html","title":"Notes on Ontology","note":"Working notes on definitions, ontological splitting, nebulosity, and purpose-laden categories.","date":""},{"tags":["search","algorithms","heuristics","optimisation"],"category":"Algorithms","url":"blog/search-reflections-i.html","title":"Search Reflections I","note":"A compact survey of objectives, heuristics, pruning, search trade-offs, and repairability.","date":""},{"tags":["ssh","github","macos","server","security"],"category":"Systems","url":"blog/ssh-setup-guide.html","title":"SSH Setup Guide","note":"Practical steps for GitHub SSH authentication and key-based Mac-to-server access.","date":""}]</script>
-    <script src="static/js/filter.js" defer></script></main>
+    <script type="module" src="static/js/filter.js"></script></main>
     <footer class="site-footer">
       Made with the assistance of AI. <a href="https://github.com/yujieteo">GitHub</a>
     </footer>

@@ -1,7 +1,7 @@
-(() => {
-  const form = document.querySelector("[data-filter-form]");
-  if (!form) return;
+import { loadCorpus, searchSite } from "./corpus.js";
 
+const form = document.querySelector("[data-filter-form]");
+if (form) {
   const search = form.querySelector(".search-box");
   const tagSearch = form.querySelector(".tag-search-box");
   const menu = form.querySelector(".filters-menu");
@@ -10,16 +10,10 @@
   const empty = document.querySelector("[data-no-results]");
   const count = form.querySelector("[data-result-count]");
   const pager = document.querySelector("[data-pager]");
-  const entries = JSON.parse(document.querySelector("[data-entry-data]").textContent)
-    .map((entry) => ({
-      ...entry,
-      search: [entry.title, entry.note, entry.category, ...entry.tags, entry.date]
-        .join(" ").toLowerCase(),
-    }));
-
   const pageSize = 10;
   let activeTag = "__all__";
-  let page = 1;
+  let cursor = null;
+  let previousCursors = [];
 
   const escapeHtml = (value) => String(value ?? "").replace(
     /[&<>"']/g,
@@ -30,71 +24,71 @@
     const date = entry.date
       ? `<time class="entry-date" datetime="${escapeHtml(entry.date)}">${escapeHtml(entry.date)}</time>`
       : "";
+    const tags = (entry.tags || []).map((tag) => (
+      `<button type="button" class="tag" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`
+    )).join("");
+    if (entry.kind === "note") {
+      return `<article class="note-item entry" id="${escapeHtml(entry.id)}">${date}`
+        + `<div class="note-body">${entry.contentHtml || ""}</div>`
+        + `<div class="entry-tags" aria-label="Tags">${tags}</div></article>`;
+    }
     const title = entry.url
       ? `<a href="${escapeHtml(entry.url)}">${escapeHtml(entry.title)}</a>`
       : escapeHtml(entry.title);
-    const note = entry.note ? `<p class="entry-abstract">${escapeHtml(entry.note)}</p>` : "";
-    const tags = entry.tags.map((tag) => (
-      `<button type="button" class="tag" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`
-    )).join("");
-
-    return `<article class="entry">${date}<h2 class="entry-title" tabindex="-1">${title}</h2>${note}`
-      + `<div class="entry-tags" aria-label="Tags">${tags}</div></article>`;
+    const summary = entry.summary ? `<p class="entry-abstract">${escapeHtml(entry.summary)}</p>` : "";
+    return `<article class="entry">${date}<h2 class="entry-title" tabindex="-1">${title}</h2>`
+      + `${summary}<div class="entry-tags" aria-label="Tags">${tags}</div></article>`;
   };
 
-  const matchingEntries = () => {
-    const query = search.value.trim().toLowerCase();
-    return entries.filter((entry) => (
-      (activeTag === "__all__" || entry.tags.includes(activeTag))
-      && (!query || entry.search.includes(query))
-    ));
+  const shouldShow = () => form.dataset.defaultShow === "true"
+    || search.value.trim() !== "" || activeTag !== "__all__";
+
+  const render = async () => {
+    if (!shouldShow()) {
+      list.innerHTML = "";
+      empty.hidden = true;
+      pager.hidden = true;
+      count.textContent = "Search to show entries";
+      return;
+    }
+    try {
+      const result = searchSite(await loadCorpus(), {
+        text: search.value,
+        kind: form.dataset.kind,
+        tags: activeTag === "__all__" ? [] : [activeTag],
+        limit: pageSize,
+        cursor,
+      });
+      list.innerHTML = result.items.map(entryHtml).join("");
+      document.dispatchEvent(new CustomEvent("entries-rendered", { detail: { target: list } }));
+      empty.hidden = result.total !== 0;
+      count.textContent = result.total ? `${result.total} ${result.total === 1 ? "match" : "matches"}` : "0 matches";
+      pager.hidden = !result.nextCursor && previousCursors.length === 0;
+      pager.innerHTML = pager.hidden ? "" : `
+        <button type="button" class="pager-btn" data-direction="previous"${previousCursors.length ? "" : " disabled"}>Previous</button>
+        <button type="button" class="pager-btn" data-direction="next"${result.nextCursor ? "" : " disabled"}>Next</button>`;
+      pager.dataset.nextCursor = result.nextCursor || "";
+    } catch (error) {
+      empty.hidden = false;
+      empty.textContent = error.message;
+      count.textContent = "Search unavailable";
+      pager.hidden = true;
+    }
   };
 
-  const render = () => {
-    const showEntries = form.dataset.defaultShow === "true"
-      || search.value.trim() !== ""
-      || activeTag !== "__all__";
-    const matches = matchingEntries();
-    const pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
-    page = Math.min(page, pageCount);
-    const start = (page - 1) * pageSize;
-
-    list.innerHTML = showEntries
-      ? matches.slice(start, start + pageSize).map(entryHtml).join("")
-      : "";
-    document.dispatchEvent(new CustomEvent("entries-rendered", { detail: { target: list } }));
-    empty.hidden = !(showEntries && matches.length === 0);
-
-    if (!showEntries) count.textContent = "Search to show entries";
-    else if (!matches.length) count.textContent = "0 matches";
-    else count.textContent = `${start + 1}-${Math.min(start + pageSize, matches.length)} / ${matches.length} matches`;
-
-    pager.hidden = !showEntries || pageCount <= 1;
-    pager.innerHTML = pager.hidden ? "" : `
-      <button type="button" class="pager-btn" data-direction="previous"${page <= 1 ? " disabled" : ""}>Previous</button>
-      <span class="pager-label">Page ${page} / ${pageCount}</span>
-      <button type="button" class="pager-btn" data-direction="next"${page >= pageCount ? " disabled" : ""}>Next</button>`;
-  };
-
-  const searchEntries = () => {
-    page = 1;
-    render();
-  };
-
+  const restart = () => { cursor = null; previousCursors = []; render(); };
   const selectTag = (tag) => {
     activeTag = tag;
     tagBar.querySelectorAll("button.tag").forEach((button) => {
       button.setAttribute("aria-pressed", button.dataset.tag === tag ? "true" : "false");
     });
-    searchEntries();
+    restart();
   };
-
   const filterTags = () => {
     const query = tagSearch.value.trim().toLowerCase();
     tagBar.querySelectorAll("button.tag[data-tag]").forEach((button) => {
       if (button.dataset.tag !== "__all__") {
-        button.hidden = query
-          ? !button.textContent.toLowerCase().includes(query)
+        button.hidden = query ? !button.textContent.toLowerCase().includes(query)
           : button.classList.contains("tag-extra");
       }
     });
@@ -102,43 +96,34 @@
     if (hint) hint.hidden = query !== "";
   };
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    searchEntries();
-  });
+  form.addEventListener("submit", (event) => { event.preventDefault(); restart(); });
+  search.addEventListener("input", restart);
   tagSearch.addEventListener("input", filterTags);
   tagBar.addEventListener("click", (event) => {
     const button = event.target.closest("button.tag");
     if (!button) return;
     selectTag(button.dataset.tag);
     menu.open = false;
-    menu.firstElementChild.focus();
   });
   list.addEventListener("click", (event) => {
     const button = event.target.closest("button.tag[data-tag]");
     if (!button) return;
     selectTag(button.dataset.tag);
     search.focus();
-    window.scrollTo({ top: 0 });
+    form.scrollIntoView({ block: "start" });
   });
   pager.addEventListener("click", (event) => {
     const button = event.target.closest("button.pager-btn");
     if (!button || button.disabled) return;
-    page += button.dataset.direction === "next" ? 1 : -1;
-    render();
-    list.querySelector(".entry-title").focus({ preventScroll: true });
-    list.scrollIntoView({ block: "start" });
-  });
-  document.addEventListener("click", (event) => {
-    if (menu.open && !menu.contains(event.target)) menu.open = false;
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && menu.open) {
-      menu.open = false;
-      menu.firstElementChild.focus();
+    if (button.dataset.direction === "next") {
+      previousCursors.push(cursor);
+      cursor = pager.dataset.nextCursor;
+    } else {
+      cursor = previousCursors.pop() || null;
     }
+    render().then(() => list.scrollIntoView({ block: "start" }));
   });
 
-  searchEntries();
+  render();
   filterTags();
-})();
+}
