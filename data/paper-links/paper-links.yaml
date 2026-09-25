@@ -8205,8 +8205,12 @@
 - title: Noncommutative Geometry Treatise
   url: https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf
   category: alainconnes.org
-  note: Noncommutative Geometry Treatise. Alain Connes' complete 1994 book covering von Neumann factor
-    classifications, continuous dimensions, the Atiyah–Singer index theorem, and cyclic cohomology.
+  note: >-
+    Noncommutative Geometry Treatise. Alain Connes' complete 1994 book covering von Neumann factor
+    classifications, continuous dimensions, the Atiyah–Singer index theorem, and cyclic cohomology. Chapter
+    I, Section 4 computes von Neumann algebras of foliations: the Kronecker foliation gives the hyperfinite
+    type $\mathrm{II}_\infty$ factor, while Propositions 8--9 identify a type III foliation algebra's flow
+    of weights with dilation of transverse positive densities.
 - title: Tropical Geometry and Mirror Symmetry
   url: https://www.math.utah.edu/~yplee/teaching/7800f15/Gross_Kansas_cropped.pdf
   category: utah.edu
@@ -12749,3 +12753,24 @@
   url: https://www.databricks.com/sites/default/files/2023-08/yggdrasil-an-optimized-system-for-training-deep-decision-trees-at-scale.pdf
   category: databricks.com
   note: Databricks Research publication in AI and ML.
+- title: Von Neumann Algebra Automorphisms and Time-Thermodynamics Relation in General Covariant Quantum Theories
+  url: https://arxiv.org/abs/gr-qc/9406019
+  category: arxiv.org
+  note: Connes and Rovelli formulate the thermal-time hypothesis. Section 2 distinguishes the state-dependent
+    modular automorphism group from the canonical state-independent flow in $\operatorname{Out}(M)$.
+- title: Some Entanglement Properties of Quantum Field Theory
+  url: https://link.aps.org/accepted/10.1103/RevModPhys.90.045003
+  category: aps.org
+  note: Witten's accessible account of operator-algebraic entanglement. Section IV.B, equation (IV.35),
+    computes finite-dimensional modular flow as $a\mapsto\rho^{is}a\rho^{-is}$.
+- title: Structure of von Neumann Algebras of Type III
+  url: https://www.imsc.res.in/~sunder/mtnotes.pdf
+  category: imsc.res.in
+  note: Takesaki's master-class notes on type III structure and flow of weights. Pages 31--33 compute
+    modular automorphisms of weighted $2\times2$ and $3\times3$ matrix blocks and their periods.
+- title: Basic Noncommutative Geometry
+  url: https://www.math.uwo.ca/faculty/khalkhali/files/BNCG_1sted.pdf
+  category: uwo.ca
+  note: Khalkhali's introductory text. Examples 2.1.5 and 2.5.9 compute the irrational Kronecker foliation's
+    transverse groupoid $\mathbb{T}\rtimes_\theta\mathbb{Z}$ and identify its algebra with the noncommutative
+    torus $A_\theta$.
