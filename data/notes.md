@@ -6,6 +6,66 @@ intro: >
 ---
 
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
+## 2026-09-25
+
+[Talk on deformation quantization](https://www.youtube.com/watch?v=Lvel8eIHl9I) Trade infinite dimensional index theory on LX for a higher notion of index theory on X. #mathematics
+
+Kontsevich shown that every Poisson manifold has a formal deformation quantization. See the nlab entry. #mathematics #todo
+
+Simons on the origins of differential cohomology, the starting point is the first Pontryagin class integral and computing its signature. A theorem of Chern as a slogan states that this integral gives the Euler characteristic. The Euler characteristic is a sum of singularities. #mathematics #cohomology #differential-cohomology
+
+To find microblogging or status update implementations for my website. #todo #website
+
+[Anti-glossary](https://stallman.org/antiglossary.html) by Stallman highlights some terms that should be avoided and why. #language
+
+[NIST Definition of Cloud Computing](https://csrc.nist.gov/pubs/sp/800/145/final) has these essential characteristics: (1) on demand self service; (2) broad network access; (3) resource pooling; (4) what is rapid expansion; (5) what is measured service? Is the purpose for security evaluation and benefits? #programming #language
+
+Software cannot be consumed. What about token consumption? This means token consumption is inefficient, since software is typically durable. Use specific verbs to avoid overgeneralisation. The word content disparages works by subordinating to a full box. #programming #language
+
+[Periods](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kontzagi.pdf) Algebraic, transcendental, and periods. Periods are transcendental numbers containing finitely many information. Periods as complex numbers of parts of absolutely convergent integrals of rational functions with rational coefficients. Infinite sums as periods. Periods conjecturally form an algebra using additivity, variable change and the Stoke’s theorem. Periods appear in Picard-Fuchs differential equations. L-functions have Euler products and Dirichlet series, local Riemann hypothesis and global Riemann hypothesis with meromorphic continuations. Delign and Beilinson conjectures. Exponential periods as generalisation. #math.AG #mathematics
+
+[Fourier-Mukai transforms](https://www.math.uni-bonn.de/people/huybrech/Garda2.pdf), recover classical Serre duality as an equivalence of Ext groups for computations. Serre functor is linear equivalence gives equivalence to linear dual of the reverse hom object twisted by the Serre functor. Is there noncommutative information lost from the Serre functor? I think Hochschild homology of these maps may be a better definition instead of the radical of the trace pairing or thinking about Serre functors. #mathematics #cohomology #functors #math.CT
+
+To find link on how I managed 2000 pull requests in X. #todo #management #programming
+
+To find link on how to use Jev to minimize Token usage. #todo #LLMs #tools
+
+Breakfast: steamed egg with porridge, 100plus 320 ml. #nutrition
+
+Lunch: brown rice with meatballs, cheese tofu and eggplant with curry gravy. Hot Milo small cup. #nutrition
+
+Dinner: sliced fish porridge with egg and Meiji protein milk. #nutrition
+
+Why are integral homomorphisms like covers? #mathematics #todo
+
+How is the construction of Lebesgue measure a corollary of Riesz’s representation theorem? #mathematics #todo #measure-theory
+
+Memory and gullibility of LLMs. LLM psychology. #LLMs #psychology
+
+On LLMs, I thought I could get away just by being a normal user but everyone is just shipping products (some people would say it is slop but I digress) with near perfect verifiability. It has reached a tipping point that it is important enough to learn this like a basic skill like driving, and the skill ceiling is high enough such that it is not obvious. #thoughts #programming #LLMs
+
+DevOps is the hard part, it took Karpathy a week to do this. Documentation for LLMs. DeepWiki, Gitingest. #karpathy #programming #LLMs #devops #documentation
+
+[Talk on Software Fundamentals](https://youtu.be/v4F1gFy-hqg?si=bOKVC590lNNFrpAl), grill-me skill shared design concept, and terminology skill. Verbosity. Feedback loops and doing too much. Rate of feedback is speed limit. Testing is hard. #programming #skills #testing #feedback
+
+Simons: differential cohomology and characteristic classes. Integrals of Pontryagin classes give the signature, with a combinatorial formula. Chern’s proof of the Euler characteristic identifies it with the sum of singularities. #math #geometry #topology #differential-cohomology
+
+AnyDoc converts PDFs. Herder: terminal agents. OmniRoute: model routing. Raw: Obsidian RAG. #tools #agents #LLMs
+
+The skill backbone is domain → task → skills → automation. Keep logs. Ask what can be turned into skills and automations. Start with the desired output; use YAML frontmatter; make each skill do one specific job. #agents #skills #automation
+
+Prompts are suggestions; tools impose actual restrictions. Prefer physical keys or enforced constraints when possible. The basic rule is human verifiability. #agents #design #verification
+
+AI evals can use an LLM as judge. Match models to tasks and route accordingly. #agents #evals #models
+
+Specify the freedom level. Rules imply a deterministic process, so use Python; judgment can be delegated to the model, but it must know what done looks like. #agents #automation #programming
+
+Negative prompts say what not to do. For management: “Write this.” For teaching: give the problem and ask how it is solved. #prompts #management #teaching
+
+Verification should aim at 100%. The output should be checkable rather than merely plausible. #verification #agents
+
+Claude Code and Computer Use are useful execution interfaces. #tools #agents
+
 ## 2026-09-24
 
 Identify ambiguous or misleading terms commonly used in mathematics, in critical thinking, in economics, in daily life, or terms that presuppose a viewpoint that is wrong. #todo #language #mathematics
@@ -169,23 +229,3 @@ Neukirch's perspective on number fields, via Qiaochu Yuan: algebraically closing
 Schur's lemma in one line: every endomorphism has an eigenvalue over the field, and its eigenspaces are subrepresentations. #mathematics
 
 Karpathy on blog posts and slides: do not write blogs or make slides; build and arrange the code until it works. #building #programming
-
-## 2026-09-25
-
-[Talk on deformation quantization](https://www.youtube.com/watch?v=Lvel8eIHl9I) Trade infinite dimensional index theory on LX for a higher notion of index theory on X. #mathematics
-
-Kontsevich shown that every Poisson manifold has a formal deformation quantization. See the nlab entry. #mathematics #todo
-
-Simons on the origins of differential cohomology, the starting point is the first Pontryagin class integral and computing its signature. A theorem of Chern as a slogan states that this integral gives the Euler characteristic. The Euler characteristic is a sum of singularities. #mathematics #cohomology #differential-cohomology
-
-To find microblogging or status update implementations for my website. #todo #website
-
-[Anti-glossary](https://stallman.org/antiglossary.html) by Stallman highlights some terms that should be avoided and why. #language
-
-[NIST Definition of Cloud Computing](https://csrc.nist.gov/pubs/sp/800/145/final) has these essential characteristics: (1) on demand self service; (2) broad network access; (3) resource pooling; (4) what is rapid expansion; (5) what is measured service? Is the purpose for security evaluation and benefits? #programming #language
-
-Software cannot be consumed. What about token consumption? This means token consumption is inefficient, since software is typically durable. Use specific verbs to avoid overgeneralisation. The word content disparages works by subordinating to a full box. #programming #language
-
-[Periods](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kontzagi.pdf) Algebraic, transcendental, and periods. Periods are transcendental numbers containing finitely many information. Periods as complex numbers of parts of absolutely convergent integrals of rational functions with rational coefficients. Infinite sums as periods. Periods conjecturally form an algebra using additivity, variable change and the Stoke’s theorem. Periods appear in Picard-Fuchs differential equations. L-functions have Euler products and Dirichlet series, local Riemann hypothesis and global Riemann hypothesis with meromorphic continuations. Delign and Beilinson conjectures. Exponential periods as generalisation. #math.AG #mathematics
-
-[Fourier-Mukai transforms](https://www.math.uni-bonn.de/people/huybrech/Garda2.pdf), recover classical Serre duality as an equivalence of Ext groups for computations. Serre functor is linear equivalence gives equivalence to linear dual of the reverse hom object twisted by the Serre functor. Is there noncommutative information lost from the Serre functor? I think Hochschild homology of these maps may be a better definition instead of the radical of the trace pairing or thinking about Serre functors. #mathematics #cohomology #functors #math.CT
