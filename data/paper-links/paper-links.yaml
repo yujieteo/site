@@ -12557,3 +12557,195 @@
     X:\int_XK(d_X(x,x'')/s)\,d\mu_X(x'')\ge k\}$ is uniformly continuous from Gromov--Hausdorff--Prokhorov
     distance to Gromov--Hausdorff interleaving distance; for full-support $X$ and iid samples $X_n$, $\operatorname{KDF}(X_n)\to\operatorname{KDF}(X)$
     in probability.'
+- title: "A Cloud-Compatible Bioinformatics Pipeline for Ultrarapid Pathogen Identification From Next-Generation Sequencing of Clinical Samples"
+  url: https://www.databricks.com/sites/default/files/2023-08/a-cloud-compatible-bioinformatics-pipeline-for-ultrarapid-pathogen-identification-from-next-generation-sequencing-of-clinical-samples.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "Above the Clouds: A View of Cloud Computing"
+  url: https://www.databricks.com/sites/default/files/2023-08/above-the-clouds-a-view-of-cloud-computing.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Accelerating the Machine Learning Lifecycle With MLflow"
+  url: https://www.databricks.com/sites/default/files/2023-08/accelerating-the-machine-learning-lifecycle-with-mlflow.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "ADAM: Genomics Formats and Processing Patterns for Cloud Scale Computing"
+  url: https://www.databricks.com/sites/default/files/2023-08/adam-genomics-formats-and-processing-patterns-for-cloud-scale-computing.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "Apache Spark: A Unified Engine for Big Data Processing"
+  url: https://www.databricks.com/research/apache-spark-a-unified-engine-for-big-data-processing
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "app.build: A Production Framework for Scaling Agentic Prompt-to-App Generation with Environment Scaffolding"
+  url: https://www.databricks.com/sites/default/files/2026-01/2509.03310v2.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "ASAP: Fast, Approximate Graph Pattern Mining at Scale"
+  url: https://www.databricks.com/sites/default/files/2023-08/asap-fast-approximate-graph-pattern-mining-at-scale.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "BlackIce: A Containerized Red Teaming Toolkit for AI Security Testing"
+  url: https://www.databricks.com/sites/default/files/2026-02/blackice-paper.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "C3: Internet-Scale Control Plane for Video Quality Optimization"
+  url: https://www.databricks.com/sites/default/files/2023-08/c3-internet-scale-control-plane-for-video-quality-optimization.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "CellIQ : Real-Time Cellular Network Analytics at Scale"
+  url: https://www.databricks.com/sites/default/files/2023-08/celliq-real-time-cellular-network-analytics-at-scale.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "Chord: A Scalable Peer-to-Peer Lookup Service for Internet Applications"
+  url: https://www.databricks.com/sites/default/files/2023-08/chord-a-scalable-peer-to-peer-lookup-service-for-internet-applications.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Clipper: A Low-Latency Online Prediction Serving System"
+  url: https://www.databricks.com/sites/default/files/2023-08/clipper-a-low-latency-online-prediction-serving-system.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Compute-Efficient Deep Learning: Algorithmic Trends and Opportunities"
+  url: https://www.databricks.com/sites/default/files/2023-10/compute-efficient-deep-learning-algorithmic-trends-and-opportunities.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "DAWNBench: An End-to-End Deep Learning Benchmark and Competition"
+  url: https://www.databricks.com/sites/default/files/2023-08/dawnbench-an-end-to-end-deep-learning-benchmark-and-competition.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Delay Scheduling: A Simple Technique for Achieving Locality and Fairness in Cluster Scheduling"
+  url: https://www.databricks.com/research/delay-scheduling-a-simple-technique-for-achieving-locality-and-fairness-in-cluster-scheduling
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Delta Lake: High-Performance ACID Table Storage Over Cloud Object Stores"
+  url: https://databricks.com/sites/default/files/2023-08/delta-lake-high-performance-acid-table-storage-overcloud-object-stores.pdf
+  category: databricks.com
+  note: Databricks Research publication in Databases.
+- title: "Developments in MLflow: A System to Accelerate the Machine Learning Lifecycle"
+  url: https://www.databricks.com/sites/default/files/2023-08/developments-in-mlflow-a-system-to-accelerate-the-machine-learning-lifecycle.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Discretized Streams: Fault-Tolerant Streaming Computation at Scale"
+  url: https://www.databricks.com/sites/default/files/2023-08/discretized-streams-fault-tolerant-streaming-computation-at-scale.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Dominant Resource Fairness: Fair Allocation of Multiple Resource Types"
+  url: https://www.databricks.com/sites/default/files/2023-08/dominant-resource-fairness-fair-allocation-of-multiple-resource-types.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Drizzle: Fast and Adaptable Stream Processing at Scale"
+  url: https://www.databricks.com/sites/default/files/2023-08/drizzle-fast-and-adaptable-stream-processing-at-scale.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Dynamic Masking Rate Schedules for MLM Pretraining"
+  url: https://www.databricks.com/sites/default/files/2023-10/dynamic-masking-rate-schedules-for-mlm-pretraining.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Fast Benchmarking of Accuracy vs. Training Time With Cyclic Learning Rates"
+  url: https://www.databricks.com/sites/default/files/2023-10/fast-benchmarking-of-accuracy-vs.-training-time-with-cyclic-learning-rates.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Filter Before You Parse: Faster Analytics on Raw Data With Sparser"
+  url: https://www.databricks.com/sites/default/files/2023-08/filter-before-you-parse-faster-analytics-on-raw-data-with-sparser.pdf
+  category: databricks.com
+  note: Databricks Research publication in Databases.
+- title: "GraphFrames: An Integrated API for Mixing Graph and Relational Queries"
+  url: https://www.databricks.com/sites/default/files/2023-08/graphframes-an-integrated-api-for-mixing-graph-and-relational-queries.pdf
+  category: databricks.com
+  note: Databricks Research publication in Databases.
+- title: "GraphX: Graph Processing in a Distributed Dataflow Framework"
+  url: https://www.databricks.com/sites/default/files/2023-08/graphx-graph-processing-in-a-distributed-dataflow-framework.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Improving MapReduce Performance in Heterogeneous Environments"
+  url: https://www.databricks.com/sites/default/files/2023-08/improving-mapreduce-performance-in-heterogeneous-environments.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Kira: Processing Astronomy Imagery Using Big Data Technology"
+  url: https://www.databricks.com/sites/default/files/2023-08/kira-processing-astronomy-imagery-using-big-data-technology.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "Lakehouse: A New Generation of Open Platforms That Unify Data Warehousing and Advanced Analytics"
+  url: https://www.databricks.com/research/lakehouse-a-new-generation-of-open-platforms-that-unify-data-warehousing-and-advanced-analytics
+  category: databricks.com
+  note: Databricks Research publication in Databases.
+- title: "Matrix Computations and Optimization in Apache Spark"
+  url: https://www.databricks.com/sites/default/files/2023-08/matrix-computations-and-optimization-in-apache-spark.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center"
+  url: https://www.databricks.com/sites/default/files/2023-08/mesos-a-platform-for-fine-grained-resource-sharing-in-the-data-center.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "MLlib: Machine Learning in Apache Spark"
+  url: https://www.databricks.com/sites/default/files/2023-08/mllib-machine-learning-in-apache-spark.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "MosaicBERT: How to Train BERT With a Lunch Money Budget"
+  url: https://www.databricks.com/sites/default/files/2023-10/mosaicbert-how-to-train-bert-with-a-lunch-money-budget.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Multiplying Matrices Without Multiplying"
+  url: https://www.databricks.com/sites/default/files/2023-10/multiplying-matrices-without-multiplying.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "NoScope: Optimizing Neural Network Queries Over Video at Scale"
+  url: https://www.databricks.com/sites/default/files/2023-08/noscope-optimizing-neural-network-queries-over-video-at-scale.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "Occupy the Cloud: Distributed Computing for the 99%"
+  url: https://www.databricks.com/sites/default/files/2023-08/occupy-the-cloud-distributed-computing-for-the-99.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Parametrized Hierarchical Procedures for Neural Programming"
+  url: https://www.databricks.com/sites/default/files/2023-08/parametrized-hierarchical-procedures-for-neural-programming.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Photon: A Fast Query Engine for Lakehouse Systems"
+  url: https://www.databricks.com/sites/default/files/2023-08/photon-a-fast-query-engine-for-lakehouse-systems.pdf
+  category: databricks.com
+  note: Databricks Research publication in Databases.
+- title: "Ray: A Distributed Framework for Emerging AI Applications"
+  url: https://www.databricks.com/sites/default/files/2023-08/ray-a-distributed-framework-for-emerging-ai-applications_0.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Reduce, Reuse, Recycle: Improving Training Efficiency With Distillation"
+  url: https://www.databricks.com/sites/default/files/2023-10/reduce-reuse-recycle-improving-training-efficiency-with-distillation.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Resilient Distributed Data Sets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing"
+  url: https://www.databricks.com/sites/default/files/2023-08/resilient-distributed-datasets.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Rethinking Data-Intensive Science Using Scalable Analytics Systems"
+  url: https://www.databricks.com/sites/default/files/2023-08/rethinking-data-intensive-science-using-scalable-analytics-systems.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "RLlib: Abstractions for Distributed Reinforcement Learning"
+  url: https://www.databricks.com/sites/default/files/2023-08/rllib-abstractions-for-distributed-reinforcement-learning.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
+- title: "Shark: SQL and Rich Analytics at Scale"
+  url: https://www.databricks.com/sites/default/files/2023-08/shark-sql-and-rich-analytics-at-scale.pdf
+  category: databricks.com
+  note: Databricks Research publication in Databases.
+- title: "Spark SQL: Relational Data Processing in Spark"
+  url: https://www.databricks.com/sites/default/files/2023-08/spark-sql-relational-data-processing-in-spark.pdf
+  category: databricks.com
+  note: Databricks Research publication in Databases.
+- title: "SparkR: Scaling R Programs With Spark"
+  url: https://www.databricks.com/sites/default/files/2023-08/sparkr-scaling-r-programs-with-spark.pdf
+  category: databricks.com
+  note: Databricks Research publication in Applications.
+- title: "Structured Streaming: A Declarative API for Real-Time Applications in Apache Spark™"
+  url: https://www.databricks.com/sites/default/files/2023-08/structured-streaming-a-declarative-api-for-real-time-applications-in-apache-spark.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Tachyon: Reliable, Memory Speed Storage for Cluster Computing Frameworks"
+  url: https://www.databricks.com/sites/default/files/2023-08/tachyon-reliable-memory-speed-storage-for-cluster-computing-frameworks.pdf
+  category: databricks.com
+  note: Databricks Research publication in Distributed Systems.
+- title: "Yggdrasil: An Optimized System for Training Deep Decision Trees at Scale"
+  url: https://www.databricks.com/sites/default/files/2023-08/yggdrasil-an-optimized-system-for-training-deep-decision-trees-at-scale.pdf
+  category: databricks.com
+  note: Databricks Research publication in AI and ML.
