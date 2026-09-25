@@ -8,27 +8,27 @@ intro: >
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
 ## 2026-09-25
 
-[Talk on deformation quantization](https://www.youtube.com/watch?v=Lvel8eIHl9I) Trade infinite dimensional index theory on LX for a higher notion of index theory on X. #mathematics
+[Talk on deformation quantization](https://www.youtube.com/watch?v=Lvel8eIHl9I): replace infinite-dimensional index theory on the loop space $LX$ with a higher notion of index theory on $X$. This may connect the deformation-quantisation perspective to the [earlier note on gauge theories and differential cohomology](notes.html#2026-09-22). #mathematics #physics
 
-Kontsevich shown that every Poisson manifold has a formal deformation quantization. See the nlab entry. #mathematics #todo
+Kontsevich proved that every finite-dimensional Poisson manifold admits a formal deformation quantisation. Add a link to a precise statement and identify the hypotheses used. #mathematics #todo
 
-Simons on the origins of differential cohomology, the starting point is the first Pontryagin class integral and computing its signature. A theorem of Chern as a slogan states that this integral gives the Euler characteristic. The Euler characteristic is a sum of singularities. #mathematics #cohomology #differential-cohomology
+Simons describes signature formulas involving Pontryagin classes as one route into differential cohomology. Separately, the Chern–Gauss–Bonnet and Poincaré–Hopf theorems relate the Euler characteristic to curvature and to indices of zeros of a vector field. Do not conflate these formulas. #mathematics #differential-cohomology #topology
 
-To find microblogging or status update implementations for my website. #todo #website
+Find microblogging or status-update implementations suitable for this website. #todo #website
 
-[Anti-glossary](https://stallman.org/antiglossary.html) by Stallman highlights some terms that should be avoided and why. #language
+Stallman's [Anti-Glossary](https://stallman.org/antiglossary.html) argues that some familiar terms embed assumptions worth making explicit. Treat it as an author's case for particular wording, not as a neutral dictionary. #language #rhetoric
 
-[NIST Definition of Cloud Computing](https://csrc.nist.gov/pubs/sp/800/145/final) has these essential characteristics: (1) on demand self service; (2) broad network access; (3) resource pooling; (4) what is rapid expansion; (5) what is measured service? Is the purpose for security evaluation and benefits? #programming #language
+The [NIST definition of cloud computing](https://csrc.nist.gov/pubs/sp/800/145/final) specifies five essential characteristics: on-demand self-service, broad network access, resource pooling, rapid elasticity, and measured service. Investigate how the definition supports comparison, procurement, and security analysis rather than treating it as a claim about every system called “cloud.” #computing #language #todo
 
-Software cannot be consumed. What about token consumption? This means token consumption is inefficient, since software is typically durable. Use specific verbs to avoid overgeneralisation. The word content disparages works by subordinating to a full box. #programming #language
+Calling software or tokens “consumed” can obscure what changes: software is usually copied or used, while compute, energy, money, or a token quota is spent. Likewise, “content” can flatten distinctions among different kinds of work. Prefer a concrete verb or noun when the distinction matters; these terms are not inherently wrong in every context. #computing #language
 
-[Periods](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kontzagi.pdf) Algebraic, transcendental, and periods. Periods are transcendental numbers containing finitely many information. Periods as complex numbers of parts of absolutely convergent integrals of rational functions with rational coefficients. Infinite sums as periods. Periods conjecturally form an algebra using additivity, variable change and the Stoke’s theorem. Periods appear in Picard-Fuchs differential equations. L-functions have Euler products and Dirichlet series, local Riemann hypothesis and global Riemann hypothesis with meromorphic continuations. Delign and Beilinson conjectures. Exponential periods as generalisation. #math.AG #mathematics
+[Periods](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kontzagi.pdf): Kontsevich and Zagier define periods as complex numbers whose real and imaginary parts are absolutely convergent integrals of rational functions with rational coefficients over domains given by polynomial inequalities with rational coefficients. They form a countable algebra under identities generated conjecturally by additivity, change of variables, and Stokes' theorem. Connections include Picard–Fuchs equations, $L$-values, and the Deligne and Beilinson conjectures; exponential periods provide a broader class. #math.AG #number-theory
 
-[Fourier-Mukai transforms](https://www.math.uni-bonn.de/people/huybrech/Garda2.pdf), recover classical Serre duality as an equivalence of Ext groups for computations. Serre functor is linear equivalence gives equivalence to linear dual of the reverse hom object twisted by the Serre functor. Is there noncommutative information lost from the Serre functor? I think Hochschild homology of these maps may be a better definition instead of the radical of the trace pairing or thinking about Serre functors. #mathematics #cohomology #functors #math.CT
+[Fourier–Mukai transforms](https://www.math.uni-bonn.de/people/huybrech/Garda2.pdf) express equivalences between derived categories and recover Serre duality through natural dualities of Hom or Ext groups. A Serre functor records these dualities but may not capture all noncommutative information. Investigate whether Hochschild homology supplies the missing invariant and how that compares with the radical of the trace pairing. #math.AG #category-theory #todo
 
-To find link on how I managed 2000 pull requests in X. #todo #management #programming
+Find the post about managing 2,000 pull requests at X. #todo #management #programming
 
-To find link on how to use Jev to minimize Token usage. #todo #LLMs #tools
+Find the reference on using Jev to reduce language-model token usage; verify the tool's name and the claimed mechanism. #todo #llms #tools
 
 Breakfast: steamed egg with porridge, 100plus 320 ml. #nutrition
 
@@ -36,71 +36,67 @@ Lunch: brown rice with meatballs, cheese tofu and eggplant with curry gravy. Hot
 
 Dinner: sliced fish porridge with egg and Meiji protein milk. #nutrition
 
-Why are integral homomorphisms like covers? #mathematics #todo
+In what precise setting are integral homomorphisms analogous to covering maps? Identify what “integral” means here and which properties correspond. #mathematics #todo
 
-How is the construction of Lebesgue measure a corollary of Riesz’s representation theorem? #mathematics #todo #measure-theory
+Explain how the Riesz representation theorem can produce Lebesgue measure from a positive linear functional, and distinguish this route from the usual outer-measure construction. #mathematics #todo #measure-theory
 
-Memory and gullibility of LLMs. LLM psychology. #LLMs #psychology
+Study how memory mechanisms and susceptibility to false premises affect language-model behaviour. “Psychology” is an analogy unless the claim concerns human cognition. #llms #cognition #todo
 
-On LLMs, I thought I could get away just by being a normal user but everyone is just shipping products (some people would say it is slop but I digress) with near perfect verifiability. It has reached a tipping point that it is important enough to learn this like a basic skill like driving, and the skill ceiling is high enough such that it is not obvious. #thoughts #programming #LLMs
+I expected ordinary use of language models to be enough, but widespread product-building has made effective use feel closer to a basic practical skill. The ceiling remains high, especially when outputs need strong verification. This is an assessment of current practice, not evidence that everyone must adopt the tools. #reflection #programming #llms #verification
 
-DevOps is the hard part, it took Karpathy a week to do this. Documentation for LLMs. DeepWiki, Gitingest. #karpathy #programming #LLMs #devops #documentation
+Karpathy's example suggests that deployment and operations can dominate the effort even in language-model-assisted projects. Investigate DeepWiki and Gitingest as ways to expose repository documentation to models; one example does not establish that DevOps is always the hardest part. #programming #llms #devops #documentation
 
-[Talk on Software Fundamentals](https://youtu.be/v4F1gFy-hqg?si=bOKVC590lNNFrpAl), grill-me skill shared design concept, and terminology skill. Verbosity. Feedback loops and doing too much. Rate of feedback is speed limit. Testing is hard. #programming #skills #testing #feedback
-
-Simons: differential cohomology and characteristic classes. Integrals of Pontryagin classes give the signature, with a combinatorial formula. Chern’s proof of the Euler characteristic identifies it with the sum of singularities. #math #geometry #topology #differential-cohomology
+[Talk on software fundamentals](https://youtu.be/v4F1gFy-hqg?si=bOKVC590lNNFrpAl): possible skill patterns include adversarial review and terminology checks. Short feedback loops constrain iteration speed, while excessive scope and verbosity slow verification. Testing remains a central difficulty. #programming #skills #testing #feedback
 
 AnyDoc converts PDFs. Herder: terminal agents. OmniRoute: model routing. Raw: Obsidian RAG. #tools #agents #LLMs
 
-The skill backbone is domain → task → skills → automation. Keep logs. Ask what can be turned into skills and automations. Start with the desired output; use YAML frontmatter; make each skill do one specific job. #agents #skills #automation
+A possible automation hierarchy is domain → task → skill → automation. Start from the desired output, keep logs, use structured metadata such as YAML front matter when it helps discovery, and give each skill a coherent responsibility. The [earlier agents-at-scale note](notes.html#2026-09-22) offers a complementary emphasis on verification and one supported path. #agents #skills #automation
 
-Prompts are suggestions; tools impose actual restrictions. Prefer physical keys or enforced constraints when possible. The basic rule is human verifiability. #agents #design #verification
+Prompts influence behaviour but do not enforce it; tool permissions and other controls can impose constraints. Prefer enforceable boundaries for high-consequence actions, and design outputs so a person can verify them. #agents #design #verification
 
-AI evals can use an LLM as judge. Match models to tasks and route accordingly. #agents #evals #models
+Language-model evaluations can use another model as a judge, but the judge itself needs calibration against human-labelled examples. Match models to tasks and route work according to measured performance, cost, and risk. #agents #evals #models
 
-Specify the freedom level. Rules imply a deterministic process, so use Python; judgment can be delegated to the model, but it must know what done looks like. #agents #automation #programming
+Specify the permitted degree of freedom. Use deterministic code for rules that can be stated completely; use a model where contextual judgment is useful, with explicit completion criteria and verification. #agents #automation #programming
 
-Negative prompts say what not to do. For management: “Write this.” For teaching: give the problem and ask how it is solved. #prompts #management #teaching
+Negative prompts define exclusions but may not communicate the desired result. For delegated work, specify the output; for teaching, consider presenting the problem and eliciting the learner's method before giving an answer. #prompts #management #teaching
 
-Verification should aim at 100%. The output should be checkable rather than merely plausible. #verification #agents
+Verification should cover every material claim or action when feasible. Design outputs to be checkable rather than merely plausible, while stating any residual uncertainty. #verification #agents
 
-Claude Code and Computer Use are useful execution interfaces. #tools #agents
+Claude Code and computer-use systems are two interfaces for agent execution; compare them by task coverage, controllability, and verifiability. #tools #agents
 
 ## 2026-09-24
 
-Identify ambiguous or misleading terms commonly used in mathematics, in critical thinking, in economics, in daily life, or terms that presuppose a viewpoint that is wrong. #todo #language #mathematics
+Identify terms in mathematics, critical thinking, economics, and daily life that are ambiguous, misleading, or that silently presuppose a disputed viewpoint. Analyse the context and consequence instead of maintaining a context-free blacklist. #todo #language #rhetoric
 
-[Intellectual property is a seductive mirage](https://www.gnu.org/philosophy/not-ipr.html). Clear distinctions lead to clear thinking. Patent law and copyright law are different. Intellectual property leads an economical view all these isues. Economics leads to unexamined assumptions. [Words to Avoid (or Use with Care) Because They Are Loaded or Confusing](https://www.gnu.org/philosophy/words-to-avoid.html#piracy) is another great one. #language #todo #read
+In [Did You Say “Intellectual Property”? It's a Seductive Mirage](https://www.gnu.org/philosophy/not-ipr.html), Stallman argues that grouping copyright, patent, and trademark law under one label encourages overgeneralisation. His [Words to Avoid (or Use with Care)](https://www.gnu.org/philosophy/words-to-avoid.html#piracy) similarly argues that word choice can import contested assumptions. These are advocacy essays: use their questions to separate legal regimes and surface framing, without treating Stallman's preferred vocabulary as neutral by default. #language #law #rhetoric #read
 
-Wildcard by 8 October 2026. #todo
+Complete the item labelled “Wildcard” by 8 October 2026; add enough context to make the task actionable. #todo
 
-Find Databricks research papers. [Databricks research papers](https://www.databricks.com/research#publications) can be found here and are to be read. #todo #programming #learning
+Review the [Databricks research publications](https://www.databricks.com/research#publications) and record which papers are relevant and why. #todo #programming #learning
 
-Find Alice's (woog) Excel ratings of interpretability papers. #todo #programming #learning
+Find Alice's (“woog”) spreadsheet rating interpretability papers, verify its provenance, and save a durable link. #todo #interpretability #learning
 
 Learning projects: build a production-ready full-stack web application, a DevOps Docker container, a basic compiler, and a real-world automation. #todo #programming #learning
 
 Be firm and express yourself clearly, even about small things. #learning #psychology #feedback
 
-Create GitHub repositories for scripts, templates, infrastructure, bibliographies, snippets, playgrounds, notes, challenges such as LeetCode and Advent of Code, and curated resources. #todo #programming
+Design a GitHub repository structure for reusable scripts, templates, infrastructure, bibliographies, snippets, playgrounds, notes, coding challenges, and curated resources. Decide which materials benefit from separate repositories rather than assuming each category needs one. Candidate reusable components include asynchronous protocols, SQLite patterns, a `pandas` cleaning pipeline, `matplotlib` defaults, multiprocessing templates, a subprocess wrapper, `grep` one-liners, GitHub Actions workflows, and a YAML configuration uploader. #todo #programming #knowledge-management
 
-Create GitHub repositories for preferred snippets, asynchronous protocols, SQLite, a `pandas` cleaning pipeline, `matplotlib` defaults, multiprocessing templates, a subprocess wrapper, `grep` shell one-liners, GitHub Actions CI files, and a YAML configuration uploader. #todo #programming
+[Maxwell's equations](https://ncatlab.org/nlab/show/Maxwell's+equations) can be formulated using $U(1)$ differential cohomology. Local vector potentials differ by exact forms on overlaps; their compatibility data form a Čech cocycle, and gauge changes act by coboundaries. The first Chern class records quantised magnetic flux, while the Hodge star depends on the spacetime metric and relates the field strength to its dual. This develops the [earlier note on cocycles, connections, and gauge transformations](notes.html#2026-09-22). #mathematics #physics #differential-cohomology
 
-[Maxwell's equations](https://ncatlab.org/nlab/show/Maxwell's+equations): derive them from U(1) differential cohomology. Local vector potentials differ by a gradient. Loop consistency gives a Čech 1-cocycle, or Dirac quantisation. Changing the local vector potential gives a Čech 0-coboundary. Cocycles modulo coboundaries classify magnetic flux configurations through the first Chern class. The Hodge star gives the electric field. #mathematics #physics
+Research question: is cerebral folate deficiency associated with autistic features in a defined subgroup, and what evidence distinguishes association, a treatable comorbidity, and causation? Do not generalise a subgroup finding to autism as a whole. #health #todo
 
-Question: Is autism caused by folate deficiency in cerebrospinal fluid? #health
+Personal strength-training plan: choose sustainable exercises, include a leg press, and aim for two 30-minute sessions each week. During high-stress periods, reduce volume if needed while keeping effort appropriate and technique safe. #exercise
 
-Strength training: do exercises you like, include a leg press, train twice a week for 30 minutes, and fall back to intensity rather than volume during high-stress periods. #exercise
+Personal Precor elliptical settings: rate 110, incline 10, resistance 8. The machine estimates about 160 calories in 15 minutes; treat this as an estimate, not a measured expenditure. Bring a full water bottle and earphones. #exercise
 
-Precor elliptical: use a rate of 110, slope of 10, and resistance of 8. Fifteen minutes is 160 calories. Bring a full water bottle and earphones. #exercise
+Personal Concept2 rowing cue: initiate the drive with the legs and target 20–22 strokes per minute. “70% leg power” is a coaching heuristic, not a directly measured ratio. #exercise
 
-Concept2 rowing: use 70% leg power and target 20–22 strokes per minute. #exercise
-
-tldraw: use it for presentations. #tools
+Evaluate tldraw as a visual aid for presentations. #tools #todo
 
 Fluid partial differential equations: study convex integration and the work of De Lellis and Székelyhidi. #mathematics #physics
 
-Exercise: focus on volume and think in terms of 1,000 days. #exercise
+Exercise: prioritise sustainable training volume and evaluate progress over roughly 1,000 days rather than overreacting to individual sessions. #exercise
 
 ## 2026-09-22
 
@@ -108,23 +104,23 @@ Exercise: focus on volume and think in terms of 1,000 days. #exercise
 
 [Jony Ive on focus](https://www.youtube.com/watch?v=2oksetv3i90): focus is about sacrifice. #focus
 
-[Agents at scale](https://x.com/poteto/status/2102050467505430555?s=46): teach agents through skills, verify work with CLIs and traces, materialise memory, use static analysis, and pave one supported path. #ai #tools
+[Agents at scale](https://x.com/poteto/status/2102050467505430555?s=46) recommends teaching agents through skills, verifying work with command-line tools and traces, materialising memory, using static analysis, and maintaining one well-supported path. #ai #tools
 
-[Claude Code common workflows](https://code.claude.com/docs/en/common-workflows): practical agent workflows. #ai #tools
+[Claude Code common workflows](https://code.claude.com/docs/en/common-workflows): examples of agent workflows from the product's documentation. #ai #tools
 
 [Alisa Wuffles](https://alisawuffles.github.io/): exploring mathematics with language models. #ai #mathematics
 
-Ben Kuhn's [Abyss](https://benkuhn.net/abyss/): learning through difficult technical material. #learning
+Ben Kuhn's [Abyss](https://benkuhn.net/abyss/) reflects on learning through difficult technical material. #learning
 
 [more-itertools](https://github.com/more-itertools/more-itertools): Python iteration tools with strong tests and low complexity. #programming #tools
 
-Google's [CRAP metric](https://testing.googleblog.com/2011/02/this-code-is-crap.html?m=1): combine cyclomatic complexity with test coverage. #programming #testing
+Google Testing Blog's description of the [CRAP metric](https://testing.googleblog.com/2011/02/this-code-is-crap.html?m=1): a heuristic combining cyclomatic complexity with test coverage. #programming #testing
 
-Trigonometry is representation theory of $U(1)$. #mathematics
+Trigonometric functions can be understood through the representations and characters of $U(1)$; this is a useful viewpoint, not an exhaustive definition of trigonometry. #mathematics #representation-theory
 
-On a good cover, compute sheaf cohomology with Čech cohomology because the finite intersections are contractible. #mathematics
+For suitable sheaves on a good cover, Čech cohomology computes sheaf cohomology because the nonempty finite intersections are contractible and acyclic for the relevant sheaf. State the sheaf hypotheses when using this shortcut. #mathematics #cohomology
 
-Compact diagonal operators are exactly those whose diagonal entries tend to zero. [Discussion](https://math.stackexchange.com/questions/173073/why-are-compact-operators-small) #mathematics
+On a Hilbert space with a fixed orthonormal basis, a bounded diagonal operator is compact exactly when its diagonal entries tend to zero. [Discussion](https://math.stackexchange.com/questions/173073/why-are-compact-operators-small) #mathematics #functional-analysis
 
 Jack Morava's [Cosmic Galois groups](https://arxiv.org/pdf/1108.4627): connections among homotopy theory, number theory, and mathematical physics. #mathematics #physics
 
@@ -136,7 +132,7 @@ The Yoneda viewpoint treats a space through all its probes and restriction maps.
 
 Fermionic antisymmetry is encoded by anticommuting geometry: repeated states vanish, reflecting the Pauli exclusion principle. #mathematics #physics
 
-Independent, Gaussian, and noninteracting systems are free cases where parallel decomposition is most natural. #physics
+Independence, Gaussian structure, or absence of interactions often makes a system decomposable into parallel or free components; the precise decomposition depends on the model. #physics
 
 [Gauge theories](https://ncatlab.org/nlab/show/gauge+theory): field configurations as differential-cohomology cocycles, with vector bundles and connections as basic examples. #mathematics #physics
 
@@ -146,9 +142,9 @@ The [cobordism hypothesis](https://ncatlab.org/nlab/show/cobordism+hypothesis#Fo
 
 A [mutex](https://en.wikipedia.org/wiki/Lock_(computer_science)) prevents concurrent threads from modifying shared state at the same time. #programming #systems
 
-[Latency numbers every programmer should know](https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know): writes cost more than reads, locality matters, compression can be cheap, queues saturate, and remote calls add failure modes. #programming #systems
+[Latency numbers every programmer should know](https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know) offers order-of-magnitude heuristics: some writes cost more than comparable reads, locality matters, compression may be cheap relative to I/O, queues saturate, and remote calls add latency and failure modes. Recheck the numbers for current hardware and the actual workload. #programming #systems
 
-John Boyd's [Destruction and Creation](https://cdn.mises.org/destruction_and_creation_by_john_r_boyd.pdf): move from mismatches and exceptions to decomposition and novel synthesis. Chaos favours superior orientation. #strategy
+John Boyd's [Destruction and Creation](https://cdn.mises.org/destruction_and_creation_by_john_r_boyd.pdf) proposes moving from observed mismatches through decomposition toward novel synthesis. His claim that success under uncertainty depends on superior orientation is a strategic thesis, not a general law. #strategy
 
 Music: [Ive — Sacrifice](https://youtu.be/2oksetv3i90?si=mNqtLyoU4S_rkUpV). #music
 
@@ -156,76 +152,76 @@ Video: [Advanced napkin math](https://www.youtube.com/watch?v=IxkSlnrRFqc). #mat
 
 ## 2025-11-06
 
-Vibe coding and plain text: files and comments in plain text provide useful input context. #ai #programming
+For language-model-assisted coding, plain-text files and comments can provide useful context when they are accurate and maintained. #ai #programming
 
-Vibe coding and comments: in the age of vibe coding, too many comments are rarely a regret. #ai #programming
+Language-model-assisted coding may increase the value of comments, but comment quality matters more than quantity: explain intent and constraints without duplicating code or preserving obsolete claims. #ai #programming #documentation
 
-Google internal tools: learn from the [open-source equivalents](https://github.com/jhuangtw/xg2xg?tab=readme-ov-file). #programming #tools
+Use this list of [open-source equivalents to Google-internal tools](https://github.com/jhuangtw/xg2xg?tab=readme-ov-file) as a discovery aid; verify how closely each project actually corresponds. #programming #tools
 
-Facebook internal tools: learn from the [open-source equivalents](https://github.com/greko6/xfb2xfb?tab=readme-ov-file). #programming #tools
+Use this list of [open-source equivalents to Facebook-internal tools](https://github.com/greko6/xfb2xfb?tab=readme-ov-file) as a discovery aid; verify how closely each project actually corresponds. #programming #tools
 
 Writing assembly by hand: follow [Gaultier's guide](https://gaultier.github.io/blog/x11_x64.html). #computing #programming
 
-Management calendars: your calendar becomes everyone else's calendar, and every gap gets filled. #management
+Management calendars are shaped by other people's coordination needs, so unscheduled time tends to attract meetings. Protecting focus time may therefore require explicit boundaries. #management
 
-Leaky abstractions: an abstraction fails when it does not hide the complexity it is meant to simplify. Good abstractions need orthogonality. #programming
+An abstraction is leaky when users must understand details it was meant to hide. Orthogonal responsibilities can reduce leakage, although no abstraction hides every underlying constraint. #programming #design
 
-Leaky abstractions and dependencies: more dependencies create more leaks. #programming
+Each dependency adds an interface through which underlying constraints can leak, so dependency count is one risk factor rather than a complete measure of abstraction quality. #programming #design
 
-Leaky abstractions and simplicity: combine a few ideas cleverly, and keep code short and easy to modify. #programming
+Prefer a small set of composable ideas and code that is easy to modify; brevity is valuable only when it preserves clarity and required behaviour. #programming #design
 
-Leaky abstractions and testing: good abstractions are well tested and easy to reason about. #programming #testing
+Evidence for a useful abstraction includes focused tests and an interface whose behaviour can be reasoned about without unnecessary implementation detail. #programming #testing #design
 
-Personality and upbringing: many behaviours may have worked for your parents or helped you handle dysfunction rather than being natural to you. Discover who you are and what you value. #reflection
+Some learned behaviours may reflect family incentives or responses to dysfunction rather than stable preferences. Examine which behaviours still serve one's values without assuming a single origin for personality. #reflection
 
-Different priorities: average people can seem stupid when their priorities differ from yours. #reflection
+Differences in priorities, information, or constraints can look like differences in intelligence. Check those explanations before judging another person's ability. #reflection
 
-Ten-year plans: ask how to accomplish one in six months. You will probably fail, but may still get far ahead of someone who accepts the ten-year timeline. #strategy
+For a ten-year goal, asking what a six-month attempt would require can expose assumptions and accelerate learning. The compressed deadline may be infeasible, but the exercise can reveal a faster path without implying that slower plans are complacent. #strategy
 
-Blaming yourself and others: the belief that other people would be happier if left alone. #reflection
+Reflection prompt: when withdrawing because others might be happier if left alone, distinguish evidence about their preferences from self-blame or mind-reading. #reflection
 
-Biology as technology: biology is non-toxic, efficient, beautiful, decentralised, familiar, non-rectangular, and non-industrial. #biology #technology
+Biology as a design reference: biological systems can be decentralised, energy-efficient, familiar, and unlike rectilinear industrial forms. They are not inherently non-toxic, efficient, or benign; evaluate those properties in each case. #biology #technology #design
 
-Jim Keller's three computing paradigms: a CPU does add, multiply, load, store, compare, and branch, where nothing is known; a GPU does add, multiply, load, and store, where timing is known but addresses are not; a DSP does add and multiply, where everything except the data is known. #computing
+Jim Keller's three-paradigm heuristic: a CPU supports general control flow where little is fixed in advance; a GPU exploits more predictable parallel timing while memory access may vary; a DSP targets computations where control and access patterns are largely known and the data varies. This is an explanatory simplification, not a complete taxonomy of processors. #computing
 
-Power and data locality: moving data costs power. Instruction sets and compilers put complexity up front, making runtime simpler than CUDA and PyTorch. The remaining question is why not extend this approach when chip interconnects also cost power. #computing #systems
+Moving data consumes energy, making locality important. Instruction sets and compilers can shift some complexity from runtime to compilation, but whether they are simpler than CUDA or PyTorch depends on the layer and workload. Investigate how this trade-off extends to energy-intensive chip interconnects. #computing #systems #todo
 
-Representative democracy as vicarious desire: people identify with a candidate's desire even when it lacks majority support. Fear that things will worsen forces participation and support for one state power against another, whether foreign or domestic. #politics
+Hypothesis about representative democracy: voters may identify with a candidate's aims even when particular policies lack majority support, and fear of worse outcomes can motivate strategic participation or support for one state actor against another. Test this account against alternatives such as party identity, retrospective voting, and institutional constraints. #politics #todo
 
-Government process and bridges: the goal becomes following the process for building the bridge rather than building it. Many large organisations work this way. #organizations #politics
+In governments and other large organisations, compliance with the process can displace the substantive goal—for example, completing the prescribed steps for a bridge rather than optimising whether and how it is built. Process also supplies accountability and coordination, so the question is when it becomes an end in itself. #organizations #politics
 
-Jim Keller on chaos: continually creating chaos prevents process from forming and forces everyone to work toward the goal. #organizations #strategy
+Jim Keller presents deliberate disruption as a way to prevent process from becoming detached from the goal. The trade-off is that persistent instability can also damage coordination, learning, and psychological safety. #organizations #strategy
 
-Lying to yourself: “I would rather lose than sell out. If you lie to the world you lie to yourself and one day you can no longer tell what’s true or not. I would live under a bridge and eat out of dumpsters if I got to know the truth.” #reflection
+Quotation to source: “I would rather lose than sell out. If you lie to the world you lie to yourself and one day you can no longer tell what’s true or not. I would live under a bridge and eat out of dumpsters if I got to know the truth.” The underlying claim is that repeated outward dishonesty can impair self-knowledge; verify the speaker and context before relying on it. #reflection #todo
 
-Sutton on the Bitter Lesson: general-purpose methods gain power by continuing to scale with computation. Search and learning are the two methods that appear to scale arbitrarily. #ai #learning
+Sutton's “Bitter Lesson” argues that general methods leveraging increasing computation have historically outperformed approaches built around human domain knowledge; he highlights search and learning as especially scalable. This is a historical thesis and research heuristic, not proof that domain knowledge never helps. #ai #learning
 
-The 100-person marshmallow test: if everyone leaves one marshmallow alone for 15 minutes, everyone gets two; if one person eats it, that person gets one and everyone else gets nothing. #coordination
+The 100-person marshmallow scenario is a coordination game: universal restraint yields two marshmallows per person, while one defection gives the defector one and everyone else none. Its assumptions make it useful for thinking about trust and collective action, not as an empirical claim about groups. #coordination #game-theory
 
-Self-reflection on prediction: test your understanding through predictions and building. If someone says your world model is wrong, ask what it misses. Anyone trying to supersede rationality should first be able to steelman its arguments. #rationality #reflection
+Test understanding through predictions and building. When someone challenges a world model, ask which observations it misses. A proposal to move beyond a rationalist framework is easier to assess when it can first state that framework's strongest arguments fairly. #rationality #reflection
 
-Engaging with life: why sprint before you have even a sketch of where you are going? #reflection
+Before optimising for speed, sketch the direction and decide what evidence would justify changing it. Exploration may still be the right first move when the destination is unclear. #reflection #strategy
 
-Capital deployment: communism directs capital to people who may deploy it poorly, while capitalism directs it to rent-seekers who use it to protect their moats. Acceleration is the alternative. #economics #politics
+Hypothesis about capital allocation: central planning risks entrusting capital to weak allocators, while market systems can reward rent-seeking and moat protection. “Acceleration” is not yet a defined alternative; specify its institutions, allocation mechanism, failure modes, and comparison criteria before evaluating it. #economics #politics #todo
 
 ## 2025-10-20
 
-Taleb on decay in tail-risk hedging: convexity equals decay, so precision matters. The devil is in the heuristics. #finance
+Taleb on tail-risk hedging: acquiring convex payoff exposure generally carries negative carry or option decay, so implementation details and heuristics matter. “Convexity equals decay” is a slogan, not an identity. #finance
 
-Taleb on buying options: for speculation, buy an option only when you have no reason to; any known reason will already be priced in. #finance
+Taleb's heuristic for speculative option buying: a widely known reason to buy may already be reflected in the price. This does not imply buying without evidence; compare one's information and model with the market-implied distribution. #finance
 
-Taleb on Schwartz distributions: explain generalised functions through an analogy with option pricing. #finance #mathematics
+Taleb suggests explaining Schwartz distributions through an analogy with option pricing. Work out the correspondence and its limits before using it pedagogically. #finance #mathematics #todo
 
-Taleb on nonergodic selling: no option seller survives because selling is nonergodic. #finance
+Taleb argues that repeated unhedged option selling can be non-ergodic because rare losses may cause ruin. The universal claim that no seller survives is too strong: survival depends on pricing, hedging, sizing, capital, and the loss process. #finance #risk
 
-Tenobrus on copies: full collection copies can severely hurt C++ performance. Replacing them with references can improve a production codebase by 100%. #performance #programming
+Tenobrus reports that copying full collections severely hurt one C++ production workload and that replacing copies with references produced a reported 100% improvement. Treat the figure as workload-specific and benchmark ownership changes for correctness as well as speed. #performance #programming
 
-Computer architecture numbers: use costs such as L1 cache references, branch mispredictions, and mutex operations for back-of-the-envelope system-design calculations. #computing #systems
+Use approximate costs for operations such as L1 cache access, branch misprediction, and mutex contention in back-of-the-envelope system-design calculations, then validate the result on the target hardware and workload. #computing #systems
 
-$\operatorname{Spec}\mathbb{R}[x]$ as $\operatorname{Spec}\mathbb{C}$ modulo conjugation: for any field $k$, closed points of the affine line over $k$ correspond to Galois orbits in its algebraic closure. Real polynomials have conjugate pairs or real roots, each treated as one root. #mathematics
+$\operatorname{Spec}\mathbb{R}[x]$ as the affine line over $\mathbb{C}$ modulo conjugation: closed points of $\mathbb{A}^1_k$ correspond to irreducible polynomials over $k$, or, for a perfect field, to finite Galois orbits in an algebraic closure. Over $\mathbb{R}$ these are real points and conjugate pairs of complex points. #math.AG
 
-Neukirch's perspective on number fields, via Qiaochu Yuan: algebraically closing rings of integers resolves their singularities. #mathematics
+Neukirch's perspective, relayed by Qiaochu Yuan: passing toward an algebraic closure of a number field can be viewed as removing arithmetic ramification. “Resolving singularities” is an analogy that needs a precise formulation before use as a theorem. #number-theory #todo
 
-Schur's lemma in one line: every endomorphism has an eigenvalue over the field, and its eigenspaces are subrepresentations. #mathematics
+Schur's lemma over an algebraically closed field: an endomorphism of a finite-dimensional irreducible representation has an eigenvalue; the corresponding eigenspace is a nonzero invariant subspace, so irreducibility makes the endomorphism scalar. Other fields or infinite-dimensional representations require additional hypotheses. #representation-theory
 
-Karpathy on blog posts and slides: do not write blogs or make slides; build and arrange the code until it works. #building #programming
+Karpathy's advice prioritises building and arranging working code over writing posts or slides. Treat this as a focus heuristic: documentation and explanation remain valuable when they serve users, collaborators, or future maintenance. #building #programming #documentation
