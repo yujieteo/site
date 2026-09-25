@@ -198,10 +198,10 @@ def load_daily_notes():
         notes = []
         for block in note_blocks:
             tag_match = re.search(
-                r"\s+((?:#[A-Za-z0-9][A-Za-z0-9_-]*(?:\s+|$))+)$",
+                r"\s+((?:#[A-Za-z0-9][A-Za-z0-9_.-]*(?:\s+|$))+)$",
                 block,
             )
-            raw_tags = re.findall(r"#([A-Za-z0-9][A-Za-z0-9_-]*)", tag_match.group(1)) \
+            raw_tags = re.findall(r"#([A-Za-z0-9][A-Za-z0-9_.-]*)", tag_match.group(1)) \
                 if tag_match else []
             tags = list(dict.fromkeys(tag.lower() for tag in raw_tags))
             note_markdown = block[:tag_match.start()].rstrip() if tag_match else block

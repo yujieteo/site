@@ -169,3 +169,23 @@ Neukirch's perspective on number fields, via Qiaochu Yuan: algebraically closing
 Schur's lemma in one line: every endomorphism has an eigenvalue over the field, and its eigenspaces are subrepresentations. #mathematics
 
 Karpathy on blog posts and slides: do not write blogs or make slides; build and arrange the code until it works. #building #programming
+
+## 2026-09-25
+
+[Talk on deformation quantization](https://www.youtube.com/watch?v=Lvel8eIHl9I) Trade infinite dimensional index theory on LX for a higher notion of index theory on X. #mathematics
+
+Kontsevich shown that every Poisson manifold has a formal deformation quantization. See the nlab entry. #mathematics #todo
+
+Simons on the origins of differential cohomology, the starting point is the first Pontryagin class integral and computing its signature. A theorem of Chern as a slogan states that this integral gives the Euler characteristic. The Euler characteristic is a sum of singularities. #mathematics #cohomology #differential-cohomology
+
+To find microblogging or status update implementations for my website. #todo #website
+
+[Anti-glossary](https://stallman.org/antiglossary.html) by Stallman highlights some terms that should be avoided and why. #language
+
+[NIST Definition of Cloud Computing](https://csrc.nist.gov/pubs/sp/800/145/final) has these essential characteristics: (1) on demand self service; (2) broad network access; (3) resource pooling; (4) what is rapid expansion; (5) what is measured service? Is the purpose for security evaluation and benefits? #programming #language
+
+Software cannot be consumed. What about token consumption? This means token consumption is inefficient, since software is typically durable. Use specific verbs to avoid overgeneralisation. The word content disparages works by subordinating to a full box. #programming #language
+
+[Periods](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kontzagi.pdf) Algebraic, transcendental, and periods. Periods are transcendental numbers containing finitely many information. Periods as complex numbers of parts of absolutely convergent integrals of rational functions with rational coefficients. Infinite sums as periods. Periods conjecturally form an algebra using additivity, variable change and the Stoke’s theorem. Periods appear in Picard-Fuchs differential equations. L-functions have Euler products and Dirichlet series, local Riemann hypothesis and global Riemann hypothesis with meromorphic continuations. Delign and Beilinson conjectures. Exponential periods as generalisation. #math.AG #mathematics
+
+[Fourier-Mukai transforms](https://www.math.uni-bonn.de/people/huybrech/Garda2.pdf), recover classical Serre duality as an equivalence of Ext groups for computations. Serre functor is linear equivalence gives equivalence to linear dual of the reverse hom object twisted by the Serre functor. Is there noncommutative information lost from the Serre functor? I think Hochschild homology of these maps may be a better definition instead of the radical of the trace pairing or thinking about Serre functors. #mathematics #cohomology #functors #math.CT
