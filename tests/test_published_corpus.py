@@ -18,10 +18,18 @@ class PublishedCorpusTests(unittest.TestCase):
         papers = []
         posts = []
         notes = {"entries": [{"date": "2026-09-25", "notes": [
-            {"content": "First", "body_html": "<p>First</p>", "plain_text": "First", "search_text": "first", "tags": ["one"]},
-            {"content": "Second", "body_html": "<p>Second</p>", "plain_text": "Second", "search_text": "second", "tags": ["two"]},
+            {"content": "First", "body_html": "<p>First</p>", "plain_text": "First", "tags": ["one"]},
+            {"content": "Second", "body_html": "<p>Second</p>", "plain_text": "Second", "tags": ["two"]},
         ]}]}
         return cv, about, resources, papers, posts, notes
+
+    def test_build_does_not_mutate_inputs(self):
+        fixtures = self.fixtures()
+        original = copy.deepcopy(fixtures)
+
+        build_published_corpus(*fixtures)
+
+        self.assertEqual(fixtures, original)
 
     def test_note_identity_survives_reordering(self):
         fixtures = self.fixtures()

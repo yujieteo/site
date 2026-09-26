@@ -12,7 +12,7 @@ from pathlib import Path
 import yaml
 from jsonschema import Draft7Validator
 
-from published_corpus import build_published_corpus
+from published_corpus import build_published_corpus, note_record_id
 
 try:
     import markdown as _markdown
@@ -215,7 +215,6 @@ def load_daily_notes():
                 "content": note_markdown,
                 "body_html": body_html,
                 "plain_text": re.sub(r"\s+", " ", plain_text).strip(),
-                "search_text": re.sub(r"\s+", " ", plain_text).strip().lower(),
                 "tags": tags,
             })
         entries.append({
@@ -410,12 +409,13 @@ def build_notes(cv, notes, corpus_revision):
     for entry in notes["entries"]:
         items_html = []
         for note in entry["notes"]:
+            record_id = note_record_id(entry["date"], note["content"])
             tags_html = "".join(
                 f'<button type="button" class="tag" data-tag="{esc(tag)}">{esc(tag)}</button>'
                 for tag in note["tags"]
             )
             items_html.append(
-                f'<article class="note-item" id="{esc(note["record_id"])}">'
+                f'<article class="note-item" id="{esc(record_id)}">'
                 f'<div class="note-body">{note["body_html"]}</div>'
                 f'<div class="entry-tags" aria-label="Tags">{tags_html}</div></article>'
             )

@@ -16,13 +16,25 @@ def _hash(value):
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
+def _note_identity(date, content):
+    return _hash(f"{date}\0{content}")
+
+
+def note_record_id(date, content):
+    return _record_id("note", _note_identity(date, content))
+
+
 def _slug(value):
     slug = re.sub(r"[^a-z0-9]+", "-", str(value).lower()).strip("-")
     return slug or _hash(str(value))[:12]
 
 
+def _record_id(kind, identity):
+    return f"{kind}:{identity}"
+
+
 def _record(kind, identity, **fields):
-    public = {"id": f"{kind}:{identity}", "kind": kind}
+    public = {"id": _record_id(kind, identity), "kind": kind}
     public.update({key: value for key, value in fields.items() if value not in (None, "", [])})
     public["revision"] = _hash(_canonical(public))
     return public
@@ -75,9 +87,8 @@ def build_published_corpus(cv, about, resources, papers, posts, notes):
 
     for day in notes["entries"]:
         for note in day["notes"]:
-            identity = _hash(f"{day['date']}\0{note['content']}")
-            record_id = f"note:{identity}"
-            note["record_id"] = record_id
+            identity = _note_identity(day["date"], note["content"])
+            record_id = _record_id("note", identity)
             records.append(_record(
                 "note", identity, title=note["plain_text"][:100],
                 url=f"notes.html#{record_id}", date=day["date"], tags=note["tags"],
