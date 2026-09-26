@@ -22,3 +22,4 @@ This is a personal, evolving collection intended for reading, research, and refe
 - Prefer the public corpus for structured retrieval, then follow its canonical URLs for human-readable pages.
 - The site exposes read-only browser tools for searching and retrieving published corpus records when supported.
 - Do not infer private information or authoring permissions from public material.
+- To contribute or maintain the site, read [the project context](https://github.com/yujieteo/site/blob/main/CONTEXT.md) and [the task router](https://github.com/yujieteo/site/blob/main/SKILLS.md).
