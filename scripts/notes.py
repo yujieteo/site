@@ -275,7 +275,7 @@ def _parser():
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("validate", help="validate notes and canonical tags")
     search = subparsers.add_parser("search", help="search note prose and tags")
-    search.add_argument("text", nargs="*", help="text terms; quote phrases to keep them together")
+    search.add_argument("text", nargs="*", help="text terms; values split on whitespace")
     search.add_argument("--tag", action="append", default=[], help="canonical tag or known alias")
     search.add_argument("--any", action="store_true", help="match any text term or tag")
     search.add_argument("--limit", type=int, default=10)
