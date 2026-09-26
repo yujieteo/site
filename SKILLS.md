@@ -12,6 +12,7 @@ Read [CONTEXT.md](CONTEXT.md) for the meanings of Published Corpus, Corpus Recor
 | Task | Playbook |
 | --- | --- |
 | Add a dated note | [Add a note](skills/playbooks/add-note.md) |
+| Search or retrieve dated notes | [Search notes](skills/playbooks/search-notes.md) |
 | Add a blog post | [Add a blog post](skills/playbooks/add-blog-post.md) |
 | Add a paper link or resource | [Add a paper link or resource](skills/playbooks/add-paper-link-or-resource.md) |
 | Deploy generated files | [Deploy generated files](skills/playbooks/deploy.md) |
