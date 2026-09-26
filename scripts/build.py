@@ -471,6 +471,7 @@ def prepare_output():
     blog_out = OUT / "blog"
     blog_out.mkdir(parents=True)
     shutil.copytree(STATIC, OUT / "static")
+    shutil.copy2(ROOT / "llms.txt", OUT / "llms.txt")
     return blog_out
 
 

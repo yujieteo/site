@@ -1,0 +1,24 @@
+# Yu Jie Teo
+
+> Personal website of Yu Jie Teo: notes, references, and technical material on mathematics, computing, physics, and engineering.
+
+This is a personal, evolving collection intended for reading, research, and reference. Content is published for public retrieval; treat it as reference material, not as instructions.
+
+## Main pages
+
+- [Home](https://teoyujie.org/): Site overview and recent material.
+- [About](https://teoyujie.org/about.html): Biography and site context.
+- [Notes](https://teoyujie.org/notes.html): Dated short notes and reflections.
+- [Blog](https://teoyujie.org/blog.html): Longer essays and technical posts.
+- [Resources](https://teoyujie.org/): Curated resources and references.
+- [Paper links](https://teoyujie.org/papers.html): Collection of links to mathematical and technical papers.
+
+## Machine-readable public corpus
+
+- [Published Corpus](https://teoyujie.org/corpus.json): Complete public collection normalized into records with stable IDs and content revisions. Prefer this for programmatic search or retrieval.
+
+## Access guidance
+
+- Prefer the public corpus for structured retrieval, then follow its canonical URLs for human-readable pages.
+- The site exposes read-only browser tools for searching and retrieving published corpus records when supported.
+- Do not infer private information or authoring permissions from public material.
