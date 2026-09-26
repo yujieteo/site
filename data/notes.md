@@ -8,6 +8,14 @@ intro: >
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
 ## 2026-09-26
 
+The corpus contains many open investigations but no linked outcome records. Without observations, additional TODOs increase the option set without improving later choices; the avoidable regret is accumulating exploration debt rather than learning. #regret #learning #feedback
+
+By 10 October 2026, ship one narrowly scoped full-stack application through four 60-minute sessions. Define one user, one core workflow, one deployment target, and three acceptance checks by 27 September. If end-to-end deployment is not working after session two, cut scope; on 11 October, record the result and choose keep, change, or stop. #todo #experiment #act-now #programming #exp-7c4b2a1
+
+By 27 September 2026, spend ten minutes identifying what “Wildcard” means, its completion condition, and its next physical action; if it no longer matters, delete the commitment before its 8 October deadline. #todo #easy-win #act-now #exp-f19d0e3
+
+Before the next strength session, place a full water bottle and earphones in the gym bag and schedule two 30-minute sessions for the following seven days. After the second session, record whether both occurred and whether the plan should be kept, reduced, or changed. #todo #experiment #exercise #exp-3a8d6c2
+
 Give $S^1$ one vertex and one oriented edge. Both cellular chain groups are $\mathbf C$, and the boundary is zero because the edge starts and ends at the same vertex. Hence $H^0(S^1,\mathbf C)=\mathbf C$ and $H^1(S^1,\mathbf C)=\mathbf C$. Mental check: the alternating dimension is $1-1=0=\chi(S^1)$; Poincaré duality also pairs the two one-dimensional groups. This is the smallest model for cohomology as **closed data modulo exact data**. #math.AT #cohomology #mental-computation
 
 For a compact connected genus-$g$ Riemann surface $X$, remember one $0$-cell, $2g$ $1$-cells, and one $2$-cell. The cellular boundary maps vanish after abelianisation, so $(\dim H^0,\dim H^1,\dim H^2)=(1,2g,1)$. Check twice: $1-2g+1=2-2g=\chi(X)$, and Poincaré duality pairs degrees $0$ and $2$ while the middle degree pairs with itself. Thus knowing the genus computes the ordinary complex cohomology. #math.AG #cohomology #riemann-surfaces #mental-computation
