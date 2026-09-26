@@ -8,6 +8,18 @@ intro: >
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
 ## 2026-09-26
 
+[Marcolli’s Talk on Motives and Quantum Field Theories](https://www.its.caltech.edu/~matilde/MotivesQFTtalkUNAM.pdf) Are residues of Feynman integrals periods of mixed Tate motives? Hopf algebras of renormalisation. Perturbative QFT with dimensional regularisation is the basic computation. Key steps are using Schwinger parameters and Feynman’s trick. Compare to periods and graph hypersurfaces. These are realisation of mixed Tate motives as per Bloch-Esnault-Kriemer? Regularisation replaces divergence integral by function with pole. Renormalisation enforces consistency over subgraphs. Recursive formula for Birkhoff decomposition is BPHZ. #math.AG
+
+[https://www.its.caltech.edu/~matilde/NCGNTtalkUNAM.pdf](Noncommutative Geometry on Number Theory) Use zeta spectral triples, $X/R$ non commutative space with non commutative algebra of functions. You can do geometry like cohomology and connections, but it has thermodynamics and quantum mechanics. $\mathbb{Q}$-lattices
+
+Reasoning effort is how much a model is allowed to think rather than how much you want it to, using Medium as a fast default for well-defined tasks and High to give it room for undefined planning and investigation. #programming #tips
+
+Harnesses are needed to increase the reliability of a nondeterministic system. #programming
+
+`herdr` is basically like `tmux`. #programming #llms
+
+[Kun Chen's Workflow](https://www.youtube.com/watch?v=kPN564Kol14) The workflow by Kun is good but I like `grilling` skill to prompt me because the LLM has more tenacity and willpower to think through details than me, and I think `crewmate` is for a different style of workflow where he just free flows it. #programming #llms
+
 Topologically $\mathbf P^1(\mathbf C)$ is a sphere with one $0$-cell and one $2$-cell, so $H^0=\mathbf Q$, $H^1=0$, and $H^2=\mathbf Q(-1)$. The Tate label records that the hyperplane class has Hodge type $(1,1)$. Mental route: point, hyperplane. Check: $1-0+1=2=\chi(S^2)$, and Poincare duality pairs degrees $0$ and $2$. #math.AG #cohomology #projective-space #mental-computation
 
 Choose $x\in\mathbf P^1(k)$. The correspondences $[x\times\mathbf P^1]$ and $[\mathbf P^1\times x]$ are orthogonal projectors summing to the diagonal, hence $h(\mathbf P^1)=\mathbf1\oplus\mathbf1(-1)$ in Chow motives. Every Weil realization sends these to the degree-$0$ unit and degree-$2$ hyperplane class. Check: the projective bundle formula gives exactly two summands, and Betti realization recovers ranks $(1,0,1)$. #math.AG #pure-motives #cohomology #mental-computation
@@ -55,8 +67,6 @@ For smooth projective $X/\mathbf F_q$, the Grothendieck--Lefschetz formula says 
 The Weil-conjecture proof compresses into three cohomological mechanisms: finite-dimensional étale cohomology plus the trace formula gives rationality; Poincaré duality pairing $H^i\times H^{2d-i}\to\mathbf Q_\ell(-d)$ gives the functional equation; Deligne purity gives $|\iota(\alpha)|=q^{i/2}$ for every Frobenius eigenvalue on $H^i$. Check: paired eigenvalues multiply to $q^d$, and purity makes their magnitudes multiply to $q^d$. The noncompressible proof gap is Deligne's Lefschetz-pencil, vanishing-cycle, monodromy, and main-lemma argument. #math.AG #weil-conjectures #deligne #mental-computation
 
 The corpus contains many open investigations but no linked outcome records. Without observations, additional TODOs increase the option set without improving later choices; the avoidable regret is accumulating exploration debt rather than learning. #regret #learning #feedback
-
-By 10 October 2026, ship one narrowly scoped full-stack application through four 60-minute sessions. Define one user, one core workflow, one deployment target, and three acceptance checks by 27 September. If end-to-end deployment is not working after session two, cut scope; on 11 October, record the result and choose keep, change, or stop. #todo #experiment #act-now #programming #exp-7c4b2a1
 
 By 27 September 2026, spend ten minutes identifying what “Wildcard” means, its completion condition, and its next physical action; if it no longer matters, delete the commitment before its 8 October deadline. #todo #easy-win #act-now #exp-f19d0e3
 
