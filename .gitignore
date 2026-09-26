@@ -4,3 +4,4 @@ __pycache__/
 .pytest_cache/
 .firecrawl/
 .DS_Store
+.serena/
