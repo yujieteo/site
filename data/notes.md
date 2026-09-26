@@ -8,6 +8,38 @@ intro: >
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
 ## 2026-09-26
 
+[Kun Chen's interview with David Ondrej](https://www.youtube.com/watch?v=8ZgpAXe5V5w) presents `firstmate` as a coordinator for multiple `herdr` sessions and pairs agent-generated changes with a separate adversarial-review pipeline. Treat review effort as risk-dependent rather than mandatory ceremony for every prototype. #agents #programming #verification
+
+Agent tooling should help me become a better human, not merely replace more tasks. What capabilities, judgment, or attention should remain stronger after the automation is removed? #reflection #ai
+
+Mac agent-workstation migration: evaluate replacing `tmux` with `herdr` and Firefox with Chrome plus the Codex extension; install Codex and Claude Code; then make the `github.com/teoyujie/skills` repository usable from both tools. Build a repeatable Mac setup skill only after the manual path is understood. #todo #programming #tools
+
+Token-reduction tools need expiry dates and periodic re-evaluation because model and harness behaviour changes quickly. Current candidates serve different layers: Ponytail minimizes code, RTK condenses command output, Headroom trims read context, QMD searches Markdown, and “Jev” still needs its name, payment model, and mechanism verified. #llms #tools #tokens
+
+[Minami's skill-lifecycle essay](https://note.com/gtminami/n/na081914eff92?hl=en) argues that helper agents belong in independent contexts rather than being packaged as skills, while permanent project policy belongs in `AGENTS.md` or `CLAUDE.md`; frequently updated knowledge belongs behind retrieval, external state behind MCP or APIs, one-offs in prompts, and timed triggers in automation. #agents #skills #design
+
+Add a completion checklist to the skill-refinement workflow so every required step remains visible and any omission records a reason. #todo #skills #verification
+
+Build a design-systems skill only after defining the repeated procedure, selection boundary, and output that ordinary prompting does not already cover. #todo #skills #design
+
+The [Claude Developer Docs](https://platform.claude.com/docs/en/home) cover the path from API basics through tools, evaluation, cost control, and operation; the [Claude Cookbook](https://platform.claude.com/cookbook) supplies executable patterns for agents, retrieval, compaction, tool use, and evaluation. Use them to study agentic coding from reference and worked-example perspectives. #programming #llms #learning
+
+Use [GitHub's `AGENTS.md` code search](https://github.com/search?q=path%3AAGENTS.md+NOT+is%3Afork+NOT+is%3Aarchived&type=code) to sample real repository instructions, noting that GitHub requires sign-in to display code results. #agents #programming #research
+
+[Dan Luu argues](https://danluu.com/brain-off/) that blindly relaying language-model output may become more effective as models improve but does not create durable value for the human relay. My stronger claim is that even “brain-off” use has a high skill ceiling: extracting maximum value still requires judgment, verification, and workflow design. #llms #reflection #verification
+
+Router files are pointers: keep `AGENTS.md` as a compact map to scoped instructions, and keep skills as narrow routers to procedures or references loaded only when needed. Pointers reduce repeated context, but routing quality depends on clear metadata and non-overlapping selection boundaries. #agents #skills #tokens #design
+
+[Minami's review of skill bloat](https://note.com/gtminami/n/na081914eff92?hl=en) cites an August 2026 analysis of 138,133 public `SKILL.md` files in which 91.8% had a detectable reusability flaw and 89.3% failed at least one specification-derived check. The practical response is to supply only task-specific procedures, judgments, and exceptions; load detailed references on demand; measure routing and outcomes; and flag obsolete skills for deletion. These public-skill rates do not directly estimate private collections. #agents #skills #research #design
+
+[A deep dive into pstack](https://flaviocopes.com/pstack/) describes `poteto-mode` as a router that selects principles, a playbook, specialist skills, model roles, and verification steps. This supports treating routers as first-class infrastructure rather than copying every procedure into one permanent prompt. #agents #programming #design
+
+Amend the `grilling` skill to use compaction deliberately: preserve decisions, unresolved objections, completion criteria, and the next action while discarding conversational repetition. #todo #skills #tokens
+
+Set a token budget and a verification plan at the start of substantial agent work. Define the “brain and hands” model precisely: which agent owns judgment, which performs execution, and when the hands must escalate rather than improvise. #agents #planning #todo
+
+[Karpathy's jobs repository](https://github.com/karpathy/jobs) turns Bureau of Labor Statistics occupation data into an interactive treemap and supports prompt-defined LLM scoring layers. Build a reusable skill and GitHub repository for similarly narrow, source-backed data visualisations, while keeping each score's assumptions and provenance visible. #todo #data-visualisation #skills
+
 [Marcolli’s Talk on Motives and Quantum Field Theories](https://www.its.caltech.edu/~matilde/MotivesQFTtalkUNAM.pdf) Are residues of Feynman integrals periods of mixed Tate motives? Hopf algebras of renormalisation. Perturbative QFT with dimensional regularisation is the basic computation. Key steps are using Schwinger parameters and Feynman’s trick. Compare to periods and graph hypersurfaces. These are realisation of mixed Tate motives as per Bloch-Esnault-Kriemer? Regularisation replaces divergence integral by function with pole. Renormalisation enforces consistency over subgraphs. Recursive formula for Birkhoff decomposition is BPHZ. #math.AG
 
 [https://www.its.caltech.edu/~matilde/NCGNTtalkUNAM.pdf](Noncommutative Geometry on Number Theory) Use zeta spectral triples, $X/R$ non commutative space with non commutative algebra of functions. You can do geometry like cohomology and connections, but it has thermodynamics and quantum mechanics. $\mathbb{Q}$-lattices
