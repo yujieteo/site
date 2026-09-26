@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From Čech cocycles to the Weil conjectures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <meta name="site-corpus" content="../corpus.json">
+  <meta name="site-corpus-revision" content="c37a29e2ad4917d7945344e05211630ca2a6661cb94fbbc55ff6becf3575bdf2">
+  <script type="module" src="../static/js/webmcp.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="site-name" href="../index.html">Yu Jie Teo</a>
+      <p class="site-tagline">Personal website</p>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../papers.html">Paper Links</a>
+        <a href="../notes.html">Notes</a>
+        <a href="../blog.html" aria-current="page">Blog</a>
+      </nav>
+    </header>
+    <main id="main-content" tabindex="-1"><h1 class="page-title">From Čech cocycles to the Weil conjectures</h1><p class="post-meta"><time datetime="2026-09-26">2026-09-26</time></p><div class="post-body"><p>The concrete target is</p>
+<p>$$
+E/\mathbf F_5:y^2=x^3+x+1,\qquad
+\lvert E(\mathbf F_5)\rvert=9,\quad \lvert E(\mathbf F_{25})\rvert=27,\quad
+\lvert E(\mathbf F_{125})\rvert=108.
+$$</p>
+<p>We will reconstruct these numbers from Frobenius on $\ell$-adic étale cohomology,
+starting with gluing cocycles. Then we will isolate the same three mechanisms that prove
+the Weil conjectures for every smooth projective variety.</p>
+<p>This is an execution manual, not a compressed claim to reprove Deligne mentally. Its
+honest deep gap is named in Unit 9.</p>
+<p>Dependency route:</p>
+<p>$$
+\text{overlap data}\to\text{étale covers}\to\text{Kummer}\to H^1(E)
+\to F\to\text{trace}\to Z(E,t)\to\text{purity}.
+$$</p>
+<h2>1. The shadow: a Čech class</h2>
+<p><strong>Prompt.</strong> What does a degree-one cohomology class compute?</p>
+<details>
+<summary>Mental route</summary>
+
+Choose local objects on a cover $(U_i)$. On an overlap, compare them by
+$g_{ij}$. Compatibility on triple overlaps says
+
+$$g_{jk}-g_{ik}+g_{ij}=0.$$
+
+Changing the local choices by $h_i$ changes $g_{ij}$ by $h_j-h_i$.
+Therefore
+
+$$H^1=\frac{\text{compatible overlap data}}{\text{changes of local trivialisation}}.$$
+
+Governing idea: cohomology measures the failure of compatible local choices to become
+one global choice.
+
+Check: if one global choice exists, every comparison is a coboundary. Milne gives the
+étale Čech complex and its comparison with derived cohomology in
+[§10](https://www.jmilne.org/math/CourseNotes/LEC.pdf#page=80).
+
+</details>
+
+<h2>2. Why the cover must be étale</h2>
+<p><strong>Prompt.</strong> Why can étale cohomology see roots that Zariski cohomology misses?</p>
+<details>
+<summary>Mental route</summary>
+
+The equation $T^\ell=a$ need not have a Zariski-local solution. If $\ell\ne p$ and
+$a$ is invertible, adjoining a root produces an étale cover because
+$\ell T^{\ell-1}$ is invertible at that root. Thus the map
+
+$$\mathbf G_m\xrightarrow{(-)^\ell}\mathbf G_m$$
+
+is locally surjective in the étale topology. Its kernel is $\mu_\ell$, giving the
+Kummer sequence
+
+$$1\to\mu_\ell\to\mathbf G_m\xrightarrow{(-)^\ell}\mathbf G_m\to1.$$
+
+Check: when $\ell=p$, the derivative vanishes; this is exactly why étale
+$\ell$-adic cohomology requires $\ell\ne p$. See Milne
+[§7.9](https://www.jmilne.org/math/CourseNotes/LEC.pdf#page=63).
+
+</details>
+
+<h2>3. Turn root-gluing into a computable group</h2>
+<p><strong>Prompt.</strong> Compute $H^1(E,\mu_\ell)$ for an elliptic curve over an algebraically
+closed field, with $\ell\ne p$.</p>
+<details>
+<summary>Mental route</summary>
+
+The Kummer long exact sequence contains
+
+$$
+k^*\xrightarrow{(-)^\ell}k^*\to H^1(E,\mu_\ell)
+\to\operatorname{Pic}(E)\xrightarrow{\ell}\operatorname{Pic}(E).
+$$
+
+Because $k$ is algebraically closed, $k^*$ is $\ell$-divisible. Hence
+
+$$H^1(E,\mu_\ell)\cong\operatorname{Pic}(E)[\ell].$$
+
+Torsion has degree zero, and $\operatorname{Pic}^0(E)\cong E$, so
+
+$$H^1(E,\mu_\ell)\cong E[\ell]\cong(\mathbf Z/\ell)^2.$$
+
+Passing through $\ell^r$ and tensoring gives a two-dimensional
+$H^1_{\mathrm{et}}(E,\mathbf Q_\ell)$ (up to the Kummer twist convention).
+
+Check: its rank $2$ matches the two loops of a complex torus; duality supplies ranks
+$(1,2,1)$.
+
+</details>
+
+<h2>4. The observable: count one fibre by hand</h2>
+<p><strong>Prompt.</strong> Count $E(\mathbf F_5)$ for $y^2=x^3+x+1$.</p>
+<details>
+<summary>Mental route</summary>
+
+The squares mod $5$ are $0,1,4$. For $x=0,1,2,3,4$, the right side is
+
+$$1,3,1,1,4.$$
+
+These give $2,0,2,2,2$ choices of $y$. Add the point at infinity:
+
+$$\boxed{\lvert E(\mathbf F_5)\rvert=9}.$$
+
+For a smooth projective curve, the trace formula reads
+
+$$\lvert E(\mathbf F_5)\rvert=1-\operatorname{Tr}(F\mid H^1)+5.$$
+
+Therefore $a_5=\operatorname{Tr}(F\mid H^1)=5+1-9=-3$.
+
+Check: Hasse's bound gives $|-3|\le2\sqrt5$.
+
+</details>
+
+<h2>5. One trace generates every extension count</h2>
+<p><strong>Prompt.</strong> Compute the next two point counts without enumerating étale
+points.</p>
+<details>
+<summary>Mental route</summary>
+
+Frobenius on the two-dimensional $H^1$ has trace $-3$ and determinant $5$, hence
+
+$$P_1(T)=T^2+3T+5=(T-\alpha)(T-\beta).$$
+
+Let $s_n=\alpha^n+\beta^n$. The characteristic equation gives
+
+$$s_0=2,\quad s_1=-3,\quad s_n=-3s_{n-1}-5s_{n-2}.$$
+
+Thus $s_2=-1$ and $s_3=18$. Since
+
+$$\lvert E(\mathbf F_{5^n})\rvert=5^n+1-s_n,$$
+
+we obtain
+
+$$\boxed{\lvert E(\mathbf F_{25})\rvert=27,\qquad\lvert E(\mathbf F_{125})\rvert=108}.$$
+
+Check: $\alpha\beta=5$, so the recurrence's constant coefficient must be $5$.
+
+</details>
+
+<h2>6. Compress all counts into one function</h2>
+<p><strong>Prompt.</strong> Recover the zeta function.</p>
+<details>
+<summary>Mental route</summary>
+
+Use
+
+$$-\log\det(1-tF)=\sum_{n\ge1}\operatorname{Tr}(F^n)\frac{t^n}{n}.$$
+
+Exponentiating the alternating trace formula yields
+
+$$
+Z(E,t)=\exp\!\left(\sum_{n\ge1}\lvert E(\mathbf F_{5^n})\rvert\frac{t^n}{n}\right)
+=\frac{1+3t+5t^2}{(1-t)(1-5t)}.
+$$
+
+Check: the logarithmic derivative's $t^0$ coefficient is
+$1-(-3)+5=9$, the first point count. Deligne writes the general determinant formula
+as [(1.5.4)](https://www.numdam.org/item/PMIHES_1974__43__273_0.pdf#page=4).
+
+</details>
+
+<h2>7. General mechanism I: rationality</h2>
+<p><strong>Prompt.</strong> Why is $Z(X,t)$ rational for smooth projective $X/\mathbf F_q$?</p>
+<details>
+<summary>Mental route</summary>
+
+Grothendieck--Lefschetz says
+
+$$
+\lvert X(\mathbf F_{q^n})\rvert=
+\sum_i(-1)^i\operatorname{Tr}(F^n\mid H^i_{\mathrm{et}}(\bar X,\mathbf Q_\ell)).
+$$
+
+Apply the logarithm identity from Unit 6 degree by degree:
+
+$$
+Z(X,t)=\prod_i
+\det(1-tF\mid H^i)^{(-1)^{i+1}}.
+$$
+
+Each $H^i$ is finite-dimensional, so every determinant is a polynomial: the product is
+rational.
+
+Check: odd degrees occur upstairs and even degrees downstairs. The trace formula and
+determinant expression appear in Deligne
+[(1.5.1)--(1.5.4)](https://www.numdam.org/item/PMIHES_1974__43__273_0.pdf#page=3).
+
+</details>
+
+<h2>8. General mechanism II: the functional equation</h2>
+<p><strong>Prompt.</strong> Where does the symmetry of $Z(X,t)$ come from?</p>
+<details>
+<summary>Mental route</summary>
+
+If $d=\dim X$, Poincaré duality gives a perfect Frobenius-compatible pairing
+
+$$H^i\times H^{2d-i}\longrightarrow\mathbf Q_\ell(-d).$$
+
+Consequently, if $\alpha$ occurs in degree $i$, its paired eigenvalue in degree
+$2d-i$ is $q^d/\alpha$. Pair the corresponding determinant factors. Their reciprocal
+symmetry produces the functional equation, with the Euler characteristic controlling
+the power of $t$ and $q$.
+
+Check: applying the pairing twice returns the original eigenvalue, and the paired
+product is $q^d$. This is the cohomological source of the zeta symmetry, not a formal
+accident.
+
+</details>
+
+<h2>9. General mechanism III: purity</h2>
+<p><strong>Prompt.</strong> What is the exact deep theorem needed for the Riemann hypothesis?</p>
+<details>
+<summary>Mental route</summary>
+
+Deligne proves that for smooth projective $X/\mathbf F_q$, every eigenvalue $\alpha$
+of Frobenius on $H^i$ is algebraic and, under every complex embedding,
+
+$$\boxed{|\alpha|=q^{i/2}}.$$
+
+This is purity of weight $i$. For our curve, $i=1$, so $|\alpha|=|\beta|=\sqrt5$;
+indeed the roots of $T^2+3T+5$ are $(-3\pm i\sqrt{11})/2$.
+
+Check: their squared magnitude is $(9+11)/4=5$.
+
+Theorem-backed, not a mental derivation: Deligne's proof reduces dimension with weak
+Lefschetz and Lefschetz pencils, controls vanishing cycles by Picard--Lefschetz
+monodromy, and applies the fundamental estimate/main lemma to the remaining middle
+cohomology. The precise purity statement is
+[Theorem 1.6](https://www.numdam.org/item/PMIHES_1974__43__273_0.pdf#page=4); the
+proof closes in §7. This machinery is the prerequisite gap one must study to prove,
+rather than merely use, the theorem.
+
+</details>
+
+<h2>10. Reassemble the Weil conjectures</h2>
+<p><strong>Prompt.</strong> Give the proof architecture in one breath.</p>
+<details>
+<summary>Mental route</summary>
+
+For smooth projective $X/\mathbf F_q$:
+
+1. étale descent and derived cohomology produce finite-dimensional $H^i$ with
+   Frobenius;
+2. the trace formula turns fixed points of $F^n$ into alternating traces;
+3. the logarithm-of-determinant identity makes $Z(X,t)$ rational;
+4. Poincaré duality pairs degrees $i$ and $2d-i$, giving the functional equation;
+5. Deligne purity puts degree-$i$ eigenvalues on $|\alpha|=q^{i/2}$;
+6. comparison/base-change identifies the determinant degrees with Betti numbers.
+
+Independent checks: dual eigenvalue magnitudes multiply to $q^d$; the alternating
+sum of determinant degrees is the Euler characteristic; for a curve the formula reduces
+to $1-\operatorname{Tr}(F^n\mid H^1)+q^n$.
+
+</details>
+
+<h2>Compressed run</h2>
+<ol>
+<li>$H^1=$ overlap cocycles modulo retrivialisation.</li>
+<li>$\ell\ne p$ makes $T^\ell=a$ an étale-local equation.</li>
+<li>Kummer on $E$: $H^1(E,\mu_\ell)=E[\ell]$, rank $2$.</li>
+<li>Squares mod $5$: $0,1,4$; fibre contributions $2,0,2,2,2,+1=9$.</li>
+<li>$a_5=6-9=-3$; $P_1(T)=T^2+3T+5$.</li>
+<li>$s_n=-3s_{n-1}-5s_{n-2}$: $s_2=-1$, $s_3=18$.</li>
+<li>Counts: $27,108$; zeta: $(1+3t+5t^2)/((1-t)(1-5t))$.</li>
+<li>Trace gives rationality; duality gives symmetry; purity gives root sizes.</li>
+<li>Deep gap: pencils, vanishing cycles, monodromy, main lemma.</li>
+</ol>
+<p>Recall tomorrow: reconstruct $9,-3,T^2+3T+5,27,108$.
+After one week: derive the determinant formula from $-\log\det(1-tF)$.
+After one month: explain exactly why Čech/Kummer constructs the cohomology but does
+not by itself prove purity.</p>
+<h2>References</h2>
+<ul>
+<li>Pierre Deligne, <a href="https://www.numdam.org/item/PMIHES_1974__43__273_0/"><em>La conjecture de Weil I</em></a>, especially §§1, 3, 5--7.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/LEC.pdf"><em>Lectures on Étale Cohomology</em></a>, especially §§7, 10, 14, 24--33.</li>
+</ul></div>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
+    },
+    chtml: { scale: 1.06 }
+  };
+  document.addEventListener('entries-rendered', function (event) {
+    if (!(window.MathJax && window.MathJax.typesetPromise)) return;
+    const target = event.detail && event.detail.target;
+    if (window.MathJax.typesetClear) MathJax.typesetClear(target ? [target] : undefined);
+    MathJax.typesetPromise(target ? [target] : undefined);
+  });
+</script>
+<script id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+</main>
+    <footer class="site-footer">
+      Made with the assistance of AI. <a href="https://github.com/yujieteo">GitHub</a>
+    </footer>
+  </div>
+</body>
+</html>
