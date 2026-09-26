@@ -4,6 +4,8 @@ import hashlib
 import json
 import re
 
+from notes import note_id
+
 
 SCHEMA_VERSION = 1
 
@@ -17,7 +19,7 @@ def _hash(value):
 
 
 def _note_identity(date, content):
-    return _hash(f"{date}\0{content}")
+    return note_id(date, content).removeprefix("note:")
 
 
 def note_record_id(date, content):

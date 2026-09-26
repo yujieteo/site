@@ -6,12 +6,12 @@ import json
 import re
 import shutil
 from collections import Counter
-from datetime import date
 from pathlib import Path
 
 import yaml
 from jsonschema import Draft7Validator
 
+from notes import load_notes
 from published_corpus import build_published_corpus, note_record_id
 
 try:
@@ -173,57 +173,25 @@ def load_daily_notes():
     may end in tags such as ``#math #reading``. The published page is also sorted
     newest-first.
     """
-    path = DATA / "notes.md"
-    raw = path.read_text(encoding="utf-8")
-    meta, body = parse_frontmatter(raw)
-    heading = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
-    matches = list(heading.finditer(body))
-
-    leading_text = body[:matches[0].start()].strip() if matches else body.strip()
-    if leading_text and not re.fullmatch(r"(?:<!--.*?-->\s*)+", leading_text, re.DOTALL):
-        raise RuntimeError("data/notes.md content must begin with a ## YYYY-MM-DD heading")
-
+    document, _ = load_notes(DATA / "notes.md", DATA / "note-tags.json")
+    meta = yaml.safe_load(document["frontmatter"]) or {}
     entries = []
-    seen_dates = set()
-    for index, match in enumerate(matches):
-        iso_date = match.group(1)
-        try:
-            parsed_date = date.fromisoformat(iso_date)
-        except ValueError as exc:
-            raise RuntimeError(f"Invalid note date: {iso_date}") from exc
-        if iso_date in seen_dates:
-            raise RuntimeError(f"Duplicate note date: {iso_date}")
-        seen_dates.add(iso_date)
-
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(body)
-        day_markdown = body[match.end():end].strip()
-        note_blocks = [block.strip() for block in re.split(r"\n\s*\n", day_markdown)
-                       if block.strip()]
+    for entry in document["entries"]:
         notes = []
-        for block in note_blocks:
-            tag_match = re.search(
-                r"\s+((?:#[A-Za-z0-9][A-Za-z0-9_.-]*(?:\s+|$))+)$",
-                block,
-            )
-            raw_tags = re.findall(r"#([A-Za-z0-9][A-Za-z0-9_.-]*)", tag_match.group(1)) \
-                if tag_match else []
-            tags = list(dict.fromkeys(tag.lower() for tag in raw_tags))
-            note_markdown = block[:tag_match.start()].rstrip() if tag_match else block
-            body_html = render_markdown(note_markdown)
+        for note in entry["notes"]:
+            body_html = render_markdown(note["content"])
             plain_text = html.unescape(re.sub(r"<[^>]+>", " ", body_html))
             notes.append({
-                "content": note_markdown,
+                "content": note["content"],
                 "body_html": body_html,
                 "plain_text": re.sub(r"\s+", " ", plain_text).strip(),
-                "tags": tags,
+                "tags": note["tags"],
             })
         entries.append({
-            "date": iso_date,
-            "display_date": parsed_date.strftime("%-d %B %Y"),
+            "date": entry["date"],
+            "display_date": entry["display_date"],
             "notes": notes,
         })
-
-    entries.sort(key=lambda entry: entry["date"], reverse=True)
     return {
         "title": str(meta.get("title", "Notes")),
         "intro": str(meta.get("intro", "")),

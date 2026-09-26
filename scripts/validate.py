@@ -8,6 +8,8 @@ from pathlib import Path
 import jsonschema
 import yaml
 
+from notes import NotesError, load_notes
+
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -49,6 +51,12 @@ def validate_file(path, validator):
 
 def validate_all():
     errors = 0
+    try:
+        load_notes(DATA / "notes.md", DATA / "note-tags.json")
+    except NotesError as exc:
+        for diagnostic in exc.diagnostics:
+            print(f"[FAIL] {diagnostic}")
+        errors += len(exc.diagnostics)
     for schema_path in sorted(SCHEMA.glob("*.schema.json")):
         schema = json.loads(schema_path.read_text(encoding="utf-8"))
         try:

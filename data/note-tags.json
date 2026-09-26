@@ -1,0 +1,826 @@
+{
+  "version": 1,
+  "classes": {
+    "topic": "A subject used to retrieve notes by what they discuss.",
+    "project": "A bounded project or experiment used to retrieve its working notes.",
+    "status": "A state used to retrieve notes by workflow condition.",
+    "action": "A human or agent action used to retrieve notes by what should happen next.",
+    "arxiv-math": "An official arXiv mathematics category used for broad mathematical classification."
+  },
+  "arxiv_math": {
+    "source": "https://arxiv.org/category_taxonomy",
+    "checked": "2026-09-27",
+    "categories": [
+      "math.ac",
+      "math.ag",
+      "math.ap",
+      "math.at",
+      "math.ca",
+      "math.co",
+      "math.ct",
+      "math.cv",
+      "math.dg",
+      "math.ds",
+      "math.fa",
+      "math.gm",
+      "math.gn",
+      "math.gr",
+      "math.gt",
+      "math.ho",
+      "math.it",
+      "math.kt",
+      "math.lo",
+      "math.mg",
+      "math.mp",
+      "math.na",
+      "math.nt",
+      "math.oa",
+      "math.oc",
+      "math.pr",
+      "math.qa",
+      "math.ra",
+      "math.rt",
+      "math.sg",
+      "math.sp",
+      "math.st"
+    ]
+  },
+  "tags": {
+    "act-now": {
+      "class": "action",
+      "description": "Requires an immediate next action.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "agents": {
+      "class": "topic",
+      "description": "Agent workflows, orchestration, tool use, and operating constraints.",
+      "aliases": [
+        "agent"
+      ],
+      "replaced_by": null
+    },
+    "ai": {
+      "class": "topic",
+      "description": "Artificial intelligence outside a narrower model or agent tag.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "apis": {
+      "class": "topic",
+      "description": "Use for notes about apis.",
+      "aliases": [
+        "api"
+      ],
+      "replaced_by": null
+    },
+    "automation": {
+      "class": "topic",
+      "description": "Use for notes about automation.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "automorphic-forms": {
+      "class": "topic",
+      "description": "Use for notes about automorphic forms.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "automorphic-representations": {
+      "class": "topic",
+      "description": "Use for notes about automorphic representations.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "biology": {
+      "class": "topic",
+      "description": "Use for notes about biology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "branching-processes": {
+      "class": "topic",
+      "description": "Use for notes about branching processes.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "building": {
+      "class": "topic",
+      "description": "Use for notes about building.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "category-theory": {
+      "class": "topic",
+      "description": "Use for notes about category theory.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "cech-cohomology": {
+      "class": "topic",
+      "description": "Use for notes about cech cohomology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "central-limit-theorem": {
+      "class": "topic",
+      "description": "Use for notes about central limit theorem.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "cognition": {
+      "class": "topic",
+      "description": "Use for notes about cognition.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "cohomology": {
+      "class": "topic",
+      "description": "Cohomology theories, calculations, and structural results.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "computing": {
+      "class": "topic",
+      "description": "Computing concepts that are broader than software development practice.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "coordination": {
+      "class": "topic",
+      "description": "Use for notes about coordination.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "cyclic-cohomology": {
+      "class": "topic",
+      "description": "Use for notes about cyclic cohomology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "data-visualisation": {
+      "class": "topic",
+      "description": "Use for notes about data visualisation.",
+      "aliases": [
+        "data-visualization"
+      ],
+      "replaced_by": null
+    },
+    "deligne": {
+      "class": "topic",
+      "description": "Use for notes about deligne.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "design": {
+      "class": "topic",
+      "description": "System, interface, or workflow design decisions and principles.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "devops": {
+      "class": "topic",
+      "description": "Use for notes about devops.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "differential-cohomology": {
+      "class": "topic",
+      "description": "Use for notes about differential cohomology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "documentation": {
+      "class": "topic",
+      "description": "Use for notes about documentation.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "easy-win": {
+      "class": "action",
+      "description": "A small, low-friction action worth completing soon.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "economics": {
+      "class": "topic",
+      "description": "Use for notes about economics.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "effective-theory": {
+      "class": "topic",
+      "description": "Use for notes about effective theory.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "elliptic-curves": {
+      "class": "topic",
+      "description": "Use for notes about elliptic curves.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "epidemiology": {
+      "class": "topic",
+      "description": "Use for notes about epidemiology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "etale-cohomology": {
+      "class": "topic",
+      "description": "Use for notes about etale cohomology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "evals": {
+      "class": "topic",
+      "description": "Use for notes about evals.",
+      "aliases": [
+        "evaluations"
+      ],
+      "replaced_by": null
+    },
+    "exercise": {
+      "class": "topic",
+      "description": "Use for notes about exercise.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "exp-3a8d6c2": {
+      "class": "project",
+      "description": "The tracked strength-session experiment.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "exp-f19d0e3": {
+      "class": "project",
+      "description": "The tracked Wildcard-commitment experiment.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "experiment": {
+      "class": "status",
+      "description": "An experiment whose outcome should be recorded.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "feedback": {
+      "class": "topic",
+      "description": "Use for notes about feedback.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "finance": {
+      "class": "topic",
+      "description": "Use for notes about finance.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "finite-fields": {
+      "class": "topic",
+      "description": "Use for notes about finite fields.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "focus": {
+      "class": "status",
+      "description": "A current focus or attention constraint.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "foliations": {
+      "class": "topic",
+      "description": "Use for notes about foliations.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "frobenius": {
+      "class": "topic",
+      "description": "Use for notes about frobenius.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "functional-analysis": {
+      "class": "topic",
+      "description": "Use for notes about functional analysis.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "game-theory": {
+      "class": "topic",
+      "description": "Use for notes about game theory.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "gysin-triangle": {
+      "class": "topic",
+      "description": "Use for notes about gysin triangle.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "health": {
+      "class": "topic",
+      "description": "Use for notes about health.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "interpretability": {
+      "class": "topic",
+      "description": "Use for notes about interpretability.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "intersection-cohomology": {
+      "class": "topic",
+      "description": "Use for notes about intersection cohomology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "knowledge-management": {
+      "class": "topic",
+      "description": "Use for notes about knowledge management.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "kummer-sequence": {
+      "class": "topic",
+      "description": "Use for notes about kummer sequence.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "language": {
+      "class": "topic",
+      "description": "Use for notes about language.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "law": {
+      "class": "topic",
+      "description": "Use for notes about law.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "learning": {
+      "class": "topic",
+      "description": "Learning methods, skill acquisition, and retained understanding.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "llms": {
+      "class": "topic",
+      "description": "Language-model behavior, capability, limits, and usage outside agent orchestration.",
+      "aliases": [
+        "llm"
+      ],
+      "replaced_by": null
+    },
+    "management": {
+      "class": "topic",
+      "description": "Use for notes about management.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "math.ag": {
+      "class": "arxiv-math",
+      "description": "Official arXiv category MATH.AG.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "math.at": {
+      "class": "arxiv-math",
+      "description": "Official arXiv category MATH.AT.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "math.nt": {
+      "class": "arxiv-math",
+      "description": "Official arXiv category MATH.NT.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "math.oa": {
+      "class": "arxiv-math",
+      "description": "Official arXiv category MATH.OA.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "mathematical-modelling": {
+      "class": "topic",
+      "description": "Use for notes about mathematical modelling.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "mathematical-physics": {
+      "class": "topic",
+      "description": "Use for notes about mathematical physics.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "mathematics": {
+      "class": "topic",
+      "description": "Mathematics notes without a more precise arXiv category or mathematical topic.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "measure-theory": {
+      "class": "topic",
+      "description": "Use for notes about measure theory.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "mental-computation": {
+      "class": "topic",
+      "description": "Calculations or checks designed to be executable mentally without writing.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "metagame": {
+      "class": "topic",
+      "description": "Use for notes about metagame.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "mixed-motives": {
+      "class": "topic",
+      "description": "Use for notes about mixed motives.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "models": {
+      "class": "topic",
+      "description": "Use for notes about models.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "modular-curves": {
+      "class": "topic",
+      "description": "Use for notes about modular curves.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "modular-theory": {
+      "class": "topic",
+      "description": "Use for notes about modular theory.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "music": {
+      "class": "topic",
+      "description": "Use for notes about music.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "noncommutative-geometry": {
+      "class": "topic",
+      "description": "Noncommutative geometry, spectral triples, and operator-algebraic spaces.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "notes": {
+      "class": "topic",
+      "description": "Use for notes about notes.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "number-theory": {
+      "class": "topic",
+      "description": "Use for notes about number theory.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "nutrition": {
+      "class": "topic",
+      "description": "Use for notes about nutrition.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "ontology": {
+      "class": "topic",
+      "description": "Use for notes about ontology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "operator-algebras": {
+      "class": "topic",
+      "description": "Use for notes about operator algebras.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "organizations": {
+      "class": "topic",
+      "description": "Use for notes about organizations.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "p-adic-hodge-theory": {
+      "class": "topic",
+      "description": "Use for notes about p adic hodge theory.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "performance": {
+      "class": "topic",
+      "description": "Use for notes about performance.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "physics": {
+      "class": "topic",
+      "description": "Physics notes without a narrower physical theory tag.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "pivoting": {
+      "class": "topic",
+      "description": "Use for notes about pivoting.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "planning": {
+      "class": "topic",
+      "description": "Use for notes about planning.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "pokemon": {
+      "class": "topic",
+      "description": "Use for notes about pokemon.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "politics": {
+      "class": "topic",
+      "description": "Use for notes about politics.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "positioning": {
+      "class": "topic",
+      "description": "Use for notes about positioning.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "prismatic-cohomology": {
+      "class": "topic",
+      "description": "Use for notes about prismatic cohomology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "prismatic-f-gauges": {
+      "class": "topic",
+      "description": "Use for notes about prismatic f gauges.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "probability": {
+      "class": "topic",
+      "description": "Use for notes about probability.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "programming": {
+      "class": "topic",
+      "description": "Software development practice, code, tooling, and engineering workflow.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "projective-space": {
+      "class": "topic",
+      "description": "Use for notes about projective space.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "prompts": {
+      "class": "topic",
+      "description": "Use for notes about prompts.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "psychology": {
+      "class": "topic",
+      "description": "Use for notes about psychology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "pure-motives": {
+      "class": "topic",
+      "description": "Use for notes about pure motives.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "qed": {
+      "class": "topic",
+      "description": "Use for notes about qed.",
+      "aliases": [
+        "quantum-electrodynamics"
+      ],
+      "replaced_by": null
+    },
+    "qft": {
+      "class": "topic",
+      "description": "Use for notes about qft.",
+      "aliases": [
+        "quantum-field-theory"
+      ],
+      "replaced_by": null
+    },
+    "rationality": {
+      "class": "topic",
+      "description": "Use for notes about rationality.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "read": {
+      "class": "action",
+      "description": "Material queued for reading.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "reflection": {
+      "class": "topic",
+      "description": "Personal observations intended for later review rather than immediate action.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "regret": {
+      "class": "status",
+      "description": "A reflection on avoidable regret or missed action.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "renormalisation": {
+      "class": "topic",
+      "description": "Renormalisation methods, scale changes, and parameter flows.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "representation-theory": {
+      "class": "topic",
+      "description": "Use for notes about representation theory.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "research": {
+      "class": "topic",
+      "description": "Use for notes about research.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "rhetoric": {
+      "class": "topic",
+      "description": "Use for notes about rhetoric.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "riemann-surfaces": {
+      "class": "topic",
+      "description": "Use for notes about riemann surfaces.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "risk": {
+      "class": "topic",
+      "description": "Use for notes about risk.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "scaling": {
+      "class": "topic",
+      "description": "Use for notes about scaling.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "security": {
+      "class": "topic",
+      "description": "Use for notes about security.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "shimura-varieties": {
+      "class": "topic",
+      "description": "Use for notes about shimura varieties.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "skills": {
+      "class": "topic",
+      "description": "Reusable agent skill design, routing, authoring, and maintenance.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "standards": {
+      "class": "topic",
+      "description": "Use for notes about standards.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "statistics": {
+      "class": "topic",
+      "description": "Use for notes about statistics.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "strategy": {
+      "class": "topic",
+      "description": "Use for notes about strategy.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "systems": {
+      "class": "topic",
+      "description": "Use for notes about systems.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "teaching": {
+      "class": "topic",
+      "description": "Use for notes about teaching.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "team-building": {
+      "class": "topic",
+      "description": "Use for notes about team building.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "technology": {
+      "class": "topic",
+      "description": "Use for notes about technology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "testing": {
+      "class": "topic",
+      "description": "Use for notes about testing.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "tips": {
+      "class": "topic",
+      "description": "Use for notes about tips.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "todo": {
+      "class": "action",
+      "description": "An actionable item that remains to be completed.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "tokens": {
+      "class": "topic",
+      "description": "Use for notes about tokens.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "tools": {
+      "class": "topic",
+      "description": "Software tools under evaluation or use, excluding a narrower tool category.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "topology": {
+      "class": "topic",
+      "description": "Use for notes about topology.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "verification": {
+      "class": "topic",
+      "description": "Checks and evidence that establish whether work is correct or complete.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "vgc": {
+      "class": "topic",
+      "description": "Use for notes about vgc.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "video": {
+      "class": "topic",
+      "description": "Use for notes about video.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "web": {
+      "class": "topic",
+      "description": "Use for notes about web.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "website": {
+      "class": "topic",
+      "description": "Use for notes about website.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "weil-conjectures": {
+      "class": "topic",
+      "description": "Use for notes about weil conjectures.",
+      "aliases": [],
+      "replaced_by": null
+    }
+  }
+}
