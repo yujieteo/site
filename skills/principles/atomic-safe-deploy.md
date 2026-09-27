@@ -2,4 +2,6 @@
 
 Use a unique temporary filename for each upload. Verify its checksum. Preserve the current file temporarily, then atomically rename the verified upload into place. Never use deletion, mirroring, or removal flags. Never remove remote files.
 
+Set a web-readable mode on every installed file as part of the install: `chmod 644` the temporary file before the rename, or install it with `install -m 644`. Set the mode on the temporary file so the rename stays atomic and the file is never briefly unreadable. A matching checksum proves identical bytes, not that the web server can read them.
+
 On any post-deploy mismatch, restore every preserved prior file and report the failure.
