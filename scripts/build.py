@@ -253,7 +253,7 @@ def load_daily_notes():
 
 def site_fields(cv, active):
     """Return shared site identity and navigation state."""
-    keys = ["home", "about", "paper_links", "notes", "blog"]
+    keys = ["home", "about", "paper_links", "notes", "blog", "visuals"]
     identity = {
         "name": cv["name"],
         "tagline": cv["title"],
@@ -497,7 +497,7 @@ def build_visuals_index(cv, visualizations, corpus_revision, root=""):
     content = f'<h1 class="page-title">Visuals</h1>{entries}'
     return render_page(
         "Visuals", content, corpus_revision, root=root,
-        **site_fields(cv, None),
+        **site_fields(cv, "visuals"),
     )
 
 

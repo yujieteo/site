@@ -49,6 +49,8 @@ class VisualizationTests(unittest.TestCase):
         self.assertIn('href="tourist-attractions/index.html"', nested_gallery)
         self.assertIn('href="static/css/style.css"', root_gallery)
         self.assertIn('href="visuals/tourist-attractions/index.html"', root_gallery)
+        self.assertIn('href="visuals.html" aria-current="page">Visuals</a>', root_gallery)
+        self.assertIn('href="../visuals.html" aria-current="page">Visuals</a>', nested_gallery)
         self.assertIn("## How Singapore attractions are marketed", (ROOT / "site/visuals.md").read_text())
         self.assertEqual((ROOT / "site/llms.txt").read_text().count("[Visuals]("), 1)
 
