@@ -1,6 +1,7 @@
 """Normalize the site's public sources into one content-addressed corpus."""
 
 import hashlib
+import html
 import json
 import re
 
@@ -42,7 +43,7 @@ def _record(kind, identity, **fields):
     return public
 
 
-def build_published_corpus(cv, about, resources, papers, posts, notes):
+def build_published_corpus(cv, about, resources, papers, posts, notes, visualizations=()):
     """Return the sole normalized projection of intentionally public content."""
     records = [
         _record(
@@ -97,6 +98,17 @@ def build_published_corpus(cv, about, resources, papers, posts, notes):
                 summary=note["plain_text"][:240], content=note["content"],
                 contentHtml=note["body_html"],
             ))
+
+    for visualization in visualizations:
+        summary = visualization["summary"]
+        records.append(_record(
+            "visualization", visualization["slug"], title=visualization["title"],
+            summary=summary, content=summary, contentHtml=f"<p>{html.escape(summary)}</p>",
+            url=f"visuals/{visualization['slug']}/index.html",
+            dataUrl=f"visuals/{visualization['slug']}/data.json",
+            fetched=visualization["fetched"], webmcpTools=visualization["webmcp_tools"],
+            tags=visualization["tags"], category=visualization["category"],
+        ))
 
     unique_records = []
     seen_ids = set()

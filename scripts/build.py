@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Build the static site from YAML data and Markdown blog posts."""
 
+import csv
 import html
 import json
+import os
 import re
 import shutil
 from collections import Counter
@@ -96,6 +98,56 @@ def load_one(subdir):
     if len(records) != 1:
         raise RuntimeError(f"Expected one record in data/{subdir}/, found {len(records)}")
     return records[0]
+
+
+def resolve_visuals_repo():
+    configured = os.environ.get("VISUALS_REPO")
+    candidates = [Path(configured).expanduser()] if configured else []
+    candidates.extend([
+        ROOT.parent / "visuals",
+        ROOT.parent.parent / "visuals",
+        ROOT.parent.parent / "tmp" / "visuals",
+    ])
+    for candidate in candidates:
+        if candidate.is_dir():
+            return candidate.resolve()
+    checked = ", ".join(str(path) for path in candidates)
+    raise RuntimeError(
+        "Visuals repository not found. Set VISUALS_REPO or place it in a supported "
+        f"repository-relative location. Checked: {checked}"
+    )
+
+
+def load_visualizations():
+    visualizations = load_all("visuals")
+    schema = json.loads((ROOT / "schema/visualization.schema.json").read_text(encoding="utf-8"))
+    validator = Draft7Validator(schema)
+    for visualization in visualizations:
+        errors = sorted(validator.iter_errors(visualization), key=lambda error: list(error.path))
+        if errors:
+            error = errors[0]
+            location = ".".join(str(part) for part in error.path)
+            raise RuntimeError(
+                f"Invalid visualization {visualization.get('slug', '<unknown>')} "
+                f"at {location or '<root>'}: {error.message}"
+            )
+    slugs = [visualization["slug"] for visualization in visualizations]
+    if len(slugs) != len(set(slugs)):
+        duplicate = next(slug for slug in slugs if slugs.count(slug) > 1)
+        raise RuntimeError(f"Duplicate visualization slug: {duplicate}")
+    return visualizations
+
+
+def visualization_source(visuals_repo, relative_path):
+    repo = visuals_repo.resolve()
+    source = (repo / relative_path).resolve()
+    try:
+        source.relative_to(repo)
+    except ValueError as exc:
+        raise RuntimeError(f"Visualization source escapes its repository: {relative_path}") from exc
+    if not source.is_file():
+        raise RuntimeError(f"Visualization source is missing: {relative_path}")
+    return source
 
 
 def parse_frontmatter(raw_text):
@@ -432,6 +484,56 @@ def build_blog_post(cv, post, corpus_revision):
     )
 
 
+def build_visuals_index(cv, visualizations, corpus_revision, root=""):
+    visuals_path = "" if root else "visuals/"
+    entries = "".join(
+        f'<article class="entry"><h2 class="entry-title">'
+        f'<a href="{visuals_path}{esc(visualization["slug"])}/index.html">'
+        f'{esc(visualization["title"])}</a>'
+        f'</h2><p class="entry-abstract">{esc(visualization["summary"])}</p>'
+        f'<p class="entry-date">Fetched {esc(visualization["fetched"])}</p></article>'
+        for visualization in visualizations
+    )
+    content = f'<h1 class="page-title">Visuals</h1>{entries}'
+    return render_page(
+        "Visuals", content, corpus_revision, root=root,
+        **site_fields(cv, None),
+    )
+
+
+def build_visuals_markdown(visualizations):
+    sections = []
+    for visualization in visualizations:
+        slug = visualization["slug"]
+        sections.append(
+            f'## {visualization["title"]}\n{visualization["summary"]}\n'
+            f'- HTML: https://teoyujie.org/visuals/{slug}/index.html\n'
+            f'- Data: https://teoyujie.org/visuals/{slug}/data.json\n'
+            f'- Fetched: {visualization["fetched"]}\n'
+            f'- WebMCP tools: {", ".join(visualization["webmcp_tools"])}'
+        )
+    return "# Visuals\n\n" + "\n\n".join(sections) + "\n"
+
+
+def publish_visualization_assets(visualizations, visuals_repo):
+    visuals_out = OUT / "visuals"
+    visuals_out.mkdir(parents=True, exist_ok=True)
+    for visualization in visualizations:
+        destination = visuals_out / visualization["slug"]
+        destination.mkdir()
+        html_source = visualization_source(visuals_repo, visualization["html_path"])
+        data_source = visualization_source(visuals_repo, visualization["data_path"])
+        shutil.copyfile(html_source, destination / "index.html")
+        if data_source.suffix == ".csv":
+            with data_source.open(encoding="utf-8", newline="") as handle:
+                data = list(csv.DictReader(handle))
+        else:
+            data = json.loads(data_source.read_text(encoding="utf-8"))
+        (destination / "data.json").write_text(
+            json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+        )
+
+
 def prepare_output():
     """Recreate the generated site and copy its static assets."""
     if OUT.exists():
@@ -475,10 +577,18 @@ def main():
         entry["tags"] = normalize_tags(entry.get("tags"), entry["category"])
     posts = load_blog_posts()
     notes = load_daily_notes()
-    corpus = build_published_corpus(cv, about, resources, papers, posts, notes)
+    visualizations = load_visualizations()
+    visuals_repo = resolve_visuals_repo()
+    for visualization in visualizations:
+        visualization_source(visuals_repo, visualization["html_path"])
+        visualization_source(visuals_repo, visualization["data_path"])
+    corpus = build_published_corpus(
+        cv, about, resources, papers, posts, notes, visualizations
+    )
     validate_corpus(corpus)
 
     blog_out = prepare_output()
+    publish_visualization_assets(visualizations, visuals_repo)
     (OUT / "corpus.json").write_text(
         json.dumps(corpus, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
@@ -490,6 +600,10 @@ def main():
         OUT / "papers.html": build_paper_links(cv, papers, corpus_revision),
         OUT / "notes.html": build_notes(cv, notes, corpus_revision),
         OUT / "blog.html": build_blog_index(cv, posts, corpus_revision),
+        OUT / "visuals.html": build_visuals_index(cv, visualizations, corpus_revision),
+        OUT / "visuals" / "index.html": build_visuals_index(
+            cv, visualizations, corpus_revision, root="../"
+        ),
     }
     pages.update({
         blog_out / f"{post['slug']}.html": build_blog_post(cv, post, corpus_revision)
@@ -497,11 +611,14 @@ def main():
     })
     for path, content in pages.items():
         path.write_text(content, encoding="utf-8")
+    (OUT / "visuals.md").write_text(
+        build_visuals_markdown(visualizations), encoding="utf-8"
+    )
 
     print(
         f"Built site into {OUT}/ "
         f"({len(resources)} resources, {len(papers)} paper links, "
-        f"{len(posts)} blog posts)"
+        f"{len(posts)} blog posts, {len(visualizations)} visualizations)"
     )
 
 

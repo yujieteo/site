@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Visualization",
+  "type": "object",
+  "required": ["slug", "title", "summary", "source_url", "fetched", "html_path", "data_path", "webmcp_tools", "tags", "category"],
+  "additionalProperties": false,
+  "properties": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "source_url": { "type": "string", "minLength": 1 },
+    "fetched": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "html_path": { "type": "string", "pattern": "^(?!/)(?!.*\\.\\.).+\\.html$" },
+    "data_path": { "type": "string", "pattern": "^(?!/)(?!.*\\.\\.).+\\.(?:csv|json)$" },
+    "webmcp_tools": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "category": { "type": "string", "minLength": 1 }
+  }
+}

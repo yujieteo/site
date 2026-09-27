@@ -12,6 +12,7 @@ This is a personal, evolving collection intended for reading, research, and refe
 - [Blog](https://teoyujie.org/blog.html): Longer essays and technical posts.
 - [Resources](https://teoyujie.org/): Curated resources and references.
 - [Paper links](https://teoyujie.org/papers.html): Collection of links to mathematical and technical papers.
+- [Visuals](https://teoyujie.org/visuals.html): Data visualizations generated from public datasets, with machine-readable data and read-only WebMCP tools.
 
 ## Machine-readable public corpus
 

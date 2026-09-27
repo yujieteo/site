@@ -26,7 +26,8 @@ def load_document(path):
             if len(parts) != 3:
                 return None, "unterminated YAML frontmatter"
             text = parts[1]
-        return yaml.safe_load(text), None
+        document = yaml.safe_load(text)
+        return json.loads(json.dumps(document, default=str)), None
     except yaml.YAMLError as exc:
         return None, f"could not parse YAML ({exc})"
 
@@ -67,7 +68,8 @@ def validate_all():
             continue
         validator = jsonschema.Draft7Validator(schema)
 
-        data_dir = DATA / schema_path.name.removesuffix(".schema.json")
+        data_name = schema_path.name.removesuffix(".schema.json")
+        data_dir = DATA / ("visuals" if data_name == "visualization" else data_name)
         if not data_dir.is_dir():
             print(f"[FAIL] {schema_path.name}: missing data directory {data_dir.relative_to(ROOT)}")
             errors += 1

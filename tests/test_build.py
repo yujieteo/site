@@ -1,3 +1,4 @@
+import os
 import shutil
 import subprocess
 import sys
@@ -7,6 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
 
 
 class BuildTests(unittest.TestCase):
@@ -30,6 +32,7 @@ class BuildTests(unittest.TestCase):
                 check=True,
                 capture_output=True,
                 text=True,
+                env=os.environ | {"VISUALS_REPO": str(VISUALS_REPO)},
             )
 
             actual_files = {
