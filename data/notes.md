@@ -6,6 +6,16 @@ intro: >
 ---
 
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
+## 2026-09-27
+
+An LLM-friendly site should make canonical text easy to discover before adding agent actions. The [MCP documentation](https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro) advertises a compact [`llms.txt`](https://modelcontextprotocol.io/llms.txt) index; a useful retrieval ladder is `llms.txt` to topic summaries to focused source notes to a bounded compiled Markdown view. Keep each layer stable, linkable, and useful without agent-specific tooling. #llms #website #design
+
+[MCP](https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro) separates connections to data, tools, and workflows. Apply the same boundary to a website: publish readable knowledge independently, then expose only the actions that benefit from a standard integration. This preserves crawlability and lets agents use the knowledge even when tool execution is unavailable. #agents #website #apis
+
+Agent tools should represent complete user goals, not mirror every button or backend endpoint. Anthropic's [tool-design guidance](https://www.anthropic.com/engineering/writing-tools-for-agents) recommends distinct tools, unambiguous parameters, high-signal responses, pagination, filtering, and actionable errors; its [context-engineering guidance](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) supports retaining lightweight identifiers and retrieving detail only when needed. #agents #tools #tokens #design
+
+Treat agent-facing tool descriptions, arguments, and outputs as untrusted. The [WebMCP security analysis](https://webmachinelearning.github.io/webmcp/#security-and-privacy-considerations) covers poisoned metadata, injected output, ambiguous side effects, excessive parameters, and cross-origin leakage. Validate inputs at execution time, request only necessary fields, preserve origin boundaries, and require confirmation for consequential actions; annotations are useful signals, not replacements for authorization. #agents #web #security
+
 ## 2026-09-26
 
 [Kun Chen's interview with David Ondrej](https://www.youtube.com/watch?v=8ZgpAXe5V5w) presents `firstmate` as a coordinator for multiple `herdr` sessions and pairs agent-generated changes with a separate adversarial-review pipeline. Treat review effort as risk-dependent rather than mandatory ceremony for every prototype. #agents #programming #verification
