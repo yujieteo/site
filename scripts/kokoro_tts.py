@@ -7,6 +7,8 @@ runtime. ``scripts/podcast.py`` depends on the small interface it exposes
 and metadata code stays importable without Kokoro installed.
 """
 
+import os
+import sys
 from pathlib import Path
 
 DEFAULT_SAMPLE_RATE = 24000
@@ -21,6 +23,9 @@ class KokoroUnavailable(RuntimeError):
 
 
 def _load_runtime():
+    # Kokoro invokes uv to fetch its English model on first use; direct
+    # ``.venv/bin/python`` calls do not set this as shell activation would.
+    os.environ.setdefault("VIRTUAL_ENV", sys.prefix)
     try:
         import lameenc
         import numpy
