@@ -1,5 +1,12 @@
 # Visuals
 
+## Find a convex 15-minute bet
+A tappable 2 by 2 for choosing a low-cost experiment that can open a meaningful next step.
+- HTML: https://teoyujie.org/visuals/convex-payoffs/index.html
+- Data: https://teoyujie.org/visuals/convex-payoffs/data.json
+- Fetched: 2026-09-28
+- WebMCP tools: get_data, get_metadata, query
+
 ## The computing salary premium widened
 Computing-titled degrees moved from 0.6% below the yearly median salary in 2013 to 36.4% above it in 2024.
 - HTML: https://teoyujie.org/visuals/graduate-employment-survey/index.html
