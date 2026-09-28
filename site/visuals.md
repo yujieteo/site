@@ -1,5 +1,19 @@
 # Visuals
 
+## Airbnb cash conversion
+Airbnb’s revenue has grown while operating cash flow has remained above one-third of sales in each of the latest four years.
+- HTML: https://teoyujie.org/visuals/airbnb/index.html
+- Data: https://teoyujie.org/visuals/airbnb/data.json
+- Fetched: 2026-09-28
+- WebMCP tools: get_data, get_metadata, query
+
+## Arm cash conversion
+Arm’s fiscal 2026 revenue reached $4.92B and operating cash flow margin rose to 31.0% after a fiscal 2025 dip.
+- HTML: https://teoyujie.org/visuals/arm/index.html
+- Data: https://teoyujie.org/visuals/arm/data.json
+- Fetched: 2026-09-28
+- WebMCP tools: get_data, get_metadata, query
+
 ## Find a convex 15-minute bet
 A tappable 2 by 2 for choosing a low-cost experiment that can open a meaningful next step.
 - HTML: https://teoyujie.org/visuals/convex-payoffs/index.html
@@ -18,6 +32,20 @@ Computing-titled degrees moved from 0.6% below the yearly median salary in 2013 
 An evidence-first timeline separates the Premier League allegations, the distinct 2020 CAS UEFA case, and the latest filed accounts.
 - HTML: https://teoyujie.org/visuals/manchester-city-finances/index.html
 - Data: https://teoyujie.org/visuals/manchester-city-finances/data.json
+- Fetched: 2026-09-28
+- WebMCP tools: get_data, get_metadata, query
+
+## Marvell cash conversion
+Marvell’s revenue rebounded in fiscal 2026, while operating cash flow remained a smaller share of sales than at the prior peak.
+- HTML: https://teoyujie.org/visuals/marvell/index.html
+- Data: https://teoyujie.org/visuals/marvell/data.json
+- Fetched: 2026-09-28
+- WebMCP tools: get_data, get_metadata, query
+
+## Palo Alto Networks cash conversion
+Palo Alto Networks’ cash generation has stayed above 39% of revenue as its security platform scales.
+- HTML: https://teoyujie.org/visuals/panw/index.html
+- Data: https://teoyujie.org/visuals/panw/data.json
 - Fetched: 2026-09-28
 - WebMCP tools: get_data, get_metadata, query
 
