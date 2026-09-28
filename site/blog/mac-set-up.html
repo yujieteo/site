@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <meta name="site-corpus" content="../corpus.json">
-  <meta name="site-corpus-revision" content="03f5557df1e2548a551fab8db800f669a46f2af5cf01add3cf91dce2b3c0e155">
+  <meta name="site-corpus-revision" content="33c66a8c6f6859c3f115a5f7e84d4306418eb5e3986b21c42783c38f8ebf97bb">
   <script type="module" src="../static/js/webmcp.js"></script>
 </head>
 <body>
@@ -38,16 +38,19 @@
 <p>Restart the shell, then:</p>
 <pre><code>brew update
 brew install git gh stow neovim ripgrep fzf jq mise uv
-brew install --cask google-chrome alacritty visual-studio-code mactex discord
+brew install --cask google-chrome visual-studio-code mactex discord
 </code></pre>
 <p>Install herdr, the terminal agent multiplexer:</p>
 <pre><code>curl -fsSL https://herdr.dev/install.sh | sh
 </code></pre>
-<p>Install OpenClaw with its official installer:</p>
-<pre><code>curl -fsSL https://openclaw.ai/install.sh | bash
+<p>Install pi, the persistent local coding agent:</p>
+<pre><code>curl -fsSL https://pi.dev/install.sh | sh
+</code></pre>
+<p>Or install pi from npm with Node 22.19 or newer:</p>
+<pre><code>npm install -g --ignore-scripts @earendil-works/pi-coding-agent
 </code></pre>
 <p>Install the coding agents:</p>
-<pre><code>brew install codex
+<pre><code>brew install --cask codex
 curl -fsSL https://claude.ai/install.sh | bash
 </code></pre>
 <p>Codex's Chrome plugin is not installed here — it's added from inside the
@@ -140,9 +143,10 @@ nvim --headless +qa
 file — add one at <code>~/.config/herdr/config.toml</code> only if you want custom
 keys, themes, or notifications; <code>herdr --default-config</code> prints a full
 starting point.</p>
-<p>Sharpen agent detection for the two agents installed above:</p>
+<p>Sharpen agent detection for the three agents installed above:</p>
 <pre><code>herdr integration install claude
 herdr integration install codex
+herdr integration install pi
 </code></pre>
 <pre><code>herdr
 </code></pre>
@@ -150,6 +154,8 @@ herdr integration install codex
 run an agent in the pane, and <code>ctrl+b</code> to enter navigate mode. Detach with
 <code>ctrl+b</code> then <code>q</code> — agents keep running in the background session.</p>
 <h2>Alacritty</h2>
+<p>Homebrew disabled its Alacritty cask over a Gatekeeper check, so install the
+release DMG from https://github.com/alacritty/alacritty/releases/latest.</p>
 <pre><code>tee &quot;$HOME/.dotfiles/home/.config/alacritty/alacritty.toml&quot; &gt;/dev/null &lt;&lt;'EOF'
 [window]
 padding = { x = 8, y = 8 }
@@ -335,47 +341,28 @@ OpenCode credentials should instead be configured interactively:</p>
 <pre><code>opencode auth login
 opencode auth list
 </code></pre>
-<h2>OpenClaw</h2>
-<p>OpenCode is the repository-local coding agent. OpenClaw is the persistent local
-assistant and gateway.</p>
-<p>Create a private, separate workspace:</p>
-<pre><code>mkdir -p &quot;$HOME/.openclaw/workspace&quot;
-chmod 700 &quot;$HOME/.openclaw&quot; &quot;$HOME/.openclaw/workspace&quot;
+<h2>pi</h2>
+<p>OpenCode is the repository-local coding agent. pi is the persistent local
+coding agent.</p>
+<p>Authenticate a provider and choose a model inside the session:</p>
+<pre><code>pi
 </code></pre>
-<p>Run the setup session if the installer did not already start it:</p>
-<pre><code>openclaw onboard --install-daemon
+<pre><code>/login
+/model
 </code></pre>
-<p>Choose:</p>
-<pre><code>Gateway:   Local
-Workspace: ~/.openclaw/workspace
-Model:     authenticate one provider
-Channels:  Skip
-Skills:    Skip
-Daemon:    Install
-</code></pre>
-<p>Lock down the first local session:</p>
-<pre><code>openclaw config set tools.profile coding
-openclaw config set tools.fs.workspaceOnly true
-openclaw config set tools.exec.mode deny
-openclaw config set tools.deny '[&quot;exec&quot;,&quot;process&quot;,&quot;browser&quot;,&quot;group:messaging&quot;]' --strict-json
-chmod 600 &quot;$HOME/.openclaw/openclaw.json&quot;
-openclaw gateway restart
-</code></pre>
-<p>Check the model, gateway and policy:</p>
-<pre><code>openclaw models list
-openclaw gateway status
-openclaw status --all
-openclaw exec-policy show
-openclaw security audit --deep
-openclaw dashboard
+<p>Check the version, model catalog and provider credentials:</p>
+<pre><code>pi --version
+pi --list-models
+pi auth check --provider PROVIDER
 </code></pre>
 <p>Change model authentication later without putting credentials in <code>.env</code>:</p>
-<pre><code>openclaw models auth login --provider PROVIDER --set-default
-openclaw models list
-openclaw gateway restart
+<pre><code>pi
 </code></pre>
-<p>OpenClaw keeps config, authentication and memory under <code>~/.openclaw</code>. Do not
-Stow or commit that directory.</p>
+<pre><code>/logout
+/login
+</code></pre>
+<p>pi keeps configuration, credentials and session history under <code>~/.pi/agent</code>.
+Do not Stow or commit that directory.</p>
 <h2>SKILLS</h2>
 <p>Shared skills for both agents live in a separate repository:</p>
 <pre><code>cd &quot;$HOME/src&quot;
@@ -390,11 +377,10 @@ nvim .
 opencode
 </code></pre>
 <p>Open the persistent assistant separately:</p>
-<pre><code>openclaw gateway status
-openclaw dashboard
+<pre><code>pi --continue
 </code></pre>
 <h2>Check</h2>
-<pre><code>command -v git gh stow herdr nvim rg fzf jq mise uv python opencode openclaw codex claude alacritty code
+<pre><code>command -v git gh stow herdr nvim rg fzf jq mise uv python opencode pi codex claude alacritty code
 mise doctor
 mise current
 uv --version
@@ -404,9 +390,8 @@ nvim --headless +qa
 git config --global --list
 gh auth status
 ssh -T git@github.com
-openclaw gateway status
-openclaw status --all
-openclaw security audit --deep
+pi --version
+pi auth check --provider PROVIDER
 alacritty --version
 code --version
 code --list-extensions
@@ -416,7 +401,7 @@ google-chrome --version 2&gt;/dev/null || open -a &quot;Google Chrome&quot;
 open -a Discord
 </code></pre>
 <h2>Token-reduction tools</h2>
-<p>Accurate as of 2026-09-27. This space moves fast — re-check each tool
+<p>Accurate as of 2026-09-29. This space moves fast — re-check each tool
 before relying on it; something here may be renamed, abandoned, or
 superseded by the time you read this.</p>
 <table>
@@ -434,14 +419,14 @@ superseded by the time you read this.</p>
 <td>add as a skill / AGENTS.md rule</td>
 </tr>
 <tr>
-<td>RTk</td>
+<td>RTK</td>
 <td>Compresses tool and shell output before the agent reads it</td>
-<td><code>cargo install rtk</code> or <code>brew install rtk-ai/tap/rtk</code></td>
+<td><code>brew install rtk</code> or <code>cargo install --git https://github.com/rtk-ai/rtk</code></td>
 </tr>
 <tr>
 <td>Headroom</td>
 <td>Compresses everything the agent reads — files, tool output, history</td>
-<td><code>pip install headroom-ai</code> or <code>npm install headroom-ai</code></td>
+<td><code>pip install "headroom-ai[all]"</code></td>
 </tr>
 <tr>
 <td>QMD</td>
@@ -450,7 +435,7 @@ superseded by the time you read this.</p>
 </tr>
 <tr>
 <td>Jev</td>
-<td>Different category: a separate decision-model API (TypeSafe AI), not an output-trimmer; needs its own paid account and API key</td>
+<td>Different category: a separate decision-model API (TypeSafe AI), not an output-trimmer; needs its own account and API key</td>
 <td>sign up at TypeSafe AI for an API key</td>
 </tr>
 </tbody>
@@ -462,7 +447,7 @@ gh repo clone USER/dotfiles &quot;$HOME/.dotfiles&quot;
 cd &quot;$HOME/.dotfiles&quot;
 stow --target=&quot;$HOME&quot; home vscode
 </code></pre>
-<p>Reinstall and re-onboard OpenClaw separately; never restore its authentication
+<p>Reinstall and re-authenticate pi separately; never restore its authentication
 from the public dotfiles repository.</p></div></main>
     <footer class="site-footer">
       Made with the assistance of AI. <a href="https://github.com/yujieteo">GitHub</a>

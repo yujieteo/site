@@ -25,7 +25,7 @@ Restart the shell, then:
 ```
 brew update
 brew install git gh stow neovim ripgrep fzf jq mise uv
-brew install --cask google-chrome alacritty visual-studio-code mactex discord
+brew install --cask google-chrome visual-studio-code mactex discord
 ```
 
 Install herdr, the terminal agent multiplexer:
@@ -34,16 +34,22 @@ Install herdr, the terminal agent multiplexer:
 curl -fsSL https://herdr.dev/install.sh | sh
 ```
 
-Install OpenClaw with its official installer:
+Install pi, the persistent local coding agent:
 
 ```
-curl -fsSL https://openclaw.ai/install.sh | bash
+curl -fsSL https://pi.dev/install.sh | sh
+```
+
+Or install pi from npm with Node 22.19 or newer:
+
+```
+npm install -g --ignore-scripts @earendil-works/pi-coding-agent
 ```
 
 Install the coding agents:
 
 ```
-brew install codex
+brew install --cask codex
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
@@ -168,11 +174,12 @@ file — add one at `~/.config/herdr/config.toml` only if you want custom
 keys, themes, or notifications; `herdr --default-config` prints a full
 starting point.
 
-Sharpen agent detection for the two agents installed above:
+Sharpen agent detection for the three agents installed above:
 
 ```
 herdr integration install claude
 herdr integration install codex
+herdr integration install pi
 ```
 
 ```
@@ -184,6 +191,9 @@ run an agent in the pane, and `ctrl+b` to enter navigate mode. Detach with
 `ctrl+b` then `q` — agents keep running in the background session.
 
 ## Alacritty
+
+Homebrew disabled its Alacritty cask over a Gatekeeper check, so install the
+release DMG from https://github.com/alacritty/alacritty/releases/latest.
 
 ```
 tee "$HOME/.dotfiles/home/.config/alacritty/alacritty.toml" >/dev/null <<'EOF'
@@ -441,67 +451,43 @@ opencode auth login
 opencode auth list
 ```
 
-## OpenClaw
+## pi
 
-OpenCode is the repository-local coding agent. OpenClaw is the persistent local
-assistant and gateway.
+OpenCode is the repository-local coding agent. pi is the persistent local
+coding agent.
 
-Create a private, separate workspace:
-
-```
-mkdir -p "$HOME/.openclaw/workspace"
-chmod 700 "$HOME/.openclaw" "$HOME/.openclaw/workspace"
-```
-
-Run the setup session if the installer did not already start it:
+Authenticate a provider and choose a model inside the session:
 
 ```
-openclaw onboard --install-daemon
+pi
 ```
 
-Choose:
-
 ```
-Gateway:   Local
-Workspace: ~/.openclaw/workspace
-Model:     authenticate one provider
-Channels:  Skip
-Skills:    Skip
-Daemon:    Install
+/login
+/model
 ```
 
-Lock down the first local session:
+Check the version, model catalog and provider credentials:
 
 ```
-openclaw config set tools.profile coding
-openclaw config set tools.fs.workspaceOnly true
-openclaw config set tools.exec.mode deny
-openclaw config set tools.deny '["exec","process","browser","group:messaging"]' --strict-json
-chmod 600 "$HOME/.openclaw/openclaw.json"
-openclaw gateway restart
-```
-
-Check the model, gateway and policy:
-
-```
-openclaw models list
-openclaw gateway status
-openclaw status --all
-openclaw exec-policy show
-openclaw security audit --deep
-openclaw dashboard
+pi --version
+pi --list-models
+pi auth check --provider PROVIDER
 ```
 
 Change model authentication later without putting credentials in `.env`:
 
 ```
-openclaw models auth login --provider PROVIDER --set-default
-openclaw models list
-openclaw gateway restart
+pi
 ```
 
-OpenClaw keeps config, authentication and memory under `~/.openclaw`. Do not
-Stow or commit that directory.
+```
+/logout
+/login
+```
+
+pi keeps configuration, credentials and session history under `~/.pi/agent`.
+Do not Stow or commit that directory.
 
 ## SKILLS
 
@@ -527,14 +513,13 @@ opencode
 Open the persistent assistant separately:
 
 ```
-openclaw gateway status
-openclaw dashboard
+pi --continue
 ```
 
 ## Check
 
 ```
-command -v git gh stow herdr nvim rg fzf jq mise uv python opencode openclaw codex claude alacritty code
+command -v git gh stow herdr nvim rg fzf jq mise uv python opencode pi codex claude alacritty code
 mise doctor
 mise current
 uv --version
@@ -544,9 +529,8 @@ nvim --headless +qa
 git config --global --list
 gh auth status
 ssh -T git@github.com
-openclaw gateway status
-openclaw status --all
-openclaw security audit --deep
+pi --version
+pi auth check --provider PROVIDER
 alacritty --version
 code --version
 code --list-extensions
@@ -558,17 +542,17 @@ open -a Discord
 
 ## Token-reduction tools
 
-Accurate as of 2026-09-27. This space moves fast — re-check each tool
+Accurate as of 2026-09-29. This space moves fast — re-check each tool
 before relying on it; something here may be renamed, abandoned, or
 superseded by the time you read this.
 
 | Tool | What it does | Install |
 | --- | --- | --- |
 | Ponytail | Agent skill that nudges toward writing the least code needed (YAGNI-style edits), not a binary | add as a skill / AGENTS.md rule |
-| RTk | Compresses tool and shell output before the agent reads it | `cargo install rtk` or `brew install rtk-ai/tap/rtk` |
-| Headroom | Compresses everything the agent reads — files, tool output, history | `pip install headroom-ai` or `npm install headroom-ai` |
+| RTK | Compresses tool and shell output before the agent reads it | `brew install rtk` or `cargo install --git https://github.com/rtk-ai/rtk` |
+| Headroom | Compresses everything the agent reads — files, tool output, history | `pip install "headroom-ai[all]"` |
 | QMD | Local markdown/notes search, so the agent queries instead of reading whole files | `npm i -g @tobilu/qmd` (upstream `tobi/qmd`) |
-| Jev | Different category: a separate decision-model API (TypeSafe AI), not an output-trimmer; needs its own paid account and API key | sign up at TypeSafe AI for an API key |
+| Jev | Different category: a separate decision-model API (TypeSafe AI), not an output-trimmer; needs its own account and API key | sign up at TypeSafe AI for an API key |
 
 ## Restore
 
@@ -580,5 +564,5 @@ cd "$HOME/.dotfiles"
 stow --target="$HOME" home vscode
 ```
 
-Reinstall and re-onboard OpenClaw separately; never restore its authentication
+Reinstall and re-authenticate pi separately; never restore its authentication
 from the public dotfiles repository.
