@@ -505,6 +505,15 @@ main:focus {
   height: auto;
 }
 
+.post-body .deck-embed {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: var(--space-6) 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
 .post-body table {
   display: block;
   width: 100%;
