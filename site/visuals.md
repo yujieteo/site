@@ -14,6 +14,13 @@ An evidence-first timeline separates the Premier League allegations, the distinc
 - Fetched: 2026-09-28
 - WebMCP tools: get_data, get_metadata, query
 
+## What did 2020 Singapore analyses say?
+Four dated 2020 Singapore analyses paired with later public records. One is a direct conditional forecast outcome. The others show policy overlap, a related event, or a consistent trend.
+- HTML: https://teoyujie.org/visuals/singapore-covid-governance-hindsight/index.html
+- Data: https://teoyujie.org/visuals/singapore-covid-governance-hindsight/data.json
+- Fetched: 2026-09-28
+- WebMCP tools: get_data, get_metadata, query
+
 ## Connection rises as appetite to shape the future falls
 Older Singapore residents report stronger connection to the country but less interest in shaping its future, widening the gap from 0.09 to 1.07 points.
 - HTML: https://teoyujie.org/visuals/social-values-surveydata/index.html
