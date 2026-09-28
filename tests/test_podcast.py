@@ -305,7 +305,6 @@ class GenerateTests(unittest.TestCase):
 
 class PodcastBuildTests(unittest.TestCase):
     def test_build_publishes_player_pages_audio_and_corpus(self):
-        visuals_repo = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
         with tempfile.TemporaryDirectory() as directory:
             project = Path(directory) / "site-project"
             shutil.copytree(
@@ -314,6 +313,11 @@ class PodcastBuildTests(unittest.TestCase):
                 ignore=shutil.ignore_patterns(".git", ".venv", "__pycache__"),
             )
             shutil.rmtree(project / "data" / "podcasts", ignore_errors=True)
+            # This test only exercises the podcast path, so the visualization
+            # stubs are removed and the empty project directory stands in for
+            # the visuals checkout.
+            for visualization in (project / "data" / "visuals").glob("*.yaml"):
+                visualization.unlink()
             episode_id = "2026-09-27-agents"
             audio_directory = project / "data" / "podcasts" / "audio"
             audio_directory.mkdir(parents=True)
@@ -338,7 +342,7 @@ class PodcastBuildTests(unittest.TestCase):
                 check=True,
                 capture_output=True,
                 text=True,
-                env=os.environ | {"VISUALS_REPO": str(visuals_repo)},
+                env=os.environ | {"VISUALS_REPO": str(project)},
             )
 
             index_html = (project / "site" / "podcast" / "index.html").read_text(encoding="utf-8")
