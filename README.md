@@ -11,11 +11,15 @@ data/blog/           Markdown posts with YAML frontmatter
 data/notes.md        Append-only daily notes
 data/cv/             Site name, subtitle, and biography
 data/paper-links/    Paper-link YAML
+data/podcasts/       Podcast episode metadata and audio
 data/resources/      General resource YAML
 schema/              JSON Schemas for YAML data
 scripts/build.py     Static-site generator
+scripts/kokoro_tts.py
+                     Local Kokoro speech synthesis for podcast episodes
 scripts/parse_notes.py
                      Plain-text link notes to YAML converter
+scripts/podcast.py   Podcast episode planner and generator
 scripts/validate.py  YAML/schema validation
 static/              Source CSS and browser JavaScript
 templates/           Shared HTML templates
@@ -98,6 +102,26 @@ The build publishes entries newest-first and gives each date a stable link such
 as `notes.html#2026-09-24`.
 Blank lines separate notes. Trailing hashtags become clickable filters and are
 not displayed as part of the prose; use hyphens for multi-word tags.
+
+## Podcast episodes
+
+Episodes are dated, roughly 30-minute audio digests of notes grouped under a
+focus chosen from the most common content tags. [Generate a podcast
+episode](skills/playbooks/generate-podcast.md) owns the full workflow; the
+site build itself never needs the speech dependencies.
+
+```sh
+uv venv --python 3.13 .venv
+uv pip install -r requirements.txt -r requirements-podcast.txt
+.venv/bin/python scripts/podcast.py plan --target-minutes 30
+.venv/bin/python scripts/podcast.py generate --target-minutes 30
+```
+
+Each episode writes metadata to `data/podcasts/<date>-<focus>.yaml` and MP3
+audio to `data/podcasts/audio/<date>-<focus>.mp3`. The build copies the audio
+into `site/podcast/audio/`, renders `site/podcast/index.html` with the latest
+episode featured, renders one player page per episode, and adds a `podcast`
+record to `site/corpus.json`.
 
 ## Import paper links
 

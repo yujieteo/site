@@ -12,6 +12,10 @@ _Avoid_: index, database, knowledge base
 One publicly retrievable item in the Published Corpus, such as a note, paper link, resource, post, profile, or About section.
 _Avoid_: document, entry, row
 
+**Podcast Episode**:
+A dated, roughly 30-minute spoken digest of notes grouped under a focus selected from the most common content tags, stored as metadata and local Kokoro-generated audio source content.
+_Avoid_: audio note, recording
+
 **Authenticated Authoring**:
 A future, separate capability for changing canonical site sources using a Corpus Record identity and revision to prevent conflicting writes. It is not part of the read-only Published Corpus.
 _Avoid_: writable corpus, admin mode
