@@ -23,6 +23,7 @@ from podcast import (
     plan_episode,
     speech_text,
 )
+from kokoro_tts import KokoroSynthesizer
 
 
 def make_registry(extra=()):
@@ -253,6 +254,27 @@ class ScriptTests(unittest.TestCase):
 
 
 class GenerateTests(unittest.TestCase):
+    def test_generate_truncates_a_single_oversized_note(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_notes(root)
+            (root / "data" / "notes.md").write_text(
+                "---\ntitle: Notes\n---\n\n## 2026-09-27\n\n"
+                + wordy("Long note", 8000)
+                + " #agents\n",
+                encoding="utf-8",
+            )
+            synthesizer = FakeSynthesizer(seconds_per_word=0.5)
+            metadata = generate_episode(
+                target_minutes=1,
+                episode_date="2026-09-28",
+                synthesizer=synthesizer,
+                root=root,
+            )
+            self.assertEqual(len(metadata["notes"]), 1)
+            self.assertLess(len(synthesizer.spoken[1].split()), 8000)
+            self.assertLess(metadata["duration_seconds"], 90)
+
     def test_generate_writes_metadata_audio_and_stops_near_target(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -301,6 +323,52 @@ class GenerateTests(unittest.TestCase):
                 force=True,
             )
             self.assertEqual(regenerated["id"], metadata["id"])
+
+
+class CacheTests(unittest.TestCase):
+    def test_cache_does_not_cross_voices(self):
+        class Numpy:
+            @staticmethod
+            def asarray(data):
+                return list(data)
+
+            @staticmethod
+            def concatenate(parts):
+                return [item for part in parts for item in part]
+
+            @staticmethod
+            def zeros(_size, dtype=None):
+                return []
+
+        class Soundfile:
+            files = {}
+
+            @classmethod
+            def read(cls, path, dtype=None):
+                return cls.files[path]
+
+            @classmethod
+            def write(cls, path, data, rate):
+                Path(path).write_bytes(b"cache")
+                cls.files[path] = (data, rate)
+
+        class Pipeline:
+            def __init__(self):
+                self.voices = []
+
+            def __call__(self, _text, voice):
+                self.voices.append(voice)
+                return [(None, None, [voice])]
+
+        with tempfile.TemporaryDirectory() as directory:
+            synthesizer = KokoroSynthesizer(work_dir=directory)
+            synthesizer._numpy = Numpy
+            synthesizer._soundfile = Soundfile
+            synthesizer._pipeline = Pipeline()
+            synthesizer._section_audio("Same text")
+            synthesizer.voice = "af_bella"
+            synthesizer._section_audio("Same text")
+            self.assertEqual(synthesizer._pipeline.voices, ["af_heart", "af_bella"])
 
 
 class PodcastBuildTests(unittest.TestCase):

@@ -72,7 +72,9 @@ class KokoroSynthesizer:
         self._ensure_runtime()
         cache = None
         if self.work_dir is not None:
-            digest = hashlib.sha1(text.encode("utf-8")).hexdigest()
+            digest = hashlib.sha1(
+                f"kokoro-82m\0f32\0{self.sample_rate}\0{self.voice}\0{text}".encode("utf-8")
+            ).hexdigest()
             cache = self.work_dir / f"{digest}.wav"
             if cache.is_file():
                 data, rate = self._soundfile.read(str(cache), dtype="float32")

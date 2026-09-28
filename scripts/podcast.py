@@ -32,7 +32,6 @@ CONTENT_CLASSES = frozenset({"topic", "project", "arxiv-math"})
 MAX_CONNECTED_TAGS = 12
 MAX_FOCUS_TAGS = 24
 MATERIAL_FACTOR = 1.05
-TARGET_TOLERANCE = 0.95
 
 
 class PodcastError(ValueError):
@@ -382,14 +381,19 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
 
     work_audio = audio_path.with_suffix(".mp3.part")
     target_seconds = target_minutes * 60
+    outro_words = _words(script["outro"])
     used_notes = []
     synthesizer.start(work_audio)
     try:
         synthesizer.add(script["intro"])
         for note in script["notes"]:
-            if used_notes and synthesizer.duration_seconds >= target_seconds * TARGET_TOLERANCE:
+            remaining_words = int(
+                (target_seconds - synthesizer.duration_seconds - outro_words / wpm * 60)
+                * wpm / 60
+            )
+            if remaining_words <= 0:
                 break
-            synthesizer.add(note["speak"])
+            synthesizer.add(" ".join(note["speak"].split()[:remaining_words]))
             used_notes.append(note)
         synthesizer.add(script["outro"])
         duration_seconds = round(synthesizer.duration_seconds, 1)
