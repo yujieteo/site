@@ -6,6 +6,7 @@ searchable resource and paper-link collections, and a filterable blog.
 ## Project layout
 
 ```text
+.github/workflows/   GitHub Actions CI
 data/about/          About-page YAML
 data/blog/           Markdown posts with YAML frontmatter
 data/notes.md        Append-only daily notes
@@ -13,16 +14,21 @@ data/cv/             Site name, subtitle, and biography
 data/paper-links/    Paper-link YAML
 data/podcasts/       Podcast episode metadata and audio
 data/resources/      General resource YAML
+data/visuals/        Visualization metadata (assets come from the visuals repo)
 schema/              JSON Schemas for YAML data
 scripts/build.py     Static-site generator
 scripts/kokoro_tts.py
                      Local Kokoro speech synthesis for podcast episodes
+scripts/notes.py     Daily-note search and retrieval
 scripts/parse_notes.py
                      Plain-text link notes to YAML converter
 scripts/podcast.py   Podcast episode planner and generator
+scripts/published_corpus.py
+                     Published Corpus projection used by the build
 scripts/validate.py  YAML/schema validation
 static/              Source CSS and browser JavaScript
 templates/           Shared HTML templates
+tests/               Python (unittest) and Node tests
 site/                Generated site
 ```
 
@@ -32,20 +38,43 @@ WebMCP tools. It is never edited by hand.
 
 ## Build
 
+The build needs two checkouts: this repository and the public
+[`visuals`](https://github.com/yujieteo/visuals) repository that holds the
+HTML and data for each visualization. `scripts/build.py` looks for the visuals
+checkout at `../visuals`, `../../visuals`, then `../../tmp/visuals`; set
+`VISUALS_REPO` to its path when it lives anywhere else. Without it the build
+and the Python tests fail with `Visuals repository not found`.
+
 ```sh
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
+export VISUALS_REPO=../visuals   # omit when the sibling checkout already exists
 .venv/bin/python scripts/validate.py
 .venv/bin/python scripts/build.py
 open site/index.html
 ```
 
-Run the dependency-free tests with:
+The build recreates the generated `site/` directory from the sources, so a
+successful run leaves no Git diff. Run the tests with Python and Node:
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
 node --test tests/corpus.test.mjs
 ```
+
+Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
+`package.json` or installed packages. The Python tests copy the repository to a
+temporary directory and rebuild the site there, so they also read
+`VISUALS_REPO`.
+
+## Continuous integration
+
+`.github/workflows/ci.yml` runs on pushes to `main` and on every pull request.
+It checks out this repository and the pinned `visuals` revision side by side,
+installs `requirements.txt`, then runs validation, the build, a check that the
+committed `site/` matches its sources, the Python tests, and the Node tests.
+The pinned visuals revision is the one whose output matches the committed
+site; update the `ref` in the workflow when a visualization is republished.
 
 ## WebMCP
 
@@ -116,6 +145,11 @@ uv pip install -r requirements.txt -r requirements-podcast.txt
 .venv/bin/python scripts/podcast.py plan --target-minutes 30
 .venv/bin/python scripts/podcast.py generate --target-minutes 30
 ```
+
+`uv` is a convenience, not a requirement; `python3.13 -m venv .venv` followed
+by `.venv/bin/pip install -r requirements.txt -r requirements-podcast.txt`
+produces the same environment. The Kokoro packages are only needed to render
+audio; validation, the build, and the tests run with `requirements.txt` alone.
 
 Each episode writes metadata to `data/podcasts/<date>-<focus>.yaml` and MP3
 audio to `data/podcasts/audio/<date>-<focus>.mp3`. The build copies the audio
