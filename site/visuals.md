@@ -21,6 +21,13 @@ A tappable 2 by 2 for choosing a low-cost experiment that can open a meaningful 
 - Fetched: 2026-09-28
 - WebMCP tools: get_data, get_metadata, query
 
+## How much of the early FPL points are repeatable?
+Several of the top FPL scorers after Gameweek 5 of 2026/27 are running well above their expected goal involvement, so their points are the least likely to repeat.
+- HTML: https://teoyujie.org/visuals/fpl-expected-goals/index.html
+- Data: https://teoyujie.org/visuals/fpl-expected-goals/data.json
+- Fetched: 2026-09-28
+- WebMCP tools: get_data, get_metadata, query
+
 ## The computing salary premium widened
 Computing-titled degrees moved from 0.6% below the yearly median salary in 2013 to 36.4% above it in 2024.
 - HTML: https://teoyujie.org/visuals/graduate-employment-survey/index.html
