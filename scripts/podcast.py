@@ -10,7 +10,6 @@ stable episode contract is documented in
 
 import argparse
 import datetime
-import json
 import os
 import re
 import sys
@@ -96,7 +95,8 @@ def _union_words(index, focus):
     return total
 
 
-def choose_focus(index, note_tags, previous=()):
+def choose_focus(index, note_tags, target_minutes=DEFAULT_TARGET_MINUTES,
+                 previous=(), wpm=DEFAULT_WPM):
     """Pick a focus led by the most common useful tag and its neighbours.
 
     The seed is the most common content tag that has not led a previous
@@ -119,7 +119,7 @@ def choose_focus(index, note_tags, previous=()):
         for tag, notes in index.items()
     }
 
-    material_target = DEFAULT_TARGET_MINUTES * DEFAULT_WPM * MATERIAL_FACTOR
+    material_target = target_minutes * wpm * MATERIAL_FACTOR
     while len(focus) < MAX_CONNECTED_TAGS:
         current_words = _union_words(index, focus)
         if current_words >= material_target:
@@ -239,14 +239,19 @@ def build_script(plan, site_name):
             if position == 0
             else f"Next, notes on {display_tag}."
         )
-        for note_index, note in enumerate(section["notes"]):
-            lead = f"{transition} " if note_index == 0 else ""
+        first_note = True
+        for note in section["notes"]:
+            spoken = speech_text(note["content"])
+            if not spoken:
+                continue
+            lead = f"{transition} " if first_note else ""
             notes.append({
                 "note_id": note["id"],
                 "date": note["date"],
                 "tag": section["tag"],
-                "speak": lead + speech_text(note["content"]),
+                "speak": lead + spoken,
             })
+            first_note = False
     outro = (
         "That concludes this episode. These notes and their source links are published "
         "on the site, and the next episode will take up another focus from the notes. "
@@ -255,8 +260,11 @@ def build_script(plan, site_name):
     return {"intro": intro, "notes": notes, "outro": outro}
 
 
-def plan_episode(document, registry, episode_date=None, previous=(), today=None):
+def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
+                 episode_date=None, previous=(), wpm=DEFAULT_WPM, today=None):
     """Select the next episode's date, focus tags, notes, and spoken script."""
+    if target_minutes <= 0 or target_minutes > 240:
+        raise PodcastError("--target-minutes must be greater than 0 and at most 240")
     if episode_date is None:
         episode_date = today or datetime.datetime.now(SITE_TIMEZONE).date()
     elif isinstance(episode_date, str):
@@ -268,7 +276,7 @@ def plan_episode(document, registry, episode_date=None, previous=(), today=None)
         raise PodcastError("episode date must be a date or YYYY-MM-DD string")
 
     index, note_tags = index_notes(document, registry)
-    focus = choose_focus(index, note_tags, previous)
+    focus = choose_focus(index, note_tags, target_minutes, previous, wpm)
     used_note_ids = {
         note_id
         for episode in previous
@@ -284,7 +292,7 @@ def plan_episode(document, registry, episode_date=None, previous=(), today=None)
         "title": f"Notes on {_human_join([_display_tag(tag) for tag in title_tags])}",
         "focus_tags": list(focus),
         "sections": sections,
-        "estimated_seconds": _union_words(index, focus) / DEFAULT_WPM * 60,
+        "estimated_seconds": _union_words(index, focus) / wpm * 60,
         "candidate_notes": sum(len(section["notes"]) for section in sections),
     }
 
@@ -334,8 +342,9 @@ def _summarize(plan, used_notes):
     )
 
 
-def generate_episode(episode_date=None, voice=DEFAULT_VOICE, synthesizer=None,
-                     root=ROOT, today=None):
+def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
+                     voice=DEFAULT_VOICE, synthesizer=None, root=ROOT,
+                     wpm=DEFAULT_WPM, today=None):
     """Render one episode and write its metadata and MP3 under ``root``."""
     notes_path = root / "data" / "notes.md"
     tags_path = root / "data" / "note-tags.json"
@@ -344,8 +353,10 @@ def generate_episode(episode_date=None, voice=DEFAULT_VOICE, synthesizer=None,
     plan = plan_episode(
         document,
         registry,
+        target_minutes=target_minutes,
         episode_date=episode_date,
         previous=previous,
+        wpm=wpm,
         today=today,
     )
 
@@ -357,21 +368,20 @@ def generate_episode(episode_date=None, voice=DEFAULT_VOICE, synthesizer=None,
         )
 
     script = build_script(plan, load_site_name(root))
+    if not script["notes"]:
+        raise PodcastError("data/notes.md has no speakable notes for this episode")
     if synthesizer is None:
         from kokoro_tts import KokoroSynthesizer
 
-        synthesizer = KokoroSynthesizer(
-            voice=voice,
-            work_dir=root / "data" / "podcasts" / ".work" / plan["id"],
-        )
+        synthesizer = KokoroSynthesizer(voice=voice)
 
     work_audio = audio_path.with_suffix(".mp3.part")
-    target_seconds = DEFAULT_TARGET_MINUTES * 60
+    target_seconds = target_minutes * 60
     outro_words = _words(script["outro"])
     used_notes = []
     synthesizer.start(work_audio)
     try:
-        seconds_per_word = 60 / DEFAULT_WPM
+        seconds_per_word = 60 / wpm
 
         def add_segment(text):
             nonlocal seconds_per_word
@@ -450,11 +460,14 @@ def _parser():
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     def add_planning_arguments(subparser):
+        subparser.add_argument(
+            "--target-minutes", type=float, default=DEFAULT_TARGET_MINUTES,
+            help=f"target spoken duration (default {DEFAULT_TARGET_MINUTES})",
+        )
         subparser.add_argument("--date", dest="episode_date", help="episode date (YYYY-MM-DD)")
 
     plan = subparsers.add_parser("plan", help="select the next episode without rendering audio")
     add_planning_arguments(plan)
-    plan.add_argument("--json", action="store_true", help="print the plan as JSON")
 
     generate = subparsers.add_parser("generate", help="render an episode with local Kokoro")
     add_planning_arguments(generate)
@@ -473,16 +486,15 @@ def main(argv=None):
             plan = plan_episode(
                 document,
                 registry,
+                target_minutes=args.target_minutes,
                 episode_date=args.episode_date,
                 previous=load_episodes(ROOT),
             )
             summary = _plan_summary(plan)
-            if args.json:
-                print(json.dumps(summary, ensure_ascii=False, indent=2))
-            else:
-                _print_plan(summary)
+            _print_plan(summary)
             return 0
         metadata = generate_episode(
+            target_minutes=args.target_minutes,
             episode_date=args.episode_date,
             voice=args.voice,
         )
@@ -502,3 +514,5 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
+    if target_minutes <= 0 or target_minutes > 240:
+        raise PodcastError("--target-minutes must be greater than 0 and at most 240")

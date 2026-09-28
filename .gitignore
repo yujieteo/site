@@ -1,7 +1,6 @@
 __pycache__/
 *.py[cod]
 .venv/
-data/podcasts/.work/
 .pytest_cache/
 .firecrawl/
 .DS_Store

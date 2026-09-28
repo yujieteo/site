@@ -54,27 +54,6 @@ class PublishedCorpusTests(unittest.TestCase):
         resource = next(record for record in corpus["records"] if record["kind"] == "resource")
         self.assertNotIn("private", resource)
 
-    def test_podcast_records_publish_audio_metadata(self):
-        cv, about, resources, papers, posts, notes = self.fixtures()
-        podcasts = [{
-            "id": "2026-09-27-agents",
-            "title": "Notes on agents",
-            "date": "2026-09-27",
-            "summary": "Condensed notes on agents.",
-            "focus_tags": ["agents"],
-            "duration_seconds": 1800.0,
-            "audio": "audio/2026-09-27-agents.mp3",
-        }]
-        corpus = build_published_corpus(
-            cv, about, resources, papers, posts, notes, (), podcasts
-        )
-        record = next(item for item in corpus["records"] if item["kind"] == "podcast")
-        self.assertEqual(record["id"], "podcast:2026-09-27-agents")
-        self.assertEqual(record["url"], "podcast/2026-09-27-agents.html")
-        self.assertEqual(record["audioUrl"], "podcast/audio/2026-09-27-agents.mp3")
-        self.assertEqual(record["durationSeconds"], 1800.0)
-        self.assertEqual(record["tags"], ["agents"])
-
     def test_every_record_has_a_unique_id_and_revision(self):
         corpus = build_published_corpus(*self.fixtures())
         ids = [record["id"] for record in corpus["records"]]

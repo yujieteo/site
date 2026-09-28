@@ -23,7 +23,6 @@ from podcast import (
     plan_episode,
     speech_text,
 )
-from kokoro_tts import KokoroSynthesizer
 
 
 def make_registry(extra=()):
@@ -202,7 +201,7 @@ class ScriptTests(unittest.TestCase):
         for arguments in (
             ["generate", "--force"],
             ["plan", "--seed", "agents"],
-            ["plan", "--target-minutes", "1"],
+            ["plan", "--json"],
         ):
             result = subprocess.run(
                 [sys.executable, "scripts/podcast.py", *arguments],
@@ -225,6 +224,19 @@ class ScriptTests(unittest.TestCase):
         self.assertNotIn("`", spoken)
         self.assertNotIn("**", spoken)
         self.assertNotIn("\\to", spoken)
+
+    def test_build_script_skips_notes_without_speech(self):
+        plan = {
+            "display_date": "28 September 2026",
+            "focus_tags": ["agents"],
+            "sections": [{"tag": "agents", "notes": [
+                {"id": "note:url", "date": "2026-09-27", "content": "https://example.com"},
+                {"id": "note:words", "date": "2026-09-27", "content": "Useful words"},
+            ]}],
+        }
+        script = build_script(plan, "Test Site")
+        self.assertEqual([note["note_id"] for note in script["notes"]], ["note:words"])
+        self.assertTrue(script["notes"][0]["speak"].startswith("First, notes on agents."))
 
     def test_group_notes_assigns_each_note_once(self):
         document = make_document([
@@ -266,13 +278,14 @@ class GenerateTests(unittest.TestCase):
             )
             synthesizer = FakeSynthesizer(seconds_per_word=0.5)
             metadata = generate_episode(
+                target_minutes=1,
                 episode_date="2026-09-28",
                 synthesizer=synthesizer,
                 root=root,
             )
             self.assertEqual(len(metadata["notes"]), 1)
             self.assertLess(len(synthesizer.spoken[1].split()), 8000)
-            self.assertLessEqual(metadata["duration_seconds"], 1800)
+            self.assertLessEqual(metadata["duration_seconds"], 60)
 
     def test_generate_writes_metadata_audio_and_stops_near_target(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -280,6 +293,7 @@ class GenerateTests(unittest.TestCase):
             write_notes(root)
             synthesizer = FakeSynthesizer(seconds_per_word=0.5)
             metadata = generate_episode(
+                target_minutes=1,
                 episode_date="2026-09-28",
                 synthesizer=synthesizer,
                 root=root,
@@ -287,7 +301,7 @@ class GenerateTests(unittest.TestCase):
             )
             self.assertTrue(metadata["id"].startswith("2026-09-28-"))
             self.assertEqual(metadata["focus_tags"][0], "agents")
-            self.assertLessEqual(metadata["duration_seconds"], 1800)
+            self.assertLessEqual(metadata["duration_seconds"], 60)
             self.assertLess(len(metadata["notes"]), 31)
             self.assertTrue(metadata["notes"])
 
@@ -315,58 +329,24 @@ class GenerateTests(unittest.TestCase):
                 encoding="utf-8",
             )
             metadata = generate_episode(
+                target_minutes=1,
                 episode_date="2026-09-28",
                 synthesizer=FakeSynthesizer(seconds_per_word=0.5),
                 root=root,
             )
-            self.assertLess(metadata["duration_seconds"], 1800)
+            self.assertLess(metadata["duration_seconds"], 60)
             self.assertTrue((root / "data" / "podcasts" / f"{metadata['id']}.yaml").is_file())
 
-
-class CacheTests(unittest.TestCase):
-    def test_cache_does_not_cross_voices(self):
-        class Numpy:
-            @staticmethod
-            def asarray(data):
-                return list(data)
-
-            @staticmethod
-            def concatenate(parts):
-                return [item for part in parts for item in part]
-
-            @staticmethod
-            def zeros(_size, dtype=None):
-                return []
-
-        class Soundfile:
-            files = {}
-
-            @classmethod
-            def read(cls, path, dtype=None):
-                return cls.files[path]
-
-            @classmethod
-            def write(cls, path, data, rate):
-                Path(path).write_bytes(b"cache")
-                cls.files[path] = (data, rate)
-
-        class Pipeline:
-            def __init__(self):
-                self.voices = []
-
-            def __call__(self, _text, voice):
-                self.voices.append(voice)
-                return [(None, None, [voice])]
-
+    def test_generate_rejects_notes_without_speech(self):
         with tempfile.TemporaryDirectory() as directory:
-            synthesizer = KokoroSynthesizer(work_dir=directory)
-            synthesizer._numpy = Numpy
-            synthesizer._soundfile = Soundfile
-            synthesizer._pipeline = Pipeline()
-            synthesizer._section_audio("Same text")
-            synthesizer.voice = "af_bella"
-            synthesizer._section_audio("Same text")
-            self.assertEqual(synthesizer._pipeline.voices, ["af_heart", "af_bella"])
+            root = Path(directory)
+            write_notes(root)
+            (root / "data" / "notes.md").write_text(
+                "---\ntitle: Notes\n---\n\n## 2026-09-27\n\nhttps://example.com #agents\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(PodcastError, "no speakable notes"):
+                generate_episode(target_minutes=1, episode_date="2026-09-28", root=root)
 
 
 class PodcastBuildTests(unittest.TestCase):
@@ -422,11 +402,6 @@ class PodcastBuildTests(unittest.TestCase):
                 (project / "site" / "podcast" / "audio" / f"{episode_id}.mp3").read_bytes(),
                 b"fake-audio",
             )
-            corpus = json.loads((project / "site" / "corpus.json").read_text(encoding="utf-8"))
-            record = next(item for item in corpus["records"] if item["kind"] == "podcast")
-            self.assertEqual(record["id"], f"podcast:{episode_id}")
-            self.assertEqual(record["audioUrl"], f"podcast/audio/{episode_id}.mp3")
-            self.assertEqual(record["durationSeconds"], 1800.0)
 
 
 if __name__ == "__main__":

@@ -7,8 +7,6 @@ runtime. ``scripts/podcast.py`` depends on the small interface it exposes
 and metadata code stays importable without Kokoro installed.
 """
 
-import hashlib
-import shutil
 from pathlib import Path
 
 DEFAULT_SAMPLE_RATE = 24000
@@ -39,19 +37,14 @@ def _load_runtime():
 class KokoroSynthesizer:
     """Stream synthesized sections into a single mono MP3 file.
 
-    Sections are cached as WAV files under ``work_dir`` so an interrupted
-    episode can resume without re-synthesizing finished sections. Call
-    ``start`` with a temporary output path, ``add`` one speaker section at a
-    time, then ``finish`` to write the MP3 and clear the cache.
+    Call ``start`` with a temporary output path, ``add`` one speaker section
+    at a time, then ``finish`` to write the MP3.
     """
 
     sample_rate = DEFAULT_SAMPLE_RATE
 
-    def __init__(self, voice=DEFAULT_VOICE, work_dir=None):
+    def __init__(self, voice=DEFAULT_VOICE):
         self.voice = voice
-        self.work_dir = Path(work_dir) if work_dir else None
-        if self.work_dir is not None:
-            self.work_dir.mkdir(parents=True, exist_ok=True)
         self._numpy = None
         self._soundfile = None
         self._pipeline = None
@@ -70,15 +63,6 @@ class KokoroSynthesizer:
 
     def _section_audio(self, text):
         self._ensure_runtime()
-        cache = None
-        if self.work_dir is not None:
-            digest = hashlib.sha1(
-                f"kokoro-82m\0f32\0{self.sample_rate}\0{self.voice}\0{text}".encode("utf-8")
-            ).hexdigest()
-            cache = self.work_dir / f"{digest}.wav"
-            if cache.is_file():
-                data, rate = self._soundfile.read(str(cache), dtype="float32")
-                return self._numpy.asarray(data), int(rate)
         chunks = [
             self._numpy.asarray(audio)
             for _, _, audio in self._pipeline(text, voice=self.voice)
@@ -87,8 +71,6 @@ class KokoroSynthesizer:
             data = self._numpy.concatenate(chunks)
         else:
             data = self._numpy.zeros(0, dtype="float32")
-        if cache is not None:
-            self._soundfile.write(str(cache), data, self.sample_rate)
         return data, self.sample_rate
 
     def start(self, path):
@@ -136,8 +118,6 @@ class KokoroSynthesizer:
                 handle.write(part)
         self._parts = []
         self._encoder = None
-        if self.work_dir is not None and self.work_dir.is_dir():
-            shutil.rmtree(self.work_dir, ignore_errors=True)
 
     def abort(self):
         self._parts = []

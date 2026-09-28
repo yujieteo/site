@@ -13,7 +13,7 @@ validate, build, commit, push, deploy, and verify.
 - `data/notes.md` is the sole content source; `data/note-tags.json` holds the
   canonical tags. Never edit generated `site/` files by hand.
 - `data/cv/cv.yaml` supplies the site name spoken in the introduction.
-- Optional overrides: episode date and voice.
+- Optional overrides: episode date, target minutes, and voice.
 
 ## Focus selection
 
@@ -27,9 +27,9 @@ validate, build, commit, push, deploy, and verify.
   guaranteeing enough material when a subject is small.
 - Notes are grouped under the first focus tag they match, with notes not used
   by an earlier episode first and then newest first.
-- Rendering reserves the ending from measured speech rates so it never exceeds
-  30 minutes. A focus with little material publishes shorter rather than adding
-  filler.
+- The target duration is an aim, not a minimum. Rendering reserves the ending
+  from measured speech rates so it never exceeds the target; a focus with little
+  material publishes shorter rather than adding filler.
 
 ## Local synthesis
 
@@ -43,9 +43,7 @@ validate, build, commit, push, deploy, and verify.
   uv pip install -r requirements.txt -r requirements-podcast.txt
   ```
 
-  The first synthesis downloads the Kokoro model. Sections are cached under
-  the gitignored `data/podcasts/.work/<episode-id>/`, so an interrupted
-  generation resumes instead of re-rendering finished sections.
+  The first synthesis downloads the Kokoro model.
 
 ## Output contract
 
@@ -70,21 +68,19 @@ inventing new ones.
   with a player, then the dated list), `site/podcast/<episode-id>.html` (player,
   summary, focus tags, and links to the source note dates), and
   `site/podcast/audio/<episode-id>.mp3` (byte copy).
-- The build also adds a `podcast:<episode-id>` record to `site/corpus.json`
-  with `url`, `date`, `tags` (the focus tags), `summary`, `audioUrl`, and
-  `durationSeconds`.
 
 ## Generate
 
 ```sh
-.venv/bin/python scripts/podcast.py plan
-.venv/bin/python scripts/podcast.py generate
+.venv/bin/python scripts/podcast.py plan --target-minutes 30
+.venv/bin/python scripts/podcast.py generate --target-minutes 30
 ```
 
 - `plan` selects the episode without rendering audio; review the focus and
   candidate counts before committing to a long render.
-- `generate` writes the metadata and MP3. Useful flags: `--date YYYY-MM-DD`
-  sets the episode date and `--voice <id>` changes the Kokoro voice.
+- `generate` writes the metadata and MP3. Useful flags: `--target-minutes N`
+  sets the duration aim, `--date YYYY-MM-DD` sets the episode date, and
+  `--voice <id>` changes the Kokoro voice.
 - Check the printed duration and listen to a sample when the result matters.
 
 ## Publish
@@ -92,24 +88,23 @@ inventing new ones.
 1. Run Stage A of [verification](../verify.md#stage-a-pre-deploy). Do not
    deploy after a failure.
 2. Confirm `site/podcast/index.html` features the new episode, the episode
-   page and copied MP3 exist, `site/corpus.json` has the podcast record, and
-   the post-build diff contains no unrelated churn.
-3. Commit `data/podcasts/**`, the changed `site/podcast/**` files,
-   `site/corpus.json`, and any other demonstrably required generated file
-   (navigation and `site/llms.txt` change only when the build changed them).
+   page and copied MP3 exist, and the post-build diff contains no unrelated
+   churn.
+3. Commit `data/podcasts/**`, the changed `site/podcast/**` files, and any
+   other demonstrably required generated file (navigation and `site/llms.txt`
+   change only when the build changed them).
 4. Push the branch requested by the user. Site publishing normally uses
    `main`; never rewrite published history.
 5. Resolve the SCP destination from secure runtime configuration. Deploy the
-   corpus first, then the podcast index, episode pages, and audio, using unique
-   temporary names, checksum verification, preserved prior files, and atomic
-   renames as in [Deploy generated files](deploy.md). Include the other
-   changed pages from the reviewed diff. Never write deployment details into
-   the repository.
+   podcast index, episode pages, and audio using unique temporary names,
+   checksum verification, preserved prior files, and atomic renames as in
+   [Deploy generated files](deploy.md). Include the other changed pages from
+   the reviewed diff. Never write deployment details into the repository.
 6. Run Stage B of [verification](../verify.md#stage-b-post-deploy). Fetch the
-   deployed podcast index, episode page, MP3, and `corpus.json` over HTTPS and
-   require HTTP 200 responses with the expected episode. A 403 means the file
-   is not web-readable. Restore every preserved file if a deployed artifact is
-   corrupt or incomplete.
+   deployed podcast index, episode page, and MP3 over HTTPS and require HTTP
+   200 responses with the expected episode. A 403 means the file is not
+   web-readable. Restore every preserved file if a deployed artifact is corrupt
+   or incomplete.
 
 Principles: [No secrets in the repository](../principles/no-secrets-in-repo.md),
 [Atomic safe deploy](../principles/atomic-safe-deploy.md),
