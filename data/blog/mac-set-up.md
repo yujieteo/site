@@ -501,6 +501,24 @@ gh repo clone yujieteo/skills
 Wiring this into Codex and Claude Code is still planned, not part of this
 setup yet.
 
+### firstmate
+
+firstmate is the agent distro for running a crew of coding agents, by the
+same author as no-mistakes. Clone it and launch a harness inside it:
+
+```
+cd "$HOME/src"
+gh repo clone kunchenguid/firstmate
+cd firstmate
+pi
+```
+
+Approve the project trust prompt on first launch so its Pi extensions load.
+It ships user-invocable skills under `.agents/skills/` — `/afk`, `/quiet`,
+`/ahoy`, `/bearings`, `/updatefirstmate`, and `/stow` — plus agent-only
+reference skills and a standalone public `skills/stow`. Workers load those
+alongside the user-level skills under `~/.agents/skills/`.
+
 ## Work
 
 ```
