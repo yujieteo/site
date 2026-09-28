@@ -27,9 +27,8 @@ validate, build, commit, push, deploy, and verify.
   guaranteeing enough material when a subject is small.
 - Notes are grouped under the first focus tag they match, with notes not used
   by an earlier episode first and then newest first.
-- Rendering stops when the audio reaches about 95% of the target, so a
-  30-minute target yields a 28-30 minute episode. A focus with very little
-  material yields a shorter episode rather than an unrelated filler segment.
+- Rendering publishes only a 28-30 minute episode; insufficient material
+  fails without publishing rather than adding filler.
 
 ## Local synthesis
 
@@ -85,9 +84,8 @@ inventing new ones.
   candidate counts before committing to a long render.
 - `generate` writes the metadata and MP3. Useful flags: `--seed <tag>` forces
   the focus tag, `--date YYYY-MM-DD` sets the episode date, `--voice <id>`
-  changes the Kokoro voice, and `--force` regenerates an existing episode.
+  changes the Kokoro voice.
 - Check the printed duration and listen to a sample when the result matters.
-  Regenerate with `--force` only when the user wants a different episode.
 
 ## Publish
 

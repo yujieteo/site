@@ -273,7 +273,8 @@ class GenerateTests(unittest.TestCase):
             )
             self.assertEqual(len(metadata["notes"]), 1)
             self.assertLess(len(synthesizer.spoken[1].split()), 8000)
-            self.assertLess(metadata["duration_seconds"], 90)
+            self.assertGreaterEqual(metadata["duration_seconds"], 56)
+            self.assertLessEqual(metadata["duration_seconds"], 60)
 
     def test_generate_writes_metadata_audio_and_stops_near_target(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -289,7 +290,8 @@ class GenerateTests(unittest.TestCase):
             )
             self.assertTrue(metadata["id"].startswith("2026-09-28-"))
             self.assertEqual(metadata["focus_tags"][0], "agents")
-            self.assertGreaterEqual(metadata["duration_seconds"], 57)
+            self.assertGreaterEqual(metadata["duration_seconds"], 56)
+            self.assertLessEqual(metadata["duration_seconds"], 60)
             self.assertLess(len(metadata["notes"]), 31)
             self.assertTrue(metadata["notes"])
 
@@ -314,15 +316,25 @@ class GenerateTests(unittest.TestCase):
                     synthesizer=FakeSynthesizer(),
                     root=root,
                 )
-            regenerated = generate_episode(
-                target_minutes=1,
-                episode_date="2026-09-28",
-                seed_tag="agents",
-                synthesizer=FakeSynthesizer(),
-                root=root,
-                force=True,
+    def test_generate_rejects_insufficient_material(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_notes(root)
+            (root / "data" / "notes.md").write_text(
+                "---\ntitle: Notes\n---\n\n## 2026-09-27\n\n"
+                + wordy("Short note", 40)
+                + " #agents\n",
+                encoding="utf-8",
             )
-            self.assertEqual(regenerated["id"], metadata["id"])
+            with self.assertRaisesRegex(PodcastError, "insufficient material"):
+                generate_episode(
+                    target_minutes=1,
+                    episode_date="2026-09-28",
+                    synthesizer=FakeSynthesizer(seconds_per_word=0.5),
+                    root=root,
+                )
+            self.assertFalse(next((root / "data" / "podcasts").glob("*.yaml"), None))
+            self.assertFalse(next((root / "data" / "podcasts" / "audio").glob("*.mp3"), None))
 
 
 class CacheTests(unittest.TestCase):

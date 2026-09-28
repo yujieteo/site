@@ -32,6 +32,7 @@ CONTENT_CLASSES = frozenset({"topic", "project", "arxiv-math"})
 MAX_CONNECTED_TAGS = 12
 MAX_FOCUS_TAGS = 24
 MATERIAL_FACTOR = 1.05
+MIN_DURATION_RATIO = 28 / 30
 
 
 class PodcastError(ValueError):
@@ -345,8 +346,8 @@ def _summarize(plan, used_notes):
 
 
 def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
-                     seed_tag=None, voice=DEFAULT_VOICE, force=False,
-                     synthesizer=None, root=ROOT, wpm=DEFAULT_WPM, today=None):
+                     seed_tag=None, voice=DEFAULT_VOICE, synthesizer=None,
+                     root=ROOT, wpm=DEFAULT_WPM, today=None):
     """Render one episode and write its metadata and MP3 under ``root``."""
     notes_path = root / "data" / "notes.md"
     tags_path = root / "data" / "note-tags.json"
@@ -365,9 +366,9 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
 
     metadata_path = root / "data" / "podcasts" / f"{plan['id']}.yaml"
     audio_path = root / "data" / "podcasts" / "audio" / f"{plan['id']}.mp3"
-    if not force and (metadata_path.exists() or audio_path.exists()):
+    if metadata_path.exists() or audio_path.exists():
         raise PodcastError(
-            f"episode {plan['id']} already exists; pass --force to regenerate it"
+            f"episode {plan['id']} already exists"
         )
 
     script = build_script(plan, load_site_name(root))
@@ -381,22 +382,37 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
 
     work_audio = audio_path.with_suffix(".mp3.part")
     target_seconds = target_minutes * 60
+    minimum_seconds = target_seconds * MIN_DURATION_RATIO
     outro_words = _words(script["outro"])
     used_notes = []
     synthesizer.start(work_audio)
     try:
-        synthesizer.add(script["intro"])
+        seconds_per_word = 60 / wpm
+
+        def add_segment(text):
+            nonlocal seconds_per_word
+            start = synthesizer.duration_seconds
+            synthesizer.add(text)
+            elapsed = synthesizer.duration_seconds - start
+            if synthesizer.duration_seconds > target_seconds:
+                raise PodcastError("selected material exceeds the target duration")
+            if _words(text):
+                seconds_per_word = max(seconds_per_word, elapsed / _words(text) * 1.05)
+
+        add_segment(script["intro"])
         for note in script["notes"]:
             remaining_words = int(
-                (target_seconds - synthesizer.duration_seconds - outro_words / wpm * 60)
-                * wpm / 60
+                (target_seconds - synthesizer.duration_seconds - outro_words * seconds_per_word)
+                / seconds_per_word
             )
             if remaining_words <= 0:
                 break
-            synthesizer.add(" ".join(note["speak"].split()[:remaining_words]))
+            add_segment(" ".join(note["speak"].split()[:remaining_words]))
             used_notes.append(note)
-        synthesizer.add(script["outro"])
-        duration_seconds = round(synthesizer.duration_seconds, 1)
+        add_segment(script["outro"])
+        duration_seconds = synthesizer.duration_seconds
+        if duration_seconds < minimum_seconds:
+            raise PodcastError("insufficient material for the target duration")
         synthesizer.finish()
     except BaseException:
         synthesizer.abort()
@@ -410,7 +426,7 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
         "summary": _summarize(plan, used_notes),
         "focus_tags": plan["focus_tags"],
         "notes": [note["note_id"] for note in used_notes],
-        "duration_seconds": duration_seconds,
+        "duration_seconds": round(duration_seconds, 1),
         "voice": voice,
         "audio": f"audio/{plan['id']}.mp3",
     }
@@ -466,7 +482,6 @@ def _parser():
         "--voice", default=DEFAULT_VOICE,
         help=f"Kokoro voice id (default {DEFAULT_VOICE})",
     )
-    generate.add_argument("--force", action="store_true", help="overwrite an existing episode")
     return parser
 
 
@@ -494,7 +509,6 @@ def main(argv=None):
             episode_date=args.episode_date,
             seed_tag=args.seed_tag,
             voice=args.voice,
-            force=args.force,
         )
     except (PodcastError, NotesError) as exc:
         diagnostics = getattr(exc, "diagnostics", None) or [str(exc)]
