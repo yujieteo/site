@@ -43,7 +43,10 @@ validate, build, commit, push, deploy, and verify.
   uv pip install -r requirements.txt -r requirements-podcast.txt
   ```
 
-  The first synthesis downloads the Kokoro model.
+  `uv` is optional; `python3.13 -m venv .venv` and `.venv/bin/pip install -r
+  requirements.txt -r requirements-podcast.txt` create the same environment.
+  The first synthesis downloads the Kokoro model. Stage A also needs the
+  separate `visuals` checkout (see the [build section](../../README.md#build)).
 
 ## Output contract
 

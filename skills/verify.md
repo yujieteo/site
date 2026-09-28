@@ -10,7 +10,9 @@ Use `PASS` or `FAIL` for `status`. Report each stage separately. Stop after a fa
 
 ## Stage A: pre-deploy
 
-Run these commands from the repository root.
+Run these commands from the repository root. The build and the Python tests
+need the separate `visuals` checkout described in the [README](../README.md#build);
+set `VISUALS_REPO` when it is not at a supported sibling path.
 
 ```sh
 .venv/bin/python scripts/validate.py
@@ -19,7 +21,9 @@ Run these commands from the repository root.
 node --test tests/corpus.test.mjs
 ```
 
-All four commands must exit successfully. Review the generated diff after the build. Do not deploy after a failure.
+All four commands must exit successfully. The build recreates `site/` from the
+sources, so a clean run leaves no Git diff; review that diff and stop if it
+contains changes beyond the intended sources. Do not deploy after a failure.
 
 ## Stage B: post-deploy
 
