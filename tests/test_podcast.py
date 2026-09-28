@@ -209,6 +209,59 @@ class FocusTests(unittest.TestCase):
         self.assertIn("tools", focus)
         self.assertLess(focus.index("tools"), focus.index("programming"))
 
+    def test_explicit_focus_is_used_as_given_and_never_expanded(self):
+        document = make_document([
+            ("2026-09-27", [
+                ("note:a", wordy("agents"), ["agents"]),
+                ("note:b", wordy("tools"), ["tools", "agents"]),
+                ("note:c", wordy("programming"), ["programming"]),
+            ]),
+        ])
+        index, note_tags = index_notes(document, make_registry())
+        focus = choose_focus(index, note_tags, focus_tags=["programming", "tools", "programming"])
+        self.assertEqual(focus, ["programming", "tools"])
+
+    def test_explicit_focus_rejects_workflow_and_unknown_tags(self):
+        document = make_document([
+            ("2026-09-27", [("note:a", "One", ["agents", "todo"])]),
+        ])
+        index, note_tags = index_notes(document, make_registry())
+        with self.assertRaisesRegex(PodcastError, "todo"):
+            choose_focus(index, note_tags, focus_tags=["agents", "todo"])
+
+    def test_plan_can_exclude_tags_and_previously_used_notes(self):
+        document = make_document([
+            ("2026-09-27", [
+                ("note:old", "Old agents", ["agents"]),
+                ("note:fresh", "Fresh agents", ["agents"]),
+                ("note:both", "Agents and tools", ["agents", "tools"]),
+                ("note:tools", "Tools", ["tools"]),
+            ]),
+        ])
+        plan = plan_episode(
+            document,
+            make_registry(),
+            episode_date="2026-09-28",
+            previous=[{"focus_tags": ["programming"], "notes": ["note:old"]}],
+            focus_tags=["agents"],
+            exclude_tags=["tools"],
+            fresh_only=True,
+        )
+        rendered = [note["id"] for section in plan["sections"] for note in section["notes"]]
+        self.assertEqual(rendered, ["note:fresh"])
+        self.assertEqual(plan["focus_tags"], ["agents"])
+        with self.assertRaisesRegex(PodcastError, "todo"):
+            plan_episode(document, make_registry(), exclude_tags=["todo"])
+        with self.assertRaisesRegex(PodcastError, "no notes left"):
+            plan_episode(
+                document,
+                make_registry(),
+                previous=[{"notes": ["note:old", "note:fresh", "note:both"]}],
+                focus_tags=["agents"],
+                fresh_only=True,
+            )
+
+
 class ScriptTests(unittest.TestCase):
     def test_cli_rejects_removed_overrides(self):
         for arguments in (
