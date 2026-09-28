@@ -410,7 +410,8 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
                 break
             add_segment(" ".join(note["speak"].split()[:remaining_words]))
             used_notes.append(note)
-        add_segment(script["outro"])
+        if synthesizer.duration_seconds + outro_words * seconds_per_word <= target_seconds:
+            add_segment(script["outro"])
         duration_seconds = synthesizer.duration_seconds
         synthesizer.finish()
     except BaseException:

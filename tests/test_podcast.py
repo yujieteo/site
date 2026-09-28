@@ -123,8 +123,9 @@ def write_notes(root):
 class FakeSynthesizer:
     sample_rate = 24000
 
-    def __init__(self, seconds_per_word=0.5):
+    def __init__(self, seconds_per_word=0.5, rates=()):
         self.seconds_per_word = seconds_per_word
+        self.rates = iter(rates)
         self.duration = 0.0
         self.spoken = []
         self.path = None
@@ -135,7 +136,7 @@ class FakeSynthesizer:
 
     def add(self, text):
         self.spoken.append(text)
-        self.duration += len(text.split()) * self.seconds_per_word
+        self.duration += len(text.split()) * next(self.rates, self.seconds_per_word)
 
     @property
     def duration_seconds(self):
@@ -278,6 +279,19 @@ class ScriptTests(unittest.TestCase):
 
 
 class GenerateTests(unittest.TestCase):
+    def test_generate_publishes_when_recalibration_exhausts_outro_budget(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_notes(root)
+            metadata = generate_episode(
+                target_minutes=1,
+                episode_date="2026-09-28",
+                synthesizer=FakeSynthesizer(rates=(0.5, 0.6)),
+                root=root,
+            )
+            self.assertLessEqual(metadata["duration_seconds"], 60)
+            self.assertTrue((root / "data" / "podcasts" / f"{metadata['id']}.yaml").is_file())
+
     def test_generate_truncates_a_single_oversized_note(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
