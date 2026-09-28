@@ -677,6 +677,24 @@ def publish_visualization_assets(visualizations, visuals_repo):
         )
 
 
+def publish_decks():
+    """Copy each slide deck's self-contained index.html to site/decks/<slug>/.
+
+    Only index.html is published. A deck's presenter notes.md is private and
+    stays out of the site even when it sits beside the deck in data/decks/.
+    """
+    decks_dir = DATA / "decks"
+    if not decks_dir.is_dir():
+        return []
+    slugs = []
+    for source in sorted(decks_dir.glob("*/index.html")):
+        destination = OUT / "decks" / source.parent.name
+        destination.mkdir(parents=True)
+        shutil.copyfile(source, destination / "index.html")
+        slugs.append(source.parent.name)
+    return slugs
+
+
 def prepare_output():
     """Recreate the generated site and copy its static assets."""
     if OUT.exists():
@@ -739,6 +757,7 @@ def main():
 
     blog_out = prepare_output()
     publish_visualization_assets(visualizations, visuals_repo)
+    decks = publish_decks()
     publish_podcast_audio(podcasts)
     (OUT / "corpus.json").write_text(
         json.dumps(corpus, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
@@ -777,7 +796,7 @@ def main():
         f"Built site into {OUT}/ "
         f"({len(resources)} resources, {len(papers)} paper links, "
         f"{len(posts)} blog posts, {len(visualizations)} visualizations, "
-        f"{len(podcasts)} podcast episodes)"
+        f"{len(podcasts)} podcast episodes, {len(decks)} decks)"
     )
 
 

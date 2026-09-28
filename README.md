@@ -11,6 +11,7 @@ data/about/          About-page YAML
 data/blog/           Markdown posts with YAML frontmatter
 data/notes.md        Append-only daily notes
 data/cv/             Site name, subtitle, and biography
+data/decks/          Self-contained slide decks, one folder per deck
 data/paper-links/    Paper-link YAML
 data/podcasts/       Podcast episode metadata and audio
 data/resources/      General resource YAML
@@ -110,6 +111,15 @@ Post content goes here.
 
 Titles, summaries, categories, and tags are searchable. If tags are omitted,
 the category is used as the fallback tag.
+
+## Slide decks
+
+A slide deck is one self-contained `index.html` (all CSS, JavaScript, and data
+inlined), built with the `generate-slide-deck` skill. Put it at
+`data/decks/<slug>/index.html`; the build copies that file verbatim to
+`site/decks/<slug>/index.html`, and a blog post links to or embeds it so the deck
+is discoverable and searchable. Only `index.html` is published: a deck's
+presenter `notes.md` is private, so keep it out of `data/decks/`.
 
 ## Daily notes
 
