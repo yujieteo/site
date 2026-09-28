@@ -13,7 +13,7 @@ validate, build, commit, push, deploy, and verify.
 - `data/notes.md` is the sole content source; `data/note-tags.json` holds the
   canonical tags. Never edit generated `site/` files by hand.
 - `data/cv/cv.yaml` supplies the site name spoken in the introduction.
-- Optional overrides: episode date, seed tag, target minutes, and voice.
+- Optional overrides: episode date and voice.
 
 ## Focus selection
 
@@ -27,8 +27,9 @@ validate, build, commit, push, deploy, and verify.
   guaranteeing enough material when a subject is small.
 - Notes are grouped under the first focus tag they match, with notes not used
   by an earlier episode first and then newest first.
-- Rendering publishes only a 28-30 minute episode; insufficient material
-  fails without publishing rather than adding filler.
+- Rendering reserves the ending from measured speech rates so it never exceeds
+  30 minutes. A focus with little material publishes shorter rather than adding
+  filler.
 
 ## Local synthesis
 
@@ -76,15 +77,14 @@ inventing new ones.
 ## Generate
 
 ```sh
-.venv/bin/python scripts/podcast.py plan --target-minutes 30
-.venv/bin/python scripts/podcast.py generate --target-minutes 30
+.venv/bin/python scripts/podcast.py plan
+.venv/bin/python scripts/podcast.py generate
 ```
 
 - `plan` selects the episode without rendering audio; review the focus and
   candidate counts before committing to a long render.
-- `generate` writes the metadata and MP3. Useful flags: `--seed <tag>` forces
-  the focus tag, `--date YYYY-MM-DD` sets the episode date, `--voice <id>`
-  changes the Kokoro voice.
+- `generate` writes the metadata and MP3. Useful flags: `--date YYYY-MM-DD`
+  sets the episode date and `--voice <id>` changes the Kokoro voice.
 - Check the printed duration and listen to a sample when the result matters.
 
 ## Publish

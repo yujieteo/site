@@ -32,7 +32,6 @@ CONTENT_CLASSES = frozenset({"topic", "project", "arxiv-math"})
 MAX_CONNECTED_TAGS = 12
 MAX_FOCUS_TAGS = 24
 MATERIAL_FACTOR = 1.05
-MIN_DURATION_RATIO = 28 / 30
 
 
 class PodcastError(ValueError):
@@ -97,8 +96,7 @@ def _union_words(index, focus):
     return total
 
 
-def choose_focus(index, note_tags, target_minutes=DEFAULT_TARGET_MINUTES,
-                 seed_tag=None, previous=(), wpm=DEFAULT_WPM):
+def choose_focus(index, note_tags, previous=()):
     """Pick a focus led by the most common useful tag and its neighbours.
 
     The seed is the most common content tag that has not led a previous
@@ -108,25 +106,20 @@ def choose_focus(index, note_tags, target_minutes=DEFAULT_TARGET_MINUTES,
     """
     if not index:
         raise PodcastError("data/notes.md has no content-tagged notes to build an episode from")
-    if seed_tag is not None:
-        if seed_tag not in index:
-            raise PodcastError(f"--seed {seed_tag!r} is not a content tag used by data/notes.md")
-        seed = seed_tag
-    else:
-        previous_seeds = {
-            episode["focus_tags"][0]
-            for episode in previous
-            if episode.get("focus_tags")
-        }
-        candidates = [tag for tag in index if tag not in previous_seeds] or list(index)
-        seed = min(candidates, key=lambda tag: (-len(index[tag]), -_union_words(index, [tag]), tag))
+    previous_seeds = {
+        episode["focus_tags"][0]
+        for episode in previous
+        if episode.get("focus_tags")
+    }
+    candidates = [tag for tag in index if tag not in previous_seeds] or list(index)
+    seed = min(candidates, key=lambda tag: (-len(index[tag]), -_union_words(index, [tag]), tag))
     focus = [seed]
     seed_touches = {
         tag: sum(1 for note in notes if seed in set(note_tags[note["id"]]))
         for tag, notes in index.items()
     }
 
-    material_target = target_minutes * wpm * MATERIAL_FACTOR
+    material_target = DEFAULT_TARGET_MINUTES * DEFAULT_WPM * MATERIAL_FACTOR
     while len(focus) < MAX_CONNECTED_TAGS:
         current_words = _union_words(index, focus)
         if current_words >= material_target:
@@ -262,12 +255,8 @@ def build_script(plan, site_name):
     return {"intro": intro, "notes": notes, "outro": outro}
 
 
-def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
-                 episode_date=None, seed_tag=None, previous=(), wpm=DEFAULT_WPM,
-                 today=None):
+def plan_episode(document, registry, episode_date=None, previous=(), today=None):
     """Select the next episode's date, focus tags, notes, and spoken script."""
-    if target_minutes <= 0 or target_minutes > 240:
-        raise PodcastError("--target-minutes must be greater than 0 and at most 240")
     if episode_date is None:
         episode_date = today or datetime.datetime.now(SITE_TIMEZONE).date()
     elif isinstance(episode_date, str):
@@ -279,7 +268,7 @@ def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
         raise PodcastError("episode date must be a date or YYYY-MM-DD string")
 
     index, note_tags = index_notes(document, registry)
-    focus = choose_focus(index, note_tags, target_minutes, seed_tag, previous, wpm)
+    focus = choose_focus(index, note_tags, previous)
     used_note_ids = {
         note_id
         for episode in previous
@@ -295,7 +284,7 @@ def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
         "title": f"Notes on {_human_join([_display_tag(tag) for tag in title_tags])}",
         "focus_tags": list(focus),
         "sections": sections,
-        "estimated_seconds": _union_words(index, focus) / wpm * 60,
+        "estimated_seconds": _union_words(index, focus) / DEFAULT_WPM * 60,
         "candidate_notes": sum(len(section["notes"]) for section in sections),
     }
 
@@ -345,9 +334,8 @@ def _summarize(plan, used_notes):
     )
 
 
-def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
-                     seed_tag=None, voice=DEFAULT_VOICE, synthesizer=None,
-                     root=ROOT, wpm=DEFAULT_WPM, today=None):
+def generate_episode(episode_date=None, voice=DEFAULT_VOICE, synthesizer=None,
+                     root=ROOT, today=None):
     """Render one episode and write its metadata and MP3 under ``root``."""
     notes_path = root / "data" / "notes.md"
     tags_path = root / "data" / "note-tags.json"
@@ -356,11 +344,8 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
     plan = plan_episode(
         document,
         registry,
-        target_minutes=target_minutes,
         episode_date=episode_date,
-        seed_tag=seed_tag,
         previous=previous,
-        wpm=wpm,
         today=today,
     )
 
@@ -381,23 +366,25 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
         )
 
     work_audio = audio_path.with_suffix(".mp3.part")
-    target_seconds = target_minutes * 60
-    minimum_seconds = target_seconds * MIN_DURATION_RATIO
+    target_seconds = DEFAULT_TARGET_MINUTES * 60
     outro_words = _words(script["outro"])
     used_notes = []
     synthesizer.start(work_audio)
     try:
-        seconds_per_word = 60 / wpm
+        seconds_per_word = 60 / DEFAULT_WPM
 
         def add_segment(text):
             nonlocal seconds_per_word
+            words = _words(text)
+            if synthesizer.duration_seconds + words * seconds_per_word > target_seconds:
+                raise PodcastError("selected material exceeds the target duration")
             start = synthesizer.duration_seconds
             synthesizer.add(text)
             elapsed = synthesizer.duration_seconds - start
             if synthesizer.duration_seconds > target_seconds:
                 raise PodcastError("selected material exceeds the target duration")
-            if _words(text):
-                seconds_per_word = max(seconds_per_word, elapsed / _words(text) * 1.05)
+            if words:
+                seconds_per_word = max(seconds_per_word, elapsed / words * 1.05)
 
         add_segment(script["intro"])
         for note in script["notes"]:
@@ -411,8 +398,6 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
             used_notes.append(note)
         add_segment(script["outro"])
         duration_seconds = synthesizer.duration_seconds
-        if duration_seconds < minimum_seconds:
-            raise PodcastError("insufficient material for the target duration")
         synthesizer.finish()
     except BaseException:
         synthesizer.abort()
@@ -465,11 +450,6 @@ def _parser():
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     def add_planning_arguments(subparser):
-        subparser.add_argument(
-            "--target-minutes", type=float, default=DEFAULT_TARGET_MINUTES,
-            help=f"target spoken duration (default {DEFAULT_TARGET_MINUTES})",
-        )
-        subparser.add_argument("--seed", dest="seed_tag", help="override the automatic focus tag")
         subparser.add_argument("--date", dest="episode_date", help="episode date (YYYY-MM-DD)")
 
     plan = subparsers.add_parser("plan", help="select the next episode without rendering audio")
@@ -493,9 +473,7 @@ def main(argv=None):
             plan = plan_episode(
                 document,
                 registry,
-                target_minutes=args.target_minutes,
                 episode_date=args.episode_date,
-                seed_tag=args.seed_tag,
                 previous=load_episodes(ROOT),
             )
             summary = _plan_summary(plan)
@@ -505,9 +483,7 @@ def main(argv=None):
                 _print_plan(summary)
             return 0
         metadata = generate_episode(
-            target_minutes=args.target_minutes,
             episode_date=args.episode_date,
-            seed_tag=args.seed_tag,
             voice=args.voice,
         )
     except (PodcastError, NotesError) as exc:

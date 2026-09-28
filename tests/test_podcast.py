@@ -164,7 +164,7 @@ class FocusTests(unittest.TestCase):
             ]),
         ])
         index, note_tags = index_notes(document, make_registry())
-        focus = choose_focus(index, note_tags, target_minutes=1)
+        focus = choose_focus(index, note_tags)
         self.assertEqual(focus[0], "agents")
         self.assertNotIn("todo", focus)
 
@@ -179,7 +179,7 @@ class FocusTests(unittest.TestCase):
         ])
         index, note_tags = index_notes(document, make_registry())
         previous = [{"focus_tags": ["agents"], "notes": []}]
-        focus = choose_focus(index, note_tags, target_minutes=1, previous=previous)
+        focus = choose_focus(index, note_tags, previous=previous)
         self.assertEqual(focus[0], "programming")
 
     def test_focus_expands_through_cooccurrence(self):
@@ -192,25 +192,27 @@ class FocusTests(unittest.TestCase):
             ]),
         ])
         index, note_tags = index_notes(document, make_registry())
-        focus = choose_focus(index, note_tags, target_minutes=4)
+        focus = choose_focus(index, note_tags)
         self.assertEqual(focus[0], "agents")
         self.assertIn("tools", focus)
         self.assertLess(focus.index("tools"), focus.index("programming"))
 
-    def test_explicit_and_unknown_seeds(self):
-        document = make_document([
-            ("2026-09-27", [("note:a", "One", ["math.ag"])]),
-        ])
-        index, note_tags = index_notes(document, make_registry())
-        self.assertEqual(
-            choose_focus(index, note_tags, target_minutes=1, seed_tag="math.ag"),
-            ["math.ag"],
-        )
-        with self.assertRaises(PodcastError):
-            choose_focus(index, note_tags, target_minutes=1, seed_tag="missing")
-
-
 class ScriptTests(unittest.TestCase):
+    def test_cli_rejects_removed_overrides(self):
+        for arguments in (
+            ["generate", "--force"],
+            ["plan", "--seed", "agents"],
+            ["plan", "--target-minutes", "1"],
+        ):
+            result = subprocess.run(
+                [sys.executable, "scripts/podcast.py", *arguments],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("unrecognized arguments", result.stderr)
+
     def test_speech_text_removes_markup(self):
         spoken = speech_text(
             "See [VGC guide](https://www.vgcguide.com/metagame) for `cores` and **roles** "
@@ -241,9 +243,7 @@ class ScriptTests(unittest.TestCase):
             ("2026-09-27", [("note:a", wordy("agents"), ["agents"])]),
         ])
         registry = make_registry()
-        plan = plan_episode(
-            document, registry, target_minutes=1, episode_date="2026-09-28"
-        )
+        plan = plan_episode(document, registry, episode_date="2026-09-28")
         self.assertEqual(plan["id"].split("-", 3)[:3], ["2026", "09", "28"])
         self.assertTrue(plan["id"].startswith("2026-09-28-"))
         self.assertEqual(plan["focus_tags"][0], "agents")
@@ -266,15 +266,13 @@ class GenerateTests(unittest.TestCase):
             )
             synthesizer = FakeSynthesizer(seconds_per_word=0.5)
             metadata = generate_episode(
-                target_minutes=1,
                 episode_date="2026-09-28",
                 synthesizer=synthesizer,
                 root=root,
             )
             self.assertEqual(len(metadata["notes"]), 1)
             self.assertLess(len(synthesizer.spoken[1].split()), 8000)
-            self.assertGreaterEqual(metadata["duration_seconds"], 56)
-            self.assertLessEqual(metadata["duration_seconds"], 60)
+            self.assertLessEqual(metadata["duration_seconds"], 1800)
 
     def test_generate_writes_metadata_audio_and_stops_near_target(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -282,7 +280,6 @@ class GenerateTests(unittest.TestCase):
             write_notes(root)
             synthesizer = FakeSynthesizer(seconds_per_word=0.5)
             metadata = generate_episode(
-                target_minutes=1,
                 episode_date="2026-09-28",
                 synthesizer=synthesizer,
                 root=root,
@@ -290,8 +287,7 @@ class GenerateTests(unittest.TestCase):
             )
             self.assertTrue(metadata["id"].startswith("2026-09-28-"))
             self.assertEqual(metadata["focus_tags"][0], "agents")
-            self.assertGreaterEqual(metadata["duration_seconds"], 56)
-            self.assertLessEqual(metadata["duration_seconds"], 60)
+            self.assertLessEqual(metadata["duration_seconds"], 1800)
             self.assertLess(len(metadata["notes"]), 31)
             self.assertTrue(metadata["notes"])
 
@@ -308,15 +304,7 @@ class GenerateTests(unittest.TestCase):
                 yaml.safe_load(metadata_path.read_text(encoding="utf-8"))
             )
 
-            with self.assertRaises(PodcastError):
-                generate_episode(
-                    target_minutes=1,
-                    episode_date="2026-09-28",
-                    seed_tag="agents",
-                    synthesizer=FakeSynthesizer(),
-                    root=root,
-                )
-    def test_generate_rejects_insufficient_material(self):
+    def test_generate_publishes_short_material(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             write_notes(root)
@@ -326,15 +314,13 @@ class GenerateTests(unittest.TestCase):
                 + " #agents\n",
                 encoding="utf-8",
             )
-            with self.assertRaisesRegex(PodcastError, "insufficient material"):
-                generate_episode(
-                    target_minutes=1,
-                    episode_date="2026-09-28",
-                    synthesizer=FakeSynthesizer(seconds_per_word=0.5),
-                    root=root,
-                )
-            self.assertFalse(next((root / "data" / "podcasts").glob("*.yaml"), None))
-            self.assertFalse(next((root / "data" / "podcasts" / "audio").glob("*.mp3"), None))
+            metadata = generate_episode(
+                episode_date="2026-09-28",
+                synthesizer=FakeSynthesizer(seconds_per_word=0.5),
+                root=root,
+            )
+            self.assertLess(metadata["duration_seconds"], 1800)
+            self.assertTrue((root / "data" / "podcasts" / f"{metadata['id']}.yaml").is_file())
 
 
 class CacheTests(unittest.TestCase):
