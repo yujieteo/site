@@ -60,6 +60,19 @@ class PublishedCorpusTests(unittest.TestCase):
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(len(record["revision"]) == 64 for record in corpus["records"]))
 
+    def test_podcast_record_publishes_audio_metadata(self):
+        episode = {
+            "id": "2026-09-27-agents", "title": "Notes on agents",
+            "summary": "Condensed notes on agents.", "date": "2026-09-27",
+            "focus_tags": ["agents"], "audio": "audio/2026-09-27-agents.mp3",
+            "duration_seconds": 1800.0,
+        }
+        corpus = build_published_corpus(*self.fixtures(), podcasts=[episode])
+        record = next(record for record in corpus["records"] if record["kind"] == "podcast")
+        self.assertEqual(record["id"], "podcast:2026-09-27-agents")
+        self.assertEqual(record["audioUrl"], "podcast/audio/2026-09-27-agents.mp3")
+        self.assertEqual(record["durationSeconds"], 1800.0)
+
 
 if __name__ == "__main__":
     unittest.main()

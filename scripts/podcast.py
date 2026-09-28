@@ -72,13 +72,17 @@ def index_notes(document, registry):
     note_tags = {}
     for entry in document["entries"]:
         for note in entry["notes"]:
+            spoken = speech_text(note["content"])
+            if not spoken:
+                note_tags[note["id"]] = []
+                continue
             tags = [tag for tag in note["tags"] if classes.get(tag) in CONTENT_CLASSES]
             note_tags[note["id"]] = tags
             for tag in tags:
                 index[tag].append({
                     "id": note["id"],
                     "date": entry["date"],
-                    "content": note["content"],
+                    "content": spoken,
                 })
     return index, note_tags
 
@@ -514,5 +518,3 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
-    if target_minutes <= 0 or target_minutes > 240:
-        raise PodcastError("--target-minutes must be greater than 0 and at most 240")

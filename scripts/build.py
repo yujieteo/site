@@ -732,7 +732,9 @@ def main():
     for visualization in visualizations:
         visualization_source(visuals_repo, visualization["html_path"])
         visualization_source(visuals_repo, visualization["data_path"])
-    corpus = build_published_corpus(cv, about, resources, papers, posts, notes, visualizations)
+    corpus = build_published_corpus(
+        cv, about, resources, papers, posts, notes, visualizations, podcasts
+    )
     validate_corpus(corpus)
 
     blog_out = prepare_output()

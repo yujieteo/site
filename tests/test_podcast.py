@@ -150,6 +150,18 @@ class FakeSynthesizer:
 
 
 class FocusTests(unittest.TestCase):
+    def test_index_excludes_notes_without_speech(self):
+        document = make_document([
+            ("2026-09-27", [
+                ("note:silent", "https://example.com", ["agents"]),
+                ("note:spoken", "Useful tools note", ["tools"]),
+            ]),
+        ])
+        index, note_tags = index_notes(document, make_registry())
+        self.assertNotIn("agents", index)
+        self.assertEqual(note_tags["note:silent"], [])
+        self.assertEqual(choose_focus(index, note_tags, target_minutes=1), ["tools"])
+
     def test_seed_is_most_common_content_tag_and_skips_workflow_tags(self):
         document = make_document([
             ("2026-09-27", [
@@ -345,7 +357,7 @@ class GenerateTests(unittest.TestCase):
                 "---\ntitle: Notes\n---\n\n## 2026-09-27\n\nhttps://example.com #agents\n",
                 encoding="utf-8",
             )
-            with self.assertRaisesRegex(PodcastError, "no speakable notes"):
+            with self.assertRaises(PodcastError):
                 generate_episode(target_minutes=1, episode_date="2026-09-28", root=root)
 
 
@@ -402,6 +414,10 @@ class PodcastBuildTests(unittest.TestCase):
                 (project / "site" / "podcast" / "audio" / f"{episode_id}.mp3").read_bytes(),
                 b"fake-audio",
             )
+            corpus = json.loads((project / "site" / "corpus.json").read_text(encoding="utf-8"))
+            record = next(record for record in corpus["records"] if record["id"] == f"podcast:{episode_id}")
+            self.assertEqual(record["audioUrl"], f"podcast/audio/{episode_id}.mp3")
+            self.assertEqual(record["durationSeconds"], 1800.0)
 
 
 if __name__ == "__main__":

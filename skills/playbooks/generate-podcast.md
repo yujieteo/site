@@ -68,6 +68,9 @@ inventing new ones.
   with a player, then the dated list), `site/podcast/<episode-id>.html` (player,
   summary, focus tags, and links to the source note dates), and
   `site/podcast/audio/<episode-id>.mp3` (byte copy).
+- The build also adds a `podcast:<episode-id>` record to `site/corpus.json`
+  with `url`, `date`, `tags` (the focus tags), `summary`, `audioUrl`, and
+  `durationSeconds`.
 
 ## Generate
 
