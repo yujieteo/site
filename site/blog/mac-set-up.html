@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <meta name="site-corpus" content="../corpus.json">
-  <meta name="site-corpus-revision" content="33c66a8c6f6859c3f115a5f7e84d4306418eb5e3986b21c42783c38f8ebf97bb">
+  <meta name="site-corpus-revision" content="147d511509ba577a829a270d9597e9300d401a1970a855348eb37d12974598be">
   <script type="module" src="../static/js/webmcp.js"></script>
 </head>
 <body>
@@ -370,6 +370,19 @@ gh repo clone yujieteo/skills
 </code></pre>
 <p>Wiring this into Codex and Claude Code is still planned, not part of this
 setup yet.</p>
+<h3>firstmate</h3>
+<p>firstmate is the agent distro for running a crew of coding agents, by the
+same author as no-mistakes. Clone it and launch a harness inside it:</p>
+<pre><code>cd &quot;$HOME/src&quot;
+gh repo clone kunchenguid/firstmate
+cd firstmate
+pi
+</code></pre>
+<p>Approve the project trust prompt on first launch so its Pi extensions load.
+It ships user-invocable skills under <code>.agents/skills/</code> — <code>/afk</code>, <code>/quiet</code>,
+<code>/ahoy</code>, <code>/bearings</code>, <code>/updatefirstmate</code>, and <code>/stow</code> — plus agent-only
+reference skills and a standalone public <code>skills/stow</code>. Workers load those
+alongside the user-level skills under <code>~/.agents/skills/</code>.</p>
 <h2>Work</h2>
 <pre><code>cd &quot;$HOME/src/REPOSITORY&quot;
 herdr session attach work
