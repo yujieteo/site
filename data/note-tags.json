@@ -294,6 +294,20 @@
       "aliases": [],
       "replaced_by": null
     },
+    "football": {
+      "class": "topic",
+      "description": "Use for notes about association football and its public statistics.",
+      "aliases": [],
+      "replaced_by": null
+    },
+    "fpl": {
+      "class": "topic",
+      "description": "Fantasy Premier League game rules, data, and strategy.",
+      "aliases": [
+        "fantasy-premier-league"
+      ],
+      "replaced_by": null
+    },
     "frobenius": {
       "class": "topic",
       "description": "Use for notes about frobenius.",
