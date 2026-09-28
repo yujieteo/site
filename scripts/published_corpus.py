@@ -43,7 +43,8 @@ def _record(kind, identity, **fields):
     return public
 
 
-def build_published_corpus(cv, about, resources, papers, posts, notes, visualizations=()):
+def build_published_corpus(cv, about, resources, papers, posts, notes,
+                           visualizations=(), podcasts=()):
     """Return the sole normalized projection of intentionally public content."""
     records = [
         _record(
@@ -108,6 +109,16 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
             dataUrl=f"visuals/{visualization['slug']}/data.json",
             fetched=visualization["fetched"], webmcpTools=visualization["webmcp_tools"],
             tags=visualization["tags"], category=visualization["category"],
+        ))
+
+    for episode in podcasts:
+        records.append(_record(
+            "podcast", episode["id"], title=episode["title"],
+            url=f"podcast/{episode['id']}.html", date=episode["date"],
+            summary=episode["summary"], content=episode["summary"],
+            tags=episode["focus_tags"],
+            audioUrl=f"podcast/{episode['audio']}",
+            durationSeconds=episode["duration_seconds"],
         ))
 
     unique_records = []
