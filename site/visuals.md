@@ -29,7 +29,7 @@ A tappable 2 by 2 for choosing a low-cost experiment that can open a meaningful 
 - WebMCP tools: get_data, get_metadata, query
 
 ## Convexity Action Engine
-Press Ctrl/⌘ K, type what you are considering, and see it in your Singapore context: screened for ruin first, then compared on reliable upside, right-tail upside, timing and opportunity cost against real alternatives. 395 actions and 26 to avoid; every number is labelled author judgement.
+Press Ctrl/⌘ K, type what you are considering, and see it in your Singapore context: screened for ruin first, then compared on reliable upside, right-tail upside, timing and opportunity cost against real alternatives. 1,374 everyday actions and 26 to avoid; how common each is comes from American Time Use Survey microdata, and every judged number is labelled as such.
 - HTML: https://teoyujie.org/visuals/convexity-action-engine/index.html
 - Data: https://teoyujie.org/visuals/convexity-action-engine/data.json
 - Fetched: 2026-09-29

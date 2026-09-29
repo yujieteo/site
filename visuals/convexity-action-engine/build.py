@@ -57,7 +57,9 @@ CSV_FIELDS = [
     ("outdoor", "out"), ("daylight_dependent", "day"), ("sg_opening_hours", None),
     ("ruin_kind", None), ("ruin_probability", None), ("ruin_severity", None), ("ruin_irreversibility", None),
     ("ruin_repeated", None), ("ruin_trigger", None), ("avoid_related", None), ("avoid_safer", None),
-    ("action_specific_fields", None), ("evidence_type", None), ("confidence", None), ("source_ids", None),
+    ("singapore_specific", "sg"), ("atus_code", "atus"), ("atus_link", None), ("atus_label", None), ("atus_participation_rate", None),
+    ("atus_minutes_when_performed", None), ("drm_row", "drm"), ("drm_positive_affect", None), ("drm_negative_affect", None),
+    ("cited_studies", None), ("action_specific_fields", None), ("evidence_type", None), ("confidence", None), ("source_ids", None),
 ]
 
 CSS = """
@@ -261,17 +263,29 @@ def spreadsheets(raw):
                 v = av.get("safer", "")
             elif col == "action_specific_fields":
                 v = ",".join(a["own"])
+            elif col.startswith("atus_") and col != "atus_code":
+                ob = raw["observed"].get(a.get("atus")) if a.get("atus") else None
+                v = "" if not ob else {"atus_link": "action" if "atus" in a["own"] else "category", "atus_label": ob["label"],
+                                       "atus_participation_rate": ob["rate"], "atus_minutes_when_performed": ob["min"]}[col]
+            elif col.startswith("drm_") and col != "drm_row":
+                d = raw["drm"].get(a.get("drm")) if a.get("drm") else None
+                v = "" if not d else d[col[4:]]
+            elif col == "cited_studies":
+                v = ";".join(f'{c["id"]}:{c["rel"]}' for c in a.get("cites", []))
             elif col == "evidence_type":
-                v = "heuristic"
+                v = ";".join(["heuristic"] + (["observational"] if a.get("atus") else []) + (["experiments"] if a.get("cites") else []))
             elif col == "confidence":
-                v = "low"
+                v = "medium (social reception, direct experiment); low elsewhere" if any(c["rel"] == "direct" for c in a.get("cites", [])) else "low"
             elif col == "source_ids":
-                v = "judgement" + (";singapore" if ("open" in a or a.get("out")) else "")
+                v = ";".join(["judgement"] + (["singapore"] if ("open" in a or a.get("out") or a.get("sg")) else [])
+                             + (["atus2014_2016"] if a.get("atus") else []) + (["kahneman2004"] if a.get("drm") else [])
+                             + [c["id"] for c in a.get("cites", [])])
             row.append(v if v is not None else "")
         rows.append(row)
     actions = csv_text(rows, [c for c, _ in CSV_FIELDS])
     aliases = csv_text(sorted({(al.lower(), a["id"]) for a in raw["actions"] for al in [a["name"], *a["aliases"]]}), ["alias", "action_id"])
-    sources = csv_text([[s["id"], s["title"], s["type"], s["status"], s["url"], s["notes"]] for s in raw["sources"]],
+    study_rows = [[k, v["citation"], v["kind"], "used: " + v["finding"], v["url"], v["verification"]] for k, v in raw["studies"].items()]
+    sources = csv_text([[s["id"], s["title"], s["type"], s["status"], s["url"], s["notes"]] for s in raw["sources"]] + study_rows,
                        ["source_id", "title", "type", "status", "url", "notes"])
     return {"actions.csv": actions, "aliases.csv": aliases, "sources.csv": sources}
 
@@ -293,6 +307,7 @@ def page_data(raw, meta):
         "sources": raw["sources"], "modifiers": raw["modifiers"],
         "categories": {k: {"label": v["label"], "prior": v["prior"]} for k, v in raw["categories"].items()},
         "actions": raw["actions"], "fetched": meta["fetched"], "assumptions": meta["assumptions"],
+        "observed": raw["observed"], "drm": raw["drm"], "studies": raw["studies"],
         "instances": instance_count(raw),
     }
 
@@ -307,6 +322,8 @@ def render(raw, meta, tokens):
     n_canon = sum(1 for a in raw["actions"] if a["cat"] != "avoid")
     n_avoid = len(raw["actions"]) - n_canon
     n_inst = instance_count(raw)
+    n_obs = sum(1 for a in raw["actions"] if a["cat"] != "avoid" and a.get("atus"))
+    n_cite = sum(1 for a in raw["actions"] if a.get("cites"))
     assumptions = "".join(f"<li>{escape(a)}</li>" for a in meta["assumptions"])
     noscript = "".join(
         f"<li>{escape(a['name'])}: {escape(a['avoid']['why'])}</li>" for a in raw["actions"] if a.get("avoid")
@@ -314,14 +331,14 @@ def render(raw, meta, tokens):
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><meta name="description" content="{escape(DESCRIPTION)}"><title>{escape(TITLE)}</title><style>{css}</style></head><body>
 <header class="top"><div class="bar"><h1>{escape(H1)}</h1><button type="button" class="searchbtn" id="open-search" aria-haspopup="dialog"><span>Search an action or a situation: “swim”, “I have 30 minutes”, “what should I avoid tonight?”</span><kbd id="kbd">Ctrl K</kbd></button><nav class="tabs" aria-label="Views"><a href="#/now">NOW</a><a href="#/avoid">AVOID</a><a href="#/compare">COMPARE</a><a href="#/history">HISTORY</a><a href="#/data">DATA</a></nav></div></header>
-<main><p class="method"><strong>Ruin first, then payoff shape.</strong> Each action is screened for extreme, irreversible downside, then compared on reliable upside (harvest), right-tail upside (optionality), timing and opportunity cost against alternatives available now. <strong>Every number here is an author judgement or a model transform of judgements</strong>, on ordinal 0–4 scales. No empirical dataset could be attached in this build, so the planned sources (O*NET, time-use surveys, health reviews) are listed as not retrieved. {n_canon} canonical actions and {n_avoid} actions to avoid expand to {n_inst:,} contextual instances (action × manner × timing). That is <strong>short of a 10,000-action canonical ontology</strong>. Click any number to see where it came from.</p>
+<main><p class="method"><strong>Ruin first, then payoff shape.</strong> Each action is screened for extreme, irreversible downside, then compared on reliable upside (harvest), right-tail upside (optionality), timing and opportunity cost against alternatives available now. <strong>Benefits, tails and timing are author judgement</strong> on ordinal 0–4 scales, labelled JUDGEMENT. <strong>How common an activity is</strong> comes from American Time Use Survey microdata ({n_obs:,} actions linked, OBSERVED); experienced affect from one published table and {n_cite} actions from published experiments (EMPIRICAL). {n_canon:,} canonical actions and {n_avoid} actions to avoid expand to {n_inst:,} contextual instances (action × manner × timing). That is <strong>short of a 10,000-action canonical ontology</strong>. Click any number to see where it came from.</p>
 <section id="ctx" aria-label="Your context"></section>
 <div class="lenses" id="lenses" role="toolbar" aria-label="Decision lens"></div>
 <div id="app" aria-live="polite"></div>
 <noscript><p>This page needs JavaScript. Actions to avoid, and why:</p><ul>{noscript}</ul></noscript>
 <details><summary>Method, assumptions and what is not here</summary><ul class="note">{assumptions}</ul></details>
 </main>
-<footer>Ontology written {escape(meta["fetched"])}. Spreadsheet views (actions.csv, aliases.csv, sources.csv) are on the DATA tab and next to raw.json in the site repository. Keyboard: Ctrl/⌘ K search · ↑ ↓ Enter · Esc close · C compare · V views · E evidence · A alternatives · N now.</footer>
+<footer>Ontology written {escape(meta["fetched"])}. Spreadsheet views (actions.csv, aliases.csv, sources.csv) are on the DATA tab and next to raw.json in the site repository; ATUS figures are recomputed by derive_atus.py. Keyboard: Ctrl/⌘ K search · ↑ ↓ Enter · Esc close · C compare · V views · E evidence · A alternatives · N now.</footer>
 <div class="pal" id="pal" hidden role="dialog" aria-modal="true" aria-label="Action search"><div class="palbox"><div class="palin"><label class="visually-hidden" for="q">What are you considering?</label><input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="What are you considering?" role="combobox" aria-expanded="true" aria-controls="res" aria-autocomplete="list"><span class="palmode" id="palmode"></span><button type="button" id="palclose" aria-label="Close search">Esc</button></div><div class="palchips" id="palchips"></div><div class="palbody"><ul class="palres" id="res" role="listbox" aria-label="Results"></ul><div class="palprev" id="prev" aria-live="polite"></div></div><div class="palfoot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span id="palhint"></span></div></div></div>
 <div class="toast" id="toast" hidden role="status"></div>
 <script>{js}</script></body></html>
@@ -339,7 +356,24 @@ def verify(raw, meta, html):
     by = {a["id"]: a for a in acts}
     canon = [a for a in acts if a["cat"] != "avoid"]
     avoid = [a for a in acts if a["cat"] == "avoid"]
-    assert len(canon) >= 390 and len(avoid) >= 25, (len(canon), len(avoid))
+    assert len(canon) >= 1300 and len(avoid) >= 25, (len(canon), len(avoid))
+    assert sum(1 for a in canon if a.get("atus")) >= 1200, "ATUS crosswalk coverage fell"
+    for a in canon:
+        if a.get("atus"):
+            assert a["atus"] in raw["observed"], (a["id"], a["atus"])
+        if a.get("drm"):
+            assert a["drm"] in raw["drm"], (a["id"], a["drm"])
+        for c in a.get("cites", []):
+            assert c["id"] in raw["studies"] and c["rel"] in ("direct", "related"), (a["id"], c)
+    for code, ob in raw["observed"].items():
+        assert 0 <= ob["rate"] <= 1 and ob["min"] > 0 and ob["n"] > 0 and ob["years"] == "2014-2016", code
+    assert abs(raw["observed"]["120303"]["rate"] - 0.7961) < 1e-4 and abs(raw["observed"]["0101"]["min"] - 528.9) < 0.05
+    names = {}
+    for a in acts:
+        names.setdefault(a["name"].lower(), a["id"])
+    for a in acts:
+        for al in a["aliases"]:
+            assert names.get(al.lower(), a["id"]) == a["id"], ("alias equals another action's name", a["id"], al)
     names = [a["name"].lower() for a in acts]
     assert len(names) == len(set(names)), "duplicate names"
     alias_owner = {}
@@ -375,10 +409,15 @@ def verify(raw, meta, html):
     assert n_inst >= 10000, n_inst
     for s in raw["sources"]:
         assert s["status"] and s["type"] in ("heuristic", "model", "personal", "observational", "survey", "review")
+        if s["status"].startswith("used") and s["type"] == "observational":
+            assert s["url"].startswith("https://"), s["id"]
         if s["status"].startswith("planned"):
             assert s["url"] == "", "a source that was not retrieved must not carry a link"
     assert meta["slug"] == SLUG and meta["fetched"] == EXPECTED_FETCHED and meta["key_file_used"] is False
     assert len(meta["assumptions"]) >= 5
+    blurb = " ".join(meta["assumptions"])
+    assert f"{len(canon):,} canonical actions and {len(avoid)} actions to avoid" in blurb, "meta.json counts are stale"
+    assert f"{sum(1 for a in canon if a.get('cites'))} actions link to published experiments" in blurb, "meta.json experiment count is stale"
 
     for name, text in spreadsheets(raw).items():
         assert (DATA / name).read_text(encoding="utf-8") == text, f"{name} is stale: rerun the builder"
@@ -389,11 +428,11 @@ def verify(raw, meta, html):
     assert html.count("mc?.registerTool") == 4 and html.count("readOnlyHint:true") == 4
     for name in ("get_metadata", "search_actions", "get_action", "compare_actions"):
         assert f'name:"{name}"' in html, name
-    for needle in ("author judgement", "short of a 10,000-action canonical ontology", "not retrieved", "JUDGEMENT", "MODEL", "PERSONAL",
+    for needle in ("OBSERVED", "EMPIRICAL", "American Time Use Survey", "short of a 10,000-action canonical ontology", "not retrieved", "JUDGEMENT", "MODEL", "PERSONAL",
                    "prefers-reduced-motion", "Asia/Singapore", "localStorage", "Compared with what?", "WHAT AM I GIVING UP?"):
         assert needle in html, needle
     assert "<title>" + escape(TITLE) + "</title>" in html
-    print(f"verified: {len(canon)} canonical actions, {len(avoid)} avoid actions, {n_inst:,} contextual instances, "
+    print(f"verified: {len(canon)} canonical actions ({sum(1 for a in canon if a.get('atus'))} ATUS-linked, {sum(1 for a in canon if a.get('cites'))} with experiments), {len(avoid)} avoid actions, {n_inst:,} contextual instances, "
           f"{sum(1 for a in acts if 'ruin' in a)} ruin-screened, 3 CSVs fresh, 4 read-only tools, zero external assets")
 
 

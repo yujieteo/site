@@ -1,3 +1,4 @@
+import csv
 import json
 import re
 import shutil
@@ -16,6 +17,8 @@ class ConvexityActionEngineTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             copy = Path(directory) / "convexity-action-engine"
             shutil.copytree(VIZ, copy, ignore=shutil.ignore_patterns("__pycache__"))
+            # author.py reads the day-reconstruction table and evidence shared with everyday-actions.
+            shutil.copytree(VIZ.parent / "everyday-actions", Path(directory) / "everyday-actions")
             subprocess.run([sys.executable, str(copy / "author.py")], check=True, capture_output=True)
             subprocess.run([sys.executable, str(copy / "build.py")], check=True, capture_output=True)
             for name in ("raw.json", "index.html", "actions.csv", "aliases.csv", "sources.csv"):
@@ -34,6 +37,15 @@ class ConvexityActionEngineTest(unittest.TestCase):
         for source in raw["sources"]:
             if source["status"].startswith("planned"):
                 self.assertEqual(source["url"], "", source["id"])
+
+    def test_observed_figures_match_everyday_actions(self):
+        # Both pages recompute ATUS 2014-2016 from the same microdata; shared groups must agree.
+        raw = json.loads((VIZ / "raw.json").read_text(encoding="utf-8"))
+        with open(VIZ.parent / "everyday-actions" / "atus_estimates.csv", newline="", encoding="utf-8") as handle:
+            rows = {r["activity_id"]: r for r in csv.DictReader(handle) if r["population_id"] == "all"}
+        for activity, code in (("sleeping", "0101"), ("working", "0501"), ("exercising", "1301"), ("reading", "120312"), ("gaming", "120307")):
+            self.assertAlmostEqual(raw["observed"][code]["rate"], float(rows[activity]["participation_rate"]), places=4, msg=code)
+            self.assertAlmostEqual(raw["observed"][code]["min"], float(rows[activity]["minutes_when_performed"]), places=1, msg=code)
 
     def test_published_copy_matches_sources(self):
         published = ROOT / "site" / "visuals" / "convexity-action-engine"
