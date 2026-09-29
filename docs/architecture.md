@@ -51,6 +51,5 @@ with the latest item featured, one player page per item, copies assets into
 
 ## Continuous integration
 
-The workflow pins a `visuals` revision whose output matches the committed
-`site/`, then runs validation, the build, a `git diff --exit-code -- site`
-check, and the Python and Node tests.
+See [Continuous integration](../README.md#continuous-integration) in the
+README. The workflow's stale-output check is `git diff --exit-code -- site`.
