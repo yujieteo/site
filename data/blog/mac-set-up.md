@@ -10,9 +10,9 @@ tags: mac, setup
 
 A small, terminal-first Mac setup.
 
-The setup is automated by `scripts/build-mac.sh` in the
-[dotfiles repository](https://github.com/yujieteo/dotfiles). This post lists
-the steps in the order the script runs them, and says which ones stay manual.
+The setup is automated by `scripts/build-mac.sh` in my private dotfiles
+repository. This post lists the steps in the order the script runs them, and
+says which ones stay manual.
 
 ## macOS security basics
 
@@ -27,7 +27,7 @@ Manual, before running the script. In System Settings:
 
 ```
 xcode-select --install            # wait for the dialog to finish
-git clone https://github.com/yujieteo/dotfiles ~/dotfiles && cd ~/dotfiles
+git clone <dotfiles-repo> ~/dotfiles && cd ~/dotfiles
 scripts/build-mac.sh --dry-run    # preview; changes nothing
 scripts/build-mac.sh              # run it (asks once before making changes)
 ```
@@ -306,7 +306,7 @@ pi --continue
 ## Restore
 
 ```
-git clone https://github.com/yujieteo/dotfiles ~/dotfiles && cd ~/dotfiles
+git clone <dotfiles-repo> ~/dotfiles && cd ~/dotfiles
 scripts/build-mac.sh --dry-run
 scripts/build-mac.sh
 ```

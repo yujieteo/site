@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <meta name="site-corpus" content="../corpus.json">
-  <meta name="site-corpus-revision" content="16e9593cd8e51ec3671345bd7d5790475fa7e64a79dd8708ffb5f3dd753f3c07">
+  <meta name="site-corpus-revision" content="f74f1aa66527f2848bd9d55d0ed3c52120b9ba16be346f64855976ad18df6195">
   <script type="module" src="../static/js/webmcp.js"></script>
 </head>
 <body>
@@ -30,9 +30,9 @@
     </header>
     <main id="main-content" tabindex="-1"><h1 class="page-title">Mac Set Up</h1><p class="post-meta"><time datetime="2026-09-27">2026-09-27</time></p><div class="post-body"><h2>Macintosh</h2>
 <p>A small, terminal-first Mac setup.</p>
-<p>The setup is automated by <code>scripts/build-mac.sh</code> in the
-<a href="https://github.com/yujieteo/dotfiles">dotfiles repository</a>. This post lists
-the steps in the order the script runs them, and says which ones stay manual.</p>
+<p>The setup is automated by <code>scripts/build-mac.sh</code> in my private dotfiles
+repository. This post lists the steps in the order the script runs them, and
+says which ones stay manual.</p>
 <h2>macOS security basics</h2>
 <p>Manual, before running the script. In System Settings:</p>
 <ul>
@@ -43,7 +43,7 @@ the steps in the order the script runs them, and says which ones stay manual.</p
 </ul>
 <h2>Install</h2>
 <pre><code>xcode-select --install            # wait for the dialog to finish
-git clone https://github.com/yujieteo/dotfiles ~/dotfiles &amp;&amp; cd ~/dotfiles
+git clone &lt;dotfiles-repo&gt; ~/dotfiles &amp;&amp; cd ~/dotfiles
 scripts/build-mac.sh --dry-run    # preview; changes nothing
 scripts/build-mac.sh              # run it (asks once before making changes)
 </code></pre>
@@ -228,7 +228,7 @@ opencode
 <pre><code>pi --continue
 </code></pre>
 <h2>Restore</h2>
-<pre><code>git clone https://github.com/yujieteo/dotfiles ~/dotfiles &amp;&amp; cd ~/dotfiles
+<pre><code>git clone &lt;dotfiles-repo&gt; ~/dotfiles &amp;&amp; cd ~/dotfiles
 scripts/build-mac.sh --dry-run
 scripts/build-mac.sh
 </code></pre>
