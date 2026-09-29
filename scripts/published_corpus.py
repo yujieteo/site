@@ -43,7 +43,7 @@ def _record(kind, identity, **fields):
     return public
 
 
-def build_published_corpus(cv, about, resources, papers, posts, notes, visualizations=(), podcasts=()):
+def build_published_corpus(cv, about, resources, papers, posts, notes, visualizations=(), media_items=()):
     """Return the sole normalized projection of intentionally public content."""
     records = [
         _record(
@@ -110,14 +110,25 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
             tags=visualization["tags"], category=visualization["category"],
         ))
 
-    for episode in podcasts:
-        records.append(_record(
-            "podcast", episode["id"], title=episode["title"],
-            summary=episode["summary"], url=f"podcast/{episode['id']}.html",
-            date=episode["date"], tags=episode["focus_tags"],
-            audioUrl=f"podcast/{episode['audio']}",
-            durationSeconds=episode["duration_seconds"],
-        ))
+    for item in media_items:
+        if "video" in item:
+            records.append(_record(
+                "video", item["id"], title=item["title"],
+                summary=item["summary"], url=f"media/{item['id']}.html",
+                date=item["date"], tags=item["focus_tags"],
+                videoUrl=f"media/{item['video']}",
+                captionsUrl=f"media/{item['captions']}",
+                posterUrl=f"media/{item['poster']}",
+                durationSeconds=item["duration_seconds"],
+            ))
+        else:
+            records.append(_record(
+                "podcast", item["id"], title=item["title"],
+                summary=item["summary"], url=f"media/{item['id']}.html",
+                date=item["date"], tags=item["focus_tags"],
+                audioUrl=f"media/{item['audio']}",
+                durationSeconds=item["duration_seconds"],
+            ))
 
     unique_records = []
     seen_ids = set()

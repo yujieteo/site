@@ -9,7 +9,7 @@ This is a personal, evolving collection intended for reading, research, and refe
 - [Home](https://teoyujie.org/): Site overview and recent material.
 - [About](https://teoyujie.org/about.html): Biography and site context.
 - [Notes](https://teoyujie.org/notes.html): Dated short notes and reflections.
-- [Podcast](https://teoyujie.org/podcast/index.html): Dated audio episodes condensed from the notes.
+- [Media](https://teoyujie.org/media/index.html): Dated audio episodes condensed from the notes, plus explainer videos.
 - [Blog](https://teoyujie.org/blog.html): Longer essays and technical posts.
 - [Resources](https://teoyujie.org/): Curated resources and references.
 - [Paper links](https://teoyujie.org/papers.html): Collection of links to mathematical and technical papers.
