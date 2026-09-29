@@ -100,28 +100,16 @@ def _union_words(index, focus):
 
 
 def choose_focus(index, note_tags, target_minutes=DEFAULT_TARGET_MINUTES,
-                 previous=(), wpm=DEFAULT_WPM, focus_tags=None):
+                 previous=(), wpm=DEFAULT_WPM):
     """Pick a focus led by the most common useful tag and its neighbours.
 
     The seed is the most common content tag that has not led a previous
     episode. Expansion prefers tags that co-occur with the seed, then tags
     connected to the growing focus, and finally the most common remaining
     tags until there is enough material for the target duration.
-
-    ``focus_tags`` overrides the selection with an explicit ordered focus that
-    is never expanded, so a thin subject publishes a shorter episode.
     """
     if not index:
         raise PodcastError("data/notes.md has no content-tagged notes to build an episode from")
-    if focus_tags:
-        focus = list(dict.fromkeys(focus_tags))
-        unknown = [tag for tag in focus if tag not in index]
-        if unknown:
-            raise PodcastError(
-                "--focus-tags must be content tags with speakable notes; "
-                f"not usable: {', '.join(unknown)}"
-            )
-        return focus
     previous_seeds = {
         episode["focus_tags"][0]
         for episode in previous
@@ -179,19 +167,18 @@ def choose_focus(index, note_tags, target_minutes=DEFAULT_TARGET_MINUTES,
     return focus
 
 
-def group_notes(index, focus, used_note_ids=frozenset(), skip_note_ids=frozenset()):
+def group_notes(index, focus, used_note_ids=frozenset()):
     """Group every selected note under its first matching focus tag.
 
     Notes not used by a previous episode come first within each tag, then
-    newest date first, so fresh material leads each day's episode. Notes in
-    ``skip_note_ids`` are left out.
+    newest date first, so fresh material leads each day's episode.
     """
     assigned = set()
     sections = []
     for tag in focus:
         notes = []
         for note in index[tag]:
-            if note["id"] in assigned or note["id"] in skip_note_ids:
+            if note["id"] in assigned:
                 continue
             assigned.add(note["id"])
             notes.append(note)
@@ -278,13 +265,8 @@ def build_script(plan, site_name):
 
 
 def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
-                 episode_date=None, previous=(), wpm=DEFAULT_WPM, today=None,
-                 focus_tags=None, exclude_tags=(), fresh_only=False):
-    """Select the next episode's date, focus tags, notes, and spoken script.
-
-    ``exclude_tags`` drops every note carrying one of those content tags and
-    ``fresh_only`` drops notes used by a previous episode.
-    """
+                 episode_date=None, previous=(), wpm=DEFAULT_WPM, today=None):
+    """Select the next episode's date, focus tags, notes, and spoken script."""
     if target_minutes <= 0 or target_minutes > 240:
         raise PodcastError("--target-minutes must be greater than 0 and at most 240")
     if episode_date is None:
@@ -298,25 +280,13 @@ def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
         raise PodcastError("episode date must be a date or YYYY-MM-DD string")
 
     index, note_tags = index_notes(document, registry)
-    focus = choose_focus(index, note_tags, target_minutes, previous, wpm, focus_tags)
+    focus = choose_focus(index, note_tags, target_minutes, previous, wpm)
     used_note_ids = {
         note_id
         for episode in previous
         for note_id in episode.get("notes", [])
     }
-    unknown = [tag for tag in exclude_tags if tag not in index]
-    if unknown:
-        raise PodcastError(
-            f"--exclude-tags must be content tags with speakable notes; not usable: "
-            f"{', '.join(unknown)}"
-        )
-    skip_note_ids = set(used_note_ids) if fresh_only else set()
-    skip_note_ids.update(
-        note_id for note_id, tags in note_tags.items() if set(tags) & set(exclude_tags)
-    )
-    sections = group_notes(index, focus, used_note_ids, skip_note_ids)
-    if not sections:
-        raise PodcastError("the selected focus has no notes left to render")
+    sections = group_notes(index, focus, used_note_ids)
     title_tags = focus[:3]
     slug = "-".join(_slugify(tag) for tag in title_tags)
     return {
@@ -326,9 +296,7 @@ def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
         "title": f"Notes on {_human_join([_display_tag(tag) for tag in title_tags])}",
         "focus_tags": list(focus),
         "sections": sections,
-        "estimated_seconds": sum(
-            _words(note["content"]) for section in sections for note in section["notes"]
-        ) / wpm * 60,
+        "estimated_seconds": _union_words(index, focus) / wpm * 60,
         "candidate_notes": sum(len(section["notes"]) for section in sections),
     }
 
@@ -380,8 +348,7 @@ def _summarize(plan, used_notes):
 
 def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
                      voice=DEFAULT_VOICE, synthesizer=None, root=ROOT,
-                     wpm=DEFAULT_WPM, today=None, focus_tags=None, exclude_tags=(),
-                     fresh_only=False):
+                     wpm=DEFAULT_WPM, today=None):
     """Render one episode and write its metadata and MP3 under ``root``."""
     notes_path = root / "data" / "notes.md"
     tags_path = root / "data" / "note-tags.json"
@@ -395,9 +362,6 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
         previous=previous,
         wpm=wpm,
         today=today,
-        focus_tags=focus_tags,
-        exclude_tags=exclude_tags,
-        fresh_only=fresh_only,
     )
 
     metadata_path = root / "data" / "podcasts" / f"{plan['id']}.yaml"
@@ -506,19 +470,6 @@ def _parser():
             help=f"target spoken duration (default {DEFAULT_TARGET_MINUTES})",
         )
         subparser.add_argument("--date", dest="episode_date", help="episode date (YYYY-MM-DD)")
-        subparser.add_argument(
-            "--focus-tags", nargs="+", metavar="TAG",
-            help="use exactly these content tags, in order, as the episode focus "
-                 "instead of choosing and expanding one",
-        )
-        subparser.add_argument(
-            "--exclude-tags", nargs="+", metavar="TAG", default=(),
-            help="leave out every note carrying any of these content tags",
-        )
-        subparser.add_argument(
-            "--fresh-only", action="store_true",
-            help="skip notes already rendered in an earlier episode",
-        )
 
     plan = subparsers.add_parser("plan", help="select the next episode without rendering audio")
     add_planning_arguments(plan)
@@ -543,9 +494,6 @@ def main(argv=None):
                 target_minutes=args.target_minutes,
                 episode_date=args.episode_date,
                 previous=load_episodes(ROOT),
-                focus_tags=args.focus_tags,
-                exclude_tags=args.exclude_tags,
-                fresh_only=args.fresh_only,
             )
             summary = _plan_summary(plan)
             _print_plan(summary)
@@ -554,9 +502,6 @@ def main(argv=None):
             target_minutes=args.target_minutes,
             episode_date=args.episode_date,
             voice=args.voice,
-            focus_tags=args.focus_tags,
-            exclude_tags=args.exclude_tags,
-            fresh_only=args.fresh_only,
         )
     except (PodcastError, NotesError) as exc:
         diagnostics = getattr(exc, "diagnostics", None) or [str(exc)]

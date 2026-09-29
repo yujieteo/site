@@ -87,11 +87,6 @@ inventing new ones.
 - `generate` writes the metadata and MP3. Useful flags: `--target-minutes N`
   sets the duration aim, `--date YYYY-MM-DD` sets the episode date, and
   `--voice <id>` changes the Kokoro voice.
-- To steer away from the default focus, `--focus-tags <tag>...` uses exactly
-  those content tags, in order, without expanding them; a thin focus publishes
-  a shorter episode. `--fresh-only` skips notes rendered in an earlier episode
-  and `--exclude-tags <tag>...` skips notes carrying those tags. Use `plan`
-  with the same flags first to review the candidates.
 - Check the printed duration and listen to a sample when the result matters.
 
 ## Publish
