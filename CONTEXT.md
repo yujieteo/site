@@ -12,8 +12,8 @@ _Avoid_: index, database, knowledge base
 One publicly retrievable item in the Published Corpus, such as a note, paper link, resource, post, profile, or About section.
 _Avoid_: document, entry, row
 
-**Podcast Episode**:
-A dated, roughly 30-minute spoken digest of notes grouped under a focus selected from the most common content tags, stored as metadata and local Kokoro-generated audio source content.
+**Media Item**:
+A dated item in the Media section — either an audio podcast episode (a roughly 30-minute spoken digest of notes grouped under a focus selected from the most common content tags) or an explainer video — stored as metadata plus local audio or video source content.
 _Avoid_: audio note, recording
 
 **Authenticated Authoring**:
