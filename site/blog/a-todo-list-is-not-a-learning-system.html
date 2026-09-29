@@ -9,14 +9,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <meta name="site-corpus" content="../corpus.json">
-  <meta name="site-corpus-revision" content="98bfa820a74da4fffd7e78e3fd82c56e2f3a394cb73c1e606806f875e9873f14">
+  <meta name="site-corpus-revision" content="08819eed2e2096e50544c836de46cfa3a65246bd38bc31ff9852bb6f81ef9616">
   <script type="module" src="../static/js/webmcp.js"></script>
+  <script type="module" src="../static/js/fade.js"></script>
+  <script type="module" src="../static/js/site-search.js"></script>
+  <noscript><style>.site-search { display: none; }</style></noscript>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="site-shell">
+  <div class="site-shell site-shell-wide">
     <header class="site-header">
       <a class="site-name" href="../index.html">Yu Jie Teo</a>
+      <div class="site-search" data-site-search>
+        <button type="button" class="site-search-trigger" data-site-search-open
+                aria-haspopup="dialog" aria-controls="site-search-dialog">
+          <svg class="site-search-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m13 13 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+          <span>Search</span>
+          <kbd class="key-hint site-search-shortcut" data-site-search-shortcut aria-hidden="true">Ctrl K</kbd>
+        </button>
+        <dialog class="site-search-dialog" id="site-search-dialog" aria-label="Search the site">
+          <form class="site-search-form" role="search" data-site-search-form>
+            <svg class="site-search-icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m13 13 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+            <label class="visually-hidden" for="site-search-input">Search the whole site</label>
+            <input type="search" id="site-search-input" class="site-search-input"
+                   placeholder="Search notes, papers, posts…" autocomplete="off" spellcheck="false"
+                   enterkeyhint="go" role="combobox" aria-expanded="false" aria-autocomplete="list"
+                   aria-controls="site-search-results">
+            <button type="button" class="site-search-close" data-site-search-close>
+              <span class="key-hint" aria-hidden="true">esc</span><span class="site-search-close-label">Close</span>
+            </button>
+          </form>
+          <div class="site-search-body">
+            <p class="site-search-status" data-site-search-status aria-live="polite" aria-atomic="true">Search notes, paper links, blog posts, resources, visuals and media.</p>
+            <ul class="site-search-results" id="site-search-results" role="listbox"
+                aria-label="Search results"></ul>
+          </div>
+          <p class="key-hint site-search-footer" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></p>
+        </dialog>
+      </div>
       <p class="site-tagline">Personal website</p>
       <nav class="site-nav" aria-label="Primary">
         <a href="../index.html">Home</a>
@@ -28,7 +58,7 @@
         <a href="../visuals.html">Visuals</a>
       </nav>
     </header>
-    <main id="main-content" tabindex="-1"><h1 class="page-title">A To-Do List Is Not a Learning System</h1><p class="post-meta"><time datetime="2026-09-26">2026-09-26</time></p><div class="post-body"><p>A long list of promising things to try can feel like exploration. Usually it is
+    <main id="main-content" tabindex="-1"><div class="docs-layout"><details class="docs-nav" data-docs-nav open><summary class="docs-nav-toggle">All posts</summary><nav aria-label="Blog posts"><p class="docs-nav-heading"><a href="../blog.html">Blog</a></p><ul class="docs-nav-list"><li><a href="buy-the-defence-check-the-luck.html"><span class="docs-nav-title">Buy the Defence, Check the Luck</span><span class="docs-nav-date"><time datetime="2026-09-29">2026-09-29</time> &middot; <span class="reading-time">1 min</span></span></a></li><li><a href="thinking-clearly-is-a-job-not-a-look.html"><span class="docs-nav-title">Thinking Clearly Is a Job, Not a Look</span><span class="docs-nav-date"><time datetime="2026-09-29">2026-09-29</time> &middot; <span class="reading-time">4 min</span></span></a></li><li><a href="mac-set-up.html"><span class="docs-nav-title">Mac Set Up</span><span class="docs-nav-date"><time datetime="2026-09-27">2026-09-27</time> &middot; <span class="reading-time">5 min</span></span></a></li><li><a href="a-todo-list-is-not-a-learning-system.html" aria-current="page"><span class="docs-nav-title">A To-Do List Is Not a Learning System</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">3 min</span></span></a></li><li><a href="cohomology-motives-prismatic-f-gauges.html"><span class="docs-nav-title">One cohomology computation through motives and prismatic F-gauges</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">7 min</span></span></a></li><li><a href="from-cech-cocycles-to-the-weil-conjectures.html"><span class="docs-nav-title">From Čech cocycles to the Weil conjectures</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">5 min</span></span></a></li><li><a href="shimura-cohomology-one-computation.html"><span class="docs-nav-title">One computation behind the cohomology of Shimura varieties</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">4 min</span></span></a></li><li><a href="wilsonian-renormalisation-from-qed-to-epidemics.html"><span class="docs-nav-title">Wilsonian renormalisation from QED to epidemic events</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">7 min</span></span></a></li><li><a href="quantized-calculus-foliations-measure.html"><span class="docs-nav-title">From transverse measure to quantized calculus</span><span class="docs-nav-date"><time datetime="2026-09-25">2026-09-25</time> &middot; <span class="reading-time">3 min</span></span></a></li><li><a href="oth-recovery-260919.html"><span class="docs-nav-title">Recovery Notes for 19 September 2026</span><span class="docs-nav-date"><time datetime="2026-09-19">2026-09-19</time> &middot; <span class="reading-time">4 min</span></span></a></li><li><a href="ooda-orientation-and-slouching.html"><span class="docs-nav-title">OODA, Orientation, and Slouching</span><span class="docs-nav-date"><time datetime="2026-09-13">2026-09-13</time> &middot; <span class="reading-time">8 min</span></span></a></li><li><a href="pluvium-colour.html"><span class="docs-nav-title">Pluvium&#x27;s Workshop on colours</span><span class="docs-nav-date"><time datetime="2026-09-13">2026-09-13</time> &middot; <span class="reading-time">1 min</span></span></a></li><li><a href="groundless-confidence.html"><span class="docs-nav-title">Groundless Confidence</span><span class="docs-nav-date"><span class="reading-time">1 min</span></span></a></li><li><a href="notes-on-ontology.html"><span class="docs-nav-title">Notes on Ontology</span><span class="docs-nav-date"><span class="reading-time">2 min</span></span></a></li><li><a href="search-reflections-i.html"><span class="docs-nav-title">Search Reflections I</span><span class="docs-nav-date"><span class="reading-time">1 min</span></span></a></li><li><a href="ssh-setup-guide.html"><span class="docs-nav-title">SSH Setup Guide</span><span class="docs-nav-date"><span class="reading-time">3 min</span></span></a></li></ul></nav></details><article class="docs-article"><div class="docs-title-row"><h1 class="page-title">A To-Do List Is Not a Learning System</h1><div class="page-actions"><button type="button" class="page-action" data-copy-markdown>Copy Markdown</button><a class="page-action" href="a-todo-list-is-not-a-learning-system.md" type="text/markdown">View Markdown</a><span class="page-action-status" data-copy-status aria-live="polite"></span></div><script type="application/json" id="post-markdown">"---\ntitle: \"A To-Do List Is Not a Learning System\"\ndate: \"2026-09-26\"\nsummary: \"Exploration creates value only when an action produces feedback that can change a later choice.\"\ncategory: \"Decision Making\"\ntags: \"regret, multi-armed-bandits, exploration, feedback, focus\"\nslug: a-todo-list-is-not-a-learning-system\n---\n\nA long list of promising things to try can feel like exploration. Usually it is\nonly a list of unopened experiments.\n\nExploration has a specific job: spend something now to obtain information that\ncan improve later choices. If an idea is recorded but never tried, it produces no\nobservation. If it is tried but the result is never recorded, it still cannot\nchange the next decision. The list grows, but the decision-maker does not learn.\n\nThis distinction is sharp in the multi-armed bandit problem. An agent repeatedly\nchooses among actions with uncertain rewards. Choosing a familiar action exploits\nwhat is already known; choosing an uncertain action explores. The objective is\nnot to maximize novelty or certainty. It is to limit the reward lost relative to\na stated comparator over the remaining horizon.\n\nThat last phrase matters. [Upper-confidence methods](https://doi.org/10.1023/A:1013689704352)\nmake uncertainty actionable by favoring options whose observed performance or\nremaining uncertainty justifies another trial. [Information-directed\nsampling](https://arxiv.org/abs/1403.5556) makes the purpose even clearer: useful\nexploration trades immediate regret for information about which action to choose.\nA to-do item with no trial and no result buys no information.\n\n## Turn intentions into observations\n\nFor practical decisions, each experiment needs five fields:\n\n1. **Action:** what will be done, in a quantity small enough to finish.\n2. **Signal:** what observable result would distinguish the live hypotheses.\n3. **Horizon:** when the result will be reviewed.\n4. **Rule:** what observation means keep, change, or stop.\n5. **Identity:** a stable label connecting the intention to its result.\n\nThe identity can be as small as a commit-like tag. An action labelled\n`exp-a13f09c` later receives a result with the same label. The point is not\nadministrative neatness. It is to make missing feedback visible. When the review\ndate passes without a result, the system has located its own learning failure.\n\n## Separate cheap wins from costly attention\n\nNot every action deserves an experiment. Some changes are one-time, cheap,\nreversible, and durably useful: schedule the appointment, enable the backup,\nsave the verified reference, or remove a recurring source of friction. Do all\nnonredundant actions of this kind in one bounded batch. Their downside is small,\nand learning which is exactly best would cost more than acting.\n\nSerious projects are different. Attention, setup, and switching are part of their\ncost. Bandits with switching costs are structurally harder than cost-free\nbandits; the cost changes which sequence of actions is good, rather than merely\nsubtracting a small fee at the end. [Dekel, Ding, Koren, and\nPeres](https://arxiv.org/abs/1310.2997) give a formal example of this change.\n\nA practical response is to rank a few serious contenders and choose one focus.\nProtect its capacity before batching small wins. The other contenders remain\noptions, not simultaneous commitments.\n\n## Use the remaining horizon\n\nAn experiment is worth running when a rough value-of-information test is\npositive:\n\n> chance that the result changes a future choice × remaining uses × plausible\n> benefit exceeds experiment cost + switching cost + downside.\n\nThis is a decision aid, not a regret bound. It explains why early exploration can\nbe valuable when a result will guide many future choices, and why late\nexploration can be wasteful near a hard deadline. It also explains why the exact\nbest action is often unnecessary. [Satisficing bandit\nlearning](https://arxiv.org/abs/1803.02855) formalizes the advantage of finding an\naction that is good enough when identifying the optimum would consume too much\ntime or information.\n\nOld results should not rule forever. When circumstances change, reward estimates\ncan become stale. Non-stationary bandit work therefore studies changing\ncomparators and deliberate forgetting or restarting; [Besbes, Gur, and\nZeevi](https://arxiv.org/abs/1307.5449) provide one foundational treatment. In a\npersonal system, the modest equivalent is a review date and an explicit reason\nto reopen a settled choice after a regime change.\n\n## The smallest complete loop\n\nA useful action system can therefore stay small:\n\n- collect possibilities without pretending that collection is exploration;\n- execute every genuinely cheap, durable one-time win in a bounded batch;\n- compare a few consequential options and commit to one;\n- make the chosen action measurable and time-bounded;\n- record the result under the same experiment identity;\n- keep, change, stop, or reopen the choice using that observation.\n\nThe scarce object is not ideas. It is closed feedback loops. A list preserves\noptions; an experiment spends one option to learn; a recorded result makes that\nlearning available to the future.\n"</script></div><p class="post-meta"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">3 min read</span></p><div class="post-body"><p>A long list of promising things to try can feel like exploration. Usually it is
 only a list of unopened experiments.</p>
 <p>Exploration has a specific job: spend something now to obtain information that
 can improve later choices. If an idea is recorded but never tried, it produces no
@@ -45,7 +75,7 @@ remaining uncertainty justifies another trial. <a href="https://arxiv.org/abs/14
 sampling</a> makes the purpose even clearer: useful
 exploration trades immediate regret for information about which action to choose.
 A to-do item with no trial and no result buys no information.</p>
-<h2>Turn intentions into observations</h2>
+<h2 id="turn-intentions-into-observations">Turn intentions into observations</h2>
 <p>For practical decisions, each experiment needs five fields:</p>
 <ol>
 <li><strong>Action:</strong> what will be done, in a quantity small enough to finish.</li>
@@ -58,7 +88,7 @@ A to-do item with no trial and no result buys no information.</p>
 <code>exp-a13f09c</code> later receives a result with the same label. The point is not
 administrative neatness. It is to make missing feedback visible. When the review
 date passes without a result, the system has located its own learning failure.</p>
-<h2>Separate cheap wins from costly attention</h2>
+<h2 id="separate-cheap-wins-from-costly-attention">Separate cheap wins from costly attention</h2>
 <p>Not every action deserves an experiment. Some changes are one-time, cheap,
 reversible, and durably useful: schedule the appointment, enable the backup,
 save the verified reference, or remove a recurring source of friction. Do all
@@ -72,7 +102,7 @@ Peres</a> give a formal example of this change.</p>
 <p>A practical response is to rank a few serious contenders and choose one focus.
 Protect its capacity before batching small wins. The other contenders remain
 options, not simultaneous commitments.</p>
-<h2>Use the remaining horizon</h2>
+<h2 id="use-the-remaining-horizon">Use the remaining horizon</h2>
 <p>An experiment is worth running when a rough value-of-information test is
 positive:</p>
 <blockquote>
@@ -92,7 +122,7 @@ comparators and deliberate forgetting or restarting; <a href="https://arxiv.org/
 Zeevi</a> provide one foundational treatment. In a
 personal system, the modest equivalent is a review date and an explicit reason
 to reopen a settled choice after a regime change.</p>
-<h2>The smallest complete loop</h2>
+<h2 id="the-smallest-complete-loop">The smallest complete loop</h2>
 <p>A useful action system can therefore stay small:</p>
 <ul>
 <li>collect possibilities without pretending that collection is exploration;</li>
@@ -104,7 +134,7 @@ to reopen a settled choice after a regime change.</p>
 </ul>
 <p>The scarce object is not ideas. It is closed feedback loops. A list preserves
 options; an experiment spends one option to learn; a recorded result makes that
-learning available to the future.</p></div></main>
+learning available to the future.</p></div></article><aside class="docs-aside"><nav class="docs-toc" aria-labelledby="toc-heading" data-toc><p class="docs-toc-heading" id="toc-heading">On this page</p><ul class="docs-toc-list"><li class="toc-level-2"><a href="#turn-intentions-into-observations">Turn intentions into observations</a></li><li class="toc-level-2"><a href="#separate-cheap-wins-from-costly-attention">Separate cheap wins from costly attention</a></li><li class="toc-level-2"><a href="#use-the-remaining-horizon">Use the remaining horizon</a></li><li class="toc-level-2"><a href="#the-smallest-complete-loop">The smallest complete loop</a></li></ul></nav></aside></div><script type="module" src="../static/js/post.js"></script></main>
     <footer class="site-footer">
       Made with the assistance of AI. <a href="https://github.com/yujieteo">GitHub</a>
     </footer>

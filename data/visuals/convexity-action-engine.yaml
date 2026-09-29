@@ -1,10 +1,10 @@
 slug: convexity-action-engine
 title: Convexity Action Engine
 summary: "Press Ctrl/⌘ K, type what you are considering, and see it in your Singapore context: screened for ruin first, then compared on reliable upside, right-tail upside, timing and opportunity cost against real alternatives. 395 actions and 26 to avoid; every number is labelled author judgement."
-source_url: https://github.com/yujieteo/visuals/tree/main/data/convexity-action-engine
+source_url: https://github.com/yujieteo/site/tree/main/visuals/convexity-action-engine
 fetched: "2026-09-29"
-html_path: viz/convexity-action-engine/index.html
-data_path: data/convexity-action-engine/raw.json
+html_path: visuals/convexity-action-engine/index.html
+data_path: visuals/convexity-action-engine/raw.json
 webmcp_tools: [get_metadata, search_actions, get_action, compare_actions]
 tags: [decision making, convexity, optionality, tail risk, singapore]
 category: data visualization

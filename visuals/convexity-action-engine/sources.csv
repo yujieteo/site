@@ -1,0 +1,10 @@
+source_id,title,type,status,url,notes
+judgement,Author judgement for this build (category priors and per-action overrides),heuristic,used,,Ordinal 0-4 estimates. Not measured. Every field that uses it is labelled JUDGEMENT.
+model,"This page's model: formulas that transform the judged facts into fit, classes and lens rankings",model,used,,Formulas are shown on the page under Method. MODEL values inherit the confidence of their inputs.
+singapore,"Singapore context assumptions: daylight about 07:00-19:15, midday heat 11:00-16:00, typical opening hours",heuristic,used,,Stored as a Singapore adjustment separate from the global prior; switch it off to see the global prior alone.
+personal,Your own decision history in this browser,personal,used when present,,Shown with its sample size n. Not used to change rankings.
+onet,O*NET occupational task database,observational,planned; not retrieved (network blocked in the build environment),,Would ground work-task actions.
+atus,American Time Use Survey (activity lexicon and time-of-day patterns),survey,planned; not retrieved,,Would replace the judged typical-time curves with observed ones.
+oecd-tus,OECD time-use database,survey,planned; not retrieved,,Cross-country typical durations.
+sg-tus,Singapore time-use survey and data.gov.sg datasets,survey,planned; not retrieved,,Singapore-specific timing and opening hours.
+health-reviews,"Systematic reviews on exercise, sleep, meal timing and injury risk",review,planned; not retrieved,,"Would replace judged health, timing and tail-risk fields."

@@ -23,10 +23,40 @@ Every generated page registers two read-only tools when the browser supports
 - `search_site` searches all public content by text, kind, tags, and sort order.
 - `get_item` retrieves one complete Corpus Record by its stable ID.
 
-Both tools and the visible search controls use `static/js/corpus.js`. The
+Both tools and the visible search controls use `static/js/corpus.js`: the
+per-page filters (`static/js/filter.js`, one kind per page) and the global
+search (`templates/base.html`, `static/js/site-search.js`). A Search button in
+every page header opens a modal `<dialog>` that searches every record kind,
+loads the corpus on first open, and resolves record URLs against `corpus.json`
+so results work from nested pages. With a fine pointer, Cmd+K (Mac) or Ctrl+K
+toggles it and `/` opens it outside text fields; touch devices get only the
+button, a full-screen popup, and no key hints
+(`@media (hover: none), (pointer: coarse)`). The
 browser fetches `corpus.json` without persistent caching and keeps it only for
 the page lifetime. Authenticated authoring is intentionally separate from this
 read interface.
+
+## Motion
+
+Page navigations fade with CSS view transitions (`@view-transition`), with a
+fade-in on `main` for first loads and browsers without them. Every other UI
+state change (hover and current states, results appearing, `<details>` opening,
+the search popup opening and closing, status text changing) fades with the same
+`--fade-duration` (200ms) and `--fade-ease` tokens, via CSS in
+`static/css/style.css` or `static/js/fade.js`. Fades only run towards visible,
+so pages render normally without JavaScript, and `prefers-reduced-motion:
+reduce` turns all of it off.
+
+## Blog
+
+Each `data/blog/<slug>.md` becomes `site/blog/<slug>.html` (post list, article,
+table of contents) plus a copy of its Markdown source. The build estimates a
+reading time with `reading_minutes()` in `scripts/build.py`: frontmatter,
+fenced code blocks, HTML tags and link targets are skipped, a word is any
+whitespace-separated token with a letter or digit, and the count is rounded to
+the nearest minute at 220 words per minute (minimum 1). It appears in the post
+meta line and post list as "N min read" / "N min", and as `readingMinutes` on
+the post's `blog` Corpus Record, which the blog index renders.
 
 ## Notes
 
