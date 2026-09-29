@@ -25,10 +25,13 @@ Every generated page registers two read-only tools when the browser supports
 
 Both tools and the visible search controls use `static/js/corpus.js`: the
 per-page filters (`static/js/filter.js`, one kind per page) and the global
-search box in the header of every page (`templates/base.html`,
-`static/js/site-search.js`), which searches every record kind, loads the corpus
-on first focus or keystroke, and resolves record URLs against `corpus.json` so
-results work from nested pages. Press `/` to focus it. The
+search (`templates/base.html`, `static/js/site-search.js`). A Search button in
+every page header opens a modal `<dialog>` that searches every record kind,
+loads the corpus on first open, and resolves record URLs against `corpus.json`
+so results work from nested pages. With a fine pointer, Cmd+K (Mac) or Ctrl+K
+toggles it and `/` opens it outside text fields; touch devices get only the
+button, a full-screen popup, and no key hints
+(`@media (hover: none), (pointer: coarse)`). The
 browser fetches `corpus.json` without persistent caching and keeps it only for
 the page lifetime. Authenticated authoring is intentionally separate from this
 read interface.
@@ -38,7 +41,7 @@ read interface.
 Page navigations fade with CSS view transitions (`@view-transition`), with a
 fade-in on `main` for first loads and browsers without them. Every other UI
 state change (hover and current states, results appearing, `<details>` opening,
-the search panel closing, status text changing) fades with the same
+the search popup opening and closing, status text changing) fades with the same
 `--fade-duration` (200ms) and `--fade-ease` tokens, via CSS in
 `static/css/style.css` or `static/js/fade.js`. Fades only run towards visible,
 so pages render normally without JavaScript, and `prefers-reduced-motion:

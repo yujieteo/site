@@ -28,9 +28,12 @@ export function fadeIn(element) {
 
 // Resolves true once the element has faded out (or at once when motion is
 // off), false if the fade was cancelled, for example by reopening.
-export function fadeOut(element) {
+export function fadeOut(element, options = {}) {
   if (!enabled(element)) return Promise.resolve(true);
-  const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], { ...timing(), fill: "forwards" });
+  const animation = element.animate(
+    [{ opacity: 1 }, { opacity: 0 }],
+    { ...timing(), fill: "forwards", ...options },
+  );
   return animation.finished.then(() => true, () => false);
 }
 

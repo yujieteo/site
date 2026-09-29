@@ -23,7 +23,7 @@ def shell_pages():
 
 
 class GlobalSearchTests(unittest.TestCase):
-    def test_every_page_has_the_global_search_form(self):
+    def test_every_page_has_the_search_button_and_dialog(self):
         pages = list(shell_pages())
         self.assertGreater(len(pages), 20)
         for path in pages:
@@ -31,8 +31,15 @@ class GlobalSearchTests(unittest.TestCase):
             with self.subTest(page=str(path.relative_to(SITE))):
                 header = re.search(r'<header class="site-header">(.*?)</header>', page, re.DOTALL)
                 self.assertIsNotNone(header)
-                self.assertIn('<form class="site-search" role="search" data-site-search>', header.group(1))
-                self.assertIn('<label class="visually-hidden" for="site-search-input">', header.group(1))
+                header = header.group(1)
+                self.assertRegex(
+                    header,
+                    r'<button type="button" class="site-search-trigger" data-site-search-open\s+'
+                    r'aria-haspopup="dialog" aria-controls="site-search-dialog">',
+                )
+                self.assertIn('<dialog class="site-search-dialog" id="site-search-dialog"', header)
+                self.assertIn('<label class="visually-hidden" for="site-search-input">', header)
+                self.assertIn('role="listbox"', header)
                 self.assertEqual(page.count('id="site-search-input"'), 1)
                 ids = re.findall(r'\sid="([^"]+)"', page)
                 self.assertEqual(len(ids), len(set(ids)), "duplicate element ids")
@@ -45,6 +52,23 @@ class GlobalSearchTests(unittest.TestCase):
         script = (ROOT / "static/js/site-search.js").read_text(encoding="utf-8")
         self.assertIn('import { loadCorpus, searchSite } from "./corpus.js";', script)
         self.assertNotIn("fetch(", script)
+        self.assertIn("showModal()", script)
+
+    def test_shortcut_is_desktop_only(self):
+        script = (ROOT / "static/js/site-search.js").read_text(encoding="utf-8")
+        self.assertIn('matchMedia("(pointer: coarse)")', script)
+        guard = script.index("if (!coarsePointer.matches) {\n    document.addEventListener(\"keydown\"")
+        self.assertEqual(script.count('document.addEventListener("keydown"'), 1)
+        self.assertGreater(guard, 0)
+        css = (ROOT / "static/css/style.css").read_text(encoding="utf-8")
+        block = re.search(
+            r"@media \(hover: none\), \(pointer: coarse\) \{\s*\.key-hint,\s*kbd\.key-hint \{\s*display: none;", css
+        )
+        self.assertIsNotNone(block, "key hints must be hidden on touch devices")
+        template = (ROOT / "templates/base.html").read_text(encoding="utf-8")
+        for hint in re.findall(r'<(?:kbd|p|span)[^>]*class="[^"]*\bkey-hint\b[^"]*"[^>]*>', template):
+            self.assertIn('aria-hidden="true"', hint)
+        self.assertEqual(template.count("key-hint"), 3)
 
 
 class FadeTests(unittest.TestCase):

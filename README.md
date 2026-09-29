@@ -28,7 +28,7 @@ llms.txt             Public guidance for LLM readers
 
 `site/corpus.json` is the generated Published Corpus, the explicit public
 projection consumed by the search interface (the per-page filters and the
-global search box in every page header) and the read-only WebMCP tools. See
+global Search popup in every page header, Cmd/Ctrl+K) and the read-only WebMCP tools. See
 [docs/architecture.md](docs/architecture.md).
 
 ## Build

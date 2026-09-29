@@ -1,28 +1,43 @@
-// Global site search in the header of every page. It searches the whole
-// Published Corpus with the same loader and ranking as the per-page filters
-// (corpus.js), fetching corpus.json only on first focus or keystroke.
+// Global site search: a Search button in the header of every page opens a
+// modal <dialog> that searches the whole Published Corpus with the same
+// loader and ranking as the per-page filters (corpus.js). The corpus is
+// fetched on first open. Cmd+K (Mac) / Ctrl+K elsewhere, or "/" outside a
+// text field, toggles it on devices with a fine pointer; touch devices get
+// only the button, and the key hints are hidden there by CSS.
 import { loadCorpus, searchSite } from "./corpus.js";
 import { cancelFade, fadeIn, fadeOut } from "./fade.js";
 
-const form = document.querySelector("[data-site-search]");
-if (form) {
-  const input = form.querySelector(".site-search-input");
-  const panel = form.querySelector("[data-site-search-panel]");
-  const list = form.querySelector(".site-search-results");
-  const status = form.querySelector("[data-site-search-status]");
-  const live = form.querySelector("[data-site-search-live]");
+const root = document.querySelector("[data-site-search]");
+const dialog = root?.querySelector("dialog");
+if (root && dialog && typeof dialog.showModal === "function") {
+  const trigger = root.querySelector("[data-site-search-open]");
+  const shortcutLabel = root.querySelector("[data-site-search-shortcut]");
+  const form = dialog.querySelector("[data-site-search-form]");
+  const input = dialog.querySelector(".site-search-input");
+  const closeButton = dialog.querySelector("[data-site-search-close]");
+  const list = dialog.querySelector(".site-search-results");
+  const status = dialog.querySelector("[data-site-search-status]");
+  const emptyMessage = status.textContent;
   const corpusUrl = new URL(
     document.querySelector('meta[name="site-corpus"]')?.content || "corpus.json",
     document.baseURI,
   );
-  const limit = 8;
+  const platform = navigator.userAgentData?.platform || navigator.platform || "";
+  const isMac = /mac|iphone|ipad|ipod/i.test(platform);
+  const coarsePointer = window.matchMedia("(pointer: coarse)");
+  const limit = 20;
   const kindLabels = {
     profile: "Profile", about: "About", resource: "Resource", paper: "Paper",
     note: "Note", blog: "Blog", visualization: "Visual", podcast: "Podcast", video: "Video",
   };
   let active = -1;
   let requestId = 0;
+  let closing = 0;
   let debounce;
+  let returnFocus = null;
+
+  if (shortcutLabel) shortcutLabel.textContent = isMac ? "⌘K" : "Ctrl K";
+  if (!coarsePointer.matches) trigger.setAttribute("aria-keyshortcuts", isMac ? "Meta+K" : "Control+K");
 
   const escapeHtml = (value) => String(value ?? "").replace(
     /[&<>"']/g,
@@ -38,7 +53,7 @@ if (form) {
 
   const setActive = (index) => {
     const items = options();
-    active = items.length ? (index + items.length) % items.length : -1;
+    active = items.length && index >= 0 ? Math.min(index, items.length - 1) : -1;
     items.forEach((item, position) => item.setAttribute("aria-selected", String(position === active)));
     if (active >= 0) {
       input.setAttribute("aria-activedescendant", items[active].id);
@@ -48,43 +63,26 @@ if (form) {
     }
   };
 
-  let closing = 0;
-  const open = () => {
-    if (input.getAttribute("aria-expanded") === "true") return;
-    closing += 1;
-    cancelFade(panel);
-    panel.inert = false;
-    panel.hidden = false;
-    input.setAttribute("aria-expanded", "true");
-  };
-  const close = () => {
-    if (panel.hidden || input.getAttribute("aria-expanded") === "false") return;
-    setActive(-1);
-    input.setAttribute("aria-expanded", "false");
-    // Inert while fading so the fading results cannot be focused or read.
-    panel.inert = true;
-    const current = ++closing;
-    fadeOut(panel).then((finished) => {
-      if (!finished || current !== closing) return;
-      panel.hidden = true;
-      panel.inert = false;
-      cancelFade(panel);
-    });
-  };
-
   const resultHtml = (record, index) => {
-    const summary = shorten(record.summary || record.content, 140);
     const title = shorten(record.title, 100) || "Untitled";
-    const meta = [kindLabels[record.kind] || record.kind, record.date,
-      record.readingMinutes ? `${Number(record.readingMinutes)} min read` : ""]
+    const summary = shorten(record.summary || record.content, 150);
+    const meta = [record.date, record.readingMinutes ? `${Number(record.readingMinutes)} min read` : ""]
       .filter(Boolean).map(escapeHtml).join(" &middot; ");
     const showSummary = summary && !summary.startsWith(title.replace(/…$/, ""));
     return `<li role="option" id="site-search-option-${index}" aria-selected="false">`
       + `<a class="site-search-result" href="${escapeHtml(resolve(record.url))}" tabindex="-1">`
-      + `<span class="site-search-meta">${meta}</span>`
-      + `<span class="site-search-title">${escapeHtml(title)}</span>`
+      + `<span class="site-search-kind" data-kind="${escapeHtml(record.kind)}">`
+      + `${escapeHtml(kindLabels[record.kind] || record.kind)}</span>`
+      + `<span class="site-search-text"><span class="site-search-title">${escapeHtml(title)}</span>`
       + (showSummary ? `<span class="site-search-summary">${escapeHtml(summary)}</span>` : "")
-      + "</a></li>";
+      + (meta ? `<span class="site-search-meta">${meta}</span>` : "")
+      + "</span></a></li>";
+  };
+
+  const setStatus = (text) => {
+    if (status.textContent === text) return;
+    status.textContent = text;
+    fadeIn(status);
   };
 
   const render = async () => {
@@ -92,8 +90,9 @@ if (form) {
     const current = ++requestId;
     if (!text) {
       list.innerHTML = "";
-      live.textContent = "";
-      close();
+      input.setAttribute("aria-expanded", "false");
+      setActive(-1);
+      setStatus(emptyMessage);
       return;
     }
     let result;
@@ -101,76 +100,127 @@ if (form) {
       const corpus = await loadCorpus();
       if (current !== requestId) return;
       result = searchSite(corpus, { text, limit });
-    } catch (error) {
+    } catch {
       if (current !== requestId) return;
       list.innerHTML = "";
-      status.textContent = "Search is unavailable right now.";
-      live.textContent = status.textContent;
-      open();
+      setActive(-1);
+      setStatus("Search is unavailable right now. Please try again.");
       return;
     }
     list.innerHTML = result.items.filter((record) => record.url).map(resultHtml).join("");
     const shown = options().length;
-    status.textContent = result.total
+    input.setAttribute("aria-expanded", String(shown > 0));
+    setStatus(result.total
       ? `${result.total} ${result.total === 1 ? "result" : "results"}`
         + (result.total > shown ? `, showing the top ${shown}` : "")
-      : `No results for “${text}”`;
-    live.textContent = status.textContent;
-    fadeIn(status);
-    document.dispatchEvent(new CustomEvent("site-search-rendered", { detail: { target: list } }));
-    open();
-    setActive(-1);
+      : `No results for “${text}”. Try fewer or different words.`);
+    setActive(shown ? 0 : -1);
   };
+
+  const open = () => {
+    closing += 1;
+    cancelFade(dialog);
+    dialog.inert = false;
+    if (!dialog.open) {
+      returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : trigger;
+      dialog.showModal();
+      loadCorpus().catch(() => {});
+    }
+    input.focus();
+    input.select();
+  };
+
+  const close = () => {
+    if (!dialog.open || dialog.inert) return;
+    // Inert while fading so nothing in the fading popup can be used.
+    dialog.inert = true;
+    const current = ++closing;
+    Promise.all([
+      fadeOut(dialog),
+      fadeOut(dialog, { pseudoElement: "::backdrop" }),
+    ]).then((finished) => {
+      if (current !== closing || !finished.every(Boolean)) return;
+      dialog.close();
+    });
+  };
+
+  dialog.addEventListener("close", () => {
+    closing += 1;
+    dialog.inert = false;
+    cancelFade(dialog);
+    (returnFocus && returnFocus.isConnected ? returnFocus : trigger).focus();
+    returnFocus = null;
+  });
 
   const go = (index) => {
     const link = options()[index]?.querySelector("a");
     if (link) window.location.assign(link.href);
   };
 
-  // Lazy-load: start fetching the corpus the first time the box is used.
-  input.addEventListener("focus", () => { loadCorpus().catch(() => {}); }, { once: true });
-  input.addEventListener("focus", () => { if (input.value.trim() && list.children.length) open(); });
+  trigger.addEventListener("click", open);
+  closeButton.addEventListener("click", close);
+  // Escape fades the popup out instead of closing it abruptly.
+  dialog.addEventListener("cancel", (event) => { event.preventDefault(); close(); });
+  // A click on the backdrop lands on the dialog itself, outside its box.
+  dialog.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+    const box = dialog.getBoundingClientRect();
+    const inside = event.clientX >= box.left && event.clientX <= box.right
+      && event.clientY >= box.top && event.clientY <= box.bottom;
+    if (!inside) close();
+  });
+  form.addEventListener("submit", (event) => event.preventDefault());
   input.addEventListener("input", () => {
     clearTimeout(debounce);
-    debounce = setTimeout(render, 120);
+    debounce = setTimeout(render, 100);
   });
   input.addEventListener("keydown", (event) => {
     const count = options().length;
     if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
       if (!count) return;
+      const step = event.key === "ArrowDown" ? 1 : -1;
+      setActive(active < 0 ? (step > 0 ? 0 : count - 1) : (active + step + count) % count);
+    } else if ((event.key === "Home" || event.key === "End") && event.ctrlKey && count) {
       event.preventDefault();
-      open();
-      setActive(event.key === "ArrowDown" ? active + 1 : (active < 0 ? count - 1 : active - 1));
+      setActive(event.key === "Home" ? 0 : count - 1);
     } else if (event.key === "Escape") {
-      if (!panel.hidden) close();
-      else input.value = "";
       event.preventDefault();
-    } else if (event.key === "Enter") {
+      close();
+    } else if (event.key === "Enter" && !event.isComposing) {
       event.preventDefault();
       clearTimeout(debounce);
       if (active >= 0) go(active);
       else render().then(() => { if (options().length) go(0); });
     }
   });
-  form.addEventListener("submit", (event) => event.preventDefault());
   list.addEventListener("mousemove", (event) => {
     const option = event.target.closest('[role="option"]');
-    if (option) setActive(options().indexOf(option));
+    if (option) {
+      const index = options().indexOf(option);
+      if (index !== active) setActive(index);
+    }
   });
   // Keep focus in the input when choosing with the mouse.
   list.addEventListener("mousedown", (event) => event.preventDefault());
-  document.addEventListener("pointerdown", (event) => {
-    if (!form.contains(event.target)) close();
-  });
-  form.addEventListener("focusout", (event) => {
-    if (!form.contains(event.relatedTarget)) close();
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key !== "/" || event.metaKey || event.ctrlKey || event.altKey) return;
-    const target = event.target;
-    if (target.closest?.("input, textarea, select, [contenteditable]")) return;
-    event.preventDefault();
-    input.focus();
-    input.select();
-  });
+
+  const isTextField = (element) => element instanceof HTMLElement && (
+    element.isContentEditable || element.matches("textarea, select, input:not([type=button], "
+      + "[type=checkbox], [type=radio], [type=submit], [type=reset], [type=range], [type=color])"));
+
+  // Keyboard shortcuts only where there is a keyboard-first pointer.
+  if (!coarsePointer.matches) {
+    document.addEventListener("keydown", (event) => {
+      const modifier = isMac ? event.metaKey && !event.ctrlKey : event.ctrlKey && !event.metaKey;
+      if (modifier && !event.altKey && !event.shiftKey && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        if (dialog.open && !dialog.inert) close();
+        else open();
+      } else if (event.key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey
+          && !dialog.open && !isTextField(event.target)) {
+        event.preventDefault();
+        open();
+      }
+    });
+  }
 }
