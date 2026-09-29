@@ -28,6 +28,17 @@ browser fetches `corpus.json` without persistent caching and keeps it only for
 the page lifetime. Authenticated authoring is intentionally separate from this
 read interface.
 
+## Blog
+
+Each `data/blog/<slug>.md` becomes `site/blog/<slug>.html` (post list, article,
+table of contents) plus a copy of its Markdown source. The build estimates a
+reading time with `reading_minutes()` in `scripts/build.py`: frontmatter,
+fenced code blocks, HTML tags and link targets are skipped, a word is any
+whitespace-separated token with a letter or digit, and the count is rounded to
+the nearest minute at 220 words per minute (minimum 1). It appears in the post
+meta line and post list as "N min read" / "N min", and as `readingMinutes` on
+the post's `blog` Corpus Record, which the blog index renders.
+
 ## Notes
 
 `data/notes.md` is the sole source of truth for notes; `site/notes.html` is

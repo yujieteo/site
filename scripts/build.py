@@ -187,6 +187,30 @@ def normalize_tags(tags, fallback):
     return values or [str(fallback or "General")]
 
 
+READING_WORDS_PER_MINUTE = 220
+FENCED_CODE = re.compile(r"^ {0,3}(`{3,}|~{3,}).*?^ {0,3}\1[`~]*[ \t]*$", re.MULTILINE | re.DOTALL)
+
+
+def reading_minutes(body_markdown):
+    """Estimate whole minutes to read a post body (frontmatter already removed).
+
+    Fenced code blocks are skipped (readers scan or copy them rather than read
+    them), as are HTML tags/comments and link targets. A word is any
+    whitespace-separated token containing a letter or digit, so inline code and
+    TeX count like prose. Rounds to the nearest minute at 220 words per minute,
+    with a minimum of one minute.
+    """
+    text = FENCED_CODE.sub(" ", body_markdown or "")
+    text = re.sub(r"<!--.*?-->|<[^>]+>", " ", text, flags=re.DOTALL)
+    text = re.sub(r"\]\([^)]*\)", "] ", text)
+    words = sum(1 for token in text.split() if re.search(r"[^\W_]", token))
+    return max(1, int(words / READING_WORDS_PER_MINUTE + 0.5))
+
+
+def format_reading_time(minutes):
+    return f"{minutes} min read"
+
+
 def load_blog_posts():
     directory = DATA / "blog"
     if not directory.is_dir():
@@ -208,6 +232,7 @@ def load_blog_posts():
             "body_markdown": body,
             "source_markdown": raw,
             "body_html": render_markdown(body),
+            "reading_minutes": reading_minutes(body),
         })
     # Newest first.
     posts.sort(key=lambda p: p["date"], reverse=True)
@@ -703,12 +728,16 @@ def render_blog_sidebar(posts, current_slug):
     for p in posts:
         current = ' aria-current="page"' if p["slug"] == current_slug else ""
         date = (
-            f'<time class="docs-nav-date" datetime="{esc(p["date"])}">{esc(p["date"])}</time>'
+            f'<time datetime="{esc(p["date"])}">{esc(p["date"])}</time> &middot; '
             if p["date"] else ""
+        )
+        meta = (
+            f'<span class="docs-nav-date">{date}'
+            f'<span class="reading-time">{p["reading_minutes"]} min</span></span>'
         )
         items.append(
             f'<li><a href="{esc(p["slug"])}.html"{current}>'
-            f'<span class="docs-nav-title">{esc(p["title"])}</span>{date}</a></li>'
+            f'<span class="docs-nav-title">{esc(p["title"])}</span>{meta}</a></li>'
         )
     items = "".join(items)
     return (
@@ -740,9 +769,13 @@ def blog_post_markdown(post):
 
 
 def build_blog_post(cv, post, posts, corpus_revision):
-    meta_line = (
-        f'<p class="post-meta"><time datetime="{esc(post["date"])}">{esc(post["date"])}</time></p>'
+    date = (
+        f'<time datetime="{esc(post["date"])}">{esc(post["date"])}</time> &middot; '
         if post["date"] else ""
+    )
+    meta_line = (
+        f'<p class="post-meta">{date}<span class="reading-time">'
+        f'{format_reading_time(post["reading_minutes"])}</span></p>'
     )
     body_html = re.sub(r"</?h1(?=>|\s)", lambda match: match.group(0).replace("h1", "h2"),
                        post["body_html"])

@@ -1,10 +1,14 @@
 import json
 import re
+import sys
 import unittest
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from build import load_blog_posts, reading_minutes  # noqa: E402
 SLUG = "from-cech-cocycles-to-the-weil-conjectures"
 
 
@@ -41,6 +45,50 @@ class BlogPostPageTests(unittest.TestCase):
         self.assertEqual(targets, heading_ids)
         self.assertEqual(len(targets), len(set(targets)))
         self.assertIn("1-the-shadow-a-cech-class", targets)
+
+
+class ReadingTimeTests(unittest.TestCase):
+    def test_rounds_at_220_words_per_minute_with_a_one_minute_floor(self):
+        self.assertEqual(reading_minutes(""), 1)
+        self.assertEqual(reading_minutes("word " * 10), 1)
+        self.assertEqual(reading_minutes("word " * 440), 2)
+        self.assertEqual(reading_minutes("word " * 549), 2)
+        self.assertEqual(reading_minutes("word " * 551), 3)
+
+    def test_skips_fenced_code_markup_and_link_targets(self):
+        prose = "word " * 440 + "\n"
+        code = "```bash\n" + "brew install thing\n" * 400 + "```\n"
+        tilde = "~~~\n" + "x = 1\n" * 400 + "~~~\n"
+        self.assertEqual(reading_minutes(prose + code + tilde), 2)
+        self.assertEqual(reading_minutes(prose + "<div>\n</div> [a](https://example.com/long/url) - *"), 2)
+
+    def test_every_post_shows_its_reading_time(self):
+        posts = load_blog_posts()
+        corpus = json.loads((ROOT / "site/corpus.json").read_text(encoding="utf-8"))
+        corpus_minutes = {
+            record["id"].removeprefix("blog:"): record["readingMinutes"]
+            for record in corpus["records"] if record["kind"] == "blog"
+        }
+        for post in posts:
+            minutes = reading_minutes(post["body_markdown"])
+            self.assertGreaterEqual(minutes, 1)
+            self.assertEqual(corpus_minutes[post["slug"]], minutes, post["slug"])
+            page = (ROOT / "site/blog" / f"{post['slug']}.html").read_text(encoding="utf-8")
+            meta = re.search(r'<p class="post-meta">(.*?)</p>', page, re.DOTALL).group(1)
+            self.assertIn(f'<span class="reading-time">{minutes} min read</span>', meta)
+            nav = re.search(r'<ul class="docs-nav-list">(.*?)</ul>', page, re.DOTALL).group(1)
+            for other in posts:
+                entry = re.search(
+                    rf'<a href="{re.escape(other["slug"])}\.html"[^>]*>(.*?)</a>', nav, re.DOTALL
+                ).group(1)
+                self.assertIn(
+                    f'<span class="reading-time">{other["reading_minutes"]} min</span>', entry
+                )
+
+    def test_blog_index_renders_reading_time_from_the_corpus(self):
+        script = (ROOT / "static/js/filter.js").read_text(encoding="utf-8")
+        self.assertIn("entry.readingMinutes", script)
+        self.assertIn("min read", script)
 
 
 if __name__ == "__main__":

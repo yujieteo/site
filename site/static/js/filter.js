@@ -21,8 +21,14 @@ if (form) {
   );
 
   const entryHtml = (entry) => {
-    const date = entry.date
-      ? `<time class="entry-date" datetime="${escapeHtml(entry.date)}">${escapeHtml(entry.date)}</time>`
+    const time = entry.date
+      ? `<time datetime="${escapeHtml(entry.date)}">${escapeHtml(entry.date)}</time>`
+      : "";
+    const reading = entry.readingMinutes
+      ? `<span class="reading-time">${Number(entry.readingMinutes)} min read</span>`
+      : "";
+    const date = time || reading
+      ? `<div class="entry-date">${[time, reading].filter(Boolean).join(" &middot; ")}</div>`
       : "";
     const tags = (entry.tags || []).map((tag) => (
       `<button type="button" class="tag" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`
