@@ -1,90 +1,160 @@
 ---
 title: Mac Set Up
 date: 2026-09-27
-summary: Mac set up
+summary: A reproducible Mac set up with nix-darwin, Home Manager and a pinned flake
 category: Computing
-tags: mac, setup
+tags: mac, setup, nix
 ---
 
 # Macintosh
 
-A small, terminal-first Mac setup.
+A small, terminal-first Mac setup, declared in code.
 
-The setup is automated by `scripts/build-mac.sh` in my private dotfiles
-repository. This post lists the steps in the order the script runs them, and
-says which ones stay manual.
+The whole machine is described by a Nix flake in my private dotfiles
+repository, in the style of
+[kunchenguid/dotfiles-mac-nix](https://github.com/kunchenguid/dotfiles-mac-nix):
+[nix-darwin](https://github.com/nix-darwin/nix-darwin) for the system,
+[Home Manager](https://github.com/nix-community/home-manager) for my user, and
+declarative Homebrew for the few GUI apps that are not in nixpkgs. A short
+bootstrap script, `setup/mac.sh`, does the handful of things that have to
+happen before Nix can take over.
+
+## Why Nix
+
+The previous version of this post was a list of commands, later a script that
+ran them. Both describe *how* to reach a state, and both drift: `brew install`
+gives whatever is newest that day, and every hand-written dotfile is a second
+copy of something a tool could generate.
+
+The flake describes *what* the machine is. `flake.lock` pins nixpkgs,
+nix-darwin and Home Manager to exact commits on the 26.05 release branches, so
+two Macs built from the same commit get the same packages, versions and
+generated config files. Nothing changes until I run `nix flake update` and
+commit the new lock. A bad change is one `sudo darwin-rebuild --rollback`
+away.
+
+## What owns what
+
+```
+nix/host.nix   machine (nix-darwin): Homebrew casks, macOS defaults,
+               firewall, Touch ID for sudo
+nix/user.nix   user (Home Manager): CLI tools, coding agents, zsh, Git,
+               gh, SSH, mise, VS Code and its extensions, ~/src ~/data ~/tmp
+files/         configs I edit by hand, linked into $HOME
+               (Neovim, Alacritty, tmux, VS Code settings)
+setup/mac.sh   the bootstrap
+```
+
+The rule of thumb for adding a tool:
+
+- a CLI tool, font or coding agent goes in `home.packages`;
+- a GUI app that nixpkgs does not package well goes in `homebrew.casks`;
+- a tool with a Home Manager module is configured through `programs.<tool>`,
+  not a hand-written file;
+- only a file I actually edit by hand lives in `files/`.
 
 ## macOS security basics
 
-Manual, before running the script. In System Settings:
-
-- Turn on FileVault (Privacy & Security).
-- Turn on the firewall (Network).
-- Turn on automatic software updates (General → Software Update).
-- Add a fingerprint for Touch ID (Touch ID & Password).
+nix-darwin turns on the firewall (with stealth mode), Touch ID for `sudo`, and
+automatic macOS updates. FileVault cannot be declared, so it stays manual:
+System Settings → Privacy & Security → FileVault.
 
 ## Install
 
 ```
-xcode-select --install            # wait for the dialog to finish
-git clone <dotfiles-repo> ~/dotfiles && cd ~/dotfiles
-scripts/build-mac.sh --dry-run    # preview; changes nothing
-scripts/build-mac.sh              # run it (asks once before making changes)
+git clone <dotfiles-repo> ~/dotfiles
+bash ~/dotfiles/setup/mac.sh
 ```
 
-The steps, in order (`scripts/build-mac.sh --list`):
+The checkout must be at `~/dotfiles`, because the files under `files/` are
+linked to it directly: an edit to `init.lua` applies without a rebuild. The
+script refuses to run anywhere else, as root, or off macOS.
+
+`setup/mac.sh` runs in one pass, and every step is skipped when its work is
+already done:
 
 ```
-xcode homebrew packages herdr agents directories dotfiles
-herdr-integration vscode-extensions ssh python skills verify
+xcode      xcode-select --install, then wait for the dialog
+nix        the Determinate Nix installer, then source Nix into this shell
+homebrew   the Homebrew installer (nix-darwin installs the casks with it)
+activate   the first nix-darwin + Home Manager activation
+herdr      the herdr installer, then its claude and codex integrations
+ssh        ssh-keygen, with a passphrase you type
+skills     gh repo clone yujieteo/skills ~/src/skills, once gh is signed in
 ```
 
-Every step is idempotent: work that is already done is skipped, and nothing is
-deleted. The script never calls `sudo`; the Homebrew installer and the mactex
-cask ask for the admin password themselves. Run a single step with
-`--only STEP`, or leave one out with `--skip STEP`.
+The installers are downloaded to a temporary file and only run from there, so
+a failed download stops the script instead of feeding half a script to a
+shell. `sudo` is used for activation only.
 
-Add the Homebrew `PATH` line the installer printed to `~/.zprofile`, then
-restart the shell. Neither this post nor the tracked dotfiles do it for you, so
-without it the next `brew update` fails:
-
-```
-eval "$(/opt/homebrew/bin/brew shellenv)"
-```
-
-### xcode, homebrew
-
-The script runs `xcode-select --install` and waits for the dialog to finish,
-then installs Homebrew.
-
-Homebrew, herdr and Claude Code are installed by their official
-`curl … | sh` installers, but the script never pipes them straight into a
-shell. It downloads each one to a temporary file first, stops if the download
-fails, and only then runs it from that file.
-
-### packages
+The first activation is the interesting line. `darwin-rebuild` does not exist
+yet, so the script runs it from the nix-darwin revision pinned in the lock
+rather than from whatever `master` is today:
 
 ```
-brew update
-brew install git gh stow neovim ripgrep fzf jq mise uv
-brew install --cask google-chrome alacritty visual-studio-code mactex discord
+sudo nix run --inputs-from ~/dotfiles nix-darwin#darwin-rebuild -- \
+  switch --flake ~/dotfiles#mac
 ```
 
-`mactex` is several GB and its installer asks for the admin password. Apps
-already present in `/Applications` are skipped rather than reinstalled over.
+Existing files that Home Manager would replace, such as an old `~/.zshrc`, are
+renamed with a `.backup` suffix rather than deleted.
 
-### herdr, agents
+## What gets installed
 
-The script installs herdr, the terminal agent multiplexer, from
-`https://herdr.dev/install.sh`, then the coding agents: Codex through
-`brew install codex`, and Claude Code through the official installer at
-`https://claude.ai/install.sh`.
+From nixpkgs, pinned by the lock:
 
-The Codex desktop app is not installed by the script. Codex's Chrome plugin is
-added from inside that app, under Plugins → add the Chrome plugin; that is a
-manual step.
+```
+fzf jq neovim ripgrep uv
+claude-code codex opencode
+vscode + vscodevim.vim ms-python.python charliermarsh.ruff
+zsh git gh mise
+```
 
-### directories
+From Homebrew casks:
+
+```
+alacritty discord google-chrome mactex
+```
+
+`mactex` is several GB and its installer asks for the admin password.
+
+Homebrew is the one layer the lock does not pin. To keep it predictable,
+activation never runs `brew update` or `brew upgrade`, so the installed casks
+change only when the list changes. Anything not on the list, including
+something I `brew install`ed by hand, is uninstalled on the next rebuild: the
+list is the truth.
+
+herdr, the terminal agent multiplexer, is not in nixpkgs, so the script
+installs it with `https://herdr.dev/install.sh` and runs
+`herdr integration install claude` and `herdr integration install codex`.
+
+## Shell, Git, SSH, Python
+
+These are Home Manager modules rather than dotfiles:
+
+- zsh sets `EDITOR` and `VISUAL` to `nvim`, keeps my plain
+  `user@host:~/path$` prompt, activates mise, and defines `rebuild`.
+- Git has my identity, `init.defaultBranch = main`, `pull.ff = only` and the
+  global ignores (`.DS_Store`, `.env`, `.env.*` but not `.env.example`).
+- `gh` uses SSH, and is set as Git's credential helper for github.com and
+  gist.github.com by its store path, so there is no hard-coded
+  `/opt/homebrew/bin/gh` any more.
+- SSH has one host, `github.com`, with `~/.ssh/id_ed25519`,
+  `IdentitiesOnly yes` and `AddKeysToAgent yes`.
+- mise's global config sets Python 3.14. mise owns Python versions; uv owns
+  projects and dependencies.
+
+The generated files (`~/.zshrc`, `~/.config/git/config`, `~/.ssh/config`,
+`~/.config/gh/config.yml`, `~/.config/mise/config.toml`) are read-only links
+into the Nix store. So `git config --global`, `gh config set` and
+`mise use --global` no longer work, which is the point: the change goes in
+`nix/user.nix`, then `rebuild`.
+
+VS Code and its three extensions come from nixpkgs too, and extensions
+installed from inside VS Code do not survive a rebuild. Its `settings.json`
+lives in `files/` and stays editable from the settings UI.
+
+## Directories
 
 ```
 ~/src   Git repositories
@@ -92,147 +162,56 @@ manual step.
 ~/tmp   disposable work
 ```
 
-The script creates them, plus `~/.ssh`, and sets `~/data` and `~/.ssh` to mode
-700.
+Home Manager creates them, plus `~/.ssh`, and sets `~/data` and `~/.ssh` to
+mode 700.
 
-### dotfiles
+## Manual steps
 
-`scripts/build-mac.sh` links the tracked `home/` and `vscode/` Stow packages
-into `$HOME` with `--no-folding`, backing up conflicting files to
-`~/dotfiles-backup/<timestamp>/`. `--no-folding` keeps `~/.ssh` and `~/.config`
-as real directories, so no tool writes through a link into the repository.
-`--adopt` is never used.
+The script prints these as a checklist at the end (or with `--checklist`).
 
-The linked files are the ones the repository tracks under `home/` and `vscode/`
-— shell, Neovim, Alacritty, Git, SSH and VS Code settings. The repository is the
-source of truth, so this post no longer repeats their contents. Tool-generated
-files (`home/.config/gh`, VS Code caches and logs) are tracked only as a
-snapshot and are never linked, so `gh` and VS Code never write into the working
-tree.
-
-The tracked `.gitconfig` already holds the Git settings, so there is no
-`git config --global` block to run, and `gh auth setup-git` is skipped for the
-same reason: after linking, `~/.gitconfig` points into the repository, and
-those commands would edit it. Set the identity email in the repository before
-the SSH step, because `ssh-keygen -C` reads it.
-
-The repository has drifted from what this post used to say: it still tracks a
-`.tmux.conf` although herdr replaces tmux, and its `alacritty.toml` is empty.
-The script links whatever the repository contains.
-
-### herdr-integration
-
-The script runs `herdr integration install claude` and
-`herdr integration install codex` to sharpen agent detection.
-
-herdr works without a config file — add one at `~/.config/herdr/config.toml`
-only if you want custom keys, themes, or notifications; `herdr --default-config`
-prints a full starting point.
-
-First run is manual:
-
-```
-open -a Alacritty
-herdr
-```
-
-First run opens a short onboarding flow. Press `n` to create a workspace, run an
-agent in the pane, and `ctrl+b` to enter navigate mode. Detach with `ctrl+b`
-then `q` — agents keep running in the background session.
-
-### vscode-extensions
-
-The script installs the useful extensions only: `vscodevim.vim`,
-`ms-python.python` and `charliermarsh.ruff`. If the `code` command is not on
-`PATH`, open VS Code's Command Palette, run "Shell Command: Install 'code'
-command in PATH", then:
-
-```
-scripts/build-mac.sh --only vscode-extensions,verify
-```
-
-### ssh
-
-The script generates `~/.ssh/id_ed25519` if it does not exist
-(`ssh-keygen -t ed25519 -a 100`, with the identity email as the comment), asks
-you for a passphrase, and tightens the permissions on `~/.ssh/config` and the
-key. If it has no terminal for the passphrase prompt, run the command yourself
-and accept the default path:
-
-```
-ssh-keygen -t ed25519 -a 100 -C "$(git config --global user.email)"
-```
-
-Add the key to the agent. macOS already runs an agent under launchd, so use
-`ssh-add` alone; `eval "$(ssh-agent -s)"` would start a second, orphaned one:
-
-```
-ssh-add ~/.ssh/id_ed25519
-```
-
-Signing in to GitHub is manual:
+Sign in to GitHub and check it:
 
 ```
 gh auth login --hostname github.com --git-protocol ssh --web
 gh auth status
 ssh -T git@github.com
+ssh-add ~/.ssh/id_ed25519
 ```
 
-### python
+macOS already runs an SSH agent under launchd, so use `ssh-add` alone;
+`eval "$(ssh-agent -s)"` would start a second, orphaned one. Re-run
+`setup/mac.sh` afterwards to clone the skills repository.
 
-```
-mise use --global python@3.14
-```
-
-mise owns Python versions. uv owns projects and dependencies. Creating a
-project and its `.env` is per-project workflow, so it is left out of a
-machine-setup post.
-
-### skills
-
-Shared skills for both agents live in a separate repository. The script clones
-it to `~/src/skills` once `gh` is signed in; before that it leaves a note to
-re-run `scripts/build-mac.sh --only skills`.
-
-```
-gh repo clone yujieteo/skills ~/src/skills
-```
-
-Wiring it into Codex and Claude Code is still planned and is not automated.
-
-### verify
-
-```
-scripts/build-mac.sh --only verify
-```
-
-This read-only step checks that `git gh stow herdr nvim rg fzf jq mise uv codex
-claude` are on `PATH`, that Alacritty and VS Code are installed, and that the
-tools report their versions. It only warns about a missing `opencode`.
-
-## Manual checks
-
-The script prints these as a checklist at the end (or with `--checklist`):
-
-```
-gh auth status
-ssh -T git@github.com
-git config --global --list
-```
-
-- Sign in to `claude` by running it once.
-- OpenCode is used below but not installed by the script. Install it yourself,
-  then sign in interactively rather than through `.env`:
-
-  ```
-  opencode auth login
-  opencode auth list
-  ```
-
-- Add the Codex Chrome plugin in the Codex desktop app.
+- Turn on FileVault.
+- Sign in to `claude` by running it once, and to OpenCode interactively
+  rather than through `.env`: `opencode auth login`, then `opencode auth list`.
+- Add the Codex Chrome plugin in the Codex desktop app (Plugins → add the
+  Chrome plugin); the desktop app is not managed here.
 - Open Alacritty, Google Chrome and Discord once, and sign in as you wish.
+- herdr's first run opens a short onboarding flow. Press `n` to create a
+  workspace, run an agent in the pane, and `ctrl+b` to enter navigate mode.
+  Detach with `ctrl+b` then `q`; agents keep running in the background
+  session.
 
-Never put secrets in `~/.zshrc`, `.env.example`, Git, or shell commands.
+Never put secrets in the Nix files, `.env.example`, Git, or shell commands.
+
+## Changing things
+
+```
+$EDITOR ~/dotfiles/nix/user.nix
+rebuild      # sudo darwin-rebuild switch --flake ~/dotfiles#mac
+```
+
+To move to newer versions, deliberately:
+
+```
+nix flake update
+rebuild
+```
+
+then commit `flake.lock` with the change. CI evaluates the whole
+`aarch64-darwin` system from the lock on every pull request, so an unknown
+option, a missing package or a stale lock fails there rather than on the Mac.
 
 ## pi and firstmate
 
@@ -270,7 +249,7 @@ pi auth check --provider PROVIDER
 ```
 
 pi keeps configuration, credentials and session history under `~/.pi/agent`.
-Do not Stow or commit that directory.
+Do not link it from the dotfiles repository or commit it.
 
 firstmate is the agent distro for running a crew of coding agents, by the same
 author as no-mistakes. Clone it and launch a harness inside it:
@@ -306,10 +285,11 @@ pi --continue
 ## Restore
 
 ```
-git clone <dotfiles-repo> ~/dotfiles && cd ~/dotfiles
-scripts/build-mac.sh --dry-run
-scripts/build-mac.sh
+git clone <dotfiles-repo> ~/dotfiles
+bash ~/dotfiles/setup/mac.sh
 ```
+
+The same commit gives the same machine.
 
 Reinstall and re-authenticate pi separately; never restore its authentication
 from the dotfiles repository.
