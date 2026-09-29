@@ -35,6 +35,13 @@ A workday timeline pairs the circadian post-lunch dip with the measured reflex o
 - Fetched: 2026-09-29
 - WebMCP tools: get_data, get_metadata, query
 
+## How ordinary activities feel, and how often people do them
+Everyday activities plotted by how often people do them (ATUS 2014-2016) and how they feel doing them (Kahneman et al. 2004), with 100 common actions placed on regret, downside, upside and information axes.
+- HTML: https://teoyujie.org/visuals/everyday-actions/index.html
+- Data: https://teoyujie.org/visuals/everyday-actions/data.json
+- Fetched: 2026-09-29
+- WebMCP tools: get_data, get_metadata, query
+
 ## How much of the early FPL points are repeatable?
 Several of the top FPL scorers after Gameweek 5 of 2026/27 are running well above their expected goal involvement, so their points are the least likely to repeat.
 - HTML: https://teoyujie.org/visuals/fpl-expected-goals/index.html

@@ -140,7 +140,9 @@ def load_visualizations():
 
 
 def visualization_source(visuals_repo, relative_path):
-    repo = visuals_repo.resolve()
+    # Paths under visuals/ name visualizations built in this repository;
+    # everything else comes from the separate visuals checkout.
+    repo = (ROOT if relative_path.startswith("visuals/") else visuals_repo).resolve()
     source = (repo / relative_path).resolve()
     try:
         source.relative_to(repo)

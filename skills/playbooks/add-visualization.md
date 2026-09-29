@@ -2,6 +2,8 @@
 
 Visualization HTML and data live in the separate public [`visuals`](https://github.com/yujieteo/visuals) repository (`viz/<slug>/index.html`, `data/<slug>/raw.json` or `.csv`). This repository holds only the metadata stub.
 
+A visualization built in this repository instead keeps its sources in `visuals/<slug>/` (never under the generated `site/`), and its stub points `html_path` and `data_path` at `visuals/<slug>/...`; the build resolves those paths against this repository, so steps 1, 3 and 4 do not apply.
+
 1. Land the visualization in the `visuals` repository first; note the commit that contains it.
 2. Add or edit `data/visuals/<slug>.yaml` with `slug`, `title`, `summary`, `source_url`, `fetched`, `html_path`, `data_path`, `webmcp_tools` (at least three), `tags`, and `category`. `schema/visualization.schema.json` is the authority; copy a neighbouring stub such as `data/visuals/haze-singapore.yaml`.
 3. Point the build at the checkout: `export VISUALS_REPO=<path to visuals>` when it is not a sibling directory.
