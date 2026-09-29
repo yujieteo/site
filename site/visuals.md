@@ -35,6 +35,13 @@ Computing-titled degrees moved from 0.6% below the yearly median salary in 2013 
 - Fetched: 2026-09-27
 - WebMCP tools: get_data, get_metadata, query
 
+## Singapore haze, region by region
+Hourly PSI and PM2.5 for Singapore’s five regions from 1 April 2026 to 29 September 2026: no PSI above 100 until 4 September, then 15 Unhealthy days and a peak of 155 in Central.
+- HTML: https://teoyujie.org/visuals/haze-singapore/index.html
+- Data: https://teoyujie.org/visuals/haze-singapore/data.json
+- Fetched: 2026-09-29
+- WebMCP tools: get_data, get_metadata, query
+
 ## What Manchester City’s charges and accounts do and do not show
 An evidence-first timeline separates the Premier League allegations, the distinct 2020 CAS UEFA case, and the latest filed accounts.
 - HTML: https://teoyujie.org/visuals/manchester-city-finances/index.html
