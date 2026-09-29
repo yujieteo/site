@@ -13,7 +13,7 @@ data/notes.md        Append-only daily notes
 data/cv/             Site name, subtitle, and biography
 data/decks/          Self-contained slide decks, one folder per deck
 data/paper-links/    Paper-link YAML
-data/podcasts/       Podcast episode metadata and audio
+data/podcasts/       Media item metadata, audio, and video
 data/resources/      General resource YAML
 data/visuals/        Visualization metadata (assets come from the visuals repo)
 schema/              JSON Schemas for YAML data
@@ -142,11 +142,12 @@ as `notes.html#2026-09-24`.
 Blank lines separate notes. Trailing hashtags become clickable filters and are
 not displayed as part of the prose; use hyphens for multi-word tags.
 
-## Podcast episodes
+## Media
 
-Episodes are dated, roughly 30-minute audio digests of notes grouped under a
-focus chosen from the most common content tags. [Generate a podcast
-episode](skills/playbooks/generate-podcast.md) owns the full workflow; the
+The Media section holds dated audio podcast episodes and explainer videos.
+Audio episodes are roughly 30-minute digests of notes grouped under a focus
+chosen from the most common content tags. [Generate a podcast
+episode](skills/playbooks/generate-podcast.md) owns the audio workflow; the
 site build itself never needs the speech dependencies.
 
 ```sh
@@ -161,11 +162,14 @@ by `.venv/bin/pip install -r requirements.txt -r requirements-podcast.txt`
 produces the same environment. The Kokoro packages are only needed to render
 audio; validation, the build, and the tests run with `requirements.txt` alone.
 
-Each episode writes metadata to `data/podcasts/<date>-<focus>.yaml` and MP3
-audio to `data/podcasts/audio/<date>-<focus>.mp3`. The build copies the audio
-into `site/podcast/audio/`, renders `site/podcast/index.html` with the latest
-episode featured, renders one player page per episode, and adds a `podcast`
-record to `site/corpus.json`.
+Each audio episode writes metadata to `data/podcasts/<date>-<focus>.yaml` and
+MP3 audio to `data/podcasts/audio/<date>-<focus>.mp3`. Videos write metadata to
+the same directory and their MP4, VTT captions, and poster image to
+`data/podcasts/video/`. The build renders `site/media/index.html` with the
+latest item featured, renders one player page per item, copies each item's
+assets into `site/media/`, and adds a `podcast` or `video` record to
+`site/corpus.json`. Legacy `/podcast/...` URLs still resolve: the build writes
+redirect pages under `site/podcast/` and keeps a copy of each audio file there.
 
 ## Import paper links
 

@@ -253,7 +253,7 @@ def load_daily_notes():
 
 def site_fields(cv, active):
     """Return shared site identity and navigation state."""
-    keys = ["home", "about", "paper_links", "notes", "podcast", "blog", "visuals"]
+    keys = ["home", "about", "paper_links", "notes", "media", "blog", "visuals"]
     identity = {
         "name": cv["name"],
         "tagline": cv["title"],
@@ -277,41 +277,45 @@ def render_page(title, content, corpus_revision, root="", tagline="", name="", m
     return BASE_TEMPLATE.format_map(fields)
 
 
-def load_podcast_episodes():
-    """Load and validate podcast episode metadata, newest first."""
+def load_media_items():
+    """Load and validate media items (audio episodes and videos), newest first."""
     directory = DATA / "podcasts"
     if not directory.is_dir():
         return []
     schema = json.loads((ROOT / "schema/podcasts.schema.json").read_text(encoding="utf-8"))
     validator = Draft7Validator(schema)
-    episodes = []
+    items = []
     for path in sorted(directory.glob("*.yaml")):
-        episode = load_yaml(path)
-        errors = sorted(validator.iter_errors(episode), key=lambda error: list(error.path))
+        item = load_yaml(path)
+        errors = sorted(validator.iter_errors(item), key=lambda error: list(error.path))
         if errors:
             error = errors[0]
             location = ".".join(str(part) for part in error.path)
             raise RuntimeError(
-                f"Invalid podcast episode {path.stem} at {location or '<root>'}: {error.message}"
+                f"Invalid media item {path.stem} at {location or '<root>'}: {error.message}"
             )
-        if episode["id"] != path.stem:
-            raise RuntimeError(f"Podcast episode {path.name} declares id {episode['id']}")
-        if episode["audio"] != f"audio/{episode['id']}.mp3":
-            raise RuntimeError(
-                f"Podcast episode {episode['id']} must reference audio/{episode['id']}.mp3"
-            )
-        audio_path = directory / episode["audio"]
-        if not audio_path.is_file():
-            raise RuntimeError(
-                f"Podcast episode {episode['id']} is missing {audio_path.relative_to(ROOT)}"
-            )
-        episodes.append(episode)
-    episodes.sort(key=lambda episode: episode["date"], reverse=True)
-    ids = [episode["id"] for episode in episodes]
+        if item["id"] != path.stem:
+            raise RuntimeError(f"Media item {path.name} declares id {item['id']}")
+        for asset_key in ("audio", "video", "captions", "poster"):
+            asset = item.get(asset_key)
+            if asset is None:
+                continue
+            if not Path(asset).name.startswith(f"{item['id']}."):
+                raise RuntimeError(
+                    f"Media item {item['id']} must reference {asset_key}/{item['id']}.<ext>"
+                )
+            asset_path = directory / asset
+            if not asset_path.is_file():
+                raise RuntimeError(
+                    f"Media item {item['id']} is missing {asset_path.relative_to(ROOT)}"
+                )
+        items.append(item)
+    items.sort(key=lambda item: item["date"], reverse=True)
+    ids = [item["id"] for item in items]
     if len(ids) != len(set(ids)):
-        duplicate = next(episode_id for episode_id in ids if ids.count(episode_id) > 1)
-        raise RuntimeError(f"Duplicate podcast episode id: {duplicate}")
-    return episodes
+        duplicate = next(item_id for item_id in ids if ids.count(item_id) > 1)
+        raise RuntimeError(f"Duplicate media item id: {duplicate}")
+    return items
 
 
 def format_duration(seconds):
@@ -325,99 +329,146 @@ def format_duration(seconds):
     return f"{total} sec"
 
 
-def podcast_player(episode, prefix=""):
-    src = f"{prefix}{episode['audio']}"
+def media_player(item, prefix=""):
+    if "video" in item:
+        video_src = f"{prefix}{item['video']}"
+        captions_src = f"{prefix}{item['captions']}"
+        poster_src = f"{prefix}{item['poster']}"
+        return (
+            f'<video class="media-player" controls preload="metadata" playsinline '
+            f'poster="{esc(poster_src)}">'
+            f'<source src="{esc(video_src)}" type="video/mp4">'
+            f'<track kind="captions" src="{esc(captions_src)}" srclang="en" '
+            f'label="English" default>'
+            'Your browser does not support the video element. '
+            f'<a href="{esc(video_src)}">Download the video</a>.'
+            '</video>'
+        )
+    src = f"{prefix}{item['audio']}"
     return (
-        f'<audio class="podcast-player" controls preload="metadata" src="{esc(src)}">'
+        f'<audio class="media-player" controls preload="metadata" src="{esc(src)}">'
         f'Your browser does not support the audio element. '
         f'<a href="{esc(src)}">Download the episode</a>.'
         f'</audio>'
     )
 
 
-def build_podcast_index(cv, episodes, corpus_revision):
-    if episodes:
-        latest = episodes[0]
+def build_media_index(cv, items, corpus_revision):
+    if items:
+        latest = items[0]
         featured = (
-            '<section class="podcast-featured">'
-            '<p class="podcast-kicker">Latest episode</p>'
-            f'<h2 class="podcast-title">{esc(latest["title"])}</h2>'
-            f'<p class="podcast-meta"><time datetime="{esc(latest["date"])}">'
+            '<section class="media-featured">'
+            '<p class="media-kicker">Latest item</p>'
+            f'<h2 class="media-title">{esc(latest["title"])}</h2>'
+            f'<p class="media-meta"><time datetime="{esc(latest["date"])}">'
             f'{esc(latest["date"])}</time> &middot; {esc(format_duration(latest["duration_seconds"]))}</p>'
-            f'{podcast_player(latest)}'
-            f'<p class="podcast-summary">{esc(latest["summary"])}</p>'
-            f'<p><a href="{esc(latest["id"])}.html">Episode notes</a></p>'
+            f'{media_player(latest)}'
+            f'<p class="media-summary">{esc(latest["summary"])}</p>'
+            f'<p><a href="{esc(latest["id"])}.html">Open</a></p>'
             '</section>'
         )
-        items = "".join(
-            f'<li class="podcast-item"><time datetime="{esc(episode["date"])}">'
-            f'{esc(episode["date"])}</time>'
-            f'<a href="{esc(episode["id"])}.html">{esc(episode["title"])}</a>'
-            f'<span class="podcast-duration">'
-            f'{esc(format_duration(episode["duration_seconds"]))}</span></li>'
-            for episode in episodes
+        list_items = "".join(
+            f'<li class="media-item"><time datetime="{esc(item["date"])}">'
+            f'{esc(item["date"])}</time>'
+            f'<a href="{esc(item["id"])}.html">{esc(item["title"])}</a>'
+            f'<span class="media-duration">'
+            f'{esc(format_duration(item["duration_seconds"]))}</span></li>'
+            for item in items
         )
         body = (
             featured
-            + '<h2 class="section-title">All episodes</h2>'
-            + f'<ul class="podcast-list">{items}</ul>'
+            + '<h2 class="section-title">All items</h2>'
+            + f'<ul class="media-list">{list_items}</ul>'
         )
     else:
         body = (
-            '<p class="podcast-empty">No episodes yet. Episodes are generated from the '
+            '<p class="media-empty">No items yet. Audio episodes are generated from the '
             'daily notes with the podcast skill and published here.</p>'
         )
-    content = f'<h1 class="page-title">Podcast</h1>{body}'
+    content = f'<h1 class="page-title">Media</h1>{body}'
     return render_page(
-        "Podcast", content, corpus_revision, root="../",
-        **site_fields(cv, "podcast"),
+        "Media", content, corpus_revision, root="../",
+        **site_fields(cv, "media"),
     )
 
 
-def build_podcast_episode(cv, episode, note_dates, corpus_revision):
-    source_dates = sorted(
-        {note_dates[note_id] for note_id in episode["notes"] if note_id in note_dates},
-        reverse=True,
-    )
+def build_media_item(cv, item, note_dates, corpus_revision):
     sources_html = ""
-    if source_dates:
-        links = " ".join(
-            f'<a href="../notes.html#{esc(date)}">{esc(date)}</a>'
-            for date in source_dates
+    if "notes" in item:
+        source_dates = sorted(
+            {note_dates[note_id] for note_id in item["notes"] if note_id in note_dates},
+            reverse=True,
         )
-        sources_html = f'<p class="podcast-sources">Condensed from notes dated {links}.</p>'
+        if source_dates:
+            links = " ".join(
+                f'<a href="../notes.html#{esc(date)}">{esc(date)}</a>'
+                for date in source_dates
+            )
+            sources_html = f'<p class="media-sources">Condensed from notes dated {links}.</p>'
     tags_html = "".join(
-        f'<span class="tag podcast-tag">{esc(tag)}</span>'
-        for tag in episode["focus_tags"]
+        f'<span class="tag media-tag">{esc(tag)}</span>'
+        for tag in item["focus_tags"]
     )
+    meta = (
+        f'<p class="post-meta"><time datetime="{esc(item["date"])}">'
+        f'{esc(item["date"])}</time> &middot; '
+        f'{esc(format_duration(item["duration_seconds"]))}'
+    )
+    if "notes" in item:
+        meta += f' &middot; {len(item["notes"])} notes'
+    meta += '</p>'
     content = (
-        f'<h1 class="page-title">{esc(episode["title"])}</h1>'
-        f'<p class="post-meta"><time datetime="{esc(episode["date"])}">'
-        f'{esc(episode["date"])}</time> &middot; '
-        f'{esc(format_duration(episode["duration_seconds"]))} &middot; '
-        f'{len(episode["notes"])} notes</p>'
-        f'{podcast_player(episode)}'
-        f'<p class="podcast-summary">{esc(episode["summary"])}</p>'
+        f'<h1 class="page-title">{esc(item["title"])}</h1>'
+        f'{meta}'
+        f'{media_player(item)}'
+        f'<p class="media-summary">{esc(item["summary"])}</p>'
         f'<div class="entry-tags">{tags_html}</div>'
         f'{sources_html}'
-        f'<p class="podcast-back"><a href="index.html">&larr; All episodes</a></p>'
+        f'<p class="media-back"><a href="index.html">&larr; All items</a></p>'
     )
     return render_page(
-        episode["title"], content, corpus_revision, root="../",
-        **site_fields(cv, "podcast"),
+        item["title"], content, corpus_revision, root="../",
+        **site_fields(cv, "media"),
     )
 
 
-def publish_podcast_audio(episodes):
-    if not episodes:
-        return
-    audio_out = OUT / "podcast" / "audio"
-    audio_out.mkdir(parents=True, exist_ok=True)
-    for episode in episodes:
-        shutil.copyfile(
-            DATA / "podcasts" / episode["audio"],
-            audio_out / f"{episode['id']}.mp3",
-        )
+def publish_media_assets(items):
+    for item in items:
+        for asset_key in ("audio", "video", "captions", "poster"):
+            asset = item.get(asset_key)
+            if asset is None:
+                continue
+            destination = OUT / "media" / asset
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(DATA / "podcasts" / asset, destination)
+    # Keep the legacy /podcast/audio/<id>.mp3 URL resolving for direct links to
+    # the first episode; a copy is safe here because redirects cannot serve media.
+    for item in items:
+        if "audio" not in item:
+            continue
+        legacy_audio = OUT / "podcast" / item["audio"]
+        legacy_audio.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(DATA / "podcasts" / item["audio"], legacy_audio)
+
+
+def build_redirect(target, title):
+    """A minimal static redirect page for a moved URL."""
+    return (
+        '<!doctype html>\n'
+        '<html lang="en">\n'
+        '<head>\n'
+        '  <meta charset="utf-8">\n'
+        '  <meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        f'  <meta http-equiv="refresh" content="0; url={esc(target)}">\n'
+        f'  <link rel="canonical" href="{esc(target)}">\n'
+        f'  <title>{esc(title)}</title>\n'
+        '</head>\n'
+        '<body>\n'
+        f'  <p>This page has moved. <a href="{esc(target)}">Continue</a>.</p>\n'
+        f'  <script>window.location.replace({json.dumps(target)});</script>\n'
+        '</body>\n'
+        '</html>\n'
+    )
 
 
 def render_tag_bar(tags, counts, total, show_first=8):
@@ -701,6 +752,7 @@ def prepare_output():
         shutil.rmtree(OUT)
     blog_out = OUT / "blog"
     blog_out.mkdir(parents=True)
+    (OUT / "media").mkdir()
     (OUT / "podcast").mkdir()
     shutil.copytree(STATIC, OUT / "static")
     shutil.copy2(ROOT / "llms.txt", OUT / "llms.txt")
@@ -745,20 +797,20 @@ def main():
         for note in entry["notes"]
     }
     visualizations = load_visualizations()
-    podcasts = load_podcast_episodes()
+    media_items = load_media_items()
     visuals_repo = resolve_visuals_repo()
     for visualization in visualizations:
         visualization_source(visuals_repo, visualization["html_path"])
         visualization_source(visuals_repo, visualization["data_path"])
     corpus = build_published_corpus(
-        cv, about, resources, papers, posts, notes, visualizations, podcasts
+        cv, about, resources, papers, posts, notes, visualizations, media_items
     )
     validate_corpus(corpus)
 
     blog_out = prepare_output()
     publish_visualization_assets(visualizations, visuals_repo)
     decks = publish_decks()
-    publish_podcast_audio(podcasts)
+    publish_media_assets(media_items)
     (OUT / "corpus.json").write_text(
         json.dumps(corpus, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
@@ -770,7 +822,7 @@ def main():
         OUT / "papers.html": build_paper_links(cv, papers, corpus_revision),
         OUT / "notes.html": build_notes(cv, notes, corpus_revision),
         OUT / "blog.html": build_blog_index(cv, posts, corpus_revision),
-        OUT / "podcast" / "index.html": build_podcast_index(cv, podcasts, corpus_revision),
+        OUT / "media" / "index.html": build_media_index(cv, media_items, corpus_revision),
         OUT / "visuals.html": build_visuals_index(cv, visualizations, corpus_revision),
         OUT / "visuals" / "index.html": build_visuals_index(
             cv, visualizations, corpus_revision, root="../"
@@ -781,12 +833,25 @@ def main():
         for post in posts
     })
     pages.update({
-        OUT / "podcast" / f"{episode['id']}.html": build_podcast_episode(
-            cv, episode, note_dates, corpus_revision
+        OUT / "media" / f"{item['id']}.html": build_media_item(
+            cv, item, note_dates, corpus_revision
         )
-        for episode in podcasts
+        for item in media_items
     })
     for path, content in pages.items():
+        path.write_text(content, encoding="utf-8")
+
+    # Keep every legacy /podcast/... URL resolving via minimal redirect pages.
+    redirects = {
+        OUT / "podcast" / "index.html": build_redirect("/media/index.html", "Media"),
+    }
+    redirects.update({
+        OUT / "podcast" / f"{item['id']}.html": build_redirect(
+            f"/media/{item['id']}.html", item["title"]
+        )
+        for item in media_items
+    })
+    for path, content in redirects.items():
         path.write_text(content, encoding="utf-8")
     (OUT / "visuals.md").write_text(
         build_visuals_markdown(visualizations), encoding="utf-8"
@@ -796,7 +861,7 @@ def main():
         f"Built site into {OUT}/ "
         f"({len(resources)} resources, {len(papers)} paper links, "
         f"{len(posts)} blog posts, {len(visualizations)} visualizations, "
-        f"{len(podcasts)} podcast episodes, {len(decks)} decks)"
+        f"{len(media_items)} media items, {len(decks)} decks)"
     )
 
 

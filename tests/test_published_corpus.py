@@ -67,11 +67,31 @@ class PublishedCorpusTests(unittest.TestCase):
             "focus_tags": ["agents"], "audio": "audio/2026-09-27-agents.mp3",
             "duration_seconds": 1800.0,
         }
-        corpus = build_published_corpus(*self.fixtures(), podcasts=[episode])
+        corpus = build_published_corpus(*self.fixtures(), media_items=[episode])
         record = next(record for record in corpus["records"] if record["kind"] == "podcast")
         self.assertEqual(record["id"], "podcast:2026-09-27-agents")
-        self.assertEqual(record["audioUrl"], "podcast/audio/2026-09-27-agents.mp3")
+        self.assertEqual(record["url"], "media/2026-09-27-agents.html")
+        self.assertEqual(record["audioUrl"], "media/audio/2026-09-27-agents.mp3")
         self.assertEqual(record["durationSeconds"], 1800.0)
+
+    def test_video_record_publishes_captions_and_poster_metadata(self):
+        video = {
+            "id": "2026-09-27-fpl", "title": "FPL explainer",
+            "summary": "Where the points hide.", "date": "2026-09-27",
+            "focus_tags": ["fpl"],
+            "video": "video/2026-09-27-fpl.mp4",
+            "captions": "video/2026-09-27-fpl.vtt",
+            "poster": "video/2026-09-27-fpl.jpg",
+            "duration_seconds": 183.67,
+        }
+        corpus = build_published_corpus(*self.fixtures(), media_items=[video])
+        record = next(record for record in corpus["records"] if record["kind"] == "video")
+        self.assertEqual(record["id"], "video:2026-09-27-fpl")
+        self.assertEqual(record["url"], "media/2026-09-27-fpl.html")
+        self.assertEqual(record["videoUrl"], "media/video/2026-09-27-fpl.mp4")
+        self.assertEqual(record["captionsUrl"], "media/video/2026-09-27-fpl.vtt")
+        self.assertEqual(record["posterUrl"], "media/video/2026-09-27-fpl.jpg")
+        self.assertEqual(record["durationSeconds"], 183.67)
 
 
 if __name__ == "__main__":

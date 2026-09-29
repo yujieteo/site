@@ -67,12 +67,15 @@ inventing new ones.
   - `voice`: Kokoro voice id;
   - `audio`: `audio/<episode-id>.mp3`, relative to `data/podcasts/`.
 - Audio lives at `data/podcasts/audio/<episode-id>.mp3`.
-- The normal build generates `site/podcast/index.html` (latest episode featured
-  with a player, then the dated list), `site/podcast/<episode-id>.html` (player,
+- The normal build generates `site/media/index.html` (latest item featured
+  with a player, then the dated list), `site/media/<episode-id>.html` (player,
   summary, focus tags, and links to the source note dates), and
-  `site/podcast/audio/<episode-id>.mp3` (byte copy).
+  `site/media/audio/<episode-id>.mp3` (byte copy). A legacy copy of the audio
+  and a redirect page are written under `site/podcast/` so existing
+  `/podcast/...` URLs keep resolving.
 - The build also adds a `podcast:<episode-id>` record to `site/corpus.json`
-  with `url`, `date`, `tags` (the focus tags), `summary`, `audioUrl`, and
+  with `url` (`media/<episode-id>.html`), `date`, `tags` (the focus tags),
+  `summary`, `audioUrl` (`media/audio/<episode-id>.mp3`), and
   `durationSeconds`.
 
 ## Generate
@@ -93,21 +96,22 @@ inventing new ones.
 
 1. Run Stage A of [verification](../verify.md#stage-a-pre-deploy). Do not
    deploy after a failure.
-2. Confirm `site/podcast/index.html` features the new episode, the episode
-   page and copied MP3 exist, and the post-build diff contains no unrelated
-   churn.
-3. Commit `data/podcasts/**`, the changed `site/podcast/**` files, and any
-   other demonstrably required generated file (navigation and `site/llms.txt`
-   change only when the build changed them).
+2. Confirm `site/media/index.html` features the new episode, the episode page,
+   the copied MP3, and the `site/podcast/` redirect pages exist, and the
+   post-build diff contains no unrelated churn.
+3. Commit `data/podcasts/**`, the changed `site/media/**` and `site/podcast/**`
+   files, and any other demonstrably required generated file (navigation and
+   `site/llms.txt` change only when the build changed them).
 4. Push the branch requested by the user. Site publishing normally uses
    `main`; never rewrite published history.
 5. Resolve the SCP destination from secure runtime configuration. Deploy the
-   podcast index, episode pages, and audio using unique temporary names,
+   media index, item pages, audio, and the `site/podcast/` redirect pages using
+   unique temporary names,
    checksum verification, preserved prior files, and atomic renames as in
    [Deploy generated files](deploy.md). Include the other changed pages from
    the reviewed diff. Never write deployment details into the repository.
 6. Run Stage B of [verification](../verify.md#stage-b-post-deploy). Fetch the
-   deployed podcast index, episode page, and MP3 over HTTPS and require HTTP
+   deployed media index, episode page, and MP3 over HTTPS and require HTTP
    200 responses with the expected episode. A 403 means the file is not
    web-readable. Restore every preserved file if a deployed artifact is corrupt
    or incomplete.

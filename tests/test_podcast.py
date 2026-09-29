@@ -376,20 +376,34 @@ class GenerateTests(unittest.TestCase):
 
 
 class PodcastBuildTests(unittest.TestCase):
-    def test_build_publishes_player_pages_audio_and_corpus(self):
+    def _make_project(self, directory):
+        project = Path(directory) / "site-project"
+        shutil.copytree(
+            ROOT,
+            project,
+            ignore=shutil.ignore_patterns(".git", ".venv", "__pycache__"),
+        )
+        shutil.rmtree(project / "data" / "podcasts", ignore_errors=True)
+        # These tests only exercise the media path, so the visualization
+        # stubs are removed and the empty project directory stands in for
+        # the visuals checkout.
+        for visualization in (project / "data" / "visuals").glob("*.yaml"):
+            visualization.unlink()
+        return project
+
+    def _build(self, project):
+        subprocess.run(
+            [str(Path(sys.executable)), "scripts/build.py"],
+            cwd=project,
+            check=True,
+            capture_output=True,
+            text=True,
+            env=os.environ | {"VISUALS_REPO": str(project)},
+        )
+
+    def test_build_publishes_audio_pages_legacy_redirects_and_corpus(self):
         with tempfile.TemporaryDirectory() as directory:
-            project = Path(directory) / "site-project"
-            shutil.copytree(
-                ROOT,
-                project,
-                ignore=shutil.ignore_patterns(".git", ".venv", "__pycache__"),
-            )
-            shutil.rmtree(project / "data" / "podcasts", ignore_errors=True)
-            # This test only exercises the podcast path, so the visualization
-            # stubs are removed and the empty project directory stands in for
-            # the visuals checkout.
-            for visualization in (project / "data" / "visuals").glob("*.yaml"):
-                visualization.unlink()
+            project = self._make_project(directory)
             episode_id = "2026-09-27-agents"
             audio_directory = project / "data" / "podcasts" / "audio"
             audio_directory.mkdir(parents=True)
@@ -408,30 +422,84 @@ class PodcastBuildTests(unittest.TestCase):
                 }, sort_keys=False),
                 encoding="utf-8",
             )
-            subprocess.run(
-                [str(Path(sys.executable)), "scripts/build.py"],
-                cwd=project,
-                check=True,
-                capture_output=True,
-                text=True,
-                env=os.environ | {"VISUALS_REPO": str(project)},
-            )
+            self._build(project)
 
-            index_html = (project / "site" / "podcast" / "index.html").read_text(encoding="utf-8")
+            index_html = (project / "site" / "media" / "index.html").read_text(encoding="utf-8")
             self.assertIn(f'audio/{episode_id}.mp3', index_html)
             self.assertIn("Notes on agents", index_html)
             episode_html = (
-                project / "site" / "podcast" / f"{episode_id}.html"
+                project / "site" / "media" / f"{episode_id}.html"
             ).read_text(encoding="utf-8")
             self.assertIn("<audio", episode_html)
+            self.assertEqual(
+                (project / "site" / "media" / "audio" / f"{episode_id}.mp3").read_bytes(),
+                b"fake-audio",
+            )
+
+            redirect_index = (
+                project / "site" / "podcast" / "index.html"
+            ).read_text(encoding="utf-8")
+            self.assertIn("url=/media/index.html", redirect_index)
+            redirect_episode = (
+                project / "site" / "podcast" / f"{episode_id}.html"
+            ).read_text(encoding="utf-8")
+            self.assertIn(f"url=/media/{episode_id}.html", redirect_episode)
             self.assertEqual(
                 (project / "site" / "podcast" / "audio" / f"{episode_id}.mp3").read_bytes(),
                 b"fake-audio",
             )
+
             corpus = json.loads((project / "site" / "corpus.json").read_text(encoding="utf-8"))
             record = next(record for record in corpus["records"] if record["id"] == f"podcast:{episode_id}")
-            self.assertEqual(record["audioUrl"], f"podcast/audio/{episode_id}.mp3")
+            self.assertEqual(record["audioUrl"], f"media/audio/{episode_id}.mp3")
             self.assertEqual(record["durationSeconds"], 1800.0)
+
+    def test_build_publishes_video_with_captions_and_poster(self):
+        with tempfile.TemporaryDirectory() as directory:
+            project = self._make_project(directory)
+            video_id = "2026-09-27-fpl"
+            video_directory = project / "data" / "podcasts" / "video"
+            video_directory.mkdir(parents=True)
+            (video_directory / f"{video_id}.mp4").write_bytes(b"fake-video")
+            (video_directory / f"{video_id}.vtt").write_bytes(b"WEBVTT\n\n")
+            (video_directory / f"{video_id}.jpg").write_bytes(b"fake-poster")
+            (project / "data" / "podcasts" / f"{video_id}.yaml").write_text(
+                yaml.safe_dump({
+                    "id": video_id,
+                    "date": "2026-09-27",
+                    "title": "FPL explainer",
+                    "summary": "Where the points hide.",
+                    "focus_tags": ["fpl"],
+                    "duration_seconds": 183.67,
+                    "video": f"video/{video_id}.mp4",
+                    "captions": f"video/{video_id}.vtt",
+                    "poster": f"video/{video_id}.jpg",
+                }, sort_keys=False),
+                encoding="utf-8",
+            )
+            self._build(project)
+
+            item_html = (
+                project / "site" / "media" / f"{video_id}.html"
+            ).read_text(encoding="utf-8")
+            self.assertIn("<video", item_html)
+            self.assertIn('kind="captions"', item_html)
+            self.assertIn(f'video/{video_id}.mp4', item_html)
+            self.assertIn(f'video/{video_id}.jpg', item_html)
+            self.assertEqual(
+                (project / "site" / "media" / "video" / f"{video_id}.mp4").read_bytes(),
+                b"fake-video",
+            )
+            self.assertEqual(
+                (project / "site" / "media" / "video" / f"{video_id}.vtt").read_bytes(),
+                b"WEBVTT\n\n",
+            )
+
+            corpus = json.loads((project / "site" / "corpus.json").read_text(encoding="utf-8"))
+            record = next(record for record in corpus["records"] if record["id"] == f"video:{video_id}")
+            self.assertEqual(record["videoUrl"], f"media/video/{video_id}.mp4")
+            self.assertEqual(record["captionsUrl"], f"media/video/{video_id}.vtt")
+            self.assertEqual(record["posterUrl"], f"media/video/{video_id}.jpg")
 
 
 if __name__ == "__main__":
