@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Notes on exercise, nutrition, and health — Yu Jie Teo</title>
+  <title>How this site is built — Yu Jie Teo</title>
   <script>try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../static/css/style.css">
-  <meta name="site-corpus" content="../corpus.json">
+  <link rel="stylesheet" href="static/css/style.css">
+  <meta name="site-corpus" content="corpus.json">
   <meta name="site-corpus-revision" content="17ce61b71ed5b93919fe8ab4542b3a9ab05c6d17e238f9576bfa7bfded960abd">
-  <script type="module" src="../static/js/webmcp.js"></script>
-  <script type="module" src="../static/js/fade.js"></script>
-  <script type="module" src="../static/js/site-search.js"></script>
-  <script type="module" src="../static/js/shell.js"></script>
+  <script type="module" src="static/js/webmcp.js"></script>
+  <script type="module" src="static/js/fade.js"></script>
+  <script type="module" src="static/js/site-search.js"></script>
+  <script type="module" src="static/js/shell.js"></script>
   <noscript><style>.site-search { display: none; }</style></noscript>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="site-shell">
     <header class="site-header">
-      <a class="site-name" href="../index.html">Yu Jie Teo</a>
+      <a class="site-name" href="index.html">Yu Jie Teo</a>
       <div class="site-search" data-site-search>
         <button type="button" class="site-search-trigger" data-site-search-open
                 aria-haspopup="dialog" aria-controls="site-search-dialog">
@@ -54,20 +54,62 @@
         <span class="nav-toggle-label">Menu</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <a href="../index.html">Home</a>
-        <a href="../about.html">About</a>
-        <a href="../papers.html">Paper Links</a>
-        <a href="../notes.html">Notes</a>
-        <a href="../media/index.html" aria-current="page">Media</a>
-        <a href="../blog.html">Blog</a>
-        <a href="../visuals.html">Visuals</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="papers.html">Paper Links</a>
+        <a href="notes.html">Notes</a>
+        <a href="media/index.html">Media</a>
+        <a href="blog.html">Blog</a>
+        <a href="visuals.html">Visuals</a>
       </nav>
     </header>
-    <main id="main-content" tabindex="-1"><h1 class="page-title">Notes on exercise, nutrition, and health</h1><p class="post-meta"><time datetime="2026-09-29">2026-09-29</time> &middot; 9 min &middot; 35 notes</p><audio class="media-player" controls preload="metadata" src="audio/2026-09-29-exercise-nutrition-health.mp3">Your browser does not support the audio element. <a href="audio/2026-09-29-exercise-nutrition-health.mp3">Download the episode</a>.</audio><p class="media-summary">Condensed notes on exercise, nutrition, health, and reflection from 35 notes dated 2025-10-20 to 2026-09-26.</p><div class="entry-tags"><span class="tag media-tag">exercise</span><span class="tag media-tag">nutrition</span><span class="tag media-tag">health</span><span class="tag media-tag">reflection</span><span class="tag media-tag">rationality</span><span class="tag media-tag">music</span><span class="tag media-tag">video</span><span class="tag media-tag">notes</span><span class="tag media-tag">website</span><span class="tag media-tag">language</span><span class="tag media-tag">rhetoric</span><span class="tag media-tag">law</span><span class="tag media-tag">politics</span><span class="tag media-tag">economics</span><span class="tag media-tag">organizations</span><span class="tag media-tag">management</span><span class="tag media-tag">game-theory</span><span class="tag media-tag">coordination</span><span class="tag media-tag">risk</span><span class="tag media-tag">finance</span></div><p class="media-sources">Condensed from notes dated <a href="../notes.html#2026-09-26">2026-09-26</a> <a href="../notes.html#2026-09-25">2026-09-25</a> <a href="../notes.html#2026-09-24">2026-09-24</a> <a href="../notes.html#2026-09-22">2026-09-22</a> <a href="../notes.html#2025-11-06">2025-11-06</a> <a href="../notes.html#2025-10-20">2025-10-20</a>.</p><p class="media-back"><a href="index.html">&larr; All items</a></p></main>
+    <main id="main-content" tabindex="-1"><h1 class="page-title">How this site is built</h1><div class="post-body"><p>This is a static site generated from plain files. Nothing runs on the server
+except file hosting; search and filtering happen in your browser.</p>
+<h2 id="content">Content</h2>
+<ul>
+<li><strong>Notes</strong> live in one append-only file, <code>data/notes.md</code>. Each note sits under
+  a dated heading and ends in tags from a registry, <code>data/note-tags.json</code>.
+  Notes are never rewritten to mark them done: an item that answers an open
+  question links to it instead, and the <a href="open-questions.html">open questions</a>
+  page shows the result.</li>
+<li><strong>Paper links and resources</strong> are YAML files. Paper-link tags come from
+  keyword rules and arXiv subject classes, and are also exported as BibTeX.</li>
+<li><strong>Blog posts</strong> are Markdown files with a small YAML header.</li>
+<li><strong>Visuals</strong> are built by small scripts, most of them in a separate public
+  <a href="https://github.com/yujieteo/visuals">visuals repository</a> that this site pins
+  to an exact revision. Each publishes its data alongside the page.</li>
+<li><strong>Media</strong> (podcast episodes and explainer videos) is produced locally.
+  Episodes are condensed from the notes, and each lists the notes it used.</li>
+<li>Everything public is indexed in <code>corpus.json</code>, the Published Corpus. Each
+  record has a stable id and a content revision, so tools can tell when
+  something changed. The site search, the page filters and two read-only
+  <a href="https://github.com/webmachinelearning/webmcp">WebMCP</a> tools for AI agents
+  all read that one file.</li>
+</ul>
+<h2 id="build-and-checks">Build and checks</h2>
+<ul>
+<li><code>scripts/validate.py</code> checks every data file against a JSON Schema, and
+  <code>scripts/build.py</code> turns the data into the pages in <code>site/</code>. It fails when a
+  typed link between items points at something that does not exist.</li>
+<li>Continuous integration rebuilds the site and fails if the committed output
+  differs from a fresh build, then runs the Python and Node tests.</li>
+<li>Motion is limited to short fades, and it switches off when your system asks
+  for reduced motion. Pages work without JavaScript; search and filters need it.</li>
+</ul>
+<h2 id="playbooks">Playbooks</h2>
+<p>Routine tasks (add a note, publish a visual, generate an episode, deploy) are
+written as step-by-step playbooks in <code>skills/playbooks/</code>, meant to be followed
+by a person or an AI agent.</p>
+<h2 id="ai-assistance">AI assistance</h2>
+<p>Parts of this site are made with the assistance of AI. The notes and
+judgements are mine; drafting, building and checking are often shared.</p>
+<h2 id="source">Source</h2>
+<p>The source is public at
+<a href="https://github.com/yujieteo/site">github.com/yujieteo/site</a>.</p></div></main>
     <footer class="site-footer">
       <p class="footer-links">
-        <a href="../colophon.html#ai-assistance">Made with the assistance of AI</a>
-        <a href="../colophon.html">How this site is built</a>
+        <a href="colophon.html#ai-assistance">Made with the assistance of AI</a>
+        <a href="colophon.html">How this site is built</a>
         <a href="https://github.com/yujieteo/site">Source on GitHub</a>
       </p>
       <div class="theme-switch" role="group" aria-label="Colour theme" data-theme-switch hidden>

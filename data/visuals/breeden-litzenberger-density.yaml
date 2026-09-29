@@ -8,3 +8,7 @@ data_path: data/breeden-litzenberger-density/raw.json
 webmcp_tools: [get_data, get_metadata, query]
 tags: [options pricing, distributions, finance, derivatives]
 category: data visualization
+links:
+  # The 2025-10-20 todo on Schwartz distributions and option pricing.
+  - rel: resolves
+    target: note:f19a4c6c267a88589593f70b893d21fb3a2d955614d67a8f6e457848ac20ce36

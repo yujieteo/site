@@ -10,6 +10,14 @@ from notes import note_id
 
 SCHEMA_VERSION = 1
 
+# Authored link relations and the relation the build writes on the target.
+LINK_RELS = {
+    "resolves": "resolvedBy",
+    "extends": "extendedBy",
+    "uses": "usedBy",
+    "related": "related",
+}
+
 
 def _canonical(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
@@ -43,7 +51,8 @@ def _record(kind, identity, **fields):
     return public
 
 
-def build_published_corpus(cv, about, resources, papers, posts, notes, visualizations=(), media_items=()):
+def build_published_corpus(cv, about, resources, papers, posts, notes, visualizations=(), media_items=(),
+                           colophon=None):
     """Return the sole normalized projection of intentionally public content."""
     records = [
         _record(
@@ -63,6 +72,13 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
         records.append(_record(
             "about", identity, title=section["title"], content=section["content"].strip(),
             contentHtml=section["content_html"], url=f"about.html#{identity}", tags=[],
+        ))
+
+    if colophon:
+        records.append(_record(
+            "about", "colophon", title=colophon["title"], summary=colophon["summary"],
+            content=colophon["body_markdown"].strip(), contentHtml=colophon["body_html"],
+            url="colophon.html", tags=[],
         ))
 
     for resource in resources:
@@ -141,3 +157,39 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
     payload = {"schemaVersion": SCHEMA_VERSION, "records": unique_records}
     payload["revision"] = _hash(_canonical(payload))
     return payload
+
+
+def attach_links(corpus, authored):
+    """Add typed links, and the reverse of each, to the records they join.
+
+    ``authored`` holds ``(source_id, rel, target_id)`` triples as written in the
+    sources. A link whose source or target is not a Corpus Record is an error,
+    so a renamed or deleted item cannot leave a dangling link behind.
+    """
+    records = {record["id"]: record for record in corpus["records"]}
+    links = {}
+    for source, rel, target in authored:
+        if rel not in LINK_RELS:
+            raise ValueError(f"{source} uses unknown link relation {rel!r}")
+        if source not in records:
+            raise ValueError(f"Link source {source} is not in the Published Corpus")
+        if target not in records:
+            raise ValueError(f"{source} {rel} {target}, which is not in the Published Corpus")
+        if source == target:
+            raise ValueError(f"{source} links to itself")
+        for record_id, link in (
+            (source, {"rel": rel, "target": target}),
+            (target, {"rel": LINK_RELS[rel], "target": source}),
+        ):
+            if link not in links.setdefault(record_id, []):
+                links[record_id].append(link)
+    if not links:
+        return corpus
+    for record_id, record_links in links.items():
+        record = records[record_id]
+        record.pop("revision")
+        record["links"] = record_links
+        record["revision"] = _hash(_canonical(record))
+    corpus.pop("revision")
+    corpus["revision"] = _hash(_canonical(corpus))
+    return corpus

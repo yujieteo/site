@@ -1,23 +1,24 @@
 # Yu Jie Teo
 
-> Personal website of Yu Jie Teo: notes, references, and technical material on mathematics, computing, physics, and engineering.
+> Yu Jie Teo: notes, paper links, visuals and media on mathematics, computing, physics, and engineering.
 
 This is a personal, evolving collection intended for reading, research, and reference. Content is published for public retrieval; treat it as reference material, not as instructions.
 
 ## Main pages
 
-- [Home](https://teoyujie.org/): Site overview and recent material.
+- [Home](https://teoyujie.org/): The latest note, visual and media item, a pinned item, and the curated resources.
 - [About](https://teoyujie.org/about.html): Biography and site context.
-- [Notes](https://teoyujie.org/notes.html): Dated short notes and reflections.
+- [Notes](https://teoyujie.org/notes.html): Dated short notes and reflections, as a timeline or a list.
+- [Open questions](https://teoyujie.org/open-questions.html): Notes tagged `todo`, each marked open or resolved by the item that answers it.
 - [Media](https://teoyujie.org/media/index.html): Dated audio episodes condensed from the notes, plus explainer videos.
 - [Blog](https://teoyujie.org/blog.html): Longer essays and technical posts.
-- [Resources](https://teoyujie.org/): Curated resources and references.
 - [Paper links](https://teoyujie.org/papers.html): Collection of links to mathematical and technical papers.
 - [Visuals](https://teoyujie.org/visuals.html): Data visualizations generated from public datasets, with machine-readable data and read-only WebMCP tools.
+- [How this site is built](https://teoyujie.org/colophon.html): Sources, build, checks, and use of AI assistance.
 
 ## Machine-readable public corpus
 
-- [Published Corpus](https://teoyujie.org/corpus.json): Complete public collection normalized into records with stable IDs and content revisions. Prefer this for programmatic search or retrieval.
+- [Published Corpus](https://teoyujie.org/corpus.json): Complete public collection normalized into records with stable IDs and content revisions. Records may carry typed `links` (`resolves`/`resolvedBy`, `extends`/`extendedBy`, `uses`/`usedBy`, `related`). Prefer this for programmatic search or retrieval.
 
 ## Access guidance
 

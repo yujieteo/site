@@ -48,3 +48,18 @@ test("retrieves exact items and rejects missing IDs", () => {
   assert.equal(getItem(corpus, "paper:x").title, "Algebra");
   assert.throws(() => getItem(corpus, "missing"), /No published item/);
 });
+
+test("tag groups match any tag within a group and every group", () => {
+  const records = {
+    records: [
+      { id: "a", kind: "resource", title: "A", tags: ["energy", "singapore"] },
+      { id: "b", kind: "resource", title: "B", tags: ["energy", "europe"] },
+      { id: "c", kind: "resource", title: "C", tags: ["prices", "singapore"] },
+    ],
+  };
+  const ids = (tagGroups) => searchSite(records, { tagGroups }).items.map((item) => item.id).sort();
+  assert.deepEqual(ids([["energy", "prices"]]), ["a", "b", "c"]);
+  assert.deepEqual(ids([["energy"], ["singapore"]]), ["a"]);
+  assert.deepEqual(ids([["energy", "prices"], ["singapore"]]), ["a", "c"]);
+  assert.deepEqual(ids([[]]), ["a", "b", "c"]);
+});

@@ -1,5 +1,5 @@
 const SCHEMA_VERSION = 1;
-const ALLOWED_QUERY_FIELDS = new Set(["text", "kind", "tags", "limit", "cursor", "sort"]);
+const ALLOWED_QUERY_FIELDS = new Set(["text", "kind", "tags", "tagGroups", "limit", "cursor", "sort"]);
 let corpusPromise;
 
 const normalize = (value) => String(value ?? "").normalize("NFKC").toLowerCase();
@@ -71,6 +71,10 @@ export function searchSite(corpus, input = {}) {
     text: String(input.text || "").trim(),
     kind: input.kind ? String(input.kind) : "",
     tags: [...new Set((input.tags || []).map((tag) => normalize(tag)).filter(Boolean))],
+    // Each group is OR'd internally and AND'd with the others (one group per facet).
+    tagGroups: (input.tagGroups || [])
+      .map((group) => [...new Set((group || []).map((tag) => normalize(tag)).filter(Boolean))])
+      .filter((group) => group.length),
     limit: Number(input.limit ?? 10),
     sort: input.sort || (String(input.text || "").trim() ? "relevance" : "newest"),
   };
@@ -85,6 +89,7 @@ export function searchSite(corpus, input = {}) {
     if (query.kind && record.kind !== query.kind) return [];
     const recordTags = (record.tags || []).map(normalize);
     if (!query.tags.every((tag) => recordTags.includes(tag))) return [];
+    if (!query.tagGroups.every((group) => group.some((tag) => recordTags.includes(tag)))) return [];
     const score = scoreRecord(record, queryTerms);
     return score === null ? [] : [{ record, score, index }];
   });

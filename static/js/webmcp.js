@@ -37,6 +37,11 @@ if (modelContext) {
           text: { type: "string", description: "Words that must all occur in the result." },
           kind: { type: "string", enum: ["profile", "about", "resource", "paper", "note", "blog", "visualization"] },
           tags: { type: "array", items: { type: "string" }, uniqueItems: true },
+          tagGroups: {
+            type: "array",
+            description: "Tag groups: a result needs at least one tag from every group.",
+            items: { type: "array", items: { type: "string" }, uniqueItems: true },
+          },
           limit: { type: "integer", minimum: 1, maximum: 100, default: 10 },
           cursor: { type: "string" },
           sort: { type: "string", enum: ["relevance", "newest", "oldest"] },
