@@ -14,11 +14,25 @@ Arm’s fiscal 2026 revenue reached $4.92B and operating cash flow margin rose t
 - Fetched: 2026-09-28
 - WebMCP tools: get_data, get_metadata, query
 
+## The risk-neutral density is the curvature of the call-price curve
+Differentiate a call price twice in its strike: times e^rT, that curvature is the market-implied probability density of the stock ending at each strike. A Dirac delta hides in the payoff's kink.
+- HTML: https://teoyujie.org/visuals/breeden-litzenberger-density/index.html
+- Data: https://teoyujie.org/visuals/breeden-litzenberger-density/data.json
+- Fetched: 2026-09-29
+- WebMCP tools: get_data, get_metadata, query
+
 ## Find a convex 15-minute bet
 A tappable 2 by 2 for choosing a low-cost experiment that can open a meaningful next step.
 - HTML: https://teoyujie.org/visuals/convex-payoffs/index.html
 - Data: https://teoyujie.org/visuals/convex-payoffs/data.json
 - Fetched: 2026-09-28
+- WebMCP tools: get_data, get_metadata, query
+
+## Your energy dips mid-afternoon. Your inbox doesn't.
+A workday timeline pairs the circadian post-lunch dip with the measured reflex of email: 70% answered within 6 seconds, 64 seconds to refocus each time, and less stress when checks drop to three a day.
+- HTML: https://teoyujie.org/visuals/energy-email-productivity/index.html
+- Data: https://teoyujie.org/visuals/energy-email-productivity/data.json
+- Fetched: 2026-09-29
 - WebMCP tools: get_data, get_metadata, query
 
 ## How much of the early FPL points are repeatable?
