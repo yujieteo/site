@@ -15,21 +15,8 @@ validate, build, commit, push, deploy, and verify.
 - `data/cv/cv.yaml` supplies the site name spoken in the introduction.
 - Optional overrides: episode date, target minutes, and voice.
 
-## Focus selection
-
-- The seed is the most common content tag that has not led a previous episode.
-  Content tags use the `topic`, `project`, or `arxiv-math` class. Workflow tags
-  (`action`, `status`, for example `todo`, `read`, `focus`) never lead or join
-  an episode focus.
-- The focus expands with tags that co-occur with the seed and the growing
-  focus, then with the most common remaining content tags until the focus can
-  supply the target duration. This keeps the opening sections on-theme while
-  guaranteeing enough material when a subject is small.
-- Notes are grouped under the first focus tag they match, with notes not used
-  by an earlier episode first and then newest first.
-- The target duration is an aim, not a minimum. Rendering reserves the ending
-  from measured speech rates so it never exceeds the target; a focus with little
-  material publishes shorter rather than adding filler.
+Read only when needed: [focus selection](../reference/podcast-focus-selection.md)
+and the [output contract](../reference/podcast-output-contract.md).
 
 ## Local synthesis
 
@@ -47,36 +34,6 @@ validate, build, commit, push, deploy, and verify.
   requirements.txt -r requirements-podcast.txt` create the same environment.
   The first synthesis downloads the Kokoro model. Stage A also needs the
   separate `visuals` checkout (see the [build section](../../README.md#build)).
-
-## Output contract
-
-This contract is stable and must be mirrored exactly into the skills
-repository; the dependent task copies these paths and fields rather than
-inventing new ones.
-
-- Metadata lives at `data/podcasts/<episode-id>.yaml`, where `<episode-id>` is
-  `<YYYY-MM-DD>-<focus-slug>` dated in `Asia/Singapore`. It is validated by
-  `schema/podcasts.schema.json` and contains exactly:
-  - `id`: the episode id, equal to the file stem;
-  - `date`: ISO date;
-  - `title`: human title derived from the leading focus tags;
-  - `summary`: one sentence naming the focus and source-note span;
-  - `focus_tags`: ordered canonical tags that define the episode focus;
-  - `notes`: the `note:<sha256>` ids of the notes actually rendered;
-  - `duration_seconds`: measured MP3 duration;
-  - `voice`: Kokoro voice id;
-  - `audio`: `audio/<episode-id>.mp3`, relative to `data/podcasts/`.
-- Audio lives at `data/podcasts/audio/<episode-id>.mp3`.
-- The normal build generates `site/media/index.html` (latest item featured
-  with a player, then the dated list), `site/media/<episode-id>.html` (player,
-  summary, focus tags, and links to the source note dates), and
-  `site/media/audio/<episode-id>.mp3` (byte copy). A legacy copy of the audio
-  and a redirect page are written under `site/podcast/` so existing
-  `/podcast/...` URLs keep resolving.
-- The build also adds a `podcast:<episode-id>` record to `site/corpus.json`
-  with `url` (`media/<episode-id>.html`), `date`, `tags` (the focus tags),
-  `summary`, `audioUrl` (`media/audio/<episode-id>.mp3`), and
-  `durationSeconds`.
 
 ## Generate
 
@@ -110,7 +67,7 @@ inventing new ones.
    checksum verification, preserved prior files, and atomic renames as in
    [Deploy generated files](deploy.md). Include the other changed pages from
    the reviewed diff. Never write deployment details into the repository.
-6. Run Stage B of [verification](../verify.md#stage-b-post-deploy). Fetch the
+6. Run Stage B of [verification](../verify-post-deploy.md). Fetch the
    deployed media index, episode page, and MP3 over HTTPS and require HTTP
    200 responses with the expected episode. A 403 means the file is not
    web-readable. Restore every preserved file if a deployed artifact is corrupt

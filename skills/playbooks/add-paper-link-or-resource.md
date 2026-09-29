@@ -5,7 +5,7 @@ Choose one path.
 ## Parse URL and note blocks
 
 1. Put each source in its own blank-line-separated block. Each block must contain a URL and note text.
-2. Run `scripts/parse_notes.py <input-file> <temporary-yaml-file>`. Never use a canonical file as the destination because the parser overwrites it.
+2. Run `.venv/bin/python scripts/parse_notes.py <input-file> <temporary-yaml-file>`. Never use a canonical file as the destination because the parser overwrites it.
 3. Require the parser summary to report `skipped 0`.
 4. Review titles, categories, URLs, and notes in the temporary YAML. Remove records already present in the canonical YAML.
 5. Append the reviewed records to either `data/paper-links/*.yaml` or `data/resources/*.yaml`.
