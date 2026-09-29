@@ -389,6 +389,11 @@ class PodcastBuildTests(unittest.TestCase):
         # the visuals checkout.
         for visualization in (project / "data" / "visuals").glob("*.yaml"):
             visualization.unlink()
+        # The homepage's pinned item is a visualization, so unpin it too.
+        cv_path = project / "data" / "cv" / "cv.yaml"
+        cv = yaml.safe_load(cv_path.read_text(encoding="utf-8"))
+        cv.pop("pinned", None)
+        cv_path.write_text(yaml.safe_dump(cv, sort_keys=False), encoding="utf-8")
         return project
 
     def _build(self, project):

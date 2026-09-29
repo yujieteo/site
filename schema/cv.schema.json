@@ -10,6 +10,11 @@
     "affiliation": { "type": "string" },
     "email": { "type": "string" },
     "bio": { "type": "string" },
+    "pinned": {
+      "type": "string",
+      "description": "Corpus Record id of the item shown in the homepage's Pinned card.",
+      "pattern": "^(?:note|blog|visualization|podcast|video|paper|resource):[A-Za-z0-9._-]+$"
+    },
     "education": {
       "type": "array",
       "items": {

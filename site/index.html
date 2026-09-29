@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yu Jie Teo</title>
+  <title>Yu Jie Teo — Notes, Papers, Visuals</title>
+  <script>try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
   <meta name="site-corpus" content="corpus.json">
-  <meta name="site-corpus-revision" content="c71c4f524e2e2375ae2566945268b6be098276bd77bdd1f93c82f6b7e86a05f9">
+  <meta name="site-corpus-revision" content="17ce61b71ed5b93919fe8ab4542b3a9ab05c6d17e238f9576bfa7bfded960abd">
   <script type="module" src="static/js/webmcp.js"></script>
   <script type="module" src="static/js/fade.js"></script>
   <script type="module" src="static/js/site-search.js"></script>
+  <script type="module" src="static/js/shell.js"></script>
   <noscript><style>.site-search { display: none; }</style></noscript>
 </head>
 <body>
@@ -24,7 +26,7 @@
         <button type="button" class="site-search-trigger" data-site-search-open
                 aria-haspopup="dialog" aria-controls="site-search-dialog">
           <svg class="site-search-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m13 13 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
-          <span>Search</span>
+          <span class="site-search-label">Search site</span>
           <kbd class="key-hint site-search-shortcut" data-site-search-shortcut aria-hidden="true">Ctrl K</kbd>
         </button>
         <dialog class="site-search-dialog" id="site-search-dialog" aria-label="Search the site">
@@ -47,8 +49,11 @@
           <p class="key-hint site-search-footer" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></p>
         </dialog>
       </div>
-      <p class="site-tagline">Personal website</p>
-      <nav class="site-nav" aria-label="Primary">
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" hidden>
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M3 6h14M3 10h14M3 14h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
         <a href="about.html">About</a>
         <a href="papers.html">Paper Links</a>
@@ -58,27 +63,32 @@
         <a href="visuals.html">Visuals</a>
       </nav>
     </header>
-    <main id="main-content" tabindex="-1"><h1 class="visually-hidden">Resources</h1><p>This is the personal website of Yu Jie Teo. Broadly interested in mathematics, computing, physics, and engineering. This site is a collection of notes, references, and technical material to revisit and develop over time.
-</p><form class="search-row" data-filter-form data-kind="resource"
-          data-default-show="false">
-      <label class="visually-hidden" for="entry-search">Search title or note...</label>
-      <input type="text" id="entry-search" class="search-box" placeholder="Search title or note..."
-             autocomplete="off">
-      <button type="submit" class="search-btn">Search</button>
-      <details class="filters-menu">
-        <summary class="filters-toggle">Filters</summary>
-        <div class="tag-panel" data-tag-bar role="group" aria-label="Filter by tag">
-          <label class="visually-hidden" for="tag-search">Filter the tag list</label>
-          <input type="text" id="tag-search" class="tag-search-box"
-                 placeholder="Find a tag..." autocomplete="off">
-          <div class="tag-panel-buttons"><button class="tag" data-tag="__all__" type="button" aria-pressed="true">all <span class="tag-count">118</span></button><button class="tag" data-tag="mathematics" type="button" aria-pressed="false">mathematics <span class="tag-count">20</span></button><button class="tag" data-tag="systems" type="button" aria-pressed="false">systems <span class="tag-count">20</span></button><button class="tag" data-tag="computational" type="button" aria-pressed="false">computational <span class="tag-count">10</span></button><button class="tag" data-tag="architecture" type="button" aria-pressed="false">architecture <span class="tag-count">8</span></button><button class="tag" data-tag="lean" type="button" aria-pressed="false">lean <span class="tag-count">7</span></button><button class="tag" data-tag="physics" type="button" aria-pressed="false">physics <span class="tag-count">5</span></button><button class="tag" data-tag="energy" type="button" aria-pressed="false">energy <span class="tag-count">4</span></button><button class="tag" data-tag="global-prices" type="button" aria-pressed="false">global-prices <span class="tag-count">3</span></button><button class="tag tag-extra" data-tag="trade-logistics" type="button" aria-pressed="false" hidden>trade-logistics <span class="tag-count">3</span></button><button class="tag tag-extra" data-tag="construction" type="button" aria-pressed="false" hidden>construction <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="engineering" type="button" aria-pressed="false" hidden>engineering <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="europe-energy" type="button" aria-pressed="false" hidden>europe-energy <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="financial-stress" type="button" aria-pressed="false" hidden>financial-stress <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="labour" type="button" aria-pressed="false" hidden>labour <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="math" type="button" aria-pressed="false" hidden>math <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="singapore-financial-stress" type="button" aria-pressed="false" hidden>singapore-financial-stress <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="singapore-trade-logistics" type="button" aria-pressed="false" hidden>singapore-trade-logistics <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="united-states-labour" type="button" aria-pressed="false" hidden>united-states-labour <span class="tag-count">2</span></button><button class="tag tag-extra" data-tag="australia-energy" type="button" aria-pressed="false" hidden>australia-energy <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="europe-construction" type="button" aria-pressed="false" hidden>europe-construction <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="europe-transport" type="button" aria-pressed="false" hidden>europe-transport <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="fiscal-cashflow" type="button" aria-pressed="false" hidden>fiscal-cashflow <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="global-agriculture" type="button" aria-pressed="false" hidden>global-agriculture <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="global-shipping" type="button" aria-pressed="false" hidden>global-shipping <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="global-trade" type="button" aria-pressed="false" hidden>global-trade <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="housing" type="button" aria-pressed="false" hidden>housing <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="japan-housing-prices" type="button" aria-pressed="false" hidden>japan-housing-prices <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="mobility" type="button" aria-pressed="false" hidden>mobility <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="singapore-energy" type="button" aria-pressed="false" hidden>singapore-energy <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="singapore-housing-prices" type="button" aria-pressed="false" hidden>singapore-housing-prices <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="united-kingdom-energy" type="button" aria-pressed="false" hidden>united-kingdom-energy <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="united-kingdom-housing-prices" type="button" aria-pressed="false" hidden>united-kingdom-housing-prices <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="united-states-construction" type="button" aria-pressed="false" hidden>united-states-construction <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="united-states-energy" type="button" aria-pressed="false" hidden>united-states-energy <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="united-states-fiscal-cashflow" type="button" aria-pressed="false" hidden>united-states-fiscal-cashflow <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="united-states-freight" type="button" aria-pressed="false" hidden>united-states-freight <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="united-states-prices" type="button" aria-pressed="false" hidden>united-states-prices <span class="tag-count">1</span></button><button class="tag tag-extra" data-tag="united-states-trade" type="button" aria-pressed="false" hidden>united-states-trade <span class="tag-count">1</span></button><p class="tag-more-hint">+30 more &mdash; type above to find one</p></div>
-        </div>
-      </details>
-      <span class="result-count" data-result-count aria-live="polite" aria-atomic="true"></span>
+    <main id="main-content" tabindex="-1"><section class="hero"><h1 class="hero-title">Yu Jie Teo</h1><div class="hero-lede"><p>Notes, paper links, visuals and media on mathematics, computing, physics and engineering. Everything here is a work in progress: revisited, corrected and extended over time.</p></div><p class="hero-links"><a class="more-link" href="open-questions.html">Open questions</a><a class="more-link" href="colophon.html">How this site is built</a></p></section><section class="featured" aria-labelledby="featured-heading"><h2 class="visually-hidden" id="featured-heading">Featured</h2><ul class="featured-grid"><li class="card"><p class="card-type">Latest note</p><h3 class="card-title"><a class="card-link" href="notes.html#note:ac4fe9bd0e0fa34c13e4712f585e000fd4de84c8fce34b40c816d6e4eef2e081">A metagame shifts when the shared perception of what is strong changes, and a tournament win is a common…</a></h3><p class="card-summary">Wolfe Glick&#x27;s Metagame page gives the worked case: after he won the Players Cup 2 with Coalossal, Coalossal&#x27;s usage rose, Poké</p><time class="card-date" datetime="2026-09-29">2026-09-29</time></li><li class="card"><p class="card-type">Latest visual</p><h3 class="card-title"><a class="card-link" href="visuals/convexity-action-engine/index.html">Convexity Action Engine</a></h3><p class="card-summary">Press Ctrl/⌘ K, type what you are considering, and see it in your Singapore context: screened for ruin first, then compared on reliable…</p><time class="card-date" datetime="2026-09-29">2026-09-29</time></li><li class="card"><p class="card-type">Latest episode</p><h3 class="card-title"><a class="card-link" href="media/2026-09-29-exercise-nutrition-health.html">Notes on exercise, nutrition, and health</a></h3><p class="card-summary">Condensed notes on exercise, nutrition, health, and reflection from 35 notes dated 2025-10-20 to 2026-09-26.</p><time class="card-date" datetime="2026-09-29">2026-09-29</time></li><li class="card"><p class="card-type">Pinned visual</p><h3 class="card-title"><a class="card-link" href="visuals/breeden-litzenberger-density/index.html">The risk-neutral density is the curvature of the call-price curve</a></h3><p class="card-summary">Differentiate a call price twice in its strike: times e^rT, that curvature is the market-implied probability density of the stock ending…</p><time class="card-date" datetime="2026-09-29">2026-09-29</time></li></ul></section><section class="collection" aria-labelledby="collection-title">
+    <h2 class="collection-title" id="collection-title">All resources <span class="collection-count">110</span></h2>
+    <form class="filter-bar" data-filter-form data-kind="resource" data-noun="resources" data-entry-heading="h3"
+          data-total="110" data-default-show="true">
+      <div class="filter-field">
+        <label class="filter-label" for="entry-search">Filter this list</label>
+        <input type="search" id="entry-search" class="search-box" placeholder="Filter resources by title, note or tag…"
+               autocomplete="off" enterkeyhint="search">
+      </div>
+      <button type="button" class="filters-toggle" data-filters-toggle aria-expanded="false"
+              aria-controls="filter-panel">Filters<span class="filters-active-count" data-active-count hidden></span></button>
+      <span class="result-count" data-result-count aria-live="polite" aria-atomic="true">110 resources</span>
+      <div class="facet-panel" id="filter-panel" data-tag-bar hidden>
+        <fieldset class="facet" data-facet="subject"><legend class="facet-legend">Subject</legend><div class="facet-tags"><button type="button" class="tag" data-facet="subject" data-tag="mathematics" aria-pressed="false">mathematics <span class="tag-count">22</span></button><button type="button" class="tag" data-facet="subject" data-tag="energy" aria-pressed="false">energy <span class="tag-count">8</span></button><button type="button" class="tag" data-facet="subject" data-tag="physics" aria-pressed="false">physics <span class="tag-count">5</span></button><button type="button" class="tag" data-facet="subject" data-tag="construction" aria-pressed="false">construction <span class="tag-count">4</span></button><button type="button" class="tag" data-facet="subject" data-tag="labour" aria-pressed="false">labour <span class="tag-count">4</span></button><button type="button" class="tag" data-facet="subject" data-tag="prices" aria-pressed="false">prices <span class="tag-count">4</span></button><button type="button" class="tag" data-facet="subject" data-tag="housing-prices" aria-pressed="false">housing-prices <span class="tag-count">3</span></button><button type="button" class="tag" data-facet="subject" data-tag="trade-logistics" aria-pressed="false">trade-logistics <span class="tag-count">3</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="engineering" aria-pressed="false" hidden>engineering <span class="tag-count">2</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="financial-stress" aria-pressed="false" hidden>financial-stress <span class="tag-count">2</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="trade" aria-pressed="false" hidden>trade <span class="tag-count">2</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="agriculture" aria-pressed="false" hidden>agriculture <span class="tag-count">1</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="fiscal-cashflow" aria-pressed="false" hidden>fiscal-cashflow <span class="tag-count">1</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="freight" aria-pressed="false" hidden>freight <span class="tag-count">1</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="mobility" aria-pressed="false" hidden>mobility <span class="tag-count">1</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="shipping" aria-pressed="false" hidden>shipping <span class="tag-count">1</span></button><button type="button" class="tag tag-extra" data-facet="subject" data-tag="transport" aria-pressed="false" hidden>transport <span class="tag-count">1</span></button></div><button type="button" class="facet-more" aria-expanded="false" data-show-label="Show all 17">Show all 17</button></fieldset><fieldset class="facet" data-facet="approach"><legend class="facet-legend">Approach</legend><div class="facet-tags"><button type="button" class="tag" data-facet="approach" data-tag="systems" aria-pressed="false">systems <span class="tag-count">20</span></button><button type="button" class="tag" data-facet="approach" data-tag="computational" aria-pressed="false">computational <span class="tag-count">10</span></button><button type="button" class="tag" data-facet="approach" data-tag="architecture" aria-pressed="false">architecture <span class="tag-count">8</span></button></div></fieldset><fieldset class="facet" data-facet="tool"><legend class="facet-legend">Tool</legend><div class="facet-tags"><button type="button" class="tag" data-facet="tool" data-tag="lean" aria-pressed="false">lean <span class="tag-count">7</span></button></div></fieldset><fieldset class="facet" data-facet="region"><legend class="facet-legend">Region</legend><div class="facet-tags"><button type="button" class="tag" data-facet="region" data-tag="united-states" aria-pressed="false">united-states <span class="tag-count">8</span></button><button type="button" class="tag" data-facet="region" data-tag="global" aria-pressed="false">global <span class="tag-count">6</span></button><button type="button" class="tag" data-facet="region" data-tag="singapore" aria-pressed="false">singapore <span class="tag-count">6</span></button><button type="button" class="tag" data-facet="region" data-tag="europe" aria-pressed="false">europe <span class="tag-count">4</span></button><button type="button" class="tag" data-facet="region" data-tag="united-kingdom" aria-pressed="false">united-kingdom <span class="tag-count">2</span></button><button type="button" class="tag" data-facet="region" data-tag="australia" aria-pressed="false">australia <span class="tag-count">1</span></button><button type="button" class="tag" data-facet="region" data-tag="japan" aria-pressed="false">japan <span class="tag-count">1</span></button></div></fieldset>
+        <p class="facet-note">Tags in one group match any of them; tags from different groups must all match.</p>
+      </div>
     </form>
-    <section data-entry-list aria-label="Results"></section>
-    <p class="no-results" data-no-results hidden>No resources match your search.</p>
+    <div class="active-filters" data-active-filters hidden>
+      <span class="active-filters-label">Filtered by</span>
+      <ul class="active-filter-list" data-active-filter-list></ul>
+      <button type="button" class="clear-filters" data-clear-filters>Clear all</button>
+    </div>
+    <div class="entry-list" data-entry-list aria-label="Results"></div>
+    <p class="no-results" data-no-results hidden>No resources match these filters.</p>
     <nav class="pager" data-pager aria-label="Result pages" hidden></nav>
+    </section>
     <script type="module" src="static/js/filter.js"></script>
 <script>
   window.MathJax = {
@@ -103,7 +113,16 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
 </main>
     <footer class="site-footer">
-      Made with the assistance of AI. <a href="https://github.com/yujieteo">GitHub</a>
+      <p class="footer-links">
+        <a href="colophon.html#ai-assistance">Made with the assistance of AI</a>
+        <a href="colophon.html">How this site is built</a>
+        <a href="https://github.com/yujieteo/site">Source on GitHub</a>
+      </p>
+      <div class="theme-switch" role="group" aria-label="Colour theme" data-theme-switch hidden>
+        <button type="button" data-theme-choice="system" aria-pressed="true">System</button>
+        <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+      </div>
     </footer>
   </div>
 </body>

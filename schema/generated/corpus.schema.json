@@ -33,7 +33,19 @@
           "durationSeconds": { "type": "number", "exclusiveMinimum": 0 },
           "readingMinutes": { "type": "integer", "minimum": 1 },
           "fetched": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
-          "webmcpTools": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+          "webmcpTools": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["rel", "target"],
+              "additionalProperties": false,
+              "properties": {
+                "rel": { "enum": ["resolves", "extends", "uses", "related", "resolvedBy", "extendedBy", "usedBy"] },
+                "target": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
         }
       }
     }
