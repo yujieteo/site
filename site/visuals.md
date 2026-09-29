@@ -97,3 +97,10 @@ See which words recur in 106 descriptions of Singapore tourist attractions and w
 - Data: https://teoyujie.org/visuals/tourist-attractions/data.json
 - Fetched: 2026-09-27
 - WebMCP tools: get_data, get_metadata, query, get_marketing_terms
+
+## Win the turn: Protect, Fake Out and pivots
+Seven turn-by-turn drills with a Delphox + Blastoise team from Justin Tang, in Regulation M-C: Protect beats Fake Out at +4 to +3, Quick Guard ties it, and a Parting Shot pivot only works when it connects.
+- HTML: https://teoyujie.org/visuals/vgc-protect-fakeout-pivot-trainer/index.html
+- Data: https://teoyujie.org/visuals/vgc-protect-fakeout-pivot-trainer/data.json
+- Fetched: 2026-09-29
+- WebMCP tools: get_data, get_metadata, query
