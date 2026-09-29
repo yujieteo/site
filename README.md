@@ -82,7 +82,7 @@ Follow the playbook for the task; [SKILLS.md](SKILLS.md) lists them all:
 | Blog posts | `data/blog/*.md` with YAML frontmatter (each is also published as `site/blog/<slug>.md`) |
 | Slide decks | `data/decks/<slug>/index.html` |
 | Media items | `data/podcasts/<id>.yaml` plus audio or video assets |
-| Visualizations | `data/visuals/<slug>.yaml` (assets come from the visuals repo) |
+| Visualizations | `data/visuals/<slug>.yaml` (assets come from the visuals repo, or from `visuals/<slug>/` when the paths start with `visuals/`) |
 | Papers and resources | `data/paper-links/*.yaml`, `data/resources/*.yaml` |
 
 `.venv/bin/python scripts/parse_notes.py notes.txt <out.yaml>` converts
