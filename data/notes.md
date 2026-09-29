@@ -455,7 +455,7 @@ Taleb on tail-risk hedging: acquiring convex payoff exposure generally carries n
 
 Taleb's heuristic for speculative option buying: a widely known reason to buy may already be reflected in the price. This does not imply buying without evidence; compare one's information and model with the market-implied distribution. #finance
 
-Taleb suggests explaining Schwartz distributions through an analogy with option pricing. Work out the correspondence and its limits before using it pedagogically. #finance #mathematics #todo
+Taleb suggests explaining Schwartz distributions through an analogy with option pricing. Work out the correspondence and its limits before using it pedagogically. #finance #mathematics
 
 Taleb argues that repeated unhedged option selling can be non-ergodic because rare losses may cause ruin. The universal claim that no seller survives is too strong: survival depends on pricing, hedging, sizing, capital, and the loss process. #finance #risk
 
