@@ -28,6 +28,13 @@ A tappable 2 by 2 for choosing a low-cost experiment that can open a meaningful 
 - Fetched: 2026-09-28
 - WebMCP tools: get_data, get_metadata, query
 
+## Convexity Action Engine
+Press Ctrl/⌘ K, type what you are considering, and see it in your Singapore context: screened for ruin first, then compared on reliable upside, right-tail upside, timing and opportunity cost against real alternatives. 395 actions and 26 to avoid; every number is labelled author judgement.
+- HTML: https://teoyujie.org/visuals/convexity-action-engine/index.html
+- Data: https://teoyujie.org/visuals/convexity-action-engine/data.json
+- Fetched: 2026-09-29
+- WebMCP tools: get_metadata, search_actions, get_action, compare_actions
+
 ## Your energy dips mid-afternoon. Your inbox doesn't.
 A workday timeline pairs the circadian post-lunch dip with the measured reflex of email: 70% answered within 6 seconds, 64 seconds to refocus each time, and less stress when checks drop to three a day.
 - HTML: https://teoyujie.org/visuals/energy-email-productivity/index.html
