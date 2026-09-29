@@ -850,6 +850,7 @@ def main():
             f"/media/{item['id']}.html", item["title"]
         )
         for item in media_items
+        if "audio" in item
     })
     for path, content in redirects.items():
         path.write_text(content, encoding="utf-8")
