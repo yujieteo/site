@@ -11,6 +11,8 @@
   <meta name="site-corpus" content="corpus.json">
   <meta name="site-corpus-revision" content="83fe648950b1bd29ae46498bffa7ac35ab0ef4b3d08febb9da21a1a00660ad61">
   <script type="module" src="static/js/webmcp.js"></script>
+  <script type="module" src="static/js/site-search.js"></script>
+  <noscript><style>.site-search { display: none; }</style></noscript>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -27,6 +29,21 @@
         <a href="blog.html" aria-current="page">Blog</a>
         <a href="visuals.html">Visuals</a>
       </nav>
+      <form class="site-search" role="search" data-site-search>
+        <label class="visually-hidden" for="site-search-input">Search the whole site</label>
+        <input type="search" id="site-search-input" class="site-search-input"
+               placeholder="Search the site…" autocomplete="off" spellcheck="false"
+               role="combobox" aria-expanded="false" aria-autocomplete="list"
+               aria-controls="site-search-results" aria-describedby="site-search-hint">
+        <kbd class="site-search-key" aria-hidden="true">/</kbd>
+        <span class="visually-hidden" id="site-search-hint">Type to search; use the arrow keys to choose a result and Enter to open it. Press slash to jump here.</span>
+        <p class="visually-hidden" data-site-search-live aria-live="polite" aria-atomic="true"></p>
+        <div class="site-search-panel" data-site-search-panel hidden>
+          <p class="site-search-status" data-site-search-status></p>
+          <ul class="site-search-results" id="site-search-results" role="listbox"
+              aria-label="Site search results"></ul>
+        </div>
+      </form>
     </header>
     <main id="main-content" tabindex="-1"><h1 class="page-title">Blog</h1><form class="search-row" data-filter-form data-kind="blog"
           data-default-show="true">

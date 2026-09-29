@@ -23,7 +23,12 @@ Every generated page registers two read-only tools when the browser supports
 - `search_site` searches all public content by text, kind, tags, and sort order.
 - `get_item` retrieves one complete Corpus Record by its stable ID.
 
-Both tools and the visible search controls use `static/js/corpus.js`. The
+Both tools and the visible search controls use `static/js/corpus.js`: the
+per-page filters (`static/js/filter.js`, one kind per page) and the global
+search box in the header of every page (`templates/base.html`,
+`static/js/site-search.js`), which searches every record kind, loads the corpus
+on first focus or keystroke, and resolves record URLs against `corpus.json` so
+results work from nested pages. Press `/` to focus it. The
 browser fetches `corpus.json` without persistent caching and keeps it only for
 the page lifetime. Authenticated authoring is intentionally separate from this
 read interface.

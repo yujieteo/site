@@ -162,6 +162,131 @@ main:focus {
   outline: none;
 }
 
+.site-search {
+  position: relative;
+  max-width: 28rem;
+  margin-top: var(--space-4);
+}
+
+.site-search-input {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: var(--space-2) 2.5rem var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: var(--text-sm);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.site-search-input::placeholder {
+  color: var(--secondary);
+}
+
+.site-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.site-search-key {
+  position: absolute;
+  top: 0.5rem;
+  right: var(--space-2);
+  min-width: 1.5rem;
+  padding: 0 var(--space-1);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) / 2);
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: 1.4rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.site-search-input:focus ~ .site-search-key,
+.site-search-input:not(:placeholder-shown) ~ .site-search-key {
+  display: none;
+}
+
+.site-search-panel {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-height: min(70vh, 32rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.12);
+}
+
+.site-search-panel[hidden] {
+  display: none;
+}
+
+.site-search-status {
+  margin: 0;
+  padding: var(--space-1) var(--space-2);
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.site-search-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-search-result {
+  display: block;
+  padding: var(--space-2);
+  border-radius: calc(var(--radius) / 2);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.site-search-results [aria-selected="true"] .site-search-result {
+  background: var(--surface);
+}
+
+.site-search-meta {
+  display: block;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.site-search-title {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.site-search-summary {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--secondary);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+  .site-search-panel {
+    box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.5);
+  }
+}
+
+
 .page-title {
   margin: 0 0 var(--space-8);
   font-size: clamp(var(--text-xl), 5vw, var(--text-2xl));
@@ -552,6 +677,14 @@ mjx-container[display="true"] {
 
   .site-header {
     margin-bottom: var(--space-8);
+  }
+
+  .site-search {
+    max-width: none;
+  }
+
+  .site-search-key {
+    display: none;
   }
 
   .search-box {
