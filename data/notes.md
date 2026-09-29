@@ -19,6 +19,8 @@ Aaron Zheng's first step in team preview is to read the opponent's six for combi
 
 Some cores recur across formats because their typings cover each other's weaknesses. VGC guide's [Cores and Modes](https://www.vgcguide.com/cores-and-modes) (Wolfe Glick) follows Fire/Water/Grass, where each type resists what threatens the others, through VGC17's Arcanine, Tapu Fini, and Kartana — a trio whose complementary stats and Speed bands also suited bulky offense built on careful switching — and Dragon/Fairy/Steel, where Aegislash and Hydreigon resist each other's Ground, Fire, Ghost, and Dark and Fighting, Dragon, Fairy, and Ice weaknesses, with Mega Mawile as a third piece. Glick is explicit that a core is not only typing: ability, base stats, and Speed all contribute, and a classic triangle is weaker outside the format that made it. The part that transfers is the defensive coverage. Practical use: before inventing a pairing for a centerpiece, check whether an existing typing triangle already answers its weaknesses, and judge the core by how its members switch into each other's threats rather than by combined offense alone. #vgc #team-building #pokemon
 
+Resolved the 2025-10-20 todo on the Schwartz-distribution and option-pricing analogy: the published [Breeden–Litzenberger density visualization](/visuals/breeden-litzenberger-density/) is the pedagogical use it asked for. #finance #mathematics
+
 ## 2026-09-28
 
 A weaker model's analysis can be more useful than a strong one's precisely because it is unreliable: flawed geopolitical or socioeconomic analysis forces you to check the reasoning instead of accepting it, and it still produces a perspective you would not have generated yourself. That makes it a practical role for an agentic model that is not a strong reasoner, as long as its output is treated as a prompt for scrutiny rather than as a conclusion. #llms #agents #rationality
@@ -453,7 +455,7 @@ Taleb on tail-risk hedging: acquiring convex payoff exposure generally carries n
 
 Taleb's heuristic for speculative option buying: a widely known reason to buy may already be reflected in the price. This does not imply buying without evidence; compare one's information and model with the market-implied distribution. #finance
 
-Taleb suggests explaining Schwartz distributions through an analogy with option pricing. Work out the correspondence and its limits before using it pedagogically. #finance #mathematics #todo
+Taleb suggests explaining Schwartz distributions through an analogy with option pricing. Work out the correspondence and its limits before using it pedagogically. #finance #mathematics
 
 Taleb argues that repeated unhedged option selling can be non-ergodic because rare losses may cause ruin. The universal claim that no seller survives is too strong: survival depends on pricing, hedging, sizing, capital, and the loss process. #finance #risk
 
