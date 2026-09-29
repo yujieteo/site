@@ -10,34 +10,246 @@ tags: mac, setup
 
 A small, terminal-first Mac setup.
 
+The setup is automated by `scripts/build-mac.sh` in the
+[dotfiles repository](https://github.com/yujieteo/dotfiles). This post lists
+the steps in the order the script runs them, and says which ones stay manual.
+
+## macOS security basics
+
+Manual, before running the script. In System Settings:
+
+- Turn on FileVault (Privacy & Security).
+- Turn on the firewall (Network).
+- Turn on automatic software updates (General → Software Update).
+- Add a fingerprint for Touch ID (Touch ID & Password).
+
 ## Install
 
 ```
-xcode-select --install
+xcode-select --install            # wait for the dialog to finish
+git clone https://github.com/yujieteo/dotfiles ~/dotfiles && cd ~/dotfiles
+scripts/build-mac.sh --dry-run    # preview; changes nothing
+scripts/build-mac.sh              # run it (asks once before making changes)
 ```
 
+The steps, in order (`scripts/build-mac.sh --list`):
+
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+xcode homebrew packages herdr agents directories dotfiles
+herdr-integration vscode-extensions ssh python skills verify
 ```
 
-Restart the shell, then:
+Every step is idempotent: work that is already done is skipped, and nothing is
+deleted. The script never calls `sudo`; the Homebrew installer and the mactex
+cask ask for the admin password themselves. Run a single step with
+`--only STEP`, or leave one out with `--skip STEP`.
+
+Add the Homebrew `PATH` line the installer printed to `~/.zprofile`, then
+restart the shell. Neither this post nor the tracked dotfiles do it for you, so
+without it the next `brew update` fails:
+
+```
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+### xcode, homebrew
+
+The script runs `xcode-select --install` and waits for the dialog to finish,
+then installs Homebrew.
+
+Homebrew, herdr and Claude Code are installed by their official
+`curl … | sh` installers, but the script never pipes them straight into a
+shell. It downloads each one to a temporary file first, stops if the download
+fails, and only then runs it from that file.
+
+### packages
 
 ```
 brew update
 brew install git gh stow neovim ripgrep fzf jq mise uv
-brew install --cask google-chrome visual-studio-code mactex discord
+brew install --cask google-chrome alacritty visual-studio-code mactex discord
 ```
 
-Install herdr, the terminal agent multiplexer:
+`mactex` is several GB and its installer asks for the admin password. Apps
+already present in `/Applications` are skipped rather than reinstalled over.
+
+### herdr, agents
+
+The script installs herdr, the terminal agent multiplexer, from
+`https://herdr.dev/install.sh`, then the coding agents: Codex through
+`brew install codex`, and Claude Code through the official installer at
+`https://claude.ai/install.sh`.
+
+The Codex desktop app is not installed by the script. Codex's Chrome plugin is
+added from inside that app, under Plugins → add the Chrome plugin; that is a
+manual step.
+
+### directories
 
 ```
-curl -fsSL https://herdr.dev/install.sh | sh
+~/src   Git repositories
+~/data  valuable non-Git files
+~/tmp   disposable work
 ```
 
-Install pi, the persistent local coding agent:
+The script creates them, plus `~/.ssh`, and sets `~/data` and `~/.ssh` to mode
+700.
+
+### dotfiles
+
+`scripts/build-mac.sh` links the tracked `home/` and `vscode/` Stow packages
+into `$HOME` with `--no-folding`, backing up conflicting files to
+`~/dotfiles-backup/<timestamp>/`. `--no-folding` keeps `~/.ssh` and `~/.config`
+as real directories, so no tool writes through a link into the repository.
+`--adopt` is never used.
+
+The linked files are the ones the repository tracks under `home/` and `vscode/`
+— shell, Neovim, Alacritty, Git, SSH and VS Code settings. The repository is the
+source of truth, so this post no longer repeats their contents. Tool-generated
+files (`home/.config/gh`, VS Code caches and logs) are tracked only as a
+snapshot and are never linked, so `gh` and VS Code never write into the working
+tree.
+
+The tracked `.gitconfig` already holds the Git settings, so there is no
+`git config --global` block to run, and `gh auth setup-git` is skipped for the
+same reason: after linking, `~/.gitconfig` points into the repository, and
+those commands would edit it. Set the identity email in the repository before
+the SSH step, because `ssh-keygen -C` reads it.
+
+The repository has drifted from what this post used to say: it still tracks a
+`.tmux.conf` although herdr replaces tmux, and its `alacritty.toml` is empty.
+The script links whatever the repository contains.
+
+### herdr-integration
+
+The script runs `herdr integration install claude` and
+`herdr integration install codex` to sharpen agent detection.
+
+herdr works without a config file — add one at `~/.config/herdr/config.toml`
+only if you want custom keys, themes, or notifications; `herdr --default-config`
+prints a full starting point.
+
+First run is manual:
+
+```
+open -a Alacritty
+herdr
+```
+
+First run opens a short onboarding flow. Press `n` to create a workspace, run an
+agent in the pane, and `ctrl+b` to enter navigate mode. Detach with `ctrl+b`
+then `q` — agents keep running in the background session.
+
+### vscode-extensions
+
+The script installs the useful extensions only: `vscodevim.vim`,
+`ms-python.python` and `charliermarsh.ruff`. If the `code` command is not on
+`PATH`, open VS Code's Command Palette, run "Shell Command: Install 'code'
+command in PATH", then:
+
+```
+scripts/build-mac.sh --only vscode-extensions,verify
+```
+
+### ssh
+
+The script generates `~/.ssh/id_ed25519` if it does not exist
+(`ssh-keygen -t ed25519 -a 100`, with the identity email as the comment), asks
+you for a passphrase, and tightens the permissions on `~/.ssh/config` and the
+key. If it has no terminal for the passphrase prompt, run the command yourself
+and accept the default path:
+
+```
+ssh-keygen -t ed25519 -a 100 -C "$(git config --global user.email)"
+```
+
+Add the key to the agent. macOS already runs an agent under launchd, so use
+`ssh-add` alone; `eval "$(ssh-agent -s)"` would start a second, orphaned one:
+
+```
+ssh-add ~/.ssh/id_ed25519
+```
+
+Signing in to GitHub is manual:
+
+```
+gh auth login --hostname github.com --git-protocol ssh --web
+gh auth status
+ssh -T git@github.com
+```
+
+### python
+
+```
+mise use --global python@3.14
+```
+
+mise owns Python versions. uv owns projects and dependencies. Creating a
+project and its `.env` is per-project workflow, so it is left out of a
+machine-setup post.
+
+### skills
+
+Shared skills for both agents live in a separate repository. The script clones
+it to `~/src/skills` once `gh` is signed in; before that it leaves a note to
+re-run `scripts/build-mac.sh --only skills`.
+
+```
+gh repo clone yujieteo/skills ~/src/skills
+```
+
+Wiring it into Codex and Claude Code is still planned and is not automated.
+
+### verify
+
+```
+scripts/build-mac.sh --only verify
+```
+
+This read-only step checks that `git gh stow herdr nvim rg fzf jq mise uv codex
+claude` are on `PATH`, that Alacritty and VS Code are installed, and that the
+tools report their versions. It only warns about a missing `opencode`.
+
+## Manual checks
+
+The script prints these as a checklist at the end (or with `--checklist`):
+
+```
+gh auth status
+ssh -T git@github.com
+git config --global --list
+```
+
+- Sign in to `claude` by running it once.
+- OpenCode is used below but not installed by the script. Install it yourself,
+  then sign in interactively rather than through `.env`:
+
+  ```
+  opencode auth login
+  opencode auth list
+  ```
+
+- Add the Codex Chrome plugin in the Codex desktop app.
+- Open Alacritty, Google Chrome and Discord once, and sign in as you wish.
+
+Never put secrets in `~/.zshrc`, `.env.example`, Git, or shell commands.
+
+## pi and firstmate
+
+Neither is installed by the script; both are manual.
+
+pi is the persistent local coding agent, and OpenCode is the repository-local
+one. Install pi, then authenticate a provider and choose a model inside the
+session:
 
 ```
 curl -fsSL https://pi.dev/install.sh | sh
+pi
+```
+
+```
+/login
+/model
 ```
 
 Or install pi from npm with Node 22.19 or newer:
@@ -46,426 +258,8 @@ Or install pi from npm with Node 22.19 or newer:
 npm install -g --ignore-scripts @earendil-works/pi-coding-agent
 ```
 
-Install the coding agents:
-
-```
-brew install --cask codex
-curl -fsSL https://claude.ai/install.sh | bash
-```
-
-Codex's Chrome plugin is not installed here — it's added from inside the
-Codex desktop app, under Plugins → add the Chrome plugin.
-
-## Directories
-
-Flat home dotfiles, not a canonical project tree. Use:
-
-```
-mkdir -p "$HOME/src" "$HOME/data" "$HOME/tmp" "$HOME/.ssh"
-mkdir -p "$HOME/.dotfiles/home/.ssh"
-mkdir -p "$HOME/.dotfiles/home/.config/alacritty"
-mkdir -p "$HOME/.dotfiles/home/.config/nvim"
-mkdir -p "$HOME/.dotfiles/vscode/Library/Application Support/Code/User"
-chmod 700 "$HOME/data" "$HOME/.ssh"
-```
-
-```
-~/src   Git repositories
-~/data  valuable non-Git files
-~/tmp   disposable work
-```
-
-## Dotfiles
-
-The real files live in two small Stow packages: portable home configuration
-and the macOS path adapter for VS Code.
-
-```
-git init "$HOME/.dotfiles"
-
-touch "$HOME/.dotfiles/home/.zshrc"
-touch "$HOME/.dotfiles/home/.config/nvim/init.lua"
-touch "$HOME/.dotfiles/home/.gitconfig"
-touch "$HOME/.dotfiles/home/.gitignore_global"
-touch "$HOME/.dotfiles/home/.ssh/config"
-touch "$HOME/.dotfiles/home/.config/alacritty/alacritty.toml"
-touch "$HOME/.dotfiles/vscode/Library/Application Support/Code/User/settings.json"
-```
-
-Stow will refuse to overwrite existing files. Move any existing configuration
-into the matching path above first. Do not use `--adopt` blindly.
-
-```
-cd "$HOME/.dotfiles"
-stow --target="$HOME" home vscode
-```
-
-```
-ls -la "$HOME"/.zshrc "$HOME"/.config/nvim/init.lua
-ls -la "$HOME"/.gitconfig "$HOME"/.gitignore_global "$HOME"/.ssh/config
-ls -la "$HOME"/.config/alacritty/alacritty.toml
-ls -la "$HOME/Library/Application Support/Code/User/settings.json"
-```
-
-### zsh
-
-```
-tee "$HOME/.dotfiles/home/.zshrc" >/dev/null <<'EOF'
-export CLICOLOR=1
-export EDITOR=nvim
-export VISUAL=nvim
-export PS1=$'%n@%m:\e[0;36m%~\e[0m$ '
-eval "$(mise activate zsh)"
-EOF
-```
-
-```
-source "$HOME/.zshrc"
-```
-
-### Neovim
-
-```
-tee "$HOME/.dotfiles/home/.config/nvim/init.lua" >/dev/null <<'EOF'
-vim.g.mapleader = " "
-
-vim.opt.number = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.termguicolors = true
-
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    vim.opt_local.makeprg = "uv run ruff check --output-format=concise %"
-    vim.opt_local.errorformat = "%f:%l:%c: %m"
-  end,
-})
-
-vim.keymap.set("n", "<leader>l", "<cmd>make<CR>", { desc = "Lint file" })
-EOF
-```
-
-```
-nvim "$HOME/.config/nvim/init.lua"
-nvim --headless +qa
-```
-
-For Python files:
-
-```
-:make
-:cnext
-:cprevious
-:cwindow
-```
-
-## herdr
-
-herdr replaces tmux as the terminal multiplexer. It works without a config
-file — add one at `~/.config/herdr/config.toml` only if you want custom
-keys, themes, or notifications; `herdr --default-config` prints a full
-starting point.
-
-Sharpen agent detection for the three agents installed above:
-
-```
-herdr integration install claude
-herdr integration install codex
-herdr integration install pi
-```
-
-```
-herdr
-```
-
-First run opens a short onboarding flow. Press `n` to create a workspace,
-run an agent in the pane, and `ctrl+b` to enter navigate mode. Detach with
-`ctrl+b` then `q` — agents keep running in the background session.
-
-## Alacritty
-
-Homebrew disabled its Alacritty cask over a Gatekeeper check, so install the
-release DMG from https://github.com/alacritty/alacritty/releases/latest.
-
-```
-tee "$HOME/.dotfiles/home/.config/alacritty/alacritty.toml" >/dev/null <<'EOF'
-[window]
-padding = { x = 8, y = 8 }
-dynamic_padding = true
-opacity = 1.0
-
-[font]
-normal = { family = "Menlo", style = "Regular" }
-size = 14.0
-
-[scrolling]
-history = 5000
-
-[selection]
-save_to_clipboard = true
-
-[terminal]
-shell = { program = "/bin/zsh", args = ["-l"] }
-EOF
-```
-
-```
-open -a Alacritty
-herdr
-```
-
-## VS Code
-
-Keep the portable JSON in the dotfiles repository; Stow handles VS Code's
-macOS-specific settings path.
-
-```
-tee "$HOME/.dotfiles/vscode/Library/Application Support/Code/User/settings.json" >/dev/null <<'EOF'
-{
-  "workbench.colorTheme": "Default Dark Modern",
-  "workbench.startupEditor": "none",
-  "workbench.editor.enablePreview": false,
-  "breadcrumbs.enabled": false,
-  "editor.fontFamily": "Menlo, monospace",
-  "editor.fontSize": 14,
-  "editor.lineHeight": 22,
-  "editor.minimap.enabled": false,
-  "editor.stickyScroll.enabled": false,
-  "editor.renderWhitespace": "selection",
-  "editor.rulers": [88],
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true,
-  "git.autofetch": false,
-  "telemetry.telemetryLevel": "off",
-  "vim.useSystemClipboard": true,
-  "vim.handleKeys": {
-    "<C-p>": false
-  },
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.ruff": "explicit",
-      "source.organizeImports.ruff": "explicit"
-    }
-  }
-}
-EOF
-```
-
-Install only the useful extensions:
-
-```
-code --install-extension vscodevim.vim
-code --install-extension ms-python.python
-code --install-extension charliermarsh.ruff
-code --list-extensions | sort
-```
-
-```
-cd "$HOME/src/REPOSITORY"
-code .
-```
-
-## Git
-
-Replace the email before running:
-
-```
-git config --global user.name "Teo Yu Jie"
-git config --global user.email "YOUR_GITHUB_EMAIL"
-git config --global init.defaultBranch main
-git config --global core.editor nvim
-git config --global pull.ff only
-git config --global core.excludesFile "$HOME/.gitignore_global"
-```
-
-```
-tee "$HOME/.dotfiles/home/.gitignore_global" >/dev/null <<'EOF'
-.DS_Store
-.env
-.env.*
-!.env.example
-EOF
-```
-
-```
-git config --global --list
-```
-
-## SSH and GitHub
-
-```
-chmod 700 "$HOME/.ssh"
-ssh-keygen -t ed25519 -a 100 -C "$(git config --global user.email)"
-```
-
-Accept the default path, `~/.ssh/id_ed25519`, and enter a passphrase.
-
-```
-tee "$HOME/.dotfiles/home/.ssh/config" >/dev/null <<'EOF'
-Host github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519
-  IdentitiesOnly yes
-  AddKeysToAgent yes
-EOF
-```
-
-```
-chmod 600 "$HOME/.ssh/config" "$HOME/.ssh/id_ed25519"
-chmod 644 "$HOME/.ssh/id_ed25519.pub"
-eval "$(ssh-agent -s)"
-ssh-add "$HOME/.ssh/id_ed25519"
-```
-
-```
-gh auth login --hostname github.com --git-protocol ssh --web
-gh auth setup-git
-gh auth status
-ssh -T git@github.com
-```
-
-Save only the explicit dotfiles:
-
-```
-git -C "$HOME/.dotfiles" add home vscode
-git -C "$HOME/.dotfiles" commit -m "Initial configuration"
-gh repo create dotfiles --private \
-  --source="$HOME/.dotfiles" \
-  --remote=origin \
-  --push
-```
-
-Clone only the current project:
-
-```
-cd "$HOME/src"
-gh repo clone USER/REPOSITORY
-cd REPOSITORY
-```
-
-## Python
-
-mise owns Python versions. uv owns projects and dependencies.
-
-```
-mise use --global python@3.14
-mise exec -- python --version
-uv --version
-```
-
-Create a project:
-
-```
-mkdir -p "$HOME/src/PROJECT"
-cd "$HOME/src/PROJECT"
-mise use python@3.14
-uv init --python "$(mise which python)"
-uv sync
-```
-
-Add and run dependencies:
-
-```
-uv add requests
-uv add --dev pytest ruff
-uv run pytest
-uv run python
-```
-
-Commit the reproducible project state:
-
-```
-git add mise.toml pyproject.toml uv.lock
-git commit -m "Set up Python project"
-```
-
-## Project `.env`
-
-Run inside a project:
-
-```
-cd "$HOME/src/REPOSITORY"
-touch .env .env.example .gitignore
-chmod 600 .env
-```
-
-```
-tee -a .gitignore >/dev/null <<'EOF'
-.venv/
-.env
-.env.*
-!.env.example
-EOF
-```
-
-Put names only in the committed template:
-
-```
-tee .env.example >/dev/null <<'EOF'
-OPENAI_API_KEY=
-DATABASE_URL=
-EOF
-```
-
-Create the private local copy:
-
-```
-cp .env.example .env
-nvim .env
-```
-
-Verify before committing:
-
-```
-git check-ignore -v .env
-git add .gitignore .env.example
-git status --short
-```
-
-For a trusted shell-compatible `.env`:
-
-```
-set -a
-. ./.env
-set +a
-```
-
-Never put secrets in `~/.zshrc`, `.env.example`, Git, or shell commands.
-OpenCode credentials should instead be configured interactively:
-
-```
-opencode auth login
-opencode auth list
-```
-
-## pi
-
-OpenCode is the repository-local coding agent. pi is the persistent local
-coding agent.
-
-Authenticate a provider and choose a model inside the session:
-
-```
-pi
-```
-
-```
-/login
-/model
-```
+If you want herdr to detect pi as well, run `herdr integration install pi`;
+the script only does this for `claude` and `codex`.
 
 Check the version, model catalog and provider credentials:
 
@@ -475,36 +269,11 @@ pi --list-models
 pi auth check --provider PROVIDER
 ```
 
-Change model authentication later without putting credentials in `.env`:
-
-```
-pi
-```
-
-```
-/logout
-/login
-```
-
 pi keeps configuration, credentials and session history under `~/.pi/agent`.
 Do not Stow or commit that directory.
 
-## SKILLS
-
-Shared skills for both agents live in a separate repository:
-
-```
-cd "$HOME/src"
-gh repo clone yujieteo/skills
-```
-
-Wiring this into Codex and Claude Code is still planned, not part of this
-setup yet.
-
-### firstmate
-
-firstmate is the agent distro for running a crew of coding agents, by the
-same author as no-mistakes. Clone it and launch a harness inside it:
+firstmate is the agent distro for running a crew of coding agents, by the same
+author as no-mistakes. Clone it and launch a harness inside it:
 
 ```
 cd "$HOME/src"
@@ -513,8 +282,8 @@ cd firstmate
 pi
 ```
 
-Approve the project trust prompt on first launch so its Pi extensions load.
-It ships user-invocable skills under `.agents/skills/` — `/afk`, `/quiet`,
+Approve the project trust prompt on first launch so its Pi extensions load. It
+ships user-invocable skills under `.agents/skills/` — `/afk`, `/quiet`,
 `/ahoy`, `/bearings`, `/updatefirstmate`, and `/stow` — plus agent-only
 reference skills and a standalone public `skills/stow`. Workers load those
 alongside the user-level skills under `~/.agents/skills/`.
@@ -534,53 +303,13 @@ Open the persistent assistant separately:
 pi --continue
 ```
 
-## Check
-
-```
-command -v git gh stow herdr nvim rg fzf jq mise uv python opencode pi codex claude alacritty code
-mise doctor
-mise current
-uv --version
-python --version
-nvim --version | head -n 1
-nvim --headless +qa
-git config --global --list
-gh auth status
-ssh -T git@github.com
-pi --version
-pi auth check --provider PROVIDER
-alacritty --version
-code --version
-code --list-extensions
-codex --version
-claude --version
-google-chrome --version 2>/dev/null || open -a "Google Chrome"
-open -a Discord
-```
-
-## Token-reduction tools
-
-Accurate as of 2026-09-29. This space moves fast — re-check each tool
-before relying on it; something here may be renamed, abandoned, or
-superseded by the time you read this.
-
-| Tool | What it does | Install |
-| --- | --- | --- |
-| Ponytail | Agent skill that nudges toward writing the least code needed (YAGNI-style edits), not a binary | add as a skill / AGENTS.md rule |
-| RTK | Compresses tool and shell output before the agent reads it | `brew install rtk` or `cargo install --git https://github.com/rtk-ai/rtk` |
-| Headroom | Compresses everything the agent reads — files, tool output, history | `pip install "headroom-ai[all]"` |
-| QMD | Local markdown/notes search, so the agent queries instead of reading whole files | `npm i -g @tobilu/qmd` (upstream `tobi/qmd`) |
-| Jev | Different category: a separate decision-model API (TypeSafe AI), not an output-trimmer; needs its own account and API key | sign up at TypeSafe AI for an API key |
-
 ## Restore
 
 ```
-mkdir -p "$HOME/.ssh"
-chmod 700 "$HOME/.ssh"
-gh repo clone USER/dotfiles "$HOME/.dotfiles"
-cd "$HOME/.dotfiles"
-stow --target="$HOME" home vscode
+git clone https://github.com/yujieteo/dotfiles ~/dotfiles && cd ~/dotfiles
+scripts/build-mac.sh --dry-run
+scripts/build-mac.sh
 ```
 
 Reinstall and re-authenticate pi separately; never restore its authentication
-from the public dotfiles repository.
+from the dotfiles repository.
