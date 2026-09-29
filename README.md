@@ -13,6 +13,7 @@ data/                Canonical content (edit here)
   about/ blog/ cv/ decks/ notes.md note-tags.json
   paper-links/ podcasts/ resources/ visuals/
 docs/                Architecture notes (build, corpus, WebMCP, media)
+exports/             Generated paper-link exports: paper-links.bib, paper-links.toon
 schema/              JSON Schemas for the YAML data
 scripts/             build.py, validate.py, notes.py, podcast.py, ...
 skills/              Agent playbooks, principles, and reference notes
@@ -86,5 +87,35 @@ Follow the playbook for the task; [SKILLS.md](SKILLS.md) lists them all:
 blank-line-separated URL notes to YAML. The site build never needs the speech
 dependencies in `requirements-podcast.txt`; they are only for rendering podcast
 audio.
+
+## Paper-link tags and exports
+
+Every record in `data/paper-links/*.yaml` carries `tags`: arXiv subject classes
+first (`math.NT`, `hep-th`, `cs.LG`, ...; the first one is the primary class),
+then the archive (`mathematics`, `physics`, ...), topic tags (`modular-forms`,
+`langlands-program`, ...), and form and source tags (`lecture-notes`, `slides`,
+`arxiv`, ...). The tags come from the keyword rules in `scripts/paper_tags.py`.
+Records may also carry `authors` and `year` for citation.
+
+```sh
+.venv/bin/python scripts/paper_tags.py --write        # (re)tag every record
+.venv/bin/python scripts/paper_links_bib.py           # write exports/paper-links.bib
+.venv/bin/python scripts/papers.py export             # write exports/paper-links.toon
+```
+
+`exports/paper-links.bib` has one `@misc` entry per link, with `eprint`,
+`archivePrefix` and `primaryClass` for arXiv links, `keywords` from the tags and
+`abstract` from the note. It compiles with BibTeX and with biblatex/biber
+(`\nocite{*}` over all entries). With network access to `export.arxiv.org`,
+`scripts/paper_links_bib.py --fetch-arxiv` caches official arXiv metadata in
+`data/arxiv-cache.json`. The bib export and `paper_tags.py` then prefer the
+official authors, titles and categories.
+
+`scripts/papers.py` is an [AXI](https://github.com/kunchenguid/axi) CLI over
+the same data. It prints [TOON](https://toonformat.dev/) on stdout. Run it
+without arguments for an overview, then use `list`, `search`, `view`, `tags`,
+and `export`, each with `--help`. `exports/paper-links.toon` is the
+lossless TOON version of the YAML with aggregate counts. Tests fail when either
+export is out of date.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
