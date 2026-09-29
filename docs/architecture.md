@@ -33,6 +33,17 @@ browser fetches `corpus.json` without persistent caching and keeps it only for
 the page lifetime. Authenticated authoring is intentionally separate from this
 read interface.
 
+## Motion
+
+Page navigations fade with CSS view transitions (`@view-transition`), with a
+fade-in on `main` for first loads and browsers without them. Every other UI
+state change (hover and current states, results appearing, `<details>` opening,
+the search panel closing, status text changing) fades with the same
+`--fade-duration` (200ms) and `--fade-ease` tokens, via CSS in
+`static/css/style.css` or `static/js/fade.js`. Fades only run towards visible,
+so pages render normally without JavaScript, and `prefers-reduced-motion:
+reduce` turns all of it off.
+
 ## Blog
 
 Each `data/blog/<slug>.md` becomes `site/blog/<slug>.html` (post list, article,

@@ -1,4 +1,5 @@
 import { loadCorpus, searchSite } from "./corpus.js";
+import { fadeIn } from "./fade.js";
 
 const form = document.querySelector("[data-filter-form]");
 if (form) {
@@ -68,7 +69,11 @@ if (form) {
       list.innerHTML = result.items.map(entryHtml).join("");
       document.dispatchEvent(new CustomEvent("entries-rendered", { detail: { target: list } }));
       empty.hidden = result.total !== 0;
-      count.textContent = result.total ? `${result.total} ${result.total === 1 ? "match" : "matches"}` : "0 matches";
+      const countText = result.total ? `${result.total} ${result.total === 1 ? "match" : "matches"}` : "0 matches";
+      if (count.textContent !== countText) {
+        count.textContent = countText;
+        fadeIn(count);
+      }
       pager.hidden = !result.nextCursor && previousCursors.length === 0;
       pager.innerHTML = pager.hidden ? "" : `
         <button type="button" class="pager-btn" data-direction="previous"${previousCursors.length ? "" : " disabled"}>Previous</button>

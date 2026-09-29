@@ -2,6 +2,7 @@
 // Published Corpus with the same loader and ranking as the per-page filters
 // (corpus.js), fetching corpus.json only on first focus or keystroke.
 import { loadCorpus, searchSite } from "./corpus.js";
+import { cancelFade, fadeIn, fadeOut } from "./fade.js";
 
 const form = document.querySelector("[data-site-search]");
 if (form) {
@@ -47,15 +48,28 @@ if (form) {
     }
   };
 
+  let closing = 0;
   const open = () => {
-    if (!panel.hidden) return;
+    if (input.getAttribute("aria-expanded") === "true") return;
+    closing += 1;
+    cancelFade(panel);
+    panel.inert = false;
     panel.hidden = false;
     input.setAttribute("aria-expanded", "true");
   };
   const close = () => {
+    if (panel.hidden || input.getAttribute("aria-expanded") === "false") return;
     setActive(-1);
     input.setAttribute("aria-expanded", "false");
-    panel.hidden = true;
+    // Inert while fading so the fading results cannot be focused or read.
+    panel.inert = true;
+    const current = ++closing;
+    fadeOut(panel).then((finished) => {
+      if (!finished || current !== closing) return;
+      panel.hidden = true;
+      panel.inert = false;
+      cancelFade(panel);
+    });
   };
 
   const resultHtml = (record, index) => {
@@ -102,6 +116,7 @@ if (form) {
         + (result.total > shown ? `, showing the top ${shown}` : "")
       : `No results for “${text}”`;
     live.textContent = status.textContent;
+    fadeIn(status);
     document.dispatchEvent(new CustomEvent("site-search-rendered", { detail: { target: list } }));
     open();
     setActive(-1);

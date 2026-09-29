@@ -22,6 +22,8 @@
   --space-8: 2rem;
   --space-12: 3rem;
   --space-16: 4rem;
+  --fade-duration: 200ms;
+  --fade-ease: cubic-bezier(0.2, 0, 0, 1);
   color-scheme: light dark;
 }
 
@@ -38,6 +40,74 @@
 
 * {
   box-sizing: border-box;
+}
+
+/* Fades: the site's only motion. Every UI state change fades with the
+   --fade-duration / --fade-ease tokens; new UI should reuse them (and
+   static/js/fade.js for changes CSS cannot see). Fades only ever run towards
+   visible, so nothing starts invisible when JS is off, and hidden content is
+   hidden at once rather than left invisible but focusable. All of it is
+   switched off under prefers-reduced-motion at the end of this block. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--fade-duration);
+  animation-timing-function: var(--fade-ease);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Page loads (and navigations where view transitions are unsupported). */
+main,
+/* Elements that appear: inserted results, or shown by removing [hidden]. */
+[data-entry-list] > *,
+.no-results,
+.pager,
+.tag-more-hint,
+.tag-panel-buttons .tag,
+.page-action-status,
+.site-search-panel,
+.site-search-results > * {
+  animation: fade-in var(--fade-duration) var(--fade-ease);
+}
+
+/* Hover, focus, pressed and current states. */
+a,
+button,
+summary,
+input,
+.tag,
+.page-action {
+  transition-property: color, background-color, border-color, box-shadow, opacity, text-decoration-color;
+  transition-duration: var(--fade-duration);
+  transition-timing-function: var(--fade-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fade-duration: 0ms;
+  }
+
+  @view-transition {
+    navigation: none;
+  }
+
+  *,
+  *::before,
+  *::after,
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 html {
