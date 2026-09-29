@@ -17,4 +17,12 @@ Use for edits to the build, schemas, templates, browser JavaScript, or tests, no
 3. Add or update a test in `tests/` next to the behaviour you changed.
 4. Run [Stage A](../verify.md#stage-a-pre-deploy).
 
+UI motion is fades only. Use the `--fade-duration` / `--fade-ease` tokens in
+`static/css/style.css` for any new transition or appear animation (the `fade-in`
+keyframes run towards visible, never from a hidden start), use `fadeIn` /
+`fadeOut` from `static/js/fade.js` for state changes CSS cannot see, and keep
+everything inside the `prefers-reduced-motion: reduce` guard. Hide content at
+once (or make it `inert` while it fades out) so nothing stays invisible but
+focusable. `tests/test_site_shell.py` checks the tokens and the guard.
+
 Principles: [Generated files are read-only](../principles/generated-files-are-read-only.md) and [Keep the diff scoped](../principles/minimal-diff-scope.md).

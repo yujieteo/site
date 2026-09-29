@@ -9,14 +9,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <meta name="site-corpus" content="../corpus.json">
-  <meta name="site-corpus-revision" content="9d53426a527b10a8b69c8ee1cd44801c4ef6a2e3745a01e44f1e438700e8e589">
+  <meta name="site-corpus-revision" content="83fe648950b1bd29ae46498bffa7ac35ab0ef4b3d08febb9da21a1a00660ad61">
   <script type="module" src="../static/js/webmcp.js"></script>
+  <script type="module" src="../static/js/fade.js"></script>
+  <script type="module" src="../static/js/site-search.js"></script>
+  <noscript><style>.site-search { display: none; }</style></noscript>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="site-shell">
+  <div class="site-shell site-shell-wide">
     <header class="site-header">
       <a class="site-name" href="../index.html">Yu Jie Teo</a>
+      <div class="site-search" data-site-search>
+        <button type="button" class="site-search-trigger" data-site-search-open
+                aria-haspopup="dialog" aria-controls="site-search-dialog">
+          <svg class="site-search-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m13 13 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+          <span>Search</span>
+          <kbd class="key-hint site-search-shortcut" data-site-search-shortcut aria-hidden="true">Ctrl K</kbd>
+        </button>
+        <dialog class="site-search-dialog" id="site-search-dialog" aria-label="Search the site">
+          <form class="site-search-form" role="search" data-site-search-form>
+            <svg class="site-search-icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m13 13 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+            <label class="visually-hidden" for="site-search-input">Search the whole site</label>
+            <input type="search" id="site-search-input" class="site-search-input"
+                   placeholder="Search notes, papers, posts…" autocomplete="off" spellcheck="false"
+                   enterkeyhint="go" role="combobox" aria-expanded="false" aria-autocomplete="list"
+                   aria-controls="site-search-results">
+            <button type="button" class="site-search-close" data-site-search-close>
+              <span class="key-hint" aria-hidden="true">esc</span><span class="site-search-close-label">Close</span>
+            </button>
+          </form>
+          <div class="site-search-body">
+            <p class="site-search-status" data-site-search-status aria-live="polite" aria-atomic="true">Search notes, paper links, blog posts, resources, visuals and media.</p>
+            <ul class="site-search-results" id="site-search-results" role="listbox"
+                aria-label="Search results"></ul>
+          </div>
+          <p class="key-hint site-search-footer" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></p>
+        </dialog>
+      </div>
       <p class="site-tagline">Personal website</p>
       <nav class="site-nav" aria-label="Primary">
         <a href="../index.html">Home</a>
@@ -28,10 +58,10 @@
         <a href="../visuals.html">Visuals</a>
       </nav>
     </header>
-    <main id="main-content" tabindex="-1"><h1 class="page-title">Pluvium&#x27;s Workshop on colours</h1><p class="post-meta"><time datetime="2026-09-13">2026-09-13</time></p><div class="post-body"><p>(10) How to exaggerate the colours of a painting? (Hint: use more grey, and think about relative colours? Try to target under 25% and use the full colour range.)</p>
+    <main id="main-content" tabindex="-1"><div class="docs-layout"><details class="docs-nav" data-docs-nav open><summary class="docs-nav-toggle">All posts</summary><nav aria-label="Blog posts"><p class="docs-nav-heading"><a href="../blog.html">Blog</a></p><ul class="docs-nav-list"><li><a href="buy-the-defence-check-the-luck.html"><span class="docs-nav-title">Buy the Defence, Check the Luck</span><span class="docs-nav-date"><time datetime="2026-09-29">2026-09-29</time> &middot; <span class="reading-time">1 min</span></span></a></li><li><a href="thinking-clearly-is-a-job-not-a-look.html"><span class="docs-nav-title">Thinking Clearly Is a Job, Not a Look</span><span class="docs-nav-date"><time datetime="2026-09-29">2026-09-29</time> &middot; <span class="reading-time">4 min</span></span></a></li><li><a href="mac-set-up.html"><span class="docs-nav-title">Mac Set Up</span><span class="docs-nav-date"><time datetime="2026-09-27">2026-09-27</time> &middot; <span class="reading-time">5 min</span></span></a></li><li><a href="a-todo-list-is-not-a-learning-system.html"><span class="docs-nav-title">A To-Do List Is Not a Learning System</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">3 min</span></span></a></li><li><a href="cohomology-motives-prismatic-f-gauges.html"><span class="docs-nav-title">One cohomology computation through motives and prismatic F-gauges</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">7 min</span></span></a></li><li><a href="from-cech-cocycles-to-the-weil-conjectures.html"><span class="docs-nav-title">From Čech cocycles to the Weil conjectures</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">5 min</span></span></a></li><li><a href="shimura-cohomology-one-computation.html"><span class="docs-nav-title">One computation behind the cohomology of Shimura varieties</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">4 min</span></span></a></li><li><a href="wilsonian-renormalisation-from-qed-to-epidemics.html"><span class="docs-nav-title">Wilsonian renormalisation from QED to epidemic events</span><span class="docs-nav-date"><time datetime="2026-09-26">2026-09-26</time> &middot; <span class="reading-time">7 min</span></span></a></li><li><a href="quantized-calculus-foliations-measure.html"><span class="docs-nav-title">From transverse measure to quantized calculus</span><span class="docs-nav-date"><time datetime="2026-09-25">2026-09-25</time> &middot; <span class="reading-time">3 min</span></span></a></li><li><a href="oth-recovery-260919.html"><span class="docs-nav-title">Recovery Notes for 19 September 2026</span><span class="docs-nav-date"><time datetime="2026-09-19">2026-09-19</time> &middot; <span class="reading-time">4 min</span></span></a></li><li><a href="ooda-orientation-and-slouching.html"><span class="docs-nav-title">OODA, Orientation, and Slouching</span><span class="docs-nav-date"><time datetime="2026-09-13">2026-09-13</time> &middot; <span class="reading-time">8 min</span></span></a></li><li><a href="pluvium-colour.html" aria-current="page"><span class="docs-nav-title">Pluvium&#x27;s Workshop on colours</span><span class="docs-nav-date"><time datetime="2026-09-13">2026-09-13</time> &middot; <span class="reading-time">1 min</span></span></a></li><li><a href="groundless-confidence.html"><span class="docs-nav-title">Groundless Confidence</span><span class="docs-nav-date"><span class="reading-time">1 min</span></span></a></li><li><a href="notes-on-ontology.html"><span class="docs-nav-title">Notes on Ontology</span><span class="docs-nav-date"><span class="reading-time">2 min</span></span></a></li><li><a href="search-reflections-i.html"><span class="docs-nav-title">Search Reflections I</span><span class="docs-nav-date"><span class="reading-time">1 min</span></span></a></li><li><a href="ssh-setup-guide.html"><span class="docs-nav-title">SSH Setup Guide</span><span class="docs-nav-date"><span class="reading-time">3 min</span></span></a></li></ul></nav></details><article class="docs-article"><div class="docs-title-row"><h1 class="page-title">Pluvium&#x27;s Workshop on colours</h1><div class="page-actions"><button type="button" class="page-action" data-copy-markdown>Copy Markdown</button><a class="page-action" href="pluvium-colour.md" type="text/markdown">View Markdown</a><span class="page-action-status" data-copy-status aria-live="polite"></span></div><script type="application/json" id="post-markdown">"---\ntitle: \"Pluvium's Workshop on colours\"\ndate: \"2026-09-13\"\nsummary: \"Summary on how colour from Pluvium's tutorial\"\ncategory: \"General\"\ntags: \"art, colour\"\n---\n\n(10) How to exaggerate the colours of a painting? (Hint: use more grey, and think about relative colours? Try to target under 25% and use the full colour range.)\n\n(11) Why place colours with angle variation? Give an example (purple, next to the orange, the colours will look more chromatically spicy). Why use colour sparingly?\n\n(14) Why train your mind to be more picky? (Hint: it is not training your eyes, it is training your mind to be more picky and accurate, and be aware of shifts?)\n\n(15) Why the warm and cool separation is bad? (Hint: binary is hard, describe it the way you see it? Do not try to put too many label see it, describe it a child will see it rather than warm and blue)\n"</script></div><p class="post-meta"><time datetime="2026-09-13">2026-09-13</time> &middot; <span class="reading-time">1 min read</span></p><div class="post-body"><p>(10) How to exaggerate the colours of a painting? (Hint: use more grey, and think about relative colours? Try to target under 25% and use the full colour range.)</p>
 <p>(11) Why place colours with angle variation? Give an example (purple, next to the orange, the colours will look more chromatically spicy). Why use colour sparingly?</p>
 <p>(14) Why train your mind to be more picky? (Hint: it is not training your eyes, it is training your mind to be more picky and accurate, and be aware of shifts?)</p>
-<p>(15) Why the warm and cool separation is bad? (Hint: binary is hard, describe it the way you see it? Do not try to put too many label see it, describe it a child will see it rather than warm and blue)</p></div></main>
+<p>(15) Why the warm and cool separation is bad? (Hint: binary is hard, describe it the way you see it? Do not try to put too many label see it, describe it a child will see it rather than warm and blue)</p></div></article><aside class="docs-aside"></aside></div><script type="module" src="../static/js/post.js"></script></main>
     <footer class="site-footer">
       Made with the assistance of AI. <a href="https://github.com/yujieteo">GitHub</a>
     </footer>

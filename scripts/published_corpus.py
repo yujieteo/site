@@ -86,6 +86,7 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
             "blog", post["slug"], title=post["title"], url=f"blog/{post['slug']}.html",
             date=post["date"], summary=post["summary"], content=post["body_markdown"],
             contentHtml=post["body_html"], tags=post["tags"], category=post["category"],
+            readingMinutes=post.get("reading_minutes"),
         ))
 
     for day in notes["entries"]:

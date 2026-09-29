@@ -27,7 +27,8 @@ llms.txt             Public guidance for LLM readers
 ```
 
 `site/corpus.json` is the generated Published Corpus, the explicit public
-projection consumed by the search interface and the read-only WebMCP tools. See
+projection consumed by the search interface (the per-page filters and the
+global Search popup in every page header, Cmd/Ctrl+K) and the read-only WebMCP tools. See
 [docs/architecture.md](docs/architecture.md).
 
 ## Build
@@ -77,7 +78,7 @@ Follow the playbook for the task; [SKILLS.md](SKILLS.md) lists them all:
 | Content | Source of truth |
 | --- | --- |
 | Daily notes | `data/notes.md` (dated `## YYYY-MM-DD` sections, newest first) |
-| Blog posts | `data/blog/*.md` with YAML frontmatter |
+| Blog posts | `data/blog/*.md` with YAML frontmatter (each is also published as `site/blog/<slug>.md`) |
 | Slide decks | `data/decks/<slug>/index.html` |
 | Media items | `data/podcasts/<id>.yaml` plus audio or video assets |
 | Visualizations | `data/visuals/<slug>.yaml` (assets come from the visuals repo) |
