@@ -7,6 +7,7 @@ import json
 import os
 import re
 import shutil
+import unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -205,6 +206,7 @@ def load_blog_posts():
             "category": category,
             "tags": normalize_tags(meta.get("tags"), category),
             "body_markdown": body,
+            "source_markdown": raw,
             "body_html": render_markdown(body),
         })
     # Newest first.
@@ -265,8 +267,10 @@ def site_fields(cv, active):
     return identity | navigation
 
 
-def render_page(title, content, corpus_revision, root="", tagline="", name="", math=False, **nav):
+def render_page(title, content, corpus_revision, root="", tagline="", name="", math=False,
+                shell_class="", **nav):
     fields = {
+        "shell_class": shell_class,
         "title": esc(title),
         "content": content + (MATHJAX_SCRIPT if math else ""),
         "root": root,
@@ -660,20 +664,111 @@ def build_notes(cv, notes, corpus_revision):
     )
 
 
-def build_blog_post(cv, post, corpus_revision):
+def heading_slug(text):
+    """Return a URL fragment for a heading's plain text."""
+    ascii_text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
+    slug = re.sub(r"[^a-z0-9]+", "-", ascii_text.lower()).strip("-")
+    return slug or "section"
+
+
+def add_heading_anchors(body_html):
+    """Give each h2/h3 a unique id and return (html, [(level, id, inner_html)])."""
+    headings = []
+    used = set()
+
+    def anchor(match):
+        level, attrs, inner = match.group(1), match.group(2), match.group(3)
+        existing = re.search(r'\bid="([^"]*)"', attrs)
+        if existing:
+            slug = existing.group(1)
+        else:
+            text = html.unescape(re.sub(r"<[^>]+>", "", inner))
+            base = heading_slug(re.sub(r"[\\$]", "", text))
+            slug, n = base, 2
+            while slug in used:
+                slug, n = f"{base}-{n}", n + 1
+            attrs = f' id="{slug}"{attrs}'
+        used.add(slug)
+        # The TOC wraps each entry in a link, so drop links inside the heading.
+        headings.append((int(level), slug, re.sub(r"</?a\b[^>]*>", "", inner)))
+        return f"<h{level}{attrs}>{inner}</h{level}>"
+
+    body_html = re.sub(r"<h([23])((?:\s[^>]*)?)>(.*?)</h\1>", anchor, body_html,
+                       flags=re.DOTALL)
+    return body_html, headings
+
+
+def render_blog_sidebar(posts, current_slug):
+    items = []
+    for p in posts:
+        current = ' aria-current="page"' if p["slug"] == current_slug else ""
+        date = (
+            f'<time class="docs-nav-date" datetime="{esc(p["date"])}">{esc(p["date"])}</time>'
+            if p["date"] else ""
+        )
+        items.append(
+            f'<li><a href="{esc(p["slug"])}.html"{current}>'
+            f'<span class="docs-nav-title">{esc(p["title"])}</span>{date}</a></li>'
+        )
+    items = "".join(items)
+    return (
+        '<details class="docs-nav" data-docs-nav open>'
+        '<summary class="docs-nav-toggle">All posts</summary>'
+        '<nav aria-label="Blog posts"><p class="docs-nav-heading">'
+        '<a href="../blog.html">Blog</a></p>'
+        f'<ul class="docs-nav-list">{items}</ul></nav></details>'
+    )
+
+
+def render_blog_toc(headings):
+    if not headings:
+        return ""
+    items = "".join(
+        f'<li class="toc-level-{level}"><a href="#{esc(slug)}">{inner}</a></li>'
+        for level, slug, inner in headings
+    )
+    return (
+        '<nav class="docs-toc" aria-labelledby="toc-heading" data-toc>'
+        '<p class="docs-toc-heading" id="toc-heading">On this page</p>'
+        f'<ul class="docs-toc-list">{items}</ul></nav>'
+    )
+
+
+def blog_post_markdown(post):
+    """Return the Markdown a reader copies: the post's source file."""
+    return post["source_markdown"]
+
+
+def build_blog_post(cv, post, posts, corpus_revision):
     meta_line = (
         f'<p class="post-meta"><time datetime="{esc(post["date"])}">{esc(post["date"])}</time></p>'
         if post["date"] else ""
     )
     body_html = re.sub(r"</?h1(?=>|\s)", lambda match: match.group(0).replace("h1", "h2"),
                        post["body_html"])
+    body_html, headings = add_heading_anchors(body_html)
+    markdown_json = json.dumps(blog_post_markdown(post), ensure_ascii=False).replace("<", "\\u003c")
+    actions = (
+        '<div class="page-actions">'
+        '<button type="button" class="page-action" data-copy-markdown>Copy Markdown</button>'
+        f'<a class="page-action" href="{esc(post["slug"])}.md" type="text/markdown">View Markdown</a>'
+        '<span class="page-action-status" data-copy-status aria-live="polite"></span>'
+        '</div>'
+        f'<script type="application/json" id="post-markdown">{markdown_json}</script>'
+    )
     content = (
-        f'<h1 class="page-title">{esc(post["title"])}</h1>{meta_line}'
-        f'<div class="post-body">{body_html}</div>'
+        '<div class="docs-layout">'
+        f'{render_blog_sidebar(posts, post["slug"])}'
+        '<article class="docs-article">'
+        f'<div class="docs-title-row"><h1 class="page-title">{esc(post["title"])}</h1>{actions}</div>'
+        f'{meta_line}<div class="post-body">{body_html}</div></article>'
+        f'<aside class="docs-aside">{render_blog_toc(headings)}</aside>'
+        '</div>'
+        '<script type="module" src="../static/js/post.js"></script>'
     )
     return render_page(
         post["title"], content, corpus_revision, root="../",
-        math=contains_math(body_html),
+        math=contains_math(body_html), shell_class=" site-shell-wide",
         **site_fields(cv, "blog"),
     )
 
@@ -829,7 +924,11 @@ def main():
         ),
     }
     pages.update({
-        blog_out / f"{post['slug']}.html": build_blog_post(cv, post, corpus_revision)
+        blog_out / f"{post['slug']}.html": build_blog_post(cv, post, posts, corpus_revision)
+        for post in posts
+    })
+    pages.update({
+        blog_out / f"{post['slug']}.md": blog_post_markdown(post)
         for post in posts
     })
     pages.update({
