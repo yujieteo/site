@@ -1,7 +1,7 @@
 ---
 title: "Statically indeterminate beams: when equilibrium runs out"
 date: "2026-09-30"
-summary: "A recap of analysing statically indeterminate beams: counting redundants, the force method, the three-moment equation and moment distribution, with a propped cantilever and a two-span beam worked and checked. With an 11-slide deck, printable notes, a video and a podcast episode."
+summary: "A recap of analysing statically indeterminate beams: counting redundants, the force method, the three-moment equation and moment distribution, with a propped cantilever and a two-span beam worked and checked. With a slide deck, printable notes, a video and a podcast episode."
 category: "Engineering"
 tags: "structural-engineering, beams, slides"
 slug: statically-indeterminate-beams
