@@ -906,7 +906,12 @@ function tensorSeed(T, kind) {
   return { ex: T[0][0], ey: T[1][1], ez: T[2][2], exy: T[0][1], eyz: T[1][2], ezx: T[0][2] };
 }
 function principalSeed(T, st, p) {
-  const v = eigen(T, signOf(st)).values;
+  let v;
+  if (st.constraint === "general") v = eigen(T, signOf(st)).values;
+  else {
+    const C = (T[0][0] + T[1][1]) / 2, R = signOf(st) * Math.hypot((T[0][0] - T[1][1]) / 2, T[0][1]);
+    v = [C + R, C - R, T[2][2]];
+  }
   return { [`${p}1`]: v[0], [`${p}2`]: v[1], [`${p}3`]: v[2] };
 }
 function importText(text) {

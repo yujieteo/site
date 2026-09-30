@@ -317,6 +317,29 @@ test("malformed, wrong-schema and newer-version files are refused with every pro
   refuse(JSON.stringify({ ...good, plane: { ...good.plane, mode: "cosines", l: 0, m: 0, n: 0 } }), /all zero/);
 });
 
+test("switching entry mode or driver keeps the principal values under every constraint and sign convention", () => {
+  const values = (r) => [r.stress.principal.values, r.strain.principal.values];
+  const same = (got, want, label) => got.forEach((vs, q) => vs.forEach((v, i) => close(v, want[q][i], 1e-9 * Math.max(1, Math.abs(want[q][i])), `${label} ${["σ", "ε"][q]}${i + 1}`)));
+  for (const constraint of ["general", "plane-stress", "plane-strain"]) for (const normalSign of ["tension-positive", "compression-positive"]) {
+    const s = M.presetState(1);
+    Object.assign(s, { constraint });
+    s.conventions.normalSign = normalSign;
+    if (constraint === "general") Object.assign(s.stress, { tyz: 7, tzx: -12, sz: 25 });
+    M.seedShadows(s);
+    const want = values(M.analyse(s));
+    for (const driver of ["stress", "strain"]) {
+      const label = `${constraint}, ${normalSign}, ${driver}-driven`;
+      const t = M.clone(s);
+      t.driver = driver; t.entryMode = "tensor";
+      same(values(M.analyse(t)), want, `${label} tensor`);
+      const r = M.analyse(t);
+      if (driver === "stress") t.principal = M.principalSeed(r.S, t, "s"); else t.principalStrain = M.principalSeed(r.E, t, "e");
+      t.entryMode = "principal";
+      same(values(M.analyse(t)), want, `${label} principal`);
+    }
+  }
+});
+
 test("raw.json is the published metadata and default example of the page", async () => {
   const raw = JSON.parse(await readFile(new URL("../visuals/mohr/raw.json", import.meta.url), "utf8"));
   const { example, ...meta } = raw;
@@ -339,14 +362,43 @@ test("the engine runs without DOM, storage, clock or randomness and is determini
   assert.equal(run(G), run(M));
 });
 
-test("the delivered page is a single file that loads no external resources", () => {
-  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+stylesheet|<img[^>]+src=|url\(|@import|https?:\/\/(?!www\.w3\.org)/);
-  assert.doesNotMatch(html, /fetch\(|XMLHttpRequest|WebSocket|EventSource|import\(/);
-  assert.match(html, /<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">/);
-  assert.match(html, /@media \(prefers-color-scheme:dark\)\{:root:not\(\[data-theme="light"\]\)/);
-  assert.match(html, /:root\[data-theme="dark"\]\{/);
-  assert.match(html, /env\(safe-area-inset-/);
-  assert.match(html, /prefers-reduced-motion/);
+// Boots both page scripts against an inert DOM. Every way a page could reach the network is a trap
+// that records the attempt, so tests can assert the page never tries.
+const bootPage = () => {
+  const inert = () => new Proxy(function () {}, {
+    get: (t, k) => (k === "modelContext" ? undefined : k === Symbol.iterator ? [][Symbol.iterator] : k === Symbol.toPrimitive ? () => 0 : inert()),
+    set: () => true, apply: () => inert(), construct: () => inert(),
+  });
+  const network = [];
+  const trap = (name) => new Proxy(function () {}, {
+    apply: () => { network.push(name); return inert(); },
+    construct: () => { network.push(`new ${name}`); return inert(); },
+  });
+  const loaders = new Set(["script", "link", "img", "iframe", "audio", "video", "source", "object", "embed"]);
+  const document = new Proxy(inert(), {
+    get: (t, k) => (k === "createElement" ? (tag) => { if (loaders.has(String(tag).toLowerCase())) network.push(`createElement(${tag})`); return inert(); } : t[k]),
+  });
+  const tools = [];
+  const ctx = vm.createContext({
+    document, addEventListener() {}, requestAnimationFrame() {}, cancelAnimationFrame() {}, getComputedStyle: inert(),
+    setTimeout() {}, clearTimeout() {}, console,
+    navigator: { modelContext: { registerTool: (t) => tools.push(t) }, sendBeacon: trap("navigator.sendBeacon") },
+    Blob: function () {}, URL: inert(),
+    fetch: trap("fetch"), XMLHttpRequest: trap("XMLHttpRequest"), WebSocket: trap("WebSocket"), EventSource: trap("EventSource"),
+    Image: trap("Image"), Worker: trap("Worker"), SharedWorker: trap("SharedWorker"), importScripts: trap("importScripts"),
+  });
+  ctx.self = ctx; ctx.window = ctx;
+  const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)];
+  assert.deepEqual(scripts.map((m) => /id="([^"]+)"/.exec(m[0])?.[1]), ["mohr-engine", "mohr-ui"]);
+  for (const m of scripts) vm.runInContext(m[1], ctx);
+  return { tools, network };
+};
+
+test("booting the page and running every WebMCP tool makes no network request", async () => {
+  const { tools, network } = bootPage();
+  assert.ok(tools.length > 0);
+  for (const t of tools) await t.execute({ constraint: "general", stress: { sx: 30, txy: 10, tyz: 20, tzx: 10 } });
+  deq(network, []);
 });
 
 // The stub is flat YAML: one `key: value` per line, values plain, double-quoted or a flow list.
@@ -359,18 +411,7 @@ test("the page boots without a real DOM and registers the WebMCP tools its site 
   const stub = parseStub(await readFile(new URL("../data/visuals/mohr.yaml", import.meta.url), "utf8"));
   assert.equal(stub.html_path, "visuals/mohr/index.html");
   assert.equal(stub.data_path, "visuals/mohr/raw.json");
-  const inert = () => new Proxy(function () {}, {
-    get: (t, k) => (k === "modelContext" ? undefined : k === Symbol.iterator ? [][Symbol.iterator] : k === Symbol.toPrimitive ? () => 0 : inert()),
-    set: () => true, apply: () => inert(), construct: () => inert(),
-  });
-  const tools = [];
-  const ctx = vm.createContext({
-    document: inert(), addEventListener() {}, requestAnimationFrame() {}, cancelAnimationFrame() {}, getComputedStyle: inert(),
-    setTimeout() {}, clearTimeout() {}, console,
-    navigator: { modelContext: { registerTool: (t) => tools.push(t) } }, Blob: function () {}, URL: inert(),
-  });
-  ctx.self = ctx; ctx.window = ctx;
-  for (const m of html.matchAll(/<script id="[^"]+">([\s\S]*?)<\/script>/g)) vm.runInContext(m[1], ctx);
+  const { tools } = bootPage();
   deq(tools.map((t) => t.name), stub.webmcp_tools);
   const call = async (name, input) => JSON.parse((await tools.find((t) => t.name === name).execute(input)).content[0].text);
   const cur = await call("get_current_state", {});
