@@ -218,7 +218,7 @@ code{font:.875em var(--mono)}
       <h3>Reference modulus</h3>
       <div class="row">
         <label class="f"><span>E_base from</span><select id="ebase-from"></select></label>
-        <label class="f"><span>E_base (MPa)</span><input id="ebase" type="number" step="1000" min="1" data-path="E_base"></label>
+        <label class="f"><span>E_base (MPa)</span><input id="ebase" type="number" step="any" min="1" data-path="E_base"></label>
       </div>
       <p class="small muted" style="margin-bottom:0">Composite properties are transformed to this modulus: each part counts n = E / E_base times.</p>
       <label class="f" style="margin-top:.6rem"><span>Title</span><input id="title" type="text" data-path="title" autocomplete="off"></label>
@@ -3347,6 +3347,7 @@ $("import-file").addEventListener("change", async (e) => {
     const model = L.section.normalize(R.modelFromText(text));
     record();
     loadModel(model);
+    ownSection();
     status(`Imported ${f.name}.`);
   } catch (err) { status(`Import failed: ${err.message}`); }
 });
@@ -3373,11 +3374,12 @@ $("share").addEventListener("click", guarded(() => {
 function fromHash() {
   const m = /[#&]model=([A-Za-z0-9_-]+)/.exec(location.hash);
   if (!m) return false;
-  try { loadModel(decodeModel(m[1])); return true; } catch (e) { status(`The link's model could not be read: ${e.message}`); return false; }
+  try { loadModel(decodeModel(m[1])); ownSection(); return true; } catch (e) { status(`The link's model could not be read: ${e.message}`); return false; }
 }
 addEventListener("hashchange", () => { if (fromHash()) status("Loaded the model from the link."); });
 
 /* ---------- presets and loading ---------- */
+function ownSection() { $("preset").value = ""; $("preset-note").textContent = ""; }
 function loadModel(model) {
   draft = clone(model);
   if (draft.E_base === undefined && draft.materials[0]) draft.E_base = draft.materials[0].E;
@@ -3473,7 +3475,6 @@ function registerTools() {
 staticText();
 syncHistory();
 if (!fromHash()) { loadModel(D.presets[0].model); $("preset-note").textContent = D.presets[0].note; }
-else $("preset").value = "";
 registerTools();
 })();
 

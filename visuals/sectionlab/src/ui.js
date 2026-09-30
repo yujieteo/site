@@ -935,6 +935,7 @@ $("import-file").addEventListener("change", async (e) => {
     const model = L.section.normalize(R.modelFromText(text));
     record();
     loadModel(model);
+    ownSection();
     status(`Imported ${f.name}.`);
   } catch (err) { status(`Import failed: ${err.message}`); }
 });
@@ -961,11 +962,12 @@ $("share").addEventListener("click", guarded(() => {
 function fromHash() {
   const m = /[#&]model=([A-Za-z0-9_-]+)/.exec(location.hash);
   if (!m) return false;
-  try { loadModel(decodeModel(m[1])); return true; } catch (e) { status(`The link's model could not be read: ${e.message}`); return false; }
+  try { loadModel(decodeModel(m[1])); ownSection(); return true; } catch (e) { status(`The link's model could not be read: ${e.message}`); return false; }
 }
 addEventListener("hashchange", () => { if (fromHash()) status("Loaded the model from the link."); });
 
 /* ---------- presets and loading ---------- */
+function ownSection() { $("preset").value = ""; $("preset-note").textContent = ""; }
 function loadModel(model) {
   draft = clone(model);
   if (draft.E_base === undefined && draft.materials[0]) draft.E_base = draft.materials[0].E;
@@ -1061,6 +1063,5 @@ function registerTools() {
 staticText();
 syncHistory();
 if (!fromHash()) { loadModel(D.presets[0].model); $("preset-note").textContent = D.presets[0].note; }
-else $("preset").value = "";
 registerTools();
 })();
