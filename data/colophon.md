@@ -32,8 +32,8 @@ except file hosting; search and filtering happen in your browser.
 - `scripts/validate.py` checks every data file against a JSON Schema, and
   `scripts/build.py` turns the data into the pages in `site/`. It fails when a
   typed link between items points at something that does not exist.
-- Continuous integration rebuilds the site and fails if the committed output
-  differs from a fresh build, then runs the Python and Node tests.
+- Continuous integration builds the site fresh and runs the Python and Node
+  tests against that build. The generated output is not committed.
 - Motion is limited to short fades, and it switches off when your system asks
   for reduced motion. Pages work without JavaScript; search and filters need it.
 

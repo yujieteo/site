@@ -5,8 +5,21 @@
 `data/` (YAML, Markdown, decks, media assets) and `templates/` + `static/` are
 the sources. `scripts/validate.py` checks every YAML file against `schema/`.
 `scripts/build.py` deletes and recreates `site/`, so renamed or deleted content
-never leaves stale output. Visualization HTML and data are copied from the
-separate `visuals` repository into `site/visuals/<slug>/`.
+never leaves stale output. `site/` is ignored by Git: pull requests carry only
+sources, so independent content changes never conflict on generated pages, and
+`scripts/site_diff.py` derives a deploy's upload set by rebuilding the live
+commit and comparing. Visualization HTML and data are read from the
+separate `visuals` repository at the commit pinned in
+`data/visuals/<slug>.pin` (one file per visualization, so two pull requests
+that each add or republish a different visualization do not conflict) and
+written to `site/visuals/<slug>/`; the visuals checkout's own `HEAD` does not
+affect the build.
+
+Notes are the one shared source that can still conflict. The captain chose to
+keep every note in the single file `data/notes.md`, so notes changes land one
+at a time: two pull requests that each edit the top of `data/notes.md` (a new
+newest date), the same date section, or `data/note-tags.json` can still
+conflict.
 
 ## Published Corpus
 
@@ -117,4 +130,5 @@ with the latest item featured, one player page per item, copies assets into
 ## Continuous integration
 
 See [Continuous integration](../README.md#continuous-integration) in the
-README. The workflow's stale-output check is `git diff --exit-code -- site`.
+README. The workflow builds `site/` fresh for the tests; nothing generated is
+committed.

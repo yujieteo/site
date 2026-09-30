@@ -12,7 +12,9 @@ VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).res
 
 
 class BuildTests(unittest.TestCase):
-    def test_build_matches_published_site(self):
+    def test_build_is_reproducible(self):
+        # site/ is not committed; this compares the local build with a rebuild of a copy.
+        self.assertTrue((ROOT / "site").is_dir(), "site/ is missing; run scripts/build.py first")
         expected_files = {
             path.relative_to(ROOT / "site"): path.read_bytes()
             for path in (ROOT / "site").rglob("*")

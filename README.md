@@ -21,7 +21,7 @@ static/              Source CSS and browser JavaScript
 templates/           Shared HTML templates
 tests/               Python (unittest) and Node tests
 visuals/             Visualizations built in this repo before publication (sources, data, build scripts)
-site/                Generated site (never edit by hand)
+site/                Generated site (not committed; never edit by hand)
 CONTEXT.md           Domain vocabulary (Published Corpus, Corpus Record, ...)
 SKILLS.md            Router from a task to the playbook that owns it
 llms.txt             Public guidance for LLM readers
@@ -39,7 +39,10 @@ The build needs two checkouts: this repository and the public
 HTML and data for each visualization. `scripts/build.py` looks for the visuals
 checkout at `../visuals`, `../../visuals`, then `../../tmp/visuals`; set
 `VISUALS_REPO` to its path when it lives anywhere else. Without it the build
-and the Python tests fail with `Visuals repository not found`.
+and the Python tests fail with `Visuals repository not found`. The build reads
+each visualization at the visuals commit pinned in `data/visuals/<slug>.pin`,
+fetching that commit from the checkout's `origin` when it is missing, so the
+branch the checkout is on does not matter.
 
 ```sh
 python3 -m venv .venv
@@ -50,15 +53,21 @@ export VISUALS_REPO=../visuals   # omit when the sibling checkout already exists
 open site/index.html
 ```
 
-The build recreates the generated `site/` directory from the sources, so a
-successful run leaves no Git diff. Keep source files outside `site/`.
+The build recreates the generated `site/` directory from the sources. Git
+ignores `site/`, so pull requests carry only source changes and two independent
+content pull requests do not conflict; CI and every deploy build it fresh. Keep
+source files outside `site/`.
 
 ## Test
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-node --test tests/corpus.test.mjs tests/vgc-turn-lab.test.mjs tests/convexity-action-engine.test.mjs tests/beamdiag.test.mjs tests/beamdiag-ui.test.mjs tests/subsidy-atlas.test.cjs tests/fastener-cg.test.mjs tests/lug-joint.test.mjs
+node --test 'tests/*.test.{mjs,cjs}'
 ```
+
+Many tests read the built `site/`, so run `scripts/build.py` first. Node runs
+every `tests/*.test.mjs` and `tests/*.test.cjs`, so a new Node test needs no
+change to this command or to CI.
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
 `package.json` or installed packages. The Python tests copy the repository to a
@@ -68,9 +77,18 @@ temporary directory and rebuild the site there, so they also read
 ## Continuous integration
 
 `.github/workflows/ci.yml` runs on pushes to `main` and on every pull request:
-validation, the build, a check that the committed `site/` matches its sources,
-and the Python and Node tests. It checks out a pinned `visuals` revision; update
-the `ref` in the workflow when a visualization is republished.
+validation, the build, and the Python and Node tests. It checks out the
+`visuals` history, and the build reads each visualization at its pin; update
+`data/visuals/<slug>.pin` when a visualization is republished.
+
+`tests/test_independent_changes.py` proves the merge guarantee: it opens two
+content branches (new visualizations with their own visuals pins, a note and a
+blog post) from the same base in a scratch repository, builds each, and merges
+both without conflicts. Notes stay in one file, `data/notes.md`, by the
+captain's choice, so notes changes land one at a time: two branches that each
+edit the top of `data/notes.md`, the same date section, or
+`data/note-tags.json` can still conflict; see
+[docs/architecture.md](docs/architecture.md).
 
 ## Adding and changing content
 

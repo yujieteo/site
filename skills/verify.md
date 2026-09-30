@@ -22,7 +22,9 @@ set `VISUALS_REPO` when it is not at a supported sibling path.
 ```
 
 Every command above must exit successfully. The build recreates `site/` from the
-sources, so a clean run leaves no Git diff; review that diff and stop if it
-contains changes beyond the intended sources. Do not deploy after a failure.
+sources; `site/` is ignored by Git, so `git status` shows only source changes.
+Review the generated changes with `.venv/bin/python scripts/site_diff.py <base>`
+(see [Deploy generated files](playbooks/deploy.md)) and stop if they go beyond
+the intended sources. Do not deploy after a failure.
 
 After deploying, run [Stage B](verify-post-deploy.md) and report it with the same fields.

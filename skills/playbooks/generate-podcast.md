@@ -55,18 +55,18 @@ and the [output contract](../reference/podcast-output-contract.md).
    deploy after a failure.
 2. Confirm `site/media/index.html` features the new episode, the episode page,
    the copied MP3, and the `site/podcast/` redirect pages exist, and the
-   post-build diff contains no unrelated churn.
-3. Commit `data/podcasts/**`, the changed `site/media/**` and `site/podcast/**`
-   files, and any other demonstrably required generated file (navigation and
-   `site/llms.txt` change only when the build changed them).
+   generated changes listed by `scripts/site_diff.py` (see
+   [Deploy generated files](deploy.md)) contain no unrelated churn.
+3. Commit `data/podcasts/**`. Never commit `site/`; Git ignores it and every
+   deploy builds it.
 4. Push the branch requested by the user. Site publishing normally uses
    `main`; never rewrite published history.
 5. Resolve the SCP destination from secure runtime configuration. Deploy the
    media index, item pages, audio, and the `site/podcast/` redirect pages using
    unique temporary names,
    checksum verification, preserved prior files, and atomic renames as in
-   [Deploy generated files](deploy.md). Include the other changed pages from
-   the reviewed diff. Never write deployment details into the repository.
+   [Deploy generated files](deploy.md). Include the other changed pages that
+   `scripts/site_diff.py` lists. Never write deployment details into the repository.
 6. Run Stage B of [verification](../verify-post-deploy.md). Fetch the
    deployed media index, episode page, and MP3 over HTTPS and require HTTP
    200 responses with the expected episode. A 403 means the file is not
