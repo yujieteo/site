@@ -22,6 +22,22 @@ class ReferenceTest(unittest.TestCase):
     def test_fixture_and_reference_files_are_current(self):
         self.assertEqual(build_reference.main(["--check"]), 0)
 
+    def test_check_ignores_rounding_noise_but_not_real_changes(self):
+        stored = json.loads(build_reference.REFERENCE.read_text(encoding="utf-8"))
+
+        def edited(cid, change):
+            copy = json.loads(json.dumps(stored))
+            change(copy["cases"][cid])
+            return copy
+
+        # M at κ = 0 under N for 'mixed' is ~1e-3 N·mm of rounding noise; numpy 2.1 and 2.5 disagree on it.
+        noise = edited("mixed", lambda c: c["plastic"]["points"][0].update(M=0.000759874854592224))
+        self.assertTrue(build_reference.close(stored, noise))
+        self.assertTrue(build_reference.close(stored, edited("circle", lambda c: c["properties"].update(Ixy=1e-9))))
+        self.assertFalse(build_reference.close(stored, edited("mixed", lambda c: c["plastic"]["points"][4].update(M=c["plastic"]["points"][4]["M"] * (1 + 1e-7)))))
+        self.assertFalse(build_reference.close(stored, edited("circle", lambda c: c["properties"].update(Ixy=100.0))))
+        self.assertFalse(build_reference.close(stored, edited("rect", lambda c: c["plastic"].update(Mp=c["plastic"]["Mp"] * (1 + 1e-7)))))
+
     def test_area_reference_matches_closed_forms(self):
         checked = 0
         for case in C.CASES:

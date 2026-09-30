@@ -61,14 +61,39 @@ def dump(data):
     return json.dumps(data, indent=1, ensure_ascii=False) + "\n"
 
 
+# Length dimension of each property. A value that is 0 up to rounding (cx of a symmetric
+# section, M at κ = 0 under an axial force) differs between numpy/libm builds, so it is
+# compared on the section's own scale, as the JS tests do (tests/helpers.mjs).
+DIM = {"A": 2, "cx": 1, "cy": 1, "Ix": 4, "Iy": 4, "Ixy": 4, "I1": 4, "I2": 4, "Ip": 4,
+       "Sx_top": 3, "Sx_bottom": 3, "Sy_right": 3, "Sy_left": 3, "rx": 1, "ry": 1, "rp": 1, "Qx": 3, "Qy": 3}
+
+
+def near(a, b, floor=0.0):
+    return abs(a - b) <= 1e-9 * max(abs(a), abs(b), floor)
+
+
 def close(a, b):
-    if isinstance(a, dict):
-        return isinstance(b, dict) and a.keys() == b.keys() and all(close(a[k], b[k]) for k in a)
-    if isinstance(a, list):
-        return isinstance(b, list) and len(a) == len(b) and all(close(x, y) for x, y in zip(a, b))
-    if isinstance(a, float) or isinstance(b, float):
-        return abs(a - b) <= 1e-9 * max(abs(a), abs(b), 1e-300) or abs(a - b) <= 1e-12
-    return a == b
+    if a.keys() != b.keys() or a["generated_by"] != b["generated_by"] or a["cases"].keys() != b["cases"].keys():
+        return False
+    for cid, x in a["cases"].items():
+        y = b["cases"][cid]
+        px, py = x["properties"], y["properties"]
+        if x.keys() != y.keys() or px.keys() != py.keys():
+            return False
+        size = abs(px["A"]) ** 0.5
+        if not all(near(px[k], py[k], size ** DIM[k]) for k in px):
+            return False
+        if "plastic" in x:
+            gx, gy = x["plastic"], y["plastic"]
+            scalars = [k for k in gx if k != "points"]
+            if gx.keys() != gy.keys() or len(gx["points"]) != len(gy["points"]):
+                return False
+            if not all(near(gx[k], gy[k], 1.0 if k == "angle" else 0.0) for k in scalars):
+                return False
+            if not all(near(p["kappa"], q["kappa"], abs(gx["kappa_lim"])) and near(p["M"], q["M"], abs(gx["M_lim"]))
+                       for p, q in zip(gx["points"], gy["points"])):
+                return False
+    return True
 
 
 def main(argv=None):

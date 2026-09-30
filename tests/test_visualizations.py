@@ -79,7 +79,7 @@ class VisualizationTests(unittest.TestCase):
             with self.subTest(page=page):
                 gallery = (ROOT / page).read_text()
                 positions = [
-                    gallery.index(f'href="{prefix}{visualization["slug"]}/index.html"')
+                    gallery.index(f'<h2 class="entry-title"><a href="{prefix}{visualization["slug"]}/index.html"')
                     for visualization in visualizations
                 ]
                 self.assertEqual(positions, sorted(positions))
