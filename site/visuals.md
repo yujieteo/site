@@ -112,6 +112,13 @@ Older Singapore residents report stronger connection to the country but less int
 - Fetched: 2026-09-27
 - WebMCP tools: get_data, get_metadata, query
 
+## Subsidy Atlas
+Find free LLM tokens, cloud credits, ride and delivery promotions, policy rebates and merchant-funded financing. Filter by category, subsidiser, offer depth and lifecycle; inspect sourced evidence and historical loss-leader lessons, with a separate speculative early-access watchlist. As of 30 September 2026; unknown cost subsidies remain unknown.
+- HTML: https://teoyujie.org/visuals/subsidy-atlas/index.html
+- Data: https://teoyujie.org/visuals/subsidy-atlas/data.json
+- Fetched: 2026-09-30
+- WebMCP tools: get_metadata, search_products, get_product
+
 ## Good food in Tampines
 The 50 places food writers recommend most across Tampines Mall, Tampines 1, Century Square and Our Tampines Hub, ranked by how many independent guides name them. Filter by cuisine or mall, see a sourced calorie estimate (carbohydrate, protein, fat) for 45 of the 50 signature dishes, and read what each mall offers. Checked against the malls' own directories as of 30 September 2026.
 - HTML: https://teoyujie.org/visuals/tampines-food/index.html
