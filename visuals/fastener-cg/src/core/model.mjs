@@ -40,7 +40,7 @@ export function defaultProperties() {
 export function defaultPlate(id = "P1") {
   return {
     id, thickness: 10, xMin: -80, xMax: 80, yMin: -50, yMax: 50,
-    bearingAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null,
+    bearingAllowable: null, bearingLoadAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null,
   };
 }
 

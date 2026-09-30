@@ -117,6 +117,8 @@ dialog{border:1px solid var(--border);border-radius:calc(var(--r)*1.5);backgroun
 dialog::backdrop{background:rgb(0 0 0/.35)}
 dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .method li{margin:.3rem 0}
+.plate-block+.plate-block{margin-top:.8rem;padding-top:.6rem;border-top:1px solid var(--grid)}
+.plate-block h4{margin:0 0 .3rem;font-size:.85rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
 label.check{display:flex;align-items:center;gap:.45rem;font-weight:600;font-size:.9rem;min-height:2.25rem;cursor:pointer}
 label.check input{width:1.05rem;height:1.05rem;margin:0}
 .sub{border-left:2px solid var(--grid);padding-left:.7rem;margin:.1rem 0 .6rem}
@@ -250,12 +252,23 @@ td.status{color:var(--muted);font-size:.78rem}
       <div class="row">
         <label class="f"><span>Axial method</span><select data-path="settings.axialMethod">
           <option value="centroid">(a) Centroid neutral axis</option>
-          <option value="contact-edge" disabled>(b) Contact edge — milestone M4</option>
+          <option value="contact-edge">(b) Contact edge, tension only</option>
         </select></label>
         <label class="f"><span>Design basis</span><select data-path="settings.designBasis">
           <option value="elastic">Elastic</option>
           <option value="icr" disabled>ICR — milestone M5</option>
         </select></label>
+      </div>
+      <div class="sub" id="contact-edge-box" data-show-method="contact-edge">
+        <div class="row">
+          <label class="f"><span>Contact plate</span><select id="edge-plate" data-path="settings.contactEdge.plateId"></select></label>
+          <label class="f"><span>Contact edge (neutral axis)</span><select data-path="settings.contactEdge.edge">
+            <option value="yMin">Bottom, y = yMin</option><option value="yMax">Top, y = yMax</option>
+            <option value="xMin">Left, x = xMin</option><option value="xMax">Right, x = xMax</option>
+          </select></label>
+        </div>
+        <div class="presets"><button class="btn" type="button" id="edge-suggest">Use the compressive-side edge</button></div>
+        <p class="note" id="edge-note">Fasteners on the far side of the edge carry T = M_L·ka·d/Σ(ka·d²); the rest carry none. v1 needs zero moment about the axis perpendicular to the edge (E-012).</p>
       </div>
     </div>
 
@@ -336,7 +349,8 @@ td.status{color:var(--muted);font-size:.78rem}
     <div class="card">
       <h3>Plates</h3>
       <div id="plates"></div>
-      <p class="note">Outlines are drawn on the canvas. The loaded plate's thickness and flange strength Fp feed prying. Bearing, tear-out and a second plate arrive with milestone M4.</p>
+      <div class="presets"><button class="btn" type="button" id="add-plate">+ Second plate</button></div>
+      <p class="note">Up to two plates, as axis-aligned rectangles. Every fastener passes through every plate. Fbr (bearing stress) or a direct bearing allowable, Fsu (shear-out stress) and the minimum e/D are keyed per plate; a blank allowable leaves that check not evaluated. The loaded plate's thickness and Fp feed prying.</p>
     </div>
   </div>
 </div>
@@ -379,6 +393,8 @@ td.status{color:var(--muted);font-size:.78rem}
     <li><b>Interaction</b>: IF(k) = (k Rs/Fs)^a + (k Rt/Ft)^b with separate exponents a and b (presets: elliptical (2, 2), the default, and linear (1, 1)). Rt is the positive tension; unloading counts as zero (N-006). The margin is the exact load scale factor, MS = k* − 1 with IF(k*) = 1, found by a bracketed Brent search (tolerance 1e-12 on k, 200 iterations); a failed solve shows “MS not computed” (W-008) and never a substitute number. For a = b = 1 it equals 1/IF − 1. The governing MS of a fastener is its lowest margin across modes, and the critical fastener has the lowest governing MS.</li>
     <li><b>Prying</b> (T-stub, keyed B and Fp, no code factor built in) applies only to positive external tension T: a is limited to 1.25·b; b' = b − D/2, a' = a + D/2, ρ = b'/a', δ = 1 − d_h/p, t_c = √(4Bb'/(pFp)), α' = (1/δ)[(T/B)(t_c/t)² − 1] clamped to [0, 1], Q = Bδα'ρ(t/t_c)². t and Fp are the loaded plate's thickness and flange strength. A manual amplification factor f replaces the T-stub with a bolt tension f·T (W-012).</li>
     <li><b>Preload</b> P_max, P_min and load-sharing factor φ (required, 0 &lt; φ &lt; 1): F_b = max(P_max + φT, T) + Q, clamp force P_min − (1 − φ)T, separation load P_min/(1 − φ). Once clamp force reaches zero the joint is separated (W-013). F_b replaces the tension in the interaction and is re-evaluated at every load multiplier k; preload itself does not scale. Clamp force is reported but no friction-slip capacity is claimed (N-005). With preload off the tension is T + Q.</li>
+    <li><b>Plates</b> (up to two, axis-aligned rectangles): every fastener is checked against every plate and the governing plate is reported. Bearing R_br,allow = Fbr·D·t (or a keyed direct-load allowable), MS = R_br,allow/Rs − 1. Tear-out casts a ray from the fastener along its bearing direction to the plate edge, giving e; capacity = 2·t·(e − D/2)·Fsu and MS = capacity/Rs − 1; e/D below the keyed minimum is W-011. The bearing direction is −R in the loaded plate (it is pushed along the load, so the fastener bears on the trailing side of the hole) and +R in the other plate. Geometry checks: a fastener outside a plate (E-004), fasteners closer than their diameter (E-005), edge distance below D/2 (E-006), and a load point outside the loaded plate (W-009).</li>
+    <li><b>Axial method (b), contact edge</b>: the selected plate edge L is the neutral axis and fasteners act in tension only. With d the distance from L on the tension side, T = M_L·ka·d/Σ(ka·d²), where M_L is the moment about L (reduced to the projection of Ca onto L, so it includes the Fz lever) that puts the far side in tension. The contact reaction is C = ΣT − Fz. M_L ≤ 0 gives no tension (W-010: wrong edge), and C &lt; 0 means no contact (W-021: use method (a)). In v1 the moment about the axis perpendicular to L must be zero (E-012).</li>
     <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
     <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
   </ul>

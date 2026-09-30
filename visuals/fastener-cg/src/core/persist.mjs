@@ -23,13 +23,13 @@ export const MIGRATIONS = {};
 
 const ENUMS = {
   "settings.designBasis": ["elastic"],
-  "settings.axialMethod": ["centroid"],
+  "settings.axialMethod": ["centroid", "contact-edge"],
   "settings.icr.model": ["crawford-kulak", "elastic-plastic"],
   "settings.pageSize": ["A4", "Letter"],
   "settings.contactEdge.edge": ["xMin", "xMax", "yMin", "yMax"],
 };
 const NOT_NULL = new Set(["area", "ks", "ka"]);
-const PLATE_NULLABLE = new Set(["thickness", "bearingAllowable", "shearOutAllowable", "minEdgeRatio", "flangeStrength"]);
+const PLATE_NULLABLE = new Set(["thickness", "bearingAllowable", "bearingLoadAllowable", "shearOutAllowable", "minEdgeRatio", "flangeStrength"]);
 
 const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 const isNum = (v) => typeof v === "number" && Number.isFinite(v);
@@ -254,8 +254,9 @@ export function toMarkdown(pattern, result = null, { version = "", date = "" } =
     mdTable(["id", "label", `x (${u("length")})`, `y (${u("length")})`, `area (${u("area")})`, "ks", "ka", `diameter (${u("length")})`, `Fs (${u("force")})`, `Ft (${u("force")})`],
       resolved.map((f) => [f.id, f.label, f.x, f.y, f.area, f.ks, f.ka, f.diameter, f.shearAllowable, f.tensionAllowable])),
     "", "## Plates", "",
-    mdTable(["id", `thickness (${u("length")})`, `xMin (${u("length")})`, `xMax (${u("length")})`, `yMin (${u("length")})`, `yMax (${u("length")})`],
-      pattern.plates.map((p) => [p.id, p.thickness, p.xMin, p.xMax, p.yMin, p.yMax])),
+    mdTable(["id", `thickness (${u("length")})`, `xMin (${u("length")})`, `xMax (${u("length")})`, `yMin (${u("length")})`, `yMax (${u("length")})`,
+      `Fbr (${u("stress")})`, `bearing direct (${u("force")})`, `Fsu (${u("stress")})`, "min e/D", `Fp (${u("stress")})`],
+      pattern.plates.map((p) => [p.id, p.thickness, p.xMin, p.xMax, p.yMin, p.yMax, p.bearingAllowable, p.bearingLoadAllowable, p.shearOutAllowable, p.minEdgeRatio, p.flangeStrength])),
     "", "## Load", "",
     mdTable(["quantity", "value", "unit"], [
       ["appliedPlate", pattern.load.appliedPlate, ""],
@@ -293,6 +294,10 @@ function resultSections(pattern, result) {
       ["Mx,a", r.axial.Mx, u("moment"), `Ca (${r.axial.Q.x}, ${r.axial.Q.y}, 0)`],
       ["My,a", r.axial.My, u("moment"), `Ca (${r.axial.Q.x}, ${r.axial.Q.y}, 0)`],
     ]),
+    "", "## Axial method", "",
+    result.axial.mode === "contact-edge"
+      ? `Method (b), contact edge: ${result.axial.edge} of ${result.axial.plateId} is the neutral axis; M_L = ${result.axial.ML} about it (reduced to (${result.axial.Q.x}, ${result.axial.Q.y}, 0)); Σka·d² = ${result.axial.S}; contact reaction C = ${result.axial.C}.`
+      : `Method (a), centroid neutral axis (${result.axial.mode}).`,
     "", "## Fastener loads (elastic)", "",
     mdTable(["id", `Rdx (${u("force")})`, `Rdy (${u("force")})`, `Rtx (${u("force")})`, `Rty (${u("force")})`, `Rs (${u("force")})`, "direction (°)", `T (${u("force")})`, "state"],
       result.fasteners.map((f) => [f.id, f.shear.Rdx, f.shear.Rdy, f.shear.Rtx, f.shear.Rty, f.shear.Rs, f.shear.angleDeg, f.axial.T, f.axial.unloading ? "unloading" : f.axial.T > 0 ? "tension" : "—"])),
@@ -310,10 +315,24 @@ function resultSections(pattern, result) {
         return [f.id, m.Rs, m.Rt, m.Fs ?? "", m.Ft ?? "", m.status === "not-evaluated" ? "" : m.IF1, m.status === "ok" ? m.kStar : "", marginText(m), g ? (Number.isFinite(g.ms) ? g.ms : "∞") : "not evaluated", g ? g.label : ""];
       })),
     ...tensionSection(result, u),
+    ...plateSection(result, u),
     "", "## Equilibrium closure", "",
     mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
     "", ...issueTable(result.issues),
   ];
+}
+
+function plateSection(result, u) {
+  const ids = [...new Set(result.fasteners.flatMap((f) => f.checks.modes.filter((m) => m.plate).map((m) => m.plate)))];
+  if (!ids.length) return [];
+  return ["", "## Bearing and tear-out (per plate)", "",
+    "The loaded plate bears on the −R side of each hole and the other plate on +R; the tear-out ray follows that direction to the plate edge.", "",
+    mdTable(["id", "plate", `bearing capacity (${u("force")})`, "MS bearing", `e (${u("length")})`, "e/D", `tear-out capacity (${u("force")})`, "MS tear-out"],
+      result.fasteners.flatMap((f) => ids.map((pid) => {
+        const b = f.checks.modes.find((m) => m.mode === "bearing" && m.plate === pid);
+        const t = f.checks.modes.find((m) => m.mode === "tearout" && m.plate === pid);
+        return [f.id, pid, b.capacity ?? "", marginText(b), t.e ?? "", t.eOverD ?? "", t.capacity ?? "", marginText(t)];
+      })))];
 }
 
 function tensionSection(result, u) {
@@ -388,9 +407,12 @@ function fromTables(text) {
     }
     return { id: r.id, label: r.label || "", x: num(r.x), y: num(r.y), overrides };
   });
-  const plates = (plateRows || []).map((r) => ({
-    id: r.id, thickness: num(r.thickness), xMin: num(r.xMin), xMax: num(r.xMax), yMin: num(r.yMin), yMax: num(r.yMax),
-  }));
+  const optional = { bearingAllowable: "Fbr", bearingLoadAllowable: "bearing direct", shearOutAllowable: "Fsu", minEdgeRatio: "min e/D", flangeStrength: "Fp" };
+  const plates = (plateRows || []).map((r) => {
+    const plate = { id: r.id, thickness: num(r.thickness), xMin: num(r.xMin), xMax: num(r.xMax), yMin: num(r.yMin), yMax: num(r.yMax) };
+    for (const [key, column] of Object.entries(optional)) if (column in r) plate[key] = num(r[column]);
+    return plate;
+  });
   const load = { point: {} };
   for (const r of loadRows) {
     const key = r.quantity;

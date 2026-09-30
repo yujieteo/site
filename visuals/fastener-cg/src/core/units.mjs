@@ -60,7 +60,7 @@ export const PROPERTY_KINDS = {
 
 export const PLATE_KINDS = {
   thickness: "length", xMin: "length", xMax: "length", yMin: "length", yMax: "length",
-  bearingAllowable: "stress", shearOutAllowable: "stress", minEdgeRatio: "none", flangeStrength: "stress",
+  bearingAllowable: "stress", bearingLoadAllowable: "force", shearOutAllowable: "stress", minEdgeRatio: "none", flangeStrength: "stress",
 };
 
 export const LOAD_KINDS = {

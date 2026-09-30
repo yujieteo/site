@@ -1,7 +1,7 @@
 /* Page controller: state, inputs, table, canvas, results, warnings,
  * library and files. Calculations all come from ../core. */
 
-import { examplePattern, addFastener, clone } from "../core/model.mjs";
+import { examplePattern, addFastener, clone, defaultPlate } from "../core/model.mjs";
 import { solve } from "../core/solve.mjs";
 import { convertPattern, unitLabel, round12, UNIT_SYSTEMS } from "../core/units.mjs";
 import { fmt } from "../core/format.mjs";
@@ -13,6 +13,7 @@ import { sortIssues } from "../core/warnings.mjs";
 import { marginText, noMarginSummary } from "../core/checks.mjs";
 import { PRESETS } from "../core/interaction.mjs";
 import { preloadFromTorque } from "../core/tension.mjs";
+import { suggestContactEdge, EDGES } from "../core/contact.mjs";
 import { TOOL_VERSION } from "../core/meta.mjs";
 import { paint, palette, hitTest, centroidPath } from "./canvas.mjs";
 import { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } from "./storage.mjs";
@@ -82,6 +83,7 @@ function recompute() {
   markInvalid();
   renderInline();
   renderPresets();
+  renderLegend();
   draw();
   autosave();
 }
@@ -126,11 +128,22 @@ function renderInputs() {
   renderPlates();
 }
 
+const PLATE_FIELDS = [["xMin", "length"], ["xMax", "length"], ["thickness", "length", "t"], ["yMin", "length"], ["yMax", "length"],
+  ["bearingAllowable", "stress", "Fbr"], ["bearingLoadAllowable", "force", "Bearing direct"], ["shearOutAllowable", "stress", "Fsu"],
+  ["minEdgeRatio", "none", "min e/D"], ["flangeStrength", "stress", "Fp"]];
+const NULLABLE_PLATE = new Set(["bearingAllowable", "bearingLoadAllowable", "shearOutAllowable", "minEdgeRatio", "flangeStrength"]);
+
 function renderPlates() {
   $("#plates").innerHTML = state.pattern.plates.map((p, i) => `
-    <div class="row three" data-plate="${i}">
-      ${[["xMin", "length"], ["xMax", "length"], ["thickness", "length"], ["yMin", "length"], ["yMax", "length"], ["flangeStrength", "stress", "Fp"]].map(([k, kind, label]) => `<label class="f"><span>${esc(p.id)} ${label || k} (${units(kind)})</span><input type="number" step="any" data-plate-key="${k}" data-field="plates.${esc(p.id)}.${k}" value="${esc(inputText(p[k]))}"${k === "flangeStrength" ? ' placeholder="—"' : ""}></label>`).join("")}
+    <div class="plate-block" data-plate="${i}">
+      <h4>${esc(p.id)}${p.id === state.pattern.load.appliedPlate ? ' <span class="tag">loaded</span>' : ""}${i > 0 ? ` <button class="btn danger" type="button" data-remove-plate="${i}">Remove ${esc(p.id)}</button>` : ""}</h4>
+      <div class="row three">
+      ${PLATE_FIELDS.map(([k, kind, label]) => `<label class="f"><span>${esc(label || k)}${kind !== "none" ? ` (${units(kind)})` : ""}</span><input type="number" step="any" data-plate-key="${k}" data-field="plates.${esc(p.id)}.${k}" value="${esc(inputText(p[k]))}"${NULLABLE_PLATE.has(k) ? ' placeholder="—"' : ""}></label>`).join("")}
+      </div>
     </div>`).join("");
+  $("#add-plate").hidden = state.pattern.plates.length >= 2;
+  $("#edge-plate").innerHTML = state.pattern.plates.map((p) => `<option value="${esc(p.id)}">${esc(p.id)}</option>`).join("") || `<option value="">(no plates)</option>`;
+  $("#edge-plate").value = state.pattern.settings.contactEdge?.plateId ?? "";
 }
 
 function renderTable() {
@@ -165,6 +178,23 @@ function renderSelection() {
   renderOverrides();
 }
 
+/* Point the contact edge at the compressive side of the applied moment. */
+function suggestEdge(announceIt) {
+  const st = state.pattern.settings;
+  st.contactEdge ??= { plateId: "", edge: "yMin" };
+  const plate = state.pattern.plates.find((p) => p.id === st.contactEdge.plateId) || state.pattern.plates[0];
+  if (!plate) { $("#edge-note").textContent = "Method (b) needs a plate: add one in the Plates card."; return; }
+  st.contactEdge.plateId = plate.id;
+  const Ca = state.result?.ok ? state.result.props.Ca : { x: 0, y: 0 };
+  const edge = suggestContactEdge(plate, state.pattern.load, Ca);
+  if (edge) {
+    st.contactEdge.edge = edge;
+    if (announceIt) $("#edge-note").textContent = `Contact edge set to the ${EDGES[edge].label} of ${plate.id}, on the compressive side of the applied moment.`;
+  } else if (announceIt) {
+    $("#edge-note").textContent = "No edge has a positive moment about it: the applied load puts no plate edge in compression.";
+  }
+}
+
 const TENSION_FIELDS = [
   ["prying", "prying.b", "b", "length"], ["prying", "prying.a", "a", "length"], ["prying", "prying.p", "p", "length"],
   ["prying", "prying.holeDiameter", "d_h", "length"], ["prying", "prying.boltStrengthB", "B", "force"], ["prying", "prying.manualFactor", "Manual factor", "none"],
@@ -173,6 +203,7 @@ const TENSION_FIELDS = [
 
 function renderToggles() {
   for (const el of $$("[data-show]")) el.hidden = !getPath(state.pattern, el.dataset.show);
+  for (const el of $$("[data-show-method]")) el.hidden = state.pattern.settings.axialMethod !== el.dataset.showMethod;
   const pts = state.pattern.fasteners.filter((q) => typeof q.x === "number" && typeof q.y === "number");
   let nn = Infinity;
   for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) nn = Math.min(nn, Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y));
@@ -247,6 +278,7 @@ function draw() {
 function legendIcon(entry, colours) {
   const c = colours[entry.colour] || colours.fg;
   if (entry.shape === "arrow") return `<svg width="22" height="12" aria-hidden="true"><line x1="1" y1="6" x2="15" y2="6" stroke="${c}" stroke-width="2"/><path d="M21 6L14 2V10z" fill="${c}"/></svg>`;
+  if (entry.shape === "edge") return `<svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="${c}" stroke-width="3" stroke-dasharray="6 3"/></svg>`;
   if (entry.shape === "cross") return `<svg width="14" height="14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" stroke="${c}" stroke-width="2"/></svg>`;
   return centroidSvg(entry.key, c);
 }
@@ -451,7 +483,7 @@ function renderResults() {
   const it = r.interaction;
   const none = r.critical ? null : noMarginSummary(r.fasteners.map((q) => q.checks));
   const crit = r.critical
-    ? `<p class="critical">Critical fastener <b>${esc(r.critical.id)}</b>: governing MS <b class="ms ${r.critical.ms < 0 ? "ms-neg" : ""}">${f(r.critical.ms)}</b> — ${esc(r.critical.label)}${(it.a !== 1 || it.b !== 1) ? ` <span class="muted">(exact load scale factor, not 1/IF − 1; W-006)</span>` : ""}.</p>`
+    ? `<p class="critical">Critical fastener <b>${esc(r.critical.id)}</b>: governing MS <b class="ms ${r.critical.ms < 0 ? "ms-neg" : ""}">${f(r.critical.ms)}</b> — ${esc(r.critical.label)}${r.critical.mode === "interaction" && (it.a !== 1 || it.b !== 1) ? ` <span class="muted">(exact load scale factor, not 1/IF − 1; W-006)</span>` : ""}.</p>`
     : none.unloaded.length || none.blocked.length
     ? `<p class="critical muted">${esc(none.text)}</p>`
     : `<p class="critical muted">No margin evaluated: enter shear and tension allowables Fs and Ft (group defaults or per-fastener overrides). A check without its allowable shows “not evaluated” and never a margin.</p>`;
@@ -478,11 +510,29 @@ function renderResults() {
     }), { numeric: [1, 2, 3, 4, 5, 6, 7, 8] });
   }
 
+  let plateTable = "";
+  const plateIds = [...new Set(r.fasteners.flatMap((q) => q.checks.modes.filter((m) => m.plate).map((m) => m.plate)))];
+  if (plateIds.length) {
+    plateTable = table(["Fastener", "Plate", `Bearing capacity (${F})`, "MS bearing", "Bears towards", `e (${L})`, "e/D", `Tear-out capacity (${F})`, "MS tear-out"],
+      r.fasteners.flatMap((q) => plateIds.map((pid) => {
+        const b = q.checks.modes.find((m) => m.mode === "bearing" && m.plate === pid);
+        const t = q.checks.modes.find((m) => m.mode === "tearout" && m.plate === pid);
+        const gov = q.checks.governing && q.checks.governing.plate === pid ? ' <span class="tag">governing</span>' : "";
+        return [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button>`, `${esc(pid)}${gov}`,
+          b.capacity !== undefined ? `${f(b.capacity)} <span class="muted">(${esc(b.basis)})</span>` : "—", ms(b),
+          t.e !== undefined ? esc(t.bearsTowards) : "—", t.e !== undefined ? f(t.e, lenScale) : "—",
+          t.eOverD !== undefined && t.eOverD !== null ? `${f(t.eOverD)}${t.minRatio !== null && t.eOverD < t.minRatio ? ' <span class="tag unloading">below min</span>' : ""}` : "—",
+          t.capacity !== undefined ? f(t.capacity) : "—", ms(t)];
+      })), { numeric: [5, 6, 7] });
+  }
+
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],
     r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
     { numeric: [1, 2] });
 
-  const axialNote = r.axial.mode === "general"
+  const axialNote = r.axial.mode === "contact-edge"
+    ? `Method (b), contact edge: the ${EDGES[r.axial.edge].label} of ${r.axial.plateId} is the neutral axis. M_L = ${f(r.axial.ML, momScale)} ${M} (reduced to (${f(r.axial.Q.x, lenScale)}, ${f(r.axial.Q.y, lenScale)}, 0)), Σka·d² = ${f(r.axial.S)}, contact reaction C = ${f(r.axial.C, forceScale)} ${F}.`
+    : r.axial.mode === "general"
     ? `Method (a): D = ${f(r.axial.D, secScale * secScale)}, θx = ${f(r.axial.thetaX)}, θy = ${f(r.axial.thetaY)}.`
     : r.axial.mode === "collinear" ? "Method (a), collinear pattern: bending resisted about the pattern's major principal axis only." : "Method (a): all fasteners at one point; only Fz is resisted.";
 
@@ -501,6 +551,8 @@ function renderResults() {
     ${crit}
     <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
+    ${plateTable ? `<h3 style="margin-top:1.25rem">Bearing and tear-out, per plate</h3>
+    <p class="note">Rs on the elastic basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
 
@@ -728,10 +780,33 @@ function bind() {
       const value = el.type === "checkbox" ? el.checked : el.tagName === "SELECT" ? el.value : parseInput(el.value);
       setPath(state.pattern, el.dataset.path, value);
       if (el.type === "checkbox") { renderToggles(); renderOverrides(); }
+      if (el.dataset.path === "settings.axialMethod") {
+        if (value === "contact-edge") suggestEdge(false);
+        renderToggles();
+      }
+      if (el.dataset.path === "load.appliedPlate") renderPlates();
       changed();
     };
     el.addEventListener(el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input", handler);
   }
+  $("#add-plate").addEventListener("click", () => {
+    if (state.pattern.plates.length >= 2) return;
+    const first = state.pattern.plates[0];
+    const used = new Set(state.pattern.plates.map((p) => p.id));
+    const id = used.has("P2") ? "P3" : "P2";
+    const base = first ? { ...clone(first), id, bearingAllowable: null, bearingLoadAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null } : { ...defaultPlate(id) };
+    state.pattern.plates.push(base);
+    changed({ structure: true });
+  });
+  $("#plates").addEventListener("click", (e) => {
+    const i = e.target.closest("[data-remove-plate]")?.dataset.removePlate;
+    if (i === undefined) return;
+    const [gone] = state.pattern.plates.splice(Number(i), 1);
+    if (state.pattern.load.appliedPlate === gone.id) state.pattern.load.appliedPlate = state.pattern.plates[0]?.id ?? "";
+    if (state.pattern.settings.contactEdge?.plateId === gone.id) state.pattern.settings.contactEdge.plateId = state.pattern.plates[0]?.id ?? "";
+    changed({ structure: true });
+  });
+  $("#edge-suggest").addEventListener("click", () => { suggestEdge(true); changed({ structure: true }); });
   $("#override-editor").addEventListener("input", (e) => {
     const path = e.target.dataset.ov;
     const fa = state.pattern.fasteners.find((q) => q.id === state.selected);

@@ -52,10 +52,10 @@ export function validateCheckInputs(pattern, resolved) {
  * unloading counts as zero (N-006). Rs and T within zeroTol of the largest
  * |Rs| and |T| in the group are round-off and count as zero.
  */
-export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ prying: { kind: "off" }, preload: null })) {
+export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ prying: { kind: "off" }, preload: null }), plateModesFor = () => []) {
   const { a, b } = settings.interaction;
   const issues = [];
-  const notComputed = [], preloadOnly = [];
+  const notComputed = [], preloadOnly = [], shortEdge = [], shortIds = [];
   const idOf = (entry) => entry.split(" ")[0];
   const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.shear.Rs)), 0);
   const tensionFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.axial.T)), 0);
@@ -79,19 +79,27 @@ export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => 
       if (s.status === "not-computed") notComputed.push(`${f.id} (${s.reason})`);
       if (s.status === "preload") preloadOnly.push(`${f.id} (IF(0) = ${s.IF0.toPrecision(4)})`);
     }
-    const modes = [interaction];
+    // Bearing and tear-out per plate use the same round-off-snapped Rs.
+    const modes = [interaction, ...plateModesFor({ ...f, shear: { ...f.shear, Rs } })];
+    for (const m of modes) {
+      if (m.mode === "tearout" && m.minRatio !== null && m.minRatio !== undefined && m.eOverD !== null && m.eOverD !== undefined && m.eOverD < m.minRatio) {
+        shortEdge.push(`${f.id} in ${m.plate}: e/D = ${m.eOverD.toPrecision(4)} < ${m.minRatio}`);
+        shortIds.push(f.id);
+      }
+    }
     const evaluated = modes.filter((m) => m.status === "ok" || m.status === "unloaded");
     const blocked = modes.filter((m) => m.status === "not-computed" || m.status === "preload");
     let governing = null;
     if (evaluated.length) {
       const g = evaluated.reduce((lo, m) => (m.ms < lo.ms ? m : lo));
-      governing = { mode: g.mode, label: g.label, ms: g.ms };
+      governing = { mode: g.mode, plate: g.plate || null, label: g.label, ms: g.ms };
     }
     const clamp = tension.preload
       ? { status: tension.preload.separated ? "separated" : "clamped", clamp: tension.preload.clamp, separationLoad: tension.preload.separationLoad }
       : { status: "no preload" };
     return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: f.axial.unloading && !missing.length, tension, clamp };
   });
+  if (shortEdge.length) issues.push(issue("W-011", `Edge distance along the bearing direction is below the keyed minimum: ${shortEdge.join("; ")}.`, { fasteners: [...new Set(shortIds)] }));
   if (notComputed.length) issues.push(issue("W-008", `MS not computed for ${notComputed.join(", ")}.`, { fasteners: notComputed.map(idOf) }));
   if (preloadOnly.length) issues.push(issue("W-017", `IF(0) ≥ 1, so MS is not computed, for ${preloadOnly.join(", ")}.`, { fasteners: preloadOnly.map(idOf) }));
   const separated = results.filter((r) => r.clamp.status === "separated");
@@ -109,7 +117,7 @@ export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => 
   const critical = withMargin.length ? withMargin.reduce((lo, r) => (r.governing.ms < lo.governing.ms ? r : lo)) : null;
   return {
     fasteners: results,
-    critical: critical ? { id: critical.id, ms: critical.governing.ms, mode: critical.governing.mode, label: critical.governing.label } : null,
+    critical: critical ? { id: critical.id, ms: critical.governing.ms, mode: critical.governing.mode, plate: critical.governing.plate, label: critical.governing.label } : null,
     evaluatedCount: results.filter((r) => r.governing).length,
     issues,
   };
