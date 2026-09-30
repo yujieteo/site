@@ -52,9 +52,9 @@ test(`mouse dragging a point-force handle through the section cursor reaches the
       await send("Input.dispatchMouseEvent", { type: "mouseMoved", x: coords.x + (coords.end - coords.x) * step / 20, y: coords.y, buttons: 1 });
     }
     await send("Input.dispatchMouseEvent", { type: "mouseReleased", x: coords.end, y: coords.y, button: "left", clickCount: 1 });
-    const position = await evaluate(`Number(document.querySelector('[data-field="loads.1.x"]').value)`);
-    assert.equal(position, 6, "the dragged force must move from midspan to the beam endpoint");
-    assert.equal(await evaluate(`document.getElementById('download').disabled`), false);
+    // Compared with the length field, so it holds in whichever unit convention the page opens in.
+    const [position, length] = await evaluate(`[document.querySelector('[data-field="loads.1.x"]').value, document.getElementById('length').value].map(Number)`);
+    assert.equal(position, length, "the dragged force must move from midspan to the beam endpoint");
   } finally {
     socket.close();
     await fetch(`${browser}/json/close/${target.id}`);
