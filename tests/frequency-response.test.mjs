@@ -275,7 +275,7 @@ test("relative degree 3: Tustin zeros exactly at −1, backward Euler zeros exac
         if (plant === type1) assert.ok(r.loop.poles.some((p) => p.re === 1 && p.im === 0), `${label}: pole exactly at z = 1`);
         assert.ok(!r.warnings.some((w) => ["rhp-zero", "nonconvergence"].includes(w.code)), `${label}: ${r.warnings.map((w) => w.message).join("; ")}`);
         assert.ok(!r.margins.phaseCrossovers.some((c) => c.atNyquist), `${label}: no crossover at π/Ts`);
-        if (method === "tustin") assert.ok(r.warnings.some((w) => w.code === "axis-zero" && /z = −1/.test(w.message)), `${label}: zeros at z = −1 reported`);
+        if (method === "tustin") assert.equal(JSON.stringify(r.warnings.filter((w) => w.code === "axis-zero").map((w) => w.message.split(",")[0])), JSON.stringify(["L has 3 zeros at z = −1"]), `${label}: zeros at z = −1 reported once`);
         // num/den agree with the factored form and with the state-space discretisation.
         for (const w of [0.5, 3, 20]) {
           const z = { re: Math.cos(w * Ts), im: Math.sin(w * Ts) };
@@ -287,6 +287,43 @@ test("relative degree 3: Tustin zeros exactly at −1, backward Euler zeros exac
       }
     }
   }
+});
+
+test("repeated poles: discretised num/den match G(s(z)) exactly and the phase has no spurious crossover near π/Ts", () => {
+  const pow = (root, k) => Array.from({ length: k }).reduce((p) => p.map((c, i) => c - root * (p[i - 1] || 0)).concat(-root * p[p.length - 1]), [1]);
+  const subs = {
+    tustin: (z) => cmul({ re: 2 / Ts, im: 0 }, cdiv({ re: z.re - 1, im: z.im }, { re: z.re + 1, im: z.im })),
+    forward: (z) => ({ re: (z.re - 1) / Ts, im: z.im / Ts }),
+    backward: (z) => cdiv({ re: z.re - 1, im: z.im }, { re: z.re * Ts, im: z.im * Ts }),
+  };
+  const wN = Math.PI / Ts;
+  for (const [a, k, num] of [[1, 3, [1]], [2, 5, [1]], [1, 3, [1, 2]]]) {
+    const plant = { form: "tf", num, den: pow(-a, k) };
+    for (const method of ["zoh", "tustin", "forward", "backward"]) {
+      const r = F.analyze(fromS(plant, method)), label = `${method} of (${num})/(s + ${a})^${k}`;
+      const L = (z) => cdiv(horner(r.loop.numerator, z), horner(r.loop.denominator, z));
+      if (method === "zoh") {
+        pow(Math.exp(-a * Ts), k).forEach((c, i) => close(r.loop.denominator[i], c, 1e-12 * Math.max(1, Math.abs(c)), `${label} den[${i}]`));
+        close(L({ re: 1, im: 0 }).re, num[num.length - 1] / a ** k, 1e-9, `${label} DC gain`);
+      } else {
+        for (const w of [0.5, 3, 20]) {
+          const z = { re: Math.cos(w * Ts), im: Math.sin(w * Ts) }, got = L(z), want = cdiv(horner(num, subs[method](z)), horner(plant.den, subs[method](z)));
+          const tol = 1e-8 * Math.hypot(want.re, want.im);
+          close(got.re, want.re, tol, `${label} Re at ${w}`);
+          close(got.im, want.im, tol, `${label} Im at ${w}`);
+        }
+      }
+      assert.ok(!r.warnings.some((w) => w.code === "nonconvergence"), `${label}: ${r.warnings.map((w) => w.message).join("; ")}`);
+      assert.ok(!r.margins.phaseCrossovers.some((c) => !c.atNyquist && c.w > 0.99 * wN), `${label}: no crossover beside π/Ts`);
+    }
+  }
+});
+
+test("discrete phase stays continuous past the level of a complex pole inside the unit circle", () => {
+  const rows = F.curves(fromS(plant2, "zoh")), r = F.analyze(fromS(plant2, "zoh"));
+  for (let i = 1; i < rows.length; i++) assert.ok(Math.abs(rows[i].phaseDeg - rows[i - 1].phaseDeg) < 90, `jump at ${rows[i].w}`);
+  assert.equal(r.margins.phaseCrossovers.length, 1);
+  assert.equal(r.margins.phaseCrossovers[0].atNyquist, true);
 });
 
 test("L(z) = K·Ts/(z − 1): one exact crossover at the Nyquist frequency, GM = 20·log₁₀(2/(K·Ts)), stable iff 0 < K·Ts < 2", () => {

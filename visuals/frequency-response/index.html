@@ -287,9 +287,9 @@ const CONVENTIONS = [
   "Delay margin = PM (rad) / ω_gc in seconds, the smallest over crossovers with positive PM; if any gain crossover has PM ≤ 0 the delay margin is 0 s, with a message.",
   "Ms = max|S|, Mt = max|T|, refined by golden-section search on log₁₀ ω; vector margin = 1/Ms, the minimum distance from L to −1. The closed-loop resonant peak Mr is max|T| relative to the DC gain |T(0)|, and the −3 dB bandwidth is the first frequency where |T| falls below |T(0)|/√2.",
   "Closed-loop poles are the roots (Aberth iteration) of D_C·D_G + K·N_C·N_G; in continuous time they are available only without delay. Poles with |Re| ≤ 1e-9·max(1, |p|) are on the stability boundary and reported as marginal.",
-  "Discrete time: L(z) = K · C(z) · G(z) · z^(−d) with sample time Ts, evaluated at z = e^(jωTs) for 0 < ω ≤ π/Ts (the Nyquist frequency); the grid ends exactly at π/Ts and a manual ω_max above it is clipped with a warning. Stability means |p| < 1; poles with ||p| − 1| ≤ 1e-9 are on the unit circle and reported as marginal. The delay d is a whole number of samples, applied exactly as z^(−d); because z^(−d) is rational, the closed-loop poles (roots of D·z^d + N) stay available with a delay in discrete time.",
+  "Discrete time: L(z) = K · C(z) · G(z) · z^(−d) with sample time Ts, evaluated at z = e^(jωTs) for 0 < ω ≤ π/Ts (the Nyquist frequency), with each factor angle measured from +j for a root inside the unit circle and from −r for a root r outside it, so the phase stays continuous along the arc; the grid ends exactly at π/Ts and a manual ω_max above it is clipped with a warning. Stability means |p| < 1; poles with ||p| − 1| ≤ 1e-9 are on the unit circle and reported as marginal. The delay d is a whole number of samples, applied exactly as z^(−d); because z^(−d) is rational, the closed-loop poles (roots of D·z^d + N) stay available with a delay in discrete time.",
   "Discrete phase crossovers include ω = 0 when L(1) is finite, real and negative, and ω = π/Ts when L(−1) is finite, real and negative (z = −1 makes L real, so a crossover can sit exactly at the Nyquist frequency). The ω = ∞ crossover applies only in continuous time.",
-  "Discretisation is done in state space: each continuous block is realised in controllable canonical form (it must be proper), then Ad, Bd, Cd, Dd come from zero-order hold (exact, via the matrix exponential of [[A, B], [0, 0]]·Ts by scaling and squaring with a degree-6 Padé approximant), Tustin (s = c·(z − 1)/(z + 1) with c = 2/Ts, or c = ωp/tan(ωp·Ts/2) with prewarp frequency ωp), forward Euler (s = (z − 1)/Ts) or backward Euler (s = (z − 1)/(z·Ts)). The z-domain transfer function is det-based: den = det(zI − Ad), num = Dd·den + det(zI − Ad + Bd·Cd) − den, with characteristic polynomials from a Hessenberg reduction; leading numerator coefficients below 1e-12 of the largest are treated as round-off and dropped. The discrete poles and zeros come from the exact root maps rather than by re-rooting: Tustin z = (c + p)/(c − p) plus n − m zeros at exactly z = −1, forward Euler z = 1 + p·Ts, backward Euler z = 1/(1 − p·Ts) plus n − m zeros at exactly z = 0, and ZOH poles z = e^(p·Ts) with the zeros from the discretised numerator; num and den are rebuilt from these roots with the state-space leading-coefficient gain.",
+  "Discretisation is done in state space: each continuous block is realised in controllable canonical form (it must be proper), then Ad, Bd, Cd, Dd come from zero-order hold (exact, via the matrix exponential of [[A, B], [0, 0]]·Ts by scaling and squaring with a degree-6 Padé approximant), Tustin (s = c·(z − 1)/(z + 1) with c = 2/Ts, or c = ωp/tan(ωp·Ts/2) with prewarp frequency ωp), forward Euler (s = (z − 1)/Ts) or backward Euler (s = (z − 1)/(z·Ts)). The z-domain transfer function is det-based: den = det(zI − Ad), num = Dd·den + det(zI − Ad + Bd·Cd) − den, with characteristic polynomials from a Hessenberg reduction; leading numerator coefficients below 1e-12 of the largest are treated as round-off and dropped. The discrete poles and zeros come from the exact root maps rather than by re-rooting: Tustin z = (c + p)/(c − p) plus n − m zeros at exactly z = −1, forward Euler z = 1 + p·Ts, backward Euler z = 1/(1 − p·Ts) plus n − m zeros at exactly z = 0, and ZOH poles z = e^(p·Ts) with the zeros from the discretised numerator; num and den stay the state-space result.",
   "When every block is discretised from s, the continuous response L(jω) (with delay d·Ts) is overlaid on the discrete one to show warping and aliasing. Straight-line asymptotes are drawn in continuous time only.",
 ];
 const ASSUMPTIONS = [
@@ -433,6 +433,7 @@ function cleanRoots(roots) {
       out[i] = cx(re, im); out[best] = cx(re, -im);
     }
   }
+  for (let i = 0; i < out.length; i++) if (!used[i] && out[i].im !== 0) out[i] = cx(out[i].re, 0);
   return out.sort((a, b) => a.re - b.re || b.im - a.im);
 }
 
@@ -796,8 +797,7 @@ function blockInDomain(b, name, key, x, errors) {
   const num = trimPoly(d.num), den = trimPoly(d.den);
   if (num.every((c) => c === 0)) { errors.push({ field: `${key}.num`, message: `${name}: the discretised numerator is zero.` }); return { block: null, cont }; }
   const { zeros, poles, converged } = discreteRoots(cont, num, method, x.Ts, x.discretization.prewarp);
-  const gain = num[0] / den[0];
-  return { block: { num: polyScale(polyFromRoots(zeros), gain), den: polyFromRoots(poles), zeros, poles, gain, converged }, cont };
+  return { block: { num, den, zeros, poles, gain: num[0] / den[0], converged }, cont };
 }
 /**
  * Discrete zeros and poles from the exact root maps of the continuous ones, so the repeated zeros a
@@ -893,10 +893,11 @@ function loopWarnings(loop, warnings) {
     const cls = list.map((r) => ({ r, k: rootClass(loop, r) }));
     const dc = cls.filter((c) => c.k.boundary && c.k.dc).length;
     if (dc) warnings.push({ code: `axis-${kind}`, message: z ? (dc === 1 ? `L has a ${kind} at z = 1 (DC).` : `L has ${dc} ${kind}s at z = 1 (DC).`) : dc === 1 ? `L has a ${kind} at the origin (s = 0).` : `L has ${dc} ${kind}s at the origin (s = 0).` });
+    const nyq = z ? cls.filter((c) => c.k.boundary && c.k.nyq).length : 0;
+    if (nyq) warnings.push({ code: `axis-${kind}`, message: `L has ${nyq === 1 ? `a ${kind}` : `${nyq} ${kind}s`} at z = −1, the Nyquist frequency π/Ts = ${fmt(nyquistOf(loop.Ts))} rad/s; the grid end is nudged below it.` });
     for (const { r, k } of cls) {
-      if (!k.boundary || k.dc || r.im < 0) continue;
-      if (z && k.nyq) warnings.push({ code: `axis-${kind}`, message: `L has a ${kind} at z = −1, the Nyquist frequency π/Ts = ${fmt(nyquistOf(loop.Ts))} rad/s; the grid end is nudged below it.` });
-      else warnings.push({ code: `axis-${kind}`, message: z ? `L has a ${kind} pair on the unit circle at ω = ${fmt(k.w)} rad/s; the response is infinite or zero there and the grid is nudged around it.` : `L has a ${kind} pair on the jω axis at ω = ${fmt(r.im)} rad/s; the response is infinite or zero there and the grid is nudged around it.` });
+      if (!k.boundary || k.dc || k.nyq || r.im < 0) continue;
+      warnings.push({ code: `axis-${kind}`, message: z ? `L has a ${kind} pair on the unit circle at ω = ${fmt(k.w)} rad/s; the response is infinite or zero there and the grid is nudged around it.` : `L has a ${kind} pair on the jω axis at ω = ${fmt(r.im)} rad/s; the response is infinite or zero there and the grid is nudged around it.` });
     }
   };
   axis(poles, "pole"); axis(zeros, "zero");
@@ -913,11 +914,22 @@ function loopWarnings(loop, warnings) {
 }
 
 /** Frequency response of a loop at ω (rad/s): magnitude, continuous phase (deg), complex value. s = jω, or z = e^(jωTs). */
+/**
+ * Angle of the factor (s − r), continuous along the evaluation path: atan2 on the jω axis; on the upper unit
+ * circle it is measured from the direction +j for a root inside the circle and from −r for one outside it,
+ * so the factor never crosses the atan2 branch cut between z = 1 and z = −1.
+ */
+function factorArg(loop, s, r) {
+  const d = csub(s, r);
+  if (loop.domain !== "z") return carg(d);
+  if (cabs(r) < 1) return carg(cmul(d, cx(0, -1))) + Math.PI / 2;
+  return carg(cmul(d, cx(-r.re, r.im))) + carg(cx(-r.re, -r.im));
+}
 function evalLoop(loop, w) {
   const s = loop.domain === "z" ? cpolar(1, w * loop.Ts) : cx(0, w);
   let logm = Math.log(Math.abs(loop.gain)), ph = loop.gain < 0 ? -Math.PI : 0;
-  for (const z of loop.zeros) { const d = csub(s, z); logm += Math.log(cabs(d)); ph += carg(d); }
-  for (const p of loop.poles) { const d = csub(s, p); logm -= Math.log(cabs(d)); ph -= carg(d); }
+  for (const z of loop.zeros) { logm += Math.log(cabs(csub(s, z))); ph += factorArg(loop, s, z); }
+  for (const p of loop.poles) { logm -= Math.log(cabs(csub(s, p))); ph -= factorArg(loop, s, p); }
   ph -= w * loop.tau;
   const mag = Math.exp(logm);
   return { mag, phaseDeg: (ph * 180) / Math.PI, value: cpolar(mag, ph) };
@@ -1000,7 +1012,7 @@ function realPointValue(loop, which) {
 /** Phase of L as ω → 0+ in evalLoop's convention: each root at the DC point adds ±90°, every other root its angle there. */
 function dcPhaseDeg(loop) {
   const p0 = loop.domain === "z" ? cx(1) : cx(0);
-  const ang = (r) => (rootClass(loop, r).dc ? Math.PI / 2 : carg(csub(p0, r)));
+  const ang = (r) => (rootClass(loop, r).dc ? Math.PI / 2 : factorArg(loop, p0, r));
   let ph = loop.gain < 0 ? -Math.PI : 0;
   for (const z of loop.zeros) ph += ang(z);
   for (const p of loop.poles) ph -= ang(p);
