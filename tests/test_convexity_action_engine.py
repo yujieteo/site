@@ -47,6 +47,20 @@ class ConvexityActionEngineTest(unittest.TestCase):
             self.assertAlmostEqual(raw["observed"][code]["rate"], float(rows[activity]["participation_rate"]), places=4, msg=code)
             self.assertAlmostEqual(raw["observed"][code]["min"], float(rows[activity]["minutes_when_performed"]), places=1, msg=code)
 
+    def test_page_leads_with_search_and_keeps_the_method_one_step_away(self):
+        html = (VIZ / "index.html").read_text(encoding="utf-8")
+        body = html[html.index("<body>"):html.index("<script>")]
+        # The question and search come before the context bar and results; the method paragraph follows them in a disclosure.
+        self.assertLess(body.index("<h1>"), body.index('id="hero-search"'))
+        self.assertLess(body.index('id="hero-search"'), body.index('id="ctx"'))
+        method = body[body.index('<details id="method">'):]
+        self.assertLess(body.index('id="app"'), body.index('<details id="method">'))
+        self.assertIn("short of a 10,000-action canonical ontology", method)
+        # Results are not one page-sized live region; route changes are announced through a small status element.
+        self.assertNotIn('id="app" aria-live', body)
+        self.assertIn('id="announce" role="status" aria-live="polite"', body)
+        self.assertIn('<details id="keys">', body)
+
     def test_published_copy_matches_sources(self):
         published = ROOT / "site" / "visuals" / "convexity-action-engine"
         self.assertEqual((published / "index.html").read_text(encoding="utf-8"), (VIZ / "index.html").read_text(encoding="utf-8"))
