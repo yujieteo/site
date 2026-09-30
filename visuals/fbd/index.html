@@ -173,7 +173,8 @@ function parseQuantity(text, kind, unit) {
     i = re.lastIndex;
   }
   if (sign === 0) return { error: `Cannot read "${s}" as a ${kind}` };
-  return { value: sign * total };
+  // 15 significant digits: 12 in is 304.8 mm, not 304.79999999999995.
+  return { value: sign * Number(total.toPrecision(15)) };
 }
 
 function parseAngle(text) {
@@ -863,10 +864,10 @@ function angleText(doc, l) {
   const mode = l.input ? l.input.mode : "polar";
   if (mode === "components" && l.magnitude !== null) {
     const [x, y] = components(doc, l), u = unitFor(doc, l), f = F.UNITS[QTY[l.kind]][u];
-    return `(${F.fmt(x / f, 4)}, ${F.fmt(y / f, 4)})${l.show.units ? " " + u : ""}`;
+    return `(${F.fmt(x / f)}, ${F.fmt(y / f)})${l.show.units ? " " + u : ""}`;
   }
   if (mode === "slope" && l.input.slope) return `slope ${F.fmt(l.input.slope[0])}:${F.fmt(l.input.slope[1])}`;
-  return `∠${F.fmt(displayAngle(doc, l), 4)}°${l.dirRef === "member" ? " to member" : ""}`;
+  return `∠${F.fmt(displayAngle(doc, l), 5)}°${l.dirRef === "member" ? " to member" : ""}`;
 }
 function loadText(doc, l) {
   const parts = [];
@@ -3124,7 +3125,7 @@ A.addStandard = addStandard;
                 "j2"
               ],
               "label": null,
-              "depth": 304.79999999999995
+              "depth": 304.8
             },
             {
               "id": "b2",
@@ -3149,7 +3150,7 @@ A.addStandard = addStandard;
               "s1": 0,
               "s2": 6096,
               "w1": 0,
-              "w2": 29.187805874412728,
+              "w2": 29.1878058744127,
               "h1": 1,
               "h2": 1,
               "unit": "kip/ft",
@@ -3279,8 +3280,8 @@ A.addStandard = addStandard;
           },
           "triad": {
             "visible": true,
-            "x": -914.4000000000001,
-            "y": -914.4000000000001,
+            "x": -914.4,
+            "y": -914.4,
             "rotation": 0,
             "ySense": 1,
             "labels": [
