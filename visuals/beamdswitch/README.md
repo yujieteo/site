@@ -1,8 +1,8 @@
 # beamdswitch
 
-Write a talk in Markdown with LaTeX; get web slides, a print handout, Kokoro
-narration, Manim-style animation and a narrated, captioned MP4, all generated
-in the visitor's browser. Published at `/visuals/beamdswitch/index.html`.
+Write a talk in Markdown with LaTeX; get web slides, a print handout, a
+continuous article (Markdown or print), Kokoro narration, Manim-style animation
+and a narrated, captioned MP4, all generated in the visitor's browser. Published at `/visuals/beamdswitch/index.html`.
 
 ## Files
 
@@ -62,7 +62,7 @@ all. The consequences:
 | --- | --- |
 | worker active, page isolated | WASM on several threads; WebGPU as usual |
 | worker active, not isolated | WASM on one thread, about a sixth of real time; WebGPU as usual |
-| worker blocked (some private windows or privacy settings) | unavailable; slides, handout, animation and silent video still work |
+| worker blocked (some private windows or privacy settings) | unavailable; slides, handout, article, animation and silent video still work |
 
 The notice at the foot of the page says narration needs the service worker;
 `get_narration_status` reports which row applies. Checked in headless Chrome against a server that serves `.mjs` as

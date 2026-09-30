@@ -1,6 +1,6 @@
 slug: beamdswitch
 title: beamdswitch
-summary: "Write a talk once in Markdown with LaTeX maths and get web slides, a printable notes handout, Kokoro-82M narration, Manim-style animation and a narrated, captioned MP4, all generated in your browser with nothing uploaded. The page is 2.3 MB; narration downloads Kokoro from this site the first time you ask for a voice (about 111 MB for WASM or 334 MB for WebGPU), and the browser caches it. Narration needs the page's service worker, so it will not load where service workers are blocked, as in some private windows."
+summary: "Write a talk once in Markdown with LaTeX maths and get web slides, a printable notes handout, a continuous article you can download as Markdown, Kokoro-82M narration, Manim-style animation and a narrated, captioned MP4, all generated in your browser with nothing uploaded. The page is 2.3 MB; narration downloads Kokoro from this site the first time you ask for a voice (about 111 MB for WASM or 334 MB for WebGPU), and the browser caches it. Narration needs the page's service worker, so it will not load where service workers are blocked, as in some private windows."
 source_url: https://github.com/yujieteo/site/tree/main/visuals/beamdswitch
 fetched: "2026-09-30"
 html_path: visuals/beamdswitch/index.html
