@@ -53,7 +53,7 @@ export const PROPERTY_KINDS = {
   ka: "none",
   shearAllowable: "force",
   tensionAllowable: "force",
-  icr: { rult: "force", mu: "invLength", lambda: "none", deltaMax: "length" },
+  icr: { rult: "force", mu: "invLength", lambda: "none", deltaMax: "length", deltaY: "length" },
   prying: { b: "length", a: "length", p: "length", holeDiameter: "length", boltStrengthB: "force", manualFactor: "none" },
   preload: { pMax: "force", pMin: "force", phi: "none" },
 };

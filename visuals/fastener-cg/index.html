@@ -127,6 +127,10 @@ details.torque{margin-top:.5rem}
 #override-editor .row{margin-top:.4rem}
 #override-editor h4{margin:.8rem 0 .2rem;font-size:.85rem}
 input.override{border-color:var(--axial);font-weight:600}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.6rem 1.25rem;margin:.5rem 0;padding:0;list-style:none}
+.stats-row li{border-top:1px solid var(--border);padding-top:.4rem;min-width:0}
+.stats-row b{display:block;font-size:1.3rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.stats-row span{font-size:.8125rem;color:var(--muted)}
 .presets{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
 .formula{font:.8125rem var(--mono);color:var(--fg)}
 .inline-issue{display:inline-block;font:600 .66rem var(--mono);border-radius:999px;padding:0 .4rem;margin-left:.3rem;border:1px solid currentColor;vertical-align:middle;white-space:nowrap}
@@ -256,7 +260,7 @@ td.status{color:var(--muted);font-size:.78rem}
         </select></label>
         <label class="f"><span>Design basis</span><select data-path="settings.designBasis">
           <option value="elastic">Elastic</option>
-          <option value="icr" disabled>ICR — milestone M5</option>
+          <option value="icr">ICR (needs ICR enabled)</option>
         </select></label>
       </div>
       <div class="sub" id="contact-edge-box" data-show-method="contact-edge">
@@ -301,6 +305,26 @@ td.status{color:var(--muted);font-size:.78rem}
         <button class="btn" type="button" data-preset="linear" aria-pressed="false">Linear (1, 1)</button>
       </div>
       <p class="note">MS is the exact multiplier on the whole applied load at which IF reaches 1. With (a, b) ≠ (1, 1) it differs from 1/IF − 1 (W-006); the plain IF(1) is shown beside it.</p>
+    </div>
+
+    <div class="card" id="icr-card">
+      <h3>ICR method</h3>
+      <label class="check"><input type="checkbox" data-path="settings.icr.enabled"> <span>Instantaneous centre of rotation</span></label>
+      <div class="sub" data-show="settings.icr.enabled">
+        <p class="note">In-plane shear only (Fx, Fy, Mz,s); ks, tension, prying and preload never enter. The governing fastener (smallest Δmax/ρ) reaches Δmax; the others deform in proportion to their distance from the ICR.</p>
+        <label class="f"><span>Load-deformation model</span><select data-path="settings.icr.model">
+          <option value="crawford-kulak">Crawford-Kulak: R = Rult(1 − e^(−μΔ))^λ</option>
+          <option value="elastic-plastic">Elastic-perfectly-plastic: R = Rult·min(Δ/Δy, 1)</option>
+        </select></label>
+        <div class="row three">
+          <label class="f"><span>Rult (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.icr.rult" placeholder="required"></label>
+          <label class="f"><span>Δmax (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.icr.deltaMax"></label>
+          <label class="f" data-show-model="elastic-plastic"><span>Δy (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.icr.deltaY" placeholder="required"></label>
+          <label class="f" data-show-model="crawford-kulak"><span>μ (<i data-unit="invLength"></i>)</span><input type="number" step="any" data-path="defaults.icr.mu"></label>
+          <label class="f" data-show-model="crawford-kulak"><span>λ</span><input type="number" step="any" data-path="defaults.icr.lambda"></label>
+        </div>
+        <p class="note">μ = 0.3937/mm, λ = 0.55 and Δmax = 8.6 mm are the metric equivalents of the common structural-bolt curve: editable defaults, not recommendations (N-008). Choose the ICR design basis under Methods to run the checks on ICR reactions.</p>
+      </div>
     </div>
 
     <div class="card" id="tension-card">
@@ -395,6 +419,8 @@ td.status{color:var(--muted);font-size:.78rem}
     <li><b>Preload</b> P_max, P_min and load-sharing factor φ (required, 0 &lt; φ &lt; 1): F_b = max(P_max + φT, T) + Q, clamp force P_min − (1 − φ)T, separation load P_min/(1 − φ). Once clamp force reaches zero the joint is separated (W-013). F_b replaces the tension in the interaction and is re-evaluated at every load multiplier k; preload itself does not scale. Clamp force is reported but no friction-slip capacity is claimed (N-005). With preload off the tension is T + Q.</li>
     <li><b>Plates</b> (up to two, axis-aligned rectangles): every fastener is checked against every plate and the governing plate is reported. Bearing R_br,allow = Fbr·D·t (or a keyed direct-load allowable), MS = R_br,allow/Rs − 1. Tear-out casts a ray from the fastener along its bearing direction to the plate edge, giving e; capacity = 2·t·(e − D/2)·Fsu and MS = capacity/Rs − 1; e/D below the keyed minimum is W-011. The bearing direction is −R in the loaded plate (it is pushed along the load, so the fastener bears on the trailing side of the hole) and +R in the other plate. Geometry checks: a fastener outside a plate (E-004), fasteners closer than their diameter (E-005), edge distance below D/2 (E-006), and a load point outside the loaded plate (W-009).</li>
     <li><b>Axial method (b), contact edge</b>: the selected plate edge L is the neutral axis and fasteners act in tension only. With d the distance from L on the tension side, T = M_L·ka·d/Σ(ka·d²), where M_L is the moment about L (reduced to the projection of Ca onto L, so it includes the Fz lever) that puts the far side in tension. The contact reaction is C = ΣT − Fz. M_L ≤ 0 gives no tension (W-010: wrong edge), and C &lt; 0 means no contact (W-021: use method (a)). In v1 the moment about the axis perpendicular to L must be zero (E-012).</li>
+    <li><b>ICR method</b> (in-plane shear only; ks, tension, prying, preload and Fz never enter). Crawford-Kulak R = Rult(1 − e^(−μΔ))^λ or elastic-perfectly-plastic R = Rult·min(Δ/Δy, 1) with fracture at Δmax. Deformation is proportional to the distance ρ from the ICR, Δᵢ = Δmax,gov·ρᵢ/ρ_gov, where the governing fastener has the smallest Δmax/ρ. The ICR is searched on the line through Cs perpendicular to the load direction, on the side opposite the load's line of action, where moment and force equilibrium give the same ultimate load (bracketed Brent search, normalised moment residual 1e-6, 200 iterations). For an asymmetric group whose force perpendicular to the load does not vanish on that line, the ICR is refined off it by a damped Newton iteration so all three equilibrium equations hold. A pure moment starts at Cs; a load through Cs is a uniform translation. γ_ult = P_u/|F| scales the whole load with its eccentricity kept; γ_ult − 1 is an ultimate capacity, not comparable to the allowable-based MS. The reactions at the applied load are the ultimate reactions divided by γ_ult (proportional scaling convention, W-015). A search that does not converge shows "not converged" with its residual and no partial numbers (W-014), and the elastic result remains.</li>
+    <li><b>Design basis</b>: elastic (default) or ICR selects which in-plane shear feeds the interaction, bearing and tear-out checks. The tension side always comes from the elastic or contact-edge distribution.</li>
     <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
     <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
   </ul>
@@ -473,7 +499,7 @@ const PROPERTY_KINDS = {
   ka: "none",
   shearAllowable: "force",
   tensionAllowable: "force",
-  icr: { rult: "force", mu: "invLength", lambda: "none", deltaMax: "length" },
+  icr: { rult: "force", mu: "invLength", lambda: "none", deltaMax: "length", deltaY: "length" },
   prying: { b: "length", a: "length", p: "length", holeDiameter: "length", boltStrengthB: "force", manualFactor: "none" },
   preload: { pMax: "force", pMin: "force", phi: "none" },
 };
@@ -637,7 +663,7 @@ function defaultProperties() {
   return {
     diameter: 12, area: 113.1, ks: 1, ka: 1,
     shearAllowable: null, tensionAllowable: null,
-    icr: { rult: null, mu: 0.3937, lambda: 0.55, deltaMax: 8.6 },
+    icr: { rult: null, mu: 0.3937, lambda: 0.55, deltaMax: 8.6, deltaY: null },
     prying: { b: null, a: null, p: null, holeDiameter: null, boltStrengthB: null, manualFactor: null },
     preload: { pMax: null, pMin: null, phi: null },
   };
@@ -1262,10 +1288,12 @@ function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ pryi
   const issues = [];
   const notComputed = [], preloadOnly = [], shortEdge = [], shortIds = [];
   const idOf = (entry) => entry.split(" ")[0];
-  const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.shear.Rs)), 0);
+  const basisOf = (f) => (f.basisShear === undefined ? f.shear : f.basisShear);
+  const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(basisOf(f)?.Rs ?? 0)), 0);
   const tensionFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.axial.T)), 0);
   const results = fasteners.map((f) => {
-    const Rs = f.shear.Rs > shearFloor ? f.shear.Rs : 0;
+    const sh = basisOf(f);
+    const Rs = sh && sh.Rs > shearFloor ? sh.Rs : 0;
     const Text = f.axial.T > tensionFloor ? f.axial.T : 0;
     // Tension chain: external T through prying and preload to the bolt load
     // F_b, re-evaluated at every load multiplier k (preload does not scale).
@@ -1276,7 +1304,10 @@ function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ pryi
     const Fs = f.shearAllowable, Ft = f.tensionAllowable;
     const missing = [Fs === null || Fs === undefined ? "Fs" : null, Ft === null || Ft === undefined ? "Ft" : null].filter(Boolean);
     let interaction;
-    if (missing.length) {
+    if (!sh) {
+      interaction = { mode: "interaction", label: MODES.interaction, status: "not-computed", reason: "ICR basis selected but ICR did not converge", ms: null, Rs: null, Rt, Text, Q: tension.Q, a, b };
+      notComputed.push(`${f.id} (ICR not converged)`);
+    } else if (missing.length) {
       interaction = { mode: "interaction", label: MODES.interaction, status: "not-evaluated", ms: null, missing, Rs, Rt, Text, Q: tension.Q, a, b };
     } else {
       const s = solveScale({ Rs, tensionAt, Fs, Ft, a, b });
@@ -1285,7 +1316,7 @@ function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ pryi
       if (s.status === "preload") preloadOnly.push(`${f.id} (IF(0) = ${s.IF0.toPrecision(4)})`);
     }
     // Bearing and tear-out per plate use the same round-off-snapped Rs.
-    const modes = [interaction, ...plateModesFor({ ...f, shear: { ...f.shear, Rs } })];
+    const modes = [interaction, ...(sh ? plateModesFor({ ...f, shear: { ...sh, Rs } }) : [])];
     for (const m of modes) {
       if (m.mode === "tearout" && m.minRatio !== null && m.minRatio !== undefined && m.eOverD !== null && m.eOverD !== undefined && m.eOverD < m.minRatio) {
         shortEdge.push(`${f.id} in ${m.plate}: e/D = ${m.eOverD.toPrecision(4)} < ${m.minRatio}`);
@@ -1570,8 +1601,269 @@ function contactClosureChecks(ax, Fz) {
 return { EDGES, edgeFrame, contactEdgeAxial, suggestContactEdge, contactClosureChecks };
 })();
 
-/* ---- core/solve.mjs ---- */
+/* ---- core/icr.mjs ---- */
 const __m11 = (() => {
+const { brent } = __m6;
+const { issue } = __m1;
+/* Instantaneous centre of rotation (ICR) method (spec 5.8).
+ *
+ * In-plane shear only (Fx, Fy and Mz,s about Cs); tension, prying, preload
+ * and Fz never enter, and ks is ignored (N-004). Each fastener deforms in
+ * proportion to its distance ρ from the ICR, perpendicular to the radius:
+ * Δᵢ = Δmax,gov·ρᵢ/ρ_gov, where the governing fastener has the smallest
+ * Δmax,ᵢ/ρᵢ and so reaches its limit first. Its load follows
+ *   Crawford-Kulak           R = Rult·(1 − e^(−μΔ))^λ
+ *   elastic-perfectly-plastic R = Rult·min(Δ/Δy, 1), fracture at Δmax
+ *
+ * Search: with d̂ the applied force direction and e = |Mz,s|/|F|, the ICR
+ * lies on the line through Cs perpendicular to d̂, on the side opposite the
+ * load's line of action, at offset r₀. For each r₀ the ultimate load from
+ * moment equilibrium about the ICR and from force equilibrium along d̂ are
+ * compared, and a bracketed Brent search finds where they agree
+ * (normalised moment residual ≤ 1e-6, 200-iteration cap). Pure moment puts
+ * the ICR at Cs; pure shear (e = 0) is a uniform translation.
+ *
+ * Asymmetric groups: on that line the force perpendicular to d̂ need not
+ * vanish. When it does not (relative to the ultimate load, beyond the
+ * tolerance), the ICR is refined off the line by a damped Newton iteration
+ * on its two coordinates, starting from the line solution, so every
+ * reported ICR satisfies all three in-plane equilibrium equations.
+ *
+ * Results: ICR location, γ_ult = P_u/|F| (load scaled uniformly,
+ * eccentricity kept) or M_u/|Mz| for pure moment, and the reactions at the
+ * ultimate state. Reactions at the applied load are the ultimate ones
+ * divided by γ_ult: a proportional scaling convention (W-015).
+ */
+
+
+
+
+const ICR_TOL = 1e-6;
+const ICR_MAX_ITER = 200;
+const MODELS = { "crawford-kulak": "Crawford-Kulak", "elastic-plastic": "Elastic-perfectly-plastic" };
+
+function response(model, f, delta) {
+  const c = f.icr;
+  if (model === "elastic-plastic") return c.rult * Math.min(delta / c.deltaY, 1);
+  return c.rult * Math.pow(1 - Math.exp(-c.mu * delta), c.lambda);
+}
+
+/* Fastener loads for a rigid rotation (sense s = ±1) about O, scaled so the
+ * governing fastener reaches Δmax. Vectors are loads on the fasteners, in
+ * the direction the plate moves (the elastic method's convention). */
+function rotationState(fasteners, O, s, model) {
+  const rho = fasteners.map((f) => Math.hypot(f.x - O.x, f.y - O.y));
+  let gov = -1, ratio = Infinity;
+  fasteners.forEach((f, i) => {
+    if (rho[i] > 0) {
+      const q = f.icr.deltaMax / rho[i];
+      if (q < ratio) { ratio = q; gov = i; }
+    }
+  });
+  if (gov < 0) return null;
+  let Rx = 0, Ry = 0, M = 0;
+  const loads = fasteners.map((f, i) => {
+    const delta = ratio * rho[i];
+    const R = rho[i] > 0 ? response(model, f, delta) : 0;
+    const ux = rho[i] > 0 ? (-s * (f.y - O.y)) / rho[i] : 0, uy = rho[i] > 0 ? (s * (f.x - O.x)) / rho[i] : 0;
+    const rx = R * ux, ry = R * uy;
+    Rx += rx; Ry += ry;
+    M += (f.x - O.x) * ry - (f.y - O.y) * rx;
+    return { id: f.id, rho: rho[i], delta, R, Rx: rx, Ry: ry };
+  });
+  return { loads, gov: fasteners[gov].id, Rx, Ry, M };
+}
+
+/* Uniform translation along d̂: every fastener at the smallest Δmax. */
+function translation(fasteners, d, model) {
+  const delta = Math.min(...fasteners.map((f) => f.icr.deltaMax));
+  const gov = fasteners.find((f) => f.icr.deltaMax === delta).id;
+  let P = 0;
+  const loads = fasteners.map((f) => {
+    const R = response(model, f, delta);
+    P += R;
+    return { id: f.id, rho: Infinity, delta, R, Rx: R * d.x, Ry: R * d.y };
+  });
+  return { loads, gov, P };
+}
+
+/* Damped Newton on the ICR position: `resid(O)` returns [r1, r2] (both normalised). */
+function newton2(resid, O0, scaleL, { tol = ICR_TOL, maxIter = ICR_MAX_ITER } = {}) {
+  let O = { ...O0 }, r = resid(O), it = 0;
+  const norm = (v) => (v ? Math.hypot(v[0], v[1]) : Infinity);
+  while (norm(r) > tol && it < maxIter) {
+    it++;
+    const h = 1e-7 * scaleL;
+    const rx = resid({ x: O.x + h, y: O.y }), ry = resid({ x: O.x, y: O.y + h });
+    if (!r || !rx || !ry) return { O, r, it, converged: false };
+    const J = [[(rx[0] - r[0]) / h, (ry[0] - r[0]) / h], [(rx[1] - r[1]) / h, (ry[1] - r[1]) / h]];
+    const det = J[0][0] * J[1][1] - J[0][1] * J[1][0];
+    if (!Number.isFinite(det) || det === 0) return { O, r, it, converged: false };
+    const dx = (-r[0] * J[1][1] + r[1] * J[0][1]) / det, dy = (r[0] * J[1][0] - r[1] * J[0][0]) / det;
+    let t = 1, next = null;
+    for (let k = 0; k < 30; k++, t /= 2) {
+      const cand = { x: O.x + t * dx, y: O.y + t * dy };
+      const rc = resid(cand);
+      if (rc && norm(rc) < norm(r)) { next = { O: cand, r: rc }; break; }
+    }
+    if (!next) return { O, r, it, converged: false };
+    O = next.O; r = next.r;
+  }
+  return { O, r, it, converged: norm(r) <= tol };
+}
+
+/*
+ * fasteners: resolved (x, y, icr: { rult, mu, lambda, deltaMax, deltaY }).
+ * Cs: shear centroid. load: { Fx, Fy, Mz } with Mz = Mz,s about Cs.
+ * Returns { status: "converged" | "not-converged", ... }.
+ */
+function icrSolve(fasteners, Cs, load, model = "crawford-kulak", { tol = ICR_TOL, maxIter = ICR_MAX_ITER } = {}) {
+  const F = Math.hypot(load.Fx, load.Fy), Mz = load.Mz;
+  const L = Math.max(...fasteners.map((f) => Math.hypot(f.x - Cs.x, f.y - Cs.y)), 1e-12);
+  const fail = (reason, residual = null, iterations = 0) => ({ status: "not-converged", reason, residual, iterations });
+  if (fasteners.length === 0) return fail("no fasteners");
+  const momentScale = Math.abs(Mz) + F * L;
+  if (!(momentScale > 0)) return fail("zero in-plane load");
+
+  // Pure shear through Cs: uniform translation, ICR at infinity.
+  if (Math.abs(Mz) <= tol * F * L) {
+    const d = { x: load.Fx / F, y: load.Fy / F };
+    const t = translation(fasteners, d, model);
+    return { status: "converged", mode: "translation", icr: null, gamma: t.P / F, Pu: t.P, loads: t.loads, governing: t.gov, residual: 0, iterations: 0, offLine: false };
+  }
+
+  const s = Math.sign(Mz);
+  // Pure moment: ICR at Cs, refined so that the fastener loads sum to zero.
+  if (F <= tol * Math.abs(Mz) / L) {
+    const resid = (O) => {
+      const st = rotationState(fasteners, O, s, model);
+      if (!st) return null;
+      const scale = Math.abs(st.M) / L || 1;
+      return [st.Rx / scale, st.Ry / scale];
+    };
+    const n = newton2(resid, Cs, L, { tol, maxIter });
+    if (!n.converged) return fail("pure-moment ICR did not balance the fastener forces", n.r ? Math.hypot(...n.r) : null, n.it);
+    const st = rotationState(fasteners, n.O, s, model);
+    const Mu = Math.abs(st.M);
+    return { status: "converged", mode: "pure-moment", icr: n.O, gamma: Mu / Math.abs(Mz), Mu, loads: st.loads, governing: st.gov, residual: n.r ? Math.hypot(...n.r) : 0, iterations: n.it, offLine: Math.hypot(n.O.x - Cs.x, n.O.y - Cs.y) > tol * L };
+  }
+
+  const d = { x: load.Fx / F, y: load.Fy / F };
+  const nrm = { x: s * d.y, y: -s * d.x }; // from Cs towards the load's line of action
+  const e = Math.abs(Mz) / F;
+  const X = { x: Cs.x + e * nrm.x, y: Cs.y + e * nrm.y }; // a point on the line of action
+  const armAbout = (O) => (X.x - O.x) * d.y - (X.y - O.y) * d.x; // ((X − O) × d̂)_z
+  const at = (r0) => ({ x: Cs.x - r0 * nrm.x, y: Cs.y - r0 * nrm.y });
+  const lineEval = (r0) => {
+    const st = rotationState(fasteners, at(r0), s, model);
+    if (!st) return null;
+    const Pforce = st.Rx * d.x + st.Ry * d.y;
+    const Pmoment = st.M / (s * (e + r0));
+    return { st, Pforce, Pmoment };
+  };
+  const g = (r0) => {
+    const v = lineEval(r0);
+    return v ? (v.Pmoment - v.Pforce) / Math.max(Math.abs(v.Pmoment), Math.abs(v.Pforce), 1e-300) : NaN;
+  };
+  // Bracket on a log scale of r₀ from 1e-6·L to 1e6·L.
+  let lo = null, hi = null, prev = null;
+  for (let k = -6; k <= 6; k += 0.25) {
+    const r0 = L * Math.pow(10, k);
+    const v = g(r0);
+    if (!Number.isFinite(v)) continue;
+    if (prev && Math.sign(prev.v) !== Math.sign(v)) { lo = prev.r0; hi = r0; break; }
+    prev = { r0, v };
+  }
+  if (lo === null) return fail("no sign change of the moment-force mismatch along the search line");
+  const b = brent(g, lo, hi, { tol: 1e-14, maxIter });
+  if (!b.converged) return fail("Brent search on r₀ did not converge", Math.abs(b.residual), b.iterations);
+  let O = at(b.root);
+  let iterations = b.iterations;
+  let v = lineEval(b.root);
+  let P = v.Pforce;
+  let perp = (v.st.Rx * -d.y + v.st.Ry * d.x) / Math.max(Math.abs(P), 1e-300);
+  let momentResid = Math.abs(v.Pmoment - v.Pforce) / Math.max(Math.abs(P), 1e-300);
+  let offLine = false;
+  if (Math.abs(perp) > tol) {
+    // Asymmetric group: move the ICR off the line until all three equations hold.
+    const resid = (Oc) => {
+      const st = rotationState(fasteners, Oc, s, model);
+      if (!st) return null;
+      const Pc = st.Rx * d.x + st.Ry * d.y;
+      const scale = Math.max(Math.abs(Pc), 1e-300);
+      return [(st.Rx * -d.y + st.Ry * d.x) / scale, (st.M - Pc * armAbout(Oc)) / (scale * L)];
+    };
+    const n = newton2(resid, O, L, { tol, maxIter: maxIter - iterations });
+    iterations += n.it;
+    if (!n.converged) return fail("ICR could not balance the force perpendicular to the load", n.r ? Math.hypot(...n.r) : null, iterations);
+    O = n.O;
+    offLine = true;
+    const st = rotationState(fasteners, O, s, model);
+    P = st.Rx * d.x + st.Ry * d.y;
+    v = { st };
+    perp = (st.Rx * -d.y + st.Ry * d.x) / Math.abs(P);
+    momentResid = Math.abs(st.M - P * armAbout(O)) / (Math.abs(P) * L);
+  }
+  if (momentResid > tol) return fail("normalised moment residual above tolerance", momentResid, iterations);
+  return {
+    status: "converged", mode: "eccentric", icr: O, r0: b.root, e, direction: d, gamma: P / F, Pu: P,
+    loads: v.st.loads, governing: v.st.gov, residual: Math.max(momentResid, Math.abs(perp)), iterations, offLine,
+  };
+}
+
+/* Reactions at the applied load under the proportional scaling convention. */
+function reactionsAtLoad(solution) {
+  return solution.loads.map((l) => {
+    const Rx = l.Rx / solution.gamma, Ry = l.Ry / solution.gamma;
+    return { id: l.id, Rx, Ry, Rs: Math.hypot(Rx, Ry), angleDeg: Math.atan2(Ry, Rx) * 180 / Math.PI };
+  });
+}
+
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+const given = (v) => v !== null && v !== undefined && v !== "";
+
+/* ICR inputs when ICR is enabled (E-002, E-007), and the design basis. */
+function validateIcrInputs(pattern, resolved) {
+  const issues = [];
+  const st = pattern.settings || {};
+  const on = !!st.icr?.enabled;
+  if (st.designBasis === "icr" && !on) {
+    issues.push(issue("E-007", "The ICR design basis needs the ICR method enabled.", { field: "settings.designBasis" }));
+  }
+  if (!on) return issues;
+  const model = st.icr?.model || "crawford-kulak";
+  const originals = new Map((pattern.fasteners || []).map((f) => [f.id, f]));
+  const seen = new Set();
+  const push = (id, detail, opts) => {
+    const key = `${id}|${opts.fastener || ""}|${opts.field}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    issues.push(issue(id, detail, opts));
+  };
+  const fields = [["rult", "Rult", true], ["mu", "μ", model === "crawford-kulak"], ["lambda", "λ", model === "crawford-kulak"],
+    ["deltaMax", "Δmax", true], ["deltaY", "Δy", model === "elastic-plastic"]];
+  for (const f of resolved) {
+    const o = originals.get(f.id)?.overrides?.icr || {};
+    for (const [key, label, needed] of fields) {
+      if (!needed) continue;
+      const v = f.icr?.[key];
+      const at = key in o ? { fastener: f.id, field: `icr.${key}` } : { field: `defaults.icr.${key}` };
+      const who = at.fastener ? ` for ${f.id}` : " (group default)";
+      if (!given(v)) push("E-007", `ICR needs ${label}${who}.`, at);
+      else if (!(isNum(v) && v > 0)) push("E-002", `ICR ${label}${who} must be a positive number (is ${v}).`, at);
+    }
+    if (model === "elastic-plastic" && isNum(f.icr?.deltaY) && isNum(f.icr?.deltaMax) && f.icr.deltaY > f.icr.deltaMax) {
+      const at = "deltaY" in o ? { fastener: f.id, field: "icr.deltaY" } : { field: "defaults.icr.deltaY" };
+      push("E-002", `ICR Δy (${f.icr.deltaY}) must not exceed Δmax (${f.icr.deltaMax}).`, at);
+    }
+  }
+  return issues;
+}
+return { ICR_TOL, ICR_MAX_ITER, MODELS, response, rotationState, icrSolve, reactionsAtLoad, validateIcrInputs };
+})();
+
+/* ---- core/solve.mjs ---- */
+const __m12 = (() => {
 const { resolveFastener, validateInputs } = __m2;
 const { sectionProperties } = __m3;
 const { reduceLoad } = __m4;
@@ -1581,6 +1873,7 @@ const { validateCheckInputs, fastenerChecks } = __m8;
 const { tensionInputs, validateTensionInputs } = __m7;
 const { validatePlates, plateModes } = __m9;
 const { contactEdgeAxial, contactClosureChecks, EDGES } = __m10;
+const { icrSolve, reactionsAtLoad, validateIcrInputs, MODELS } = __m11;
 /* One calculation: validate, resolve properties, reduce the load, distribute
  * it, raise the catalogue issues and check equilibrium closure.
  *
@@ -1588,6 +1881,7 @@ const { contactEdgeAxial, contactClosureChecks, EDGES } = __m10;
  * no result fields are present, so nothing downstream can show numbers the
  * checks have rejected.
  */
+
 
 
 
@@ -1629,6 +1923,14 @@ function closure(shear, axial, red, props, contact = null) {
   return { tol: CLOSURE_TOL, checks, pass: checks.every((c) => c.pass) };
 }
 
+/* Elastic vs ICR shear at the applied load, and the change in the critical-fastener load. */
+function compare(fasteners) {
+  const rows = fasteners.map((f) => ({ id: f.id, elastic: f.shear.Rs, icr: f.icr.atLoad.Rs, diff: f.icr.atLoad.Rs - f.shear.Rs }));
+  const pick = (key) => rows.reduce((a, b) => (b[key] > a[key] ? b : a));
+  const e = pick("elastic"), i = pick("icr");
+  return { rows, elasticCritical: { id: e.id, Rs: e.elastic }, icrCritical: { id: i.id, Rs: i.icr }, change: e.elastic > 0 ? i.icr / e.elastic - 1 : null };
+}
+
 function solve(pattern) {
   const issues = [...validateInputs(pattern), ...validateCheckInputs(pattern)];
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
@@ -1639,6 +1941,7 @@ function solve(pattern) {
   const flangePlate = (pattern.plates || []).find((p) => p.id === pattern.load?.appliedPlate) || null;
   issues.push(...validateTensionInputs(pattern, fasteners, flangePlate));
   issues.push(...validatePlates(pattern, fasteners));
+  issues.push(...validateIcrInputs(pattern, fasteners));
   const axialMethod = settings.axialMethod || "centroid";
   const edgeSpec = settings.contactEdge || {};
   const edgePlate = (pattern.plates || []).find((p) => p.id === edgeSpec.plateId) || null;
@@ -1718,6 +2021,29 @@ function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
+
+  // ICR (in-plane only, ks ignored). The design basis picks which shear feeds the checks.
+  const basis = settings.designBasis === "icr" ? "icr" : "elastic";
+  let icr = null;
+  if (settings.icr?.enabled) {
+    const model = settings.icr.model || "crawford-kulak";
+    const sol = icrSolve(fasteners, props.Cs, { Fx: red.Fx, Fy: red.Fy, Mz: red.shear.Mz }, model);
+    issues.push(issue("N-004", "The ICR method ignores ks: each fastener's load follows its own response curve and distance from the ICR."));
+    if (model === "crawford-kulak") issues.push(issue("N-008", "μ, λ and Δmax are editable defaults (metric equivalents of the common structural-bolt curve), not recommendations: confirm them for the fastener."));
+    if (sol.status !== "converged") {
+      issues.push(issue("W-014", `ICR not converged: ${sol.reason}${sol.residual !== null && sol.residual !== undefined ? ` (residual ${Number(sol.residual).toPrecision(3)})` : ""}. The elastic result remains.`));
+      icr = { model, status: sol.status, reason: sol.reason, residual: sol.residual, iterations: sol.iterations };
+    } else {
+      const atLoad = reactionsAtLoad(sol);
+      icr = { model, modelLabel: MODELS[model], ...sol, atLoad, margin: sol.gamma - 1 };
+      fastenerResults.forEach((f, i) => { f.icr = { ultimate: sol.loads[i], atLoad: atLoad[i] }; });
+    }
+    if (basis === "icr") {
+      issues.push(issue("W-015", "Checks use the ICR reactions at the applied load: the ultimate reactions divided by γ_ult (proportional scaling convention), not a physical service-load response."));
+    }
+  }
+  // Shear on the selected basis; null means the ICR basis has no converged reactions.
+  fastenerResults.forEach((f) => { f.basisShear = basis === "icr" ? (f.icr ? f.icr.atLoad : null) : f.shear; });
   const plates = pattern.plates || [];
   const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL, (f) => tensionInputs(f, settings, flangePlate),
     (f) => plateModes(f, f.shear, plates, pattern.load?.appliedPlate));
@@ -1727,6 +2053,9 @@ function solve(pattern) {
     ok: true,
     issues: sortIssues(issues),
     critical: checks.critical,
+    designBasis: basis,
+    icr,
+    comparison: icr && icr.status === "converged" ? compare(fastenerResults) : null,
     evaluatedCount: checks.evaluatedCount,
     interaction: { a: settings.interaction.a, b: settings.interaction.b },
     tensionSettings: { prying: !!settings.prying?.enabled, preload: !!settings.preload?.enabled, flangePlate: flangePlate ? flangePlate.id : null },
@@ -1744,7 +2073,7 @@ return { EXTENT_WARNING, CLOSURE_TOL, ZERO_TOL, closure, solve };
 })();
 
 /* ---- core/format.mjs ---- */
-const __m12 = (() => {
+const __m13 = (() => {
 /* Display formatting. Exports keep full precision; the screen shows
  * `precision` significant figures (default 4). */
 
@@ -1764,7 +2093,7 @@ return { fmt, fmtDeg };
 })();
 
 /* ---- core/scene.mjs ---- */
-const __m13 = (() => {
+const __m14 = (() => {
 const { unitLabel } = __m0;
 /* Shared scene model (spec section 9, "Diagram consistency").
  *
@@ -1846,6 +2175,9 @@ function buildScene(pattern, result, view, { selected = null, transform: fixed =
     }
   }
 
+  const icrPoint = result && result.ok && result.icr && result.icr.status === "converged" && result.icr.icr
+    ? { world: { ...result.icr.icr }, screen: toScreen(result.icr.icr), label: "ICR" } : null;
+
   const markers = fasteners.map((f) => {
     const r = resolvedById.get(f.id);
     const d = r && isNum(r.diameter) ? r.diameter : isNum(pattern.defaults?.diameter) ? pattern.defaults.diameter : null;
@@ -1902,8 +2234,9 @@ function buildScene(pattern, result, view, { selected = null, transform: fixed =
     { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
   ];
 
+  if (icrPoint) legend.push({ key: "icr", shape: "icr", colour: "load", label: "Instantaneous centre of rotation (ICR)" });
   if (contactEdge) legend.push({ key: "contactEdge", shape: "edge", colour: "axial", label: "Contact edge (method b neutral axis)" });
-  return { width, height, transform, world, toScreen, toWorld, plates, contactEdge, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
+  return { width, height, transform, world, toScreen, toWorld, plates, contactEdge, icr: icrPoint, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
 }
 
 /* Snap-grid lines covering the visible world window. */
@@ -1921,7 +2254,7 @@ return { CENTROID_STYLE, niceStep, buildScene, gridLines };
 })();
 
 /* ---- core/generators.mjs ---- */
-const __m14 = (() => {
+const __m15 = (() => {
 const { round12 } = __m0;
 /* Pattern generators (spec section 7): rectangular array, staggered rows,
  * bolt circle and mirror. Generators return plain (x, y) points; the caller
@@ -1995,7 +2328,7 @@ return { rectangularArray, staggeredRows, boltCircle, mirror };
 })();
 
 /* ---- core/persist.mjs ---- */
-const __m15 = (() => {
+const __m16 = (() => {
 const { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, defaultSettings, resolveFastener } = __m2;
 const { UNIT_SYSTEMS, convertPattern, unitLabel } = __m0;
 const { issue } = __m1;
@@ -2024,7 +2357,7 @@ const MAX_PLATES = 2;
 const MIGRATIONS = {};
 
 const ENUMS = {
-  "settings.designBasis": ["elastic"],
+  "settings.designBasis": ["elastic", "icr"],
   "settings.axialMethod": ["centroid", "contact-edge"],
   "settings.icr.model": ["crawford-kulak", "elastic-plastic"],
   "settings.pageSize": ["A4", "Letter"],
@@ -2318,10 +2651,29 @@ function resultSections(pattern, result) {
       })),
     ...tensionSection(result, u),
     ...plateSection(result, u),
+    ...icrSection(result, u),
     "", "## Equilibrium closure", "",
     mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
     "", ...issueTable(result.issues),
   ];
+}
+
+function icrSection(result, u) {
+  const ic = result.icr;
+  if (!ic) return [];
+  if (ic.status !== "converged") {
+    return ["", "## ICR method", "", `ICR not converged (W-014): ${ic.reason}${ic.residual !== null && ic.residual !== undefined ? `, residual ${ic.residual}` : ""}. No ICR numbers are reported; the elastic result remains.`];
+  }
+  const where = ic.mode === "translation" ? "at infinity (uniform translation)" : `at (${ic.icr.x}, ${ic.icr.y})${ic.offLine ? ", off the search line (asymmetric group)" : ""}`;
+  const lines = ["", "## ICR method", "",
+    `${ic.modelLabel}; ICR ${where}. γ_ult = ${ic.gamma}; ICR margin γ_ult − 1 = ${ic.margin} (ultimate capacity, not comparable to allowable-based MS). Governing fastener ${ic.governing}. Reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling convention). Checks use the ${result.designBasis} basis.`,
+    "", mdTable(["id", `rho (${u("length")})`, `delta (${u("length")})`, `R ultimate (${u("force")})`, `Rs at load, ICR (${u("force")})`, `Rs, elastic (${u("force")})`],
+      result.fasteners.map((f) => [f.id, Number.isFinite(f.icr.ultimate.rho) ? f.icr.ultimate.rho : "inf", f.icr.ultimate.delta, f.icr.ultimate.R, f.icr.atLoad.Rs, f.shear.Rs]))];
+  if (result.comparison) {
+    const c = result.comparison;
+    lines.push("", `Critical-fastener load: elastic ${c.elasticCritical.id} ${c.elasticCritical.Rs} vs ICR ${c.icrCritical.id} ${c.icrCritical.Rs}${c.change === null ? "" : ` (change ${c.change})`}.`);
+  }
+  return lines;
 }
 
 function plateSection(result, u) {
@@ -2460,11 +2812,12 @@ return { MAX_PLATES, MIGRATIONS, normalizePattern, toJSON, parseJSON, checksum, 
 })();
 
 /* ---- core/verify.mjs ---- */
-const __m16 = (() => {
+const __m17 = (() => {
 const { examplePattern } = __m2;
-const { solve } = __m11;
+const { solve } = __m12;
 const { solveScale } = __m6;
 const { boltLoad, tStubPrying } = __m7;
+const { icrSolve, response } = __m11;
 /* Verification set (spec section 10), shared by the in-app "Run verification"
  * panel and the Node test suite so both run exactly the same cases.
  *
@@ -2478,7 +2831,8 @@ const { boltLoad, tStubPrying } = __m7;
 
 
 
-const VERIFICATION_SET = "M4";
+
+const VERIFICATION_SET = "M5";
 const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
@@ -2681,6 +3035,54 @@ const HAND_CASES = [
     },
   },
   {
+    id: "VI-01", title: "ICR, pure moment on a 6-bolt circle (R = 50): ICR at the centre, every bolt at Δmax",
+    run() {
+      const p = pattern(circle(6, 50), { Mz: 1e5 });
+      icrOn(p);
+      const r = solved(p);
+      const Rmax = response("crawford-kulak", { icr: ICR_DEF }, ICR_DEF.deltaMax);
+      return [
+        check("γ_ult = 6·R(Δmax)·R / Mz", r.icr.gamma, (6 * Rmax * 50) / 1e5),
+        check("ICR x", r.icr.icr.x, 0, { scale: 50 }), check("ICR y", r.icr.icr.y, 0, { scale: 50 }),
+        ...r.icr.loads.map((l) => check(`Δ ${l.id}`, l.delta, ICR_DEF.deltaMax)),
+        truth("N-004 raised (ks ignored)", r.issues.some((i) => i.id === "N-004")),
+      ];
+    },
+  },
+  {
+    id: "VI-02", title: "ICR, concentric shear on the VC-01 pattern: uniform translation",
+    run() {
+      const p = pattern(RECT, { Fy: -1000 });
+      icrOn(p);
+      const r = solved(p);
+      const Rmax = response("crawford-kulak", { icr: ICR_DEF }, ICR_DEF.deltaMax);
+      return [
+        truth("translation mode", r.icr.mode === "translation"),
+        check("γ_ult = 4·R(Δmax)/|F|", r.icr.gamma, (4 * Rmax) / 1000),
+        ...r.icr.atLoad.map((l) => check(`reaction at load ${l.id}`, l.Rs, 250)),
+      ];
+    },
+  },
+  {
+    id: "VI-03", title: "ICR, eccentric VC-01 load: equilibrium at ultimate and the side of the ICR",
+    run() {
+      const p = pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 });
+      icrOn(p);
+      const r = solved(p);
+      const sum = (k) => r.icr.loads.reduce((a, l) => a + l[k], 0);
+      const M = r.icr.loads.reduce((a, l, i) => a + (RECT[i][0] - r.icr.icr.x) * l.Ry - (RECT[i][1] - r.icr.icr.y) * l.Rx, 0);
+      const Pu = r.icr.Pu;
+      return [
+        check("ΣRx = 0 at ultimate", sum("Rx"), 0, { abs: 1e-6 * Pu }),
+        check("ΣRy = −P_u", sum("Ry"), -Pu, { rel: 1e-6 }),
+        check("ΣM about ICR = P_u × lever", M, -Pu * (150 - r.icr.icr.x), { rel: 1e-6 }),
+        truth("ICR on the side opposite the load line (x < 0)", r.icr.icr.x < 0 && Math.abs(r.icr.icr.y) < 1e-9),
+        check("reactions at load = ultimate / γ", r.icr.atLoad[0].Rs, r.icr.loads[0].R / r.icr.gamma),
+        truth("the most distant bolts govern", ["F1", "F2"].includes(r.icr.governing)),
+      ];
+    },
+  },
+  {
     id: "VC-09", title: "Circle group, pure Mz",
     run() {
       const N = 8, R = 60, Mz = 48000;
@@ -2850,6 +3252,53 @@ PROPERTY_CASES.push(
   },
 );
 
+/* ICR defaults: the spec's metric structural-bolt curve with Rult = 1 000 N. */
+const ICR_DEF = { rult: 1000, mu: 0.3937, lambda: 0.55, deltaMax: 8.6, deltaY: null };
+function icrOn(p, model = "crawford-kulak") {
+  p.settings.icr = { enabled: true, model };
+  p.defaults.icr = { ...ICR_DEF };
+  return p;
+}
+
+PROPERTY_CASES.push(
+  {
+    id: "P-13", title: "ICR ignores ks: overriding ks moves Cs but not γ_ult or the ICR",
+    run() {
+      const a = solved(icrOn(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 })));
+      const q = icrOn(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 }));
+      q.fasteners[0].overrides = { ks: 3 };
+      q.fasteners[3].overrides = { ks: 0.4 };
+      const b = solved(q);
+      return [
+        truth("Cs moved (ks still acts on the elastic side)", Math.hypot(b.props.Cs.x - a.props.Cs.x, b.props.Cs.y - a.props.Cs.y) > 1e-6),
+        check("γ_ult unchanged", b.icr.gamma, a.icr.gamma, { rel: 1e-6 }),
+        check("ICR x unchanged", b.icr.icr.x, a.icr.icr.x, { abs: 1e-6 * 50 }),
+        check("ICR y unchanged", b.icr.icr.y, a.icr.icr.y, { abs: 1e-6 * 50 }),
+      ];
+    },
+  },
+  {
+    id: "P-14", title: "ICR: rotation invariance and load-magnitude scaling of γ_ult",
+    run() {
+      const pts = [[0, 0], [90, 10], [20, 70], [-50, 40], [60, -40]];
+      const base = icrSolve(pts.map(([x, y], i) => ({ id: `F${i}`, x, y, icr: ICR_DEF })), centroidOf(pts), { Fx: 800, Fy: -3000, Mz: 2.1e5 });
+      const t = 0.7, c = Math.cos(t), s = Math.sin(t);
+      const rp = pts.map(([x, y]) => [c * x - s * y, s * x + c * y]);
+      const rot = icrSolve(rp.map(([x, y], i) => ({ id: `F${i}`, x, y, icr: ICR_DEF })), centroidOf(rp), { Fx: c * 800 + s * 3000, Fy: s * 800 - c * 3000, Mz: 2.1e5 });
+      const big = icrSolve(pts.map(([x, y], i) => ({ id: `F${i}`, x, y, icr: ICR_DEF })), centroidOf(pts), { Fx: 1600, Fy: -6000, Mz: 4.2e5 });
+      return [
+        truth("asymmetric case converged", base.status === "converged"),
+        check("γ rotated", rot.gamma, base.gamma, { rel: 1e-6 }),
+        check("γ at 2× load = γ / 2", big.gamma, base.gamma / 2, { rel: 1e-6 }),
+      ];
+    },
+  },
+);
+
+function centroidOf(pts) {
+  return { x: pts.reduce((a, p) => a + p[0], 0) / pts.length, y: pts.reduce((a, p) => a + p[1], 0) / pts.length };
+}
+
 const TSTUB = { B: 40000, b: 40, a: 35, p: 80, dh: 14, D: 12, t: 12, Fp: 250 };
 
 PROPERTY_CASES.push(
@@ -2903,10 +3352,23 @@ PROPERTY_CASES.push(
  * values entered yet: it is reported as pending, neither pass nor fail. */
 const REFERENCE_CASES = [
   {
+    id: "VR-02", title: "AISC Manual eccentric-load coefficient tables (ICR, Crawford-Kulak), ~2% tolerance",
+    pending: "published table values not yet entered (current AISC Manual not available)",
+  },
+  {
+    id: "VR-03", title: "ICR side convention against a published worked example",
+    pending: "published worked example not yet entered (spec open question 3)",
+  },
+  {
     id: "VR-01", title: "AISC T-stub prying worked example",
     pending: "published reference values not yet entered (spec open question 2)",
   },
 ];
+
+// Cases are declared milestone by milestone; list them in id order.
+const idOrder = (a, b) => a.id.localeCompare(b.id, "en", { numeric: true });
+PROPERTY_CASES.sort(idOrder);
+REFERENCE_CASES.sort(idOrder);
 
 const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES, ...REFERENCE_CASES];
 
@@ -2930,12 +3392,12 @@ return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, REFERENCE_CASES,
 })();
 
 /* ---- core/meta.mjs ---- */
-const __m17 = (() => {
+const __m18 = (() => {
 /* Tool identity and the conventions every report repeats. */
 
 const TOOL_NAME = "Fastener Pattern CG Tracker";
-const TOOL_VERSION = "0.4.0-m4";
-const MILESTONE = "M4";
+const TOOL_VERSION = "0.5.0-m5";
+const MILESTONE = "M5";
 
 const CONVENTIONS = [
   "Right-handed axes: x right, y up, z toward the viewer.",
@@ -2954,6 +3416,7 @@ const ASSUMPTIONS = [
   "Preload: F_b = max(P_max + φ·T, T) + Q; clamp force P_min − (1 − φ)·T; separation load P_min/(1 − φ). Prying Q is added to the bolt load (conservative). Preload does not scale with the load multiplier k. Friction slip is not evaluated (N-005).",
   "Plates are axis-aligned rectangles (up to two). Every fastener passes through every plate. Bearing R = Fbr·D·t (or a direct-load allowable); tear-out capacity 2·t·(e − D/2)·Fsu with e cast along the bearing direction: −R in the loaded plate, +R in the other plate.",
   "Axial method (b) uses a plate edge as the neutral axis with tension-only fasteners; v1 requires zero moment about the axis perpendicular to the edge (E-012), reduced to the projection of Ca onto the edge.",
+  "ICR (in-plane shear only, ks ignored): Crawford-Kulak or elastic-perfectly-plastic response, governing fastener at Δmax, ICR searched on the line through Cs perpendicular to the load (refined off it for asymmetric groups); γ_ult = P_u/|F|; reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling, W-015).",
   "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
   "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero external tension (N-006); with preload their bolt load is P_max.",
 ];
@@ -2961,8 +3424,8 @@ return { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS };
 })();
 
 /* ---- ui/canvas.mjs ---- */
-const __m18 = (() => {
-const { gridLines } = __m13;
+const __m19 = (() => {
+const { gridLines } = __m14;
 /* Canvas painter and pointer handling. All geometry comes from the scene
  * model; this file only turns its primitives into Canvas 2D calls. */
 
@@ -3080,6 +3543,15 @@ function paint(ctx, scene, colours, { snapStep = 0, snapOn = false } = {}) {
     if (c.shape === "square") { ctx.fillStyle = colours[c.colour]; ctx.fill(); } else ctx.stroke();
   }
 
+  if (scene.icr) {
+    const { x, y } = scene.icr.screen;
+    ctx.strokeStyle = colours.load; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(x, y, 7, 0, 2 * Math.PI); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x - 4, y); ctx.lineTo(x + 4, y); ctx.moveTo(x, y - 4); ctx.lineTo(x, y + 4); ctx.stroke();
+    ctx.fillStyle = colours.load; ctx.font = font(11, 600);
+    label(ctx, scene.icr.label, x + 10, y - 8, x, width);
+  }
+
   if (scene.load) {
     const { x, y } = scene.load.screen;
     ctx.strokeStyle = colours.load; ctx.lineWidth = 2;
@@ -3123,7 +3595,7 @@ return { palette, centroidPath, paint, hitTest };
 })();
 
 /* ---- ui/storage.mjs ---- */
-const __m19 = (() => {
+const __m20 = (() => {
 /* Browser persistence (spec 8.1): a named library and a separately
  * autosaved working pattern, both in localStorage. Every access is guarded:
  * storage can be missing (private windows) or full. */
@@ -3197,11 +3669,11 @@ return { LIBRARY_KEY, WORKING_KEY, StorageFullError, readLibrary, writeLibrary, 
 })();
 
 /* ---- ui/webmcp.mjs ---- */
-const __m20 = (() => {
+const __m21 = (() => {
 const { CATALOG } = __m1;
-const { normalizePattern, toJSON } = __m15;
-const { solve } = __m11;
-const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m17;
+const { normalizePattern, toJSON } = __m16;
+const { solve } = __m12;
+const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m18;
 const { UNIT_LABELS } = __m0;
 /* WebMCP tools: let an agent read the page's pattern and run the same
  * solver on any pattern without changing the page. */
@@ -3232,6 +3704,10 @@ function summarize(result) {
       boltTension: { external: f.checks.tension.Text, prying: f.checks.tension.Q, pryingMethod: f.checks.tension.prying.method, boltLoad: f.checks.tension.Fb, clampForce: f.checks.tension.preload ? f.checks.tension.preload.clamp : null, joint: f.checks.clamp.status },
     })),
     interaction: result.interaction,
+    designBasis: result.designBasis,
+    icr: result.icr ? (result.icr.status === "converged"
+      ? { status: "converged", model: result.icr.model, mode: result.icr.mode, icr: result.icr.icr, gammaUlt: result.icr.gamma, margin: result.icr.margin, governing: result.icr.governing, reactionsAtLoad: result.icr.atLoad, comparison: result.comparison }
+      : { status: result.icr.status, reason: result.icr.reason, residual: result.icr.residual }) : null,
     critical: result.critical,
     closure: result.closure.checks.map(({ name, residual, pass }) => ({ name, residual, pass })),
     issues: result.issues,
@@ -3287,24 +3763,24 @@ return { summarize, registerTools };
 })();
 
 /* ---- ui/app.mjs ---- */
-const __m21 = (() => {
+const __m22 = (() => {
 const { examplePattern, addFastener, clone, defaultPlate } = __m2;
-const { solve } = __m11;
+const { solve } = __m12;
 const { convertPattern, unitLabel, round12, UNIT_SYSTEMS } = __m0;
-const { fmt } = __m12;
-const { buildScene, CENTROID_STYLE } = __m13;
-const { rectangularArray, staggeredRows, boltCircle, mirror } = __m14;
-const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m15;
-const { runVerification } = __m16;
+const { fmt } = __m13;
+const { buildScene, CENTROID_STYLE } = __m14;
+const { rectangularArray, staggeredRows, boltCircle, mirror } = __m15;
+const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m16;
+const { runVerification } = __m17;
 const { sortIssues } = __m1;
 const { marginText, noMarginSummary } = __m8;
 const { PRESETS } = __m6;
 const { preloadFromTorque } = __m7;
 const { suggestContactEdge, EDGES } = __m10;
-const { TOOL_VERSION } = __m17;
-const { paint, palette, hitTest, centroidPath } = __m18;
-const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m19;
-const { registerTools } = __m20;
+const { TOOL_VERSION } = __m18;
+const { paint, palette, hitTest, centroidPath } = __m19;
+const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m20;
+const { registerTools } = __m21;
 /* Page controller: state, inputs, table, canvas, results, warnings,
  * library and files. Calculations all come from ../core. */
 
@@ -3506,11 +3982,14 @@ const TENSION_FIELDS = [
   ["prying", "prying.b", "b", "length"], ["prying", "prying.a", "a", "length"], ["prying", "prying.p", "p", "length"],
   ["prying", "prying.holeDiameter", "d_h", "length"], ["prying", "prying.boltStrengthB", "B", "force"], ["prying", "prying.manualFactor", "Manual factor", "none"],
   ["preload", "preload.pMax", "P_max", "force"], ["preload", "preload.pMin", "P_min", "force"], ["preload", "preload.phi", "φ", "none"],
+  ["icr", "icr.rult", "Rult", "force"], ["icr", "icr.deltaMax", "Δmax", "length"], ["icr", "icr.deltaY", "Δy", "length"],
+  ["icr", "icr.mu", "μ", "invLength"], ["icr", "icr.lambda", "λ", "none"],
 ];
 
 function renderToggles() {
   for (const el of $$("[data-show]")) el.hidden = !getPath(state.pattern, el.dataset.show);
   for (const el of $$("[data-show-method]")) el.hidden = state.pattern.settings.axialMethod !== el.dataset.showMethod;
+  for (const el of $$("[data-show-model]")) el.hidden = (state.pattern.settings.icr?.model || "crawford-kulak") !== el.dataset.showModel;
   const pts = state.pattern.fasteners.filter((q) => typeof q.x === "number" && typeof q.y === "number");
   let nn = Infinity;
   for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) nn = Math.min(nn, Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y));
@@ -3522,9 +4001,9 @@ function renderOverrides() {
   const box = $("#override-editor");
   const st = state.pattern.settings;
   const fa = state.pattern.fasteners.find((q) => q.id === state.selected);
-  const groups = ["prying", "preload"].filter((g) => st[g]?.enabled);
+  const groups = ["prying", "preload", "icr"].filter((g) => st[g]?.enabled);
   if (!groups.length) { box.innerHTML = ""; return; }
-  if (!fa) { box.innerHTML = `<p class="note">Select a fastener to override its prying or preload inputs.</p>`; return; }
+  if (!fa) { box.innerHTML = `<p class="note">Select a fastener to override its prying, preload or ICR inputs.</p>`; return; }
   const d = state.pattern.defaults;
   box.innerHTML = `<h4>Overrides for ${esc(fa.id)}</h4><div class="row three">${TENSION_FIELDS.filter(([g]) => groups.includes(g)).map(([, path, label, kind]) => {
     const own = getPath(fa.overrides || {}, path);
@@ -3585,6 +4064,7 @@ function draw() {
 function legendIcon(entry, colours) {
   const c = colours[entry.colour] || colours.fg;
   if (entry.shape === "arrow") return `<svg width="22" height="12" aria-hidden="true"><line x1="1" y1="6" x2="15" y2="6" stroke="${c}" stroke-width="2"/><path d="M21 6L14 2V10z" fill="${c}"/></svg>`;
+  if (entry.shape === "icr") return `<svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="${c}" stroke-width="2"/><path d="M5 8H11M8 5V11" stroke="${c}" stroke-width="2"/></svg>`;
   if (entry.shape === "edge") return `<svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="${c}" stroke-width="3" stroke-dasharray="6 3"/></svg>`;
   if (entry.shape === "cross") return `<svg width="14" height="14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" stroke="${c}" stroke-width="2"/></svg>`;
   return centroidSvg(entry.key, c);
@@ -3599,7 +4079,7 @@ function centroidSvg(key, colour) {
 
 function renderLegend() {
   const colours = palette(canvas());
-  const scene = buildScene(state.pattern, null, { width: 100, height: 100 });
+  const scene = buildScene(state.pattern, state.result, { width: 100, height: 100 });
   $("#legend").innerHTML = scene.legend.map((e) => `<li>${legendIcon(e, colours)}<span>${esc(e.label)}</span></li>`).join("")
     + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="${colours.tension}" fill-opacity=".35" stroke="${colours.fg}" stroke-width="1.5"/></svg><span>Fastener in tension</span></li>`
     + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="${colours.fg}" stroke-width="1.5" stroke-dasharray="3 2"/></svg><span>Unloading (clamp-up)</span></li>`;
@@ -3833,6 +4313,37 @@ function renderResults() {
       })), { numeric: [5, 6, 7] });
   }
 
+  let icrHtml = "";
+  if (r.icr) {
+    const ic = r.icr;
+    if (ic.status !== "converged") {
+      icrHtml = `<p class="blocked">ICR not converged (W-014): ${esc(ic.reason)}${ic.residual !== null && ic.residual !== undefined ? `, residual ${fmt(ic.residual, 3)}` : ""}. No ICR numbers are shown; the elastic result remains.${r.designBasis === "icr" ? " The checks on the ICR basis are not computed." : ""}</p>`;
+    } else {
+      const where = ic.mode === "translation" ? "at infinity (uniform translation: the load passes through Cs)"
+        : `at (${f(ic.icr.x, lenScale)}, ${f(ic.icr.y, lenScale)}) ${L}${ic.mode === "pure-moment" ? " (pure moment)" : ""}${ic.offLine ? " — moved off the search line to balance an asymmetric group" : ""}`;
+      const cmp = r.comparison;
+      const icrRows = table(["Fastener", `ρ (${L})`, `Δ (${L})`, `R ultimate (${F})`, `Rs at applied load (${F})`, `Elastic Rs (${F})`, "ICR vs elastic"],
+        r.fasteners.map((q) => {
+          const u = q.icr.ultimate, a = q.icr.atLoad;
+          const change = q.shear.Rs > 0 ? a.Rs / q.shear.Rs - 1 : null;
+          const gov = ic.governing === q.id ? ' <span class="tag">governs Δmax</span>' : "";
+          return [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button>${gov}`,
+            Number.isFinite(u.rho) ? f(u.rho, lenScale) : "∞", f(u.delta), f(u.R), `<b>${f(a.Rs, forceScale)}</b>`, f(q.shear.Rs, forceScale),
+            change === null ? "—" : `${change >= 0 ? "+" : "−"}${f(Math.abs(change) * 100, 100)}%`];
+        }), { numeric: [1, 2, 3, 4, 5, 6] });
+      icrHtml = `
+        <ul class="stats-row">
+          <li><b>${f(ic.gamma)}</b><span>γ_ult = ${ic.mode === "pure-moment" ? "M_u/|Mz,s|" : "P_u/|F|"}</span></li>
+          <li><b class="${ic.margin < 0 ? "ms-neg" : ""}">${f(ic.margin)}</b><span>ICR margin γ_ult − 1 (ultimate capacity; not comparable to allowable MS)</span></li>
+          <li><b>${ic.mode === "pure-moment" ? `${f(ic.Mu)} ${M}` : `${f(ic.Pu)} ${F}`}</b><span>${ic.mode === "pure-moment" ? "M_u" : "P_u"}, ultimate load</span></li>
+          <li><b>${esc(ic.governing)}</b><span>governing fastener (smallest Δmax/ρ)</span></li>
+        </ul>
+        <p class="note">${esc(ic.modelLabel)}; ICR ${where}. ${ic.iterations} iterations, residual ${fmt(ic.residual, 2)}. Reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling convention${r.designBasis === "icr" ? ", W-015" : ""}).</p>
+        ${cmp ? `<p class="critical">Critical-fastener load: elastic <b>${esc(cmp.elasticCritical.id)}</b> ${f(cmp.elasticCritical.Rs)} ${F} vs ICR <b>${esc(cmp.icrCritical.id)}</b> ${f(cmp.icrCritical.Rs)} ${F}${cmp.change === null ? "" : ` — <b class="${cmp.change > 0 ? "ms-neg" : ""}">${cmp.change >= 0 ? "+" : "−"}${f(Math.abs(cmp.change) * 100, 100)}%</b>`}. Checks use the <b>${r.designBasis === "icr" ? "ICR" : "elastic"}</b> basis.</p>` : ""}
+        ${icrRows}`;
+    }
+  }
+
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],
     r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
     { numeric: [1, 2] });
@@ -3854,12 +4365,13 @@ function renderResults() {
     ${per}
     ${tensionTable ? `<h3 style="margin-top:1.25rem">Bolt tension — ${[ts.prying ? `prying from ${esc(ts.flangePlate || "?")}` : "", ts.preload ? "preload" : ""].filter(Boolean).join(" and ")}</h3>
     <p class="note">F_b replaces T in the interaction and is recomputed at every load multiplier k; preload does not scale. Prying acts on positive external tension only.</p>${tensionTable}` : ""}
-    <h3 style="margin-top:1.25rem">Margins of safety — elastic basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
+    <h3 style="margin-top:1.25rem">Margins of safety — ${r.designBasis === "icr" ? "ICR" : "elastic"} basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
     ${crit}
     <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
     ${plateTable ? `<h3 style="margin-top:1.25rem">Bearing and tear-out, per plate</h3>
     <p class="note">Rs on the elastic basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
+    ${r.icr ? `<h3 style="margin-top:1.25rem">ICR method and elastic vs ICR</h3>${icrHtml}` : ""}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
 
@@ -4092,6 +4604,12 @@ function bind() {
         renderToggles();
       }
       if (el.dataset.path === "load.appliedPlate") renderPlates();
+      if (el.dataset.path === "settings.icr.model") renderToggles();
+      if (el.dataset.path === "settings.designBasis" && value === "icr" && !state.pattern.settings.icr?.enabled) {
+        state.pattern.settings.icr = { ...(state.pattern.settings.icr || {}), enabled: true };
+        $('[data-path="settings.icr.enabled"]').checked = true;
+        renderToggles(); renderOverrides();
+      }
       changed();
     };
     el.addEventListener(el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input", handler);
@@ -4296,8 +4814,8 @@ return { start };
 })();
 
 /* ---- ui/main.mjs ---- */
-const __m22 = (() => {
-const { start } = __m21;
+const __m23 = (() => {
+const { start } = __m22;
 /* Entry point of the built page. */
 
 

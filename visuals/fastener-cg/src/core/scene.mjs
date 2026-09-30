@@ -78,6 +78,9 @@ export function buildScene(pattern, result, view, { selected = null, transform: 
     }
   }
 
+  const icrPoint = result && result.ok && result.icr && result.icr.status === "converged" && result.icr.icr
+    ? { world: { ...result.icr.icr }, screen: toScreen(result.icr.icr), label: "ICR" } : null;
+
   const markers = fasteners.map((f) => {
     const r = resolvedById.get(f.id);
     const d = r && isNum(r.diameter) ? r.diameter : isNum(pattern.defaults?.diameter) ? pattern.defaults.diameter : null;
@@ -134,8 +137,9 @@ export function buildScene(pattern, result, view, { selected = null, transform: 
     { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
   ];
 
+  if (icrPoint) legend.push({ key: "icr", shape: "icr", colour: "load", label: "Instantaneous centre of rotation (ICR)" });
   if (contactEdge) legend.push({ key: "contactEdge", shape: "edge", colour: "axial", label: "Contact edge (method b neutral axis)" });
-  return { width, height, transform, world, toScreen, toWorld, plates, contactEdge, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
+  return { width, height, transform, world, toScreen, toWorld, plates, contactEdge, icr: icrPoint, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
 }
 
 /* Snap-grid lines covering the visible world window. */

@@ -16,6 +16,7 @@ import { brent, solveScale, interactionValue } from "../visuals/fastener-cg/src/
 import { boltLoad, tStubPrying, preloadFromTorque } from "../visuals/fastener-cg/src/core/tension.mjs";
 import { rayToRect, edgeDistance } from "../visuals/fastener-cg/src/core/plates.mjs";
 import { suggestContactEdge, edgeFrame } from "../visuals/fastener-cg/src/core/contact.mjs";
+import { icrSolve, response, rotationState } from "../visuals/fastener-cg/src/core/icr.mjs";
 import { render, bundle } from "../visuals/fastener-cg/build.mjs";
 import { hitTest } from "../visuals/fastener-cg/src/ui/canvas.mjs";
 
@@ -37,13 +38,16 @@ test("the whole in-app verification set passes, with pending reference cases cou
     if (r.status === "pending") continue;
     assert.ok(r.pass, `${r.id} ${r.error || r.checks.filter((c) => !c.pass).map((c) => `${c.label}: ${c.actual} vs ${c.expected}`).join("; ")}`);
   }
-  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-08", "VB-01", "VB-02", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09", "P-10", "P-11", "P-12", "VR-01"]);
+  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-08", "VB-01", "VB-02", "VI-01", "VI-02", "VI-03", "VC-09",
+    "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09", "P-10", "P-11", "P-12", "P-13", "P-14", "VR-01", "VR-02", "VR-03"]);
   assert.equal(HAND_CASES.length + PROPERTY_CASES.length + REFERENCE_CASES.length, v.results.length);
   const vr = v.results.find((r) => r.id === "VR-01");
   assert.equal(vr.status, "pending");
   assert.equal(vr.pass, false);
   assert.match(vr.pending, /spec open question 2/);
-  assert.deepEqual([v.passed, v.pending, v.failed, v.pass], [23, 1, 0, true]);
+  assert.deepEqual([v.passed, v.pending, v.failed, v.pass], [28, 3, 0, true]);
+  for (const id of ["VR-02", "VR-03"]) assert.equal(v.results.find((r) => r.id === id).status, "pending");
+  assert.match(v.results.find((r) => r.id === "VR-03").pending, /open question 3/);
 });
 
 test("a failing case fails the set; a pending case does not", () => {
@@ -413,7 +417,7 @@ test("the published page and data are built from the current sources", async () 
   assert.ok(!/<script[^>]+src=|<link[^>]+stylesheet|https?:\/\/(?!www\.w3\.org)/.test(html.replace(/<a [^>]*>/g, "")), "offline: no external scripts, styles or fetches");
   const raw = JSON.parse(outputs["raw.json"]);
   assert.equal(raw.warnings.length, Object.keys(CATALOG).length);
-  assert.ok(raw.verification.cases.length >= 24);
+  assert.ok(raw.verification.cases.length >= 31);
 });
 
 /* ---- M2: allowables, interaction, exact-k MS ---- */
@@ -949,4 +953,119 @@ test("hit testing a contact-edge scene finds fasteners and empty space without d
   const m = s.markers[0];
   assert.deepEqual(hitTest(s, m.screen), { kind: "fastener", id: m.id });
   assert.equal(hitTest(s, { x: -1000, y: -1000 }), null);
+});
+
+/* ---- M5: ICR, design basis, elastic vs ICR ---- */
+
+const ICR = { rult: 1000, mu: 0.3937, lambda: 0.55, deltaMax: 8.6, deltaY: null };
+function withIcr(p, { model = "crawford-kulak", basis = "elastic", icr = {} } = {}) {
+  p.settings.icr = { enabled: true, model };
+  p.settings.designBasis = basis;
+  p.defaults.icr = { ...ICR, ...icr };
+  return p;
+}
+const RECT4 = [[50, 30], [50, -30], [-50, 30], [-50, -30]];
+
+test("ICR responses: Crawford-Kulak and elastic-perfectly-plastic", () => {
+  const f = { icr: { ...ICR, deltaY: 1 } };
+  close(response("crawford-kulak", f, 8.6), 1000 * (1 - Math.exp(-0.3937 * 8.6)) ** 0.55, 1e-12);
+  close(response("elastic-plastic", f, 0.5), 500, 1e-12);
+  close(response("elastic-plastic", f, 5), 1000, 1e-12);
+});
+
+test("ICR eccentric solve: the ICR balances force and moment, sits opposite the load, and the governing bolt reaches Δmax", () => {
+  const r = solve(withIcr(pattern(RECT4, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 })));
+  assert.ok(r.ok);
+  const ic = r.icr;
+  assert.equal(ic.status, "converged");
+  assert.ok(ic.icr.x < 0, "opposite side of Cs from the load at x = 150");
+  const gov = ic.loads.find((l) => l.id === ic.governing);
+  close(gov.delta, 8.6, 1e-12);
+  // Independent check at the reported ICR: resultant along −y equals P_u, moment balances.
+  const st = rotationState(RECT4.map(([x, y], i) => ({ id: `F${i + 1}`, x, y, icr: ICR })), ic.icr, -1, "crawford-kulak");
+  close(st.Rx, 0, 1e-9 * ic.Pu);
+  close(-st.Ry, ic.Pu, 1e-9);
+  close(st.M, -ic.Pu * (150 - ic.icr.x), 1e-6);
+  close(ic.gamma, ic.Pu / 10000, 1e-12);
+  // Reactions at the applied load sum to the applied load (proportional scaling).
+  close(ic.atLoad.reduce((a, l) => a + l.Ry, 0), -10000, 1e-6);
+  assert.ok(ids(r.issues).includes("N-004"));
+  assert.ok(ids(r.issues).includes("N-008"));
+  assert.ok(!ids(r.issues).includes("W-015"), "elastic basis");
+});
+
+test("ICR on an asymmetric group balances all three in-plane equations", () => {
+  const pts = [[0, 0], [100, 0], [0, 100]];
+  const fs = pts.map(([x, y], i) => ({ id: `F${i + 1}`, x, y, icr: ICR }));
+  const sol = icrSolve(fs, { x: 100 / 3, y: 100 / 3 }, { Fx: 0, Fy: -1000, Mz: -1e5 });
+  assert.equal(sol.status, "converged");
+  assert.equal(sol.offLine, true);
+  const Rx = sol.loads.reduce((a, l) => a + l.Rx, 0), Ry = sol.loads.reduce((a, l) => a + l.Ry, 0);
+  close(Rx, 0, 1e-6 * sol.Pu);
+  close(-Ry, sol.Pu, 1e-6);
+});
+
+test("ICR failure is reported with its residual and no partial numbers (W-014 path)", () => {
+  // One fastener cannot balance an eccentric load by rotation.
+  const sol = icrSolve([{ id: "F1", x: 0, y: 0, icr: ICR }], { x: 0, y: 0 }, { Fx: 0, Fy: -1000, Mz: -1e5 });
+  assert.equal(sol.status, "not-converged");
+  assert.equal(sol.gamma, undefined);
+  assert.equal(sol.loads, undefined);
+  assert.ok(sol.reason);
+});
+
+test("design basis ICR: checks use the ICR reactions at the applied load (W-015), tension side unchanged", () => {
+  const load = { point: { x: 150, y: 0, z: 0 }, Fy: -10000, Fz: 4000 };
+  const el = withIcr(pattern(RECT4, load));
+  el.defaults.shearAllowable = 12000; el.defaults.tensionAllowable = 15000;
+  const ic = withIcr(pattern(RECT4, load), { basis: "icr" });
+  ic.defaults.shearAllowable = 12000; ic.defaults.tensionAllowable = 15000;
+  const a = solve(el), b = solve(ic);
+  assert.ok(a.ok && b.ok);
+  assert.equal(b.designBasis, "icr");
+  assert.ok(ids(b.issues).includes("W-015"));
+  for (const [i, f] of b.fasteners.entries()) {
+    const m = f.checks.modes[0];
+    close(m.Rs, f.icr.atLoad.Rs, 1e-12);
+    close(m.Rt, a.fasteners[i].checks.modes[0].Rt, 1e-12, "tension side comes from the elastic distribution");
+  }
+  assert.ok(b.comparison);
+  assert.equal(b.comparison.elasticCritical.Rs, Math.max(...a.fasteners.map((f) => f.shear.Rs)));
+  // ICR shares the torsion more evenly than the elastic method here: the critical load drops.
+  assert.ok(b.comparison.change < 0);
+});
+
+test("ICR input errors: E-007 for Rult, for Δy with the elastic-plastic model, and for an ICR basis without ICR", () => {
+  let p = withIcr(pattern(RECT4, { Fy: -1000 }), { icr: { rult: null } });
+  assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => [i.id, i.field]), [["E-007", "defaults.icr.rult"]]);
+  p = withIcr(pattern(RECT4, { Fy: -1000 }), { model: "elastic-plastic" });
+  assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => [i.id, i.field]), [["E-007", "defaults.icr.deltaY"]]);
+  p = withIcr(pattern(RECT4, { Fy: -1000 }), { model: "elastic-plastic", icr: { deltaY: 20 } });
+  assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => i.id), ["E-002"]);
+  p = pattern(RECT4, { Fy: -1000 });
+  p.settings.designBasis = "icr";
+  assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => [i.id, i.field]), [["E-007", "settings.designBasis"]]);
+  // Elastic-plastic with a tiny Δy: every fastener away from the ICR is at Rult.
+  p = withIcr(pattern(RECT4, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 }), { model: "elastic-plastic", icr: { deltaY: 1e-6 } });
+  const r = solve(p);
+  assert.ok(r.icr.loads.every((l) => Math.abs(l.R - 1000) < 1e-6));
+  assert.ok(!ids(r.issues).includes("N-008"), "N-008 is about the Crawford-Kulak defaults");
+});
+
+test("M5 persistence, units, Markdown and scene: ICR settings round-trip; Δy is a length; the ICR is drawn", () => {
+  const p = withIcr(pattern(RECT4, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 }), { basis: "icr" });
+  assert.equal(toJSON(parseJSON(toJSON(p)).pattern), toJSON(p));
+  p.defaults.icr.deltaY = 2;
+  assert.equal(convertPattern(p, "in-lbf").defaults.icr.deltaY, Number((2 / MM_PER_IN).toPrecision(12)));
+  const old = JSON.parse(toJSON(p));
+  delete old.defaults.icr.deltaY;
+  assert.match(parseJSON(JSON.stringify(old)).issues.find((i) => i.id === "W-018").detail, /defaults\.icr\.deltaY/);
+  const r = solve(p);
+  const md = toMarkdown(p, r);
+  assert.match(md, /## ICR method/);
+  assert.match(md, /Critical-fastener load: elastic F\d/);
+  const sc = buildScene(p, r, { width: 600, height: 400 });
+  const { scale, ox, oy } = sc.transform;
+  assert.deepEqual(sc.icr.screen, { x: ox + scale * r.icr.icr.x, y: oy - scale * r.icr.icr.y });
+  assert.ok(sc.legend.some((e) => e.key === "icr"));
 });

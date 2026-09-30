@@ -31,7 +31,7 @@ export function defaultProperties() {
   return {
     diameter: 12, area: 113.1, ks: 1, ka: 1,
     shearAllowable: null, tensionAllowable: null,
-    icr: { rult: null, mu: 0.3937, lambda: 0.55, deltaMax: 8.6 },
+    icr: { rult: null, mu: 0.3937, lambda: 0.55, deltaMax: 8.6, deltaY: null },
     prying: { b: null, a: null, p: null, holeDiameter: null, boltStrengthB: null, manualFactor: null },
     preload: { pMax: null, pMin: null, phi: null },
   };

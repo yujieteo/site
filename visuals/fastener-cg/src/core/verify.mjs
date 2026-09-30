@@ -10,8 +10,9 @@ import { examplePattern } from "./model.mjs";
 import { solve } from "./solve.mjs";
 import { solveScale } from "./interaction.mjs";
 import { boltLoad, tStubPrying } from "./tension.mjs";
+import { icrSolve, response } from "./icr.mjs";
 
-export const VERIFICATION_SET = "M4";
+export const VERIFICATION_SET = "M5";
 export const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
@@ -214,6 +215,54 @@ export const HAND_CASES = [
     },
   },
   {
+    id: "VI-01", title: "ICR, pure moment on a 6-bolt circle (R = 50): ICR at the centre, every bolt at Δmax",
+    run() {
+      const p = pattern(circle(6, 50), { Mz: 1e5 });
+      icrOn(p);
+      const r = solved(p);
+      const Rmax = response("crawford-kulak", { icr: ICR_DEF }, ICR_DEF.deltaMax);
+      return [
+        check("γ_ult = 6·R(Δmax)·R / Mz", r.icr.gamma, (6 * Rmax * 50) / 1e5),
+        check("ICR x", r.icr.icr.x, 0, { scale: 50 }), check("ICR y", r.icr.icr.y, 0, { scale: 50 }),
+        ...r.icr.loads.map((l) => check(`Δ ${l.id}`, l.delta, ICR_DEF.deltaMax)),
+        truth("N-004 raised (ks ignored)", r.issues.some((i) => i.id === "N-004")),
+      ];
+    },
+  },
+  {
+    id: "VI-02", title: "ICR, concentric shear on the VC-01 pattern: uniform translation",
+    run() {
+      const p = pattern(RECT, { Fy: -1000 });
+      icrOn(p);
+      const r = solved(p);
+      const Rmax = response("crawford-kulak", { icr: ICR_DEF }, ICR_DEF.deltaMax);
+      return [
+        truth("translation mode", r.icr.mode === "translation"),
+        check("γ_ult = 4·R(Δmax)/|F|", r.icr.gamma, (4 * Rmax) / 1000),
+        ...r.icr.atLoad.map((l) => check(`reaction at load ${l.id}`, l.Rs, 250)),
+      ];
+    },
+  },
+  {
+    id: "VI-03", title: "ICR, eccentric VC-01 load: equilibrium at ultimate and the side of the ICR",
+    run() {
+      const p = pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 });
+      icrOn(p);
+      const r = solved(p);
+      const sum = (k) => r.icr.loads.reduce((a, l) => a + l[k], 0);
+      const M = r.icr.loads.reduce((a, l, i) => a + (RECT[i][0] - r.icr.icr.x) * l.Ry - (RECT[i][1] - r.icr.icr.y) * l.Rx, 0);
+      const Pu = r.icr.Pu;
+      return [
+        check("ΣRx = 0 at ultimate", sum("Rx"), 0, { abs: 1e-6 * Pu }),
+        check("ΣRy = −P_u", sum("Ry"), -Pu, { rel: 1e-6 }),
+        check("ΣM about ICR = P_u × lever", M, -Pu * (150 - r.icr.icr.x), { rel: 1e-6 }),
+        truth("ICR on the side opposite the load line (x < 0)", r.icr.icr.x < 0 && Math.abs(r.icr.icr.y) < 1e-9),
+        check("reactions at load = ultimate / γ", r.icr.atLoad[0].Rs, r.icr.loads[0].R / r.icr.gamma),
+        truth("the most distant bolts govern", ["F1", "F2"].includes(r.icr.governing)),
+      ];
+    },
+  },
+  {
     id: "VC-09", title: "Circle group, pure Mz",
     run() {
       const N = 8, R = 60, Mz = 48000;
@@ -383,6 +432,53 @@ PROPERTY_CASES.push(
   },
 );
 
+/* ICR defaults: the spec's metric structural-bolt curve with Rult = 1 000 N. */
+const ICR_DEF = { rult: 1000, mu: 0.3937, lambda: 0.55, deltaMax: 8.6, deltaY: null };
+function icrOn(p, model = "crawford-kulak") {
+  p.settings.icr = { enabled: true, model };
+  p.defaults.icr = { ...ICR_DEF };
+  return p;
+}
+
+PROPERTY_CASES.push(
+  {
+    id: "P-13", title: "ICR ignores ks: overriding ks moves Cs but not γ_ult or the ICR",
+    run() {
+      const a = solved(icrOn(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 })));
+      const q = icrOn(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 }));
+      q.fasteners[0].overrides = { ks: 3 };
+      q.fasteners[3].overrides = { ks: 0.4 };
+      const b = solved(q);
+      return [
+        truth("Cs moved (ks still acts on the elastic side)", Math.hypot(b.props.Cs.x - a.props.Cs.x, b.props.Cs.y - a.props.Cs.y) > 1e-6),
+        check("γ_ult unchanged", b.icr.gamma, a.icr.gamma, { rel: 1e-6 }),
+        check("ICR x unchanged", b.icr.icr.x, a.icr.icr.x, { abs: 1e-6 * 50 }),
+        check("ICR y unchanged", b.icr.icr.y, a.icr.icr.y, { abs: 1e-6 * 50 }),
+      ];
+    },
+  },
+  {
+    id: "P-14", title: "ICR: rotation invariance and load-magnitude scaling of γ_ult",
+    run() {
+      const pts = [[0, 0], [90, 10], [20, 70], [-50, 40], [60, -40]];
+      const base = icrSolve(pts.map(([x, y], i) => ({ id: `F${i}`, x, y, icr: ICR_DEF })), centroidOf(pts), { Fx: 800, Fy: -3000, Mz: 2.1e5 });
+      const t = 0.7, c = Math.cos(t), s = Math.sin(t);
+      const rp = pts.map(([x, y]) => [c * x - s * y, s * x + c * y]);
+      const rot = icrSolve(rp.map(([x, y], i) => ({ id: `F${i}`, x, y, icr: ICR_DEF })), centroidOf(rp), { Fx: c * 800 + s * 3000, Fy: s * 800 - c * 3000, Mz: 2.1e5 });
+      const big = icrSolve(pts.map(([x, y], i) => ({ id: `F${i}`, x, y, icr: ICR_DEF })), centroidOf(pts), { Fx: 1600, Fy: -6000, Mz: 4.2e5 });
+      return [
+        truth("asymmetric case converged", base.status === "converged"),
+        check("γ rotated", rot.gamma, base.gamma, { rel: 1e-6 }),
+        check("γ at 2× load = γ / 2", big.gamma, base.gamma / 2, { rel: 1e-6 }),
+      ];
+    },
+  },
+);
+
+function centroidOf(pts) {
+  return { x: pts.reduce((a, p) => a + p[0], 0) / pts.length, y: pts.reduce((a, p) => a + p[1], 0) / pts.length };
+}
+
 const TSTUB = { B: 40000, b: 40, a: 35, p: 80, dh: 14, D: 12, t: 12, Fp: 250 };
 
 PROPERTY_CASES.push(
@@ -436,10 +532,23 @@ PROPERTY_CASES.push(
  * values entered yet: it is reported as pending, neither pass nor fail. */
 export const REFERENCE_CASES = [
   {
+    id: "VR-02", title: "AISC Manual eccentric-load coefficient tables (ICR, Crawford-Kulak), ~2% tolerance",
+    pending: "published table values not yet entered (current AISC Manual not available)",
+  },
+  {
+    id: "VR-03", title: "ICR side convention against a published worked example",
+    pending: "published worked example not yet entered (spec open question 3)",
+  },
+  {
     id: "VR-01", title: "AISC T-stub prying worked example",
     pending: "published reference values not yet entered (spec open question 2)",
   },
 ];
+
+// Cases are declared milestone by milestone; list them in id order.
+const idOrder = (a, b) => a.id.localeCompare(b.id, "en", { numeric: true });
+PROPERTY_CASES.sort(idOrder);
+REFERENCE_CASES.sort(idOrder);
 
 export const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES, ...REFERENCE_CASES];
 

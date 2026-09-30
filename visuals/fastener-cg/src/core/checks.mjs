@@ -57,10 +57,12 @@ export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => 
   const issues = [];
   const notComputed = [], preloadOnly = [], shortEdge = [], shortIds = [];
   const idOf = (entry) => entry.split(" ")[0];
-  const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.shear.Rs)), 0);
+  const basisOf = (f) => (f.basisShear === undefined ? f.shear : f.basisShear);
+  const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(basisOf(f)?.Rs ?? 0)), 0);
   const tensionFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.axial.T)), 0);
   const results = fasteners.map((f) => {
-    const Rs = f.shear.Rs > shearFloor ? f.shear.Rs : 0;
+    const sh = basisOf(f);
+    const Rs = sh && sh.Rs > shearFloor ? sh.Rs : 0;
     const Text = f.axial.T > tensionFloor ? f.axial.T : 0;
     // Tension chain: external T through prying and preload to the bolt load
     // F_b, re-evaluated at every load multiplier k (preload does not scale).
@@ -71,7 +73,10 @@ export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => 
     const Fs = f.shearAllowable, Ft = f.tensionAllowable;
     const missing = [Fs === null || Fs === undefined ? "Fs" : null, Ft === null || Ft === undefined ? "Ft" : null].filter(Boolean);
     let interaction;
-    if (missing.length) {
+    if (!sh) {
+      interaction = { mode: "interaction", label: MODES.interaction, status: "not-computed", reason: "ICR basis selected but ICR did not converge", ms: null, Rs: null, Rt, Text, Q: tension.Q, a, b };
+      notComputed.push(`${f.id} (ICR not converged)`);
+    } else if (missing.length) {
       interaction = { mode: "interaction", label: MODES.interaction, status: "not-evaluated", ms: null, missing, Rs, Rt, Text, Q: tension.Q, a, b };
     } else {
       const s = solveScale({ Rs, tensionAt, Fs, Ft, a, b });
@@ -80,7 +85,7 @@ export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => 
       if (s.status === "preload") preloadOnly.push(`${f.id} (IF(0) = ${s.IF0.toPrecision(4)})`);
     }
     // Bearing and tear-out per plate use the same round-off-snapped Rs.
-    const modes = [interaction, ...plateModesFor({ ...f, shear: { ...f.shear, Rs } })];
+    const modes = [interaction, ...(sh ? plateModesFor({ ...f, shear: { ...sh, Rs } }) : [])];
     for (const m of modes) {
       if (m.mode === "tearout" && m.minRatio !== null && m.minRatio !== undefined && m.eOverD !== null && m.eOverD !== undefined && m.eOverD < m.minRatio) {
         shortEdge.push(`${f.id} in ${m.plate}: e/D = ${m.eOverD.toPrecision(4)} < ${m.minRatio}`);

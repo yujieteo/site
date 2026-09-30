@@ -22,7 +22,7 @@ export const MAX_PLATES = 2;
 export const MIGRATIONS = {};
 
 const ENUMS = {
-  "settings.designBasis": ["elastic"],
+  "settings.designBasis": ["elastic", "icr"],
   "settings.axialMethod": ["centroid", "contact-edge"],
   "settings.icr.model": ["crawford-kulak", "elastic-plastic"],
   "settings.pageSize": ["A4", "Letter"],
@@ -316,10 +316,29 @@ function resultSections(pattern, result) {
       })),
     ...tensionSection(result, u),
     ...plateSection(result, u),
+    ...icrSection(result, u),
     "", "## Equilibrium closure", "",
     mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
     "", ...issueTable(result.issues),
   ];
+}
+
+function icrSection(result, u) {
+  const ic = result.icr;
+  if (!ic) return [];
+  if (ic.status !== "converged") {
+    return ["", "## ICR method", "", `ICR not converged (W-014): ${ic.reason}${ic.residual !== null && ic.residual !== undefined ? `, residual ${ic.residual}` : ""}. No ICR numbers are reported; the elastic result remains.`];
+  }
+  const where = ic.mode === "translation" ? "at infinity (uniform translation)" : `at (${ic.icr.x}, ${ic.icr.y})${ic.offLine ? ", off the search line (asymmetric group)" : ""}`;
+  const lines = ["", "## ICR method", "",
+    `${ic.modelLabel}; ICR ${where}. γ_ult = ${ic.gamma}; ICR margin γ_ult − 1 = ${ic.margin} (ultimate capacity, not comparable to allowable-based MS). Governing fastener ${ic.governing}. Reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling convention). Checks use the ${result.designBasis} basis.`,
+    "", mdTable(["id", `rho (${u("length")})`, `delta (${u("length")})`, `R ultimate (${u("force")})`, `Rs at load, ICR (${u("force")})`, `Rs, elastic (${u("force")})`],
+      result.fasteners.map((f) => [f.id, Number.isFinite(f.icr.ultimate.rho) ? f.icr.ultimate.rho : "inf", f.icr.ultimate.delta, f.icr.ultimate.R, f.icr.atLoad.Rs, f.shear.Rs]))];
+  if (result.comparison) {
+    const c = result.comparison;
+    lines.push("", `Critical-fastener load: elastic ${c.elasticCritical.id} ${c.elasticCritical.Rs} vs ICR ${c.icrCritical.id} ${c.icrCritical.Rs}${c.change === null ? "" : ` (change ${c.change})`}.`);
+  }
+  return lines;
 }
 
 function plateSection(result, u) {
