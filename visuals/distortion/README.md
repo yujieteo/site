@@ -32,6 +32,7 @@ range while stiffeners still raise the threshold and shorten the waves.
 | `vendor/three.min.js` | three.js r186 (npm `three@0.186.1`, MIT licence, <https://threejs.org>) with `OrbitControls`, bundled as the global `THREE` |
 | `vendor/three-entry.mjs` | The classes re-exported into that bundle |
 | `build.mjs` | Inlines `vendor/three.min.js`, `kinematics.js` and `raw.json` into `template.html` to write `index.html` |
+| `LICENSE` | MIT licence for this visualization (the inlined three.js keeps its own MIT notice) |
 
 ```sh
 node visuals/distortion/build.mjs          # rebuild index.html after editing a source
