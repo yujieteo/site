@@ -82,7 +82,7 @@ table{border-collapse:collapse;width:100%;font-size:.8125rem}
 th,td{text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--grid);vertical-align:middle}
 th{font-weight:600;background:var(--surface);white-space:nowrap}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-#fastener-table{min-width:46rem}
+#fastener-table{min-width:58rem}
 #fastener-table input{min-height:1.9rem;padding:.15rem .35rem}
 #fastener-table td{padding:.2rem .3rem}
 #fastener-table tr.selected td{background:color-mix(in srgb,var(--focus) 12%,transparent)}
@@ -116,6 +116,17 @@ dialog{border:1px solid var(--border);border-radius:calc(var(--r)*1.5);backgroun
 dialog::backdrop{background:rgb(0 0 0/.35)}
 dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .method li{margin:.3rem 0}
+.presets{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
+.formula{font:.8125rem var(--mono);color:var(--fg)}
+.inline-issue{display:inline-block;font:600 .66rem var(--mono);border-radius:999px;padding:0 .4rem;margin-left:.3rem;border:1px solid currentColor;vertical-align:middle;white-space:nowrap}
+.inline-issue.error{color:var(--bad)}
+.inline-issue.warning{color:var(--warn)}
+.inline-issue.note{color:var(--note)}
+.critical{border:1px solid var(--border);border-left:4px solid var(--axial);border-radius:var(--r);padding:.6rem .8rem;margin:.5rem 0 1rem;font-size:.95rem}
+.critical b.ms{font-size:1.25rem;font-variant-numeric:tabular-nums}
+.ms-neg{color:var(--bad);font-weight:600}
+td.status{color:var(--muted);font-size:.78rem}
+#fastener-rows th .inline-issue{margin-left:.2rem}
 .method{max-width:78ch}
 </style>
 </head>
@@ -124,7 +135,7 @@ dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 <header>
   <p class="eyebrow"><a href="../../visuals.html">Visuals</a><span>Structural engineering</span><span>Runs offline in your browser</span></p>
   <h1>Fastener Pattern CG Tracker</h1>
-  <p class="lede">Place a fastener group on the canvas or in the table. The page reports its shear, axial and area centroids, polar moment J, Ixx, Iyy, Ixy and principal axes, reduces a general 3D load applied anywhere to the group, and shares it among the fasteners by the elastic method. Every number is recalculated as you edit.</p>
+  <p class="lede">Place a fastener group on the canvas or in the table. The page reports its shear, axial and area centroids, polar moment J, Ixx, Iyy, Ixy and principal axes, reduces a general 3D load applied anywhere to the group, and shares it among the fasteners by the elastic method. Key in shear and tension allowables to get each fastener's exact load-scale-factor margin of safety under a shear-tension interaction, and the critical fastener. Every number is recalculated as you edit.</p>
   <p class="prelim"><b>Preliminary sizing — verify against the governing specification.</b> The tool ships no allowables and follows no single design code.</p>
 </header>
 
@@ -249,7 +260,25 @@ dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
         <label class="f"><span>Shear stiffness ks</span><input type="number" step="any" data-path="defaults.ks"></label>
         <label class="f"><span>Axial stiffness ka</span><input type="number" step="any" data-path="defaults.ka"></label>
       </div>
-      <p class="note">Fasteners use these unless a table cell overrides them (bold). Clearing a cell returns it to the default.</p>
+      <div class="row">
+        <label class="f"><span>Shear allowable Fs (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.shearAllowable" placeholder="not entered"></label>
+        <label class="f"><span>Tension allowable Ft (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.tensionAllowable" placeholder="not entered"></label>
+      </div>
+      <p class="note">Fasteners use these unless a table cell overrides them (bold). Clearing a cell returns it to the default. The tool ships no allowables: a check without one is not evaluated.</p>
+    </div>
+
+    <div class="card" id="interaction-card">
+      <h3>Shear-tension interaction</h3>
+      <p class="note formula">IF(k) = (k·Rs / Fs)<sup>a</sup> + (k·Rt / Ft)<sup>b</sup>; MS = k* − 1 where IF(k*) = 1.</p>
+      <div class="row">
+        <label class="f"><span>Shear exponent a</span><input type="number" step="any" data-path="settings.interaction.a"></label>
+        <label class="f"><span>Tension exponent b</span><input type="number" step="any" data-path="settings.interaction.b"></label>
+      </div>
+      <div class="presets" role="group" aria-label="Interaction presets">
+        <button class="btn" type="button" data-preset="elliptical" aria-pressed="false">Elliptical (2, 2)</button>
+        <button class="btn" type="button" data-preset="linear" aria-pressed="false">Linear (1, 1)</button>
+      </div>
+      <p class="note">MS is the exact multiplier on the whole applied load at which IF reaches 1. With (a, b) ≠ (1, 1) it differs from 1/IF − 1 (W-006); the plain IF(1) is shown beside it.</p>
     </div>
 
     <div class="card">
@@ -264,7 +293,7 @@ dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
   <h2 id="table-h">Fasteners</h2>
   <p class="muted small">Every cell is keyboard-editable. Blank override cells use the group default shown in grey.</p>
   <div class="table-wrap"><table id="fastener-table">
-    <thead><tr><th scope="col">id</th><th scope="col">Label</th><th scope="col">x (<i data-unit="length"></i>)</th><th scope="col">y (<i data-unit="length"></i>)</th><th scope="col">A (<i data-unit="area"></i>)</th><th scope="col">ks</th><th scope="col">ka</th><th scope="col">D (<i data-unit="length"></i>)</th><th scope="col"><span class="sr">Remove</span></th></tr></thead>
+    <thead><tr><th scope="col">id</th><th scope="col">Label</th><th scope="col">x (<i data-unit="length"></i>)</th><th scope="col">y (<i data-unit="length"></i>)</th><th scope="col">A (<i data-unit="area"></i>)</th><th scope="col">ks</th><th scope="col">ka</th><th scope="col">D (<i data-unit="length"></i>)</th><th scope="col">Fs (<i data-unit="force"></i>)</th><th scope="col">Ft (<i data-unit="force"></i>)</th><th scope="col"><span class="sr">Remove</span></th></tr></thead>
     <tbody id="fastener-rows"></tbody>
   </table></div>
 </section>
@@ -295,6 +324,7 @@ dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
     <li><b>Load reduction</b> from P = (xp, yp, zp) to Q on z = 0 with r = P − Q: Mx,Q = Mx + ry Fz − zp Fy; My,Q = My + zp Fx − rx Fz; Mz,Q = Mz + rx Fy − ry Fx. Shear and torsion reduce to Cs, axial load and bending to Ca.</li>
     <li><b>Elastic in-plane shear</b>: direct Rd = F ks/Σks; torsional Rtx = −Mz,s ks v / J, Rty = +Mz,s ks u / J.</li>
     <li><b>Axial method (a)</b>, rigid plate with the neutral axis through Ca: D = Ixx Iyy − Ixy², θx = (Iyy Mx,a + Ixy My,a)/D, θy = (Ixy Mx,a + Ixx My,a)/D, T = ka(Fz/Ka + θx q − θy p). Negative T is unloading (clamp-up), shown as computed.</li>
+    <li><b>Interaction</b>: IF(k) = (k Rs/Fs)^a + (k Rt/Ft)^b with separate exponents a and b (presets: elliptical (2, 2), the default, and linear (1, 1)). Rt is the positive tension; unloading counts as zero (N-006). The margin is the exact load scale factor, MS = k* − 1 with IF(k*) = 1, found by a bracketed Brent search (tolerance 1e-12 on k, 200 iterations); a failed solve shows “MS not computed” (W-008) and never a substitute number. For a = b = 1 it equals 1/IF − 1. The governing MS of a fastener is its lowest margin across modes, and the critical fastener has the lowest governing MS.</li>
     <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
     <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
   </ul>
@@ -483,9 +513,11 @@ function tierOf(id) {
   return TIERS[id[0]];
 }
 
-function issue(id, detail = "", { fastener = null, field = null } = {}) {
+/* `fastener` is the first (or only) fastener named; `fasteners` lists every one. */
+function issue(id, detail = "", { fastener = null, fasteners = null, field = null } = {}) {
   if (!(id in CATALOG)) throw new Error(`Unknown warning id ${id}`);
-  return { id, tier: tierOf(id), title: CATALOG[id], detail, fastener, field };
+  const all = fasteners || (fastener ? [fastener] : []);
+  return { id, tier: tierOf(id), title: CATALOG[id], detail, fastener: fastener ?? all[0] ?? null, fasteners: all, field };
 }
 
 /* Errors first, then warnings, then notes; catalogue order within a tier. */
@@ -831,13 +863,219 @@ function elasticAxialCentroid(fasteners, props, red) {
 return { elasticShear, SINGULAR_TOL, elasticAxialCentroid };
 })();
 
-/* ---- core/solve.mjs ---- */
+/* ---- core/interaction.mjs ---- */
 const __m6 = (() => {
+/* Shear-tension interaction and the exact load-scale-factor margin (spec 5.5).
+ *
+ *   IF(k) = (k·Rs / Fs)^a + (Rt(k) / Ft)^b
+ *
+ * Shear scales linearly with the load multiplier k. Tension is re-evaluated
+ * at the scaled load through `tensionAt(k)` (the prying and preload chain
+ * once those exist), so a preload term does not scale with k.
+ * MS = k* − 1 where IF(k*) = 1, solved by a bracketed Brent search. A failed
+ * solve returns status "not-computed"; no fallback number is ever produced.
+ */
+
+const PRESETS = {
+  elliptical: { a: 2, b: 2, label: "Elliptical (2, 2)" },
+  linear: { a: 1, b: 1, label: "Linear (1, 1)" },
+};
+
+const K_TOL = 1e-12;
+const MAX_ITER = 200;
+const K_MAX = 1e15;
+
+/* Brent's method on [lo, hi] with f(lo)·f(hi) ≤ 0. Returns { root, iterations, converged, residual }. */
+function brent(f, lo, hi, { tol = K_TOL, maxIter = MAX_ITER } = {}) {
+  let a = lo, b = hi, fa = f(a), fb = f(b);
+  if (!Number.isFinite(fa) || !Number.isFinite(fb) || fa * fb > 0) return { root: NaN, iterations: 0, converged: false, residual: NaN };
+  if (fa === 0) return { root: a, iterations: 0, converged: true, residual: 0 };
+  if (fb === 0) return { root: b, iterations: 0, converged: true, residual: 0 };
+  let c = a, fc = fa, d = b - a, e = d;
+  for (let i = 1; i <= maxIter; i++) {
+    if (fb * fc > 0) { c = a; fc = fa; d = b - a; e = d; }
+    if (Math.abs(fc) < Math.abs(fb)) { a = b; b = c; c = a; fa = fb; fb = fc; fc = fa; }
+    const tol1 = 2 * Number.EPSILON * Math.abs(b) + 0.5 * tol * Math.max(Math.abs(b), 1e-300);
+    const m = 0.5 * (c - b);
+    if (Math.abs(m) <= tol1 || fb === 0) return { root: b, iterations: i, converged: true, residual: fb };
+    if (Math.abs(e) >= tol1 && Math.abs(fa) > Math.abs(fb)) {
+      let p, q;
+      const s = fb / fa;
+      if (a === c) { p = 2 * m * s; q = 1 - s; }
+      else {
+        const r = fb / fc, t = fa / fc;
+        p = s * (2 * m * t * (t - r) - (b - a) * (r - 1));
+        q = (t - 1) * (r - 1) * (s - 1);
+      }
+      if (p > 0) q = -q; else p = -p;
+      if (2 * p < Math.min(3 * m * q - Math.abs(tol1 * q), Math.abs(e * q))) { e = d; d = p / q; }
+      else { d = m; e = d; }
+    } else { d = m; e = d; }
+    a = b; fa = fb;
+    b += Math.abs(d) > tol1 ? d : (m > 0 ? tol1 : -tol1);
+    fb = f(b);
+    if (!Number.isFinite(fb)) return { root: NaN, iterations: i, converged: false, residual: NaN };
+  }
+  return { root: b, iterations: maxIter, converged: false, residual: fb };
+}
+
+/* (value / allowable)^exp, with 0^exp = 0. */
+const term = (value, allowable, exp) => (value <= 0 ? 0 : Math.pow(value / allowable, exp));
+
+function interactionValue(k, { Rs, tensionAt, Fs, Ft, a, b }) {
+  return term(k * Rs, Fs, a) + term(tensionAt(k), Ft, b);
+}
+
+/*
+ * Solve for k*. `tensionAt(k)` gives the tension used at load multiplier k
+ * (≥ 0). Returns { status, IF1, IF0, kStar, ms, iterations, residual, bracket }:
+ *   "ok"            MS = k* − 1
+ *   "unloaded"      IF never reaches 1 (no load reaches this fastener): MS = ∞
+ *   "preload"       IF(0) ≥ 1: preload alone exceeds the allowable (W-017)
+ *   "not-computed"  the bracket or the Brent search failed (W-008)
+ */
+function solveScale(input, { tol = K_TOL, maxIter = MAX_ITER } = {}) {
+  const IF = (k) => interactionValue(k, input);
+  const IF1 = IF(1), IF0 = IF(0);
+  const base = { IF1, IF0, kStar: null, ms: null, iterations: 0, residual: null, bracket: null };
+  if (!Number.isFinite(IF1) || !Number.isFinite(IF0)) return { ...base, status: "not-computed", reason: "IF is not finite" };
+  if (IF0 >= 1) return { ...base, status: "preload" };
+  const g = (k) => IF(k) - 1;
+  let hi = 1;
+  if (g(hi) < 0) {
+    // Expand until IF ≥ 1; a fastener carrying no scalable load never gets there.
+    while (g(hi) < 0 && hi < K_MAX) hi *= 2;
+    if (g(hi) < 0) {
+      const grows = IF(K_MAX) > IF0;
+      return grows ? { ...base, status: "not-computed", reason: "no bracket below k = 1e15" } : { ...base, status: "unloaded", ms: Infinity, kStar: Infinity };
+    }
+  }
+  const lo = hi === 1 ? 0 : hi / 2;
+  const r = brent(g, lo, hi, { tol, maxIter });
+  if (!r.converged || !(r.root > 0)) return { ...base, status: "not-computed", iterations: r.iterations, residual: r.residual, bracket: [lo, hi], reason: "Brent search did not converge" };
+  return { ...base, status: "ok", kStar: r.root, ms: r.root - 1, iterations: r.iterations, residual: r.residual, bracket: [lo, hi] };
+}
+return { PRESETS, K_TOL, MAX_ITER, brent, interactionValue, solveScale };
+})();
+
+/* ---- core/checks.mjs ---- */
+const __m7 = (() => {
+const { solveScale } = __m6;
+const { issue } = __m1;
+/* Per-fastener checks and the governing margin (spec 5.5 and 5.10).
+ *
+ * Each mode gives one result per fastener: { mode, label, status, ms, ... }.
+ * status "ok" carries a margin; "not-evaluated" means an allowable was not
+ * entered and never shows a number; "not-computed" means the solve failed
+ * (W-008) or preload alone exceeds the allowable (W-017); "unloaded" means
+ * no load reaches the fastener (MS = ∞). The governing MS of a fastener is
+ * the minimum across its evaluated modes, and the critical fastener is the
+ * one with the lowest governing MS.
+ */
+
+
+
+
+const MODES = { interaction: "Shear-tension interaction" };
+
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+
+/* Settings and allowable checks that need no solve: E-002, E-008, W-006, W-007. */
+function validateCheckInputs(pattern, resolved) {
+  const issues = [];
+  const it = pattern.settings?.interaction || {};
+  for (const key of ["a", "b"]) {
+    const v = it[key];
+    const field = `settings.interaction.${key}`;
+    if (!isNum(v)) issues.push(issue("E-002", `Interaction exponent ${key} is ${v === null || v === undefined || v === "" ? "missing" : `not a number (“${v}”)`}.`, { field }));
+    else if (v <= 0) issues.push(issue("E-008", `Interaction exponent ${key} = ${v}; exponents must be greater than zero.`, { field }));
+    else if (v < 1) issues.push(issue("W-007", `Interaction exponent ${key} = ${v} gives a non-convex, unconservative interaction curve.`, { field }));
+  }
+  if (isNum(it.a) && isNum(it.b) && it.a > 0 && it.b > 0 && !(it.a === 1 && it.b === 1)) {
+    issues.push(issue("W-006", `Exponents (a, b) = (${it.a}, ${it.b}): MS is the exact load scale factor k* − 1 at which IF(k*) = 1, not the 1/IF − 1 convention.`, { field: "settings.interaction" }));
+  }
+  const allowable = (value, label, field, fastener = null) => {
+    if (value === null || value === undefined) return;
+    if (!isNum(value)) issues.push(issue("E-002", `${label} is not a number (“${value}”).`, { field, fastener }));
+    else if (!(value > 0)) issues.push(issue("E-002", `${label} must be greater than zero (is ${value}).`, { field, fastener }));
+  };
+  allowable(pattern.defaults?.shearAllowable, "Default shear allowable Fs", "defaults.shearAllowable");
+  allowable(pattern.defaults?.tensionAllowable, "Default tension allowable Ft", "defaults.tensionAllowable");
+  for (const f of pattern.fasteners || []) {
+    const o = f.overrides || {};
+    if ("shearAllowable" in o) allowable(o.shearAllowable, `${f.id} Fs`, "shearAllowable", f.id);
+    if ("tensionAllowable" in o) allowable(o.tensionAllowable, `${f.id} Ft`, "tensionAllowable", f.id);
+  }
+  return issues;
+}
+
+/*
+ * `fasteners`: solve() fastener results (resolved properties plus shear and
+ * axial). Tension feeding the interaction is the positive part of T;
+ * unloading counts as zero (N-006).
+ */
+function fastenerChecks(fasteners, settings) {
+  const { a, b } = settings.interaction;
+  const issues = [];
+  const results = fasteners.map((f) => {
+    const Rs = f.shear.Rs;
+    const T = f.axial.T;
+    const Rt = Math.max(T, 0);
+    const Fs = f.shearAllowable, Ft = f.tensionAllowable;
+    const missing = [Fs === null || Fs === undefined ? "Fs" : null, Ft === null || Ft === undefined ? "Ft" : null].filter(Boolean);
+    let interaction;
+    if (missing.length) {
+      interaction = { mode: "interaction", label: MODES.interaction, status: "not-evaluated", ms: null, missing, Rs, Rt, a, b };
+    } else {
+      // Tension scales with the load; the prying and preload chain (M3) plugs in here.
+      const tensionAt = (k) => k * Rt;
+      const s = solveScale({ Rs, tensionAt, Fs, Ft, a, b });
+      interaction = { mode: "interaction", label: MODES.interaction, ...s, Rs, Rt, Fs, Ft, a, b, shearRatio: Rs / Fs, tensionRatio: Rt / Ft };
+      if (s.status === "not-computed") issues.push(issue("W-008", `${f.id}: ${s.reason}. MS not computed.`, { fastener: f.id }));
+      if (s.status === "preload") issues.push(issue("W-017", `${f.id}: IF(0) = ${s.IF0.toPrecision(4)} ≥ 1. MS not computed.`, { fastener: f.id }));
+    }
+    const modes = [interaction];
+    const evaluated = modes.filter((m) => m.status === "ok" || m.status === "unloaded");
+    const blocked = modes.filter((m) => m.status === "not-computed" || m.status === "preload");
+    let governing = null;
+    if (evaluated.length) {
+      const g = evaluated.reduce((lo, m) => (m.ms < lo.ms ? m : lo));
+      governing = { mode: g.mode, label: g.label, ms: g.ms };
+    }
+    return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: T < 0 && !missing.length };
+  });
+  const zeroed = results.filter((r) => r.unloadingCountedZero).map((r) => r.id);
+  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero tension: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
+  const withMargin = results.filter((r) => r.governing && Number.isFinite(r.governing.ms));
+  const critical = withMargin.length ? withMargin.reduce((lo, r) => (r.governing.ms < lo.governing.ms ? r : lo)) : null;
+  return {
+    fasteners: results,
+    critical: critical ? { id: critical.id, ms: critical.governing.ms, mode: critical.governing.mode, label: critical.governing.label } : null,
+    evaluatedCount: results.filter((r) => r.governing).length,
+    issues,
+  };
+}
+
+/* Display text for one mode's margin; `num` formats a finite number. */
+function marginText(m, num = String) {
+  if (!m) return "—";
+  if (m.status === "ok") return num(m.ms);
+  if (m.status === "unloaded") return "∞ (no load on this fastener)";
+  if (m.status === "not-evaluated") return `not evaluated (no allowable entered: ${m.missing.join(", ")})`;
+  if (m.status === "preload") return "MS not computed (preload alone exceeds the allowable, W-017)";
+  return "MS not computed (W-008)";
+}
+return { MODES, validateCheckInputs, fastenerChecks, marginText };
+})();
+
+/* ---- core/solve.mjs ---- */
+const __m8 = (() => {
 const { resolveFastener, validateInputs } = __m2;
 const { sectionProperties } = __m3;
 const { reduceLoad } = __m4;
 const { elasticShear, elasticAxialCentroid } = __m5;
 const { issue, hasErrors, sortIssues } = __m1;
+const { validateCheckInputs, fastenerChecks } = __m7;
 /* One calculation: validate, resolve properties, reduce the load, distribute
  * it, raise the catalogue issues and check equilibrium closure.
  *
@@ -845,6 +1083,7 @@ const { issue, hasErrors, sortIssues } = __m1;
  * no result fields are present, so nothing downstream can show numbers the
  * checks have rejected.
  */
+
 
 
 
@@ -879,7 +1118,7 @@ function closure(shear, axial, red, props) {
 }
 
 function solve(pattern) {
-  const issues = validateInputs(pattern);
+  const issues = [...validateInputs(pattern), ...validateCheckInputs(pattern)];
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
 
   const settings = pattern.settings || {};
@@ -929,7 +1168,7 @@ function solve(pattern) {
   const unloading = axial.T.filter((t) => t.T < -ZERO_TOL * tensionScale);
   for (const t of axial.T) t.unloading = unloading.includes(t);
   if (unloading.length) {
-    issues.push(issue("W-016", `Unloading (clamp-up) under method (a): ${unloading.map((t) => t.id).join(", ")}. The contact-edge method (b) is recommended.`, { fastener: unloading[0].id }));
+    issues.push(issue("W-016", `Unloading (clamp-up) under method (a): ${unloading.map((t) => t.id).join(", ")}. The contact-edge method (b) is recommended.`, { fasteners: unloading.map((t) => t.id) }));
   }
 
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
@@ -943,9 +1182,15 @@ function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
+  const checks = fastenerChecks(fastenerResults, settings);
+  issues.push(...checks.issues);
+  fastenerResults.forEach((f, i) => { f.checks = checks.fasteners[i]; });
   return {
     ok: true,
     issues: sortIssues(issues),
+    critical: checks.critical,
+    evaluatedCount: checks.evaluatedCount,
+    interaction: { a: settings.interaction.a, b: settings.interaction.b },
     unitSystem: pattern.unitSystem,
     props,
     reduced: red,
@@ -958,7 +1203,7 @@ return { EXTENT_WARNING, CLOSURE_TOL, ZERO_TOL, closure, solve };
 })();
 
 /* ---- core/format.mjs ---- */
-const __m7 = (() => {
+const __m9 = (() => {
 /* Display formatting. Exports keep full precision; the screen shows
  * `precision` significant figures (default 4). */
 
@@ -978,7 +1223,7 @@ return { fmt, fmtDeg };
 })();
 
 /* ---- core/scene.mjs ---- */
-const __m8 = (() => {
+const __m10 = (() => {
 const { unitLabel } = __m0;
 /* Shared scene model (spec section 9, "Diagram consistency").
  *
@@ -1121,7 +1366,7 @@ return { CENTROID_STYLE, niceStep, buildScene, gridLines };
 })();
 
 /* ---- core/generators.mjs ---- */
-const __m9 = (() => {
+const __m11 = (() => {
 const { round12 } = __m0;
 /* Pattern generators (spec section 7): rectangular array, staggered rows,
  * bolt circle and mirror. Generators return plain (x, y) points; the caller
@@ -1195,10 +1440,11 @@ return { rectangularArray, staggeredRows, boltCircle, mirror };
 })();
 
 /* ---- core/persist.mjs ---- */
-const __m10 = (() => {
+const __m12 = (() => {
 const { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, defaultSettings, resolveFastener } = __m2;
 const { UNIT_SYSTEMS, convertPattern, unitLabel } = __m0;
 const { issue } = __m1;
+const { marginText } = __m7;
 /* Persistence (spec section 8): canonical JSON and Markdown, import and export.
  *
  * JSON stores inputs and settings only, exactly as entered, tagged with
@@ -1209,6 +1455,7 @@ const { issue } = __m1;
  * error does not load. The app adopts the file's unit system: nothing is
  * converted on import.
  */
+
 
 
 
@@ -1451,8 +1698,8 @@ function toMarkdown(pattern, result = null, { version = "", date = "" } = {}) {
   if (date) lines.push(`- Exported: ${date}`);
   const resolved = pattern.fasteners.map((f) => resolveFastener(pattern, f));
   lines.push("", "## Fasteners", "",
-    mdTable(["id", "label", `x (${u("length")})`, `y (${u("length")})`, `area (${u("area")})`, "ks", "ka", `diameter (${u("length")})`],
-      resolved.map((f) => [f.id, f.label, f.x, f.y, f.area, f.ks, f.ka, f.diameter])),
+    mdTable(["id", "label", `x (${u("length")})`, `y (${u("length")})`, `area (${u("area")})`, "ks", "ka", `diameter (${u("length")})`, `Fs (${u("force")})`, `Ft (${u("force")})`],
+      resolved.map((f) => [f.id, f.label, f.x, f.y, f.area, f.ks, f.ka, f.diameter, f.shearAllowable, f.tensionAllowable])),
     "", "## Plates", "",
     mdTable(["id", `thickness (${u("length")})`, `xMin (${u("length")})`, `xMax (${u("length")})`, `yMin (${u("length")})`, `yMax (${u("length")})`],
       pattern.plates.map((p) => [p.id, p.thickness, p.xMin, p.xMax, p.yMin, p.yMax])),
@@ -1496,6 +1743,19 @@ function resultSections(pattern, result) {
     "", "## Fastener loads (elastic)", "",
     mdTable(["id", `Rdx (${u("force")})`, `Rdy (${u("force")})`, `Rtx (${u("force")})`, `Rty (${u("force")})`, `Rs (${u("force")})`, "direction (°)", `T (${u("force")})`, "state"],
       result.fasteners.map((f) => [f.id, f.shear.Rdx, f.shear.Rdy, f.shear.Rtx, f.shear.Rty, f.shear.Rs, f.shear.angleDeg, f.axial.T, f.axial.unloading ? "unloading" : f.axial.T > 0 ? "tension" : "—"])),
+    "", `## Margins of safety (elastic basis, a = ${result.interaction.a}, b = ${result.interaction.b})`, "",
+    result.critical
+      ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
+      : "No margin evaluated: no allowables entered.",
+    "",
+    "IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the positive tension; unloading counts as zero.",
+    "",
+    mdTable(["id", `Rs (${u("force")})`, `Rt (${u("force")})`, `Fs (${u("force")})`, `Ft (${u("force")})`, "IF(1)", "k*", "MS interaction", "governing MS", "governing mode"],
+      result.fasteners.map((f) => {
+        const m = f.checks.modes.find((x) => x.mode === "interaction");
+        const g = f.checks.governing;
+        return [f.id, m.Rs, m.Rt, m.Fs ?? "", m.Ft ?? "", m.status === "not-evaluated" ? "" : m.IF1, m.status === "ok" ? m.kStar : "", marginText(m), g ? (Number.isFinite(g.ms) ? g.ms : "∞") : "not evaluated", g ? g.label : ""];
+      })),
     "", "## Equilibrium closure", "",
     mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
     "", ...issueTable(result.issues),
@@ -1547,7 +1807,10 @@ function fromTables(text) {
   const appDefaults = convertPattern({ unitSystem: "N-mm", defaults: defaultProperties(), fasteners: [], plates: [], load: defaultLoad() }, UNIT_SYSTEMS.includes(unit) ? unit : "N-mm").defaults;
   const fasteners = fastenerRows.map((r) => {
     const overrides = {};
-    for (const key of ["area", "ks", "ka", "diameter"]) {
+    const columns = { area: "area", ks: "ks", ka: "ka", diameter: "diameter", shearAllowable: "Fs", tensionAllowable: "Ft" };
+    for (const [key, column] of Object.entries(columns)) {
+      if (!(column in r)) continue;
+      r[key] = r[column];
       const v = num(r[key]);
       if (r[key] !== undefined && r[key] !== "" && v !== appDefaults[key]) overrides[key] = Number.isFinite(v) ? v : r[key];
     }
@@ -1588,7 +1851,7 @@ function parseMarkdown(text) {
   }
   const parsed = normalizePattern(tables.raw);
   if (!parsed.pattern) return { ...parsed, source: "tables" };
-  const lost = issue("W-018", `Markdown import used the tables because ${reason}. Settings and group defaults reverted to app defaults (${Object.keys(defaultSettings()).join(", ")}; ${Object.keys(defaultProperties()).join(", ")}); only area, ks, ka and diameter were read per fastener; result tables were ignored.`);
+  const lost = issue("W-018", `Markdown import used the tables because ${reason}. Settings and group defaults reverted to app defaults (${Object.keys(defaultSettings()).join(", ")}; ${Object.keys(defaultProperties()).join(", ")}); only area, ks, ka, diameter, Fs and Ft were read per fastener; result tables were ignored.`);
   return { ...parsed, issues: [lost, ...parsed.issues.filter((i) => i.id !== "W-018")], source: "tables" };
 }
 
@@ -1601,9 +1864,10 @@ return { MAX_PLATES, MIGRATIONS, normalizePattern, toJSON, parseJSON, checksum, 
 })();
 
 /* ---- core/verify.mjs ---- */
-const __m11 = (() => {
+const __m13 = (() => {
 const { examplePattern } = __m2;
-const { solve } = __m6;
+const { solve } = __m8;
+const { solveScale } = __m6;
 /* Verification set (spec section 10), shared by the in-app "Run verification"
  * panel and the Node test suite so both run exactly the same cases.
  *
@@ -1615,7 +1879,8 @@ const { solve } = __m6;
 
 
 
-const VERIFICATION_SET = "M1";
+
+const VERIFICATION_SET = "M2";
 const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
@@ -1721,6 +1986,35 @@ const HAND_CASES = [
       return [
         check("My,a", r.reduced.axial.My, 50000),
         ...r.fasteners.map((f) => check(`T ${f.id} (x = ${f.x})`, f.axial.T, f.x > 0 ? -250 : 250)),
+      ];
+    },
+  },
+  {
+    id: "VC-07", title: "Interaction, Rs/Fs = 0.6, Rt/Ft = 0.5; a = b = 2 and a = b = 1",
+    run() {
+      // One fastener carrying Rs = 600 N and T = 500 N against Fs = Ft = 1000 N.
+      const run = (a, b) => {
+        const p = pattern([[0, 0]], { Fy: -600, Fz: 500 });
+        p.defaults.shearAllowable = 1000;
+        p.defaults.tensionAllowable = 1000;
+        p.settings.interaction = { a, b };
+        const r = solved(p);
+        return { r, m: r.fasteners[0].checks.modes.find((x) => x.mode === "interaction") };
+      };
+      const e = run(2, 2), l = run(1, 1);
+      const ids = (r) => r.issues.map((i) => i.id);
+      return [
+        check("IF(1), a = b = 2", e.m.IF1, 0.61),
+        check("MS, a = b = 2 (exact 1/√0.61 − 1)", e.m.ms, 1 / Math.sqrt(0.61) - 1),
+        check("MS, a = b = 2 (spec, ±5e-5)", e.m.ms, 0.2804, { abs: 5e-5 }),
+        check("IF(k*) = 1", Math.pow(e.m.kStar * 0.6, 2) + Math.pow(e.m.kStar * 0.5, 2), 1),
+        truth("W-006 raised for (2, 2)", ids(e.r).includes("W-006")),
+        check("IF(1), a = b = 1", l.m.IF1, 1.1),
+        check("MS, a = b = 1 (exact 1/1.1 − 1)", l.m.ms, 1 / 1.1 - 1),
+        check("MS, a = b = 1 (spec, ±5e-5)", l.m.ms, -0.0909, { abs: 5e-5 }),
+        check("MS = 1/IF − 1 when a = b = 1", l.m.ms, 1 / l.m.IF1 - 1),
+        truth("no W-006 for (1, 1)", !ids(l.r).includes("W-006")),
+        truth("critical fastener named with its mode", e.r.critical?.id === "F1" && e.r.critical.mode === "interaction"),
       ];
     },
   },
@@ -1847,6 +2141,53 @@ const PROPERTY_CASES = [
   },
 ];
 
+const withAllowables = (p, Fs, Ft, a, b) => {
+  p.defaults.shearAllowable = Fs;
+  p.defaults.tensionAllowable = Ft;
+  p.settings.interaction = { a, b };
+  return p;
+};
+const interactionOf = (f) => f.checks.modes.find((m) => m.mode === "interaction");
+
+PROPERTY_CASES.push(
+  {
+    id: "P-07", title: "Load scaling: k* at λ × load is k* / λ (no preload)",
+    run() {
+      const lam = 2.5;
+      const p = withAllowables(base(), 9000, 12000, 2.3, 1.7);
+      const q = JSON.parse(JSON.stringify(p));
+      for (const k of ["Fx", "Fy", "Fz", "Mx", "My", "Mz"]) q.load[k] *= lam;
+      const a = solved(p), b = solved(q);
+      return a.fasteners.map((f, i) => check(`k* ${f.id}`, interactionOf(b.fasteners[i]).kStar, interactionOf(f).kStar / lam));
+    },
+  },
+  {
+    id: "P-08", title: "Exact-k solution satisfies IF(k*) = 1 for unequal exponents",
+    run() {
+      const cases = [[2, 2], [1, 1], [3, 1.5], [1.2, 2.8], [0.8, 2]];
+      return cases.flatMap(([a, b]) => {
+        const Rs = 700, Rt = 450, Fs = 1000, Ft = 900;
+        const s = solveScale({ Rs, tensionAt: (k) => k * Rt, Fs, Ft, a, b });
+        const at = Math.pow(s.kStar * Rs / Fs, a) + Math.pow(s.kStar * Rt / Ft, b);
+        return [check(`IF(k*) (a = ${a}, b = ${b})`, at, 1), truth(`status ok (a = ${a}, b = ${b})`, s.status === "ok")];
+      });
+    },
+  },
+  {
+    id: "P-09", title: "Governing MS and critical fastener",
+    run() {
+      const p = withAllowables(base(), 9000, 12000, 2, 2);
+      const r = solved(p);
+      const min = Math.min(...r.fasteners.map((f) => f.checks.governing.ms));
+      return [
+        check("critical MS is the lowest governing MS", r.critical.ms, min),
+        truth("critical fastener has that MS", r.fasteners.find((f) => f.id === r.critical.id).checks.governing.ms === min),
+        truth("no margin without allowables", solved(base()).fasteners.every((f) => f.checks.governing === null && f.checks.modes[0].status === "not-evaluated")),
+      ];
+    },
+  },
+);
+
 const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES];
 
 /* Run every case; a case that throws fails with the message. */
@@ -1865,12 +2206,12 @@ return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, ALL_CASES, runVe
 })();
 
 /* ---- core/meta.mjs ---- */
-const __m12 = (() => {
+const __m14 = (() => {
 /* Tool identity and the conventions every report repeats. */
 
 const TOOL_NAME = "Fastener Pattern CG Tracker";
-const TOOL_VERSION = "0.1.0-m1";
-const MILESTONE = "M1";
+const TOOL_VERSION = "0.2.0-m2";
+const MILESTONE = "M2";
 
 const CONVENTIONS = [
   "Right-handed axes: x right, y up, z toward the viewer.",
@@ -1885,14 +2226,15 @@ const ASSUMPTIONS = [
   "Elastic in-plane shear: rigid plate rotating about Cs, fasteners sharing load in proportion to ks.",
   "Axial method (a): rigid plate with the neutral axis through Ca; the joint is assumed to stay clamped (W-005). Unloading fasteners are shown as computed.",
   "Section properties are in length² × stiffness weight.",
-  "All allowables are keyed in by the user; the tool ships none.",
+  "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
+  "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero tension (N-006).",
 ];
 return { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS };
 })();
 
 /* ---- ui/canvas.mjs ---- */
-const __m13 = (() => {
-const { gridLines } = __m8;
+const __m15 = (() => {
+const { gridLines } = __m10;
 /* Canvas painter and pointer handling. All geometry comes from the scene
  * model; this file only turns its primitives into Canvas 2D calls. */
 
@@ -2040,7 +2382,7 @@ return { palette, centroidPath, paint, hitTest };
 })();
 
 /* ---- ui/storage.mjs ---- */
-const __m14 = (() => {
+const __m16 = (() => {
 /* Browser persistence (spec 8.1): a named library and a separately
  * autosaved working pattern, both in localStorage. Every access is guarded:
  * storage can be missing (private windows) or full. */
@@ -2114,11 +2456,11 @@ return { LIBRARY_KEY, WORKING_KEY, StorageFullError, readLibrary, writeLibrary, 
 })();
 
 /* ---- ui/webmcp.mjs ---- */
-const __m15 = (() => {
+const __m17 = (() => {
 const { CATALOG } = __m1;
-const { normalizePattern, toJSON } = __m10;
-const { solve } = __m6;
-const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m12;
+const { normalizePattern, toJSON } = __m12;
+const { solve } = __m8;
+const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m14;
 const { UNIT_LABELS } = __m0;
 /* WebMCP tools: let an agent read the page's pattern and run the same
  * solver on any pattern without changing the page. */
@@ -2144,7 +2486,11 @@ function summarize(result) {
     fasteners: result.fasteners.map((f) => ({
       id: f.id, x: f.x, y: f.y, Rdx: f.shear.Rdx, Rdy: f.shear.Rdy, Rtx: f.shear.Rtx, Rty: f.shear.Rty,
       Rs: f.shear.Rs, directionDeg: f.shear.angleDeg, T: f.axial.T, unloading: !!f.axial.unloading,
+      checks: f.checks.modes.map(({ mode, status, IF1, kStar, ms, missing }) => ({ mode, status, IF1, kStar: Number.isFinite(kStar) ? kStar : null, ms: Number.isFinite(ms) ? ms : null, missing: missing || [] })),
+      governingMS: f.checks.governing && Number.isFinite(f.checks.governing.ms) ? f.checks.governing.ms : null,
     })),
+    interaction: result.interaction,
+    critical: result.critical,
     closure: result.closure.checks.map(({ name, residual, pass }) => ({ name, residual, pass })),
     issues: result.issues,
   };
@@ -2165,7 +2511,7 @@ function registerTools({ current, markdown }) {
   });
   mc.registerTool({
     name: "get_current_pattern",
-    description: "Return the pattern on the page (canonical JSON inputs) and its results: centroids, J, Ixx, Iyy, Ixy, principal axes, reduced load, per-fastener loads and warnings.",
+    description: "Return the pattern on the page (canonical JSON inputs) and its results: centroids, J, Ixx, Iyy, Ixy, principal axes, reduced load, per-fastener loads, interaction margins (exact-k MS), the critical fastener and warnings.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     annotations: { readOnlyHint: true },
     async execute() { const { pattern, result } = current(); return text({ pattern: JSON.parse(toJSON(pattern)), results: summarize(result) }); },
@@ -2199,22 +2545,26 @@ return { summarize, registerTools };
 })();
 
 /* ---- ui/app.mjs ---- */
-const __m16 = (() => {
+const __m18 = (() => {
 const { examplePattern, addFastener, clone } = __m2;
-const { solve } = __m6;
+const { solve } = __m8;
 const { convertPattern, unitLabel, round12, UNIT_SYSTEMS } = __m0;
-const { fmt } = __m7;
-const { buildScene, CENTROID_STYLE } = __m8;
-const { rectangularArray, staggeredRows, boltCircle, mirror } = __m9;
-const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m10;
-const { runVerification } = __m11;
+const { fmt } = __m9;
+const { buildScene, CENTROID_STYLE } = __m10;
+const { rectangularArray, staggeredRows, boltCircle, mirror } = __m11;
+const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m12;
+const { runVerification } = __m13;
 const { sortIssues } = __m1;
-const { TOOL_VERSION } = __m12;
-const { paint, palette, hitTest, centroidPath } = __m13;
-const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m14;
-const { registerTools } = __m15;
+const { marginText } = __m7;
+const { PRESETS } = __m6;
+const { TOOL_VERSION } = __m14;
+const { paint, palette, hitTest, centroidPath } = __m15;
+const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m16;
+const { registerTools } = __m17;
 /* Page controller: state, inputs, table, canvas, results, warnings,
  * library and files. Calculations all come from ../core. */
+
+
 
 
 
@@ -2292,6 +2642,8 @@ function recompute() {
   renderResults();
   renderIssues();
   markInvalid();
+  renderInline();
+  renderPresets();
   draw();
   autosave();
 }
@@ -2343,7 +2695,7 @@ function renderTable() {
   const d = state.pattern.defaults;
   const cell = (fa, key) => {
     const has = fa.overrides && key in fa.overrides;
-    return `<td><input type="number" step="any" aria-label="${esc(fa.id)} ${key}" data-id="${esc(fa.id)}" data-key="${key}" class="${has ? "override" : ""}" value="${has ? esc(inputText(fa.overrides[key])) : ""}" placeholder="${esc(inputText(d[key]))}"></td>`;
+    return `<td><input type="number" step="any" aria-label="${esc(fa.id)} ${key}" data-id="${esc(fa.id)}" data-key="${key}" class="${has ? "override" : ""}" value="${has ? esc(inputText(fa.overrides[key])) : ""}" placeholder="${esc(d[key] === null || d[key] === undefined ? "—" : inputText(d[key]))}"></td>`;
   };
   $("#fastener-rows").innerHTML = state.pattern.fasteners.map((fa) => `
     <tr data-row="${esc(fa.id)}" class="${fa.id === state.selected ? "selected" : ""}">
@@ -2351,9 +2703,9 @@ function renderTable() {
       <td><input type="text" aria-label="${esc(fa.id)} label" data-id="${esc(fa.id)}" data-key="label" value="${esc(fa.label)}"></td>
       <td><input type="number" step="any" aria-label="${esc(fa.id)} x" data-id="${esc(fa.id)}" data-key="x" value="${esc(inputText(fa.x))}"></td>
       <td><input type="number" step="any" aria-label="${esc(fa.id)} y" data-id="${esc(fa.id)}" data-key="y" value="${esc(inputText(fa.y))}"></td>
-      ${cell(fa, "area")}${cell(fa, "ks")}${cell(fa, "ka")}${cell(fa, "diameter")}
+      ${cell(fa, "area")}${cell(fa, "ks")}${cell(fa, "ka")}${cell(fa, "diameter")}${cell(fa, "shearAllowable")}${cell(fa, "tensionAllowable")}
       <td><button class="btn danger" type="button" data-remove="${esc(fa.id)}" aria-label="Remove ${esc(fa.id)}">×</button></td>
-    </tr>`).join("") || `<tr><td colspan="9" class="muted">No fasteners. Click the canvas, use a generator or “+ Fastener”.</td></tr>`;
+    </tr>`).join("") || `<tr><td colspan="11" class="muted">No fasteners. Click the canvas, use a generator or “+ Fastener”.</td></tr>`;
 }
 
 function renderLibrary() {
@@ -2609,6 +2961,23 @@ function renderResults() {
         `<b>${f(q.shear.Rs, forceScale)}</b>`, q.shear.Rs > 0 ? `${f(q.shear.angleDeg, 360)}°` : "—", f(q.axial.T, forceScale), st];
     }), { numeric: [1, 2, 3, 4, 5, 6, 7] });
 
+  const ms = (m) => (m.status === "ok" ? `<span class="${m.ms < 0 ? "ms-neg" : ""}">${f(m.ms)}</span>` : `<span class="muted">${esc(marginText(m))}</span>`);
+  const checks = table(["Fastener", `Rs (${F})`, `Rt (${F})`, `Fs (${F})`, `Ft (${F})`, "IF(1)", "k*", "MS interaction", "Governing MS"],
+    r.fasteners.map((q) => {
+      const m = q.checks.modes.find((x) => x.mode === "interaction");
+      const crit = r.critical && r.critical.id === q.id ? ' <span class="tag unloading">critical</span>' : "";
+      const zero = q.axial.unloading ? ' <span class="tag">T counted as 0</span>' : "";
+      const evaluated = m.status !== "not-evaluated";
+      return [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button>${crit}`,
+        f(m.Rs, forceScale), `${f(m.Rt, forceScale)}${zero}`, evaluated ? f(m.Fs) : "—", evaluated ? f(m.Ft) : "—",
+        evaluated && Number.isFinite(m.IF1) ? f(m.IF1) : "—", m.status === "ok" ? f(m.kStar) : "—", ms(m),
+        q.checks.governing ? `<b>${Number.isFinite(q.checks.governing.ms) ? f(q.checks.governing.ms) : "∞"}</b> <span class="muted">(${esc(q.checks.governing.label)})</span>` : '<span class="muted">—</span>'];
+    }), { numeric: [1, 2, 3, 4, 5, 6] });
+  const it = r.interaction;
+  const crit = r.critical
+    ? `<p class="critical">Critical fastener <b>${esc(r.critical.id)}</b>: governing MS <b class="ms ${r.critical.ms < 0 ? "ms-neg" : ""}">${f(r.critical.ms)}</b> — ${esc(r.critical.label)}${(it.a !== 1 || it.b !== 1) ? ` <span class="muted">(exact load scale factor, not 1/IF − 1; W-006)</span>` : ""}.</p>`
+    : `<p class="critical muted">No margin evaluated: enter shear and tension allowables Fs and Ft (group defaults or per-fastener overrides). A check without its allowable shows “not evaluated” and never a margin.</p>`;
+
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],
     r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
     { numeric: [1, 2] });
@@ -2626,6 +2995,10 @@ function renderResults() {
     <h3 style="margin-top:1.25rem">Fastener loads — elastic</h3>
     <p class="note">In-plane: direct Rd plus torsional Rt about Cs, resultant Rs and its direction CCW from +x. Out-of-plane: T by ${esc(axialNote)} Positive T is tension; unloading fasteners are shown as computed.</p>
     ${per}
+    <h3 style="margin-top:1.25rem">Margins of safety — elastic basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
+    ${crit}
+    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the positive tension; unloading counts as zero.</p>
+    ${checks}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
 
@@ -2634,8 +3007,36 @@ function renderIssues() {
   const count = (t) => issues.filter((i) => i.tier === t).length;
   $("#issue-counts").innerHTML = `<span>${count("error")} errors</span><span>${count("warning")} warnings</span><span>${count("note")} notes</span>`;
   $("#issues").innerHTML = issues.length ? issues.map((i) => `
-    <li class="${i.tier}"><span class="id">${i.id}</span><b>${esc(i.title)}</b>${i.fastener ? ` — <button class="link" type="button" data-select="${esc(i.fastener)}">${esc(i.fastener)}</button>` : ""}${i.field && !i.fastener ? ` — <code>${esc(i.field)}</code>` : ""}${i.fastener && i.field ? ` <code>${esc(i.field)}</code>` : ""}
+    <li class="${i.tier}"><span class="id">${i.id}</span><b>${esc(i.title)}</b>${i.fasteners?.length ? ` — ${i.fasteners.map((id) => `<button class="link" type="button" data-select="${esc(id)}">${esc(id)}</button>`).join(", ")}` : ""}${i.field && !i.fastener ? ` — <code>${esc(i.field)}</code>` : ""}${i.fastener && i.field ? ` <code>${esc(i.field)}</code>` : ""}
     <span class="detail">${esc(i.detail)}</span></li>`).join("") : `<li class="note">No warnings.</li>`;
+}
+
+/* Issue ids beside the field or fastener they name (every tier also appears in the list above). */
+function renderInline() {
+  for (const el of $$(".inline-issue")) el.remove();
+  const issues = [...state.importIssues, ...state.result.issues];
+  const badge = (i) => `<span class="inline-issue ${i.tier}" title="${esc(`${i.title}: ${i.detail}`)}">${i.id}</span>`;
+  const add = (target, i) => {
+    if (!target || target.querySelector(`.inline-issue[data-id="${i.id}"]`)) return;
+    target.insertAdjacentHTML("beforeend", badge(i).replace("<span ", `<span data-id="${i.id}" `));
+  };
+  for (const i of issues) {
+    if (i.fasteners?.length) {
+      for (const id of i.fasteners) add($(`#fastener-rows tr[data-row="${CSS.escape(id)}"] th`), i);
+    } else if (i.field) {
+      const input = $(`[data-path="${CSS.escape(i.field)}"]`);
+      const target = input ? input.closest("label")?.querySelector("span") : i.field === "settings.interaction" ? $("#interaction-card h3") : null;
+      add(target, i);
+    }
+  }
+}
+
+function renderPresets() {
+  const it = state.pattern.settings.interaction || {};
+  for (const b of $$("[data-preset]")) {
+    const p = PRESETS[b.dataset.preset];
+    b.setAttribute("aria-pressed", String(it.a === p.a && it.b === p.b));
+  }
 }
 
 /* ---------- verification ---------- */
@@ -2934,6 +3335,15 @@ function bind() {
     renderLibrary();
   });
   $("#run-verify").addEventListener("click", renderVerification);
+  for (const b of $$("[data-preset]")) {
+    b.addEventListener("click", () => {
+      const p = PRESETS[b.dataset.preset];
+      state.pattern.settings.interaction = { a: p.a, b: p.b };
+      $('[data-path="settings.interaction.a"]').value = p.a;
+      $('[data-path="settings.interaction.b"]').value = p.b;
+      changed();
+    });
+  }
 }
 
 /* ---------- start ---------- */
@@ -2964,8 +3374,8 @@ return { start };
 })();
 
 /* ---- ui/main.mjs ---- */
-const __m17 = (() => {
-const { start } = __m16;
+const __m19 = (() => {
+const { start } = __m18;
 /* Entry point of the built page. */
 
 

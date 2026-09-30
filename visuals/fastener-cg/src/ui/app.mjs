@@ -10,6 +10,8 @@ import { rectangularArray, staggeredRows, boltCircle, mirror } from "../core/gen
 import { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } from "../core/persist.mjs";
 import { runVerification } from "../core/verify.mjs";
 import { sortIssues } from "../core/warnings.mjs";
+import { marginText } from "../core/checks.mjs";
+import { PRESETS } from "../core/interaction.mjs";
 import { TOOL_VERSION } from "../core/meta.mjs";
 import { paint, palette, hitTest, centroidPath } from "./canvas.mjs";
 import { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } from "./storage.mjs";
@@ -77,6 +79,8 @@ function recompute() {
   renderResults();
   renderIssues();
   markInvalid();
+  renderInline();
+  renderPresets();
   draw();
   autosave();
 }
@@ -128,7 +132,7 @@ function renderTable() {
   const d = state.pattern.defaults;
   const cell = (fa, key) => {
     const has = fa.overrides && key in fa.overrides;
-    return `<td><input type="number" step="any" aria-label="${esc(fa.id)} ${key}" data-id="${esc(fa.id)}" data-key="${key}" class="${has ? "override" : ""}" value="${has ? esc(inputText(fa.overrides[key])) : ""}" placeholder="${esc(inputText(d[key]))}"></td>`;
+    return `<td><input type="number" step="any" aria-label="${esc(fa.id)} ${key}" data-id="${esc(fa.id)}" data-key="${key}" class="${has ? "override" : ""}" value="${has ? esc(inputText(fa.overrides[key])) : ""}" placeholder="${esc(d[key] === null || d[key] === undefined ? "—" : inputText(d[key]))}"></td>`;
   };
   $("#fastener-rows").innerHTML = state.pattern.fasteners.map((fa) => `
     <tr data-row="${esc(fa.id)}" class="${fa.id === state.selected ? "selected" : ""}">
@@ -136,9 +140,9 @@ function renderTable() {
       <td><input type="text" aria-label="${esc(fa.id)} label" data-id="${esc(fa.id)}" data-key="label" value="${esc(fa.label)}"></td>
       <td><input type="number" step="any" aria-label="${esc(fa.id)} x" data-id="${esc(fa.id)}" data-key="x" value="${esc(inputText(fa.x))}"></td>
       <td><input type="number" step="any" aria-label="${esc(fa.id)} y" data-id="${esc(fa.id)}" data-key="y" value="${esc(inputText(fa.y))}"></td>
-      ${cell(fa, "area")}${cell(fa, "ks")}${cell(fa, "ka")}${cell(fa, "diameter")}
+      ${cell(fa, "area")}${cell(fa, "ks")}${cell(fa, "ka")}${cell(fa, "diameter")}${cell(fa, "shearAllowable")}${cell(fa, "tensionAllowable")}
       <td><button class="btn danger" type="button" data-remove="${esc(fa.id)}" aria-label="Remove ${esc(fa.id)}">×</button></td>
-    </tr>`).join("") || `<tr><td colspan="9" class="muted">No fasteners. Click the canvas, use a generator or “+ Fastener”.</td></tr>`;
+    </tr>`).join("") || `<tr><td colspan="11" class="muted">No fasteners. Click the canvas, use a generator or “+ Fastener”.</td></tr>`;
 }
 
 function renderLibrary() {
@@ -394,6 +398,23 @@ function renderResults() {
         `<b>${f(q.shear.Rs, forceScale)}</b>`, q.shear.Rs > 0 ? `${f(q.shear.angleDeg, 360)}°` : "—", f(q.axial.T, forceScale), st];
     }), { numeric: [1, 2, 3, 4, 5, 6, 7] });
 
+  const ms = (m) => (m.status === "ok" ? `<span class="${m.ms < 0 ? "ms-neg" : ""}">${f(m.ms)}</span>` : `<span class="muted">${esc(marginText(m))}</span>`);
+  const checks = table(["Fastener", `Rs (${F})`, `Rt (${F})`, `Fs (${F})`, `Ft (${F})`, "IF(1)", "k*", "MS interaction", "Governing MS"],
+    r.fasteners.map((q) => {
+      const m = q.checks.modes.find((x) => x.mode === "interaction");
+      const crit = r.critical && r.critical.id === q.id ? ' <span class="tag unloading">critical</span>' : "";
+      const zero = q.axial.unloading ? ' <span class="tag">T counted as 0</span>' : "";
+      const evaluated = m.status !== "not-evaluated";
+      return [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button>${crit}`,
+        f(m.Rs, forceScale), `${f(m.Rt, forceScale)}${zero}`, evaluated ? f(m.Fs) : "—", evaluated ? f(m.Ft) : "—",
+        evaluated && Number.isFinite(m.IF1) ? f(m.IF1) : "—", m.status === "ok" ? f(m.kStar) : "—", ms(m),
+        q.checks.governing ? `<b>${Number.isFinite(q.checks.governing.ms) ? f(q.checks.governing.ms) : "∞"}</b> <span class="muted">(${esc(q.checks.governing.label)})</span>` : '<span class="muted">—</span>'];
+    }), { numeric: [1, 2, 3, 4, 5, 6] });
+  const it = r.interaction;
+  const crit = r.critical
+    ? `<p class="critical">Critical fastener <b>${esc(r.critical.id)}</b>: governing MS <b class="ms ${r.critical.ms < 0 ? "ms-neg" : ""}">${f(r.critical.ms)}</b> — ${esc(r.critical.label)}${(it.a !== 1 || it.b !== 1) ? ` <span class="muted">(exact load scale factor, not 1/IF − 1; W-006)</span>` : ""}.</p>`
+    : `<p class="critical muted">No margin evaluated: enter shear and tension allowables Fs and Ft (group defaults or per-fastener overrides). A check without its allowable shows “not evaluated” and never a margin.</p>`;
+
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],
     r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
     { numeric: [1, 2] });
@@ -411,6 +432,10 @@ function renderResults() {
     <h3 style="margin-top:1.25rem">Fastener loads — elastic</h3>
     <p class="note">In-plane: direct Rd plus torsional Rt about Cs, resultant Rs and its direction CCW from +x. Out-of-plane: T by ${esc(axialNote)} Positive T is tension; unloading fasteners are shown as computed.</p>
     ${per}
+    <h3 style="margin-top:1.25rem">Margins of safety — elastic basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
+    ${crit}
+    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the positive tension; unloading counts as zero.</p>
+    ${checks}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
 
@@ -419,8 +444,36 @@ function renderIssues() {
   const count = (t) => issues.filter((i) => i.tier === t).length;
   $("#issue-counts").innerHTML = `<span>${count("error")} errors</span><span>${count("warning")} warnings</span><span>${count("note")} notes</span>`;
   $("#issues").innerHTML = issues.length ? issues.map((i) => `
-    <li class="${i.tier}"><span class="id">${i.id}</span><b>${esc(i.title)}</b>${i.fastener ? ` — <button class="link" type="button" data-select="${esc(i.fastener)}">${esc(i.fastener)}</button>` : ""}${i.field && !i.fastener ? ` — <code>${esc(i.field)}</code>` : ""}${i.fastener && i.field ? ` <code>${esc(i.field)}</code>` : ""}
+    <li class="${i.tier}"><span class="id">${i.id}</span><b>${esc(i.title)}</b>${i.fasteners?.length ? ` — ${i.fasteners.map((id) => `<button class="link" type="button" data-select="${esc(id)}">${esc(id)}</button>`).join(", ")}` : ""}${i.field && !i.fastener ? ` — <code>${esc(i.field)}</code>` : ""}${i.fastener && i.field ? ` <code>${esc(i.field)}</code>` : ""}
     <span class="detail">${esc(i.detail)}</span></li>`).join("") : `<li class="note">No warnings.</li>`;
+}
+
+/* Issue ids beside the field or fastener they name (every tier also appears in the list above). */
+function renderInline() {
+  for (const el of $$(".inline-issue")) el.remove();
+  const issues = [...state.importIssues, ...state.result.issues];
+  const badge = (i) => `<span class="inline-issue ${i.tier}" title="${esc(`${i.title}: ${i.detail}`)}">${i.id}</span>`;
+  const add = (target, i) => {
+    if (!target || target.querySelector(`.inline-issue[data-id="${i.id}"]`)) return;
+    target.insertAdjacentHTML("beforeend", badge(i).replace("<span ", `<span data-id="${i.id}" `));
+  };
+  for (const i of issues) {
+    if (i.fasteners?.length) {
+      for (const id of i.fasteners) add($(`#fastener-rows tr[data-row="${CSS.escape(id)}"] th`), i);
+    } else if (i.field) {
+      const input = $(`[data-path="${CSS.escape(i.field)}"]`);
+      const target = input ? input.closest("label")?.querySelector("span") : i.field === "settings.interaction" ? $("#interaction-card h3") : null;
+      add(target, i);
+    }
+  }
+}
+
+function renderPresets() {
+  const it = state.pattern.settings.interaction || {};
+  for (const b of $$("[data-preset]")) {
+    const p = PRESETS[b.dataset.preset];
+    b.setAttribute("aria-pressed", String(it.a === p.a && it.b === p.b));
+  }
 }
 
 /* ---------- verification ---------- */
@@ -719,6 +772,15 @@ function bind() {
     renderLibrary();
   });
   $("#run-verify").addEventListener("click", renderVerification);
+  for (const b of $$("[data-preset]")) {
+    b.addEventListener("click", () => {
+      const p = PRESETS[b.dataset.preset];
+      state.pattern.settings.interaction = { a: p.a, b: p.b };
+      $('[data-path="settings.interaction.a"]').value = p.a;
+      $('[data-path="settings.interaction.b"]').value = p.b;
+      changed();
+    });
+  }
 }
 
 /* ---------- start ---------- */

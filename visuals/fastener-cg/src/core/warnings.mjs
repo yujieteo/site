@@ -59,9 +59,11 @@ export function tierOf(id) {
   return TIERS[id[0]];
 }
 
-export function issue(id, detail = "", { fastener = null, field = null } = {}) {
+/* `fastener` is the first (or only) fastener named; `fasteners` lists every one. */
+export function issue(id, detail = "", { fastener = null, fasteners = null, field = null } = {}) {
   if (!(id in CATALOG)) throw new Error(`Unknown warning id ${id}`);
-  return { id, tier: tierOf(id), title: CATALOG[id], detail, fastener, field };
+  const all = fasteners || (fastener ? [fastener] : []);
+  return { id, tier: tierOf(id), title: CATALOG[id], detail, fastener: fastener ?? all[0] ?? null, fasteners: all, field };
 }
 
 /* Errors first, then warnings, then notes; catalogue order within a tier. */

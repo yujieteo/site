@@ -22,7 +22,11 @@ export function summarize(result) {
     fasteners: result.fasteners.map((f) => ({
       id: f.id, x: f.x, y: f.y, Rdx: f.shear.Rdx, Rdy: f.shear.Rdy, Rtx: f.shear.Rtx, Rty: f.shear.Rty,
       Rs: f.shear.Rs, directionDeg: f.shear.angleDeg, T: f.axial.T, unloading: !!f.axial.unloading,
+      checks: f.checks.modes.map(({ mode, status, IF1, kStar, ms, missing }) => ({ mode, status, IF1, kStar: Number.isFinite(kStar) ? kStar : null, ms: Number.isFinite(ms) ? ms : null, missing: missing || [] })),
+      governingMS: f.checks.governing && Number.isFinite(f.checks.governing.ms) ? f.checks.governing.ms : null,
     })),
+    interaction: result.interaction,
+    critical: result.critical,
     closure: result.closure.checks.map(({ name, residual, pass }) => ({ name, residual, pass })),
     issues: result.issues,
   };
@@ -43,7 +47,7 @@ export function registerTools({ current, markdown }) {
   });
   mc.registerTool({
     name: "get_current_pattern",
-    description: "Return the pattern on the page (canonical JSON inputs) and its results: centroids, J, Ixx, Iyy, Ixy, principal axes, reduced load, per-fastener loads and warnings.",
+    description: "Return the pattern on the page (canonical JSON inputs) and its results: centroids, J, Ixx, Iyy, Ixy, principal axes, reduced load, per-fastener loads, interaction margins (exact-k MS), the critical fastener and warnings.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     annotations: { readOnlyHint: true },
     async execute() { const { pattern, result } = current(); return text({ pattern: JSON.parse(toJSON(pattern)), results: summarize(result) }); },
