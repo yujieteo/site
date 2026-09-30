@@ -70,7 +70,7 @@ the normal site build. There is no solver: reactions are drawn, not computed.
 Geometry is in world coordinates (mm, y up). Stored directions are degrees
 counter-clockwise from world +x; the triad only changes how they are shown.
 View settings (display units, triad, toggles) sit apart from geometry.
-Loading validates everything and rejects a file with a list of errors that
+Ids may use only letters, digits, `_` and `-`. Loading validates everything and rejects a file with a list of errors that
 name the exact path, for example `geometry.loads[1].at.body: unknown body
 "b9"`, rather than silently dropping content.
 
