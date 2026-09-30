@@ -286,10 +286,10 @@
     else { out.Zp = null; out.ZpNote = mats.size > 1 ? "Mixed materials: M_p is given instead of Z_p." : "Different tension and compression σ0.2: M_p is given instead of Z_p."; }
     out.shapeFactor = out.Mp !== null && out.Mel ? out.Mp / out.Mel : null;
 
-    /* ---- the same moments reduced by the applied axial force (null when N = 0) ---- */
+    /* ---- the same moments at the applied axial force N (null when N = 0) ---- */
     out.MelN = N === 0 ? null : firstYield(N);
-    const reduced = N === 0 ? null : plasticMoment(parts, alpha, free, N);
-    out.MpN = reduced ? reduced.M : null;
+    const atN = N === 0 ? null : plasticMoment(parts, alpha, free, N);
+    out.MpN = atN ? atN.M : null;
     return out;
   }
 

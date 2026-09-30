@@ -104,7 +104,7 @@ test("axial force: capacity limits and sign", () => {
   const pz = compute(z).plastic;
   near(pl.Zp, pz.Zp, 1e-12, { msg: "Z_p does not depend on N" });
   near(pl.shapeFactor, pz.shapeFactor, 1e-12, { msg: "the shape factor does not depend on N" });
-  assert.ok(pl.MpN < pl.Mp && pl.MelN < pl.Mel, "the axial force reduces M_p(N) and M_el(N)");
+  assert.ok(pl.MpN < pl.Mp && pl.MelN < pl.Mel, "for a symmetric rectangle the axial force lowers M_p(N) and M_el(N)");
 });
 
 test("tension and compression laws are used on their own sides", () => {

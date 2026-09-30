@@ -19,7 +19,7 @@
     "Q_x is the first moment of the part of the section above the centroidal x axis about that axis (equal to the part below); Q_y is the same beside the centroidal y axis. Both are exact because Green's theorem restricted to one side of a line needs no extra boundary.",
     "A torsion constant is shown only for a single library shape with a formula checked against a numerical Prandtl stress-function solution (linear finite elements with Richardson extrapolation). Each result states its measured accuracy.",
     "Plastic bending integrates Ramberg–Osgood stresses over strips of the exact geometry, with plane sections and the strain referred to the elastic centroid. The curve runs to the curvature at which the first fibre of any part reaches that material's ε_lim; the moment there is the allowable moment.",
-    "M_p is the fully plastic moment of the σ0.2 stress block (σ = +σ0.2 in tension and −σ0.2 in compression either side of the plastic neutral axis) and M_el the linear-elastic moment at which the first fibre reaches σ0.2, both at N = 0 with the same axis and mode; Z_p = M_p / σ0.2 and the shape factor M_p / M_el are therefore section properties independent of N. With an axial force, M_p(N) and M_el(N) are the same moments reduced by that force; the M–κ curve and M_lim are always at the applied N."
+    "M_p is the fully plastic moment of the σ0.2 stress block (σ = +σ0.2 in tension and −σ0.2 in compression either side of the plastic neutral axis) and M_el the linear-elastic moment at which the first fibre reaches σ0.2, both at N = 0 with the same axis and mode; Z_p = M_p / σ0.2 and the shape factor M_p / M_el are therefore section properties independent of N. With an axial force, M_p(N) and M_el(N) are the same moments at the applied axial force N (about the elastic centroid, so for unsymmetric or mixed sections they can exceed the N = 0 values); the M–κ curve and M_lim are always at the applied N."
   ],
   "conventions": [
     "x to the right and y up; angles counter-clockwise from x.",
@@ -35,7 +35,7 @@
     "Bredt–Batho is used for rectangular hollow sections only when the wall is uniform (each inner corner radius equals the outer radius minus t, or both are 0) and t is at most 0.1 of the smaller outside dimension.",
     "Mode (b) rotates the neutral axis so the moment about the perpendicular axis is zero; mode (a) keeps it parallel to the bending axis and reports the cross moment that needs.",
     "Z_p is given only when every solid part has the same material with equal tension and compression σ0.2; otherwise M_p is reported.",
-    "Z_p and the shape factor are computed at N = 0; the axial force reduces only M_p(N), M_el(N), the M–κ curve and M_lim.",
+    "Z_p and the shape factor are computed at N = 0; only M_p(N), M_el(N), the M–κ curve and M_lim are at the applied axial force N.",
     "Material presets are illustrative Ramberg–Osgood parameters, not certified data."
   ],
   "materials": [

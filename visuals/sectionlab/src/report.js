@@ -103,8 +103,8 @@
           ["Plastic modulus, Z_p = M_p / σ0.2", pl.Zp === null ? `n/a (${pl.ZpNote})` : fmt(pl.Zp), pl.Zp === null ? "" : "mm³"],
           ["Shape factor, M_p / M_el", fmt(pl.shapeFactor, 4), ""],
           ...(pl.N === 0 ? [] : [
-            ["First-yield moment reduced by the applied axial force, M_el(N)", pl.MelN === null ? "n/a (N alone reaches σ0.2)" : fmt(pl.MelN), pl.MelN === null ? "" : "N·mm"],
-            ["Fully plastic moment reduced by the applied axial force, M_p(N)", pl.MpN === null ? "n/a (N exceeds the fully plastic axial capacity)" : fmt(pl.MpN), pl.MpN === null ? "" : "N·mm"],
+            ["First-yield moment at the applied axial force N, M_el(N)", pl.MelN === null ? "n/a (N alone reaches σ0.2)" : fmt(pl.MelN), pl.MelN === null ? "" : "N·mm"],
+            ["Fully plastic moment at the applied axial force N, M_p(N)", pl.MpN === null ? "n/a (N exceeds the fully plastic axial capacity)" : fmt(pl.MpN), pl.MpN === null ? "" : "N·mm"],
           ]),
         ],
       });

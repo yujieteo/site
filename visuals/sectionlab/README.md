@@ -31,7 +31,7 @@ Units are mm, MPa (N/mm²), N and N·mm throughout.
 - **Plastic bending.** Ramberg–Osgood law per material (E, σ0.2, n, ε_lim, optional
   separate compression law). Fibre integration gives the M–κ curve up to the first
   fibre reaching ε_lim and the allowable moment there, plus Z_p and the shape factor
-  (at N = 0) and, with an axial force, the reduced M_p(N) and M_el(N). Bending
+  (at N = 0) and, with an axial force, M_p(N) and M_el(N) at the applied axial force N. Bending
   about x, y or a principal axis with an axial force N; the neutral axis either rotates
   for zero cross moment (b, default) or stays parallel to the axis (a).
 - **Exports.** PNG of the section and of the curve; a one-file PDF report written by a
