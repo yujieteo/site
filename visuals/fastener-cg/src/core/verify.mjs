@@ -8,8 +8,9 @@
 
 import { examplePattern } from "./model.mjs";
 import { solve } from "./solve.mjs";
+import { solveScale } from "./interaction.mjs";
 
-export const VERIFICATION_SET = "M1";
+export const VERIFICATION_SET = "M2";
 export const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
@@ -115,6 +116,35 @@ export const HAND_CASES = [
       return [
         check("My,a", r.reduced.axial.My, 50000),
         ...r.fasteners.map((f) => check(`T ${f.id} (x = ${f.x})`, f.axial.T, f.x > 0 ? -250 : 250)),
+      ];
+    },
+  },
+  {
+    id: "VC-07", title: "Interaction, Rs/Fs = 0.6, Rt/Ft = 0.5; a = b = 2 and a = b = 1",
+    run() {
+      // One fastener carrying Rs = 600 N and T = 500 N against Fs = Ft = 1000 N.
+      const run = (a, b) => {
+        const p = pattern([[0, 0]], { Fy: -600, Fz: 500 });
+        p.defaults.shearAllowable = 1000;
+        p.defaults.tensionAllowable = 1000;
+        p.settings.interaction = { a, b };
+        const r = solved(p);
+        return { r, m: r.fasteners[0].checks.modes.find((x) => x.mode === "interaction") };
+      };
+      const e = run(2, 2), l = run(1, 1);
+      const ids = (r) => r.issues.map((i) => i.id);
+      return [
+        check("IF(1), a = b = 2", e.m.IF1, 0.61),
+        check("MS, a = b = 2 (exact 1/√0.61 − 1)", e.m.ms, 1 / Math.sqrt(0.61) - 1),
+        check("MS, a = b = 2 (spec, ±5e-5)", e.m.ms, 0.2804, { abs: 5e-5 }),
+        check("IF(k*) = 1", Math.pow(e.m.kStar * 0.6, 2) + Math.pow(e.m.kStar * 0.5, 2), 1),
+        truth("W-006 raised for (2, 2)", ids(e.r).includes("W-006")),
+        check("IF(1), a = b = 1", l.m.IF1, 1.1),
+        check("MS, a = b = 1 (exact 1/1.1 − 1)", l.m.ms, 1 / 1.1 - 1),
+        check("MS, a = b = 1 (spec, ±5e-5)", l.m.ms, -0.0909, { abs: 5e-5 }),
+        check("MS = 1/IF − 1 when a = b = 1", l.m.ms, 1 / l.m.IF1 - 1),
+        truth("no W-006 for (1, 1)", !ids(l.r).includes("W-006")),
+        truth("critical fastener named with its mode", e.r.critical?.id === "F1" && e.r.critical.mode === "interaction"),
       ];
     },
   },
@@ -240,6 +270,53 @@ export const PROPERTY_CASES = [
     },
   },
 ];
+
+const withAllowables = (p, Fs, Ft, a, b) => {
+  p.defaults.shearAllowable = Fs;
+  p.defaults.tensionAllowable = Ft;
+  p.settings.interaction = { a, b };
+  return p;
+};
+const interactionOf = (f) => f.checks.modes.find((m) => m.mode === "interaction");
+
+PROPERTY_CASES.push(
+  {
+    id: "P-07", title: "Load scaling: k* at λ × load is k* / λ (no preload)",
+    run() {
+      const lam = 2.5;
+      const p = withAllowables(base(), 9000, 12000, 2.3, 1.7);
+      const q = JSON.parse(JSON.stringify(p));
+      for (const k of ["Fx", "Fy", "Fz", "Mx", "My", "Mz"]) q.load[k] *= lam;
+      const a = solved(p), b = solved(q);
+      return a.fasteners.map((f, i) => check(`k* ${f.id}`, interactionOf(b.fasteners[i]).kStar, interactionOf(f).kStar / lam));
+    },
+  },
+  {
+    id: "P-08", title: "Exact-k solution satisfies IF(k*) = 1 for unequal exponents",
+    run() {
+      const cases = [[2, 2], [1, 1], [3, 1.5], [1.2, 2.8], [0.8, 2]];
+      return cases.flatMap(([a, b]) => {
+        const Rs = 700, Rt = 450, Fs = 1000, Ft = 900;
+        const s = solveScale({ Rs, tensionAt: (k) => k * Rt, Fs, Ft, a, b });
+        const at = Math.pow(s.kStar * Rs / Fs, a) + Math.pow(s.kStar * Rt / Ft, b);
+        return [check(`IF(k*) (a = ${a}, b = ${b})`, at, 1), truth(`status ok (a = ${a}, b = ${b})`, s.status === "ok")];
+      });
+    },
+  },
+  {
+    id: "P-09", title: "Governing MS and critical fastener",
+    run() {
+      const p = withAllowables(base(), 9000, 12000, 2, 2);
+      const r = solved(p);
+      const min = Math.min(...r.fasteners.map((f) => f.checks.governing.ms));
+      return [
+        check("critical MS is the lowest governing MS", r.critical.ms, min),
+        truth("critical fastener has that MS", r.fasteners.find((f) => f.id === r.critical.id).checks.governing.ms === min),
+        truth("no margin without allowables", solved(base()).fasteners.every((f) => f.checks.governing === null && f.checks.modes[0].status === "not-evaluated")),
+      ];
+    },
+  },
+);
 
 export const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES];
 

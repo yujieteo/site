@@ -11,6 +11,7 @@ import { sectionProperties } from "./geometry.mjs";
 import { reduceLoad } from "./loads.mjs";
 import { elasticShear, elasticAxialCentroid } from "./elastic.mjs";
 import { issue, hasErrors, sortIssues } from "./warnings.mjs";
+import { validateCheckInputs, fastenerChecks } from "./checks.mjs";
 
 export const EXTENT_WARNING = 1e4;
 export const CLOSURE_TOL = 1e-9;
@@ -39,7 +40,7 @@ export function closure(shear, axial, red, props) {
 }
 
 export function solve(pattern) {
-  const issues = validateInputs(pattern);
+  const issues = [...validateInputs(pattern), ...validateCheckInputs(pattern)];
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
 
   const settings = pattern.settings || {};
@@ -89,7 +90,7 @@ export function solve(pattern) {
   const unloading = axial.T.filter((t) => t.T < -ZERO_TOL * tensionScale);
   for (const t of axial.T) t.unloading = unloading.includes(t);
   if (unloading.length) {
-    issues.push(issue("W-016", `Unloading (clamp-up) under method (a): ${unloading.map((t) => t.id).join(", ")}. The contact-edge method (b) is recommended.`, { fastener: unloading[0].id }));
+    issues.push(issue("W-016", `Unloading (clamp-up) under method (a): ${unloading.map((t) => t.id).join(", ")}. The contact-edge method (b) is recommended.`, { fasteners: unloading.map((t) => t.id) }));
   }
 
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
@@ -103,9 +104,15 @@ export function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
+  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL);
+  issues.push(...checks.issues);
+  fastenerResults.forEach((f, i) => { f.checks = checks.fasteners[i]; });
   return {
     ok: true,
     issues: sortIssues(issues),
+    critical: checks.critical,
+    evaluatedCount: checks.evaluatedCount,
+    interaction: { a: settings.interaction.a, b: settings.interaction.b },
     unitSystem: pattern.unitSystem,
     props,
     reduced: red,

@@ -12,6 +12,7 @@
 import { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, defaultSettings, resolveFastener } from "./model.mjs";
 import { UNIT_SYSTEMS, convertPattern, unitLabel } from "./units.mjs";
 import { issue } from "./warnings.mjs";
+import { marginText, noMarginSummary } from "./checks.mjs";
 
 export const MAX_PLATES = 2;
 
@@ -250,8 +251,8 @@ export function toMarkdown(pattern, result = null, { version = "", date = "" } =
   if (date) lines.push(`- Exported: ${date}`);
   const resolved = pattern.fasteners.map((f) => resolveFastener(pattern, f));
   lines.push("", "## Fasteners", "",
-    mdTable(["id", "label", `x (${u("length")})`, `y (${u("length")})`, `area (${u("area")})`, "ks", "ka", `diameter (${u("length")})`],
-      resolved.map((f) => [f.id, f.label, f.x, f.y, f.area, f.ks, f.ka, f.diameter])),
+    mdTable(["id", "label", `x (${u("length")})`, `y (${u("length")})`, `area (${u("area")})`, "ks", "ka", `diameter (${u("length")})`, `Fs (${u("force")})`, `Ft (${u("force")})`],
+      resolved.map((f) => [f.id, f.label, f.x, f.y, f.area, f.ks, f.ka, f.diameter, f.shearAllowable, f.tensionAllowable])),
     "", "## Plates", "",
     mdTable(["id", `thickness (${u("length")})`, `xMin (${u("length")})`, `xMax (${u("length")})`, `yMin (${u("length")})`, `yMax (${u("length")})`],
       pattern.plates.map((p) => [p.id, p.thickness, p.xMin, p.xMax, p.yMin, p.yMax])),
@@ -295,6 +296,19 @@ function resultSections(pattern, result) {
     "", "## Fastener loads (elastic)", "",
     mdTable(["id", `Rdx (${u("force")})`, `Rdy (${u("force")})`, `Rtx (${u("force")})`, `Rty (${u("force")})`, `Rs (${u("force")})`, "direction (°)", `T (${u("force")})`, "state"],
       result.fasteners.map((f) => [f.id, f.shear.Rdx, f.shear.Rdy, f.shear.Rtx, f.shear.Rty, f.shear.Rs, f.shear.angleDeg, f.axial.T, f.axial.unloading ? "unloading" : f.axial.T > 0 ? "tension" : "—"])),
+    "", `## Margins of safety (elastic basis, a = ${result.interaction.a}, b = ${result.interaction.b})`, "",
+    result.critical
+      ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
+      : noMarginSummary(result.fasteners.map((f) => f.checks)).text,
+    "",
+    "IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the positive tension; unloading counts as zero.",
+    "",
+    mdTable(["id", `Rs (${u("force")})`, `Rt (${u("force")})`, `Fs (${u("force")})`, `Ft (${u("force")})`, "IF(1)", "k*", "MS interaction", "governing MS", "governing mode"],
+      result.fasteners.map((f) => {
+        const m = f.checks.modes.find((x) => x.mode === "interaction");
+        const g = f.checks.governing;
+        return [f.id, m.Rs, m.Rt, m.Fs ?? "", m.Ft ?? "", m.status === "not-evaluated" ? "" : m.IF1, m.status === "ok" ? m.kStar : "", marginText(m), g ? (Number.isFinite(g.ms) ? g.ms : "∞") : "not evaluated", g ? g.label : ""];
+      })),
     "", "## Equilibrium closure", "",
     mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
     "", ...issueTable(result.issues),
@@ -346,7 +360,10 @@ function fromTables(text) {
   const appDefaults = convertPattern({ unitSystem: "N-mm", defaults: defaultProperties(), fasteners: [], plates: [], load: defaultLoad() }, UNIT_SYSTEMS.includes(unit) ? unit : "N-mm").defaults;
   const fasteners = fastenerRows.map((r) => {
     const overrides = {};
-    for (const key of ["area", "ks", "ka", "diameter"]) {
+    const columns = { area: "area", ks: "ks", ka: "ka", diameter: "diameter", shearAllowable: "Fs", tensionAllowable: "Ft" };
+    for (const [key, column] of Object.entries(columns)) {
+      if (!(column in r)) continue;
+      r[key] = r[column];
       const v = num(r[key]);
       if (r[key] !== undefined && r[key] !== "" && v !== appDefaults[key]) overrides[key] = Number.isFinite(v) ? v : r[key];
     }
@@ -387,7 +404,7 @@ export function parseMarkdown(text) {
   }
   const parsed = normalizePattern(tables.raw);
   if (!parsed.pattern) return { ...parsed, source: "tables" };
-  const lost = issue("W-018", `Markdown import used the tables because ${reason}. Settings and group defaults reverted to app defaults (${Object.keys(defaultSettings()).join(", ")}; ${Object.keys(defaultProperties()).join(", ")}); only area, ks, ka and diameter were read per fastener; result tables were ignored.`);
+  const lost = issue("W-018", `Markdown import used the tables because ${reason}. Settings and group defaults reverted to app defaults (${Object.keys(defaultSettings()).join(", ")}; ${Object.keys(defaultProperties()).join(", ")}); only area, ks, ka, diameter, Fs and Ft were read per fastener; result tables were ignored.`);
   return { ...parsed, issues: [lost, ...parsed.issues.filter((i) => i.id !== "W-018")], source: "tables" };
 }
 

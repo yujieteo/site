@@ -1,7 +1,7 @@
 {
   "title": "Fastener Pattern CG Tracker",
-  "version": "0.1.0-m1",
-  "milestone": "M1",
+  "version": "0.2.0-m2",
+  "milestone": "M2",
   "unitSystems": {
     "N-mm": {
       "length": "mm",
@@ -36,7 +36,8 @@
     "Elastic in-plane shear: rigid plate rotating about Cs, fasteners sharing load in proportion to ks.",
     "Axial method (a): rigid plate with the neutral axis through Ca; the joint is assumed to stay clamped (W-005). Unloading fasteners are shown as computed.",
     "Section properties are in length² × stiffness weight.",
-    "All allowables are keyed in by the user; the tool ships none."
+    "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
+    "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero tension (N-006)."
   ],
   "warnings": [
     {
@@ -251,7 +252,7 @@
     }
   ],
   "verification": {
-    "set": "M1",
+    "set": "M2",
     "tolerance": 1e-9,
     "cases": [
       {
@@ -277,6 +278,10 @@
       {
         "id": "VC-06",
         "title": "VC-01 pattern, Fx = 1 000 N at (0, 0, zp = 50)"
+      },
+      {
+        "id": "VC-07",
+        "title": "Interaction, Rs/Fs = 0.6, Rt/Ft = 0.5; a = b = 2 and a = b = 1"
       },
       {
         "id": "VC-09",
@@ -305,6 +310,18 @@
       {
         "id": "P-06",
         "title": "Sign convention (VC-04 to VC-06)"
+      },
+      {
+        "id": "P-07",
+        "title": "Load scaling: k* at λ × load is k* / λ (no preload)"
+      },
+      {
+        "id": "P-08",
+        "title": "Exact-k solution satisfies IF(k*) = 1 for unequal exponents"
+      },
+      {
+        "id": "P-09",
+        "title": "Governing MS and critical fastener"
       }
     ]
   },

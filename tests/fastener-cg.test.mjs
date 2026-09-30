@@ -12,6 +12,7 @@ import { buildScene } from "../visuals/fastener-cg/src/core/scene.mjs";
 import { fmt } from "../visuals/fastener-cg/src/core/format.mjs";
 import { CATALOG } from "../visuals/fastener-cg/src/core/warnings.mjs";
 import { registerTools } from "../visuals/fastener-cg/src/ui/webmcp.mjs";
+import { brent, solveScale, interactionValue } from "../visuals/fastener-cg/src/core/interaction.mjs";
 import { render, bundle } from "../visuals/fastener-cg/build.mjs";
 
 const VIZ = new URL("../visuals/fastener-cg/", import.meta.url);
@@ -28,7 +29,7 @@ function pattern(points, load = {}) {
 test("the whole in-app verification set passes", () => {
   const v = runVerification();
   for (const r of v.results) assert.ok(r.pass, `${r.id} ${r.error || r.checks.filter((c) => !c.pass).map((c) => `${c.label}: ${c.actual} vs ${c.expected}`).join("; ")}`);
-  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06"]);
+  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09"]);
   assert.equal(HAND_CASES.length + PROPERTY_CASES.length, v.results.length);
 });
 
@@ -94,7 +95,7 @@ test("errors block results and name the field or fastener", () => {
   const empty = pattern([]);
   let r = solve(empty);
   assert.equal(r.ok, false);
-  assert.deepEqual(ids(r.issues), ["E-001"]);
+  assert.deepEqual(ids(r.issues.filter((i) => i.tier === "error")), ["E-001"]);
   assert.equal(r.props, undefined);
 
   const p = examplePattern("N-mm");
@@ -390,5 +391,187 @@ test("the published page and data are built from the current sources", async () 
   assert.ok(!/<script[^>]+src=|<link[^>]+stylesheet|https?:\/\/(?!www\.w3\.org)/.test(html.replace(/<a [^>]*>/g, "")), "offline: no external scripts, styles or fetches");
   const raw = JSON.parse(outputs["raw.json"]);
   assert.equal(raw.warnings.length, Object.keys(CATALOG).length);
-  assert.ok(raw.verification.cases.length >= 13);
+  assert.ok(raw.verification.cases.length >= 17);
+});
+
+/* ---- M2: allowables, interaction, exact-k MS ---- */
+
+function loaded(Fs, Ft, a = 2, b = 2) {
+  const p = pattern([[50, 30], [50, -30], [-50, 30], [-50, -30]], { point: { x: 150, y: 0, z: 20 }, Fy: -10000, Fz: 6000, Mx: 90000 });
+  p.defaults.shearAllowable = Fs;
+  p.defaults.tensionAllowable = Ft;
+  p.settings.interaction = { a, b };
+  return p;
+}
+const interactionOf = (f) => f.checks.modes.find((m) => m.mode === "interaction");
+
+test("VC-07 through the solver: exact k*, IF(1) and the W-006 reconciliation", () => {
+  const run = (a, b) => {
+    const p = pattern([[0, 0]], { Fy: -600, Fz: 500 });
+    p.defaults.shearAllowable = 1000;
+    p.defaults.tensionAllowable = 1000;
+    p.settings.interaction = { a, b };
+    return solve(p);
+  };
+  const e = run(2, 2);
+  const m = interactionOf(e.fasteners[0]);
+  close(m.IF1, 0.61, 1e-12);
+  close(m.kStar, 1 / Math.sqrt(0.61), 1e-12);
+  assert.equal(Number(m.ms.toFixed(4)), 0.2804);
+  assert.ok(ids(e.issues).includes("W-006"));
+  assert.notEqual(Number(m.ms.toFixed(3)), Number((1 / 0.61 - 1).toFixed(3)), "not the 1/IF − 1 convention (0.639)");
+  const l = run(1, 1);
+  const n = interactionOf(l.fasteners[0]);
+  close(n.IF1, 1.1, 1e-12);
+  close(n.ms, 1 / 1.1 - 1, 1e-12);
+  assert.equal(Number(n.ms.toFixed(4)), -0.0909);
+  assert.ok(!ids(l.issues).includes("W-006"));
+});
+
+test("Brent solve matches closed forms and reports iterations", () => {
+  const r = brent((x) => x * x - 2, 0, 2);
+  assert.ok(r.converged);
+  close(r.root, Math.SQRT2, 1e-12);
+  assert.ok(r.iterations > 0 && r.iterations < 60);
+  assert.equal(brent((x) => x * x + 1, 0, 2).converged, false, "no sign change: no root, no number");
+  // Unequal exponents: bisect independently and compare.
+  const input = { Rs: 830, tensionAt: (k) => k * 410, Fs: 1000, Ft: 700, a: 2.4, b: 1.3 };
+  const s = solveScale(input);
+  let lo = 0, hi = 10;
+  for (let i = 0; i < 200; i++) { const mid = (lo + hi) / 2; if (interactionValue(mid, input) < 1) lo = mid; else hi = mid; }
+  close(s.kStar, (lo + hi) / 2, 1e-10);
+  assert.equal(s.status, "ok");
+});
+
+test("preload that alone exceeds the allowable and zero-load fasteners are not given fake margins", () => {
+  const pre = solveScale({ Rs: 100, tensionAt: (k) => 1200 + k * 50, Fs: 1000, Ft: 1000, a: 2, b: 2 });
+  assert.equal(pre.status, "preload");
+  assert.equal(pre.ms, null);
+  const idle = solveScale({ Rs: 0, tensionAt: () => 0, Fs: 1000, Ft: 1000, a: 2, b: 2 });
+  assert.equal(idle.status, "unloaded");
+  assert.equal(idle.ms, Infinity);
+  const bad = solveScale({ Rs: NaN, tensionAt: (k) => k, Fs: 1, Ft: 1, a: 2, b: 2 });
+  assert.equal(bad.status, "not-computed");
+  assert.equal(bad.ms, null);
+});
+
+test("interaction uses positive tension only and flags unloading as zero (N-006)", () => {
+  const r = solve(loaded(8000, 9000));
+  assert.ok(r.ok);
+  for (const f of r.fasteners) {
+    const m = interactionOf(f);
+    assert.equal(m.Rt, Math.max(f.axial.T, 0));
+    close(m.IF1, (f.shear.Rs / 8000) ** 2 + (Math.max(f.axial.T, 0) / 9000) ** 2, 1e-12);
+    close((m.kStar * f.shear.Rs / 8000) ** 2 + (m.kStar * m.Rt / 9000) ** 2, 1, 1e-10);
+  }
+  assert.ok(r.fasteners.some((f) => f.axial.T < 0));
+  assert.ok(ids(r.issues).includes("N-006"));
+});
+
+test("allowables: group defaults, sparse per-fastener overrides, and 'not evaluated' without them", () => {
+  const p = loaded(8000, 9000);
+  p.fasteners[2].overrides = { shearAllowable: 4000 };
+  p.fasteners[3].overrides = { tensionAllowable: null };
+  const r = solve(p);
+  assert.equal(interactionOf(r.fasteners[0]).Fs, 8000);
+  assert.equal(interactionOf(r.fasteners[2]).Fs, 4000);
+  const none = interactionOf(r.fasteners[3]);
+  assert.equal(none.status, "not-evaluated");
+  assert.deepEqual(none.missing, ["Ft"]);
+  assert.equal(none.ms, null);
+  assert.equal(r.fasteners[3].checks.governing, null);
+  const min = Math.min(...r.fasteners.filter((f) => f.checks.governing).map((f) => f.checks.governing.ms));
+  assert.equal(r.critical.ms, min);
+  assert.equal(r.critical.mode, "interaction");
+  // No allowables at all: nothing is evaluated and there is no critical fastener.
+  const bare = solve(loaded(null, null));
+  assert.equal(bare.critical, null);
+  assert.ok(bare.fasteners.every((f) => interactionOf(f).status === "not-evaluated"));
+});
+
+test("round-off loads on the neutral axis or at Cs count as zero: no spurious W-008 or N-006", () => {
+  const grid = [];
+  for (const y of [0.1, 0.2, 0.3]) for (const x of [0.1, 0.2, 0.3]) grid.push([x, y]);
+  const run = (load) => {
+    const p = pattern(grid, load);
+    p.defaults.shearAllowable = 1000;
+    p.defaults.tensionAllowable = 1000;
+    return solve(p);
+  };
+  // Ca.x computes to 0.2 + 4e-17, so under My the middle column carries T ≈ ±4.6e-13.
+  const middle = ["F2", "F5", "F8"];
+  for (const My of [-1000, 1000]) {
+    const r = run({ point: { x: 0.2, y: 0.2, z: 0 }, My });
+    assert.ok(r.ok);
+    assert.ok(!ids(r.issues).includes("W-008"));
+    for (const id of middle) {
+      const f = r.fasteners.find((q) => q.id === id);
+      assert.ok(f.axial.T !== 0 && Math.abs(f.axial.T) < 1e-9, `${id} T = ${f.axial.T} should be round-off`);
+      const m = interactionOf(f);
+      assert.equal(m.Rt, 0);
+      assert.equal(m.status, "unloaded");
+    }
+    const zeroed = r.fasteners.filter((f) => f.checks.unloadingCountedZero).map((f) => f.id);
+    assert.deepEqual(zeroed, r.fasteners.filter((f) => f.axial.unloading).map((f) => f.id));
+    const n006 = r.issues.find((i) => i.id === "N-006");
+    const w016 = r.issues.find((i) => i.id === "W-016");
+    assert.deepEqual(n006?.fasteners, w016?.fasteners);
+  }
+  const t = run({ point: { x: 0.2, y: 0.2, z: 0 }, Mz: 1000 });
+  assert.ok(t.ok);
+  assert.ok(!ids(t.issues).includes("W-008"));
+  const centre = interactionOf(t.fasteners.find((f) => f.id === "F5"));
+  assert.equal(centre.Rs, 0);
+  assert.equal(centre.status, "unloaded");
+});
+
+test("no finite margin: the UI and Markdown say why (no allowables, all unloaded, all not computed)", () => {
+  const markdownLine = (p) => toMarkdown(p, solve(p)).split("\n").find((l) => l.startsWith("No "));
+  const bare = loaded(null, null);
+  assert.equal(markdownLine(bare), "No margin evaluated: no allowables entered.");
+  const idle = pattern([[50, 30], [50, -30], [-50, 30], [-50, -30]]);
+  idle.defaults.shearAllowable = 8000;
+  idle.defaults.tensionAllowable = 9000;
+  const r = solve(idle);
+  assert.equal(r.critical, null);
+  assert.ok(r.evaluatedCount > 0);
+  assert.equal(markdownLine(idle), "No finite margin — unloaded (MS = ∞): F1, F2, F3, F4.");
+  const huge = loaded(1e30, 1e30);
+  const h = solve(huge);
+  assert.equal(h.critical, null);
+  assert.ok(h.fasteners.every((f) => interactionOf(f).status === "not-computed"));
+  assert.equal(markdownLine(huge), "No finite margin — MS not computed: F1, F2, F3, F4.");
+});
+
+test("exponent and allowable input errors: E-008, E-002, W-007", () => {
+  let r = solve(loaded(8000, 9000, 0, 2));
+  assert.equal(r.ok, false);
+  assert.deepEqual(r.issues.filter((i) => i.id === "E-008").map((i) => i.field), ["settings.interaction.a"]);
+  r = solve(loaded(8000, 9000, 2, -1));
+  assert.deepEqual(r.issues.filter((i) => i.id === "E-008").map((i) => i.field), ["settings.interaction.b"]);
+  r = solve(loaded(8000, 9000, 0.5, 2));
+  assert.ok(r.ok);
+  assert.ok(ids(r.issues).includes("W-007"));
+  assert.ok(ids(r.issues).includes("W-006"));
+  r = solve(loaded(8000, 9000, "two", 2));
+  assert.deepEqual(r.issues.filter((i) => i.tier === "error").map((i) => [i.id, i.field]), [["E-002", "settings.interaction.a"]]);
+  const p = loaded(-5, 9000);
+  p.fasteners[1].overrides = { tensionAllowable: 0 };
+  r = solve(p);
+  assert.deepEqual(r.issues.filter((i) => i.tier === "error").map((i) => [i.id, i.fastener, i.field]),
+    [["E-002", null, "defaults.shearAllowable"], ["E-002", "F2", "tensionAllowable"]]);
+});
+
+test("Markdown carries the margins and W-006, and the table fallback keeps per-fastener allowables", () => {
+  const p = loaded(8000, 9000);
+  p.fasteners[1].overrides = { shearAllowable: 5000 };
+  const md = toMarkdown(p, solve(p));
+  assert.match(md, /## Margins of safety/);
+  assert.match(md, /Critical fastener: \*\*F\d\*\*/);
+  assert.match(md, /\| W-006 \|/);
+  assert.equal(toJSON(parseMarkdown(md).pattern), toJSON(p));
+  const fallback = parseMarkdown(md.replace('"Fy": -10000', '"Fy": -1'));
+  assert.equal(fallback.source, "tables");
+  assert.deepEqual(fallback.pattern.fasteners[1].overrides, { shearAllowable: 5000, tensionAllowable: 9000 });
+  assert.equal(fallback.pattern.defaults.shearAllowable, null, "defaults revert to the app's (none shipped)");
 });
