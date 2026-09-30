@@ -1,0 +1,10 @@
+slug: beamdiag
+title: Beam diagram creator
+summary: "Build a straight beam with pinned and fixed supports, point forces, couples and distributed loads, and choose its section and material. Reactions, shear force, bending moment and deflection are solved in the browser by the stiffness method, so fixed–fixed, propped and continuous (statically indeterminate) beams work, and every jump at a point load or couple is kept. The same model downloads as an MSC Nastran SOL 101 .bdf deck; results are checked against an independent exact-arithmetic Python solver."
+source_url: https://github.com/yujieteo/site/tree/main/visuals/beamdiag
+fetched: "2026-09-30"
+html_path: visuals/beamdiag/index.html
+data_path: visuals/beamdiag/raw.json
+webmcp_tools: [get_metadata, get_current_beam, solve_beam, export_nastran_bdf]
+tags: [structural engineering, beams, finite element method, nastran]
+category: data visualization

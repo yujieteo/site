@@ -14,6 +14,13 @@ Arm’s fiscal 2026 revenue reached $4.92B and operating cash flow margin rose t
 - Fetched: 2026-09-28
 - WebMCP tools: get_data, get_metadata, query
 
+## Beam diagram creator
+Build a straight beam with pinned and fixed supports, point forces, couples and distributed loads, and choose its section and material. Reactions, shear force, bending moment and deflection are solved in the browser by the stiffness method, so fixed–fixed, propped and continuous (statically indeterminate) beams work, and every jump at a point load or couple is kept. The same model downloads as an MSC Nastran SOL 101 .bdf deck; results are checked against an independent exact-arithmetic Python solver.
+- HTML: https://teoyujie.org/visuals/beamdiag/index.html
+- Data: https://teoyujie.org/visuals/beamdiag/data.json
+- Fetched: 2026-09-30
+- WebMCP tools: get_metadata, get_current_beam, solve_beam, export_nastran_bdf
+
 ## The risk-neutral density is the curvature of the call-price curve
 Differentiate a call price twice in its strike: times e^rT, that curvature is the market-implied probability density of the stock ending at each strike. A Dirac delta hides in the payoff's kink.
 - HTML: https://teoyujie.org/visuals/breeden-litzenberger-density/index.html
