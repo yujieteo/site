@@ -1014,6 +1014,64 @@ test("ICR failure is reported with its residual and no partial numbers (W-014 pa
   assert.ok(sol.reason);
 });
 
+test("ICR is anchored on a ks-independent reference: loads between the geometric centre and a moved Cs converge to the uniform-ks answer", () => {
+  const at = (x, ks) => {
+    const p = withIcr(pattern(RECT4, { point: { x, y: 0, z: 0 }, Fy: -1000 }));
+    if (ks) { p.fasteners[0].overrides = { ks: 3 }; p.fasteners[3].overrides = { ks: 0.4 }; }
+    return solve(p);
+  };
+  const csX = at(0, true).props.Cs.x;
+  close(csX, 130 / 5.4, 1e-12);
+  for (const [x, gamma] of [[csX, 3.1732], [20, 3.3067], [10, 3.6504], [5, 3.8130]]) {
+    const r = at(x, true);
+    assert.equal(r.icr.status, "converged", `x = ${x}`);
+    assert.equal(r.icr.mode, "eccentric", `x = ${x}`);
+    assert.ok(!ids(r.issues).includes("W-014"));
+    close(r.icr.gamma, at(x, false).icr.gamma, 1e-6, `x = ${x}`);
+    close(r.icr.gamma, gamma, 1e-4, `x = ${x}`);
+  }
+});
+
+test("ICR with per-fastener Rult: translation only through the Rult-weighted centroid, γ_ult continuous beside it", () => {
+  const at = (x, Mz = 0) => {
+    const p = withIcr(pattern(RECT4, { point: { x, y: 0, z: 0 }, Fy: -1000, Mz }));
+    p.fasteners[1].overrides = { icr: { rult: 2000 } };
+    p.fasteners[3].overrides = { icr: { rult: 2000 } };
+    return solve(p).icr;
+  };
+  const through = at(0), tiny = at(0, 1);
+  assert.equal(through.mode, "translation");
+  assert.equal(tiny.mode, "eccentric");
+  close(tiny.gamma, through.gamma, 1e-5);
+  close(at(5).gamma, 5.7006, 1e-4);
+  close(at(10).gamma, 5.4356, 1e-4);
+  // A load along x through the reference (0, −10) is a translation; one through Cs (0, 0) is not.
+  const fs = RECT4.map(([x, y], i) => ({ id: `F${i + 1}`, x, y, icr: i % 2 ? { ...ICR, rult: 2000 } : ICR }));
+  assert.equal(icrSolve(fs, { x: 0, y: 0 }, { Fx: 1000, Fy: 0, Mz: 1e4 }).mode, "translation");
+  const viaCs = icrSolve(fs, { x: 0, y: 0 }, { Fx: 1000, Fy: 0, Mz: 0 });
+  assert.equal(viaCs.mode, "eccentric");
+  assert.ok(viaCs.gamma < through.gamma);
+});
+
+test("ICR with zero in-plane load: converged zero shear, no W-014, checks run with Rs = 0", () => {
+  const p = withIcr(pattern(RECT4, { Fz: 4000 }), { basis: "icr" });
+  p.defaults.shearAllowable = 12000; p.defaults.tensionAllowable = 15000;
+  const r = solve(p);
+  assert.equal(r.icr.status, "converged");
+  assert.equal(r.icr.mode, "no-shear");
+  assert.equal(r.icr.icr, null);
+  assert.ok(!ids(r.issues).includes("W-014"));
+  for (const f of r.fasteners) {
+    assert.equal(f.icr.atLoad.Rs, 0);
+    const m = f.checks.modes.find((x) => x.mode === "interaction");
+    assert.equal(m.Rs, 0);
+    close(m.Rt, 1000, 1e-9);
+    assert.ok(Number.isFinite(f.checks.governing.ms));
+  }
+  assert.match(toMarkdown(p, r), /## Margins of safety \(ICR basis,/);
+  assert.equal(buildScene(p, r, { width: 600, height: 400 }).icr, null);
+});
+
 test("design basis ICR: checks use the ICR reactions at the applied load (W-015), tension side unchanged", () => {
   const load = { point: { x: 150, y: 0, z: 0 }, Fy: -10000, Fz: 4000 };
   const el = withIcr(pattern(RECT4, load));

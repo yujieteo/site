@@ -419,7 +419,7 @@ td.status{color:var(--muted);font-size:.78rem}
     <li><b>Preload</b> P_max, P_min and load-sharing factor φ (required, 0 &lt; φ &lt; 1): F_b = max(P_max + φT, T) + Q, clamp force P_min − (1 − φ)T, separation load P_min/(1 − φ). Once clamp force reaches zero the joint is separated (W-013). F_b replaces the tension in the interaction and is re-evaluated at every load multiplier k; preload itself does not scale. Clamp force is reported but no friction-slip capacity is claimed (N-005). With preload off the tension is T + Q.</li>
     <li><b>Plates</b> (up to two, axis-aligned rectangles): every fastener is checked against every plate and the governing plate is reported. Bearing R_br,allow = Fbr·D·t (or a keyed direct-load allowable), MS = R_br,allow/Rs − 1. Tear-out casts a ray from the fastener along its bearing direction to the plate edge, giving e; capacity = 2·t·(e − D/2)·Fsu and MS = capacity/Rs − 1; e/D below the keyed minimum is W-011. The bearing direction is −R in the loaded plate (it is pushed along the load, so the fastener bears on the trailing side of the hole) and +R in the other plate. Geometry checks: a fastener outside a plate (E-004), fasteners closer than their diameter (E-005), edge distance below D/2 (E-006), and a load point outside the loaded plate (W-009).</li>
     <li><b>Axial method (b), contact edge</b>: the selected plate edge L is the neutral axis and fasteners act in tension only. With d the distance from L on the tension side, T = M_L·ka·d/Σ(ka·d²), where M_L is the moment about L (reduced to the projection of Ca onto L, so it includes the Fz lever) that puts the far side in tension. The contact reaction is C = ΣT − Fz. M_L ≤ 0 gives no tension (W-010: wrong edge), and C &lt; 0 means no contact (W-021: use method (a)). In v1 the moment about the axis perpendicular to L must be zero (E-012).</li>
-    <li><b>ICR method</b> (in-plane shear only; ks, tension, prying, preload and Fz never enter). Crawford-Kulak R = Rult(1 − e^(−μΔ))^λ or elastic-perfectly-plastic R = Rult·min(Δ/Δy, 1) with fracture at Δmax. Deformation is proportional to the distance ρ from the ICR, Δᵢ = Δmax,gov·ρᵢ/ρ_gov, where the governing fastener has the smallest Δmax/ρ. The ICR is searched on the line through Cs perpendicular to the load direction, on the side opposite the load's line of action, where moment and force equilibrium give the same ultimate load (bracketed Brent search, normalised moment residual 1e-6, 200 iterations). For an asymmetric group whose force perpendicular to the load does not vanish on that line, the ICR is refined off it by a damped Newton iteration so all three equilibrium equations hold. A pure moment starts at Cs; a load through Cs is a uniform translation. γ_ult = P_u/|F| scales the whole load with its eccentricity kept; γ_ult − 1 is an ultimate capacity, not comparable to the allowable-based MS. The reactions at the applied load are the ultimate reactions divided by γ_ult (proportional scaling convention, W-015). A search that does not converge shows "not converged" with its residual and no partial numbers (W-014), and the elastic result remains.</li>
+    <li><b>ICR method</b> (in-plane shear only; ks, tension, prying, preload and Fz never enter). Crawford-Kulak R = Rult(1 − e^(−μΔ))^λ or elastic-perfectly-plastic R = Rult·min(Δ/Δy, 1) with fracture at Δmax. Deformation is proportional to the distance ρ from the ICR, Δᵢ = Δmax,gov·ρᵢ/ρ_gov, where the governing fastener has the smallest Δmax/ρ. The search is anchored on the Rult-weighted centroid of the fasteners, which does not depend on ks (it equals Cs for uniform ks and Rult). The ICR is searched on the line through that point perpendicular to the load direction, at a distance from the load's line of action on the side that gives the rotation sense (both sides of the reference point are scanned), where moment and force equilibrium give the same ultimate load (bracketed Brent search, normalised moment residual 1e-6, 200 iterations). For an asymmetric group whose force perpendicular to the load does not vanish on that line, the ICR is refined off it by a damped Newton iteration so all three equilibrium equations hold. A pure moment starts at the reference point; a load is a uniform translation only when the uniform translation loads also balance its moment, and a zero in-plane load gives zero ICR shear. γ_ult = P_u/|F| scales the whole load with its eccentricity kept; γ_ult − 1 is an ultimate capacity, not comparable to the allowable-based MS. The reactions at the applied load are the ultimate reactions divided by γ_ult (proportional scaling convention, W-015). A search that does not converge shows "not converged" with its residual and no partial numbers (W-014), and the elastic result remains.</li>
     <li><b>Design basis</b>: elastic (default) or ICR selects which in-plane shear feeds the interaction, bearing and tear-out checks. The tension side always comes from the elastic or contact-edge distribution.</li>
     <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
     <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
@@ -1615,13 +1615,20 @@ const { issue } = __m1;
  *   Crawford-Kulak           R = Rult·(1 − e^(−μΔ))^λ
  *   elastic-perfectly-plastic R = Rult·min(Δ/Δy, 1), fracture at Δmax
  *
- * Search: with d̂ the applied force direction and e = |Mz,s|/|F|, the ICR
- * lies on the line through Cs perpendicular to d̂, on the side opposite the
- * load's line of action, at offset r₀. For each r₀ the ultimate load from
- * moment equilibrium about the ICR and from force equilibrium along d̂ are
- * compared, and a bracketed Brent search finds where they agree
- * (normalised moment residual ≤ 1e-6, 200-iteration cap). Pure moment puts
- * the ICR at Cs; pure shear (e = 0) is a uniform translation.
+ * Reference point: the Rult-weighted centroid C_R of the fasteners, which
+ * does not depend on ks (it equals Cs for uniform ks and Rult); Mz is
+ * re-reduced from Cs to it. A zero in-plane load is a converged zero-shear
+ * state. The load is a uniform translation only when the translation loads,
+ * scaled to |F|, carry the applied moment about C_R; otherwise the rotation
+ * sense is the sign of the leftover moment.
+ *
+ * Search: with d̂ the applied force direction, the ICR lies on the line
+ * through C_R perpendicular to d̂, on the side of the load's line of action
+ * that gives the rotation sense, at distance u from that line. For each u
+ * the ultimate load from moment equilibrium about the ICR and from force
+ * equilibrium along d̂ are compared, and a bracketed Brent search finds
+ * where they agree (normalised moment residual ≤ 1e-6, 200-iteration cap).
+ * The scan in u covers both sides of C_R. Pure moment starts the ICR at C_R.
  *
  * Asymmetric groups: on that line the force perpendicular to d̂ need not
  * vanish. When it does not (relative to the ultimate load, beyond the
@@ -1718,65 +1725,74 @@ function newton2(resid, O0, scaleL, { tol = ICR_TOL, maxIter = ICR_MAX_ITER } = 
  * Returns { status: "converged" | "not-converged", ... }.
  */
 function icrSolve(fasteners, Cs, load, model = "crawford-kulak", { tol = ICR_TOL, maxIter = ICR_MAX_ITER } = {}) {
-  const F = Math.hypot(load.Fx, load.Fy), Mz = load.Mz;
-  const L = Math.max(...fasteners.map((f) => Math.hypot(f.x - Cs.x, f.y - Cs.y)), 1e-12);
   const fail = (reason, residual = null, iterations = 0) => ({ status: "not-converged", reason, residual, iterations });
   if (fasteners.length === 0) return fail("no fasteners");
-  const momentScale = Math.abs(Mz) + F * L;
-  if (!(momentScale > 0)) return fail("zero in-plane load");
-
-  // Pure shear through Cs: uniform translation, ICR at infinity.
-  if (Math.abs(Mz) <= tol * F * L) {
-    const d = { x: load.Fx / F, y: load.Fy / F };
-    const t = translation(fasteners, d, model);
-    return { status: "converged", mode: "translation", icr: null, gamma: t.P / F, Pu: t.P, loads: t.loads, governing: t.gov, residual: 0, iterations: 0, offLine: false };
+  const F = Math.hypot(load.Fx, load.Fy);
+  if (F === 0 && load.Mz === 0) {
+    const loads = fasteners.map((f) => ({ id: f.id, rho: Infinity, delta: 0, R: 0, Rx: 0, Ry: 0 }));
+    return { status: "converged", mode: "no-shear", icr: null, gamma: Infinity, Pu: 0, loads, governing: null, residual: 0, iterations: 0, offLine: false };
   }
 
-  const s = Math.sign(Mz);
-  // Pure moment: ICR at Cs, refined so that the fastener loads sum to zero.
-  if (F <= tol * Math.abs(Mz) / L) {
+  // Reference point independent of ks: the Rult-weighted centroid (Cs for uniform ks and Rult).
+  const W = fasteners.reduce((a, f) => a + f.icr.rult, 0);
+  const ref = { x: fasteners.reduce((a, f) => a + f.icr.rult * f.x, 0) / W, y: fasteners.reduce((a, f) => a + f.icr.rult * f.y, 0) / W };
+  const Mz = load.Mz + (Cs.x - ref.x) * load.Fy - (Cs.y - ref.y) * load.Fx;
+  const L = Math.max(...fasteners.map((f) => Math.hypot(f.x - ref.x, f.y - ref.y)), 1e-12);
+
+  let s = Math.sign(Mz);
+  if (F > tol * Math.abs(Mz) / L) {
+    // Uniform translation holds only when the translation loads, scaled to F, carry the applied moment about ref.
+    const d = { x: load.Fx / F, y: load.Fy / F };
+    const t = translation(fasteners, d, model);
+    const T = t.loads.reduce((a, l, i) => a + (fasteners[i].x - ref.x) * l.Ry - (fasteners[i].y - ref.y) * l.Rx, 0);
+    const imbalance = Mz - T * F / t.P;
+    if (Math.abs(imbalance) <= tol * F * L) {
+      return { status: "converged", mode: "translation", icr: null, gamma: t.P / F, Pu: t.P, loads: t.loads, governing: t.gov, residual: Math.abs(imbalance) / (F * L), iterations: 0, offLine: false };
+    }
+    s = Math.sign(imbalance);
+  } else {
+    // Pure moment: ICR near ref, refined so that the fastener loads sum to zero.
     const resid = (O) => {
       const st = rotationState(fasteners, O, s, model);
       if (!st) return null;
       const scale = Math.abs(st.M) / L || 1;
       return [st.Rx / scale, st.Ry / scale];
     };
-    const n = newton2(resid, Cs, L, { tol, maxIter });
+    const n = newton2(resid, ref, L, { tol, maxIter });
     if (!n.converged) return fail("pure-moment ICR did not balance the fastener forces", n.r ? Math.hypot(...n.r) : null, n.it);
     const st = rotationState(fasteners, n.O, s, model);
     const Mu = Math.abs(st.M);
-    return { status: "converged", mode: "pure-moment", icr: n.O, gamma: Mu / Math.abs(Mz), Mu, loads: st.loads, governing: st.gov, residual: n.r ? Math.hypot(...n.r) : 0, iterations: n.it, offLine: Math.hypot(n.O.x - Cs.x, n.O.y - Cs.y) > tol * L };
+    return { status: "converged", mode: "pure-moment", icr: n.O, gamma: Mu / Math.abs(Mz), Mu, loads: st.loads, governing: st.gov, residual: n.r ? Math.hypot(...n.r) : 0, iterations: n.it, offLine: Math.hypot(n.O.x - ref.x, n.O.y - ref.y) > tol * L };
   }
 
   const d = { x: load.Fx / F, y: load.Fy / F };
-  const nrm = { x: s * d.y, y: -s * d.x }; // from Cs towards the load's line of action
-  const e = Math.abs(Mz) / F;
-  const X = { x: Cs.x + e * nrm.x, y: Cs.y + e * nrm.y }; // a point on the line of action
+  const X = { x: ref.x + (Mz / F) * d.y, y: ref.y - (Mz / F) * d.x }; // foot of ref on the line of action
+  const nrm = { x: s * d.y, y: -s * d.x }; // unit normal to d̂; the load's moment about X − u·nrm is s·u·|F|
   const armAbout = (O) => (X.x - O.x) * d.y - (X.y - O.y) * d.x; // ((X − O) × d̂)_z
-  const at = (r0) => ({ x: Cs.x - r0 * nrm.x, y: Cs.y - r0 * nrm.y });
-  const lineEval = (r0) => {
-    const st = rotationState(fasteners, at(r0), s, model);
+  const at = (u) => ({ x: X.x - u * nrm.x, y: X.y - u * nrm.y });
+  const lineEval = (u) => {
+    const st = rotationState(fasteners, at(u), s, model);
     if (!st) return null;
     const Pforce = st.Rx * d.x + st.Ry * d.y;
-    const Pmoment = st.M / (s * (e + r0));
+    const Pmoment = st.M / (s * u);
     return { st, Pforce, Pmoment };
   };
-  const g = (r0) => {
-    const v = lineEval(r0);
+  const g = (u) => {
+    const v = lineEval(u);
     return v ? (v.Pmoment - v.Pforce) / Math.max(Math.abs(v.Pmoment), Math.abs(v.Pforce), 1e-300) : NaN;
   };
-  // Bracket on a log scale of r₀ from 1e-6·L to 1e6·L.
+  // Bracket on a log scale of the distance u from the line of action, 1e-6·L to 1e8·L: both sides of ref are covered.
   let lo = null, hi = null, prev = null;
-  for (let k = -6; k <= 6; k += 0.25) {
-    const r0 = L * Math.pow(10, k);
-    const v = g(r0);
+  for (let k = -6; k <= 8; k += 0.25) {
+    const u = L * Math.pow(10, k);
+    const v = g(u);
     if (!Number.isFinite(v)) continue;
-    if (prev && Math.sign(prev.v) !== Math.sign(v)) { lo = prev.r0; hi = r0; break; }
-    prev = { r0, v };
+    if (prev && Math.sign(prev.v) !== Math.sign(v)) { lo = prev.u; hi = u; break; }
+    prev = { u, v };
   }
   if (lo === null) return fail("no sign change of the moment-force mismatch along the search line");
   const b = brent(g, lo, hi, { tol: 1e-14, maxIter });
-  if (!b.converged) return fail("Brent search on r₀ did not converge", Math.abs(b.residual), b.iterations);
+  if (!b.converged) return fail("Brent search on the ICR offset did not converge", Math.abs(b.residual), b.iterations);
   let O = at(b.root);
   let iterations = b.iterations;
   let v = lineEval(b.root);
@@ -1806,7 +1822,7 @@ function icrSolve(fasteners, Cs, load, model = "crawford-kulak", { tol = ICR_TOL
   }
   if (momentResid > tol) return fail("normalised moment residual above tolerance", momentResid, iterations);
   return {
-    status: "converged", mode: "eccentric", icr: O, r0: b.root, e, direction: d, gamma: P / F, Pu: P,
+    status: "converged", mode: "eccentric", icr: O, reference: ref, direction: d, gamma: P / F, Pu: P,
     loads: v.st.loads, governing: v.st.gov, residual: Math.max(momentResid, Math.abs(perp)), iterations, offLine,
   };
 }
@@ -2636,7 +2652,7 @@ function resultSections(pattern, result) {
     "", "## Fastener loads (elastic)", "",
     mdTable(["id", `Rdx (${u("force")})`, `Rdy (${u("force")})`, `Rtx (${u("force")})`, `Rty (${u("force")})`, `Rs (${u("force")})`, "direction (°)", `T (${u("force")})`, "state"],
       result.fasteners.map((f) => [f.id, f.shear.Rdx, f.shear.Rdy, f.shear.Rtx, f.shear.Rty, f.shear.Rs, f.shear.angleDeg, f.axial.T, f.axial.unloading ? "unloading" : f.axial.T > 0 ? "tension" : "—"])),
-    "", `## Margins of safety (elastic basis, a = ${result.interaction.a}, b = ${result.interaction.b})`, "",
+    "", `## Margins of safety (${result.designBasis === "icr" ? "ICR" : "elastic"} basis, a = ${result.interaction.a}, b = ${result.interaction.b})`, "",
     result.critical
       ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
       : noMarginSummary(result.fasteners.map((f) => f.checks)).text,
@@ -2663,6 +2679,9 @@ function icrSection(result, u) {
   if (!ic) return [];
   if (ic.status !== "converged") {
     return ["", "## ICR method", "", `ICR not converged (W-014): ${ic.reason}${ic.residual !== null && ic.residual !== undefined ? `, residual ${ic.residual}` : ""}. No ICR numbers are reported; the elastic result remains.`];
+  }
+  if (ic.mode === "no-shear") {
+    return ["", "## ICR method", "", `${ic.modelLabel}; no in-plane load (Fx = Fy = Mz,s = 0), so every ICR shear is zero. Checks use the ${result.designBasis} basis.`];
   }
   const where = ic.mode === "translation" ? "at infinity (uniform translation)" : `at (${ic.icr.x}, ${ic.icr.y})${ic.offLine ? ", off the search line (asymmetric group)" : ""}`;
   const lines = ["", "## ICR method", "",
@@ -2818,6 +2837,7 @@ const { solve } = __m12;
 const { solveScale } = __m6;
 const { boltLoad, tStubPrying } = __m7;
 const { icrSolve, response } = __m11;
+const { fmt } = __m13;
 /* Verification set (spec section 10), shared by the in-app "Run verification"
  * panel and the Node test suite so both run exactly the same cases.
  *
@@ -2825,6 +2845,7 @@ const { icrSolve, response } = __m11;
  * Closed-form expectations use a 1e-9 relative tolerance; values the spec
  * quotes rounded use its stated absolute tolerance.
  */
+
 
 
 
@@ -3262,7 +3283,7 @@ function icrOn(p, model = "crawford-kulak") {
 
 PROPERTY_CASES.push(
   {
-    id: "P-13", title: "ICR ignores ks: overriding ks moves Cs but not γ_ult or the ICR",
+    id: "P-13", title: "ICR ignores ks: overriding ks moves Cs but not γ_ult or the ICR; the search is anchored on the Rult-weighted centroid",
     run() {
       const a = solved(icrOn(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 })));
       const q = icrOn(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 }));
@@ -3274,6 +3295,21 @@ PROPERTY_CASES.push(
         check("γ_ult unchanged", b.icr.gamma, a.icr.gamma, { rel: 1e-6 }),
         check("ICR x unchanged", b.icr.icr.x, a.icr.icr.x, { abs: 1e-6 * 50 }),
         check("ICR y unchanged", b.icr.icr.y, a.icr.icr.y, { abs: 1e-6 * 50 }),
+        // Loads between the geometric centre and the moved Cs, including one through Cs.
+        ...[[b.props.Cs.x, 3.1732], [20, 3.3067], [10, 3.6504], [5, 3.8130]].flatMap(([x, gamma]) => {
+          const at = (ks) => {
+            const r = icrOn(pattern(RECT, { point: { x, y: 0, z: 0 }, Fy: -1000 }));
+            if (ks) { r.fasteners[0].overrides = { ks: 3 }; r.fasteners[3].overrides = { ks: 0.4 }; }
+            return solved(r).icr;
+          };
+          const withKs = at(true);
+          return [
+            truth(`load at x = ${fmt(x)}: converged, not a translation`, withKs.status === "converged" && withKs.mode === "eccentric"),
+            check(`γ_ult at x = ${fmt(x)}, ks overridden vs uniform`, withKs.gamma, at(false).gamma, { rel: 1e-6 }),
+            check(`γ_ult at x = ${fmt(x)}`, withKs.gamma, gamma, { rel: 1e-4 }),
+          ];
+        }),
+        ...rultAnchor(),
       ];
     },
   },
@@ -3294,6 +3330,25 @@ PROPERTY_CASES.push(
     },
   },
 );
+
+/* Per-fastener Rult moves the ICR reference to (0, −10): translation only through it, γ_ult continuous beside it. */
+function rultAnchor() {
+  const at = (x, Mz = 0) => {
+    const p = icrOn(pattern(RECT, { point: { x, y: 0, z: 0 }, Fy: -1000, Mz }));
+    p.fasteners[1].overrides = { icr: { rult: 2000 } };
+    p.fasteners[3].overrides = { icr: { rult: 2000 } };
+    return solved(p).icr;
+  };
+  const through = at(0), tiny = at(0, 1), x5 = at(5), x10 = at(10);
+  return [
+    truth("load through the reference: uniform translation", through.mode === "translation"),
+    truth("Mz = 1 beside it: eccentric", tiny.mode === "eccentric"),
+    check("γ_ult continuous across the translation", tiny.gamma, through.gamma, { rel: 1e-5 }),
+    truth("loads at x = 5 and 10 converge", x5.status === "converged" && x10.status === "converged"),
+    check("γ_ult at x = 5", x5.gamma, 5.7006, { rel: 1e-4 }),
+    check("γ_ult at x = 10", x10.gamma, 5.4356, { rel: 1e-4 }),
+  ];
+}
 
 function centroidOf(pts) {
   return { x: pts.reduce((a, p) => a + p[0], 0) / pts.length, y: pts.reduce((a, p) => a + p[1], 0) / pts.length };
@@ -3416,7 +3471,7 @@ const ASSUMPTIONS = [
   "Preload: F_b = max(P_max + φ·T, T) + Q; clamp force P_min − (1 − φ)·T; separation load P_min/(1 − φ). Prying Q is added to the bolt load (conservative). Preload does not scale with the load multiplier k. Friction slip is not evaluated (N-005).",
   "Plates are axis-aligned rectangles (up to two). Every fastener passes through every plate. Bearing R = Fbr·D·t (or a direct-load allowable); tear-out capacity 2·t·(e − D/2)·Fsu with e cast along the bearing direction: −R in the loaded plate, +R in the other plate.",
   "Axial method (b) uses a plate edge as the neutral axis with tension-only fasteners; v1 requires zero moment about the axis perpendicular to the edge (E-012), reduced to the projection of Ca onto the edge.",
-  "ICR (in-plane shear only, ks ignored): Crawford-Kulak or elastic-perfectly-plastic response, governing fastener at Δmax, ICR searched on the line through Cs perpendicular to the load (refined off it for asymmetric groups); γ_ult = P_u/|F|; reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling, W-015).",
+  "ICR (in-plane shear only, ks ignored): Crawford-Kulak or elastic-perfectly-plastic response, governing fastener at Δmax, ICR searched on the line through the Rult-weighted centroid (ks-independent) perpendicular to the load (refined off it for asymmetric groups); γ_ult = P_u/|F|; reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling, W-015).",
   "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
   "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero external tension (N-006); with preload their bolt load is P_max.",
 ];
@@ -4318,8 +4373,10 @@ function renderResults() {
     const ic = r.icr;
     if (ic.status !== "converged") {
       icrHtml = `<p class="blocked">ICR not converged (W-014): ${esc(ic.reason)}${ic.residual !== null && ic.residual !== undefined ? `, residual ${fmt(ic.residual, 3)}` : ""}. No ICR numbers are shown; the elastic result remains.${r.designBasis === "icr" ? " The checks on the ICR basis are not computed." : ""}</p>`;
+    } else if (ic.mode === "no-shear") {
+      icrHtml = `<p class="note">${esc(ic.modelLabel)}; no in-plane load (Fx = Fy = Mz,s = 0), so every ICR shear is zero and the checks use Rs = 0.</p>`;
     } else {
-      const where = ic.mode === "translation" ? "at infinity (uniform translation: the load passes through Cs)"
+      const where = ic.mode === "translation" ? "at infinity (uniform translation: the translation loads balance the applied moment)"
         : `at (${f(ic.icr.x, lenScale)}, ${f(ic.icr.y, lenScale)}) ${L}${ic.mode === "pure-moment" ? " (pure moment)" : ""}${ic.offLine ? " — moved off the search line to balance an asymmetric group" : ""}`;
       const cmp = r.comparison;
       const icrRows = table(["Fastener", `ρ (${L})`, `Δ (${L})`, `R ultimate (${F})`, `Rs at applied load (${F})`, `Elastic Rs (${F})`, "ICR vs elastic"],
@@ -4370,7 +4427,7 @@ function renderResults() {
     <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
     ${plateTable ? `<h3 style="margin-top:1.25rem">Bearing and tear-out, per plate</h3>
-    <p class="note">Rs on the elastic basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
+    <p class="note">Rs on the ${r.designBasis === "icr" ? "ICR" : "elastic"} basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
     ${r.icr ? `<h3 style="margin-top:1.25rem">ICR method and elastic vs ICR</h3>${icrHtml}` : ""}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }

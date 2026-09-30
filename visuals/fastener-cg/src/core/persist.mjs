@@ -301,7 +301,7 @@ function resultSections(pattern, result) {
     "", "## Fastener loads (elastic)", "",
     mdTable(["id", `Rdx (${u("force")})`, `Rdy (${u("force")})`, `Rtx (${u("force")})`, `Rty (${u("force")})`, `Rs (${u("force")})`, "direction (°)", `T (${u("force")})`, "state"],
       result.fasteners.map((f) => [f.id, f.shear.Rdx, f.shear.Rdy, f.shear.Rtx, f.shear.Rty, f.shear.Rs, f.shear.angleDeg, f.axial.T, f.axial.unloading ? "unloading" : f.axial.T > 0 ? "tension" : "—"])),
-    "", `## Margins of safety (elastic basis, a = ${result.interaction.a}, b = ${result.interaction.b})`, "",
+    "", `## Margins of safety (${result.designBasis === "icr" ? "ICR" : "elastic"} basis, a = ${result.interaction.a}, b = ${result.interaction.b})`, "",
     result.critical
       ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
       : noMarginSummary(result.fasteners.map((f) => f.checks)).text,
@@ -328,6 +328,9 @@ function icrSection(result, u) {
   if (!ic) return [];
   if (ic.status !== "converged") {
     return ["", "## ICR method", "", `ICR not converged (W-014): ${ic.reason}${ic.residual !== null && ic.residual !== undefined ? `, residual ${ic.residual}` : ""}. No ICR numbers are reported; the elastic result remains.`];
+  }
+  if (ic.mode === "no-shear") {
+    return ["", "## ICR method", "", `${ic.modelLabel}; no in-plane load (Fx = Fy = Mz,s = 0), so every ICR shear is zero. Checks use the ${result.designBasis} basis.`];
   }
   const where = ic.mode === "translation" ? "at infinity (uniform translation)" : `at (${ic.icr.x}, ${ic.icr.y})${ic.offLine ? ", off the search line (asymmetric group)" : ""}`;
   const lines = ["", "## ICR method", "",

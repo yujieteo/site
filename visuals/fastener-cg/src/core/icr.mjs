@@ -8,13 +8,20 @@
  *   Crawford-Kulak           R = Rult·(1 − e^(−μΔ))^λ
  *   elastic-perfectly-plastic R = Rult·min(Δ/Δy, 1), fracture at Δmax
  *
- * Search: with d̂ the applied force direction and e = |Mz,s|/|F|, the ICR
- * lies on the line through Cs perpendicular to d̂, on the side opposite the
- * load's line of action, at offset r₀. For each r₀ the ultimate load from
- * moment equilibrium about the ICR and from force equilibrium along d̂ are
- * compared, and a bracketed Brent search finds where they agree
- * (normalised moment residual ≤ 1e-6, 200-iteration cap). Pure moment puts
- * the ICR at Cs; pure shear (e = 0) is a uniform translation.
+ * Reference point: the Rult-weighted centroid C_R of the fasteners, which
+ * does not depend on ks (it equals Cs for uniform ks and Rult); Mz is
+ * re-reduced from Cs to it. A zero in-plane load is a converged zero-shear
+ * state. The load is a uniform translation only when the translation loads,
+ * scaled to |F|, carry the applied moment about C_R; otherwise the rotation
+ * sense is the sign of the leftover moment.
+ *
+ * Search: with d̂ the applied force direction, the ICR lies on the line
+ * through C_R perpendicular to d̂, on the side of the load's line of action
+ * that gives the rotation sense, at distance u from that line. For each u
+ * the ultimate load from moment equilibrium about the ICR and from force
+ * equilibrium along d̂ are compared, and a bracketed Brent search finds
+ * where they agree (normalised moment residual ≤ 1e-6, 200-iteration cap).
+ * The scan in u covers both sides of C_R. Pure moment starts the ICR at C_R.
  *
  * Asymmetric groups: on that line the force perpendicular to d̂ need not
  * vanish. When it does not (relative to the ultimate load, beyond the
@@ -111,65 +118,74 @@ function newton2(resid, O0, scaleL, { tol = ICR_TOL, maxIter = ICR_MAX_ITER } = 
  * Returns { status: "converged" | "not-converged", ... }.
  */
 export function icrSolve(fasteners, Cs, load, model = "crawford-kulak", { tol = ICR_TOL, maxIter = ICR_MAX_ITER } = {}) {
-  const F = Math.hypot(load.Fx, load.Fy), Mz = load.Mz;
-  const L = Math.max(...fasteners.map((f) => Math.hypot(f.x - Cs.x, f.y - Cs.y)), 1e-12);
   const fail = (reason, residual = null, iterations = 0) => ({ status: "not-converged", reason, residual, iterations });
   if (fasteners.length === 0) return fail("no fasteners");
-  const momentScale = Math.abs(Mz) + F * L;
-  if (!(momentScale > 0)) return fail("zero in-plane load");
-
-  // Pure shear through Cs: uniform translation, ICR at infinity.
-  if (Math.abs(Mz) <= tol * F * L) {
-    const d = { x: load.Fx / F, y: load.Fy / F };
-    const t = translation(fasteners, d, model);
-    return { status: "converged", mode: "translation", icr: null, gamma: t.P / F, Pu: t.P, loads: t.loads, governing: t.gov, residual: 0, iterations: 0, offLine: false };
+  const F = Math.hypot(load.Fx, load.Fy);
+  if (F === 0 && load.Mz === 0) {
+    const loads = fasteners.map((f) => ({ id: f.id, rho: Infinity, delta: 0, R: 0, Rx: 0, Ry: 0 }));
+    return { status: "converged", mode: "no-shear", icr: null, gamma: Infinity, Pu: 0, loads, governing: null, residual: 0, iterations: 0, offLine: false };
   }
 
-  const s = Math.sign(Mz);
-  // Pure moment: ICR at Cs, refined so that the fastener loads sum to zero.
-  if (F <= tol * Math.abs(Mz) / L) {
+  // Reference point independent of ks: the Rult-weighted centroid (Cs for uniform ks and Rult).
+  const W = fasteners.reduce((a, f) => a + f.icr.rult, 0);
+  const ref = { x: fasteners.reduce((a, f) => a + f.icr.rult * f.x, 0) / W, y: fasteners.reduce((a, f) => a + f.icr.rult * f.y, 0) / W };
+  const Mz = load.Mz + (Cs.x - ref.x) * load.Fy - (Cs.y - ref.y) * load.Fx;
+  const L = Math.max(...fasteners.map((f) => Math.hypot(f.x - ref.x, f.y - ref.y)), 1e-12);
+
+  let s = Math.sign(Mz);
+  if (F > tol * Math.abs(Mz) / L) {
+    // Uniform translation holds only when the translation loads, scaled to F, carry the applied moment about ref.
+    const d = { x: load.Fx / F, y: load.Fy / F };
+    const t = translation(fasteners, d, model);
+    const T = t.loads.reduce((a, l, i) => a + (fasteners[i].x - ref.x) * l.Ry - (fasteners[i].y - ref.y) * l.Rx, 0);
+    const imbalance = Mz - T * F / t.P;
+    if (Math.abs(imbalance) <= tol * F * L) {
+      return { status: "converged", mode: "translation", icr: null, gamma: t.P / F, Pu: t.P, loads: t.loads, governing: t.gov, residual: Math.abs(imbalance) / (F * L), iterations: 0, offLine: false };
+    }
+    s = Math.sign(imbalance);
+  } else {
+    // Pure moment: ICR near ref, refined so that the fastener loads sum to zero.
     const resid = (O) => {
       const st = rotationState(fasteners, O, s, model);
       if (!st) return null;
       const scale = Math.abs(st.M) / L || 1;
       return [st.Rx / scale, st.Ry / scale];
     };
-    const n = newton2(resid, Cs, L, { tol, maxIter });
+    const n = newton2(resid, ref, L, { tol, maxIter });
     if (!n.converged) return fail("pure-moment ICR did not balance the fastener forces", n.r ? Math.hypot(...n.r) : null, n.it);
     const st = rotationState(fasteners, n.O, s, model);
     const Mu = Math.abs(st.M);
-    return { status: "converged", mode: "pure-moment", icr: n.O, gamma: Mu / Math.abs(Mz), Mu, loads: st.loads, governing: st.gov, residual: n.r ? Math.hypot(...n.r) : 0, iterations: n.it, offLine: Math.hypot(n.O.x - Cs.x, n.O.y - Cs.y) > tol * L };
+    return { status: "converged", mode: "pure-moment", icr: n.O, gamma: Mu / Math.abs(Mz), Mu, loads: st.loads, governing: st.gov, residual: n.r ? Math.hypot(...n.r) : 0, iterations: n.it, offLine: Math.hypot(n.O.x - ref.x, n.O.y - ref.y) > tol * L };
   }
 
   const d = { x: load.Fx / F, y: load.Fy / F };
-  const nrm = { x: s * d.y, y: -s * d.x }; // from Cs towards the load's line of action
-  const e = Math.abs(Mz) / F;
-  const X = { x: Cs.x + e * nrm.x, y: Cs.y + e * nrm.y }; // a point on the line of action
+  const X = { x: ref.x + (Mz / F) * d.y, y: ref.y - (Mz / F) * d.x }; // foot of ref on the line of action
+  const nrm = { x: s * d.y, y: -s * d.x }; // unit normal to d̂; the load's moment about X − u·nrm is s·u·|F|
   const armAbout = (O) => (X.x - O.x) * d.y - (X.y - O.y) * d.x; // ((X − O) × d̂)_z
-  const at = (r0) => ({ x: Cs.x - r0 * nrm.x, y: Cs.y - r0 * nrm.y });
-  const lineEval = (r0) => {
-    const st = rotationState(fasteners, at(r0), s, model);
+  const at = (u) => ({ x: X.x - u * nrm.x, y: X.y - u * nrm.y });
+  const lineEval = (u) => {
+    const st = rotationState(fasteners, at(u), s, model);
     if (!st) return null;
     const Pforce = st.Rx * d.x + st.Ry * d.y;
-    const Pmoment = st.M / (s * (e + r0));
+    const Pmoment = st.M / (s * u);
     return { st, Pforce, Pmoment };
   };
-  const g = (r0) => {
-    const v = lineEval(r0);
+  const g = (u) => {
+    const v = lineEval(u);
     return v ? (v.Pmoment - v.Pforce) / Math.max(Math.abs(v.Pmoment), Math.abs(v.Pforce), 1e-300) : NaN;
   };
-  // Bracket on a log scale of r₀ from 1e-6·L to 1e6·L.
+  // Bracket on a log scale of the distance u from the line of action, 1e-6·L to 1e8·L: both sides of ref are covered.
   let lo = null, hi = null, prev = null;
-  for (let k = -6; k <= 6; k += 0.25) {
-    const r0 = L * Math.pow(10, k);
-    const v = g(r0);
+  for (let k = -6; k <= 8; k += 0.25) {
+    const u = L * Math.pow(10, k);
+    const v = g(u);
     if (!Number.isFinite(v)) continue;
-    if (prev && Math.sign(prev.v) !== Math.sign(v)) { lo = prev.r0; hi = r0; break; }
-    prev = { r0, v };
+    if (prev && Math.sign(prev.v) !== Math.sign(v)) { lo = prev.u; hi = u; break; }
+    prev = { u, v };
   }
   if (lo === null) return fail("no sign change of the moment-force mismatch along the search line");
   const b = brent(g, lo, hi, { tol: 1e-14, maxIter });
-  if (!b.converged) return fail("Brent search on r₀ did not converge", Math.abs(b.residual), b.iterations);
+  if (!b.converged) return fail("Brent search on the ICR offset did not converge", Math.abs(b.residual), b.iterations);
   let O = at(b.root);
   let iterations = b.iterations;
   let v = lineEval(b.root);
@@ -199,7 +215,7 @@ export function icrSolve(fasteners, Cs, load, model = "crawford-kulak", { tol = 
   }
   if (momentResid > tol) return fail("normalised moment residual above tolerance", momentResid, iterations);
   return {
-    status: "converged", mode: "eccentric", icr: O, r0: b.root, e, direction: d, gamma: P / F, Pu: P,
+    status: "converged", mode: "eccentric", icr: O, reference: ref, direction: d, gamma: P / F, Pu: P,
     loads: v.st.loads, governing: v.st.gov, residual: Math.max(momentResid, Math.abs(perp)), iterations, offLine,
   };
 }

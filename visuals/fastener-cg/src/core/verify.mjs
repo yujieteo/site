@@ -11,6 +11,7 @@ import { solve } from "./solve.mjs";
 import { solveScale } from "./interaction.mjs";
 import { boltLoad, tStubPrying } from "./tension.mjs";
 import { icrSolve, response } from "./icr.mjs";
+import { fmt } from "./format.mjs";
 
 export const VERIFICATION_SET = "M5";
 export const REL_TOL = 1e-9;
@@ -442,7 +443,7 @@ function icrOn(p, model = "crawford-kulak") {
 
 PROPERTY_CASES.push(
   {
-    id: "P-13", title: "ICR ignores ks: overriding ks moves Cs but not γ_ult or the ICR",
+    id: "P-13", title: "ICR ignores ks: overriding ks moves Cs but not γ_ult or the ICR; the search is anchored on the Rult-weighted centroid",
     run() {
       const a = solved(icrOn(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 })));
       const q = icrOn(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 }));
@@ -454,6 +455,21 @@ PROPERTY_CASES.push(
         check("γ_ult unchanged", b.icr.gamma, a.icr.gamma, { rel: 1e-6 }),
         check("ICR x unchanged", b.icr.icr.x, a.icr.icr.x, { abs: 1e-6 * 50 }),
         check("ICR y unchanged", b.icr.icr.y, a.icr.icr.y, { abs: 1e-6 * 50 }),
+        // Loads between the geometric centre and the moved Cs, including one through Cs.
+        ...[[b.props.Cs.x, 3.1732], [20, 3.3067], [10, 3.6504], [5, 3.8130]].flatMap(([x, gamma]) => {
+          const at = (ks) => {
+            const r = icrOn(pattern(RECT, { point: { x, y: 0, z: 0 }, Fy: -1000 }));
+            if (ks) { r.fasteners[0].overrides = { ks: 3 }; r.fasteners[3].overrides = { ks: 0.4 }; }
+            return solved(r).icr;
+          };
+          const withKs = at(true);
+          return [
+            truth(`load at x = ${fmt(x)}: converged, not a translation`, withKs.status === "converged" && withKs.mode === "eccentric"),
+            check(`γ_ult at x = ${fmt(x)}, ks overridden vs uniform`, withKs.gamma, at(false).gamma, { rel: 1e-6 }),
+            check(`γ_ult at x = ${fmt(x)}`, withKs.gamma, gamma, { rel: 1e-4 }),
+          ];
+        }),
+        ...rultAnchor(),
       ];
     },
   },
@@ -474,6 +490,25 @@ PROPERTY_CASES.push(
     },
   },
 );
+
+/* Per-fastener Rult moves the ICR reference to (0, −10): translation only through it, γ_ult continuous beside it. */
+function rultAnchor() {
+  const at = (x, Mz = 0) => {
+    const p = icrOn(pattern(RECT, { point: { x, y: 0, z: 0 }, Fy: -1000, Mz }));
+    p.fasteners[1].overrides = { icr: { rult: 2000 } };
+    p.fasteners[3].overrides = { icr: { rult: 2000 } };
+    return solved(p).icr;
+  };
+  const through = at(0), tiny = at(0, 1), x5 = at(5), x10 = at(10);
+  return [
+    truth("load through the reference: uniform translation", through.mode === "translation"),
+    truth("Mz = 1 beside it: eccentric", tiny.mode === "eccentric"),
+    check("γ_ult continuous across the translation", tiny.gamma, through.gamma, { rel: 1e-5 }),
+    truth("loads at x = 5 and 10 converge", x5.status === "converged" && x10.status === "converged"),
+    check("γ_ult at x = 5", x5.gamma, 5.7006, { rel: 1e-4 }),
+    check("γ_ult at x = 10", x10.gamma, 5.4356, { rel: 1e-4 }),
+  ];
+}
 
 function centroidOf(pts) {
   return { x: pts.reduce((a, p) => a + p[0], 0) / pts.length, y: pts.reduce((a, p) => a + p[1], 0) / pts.length };

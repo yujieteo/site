@@ -535,8 +535,10 @@ function renderResults() {
     const ic = r.icr;
     if (ic.status !== "converged") {
       icrHtml = `<p class="blocked">ICR not converged (W-014): ${esc(ic.reason)}${ic.residual !== null && ic.residual !== undefined ? `, residual ${fmt(ic.residual, 3)}` : ""}. No ICR numbers are shown; the elastic result remains.${r.designBasis === "icr" ? " The checks on the ICR basis are not computed." : ""}</p>`;
+    } else if (ic.mode === "no-shear") {
+      icrHtml = `<p class="note">${esc(ic.modelLabel)}; no in-plane load (Fx = Fy = Mz,s = 0), so every ICR shear is zero and the checks use Rs = 0.</p>`;
     } else {
-      const where = ic.mode === "translation" ? "at infinity (uniform translation: the load passes through Cs)"
+      const where = ic.mode === "translation" ? "at infinity (uniform translation: the translation loads balance the applied moment)"
         : `at (${f(ic.icr.x, lenScale)}, ${f(ic.icr.y, lenScale)}) ${L}${ic.mode === "pure-moment" ? " (pure moment)" : ""}${ic.offLine ? " — moved off the search line to balance an asymmetric group" : ""}`;
       const cmp = r.comparison;
       const icrRows = table(["Fastener", `ρ (${L})`, `Δ (${L})`, `R ultimate (${F})`, `Rs at applied load (${F})`, `Elastic Rs (${F})`, "ICR vs elastic"],
@@ -587,7 +589,7 @@ function renderResults() {
     <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
     ${plateTable ? `<h3 style="margin-top:1.25rem">Bearing and tear-out, per plate</h3>
-    <p class="note">Rs on the elastic basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
+    <p class="note">Rs on the ${r.designBasis === "icr" ? "ICR" : "elastic"} basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
     ${r.icr ? `<h3 style="margin-top:1.25rem">ICR method and elastic vs ICR</h3>${icrHtml}` : ""}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
