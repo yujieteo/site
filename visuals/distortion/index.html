@@ -4587,8 +4587,8 @@ void main() {
     line(hw, -fy, hw, fy, 3, 60);
     arc(fz, fy, 0, 8);
     line(fz, hh, 0, hh, 0, 60);
-    // Plate coordinate eta runs across each flat plate, corner to corner.
-    for (const p of pts) p.eta = p.plate === 1 ? fy - p.y : p.plate === 3 ? p.y + fy : p.plate >= 0 ? p.z + fz : 0;
+    // Plate coordinate eta runs across each flat plate, corner to corner, with the path.
+    for (const p of pts) p.eta = p.plate === 1 ? fy - p.y : p.plate === 3 ? p.y + fy : p.plate === 0 ? fz - p.z : p.plate === 2 ? p.z + fz : 0;
     return samplePath(pts, true);
   }
 
@@ -5279,7 +5279,7 @@ slider($("patch"), "around", "Position around the section", 0, 1, 0.002, 0);
 slider($("patch"), "angle", "Rotation", 0, 90, 1, 0);
 
 function critMarkers() {
-  const crit = D.criticalLoads(model, state), words = [];
+  const crit = D.criticalLoads(model, state);
   for (const k of D.LOADS) {
     const track = $(`s-${k}`).parentElement;
     for (const m of track.querySelectorAll(".crit")) m.remove();
@@ -5293,18 +5293,22 @@ function critMarkers() {
     $(`w-${k}`).classList.toggle("has-crit", marks.length > 0);
     const s = $(`s-${k}`), base = s.getAttribute("aria-valuetext") || "";
     if (marks.length) s.setAttribute("aria-valuetext", `${base}; buckling starts beyond ${level(Math.abs(marks[marks.length - 1]))} ${marks.length > 1 ? "either way" : LOAD_UI[k].words[marks[0] < 0 ? 0 : 1]}`);
-    if (marks.length) words.push(LOAD_UI[k].label.toLowerCase());
   }
+  buckleStatus();
+}
+
+function setHTML(id, html) { if ($(id).innerHTML !== html) $(id).innerHTML = html; }
+function buckleStatus() {
   const P = D.prepare(model, viewState()), b = D.bucklingState(P).filter((x) => x.buckled);
   const fx = D.activeEffects(P).map((e) => {
     const m = META.effects.find((x) => x.id === e.id);
     return `<span>${m ? m.label : e.id}${e.basis === "assumed" ? ' <span class="tag assumed">assumed</span>' : ""}</span>`;
   });
-  $("effects").innerHTML = fx.length ? `Showing: ${fx.join(" · ")}` : "No load: move a load slider or try a preset.";
+  setHTML("effects", fx.length ? `Showing: ${fx.join(" · ")}` : "No load: move a load slider or try a preset.");
   const names = [...new Set(b.map((x) => x.name))];
-  $("buckle-status").innerHTML = model.structure === "tube"
+  setHTML("buckle-status", model.structure === "tube"
     ? "The tube stays smooth: its buckling is not modelled."
-    : `${names.length ? `<strong>Buckled:</strong> ${names.join(", ")}.` : "No buckling."} ▲ on a slider marks where buckling starts for that load alone.`;
+    : `${names.length ? `<strong>Buckled:</strong> ${names.join(", ")}.` : "No buckling."} ▲ on a slider marks where buckling starts for that load alone.`);
 }
 
 function syncControls() {
@@ -5416,6 +5420,7 @@ function tick(now) {
     ui.play = 0.5 - 0.5 * Math.cos((2 * Math.PI * (now - playStart)) / 5000);
     if (three) three.update();
     drawInset();
+    buckleStatus();
   }
   requestAnimationFrame(tick);
 }

@@ -285,7 +285,7 @@ slider($("patch"), "around", "Position around the section", 0, 1, 0.002, 0);
 slider($("patch"), "angle", "Rotation", 0, 90, 1, 0);
 
 function critMarkers() {
-  const crit = D.criticalLoads(model, state), words = [];
+  const crit = D.criticalLoads(model, state);
   for (const k of D.LOADS) {
     const track = $(`s-${k}`).parentElement;
     for (const m of track.querySelectorAll(".crit")) m.remove();
@@ -299,18 +299,22 @@ function critMarkers() {
     $(`w-${k}`).classList.toggle("has-crit", marks.length > 0);
     const s = $(`s-${k}`), base = s.getAttribute("aria-valuetext") || "";
     if (marks.length) s.setAttribute("aria-valuetext", `${base}; buckling starts beyond ${level(Math.abs(marks[marks.length - 1]))} ${marks.length > 1 ? "either way" : LOAD_UI[k].words[marks[0] < 0 ? 0 : 1]}`);
-    if (marks.length) words.push(LOAD_UI[k].label.toLowerCase());
   }
+  buckleStatus();
+}
+
+function setHTML(id, html) { if ($(id).innerHTML !== html) $(id).innerHTML = html; }
+function buckleStatus() {
   const P = D.prepare(model, viewState()), b = D.bucklingState(P).filter((x) => x.buckled);
   const fx = D.activeEffects(P).map((e) => {
     const m = META.effects.find((x) => x.id === e.id);
     return `<span>${m ? m.label : e.id}${e.basis === "assumed" ? ' <span class="tag assumed">assumed</span>' : ""}</span>`;
   });
-  $("effects").innerHTML = fx.length ? `Showing: ${fx.join(" · ")}` : "No load: move a load slider or try a preset.";
+  setHTML("effects", fx.length ? `Showing: ${fx.join(" · ")}` : "No load: move a load slider or try a preset.");
   const names = [...new Set(b.map((x) => x.name))];
-  $("buckle-status").innerHTML = model.structure === "tube"
+  setHTML("buckle-status", model.structure === "tube"
     ? "The tube stays smooth: its buckling is not modelled."
-    : `${names.length ? `<strong>Buckled:</strong> ${names.join(", ")}.` : "No buckling."} ▲ on a slider marks where buckling starts for that load alone.`;
+    : `${names.length ? `<strong>Buckled:</strong> ${names.join(", ")}.` : "No buckling."} ▲ on a slider marks where buckling starts for that load alone.`);
 }
 
 function syncControls() {
@@ -422,6 +426,7 @@ function tick(now) {
     ui.play = 0.5 - 0.5 * Math.cos((2 * Math.PI * (now - playStart)) / 5000);
     if (three) three.update();
     drawInset();
+    buckleStatus();
   }
   requestAnimationFrame(tick);
 }

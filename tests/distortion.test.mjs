@@ -248,6 +248,26 @@ test("shear waves run along the tension diagonal and flip with the shear", () =>
   assert.ok(along(-0.8, 0.3, -0.3) > along(-0.8, 0.3, 0.3), "negative shear: crests along +x-y");
 });
 
+test("shear waves on every box wall run along that wall's tension diagonal", () => {
+  const m = D.buildModel("box"), w = m.walls[0];
+  for (const T of [1, -1]) {
+    const P = D.prepare(m, state("box", { torsion: T }));
+    for (const k of [0, 1, 2, 3]) {
+      const vs = [];
+      for (let j = 0; j < 400; j++) { const v = (w.path.length * j) / 400; if (D.lookup(w.path, v).plate === k) vs.push(v); }
+      const gamma = D.fieldValue(P, w, 3, vs[vs.length >> 1], "shear");
+      const along = (ds) => {
+        let c = 0;
+        for (let i = 0; i < 40; i++) for (const v of vs) { const u = 1 + (4 * i) / 40; c += D.wrinkle(P, w, u, v) * D.wrinkle(P, w, u + 0.2, v + ds); }
+        return c;
+      };
+      // the tension diagonal of a shear strain gamma_xs runs along (+x, sign(gamma) s)
+      const d = 0.2 * Math.sign(gamma);
+      assert.ok(along(d) > along(-d), `torsion ${T}, plate ${k}: crests along the tension diagonal`);
+    }
+  }
+});
+
 test("compression: Poisson swell, and the box buckles on the compression side only", () => {
   const box = D.buildModel("box"), w = box.walls[0];
   const cr = D.criticalLoads(box, state("box")).bending.pos;

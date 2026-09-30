@@ -118,8 +118,8 @@
     line(hw, -fy, hw, fy, 3, 60);
     arc(fz, fy, 0, 8);
     line(fz, hh, 0, hh, 0, 60);
-    // Plate coordinate eta runs across each flat plate, corner to corner.
-    for (const p of pts) p.eta = p.plate === 1 ? fy - p.y : p.plate === 3 ? p.y + fy : p.plate >= 0 ? p.z + fz : 0;
+    // Plate coordinate eta runs across each flat plate, corner to corner, with the path.
+    for (const p of pts) p.eta = p.plate === 1 ? fy - p.y : p.plate === 3 ? p.y + fy : p.plate === 0 ? fz - p.z : p.plate === 2 ? p.z + fz : 0;
     return samplePath(pts, true);
   }
 
