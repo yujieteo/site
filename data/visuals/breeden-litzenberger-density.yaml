@@ -6,7 +6,7 @@ fetched: "2026-09-29"
 html_path: viz/breeden-litzenberger-density/index.html
 data_path: data/breeden-litzenberger-density/raw.json
 webmcp_tools: [get_data, get_metadata, query]
-tags: [options pricing, distributions, finance, derivatives]
+tags: [options-pricing, probability, distributions, finance, derivatives]
 category: data visualization
 links:
   # The 2025-10-20 todo on Schwartz distributions and option pricing.

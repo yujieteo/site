@@ -6,5 +6,5 @@ fetched: "2026-09-29"
 html_path: visuals/convexity-action-engine/index.html
 data_path: visuals/convexity-action-engine/raw.json
 webmcp_tools: [get_metadata, search_actions, get_action, compare_actions]
-tags: [decision making, convexity, optionality, tail risk, singapore]
+tags: [decision-making, convexity, optionality, risk, singapore]
 category: data visualization

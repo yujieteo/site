@@ -6,5 +6,5 @@ fetched: "2026-09-29"
 html_path: visuals/everyday-actions/index.html
 data_path: visuals/everyday-actions/data.csv
 webmcp_tools: [get_data, get_metadata, query]
-tags: [decision making, time use, wellbeing, experienced affect]
+tags: [decision-making, time-use, wellbeing, experienced-affect, psychology]
 category: data visualization

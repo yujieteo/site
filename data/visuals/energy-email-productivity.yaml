@@ -6,5 +6,5 @@ fetched: "2026-09-29"
 html_path: viz/energy-email-productivity/index.html
 data_path: data/energy-email-productivity/raw.json
 webmcp_tools: [get_data, get_metadata, query]
-tags: [productivity, email, focus, circadian rhythm]
+tags: [productivity, email, focus, circadian-rhythm]
 category: data visualization

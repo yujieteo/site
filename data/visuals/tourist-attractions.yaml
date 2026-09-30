@@ -10,9 +10,5 @@ webmcp_tools:
   - get_metadata
   - query
   - get_marketing_terms
-tags:
-  - tourism
-  - marketing
-  - geography
-  - singapore
+tags: [tourism, marketing, geography, singapore]
 category: data visualization

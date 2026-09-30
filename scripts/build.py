@@ -146,6 +146,9 @@ def load_visualizations():
     duplicate = first_duplicate(visualization["slug"] for visualization in visualizations)
     if duplicate is not None:
         raise RuntimeError(f"Duplicate visualization slug: {duplicate}")
+    # Newest first, like notes and the blog; a stable sort keeps same-day
+    # visualizations in slug order.
+    visualizations.sort(key=lambda visualization: visualization["fetched"], reverse=True)
     return visualizations
 
 
@@ -577,7 +580,7 @@ def render_facets(groups, counts):
 
 def render_filterable_list(kind, facet_html, placeholder, empty_message, total,
                            default_show=False, initial_html="", find_tags=False,
-                           list_title=None, noun="entries", timeline_html=""):
+                           list_title=None, noun="entries", timeline_html="", root=""):
     initial_count_label = f"{total} {noun}" if default_show else ""
     find_box = (
         '<div class="facet-find"><label class="visually-hidden" for="tag-search">Find a tag</label>'
@@ -638,7 +641,7 @@ def render_filterable_list(kind, facet_html, placeholder, empty_message, total,
     <p class="no-results" data-no-results hidden>{esc(empty_message)}</p>
     <nav class="pager" data-pager aria-label="Result pages" hidden></nav>{list_close}
     </section>
-    <script type="module" src="static/js/filter.js"></script>{timeline_script}
+    <script type="module" src="{root}static/js/filter.js"></script>{timeline_script}
     """.strip()
 
 
@@ -1149,16 +1152,30 @@ def build_blog_post(cv, post, posts, records, corpus_revision):
 
 def build_visuals_index(cv, visualizations, records, corpus_revision, root=""):
     visuals_path = "" if root else "visuals/"
-    entries = "".join(
-        f'<article class="entry"><h2 class="entry-title">'
-        f'<a href="{visuals_path}{esc(visualization["slug"])}/index.html">'
-        f'{esc(visualization["title"])}</a>'
-        f'</h2><p class="entry-abstract">{esc(visualization["summary"])}</p>'
-        f'{render_links(records["visualization:" + visualization["slug"]], records, root=root, compact=True)}'
-        f'<p class="entry-date">Fetched {esc(visualization["fetched"])}</p></article>'
-        for visualization in visualizations
+    counts = Counter(tag for visualization in visualizations for tag in visualization["tags"])
+    facet_html = render_facets(group_facets(counts, [("topic", "Topic")], lambda tag: "topic"), counts)
+    entries = []
+    for visualization in visualizations:
+        tags_html = "".join(
+            f'<button type="button" class="tag" data-tag="{esc(tag)}">{esc(tag)}</button>'
+            for tag in visualization["tags"]
+        )
+        entries.append(
+            f'<article class="entry"><div class="entry-date">Fetched {time_tag(visualization["fetched"])}</div>'
+            f'<h2 class="entry-title"><a href="{visuals_path}{esc(visualization["slug"])}/index.html">'
+            f'{esc(visualization["title"])}</a></h2>'
+            f'<p class="entry-abstract">{esc(visualization["summary"])}</p>'
+            f'<div class="entry-tags" aria-label="Tags">{tags_html}</div>'
+            f'{render_links(records["visualization:" + visualization["slug"]], records, root=root, compact=True)}'
+            f'</article>'
+        )
+    filters_html = render_filterable_list(
+        "visualization", facet_html, "Filter visuals by title, summary or tag…",
+        "No visuals match these filters.", len(visualizations), default_show=True,
+        initial_html="".join(entries), find_tags=len(counts) > FIND_TAG_THRESHOLD,
+        noun="visuals", root=root,
     )
-    content = f'<h1 class="page-title">Visuals</h1>{entries}'
+    content = f'<h1 class="page-title">Visuals</h1>{filters_html}'
     return render_page(cv, "visuals", "Visuals", content, corpus_revision, root=root)
 
 

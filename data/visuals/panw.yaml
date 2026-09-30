@@ -6,5 +6,5 @@ fetched: "2026-09-28"
 html_path: viz/panw/index.html
 data_path: data/panw/raw.json
 webmcp_tools: [get_data, get_metadata, query]
-tags: [stocks, cybersecurity, fundamentals, cash-flow]
+tags: [stocks, security, fundamentals, cash-flow, finance]
 category: data visualization
