@@ -102,6 +102,13 @@ test("a finite negative real DC gain is a phase crossover at ω = 0", () => {
   const bi = F.analyze({ plant: { form: "tf", num: [-0.5, -2], den: [1, 1] }, K: 1 });
   assert.equal(bi.margins.governing.gmUpper.w, Infinity);
   close(bi.margins.governing.gmUpper.dB, 20 * Math.log10(2), 1e-12, "upper GM of L(∞) = −0.5");
+  assert.equal(bi.margins.governing.gmUpper.atInfinity, true);
+  assert.deepEqual([...bi.margins.phaseCrossovers.map((c) => [c.w, c.atInfinity])], [[0, false], [Infinity, true]]);
+  assert.equal(r.margins.governing.gmLower.atInfinity, false);
+  const biX = { plant: { form: "tf", num: [-0.5, -2], den: [1, 1] }, K: 1 };
+  const exported = JSON.parse(F.toResultsJSON(biX, bi)).results.margins;
+  assert.deepEqual(exported.governing.gmUpper, { dB: bi.margins.governing.gmUpper.dB, w: null, atInfinity: true });
+  assert.deepEqual(exported.phaseCrossovers.map((c) => [c.w, c.atInfinity]), [[0, false], [null, true]]);
 });
 
 test("a gain crossover with PM ≤ 0 leaves a delay margin of 0", () => {
@@ -248,6 +255,9 @@ test("page registers the WebMCP tools its site stub declares", async () => {
   const a = await call("analyze_loop", third(6));
   close(a.phase_crossovers[0].gmDb, 0, 1e-9, "analyze_loop GM");
   close(a.phase_crossovers[0].w, Math.SQRT2, 1e-9, "analyze_loop ω_pc");
+  const inf = await call("analyze_loop", { plant: { form: "tf", num: [-0.5, -2], den: [1, 1] }, K: 1 });
+  assert.equal(inf.governing.gmUpper.atInfinity, true);
+  assert.deepEqual(inf.phase_crossovers.map((c) => c.atInfinity), [false, true]);
   assert.match((await call("analyze_loop", { K: 0 })).errors[0].message, /non-zero/);
   const cur = await call("get_current_system", {});
   assert.equal(cur.inputs.K, 3);
