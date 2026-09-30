@@ -6,10 +6,55 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VIZ = ROOT / "visuals" / "convexity-action-engine"
+
+_VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+
+
+class _Element:
+    def __init__(self, tag, attrs):
+        self.tag = tag
+        self.attrs = dict(attrs)
+        self._text = []
+
+    @property
+    def text(self):
+        return "".join(self._text)
+
+
+class _PageParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.elements = []
+        self._open = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in _VOID_TAGS:
+            return
+        element = _Element(tag, attrs)
+        self.elements.append(element)
+        self._open.append(element)
+
+    def handle_endtag(self, tag):
+        for depth in range(len(self._open) - 1, -1, -1):
+            if self._open[depth].tag == tag:
+                del self._open[depth:]
+                return
+
+    def handle_data(self, data):
+        for element in self._open:
+            element._text.append(data)
+
+
+def _parse_page(html):
+    parser = _PageParser()
+    parser.feed(html)
+    parser.close()
+    return parser.elements
 
 
 class ConvexityActionEngineTest(unittest.TestCase):
@@ -48,18 +93,31 @@ class ConvexityActionEngineTest(unittest.TestCase):
             self.assertAlmostEqual(raw["observed"][code]["min"], float(rows[activity]["minutes_when_performed"]), places=1, msg=code)
 
     def test_page_leads_with_search_and_keeps_the_method_one_step_away(self):
-        html = (VIZ / "index.html").read_text(encoding="utf-8")
-        body = html[html.index("<body>"):html.index("<script>")]
-        # The question and search come before the context bar and results; the method paragraph follows them in a disclosure.
-        self.assertLess(body.index("<h1>"), body.index('id="hero-search"'))
-        self.assertLess(body.index('id="hero-search"'), body.index('id="ctx"'))
-        method = body[body.index('<details id="method">'):]
-        self.assertLess(body.index('id="app"'), body.index('<details id="method">'))
-        self.assertIn("short of a 10,000-action canonical ontology", method)
-        # Results are not one page-sized live region; route changes are announced through a small status element.
-        self.assertNotIn('id="app" aria-live', body)
-        self.assertIn('id="announce" role="status" aria-live="polite"', body)
-        self.assertIn('<details id="keys">', body)
+        elements = _parse_page((VIZ / "index.html").read_text(encoding="utf-8"))
+
+        def index_of(predicate, label):
+            for index, element in enumerate(elements):
+                if predicate(element):
+                    return index, element
+            self.fail(f"missing element: {label}")
+
+        h1_index, _ = index_of(lambda element: element.tag == "h1", "h1")
+        hero_index, _ = index_of(lambda element: element.attrs.get("id") == "hero-search", "#hero-search")
+        ctx_index, _ = index_of(lambda element: element.attrs.get("id") == "ctx", "#ctx")
+        app_index, app = index_of(lambda element: element.attrs.get("id") == "app", "#app")
+        method_index, method = index_of(
+            lambda element: element.tag == "details" and element.attrs.get("id") == "method", "details#method"
+        )
+        _, announce = index_of(lambda element: element.attrs.get("id") == "announce", "#announce")
+        index_of(lambda element: element.tag == "details" and element.attrs.get("id") == "keys", "details#keys")
+
+        self.assertLess(h1_index, hero_index)
+        self.assertLess(hero_index, ctx_index)
+        self.assertLess(app_index, method_index)
+        self.assertIn("short of a 10,000-action canonical ontology", method.text)
+        self.assertNotIn("aria-live", app.attrs)
+        self.assertEqual(announce.attrs.get("role"), "status")
+        self.assertEqual(announce.attrs.get("aria-live"), "polite")
 
     def test_published_copy_matches_sources(self):
         published = ROOT / "site" / "visuals" / "convexity-action-engine"
