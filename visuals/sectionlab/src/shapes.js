@@ -210,7 +210,7 @@
         const [v] = centreVerts([[[0, 0], [d.b, 0], [d.b, d.tf], [d.tw, d.tf], [d.tw, d.h], [x, d.h], [x, d.h - d.tf], [0, d.h - d.tf]]]);
         return polygonShape(v, r, this.corners());
       },
-      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+      resize: (d, sx, sy) => ({ ...d, b: (sx * (2 * d.b - d.tw) + d.tw) / 2, h: d.h * sy }),
     },
     cross: {
       label: "Cross", family: "built-up", phase: 2,
@@ -282,7 +282,7 @@
           : [[b, 0, 0], [0, 0, R], [0, h - t, ri], [L, h - t, 0], [L, h, 0], [t, h, R], [t, t, ri], [b, t, 0]];
         return coldFormed(pts);
       },
-      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+      resize: (d, sx, sy) => ({ ...d, b: (sx * (2 * d.b - d.t) + d.t) / 2, h: d.h * sy }),
     },
     cfhat: {
       label: "Cold-formed top hat", family: "cold-formed", phase: 3,
@@ -300,7 +300,7 @@
         return coldFormed([[-f, 0, 0], [t, 0, R], [t, h - t, ri], [b - t, h - t, ri], [b - t, 0, R], [b + f, 0, 0], [b + f, t, 0],
           [b, t, ri], [b, h, R], [0, h, R], [0, t, ri], [-f, t, 0]]);
       },
-      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, f: d.f * sx, h: d.h * sy }),
     },
   };
 
