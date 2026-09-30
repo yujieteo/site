@@ -1,0 +1,10 @@
+slug: tampines-food-map
+title: "Tampines hub food map: Tampines Mall, Century Square and Tampines 1"
+summary: "The 20 best-rated guide-recommended places to eat in the three malls beside Tampines MRT, with review summaries and HPB calorie estimates: the typical main is about 646 kcal, and 15 of 28 mains pass 600 kcal."
+source_url: https://pphtpc.hpb.gov.sg/web/sgfoodid/tools/food-search
+fetched: "2026-09-29"
+html_path: viz/tampines-food-map/index.html
+data_path: data/tampines-food-map/raw.json
+webmcp_tools: [get_data, get_metadata, query]
+tags: [food, singapore, tampines, calories, map]
+category: data visualization
