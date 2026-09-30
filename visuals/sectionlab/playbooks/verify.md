@@ -4,7 +4,7 @@ Run from this folder. Every command must pass.
 
 ```sh
 python build.py                                     # index.html is generated
-node --test 'tests/*.test.mjs'                                  # engine, plastic, torsion, YAML, report, page tools
+node --test 'tests/*.test.mjs'                      # engine, plastic, torsion, YAML, report, page tools
 pip install -r requirements-test.txt                # once: numpy, scipy, PyYAML
 python -m unittest discover -s tests -p 'test_*.py' # references, torsion accuracy, PyYAML agreement, build
 ```
