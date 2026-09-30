@@ -20,8 +20,9 @@ Units are mm, MPa (N/mm²), N and N·mm throughout.
   square handles to resize them, and click a corner dot (or use the corner list) to
   set its radius. Parts snap to the grid and to each other's edges; arrow keys nudge;
   touch works through pointer events. Undo and redo cover every edit.
-- **Catalogue (phase 1).** Solid rectangle, circle, semicircle, triangle, trapezoid and
-  regular polygon; rectangular and circular hollow sections.
+- **Catalogue.** Phase 1: solid rectangle, circle, semicircle, triangle, trapezoid and
+  regular polygon; rectangular and circular hollow sections. Phase 2: parallel-flange I/H,
+  channel, angle, tee, Z and cross sections, with root fillets and toe radii as corner radii.
 - **Section properties.** Area, centroid, I_x, I_y, I_xy, principal values and
   angle, S_x±, S_y±, r_x, r_y, polar I_p and r_p, and first moments Q_x and Q_y,
   about the centroid. Composites use modular ratios n = E / E_base with a selectable
@@ -77,8 +78,9 @@ Open `index.html` in a browser to use it; no server is needed.
 
 Geometric properties from the engine (Green's theorem on exact line-and-arc
 boundaries) agree with an independent Python decomposition into polygons, circular
-segments and disks to about 1e-15, and the tests require 1e-9. Torsion formulas are
-measured against a linear finite-element Prandtl solution with Richardson
+segments and disks to about 1e-15, and the tests require 1e-9. Torsion formulas (exact
+cases, the Saint-Venant series, Bredt–Batho and the Vlasov thin-walled open-section
+formula) are measured against a linear finite-element Prandtl solution with Richardson
 extrapolation; the page states each formula's accuracy and drops any formula that
 misses it. The M–κ curve agrees with an independent Python width-integration
 reference to about 1e-8 (tests require 1e-6). See [docs/verification.md](docs/verification.md).

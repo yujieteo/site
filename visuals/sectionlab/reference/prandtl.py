@@ -238,6 +238,8 @@ def shape_torsion(shape, dims, radii, h=None, levels=3):
     if h is None:
         x0, x1, y0, y1 = R.extents(contours)
         h = min(max(x1 - x0, y1 - y0) / 24, min(x1 - x0, y1 - y0) / 8)
-        if shape in ("rhs", "chs"):
-            h = min(h, dims["t"] / 2)
+        # At least 2.5 coarse elements through the thinnest wall, plate or flange.
+        walls = [dims[k] for k in ("t", "tf", "tw", "tb", "th") if k in dims]
+        if walls:
+            h = min(h, min(walls) / 2.5)
     return torsion_constant(contours, h, levels)

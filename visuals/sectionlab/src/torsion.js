@@ -17,6 +17,10 @@
  *                             mid-line (area A_m, length p_m), for uniform walls within the
  *                             stated thickness range (sharp and rounded corners are
  *                             checked, and their accuracy stated, separately)
+ *   I, channel, Z, tee, angle,  Vlasov thin-walled open section: J = (1/3) Σ L t³ over the
+ *   cross (sharp corners)       wall mid-lines, for walls up to 0.15 of the smaller outside
+ *                               dimension with the thicker wall at most 1.4 times the thinner;
+ *                               root fillets make it n/a
  */
 (function (root, factory) {
   if (typeof module === "object" && module.exports) module.exports = factory();
@@ -36,6 +40,25 @@
       if (term < 1e-18 * sum) break;
     }
     return ((b * h ** 3) / 3) * (1 - (192 / Math.PI ** 5) * (h / b) * sum);
+  }
+
+  /* Largest wall, as a fraction of the smaller outside dimension, for the thin-walled open-section formula. */
+  const OPEN_MAX_T_RATIO = 0.15;
+  /* Largest ratio of the thicker wall to the thinner one for the thin-walled open-section formula. */
+  const OPEN_MAX_WALL_RATIO = 1.4;
+
+  /* Saint-Venant constant of a thin-walled open section from its wall mid-lines, J = (1/3) Σ L t³:
+     flanges and legs run to the mid-line of the wall they meet, so no length is counted twice. */
+  function openMidline(shape, d) {
+    const c = (L, t) => (L * t ** 3) / 3;
+    switch (shape) {
+      case "ishape": return 2 * c(d.b, d.tf) + c(d.h - d.tf, d.tw);
+      case "channel": case "zed": return 2 * c(d.b - d.tw / 2, d.tf) + c(d.h - d.tf, d.tw);
+      case "tee": return c(d.b, d.tf) + c(d.h - d.tf / 2, d.tw);
+      case "angle": return c(d.b + d.h - d.t, d.t);
+      case "cross": return c(d.b, d.tb) + c(d.h - d.tb, d.th);
+      default: throw new RangeError(`No mid-line model for ${shape}.`);
+    }
   }
 
   const close = (a, b, tol = 1e-9) => Math.abs(a - b) <= tol * Math.max(Math.abs(a), Math.abs(b), 1e-300);
@@ -79,6 +102,13 @@
         const id = rm.every((r) => r > 0) ? "rhs-bredt-rounded" : "rhs-bredt-sharp";
         return { id, method: "Bredt–Batho (thin wall)", J: (4 * Am * Am * t) / pm, text: "J = 4 A_m² t / p_m" };
       }
+      case "ishape": case "channel": case "zed": case "tee": case "angle": case "cross": {
+        if (!allZero(radii)) return { reason: "Root fillets and rounded toes add torsional stiffness the thin-walled formula leaves out (6–20% measured), so it is given only for sharp corners." };
+        const walls = shape === "angle" ? [d.t] : shape === "cross" ? [d.tb, d.th] : [d.tf, d.tw];
+        if (Math.max(...walls) > OPEN_MAX_T_RATIO * Math.min(d.b, d.h)) return { reason: `The thin-walled formula is used only for walls up to ${OPEN_MAX_T_RATIO} of the smaller outside dimension.` };
+        if (Math.max(...walls) / Math.min(...walls) > OPEN_MAX_WALL_RATIO) return { reason: `The thin-walled formula is used only when the thicker wall is at most ${OPEN_MAX_WALL_RATIO} times the thinner.` };
+        return { id: "open-thin-wall", method: "Vlasov thin-walled open section", J: openMidline(shape, d), text: "J = (1/3) Σ L t³ over the wall mid-lines" };
+      }
       default:
         return { reason: "No verified torsion formula for this shape." };
     }
@@ -99,5 +129,5 @@
 
   const pct = (x) => `${+(x * 100).toPrecision(2)}%`;
 
-  return { BREDT_MAX_T_RATIO, rectangleSeries, formula, torsion };
+  return { BREDT_MAX_T_RATIO, OPEN_MAX_T_RATIO, OPEN_MAX_WALL_RATIO, rectangleSeries, openMidline, formula, torsion };
 });

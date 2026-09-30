@@ -230,8 +230,113 @@ def polygon_case():
     }
 
 
+# ---------- phase 2: rolled and built-up shapes ----------
+
+def ishape_case():
+    b, h, tf, tw = 150.0, 300.0, 10.7, 8.0
+    hw = h - 2 * tf
+    return {
+        "id": "ishape-sharp", "plastic": True,
+        "model": model("I 300 x 150, sharp", [part("i", "ishape", {"b": b, "h": h, "tf": tf, "tw": tw}, [0] * 12)]),
+        "expect": [
+            e("A", b * h - (b - tw) * hw, "b h − (b − tw)(h − 2tf)"),
+            e("Ix", (b * h ** 3 - (b - tw) * hw ** 3) / 12, "(b h³ − (b − tw) hw³)/12"),
+            e("Iy", (2 * tf * b ** 3 + hw * tw ** 3) / 12, "(2 tf b³ + hw tw³)/12"),
+            e("Qx", b * tf * (h - tf) / 2 + tw * hw ** 2 / 8, "b tf (h − tf)/2 + tw hw²/8"),
+            e("Zp", b * tf * (h - tf) + tw * hw ** 2 / 4, "b tf (h − tf) + tw hw²/4"),
+            e("J", (2 * b * tf ** 3 + (h - tf) * tw ** 3) / 3, "(2 b tf³ + (h − tf) tw³)/3, thin-walled mid-line"),
+        ],
+    }
+
+
+def ishape_rolled_case():
+    b, h, tf, tw, r = 150.0, 300.0, 10.7, 7.1, 15.0
+    return {
+        "id": "ishape-rolled", "plastic": True,
+        "model": model("IPE 300 proportions", [part("i", "ishape", {"b": b, "h": h, "tf": tf, "tw": tw}, [0, 0, 0, r, r, 0, 0, 0, 0, r, r, 0])], axis="y"),
+        "expect": [e("A", b * h - (b - tw) * (h - 2 * tf) + (4 - pi) * r * r, "sharp area + 4 (1 − π/4) r² (root fillets)")],
+    }
+
+
+def channel_case():
+    b, h, tf, tw = 100.0, 300.0, 15.0, 11.0
+    hw = h - 2 * tf
+    A = 2 * b * tf + hw * tw
+    xc = (2 * b * tf * b / 2 + hw * tw * tw / 2) / A  # from the back of the web
+    return {
+        "id": "channel-sharp", "plastic": True,
+        "model": model("Channel 300 x 100, sharp", [part("c", "channel", {"b": b, "h": h, "tf": tf, "tw": tw}, [0] * 8)]),
+        "expect": [
+            e("A", A, "2 b tf + (h − 2tf) tw"), e("cx", -b / 2 + xc, "Σ A x / A from the back, bounding box centred"),
+            e("Ix", (b * h ** 3 - (b - tw) * hw ** 3) / 12, "(b h³ − (b − tw) hw³)/12"),
+            e("Zp", b * tf * (h - tf) + tw * hw ** 2 / 4, "b tf (h − tf) + tw hw²/4"),
+            e("J", (2 * (b - tw / 2) * tf ** 3 + (h - tf) * tw ** 3) / 3, "(2 (b − tw/2) tf³ + (h − tf) tw³)/3"),
+        ],
+    }
+
+
+def rolled_angle_case():
+    b, t = 100.0, 10.0
+    A = t * (2 * b - t)
+    c = (b * b + b * t - t * t) / (2 * (2 * b - t))  # heel to centroid, each axis
+    return {
+        "id": "angle-rolled-sharp", "plastic": True,
+        "model": model("Equal angle 100 x 10", [part("a", "angle", {"b": b, "h": b, "t": t}, [0] * 6)], axis="major"),
+        "expect": [
+            e("A", A, "t (2b − t)"), e("cx", -b / 2 + c, "(b² + b t − t²)/(2(2b − t)) from the heel"),
+            e("thetaDeg", 45.0, "equal legs: major axis at +45°"), e("J", (2 * b - t) * t ** 3 / 3, "(2b − t) t³/3"),
+        ],
+    }
+
+
+def tee_case():
+    b, h, tf, tw = 150.0, 150.0, 12.0, 9.0
+    A = b * tf + (h - tf) * tw
+    yc = (b * tf * (h - tf / 2) + (h - tf) * tw * (h - tf) / 2) / A  # from the stem bottom
+    return {
+        "id": "tee-sharp", "plastic": True,
+        "model": model("Tee 150 x 150, sharp", [part("t", "tee", {"b": b, "h": h, "tf": tf, "tw": tw}, [0] * 8)]),
+        "expect": [e("A", A, "b tf + (h − tf) tw"), e("cy", -h / 2 + yc, "Σ A y / A from the stem bottom"),
+                   e("J", (b * tf ** 3 + (h - tf / 2) * tw ** 3) / 3, "(b tf³ + (h − tf/2) tw³)/3")],
+    }
+
+
+def zed_case():
+    b, h, tf, tw = 80.0, 200.0, 10.0, 8.0
+    return {
+        "id": "zed-sharp", "plastic": True,
+        "model": model("Z 200 x 80, sharp", [part("z", "zed", {"b": b, "h": h, "tf": tf, "tw": tw}, [0] * 8)], solve="fixed-axis"),
+        "expect": [e("A", 2 * b * tf + (h - 2 * tf) * tw, "2 b tf + (h − 2tf) tw"), e("cx", 0.0, "point symmetry about the web centre"), e("cy", 0.0, "point symmetry")],
+    }
+
+
+def cross_case():
+    b, h, tb, th = 200.0, 160.0, 20.0, 12.0
+    return {
+        "id": "cross-sharp", "plastic": True,
+        "model": model("Cross", [part("x", "cross", {"b": b, "h": h, "tb": tb, "th": th}, [0] * 12)]),
+        "expect": [
+            e("A", b * tb + (h - tb) * th, "b tb + (h − tb) th"),
+            e("Ix", (th * h ** 3 + (b - th) * tb ** 3) / 12, "(th h³ + (b − th) tb³)/12"),
+            e("Iy", (tb * b ** 3 + (h - tb) * th ** 3) / 12, "(tb b³ + (h − tb) th³)/12"),
+        ],
+    }
+
+
+def built_up_case():
+    # A welded plate girder from three plates beside a rolled channel with root fillets, bending about the minor axis.
+    parts = [
+        part("top", "rect", {"b": 200, "h": 16}, [0, 0, 0, 0], y=192), part("web", "rect", {"b": 10, "h": 368}, [0, 0, 0, 0]),
+        part("bot", "rect", {"b": 300, "h": 20}, [0, 0, 0, 0], y=-194),
+        part("ch", "channel", {"b": 90, "h": 260, "tf": 14, "tw": 8}, [0, 0, 2, 12, 12, 2, 0, 0], x=150 + 45, y=-54),
+        part("zz", "zed", {"b": 60, "h": 120, "tf": 8, "tw": 6}, [0, 0, 0, 6, 0, 0, 0, 6], x=-150, y=-120, orientation=90),
+    ]
+    return {"id": "built-up", "plastic": True, "model": model("Built-up girder with rolled parts", parts, axis="minor", solve="fixed-axis"), "expect": []}
+
+
 CASES = [
     rect_case(), rect_turned_case(), rect_axial_case(), circle_case(), chs_case(), semicircle_case(), triangle_case(),
     equilateral_case(), rounded_rect_case(), rhs_sharp_case(), rhs_rounded_case(), tee_hole_case(), composite_case(),
     angle_case(), angle_zero_cross_case(), mixed_case(), polygon_case(),
+    ishape_case(), ishape_rolled_case(), channel_case(), rolled_angle_case(), tee_case(), zed_case(), cross_case(), built_up_case(),
 ]

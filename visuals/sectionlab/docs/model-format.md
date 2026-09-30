@@ -38,7 +38,7 @@ plastic:
   solve: zero-cross          # zero-cross (b, default) | fixed-axis (a)
 ```
 
-## Catalogue (phase 1)
+## Catalogue
 
 | id | Dimensions | Corners (radii order) |
 | --- | --- | --- |
@@ -50,6 +50,12 @@ plastic:
 | `polygon` | n (3–12 sides, flat bottom), d (across corners) | corner 1 … n, counter-clockwise from bottom left |
 | `rhs` | b, h, t | outer ×4, then inner ×4, each bottom left → top left |
 | `chs` | d, t | none |
+| `ishape` | b, h, tf, tw (parallel flanges) | bottom-left outer, bottom-right outer, bottom-right flange tip, bottom-right root, top-right root, top-right flange tip, top-right outer, top-left outer, top-left flange tip, top-left root, bottom-left root, bottom-left flange tip |
+| `channel` | b, h, tf, tw (web on the left) | bottom back, bottom toe, bottom flange tip, bottom root, top root, top flange tip, top toe, top back |
+| `angle` | b (horizontal leg), h (vertical leg), t | heel, horizontal toe, horizontal toe tip, root, vertical toe tip, vertical toe |
+| `tee` | b, h, tf, tw (flange on top) | stem bottom left, stem bottom right, right root, right flange tip, right outer, left outer, left flange tip, left root |
+| `zed` | b, h, tf, tw (bottom flange right, top flange left) | bottom back, bottom toe, bottom flange tip, bottom root, top back, top toe, top flange tip, top root |
+| `cross` | b, h, tb (horizontal bar), th (vertical bar) | right end bottom, right end top, top-right root, top end right, top end left, top-left root, left end top, left end bottom, bottom-left root, bottom end left, bottom end right, bottom-right root |
 
 ## Rules
 

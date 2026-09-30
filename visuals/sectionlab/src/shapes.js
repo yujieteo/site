@@ -139,6 +139,94 @@
       },
       resize: (d, sx) => ({ ...d, d: d.d * sx }),
     },
+
+    /* ---------- phase 2: rolled and built-up shapes (parallel flanges; root fillets are concave corners) ---------- */
+    ishape: {
+      label: "I / H section", family: "rolled", phase: 2,
+      dims: [{ key: "b", label: "Flange width b", default: 150 }, { key: "h", label: "Depth h", default: 300 },
+        { key: "tf", label: "Flange tf", default: 10.7 }, { key: "tw", label: "Web tw", default: 7.1 }],
+      corners: () => ["bottom-left outer", "bottom-right outer", "bottom-right flange tip", "bottom-right root", "top-right root", "top-right flange tip",
+        "top-right outer", "top-left outer", "top-left flange tip", "top-left root", "bottom-left root", "bottom-left flange tip"],
+      defaultRadii: () => [0, 0, 0, 15, 15, 0, 0, 0, 0, 15, 15, 0],
+      build(d, r) {
+        need(d.tw < d.b, "Web tw must be less than the flange width b.");
+        need(2 * d.tf < d.h, "Flanges 2 tf must be less than the depth h.");
+        const b = d.b / 2, h = d.h / 2, w = d.tw / 2, f = h - d.tf;
+        return polygonShape([[-b, -h], [b, -h], [b, -f], [w, -f], [w, f], [b, f], [b, h], [-b, h], [-b, f], [-w, f], [-w, -f], [-b, -f]], r, this.corners());
+      },
+      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+    },
+    channel: {
+      label: "Channel", family: "rolled", phase: 2,
+      dims: [{ key: "b", label: "Flange width b", default: 100 }, { key: "h", label: "Depth h", default: 300 },
+        { key: "tf", label: "Flange tf", default: 15 }, { key: "tw", label: "Web tw", default: 9 }],
+      corners: () => ["bottom back", "bottom toe", "bottom flange tip", "bottom root", "top root", "top flange tip", "top toe", "top back"],
+      defaultRadii: () => [0, 0, 0, 15, 15, 0, 0, 0],
+      build(d, r) {
+        need(d.tw < d.b, "Web tw must be less than the flange width b.");
+        need(2 * d.tf < d.h, "Flanges 2 tf must be less than the depth h.");
+        const [v] = centreVerts([[[0, 0], [d.b, 0], [d.b, d.tf], [d.tw, d.tf], [d.tw, d.h - d.tf], [d.b, d.h - d.tf], [d.b, d.h], [0, d.h]]]);
+        return polygonShape(v, r, this.corners());
+      },
+      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+    },
+    angle: {
+      label: "Angle", family: "rolled", phase: 2,
+      dims: [{ key: "b", label: "Horizontal leg b", default: 100 }, { key: "h", label: "Vertical leg h", default: 100 }, { key: "t", label: "Thickness t", default: 10 }],
+      corners: () => ["heel", "horizontal toe", "horizontal toe tip", "root", "vertical toe tip", "vertical toe"],
+      defaultRadii: () => [0, 0, 6, 12, 6, 0],
+      build(d, r) {
+        need(d.t < d.b && d.t < d.h, "Thickness t must be less than both legs.");
+        const [v] = centreVerts([[[0, 0], [d.b, 0], [d.b, d.t], [d.t, d.t], [d.t, d.h], [0, d.h]]]);
+        return polygonShape(v, r, this.corners());
+      },
+      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+    },
+    tee: {
+      label: "Tee", family: "rolled", phase: 2,
+      dims: [{ key: "b", label: "Flange width b", default: 150 }, { key: "h", label: "Depth h", default: 150 },
+        { key: "tf", label: "Flange tf", default: 12 }, { key: "tw", label: "Stem tw", default: 8 }],
+      corners: () => ["stem bottom left", "stem bottom right", "right root", "right flange tip", "right outer", "left outer", "left flange tip", "left root"],
+      defaultRadii: () => [0, 0, 12, 0, 0, 0, 0, 12],
+      build(d, r) {
+        need(d.tw < d.b, "Stem tw must be less than the flange width b.");
+        need(d.tf < d.h, "Flange tf must be less than the depth h.");
+        const [v] = centreVerts([[[-d.tw / 2, 0], [d.tw / 2, 0], [d.tw / 2, d.h - d.tf], [d.b / 2, d.h - d.tf], [d.b / 2, d.h], [-d.b / 2, d.h], [-d.b / 2, d.h - d.tf], [-d.tw / 2, d.h - d.tf]]]);
+        return polygonShape(v, r, this.corners());
+      },
+      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+    },
+    zed: {
+      label: "Z section", family: "rolled", phase: 2,
+      dims: [{ key: "b", label: "Flange width b", default: 80 }, { key: "h", label: "Depth h", default: 200 },
+        { key: "tf", label: "Flange tf", default: 10 }, { key: "tw", label: "Web tw", default: 8 }],
+      corners: () => ["bottom back", "bottom toe", "bottom flange tip", "bottom root", "top back", "top toe", "top flange tip", "top root"],
+      defaultRadii: () => [0, 0, 0, 10, 0, 0, 0, 10],
+      build(d, r) {
+        need(d.tw < d.b, "Web tw must be less than the flange width b.");
+        need(2 * d.tf < d.h, "Flanges 2 tf must be less than the depth h.");
+        // Bottom flange runs right from the web, top flange left.
+        const x = d.tw - d.b;
+        const [v] = centreVerts([[[0, 0], [d.b, 0], [d.b, d.tf], [d.tw, d.tf], [d.tw, d.h], [x, d.h], [x, d.h - d.tf], [0, d.h - d.tf]]]);
+        return polygonShape(v, r, this.corners());
+      },
+      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+    },
+    cross: {
+      label: "Cross", family: "built-up", phase: 2,
+      dims: [{ key: "b", label: "Width b", default: 200 }, { key: "h", label: "Height h", default: 200 },
+        { key: "tb", label: "Horizontal bar tb", default: 20 }, { key: "th", label: "Vertical bar th", default: 20 }],
+      corners: () => ["right end bottom", "right end top", "top-right root", "top end right", "top end left", "top-left root",
+        "left end top", "left end bottom", "bottom-left root", "bottom end left", "bottom end right", "bottom-right root"],
+      defaultRadii: () => new Array(12).fill(0),
+      build(d, r) {
+        need(d.th < d.b, "Vertical bar th must be less than the width b.");
+        need(d.tb < d.h, "Horizontal bar tb must be less than the height h.");
+        const b = d.b / 2, h = d.h / 2, p = d.tb / 2, q = d.th / 2;
+        return polygonShape([[b, -p], [b, p], [q, p], [q, h], [-q, h], [-q, p], [-b, p], [-b, -p], [-q, -p], [-q, -h], [q, -h], [q, -p]], r, this.corners());
+      },
+      resize: (d, sx, sy) => ({ ...d, b: d.b * sx, h: d.h * sy }),
+    },
   };
 
   /* Default dims for a shape. */
