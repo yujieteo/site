@@ -192,7 +192,7 @@ body.present #stage{border-radius:0;box-shadow:none}
 <!-- teoyujie.org additions: begin. Everything else is beamdswitch.html as vendored; see README.md. -->
 <script src="coi-serviceworker.js"></script>
 <script src="site.js" defer></script>
-<style>@media print{aside[role=note]{display:none}}:root:fullscreen aside[role=note]{display:none}</style>
+<style>@media print{aside[role=note]{display:none!important}}:root:fullscreen aside[role=note]{display:none!important}</style>
 <aside role="note" style="position:fixed;right:8px;bottom:8px;z-index:4;display:flex;gap:8px;align-items:flex-start;max-width:min(340px,calc(100vw - 16px));padding:6px 10px;border-radius:6px;background:#141413;color:#FAF9F5;font:12px/1.35 system-ui,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.25)">
 <span style="flex:1">Narration downloads the Kokoro voice model from this site the first time you ask for a voice: about 111 MB for WASM or 334 MB for WebGPU (about 440 MB for all files). Your browser caches it afterwards. Narration needs this page's service worker, so it will not load where service workers are blocked, as in some private windows.</span>
 <button type="button" onclick="this.parentNode.remove()" aria-label="Dismiss" style="flex:none;border:0;background:none;color:inherit;font:inherit;font-size:18px;line-height:1;cursor:pointer;padding:0 2px">&times;</button>
