@@ -90,7 +90,6 @@ class SubsidyAtlasTests(unittest.TestCase):
             ('unflagged forecast', lambda d: d['forecasts'][0].update(speculative=False)),
             ('forecast in catalogue', lambda d: d['entries'][0].update(speculative=True)),
             ('duplicate ID', lambda d: d['forecasts'][0].update(id=d['entries'][0]['id'])),
-            ('missing precedent', lambda d: d['entries'][0].update(precedent='absent')),
             ('future source', lambda d: d['sources']['gemini'].update(published='2099-01-01')),
         ]
         for label, mutate in cases:

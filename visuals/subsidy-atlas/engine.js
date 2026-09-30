@@ -78,15 +78,6 @@
     render();
     document.getElementById('catalogue').focus();
   });
-  document.querySelectorAll('[data-related]').forEach(link => link.addEventListener('click', () => {
-    const id = link.dataset.related;
-    form.reset();
-    field('includeHistorical').checked = true;
-    render();
-    const card = document.getElementById(id);
-    card.open = true;
-    card.querySelector('summary').focus();
-  }));
   function registerTools() {
     const mc = navigator.modelContext;
     if (!mc?.registerTool) return;

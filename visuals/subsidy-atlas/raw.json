@@ -199,8 +199,7 @@
         "sources": [
           "chatgpt-free"
         ]
-      },
-      "precedent": "pro-2025"
+      }
     },
     {
       "id": "gemini-free",
@@ -237,8 +236,7 @@
           "gemini",
           "gemini-terms"
         ]
-      },
-      "precedent": "pro-2025"
+      }
     },
     {
       "id": "aws-free",
@@ -274,8 +272,7 @@
         "sources": [
           "aws-terms"
         ]
-      },
-      "precedent": "azure-free"
+      }
     },
     {
       "id": "azure-free",
@@ -311,8 +308,7 @@
         "sources": [
           "azure"
         ]
-      },
-      "precedent": "aws-free"
+      }
     },
     {
       "id": "grab-promos",
@@ -349,8 +345,7 @@
         "sources": [
           "grab"
         ]
-      },
-      "precedent": "uber-growth"
+      }
     },
     {
       "id": "singapore-ev",
@@ -386,8 +381,7 @@
         "sources": [
           "ev"
         ]
-      },
-      "precedent": "solar-au"
+      }
     },
     {
       "id": "solar-au",
@@ -423,8 +417,7 @@
         "sources": [
           "solar"
         ]
-      },
-      "precedent": "singapore-ev"
+      }
     },
     {
       "id": "battery-au",
@@ -460,8 +453,7 @@
         "sources": [
           "solar"
         ]
-      },
-      "precedent": "solar-au"
+      }
     },
     {
       "id": "klarna-pay4",
@@ -499,8 +491,7 @@
         "sources": [
           "klarna"
         ]
-      },
-      "precedent": "moviepass-2018"
+      }
     },
     {
       "id": "pro-2025",
@@ -536,8 +527,7 @@
         "sources": [
           "pro"
         ]
-      },
-      "precedent": "moviepass-2018"
+      }
     },
     {
       "id": "xbox-2021",
@@ -573,8 +563,7 @@
         "sources": [
           "xbox"
         ]
-      },
-      "precedent": "kindle-2012"
+      }
     },
     {
       "id": "kindle-2012",
@@ -610,8 +599,7 @@
         "sources": [
           "kindle"
         ]
-      },
-      "precedent": "xbox-2021"
+      }
     },
     {
       "id": "disney-streaming",
@@ -647,8 +635,7 @@
         "sources": [
           "disney"
         ]
-      },
-      "precedent": "moviepass-2018"
+      }
     },
     {
       "id": "uber-growth",
@@ -685,8 +672,7 @@
           "uber",
           "uber-prices"
         ]
-      },
-      "precedent": "grab-promos"
+      }
     },
     {
       "id": "moviepass-2018",
@@ -724,8 +710,7 @@
         "sources": [
           "moviepass-end"
         ]
-      },
-      "precedent": "pro-2025"
+      }
     }
   ],
   "forecasts": [

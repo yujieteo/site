@@ -44,8 +44,6 @@ def validate(data):
         for key in ('subsidiser', 'depth', 'stage'):
             if entry[key] not in vocab[key]:
                 raise ValueError('Unknown ' + key)
-        if entry['precedent'] not in {item['id'] for item in data['entries']}:
-            raise ValueError('Missing related record')
         for key in ('evidence', 'depth_note', 'duration', 'caution'):
             sourced(entry[key])
     for pick in data['forecasts']:
@@ -65,15 +63,13 @@ def render(data):
                       + ''.join(f'<option value="{id}">{escape(text)}</option>' for id, text in vocab[key].items())
                       + '</select></label>' for key, label in [('category', 'Categories'), ('subsidiser', 'Subsidisers'), ('depth', 'Depths'), ('stage', 'Stages')])
     cards = []
-    by_id = {entry['id']: entry for entry in data['entries']}
     for entry in data['entries']:
         stage = vocab['stage'][entry['stage']]
         cats = ' / '.join(vocab['category'][cat] for cat in entry['categories'])
-        related = by_id[entry['precedent']]
         cards.append(f'''<details id="{entry['id']}" data-product="{entry['id']}" class="product">
 <summary><span class="eyebrow">{escape(cats)} · {escape(stage)}</span><span class="name">{escape(entry['name'])}</span><span class="metric">{escape(entry['metric'])}</span><span class="tags">{escape(vocab['subsidiser'][entry['subsidiser']])} · {escape(vocab['depth'][entry['depth']])}</span><span class="more">Evidence & catches <span aria-hidden="true">↗</span></span></summary>
 <div class="detail">{claim(data, 'What the evidence establishes', entry['evidence'])}{claim(data, 'Subsidy depth — denominator matters', entry['depth_note'])}{claim(data, 'Window / lifecycle', entry['duration'])}{claim(data, 'The catch', entry['caution'])}
-<p class="related">Compare: <a data-related="{related['id']}" href="#{related['id']}">{escape(related['name'])}</a> (analogy, not a prediction).</p></div></details>''')
+</div></details>''')
     short = {'free': 'Free', 'partial': 'Capped', 'near-cost': 'At cost', 'unknown': 'Unknown'}
     chart = '<div class="matrix-head"><span>Lifecycle ↓<br>Depth →</span>' + ''.join(f'<span title="{escape(vocab["depth"][id])}">{short[id]}</span>' for id in vocab['depth']) + '</div>'
     for stage, label in vocab['stage'].items():
