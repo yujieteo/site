@@ -392,17 +392,30 @@ PROPERTY_CASES.push(
   },
 );
 
-export const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES];
+/* Published-reference cases. A case with `pending` set has no reference
+ * values entered yet: it is reported as pending, neither pass nor fail. */
+export const REFERENCE_CASES = [
+  {
+    id: "VR-01", title: "AISC T-stub prying worked example",
+    pending: "published reference values not yet entered (spec open question 2)",
+  },
+];
 
-/* Run every case; a case that throws fails with the message. */
+export const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES, ...REFERENCE_CASES];
+
+/* Run every case; a case that throws fails with the message. Status is
+ * "pass", "fail" or "pending"; the set passes when no case fails. */
 export function runVerification(cases = ALL_CASES) {
   const results = cases.map((c) => {
+    if (c.pending) return { id: c.id, title: c.title, checks: [], status: "pending", pass: false, pending: c.pending };
     try {
       const checks = c.run();
-      return { id: c.id, title: c.title, checks, pass: checks.length > 0 && checks.every((x) => x.pass) };
+      const pass = checks.length > 0 && checks.every((x) => x.pass);
+      return { id: c.id, title: c.title, checks, status: pass ? "pass" : "fail", pass };
     } catch (e) {
-      return { id: c.id, title: c.title, checks: [], pass: false, error: e.message };
+      return { id: c.id, title: c.title, checks: [], status: "fail", pass: false, error: e.message };
     }
   });
-  return { set: VERIFICATION_SET, tol: REL_TOL, results, pass: results.every((r) => r.pass) };
+  const count = (status) => results.filter((r) => r.status === status).length;
+  return { set: VERIFICATION_SET, tol: REL_TOL, results, passed: count("pass"), pending: count("pending"), failed: count("fail"), pass: count("fail") === 0 };
 }

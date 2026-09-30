@@ -301,7 +301,7 @@ function resultSections(pattern, result) {
       ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
       : noMarginSummary(result.fasteners.map((f) => f.checks)).text,
     "",
-    "IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the bolt tension (external tension plus prying, through preload when enabled); unloading counts as zero.",
+    `IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the bolt tension (external tension plus prying, through preload when enabled); unloading counts as zero external tension${result.tensionSettings.preload ? ", so the bolt load is P_max" : ""}.`,
     "",
     mdTable(["id", `Rs (${u("force")})`, `Rt (${u("force")})`, `Fs (${u("force")})`, `Ft (${u("force")})`, "IF(1)", "k*", "MS interaction", "governing MS", "governing mode"],
       result.fasteners.map((f) => {

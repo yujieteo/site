@@ -499,7 +499,7 @@ function renderResults() {
     <p class="note">F_b replaces T in the interaction and is recomputed at every load multiplier k; preload does not scale. Prying acts on positive external tension only.</p>${tensionTable}` : ""}
     <h3 style="margin-top:1.25rem">Margins of safety — elastic basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
     ${crit}
-    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero.</p>
+    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
@@ -545,11 +545,10 @@ function renderPresets() {
 
 function renderVerification() {
   const v = runVerification();
-  const passed = v.results.filter((r) => r.pass).length;
   $("#verify-results").innerHTML = `
-    <p><span class="${v.pass ? "pass" : "fail"}">${passed} of ${v.results.length} cases pass</span> · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
-    ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.pass ? "pass" : "fail"}">${r.pass ? "pass" : "fail"}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
-      ${r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
+    <p><span class="${v.pass ? "pass" : "fail"}">${v.passed} pass${v.failed ? `, ${v.failed} fail` : ""}${v.pending ? `, ${v.pending} pending` : ""}</span> of ${v.results.length} cases · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
+    ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.status}">${r.status}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
+      ${r.pending ? `<p class="pending">pending: ${esc(r.pending)}</p>` : r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
         esc(c.label), typeof c.actual === "number" ? String(Number(c.actual.toPrecision(10))) : esc(c.actual),
         typeof c.expected === "number" ? String(Number(c.expected.toPrecision(10))) : esc(c.expected), esc(c.tol), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']), { numeric: [1, 2] })}
     </details>`).join("")}`;

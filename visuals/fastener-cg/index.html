@@ -108,6 +108,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .counts{display:flex;gap:.8rem;font-size:.8125rem;color:var(--muted);margin:0 0 .5rem}
 .pass{color:var(--ok);font-weight:600}
 .fail{color:var(--bad);font-weight:600}
+.pending{color:var(--warn);font-weight:600}
 .blocked{border:1px dashed var(--bad);border-radius:var(--r);padding:.8rem;color:var(--muted)}
 .verify-case>summary{cursor:pointer}
 code{font:.875em var(--mono)}
@@ -1113,11 +1114,10 @@ function validateTensionInputs(pattern, resolved, plate) {
   const originals = new Map((pattern.fasteners || []).map((f) => [f.id, f]));
   if (settings.prying?.enabled) {
     const plateLabel = plate ? plate.id : "the loaded plate";
-    if (!plate) push("E-007", "Prying needs the loaded plate (flange thickness t and flange strength Fp), but it does not exist.", { field: "load.appliedPlate" });
-    else {
-      if (!given(plate.thickness)) push("E-007", `Prying needs flange thickness t: ${plateLabel} thickness is not entered.`, { field: `plates.${plate.id}.thickness` });
-      else if (!(isNum(plate.thickness) && plate.thickness > 0)) push("E-002", `${plateLabel} thickness must be a positive number.`, { field: `plates.${plate.id}.thickness` });
-    }
+    const tStub = resolved.some((f) => !given(f.prying?.manualFactor));
+    if (tStub && !plate) push("E-007", "Prying needs the loaded plate (flange thickness t and flange strength Fp), but it does not exist.", { field: "load.appliedPlate" });
+    else if (tStub && !given(plate.thickness)) push("E-007", `Prying needs flange thickness t: ${plateLabel} thickness is not entered.`, { field: `plates.${plate.id}.thickness` });
+    else if (tStub && !(isNum(plate.thickness) && plate.thickness > 0)) push("E-002", `${plateLabel} thickness must be a positive number.`, { field: `plates.${plate.id}.thickness` });
     for (const f of resolved) {
       const o = originals.get(f.id) || {};
       const pr = f.prying || {};
@@ -1156,7 +1156,10 @@ function validateTensionInputs(pattern, resolved, plate) {
         if (!given(v)) { push("E-007", `Preload needs ${label}${at.fastener ? ` for ${f.id}` : " (group default)"}.`, at); both = false; }
         else if (!(isNum(v) && v >= 0)) { push("E-002", `${label} must be a number ≥ 0 (is ${v}).`, at); both = false; }
       }
-      if (both && pl.pMax < pl.pMin) push("E-014", `${f.id}: P_max = ${pl.pMax} is less than P_min = ${pl.pMin}.`, where(o, "preload.pMax"));
+      if (both && pl.pMax < pl.pMin) {
+        const at = where(o, "preload.pMax");
+        push("E-014", `${at.fastener ? `${f.id}: ` : ""}P_max = ${pl.pMax} is less than P_min = ${pl.pMin}.`, at);
+      }
     }
   }
   return issues;
@@ -1280,14 +1283,17 @@ function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ pryi
   });
   if (notComputed.length) issues.push(issue("W-008", `MS not computed for ${notComputed.join(", ")}.`, { fasteners: notComputed.map(idOf) }));
   if (preloadOnly.length) issues.push(issue("W-017", `IF(0) ≥ 1, so MS is not computed, for ${preloadOnly.join(", ")}.`, { fasteners: preloadOnly.map(idOf) }));
-  const separated = results.filter((r) => r.clamp.status === "separated").map((r) => r.id);
-  if (separated.length) issues.push(issue("W-013", `Clamp force has reached zero on ${separated.join(", ")}: the joint is separated there and the bolt carries the full external tension (F_b = T + Q).`, { fasteners: separated }));
+  const separated = results.filter((r) => r.clamp.status === "separated");
+  if (separated.length) {
+    const loads = separated.map((r) => `${r.id} F_b = ${r.tension.Fb.toPrecision(4)} (${r.tension.preload.branch === "separated" ? "T + Q" : "P_max + φ·T + Q"})`);
+    issues.push(issue("W-013", `Clamp force P_min − (1 − φ)·T has reached zero on ${separated.map((r) => r.id).join(", ")}: the joint is separated there. Bolt load ${loads.join("; ")}.`, { fasteners: separated.map((r) => r.id) }));
+  }
   const manual = results.filter((r) => r.tension.prying.method === "manual").map((r) => r.id);
   if (manual.length) issues.push(issue("W-012", `Manual prying factor replaces the T-stub result on ${manual.join(", ")} (bolt tension = factor × T).`, { fasteners: manual }));
   if (settings.preload?.enabled) issues.push(issue("N-005", "Clamp force is reported, but no friction-slip capacity is claimed."));
   else if (results.some((r) => r.tension.Text > 0)) issues.push(issue("N-007", "Preload is disabled: the bolt load is the external tension plus prying, T + Q."));
   const zeroed = results.filter((r) => r.unloadingCountedZero).map((r) => r.id);
-  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero tension: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
+  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero external tension${settings.preload?.enabled ? ", so their bolt load is P_max" : ""}: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
   const withMargin = results.filter((r) => r.governing && Number.isFinite(r.governing.ms));
   const critical = withMargin.length ? withMargin.reduce((lo, r) => (r.governing.ms < lo.governing.ms ? r : lo)) : null;
   return {
@@ -2012,7 +2018,7 @@ function resultSections(pattern, result) {
       ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
       : noMarginSummary(result.fasteners.map((f) => f.checks)).text,
     "",
-    "IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the bolt tension (external tension plus prying, through preload when enabled); unloading counts as zero.",
+    `IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the bolt tension (external tension plus prying, through preload when enabled); unloading counts as zero external tension${result.tensionSettings.preload ? ", so the bolt load is P_max" : ""}.`,
     "",
     mdTable(["id", `Rs (${u("force")})`, `Rt (${u("force")})`, `Fs (${u("force")})`, `Ft (${u("force")})`, "IF(1)", "k*", "MS interaction", "governing MS", "governing mode"],
       result.fasteners.map((f) => {
@@ -2546,21 +2552,34 @@ PROPERTY_CASES.push(
   },
 );
 
-const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES];
+/* Published-reference cases. A case with `pending` set has no reference
+ * values entered yet: it is reported as pending, neither pass nor fail. */
+const REFERENCE_CASES = [
+  {
+    id: "VR-01", title: "AISC T-stub prying worked example",
+    pending: "published reference values not yet entered (spec open question 2)",
+  },
+];
 
-/* Run every case; a case that throws fails with the message. */
+const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES, ...REFERENCE_CASES];
+
+/* Run every case; a case that throws fails with the message. Status is
+ * "pass", "fail" or "pending"; the set passes when no case fails. */
 function runVerification(cases = ALL_CASES) {
   const results = cases.map((c) => {
+    if (c.pending) return { id: c.id, title: c.title, checks: [], status: "pending", pass: false, pending: c.pending };
     try {
       const checks = c.run();
-      return { id: c.id, title: c.title, checks, pass: checks.length > 0 && checks.every((x) => x.pass) };
+      const pass = checks.length > 0 && checks.every((x) => x.pass);
+      return { id: c.id, title: c.title, checks, status: pass ? "pass" : "fail", pass };
     } catch (e) {
-      return { id: c.id, title: c.title, checks: [], pass: false, error: e.message };
+      return { id: c.id, title: c.title, checks: [], status: "fail", pass: false, error: e.message };
     }
   });
-  return { set: VERIFICATION_SET, tol: REL_TOL, results, pass: results.every((r) => r.pass) };
+  const count = (status) => results.filter((r) => r.status === status).length;
+  return { set: VERIFICATION_SET, tol: REL_TOL, results, passed: count("pass"), pending: count("pending"), failed: count("fail"), pass: count("fail") === 0 };
 }
-return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, ALL_CASES, runVerification };
+return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, REFERENCE_CASES, ALL_CASES, runVerification };
 })();
 
 /* ---- core/meta.mjs ---- */
@@ -2587,7 +2606,7 @@ const ASSUMPTIONS = [
   "Prying (T-stub, keyed B and Fp) acts on positive external tension only, using the loaded plate's thickness t and flange strength Fp; a ≤ 1.25·b. A manual factor f replaces it with a bolt tension f·T (W-012).",
   "Preload: F_b = max(P_max + φ·T, T) + Q; clamp force P_min − (1 − φ)·T; separation load P_min/(1 − φ). Prying Q is added to the bolt load (conservative). Preload does not scale with the load multiplier k. Friction slip is not evaluated (N-005).",
   "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
-  "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero tension (N-006).",
+  "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero external tension (N-006); with preload their bolt load is P_max.",
 ];
 return { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS };
 })();
@@ -3424,7 +3443,7 @@ function renderResults() {
     <p class="note">F_b replaces T in the interaction and is recomputed at every load multiplier k; preload does not scale. Prying acts on positive external tension only.</p>${tensionTable}` : ""}
     <h3 style="margin-top:1.25rem">Margins of safety — elastic basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
     ${crit}
-    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero.</p>
+    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
@@ -3470,11 +3489,10 @@ function renderPresets() {
 
 function renderVerification() {
   const v = runVerification();
-  const passed = v.results.filter((r) => r.pass).length;
   $("#verify-results").innerHTML = `
-    <p><span class="${v.pass ? "pass" : "fail"}">${passed} of ${v.results.length} cases pass</span> · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
-    ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.pass ? "pass" : "fail"}">${r.pass ? "pass" : "fail"}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
-      ${r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
+    <p><span class="${v.pass ? "pass" : "fail"}">${v.passed} pass${v.failed ? `, ${v.failed} fail` : ""}${v.pending ? `, ${v.pending} pending` : ""}</span> of ${v.results.length} cases · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
+    ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.status}">${r.status}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
+      ${r.pending ? `<p class="pending">pending: ${esc(r.pending)}</p>` : r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
         esc(c.label), typeof c.actual === "number" ? String(Number(c.actual.toPrecision(10))) : esc(c.actual),
         typeof c.expected === "number" ? String(Number(c.expected.toPrecision(10))) : esc(c.expected), esc(c.tol), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']), { numeric: [1, 2] })}
     </details>`).join("")}`;

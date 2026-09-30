@@ -97,11 +97,10 @@ export function validateTensionInputs(pattern, resolved, plate) {
   const originals = new Map((pattern.fasteners || []).map((f) => [f.id, f]));
   if (settings.prying?.enabled) {
     const plateLabel = plate ? plate.id : "the loaded plate";
-    if (!plate) push("E-007", "Prying needs the loaded plate (flange thickness t and flange strength Fp), but it does not exist.", { field: "load.appliedPlate" });
-    else {
-      if (!given(plate.thickness)) push("E-007", `Prying needs flange thickness t: ${plateLabel} thickness is not entered.`, { field: `plates.${plate.id}.thickness` });
-      else if (!(isNum(plate.thickness) && plate.thickness > 0)) push("E-002", `${plateLabel} thickness must be a positive number.`, { field: `plates.${plate.id}.thickness` });
-    }
+    const tStub = resolved.some((f) => !given(f.prying?.manualFactor));
+    if (tStub && !plate) push("E-007", "Prying needs the loaded plate (flange thickness t and flange strength Fp), but it does not exist.", { field: "load.appliedPlate" });
+    else if (tStub && !given(plate.thickness)) push("E-007", `Prying needs flange thickness t: ${plateLabel} thickness is not entered.`, { field: `plates.${plate.id}.thickness` });
+    else if (tStub && !(isNum(plate.thickness) && plate.thickness > 0)) push("E-002", `${plateLabel} thickness must be a positive number.`, { field: `plates.${plate.id}.thickness` });
     for (const f of resolved) {
       const o = originals.get(f.id) || {};
       const pr = f.prying || {};
@@ -140,7 +139,10 @@ export function validateTensionInputs(pattern, resolved, plate) {
         if (!given(v)) { push("E-007", `Preload needs ${label}${at.fastener ? ` for ${f.id}` : " (group default)"}.`, at); both = false; }
         else if (!(isNum(v) && v >= 0)) { push("E-002", `${label} must be a number ≥ 0 (is ${v}).`, at); both = false; }
       }
-      if (both && pl.pMax < pl.pMin) push("E-014", `${f.id}: P_max = ${pl.pMax} is less than P_min = ${pl.pMin}.`, where(o, "preload.pMax"));
+      if (both && pl.pMax < pl.pMin) {
+        const at = where(o, "preload.pMax");
+        push("E-014", `${at.fastener ? `${f.id}: ` : ""}P_max = ${pl.pMax} is less than P_min = ${pl.pMin}.`, at);
+      }
     }
   }
   return issues;

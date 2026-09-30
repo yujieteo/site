@@ -94,14 +94,17 @@ export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => 
   });
   if (notComputed.length) issues.push(issue("W-008", `MS not computed for ${notComputed.join(", ")}.`, { fasteners: notComputed.map(idOf) }));
   if (preloadOnly.length) issues.push(issue("W-017", `IF(0) ≥ 1, so MS is not computed, for ${preloadOnly.join(", ")}.`, { fasteners: preloadOnly.map(idOf) }));
-  const separated = results.filter((r) => r.clamp.status === "separated").map((r) => r.id);
-  if (separated.length) issues.push(issue("W-013", `Clamp force has reached zero on ${separated.join(", ")}: the joint is separated there and the bolt carries the full external tension (F_b = T + Q).`, { fasteners: separated }));
+  const separated = results.filter((r) => r.clamp.status === "separated");
+  if (separated.length) {
+    const loads = separated.map((r) => `${r.id} F_b = ${r.tension.Fb.toPrecision(4)} (${r.tension.preload.branch === "separated" ? "T + Q" : "P_max + φ·T + Q"})`);
+    issues.push(issue("W-013", `Clamp force P_min − (1 − φ)·T has reached zero on ${separated.map((r) => r.id).join(", ")}: the joint is separated there. Bolt load ${loads.join("; ")}.`, { fasteners: separated.map((r) => r.id) }));
+  }
   const manual = results.filter((r) => r.tension.prying.method === "manual").map((r) => r.id);
   if (manual.length) issues.push(issue("W-012", `Manual prying factor replaces the T-stub result on ${manual.join(", ")} (bolt tension = factor × T).`, { fasteners: manual }));
   if (settings.preload?.enabled) issues.push(issue("N-005", "Clamp force is reported, but no friction-slip capacity is claimed."));
   else if (results.some((r) => r.tension.Text > 0)) issues.push(issue("N-007", "Preload is disabled: the bolt load is the external tension plus prying, T + Q."));
   const zeroed = results.filter((r) => r.unloadingCountedZero).map((r) => r.id);
-  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero tension: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
+  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero external tension${settings.preload?.enabled ? ", so their bolt load is P_max" : ""}: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
   const withMargin = results.filter((r) => r.governing && Number.isFinite(r.governing.ms));
   const critical = withMargin.length ? withMargin.reduce((lo, r) => (r.governing.ms < lo.governing.ms ? r : lo)) : null;
   return {

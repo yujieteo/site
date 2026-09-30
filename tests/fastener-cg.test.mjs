@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-import { runVerification, HAND_CASES, PROPERTY_CASES } from "../visuals/fastener-cg/src/core/verify.mjs";
+import { runVerification, HAND_CASES, PROPERTY_CASES, REFERENCE_CASES } from "../visuals/fastener-cg/src/core/verify.mjs";
 import { solve } from "../visuals/fastener-cg/src/core/solve.mjs";
 import { examplePattern, addFastener, resolveFastener, clone } from "../visuals/fastener-cg/src/core/model.mjs";
 import { convertPattern, convertValue, MM_PER_IN, N_PER_LBF } from "../visuals/fastener-cg/src/core/units.mjs";
@@ -27,11 +27,28 @@ function pattern(points, load = {}) {
   return p;
 }
 
-test("the whole in-app verification set passes", () => {
+test("the whole in-app verification set passes, with pending reference cases counted apart", () => {
   const v = runVerification();
-  for (const r of v.results) assert.ok(r.pass, `${r.id} ${r.error || r.checks.filter((c) => !c.pass).map((c) => `${c.label}: ${c.actual} vs ${c.expected}`).join("; ")}`);
-  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-08", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09", "P-10", "P-11", "P-12"]);
-  assert.equal(HAND_CASES.length + PROPERTY_CASES.length, v.results.length);
+  for (const r of v.results) {
+    if (r.status === "pending") continue;
+    assert.ok(r.pass, `${r.id} ${r.error || r.checks.filter((c) => !c.pass).map((c) => `${c.label}: ${c.actual} vs ${c.expected}`).join("; ")}`);
+  }
+  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-08", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09", "P-10", "P-11", "P-12", "VR-01"]);
+  assert.equal(HAND_CASES.length + PROPERTY_CASES.length + REFERENCE_CASES.length, v.results.length);
+  const vr = v.results.find((r) => r.id === "VR-01");
+  assert.equal(vr.status, "pending");
+  assert.equal(vr.pass, false);
+  assert.match(vr.pending, /spec open question 2/);
+  assert.deepEqual([v.passed, v.pending, v.failed, v.pass], [21, 1, 0, true]);
+});
+
+test("a failing case fails the set; a pending case does not", () => {
+  const pending = { id: "X-P", title: "pending", pending: "no values" };
+  const ok = { id: "X-1", title: "ok", run: () => [{ label: "x", pass: true }] };
+  const bad = { id: "X-2", title: "bad", run: () => [{ label: "x", pass: false }] };
+  assert.equal(runVerification([ok, pending]).pass, true);
+  assert.deepEqual(runVerification([ok, pending, bad]).results.map((r) => r.status), ["pass", "pending", "fail"]);
+  assert.equal(runVerification([ok, pending, bad]).pass, false);
 });
 
 test("VC-01 independently: 2×2 bracket, Fy = −10 000 N at (150, 0, 0)", () => {
@@ -716,4 +733,56 @@ test("Markdown carries the bolt tension table when prying or preload is on", () 
   assert.match(md, /## Bolt tension \(prying, flange P1; preload\)/);
   assert.equal(toJSON(parseMarkdown(md).pattern), toJSON(p));
   assert.doesNotMatch(toMarkdown(tee(), solve(tee())), /## Bolt tension/);
+});
+
+test("W-013 fires on clamp force alone and quotes the actual bolt load and branch", () => {
+  const one = (Fz) => {
+    const p = pattern([[0, 0]], { Fz });
+    p.settings.preload = { enabled: true };
+    p.defaults.preload = { pMax: 20000, pMin: 16000, phi: 0.2 };
+    return solve(p);
+  };
+  // Between P_min/(1 − φ) = 20 000 and P_max/(1 − φ) = 25 000: separated, but F_b = P_max + φ·T.
+  const mid = one(21000);
+  close(checksOf(mid).tension.Fb, 24200, 1e-12);
+  const w = mid.issues.find((i) => i.id === "W-013");
+  assert.ok(w);
+  assert.match(w.detail, /F1 F_b = 2\.420e\+4 \(P_max \+ φ·T \+ Q\)/);
+  assert.doesNotMatch(w.detail, /\(T \+ Q\)/);
+  const far = one(30000);
+  assert.match(far.issues.find((i) => i.id === "W-013").detail, /F1 F_b = 3\.000e\+4 \(T \+ Q\)/);
+});
+
+test("N-006 and the Markdown note give P_max as the unloading bolt load when preload is on", () => {
+  const p = tee({ preload: true });
+  p.load.My = 4e6; // T = 10 000 ± 20 000: two fasteners unload
+  const r = solve(p);
+  assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
+  const zeroed = r.fasteners.filter((f) => f.checks.unloadingCountedZero);
+  assert.equal(zeroed.length, 2);
+  for (const f of zeroed) close(f.checks.tension.Fb, 20000, 1e-12);
+  assert.match(r.issues.find((i) => i.id === "N-006").detail, /zero external tension, so their bolt load is P_max/);
+  assert.match(toMarkdown(p, r), /unloading counts as zero external tension, so the bolt load is P_max\./);
+  p.settings.preload.enabled = false;
+  const off = solve(p);
+  assert.doesNotMatch(off.issues.find((i) => i.id === "N-006").detail, /P_max/);
+  assert.doesNotMatch(toMarkdown(p, off), /so the bolt load is P_max/);
+});
+
+test("group-default P_max < P_min raises one E-014 with no fastener id", () => {
+  const p = tee({ preload: true });
+  p.defaults.preload.pMax = 10000;
+  const errs = solve(p).issues.filter((i) => i.tier === "error");
+  assert.deepEqual(errs.map((i) => [i.id, i.fastener, i.field]), [["E-014", null, "defaults.preload.pMax"]]);
+  assert.doesNotMatch(errs[0].detail, /F\d/);
+});
+
+test("all-manual prying needs no flange thickness; a T-stub fastener still does", () => {
+  const p = tee({ prying: true });
+  p.defaults.prying.manualFactor = 1.25;
+  p.plates[0].thickness = null;
+  const r = solve(p);
+  assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
+  p.fasteners[0].overrides = { prying: { manualFactor: null } };
+  assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => [i.id, i.field]), [["E-007", "plates.P1.thickness"]]);
 });
