@@ -48,8 +48,14 @@ test("staggered rows take the smaller of the straight and zig-zag net widths", (
   const r = E.solve(x);
   assert.equal(r.ok, true);
   const net = byId(r.strength, "netSection");
-  close(net.width, Math.min(p - Dh, p - 2 * Dh + (g * g) / p), 1e-12, "zig-zag width");
+  // Five per row: ten holes and nine diagonals over five pitch strips.
+  close(net.zigzag, p - 2 * Dh + (9 / 10) * (g * g) / p, 1e-12, "zig-zag width, n_f = 5");
+  close(net.width, 16.6, 1e-12, "zig-zag governs, n_f = 5");
   assert.match(net.path, /zig-zag/);
+  // Two per row: four holes and three diagonals over two pitch strips.
+  const two = byId(E.solve(joint({ "geometry.pattern": "staggered", "geometry.g": 8, "geometry.perRow": 2, "sheet.W": 55.2 })).strength, "netSection");
+  close(two.zigzag, (2 * p - 4 * Dh + (3 * g * g) / (2 * p)) / 2, 1e-12, "zig-zag width, n_f = 2");
+  close(two.width, 16.2, 1e-12, "zig-zag governs, n_f = 2");
   const diag = byId(r.geometric, "diagD");
   close(diag.actual, Math.hypot(g, p / 2) / x.fastener.D, 1e-12, "diagonal spacing");
   const wide = E.solve(joint({ "geometry.pattern": "staggered", "sheet.W": 127.2 }));

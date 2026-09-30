@@ -290,8 +290,8 @@
     if (G.perRow < 2) return { width: S.W - F.Dh, path: "plate width W − D_h", straight: S.W - F.Dh, zigzag: null };
     const straight = G.p - F.Dh;
     if (!stagger(x)) return { width: straight, path: "straight, p − D_h", straight, zigzag: null };
-    const zigzag = G.p - 2 * F.Dh + (G.g * G.g) / G.p;
-    return zigzag < straight ? { width: zigzag, path: "zig-zag, p − 2D_h + g²/p", straight, zigzag } : { width: straight, path: "straight, p − D_h", straight, zigzag };
+    const zigzag = G.p - 2 * F.Dh + ((2 * G.perRow - 1) / (2 * G.perRow)) * (G.g * G.g) / G.p;
+    return zigzag < straight ? { width: zigzag, path: "zig-zag, p − 2D_h + ((2n_f − 1)/(2n_f))·g²/p", straight, zigzag } : { width: straight, path: "straight, p − D_h", straight, zigzag };
   }
 
   function netSection(x) {
@@ -345,7 +345,7 @@
         { eD: bi.eD, Fbru: bi.Fbru, status: bi.Fbru == null ? "outside tabulated range" : null }),
       check("shearOut", "Shear-out (end distance)", "force", 2 * soPlane * S.t * M.Fsu, Pf, ["classical", "niu"], "P_so = 2·(e_end − D_h/2)·t·F_su",
         { plane: soPlane, note: "Plane length e_end − D_h/2: confirm the convention against your copy." }),
-      check("netSection", "Net section between holes", "force", net.allowable, net.applied, ["classical"], alongRows(x) ? (stagger(x) ? "σ_net = (P/n_r) / (w_net·t), w_net = min(g − (⌈n_r/2⌉/n_r)·D_h, g − D_h + ((n_r − 1)/n_r)·p²/(16g)), load along the rows" : "σ_net = (P/n_r) / ((g − D_h)·t), load along the rows") : stagger(x) ? "σ_net = (P/n_f) / (w_net·t), w_net = min(p − D_h, p − 2D_h + g²/p)" : "σ_net = (P/n_f) / ((p − D_h)·t)",
+      check("netSection", "Net section between holes", "force", net.allowable, net.applied, ["classical"], alongRows(x) ? (stagger(x) ? "σ_net = (P/n_r) / (w_net·t), w_net = min(g − (⌈n_r/2⌉/n_r)·D_h, g − D_h + ((n_r − 1)/n_r)·p²/(16g)), load along the rows" : "σ_net = (P/n_r) / ((g − D_h)·t), load along the rows") : stagger(x) ? "σ_net = (P/n_f) / (w_net·t), w_net = min(p − D_h, p − 2D_h + ((2n_f − 1)/(2n_f))·g²/p)" : "σ_net = (P/n_f) / ((p − D_h)·t)",
         { width: net.width, path: net.path, stress: net.stress, straight: net.straight, zigzag: net.zigzag }),
       check("sideEdge", "Side-edge net section", "force", M.Ftu * sideA, strip / 2, ["classical"], "(P/n_f)/2 across (e_side − D_h/2)·t against F_tu",
         { area: sideA, note: "Each ligament beside the edge hole takes half its strip load (tool convention)." }),
@@ -458,7 +458,7 @@
     "Row 0, at e_end from the free end, takes bearing and shear-out at e_end; interior rows take bearing at e/D = g/D. Bearing, shear-out and side edge always take the rows across the load.",
     "Load direction: net section uses the fastener spacing across the load and inter-rivet buckling the spacing along it. Across the rows (default): strip p − D_h carrying P/n_f, buckling length g, maximum row spacing. Along the rows: strip g − D_h carrying P/n_r, buckling length p, maximum pitch; spec check 7's 'strip length p' is this case. With one fastener along the load, inter-rivet buckling is not evaluated.",
     "F_bru is linear between your values at e/D = 1.5 and 2.0, is held at the 2.0 value above 2.0, and is not extrapolated below 1.5.",
-    "Net section between holes carries the whole strip load at the end row: P/n_f across the rows, P/n_r along them. Staggered rows also try the zig-zag path through one hole of each row (Cochrane s²/4g): p − 2D_h + g²/p per pitch strip across the rows; along the rows, where the p/2 offset leaves a straight section ⌈n_r/2⌉ holes and a zig-zag n_r − 1 diagonals across the n_r rows, min(g − (⌈n_r/2⌉/n_r)·D_h, g − D_h + ((n_r − 1)/n_r)·p²/(16g)) per row strip.",
+    "Net section between holes carries the whole strip load at the end row: P/n_f across the rows, P/n_r along them. Staggered rows also try the zig-zag path through one hole of each row (Cochrane s²/4g): across the rows a zig-zag through the 2n_f holes of two rows has 2n_f − 1 diagonals, so p − 2D_h + ((2n_f − 1)/(2n_f))·g²/p per pitch strip; along the rows, where the p/2 offset leaves a straight section ⌈n_r/2⌉ holes and a zig-zag n_r − 1 diagonals across the n_r rows, min(g − (⌈n_r/2⌉/n_r)·D_h, g − D_h + ((n_r − 1)/n_r)·p²/(16g)) per row strip.",
     "Side-edge net section: each ligament beside the edge hole takes half of its pitch strip's load, (P/n_f)/2.",
     "Inter-rivet buckling treats the sheet between fasteners along the load as a column of length g (load across the rows) or p (load along the rows), radius of gyration t/√12 and end fixity c, under the compressive sheet stress: entered, or P over the width across the load times t when left blank (W across the rows; 2·e_end + (n_r − 1)·g along them).",
     "Single-lap and double-shear joints only: no lugs, eccentric loading or prying; no fatigue, fastener strength, preload or torque.",
@@ -469,7 +469,7 @@
     { id: "pD", check: "Pitch ratio", text: "MS_geom = (p/D) / (p/D)_min − 1; also p/D ÷ typical", source: ["niu", "nasa"], note: "RP-1228 pp. 21 and 34 state a 4D nominal spacing; the minimum is an unsourced default." },
     { id: "bearing", check: "Bearing", text: "P_br = F_bru(e/D) · D · t", source: ["niu", "user"], note: "Confirm against your copy. F_bru values are yours. End row at e/D = e_end/D; interior rows at e/D = g/D." },
     { id: "shearOut", check: "Shear-out", text: "P_so = 2 · (e_end − D_h/2) · t · F_su", source: ["classical"], note: "Two shear planes. The plane-length convention: confirm against your copy (Niu)." },
-    { id: "netSection", check: "Net section", text: "σ_net = (P/n_f) / ((p − D_h) · t) ≤ F_tu", source: ["classical"], note: "Load across the rows. Staggered rows: w_net = min(p − D_h, p − 2D_h + g²/p). Load along the rows: σ_net = (P/n_r) / (w_net · t), w_net = g − D_h, or min(g − (⌈n_r/2⌉/n_r)·D_h, g − D_h + ((n_r − 1)/n_r)·p²/(16g)) when staggered." },
+    { id: "netSection", check: "Net section", text: "σ_net = (P/n_f) / ((p − D_h) · t) ≤ F_tu", source: ["classical"], note: "Load across the rows. Staggered rows: w_net = min(p − D_h, p − 2D_h + ((2n_f − 1)/(2n_f))·g²/p). Load along the rows: σ_net = (P/n_r) / (w_net · t), w_net = g − D_h, or min(g − (⌈n_r/2⌉/n_r)·D_h, g − D_h + ((n_r − 1)/n_r)·p²/(16g)) when staggered." },
     { id: "sideEdge", check: "Side-edge net section", text: "(P/n_f)/2 / ((e_side − D_h/2) · t) ≤ F_tu", source: ["classical"], note: "" },
     { id: "interRivet", check: "Inter-rivet buckling", text: "σ_E = π²E/(L/(ρ√c))²; Johnson σ = F_cy − F_cy²(L/(ρ√c))²/(4π²E) when σ_E > F_cy/2; ρ = t/√12", source: ["classical", "niu"], note: "L is the fastener spacing along the load: g with the load across the rows, p with it along them (spec check 7's 'strip length p'). Fixity c: confirm against your copy." },
     { id: "maxPitch", check: "Maximum pitch", text: "L_max solves σ_ir(L_max) = σ_applied", source: ["classical"], note: "Checked against the spacing along the load: p with the load along the rows, g across them. RP-1228 p. 34: spacing above 4D is acceptable only if sealing or inter-rivet buckling is not a problem." },
@@ -604,7 +604,7 @@
     }
     const z = { ...x, geometry: { ...x.geometry, pattern: "staggered", g: 8 }, sheet: { ...x.sheet, W: 127.2 } };
     const rz = solve(z);
-    test("staggered net section takes the zig-zag path when g²/p < D_h", rz.ok && close(lookup(rz, "strength.netSection.width"), 24 - 9.8 + 64 / 24), rz.ok ? `w_net = ${fmt(lookup(rz, "strength.netSection.width"))}` : "");
+    test("staggered net section takes the zig-zag path with 2n_f − 1 diagonals", rz.ok && close(lookup(rz, "strength.netSection.width"), 24 - 9.8 + 0.9 * 64 / 24), rz.ok ? `w_net = ${fmt(lookup(rz, "strength.netSection.width"))}` : "");
 
     for (const [eD, want] of [[1.5, x.material.Fbru15], [2.0, x.material.Fbru20]]) {
       const got = fbru(eD, x.material.Fbru15, x.material.Fbru20);
