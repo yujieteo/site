@@ -72,11 +72,24 @@ export function paint(ctx, scene, colours, { snapStep = 0, snapOn = false } = {}
   ctx.font = font(11); ctx.fillText("x", axes.x.to.x + 4, axes.x.to.y + 4); ctx.fillText("y", axes.y.to.x + 5, axes.y.to.y + 4);
   ctx.fillText("z⊙", axes.origin.x - 22, axes.origin.y + 16);
 
-  for (const p of scene.plates) {
+  scene.plates.forEach((p, i) => {
     ctx.strokeStyle = colours.muted; ctx.lineWidth = 1.2; ctx.fillStyle = colours.surface;
     ctx.globalAlpha = 0.5; ctx.fillRect(p.screen.x, p.screen.y, p.screen.w, p.screen.h); ctx.globalAlpha = 1;
+    if (i > 0) ctx.setLineDash([6, 3]);
     ctx.strokeRect(p.screen.x, p.screen.y, p.screen.w, p.screen.h);
-    ctx.fillStyle = colours.muted; ctx.font = font(11, 600); ctx.fillText(p.label, p.screen.x + 5, p.screen.y + 14);
+    ctx.setLineDash([]);
+    // The second plate's label sits in the opposite corner so coincident outlines stay readable.
+    ctx.fillStyle = colours.muted; ctx.font = font(11, 600);
+    if (i === 0) ctx.fillText(p.label, p.screen.x + 5, p.screen.y + 14);
+    else ctx.fillText(p.label, p.screen.x + p.screen.w - ctx.measureText(p.label).width - 5, p.screen.y + p.screen.h - 5);
+  });
+
+  if (scene.contactEdge) {
+    const { from, to } = scene.contactEdge.screen;
+    ctx.strokeStyle = colours.axial; ctx.lineWidth = 4; ctx.setLineDash([10, 5]);
+    ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = colours.axial; ctx.font = font(10.5, 600);
+    label(ctx, scene.contactEdge.label, Math.min(from.x, to.x) + 6, Math.max(from.y, to.y) + 14, Math.min(from.x, to.x), width);
   }
 
   for (const m of scene.markers) {
@@ -133,6 +146,14 @@ export function paint(ctx, scene, colours, { snapStep = 0, snapOn = false } = {}
 /* Hit test: the fastener under a screen point, else the load point, else null. */
 export function hitTest(scene, pt) {
   let best = null, bestD = Infinity;
+  if (scene.contactEdge) {
+    const { from, to } = scene.contactEdge.screen;
+    ctx.strokeStyle = colours.axial; ctx.lineWidth = 4; ctx.setLineDash([10, 5]);
+    ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = colours.axial; ctx.font = font(10.5, 600);
+    label(ctx, scene.contactEdge.label, Math.min(from.x, to.x) + 6, Math.max(from.y, to.y) + 14, Math.min(from.x, to.x), width);
+  }
+
   for (const m of scene.markers) {
     const d = Math.hypot(m.screen.x - pt.x, m.screen.y - pt.y);
     if (d <= Math.max(m.radiusPx, 9) + 3 && d < bestD) { best = { kind: "fastener", id: m.id }; bestD = d; }

@@ -65,6 +65,19 @@ export function buildScene(pattern, result, view, { selected = null, transform: 
   });
 
   const resolvedById = new Map(result && result.ok ? result.fasteners.map((f) => [f.id, f]) : []);
+  // Contact edge (axial method b): the selected plate edge, drawn as the neutral axis.
+  let contactEdge = null;
+  const ce = pattern.settings?.contactEdge;
+  if (pattern.settings?.axialMethod === "contact-edge" && ce) {
+    const p = (pattern.plates || []).find((q) => q.id === ce.plateId);
+    if (p && [p.xMin, p.xMax, p.yMin, p.yMax].every(isNum) && ce.edge in { xMin: 1, xMax: 1, yMin: 1, yMax: 1 }) {
+      const horizontal = ce.edge === "yMin" || ce.edge === "yMax";
+      const from = horizontal ? { x: p.xMin, y: p[ce.edge] } : { x: p[ce.edge], y: p.yMin };
+      const to = horizontal ? { x: p.xMax, y: p[ce.edge] } : { x: p[ce.edge], y: p.yMax };
+      contactEdge = { plateId: p.id, edge: ce.edge, world: { from, to }, screen: { from: toScreen(from), to: toScreen(to) }, label: `contact edge (${p.id} ${ce.edge})` };
+    }
+  }
+
   const markers = fasteners.map((f) => {
     const r = resolvedById.get(f.id);
     const d = r && isNum(r.diameter) ? r.diameter : isNum(pattern.defaults?.diameter) ? pattern.defaults.diameter : null;
@@ -121,7 +134,8 @@ export function buildScene(pattern, result, view, { selected = null, transform: 
     { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
   ];
 
-  return { width, height, transform, world, toScreen, toWorld, plates, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
+  if (contactEdge) legend.push({ key: "contactEdge", shape: "edge", colour: "axial", label: "Contact edge (method b neutral axis)" });
+  return { width, height, transform, world, toScreen, toWorld, plates, contactEdge, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
 }
 
 /* Snap-grid lines covering the visible world window. */

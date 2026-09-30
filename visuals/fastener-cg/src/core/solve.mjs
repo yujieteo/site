@@ -13,6 +13,8 @@ import { elasticShear, elasticAxialCentroid } from "./elastic.mjs";
 import { issue, hasErrors, sortIssues } from "./warnings.mjs";
 import { validateCheckInputs, fastenerChecks } from "./checks.mjs";
 import { tensionInputs, validateTensionInputs } from "./tension.mjs";
+import { validatePlates, plateModes } from "./plates.mjs";
+import { contactEdgeAxial, contactClosureChecks, EDGES } from "./contact.mjs";
 
 export const EXTENT_WARNING = 1e4;
 export const CLOSURE_TOL = 1e-9;
@@ -21,7 +23,7 @@ export const ZERO_TOL = 1e-9;
 const sum = (xs) => xs.reduce((a, b) => a + b, 0);
 
 /* Equilibrium closure, per basis: ΣR = F and ΣM = M about the reduction point. */
-export function closure(shear, axial, red, props) {
+export function closure(shear, axial, red, props, contact = null) {
   const forceScale = Math.hypot(red.Fx, red.Fy, red.Fz) + sum(shear.map((r) => r.Rs)) + sum(axial.map((t) => Math.abs(t.T)));
   const lever = Math.max(props.extent, 1e-300);
   const momentScale = Math.hypot(red.axial.Mx, red.axial.My, red.shear.Mz) + forceScale * lever;
@@ -29,9 +31,13 @@ export function closure(shear, axial, red, props) {
     { name: "ΣRx = Fx", residual: sum(shear.map((r) => r.Rx)) - red.Fx, scale: forceScale },
     { name: "ΣRy = Fy", residual: sum(shear.map((r) => r.Ry)) - red.Fy, scale: forceScale },
     { name: "Σ(u·Ry − v·Rx) = Mz,s", residual: sum(shear.map((r) => r.u * r.Ry - r.v * r.Rx)) - red.shear.Mz, scale: momentScale },
-    { name: "ΣT = Fz", residual: sum(axial.map((t) => t.T)) - red.Fz, scale: forceScale },
-    { name: "ΣT·q = Mx,a", residual: sum(axial.map((t) => t.T * t.q)) - red.axial.Mx, scale: momentScale },
-    { name: "Σ(−T·p) = My,a", residual: sum(axial.map((t) => -t.T * t.p)) - red.axial.My, scale: momentScale },
+    ...(contact
+      ? contactClosureChecks(contact, red.Fz).map((c) => ({ name: c.name, residual: c.residual, scale: c.kind === "force" ? forceScale + Math.abs(contact.C) : momentScale + Math.abs(contact.ML) }))
+      : [
+        { name: "ΣT = Fz", residual: sum(axial.map((t) => t.T)) - red.Fz, scale: forceScale },
+        { name: "ΣT·q = Mx,a", residual: sum(axial.map((t) => t.T * t.q)) - red.axial.Mx, scale: momentScale },
+        { name: "Σ(−T·p) = My,a", residual: sum(axial.map((t) => -t.T * t.p)) - red.axial.My, scale: momentScale },
+      ]),
   ];
   for (const c of checks) {
     c.relative = c.scale > 0 ? Math.abs(c.residual) / c.scale : Math.abs(c.residual);
@@ -49,6 +55,14 @@ export function solve(pattern) {
   // Prying bends the flange of the loaded plate: its thickness is t and its flange strength Fp.
   const flangePlate = (pattern.plates || []).find((p) => p.id === pattern.load?.appliedPlate) || null;
   issues.push(...validateTensionInputs(pattern, fasteners, flangePlate));
+  issues.push(...validatePlates(pattern, fasteners));
+  const axialMethod = settings.axialMethod || "centroid";
+  const edgeSpec = settings.contactEdge || {};
+  const edgePlate = (pattern.plates || []).find((p) => p.id === edgeSpec.plateId) || null;
+  if (axialMethod === "contact-edge") {
+    if (!edgePlate) issues.push(issue("E-002", `Method (b) needs a contact-edge plate; “${edgeSpec.plateId ?? ""}” is not one of the plates.`, { field: "settings.contactEdge.plateId" }));
+    if (!(edgeSpec.edge in EDGES)) issues.push(issue("E-002", `Method (b) contact edge must be one of ${Object.keys(EDGES).join(", ")}.`, { field: "settings.contactEdge.edge" }));
+  }
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
   const props = sectionProperties(fasteners);
   const load = pattern.load;
@@ -72,10 +86,22 @@ export function solve(pattern) {
   }
 
   const shear = elasticShear(fasteners, props, red);
-  const axialMethod = settings.axialMethod || "centroid";
-  const axial = elasticAxialCentroid(fasteners, props, red);
+  const contact = axialMethod === "contact-edge" ? contactEdgeAxial(fasteners, edgePlate, edgeSpec.edge, load, props) : null;
+  const axial = contact || elasticAxialCentroid(fasteners, props, red);
 
-  if (axial.mode !== "general") {
+  if (contact) {
+    const scale = Math.abs(contact.ML) + Math.abs(contact.perp) + Math.abs(red.Fz) * Math.max(props.extent, 1) + Math.hypot(red.axial.Mx, red.axial.My);
+    const where = `${EDGES[contact.edge].label} of ${contact.plateId}`;
+    if (Math.abs(contact.perp) > ZERO_TOL * scale) {
+      issues.push(issue("E-012", `The moment about the axis perpendicular to the ${where} is ${contact.perp.toPrecision(4)} (reduced to (${contact.Q.x.toPrecision(4)}, ${contact.Q.y.toPrecision(4)}, 0)); v1 method (b) needs it to be zero. Use method (a), or a contact edge parallel to the bending axis.`, { field: "settings.contactEdge.edge" }));
+    }
+    if (contact.ML < -ZERO_TOL * scale) {
+      issues.push(issue("W-010", `The applied moment about the ${where} is ${contact.ML.toPrecision(4)}: it presses the far side down, so no fastener is in tension. Pick the edge on the compressive side.`, { field: "settings.contactEdge.edge" }));
+    }
+    if (contact.C < -ZERO_TOL * (Math.abs(red.Fz) + Math.abs(contact.ML) / Math.max(props.extent, 1))) {
+      issues.push(issue("W-021", `Contact reaction C = ΣT − Fz = ${contact.C.toPrecision(4)} < 0: the plate lifts off the ${where}. Use method (a).`, { field: "settings.axialMethod" }));
+    }
+  } else if (axial.mode !== "general") {
     const scale = Math.hypot(red.axial.Mx, red.axial.My) + Math.abs(red.Fz) * props.extent;
     const unresolved = Math.abs(axial.unresolved.moment);
     const where = axial.mode === "collinear"
@@ -92,7 +118,7 @@ export function solve(pattern) {
     issues.push(issue("W-005", "Method (a) keeps the neutral axis at Ca and assumes the plates stay in contact everywhere."));
   }
   const tensionScale = Math.max(...axial.T.map((t) => Math.abs(t.T)), 0);
-  const unloading = axial.T.filter((t) => t.T < -ZERO_TOL * tensionScale);
+  const unloading = contact ? [] : axial.T.filter((t) => t.T < -ZERO_TOL * tensionScale);
   for (const t of axial.T) t.unloading = unloading.includes(t);
   if (unloading.length) {
     issues.push(issue("W-016", `Unloading (clamp-up) under method (a): ${unloading.map((t) => t.id).join(", ")}. The contact-edge method (b) is recommended.`, { fasteners: unloading.map((t) => t.id) }));
@@ -100,7 +126,7 @@ export function solve(pattern) {
 
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
 
-  const close = closure(shear, axial.T, red, props);
+  const close = closure(shear, axial.T, red, props, contact);
   if (!close.pass) {
     const failed = close.checks.filter((c) => !c.pass);
     const why = props.J === 0 && red.shear.Mz !== 0 ? ` Torsion Mz,s = ${red.shear.Mz.toPrecision(4)} with J = 0 cannot be resisted.` : "";
@@ -109,7 +135,9 @@ export function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
-  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL, (f) => tensionInputs(f, settings, flangePlate));
+  const plates = pattern.plates || [];
+  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL, (f) => tensionInputs(f, settings, flangePlate),
+    (f) => plateModes(f, f.shear, plates, pattern.load?.appliedPlate));
   issues.push(...checks.issues);
   fastenerResults.forEach((f, i) => { f.checks = checks.fasteners[i]; });
   return {
@@ -122,7 +150,9 @@ export function solve(pattern) {
     unitSystem: pattern.unitSystem,
     props,
     reduced: red,
-    axial: { method: axialMethod, mode: axial.mode, thetaX: axial.thetaX, thetaY: axial.thetaY, D: axial.D },
+    axial: contact
+      ? { method: axialMethod, mode: "contact-edge", plateId: contact.plateId, edge: contact.edge, c: contact.c, Q: contact.Q, ML: contact.ML, perp: contact.perp, C: contact.C, S: contact.S, transfer: contact.transfer }
+      : { method: axialMethod, mode: axial.mode, thetaX: axial.thetaX, thetaY: axial.thetaY, D: axial.D },
     fasteners: fastenerResults,
     closure: close,
   };

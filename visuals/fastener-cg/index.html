@@ -117,6 +117,8 @@ dialog{border:1px solid var(--border);border-radius:calc(var(--r)*1.5);backgroun
 dialog::backdrop{background:rgb(0 0 0/.35)}
 dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .method li{margin:.3rem 0}
+.plate-block+.plate-block{margin-top:.8rem;padding-top:.6rem;border-top:1px solid var(--grid)}
+.plate-block h4{margin:0 0 .3rem;font-size:.85rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
 label.check{display:flex;align-items:center;gap:.45rem;font-weight:600;font-size:.9rem;min-height:2.25rem;cursor:pointer}
 label.check input{width:1.05rem;height:1.05rem;margin:0}
 .sub{border-left:2px solid var(--grid);padding-left:.7rem;margin:.1rem 0 .6rem}
@@ -250,12 +252,23 @@ td.status{color:var(--muted);font-size:.78rem}
       <div class="row">
         <label class="f"><span>Axial method</span><select data-path="settings.axialMethod">
           <option value="centroid">(a) Centroid neutral axis</option>
-          <option value="contact-edge" disabled>(b) Contact edge — milestone M4</option>
+          <option value="contact-edge">(b) Contact edge, tension only</option>
         </select></label>
         <label class="f"><span>Design basis</span><select data-path="settings.designBasis">
           <option value="elastic">Elastic</option>
           <option value="icr" disabled>ICR — milestone M5</option>
         </select></label>
+      </div>
+      <div class="sub" id="contact-edge-box" data-show-method="contact-edge">
+        <div class="row">
+          <label class="f"><span>Contact plate</span><select id="edge-plate" data-path="settings.contactEdge.plateId"></select></label>
+          <label class="f"><span>Contact edge (neutral axis)</span><select data-path="settings.contactEdge.edge">
+            <option value="yMin">Bottom, y = yMin</option><option value="yMax">Top, y = yMax</option>
+            <option value="xMin">Left, x = xMin</option><option value="xMax">Right, x = xMax</option>
+          </select></label>
+        </div>
+        <div class="presets"><button class="btn" type="button" id="edge-suggest">Use the compressive-side edge</button></div>
+        <p class="note" id="edge-note">Fasteners on the far side of the edge carry T = M_L·ka·d/Σ(ka·d²); the rest carry none. v1 needs zero moment about the axis perpendicular to the edge (E-012).</p>
       </div>
     </div>
 
@@ -336,7 +349,8 @@ td.status{color:var(--muted);font-size:.78rem}
     <div class="card">
       <h3>Plates</h3>
       <div id="plates"></div>
-      <p class="note">Outlines are drawn on the canvas. The loaded plate's thickness and flange strength Fp feed prying. Bearing, tear-out and a second plate arrive with milestone M4.</p>
+      <div class="presets"><button class="btn" type="button" id="add-plate">+ Second plate</button></div>
+      <p class="note">Up to two plates, as axis-aligned rectangles. Every fastener passes through every plate. Fbr (bearing stress) or a direct bearing allowable, Fsu (shear-out stress) and the minimum e/D are keyed per plate; a blank allowable leaves that check not evaluated. The loaded plate's thickness and Fp feed prying.</p>
     </div>
   </div>
 </div>
@@ -379,6 +393,8 @@ td.status{color:var(--muted);font-size:.78rem}
     <li><b>Interaction</b>: IF(k) = (k Rs/Fs)^a + (k Rt/Ft)^b with separate exponents a and b (presets: elliptical (2, 2), the default, and linear (1, 1)). Rt is the positive tension; unloading counts as zero (N-006). The margin is the exact load scale factor, MS = k* − 1 with IF(k*) = 1, found by a bracketed Brent search (tolerance 1e-12 on k, 200 iterations); a failed solve shows “MS not computed” (W-008) and never a substitute number. For a = b = 1 it equals 1/IF − 1. The governing MS of a fastener is its lowest margin across modes, and the critical fastener has the lowest governing MS.</li>
     <li><b>Prying</b> (T-stub, keyed B and Fp, no code factor built in) applies only to positive external tension T: a is limited to 1.25·b; b' = b − D/2, a' = a + D/2, ρ = b'/a', δ = 1 − d_h/p, t_c = √(4Bb'/(pFp)), α' = (1/δ)[(T/B)(t_c/t)² − 1] clamped to [0, 1], Q = Bδα'ρ(t/t_c)². t and Fp are the loaded plate's thickness and flange strength. A manual amplification factor f replaces the T-stub with a bolt tension f·T (W-012).</li>
     <li><b>Preload</b> P_max, P_min and load-sharing factor φ (required, 0 &lt; φ &lt; 1): F_b = max(P_max + φT, T) + Q, clamp force P_min − (1 − φ)T, separation load P_min/(1 − φ). Once clamp force reaches zero the joint is separated (W-013). F_b replaces the tension in the interaction and is re-evaluated at every load multiplier k; preload itself does not scale. Clamp force is reported but no friction-slip capacity is claimed (N-005). With preload off the tension is T + Q.</li>
+    <li><b>Plates</b> (up to two, axis-aligned rectangles): every fastener is checked against every plate and the governing plate is reported. Bearing R_br,allow = Fbr·D·t (or a keyed direct-load allowable), MS = R_br,allow/Rs − 1. Tear-out casts a ray from the fastener along its bearing direction to the plate edge, giving e; capacity = 2·t·(e − D/2)·Fsu and MS = capacity/Rs − 1; e/D below the keyed minimum is W-011. The bearing direction is −R in the loaded plate (it is pushed along the load, so the fastener bears on the trailing side of the hole) and +R in the other plate. Geometry checks: a fastener outside a plate (E-004), fasteners closer than their diameter (E-005), edge distance below D/2 (E-006), and a load point outside the loaded plate (W-009).</li>
+    <li><b>Axial method (b), contact edge</b>: the selected plate edge L is the neutral axis and fasteners act in tension only. With d the distance from L on the tension side, T = M_L·ka·d/Σ(ka·d²), where M_L is the moment about L (reduced to the projection of Ca onto L, so it includes the Fz lever) that puts the far side in tension. The contact reaction is C = ΣT − Fz. M_L ≤ 0 gives no tension (W-010: wrong edge), and C &lt; 0 means no contact (W-021: use method (a)). In v1 the moment about the axis perpendicular to L must be zero (E-012).</li>
     <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
     <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
   </ul>
@@ -464,7 +480,7 @@ const PROPERTY_KINDS = {
 
 const PLATE_KINDS = {
   thickness: "length", xMin: "length", xMax: "length", yMin: "length", yMax: "length",
-  bearingAllowable: "stress", shearOutAllowable: "stress", minEdgeRatio: "none", flangeStrength: "stress",
+  bearingAllowable: "stress", bearingLoadAllowable: "force", shearOutAllowable: "stress", minEdgeRatio: "none", flangeStrength: "stress",
 };
 
 const LOAD_KINDS = {
@@ -630,7 +646,7 @@ function defaultProperties() {
 function defaultPlate(id = "P1") {
   return {
     id, thickness: 10, xMin: -80, xMax: 80, yMin: -50, yMax: 50,
-    bearingAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null,
+    bearingAllowable: null, bearingLoadAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null,
   };
 }
 
@@ -1241,10 +1257,10 @@ function validateCheckInputs(pattern, resolved) {
  * unloading counts as zero (N-006). Rs and T within zeroTol of the largest
  * |Rs| and |T| in the group are round-off and count as zero.
  */
-function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ prying: { kind: "off" }, preload: null })) {
+function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ prying: { kind: "off" }, preload: null }), plateModesFor = () => []) {
   const { a, b } = settings.interaction;
   const issues = [];
-  const notComputed = [], preloadOnly = [];
+  const notComputed = [], preloadOnly = [], shortEdge = [], shortIds = [];
   const idOf = (entry) => entry.split(" ")[0];
   const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.shear.Rs)), 0);
   const tensionFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.axial.T)), 0);
@@ -1268,19 +1284,27 @@ function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ pryi
       if (s.status === "not-computed") notComputed.push(`${f.id} (${s.reason})`);
       if (s.status === "preload") preloadOnly.push(`${f.id} (IF(0) = ${s.IF0.toPrecision(4)})`);
     }
-    const modes = [interaction];
+    // Bearing and tear-out per plate use the same round-off-snapped Rs.
+    const modes = [interaction, ...plateModesFor({ ...f, shear: { ...f.shear, Rs } })];
+    for (const m of modes) {
+      if (m.mode === "tearout" && m.minRatio !== null && m.minRatio !== undefined && m.eOverD !== null && m.eOverD !== undefined && m.eOverD < m.minRatio) {
+        shortEdge.push(`${f.id} in ${m.plate}: e/D = ${m.eOverD.toPrecision(4)} < ${m.minRatio}`);
+        shortIds.push(f.id);
+      }
+    }
     const evaluated = modes.filter((m) => m.status === "ok" || m.status === "unloaded");
     const blocked = modes.filter((m) => m.status === "not-computed" || m.status === "preload");
     let governing = null;
     if (evaluated.length) {
       const g = evaluated.reduce((lo, m) => (m.ms < lo.ms ? m : lo));
-      governing = { mode: g.mode, label: g.label, ms: g.ms };
+      governing = { mode: g.mode, plate: g.plate || null, label: g.label, ms: g.ms };
     }
     const clamp = tension.preload
       ? { status: tension.preload.separated ? "separated" : "clamped", clamp: tension.preload.clamp, separationLoad: tension.preload.separationLoad }
       : { status: "no preload" };
     return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: f.axial.unloading && !missing.length, tension, clamp };
   });
+  if (shortEdge.length) issues.push(issue("W-011", `Edge distance along the bearing direction is below the keyed minimum: ${shortEdge.join("; ")}.`, { fasteners: [...new Set(shortIds)] }));
   if (notComputed.length) issues.push(issue("W-008", `MS not computed for ${notComputed.join(", ")}.`, { fasteners: notComputed.map(idOf) }));
   if (preloadOnly.length) issues.push(issue("W-017", `IF(0) ≥ 1, so MS is not computed, for ${preloadOnly.join(", ")}.`, { fasteners: preloadOnly.map(idOf) }));
   const separated = results.filter((r) => r.clamp.status === "separated");
@@ -1298,7 +1322,7 @@ function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ pryi
   const critical = withMargin.length ? withMargin.reduce((lo, r) => (r.governing.ms < lo.governing.ms ? r : lo)) : null;
   return {
     fasteners: results,
-    critical: critical ? { id: critical.id, ms: critical.governing.ms, mode: critical.governing.mode, label: critical.governing.label } : null,
+    critical: critical ? { id: critical.id, ms: critical.governing.ms, mode: critical.governing.mode, plate: critical.governing.plate, label: critical.governing.label } : null,
     evaluatedCount: results.filter((r) => r.governing).length,
     issues,
   };
@@ -1331,8 +1355,223 @@ function marginText(m, num = String) {
 return { MODES, validateCheckInputs, fastenerChecks, noMarginSummary, marginText };
 })();
 
-/* ---- core/solve.mjs ---- */
+/* ---- core/plates.mjs ---- */
 const __m9 = (() => {
+const { issue } = __m1;
+/* Plates, geometry consistency, bearing and tear-out (spec 5.7).
+ *
+ * Each plate is an axis-aligned rectangle with a thickness and its own keyed
+ * allowables. Every fastener passes through every plate, so each fastener is
+ * checked against each plate and the governing plate is reported.
+ *
+ *   Bearing   R_br,allow = Fbr·D·t (or a keyed direct-load allowable);
+ *             MS = R_br,allow / Rs − 1
+ *   Tear-out  e = distance along the bearing direction from the fastener to
+ *             the plate edge (ray cast); capacity = 2·t·(e − D/2)·Fsu;
+ *             MS = capacity / Rs − 1. e/D below the keyed minimum is W-011.
+ *
+ * Bearing direction: Rs is the load the plate transmits to the fastener. The
+ * loaded plate is pushed in the load direction, so its fastener bears
+ * against the hole wall on the −R side; every other plate is pushed by the
+ * fastener in +R. The tear-out ray follows that bearing direction.
+ */
+
+
+
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+const given = (v) => v !== null && v !== undefined && v !== "";
+const outlineOk = (p) => [p.xMin, p.xMax, p.yMin, p.yMax].every(isNum) && p.xMax > p.xMin && p.yMax > p.yMin;
+
+/* Distance from (x, y) inside the rectangle along unit (ux, uy) to its boundary. */
+function rayToRect(x, y, ux, uy, p) {
+  let t = Infinity;
+  if (ux > 0) t = Math.min(t, (p.xMax - x) / ux);
+  if (ux < 0) t = Math.min(t, (p.xMin - x) / ux);
+  if (uy > 0) t = Math.min(t, (p.yMax - y) / uy);
+  if (uy < 0) t = Math.min(t, (p.yMin - y) / uy);
+  return t;
+}
+
+const edgeDistance = (x, y, p) => Math.min(x - p.xMin, p.xMax - x, y - p.yMin, p.yMax - y);
+
+/* Plate inputs and geometry consistency: E-002, E-004, E-005, E-006, E-007, W-009. */
+function validatePlates(pattern, resolved) {
+  const issues = [];
+  const plates = pattern.plates || [];
+  for (const p of plates) {
+    const at = (k) => ({ field: `plates.${p.id}.${k}` });
+    for (const k of ["xMin", "xMax", "yMin", "yMax"]) {
+      if (!isNum(p[k])) issues.push(issue("E-002", `${p.id} ${k} is ${given(p[k]) ? `not a number (“${p[k]}”)` : "missing"}.`, at(k)));
+    }
+    if ([p.xMin, p.xMax, p.yMin, p.yMax].every(isNum) && !outlineOk(p)) {
+      issues.push(issue("E-002", `${p.id} outline is empty: xMax must exceed xMin and yMax must exceed yMin.`, at("xMax")));
+    }
+    for (const [k, label] of [["thickness", "thickness"], ["bearingAllowable", "bearing allowable Fbr"], ["bearingLoadAllowable", "direct bearing allowable"], ["shearOutAllowable", "shear-out allowable Fsu"], ["minEdgeRatio", "minimum e/D"], ["flangeStrength", "flange strength Fp"]]) {
+      if (given(p[k]) && !(isNum(p[k]) && p[k] > 0)) issues.push(issue("E-002", `${p.id} ${label} must be a positive number (is ${p[k]}).`, at(k)));
+    }
+    // E-007: an entered allowable enables its check, which then needs D and t.
+    const tear = given(p.shearOutAllowable);
+    if ((given(p.bearingAllowable) || tear) && !given(p.thickness)) {
+      issues.push(issue("E-007", `${p.id} has ${tear ? "a shear-out" : "a bearing"} allowable but no thickness t.`, at("thickness")));
+    }
+    // Fbr·D·t and the tear-out capacity use D; a direct bearing allowable alone does not.
+    if (given(p.bearingAllowable) || tear) {
+      const noD = resolved.filter((f) => !given(f.diameter)).map((f) => f.id);
+      if (noD.length) {
+        issues.push(issue("E-007", `${p.id} bearing or tear-out needs diameter D for ${noD.join(", ")}.`, { fasteners: noD, field: "diameter" }));
+      }
+    }
+  }
+  const good = plates.filter(outlineOk);
+  // E-004 and E-006: every fastener sits inside every plate, at least D/2 from each edge.
+  for (const f of resolved) {
+    for (const p of good) {
+      const d = edgeDistance(f.x, f.y, p);
+      if (d < 0) issues.push(issue("E-004", `${f.id} at (${f.x}, ${f.y}) is outside ${p.id}.`, { fastener: f.id, field: "x" }));
+      else if (isNum(f.diameter) && d < f.diameter / 2) {
+        issues.push(issue("E-006", `${f.id} is ${Number(d.toPrecision(6))} from the nearest edge of ${p.id}, less than D/2 = ${f.diameter / 2}.`, { fastener: f.id, field: "x" }));
+      }
+    }
+  }
+  // E-005: centre distance below the mean diameter.
+  for (let i = 0; i < resolved.length; i++) {
+    for (let j = i + 1; j < resolved.length; j++) {
+      const a = resolved[i], b = resolved[j];
+      if (!isNum(a.diameter) || !isNum(b.diameter)) continue;
+      const dist = Math.hypot(a.x - b.x, a.y - b.y), D = (a.diameter + b.diameter) / 2;
+      if (dist < D) issues.push(issue("E-005", `${a.id} and ${b.id} are ${Number(dist.toPrecision(6))} apart, less than their diameter ${D}.`, { fasteners: [a.id, b.id], field: "x" }));
+    }
+  }
+  // W-009: load point outside the loaded plate.
+  const loaded = good.find((p) => p.id === pattern.load?.appliedPlate);
+  const P = pattern.load?.point;
+  if (loaded && P && isNum(P.x) && isNum(P.y) && edgeDistance(P.x, P.y, loaded) < 0) {
+    issues.push(issue("W-009", `The load point (${P.x}, ${P.y}) is outside ${loaded.id}; the load is assumed to reach the plate through a rigid attachment.`, { field: "load.point.x" }));
+  }
+  return issues;
+}
+
+/* Bearing and tear-out modes of one fastener against every plate. `rs` is
+ * the fastener's in-plane load { Rx, Ry, Rs } on the selected design basis. */
+function plateModes(f, rs, plates, loadedPlateId) {
+  const modes = [];
+  const D = f.diameter;
+  for (const p of plates.filter(outlineOk)) {
+    const sign = p.id === loadedPlateId ? -1 : 1;
+    const t = p.thickness;
+    // Bearing
+    const direct = given(p.bearingLoadAllowable);
+    const bearing = { mode: "bearing", plate: p.id, label: `Bearing, ${p.id}`, Rs: rs.Rs };
+    if (!direct && !given(p.bearingAllowable)) modes.push({ ...bearing, status: "not-evaluated", ms: null, missing: [`${p.id} Fbr`] });
+    else {
+      const cap = direct ? p.bearingLoadAllowable : p.bearingAllowable * D * t;
+      const basis = direct ? "direct-load allowable" : "Fbr·D·t";
+      modes.push(rs.Rs > 0
+        ? { ...bearing, status: "ok", capacity: cap, basis, ms: cap / rs.Rs - 1 }
+        : { ...bearing, status: "unloaded", capacity: cap, basis, ms: Infinity });
+    }
+    // Tear-out
+    const tear = { mode: "tearout", plate: p.id, label: `Tear-out, ${p.id}`, Rs: rs.Rs };
+    const minRatio = given(p.minEdgeRatio) ? p.minEdgeRatio : null;
+    if (!(rs.Rs > 0)) {
+      modes.push(given(p.shearOutAllowable) ? { ...tear, status: "unloaded", ms: Infinity, minRatio } : { ...tear, status: "not-evaluated", ms: null, missing: [`${p.id} Fsu`], minRatio });
+      continue;
+    }
+    const ux = (sign * rs.Rx) / rs.Rs, uy = (sign * rs.Ry) / rs.Rs;
+    const e = rayToRect(f.x, f.y, ux, uy, p);
+    const ray = { direction: { x: ux, y: uy }, e, eOverD: isNum(D) && D > 0 ? e / D : null, bearsTowards: sign < 0 ? "−R (loaded plate)" : "+R" };
+    if (!given(p.shearOutAllowable)) {
+      modes.push({ ...tear, ...ray, status: "not-evaluated", ms: null, missing: [`${p.id} Fsu`], minRatio });
+      continue;
+    }
+    const cap = 2 * t * (e - D / 2) * p.shearOutAllowable;
+    modes.push({ ...tear, ...ray, status: "ok", capacity: cap, minRatio, ms: cap / rs.Rs - 1 });
+  }
+  return modes;
+}
+return { rayToRect, edgeDistance, validatePlates, plateModes };
+})();
+
+/* ---- core/contact.mjs ---- */
+const __m10 = (() => {
+const { transferMoments } = __m4;
+/* Axial method (b): contact edge, tension-only fasteners (spec 5.7).
+ *
+ * The neutral axis is a selected plate edge L (axis-aligned). Fasteners on
+ * the tension side at distance d > 0 from L carry
+ *   T = M_L · ka·d / Σ(ka·d²)
+ * and the rest carry nothing. M_L is the reduced moment about L that puts the
+ * far side in tension, from the same transfer as 5.2 with Q on L (so it
+ * includes the Fz lever). The contact reaction is C = ΣT − Fz.
+ *
+ * Q is the projection of the axial centroid Ca onto L. v1 limitation: the
+ * moment component about the axis perpendicular to L must be zero (E-012).
+ */
+
+
+
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+
+const EDGES = {
+  yMin: { axis: "x", label: "bottom edge (y = yMin)" },
+  yMax: { axis: "x", label: "top edge (y = yMax)" },
+  xMin: { axis: "y", label: "left edge (x = xMin)" },
+  xMax: { axis: "y", label: "right edge (x = xMax)" },
+};
+
+/* Geometry of edge `edge` of `plate` and the load reduced to it. */
+function edgeFrame(plate, edge, load, Ca) {
+  const c = plate[edge];
+  const horizontal = EDGES[edge].axis === "x";
+  const Q = horizontal ? { x: Ca.x, y: c } : { x: c, y: Ca.y };
+  const m = transferMoments(load, Q);
+  // Positive Mx tensions the y > c side; positive My tensions the x < c side.
+  const ML = { yMin: m.Mx, yMax: -m.Mx, xMin: -m.My, xMax: m.My }[edge];
+  const perp = horizontal ? m.My : m.Mx;
+  const distance = (f) => ({ yMin: f.y - c, yMax: c - f.y, xMin: f.x - c, xMax: c - f.x }[edge]);
+  return { plateId: plate.id, edge, c, horizontal, Q, ML, perp, transfer: m, distance };
+}
+
+function contactEdgeAxial(fasteners, plate, edge, load, props) {
+  const fr = edgeFrame(plate, edge, load, props.Ca);
+  const ds = fasteners.map((f) => fr.distance(f));
+  let S = 0;
+  fasteners.forEach((f, i) => { if (ds[i] > 0) S += f.ka * ds[i] * ds[i]; });
+  const active = fr.ML > 0 && S > 0;
+  const T = fasteners.map((f, i) => {
+    const d = ds[i];
+    const t = active && d > 0 ? (fr.ML * f.ka * d) / S : 0;
+    return { id: f.id, d, tensionSide: d > 0, direct: 0, moment: t, T: t };
+  });
+  const sumT = T.reduce((a, t) => a + t.T, 0);
+  return { mode: "contact-edge", ...fr, S, active, T, C: sumT - load.Fz };
+}
+
+/* The plate edge nearest the compressive side of the applied moment: the
+ * edge (of `plate`) with the largest positive M_L, or null when none. */
+function suggestContactEdge(plate, load, Ca) {
+  if (![plate?.xMin, plate?.xMax, plate?.yMin, plate?.yMax].every(isNum)) return null;
+  let best = null;
+  for (const edge of Object.keys(EDGES)) {
+    const fr = edgeFrame(plate, edge, load, Ca);
+    if (fr.ML > 0 && (!best || fr.ML > best.ML)) best = { edge, ML: fr.ML };
+  }
+  return best ? best.edge : null;
+}
+
+/* Closure for method (b): ΣT − C = Fz and Σ T·d = M_L. */
+function contactClosureChecks(ax, Fz) {
+  const sumT = ax.T.reduce((a, t) => a + t.T, 0);
+  return [
+    { name: "ΣT − C = Fz", residual: sumT - ax.C - Fz, kind: "force" },
+    { name: "ΣT·d = M_L", residual: ax.T.reduce((a, t) => a + t.T * Math.max(t.d, 0), 0) - (ax.active ? ax.ML : 0), kind: "moment" },
+  ];
+}
+return { EDGES, edgeFrame, contactEdgeAxial, suggestContactEdge, contactClosureChecks };
+})();
+
+/* ---- core/solve.mjs ---- */
+const __m11 = (() => {
 const { resolveFastener, validateInputs } = __m2;
 const { sectionProperties } = __m3;
 const { reduceLoad } = __m4;
@@ -1340,6 +1579,8 @@ const { elasticShear, elasticAxialCentroid } = __m5;
 const { issue, hasErrors, sortIssues } = __m1;
 const { validateCheckInputs, fastenerChecks } = __m8;
 const { tensionInputs, validateTensionInputs } = __m7;
+const { validatePlates, plateModes } = __m9;
+const { contactEdgeAxial, contactClosureChecks, EDGES } = __m10;
 /* One calculation: validate, resolve properties, reduce the load, distribute
  * it, raise the catalogue issues and check equilibrium closure.
  *
@@ -1356,6 +1597,8 @@ const { tensionInputs, validateTensionInputs } = __m7;
 
 
 
+
+
 const EXTENT_WARNING = 1e4;
 const CLOSURE_TOL = 1e-9;
 const ZERO_TOL = 1e-9;
@@ -1363,7 +1606,7 @@ const ZERO_TOL = 1e-9;
 const sum = (xs) => xs.reduce((a, b) => a + b, 0);
 
 /* Equilibrium closure, per basis: ΣR = F and ΣM = M about the reduction point. */
-function closure(shear, axial, red, props) {
+function closure(shear, axial, red, props, contact = null) {
   const forceScale = Math.hypot(red.Fx, red.Fy, red.Fz) + sum(shear.map((r) => r.Rs)) + sum(axial.map((t) => Math.abs(t.T)));
   const lever = Math.max(props.extent, 1e-300);
   const momentScale = Math.hypot(red.axial.Mx, red.axial.My, red.shear.Mz) + forceScale * lever;
@@ -1371,9 +1614,13 @@ function closure(shear, axial, red, props) {
     { name: "ΣRx = Fx", residual: sum(shear.map((r) => r.Rx)) - red.Fx, scale: forceScale },
     { name: "ΣRy = Fy", residual: sum(shear.map((r) => r.Ry)) - red.Fy, scale: forceScale },
     { name: "Σ(u·Ry − v·Rx) = Mz,s", residual: sum(shear.map((r) => r.u * r.Ry - r.v * r.Rx)) - red.shear.Mz, scale: momentScale },
-    { name: "ΣT = Fz", residual: sum(axial.map((t) => t.T)) - red.Fz, scale: forceScale },
-    { name: "ΣT·q = Mx,a", residual: sum(axial.map((t) => t.T * t.q)) - red.axial.Mx, scale: momentScale },
-    { name: "Σ(−T·p) = My,a", residual: sum(axial.map((t) => -t.T * t.p)) - red.axial.My, scale: momentScale },
+    ...(contact
+      ? contactClosureChecks(contact, red.Fz).map((c) => ({ name: c.name, residual: c.residual, scale: c.kind === "force" ? forceScale + Math.abs(contact.C) : momentScale + Math.abs(contact.ML) }))
+      : [
+        { name: "ΣT = Fz", residual: sum(axial.map((t) => t.T)) - red.Fz, scale: forceScale },
+        { name: "ΣT·q = Mx,a", residual: sum(axial.map((t) => t.T * t.q)) - red.axial.Mx, scale: momentScale },
+        { name: "Σ(−T·p) = My,a", residual: sum(axial.map((t) => -t.T * t.p)) - red.axial.My, scale: momentScale },
+      ]),
   ];
   for (const c of checks) {
     c.relative = c.scale > 0 ? Math.abs(c.residual) / c.scale : Math.abs(c.residual);
@@ -1391,6 +1638,14 @@ function solve(pattern) {
   // Prying bends the flange of the loaded plate: its thickness is t and its flange strength Fp.
   const flangePlate = (pattern.plates || []).find((p) => p.id === pattern.load?.appliedPlate) || null;
   issues.push(...validateTensionInputs(pattern, fasteners, flangePlate));
+  issues.push(...validatePlates(pattern, fasteners));
+  const axialMethod = settings.axialMethod || "centroid";
+  const edgeSpec = settings.contactEdge || {};
+  const edgePlate = (pattern.plates || []).find((p) => p.id === edgeSpec.plateId) || null;
+  if (axialMethod === "contact-edge") {
+    if (!edgePlate) issues.push(issue("E-002", `Method (b) needs a contact-edge plate; “${edgeSpec.plateId ?? ""}” is not one of the plates.`, { field: "settings.contactEdge.plateId" }));
+    if (!(edgeSpec.edge in EDGES)) issues.push(issue("E-002", `Method (b) contact edge must be one of ${Object.keys(EDGES).join(", ")}.`, { field: "settings.contactEdge.edge" }));
+  }
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
   const props = sectionProperties(fasteners);
   const load = pattern.load;
@@ -1414,10 +1669,22 @@ function solve(pattern) {
   }
 
   const shear = elasticShear(fasteners, props, red);
-  const axialMethod = settings.axialMethod || "centroid";
-  const axial = elasticAxialCentroid(fasteners, props, red);
+  const contact = axialMethod === "contact-edge" ? contactEdgeAxial(fasteners, edgePlate, edgeSpec.edge, load, props) : null;
+  const axial = contact || elasticAxialCentroid(fasteners, props, red);
 
-  if (axial.mode !== "general") {
+  if (contact) {
+    const scale = Math.abs(contact.ML) + Math.abs(contact.perp) + Math.abs(red.Fz) * Math.max(props.extent, 1) + Math.hypot(red.axial.Mx, red.axial.My);
+    const where = `${EDGES[contact.edge].label} of ${contact.plateId}`;
+    if (Math.abs(contact.perp) > ZERO_TOL * scale) {
+      issues.push(issue("E-012", `The moment about the axis perpendicular to the ${where} is ${contact.perp.toPrecision(4)} (reduced to (${contact.Q.x.toPrecision(4)}, ${contact.Q.y.toPrecision(4)}, 0)); v1 method (b) needs it to be zero. Use method (a), or a contact edge parallel to the bending axis.`, { field: "settings.contactEdge.edge" }));
+    }
+    if (contact.ML < -ZERO_TOL * scale) {
+      issues.push(issue("W-010", `The applied moment about the ${where} is ${contact.ML.toPrecision(4)}: it presses the far side down, so no fastener is in tension. Pick the edge on the compressive side.`, { field: "settings.contactEdge.edge" }));
+    }
+    if (contact.C < -ZERO_TOL * (Math.abs(red.Fz) + Math.abs(contact.ML) / Math.max(props.extent, 1))) {
+      issues.push(issue("W-021", `Contact reaction C = ΣT − Fz = ${contact.C.toPrecision(4)} < 0: the plate lifts off the ${where}. Use method (a).`, { field: "settings.axialMethod" }));
+    }
+  } else if (axial.mode !== "general") {
     const scale = Math.hypot(red.axial.Mx, red.axial.My) + Math.abs(red.Fz) * props.extent;
     const unresolved = Math.abs(axial.unresolved.moment);
     const where = axial.mode === "collinear"
@@ -1434,7 +1701,7 @@ function solve(pattern) {
     issues.push(issue("W-005", "Method (a) keeps the neutral axis at Ca and assumes the plates stay in contact everywhere."));
   }
   const tensionScale = Math.max(...axial.T.map((t) => Math.abs(t.T)), 0);
-  const unloading = axial.T.filter((t) => t.T < -ZERO_TOL * tensionScale);
+  const unloading = contact ? [] : axial.T.filter((t) => t.T < -ZERO_TOL * tensionScale);
   for (const t of axial.T) t.unloading = unloading.includes(t);
   if (unloading.length) {
     issues.push(issue("W-016", `Unloading (clamp-up) under method (a): ${unloading.map((t) => t.id).join(", ")}. The contact-edge method (b) is recommended.`, { fasteners: unloading.map((t) => t.id) }));
@@ -1442,7 +1709,7 @@ function solve(pattern) {
 
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
 
-  const close = closure(shear, axial.T, red, props);
+  const close = closure(shear, axial.T, red, props, contact);
   if (!close.pass) {
     const failed = close.checks.filter((c) => !c.pass);
     const why = props.J === 0 && red.shear.Mz !== 0 ? ` Torsion Mz,s = ${red.shear.Mz.toPrecision(4)} with J = 0 cannot be resisted.` : "";
@@ -1451,7 +1718,9 @@ function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
-  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL, (f) => tensionInputs(f, settings, flangePlate));
+  const plates = pattern.plates || [];
+  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL, (f) => tensionInputs(f, settings, flangePlate),
+    (f) => plateModes(f, f.shear, plates, pattern.load?.appliedPlate));
   issues.push(...checks.issues);
   fastenerResults.forEach((f, i) => { f.checks = checks.fasteners[i]; });
   return {
@@ -1464,7 +1733,9 @@ function solve(pattern) {
     unitSystem: pattern.unitSystem,
     props,
     reduced: red,
-    axial: { method: axialMethod, mode: axial.mode, thetaX: axial.thetaX, thetaY: axial.thetaY, D: axial.D },
+    axial: contact
+      ? { method: axialMethod, mode: "contact-edge", plateId: contact.plateId, edge: contact.edge, c: contact.c, Q: contact.Q, ML: contact.ML, perp: contact.perp, C: contact.C, S: contact.S, transfer: contact.transfer }
+      : { method: axialMethod, mode: axial.mode, thetaX: axial.thetaX, thetaY: axial.thetaY, D: axial.D },
     fasteners: fastenerResults,
     closure: close,
   };
@@ -1473,7 +1744,7 @@ return { EXTENT_WARNING, CLOSURE_TOL, ZERO_TOL, closure, solve };
 })();
 
 /* ---- core/format.mjs ---- */
-const __m10 = (() => {
+const __m12 = (() => {
 /* Display formatting. Exports keep full precision; the screen shows
  * `precision` significant figures (default 4). */
 
@@ -1493,7 +1764,7 @@ return { fmt, fmtDeg };
 })();
 
 /* ---- core/scene.mjs ---- */
-const __m11 = (() => {
+const __m13 = (() => {
 const { unitLabel } = __m0;
 /* Shared scene model (spec section 9, "Diagram consistency").
  *
@@ -1562,6 +1833,19 @@ function buildScene(pattern, result, view, { selected = null, transform: fixed =
   });
 
   const resolvedById = new Map(result && result.ok ? result.fasteners.map((f) => [f.id, f]) : []);
+  // Contact edge (axial method b): the selected plate edge, drawn as the neutral axis.
+  let contactEdge = null;
+  const ce = pattern.settings?.contactEdge;
+  if (pattern.settings?.axialMethod === "contact-edge" && ce) {
+    const p = (pattern.plates || []).find((q) => q.id === ce.plateId);
+    if (p && [p.xMin, p.xMax, p.yMin, p.yMax].every(isNum) && ce.edge in { xMin: 1, xMax: 1, yMin: 1, yMax: 1 }) {
+      const horizontal = ce.edge === "yMin" || ce.edge === "yMax";
+      const from = horizontal ? { x: p.xMin, y: p[ce.edge] } : { x: p[ce.edge], y: p.yMin };
+      const to = horizontal ? { x: p.xMax, y: p[ce.edge] } : { x: p[ce.edge], y: p.yMax };
+      contactEdge = { plateId: p.id, edge: ce.edge, world: { from, to }, screen: { from: toScreen(from), to: toScreen(to) }, label: `contact edge (${p.id} ${ce.edge})` };
+    }
+  }
+
   const markers = fasteners.map((f) => {
     const r = resolvedById.get(f.id);
     const d = r && isNum(r.diameter) ? r.diameter : isNum(pattern.defaults?.diameter) ? pattern.defaults.diameter : null;
@@ -1618,7 +1902,8 @@ function buildScene(pattern, result, view, { selected = null, transform: fixed =
     { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
   ];
 
-  return { width, height, transform, world, toScreen, toWorld, plates, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
+  if (contactEdge) legend.push({ key: "contactEdge", shape: "edge", colour: "axial", label: "Contact edge (method b neutral axis)" });
+  return { width, height, transform, world, toScreen, toWorld, plates, contactEdge, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
 }
 
 /* Snap-grid lines covering the visible world window. */
@@ -1636,7 +1921,7 @@ return { CENTROID_STYLE, niceStep, buildScene, gridLines };
 })();
 
 /* ---- core/generators.mjs ---- */
-const __m12 = (() => {
+const __m14 = (() => {
 const { round12 } = __m0;
 /* Pattern generators (spec section 7): rectangular array, staggered rows,
  * bolt circle and mirror. Generators return plain (x, y) points; the caller
@@ -1710,7 +1995,7 @@ return { rectangularArray, staggeredRows, boltCircle, mirror };
 })();
 
 /* ---- core/persist.mjs ---- */
-const __m13 = (() => {
+const __m15 = (() => {
 const { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, defaultSettings, resolveFastener } = __m2;
 const { UNIT_SYSTEMS, convertPattern, unitLabel } = __m0;
 const { issue } = __m1;
@@ -1740,13 +2025,13 @@ const MIGRATIONS = {};
 
 const ENUMS = {
   "settings.designBasis": ["elastic"],
-  "settings.axialMethod": ["centroid"],
+  "settings.axialMethod": ["centroid", "contact-edge"],
   "settings.icr.model": ["crawford-kulak", "elastic-plastic"],
   "settings.pageSize": ["A4", "Letter"],
   "settings.contactEdge.edge": ["xMin", "xMax", "yMin", "yMax"],
 };
 const NOT_NULL = new Set(["area", "ks", "ka"]);
-const PLATE_NULLABLE = new Set(["thickness", "bearingAllowable", "shearOutAllowable", "minEdgeRatio", "flangeStrength"]);
+const PLATE_NULLABLE = new Set(["thickness", "bearingAllowable", "bearingLoadAllowable", "shearOutAllowable", "minEdgeRatio", "flangeStrength"]);
 
 const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 const isNum = (v) => typeof v === "number" && Number.isFinite(v);
@@ -1971,8 +2256,9 @@ function toMarkdown(pattern, result = null, { version = "", date = "" } = {}) {
     mdTable(["id", "label", `x (${u("length")})`, `y (${u("length")})`, `area (${u("area")})`, "ks", "ka", `diameter (${u("length")})`, `Fs (${u("force")})`, `Ft (${u("force")})`],
       resolved.map((f) => [f.id, f.label, f.x, f.y, f.area, f.ks, f.ka, f.diameter, f.shearAllowable, f.tensionAllowable])),
     "", "## Plates", "",
-    mdTable(["id", `thickness (${u("length")})`, `xMin (${u("length")})`, `xMax (${u("length")})`, `yMin (${u("length")})`, `yMax (${u("length")})`],
-      pattern.plates.map((p) => [p.id, p.thickness, p.xMin, p.xMax, p.yMin, p.yMax])),
+    mdTable(["id", `thickness (${u("length")})`, `xMin (${u("length")})`, `xMax (${u("length")})`, `yMin (${u("length")})`, `yMax (${u("length")})`,
+      `Fbr (${u("stress")})`, `bearing direct (${u("force")})`, `Fsu (${u("stress")})`, "min e/D", `Fp (${u("stress")})`],
+      pattern.plates.map((p) => [p.id, p.thickness, p.xMin, p.xMax, p.yMin, p.yMax, p.bearingAllowable, p.bearingLoadAllowable, p.shearOutAllowable, p.minEdgeRatio, p.flangeStrength])),
     "", "## Load", "",
     mdTable(["quantity", "value", "unit"], [
       ["appliedPlate", pattern.load.appliedPlate, ""],
@@ -2010,6 +2296,10 @@ function resultSections(pattern, result) {
       ["Mx,a", r.axial.Mx, u("moment"), `Ca (${r.axial.Q.x}, ${r.axial.Q.y}, 0)`],
       ["My,a", r.axial.My, u("moment"), `Ca (${r.axial.Q.x}, ${r.axial.Q.y}, 0)`],
     ]),
+    "", "## Axial method", "",
+    result.axial.mode === "contact-edge"
+      ? `Method (b), contact edge: ${result.axial.edge} of ${result.axial.plateId} is the neutral axis; M_L = ${result.axial.ML} about it (reduced to (${result.axial.Q.x}, ${result.axial.Q.y}, 0)); Σka·d² = ${result.axial.S}; contact reaction C = ${result.axial.C}.`
+      : `Method (a), centroid neutral axis (${result.axial.mode}).`,
     "", "## Fastener loads (elastic)", "",
     mdTable(["id", `Rdx (${u("force")})`, `Rdy (${u("force")})`, `Rtx (${u("force")})`, `Rty (${u("force")})`, `Rs (${u("force")})`, "direction (°)", `T (${u("force")})`, "state"],
       result.fasteners.map((f) => [f.id, f.shear.Rdx, f.shear.Rdy, f.shear.Rtx, f.shear.Rty, f.shear.Rs, f.shear.angleDeg, f.axial.T, f.axial.unloading ? "unloading" : f.axial.T > 0 ? "tension" : "—"])),
@@ -2027,10 +2317,24 @@ function resultSections(pattern, result) {
         return [f.id, m.Rs, m.Rt, m.Fs ?? "", m.Ft ?? "", m.status === "not-evaluated" ? "" : m.IF1, m.status === "ok" ? m.kStar : "", marginText(m), g ? (Number.isFinite(g.ms) ? g.ms : "∞") : "not evaluated", g ? g.label : ""];
       })),
     ...tensionSection(result, u),
+    ...plateSection(result, u),
     "", "## Equilibrium closure", "",
     mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
     "", ...issueTable(result.issues),
   ];
+}
+
+function plateSection(result, u) {
+  const ids = [...new Set(result.fasteners.flatMap((f) => f.checks.modes.filter((m) => m.plate).map((m) => m.plate)))];
+  if (!ids.length) return [];
+  return ["", "## Bearing and tear-out (per plate)", "",
+    "The loaded plate bears on the −R side of each hole and the other plate on +R; the tear-out ray follows that direction to the plate edge.", "",
+    mdTable(["id", "plate", `bearing capacity (${u("force")})`, "MS bearing", `e (${u("length")})`, "e/D", `tear-out capacity (${u("force")})`, "MS tear-out"],
+      result.fasteners.flatMap((f) => ids.map((pid) => {
+        const b = f.checks.modes.find((m) => m.mode === "bearing" && m.plate === pid);
+        const t = f.checks.modes.find((m) => m.mode === "tearout" && m.plate === pid);
+        return [f.id, pid, b.capacity ?? "", marginText(b), t.e ?? "", t.eOverD ?? "", t.capacity ?? "", marginText(t)];
+      })))];
 }
 
 function tensionSection(result, u) {
@@ -2105,9 +2409,12 @@ function fromTables(text) {
     }
     return { id: r.id, label: r.label || "", x: num(r.x), y: num(r.y), overrides };
   });
-  const plates = (plateRows || []).map((r) => ({
-    id: r.id, thickness: num(r.thickness), xMin: num(r.xMin), xMax: num(r.xMax), yMin: num(r.yMin), yMax: num(r.yMax),
-  }));
+  const optional = { bearingAllowable: "Fbr", bearingLoadAllowable: "bearing direct", shearOutAllowable: "Fsu", minEdgeRatio: "min e/D", flangeStrength: "Fp" };
+  const plates = (plateRows || []).map((r) => {
+    const plate = { id: r.id, thickness: num(r.thickness), xMin: num(r.xMin), xMax: num(r.xMax), yMin: num(r.yMin), yMax: num(r.yMax) };
+    for (const [key, column] of Object.entries(optional)) if (column in r) plate[key] = num(r[column]);
+    return plate;
+  });
   const load = { point: {} };
   for (const r of loadRows) {
     const key = r.quantity;
@@ -2153,9 +2460,9 @@ return { MAX_PLATES, MIGRATIONS, normalizePattern, toJSON, parseJSON, checksum, 
 })();
 
 /* ---- core/verify.mjs ---- */
-const __m14 = (() => {
+const __m16 = (() => {
 const { examplePattern } = __m2;
-const { solve } = __m9;
+const { solve } = __m11;
 const { solveScale } = __m6;
 const { boltLoad, tStubPrying } = __m7;
 /* Verification set (spec section 10), shared by the in-app "Run verification"
@@ -2171,13 +2478,14 @@ const { boltLoad, tStubPrying } = __m7;
 
 
 
-const VERIFICATION_SET = "M3";
+const VERIFICATION_SET = "M4";
 const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
   const p = examplePattern("N-mm");
   p.name = "verification";
   p.fasteners = points.map(([x, y], i) => ({ id: `F${i + 1}`, label: "", x, y, overrides: {} }));
+  p.plates = []; // hand cases test the group alone; plate checks have their own cases
   p.load = { appliedPlate: "P1", point: { x: 0, y: 0, z: 0 }, Fx: 0, Fy: 0, Fz: 0, Mx: 0, My: 0, Mz: 0, ...load };
   return p;
 }
@@ -2330,6 +2638,45 @@ const HAND_CASES = [
         check("F_b at T = 25 000", b.t.Fb, 25000),
         truth("separated at T = 25 000 (W-013)", b.c.status === "separated" && ids(b.r).includes("W-013")),
         truth("N-005 with preload", ids(a.r).includes("N-005")),
+      ];
+    },
+  },
+  {
+    id: "VB-01", title: "Bearing and tear-out, 2×2 at (±50, ±30), Fy = −10 000 N at Cs, two plates",
+    run() {
+      // Rs = 2 500 N on each fastener, pointing −y. D = 12, t = 10, Fbr = 300, Fsu = 200.
+      const p = pattern(RECT, { Fy: -10000 });
+      const plate = (id) => ({ id, thickness: 10, xMin: -80, xMax: 80, yMin: -50, yMax: 50, bearingAllowable: 300, bearingLoadAllowable: null, shearOutAllowable: 200, minEdgeRatio: null, flangeStrength: null });
+      p.plates = [plate("P1"), plate("P2")];
+      const r = solved(p);
+      const f = at(r, 50, 30);
+      const mode = (m, pl) => f.checks.modes.find((x) => x.mode === m && x.plate === pl);
+      return [
+        check("bearing capacity Fbr·D·t", mode("bearing", "P1").capacity, 36000),
+        check("MS bearing = 36 000/2 500 − 1", mode("bearing", "P1").ms, 36000 / 2500 - 1),
+        check("P1 (loaded) tear-out ray e: +y to yMax", mode("tearout", "P1").e, 20),
+        check("P1 tear-out capacity 2·t·(e − D/2)·Fsu", mode("tearout", "P1").capacity, 2 * 10 * (20 - 6) * 200),
+        check("P2 tear-out ray e: −y to yMin", mode("tearout", "P2").e, 80),
+        check("P2 MS tear-out", mode("tearout", "P2").ms, (2 * 10 * (80 - 6) * 200) / 2500 - 1),
+        truth("governing mode is P1 bearing", f.checks.governing.mode === "bearing" && f.checks.governing.plate === "P1"),
+      ];
+    },
+  },
+  {
+    id: "VB-02", title: "Contact-edge method (b), 2×2 at (±50, ±30), edge y = −50, Mx = 12 000 N·mm",
+    run() {
+      const p = pattern(RECT, { Mx: 12000 });
+      p.plates = [{ id: "P1", thickness: 10, xMin: -80, xMax: 80, yMin: -50, yMax: 50, bearingAllowable: null, bearingLoadAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null }];
+      p.settings.axialMethod = "contact-edge";
+      p.settings.contactEdge = { plateId: "P1", edge: "yMin" };
+      const r = solved(p);
+      const S = 2 * 80 ** 2 + 2 * 20 ** 2;
+      return [
+        check("Σ ka·d²", r.axial.S, S),
+        check("T at y = +30 (d = 80)", at(r, 50, 30).axial.T, (12000 * 80) / S),
+        check("T at y = −30 (d = 20)", at(r, -50, -30).axial.T, (12000 * 20) / S),
+        check("contact reaction C = ΣT − Fz", r.axial.C, (2 * 12000 * 100) / S),
+        truth("equilibrium closure", r.closure.pass),
       ];
     },
   },
@@ -2583,12 +2930,12 @@ return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, REFERENCE_CASES,
 })();
 
 /* ---- core/meta.mjs ---- */
-const __m15 = (() => {
+const __m17 = (() => {
 /* Tool identity and the conventions every report repeats. */
 
 const TOOL_NAME = "Fastener Pattern CG Tracker";
-const TOOL_VERSION = "0.3.0-m3";
-const MILESTONE = "M3";
+const TOOL_VERSION = "0.4.0-m4";
+const MILESTONE = "M4";
 
 const CONVENTIONS = [
   "Right-handed axes: x right, y up, z toward the viewer.",
@@ -2605,6 +2952,8 @@ const ASSUMPTIONS = [
   "Section properties are in length² × stiffness weight.",
   "Prying (T-stub, keyed B and Fp) acts on positive external tension only, using the loaded plate's thickness t and flange strength Fp; a ≤ 1.25·b. A manual factor f replaces it with a bolt tension f·T (W-012).",
   "Preload: F_b = max(P_max + φ·T, T) + Q; clamp force P_min − (1 − φ)·T; separation load P_min/(1 − φ). Prying Q is added to the bolt load (conservative). Preload does not scale with the load multiplier k. Friction slip is not evaluated (N-005).",
+  "Plates are axis-aligned rectangles (up to two). Every fastener passes through every plate. Bearing R = Fbr·D·t (or a direct-load allowable); tear-out capacity 2·t·(e − D/2)·Fsu with e cast along the bearing direction: −R in the loaded plate, +R in the other plate.",
+  "Axial method (b) uses a plate edge as the neutral axis with tension-only fasteners; v1 requires zero moment about the axis perpendicular to the edge (E-012), reduced to the projection of Ca onto the edge.",
   "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
   "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero external tension (N-006); with preload their bolt load is P_max.",
 ];
@@ -2612,8 +2961,8 @@ return { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS };
 })();
 
 /* ---- ui/canvas.mjs ---- */
-const __m16 = (() => {
-const { gridLines } = __m11;
+const __m18 = (() => {
+const { gridLines } = __m13;
 /* Canvas painter and pointer handling. All geometry comes from the scene
  * model; this file only turns its primitives into Canvas 2D calls. */
 
@@ -2688,11 +3037,24 @@ function paint(ctx, scene, colours, { snapStep = 0, snapOn = false } = {}) {
   ctx.font = font(11); ctx.fillText("x", axes.x.to.x + 4, axes.x.to.y + 4); ctx.fillText("y", axes.y.to.x + 5, axes.y.to.y + 4);
   ctx.fillText("z⊙", axes.origin.x - 22, axes.origin.y + 16);
 
-  for (const p of scene.plates) {
+  scene.plates.forEach((p, i) => {
     ctx.strokeStyle = colours.muted; ctx.lineWidth = 1.2; ctx.fillStyle = colours.surface;
     ctx.globalAlpha = 0.5; ctx.fillRect(p.screen.x, p.screen.y, p.screen.w, p.screen.h); ctx.globalAlpha = 1;
+    if (i > 0) ctx.setLineDash([6, 3]);
     ctx.strokeRect(p.screen.x, p.screen.y, p.screen.w, p.screen.h);
-    ctx.fillStyle = colours.muted; ctx.font = font(11, 600); ctx.fillText(p.label, p.screen.x + 5, p.screen.y + 14);
+    ctx.setLineDash([]);
+    // The second plate's label sits in the opposite corner so coincident outlines stay readable.
+    ctx.fillStyle = colours.muted; ctx.font = font(11, 600);
+    if (i === 0) ctx.fillText(p.label, p.screen.x + 5, p.screen.y + 14);
+    else ctx.fillText(p.label, p.screen.x + p.screen.w - ctx.measureText(p.label).width - 5, p.screen.y + p.screen.h - 5);
+  });
+
+  if (scene.contactEdge) {
+    const { from, to } = scene.contactEdge.screen;
+    ctx.strokeStyle = colours.axial; ctx.lineWidth = 4; ctx.setLineDash([10, 5]);
+    ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = colours.axial; ctx.font = font(10.5, 600);
+    label(ctx, scene.contactEdge.label, Math.min(from.x, to.x) + 6, Math.max(from.y, to.y) + 14, Math.min(from.x, to.x), width);
   }
 
   for (const m of scene.markers) {
@@ -2749,6 +3111,14 @@ function paint(ctx, scene, colours, { snapStep = 0, snapOn = false } = {}) {
 /* Hit test: the fastener under a screen point, else the load point, else null. */
 function hitTest(scene, pt) {
   let best = null, bestD = Infinity;
+  if (scene.contactEdge) {
+    const { from, to } = scene.contactEdge.screen;
+    ctx.strokeStyle = colours.axial; ctx.lineWidth = 4; ctx.setLineDash([10, 5]);
+    ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = colours.axial; ctx.font = font(10.5, 600);
+    label(ctx, scene.contactEdge.label, Math.min(from.x, to.x) + 6, Math.max(from.y, to.y) + 14, Math.min(from.x, to.x), width);
+  }
+
   for (const m of scene.markers) {
     const d = Math.hypot(m.screen.x - pt.x, m.screen.y - pt.y);
     if (d <= Math.max(m.radiusPx, 9) + 3 && d < bestD) { best = { kind: "fastener", id: m.id }; bestD = d; }
@@ -2761,7 +3131,7 @@ return { palette, centroidPath, paint, hitTest };
 })();
 
 /* ---- ui/storage.mjs ---- */
-const __m17 = (() => {
+const __m19 = (() => {
 /* Browser persistence (spec 8.1): a named library and a separately
  * autosaved working pattern, both in localStorage. Every access is guarded:
  * storage can be missing (private windows) or full. */
@@ -2835,11 +3205,11 @@ return { LIBRARY_KEY, WORKING_KEY, StorageFullError, readLibrary, writeLibrary, 
 })();
 
 /* ---- ui/webmcp.mjs ---- */
-const __m18 = (() => {
+const __m20 = (() => {
 const { CATALOG } = __m1;
-const { normalizePattern, toJSON } = __m13;
-const { solve } = __m9;
-const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m15;
+const { normalizePattern, toJSON } = __m15;
+const { solve } = __m11;
+const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m17;
 const { UNIT_LABELS } = __m0;
 /* WebMCP tools: let an agent read the page's pattern and run the same
  * solver on any pattern without changing the page. */
@@ -2925,25 +3295,27 @@ return { summarize, registerTools };
 })();
 
 /* ---- ui/app.mjs ---- */
-const __m19 = (() => {
-const { examplePattern, addFastener, clone } = __m2;
-const { solve } = __m9;
+const __m21 = (() => {
+const { examplePattern, addFastener, clone, defaultPlate } = __m2;
+const { solve } = __m11;
 const { convertPattern, unitLabel, round12, UNIT_SYSTEMS } = __m0;
-const { fmt } = __m10;
-const { buildScene, CENTROID_STYLE } = __m11;
-const { rectangularArray, staggeredRows, boltCircle, mirror } = __m12;
-const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m13;
-const { runVerification } = __m14;
+const { fmt } = __m12;
+const { buildScene, CENTROID_STYLE } = __m13;
+const { rectangularArray, staggeredRows, boltCircle, mirror } = __m14;
+const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m15;
+const { runVerification } = __m16;
 const { sortIssues } = __m1;
 const { marginText, noMarginSummary } = __m8;
 const { PRESETS } = __m6;
 const { preloadFromTorque } = __m7;
-const { TOOL_VERSION } = __m15;
-const { paint, palette, hitTest, centroidPath } = __m16;
-const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m17;
-const { registerTools } = __m18;
+const { suggestContactEdge, EDGES } = __m10;
+const { TOOL_VERSION } = __m17;
+const { paint, palette, hitTest, centroidPath } = __m18;
+const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m19;
+const { registerTools } = __m20;
 /* Page controller: state, inputs, table, canvas, results, warnings,
  * library and files. Calculations all come from ../core. */
+
 
 
 
@@ -3026,6 +3398,7 @@ function recompute() {
   markInvalid();
   renderInline();
   renderPresets();
+  renderLegend();
   draw();
   autosave();
 }
@@ -3070,11 +3443,22 @@ function renderInputs() {
   renderPlates();
 }
 
+const PLATE_FIELDS = [["xMin", "length"], ["xMax", "length"], ["thickness", "length", "t"], ["yMin", "length"], ["yMax", "length"],
+  ["bearingAllowable", "stress", "Fbr"], ["bearingLoadAllowable", "force", "Bearing direct"], ["shearOutAllowable", "stress", "Fsu"],
+  ["minEdgeRatio", "none", "min e/D"], ["flangeStrength", "stress", "Fp"]];
+const NULLABLE_PLATE = new Set(["bearingAllowable", "bearingLoadAllowable", "shearOutAllowable", "minEdgeRatio", "flangeStrength"]);
+
 function renderPlates() {
   $("#plates").innerHTML = state.pattern.plates.map((p, i) => `
-    <div class="row three" data-plate="${i}">
-      ${[["xMin", "length"], ["xMax", "length"], ["thickness", "length"], ["yMin", "length"], ["yMax", "length"], ["flangeStrength", "stress", "Fp"]].map(([k, kind, label]) => `<label class="f"><span>${esc(p.id)} ${label || k} (${units(kind)})</span><input type="number" step="any" data-plate-key="${k}" data-field="plates.${esc(p.id)}.${k}" value="${esc(inputText(p[k]))}"${k === "flangeStrength" ? ' placeholder="—"' : ""}></label>`).join("")}
+    <div class="plate-block" data-plate="${i}">
+      <h4>${esc(p.id)}${p.id === state.pattern.load.appliedPlate ? ' <span class="tag">loaded</span>' : ""}${i > 0 ? ` <button class="btn danger" type="button" data-remove-plate="${i}">Remove ${esc(p.id)}</button>` : ""}</h4>
+      <div class="row three">
+      ${PLATE_FIELDS.map(([k, kind, label]) => `<label class="f"><span>${esc(label || k)}${kind !== "none" ? ` (${units(kind)})` : ""}</span><input type="number" step="any" data-plate-key="${k}" data-field="plates.${esc(p.id)}.${k}" value="${esc(inputText(p[k]))}"${NULLABLE_PLATE.has(k) ? ' placeholder="—"' : ""}></label>`).join("")}
+      </div>
     </div>`).join("");
+  $("#add-plate").hidden = state.pattern.plates.length >= 2;
+  $("#edge-plate").innerHTML = state.pattern.plates.map((p) => `<option value="${esc(p.id)}">${esc(p.id)}</option>`).join("") || `<option value="">(no plates)</option>`;
+  $("#edge-plate").value = state.pattern.settings.contactEdge?.plateId ?? "";
 }
 
 function renderTable() {
@@ -3109,6 +3493,23 @@ function renderSelection() {
   renderOverrides();
 }
 
+/* Point the contact edge at the compressive side of the applied moment. */
+function suggestEdge(announceIt) {
+  const st = state.pattern.settings;
+  st.contactEdge ??= { plateId: "", edge: "yMin" };
+  const plate = state.pattern.plates.find((p) => p.id === st.contactEdge.plateId) || state.pattern.plates[0];
+  if (!plate) { $("#edge-note").textContent = "Method (b) needs a plate: add one in the Plates card."; return; }
+  st.contactEdge.plateId = plate.id;
+  const Ca = state.result?.ok ? state.result.props.Ca : { x: 0, y: 0 };
+  const edge = suggestContactEdge(plate, state.pattern.load, Ca);
+  if (edge) {
+    st.contactEdge.edge = edge;
+    if (announceIt) $("#edge-note").textContent = `Contact edge set to the ${EDGES[edge].label} of ${plate.id}, on the compressive side of the applied moment.`;
+  } else if (announceIt) {
+    $("#edge-note").textContent = "No edge has a positive moment about it: the applied load puts no plate edge in compression.";
+  }
+}
+
 const TENSION_FIELDS = [
   ["prying", "prying.b", "b", "length"], ["prying", "prying.a", "a", "length"], ["prying", "prying.p", "p", "length"],
   ["prying", "prying.holeDiameter", "d_h", "length"], ["prying", "prying.boltStrengthB", "B", "force"], ["prying", "prying.manualFactor", "Manual factor", "none"],
@@ -3117,6 +3518,7 @@ const TENSION_FIELDS = [
 
 function renderToggles() {
   for (const el of $$("[data-show]")) el.hidden = !getPath(state.pattern, el.dataset.show);
+  for (const el of $$("[data-show-method]")) el.hidden = state.pattern.settings.axialMethod !== el.dataset.showMethod;
   const pts = state.pattern.fasteners.filter((q) => typeof q.x === "number" && typeof q.y === "number");
   let nn = Infinity;
   for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) nn = Math.min(nn, Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y));
@@ -3191,6 +3593,7 @@ function draw() {
 function legendIcon(entry, colours) {
   const c = colours[entry.colour] || colours.fg;
   if (entry.shape === "arrow") return `<svg width="22" height="12" aria-hidden="true"><line x1="1" y1="6" x2="15" y2="6" stroke="${c}" stroke-width="2"/><path d="M21 6L14 2V10z" fill="${c}"/></svg>`;
+  if (entry.shape === "edge") return `<svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="${c}" stroke-width="3" stroke-dasharray="6 3"/></svg>`;
   if (entry.shape === "cross") return `<svg width="14" height="14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" stroke="${c}" stroke-width="2"/></svg>`;
   return centroidSvg(entry.key, c);
 }
@@ -3395,7 +3798,7 @@ function renderResults() {
   const it = r.interaction;
   const none = r.critical ? null : noMarginSummary(r.fasteners.map((q) => q.checks));
   const crit = r.critical
-    ? `<p class="critical">Critical fastener <b>${esc(r.critical.id)}</b>: governing MS <b class="ms ${r.critical.ms < 0 ? "ms-neg" : ""}">${f(r.critical.ms)}</b> — ${esc(r.critical.label)}${(it.a !== 1 || it.b !== 1) ? ` <span class="muted">(exact load scale factor, not 1/IF − 1; W-006)</span>` : ""}.</p>`
+    ? `<p class="critical">Critical fastener <b>${esc(r.critical.id)}</b>: governing MS <b class="ms ${r.critical.ms < 0 ? "ms-neg" : ""}">${f(r.critical.ms)}</b> — ${esc(r.critical.label)}${r.critical.mode === "interaction" && (it.a !== 1 || it.b !== 1) ? ` <span class="muted">(exact load scale factor, not 1/IF − 1; W-006)</span>` : ""}.</p>`
     : none.unloaded.length || none.blocked.length
     ? `<p class="critical muted">${esc(none.text)}</p>`
     : `<p class="critical muted">No margin evaluated: enter shear and tension allowables Fs and Ft (group defaults or per-fastener overrides). A check without its allowable shows “not evaluated” and never a margin.</p>`;
@@ -3422,11 +3825,29 @@ function renderResults() {
     }), { numeric: [1, 2, 3, 4, 5, 6, 7, 8] });
   }
 
+  let plateTable = "";
+  const plateIds = [...new Set(r.fasteners.flatMap((q) => q.checks.modes.filter((m) => m.plate).map((m) => m.plate)))];
+  if (plateIds.length) {
+    plateTable = table(["Fastener", "Plate", `Bearing capacity (${F})`, "MS bearing", "Bears towards", `e (${L})`, "e/D", `Tear-out capacity (${F})`, "MS tear-out"],
+      r.fasteners.flatMap((q) => plateIds.map((pid) => {
+        const b = q.checks.modes.find((m) => m.mode === "bearing" && m.plate === pid);
+        const t = q.checks.modes.find((m) => m.mode === "tearout" && m.plate === pid);
+        const gov = q.checks.governing && q.checks.governing.plate === pid ? ' <span class="tag">governing</span>' : "";
+        return [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button>`, `${esc(pid)}${gov}`,
+          b.capacity !== undefined ? `${f(b.capacity)} <span class="muted">(${esc(b.basis)})</span>` : "—", ms(b),
+          t.e !== undefined ? esc(t.bearsTowards) : "—", t.e !== undefined ? f(t.e, lenScale) : "—",
+          t.eOverD !== undefined && t.eOverD !== null ? `${f(t.eOverD)}${t.minRatio !== null && t.eOverD < t.minRatio ? ' <span class="tag unloading">below min</span>' : ""}` : "—",
+          t.capacity !== undefined ? f(t.capacity) : "—", ms(t)];
+      })), { numeric: [5, 6, 7] });
+  }
+
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],
     r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
     { numeric: [1, 2] });
 
-  const axialNote = r.axial.mode === "general"
+  const axialNote = r.axial.mode === "contact-edge"
+    ? `Method (b), contact edge: the ${EDGES[r.axial.edge].label} of ${r.axial.plateId} is the neutral axis. M_L = ${f(r.axial.ML, momScale)} ${M} (reduced to (${f(r.axial.Q.x, lenScale)}, ${f(r.axial.Q.y, lenScale)}, 0)), Σka·d² = ${f(r.axial.S)}, contact reaction C = ${f(r.axial.C, forceScale)} ${F}.`
+    : r.axial.mode === "general"
     ? `Method (a): D = ${f(r.axial.D, secScale * secScale)}, θx = ${f(r.axial.thetaX)}, θy = ${f(r.axial.thetaY)}.`
     : r.axial.mode === "collinear" ? "Method (a), collinear pattern: bending resisted about the pattern's major principal axis only." : "Method (a): all fasteners at one point; only Fz is resisted.";
 
@@ -3445,6 +3866,8 @@ function renderResults() {
     ${crit}
     <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
+    ${plateTable ? `<h3 style="margin-top:1.25rem">Bearing and tear-out, per plate</h3>
+    <p class="note">Rs on the elastic basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
 
@@ -3672,10 +4095,33 @@ function bind() {
       const value = el.type === "checkbox" ? el.checked : el.tagName === "SELECT" ? el.value : parseInput(el.value);
       setPath(state.pattern, el.dataset.path, value);
       if (el.type === "checkbox") { renderToggles(); renderOverrides(); }
+      if (el.dataset.path === "settings.axialMethod") {
+        if (value === "contact-edge") suggestEdge(false);
+        renderToggles();
+      }
+      if (el.dataset.path === "load.appliedPlate") renderPlates();
       changed();
     };
     el.addEventListener(el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input", handler);
   }
+  $("#add-plate").addEventListener("click", () => {
+    if (state.pattern.plates.length >= 2) return;
+    const first = state.pattern.plates[0];
+    const used = new Set(state.pattern.plates.map((p) => p.id));
+    const id = used.has("P2") ? "P3" : "P2";
+    const base = first ? { ...clone(first), id, bearingAllowable: null, bearingLoadAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null } : { ...defaultPlate(id) };
+    state.pattern.plates.push(base);
+    changed({ structure: true });
+  });
+  $("#plates").addEventListener("click", (e) => {
+    const i = e.target.closest("[data-remove-plate]")?.dataset.removePlate;
+    if (i === undefined) return;
+    const [gone] = state.pattern.plates.splice(Number(i), 1);
+    if (state.pattern.load.appliedPlate === gone.id) state.pattern.load.appliedPlate = state.pattern.plates[0]?.id ?? "";
+    if (state.pattern.settings.contactEdge?.plateId === gone.id) state.pattern.settings.contactEdge.plateId = state.pattern.plates[0]?.id ?? "";
+    changed({ structure: true });
+  });
+  $("#edge-suggest").addEventListener("click", () => { suggestEdge(true); changed({ structure: true }); });
   $("#override-editor").addEventListener("input", (e) => {
     const path = e.target.dataset.ov;
     const fa = state.pattern.fasteners.find((q) => q.id === state.selected);
@@ -3858,8 +4304,8 @@ return { start };
 })();
 
 /* ---- ui/main.mjs ---- */
-const __m20 = (() => {
-const { start } = __m19;
+const __m22 = (() => {
+const { start } = __m21;
 /* Entry point of the built page. */
 
 

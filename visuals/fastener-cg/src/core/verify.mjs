@@ -11,13 +11,14 @@ import { solve } from "./solve.mjs";
 import { solveScale } from "./interaction.mjs";
 import { boltLoad, tStubPrying } from "./tension.mjs";
 
-export const VERIFICATION_SET = "M3";
+export const VERIFICATION_SET = "M4";
 export const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
   const p = examplePattern("N-mm");
   p.name = "verification";
   p.fasteners = points.map(([x, y], i) => ({ id: `F${i + 1}`, label: "", x, y, overrides: {} }));
+  p.plates = []; // hand cases test the group alone; plate checks have their own cases
   p.load = { appliedPlate: "P1", point: { x: 0, y: 0, z: 0 }, Fx: 0, Fy: 0, Fz: 0, Mx: 0, My: 0, Mz: 0, ...load };
   return p;
 }
@@ -170,6 +171,45 @@ export const HAND_CASES = [
         check("F_b at T = 25 000", b.t.Fb, 25000),
         truth("separated at T = 25 000 (W-013)", b.c.status === "separated" && ids(b.r).includes("W-013")),
         truth("N-005 with preload", ids(a.r).includes("N-005")),
+      ];
+    },
+  },
+  {
+    id: "VB-01", title: "Bearing and tear-out, 2×2 at (±50, ±30), Fy = −10 000 N at Cs, two plates",
+    run() {
+      // Rs = 2 500 N on each fastener, pointing −y. D = 12, t = 10, Fbr = 300, Fsu = 200.
+      const p = pattern(RECT, { Fy: -10000 });
+      const plate = (id) => ({ id, thickness: 10, xMin: -80, xMax: 80, yMin: -50, yMax: 50, bearingAllowable: 300, bearingLoadAllowable: null, shearOutAllowable: 200, minEdgeRatio: null, flangeStrength: null });
+      p.plates = [plate("P1"), plate("P2")];
+      const r = solved(p);
+      const f = at(r, 50, 30);
+      const mode = (m, pl) => f.checks.modes.find((x) => x.mode === m && x.plate === pl);
+      return [
+        check("bearing capacity Fbr·D·t", mode("bearing", "P1").capacity, 36000),
+        check("MS bearing = 36 000/2 500 − 1", mode("bearing", "P1").ms, 36000 / 2500 - 1),
+        check("P1 (loaded) tear-out ray e: +y to yMax", mode("tearout", "P1").e, 20),
+        check("P1 tear-out capacity 2·t·(e − D/2)·Fsu", mode("tearout", "P1").capacity, 2 * 10 * (20 - 6) * 200),
+        check("P2 tear-out ray e: −y to yMin", mode("tearout", "P2").e, 80),
+        check("P2 MS tear-out", mode("tearout", "P2").ms, (2 * 10 * (80 - 6) * 200) / 2500 - 1),
+        truth("governing mode is P1 bearing", f.checks.governing.mode === "bearing" && f.checks.governing.plate === "P1"),
+      ];
+    },
+  },
+  {
+    id: "VB-02", title: "Contact-edge method (b), 2×2 at (±50, ±30), edge y = −50, Mx = 12 000 N·mm",
+    run() {
+      const p = pattern(RECT, { Mx: 12000 });
+      p.plates = [{ id: "P1", thickness: 10, xMin: -80, xMax: 80, yMin: -50, yMax: 50, bearingAllowable: null, bearingLoadAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null }];
+      p.settings.axialMethod = "contact-edge";
+      p.settings.contactEdge = { plateId: "P1", edge: "yMin" };
+      const r = solved(p);
+      const S = 2 * 80 ** 2 + 2 * 20 ** 2;
+      return [
+        check("Σ ka·d²", r.axial.S, S),
+        check("T at y = +30 (d = 80)", at(r, 50, 30).axial.T, (12000 * 80) / S),
+        check("T at y = −30 (d = 20)", at(r, -50, -30).axial.T, (12000 * 20) / S),
+        check("contact reaction C = ΣT − Fz", r.axial.C, (2 * 12000 * 100) / S),
+        truth("equilibrium closure", r.closure.pass),
       ];
     },
   },

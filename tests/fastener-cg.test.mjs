@@ -14,6 +14,8 @@ import { CATALOG } from "../visuals/fastener-cg/src/core/warnings.mjs";
 import { registerTools } from "../visuals/fastener-cg/src/ui/webmcp.mjs";
 import { brent, solveScale, interactionValue } from "../visuals/fastener-cg/src/core/interaction.mjs";
 import { boltLoad, tStubPrying, preloadFromTorque } from "../visuals/fastener-cg/src/core/tension.mjs";
+import { rayToRect, edgeDistance } from "../visuals/fastener-cg/src/core/plates.mjs";
+import { suggestContactEdge, edgeFrame } from "../visuals/fastener-cg/src/core/contact.mjs";
 import { render, bundle } from "../visuals/fastener-cg/build.mjs";
 
 const VIZ = new URL("../visuals/fastener-cg/", import.meta.url);
@@ -23,6 +25,7 @@ const ids = (issues) => issues.map((i) => i.id);
 function pattern(points, load = {}) {
   const p = examplePattern("N-mm");
   p.fasteners = points.map(([x, y], i) => ({ id: `F${i + 1}`, label: "", x, y, overrides: {} }));
+  p.plates = [];
   p.load = { appliedPlate: "P1", point: { x: 0, y: 0, z: 0 }, Fx: 0, Fy: 0, Fz: 0, Mx: 0, My: 0, Mz: 0, ...load };
   return p;
 }
@@ -33,13 +36,13 @@ test("the whole in-app verification set passes, with pending reference cases cou
     if (r.status === "pending") continue;
     assert.ok(r.pass, `${r.id} ${r.error || r.checks.filter((c) => !c.pass).map((c) => `${c.label}: ${c.actual} vs ${c.expected}`).join("; ")}`);
   }
-  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-08", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09", "P-10", "P-11", "P-12", "VR-01"]);
+  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-08", "VB-01", "VB-02", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09", "P-10", "P-11", "P-12", "VR-01"]);
   assert.equal(HAND_CASES.length + PROPERTY_CASES.length + REFERENCE_CASES.length, v.results.length);
   const vr = v.results.find((r) => r.id === "VR-01");
   assert.equal(vr.status, "pending");
   assert.equal(vr.pass, false);
   assert.match(vr.pending, /spec open question 2/);
-  assert.deepEqual([v.passed, v.pending, v.failed, v.pass], [21, 1, 0, true]);
+  assert.deepEqual([v.passed, v.pending, v.failed, v.pass], [23, 1, 0, true]);
 });
 
 test("a failing case fails the set; a pending case does not", () => {
@@ -409,7 +412,7 @@ test("the published page and data are built from the current sources", async () 
   assert.ok(!/<script[^>]+src=|<link[^>]+stylesheet|https?:\/\/(?!www\.w3\.org)/.test(html.replace(/<a [^>]*>/g, "")), "offline: no external scripts, styles or fetches");
   const raw = JSON.parse(outputs["raw.json"]);
   assert.equal(raw.warnings.length, Object.keys(CATALOG).length);
-  assert.ok(raw.verification.cases.length >= 21);
+  assert.ok(raw.verification.cases.length >= 24);
 });
 
 /* ---- M2: allowables, interaction, exact-k MS ---- */
@@ -512,6 +515,7 @@ test("round-off loads on the neutral axis or at Cs count as zero: no spurious W-
   for (const y of [0.1, 0.2, 0.3]) for (const x of [0.1, 0.2, 0.3]) grid.push([x, y]);
   const run = (load) => {
     const p = pattern(grid, load);
+    p.defaults.diameter = null; // a 0.1-pitch grid would otherwise overlap (E-005)
     p.defaults.shearAllowable = 1000;
     p.defaults.tensionAllowable = 1000;
     return solve(p);
@@ -601,8 +605,7 @@ function tee({ prying = false, preload = false } = {}) {
   const p = pattern([[50, 30], [50, -30], [-50, 30], [-50, -30]], { Fz: 40000, Fy: -4000 });
   p.defaults.shearAllowable = 20000;
   p.defaults.tensionAllowable = 30000;
-  p.plates[0].thickness = 8;
-  p.plates[0].flangeStrength = 250;
+  p.plates = [{ ...examplePattern("N-mm").plates[0], thickness: 8, flangeStrength: 250 }];
   p.defaults.prying = { b: 40, a: 35, p: 60, holeDiameter: 14, boltStrengthB: 40000, manualFactor: null };
   p.defaults.preload = { pMax: 20000, pMin: 16000, phi: 0.2 };
   p.settings.prying = { enabled: prying };
@@ -785,4 +788,153 @@ test("all-manual prying needs no flange thickness; a T-stub fastener still does"
   assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
   p.fasteners[0].overrides = { prying: { manualFactor: null } };
   assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => [i.id, i.field]), [["E-007", "plates.P1.thickness"]]);
+});
+
+/* ---- M4: plates, bearing, tear-out, contact edge, geometry checks ---- */
+
+const plateOf = (id, over = {}) => ({ id, thickness: 10, xMin: -80, xMax: 80, yMin: -50, yMax: 50, bearingAllowable: null, bearingLoadAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null, ...over });
+function bracket(load = { Fy: -10000 }, plates = [plateOf("P1")]) {
+  const p = pattern([[50, 30], [50, -30], [-50, 30], [-50, -30]], load);
+  p.plates = plates;
+  return p;
+}
+const errors = (r) => r.issues.filter((i) => i.tier === "error");
+const modeOf = (f, mode, plate) => f.checks.modes.find((m) => m.mode === mode && m.plate === plate);
+
+test("ray cast to the plate rectangle and edge distance", () => {
+  const P = plateOf("P1");
+  close(rayToRect(50, 30, 0, 1, P), 20, 1e-12);
+  close(rayToRect(50, 30, 1, 0, P), 30, 1e-12);
+  const d = Math.SQRT1_2;
+  close(rayToRect(50, 30, d, d, P), 20 / d, 1e-12, "the nearer of the two edges along the diagonal");
+  close(rayToRect(0, 0, -0.6, -0.8, P), 50 / 0.8, 1e-12);
+  assert.equal(edgeDistance(50, 30, P), 20);
+  assert.ok(edgeDistance(90, 0, P) < 0);
+});
+
+test("geometry consistency: E-004, E-005, E-006, W-009 name the fasteners", () => {
+  let r = solve(bracket({ point: { x: 150, y: 0, z: 0 }, Fy: -10000 }));
+  assert.ok(r.ok);
+  assert.ok(ids(r.issues).includes("W-009"), "load point (150, 0) is outside P1");
+  assert.ok(!ids(solve(bracket({ point: { x: 10, y: 0, z: 0 }, Fy: -1 })).issues).includes("W-009"));
+  let p = bracket({ point: { x: 0, y: 0, z: 0 }, Fy: -100 });
+  p.fasteners[0].x = 90;
+  r = solve(p);
+  assert.deepEqual(errors(r).map((i) => [i.id, i.fastener]), [["E-004", "F1"]]);
+  p = bracket({ point: { x: 0, y: 0, z: 0 }, Fy: -100 });
+  p.fasteners[0].x = 77; // 3 from xMax, D/2 = 6
+  r = solve(p);
+  assert.deepEqual(errors(r).map((i) => [i.id, i.fastener]), [["E-006", "F1"]]);
+  p = bracket({ point: { x: 0, y: 0, z: 0 }, Fy: -100 });
+  p.fasteners[1].y = 22; // 8 from F1, D = 12
+  r = solve(p);
+  assert.deepEqual(errors(r).map((i) => [i.id, i.fasteners]), [["E-005", ["F1", "F2"]]]);
+  // Every plate is checked: a second, smaller plate catches a fastener the first does not.
+  p = bracket({ point: { x: 0, y: 0, z: 0 }, Fy: -100 }, [plateOf("P1"), plateOf("P2", { xMin: -40 })]);
+  r = solve(p);
+  assert.deepEqual(errors(r).map((i) => [i.id, i.fastener]).sort(), [["E-004", "F3"], ["E-004", "F4"]]);
+});
+
+test("bearing: Fbr·D·t or a direct allowable; not evaluated without one; E-007 without t", () => {
+  let r = solve(bracket({ point: { x: 0, y: 0, z: 0 }, Fy: -10000 }, [plateOf("P1", { bearingAllowable: 300 })]));
+  const b = modeOf(r.fasteners[0], "bearing", "P1");
+  close(b.capacity, 300 * 12 * 10, 1e-12);
+  close(b.ms, 36000 / 2500 - 1, 1e-12);
+  assert.equal(r.critical.mode, "bearing");
+  assert.equal(r.critical.plate, "P1");
+  r = solve(bracket({ point: { x: 0, y: 0, z: 0 }, Fy: -10000 }, [plateOf("P1", { bearingAllowable: 300, bearingLoadAllowable: 20000 })]));
+  close(modeOf(r.fasteners[0], "bearing", "P1").capacity, 20000, 1e-12, "the direct-load allowable overrides Fbr·D·t");
+  r = solve(bracket({ point: { x: 0, y: 0, z: 0 }, Fy: -10000 }));
+  assert.equal(modeOf(r.fasteners[0], "bearing", "P1").status, "not-evaluated");
+  assert.equal(r.critical, null);
+  r = solve(bracket({ point: { x: 0, y: 0, z: 0 }, Fy: -10000 }, [plateOf("P1", { bearingAllowable: 300, thickness: null })]));
+  assert.deepEqual(errors(r).map((i) => [i.id, i.field]), [["E-007", "plates.P1.thickness"]]);
+});
+
+test("tear-out: the ray follows −R in the loaded plate and +R in the other", () => {
+  const plates = [plateOf("P1", { shearOutAllowable: 200, minEdgeRatio: 2 }), plateOf("P2", { shearOutAllowable: 200, minEdgeRatio: 2 })];
+  const r = solve(bracket({ point: { x: 0, y: 0, z: 0 }, Fx: 6000 }, plates));
+  const f = r.fasteners.find((q) => q.x === 50 && q.y === 30);
+  const loaded = modeOf(f, "tearout", "P1"), other = modeOf(f, "tearout", "P2");
+  close(loaded.e, 130, 1e-12, "P1 is pushed +x, so its fastener bears towards −x: 50 − (−80)");
+  close(other.e, 30, 1e-12, "P2 is pushed by the fastener towards +x: 80 − 50");
+  close(other.capacity, 2 * 10 * (30 - 6) * 200, 1e-12);
+  close(other.ms, other.capacity / 1500 - 1, 1e-12);
+  assert.equal(r.critical.plate, "P2");
+  assert.ok(!ids(r.issues).includes("W-011"), "e/D = 30/12 = 2.5 and 130/12 are both above the minimum of 2");
+});
+
+test("W-011 fires when e/D along the bearing direction is below the minimum", () => {
+  const plates = [plateOf("P1"), plateOf("P2", { shearOutAllowable: 200, minEdgeRatio: 3 })];
+  const r = solve(bracket({ point: { x: 0, y: 0, z: 0 }, Fx: 6000 }, plates));
+  const w = r.issues.find((i) => i.id === "W-011");
+  assert.ok(w);
+  assert.deepEqual(w.fasteners, ["F1", "F2"]);
+});
+
+test("contact-edge method (b): T = M_L·ka·d/Σka·d², C = ΣT − Fz, Fz lever included", () => {
+  const p = bracket({ point: { x: 0, y: 70, z: 0 }, Fz: 1000 });
+  p.settings.axialMethod = "contact-edge";
+  p.settings.contactEdge = { plateId: "P1", edge: "yMin" };
+  const r = solve(p);
+  assert.ok(r.ok, JSON.stringify(errors(r)));
+  // Fz at y = 70 about the edge y = −50: M_L = (70 − (−50))·Fz = 120 000.
+  close(r.axial.ML, 120000, 1e-12);
+  const S = 2 * 80 ** 2 + 2 * 20 ** 2;
+  const top = r.fasteners.find((f) => f.y === 30), bottom = r.fasteners.find((f) => f.y === -30);
+  close(top.axial.T, (120000 * 80) / S, 1e-12);
+  close(bottom.axial.T, (120000 * 20) / S, 1e-12);
+  close(r.axial.C, (2 * 120000 * 100) / S - 1000, 1e-12);
+  assert.ok(r.closure.pass);
+  assert.ok(!ids(r.issues).includes("W-005"), "W-005 belongs to method (a)");
+  assert.ok(!ids(r.issues).includes("W-016"));
+});
+
+test("contact-edge method (b): E-012, W-010, W-021, and the compressive-side suggestion", () => {
+  const run = (load, edge) => {
+    const p = bracket(load);
+    p.settings.axialMethod = "contact-edge";
+    p.settings.contactEdge = { plateId: "P1", edge };
+    return solve(p);
+  };
+  let r = run({ point: { x: 0, y: 0, z: 0 }, Mx: 12000, My: 5000 }, "yMin");
+  assert.deepEqual(errors(r).map((i) => i.id), ["E-012"]);
+  r = run({ point: { x: 0, y: 0, z: 0 }, Mx: -12000 }, "yMin");
+  assert.ok(r.ok);
+  assert.ok(ids(r.issues).includes("W-010"));
+  assert.ok(r.fasteners.every((f) => f.axial.T === 0));
+  r = run({ point: { x: 0, y: 0, z: 0 }, Mx: 1000, Fz: 5000 }, "yMin"); // tension through Ca exceeds the moment's reaction
+  assert.ok(ids(r.issues).includes("W-021"));
+  const P = plateOf("P1");
+  assert.equal(suggestContactEdge(P, { point: { x: 0, y: 0, z: 0 }, Fx: 0, Fy: 0, Fz: 0, Mx: 12000, My: 0, Mz: 0 }, { x: 0, y: 0 }), "yMin");
+  assert.equal(suggestContactEdge(P, { point: { x: 0, y: 0, z: 0 }, Fx: 0, Fy: 0, Fz: 0, Mx: 0, My: 12000, Mz: 0 }, { x: 0, y: 0 }), "xMax");
+  assert.equal(edgeFrame(P, "xMin", { point: { x: 0, y: 0, z: 0 }, Fx: 0, Fy: 0, Fz: 0, Mx: 0, My: 12000, Mz: 0 }, { x: 0, y: 0 }).ML, -12000);
+});
+
+test("M4 persistence and units: contact-edge settings round-trip; the direct bearing allowable is a force", () => {
+  const p = bracket({ point: { x: 0, y: 0, z: 0 }, Mx: 12000 }, [plateOf("P1", { bearingLoadAllowable: 20000, bearingAllowable: 300 })]);
+  p.settings.axialMethod = "contact-edge";
+  p.settings.contactEdge = { plateId: "P1", edge: "yMin" };
+  assert.equal(toJSON(parseJSON(toJSON(p)).pattern), toJSON(p));
+  const q = convertPattern(p, "in-lbf");
+  assert.equal(q.plates[0].bearingLoadAllowable, Number((20000 / N_PER_LBF).toPrecision(12)));
+  assert.equal(q.plates[0].bearingAllowable, Number((300 * MM_PER_IN ** 2 / N_PER_LBF).toPrecision(12)));
+  // A pre-M4 plate without the new field loads with W-018.
+  const old = JSON.parse(toJSON(p));
+  delete old.plates[0].bearingLoadAllowable;
+  const back = parseJSON(JSON.stringify(old));
+  assert.ok(back.pattern);
+  assert.match(back.issues.find((i) => i.id === "W-018").detail, /plates\[0\]\.bearingLoadAllowable/);
+});
+
+test("scene model draws the contact edge through the same transform", () => {
+  const p = bracket({ point: { x: 0, y: 0, z: 0 }, Mx: 12000 });
+  p.settings.axialMethod = "contact-edge";
+  p.settings.contactEdge = { plateId: "P1", edge: "yMin" };
+  const s = buildScene(p, solve(p), { width: 600, height: 400 });
+  const { scale, ox, oy } = s.transform;
+  assert.deepEqual(s.contactEdge.screen.from, { x: ox + scale * -80, y: oy - scale * -50 });
+  assert.deepEqual(s.contactEdge.screen.to, { x: ox + scale * 80, y: oy - scale * -50 });
+  assert.ok(s.legend.some((e) => e.key === "contactEdge"));
+  assert.equal(buildScene(bracket(), null, { width: 600, height: 400 }).contactEdge, null);
 });
