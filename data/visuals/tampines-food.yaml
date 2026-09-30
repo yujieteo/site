@@ -1,0 +1,10 @@
+slug: tampines-food
+title: Good food in Tampines
+summary: "The 50 places food writers recommend most across Tampines Mall, Tampines 1, Century Square and Our Tampines Hub, ranked by how many independent guides name them. Filter by cuisine or mall, see a sourced calorie estimate (carbohydrate, protein, fat) for each signature dish, and read what each mall offers. Checked against the malls' own directories as of 30 September 2026."
+source_url: https://github.com/yujieteo/site/tree/main/visuals/tampines-food
+fetched: "2026-09-30"
+html_path: visuals/tampines-food/index.html
+data_path: visuals/tampines-food/raw.json
+webmcp_tools: [get_metadata, query_outlets, get_outlet, get_calorie_breakdown]
+tags: [food, singapore, tampines, nutrition]
+category: data visualization

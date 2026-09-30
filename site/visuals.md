@@ -105,6 +105,13 @@ Older Singapore residents report stronger connection to the country but less int
 - Fetched: 2026-09-27
 - WebMCP tools: get_data, get_metadata, query
 
+## Good food in Tampines
+The 50 places food writers recommend most across Tampines Mall, Tampines 1, Century Square and Our Tampines Hub, ranked by how many independent guides name them. Filter by cuisine or mall, see a sourced calorie estimate (carbohydrate, protein, fat) for each signature dish, and read what each mall offers. Checked against the malls' own directories as of 30 September 2026.
+- HTML: https://teoyujie.org/visuals/tampines-food/index.html
+- Data: https://teoyujie.org/visuals/tampines-food/data.json
+- Fetched: 2026-09-30
+- WebMCP tools: get_metadata, query_outlets, get_outlet, get_calorie_breakdown
+
 ## How Singapore attractions are marketed
 See which words recur in 106 descriptions of Singapore tourist attractions and where the described places are located.
 - HTML: https://teoyujie.org/visuals/tourist-attractions/index.html
