@@ -2365,6 +2365,7 @@ A.DUP_HOOKS.push((ids, map, step, out) => {
 
 /* ---------- properties ---------- */
 const esc = A.esc;
+const clampExtent = (v, lo, hi, L) => v < lo - L * 1e-5 || v > hi + L * 1e-5 ? null : Math.min(hi, Math.max(lo, v));
 function attachSection(x) {
   const doc = A.doc, at = x.at, U = doc.view.units.length;
   const detach = A.button(`${x.id}.detach`, "Detach", () => A.mutate(() => { const r = F.resolveAt(A.doc, x.at); if (x.dirRef === "member") { x.dir = F.clean(F.loadDir(A.doc, x)); x.dirRef = "global"; } x.at = { x: F.clean(r.x), y: F.clean(r.y) }; }));
@@ -2374,7 +2375,7 @@ function attachSection(x) {
   if ("body" in at) {
     const b = F.body(doc, at.body), [p, q] = F.edge(doc, b, at.edge), L = F.edgeLength(doc, b, at.edge);
     h += `<p>On ${esc(b.type === "polygon" ? "plate" : b.type)} ${esc(b.id)}${b.type === "polygon" ? `, edge ${esc(p.id)}–${esc(q.id)}` : ""}: ${esc(F.formatQuantity(at.s, "length", U))} from ${esc(p.id)} (length ${esc(F.formatQuantity(L, "length", U))}).</p>`;
-    h += A.lenField(`${x.id}.s`, "From " + esc(p.id), at.s, (v) => { if (v < 0 || v > L) return `Enter a distance from 0 to ${F.formatQuantity(L, "length", U)}`; at.s = v; });
+    h += A.lenField(`${x.id}.s`, "From " + esc(p.id), at.s, (v) => { const s = clampExtent(v, 0, L, L); if (s === null) return `Enter a distance from 0 to ${F.formatQuantity(L, "length", U)}`; at.s = s; });
     if (b.type === "polygon") h += A.lenField(`${x.id}.n`, "Offset in", at.n, (v) => { at.n = v; });
     return h + `<div class="btns">${detach}</div>`;
   }
@@ -2476,7 +2477,7 @@ A.PANELS.push((f) => {
     const wf = (k, label) => A.field(`${l.id}.${k}`, label, l[k] === null ? "" : F.formatQuantity(l[k], "distributed", u), (t) => { const r = F.parseQuantity(t, "distributed", u); if (r.error) return r.error; if (r.value !== null && r.value < 0) return "Enter a positive intensity; use Flip to reverse"; l[k] = r.value === null ? null : F.clean(r.value); });
     h += wf("w1", "Start intensity") + wf("w2", "End intensity") + unitSelect(l);
     h += `<p>Equal ends give a uniform load; one end at zero gives a triangle. Blank values keep the drawn shape.</p>`;
-    h += `<h3>Extent on ${esc(b.id)}</h3>` + A.lenField(`${l.id}.s1`, `Start from ${esc(p.id)}`, l.s1, (v) => { if (v < 0) return "Start must not be before the member start"; if (v > l.s2) return "Start must not pass the end"; l.s1 = v; }) + A.lenField(`${l.id}.s2`, `End from ${esc(p.id)}`, l.s2, (v) => { if (v > L) return `End must not pass the member end (${F.formatQuantity(L, "length", U)})`; if (v < l.s1) return "End must not come before the start"; l.s2 = v; });
+    h += `<h3>Extent on ${esc(b.id)}</h3>` + A.lenField(`${l.id}.s1`, `Start from ${esc(p.id)}`, l.s1, (v) => { if (clampExtent(v, 0, Infinity, L) === null) return "Start must not be before the member start"; const s = clampExtent(v, 0, l.s2, L); if (s === null) return "Start must not pass the end"; l.s1 = s; }) + A.lenField(`${l.id}.s2`, `End from ${esc(p.id)}`, l.s2, (v) => { if (clampExtent(v, -Infinity, L, L) === null) return `End must not pass the member end (${F.formatQuantity(L, "length", U)})`; const s = clampExtent(v, l.s1, L, L); if (s === null) return "End must not come before the start"; l.s2 = s; });
     h += `<h3>Direction</h3>` + A.seg(`${l.id}.dirMode`, [["perpendicular", "Perpendicular"], ["vertical", "Global vertical"]], l.dirMode, (x) => { l.dirMode = x; }) + `<div class="btns">${A.button(`${l.id}.flip`, "Flip direction", () => A.mutate(() => { l.flip = !l.flip; }))}</div>`;
   } else {
     h += magField(l) + unitSelect(l);
