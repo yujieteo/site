@@ -12,17 +12,13 @@ import unicodedata
 from collections import Counter
 from pathlib import Path
 
+import markdown
 import yaml
 from jsonschema import Draft7Validator
 
 import paper_tags
-from notes import load_notes, note_id
-from published_corpus import attach_links, build_published_corpus, note_record_id
-
-try:
-    import markdown as _markdown
-except ImportError:  # pragma: no cover
-    _markdown = None
+from notes import load_notes, split_frontmatter
+from published_corpus import attach_links, build_published_corpus
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -30,15 +26,11 @@ TEMPLATES = ROOT / "templates"
 STATIC = ROOT / "static"
 OUT = ROOT / "site"
 BASE_TEMPLATE = (TEMPLATES / "base.html").read_text(encoding="utf-8")
+MEDIA_ASSET_KEYS = ("audio", "video", "captions", "poster")
 
 
 def render_markdown(text):
-    if _markdown is None:
-        raise RuntimeError(
-            "The 'markdown' package is required for About/Blog content. "
-            "Install it with: pip install markdown --break-system-packages"
-        )
-    return _markdown.markdown(text or "", extensions=["extra", "sane_lists"])
+    return markdown.markdown(text or "", extensions=["extra", "sane_lists"])
 
 
 def contains_math(html_text):
@@ -50,6 +42,12 @@ def contains_math(html_text):
 def esc(value):
     """Escape a value for HTML text or a quoted attribute."""
     return html.escape("" if value is None else str(value), quote=True)
+
+
+def time_tag(date, label=None, css_class=""):
+    """A <time> element for an ISO date, showing ``label`` (the date by default)."""
+    class_attr = f' class="{css_class}"' if css_class else ""
+    return f'<time{class_attr} datetime="{esc(date)}">{esc(date if label is None else label)}</time>'
 
 
 MATHJAX_SCRIPT = r"""
@@ -103,6 +101,24 @@ def load_one(subdir):
     return records[0]
 
 
+def load_validator(schema_path):
+    return Draft7Validator(json.loads((ROOT / schema_path).read_text(encoding="utf-8")))
+
+
+def check_document(validator, document, label):
+    """Raise a RuntimeError naming the first schema error in ``document``, if any."""
+    errors = sorted(validator.iter_errors(document), key=lambda error: list(error.path))
+    if errors:
+        location = ".".join(str(part) for part in errors[0].path)
+        raise RuntimeError(f"Invalid {label} at {location or '<root>'}: {errors[0].message}")
+
+
+def first_duplicate(values):
+    """Return the first value, in source order, that occurs more than once, or None."""
+    counts = Counter(values)
+    return next((value for value, count in counts.items() if count > 1), None)
+
+
 def resolve_visuals_repo():
     configured = os.environ.get("VISUALS_REPO")
     candidates = [Path(configured).expanduser()] if configured else []
@@ -123,20 +139,12 @@ def resolve_visuals_repo():
 
 def load_visualizations():
     visualizations = load_all("visuals")
-    schema = json.loads((ROOT / "schema/visualization.schema.json").read_text(encoding="utf-8"))
-    validator = Draft7Validator(schema)
+    validator = load_validator("schema/visualization.schema.json")
     for visualization in visualizations:
-        errors = sorted(validator.iter_errors(visualization), key=lambda error: list(error.path))
-        if errors:
-            error = errors[0]
-            location = ".".join(str(part) for part in error.path)
-            raise RuntimeError(
-                f"Invalid visualization {visualization.get('slug', '<unknown>')} "
-                f"at {location or '<root>'}: {error.message}"
-            )
-    slugs = [visualization["slug"] for visualization in visualizations]
-    if len(slugs) != len(set(slugs)):
-        duplicate = next(slug for slug in slugs if slugs.count(slug) > 1)
+        check_document(validator, visualization,
+                       f"visualization {visualization.get('slug', '<unknown>')}")
+    duplicate = first_duplicate(visualization["slug"] for visualization in visualizations)
+    if duplicate is not None:
         raise RuntimeError(f"Duplicate visualization slug: {duplicate}")
     return visualizations
 
@@ -157,16 +165,14 @@ def visualization_source(visuals_repo, relative_path):
 
 def parse_frontmatter(raw_text):
     """Split a Markdown file into (metadata_dict, body_markdown).
-    Expects a leading `---` / YAML block / `---` frontmatter section.
-    If there's no frontmatter, returns ({}, raw_text) unchanged.
+
+    Without a complete ``---`` frontmatter block, returns ({}, raw_text).
     """
-    if raw_text.startswith("---"):
-        parts = raw_text.split("---", 2)
-        if len(parts) >= 3:
-            meta = yaml.safe_load(parts[1]) or {}
-            body = parts[2].lstrip("\n")
-            return meta, body
-    return {}, raw_text
+    try:
+        frontmatter, body = split_frontmatter(raw_text)
+    except ValueError:
+        return {}, raw_text
+    return yaml.safe_load(frontmatter) or {}, body
 
 
 def clean_blog_title(title, fallback):
@@ -241,12 +247,9 @@ def load_blog_posts():
         })
     # Newest first.
     posts.sort(key=lambda p: p["date"], reverse=True)
-    duplicate_slugs = [
-        slug for slug, count in Counter(post["slug"] for post in posts).items()
-        if count > 1
-    ]
-    if duplicate_slugs:
-        raise RuntimeError(f"Duplicate blog slug: {duplicate_slugs[0]}")
+    duplicate = first_duplicate(post["slug"] for post in posts)
+    if duplicate is not None:
+        raise RuntimeError(f"Duplicate blog slug: {duplicate}")
     return posts
 
 
@@ -266,6 +269,7 @@ def load_daily_notes():
             body_html = render_markdown(note["content"])
             plain_text = html.unescape(re.sub(r"<[^>]+>", " ", body_html))
             notes.append({
+                "id": note["id"],
                 "content": note["content"],
                 "body_html": body_html,
                 "plain_text": re.sub(r"\s+", " ", plain_text).strip(),
@@ -284,21 +288,13 @@ def load_daily_notes():
     }
 
 
-def site_fields(cv, active):
-    """Return shared site identity and navigation state."""
-    keys = ["home", "about", "paper_links", "notes", "media", "blog", "visuals"]
-    identity = {
-        "name": cv["name"],
-    }
-    navigation = {
-        f"aria_{key}": (' aria-current="page"' if key == active else "")
-        for key in keys
-    }
-    return identity | navigation
+NAV_KEYS = ["home", "about", "paper_links", "notes", "media", "blog", "visuals"]
 
 
-def render_page(title, content, corpus_revision, root="", name="", math=False,
-                shell_class="", **nav):
+def render_page(cv, active, title, content, corpus_revision, root="", math=False,
+                shell_class=""):
+    """Wrap ``content`` in the site shell; ``active`` is the current NAV_KEYS entry, or None."""
+    name = cv["name"]
     # Every tab reads "<page> — <site>"; the homepage passes the full title.
     full_title = title if title.startswith(name) else f"{title} — {name}"
     fields = {
@@ -308,7 +304,7 @@ def render_page(title, content, corpus_revision, root="", name="", math=False,
         "root": root,
         "corpus_revision": corpus_revision,
         "name": esc(name),
-        **nav,
+        **{f"aria_{key}": ' aria-current="page"' if key == active else "" for key in NAV_KEYS},
     }
     return BASE_TEMPLATE.format_map(fields)
 
@@ -318,21 +314,14 @@ def load_media_items():
     directory = DATA / "podcasts"
     if not directory.is_dir():
         return []
-    schema = json.loads((ROOT / "schema/podcasts.schema.json").read_text(encoding="utf-8"))
-    validator = Draft7Validator(schema)
+    validator = load_validator("schema/podcasts.schema.json")
     items = []
     for path in sorted(directory.glob("*.yaml")):
         item = load_yaml(path)
-        errors = sorted(validator.iter_errors(item), key=lambda error: list(error.path))
-        if errors:
-            error = errors[0]
-            location = ".".join(str(part) for part in error.path)
-            raise RuntimeError(
-                f"Invalid media item {path.stem} at {location or '<root>'}: {error.message}"
-            )
+        check_document(validator, item, f"media item {path.stem}")
         if item["id"] != path.stem:
             raise RuntimeError(f"Media item {path.name} declares id {item['id']}")
-        for asset_key in ("audio", "video", "captions", "poster"):
+        for asset_key in MEDIA_ASSET_KEYS:
             asset = item.get(asset_key)
             if asset is None:
                 continue
@@ -347,9 +336,8 @@ def load_media_items():
                 )
         items.append(item)
     items.sort(key=lambda item: item["date"], reverse=True)
-    ids = [item["id"] for item in items]
-    if len(ids) != len(set(ids)):
-        duplicate = next(item_id for item_id in ids if ids.count(item_id) > 1)
+    duplicate = first_duplicate(item["id"] for item in items)
+    if duplicate is not None:
         raise RuntimeError(f"Duplicate media item id: {duplicate}")
     return items
 
@@ -396,16 +384,15 @@ def build_media_index(cv, items, corpus_revision):
             '<section class="media-featured">'
             '<p class="media-kicker">Latest item</p>'
             f'<h2 class="media-title">{esc(latest["title"])}</h2>'
-            f'<p class="media-meta"><time datetime="{esc(latest["date"])}">'
-            f'{esc(latest["date"])}</time> &middot; {esc(format_duration(latest["duration_seconds"]))}</p>'
+            f'<p class="media-meta">{time_tag(latest["date"])} &middot; '
+            f'{esc(format_duration(latest["duration_seconds"]))}</p>'
             f'{media_player(latest)}'
             f'<p class="media-summary">{esc(latest["summary"])}</p>'
             f'<p><a href="{esc(latest["id"])}.html">Open</a></p>'
             '</section>'
         )
         list_items = "".join(
-            f'<li class="media-item"><time datetime="{esc(item["date"])}">'
-            f'{esc(item["date"])}</time>'
+            f'<li class="media-item">{time_tag(item["date"])}'
             f'<a href="{esc(item["id"])}.html">{esc(item["title"])}</a>'
             f'<span class="media-duration">'
             f'{esc(format_duration(item["duration_seconds"]))}</span></li>'
@@ -422,10 +409,7 @@ def build_media_index(cv, items, corpus_revision):
             'daily notes with the podcast skill and published here.</p>'
         )
     content = f'<h1 class="page-title">Media</h1>{body}'
-    return render_page(
-        "Media", content, corpus_revision, root="../",
-        **site_fields(cv, "media"),
-    )
+    return render_page(cv, "media", "Media", content, corpus_revision, root="../")
 
 
 def build_media_item(cv, item, note_dates, records, corpus_revision):
@@ -446,8 +430,7 @@ def build_media_item(cv, item, note_dates, records, corpus_revision):
         for tag in item["focus_tags"]
     )
     meta = (
-        f'<p class="post-meta"><time datetime="{esc(item["date"])}">'
-        f'{esc(item["date"])}</time> &middot; '
+        f'<p class="post-meta">{time_tag(item["date"])} &middot; '
         f'{esc(format_duration(item["duration_seconds"]))}'
     )
     if "notes" in item:
@@ -463,10 +446,7 @@ def build_media_item(cv, item, note_dates, records, corpus_revision):
         f'{render_links(records[media_record_id(item)], records, root="../")}'
         f'<p class="media-back"><a href="index.html">&larr; All items</a></p>'
     )
-    return render_page(
-        item["title"], content, corpus_revision, root="../",
-        **site_fields(cv, "media"),
-    )
+    return render_page(cv, "media", item["title"], content, corpus_revision, root="../")
 
 
 def media_record_id(item):
@@ -475,21 +455,15 @@ def media_record_id(item):
 
 def publish_media_assets(items):
     for item in items:
-        for asset_key in ("audio", "video", "captions", "poster"):
-            asset = item.get(asset_key)
-            if asset is None:
-                continue
-            destination = OUT / "media" / asset
+        copies = [(item[key], OUT / "media" / item[key])
+                  for key in MEDIA_ASSET_KEYS if item.get(key) is not None]
+        # Keep the legacy /podcast/audio/<id>.mp3 URL resolving for direct links to
+        # the first episode; a copy is safe here because redirects cannot serve media.
+        if "audio" in item:
+            copies.append((item["audio"], OUT / "podcast" / item["audio"]))
+        for asset, destination in copies:
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(DATA / "podcasts" / asset, destination)
-    # Keep the legacy /podcast/audio/<id>.mp3 URL resolving for direct links to
-    # the first episode; a copy is safe here because redirects cannot serve media.
-    for item in items:
-        if "audio" not in item:
-            continue
-        legacy_audio = OUT / "podcast" / item["audio"]
-        legacy_audio.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(DATA / "podcasts" / item["audio"], legacy_audio)
 
 
 def build_redirect(target, title):
@@ -577,21 +551,21 @@ def classify_paper_tag(tag):
     return "arxiv"
 
 
-def render_facets(groups, counts, show_first=FACET_SHOW_FIRST):
+def render_facets(groups, counts):
     """One fieldset per facet: its most-used tags, then a toggle for the rest."""
     fieldsets = []
     for facet_id, label, tags in groups:
         buttons = "".join(
-            f'<button type="button" class="tag{" tag-extra" if i >= show_first else ""}" '
+            f'<button type="button" class="tag{" tag-extra" if i >= FACET_SHOW_FIRST else ""}" '
             f'data-facet="{esc(facet_id)}" data-tag="{esc(tag)}" aria-pressed="false"'
-            f'{" hidden" if i >= show_first else ""}>'
+            f'{" hidden" if i >= FACET_SHOW_FIRST else ""}>'
             f'{esc(tag)} <span class="tag-count">{counts[tag]}</span></button>'
             for i, tag in enumerate(tags)
         )
         more = (
             f'<button type="button" class="facet-more" aria-expanded="false" '
             f'data-show-label="Show all {len(tags)}">Show all {len(tags)}</button>'
-            if len(tags) > show_first else ""
+            if len(tags) > FACET_SHOW_FIRST else ""
         )
         fieldsets.append(
             f'<fieldset class="facet" data-facet="{esc(facet_id)}">'
@@ -670,9 +644,11 @@ def render_filterable_list(kind, facet_html, placeholder, empty_message, total,
 
 def render_entry_list(kind, entries, placeholder, empty_message, facets, classify,
                       default_show=False, list_title=None, noun="entries"):
-    """Generic filterable list. Each entry dict needs: category and title.
-    Optional: note, url, date, and tags (defaults to category).
-    Used for Resources, Paper Links, and the Blog index.
+    """Filter controls for a list the browser renders from the corpus (static/js/filter.js).
+
+    ``entries`` supply only the tag counts and total: each needs ``category`` and
+    may carry ``tags`` (defaults to the category). Used for Resources, Paper
+    Links, and the Blog index.
     """
     counts = Counter()
     for entry in entries:
@@ -743,16 +719,15 @@ def render_links(record, records, root="", compact=False):
     )
 
 
-def featured_items(cv, corpus):
+def featured_items(cv, records):
     """The homepage's four cards: latest note, visual and media item, then the pinned item."""
-    records = {record["id"]: record for record in corpus["records"]}
     pinned_id = cv.get("pinned")
     if pinned_id and pinned_id not in records:
         raise RuntimeError(f"data/cv pinned item {pinned_id} is not in the Published Corpus")
 
     def newest(kinds, date_key="date"):
         candidates = [
-            record for record in corpus["records"]
+            record for record in records.values()
             if record["kind"] in kinds and record["id"] != pinned_id and record.get(date_key)
         ]
         # Stable sort: records with the same date keep their source order.
@@ -786,7 +761,7 @@ def render_featured(cards):
         else:
             title = record.get("title", "")
             summary = shorten(record.get("summary", ""), 140)
-        time_html = f'<time class="card-date" datetime="{esc(date)}">{esc(date)}</time>' if date else ""
+        time_html = time_tag(date, css_class="card-date") if date else ""
         items.append(
             '<li class="card">'
             f'<p class="card-type">{esc(label)}</p>'
@@ -801,7 +776,7 @@ def render_featured(cards):
     )
 
 
-def build_index(cv, resources, corpus, corpus_revision):
+def build_index(cv, resources, records, corpus_revision):
     facets, classify = load_resource_facets()
     body = render_entry_list(
         "resource",
@@ -820,30 +795,34 @@ def build_index(cv, resources, corpus, corpus_revision):
         '<p class="hero-links"><a class="more-link" href="open-questions.html">Open questions</a>'
         '<a class="more-link" href="colophon.html">How this site is built</a></p>'
         '</section>'
-        f'{render_featured(featured_items(cv, corpus))}'
+        f'{render_featured(featured_items(cv, records))}'
         f'{body}'
     )
-    return render_page(
-        f'{cv["name"]} — {cv["title"]}', content, corpus_revision,
-        math=True,
-        **site_fields(cv, "home"),
-    )
+    return render_page(cv, "home", f'{cv["name"]} — {cv["title"]}', content, corpus_revision,
+                       math=True)
+
+
+def load_about():
+    about = load_one("about")
+    return {
+        **about,
+        "intro_html": render_markdown(about["intro"]),
+        "sections": [
+            {**section, "slug": re.sub(r"[^a-z0-9]+", "-", section["title"].lower()).strip("-"),
+             "content_html": render_markdown(section["content"])}
+            for section in about.get("sections", [])
+        ],
+    }
 
 
 def build_about(cv, about, corpus_revision):
-    intro_html = render_markdown(about["intro"])
     sections_html = "".join(
-        (
-            f'<h2 class="section-title" id="{esc(sec["slug"])}">{esc(sec["title"])}</h2>'
-            f'{render_markdown(sec["content"])}'
-        )
-        for sec in about.get("sections", [])
+        f'<h2 class="section-title" id="{esc(sec["slug"])}">{esc(sec["title"])}</h2>'
+        f'{sec["content_html"]}'
+        for sec in about["sections"]
     )
-    content = f'<h1 class="page-title">{esc(cv["name"])}</h1>{intro_html}{sections_html}'
-    return render_page(
-        "About", content, corpus_revision,
-        **site_fields(cv, "about"),
-    )
+    content = f'<h1 class="page-title">{esc(cv["name"])}</h1>{about["intro_html"]}{sections_html}'
+    return render_page(cv, "about", "About", content, corpus_revision)
 
 
 def build_paper_links(cv, papers, corpus_revision):
@@ -857,25 +836,13 @@ def build_paper_links(cv, papers, corpus_revision):
         noun="paper links",
     )
     content = f'<h1 class="page-title">Paper Links</h1>{body}'
-    return render_page(
-        "Paper Links", content, corpus_revision,
-        math=True,
-        **site_fields(cv, "paper_links"),
-    )
+    return render_page(cv, "paper_links", "Paper Links", content, corpus_revision, math=True)
 
 
 def build_blog_index(cv, posts, corpus_revision):
-    entries = [{
-        "category": p["category"],
-        "tags": p["tags"],
-        "title": p["title"],
-        "note": p["summary"],
-        "url": f"blog/{p['slug']}.html",
-        "date": p["date"],
-    } for p in posts]
     body = render_entry_list(
         "blog",
-        entries,
+        posts,
         "Filter posts by title, summary or tag…",
         "No posts match these filters.",
         [("topic", "Topic")], lambda tag: "topic",
@@ -883,10 +850,7 @@ def build_blog_index(cv, posts, corpus_revision):
         noun="posts",
     )
     content = f'<h1 class="page-title">Blog</h1>{body}'
-    return render_page(
-        "Blog", content, corpus_revision,
-        **site_fields(cv, "blog"),
-    )
+    return render_page(cv, "blog", "Blog", content, corpus_revision)
 
 
 def build_notes(cv, notes, records, corpus_revision):
@@ -904,7 +868,7 @@ def build_notes(cv, notes, records, corpus_revision):
     for entry in notes["entries"]:
         items_html = []
         for note in entry["notes"]:
-            record_id = note_record_id(entry["date"], note["content"])
+            record_id = note["id"]
             tags_html = "".join(
                 f'<button type="button" class="tag" data-tag="{esc(tag)}">{esc(tag)}</button>'
                 for tag in note["tags"]
@@ -918,8 +882,8 @@ def build_notes(cv, notes, records, corpus_revision):
         if items_html:
             days_html.append(
                 f'<section class="note-day"><h2 class="note-date" id="{esc(entry["date"])}">'
-                f'<a href="#{esc(entry["date"])}"><time datetime="{esc(entry["date"])}">'
-                f'{esc(entry["display_date"])}</time></a></h2>{"".join(items_html)}</section>'
+                f'<a href="#{esc(entry["date"])}">{time_tag(entry["date"], entry["display_date"])}'
+                f'</a></h2>{"".join(items_html)}</section>'
             )
     filters_html = render_filterable_list(
         "note", facet_html, "Filter notes by text or tag…", "No notes match these filters.",
@@ -937,13 +901,12 @@ def build_notes(cv, notes, records, corpus_revision):
         f'{filters_html}'
     )
     return render_page(
-        notes["title"], content, corpus_revision,
+        cv, "notes", notes["title"], content, corpus_revision,
         math=any(
             contains_math(note["body_html"])
             for entry in notes["entries"]
             for note in entry["notes"]
         ),
-        **site_fields(cv, "notes"),
     )
 
 
@@ -969,7 +932,7 @@ def render_timeline(notes, records):
         for month, month_notes in months.items():
             items = []
             for date, note in month_notes:
-                record_id = note_record_id(date, note["content"])
+                record_id = note["id"]
                 title, _ = split_first_sentence(note["plain_text"], 120)
                 tags = "".join(
                     f'<button type="button" class="tag tag-small" data-tag="{esc(tag)}">{esc(tag)}</button>'
@@ -981,7 +944,7 @@ def render_timeline(notes, records):
                 )
                 items.append(
                     f'<li class="timeline-item" data-note-id="{esc(record_id)}">'
-                    f'<time class="timeline-date" datetime="{esc(date)}">{esc(date)}</time>'
+                    f'{time_tag(date, css_class="timeline-date")}'
                     f'<span class="timeline-main"><a class="timeline-link" href="#{esc(record_id)}">'
                     f'{esc(title)}</a>{related}</span>'
                     f'<span class="timeline-tags">{tags}</span></li>'
@@ -1008,7 +971,7 @@ def open_questions(notes, records):
     questions = []
     for entry in notes["entries"]:
         for note in entry["notes"]:
-            record = records[note_record_id(entry["date"], note["content"])]
+            record = records[note["id"]]
             resolved_by = [
                 records[link["target"]] for link in record.get("links", [])
                 if link["rel"] == "resolvedBy"
@@ -1034,8 +997,7 @@ def build_open_questions(cv, notes, records, corpus_revision):
             for item in resolved_by
         )
         items.append(
-            f'<li class="oq-item"><p class="oq-meta"><time datetime="{esc(date)}">{esc(date)}</time>'
-            f'{status}</p>'
+            f'<li class="oq-item"><p class="oq-meta">{time_tag(date)}{status}</p>'
             f'<h2 class="oq-title"><a href="{esc(record["url"])}">{esc(title)}</a></h2>'
             + (f'<p class="oq-rest">{esc(shorten(rest, 220))}</p>' if rest else "")
             + f'{resolution}</li>'
@@ -1054,9 +1016,8 @@ def build_open_questions(cv, notes, records, corpus_revision):
         f'{body}'
     )
     return render_page(
-        "Open questions", content, corpus_revision,
+        cv, "notes", "Open questions", content, corpus_revision,
         math=any(contains_math(note["body_html"]) for _, note, _, _ in questions),
-        **site_fields(cv, "notes"),
     )
 
 
@@ -1077,10 +1038,7 @@ def build_colophon(cv, colophon, corpus_revision):
         f'<h1 class="page-title">{esc(colophon["title"])}</h1>'
         f'<div class="post-body">{body_html}</div>'
     )
-    return render_page(
-        colophon["title"], content, corpus_revision,
-        **site_fields(cv, None),
-    )
+    return render_page(cv, None, colophon["title"], content, corpus_revision)
 
 
 def heading_slug(text):
@@ -1121,10 +1079,7 @@ def render_blog_sidebar(posts, current_slug):
     items = []
     for p in posts:
         current = ' aria-current="page"' if p["slug"] == current_slug else ""
-        date = (
-            f'<time datetime="{esc(p["date"])}">{esc(p["date"])}</time> &middot; '
-            if p["date"] else ""
-        )
+        date = f'{time_tag(p["date"])} &middot; ' if p["date"] else ""
         meta = (
             f'<span class="docs-nav-date">{date}'
             f'<span class="reading-time">{p["reading_minutes"]} min</span></span>'
@@ -1157,16 +1112,8 @@ def render_blog_toc(headings):
     )
 
 
-def blog_post_markdown(post):
-    """Return the Markdown a reader copies: the post's source file."""
-    return post["source_markdown"]
-
-
 def build_blog_post(cv, post, posts, records, corpus_revision):
-    date = (
-        f'<time datetime="{esc(post["date"])}">{esc(post["date"])}</time> &middot; '
-        if post["date"] else ""
-    )
+    date = f'{time_tag(post["date"])} &middot; ' if post["date"] else ""
     meta_line = (
         f'<p class="post-meta">{date}<span class="reading-time">'
         f'{format_reading_time(post["reading_minutes"])}</span></p>'
@@ -1174,7 +1121,7 @@ def build_blog_post(cv, post, posts, records, corpus_revision):
     body_html = re.sub(r"</?h1(?=>|\s)", lambda match: match.group(0).replace("h1", "h2"),
                        post["body_html"])
     body_html, headings = add_heading_anchors(body_html)
-    markdown_json = json.dumps(blog_post_markdown(post), ensure_ascii=False).replace("<", "\\u003c")
+    markdown_json = json.dumps(post["source_markdown"], ensure_ascii=False).replace("<", "\\u003c")
     actions = (
         '<div class="page-actions">'
         '<button type="button" class="page-action" data-copy-markdown>Copy Markdown</button>'
@@ -1195,9 +1142,8 @@ def build_blog_post(cv, post, posts, records, corpus_revision):
         '<script type="module" src="../static/js/post.js"></script>'
     )
     return render_page(
-        post["title"], content, corpus_revision, root="../",
+        cv, "blog", post["title"], content, corpus_revision, root="../",
         math=contains_math(body_html), shell_class=" site-shell-wide",
-        **site_fields(cv, "blog"),
     )
 
 
@@ -1213,10 +1159,7 @@ def build_visuals_index(cv, visualizations, records, corpus_revision, root=""):
         for visualization in visualizations
     )
     content = f'<h1 class="page-title">Visuals</h1>{entries}'
-    return render_page(
-        "Visuals", content, corpus_revision, root=root,
-        **site_fields(cv, "visuals"),
-    )
+    return render_page(cv, "visuals", "Visuals", content, corpus_revision, root=root)
 
 
 def build_visuals_markdown(visualizations):
@@ -1274,64 +1217,15 @@ def prepare_output():
     """Recreate the generated site and copy its static assets."""
     if OUT.exists():
         shutil.rmtree(OUT)
-    blog_out = OUT / "blog"
-    blog_out.mkdir(parents=True)
+    (OUT / "blog").mkdir(parents=True)
     (OUT / "media").mkdir()
     (OUT / "podcast").mkdir()
     shutil.copytree(STATIC, OUT / "static")
     shutil.copy2(ROOT / "llms.txt", OUT / "llms.txt")
-    return blog_out
 
 
-def validate_corpus(corpus):
-    schema = json.loads((ROOT / "schema/generated/corpus.schema.json").read_text(encoding="utf-8"))
-    errors = sorted(Draft7Validator(schema).iter_errors(corpus), key=lambda error: list(error.path))
-    if errors:
-        error = errors[0]
-        location = ".".join(str(part) for part in error.path)
-        raise RuntimeError(f"Invalid generated corpus at {location or '<root>'}: {error.message}")
-    ids = [record["id"] for record in corpus["records"]]
-    if len(ids) != len(set(ids)):
-        duplicate = next(record_id for record_id in ids if ids.count(record_id) > 1)
-        raise RuntimeError(f"Duplicate generated corpus id: {duplicate}")
-
-
-def main():
-    cv = load_one("cv")
-    cv["bio_html"] = render_markdown(cv["bio"])
-    about_source = load_one("about")
-    about = {
-        **about_source,
-        "intro_html": render_markdown(about_source["intro"]),
-        "sections": [
-            {**section, "slug": re.sub(r"[^a-z0-9]+", "-", section["title"].lower()).strip("-"),
-             "content_html": render_markdown(section["content"])}
-            for section in about_source.get("sections", [])
-        ],
-    }
-    resources = load_all("resources")
-    # The corpus keeps one record per url and title, so a duplicate would vanish silently.
-    resource_keys = Counter((resource["url"], resource["title"]) for resource in resources)
-    duplicates = [title for (_, title), count in resource_keys.items() if count > 1]
-    if duplicates:
-        raise RuntimeError(f"Duplicate resource: {duplicates[0]}")
-    papers = load_all("paper-links")
-    for entry in [*resources, *papers]:
-        entry["tags"] = normalize_tags(entry.get("tags"), entry["category"])
-    posts = load_blog_posts()
-    notes = load_daily_notes()
-    note_dates = {
-        note_id(entry["date"], note["content"]): entry["date"]
-        for entry in notes["entries"]
-        for note in entry["notes"]
-    }
-    visualizations = load_visualizations()
-    media_items = load_media_items()
-    visuals_repo = resolve_visuals_repo()
-    for visualization in visualizations:
-        visualization_source(visuals_repo, visualization["html_path"])
-        visualization_source(visuals_repo, visualization["data_path"])
-    colophon = load_colophon()
+def build_corpus(cv, about, resources, papers, posts, notes, visualizations, media_items, colophon):
+    """Project the sources into the Published Corpus, add authored links, and validate it."""
     corpus = build_published_corpus(
         cv, about, resources, papers, posts, notes, visualizations, media_items, colophon
     )
@@ -1347,10 +1241,45 @@ def main():
         attach_links(corpus, authored_links)
     except ValueError as exc:
         raise RuntimeError(f"Invalid link: {exc}") from exc
-    validate_corpus(corpus)
+    check_document(load_validator("schema/generated/corpus.schema.json"), corpus, "generated corpus")
+    duplicate = first_duplicate(record["id"] for record in corpus["records"])
+    if duplicate is not None:
+        raise RuntimeError(f"Duplicate generated corpus id: {duplicate}")
+    return corpus
+
+
+def main():
+    cv = load_one("cv")
+    cv["bio_html"] = render_markdown(cv["bio"])
+    about = load_about()
+    resources = load_all("resources")
+    # The corpus keeps one record per url and title, so a duplicate would vanish silently.
+    duplicate = first_duplicate((resource["url"], resource["title"]) for resource in resources)
+    if duplicate is not None:
+        raise RuntimeError(f"Duplicate resource: {duplicate[1]}")
+    papers = load_all("paper-links")
+    for entry in [*resources, *papers]:
+        entry["tags"] = normalize_tags(entry.get("tags"), entry["category"])
+    posts = load_blog_posts()
+    notes = load_daily_notes()
+    note_dates = {
+        note["id"]: entry["date"]
+        for entry in notes["entries"]
+        for note in entry["notes"]
+    }
+    visualizations = load_visualizations()
+    media_items = load_media_items()
+    visuals_repo = resolve_visuals_repo()
+    for visualization in visualizations:
+        visualization_source(visuals_repo, visualization["html_path"])
+        visualization_source(visuals_repo, visualization["data_path"])
+    colophon = load_colophon()
+    corpus = build_corpus(
+        cv, about, resources, papers, posts, notes, visualizations, media_items, colophon
+    )
     records = {record["id"]: record for record in corpus["records"]}
 
-    blog_out = prepare_output()
+    prepare_output()
     publish_visualization_assets(visualizations, visuals_repo)
     decks = publish_decks()
     publish_media_assets(media_items)
@@ -1360,7 +1289,7 @@ def main():
     corpus_revision = corpus["revision"]
 
     pages = {
-        OUT / "index.html": build_index(cv, resources, corpus, corpus_revision),
+        OUT / "index.html": build_index(cv, resources, records, corpus_revision),
         OUT / "about.html": build_about(cv, about, corpus_revision),
         OUT / "papers.html": build_paper_links(cv, papers, corpus_revision),
         OUT / "notes.html": build_notes(cv, notes, records, corpus_revision),
@@ -1372,40 +1301,25 @@ def main():
         OUT / "visuals" / "index.html": build_visuals_index(
             cv, visualizations, records, corpus_revision, root="../"
         ),
-    }
-    pages.update({
-        blog_out / f"{post['slug']}.html": build_blog_post(cv, post, posts, records, corpus_revision)
-        for post in posts
-    })
-    pages.update({
-        blog_out / f"{post['slug']}.md": blog_post_markdown(post)
-        for post in posts
-    })
-    pages.update({
-        OUT / "media" / f"{item['id']}.html": build_media_item(
-            cv, item, note_dates, records, corpus_revision
-        )
-        for item in media_items
-    })
-    for path, content in pages.items():
-        path.write_text(content, encoding="utf-8")
-
-    # Keep every legacy /podcast/... URL resolving via minimal redirect pages.
-    redirects = {
+        OUT / "visuals.md": build_visuals_markdown(visualizations),
+        # Keep every legacy /podcast/... URL resolving via minimal redirect pages.
         OUT / "podcast" / "index.html": build_redirect("/media/index.html", "Media"),
     }
-    redirects.update({
-        OUT / "podcast" / f"{item['id']}.html": build_redirect(
-            f"/media/{item['id']}.html", item["title"]
+    for post in posts:
+        pages[OUT / "blog" / f"{post['slug']}.html"] = build_blog_post(
+            cv, post, posts, records, corpus_revision
         )
-        for item in media_items
-        if "audio" in item
-    })
-    for path, content in redirects.items():
+        pages[OUT / "blog" / f"{post['slug']}.md"] = post["source_markdown"]
+    for item in media_items:
+        pages[OUT / "media" / f"{item['id']}.html"] = build_media_item(
+            cv, item, note_dates, records, corpus_revision
+        )
+        if "audio" in item:
+            pages[OUT / "podcast" / f"{item['id']}.html"] = build_redirect(
+                f"/media/{item['id']}.html", item["title"]
+            )
+    for path, content in pages.items():
         path.write_text(content, encoding="utf-8")
-    (OUT / "visuals.md").write_text(
-        build_visuals_markdown(visualizations), encoding="utf-8"
-    )
 
     print(
         f"Built site into {OUT}/ "

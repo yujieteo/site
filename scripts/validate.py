@@ -8,7 +8,7 @@ from pathlib import Path
 import jsonschema
 import yaml
 
-from notes import NotesError, load_notes
+from notes import NotesError, load_notes, split_frontmatter
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -17,19 +17,17 @@ SCHEMA = ROOT / "schema"
 
 
 def load_document(path):
+    text = path.read_text(encoding="utf-8")
+    if path.suffix == ".md":
+        try:
+            text, _ = split_frontmatter(text)
+        except ValueError as exc:
+            return None, str(exc)
     try:
-        text = path.read_text(encoding="utf-8")
-        if path.suffix == ".md":
-            if not text.startswith("---"):
-                return None, "missing YAML frontmatter"
-            parts = text.split("---", 2)
-            if len(parts) != 3:
-                return None, "unterminated YAML frontmatter"
-            text = parts[1]
         document = yaml.safe_load(text)
-        return json.loads(json.dumps(document, default=str)), None
     except yaml.YAMLError as exc:
         return None, f"could not parse YAML ({exc})"
+    return json.loads(json.dumps(document, default=str)), None
 
 
 def validate_file(path, validator):
