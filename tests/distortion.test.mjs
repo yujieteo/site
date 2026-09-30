@@ -109,6 +109,22 @@ test("a 45° patch under pure shear has one stretching and one shortening diagon
   assert.equal(signs[0], -signs[1], "reversing the torque swaps the diagonals");
 });
 
+test("the stiffened panel in pure in-plane shear: the 45° patch stretches along one diagonal, shortens along the other", () => {
+  const m = D.buildModel("panel");
+  const P = D.prepare(m, state("panel", { inplane: 0.5 }));
+  const p = D.placePatch(m, { ...D.defaultPatch("panel"), angle: 45 });
+  const r = D.patchStrain(P, p);
+  assert.ok(r.patch.e11 > 0.01 && r.patch.e22 < -0.01, JSON.stringify(r.patch));
+  assert.ok(Math.abs(r.shearAngle) < 1e-3);
+  const r0 = D.patchStrain(P, { ...p, angle: 0 });
+  assert.ok(Math.abs(r0.patch.e11) < 0.01 && Math.abs(r0.shearAngle) > 0.02, "the unrotated patch just shears");
+  // beam loads do nothing to the panel, panel loads nothing to the beams
+  const still = D.patchStrain(D.prepare(m, state("panel", { bending: 1, torsion: 1, shear: 1 })), p);
+  assert.ok(Math.abs(still.patch.e11) < 1e-9 && Math.abs(still.patch.e22) < 1e-9);
+  const tube = D.buildModel("tube");
+  assert.ok(norm(displacement(tube, state("tube", { inplane: 1 }), 0, 4, 1)) < 1e-9);
+});
+
 test("the patch stays on its wall and the patch sliders round-trip", () => {
   for (const s of D.STRUCTURES) {
     const m = D.buildModel(s);

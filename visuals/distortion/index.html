@@ -59,6 +59,7 @@ button:hover, select:hover { border-color: var(--muted); }
 button:focus-visible, select:focus-visible, summary:focus-visible, input[type=checkbox]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .toggles label { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; cursor: pointer; }
 .toggles input { width: 16px; height: 16px; accent-color: var(--amber); margin: 0; }
+.toggles label.dim { opacity: 0.38; cursor: default; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .note { color: var(--muted); font-size: 12.5px; margin: 4px 0 0; }
 #inset { position: absolute; left: 12px; bottom: 12px; width: 236px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
@@ -113,6 +114,7 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
         <label><input type="radio" name="structure" value="tube" checked><span>Circular tube</span></label>
         <label><input type="radio" name="structure" value="box"><span>Rectangular box</span></label>
         <label><input type="radio" name="structure" value="ibeam"><span>I-beam</span></label>
+        <label><input type="radio" name="structure" value="panel"><span>Stiffened panel</span></label>
       </div>
     </fieldset>
     <fieldset id="loads">
@@ -135,6 +137,8 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
         </select>
       </div>
       <div class="toggles">
+        <label><input type="checkbox" id="t-stringers" checked> Stringers (panel)</label>
+        <label><input type="checkbox" id="t-frames" checked> Frames (panel)</label>
         <label><input type="checkbox" id="t-restraint"> Restrain warping at the clamp</label>
         <label><input type="checkbox" id="t-arrows" checked> Load arrows</label>
         <label><input type="checkbox" id="t-axes" checked> Axes triad</label>
@@ -4412,6 +4416,7 @@ void main() {
   const EPS_AXIAL = 0.08;           // axial strain at full axial load, 1× exaggeration
   const GAMMA_V = 0.08;             // peak wall shear strain at full transverse shear
   const KAPPA_CLAMP = 0.07;         // curvature at the clamp at full bending
+  const GAMMA_Q = 0.1;              // panel shear strain at full in-plane shear
   const TWIST = { tube: 0.5, box: 0.6, ibeam: 1.2 }; // free-end twist (rad) at full torsion, warping free
   const LAMBDA_L = { box: 10, ibeam: 2.5 }; // Vlasov decay length ratio L*sqrt(GJ/(E*Cw)); the tube does not warp
   const LAG = 0.7;                  // shear-lag strength (assumed shape)
@@ -4420,11 +4425,14 @@ void main() {
     tube: { R: 0.6, t: 0.05 },
     box: { B: 1.2, H: 0.8, t: 0.05, rc: 0.06 },
     ibeam: { BF: 1.0, H: 1.2, tf: 0.07, tw: 0.05 },
+    // 2:1 flat skin, 3 longitudinal stringers and 2 transverse frames on the +z side
+    panel: { A: 4, B: 2, t: 0.03, stringers: [-0.5, 0, 0.5], hs: 0.14, ts: 0.03, frames: [-2 / 3, 2 / 3], hf: 0.2, tfr: 0.035 },
   };
 
-  const STRUCTURES = ["tube", "box", "ibeam"];
-  const LOADS = ["axial", "shear", "torsion", "bending"];
-  const APPLIES = { axial: STRUCTURES, shear: STRUCTURES, torsion: STRUCTURES, bending: STRUCTURES };
+  const BEAMS = ["tube", "box", "ibeam"];
+  const STRUCTURES = [...BEAMS, "panel"];
+  const LOADS = ["axial", "shear", "torsion", "bending", "inplane"];
+  const APPLIES = { axial: STRUCTURES, shear: BEAMS, torsion: BEAMS, bending: BEAMS, inplane: ["panel"] };
 
   const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
 
@@ -4579,12 +4587,31 @@ void main() {
 
   /* ---------- Models ---------- */
 
-  function beamWall(id, name, kind, path, t, vRange, mesh) {
+  function beamWall(id, name, kind, path, t, vRange, mesh, uRange) {
     return {
       id, name, kind, path, t, closed: path.closed,
-      u0: 0, u1: L, v0: vRange ? vRange[0] : 0, v1: vRange ? vRange[1] : path.length,
+      u0: uRange ? uRange[0] : 0, u1: uRange ? uRange[1] : L, v0: vRange ? vRange[0] : 0, v1: vRange ? vRange[1] : path.length,
       nu: mesh[0], nv: mesh[1],
     };
+  }
+
+  /* Stiffened panel: the skin is swept along x from a path across y (v = y + B/2);
+   * stringers are blades swept along x; frames are blades across y at fixed x
+   * (their u runs along y and v up the blade). Stiffeners carry no grid. */
+  function panelModel() {
+    const G = GEOM.panel, hb = G.B / 2, ha = G.A / 2;
+    const skin = beamWall(0, "Skin", "skin", straightPath(-hb, 0, hb, 0, 128, 1, 0), G.t, null, [128, 64], [-ha, ha]);
+    const walls = [skin];
+    G.stringers.forEach((y, i) => {
+      const w = beamWall(walls.length, `Stringer ${i + 1}`, "stringer", straightPath(y, G.t / 2, y, G.t / 2 + G.hs, 4, -1, -1), G.ts, null, [64, 3], [-ha, ha]);
+      w.noGrid = true; walls.push(w);
+    });
+    G.frames.forEach((x, i) => {
+      const w = beamWall(walls.length, `Frame ${i + 1}`, "frame", straightPath(-hb, G.t / 2, -hb, G.t / 2 + G.hf, 4, -1, -1), G.tfr, null, [48, 3], [-hb, hb]);
+      w.x0 = x; w.noGrid = true; walls.push(w);
+    });
+    for (const w of walls) { w.shear = null; w.omega = null; }
+    return { structure: "panel", length: G.A, walls, grid: { along: 24, around: 12 } };
   }
 
   function buildModel(structure) {
@@ -4620,6 +4647,7 @@ void main() {
       for (const w of walls) w.omega = w.path.points.map((p) => (w.kind === "web" ? 0 : p.y * p.z));
       return { structure, length: L, walls, grid: { along: 24, around: 6 } };
     }
+    if (structure === "panel") return panelModel();
     throw new Error(`unknown structure ${structure}`);
   }
 
@@ -4661,9 +4689,11 @@ void main() {
   function defaultState() {
     return {
       structure: "tube",
-      loads: { axial: 0, shear: 0, torsion: 0, bending: 0 },
+      loads: { axial: 0, shear: 0, torsion: 0, bending: 0, inplane: 0 },
       exaggeration: 1,
       warpingRestraint: false,
+      stringers: true,
+      frames: true,
       patch: defaultPatch("tube"),
     };
   }
@@ -4678,6 +4708,7 @@ void main() {
       gV: on("shear") * GAMMA_V * e,
       twistTip: on("torsion") * (TWIST[model.structure] || 0) * e,
       kappa0: on("bending") * KAPPA_CLAMP * e,
+      gQ: on("inplane") * GAMMA_Q * e,
     };
     // Twist. Warping free: uniform rate. Warping restrained at the clamp
     // (Vlasov, tip torque, phi(0) = phi'(0) = 0, phi''(L) = 0):
@@ -4715,12 +4746,21 @@ void main() {
   /* Reference position on a wall. */
   function reference(wall, u, v, zeta) {
     const q = lookup(wall.path, v);
+    if (wall.kind === "frame") return { x: wall.x0 + zeta, y: u, z: q.z, q };
     return { x: u, y: q.y + q.ny * zeta, z: q.z + q.nz * zeta, q };
+  }
+
+  /* Panel: uniform in-plane strain, symmetric about the panel centre:
+   * axial eps along x with Poisson -nu eps across, and pure shear gamma. */
+  function deformPanel(P, wall, u, v, zeta) {
+    const { x, y, z } = reference(wall, u, v, zeta);
+    return [x + P.epsA * x + (P.gQ / 2) * y, y - NU * P.epsA * y + (P.gQ / 2) * x, z];
   }
 
   /* Deformed position of the wall point (u, v, zeta). `opts.membrane` leaves
    * out effects that are not in-plane strain of the wall (none yet). */
   function deform(P, wall, u, v, zeta, opts) {
+    if (P.model.structure === "panel") return deformPanel(P, wall, u, v, zeta, opts);
     const r = reference(wall, u, v, zeta);
     let { x, y, z } = r;
     // Poisson: lateral strain follows the local axial strain (axial + bending),
@@ -4743,6 +4783,7 @@ void main() {
   /* Axial displacement that breaks plane sections: torsional warping
    * (-phi' omega), shear warping and, on the box flanges, shear lag. */
   function warping(P, wall, x, v) {
+    if (!wall.omega) return 0;
     let w = -P.dphi(x) * sampleArray(wall.path, wall.omega, v) + P.gV * sampleArray(wall.path, wall.shear.warp, v);
     if (P.model.structure === "box" && P.kappa0) {
       const q = lookup(wall.path, v);
@@ -4777,6 +4818,7 @@ void main() {
   /* Deformed position of the member axis (the section origin) at x, with the
    * tangent angle of the bent axis: where the page anchors its load arrows. */
   function axisPoint(P, x) {
+    if (P.model.structure === "panel") return [x * (1 + P.epsA), 0, 0, 0];
     const [X, Y, th] = P.curve(x + P.epsA * x);
     const y = P.gV * (P.model.walls[0].shear ? P.model.walls[0].shear.vp : 0) * x;
     return [X - y * Math.sin(th), Y + y * Math.cos(th), 0, th];
@@ -4795,6 +4837,7 @@ void main() {
     if (structure === "tube") p.v = GEOM.tube.R * 0.35;
     else if (structure === "box") p.v = nearestV(boxPath(), 0, GEOM.box.B / 2);
     else if (structure === "ibeam") { p.wall = 1; p.v = GEOM.ibeam.H / 2; }
+    else if (structure === "panel") { p.u = 0; p.v = GEOM.panel.B / 2 + 0.25; }
     return p;
   }
   function nearestV(path, y, z) {
@@ -4899,7 +4942,7 @@ void main() {
 
   return {
     PATCH, patchFaces, placePatch, patchFromSliders, slidersFromPatch, patchParamLines, patchStrain, eig2, faceSign, defaultPatch,
-    L, NU, axisPoint, warping, fieldValue, GEOM, STRUCTURES, LOADS, APPLIES,
+    L, NU, axisPoint, warping, fieldValue, GEOM, STRUCTURES, BEAMS, LOADS, APPLIES,
     buildModel, defaultState, prepare, reference, deform, lookup, sampleArray,
   };
 });
@@ -4907,7 +4950,7 @@ void main() {
 <script>
 (() => {
 "use strict";
-const META = {"title":"Structural Distortion Explorer","disclaimer":"Exaggerated, qualitative visualisation. Not to scale, no units.","version":"1.0.0","nature":"Qualitative and exaggerated: nothing is calibrated and no quantity carries units. Loads, strains and buckling thresholds are dimensionless slider fractions.","three":{"release":"r186","npm":"three@0.186.1","licence":"MIT","url":"https://threejs.org","inlined":true},"structures":[{"id":"tube","label":"Circular tube","type":"closed thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"box","label":"Rectangular box","type":"closed thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"ibeam","label":"I-beam","type":"open thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"}],"effects":[{"id":"axial","label":"Axial stretch or shortening","basis":"analytic","note":"uniform strain along the member"},{"id":"poisson","label":"Poisson contraction or swell","basis":"analytic","note":"lateral strain = -ν × axial strain, with ν drawn at its upper limit 0.5 so the swell shows; the clamp holds it back over a short length"},{"id":"bending","label":"Bending","basis":"analytic","note":"Euler-Bernoulli: plane sections stay plane and normal to the bent axis; the moment of a tip force falls linearly to zero at the tip"},{"id":"shear","label":"Transverse shear","basis":"analytic","note":"thin-walled shear flow gives the wall shear strain; sections drift and warp. The bending moment a tip force also causes is left to the bending slider"},{"id":"torsion","label":"Saint-Venant torsion","basis":"analytic","note":"rigid rotation of each section about the shear centre"},{"id":"warping","label":"Torsional warping","basis":"analytic","note":"axial displacement -φ'ω from the sectorial coordinate ω: Vlasov for the open I-beam, the Bredt cell for the box (small), none for the circular tube. With the restraint toggle on, warping is held at the clamp and the twist rate follows φ'(x) ∝ 1 - cosh(λ(L - x))/cosh(λL)"},{"id":"shearlag","label":"Shear lag","basis":"assumed","note":"box flanges under bending: a cosine distribution of axial displacement across the flange, so the flange strain peaks at the webs"}]};
+const META = {"title":"Structural Distortion Explorer","disclaimer":"Exaggerated, qualitative visualisation. Not to scale, no units.","version":"1.0.0","nature":"Qualitative and exaggerated: nothing is calibrated and no quantity carries units. Loads, strains and buckling thresholds are dimensionless slider fractions.","three":{"release":"r186","npm":"three@0.186.1","licence":"MIT","url":"https://threejs.org","inlined":true},"structures":[{"id":"tube","label":"Circular tube","type":"closed thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"box","label":"Rectangular box","type":"closed thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"ibeam","label":"I-beam","type":"open thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"panel","label":"Stiffened panel","type":"flat skin with 3 longitudinal stringers and 2 transverse frames, 2:1 aspect ratio, stiffeners toggleable","boundary":"loaded in its own plane: in-plane shear and axial load only"}],"effects":[{"id":"axial","label":"Axial stretch or shortening","basis":"analytic","note":"uniform strain along the member"},{"id":"poisson","label":"Poisson contraction or swell","basis":"analytic","note":"lateral strain = -ν × axial strain, with ν drawn at its upper limit 0.5 so the swell shows; the clamp holds it back over a short length"},{"id":"bending","label":"Bending","basis":"analytic","note":"Euler-Bernoulli: plane sections stay plane and normal to the bent axis; the moment of a tip force falls linearly to zero at the tip"},{"id":"inplane","label":"In-plane shear of the panel","basis":"analytic","note":"uniform pure shear of the skin; stiffeners follow the skin"},{"id":"shear","label":"Transverse shear","basis":"analytic","note":"thin-walled shear flow gives the wall shear strain; sections drift and warp. The bending moment a tip force also causes is left to the bending slider"},{"id":"torsion","label":"Saint-Venant torsion","basis":"analytic","note":"rigid rotation of each section about the shear centre"},{"id":"warping","label":"Torsional warping","basis":"analytic","note":"axial displacement -φ'ω from the sectorial coordinate ω: Vlasov for the open I-beam, the Bredt cell for the box (small), none for the circular tube. With the restraint toggle on, warping is held at the clamp and the twist rate follows φ'(x) ∝ 1 - cosh(λ(L - x))/cosh(λL)"},{"id":"shearlag","label":"Shear lag","basis":"assumed","note":"box flanges under bending: a cosine distribution of axial displacement across the flange, so the flange strain peaks at the webs"}]};
 const D = window.Distortion;
 const $ = (id) => document.getElementById(id);
 const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -4937,6 +4980,7 @@ const LOAD_UI = {
   shear: { label: "Transverse shear", words: ["down", "up"] },
   torsion: { label: "Torsion", words: ["clockwise", "anticlockwise"] },
   bending: { label: "Bending", words: ["tip down", "tip up"] },
+  inplane: { label: "In-plane shear", words: ["one way", "other way"] },
 };
 const level = (a) => (a < 0.02 ? "none" : a < 0.34 ? "light" : a < 0.67 ? "moderate" : "heavy");
 function loadText(key, v) {
@@ -4972,6 +5016,11 @@ function syncControls() {
   $("o-exaggeration").textContent = ex; $("s-exaggeration").setAttribute("aria-valuetext", ex);
   $("t-arrows").checked = ui.arrows; $("t-axes").checked = ui.axes;
   $("t-restraint").checked = !!state.warpingRestraint; $("contour").value = ui.contour;
+  const panel = state.structure === "panel";
+  for (const [id, on] of [["t-stringers", panel], ["t-frames", panel], ["t-restraint", !panel]]) {
+    $(id).disabled = !on; $(id).closest("label").classList.toggle("dim", !on);
+  }
+  $("t-stringers").checked = state.stringers; $("t-frames").checked = state.frames;
   const ps = D.slidersFromPatch(model, state.patch);
   $("s-along").value = ps.along; $("s-around").value = ps.around; $("s-angle").value = ps.angle;
   const w = model.walls[state.patch.wall];
@@ -4991,6 +5040,8 @@ $("panel").addEventListener("input", (ev) => {
     else state.loads[k] = Number(t.value);
   } else if (t.id === "t-arrows") ui.arrows = t.checked;
   else if (t.id === "t-restraint") state.warpingRestraint = t.checked;
+  else if (t.id === "t-stringers") state.stringers = t.checked;
+  else if (t.id === "t-frames") state.frames = t.checked;
   else if (t.id === "contour") ui.contour = t.value;
   else if (t.id === "t-axes") ui.axes = t.checked;
   refresh();
@@ -5103,11 +5154,12 @@ function createView() {
   function gridParams(m) {
     const segs = [];
     const along = m.grid.along, around = m.grid.around;
-    for (const wall of m.walls) {
+    const gridWalls = m.walls.filter((w) => !w.noGrid), total = gridWalls.reduce((a, w) => a + w.v1 - w.v0, 0);
+    for (const wall of gridWalls) {
       const faces = wall.closed ? [1] : [1, -1];
       const off = wall.t / 2 + 0.004;
       const nvSeg = Math.max(8, Math.round(wall.nv / 2)), nuSeg = Math.round(wall.nu / 2);
-      const perWall = Math.max(2, Math.round(around * (wall.v1 - wall.v0) / m.walls.reduce((a, w) => a + w.v1 - w.v0, 0)));
+      const perWall = Math.max(2, Math.round(around * (wall.v1 - wall.v0) / total));
       for (const f of faces) {
         for (let k = 0; k <= along; k++) {
           const u = wall.u0 + (wall.u1 - wall.u0) * k / along;
@@ -5167,12 +5219,12 @@ function createView() {
     const gp = gridParams(model);
     grid = lineObject(gp, gridMat); scene.add(grid);
     ghost = lineObject(gp, ghostMat); fillLines(ghost, null); scene.add(ghost);
-    // clamp block behind the support
-    const ext = model.structure === "tube" ? 1.7 : model.structure === "box" ? 1.8 : 1.8;
-    clampBlock = new T.Mesh(boxGeometry(0.25, ext, ext + 0.2), clampMat);
+    // clamp block behind the support (the panel is loaded on its edges instead)
+    clampBlock = new T.Mesh(boxGeometry(0.25, 1.8, 2.0), clampMat);
     clampBlock.position.set(-0.125 - 0.02, 0, 0);
+    clampBlock.visible = model.structure !== "panel";
     scene.add(clampBlock);
-    axes = axesTriad(); scene.add(axes);
+    axes = axesTriad(model.structure === "panel" ? [-2.3, -1.25, 0] : [-0.3, 1.05, 1.05]); scene.add(axes);
     arrows = new T.Group(); scene.add(arrows);
     frame();
     refresh();
@@ -5190,8 +5242,8 @@ function createView() {
     return g;
   }
 
-  function axesTriad() {
-    const g = new T.Group(), o = [-0.3, 1.05, 1.05], len = 0.7;
+  function axesTriad(o) {
+    const g = new T.Group(), len = 0.7;
     const geo = new T.BufferGeometry();
     geo.setAttribute("position", new T.BufferAttribute(new Float32Array([
       ...o, o[0] + len, o[1], o[2], ...o, o[0], o[1] + len, o[2], ...o, o[0], o[1], o[2] + len]), 3));
@@ -5202,8 +5254,8 @@ function createView() {
 
   function frame() {
     const L = model.length;
-    controls.target.set(L / 2, 0, 0);
-    camera.position.set(L / 2 + 4.2, 3.2, 7.2);
+    if (model.structure === "panel") { controls.target.set(0, 0, 0); camera.position.set(1.6, 1.9, 5.6); }
+    else { controls.target.set(L / 2, 0, 0); camera.position.set(L / 2 + 4.2, 3.2, 7.2); }
     camera.near = 0.05; camera.far = 200; camera.updateProjectionMatrix();
     controls.update();
   }
@@ -5214,7 +5266,20 @@ function createView() {
     const L = model.length, col = new T.Color(css("--muted"));
     const tipC = D.axisPoint(P, L);
     const add = (dir, origin, len) => arrows.add(new T.ArrowHelper(new T.Vector3(...dir).normalize(), new T.Vector3(...origin), len, col, 0.18, 0.1));
-    const { axial, shear, torsion, bending } = state.loads;
+    const { axial, shear, torsion, bending, inplane } = state.loads;
+    if (model.structure === "panel") {
+      const G = D.GEOM.panel, ha = G.A / 2 * (1 + P.epsA), hb = G.B / 2;
+      if (Math.abs(axial) > 0.02) for (const s of [1, -1]) {
+        const len = 0.3 + 0.5 * Math.abs(axial), x0 = s * (ha + 0.1) + (axial > 0 ? 0 : s * len);
+        add([s * Math.sign(axial), 0, 0], [x0, 0, 0], len);
+      }
+      if (Math.abs(inplane) > 0.02) {
+        const q = Math.sign(inplane), len = 0.4 + 0.6 * Math.abs(inplane);
+        add([0, q, 0], [ha + 0.18, -len / 2, 0], len); add([0, -q, 0], [-ha - 0.18, len / 2, 0], len);
+        add([q, 0, 0], [-len / 2, hb + 0.18, 0], len); add([-q, 0, 0], [len / 2, -hb - 0.18, 0], len);
+      }
+      return;
+    }
     if (Math.abs(axial) > 0.02) add([Math.sign(axial), 0, 0], [tipC[0] + (axial > 0 ? 0.15 : 1.05), tipC[1], tipC[2]], 0.3 + 0.6 * Math.abs(axial));
     if (Math.abs(shear) > 0.02) add([0, Math.sign(shear), 0], [tipC[0] + 0.35, tipC[1] - Math.sign(shear) * 1.1, tipC[2]], 0.3 + 0.6 * Math.abs(shear));
     if (Math.abs(bending) > 0.02) add([0, Math.sign(bending), 0], [tipC[0] + 0.6, tipC[1] - Math.sign(bending) * 1.1, tipC[2]], 0.3 + 0.6 * Math.abs(bending));
@@ -5267,7 +5332,11 @@ function createView() {
    * magnitude on the body, so they show pattern and sign, not size. */
   function colourMap(P) {
     const mode = ui.contour;
-    for (const mesh of body.children) mesh.material = mode === "none" ? bodyMat : mapMat;
+    for (const mesh of body.children) {
+      mesh.material = mode === "none" ? bodyMat : mapMat;
+      const kind = model.walls[mesh.userData.wall].kind;
+      mesh.visible = kind === "stringer" ? state.stringers : kind === "frame" ? state.frames : true;
+    }
     const legend = $("maplegend");
     if (mode === "none") { legend.hidden = true; return; }
     const values = [];
@@ -5325,7 +5394,7 @@ function createView() {
     const r = canvas.getBoundingClientRect();
     ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ndc, camera);
-    const hit = ray.intersectObjects(body.children, false)[0];
+    const hit = ray.intersectObjects(body.children.filter((m) => m.visible), false)[0];
     if (!hit || !hit.uv) return null;
     const pr = hit.object.geometry.userData.params, f = hit.face;
     const zs = pr[3 * f.a + 2] + pr[3 * f.b + 2] + pr[3 * f.c + 2];
@@ -5338,7 +5407,10 @@ function createView() {
     if (w.closed) dv = Math.min(dv, w.path.length - dv);
     return Math.abs(h.u - p.u) < D.PATCH * 0.75 && dv < D.PATCH * 0.75;
   }
-  const movePatch = (h) => { state.patch = D.placePatch(model, { ...h, angle: state.patch.angle }); refresh(); };
+  const movePatch = (h) => {
+    if (!D.patchFaces(model).some((f) => f.wall === h.wall)) return;
+    state.patch = D.placePatch(model, { ...h, angle: state.patch.angle }); refresh();
+  };
   let drag = null;
   stage.addEventListener("pointerdown", (ev) => {
     if (ev.target !== canvas || ev.button !== 0) return;
@@ -5437,8 +5509,9 @@ function drawInset() {
   // member axis indicator (x along the span, as seen on the patch)
   const a = (state.patch.angle * Math.PI) / 180;
   g.strokeStyle = col.muted; g.fillStyle = col.muted; g.lineWidth = 1;
-  g.beginPath(); g.moveTo(14, size - 14); g.lineTo(14 + 22 * Math.cos(-a), size - 14 - 22 * Math.sin(-a)); g.stroke();
-  g.font = "11px system-ui, sans-serif"; g.fillText("span", 16 + 26 * Math.cos(-a), size - 12 - 26 * Math.sin(-a));
+  const sx = Math.cos(-a), sy = -Math.sin(-a);
+  g.beginPath(); g.moveTo(26 - 14 * sx, 26 - 14 * sy); g.lineTo(26 + 14 * sx, 26 + 14 * sy); g.stroke();
+  g.font = "11px system-ui, sans-serif"; g.textAlign = "left"; g.fillText("span", 44, 30); g.textAlign = "start";
   // ghost
   g.setLineDash([4, 3]); g.strokeStyle = col.ghost; g.lineWidth = 1.2;
   g.strokeRect(cx - k, cy - k, 2 * k, 2 * k); g.setLineDash([]);

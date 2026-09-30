@@ -7,12 +7,14 @@
   "structures": [
     { "id": "tube", "label": "Circular tube", "type": "closed thin-walled", "boundary": "cantilever, clamped at x = 0, loaded at the free end" },
     { "id": "box", "label": "Rectangular box", "type": "closed thin-walled", "boundary": "cantilever, clamped at x = 0, loaded at the free end" },
-    { "id": "ibeam", "label": "I-beam", "type": "open thin-walled", "boundary": "cantilever, clamped at x = 0, loaded at the free end" }
+    { "id": "ibeam", "label": "I-beam", "type": "open thin-walled", "boundary": "cantilever, clamped at x = 0, loaded at the free end" },
+    { "id": "panel", "label": "Stiffened panel", "type": "flat skin with 3 longitudinal stringers and 2 transverse frames, 2:1 aspect ratio, stiffeners toggleable", "boundary": "loaded in its own plane: in-plane shear and axial load only" }
   ],
   "effects": [
     { "id": "axial", "label": "Axial stretch or shortening", "basis": "analytic", "note": "uniform strain along the member" },
     { "id": "poisson", "label": "Poisson contraction or swell", "basis": "analytic", "note": "lateral strain = -ν × axial strain, with ν drawn at its upper limit 0.5 so the swell shows; the clamp holds it back over a short length" },
     { "id": "bending", "label": "Bending", "basis": "analytic", "note": "Euler-Bernoulli: plane sections stay plane and normal to the bent axis; the moment of a tip force falls linearly to zero at the tip" },
+    { "id": "inplane", "label": "In-plane shear of the panel", "basis": "analytic", "note": "uniform pure shear of the skin; stiffeners follow the skin" },
     { "id": "shear", "label": "Transverse shear", "basis": "analytic", "note": "thin-walled shear flow gives the wall shear strain; sections drift and warp. The bending moment a tip force also causes is left to the bending slider" },
     { "id": "torsion", "label": "Saint-Venant torsion", "basis": "analytic", "note": "rigid rotation of each section about the shear centre" },
     { "id": "warping", "label": "Torsional warping", "basis": "analytic", "note": "axial displacement -φ'ω from the sectorial coordinate ω: Vlasov for the open I-beam, the Bredt cell for the box (small), none for the circular tube. With the restraint toggle on, warping is held at the clamp and the twist rate follows φ'(x) ∝ 1 - cosh(λ(L - x))/cosh(λL)" },

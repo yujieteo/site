@@ -20,6 +20,7 @@
   const EPS_AXIAL = 0.08;           // axial strain at full axial load, 1× exaggeration
   const GAMMA_V = 0.08;             // peak wall shear strain at full transverse shear
   const KAPPA_CLAMP = 0.07;         // curvature at the clamp at full bending
+  const GAMMA_Q = 0.1;              // panel shear strain at full in-plane shear
   const TWIST = { tube: 0.5, box: 0.6, ibeam: 1.2 }; // free-end twist (rad) at full torsion, warping free
   const LAMBDA_L = { box: 10, ibeam: 2.5 }; // Vlasov decay length ratio L*sqrt(GJ/(E*Cw)); the tube does not warp
   const LAG = 0.7;                  // shear-lag strength (assumed shape)
@@ -28,11 +29,14 @@
     tube: { R: 0.6, t: 0.05 },
     box: { B: 1.2, H: 0.8, t: 0.05, rc: 0.06 },
     ibeam: { BF: 1.0, H: 1.2, tf: 0.07, tw: 0.05 },
+    // 2:1 flat skin, 3 longitudinal stringers and 2 transverse frames on the +z side
+    panel: { A: 4, B: 2, t: 0.03, stringers: [-0.5, 0, 0.5], hs: 0.14, ts: 0.03, frames: [-2 / 3, 2 / 3], hf: 0.2, tfr: 0.035 },
   };
 
-  const STRUCTURES = ["tube", "box", "ibeam"];
-  const LOADS = ["axial", "shear", "torsion", "bending"];
-  const APPLIES = { axial: STRUCTURES, shear: STRUCTURES, torsion: STRUCTURES, bending: STRUCTURES };
+  const BEAMS = ["tube", "box", "ibeam"];
+  const STRUCTURES = [...BEAMS, "panel"];
+  const LOADS = ["axial", "shear", "torsion", "bending", "inplane"];
+  const APPLIES = { axial: STRUCTURES, shear: BEAMS, torsion: BEAMS, bending: BEAMS, inplane: ["panel"] };
 
   const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
 
@@ -187,12 +191,31 @@
 
   /* ---------- Models ---------- */
 
-  function beamWall(id, name, kind, path, t, vRange, mesh) {
+  function beamWall(id, name, kind, path, t, vRange, mesh, uRange) {
     return {
       id, name, kind, path, t, closed: path.closed,
-      u0: 0, u1: L, v0: vRange ? vRange[0] : 0, v1: vRange ? vRange[1] : path.length,
+      u0: uRange ? uRange[0] : 0, u1: uRange ? uRange[1] : L, v0: vRange ? vRange[0] : 0, v1: vRange ? vRange[1] : path.length,
       nu: mesh[0], nv: mesh[1],
     };
+  }
+
+  /* Stiffened panel: the skin is swept along x from a path across y (v = y + B/2);
+   * stringers are blades swept along x; frames are blades across y at fixed x
+   * (their u runs along y and v up the blade). Stiffeners carry no grid. */
+  function panelModel() {
+    const G = GEOM.panel, hb = G.B / 2, ha = G.A / 2;
+    const skin = beamWall(0, "Skin", "skin", straightPath(-hb, 0, hb, 0, 128, 1, 0), G.t, null, [128, 64], [-ha, ha]);
+    const walls = [skin];
+    G.stringers.forEach((y, i) => {
+      const w = beamWall(walls.length, `Stringer ${i + 1}`, "stringer", straightPath(y, G.t / 2, y, G.t / 2 + G.hs, 4, -1, -1), G.ts, null, [64, 3], [-ha, ha]);
+      w.noGrid = true; walls.push(w);
+    });
+    G.frames.forEach((x, i) => {
+      const w = beamWall(walls.length, `Frame ${i + 1}`, "frame", straightPath(-hb, G.t / 2, -hb, G.t / 2 + G.hf, 4, -1, -1), G.tfr, null, [48, 3], [-hb, hb]);
+      w.x0 = x; w.noGrid = true; walls.push(w);
+    });
+    for (const w of walls) { w.shear = null; w.omega = null; }
+    return { structure: "panel", length: G.A, walls, grid: { along: 24, around: 12 } };
   }
 
   function buildModel(structure) {
@@ -228,6 +251,7 @@
       for (const w of walls) w.omega = w.path.points.map((p) => (w.kind === "web" ? 0 : p.y * p.z));
       return { structure, length: L, walls, grid: { along: 24, around: 6 } };
     }
+    if (structure === "panel") return panelModel();
     throw new Error(`unknown structure ${structure}`);
   }
 
@@ -269,9 +293,11 @@
   function defaultState() {
     return {
       structure: "tube",
-      loads: { axial: 0, shear: 0, torsion: 0, bending: 0 },
+      loads: { axial: 0, shear: 0, torsion: 0, bending: 0, inplane: 0 },
       exaggeration: 1,
       warpingRestraint: false,
+      stringers: true,
+      frames: true,
       patch: defaultPatch("tube"),
     };
   }
@@ -286,6 +312,7 @@
       gV: on("shear") * GAMMA_V * e,
       twistTip: on("torsion") * (TWIST[model.structure] || 0) * e,
       kappa0: on("bending") * KAPPA_CLAMP * e,
+      gQ: on("inplane") * GAMMA_Q * e,
     };
     // Twist. Warping free: uniform rate. Warping restrained at the clamp
     // (Vlasov, tip torque, phi(0) = phi'(0) = 0, phi''(L) = 0):
@@ -323,12 +350,21 @@
   /* Reference position on a wall. */
   function reference(wall, u, v, zeta) {
     const q = lookup(wall.path, v);
+    if (wall.kind === "frame") return { x: wall.x0 + zeta, y: u, z: q.z, q };
     return { x: u, y: q.y + q.ny * zeta, z: q.z + q.nz * zeta, q };
+  }
+
+  /* Panel: uniform in-plane strain, symmetric about the panel centre:
+   * axial eps along x with Poisson -nu eps across, and pure shear gamma. */
+  function deformPanel(P, wall, u, v, zeta) {
+    const { x, y, z } = reference(wall, u, v, zeta);
+    return [x + P.epsA * x + (P.gQ / 2) * y, y - NU * P.epsA * y + (P.gQ / 2) * x, z];
   }
 
   /* Deformed position of the wall point (u, v, zeta). `opts.membrane` leaves
    * out effects that are not in-plane strain of the wall (none yet). */
   function deform(P, wall, u, v, zeta, opts) {
+    if (P.model.structure === "panel") return deformPanel(P, wall, u, v, zeta, opts);
     const r = reference(wall, u, v, zeta);
     let { x, y, z } = r;
     // Poisson: lateral strain follows the local axial strain (axial + bending),
@@ -351,6 +387,7 @@
   /* Axial displacement that breaks plane sections: torsional warping
    * (-phi' omega), shear warping and, on the box flanges, shear lag. */
   function warping(P, wall, x, v) {
+    if (!wall.omega) return 0;
     let w = -P.dphi(x) * sampleArray(wall.path, wall.omega, v) + P.gV * sampleArray(wall.path, wall.shear.warp, v);
     if (P.model.structure === "box" && P.kappa0) {
       const q = lookup(wall.path, v);
@@ -385,6 +422,7 @@
   /* Deformed position of the member axis (the section origin) at x, with the
    * tangent angle of the bent axis: where the page anchors its load arrows. */
   function axisPoint(P, x) {
+    if (P.model.structure === "panel") return [x * (1 + P.epsA), 0, 0, 0];
     const [X, Y, th] = P.curve(x + P.epsA * x);
     const y = P.gV * (P.model.walls[0].shear ? P.model.walls[0].shear.vp : 0) * x;
     return [X - y * Math.sin(th), Y + y * Math.cos(th), 0, th];
@@ -403,6 +441,7 @@
     if (structure === "tube") p.v = GEOM.tube.R * 0.35;
     else if (structure === "box") p.v = nearestV(boxPath(), 0, GEOM.box.B / 2);
     else if (structure === "ibeam") { p.wall = 1; p.v = GEOM.ibeam.H / 2; }
+    else if (structure === "panel") { p.u = 0; p.v = GEOM.panel.B / 2 + 0.25; }
     return p;
   }
   function nearestV(path, y, z) {
@@ -507,7 +546,7 @@
 
   return {
     PATCH, patchFaces, placePatch, patchFromSliders, slidersFromPatch, patchParamLines, patchStrain, eig2, faceSign, defaultPatch,
-    L, NU, axisPoint, warping, fieldValue, GEOM, STRUCTURES, LOADS, APPLIES,
+    L, NU, axisPoint, warping, fieldValue, GEOM, STRUCTURES, BEAMS, LOADS, APPLIES,
     buildModel, defaultState, prepare, reference, deform, lookup, sampleArray,
   };
 });

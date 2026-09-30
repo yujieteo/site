@@ -59,6 +59,7 @@ button:hover, select:hover { border-color: var(--muted); }
 button:focus-visible, select:focus-visible, summary:focus-visible, input[type=checkbox]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .toggles label { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; cursor: pointer; }
 .toggles input { width: 16px; height: 16px; accent-color: var(--amber); margin: 0; }
+.toggles label.dim { opacity: 0.38; cursor: default; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .note { color: var(--muted); font-size: 12.5px; margin: 4px 0 0; }
 #inset { position: absolute; left: 12px; bottom: 12px; width: 236px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
@@ -113,6 +114,7 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
         <label><input type="radio" name="structure" value="tube" checked><span>Circular tube</span></label>
         <label><input type="radio" name="structure" value="box"><span>Rectangular box</span></label>
         <label><input type="radio" name="structure" value="ibeam"><span>I-beam</span></label>
+        <label><input type="radio" name="structure" value="panel"><span>Stiffened panel</span></label>
       </div>
     </fieldset>
     <fieldset id="loads">
@@ -135,6 +137,8 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
         </select>
       </div>
       <div class="toggles">
+        <label><input type="checkbox" id="t-stringers" checked> Stringers (panel)</label>
+        <label><input type="checkbox" id="t-frames" checked> Frames (panel)</label>
         <label><input type="checkbox" id="t-restraint"> Restrain warping at the clamp</label>
         <label><input type="checkbox" id="t-arrows" checked> Load arrows</label>
         <label><input type="checkbox" id="t-axes" checked> Axes triad</label>
@@ -178,6 +182,7 @@ const LOAD_UI = {
   shear: { label: "Transverse shear", words: ["down", "up"] },
   torsion: { label: "Torsion", words: ["clockwise", "anticlockwise"] },
   bending: { label: "Bending", words: ["tip down", "tip up"] },
+  inplane: { label: "In-plane shear", words: ["one way", "other way"] },
 };
 const level = (a) => (a < 0.02 ? "none" : a < 0.34 ? "light" : a < 0.67 ? "moderate" : "heavy");
 function loadText(key, v) {
@@ -213,6 +218,11 @@ function syncControls() {
   $("o-exaggeration").textContent = ex; $("s-exaggeration").setAttribute("aria-valuetext", ex);
   $("t-arrows").checked = ui.arrows; $("t-axes").checked = ui.axes;
   $("t-restraint").checked = !!state.warpingRestraint; $("contour").value = ui.contour;
+  const panel = state.structure === "panel";
+  for (const [id, on] of [["t-stringers", panel], ["t-frames", panel], ["t-restraint", !panel]]) {
+    $(id).disabled = !on; $(id).closest("label").classList.toggle("dim", !on);
+  }
+  $("t-stringers").checked = state.stringers; $("t-frames").checked = state.frames;
   const ps = D.slidersFromPatch(model, state.patch);
   $("s-along").value = ps.along; $("s-around").value = ps.around; $("s-angle").value = ps.angle;
   const w = model.walls[state.patch.wall];
@@ -232,6 +242,8 @@ $("panel").addEventListener("input", (ev) => {
     else state.loads[k] = Number(t.value);
   } else if (t.id === "t-arrows") ui.arrows = t.checked;
   else if (t.id === "t-restraint") state.warpingRestraint = t.checked;
+  else if (t.id === "t-stringers") state.stringers = t.checked;
+  else if (t.id === "t-frames") state.frames = t.checked;
   else if (t.id === "contour") ui.contour = t.value;
   else if (t.id === "t-axes") ui.axes = t.checked;
   refresh();
@@ -344,11 +356,12 @@ function createView() {
   function gridParams(m) {
     const segs = [];
     const along = m.grid.along, around = m.grid.around;
-    for (const wall of m.walls) {
+    const gridWalls = m.walls.filter((w) => !w.noGrid), total = gridWalls.reduce((a, w) => a + w.v1 - w.v0, 0);
+    for (const wall of gridWalls) {
       const faces = wall.closed ? [1] : [1, -1];
       const off = wall.t / 2 + 0.004;
       const nvSeg = Math.max(8, Math.round(wall.nv / 2)), nuSeg = Math.round(wall.nu / 2);
-      const perWall = Math.max(2, Math.round(around * (wall.v1 - wall.v0) / m.walls.reduce((a, w) => a + w.v1 - w.v0, 0)));
+      const perWall = Math.max(2, Math.round(around * (wall.v1 - wall.v0) / total));
       for (const f of faces) {
         for (let k = 0; k <= along; k++) {
           const u = wall.u0 + (wall.u1 - wall.u0) * k / along;
@@ -408,12 +421,12 @@ function createView() {
     const gp = gridParams(model);
     grid = lineObject(gp, gridMat); scene.add(grid);
     ghost = lineObject(gp, ghostMat); fillLines(ghost, null); scene.add(ghost);
-    // clamp block behind the support
-    const ext = model.structure === "tube" ? 1.7 : model.structure === "box" ? 1.8 : 1.8;
-    clampBlock = new T.Mesh(boxGeometry(0.25, ext, ext + 0.2), clampMat);
+    // clamp block behind the support (the panel is loaded on its edges instead)
+    clampBlock = new T.Mesh(boxGeometry(0.25, 1.8, 2.0), clampMat);
     clampBlock.position.set(-0.125 - 0.02, 0, 0);
+    clampBlock.visible = model.structure !== "panel";
     scene.add(clampBlock);
-    axes = axesTriad(); scene.add(axes);
+    axes = axesTriad(model.structure === "panel" ? [-2.3, -1.25, 0] : [-0.3, 1.05, 1.05]); scene.add(axes);
     arrows = new T.Group(); scene.add(arrows);
     frame();
     refresh();
@@ -431,8 +444,8 @@ function createView() {
     return g;
   }
 
-  function axesTriad() {
-    const g = new T.Group(), o = [-0.3, 1.05, 1.05], len = 0.7;
+  function axesTriad(o) {
+    const g = new T.Group(), len = 0.7;
     const geo = new T.BufferGeometry();
     geo.setAttribute("position", new T.BufferAttribute(new Float32Array([
       ...o, o[0] + len, o[1], o[2], ...o, o[0], o[1] + len, o[2], ...o, o[0], o[1], o[2] + len]), 3));
@@ -443,8 +456,8 @@ function createView() {
 
   function frame() {
     const L = model.length;
-    controls.target.set(L / 2, 0, 0);
-    camera.position.set(L / 2 + 4.2, 3.2, 7.2);
+    if (model.structure === "panel") { controls.target.set(0, 0, 0); camera.position.set(1.6, 1.9, 5.6); }
+    else { controls.target.set(L / 2, 0, 0); camera.position.set(L / 2 + 4.2, 3.2, 7.2); }
     camera.near = 0.05; camera.far = 200; camera.updateProjectionMatrix();
     controls.update();
   }
@@ -455,7 +468,20 @@ function createView() {
     const L = model.length, col = new T.Color(css("--muted"));
     const tipC = D.axisPoint(P, L);
     const add = (dir, origin, len) => arrows.add(new T.ArrowHelper(new T.Vector3(...dir).normalize(), new T.Vector3(...origin), len, col, 0.18, 0.1));
-    const { axial, shear, torsion, bending } = state.loads;
+    const { axial, shear, torsion, bending, inplane } = state.loads;
+    if (model.structure === "panel") {
+      const G = D.GEOM.panel, ha = G.A / 2 * (1 + P.epsA), hb = G.B / 2;
+      if (Math.abs(axial) > 0.02) for (const s of [1, -1]) {
+        const len = 0.3 + 0.5 * Math.abs(axial), x0 = s * (ha + 0.1) + (axial > 0 ? 0 : s * len);
+        add([s * Math.sign(axial), 0, 0], [x0, 0, 0], len);
+      }
+      if (Math.abs(inplane) > 0.02) {
+        const q = Math.sign(inplane), len = 0.4 + 0.6 * Math.abs(inplane);
+        add([0, q, 0], [ha + 0.18, -len / 2, 0], len); add([0, -q, 0], [-ha - 0.18, len / 2, 0], len);
+        add([q, 0, 0], [-len / 2, hb + 0.18, 0], len); add([-q, 0, 0], [len / 2, -hb - 0.18, 0], len);
+      }
+      return;
+    }
     if (Math.abs(axial) > 0.02) add([Math.sign(axial), 0, 0], [tipC[0] + (axial > 0 ? 0.15 : 1.05), tipC[1], tipC[2]], 0.3 + 0.6 * Math.abs(axial));
     if (Math.abs(shear) > 0.02) add([0, Math.sign(shear), 0], [tipC[0] + 0.35, tipC[1] - Math.sign(shear) * 1.1, tipC[2]], 0.3 + 0.6 * Math.abs(shear));
     if (Math.abs(bending) > 0.02) add([0, Math.sign(bending), 0], [tipC[0] + 0.6, tipC[1] - Math.sign(bending) * 1.1, tipC[2]], 0.3 + 0.6 * Math.abs(bending));
@@ -508,7 +534,11 @@ function createView() {
    * magnitude on the body, so they show pattern and sign, not size. */
   function colourMap(P) {
     const mode = ui.contour;
-    for (const mesh of body.children) mesh.material = mode === "none" ? bodyMat : mapMat;
+    for (const mesh of body.children) {
+      mesh.material = mode === "none" ? bodyMat : mapMat;
+      const kind = model.walls[mesh.userData.wall].kind;
+      mesh.visible = kind === "stringer" ? state.stringers : kind === "frame" ? state.frames : true;
+    }
     const legend = $("maplegend");
     if (mode === "none") { legend.hidden = true; return; }
     const values = [];
@@ -566,7 +596,7 @@ function createView() {
     const r = canvas.getBoundingClientRect();
     ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ndc, camera);
-    const hit = ray.intersectObjects(body.children, false)[0];
+    const hit = ray.intersectObjects(body.children.filter((m) => m.visible), false)[0];
     if (!hit || !hit.uv) return null;
     const pr = hit.object.geometry.userData.params, f = hit.face;
     const zs = pr[3 * f.a + 2] + pr[3 * f.b + 2] + pr[3 * f.c + 2];
@@ -579,7 +609,10 @@ function createView() {
     if (w.closed) dv = Math.min(dv, w.path.length - dv);
     return Math.abs(h.u - p.u) < D.PATCH * 0.75 && dv < D.PATCH * 0.75;
   }
-  const movePatch = (h) => { state.patch = D.placePatch(model, { ...h, angle: state.patch.angle }); refresh(); };
+  const movePatch = (h) => {
+    if (!D.patchFaces(model).some((f) => f.wall === h.wall)) return;
+    state.patch = D.placePatch(model, { ...h, angle: state.patch.angle }); refresh();
+  };
   let drag = null;
   stage.addEventListener("pointerdown", (ev) => {
     if (ev.target !== canvas || ev.button !== 0) return;
@@ -678,8 +711,9 @@ function drawInset() {
   // member axis indicator (x along the span, as seen on the patch)
   const a = (state.patch.angle * Math.PI) / 180;
   g.strokeStyle = col.muted; g.fillStyle = col.muted; g.lineWidth = 1;
-  g.beginPath(); g.moveTo(14, size - 14); g.lineTo(14 + 22 * Math.cos(-a), size - 14 - 22 * Math.sin(-a)); g.stroke();
-  g.font = "11px system-ui, sans-serif"; g.fillText("span", 16 + 26 * Math.cos(-a), size - 12 - 26 * Math.sin(-a));
+  const sx = Math.cos(-a), sy = -Math.sin(-a);
+  g.beginPath(); g.moveTo(26 - 14 * sx, 26 - 14 * sy); g.lineTo(26 + 14 * sx, 26 + 14 * sy); g.stroke();
+  g.font = "11px system-ui, sans-serif"; g.textAlign = "left"; g.fillText("span", 44, 30); g.textAlign = "start";
   // ghost
   g.setLineDash([4, 3]); g.strokeStyle = col.ghost; g.lineWidth = 1.2;
   g.strokeRect(cx - k, cy - k, 2 * k, 2 * k); g.setLineDash([]);
