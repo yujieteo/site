@@ -1,7 +1,7 @@
 /* Tool identity and the conventions every report repeats. */
 
 export const TOOL_NAME = "Fastener Pattern CG Tracker";
-export const TOOL_VERSION = "1.0.0";
+export const TOOL_VERSION = "0.6.0-m6";
 export const MILESTONE = "M6";
 
 export const CONVENTIONS = [

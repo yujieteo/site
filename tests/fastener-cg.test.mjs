@@ -1293,3 +1293,20 @@ test("verification panel data lists every VC, VB, VI, property and VR case, pend
   assert.ok(v.results.filter((r) => r.status === "pending").every((r) => r.pass === false));
   assert.equal(v.set, "M6 (v1)");
 });
+
+test("reaction-vector legend names the shear source actually drawn: elastic when the ICR basis has no converged reactions", () => {
+  const p = withIcr(pattern(RECT4, { point: { x: 100, y: 0, z: 0 }, Fy: -1000 }), { basis: "icr" });
+  const reactionLabel = (r) => buildScene(p, r, { width: 600, height: 400 }).legend.find((e) => e.key === "reaction").label;
+  const converged = solve(p);
+  assert.equal(converged.icr.status, "converged");
+  assert.match(reactionLabel(converged), /ICR at applied load/);
+  // The W-014 shape from solve: ICR basis kept, no converged reactions, elastic shear drawn.
+  const failed = solve(p);
+  failed.icr = { status: "not-converged", reason: "test" };
+  failed.fasteners.forEach((f) => { delete f.icr; f.basisShear = null; });
+  const scene = buildScene(p, failed, { width: 600, height: 400 });
+  assert.match(reactionLabel(failed), /\(elastic\)/);
+  const drawn = scene.vectors.filter((v) => v.kind === "reaction");
+  assert.deepEqual(drawn.map((v) => v.value), failed.fasteners.filter((f) => f.shear.Rs > 0).map((f) => f.shear.Rs));
+  assert.match(paintSvg(scene), /Fastener in-plane load \(elastic\)/);
+});

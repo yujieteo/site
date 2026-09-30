@@ -665,11 +665,10 @@ function renderPageSize() {
 
 const today = () => new Date().toISOString().slice(0, 10);
 
-function printReport() {
+function buildPrintReport() {
   renderPageSize();
   const v = runVerification();
   $("#print-report").innerHTML = reportHtml(state.pattern, state.result, { date: today(), precision: precision(), verification: v });
-  window.print();
 }
 
 function exportPng() {
@@ -702,6 +701,7 @@ function renderVerification() {
   const v = runVerification();
   $("#verify-results").innerHTML = `
     <p><span class="${v.pass ? "pass" : "fail"}">${v.passed} pass${v.failed ? `, ${v.failed} fail` : ""}${v.pending ? `, ${v.pending} pending` : ""}</span> of ${v.results.length} cases · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
+    ${v.pending ? `<p class="pending">All six milestones are implemented, but ${esc(v.results.filter((r) => r.pending).map((r) => r.id).join(", "))} (AISC prying and ICR references, spec open questions 2 and 3) await published values, so M3 and M5 are not closed.</p>` : ""}
     ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.status}">${r.status}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
       ${r.pending ? `<p class="pending">pending: ${esc(r.pending)}</p>` : r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
         esc(c.label), typeof c.actual === "number" ? String(Number(c.actual.toPrecision(10))) : esc(c.actual),
@@ -1061,9 +1061,9 @@ function bind() {
   });
   $("#run-verify").addEventListener("click", renderVerification);
   $("#trace-fastener").addEventListener("change", (e) => { state.traceId = e.target.value; renderTrace(); });
-  $("#print-report-btn").addEventListener("click", printReport);
+  $("#print-report-btn").addEventListener("click", () => window.print());
+  window.addEventListener("beforeprint", buildPrintReport);
   $("#export-png").addEventListener("click", exportPng);
-  $("#export-md-report").addEventListener("click", exportMarkdown);
   for (const b of $$("[data-preset]")) {
     b.addEventListener("click", () => {
       const p = PRESETS[b.dataset.preset];

@@ -4,7 +4,7 @@ Centroids, section properties and elastic load distribution for a fastener
 group, with a general 3D eccentric load. `index.html` is one self-contained
 page that works offline; it is built from modular sources.
 
-All six milestones (M1 to M6) of the Draft v0.1 specification are in place (tool version 1.0.0). M1 covers geometry, the three
+All six milestones (M1 to M6) of the Draft v0.1 specification are implemented (tool version 0.6.0-m6), but the published-reference verification cases VR-01 to VR-03 (AISC prying and ICR references, spec open questions 2 and 3) await published values, so M3 and M5 are not closed. M1 covers geometry, the three
 centroids (shear Cs, axial Ca, area Cg), J, Ixx, Iyy, Ixy and principal axes,
 3D load reduction, elastic in-plane shear and axial method (a), canvas and
 table entry with generators, live recalculation, the unit toggle, and JSON and
@@ -31,14 +31,15 @@ ultimate capacity multiplier γ_ult and proportionally scaled reactions, the
 design-basis selector (elastic or ICR reactions feed the checks) and the
 side-by-side elastic vs ICR comparison. M6 adds the reports: PDF by browser
 print (dedicated print stylesheet, A4 or Letter, sections kept on one page,
-inline SVG diagram), a 2× PNG of the annotated diagram with legend and scale,
-and a Markdown report with the same sections as tables. Each report carries
-the tool version, the verification set and tolerance, the full warnings list
-and the "Preliminary sizing" line. M6 also adds the calculation trace, built
+inline SVG diagram), a 2× PNG of the annotated pattern diagram only (with legend and scale),
+and a Markdown report with the same sections as tables. The PDF and Markdown
+reports carry the tool version, the verification set and tolerance, the full
+warnings list and the "Preliminary sizing" line. M6 also adds the calculation trace, built
 from the solver's own intermediate values for the governing fastener (and for
 any fastener from the UI); the SVG and canvas painters, which both draw from
 the shared scene model and are checked against it by a test; and the full
-verification panel, where pending published-reference cases show as pending.
+verification panel, where the pending published-reference cases VR-01 to VR-03
+show as pending.
 
 | Path | Role |
 | --- | --- |

@@ -96,6 +96,7 @@ export function buildScene(pattern, result, view, { selected = null, transform: 
 
   // Reaction vectors: in-plane load on each fastener, the largest drawn 0.16 × the shorter side.
   const vectors = [];
+  const icrDrawn = !!(result && result.ok && result.designBasis === "icr" && result.fasteners.every((f) => f.basisShear));
   if (result && result.ok) {
     // Vectors show the in-plane load on the selected design basis (the one the checks use).
     const shearOf = (f) => f.basisShear || f.shear;
@@ -136,7 +137,7 @@ export function buildScene(pattern, result, view, { selected = null, transform: 
   const legend = [
     ...Object.entries(CENTROID_STYLE).map(([key, s]) => ({ key, shape: s.shape, colour: s.colour, label: s.label })),
     { key: "load", shape: "cross", colour: "load", label: "Load point P" },
-    { key: "reaction", shape: "arrow", colour: "reaction", label: `Fastener in-plane load (${result && result.ok && result.designBasis === "icr" ? "ICR at applied load" : "elastic"})` },
+    { key: "reaction", shape: "arrow", colour: "reaction", label: `Fastener in-plane load (${icrDrawn ? "ICR at applied load" : "elastic"})` },
     { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
     { key: "tension", shape: "disc", colour: "tension", label: "Fastener in tension" },
     { key: "unloading", shape: "dashed", colour: "fg", label: "Unloading (clamp-up)" },

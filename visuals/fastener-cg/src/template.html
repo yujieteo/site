@@ -193,7 +193,7 @@ td.status{color:var(--muted);font-size:.78rem}
     <button class="btn" type="button" id="lib-load">Load</button><button class="btn" type="button" id="lib-save">Save</button><button class="btn danger" type="button" id="lib-delete">Delete</button></div>
   <div class="group"><span class="label">File</span>
     <button class="btn" type="button" id="import">Import JSON or Markdown…</button><input id="import-file" type="file" accept=".json,.md,.markdown,application/json,text/markdown,text/plain" hidden>
-    <button class="btn" type="button" id="export-json">Export JSON</button><button class="btn" type="button" id="export-md">Export Markdown</button></div>
+    <button class="btn" type="button" id="export-json">Export JSON</button><button class="btn" type="button" id="export-md">Export Markdown report</button></div>
 </div>
 <p id="library-note" class="note">The working pattern autosaves in this browser on every edit, separately from the named library.</p>
 <div id="storage-banner" class="banner" role="alert" hidden><span id="storage-message"></span><button class="btn" type="button" id="storage-export">Export JSON</button></div>
@@ -433,16 +433,16 @@ td.status{color:var(--muted);font-size:.78rem}
 
 <section aria-labelledby="reports-h">
   <h2 id="reports-h">Reports</h2>
-  <p>Every report carries the tool version, the verification set and tolerance, the full warnings list and the line <i>Preliminary sizing — verify against the governing specification.</i> The PDF is the full report (with the calculation trace for the governing fastener); the PNG is the annotated diagram only, at 2×; the Markdown has the same sections as tables plus the exact inputs.</p>
+  <p>The PDF and Markdown reports carry the tool version, the verification set and tolerance, the full warnings list and the line <i>Preliminary sizing — verify against the governing specification.</i> The PDF is the full report (with the calculation trace for the governing fastener); the Markdown has the same sections as tables plus the exact inputs. The PNG is the annotated pattern diagram only, with legend and scale, at 2×.</p>
   <div class="toolbar" role="group" aria-label="Reports">
     <div class="group"><label class="label" for="page-size">Page</label><select id="page-size" data-path="settings.pageSize"><option value="A4">A4</option><option value="Letter">Letter</option></select></div>
-    <div class="group"><button class="btn primary" type="button" id="print-report-btn">Print / Save as PDF</button><button class="btn" type="button" id="export-png">Download PNG</button><button class="btn" type="button" id="export-md-report">Export Markdown report</button></div>
+    <div class="group"><button class="btn primary" type="button" id="print-report-btn">Print / Save as PDF</button><button class="btn" type="button" id="export-png">Download PNG</button></div>
   </div>
 </section>
 
 <section aria-labelledby="verify-h">
   <h2 id="verify-h">Verification</h2>
-  <p>Runs the hand-calculation cases and property tests from the specification on this page's own solver. The same cases run in the repository's test suite.</p>
+  <p>Runs the hand-calculation cases and property tests from the specification on this page's own solver. The same cases run in the repository's test suite. All six milestones are implemented, but the published-reference cases VR-01 to VR-03 (AISC prying and ICR references, spec open questions 2 and 3) await published values and show as pending, so M3 and M5 are not closed.</p>
   <button class="btn primary" type="button" id="run-verify">Run verification</button>
   <div id="verify-results"></div>
 </section>

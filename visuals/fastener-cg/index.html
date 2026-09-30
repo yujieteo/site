@@ -193,7 +193,7 @@ td.status{color:var(--muted);font-size:.78rem}
     <button class="btn" type="button" id="lib-load">Load</button><button class="btn" type="button" id="lib-save">Save</button><button class="btn danger" type="button" id="lib-delete">Delete</button></div>
   <div class="group"><span class="label">File</span>
     <button class="btn" type="button" id="import">Import JSON or Markdown…</button><input id="import-file" type="file" accept=".json,.md,.markdown,application/json,text/markdown,text/plain" hidden>
-    <button class="btn" type="button" id="export-json">Export JSON</button><button class="btn" type="button" id="export-md">Export Markdown</button></div>
+    <button class="btn" type="button" id="export-json">Export JSON</button><button class="btn" type="button" id="export-md">Export Markdown report</button></div>
 </div>
 <p id="library-note" class="note">The working pattern autosaves in this browser on every edit, separately from the named library.</p>
 <div id="storage-banner" class="banner" role="alert" hidden><span id="storage-message"></span><button class="btn" type="button" id="storage-export">Export JSON</button></div>
@@ -433,16 +433,16 @@ td.status{color:var(--muted);font-size:.78rem}
 
 <section aria-labelledby="reports-h">
   <h2 id="reports-h">Reports</h2>
-  <p>Every report carries the tool version, the verification set and tolerance, the full warnings list and the line <i>Preliminary sizing — verify against the governing specification.</i> The PDF is the full report (with the calculation trace for the governing fastener); the PNG is the annotated diagram only, at 2×; the Markdown has the same sections as tables plus the exact inputs.</p>
+  <p>The PDF and Markdown reports carry the tool version, the verification set and tolerance, the full warnings list and the line <i>Preliminary sizing — verify against the governing specification.</i> The PDF is the full report (with the calculation trace for the governing fastener); the Markdown has the same sections as tables plus the exact inputs. The PNG is the annotated pattern diagram only, with legend and scale, at 2×.</p>
   <div class="toolbar" role="group" aria-label="Reports">
     <div class="group"><label class="label" for="page-size">Page</label><select id="page-size" data-path="settings.pageSize"><option value="A4">A4</option><option value="Letter">Letter</option></select></div>
-    <div class="group"><button class="btn primary" type="button" id="print-report-btn">Print / Save as PDF</button><button class="btn" type="button" id="export-png">Download PNG</button><button class="btn" type="button" id="export-md-report">Export Markdown report</button></div>
+    <div class="group"><button class="btn primary" type="button" id="print-report-btn">Print / Save as PDF</button><button class="btn" type="button" id="export-png">Download PNG</button></div>
   </div>
 </section>
 
 <section aria-labelledby="verify-h">
   <h2 id="verify-h">Verification</h2>
-  <p>Runs the hand-calculation cases and property tests from the specification on this page's own solver. The same cases run in the repository's test suite.</p>
+  <p>Runs the hand-calculation cases and property tests from the specification on this page's own solver. The same cases run in the repository's test suite. All six milestones are implemented, but the published-reference cases VR-01 to VR-03 (AISC prying and ICR references, spec open questions 2 and 3) await published values and show as pending, so M3 and M5 are not closed.</p>
   <button class="btn primary" type="button" id="run-verify">Run verification</button>
   <div id="verify-results"></div>
 </section>
@@ -2253,6 +2253,7 @@ function buildScene(pattern, result, view, { selected = null, transform: fixed =
 
   // Reaction vectors: in-plane load on each fastener, the largest drawn 0.16 × the shorter side.
   const vectors = [];
+  const icrDrawn = !!(result && result.ok && result.designBasis === "icr" && result.fasteners.every((f) => f.basisShear));
   if (result && result.ok) {
     // Vectors show the in-plane load on the selected design basis (the one the checks use).
     const shearOf = (f) => f.basisShear || f.shear;
@@ -2293,7 +2294,7 @@ function buildScene(pattern, result, view, { selected = null, transform: fixed =
   const legend = [
     ...Object.entries(CENTROID_STYLE).map(([key, s]) => ({ key, shape: s.shape, colour: s.colour, label: s.label })),
     { key: "load", shape: "cross", colour: "load", label: "Load point P" },
-    { key: "reaction", shape: "arrow", colour: "reaction", label: `Fastener in-plane load (${result && result.ok && result.designBasis === "icr" ? "ICR at applied load" : "elastic"})` },
+    { key: "reaction", shape: "arrow", colour: "reaction", label: `Fastener in-plane load (${icrDrawn ? "ICR at applied load" : "elastic"})` },
     { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
     { key: "tension", shape: "disc", colour: "tension", label: "Fastener in tension" },
     { key: "unloading", shape: "dashed", colour: "fg", label: "Unloading (clamp-up)" },
@@ -2571,7 +2572,7 @@ const __m17 = (() => {
 /* Tool identity and the conventions every report repeats. */
 
 const TOOL_NAME = "Fastener Pattern CG Tracker";
-const TOOL_VERSION = "1.0.0";
+const TOOL_VERSION = "0.6.0-m6";
 const MILESTONE = "M6";
 
 const CONVENTIONS = [
@@ -5041,11 +5042,10 @@ function renderPageSize() {
 
 const today = () => new Date().toISOString().slice(0, 10);
 
-function printReport() {
+function buildPrintReport() {
   renderPageSize();
   const v = runVerification();
   $("#print-report").innerHTML = reportHtml(state.pattern, state.result, { date: today(), precision: precision(), verification: v });
-  window.print();
 }
 
 function exportPng() {
@@ -5078,6 +5078,7 @@ function renderVerification() {
   const v = runVerification();
   $("#verify-results").innerHTML = `
     <p><span class="${v.pass ? "pass" : "fail"}">${v.passed} pass${v.failed ? `, ${v.failed} fail` : ""}${v.pending ? `, ${v.pending} pending` : ""}</span> of ${v.results.length} cases · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
+    ${v.pending ? `<p class="pending">All six milestones are implemented, but ${esc(v.results.filter((r) => r.pending).map((r) => r.id).join(", "))} (AISC prying and ICR references, spec open questions 2 and 3) await published values, so M3 and M5 are not closed.</p>` : ""}
     ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.status}">${r.status}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
       ${r.pending ? `<p class="pending">pending: ${esc(r.pending)}</p>` : r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
         esc(c.label), typeof c.actual === "number" ? String(Number(c.actual.toPrecision(10))) : esc(c.actual),
@@ -5437,9 +5438,9 @@ function bind() {
   });
   $("#run-verify").addEventListener("click", renderVerification);
   $("#trace-fastener").addEventListener("change", (e) => { state.traceId = e.target.value; renderTrace(); });
-  $("#print-report-btn").addEventListener("click", printReport);
+  $("#print-report-btn").addEventListener("click", () => window.print());
+  window.addEventListener("beforeprint", buildPrintReport);
   $("#export-png").addEventListener("click", exportPng);
-  $("#export-md-report").addEventListener("click", exportMarkdown);
   for (const b of $$("[data-preset]")) {
     b.addEventListener("click", () => {
       const p = PRESETS[b.dataset.preset];
