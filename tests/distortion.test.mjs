@@ -277,3 +277,62 @@ test("I-beam web buckles in shear; the tube never buckles", () => {
   assert.equal(wrinkles(tube, state("tube", { shear: 1, torsion: 1, bending: 1, axial: -1 })), 0);
   assert.deepEqual(Object.values(D.criticalLoads(tube, state("tube"))).filter((c) => c.pos || c.neg), []);
 });
+
+test("presets set up what their titles promise", () => {
+  assert.equal(D.PRESETS.length, 6);
+  const get = (id) => { const r = D.presetState(id); return { ...r, P: D.prepare(D.buildModel(r.state.structure), r.state) }; };
+  const pure = get("pure-shear");
+  assert.equal(pure.state.patch.angle, 45);
+  const st = D.patchStrain(pure.P, pure.state.patch);
+  assert.ok(st.patch.e11 * st.patch.e22 < 0, "one diagonal stretches, the other shortens");
+  assert.ok(!D.bucklingState(pure.P).some((b) => b.buckled), "below the threshold");
+  assert.ok(D.bucklingState(get("shear-buckling").P).some((b) => b.buckled));
+  const lag = get("shear-lag");
+  assert.ok(D.activeEffects(lag.P).some((e) => e.id === "shearlag" && e.basis === "assumed"));
+  assert.ok(!D.bucklingState(lag.P).some((b) => b.buckled), "shear lag without flange wrinkles");
+  const comp = get("compression");
+  assert.ok(D.bucklingState(comp.P).some((b) => b.buckled) && comp.state.loads.axial < 0);
+  assert.ok(D.activeEffects(get("torsion").P).every((e) => e.basis === "analytic"));
+  for (const p of D.PRESETS) assert.ok(p.hint.length > 40 && p.title);
+});
+
+test("every effect in the legend is labelled analytic or assumed in raw.json, and the page registers its WebMCP tools", async () => {
+  const raw = JSON.parse(await readFile(new URL("../visuals/distortion/raw.json", import.meta.url), "utf8"));
+  const ids = new Set(raw.effects.map((e) => e.id));
+  for (const e of raw.effects) assert.ok(["analytic", "assumed"].includes(e.basis));
+  for (const id of ["shearlag", "buckling", "thresholds"]) assert.equal(raw.effects.find((e) => e.id === id).basis, "assumed");
+  for (const s of D.STRUCTURES) for (const p of D.PRESETS) {
+    const r = D.presetState(p.id);
+    for (const e of D.activeEffects(D.prepare(D.buildModel(r.state.structure), r.state))) assert.ok(ids.has(e.id), e.id);
+    void s;
+  }
+  const html = await readFile(INDEX, "utf8");
+  for (const tool of ["get_metadata", "get_current_view", "set_view"]) assert.match(html, new RegExp(`name: "${tool}"`));
+  assert.match(html, /three\.js r186/);
+  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+href=|@import|fetch\(|XMLHttpRequest/, "no external resources");
+});
+
+test("every load combination stays free of folded or torn elements, at 1x and at maximum exaggeration", () => {
+  const combos = [];
+  for (const a of [-1, 0, 1]) for (const b of [-1, 1]) for (const c of [-1, 1]) combos.push([a, b, c]);
+  for (const s of D.STRUCTURES) {
+    const m = D.buildModel(s);
+    for (const ex of [1, 3]) for (const restraint of [false, true]) for (const [a, b, c] of combos) {
+      const loads = s === "panel" ? { axial: a, inplane: b } : { axial: a, shear: b, torsion: c, bending: b * c };
+      const P = D.prepare(m, state(s, loads, { exaggeration: ex, warpingRestraint: restraint, stringers: c > 0, frames: b > 0 }));
+      for (const w of m.walls) {
+        const nu = 24, nv = 16;
+        for (let i = 0; i < nu; i++) for (let j = 0; j < nv; j++) {
+          const u = w.u0 + ((w.u1 - w.u0) * (i + 0.5)) / nu, v = w.v0 + ((w.v1 - w.v0) * (j + 0.5)) / nv, h = 1e-3;
+          const p0 = D.deform(P, w, u, v, 0), pu = D.deform(P, w, u + h, v, 0), pv = D.deform(P, w, u, v + h, 0);
+          assert.ok(p0.every(Number.isFinite), `${s}: finite`);
+          const du = sub(pu, p0).map((x) => x / h), dv = sub(pv, p0).map((x) => x / h);
+          const cross = [du[1] * dv[2] - du[2] * dv[1], du[2] * dv[0] - du[0] * dv[2], du[0] * dv[1] - du[1] * dv[0]];
+          // local area ratio: neither collapsed nor blown up
+          const area = norm(cross);
+          assert.ok(area > 0.3 && area < 3, `${s} ${w.name} ex=${ex} ${[a, b, c]}: area ratio ${area}`);
+        }
+      }
+    }
+  }
+});

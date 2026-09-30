@@ -518,10 +518,11 @@
       const { r, s, t2 } = ratio(pl, u);
       if (r <= 1) return 0;
       const a = pl.x1 - pl.x0, b = pl.e1 - pl.e0, xi = u - pl.x0;
-      const amp = BUCKLE[P.model.structure].wrinkle * b * 1.6 * Math.tanh(Math.sqrt(r - 1) / 1.6) * P.state.exaggeration;
+      const lam = 1.1 * Math.min(a, b);
+      // capped at a fifth of the half-wave so wrinkles never fold at high exaggeration
+      const amp = Math.min(0.2 * lam, BUCKLE[P.model.structure].wrinkle * b * 1.6 * Math.tanh(Math.sqrt(r - 1) / 1.6) * P.state.exaggeration);
       const across = Math.sin((Math.PI * e) / b);
       const along = pl.fadeEnds ? smooth(xi / RAMP) * smooth((a - xi) / RAMP) : Math.sin((Math.PI * xi) / a);
-      const lam = 1.1 * Math.min(a, b);
       const diag = Math.sin((Math.PI * (xi - Math.sign(pl.tau || 1) * e)) / lam);
       const m = pl.fadeEnds ? a / b : Math.max(1, Math.round(a / b));
       const comp = Math.sin((Math.PI * m * xi) / a);
@@ -563,6 +564,54 @@
       for (let k = 0; k <= 20; k++) { const x = pl.x0 + ((pl.x1 - pl.x0) * k) / 20; if (!pl.fadeEnds || (x > RAMP && x < pl.x1 - RAMP * 0.5)) r = Math.max(r, ratio(pl, x).r); }
       return { name: pl.name, ratio: r, buckled: r > 1 };
     });
+  }
+
+  /* ---------- Presets ("Try this") ---------- */
+
+  const PRESETS = [
+    { id: "torsion", title: "Torsion: tube vs I-beam", structure: "tube", loads: { torsion: 0.7 },
+      hint: "The tube twists into a helix; its patch shears but hardly moves along the span. Now pick the I-beam (the loads stay): its flange tips slide along the span in opposite directions. Turn on the warping restraint to hold them at the clamp." },
+    { id: "pure-shear", title: "Pure shear: rotate the patch to 45°", structure: "panel", loads: { inplane: 0.15 }, patch: { angle: 45 },
+      hint: "At 45° the patch edges line up with the principal directions: one diagonal of the panel stretches (red), the other shortens (blue), and the shear angle vanishes. Rotate the patch back to 0° to see it shear instead." },
+    { id: "shear-buckling", title: "Shear buckling with and without stringers", structure: "panel", loads: { inplane: 0.85 }, stringers: false, frames: false,
+      hint: "The bare skin buckles into long diagonal waves. Turn the stringers on: the ▲ threshold on the in-plane shear slider moves out and the waves shorten between the stiffeners. Frames raise it further." },
+    { id: "shear-lag", title: "Bending with shear lag in the box flange", structure: "box", loads: { bending: 0.38 }, exaggeration: 2, contour: "axial", view: "top",
+      patch: { along: 0.2, y: 0.4, z: 0.38 },
+      hint: "The axial-strain map on the top flange is strongest next to the webs and weaker mid-flange: shear lag (an assumed shape). Plane sections would give the same colour across the whole flange." },
+    { id: "compression", title: "Axial compression: Poisson swell and wrinkling", structure: "box", loads: { axial: -0.6 }, exaggeration: 1.5,
+      hint: "The box shortens and swells sideways against the pale-blue ghost (Poisson). Past the ▲ mark on the axial slider its walls wrinkle into square half-waves; the flanges, being wider, go first." },
+    { id: "tension-torsion", title: "Combined tension and torsion", structure: "tube", loads: { axial: 0.6, torsion: 0.6 }, contour: "shear",
+      hint: "Tension alone would stretch the patch along the span; torsion alone stretches it at 45°. Together the principal arrows in the inset settle at an angle in between." },
+  ];
+
+  /* State for a preset (a fresh default state with the preset applied). */
+  function presetState(id) {
+    const pr = PRESETS.find((p) => p.id === id);
+    if (!pr) throw new Error(`unknown preset ${id}`);
+    const st = defaultState(), model = buildModel(pr.structure);
+    st.structure = pr.structure;
+    Object.assign(st.loads, pr.loads);
+    for (const k of ["exaggeration", "stringers", "frames", "warpingRestraint"]) if (pr[k] !== undefined) st[k] = pr[k];
+    const p = { ...defaultPatch(pr.structure), ...(pr.patch && pr.patch.angle !== undefined ? { angle: pr.patch.angle } : {}) };
+    if (pr.patch && pr.patch.along !== undefined) p.u = pr.patch.along * L;
+    if (pr.patch && pr.patch.y !== undefined) { p.wall = 0; p.v = nearestV(model.walls[0].path, pr.patch.y, pr.patch.z); }
+    st.patch = placePatch(model, p);
+    return { state: st, contour: pr.contour || "none", view: pr.view || "default", hint: pr.hint, title: pr.title };
+  }
+
+  /* Effects in play for the legend: analytic or assumed. */
+  function activeEffects(P) {
+    const s = P.state, st = P.model.structure, out = [];
+    const on = (k) => APPLIES[k].includes(st) && Math.abs(s.loads[k] || 0) > 0.005;
+    if (on("axial")) out.push(["axial", "analytic"], ["poisson", "analytic"]);
+    if (on("bending")) out.push(["bending", "analytic"]);
+    if (on("shear")) out.push(["shear", "analytic"]);
+    if (on("inplane")) out.push(["inplane", "analytic"]);
+    if (on("torsion")) out.push(["torsion", "analytic"]);
+    if (on("torsion") && st !== "tube") out.push(["warping", "analytic"]);
+    if (on("bending") && st === "box") out.push(["shearlag", "assumed"]);
+    if (bucklingState(P).some((b) => b.buckled)) out.push(["buckling", "assumed"]);
+    return out.map(([id, basis]) => ({ id, basis }));
   }
 
   /* Deformed position of the member axis (the section origin) at x, with the
@@ -692,6 +741,7 @@
 
   return {
     PATCH, patchFaces, placePatch, patchFromSliders, slidersFromPatch, patchParamLines, patchStrain, eig2, faceSign, defaultPatch,
+    PRESETS, presetState, activeEffects,
     L, NU, axisPoint, warping, fieldValue, plates, wrinkle, criticalLoads, bucklingState, GEOM, STRUCTURES, BEAMS, LOADS, APPLIES,
     buildModel, defaultState, prepare, reference, deform, lookup, sampleArray,
   };
