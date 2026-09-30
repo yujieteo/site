@@ -100,5 +100,6 @@ Drawing 6, building drawing 1 by touch alone, needs a browser. Open the page
 with touch emulation at phone size (for example 390 × 844) and run
 `tools/touch-build.js` in the console. It uses only touch pointer events on
 the canvas, a two-finger pinch, taps on the toolbar and properties sheet, and
-typed field values, then returns `{ same: true }` when the result matches
-drawing 1 exactly. This simulates touch; it is not a physical device test.
+typed field values. It returns `{ same: true }` only when the result matches
+drawing 1 exactly and each pinch really changed the zoom (out, then back in);
+a pinch that fails to zoom is listed in `differences`. This simulates touch; it is not a physical device test.

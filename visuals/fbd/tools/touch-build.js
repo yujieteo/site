@@ -6,8 +6,8 @@
 // and drags as touch pointer events on the canvas, a two-finger pinch, taps on
 // the toolbar and properties sheet, and text typed into the sheet's fields
 // (the on-screen keyboard). It never calls the drawing model directly. At the
-// end it compares the saved JSON with examples.json's cantilever and returns
-// { same, differences }.
+// end it compares the saved JSON with examples.json's cantilever, checks that
+// each pinch really changed the zoom, and returns { same, differences }.
 (async function touchBuild() {
   const F = window.FBD, A = window.FBDApp;
   const svg = document.getElementById("canvas");
@@ -62,9 +62,12 @@
 
   // Two-finger pinch out, then in: zoom and pan without touching the drawing.
   const r0 = svg.getBoundingClientRect();
+  const zoomBefore = A.cam.k;
   await pinch([r0.width / 2, r0.height / 2], 40, 90);
+  const zoomOut = A.cam.k;
   await pinch([r0.width / 2, r0.height / 2], 90, 30);
   const zoomed = A.cam.k;
+  const pinchZoomed = zoomOut > zoomBefore * 1.5 && zoomed < zoomOut / 2;
 
   // Drawing settings from the sheet.
   await type("doc.title", "Cantilever with point load, UDL and end moment");
@@ -136,5 +139,6 @@
   })(built, ref, "drawing");
   const beam = built.geometry.bodies.find((b) => b.id === "b1");
   const [p, q] = beam.joints.map((id) => built.geometry.joints.find((j) => j.id === id));
-  return { same: differences.length === 0, differences, zoomAfterPinch: zoomed, beamLengthMm: Math.hypot(q.x - p.x, q.y - p.y), viewport: [innerWidth, innerHeight], touchPoints: navigator.maxTouchPoints };
+  if (!pinchZoomed) differences.push(`pinch did not zoom: ${zoomBefore} → ${zoomOut} → ${zoomed} px/mm`);
+  return { same: differences.length === 0, differences, pinchZoomed, zoom: [zoomBefore, zoomOut, zoomed], beamLengthMm: Math.hypot(q.x - p.x, q.y - p.y), viewport: [innerWidth, innerHeight], touchPoints: navigator.maxTouchPoints };
 })();

@@ -1671,7 +1671,7 @@ function evPos(e) { const r = svg.getBoundingClientRect(); return [e.clientX - r
 const DRAGS = {}; // handle/kind -> (target info) => { move(e, w), end() }
 svg.addEventListener("pointerdown", (e) => {
   if (e.button !== undefined && e.button > 0 && e.pointerType === "mouse") { if (e.button === 1) startPan(e); return; }
-  svg.setPointerCapture?.(e.pointerId);
+  try { svg.setPointerCapture?.(e.pointerId); } catch { /* an unusual pointer must never break input */ }
   pointers.set(e.pointerId, evPos(e));
   if (pointers.size === 2) { startPinch(); return; }
   if (pointers.size > 2) return;
