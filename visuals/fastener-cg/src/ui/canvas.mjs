@@ -115,6 +115,15 @@ export function paint(ctx, scene, colours, { snapStep = 0, snapOn = false } = {}
     if (c.shape === "square") { ctx.fillStyle = colours[c.colour]; ctx.fill(); } else ctx.stroke();
   }
 
+  if (scene.icr) {
+    const { x, y } = scene.icr.screen;
+    ctx.strokeStyle = colours.load; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(x, y, 7, 0, 2 * Math.PI); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x - 4, y); ctx.lineTo(x + 4, y); ctx.moveTo(x, y - 4); ctx.lineTo(x, y + 4); ctx.stroke();
+    ctx.fillStyle = colours.load; ctx.font = font(11, 600);
+    label(ctx, scene.icr.label, x + 10, y - 8, x, width);
+  }
+
   if (scene.load) {
     const { x, y } = scene.load.screen;
     ctx.strokeStyle = colours.load; ctx.lineWidth = 2;

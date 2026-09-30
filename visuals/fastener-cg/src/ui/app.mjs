@@ -199,11 +199,14 @@ const TENSION_FIELDS = [
   ["prying", "prying.b", "b", "length"], ["prying", "prying.a", "a", "length"], ["prying", "prying.p", "p", "length"],
   ["prying", "prying.holeDiameter", "d_h", "length"], ["prying", "prying.boltStrengthB", "B", "force"], ["prying", "prying.manualFactor", "Manual factor", "none"],
   ["preload", "preload.pMax", "P_max", "force"], ["preload", "preload.pMin", "P_min", "force"], ["preload", "preload.phi", "φ", "none"],
+  ["icr", "icr.rult", "Rult", "force"], ["icr", "icr.deltaMax", "Δmax", "length"], ["icr", "icr.deltaY", "Δy", "length"],
+  ["icr", "icr.mu", "μ", "invLength"], ["icr", "icr.lambda", "λ", "none"],
 ];
 
 function renderToggles() {
   for (const el of $$("[data-show]")) el.hidden = !getPath(state.pattern, el.dataset.show);
   for (const el of $$("[data-show-method]")) el.hidden = state.pattern.settings.axialMethod !== el.dataset.showMethod;
+  for (const el of $$("[data-show-model]")) el.hidden = (state.pattern.settings.icr?.model || "crawford-kulak") !== el.dataset.showModel;
   const pts = state.pattern.fasteners.filter((q) => typeof q.x === "number" && typeof q.y === "number");
   let nn = Infinity;
   for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) nn = Math.min(nn, Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y));
@@ -215,9 +218,9 @@ function renderOverrides() {
   const box = $("#override-editor");
   const st = state.pattern.settings;
   const fa = state.pattern.fasteners.find((q) => q.id === state.selected);
-  const groups = ["prying", "preload"].filter((g) => st[g]?.enabled);
+  const groups = ["prying", "preload", "icr"].filter((g) => st[g]?.enabled);
   if (!groups.length) { box.innerHTML = ""; return; }
-  if (!fa) { box.innerHTML = `<p class="note">Select a fastener to override its prying or preload inputs.</p>`; return; }
+  if (!fa) { box.innerHTML = `<p class="note">Select a fastener to override its prying, preload or ICR inputs.</p>`; return; }
   const d = state.pattern.defaults;
   box.innerHTML = `<h4>Overrides for ${esc(fa.id)}</h4><div class="row three">${TENSION_FIELDS.filter(([g]) => groups.includes(g)).map(([, path, label, kind]) => {
     const own = getPath(fa.overrides || {}, path);
@@ -278,6 +281,7 @@ function draw() {
 function legendIcon(entry, colours) {
   const c = colours[entry.colour] || colours.fg;
   if (entry.shape === "arrow") return `<svg width="22" height="12" aria-hidden="true"><line x1="1" y1="6" x2="15" y2="6" stroke="${c}" stroke-width="2"/><path d="M21 6L14 2V10z" fill="${c}"/></svg>`;
+  if (entry.shape === "icr") return `<svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="${c}" stroke-width="2"/><path d="M5 8H11M8 5V11" stroke="${c}" stroke-width="2"/></svg>`;
   if (entry.shape === "edge") return `<svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="${c}" stroke-width="3" stroke-dasharray="6 3"/></svg>`;
   if (entry.shape === "cross") return `<svg width="14" height="14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" stroke="${c}" stroke-width="2"/></svg>`;
   return centroidSvg(entry.key, c);
@@ -292,7 +296,7 @@ function centroidSvg(key, colour) {
 
 function renderLegend() {
   const colours = palette(canvas());
-  const scene = buildScene(state.pattern, null, { width: 100, height: 100 });
+  const scene = buildScene(state.pattern, state.result, { width: 100, height: 100 });
   $("#legend").innerHTML = scene.legend.map((e) => `<li>${legendIcon(e, colours)}<span>${esc(e.label)}</span></li>`).join("")
     + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="${colours.tension}" fill-opacity=".35" stroke="${colours.fg}" stroke-width="1.5"/></svg><span>Fastener in tension</span></li>`
     + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="${colours.fg}" stroke-width="1.5" stroke-dasharray="3 2"/></svg><span>Unloading (clamp-up)</span></li>`;
@@ -526,6 +530,39 @@ function renderResults() {
       })), { numeric: [5, 6, 7] });
   }
 
+  let icrHtml = "";
+  if (r.icr) {
+    const ic = r.icr;
+    if (ic.status !== "converged") {
+      icrHtml = `<p class="blocked">ICR not converged (W-014): ${esc(ic.reason)}${ic.residual !== null && ic.residual !== undefined ? `, residual ${fmt(ic.residual, 3)}` : ""}. No ICR numbers are shown; the elastic result remains.${r.designBasis === "icr" ? " The checks on the ICR basis are not computed." : ""}</p>`;
+    } else if (ic.mode === "no-shear") {
+      icrHtml = `<p class="note">${esc(ic.modelLabel)}; no in-plane load (Fx = Fy = Mz,s = 0), so every ICR shear is zero and the checks use Rs = 0.</p>`;
+    } else {
+      const where = ic.mode === "translation" ? "at infinity (uniform translation: the translation loads balance the applied moment)"
+        : `at (${f(ic.icr.x, lenScale)}, ${f(ic.icr.y, lenScale)}) ${L}${ic.mode === "pure-moment" ? " (pure moment)" : ""}${ic.offLine ? " — moved off the search line to balance an asymmetric group" : ""}`;
+      const cmp = r.comparison;
+      const icrRows = table(["Fastener", `ρ (${L})`, `Δ (${L})`, `R ultimate (${F})`, `Rs at applied load (${F})`, `Elastic Rs (${F})`, "ICR vs elastic"],
+        r.fasteners.map((q) => {
+          const u = q.icr.ultimate, a = q.icr.atLoad;
+          const change = q.shear.Rs > 0 ? a.Rs / q.shear.Rs - 1 : null;
+          const gov = ic.governing === q.id ? ' <span class="tag">governs Δmax</span>' : "";
+          return [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button>${gov}`,
+            Number.isFinite(u.rho) ? f(u.rho, lenScale) : "∞", f(u.delta), f(u.R), `<b>${f(a.Rs, forceScale)}</b>`, f(q.shear.Rs, forceScale),
+            change === null ? "—" : `${change >= 0 ? "+" : "−"}${f(Math.abs(change) * 100, 100)}%`];
+        }), { numeric: [1, 2, 3, 4, 5, 6] });
+      icrHtml = `
+        <ul class="stats-row">
+          <li><b>${f(ic.gamma)}</b><span>γ_ult = ${ic.mode === "pure-moment" ? "M_u/|Mz,s|" : "P_u/|F|"}</span></li>
+          <li><b class="${ic.margin < 0 ? "ms-neg" : ""}">${f(ic.margin)}</b><span>ICR margin γ_ult − 1 (ultimate capacity; not comparable to allowable MS)</span></li>
+          <li><b>${ic.mode === "pure-moment" ? `${f(ic.Mu)} ${M}` : `${f(ic.Pu)} ${F}`}</b><span>${ic.mode === "pure-moment" ? "M_u" : "P_u"}, ultimate load</span></li>
+          <li><b>${esc(ic.governing)}</b><span>governing fastener (smallest Δmax/ρ)</span></li>
+        </ul>
+        <p class="note">${esc(ic.modelLabel)}; ICR ${where}. ${ic.iterations} iterations, residual ${fmt(ic.residual, 2)}. Reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling convention${r.designBasis === "icr" ? ", W-015" : ""}).</p>
+        ${cmp ? `<p class="critical">Critical-fastener load: elastic <b>${esc(cmp.elasticCritical.id)}</b> ${f(cmp.elasticCritical.Rs)} ${F} vs ICR <b>${esc(cmp.icrCritical.id)}</b> ${f(cmp.icrCritical.Rs)} ${F}${cmp.change === null ? "" : ` — <b class="${cmp.change > 0 ? "ms-neg" : ""}">${cmp.change >= 0 ? "+" : "−"}${f(Math.abs(cmp.change) * 100, 100)}%</b>`}. Checks use the <b>${r.designBasis === "icr" ? "ICR" : "elastic"}</b> basis.</p>` : ""}
+        ${icrRows}`;
+    }
+  }
+
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],
     r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
     { numeric: [1, 2] });
@@ -547,12 +584,13 @@ function renderResults() {
     ${per}
     ${tensionTable ? `<h3 style="margin-top:1.25rem">Bolt tension — ${[ts.prying ? `prying from ${esc(ts.flangePlate || "?")}` : "", ts.preload ? "preload" : ""].filter(Boolean).join(" and ")}</h3>
     <p class="note">F_b replaces T in the interaction and is recomputed at every load multiplier k; preload does not scale. Prying acts on positive external tension only.</p>${tensionTable}` : ""}
-    <h3 style="margin-top:1.25rem">Margins of safety — elastic basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
+    <h3 style="margin-top:1.25rem">Margins of safety — ${r.designBasis === "icr" ? "ICR" : "elastic"} basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
     ${crit}
     <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
     ${plateTable ? `<h3 style="margin-top:1.25rem">Bearing and tear-out, per plate</h3>
-    <p class="note">Rs on the elastic basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
+    <p class="note">Rs on the ${r.designBasis === "icr" ? "ICR" : "elastic"} basis. The loaded plate (${esc(r.fasteners.length ? state.pattern.load.appliedPlate : "")}) bears against the −R side of each hole and the other plate against +R; the tear-out ray follows that direction to the plate edge.</p>${plateTable}` : ""}
+    ${r.icr ? `<h3 style="margin-top:1.25rem">ICR method and elastic vs ICR</h3>${icrHtml}` : ""}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
 
@@ -785,6 +823,12 @@ function bind() {
         renderToggles();
       }
       if (el.dataset.path === "load.appliedPlate") renderPlates();
+      if (el.dataset.path === "settings.icr.model") renderToggles();
+      if (el.dataset.path === "settings.designBasis" && value === "icr" && !state.pattern.settings.icr?.enabled) {
+        state.pattern.settings.icr = { ...(state.pattern.settings.icr || {}), enabled: true };
+        $('[data-path="settings.icr.enabled"]').checked = true;
+        renderToggles(); renderOverrides();
+      }
       changed();
     };
     el.addEventListener(el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input", handler);

@@ -27,6 +27,10 @@ export function summarize(result) {
       boltTension: { external: f.checks.tension.Text, prying: f.checks.tension.Q, pryingMethod: f.checks.tension.prying.method, boltLoad: f.checks.tension.Fb, clampForce: f.checks.tension.preload ? f.checks.tension.preload.clamp : null, joint: f.checks.clamp.status },
     })),
     interaction: result.interaction,
+    designBasis: result.designBasis,
+    icr: result.icr ? (result.icr.status === "converged"
+      ? { status: "converged", model: result.icr.model, mode: result.icr.mode, icr: result.icr.icr, gammaUlt: result.icr.gamma, margin: result.icr.margin, governing: result.icr.governing, reactionsAtLoad: result.icr.atLoad, comparison: result.comparison }
+      : { status: result.icr.status, reason: result.icr.reason, residual: result.icr.residual }) : null,
     critical: result.critical,
     closure: result.closure.checks.map(({ name, residual, pass }) => ({ name, residual, pass })),
     issues: result.issues,

@@ -15,6 +15,7 @@ import { validateCheckInputs, fastenerChecks } from "./checks.mjs";
 import { tensionInputs, validateTensionInputs } from "./tension.mjs";
 import { validatePlates, plateModes } from "./plates.mjs";
 import { contactEdgeAxial, contactClosureChecks, EDGES } from "./contact.mjs";
+import { icrSolve, reactionsAtLoad, validateIcrInputs, MODELS } from "./icr.mjs";
 
 export const EXTENT_WARNING = 1e4;
 export const CLOSURE_TOL = 1e-9;
@@ -46,6 +47,14 @@ export function closure(shear, axial, red, props, contact = null) {
   return { tol: CLOSURE_TOL, checks, pass: checks.every((c) => c.pass) };
 }
 
+/* Elastic vs ICR shear at the applied load, and the change in the critical-fastener load. */
+function compare(fasteners) {
+  const rows = fasteners.map((f) => ({ id: f.id, elastic: f.shear.Rs, icr: f.icr.atLoad.Rs, diff: f.icr.atLoad.Rs - f.shear.Rs }));
+  const pick = (key) => rows.reduce((a, b) => (b[key] > a[key] ? b : a));
+  const e = pick("elastic"), i = pick("icr");
+  return { rows, elasticCritical: { id: e.id, Rs: e.elastic }, icrCritical: { id: i.id, Rs: i.icr }, change: e.elastic > 0 ? i.icr / e.elastic - 1 : null };
+}
+
 export function solve(pattern) {
   const issues = [...validateInputs(pattern), ...validateCheckInputs(pattern)];
   if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
@@ -56,6 +65,7 @@ export function solve(pattern) {
   const flangePlate = (pattern.plates || []).find((p) => p.id === pattern.load?.appliedPlate) || null;
   issues.push(...validateTensionInputs(pattern, fasteners, flangePlate));
   issues.push(...validatePlates(pattern, fasteners));
+  issues.push(...validateIcrInputs(pattern, fasteners));
   const axialMethod = settings.axialMethod || "centroid";
   const edgeSpec = settings.contactEdge || {};
   const edgePlate = (pattern.plates || []).find((p) => p.id === edgeSpec.plateId) || null;
@@ -135,6 +145,29 @@ export function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
+
+  // ICR (in-plane only, ks ignored). The design basis picks which shear feeds the checks.
+  const basis = settings.designBasis === "icr" ? "icr" : "elastic";
+  let icr = null;
+  if (settings.icr?.enabled) {
+    const model = settings.icr.model || "crawford-kulak";
+    const sol = icrSolve(fasteners, props.Cs, { Fx: red.Fx, Fy: red.Fy, Mz: red.shear.Mz }, model);
+    issues.push(issue("N-004", "The ICR method ignores ks: each fastener's load follows its own response curve and distance from the ICR."));
+    if (model === "crawford-kulak") issues.push(issue("N-008", "μ, λ and Δmax are editable defaults (metric equivalents of the common structural-bolt curve), not recommendations: confirm them for the fastener."));
+    if (sol.status !== "converged") {
+      issues.push(issue("W-014", `ICR not converged: ${sol.reason}${sol.residual !== null && sol.residual !== undefined ? ` (residual ${Number(sol.residual).toPrecision(3)})` : ""}. The elastic result remains.`));
+      icr = { model, status: sol.status, reason: sol.reason, residual: sol.residual, iterations: sol.iterations };
+    } else {
+      const atLoad = reactionsAtLoad(sol);
+      icr = { model, modelLabel: MODELS[model], ...sol, atLoad, margin: sol.gamma - 1 };
+      fastenerResults.forEach((f, i) => { f.icr = { ultimate: sol.loads[i], atLoad: atLoad[i] }; });
+    }
+    if (basis === "icr") {
+      issues.push(issue("W-015", "Checks use the ICR reactions at the applied load: the ultimate reactions divided by γ_ult (proportional scaling convention), not a physical service-load response."));
+    }
+  }
+  // Shear on the selected basis; null means the ICR basis has no converged reactions.
+  fastenerResults.forEach((f) => { f.basisShear = basis === "icr" ? (f.icr ? f.icr.atLoad : null) : f.shear; });
   const plates = pattern.plates || [];
   const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL, (f) => tensionInputs(f, settings, flangePlate),
     (f) => plateModes(f, f.shear, plates, pattern.load?.appliedPlate));
@@ -144,6 +177,9 @@ export function solve(pattern) {
     ok: true,
     issues: sortIssues(issues),
     critical: checks.critical,
+    designBasis: basis,
+    icr,
+    comparison: icr && icr.status === "converged" ? compare(fastenerResults) : null,
     evaluatedCount: checks.evaluatedCount,
     interaction: { a: settings.interaction.a, b: settings.interaction.b },
     tensionSettings: { prying: !!settings.prying?.enabled, preload: !!settings.preload?.enabled, flangePlate: flangePlate ? flangePlate.id : null },

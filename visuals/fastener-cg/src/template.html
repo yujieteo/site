@@ -69,6 +69,7 @@ input[type="number"]{font-variant-numeric:tabular-nums}
 .row+.row{margin-top:.5rem}
 .row.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 label.f{display:flex;flex-direction:column;gap:.15rem;font-size:.75rem;color:var(--muted);min-width:0}
+label.f[hidden]{display:none}
 label.f span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .note{font-size:.8125rem;color:var(--muted);margin:.35rem 0 0}
 .convention{display:flex;gap:.8rem;align-items:center}
@@ -127,6 +128,10 @@ details.torque{margin-top:.5rem}
 #override-editor .row{margin-top:.4rem}
 #override-editor h4{margin:.8rem 0 .2rem;font-size:.85rem}
 input.override{border-color:var(--axial);font-weight:600}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.6rem 1.25rem;margin:.5rem 0;padding:0;list-style:none}
+.stats-row li{border-top:1px solid var(--border);padding-top:.4rem;min-width:0}
+.stats-row b{display:block;font-size:1.3rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.stats-row span{font-size:.8125rem;color:var(--muted)}
 .presets{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
 .formula{font:.8125rem var(--mono);color:var(--fg)}
 .inline-issue{display:inline-block;font:600 .66rem var(--mono);border-radius:999px;padding:0 .4rem;margin-left:.3rem;border:1px solid currentColor;vertical-align:middle;white-space:nowrap}
@@ -256,7 +261,7 @@ td.status{color:var(--muted);font-size:.78rem}
         </select></label>
         <label class="f"><span>Design basis</span><select data-path="settings.designBasis">
           <option value="elastic">Elastic</option>
-          <option value="icr" disabled>ICR — milestone M5</option>
+          <option value="icr">ICR (needs ICR enabled)</option>
         </select></label>
       </div>
       <div class="sub" id="contact-edge-box" data-show-method="contact-edge">
@@ -301,6 +306,26 @@ td.status{color:var(--muted);font-size:.78rem}
         <button class="btn" type="button" data-preset="linear" aria-pressed="false">Linear (1, 1)</button>
       </div>
       <p class="note">MS is the exact multiplier on the whole applied load at which IF reaches 1. With (a, b) ≠ (1, 1) it differs from 1/IF − 1 (W-006); the plain IF(1) is shown beside it.</p>
+    </div>
+
+    <div class="card" id="icr-card">
+      <h3>ICR method</h3>
+      <label class="check"><input type="checkbox" data-path="settings.icr.enabled"> <span>Instantaneous centre of rotation</span></label>
+      <div class="sub" data-show="settings.icr.enabled">
+        <p class="note">In-plane shear only (Fx, Fy, Mz,s); ks, tension, prying and preload never enter. The governing fastener (smallest Δmax/ρ) reaches Δmax; the others deform in proportion to their distance from the ICR.</p>
+        <label class="f"><span>Load-deformation model</span><select data-path="settings.icr.model">
+          <option value="crawford-kulak">Crawford-Kulak: R = Rult(1 − e^(−μΔ))^λ</option>
+          <option value="elastic-plastic">Elastic-perfectly-plastic: R = Rult·min(Δ/Δy, 1)</option>
+        </select></label>
+        <div class="row three">
+          <label class="f"><span>Rult (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.icr.rult" placeholder="required"></label>
+          <label class="f"><span>Δmax (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.icr.deltaMax"></label>
+          <label class="f" data-show-model="elastic-plastic"><span>Δy (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.icr.deltaY" placeholder="required"></label>
+          <label class="f" data-show-model="crawford-kulak"><span>μ (<i data-unit="invLength"></i>)</span><input type="number" step="any" data-path="defaults.icr.mu"></label>
+          <label class="f" data-show-model="crawford-kulak"><span>λ</span><input type="number" step="any" data-path="defaults.icr.lambda"></label>
+        </div>
+        <p class="note">μ = 0.3937/mm, λ = 0.55 and Δmax = 8.6 mm are the metric equivalents of the common structural-bolt curve: editable defaults, not recommendations (N-008). Choose the ICR design basis under Methods to run the checks on ICR reactions.</p>
+      </div>
     </div>
 
     <div class="card" id="tension-card">
@@ -395,6 +420,8 @@ td.status{color:var(--muted);font-size:.78rem}
     <li><b>Preload</b> P_max, P_min and load-sharing factor φ (required, 0 &lt; φ &lt; 1): F_b = max(P_max + φT, T) + Q, clamp force P_min − (1 − φ)T, separation load P_min/(1 − φ). Once clamp force reaches zero the joint is separated (W-013). F_b replaces the tension in the interaction and is re-evaluated at every load multiplier k; preload itself does not scale. Clamp force is reported but no friction-slip capacity is claimed (N-005). With preload off the tension is T + Q.</li>
     <li><b>Plates</b> (up to two, axis-aligned rectangles): every fastener is checked against every plate and the governing plate is reported. Bearing R_br,allow = Fbr·D·t (or a keyed direct-load allowable), MS = R_br,allow/Rs − 1. Tear-out casts a ray from the fastener along its bearing direction to the plate edge, giving e; capacity = 2·t·(e − D/2)·Fsu and MS = capacity/Rs − 1; e/D below the keyed minimum is W-011. The bearing direction is −R in the loaded plate (it is pushed along the load, so the fastener bears on the trailing side of the hole) and +R in the other plate. Geometry checks: a fastener outside a plate (E-004), fasteners closer than their diameter (E-005), edge distance below D/2 (E-006), and a load point outside the loaded plate (W-009).</li>
     <li><b>Axial method (b), contact edge</b>: the selected plate edge L is the neutral axis and fasteners act in tension only. With d the distance from L on the tension side, T = M_L·ka·d/Σ(ka·d²), where M_L is the moment about L (reduced to the projection of Ca onto L, so it includes the Fz lever) that puts the far side in tension. The contact reaction is C = ΣT − Fz. M_L ≤ 0 gives no tension (W-010: wrong edge), and C &lt; 0 means no contact (W-021: use method (a)). In v1 the moment about the axis perpendicular to L must be zero (E-012).</li>
+    <li><b>ICR method</b> (in-plane shear only; ks, tension, prying, preload and Fz never enter). Crawford-Kulak R = Rult(1 − e^(−μΔ))^λ or elastic-perfectly-plastic R = Rult·min(Δ/Δy, 1) with fracture at Δmax. Deformation is proportional to the distance ρ from the ICR, Δᵢ = Δmax,gov·ρᵢ/ρ_gov, where the governing fastener has the smallest Δmax/ρ. The search is anchored on the Rult-weighted centroid of the fasteners, which does not depend on ks (it equals Cs for uniform ks and Rult). The ICR is searched on the line through that point perpendicular to the load direction, at a distance from the load's line of action on the side that gives the rotation sense (both sides of the reference point are scanned), where moment and force equilibrium give the same ultimate load (bracketed Brent search, normalised moment residual 1e-6, 200 iterations). For an asymmetric group whose force perpendicular to the load does not vanish on that line, the ICR is refined off it by a damped Newton iteration so all three equilibrium equations hold. A pure moment starts at the reference point; a load is a uniform translation only when the uniform translation loads also balance its moment, and a zero in-plane load gives zero ICR shear. γ_ult = P_u/|F| scales the whole load with its eccentricity kept; γ_ult − 1 is an ultimate capacity, not comparable to the allowable-based MS. The reactions at the applied load are the ultimate reactions divided by γ_ult (proportional scaling convention, W-015). A search that does not converge shows "not converged" with its residual and no partial numbers (W-014), and the elastic result remains.</li>
+    <li><b>Design basis</b>: elastic (default) or ICR selects which in-plane shear feeds the interaction, bearing and tear-out checks. The tension side always comes from the elastic or contact-edge distribution.</li>
     <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
     <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
   </ul>

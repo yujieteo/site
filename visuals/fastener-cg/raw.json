@@ -1,7 +1,7 @@
 {
   "title": "Fastener Pattern CG Tracker",
-  "version": "0.4.0-m4",
-  "milestone": "M4",
+  "version": "0.5.0-m5",
+  "milestone": "M5",
   "unitSystems": {
     "N-mm": {
       "length": "mm",
@@ -40,6 +40,7 @@
     "Preload: F_b = max(P_max + φ·T, T) + Q; clamp force P_min − (1 − φ)·T; separation load P_min/(1 − φ). Prying Q is added to the bolt load (conservative). Preload does not scale with the load multiplier k. Friction slip is not evaluated (N-005).",
     "Plates are axis-aligned rectangles (up to two). Every fastener passes through every plate. Bearing R = Fbr·D·t (or a direct-load allowable); tear-out capacity 2·t·(e − D/2)·Fsu with e cast along the bearing direction: −R in the loaded plate, +R in the other plate.",
     "Axial method (b) uses a plate edge as the neutral axis with tension-only fasteners; v1 requires zero moment about the axis perpendicular to the edge (E-012), reduced to the projection of Ca onto the edge.",
+    "ICR (in-plane shear only, ks ignored): Crawford-Kulak or elastic-perfectly-plastic response, governing fastener at Δmax, ICR searched on the line through the Rult-weighted centroid (ks-independent) perpendicular to the load (refined off it for asymmetric groups); γ_ult = P_u/|F|; reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling, W-015).",
     "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
     "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero external tension (N-006); with preload their bolt load is P_max."
   ],
@@ -256,7 +257,7 @@
     }
   ],
   "verification": {
-    "set": "M4",
+    "set": "M5",
     "tolerance": 1e-9,
     "cases": [
       {
@@ -298,6 +299,18 @@
       {
         "id": "VB-02",
         "title": "Contact-edge method (b), 2×2 at (±50, ±30), edge y = −50, Mx = 12 000 N·mm"
+      },
+      {
+        "id": "VI-01",
+        "title": "ICR, pure moment on a 6-bolt circle (R = 50): ICR at the centre, every bolt at Δmax"
+      },
+      {
+        "id": "VI-02",
+        "title": "ICR, concentric shear on the VC-01 pattern: uniform translation"
+      },
+      {
+        "id": "VI-03",
+        "title": "ICR, eccentric VC-01 load: equilibrium at ultimate and the side of the ICR"
       },
       {
         "id": "VC-09",
@@ -352,8 +365,24 @@
         "title": "Manual prying factor: bolt tension = factor × T"
       },
       {
+        "id": "P-13",
+        "title": "ICR ignores ks: overriding ks moves Cs but not γ_ult or the ICR; the search is anchored on the Rult-weighted centroid"
+      },
+      {
+        "id": "P-14",
+        "title": "ICR: rotation invariance and load-magnitude scaling of γ_ult"
+      },
+      {
         "id": "VR-01",
         "title": "AISC T-stub prying worked example"
+      },
+      {
+        "id": "VR-02",
+        "title": "AISC Manual eccentric-load coefficient tables (ICR, Crawford-Kulak), ~2% tolerance"
+      },
+      {
+        "id": "VR-03",
+        "title": "ICR side convention against a published worked example"
       }
     ]
   },
@@ -396,7 +425,8 @@
         "rult": null,
         "mu": 0.3937,
         "lambda": 0.55,
-        "deltaMax": 8.6
+        "deltaMax": 8.6,
+        "deltaY": null
       },
       "prying": {
         "b": null,
