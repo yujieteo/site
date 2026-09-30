@@ -1133,7 +1133,7 @@ function nyquistSegments(loop, wLo, wHi) {
 }
 
 /** Sample the segments adaptively: refine where arg(1 + L) turns by more than 45° or the locus jumps further than its distance to −1. */
-function nyquistPath(loop, wLo, wHi) {
+function nyquistPath(loop) {
   const pts = [];
   let evals = 0, unresolved = false;
   const at = (seg, t) => { evals++; const e = evalPoint(loop, seg.s(t)); return { t, w: seg.w(t), kind: seg.kind, ...e }; };
@@ -1171,21 +1171,24 @@ function nyquistPath(loop, wLo, wHi) {
  * contour runs anticlockwise round the unit circle, so N = −(winding of 1 + L); a non-causal L(z) adds the degree
  * excess of the characteristic polynomial.
  */
-function nyquistCount(loop, closedLoop, wLo, wHi) {
+function nyquistCount(loop, closedLoop) {
   const z = loop.domain === "z";
   if (!z && loop.tau > 0 && degree(loop.num) > degree(loop.den)) return { available: false, message: "The loop is improper and delayed, so the Nyquist contour cannot be closed at infinity; no count is given." };
-  const ws = [];
+  // The contour's span depends on the loop only, never on the display range, and starts a decade below every boundary pole.
+  const span = autoRange(loop);
+  const wLo = Math.min(span.wMin, ...boundaryFreqs(loop).map((b) => b / 10));
   // The jω path must run far enough that |L| is small (or the arc is used), so the rest of the contour cannot encircle −1.
-  let wR = wHi;
+  let wR = span.wMax;
   if (!z) {
     const mags = loop.zeros.concat(loop.poles).map(cabs);
-    wR = Math.max(wHi, 100 * Math.max(0, ...mags), loop.tau > 0 ? 100 / loop.tau : 0);
+    wR = Math.max(wR, 100 * Math.max(0, ...mags), loop.tau > 0 ? 100 / loop.tau : 0);
     if (degree(loop.num) <= degree(loop.den)) for (let i = 0; i < 12 && evalPoint(loop, cx(0, wR)).logm > Math.log(1e-3) && degree(loop.num) < degree(loop.den); i++) wR *= 10;
     if (degree(loop.num) > degree(loop.den)) wR = Math.max(wR, 1e3 * Math.max(1, ...mags, ...(closedLoop.available ? closedLoop.poles.map(cabs) : [])));
   }
   loop.nyqSegs = nyquistSegments(loop, wLo, wR);
-  const path = nyquistPath(loop, wLo, wR);
+  const path = nyquistPath(loop);
   const U = path.pts;
+  loop.nyqUpper = U;
   // Full closed contour: continuous — mirror(U) reversed then U (clockwise round the right half-plane);
   // discrete — U then mirror(U) reversed (anticlockwise round the unit circle).
   const mirror = U.map((p) => ({ ...p, argF: -p.argF })).reverse();
@@ -1217,18 +1220,15 @@ function nyquistCount(loop, closedLoop, wLo, wHi) {
   } else out.crossCheck = { available: false, message: closedLoop.message };
   return out;
 }
+/** The upper-half contour of the latest analysis, keyed by its canonical inputs; kept out of the results. */
+let nyqLast = { key: null, upper: null, clMarginal: false };
 /** The Nyquist locus for plots and CSV: the upper-half contour (the lower half is its conjugate). */
 function nyquistLocus(inputs) {
-  const built = buildLoop(inputs);
-  if (built.errors.length) return null;
-  const { loop } = built;
-  const r = analyze(inputs);
-  if (!r.ok || !r.nyquist.available) return null;
-  const cl = r.closedLoop;
-  // Recreate the contour the count used.
-  loop.nyqSegs = nyquistSegments(loop, r.nyquist.wLow, r.nyquist.wHigh);
-  const path = nyquistPath(loop, r.nyquist.wLow, r.nyquist.wHigh);
-  return path.pts.map((p) => ({ w: p.w, kind: p.kind, re: p.L.re, im: p.L.im, logm: p.logm, clMarginal: cl.available && cl.marginal > 0 }));
+  const key = JSON.stringify(normalise(inputs));
+  if (nyqLast.key !== key) analyze(inputs);
+  if (nyqLast.key !== key || !nyqLast.upper) return null;
+  const { upper, clMarginal } = nyqLast;
+  return upper.map((p) => ({ w: p.w, kind: p.kind, re: p.L.re, im: p.L.im, logm: p.logm, clMarginal }));
 }
 
 /* ---------- Nichols chart contours ---------- */
@@ -1384,7 +1384,8 @@ function analyze(inputs) {
     }
   }
   // Nyquist count, cross-checked against the closed-loop poles where both exist.
-  const nyquist = nyquistCount(loop, closedLoop, range.wMin, range.wMax);
+  const nyquist = nyquistCount(loop, closedLoop);
+  nyqLast = { key: JSON.stringify(x), upper: nyquist.available ? loop.nyqUpper : null, clMarginal: closedLoop.available && closedLoop.marginal > 0 };
   if (nyquist.available) {
     if (nyquist.onContour) warnings.push({ code: "nyquist-boundary", message: nyquist.message });
     if (nyquist.unresolved && !nyquist.onContour) warnings.push({ code: "nyquist-unresolved", message: `The Nyquist locus is still unresolved after refinement (${nyquist.evaluations} evaluations); the encirclement count N = ${nyquist.N} may be wrong.` });

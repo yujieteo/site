@@ -468,6 +468,28 @@ test("Nyquist count Z = N + P agrees with the closed-loop poles across continuou
   }
 });
 
+test("the Nyquist count does not depend on a manual display range above a boundary pole", () => {
+  const manual = (lo, hi) => ({ range: { auto: false, wMin: lo, wMax: hi, pointsPerDecade: 100 } });
+  const cases = [
+    // (s − 1)/(s³ + s² + s + 1): poles at ±j and −1, one unstable closed-loop pole at K = 5.
+    [{ plant: { form: "tf", num: [1, -1], den: [1, 1, 1, 1] }, K: 5 }, manual(3, 1000)],
+    // Ts/(z − 1)·1/(z + 0.5): a unit-circle pole at z = 1 and ω_min far above the auto lower bound.
+    [inZ({ form: "tf", num: [Ts], den: [1, -0.5, -0.5] }, { K: 25 }), manual(5, 20)],
+    // A unit-circle pair at ±j (ω = π/(2Ts)) with ω_min above it.
+    [inZ({ form: "tf", num: [1, -0.2], den: [1, 0, 1] }, { K: 4 }), manual(1.5 * Math.PI / (2 * Ts), 30)],
+  ];
+  for (const [x, m] of cases) {
+    const auto = nyq(x).n, man = nyq({ ...x, ...m });
+    const label = JSON.stringify(x.plant) + ` ${x.timeDomain || "continuous"}`;
+    assert.equal(auto.unresolved, false, `auto resolved for ${label}`);
+    assert.equal(auto.crossCheck.agree, true, `auto agrees for ${label}`);
+    for (const k of ["N", "P", "Z", "unresolved"]) assert.equal(man.n[k], auto[k], `${k} for ${label}`);
+    assert.equal(man.n.crossCheck.agree, true, `manual agrees for ${label}`);
+    assert.ok(!man.r.warnings.some((w) => w.code === "nyquist-unresolved" || w.code === "nyquist-mismatch"), `no Nyquist warning for ${label}`);
+    assert.deepEqual(F.nyquistLocus({ ...x, ...m }), F.nyquistLocus(x), `same locus for ${label}`);
+  }
+});
+
 test("with a continuous delay the Nyquist count is the only verdict and matches the analytic critical delay", () => {
   // 2e^(−sτ)/(s + 1): |L| = 1 at ω = √3; instability once ωτ exceeds π − atan √3, i.e. τ > 2π/(3√3).
   const tauC = (2 * Math.PI) / (3 * Math.sqrt(3));
