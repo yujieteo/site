@@ -8,6 +8,7 @@ Inputs, all checked in next to this file:
   directories.csv  Food & Beverage listings of the three malls with an official directory
   yeo2021.csv      Yeo et al. (2021) Tables 1-6, transcribed
   fndds.csv        the FNDDS rows outlets.csv uses (written by extract_fndds.py)
+  map.json         attributed, projected OSM geometry from the Visuals map
 
 Outputs:
   raw.json         the dataset (published as data.json)
@@ -245,6 +246,7 @@ def build():
         "as_of": sources["as_of"],
         "method": METHOD,
         "calorie_method": CALORIE_METHOD,
+        "map": json.loads((HERE / "map.json").read_text(encoding="utf-8")),
         "cuisines": [{"id": c, "label": label} for c, label in CUISINES],
         "malls": malls,
         "outlets": top,

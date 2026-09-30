@@ -132,6 +132,27 @@ class TampinesFoodTest(unittest.TestCase):
                 self.assertAlmostEqual(n["carbohydrate_g"], float(row["serving_carbohydrate_g"]), delta=1)
         self.assertEqual((estimate, approximate, not_estimable), (29, 16, 5))
 
+    def test_map_output_preserves_sourced_coverage_and_attribution(self):
+        data = raw()
+        source = json.loads((VIZ / "map.json").read_text(encoding="utf-8"))
+        self.assertEqual(data["map"], source)
+        self.assertEqual(source["license"], "ODbL")
+        self.assertEqual(source["license_url"], "https://www.openstreetmap.org/copyright")
+        self.assertIn("f02884d371523b9eed2a401b7e5515ee9e99ebae", source["source_url"])
+        geometry = source["geometry"]
+        self.assertEqual(set(geometry["malls"]), {"Tampines Mall", "Tampines 1", "Century Square"})
+        self.assertEqual(geometry["osm_base"], "2026-05-06T03:25:00Z")
+        mall_names = {m["id"]: m["name"] for m in data["malls"]}
+        plotted = [o for o in data["outlets"] if mall_names[o["mall"]] in geometry["malls"]]
+        unplotted = [o for o in data["outlets"] if mall_names[o["mall"]] not in geometry["malls"]]
+        self.assertEqual(len(plotted), 34)
+        self.assertEqual(len(unplotted), 16)
+        self.assertEqual({o["mall"] for o in unplotted}, {"our-tampines-hub"})
+        for mall in geometry["malls"].values():
+            self.assertEqual(len(mall["c"]), 2)
+            self.assertTrue(all(isinstance(value, (int, float)) for value in mall["c"]))
+            self.assertTrue(mall["d"].endswith("Z"))
+
     def test_published_copy_matches_sources(self):
         published = ROOT / "site" / "visuals" / "tampines-food"
         self.assertEqual((published / "index.html").read_text(encoding="utf-8"), (VIZ / "index.html").read_text(encoding="utf-8"))
