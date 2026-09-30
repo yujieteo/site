@@ -37,6 +37,22 @@ test("the two non-governing net-tension lines follow the chapter's equations, no
   within(r.members.male.Pnu / LBF, 0.87 * 77000 * 2.0 * 0.75, 0.001, "male Pnu.L (Eq. 9-6a)");
 });
 
+test("a weak pin whose load-shift result exceeds the lug-bushing strength is capped at Pu.L.B with a warning", () => {
+  const x = example();
+  x.pin.FtuP = 175 * L.UNITS.stress.ksi;
+  const r = L.solve(x);
+  const J = r.joint;
+  assert.equal(J.weakPin, true);
+  assert.ok(J.Pubmax > J.PuLB, `Pub.P.max ${J.Pubmax} should exceed Pu.L.B ${J.PuLB}`);
+  assert.ok(J.Pall <= J.PuLB);
+  assert.equal(J.Pall, J.PuLB);
+  within(J.Pall / LBF, 44000, 0.01, "Pall = Pu.L.B");
+  assert.match(J.PallMode, /lug-bushing/);
+  assert.ok(J.b1min <= r.members.female.t && J.b2min2 <= r.members.male.t);
+  assert.match(messages(r.warnings), /exceeds the full-thickness lug-bushing strength/);
+  assert.doesNotMatch(messages(L.solve(example()).warnings), /exceeds the full-thickness/);
+});
+
 test("in-page self-tests all pass", () => {
   const t = L.selfTests();
   assert.ok(t.length >= 10);

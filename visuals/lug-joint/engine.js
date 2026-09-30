@@ -125,8 +125,8 @@
     { id: "9-13", affdl: "Eq. 9-13", text: "M_max = (P/2)(t1/2 + t2/4 + g)" },
     { id: "9-15", affdl: "Eqs. 9-14, 9-15", text: "Pub.P = 0.1963·kb.P·D_P³·Ftu.P ÷ (t1/2 + t2/4 + g)" },
     { id: "9-16", affdl: "Eq. 9-16", text: "Pub.P.max = 2C[√((Pub.P/C)(t1/2 + t2/4 + g) + g²) − g], C = Pu.L.B.1·Pu.L.B.2 ÷ (Pu.L.B.1·t2 + Pu.L.B.2·t1)" },
-    { id: "9-18", affdl: "Eq. 9-18a/b", text: "b1.min = Pub.P.max·t1 ÷ (2·Pu.L.B.1); 2b2.min = Pub.P.max·t2 ÷ Pu.L.B.2" },
-    { id: "9-19", affdl: "Eq. 9-19a/b", text: "Pall = min(Pu.L.B, Pus.P), or min(Pus.P, Pub.P.max) when the pin is weak in bending" },
+    { id: "9-18", affdl: "Eq. 9-18a/b", text: "b1.min = min(t1, Pub.P.max·t1 ÷ (2·Pu.L.B.1)); 2b2.min = min(t2, Pub.P.max·t2 ÷ Pu.L.B.2)" },
+    { id: "9-19", affdl: "Eq. 9-19a/b", text: "Pall = min(Pu.L.B, Pus.P), or min(Pus.P, Pub.P.max, Pu.L.B) when the pin is weak in bending" },
     { id: "9-20", affdl: "Eq. 9-20a/b", text: "P_T = 2·Ftu.T·w_T1·t1; Ftu.T·w_T2·t2" },
     { id: "9-22", affdl: "Eq. 9-22a/b", text: "P_T = 2·Ftu.T·w_T1·t1 ÷ [1 + (3/kb.T)(1 − b1.min/t1)]; Ftu.T·w_T2·t2" },
     { id: "9-28", affdl: "Eqs. 9-28, 9-29", text: "Fbru.L = Ktru·Ftux; Fbry.L = Ktry·Ftyx" },
@@ -391,11 +391,12 @@
     if (J.weakPin) {
       J.C = (f.PuLB * m.PuLB) / (f.PuLB * t2 + m.PuLB * t1);
       J.Pubmax = 2 * J.C * (Math.sqrt((J.Pub / J.C) * J.arm + g * g) - g);
-      J.b1min = (J.Pubmax * t1) / (2 * f.PuLB);
-      J.b2min2 = (J.Pubmax * t2) / m.PuLB;
-      J.Pall = Math.min(J.Pus, J.Pubmax);
+      J.shiftExceedsLug = J.Pubmax > J.PuLB;
+      J.b1min = Math.min(t1, (J.Pubmax * t1) / (2 * f.PuLB));
+      J.b2min2 = Math.min(t2, (J.Pubmax * t2) / m.PuLB);
+      J.Pall = Math.min(J.Pus, J.Pubmax, J.PuLB);
       J.PallEq = "9-19b";
-      J.PallMode = J.Pubmax <= J.Pus ? "pin bending (stage 2)" : "pin shear";
+      J.PallMode = J.Pall === J.Pus ? "pin shear" : J.Pall === J.Pubmax ? "pin bending (stage 2)" : `lug-bushing (${MEMBER_NAMES[J.lugGoverns].toLowerCase()})`;
     } else {
       J.Pall = Math.min(J.PuLB, J.Pus);
       J.PallEq = "9-19a";
@@ -460,6 +461,7 @@
     const minBy = (arr, k) => arr.filter((r) => r[k] != null).reduce((b, r) => (b == null || r[k] < b[k] ? r : b), null);
     const controlling = { ultimate: minBy(modes, "FSu"), yield: minBy(modes, "FSy") };
     if (J.weakPin) warnings.push({ field: "pin.kbP", message: `Pin is weak in bending (Pub.P < Pu.L.B and Pus.P), so the load-shift refinement applies (Eqs. 9-16 to 9-19b) and the female tangs use Eq. 9-22a.` });
+    if (J.shiftExceedsLug) warnings.push({ field: "pin.kbP", message: `Pub.P.max exceeds the full-thickness lug-bushing strength Pu.L.B (b1.min > t1 or 2b2.min > t2), so the load-shift refinement is not valid: Pall is capped at Pu.L.B and b1.min, 2b2.min are clamped to t1, t2 for Eq. 9-22a.` });
     if (alpha > 0 && alpha < 90) warnings.push({ field: "load.alpha", message: "Assumption: under oblique load the tangs are checked for the axial component P·cos α only." });
 
     return {
@@ -512,10 +514,10 @@
     if (J.weakPin) {
       add("9-16", "C", J.C, "forcePerLength", "Pu.L.B.1·Pu.L.B.2 ÷ (Pu.L.B.1·t2 + Pu.L.B.2·t1)");
       add("9-16", "Pub.P.max", J.Pubmax, "force", "2C[√((Pub.P/C)·arm + g²) − g]");
-      add("9-18", "b1.min", J.b1min, "length", "Pub.P.max·t1 ÷ (2·Pu.L.B.1)");
-      add("9-18", "2b2.min", J.b2min2, "length", "Pub.P.max·t2 ÷ Pu.L.B.2");
+      add("9-18", "b1.min", J.b1min, "length", "min(t1, Pub.P.max·t1 ÷ (2·Pu.L.B.1))");
+      add("9-18", "2b2.min", J.b2min2, "length", "min(t2, Pub.P.max·t2 ÷ Pu.L.B.2)");
     }
-    add("9-19", "Pall", J.Pall, "force", J.weakPin ? "min(Pus.P, Pub.P.max) (9-19b)" : "min(Pu.L.B, Pus.P) (9-19a)");
+    add("9-19", "Pall", J.Pall, "force", J.weakPin ? `min(Pus.P, Pub.P.max, Pu.L.B) (9-19b${J.shiftExceedsLug ? "; Pub.P.max > Pu.L.B, refinement not valid" : ""})` : "min(Pu.L.B, Pus.P) (9-19a)");
     if (alpha < 90) {
       add(J.weakPin ? "9-22" : "9-20", "P_T.1", J.PT1, "force", J.weakPin ? "2·Ftu.T·w_T1·t1 ÷ [1 + (3/kb.T)(1 − b1.min/t1)]" : "2·Ftu.T·w_T1·t1");
       add(J.weakPin ? "9-22" : "9-20", "P_T.2", J.PT2, "force", "Ftu.T·w_T2·t2");
