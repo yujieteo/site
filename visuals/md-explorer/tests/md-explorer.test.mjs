@@ -6,7 +6,8 @@ import vm from "node:vm";
 
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const raw = JSON.parse(await readFile(new URL("../raw.json", import.meta.url), "utf8"));
-const script = (id) => new RegExp(`<script id="${id}">([\\s\\S]*?)</script>`).exec(html)[1];
+// Like the HTML tokenizer, a script element's text ends at the first "</script".
+const script = (id) => new RegExp(`<script id="${id}">([\\s\\S]*?)</script`, "i").exec(html)[1];
 const markedSrc = script("marked-lib");
 const coreSrc = script("mdx-core");
 const uiSrc = script("mdx-ui");
@@ -34,21 +35,129 @@ test("marked is pinned, inlined unmodified and its licence is recorded", () => {
   assert.equal(C.META.parser.version, "18.0.14");
 });
 
-test("the page is one offline file: no external scripts, styles, fonts or fetches", () => {
-  assert.doesNotMatch(html, /<script[^>]+src=/i);
-  assert.doesNotMatch(html, /<link[^>]+rel="stylesheet"/i);
-  assert.doesNotMatch(html, /@import|@font-face|fonts\.googleapis/);
-  for (const src of [coreSrc, uiSrc]) {
-    assert.doesNotMatch(src, /\bfetch\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon|importScripts/);
-    assert.doesNotMatch(src, /<\/script/i, "an inline script must not contain a closing script tag");
-  }
-  assert.match(html, /<meta name="viewport" content="width=device-width, initial-scale=1">/);
-  assert.match(html, /Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src https: data:;/);
+/* The page's UI script, run in a vm against a minimal DOM. Timers are fake;
+   advance(ms) runs whatever falls due. Network APIs record any call. */
+function bootPage(saved) {
+  const net = [];
+  const tools = [];
+  const timers = new Map();
+  let now = 0, seq = 0;
+  const on = {};
+  const els = {};
+  const classList = () => { const set = new Set(); return { add: (...c) => c.forEach((x) => set.add(x)), remove: (...c) => c.forEach((x) => set.delete(x)), toggle: (c, f) => ((f ?? !set.has(c)) ? set.add(c) : set.delete(c)), contains: (c) => set.has(c) }; };
+  const mkEl = (id) => {
+    const l = {};
+    return {
+      id, value: "", textContent: "", innerHTML: "", checked: false, hidden: false, scrollTop: 0, dataset: {}, style: {}, classList: classList(), listeners: l,
+      lastElementChild: { insertAdjacentHTML() {} },
+      addEventListener(type, fn) { (l[type] ||= []).push(fn); },
+      fire(type, ev = {}) { for (const fn of l[type] || []) fn(ev); },
+      setAttribute() {}, removeAttribute() {}, getAttribute: () => null, querySelector: () => null, querySelectorAll: () => [],
+      scrollIntoView() {}, focus() {}, select() {}, dispatchEvent() {},
+    };
+  };
+  const byId = (id) => (els[id] ||= mkEl(id));
+  const setTimeout = (fn, ms = 0) => { timers.set(++seq, { at: now + ms, fn }); return seq; };
+  const clearTimeout = (id) => timers.delete(id);
+  const advance = (ms) => {
+    const end = now + ms;
+    for (;;) {
+      let due = null;
+      for (const [id, t] of timers) if (t.at <= end && (!due || t.at < due[1].at)) due = [id, t];
+      if (!due) break;
+      timers.delete(due[0]);
+      now = due[1].at;
+      due[1].fn();
+    }
+    now = end;
+  };
+  let hash = "";
+  const fire = (type) => { for (const fn of on[type] || []) fn({}); };
+  const location = {
+    get hash() { return hash; },
+    set hash(h) { h = h[0] === "#" ? h : "#" + h; if (h !== hash) { hash = h; setTimeout(() => fire("hashchange")); } },
+    replace(h) { hash = h; },
+  };
+  const ls = new Map(saved ? [["md-explorer-v1", JSON.stringify(saved)]] : []);
+  const record = (name) => function () { net.push(name); };
+  const g = {
+    setTimeout, clearTimeout, location, console,
+    history: { replaceState: (_s, _t, h) => { hash = h; }, back() {}, forward() {} },
+    localStorage: { getItem: (k) => (ls.has(k) ? ls.get(k) : null), setItem: (k, v) => ls.set(k, String(v)), removeItem: (k) => ls.delete(k) },
+    document: { getElementById: byId, body: mkEl("body"), documentElement: mkEl("html"), createElement: mkEl, execCommand: () => false },
+    navigator: { platform: "Linux", modelContext: { registerTool: (t) => tools.push(t) }, sendBeacon: record("sendBeacon") },
+    addEventListener: (type, fn) => (on[type] ||= []).push(fn),
+    matchMedia: () => ({ matches: false }),
+    confirm: () => true,
+    fetch: record("fetch"), XMLHttpRequest: record("XMLHttpRequest"), WebSocket: record("WebSocket"), EventSource: record("EventSource"), importScripts: record("importScripts"),
+  };
+  vm.createContext(g);
+  vm.runInContext("var self = globalThis, window = globalThis;", g);
+  for (const src of [markedSrc, coreSrc, uiSrc]) vm.runInContext(src, g);
+  const tool = async (name, input) => JSON.parse((await tools.find((t) => t.name === name).execute(input)).content[0].text);
+  const tabEvent = (id, part) => ({ target: { closest: (sel) => (sel === ".tab" ? { dataset: { id } } : sel === part ? {} : null) } });
+  return {
+    net, tools, advance, tool, ls, el: byId,
+    type(text) { byId("editor").value = text; byId("editor").fire("input"); },
+    clickTab(id) { byId("tabstrip").fire("click", tabEvent(id, ".name")); },
+    closeTab(id) { byId("tabstrip").fire("click", tabEvent(id, ".close")); },
+  };
+}
+const savedTabs = (files) => ({ v: 1, seq: files.length, active: "t1", tabs: files.map(([name, content], i) => ({ id: "t" + (i + 1), name, pinned: true, content, untitled: 0 })) });
+
+test("the page is one offline file: every script is inline and runs, and nothing fetches", async () => {
+  const doc = html.replace(/<!--[\s\S]*?-->/g, "");
+  // Script elements as the HTML tokenizer sees them: each body runs to the first "</script".
+  const scripts = [...doc.matchAll(/<script\b([^>]*)>[\s\S]*?<\/script/gi)].map((m) => m[1].trim());
+  deq(scripts, ['id="marked-lib"', 'id="mdx-core"', 'id="mdx-ui"']);
+  const rels = [...doc.matchAll(/<link\b[^>]*\brel="([^"]*)"[^>]*\bhref="([^"]*)"/gi)].map((m) => [m[1], m[2]]);
+  deq(rels, [["icon", "data:,"]]);
+  const meta = (name) => (new RegExp(`<meta (?:name|http-equiv)="${name}" content="([^"]*)">`).exec(doc) || [])[1];
+  const csp = Object.fromEntries(meta("Content-Security-Policy").split(";").map((d) => d.trim().split(/\s+/)).filter((d) => d[0]).map(([k, ...v]) => [k, v]));
+  // Nothing may load or connect except inline code and https (or data:) images.
+  deq(csp, { "default-src": ["'none'"], "script-src": ["'unsafe-inline'"], "style-src": ["'unsafe-inline'"], "img-src": ["https:", "data:"], "base-uri": ["'none'"], "form-action": ["'none'"] });
+  deq(Object.fromEntries(meta("viewport").split(",").map((kv) => kv.trim().split("="))), { width: "device-width", "initial-scale": "1" });
+
+  const page = bootPage();
+  page.type("# Edited\n\n[x](https://example.com) ![i](https://example.com/i.png)");
+  page.advance(1000);
+  page.clickTab("t2");
+  page.advance(1000);
+  for (const t of page.tools) await t.execute({ query: "link", markdown: "# M", tabId: "t1" });
+  deq(page.net, []);
 });
 
-test("raw.json is the engine's META and lists the WebMCP tools the page registers", () => {
+test("raw.json is the engine's META and the page registers exactly its WebMCP tools", async () => {
   deq(raw, C.META);
-  for (const name of C.META.webmcp_tools) assert.ok(uiSrc.includes(`name: "${name}"`), `${name} is registered`);
+  const page = bootPage();
+  deq(page.tools.map((t) => t.name).sort(), [...C.META.webmcp_tools].sort());
+  deq(await page.tool("get_metadata"), C.META);
+  deq((await page.tool("list_tabs")).tabs.map((t) => t.title), C.DEMO_TABS.map((t) => t.name));
+});
+
+test("closing the only tab loads the demo into the editor, so edits go to the demo tab", async () => {
+  const page = bootPage(savedTabs([["mine.md", "# Mine"]]));
+  assert.equal(page.el("editor").value, "# Mine");
+  page.closeTab("t1");
+  page.advance(1000);
+  const tabs = await page.tool("list_tabs");
+  assert.equal(page.el("editor").value, C.DEMO_TABS[0].content);
+  page.type(page.el("editor").value + "\n\n## Added");
+  page.advance(1000);
+  const saved = JSON.parse(page.ls.get("md-explorer-v1"));
+  assert.equal(saved.tabs.find((t) => t.id === tabs.active).content, C.DEMO_TABS[0].content + "\n\n## Added");
+});
+
+test("switching tabs right after typing still reparses the edited tab", async () => {
+  const page = bootPage(savedTabs([["a.md", "# A"], ["b.md", "# B\n\n[to a](a.md#a2)"]]));
+  page.type("# A\n\n## A2");
+  page.advance(100);
+  page.clickTab("t2");
+  page.advance(1000);
+  const [a] = (await page.tool("get_outline", { tabId: "t1" })).outline;
+  deq([a.slug, a.children.map((n) => n.slug)], ["a", ["a2"]]);
+  assert.equal((await page.tool("list_tabs")).active, "t2");
+  assert.match(page.el("doc").innerHTML, /<a class="int" href="#\/tab\/t1\/a2">to a<\/a>/);
 });
 
 test("GitHub-style slugs, duplicates suffixed -1, -2 per tab", () => {
@@ -163,6 +272,47 @@ test("backlinks list same-tab and cross-tab sections, labelled with the source t
   ]);
   // A link to the whole tab counts as a link to its first section.
   deq(C.backlinks(w, "t1", "a").map((b) => b.slug), ["b"]);
+});
+
+test("the backlink index updates one tab at a time and matches a full rebuild", () => {
+  const files = {
+    "a.md": "# A\n\n## Target\n\nsee [t](#target)",
+    "b.md": "# B\n\n[t](a.md#target) [c](c.md#c1)\n\n## Other\n\n[twice](a.md#target) [again](a.md#target)",
+    "c.md": "# C\n\n## C1",
+  };
+  const w = tabsWorld(files);
+  const idx = C.makeBacklinks();
+  idx.build(w);
+  const same = (label) => {
+    for (const t of w.tabs) for (const n of t.doc.nodes) deq(idx.query(w, t.id, n.slug), C.backlinks(w, t.id, n.slug), `${label}: ${t.id}#${n.slug}`);
+  };
+  same("built");
+  const edit = (i, src) => { w.tabs[i].doc = C.parseDoc(src); idx.refresh(w, w.tabs[i].id); };
+  // The target heading is renamed away, then comes back under another tab's edit.
+  edit(0, "# A\n\n## Moved\n\nsee [t](#target)");
+  deq(idx.query(w, "t1", "target"), []);
+  same("target renamed");
+  edit(0, "# A\n\n## Target");
+  deq(idx.query(w, "t1", "target").map((b) => b.slug), ["b", "other"]);
+  same("target restored");
+  // Links from the edited tab itself.
+  edit(1, "# B\n\n[c](c.md)");
+  deq(idx.query(w, "t3", "c").map((b) => b.slug), ["b"]);
+  deq(idx.query(w, "t3", "c1"), []);
+  same("source edited");
+  // Renaming a tab re-resolves links by its old and new names.
+  w.tabs[2].linkName = "d.md";
+  idx.refresh(w, "t3");
+  deq(idx.query(w, "t3", "c"), []);
+  same("renamed");
+  // Closing a tab removes its links; adding one resolves links that name it.
+  w.tabs.splice(1, 1);
+  idx.refresh(w, "t2");
+  same("closed");
+  w.tabs.push({ id: "t4", title: "c.md", linkName: "c.md", doc: C.parseDoc("# C again\n\n[back](a.md#target)") });
+  idx.refresh(w, "t4");
+  deq(idx.query(w, "t1", "target").map((b) => [b.tabId, b.slug]), [["t4", "c-again"]]);
+  same("added");
 });
 
 test("tags: after whitespace or line start, not in code, URLs or links", () => {

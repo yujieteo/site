@@ -603,17 +603,15 @@ function classifyHref(href) {
 /* Match a file link to a tab by filename or pinned name, case-insensitively.
    Only the last path segment counts (docs/other.md matches other.md), and the
    .md extension is optional on either side. */
-function matchTab(world, path) {
-  let p = path.replace(/\\/g, "/").split("/").filter(Boolean).pop() || "";
-  p = p.toLowerCase();
-  if (!p) return null;
+function nameMatches(linkName, path) {
+  const p = (path.replace(/\\/g, "/").split("/").filter(Boolean).pop() || "").toLowerCase();
+  if (!p || !linkName) return false;
+  const n = linkName.toLowerCase();
   const strip = (s) => s.replace(/\.(md|markdown)$/, "");
-  for (const t of world.tabs) {
-    if (!t.linkName) continue;
-    const n = t.linkName.toLowerCase();
-    if (p === n || strip(p) === strip(n)) return t;
-  }
-  return null;
+  return p === n || strip(p) === strip(n);
+}
+function matchTab(world, path) {
+  return world.tabs.find((t) => nameMatches(t.linkName, path)) || null;
 }
 function findSlug(doc, anchor) {
   if (!doc) return null;
@@ -644,20 +642,98 @@ function resolveLink(world, fromTabId, href) {
   return { kind: "internal", tabId: tab.id, slug };
 }
 
-/* Every section, in any tab, whose own content links to (tabId, slug). A link
-   to a whole tab counts as a link to its first section. */
-function backlinks(world, tabId, slug) {
-  const out = [];
-  for (const t of world.tabs) {
-    if (!t.doc) continue;
-    for (const n of t.doc.nodes) {
-      if (!n.links.length) continue;
-      if (n.links.some((h) => { const r = resolveLink(world, t.id, h); return r.kind === "internal" && r.tabId === tabId && r.slug === slug; })) {
-        if (!(t.id === tabId && n.slug === slug)) out.push({ tabId: t.id, tabTitle: t.title, slug: n.slug, title: n.title, crossTab: t.id !== tabId });
+/* Backlink index: every link that resolves inside the app, keyed by its target
+   (tab, slug). build() indexes every tab in one pass; refresh(world, tabId)
+   re-indexes one added, edited, renamed or closed tab: its own links, plus
+   other tabs' file links that name it (by its old or new name). */
+function makeBacklinks() {
+  const out = new Map();   // source tab id -> [{node, href, path, target}]
+  const into = new Map();  // target key -> Map(source tab id -> Map(node index -> link count))
+  const names = new Map(); // tab id -> link name when last indexed
+  const key = (tabId, slug) => tabId + "\n" + slug;
+  function add(src, e) {
+    if (e.target === null) return;
+    let m = into.get(e.target);
+    if (!m) into.set(e.target, (m = new Map()));
+    let n = m.get(src);
+    if (!n) m.set(src, (n = new Map()));
+    n.set(e.node, (n.get(e.node) || 0) + 1);
+  }
+  function drop(src, e) {
+    const m = e.target === null ? null : into.get(e.target);
+    const n = m && m.get(src);
+    if (!n) return;
+    const c = n.get(e.node) - 1;
+    if (c > 0) { n.set(e.node, c); return; }
+    n.delete(e.node);
+    if (!n.size) { m.delete(src); if (!m.size) into.delete(e.target); }
+  }
+  function resolve(world, src, e) {
+    const r = resolveLink(world, src, e.href);
+    e.target = r.kind === "internal" ? key(r.tabId, r.slug) : null;
+  }
+  function index(world, t) {
+    const list = [];
+    if (t.doc) t.doc.nodes.forEach((n, i) => {
+      for (const href of n.links) {
+        const c = classifyHref(href);
+        if (c.kind !== "anchor" && c.kind !== "file") continue;
+        const e = { node: i, href, path: c.kind === "file" ? c.path : null, target: null };
+        resolve(world, t.id, e);
+        add(t.id, e);
+        list.push(e);
+      }
+    });
+    out.set(t.id, list);
+    names.set(t.id, t.linkName);
+  }
+  function unindex(tabId) {
+    for (const e of out.get(tabId) || []) drop(tabId, e);
+    out.delete(tabId);
+    names.delete(tabId);
+  }
+  function build(world) {
+    out.clear(); into.clear(); names.clear();
+    for (const t of world.tabs) index(world, t);
+  }
+  function refresh(world, tabId) {
+    const t = world.tabs.find((x) => x.id === tabId);
+    const affected = [names.get(tabId), t && t.linkName].filter(Boolean);
+    unindex(tabId);
+    if (t) index(world, t);
+    if (!affected.length) return;
+    for (const [src, list] of out) {
+      if (src === tabId) continue;
+      for (const e of list) {
+        if (e.path === null || !affected.some((n) => nameMatches(n, e.path))) continue;
+        drop(src, e);
+        resolve(world, src, e);
+        add(src, e);
       }
     }
   }
-  return out;
+  /* Every section, in any tab, whose own content links to (tabId, slug), in tab
+     then document order. A link to a whole tab counts as a link to its first section. */
+  function query(world, tabId, slug) {
+    const res = [];
+    const m = into.get(key(tabId, slug));
+    if (!m) return res;
+    for (const t of world.tabs) {
+      const n = m.get(t.id);
+      if (!n || !t.doc) continue;
+      for (const i of [...n.keys()].sort((a, b) => a - b)) {
+        const node = t.doc.nodes[i];
+        if (!(t.id === tabId && node.slug === slug)) res.push({ tabId: t.id, tabTitle: t.title, slug: node.slug, title: node.title, crossTab: t.id !== tabId });
+      }
+    }
+    return res;
+  }
+  return { build, refresh, query };
+}
+function backlinks(world, tabId, slug) {
+  const b = makeBacklinks();
+  b.build(world);
+  return b.query(world, tabId, slug);
 }
 
 /* ---------- tag view ---------- */
@@ -1012,7 +1088,7 @@ const DEMO_TABS = [
 
 root.MdxCore = {
   META, DEMO_TABS, escapeHtml, decodeEntities, slugBase, makeSlugger, inlineText, scanTags, parseDoc, subtree, nearestNode,
-  untitledName, tabTitle, nextUntitled, classifyHref, matchTab, resolveLink, backlinks, tagSections, tagCounts,
+  untitledName, tabTitle, nextUntitled, classifyHref, matchTab, resolveLink, makeBacklinks, backlinks, tagSections, tagCounts,
   indexTab, fuzzy, search, groupHits, parseRoute, formatRoute, resolveRoute, renderTokens, renderMarkdown,
   chunkTokens, outline, snippetAround, firstSlug,
 };
@@ -1046,6 +1122,7 @@ const S = {
   tag: null,
   docs: new Map(),   // tab id -> parsed doc
   indexes: new Map(),// tab id -> search entries
+  links: C.makeBacklinks(), // backlink index over every tab
   collapsed: new Map(), // tab id -> Set of collapsed slugs
   world: null,
   drawerOpen: false,
@@ -1066,12 +1143,14 @@ function parseTab(t) {
   S.docs.set(t.id, doc);
   S.indexes.set(t.id, C.indexTab(t.id, C.tabTitle(t, doc), doc));
   S.world = null;
+  S.links.refresh(world(), t.id);
 }
 function reindexTitle(t) {
   // A rename changes only the title entry; the rest of the index stands.
   const entries = S.indexes.get(t.id);
   if (entries && entries[0] && entries[0].type === "tab") { const s = titleOf(t); entries[0].text = s; entries[0].low = s.toLowerCase(); }
   S.world = null;
+  S.links.refresh(world(), t.id);
 }
 function newTab(content, name) {
   const t = { id: "t" + (++S.seq), name: name || "", pinned: !!name, content: content || "", untitled: 0 };
@@ -1137,6 +1216,7 @@ function applyRoute() {
 
 function switchTab(id) {
   flushEdit();
+  if (parseTimer) { clearTimeout(parseTimer); parseTimer = 0; const out = activeTab(); if (out) parseTab(out); }
   S.active = id;
   const t = activeTab();
   el.editor.value = t ? t.content : "";
@@ -1256,7 +1336,7 @@ function renderRight() {
   // Outline of the current section: its heading and every heading below it.
   const item = (i) => { const m = doc.nodes[i]; return `<li><a href="${routeHref(S.active, m.slug)}">${esc(m.title)}</a>${m.children.length ? `<ul>${m.children.map(item).join("")}</ul>` : ""}</li>`; };
   el.outline.innerHTML = n.children.length ? item(idx) : `<li class="empty">${esc(n.title)} has no subsections.</li>`;
-  const bl = C.backlinks(world(), S.active, n.slug);
+  const bl = S.links.query(world(), S.active, n.slug);
   el.backlinks.innerHTML = bl.length
     ? bl.map((b) => `<li><a href="${routeHref(b.tabId, b.slug)}">${b.crossTab ? `<small>${esc(b.tabTitle)}</small>` : ""}${esc(b.title)}</a></li>`).join("")
     : '<li class="empty">Nothing links here.</li>';
@@ -1312,6 +1392,7 @@ el.editor.addEventListener("input", () => {
   parseTimer = setTimeout(reparseActive, 250);
 });
 function reparseActive() {
+  parseTimer = 0;
   flushEdit();
   const t = activeTab();
   if (!t) return;
@@ -1366,11 +1447,13 @@ function closeTab(id) {
   const [t] = S.tabs.splice(i, 1);
   const wasActive = S.active === id;
   S.docs.delete(id); S.indexes.delete(id); S.world = null;
+  S.links.refresh(world(), id);
   undo = { tab: t, index: i, wasActive };
   // With no tabs left, the demo comes back (Undo still restores the closed tab).
   if (!S.tabs.length) loadDemo();
   if (wasActive) {
     const next = S.tabs[Math.min(i, S.tabs.length - 1)];
+    switchTab(next.id);
     navigate({ kind: "tab", tabId: next.id, slug: C.firstSlug(docOf(next.id)) });
   } else renderAll({ scroll: "keep" });
   scheduleSave();
@@ -1524,8 +1607,8 @@ el["clear-all"].addEventListener("click", () => {
   try { ok = confirm("Delete every tab and all saved state? This cannot be undone."); } catch (e) { ok = false; }
   if (!ok) return;
   store.del(KEY);
-  editDirty = false; clearTimeout(parseTimer);
-  S.tabs = []; S.docs.clear(); S.indexes.clear(); S.collapsed.clear(); S.world = null; S.seq = 0; undo = null;
+  editDirty = false; clearTimeout(parseTimer); parseTimer = 0;
+  S.tabs = []; S.docs.clear(); S.indexes.clear(); S.links = C.makeBacklinks(); S.collapsed.clear(); S.world = null; S.seq = 0; undo = null;
   loadDemo();
   el.editor.value = activeTab().content;
   setDrawer(false);
