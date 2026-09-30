@@ -1,6 +1,8 @@
 /* BEAMDIAG engine: linear-elastic Euler–Bernoulli beam, direct stiffness method.
  *
- * Units are SI throughout: m, N, N/m, N·m, Pa, m², m⁴.
+ * Units are SI throughout: m, N, N/m, N·m, Pa, m², m⁴. UNIT_SYSTEMS lists the
+ * consistent unit conventions a caller may enter and read values in; toUnits and
+ * fromUnits convert at that edge, and the solver itself never sees anything but SI.
  * Axes: x along the beam from its left end, +y up. Rotations and couples are
  * counter-clockwise positive (+z out of the page).
  * Loads: point force Fy (+ up), couple Mz (+ CCW), linearly varying distributed
@@ -19,7 +21,8 @@
  * keeps it well conditioned however closely loads are spaced. V and M are then
  * recovered exactly by statics from the loads and the reactions, which keeps
  * every jump at a point force or couple, and deflection by integrating M/EI
- * exactly across the plotting mesh (every event, subdivided).
+ * exactly from the nearest event on the left. None of this depends on the
+ * number of elements per segment, which only sets the NASTRAN mesh.
  */
 (function (root, factory) {
   const api = factory();
@@ -39,6 +42,52 @@
   }
   const fail = (message, field) => { throw new ModelError(message, field); };
 
+  /* ---------- unit conventions ---------- */
+
+  /* Consistent unit systems: each gives the SI size of one unit of length, force and stress, and
+     stress is always force per length squared, so E·I/L³ and every other product stays in the
+     system without extra factors. Other quantities are derived from length and force.
+     `ascii` names the system in NASTRAN comments, which should stay plain ASCII. */
+  const LBF = 4.4482216152605, INCH = 0.0254; // exact by definition
+  const UNIT_SYSTEMS = Object.freeze(Object.fromEntries([
+    { id: "kN-m", label: "SI: kN, m, kPa", length: [1, "m"], force: [1e3, "kN"], stress: [1e3, "kPa"], ascii: "kN, m, kPa (kN/m2)" },
+    { id: "N-m", label: "SI: N, m, Pa", length: [1, "m"], force: [1, "N"], stress: [1, "Pa"], ascii: "N, m, Pa (N/m2)" },
+    { id: "N-mm", label: "SI: N, mm, MPa", length: [1e-3, "mm"], force: [1, "N"], stress: [1e6, "MPa"], ascii: "N, mm, MPa (N/mm2)" },
+    { id: "lbf-in", label: "US customary: lbf, in, psi", length: [INCH, "in"], force: [LBF, "lbf"], stress: [LBF / INCH ** 2, "psi"], ascii: "lbf, in, psi (lbf/in2)" },
+    { id: "kip-in", label: "US customary: kip, in, ksi", length: [INCH, "in"], force: [1e3 * LBF, "kip"], stress: [1e3 * LBF / INCH ** 2, "ksi"], ascii: "kip, in, ksi (kip/in2)" },
+  ].map((u) => {
+    const [l, L] = u.length, [f, F] = u.force, [p, P] = u.stress;
+    const factor = { length: l, force: f, stress: p, moment: f * l, distributed: f / l, area: l * l, inertia: l ** 4, rigidity: f * l * l, angle: 1 };
+    const symbol = { length: L, force: F, stress: P, moment: `${F}·${L}`, distributed: `${F}/${L}`, area: `${L}²`, inertia: `${L}⁴`, rigidity: `${F}·${L}²`, angle: "rad" };
+    return [u.id, Object.freeze({ id: u.id, label: u.label, ascii: u.ascii, factor: Object.freeze(factor), symbol: Object.freeze(symbol) })];
+  })));
+  const DEFAULT_UNITS = "N-mm";
+  const SI = UNIT_SYSTEMS["N-m"];
+
+  function unitSystem(units) {
+    const u = typeof units === "string" ? UNIT_SYSTEMS[units] : units;
+    if (!u || !UNIT_SYSTEMS[u.id]) fail(`Unknown unit convention ${JSON.stringify(units && units.id || units)}; choose one of ${Object.keys(UNIT_SYSTEMS).join(", ")}.`, "units");
+    return u;
+  }
+  /* SI value → number in `units`, and back. */
+  const toUnits = (value, quantity, units) => value / unitSystem(units).factor[quantity];
+  const fromUnits = (value, quantity, units) => value * unitSystem(units).factor[quantity];
+
+  /* Re-express a validated SI model in `units` (both directions via `convert`). */
+  function scaleModel(model, units, convert = toUnits) {
+    const u = unitSystem(units), c = (v, q) => (v == null ? v : convert(v, q, u)), x = (v) => c(v, "length");
+    const { section: s } = model;
+    return {
+      ...model, length: x(model.length),
+      material: { ...model.material, E: c(model.material.E, "stress") },
+      section: { ...s, A: c(s.A, "area"), I: c(s.I, "inertia"), Iy: c(s.Iy, "inertia"), J: c(s.J, "inertia"), c: x(s.c) },
+      supports: model.supports.map((sp) => ({ ...sp, x: x(sp.x) })),
+      loads: model.loads.map((l) => (l.kind === "point" ? { ...l, x: x(l.x), F: c(l.F, "force") }
+        : l.kind === "moment" ? { ...l, x: x(l.x), C: c(l.C, "moment") }
+          : { ...l, x1: x(l.x1), x2: x(l.x2), q1: c(l.q1, "distributed"), q2: c(l.q2, "distributed") })),
+    };
+  }
+
   function number(value, label, field, { positive = false, min = -Infinity, max = Infinity } = {}) {
     if (typeof value !== "number" || !Number.isFinite(value)) fail(`${label} must be a finite number.`, field);
     if (positive && !(value > 0)) fail(`${label} must be greater than zero.`, field);
@@ -46,14 +95,16 @@
     return value;
   }
 
-  /* Check and normalise a model; throws ModelError naming the offending field. */
-  function validate(input) {
+  /* Check and normalise an SI model; throws ModelError naming the offending field.
+     `units` only sets how lengths are written in the messages. */
+  function validate(input, { units = SI } = {}) {
     if (!input || typeof input !== "object") fail("A beam model is required.");
+    const len = lengthText(units);
     const L = number(input.length, "Beam length", "length", { positive: true });
-    if (L < 1e-3 || L > 1e4) fail("Beam length must be between 1 mm and 10 km.", "length");
+    if (L < 1e-3 || L > 1e4) fail(`Beam length must be between ${len(1e-3)} and ${len(1e4)}.`, "length");
     const at = (value, label, field) => {
       number(value, label, field);
-      if (value < 0 || value > L) fail(`${label} must lie on the beam, between 0 and ${fmt(L)} m.`, field);
+      if (value < 0 || value > L) fail(`${label} must lie on the beam, between 0 and ${len(L)}.`, field);
       return value;
     };
     const material = input.material || {};
@@ -79,7 +130,7 @@
     });
     const sorted = [...supports].sort((a, b) => a.x - b.x);
     for (let i = 1; i < sorted.length; i++)
-      if (sorted[i].x === sorted[i - 1].x) fail(`Two supports share the position x = ${fmt(sorted[i].x)} m.`, "supports");
+      if (sorted[i].x === sorted[i - 1].x) fail(`Two supports share the position x = ${len(sorted[i].x)}.`, "supports");
     // With only pins and fixed supports the structure is stable exactly when it
     // has a fixed support or two separate pins; anything less can move rigidly.
     if (!supports.some((s) => s.kind === "fixed") && supports.length < 2)
@@ -102,17 +153,19 @@
           return fail(`${label} must be a point force, a couple or a distributed load.`, `loads.${i}.kind`);
       }
     });
-    return { length: L, material: { E, nu }, section: { A, I, Iy, J, c }, supports, loads, divisions };
+    const model = { length: L, material: { E, nu }, section: { A, I, Iy, J, c }, supports, loads, divisions };
+    events(model, units);
+    return model;
   }
 
   /* Positions where something happens: ends, supports, point actions, load ends. */
-  function events(model) {
+  function events(model, units = SI) {
     const xs = [0, model.length, ...model.supports.map((s) => s.x)];
     for (const l of model.loads) xs.push(...(l.kind === "dist" ? [l.x1, l.x2] : [l.x]));
     const unique = [...new Set(xs)].sort((a, b) => a - b);
     for (let i = 1; i < unique.length; i++)
       if (unique[i] - unique[i - 1] < 1e-6 * model.length)
-        fail(`Positions ${fmt(unique[i - 1])} m and ${fmt(unique[i])} m are too close together; make them equal or separate them.`, "loads");
+        fail(`Positions ${lengthText(units)(unique[i - 1])} and ${lengthText(units)(unique[i])} are too close together; make them equal or separate them.`, "loads");
     return unique;
   }
 
@@ -174,8 +227,8 @@
   const GAUSS5 = [[-0.9061798459386640, 0.2369268850561891], [-0.5384693101056831, 0.4786286704993665], [0, 0.5688888888888889],
     [0.5384693101056831, 0.4786286704993665], [0.9061798459386640, 0.2369268850561891]];
 
-  function solve(input) {
-    const model = validate(input), nodes = mesh(model), EI = model.material.E * model.section.I;
+  function solve(input, { units = SI } = {}) {
+    const model = validate(input, { units }), EI = model.material.E * model.section.I;
     // Stiffness stations: the ends and every support. Loads between them enter as consistent nodal loads.
     const stations = [...new Set([0, model.length, ...model.supports.map((s) => s.x)])].sort((a, b) => a - b);
     const n = stations.length * 2, K = banded(n), f = Array(n).fill(0);
@@ -237,10 +290,10 @@
       return { kind: s.kind, x: s.x, Fy: residual(2 * i), Mz: s.kind === "fixed" ? residual(2 * i + 1) : 0 };
     }).sort((a, b) => a.x - b.x);
 
-    // Deflection on the plotting mesh: stations take the solved values; other nodes integrate M/EI
-    // exactly from the previous node (no event lies strictly between two mesh nodes).
-    const result = { model, nodes, reactions, displacements: [] };
-    for (const x of nodes) {
+    // Deflection at every event: stations take the solved values; other events integrate M/EI
+    // exactly from the previous event (nothing happens strictly between two events).
+    const result = { model, reactions, displacements: [] };
+    for (const x of events(model)) {
       const i = index(x), prev = result.displacements.at(-1);
       result.displacements.push(i !== undefined ? { x, v: u[2 * i], theta: u[2 * i + 1] } : { x, ...integrate(result, prev, x) });
     }
@@ -289,15 +342,14 @@
 
   const GAUSS = [[-Math.sqrt(3 / 5), 5 / 9], [0, 8 / 9], [Math.sqrt(3 / 5), 5 / 9]];
 
-  /* Deflection and slope at x: nodal values from the stiffness solution, integrated exactly from M/EI inside an element. */
+  /* Deflection and slope at x: values at the events, integrated exactly from M/EI between them. */
   function deflection(result, x) {
-    const { nodes, displacements } = result;
-    // Binary search for the element containing x (the last one whose start is at or before x).
-    let lo = 0, hi = nodes.length - 2;
-    while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (nodes[mid] <= x) lo = mid; else hi = mid - 1; }
-    const e = lo;
-    if (x === nodes[e + 1]) { const { v, theta } = displacements[e + 1]; return { v, theta }; }
-    return integrate(result, displacements[e], x);
+    const d = result.displacements;
+    // Binary search for the segment containing x (the last one whose start is at or before x).
+    let lo = 0, hi = d.length - 2;
+    while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (d[mid].x <= x) lo = mid; else hi = mid - 1; }
+    if (x === d[lo + 1].x) { const { v, theta } = d[lo + 1]; return { v, theta }; }
+    return integrate(result, d[lo], x);
   }
 
   /* v and θ at x from their values at an earlier point `from` with no event between: θ' = M/EI, v' = θ.
@@ -322,43 +374,71 @@
     return { x, Vleft: left.V, Vright: right.V, Mleft: left.M, Mright: right.M, ...deflection(result, x) };
   }
 
-  /* Polyline samples for plotting: jumps appear as two points at the same x. */
-  function diagram(result, perElement = 12) {
-    const { nodes } = result, pts = [];
-    for (let e = 0; e < nodes.length - 1; e++) {
-      const a = nodes[e], b = nodes[e + 1];
-      for (let j = 0; j <= perElement; j++) {
-        const x = j === perElement ? b : a + (b - a) * j / perElement;
-        const side = j === perElement ? "left" : "right";
-        pts.push({ x, ...internal(result, x, side), ...deflection(result, x) });
+  /* Mesh-independent plot samples: about `count` regular points plus per-segment critical points
+     and event limits. Each segment runs from its right limit at the start to its left limit at the
+     end, so jumps appear as two points at the same x. */
+  function diagram(result, count = 800) {
+    const ev = result.displacements.map((d) => d.x), L = result.model.length, pts = [];
+    for (let e = 0; e < ev.length - 1; e++) {
+      const a = ev[e], b = ev[e + 1], n = Math.max(2, Math.ceil(count * (b - a) / L));
+      const xs = new Set(criticalPoints(result, a, b));
+      for (let j = 0; j <= n; j++) xs.add(j === n ? b : a + (b - a) * j / n);
+      for (const x of [...xs].sort((x, y) => x - y)) {
+        pts.push({ x, ...internal(result, x, x === b ? "left" : "right"), ...deflection(result, x) });
       }
     }
     // Close the diagrams to zero at the free ends of the beam.
-    const L = result.model.length;
     return [{ x: 0, V: 0, M: 0, ...deflection(result, 0) }, ...pts, { x: L, V: 0, M: 0, ...deflection(result, L) }];
   }
 
-  /* Extreme values: V and M are checked at every node limit and where V (or q) changes sign; deflection is sampled finely. */
-  function extremes(result) {
-    const { nodes } = result, best = { V: null, M: null, v: null };
-    const take = (key, x, value) => { if (!best[key] || Math.abs(value) > Math.abs(best[key].value) + 1e-12 * Math.abs(value)) best[key] = { x, value }; };
-    for (let e = 0; e < nodes.length - 1; e++) {
-      const a = nodes[e], b = nodes[e + 1];
-      const ra = internal(result, a, "right"), rb = internal(result, b, "left");
-      take("V", a, ra.V); take("V", b, rb.V); take("M", a, ra.M); take("M", b, rb.M);
-      // V is at most quadratic inside an element: find where it crosses zero.
-      const qa = intensity(result.model, a, "right"), qb = intensity(result.model, b, "left"), h = b - a;
-      const A = (qb - qa) / (2 * h), B = qa, C = ra.V; // V(s) = C + B s + A s²
-      if (qa !== qb) {
-        const s = -qa * h / (qb - qa);
-        if (s > 0 && s < h) take("V", a + s, internal(result, a + s, "right").V);
+  function criticalPoints(result, a, b) {
+    const model = result.model, h = b - a, xs = [a, b];
+    const ra = internal(result, a, "right"), qa = intensity(model, a, "right"), qb = intensity(model, b, "left");
+    // q is linear and V quadratic inside a segment: V(s) = C + B s + A s².
+    const A = (qb - qa) / (2 * h), B = qa, C = ra.V;
+    if (qa * qb < 0) xs.push(a + qa / (qa - qb) * h);
+    const roots = Math.abs(A) < 1e-300 ? (B !== 0 ? [-C / B] : []) : (() => {
+      const disc = B * B - 4 * A * C;
+      return disc < 0 ? [] : [(-B + Math.sqrt(disc)) / (2 * A), (-B - Math.sqrt(disc)) / (2 * A)];
+    })();
+    const shearRoots = roots.filter((s) => s > 0 && s < h).map((s) => a + s).sort((x, y) => x - y);
+    xs.push(...shearRoots);
+    const bisect = (lo, hi, value) => {
+      let vlo = value(lo);
+      for (let k = 0; k < 60; k++) {
+        const mid = (lo + hi) / 2;
+        if (mid === lo || mid === hi) break;
+        const vmid = value(mid);
+        if (vmid === 0) return mid;
+        if (vlo * vmid < 0) hi = mid;
+        else { lo = mid; vlo = vmid; }
       }
-      const roots = Math.abs(A) < 1e-300 ? (B !== 0 ? [-C / B] : []) : (() => {
-        const disc = B * B - 4 * A * C;
-        return disc < 0 ? [] : [(-B + Math.sqrt(disc)) / (2 * A), (-B - Math.sqrt(disc)) / (2 * A)];
-      })();
-      for (const s of roots) if (s > 0 && s < h) take("M", a + s, internal(result, a + s, "right").M);
-      for (let j = 0; j <= 48; j++) { const x = a + h * j / 48; take("v", x, deflection(result, x).v); }
+      return (lo + hi) / 2;
+    };
+    const moment = (x) => internal(result, x, x === b ? "left" : "right").M;
+    const momentRoots = [], partitions = [a, ...shearRoots, b];
+    for (let i = 0; i < partitions.length - 1; i++) {
+      const lo = partitions[i], hi = partitions[i + 1];
+      if (moment(lo) === 0) momentRoots.push(lo);
+      if (moment(lo) * moment(hi) < 0) momentRoots.push(bisect(lo, hi, moment));
+    }
+    const slope = (x) => deflection(result, x).theta;
+    const slopePartitions = [a, ...momentRoots.filter((x) => x > a && x < b), b];
+    for (let i = 0; i < slopePartitions.length - 1; i++) {
+      const lo = slopePartitions[i], hi = slopePartitions[i + 1];
+      xs.push(lo, hi);
+      if (slope(lo) * slope(hi) < 0) xs.push(bisect(lo, hi, slope));
+    }
+    return xs;
+  }
+
+  function extremes(result) {
+    const best = { V: null, M: null, v: null };
+    for (const p of diagram(result).slice(1, -1)) {
+      for (const key of ["V", "M", "v"]) {
+        const value = p[key];
+        if (!best[key] || Math.abs(value) > Math.abs(best[key].value) + 1e-12 * Math.abs(value)) best[key] = { x: p.x, value };
+      }
     }
     return best;
   }
@@ -403,28 +483,61 @@
     return supports.reduce((n, s) => n + (s.kind === "fixed" ? 2 : 1), 0) - 2;
   }
 
-  /* ---------- NASTRAN bulk data export (MSC Nastran SOL 101, large-field fixed format) ---------- */
+  /* ---------- NASTRAN bulk data export (MSC Nastran SOL 101, fixed-format bulk data) ---------- */
 
-  function nastranReal(x) {
-    if (x === 0) return "0.0";
-    // Up to 10 significant digits, trimmed until it fits a 16-character large field (sign and 3-digit exponents included).
-    for (let digits = 9; ; digits--) {
-      const text = x.toExponential(digits).toUpperCase();
-      if (text.length <= 16) return text.includes(".") ? text : text.replace("E", ".E");
-    }
+  /* A real in the fewest characters that still read back as exactly the same double,
+   * e.g. 6. 0.3 -40000. 2.E11 4.456-4; null when that takes more than `width` characters. */
+  function exactReal(x, width) {
+    if (x === 0) return "0.";
+    const [mant, exp] = Math.abs(x).toExponential().split("e"), e = +exp, sign = x < 0 ? "-" : "";
+    const digits = mant.replace(".", "");
+    let plain;
+    if (e >= digits.length - 1) plain = digits + "0".repeat(e - digits.length + 1) + ".";
+    else if (e >= 0) plain = digits.slice(0, e + 1) + "." + digits.slice(e + 1);
+    else plain = "0." + "0".repeat(-e - 1) + digits;
+    const m = digits[0] + "." + digits.slice(1);
+    const candidates = e >= -3 && e < 6 ? [plain, plain.replace(/^0\./, ".")] : [];
+    candidates.push(`${m}E${e}`, `${m}${e < 0 ? "" : "+"}${e}`);
+    // Prefer a form that leaves a blank column, so neighbouring fields do not run together.
+    const fits = candidates.map((c) => sign + c);
+    return fits.find((c) => c.length < width) ?? fits.find((c) => c.length === width) ?? null;
   }
-  const int = (n) => ({ int: n });
-  const real = (x) => ({ real: x });
-  function field(v) {
-    if (v && typeof v === "object" && "int" in v) return String(v.int);
-    if (v && typeof v === "object" && "real" in v) return nastranReal(v.real);
-    return v == null ? "" : String(v);
+
+  /* A real for a 16-character large field: exact when it fits, otherwise rounded to as many digits as fit. */
+  function nastranReal(x) {
+    for (let digits = 17; ; digits--) {
+      const text = exactReal(digits === 17 ? x : Number(x.toPrecision(digits)), 16);
+      if (text !== null) return text;
+    }
   }
 
   /* Fields are {int}, {real} or a literal string (blank = ""). */
+  const int = (n) => ({ int: n });
+  const real = (x) => ({ real: x });
+  function smallField(v) {
+    if (v && typeof v === "object" && "int" in v) return String(v.int);
+    if (v && typeof v === "object" && "real" in v) return exactReal(v.real, 8);
+    return v == null ? "" : String(v);
+  }
+  function largeField(v) {
+    if (v && typeof v === "object" && "real" in v) return nastranReal(v.real);
+    return smallField(v);
+  }
+  const fitsSmall = (fields) => fields.every((v) => { const s = smallField(v); return s !== null && s.length <= 8; });
+
+  /* One small-field entry: the name, then eight 8-character fields per line; continuations start blank. */
+  function smallEntry(name, fields) {
+    const out = [], values = fields.map(smallField);
+    for (let i = 0; i < Math.max(values.length, 1); i += 8) {
+      const head = i === 0 ? name.padEnd(8) : "".padEnd(8);
+      out.push((head + values.slice(i, i + 8).map((v) => v.padEnd(8)).join("")).trimEnd());
+    }
+    return out;
+  }
+
   /* One large-field entry: NAME* then four 16-character fields per line. */
   function largeEntry(name, fields) {
-    const out = [], values = fields.map(field);
+    const out = [], values = fields.map(largeField);
     for (const v of values) if (v.length > 16) throw new Error(`Field ${v} is wider than 16 characters.`);
     for (let i = 0; i < Math.max(values.length, 1); i += 4) {
       const head = i === 0 ? `${name}*`.padEnd(8) : "*".padEnd(8);
@@ -433,66 +546,98 @@
     return out;
   }
 
+  /* Cards of one type share a format: small field unless some value needs more than
+   * eight characters to stay exact, then large field for the whole group. */
+  function cardGroup(name, rows) {
+    const entry = rows.every(fitsSmall) ? smallEntry : largeEntry;
+    return rows.flatMap((fields) => entry(name, fields));
+  }
+  /* A "$" line naming the columns of a small-field card. */
+  const columns = (...names) => ("$" + names[0].padEnd(7) + names.slice(1).map((n) => n.padEnd(8)).join("")).trimEnd();
+
+  const count = (n, noun) => `${n} ${noun}${n === 1 ? "" : "s"}`;
+
   /* Build a NASTRAN deck that encodes exactly the model the browser solved. */
-  function exportBdf(input, { title = "BEAMDIAG LINEAR STATIC" } = {}) {
-    const model = validate(input), nodes = mesh(model);
+  /* The input is SI, like every other function here; the deck's numbers are written in `units`. */
+  function exportBdf(input, { title = "BEAMDIAG LINEAR STATIC", units = SI } = {}) {
+    // Fifteen digits drop the last-bit noise a conversion leaves (5e-3 m² is 5000 mm², not 5000.000000000001).
+    const u = unitSystem(units), model = scaleModel(validate(input, { units: u }), u, (v, q) => +toUnits(v, q, u).toPrecision(15)), nodes = mesh(model);
     const hasLoad = model.loads.some((l) => (l.kind === "point" && l.F !== 0) || (l.kind === "moment" && l.C !== 0) || (l.kind === "dist" && (l.q1 !== 0 || l.q2 !== 0)));
     if (!hasLoad) fail("Add a non-zero load before exporting a NASTRAN deck.", "loads");
     const ids = new Map(nodes.map((x, i) => [x, i + 1])), gid = (x) => ids.get(x);
     const safeTitle = String(title).replace(/[^A-Za-z0-9 _.,()+\-]/g, " ").slice(0, 60).trim() || "BEAMDIAG";
+    const { material: mat, section: sec } = model, SPC = 1, LOAD = 2;
     const lines = [
-      "$ BEAMDIAG export: MSC Nastran SOL 101 linear static deck.",
-      "$ Units: m, N, Pa (N/m2), N/m, N*m. Planar beam along basic X; loads act in basic Y.",
-      "$ Sign convention: +Y up, rotations and couples +Z (counter-clockwise).",
-      "$ Every GRID permanently constrains 345 (out-of-plane translation and both",
-      "$ out-of-plane rotations); the beam deforms in the X-Y plane only.",
-      "$ Supports: pin = SPC1 12 (UX, UY), fixed = SPC1 126 (UX, UY, RZ).",
-      "$ PBAR I1 is the in-plane second moment (bending in the CBAR x-y plane,",
-      "$ orientation vector +Y). K1/K2 are blank: zero shear flexibility,",
-      "$ matching the Euler-Bernoulli model. I2 and J act only on constrained DOFs.",
-      "$ PARAM,POST,0 asks MSC Nastran to write the results database (.xdb).",
-      `$ Model: L=${nastranReal(model.length)} m, E=${nastranReal(model.material.E)} Pa, I=${nastranReal(model.section.I)} m4, ${model.supports.length} supports, ${model.loads.length} loads.`,
+      `$ Beam, L = ${fmt(model.length)} ${u.symbol.length}: ${count(nodes.length, "grid")}, ${count(nodes.length - 1, "CBAR")}, ${count(model.supports.length, "support")}, ${count(model.loads.length, "load")}`,
+      `$ Units ${u.ascii}. Beam on X, loads in Y (+ up), moments about Z (+ CCW).`,
       "SOL 101",
       "CEND",
       `TITLE = ${safeTitle}`,
       "ECHO = NONE",
+      "DISPLACEMENT = ALL",
+      "SPCFORCES = ALL",
+      "OLOAD = ALL",
+      "FORCE = ALL",
       "SUBCASE 1",
       "  LABEL = BEAM LOADS",
-      "  SPC = 1",
-      "  LOAD = 2",
-      "  DISPLACEMENT = ALL",
-      "  SPCFORCES = ALL",
-      "  OLOAD = ALL",
-      "  FORCE = ALL",
+      `  SPC = ${SPC}`,
+      `  LOAD = ${LOAD}`,
       "BEGIN BULK",
-      "PARAM,POST,0",
+      "$ Write the .xdb results database",
+      ...smallEntry("PARAM", ["POST", int(0)]),
+      "$",
+      "$ ---- Material and property ----",
+      columns("MAT1", "MID", "E", "G", "NU"),
+      ...cardGroup("MAT1", [[int(1), real(mat.E), "", real(mat.nu)]]),
+      "$ I1 = in-plane I. K1, K2 blank: no shear flexibility (Euler-Bernoulli).",
+      columns("PBAR", "PID", "MID", "A", "I1", "I2", "J"),
+      ...cardGroup("PBAR", [[int(1), int(1), real(sec.A), real(sec.I), real(sec.Iy), real(sec.J)]]),
+      "$",
+      "$ ---- Grid points ----",
+      "$ Planar beam: PS = 345 on every grid leaves only T1, T2 and R3 free.",
+      columns("GRDSET", "", "CP", "", "", "", "CD", "PS"),
+      ...smallEntry("GRDSET", ["", "", "", "", "", "", int(345)]),
+      columns("GRID", "ID", "CP", "X1", "X2", "X3"),
+      ...cardGroup("GRID", nodes.map((x, i) => [int(i + 1), "", real(x), real(0), real(0)])),
+      "$",
+      "$ ---- Elements ----",
+      columns("CBAR", "EID", "PID", "GA", "GB", "X1", "X2", "X3"),
+      ...cardGroup("CBAR", nodes.slice(1).map((_, e) => [int(e + 1), int(1), int(e + 1), int(e + 2), real(0), real(1), real(0)])),
+      "$",
+      "$ ---- Constraints ----",
+      "$ Pin: 12 (T1, T2). Fixed: 126 (T1, T2, R3).",
+      columns("SPC1", "SID", "C", "G1", "G2", "G3", "G4", "G5", "G6"),
     ];
-    lines.push(...largeEntry("MAT1", [int(1), real(model.material.E), "", real(model.material.nu)]));
-    lines.push(...largeEntry("PBAR", [int(1), int(1), real(model.section.A), real(model.section.I), real(model.section.Iy), real(model.section.J)]));
-    nodes.forEach((x, i) => lines.push(...largeEntry("GRID", [int(i + 1), "", real(x), real(0), real(0), "", int(345)])));
-    for (let e = 0; e < nodes.length - 1; e++)
-      lines.push(...largeEntry("CBAR", [int(e + 1), int(1), int(e + 1), int(e + 2), real(0), real(1), real(0)]));
-    for (const s of model.supports) lines.push(...largeEntry("SPC1", [int(1), int(s.kind === "fixed" ? 126 : 12), int(gid(s.x))]));
+    for (const [kind, c] of [["pin", 12], ["fixed", 126]]) {
+      const grids = model.supports.filter((s) => s.kind === kind).map((s) => gid(s.x)).sort((a, b) => a - b);
+      if (grids.length) lines.push(...smallEntry("SPC1", [int(SPC), int(c), ...grids.map(int)]));
+    }
+    lines.push("$", "$ ---- Loads ----");
+    const forces = model.loads.filter((l) => l.kind === "point" && l.F !== 0);
+    if (forces.length) lines.push(columns("FORCE", "SID", "G", "CID", "F", "N1", "N2", "N3"),
+      ...cardGroup("FORCE", forces.map((l) => [int(LOAD), int(gid(l.x)), int(0), real(l.F), real(0), real(1), real(0)])));
+    const moments = model.loads.filter((l) => l.kind === "moment" && l.C !== 0);
+    if (moments.length) lines.push(columns("MOMENT", "SID", "G", "CID", "M", "N1", "N2", "N3"),
+      ...cardGroup("MOMENT", moments.map((l) => [int(LOAD), int(gid(l.x)), int(0), real(l.C), real(0), real(0), real(1)])));
+    // One PLOAD1 per element under each distributed load, with the intensities at the element ends.
+    const ploads = [];
     for (const l of model.loads) {
-      if (l.kind === "point" && l.F !== 0) lines.push(...largeEntry("FORCE", [int(2), int(gid(l.x)), int(0), real(l.F), real(0), real(1), real(0)]));
-      if (l.kind === "moment" && l.C !== 0) lines.push(...largeEntry("MOMENT", [int(2), int(gid(l.x)), int(0), real(l.C), real(0), real(0), real(1)]));
-      if (l.kind === "dist" && (l.q1 !== 0 || l.q2 !== 0)) {
-        // One PLOAD1 per element under the load: fractional positions 0 → 1, intensities at the element ends.
-        for (let e = 0; e < nodes.length - 1; e++) {
-          const a = nodes[e], b = nodes[e + 1];
-          if (a < l.x1 || b > l.x2) continue;
-          const q = (x) => l.q1 + (l.q2 - l.q1) * (x - l.x1) / (l.x2 - l.x1);
-          lines.push(...largeEntry("PLOAD1", [int(2), int(e + 1), "FY", "FR", real(0), real(q(a)), real(1), real(q(b))]));
-        }
+      if (l.kind !== "dist" || (l.q1 === 0 && l.q2 === 0)) continue;
+      const q = (x) => l.q1 + (l.q2 - l.q1) * (x - l.x1) / (l.x2 - l.x1);
+      for (let e = 0; e < nodes.length - 1; e++) {
+        const a = nodes[e], b = nodes[e + 1];
+        if (a >= l.x1 && b <= l.x2) ploads.push([int(LOAD), int(e + 1), "FY", "FR", real(0), real(q(a)), real(1), real(q(b))]);
       }
     }
-    lines.push("ENDDATA", "");
+    if (ploads.length) lines.push(columns("PLOAD1", "SID", "EID", "TYPE", "SCALE", "X1", "P1", "X2", "P2"), ...cardGroup("PLOAD1", ploads));
+    lines.push("$", "ENDDATA", "");
     return lines.join("\n");
   }
 
   function fmt(x) {
     return Number.isInteger(x) ? String(x) : String(+x.toPrecision(6));
   }
+  const lengthText = (units) => { const u = unitSystem(units); return (x) => `${fmt(toUnits(x, "length", u))} ${u.symbol.length}`; };
 
-  return { SUPPORT_KINDS, ModelError, sectionProperties, indeterminacy, validate, mesh, solve, internal, deflection, at, diagram, extremes, exportBdf, largeEntry, nastranReal };
+  return { SUPPORT_KINDS, UNIT_SYSTEMS, DEFAULT_UNITS, toUnits, fromUnits, scaleModel, ModelError, sectionProperties, indeterminacy, validate, mesh, solve, internal, deflection, at, diagram, extremes, exportBdf, smallEntry, largeEntry, exactReal, nastranReal };
 });

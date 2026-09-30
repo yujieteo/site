@@ -5,6 +5,15 @@ Euler–Bernoulli beams with pinned and fixed supports, including statically
 indeterminate beams, plus an MSC Nastran `.bdf` exporter. Everything runs in
 the browser; `index.html` is one self-contained file.
 
+This copy tracks [yujieteo/beamdiag](https://github.com/yujieteo/beamdiag)
+(commit `7a5831f`). The site keeps its own breadcrumb (back to Visuals), the
+catalogue entry in `data/visuals/beamdiag.yaml`, the WebMCP tool checks and
+the page tests below, and three page fixes: the section cursor line ignores
+the pointer, so a handle can be dragged through it; axis ranges and load-arrow
+scales are found with loops rather than `Math.max(...values)` (so any sample
+or load count draws); and an unsolvable edit greys the extremes and the values
+table as well as the diagrams. Everything else here should match that repository.
+
 | File | Role |
 | --- | --- |
 | `engine.js` | Stiffness-method solver, exact V/M recovery, section properties, NASTRAN SOL 101 exporter. Works in the browser (`BeamDiag`) and in Node (`require`). |
@@ -21,9 +30,13 @@ python reference.py          # rebuild reference.json after editing fixtures.jso
 python reference.py --check  # fail if reference.json is stale
 ```
 
-The tests are `tests/beamdiag.test.mjs` and `tests/beamdiag-ui.test.mjs`
-(Node) and `tests/test_beamdiag.py` (Python, which also runs the engine
-through `node`).
+The tests are `tests/beamdiag.test.mjs`, `tests/beamdiag-ui.test.mjs`,
+`tests/beamdiag-review-regressions.test.mjs` and `tests/beamdiag-figure.test.mjs`
+(Node; the last two run the built page in the stand-in DOM of
+`tests/beamdiag-page-harness.mjs`), and `tests/test_beamdiag.py` and
+`tests/test_beamdiag_random.py` (Python, which also run the engine through
+`node`). [beamdiag's docs/verification.md](https://github.com/yujieteo/beamdiag/blob/main/docs/verification.md)
+lists what each checks.
 
 `tests/beamdiag-browser.test.mjs` drags a handle with real mouse events in
 Chrome, so it is skipped unless `BEAMDIAG_BROWSER_URL` points at a Chrome
@@ -41,12 +54,24 @@ Supports, loads and elements per segment have no count cap: supports go at any
 positions along a beam of any length, and the banded stiffness solver and the
 deck exporter handle every node and support.
 
-Units are SI (m, N, Pa); loads are positive upward and couples positive
-counter-clockwise; M is positive when sagging. The page lists the full
-conventions and assumptions.
+The page reads and shows every value in one consistent unit convention: SI
+N, mm, MPa (the default); SI kN, m, kPa; SI N, m, Pa; US customary lbf, in,
+psi; or US customary kip, in, ksi. The engine always solves in SI (m, N, Pa),
+so switching converts what was entered and never changes the results; the
+WebMCP tools take and return SI. x is measured from the left end or, if chosen,
+from mid-span (−L/2 to +L/2); that changes only the positions typed and shown.
+Loads are positive upward and couples positive counter-clockwise; M is
+positive when sagging. The page lists the full conventions and assumptions.
 
-The exported deck puts every GRID on basic X with `PS=345`, uses one PBAR/MAT1
-for the CBAR elements (orientation vector +Y, `I1` = in-plane I), SPC1 set 1
-for supports (pin `12`, fixed `126`), FORCE/MOMENT/PLOAD1 load set 2, and
-`PARAM,POST,0` so MSC Nastran writes an `.xdb`. The deck is checked by reading
+Every diagram has labelled x and y axes in the chosen units. The diagrams with
+every result can be saved as PNG, SVG or a one-page PDF, drawn in the page and
+saved straight to the device.
+
+The exported deck is laid out as it would be written by hand: small-field bulk
+data under `$` comment banners, switching a group to large field only when a
+value needs it. Every GRID is on basic X with `PS=345` set once on GRDSET, one
+PBAR/MAT1 serves the CBAR elements (orientation vector +Y, `I1` = in-plane I),
+SPC1 set 1 holds the supports (pin `12`, fixed `126`), FORCE/MOMENT/PLOAD1 are
+load set 2, and `PARAM,POST,0` makes MSC Nastran write an `.xdb`. Its numbers
+are in the page's unit convention, named on the `$ Units` comment line. The deck is checked by reading
 it back and re-solving it; this project has not run it through NASTRAN.

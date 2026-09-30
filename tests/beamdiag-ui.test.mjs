@@ -30,10 +30,14 @@ function page() {
     querySelector: (selector) => created.findLast((el) => selector === `[data-field="${el.dataset.field}"]`) ?? null,
     activeElement: null,
   };
-  const ctx = vm.createContext({ document, Option: function () { return element(); }, navigator: { modelContext: { registerTool: (tool) => tools.push(tool) } }, requestAnimationFrame: () => 0, cancelAnimationFrame() {} });
+  const ctx = vm.createContext({ document, Option: function () { return element(); }, navigator: { modelContext: { registerTool: (tool) => tools.push(tool) } }, requestAnimationFrame: () => 0, cancelAnimationFrame() {}, setTimeout: (fn) => { fn(); return 1; }, clearTimeout() {} });
   const html = fs.readFileSync(new URL("../visuals/beamdiag/index.html", import.meta.url), "utf8");
   for (const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) vm.runInContext(script[1], ctx);
   const get = document.getElementById;
+  // These checks are written in metres and newtons; the page opens in N, mm, MPa.
+  get("units").value = "N-m"; get("units").dispatch("change");
+  // The deck is built only when shown, downloaded or copied; keep it shown.
+  get("deck-details").open = true; get("deck-details").dispatch("toggle");
   const edit = (el, value) => { el.value = String(value); el.dispatch("input"); };
   return {
     ctx, get, edit, paths, created,
@@ -56,14 +60,11 @@ test("invalid edits invalidate exports and mark all retained results stale, then
   for (const [field, value, restore] of [["supports.1.x", 7, 6], ["section.b", -1, 100]]) {
     p.edit(p.field(field), value);
     assert.equal(p.get("deck").textContent, "");
-    assert.equal(p.get("download").disabled, true);
-    assert.equal(p.get("copy").disabled, true);
+    assert.notEqual(p.get("export-status").textContent, "");
     for (const id of ["plots", "stats", "table"]) assert.equal(p.get(id).classList.contains("stale"), true);
-    assert.match(p.get("export-status").textContent, /stale/);
     p.edit(p.field(field), restore);
     assert.ok(p.get("deck").textContent.includes("BEGIN BULK"));
-    assert.equal(p.get("download").disabled, false);
-    assert.equal(p.get("copy").disabled, false);
+    assert.equal(p.get("export-status").textContent, "");
     for (const id of ["plots", "stats", "table"]) assert.equal(p.get(id).classList.contains("stale"), false);
   }
 });
@@ -83,12 +84,14 @@ test("incomplete length edits preserve support, force, couple and distributed-en
     if (load.kind === "dist") { assert.equal(load.x1, 0); assert.equal(load.x2, 8); }
     else assert.equal(load.x, 8);
   }
+  // Choosing an example moves focus to it, which ends the length edit.
+  p.get("length").dispatch("blur");
   p.get("preset").value = "pin-pin-udl";
   p.get("preset").dispatch("change");
   p.edit(p.get("length"), "");
   p.edit(p.get("length"), "10");
   assert.equal((await p.current()).model.supports[1].x, 10);
-  assert.equal(p.get("download").disabled, false);
+  assert.ok(p.get("deck").textContent.includes("BEGIN BULK"));
 });
 
 test("length typing never captures interior coordinates that match an intermediate length", async () => {
@@ -120,7 +123,6 @@ test("length typing never captures interior coordinates that match an intermedia
       }
     });
   }
-  assert.equal(p.get("download").disabled, false);
   assert.ok(p.get("deck").textContent.includes("BEGIN BULK"));
 
   p.get("length").dispatch("blur");
@@ -132,7 +134,7 @@ test("length typing never captures interior coordinates that match an intermedia
   assert.equal(next.supports[2].x, 1);
   assert.equal(next.loads[1].x, 20);
   assert.equal(next.loads[2].x, 20);
-  assert.equal(p.get("download").disabled, false);
+  assert.ok(p.get("deck").textContent.includes("BEGIN BULK"));
 });
 
 test("all diagram axes render sample counts beyond JavaScript argument limits", () => {
@@ -144,5 +146,5 @@ test("all diagram axes render sample counts beyond JavaScript argument limits", 
   assert.equal(diagrams.length, 5);
   for (const path of diagrams) assert.doesNotMatch(path, /NaN|Infinity/);
   assert.ok(p.get("deck").textContent.includes("BEGIN BULK"));
-  assert.equal(p.get("download").disabled, false);
+  assert.ok(p.get("deck").textContent.includes("BEGIN BULK"));
 });
