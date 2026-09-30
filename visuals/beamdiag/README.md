@@ -21,8 +21,9 @@ python reference.py          # rebuild reference.json after editing fixtures.jso
 python reference.py --check  # fail if reference.json is stale
 ```
 
-The tests are `tests/beamdiag.test.mjs` (Node) and `tests/test_beamdiag.py`
-(Python, which also runs the engine through `node`).
+The tests are `tests/beamdiag.test.mjs` and `tests/beamdiag-ui.test.mjs`
+(Node) and `tests/test_beamdiag.py` (Python, which also runs the engine
+through `node`).
 
 `tests/beamdiag-browser.test.mjs` drags a handle with real mouse events in
 Chrome, so it is skipped unless `BEAMDIAG_BROWSER_URL` points at a Chrome
