@@ -70,4 +70,4 @@ jobs:
 
       - name: Run Node tests
         working-directory: site
-        run: node --test tests/corpus.test.mjs tests/vgc-turn-lab.test.mjs tests/convexity-action-engine.test.mjs tests/beamdiag.test.mjs
+        run: node --test tests/corpus.test.mjs tests/vgc-turn-lab.test.mjs tests/convexity-action-engine.test.mjs tests/beamdiag.test.mjs tests/beamdiag-ui.test.mjs

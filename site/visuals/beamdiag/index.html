@@ -1344,13 +1344,13 @@ function wire() {
     new ResizeObserver(() => { const w = host.clientWidth; if (w && w !== last && result) { last = w; render(); } }).observe(host);
   }
 
-  let endpointLength = state.length;
+  let endpointLength = state.length, attachedEndpoints = null;
   const presetSel = $("preset");
   presetSel.add(new Option("Custom", ""));
   for (const p of D.presets) presetSel.add(new Option(p.label, p.id));
   presetSel.addEventListener("change", () => {
     const p = D.presets.find((x) => x.id === presetSel.value);
-    if (p) { state = fromPreset(p); endpointLength = state.length; cursor = null; update(); }
+    if (p) { state = fromPreset(p); endpointLength = state.length; attachedEndpoints = null; cursor = null; update(); }
   });
   for (const b of document.querySelectorAll("[data-ends]")) {
     b.addEventListener("click", () => {
@@ -1364,21 +1364,26 @@ function wire() {
   }
   $("length").addEventListener("input", () => {
     const v = $("length").value === "" ? NaN : Number($("length").value);
-    const old = endpointLength;
+    if (attachedEndpoints === null) {
+      attachedEndpoints = [];
+      for (const [group, keys] of [["supports", ["x"]], ["loads", ["x", "x1", "x2"]]]) {
+        state[group].forEach((target, i) => {
+          for (const key of keys) if (target[key] === endpointLength) attachedEndpoints.push({ target, key, field: `${group}.${i}.${key}` });
+        });
+      }
+    }
     state.length = v;
-    // Keep supports and loads at the right end attached to it.
     if (Number.isFinite(v) && v > 0) {
       endpointLength = v;
-      const set = (field, x) => { const input = document.querySelector(`[data-field="${field}"]`); if (input) input.value = tidy(x); };
-      state.supports.forEach((s, i) => { if (s.x === old) { s.x = v; set(`supports.${i}.x`, v); } });
-      state.loads.forEach((l, i) => {
-        if (l.x === old) { l.x = v; set(`loads.${i}.x`, v); }
-        if (l.x1 === old) { l.x1 = v; set(`loads.${i}.x1`, v); }
-        if (l.x2 === old) { l.x2 = v; set(`loads.${i}.x2`, v); }
-      });
+      for (const { target, key, field } of attachedEndpoints) {
+        target[key] = v;
+        const input = document.querySelector(`[data-field="${field}"]`);
+        if (input) input.value = tidy(v);
+      }
     }
     update({ keepForm: true });
   });
+  $("length").addEventListener("blur", () => { attachedEndpoints = null; });
   $("divisions").addEventListener("input", () => { state.divisions = Number($("divisions").value); update({ keepForm: true }); });
   $("add-support").addEventListener("click", () => {
     const L = state.length, taken = new Set(state.supports.map((s) => s.x));

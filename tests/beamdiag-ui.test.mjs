@@ -83,6 +83,50 @@ test("incomplete length edits preserve support, force, couple and distributed-en
   assert.equal(p.get("download").disabled, false);
 });
 
+test("length typing never captures interior coordinates that match an intermediate length", async () => {
+  const p = page();
+  p.get("add-support").dispatch("click");
+  p.edit(p.field("supports.2.x"), 1);
+  for (const kind of ["point", "moment"]) {
+    for (const x of [1, 6]) {
+      p.get(`add-${kind}`).dispatch("click");
+      const model = (await p.current()).model;
+      p.edit(p.field(`loads.${model.loads.length - 1}.x`), x);
+    }
+  }
+  for (const [x1, x2] of [[1, 6], [0, 1]]) {
+    p.get("add-dist").dispatch("click");
+    const model = (await p.current()).model;
+    const i = model.loads.length - 1;
+    p.edit(p.field(`loads.${i}.x1`), x1);
+    p.edit(p.field(`loads.${i}.x2`), x2);
+  }
+  const original = (await p.current()).model;
+  for (const value of ["", "1", "12"]) p.edit(p.get("length"), value);
+  const resized = (await p.current()).model;
+  assert.equal(resized.length, 12);
+  for (const group of ["supports", "loads"]) {
+    original[group].forEach((record, i) => {
+      for (const key of ["x", "x1", "x2"]) {
+        if (key in record) assert.equal(resized[group][i][key], record[key] === 6 ? 12 : record[key], `${group}.${i}.${key}`);
+      }
+    });
+  }
+  assert.equal(p.get("download").disabled, false);
+  assert.ok(p.get("deck").textContent.includes("BEGIN BULK"));
+
+  p.get("length").dispatch("blur");
+  p.edit(p.field("supports.1.x"), 11);
+  p.edit(p.field("loads.1.x"), 12);
+  for (const value of ["", "2", "20"]) p.edit(p.get("length"), value);
+  const next = (await p.current()).model;
+  assert.equal(next.supports[1].x, 11);
+  assert.equal(next.supports[2].x, 1);
+  assert.equal(next.loads[1].x, 20);
+  assert.equal(next.loads[2].x, 20);
+  assert.equal(p.get("download").disabled, false);
+});
+
 test("all diagram axes render sample counts beyond JavaScript argument limits", () => {
   const p = page();
   vm.runInContext(`BeamDiag.diagram = () => Array.from({ length: 300000 }, (_, i) => ({ x: i / 299999 * 6, V: i % 2 ? 2000 : -1000, M: i % 2 ? 3000 : -2000, v: i % 2 ? 0.004 : -0.003 }));`, p.ctx);
