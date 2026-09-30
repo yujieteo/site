@@ -544,12 +544,13 @@ function expm(A) {
 }
 /* Solve (zI - A) x = b for complex z. */
 function resolvent(A, b, z) {
-  var n = A.length, M = [], i, j, r;
+  var n = A.length, M = [], i, j, r, det = cx(1);
   for (i = 0; i < n; i++) { M.push([]); for (j = 0; j < n; j++) M[i].push(cx(i === j ? z.re - A[i][j] : -A[i][j], i === j ? z.im : 0)); M[i].push(cx(b[i], 0)); }
   for (var c = 0; c < n; c++) {
     var piv = c;
     for (r = c + 1; r < n; r++) if (cabs(M[r][c]) > cabs(M[piv][c])) piv = r;
     var t = M[c]; M[c] = M[piv]; M[piv] = t;
+    det = cmul(det, piv === c ? M[c][c] : cscale(M[c][c], -1));
     for (r = c + 1; r < n; r++) {
       var f = cdiv(M[r][c], M[c][c]);
       for (j = c; j <= n; j++) M[r][j] = csub(M[r][j], cmul(f, M[c][j]));
@@ -561,7 +562,7 @@ function resolvent(A, b, z) {
     for (j = i + 1; j < n; j++) sacc = csub(sacc, cmul(M[i][j], x[j]));
     x[i] = cdiv(sacc, M[i][i]);
   }
-  return x;
+  return { x: x, det: det };
 }
 
 /* ---------- input parser: a small hand-written Python subset. Nothing is ever passed to eval. ---------- */
@@ -819,7 +820,7 @@ function parseField(src, variable, field) {
     if (num.every(function (c) { return c === 0; })) throw new InputError(field + ' is zero, so the loop is open', src.length);
     var dl = den[den.length - 1];
     num = num.map(function (c) { return c / dl; }); den = den.map(function (c) { return c / dl; });
-    if (den.length - 1 > MAX_ORDER || num.length - 1 > MAX_ORDER) throw new InputError(field + ' has order ' + Math.max(den.length, num.length - 1) + '; the limit is ' + MAX_ORDER + ' so the roots stay reliable', src.length);
+    if (den.length - 1 > MAX_ORDER || num.length - 1 > MAX_ORDER) throw new InputError(field + ' has order ' + (Math.max(den.length, num.length) - 1) + '; the limit is ' + MAX_ORDER + ' so the roots stay reliable', src.length);
     return { ok: true, num: num, den: den, hints: out.hints };
   } catch (e) {
     if (e instanceof InputError) return { ok: false, error: e.message, pos: e.pos };
@@ -922,26 +923,25 @@ function zohDiscretise(num, den, T) {
   M[n - 1][n] = T;
   var E = expm(M), Phi = [], Gam = [];
   for (i = 0; i < n; i++) { Phi.push(E[i].slice(0, n)); Gam.push(E[i][n]); }
-  var zp = proots(den).map(function (p) { return cexp(cscale(p, T)); });
-  var denz = pfromRoots(zp), Mpts = n + 1;
+  var zp = proots(den).map(function (p) { return cexp(cscale(p, T)); }), Mpts = n + 1;
   var rho = 1.25 * Math.max(1, Math.max.apply(null, zp.map(cabs)));
   var vals = [];
   for (var k = 0; k < Mpts; k++) {
     var th = 2 * Math.PI * k / Mpts + Math.PI / Mpts, z = cscale(cexp(cx(0, th)), rho);
-    var xres = resolvent(Phi, Gam, z), g = cx(dd, 0);
-    for (i = 0; i < n; i++) g = cadd(g, cscale(xres[i], b[i] || 0));
-    vals.push({ th: th, v: cmul(g, pevalC(denz, z)) });
+    var res = resolvent(Phi, Gam, z), g = cx(dd, 0);
+    for (i = 0; i < n; i++) g = cadd(g, cscale(res.x[i], b[i] || 0));
+    vals.push({ th: th, v: cmul(g, res.det), d: res.det });
   }
-  var numz = [];
+  var numz = [], denz = [];
   for (j = 0; j < Mpts; j++) {
-    var acc = cx(0);
-    vals.forEach(function (pt) { acc = cadd(acc, cmul(pt.v, cexp(cx(0, -j * pt.th)))); });
-    numz.push(acc.re / (Mpts * Math.pow(rho, j)));
+    var accN = cx(0), accD = cx(0);
+    vals.forEach(function (pt) { var w = cexp(cx(0, -j * pt.th)); accN = cadd(accN, cmul(pt.v, w)); accD = cadd(accD, cmul(pt.d, w)); });
+    numz.push(accN.re / (Mpts * Math.pow(rho, j))); denz.push(accD.re / (Mpts * Math.pow(rho, j)));
   }
   if (dd === 0) numz[n] = 0;
-  var big = maxAbs(numz);
-  numz = numz.map(function (c) { return Math.abs(c) < 1e-12 * big ? 0 : c; });
-  return { num: ptrim(numz), den: denz };
+  var out = monic(numz, denz), big = maxAbs(out.num);
+  out.num = ptrim(out.num.map(function (c) { return Math.abs(c) < 1e-12 * big ? 0 : c; }));
+  return out;
 }
 function tustinDiscretise(num, den, T) {
   var n = ptrim(den).length - 1, w = 2 / T;
@@ -1027,7 +1027,7 @@ function buildLoop(inputs) {
     T = Number(inputs.sampleTime);
     if (inputs.sampleTime === null || inputs.sampleTime === '' || !isFinite(T) || T <= 0) errors.sampleTime = 'Enter a sample time T > 0 (s) for the z-plane';
   }
-  var delay = inputs.delay || {}, dv = Number(delay.value || 0), padeOrder = Number(delay.padeOrder == null ? 2 : delay.padeOrder);
+  var delay = inputs.delay || {}, dv = delay.value == null ? 0 : Number(delay.value), padeOrder = Number(delay.padeOrder == null ? 2 : delay.padeOrder);
   if (!isFinite(dv) || dv < 0) errors.delay = 'The delay must be zero or positive';
   else if (mode === 'z' && !Number.isInteger(dv)) errors.delay = 'In the z-plane the delay is a whole number of samples n';
   else if (mode === 'z' && dv > MAX_ORDER) errors.delay = 'A delay of ' + dv + ' samples exceeds the order limit of ' + MAX_ORDER;
@@ -1071,8 +1071,9 @@ function buildLoop(inputs) {
     errors.G = 'L = K·C·G·H has no poles, so there is no root locus. Enter a plant with at least one pole, e.g. 1 / (s + 1).';
     return { ok: false, errors: errors, hints: hints };
   }
-  ['C', 'H'].forEach(function (f) {
-    if (!isProper(parsed[f].num, parsed[f].den)) warnings.push({ kind: 'improper', level: 'warn', text: f + ' is improper on its own (more zeros than poles), so it is not realisable by itself; the loop L is still proper.' });
+  ['G', 'C', 'H'].forEach(function (f) {
+    var q = f === 'G' ? Gs : parsed[f];
+    if (!isProper(q.num, q.den)) warnings.push({ kind: 'improper', level: 'warn', text: f + ' is improper on its own (more zeros than poles), so it is not realisable by itself; the loop L is still proper.' });
   });
   var poles = proots(den), zeros = proots(num);
   var scale = Math.max.apply(null, [mode === 'z' ? 1 : 0].concat(poles.map(cabs), zeros.map(cabs)));
@@ -1390,7 +1391,7 @@ function recordJson(inputs) {
     schema_version: SCHEMA_VERSION, mode: inputs.mode, sampleTime: inputs.mode === 'z' ? Number(inputs.sampleTime) : null,
     method: inputs.mode === 'z' ? (inputs.method || 'zoh') : null,
     fields: { C: String(inputs.fields.C), G: String(inputs.fields.G), H: String(inputs.fields.H) },
-    delay: { value: Number(inputs.delay.value || 0), padeOrder: Number(inputs.delay.padeOrder || 2) },
+    delay: { value: inputs.delay.value == null ? 0 : Number(inputs.delay.value), padeOrder: Number(inputs.delay.padeOrder || 2) },
     kMax: inputs.kMax === null || inputs.kMax === undefined ? null : Number(inputs.kMax), k: Number(inputs.k),
     requirements: { zetaMin: r.zetaMin == null ? null : Number(r.zetaMin), wnMin: r.wnMin == null ? null : Number(r.wnMin), wnMax: r.wnMax == null ? null : Number(r.wnMax), settlingTime: r.settlingTime == null ? null : Number(r.settlingTime) },
     pins: (inputs.pins || []).map(function (p) { return { k: Number(p.k) }; })
@@ -1774,7 +1775,7 @@ if (typeof document !== 'undefined') (function () {
   var canvas = $('plot'), ctx2 = canvas.getContext('2d'), tip = $('tip');
 
   /* ----- controls <-> inputs ----- */
-  function numOrNull(el) { var v = el.value.trim(); if (v === '') return null; var n = Number(v); return isFinite(n) ? n : NaN; }
+  function numOrNull(el) { if (el.validity && el.validity.badInput) return NaN; var v = el.value.trim(); if (v === '') return null; var n = Number(v); return isFinite(n) ? n : NaN; }
   function syncControls() {
     $('fC').value = inputs.fields.C; $('fG').value = inputs.fields.G; $('fH').value = inputs.fields.H;
     var z = inputs.mode === 'z';
@@ -2173,7 +2174,7 @@ if (typeof document !== 'undefined') (function () {
   $('modeS').addEventListener('click', function () { setMode('s'); });
   $('modeZ').addEventListener('click', function () { setMode('z'); });
   $('kSlider').addEventListener('input', function () { if (analysis) updateK(sliderToK(Number($('kSlider').value), analysis.kMax)); });
-  $('kBox').addEventListener('change', function () { var v = Number($('kBox').value); if (analysis && isFinite(v) && v >= 0) updateK(v, true); else if (analysis) $('kBox').value = Number(inputs.k.toPrecision(6)); });
+  $('kBox').addEventListener('change', function () { var v = numOrNull($('kBox')); if (analysis && v !== null && isFinite(v) && v >= 0) updateK(v, true); else if (analysis) $('kBox').value = Number(inputs.k.toPrecision(6)); });
   $('kBox').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('kBox').dispatchEvent(new Event('change')); });
   $('pinBtn').addEventListener('click', function () { if (analysis) { addPin(inputs.k); renderPins(); draw(); } });
   $('clearPins').addEventListener('click', function () { inputs.pins = []; renderPins(); draw(); });

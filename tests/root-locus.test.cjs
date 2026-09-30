@@ -31,12 +31,85 @@ const same = (actual, expected, message) => assert.deepEqual(plain(actual), expe
 const close = (actual, expected, tol, label) =>
   assert.ok(Math.abs(actual - expected) <= tol, `${label}: ${actual} vs ${expected}`);
 
-test('the page is one self-contained file with no network, eval or storage', () => {
-  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+href=|@import|url\(\s*['"]?https?:/i);
-  assert.doesNotMatch(html, /\bfetch\(|XMLHttpRequest|localStorage|sessionStorage|indexedDB|\beval\(|new Function\(/);
-  assert.match(html, /if \(typeof module !== 'undefined'\) module\.exports = \{/);
-  const core = html.indexOf("if (typeof module !== 'undefined')"), ui = html.indexOf("if (typeof document !== 'undefined')");
-  assert.ok(core > 0 && ui > core, 'the core block comes before the UI');
+// A minimal browser stand-in: enough DOM for the UI block to run, with traps that record any reach for
+// the network, storage or dynamic code.
+function loadPage() {
+  const reached = [];
+  const trap = name => ({get() { reached.push(name); return undefined; }, configurable: true});
+  const traps = {};
+  for (const name of ['fetch', 'XMLHttpRequest', 'WebSocket', 'EventSource', 'Worker', 'localStorage', 'sessionStorage',
+    'indexedDB', 'eval', 'Function', 'importScripts']) traps[name] = trap(name);
+  const ctx2d = new Proxy({}, {get: (t, k) => k in t ? t[k] : k === 'measureText' ? () => ({width: 0}) : () => {}});
+  const elements = new Map();
+  const element = () => {
+    const listeners = {};
+    return {
+      raw: '', get value() { return this.raw; }, set value(v) { this.raw = String(v); }, textContent: '', innerHTML: '', hidden: false, open: false, disabled: false, placeholder: '', width: 0, height: 0,
+      scrollHeight: 0, style: {}, dataset: {}, validity: {badInput: false}, files: [], attrs: {},
+      classList: {add() {}, remove() {}},
+      setAttribute(k, v) { this.attrs[k] = String(v); }, getAttribute(k) { return this.attrs[k]; },
+      addEventListener(type, fn) { (listeners[type] ||= []).push(fn); },
+      dispatchEvent(e) { (listeners[e.type] || []).forEach(fn => fn(e)); return true; },
+      appendChild() {}, contains() { return false; }, remove() {}, focus() {}, select() {}, click() {}, close() {}, showModal() {},
+      scrollIntoView() {}, getBoundingClientRect: () => ({width: 600, height: 400, left: 0, top: 0}), getContext: () => ctx2d,
+    };
+  };
+  const document = {
+    activeElement: null, body: element(), documentElement: element(), addEventListener() {}, execCommand: () => true,
+    createElement: element,
+    getElementById: id => { if (!elements.has(id)) elements.set(id, element()); return elements.get(id); },
+  };
+  Object.defineProperty(document, 'cookie', trap('document.cookie'));
+  const window = {devicePixelRatio: 1, addEventListener() {}, matchMedia: () => ({matches: false, addEventListener() {}})};
+  Object.defineProperties(window, traps);
+  const context = {module: {exports: {}}, console, document, window, navigator: {}, location: {search: ''},
+    setTimeout: fn => { fn(); return 0; }, clearTimeout() {}, getComputedStyle: () => ({getPropertyValue: () => '', fontFamily: 'serif'}),
+    Event: class { constructor(type) { this.type = type; } }};
+  Object.defineProperties(context, traps);
+  const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
+  assert.equal(scripts.length, 1);
+  vm.runInNewContext(scripts[0], context);
+  const $ = id => document.getElementById(id);
+  const fire = (id, type) => $(id).dispatchEvent(new context.Event(type));
+  return {core: context.module.exports, $, fire, reached};
+}
+
+test('the page runs its examples, export, import and self-tests without network, storage or eval', () => {
+  const page = loadPage();
+  assert.match(page.$('badges').innerHTML, /Stable/);
+  page.core.EXAMPLES.forEach((ex, i) => {
+    page.$('examples').value = String(i);
+    page.fire('examples', 'change');
+    assert.doesNotMatch(page.$('badges').innerHTML, /Input error/, ex.id);
+    assert.equal(page.$('plotNote').textContent, '', ex.id);
+    const md = page.core.exportMarkdown(page.core.EXAMPLES[i].inputs, {date: '2026-09-30'});
+    page.$('importText').value = md;
+    page.fire('importBtn', 'click');
+    assert.equal(page.$('importErr').textContent, '', ex.id);
+    page.fire('copyBtn', 'click');
+    assert.match(page.$('ioStatus').textContent, /Copied/, ex.id);
+  });
+  page.fire('testBtn', 'click');
+  assert.match(page.$('testSummary').innerHTML, /PASS/);
+  same(page.reached, []);
+});
+
+test('a number box the browser cannot parse is an inline error, not a blank', () => {
+  for (const [id, errId] of [['delayTd', 'eD'], ['zetaMin', 'eR'], ['kMax', 'eK']]) {
+    const page = loadPage();
+    page.$('examples').value = '4';
+    page.fire('examples', 'change');
+    assert.equal(page.$(errId).textContent, '', id);
+    Object.assign(page.$(id), {value: '', validity: {badInput: true}});
+    page.fire(id, 'input');
+    assert.notEqual(page.$(errId).textContent, '', id);
+    assert.match(page.$('plotNote').textContent, /last valid loop/, id);
+  }
+  const page = loadPage();
+  page.$('kBox').value = '';
+  page.$('kBox').validity = {badInput: true};
+  page.fire('kBox', 'change');
+  assert.equal(page.$('kBox').value, '1');
 });
 
 test('every built-in verification case passes in Node', () => {
@@ -142,7 +215,24 @@ test('Tustin, matched and Pade match hand results; order above 12 is refused', (
   same(p, {num: [1, -1], den: [1, 1]});
   const big = R.analyze(s({fields: {G: '1 / (s + 1)**13'}}));
   assert.equal(big.ok, false);
-  assert.match(big.errors.G, /limit is 12/);
+  assert.match(big.errors.G, /G has order 13; the limit is 12/);
+});
+
+test('ZOH keeps the DC gain for repeated poles', () => {
+  for (const [G, T] of [['1 / (s + 1)**3', 0.1], ['1 / (s + 1)**6', 0.5]]) {
+    const g = R.parseField(G, 's', 'G'), z = R.zohDiscretise(g.num, g.den, T);
+    const dc = R.pevalR(z.num, 1) / R.pevalR(z.den, 1), want = g.num[0] / g.den[0];
+    close(dc, want, 1e-9 * Math.abs(want), `${G} at T = ${T}`);
+  }
+});
+
+test('an improper plant is flagged even when C makes the loop proper, and a NaN delay is an error', () => {
+  const a = R.analyze(s({fields: {C: '1 / (s + 1)**2', G: 's**2 / (s + 1)'}}));
+  assert.equal(a.ok, true);
+  assert.ok(a.warnings.some(w => w.kind === 'improper' && /^G is improper/.test(w.text)));
+  const nan = R.analyze(s({fields: {G: '1 / (s + 1)'}, delay: {value: NaN, padeOrder: 2}}));
+  assert.equal(nan.ok, false);
+  assert.match(nan.errors.delay, /zero or positive/);
 });
 
 test('Markdown export has the sections in order and round-trips through import', () => {
