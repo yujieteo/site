@@ -111,6 +111,18 @@ test("a finite negative real DC gain is a phase crossover at ω = 0", () => {
   assert.deepEqual(exported.phaseCrossovers.map((c) => [c.w, c.atInfinity]), [[0, false], [null, true]]);
 });
 
+test("ω = 0 and ω = ∞ crossovers take the limiting phase, not the grid endpoint's", () => {
+  const far = (plant, wMin, wMax) => F.analyze({ plant, K: 1, range: { auto: false, wMin, wMax, pointsPerDecade: 50 } });
+  const cubic = { form: "zpk", zeros: [], poles: [{ re: -1, im: 0 }, { re: -2, im: 0 }, { re: -3, im: 0 }], gain: -0.5 };
+  const dc = far(cubic, 100, 1000).margins.phaseCrossovers.find((c) => c.w === 0);
+  assert.equal(dc.phaseDeg, -180);
+  close(dc.gmDb, -20 * Math.log10(0.5 / 6), 1e-12, "DC GM");
+  // Two RHP zeros: the phase is +180° at DC and −180° at ∞; a range far below the corners must not label ∞ as +180°.
+  const bi = { form: "zpk", zeros: [{ re: 1, im: 0 }, { re: 2, im: 0 }], poles: [{ re: -1, im: 0 }, { re: -2, im: 0 }], gain: -0.5 };
+  const pcs = far(bi, 0.001, 0.01).margins.phaseCrossovers;
+  assert.deepEqual([...pcs.filter((c) => c.w === 0 || c.atInfinity).map((c) => [c.w, c.phaseDeg])], [[0, 180], [Infinity, -180]]);
+});
+
 test("a gain crossover with PM ≤ 0 leaves a delay margin of 0", () => {
   const r = F.analyze({ plant: { form: "zpk", zeros: [], poles: [{ re: 0, im: 1 }, { re: 0, im: -1 }], gain: 1 }, K: 0.5 });
   assert.equal(r.margins.gainCrossovers.length, 2);
