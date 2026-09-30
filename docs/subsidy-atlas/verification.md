@@ -58,9 +58,9 @@ read and checked; the screenshots below are the actual phone captures.
 ## Screenshots for the PR
 
 `desktop-matrix.png` was captured after the matrix navigation fix. The
-other screenshots come from the first commit (392b852). Later commits removed
-the analogy graph (9c494f5), moved WebMCP registration to
-`document.modelContext` (a9c4846) and changed matrix selection. Those older
+other screenshots come from the initial Subsidy Atlas commit. Later commits
+removed the analogy graph, moved WebMCP registration to
+`document.modelContext` and changed matrix selection. Those older
 screenshots have not been refreshed. They may still show removed precedent
 links, and the matrix in `desktop-details.png` shows the old collapsed state.
 
