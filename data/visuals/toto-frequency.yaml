@@ -1,0 +1,10 @@
+slug: toto-frequency
+title: TOTO ball frequency
+summary: "How often each Singapore Pools TOTO ball, 1 to 49, was a winning number in the last 3 months, 6 months or 1 year, from 105 published draws up to 28 September 2026. Balls turn darker when drawn more than 3, 5 or 10 times; hover or tap for exact counts, sort by most drawn, or highlight one band. Every draw is random, so past counts do not predict future draws."
+source_url: https://www.singaporepools.com.sg/DataFileArchive/Lottery/Output/toto_result_draw_list_en.html
+fetched: "2026-09-30"
+html_path: visuals/toto-frequency/index.html
+data_path: visuals/toto-frequency/raw.json
+webmcp_tools: [get_metadata, get_ball_counts, get_ball, list_draws]
+tags: [singapore, lottery, toto, probability]
+category: data visualization
