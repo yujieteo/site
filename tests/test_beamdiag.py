@@ -32,6 +32,37 @@ for (const c of fixtures.cases) {
 process.stdout.write(JSON.stringify(out));
 """
 
+# Run the built page's scripts against an inert DOM with a stub navigator.modelContext,
+# then call the registered tools the way an agent would.
+PAGE_SCRIPT = r"""
+const fs = require("fs"), vm = require("vm");
+const dir = process.argv[1];
+const html = fs.readFileSync(dir + "/index.html", "utf8");
+const fixtures = require(dir + "/fixtures.json");
+const inert = () => new Proxy(function () {}, {
+  get: (t, k) => (k === "modelContext" ? undefined : k === Symbol.iterator ? [][Symbol.iterator] : k === Symbol.toPrimitive ? () => 0 : inert()),
+  set: () => true, apply: () => inert(), construct: () => inert(),
+});
+const tools = [];
+const ctx = vm.createContext({
+  document: inert(), requestAnimationFrame: () => 0, cancelAnimationFrame() {},
+  ResizeObserver: function () { return inert(); }, Option: function () { return inert(); },
+  navigator: { modelContext: { registerTool: (t) => tools.push(t) } },
+});
+for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) vm.runInContext(m[1], ctx);
+const call = async (name, input) => JSON.parse((await tools.find((t) => t.name === name).execute(input)).content[0].text);
+(async () => {
+  const model = fixtures.cases[0].model;
+  process.stdout.write(JSON.stringify({
+    names: tools.map((t) => t.name),
+    solve: await call("solve_beam", model),
+    bdf: await call("export_nastran_bdf", { model }),
+    current: await call("get_current_beam", {}),
+    bad: await call("solve_beam", { ...model, supports: [] }),
+  }));
+})();
+"""
+
 
 def node_results():
     node = shutil.which("node")
@@ -167,7 +198,7 @@ class BeamDiagTest(unittest.TestCase):
             subprocess.run([sys.executable, str(copy / "build.py")], check=True, capture_output=True)
             self.assertEqual((copy / "index.html").read_text(encoding="utf-8"), (VIZ / "index.html").read_text(encoding="utf-8"))
 
-    def test_page_is_self_contained_and_registers_its_tools(self):
+    def test_page_is_self_contained(self):
         html = (VIZ / "index.html").read_text(encoding="utf-8")
         parser = _Ids()
         parser.feed(html)
@@ -175,10 +206,20 @@ class BeamDiagTest(unittest.TestCase):
             self.assertIn(required, parser.ids)
         self.assertFalse([s for s in parser.scripts if s.get("src") or s.get("href")], "no external scripts or styles")
         stub = yaml.safe_load((ROOT / "data" / "visuals" / "beamdiag.yaml").read_text(encoding="utf-8"))
-        for tool in stub["webmcp_tools"]:
-            self.assertIn(f'name: "{tool}"', html)
         self.assertEqual(stub["html_path"], "visuals/beamdiag/index.html")
         self.assertEqual(stub["data_path"], "visuals/beamdiag/raw.json")
+
+    def test_page_registers_its_webmcp_tools(self):
+        stub = yaml.safe_load((ROOT / "data" / "visuals" / "beamdiag.yaml").read_text(encoding="utf-8"))
+        run = subprocess.run([shutil.which("node") or "node", "-e", PAGE_SCRIPT, str(VIZ)], check=True, capture_output=True, text=True)
+        page = json.loads(run.stdout)
+        self.assertEqual(page["names"], stub["webmcp_tools"])
+        case = FIXTURES["cases"][0]
+        expected = node_results()[case["id"]]
+        self.assertEqual(page["solve"]["reactions"], expected["reactions"])
+        self.assertEqual(page["bdf"]["bdf"], expected["bdf"])
+        self.assertIn("reactions", page["current"])
+        self.assertIn("error", page["bad"])
 
     def test_published_copy_matches_sources(self):
         published = ROOT / "site" / "visuals" / "beamdiag"

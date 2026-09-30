@@ -759,20 +759,6 @@ function fromPreset(p) {
   };
 }
 
-function encode(s) {
-  try { return btoa(unescape(encodeURIComponent(JSON.stringify(s)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); } catch { return ""; }
-}
-function decode(text) {
-  try {
-    const s = JSON.parse(decodeURIComponent(escape(atob(text.replace(/-/g, "+").replace(/_/g, "/")))));
-    if (s && typeof s === "object" && Array.isArray(s.supports) && Array.isArray(s.loads) && s.material && s.section) return s;
-  } catch { /* fall through */ }
-  return null;
-}
-function saveHash() {
-  try { history.replaceState(null, "", "#m=" + encode({ ...state, preset: undefined })); } catch { /* sandboxed */ }
-}
-
 function modelOf(s) {
   return {
     length: s.length, divisions: s.divisions,
@@ -935,7 +921,6 @@ function update({ keepForm = false } = {}) {
     markInvalid(null);
     $("plots").classList.remove("stale");
   }
-  saveHash();
   if (result) {
     if (cursor == null || cursor > result.model.length) cursor = result.model.length / 2;
     render();
@@ -1293,17 +1278,25 @@ function wire() {
     ev.preventDefault();
     h.focus({ preventScroll: true });
   });
+  let dragX = null, dragFrame = 0;
+  const drag = () => {
+    dragFrame = 0;
+    if (!active || dragX == null) return;
+    moveHandle(active, dragX);
+    dragX = null;
+    const again = host.querySelector(`[data-key="${active}"]`);
+    if (again) again.classList.add("active");
+  };
   host.addEventListener("pointermove", (ev) => {
     if (!layout) return;
     if (active) {
-      moveHandle(active, snap(pointerX(ev), stepFor(state.length)));
-      const again = host.querySelector(`[data-key="${active}"]`);
-      if (again) again.classList.add("active");
+      dragX = snap(pointerX(ev), stepFor(state.length));
+      if (!dragFrame) dragFrame = requestAnimationFrame(drag);
       return;
     }
     setCursor(snapEvent(pointerX(ev), 6));
   });
-  const end = () => { if (active) { const h = host.querySelector(`[data-key="${active}"]`); if (h) h.classList.remove("active"); } active = null; };
+  const end = () => { if (dragFrame) { cancelAnimationFrame(dragFrame); drag(); } if (active) { const h = host.querySelector(`[data-key="${active}"]`); if (h) h.classList.remove("active"); } active = null; };
   host.addEventListener("pointerup", end);
   host.addEventListener("pointercancel", end);
   host.addEventListener("keydown", (ev) => {
@@ -1496,11 +1489,9 @@ function registerTools() {
 /* ---------- start ---------- */
 function start() {
   staticText();
-  const hash = location.hash.startsWith("#m=") ? decode(location.hash.slice(3)) : null;
-  state = hash ? { divisions: 4, ...hash, preset: null } : fromPreset(D.presets[0]);
+  state = fromPreset(D.presets[0]);
   wire();
   update();
-  if (!result) { state = fromPreset(D.presets[0]); update(); }
   registerTools();
 }
 start();
