@@ -543,7 +543,7 @@
         const st = { ...state, loads: { axial: 0, shear: 0, torsion: 0, bending: 0, inplane: 0, [k]: sign } };
         let best = Infinity;
         for (const pl of plates(model, st)) {
-          const xs = pl.fadeEnds ? [RAMP, (pl.x0 + pl.x1) / 2] : [(pl.x0 + pl.x1) / 2];
+          const xs = pl.fadeEnds ? [pl.x0, RAMP, (pl.x0 + pl.x1) / 2] : [(pl.x0 + pl.x1) / 2];
           for (const x of xs) { const { s, t2 } = ratio(pl, x); if (s + t2 > 0) best = Math.min(best, onset(s, t2)); }
         }
         if (best <= 1) out[k][sign > 0 ? "pos" : "neg"] = best;
@@ -561,7 +561,7 @@
   function bucklingState(P) {
     return (P.plates || []).map((pl) => {
       let r = 0;
-      for (let k = 0; k <= 20; k++) { const x = pl.x0 + ((pl.x1 - pl.x0) * k) / 20; if (!pl.fadeEnds || (x > RAMP && x < pl.x1 - RAMP * 0.5)) r = Math.max(r, ratio(pl, x).r); }
+      for (let k = 0; k <= 20; k++) { const x = pl.x0 + ((pl.x1 - pl.x0) * k) / 20; if (!pl.fadeEnds || x < pl.x1 - RAMP * 0.5) r = Math.max(r, ratio(pl, x).r); }
       return { name: pl.name, ratio: r, buckled: r > 1 };
     });
   }

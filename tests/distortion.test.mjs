@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import test from "node:test";
+import vm from "node:vm";
 
 const require = createRequire(import.meta.url);
 const D = require("../visuals/distortion/kinematics.js");
@@ -296,20 +297,81 @@ test("presets set up what their titles promise", () => {
   for (const p of D.PRESETS) assert.ok(p.hint.length > 40 && p.title);
 });
 
-test("every effect in the legend is labelled analytic or assumed in raw.json, and the page registers its WebMCP tools", async () => {
+test("every effect in the legend is labelled analytic or assumed in raw.json", async () => {
   const raw = JSON.parse(await readFile(new URL("../visuals/distortion/raw.json", import.meta.url), "utf8"));
   const ids = new Set(raw.effects.map((e) => e.id));
   for (const e of raw.effects) assert.ok(["analytic", "assumed"].includes(e.basis));
   for (const id of ["shearlag", "buckling", "thresholds"]) assert.equal(raw.effects.find((e) => e.id === id).basis, "assumed");
-  for (const s of D.STRUCTURES) for (const p of D.PRESETS) {
+  for (const p of D.PRESETS) {
     const r = D.presetState(p.id);
     for (const e of D.activeEffects(D.prepare(D.buildModel(r.state.structure), r.state))) assert.ok(ids.has(e.id), e.id);
-    void s;
   }
-  const html = await readFile(INDEX, "utf8");
-  for (const tool of ["get_metadata", "get_current_view", "set_view"]) assert.match(html, new RegExp(`name: "${tool}"`));
-  assert.match(html, /three\.js r186/);
-  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+href=|@import|fetch\(|XMLHttpRequest/, "no external resources");
+});
+
+/* Runs the built page's scripts in a stand-in browser without WebGL, recording WebMCP tools and network calls. */
+function runPage(html) {
+  const tools = new Map(), requests = [], frames = [];
+  const noop = () => {};
+  const ctx2d = new Proxy({}, { get: (t, k) => (k in t ? t[k] : noop), set: (t, k, v) => ((t[k] = v), true) });
+  const elements = new Map();
+  const element = () => {
+    const el = {
+      children: [], style: {}, dataset: {}, attrs: {}, hidden: false, disabled: false, checked: false, value: "", textContent: "", innerHTML: "",
+      clientWidth: 200, clientHeight: 200, width: 0, height: 0,
+      classList: { add: noop, remove: noop, toggle: noop, contains: () => false },
+      addEventListener: noop, remove: noop, focus: noop,
+      appendChild(c) { el.children.push(c); return c; },
+      setAttribute(k, v) { el.attrs[k] = String(v); }, getAttribute: (k) => el.attrs[k] ?? null,
+      querySelector: () => element(), querySelectorAll: () => [], closest: () => element(),
+      getContext: (kind) => (kind === "2d" ? ctx2d : null),
+    };
+    el.parentElement = el;
+    return el;
+  };
+  const document = {
+    body: element(), documentElement: element(),
+    getElementById: (id) => { if (!elements.has(id)) elements.set(id, element()); return elements.get(id); },
+    createElement: element, querySelectorAll: () => [], addEventListener: noop,
+    modelContext: { registerTool: (t) => tools.set(t.name, t) },
+  };
+  const window = {
+    document, navigator: {}, console, devicePixelRatio: 1, innerWidth: 1200, innerHeight: 800, performance,
+    getComputedStyle: () => ({ getPropertyValue: () => "#808080" }),
+    matchMedia: () => ({ matches: false, addEventListener: noop }),
+    requestAnimationFrame: (fn) => frames.push(fn),
+    ResizeObserver: class { observe() {} },
+    fetch: (...a) => { requests.push(["fetch", a]); return Promise.reject(new Error("offline")); },
+    XMLHttpRequest: class { open(...a) { requests.push(["xhr", a]); } send() {} },
+  };
+  window.window = window.self = window.globalThis = window;
+  const context = vm.createContext(window);
+  for (const [, code] of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) vm.runInContext(code, context);
+  while (frames.length) frames.shift()(0);
+  return { window, tools, requests, frames };
+}
+
+test("the built page runs offline with three.js inlined and registers working WebMCP tools", async () => {
+  const pg = runPage(await readFile(INDEX, "utf8"));
+  assert.equal(pg.window.THREE.REVISION, "186");
+  assert.deepEqual([...pg.tools.keys()].sort(), ["get_current_view", "get_metadata", "set_view"]);
+  const call = async (name, input) => JSON.parse((await pg.tools.get(name).execute(input)).content[0].text);
+  const meta = await call("get_metadata", {});
+  assert.equal(meta.three.release, "r186");
+  assert.deepEqual(meta.presets.map((p) => p.id), D.PRESETS.map((p) => p.id));
+  const start = await call("get_current_view", {});
+  assert.equal(start.structure, D.defaultState().structure);
+  assert.ok(Object.values(start.loads).every((v) => v === 0));
+  const v = await call("set_view", { structure: "ibeam", loads: { shear: 2 }, colourMap: "shear" });
+  assert.equal(v.structure, "ibeam");
+  assert.equal(v.loads.shear, 1, "loads are clamped to -1..1");
+  assert.equal(v.colourMap, "shear");
+  assert.ok(v.buckling.some((b) => b.buckled) && v.bucklingOnset.shear.pos > 0);
+  assert.deepEqual(await call("get_current_view", {}), v);
+  const p = await call("set_view", { preset: "pure-shear" });
+  assert.equal(p.structure, "panel");
+  assert.equal(Math.round(p.patch.angle), 45);
+  while (pg.frames.length) pg.frames.shift()(0);
+  assert.deepEqual(pg.requests, [], "no network requests");
 });
 
 test("every load combination stays free of folded or torn elements, at 1x and at maximum exaggeration", () => {

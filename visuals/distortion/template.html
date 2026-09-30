@@ -687,7 +687,7 @@ function createView() {
     }
     const geo = new T.BufferGeometry(); geo.setAttribute("position", new T.BufferAttribute(new Float32Array(pts), 3));
     g.add(new T.LineSegments(geo, new T.LineBasicMaterial({ color: col })));
-    const end = sign > 0 ? a1 : a0, dirSign = sign > 0 ? 1 : -1;
+    const end = sign > 0 ? a0 : a1, dirSign = -sign;
     const p = new T.Vector3(c[0] + 0.35, c[1] + r * Math.sin(end), c[2] + r * Math.cos(end));
     const d = new T.Vector3(0, Math.cos(end), -Math.sin(end)).multiplyScalar(dirSign);
     g.add(new T.ArrowHelper(d, p, 0.01, col, 0.2, 0.12));
