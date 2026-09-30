@@ -248,6 +248,7 @@ const sig = (x, n = 4) => (Number.isFinite(x) ? String(+x.toPrecision(n)).replac
 const tidy = (x) => (Number.isFinite(x) ? +x.toPrecision(10) : "");
 const sci = (x) => {
   if (!Number.isFinite(x)) return "—";
+  if (x === 0) return "0";
   const e = Math.floor(Math.log10(Math.abs(x)));
   return e >= -2 && e < 6 ? sig(x, 4) : `${sig(x / 10 ** e, 4)}×10${String(e).replace("-", "⁻").replace(/\d/g, (c) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[c])}`;
 };

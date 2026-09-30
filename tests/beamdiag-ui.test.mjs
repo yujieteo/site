@@ -36,11 +36,19 @@ function page() {
   const get = document.getElementById;
   const edit = (el, value) => { el.value = String(value); el.dispatch("input"); };
   return {
-    ctx, get, edit, paths,
+    ctx, get, edit, paths, created,
     field: (name) => document.querySelector(`[data-field="${name}"]`),
     current: async () => JSON.parse((await tools.find((t) => t.name === "get_current_beam").execute({})).content[0].text),
   };
 }
+
+test("an exactly balanced default preset reports a zero relative error, not an infinite exponent", () => {
+  const p = page();
+  const stats = p.created.map((el) => el.textContent).filter((t) => typeof t === "string" && t.includes("relative error"));
+  assert.ok(stats.length > 0);
+  for (const text of stats) assert.doesNotMatch(text, /Infinity|NaN/);
+  assert.ok(stats.some((text) => text.endsWith("relative error 0")));
+});
 
 test("invalid edits invalidate exports and mark all retained results stale, then recover", () => {
   const p = page();
