@@ -141,4 +141,3 @@ export function hitTest(scene, pt) {
   if (scene.load && Math.hypot(scene.load.screen.x - pt.x, scene.load.screen.y - pt.y) <= 12) return { kind: "load" };
   return null;
 }
-

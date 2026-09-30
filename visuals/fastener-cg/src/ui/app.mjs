@@ -745,4 +745,3 @@ export function start() {
     markdown: (pattern) => markdownOf(pattern, solve(pattern)),
   });
 }
-
