@@ -1,0 +1,1444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:,">
+<meta name="description" content="Draw scaled free body diagrams in the browser: beams, rods, lines and plates on shared joints, with point forces, moments, distributed loads, self-weight, reactions and supports stored as data in mm, N and N·mm. No solver.">
+<title>FBD Drawer</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--muted:#6e6e73;--surface:#f5f5f7;--border:#d2d2d7;--focus:#0071e3;--grid:#ededf0;--grid-major:#dadae0;--beam:#d6d6db;--plate:#f0f0f3;--sel:#0071e3;--sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+--k-body:var(--fg);--k-force:var(--fg);--k-moment:var(--fg);--k-dist:var(--fg);--k-reaction:var(--fg);--k-support:var(--fg);--k-dim:var(--fg);--k-marker:var(--fg);--k-triad:var(--fg);color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1d1f;--fg:#f5f5f7;--muted:#a1a1a6;--surface:#2c2c2e;--border:#48484a;--focus:#2997ff;--grid:#29292c;--grid-major:#38383c;--beam:#4a4a4f;--plate:#2f2f33;--sel:#2997ff}}
+:root[data-theme="dark"]{--bg:#1d1d1f;--fg:#f5f5f7;--muted:#a1a1a6;--surface:#2c2c2e;--border:#48484a;--focus:#2997ff;--grid:#29292c;--grid-major:#38383c;--beam:#4a4a4f;--plate:#2f2f33;--sel:#2997ff;color-scheme:dark}
+.colour{--k-force:#c62828;--k-moment:#7b1fa2;--k-dist:#1565c0;--k-reaction:#2e7d32;--k-support:#6d4c41;--k-dim:#00838f;--k-marker:#ef6c00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .colour{--k-force:#ef5350;--k-moment:#ce93d8;--k-dist:#64b5f6;--k-reaction:#81c784;--k-support:#bcaaa4;--k-dim:#4dd0e1;--k-marker:#ffb74d}}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.4 var(--sans);-webkit-font-smoothing:antialiased;overflow:hidden;-webkit-text-size-adjust:100%}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+#app{display:grid;height:100vh;height:100dvh;grid-template-columns:minmax(0,1fr) 20rem;grid-template-rows:auto minmax(0,1fr) auto;grid-template-areas:"bar bar" "stage panel" "foot foot"}
+#bar{grid-area:bar;display:flex;align-items:center;gap:.25rem;padding:.25rem .5rem;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:thin;min-width:0}
+#bar h1{font-size:.95rem;margin:0 .5rem 0 .25rem;white-space:nowrap;letter-spacing:-.01em}
+.group{display:flex;gap:2px;padding-right:.35rem;margin-right:.1rem;border-right:1px solid var(--border);flex:none}
+.group:last-child{border-right:0}
+.tb{min-width:44px;min-height:44px;padding:0 .55rem;border:1px solid transparent;border-radius:.5rem;background:none;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.25rem;touch-action:manipulation}
+.tb:hover{background:var(--surface)}
+.tb[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.tb:disabled{opacity:.4;cursor:default;background:none}
+.tb svg{width:20px;height:20px;flex:none}
+#stage{grid-area:stage;position:relative;min-width:0;min-height:0;overflow:hidden}
+#canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;display:block}
+#status{position:absolute;left:.5rem;bottom:.35rem;font:12px/1.3 var(--mono);color:var(--muted);pointer-events:none;background:color-mix(in srgb,var(--bg) 80%,transparent);padding:.1rem .3rem;border-radius:.25rem}
+#hint{position:absolute;right:.5rem;top:.5rem;max-width:min(24rem,70%);font-size:12px;color:var(--muted);pointer-events:none;text-align:right;background:color-mix(in srgb,var(--bg) 85%,transparent);padding:.15rem .35rem;border-radius:.25rem}
+#hint:empty{display:none}
+#panel{grid-area:panel;border-left:1px solid var(--border);overflow-y:auto;overscroll-behavior:contain;padding:.25rem .75rem 1rem;min-width:0}
+#panel h2{font-size:.95rem;margin:.6rem 0 .4rem}
+#panel h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:.9rem 0 .3rem}
+#panel p{margin:.35rem 0;color:var(--muted);font-size:.85rem}
+.row{display:grid;grid-template-columns:minmax(0,7rem) minmax(0,1fr);gap:.4rem;align-items:center;margin:.25rem 0}
+.row>label,.row>span{font-size:.85rem;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis}
+.row input[type=text],.row select{width:100%;min-height:36px;padding:.25rem .45rem;border:1px solid var(--border);border-radius:.4rem;background:var(--bg);min-width:0}
+.row input.bad{border-color:#d32f2f;outline-color:#d32f2f}
+.checks{display:flex;flex-wrap:wrap;gap:.25rem .8rem;margin:.3rem 0}
+.checks label{display:inline-flex;align-items:center;gap:.3rem;font-size:.85rem;min-height:32px}
+.checks input{width:18px;height:18px}
+.seg{display:flex;flex-wrap:wrap;gap:2px;margin:.25rem 0}
+.seg button{flex:1 1 auto;min-height:36px;border:1px solid var(--border);background:var(--bg);border-radius:.4rem;padding:0 .5rem}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btns{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
+.btns button{min-height:40px;padding:0 .75rem;border:1px solid var(--border);border-radius:.5rem;background:var(--bg)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.err{color:#d32f2f;font-size:.8rem;min-height:1em;margin:.2rem 0}
+#sheet-toggle{display:none}
+footer{grid-area:foot;display:flex;flex-wrap:wrap;gap:.2rem 1rem;align-items:center;padding:.3rem .75rem;padding-bottom:max(.3rem,env(safe-area-inset-bottom));border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+footer a{color:inherit}
+.menu{position:relative;flex:none}
+.menu>summary{list-style:none}
+.menu>summary::-webkit-details-marker{display:none}
+.menu-pop{position:fixed;z-index:10;background:var(--bg);border:1px solid var(--border);border-radius:.6rem;box-shadow:0 8px 28px rgb(0 0 0/.18);padding:.35rem;display:grid;gap:2px;min-width:14rem;max-height:70vh;overflow:auto}
+.menu-pop button,.menu-pop label{min-height:40px;text-align:left;border:0;background:none;border-radius:.4rem;padding:0 .6rem;display:flex;align-items:center;gap:.4rem}
+.menu-pop button:hover{background:var(--surface)}
+.menu-pop hr{border:0;border-top:1px solid var(--border);margin:.2rem 0}
+#toast{position:fixed;left:50%;bottom:4rem;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:.45rem .8rem;border-radius:.5rem;font-size:.85rem;max-width:min(90vw,32rem);z-index:20;white-space:pre-wrap}
+#toast[hidden]{display:none}
+.hit{fill:none;stroke:#000;stroke-opacity:0;pointer-events:stroke}
+.hitf{fill:#000;fill-opacity:0;stroke:#000;stroke-opacity:0;pointer-events:all}
+.sel-halo{fill:none;stroke:var(--sel);stroke-opacity:.35;pointer-events:none}
+.handle{fill:var(--bg);stroke:var(--sel);stroke-width:2}
+@media (max-width:760px){
+#app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto auto;grid-template-areas:"bar" "stage" "panel" "foot"}
+#panel{border-left:0;border-top:1px solid var(--border);max-height:42dvh;padding-top:0}
+#panel.collapsed{max-height:3rem;overflow:hidden}
+#sheet-toggle{display:flex;width:100%;min-height:44px;align-items:center;justify-content:center;gap:.4rem;border:0;background:none;color:var(--muted);position:sticky;top:0;background:var(--bg);z-index:1}
+#sheet-toggle::before{content:"";width:2.5rem;height:4px;border-radius:2px;background:var(--border)}
+#bar h1{display:none}
+footer{font-size:11px}
+}
+@media (prefers-reduced-motion:no-preference){.tb,.seg button{transition:background .15s}}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="bar" role="toolbar" aria-label="Drawing tools">
+  <h1>FBD Drawer</h1>
+  <div class="group" id="tools"></div>
+  <div class="group" id="actions"></div>
+</div>
+<div id="stage">
+  <svg id="canvas" aria-label="Drawing canvas" role="img"><g id="grid"></g><g id="scene"></g><g id="overlay"></g></svg>
+  <div id="status" aria-live="off"></div>
+  <div id="hint"></div>
+</div>
+<aside id="panel" aria-label="Properties">
+  <button id="sheet-toggle" type="button" aria-expanded="true">Properties</button>
+  <div id="panel-body"></div>
+</aside>
+<footer>
+  <span>FBD Drawer <span id="app-version"></span></span>
+  <a href="https://github.com/yujieteo/site/tree/main/visuals/fbd">Source</a>
+  <span>Stored in mm, N and N·mm. No solver: loads and reactions are drawn, not computed.</span>
+</footer>
+</div>
+<div id="toast" role="status" hidden></div>
+
+<script id="fbd-core" data-core>
+/* FBD Drawer core: the drawing model, units, validation, serialisation and
+   SVG rendering. It touches no DOM, so the tests run it in Node. Geometry is
+   stored in canonical units (mm, N, N·mm, N/mm), y up. */
+(function (root) {
+"use strict";
+const VERSION = "1.0.0";
+const FORMAT = "fbd-drawer";
+const SCHEMA = 1;
+const LBF = 4.4482216152605;
+
+/* ---------- units ---------- */
+const UNITS = {
+  length: { mm: 1, cm: 10, m: 1000, in: 25.4, ft: 304.8 },
+  force: { N: 1, kN: 1000, lbf: LBF, kip: 1000 * LBF },
+  moment: { "N·mm": 1, "N·m": 1000, "kN·m": 1e6, "lbf·in": LBF * 25.4, "lbf·ft": LBF * 304.8, "kip·ft": 1000 * LBF * 304.8 },
+  distributed: { "N/mm": 1, "N/m": 0.001, "kN/m": 1, "lbf/in": LBF / 25.4, "lbf/ft": LBF / 304.8, "kip/ft": 1000 * LBF / 304.8 },
+};
+const SYSTEM_UNITS = {
+  SI: { length: ["mm", "cm", "m"], force: ["N", "kN"], moment: ["N·mm", "N·m", "kN·m"], distributed: ["N/mm", "N/m", "kN/m"] },
+  imperial: { length: ["in", "ft"], force: ["lbf", "kip"], moment: ["lbf·in", "lbf·ft", "kip·ft"], distributed: ["lbf/in", "lbf/ft", "kip/ft"] },
+};
+const ALIASES = {
+  length: { mm: "mm", millimetre: "mm", millimetres: "mm", millimeter: "mm", millimeters: "mm", cm: "cm", m: "m", metre: "m", metres: "m", meter: "m", meters: "m",
+    in: "in", inch: "in", inches: "in", '"': "in", "″": "in", ft: "ft", foot: "ft", feet: "ft", "'": "ft", "′": "ft" },
+  force: { n: "N", newton: "N", newtons: "N", kn: "kN", lbf: "lbf", lb: "lbf", lbs: "lbf", kip: "kip", kips: "kip" },
+  moment: { nmm: "N·mm", nm: "N·m", knm: "kN·m", lbfin: "lbf·in", lbin: "lbf·in", inlb: "lbf·in", inlbf: "lbf·in",
+    lbfft: "lbf·ft", lbft: "lbf·ft", ftlb: "lbf·ft", ftlbf: "lbf·ft", kipft: "kip·ft", ftkip: "kip·ft" },
+  distributed: { "n/mm": "N/mm", "n/m": "N/m", "kn/m": "kN/m", "lbf/in": "lbf/in", "lb/in": "lbf/in", "lbf/ft": "lbf/ft", "lb/ft": "lbf/ft", plf: "lbf/ft", "kip/ft": "kip/ft", klf: "kip/ft" },
+};
+const unitKey = (u) => u.toLowerCase().replace(/[\s·⋅.*-]/g, "");
+
+function resolveUnit(kind, text) {
+  const table = ALIASES[kind];
+  const key = unitKey(text);
+  if (table[key]) return table[key];
+  if (table[text]) return table[text];
+  return null;
+}
+
+// Parse "2 m", "3 ft 6 in", `3' 6"` or a bare number (in the display unit)
+// into canonical units. Returns { value } or { error }; blank gives null.
+function parseQuantity(text, kind, unit) {
+  const s = String(text ?? "").trim();
+  if (!s) return { value: null };
+  const re = /\s*([-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[-+]?\d+)?)\s*([^\s\d+\-.][^\s\d]*)?/iy;
+  let i = 0, total = 0, sign = 0, m;
+  while (i < s.length) {
+    re.lastIndex = i;
+    m = re.exec(s);
+    if (!m || m[0].length === 0) {
+      if (/^\s*$/.test(s.slice(i))) break;
+      return { error: `Cannot read "${s.slice(i).trim()}" as a ${kind}` };
+    }
+    let n = Number(m[1]);
+    const u = m[2] ? resolveUnit(kind, m[2]) : unit;
+    if (!u || !(u in UNITS[kind])) return { error: `Unknown ${kind} unit "${m[2] || unit}"` };
+    if (sign === 0) sign = n < 0 || Object.is(n, -0) ? -1 : 1;
+    else if (n < 0) return { error: "Only the first part of a compound value may be negative" };
+    total += Math.abs(n) * UNITS[kind][u];
+    i = re.lastIndex;
+  }
+  if (sign === 0) return { error: `Cannot read "${s}" as a ${kind}` };
+  return { value: sign * total };
+}
+
+function parseAngle(text) {
+  const s = String(text ?? "").trim().replace(/°|deg(rees?)?$/gi, "").trim();
+  if (!s) return { value: null };
+  const n = Number(s);
+  if (!Number.isFinite(n)) return { error: `Cannot read "${text}" as an angle in degrees` };
+  return { value: n };
+}
+
+function fmt(x, digits = 6) {
+  if (x === null || x === undefined || !Number.isFinite(x)) return "";
+  if (Math.abs(x) < 1e-9) return "0";
+  const r = Number(x.toPrecision(digits));
+  return String(r);
+}
+
+function formatQuantity(value, kind, unit, withUnit = true) {
+  if (value === null || value === undefined) return "";
+  const s = fmt(value / UNITS[kind][unit]);
+  return withUnit ? `${s} ${unit}` : s;
+}
+
+/* ---------- angles ---------- */
+const rad = (d) => d * Math.PI / 180;
+const deg = (r) => r * 180 / Math.PI;
+function wrap360(a) { a %= 360; if (a < 0) a += 360; return a === 360 ? 0 : a; }
+function wrap180(a) { a = wrap360(a); return a > 180 ? a - 360 : a; }
+function clean(a) { const r = Math.round(a * 1e9) / 1e9; return Object.is(r, -0) ? 0 : r; }
+
+// Angles in the triad frame: measured from the triad x-axis, positive
+// towards its second axis. Stored directions are world angles (CCW from +x).
+function toTriad(view, world) { return clean(wrap180(view.triad.ySense * (world - view.triad.rotation))); }
+function fromTriad(view, a) { return clean(wrap360(view.triad.rotation + view.triad.ySense * a)); }
+
+/* ---------- document ---------- */
+function defaultView() {
+  return {
+    units: { system: "SI", length: "mm", force: "N", moment: "N·mm", distributed: "N/mm" },
+    triad: { visible: true, x: 0, y: 0, rotation: 0, ySense: 1, labels: ["x", "y"], preset: "engineering", aircraftView: null },
+    colourByType: false, grid: true, snap: true, angleSnap: 15,
+  };
+}
+function newDoc(title = "Untitled drawing") {
+  return { format: FORMAT, version: SCHEMA, title, geometry: { joints: [], bodies: [], loads: [], supports: [], markers: [] }, view: defaultView() };
+}
+
+const BODY_TYPES = ["beam", "rod", "line", "polygon"];
+const LINE_ROLES = ["construction", "dimension", "leader"];
+
+// Validation and normalisation in one pass: every object is rebuilt with a
+// fixed key order so saving is deterministic, and anything unknown, missing
+// or dangling is reported with its path instead of being dropped.
+function checker() {
+  const errors = [];
+  const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+  const c = {
+    errors,
+    err: (p, m) => errors.push(`${p}: ${m}`),
+    obj(v, p, keys) {
+      if (!isObj(v)) { c.err(p, "expected an object"); return {}; }
+      for (const k of Object.keys(v)) if (!keys.includes(k)) c.err(`${p}.${k}`, "unknown field");
+      return v;
+    },
+    num(v, p, def, o = {}) {
+      if (v === undefined) { if (def === undefined) c.err(p, "missing number"); return def ?? 0; }
+      if (v === null && o.nullable) return null;
+      if (typeof v !== "number" || !Number.isFinite(v)) { c.err(p, "expected a number"); return def ?? 0; }
+      if (o.min !== undefined && v < o.min) c.err(p, `must be at least ${o.min}`);
+      if (o.gt !== undefined && v <= o.gt) c.err(p, `must be greater than ${o.gt}`);
+      if (o.int && !Number.isInteger(v)) c.err(p, "must be a whole number");
+      return v;
+    },
+    str(v, p, def, o = {}) {
+      if (v === undefined) { if (def === undefined) c.err(p, "missing text"); return def ?? ""; }
+      if (v === null && o.nullable) return null;
+      if (typeof v !== "string") { c.err(p, "expected text"); return def ?? ""; }
+      if (o.nonEmpty && !v) c.err(p, "must not be empty");
+      return v;
+    },
+    bool(v, p, def) {
+      if (v === undefined) return def;
+      if (typeof v !== "boolean") { c.err(p, "expected true or false"); return def; }
+      return v;
+    },
+    oneOf(v, p, list, def) {
+      if (v === undefined && def !== undefined) return def;
+      if (!list.includes(v)) { c.err(p, `expected one of ${list.map((x) => JSON.stringify(x)).join(", ")}`); return def ?? list[0]; }
+      return v;
+    },
+    arr(v, p, o = {}) {
+      if (v === undefined && o.optional) return [];
+      if (!Array.isArray(v)) { c.err(p, "expected a list"); return []; }
+      return v;
+    },
+  };
+  return c;
+}
+
+function normAt(c, v, p) {
+  const a = c.obj(v, p, ["x", "y", "joint", "body", "edge", "s", "n", "centroid"]);
+  if ("joint" in a) { c.obj(v, p, ["joint"]); return { joint: c.str(a.joint, `${p}.joint`) }; }
+  if ("body" in a && a.centroid !== undefined) {
+    c.obj(v, p, ["body", "centroid"]);
+    if (a.centroid !== true) c.err(`${p}.centroid`, "must be true when present");
+    return { body: c.str(a.body, `${p}.body`), centroid: true };
+  }
+  if ("body" in a) {
+    c.obj(v, p, ["body", "edge", "s", "n"]);
+    return { body: c.str(a.body, `${p}.body`), edge: c.num(a.edge, `${p}.edge`, 0, { int: true, min: 0 }), s: c.num(a.s, `${p}.s`), n: c.num(a.n, `${p}.n`, 0) };
+  }
+  c.obj(v, p, ["x", "y"]);
+  return { x: c.num(a.x, `${p}.x`), y: c.num(a.y, `${p}.y`) };
+}
+
+function normJoint(c, v, p) {
+  const j = c.obj(v, p, ["id", "x", "y"]);
+  return { id: c.str(j.id, `${p}.id`, undefined, { nonEmpty: true }), x: c.num(j.x, `${p}.x`), y: c.num(j.y, `${p}.y`) };
+}
+
+function normBody(c, v, p) {
+  const b = c.obj(v, p, ["id", "type", "joints", "label", "depth", "role", "offset"]);
+  const type = c.oneOf(b.type, `${p}.type`, BODY_TYPES);
+  const out = { id: c.str(b.id, `${p}.id`, undefined, { nonEmpty: true }), type, joints: c.arr(b.joints, `${p}.joints`).map((j, i) => c.str(j, `${p}.joints[${i}]`)), label: c.str(b.label, `${p}.label`, null, { nullable: true }) };
+  if (type === "beam") out.depth = c.num(b.depth, `${p}.depth`, 100, { gt: 0 });
+  else if (b.depth !== undefined) c.err(`${p}.depth`, `only a beam has a depth`);
+  if (type === "line") {
+    out.role = c.oneOf(b.role, `${p}.role`, LINE_ROLES, "construction");
+    out.offset = c.num(b.offset, `${p}.offset`, 30);
+  } else {
+    if (b.role !== undefined) c.err(`${p}.role`, "only a line has a role");
+    if (b.offset !== undefined) c.err(`${p}.offset`, "only a line has an offset");
+  }
+  const need = type === "polygon" ? 3 : 2;
+  if (type === "polygon" ? out.joints.length < 3 : out.joints.length !== 2) c.err(`${p}.joints`, type === "polygon" ? "a polygon needs at least 3 joints" : `a ${type} needs exactly ${need} joints`);
+  if (new Set(out.joints).size !== out.joints.length) c.err(`${p}.joints`, "a joint may appear only once");
+  return out;
+}
+
+function normView(c, v, p) {
+  const d = defaultView();
+  if (v === undefined) return d;
+  const w = c.obj(v, p, ["units", "triad", "colourByType", "grid", "snap", "angleSnap"]);
+  const u = w.units === undefined ? d.units : c.obj(w.units, `${p}.units`, ["system", "length", "force", "moment", "distributed"]);
+  const system = c.oneOf(u.system, `${p}.units.system`, ["SI", "imperial"], "SI");
+  const units = { system };
+  for (const kind of ["length", "force", "moment", "distributed"]) units[kind] = c.oneOf(u[kind], `${p}.units.${kind}`, SYSTEM_UNITS[system][kind], SYSTEM_UNITS[system][kind][0]);
+  const t = w.triad === undefined ? d.triad : c.obj(w.triad, `${p}.triad`, ["visible", "x", "y", "rotation", "ySense", "labels", "preset", "aircraftView"]);
+  const labels = t.labels === undefined ? ["x", "y"] : c.arr(t.labels, `${p}.triad.labels`);
+  if (labels.length !== 2) c.err(`${p}.triad.labels`, "expected two axis labels");
+  const preset = c.oneOf(t.preset, `${p}.triad.preset`, ["engineering", "aircraft"], "engineering");
+  const triad = {
+    visible: c.bool(t.visible, `${p}.triad.visible`, true), x: c.num(t.x, `${p}.triad.x`, 0), y: c.num(t.y, `${p}.triad.y`, 0),
+    rotation: c.num(t.rotation, `${p}.triad.rotation`, 0), ySense: c.oneOf(t.ySense, `${p}.triad.ySense`, [1, -1], 1),
+    labels: [0, 1].map((i) => c.str(labels[i], `${p}.triad.labels[${i}]`, i ? "y" : "x")),
+    preset, aircraftView: preset === "aircraft" ? c.oneOf(t.aircraftView, `${p}.triad.aircraftView`, ["top", "side", "front"], "top") : c.oneOf(t.aircraftView ?? null, `${p}.triad.aircraftView`, [null], null),
+  };
+  return { units, triad, colourByType: c.bool(w.colourByType, `${p}.colourByType`, false), grid: c.bool(w.grid, `${p}.grid`, true), snap: c.bool(w.snap, `${p}.snap`, true), angleSnap: c.num(w.angleSnap, `${p}.angleSnap`, 15, { min: 0 }) };
+}
+
+// Loads, supports and markers are normalised by functions registered below
+// (NORM), so each feature section owns its own schema.
+const NORM = {
+  load: (c, v, p) => { c.err(p, "loads are not supported"); return null; },
+  support: (c, v, p) => { c.err(p, "supports are not supported"); return null; },
+  marker: (c, v, p) => { c.err(p, "markers are not supported"); return null; },
+};
+const REFS = []; // (doc, check) reference checks added by feature sections
+
+function load(obj) {
+  const c = checker();
+  const d = c.obj(obj, "drawing", ["format", "version", "title", "geometry", "view"]);
+  if (d.format !== FORMAT) c.err("drawing.format", `expected "${FORMAT}"`);
+  if (typeof d.version !== "number") c.err("drawing.version", "missing number");
+  else if (d.version > SCHEMA) c.err("drawing.version", `file version ${d.version} is newer than this tool understands (${SCHEMA})`);
+  else if (d.version !== SCHEMA) c.err("drawing.version", `unsupported version ${d.version}`);
+  const g = c.obj(d.geometry, "geometry", ["joints", "bodies", "loads", "supports", "markers"]);
+  const doc = {
+    format: FORMAT, version: SCHEMA, title: c.str(d.title, "drawing.title", "Untitled drawing"),
+    geometry: {
+      joints: c.arr(g.joints, "geometry.joints", { optional: true }).map((v, i) => normJoint(c, v, `geometry.joints[${i}]`)),
+      bodies: c.arr(g.bodies, "geometry.bodies", { optional: true }).map((v, i) => normBody(c, v, `geometry.bodies[${i}]`)),
+      loads: c.arr(g.loads, "geometry.loads", { optional: true }).map((v, i) => NORM.load(c, v, `geometry.loads[${i}]`)),
+      supports: c.arr(g.supports, "geometry.supports", { optional: true }).map((v, i) => NORM.support(c, v, `geometry.supports[${i}]`)),
+      markers: c.arr(g.markers, "geometry.markers", { optional: true }).map((v, i) => NORM.marker(c, v, `geometry.markers[${i}]`)),
+    },
+    view: normView(c, d.view, "view"),
+  };
+  // References: ids are unique across the drawing, and every reference resolves.
+  const seen = new Set();
+  for (const [list, name] of [["joints", "joint"], ["bodies", "body"], ["loads", "load"], ["supports", "support"], ["markers", "marker"]]) {
+    doc.geometry[list].forEach((e, i) => {
+      if (!e) return;
+      if (seen.has(e.id)) c.err(`geometry.${list}[${i}].id`, `duplicate id "${e.id}"`);
+      seen.add(e.id);
+    });
+  }
+  const J = new Set(doc.geometry.joints.map((j) => j.id));
+  doc.geometry.bodies.forEach((b, i) => b.joints.forEach((j, k) => { if (!J.has(j)) c.err(`geometry.bodies[${i}].joints[${k}]`, `unknown joint "${j}"`); }));
+  for (const check of REFS) check(doc, c);
+  if (c.errors.length) return { errors: c.errors };
+  return { doc, errors: [] };
+}
+
+function checkAt(doc, c, at, p) {
+  if (!at) return;
+  if ("joint" in at) { if (!doc.geometry.joints.some((j) => j.id === at.joint)) c.err(`${p}.joint`, `unknown joint "${at.joint}"`); return; }
+  if ("body" in at) {
+    const b = doc.geometry.bodies.find((x) => x.id === at.body);
+    if (!b) { c.err(`${p}.body`, `unknown body "${at.body}"`); return; }
+    if ("edge" in at && at.edge >= edgeCount(b)) c.err(`${p}.edge`, `body "${b.id}" has only ${edgeCount(b)} edge(s)`);
+  }
+}
+
+function parseJSON(text) {
+  let obj;
+  try { obj = JSON.parse(text); } catch (e) { return { errors: [`Not valid JSON: ${e.message}`] }; }
+  return load(obj);
+}
+function serialize(doc) {
+  const r = load(doc);
+  if (r.errors.length) throw new Error(`Cannot save an invalid drawing:\n${r.errors.join("\n")}`);
+  return JSON.stringify(r.doc, null, 2) + "\n";
+}
+
+/* ---------- geometry ---------- */
+function byId(list, id) { return list.find((e) => e.id === id); }
+function joint(doc, id) { return byId(doc.geometry.joints, id); }
+function body(doc, id) { return byId(doc.geometry.bodies, id); }
+function edgeCount(b) { return b.type === "polygon" ? b.joints.length : 1; }
+function edge(doc, b, e = 0) {
+  const n = b.joints.length;
+  const p = joint(doc, b.joints[e % n]), q = joint(doc, b.joints[(e + 1) % n]);
+  return [p, q];
+}
+function edgeAngle(doc, b, e = 0) { const [p, q] = edge(doc, b, e); return wrap360(deg(Math.atan2(q.y - p.y, q.x - p.x))); }
+function edgeLength(doc, b, e = 0) { const [p, q] = edge(doc, b, e); return Math.hypot(q.x - p.x, q.y - p.y); }
+function memberLength(doc, b) { return edgeLength(doc, b, 0); }
+function centroid(doc, b) {
+  const pts = b.joints.map((j) => joint(doc, j));
+  if (b.type !== "polygon") return { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+  let A = 0, cx = 0, cy = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const p = pts[i], q = pts[(i + 1) % pts.length], cr = p.x * q.y - q.x * p.y;
+    A += cr; cx += (p.x + q.x) * cr; cy += (p.y + q.y) * cr;
+  }
+  if (Math.abs(A) < 1e-12) return { x: pts.reduce((s, p) => s + p.x, 0) / pts.length, y: pts.reduce((s, p) => s + p.y, 0) / pts.length };
+  return { x: cx / (3 * A), y: cy / (3 * A) };
+}
+function polygonArea(doc, b) {
+  const pts = b.joints.map((j) => joint(doc, j));
+  let A = 0;
+  for (let i = 0; i < pts.length; i++) { const p = pts[i], q = pts[(i + 1) % pts.length]; A += p.x * q.y - q.x * p.y; }
+  return Math.abs(A) / 2;
+}
+// Where an attachment sits in the world, and the angle of the edge it rides on.
+function resolveAt(doc, at) {
+  if (!at) return null;
+  if ("joint" in at) { const j = joint(doc, at.joint); return j ? { x: j.x, y: j.y, angle: null } : null; }
+  if ("body" in at) {
+    const b = body(doc, at.body);
+    if (!b) return null;
+    if (at.centroid) { const c = centroid(doc, b); return { x: c.x, y: c.y, angle: b.type === "polygon" ? null : edgeAngle(doc, b, 0) }; }
+    const [p, q] = edge(doc, b, at.edge);
+    const L = Math.hypot(q.x - p.x, q.y - p.y) || 1, ux = (q.x - p.x) / L, uy = (q.y - p.y) / L;
+    return { x: p.x + ux * at.s - uy * at.n, y: p.y + uy * at.s + ux * at.n, angle: edgeAngle(doc, b, at.edge) };
+  }
+  return { x: at.x, y: at.y, angle: null };
+}
+// Nearest point on a body's edges to (x, y): { body, edge, s, n, dist }.
+function nearestOnBody(doc, b, x, y) {
+  let best = null;
+  const edges = b.type === "polygon" ? b.joints.length : 1;
+  for (let e = 0; e < edges; e++) {
+    const [p, q] = edge(doc, b, e);
+    const L = Math.hypot(q.x - p.x, q.y - p.y);
+    if (L === 0) continue;
+    const ux = (q.x - p.x) / L, uy = (q.y - p.y) / L;
+    const s = Math.max(0, Math.min(L, (x - p.x) * ux + (y - p.y) * uy));
+    const px = p.x + ux * s, py = p.y + uy * s, dist = Math.hypot(x - px, y - py);
+    if (!best || dist < best.dist) best = { body: b.id, edge: e, s, n: 0, dist, L };
+  }
+  return best;
+}
+function pointInPolygon(doc, b, x, y) {
+  const pts = b.joints.map((j) => joint(doc, j));
+  let inside = false;
+  for (let i = 0, k = pts.length - 1; i < pts.length; k = i++) {
+    const a = pts[i], c = pts[k];
+    if ((a.y > y) !== (c.y > y) && x < (c.x - a.x) * (y - a.y) / (c.y - a.y) + a.x) inside = !inside;
+  }
+  return inside;
+}
+function nextId(doc, prefix) {
+  let max = 0;
+  const g = doc.geometry;
+  for (const list of [g.joints, g.bodies, g.loads, g.supports, g.markers]) for (const e of list) {
+    const m = new RegExp(`^${prefix}(\\d+)$`).exec(e.id);
+    if (m) max = Math.max(max, Number(m[1]));
+  }
+  return `${prefix}${max + 1}`;
+}
+// Bounds of the stored geometry (world mm), including the triad origin.
+function bounds(doc, withTriad = true) {
+  const b = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
+  const add = (p) => { if (!p) return; b.x0 = Math.min(b.x0, p.x); b.y0 = Math.min(b.y0, p.y); b.x1 = Math.max(b.x1, p.x); b.y1 = Math.max(b.y1, p.y); };
+  for (const j of doc.geometry.joints) add(j);
+  for (const l of doc.geometry.loads) add(anchorOf(doc, l));
+  for (const s of doc.geometry.supports) add(resolveAt(doc, s.at));
+  for (const m of doc.geometry.markers) add(resolveAt(doc, m.at));
+  if (withTriad && doc.view.triad.visible) add(doc.view.triad);
+  if (!Number.isFinite(b.x0)) return { x0: -500, y0: -500, x1: 500, y1: 500 };
+  return b;
+}
+function anchorOf(doc, l) { return l.kind === "distributed" ? resolveAt(doc, { body: l.body, edge: l.edge, s: (l.s1 + l.s2) / 2, n: 0 }) : resolveAt(doc, l.at); }
+
+/* ---------- labels: F_1, F_{AB}, \alpha ---------- */
+const GREEK = { alpha: "α", beta: "β", gamma: "γ", delta: "δ", epsilon: "ε", zeta: "ζ", eta: "η", theta: "θ", iota: "ι", kappa: "κ", lambda: "λ", mu: "μ", nu: "ν", xi: "ξ", omicron: "ο", pi: "π", rho: "ρ", sigma: "σ", tau: "τ", upsilon: "υ", phi: "φ", chi: "χ", psi: "ψ", omega: "ω",
+  Alpha: "Α", Beta: "Β", Gamma: "Γ", Delta: "Δ", Epsilon: "Ε", Zeta: "Ζ", Eta: "Η", Theta: "Θ", Iota: "Ι", Kappa: "Κ", Lambda: "Λ", Mu: "Μ", Nu: "Ν", Xi: "Ξ", Omicron: "Ο", Pi: "Π", Rho: "Ρ", Sigma: "Σ", Tau: "Τ", Upsilon: "Υ", Phi: "Φ", Chi: "Χ", Psi: "Ψ", Omega: "Ω" };
+function richRuns(src) {
+  const runs = [];
+  const push = (t, pos) => { if (!t) return; const last = runs[runs.length - 1]; if (last && last.pos === pos) last.t += t; else runs.push({ t, pos }); };
+  const word = (s, i) => { const m = /^\\([A-Za-z]+)/.exec(s.slice(i)); if (m && GREEK[m[1]]) return [GREEK[m[1]], m[0].length]; return null; };
+  let i = 0;
+  while (i < src.length) {
+    const ch = src[i];
+    if (ch === "\\") { const g = word(src, i); if (g) { push(g[0], 0); i += g[1]; continue; } push(ch, 0); i++; continue; }
+    if ((ch === "_" || ch === "^") && i + 1 < src.length) {
+      const pos = ch === "_" ? -1 : 1;
+      let body;
+      if (src[i + 1] === "{") { const end = src.indexOf("}", i + 2); body = end < 0 ? src.slice(i + 2) : src.slice(i + 2, end); i = end < 0 ? src.length : end + 1; }
+      else { const g = word(src, i + 1); if (g) { body = src.slice(i + 1, i + 1 + g[1]); i += 1 + g[1]; } else { body = src[i + 1]; i += 2; } }
+      let k = 0, t = "";
+      while (k < body.length) { const g = body[k] === "\\" ? word(body, k) : null; if (g) { t += g[0]; k += g[1]; } else { t += body[k]; k++; } }
+      push(t, pos);
+      continue;
+    }
+    push(ch, 0); i++;
+  }
+  return runs;
+}
+function plainLabel(src) { return richRuns(src).map((r) => r.t).join(""); }
+function htmlLabel(src) { return richRuns(src).map((r) => { const t = escHtml(r.t); return r.pos < 0 ? `<sub>${t}</sub>` : r.pos > 0 ? `<sup>${t}</sup>` : t; }).join(""); }
+function escHtml(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+/* ---------- rendering ---------- */
+const LIVE_PAL = { body: "var(--k-body)", force: "var(--k-force)", moment: "var(--k-moment)", dist: "var(--k-dist)", reaction: "var(--k-reaction)", support: "var(--k-support)", dim: "var(--k-dim)", marker: "var(--k-marker)", triad: "var(--k-triad)", beam: "var(--beam)", plate: "var(--plate)", paper: "var(--bg)", text: "var(--fg)" };
+const EXPORT_PAL = { body: "#000", force: "#000", moment: "#000", dist: "#000", reaction: "#000", support: "#000", dim: "#000", marker: "#000", triad: "#000", beam: "#d9d9d9", plate: "#f2f2f2", paper: "#fff", text: "#000" };
+const FONT = "Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
+const n2 = (x) => (Math.round(x * 100) / 100).toString();
+const RENDER = []; // feature renderers: (ctx) => void, called in order
+
+// Render the drawing as SVG markup. o.map turns world mm into px, o.k is
+// px per mm, o.a scales annotations (arrows, text, symbols) so they keep a
+// constant size on screen whatever the zoom. Returns the markup and its px
+// extent, which exports use to crop to content.
+function renderScene(doc, o) {
+  const a = o.a ?? 1, pal = o.pal ?? LIVE_PAL, live = !!o.live, sel = o.sel ?? new Set();
+  const out = [];
+  const ext = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
+  const grow = (x, y, r = 0) => { ext.x0 = Math.min(ext.x0, x - r); ext.y0 = Math.min(ext.y0, y - r); ext.x1 = Math.max(ext.x1, x + r); ext.y1 = Math.max(ext.y1, y + r); };
+  const labels = [];
+  const ctx = {
+    doc, o, a, pal, live, sel, out, grow, labels,
+    map: (x, y) => o.map(x, y),
+    line(p, q, col, w, extra = "") { grow(p[0], p[1]); grow(q[0], q[1]); out.push(`<line x1="${n2(p[0])}" y1="${n2(p[1])}" x2="${n2(q[0])}" y2="${n2(q[1])}" style="stroke:${col};stroke-width:${n2(w)}"${extra ? " " + extra : ""}/>`); },
+    path(d, style, pts, extra = "") { for (const p of pts) grow(p[0], p[1]); out.push(`<path d="${d}" style="${style}"${extra ? " " + extra : ""}/>`); },
+    poly(pts, style, extra = "") { ctx.path("M" + pts.map((p) => `${n2(p[0])} ${n2(p[1])}`).join("L") + "Z", style, pts, extra); },
+    circle(c, r, style, extra = "") { grow(c[0], c[1], r); out.push(`<circle cx="${n2(c[0])}" cy="${n2(c[1])}" r="${n2(r)}" style="${style}"${extra ? " " + extra : ""}/>`); },
+    // A filled arrowhead with its tip at t pointing along unit vector u (screen).
+    head(t, u, col, len = 11 * a, half = 4.2 * a, open = false) {
+      const b = [t[0] - u[0] * len, t[1] - u[1] * len];
+      const pts = [t, [b[0] - u[1] * half, b[1] + u[0] * half], [b[0] + u[1] * half, b[1] - u[0] * half]];
+      ctx.poly(pts, open ? `fill:${pal.paper};stroke:${col};stroke-width:${n2(1.3 * a)};stroke-linejoin:miter` : `fill:${col};stroke:${col};stroke-width:${n2(0.8 * a)};stroke-linejoin:miter`);
+    },
+    text(str, p, col, size = 13 * a, attrs = "") {
+      const runs = richRuns(str);
+      const w = textWidth(str, size);
+      grow(p[0] - w / 2, p[1] - size * 0.7); grow(p[0] + w / 2, p[1] + size * 0.7);
+      let body = "", dy = 0;
+      for (const r of runs) {
+        const target = r.pos * -0.32 * size;
+        const shift = target - dy; dy = target;
+        body += `<tspan${shift ? ` dy="${n2(shift)}"` : ""}${r.pos ? ` font-size="${n2(size * 0.72)}"` : ""}>${escHtml(r.t)}</tspan>`;
+      }
+      out.push(`<text x="${n2(p[0])}" y="${n2(p[1])}" style="fill:${col};font-family:${FONT};font-size:${n2(size)}px" text-anchor="middle" dominant-baseline="central"${attrs ? " " + attrs : ""}>${body}</text>`);
+    },
+    open(id, kind) { out.push(live ? `<g data-id="${escHtml(id)}" data-kind="${kind}">` : "<g>"); },
+    close() { out.push("</g>"); },
+    hit(d) { if (live) out.push(`<path class="hit" d="${d}" style="stroke-width:44;stroke-linecap:round;stroke-linejoin:round"/>`); },
+    halo(d, w) { if (live) out.push(`<path class="sel-halo" d="${d}" style="stroke-width:${n2(w)};stroke-linecap:round;stroke-linejoin:round"/>`); },
+    label(req) { labels.push(req); },
+  };
+  for (const r of RENDER) r(ctx);
+  placeLabels(ctx);
+  return { svg: out.join(""), ext };
+}
+function textWidth(str, size) { return Math.max(1, plainLabel(str).length) * size * 0.58; }
+const sub = (p, q) => [p[0] - q[0], p[1] - q[1]];
+const len = (v) => Math.hypot(v[0], v[1]);
+const unit = (v) => { const L = len(v) || 1; return [v[0] / L, v[1] / L]; };
+const along = (p, u, d) => [p[0] + u[0] * d, p[1] + u[1] * d];
+const screenDir = (worldDeg) => [Math.cos(rad(worldDeg)), -Math.sin(rad(worldDeg))];
+const pathOf = (pts, closed) => "M" + pts.map((p) => `${n2(p[0])} ${n2(p[1])}`).join("L") + (closed ? "Z" : "");
+
+// Labels: automatic placement tries the preferred side then the compass
+// points, avoiding labels already placed; a dragged label keeps its offset
+// (in annotation px) and a thin leader line back to its anchor.
+function placeLabels(ctx) {
+  const { labels, a, live, out } = ctx;
+  const boxes = [];
+  const overlaps = (b) => boxes.some((c) => b.x0 < c.x1 && b.x1 > c.x0 && b.y0 < c.y1 && b.y1 > c.y0);
+  for (const L of labels) {
+    const size = 13 * a, w = textWidth(L.text, size) + 4 * a, h = size * 1.3;
+    let cx, cy;
+    if (L.offset) { cx = L.at[0] + L.offset[0] * a; cy = L.at[1] + L.offset[1] * a; }
+    else {
+      const dirs = [L.prefer ?? [0, -1], [0, -1], [1, 0], [0, 1], [-1, 0], [0.7, -0.7], [0.7, 0.7], [-0.7, 0.7], [-0.7, -0.7]];
+      let pick = null;
+      for (const gap of [8 * a, 22 * a]) {
+        for (const d0 of dirs) {
+          const d = unit(d0);
+          const reach = gap + Math.abs(d[0]) * w / 2 + Math.abs(d[1]) * h / 2;
+          const c = [L.at[0] + d[0] * reach, L.at[1] + d[1] * reach];
+          const b = { x0: c[0] - w / 2, x1: c[0] + w / 2, y0: c[1] - h / 2, y1: c[1] + h / 2 };
+          if (!overlaps(b)) { pick = c; break; }
+        }
+        if (pick) break;
+      }
+      if (!pick) { const d = unit(L.prefer ?? [0, -1]); const reach = 8 * a + Math.abs(d[0]) * w / 2 + Math.abs(d[1]) * h / 2; pick = [L.at[0] + d[0] * reach, L.at[1] + d[1] * reach]; }
+      [cx, cy] = pick;
+    }
+    const box = { x0: cx - w / 2, x1: cx + w / 2, y0: cy - h / 2, y1: cy + h / 2 };
+    boxes.push(box);
+    out.push(live ? `<g data-id="${escHtml(L.id)}" data-label="1" data-kind="label">` : "<g>");
+    if (L.offset) {
+      const ex = Math.max(box.x0, Math.min(L.at[0], box.x1)), ey = Math.max(box.y0, Math.min(L.at[1], box.y1));
+      if (Math.hypot(ex - L.at[0], ey - L.at[1]) > 3 * a) ctx.line(L.at, [ex, ey], L.col, 0.8 * a);
+    }
+    if (live) out.push(`<rect class="hitf" x="${n2(Math.min(box.x0, cx - 22))}" y="${n2(Math.min(box.y0, cy - 22))}" width="${n2(Math.max(w, 44))}" height="${n2(Math.max(h, 44))}"/>`);
+    ctx.text(L.text, [cx, cy], L.col, size);
+    out.push("</g>");
+  }
+}
+
+// Grid step from the 1-2-5 sequence so minor lines sit at least `min` px apart.
+function gridStep(k, min = 14) {
+  const raw = min / k;
+  const p = Math.pow(10, Math.floor(Math.log10(raw)));
+  for (const m of [1, 2, 5, 10]) if (m * p >= raw) return Math.max(m * p, 0.1);
+  return 10 * p;
+}
+
+/* bodies */
+RENDER.push((ctx) => {
+  const { doc, a, pal, sel } = ctx;
+  const order = { polygon: 0, beam: 1, rod: 2, line: 3 };
+  const list = doc.geometry.bodies.slice().sort((p, q) => order[p.type] - order[q.type]);
+  for (const b of list) {
+    const pts = b.joints.map((id) => { const j = joint(doc, id); return ctx.map(j.x, j.y); });
+    ctx.open(b.id, "body");
+    const isSel = sel.has(b.id);
+    if (b.type === "polygon") {
+      const d = pathOf(pts, true);
+      if (isSel) ctx.halo(d, 10);
+      ctx.path(d, `fill:${pal.plate};stroke:${pal.body};stroke-width:${n2(1.6 * a)};stroke-linejoin:round`, pts);
+      if (ctx.live) ctx.out.push(`<path class="hitf" d="${d}"/>`);
+      ctx.hit(d);
+    } else if (b.type === "beam") {
+      const [p, q] = pts, u = unit(sub(q, p)), nrm = [-u[1], u[0]];
+      const half = Math.max(b.depth * ctx.o.k, 2) / 2;
+      const quad = [along(p, nrm, half), along(q, nrm, half), along(q, nrm, -half), along(p, nrm, -half)];
+      if (isSel) ctx.halo(pathOf([p, q]), half * 2 + 10);
+      if (half * 2 <= 3) ctx.line(p, q, pal.body, Math.max(2, half * 2), 'stroke-linecap="butt"');
+      else ctx.poly(quad, `fill:${pal.beam};stroke:${pal.body};stroke-width:${n2(Math.min(1.4 * a, half))};stroke-linejoin:miter`);
+      if (ctx.live && half * 2 > 44) ctx.out.push(`<path class="hitf" d="${pathOf(quad, true)}"/>`);
+      ctx.hit(pathOf([p, q]));
+    } else if (b.type === "rod") {
+      const [p, q] = pts;
+      if (isSel) ctx.halo(pathOf([p, q]), 12);
+      ctx.line(p, q, pal.body, Math.max(2, 2.4 * a), 'stroke-linecap="butt"');
+      for (const e of [p, q]) ctx.circle(e, 4.5 * a, `fill:${pal.paper};stroke:${pal.body};stroke-width:${n2(1.5 * a)}`);
+      ctx.hit(pathOf([p, q]));
+    } else {
+      const [p, q] = pts;
+      if (isSel) ctx.halo(pathOf([p, q]), 10);
+      if (b.role === "construction") ctx.line(p, q, pal.body, Math.max(1, 1 * a), `stroke-dasharray="${n2(8 * a)} ${n2(4 * a)} ${n2(1.5 * a)} ${n2(4 * a)}"`);
+      else if (b.role === "leader") { ctx.line(p, q, pal.body, Math.max(1, 1 * a)); if (len(sub(q, p)) > 1) ctx.head(q, unit(sub(q, p)), pal.body, 8 * a, 3 * a); }
+      else dimension(ctx, b, p, q);
+      ctx.hit(pathOf([p, q]));
+    }
+    if (b.label) {
+      const c = centroid(doc, b), m = ctx.map(c.x, c.y);
+      const prefer = b.type === "polygon" ? [0, 0.001] : (() => { const u = unit(sub(pts[1], pts[0])); return [u[1], -u[0]]; })();
+      ctx.label({ id: `${b.id}#label`, text: b.label, at: m, prefer: b.type === "polygon" ? null : prefer, col: pal.body, offset: null, inside: b.type === "polygon" });
+    }
+    ctx.close();
+  }
+});
+
+// A dimension line always measures: its text is the real distance between
+// its joints in the display length unit.
+function dimension(ctx, b, p, q) {
+  const { doc, a, pal } = ctx;
+  const u = unit(sub(q, p)), nrm = [u[1], -u[0]]; // screen left of p→q
+  const off = b.offset * a;
+  const P = along(p, nrm, off), Q = along(q, nrm, off), sg = Math.sign(off) || 1;
+  if (Math.abs(off) > 3 * a) {
+    ctx.line(along(p, nrm, sg * 3 * a), along(P, nrm, sg * 5 * a), pal.dim, 0.8 * a);
+    ctx.line(along(q, nrm, sg * 3 * a), along(Q, nrm, sg * 5 * a), pal.dim, 0.8 * a);
+  }
+  ctx.line(P, Q, pal.dim, 0.9 * a);
+  const d = [u[0] * 0.7 + nrm[0] * 0.7, u[1] * 0.7 + nrm[1] * 0.7];
+  for (const e of [P, Q]) ctx.line(along(e, d, -5 * a), along(e, d, 5 * a), pal.dim, 1.4 * a);
+  const [j0, j1] = b.joints.map((id) => joint(doc, id));
+  const L = Math.hypot(j1.x - j0.x, j1.y - j0.y);
+  const U = doc.view.units.length;
+  const txt = formatQuantity(L, "length", U);
+  const mid = [(P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2];
+  let ang = deg(Math.atan2(u[1], u[0]));
+  if (ang > 90) ang -= 180; else if (ang <= -90) ang += 180;
+  const up = [Math.sin(rad(ang)), -Math.cos(rad(ang))];
+  const at = along(mid, up, 9 * a);
+  ctx.text(txt, at, pal.dim, 12 * a, `transform="rotate(${n2(ang)} ${n2(at[0])} ${n2(at[1])})"`);
+}
+
+/* triad */
+RENDER.push((ctx) => {
+  const { doc, a, pal } = ctx;
+  const t = doc.view.triad;
+  if (!t.visible) return;
+  const O = ctx.map(t.x, t.y), L = 46 * a;
+  ctx.open("triad", "triad");
+  const ux = screenDir(t.rotation), uy = screenDir(t.rotation + 90 * t.ySense);
+  if (ctx.sel.has("triad")) ctx.halo(pathOf([along(O, ux, L), O, along(O, uy, L)]), 12);
+  for (const [u, lab] of [[ux, t.labels[0]], [uy, t.labels[1]]]) {
+    const tip = along(O, u, L);
+    ctx.line(O, along(tip, u, -6 * a), pal.triad, 1.4 * a);
+    ctx.head(tip, u, pal.triad, 9 * a, 3.6 * a);
+    ctx.text(lab, along(tip, u, 10 * a), pal.triad, 13 * a, 'font-style="italic"');
+  }
+  // Sign rule: a small arc from the first axis towards the second, marked +.
+  const r = 15 * a, steps = 12, pts = [];
+  for (let i = 0; i <= steps; i++) pts.push(along(O, screenDir(t.rotation + t.ySense * 70 * i / steps + t.ySense * 10), r));
+  ctx.path(pathOf(pts), `fill:none;stroke:${pal.triad};stroke-width:${n2(0.9 * a)}`, pts);
+  const e = pts[steps], e0 = pts[steps - 1];
+  ctx.head(e, unit(sub(e, e0)), pal.triad, 5 * a, 2.2 * a);
+  ctx.text("+", along(O, screenDir(t.rotation + t.ySense * 45), r + 8 * a), pal.triad, 11 * a);
+  for (const f of TRIAD_EXTRAS) f(ctx, O, ux, uy, L);
+  ctx.circle(O, 2.2 * a, `fill:${pal.triad};stroke:none`);
+  if (ctx.live) ctx.out.push(`<path class="hit" d="${pathOf([along(O, ux, L), O, along(O, uy, L)])}" style="stroke-width:44;stroke-linecap:round"/>`);
+  ctx.close();
+});
+const TRIAD_EXTRAS = [];
+
+/* ---------- public API ---------- */
+root.FBD = {
+  VERSION, FORMAT, SCHEMA, UNITS, SYSTEM_UNITS, LIVE_PAL, EXPORT_PAL, RENDER, TRIAD_EXTRAS, NORM, REFS,
+  parseQuantity, parseAngle, formatQuantity, fmt, rad, deg, wrap360, wrap180, clean, toTriad, fromTriad,
+  newDoc, defaultView, load, parseJSON, serialize, checker, normAt, checkAt,
+  joint, body, edge, edgeCount, edgeAngle, edgeLength, memberLength, centroid, polygonArea, resolveAt, nearestOnBody, pointInPolygon, nextId, bounds, anchorOf,
+  richRuns, plainLabel, htmlLabel, escHtml, renderScene, gridStep, textWidth,
+  vec: { sub, len, unit, along, screenDir, pathOf, n2 },
+};
+})(typeof window !== "undefined" ? window : globalThis);
+</script>
+
+<script id="fbd-ui" data-ui>
+/* FBD Drawer interface: canvas, tools, properties panel, history and
+   autosave. Every interaction works with one finger; keyboard shortcuts are
+   an extra layer. */
+(function () {
+"use strict";
+const F = window.FBD;
+const { sub, len, unit, along, pathOf, n2 } = F.vec;
+const $ = (id) => document.getElementById(id);
+const svg = $("canvas"), gridG = $("grid"), sceneG = $("scene"), overlayG = $("overlay");
+const STORE_KEY = "fbd-drawer/v1/autosave";
+$("app-version").textContent = "v" + F.VERSION;
+
+let doc = F.newDoc();
+let cam = { x: 1500, y: 0, k: 0.25 };
+let sel = [];
+let tool = "select";
+let multi = false;
+const hist = { undo: [], redo: [] };
+const HIST_MAX = 100;
+let draft = null; // tool in progress (member start, polygon vertices, …)
+let W = 800, H = 600;
+
+/* ---------- camera ---------- */
+function measure() { const r = svg.getBoundingClientRect(); W = r.width || 800; H = r.height || 600; }
+const w2s = (x, y) => [(x - cam.x) * cam.k + W / 2, H / 2 - (y - cam.y) * cam.k];
+const s2w = (sx, sy) => ({ x: (sx - W / 2) / cam.k + cam.x, y: cam.y - (sy - H / 2) / cam.k });
+const K_MIN = 0.02, K_MAX = 100;
+function zoomAt(sx, sy, f) {
+  const before = s2w(sx, sy);
+  cam.k = Math.min(K_MAX, Math.max(K_MIN, cam.k * f));
+  const after = s2w(sx, sy);
+  cam.x += before.x - after.x; cam.y += before.y - after.y;
+  schedule();
+}
+function fit() {
+  measure();
+  const b = F.bounds(doc);
+  const w = Math.max(b.x1 - b.x0, 1000), h = Math.max(b.y1 - b.y0, 1000);
+  cam.k = Math.min(K_MAX, Math.max(K_MIN, Math.min((W - 160) / w, (H - 160) / h)));
+  cam.x = (b.x0 + b.x1) / 2; cam.y = (b.y0 + b.y1) / 2;
+  schedule();
+}
+
+/* ---------- history and autosave ---------- */
+const snap = () => JSON.stringify(doc);
+function pushUndo(before) {
+  hist.undo.push(before);
+  if (hist.undo.length > HIST_MAX) hist.undo.shift();
+  hist.redo.length = 0;
+}
+// One edit = one undo step.
+function mutate(fn) {
+  const before = snap();
+  fn();
+  if (snap() !== before) { pushUndo(before); changed(); }
+  else refresh();
+}
+function undo() { if (!hist.undo.length) return; hist.redo.push(snap()); doc = JSON.parse(hist.undo.pop()); pruneSel(); changed(); }
+function redo() { if (!hist.redo.length) return; hist.undo.push(snap()); doc = JSON.parse(hist.redo.pop()); pruneSel(); changed(); }
+let saveTimer = 0;
+function changed() { refresh(); clearTimeout(saveTimer); saveTimer = setTimeout(autosave, 400); }
+function autosave() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify({ doc, cam })); } catch (e) { /* storage full or blocked */ }
+}
+function restore() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (!raw) return false;
+    const s = JSON.parse(raw);
+    const r = F.load(s.doc);
+    if (r.errors.length) return false;
+    doc = r.doc;
+    if (s.cam && Number.isFinite(s.cam.k)) cam = s.cam;
+    return true;
+  } catch (e) { return false; }
+}
+
+/* ---------- selection ---------- */
+function exists(id) {
+  if (id === "triad") return true;
+  const g = doc.geometry;
+  return [g.joints, g.bodies, g.loads, g.supports, g.markers].some((l) => l.some((e) => e.id === id));
+}
+function pruneSel() { sel = sel.filter(exists); }
+function setSel(ids) { sel = ids; refresh(); }
+function findAny(id) {
+  const g = doc.geometry;
+  for (const [list, kind] of [[g.joints, "joint"], [g.bodies, "body"], [g.loads, "load"], [g.supports, "support"], [g.markers, "marker"]]) {
+    const e = list.find((x) => x.id === id);
+    if (e) return { e, kind, list };
+  }
+  return id === "triad" ? { e: doc.view.triad, kind: "triad" } : null;
+}
+
+/* ---------- rendering ---------- */
+let raf = 0;
+function schedule() { if (!raf) raf = requestAnimationFrame(draw); }
+function refresh() { schedule(); panel(); }
+function draw() {
+  raf = 0;
+  measure();
+  svg.classList.toggle("colour", doc.view.colourByType);
+  drawGrid();
+  const r = F.renderScene(doc, { map: w2s, k: cam.k, a: 1, pal: F.LIVE_PAL, live: true, sel: new Set(sel) });
+  sceneG.innerHTML = r.svg;
+  overlayG.innerHTML = handles() + preview();
+  status();
+  $("undo").disabled = !hist.undo.length;
+  $("redo").disabled = !hist.redo.length;
+  $("delete").disabled = !sel.length;
+  $("duplicate").disabled = !sel.some((id) => id !== "triad");
+  $("snap").setAttribute("aria-pressed", String(doc.view.snap));
+}
+function drawGrid() {
+  if (!doc.view.grid) { gridG.innerHTML = ""; return; }
+  const g = F.gridStep(cam.k);
+  const mant = Math.round(g / Math.pow(10, Math.floor(Math.log10(g) + 1e-9)));
+  const major = g * (mant === 5 ? 2 : 5);
+  const tl = s2w(0, 0), br = s2w(W, H);
+  const lines = [], majors = [];
+  const x0 = Math.floor(tl.x / g) * g, y0 = Math.floor(br.y / g) * g;
+  for (let x = x0; x <= br.x; x += g) { const sx = n2(w2s(x, 0)[0]); (isMultiple(x, major) ? majors : lines).push(`M${sx} 0V${n2(H)}`); }
+  for (let y = y0; y <= tl.y; y += g) { const sy = n2(w2s(0, y)[1]); (isMultiple(y, major) ? majors : lines).push(`M0 ${sy}H${n2(W)}`); }
+  gridG.innerHTML = `<path d="${lines.join("")}" style="stroke:var(--grid);stroke-width:1" shape-rendering="crispEdges"/><path d="${majors.join("")}" style="stroke:var(--grid-major);stroke-width:1" shape-rendering="crispEdges"/>`;
+}
+const isMultiple = (v, m) => Math.abs(v / m - Math.round(v / m)) < 1e-6;
+let cursor = null;
+function status() {
+  const U = doc.view.units.length, t = doc.view.triad;
+  const g = F.gridStep(cam.k);
+  let s = `grid ${F.formatQuantity(g, "length", U)} · ${F.fmt(cam.k, 3)} px/mm`;
+  if (cursor) s = `x ${F.formatQuantity(cursor.x - t.x, "length", U, false)}  y ${F.formatQuantity(cursor.y - t.y, "length", U, false)} ${U} · ` + s;
+  $("status").textContent = s;
+}
+function handleSvg(key, p, shape = "circle") {
+  const vis = shape === "square" ? `<rect class="handle" x="${n2(p[0] - 5)}" y="${n2(p[1] - 5)}" width="10" height="10"/>` : `<circle class="handle" cx="${n2(p[0])}" cy="${n2(p[1])}" r="6"/>`;
+  return `<g data-handle="${F.escHtml(key)}">${vis}<circle cx="${n2(p[0])}" cy="${n2(p[1])}" r="22" class="hitf"/></g>`;
+}
+const HANDLES = []; // (id, found) => svg string, per feature
+function handles() {
+  if (tool !== "select") return "";
+  let s = "";
+  for (const id of sel) {
+    const f = findAny(id);
+    if (!f) continue;
+    if (f.kind === "joint") s += handleSvg(`joint:${id}`, w2s(f.e.x, f.e.y));
+    if (f.kind === "body") for (const j of f.e.joints) { const p = F.joint(doc, j); s += handleSvg(`joint:${j}`, w2s(p.x, p.y)); }
+    if (f.kind === "triad") {
+      const t = doc.view.triad, O = w2s(t.x, t.y);
+      s += handleSvg("triad:origin", O, "square") + handleSvg("triad:rotate", along(O, F.vec.screenDir(t.rotation), 70));
+    }
+    for (const h of HANDLES) s += h(id, f);
+  }
+  return s;
+}
+const PREVIEWS = [];
+function preview() {
+  let s = "";
+  if (snapMark) s += `<circle cx="${n2(snapMark[0])}" cy="${n2(snapMark[1])}" r="7" style="fill:none;stroke:var(--sel);stroke-width:1.5"/>`;
+  for (const p of PREVIEWS) s += p() || "";
+  return s;
+}
+
+/* ---------- snapping ---------- */
+let snapMark = null;
+function isTouch(e) { return e && e.pointerType === "touch"; }
+// Snap a world point: joints and vertices, member midpoints, then the grid.
+function snapPoint(w, e, skip = new Set()) {
+  snapMark = null;
+  if (!doc.view.snap || (e && e.altKey)) return { x: w.x, y: w.y };
+  const R = (isTouch(e) ? 22 : 12) / cam.k;
+  let best = null;
+  const consider = (x, y, extra) => { const d = Math.hypot(x - w.x, y - w.y); if (d < R && (!best || d < best.d)) best = { x, y, d, ...extra }; };
+  for (const j of doc.geometry.joints) if (!skip.has(j.id)) consider(j.x, j.y, { joint: j.id });
+  if (!best) for (const b of doc.geometry.bodies) {
+    for (let e2 = 0; e2 < F.edgeCount(b); e2++) {
+      const [p, q] = F.edge(doc, b, e2);
+      if (skip.has(p.id) || skip.has(q.id)) continue;
+      consider((p.x + q.x) / 2, (p.y + q.y) / 2, { mid: b.id });
+    }
+  }
+  if (best) { snapMark = w2s(best.x, best.y); return { x: best.x, y: best.y, joint: best.joint }; }
+  const g = F.gridStep(cam.k), t = doc.view.triad;
+  return { x: t.x + Math.round((w.x - t.x) / g) * g, y: t.y + Math.round((w.y - t.y) / g) * g };
+}
+function snapAngle(a, e) { const s = doc.view.angleSnap; return s > 0 && !(e && e.altKey) ? Math.round(a / s) * s : a; }
+
+/* ---------- editing operations ---------- */
+function addJoint(p) {
+  if (p.joint) return p.joint;
+  const id = F.nextId(doc, "j");
+  doc.geometry.joints.push({ id, x: p.x, y: p.y });
+  return id;
+}
+function addBody(type, jointIds) {
+  const id = F.nextId(doc, "b");
+  const b = { id, type, joints: jointIds, label: null };
+  if (type === "beam") b.depth = defaultDepth();
+  if (type === "line" || type === "dimension") { b.type = "line"; b.role = type === "dimension" ? "dimension" : "construction"; b.offset = type === "dimension" ? -40 : 0; }
+  doc.geometry.bodies.push(b);
+  return id;
+}
+function defaultDepth() { const g = F.gridStep(cam.k, 14); return Math.max(g, Math.min(g * 2, 1e6)); }
+function usedJoints() {
+  const u = new Set();
+  for (const b of doc.geometry.bodies) b.joints.forEach((j) => u.add(j));
+  for (const f of JOINT_USERS) f(u);
+  return u;
+}
+const JOINT_USERS = [];
+const DELETE_HOOKS = []; // (deletedIds:Set) => extra ids to delete
+function deleteIds(ids) {
+  const del = new Set(ids);
+  del.delete("triad");
+  // Deleting a joint removes the bodies on it.
+  for (const b of doc.geometry.bodies) if (b.joints.some((j) => del.has(j))) del.add(b.id);
+  let grew = true;
+  while (grew) { const n = del.size; for (const h of DELETE_HOOKS) h(del); grew = del.size !== n; }
+  const g = doc.geometry;
+  for (const k of ["bodies", "loads", "supports", "markers"]) g[k] = g[k].filter((e) => !del.has(e.id));
+  const used = usedJoints();
+  g.joints = g.joints.filter((j) => !del.has(j.id) && used.has(j.id));
+}
+const DUP_HOOKS = [];
+function duplicate(ids) {
+  const g = doc.geometry, step = F.gridStep(cam.k) * 2;
+  const map = new Map();
+  const cloneJoint = (id) => {
+    if (map.has(id)) return map.get(id);
+    const j = F.joint(doc, id), nid = F.nextId(doc, "j");
+    g.joints.push({ id: nid, x: j.x + step, y: j.y - step });
+    map.set(id, nid);
+    return nid;
+  };
+  const out = [];
+  for (const id of ids) {
+    const f = findAny(id);
+    if (!f) continue;
+    if (f.kind === "body") {
+      const nb = JSON.parse(JSON.stringify(f.e));
+      nb.id = F.nextId(doc, "b");
+      nb.joints = f.e.joints.map(cloneJoint);
+      g.bodies.push(nb); map.set(id, nb.id); out.push(nb.id);
+    } else if (f.kind === "joint") out.push(cloneJoint(id));
+  }
+  for (const h of DUP_HOOKS) h(ids, map, step, out);
+  return out;
+}
+// Merge joint a into b (a dragged endpoint dropped on another joint).
+const MERGE_HOOKS = [];
+function mergeJoint(a, b) {
+  for (const body of doc.geometry.bodies) if (body.joints.includes(a) && body.joints.includes(b)) return false;
+  for (const body of doc.geometry.bodies) body.joints = body.joints.map((j) => (j === a ? b : j));
+  for (const h of MERGE_HOOKS) h(a, b);
+  doc.geometry.joints = doc.geometry.joints.filter((j) => j.id !== a);
+  return true;
+}
+
+/* ---------- tools ---------- */
+const TOOLS = {}; // name -> { label, icon, hint, down(e, w), move(e, w), up(e, w), cancel() }
+const TOOL_ORDER = [];
+function defineTool(name, spec) { TOOLS[name] = spec; TOOL_ORDER.push(name); }
+function setTool(name) {
+  if (TOOLS[tool] && TOOLS[tool].cancel) TOOLS[tool].cancel();
+  draft = null; snapMark = null; tool = name;
+  for (const b of document.querySelectorAll("[data-tool]")) b.setAttribute("aria-pressed", String(b.dataset.tool === tool));
+  $("hint").textContent = TOOLS[tool].hint || "";
+  refresh();
+}
+const icon = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+
+// Select: tap to select (Shift or multi-select mode adds), drag to move,
+// drag empty space to pan.
+defineTool("select", {
+  label: "Select", icon: icon('<path d="M5 3l6 16 2.5-6.5L20 10z"/>'), hint: "",
+});
+function memberTool(name, label, ic, hint) {
+  defineTool(name, {
+    label, icon: icon(ic), hint,
+    down(e, w) {
+      const p = snapPoint(w, e);
+      if (draft && draft.pending) { draft.end = p; return; }
+      draft = { start: p, end: p, sx: e.clientX, sy: e.clientY };
+    },
+    move(e, w) { if (draft) draft.end = snapPoint(w, e, draft.start.joint ? new Set() : new Set()); schedule(); },
+    up(e) {
+      if (!draft) return;
+      const moved = Math.hypot(e.clientX - draft.sx, e.clientY - draft.sy) > 6;
+      const { start, end } = draft;
+      if (!draft.pending && !moved) { draft.pending = true; $("hint").textContent = "Tap the end point"; return; }
+      if (Math.hypot(end.x - start.x, end.y - start.y) < 1e-6 || (start.joint && start.joint === end.joint)) { draft = null; $("hint").textContent = hint; schedule(); return; }
+      mutate(() => {
+        const a = addJoint(start), b = addJoint(end);
+        const id = addBody(name, [a, b]);
+        sel = [id];
+      });
+      draft = null; snapMark = null; $("hint").textContent = hint;
+    },
+    cancel() { draft = null; },
+  });
+}
+PREVIEWS.push(() => {
+  if (!draft || !draft.start || !draft.end || !["beam", "rod", "line", "dimension"].includes(tool)) return "";
+  const p = w2s(draft.start.x, draft.start.y), q = w2s(draft.end.x, draft.end.y);
+  const L = Math.hypot(draft.end.x - draft.start.x, draft.end.y - draft.start.y);
+  const mid = [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+  return `<line x1="${n2(p[0])}" y1="${n2(p[1])}" x2="${n2(q[0])}" y2="${n2(q[1])}" style="stroke:var(--sel);stroke-width:${tool === "beam" ? 6 : 2};stroke-dasharray:6 4"/><circle cx="${n2(p[0])}" cy="${n2(p[1])}" r="4" style="fill:var(--sel)"/>` +
+    `<text x="${n2(mid[0])}" y="${n2(mid[1] - 14)}" text-anchor="middle" style="fill:var(--sel);font:12px var(--mono)">${F.formatQuantity(L, "length", doc.view.units.length)}</text>`;
+});
+memberTool("beam", "Beam", '<rect x="3" y="9" width="18" height="6" rx="1"/>', "Drag from start to end, or tap start then end");
+memberTool("rod", "Rod", '<path d="M6 18L18 6"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/>', "Drag from start to end, or tap start then end");
+memberTool("line", "Line", '<path d="M4 20L20 4" stroke-dasharray="4 3"/>', "Construction line: drag from start to end");
+memberTool("dimension", "Dim", '<path d="M4 16h16M4 12v8M20 12v8"/><path d="M8 12l-4 4 4 4M16 12l4 4-4 4" stroke-width="1.2"/>', "Dimension: drag between two points; it always measures");
+defineTool("polygon", {
+  label: "Plate", icon: icon('<path d="M4 18L7 5l10 2 3 9-9 4z"/>'), hint: "Tap each vertex; tap the first vertex or Finish to close",
+  down(e, w) {
+    const p = snapPoint(w, e);
+    draft = draft && draft.pts ? draft : { pts: [] };
+    if (draft.pts.length >= 3) {
+      const f = draft.pts[0], s = w2s(f.x, f.y), c = w2s(p.x, p.y);
+      if (Math.hypot(s[0] - c[0], s[1] - c[1]) < (isTouch(e) ? 22 : 12)) { finishPolygon(); return; }
+    }
+    draft.pts.push(p);
+    draft.hover = p;
+    refresh();
+  },
+  move(e, w) { if (draft && draft.pts) { draft.hover = snapPoint(w, e); schedule(); } },
+  up() {},
+  cancel() { draft = null; },
+});
+function finishPolygon() {
+  const pts = draft && draft.pts;
+  if (!pts || pts.length < 3) return;
+  draft = null;
+  mutate(() => { const ids = pts.map(addJoint); if (new Set(ids).size < 3) return; sel = [addBody("polygon", ids)]; });
+}
+PREVIEWS.push(() => {
+  if (tool !== "polygon" || !draft || !draft.pts || !draft.pts.length) return "";
+  const pts = draft.pts.concat(draft.hover ? [draft.hover] : []).map((p) => w2s(p.x, p.y));
+  return `<path d="${pathOf(pts)}" style="fill:none;stroke:var(--sel);stroke-width:2;stroke-dasharray:6 4"/>` + draft.pts.map((p) => { const s = w2s(p.x, p.y); return `<circle cx="${n2(s[0])}" cy="${n2(s[1])}" r="4" style="fill:var(--sel)"/>`; }).join("");
+});
+
+/* ---------- pointer handling ---------- */
+const pointers = new Map();
+let gesture = null; // { type: "pan"|"drag"|"pinch"|"tool", ... }
+function evPos(e) { const r = svg.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+const DRAGS = {}; // handle/kind -> (target info) => { move(e, w), end() }
+svg.addEventListener("pointerdown", (e) => {
+  if (e.button !== undefined && e.button > 0 && e.pointerType === "mouse") { if (e.button === 1) startPan(e); return; }
+  svg.setPointerCapture?.(e.pointerId);
+  pointers.set(e.pointerId, evPos(e));
+  if (pointers.size === 2) { startPinch(); return; }
+  if (pointers.size > 2) return;
+  const w = s2w(...evPos(e));
+  if (tool !== "select") { gesture = { type: "tool", id: e.pointerId }; TOOLS[tool].down(e, w); schedule(); return; }
+  const target = e.target.closest ? e.target.closest("[data-handle],[data-id]") : null;
+  if (target && target.dataset.handle) { startDrag(e, w, "handle", target.dataset.handle); return; }
+  if (target && target.dataset.id) {
+    const id = target.dataset.id;
+    const additive = multi || e.shiftKey;
+    const isLabel = !!target.dataset.label;
+    if (isLabel) { if (!sel.includes(id.split("#")[0])) setSel([id.split("#")[0]]); startDrag(e, w, "label", id); return; }
+    if (additive) { setSel(sel.includes(id) ? sel.filter((x) => x !== id) : sel.concat(id)); gesture = { type: "none" }; return; }
+    if (!sel.includes(id)) setSel([id]);
+    startDrag(e, w, "move", id);
+    return;
+  }
+  startPan(e, true);
+});
+function startPan(e, clearOnTap = false) {
+  gesture = { type: "pan", id: e.pointerId, last: evPos(e), start: evPos(e), clearOnTap, moved: false };
+}
+function startPinch() {
+  // A second finger always pans and zooms: abandon whatever the first began.
+  if (gesture && gesture.type === "drag" && gesture.before) { doc = JSON.parse(gesture.before); }
+  if (TOOLS[tool].cancel && gesture && gesture.type === "tool") TOOLS[tool].cancel();
+  const [p, q] = [...pointers.values()];
+  gesture = { type: "pinch", mid: [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2], dist: Math.hypot(p[0] - q[0], p[1] - q[1]) || 1 };
+  snapMark = null;
+  schedule();
+}
+function startDrag(e, w, kind, key) {
+  const make = DRAGS[kind === "handle" ? key.split(":")[0] : kind];
+  const d = make ? make(key, w, e) : null;
+  gesture = { type: "drag", id: e.pointerId, d, before: snap(), start: evPos(e), moved: false };
+}
+svg.addEventListener("pointermove", (e) => {
+  const pos = evPos(e);
+  cursor = s2w(...pos);
+  if (pointers.has(e.pointerId)) pointers.set(e.pointerId, pos);
+  if (!gesture) {
+    if (tool !== "select" && TOOLS[tool].move && e.pointerType === "mouse") { TOOLS[tool].move(e, cursor); }
+    status(); return;
+  }
+  if (gesture.type === "pinch") {
+    if (pointers.size < 2) return;
+    const [p, q] = [...pointers.values()];
+    const mid = [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2], dist = Math.hypot(p[0] - q[0], p[1] - q[1]) || 1;
+    cam.x -= (mid[0] - gesture.mid[0]) / cam.k; cam.y += (mid[1] - gesture.mid[1]) / cam.k;
+    zoomAt(mid[0], mid[1], dist / gesture.dist);
+    gesture.mid = mid; gesture.dist = dist;
+    return;
+  }
+  if (e.pointerId !== gesture.id) return;
+  if (gesture.type === "pan") {
+    cam.x -= (pos[0] - gesture.last[0]) / cam.k; cam.y += (pos[1] - gesture.last[1]) / cam.k;
+    gesture.last = pos;
+    if (Math.hypot(pos[0] - gesture.start[0], pos[1] - gesture.start[1]) > 6) gesture.moved = true;
+    schedule(); return;
+  }
+  if (gesture.type === "tool") { TOOLS[tool].move && TOOLS[tool].move(e, cursor); return; }
+  if (gesture.type === "drag" && gesture.d) {
+    if (!gesture.moved && Math.hypot(pos[0] - gesture.start[0], pos[1] - gesture.start[1]) < (isTouch(e) ? 8 : 3)) return;
+    gesture.moved = true;
+    gesture.d.move(e, cursor);
+    schedule(); panelValues();
+  }
+});
+function endPointer(e) {
+  pointers.delete(e.pointerId);
+  if (!gesture) return;
+  if (gesture.type === "pinch") { if (pointers.size < 2) gesture = pointers.size ? { type: "none" } : null; return; }
+  if (e.pointerId !== gesture.id) return;
+  const g = gesture; gesture = null;
+  if (g.type === "pan" && g.clearOnTap && !g.moved && !multi) setSel([]);
+  if (g.type === "tool" && e.type !== "pointercancel") TOOLS[tool].up && TOOLS[tool].up(e, s2w(...evPos(e)));
+  if (g.type === "drag") {
+    if (g.d && g.moved && g.d.end) g.d.end(e);
+    snapMark = null;
+    if (e.type === "pointercancel") { doc = JSON.parse(g.before); }
+    else if (snap() !== g.before) { pushUndo(g.before); changed(); return; }
+  }
+  schedule();
+}
+svg.addEventListener("pointerup", endPointer);
+svg.addEventListener("pointercancel", endPointer);
+svg.addEventListener("pointerleave", () => { cursor = null; if (!gesture) status(); });
+svg.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  const [sx, sy] = evPos(e);
+  if (e.ctrlKey || e.metaKey || e.deltaMode !== 0 || Math.abs(e.deltaY) >= 40 && Math.abs(e.deltaX) < 1) zoomAt(sx, sy, Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)));
+  else { cam.x += e.deltaX / cam.k; cam.y -= e.deltaY / cam.k; schedule(); }
+}, { passive: false });
+svg.addEventListener("dblclick", () => { if (tool === "polygon") finishPolygon(); });
+
+// Moving a selection: every joint of the selected bodies, plus free items.
+const MOVERS = []; // (ids, collect) => add movable things
+DRAGS.move = (id, w0) => {
+  const joints = new Set(), items = [];
+  for (const sid of sel) {
+    const f = findAny(sid);
+    if (!f) continue;
+    if (f.kind === "joint") joints.add(sid);
+    if (f.kind === "body") f.e.joints.forEach((j) => joints.add(j));
+    if (f.kind === "triad") items.push(doc.view.triad);
+  }
+  for (const m of MOVERS) m(sel, joints, items);
+  const start = [...joints].map((j) => { const p = F.joint(doc, j); return [p, p.x, p.y]; });
+  const startItems = items.map((it) => [it, it.x, it.y]);
+  const ref = start[0] ? { x: start[0][1], y: start[0][2] } : startItems[0] ? { x: startItems[0][1], y: startItems[0][2] } : null;
+  return {
+    move(e, w) {
+      if (!ref) return;
+      const target = snapPoint({ x: ref.x + w.x - w0.x, y: ref.y + w.y - w0.y }, e, joints);
+      const dx = target.x - ref.x, dy = target.y - ref.y;
+      for (const [p, x, y] of start) { p.x = x + dx; p.y = y + dy; }
+      for (const [it, x, y] of startItems) { it.x = x + dx; it.y = y + dy; }
+    },
+  };
+};
+DRAGS.joint = (key) => {
+  const id = key.split(":")[1], j = F.joint(doc, id);
+  let target = null;
+  return {
+    move(e, w) { const p = snapPoint(w, e, new Set([id])); j.x = p.x; j.y = p.y; target = p.joint || null; },
+    end() { if (target && target !== id) mergeJoint(id, target); },
+  };
+};
+DRAGS.triad = (key) => {
+  const t = doc.view.triad;
+  if (key === "triad:origin") return { move(e, w) { const p = snapPoint(w, e); t.x = p.x; t.y = p.y; } };
+  return { move(e, w) { t.rotation = F.clean(F.wrap360(snapAngle(F.deg(Math.atan2(w.y - t.y, w.x - t.x)), e))); } };
+};
+
+/* ---------- properties panel ---------- */
+const body_ = $("panel-body");
+let binds = {};
+const PANELS = []; // (found) => html or null, first match wins
+function esc(s) { return F.escHtml(s ?? ""); }
+function field(key, label, value, set, opts = {}) {
+  binds[key] = set;
+  return `<div class="row"><label for="f-${key}">${label}</label><input type="text" id="f-${key}" data-bind="${key}" value="${esc(value)}" autocomplete="off" spellcheck="false"${opts.mode ? ` inputmode="${opts.mode}"` : ""}${opts.placeholder ? ` placeholder="${esc(opts.placeholder)}"` : ""}></div>`;
+}
+function select(key, label, value, options, set) {
+  binds[key] = set;
+  return `<div class="row"><label for="f-${key}">${label}</label><select id="f-${key}" data-bind="${key}">${options.map(([v, t]) => `<option value="${esc(v)}"${String(v) === String(value) ? " selected" : ""}>${esc(t)}</option>`).join("")}</select></div>`;
+}
+function check(key, label, value, set) { binds[key] = set; return `<label><input type="checkbox" data-bind="${key}"${value ? " checked" : ""}> ${label}</label>`; }
+function seg(key, options, value, set) { binds[key] = set; return `<div class="seg" role="group">${options.map(([v, t]) => `<button type="button" data-seg="${key}" data-v="${esc(v)}" aria-pressed="${String(v) === String(value)}">${esc(t)}</button>`).join("")}</div>`; }
+function button(key, label, fn) { binds[key] = fn; return `<button type="button" data-act="${key}">${label}</button>`; }
+const lenField = (key, label, v, set) => field(key, label, F.formatQuantity(v, "length", doc.view.units.length), (t) => { const r = F.parseQuantity(t, "length", doc.view.units.length); if (r.error) return r.error; if (r.value === null) return "Enter a length"; set(r.value); }, { mode: "text" });
+const angField = (key, label, v, set) => field(key, label, v === null ? "" : `${F.fmt(v)}°`, (t) => { const r = F.parseAngle(t); if (r.error) return r.error; if (r.value === null) return "Enter an angle"; set(r.value); });
+const coordFields = (key, p) => {
+  const t = doc.view.triad;
+  return lenField(`${key}.x`, "x", p.x - t.x, (v) => { p.x = v + t.x; }) + lenField(`${key}.y`, "y", p.y - t.y, (v) => { p.y = v + t.y; });
+};
+function panel() {
+  if (body_.contains(document.activeElement) && document.activeElement.tagName !== "BUTTON") { panelValues(); return; }
+  binds = {};
+  let html = "";
+  if (!sel.length) html = docPanel();
+  else if (sel.length > 1) html = `<h2>${sel.length} items selected</h2><p>Drag any of them to move all. Delete and duplicate act on the whole selection.</p>`;
+  else {
+    const f = findAny(sel[0]);
+    for (const p of PANELS) { const h = f && p(f); if (h) { html = h; break; } }
+  }
+  if (draft && draft.pts) html = `<h2>Plate</h2><p>${draft.pts.length} vertices. Tap the first vertex or Finish to close.</p><div class="btns">${button("poly.finish", "Finish plate", finishPolygon)}${button("poly.cancel", "Cancel", () => { draft = null; refresh(); })}</div>` + html;
+  body_.innerHTML = html + `<div class="err" id="panel-err" role="alert"></div>`;
+}
+// Keep numbers in the panel live during a drag without rebuilding it.
+let valueTimer = 0;
+function panelValues() {
+  cancelAnimationFrame(valueTimer);
+  valueTimer = requestAnimationFrame(() => {
+    const active = document.activeElement;
+    const tmp = document.createElement("div");
+    const saveBinds = binds; binds = {};
+    let html = "";
+    if (sel.length === 1) { const f = findAny(sel[0]); for (const p of PANELS) { const h = f && p(f); if (h) { html = h; break; } } }
+    else if (!sel.length) html = docPanel();
+    binds = saveBinds;
+    tmp.innerHTML = html;
+    for (const inp of tmp.querySelectorAll("input[type=text][data-bind]")) {
+      const cur = body_.querySelector(`[data-bind="${CSS.escape(inp.dataset.bind)}"]`);
+      if (cur && cur !== active) cur.value = inp.value;
+    }
+  });
+}
+function applyBind(key, value, el) {
+  const fn = binds[key];
+  if (!fn) return;
+  let err = null;
+  const before = snap();
+  err = fn(value);
+  if (typeof err === "string") {
+    doc = JSON.parse(before);
+    $("panel-err").textContent = err;
+    if (el) el.classList.add("bad");
+    return;
+  }
+  if (el) el.classList.remove("bad");
+  $("panel-err").textContent = "";
+  if (snap() !== before) { pushUndo(before); if (el && el.tagName === "INPUT" && el.type === "text") { document.activeElement.blur?.(); } changed(); }
+  else refresh();
+}
+body_.addEventListener("change", (e) => {
+  const el = e.target;
+  if (!el.dataset.bind) return;
+  applyBind(el.dataset.bind, el.type === "checkbox" ? el.checked : el.value, el);
+});
+body_.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.dataset.bind && e.target.tagName === "INPUT") { e.preventDefault(); e.target.blur(); } });
+body_.addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  if (b.dataset.seg) applyBind(b.dataset.seg, b.dataset.v, null);
+  else if (b.dataset.act && binds[b.dataset.act]) binds[b.dataset.act]();
+});
+$("sheet-toggle").addEventListener("click", () => {
+  const p = $("panel"), c = p.classList.toggle("collapsed");
+  $("sheet-toggle").setAttribute("aria-expanded", String(!c));
+  requestAnimationFrame(() => { measure(); schedule(); });
+});
+
+const DOC_SECTIONS = []; // extra sections for the drawing panel
+function unitsSection() {
+  const u = doc.view.units, S = F.SYSTEM_UNITS[u.system];
+  const opt = (list) => list.map((x) => [x, x]);
+  return `<h3>Units</h3>` + seg("units.system", [["SI", "SI"], ["imperial", "Imperial"]], u.system, (v) => {
+    if (v === u.system) return;
+    u.system = v; for (const k of ["length", "force", "moment", "distributed"]) u[k] = F.SYSTEM_UNITS[v][k][v === "SI" && k === "length" ? 0 : 0];
+    if (v === "imperial") { u.length = "in"; u.force = "lbf"; u.moment = "lbf·in"; u.distributed = "lbf/in"; }
+  }) + select("units.length", "Length", u.length, opt(S.length), (v) => { u.length = v; })
+    + select("units.force", "Force", u.force, opt(S.force), (v) => { u.force = v; })
+    + select("units.moment", "Moment", u.moment, opt(S.moment), (v) => { u.moment = v; })
+    + select("units.distributed", "Distributed", u.distributed, opt(S.distributed), (v) => { u.distributed = v; })
+    + `<p>Values are stored in mm, N and N·mm. Type any unit, such as <code>2 m</code> or <code>3 ft 6 in</code>; a bare number uses the unit above.</p>`;
+}
+function triadSection() {
+  const t = doc.view.triad;
+  const presetLabels = [["x,y", "x / y"], ["x',y'", "x′ / y′"], ["custom", "Custom"]];
+  const cur = t.labels.join(",") === "x,y" ? "x,y" : t.labels.join(",") === "x',y'" ? "x',y'" : "custom";
+  let h = `<h3>Axes</h3><div class="checks">${check("triad.visible", "Show axes", t.visible, (v) => { t.visible = v; })}</div>`;
+  for (const s of TRIAD_SECTIONS) h += s(t);
+  h += coordFields("triad", t) + angField("triad.rotation", "Rotation", t.rotation, (v) => { t.rotation = F.clean(F.wrap360(v)); });
+  if (t.preset === "engineering") h += select("triad.labelset", "Labels", cur, presetLabels, (v) => { if (v === "x,y") t.labels = ["x", "y"]; else if (v === "x',y'") t.labels = ["x'", "y'"]; });
+  h += field("triad.l0", "First axis", t.labels[0], (v) => { t.labels[0] = v || "x"; }) + field("triad.l1", "Second axis", t.labels[1], (v) => { t.labels[1] = v || "y"; });
+  h += `<p>Angles and components are measured from the ${esc(F.plainLabel(t.labels[0]))} axis, positive towards ${esc(F.plainLabel(t.labels[1]))}${t.ySense > 0 ? " (counter-clockwise)" : " (clockwise on screen)"}. Moving or rotating the axes never moves the drawing.</p>`;
+  return h;
+}
+const TRIAD_SECTIONS = [];
+function docPanel() {
+  const v = doc.view;
+  let h = `<h2>Drawing</h2>` + field("doc.title", "Title", doc.title, (t) => { doc.title = t || "Untitled drawing"; });
+  h += `<div class="checks">${check("view.grid", "Grid", v.grid, (x) => { v.grid = x; })}${check("view.snap", "Snap", v.snap, (x) => { v.snap = x; })}${check("view.colour", "Colour by type", v.colourByType, (x) => { v.colourByType = x; })}</div>`;
+  h += angField("view.angleSnap", "Angle snap", v.angleSnap, (x) => { if (x < 0) return "Angle snap cannot be negative"; v.angleSnap = x; });
+  h += unitsSection() + triadSection();
+  for (const s of DOC_SECTIONS) h += s();
+  return h;
+}
+PANELS.push((f) => f.kind === "triad" ? `<h2>Axes triad</h2>` + triadSection() : null);
+PANELS.push((f) => {
+  if (f.kind !== "joint") return null;
+  const users = doc.geometry.bodies.filter((b) => b.joints.includes(f.e.id)).map((b) => b.id);
+  return `<h2>Joint ${esc(f.e.id)}</h2>` + coordFields(`joint.${f.e.id}`, f.e) + `<p>Shared by ${users.length ? users.map(esc).join(", ") : "no bodies"}. Dragging it moves every member on it.</p>`;
+});
+PANELS.push((f) => {
+  if (f.kind !== "body") return null;
+  const b = f.e, U = doc.view.units.length;
+  const names = { beam: "Beam", rod: "Rod / link", line: b.role === "dimension" ? "Dimension line" : b.role === "leader" ? "Leader line" : "Construction line", polygon: "Plate (polygon)" };
+  let h = `<h2>${names[b.type]} ${esc(b.id)}</h2>`;
+  h += field(`body.${b.id}.label`, "Label", b.label ?? "", (v) => { b.label = v.trim() ? v : null; }, { placeholder: "e.g. AB or F_1" });
+  if (b.type !== "polygon") {
+    h += select(`body.${b.id}.type`, "Type", b.type === "line" ? `line:${b.role}` : b.type, [["beam", "Beam"], ["rod", "Rod / link"], ["line:construction", "Construction line"], ["line:dimension", "Dimension line"], ["line:leader", "Leader line"]], (v) => {
+      const [type, role] = v.split(":");
+      b.type = type; delete b.depth; delete b.role; delete b.offset;
+      if (type === "beam") b.depth = defaultDepth();
+      if (type === "line") { b.role = role; b.offset = role === "dimension" ? -40 : 0; }
+    });
+    const [p, q] = F.edge(doc, b, 0);
+    const L = F.memberLength(doc, b), ang = F.toTriad(doc.view, F.edgeAngle(doc, b, 0));
+    h += `<h3>Start (${esc(p.id)})</h3>` + coordFields(`body.${b.id}.p`, p) + `<h3>End (${esc(q.id)})</h3>` + coordFields(`body.${b.id}.q`, q);
+    h += `<h3>Size</h3>` + lenField(`body.${b.id}.length`, "Length", L, (v) => {
+      if (v <= 0) return "Length must be positive";
+      const a = F.rad(F.edgeAngle(doc, b, 0)); q.x = p.x + v * Math.cos(a); q.y = p.y + v * Math.sin(a);
+    }) + angField(`body.${b.id}.angle`, "Angle", ang, (v) => { const a = F.rad(F.fromTriad(doc.view, v)); const L2 = F.memberLength(doc, b); q.x = p.x + L2 * Math.cos(a); q.y = p.y + L2 * Math.sin(a); });
+    if (b.type === "beam") h += lenField(`body.${b.id}.depth`, "Depth", b.depth, (v) => { if (v <= 0) return "Depth must be positive"; b.depth = v; });
+    if (b.type === "line" && b.role === "dimension") h += field(`body.${b.id}.offset`, "Offset (px)", F.fmt(b.offset), (t) => { const n = Number(t); if (!Number.isFinite(n)) return "Offset is a number of annotation pixels"; b.offset = n; }) + `<p>Measures ${esc(F.formatQuantity(L, "length", U))}.</p>`;
+  } else {
+    h += `<h3>Vertices</h3>`;
+    b.joints.forEach((jid, i) => { const j = F.joint(doc, jid); h += `<p>${i + 1}. ${esc(jid)}</p>` + coordFields(`body.${b.id}.v${i}`, j); });
+    h += `<p>Area ${esc(F.fmt(F.polygonArea(doc, b) / Math.pow(F.UNITS.length[U], 2)))} ${esc(U)}²</p>`;
+  }
+  for (const s of BODY_SECTIONS) h += s(b);
+  return h;
+});
+const BODY_SECTIONS = [];
+
+/* ---------- toolbar ---------- */
+function buildToolbar() {
+  $("tools").innerHTML = TOOL_ORDER.map((n) => `<button class="tb" type="button" data-tool="${n}" aria-pressed="${n === tool}" title="${esc(TOOLS[n].label)}">${TOOLS[n].icon}<span>${esc(TOOLS[n].label)}</span></button>`).join("");
+  $("actions").innerHTML = ACTIONS.map((a) => a.html ? a.html() : `<button class="tb" type="button" id="${a.id}" title="${esc(a.title)}"${a.toggle ? ` aria-pressed="false"` : ""}>${a.icon}<span class="sr">${esc(a.label)}</span></button>`).join("");
+}
+const ACTIONS = [
+  { id: "undo", label: "Undo", title: "Undo (Ctrl/Cmd+Z)", icon: icon('<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 010 12h-3"/>'), run: undo },
+  { id: "redo", label: "Redo", title: "Redo (Ctrl/Cmd+Shift+Z)", icon: icon('<path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 000 12h3"/>'), run: redo },
+  { id: "delete", label: "Delete", title: "Delete (Delete)", icon: icon('<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>'), run: () => mutate(() => { deleteIds(sel); sel = []; }) },
+  { id: "duplicate", label: "Duplicate", title: "Duplicate (Ctrl/Cmd+D)", icon: icon('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h3"/>'), run: () => mutate(() => { sel = duplicate(sel); }) },
+  { id: "multi", label: "Multi", title: "Multi-select: taps add to the selection", toggle: true, icon: icon('<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/><path d="M13 7h4v4M7 13v4h4"/>'), run: () => { multi = !multi; $("multi").setAttribute("aria-pressed", String(multi)); } },
+  { id: "snap", label: "Snap", title: "Snap to grid and points", toggle: true, icon: icon('<path d="M6 3v7a6 6 0 0012 0V3"/><path d="M6 7h4M14 7h4"/>'), run: () => mutate(() => { doc.view.snap = !doc.view.snap; }) },
+  { id: "fit", label: "Fit", title: "Fit drawing to view", icon: icon('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'), run: fit },
+];
+function wireToolbar() {
+  $("tools").addEventListener("click", (e) => { const b = e.target.closest("[data-tool]"); if (b) setTool(b.dataset.tool); });
+  for (const a of ACTIONS) if (a.run) $(a.id)?.addEventListener("click", a.run);
+}
+
+/* ---------- keyboard (desktop extra layer) ---------- */
+document.addEventListener("keydown", (e) => {
+  const typing = /^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement?.tagName);
+  const mod = e.ctrlKey || e.metaKey;
+  if (mod && e.key.toLowerCase() === "z") { if (typing) return; e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
+  if (mod && e.key.toLowerCase() === "y") { if (typing) return; e.preventDefault(); redo(); return; }
+  if (typing) return;
+  if (mod && e.key.toLowerCase() === "d") { e.preventDefault(); if (sel.length) mutate(() => { sel = duplicate(sel); }); return; }
+  if (e.key === "Delete" || e.key === "Backspace") { if (sel.length) { e.preventDefault(); mutate(() => { deleteIds(sel); sel = []; }); } return; }
+  if (e.key === "Escape") { if (draft) { draft = null; refresh(); } else if (tool !== "select") setTool("select"); else setSel([]); return; }
+  if (e.key === "Enter" && tool === "polygon") finishPolygon();
+});
+
+/* ---------- boot ---------- */
+window.FBDApp = {
+  get doc() { return doc; }, set doc(d) { doc = d; sel = []; hist.undo.length = hist.redo.length = 0; changed(); },
+  get cam() { return cam; }, get sel() { return sel; }, set sel(v) { setSel(v); },
+  mutate, undo, redo, setTool, fit, refresh, changed, schedule, deleteIds, duplicate, w2s, s2w, snapPoint, snapAngle, isTouch, findAny,
+  TOOLS, DRAGS, PANELS, BODY_SECTIONS, DOC_SECTIONS, TRIAD_SECTIONS, HANDLES, PREVIEWS, MOVERS, JOINT_USERS, DELETE_HOOKS, DUP_HOOKS, MERGE_HOOKS, ACTIONS,
+  defineTool, handleSvg, field, select, check, seg, button, lenField, angField, coordFields, esc, icon,
+  get draft() { return draft; }, set draft(v) { draft = v; }, get tool() { return tool; }, get multi() { return multi; },
+  addJoint, addBody, toast,
+};
+function toast(msg, ms = 2600) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => { t.hidden = true; }, ms); }
+window.addEventListener("resize", () => { measure(); schedule(); });
+function boot() {
+  buildToolbar(); wireToolbar();
+  const restored = restore();
+  measure();
+  if (!restored) fit();
+  setTool("select");
+}
+window.FBDBoot = boot;
+})();
+</script>
+<script id="fbd-start">
+window.FBDBoot();
+</script>
+</body>
+</html>
