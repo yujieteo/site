@@ -48,15 +48,17 @@ export function validateCheckInputs(pattern, resolved) {
 /*
  * `fasteners`: solve() fastener results (resolved properties plus shear and
  * axial). Tension feeding the interaction is the positive part of T;
- * unloading counts as zero (N-006).
+ * unloading counts as zero (N-006). Rs and T within zeroTol of the largest
+ * |Rs| and |T| in the group are round-off and count as zero.
  */
-export function fastenerChecks(fasteners, settings) {
+export function fastenerChecks(fasteners, settings, zeroTol) {
   const { a, b } = settings.interaction;
   const issues = [];
+  const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.shear.Rs)), 0);
+  const tensionFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.axial.T)), 0);
   const results = fasteners.map((f) => {
-    const Rs = f.shear.Rs;
-    const T = f.axial.T;
-    const Rt = Math.max(T, 0);
+    const Rs = f.shear.Rs > shearFloor ? f.shear.Rs : 0;
+    const Rt = f.axial.T > tensionFloor ? f.axial.T : 0;
     const Fs = f.shearAllowable, Ft = f.tensionAllowable;
     const missing = [Fs === null || Fs === undefined ? "Fs" : null, Ft === null || Ft === undefined ? "Ft" : null].filter(Boolean);
     let interaction;
@@ -78,7 +80,7 @@ export function fastenerChecks(fasteners, settings) {
       const g = evaluated.reduce((lo, m) => (m.ms < lo.ms ? m : lo));
       governing = { mode: g.mode, label: g.label, ms: g.ms };
     }
-    return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: T < 0 && !missing.length };
+    return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: f.axial.unloading && !missing.length };
   });
   const zeroed = results.filter((r) => r.unloadingCountedZero).map((r) => r.id);
   if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero tension: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
@@ -90,6 +92,21 @@ export function fastenerChecks(fasteners, settings) {
     evaluatedCount: results.filter((r) => r.governing).length,
     issues,
   };
+}
+
+/*
+ * Why no fastener has a finite margin (critical is null): ids with no
+ * allowable entered, unloaded (MS = ∞), and not computed (W-008 or W-017).
+ */
+export function noMarginSummary(results) {
+  const ids = (...statuses) => results.filter((r) => r.modes.some((m) => statuses.includes(m.status))).map((r) => r.id);
+  const missing = ids("not-evaluated"), unloaded = ids("unloaded"), blocked = ids("not-computed", "preload");
+  const parts = [];
+  if (unloaded.length) parts.push(`unloaded (MS = ∞): ${unloaded.join(", ")}`);
+  if (blocked.length) parts.push(`MS not computed: ${blocked.join(", ")}`);
+  if (missing.length) parts.push(`no allowables entered: ${missing.join(", ")}`);
+  const text = unloaded.length || blocked.length ? `No finite margin — ${parts.join("; ")}.` : "No margin evaluated: no allowables entered.";
+  return { missing, unloaded, blocked, text };
 }
 
 /* Display text for one mode's margin; `num` formats a finite number. */

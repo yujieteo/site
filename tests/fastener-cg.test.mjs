@@ -489,6 +489,57 @@ test("allowables: group defaults, sparse per-fastener overrides, and 'not evalua
   assert.ok(bare.fasteners.every((f) => interactionOf(f).status === "not-evaluated"));
 });
 
+test("round-off loads on the neutral axis or at Cs count as zero: no spurious W-008 or N-006", () => {
+  const grid = [];
+  for (const y of [0.1, 0.2, 0.3]) for (const x of [0.1, 0.2, 0.3]) grid.push([x, y]);
+  const run = (load) => {
+    const p = pattern(grid, load);
+    p.defaults.shearAllowable = 1000;
+    p.defaults.tensionAllowable = 1000;
+    return solve(p);
+  };
+  const middle = ["F4", "F5", "F6"];
+  for (const Mx of [-1000, 1000]) {
+    const r = run({ point: { x: 0.2, y: 0.2, z: 0 }, Mx });
+    assert.ok(r.ok);
+    assert.ok(!ids(r.issues).includes("W-008"));
+    for (const id of middle) {
+      const m = interactionOf(r.fasteners.find((f) => f.id === id));
+      assert.equal(m.Rt, 0);
+      assert.equal(m.status, "unloaded");
+    }
+    const zeroed = r.fasteners.filter((f) => f.checks.unloadingCountedZero).map((f) => f.id);
+    assert.deepEqual(zeroed, r.fasteners.filter((f) => f.axial.unloading).map((f) => f.id));
+    const n006 = r.issues.find((i) => i.id === "N-006");
+    const w016 = r.issues.find((i) => i.id === "W-016");
+    assert.deepEqual(n006?.fasteners, w016?.fasteners);
+  }
+  const t = run({ point: { x: 0.2, y: 0.2, z: 0 }, Mz: 1000 });
+  assert.ok(t.ok);
+  assert.ok(!ids(t.issues).includes("W-008"));
+  const centre = interactionOf(t.fasteners.find((f) => f.id === "F5"));
+  assert.equal(centre.Rs, 0);
+  assert.equal(centre.status, "unloaded");
+});
+
+test("no finite margin: the UI and Markdown say why (no allowables, all unloaded, all not computed)", () => {
+  const markdownLine = (p) => toMarkdown(p, solve(p)).split("\n").find((l) => l.startsWith("No "));
+  const bare = loaded(null, null);
+  assert.equal(markdownLine(bare), "No margin evaluated: no allowables entered.");
+  const idle = pattern([[50, 30], [50, -30], [-50, 30], [-50, -30]]);
+  idle.defaults.shearAllowable = 8000;
+  idle.defaults.tensionAllowable = 9000;
+  const r = solve(idle);
+  assert.equal(r.critical, null);
+  assert.ok(r.evaluatedCount > 0);
+  assert.equal(markdownLine(idle), "No finite margin — unloaded (MS = ∞): F1, F2, F3, F4.");
+  const huge = loaded(1e30, 1e30);
+  const h = solve(huge);
+  assert.equal(h.critical, null);
+  assert.ok(h.fasteners.every((f) => interactionOf(f).status === "not-computed"));
+  assert.equal(markdownLine(huge), "No finite margin — MS not computed: F1, F2, F3, F4.");
+});
+
 test("exponent and allowable input errors: E-008, E-002, W-007", () => {
   let r = solve(loaded(8000, 9000, 0, 2));
   assert.equal(r.ok, false);

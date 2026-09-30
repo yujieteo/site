@@ -10,7 +10,7 @@ import { rectangularArray, staggeredRows, boltCircle, mirror } from "../core/gen
 import { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } from "../core/persist.mjs";
 import { runVerification } from "../core/verify.mjs";
 import { sortIssues } from "../core/warnings.mjs";
-import { marginText } from "../core/checks.mjs";
+import { marginText, noMarginSummary } from "../core/checks.mjs";
 import { PRESETS } from "../core/interaction.mjs";
 import { TOOL_VERSION } from "../core/meta.mjs";
 import { paint, palette, hitTest, centroidPath } from "./canvas.mjs";
@@ -411,8 +411,11 @@ function renderResults() {
         q.checks.governing ? `<b>${Number.isFinite(q.checks.governing.ms) ? f(q.checks.governing.ms) : "∞"}</b> <span class="muted">(${esc(q.checks.governing.label)})</span>` : '<span class="muted">—</span>'];
     }), { numeric: [1, 2, 3, 4, 5, 6] });
   const it = r.interaction;
+  const none = r.critical ? null : noMarginSummary(r.fasteners.map((q) => q.checks));
   const crit = r.critical
     ? `<p class="critical">Critical fastener <b>${esc(r.critical.id)}</b>: governing MS <b class="ms ${r.critical.ms < 0 ? "ms-neg" : ""}">${f(r.critical.ms)}</b> — ${esc(r.critical.label)}${(it.a !== 1 || it.b !== 1) ? ` <span class="muted">(exact load scale factor, not 1/IF − 1; W-006)</span>` : ""}.</p>`
+    : none.unloaded.length || none.blocked.length
+    ? `<p class="critical muted">${esc(none.text)}</p>`
     : `<p class="critical muted">No margin evaluated: enter shear and tension allowables Fs and Ft (group defaults or per-fastener overrides). A check without its allowable shows “not evaluated” and never a margin.</p>`;
 
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],

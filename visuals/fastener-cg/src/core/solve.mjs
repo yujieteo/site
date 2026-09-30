@@ -104,7 +104,7 @@ export function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
-  const checks = fastenerChecks(fastenerResults, settings);
+  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL);
   issues.push(...checks.issues);
   fastenerResults.forEach((f, i) => { f.checks = checks.fasteners[i]; });
   return {

@@ -12,7 +12,7 @@
 import { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, defaultSettings, resolveFastener } from "./model.mjs";
 import { UNIT_SYSTEMS, convertPattern, unitLabel } from "./units.mjs";
 import { issue } from "./warnings.mjs";
-import { marginText } from "./checks.mjs";
+import { marginText, noMarginSummary } from "./checks.mjs";
 
 export const MAX_PLATES = 2;
 
@@ -299,7 +299,7 @@ function resultSections(pattern, result) {
     "", `## Margins of safety (elastic basis, a = ${result.interaction.a}, b = ${result.interaction.b})`, "",
     result.critical
       ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
-      : "No margin evaluated: no allowables entered.",
+      : noMarginSummary(result.fasteners.map((f) => f.checks)).text,
     "",
     "IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the positive tension; unloading counts as zero.",
     "",
