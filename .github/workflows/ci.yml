@@ -23,14 +23,13 @@ jobs:
           path: site
 
       # The published site embeds HTML and data generated in the separate
-      # public visuals repository. Pin the revision the site is built from;
-      # bump it when a visualization is republished. scripts/site_diff.py reads
-      # this pin to rebuild a deployed commit.
+      # public visuals repository. The build reads each visualization at the
+      # commit pinned in data/visuals/<slug>.pin, so check out full history.
       - name: Check out visuals
         uses: actions/checkout@v4
         with:
           repository: yujieteo/visuals
-          ref: ee206b04404a57a7250b2670346fb0e3b319b7b5
+          fetch-depth: 0
           path: visuals
 
       - name: Set up Python

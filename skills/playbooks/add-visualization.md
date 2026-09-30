@@ -7,7 +7,7 @@ A visualization built in this repository instead keeps its sources in `visuals/<
 1. Land the visualization in the `visuals` repository first; note the commit that contains it.
 2. Add or edit `data/visuals/<slug>.yaml` with `slug`, `title`, `summary`, `source_url`, `fetched`, `html_path`, `data_path`, `webmcp_tools` (at least three), `tags`, and `category`, plus optional `links` (see [Link related items](../reference/links.md)). `schema/visualization.schema.json` is the authority; copy a neighbouring stub such as `data/visuals/haze-singapore.yaml`. Reuse a tag already used by another visual or note where one fits, because the Visuals page shows them as filters. The page lists visuals newest `fetched` first, with same-day visuals in slug order.
 3. Point the build at the checkout: `export VISUALS_REPO=<path to visuals>` when it is not a sibling directory.
-4. Update the `visuals` checkout `ref` in `.github/workflows/ci.yml` to the commit from step 1, so CI builds from the matching output.
+4. Write the full 40-character commit hash from step 1, on one line, to `data/visuals/<slug>.pin`. The build and CI publish the HTML and data at that commit, whatever the checkout has checked out; each visualization has its own pin file, so pull requests for different visualizations do not conflict.
 5. Run [Stage A](../verify.md#stage-a-pre-deploy). Follow [Deploy generated files](deploy.md) when the request includes publication.
 
 Principles: [Generated files are read-only](../principles/generated-files-are-read-only.md) and [Keep the diff scoped](../principles/minimal-diff-scope.md).

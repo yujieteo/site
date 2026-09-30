@@ -39,7 +39,10 @@ The build needs two checkouts: this repository and the public
 HTML and data for each visualization. `scripts/build.py` looks for the visuals
 checkout at `../visuals`, `../../visuals`, then `../../tmp/visuals`; set
 `VISUALS_REPO` to its path when it lives anywhere else. Without it the build
-and the Python tests fail with `Visuals repository not found`.
+and the Python tests fail with `Visuals repository not found`. The build reads
+each visualization at the visuals commit pinned in `data/visuals/<slug>.pin`,
+fetching that commit from the checkout's `origin` when it is missing, so the
+branch the checkout is on does not matter.
 
 ```sh
 python3 -m venv .venv
@@ -76,12 +79,15 @@ temporary directory and rebuild the site there, so they also read
 `.github/workflows/ci.yml` runs on pushes to `main` and on every pull request:
 validation, the build, and the Python and Node tests. On a pull request it also
 lists the generated files that change against the base branch in the job
-summary. It checks out a pinned `visuals` revision; update the `ref` in the
-workflow when a visualization is republished.
+summary. It checks out the `visuals` history, and the build reads each
+visualization at its pin; update `data/visuals/<slug>.pin` when a
+visualization is republished.
 
 `tests/test_independent_changes.py` proves the merge guarantee: it opens two
-content branches (new visualizations, a note and a blog post) from the same
-base in a scratch repository, builds each, and merges both without conflicts.
+content branches (new visualizations with their own visuals pins, a note and a
+blog post) from the same base in a scratch repository, builds each, and merges
+both without conflicts. Two branches that each add a new newest date to
+`data/notes.md` still conflict; see [docs/architecture.md](docs/architecture.md).
 
 ## Adding and changing content
 

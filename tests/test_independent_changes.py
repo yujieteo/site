@@ -1,10 +1,14 @@
 """Independent content pull requests merge without conflicts.
 
-The tests copy the repository into a scratch Git repository, open two content
-branches from the same base (a new visualization each, one of them also adding
-a dated note and a blog post), build each branch as a contributor would, and
-merge both. The same branches with the generated site/ committed, as it was
-before site/ left Git, are the control: they conflict.
+The tests copy the repository into a scratch Git repository and clone the
+visuals repository beside it, open two content branches from the same base
+(each adding a visualization built in the visuals repository, pinned to its
+own visuals commit, and one built in this repository; one branch also adds a
+dated note and a blog post), build each branch as a contributor would, and
+merge both. The visuals clone stays checked out on a commit without either new
+visualization, so the build must read them at their pins. The same branches
+with the generated site/ committed, as it was before site/ left Git, are the
+control: they conflict.
 """
 
 import datetime
@@ -21,7 +25,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
 ENV = os.environ | {
-    "VISUALS_REPO": str(VISUALS_REPO),
     "GIT_AUTHOR_NAME": "Test",
     "GIT_AUTHOR_EMAIL": "test@example.invalid",
     "GIT_COMMITTER_NAME": "Test",
@@ -39,24 +42,56 @@ def git(project, *args, check=True):
     return run(project, "git", *args, check=check)
 
 
-def visualization_files(slug):
+def stub(slug, html_path, data_path):
+    return (
+        f"slug: {slug}\n"
+        f"title: Independent {slug}\n"
+        f"summary: A visualization added on its own branch ({slug}).\n"
+        "source_url: https://example.org/\n"
+        'fetched: "2026-10-01"\n'
+        f"html_path: {html_path}\n"
+        f"data_path: {data_path}\n"
+        "webmcp_tools: [get_metadata, get_rows, get_row]\n"
+        "tags: [testing]\n"
+        "category: data visualization\n"
+    )
+
+
+def visualization_sources(slug):
     return {
-        f"data/visuals/{slug}.yaml": (
-            f"slug: {slug}\n"
-            f"title: Independent {slug}\n"
-            f"summary: A visualization added on its own branch ({slug}).\n"
-            "source_url: https://example.org/\n"
-            'fetched: "2026-10-01"\n'
-            f"html_path: visuals/{slug}/index.html\n"
-            f"data_path: visuals/{slug}/raw.json\n"
-            "webmcp_tools: [get_metadata, get_rows, get_row]\n"
-            "tags: [testing]\n"
-            "category: data visualization\n"
-        ),
-        f"visuals/{slug}/index.html": f"<!doctype html><title>{slug}</title>\n",
-        f"visuals/{slug}/raw.json": json.dumps([{"slug": slug}]) + "\n",
+        "index.html": f"<!doctype html><title>{slug}</title>\n",
+        "raw.json": json.dumps([{"slug": slug}]) + "\n",
+    }
+
+
+def local_visualization_files(slug):
+    sources = visualization_sources(slug)
+    return {
+        f"data/visuals/{slug}.yaml": stub(slug, f"visuals/{slug}/index.html", f"visuals/{slug}/raw.json"),
+        f"visuals/{slug}/index.html": sources["index.html"],
+        f"visuals/{slug}/raw.json": sources["raw.json"],
         f"tests/{slug}.test.mjs": 'import test from "node:test";\n\ntest("placeholder", () => {});\n',
     }
+
+
+def external_visualization_files(slug, pin):
+    return {
+        f"data/visuals/{slug}.yaml": stub(slug, f"viz/{slug}/index.html", f"data/{slug}/raw.json"),
+        f"data/visuals/{slug}.pin": pin + "\n",
+    }
+
+
+def publish_to_visuals(visuals, start, slug):
+    """Commit ``slug``'s HTML and data on top of ``start`` in ``visuals`` and return the commit."""
+    git(visuals, "checkout", "-q", "--detach", start)
+    sources = visualization_sources(slug)
+    for relative, content in (("viz", sources["index.html"]), ("data", sources["raw.json"])):
+        path = visuals / relative / slug / ("index.html" if relative == "viz" else "raw.json")
+        path.parent.mkdir(parents=True)
+        path.write_text(content, encoding="utf-8")
+    git(visuals, "add", "-A")
+    git(visuals, "commit", "-q", "-m", f"publish {slug}")
+    return git(visuals, "rev-parse", "HEAD").stdout.strip()
 
 
 class IndependentContentChangesTests(unittest.TestCase):
@@ -64,6 +99,13 @@ class IndependentContentChangesTests(unittest.TestCase):
     def setUpClass(cls):
         cls._directory = tempfile.TemporaryDirectory()
         cls.project = project = Path(cls._directory.name) / "site-project"
+        visuals = Path(cls._directory.name) / "visuals"
+        git(ROOT, "clone", "-q", "--shared", str(VISUALS_REPO), str(visuals))
+        start = git(visuals, "rev-parse", "HEAD").stdout.strip()
+        pins = {slug: publish_to_visuals(visuals, start, slug)
+                for slug in ("independent-alpha", "independent-beta")}
+        git(visuals, "checkout", "-q", "--detach", start)
+        ENV["VISUALS_REPO"] = str(visuals)
         listed = git(ROOT, "ls-files", "-z", "--cached", "--others", "--exclude-standard").stdout
         for relative in filter(None, listed.split("\0")):
             source = ROOT / relative
@@ -85,8 +127,14 @@ class IndependentContentChangesTests(unittest.TestCase):
         cls.note_date = (newest + datetime.timedelta(days=1)).isoformat()
         heading = notes.index("\n## 20") + 1
         cls.branches = {
-            "add-alpha": visualization_files("independent-alpha"),
-            "add-beta-note-post": visualization_files("independent-beta") | {
+            "add-alpha": (
+                external_visualization_files("independent-alpha", pins["independent-alpha"])
+                | local_visualization_files("independent-alpha-local")
+            ),
+            "add-beta-note-post": (
+                external_visualization_files("independent-beta", pins["independent-beta"])
+                | local_visualization_files("independent-beta-local")
+            ) | {
                 "data/notes.md": (
                     notes[:heading]
                     + f"## {cls.note_date}\n\nAn independent note marker. #fpl\n\n"
@@ -154,9 +202,23 @@ class IndependentContentChangesTests(unittest.TestCase):
         corpus = json.loads((self.project / "site/corpus.json").read_text(encoding="utf-8"))
         ids = {record["id"] for record in corpus["records"]}
         self.assertLessEqual(
-            {"visualization:independent-alpha", "visualization:independent-beta", "blog:independent-gamma"},
+            {
+                "visualization:independent-alpha",
+                "visualization:independent-alpha-local",
+                "visualization:independent-beta",
+                "visualization:independent-beta-local",
+                "blog:independent-gamma",
+            },
             ids,
         )
+        for slug in ("independent-alpha", "independent-alpha-local",
+                     "independent-beta", "independent-beta-local"):
+            with self.subTest(slug=slug):
+                published = self.project / "site/visuals" / slug
+                self.assertEqual((published / "index.html").read_text(encoding="utf-8"),
+                                 visualization_sources(slug)["index.html"])
+                self.assertEqual(json.loads((published / "data.json").read_text(encoding="utf-8")),
+                                 [{"slug": slug}])
         notes_page = (self.project / "site/notes.html").read_text(encoding="utf-8")
         self.assertIn("An independent note marker.", notes_page)
         self.assertIn(self.note_date, notes_page)

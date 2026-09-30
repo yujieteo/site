@@ -8,8 +8,17 @@ the sources. `scripts/validate.py` checks every YAML file against `schema/`.
 never leaves stale output. `site/` is ignored by Git: pull requests carry only
 sources, so independent content changes never conflict on generated pages, and
 `scripts/site_diff.py` derives a deploy's upload set by rebuilding the live
-commit and comparing. Visualization HTML and data are copied from the
-separate `visuals` repository into `site/visuals/<slug>/`.
+commit and comparing. Visualization HTML and data are read from the
+separate `visuals` repository at the commit pinned in
+`data/visuals/<slug>.pin` (one file per visualization, so two pull requests
+that each add or republish a different visualization do not conflict) and
+written to `site/visuals/<slug>/`; the visuals checkout's own `HEAD` does not
+affect the build.
+
+One shared source can still conflict: `data/notes.md` lists dates newest
+first, so two pull requests that each add a new newest date insert at the same
+spot. Its layout is written by the FPL wiki's publish script, so splitting it
+is a follow-up in that repository.
 
 ## Published Corpus
 

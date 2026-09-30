@@ -1,5 +1,6 @@
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -23,15 +24,21 @@ class VisualizationTests(unittest.TestCase):
             with patch.dict(os.environ, {"VISUALS_REPO": str(repository)}):
                 self.assertEqual(build.resolve_visuals_repo(), repository.resolve())
 
-    def test_generated_visualization_matches_sources(self):
+    def test_generated_visualization_matches_pinned_sources(self):
         published = ROOT / "site" / "visuals" / "tourist-attractions"
+        pin = (ROOT / "data/visuals/tourist-attractions.pin").read_text(encoding="utf-8").strip()
+
+        def pinned(path):
+            return subprocess.run(
+                ["git", "show", f"{pin}:{path}"], cwd=VISUALS_REPO, check=True, capture_output=True
+            ).stdout
+
         self.assertEqual(
-            (published / "index.html").read_bytes(),
-            (VISUALS_REPO / "viz/tourist-attractions/index.html").read_bytes(),
+            (published / "index.html").read_bytes(), pinned("viz/tourist-attractions/index.html")
         )
         self.assertEqual(
             json.loads((published / "data.json").read_text()),
-            json.loads((VISUALS_REPO / "data/tourist-attractions/raw.json").read_text()),
+            json.loads(pinned("data/tourist-attractions/raw.json")),
         )
         corpus = json.loads((ROOT / "site/corpus.json").read_text())
         record = next(

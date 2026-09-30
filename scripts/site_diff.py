@@ -8,10 +8,9 @@ compares it, file by file, with the current build in site/. Each line is a
 generated), then the path; site/corpus.json is listed first.
 
 A base commit from before site/ left Git still carries its committed output,
-which is used as is. Any later base commit is rebuilt from `git archive`, with
-the visuals revision pinned in that commit's CI workflow, read from the
-visuals checkout that scripts/build.py uses (fetched from its origin when the
-checkout lacks it).
+which is used as is. Any later base commit is rebuilt from `git archive`; that
+build reads each external visualization at the commit pinned in the base's own
+data/visuals/<slug>.pin, from the visuals checkout that scripts/build.py uses.
 
 Usage: scripts/build.py && scripts/site_diff.py <base-commit>
 """
@@ -19,16 +18,12 @@ Usage: scripts/build.py && scripts/site_diff.py <base-commit>
 import argparse
 import filecmp
 import os
-import re
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
 from build import OUT, ROOT, resolve_visuals_repo
-
-CI_WORKFLOW = ".github/workflows/ci.yml"
-VISUALS_PIN = re.compile(r"repository:\s*yujieteo/visuals\s*\n\s*ref:\s*([0-9a-f]{40})")
 
 
 def git(*args, cwd=ROOT):
@@ -56,28 +51,12 @@ def base_site(commit, workdir):
         extract(ROOT, commit, project, "site")
         return project / "site"
     extract(ROOT, commit, project)
-    pin = VISUALS_PIN.search(git("show", f"{commit}:{CI_WORKFLOW}"))
-    if pin is None:
-        raise SystemExit(f"{CI_WORKFLOW} at {commit} does not pin a yujieteo/visuals ref")
-    visuals_repo = resolve_visuals_repo()
-    try:
-        git("cat-file", "-e", f"{pin[1]}^{{commit}}", cwd=visuals_repo)
-    except subprocess.CalledProcessError:
-        try:
-            git("fetch", "--quiet", "--no-tags", "origin", pin[1], cwd=visuals_repo)
-        except subprocess.CalledProcessError as exc:
-            raise SystemExit(
-                f"Visuals commit {pin[1]} is not in {visuals_repo} and could not be fetched: "
-                f"{exc.stderr.strip()}"
-            ) from None
-    visuals = workdir / "visuals"
-    extract(visuals_repo, pin[1], visuals)
     subprocess.run(
         [sys.executable, "scripts/build.py"],
         cwd=project,
         check=True,
         stdout=subprocess.DEVNULL,
-        env=os.environ | {"VISUALS_REPO": str(visuals)},
+        env=os.environ | {"VISUALS_REPO": str(resolve_visuals_repo())},
     )
     return project / "site"
 

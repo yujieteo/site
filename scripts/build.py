@@ -4,10 +4,12 @@
 import csv
 import datetime
 import html
+import io
 import json
 import os
 import re
 import shutil
+import subprocess
 import unicodedata
 from collections import Counter
 from pathlib import Path
@@ -152,18 +154,67 @@ def load_visualizations():
     return visualizations
 
 
-def visualization_source(visuals_repo, relative_path):
-    # Paths under visuals/ name visualizations built in this repository;
-    # everything else comes from the separate visuals checkout.
-    repo = (ROOT if relative_path.startswith("visuals/") else visuals_repo).resolve()
-    source = (repo / relative_path).resolve()
+def visualization_pin(slug):
+    """Return the visuals commit that an externally built visualization is published from."""
+    path = DATA / "visuals" / f"{slug}.pin"
+    if not path.is_file():
+        raise RuntimeError(f"Visualization pin is missing: data/visuals/{slug}.pin")
+    pin = path.read_text(encoding="utf-8").strip()
+    if not re.fullmatch(r"[0-9a-f]{40}", pin):
+        raise RuntimeError(f"Visualization pin is not a full commit hash: data/visuals/{slug}.pin")
+    return pin
+
+
+def git(repo, *args):
+    return subprocess.run(["git", *args], cwd=repo, check=True, capture_output=True).stdout
+
+
+def visualization_source(visuals_repo, visualization, key):
+    """Return the bytes of a visualization's ``html_path`` or ``data_path``.
+
+    Paths under visuals/ name visualizations built in this repository; every
+    other path is read from the separate visuals repository at the commit
+    pinned in data/visuals/<slug>.pin, whatever that checkout has checked out.
+    """
+    relative_path = visualization[key]
+    if relative_path.startswith("visuals/"):
+        source = (ROOT / relative_path).resolve()
+        try:
+            source.relative_to(ROOT.resolve())
+        except ValueError as exc:
+            raise RuntimeError(f"Visualization source escapes its repository: {relative_path}") from exc
+        if not source.is_file():
+            raise RuntimeError(f"Visualization source is missing: {relative_path}")
+        return source.read_bytes()
+    pin = visualization_pin(visualization["slug"])
     try:
-        source.relative_to(repo)
-    except ValueError as exc:
-        raise RuntimeError(f"Visualization source escapes its repository: {relative_path}") from exc
-    if not source.is_file():
-        raise RuntimeError(f"Visualization source is missing: {relative_path}")
-    return source
+        git(visuals_repo, "cat-file", "-e", f"{pin}^{{commit}}")
+    except subprocess.CalledProcessError:
+        try:
+            git(visuals_repo, "fetch", "--quiet", "--no-tags", "origin", pin)
+        except subprocess.CalledProcessError as exc:
+            raise RuntimeError(
+                f"Visuals commit {pin} is not in {visuals_repo} and could not be fetched: "
+                f"{exc.stderr.decode().strip()}"
+            ) from None
+    try:
+        return git(visuals_repo, "show", f"{pin}:{relative_path}")
+    except subprocess.CalledProcessError:
+        raise RuntimeError(f"Visualization source is missing at visuals {pin}: {relative_path}") from None
+
+
+def load_visualization_sources(visualizations, visuals_repo):
+    """Map each slug to its published HTML bytes and parsed data."""
+    sources = {}
+    for visualization in visualizations:
+        html_bytes = visualization_source(visuals_repo, visualization, "html_path")
+        data_text = visualization_source(visuals_repo, visualization, "data_path").decode("utf-8")
+        if visualization["data_path"].endswith(".csv"):
+            data = list(csv.DictReader(io.StringIO(data_text, newline="")))
+        else:
+            data = json.loads(data_text)
+        sources[visualization["slug"]] = (html_bytes, data)
+    return sources
 
 
 def parse_frontmatter(raw_text):
@@ -1193,20 +1244,13 @@ def build_visuals_markdown(visualizations):
     return "# Visuals\n\n" + "\n\n".join(sections) + "\n"
 
 
-def publish_visualization_assets(visualizations, visuals_repo):
+def publish_visualization_assets(sources):
     visuals_out = OUT / "visuals"
     visuals_out.mkdir(parents=True, exist_ok=True)
-    for visualization in visualizations:
-        destination = visuals_out / visualization["slug"]
+    for slug, (html_bytes, data) in sources.items():
+        destination = visuals_out / slug
         destination.mkdir()
-        html_source = visualization_source(visuals_repo, visualization["html_path"])
-        data_source = visualization_source(visuals_repo, visualization["data_path"])
-        shutil.copyfile(html_source, destination / "index.html")
-        if data_source.suffix == ".csv":
-            with data_source.open(encoding="utf-8", newline="") as handle:
-                data = list(csv.DictReader(handle))
-        else:
-            data = json.loads(data_source.read_text(encoding="utf-8"))
+        (destination / "index.html").write_bytes(html_bytes)
         (destination / "data.json").write_text(
             json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
         )
@@ -1286,10 +1330,7 @@ def main():
     }
     visualizations = load_visualizations()
     media_items = load_media_items()
-    visuals_repo = resolve_visuals_repo()
-    for visualization in visualizations:
-        visualization_source(visuals_repo, visualization["html_path"])
-        visualization_source(visuals_repo, visualization["data_path"])
+    visualization_sources = load_visualization_sources(visualizations, resolve_visuals_repo())
     colophon = load_colophon()
     corpus = build_corpus(
         cv, about, resources, papers, posts, notes, visualizations, media_items, colophon
@@ -1297,7 +1338,7 @@ def main():
     records = {record["id"]: record for record in corpus["records"]}
 
     prepare_output()
-    publish_visualization_assets(visualizations, visuals_repo)
+    publish_visualization_assets(visualization_sources)
     decks = publish_decks()
     publish_media_assets(media_items)
     (OUT / "corpus.json").write_text(
