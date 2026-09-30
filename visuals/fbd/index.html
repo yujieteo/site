@@ -255,6 +255,11 @@ function checker() {
       if (o.nonEmpty && !v) c.err(p, "must not be empty");
       return v;
     },
+    id(v, p) {
+      const s = c.str(v, p, undefined, { nonEmpty: true });
+      if (s && !/^[A-Za-z0-9_-]+$/.test(s)) c.err(p, "id may use only letters, digits, _ and -");
+      return s;
+    },
     bool(v, p, def) {
       if (v === undefined) return def;
       if (typeof v !== "boolean") { c.err(p, "expected true or false"); return def; }
@@ -292,13 +297,13 @@ function normAt(c, v, p) {
 
 function normJoint(c, v, p) {
   const j = c.obj(v, p, ["id", "x", "y"]);
-  return { id: c.str(j.id, `${p}.id`, undefined, { nonEmpty: true }), x: c.num(j.x, `${p}.x`), y: c.num(j.y, `${p}.y`) };
+  return { id: c.id(j.id, `${p}.id`), x: c.num(j.x, `${p}.x`), y: c.num(j.y, `${p}.y`) };
 }
 
 function normBody(c, v, p) {
   const b = c.obj(v, p, ["id", "type", "joints", "label", "depth", "role", "offset"]);
   const type = c.oneOf(b.type, `${p}.type`, BODY_TYPES);
-  const out = { id: c.str(b.id, `${p}.id`, undefined, { nonEmpty: true }), type, joints: c.arr(b.joints, `${p}.joints`).map((j, i) => c.str(j, `${p}.joints[${i}]`)), label: c.str(b.label, `${p}.label`, null, { nullable: true }) };
+  const out = { id: c.id(b.id, `${p}.id`), type, joints: c.arr(b.joints, `${p}.joints`).map((j, i) => c.str(j, `${p}.joints[${i}]`)), label: c.str(b.label, `${p}.label`, null, { nullable: true }) };
   if (type === "beam") out.depth = c.num(b.depth, `${p}.depth`, 100, { gt: 0 });
   else if (b.depth !== undefined) c.err(`${p}.depth`, `only a beam has a depth`);
   if (type === "line") {
@@ -795,7 +800,7 @@ F.NORM.load = (c, v, p) => {
   if (v === null || typeof v !== "object" || Array.isArray(v)) { c.err(p, "expected an object"); return { id: "", kind: "force" }; }
   const kind = c.oneOf(v.kind, `${p}.kind`, LOAD_KINDS);
   const l = c.obj(v, p, KEYS[kind]);
-  const base = { id: c.str(l.id, `${p}.id`, undefined, { nonEmpty: true }), kind, style: c.oneOf(l.style, `${p}.style`, ["applied", "reaction"], "applied"), label: c.str(l.label, `${p}.label`, null, { nullable: true }) };
+  const base = { id: c.id(l.id, `${p}.id`), kind, style: c.oneOf(l.style, `${p}.style`, ["applied", "reaction"], "applied"), label: c.str(l.label, `${p}.label`, null, { nullable: true }) };
   if (kind === "distributed") {
     return { ...base, body: c.str(l.body, `${p}.body`), edge: c.num(l.edge, `${p}.edge`, 0, { int: true, min: 0 }), s1: c.num(l.s1, `${p}.s1`), s2: c.num(l.s2, `${p}.s2`),
       w1: c.num(l.w1, `${p}.w1`, null, { nullable: true, min: 0 }), w2: c.num(l.w2, `${p}.w2`, null, { nullable: true, min: 0 }),
@@ -815,7 +820,7 @@ F.NORM.load = (c, v, p) => {
 };
 F.NORM.support = (c, v, p) => {
   const s = c.obj(v, p, ["id", "kind", "at", "angle", "label", "labelOffset"]);
-  return { id: c.str(s.id, `${p}.id`, undefined, { nonEmpty: true }), kind: c.oneOf(s.kind, `${p}.kind`, ["pin", "roller", "fixed"]), at: F.normAt(c, s.at, `${p}.at`),
+  return { id: c.id(s.id, `${p}.id`), kind: c.oneOf(s.kind, `${p}.kind`, ["pin", "roller", "fixed"]), at: F.normAt(c, s.at, `${p}.at`),
     angle: c.num(s.angle, `${p}.angle`, 270), label: c.str(s.label, `${p}.label`, null, { nullable: true }), labelOffset: normOffset(c, s.labelOffset, `${p}.labelOffset`) };
 };
 F.REFS.push((doc, c) => {
@@ -847,6 +852,12 @@ function displayAngle(doc, l) {
   if (l.dirRef === "member") return F.clean(F.wrap180(doc.view.triad.ySense * l.dir));
   return F.toTriad(doc.view, loadDir(doc, l));
 }
+// The slope as entered, while it still describes the stored direction.
+function slopeOf(doc, l) {
+  const s = l.input && l.input.slope;
+  if (!s) return null;
+  return Math.abs(F.wrap180(F.deg(Math.atan2(s[1], s[0])) - F.toTriad(doc.view, loadDir(doc, l)))) < 1e-6 ? s : null;
+}
 function unitFor(doc, l) { return l.unit ?? doc.view.units[QTY[l.kind]]; }
 function components(doc, l) {
   if (l.magnitude === null) return null;
@@ -866,7 +877,8 @@ function angleText(doc, l) {
     const [x, y] = components(doc, l), u = unitFor(doc, l), f = F.UNITS[QTY[l.kind]][u];
     return `(${F.fmt(x / f)}, ${F.fmt(y / f)})${l.show.units ? " " + u : ""}`;
   }
-  if (mode === "slope" && l.input.slope) return `slope ${F.fmt(l.input.slope[0])}:${F.fmt(l.input.slope[1])}`;
+  const slope = mode === "slope" ? slopeOf(doc, l) : null;
+  if (slope) return `slope ${F.fmt(slope[0])}:${F.fmt(slope[1])}`;
   return `∠${F.fmt(displayAngle(doc, l), 5)}°${l.dirRef === "member" ? " to member" : ""}`;
 }
 function loadText(doc, l) {
@@ -1067,7 +1079,7 @@ F.RENDER.splice(F.RENDER.length - 1, 0, (ctx) => {
   for (const l of g) if (l.kind === "moment") drawMoment(ctx, l);
 });
 
-Object.assign(F, { beamGap, LOAD_KINDS, QTY, loadDir, displayAngle, components, loadText, angleText, unitFor, distGeom, distHeights, supportBody, ARROW });
+Object.assign(F, { beamGap, LOAD_KINDS, QTY, loadDir, displayAngle, slopeOf, components, loadText, angleText, unitFor, distGeom, distHeights, supportBody, ARROW });
 })(typeof window !== "undefined" ? window.FBD : globalThis.FBD);
 </script>
 
@@ -1166,7 +1178,8 @@ function loadRows(doc) {
       else {
         dir = `∠${F.fmt(F.displayAngle(doc, l), 5)}°${l.dirRef === "member" ? " to member" : ""}`;
         if (l.input.mode === "components" && l.magnitude !== null) { const c = F.components(doc, l), f = F.UNITS[q][u]; dir += ` = (${F.fmt(c[0] / f, 5)}, ${F.fmt(c[1] / f, 5)}) ${u}`; }
-        if (l.input.mode === "slope" && l.input.slope) dir += `, slope ${F.fmt(l.input.slope[0])}:${F.fmt(l.input.slope[1])}`;
+        const slope = l.input.mode === "slope" ? F.slopeOf(doc, l) : null;
+        if (slope) dir += `, slope ${F.fmt(slope[0])}:${F.fmt(slope[1])}`;
       }
       pos = pointText(doc, l.at);
     }
@@ -1272,7 +1285,7 @@ F.NORM.marker = (c, v, p) => {
     if (!Array.isArray(m.labelOffset) || m.labelOffset.length !== 2) c.err(`${p}.labelOffset`, "expected [dx, dy] or null");
     else off = [c.num(m.labelOffset[0], `${p}.labelOffset[0]`), c.num(m.labelOffset[1], `${p}.labelOffset[1]`)];
   }
-  return { id: c.str(m.id, `${p}.id`, undefined, { nonEmpty: true }), kind: c.oneOf(m.kind, `${p}.kind`, ["cg"]), at: F.normAt(c, m.at, `${p}.at`), label: c.str(m.label, `${p}.label`, null, { nullable: true }), labelOffset: off };
+  return { id: c.id(m.id, `${p}.id`), kind: c.oneOf(m.kind, `${p}.kind`, ["cg"]), at: F.normAt(c, m.at, `${p}.at`), label: c.str(m.label, `${p}.label`, null, { nullable: true }), labelOffset: off };
 };
 F.REFS.push((doc, c) => doc.geometry.markers.forEach((m, i) => F.checkAt(doc, c, m.at, `geometry.markers[${i}].at`)));
 F.RENDER.splice(F.RENDER.length - 1, 0, (ctx) => {
@@ -1663,7 +1676,7 @@ svg.addEventListener("pointerdown", (e) => {
   if (pointers.size === 2) { startPinch(); return; }
   if (pointers.size > 2) return;
   const w = s2w(...evPos(e));
-  if (tool !== "select") { gesture = { type: "tool", id: e.pointerId }; TOOLS[tool].down(e, w); schedule(); return; }
+  if (tool !== "select") { gesture = { type: "tool", id: e.pointerId, draft: structuredClone(draft) }; TOOLS[tool].down(e, w); schedule(); return; }
   const target = e.target.closest ? e.target.closest("[data-handle],[data-id]") : null;
   if (target && target.dataset.handle) { startDrag(e, w, "handle", target.dataset.handle); return; }
   if (target && target.dataset.id) {
@@ -1682,9 +1695,10 @@ function startPan(e, clearOnTap = false) {
   gesture = { type: "pan", id: e.pointerId, last: evPos(e), start: evPos(e), clearOnTap, moved: false };
 }
 function startPinch() {
-  // A second finger always pans and zooms: abandon whatever the first began.
+  // A second finger always pans and zooms: undo only what the first finger
+  // began, keeping any multi-step draft (plate vertices, a tapped start).
   if (gesture && gesture.type === "drag" && gesture.before) { doc = JSON.parse(gesture.before); }
-  if (TOOLS[tool].cancel && gesture && gesture.type === "tool") TOOLS[tool].cancel();
+  if (gesture && gesture.type === "tool" && draft) { draft = gesture.draft; panel(); }
   const [p, q] = [...pointers.values()];
   gesture = { type: "pinch", mid: [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2], dist: Math.hypot(p[0] - q[0], p[1] - q[1]) || 1 };
   snapMark = null;
@@ -1800,15 +1814,15 @@ const PANELS = []; // (found) => html or null, first match wins
 function esc(s) { return F.escHtml(s ?? ""); }
 function field(key, label, value, set, opts = {}) {
   binds[key] = set;
-  return `<div class="row"><label for="f-${key}">${label}</label><input type="text" id="f-${key}" data-bind="${key}" value="${esc(value)}" autocomplete="off" spellcheck="false"${opts.mode ? ` inputmode="${opts.mode}"` : ""}${opts.placeholder ? ` placeholder="${esc(opts.placeholder)}"` : ""}></div>`;
+  return `<div class="row"><label for="f-${esc(key)}">${label}</label><input type="text" id="f-${esc(key)}" data-bind="${esc(key)}" value="${esc(value)}" autocomplete="off" spellcheck="false"${opts.mode ? ` inputmode="${opts.mode}"` : ""}${opts.placeholder ? ` placeholder="${esc(opts.placeholder)}"` : ""}></div>`;
 }
 function select(key, label, value, options, set) {
   binds[key] = set;
-  return `<div class="row"><label for="f-${key}">${label}</label><select id="f-${key}" data-bind="${key}">${options.map(([v, t]) => `<option value="${esc(v)}"${String(v) === String(value) ? " selected" : ""}>${esc(t)}</option>`).join("")}</select></div>`;
+  return `<div class="row"><label for="f-${esc(key)}">${label}</label><select id="f-${esc(key)}" data-bind="${esc(key)}">${options.map(([v, t]) => `<option value="${esc(v)}"${String(v) === String(value) ? " selected" : ""}>${esc(t)}</option>`).join("")}</select></div>`;
 }
-function check(key, label, value, set) { binds[key] = set; return `<label><input type="checkbox" data-bind="${key}"${value ? " checked" : ""}> ${label}</label>`; }
-function seg(key, options, value, set) { binds[key] = set; return `<div class="seg" role="group">${options.map(([v, t]) => `<button type="button" data-seg="${key}" data-v="${esc(v)}" aria-pressed="${String(v) === String(value)}">${esc(t)}</button>`).join("")}</div>`; }
-function button(key, label, fn) { binds[key] = fn; return `<button type="button" data-act="${key}">${label}</button>`; }
+function check(key, label, value, set) { binds[key] = set; return `<label><input type="checkbox" data-bind="${esc(key)}"${value ? " checked" : ""}> ${label}</label>`; }
+function seg(key, options, value, set) { binds[key] = set; return `<div class="seg" role="group">${options.map(([v, t]) => `<button type="button" data-seg="${esc(key)}" data-v="${esc(v)}" aria-pressed="${String(v) === String(value)}">${esc(t)}</button>`).join("")}</div>`; }
+function button(key, label, fn) { binds[key] = fn; return `<button type="button" data-act="${esc(key)}">${label}</button>`; }
 const lenField = (key, label, v, set) => field(key, label, F.formatQuantity(v, "length", doc.view.units.length), (t) => { const r = F.parseQuantity(t, "length", doc.view.units.length); if (r.error) return r.error; if (r.value === null) return "Enter a length"; set(r.value); }, { mode: "text" });
 const angField = (key, label, v, set) => field(key, label, v === null ? "" : `${F.fmt(v)}°`, (t) => { const r = F.parseAngle(t); if (r.error) return r.error; if (r.value === null) return "Enter an angle"; set(r.value); });
 const coordFields = (key, p) => {
@@ -2410,7 +2424,8 @@ function directionSection(l) {
     if (!c) h += `<p>Entering components also sets the magnitude.</p>`;
   }
   if (mode === "slope") {
-    h += A.field(`${l.id}.slope`, `Run : rise`, l.input.slope ? `${F.fmt(l.input.slope[0])}:${F.fmt(l.input.slope[1])}` : "", (txt) => {
+    const slope = F.slopeOf(doc, l);
+    h += A.field(`${l.id}.slope`, `Run : rise`, slope ? `${F.fmt(slope[0])}:${F.fmt(slope[1])}` : "", (txt) => {
       const m = /^\s*(-?\d*\.?\d+)\s*:\s*(-?\d*\.?\d+)\s*$/.exec(txt);
       if (!m) return "Enter a ratio such as 4:3 (run along the first axis : rise along the second)";
       const run = Number(m[1]), rise = Number(m[2]);

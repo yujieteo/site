@@ -206,6 +206,35 @@ test("loading reports clear errors instead of dropping content", () => {
   assert.match(F.fromMarkdown("# nothing here").errors[0], /No ```json block/);
 });
 
+test("loading rejects ids that are not simple identifiers, from JSON and Markdown", () => {
+  const hostile = 'x"><img src=x onerror=alert(1)>';
+  const bad = example("cantilever");
+  bad.geometry.loads[0].id = hostile;
+  bad.geometry.joints[0].id = "j 1";
+  const r = F.load(bad);
+  assert.equal(r.doc, undefined);
+  assert.ok(r.errors.includes("geometry.joints[0].id: id may use only letters, digits, _ and -"), plain(r.errors));
+  assert.ok(r.errors.includes("geometry.loads[0].id: id may use only letters, digits, _ and -"), plain(r.errors));
+  const md = F.toMarkdown(doc("cantilever")).replace(/"id": "f1"/, `"id": ${JSON.stringify(hostile)}`);
+  assert.ok(F.parseFile(md).errors.some((e) => /loads\[\d+\]\.id: id may use only/.test(e)));
+});
+
+test("a slope is shown only while it still describes the stored direction", () => {
+  const d = doc("cantilever"), l = d.geometry.loads.find((x) => x.kind === "force" && x.plane === "in" && x.dirRef === "global");
+  l.show.angle = true;
+  l.input = { mode: "slope", slope: [4, 3], toward: null };
+  l.dir = F.fromTriad(d.view, F.deg(Math.atan2(3, 4)));
+  assert.match(F.angleText(d, l), /^slope 4:3$/);
+  assert.match(F.toMarkdown(d), /, slope 4:3 \|/);
+  d.view.triad.rotation = 30;
+  assert.doesNotMatch(F.angleText(d, l), /slope/);
+  assert.doesNotMatch(F.toMarkdown(d), /slope 4:3/);
+  d.view.triad.rotation = 0;
+  l.dir = 60;
+  assert.equal(F.angleText(d, l), "∠60°");
+  assert.doesNotMatch(F.toMarkdown(d), /slope 4:3/);
+});
+
 test("labels: subscripts and Greek letters", () => {
   assert.deepEqual(plain(F.richRuns("F_1")), [{ t: "F", pos: 0 }, { t: "1", pos: -1 }]);
   assert.deepEqual(plain(F.richRuns("F_{AB}")), [{ t: "F", pos: 0 }, { t: "AB", pos: -1 }]);
