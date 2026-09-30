@@ -31,7 +31,7 @@ badge with each tolerance. After changing `META` or `defaultInputs()`,
 regenerate `raw.json` from the engine; the test says when it has drifted.
 
 Files are canonical: rad/s, seconds, absolute magnitude and degrees. The
-display toggles (rad/s, Hz or, in discrete time, rad/sample; dB or absolute, degrees or radians, wrapped or
-unwrapped phase) change only what is shown, and exports record them only so an
-import restores the view. Margin thresholds are user inputs whose pre-filled
+display toggles (rad/s, Hz or, in discrete time, rad/sample; dB or absolute;
+degrees or radians; wrapped or unwrapped phase) change only what is shown, and
+exports record them only so an import restores the view. Margin thresholds are user inputs whose pre-filled
 values are labelled "unsourced default".
