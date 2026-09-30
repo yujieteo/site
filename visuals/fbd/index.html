@@ -24,7 +24,7 @@ button{cursor:pointer}
 #bar h1{font-size:.95rem;margin:0 .5rem 0 .25rem;white-space:nowrap;letter-spacing:-.01em}
 .group{display:flex;gap:2px;padding-right:.35rem;margin-right:.1rem;border-right:1px solid var(--border);flex:none}
 .group:last-child{border-right:0}
-.tb{min-width:44px;min-height:44px;padding:0 .55rem;border:1px solid transparent;border-radius:.5rem;background:none;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.25rem;touch-action:manipulation}
+.tb{position:relative;min-width:44px;min-height:44px;padding:0 .55rem;border:1px solid transparent;border-radius:.5rem;background:none;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.25rem;touch-action:manipulation}
 .tb:hover{background:var(--surface)}
 .tb[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
 .tb:disabled{opacity:.4;cursor:default;background:none}
@@ -75,6 +75,12 @@ footer a{color:inherit}
 #sheet-toggle{display:flex;width:100%;min-height:44px;align-items:center;justify-content:center;gap:.4rem;border:0;background:none;color:var(--muted);position:sticky;top:0;background:var(--bg);z-index:1}
 #sheet-toggle::before{content:"";width:2.5rem;height:4px;border-radius:2px;background:var(--border)}
 #bar h1{display:none}
+#tools .tb span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#tools .tb{padding:0 .3rem}
+#bar{flex-wrap:wrap;overflow:visible;padding:.15rem .25rem;row-gap:0}
+#bar .group{flex:1 1 100%;overflow-x:auto;scrollbar-width:none;border-right:0;padding-right:0;margin:0}
+#actions{border-top:1px solid var(--border)}
+#actions .tb{flex:1 0 44px}
 footer{font-size:11px}
 }
 @media (prefers-reduced-motion:no-preference){.tb,.seg button{transition:background .15s}}
@@ -620,11 +626,13 @@ function placeLabels(ctx, blocks) {
 }
 
 // Grid step from the 1-2-5 sequence so minor lines sit at least `min` px apart.
-function gridStep(k, min = 14) {
-  const raw = min / k;
+// The step is chosen in the display length unit (factor = mm per unit), so
+// imperial drawings get 1, 2, 5 in or ft steps rather than odd fractions.
+function gridStep(k, min = 14, factor = 1) {
+  const raw = min / k / factor;
   const p = Math.pow(10, Math.floor(Math.log10(raw)));
-  for (const m of [1, 2, 5, 10]) if (m * p >= raw) return Math.max(m * p, 0.1);
-  return 10 * p;
+  for (const m of [1, 2, 5, 10]) if (m * p >= raw) return Math.max(m * p * factor, 0.1);
+  return 10 * p * factor;
 }
 
 /* bodies */
@@ -1325,6 +1333,7 @@ function measure() { const r = svg.getBoundingClientRect(); W = r.width || 800; 
 const w2s = (x, y) => [(x - cam.x) * cam.k + W / 2, H / 2 - (y - cam.y) * cam.k];
 const s2w = (sx, sy) => ({ x: (sx - W / 2) / cam.k + cam.x, y: cam.y - (sy - H / 2) / cam.k });
 const K_MIN = 0.02, K_MAX = 100;
+const gridStep = () => F.gridStep(cam.k, 14, F.UNITS.length[doc.view.units.length]);
 function zoomAt(sx, sy, f) {
   const before = s2w(sx, sy);
   cam.k = Math.min(K_MAX, Math.max(K_MIN, cam.k * f));
@@ -1413,8 +1422,9 @@ function draw() {
 }
 function drawGrid() {
   if (!doc.view.grid) { gridG.innerHTML = ""; return; }
-  const g = F.gridStep(cam.k);
-  const mant = Math.round(g / Math.pow(10, Math.floor(Math.log10(g) + 1e-9)));
+  const g = gridStep();
+  const gu = g / F.UNITS.length[doc.view.units.length];
+  const mant = Math.round(gu / Math.pow(10, Math.floor(Math.log10(gu) + 1e-9)));
   const major = g * (mant === 5 ? 2 : 5);
   const tl = s2w(0, 0), br = s2w(W, H);
   const lines = [], majors = [];
@@ -1427,7 +1437,7 @@ const isMultiple = (v, m) => Math.abs(v / m - Math.round(v / m)) < 1e-6;
 let cursor = null;
 function status() {
   const U = doc.view.units.length, t = doc.view.triad;
-  const g = F.gridStep(cam.k);
+  const g = gridStep();
   let s = `grid ${F.formatQuantity(g, "length", U)} · ${F.fmt(cam.k, 3)} px/mm`;
   if (cursor) s = `x ${F.formatQuantity(cursor.x - t.x, "length", U, false)}  y ${F.formatQuantity(cursor.y - t.y, "length", U, false)} ${U} · ` + s;
   $("status").textContent = s;
@@ -1480,7 +1490,7 @@ function snapPoint(w, e, skip = new Set()) {
     }
   }
   if (best) { snapMark = w2s(best.x, best.y); return { x: best.x, y: best.y, joint: best.joint }; }
-  const g = F.gridStep(cam.k), t = doc.view.triad;
+  const g = gridStep(), t = doc.view.triad;
   return { x: t.x + Math.round((w.x - t.x) / g) * g, y: t.y + Math.round((w.y - t.y) / g) * g };
 }
 function snapAngle(a, e) { const s = doc.view.angleSnap; return s > 0 && !(e && e.altKey) ? Math.round(a / s) * s : a; }
@@ -1500,7 +1510,7 @@ function addBody(type, jointIds) {
   doc.geometry.bodies.push(b);
   return id;
 }
-function defaultDepth() { const g = F.gridStep(cam.k, 14); return Math.max(g, Math.min(g * 2, 1e6)); }
+function defaultDepth() { const g = gridStep(); return Math.max(g, Math.min(g * 2, 1e6)); }
 function usedJoints() {
   const u = new Set();
   for (const b of doc.geometry.bodies) b.joints.forEach((j) => u.add(j));
@@ -1523,7 +1533,7 @@ function deleteIds(ids) {
 }
 const DUP_HOOKS = [];
 function duplicate(ids) {
-  const g = doc.geometry, step = F.gridStep(cam.k) * 2;
+  const g = doc.geometry, step = gridStep() * 2;
   const map = new Map();
   const cloneJoint = (id) => {
     if (map.has(id)) return map.get(id);
@@ -1892,7 +1902,7 @@ function triadSection() {
   const cur = t.labels.join(",") === "x,y" ? "x,y" : t.labels.join(",") === "x',y'" ? "x',y'" : "custom";
   let h = `<h3>Axes</h3><div class="checks">${check("triad.visible", "Show axes", t.visible, (v) => { t.visible = v; })}</div>`;
   for (const s of TRIAD_SECTIONS) h += s(t);
-  h += coordFields("triad", t) + angField("triad.rotation", "Rotation", t.rotation, (v) => { t.rotation = F.clean(F.wrap360(v)); });
+  h += lenField("triad.x", "Origin x", t.x, (v) => { t.x = v; }) + lenField("triad.y", "Origin y", t.y, (v) => { t.y = v; }) + angField("triad.rotation", "Rotation", t.rotation, (v) => { t.rotation = F.clean(F.wrap360(v)); });
   if (t.preset === "engineering") h += select("triad.labelset", "Labels", cur, presetLabels, (v) => { if (v === "x,y") t.labels = ["x", "y"]; else if (v === "x',y'") t.labels = ["x'", "y'"]; });
   h += field("triad.l0", "First axis", t.labels[0], (v) => { t.labels[0] = v || "x"; }) + field("triad.l1", "Second axis", t.labels[1], (v) => { t.labels[1] = v || "y"; });
   h += `<p>Angles and components are measured from the ${esc(F.plainLabel(t.labels[0]))} axis, positive towards ${esc(F.plainLabel(t.labels[1]))}${t.ySense > 0 ? " (counter-clockwise)" : " (clockwise on screen)"}. Moving or rotating the axes never moves the drawing.</p>`;
@@ -1948,7 +1958,7 @@ const BODY_SECTIONS = [];
 
 /* ---------- toolbar ---------- */
 function buildToolbar() {
-  $("tools").innerHTML = TOOL_ORDER.map((n) => `<button class="tb" type="button" data-tool="${n}" aria-pressed="${n === tool}" title="${esc(TOOLS[n].label)}">${TOOLS[n].icon}<span>${esc(TOOLS[n].label)}</span></button>`).join("");
+  $("tools").innerHTML = TOOL_ORDER.map((n) => `<button class="tb" type="button" data-tool="${n}" aria-pressed="${n === tool}" title="${esc(TOOLS[n].label)}" aria-label="${esc(TOOLS[n].label)}">${TOOLS[n].icon}<span>${esc(TOOLS[n].label)}</span></button>`).join("");
   $("actions").innerHTML = ACTIONS.map((a) => a.html ? a.html() : `<button class="tb" type="button" id="${a.id}" title="${esc(a.title)}"${a.toggle ? ` aria-pressed="false"` : ""}>${a.icon}<span class="sr">${esc(a.label)}</span></button>`).join("");
 }
 const ACTIONS = [
@@ -1986,7 +1996,7 @@ window.FBDApp = {
   TOOLS, DRAGS, PANELS, BODY_SECTIONS, DOC_SECTIONS, TRIAD_SECTIONS, HANDLES, PREVIEWS, MOVERS, JOINT_USERS, DELETE_HOOKS, DUP_HOOKS, MERGE_HOOKS, ACTIONS,
   defineTool, handleSvg, field, select, check, seg, button, lenField, angField, coordFields, esc, icon,
   get draft() { return draft; }, set draft(v) { draft = v; }, get tool() { return tool; }, get multi() { return multi; },
-  addJoint, addBody, toast,
+  addJoint, addBody, toast, gridStep,
 };
 function toast(msg, ms = 2600) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => { t.hidden = true; }, ms); }
 window.addEventListener("resize", () => { measure(); schedule(); });
@@ -2027,7 +2037,7 @@ function attach(w, e) {
   if (near) {
     let s = near.s;
     if (snap) {
-      const g = F.gridStep(k);
+      const g = A.gridStep();
       s = Math.min(near.L, Math.max(0, Math.round(s / g) * g));
       if (Math.abs(near.s - near.L / 2) < R) s = near.L / 2;
     }
@@ -2141,12 +2151,23 @@ A.defineTool("distributed", {
     if (s2 - s1 < 1e-9) { s1 = 0; s2 = d.L; }
     A.mutate(() => {
       const l = { id: F.nextId(A.doc, "q"), kind: "distributed", style: opts.style, label: null, body: d.body, edge: d.edge, s1: F.clean(s1), s2: F.clean(s2), w1: null, w2: null, h1: 1, h2: 1, unit: null,
-        dirMode: "perpendicular", flip: false, show: { label: true, magnitude: true, angle: false, units: true }, labelOffset: null };
+        dirMode: "perpendicular", flip: inwardFlip(d.body), show: { label: true, magnitude: true, angle: false, units: true }, labelOffset: null };
       A.doc.geometry.loads.push(l); A.sel = [l.id];
     });
   },
   cancel() { A.draft = null; },
 });
+// On a plate edge the default load pushes into the plate: arrows point
+// against the edge's left normal, which faces inwards on a counter-clockwise
+// outline, so such outlines flip.
+function inwardFlip(bid) {
+  const doc = A.doc, b = F.body(doc, bid);
+  if (b.type !== "polygon") return false;
+  let A2 = 0;
+  const pts = b.joints.map((j) => F.joint(doc, j));
+  for (let i = 0; i < pts.length; i++) { const p = pts[i], q = pts[(i + 1) % pts.length]; A2 += p.x * q.y - q.x * p.y; }
+  return A2 > 0;
+}
 function project(bid, e, w) {
   const doc = A.doc, b = F.body(doc, bid), [p, q] = F.edge(doc, b, e), L = Math.hypot(q.x - p.x, q.y - p.y) || 1;
   return ((w.x - p.x) * (q.x - p.x) + (w.y - p.y) * (q.y - p.y)) / L;
@@ -2154,7 +2175,7 @@ function project(bid, e, w) {
 function snapS(s, L, e) {
   s = Math.max(0, Math.min(L, s));
   if (!A.doc.view.snap || (e && e.altKey)) return s;
-  const g = F.gridStep(A.cam.k);
+  const g = A.gridStep();
   const R = (A.isTouch(e) ? 22 : 12) / A.cam.k;
   if (L - s < R) return L;
   return Math.max(0, Math.min(L, Math.round(s / g) * g));
@@ -2269,7 +2290,7 @@ A.DRAGS.move = (id, w0, e0) => {
   const f = A.sel.length === 1 ? A.findAny(A.sel[0]) : null;
   if (f && f.kind === "load" && f.e.kind === "distributed") {
     const l = f.e, b = F.body(A.doc, l.body), L = F.edgeLength(A.doc, b, l.edge), s1 = l.s1, s2 = l.s2, p0 = project(l.body, l.edge, w0);
-    return { move(e, w) { let d = project(l.body, l.edge, w) - p0; d = Math.max(-s1, Math.min(L - s2, d)); if (A.doc.view.snap && !e.altKey) { const g = F.gridStep(A.cam.k); d = Math.round((s1 + d) / g) * g - s1; d = Math.max(-s1, Math.min(L - s2, d)); } l.s1 = F.clean(s1 + d); l.s2 = F.clean(s2 + d); } };
+    return { move(e, w) { let d = project(l.body, l.edge, w) - p0; d = Math.max(-s1, Math.min(L - s2, d)); if (A.doc.view.snap && !e.altKey) { const g = A.gridStep(); d = Math.round((s1 + d) / g) * g - s1; d = Math.max(-s1, Math.min(L - s2, d)); } l.s1 = F.clean(s1 + d); l.s2 = F.clean(s2 + d); } };
   }
   if (f && (f.kind === "load" || f.kind === "support" || f.kind === "marker")) {
     const e = f.e;
@@ -2409,11 +2430,10 @@ function directionSection(l) {
       const at = F.resolveAt(doc, l.at);
       if (Math.hypot(p.x - at.x, p.y - at.y) < 1e-9) return "That is the load's own point";
       l.input.toward = { x: F.clean(p.x), y: F.clean(p.y) };
-      const world = l.kind === "moment" || l.anchor === "tail" ? aim(at, p) : aim(p, at);
-      setWorldDir(l, world);
+      setWorldDir(l, aim(at, p));
     };
     h += A.field(`${l.id}.tx`, "Toward x", l.input.toward ? F.formatQuantity(tw.x - t.x, "length", v.units.length) : "", set("x")) + A.field(`${l.id}.ty`, "Toward y", l.input.toward ? F.formatQuantity(tw.y - t.y, "length", v.units.length) : "", set("y"));
-    h += `<p>${l.anchor === "head" ? "The arrow comes from" : "The arrow points at"} this point. The direction is fixed when you enter it.</p>`;
+    h += `<p>The load points from its own point towards this one. The direction is fixed when you enter it.</p>`;
   }
   if (mode !== "polar") h += `<p>Angle ${esc(F.fmt(ang, 5))}°${l.dirRef === "member" ? " to the member" : ""}.</p>`;
   const onBody = l.at && "body" in l.at && F.resolveAt(doc, l.at)?.angle !== null;
@@ -2620,7 +2640,7 @@ function addStandard(key) {
     l = { id: F.nextId(doc, "m"), kind: "moment", style: "applied", label: key, at, magnitude: null, unit: null, sense: ax.plane === "into" ? "cw" : "ccw", axis: ax.plane === "in" ? "inplane" : "normal", dir: ax.plane === "in" ? ax.dir : 0, dirRef: "global", show, labelOffset: null };
   } else {
     // Lift acts slightly apart from the CG so its symbol does not hide the weight's.
-    if (key === "L" && ax.plane !== "in") { const g = F.gridStep(A.cam.k) * 3, aft = F.bodyAxis(doc.view, "x", -1); if (aft.plane === "in") { at.x += g * Math.cos(F.rad(aft.dir)); at.y += g * Math.sin(F.rad(aft.dir)); } }
+    if (key === "L" && ax.plane !== "in") { const g = A.gridStep() * 3, aft = F.bodyAxis(doc.view, "x", -1); if (aft.plane === "in") { at.x += g * Math.cos(F.rad(aft.dir)); at.y += g * Math.sin(F.rad(aft.dir)); } }
     l = { id: F.nextId(doc, "f"), kind: key === "W" ? "weight" : "force", style: "applied", label: key, at, magnitude: null, unit: null, dir: ax.plane === "in" ? ax.dir : 270, dirRef: "global", plane: ax.plane, anchor: key === "T" || key === "D" || key === "L" ? "tail" : "head",
       input: { mode: "polar", slope: null, toward: null }, show, labelOffset: null };
   }
@@ -2635,6 +2655,1273 @@ A.addStandard = addStandard;
 })();
 </script>
 
+<script type="application/json" id="fbd-examples">
+{
+  "format": "fbd-drawer-examples",
+  "version": 1,
+  "note": "Reference drawings 1 to 5 from the FBD Drawer specification, section 10. Drawing 6 is building drawing 1 by touch alone.",
+  "examples": [
+    {
+      "id": "cantilever",
+      "title": "Cantilever with point load, UDL and end moment",
+      "tests": "Distributed loads, moments, supports and dimension lines; the 3 m member measures 3000 mm.",
+      "drawing": {
+        "format": "fbd-drawer",
+        "version": 1,
+        "title": "Cantilever with point load, UDL and end moment",
+        "geometry": {
+          "joints": [
+            {
+              "id": "j1",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "j2",
+              "x": 3000,
+              "y": 0
+            }
+          ],
+          "bodies": [
+            {
+              "id": "b1",
+              "type": "beam",
+              "joints": [
+                "j1",
+                "j2"
+              ],
+              "label": null,
+              "depth": 200
+            },
+            {
+              "id": "b2",
+              "type": "line",
+              "joints": [
+                "j1",
+                "j2"
+              ],
+              "label": null,
+              "role": "dimension",
+              "offset": -60
+            }
+          ],
+          "loads": [
+            {
+              "id": "q1",
+              "kind": "distributed",
+              "style": "applied",
+              "label": "w",
+              "body": "b1",
+              "edge": 0,
+              "s1": 0,
+              "s2": 3000,
+              "w1": 2,
+              "w2": 2,
+              "h1": 1,
+              "h2": 1,
+              "unit": "kN/m",
+              "dirMode": "perpendicular",
+              "flip": false,
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f1",
+              "kind": "force",
+              "style": "applied",
+              "label": "P",
+              "at": {
+                "body": "b1",
+                "edge": 0,
+                "s": 2000,
+                "n": 0
+              },
+              "magnitude": 10000,
+              "unit": "kN",
+              "dir": 270,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "m1",
+              "kind": "moment",
+              "style": "applied",
+              "label": "M_B",
+              "at": {
+                "joint": "j2"
+              },
+              "magnitude": 5000000,
+              "unit": "kN·m",
+              "sense": "cw",
+              "axis": "normal",
+              "dir": 0,
+              "dirRef": "global",
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f2",
+              "kind": "force",
+              "style": "reaction",
+              "label": "A_x",
+              "at": {
+                "joint": "j1"
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 0,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "tail",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f3",
+              "kind": "force",
+              "style": "reaction",
+              "label": "A_y",
+              "at": {
+                "joint": "j1"
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 90,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "m2",
+              "kind": "moment",
+              "style": "reaction",
+              "label": "M_A",
+              "at": {
+                "joint": "j1"
+              },
+              "magnitude": null,
+              "unit": null,
+              "sense": "ccw",
+              "axis": "normal",
+              "dir": 0,
+              "dirRef": "global",
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            }
+          ],
+          "supports": [
+            {
+              "id": "s1",
+              "kind": "fixed",
+              "at": {
+                "joint": "j1"
+              },
+              "angle": 180,
+              "label": "A",
+              "labelOffset": null
+            }
+          ],
+          "markers": []
+        },
+        "view": {
+          "units": {
+            "system": "SI",
+            "length": "m",
+            "force": "kN",
+            "moment": "kN·m",
+            "distributed": "kN/m"
+          },
+          "triad": {
+            "visible": true,
+            "x": -800,
+            "y": -700,
+            "rotation": 0,
+            "ySense": 1,
+            "labels": [
+              "x",
+              "y"
+            ],
+            "preset": "engineering",
+            "aircraftView": null
+          },
+          "colourByType": false,
+          "grid": true,
+          "snap": true,
+          "angleSnap": 15
+        }
+      }
+    },
+    {
+      "id": "inclined-plane",
+      "title": "Block on a 30° inclined plane",
+      "tests": "A rotated triad, with polar (N), component (friction) and point-at (weight) input.",
+      "drawing": {
+        "format": "fbd-drawer",
+        "version": 1,
+        "title": "Block on a 30° inclined plane",
+        "geometry": {
+          "joints": [
+            {
+              "id": "j1",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "j2",
+              "x": 3464.101615,
+              "y": 2000
+            },
+            {
+              "id": "j3",
+              "x": 3464.101615,
+              "y": 0
+            },
+            {
+              "id": "j4",
+              "x": 1299.038106,
+              "y": 750
+            },
+            {
+              "id": "j5",
+              "x": 1818.653348,
+              "y": 1050
+            },
+            {
+              "id": "j6",
+              "x": 1518.653348,
+              "y": 1569.615242
+            },
+            {
+              "id": "j7",
+              "x": 999.038106,
+              "y": 1269.615242
+            }
+          ],
+          "bodies": [
+            {
+              "id": "b1",
+              "type": "polygon",
+              "joints": [
+                "j1",
+                "j3",
+                "j2"
+              ],
+              "label": null
+            },
+            {
+              "id": "b2",
+              "type": "polygon",
+              "joints": [
+                "j4",
+                "j5",
+                "j6",
+                "j7"
+              ],
+              "label": "m"
+            }
+          ],
+          "loads": [
+            {
+              "id": "f1",
+              "kind": "weight",
+              "style": "applied",
+              "label": "W",
+              "at": {
+                "body": "b2",
+                "centroid": true
+              },
+              "magnitude": 490.5,
+              "unit": null,
+              "dir": 270,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "toward",
+                "slope": null,
+                "toward": {
+                  "x": 1408.845727,
+                  "y": -40.192379
+                }
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": true,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f2",
+              "kind": "force",
+              "style": "applied",
+              "label": "N",
+              "at": {
+                "body": "b2",
+                "edge": 0,
+                "s": 300,
+                "n": 0
+              },
+              "magnitude": 424.8,
+              "unit": null,
+              "dir": 120,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "tail",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": true,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f3",
+              "kind": "force",
+              "style": "applied",
+              "label": "F_f",
+              "at": {
+                "body": "b2",
+                "edge": 0,
+                "s": 450,
+                "n": 0
+              },
+              "magnitude": 245.25,
+              "unit": null,
+              "dir": 30,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "tail",
+              "input": {
+                "mode": "components",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": true,
+                "units": true
+              },
+              "labelOffset": null
+            }
+          ],
+          "supports": [],
+          "markers": []
+        },
+        "view": {
+          "units": {
+            "system": "SI",
+            "length": "mm",
+            "force": "N",
+            "moment": "N·mm",
+            "distributed": "N/mm"
+          },
+          "triad": {
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "rotation": 30,
+            "ySense": 1,
+            "labels": [
+              "x'",
+              "y'"
+            ],
+            "preset": "engineering",
+            "aircraftView": null
+          },
+          "colourByType": false,
+          "grid": true,
+          "snap": true,
+          "angleSnap": 15
+        }
+      }
+    },
+    {
+      "id": "simply-supported-imperial",
+      "title": "Simply supported beam with a triangular load (imperial)",
+      "tests": "Unit conversion: entered in ft and kip/ft, stored in mm and N/mm.",
+      "drawing": {
+        "format": "fbd-drawer",
+        "version": 1,
+        "title": "Simply supported beam with a triangular load (imperial)",
+        "geometry": {
+          "joints": [
+            {
+              "id": "j1",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "j2",
+              "x": 6096,
+              "y": 0
+            }
+          ],
+          "bodies": [
+            {
+              "id": "b1",
+              "type": "beam",
+              "joints": [
+                "j1",
+                "j2"
+              ],
+              "label": null,
+              "depth": 304.79999999999995
+            },
+            {
+              "id": "b2",
+              "type": "line",
+              "joints": [
+                "j1",
+                "j2"
+              ],
+              "label": null,
+              "role": "dimension",
+              "offset": -70
+            }
+          ],
+          "loads": [
+            {
+              "id": "q1",
+              "kind": "distributed",
+              "style": "applied",
+              "label": "w",
+              "body": "b1",
+              "edge": 0,
+              "s1": 0,
+              "s2": 6096,
+              "w1": 0,
+              "w2": 29.187805874412728,
+              "h1": 1,
+              "h2": 1,
+              "unit": "kip/ft",
+              "dirMode": "perpendicular",
+              "flip": false,
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f1",
+              "kind": "force",
+              "style": "reaction",
+              "label": "A_x",
+              "at": {
+                "joint": "j1"
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 0,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f2",
+              "kind": "force",
+              "style": "reaction",
+              "label": "A_y",
+              "at": {
+                "joint": "j1"
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 90,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f3",
+              "kind": "force",
+              "style": "reaction",
+              "label": "B_y",
+              "at": {
+                "joint": "j2"
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 90,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            }
+          ],
+          "supports": [
+            {
+              "id": "s1",
+              "kind": "pin",
+              "at": {
+                "joint": "j1"
+              },
+              "angle": 270,
+              "label": "A",
+              "labelOffset": null
+            },
+            {
+              "id": "s2",
+              "kind": "roller",
+              "at": {
+                "joint": "j2"
+              },
+              "angle": 270,
+              "label": "B",
+              "labelOffset": null
+            }
+          ],
+          "markers": []
+        },
+        "view": {
+          "units": {
+            "system": "imperial",
+            "length": "ft",
+            "force": "kip",
+            "moment": "kip·ft",
+            "distributed": "kip/ft"
+          },
+          "triad": {
+            "visible": true,
+            "x": -914.4000000000001,
+            "y": -914.4000000000001,
+            "rotation": 0,
+            "ySense": 1,
+            "labels": [
+              "x",
+              "y"
+            ],
+            "preset": "engineering",
+            "aircraftView": null
+          },
+          "colourByType": false,
+          "grid": true,
+          "snap": true,
+          "angleSnap": 15
+        }
+      }
+    },
+    {
+      "id": "aircraft-top",
+      "title": "Aircraft top view",
+      "tests": "The aircraft preset: PORT and STBD, L, D, T, W, CG and roll, pitch and yaw by the right-hand rule.",
+      "drawing": {
+        "format": "fbd-drawer",
+        "version": 1,
+        "title": "Aircraft top view",
+        "geometry": {
+          "joints": [
+            {
+              "id": "j1",
+              "x": 0,
+              "y": 6000
+            },
+            {
+              "id": "j2",
+              "x": 450,
+              "y": 5200
+            },
+            {
+              "id": "j3",
+              "x": 450,
+              "y": 1500
+            },
+            {
+              "id": "j4",
+              "x": 5600,
+              "y": 0
+            },
+            {
+              "id": "j5",
+              "x": 5600,
+              "y": -700
+            },
+            {
+              "id": "j6",
+              "x": 450,
+              "y": -700
+            },
+            {
+              "id": "j7",
+              "x": 450,
+              "y": -3300
+            },
+            {
+              "id": "j8",
+              "x": 1900,
+              "y": -4100
+            },
+            {
+              "id": "j9",
+              "x": 1900,
+              "y": -4500
+            },
+            {
+              "id": "j10",
+              "x": 0,
+              "y": -4200
+            },
+            {
+              "id": "j11",
+              "x": -1900,
+              "y": -4500
+            },
+            {
+              "id": "j12",
+              "x": -1900,
+              "y": -4100
+            },
+            {
+              "id": "j13",
+              "x": -450,
+              "y": -3300
+            },
+            {
+              "id": "j14",
+              "x": -450,
+              "y": -700
+            },
+            {
+              "id": "j15",
+              "x": -5600,
+              "y": -700
+            },
+            {
+              "id": "j16",
+              "x": -5600,
+              "y": 0
+            },
+            {
+              "id": "j17",
+              "x": -450,
+              "y": 1500
+            },
+            {
+              "id": "j18",
+              "x": -450,
+              "y": 5200
+            }
+          ],
+          "bodies": [
+            {
+              "id": "b1",
+              "type": "polygon",
+              "joints": [
+                "j1",
+                "j2",
+                "j3",
+                "j4",
+                "j5",
+                "j6",
+                "j7",
+                "j8",
+                "j9",
+                "j10",
+                "j11",
+                "j12",
+                "j13",
+                "j14",
+                "j15",
+                "j16",
+                "j17",
+                "j18"
+              ],
+              "label": null
+            }
+          ],
+          "loads": [
+            {
+              "id": "f1",
+              "kind": "force",
+              "style": "applied",
+              "label": "T",
+              "at": {
+                "x": 0,
+                "y": 6000
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 90,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "tail",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f2",
+              "kind": "force",
+              "style": "applied",
+              "label": "D",
+              "at": {
+                "x": 0,
+                "y": -4200
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 270,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "tail",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f3",
+              "kind": "force",
+              "style": "applied",
+              "label": "L",
+              "at": {
+                "x": 1200,
+                "y": -300
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 270,
+              "dirRef": "global",
+              "plane": "out",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f4",
+              "kind": "weight",
+              "style": "applied",
+              "label": "W",
+              "at": {
+                "x": -1200,
+                "y": -300
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 270,
+              "dirRef": "global",
+              "plane": "into",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "m1",
+              "kind": "moment",
+              "style": "applied",
+              "label": "Roll",
+              "at": {
+                "x": 0,
+                "y": 2500
+              },
+              "magnitude": null,
+              "unit": null,
+              "sense": "ccw",
+              "axis": "inplane",
+              "dir": 90,
+              "dirRef": "global",
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "m2",
+              "kind": "moment",
+              "style": "applied",
+              "label": "Pitch",
+              "at": {
+                "x": 2600,
+                "y": -2600
+              },
+              "magnitude": null,
+              "unit": null,
+              "sense": "ccw",
+              "axis": "inplane",
+              "dir": 0,
+              "dirRef": "global",
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "m3",
+              "kind": "moment",
+              "style": "applied",
+              "label": "Yaw",
+              "at": {
+                "x": -2600,
+                "y": -2600
+              },
+              "magnitude": null,
+              "unit": null,
+              "sense": "cw",
+              "axis": "normal",
+              "dir": 0,
+              "dirRef": "global",
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            }
+          ],
+          "supports": [],
+          "markers": [
+            {
+              "id": "c1",
+              "kind": "cg",
+              "at": {
+                "x": 0,
+                "y": -300
+              },
+              "label": "CG",
+              "labelOffset": null
+            }
+          ]
+        },
+        "view": {
+          "units": {
+            "system": "SI",
+            "length": "m",
+            "force": "kN",
+            "moment": "kN·m",
+            "distributed": "kN/m"
+          },
+          "triad": {
+            "visible": true,
+            "x": -7000,
+            "y": 4000,
+            "rotation": 90,
+            "ySense": -1,
+            "labels": [
+              "x",
+              "y"
+            ],
+            "preset": "aircraft",
+            "aircraftView": "top"
+          },
+          "colourByType": false,
+          "grid": true,
+          "snap": true,
+          "angleSnap": 15
+        }
+      }
+    },
+    {
+      "id": "freeform-plate",
+      "title": "Freeform plate with loads left blank",
+      "tests": "Optional fields left blank, and the Markdown export.",
+      "drawing": {
+        "format": "fbd-drawer",
+        "version": 1,
+        "title": "Freeform plate with loads left blank",
+        "geometry": {
+          "joints": [
+            {
+              "id": "j1",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "j2",
+              "x": 1600,
+              "y": 0
+            },
+            {
+              "id": "j3",
+              "x": 2200,
+              "y": 900
+            },
+            {
+              "id": "j4",
+              "x": 1200,
+              "y": 1600
+            },
+            {
+              "id": "j5",
+              "x": 200,
+              "y": 1100
+            }
+          ],
+          "bodies": [
+            {
+              "id": "b1",
+              "type": "polygon",
+              "joints": [
+                "j1",
+                "j2",
+                "j3",
+                "j4",
+                "j5"
+              ],
+              "label": null
+            }
+          ],
+          "loads": [
+            {
+              "id": "f1",
+              "kind": "force",
+              "style": "applied",
+              "label": null,
+              "at": {
+                "joint": "j4"
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 300,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f2",
+              "kind": "force",
+              "style": "applied",
+              "label": "F_1",
+              "at": {
+                "body": "b1",
+                "edge": 1,
+                "s": 540,
+                "n": 0
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 180,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "f3",
+              "kind": "force",
+              "style": "applied",
+              "label": "\\theta",
+              "at": {
+                "body": "b1",
+                "edge": 3,
+                "s": 500,
+                "n": 0
+              },
+              "magnitude": null,
+              "unit": null,
+              "dir": 0,
+              "dirRef": "global",
+              "plane": "in",
+              "anchor": "head",
+              "input": {
+                "mode": "polar",
+                "slope": null,
+                "toward": null
+              },
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "m1",
+              "kind": "moment",
+              "style": "applied",
+              "label": null,
+              "at": {
+                "body": "b1",
+                "edge": 0,
+                "s": 800,
+                "n": 700
+              },
+              "magnitude": null,
+              "unit": null,
+              "sense": "ccw",
+              "axis": "normal",
+              "dir": 0,
+              "dirRef": "global",
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            },
+            {
+              "id": "q1",
+              "kind": "distributed",
+              "style": "applied",
+              "label": null,
+              "body": "b1",
+              "edge": 3,
+              "s1": 0,
+              "s2": 1100,
+              "w1": null,
+              "w2": null,
+              "h1": 0,
+              "h2": 1,
+              "unit": null,
+              "dirMode": "perpendicular",
+              "flip": true,
+              "show": {
+                "label": true,
+                "magnitude": true,
+                "angle": false,
+                "units": true
+              },
+              "labelOffset": null
+            }
+          ],
+          "supports": [
+            {
+              "id": "s1",
+              "kind": "pin",
+              "at": {
+                "joint": "j1"
+              },
+              "angle": 270,
+              "label": null,
+              "labelOffset": null
+            },
+            {
+              "id": "s2",
+              "kind": "roller",
+              "at": {
+                "joint": "j2"
+              },
+              "angle": 270,
+              "label": null,
+              "labelOffset": null
+            }
+          ],
+          "markers": []
+        },
+        "view": {
+          "units": {
+            "system": "SI",
+            "length": "mm",
+            "force": "N",
+            "moment": "N·mm",
+            "distributed": "N/mm"
+          },
+          "triad": {
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "ySense": 1,
+            "labels": [
+              "x",
+              "y"
+            ],
+            "preset": "engineering",
+            "aircraftView": null
+          },
+          "colourByType": false,
+          "grid": true,
+          "snap": true,
+          "angleSnap": 15
+        }
+      }
+    }
+  ]
+}
+</script>
+<script id="fbd-examples-ui" data-ui>
+/* Reference drawings (specification section 10), embedded so the page works
+   offline as one file. tools/sync-examples.mjs copies them from examples.json. */
+(function () {
+"use strict";
+const F = window.FBD, A = window.FBDApp;
+let EX = [];
+try { EX = JSON.parse(document.getElementById("fbd-examples").textContent).examples; } catch (e) { EX = []; }
+function open(id) {
+  const ex = EX.find((e) => e.id === id);
+  if (!ex) return false;
+  const r = F.load(ex.drawing);
+  if (r.errors.length) { A.toast(r.errors.join("\n")); return false; }
+  A.doc = r.doc; A.fit();
+  return true;
+}
+if (EX.length) {
+  A.EXTRA_MENU.push(null, "#Examples");
+  for (const ex of EX) A.EXTRA_MENU.push([ex.title, () => { if (confirm(`Open the example "${ex.title}"? It replaces the current drawing.`)) open(ex.id); }]);
+}
+const mc = (typeof document !== "undefined" && document.modelContext) || (typeof navigator !== "undefined" && navigator.modelContext);
+const result = (v) => ({ content: [{ type: "text", text: JSON.stringify(v) }] });
+mc?.registerTool({ name: "list_examples", description: "List the built-in reference drawings (cantilever, inclined plane, imperial simply supported beam, aircraft top view, freeform plate) and what each one tests.", inputSchema: { type: "object", properties: {}, additionalProperties: false }, annotations: { readOnlyHint: true },
+  async execute() { return result({ examples: EX.map((e) => ({ id: e.id, title: e.title, tests: e.tests })), truncated: false }); } });
+mc?.registerTool({ name: "load_example", description: "Replace the current drawing with one of the built-in reference drawings.", inputSchema: { type: "object", properties: { id: { type: "string", enum: EX.map((e) => e.id) } }, required: ["id"], additionalProperties: false },
+  async execute({ id }) { return result(open(id) ? { ok: true, id } : { ok: false, error: `unknown example "${id}"` }); } });
+A.openExample = open;
+})();
+</script>
 <script id="fbd-start">
 window.FBDBoot();
 </script>
