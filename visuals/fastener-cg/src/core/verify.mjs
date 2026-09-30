@@ -9,8 +9,9 @@
 import { examplePattern } from "./model.mjs";
 import { solve } from "./solve.mjs";
 import { solveScale } from "./interaction.mjs";
+import { boltLoad, tStubPrying } from "./tension.mjs";
 
-export const VERIFICATION_SET = "M2";
+export const VERIFICATION_SET = "M3";
 export const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
@@ -145,6 +146,30 @@ export const HAND_CASES = [
         check("MS = 1/IF − 1 when a = b = 1", l.m.ms, 1 / l.m.IF1 - 1),
         truth("no W-006 for (1, 1)", !ids(l.r).includes("W-006")),
         truth("critical fastener named with its mode", e.r.critical?.id === "F1" && e.r.critical.mode === "interaction"),
+      ];
+    },
+  },
+  {
+    id: "VC-08", title: "Preload P_max = 20 000, P_min = 16 000, φ = 0.2; T_ext = 10 000 and 25 000",
+    run() {
+      // One fastener with external tension T = Fz, preload enabled.
+      const at = (Fz) => {
+        const p = pattern([[0, 0]], { Fz });
+        p.settings.preload = { enabled: true };
+        p.defaults.preload = { pMax: 20000, pMin: 16000, phi: 0.2 };
+        const r = solved(p);
+        return { r, t: r.fasteners[0].checks.tension, c: r.fasteners[0].checks.clamp };
+      };
+      const a = at(10000), b = at(25000);
+      const ids = (r) => r.issues.map((i) => i.id);
+      return [
+        check("F_b at T = 10 000", a.t.Fb, 22000),
+        check("clamp force at T = 10 000", a.t.preload.clamp, 8000),
+        check("separation load", a.t.preload.separationLoad, 20000),
+        truth("clamped at T = 10 000 (no W-013)", a.c.status === "clamped" && !ids(a.r).includes("W-013")),
+        check("F_b at T = 25 000", b.t.Fb, 25000),
+        truth("separated at T = 25 000 (W-013)", b.c.status === "separated" && ids(b.r).includes("W-013")),
+        truth("N-005 with preload", ids(a.r).includes("N-005")),
       ];
     },
   },
@@ -314,6 +339,55 @@ PROPERTY_CASES.push(
         truth("critical fastener has that MS", r.fasteners.find((f) => f.id === r.critical.id).checks.governing.ms === min),
         truth("no margin without allowables", solved(base()).fasteners.every((f) => f.checks.governing === null && f.checks.modes[0].status === "not-evaluated")),
       ];
+    },
+  },
+);
+
+const TSTUB = { B: 40000, b: 40, a: 35, p: 80, dh: 14, D: 12, t: 12, Fp: 250 };
+
+PROPERTY_CASES.push(
+  {
+    id: "P-10", title: "Preload bolt load is continuous through separation and does not scale with k",
+    run() {
+      const pre = { pMax: 20000, pMin: 16000, phi: 0.2 };
+      const Tsep = pre.pMax / (1 - pre.phi); // where the two branches of max(…) meet
+      const off = { kind: "off" };
+      const below = boltLoad(Tsep * (1 - 1e-12), off, pre).Fb, above = boltLoad(Tsep * (1 + 1e-12), off, pre).Fb;
+      const Rs = 3000, Text = 8000, Fs = 10000, Ft = 30000;
+      const tensionAt = (k) => boltLoad(k * Text, off, pre).Fb;
+      const s = solveScale({ Rs, tensionAt, Fs, Ft, a: 2, b: 2 });
+      const scaled = solveScale({ Rs, tensionAt: (k) => k * tensionAt(1), Fs, Ft, a: 2, b: 2 });
+      return [
+        check("F_b continuous at P_max/(1 − φ)", below, above, { rel: 1e-9 }),
+        check("IF(0) = (P_max/Ft)²", s.IF0, (pre.pMax / Ft) ** 2),
+        check("IF(k*) = 1 through the preload chain", (s.kStar * Rs / Fs) ** 2 + (tensionAt(s.kStar) / Ft) ** 2, 1),
+        truth("preload not scaled: k* differs from scaling F_b", Math.abs(s.kStar - scaled.kStar) > 1e-6),
+      ];
+    },
+  },
+  {
+    id: "P-11", title: "T-stub prying: Q = 0 below the threshold, grows with T, capped at α' = 1",
+    run() {
+      const probe = (T) => tStubPrying(T, TSTUB);
+      const q = probe(1);
+      const threshold = TSTUB.B * (q.t / q.tc) ** 2; // α' = 0 at T = B·(t/t_c)²
+      const Ts = [0.5, 0.9, 1.1, 1.5, 3].map((m) => m * threshold);
+      const Qs = Ts.map((T) => probe(T).Q);
+      const capT = TSTUB.B * (1 + q.delta) * (q.t / q.tc) ** 2; // α' reaches 1
+      return [
+        check("Q = 0 below threshold", Qs[0] + Qs[1], 0, { abs: 1e-12 }),
+        truth("Q > 0 above threshold", Qs[2] > 0),
+        truth("Q non-decreasing in T", Qs.every((x, i) => i === 0 || x >= Qs[i - 1])),
+        check("Q at α' = 1 equals B·δ·ρ·(t/t_c)²", probe(capT * 2).Q, TSTUB.B * q.delta * q.rho * (q.t / q.tc) ** 2),
+        check("a limited to 1.25·b", tStubPrying(1, { ...TSTUB, a: 100 }).aUsed, 1.25 * TSTUB.b),
+      ];
+    },
+  },
+  {
+    id: "P-12", title: "Manual prying factor: bolt tension = factor × T",
+    run() {
+      const r = boltLoad(5000, { kind: "manual", factor: 1.3 }, null);
+      return [check("F_b", r.Fb, 6500), check("Q", r.Q, 1500)];
     },
   },
 );

@@ -12,6 +12,7 @@ import { runVerification } from "../core/verify.mjs";
 import { sortIssues } from "../core/warnings.mjs";
 import { marginText, noMarginSummary } from "../core/checks.mjs";
 import { PRESETS } from "../core/interaction.mjs";
+import { preloadFromTorque } from "../core/tension.mjs";
 import { TOOL_VERSION } from "../core/meta.mjs";
 import { paint, palette, hitTest, centroidPath } from "./canvas.mjs";
 import { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } from "./storage.mjs";
@@ -114,8 +115,12 @@ function renderInputs() {
   $("#applied-plate").innerHTML = plates.map((p) => `<option value="${esc(p.id)}">${esc(p.id)}</option>`).join("") || `<option value="">(none)</option>`;
   for (const el of $$("[data-path]")) {
     const v = getPath(state.pattern, el.dataset.path);
-    el.value = inputText(v);
+    if (el.type === "checkbox") el.checked = !!v;
+    else el.value = inputText(v);
   }
+  renderToggles();
+  renderOverrides();
+  $("#tq-d").value = inputText(state.pattern.defaults.diameter);
   $("#snap").setAttribute("aria-pressed", String(state.snap.on));
   $("#snap-step").value = state.snap.step;
   renderPlates();
@@ -124,7 +129,7 @@ function renderInputs() {
 function renderPlates() {
   $("#plates").innerHTML = state.pattern.plates.map((p, i) => `
     <div class="row three" data-plate="${i}">
-      ${["xMin", "xMax", "thickness", "yMin", "yMax"].map((k) => `<label class="f"><span>${esc(p.id)} ${k} (${units("length")})</span><input type="number" step="any" data-plate-key="${k}" value="${esc(inputText(p[k]))}"></label>`).join("")}
+      ${[["xMin", "length"], ["xMax", "length"], ["thickness", "length"], ["yMin", "length"], ["yMax", "length"], ["flangeStrength", "stress", "Fp"]].map(([k, kind, label]) => `<label class="f"><span>${esc(p.id)} ${label || k} (${units(kind)})</span><input type="number" step="any" data-plate-key="${k}" data-field="plates.${esc(p.id)}.${k}" value="${esc(inputText(p[k]))}"${k === "flangeStrength" ? ' placeholder="—"' : ""}></label>`).join("")}
     </div>`).join("");
 }
 
@@ -157,6 +162,38 @@ function renderLibrary() {
 function renderSelection() {
   for (const tr of $$("#fastener-rows tr[data-row]")) tr.classList.toggle("selected", tr.dataset.row === state.selected);
   $("#delete-fastener").disabled = !state.selected;
+  renderOverrides();
+}
+
+const TENSION_FIELDS = [
+  ["prying", "prying.b", "b", "length"], ["prying", "prying.a", "a", "length"], ["prying", "prying.p", "p", "length"],
+  ["prying", "prying.holeDiameter", "d_h", "length"], ["prying", "prying.boltStrengthB", "B", "force"], ["prying", "prying.manualFactor", "Manual factor", "none"],
+  ["preload", "preload.pMax", "P_max", "force"], ["preload", "preload.pMin", "P_min", "force"], ["preload", "preload.phi", "φ", "none"],
+];
+
+function renderToggles() {
+  for (const el of $$("[data-show]")) el.hidden = !getPath(state.pattern, el.dataset.show);
+  const pts = state.pattern.fasteners.filter((q) => typeof q.x === "number" && typeof q.y === "number");
+  let nn = Infinity;
+  for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) nn = Math.min(nn, Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y));
+  $("#spacing-hint").textContent = Number.isFinite(nn) ? `Hint only: the nearest-neighbour spacing in this pattern is ${f(nn)} ${units("length")}. Type p yourself.` : "";
+}
+
+/* Prying and preload overrides for the selected fastener (blank = group default). */
+function renderOverrides() {
+  const box = $("#override-editor");
+  const st = state.pattern.settings;
+  const fa = state.pattern.fasteners.find((q) => q.id === state.selected);
+  const groups = ["prying", "preload"].filter((g) => st[g]?.enabled);
+  if (!groups.length) { box.innerHTML = ""; return; }
+  if (!fa) { box.innerHTML = `<p class="note">Select a fastener to override its prying or preload inputs.</p>`; return; }
+  const d = state.pattern.defaults;
+  box.innerHTML = `<h4>Overrides for ${esc(fa.id)}</h4><div class="row three">${TENSION_FIELDS.filter(([g]) => groups.includes(g)).map(([, path, label, kind]) => {
+    const own = getPath(fa.overrides || {}, path);
+    const has = own !== undefined;
+    const def = getPath(d, path);
+    return `<label class="f"><span>${esc(label)}${kind !== "none" ? ` (${units(kind)})` : ""}</span><input type="number" step="any" data-ov="${path}" class="${has ? "override" : ""}" value="${has ? esc(inputText(own)) : ""}" placeholder="${esc(def === null || def === undefined ? "—" : inputText(def))}"></label>`;
+  }).join("")}</div>`;
 }
 
 function renderStructure() {
@@ -179,7 +216,8 @@ function markInvalid() {
   for (const i of state.result.issues) {
     if (i.tier !== "error") continue;
     if (i.fastener && i.field) $(`#fastener-rows input[data-id="${CSS.escape(i.fastener)}"][data-key="${CSS.escape(i.field)}"]`)?.setAttribute("aria-invalid", "true");
-    else if (i.field) $(`[data-path="${CSS.escape(i.field)}"]`)?.setAttribute("aria-invalid", "true");
+    else if (i.field) ($(`[data-path="${CSS.escape(i.field)}"]`) || $(`[data-field="${CSS.escape(i.field)}"]`))?.setAttribute("aria-invalid", "true");
+    if (i.fastener && i.field && i.fastener === state.selected) $(`#override-editor [data-ov="${CSS.escape(i.field)}"]`)?.setAttribute("aria-invalid", "true");
   }
   const p = state.pattern.settings.precision;
   if (!(Number.isInteger(p) && p >= 1 && p <= 15)) $("#precision").setAttribute("aria-invalid", "true");
@@ -418,6 +456,28 @@ function renderResults() {
     ? `<p class="critical muted">${esc(none.text)}</p>`
     : `<p class="critical muted">No margin evaluated: enter shear and tension allowables Fs and Ft (group defaults or per-fastener overrides). A check without its allowable shows “not evaluated” and never a margin.</p>`;
 
+  const ts = r.tensionSettings;
+  let tensionTable = "";
+  if (ts.prying || ts.preload) {
+    const head = ["Fastener", `T external (${F})`];
+    if (ts.prying) head.push("Prying", "α'", `Q (${F})`);
+    if (ts.preload) head.push(`P_max + φT (${F})`, `Clamp force (${F})`, `Separation at T (${F})`);
+    head.push(`Bolt load F_b (${F})`, "Joint");
+    tensionTable = table(head, r.fasteners.map((q) => {
+      const t = q.checks.tension, c = q.checks.clamp;
+      const row = [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button>`, f(t.Text, forceScale)];
+      if (ts.prying) {
+        const pm = t.prying;
+        row.push(pm.method === "manual" ? `manual × ${f(pm.factor)}` : pm.method === "t-stub" ? (t.Text > 0 ? "T-stub" : "T-stub (no tension)") : "—",
+          pm.method === "t-stub" && pm.alphaRaw !== null ? `${f(pm.alpha)}${pm.alphaRaw !== pm.alpha ? ` <span class="muted">(${f(pm.alphaRaw)} clamped)</span>` : ""}` : "—",
+          f(t.Q, forceScale));
+      }
+      if (ts.preload) row.push(f(t.preload.shared, forceScale), `${f(t.preload.clamp, forceScale)}`, f(t.preload.separationLoad, forceScale));
+      row.push(`<b>${f(t.Fb, forceScale)}</b>`, c.status === "separated" ? '<span class="tag unloading">separated</span>' : c.status === "clamped" ? "clamped" : "—");
+      return row;
+    }), { numeric: [1, 2, 3, 4, 5, 6, 7, 8] });
+  }
+
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],
     r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
     { numeric: [1, 2] });
@@ -435,9 +495,11 @@ function renderResults() {
     <h3 style="margin-top:1.25rem">Fastener loads — elastic</h3>
     <p class="note">In-plane: direct Rd plus torsional Rt about Cs, resultant Rs and its direction CCW from +x. Out-of-plane: T by ${esc(axialNote)} Positive T is tension; unloading fasteners are shown as computed.</p>
     ${per}
+    ${tensionTable ? `<h3 style="margin-top:1.25rem">Bolt tension — ${[ts.prying ? `prying from ${esc(ts.flangePlate || "?")}` : "", ts.preload ? "preload" : ""].filter(Boolean).join(" and ")}</h3>
+    <p class="note">F_b replaces T in the interaction and is recomputed at every load multiplier k; preload does not scale. Prying acts on positive external tension only.</p>${tensionTable}` : ""}
     <h3 style="margin-top:1.25rem">Margins of safety — elastic basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
     ${crit}
-    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the positive tension; unloading counts as zero.</p>
+    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero.</p>
     ${checks}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
@@ -464,7 +526,7 @@ function renderInline() {
     if (i.fasteners?.length) {
       for (const id of i.fasteners) add($(`#fastener-rows tr[data-row="${CSS.escape(id)}"] th`), i);
     } else if (i.field) {
-      const input = $(`[data-path="${CSS.escape(i.field)}"]`);
+      const input = $(`[data-path="${CSS.escape(i.field)}"]`) || $(`[data-field="${CSS.escape(i.field)}"]`);
       const target = input ? input.closest("label")?.querySelector("span") : i.field === "settings.interaction" ? $("#interaction-card h3") : null;
       add(target, i);
     }
@@ -664,11 +726,50 @@ function bind() {
 
   for (const el of $$("[data-path]")) {
     const handler = () => {
-      const isSelect = el.tagName === "SELECT";
-      setPath(state.pattern, el.dataset.path, isSelect ? el.value : parseInput(el.value));
+      const value = el.type === "checkbox" ? el.checked : el.tagName === "SELECT" ? el.value : parseInput(el.value);
+      setPath(state.pattern, el.dataset.path, value);
+      if (el.type === "checkbox") { renderToggles(); renderOverrides(); }
       changed();
     };
-    el.addEventListener(el.tagName === "SELECT" ? "change" : "input", handler);
+    el.addEventListener(el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input", handler);
+  }
+  $("#override-editor").addEventListener("input", (e) => {
+    const path = e.target.dataset.ov;
+    const fa = state.pattern.fasteners.find((q) => q.id === state.selected);
+    if (!path || !fa) return;
+    const v = parseInput(e.target.value);
+    fa.overrides ??= {};
+    const [group, key] = path.split(".");
+    if (v === null) {
+      if (fa.overrides[group]) {
+        delete fa.overrides[group][key];
+        if (!Object.keys(fa.overrides[group]).length) delete fa.overrides[group];
+      }
+    } else {
+      fa.overrides[group] = { ...(fa.overrides[group] || {}), [key]: v };
+    }
+    e.target.classList.toggle("override", v !== null);
+    changed();
+  });
+  const torqueP = () => {
+    try {
+      const P = preloadFromTorque(parseInput($("#tq-torque").value), parseInput($("#tq-k").value), parseInput($("#tq-d").value));
+      $("#tq-out").textContent = `P = T / (K·D) = ${f(P)} ${units("force")}`;
+      return P;
+    } catch (err) {
+      $("#tq-out").textContent = err.message;
+      return null;
+    }
+  };
+  for (const id of ["#tq-torque", "#tq-k", "#tq-d"]) $(id).addEventListener("input", torqueP);
+  for (const b of $$("[data-torque]")) {
+    b.addEventListener("click", () => {
+      const P = torqueP();
+      if (P === null) return;
+      state.pattern.defaults.preload[b.dataset.torque] = round12(P);
+      $(`[data-path="defaults.preload.${b.dataset.torque}"]`).value = round12(P);
+      changed();
+    });
   }
   $("#plates").addEventListener("input", (e) => {
     const key = e.target.dataset.plateKey;

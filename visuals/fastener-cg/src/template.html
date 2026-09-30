@@ -116,6 +116,14 @@ dialog{border:1px solid var(--border);border-radius:calc(var(--r)*1.5);backgroun
 dialog::backdrop{background:rgb(0 0 0/.35)}
 dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .method li{margin:.3rem 0}
+label.check{display:flex;align-items:center;gap:.45rem;font-weight:600;font-size:.9rem;min-height:2.25rem;cursor:pointer}
+label.check input{width:1.05rem;height:1.05rem;margin:0}
+.sub{border-left:2px solid var(--grid);padding-left:.7rem;margin:.1rem 0 .6rem}
+.sub[hidden]{display:none}
+details.torque{margin-top:.5rem}
+#override-editor .row{margin-top:.4rem}
+#override-editor h4{margin:.8rem 0 .2rem;font-size:.85rem}
+input.override{border-color:var(--axial);font-weight:600}
 .presets{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
 .formula{font:.8125rem var(--mono);color:var(--fg)}
 .inline-issue{display:inline-block;font:600 .66rem var(--mono);border-radius:999px;padding:0 .4rem;margin-left:.3rem;border:1px solid currentColor;vertical-align:middle;white-space:nowrap}
@@ -281,10 +289,53 @@ td.status{color:var(--muted);font-size:.78rem}
       <p class="note">MS is the exact multiplier on the whole applied load at which IF reaches 1. With (a, b) ≠ (1, 1) it differs from 1/IF − 1 (W-006); the plain IF(1) is shown beside it.</p>
     </div>
 
+    <div class="card" id="tension-card">
+      <h3>Prying and preload</h3>
+      <label class="check"><input type="checkbox" data-path="settings.prying.enabled"> <span>Prying (T-stub)</span></label>
+      <div class="sub" data-show="settings.prying.enabled">
+        <p class="note formula">b' = b − D/2, a' = min(a, 1.25b) + D/2, ρ = b'/a', δ = 1 − d_h/p, t_c = √(4Bb'/(pFp)), α' = (1/δ)[(T/B)(t_c/t)² − 1] ∈ [0, 1], Q = Bδα'ρ(t/t_c)²</p>
+        <div class="row">
+          <label class="f"><span>b, bolt line to web (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.prying.b"></label>
+          <label class="f"><span>a, edge distance (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.prying.a"></label>
+        </div>
+        <div class="row">
+          <label class="f"><span>p, tributary width (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.prying.p"></label>
+          <label class="f"><span>d_h, hole diameter (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.prying.holeDiameter"></label>
+        </div>
+        <p class="note" id="spacing-hint"></p>
+        <div class="row">
+          <label class="f"><span>B, bolt strength (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.prying.boltStrengthB"></label>
+          <label class="f"><span>Manual factor (overrides T-stub)</span><input type="number" step="any" data-path="defaults.prying.manualFactor" placeholder="none"></label>
+        </div>
+        <p class="note">Flange thickness t and flange strength Fp come from the loaded plate (Plates card). A manual factor f makes the bolt tension f·T (W-012).</p>
+      </div>
+      <label class="check"><input type="checkbox" data-path="settings.preload.enabled"> <span>Preload</span></label>
+      <div class="sub" data-show="settings.preload.enabled">
+        <p class="note formula">F_b = max(P_max + φT, T) + Q; clamp = P_min − (1 − φ)T; separation at T = P_min/(1 − φ)</p>
+        <div class="row three">
+          <label class="f"><span>P_max (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.preload.pMax"></label>
+          <label class="f"><span>P_min (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.preload.pMin"></label>
+          <label class="f"><span>φ, load share</span><input type="number" step="any" data-path="defaults.preload.phi" placeholder="required"></label>
+        </div>
+        <details class="gen torque">
+          <summary>Torque calculator, T = K·D·P</summary>
+          <div class="row three">
+            <label class="f"><span>Torque (<i data-unit="moment"></i>)</span><input type="number" step="any" id="tq-torque"></label>
+            <label class="f"><span>Nut factor K</span><input type="number" step="any" id="tq-k" placeholder="keyed"></label>
+            <label class="f"><span>D (<i data-unit="length"></i>)</span><input type="number" step="any" id="tq-d"></label>
+          </div>
+          <p class="note" id="tq-out" role="status"></p>
+          <div class="presets"><button class="btn" type="button" data-torque="pMax">Fill P_max</button><button class="btn" type="button" data-torque="pMin">Fill P_min</button></div>
+        </details>
+        <p class="note">φ is required and has no default. Friction slip is not evaluated (N-005).</p>
+      </div>
+      <div id="override-editor"></div>
+    </div>
+
     <div class="card">
       <h3>Plates</h3>
       <div id="plates"></div>
-      <p class="note">Outlines are drawn on the canvas. Bearing, tear-out and a second plate arrive with milestone M4.</p>
+      <p class="note">Outlines are drawn on the canvas. The loaded plate's thickness and flange strength Fp feed prying. Bearing, tear-out and a second plate arrive with milestone M4.</p>
     </div>
   </div>
 </div>
@@ -325,6 +376,8 @@ td.status{color:var(--muted);font-size:.78rem}
     <li><b>Elastic in-plane shear</b>: direct Rd = F ks/Σks; torsional Rtx = −Mz,s ks v / J, Rty = +Mz,s ks u / J.</li>
     <li><b>Axial method (a)</b>, rigid plate with the neutral axis through Ca: D = Ixx Iyy − Ixy², θx = (Iyy Mx,a + Ixy My,a)/D, θy = (Ixy Mx,a + Ixx My,a)/D, T = ka(Fz/Ka + θx q − θy p). Negative T is unloading (clamp-up), shown as computed.</li>
     <li><b>Interaction</b>: IF(k) = (k Rs/Fs)^a + (k Rt/Ft)^b with separate exponents a and b (presets: elliptical (2, 2), the default, and linear (1, 1)). Rt is the positive tension; unloading counts as zero (N-006). The margin is the exact load scale factor, MS = k* − 1 with IF(k*) = 1, found by a bracketed Brent search (tolerance 1e-12 on k, 200 iterations); a failed solve shows “MS not computed” (W-008) and never a substitute number. For a = b = 1 it equals 1/IF − 1. The governing MS of a fastener is its lowest margin across modes, and the critical fastener has the lowest governing MS.</li>
+    <li><b>Prying</b> (T-stub, keyed B and Fp, no code factor built in) applies only to positive external tension T: a is limited to 1.25·b; b' = b − D/2, a' = a + D/2, ρ = b'/a', δ = 1 − d_h/p, t_c = √(4Bb'/(pFp)), α' = (1/δ)[(T/B)(t_c/t)² − 1] clamped to [0, 1], Q = Bδα'ρ(t/t_c)². t and Fp are the loaded plate's thickness and flange strength. A manual amplification factor f replaces the T-stub with a bolt tension f·T (W-012).</li>
+    <li><b>Preload</b> P_max, P_min and load-sharing factor φ (required, 0 &lt; φ &lt; 1): F_b = max(P_max + φT, T) + Q, clamp force P_min − (1 − φ)T, separation load P_min/(1 − φ). Once clamp force reaches zero the joint is separated (W-013). F_b replaces the tension in the interaction and is re-evaluated at every load multiplier k; preload itself does not scale. Clamp force is reported but no friction-slip capacity is claimed (N-005). With preload off the tension is T + Q.</li>
     <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
     <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
   </ul>
