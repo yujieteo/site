@@ -64,20 +64,3 @@ jobs:
       - name: Run Node tests
         working-directory: site
         run: node --test 'tests/*.test.{mjs,cjs}'
-
-      # Reviewers see the generated files this pull request changes, the list a
-      # deploy of it would upload (skills/playbooks/deploy.md).
-      - name: Summarize generated files changed against the base branch
-        if: github.event_name == 'pull_request'
-        working-directory: site
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: |
-          git fetch --no-tags --depth=1 origin "$BASE_SHA"
-          {
-            echo "### Generated files changed against the base branch"
-            echo
-            echo '```text'
-            python scripts/site_diff.py "$BASE_SHA"
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"

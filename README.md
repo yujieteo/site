@@ -77,9 +77,7 @@ temporary directory and rebuild the site there, so they also read
 ## Continuous integration
 
 `.github/workflows/ci.yml` runs on pushes to `main` and on every pull request:
-validation, the build, and the Python and Node tests. On a pull request it also
-lists the generated files that change against the base branch in the job
-summary. It checks out the `visuals` history, and the build reads each
+validation, the build, and the Python and Node tests. It checks out the `visuals` history, and the build reads each
 visualization at its pin; update `data/visuals/<slug>.pin` when a
 visualization is republished.
 
