@@ -1,0 +1,13 @@
+slug: distortion
+title: Structural Distortion Explorer
+summary: "An exaggerated, qualitative and unit-free 3D view of how axial load, transverse shear, torsion and bending distort thin-walled structures: a cantilevered circular tube, rectangular box and I-beam, drawn over a pale-blue ghost of their undeformed shape. Not to scale, no units."
+source_url: https://github.com/yujieteo/site/tree/main/visuals/distortion
+fetched: "2026-10-01"
+html_path: visuals/distortion/index.html
+data_path: visuals/distortion/raw.json
+webmcp_tools: [get_metadata, get_current_view, set_view]
+tags: [structural-engineering, engineering, beams]
+category: data visualization
+links:
+  - rel: related
+    target: visualization:stability

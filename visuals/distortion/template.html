@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Structural Distortion Explorer</title>
+<meta name="description" content="A qualitative, exaggerated 3D view of how axial load, shear, torsion and bending distort a patch of skin on thin-walled structures.">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #1d1f23; --stage: #202328; --panel: #262a30; --panel-2: #2d3239; --text: #e7e9ec; --muted: #a0a7b1;
+  --line: #3a4048; --amber: #ffb000; --tension: #ef5350; --compression: #4f8dff; --ghost: #9cc3ff;
+  --steel: #8d949e; --focus: #ffd166; --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #e8eaed; --stage: #eceef1; --panel: #f7f8fa; --panel-2: #ffffff; --text: #1b1f25; --muted: #56606c;
+    --line: #cdd2d9; --amber: #d98a00; --tension: #d32f2f; --compression: #1f63d6; --ghost: #5a8fd6;
+    --steel: #8d949e; --focus: #b35c00; --shadow: 0 6px 20px rgba(20, 30, 40, 0.15);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--bg); color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  display: grid; grid-template-rows: auto 1fr; overflow: hidden;
+}
+header { padding: 10px 16px 8px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+h1 { font-size: 18px; margin: 0; font-weight: 650; letter-spacing: 0.01em; }
+.disclaimer { color: var(--muted); margin: 0; font-size: 13px; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) 340px; min-height: 0; }
+#stage { position: relative; min-width: 0; min-height: 0; background: var(--stage); overflow: hidden; }
+#view { display: block; width: 100%; height: 100%; touch-action: none; outline: none; }
+#view:focus-visible { box-shadow: inset 0 0 0 3px var(--focus); }
+#nogl { position: absolute; inset: 0; display: none; place-items: center; padding: 24px; text-align: center; color: var(--muted); }
+#nogl p { max-width: 34em; }
+.nogl #nogl { display: grid; }
+.nogl #view { display: none; }
+#panel { background: var(--panel); border-left: 1px solid var(--line); overflow-y: auto; padding: 12px 16px 24px; min-height: 0; }
+fieldset { border: 0; margin: 0 0 14px; padding: 0; min-width: 0; }
+legend, .group-title { font-weight: 650; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 6px; padding: 0; }
+.seg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.seg label { display: block; position: relative; }
+.seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg span { display: block; padding: 7px 8px; border: 1px solid var(--line); border-radius: 8px; text-align: center; background: var(--panel-2); cursor: pointer; }
+.seg input:checked + span { border-color: var(--amber); box-shadow: inset 0 0 0 1px var(--amber); font-weight: 600; }
+.seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+.slider { margin: 0 0 10px; transition: opacity 0.2s; }
+.slider .row { display: flex; justify-content: space-between; gap: 8px; }
+.slider output { color: var(--muted); font-size: 12.5px; text-align: right; }
+.slider.dim { opacity: 0.38; }
+.track { position: relative; }
+input[type=range] { width: 100%; margin: 4px 0 0; accent-color: var(--amber); height: 22px; }
+input[type=range]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+button, select { font: inherit; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+button:hover, select:hover { border-color: var(--muted); }
+button:focus-visible, select:focus-visible, summary:focus-visible, input[type=checkbox]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.toggles label { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; cursor: pointer; }
+.toggles input { width: 16px; height: 16px; accent-color: var(--amber); margin: 0; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.note { color: var(--muted); font-size: 12.5px; margin: 4px 0 0; }
+.axis-label { position: absolute; font-size: 12px; color: var(--muted); pointer-events: none; transform: translate(-50%, -50%); }
+@media (max-width: 760px) {
+  body { grid-template-rows: auto minmax(0, 1fr); }
+  header { padding: 8px 16px 6px; }
+  h1 { font-size: 16px; }
+  main { grid-template-columns: minmax(0, 1fr); }
+  #panel { position: fixed; left: 0; right: 0; bottom: 0; max-height: 44vh; border-left: 0; border-top: 1px solid var(--line); border-radius: 14px 14px 0 0; box-shadow: var(--shadow); }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Structural Distortion Explorer</h1>
+  <p class="disclaimer" id="disclaimer">Exaggerated, qualitative visualisation. Not to scale, no units.</p>
+</header>
+<main>
+  <section id="stage" aria-label="3D view">
+    <canvas id="view" tabindex="0" aria-label="3D view of the deformed structure. Drag or use the arrow keys to orbit, scroll or pinch to zoom."></canvas>
+    <div id="nogl" role="alert"><p><strong>This view needs WebGL, which this browser has turned off or does not support.</strong><br>Turn on hardware acceleration or try another modern browser. The controls still work.</p></div>
+    <div id="axis-labels" aria-hidden="true"></div>
+  </section>
+  <aside id="panel" aria-label="Controls">
+    <fieldset>
+      <legend>Structure</legend>
+      <div class="seg" id="structure">
+        <label><input type="radio" name="structure" value="tube" checked><span>Circular tube</span></label>
+        <label><input type="radio" name="structure" value="box"><span>Rectangular box</span></label>
+        <label><input type="radio" name="structure" value="ibeam"><span>I-beam</span></label>
+      </div>
+    </fieldset>
+    <fieldset id="loads">
+      <legend>Loads</legend>
+    </fieldset>
+    <fieldset>
+      <legend>View</legend>
+      <div id="view-sliders"></div>
+      <div class="toggles">
+        <label><input type="checkbox" id="t-arrows" checked> Load arrows</label>
+        <label><input type="checkbox" id="t-axes" checked> Axes triad</label>
+      </div>
+      <div class="actions"><button type="button" id="reset">Reset</button></div>
+    </fieldset>
+  </aside>
+</main>
+<script>/*@THREE@*/</script>
+<script>/*@KINEMATICS@*/</script>
+<script>
+(() => {
+"use strict";
+const META = /*@DATA@*/;
+const D = window.Distortion;
+const $ = (id) => document.getElementById(id);
+const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+/* ---------- State ---------- */
+const state = D.defaultState();
+const ui = { arrows: true, axes: true };
+let model = D.buildModel(state.structure);
+
+/* ---------- Controls ---------- */
+const LOAD_UI = {
+  axial: { label: "Axial", words: ["compression", "tension"] },
+  shear: { label: "Transverse shear", words: ["down", "up"] },
+  torsion: { label: "Torsion", words: ["clockwise", "anticlockwise"] },
+  bending: { label: "Bending", words: ["tip down", "tip up"] },
+};
+const level = (a) => (a < 0.02 ? "none" : a < 0.34 ? "light" : a < 0.67 ? "moderate" : "heavy");
+function loadText(key, v) {
+  const a = Math.abs(v);
+  if (a < 0.02) return "none";
+  return `${LOAD_UI[key].words[v < 0 ? 0 : 1]}, ${level(a)}`;
+}
+function slider(parent, id, label, min, max, step, value) {
+  const wrap = document.createElement("div");
+  wrap.className = "slider"; wrap.id = `w-${id}`;
+  wrap.innerHTML = `<div class="row"><label for="s-${id}">${label}</label><output id="o-${id}" for="s-${id}"></output></div>
+    <div class="track"><input type="range" id="s-${id}" min="${min}" max="${max}" step="${step}" value="${value}"></div>`;
+  parent.appendChild(wrap);
+  return wrap.querySelector("input");
+}
+for (const k of D.LOADS) slider($("loads"), k, LOAD_UI[k].label, -1, 1, 0.01, 0);
+slider($("view-sliders"), "exaggeration", "Exaggeration", 0.5, 3, 0.1, 1);
+
+function syncControls() {
+  for (const r of document.querySelectorAll("input[name=structure]")) r.checked = r.value === state.structure;
+  for (const k of D.LOADS) {
+    const s = $(`s-${k}`), applies = D.APPLIES[k].includes(state.structure);
+    s.value = state.loads[k];
+    const text = applies ? loadText(k, state.loads[k]) : "not used here";
+    $(`o-${k}`).textContent = text; s.setAttribute("aria-valuetext", text);
+    s.disabled = !applies; $(`w-${k}`).classList.toggle("dim", !applies);
+  }
+  $("s-exaggeration").value = state.exaggeration;
+  const ex = `${Number(state.exaggeration).toFixed(1)}×`;
+  $("o-exaggeration").textContent = ex; $("s-exaggeration").setAttribute("aria-valuetext", ex);
+  $("t-arrows").checked = ui.arrows; $("t-axes").checked = ui.axes;
+}
+
+$("panel").addEventListener("input", (ev) => {
+  const t = ev.target;
+  if (t.name === "structure") setStructure(t.value);
+  else if (t.id.startsWith("s-")) {
+    const k = t.id.slice(2);
+    if (k === "exaggeration") state.exaggeration = Number(t.value); else state.loads[k] = Number(t.value);
+  } else if (t.id === "t-arrows") ui.arrows = t.checked;
+  else if (t.id === "t-axes") ui.axes = t.checked;
+  refresh();
+});
+$("reset").addEventListener("click", () => {
+  const s = state.structure;
+  Object.assign(state, D.defaultState(), { structure: s });
+  refresh();
+});
+
+function setStructure(s) {
+  if (s === state.structure) return;
+  state.structure = s; model = D.buildModel(s);
+  if (three) three.rebuild();
+}
+
+/* ---------- 3D view ---------- */
+function hasWebGL() {
+  try { const c = document.createElement("canvas"); return !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl"))); }
+  catch { return false; }
+}
+
+const three = hasWebGL() && window.THREE ? createView() : null;
+if (!three) document.body.classList.add("nogl");
+
+function createView() {
+  const T = window.THREE;
+  const canvas = $("view"), stage = $("stage");
+  let renderer;
+  try { renderer = new T.WebGLRenderer({ canvas, antialias: true }); } catch { return null; }
+  const small = Math.min(window.innerWidth, window.innerHeight) < 700;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2));
+  const scene = new T.Scene();
+  const camera = new T.PerspectiveCamera(38, 1, 0.05, 200);
+  const controls = new T.OrbitControls(camera, canvas);
+  controls.enableDamping = false;
+  controls.listenToKeyEvents(canvas);
+
+  scene.add(new T.HemisphereLight(0xffffff, 0x404850, 1.6));
+  const sun = new T.DirectionalLight(0xffffff, 1.6); sun.position.set(4, 8, 6); scene.add(sun);
+  const fill = new T.DirectionalLight(0xffffff, 0.5); fill.position.set(-5, -3, -4); scene.add(fill);
+
+  const bodyMat = new T.MeshStandardMaterial({ color: 0x8d949e, roughness: 0.55, metalness: 0.15, side: T.DoubleSide,
+    polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 });
+  const gridMat = new T.LineBasicMaterial({ color: 0x2b2f35, transparent: true, opacity: 0.45 });
+  const ghostMat = new T.LineBasicMaterial({ color: 0x9cc3ff, transparent: true, opacity: 0.5 });
+  const clampMat = new T.MeshStandardMaterial({ color: 0x3b4048, roughness: 0.9, metalness: 0 });
+
+  let body = null, ghost = null, grid = null, clampBlock = null, arrows = null, axes = null;
+  const labels = $("axis-labels");
+
+  function themeColours() {
+    scene.background = new T.Color(css("--stage"));
+    const light = matchMedia("(prefers-color-scheme: light)").matches;
+    gridMat.color.set(light ? 0x39414b : 0x23262b); gridMat.opacity = light ? 0.35 : 0.5;
+    ghostMat.color.set(css("--ghost"));
+  }
+  themeColours();
+  matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => { themeColours(); render(); });
+
+  /* One mesh per wall: outer and inner faces, the end rims and, for open
+   * walls, the side rims. Each vertex remembers its (u, v, zeta). */
+  function wallGeometry(wall) {
+    const params = [], index = [];
+    const nv = wall.nv, nu = wall.nu, vc = wall.closed ? nv : nv + 1;
+    const uAt = (i) => wall.u0 + (wall.u1 - wall.u0) * i / nu;
+    const vAt = (j) => wall.v0 + (wall.v1 - wall.v0) * j / nv;
+    const h = wall.t / 2;
+    const add = (u, v, z) => { params.push(u, v, z); return params.length / 3 - 1; };
+    const quad = (a, b, c, d) => index.push(a, b, c, a, c, d);
+    for (const z of [h, -h]) {
+      const base = params.length / 3;
+      for (let i = 0; i <= nu; i++) for (let j = 0; j < vc; j++) add(uAt(i), vAt(j), z);
+      const id = (i, j) => base + i * vc + (j % vc);
+      const jn = wall.closed ? nv : nv;
+      for (let i = 0; i < nu; i++) for (let j = 0; j < jn; j++) quad(id(i, j), id(i + 1, j), id(i + 1, j + 1), id(i, j + 1));
+    }
+    for (const i of [0, nu]) { // end rims
+      const base = params.length / 3;
+      for (let j = 0; j < vc; j++) { add(uAt(i), vAt(j), h); add(uAt(i), vAt(j), -h); }
+      const jn = wall.closed ? nv : nv;
+      for (let j = 0; j < jn; j++) { const a = base + 2 * j, b = base + 2 * ((j + 1) % vc); quad(a, b, b + 1, a + 1); }
+    }
+    if (!wall.closed) for (const j of [0, nv]) { // side rims
+      const base = params.length / 3;
+      for (let i = 0; i <= nu; i++) { add(uAt(i), vAt(j), h); add(uAt(i), vAt(j), -h); }
+      for (let i = 0; i < nu; i++) { const a = base + 2 * i, b = a + 2; quad(a, b, b + 1, a + 1); }
+    }
+    const g = new T.BufferGeometry();
+    g.setAttribute("position", new T.BufferAttribute(new Float32Array(params.length), 3));
+    g.setIndex(index);
+    g.userData.params = Float32Array.from(params);
+    return g;
+  }
+
+  /* Faint surface grid: lines at fixed u (rings) and fixed v (generators). */
+  function gridParams(m) {
+    const segs = [];
+    const along = m.grid.along, around = m.grid.around;
+    for (const wall of m.walls) {
+      const faces = wall.closed ? [1] : [1, -1];
+      const off = wall.t / 2 + 0.004;
+      const nvSeg = Math.max(8, Math.round(wall.nv / 2)), nuSeg = Math.round(wall.nu / 2);
+      const perWall = Math.max(2, Math.round(around * (wall.v1 - wall.v0) / m.walls.reduce((a, w) => a + w.v1 - w.v0, 0)));
+      for (const f of faces) {
+        for (let k = 0; k <= along; k++) {
+          const u = wall.u0 + (wall.u1 - wall.u0) * k / along;
+          for (let j = 0; j < nvSeg; j++) {
+            const v0 = wall.v0 + (wall.v1 - wall.v0) * j / nvSeg, v1 = wall.v0 + (wall.v1 - wall.v0) * (j + 1) / nvSeg;
+            segs.push(wall.id, u, v0, f * off, wall.id, u, v1, f * off);
+          }
+        }
+        const lines = wall.closed ? perWall : perWall + 1;
+        for (let k = 0; k < lines; k++) {
+          const v = wall.v0 + (wall.v1 - wall.v0) * k / (wall.closed ? perWall : perWall);
+          for (let i = 0; i < nuSeg; i++) {
+            const u0 = wall.u0 + (wall.u1 - wall.u0) * i / nuSeg, u1 = wall.u0 + (wall.u1 - wall.u0) * (i + 1) / nuSeg;
+            segs.push(wall.id, u0, v, f * off, wall.id, u1, v, f * off);
+          }
+        }
+      }
+    }
+    return Float32Array.from(segs);
+  }
+
+  function lineObject(params, material) {
+    const g = new T.BufferGeometry();
+    g.setAttribute("position", new T.BufferAttribute(new Float32Array(params.length / 4 * 3), 3));
+    g.userData.params = params;
+    return new T.LineSegments(g, material);
+  }
+
+  function fillLines(obj, P) {
+    const p = obj.geometry.userData.params, pos = obj.geometry.attributes.position.array;
+    for (let i = 0, k = 0; i < p.length; i += 4, k += 3) {
+      const w = model.walls[p[i]];
+      const q = P ? D.deform(P, w, p[i + 1], p[i + 2], p[i + 3]) : refPoint(w, p[i + 1], p[i + 2], p[i + 3]);
+      pos[k] = q[0]; pos[k + 1] = q[1]; pos[k + 2] = q[2];
+    }
+    obj.geometry.attributes.position.needsUpdate = true;
+    obj.geometry.computeBoundingSphere();
+  }
+  const refPoint = (w, u, v, z) => { const r = D.reference(w, u, v, z); return [r.x, r.y, r.z]; };
+
+  function disposeGroup(obj) {
+    if (!obj) return;
+    scene.remove(obj);
+    obj.traverse((o) => { if (o.geometry) o.geometry.dispose(); });
+  }
+
+  function rebuild() {
+    for (const o of [body, ghost, grid, clampBlock, arrows, axes]) disposeGroup(o);
+    body = new T.Group();
+    for (const wall of model.walls) {
+      const mesh = new T.Mesh(wallGeometry(wall), bodyMat);
+      mesh.userData.wall = wall.id;
+      body.add(mesh);
+    }
+    scene.add(body);
+    const gp = gridParams(model);
+    grid = lineObject(gp, gridMat); scene.add(grid);
+    ghost = lineObject(gp, ghostMat); fillLines(ghost, null); scene.add(ghost);
+    // clamp block behind the support
+    const ext = model.structure === "tube" ? 1.7 : model.structure === "box" ? 1.8 : 1.8;
+    clampBlock = new T.Mesh(boxGeometry(0.25, ext, ext + 0.2), clampMat);
+    clampBlock.position.set(-0.125 - 0.02, 0, 0);
+    scene.add(clampBlock);
+    axes = axesTriad(); scene.add(axes);
+    arrows = new T.Group(); scene.add(arrows);
+    frame();
+    refresh();
+  }
+
+  function boxGeometry(dx, dy, dz) {
+    const g = new T.BufferGeometry();
+    const x = dx / 2, y = dy / 2, z = dz / 2;
+    const v = [[-x, -y, -z], [x, -y, -z], [x, y, -z], [-x, y, -z], [-x, -y, z], [x, -y, z], [x, y, z], [-x, y, z]];
+    const faces = [[0, 1, 2, 3], [5, 4, 7, 6], [4, 0, 3, 7], [1, 5, 6, 2], [3, 2, 6, 7], [4, 5, 1, 0]];
+    const pos = [];
+    for (const f of faces) for (const k of [0, 1, 2, 0, 2, 3]) pos.push(...v[f[k]]);
+    g.setAttribute("position", new T.BufferAttribute(new Float32Array(pos), 3));
+    g.computeVertexNormals();
+    return g;
+  }
+
+  function axesTriad() {
+    const g = new T.Group(), o = [-0.3, -1.05, 1.05], len = 0.7;
+    const geo = new T.BufferGeometry();
+    geo.setAttribute("position", new T.BufferAttribute(new Float32Array([
+      ...o, o[0] + len, o[1], o[2], ...o, o[0], o[1] + len, o[2], ...o, o[0], o[1], o[2] + len]), 3));
+    g.add(new T.LineSegments(geo, new T.LineBasicMaterial({ color: 0xa0a7b1 })));
+    g.userData.tips = [["x", [o[0] + len + 0.12, o[1], o[2]]], ["y", [o[0], o[1] + len + 0.12, o[2]]], ["z", [o[0], o[1], o[2] + len + 0.12]]];
+    return g;
+  }
+
+  function frame() {
+    const L = model.length;
+    controls.target.set(L / 2, 0, 0);
+    camera.position.set(L / 2 + 4.2, 3.2, 7.2);
+    camera.near = 0.05; camera.far = 200; camera.updateProjectionMatrix();
+    controls.update();
+  }
+
+  function updateArrows(P) {
+    arrows.clear();
+    if (!ui.arrows) return;
+    const L = model.length, col = new T.Color(css("--muted"));
+    const tipC = D.axisPoint(P, L);
+    const add = (dir, origin, len) => arrows.add(new T.ArrowHelper(new T.Vector3(...dir).normalize(), new T.Vector3(...origin), len, col, 0.18, 0.1));
+    const { axial, shear, torsion, bending } = state.loads;
+    if (Math.abs(axial) > 0.02) add([Math.sign(axial), 0, 0], [tipC[0] + (axial > 0 ? 0.15 : 1.05), tipC[1], tipC[2]], 0.3 + 0.6 * Math.abs(axial));
+    if (Math.abs(shear) > 0.02) add([0, Math.sign(shear), 0], [tipC[0] + 0.35, tipC[1] - Math.sign(shear) * 1.1, tipC[2]], 0.3 + 0.6 * Math.abs(shear));
+    if (Math.abs(bending) > 0.02) add([0, Math.sign(bending), 0], [tipC[0] + 0.6, tipC[1] - Math.sign(bending) * 1.1, tipC[2]], 0.3 + 0.6 * Math.abs(bending));
+    if (Math.abs(torsion) > 0.02) arrows.add(torsionArc(tipC, Math.sign(torsion), col));
+  }
+
+  function torsionArc(c, sign, col) {
+    const g = new T.Group(), r = 1.0, pts = [], n = 40, a0 = -0.2, a1 = 4.4;
+    for (let i = 0; i < n; i++) {
+      const a = a0 + (a1 - a0) * i / (n - 1), b = a0 + (a1 - a0) * (i + 1) / (n - 1);
+      if (i === n - 1) break;
+      pts.push(c[0] + 0.35, c[1] + r * Math.sin(a), c[2] + r * Math.cos(a), c[0] + 0.35, c[1] + r * Math.sin(b), c[2] + r * Math.cos(b));
+    }
+    const geo = new T.BufferGeometry(); geo.setAttribute("position", new T.BufferAttribute(new Float32Array(pts), 3));
+    g.add(new T.LineSegments(geo, new T.LineBasicMaterial({ color: col })));
+    const end = sign > 0 ? a1 : a0, dirSign = sign > 0 ? 1 : -1;
+    const p = new T.Vector3(c[0] + 0.35, c[1] + r * Math.sin(end), c[2] + r * Math.cos(end));
+    const d = new T.Vector3(0, Math.cos(end), -Math.sin(end)).multiplyScalar(dirSign);
+    g.add(new T.ArrowHelper(d, p, 0.01, col, 0.2, 0.12));
+    return g;
+  }
+
+  function update() {
+    const P = D.prepare(model, state);
+    for (const mesh of body.children) {
+      const wall = model.walls[mesh.userData.wall];
+      const g = mesh.geometry, pr = g.userData.params, pos = g.attributes.position.array;
+      for (let i = 0; i < pr.length; i += 3) {
+        const q = D.deform(P, wall, pr[i], pr[i + 1], pr[i + 2]);
+        pos[i] = q[0]; pos[i + 1] = q[1]; pos[i + 2] = q[2];
+      }
+      g.attributes.position.needsUpdate = true;
+      g.computeVertexNormals(); g.computeBoundingSphere();
+    }
+    fillLines(grid, P);
+    updateArrows(P);
+    axes.visible = ui.axes;
+    render();
+  }
+
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    render();
+  }
+
+  const v3 = new T.Vector3();
+  function placeLabels() {
+    labels.textContent = "";
+    if (!ui.axes) return;
+    const w = stage.clientWidth, h = stage.clientHeight;
+    for (const [name, p] of axes.userData.tips) {
+      v3.set(...p).project(camera);
+      if (v3.z > 1) continue;
+      const el = document.createElement("span");
+      el.className = "axis-label"; el.textContent = name;
+      el.style.left = `${(v3.x + 1) / 2 * w}px`; el.style.top = `${(1 - v3.y) / 2 * h}px`;
+      labels.appendChild(el);
+    }
+  }
+
+  let queued = false;
+  function render() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; renderer.render(scene, camera); placeLabels(); });
+  }
+  controls.addEventListener("change", render);
+  new ResizeObserver(resize).observe(stage);
+
+  return { rebuild, update, render, resize, scene, camera, renderer };
+}
+
+/* ---------- Refresh ---------- */
+function refresh() {
+  syncControls();
+  if (three) three.update();
+}
+
+if (three) three.rebuild(); else refresh();
+})();
+</script>
+</body>
+</html>
