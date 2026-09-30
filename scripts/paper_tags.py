@@ -136,7 +136,7 @@ TOPICS = [
     # --- Category theory, logic, foundations ----------------------------
     ("category-theory", ["math.CT"], r"categor(?:y|ies|ical)|functors?|natural transformations?|adjunctions?|adjoint functors?|yoneda|monads?|limits and colimits|kan extensions?"),
     ("higher-category-theory", ["math.CT", "math.AT"], r"infinity-categor|\\infty-categor|∞-categor|\(\\infty, ?1\)|quasi-?categor|higher categor|straightening|unstraightening|kerodon|higher algebra|stable infinity|stable \\infty|2-categor|bicategor"),
-    ("topos-theory", ["math.CT", "math.LO"], r"topos|toposes|topoi|grothendieck topolog|sites?\b|internal language|geometric morphism|subobject classifier"),
+    ("topos-theory", ["math.CT", "math.LO"], r"topos|toposes|topoi|grothendieck topolog|(?<!web )(?<!internet )(?<!web-)(?<!mobile )(?<!static )(?<!cross-)(?<!multi-)(?<!remote )(?<!construction )(?<!job )(?<!field )(?<!test )(?<!active )(?<!binding )(?<!building )(?<!\w)sites?\b(?! (?:map|visit|admin|search|engine|content|builder|design|traffic|hosting|reliability|generat))|internal language|geometric morphism|subobject classifier"),
     ("operads", ["math.AT", "math.CT"], r"operads?|e_n[-– ]algebras?|e_k[-– ]algebras?|little disks?|factorization (?:algebra|homology)"),
     ("monoidal-categories", ["math.CT", "math.QA"], r"monoidal|tensor categor|fusion categor|braided|drinfeld cent|tannak|modular tensor"),
     ("enriched-and-formal-category-theory", ["math.CT"], r"enriched|codensity|chu construction|double categor|profunctor|formal category|fibrations? of categor|grothendieck construction|pseudofunctor"),
@@ -234,7 +234,7 @@ TOPICS = [
     ("distributed-systems", ["cs.DC"], r"distributed|cluster (?:computing|manager|scheduling)|mapreduce|spark\b|hadoop|mesos|\bray\b|fault[-– ]toleran|resource sharing|datacenter|cloud computing|serverless|streaming (?:computation|systems?)|scheduling"),
     ("databases", ["cs.DB"], r"databases?|\bsql\b|query (?:optimi|processing|engine)|data (?:lake|warehouse|lakehouse)|lakehouse|transactions?|delta lake|dataframes?|structured streaming|analytics at scale|olap"),
     ("ml-systems", ["cs.DC", "cs.LG"], r"benchmark|dawnbench|training time|inference (?:serving|systems?)|model serving|gpu|accelerat|mlops|mlflow|noscope|feature stores?"),
-    ("networking", ["cs.NI"], r"cellular network|networking|\bnetworks? analytics|tcp\b|packet|wireless"),
+    ("networking", ["cs.NI"], r"cellular network|networking|\bnetworks? analytics|tcp\b|packet|wireless|computer networks?|internet protocols?|\brouting\b|network layer|transport layer|link layer"),
     ("information-retrieval", ["cs.IR", "cs.CL"], r"retrieval|search engines?|ranking|colbert|dense retrieval|information retrieval"),
     ("security-and-privacy", ["cs.CR"], r"security|privacy|cryptograph|encryption|differential privacy|adversarial (?:attacks?|examples|robustness)"),
     ("programming-languages", ["cs.PL"], r"programming languages?|compilers?|functional programming|haskell|semantics of|type systems?|dsl\b"),
@@ -244,9 +244,24 @@ TOPICS = [
     ("fuzzy-logic", ["cs.LO", "math.LO"], r"fuzzy"),
     ("numerical-analysis", ["math.NA", "cs.NA"], r"numerical|finite elements?|discreti[sz]ation|matrix computations|floating point|iterative methods"),
     ("optimization", ["math.OC", "cs.LG"], r"optimi[sz]ation|convex optimization|linear programming|gradient methods?|duality gap|lagrangian dual"),
+    ("computer-architecture", ["cs.AR"], r"\b(?:computer architecture|computer organi[sz]ation|micro-?architectur\w*|instruction[- ]set|isa|risc-?v|mips|superscalar|out-of-order (?:execution|processors?)|branch predict\w*|cache (?:coherence|memor\w*|hierarch\w*|misses)|memory hierarch\w*|multicore processors?|multiprocessors?|vliw|simd|processor design|datapaths?|assembly (?:language|programming)|verilog|vhdl|fpgas?|hardware description languages?|digital (?:logic|design|circuits?|systems design)|logic gates|flip-flops?|register files?|cpu|gpu architecture|pipelin(?:ed|ing) (?:processors?|cpus?|datapath)|pipeline hazards?)\b"),
+    ("operating-systems", ["cs.OS"], r"\b(?:operating systems?|operating system kernels?|linux kernel|kernel (?:mode|space)|virtual memory|page tables?|process scheduling|cpu scheduling|file systems?|system calls?|processes and threads|multithreading|deadlocks?|semaphores?|mutex(?:es)?|unix|linux|device drivers?|real-time operating)\b"),
+    ("high-performance-computing", ["cs.DC", "cs.PF"], r"\b(?:high[- ]performance computing|hpc|parallel (?:computing|programming|architectures?)|mpi (?:programming|parallel\w*)|message passing interface|openmp|cuda|gpu (?:programming|computing)|supercomput\w*|vectori[sz]ation|performance engineering|roofline)\b"),
+    ("computer-graphics", ["cs.GR"], r"\b(?:computer graphics|rendering|ray[- ]tracing|rasteri[sz]\w*|shaders?|opengl|vulkan|geometric modell?ing|mesh processing|computer animation)\b"),
+    ("formal-methods", ["cs.LO", "cs.SE"], r"\b(?:formal (?:methods|verification|specification)|model checking|hoare logic|temporal logic|sat solv\w*|smt solv\w*|separation logic|program verification)\b"),
+    ("robotics", ["cs.RO"], r"\b(?:robot\w*|manipulators?|slam|motion planning|path planning|inverse kinematics|legged locomotion|autonomous vehicles?|ros)\b"),
+    ("control-theory", ["eess.SY", "math.OC"], r"\b(?:control (?:theory|systems?|engineering|design)|feedback control|optimal control|pid control\w*|state[- ]space representation|controllability|kalman filter\w*|lqr|lqg|model predictive control|mpc|transfer functions?|bode (?:plots?|diagrams?)|nyquist (?:plot|criterion)|root locus|robust control|system identification)\b"),
+    ("signal-processing", ["eess.SP"], r"\b(?:signal processing|signals and systems|z-transforms?|sampling theorem|filter design|digital filters?|dsp|image processing)\b"),
 
     # --- Applied and other sciences -------------------------------------
     ("bioinformatics", ["q-bio.GN", "q-bio.QM"], r"bioinformatic|genom|sequencing|pathogen|protein|systems biology|biolog"),
+    ("computational-biology", ["q-bio.QM", "q-bio.PE"], r"computational biology|mathematical biology|phylogen|sequence alignment|population genetics|coalescent|evolutionary (?:biology|dynamics|models?)|gene (?:expression|regulatory)|rna-seq|single-cell|metagenom|protein (?:structure|folding)|molecular (?:dynamics|evolution)|epidemi(?:c|olog)|\bsir model|biostatistic|computational neuroscience|systems biology|biological networks?|hidden markov models? for|dna sequenc"),
+    # --- Mechanical and aerospace engineering ---------------------------
+    ("solid-mechanics", ["physics.class-ph", "cond-mat.mtrl-sci"], r"\b(?:solid mechanics|continuum mechanics|mechanics of (?:materials|solids)|strength of materials|linear elasticity|elasticity theory|theory of elasticity|plasticity|stress(?:es)? and strains?|stress tensors?|strain tensors?|beam (?:theory|bending|deflection)|bending moments?|buckling|fracture mechanics|fatigue|structural (?:analysis|mechanics|dynamics)|finite element (?:analysis|method)s?|fem|composite materials?|constitutive (?:models?|laws?))\b"),
+    ("dynamics-and-vibrations", ["physics.class-ph", "math.DS"], r"\b(?:mechanical vibrations?|vibrations|oscillators?|rigid[- ]body|kinematics|multibody|mechanisms and machines|machine (?:design|elements|dynamics)|statics|engineering mechanics|lagrangian mechanics|lagrange'?s equations|hamiltonian mechanics|classical mechanics|newtonian mechanics|gyroscop\w*|modal analysis|natural frequenc\w*)\b"),
+    ("thermodynamics-and-heat-transfer", ["physics.class-ph", "physics.flu-dyn"], r"\b(?:engineering thermodynamics|applied thermodynamics|laws of thermodynamics|heat transfer|heat conduction|heat exchangers?|convective heat|radiative heat|combustion|internal combustion|power cycles?|rankine cycles?|brayton cycles?|otto cycles?|refrigeration|hvac|energy conversion)\b"),
+    ("computational-fluid-dynamics", ["physics.flu-dyn", "physics.comp-ph"], r"\b(?:computational fluid\w*|cfd|openfoam|finite[- ]volume\w*|turbulence model\w*|rans|large[- ]eddy|lattice boltzmann|shock[- ]capturing|riemann solvers?)\b"),
+    ("aerospace-engineering", ["physics.flu-dyn", "eess.SY"], r"\b(?:aerospace|aeronautic\w*|astronautic\w*|aerodynamic\w*|aircraft|airfoils?|aerofoils?|flight (?:dynamics|mechanics|control|tests?)|propulsion|rockets?|orbital mechanics|orbit determination|spacecraft|satellite (?:orbits?|dynamics|navigation|systems?)|astrodynamics|gas turbines?|jet engines?|compressible flows?|supersonic|hypersonic|avionics|guidance,? navigation|attitude (?:dynamics|control|determination)|launch vehicles?|helicopters?|rotorcraft|drones?|uavs?)\b"),
     ("economics-and-finance", ["q-fin.RM", "econ.GN"], r"econom|risk management|copulas?|extreme value|finance|financial|market|pricing|auction"),
     ("cognitive-science", ["q-bio.NC"], r"mental imagery|cognit|neuroscien|brain|perception|intuition and"),
 
@@ -277,6 +292,7 @@ SOURCE_TAGS = [
     ("nlab", r"ncatlab\.org"),
     ("wikipedia", r"wikipedia\.org"),
     ("github", r"github\.(?:com|io)"),
+    ("gitlab", r"gitlab\.com"),
     ("youtube", r"youtube\.com|youtu\.be"),
     ("blog", r"wordpress\.com|blogspot\.|substack\.com|medium\.com|/blog/"),
     ("stacks-project", r"stacks\.math\.columbia\.edu"),
@@ -299,6 +315,7 @@ ARCHIVE_NAMES = {
     "gr-qc": "physics", "cond-mat": "physics", "physics": "physics",
     "q-bio": "quantitative-biology", "q-fin": "quantitative-finance",
     "econ": "economics",
+    "eess": "electrical-engineering",
 }
 
 MAX_CLASSES = 4
