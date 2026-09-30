@@ -125,7 +125,10 @@ with the latest item featured, one player page per item, copies assets into
 ## Slide decks
 
 `data/decks/<slug>/index.html` is copied verbatim to
-`site/decks/<slug>/index.html`. Only `index.html` is published.
+`site/decks/<slug>/index.html`, together with any `*.pdf` beside it and
+`slides/**/*.svg` (the page images of a beamsuperswitch web deck). Nothing else
+in the folder is published; see
+[Add a slide deck](../skills/playbooks/add-deck.md).
 
 ## Continuous integration
 

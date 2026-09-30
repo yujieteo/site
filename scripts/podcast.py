@@ -264,9 +264,36 @@ def build_script(plan, site_name):
     return {"intro": intro, "notes": notes, "outro": outro}
 
 
+def fixed_focus(index, registry, tags):
+    """Validate an explicit ``--focus`` list in place of automatic selection.
+
+    Each tag must be a canonical content tag with at least one speakable note;
+    the episode covers exactly these tags, in the given order.
+    """
+    classes = {tag: definition["class"] for tag, definition in registry["tags"].items()}
+    focus = []
+    for tag in tags:
+        if tag in focus:
+            continue
+        if tag not in classes:
+            raise PodcastError(f"--focus {tag!r} is not a canonical tag in data/note-tags.json")
+        if classes[tag] not in CONTENT_CLASSES:
+            raise PodcastError(f"--focus {tag!r} is a {classes[tag]} tag, not a content tag")
+        if not index.get(tag):
+            raise PodcastError(f"--focus {tag!r} has no speakable notes in data/notes.md")
+        focus.append(tag)
+    if not focus:
+        raise PodcastError("--focus needs at least one tag")
+    return focus
+
+
 def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
-                 episode_date=None, previous=(), wpm=DEFAULT_WPM, today=None):
-    """Select the next episode's date, focus tags, notes, and spoken script."""
+                 episode_date=None, previous=(), wpm=DEFAULT_WPM, today=None,
+                 focus_tags=None):
+    """Select the next episode's date, focus tags, notes, and spoken script.
+
+    ``focus_tags`` replaces automatic focus selection with an explicit list.
+    """
     if target_minutes <= 0 or target_minutes > 240:
         raise PodcastError("--target-minutes must be greater than 0 and at most 240")
     if episode_date is None:
@@ -280,7 +307,10 @@ def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
         raise PodcastError("episode date must be a date or YYYY-MM-DD string")
 
     index, note_tags = index_notes(document, registry)
-    focus = choose_focus(index, note_tags, target_minutes, previous, wpm)
+    if focus_tags:
+        focus = fixed_focus(index, registry, focus_tags)
+    else:
+        focus = choose_focus(index, note_tags, target_minutes, previous, wpm)
     used_note_ids = {
         note_id
         for episode in previous
@@ -348,7 +378,7 @@ def _summarize(plan, used_notes):
 
 def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
                      voice=DEFAULT_VOICE, synthesizer=None, root=ROOT,
-                     wpm=DEFAULT_WPM, today=None):
+                     wpm=DEFAULT_WPM, today=None, focus_tags=None):
     """Render one episode and write its metadata and MP3 under ``root``."""
     notes_path = root / "data" / "notes.md"
     tags_path = root / "data" / "note-tags.json"
@@ -362,6 +392,7 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
         previous=previous,
         wpm=wpm,
         today=today,
+        focus_tags=focus_tags,
     )
 
     metadata_path = root / "data" / "podcasts" / f"{plan['id']}.yaml"
@@ -470,6 +501,10 @@ def _parser():
             help=f"target spoken duration (default {DEFAULT_TARGET_MINUTES})",
         )
         subparser.add_argument("--date", dest="episode_date", help="episode date (YYYY-MM-DD)")
+        subparser.add_argument(
+            "--focus", nargs="+", metavar="TAG", dest="focus_tags",
+            help="cover exactly these canonical content tags instead of choosing a focus",
+        )
 
     plan = subparsers.add_parser("plan", help="select the next episode without rendering audio")
     add_planning_arguments(plan)
@@ -494,6 +529,7 @@ def main(argv=None):
                 target_minutes=args.target_minutes,
                 episode_date=args.episode_date,
                 previous=load_episodes(ROOT),
+                focus_tags=args.focus_tags,
             )
             summary = _plan_summary(plan)
             _print_plan(summary)
@@ -502,6 +538,7 @@ def main(argv=None):
             target_minutes=args.target_minutes,
             episode_date=args.episode_date,
             voice=args.voice,
+            focus_tags=args.focus_tags,
         )
     except (PodcastError, NotesError) as exc:
         diagnostics = getattr(exc, "diagnostics", None) or [str(exc)]

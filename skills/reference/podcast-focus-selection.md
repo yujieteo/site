@@ -15,3 +15,6 @@ How `scripts/podcast.py` chooses an episode focus. Read only when explaining or 
 - The target duration is an aim, not a minimum. Rendering reserves the ending
   from measured speech rates so it never exceeds the target; a focus with little
   material publishes shorter rather than adding filler.
+- `--focus <tag> [<tag> ...]` skips this selection: the episode covers exactly
+  the given canonical content tags, in that order, and fails when a tag is
+  unknown, a workflow tag, or has no speakable notes.

@@ -1,0 +1,13 @@
+id: 2026-09-30-statically-indeterminate-beams
+date: '2026-09-30'
+title: 'Statically indeterminate beams: when equilibrium runs out'
+summary: 'A four-minute narrated recap of statically indeterminate beams: counting redundants, the force method on a propped cantilever, the three-moment equation on two unequal spans, and the checks that confirm the answers.'
+focus_tags:
+- structural-engineering
+duration_seconds: 234.4
+video: video/2026-09-30-statically-indeterminate-beams.mp4
+captions: video/2026-09-30-statically-indeterminate-beams.vtt
+poster: video/2026-09-30-statically-indeterminate-beams.jpg
+links:
+- rel: related
+  target: blog:statically-indeterminate-beams

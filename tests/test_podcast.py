@@ -191,6 +191,36 @@ class FocusTests(unittest.TestCase):
         self.assertIn("tools", focus)
         self.assertLess(focus.index("tools"), focus.index("programming"))
 
+    def test_explicit_focus_replaces_selection(self):
+        document = make_document([
+            ("2026-09-27", [
+                ("note:a", wordy("agents"), ["agents"]),
+                ("note:b", wordy("agents"), ["agents"]),
+                ("note:c", wordy("programming"), ["programming"]),
+            ]),
+        ])
+        plan = plan_episode(
+            document, make_registry(), target_minutes=30, episode_date="2026-09-28",
+            focus_tags=["programming"],
+        )
+        self.assertEqual(plan["focus_tags"], ["programming"])
+        self.assertEqual(plan["id"], "2026-09-28-programming")
+        self.assertEqual(
+            [note["id"] for section in plan["sections"] for note in section["notes"]],
+            ["note:c"],
+        )
+
+    def test_explicit_focus_rejects_unknown_workflow_and_empty_tags(self):
+        document = make_document([
+            ("2026-09-27", [
+                ("note:a", "One", ["agents"]),
+                ("note:b", "Two", ["todo"]),
+            ]),
+        ])
+        for tags in (["nonsense"], ["todo"], ["tools"]):
+            with self.subTest(tags=tags), self.assertRaises(PodcastError):
+                plan_episode(document, make_registry(), episode_date="2026-09-28", focus_tags=tags)
+
 class ScriptTests(unittest.TestCase):
     def test_cli_rejects_removed_overrides(self):
         for arguments in (
@@ -345,6 +375,35 @@ class GenerateTests(unittest.TestCase):
             self.assertLess(metadata["duration_seconds"], 60)
             self.assertTrue((root / "data" / "podcasts" / f"{metadata['id']}.yaml").is_file())
 
+    def test_generate_uses_explicit_focus(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_notes(root)
+            metadata = generate_episode(
+                target_minutes=5,
+                episode_date="2026-09-28",
+                synthesizer=FakeSynthesizer(seconds_per_word=0.1),
+                root=root,
+                focus_tags=["programming"],
+            )
+            self.assertEqual(metadata["focus_tags"], ["programming"])
+            self.assertEqual(len(metadata["notes"]), 10)
+
+    def test_cli_plan_accepts_focus(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_notes(root)
+            shutil.copytree(ROOT / "scripts", root / "scripts")
+            result = subprocess.run(
+                [sys.executable, "scripts/podcast.py", "plan", "--date", "2026-09-28",
+                 "--focus", "tools"],
+                cwd=root,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("focus_tags: tools", result.stdout)
+
     def test_generate_rejects_notes_without_speech(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -371,6 +430,20 @@ class PodcastBuildTests(unittest.TestCase):
         # the visuals checkout.
         for visualization in (project / "data" / "visuals").glob("*.yaml"):
             visualization.unlink()
+        # Links from blog posts to those visualizations would now dangle.
+        for post in (project / "data" / "blog").glob("*.md"):
+            _, front, body = post.read_text(encoding="utf-8").split("---\n", 2)
+            meta = yaml.safe_load(front)
+            links = [link for link in meta.get("links", [])
+                     if not link["target"].startswith("visualization:")]
+            if links != meta.get("links", []):
+                meta["links"] = links
+                if not links:
+                    del meta["links"]
+                post.write_text(
+                    "---\n" + yaml.safe_dump(meta, sort_keys=False, allow_unicode=True) + "---\n" + body,
+                    encoding="utf-8",
+                )
         # The homepage's pinned item is a visualization, so unpin it too.
         cv_path = project / "data" / "cv" / "cv.yaml"
         cv = yaml.safe_load(cv_path.read_text(encoding="utf-8"))
