@@ -264,6 +264,31 @@ test("zero-order hold maps poles to e^(pTs), keeps the DC gain and matches the f
   close(fo.loop.denominator[1], -q, 1e-14, "ZOH pole");
 });
 
+test("relative degree 3: Tustin zeros exactly at −1, backward Euler zeros exactly at 0, s = 0 poles exactly at z = 1", () => {
+  const type1 = { form: "tf", num: [1], den: [1, 3, 2, 0] }, distinct = { form: "tf", num: [1], den: [1, 6, 11, 6] };
+  for (const plant of [type1, distinct]) {
+    for (const [method, z0] of [["tustin", -1], ["backward", 0]]) {
+      for (const prewarp of method === "tustin" ? [0, 5] : [0]) {
+        const r = F.analyze(fromS(plant, method, { discretization: { plant: method, controller: "z", prewarp } }));
+        const label = `${method} prewarp ${prewarp} of ${plant.den}`;
+        assert.equal(JSON.stringify(r.loop.zeros.map((z) => [z.re, z.im])), JSON.stringify([[z0, 0], [z0, 0], [z0, 0]]), label);
+        if (plant === type1) assert.ok(r.loop.poles.some((p) => p.re === 1 && p.im === 0), `${label}: pole exactly at z = 1`);
+        assert.ok(!r.warnings.some((w) => ["rhp-zero", "nonconvergence"].includes(w.code)), `${label}: ${r.warnings.map((w) => w.message).join("; ")}`);
+        assert.ok(!r.margins.phaseCrossovers.some((c) => c.atNyquist), `${label}: no crossover at π/Ts`);
+        if (method === "tustin") assert.ok(r.warnings.some((w) => w.code === "axis-zero" && /z = −1/.test(w.message)), `${label}: zeros at z = −1 reported`);
+        // num/den agree with the factored form and with the state-space discretisation.
+        for (const w of [0.5, 3, 20]) {
+          const z = { re: Math.cos(w * Ts), im: Math.sin(w * Ts) };
+          const fromPoly = cdiv(horner(r.loop.numerator, z), horner(r.loop.denominator, z));
+          const d = F.discretize(plant.num, plant.den, method, Ts, prewarp), ss = cdiv(horner(d.num, z), horner(d.den, z));
+          close(fromPoly.re, ss.re, 1e-9 * Math.hypot(ss.re, ss.im), `${label} Re at ${w}`);
+          close(fromPoly.im, ss.im, 1e-9 * Math.hypot(ss.re, ss.im), `${label} Im at ${w}`);
+        }
+      }
+    }
+  }
+});
+
 test("L(z) = K·Ts/(z − 1): one exact crossover at the Nyquist frequency, GM = 20·log₁₀(2/(K·Ts)), stable iff 0 < K·Ts < 2", () => {
   for (const [K, verdict] of [[1, "stable"], [10, "stable"], [19.9, "stable"], [20, "marginal"], [20.1, "unstable"], [40, "unstable"]]) {
     const r = F.analyze(inZ({ form: "tf", num: [Ts], den: [1, -1] }, { K }));
