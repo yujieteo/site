@@ -1378,10 +1378,11 @@ function mutate(fn) {
   if (snap() !== before) { pushUndo(before); changed(); }
   else refresh();
 }
-function undo() { if (!hist.undo.length) return; hist.redo.push(snap()); doc = JSON.parse(hist.undo.pop()); pruneSel(); changed(); }
-function redo() { if (!hist.redo.length) return; hist.undo.push(snap()); doc = JSON.parse(hist.redo.pop()); pruneSel(); changed(); }
+function replaceDoc(s) { doc = JSON.parse(s); pruneSel(); refresh(true); }
+function undo() { if (!hist.undo.length) return; hist.redo.push(snap()); replaceDoc(hist.undo.pop()); changed(); }
+function redo() { if (!hist.redo.length) return; hist.undo.push(snap()); replaceDoc(hist.redo.pop()); changed(); }
 let saveTimer = 0;
-function changed() { refresh(); clearTimeout(saveTimer); saveTimer = setTimeout(autosave, 400); }
+function changed(force = false) { refresh(force); clearTimeout(saveTimer); saveTimer = setTimeout(autosave, 400); }
 function autosave() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify({ doc, cam })); } catch (e) { /* storage full or blocked */ }
 }
@@ -1418,7 +1419,7 @@ function findAny(id) {
 /* ---------- rendering ---------- */
 let raf = 0;
 function schedule() { if (!raf) raf = requestAnimationFrame(draw); }
-function refresh() { schedule(); panel(); }
+function refresh(force = false) { schedule(); panel(force); }
 function draw() {
   raf = 0;
   measure();
@@ -1697,7 +1698,7 @@ function startPan(e, clearOnTap = false) {
 function startPinch() {
   // A second finger always pans and zooms: undo only what the first finger
   // began, keeping any multi-step draft (plate vertices, a tapped start).
-  if (gesture && gesture.type === "drag" && gesture.before) { doc = JSON.parse(gesture.before); }
+  if (gesture && gesture.type === "drag" && gesture.before) replaceDoc(gesture.before);
   if (gesture && gesture.type === "tool" && draft) { draft = gesture.draft; panel(); }
   const [p, q] = [...pointers.values()];
   gesture = { type: "pinch", mid: [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2], dist: Math.hypot(p[0] - q[0], p[1] - q[1]) || 1 };
@@ -1752,7 +1753,7 @@ function endPointer(e) {
   if (g.type === "drag") {
     if (g.d && g.moved && g.d.end) g.d.end(e);
     snapMark = null;
-    if (e.type === "pointercancel") { doc = JSON.parse(g.before); }
+    if (e.type === "pointercancel") replaceDoc(g.before);
     else if (snap() !== g.before) { pushUndo(g.before); changed(); return; }
   }
   schedule();
@@ -1823,14 +1824,16 @@ function select(key, label, value, options, set) {
 function check(key, label, value, set) { binds[key] = set; return `<label><input type="checkbox" data-bind="${esc(key)}"${value ? " checked" : ""}> ${label}</label>`; }
 function seg(key, options, value, set) { binds[key] = set; return `<div class="seg" role="group">${options.map(([v, t]) => `<button type="button" data-seg="${esc(key)}" data-v="${esc(v)}" aria-pressed="${String(v) === String(value)}">${esc(t)}</button>`).join("")}</div>`; }
 function button(key, label, fn) { binds[key] = fn; return `<button type="button" data-act="${esc(key)}">${label}</button>`; }
-const lenField = (key, label, v, set) => field(key, label, F.formatQuantity(v, "length", doc.view.units.length), (t) => { const r = F.parseQuantity(t, "length", doc.view.units.length); if (r.error) return r.error; if (r.value === null) return "Enter a length"; set(r.value); }, { mode: "text" });
-const angField = (key, label, v, set) => field(key, label, v === null ? "" : `${F.fmt(v)}°`, (t) => { const r = F.parseAngle(t); if (r.error) return r.error; if (r.value === null) return "Enter an angle"; set(r.value); });
+const lenField = (key, label, v, set) => field(key, label, F.formatQuantity(v, "length", doc.view.units.length), (t) => { const r = F.parseQuantity(t, "length", doc.view.units.length); if (r.error) return r.error; if (r.value === null) return "Enter a length"; return set(r.value); }, { mode: "text" });
+const angField = (key, label, v, set) => field(key, label, v === null ? "" : `${F.fmt(v)}°`, (t) => { const r = F.parseAngle(t); if (r.error) return r.error; if (r.value === null) return "Enter an angle"; return set(r.value); });
 const coordFields = (key, p) => {
   const t = doc.view.triad;
   return lenField(`${key}.x`, "x", p.x - t.x, (v) => { p.x = v + t.x; }) + lenField(`${key}.y`, "y", p.y - t.y, (v) => { p.y = v + t.y; });
 };
-function panel() {
-  if (body_.contains(document.activeElement) && document.activeElement.tagName !== "BUTTON") { panelValues(); return; }
+function panel(force = false) {
+  const a = document.activeElement, inside = body_.contains(a), typing = inside && (a.tagName === "TEXTAREA" || a.tagName === "INPUT" && a.type === "text");
+  if (typing && !force) { panelValues(); return; }
+  const refocus = inside && !typing ? a.dataset.bind : null;
   binds = {};
   let html = "";
   if (!sel.length) html = docPanel();
@@ -1842,6 +1845,7 @@ function panel() {
   if (TOOLS[tool] && TOOLS[tool].panel) html = TOOLS[tool].panel() + (sel.length ? html : "");
   if (draft && draft.pts) html = `<h2>Plate</h2><p>${draft.pts.length} vertices. Tap the first vertex or Finish to close.</p><div class="btns">${button("poly.finish", "Finish plate", finishPolygon)}${button("poly.cancel", "Cancel", () => { draft = null; refresh(); })}</div>` + html;
   body_.innerHTML = html + `<div class="err" id="panel-err" role="alert"></div>`;
+  if (refocus) body_.querySelector(`[data-bind="${CSS.escape(refocus)}"]`)?.focus();
 }
 // Keep numbers in the panel live during a drag without rebuilding it.
 let valueTimer = 0;
@@ -1869,7 +1873,11 @@ function applyBind(key, value, el) {
   const before = snap();
   err = fn(value);
   if (typeof err === "string") {
-    doc = JSON.parse(before);
+    if (snap() !== before) {
+      replaceDoc(before);
+      el = body_.querySelector(`[data-bind="${CSS.escape(key)}"]`);
+      if (el && el.type === "text") el.value = value;
+    }
     $("panel-err").textContent = err;
     if (el) el.classList.add("bad");
     return;
@@ -2005,7 +2013,7 @@ document.addEventListener("keydown", (e) => {
 
 /* ---------- boot ---------- */
 window.FBDApp = {
-  get doc() { return doc; }, set doc(d) { doc = d; sel = []; hist.undo.length = hist.redo.length = 0; changed(); },
+  get doc() { return doc; }, set doc(d) { doc = d; sel = []; hist.undo.length = hist.redo.length = 0; changed(true); },
   get cam() { return cam; }, get sel() { return sel; }, set sel(v) { setSel(v); },
   mutate, undo, redo, setTool, fit, refresh, changed, schedule, deleteIds, duplicate, w2s, s2w, snapPoint, snapAngle, isTouch, findAny,
   TOOLS, DRAGS, PANELS, BODY_SECTIONS, DOC_SECTIONS, TRIAD_SECTIONS, HANDLES, PREVIEWS, MOVERS, JOINT_USERS, DELETE_HOOKS, DUP_HOOKS, MERGE_HOOKS, ACTIONS,
@@ -2366,7 +2374,7 @@ function attachSection(x) {
   if ("body" in at) {
     const b = F.body(doc, at.body), [p, q] = F.edge(doc, b, at.edge), L = F.edgeLength(doc, b, at.edge);
     h += `<p>On ${esc(b.type === "polygon" ? "plate" : b.type)} ${esc(b.id)}${b.type === "polygon" ? `, edge ${esc(p.id)}–${esc(q.id)}` : ""}: ${esc(F.formatQuantity(at.s, "length", U))} from ${esc(p.id)} (length ${esc(F.formatQuantity(L, "length", U))}).</p>`;
-    h += A.lenField(`${x.id}.s`, "From " + esc(p.id), at.s, (v) => { at.s = v; });
+    h += A.lenField(`${x.id}.s`, "From " + esc(p.id), at.s, (v) => { if (v < 0 || v > L) return `Enter a distance from 0 to ${F.formatQuantity(L, "length", U)}`; at.s = v; });
     if (b.type === "polygon") h += A.lenField(`${x.id}.n`, "Offset in", at.n, (v) => { at.n = v; });
     return h + `<div class="btns">${detach}</div>`;
   }
@@ -2464,11 +2472,11 @@ A.PANELS.push((f) => {
   let h = `<h2>${names[l.kind]} ${esc(l.id)}</h2>` + styleRow(l);
   h += A.field(`${l.id}.label`, "Label", l.label ?? "", (v) => { l.label = v.trim() ? v : null; }, { placeholder: l.kind === "moment" ? "e.g. M_A" : l.kind === "distributed" ? "e.g. w" : "e.g. F_1 or \\alpha" });
   if (l.kind === "distributed") {
-    const b = F.body(A.doc, l.body), [p] = F.edge(A.doc, b, l.edge), u = F.unitFor(A.doc, l);
+    const b = F.body(A.doc, l.body), [p] = F.edge(A.doc, b, l.edge), u = F.unitFor(A.doc, l), L = F.edgeLength(A.doc, b, l.edge), U = A.doc.view.units.length;
     const wf = (k, label) => A.field(`${l.id}.${k}`, label, l[k] === null ? "" : F.formatQuantity(l[k], "distributed", u), (t) => { const r = F.parseQuantity(t, "distributed", u); if (r.error) return r.error; if (r.value !== null && r.value < 0) return "Enter a positive intensity; use Flip to reverse"; l[k] = r.value === null ? null : F.clean(r.value); });
     h += wf("w1", "Start intensity") + wf("w2", "End intensity") + unitSelect(l);
     h += `<p>Equal ends give a uniform load; one end at zero gives a triangle. Blank values keep the drawn shape.</p>`;
-    h += `<h3>Extent on ${esc(b.id)}</h3>` + A.lenField(`${l.id}.s1`, `Start from ${esc(p.id)}`, l.s1, (v) => { l.s1 = v; if (l.s1 > l.s2) return "Start must not pass the end"; }) + A.lenField(`${l.id}.s2`, `End from ${esc(p.id)}`, l.s2, (v) => { l.s2 = v; if (l.s1 > l.s2) return "End must not come before the start"; });
+    h += `<h3>Extent on ${esc(b.id)}</h3>` + A.lenField(`${l.id}.s1`, `Start from ${esc(p.id)}`, l.s1, (v) => { if (v < 0) return "Start must not be before the member start"; if (v > l.s2) return "Start must not pass the end"; l.s1 = v; }) + A.lenField(`${l.id}.s2`, `End from ${esc(p.id)}`, l.s2, (v) => { if (v > L) return `End must not pass the member end (${F.formatQuantity(L, "length", U)})`; if (v < l.s1) return "End must not come before the start"; l.s2 = v; });
     h += `<h3>Direction</h3>` + A.seg(`${l.id}.dirMode`, [["perpendicular", "Perpendicular"], ["vertical", "Global vertical"]], l.dirMode, (x) => { l.dirMode = x; }) + `<div class="btns">${A.button(`${l.id}.flip`, "Flip direction", () => A.mutate(() => { l.flip = !l.flip; }))}</div>`;
   } else {
     h += magField(l) + unitSelect(l);
