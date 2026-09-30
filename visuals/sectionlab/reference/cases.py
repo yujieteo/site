@@ -4,7 +4,7 @@ Each case is a full Sectionlab model plus a list of expectations
 (quantity, value, formula). build_reference.py writes them to fixtures.json for the
 Node tests and solves them with the Python references into reference.json.
 Quantities name properties (A, cx, cy, Ix, Iy, Ixy, I1, I2, Qx, Qy, Sx_top, …),
-"J" (torsion), or plastic results ("Zp", "Mp", "Mel", "shapeFactor").
+"J" (torsion), or plastic results ("Zp", "Mp", "Mel", "shapeFactor" at N = 0; "MpN" at the applied N).
 """
 
 import math
@@ -62,7 +62,10 @@ def rect_axial_case():
     return {
         "id": "rect-axial", "plastic": True,
         "model": model("Rectangle with N", [part("r", "rect", {"b": b, "h": h}, [0, 0, 0, 0])], N=N),
-        "expect": [e("Mp", 355 * b * h ** 2 / 4 * (1 - n * n), "σ0.2 b h²/4 (1 − (N/N_p)²)")],
+        "expect": [
+            e("Zp", b * h ** 2 / 4, "b h²/4 (at N = 0)"), e("shapeFactor", 1.5, "3/2 (at N = 0)"),
+            e("MpN", 355 * b * h ** 2 / 4 * (1 - n * n), "σ0.2 b h²/4 (1 − (N/N_p)²)"),
+        ],
     }
 
 

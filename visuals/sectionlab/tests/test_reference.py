@@ -54,12 +54,15 @@ class ReferenceTest(unittest.TestCase):
                 continue
             m = case["model"]
             S = P.Section(m, P.axis_angle(m, m["plastic"]["axis"]))
-            mp = S.plastic_moment(m["plastic"]["N"])["M"]
+            mp = S.plastic_moment(0.0)["M"]
             for e in case["expect"]:
                 if e["quantity"] == "Zp":
                     self.assertAlmostEqual(mp / m["materials"][0]["sigma02"], e["value"], delta=1e-7 * e["value"], msg=case["id"])
                 if e["quantity"] == "Mp":
                     self.assertAlmostEqual(mp, e["value"], delta=1e-7 * e["value"], msg=case["id"])
+                if e["quantity"] == "MpN":
+                    mpn = S.plastic_moment(m["plastic"]["N"])["M"]
+                    self.assertAlmostEqual(mpn, e["value"], delta=1e-7 * e["value"], msg=case["id"])
 
     def test_plastic_reference_is_linear_elastic_at_small_curvature(self):
         import plasticref as P

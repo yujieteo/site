@@ -25,6 +25,8 @@ test("M–κ matches the independent Python width-integration reference (1e-6)",
     near(r.limit.kappa, ref.kappa_lim, 1e-6, { msg: `${c.id} κ_lim` });
     near(r.limit.M, ref.M_lim, 1e-6, { msg: `${c.id} M_lim` });
     near(r.Mp, ref.Mp, 1e-6, { msg: `${c.id} M_p` });
+    if ("MpN" in ref) near(r.MpN, ref.MpN, 1e-6, { msg: `${c.id} M_p(N)` });
+    else assert.equal(r.MpN, null, `${c.id} M_p(N) only with an axial force`);
     ref.points.forEach((p, j) => {
       const q = r.curve[8 * j];
       near(q.kappa, p.kappa, 1e-6, { msg: `${c.id} κ point ${j}` });
@@ -98,6 +100,11 @@ test("axial force: capacity limits and sign", () => {
   const pl = compute(t).plastic;
   assert.ok(pl.curve[0].e0 < 0, "compression shortens the centroid");
   assert.ok(pl.limit.governing.fibre === "compression");
+  const z = fixture("rect-axial"); z.plastic.N = 0;
+  const pz = compute(z).plastic;
+  near(pl.Zp, pz.Zp, 1e-12, { msg: "Z_p does not depend on N" });
+  near(pl.shapeFactor, pz.shapeFactor, 1e-12, { msg: "the shape factor does not depend on N" });
+  assert.ok(pl.MpN < pl.Mp && pl.MelN < pl.Mel, "the axial force reduces M_p(N) and M_el(N)");
 });
 
 test("tension and compression laws are used on their own sides", () => {

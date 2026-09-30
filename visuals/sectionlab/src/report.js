@@ -98,10 +98,14 @@
           ["Governing fibre", `${L.governing.part}, ${L.governing.fibre}, ε = ${fmt(L.governing.strain, 4)}`, ""],
           ["Cross moment at ε_lim", fmt(L.Mcross), "N·mm"],
           ["Neutral-axis rotation at ε_lim, φ", fmt((L.phi * 180) / Math.PI, 4), "°"],
-          ["First-yield moment (elastic, σ0.2), M_el", fmt(pl.Mel), "N·mm"],
-          ["Fully plastic moment (σ0.2 stress block), M_p", fmt(pl.Mp), "N·mm"],
+          ["First-yield moment at N = 0 (elastic, σ0.2), M_el", fmt(pl.Mel), "N·mm"],
+          ["Fully plastic moment at N = 0 (σ0.2 stress block), M_p", fmt(pl.Mp), "N·mm"],
           ["Plastic modulus, Z_p = M_p / σ0.2", pl.Zp === null ? `n/a (${pl.ZpNote})` : fmt(pl.Zp), pl.Zp === null ? "" : "mm³"],
           ["Shape factor, M_p / M_el", fmt(pl.shapeFactor, 4), ""],
+          ...(pl.N === 0 ? [] : [
+            ["First-yield moment reduced by the applied axial force, M_el(N)", pl.MelN === null ? "n/a (N alone reaches σ0.2)" : fmt(pl.MelN), pl.MelN === null ? "" : "N·mm"],
+            ["Fully plastic moment reduced by the applied axial force, M_p(N)", pl.MpN === null ? "n/a (N exceeds the fully plastic axial capacity)" : fmt(pl.MpN), pl.MpN === null ? "" : "N·mm"],
+          ]),
         ],
       });
       const step = Math.max(1, Math.round((pl.curve.length - 1) / 8));
@@ -232,6 +236,9 @@
   }
   const tickLabel = (v) => (v === 0 ? "0" : Math.abs(v) >= 1e4 || Math.abs(v) < 1e-2 ? v.toExponential(1).replace("e+", "e").replace("e-", "e−") : String(+v.toPrecision(4)));
 
+  /* M_p and M_el at the curve's own axial force. */
+  const curveRefs = (pl) => (pl.N === 0 ? [pl.Mp, pl.Mel] : [pl.MpN, pl.MelN]);
+
   /* The M–κ curve with the ε_lim point, M_p and M_el. Colours may be CSS values (the page passes variables). */
   function curveSvg(report, { width = 480, height = 320, colors = LIGHT, font = "Helvetica, Arial, sans-serif", title = true } = {}) {
     const pl = report.figures.curve;
@@ -239,7 +246,8 @@
     const left = 64, right = 16, top = title ? 34 : 14, bottom = 42;
     const kmax = pl.limit.kappa;
     const Ms = pl.curve.map((p) => p.M);
-    const mmax = Math.max(...Ms, pl.Mp || 0, pl.Mel || 0) * 1.08;
+    const [mp, mel] = curveRefs(pl);
+    const mmax = Math.max(...Ms, mp || 0, mel || 0) * 1.08;
     const X = (k) => left + ((width - left - right) * k) / kmax, Yv = (m) => height - bottom - ((height - top - bottom) * m) / mmax;
     let g = "";
     for (const t of ticks(mmax)) g += `<line x1="${left}" x2="${width - right}" y1="${Yv(t).toFixed(1)}" y2="${Yv(t).toFixed(1)}" stroke="${colors.grid}"/><text x="${left - 6}" y="${(Yv(t) + 3.5).toFixed(1)}" text-anchor="end" font-family="${font}" font-size="10" fill="${colors.muted}">${tickLabel(t)}</text>`;
@@ -249,8 +257,9 @@
     g += `<text transform="translate(12 ${(top + height - bottom) / 2}) rotate(-90)" text-anchor="middle" font-family="${font}" font-size="10.5" fill="${colors.muted}">moment M (N·mm)</text>`;
     // Reference lines are labelled where the curve is not: M_p (reached late) on the left, M_el (passed early) on the right.
     const ref = (m, label, atLeft) => (m ? `<line x1="${left}" x2="${width - right}" y1="${Yv(m).toFixed(1)}" y2="${Yv(m).toFixed(1)}" stroke="${colors.ref}" stroke-dasharray="5 4"/><text x="${atLeft ? left + 6 : width - right - 4}" y="${(Yv(m) - 4).toFixed(1)}" text-anchor="${atLeft ? "start" : "end"}" font-family="${font}" font-size="10" fill="${colors.fg}">${label}</text>` : "");
-    g += ref(pl.Mp, "M_p (σ0.2 block)", true);
-    g += ref(pl.Mel, "M_el (first yield)", false);
+    const at = pl.N === 0 ? "" : "(N)";
+    g += ref(mp, `M_p${at} (σ0.2 block)`, true);
+    g += ref(mel, `M_el${at} (first yield)`, false);
     const d = pl.curve.map((p, i) => `${i ? "L" : "M"}${X(p.kappa).toFixed(2)} ${Yv(p.M).toFixed(2)}`).join("");
     g += `<path d="${d}" fill="none" stroke="${colors.curve}" stroke-width="2" stroke-linejoin="round"/>`;
     const L = pl.limit;
@@ -354,12 +363,13 @@
     const pl = report.figures.curve;
     if (pl) {
       const x0 = M + fw + 16, left = 44, bottom = 22, top = 8, right = 8;
-      const kmax = pl.limit.kappa, mmax = Math.max(...pl.curve.map((p) => p.M), pl.Mp || 0, pl.Mel || 0) * 1.08;
+      const [mp, mel] = curveRefs(pl), at = pl.N === 0 ? "" : "(N)";
+      const kmax = pl.limit.kappa, mmax = Math.max(...pl.curve.map((p) => p.M), mp || 0, mel || 0) * 1.08;
       const X = (k) => x0 + left + ((fw - left - right) * k) / kmax, Yv = (m) => y - fh + bottom + ((fh - top - bottom) * m) / mmax;
       ops.push(`${rgb("#d2d2d7")} RG 0.5 w ${n2(x0)} ${n2(y - fh)} ${n2(fw)} ${n2(fh)} re S`);
       for (const t of ticks(mmax, 4)) { ops.push(`${rgb(LIGHT.grid)} RG 0.4 w ${n2(x0 + left)} ${n2(Yv(t))} m ${n2(x0 + fw - right)} ${n2(Yv(t))} l S`); text(tickLabel(t), x0 + left - 4 - textWidth(tickLabel(t), 6.5), Yv(t) - 2, 6.5, false, "#6e6e73"); }
       for (const t of ticks(kmax, 3)) text(tickLabel(t), X(t) - textWidth(tickLabel(t), 6.5) / 2, y - fh + bottom - 9, 6.5, false, "#6e6e73");
-      for (const [m, label] of [[pl.Mp, "M_p"], [pl.Mel, "M_el"]]) if (m) { ops.push(`${rgb(LIGHT.ref)} RG 0.5 w [3 2] 0 d ${n2(x0 + left)} ${n2(Yv(m))} m ${n2(x0 + fw - right)} ${n2(Yv(m))} l S [] 0 d`); text(label, x0 + fw - right - textWidth(label, 7) - 2, Yv(m) + 2, 7); }
+      for (const [m, label] of [[mp, `M_p${at}`], [mel, `M_el${at}`]]) if (m) { ops.push(`${rgb(LIGHT.ref)} RG 0.5 w [3 2] 0 d ${n2(x0 + left)} ${n2(Yv(m))} m ${n2(x0 + fw - right)} ${n2(Yv(m))} l S [] 0 d`); text(label, x0 + fw - right - textWidth(label, 7) - 2, Yv(m) + 2, 7); }
       ops.push(`${rgb(LIGHT.curve)} RG 1.4 w ${pl.curve.map((p, i) => `${n2(X(p.kappa))} ${n2(Yv(p.M))} ${i ? "l" : "m"}`).join(" ")} S`);
       ops.push(`${rgb(LIGHT.curve)} rg ${n2(X(pl.limit.kappa) - 3)} ${n2(Yv(pl.limit.M) - 3)} 6 6 re f`);
       text("M-kappa: M (N*mm) against kappa (1/mm); square = eps_lim", x0 + 4, y - fh - 11, 7.5, false, "#6e6e73");

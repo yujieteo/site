@@ -8,7 +8,7 @@ that uses a different method, plus closed forms.
 | Area properties, Q | Green's theorem on exact lines and arcs, 16-point Gauss–Legendre | `reference/sectionref.py`: polygons + circular segments + disks with closed-form moments; exact disk ∩ half-plane clipping for Q | 1e-9 relative | 1e-15 |
 | Closed forms (A, I, Q, J, Z_p, …) | as above | formulas in `reference/cases.py` | 1e-9 relative | 1e-15 |
 | Torsion constant | exact formulas, Saint-Venant series, Bredt–Batho | `reference/prandtl.py`: Prandtl stress function, linear FEM, three uniform refinements, Richardson | per formula, stated in `torsion-accuracy.json` | see the table |
-| M–κ, κ_lim, M_lim, M_p | strip fibres with exact strip moments, quadratic stress interpolation | `reference/plasticref.py`: exact width function, 400-point Gauss–Legendre between breakpoints | 1e-6 relative | 1e-8 |
+| M–κ, κ_lim, M_lim, M_p, M_p(N) | strip fibres with exact strip moments, quadratic stress interpolation | `reference/plasticref.py`: exact width function, 400-point Gauss–Legendre between breakpoints | 1e-6 relative | 1e-8 |
 | YAML | `src/yaml.js` | PyYAML (tests only) | exact data equality both ways | — |
 
 ## Torsion accuracy

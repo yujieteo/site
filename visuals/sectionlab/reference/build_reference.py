@@ -6,8 +6,9 @@
 fixtures.json    every case in cases.py: model and closed-form expectations
 reference.json   per case: section properties from sectionref.py (exact primitive
                  decomposition) and, for plastic cases, the M–κ curve at nine
-                 evenly spaced curvatures up to ε_lim and the σ0.2-block moment
-                 from plasticref.py (needs numpy and scipy)
+                 evenly spaced curvatures up to ε_lim and the σ0.2-block moment at
+                 N = 0 (and at the applied N when it is not 0) from plasticref.py
+                 (needs numpy and scipy)
 """
 
 from __future__ import annotations
@@ -45,7 +46,8 @@ def reference():
             entry["plastic"] = {
                 "angle": sig(angle), "kappa_lim": sig(curve["kappa_lim"]), "M_lim": sig(curve["M_lim"]),
                 "points": [{"kappa": sig(p["kappa"]), "M": sig(p["M"])} for p in curve["points"]],
-                "Mp": sig(S.plastic_moment(N)["M"]),
+                "Mp": sig(S.plastic_moment(0.0)["M"]),
+                **({"MpN": sig(S.plastic_moment(N)["M"])} if N else {}),
             }
         out[case["id"]] = entry
     return {"generated_by": "reference/build_reference.py", "cases": out}

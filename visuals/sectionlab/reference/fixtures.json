@@ -224,7 +224,17 @@
    },
    "expect": [
     {
-     "quantity": "Mp",
+     "quantity": "Zp",
+     "value": 1000000.0,
+     "formula": "b h²/4 (at N = 0)"
+    },
+    {
+     "quantity": "shapeFactor",
+     "value": 1.5,
+     "formula": "3/2 (at N = 0)"
+    },
+    {
+     "quantity": "MpN",
      "value": 326830985.91549295,
      "formula": "σ0.2 b h²/4 (1 − (N/N_p)²)"
     }

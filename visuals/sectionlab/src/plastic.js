@@ -249,39 +249,47 @@
     curve[curve.length - 1] = limit;
     out.curve = curve;
 
-    /* ---- linear-elastic first yield (σ0.2) with the same axis, mode and N ---- */
+    /* ---- linear-elastic first yield (σ0.2) with the same axis and mode ---- */
     const t = free ? I.Iuv / I.Iuu : 0; // κ_p / κ_a
     const Ieff = I.Ivv - t * I.Iuv;
-    let lam = Infinity; // largest M_a (≥ 0) before any fibre reaches σ0.2
-    let yieldOk = true;
-    for (const q of assembled.parts) {
-      if (q.part.void) continue;
-      const law = lawOf(q.material);
-      const fc = G.toFrame(G.transformContours(q.contours, 0, -props.cx, -props.cy), alpha);
-      // g = −v + t·u; strain ε = e0 + (M_a / (E_base I_eff))·g
-      const ext = G.extent(fc, t, -1);
-      const len = Math.hypot(t, 1);
-      for (const g of [ext.lo * len, ext.hi * len]) {
-        const E = q.material.E;
-        const sN = E * e0Elastic;
-        if (sN > law.t.s || -sN > law.c.s) { yieldOk = false; continue; }
-        const slope = (E * g) / (props.E_base * Ieff);
-        if (slope > 0) lam = Math.min(lam, (law.t.s - sN) / slope);
-        else if (slope < 0) lam = Math.min(lam, (-law.c.s - sN) / slope);
+    function firstYield(Nv) {
+      const e0 = Nv / (props.E_base * props.A);
+      let lam = Infinity; // largest M_a (≥ 0) before any fibre reaches σ0.2
+      for (const q of assembled.parts) {
+        if (q.part.void) continue;
+        const law = lawOf(q.material);
+        const fc = G.toFrame(G.transformContours(q.contours, 0, -props.cx, -props.cy), alpha);
+        // g = −v + t·u; strain ε = e0 + (M_a / (E_base I_eff))·g
+        const ext = G.extent(fc, t, -1);
+        const len = Math.hypot(t, 1);
+        for (const g of [ext.lo * len, ext.hi * len]) {
+          const E = q.material.E;
+          const sN = E * e0;
+          if (sN > law.t.s || -sN > law.c.s) return null;
+          const slope = (E * g) / (props.E_base * Ieff);
+          if (slope > 0) lam = Math.min(lam, (law.t.s - sN) / slope);
+          else if (slope < 0) lam = Math.min(lam, (-law.c.s - sN) / slope);
+        }
       }
+      return Number.isFinite(lam) ? lam : null;
     }
-    out.Mel = yieldOk && Number.isFinite(lam) ? lam : null;
 
-    /* ---- fully plastic moment: σ = ±σ0.2 on either side of the plastic neutral axis ---- */
-    out.plasticNA = plasticMoment(parts, alpha, free, N);
+    /* ---- section properties at N = 0: M_el, the fully plastic moment M_p (σ = ±σ0.2 either side of the plastic neutral axis), Z_p and the shape factor ---- */
+    out.Mel = firstYield(0);
+    out.plasticNA = plasticMoment(parts, alpha, free, 0);
     out.Mp = out.plasticNA ? out.plasticNA.M : null;
     const mats = new Set(assembled.solids.map((q) => q.material.id));
     const m0 = assembled.solids[0].material;
     const symmetric = !m0.compression || m0.compression.sigma02 === m0.sigma02;
-    if (out.Mp === null) out.Zp = null, out.ZpNote = "N exceeds the fully plastic axial capacity.";
+    if (out.Mp === null) out.Zp = null, out.ZpNote = "The σ0.2 stress block has no neutral axis with zero cross moment.";
     else if (mats.size === 1 && symmetric) out.Zp = out.Mp / m0.sigma02;
     else { out.Zp = null; out.ZpNote = mats.size > 1 ? "Mixed materials: M_p is given instead of Z_p." : "Different tension and compression σ0.2: M_p is given instead of Z_p."; }
     out.shapeFactor = out.Mp !== null && out.Mel ? out.Mp / out.Mel : null;
+
+    /* ---- the same moments reduced by the applied axial force (null when N = 0) ---- */
+    out.MelN = N === 0 ? null : firstYield(N);
+    const reduced = N === 0 ? null : plasticMoment(parts, alpha, free, N);
+    out.MpN = reduced ? reduced.M : null;
     return out;
   }
 

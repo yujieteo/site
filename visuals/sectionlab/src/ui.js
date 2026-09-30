@@ -826,10 +826,14 @@ function renderPlastic() {
   stat(ps, `${fmt(L0.M, 4)} N·mm`, "Allowable moment M_lim at ε_lim");
   stat(ps, `${fmt(L0.kappa, 4)} 1/mm`, "Curvature κ_lim");
   stat(ps, `${L0.governing.part}, ${L0.governing.fibre}`, `Governing fibre, ε = ${fmt(L0.governing.strain, 3)}`);
-  stat(ps, pl.Mel === null ? "n/a" : `${fmt(pl.Mel, 4)} N·mm`, "First-yield moment M_el");
-  stat(ps, pl.Mp === null ? "n/a" : `${fmt(pl.Mp, 4)} N·mm`, "Fully plastic moment M_p");
+  stat(ps, pl.Mel === null ? "n/a" : `${fmt(pl.Mel, 4)} N·mm`, "First-yield moment M_el at N = 0");
+  stat(ps, pl.Mp === null ? "n/a" : `${fmt(pl.Mp, 4)} N·mm`, "Fully plastic moment M_p at N = 0");
   stat(ps, pl.Zp === null ? "n/a" : `${fmt(pl.Zp, 4)} mm³`, pl.Zp === null ? `Z_p: ${pl.ZpNote}` : "Plastic modulus Z_p = M_p / σ0.2");
   stat(ps, pl.shapeFactor === null ? "n/a" : fmt(pl.shapeFactor, 4), "Shape factor M_p / M_el");
+  if (pl.N !== 0) {
+    stat(ps, pl.MelN === null ? "n/a" : `${fmt(pl.MelN, 4)} N·mm`, "First-yield moment M_el(N), reduced by the applied axial force");
+    stat(ps, pl.MpN === null ? "n/a" : `${fmt(pl.MpN, 4)} N·mm`, "Fully plastic moment M_p(N), reduced by the applied axial force");
+  }
   stat(ps, pl.solve === "zero-cross" ? `${fmt((L0.phi * 180) / Math.PI, 3)}°` : `${fmt(L0.Mcross, 4)} N·mm`, pl.solve === "zero-cross" ? "Neutral-axis rotation φ at ε_lim" : "Cross moment at ε_lim (mode a)");
   tableFrom($("curve-table"), rep.sections.find((s) => s.title === "M–κ curve"));
   $("chart-readout").textContent = `Bending about the ${{ x: "x axis", y: "y axis", major: "major principal axis", minor: "minor principal axis" }[pl.axis]} (${fmt(pl.alphaDeg, 4)}° from x), N = ${fmt(pl.N)} N. Move over the chart, or focus it and use the arrow keys, to read the curve.`;
@@ -1031,6 +1035,7 @@ function registerTools() {
     plastic: r.plastic && !r.plastic.error ? {
       axis: r.plastic.axis, solve: r.plastic.solve, N: r.plastic.N, M_lim: r.plastic.limit.M, kappa_lim: r.plastic.limit.kappa,
       governing: r.plastic.limit.governing, M_el: r.plastic.Mel, M_p: r.plastic.Mp, Z_p: r.plastic.Zp, shape_factor: r.plastic.shapeFactor,
+      M_el_reduced_by_N: r.plastic.MelN, M_p_reduced_by_N: r.plastic.MpN,
       curve: r.plastic.curve.map((p) => ({ kappa: p.kappa, M: p.M, M_cross: p.Mcross, phi: p.phi })),
     } : r.plastic,
   });

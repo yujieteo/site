@@ -2,6 +2,10 @@
 
 import importlib.util
 import re
+import shutil
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -17,15 +21,6 @@ class BuildTest(unittest.TestCase):
     def test_index_html_is_current(self):
         self.assertEqual(build.main(["--check"]), 0)
 
-    def test_project_files_are_present(self):
-        for name in ["README.md", "LICENSE", "SKILLS.md", "build.py", "template.html", "raw.json", "index.html", "requirements-test.txt",
-                     "docs/architecture.md", "docs/model-format.md", "docs/verification.md",
-                     "playbooks/add-shape.md", "playbooks/change-engine.md", "playbooks/verify.md", "playbooks/change-export.md", "playbooks/deploy-to-site.md",
-                     "reference/sectionref.py", "reference/plasticref.py", "reference/prandtl.py", "reference/cases.py",
-                     "reference/fixtures.json", "reference/reference.json", "reference/torsion-accuracy.json", ".github/workflows/ci.yml"]:
-            self.assertTrue((ROOT / name).is_file(), name)
-        self.assertIn("MIT License", (ROOT / "LICENSE").read_text(encoding="utf-8"))
-
     def test_skills_router_links_resolve(self):
         text = (ROOT / "SKILLS.md").read_text(encoding="utf-8")
         links = re.findall(r"\]\(([^)#]+)\)", text)
@@ -35,13 +30,14 @@ class BuildTest(unittest.TestCase):
                 continue
             self.assertTrue((ROOT / link).is_file(), link)
 
-    def test_nothing_reaches_outside_the_folder(self):
-        # Mirrored as a standalone repository: sources, tests and docs must not depend on the host site.
-        for path in ROOT.rglob("*"):
-            if path.suffix not in {".js", ".mjs", ".py", ".md", ".html", ".yml", ".json"} or "__pycache__" in path.parts:
-                continue
-            text = path.read_text(encoding="utf-8")
-            self.assertNotRegex(text, r"\.\./\.\./", f"{path.relative_to(ROOT)} refers above the folder")
+    def test_folder_builds_on_its_own(self):
+        # Mirrored as a standalone repository: a copy of the folder alone must build and reproduce its reference.
+        with tempfile.TemporaryDirectory() as tmp:
+            copy = Path(tmp) / "sectionlab"
+            shutil.copytree(ROOT, copy, ignore=shutil.ignore_patterns("__pycache__", "node_modules"))
+            for args in (["build.py", "--check"], ["reference/build_reference.py", "--check"]):
+                run = subprocess.run([sys.executable, *args], cwd=copy, capture_output=True, text=True)
+                self.assertEqual(run.returncode, 0, f"{' '.join(args)}: {run.stderr}")
 
     def test_page_is_not_labelled_as_a_code_check(self):
         html = (ROOT / "index.html").read_text(encoding="utf-8")

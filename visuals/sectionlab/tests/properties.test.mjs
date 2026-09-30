@@ -7,11 +7,11 @@ const PROPS = Object.keys(DIM);
 test("closed-form expectations hold for every fixture (1e-9)", () => {
   let checked = 0;
   for (const c of FIXTURES.cases) {
-    const r = compute(c.model, { plastic: c.expect.some((e) => ["Zp", "Mp", "Mel", "shapeFactor"].includes(e.quantity)) });
+    const r = compute(c.model, { plastic: c.expect.some((e) => ["Zp", "Mp", "Mel", "shapeFactor", "MpN"].includes(e.quantity)) });
     for (const e of c.expect) {
       let got;
       if (e.quantity === "J") got = r.torsion.J;
-      else if (["Zp", "Mp", "Mel", "shapeFactor"].includes(e.quantity)) got = r.plastic[e.quantity];
+      else if (["Zp", "Mp", "Mel", "shapeFactor", "MpN"].includes(e.quantity)) got = r.plastic[e.quantity];
       else got = r.props[e.quantity];
       assert.equal(typeof got, "number", `${c.id} ${e.quantity} missing`);
       near(got, e.value, 1e-9, { area: r.props.A, dim: DIM[e.quantity] || 0, msg: `${c.id} ${e.quantity} = ${e.formula}` });
