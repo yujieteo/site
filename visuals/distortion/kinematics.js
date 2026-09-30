@@ -253,6 +253,7 @@
       structure: "tube",
       loads: { axial: 0, shear: 0, torsion: 0, bending: 0 },
       exaggeration: 1,
+      patch: defaultPatch("tube"),
     };
   }
 
@@ -295,8 +296,9 @@
     return { x: u, y: q.y + q.ny * zeta, z: q.z + q.nz * zeta, q };
   }
 
-  /* Deformed position of the wall point (u, v, zeta). */
-  function deform(P, wall, u, v, zeta) {
+  /* Deformed position of the wall point (u, v, zeta). `opts.membrane` leaves
+   * out effects that are not in-plane strain of the wall (none yet). */
+  function deform(P, wall, u, v, zeta, opts) {
     const r = reference(wall, u, v, zeta);
     let { x, y, z } = r;
     // Poisson: lateral strain follows the local axial strain (axial + bending),
@@ -324,7 +326,123 @@
     return [X - y * Math.sin(th), Y + y * Math.cos(th), 0, th];
   }
 
+  /* ---------- The unit patch ---------- */
+
+  const PATCH = 0.5;                // side of the unit patch
+  const PATCH_LINES = 5;            // 4 x 4 cells
+
+  /* Patch start: mid-span on the face turned towards the default camera
+   * (the +z side): low on the tube's near side, mid-height on the box's near
+   * web and on the I-beam web. */
+  function defaultPatch(structure) {
+    const p = { wall: 0, u: L / 2, v: 0, side: 1, angle: 0 };
+    if (structure === "tube") p.v = GEOM.tube.R * 0.35;
+    else if (structure === "box") p.v = nearestV(boxPath(), 0, GEOM.box.B / 2);
+    else if (structure === "ibeam") { p.wall = 1; p.v = GEOM.ibeam.H / 2; }
+    return p;
+  }
+  function nearestV(path, y, z) {
+    let best = 0, bd = Infinity;
+    path.points.forEach((q, i) => { const d = Math.hypot(q.y - y, q.z - z); if (d < bd) { bd = d; best = path.s[i]; } });
+    return best;
+  }
+
+  /* Faces the patch can sit on, in the order of the "around" slider. */
+  function patchFaces(model) {
+    if (model.structure === "ibeam") return [{ wall: 0, side: 1 }, { wall: 1, side: 1 }, { wall: 2, side: 1 }];
+    return [{ wall: 0, side: 1 }];
+  }
+
+  /* The keyboard-operable patch sliders: along (0..1 of the span) and around
+   * (0..1 through the faces of patchFaces, in order). */
+  function patchFromSliders(model, along, around, angle) {
+    const faces = patchFaces(model), lens = faces.map((f) => model.walls[f.wall].v1 - model.walls[f.wall].v0);
+    let rest = clamp(around, 0, 1) * lens.reduce((a, b) => a + b, 0), k = 0;
+    while (k < faces.length - 1 && rest > lens[k]) { rest -= lens[k]; k++; }
+    const w = model.walls[faces[k].wall];
+    return placePatch(model, { wall: w.id, side: faces[k].side, u: w.u0 + clamp(along, 0, 1) * (w.u1 - w.u0), v: w.v0 + rest, angle });
+  }
+  function slidersFromPatch(model, patch) {
+    const faces = patchFaces(model), lens = faces.map((f) => model.walls[f.wall].v1 - model.walls[f.wall].v0);
+    const total = lens.reduce((a, b) => a + b, 0), w = model.walls[patch.wall];
+    let k = faces.findIndex((f) => f.wall === patch.wall && f.side === patch.side);
+    if (k < 0) k = Math.max(0, faces.findIndex((f) => f.wall === patch.wall));
+    const before = lens.slice(0, k).reduce((a, b) => a + b, 0);
+    return { along: (patch.u - w.u0) / (w.u1 - w.u0), around: (before + patch.v - w.v0) / total, angle: patch.angle };
+  }
+
+  /* Keep the whole (rotated) patch on its wall. */
+  function placePatch(model, patch) {
+    const w = model.walls[patch.wall] || model.walls[0];
+    const a = (patch.angle * Math.PI) / 180, half = (PATCH / 2) * (Math.abs(Math.cos(a)) + Math.abs(Math.sin(a)));
+    const out = { wall: w.id, side: patch.side === -1 ? -1 : 1, angle: clamp(patch.angle, 0, 90) };
+    out.u = clamp(patch.u, w.u0 + half + 0.05, w.u1 - half - 0.02);
+    if (w.closed) out.v = ((patch.v % w.path.length) + w.path.length) % w.path.length;
+    else out.v = w.v1 - w.v0 > 2 * half ? clamp(patch.v, w.v0 + half, w.v1 - half) : (w.v0 + w.v1) / 2;
+    return out;
+  }
+
+  /* Viewer frame of the patch face: x along the member, s' = sigma * s, so that
+   * seen from outside the face x points right and s' points up. */
+  function faceSign(wall, patch) {
+    const q = lookup(wall.path, patch.v);
+    // e_x cross e_s = (0, -tz, ty); the face normal is side * (ny, nz)
+    return Math.sign((-q.tz * q.ny + q.ty * q.nz) * patch.side) || 1;
+  }
+
+  /* Param-space polylines of the 4 x 4 grid: each is a list of [u, v]. */
+  function patchParamLines(model, patch, samples = 12) {
+    const w = model.walls[patch.wall], sg = faceSign(w, patch);
+    const a = (patch.angle * Math.PI) / 180, c = Math.cos(a), s = Math.sin(a), h = PATCH / 2;
+    const at = (xi, eta) => [patch.u + xi * c - eta * s, patch.v + sg * (xi * s + eta * c)];
+    const lines = [];
+    for (let k = 0; k < PATCH_LINES; k++) {
+      const f = -h + (2 * h * k) / (PATCH_LINES - 1), l1 = [], l2 = [];
+      for (let i = 0; i <= samples; i++) { const g = -h + (2 * h * i) / samples; l1.push(at(g, f)); l2.push(at(f, g)); }
+      lines.push(l1, l2);
+    }
+    return lines;
+  }
+
+  /* 2 x 2 symmetric eigen-decomposition: values descending, angle of the first. */
+  function eig2(a, b, d) {
+    const m = (a + d) / 2, r = Math.hypot((a - d) / 2, b);
+    const angle = 0.5 * Math.atan2(2 * b, a - d);
+    return { values: [m + r, m - r], angle };
+  }
+
+  /* Membrane (mid-surface) strain under the patch centre: Green-Lagrange
+   * strain from the deformation gradient in the viewer frame, then rotated
+   * into the patch frame (a1 at the patch angle, a2 normal to it). */
+  function patchStrain(P, patch) {
+    const w = P.model.walls[patch.wall], sg = faceSign(w, patch), h = 1e-3;
+    const at = (du, dv) => deform(P, w, patch.u + du, patch.v + dv, 0, { membrane: true });
+    const Fu = sub3(at(h, 0), at(-h, 0)).map((x) => x / (2 * h));
+    const Fs = sub3(at(0, sg * h), at(0, -sg * h)).map((x) => x / (2 * h));
+    const C = [dot3(Fu, Fu), dot3(Fu, Fs), dot3(Fs, Fs)];
+    const E = [(C[0] - 1) / 2, C[1] / 2, (C[2] - 1) / 2];
+    const a = (patch.angle * Math.PI) / 180, c = Math.cos(a), s = Math.sin(a);
+    const e11 = c * c * E[0] + 2 * c * s * E[1] + s * s * E[2];
+    const e22 = s * s * E[0] - 2 * c * s * E[1] + c * c * E[2];
+    const e12 = (c * c - s * s) * E[1] + c * s * (E[2] - E[0]);
+    const pr = eig2(e11, e12, e22);
+    // shear angle: decrease of the right angle between the patch edges
+    const C11 = 1 + 2 * e11, C22 = 1 + 2 * e22, C12 = 2 * e12;
+    const shearAngle = Math.PI / 2 - Math.acos(clamp(C12 / Math.sqrt(C11 * C22), -1, 1));
+    return {
+      axes: { exx: E[0], exs: E[1], ess: E[2] },
+      patch: { e11, e22, e12 },
+      principal: [{ value: pr.values[0], angle: pr.angle }, { value: pr.values[1], angle: pr.angle + Math.PI / 2 }],
+      shearAngle,
+      centre: deform(P, w, patch.u, patch.v, patch.side * w.t / 2),
+    };
+  }
+
+  const sub3 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const dot3 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+
   return {
+    PATCH, patchFaces, placePatch, patchFromSliders, slidersFromPatch, patchParamLines, patchStrain, eig2, faceSign, defaultPatch,
     L, NU, axisPoint, GEOM, STRUCTURES, LOADS, APPLIES,
     buildModel, defaultState, prepare, reference, deform, lookup, sampleArray,
   };

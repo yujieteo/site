@@ -86,3 +86,40 @@ test("transverse shear drifts the sections; the tube does not warp but the I-bea
 test("index.html is the current build of its sources", async () => {
   assert.equal(await readFile(INDEX, "utf8"), buildPage(), "run node visuals/distortion/build.mjs");
 });
+
+test("a 45° patch under pure shear has one stretching and one shortening diagonal", () => {
+  // Torsion of the tube puts its skin in pure shear.
+  const m = D.buildModel("tube"), signs = [];
+  for (const torsion of [0.6, -0.6]) {
+    const st = state("tube", { torsion });
+    const P = D.prepare(m, st);
+    const at0 = D.patchStrain(P, D.placePatch(m, { ...D.defaultPatch("tube"), angle: 0 }));
+    assert.ok(Math.abs(at0.shearAngle) > 0.01, "the unrotated patch shears");
+    const r = D.patchStrain(P, D.placePatch(m, { ...D.defaultPatch("tube"), angle: 45 }));
+    const { e11, e22, e12 } = r.patch;
+    assert.ok(Math.sign(e11) === -Math.sign(e22) && Math.min(Math.abs(e11), Math.abs(e22)) > 0.005, `${e11}, ${e22}`);
+    assert.ok(Math.abs(e12) < 0.05 * Math.abs(e11), "the 45° patch barely shears");
+    assert.ok(Math.abs(r.shearAngle) < 0.05 * Math.abs(at0.shearAngle));
+    signs.push(Math.sign(e11));
+    // principal directions: the tension one lies along a1 (0°) or a2 (90°)
+    const tension = r.principal[0];
+    assert.ok(tension.value > 0 && tension.value > -r.principal[1].value * 0.9);
+  }
+  assert.equal(signs[0], -signs[1], "reversing the torque swaps the diagonals");
+});
+
+test("the patch stays on its wall and the patch sliders round-trip", () => {
+  for (const s of D.STRUCTURES) {
+    const m = D.buildModel(s);
+    for (const [along, around, angle] of [[0, 0, 0], [1, 1, 45], [0.3, 0.52, 90], [0.7, 0.2, 30]]) {
+      const p = D.patchFromSliders(m, along, around, angle), w = m.walls[p.wall];
+      assert.ok(p.u > w.u0 && p.u < w.u1);
+      for (const line of D.patchParamLines(m, p)) for (const [u, v] of line) {
+        assert.ok(u >= w.u0 - 1e-9 && u <= w.u1 + 1e-9, `${s}: u ${u}`);
+        if (!w.closed) assert.ok(v >= w.v0 - 1e-9 && v <= w.v1 + 1e-9, `${s}: v ${v} outside ${w.v0}..${w.v1}`);
+      }
+      const back = D.patchFromSliders(m, ...Object.values(D.slidersFromPatch(m, p)));
+      assert.ok(Math.abs(back.u - p.u) < 1e-9 && Math.abs(back.v - p.v) < 1e-9 && back.wall === p.wall, `${s} ${along} ${around}`);
+    }
+  }
+});

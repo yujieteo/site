@@ -61,6 +61,16 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
 .toggles input { width: 16px; height: 16px; accent-color: var(--amber); margin: 0; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .note { color: var(--muted); font-size: 12.5px; margin: 4px 0 0; }
+#inset { position: absolute; left: 12px; bottom: 12px; width: 236px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+#inset-toggle { width: 100%; display: flex; justify-content: space-between; align-items: center; border: 0; background: transparent; border-radius: 10px; padding: 7px 10px; font-weight: 600; font-size: 13px; }
+#inset-toggle .chev { transition: transform 0.2s; }
+#inset-toggle[aria-expanded=false] .chev { transform: rotate(-90deg); }
+#inset-body { padding: 0 10px 8px; }
+#inset-body[hidden] { display: none; }
+#inset-canvas { display: block; width: 100%; aspect-ratio: 1; }
+#inset-text { margin: 4px 0 0; font-size: 12px; color: var(--muted); }
+.key { display: inline-flex; align-items: center; gap: 4px; margin-right: 8px; }
+.sw { display: inline-block; width: 14px; height: 3px; border-radius: 2px; }
 .axis-label { position: absolute; font-size: 12px; color: var(--muted); pointer-events: none; transform: translate(-50%, -50%); }
 @media (max-width: 760px) {
   body { grid-template-rows: auto minmax(0, 1fr); }
@@ -82,6 +92,13 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
     <canvas id="view" tabindex="0" aria-label="3D view of the deformed structure. Drag or use the arrow keys to orbit, scroll or pinch to zoom."></canvas>
     <div id="nogl" role="alert"><p><strong>This view needs WebGL, which this browser has turned off or does not support.</strong><br>Turn on hardware acceleration or try another modern browser. The controls still work.</p></div>
     <div id="axis-labels" aria-hidden="true"></div>
+    <section id="inset" aria-label="Unit patch in 2D">
+      <button type="button" id="inset-toggle" aria-expanded="true" aria-controls="inset-body"><span>Unit patch, flattened</span><span class="chev" aria-hidden="true">▾</span></button>
+      <div id="inset-body">
+        <canvas id="inset-canvas" role="img" aria-label="Unit patch before and after deformation"></canvas>
+        <p id="inset-text" aria-live="polite"></p>
+      </div>
+    </section>
   </section>
   <aside id="panel" aria-label="Controls">
     <fieldset>
@@ -94,6 +111,10 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
     </fieldset>
     <fieldset id="loads">
       <legend>Loads</legend>
+    </fieldset>
+    <fieldset id="patch">
+      <legend>Unit patch</legend>
+      <p class="note" style="margin:0 0 8px">Drag the amber patch on the body, or tap the body to move it there.</p>
     </fieldset>
     <fieldset>
       <legend>View</legend>
@@ -4608,6 +4629,7 @@ void main() {
       structure: "tube",
       loads: { axial: 0, shear: 0, torsion: 0, bending: 0 },
       exaggeration: 1,
+      patch: defaultPatch("tube"),
     };
   }
 
@@ -4650,8 +4672,9 @@ void main() {
     return { x: u, y: q.y + q.ny * zeta, z: q.z + q.nz * zeta, q };
   }
 
-  /* Deformed position of the wall point (u, v, zeta). */
-  function deform(P, wall, u, v, zeta) {
+  /* Deformed position of the wall point (u, v, zeta). `opts.membrane` leaves
+   * out effects that are not in-plane strain of the wall (none yet). */
+  function deform(P, wall, u, v, zeta, opts) {
     const r = reference(wall, u, v, zeta);
     let { x, y, z } = r;
     // Poisson: lateral strain follows the local axial strain (axial + bending),
@@ -4679,7 +4702,123 @@ void main() {
     return [X - y * Math.sin(th), Y + y * Math.cos(th), 0, th];
   }
 
+  /* ---------- The unit patch ---------- */
+
+  const PATCH = 0.5;                // side of the unit patch
+  const PATCH_LINES = 5;            // 4 x 4 cells
+
+  /* Patch start: mid-span on the face turned towards the default camera
+   * (the +z side): low on the tube's near side, mid-height on the box's near
+   * web and on the I-beam web. */
+  function defaultPatch(structure) {
+    const p = { wall: 0, u: L / 2, v: 0, side: 1, angle: 0 };
+    if (structure === "tube") p.v = GEOM.tube.R * 0.35;
+    else if (structure === "box") p.v = nearestV(boxPath(), 0, GEOM.box.B / 2);
+    else if (structure === "ibeam") { p.wall = 1; p.v = GEOM.ibeam.H / 2; }
+    return p;
+  }
+  function nearestV(path, y, z) {
+    let best = 0, bd = Infinity;
+    path.points.forEach((q, i) => { const d = Math.hypot(q.y - y, q.z - z); if (d < bd) { bd = d; best = path.s[i]; } });
+    return best;
+  }
+
+  /* Faces the patch can sit on, in the order of the "around" slider. */
+  function patchFaces(model) {
+    if (model.structure === "ibeam") return [{ wall: 0, side: 1 }, { wall: 1, side: 1 }, { wall: 2, side: 1 }];
+    return [{ wall: 0, side: 1 }];
+  }
+
+  /* The keyboard-operable patch sliders: along (0..1 of the span) and around
+   * (0..1 through the faces of patchFaces, in order). */
+  function patchFromSliders(model, along, around, angle) {
+    const faces = patchFaces(model), lens = faces.map((f) => model.walls[f.wall].v1 - model.walls[f.wall].v0);
+    let rest = clamp(around, 0, 1) * lens.reduce((a, b) => a + b, 0), k = 0;
+    while (k < faces.length - 1 && rest > lens[k]) { rest -= lens[k]; k++; }
+    const w = model.walls[faces[k].wall];
+    return placePatch(model, { wall: w.id, side: faces[k].side, u: w.u0 + clamp(along, 0, 1) * (w.u1 - w.u0), v: w.v0 + rest, angle });
+  }
+  function slidersFromPatch(model, patch) {
+    const faces = patchFaces(model), lens = faces.map((f) => model.walls[f.wall].v1 - model.walls[f.wall].v0);
+    const total = lens.reduce((a, b) => a + b, 0), w = model.walls[patch.wall];
+    let k = faces.findIndex((f) => f.wall === patch.wall && f.side === patch.side);
+    if (k < 0) k = Math.max(0, faces.findIndex((f) => f.wall === patch.wall));
+    const before = lens.slice(0, k).reduce((a, b) => a + b, 0);
+    return { along: (patch.u - w.u0) / (w.u1 - w.u0), around: (before + patch.v - w.v0) / total, angle: patch.angle };
+  }
+
+  /* Keep the whole (rotated) patch on its wall. */
+  function placePatch(model, patch) {
+    const w = model.walls[patch.wall] || model.walls[0];
+    const a = (patch.angle * Math.PI) / 180, half = (PATCH / 2) * (Math.abs(Math.cos(a)) + Math.abs(Math.sin(a)));
+    const out = { wall: w.id, side: patch.side === -1 ? -1 : 1, angle: clamp(patch.angle, 0, 90) };
+    out.u = clamp(patch.u, w.u0 + half + 0.05, w.u1 - half - 0.02);
+    if (w.closed) out.v = ((patch.v % w.path.length) + w.path.length) % w.path.length;
+    else out.v = w.v1 - w.v0 > 2 * half ? clamp(patch.v, w.v0 + half, w.v1 - half) : (w.v0 + w.v1) / 2;
+    return out;
+  }
+
+  /* Viewer frame of the patch face: x along the member, s' = sigma * s, so that
+   * seen from outside the face x points right and s' points up. */
+  function faceSign(wall, patch) {
+    const q = lookup(wall.path, patch.v);
+    // e_x cross e_s = (0, -tz, ty); the face normal is side * (ny, nz)
+    return Math.sign((-q.tz * q.ny + q.ty * q.nz) * patch.side) || 1;
+  }
+
+  /* Param-space polylines of the 4 x 4 grid: each is a list of [u, v]. */
+  function patchParamLines(model, patch, samples = 12) {
+    const w = model.walls[patch.wall], sg = faceSign(w, patch);
+    const a = (patch.angle * Math.PI) / 180, c = Math.cos(a), s = Math.sin(a), h = PATCH / 2;
+    const at = (xi, eta) => [patch.u + xi * c - eta * s, patch.v + sg * (xi * s + eta * c)];
+    const lines = [];
+    for (let k = 0; k < PATCH_LINES; k++) {
+      const f = -h + (2 * h * k) / (PATCH_LINES - 1), l1 = [], l2 = [];
+      for (let i = 0; i <= samples; i++) { const g = -h + (2 * h * i) / samples; l1.push(at(g, f)); l2.push(at(f, g)); }
+      lines.push(l1, l2);
+    }
+    return lines;
+  }
+
+  /* 2 x 2 symmetric eigen-decomposition: values descending, angle of the first. */
+  function eig2(a, b, d) {
+    const m = (a + d) / 2, r = Math.hypot((a - d) / 2, b);
+    const angle = 0.5 * Math.atan2(2 * b, a - d);
+    return { values: [m + r, m - r], angle };
+  }
+
+  /* Membrane (mid-surface) strain under the patch centre: Green-Lagrange
+   * strain from the deformation gradient in the viewer frame, then rotated
+   * into the patch frame (a1 at the patch angle, a2 normal to it). */
+  function patchStrain(P, patch) {
+    const w = P.model.walls[patch.wall], sg = faceSign(w, patch), h = 1e-3;
+    const at = (du, dv) => deform(P, w, patch.u + du, patch.v + dv, 0, { membrane: true });
+    const Fu = sub3(at(h, 0), at(-h, 0)).map((x) => x / (2 * h));
+    const Fs = sub3(at(0, sg * h), at(0, -sg * h)).map((x) => x / (2 * h));
+    const C = [dot3(Fu, Fu), dot3(Fu, Fs), dot3(Fs, Fs)];
+    const E = [(C[0] - 1) / 2, C[1] / 2, (C[2] - 1) / 2];
+    const a = (patch.angle * Math.PI) / 180, c = Math.cos(a), s = Math.sin(a);
+    const e11 = c * c * E[0] + 2 * c * s * E[1] + s * s * E[2];
+    const e22 = s * s * E[0] - 2 * c * s * E[1] + c * c * E[2];
+    const e12 = (c * c - s * s) * E[1] + c * s * (E[2] - E[0]);
+    const pr = eig2(e11, e12, e22);
+    // shear angle: decrease of the right angle between the patch edges
+    const C11 = 1 + 2 * e11, C22 = 1 + 2 * e22, C12 = 2 * e12;
+    const shearAngle = Math.PI / 2 - Math.acos(clamp(C12 / Math.sqrt(C11 * C22), -1, 1));
+    return {
+      axes: { exx: E[0], exs: E[1], ess: E[2] },
+      patch: { e11, e22, e12 },
+      principal: [{ value: pr.values[0], angle: pr.angle }, { value: pr.values[1], angle: pr.angle + Math.PI / 2 }],
+      shearAngle,
+      centre: deform(P, w, patch.u, patch.v, patch.side * w.t / 2),
+    };
+  }
+
+  const sub3 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const dot3 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+
   return {
+    PATCH, patchFaces, placePatch, patchFromSliders, slidersFromPatch, patchParamLines, patchStrain, eig2, faceSign, defaultPatch,
     L, NU, axisPoint, GEOM, STRUCTURES, LOADS, APPLIES,
     buildModel, defaultState, prepare, reference, deform, lookup, sampleArray,
   };
@@ -4721,6 +4860,9 @@ function slider(parent, id, label, min, max, step, value) {
 }
 for (const k of D.LOADS) slider($("loads"), k, LOAD_UI[k].label, -1, 1, 0.01, 0);
 slider($("view-sliders"), "exaggeration", "Exaggeration", 0.5, 3, 0.1, 1);
+slider($("patch"), "along", "Position along the span", 0, 1, 0.005, 0.5);
+slider($("patch"), "around", "Position around the section", 0, 1, 0.002, 0);
+slider($("patch"), "angle", "Rotation", 0, 90, 1, 0);
 
 function syncControls() {
   for (const r of document.querySelectorAll("input[name=structure]")) r.checked = r.value === state.structure;
@@ -4735,6 +4877,13 @@ function syncControls() {
   const ex = `${Number(state.exaggeration).toFixed(1)}×`;
   $("o-exaggeration").textContent = ex; $("s-exaggeration").setAttribute("aria-valuetext", ex);
   $("t-arrows").checked = ui.arrows; $("t-axes").checked = ui.axes;
+  const ps = D.slidersFromPatch(model, state.patch);
+  $("s-along").value = ps.along; $("s-around").value = ps.around; $("s-angle").value = ps.angle;
+  const w = model.walls[state.patch.wall];
+  const where = `${ps.along < 0.25 ? "near the clamp" : ps.along > 0.75 ? "near the free end" : "mid-span"}`;
+  $("o-along").textContent = where; $("s-along").setAttribute("aria-valuetext", where);
+  $("o-around").textContent = w.name.toLowerCase(); $("s-around").setAttribute("aria-valuetext", `on the ${w.name.toLowerCase()}`);
+  $("o-angle").textContent = `${Math.round(state.patch.angle)}°`; $("s-angle").setAttribute("aria-valuetext", `${Math.round(state.patch.angle)} degrees`);
 }
 
 $("panel").addEventListener("input", (ev) => {
@@ -4742,20 +4891,24 @@ $("panel").addEventListener("input", (ev) => {
   if (t.name === "structure") setStructure(t.value);
   else if (t.id.startsWith("s-")) {
     const k = t.id.slice(2);
-    if (k === "exaggeration") state.exaggeration = Number(t.value); else state.loads[k] = Number(t.value);
+    if (k === "exaggeration") state.exaggeration = Number(t.value);
+    else if (k === "along" || k === "around" || k === "angle") state.patch = D.patchFromSliders(model, Number($("s-along").value), Number($("s-around").value), Number($("s-angle").value));
+    else state.loads[k] = Number(t.value);
   } else if (t.id === "t-arrows") ui.arrows = t.checked;
   else if (t.id === "t-axes") ui.axes = t.checked;
   refresh();
 });
 $("reset").addEventListener("click", () => {
   const s = state.structure;
-  Object.assign(state, D.defaultState(), { structure: s });
+  Object.assign(state, D.defaultState(), { structure: s, patch: D.defaultPatch(s) });
+  if (three) three.frame();
   refresh();
 });
 
 function setStructure(s) {
   if (s === state.structure) return;
   state.structure = s; model = D.buildModel(s);
+  state.patch = D.placePatch(model, D.defaultPatch(s));
   if (three) three.rebuild();
 }
 
@@ -4791,7 +4944,8 @@ function createView() {
   const ghostMat = new T.LineBasicMaterial({ color: 0x9cc3ff, transparent: true, opacity: 0.5 });
   const clampMat = new T.MeshStandardMaterial({ color: 0x3b4048, roughness: 0.9, metalness: 0 });
 
-  let body = null, ghost = null, grid = null, clampBlock = null, arrows = null, axes = null;
+  const patchMat = new T.MeshStandardMaterial({ color: 0x000000, emissive: 0xffb000, roughness: 1, metalness: 0, side: T.DoubleSide });
+  let body = null, ghost = null, grid = null, clampBlock = null, arrows = null, axes = null, patch = null;
   const labels = $("axis-labels");
 
   function themeColours() {
@@ -4799,15 +4953,18 @@ function createView() {
     const light = matchMedia("(prefers-color-scheme: light)").matches;
     gridMat.color.set(light ? 0x39414b : 0x23262b); gridMat.opacity = light ? 0.35 : 0.5;
     ghostMat.color.set(css("--ghost"));
+    patchMat.emissive.set(css("--amber"));
   }
   themeColours();
   matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => { themeColours(); render(); });
 
   /* One mesh per wall: outer and inner faces, the end rims and, for open
-   * walls, the side rims. Each vertex remembers its (u, v, zeta). */
+   * walls, the side rims. Each vertex remembers its (u, v, zeta); closed walls
+   * repeat the seam column (v = 0 and v = length) so the uv used for picking
+   * never jumps, and the seam normals are averaged after each update. */
   function wallGeometry(wall) {
-    const params = [], index = [];
-    const nv = wall.nv, nu = wall.nu, vc = wall.closed ? nv : nv + 1;
+    const params = [], index = [], seams = [];
+    const nv = wall.nv, nu = wall.nu, vc = nv + 1;
     const uAt = (i) => wall.u0 + (wall.u1 - wall.u0) * i / nu;
     const vAt = (j) => wall.v0 + (wall.v1 - wall.v0) * j / nv;
     const h = wall.t / 2;
@@ -4816,15 +4973,14 @@ function createView() {
     for (const z of [h, -h]) {
       const base = params.length / 3;
       for (let i = 0; i <= nu; i++) for (let j = 0; j < vc; j++) add(uAt(i), vAt(j), z);
-      const id = (i, j) => base + i * vc + (j % vc);
-      const jn = wall.closed ? nv : nv;
-      for (let i = 0; i < nu; i++) for (let j = 0; j < jn; j++) quad(id(i, j), id(i + 1, j), id(i + 1, j + 1), id(i, j + 1));
+      const id = (i, j) => base + i * vc + j;
+      for (let i = 0; i < nu; i++) for (let j = 0; j < nv; j++) quad(id(i, j), id(i + 1, j), id(i + 1, j + 1), id(i, j + 1));
+      if (wall.closed) for (let i = 0; i <= nu; i++) seams.push(id(i, 0), id(i, nv));
     }
     for (const i of [0, nu]) { // end rims
       const base = params.length / 3;
       for (let j = 0; j < vc; j++) { add(uAt(i), vAt(j), h); add(uAt(i), vAt(j), -h); }
-      const jn = wall.closed ? nv : nv;
-      for (let j = 0; j < jn; j++) { const a = base + 2 * j, b = base + 2 * ((j + 1) % vc); quad(a, b, b + 1, a + 1); }
+      for (let j = 0; j < nv; j++) { const a = base + 2 * j, b = a + 2; quad(a, b, b + 1, a + 1); }
     }
     if (!wall.closed) for (const j of [0, nv]) { // side rims
       const base = params.length / 3;
@@ -4833,8 +4989,12 @@ function createView() {
     }
     const g = new T.BufferGeometry();
     g.setAttribute("position", new T.BufferAttribute(new Float32Array(params.length), 3));
+    const uv = new Float32Array(params.length / 3 * 2);
+    for (let k = 0; k < params.length / 3; k++) { uv[2 * k] = params[3 * k]; uv[2 * k + 1] = params[3 * k + 1]; }
+    g.setAttribute("uv", new T.BufferAttribute(uv, 2));
     g.setIndex(index);
     g.userData.params = Float32Array.from(params);
+    g.userData.seams = seams;
     return g;
   }
 
@@ -4894,7 +5054,8 @@ function createView() {
   }
 
   function rebuild() {
-    for (const o of [body, ghost, grid, clampBlock, arrows, axes]) disposeGroup(o);
+    for (const o of [body, ghost, grid, clampBlock, arrows, axes, patch]) disposeGroup(o);
+    patch = new T.Mesh(new T.BufferGeometry(), patchMat); scene.add(patch);
     body = new T.Group();
     for (const wall of model.walls) {
       const mesh = new T.Mesh(wallGeometry(wall), bodyMat);
@@ -4929,7 +5090,7 @@ function createView() {
   }
 
   function axesTriad() {
-    const g = new T.Group(), o = [-0.3, -1.05, 1.05], len = 0.7;
+    const g = new T.Group(), o = [-0.3, 1.05, 1.05], len = 0.7;
     const geo = new T.BufferGeometry();
     geo.setAttribute("position", new T.BufferAttribute(new Float32Array([
       ...o, o[0] + len, o[1], o[2], ...o, o[0], o[1] + len, o[2], ...o, o[0], o[1], o[2] + len]), 3));
@@ -4986,12 +5147,79 @@ function createView() {
       }
       g.attributes.position.needsUpdate = true;
       g.computeVertexNormals(); g.computeBoundingSphere();
+      const nrm = g.attributes.normal.array, sm = g.userData.seams;
+      for (let k = 0; k < sm.length; k += 2) {
+        const a = 3 * sm[k], b = 3 * sm[k + 1];
+        for (let c = 0; c < 3; c++) nrm[a + c] = nrm[b + c] = (nrm[a + c] + nrm[b + c]) / 2;
+      }
     }
     fillLines(grid, P);
+    updatePatch(P);
     updateArrows(P);
     axes.visible = ui.axes;
     render();
   }
+
+  /* The amber 4 x 4 grid as thin ribbons lying on the deformed outer face:
+   * WebGL draws lines one pixel wide, so ribbons are what make it bold. */
+  function updatePatch(P) {
+    const p = state.patch, w = model.walls[p.wall], lines = D.patchParamLines(model, p);
+    const zeta = p.side * (w.t / 2 + 0.006), pos = [];
+    lines.forEach((line, k) => {
+      const edge = k < 2 || k >= lines.length - 2, hw = edge ? 0.02 : 0.011;
+      const pts = line.map(([u, v], i) => {
+        const a = line[Math.max(0, i - 1)], b = line[Math.min(line.length - 1, i + 1)];
+        const du = b[0] - a[0], dv = b[1] - a[1], l = Math.hypot(du, dv) || 1;
+        return [D.deform(P, w, u - dv / l * hw, v + du / l * hw, zeta), D.deform(P, w, u + dv / l * hw, v - du / l * hw, zeta)];
+      });
+      for (let i = 0; i + 1 < pts.length; i++) pos.push(...pts[i][0], ...pts[i][1], ...pts[i + 1][1], ...pts[i][0], ...pts[i + 1][1], ...pts[i + 1][0]);
+    });
+    patch.geometry.dispose();
+    patch.geometry = new T.BufferGeometry();
+    patch.geometry.setAttribute("position", new T.BufferAttribute(new Float32Array(pos), 3));
+    patch.geometry.computeVertexNormals();
+  }
+
+  /* Picking: the uv attribute carries (u, v); the face's zeta gives the side. */
+  const ray = new T.Raycaster(), ndc = new T.Vector2();
+  function pick(ev) {
+    const r = canvas.getBoundingClientRect();
+    ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    const hit = ray.intersectObjects(body.children, false)[0];
+    if (!hit || !hit.uv) return null;
+    const pr = hit.object.geometry.userData.params, f = hit.face;
+    const zs = pr[3 * f.a + 2] + pr[3 * f.b + 2] + pr[3 * f.c + 2];
+    return { wall: hit.object.userData.wall, u: hit.uv.x, v: hit.uv.y, side: zs >= 0 ? 1 : -1 };
+  }
+  function nearPatch(h) {
+    const p = state.patch, w = model.walls[p.wall];
+    if (!h || h.wall !== p.wall || h.side !== p.side) return false;
+    let dv = Math.abs(h.v - p.v);
+    if (w.closed) dv = Math.min(dv, w.path.length - dv);
+    return Math.abs(h.u - p.u) < D.PATCH * 0.75 && dv < D.PATCH * 0.75;
+  }
+  const movePatch = (h) => { state.patch = D.placePatch(model, { ...h, angle: state.patch.angle }); refresh(); };
+  let drag = null;
+  stage.addEventListener("pointerdown", (ev) => {
+    if (ev.target !== canvas || ev.button !== 0) return;
+    const h = pick(ev);
+    drag = { x: ev.clientX, y: ev.clientY, hit: h, moving: nearPatch(h) };
+    if (drag.moving) { controls.enabled = false; canvas.setPointerCapture(ev.pointerId); }
+  }, true);
+  canvas.addEventListener("pointermove", (ev) => {
+    if (!drag || !drag.moving) return;
+    const h = pick(ev);
+    if (h) movePatch(h);
+  });
+  const release = (ev) => {
+    if (!drag) return;
+    if (drag.moving) controls.enabled = true;
+    else if (drag.hit && ev.type === "pointerup" && Math.hypot(ev.clientX - drag.x, ev.clientY - drag.y) < 6) movePatch(drag.hit);
+    drag = null;
+  };
+  canvas.addEventListener("pointerup", release);
+  canvas.addEventListener("pointercancel", release);
 
   function resize() {
     const w = stage.clientWidth, h = stage.clientHeight;
@@ -5025,14 +5253,115 @@ function createView() {
   controls.addEventListener("change", render);
   new ResizeObserver(resize).observe(stage);
 
-  return { rebuild, update, render, resize, scene, camera, renderer };
+  return { rebuild, update, render, resize, frame, scene, camera, renderer };
+}
+
+/* ---------- 2D inset ---------- */
+/* The patch flattened into its own frame (a1 to the right, a2 up), rigid
+ * rotation removed. The shape change is enlarged and softly limited so small
+ * strains show and large ones stay readable: the inset is qualitative too. */
+const INSET_GAIN = 4, INSET_LIMIT = 0.32;
+const soften = (e) => INSET_LIMIT * Math.tanh((INSET_GAIN * e) / INSET_LIMIT);
+function insetShape(st) {
+  const { e11, e22, e12 } = st.patch, ev = D.eig2(e11, e12, e22);
+  const c = Math.cos(ev.angle), s = Math.sin(ev.angle);
+  const l = ev.values.map((x) => Math.sqrt(Math.max(0.05, 1 + 2 * soften(x))));
+  // U = Q diag(l) Q^T
+  const U = [c * c * l[0] + s * s * l[1], c * s * (l[0] - l[1]), s * s * l[0] + c * c * l[1]];
+  return { U, ev, soft: ev.values.map(soften) };
+}
+let insetOpen = true;
+$("inset-toggle").addEventListener("click", () => {
+  insetOpen = !insetOpen;
+  $("inset-toggle").setAttribute("aria-expanded", String(insetOpen));
+  $("inset-body").hidden = !insetOpen;
+  if (insetOpen) drawInset();
+});
+function strainWord(e) {
+  const a = Math.abs(e);
+  if (a < 0.002) return "no change";
+  return `${e > 0 ? "stretching" : "shortening"}${a > 0.03 ? ", strongly" : ""}`;
+}
+function drawInset() {
+  if (!insetOpen) return;
+  const cv = $("inset-canvas"), dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const size = cv.clientWidth || 200;
+  if (cv.width !== Math.round(size * dpr)) { cv.width = cv.height = Math.round(size * dpr); }
+  const g = cv.getContext("2d");
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, size, size);
+  const P = D.prepare(model, state), st = D.patchStrain(P, state.patch), sh = insetShape(st);
+  const col = { amber: css("--amber"), ghost: css("--ghost"), t: css("--tension"), c: css("--compression"), muted: css("--muted") };
+  const k = size * 0.26, cx = size / 2, cy = size / 2;
+  const map = (x, y) => { const X = sh.U[0] * x + sh.U[1] * y, Y = sh.U[1] * x + sh.U[2] * y; return [cx + k * X, cy - k * Y]; };
+  const sq = [[-1, -1], [1, -1], [1, 1], [-1, 1]];
+  // member axis indicator (x along the span, as seen on the patch)
+  const a = (state.patch.angle * Math.PI) / 180;
+  g.strokeStyle = col.muted; g.fillStyle = col.muted; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(14, size - 14); g.lineTo(14 + 22 * Math.cos(-a), size - 14 - 22 * Math.sin(-a)); g.stroke();
+  g.font = "11px system-ui, sans-serif"; g.fillText("span", 16 + 26 * Math.cos(-a), size - 12 - 26 * Math.sin(-a));
+  // ghost
+  g.setLineDash([4, 3]); g.strokeStyle = col.ghost; g.lineWidth = 1.2;
+  g.strokeRect(cx - k, cy - k, 2 * k, 2 * k); g.setLineDash([]);
+  // deformed grid and outline
+  g.strokeStyle = col.amber; g.globalAlpha = 0.45; g.lineWidth = 1;
+  for (let i = 1; i < 4; i++) {
+    const f = -1 + i / 2;
+    g.beginPath(); g.moveTo(...map(f, -1)); g.lineTo(...map(f, 1)); g.stroke();
+    g.beginPath(); g.moveTo(...map(-1, f)); g.lineTo(...map(1, f)); g.stroke();
+  }
+  g.globalAlpha = 1; g.lineWidth = 2.2; g.beginPath();
+  sq.forEach((p, i) => (i ? g.lineTo(...map(...p)) : g.moveTo(...map(...p)))); g.closePath(); g.stroke();
+  // shear-angle arc at the lower-left corner, between the deformed edges
+  const o = map(-1, -1), e1 = map(1, -1), e2 = map(-1, 1);
+  const a1 = Math.atan2(e1[1] - o[1], e1[0] - o[0]), a2 = Math.atan2(e2[1] - o[1], e2[0] - o[0]);
+  const gam = st.shearAngle;
+  if (Math.abs(gam) > 0.002) {
+    const r = k * 0.75, ref = a1 - Math.PI / 2; // where the edge would be without shear
+    g.strokeStyle = col.muted; g.lineWidth = 1; g.setLineDash([2, 2]);
+    g.beginPath(); g.moveTo(...o); g.lineTo(o[0] + r * 1.25 * Math.cos(ref), o[1] + r * 1.25 * Math.sin(ref)); g.stroke(); g.setLineDash([]);
+    g.strokeStyle = col.amber; g.lineWidth = 1.6; g.beginPath();
+    g.arc(o[0], o[1], r, Math.min(ref, a2), Math.max(ref, a2)); g.stroke();
+    g.fillStyle = col.amber; g.font = "italic 13px Georgia, serif";
+    const mid = (ref + a2) / 2, lx = o[0] + (r + 9) * Math.cos(mid) - 4, ly = o[1] + (r + 9) * Math.sin(mid) + 4;
+    g.fillText("γ", Math.max(2, lx), ly);
+  }
+  // principal arrows: red stretches outward, blue shortens inward
+  const arrow = (x0, y0, x1, y1, colr) => {
+    g.strokeStyle = g.fillStyle = colr; g.lineWidth = 2.4;
+    g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1, y1); g.stroke();
+    const an = Math.atan2(y1 - y0, x1 - x0), hl = 7;
+    g.beginPath(); g.moveTo(x1, y1);
+    g.lineTo(x1 - hl * Math.cos(an - 0.45), y1 - hl * Math.sin(an - 0.45));
+    g.lineTo(x1 - hl * Math.cos(an + 0.45), y1 - hl * Math.sin(an + 0.45)); g.closePath(); g.fill();
+  };
+  const peak = Math.max(1e-9, ...sh.soft.map(Math.abs));
+  st.principal.forEach((pd, i) => {
+    const e = sh.soft[i];
+    if (Math.abs(e) < 0.002) return;
+    const len = k * (0.35 + 0.5 * Math.abs(e) / peak) * Math.min(1, Math.abs(e) / 0.02 + 0.3);
+    const dx = Math.cos(pd.angle), dy = -Math.sin(pd.angle), r0 = k * 1.05, colr = e > 0 ? col.t : col.c;
+    for (const sg of [1, -1]) {
+      const bx = cx + sg * dx * r0 * 0.25, by = cy + sg * dy * r0 * 0.25;
+      if (e > 0) arrow(bx, by, bx + sg * dx * len, by + sg * dy * len, colr);
+      else arrow(bx + sg * dx * len, by + sg * dy * len, bx, by, colr);
+    }
+  });
+  const pr = st.principal;
+  $("inset-text").innerHTML =
+    `<span class="key"><span class="sw" style="background:${col.t}"></span>tension</span><span class="key"><span class="sw" style="background:${col.c}"></span>compression</span><br>` +
+    `Along the patch edge a1: ${strainWord(st.patch.e11)}. Across, a2: ${strainWord(st.patch.e22)}. ` +
+    `Shear angle γ: ${Math.abs(gam) < 0.002 ? "none" : Math.abs(gam) < 0.03 ? "small" : "clear"}.`;
+  $("inset-canvas").setAttribute("aria-label", `Unit patch: principal ${pr[0].value > 0.002 ? "stretching" : "no stretching"}, principal ${pr[1].value < -0.002 ? "shortening" : "no shortening"}, shear angle ${Math.abs(gam) < 0.002 ? "none" : "present"}.`);
 }
 
 /* ---------- Refresh ---------- */
 function refresh() {
   syncControls();
   if (three) three.update();
+  drawInset();
 }
+new ResizeObserver(() => drawInset()).observe($("inset"));
 
 if (three) three.rebuild(); else refresh();
 })();
