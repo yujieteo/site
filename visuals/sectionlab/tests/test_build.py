@@ -1,14 +1,16 @@
 """The folder is a complete, self-contained project and its built page is current."""
 
+import importlib.util
 import re
-import sys
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 
-import build  # noqa: E402
+# Loaded under its own name so it cannot clash with another module called "build".
+_spec = importlib.util.spec_from_file_location("sectionlab_build", ROOT / "build.py")
+build = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(build)
 
 
 class BuildTest(unittest.TestCase):

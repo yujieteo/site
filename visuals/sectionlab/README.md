@@ -57,7 +57,7 @@ Units are mm, MPa (N/mm²), N and N·mm throughout.
 
 ```sh
 python build.py                                     # write index.html
-node --test tests/                                  # Node 22+
+node --test 'tests/*.test.mjs'                                  # Node 22+
 pip install -r requirements-test.txt                # numpy, scipy, PyYAML (tests only)
 python -m unittest discover -s tests -p 'test_*.py'
 ```

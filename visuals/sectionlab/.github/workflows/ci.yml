@@ -23,5 +23,5 @@ jobs:
           python-version: "3.13"
       - run: pip install -r requirements-test.txt
       - run: python build.py --check
-      - run: node --test tests/
+      - run: node --test 'tests/*.test.mjs'
       - run: python -m unittest discover -s tests -p 'test_*.py'

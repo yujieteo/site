@@ -33,7 +33,7 @@ recorded as withdrawn and the page shows "n/a" for it.
 ## Running the checks
 
 ```sh
-node --test tests/
+node --test 'tests/*.test.mjs'
 python -m unittest discover -s tests -p 'test_*.py'
 ```
 

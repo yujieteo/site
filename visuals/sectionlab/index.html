@@ -2052,6 +2052,7 @@ const ACCURACY = {"generated_by":"reference/torsion_accuracy.py","reference":"Pr
       notice: NOTICE, units: UNITS, sections,
       figures: {
         parts: parts || [],
+        materials: model.materials.map((m, i) => ({ name: m.name || m.id, fillIndex: i })).filter((m) => (parts || []).some((q) => !q.void && q.fillIndex === m.fillIndex)),
         centroid: p ? [p.cx, p.cy] : null,
         theta: p ? p.theta : 0,
         curve: pl && !pl.error ? pl : null,
@@ -2123,8 +2124,8 @@ const ACCURACY = {"generated_by":"reference/torsion_accuracy.py","reference":"Pr
     if (!parts.length) return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"></svg>`;
     const b = figureBox(parts);
     const pad = 28;
-    const s = Math.min((width - 2 * pad) / Math.max(b.x1 - b.x0, 1e-9), (height - 2 * pad - 16) / Math.max(b.y1 - b.y0, 1e-9));
-    const ox = (width - s * (b.x1 - b.x0)) / 2 - s * b.x0, oy = (height + 16 + s * (b.y1 - b.y0)) / 2 + s * b.y0;
+    const s = Math.min((width - 2 * pad) / Math.max(b.x1 - b.x0, 1e-9), (height - 2 * pad - 30) / Math.max(b.y1 - b.y0, 1e-9));
+    const ox = (width - s * (b.x1 - b.x0)) / 2 - s * b.x0, oy = (height + 2 - 14 + s * (b.y1 - b.y0)) / 2 + s * b.y0; // room for the title above and the key below
     const map = (x, y) => [ox + s * x, oy - s * y];
     let body = "";
     for (const q of parts.filter((p) => !p.void)) {
@@ -2143,7 +2144,13 @@ const ACCURACY = {"generated_by":"reference/torsion_accuracy.py","reference":"Pr
       body += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="4" fill="${colors.bg}" stroke="${colors.axis}" stroke-width="1.5"/>`;
     }
     const title = `<text x="${pad}" y="20" font-family="${font}" font-size="13" font-weight="600" fill="${colors.fg}">${esc(report.title)}: section</text>`;
-    const legend = `<text x="${pad}" y="${height - 8}" font-family="${font}" font-size="10" fill="${colors.muted}">Centroid ○, principal axes (1 solid, 2 dashed). Width ${fmt(b.x1 - b.x0, 4)} mm, height ${fmt(b.y1 - b.y0, 4)} mm.</text>`;
+    let legend = `<text x="${pad}" y="${height - 8}" font-family="${font}" font-size="10" fill="${colors.muted}">Centroid ○, principal axes (1 solid, 2 dashed). Width ${fmt(b.x1 - b.x0, 4)} mm, height ${fmt(b.y1 - b.y0, 4)} mm.</text>`;
+    // Material key: swatches with names, so identity never rests on colour alone.
+    let lx = pad;
+    for (const m of report.figures.materials || []) {
+      legend += `<rect x="${lx}" y="${height - 31}" width="10" height="10" rx="2" fill="${MATERIAL_FILLS[m.fillIndex % MATERIAL_FILLS.length]}" stroke="${colors.stroke}"/><text x="${lx + 14}" y="${height - 22}" font-family="${font}" font-size="10" fill="${colors.fg}">${esc(m.name)}</text>`;
+      lx += 24 + 5.6 * m.name.length;
+    }
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><defs><clipPath id="clip"><rect x="${pad / 2}" y="${pad}" width="${width - pad}" height="${height - 2 * pad}"/></clipPath></defs><rect width="100%" height="100%" fill="${colors.bg}"/>${title}${body}${legend}</svg>`;
   }
 
@@ -2270,6 +2277,12 @@ const ACCURACY = {"generated_by":"reference/torsion_accuracy.py","reference":"Pr
       ops.push("Q");
       ops.push(`${rgb("#d2d2d7")} RG 0.5 w ${n2(M)} ${n2(y - fh)} ${n2(fw)} ${n2(fh)} re S`);
       text("Section (centroid square, principal axes)", M + 4, y - fh - 11, 7.5, false, "#6e6e73");
+      let lx = M + 4;
+      for (const m of report.figures.materials || []) {
+        ops.push(`${rgb(MATERIAL_FILLS[m.fillIndex % MATERIAL_FILLS.length])} rg ${rgb(LIGHT.stroke)} RG 0.5 w ${n2(lx)} ${n2(y - fh - 22)} 6 6 re B`);
+        text(m.name, lx + 9, y - fh - 21.5, 7);
+        lx += 16 + textWidth(m.name, 7);
+      }
     }
     const pl = report.figures.curve;
     if (pl) {
@@ -2284,7 +2297,7 @@ const ACCURACY = {"generated_by":"reference/torsion_accuracy.py","reference":"Pr
       ops.push(`${rgb(LIGHT.curve)} rg ${n2(X(pl.limit.kappa) - 3)} ${n2(Yv(pl.limit.M) - 3)} 6 6 re f`);
       text("M-kappa: M (N*mm) against kappa (1/mm); square = eps_lim", x0 + 4, y - fh - 11, 7.5, false, "#6e6e73");
     }
-    y -= fh + 22;
+    y -= fh + 30;
 
     for (const sec of report.sections) {
       need(40);
