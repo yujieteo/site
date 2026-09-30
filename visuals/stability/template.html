@@ -417,7 +417,7 @@ function renderBeamColumn(x, r) {
   const F = (v) => disp(v, "force"), Lq = (v) => disp(v, "length"), M = (v) => disp(v, "moment"), Sg = (v) => disp(v, "stress");
   const [f1, f2, f3, f4] = figures(4);
   const mk = [];
-  if (r.atP) mk.push({ x: Lq(r.atP.ymax), y: F(x.P), label: "Applied P", color: C.bad });
+  if (r.atP) mk.push({ x: Lq(Math.abs(r.atP.ymax)), y: F(x.P), label: "Applied P", color: C.bad });
   plot(f1, { title: "Load vs maximum deflection", xLabel: `δmax (${unit("length")})`, yLabel: `P (${unit("force")})`, xmin: 0,
     series: [{ name: "Second order", color: C.a, points: c.pd.map((p) => [Lq(p.ymax), F(p.P)]) }, { name: "Linear theory", color: C.b, dash: true, points: c.pd.map((p) => [Lq(p.ylin), F(p.P)]) },
       { name: "Pe", color: C.muted, dash: true, points: [[0, F(r.Pe)], [Lq(Math.max(...c.pd.map((p) => p.ymax))), F(r.Pe)]] }], markers: mk, ymax: F(r.Pe * 1.05) });

@@ -9,7 +9,8 @@
     "NASA: the relation is stated in the cited NASA/NACA report and section.",
     "classical: no NASA source was found; the relation is textbook engineering mechanics and is never presented as NASA-derived.",
     "fit: a closed form fitted to a NASA report figure; the digitised points are in figures below and the fit error is shown on the page.",
-    "A chart-based relation outside its figure's range shows 'unavailable: chart data not sourced'. No value is guessed."
+    "A chart-based relation outside its figure's range shows 'unavailable: chart data not sourced'. No value is guessed: kss beyond fig. 12(a) (hc/dc above 5) makes the web buckling stress and every later diagonal-tension result unavailable, and fig. 15 beyond d/hU = 1 and fig. 18 beyond ωd = 4 are unavailable.",
+    "The one exception is fig. 12(b) beyond t/t = 3, held at its end value because NACA TN 2661 section 7, example 1, p. 57 applies that hold (tU/t = 3.20 and tF/t large give Rh = Rd = 1.62); the hold is tagged with that source and warned. Below the solid part of fig. 12(b) the dashed part drawn in the figure is used, with a warning."
   ],
   "tabs": {
     "column": "Euler and Johnson column curves with the transition slenderness, an optional tangent-modulus curve from the Ramberg-Osgood fit, Pcr and the margin of safety against the entered load.",
@@ -34,7 +35,7 @@
     "TN 2661 takes the plastic web buckling stress from fig. 12(c), drawn only for 24S-T3 and 75S-T6. The page uses the TN 3781 eq. (A5) factor on the entered Ramberg-Osgood curve instead, so example 2's plastic τcr (16.10 ksi in the report) is not reproduced; its later steps are checked at the report's k.",
     "TN 3781 gives two shear plasticity factors: appendix A and fig. 10 use η = (Es/E)(1 − νe²)/(1 − ν²) (eq. A5); table 2 multiplies it by 0.83 + 0.17 Et/Es. A5 is the default; table 2 is an option.",
     "TN 2661 example 2 prints τcr,elastic = 16.55 ksi, but eq. (32) with its printed inputs gives 16.28 ksi (1.7 % lower). It also prints hc/d = 1.50 while hc/dc = 9.875/7 = 1.41; the printed kss = 6.70 matches fig. 12(a) at 1.41.",
-    "TN 2661 section 4.2 note 2 (use the buckling stress with the uprights disregarded when it is higher) is implemented as a long plate of width hc between the flanges with the flange coefficient Rd; the report does not spell out which restraint applies.",
+    "TN 2661 section 4.2 note 2 (use the buckling stress with the uprights disregarded when it is higher) is not checked: the report gives no kss for the uprights-disregarded (infinitely long) panel, so that stress is unavailable, τcr uses eq. (32) with the uprights, and a warning says note 2 could not be checked.",
     "The closed-form k_s(a/b) are classical approximations (Timoshenko and Gere); TN 3781 gives k_s only as a chart (fig. 22). They reproduce the exact square-plate values 9.34 (simply supported) and about 14.6 against 14.71 (clamped).",
     "The fixed-pinned FE Pcr is 0.24 % above π²EI/(0.7L)² because the exact effective-length factor is 0.699, not 0.7."
   ],

@@ -21,7 +21,12 @@ Every formula carries a source tag: `NASA` (report and section), `classical`
 (no NASA source found) or `fit` (a closed form fitted to a NASA report figure,
 with the fit error computed from the digitised points in `raw.json`). A
 chart-based relation outside its figure shows "unavailable: chart data not
-sourced" rather than a number.
+sourced" rather than a number: kss beyond fig. 12(a) (hc/dc above 5) blocks the
+web buckling stress and every later diagonal-tension result. The one exception
+is fig. 12(b) beyond t/t = 3, held at its end value as NACA TN 2661 section 7,
+example 1 (p. 57) does, and tagged with that source and a warning. TN 2661
+section 4.2 note 2 (uprights disregarded) is not checked, because the report
+gives no kss for that panel; a warning says so.
 
 The tests are `tests/stability.test.mjs` (Node: the self-test, the TN 2661
 worked examples, the FE and secant cross-checks, validation, exports and the

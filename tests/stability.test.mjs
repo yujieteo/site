@@ -112,6 +112,48 @@ test("chart relations outside their figure are unavailable, never extrapolated s
   assert.equal(S.c2Fig18(0.8).value, 0);
 });
 
+test("kss beyond fig. 12(a) makes the web buckling stress and everything after it unavailable", () => {
+  const x = { ...S.defaults("diagonal"), he: 2000, hc: 1980, hU: 1990 };
+  const r = S.solveDiagonal(x);
+  assert.match(r.error, /kss unavailable: chart data not sourced for hc\/dc = 10\.4/);
+  assert.match(r.warnings.join("\n"), /kss unavailable: chart data not sourced/);
+  for (const q of ["kss", "tauCrElastic", "tauCr", "k", "sigmaU", "checks"]) assert.ok(r[q] === null || r[q] === undefined, q);
+  assert.ok(r.sources.some((s) => s.id === "kssFit") && r.sources.some((s) => s.id === "tcr32"));
+  const doc = S.exportJSON("diagonal", x);
+  assert.equal(doc.results["τcr"], null);
+  assert.ok(doc.sources.length > 0);
+  assert.equal(S.diagonalCurves(x, 10).web.length, 0);
+  assert.ok(S.solveDiagonal({ ...x, he: 950, hc: 940, hU: 945 }).tauCr > 0, "hc/dc just under 5 is still solved");
+});
+
+test("section 4.2 note 2 is reported unchecked and τcr is eq. (32) with the uprights", () => {
+  const x = S.defaults("diagonal");
+  const r = S.solveDiagonal(x);
+  assert.equal(r.tauCrElasticNoUprights, null);
+  assert.match(r.noUprightsUnavailable, /unavailable: chart data not sourced - TN 2661 gives no kss for the uprights-disregarded \(infinitely long\) panel/);
+  assert.match(r.warnings.join("\n"), /note 2 .*could not be checked/);
+  const eq32 = r.kss * x.material.E * (x.t / x.dc) ** 2 * (r.Rh + 0.5 * (r.Rd - r.Rh) * (x.dc / x.hc) ** 3);
+  within(r.tauCrElastic, eq32, 1e-12, "τcr,elastic from eq. (32)");
+  const wide = S.solveDiagonal({ ...x, hc: 190, he: 200, hU: 195, d: 800, dc: 790 });
+  assert.equal(wide.tauCrElasticNoUprights, null);
+});
+
+test("fig. 12(b) beyond t/t = 3 is held at the end value and tagged with the TN 2661 section 7 source", () => {
+  const hold = "Hold of fig. 12(b) beyond t/t = 3 at the end value, as applied in NACA TN 2661 section 7, example 1, p. 57: tU/t = 3.20 and tF/t large give Rh = Rd = 1.62";
+  assert.equal(S.SOURCES.rHold.kind, "NASA");
+  assert.equal(S.SOURCES.rHold.text, hold);
+  const x = { ...S.defaults("diagonal"), tU: 3.2, tF: 2.5 };
+  const r = S.solveDiagonal(x);
+  assert.equal(r.Rh, S.restraintFig12b(3, "upper").value);
+  assert.ok(r.sources.some((s) => s.id === "rHold" && s.text === hold));
+  assert.ok(r.warnings.some((w) => w.startsWith("Rh:") && w.includes(hold)));
+  assert.ok(!S.solveDiagonal({ ...x, tU: 1.6 }).sources.some((s) => s.id === "rHold"));
+  assert.ok(!S.solveDiagonal({ ...x, restraint: "user" }).sources.some((s) => s.id === "rHold"));
+  const ex1 = S.solveDiagonal(S.tn2661Case(1));
+  assert.ok(ex1.sources.some((s) => s.id === "rHold"), "example 1 runs through the sourced hold");
+  assert.ok(Math.abs(ex1.Rh - 1.62) < 0.02);
+});
+
 test("figure fits stay within their stated error of the digitised NASA points", () => {
   const e = S.fitErrors();
   assert.ok(e.kss.maxRel < 0.02, `kss ${e.kss.maxRel}`);
@@ -186,8 +228,7 @@ test("built page is self-contained, carries the banner and registers its WebMCP 
   const html = await readFile(new URL("../visuals/stability/index.html", import.meta.url), "utf8");
   assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+stylesheet|https?:\/\/cdn/);
   assert.match(html, /class="banner"[^>]*><b>Not for certification\.<\/b>/);
-  const stub = await readFile(new URL("../data/visuals/stability.yaml", import.meta.url), "utf8");
-  const names = /webmcp_tools: \[(.*)\]/.exec(stub)[1].split(",").map((s) => s.trim());
+  const names = ["get_metadata", "get_current_analysis", "solve_stability", "run_self_tests"];
   const inert = () => new Proxy(function () {}, {
     get: (t, k) => (k === "modelContext" ? undefined : k === Symbol.iterator ? [][Symbol.iterator] : k === Symbol.toPrimitive ? () => 0 : inert()),
     set: () => true, apply: () => inert(), construct: () => inert(),

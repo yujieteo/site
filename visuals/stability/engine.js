@@ -81,6 +81,7 @@
     upright: { kind: "NASA", text: `Upright column check: double uprights σU ≤ column allowable at Le/ρ (section 4.10(b)); single uprights σU ≤ column yield stress and σUav = σU AUe/AU (eq. 38) ≤ column allowable at hU/(2ρ) (section 4.11(b)). Column allowable from the shared column-strength function. ${TN2661}` },
     kssFit: { kind: "fit", text: `kss = 5.03 + 3.26 (short/long)², fitted to ${TN2661} fig. 12(a) (theoretical coefficients for plates with simply supported edges, including π²/(12(1 − ν²)))` },
     rFit: { kind: "fit", text: `Restraint coefficients R = a [1 − exp(−(x/b)^c)] fitted to ${TN2661} fig. 12(b): upper curve (double uprights, and flanges; x = tU/t or tF/t) a = 1.6522, b = 1.0666, c = 1.374; lower curve (single uprights) a = 1.2936, b = 1.1173, c = 2.2094` },
+    rHold: { kind: "NASA", text: "Hold of fig. 12(b) beyond t/t = 3 at the end value, as applied in NACA TN 2661 section 7, example 1, p. 57: tU/t = 3.20 and tF/t large give Rh = Rd = 1.62" },
     smaxFit: { kind: "fit", text: `σUmax/σU = 1 + (1 − k)(0.78 − 0.65 d/hU), fitted to ${TN2661} fig. 15 (0 ≤ d/hU ≤ 1)` },
     c2Fit: { kind: "fit", text: `C2 = u²(0.09234 − 0.06227u + 0.05784u² − 0.01187u³), u = ωd − 1, C2 = 0 for ωd ≤ 1, fitted to ${TN2661} fig. 18 (0 ≤ ωd ≤ 4)` },
   };
@@ -105,10 +106,10 @@
   function restraintFig12b(x, curve) {
     const p = curve === "lower" ? FIT.rLower : FIT.rUpper;
     const notes = [];
-    let xe = x;
-    if (x > p.range[1]) { xe = p.range[1]; notes.push(`thickness ratio ${fmt(x)} is beyond fig. 12(b) (ends at 3); held at the value at 3`); }
+    const held = x > p.range[1];
+    if (held) notes.push(`thickness ratio ${fmt(x)} is beyond fig. 12(b) (ends at 3); held at the value at 3 (${SOURCES.rHold.text})`);
     else if (x < p.solidFrom) notes.push(`thickness ratio ${fmt(x)} is on the dashed (extrapolated) part of fig. 12(b)`);
-    return { value: weibull(p, xe), notes };
+    return { value: weibull(p, held ? p.range[1] : x), notes, held };
   }
   function smaxRatioFig15(k, dOverHu) {
     if (!(dOverHu >= FIT.smax.range[0] && dOverHu <= FIT.smax.range[1])) return { unavailable: `unavailable: chart data not sourced for d/hU = ${fmt(dOverHu)} (fig. 15 covers 0 to 1)` };
@@ -604,43 +605,45 @@
     if (inp.restraint === "user") { Rh = c.num(inp, "Rh", "Restraint Rh"); Rd = c.num(inp, "Rd", "Restraint Rd"); }
     if (dc > d) c.errors.push({ field: "dc", message: "Clear spacing dc must be ≤ d" });
     c.done();
-    const m = inp.material, warnings = [], notes = [];
+    const m = inp.material, warnings = [];
     // 4.1 effective upright area
     const AUe = single ? AU / (1 + (e / rho) ** 2) : AU;
     const AUedt = AUe / (d * t);
     // 4.2 buckling stress
+    let held = false;
     if (inp.restraint !== "user") {
       const rh = restraintFig12b(tU / t, single ? "lower" : "upper"), rd = restraintFig12b(tF / t, "upper");
-      Rh = rh.value; Rd = rd.value;
+      Rh = rh.value; Rd = rd.value; held = rh.held || rd.held;
       for (const n of rh.notes) warnings.push(`Rh: ${n}`);
       for (const n of rd.notes) warnings.push(`Rd: ${n}`);
     }
+    const src = ["aue", "kssFit", ...(inp.restraint === "user" ? [] : ["rFit"]), ...(held ? ["rHold"] : []), "tcr32", "tcrPlast", "k27", "idt", "c1", "tmax", "c2Fit", "smaxFit", "le35", "upright", "wagner", "euler", "johnson", "ro"].map(source);
     const ratio = Math.max(hc, dc) / Math.min(hc, dc);
+    const tau = S / (he * t);
+    if (ratio > FIT.kss.range[1]) {
+      const why = `kss unavailable: chart data not sourced for hc/dc = ${fmt(ratio)} (fig. 12(a) covers 1 to 5)`;
+      warnings.push(why);
+      return { AUe, AUedt, Rh, Rd, ratio, kss: null, tau, error: why, warnings, sources: src };
+    }
     const kss = kssFig12a(ratio);
-    if (ratio > FIT.kss.range[1]) warnings.push(`hc/dc ratio ${fmt(ratio)} is beyond fig. 12(a) (1 to 5); the kss fit is extrapolated`);
-    const tauCrElasticUprights = dc < hc
+    const tauCrElastic = dc < hc
       ? kss * m.E * (t / dc) ** 2 * (Rh + 0.5 * (Rd - Rh) * (dc / hc) ** 3)
       : kss * m.E * (t / hc) ** 2 * (Rd + 0.5 * (Rh - Rd) * (hc / dc) ** 3);
-    // Note 2 of section 4.2: uprights disregarded = long plate of width hc
-    // between the flanges (edges along the flanges, coefficient Rd).
-    const tauCrElasticNoUprights = FIT.kss.A * m.E * (t / hc) ** 2 * Rd;
-    const usedNoUprights = tauCrElasticUprights < tauCrElasticNoUprights;
-    const tauCrElastic = Math.max(tauCrElasticUprights, tauCrElasticNoUprights);
-    if (usedNoUprights) notes.push("TN 2661 section 4.2 note 2: the buckling stress with the uprights disregarded is higher and is used");
+    const noUprightsUnavailable = "unavailable: chart data not sourced - TN 2661 gives no kss for the uprights-disregarded (infinitely long) panel";
+    warnings.push(`TN 2661 section 4.2 note 2 (use the buckling stress with the uprights disregarded when it is higher) could not be checked: ${noUprightsUnavailable}; τcr uses eq. (32) with the uprights`);
     const pl = shearPlasticity(m, tauCrElastic, "A5");
-    if (pl.error) return { error: `Web plasticity iteration did not converge: ${pl.error}`, warnings, sources: [] };
+    if (pl.error) return { AUe, AUedt, Rh, Rd, ratio, kss, tauCrElastic, tau, error: `Web plasticity iteration did not converge: ${pl.error}`, warnings, sources: src };
     const tauCr = pl.tau;
     if (pl.eta < 0.99) warnings.push(`Web buckling plasticity correction active: η = ${fmt(pl.eta)}`);
     // 4.3 nominal shear, 4.4 k
-    const tau = S / (he * t), loading = tau / tauCr;
+    const loading = tau / tauCr;
     const k = kFactor(loading);
     if (loading <= 1) warnings.push(`τ/τcr = ${fmt(loading)} ≤ 1: web not buckled, no diagonal tension yet (k = 0)`);
     // 4.5, 4.6 upright stress and angle
     const twoAFht = heavy ? Infinity : 2 * AF / (he * t);
     const ang = idtAngle({ k, tau, E: m.E, nu: m.nu, AUedt, twoAFht, heavyFlanges: heavy });
     const pdt = wagner({ tau, AUedt, twoAFht, heavyFlanges: heavy });
-    const base = { AUe, AUedt, Rh, Rd, ratio, kss, tauCrElastic, tauCrElasticUprights, tauCrElasticNoUprights, usedNoUprights, tauCr, etaWeb: pl.eta, tau, loading, k, pdt, notes };
-    const src = ["aue", "kssFit", ...(inp.restraint === "user" ? [] : ["rFit"]), "tcr32", "tcrPlast", "k27", "idt", "c1", "tmax", "c2Fit", "smaxFit", "le35", "upright", "wagner", "euler", "johnson", "ro"].map(source);
+    const base = { AUe, AUedt, Rh, Rd, ratio, kss, tauCrElastic, tauCrElasticNoUprights: null, noUprightsUnavailable, tauCr, etaWeb: pl.eta, tau, loading, k, pdt };
     if (!ang.converged) return { ...base, error: `Angle of diagonal tension: ${ang.reason}`, warnings, sources: src };
     const alpha = ang.alpha, s2 = Math.sin(2 * alpha);
     const sigmaU = k > 0 ? -k * tau * Math.tan(alpha) / (AUedt + 0.5 * (1 - k)) : 0;
