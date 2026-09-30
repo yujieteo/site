@@ -81,7 +81,7 @@
     {
       "id": "ipe",
       "label": "Rolled I-section (IPE 300 proportions)",
-      "note": "Parallel-flange I with 15 mm root fillets. J is n/a because the fillets are outside the thin-walled formula; set the root radii to 0 to see it.",
+      "note": "Parallel-flange I with 15 mm root fillets. J is n/a because the thin-walled formula is verified only for sharp corners and a thicker wall at most 1.4 times the thinner, and this section has root fillets and tf/tw = 1.51.",
       "model": {
         "sectionlab": 1,
         "title": "I 300 × 150 × 7.1 × 10.7",
