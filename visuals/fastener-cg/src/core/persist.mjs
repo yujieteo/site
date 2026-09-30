@@ -301,7 +301,7 @@ function resultSections(pattern, result) {
       ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
       : noMarginSummary(result.fasteners.map((f) => f.checks)).text,
     "",
-    "IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the positive tension; unloading counts as zero.",
+    `IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the bolt tension (external tension plus prying, through preload when enabled); unloading counts as zero external tension${result.tensionSettings.preload ? ", so the bolt load is P_max" : ""}.`,
     "",
     mdTable(["id", `Rs (${u("force")})`, `Rt (${u("force")})`, `Fs (${u("force")})`, `Ft (${u("force")})`, "IF(1)", "k*", "MS interaction", "governing MS", "governing mode"],
       result.fasteners.map((f) => {
@@ -309,10 +309,29 @@ function resultSections(pattern, result) {
         const g = f.checks.governing;
         return [f.id, m.Rs, m.Rt, m.Fs ?? "", m.Ft ?? "", m.status === "not-evaluated" ? "" : m.IF1, m.status === "ok" ? m.kStar : "", marginText(m), g ? (Number.isFinite(g.ms) ? g.ms : "∞") : "not evaluated", g ? g.label : ""];
       })),
+    ...tensionSection(result, u),
     "", "## Equilibrium closure", "",
     mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
     "", ...issueTable(result.issues),
   ];
+}
+
+function tensionSection(result, u) {
+  const ts = result.tensionSettings;
+  if (!ts || !(ts.prying || ts.preload)) return [];
+  const head = ["id", `T external (${u("force")})`];
+  if (ts.prying) head.push("prying", "alpha'", `Q (${u("force")})`);
+  if (ts.preload) head.push(`P_max + phi*T (${u("force")})`, `clamp force (${u("force")})`, `separation load (${u("force")})`);
+  head.push(`bolt load F_b (${u("force")})`, "joint");
+  return ["", `## Bolt tension (${[ts.prying ? `prying, flange ${ts.flangePlate}` : "", ts.preload ? "preload" : ""].filter(Boolean).join("; ")})`, "",
+    mdTable(head, result.fasteners.map((f) => {
+      const t = f.checks.tension;
+      const row = [f.id, t.Text];
+      if (ts.prying) row.push(t.prying.method, t.prying.method === "t-stub" && t.prying.alphaRaw !== null ? t.prying.alpha : "", t.Q);
+      if (ts.preload) row.push(t.preload.shared, t.preload.clamp, t.preload.separationLoad);
+      row.push(t.Fb, f.checks.clamp.status);
+      return row;
+    }))];
 }
 
 function issueTable(issues) {

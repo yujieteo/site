@@ -10,6 +10,7 @@
  */
 
 import { solveScale } from "./interaction.mjs";
+import { boltLoad } from "./tension.mjs";
 import { issue } from "./warnings.mjs";
 
 export const MODES = { interaction: "Shear-tension interaction" };
@@ -51,26 +52,32 @@ export function validateCheckInputs(pattern, resolved) {
  * unloading counts as zero (N-006). Rs and T within zeroTol of the largest
  * |Rs| and |T| in the group are round-off and count as zero.
  */
-export function fastenerChecks(fasteners, settings, zeroTol) {
+export function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ prying: { kind: "off" }, preload: null })) {
   const { a, b } = settings.interaction;
   const issues = [];
+  const notComputed = [], preloadOnly = [];
+  const idOf = (entry) => entry.split(" ")[0];
   const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.shear.Rs)), 0);
   const tensionFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.axial.T)), 0);
   const results = fasteners.map((f) => {
     const Rs = f.shear.Rs > shearFloor ? f.shear.Rs : 0;
-    const Rt = f.axial.T > tensionFloor ? f.axial.T : 0;
+    const Text = f.axial.T > tensionFloor ? f.axial.T : 0;
+    // Tension chain: external T through prying and preload to the bolt load
+    // F_b, re-evaluated at every load multiplier k (preload does not scale).
+    const chain = tensionFor(f);
+    const tension = boltLoad(Text, chain.prying, chain.preload);
+    const tensionAt = (k) => boltLoad(k * Text, chain.prying, chain.preload).Fb;
+    const Rt = tension.Fb;
     const Fs = f.shearAllowable, Ft = f.tensionAllowable;
     const missing = [Fs === null || Fs === undefined ? "Fs" : null, Ft === null || Ft === undefined ? "Ft" : null].filter(Boolean);
     let interaction;
     if (missing.length) {
-      interaction = { mode: "interaction", label: MODES.interaction, status: "not-evaluated", ms: null, missing, Rs, Rt, a, b };
+      interaction = { mode: "interaction", label: MODES.interaction, status: "not-evaluated", ms: null, missing, Rs, Rt, Text, Q: tension.Q, a, b };
     } else {
-      // Tension scales with the load; the prying and preload chain (M3) plugs in here.
-      const tensionAt = (k) => k * Rt;
       const s = solveScale({ Rs, tensionAt, Fs, Ft, a, b });
-      interaction = { mode: "interaction", label: MODES.interaction, ...s, Rs, Rt, Fs, Ft, a, b, shearRatio: Rs / Fs, tensionRatio: Rt / Ft };
-      if (s.status === "not-computed") issues.push(issue("W-008", `${f.id}: ${s.reason}. MS not computed.`, { fastener: f.id }));
-      if (s.status === "preload") issues.push(issue("W-017", `${f.id}: IF(0) = ${s.IF0.toPrecision(4)} ≥ 1. MS not computed.`, { fastener: f.id }));
+      interaction = { mode: "interaction", label: MODES.interaction, ...s, Rs, Rt, Text, Q: tension.Q, Fs, Ft, a, b, shearRatio: Rs / Fs, tensionRatio: Rt / Ft };
+      if (s.status === "not-computed") notComputed.push(`${f.id} (${s.reason})`);
+      if (s.status === "preload") preloadOnly.push(`${f.id} (IF(0) = ${s.IF0.toPrecision(4)})`);
     }
     const modes = [interaction];
     const evaluated = modes.filter((m) => m.status === "ok" || m.status === "unloaded");
@@ -80,10 +87,24 @@ export function fastenerChecks(fasteners, settings, zeroTol) {
       const g = evaluated.reduce((lo, m) => (m.ms < lo.ms ? m : lo));
       governing = { mode: g.mode, label: g.label, ms: g.ms };
     }
-    return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: f.axial.unloading && !missing.length };
+    const clamp = tension.preload
+      ? { status: tension.preload.separated ? "separated" : "clamped", clamp: tension.preload.clamp, separationLoad: tension.preload.separationLoad }
+      : { status: "no preload" };
+    return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: f.axial.unloading && !missing.length, tension, clamp };
   });
+  if (notComputed.length) issues.push(issue("W-008", `MS not computed for ${notComputed.join(", ")}.`, { fasteners: notComputed.map(idOf) }));
+  if (preloadOnly.length) issues.push(issue("W-017", `IF(0) ≥ 1, so MS is not computed, for ${preloadOnly.join(", ")}.`, { fasteners: preloadOnly.map(idOf) }));
+  const separated = results.filter((r) => r.clamp.status === "separated");
+  if (separated.length) {
+    const loads = separated.map((r) => `${r.id} F_b = ${r.tension.Fb.toPrecision(4)} (${r.tension.preload.branch === "separated" ? "T + Q" : "P_max + φ·T + Q"})`);
+    issues.push(issue("W-013", `Clamp force P_min − (1 − φ)·T has reached zero on ${separated.map((r) => r.id).join(", ")}: the joint is separated there. Bolt load ${loads.join("; ")}.`, { fasteners: separated.map((r) => r.id) }));
+  }
+  const manual = results.filter((r) => r.tension.prying.method === "manual").map((r) => r.id);
+  if (manual.length) issues.push(issue("W-012", `Manual prying factor replaces the T-stub result on ${manual.join(", ")} (bolt tension = factor × T).`, { fasteners: manual }));
+  if (settings.preload?.enabled) issues.push(issue("N-005", "Clamp force is reported, but no friction-slip capacity is claimed."));
+  else if (results.some((r) => r.tension.Text > 0)) issues.push(issue("N-007", "Preload is disabled: the bolt load is the external tension plus prying, T + Q."));
   const zeroed = results.filter((r) => r.unloadingCountedZero).map((r) => r.id);
-  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero tension: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
+  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero external tension${settings.preload?.enabled ? ", so their bolt load is P_max" : ""}: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
   const withMargin = results.filter((r) => r.governing && Number.isFinite(r.governing.ms));
   const critical = withMargin.length ? withMargin.reduce((lo, r) => (r.governing.ms < lo.governing.ms ? r : lo)) : null;
   return {

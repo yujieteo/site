@@ -12,6 +12,7 @@ import { reduceLoad } from "./loads.mjs";
 import { elasticShear, elasticAxialCentroid } from "./elastic.mjs";
 import { issue, hasErrors, sortIssues } from "./warnings.mjs";
 import { validateCheckInputs, fastenerChecks } from "./checks.mjs";
+import { tensionInputs, validateTensionInputs } from "./tension.mjs";
 
 export const EXTENT_WARNING = 1e4;
 export const CLOSURE_TOL = 1e-9;
@@ -45,6 +46,10 @@ export function solve(pattern) {
 
   const settings = pattern.settings || {};
   const fasteners = pattern.fasteners.map((f) => resolveFastener(pattern, f));
+  // Prying bends the flange of the loaded plate: its thickness is t and its flange strength Fp.
+  const flangePlate = (pattern.plates || []).find((p) => p.id === pattern.load?.appliedPlate) || null;
+  issues.push(...validateTensionInputs(pattern, fasteners, flangePlate));
+  if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
   const props = sectionProperties(fasteners);
   const load = pattern.load;
   const red = reduceLoad(load, props.Cs, props.Ca);
@@ -104,7 +109,7 @@ export function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
-  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL);
+  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL, (f) => tensionInputs(f, settings, flangePlate));
   issues.push(...checks.issues);
   fastenerResults.forEach((f, i) => { f.checks = checks.fasteners[i]; });
   return {
@@ -113,6 +118,7 @@ export function solve(pattern) {
     critical: checks.critical,
     evaluatedCount: checks.evaluatedCount,
     interaction: { a: settings.interaction.a, b: settings.interaction.b },
+    tensionSettings: { prying: !!settings.prying?.enabled, preload: !!settings.preload?.enabled, flangePlate: flangePlate ? flangePlate.id : null },
     unitSystem: pattern.unitSystem,
     props,
     reduced: red,

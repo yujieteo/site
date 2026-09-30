@@ -24,6 +24,7 @@ export function summarize(result) {
       Rs: f.shear.Rs, directionDeg: f.shear.angleDeg, T: f.axial.T, unloading: !!f.axial.unloading,
       checks: f.checks.modes.map(({ mode, status, IF1, kStar, ms, missing }) => ({ mode, status, IF1, kStar: Number.isFinite(kStar) ? kStar : null, ms: Number.isFinite(ms) ? ms : null, missing: missing || [] })),
       governingMS: f.checks.governing && Number.isFinite(f.checks.governing.ms) ? f.checks.governing.ms : null,
+      boltTension: { external: f.checks.tension.Text, prying: f.checks.tension.Q, pryingMethod: f.checks.tension.prying.method, boltLoad: f.checks.tension.Fb, clampForce: f.checks.tension.preload ? f.checks.tension.preload.clamp : null, joint: f.checks.clamp.status },
     })),
     interaction: result.interaction,
     critical: result.critical,

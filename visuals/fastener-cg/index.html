@@ -108,6 +108,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .counts{display:flex;gap:.8rem;font-size:.8125rem;color:var(--muted);margin:0 0 .5rem}
 .pass{color:var(--ok);font-weight:600}
 .fail{color:var(--bad);font-weight:600}
+.pending{color:var(--warn);font-weight:600}
 .blocked{border:1px dashed var(--bad);border-radius:var(--r);padding:.8rem;color:var(--muted)}
 .verify-case>summary{cursor:pointer}
 code{font:.875em var(--mono)}
@@ -116,6 +117,14 @@ dialog{border:1px solid var(--border);border-radius:calc(var(--r)*1.5);backgroun
 dialog::backdrop{background:rgb(0 0 0/.35)}
 dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .method li{margin:.3rem 0}
+label.check{display:flex;align-items:center;gap:.45rem;font-weight:600;font-size:.9rem;min-height:2.25rem;cursor:pointer}
+label.check input{width:1.05rem;height:1.05rem;margin:0}
+.sub{border-left:2px solid var(--grid);padding-left:.7rem;margin:.1rem 0 .6rem}
+.sub[hidden]{display:none}
+details.torque{margin-top:.5rem}
+#override-editor .row{margin-top:.4rem}
+#override-editor h4{margin:.8rem 0 .2rem;font-size:.85rem}
+input.override{border-color:var(--axial);font-weight:600}
 .presets{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
 .formula{font:.8125rem var(--mono);color:var(--fg)}
 .inline-issue{display:inline-block;font:600 .66rem var(--mono);border-radius:999px;padding:0 .4rem;margin-left:.3rem;border:1px solid currentColor;vertical-align:middle;white-space:nowrap}
@@ -281,10 +290,53 @@ td.status{color:var(--muted);font-size:.78rem}
       <p class="note">MS is the exact multiplier on the whole applied load at which IF reaches 1. With (a, b) ≠ (1, 1) it differs from 1/IF − 1 (W-006); the plain IF(1) is shown beside it.</p>
     </div>
 
+    <div class="card" id="tension-card">
+      <h3>Prying and preload</h3>
+      <label class="check"><input type="checkbox" data-path="settings.prying.enabled"> <span>Prying (T-stub)</span></label>
+      <div class="sub" data-show="settings.prying.enabled">
+        <p class="note formula">b' = b − D/2, a' = min(a, 1.25b) + D/2, ρ = b'/a', δ = 1 − d_h/p, t_c = √(4Bb'/(pFp)), α' = (1/δ)[(T/B)(t_c/t)² − 1] ∈ [0, 1], Q = Bδα'ρ(t/t_c)²</p>
+        <div class="row">
+          <label class="f"><span>b, bolt line to web (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.prying.b"></label>
+          <label class="f"><span>a, edge distance (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.prying.a"></label>
+        </div>
+        <div class="row">
+          <label class="f"><span>p, tributary width (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.prying.p"></label>
+          <label class="f"><span>d_h, hole diameter (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.prying.holeDiameter"></label>
+        </div>
+        <p class="note" id="spacing-hint"></p>
+        <div class="row">
+          <label class="f"><span>B, bolt strength (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.prying.boltStrengthB"></label>
+          <label class="f"><span>Manual factor (overrides T-stub)</span><input type="number" step="any" data-path="defaults.prying.manualFactor" placeholder="none"></label>
+        </div>
+        <p class="note">Flange thickness t and flange strength Fp come from the loaded plate (Plates card). A manual factor f makes the bolt tension f·T (W-012).</p>
+      </div>
+      <label class="check"><input type="checkbox" data-path="settings.preload.enabled"> <span>Preload</span></label>
+      <div class="sub" data-show="settings.preload.enabled">
+        <p class="note formula">F_b = max(P_max + φT, T) + Q; clamp = P_min − (1 − φ)T; separation at T = P_min/(1 − φ)</p>
+        <div class="row three">
+          <label class="f"><span>P_max (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.preload.pMax"></label>
+          <label class="f"><span>P_min (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="defaults.preload.pMin"></label>
+          <label class="f"><span>φ, load share</span><input type="number" step="any" data-path="defaults.preload.phi" placeholder="required"></label>
+        </div>
+        <details class="gen torque">
+          <summary>Torque calculator, T = K·D·P</summary>
+          <div class="row three">
+            <label class="f"><span>Torque (<i data-unit="moment"></i>)</span><input type="number" step="any" id="tq-torque"></label>
+            <label class="f"><span>Nut factor K</span><input type="number" step="any" id="tq-k" placeholder="keyed"></label>
+            <label class="f"><span>D (<i data-unit="length"></i>)</span><input type="number" step="any" id="tq-d"></label>
+          </div>
+          <p class="note" id="tq-out" role="status"></p>
+          <div class="presets"><button class="btn" type="button" data-torque="pMax">Fill P_max</button><button class="btn" type="button" data-torque="pMin">Fill P_min</button></div>
+        </details>
+        <p class="note">φ is required and has no default. Friction slip is not evaluated (N-005).</p>
+      </div>
+      <div id="override-editor"></div>
+    </div>
+
     <div class="card">
       <h3>Plates</h3>
       <div id="plates"></div>
-      <p class="note">Outlines are drawn on the canvas. Bearing, tear-out and a second plate arrive with milestone M4.</p>
+      <p class="note">Outlines are drawn on the canvas. The loaded plate's thickness and flange strength Fp feed prying. Bearing, tear-out and a second plate arrive with milestone M4.</p>
     </div>
   </div>
 </div>
@@ -325,6 +377,8 @@ td.status{color:var(--muted);font-size:.78rem}
     <li><b>Elastic in-plane shear</b>: direct Rd = F ks/Σks; torsional Rtx = −Mz,s ks v / J, Rty = +Mz,s ks u / J.</li>
     <li><b>Axial method (a)</b>, rigid plate with the neutral axis through Ca: D = Ixx Iyy − Ixy², θx = (Iyy Mx,a + Ixy My,a)/D, θy = (Ixy Mx,a + Ixx My,a)/D, T = ka(Fz/Ka + θx q − θy p). Negative T is unloading (clamp-up), shown as computed.</li>
     <li><b>Interaction</b>: IF(k) = (k Rs/Fs)^a + (k Rt/Ft)^b with separate exponents a and b (presets: elliptical (2, 2), the default, and linear (1, 1)). Rt is the positive tension; unloading counts as zero (N-006). The margin is the exact load scale factor, MS = k* − 1 with IF(k*) = 1, found by a bracketed Brent search (tolerance 1e-12 on k, 200 iterations); a failed solve shows “MS not computed” (W-008) and never a substitute number. For a = b = 1 it equals 1/IF − 1. The governing MS of a fastener is its lowest margin across modes, and the critical fastener has the lowest governing MS.</li>
+    <li><b>Prying</b> (T-stub, keyed B and Fp, no code factor built in) applies only to positive external tension T: a is limited to 1.25·b; b' = b − D/2, a' = a + D/2, ρ = b'/a', δ = 1 − d_h/p, t_c = √(4Bb'/(pFp)), α' = (1/δ)[(T/B)(t_c/t)² − 1] clamped to [0, 1], Q = Bδα'ρ(t/t_c)². t and Fp are the loaded plate's thickness and flange strength. A manual amplification factor f replaces the T-stub with a bolt tension f·T (W-012).</li>
+    <li><b>Preload</b> P_max, P_min and load-sharing factor φ (required, 0 &lt; φ &lt; 1): F_b = max(P_max + φT, T) + Q, clamp force P_min − (1 − φ)T, separation load P_min/(1 − φ). Once clamp force reaches zero the joint is separated (W-013). F_b replaces the tension in the interaction and is re-evaluated at every load multiplier k; preload itself does not scale. Clamp force is reported but no friction-slip capacity is claimed (N-005). With preload off the tension is T + Q.</li>
     <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
     <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
   </ul>
@@ -958,9 +1012,180 @@ function solveScale(input, { tol = K_TOL, maxIter = MAX_ITER } = {}) {
 return { PRESETS, K_TOL, MAX_ITER, brent, interactionValue, solveScale };
 })();
 
-/* ---- core/checks.mjs ---- */
+/* ---- core/tension.mjs ---- */
 const __m7 = (() => {
+const { issue } = __m1;
+/* Prying and preload: the tension chain from external tension T to the
+ * bolt load that feeds the interaction (spec 5.6).
+ *
+ * Prying (T-stub, Kulak/AISC style, keyed B and Fp so no code factor is
+ * built in) acts only on positive external tension:
+ *   a_used = min(a, 1.25·b)
+ *   b' = b − D/2    a' = a_used + D/2    ρ = b'/a'    δ = 1 − d_h/p
+ *   t_c = √(4·B·b' / (p·Fp))
+ *   α'  = (1/δ)·[(T/B)·(t_c/t)² − 1], clamped to 0 ≤ α' ≤ 1
+ *   Q   = B·δ·α'·ρ·(t/t_c)²   (Q = 0 when α' ≤ 0)
+ * A manual amplification factor f overrides the T-stub: the bolt sees f·T,
+ * so Q = (f − 1)·T (W-012).
+ *
+ * Preload (P_max, P_min and load-sharing factor φ, 0 < φ < 1):
+ *   bolt load        F_b = max(P_max + φ·T, T) + Q
+ *   clamp force      C   = P_min − (1 − φ)·T
+ *   separation load  T_sep = P_min / (1 − φ)
+ * The max(…) keeps F_b continuous through separation; once C ≤ 0 the joint
+ * is separated (W-013). Prying Q is added to the bolt load (conservative).
+ * With preload off the tension used is T + Q.
+ */
+
+
+
+const A_LIMIT = 1.25;
+
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+const given = (v) => v !== null && v !== undefined && v !== "";
+
+/* T-stub prying for one fastener at external tension T ≥ 0. */
+function tStubPrying(T, { B, b, a, p, dh, D, t, Fp }) {
+  const aUsed = Math.min(a, A_LIMIT * b);
+  const bP = b - D / 2, aP = aUsed + D / 2;
+  const rho = bP / aP, delta = 1 - dh / p;
+  const tc = Math.sqrt((4 * B * bP) / (p * Fp));
+  const base = { method: "t-stub", aUsed, aLimited: aUsed < a, bP, aP, rho, delta, tc, t, B };
+  if (!(T > 0)) return { ...base, alphaRaw: null, alpha: 0, Q: 0 };
+  const alphaRaw = (1 / delta) * ((T / B) * (tc / t) ** 2 - 1);
+  const alpha = Math.min(Math.max(alphaRaw, 0), 1);
+  const Q = alpha > 0 ? B * delta * alpha * rho * (t / tc) ** 2 : 0;
+  return { ...base, alphaRaw, alpha, Q };
+}
+
+/* Bolt load and clamp state at external tension T (≥ 0). `prying` is
+ * { kind: "off" } | { kind: "manual", factor } | { kind: "t-stub", params };
+ * `preload` is null or { pMax, pMin, phi }. */
+function boltLoad(T, prying, preload) {
+  const Text = Math.max(T, 0);
+  let pry = { method: "off", Q: 0 };
+  if (prying.kind === "manual") pry = { method: "manual", factor: prying.factor, Q: Text > 0 ? (prying.factor - 1) * Text : 0 };
+  else if (prying.kind === "t-stub") pry = tStubPrying(Text, prying.params);
+  const Q = pry.Q;
+  if (!preload) return { Text, prying: pry, Q, preload: null, Fb: Text + Q };
+  const { pMax, pMin, phi } = preload;
+  const shared = pMax + phi * Text;
+  const branch = shared >= Text ? "preloaded" : "separated";
+  const clamp = pMin - (1 - phi) * Text;
+  return {
+    Text, prying: pry, Q,
+    preload: { pMax, pMin, phi, shared, branch, clamp, separationLoad: pMin / (1 - phi), separated: clamp <= 0 },
+    Fb: Math.max(shared, Text) + Q,
+  };
+}
+
+/* Per-fastener prying and preload inputs, resolved. `plate` supplies the
+ * flange thickness t and strength Fp. Returns { prying, preload } in the
+ * shape boltLoad expects. */
+function tensionInputs(f, settings, plate) {
+  const pryOn = !!settings.prying?.enabled, preOn = !!settings.preload?.enabled;
+  let prying = { kind: "off" };
+  if (pryOn) {
+    const pr = f.prying || {};
+    if (given(pr.manualFactor)) prying = { kind: "manual", factor: pr.manualFactor };
+    else prying = { kind: "t-stub", params: { B: pr.boltStrengthB, b: pr.b, a: pr.a, p: pr.p, dh: pr.holeDiameter, D: f.diameter, t: plate?.thickness, Fp: plate?.flangeStrength } };
+  }
+  const pl = f.preload || {};
+  const preload = preOn ? { pMax: pl.pMax, pMin: pl.pMin, phi: pl.phi } : null;
+  return { prying, preload };
+}
+
+/*
+ * Input checks for enabled prying and preload: E-007 (missing), E-002
+ * (not a number or inconsistent geometry), E-009 (φ), E-014 (P_max < P_min).
+ * `resolved` are fasteners with defaults merged; `plate` the flange plate.
+ */
+function validateTensionInputs(pattern, resolved, plate) {
+  const issues = [];
+  const settings = pattern.settings || {};
+  const where = (f, key) => (f.overrides && hasPath(f.overrides, key) ? { fastener: f.id, field: key } : { field: `defaults.${key}` });
+  const seen = new Set();
+  const push = (id, detail, opts) => {
+    const key = `${id}|${opts.fastener || ""}|${opts.field}|${detail}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    issues.push(issue(id, detail, opts));
+  };
+  const originals = new Map((pattern.fasteners || []).map((f) => [f.id, f]));
+  if (settings.prying?.enabled) {
+    const plateLabel = plate ? plate.id : "the loaded plate";
+    const tStub = resolved.some((f) => !given(f.prying?.manualFactor));
+    if (tStub && !plate) push("E-007", "Prying needs the loaded plate (flange thickness t and flange strength Fp), but it does not exist.", { field: "load.appliedPlate" });
+    else if (tStub && !given(plate.thickness)) push("E-007", `Prying needs flange thickness t: ${plateLabel} thickness is not entered.`, { field: `plates.${plate.id}.thickness` });
+    else if (tStub && !(isNum(plate.thickness) && plate.thickness > 0)) push("E-002", `${plateLabel} thickness must be a positive number.`, { field: `plates.${plate.id}.thickness` });
+    for (const f of resolved) {
+      const o = originals.get(f.id) || {};
+      const pr = f.prying || {};
+      if (given(pr.manualFactor)) {
+        const at = where(o, "prying.manualFactor");
+        if (!(isNum(pr.manualFactor) && pr.manualFactor >= 1)) push("E-002", `${at.fastener ? `${f.id}: m` : "M"}anual prying factor must be a number ≥ 1 (is ${pr.manualFactor}).`, at);
+        continue;
+      }
+      if (plate && !given(plate.flangeStrength)) push("E-007", `Prying needs flange strength Fp: ${plateLabel} flange strength is not entered.`, { field: `plates.${plate.id}.flangeStrength` });
+      else if (plate && !(isNum(plate.flangeStrength) && plate.flangeStrength > 0)) push("E-002", `${plateLabel} flange strength Fp must be a positive number.`, { field: `plates.${plate.id}.flangeStrength` });
+      const need = [["diameter", "diameter D", f.diameter], ["prying.b", "distance b", pr.b], ["prying.a", "edge distance a", pr.a],
+        ["prying.p", "tributary width p", pr.p], ["prying.holeDiameter", "hole diameter d_h", pr.holeDiameter], ["prying.boltStrengthB", "bolt reference strength B", pr.boltStrengthB]];
+      let complete = true;
+      for (const [key, label, v] of need) {
+        const at = where(o, key);
+        if (!given(v)) { push("E-007", `Prying needs ${label}${at.fastener ? ` for ${f.id}` : " (group default)"}.`, at); complete = false; }
+        else if (!(isNum(v) && v > 0)) { push("E-002", `${label} must be a positive number (is ${v}).`, at); complete = false; }
+      }
+      if (!complete) continue;
+      const bAt = where(o, "prying.b"), pAt = where(o, "prying.p");
+      if (!(pr.b > f.diameter / 2)) push("E-002", `${bAt.fastener ? `${f.id}: p` : "P"}rying distance b (${pr.b}) must exceed D/2 (${f.diameter / 2}) so b' > 0.`, bAt);
+      if (!(pr.p > pr.holeDiameter)) push("E-002", `${pAt.fastener ? `${f.id}: t` : "T"}ributary width p (${pr.p}) must exceed the hole diameter (${pr.holeDiameter}) so δ > 0.`, pAt);
+    }
+  }
+  if (settings.preload?.enabled) {
+    for (const f of resolved) {
+      const o = originals.get(f.id) || {};
+      const pl = f.preload || {};
+      const phiAt = where(o, "preload.phi");
+      if (!(isNum(pl.phi) && pl.phi > 0 && pl.phi < 1)) {
+        push("E-009", given(pl.phi) ? `φ = ${pl.phi}${phiAt.fastener ? ` for ${f.id}` : ""}; it must satisfy 0 < φ < 1.` : `Preload is enabled but φ is not entered${phiAt.fastener ? ` for ${f.id}` : ""}; it has no default.`, phiAt);
+      }
+      let both = true;
+      for (const [key, label] of [["pMax", "P_max"], ["pMin", "P_min"]]) {
+        const v = pl[key], at = where(o, `preload.${key}`);
+        if (!given(v)) { push("E-007", `Preload needs ${label}${at.fastener ? ` for ${f.id}` : " (group default)"}.`, at); both = false; }
+        else if (!(isNum(v) && v >= 0)) { push("E-002", `${label} must be a number ≥ 0 (is ${v}).`, at); both = false; }
+      }
+      if (both && pl.pMax < pl.pMin) {
+        const at = where(o, "preload.pMax");
+        push("E-014", `${at.fastener ? `${f.id}: ` : ""}P_max = ${pl.pMax} is less than P_min = ${pl.pMin}.`, at);
+      }
+    }
+  }
+  return issues;
+}
+
+function hasPath(obj, path) {
+  let o = obj;
+  for (const k of path.split(".")) {
+    if (!o || typeof o !== "object" || !(k in o)) return false;
+    o = o[k];
+  }
+  return true;
+}
+
+/* Torque convenience: preload P from torque T = K·D·P. K is keyed by the user (no default). */
+function preloadFromTorque(torque, K, D) {
+  if (![torque, K, D].every(isNum) || !(K > 0) || !(D > 0)) throw new Error("Torque, nut factor K and diameter D must be numbers, with K and D greater than zero.");
+  return torque / (K * D);
+}
+return { A_LIMIT, tStubPrying, boltLoad, tensionInputs, validateTensionInputs, preloadFromTorque };
+})();
+
+/* ---- core/checks.mjs ---- */
+const __m8 = (() => {
 const { solveScale } = __m6;
+const { boltLoad } = __m7;
 const { issue } = __m1;
 /* Per-fastener checks and the governing margin (spec 5.5 and 5.10).
  *
@@ -972,6 +1197,7 @@ const { issue } = __m1;
  * the minimum across its evaluated modes, and the critical fastener is the
  * one with the lowest governing MS.
  */
+
 
 
 
@@ -1015,26 +1241,32 @@ function validateCheckInputs(pattern, resolved) {
  * unloading counts as zero (N-006). Rs and T within zeroTol of the largest
  * |Rs| and |T| in the group are round-off and count as zero.
  */
-function fastenerChecks(fasteners, settings, zeroTol) {
+function fastenerChecks(fasteners, settings, zeroTol, tensionFor = () => ({ prying: { kind: "off" }, preload: null })) {
   const { a, b } = settings.interaction;
   const issues = [];
+  const notComputed = [], preloadOnly = [];
+  const idOf = (entry) => entry.split(" ")[0];
   const shearFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.shear.Rs)), 0);
   const tensionFloor = zeroTol * Math.max(...fasteners.map((f) => Math.abs(f.axial.T)), 0);
   const results = fasteners.map((f) => {
     const Rs = f.shear.Rs > shearFloor ? f.shear.Rs : 0;
-    const Rt = f.axial.T > tensionFloor ? f.axial.T : 0;
+    const Text = f.axial.T > tensionFloor ? f.axial.T : 0;
+    // Tension chain: external T through prying and preload to the bolt load
+    // F_b, re-evaluated at every load multiplier k (preload does not scale).
+    const chain = tensionFor(f);
+    const tension = boltLoad(Text, chain.prying, chain.preload);
+    const tensionAt = (k) => boltLoad(k * Text, chain.prying, chain.preload).Fb;
+    const Rt = tension.Fb;
     const Fs = f.shearAllowable, Ft = f.tensionAllowable;
     const missing = [Fs === null || Fs === undefined ? "Fs" : null, Ft === null || Ft === undefined ? "Ft" : null].filter(Boolean);
     let interaction;
     if (missing.length) {
-      interaction = { mode: "interaction", label: MODES.interaction, status: "not-evaluated", ms: null, missing, Rs, Rt, a, b };
+      interaction = { mode: "interaction", label: MODES.interaction, status: "not-evaluated", ms: null, missing, Rs, Rt, Text, Q: tension.Q, a, b };
     } else {
-      // Tension scales with the load; the prying and preload chain (M3) plugs in here.
-      const tensionAt = (k) => k * Rt;
       const s = solveScale({ Rs, tensionAt, Fs, Ft, a, b });
-      interaction = { mode: "interaction", label: MODES.interaction, ...s, Rs, Rt, Fs, Ft, a, b, shearRatio: Rs / Fs, tensionRatio: Rt / Ft };
-      if (s.status === "not-computed") issues.push(issue("W-008", `${f.id}: ${s.reason}. MS not computed.`, { fastener: f.id }));
-      if (s.status === "preload") issues.push(issue("W-017", `${f.id}: IF(0) = ${s.IF0.toPrecision(4)} ≥ 1. MS not computed.`, { fastener: f.id }));
+      interaction = { mode: "interaction", label: MODES.interaction, ...s, Rs, Rt, Text, Q: tension.Q, Fs, Ft, a, b, shearRatio: Rs / Fs, tensionRatio: Rt / Ft };
+      if (s.status === "not-computed") notComputed.push(`${f.id} (${s.reason})`);
+      if (s.status === "preload") preloadOnly.push(`${f.id} (IF(0) = ${s.IF0.toPrecision(4)})`);
     }
     const modes = [interaction];
     const evaluated = modes.filter((m) => m.status === "ok" || m.status === "unloaded");
@@ -1044,10 +1276,24 @@ function fastenerChecks(fasteners, settings, zeroTol) {
       const g = evaluated.reduce((lo, m) => (m.ms < lo.ms ? m : lo));
       governing = { mode: g.mode, label: g.label, ms: g.ms };
     }
-    return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: f.axial.unloading && !missing.length };
+    const clamp = tension.preload
+      ? { status: tension.preload.separated ? "separated" : "clamped", clamp: tension.preload.clamp, separationLoad: tension.preload.separationLoad }
+      : { status: "no preload" };
+    return { id: f.id, modes, governing, blocked: blocked.map((m) => m.mode), unloadingCountedZero: f.axial.unloading && !missing.length, tension, clamp };
   });
+  if (notComputed.length) issues.push(issue("W-008", `MS not computed for ${notComputed.join(", ")}.`, { fasteners: notComputed.map(idOf) }));
+  if (preloadOnly.length) issues.push(issue("W-017", `IF(0) ≥ 1, so MS is not computed, for ${preloadOnly.join(", ")}.`, { fasteners: preloadOnly.map(idOf) }));
+  const separated = results.filter((r) => r.clamp.status === "separated");
+  if (separated.length) {
+    const loads = separated.map((r) => `${r.id} F_b = ${r.tension.Fb.toPrecision(4)} (${r.tension.preload.branch === "separated" ? "T + Q" : "P_max + φ·T + Q"})`);
+    issues.push(issue("W-013", `Clamp force P_min − (1 − φ)·T has reached zero on ${separated.map((r) => r.id).join(", ")}: the joint is separated there. Bolt load ${loads.join("; ")}.`, { fasteners: separated.map((r) => r.id) }));
+  }
+  const manual = results.filter((r) => r.tension.prying.method === "manual").map((r) => r.id);
+  if (manual.length) issues.push(issue("W-012", `Manual prying factor replaces the T-stub result on ${manual.join(", ")} (bolt tension = factor × T).`, { fasteners: manual }));
+  if (settings.preload?.enabled) issues.push(issue("N-005", "Clamp force is reported, but no friction-slip capacity is claimed."));
+  else if (results.some((r) => r.tension.Text > 0)) issues.push(issue("N-007", "Preload is disabled: the bolt load is the external tension plus prying, T + Q."));
   const zeroed = results.filter((r) => r.unloadingCountedZero).map((r) => r.id);
-  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero tension: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
+  if (zeroed.length) issues.push(issue("N-006", `Unloading fasteners enter the interaction with zero external tension${settings.preload?.enabled ? ", so their bolt load is P_max" : ""}: ${zeroed.join(", ")}.`, { fasteners: zeroed }));
   const withMargin = results.filter((r) => r.governing && Number.isFinite(r.governing.ms));
   const critical = withMargin.length ? withMargin.reduce((lo, r) => (r.governing.ms < lo.governing.ms ? r : lo)) : null;
   return {
@@ -1086,13 +1332,14 @@ return { MODES, validateCheckInputs, fastenerChecks, noMarginSummary, marginText
 })();
 
 /* ---- core/solve.mjs ---- */
-const __m8 = (() => {
+const __m9 = (() => {
 const { resolveFastener, validateInputs } = __m2;
 const { sectionProperties } = __m3;
 const { reduceLoad } = __m4;
 const { elasticShear, elasticAxialCentroid } = __m5;
 const { issue, hasErrors, sortIssues } = __m1;
-const { validateCheckInputs, fastenerChecks } = __m7;
+const { validateCheckInputs, fastenerChecks } = __m8;
+const { tensionInputs, validateTensionInputs } = __m7;
 /* One calculation: validate, resolve properties, reduce the load, distribute
  * it, raise the catalogue issues and check equilibrium closure.
  *
@@ -1100,6 +1347,7 @@ const { validateCheckInputs, fastenerChecks } = __m7;
  * no result fields are present, so nothing downstream can show numbers the
  * checks have rejected.
  */
+
 
 
 
@@ -1140,6 +1388,10 @@ function solve(pattern) {
 
   const settings = pattern.settings || {};
   const fasteners = pattern.fasteners.map((f) => resolveFastener(pattern, f));
+  // Prying bends the flange of the loaded plate: its thickness is t and its flange strength Fp.
+  const flangePlate = (pattern.plates || []).find((p) => p.id === pattern.load?.appliedPlate) || null;
+  issues.push(...validateTensionInputs(pattern, fasteners, flangePlate));
+  if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
   const props = sectionProperties(fasteners);
   const load = pattern.load;
   const red = reduceLoad(load, props.Cs, props.Ca);
@@ -1199,7 +1451,7 @@ function solve(pattern) {
   }
 
   const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
-  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL);
+  const checks = fastenerChecks(fastenerResults, settings, ZERO_TOL, (f) => tensionInputs(f, settings, flangePlate));
   issues.push(...checks.issues);
   fastenerResults.forEach((f, i) => { f.checks = checks.fasteners[i]; });
   return {
@@ -1208,6 +1460,7 @@ function solve(pattern) {
     critical: checks.critical,
     evaluatedCount: checks.evaluatedCount,
     interaction: { a: settings.interaction.a, b: settings.interaction.b },
+    tensionSettings: { prying: !!settings.prying?.enabled, preload: !!settings.preload?.enabled, flangePlate: flangePlate ? flangePlate.id : null },
     unitSystem: pattern.unitSystem,
     props,
     reduced: red,
@@ -1220,7 +1473,7 @@ return { EXTENT_WARNING, CLOSURE_TOL, ZERO_TOL, closure, solve };
 })();
 
 /* ---- core/format.mjs ---- */
-const __m9 = (() => {
+const __m10 = (() => {
 /* Display formatting. Exports keep full precision; the screen shows
  * `precision` significant figures (default 4). */
 
@@ -1240,7 +1493,7 @@ return { fmt, fmtDeg };
 })();
 
 /* ---- core/scene.mjs ---- */
-const __m10 = (() => {
+const __m11 = (() => {
 const { unitLabel } = __m0;
 /* Shared scene model (spec section 9, "Diagram consistency").
  *
@@ -1383,7 +1636,7 @@ return { CENTROID_STYLE, niceStep, buildScene, gridLines };
 })();
 
 /* ---- core/generators.mjs ---- */
-const __m11 = (() => {
+const __m12 = (() => {
 const { round12 } = __m0;
 /* Pattern generators (spec section 7): rectangular array, staggered rows,
  * bolt circle and mirror. Generators return plain (x, y) points; the caller
@@ -1457,11 +1710,11 @@ return { rectangularArray, staggeredRows, boltCircle, mirror };
 })();
 
 /* ---- core/persist.mjs ---- */
-const __m12 = (() => {
+const __m13 = (() => {
 const { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, defaultSettings, resolveFastener } = __m2;
 const { UNIT_SYSTEMS, convertPattern, unitLabel } = __m0;
 const { issue } = __m1;
-const { marginText, noMarginSummary } = __m7;
+const { marginText, noMarginSummary } = __m8;
 /* Persistence (spec section 8): canonical JSON and Markdown, import and export.
  *
  * JSON stores inputs and settings only, exactly as entered, tagged with
@@ -1765,7 +2018,7 @@ function resultSections(pattern, result) {
       ? `Critical fastener: **${result.critical.id}**, governing MS = ${result.critical.ms} (${result.critical.label}).`
       : noMarginSummary(result.fasteners.map((f) => f.checks)).text,
     "",
-    "IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the positive tension; unloading counts as zero.",
+    `IF(1) is the interaction value at the applied load; MS = k* − 1 where IF(k*) = 1 (exact load scale factor). Rt is the bolt tension (external tension plus prying, through preload when enabled); unloading counts as zero external tension${result.tensionSettings.preload ? ", so the bolt load is P_max" : ""}.`,
     "",
     mdTable(["id", `Rs (${u("force")})`, `Rt (${u("force")})`, `Fs (${u("force")})`, `Ft (${u("force")})`, "IF(1)", "k*", "MS interaction", "governing MS", "governing mode"],
       result.fasteners.map((f) => {
@@ -1773,10 +2026,29 @@ function resultSections(pattern, result) {
         const g = f.checks.governing;
         return [f.id, m.Rs, m.Rt, m.Fs ?? "", m.Ft ?? "", m.status === "not-evaluated" ? "" : m.IF1, m.status === "ok" ? m.kStar : "", marginText(m), g ? (Number.isFinite(g.ms) ? g.ms : "∞") : "not evaluated", g ? g.label : ""];
       })),
+    ...tensionSection(result, u),
     "", "## Equilibrium closure", "",
     mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
     "", ...issueTable(result.issues),
   ];
+}
+
+function tensionSection(result, u) {
+  const ts = result.tensionSettings;
+  if (!ts || !(ts.prying || ts.preload)) return [];
+  const head = ["id", `T external (${u("force")})`];
+  if (ts.prying) head.push("prying", "alpha'", `Q (${u("force")})`);
+  if (ts.preload) head.push(`P_max + phi*T (${u("force")})`, `clamp force (${u("force")})`, `separation load (${u("force")})`);
+  head.push(`bolt load F_b (${u("force")})`, "joint");
+  return ["", `## Bolt tension (${[ts.prying ? `prying, flange ${ts.flangePlate}` : "", ts.preload ? "preload" : ""].filter(Boolean).join("; ")})`, "",
+    mdTable(head, result.fasteners.map((f) => {
+      const t = f.checks.tension;
+      const row = [f.id, t.Text];
+      if (ts.prying) row.push(t.prying.method, t.prying.method === "t-stub" && t.prying.alphaRaw !== null ? t.prying.alpha : "", t.Q);
+      if (ts.preload) row.push(t.preload.shared, t.preload.clamp, t.preload.separationLoad);
+      row.push(t.Fb, f.checks.clamp.status);
+      return row;
+    }))];
 }
 
 function issueTable(issues) {
@@ -1881,10 +2153,11 @@ return { MAX_PLATES, MIGRATIONS, normalizePattern, toJSON, parseJSON, checksum, 
 })();
 
 /* ---- core/verify.mjs ---- */
-const __m13 = (() => {
+const __m14 = (() => {
 const { examplePattern } = __m2;
-const { solve } = __m8;
+const { solve } = __m9;
 const { solveScale } = __m6;
+const { boltLoad, tStubPrying } = __m7;
 /* Verification set (spec section 10), shared by the in-app "Run verification"
  * panel and the Node test suite so both run exactly the same cases.
  *
@@ -1897,7 +2170,8 @@ const { solveScale } = __m6;
 
 
 
-const VERIFICATION_SET = "M2";
+
+const VERIFICATION_SET = "M3";
 const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
@@ -2032,6 +2306,30 @@ const HAND_CASES = [
         check("MS = 1/IF − 1 when a = b = 1", l.m.ms, 1 / l.m.IF1 - 1),
         truth("no W-006 for (1, 1)", !ids(l.r).includes("W-006")),
         truth("critical fastener named with its mode", e.r.critical?.id === "F1" && e.r.critical.mode === "interaction"),
+      ];
+    },
+  },
+  {
+    id: "VC-08", title: "Preload P_max = 20 000, P_min = 16 000, φ = 0.2; T_ext = 10 000 and 25 000",
+    run() {
+      // One fastener with external tension T = Fz, preload enabled.
+      const at = (Fz) => {
+        const p = pattern([[0, 0]], { Fz });
+        p.settings.preload = { enabled: true };
+        p.defaults.preload = { pMax: 20000, pMin: 16000, phi: 0.2 };
+        const r = solved(p);
+        return { r, t: r.fasteners[0].checks.tension, c: r.fasteners[0].checks.clamp };
+      };
+      const a = at(10000), b = at(25000);
+      const ids = (r) => r.issues.map((i) => i.id);
+      return [
+        check("F_b at T = 10 000", a.t.Fb, 22000),
+        check("clamp force at T = 10 000", a.t.preload.clamp, 8000),
+        check("separation load", a.t.preload.separationLoad, 20000),
+        truth("clamped at T = 10 000 (no W-013)", a.c.status === "clamped" && !ids(a.r).includes("W-013")),
+        check("F_b at T = 25 000", b.t.Fb, 25000),
+        truth("separated at T = 25 000 (W-013)", b.c.status === "separated" && ids(b.r).includes("W-013")),
+        truth("N-005 with preload", ids(a.r).includes("N-005")),
       ];
     },
   },
@@ -2205,30 +2503,92 @@ PROPERTY_CASES.push(
   },
 );
 
-const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES];
+const TSTUB = { B: 40000, b: 40, a: 35, p: 80, dh: 14, D: 12, t: 12, Fp: 250 };
 
-/* Run every case; a case that throws fails with the message. */
+PROPERTY_CASES.push(
+  {
+    id: "P-10", title: "Preload bolt load is continuous through separation and does not scale with k",
+    run() {
+      const pre = { pMax: 20000, pMin: 16000, phi: 0.2 };
+      const Tsep = pre.pMax / (1 - pre.phi); // where the two branches of max(…) meet
+      const off = { kind: "off" };
+      const below = boltLoad(Tsep * (1 - 1e-12), off, pre).Fb, above = boltLoad(Tsep * (1 + 1e-12), off, pre).Fb;
+      const Rs = 3000, Text = 8000, Fs = 10000, Ft = 30000;
+      const tensionAt = (k) => boltLoad(k * Text, off, pre).Fb;
+      const s = solveScale({ Rs, tensionAt, Fs, Ft, a: 2, b: 2 });
+      const scaled = solveScale({ Rs, tensionAt: (k) => k * tensionAt(1), Fs, Ft, a: 2, b: 2 });
+      return [
+        check("F_b continuous at P_max/(1 − φ)", below, above, { rel: 1e-9 }),
+        check("IF(0) = (P_max/Ft)²", s.IF0, (pre.pMax / Ft) ** 2),
+        check("IF(k*) = 1 through the preload chain", (s.kStar * Rs / Fs) ** 2 + (tensionAt(s.kStar) / Ft) ** 2, 1),
+        truth("preload not scaled: k* differs from scaling F_b", Math.abs(s.kStar - scaled.kStar) > 1e-6),
+      ];
+    },
+  },
+  {
+    id: "P-11", title: "T-stub prying: Q = 0 below the threshold, grows with T, capped at α' = 1",
+    run() {
+      const probe = (T) => tStubPrying(T, TSTUB);
+      const q = probe(1);
+      const threshold = TSTUB.B * (q.t / q.tc) ** 2; // α' = 0 at T = B·(t/t_c)²
+      const Ts = [0.5, 0.9, 1.1, 1.5, 3].map((m) => m * threshold);
+      const Qs = Ts.map((T) => probe(T).Q);
+      const capT = TSTUB.B * (1 + q.delta) * (q.t / q.tc) ** 2; // α' reaches 1
+      return [
+        check("Q = 0 below threshold", Qs[0] + Qs[1], 0, { abs: 1e-12 }),
+        truth("Q > 0 above threshold", Qs[2] > 0),
+        truth("Q non-decreasing in T", Qs.every((x, i) => i === 0 || x >= Qs[i - 1])),
+        check("Q at α' = 1 equals B·δ·ρ·(t/t_c)²", probe(capT * 2).Q, TSTUB.B * q.delta * q.rho * (q.t / q.tc) ** 2),
+        check("a limited to 1.25·b", tStubPrying(1, { ...TSTUB, a: 100 }).aUsed, 1.25 * TSTUB.b),
+      ];
+    },
+  },
+  {
+    id: "P-12", title: "Manual prying factor: bolt tension = factor × T",
+    run() {
+      const r = boltLoad(5000, { kind: "manual", factor: 1.3 }, null);
+      return [check("F_b", r.Fb, 6500), check("Q", r.Q, 1500)];
+    },
+  },
+);
+
+/* Published-reference cases. A case with `pending` set has no reference
+ * values entered yet: it is reported as pending, neither pass nor fail. */
+const REFERENCE_CASES = [
+  {
+    id: "VR-01", title: "AISC T-stub prying worked example",
+    pending: "published reference values not yet entered (spec open question 2)",
+  },
+];
+
+const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES, ...REFERENCE_CASES];
+
+/* Run every case; a case that throws fails with the message. Status is
+ * "pass", "fail" or "pending"; the set passes when no case fails. */
 function runVerification(cases = ALL_CASES) {
   const results = cases.map((c) => {
+    if (c.pending) return { id: c.id, title: c.title, checks: [], status: "pending", pass: false, pending: c.pending };
     try {
       const checks = c.run();
-      return { id: c.id, title: c.title, checks, pass: checks.length > 0 && checks.every((x) => x.pass) };
+      const pass = checks.length > 0 && checks.every((x) => x.pass);
+      return { id: c.id, title: c.title, checks, status: pass ? "pass" : "fail", pass };
     } catch (e) {
-      return { id: c.id, title: c.title, checks: [], pass: false, error: e.message };
+      return { id: c.id, title: c.title, checks: [], status: "fail", pass: false, error: e.message };
     }
   });
-  return { set: VERIFICATION_SET, tol: REL_TOL, results, pass: results.every((r) => r.pass) };
+  const count = (status) => results.filter((r) => r.status === status).length;
+  return { set: VERIFICATION_SET, tol: REL_TOL, results, passed: count("pass"), pending: count("pending"), failed: count("fail"), pass: count("fail") === 0 };
 }
-return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, ALL_CASES, runVerification };
+return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, REFERENCE_CASES, ALL_CASES, runVerification };
 })();
 
 /* ---- core/meta.mjs ---- */
-const __m14 = (() => {
+const __m15 = (() => {
 /* Tool identity and the conventions every report repeats. */
 
 const TOOL_NAME = "Fastener Pattern CG Tracker";
-const TOOL_VERSION = "0.2.0-m2";
-const MILESTONE = "M2";
+const TOOL_VERSION = "0.3.0-m3";
+const MILESTONE = "M3";
 
 const CONVENTIONS = [
   "Right-handed axes: x right, y up, z toward the viewer.",
@@ -2243,15 +2603,17 @@ const ASSUMPTIONS = [
   "Elastic in-plane shear: rigid plate rotating about Cs, fasteners sharing load in proportion to ks.",
   "Axial method (a): rigid plate with the neutral axis through Ca; the joint is assumed to stay clamped (W-005). Unloading fasteners are shown as computed.",
   "Section properties are in length² × stiffness weight.",
+  "Prying (T-stub, keyed B and Fp) acts on positive external tension only, using the loaded plate's thickness t and flange strength Fp; a ≤ 1.25·b. A manual factor f replaces it with a bolt tension f·T (W-012).",
+  "Preload: F_b = max(P_max + φ·T, T) + Q; clamp force P_min − (1 − φ)·T; separation load P_min/(1 − φ). Prying Q is added to the bolt load (conservative). Preload does not scale with the load multiplier k. Friction slip is not evaluated (N-005).",
   "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
-  "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero tension (N-006).",
+  "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero external tension (N-006); with preload their bolt load is P_max.",
 ];
 return { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS };
 })();
 
 /* ---- ui/canvas.mjs ---- */
-const __m15 = (() => {
-const { gridLines } = __m10;
+const __m16 = (() => {
+const { gridLines } = __m11;
 /* Canvas painter and pointer handling. All geometry comes from the scene
  * model; this file only turns its primitives into Canvas 2D calls. */
 
@@ -2399,7 +2761,7 @@ return { palette, centroidPath, paint, hitTest };
 })();
 
 /* ---- ui/storage.mjs ---- */
-const __m16 = (() => {
+const __m17 = (() => {
 /* Browser persistence (spec 8.1): a named library and a separately
  * autosaved working pattern, both in localStorage. Every access is guarded:
  * storage can be missing (private windows) or full. */
@@ -2473,11 +2835,11 @@ return { LIBRARY_KEY, WORKING_KEY, StorageFullError, readLibrary, writeLibrary, 
 })();
 
 /* ---- ui/webmcp.mjs ---- */
-const __m17 = (() => {
+const __m18 = (() => {
 const { CATALOG } = __m1;
-const { normalizePattern, toJSON } = __m12;
-const { solve } = __m8;
-const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m14;
+const { normalizePattern, toJSON } = __m13;
+const { solve } = __m9;
+const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m15;
 const { UNIT_LABELS } = __m0;
 /* WebMCP tools: let an agent read the page's pattern and run the same
  * solver on any pattern without changing the page. */
@@ -2505,6 +2867,7 @@ function summarize(result) {
       Rs: f.shear.Rs, directionDeg: f.shear.angleDeg, T: f.axial.T, unloading: !!f.axial.unloading,
       checks: f.checks.modes.map(({ mode, status, IF1, kStar, ms, missing }) => ({ mode, status, IF1, kStar: Number.isFinite(kStar) ? kStar : null, ms: Number.isFinite(ms) ? ms : null, missing: missing || [] })),
       governingMS: f.checks.governing && Number.isFinite(f.checks.governing.ms) ? f.checks.governing.ms : null,
+      boltTension: { external: f.checks.tension.Text, prying: f.checks.tension.Q, pryingMethod: f.checks.tension.prying.method, boltLoad: f.checks.tension.Fb, clampForce: f.checks.tension.preload ? f.checks.tension.preload.clamp : null, joint: f.checks.clamp.status },
     })),
     interaction: result.interaction,
     critical: result.critical,
@@ -2562,24 +2925,26 @@ return { summarize, registerTools };
 })();
 
 /* ---- ui/app.mjs ---- */
-const __m18 = (() => {
+const __m19 = (() => {
 const { examplePattern, addFastener, clone } = __m2;
-const { solve } = __m8;
+const { solve } = __m9;
 const { convertPattern, unitLabel, round12, UNIT_SYSTEMS } = __m0;
-const { fmt } = __m9;
-const { buildScene, CENTROID_STYLE } = __m10;
-const { rectangularArray, staggeredRows, boltCircle, mirror } = __m11;
-const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m12;
-const { runVerification } = __m13;
+const { fmt } = __m10;
+const { buildScene, CENTROID_STYLE } = __m11;
+const { rectangularArray, staggeredRows, boltCircle, mirror } = __m12;
+const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m13;
+const { runVerification } = __m14;
 const { sortIssues } = __m1;
-const { marginText, noMarginSummary } = __m7;
+const { marginText, noMarginSummary } = __m8;
 const { PRESETS } = __m6;
-const { TOOL_VERSION } = __m14;
-const { paint, palette, hitTest, centroidPath } = __m15;
-const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m16;
-const { registerTools } = __m17;
+const { preloadFromTorque } = __m7;
+const { TOOL_VERSION } = __m15;
+const { paint, palette, hitTest, centroidPath } = __m16;
+const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m17;
+const { registerTools } = __m18;
 /* Page controller: state, inputs, table, canvas, results, warnings,
  * library and files. Calculations all come from ../core. */
+
 
 
 
@@ -2694,8 +3059,12 @@ function renderInputs() {
   $("#applied-plate").innerHTML = plates.map((p) => `<option value="${esc(p.id)}">${esc(p.id)}</option>`).join("") || `<option value="">(none)</option>`;
   for (const el of $$("[data-path]")) {
     const v = getPath(state.pattern, el.dataset.path);
-    el.value = inputText(v);
+    if (el.type === "checkbox") el.checked = !!v;
+    else el.value = inputText(v);
   }
+  renderToggles();
+  renderOverrides();
+  $("#tq-d").value = inputText(state.pattern.defaults.diameter);
   $("#snap").setAttribute("aria-pressed", String(state.snap.on));
   $("#snap-step").value = state.snap.step;
   renderPlates();
@@ -2704,7 +3073,7 @@ function renderInputs() {
 function renderPlates() {
   $("#plates").innerHTML = state.pattern.plates.map((p, i) => `
     <div class="row three" data-plate="${i}">
-      ${["xMin", "xMax", "thickness", "yMin", "yMax"].map((k) => `<label class="f"><span>${esc(p.id)} ${k} (${units("length")})</span><input type="number" step="any" data-plate-key="${k}" value="${esc(inputText(p[k]))}"></label>`).join("")}
+      ${[["xMin", "length"], ["xMax", "length"], ["thickness", "length"], ["yMin", "length"], ["yMax", "length"], ["flangeStrength", "stress", "Fp"]].map(([k, kind, label]) => `<label class="f"><span>${esc(p.id)} ${label || k} (${units(kind)})</span><input type="number" step="any" data-plate-key="${k}" data-field="plates.${esc(p.id)}.${k}" value="${esc(inputText(p[k]))}"${k === "flangeStrength" ? ' placeholder="—"' : ""}></label>`).join("")}
     </div>`).join("");
 }
 
@@ -2737,6 +3106,38 @@ function renderLibrary() {
 function renderSelection() {
   for (const tr of $$("#fastener-rows tr[data-row]")) tr.classList.toggle("selected", tr.dataset.row === state.selected);
   $("#delete-fastener").disabled = !state.selected;
+  renderOverrides();
+}
+
+const TENSION_FIELDS = [
+  ["prying", "prying.b", "b", "length"], ["prying", "prying.a", "a", "length"], ["prying", "prying.p", "p", "length"],
+  ["prying", "prying.holeDiameter", "d_h", "length"], ["prying", "prying.boltStrengthB", "B", "force"], ["prying", "prying.manualFactor", "Manual factor", "none"],
+  ["preload", "preload.pMax", "P_max", "force"], ["preload", "preload.pMin", "P_min", "force"], ["preload", "preload.phi", "φ", "none"],
+];
+
+function renderToggles() {
+  for (const el of $$("[data-show]")) el.hidden = !getPath(state.pattern, el.dataset.show);
+  const pts = state.pattern.fasteners.filter((q) => typeof q.x === "number" && typeof q.y === "number");
+  let nn = Infinity;
+  for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) nn = Math.min(nn, Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y));
+  $("#spacing-hint").textContent = Number.isFinite(nn) ? `Hint only: the nearest-neighbour spacing in this pattern is ${f(nn)} ${units("length")}. Type p yourself.` : "";
+}
+
+/* Prying and preload overrides for the selected fastener (blank = group default). */
+function renderOverrides() {
+  const box = $("#override-editor");
+  const st = state.pattern.settings;
+  const fa = state.pattern.fasteners.find((q) => q.id === state.selected);
+  const groups = ["prying", "preload"].filter((g) => st[g]?.enabled);
+  if (!groups.length) { box.innerHTML = ""; return; }
+  if (!fa) { box.innerHTML = `<p class="note">Select a fastener to override its prying or preload inputs.</p>`; return; }
+  const d = state.pattern.defaults;
+  box.innerHTML = `<h4>Overrides for ${esc(fa.id)}</h4><div class="row three">${TENSION_FIELDS.filter(([g]) => groups.includes(g)).map(([, path, label, kind]) => {
+    const own = getPath(fa.overrides || {}, path);
+    const has = own !== undefined;
+    const def = getPath(d, path);
+    return `<label class="f"><span>${esc(label)}${kind !== "none" ? ` (${units(kind)})` : ""}</span><input type="number" step="any" data-ov="${path}" class="${has ? "override" : ""}" value="${has ? esc(inputText(own)) : ""}" placeholder="${esc(def === null || def === undefined ? "—" : inputText(def))}"></label>`;
+  }).join("")}</div>`;
 }
 
 function renderStructure() {
@@ -2759,7 +3160,8 @@ function markInvalid() {
   for (const i of state.result.issues) {
     if (i.tier !== "error") continue;
     if (i.fastener && i.field) $(`#fastener-rows input[data-id="${CSS.escape(i.fastener)}"][data-key="${CSS.escape(i.field)}"]`)?.setAttribute("aria-invalid", "true");
-    else if (i.field) $(`[data-path="${CSS.escape(i.field)}"]`)?.setAttribute("aria-invalid", "true");
+    else if (i.field) ($(`[data-path="${CSS.escape(i.field)}"]`) || $(`[data-field="${CSS.escape(i.field)}"]`))?.setAttribute("aria-invalid", "true");
+    if (i.fastener && i.field && i.fastener === state.selected) $(`#override-editor [data-ov="${CSS.escape(i.field)}"]`)?.setAttribute("aria-invalid", "true");
   }
   const p = state.pattern.settings.precision;
   if (!(Number.isInteger(p) && p >= 1 && p <= 15)) $("#precision").setAttribute("aria-invalid", "true");
@@ -2998,6 +3400,28 @@ function renderResults() {
     ? `<p class="critical muted">${esc(none.text)}</p>`
     : `<p class="critical muted">No margin evaluated: enter shear and tension allowables Fs and Ft (group defaults or per-fastener overrides). A check without its allowable shows “not evaluated” and never a margin.</p>`;
 
+  const ts = r.tensionSettings;
+  let tensionTable = "";
+  if (ts.prying || ts.preload) {
+    const head = ["Fastener", `T external (${F})`];
+    if (ts.prying) head.push("Prying", "α'", `Q (${F})`);
+    if (ts.preload) head.push(`P_max + φT (${F})`, `Clamp force (${F})`, `Separation at T (${F})`);
+    head.push(`Bolt load F_b (${F})`, "Joint");
+    tensionTable = table(head, r.fasteners.map((q) => {
+      const t = q.checks.tension, c = q.checks.clamp;
+      const row = [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button>`, f(t.Text, forceScale)];
+      if (ts.prying) {
+        const pm = t.prying;
+        row.push(pm.method === "manual" ? `manual × ${f(pm.factor)}` : pm.method === "t-stub" ? (t.Text > 0 ? "T-stub" : "T-stub (no tension)") : "—",
+          pm.method === "t-stub" && pm.alphaRaw !== null ? `${f(pm.alpha)}${pm.alphaRaw !== pm.alpha ? ` <span class="muted">(${f(pm.alphaRaw)} clamped)</span>` : ""}` : "—",
+          f(t.Q, forceScale));
+      }
+      if (ts.preload) row.push(f(t.preload.shared, forceScale), `${f(t.preload.clamp, forceScale)}`, f(t.preload.separationLoad, forceScale));
+      row.push(`<b>${f(t.Fb, forceScale)}</b>`, c.status === "separated" ? '<span class="tag unloading">separated</span>' : c.status === "clamped" ? "clamped" : "—");
+      return row;
+    }), { numeric: [1, 2, 3, 4, 5, 6, 7, 8] });
+  }
+
   const closure = table(["Equilibrium check", "Residual", "Relative", ""],
     r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
     { numeric: [1, 2] });
@@ -3015,9 +3439,11 @@ function renderResults() {
     <h3 style="margin-top:1.25rem">Fastener loads — elastic</h3>
     <p class="note">In-plane: direct Rd plus torsional Rt about Cs, resultant Rs and its direction CCW from +x. Out-of-plane: T by ${esc(axialNote)} Positive T is tension; unloading fasteners are shown as computed.</p>
     ${per}
+    ${tensionTable ? `<h3 style="margin-top:1.25rem">Bolt tension — ${[ts.prying ? `prying from ${esc(ts.flangePlate || "?")}` : "", ts.preload ? "preload" : ""].filter(Boolean).join(" and ")}</h3>
+    <p class="note">F_b replaces T in the interaction and is recomputed at every load multiplier k; preload does not scale. Prying acts on positive external tension only.</p>${tensionTable}` : ""}
     <h3 style="margin-top:1.25rem">Margins of safety — elastic basis, exponents (a, b) = (${f(it.a)}, ${f(it.b)})</h3>
     ${crit}
-    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the positive tension; unloading counts as zero.</p>
+    <p class="note">IF(1) is the plain interaction value at the applied load; k* is the load multiplier at which IF(k*) = 1, and MS = k* − 1. Rt is the bolt tension: the positive external tension plus prying, through preload when enabled; unloading counts as zero external tension${ts.preload ? ", so the bolt load is P_max" : ""}.</p>
     ${checks}
     <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
 }
@@ -3044,7 +3470,7 @@ function renderInline() {
     if (i.fasteners?.length) {
       for (const id of i.fasteners) add($(`#fastener-rows tr[data-row="${CSS.escape(id)}"] th`), i);
     } else if (i.field) {
-      const input = $(`[data-path="${CSS.escape(i.field)}"]`);
+      const input = $(`[data-path="${CSS.escape(i.field)}"]`) || $(`[data-field="${CSS.escape(i.field)}"]`);
       const target = input ? input.closest("label")?.querySelector("span") : i.field === "settings.interaction" ? $("#interaction-card h3") : null;
       add(target, i);
     }
@@ -3063,11 +3489,10 @@ function renderPresets() {
 
 function renderVerification() {
   const v = runVerification();
-  const passed = v.results.filter((r) => r.pass).length;
   $("#verify-results").innerHTML = `
-    <p><span class="${v.pass ? "pass" : "fail"}">${passed} of ${v.results.length} cases pass</span> · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
-    ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.pass ? "pass" : "fail"}">${r.pass ? "pass" : "fail"}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
-      ${r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
+    <p><span class="${v.pass ? "pass" : "fail"}">${v.passed} pass${v.failed ? `, ${v.failed} fail` : ""}${v.pending ? `, ${v.pending} pending` : ""}</span> of ${v.results.length} cases · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
+    ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.status}">${r.status}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
+      ${r.pending ? `<p class="pending">pending: ${esc(r.pending)}</p>` : r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
         esc(c.label), typeof c.actual === "number" ? String(Number(c.actual.toPrecision(10))) : esc(c.actual),
         typeof c.expected === "number" ? String(Number(c.expected.toPrecision(10))) : esc(c.expected), esc(c.tol), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']), { numeric: [1, 2] })}
     </details>`).join("")}`;
@@ -3244,11 +3669,50 @@ function bind() {
 
   for (const el of $$("[data-path]")) {
     const handler = () => {
-      const isSelect = el.tagName === "SELECT";
-      setPath(state.pattern, el.dataset.path, isSelect ? el.value : parseInput(el.value));
+      const value = el.type === "checkbox" ? el.checked : el.tagName === "SELECT" ? el.value : parseInput(el.value);
+      setPath(state.pattern, el.dataset.path, value);
+      if (el.type === "checkbox") { renderToggles(); renderOverrides(); }
       changed();
     };
-    el.addEventListener(el.tagName === "SELECT" ? "change" : "input", handler);
+    el.addEventListener(el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input", handler);
+  }
+  $("#override-editor").addEventListener("input", (e) => {
+    const path = e.target.dataset.ov;
+    const fa = state.pattern.fasteners.find((q) => q.id === state.selected);
+    if (!path || !fa) return;
+    const v = parseInput(e.target.value);
+    fa.overrides ??= {};
+    const [group, key] = path.split(".");
+    if (v === null) {
+      if (fa.overrides[group]) {
+        delete fa.overrides[group][key];
+        if (!Object.keys(fa.overrides[group]).length) delete fa.overrides[group];
+      }
+    } else {
+      fa.overrides[group] = { ...(fa.overrides[group] || {}), [key]: v };
+    }
+    e.target.classList.toggle("override", v !== null);
+    changed();
+  });
+  const torqueP = () => {
+    try {
+      const P = preloadFromTorque(parseInput($("#tq-torque").value), parseInput($("#tq-k").value), parseInput($("#tq-d").value));
+      $("#tq-out").textContent = `P = T / (K·D) = ${f(P)} ${units("force")}`;
+      return P;
+    } catch (err) {
+      $("#tq-out").textContent = err.message;
+      return null;
+    }
+  };
+  for (const id of ["#tq-torque", "#tq-k", "#tq-d"]) $(id).addEventListener("input", torqueP);
+  for (const b of $$("[data-torque]")) {
+    b.addEventListener("click", () => {
+      const P = torqueP();
+      if (P === null) return;
+      state.pattern.defaults.preload[b.dataset.torque] = round12(P);
+      $(`[data-path="defaults.preload.${b.dataset.torque}"]`).value = round12(P);
+      changed();
+    });
   }
   $("#plates").addEventListener("input", (e) => {
     const key = e.target.dataset.plateKey;
@@ -3394,8 +3858,8 @@ return { start };
 })();
 
 /* ---- ui/main.mjs ---- */
-const __m19 = (() => {
-const { start } = __m18;
+const __m20 = (() => {
+const { start } = __m19;
 /* Entry point of the built page. */
 
 

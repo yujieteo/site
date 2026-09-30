@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-import { runVerification, HAND_CASES, PROPERTY_CASES } from "../visuals/fastener-cg/src/core/verify.mjs";
+import { runVerification, HAND_CASES, PROPERTY_CASES, REFERENCE_CASES } from "../visuals/fastener-cg/src/core/verify.mjs";
 import { solve } from "../visuals/fastener-cg/src/core/solve.mjs";
 import { examplePattern, addFastener, resolveFastener, clone } from "../visuals/fastener-cg/src/core/model.mjs";
 import { convertPattern, convertValue, MM_PER_IN, N_PER_LBF } from "../visuals/fastener-cg/src/core/units.mjs";
@@ -13,6 +13,7 @@ import { fmt } from "../visuals/fastener-cg/src/core/format.mjs";
 import { CATALOG } from "../visuals/fastener-cg/src/core/warnings.mjs";
 import { registerTools } from "../visuals/fastener-cg/src/ui/webmcp.mjs";
 import { brent, solveScale, interactionValue } from "../visuals/fastener-cg/src/core/interaction.mjs";
+import { boltLoad, tStubPrying, preloadFromTorque } from "../visuals/fastener-cg/src/core/tension.mjs";
 import { render, bundle } from "../visuals/fastener-cg/build.mjs";
 
 const VIZ = new URL("../visuals/fastener-cg/", import.meta.url);
@@ -26,11 +27,28 @@ function pattern(points, load = {}) {
   return p;
 }
 
-test("the whole in-app verification set passes", () => {
+test("the whole in-app verification set passes, with pending reference cases counted apart", () => {
   const v = runVerification();
-  for (const r of v.results) assert.ok(r.pass, `${r.id} ${r.error || r.checks.filter((c) => !c.pass).map((c) => `${c.label}: ${c.actual} vs ${c.expected}`).join("; ")}`);
-  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09"]);
-  assert.equal(HAND_CASES.length + PROPERTY_CASES.length, v.results.length);
+  for (const r of v.results) {
+    if (r.status === "pending") continue;
+    assert.ok(r.pass, `${r.id} ${r.error || r.checks.filter((c) => !c.pass).map((c) => `${c.label}: ${c.actual} vs ${c.expected}`).join("; ")}`);
+  }
+  assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-08", "VC-09", "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09", "P-10", "P-11", "P-12", "VR-01"]);
+  assert.equal(HAND_CASES.length + PROPERTY_CASES.length + REFERENCE_CASES.length, v.results.length);
+  const vr = v.results.find((r) => r.id === "VR-01");
+  assert.equal(vr.status, "pending");
+  assert.equal(vr.pass, false);
+  assert.match(vr.pending, /spec open question 2/);
+  assert.deepEqual([v.passed, v.pending, v.failed, v.pass], [21, 1, 0, true]);
+});
+
+test("a failing case fails the set; a pending case does not", () => {
+  const pending = { id: "X-P", title: "pending", pending: "no values" };
+  const ok = { id: "X-1", title: "ok", run: () => [{ label: "x", pass: true }] };
+  const bad = { id: "X-2", title: "bad", run: () => [{ label: "x", pass: false }] };
+  assert.equal(runVerification([ok, pending]).pass, true);
+  assert.deepEqual(runVerification([ok, pending, bad]).results.map((r) => r.status), ["pass", "pending", "fail"]);
+  assert.equal(runVerification([ok, pending, bad]).pass, false);
 });
 
 test("VC-01 independently: 2×2 bracket, Fy = −10 000 N at (150, 0, 0)", () => {
@@ -391,7 +409,7 @@ test("the published page and data are built from the current sources", async () 
   assert.ok(!/<script[^>]+src=|<link[^>]+stylesheet|https?:\/\/(?!www\.w3\.org)/.test(html.replace(/<a [^>]*>/g, "")), "offline: no external scripts, styles or fetches");
   const raw = JSON.parse(outputs["raw.json"]);
   assert.equal(raw.warnings.length, Object.keys(CATALOG).length);
-  assert.ok(raw.verification.cases.length >= 17);
+  assert.ok(raw.verification.cases.length >= 21);
 });
 
 /* ---- M2: allowables, interaction, exact-k MS ---- */
@@ -574,4 +592,197 @@ test("Markdown carries the margins and W-006, and the table fallback keeps per-f
   assert.equal(fallback.source, "tables");
   assert.deepEqual(fallback.pattern.fasteners[1].overrides, { shearAllowable: 5000, tensionAllowable: 9000 });
   assert.equal(fallback.pattern.defaults.shearAllowable, null, "defaults revert to the app's (none shipped)");
+});
+
+/* ---- M3: prying, preload, separation ---- */
+
+function tee({ prying = false, preload = false } = {}) {
+  // 2×2 tee flange in tension: Fz = 40 kN centred, so each bolt sees T = 10 kN.
+  const p = pattern([[50, 30], [50, -30], [-50, 30], [-50, -30]], { Fz: 40000, Fy: -4000 });
+  p.defaults.shearAllowable = 20000;
+  p.defaults.tensionAllowable = 30000;
+  p.plates[0].thickness = 8;
+  p.plates[0].flangeStrength = 250;
+  p.defaults.prying = { b: 40, a: 35, p: 60, holeDiameter: 14, boltStrengthB: 40000, manualFactor: null };
+  p.defaults.preload = { pMax: 20000, pMin: 16000, phi: 0.2 };
+  p.settings.prying = { enabled: prying };
+  p.settings.preload = { enabled: preload };
+  return p;
+}
+const checksOf = (r, i = 0) => r.fasteners[i].checks;
+
+test("VC-08 through the solver: bolt load, clamp force, separation load and W-013", () => {
+  const one = (Fz) => {
+    const p = pattern([[0, 0]], { Fz });
+    p.settings.preload = { enabled: true };
+    p.defaults.preload = { pMax: 20000, pMin: 16000, phi: 0.2 };
+    return solve(p);
+  };
+  const a = one(10000), b = one(25000);
+  close(checksOf(a).tension.Fb, 22000, 1e-12);
+  close(checksOf(a).tension.preload.clamp, 8000, 1e-12);
+  close(checksOf(a).tension.preload.separationLoad, 20000, 1e-12);
+  assert.equal(checksOf(a).clamp.status, "clamped");
+  close(checksOf(b).tension.Fb, 25000, 1e-12);
+  assert.equal(checksOf(b).clamp.status, "separated");
+  assert.ok(ids(b.issues).includes("W-013"));
+  assert.ok(!ids(a.issues).includes("W-013"));
+  assert.ok(ids(a.issues).includes("N-005"));
+});
+
+test("T-stub prying follows the section 5.6 equations term by term", () => {
+  const P = { B: 40000, b: 40, a: 35, p: 60, dh: 14, D: 12, t: 8, Fp: 250 };
+  const T = 10000;
+  const r = tStubPrying(T, P);
+  const bP = 40 - 6, aP = 35 + 6, rho = bP / aP, delta = 1 - 14 / 60;
+  const tc = Math.sqrt((4 * 40000 * bP) / (60 * 250));
+  const alpha = Math.min(Math.max((1 / delta) * ((T / 40000) * (tc / 8) ** 2 - 1), 0), 1);
+  close(r.tc, tc, 1e-12);
+  close(r.alpha, alpha, 1e-12);
+  assert.ok(alpha > 0 && alpha < 1, "this case sits between the clamps");
+  close(r.Q, 40000 * delta * alpha * rho * (8 / tc) ** 2, 1e-12);
+  // a above 1.25·b is limited.
+  close(tStubPrying(T, { ...P, a: 80 }).aUsed, 50, 1e-12);
+  assert.equal(tStubPrying(T, { ...P, a: 80 }).aLimited, true);
+  // No positive tension, no prying.
+  assert.equal(tStubPrying(0, P).Q, 0);
+});
+
+test("prying and preload feed the interaction through the bolt load, re-evaluated at k", () => {
+  const plain = solve(tee());
+  const pry = solve(tee({ prying: true }));
+  const both = solve(tee({ prying: true, preload: true }));
+  for (const r of [plain, pry, both]) assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
+  const c0 = checksOf(plain), c1 = checksOf(pry), c2 = checksOf(both);
+  close(c0.tension.Fb, 10000, 1e-12);
+  assert.ok(c1.tension.Q > 0);
+  close(c1.tension.Fb, 10000 + c1.tension.Q, 1e-12);
+  close(c2.tension.Fb, Math.max(20000 + 0.2 * 10000, 10000) + c2.tension.Q, 1e-12);
+  // Margins fall as prying and preload add bolt tension, and k* satisfies IF(k*) = 1 through the chain.
+  const m = (c) => c.modes[0];
+  assert.ok(m(c1).ms < m(c0).ms);
+  const P = { B: 40000, b: 40, a: 35, p: 60, dh: 14, D: 12, t: 8, Fp: 250 };
+  const Fb = (k) => boltLoad(k * 10000, { kind: "t-stub", params: P }, { pMax: 20000, pMin: 16000, phi: 0.2 }).Fb;
+  const k = m(c2).kStar;
+  close((k * m(c2).Rs / 20000) ** 2 + (Fb(k) / 30000) ** 2, 1, 1e-9);
+  assert.ok(ids(plain.issues).includes("N-007"));
+});
+
+test("manual prying factor overrides the T-stub (W-012) and needs no flange geometry", () => {
+  const p = tee({ prying: true });
+  p.defaults.prying = { b: null, a: null, p: null, holeDiameter: null, boltStrengthB: null, manualFactor: 1.25 };
+  p.plates[0].flangeStrength = null;
+  const r = solve(p);
+  assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
+  close(checksOf(r).tension.Fb, 12500, 1e-12);
+  assert.ok(ids(r.issues).includes("W-012"));
+  p.defaults.prying.manualFactor = 0.8;
+  assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => [i.id, i.field]), [["E-002", "defaults.prying.manualFactor"]]);
+});
+
+test("prying and preload input errors: E-007, E-009, E-014, E-002, per-fastener overrides", () => {
+  let p = tee({ prying: true });
+  p.defaults.prying.boltStrengthB = null;
+  p.plates[0].flangeStrength = null;
+  let errs = solve(p).issues.filter((i) => i.tier === "error");
+  assert.deepEqual(errs.map((i) => [i.id, i.field]).sort(), [["E-007", "defaults.prying.boltStrengthB"], ["E-007", "plates.P1.flangeStrength"]]);
+
+  p = tee({ prying: true });
+  p.defaults.prying.b = 5; // b ≤ D/2
+  errs = solve(p).issues.filter((i) => i.tier === "error");
+  assert.ok(errs.length && errs.every((i) => i.id === "E-002" && i.field === "defaults.prying.b"));
+
+  p = tee({ preload: true });
+  p.defaults.preload.phi = null;
+  errs = solve(p).issues.filter((i) => i.tier === "error");
+  assert.deepEqual(errs.map((i) => i.id), ["E-009"]);
+  p.defaults.preload.phi = 1;
+  assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => i.id), ["E-009"]);
+
+  p = tee({ preload: true });
+  p.fasteners[2].overrides = { preload: { pMax: 10000 } };
+  errs = solve(p).issues.filter((i) => i.tier === "error");
+  assert.deepEqual(errs.map((i) => [i.id, i.fastener, i.field]), [["E-014", "F3", "preload.pMax"]]);
+
+  // A per-fastener override is used for that fastener only.
+  p = tee({ preload: true });
+  p.fasteners[1].overrides = { preload: { pMax: 30000 } };
+  const r = solve(p);
+  close(checksOf(r, 1).tension.Fb, 30000 + 0.2 * 10000, 1e-12);
+  close(checksOf(r, 0).tension.Fb, 20000 + 0.2 * 10000, 1e-12);
+});
+
+test("preload alone above the tension allowable: W-017 and no margin", () => {
+  const p = tee({ preload: true });
+  p.defaults.tensionAllowable = 15000; // P_max = 20 000 > Ft
+  const r = solve(p);
+  assert.ok(ids(r.issues).includes("W-017"));
+  assert.ok(r.fasteners.every((f) => f.checks.modes[0].status === "preload" && f.checks.modes[0].ms === null));
+  assert.equal(r.critical, null);
+});
+
+test("torque convenience: P = T/(K·D); K has no default", () => {
+  close(preloadFromTorque(96000, 0.2, 12), 40000, 1e-12);
+  assert.throws(() => preloadFromTorque(96000, null, 12));
+  assert.throws(() => preloadFromTorque(96000, 0, 12));
+});
+
+test("Markdown carries the bolt tension table when prying or preload is on", () => {
+  const p = tee({ prying: true, preload: true });
+  const md = toMarkdown(p, solve(p));
+  assert.match(md, /## Bolt tension \(prying, flange P1; preload\)/);
+  assert.equal(toJSON(parseMarkdown(md).pattern), toJSON(p));
+  assert.doesNotMatch(toMarkdown(tee(), solve(tee())), /## Bolt tension/);
+});
+
+test("W-013 fires on clamp force alone and quotes the actual bolt load and branch", () => {
+  const one = (Fz) => {
+    const p = pattern([[0, 0]], { Fz });
+    p.settings.preload = { enabled: true };
+    p.defaults.preload = { pMax: 20000, pMin: 16000, phi: 0.2 };
+    return solve(p);
+  };
+  // Between P_min/(1 − φ) = 20 000 and P_max/(1 − φ) = 25 000: separated, but F_b = P_max + φ·T.
+  const mid = one(21000);
+  close(checksOf(mid).tension.Fb, 24200, 1e-12);
+  const w = mid.issues.find((i) => i.id === "W-013");
+  assert.ok(w);
+  assert.match(w.detail, /F1 F_b = 2\.420e\+4 \(P_max \+ φ·T \+ Q\)/);
+  assert.doesNotMatch(w.detail, /\(T \+ Q\)/);
+  const far = one(30000);
+  assert.match(far.issues.find((i) => i.id === "W-013").detail, /F1 F_b = 3\.000e\+4 \(T \+ Q\)/);
+});
+
+test("N-006 and the Markdown note give P_max as the unloading bolt load when preload is on", () => {
+  const p = tee({ preload: true });
+  p.load.My = 4e6; // T = 10 000 ± 20 000: two fasteners unload
+  const r = solve(p);
+  assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
+  const zeroed = r.fasteners.filter((f) => f.checks.unloadingCountedZero);
+  assert.equal(zeroed.length, 2);
+  for (const f of zeroed) close(f.checks.tension.Fb, 20000, 1e-12);
+  assert.match(r.issues.find((i) => i.id === "N-006").detail, /zero external tension, so their bolt load is P_max/);
+  assert.match(toMarkdown(p, r), /unloading counts as zero external tension, so the bolt load is P_max\./);
+  p.settings.preload.enabled = false;
+  const off = solve(p);
+  assert.doesNotMatch(off.issues.find((i) => i.id === "N-006").detail, /P_max/);
+  assert.doesNotMatch(toMarkdown(p, off), /so the bolt load is P_max/);
+});
+
+test("group-default P_max < P_min raises one E-014 with no fastener id", () => {
+  const p = tee({ preload: true });
+  p.defaults.preload.pMax = 10000;
+  const errs = solve(p).issues.filter((i) => i.tier === "error");
+  assert.deepEqual(errs.map((i) => [i.id, i.fastener, i.field]), [["E-014", null, "defaults.preload.pMax"]]);
+  assert.doesNotMatch(errs[0].detail, /F\d/);
+});
+
+test("all-manual prying needs no flange thickness; a T-stub fastener still does", () => {
+  const p = tee({ prying: true });
+  p.defaults.prying.manualFactor = 1.25;
+  p.plates[0].thickness = null;
+  const r = solve(p);
+  assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
+  p.fasteners[0].overrides = { prying: { manualFactor: null } };
+  assert.deepEqual(solve(p).issues.filter((i) => i.tier === "error").map((i) => [i.id, i.field]), [["E-007", "plates.P1.thickness"]]);
 });
