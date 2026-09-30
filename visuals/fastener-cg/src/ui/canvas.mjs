@@ -146,14 +146,6 @@ export function paint(ctx, scene, colours, { snapStep = 0, snapOn = false } = {}
 /* Hit test: the fastener under a screen point, else the load point, else null. */
 export function hitTest(scene, pt) {
   let best = null, bestD = Infinity;
-  if (scene.contactEdge) {
-    const { from, to } = scene.contactEdge.screen;
-    ctx.strokeStyle = colours.axial; ctx.lineWidth = 4; ctx.setLineDash([10, 5]);
-    ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle = colours.axial; ctx.font = font(10.5, 600);
-    label(ctx, scene.contactEdge.label, Math.min(from.x, to.x) + 6, Math.max(from.y, to.y) + 14, Math.min(from.x, to.x), width);
-  }
-
   for (const m of scene.markers) {
     const d = Math.hypot(m.screen.x - pt.x, m.screen.y - pt.y);
     if (d <= Math.max(m.radiusPx, 9) + 3 && d < bestD) { best = { kind: "fastener", id: m.id }; bestD = d; }

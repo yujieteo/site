@@ -17,6 +17,7 @@ import { boltLoad, tStubPrying, preloadFromTorque } from "../visuals/fastener-cg
 import { rayToRect, edgeDistance } from "../visuals/fastener-cg/src/core/plates.mjs";
 import { suggestContactEdge, edgeFrame } from "../visuals/fastener-cg/src/core/contact.mjs";
 import { render, bundle } from "../visuals/fastener-cg/build.mjs";
+import { hitTest } from "../visuals/fastener-cg/src/ui/canvas.mjs";
 
 const VIZ = new URL("../visuals/fastener-cg/", import.meta.url);
 const close = (a, b, tol = 1e-9, label = "") => assert.ok(Math.abs(a - b) <= tol * Math.max(1, Math.abs(b)), `${label} ${a} vs ${b}`);
@@ -937,4 +938,15 @@ test("scene model draws the contact edge through the same transform", () => {
   assert.deepEqual(s.contactEdge.screen.to, { x: ox + scale * 80, y: oy - scale * -50 });
   assert.ok(s.legend.some((e) => e.key === "contactEdge"));
   assert.equal(buildScene(bracket(), null, { width: 600, height: 400 }).contactEdge, null);
+});
+
+test("hit testing a contact-edge scene finds fasteners and empty space without drawing", () => {
+  const p = bracket({ point: { x: 0, y: 0, z: 0 }, Mx: 12000 });
+  p.settings.axialMethod = "contact-edge";
+  p.settings.contactEdge = { plateId: "P1", edge: "yMin" };
+  const s = buildScene(p, solve(p), { width: 600, height: 400 });
+  assert.ok(s.contactEdge);
+  const m = s.markers[0];
+  assert.deepEqual(hitTest(s, m.screen), { kind: "fastener", id: m.id });
+  assert.equal(hitTest(s, { x: -1000, y: -1000 }), null);
 });
