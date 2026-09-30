@@ -71,6 +71,11 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
 #inset-text { margin: 4px 0 0; font-size: 12px; color: var(--muted); }
 .key { display: inline-flex; align-items: center; gap: 4px; margin-right: 8px; }
 .sw { display: inline-block; width: 14px; height: 3px; border-radius: 2px; }
+#maplegend { position: absolute; right: 12px; top: 12px; width: 190px; padding: 8px 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); font-size: 12px; }
+#maplegend[hidden] { display: none; }
+#maplegend .bar { height: 10px; border-radius: 3px; margin: 5px 0 3px; }
+#maplegend .ends { display: flex; justify-content: space-between; color: var(--muted); }
+.select-row { display: grid; gap: 4px; margin: 0 0 10px; }
 .axis-label { position: absolute; font-size: 12px; color: var(--muted); pointer-events: none; transform: translate(-50%, -50%); }
 @media (max-width: 760px) {
   body { grid-template-rows: auto minmax(0, 1fr); }
@@ -92,6 +97,7 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
     <canvas id="view" tabindex="0" aria-label="3D view of the deformed structure. Drag or use the arrow keys to orbit, scroll or pinch to zoom."></canvas>
     <div id="nogl" role="alert"><p><strong>This view needs WebGL, which this browser has turned off or does not support.</strong><br>Turn on hardware acceleration or try another modern browser. The controls still work.</p></div>
     <div id="axis-labels" aria-hidden="true"></div>
+    <div id="maplegend" hidden aria-live="polite"><strong id="ml-title"></strong><div class="bar" id="ml-bar"></div><div class="ends"><span id="ml-lo"></span><span id="ml-mid"></span><span id="ml-hi"></span></div></div>
     <section id="inset" aria-label="Unit patch in 2D">
       <button type="button" id="inset-toggle" aria-expanded="true" aria-controls="inset-body"><span>Unit patch, flattened</span><span class="chev" aria-hidden="true">▾</span></button>
       <div id="inset-body">
@@ -119,7 +125,17 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
     <fieldset>
       <legend>View</legend>
       <div id="view-sliders"></div>
+      <div class="select-row">
+        <label for="contour">Colour map</label>
+        <select id="contour">
+          <option value="none">None</option>
+          <option value="shear">Shear strain</option>
+          <option value="axial">Axial strain</option>
+          <option value="warping">Warping displacement</option>
+        </select>
+      </div>
       <div class="toggles">
+        <label><input type="checkbox" id="t-restraint"> Restrain warping at the clamp</label>
         <label><input type="checkbox" id="t-arrows" checked> Load arrows</label>
         <label><input type="checkbox" id="t-axes" checked> Axes triad</label>
       </div>
@@ -4396,7 +4412,9 @@ void main() {
   const EPS_AXIAL = 0.08;           // axial strain at full axial load, 1× exaggeration
   const GAMMA_V = 0.08;             // peak wall shear strain at full transverse shear
   const KAPPA_CLAMP = 0.07;         // curvature at the clamp at full bending
-  const TWIST = { tube: 0.5, box: 0.6, ibeam: 1.2 }; // free-end twist (rad) at full torsion
+  const TWIST = { tube: 0.5, box: 0.6, ibeam: 1.2 }; // free-end twist (rad) at full torsion, warping free
+  const LAMBDA_L = { box: 10, ibeam: 2.5 }; // Vlasov decay length ratio L*sqrt(GJ/(E*Cw)); the tube does not warp
+  const LAG = 0.7;                  // shear-lag strength (assumed shape)
 
   const GEOM = {
     tube: { R: 0.6, t: 0.05 },
@@ -4537,6 +4555,17 @@ void main() {
     return { gamma, vp, warp };
   }
 
+  /* Normalised sectorial coordinate of a closed single cell, uniform t:
+   * omega = integral of (rho - psi) ds, psi = 2A / perimeter, mean removed.
+   * Zero for the circular tube; the box's corners warp alternately. */
+  function closedOmega(path) {
+    const rho = (p) => p.y * p.tz - p.z * p.ty;
+    const psi = cumulative(path, rho).total / path.length;
+    const omega = cumulative(path, (p) => rho(p) - psi).values;
+    const m = mean(path, omega);
+    return omega.map((w) => w - m);
+  }
+
   /* Table-backed lookup of a per-sample array on a path. */
   function sampleArray(path, arr, v) {
     const { s, length, closed } = path, n = s.length;
@@ -4564,6 +4593,7 @@ void main() {
       const sh = closedShear(path);
       const wall = beamWall(0, "Tube wall", "tube", path, GEOM.tube.t, null, [96, 64]);
       wall.shear = sh;
+      wall.omega = closedOmega(path);
       return { structure, length: L, walls: [wall], grid: { along: 24, around: 16 } };
     }
     if (structure === "box") {
@@ -4571,6 +4601,7 @@ void main() {
       const sh = closedShear(path);
       const wall = beamWall(0, "Box wall", "box", path, GEOM.box.t, null, [96, 96]);
       wall.shear = sh;
+      wall.omega = closedOmega(path);
       return { structure, length: L, walls: [wall], grid: { along: 24, around: 20 } };
     }
     if (structure === "ibeam") {
@@ -4584,6 +4615,9 @@ void main() {
         beamWall(2, "Bottom flange", "flange", bot, tf, null, [96, 20]),
       ];
       iBeamShear(walls);
+      // Open section, pole at the shear centre (the origin), omega = 0 on the
+      // web: omega = integral of rho ds = y_f * z on each flange.
+      for (const w of walls) w.omega = w.path.points.map((p) => (w.kind === "web" ? 0 : p.y * p.z));
       return { structure, length: L, walls, grid: { along: 24, around: 6 } };
     }
     throw new Error(`unknown structure ${structure}`);
@@ -4629,6 +4663,7 @@ void main() {
       structure: "tube",
       loads: { axial: 0, shear: 0, torsion: 0, bending: 0 },
       exaggeration: 1,
+      warpingRestraint: false,
       patch: defaultPatch("tube"),
     };
   }
@@ -4644,8 +4679,19 @@ void main() {
       twistTip: on("torsion") * (TWIST[model.structure] || 0) * e,
       kappa0: on("bending") * KAPPA_CLAMP * e,
     };
-    P.phi = (x) => P.twistTip * x / L;
-    P.dphi = () => P.twistTip / L;
+    // Twist. Warping free: uniform rate. Warping restrained at the clamp
+    // (Vlasov, tip torque, phi(0) = phi'(0) = 0, phi''(L) = 0):
+    // phi'(x) = k (1 - cosh(lambda (L - x)) / cosh(lambda L)), same k = T/GJ.
+    const k = P.twistTip / L, lam = (LAMBDA_L[model.structure] || 0) / L;
+    P.restrained = !!state.warpingRestraint && lam > 0;
+    if (P.restrained) {
+      const ch = Math.cosh(lam * L), sh = Math.sinh(lam * L);
+      P.phi = (x) => k * (x - (sh - Math.sinh(lam * (L - x))) / (lam * ch));
+      P.dphi = (x) => k * (1 - Math.cosh(lam * (L - x)) / ch);
+    } else {
+      P.phi = (x) => k * x;
+      P.dphi = () => k;
+    }
     // Centreline of the bent member: curvature falls linearly from the clamp to
     // zero at the tip (a tip force); integrate the tangent angle over arc length.
     const n = 400, xmax = 1.6 * L, dx = xmax / n;
@@ -4688,10 +4734,44 @@ void main() {
     // Transverse shear: rigid drift of the sections plus their shear warping.
     const sh = wall.shear;
     y2 += P.gV * sh.vp * x;
-    let ux = P.epsA * x + P.gV * sampleArray(wall.path, sh.warp, v);
+    let ux = P.epsA * x + warping(P, wall, x, v);
     // Bending: plane sections stay plane and normal to the bent centreline.
     const [X, Y, th] = P.curve(x + ux);
     return [X - y2 * Math.sin(th), Y + y2 * Math.cos(th), z2];
+  }
+
+  /* Axial displacement that breaks plane sections: torsional warping
+   * (-phi' omega), shear warping and, on the box flanges, shear lag. */
+  function warping(P, wall, x, v) {
+    let w = -P.dphi(x) * sampleArray(wall.path, wall.omega, v) + P.gV * sampleArray(wall.path, wall.shear.warp, v);
+    if (P.model.structure === "box" && P.kappa0) {
+      const q = lookup(wall.path, v);
+      if (q.plate === 0 || q.plate === 2) w += shearLag(P, x, q);
+    }
+    return w;
+  }
+
+  /* Shear lag (assumed shape): the flange middle lags behind its edges, so the
+   * flange strain peaks at the webs. Cosine across the flange, zero at the
+   * webs (continuous with them), scaled by the bending rotation. */
+  function shearLag(P, x, q) {
+    const b = GEOM.box.B - 2 * GEOM.box.rc, xx = Math.min(x, L);
+    const theta = P.kappa0 * (xx - (xx * xx) / (2 * L));
+    const lag = Math.cos((Math.PI * (q.eta - b / 2)) / b); // 1 mid-flange, 0 at the webs
+    return Math.sign(q.y) * (GEOM.box.H / 2) * theta * LAG * lag;
+  }
+
+  /* Scalar for the colour maps at the mid-surface point (u, v): membrane
+   * axial strain E_xx, engineering shear strain 2 E_xs, or warping. */
+  function fieldValue(P, wall, u, v, mode) {
+    if (mode === "warping") return warping(P, wall, u, v);
+    const h = 1e-3, at = (du, dv) => deform(P, wall, clamp(u + du, wall.u0, wall.u1), v + dv, 0, { membrane: true });
+    const hu = Math.min(u + h, wall.u1) - Math.max(u - h, wall.u0);
+    const Fu = sub3(at(h, 0), at(-h, 0)).map((x) => x / hu);
+    if (mode === "axial") return (dot3(Fu, Fu) - 1) / 2;
+    const vs = wall.closed ? h : Math.min(v + h, wall.path.length) - Math.max(v - h, 0);
+    const Fs = sub3(at(0, h), at(0, -h)).map((x) => x / vs);
+    return dot3(Fu, Fs);
   }
 
   /* Deformed position of the member axis (the section origin) at x, with the
@@ -4819,7 +4899,7 @@ void main() {
 
   return {
     PATCH, patchFaces, placePatch, patchFromSliders, slidersFromPatch, patchParamLines, patchStrain, eig2, faceSign, defaultPatch,
-    L, NU, axisPoint, GEOM, STRUCTURES, LOADS, APPLIES,
+    L, NU, axisPoint, warping, fieldValue, GEOM, STRUCTURES, LOADS, APPLIES,
     buildModel, defaultState, prepare, reference, deform, lookup, sampleArray,
   };
 });
@@ -4827,14 +4907,28 @@ void main() {
 <script>
 (() => {
 "use strict";
-const META = {"title":"Structural Distortion Explorer","disclaimer":"Exaggerated, qualitative visualisation. Not to scale, no units.","version":"1.0.0","nature":"Qualitative and exaggerated: nothing is calibrated and no quantity carries units. Loads, strains and buckling thresholds are dimensionless slider fractions.","three":{"release":"r186","npm":"three@0.186.1","licence":"MIT","url":"https://threejs.org","inlined":true},"structures":[{"id":"tube","label":"Circular tube","type":"closed thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"box","label":"Rectangular box","type":"closed thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"ibeam","label":"I-beam","type":"open thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"}],"effects":[{"id":"axial","label":"Axial stretch or shortening","basis":"analytic","note":"uniform strain along the member"},{"id":"poisson","label":"Poisson contraction or swell","basis":"analytic","note":"lateral strain = -ν × axial strain, with ν drawn at its upper limit 0.5 so the swell shows; the clamp holds it back over a short length"},{"id":"bending","label":"Bending","basis":"analytic","note":"Euler-Bernoulli: plane sections stay plane and normal to the bent axis; the moment of a tip force falls linearly to zero at the tip"},{"id":"shear","label":"Transverse shear","basis":"analytic","note":"thin-walled shear flow gives the wall shear strain; sections drift and warp. The bending moment a tip force also causes is left to the bending slider"},{"id":"torsion","label":"Saint-Venant torsion","basis":"analytic","note":"rigid rotation of each section about the shear centre"}]};
+const META = {"title":"Structural Distortion Explorer","disclaimer":"Exaggerated, qualitative visualisation. Not to scale, no units.","version":"1.0.0","nature":"Qualitative and exaggerated: nothing is calibrated and no quantity carries units. Loads, strains and buckling thresholds are dimensionless slider fractions.","three":{"release":"r186","npm":"three@0.186.1","licence":"MIT","url":"https://threejs.org","inlined":true},"structures":[{"id":"tube","label":"Circular tube","type":"closed thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"box","label":"Rectangular box","type":"closed thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"},{"id":"ibeam","label":"I-beam","type":"open thin-walled","boundary":"cantilever, clamped at x = 0, loaded at the free end"}],"effects":[{"id":"axial","label":"Axial stretch or shortening","basis":"analytic","note":"uniform strain along the member"},{"id":"poisson","label":"Poisson contraction or swell","basis":"analytic","note":"lateral strain = -ν × axial strain, with ν drawn at its upper limit 0.5 so the swell shows; the clamp holds it back over a short length"},{"id":"bending","label":"Bending","basis":"analytic","note":"Euler-Bernoulli: plane sections stay plane and normal to the bent axis; the moment of a tip force falls linearly to zero at the tip"},{"id":"shear","label":"Transverse shear","basis":"analytic","note":"thin-walled shear flow gives the wall shear strain; sections drift and warp. The bending moment a tip force also causes is left to the bending slider"},{"id":"torsion","label":"Saint-Venant torsion","basis":"analytic","note":"rigid rotation of each section about the shear centre"},{"id":"warping","label":"Torsional warping","basis":"analytic","note":"axial displacement -φ'ω from the sectorial coordinate ω: Vlasov for the open I-beam, the Bredt cell for the box (small), none for the circular tube. With the restraint toggle on, warping is held at the clamp and the twist rate follows φ'(x) ∝ 1 - cosh(λ(L - x))/cosh(λL)"},{"id":"shearlag","label":"Shear lag","basis":"assumed","note":"box flanges under bending: a cosine distribution of axial displacement across the flange, so the flange strain peaks at the webs"}]};
 const D = window.Distortion;
 const $ = (id) => document.getElementById(id);
 const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
+/* ---------- Colour scales ---------- */
+const hexRGB = (h) => { const n = parseInt(h.replace("#", ""), 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
+const hex = (c) => `rgb(${c.map((x) => Math.round(x * 255)).join(",")})`;
+const lin = (c) => c.map((x) => (x <= 0.04045 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4)));
+let DIV = [], SEQ = [];
+function setScales() {
+  DIV = [hexRGB(css("--compression")), [0.96, 0.96, 0.95], hexRGB(css("--tension"))];
+  SEQ = ["#2d1b4e", "#3b528b", "#21918c", "#5ec962", "#fde725"].map(hexRGB);
+}
+setScales();
+const mix = (a, b, f) => a.map((x, i) => x + (b[i] - x) * f);
+function diverging(t) { t = Math.max(-1, Math.min(1, t)); return lin(t < 0 ? mix(DIV[1], DIV[0], -t) : mix(DIV[1], DIV[2], t)); }
+function sequential(t) { t = Math.max(0, Math.min(1, t)) * (SEQ.length - 1); const i = Math.min(Math.floor(t), SEQ.length - 2); return lin(mix(SEQ[i], SEQ[i + 1], t - i)); }
+
 /* ---------- State ---------- */
 const state = D.defaultState();
-const ui = { arrows: true, axes: true };
+const ui = { arrows: true, axes: true, contour: "none" };
 let model = D.buildModel(state.structure);
 
 /* ---------- Controls ---------- */
@@ -4877,6 +4971,7 @@ function syncControls() {
   const ex = `${Number(state.exaggeration).toFixed(1)}×`;
   $("o-exaggeration").textContent = ex; $("s-exaggeration").setAttribute("aria-valuetext", ex);
   $("t-arrows").checked = ui.arrows; $("t-axes").checked = ui.axes;
+  $("t-restraint").checked = !!state.warpingRestraint; $("contour").value = ui.contour;
   const ps = D.slidersFromPatch(model, state.patch);
   $("s-along").value = ps.along; $("s-around").value = ps.around; $("s-angle").value = ps.angle;
   const w = model.walls[state.patch.wall];
@@ -4895,12 +4990,15 @@ $("panel").addEventListener("input", (ev) => {
     else if (k === "along" || k === "around" || k === "angle") state.patch = D.patchFromSliders(model, Number($("s-along").value), Number($("s-around").value), Number($("s-angle").value));
     else state.loads[k] = Number(t.value);
   } else if (t.id === "t-arrows") ui.arrows = t.checked;
+  else if (t.id === "t-restraint") state.warpingRestraint = t.checked;
+  else if (t.id === "contour") ui.contour = t.value;
   else if (t.id === "t-axes") ui.axes = t.checked;
   refresh();
 });
 $("reset").addEventListener("click", () => {
   const s = state.structure;
   Object.assign(state, D.defaultState(), { structure: s, patch: D.defaultPatch(s) });
+  ui.contour = "none";
   if (three) three.frame();
   refresh();
 });
@@ -4940,6 +5038,7 @@ function createView() {
 
   const bodyMat = new T.MeshStandardMaterial({ color: 0x8d949e, roughness: 0.55, metalness: 0.15, side: T.DoubleSide,
     polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 });
+  const mapMat = bodyMat.clone(); mapMat.color.set(0xffffff); mapMat.vertexColors = true; mapMat.metalness = 0; mapMat.roughness = 0.75;
   const gridMat = new T.LineBasicMaterial({ color: 0x2b2f35, transparent: true, opacity: 0.45 });
   const ghostMat = new T.LineBasicMaterial({ color: 0x9cc3ff, transparent: true, opacity: 0.5 });
   const clampMat = new T.MeshStandardMaterial({ color: 0x3b4048, roughness: 0.9, metalness: 0 });
@@ -4954,6 +5053,7 @@ function createView() {
     gridMat.color.set(light ? 0x39414b : 0x23262b); gridMat.opacity = light ? 0.35 : 0.5;
     ghostMat.color.set(css("--ghost"));
     patchMat.emissive.set(css("--amber"));
+    setScales();
   }
   themeColours();
   matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => { themeColours(); render(); });
@@ -4992,6 +5092,7 @@ function createView() {
     const uv = new Float32Array(params.length / 3 * 2);
     for (let k = 0; k < params.length / 3; k++) { uv[2 * k] = params[3 * k]; uv[2 * k + 1] = params[3 * k + 1]; }
     g.setAttribute("uv", new T.BufferAttribute(uv, 2));
+    g.setAttribute("color", new T.BufferAttribute(new Float32Array(params.length), 3));
     g.setIndex(index);
     g.userData.params = Float32Array.from(params);
     g.userData.seams = seams;
@@ -5153,11 +5254,49 @@ function createView() {
         for (let c = 0; c < 3; c++) nrm[a + c] = nrm[b + c] = (nrm[a + c] + nrm[b + c]) / 2;
       }
     }
+    colourMap(P);
     fillLines(grid, P);
     updatePatch(P);
     updateArrows(P);
     axes.visible = ui.axes;
     render();
+  }
+
+  /* Colour maps: membrane strain or warping at each (u, v), shared by the
+   * vertices through the thickness. Diverging maps are scaled by the largest
+   * magnitude on the body, so they show pattern and sign, not size. */
+  function colourMap(P) {
+    const mode = ui.contour;
+    for (const mesh of body.children) mesh.material = mode === "none" ? bodyMat : mapMat;
+    const legend = $("maplegend");
+    if (mode === "none") { legend.hidden = true; return; }
+    const values = [];
+    let peak = 0;
+    for (const mesh of body.children) {
+      const wall = model.walls[mesh.userData.wall], pr = mesh.geometry.userData.params, cache = new Map(), vals = new Float32Array(pr.length / 3);
+      for (let i = 0; i < pr.length; i += 3) {
+        const key = `${pr[i]},${pr[i + 1]}`;
+        let val = cache.get(key);
+        if (val === undefined) { val = D.fieldValue(P, wall, pr[i], pr[i + 1], mode); cache.set(key, val); }
+        vals[i / 3] = val; peak = Math.max(peak, Math.abs(val));
+      }
+      values.push(vals);
+    }
+    const flat = peak < 1e-6;
+    body.children.forEach((mesh, k) => {
+      const col = mesh.geometry.attributes.color.array, vals = values[k];
+      for (let i = 0; i < vals.length; i++) {
+        const c = mode === "warping" ? sequential(flat ? 0 : Math.abs(vals[i]) / peak) : diverging(flat ? 0 : vals[i] / peak);
+        col[3 * i] = c[0]; col[3 * i + 1] = c[1]; col[3 * i + 2] = c[2];
+      }
+      mesh.geometry.attributes.color.needsUpdate = true;
+    });
+    const titles = { shear: "Shear strain", axial: "Axial strain", warping: "Warping displacement" };
+    $("ml-title").textContent = titles[mode] + (flat ? ": none here" : "");
+    $("ml-bar").style.background = mode === "warping" ? `linear-gradient(90deg, ${SEQ.map((c) => hex(c)).join(", ")})` : `linear-gradient(90deg, ${hex(DIV[0])}, ${hex(DIV[1])}, ${hex(DIV[2])})`;
+    const ends = { shear: ["one way", "", "other way"], axial: ["compression", "0", "tension"], warping: ["none", "", "most"] }[mode];
+    $("ml-lo").textContent = ends[0]; $("ml-mid").textContent = ends[1]; $("ml-hi").textContent = ends[2];
+    legend.hidden = false;
   }
 
   /* The amber 4 x 4 grid as thin ribbons lying on the deformed outer face:

@@ -71,6 +71,11 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
 #inset-text { margin: 4px 0 0; font-size: 12px; color: var(--muted); }
 .key { display: inline-flex; align-items: center; gap: 4px; margin-right: 8px; }
 .sw { display: inline-block; width: 14px; height: 3px; border-radius: 2px; }
+#maplegend { position: absolute; right: 12px; top: 12px; width: 190px; padding: 8px 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); font-size: 12px; }
+#maplegend[hidden] { display: none; }
+#maplegend .bar { height: 10px; border-radius: 3px; margin: 5px 0 3px; }
+#maplegend .ends { display: flex; justify-content: space-between; color: var(--muted); }
+.select-row { display: grid; gap: 4px; margin: 0 0 10px; }
 .axis-label { position: absolute; font-size: 12px; color: var(--muted); pointer-events: none; transform: translate(-50%, -50%); }
 @media (max-width: 760px) {
   body { grid-template-rows: auto minmax(0, 1fr); }
@@ -92,6 +97,7 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
     <canvas id="view" tabindex="0" aria-label="3D view of the deformed structure. Drag or use the arrow keys to orbit, scroll or pinch to zoom."></canvas>
     <div id="nogl" role="alert"><p><strong>This view needs WebGL, which this browser has turned off or does not support.</strong><br>Turn on hardware acceleration or try another modern browser. The controls still work.</p></div>
     <div id="axis-labels" aria-hidden="true"></div>
+    <div id="maplegend" hidden aria-live="polite"><strong id="ml-title"></strong><div class="bar" id="ml-bar"></div><div class="ends"><span id="ml-lo"></span><span id="ml-mid"></span><span id="ml-hi"></span></div></div>
     <section id="inset" aria-label="Unit patch in 2D">
       <button type="button" id="inset-toggle" aria-expanded="true" aria-controls="inset-body"><span>Unit patch, flattened</span><span class="chev" aria-hidden="true">▾</span></button>
       <div id="inset-body">
@@ -119,7 +125,17 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
     <fieldset>
       <legend>View</legend>
       <div id="view-sliders"></div>
+      <div class="select-row">
+        <label for="contour">Colour map</label>
+        <select id="contour">
+          <option value="none">None</option>
+          <option value="shear">Shear strain</option>
+          <option value="axial">Axial strain</option>
+          <option value="warping">Warping displacement</option>
+        </select>
+      </div>
       <div class="toggles">
+        <label><input type="checkbox" id="t-restraint"> Restrain warping at the clamp</label>
         <label><input type="checkbox" id="t-arrows" checked> Load arrows</label>
         <label><input type="checkbox" id="t-axes" checked> Axes triad</label>
       </div>
@@ -137,9 +153,23 @@ const D = window.Distortion;
 const $ = (id) => document.getElementById(id);
 const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
+/* ---------- Colour scales ---------- */
+const hexRGB = (h) => { const n = parseInt(h.replace("#", ""), 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
+const hex = (c) => `rgb(${c.map((x) => Math.round(x * 255)).join(",")})`;
+const lin = (c) => c.map((x) => (x <= 0.04045 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4)));
+let DIV = [], SEQ = [];
+function setScales() {
+  DIV = [hexRGB(css("--compression")), [0.96, 0.96, 0.95], hexRGB(css("--tension"))];
+  SEQ = ["#2d1b4e", "#3b528b", "#21918c", "#5ec962", "#fde725"].map(hexRGB);
+}
+setScales();
+const mix = (a, b, f) => a.map((x, i) => x + (b[i] - x) * f);
+function diverging(t) { t = Math.max(-1, Math.min(1, t)); return lin(t < 0 ? mix(DIV[1], DIV[0], -t) : mix(DIV[1], DIV[2], t)); }
+function sequential(t) { t = Math.max(0, Math.min(1, t)) * (SEQ.length - 1); const i = Math.min(Math.floor(t), SEQ.length - 2); return lin(mix(SEQ[i], SEQ[i + 1], t - i)); }
+
 /* ---------- State ---------- */
 const state = D.defaultState();
-const ui = { arrows: true, axes: true };
+const ui = { arrows: true, axes: true, contour: "none" };
 let model = D.buildModel(state.structure);
 
 /* ---------- Controls ---------- */
@@ -182,6 +212,7 @@ function syncControls() {
   const ex = `${Number(state.exaggeration).toFixed(1)}×`;
   $("o-exaggeration").textContent = ex; $("s-exaggeration").setAttribute("aria-valuetext", ex);
   $("t-arrows").checked = ui.arrows; $("t-axes").checked = ui.axes;
+  $("t-restraint").checked = !!state.warpingRestraint; $("contour").value = ui.contour;
   const ps = D.slidersFromPatch(model, state.patch);
   $("s-along").value = ps.along; $("s-around").value = ps.around; $("s-angle").value = ps.angle;
   const w = model.walls[state.patch.wall];
@@ -200,12 +231,15 @@ $("panel").addEventListener("input", (ev) => {
     else if (k === "along" || k === "around" || k === "angle") state.patch = D.patchFromSliders(model, Number($("s-along").value), Number($("s-around").value), Number($("s-angle").value));
     else state.loads[k] = Number(t.value);
   } else if (t.id === "t-arrows") ui.arrows = t.checked;
+  else if (t.id === "t-restraint") state.warpingRestraint = t.checked;
+  else if (t.id === "contour") ui.contour = t.value;
   else if (t.id === "t-axes") ui.axes = t.checked;
   refresh();
 });
 $("reset").addEventListener("click", () => {
   const s = state.structure;
   Object.assign(state, D.defaultState(), { structure: s, patch: D.defaultPatch(s) });
+  ui.contour = "none";
   if (three) three.frame();
   refresh();
 });
@@ -245,6 +279,7 @@ function createView() {
 
   const bodyMat = new T.MeshStandardMaterial({ color: 0x8d949e, roughness: 0.55, metalness: 0.15, side: T.DoubleSide,
     polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 });
+  const mapMat = bodyMat.clone(); mapMat.color.set(0xffffff); mapMat.vertexColors = true; mapMat.metalness = 0; mapMat.roughness = 0.75;
   const gridMat = new T.LineBasicMaterial({ color: 0x2b2f35, transparent: true, opacity: 0.45 });
   const ghostMat = new T.LineBasicMaterial({ color: 0x9cc3ff, transparent: true, opacity: 0.5 });
   const clampMat = new T.MeshStandardMaterial({ color: 0x3b4048, roughness: 0.9, metalness: 0 });
@@ -259,6 +294,7 @@ function createView() {
     gridMat.color.set(light ? 0x39414b : 0x23262b); gridMat.opacity = light ? 0.35 : 0.5;
     ghostMat.color.set(css("--ghost"));
     patchMat.emissive.set(css("--amber"));
+    setScales();
   }
   themeColours();
   matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => { themeColours(); render(); });
@@ -297,6 +333,7 @@ function createView() {
     const uv = new Float32Array(params.length / 3 * 2);
     for (let k = 0; k < params.length / 3; k++) { uv[2 * k] = params[3 * k]; uv[2 * k + 1] = params[3 * k + 1]; }
     g.setAttribute("uv", new T.BufferAttribute(uv, 2));
+    g.setAttribute("color", new T.BufferAttribute(new Float32Array(params.length), 3));
     g.setIndex(index);
     g.userData.params = Float32Array.from(params);
     g.userData.seams = seams;
@@ -458,11 +495,49 @@ function createView() {
         for (let c = 0; c < 3; c++) nrm[a + c] = nrm[b + c] = (nrm[a + c] + nrm[b + c]) / 2;
       }
     }
+    colourMap(P);
     fillLines(grid, P);
     updatePatch(P);
     updateArrows(P);
     axes.visible = ui.axes;
     render();
+  }
+
+  /* Colour maps: membrane strain or warping at each (u, v), shared by the
+   * vertices through the thickness. Diverging maps are scaled by the largest
+   * magnitude on the body, so they show pattern and sign, not size. */
+  function colourMap(P) {
+    const mode = ui.contour;
+    for (const mesh of body.children) mesh.material = mode === "none" ? bodyMat : mapMat;
+    const legend = $("maplegend");
+    if (mode === "none") { legend.hidden = true; return; }
+    const values = [];
+    let peak = 0;
+    for (const mesh of body.children) {
+      const wall = model.walls[mesh.userData.wall], pr = mesh.geometry.userData.params, cache = new Map(), vals = new Float32Array(pr.length / 3);
+      for (let i = 0; i < pr.length; i += 3) {
+        const key = `${pr[i]},${pr[i + 1]}`;
+        let val = cache.get(key);
+        if (val === undefined) { val = D.fieldValue(P, wall, pr[i], pr[i + 1], mode); cache.set(key, val); }
+        vals[i / 3] = val; peak = Math.max(peak, Math.abs(val));
+      }
+      values.push(vals);
+    }
+    const flat = peak < 1e-6;
+    body.children.forEach((mesh, k) => {
+      const col = mesh.geometry.attributes.color.array, vals = values[k];
+      for (let i = 0; i < vals.length; i++) {
+        const c = mode === "warping" ? sequential(flat ? 0 : Math.abs(vals[i]) / peak) : diverging(flat ? 0 : vals[i] / peak);
+        col[3 * i] = c[0]; col[3 * i + 1] = c[1]; col[3 * i + 2] = c[2];
+      }
+      mesh.geometry.attributes.color.needsUpdate = true;
+    });
+    const titles = { shear: "Shear strain", axial: "Axial strain", warping: "Warping displacement" };
+    $("ml-title").textContent = titles[mode] + (flat ? ": none here" : "");
+    $("ml-bar").style.background = mode === "warping" ? `linear-gradient(90deg, ${SEQ.map((c) => hex(c)).join(", ")})` : `linear-gradient(90deg, ${hex(DIV[0])}, ${hex(DIV[1])}, ${hex(DIV[2])})`;
+    const ends = { shear: ["one way", "", "other way"], axial: ["compression", "0", "tension"], warping: ["none", "", "most"] }[mode];
+    $("ml-lo").textContent = ends[0]; $("ml-mid").textContent = ends[1]; $("ml-hi").textContent = ends[2];
+    legend.hidden = false;
   }
 
   /* The amber 4 x 4 grid as thin ribbons lying on the deformed outer face:

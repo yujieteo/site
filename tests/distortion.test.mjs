@@ -34,11 +34,11 @@ test("no load leaves every structure undeformed", () => {
   }
 });
 
-test("the clamped end does not move under bending, shear or torsion", () => {
+test("the clamped end does not move under bending and torsion with warping restrained", () => {
   for (const s of D.STRUCTURES) {
     const m = D.buildModel(s);
     for (const w of m.walls) {
-      const d = displacement(m, state(s, { bending: 1, shear: 0, torsion: 1 }), w.id, 0, w.v0 + 0.3 * (w.v1 - w.v0));
+      const d = displacement(m, state(s, { bending: 1, torsion: 1 }, { warpingRestraint: true }), w.id, 0, w.v0 + 0.3 * (w.v1 - w.v0));
       assert.ok(norm(d) < 1e-9, `${s} ${w.name}: ${d}`);
     }
   }
@@ -63,7 +63,8 @@ test("axial tension stretches and thins; compression shortens and swells (Poisso
 });
 
 test("bending keeps plane sections plane and bends the tip the right way", () => {
-  const m = D.buildModel("box"), P = D.prepare(m, state("box", { bending: 1 }));
+  // the tube: the box adds shear lag, which is exactly a departure from plane sections
+  const m = D.buildModel("tube"), P = D.prepare(m, state("tube", { bending: 1 }));
   const tip = D.axisPoint(P, 6);
   assert.ok(tip[1] > 0.3, "tip up");
   // points of one section stay on a line normal to the bent axis
@@ -122,4 +123,52 @@ test("the patch stays on its wall and the patch sliders round-trip", () => {
       assert.ok(Math.abs(back.u - p.u) < 1e-9 && Math.abs(back.v - p.v) < 1e-9 && back.wall === p.wall, `${s} ${along} ${around}`);
     }
   }
+});
+
+test("I-beam torsion warps the flange tips in opposite directions, restrained at the clamp when toggled", () => {
+  const m = D.buildModel("ibeam"), top = m.walls[0], bot = m.walls[2], tipL = 0, tipR = top.path.length;
+  for (const restrained of [false, true]) {
+    const P = D.prepare(m, state("ibeam", { torsion: 1 }, { warpingRestraint: restrained }));
+    for (const x of [1.5, 3, 5.5]) {
+      const a = D.warping(P, top, x, tipL), b = D.warping(P, top, x, tipR), c = D.warping(P, bot, x, tipL), d = D.warping(P, bot, x, tipR);
+      assert.ok(Math.abs(a) > 1e-3, `${restrained} x=${x}: tips warp (${a})`);
+      assert.ok(a * b < 0 && a * c < 0 && a * d > 0, `opposite tips move opposite ways: ${[a, b, c, d]}`);
+      // and it is visible in the displacement field itself
+      const dx = displacement(m, state("ibeam", { torsion: 1 }, { warpingRestraint: restrained }), 0, x, tipR)[0];
+      assert.ok(Math.sign(dx) === Math.sign(b));
+    }
+    const atClamp = Math.abs(D.warping(P, top, 0, tipR)), far = Math.abs(D.warping(P, top, 4, tipR));
+    if (restrained) assert.ok(atClamp < 1e-9 && D.warping(P, top, 0.3, tipR) !== 0, `restrained at the clamp: ${atClamp}`);
+    else assert.ok(Math.abs(atClamp - far) < 1e-9, "free warping is uniform along the span");
+  }
+  // restraint stiffens the member: less twist at the tip
+  const free = D.prepare(m, state("ibeam", { torsion: 1 })), held = D.prepare(m, state("ibeam", { torsion: 1 }, { warpingRestraint: true }));
+  assert.ok(held.phi(6) < 0.8 * free.phi(6));
+});
+
+test("the circular tube does not warp in torsion; the box warps a little", () => {
+  const tube = D.buildModel("tube"), box = D.buildModel("box"), ib = D.buildModel("ibeam");
+  const peak = (m, s) => {
+    const P = D.prepare(m, state(s, { torsion: 1 }));
+    let w = 0;
+    for (const wall of m.walls) for (let k = 0; k <= 50; k++) w = Math.max(w, Math.abs(D.warping(P, wall, 3, wall.v0 + (k / 50) * (wall.v1 - wall.v0))));
+    return w;
+  };
+  assert.ok(peak(tube, "tube") < 1e-6);
+  assert.ok(peak(box, "box") > 1e-4 && peak(box, "box") < 0.5 * peak(ib, "ibeam"));
+});
+
+test("shear lag makes the box flange strain peak at the webs", () => {
+  const m = D.buildModel("box"), w = m.walls[0], P = D.prepare(m, state("box", { bending: 1 }));
+  const strainAt = (y, z) => {
+    let best = 0, bd = Infinity;
+    w.path.points.forEach((q, i) => { const d = Math.hypot(q.y - y, q.z - z); if (d < bd) { bd = d; best = w.path.s[i]; } });
+    return D.fieldValue(P, w, 1.5, best, "axial");
+  };
+  const { B, H, rc } = D.GEOM.box;
+  const mid = strainAt(H / 2, 0), edge = strainAt(H / 2, B / 2 - rc - 0.01);
+  assert.ok(mid < 0 && edge < 0, "top flange in compression for tip-up bending");
+  assert.ok(Math.abs(edge) > 1.3 * Math.abs(mid), `edge ${edge} vs middle ${mid}`);
+  const bot = strainAt(-H / 2, 0);
+  assert.ok(bot > 0, "bottom flange in tension");
 });

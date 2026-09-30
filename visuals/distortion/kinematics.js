@@ -20,7 +20,9 @@
   const EPS_AXIAL = 0.08;           // axial strain at full axial load, 1× exaggeration
   const GAMMA_V = 0.08;             // peak wall shear strain at full transverse shear
   const KAPPA_CLAMP = 0.07;         // curvature at the clamp at full bending
-  const TWIST = { tube: 0.5, box: 0.6, ibeam: 1.2 }; // free-end twist (rad) at full torsion
+  const TWIST = { tube: 0.5, box: 0.6, ibeam: 1.2 }; // free-end twist (rad) at full torsion, warping free
+  const LAMBDA_L = { box: 10, ibeam: 2.5 }; // Vlasov decay length ratio L*sqrt(GJ/(E*Cw)); the tube does not warp
+  const LAG = 0.7;                  // shear-lag strength (assumed shape)
 
   const GEOM = {
     tube: { R: 0.6, t: 0.05 },
@@ -161,6 +163,17 @@
     return { gamma, vp, warp };
   }
 
+  /* Normalised sectorial coordinate of a closed single cell, uniform t:
+   * omega = integral of (rho - psi) ds, psi = 2A / perimeter, mean removed.
+   * Zero for the circular tube; the box's corners warp alternately. */
+  function closedOmega(path) {
+    const rho = (p) => p.y * p.tz - p.z * p.ty;
+    const psi = cumulative(path, rho).total / path.length;
+    const omega = cumulative(path, (p) => rho(p) - psi).values;
+    const m = mean(path, omega);
+    return omega.map((w) => w - m);
+  }
+
   /* Table-backed lookup of a per-sample array on a path. */
   function sampleArray(path, arr, v) {
     const { s, length, closed } = path, n = s.length;
@@ -188,6 +201,7 @@
       const sh = closedShear(path);
       const wall = beamWall(0, "Tube wall", "tube", path, GEOM.tube.t, null, [96, 64]);
       wall.shear = sh;
+      wall.omega = closedOmega(path);
       return { structure, length: L, walls: [wall], grid: { along: 24, around: 16 } };
     }
     if (structure === "box") {
@@ -195,6 +209,7 @@
       const sh = closedShear(path);
       const wall = beamWall(0, "Box wall", "box", path, GEOM.box.t, null, [96, 96]);
       wall.shear = sh;
+      wall.omega = closedOmega(path);
       return { structure, length: L, walls: [wall], grid: { along: 24, around: 20 } };
     }
     if (structure === "ibeam") {
@@ -208,6 +223,9 @@
         beamWall(2, "Bottom flange", "flange", bot, tf, null, [96, 20]),
       ];
       iBeamShear(walls);
+      // Open section, pole at the shear centre (the origin), omega = 0 on the
+      // web: omega = integral of rho ds = y_f * z on each flange.
+      for (const w of walls) w.omega = w.path.points.map((p) => (w.kind === "web" ? 0 : p.y * p.z));
       return { structure, length: L, walls, grid: { along: 24, around: 6 } };
     }
     throw new Error(`unknown structure ${structure}`);
@@ -253,6 +271,7 @@
       structure: "tube",
       loads: { axial: 0, shear: 0, torsion: 0, bending: 0 },
       exaggeration: 1,
+      warpingRestraint: false,
       patch: defaultPatch("tube"),
     };
   }
@@ -268,8 +287,19 @@
       twistTip: on("torsion") * (TWIST[model.structure] || 0) * e,
       kappa0: on("bending") * KAPPA_CLAMP * e,
     };
-    P.phi = (x) => P.twistTip * x / L;
-    P.dphi = () => P.twistTip / L;
+    // Twist. Warping free: uniform rate. Warping restrained at the clamp
+    // (Vlasov, tip torque, phi(0) = phi'(0) = 0, phi''(L) = 0):
+    // phi'(x) = k (1 - cosh(lambda (L - x)) / cosh(lambda L)), same k = T/GJ.
+    const k = P.twistTip / L, lam = (LAMBDA_L[model.structure] || 0) / L;
+    P.restrained = !!state.warpingRestraint && lam > 0;
+    if (P.restrained) {
+      const ch = Math.cosh(lam * L), sh = Math.sinh(lam * L);
+      P.phi = (x) => k * (x - (sh - Math.sinh(lam * (L - x))) / (lam * ch));
+      P.dphi = (x) => k * (1 - Math.cosh(lam * (L - x)) / ch);
+    } else {
+      P.phi = (x) => k * x;
+      P.dphi = () => k;
+    }
     // Centreline of the bent member: curvature falls linearly from the clamp to
     // zero at the tip (a tip force); integrate the tangent angle over arc length.
     const n = 400, xmax = 1.6 * L, dx = xmax / n;
@@ -312,10 +342,44 @@
     // Transverse shear: rigid drift of the sections plus their shear warping.
     const sh = wall.shear;
     y2 += P.gV * sh.vp * x;
-    let ux = P.epsA * x + P.gV * sampleArray(wall.path, sh.warp, v);
+    let ux = P.epsA * x + warping(P, wall, x, v);
     // Bending: plane sections stay plane and normal to the bent centreline.
     const [X, Y, th] = P.curve(x + ux);
     return [X - y2 * Math.sin(th), Y + y2 * Math.cos(th), z2];
+  }
+
+  /* Axial displacement that breaks plane sections: torsional warping
+   * (-phi' omega), shear warping and, on the box flanges, shear lag. */
+  function warping(P, wall, x, v) {
+    let w = -P.dphi(x) * sampleArray(wall.path, wall.omega, v) + P.gV * sampleArray(wall.path, wall.shear.warp, v);
+    if (P.model.structure === "box" && P.kappa0) {
+      const q = lookup(wall.path, v);
+      if (q.plate === 0 || q.plate === 2) w += shearLag(P, x, q);
+    }
+    return w;
+  }
+
+  /* Shear lag (assumed shape): the flange middle lags behind its edges, so the
+   * flange strain peaks at the webs. Cosine across the flange, zero at the
+   * webs (continuous with them), scaled by the bending rotation. */
+  function shearLag(P, x, q) {
+    const b = GEOM.box.B - 2 * GEOM.box.rc, xx = Math.min(x, L);
+    const theta = P.kappa0 * (xx - (xx * xx) / (2 * L));
+    const lag = Math.cos((Math.PI * (q.eta - b / 2)) / b); // 1 mid-flange, 0 at the webs
+    return Math.sign(q.y) * (GEOM.box.H / 2) * theta * LAG * lag;
+  }
+
+  /* Scalar for the colour maps at the mid-surface point (u, v): membrane
+   * axial strain E_xx, engineering shear strain 2 E_xs, or warping. */
+  function fieldValue(P, wall, u, v, mode) {
+    if (mode === "warping") return warping(P, wall, u, v);
+    const h = 1e-3, at = (du, dv) => deform(P, wall, clamp(u + du, wall.u0, wall.u1), v + dv, 0, { membrane: true });
+    const hu = Math.min(u + h, wall.u1) - Math.max(u - h, wall.u0);
+    const Fu = sub3(at(h, 0), at(-h, 0)).map((x) => x / hu);
+    if (mode === "axial") return (dot3(Fu, Fu) - 1) / 2;
+    const vs = wall.closed ? h : Math.min(v + h, wall.path.length) - Math.max(v - h, 0);
+    const Fs = sub3(at(0, h), at(0, -h)).map((x) => x / vs);
+    return dot3(Fu, Fs);
   }
 
   /* Deformed position of the member axis (the section origin) at x, with the
@@ -443,7 +507,7 @@
 
   return {
     PATCH, patchFaces, placePatch, patchFromSliders, slidersFromPatch, patchParamLines, patchStrain, eig2, faceSign, defaultPatch,
-    L, NU, axisPoint, GEOM, STRUCTURES, LOADS, APPLIES,
+    L, NU, axisPoint, warping, fieldValue, GEOM, STRUCTURES, LOADS, APPLIES,
     buildModel, defaultState, prepare, reference, deform, lookup, sampleArray,
   };
 });

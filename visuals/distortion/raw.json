@@ -14,6 +14,8 @@
     { "id": "poisson", "label": "Poisson contraction or swell", "basis": "analytic", "note": "lateral strain = -ν × axial strain, with ν drawn at its upper limit 0.5 so the swell shows; the clamp holds it back over a short length" },
     { "id": "bending", "label": "Bending", "basis": "analytic", "note": "Euler-Bernoulli: plane sections stay plane and normal to the bent axis; the moment of a tip force falls linearly to zero at the tip" },
     { "id": "shear", "label": "Transverse shear", "basis": "analytic", "note": "thin-walled shear flow gives the wall shear strain; sections drift and warp. The bending moment a tip force also causes is left to the bending slider" },
-    { "id": "torsion", "label": "Saint-Venant torsion", "basis": "analytic", "note": "rigid rotation of each section about the shear centre" }
+    { "id": "torsion", "label": "Saint-Venant torsion", "basis": "analytic", "note": "rigid rotation of each section about the shear centre" },
+    { "id": "warping", "label": "Torsional warping", "basis": "analytic", "note": "axial displacement -φ'ω from the sectorial coordinate ω: Vlasov for the open I-beam, the Bredt cell for the box (small), none for the circular tube. With the restraint toggle on, warping is held at the clamp and the twist rate follows φ'(x) ∝ 1 - cosh(λ(L - x))/cosh(λL)" },
+    { "id": "shearlag", "label": "Shear lag", "basis": "assumed", "note": "box flanges under bending: a cosine distribution of axial displacement across the flange, so the flange strain peaks at the webs" }
   ]
 }
