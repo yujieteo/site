@@ -14,6 +14,13 @@ Place a bolt or rivet group on a canvas or in a table, with per-fastener area an
 - Fetched: 2026-09-30
 - WebMCP tools: get_metadata, get_current_pattern, analyze_pattern, export_markdown
 
+## Lug and pin joint calculator
+Preliminary static sizing of a double-shear lug and pin joint, one male lug between two female clevis legs on a solid pin, under axial, transverse or oblique ultimate load. Every failure mode of AFFDL Stress Analysis Manual chapter 9 (lug bearing and net section, bushing, the 1.6-power oblique interaction, pin shear, pin bending with the load-shift refinement, and tangs) gets its allowable, ultimate and yield safety factors and margins, with a calculation trace by equation number, an interaction diagram and an angle sweep. Units switch per quantity, inputs save as JSON or a link, and the page checks itself against the chapter's worked example on every load.
+- HTML: https://teoyujie.org/visuals/lug-joint/index.html
+- Data: https://teoyujie.org/visuals/lug-joint/data.json
+- Fetched: 2026-09-30
+- WebMCP tools: get_metadata, get_current_joint, solve_joint, run_self_tests
+
 ## Subsidy Atlas
 Find free LLM tokens, cloud credits, ride and delivery promotions, policy rebates and merchant-funded financing. Filter by category, subsidiser, offer depth and lifecycle; inspect sourced evidence and historical loss-leader lessons, with a separate speculative early-access watchlist. As of 30 September 2026; unknown cost subsidies remain unknown.
 - HTML: https://teoyujie.org/visuals/subsidy-atlas/index.html
