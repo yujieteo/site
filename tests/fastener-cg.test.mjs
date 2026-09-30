@@ -498,13 +498,16 @@ test("round-off loads on the neutral axis or at Cs count as zero: no spurious W-
     p.defaults.tensionAllowable = 1000;
     return solve(p);
   };
-  const middle = ["F4", "F5", "F6"];
-  for (const Mx of [-1000, 1000]) {
-    const r = run({ point: { x: 0.2, y: 0.2, z: 0 }, Mx });
+  // Ca.x computes to 0.2 + 4e-17, so under My the middle column carries T ≈ ±4.6e-13.
+  const middle = ["F2", "F5", "F8"];
+  for (const My of [-1000, 1000]) {
+    const r = run({ point: { x: 0.2, y: 0.2, z: 0 }, My });
     assert.ok(r.ok);
     assert.ok(!ids(r.issues).includes("W-008"));
     for (const id of middle) {
-      const m = interactionOf(r.fasteners.find((f) => f.id === id));
+      const f = r.fasteners.find((q) => q.id === id);
+      assert.ok(f.axial.T !== 0 && Math.abs(f.axial.T) < 1e-9, `${id} T = ${f.axial.T} should be round-off`);
+      const m = interactionOf(f);
       assert.equal(m.Rt, 0);
       assert.equal(m.status, "unloaded");
     }
