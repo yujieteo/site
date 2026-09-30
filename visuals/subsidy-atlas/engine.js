@@ -79,7 +79,7 @@
     document.getElementById('catalogue').focus();
   });
   function registerTools() {
-    const mc = navigator.modelContext;
+    const mc = document.modelContext;
     if (!mc?.registerTool) return;
     const tools = [
       {name: 'get_metadata', description: 'Get the Subsidy Atlas date, vocabulary and sources. Depth is not a comparable cost percentage.',

@@ -2,8 +2,73 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const {filterEntries, matrix, getProduct} = require('../visuals/subsidy-atlas/engine.js');
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../visuals/subsidy-atlas/raw.json'), 'utf8'));
+
+function loadBrowserAtlas(modelContext) {
+  const fields = Object.fromEntries(['q', 'category', 'subsidiser', 'depth', 'stage', 'includeHistorical']
+    .map(name => [name, {value: '', checked: false}]));
+  const cards = data.entries.map(entry => ({dataset: {product: entry.id}}));
+  const nodes = {
+    'atlas-data': {textContent: JSON.stringify(data)},
+    filters: {elements: {namedItem: name => fields[name]}, addEventListener() {}},
+    matrix: {querySelectorAll: () => [], querySelector: () => nodes.history, addEventListener() {}},
+    history: {}, count: {}, empty: {},
+  };
+  const document = {
+    modelContext,
+    getElementById: id => nodes[id],
+    querySelectorAll: selector => selector === '[data-product]' ? cards : [],
+  };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../visuals/subsidy-atlas/engine.js'), 'utf8'),
+    {document, navigator: {}});
+  return {cards, nodes};
+}
+
+test('document WebMCP registers and executes all three read-only tools without navigator WebMCP', async () => {
+  const tools = new Map();
+  const modelContext = {
+    registerTool(tool) {
+      assert.equal(this, modelContext);
+      assert.ok(!tools.has(tool.name));
+      tools.set(tool.name, tool);
+    },
+  };
+  const {cards} = loadBrowserAtlas(modelContext);
+  assert.deepEqual([...tools.keys()].sort(), ['get_metadata', 'get_product', 'search_products']);
+  for (const tool of tools.values()) assert.equal(tool.annotations.readOnlyHint, true);
+  const execute = async (name, input) => {
+    const result = await tools.get(name).execute(input);
+    assert.equal(result.content.length, 1);
+    assert.equal(result.content[0].type, 'text');
+    return JSON.parse(result.content[0].text);
+  };
+  assert.deepEqual(await execute('get_metadata', {}),
+    {as_of: data.as_of, vocabulary: data.vocabulary, sources: data.sources});
+  const current = await execute('search_products', {});
+  assert.deepEqual(current.entries, filterEntries(data));
+  assert.equal(current.as_of, data.as_of);
+  assert.deepEqual(cards.filter(card => !card.hidden).map(card => card.dataset.product),
+    current.entries.map(entry => entry.id));
+  assert.deepEqual((await execute('search_products', {q: 'ChatGPT Pro'})).entries, []);
+  assert.deepEqual((await execute('search_products', {q: 'ChatGPT Pro', includeHistorical: true})).entries
+    .map(entry => entry.id), ['pro-2025']);
+  for (const id of ['gemini-free', data.forecasts[0].id, 'missing']) {
+    assert.deepEqual(await execute('get_product', {id}),
+      {as_of: data.as_of, product: getProduct(data, id), sources: data.sources});
+  }
+  await assert.rejects(() => execute('search_products', {depth: 'made-up'}), /Unknown depth/);
+});
+
+test('catalogue renders when document WebMCP is unavailable', () => {
+  const {cards, nodes} = loadBrowserAtlas(undefined);
+  assert.deepEqual(cards.filter(card => !card.hidden).map(card => card.dataset.product),
+    filterEntries(data).map(entry => entry.id));
+  assert.equal(nodes.matrix.hidden, false);
+  assert.equal(nodes.history.hidden, true);
+  assert.equal(nodes.empty.hidden, true);
+});
 
 test('current catalogue excludes old loss reports and forecasts', () => {
   const result = filterEntries(data);
