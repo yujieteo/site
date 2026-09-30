@@ -72,7 +72,7 @@ needs network access to Hugging Face and jsDelivr.
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-node --test 'tests/*.test.{mjs,cjs}' 'visuals/sectionlab/tests/*.test.mjs'
+node --test 'tests/*.test.{mjs,cjs}' 'visuals/sectionlab/tests/*.test.mjs' 'visuals/md-explorer/tests/*.test.mjs'
 ```
 
 Many tests read the built `site/`, so run `scripts/build.py` first. Node runs
