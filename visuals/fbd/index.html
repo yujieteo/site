@@ -1197,6 +1197,106 @@ Object.assign(F, { exportSVG, svgDataUri, base64, toMarkdown, fromMarkdown, pars
 })(typeof window !== "undefined" ? window.FBD : globalThis.FBD);
 </script>
 
+<script id="fbd-aircraft" data-core>
+/* Axes presets. Engineering: y up, counter-clockwise positive. Aircraft body
+   axes (x forward, y starboard, z down) in top (x-y), side (x-z) and front
+   (y-z) views. A preset only relabels and reorients the triad: stored
+   geometry never moves. */
+(function (F) {
+"use strict";
+const { along, pathOf, n2 } = F.vec;
+// rotation: world angle of the first axis; ySense: +1 when the second axis is
+// 90° counter-clockwise from the first on the page, -1 when clockwise.
+const PRESETS = {
+  engineering: { rotation: 0, ySense: 1, labels: ["x", "y"], normal: null },
+  top: { rotation: 90, ySense: -1, labels: ["x", "y"], normal: { axis: "z", sense: "into" } },   // nose up the page, starboard right
+  side: { rotation: 180, ySense: 1, labels: ["x", "z"], normal: { axis: "y", sense: "into" } },  // seen from port: nose left, z down
+  front: { rotation: 180, ySense: 1, labels: ["y", "z"], normal: { axis: "x", sense: "out" } },  // seen from ahead: starboard left, z down
+};
+function applyPreset(view, preset, aircraftView = "top") {
+  const t = view.triad, p = PRESETS[preset === "engineering" ? "engineering" : aircraftView];
+  t.preset = preset;
+  t.aircraftView = preset === "aircraft" ? aircraftView : null;
+  t.rotation = p.rotation; t.ySense = p.ySense; t.labels = p.labels.slice();
+}
+// How a body axis (±x, ±y, ±z) appears in the current aircraft view: an
+// in-plane world direction, or out of / into the page.
+function bodyAxis(view, axis, sign = 1) {
+  const t = view.triad, p = PRESETS[t.aircraftView || "top"];
+  const i = p.labels.indexOf(axis);
+  if (i >= 0) {
+    const world = t.rotation + (i === 1 ? 90 * t.ySense : 0) + (sign < 0 ? 180 : 0);
+    return { plane: "in", dir: F.clean(F.wrap360(world)) };
+  }
+  const out = p.normal.sense === "out" ? sign > 0 : sign < 0;
+  return { plane: out ? "out" : "into" };
+}
+const STANDARD = {
+  L: { name: "Lift", axis: "z", sign: -1 }, D: { name: "Drag", axis: "x", sign: -1 },
+  T: { name: "Thrust", axis: "x", sign: 1 }, W: { name: "Weight", axis: "z", sign: 1 },
+  Roll: { name: "Roll moment", axis: "x", moment: true }, Pitch: { name: "Pitch moment", axis: "y", moment: true }, Yaw: { name: "Yaw moment", axis: "z", moment: true },
+};
+
+/* triad extras: out-of-page axis and PORT / STBD */
+F.TRIAD_EXTRAS.push((ctx, O, ux, uy, L) => {
+  const t = ctx.doc.view.triad, a = ctx.a, col = ctx.pal.triad;
+  if (t.preset !== "aircraft") return;
+  const p = PRESETS[t.aircraftView];
+  const c = along(along(O, ux, -13 * a), uy, -13 * a), r = 5.5 * a;
+  ctx.circle(c, r, `fill:none;stroke:${col};stroke-width:${n2(1.1 * a)}`);
+  if (p.normal.sense === "out") ctx.circle(c, 1.8 * a, `fill:${col};stroke:none`);
+  else { const d = r * 0.62; ctx.line([c[0] - d, c[1] - d], [c[0] + d, c[1] + d], col, 1.1 * a); ctx.line([c[0] - d, c[1] + d], [c[0] + d, c[1] - d], col, 1.1 * a); }
+  ctx.text(p.normal.axis, along(along(c, ux, -9 * a), uy, -9 * a), col, 12 * a, 'font-style="italic"');
+  const yi = p.labels.indexOf("y");
+  if (yi < 0) return;
+  const yv = yi === 0 ? ux : uy;
+  ctx.line(O, along(O, yv, -L * 0.7), col, 0.9 * a, `stroke-dasharray="${n2(3 * a)} ${n2(3 * a)}"`);
+  ctx.text("STBD", along(O, yv, L + 40 * a), col, 11 * a, 'font-weight="600" letter-spacing="0.5"');
+  ctx.text("PORT", along(O, yv, -L * 0.7 - 20 * a), col, 11 * a, 'font-weight="600" letter-spacing="0.5"');
+});
+
+/* markers: centre of gravity */
+F.NORM.marker = (c, v, p) => {
+  const m = c.obj(v, p, ["id", "kind", "at", "label", "labelOffset"]);
+  let off = null;
+  if (m.labelOffset !== undefined && m.labelOffset !== null) {
+    if (!Array.isArray(m.labelOffset) || m.labelOffset.length !== 2) c.err(`${p}.labelOffset`, "expected [dx, dy] or null");
+    else off = [c.num(m.labelOffset[0], `${p}.labelOffset[0]`), c.num(m.labelOffset[1], `${p}.labelOffset[1]`)];
+  }
+  return { id: c.str(m.id, `${p}.id`, undefined, { nonEmpty: true }), kind: c.oneOf(m.kind, `${p}.kind`, ["cg"]), at: F.normAt(c, m.at, `${p}.at`), label: c.str(m.label, `${p}.label`, null, { nullable: true }), labelOffset: off };
+};
+F.REFS.push((doc, c) => doc.geometry.markers.forEach((m, i) => F.checkAt(doc, c, m.at, `geometry.markers[${i}].at`)));
+F.RENDER.splice(F.RENDER.length - 1, 0, (ctx) => {
+  const { a, pal } = ctx;
+  for (const m of ctx.doc.geometry.markers) {
+    const r0 = F.resolveAt(ctx.doc, m.at);
+    if (!r0) continue;
+    const C = ctx.map(r0.x, r0.y), r = 8 * a, col = pal.marker;
+    ctx.open(m.id, "marker");
+    if (ctx.sel.has(m.id)) ctx.halo(`M${n2(C[0] - r)} ${n2(C[1])}a${n2(r)} ${n2(r)} 0 1 0 ${n2(2 * r)} 0a${n2(r)} ${n2(r)} 0 1 0 ${n2(-2 * r)} 0`, 10);
+    ctx.circle(C, r, `fill:${pal.paper};stroke:${col};stroke-width:${n2(1.4 * a)}`);
+    ctx.path(`M${n2(C[0])} ${n2(C[1])}L${n2(C[0] + r)} ${n2(C[1])}A${n2(r)} ${n2(r)} 0 0 0 ${n2(C[0])} ${n2(C[1] - r)}ZM${n2(C[0])} ${n2(C[1])}L${n2(C[0] - r)} ${n2(C[1])}A${n2(r)} ${n2(r)} 0 0 0 ${n2(C[0])} ${n2(C[1] + r)}Z`, `fill:${col};stroke:none`, [C]);
+    ctx.hit(`M${n2(C[0])} ${n2(C[1])}l0.01 0`);
+    ctx.block([[C[0] - r, C[1] - r], [C[0] + r, C[1] + r]], m.id);
+    if (m.label) ctx.label({ id: `${m.id}#label`, text: m.label, at: [C[0] + r * 0.7, C[1] + r * 0.7], prefer: [1, 0.6], col, offset: m.labelOffset });
+    ctx.close();
+  }
+});
+F.MD_SECTIONS.push((doc, h) => doc.geometry.markers.length ? `## Markers\n\n` + h.table(["ID", "Type", "Label", "Position"], doc.geometry.markers.map((m) => [m.id, "Centre of gravity", h.lab(m.label), h.pointText(doc, m.at)])) + "\n" : "");
+F.AXES_TEXT.push((doc, rows) => {
+  const t = doc.view.triad;
+  if (t.preset !== "aircraft") return;
+  const p = PRESETS[t.aircraftView];
+  rows.push(["Body axes", "x forward, y to starboard, z down"]);
+  rows.push(["Out of page", `${p.normal.axis} ${p.normal.sense === "out" ? "towards the viewer (⊙)" : "away from the viewer (⊗)"}`]);
+  rows.push(["Moments", "roll about x, pitch about y, yaw about z; positive by the right-hand rule"]);
+  if (p.labels.includes("y")) rows.push(["Sides", "PORT and STBD marked on the y axis"]);
+});
+
+Object.assign(F, { PRESETS, applyPreset, bodyAxis, STANDARD });
+})(typeof window !== "undefined" ? window.FBD : globalThis.FBD);
+</script>
+
 <script id="fbd-ui" data-ui>
 /* FBD Drawer interface: canvas, tools, properties panel, history and
    autosave. Every interaction works with one finger; keyboard shortcuts are
@@ -2478,6 +2578,60 @@ const TOOLS = [
 A.WEBMCP = TOOLS;
 for (const t of TOOLS) mc?.registerTool(t);
 A.EXTRA_MENU = EXTRA_MENU; A.openText = openText; A.pngBlob = pngBlob; A.download = download;
+})();
+</script>
+
+<script id="fbd-aircraft-ui" data-ui>
+/* Presets panel, the CG tool and one-tap standard aircraft loads. */
+(function () {
+"use strict";
+const F = window.FBD, A = window.FBDApp;
+A.TRIAD_SECTIONS.push((t) => {
+  let h = A.seg("triad.preset", [["engineering", "Engineering"], ["aircraft", "Aircraft"]], t.preset, (v) => { F.applyPreset(A.doc.view, v, t.aircraftView || "top"); });
+  if (t.preset === "aircraft") h += A.seg("triad.view", [["top", "Top (x-y)"], ["side", "Side (x-z)"], ["front", "Front (y-z)"]], t.aircraftView, (v) => { F.applyPreset(A.doc.view, "aircraft", v); });
+  return h + `<p>A preset relabels and reorients the axes only; nothing in the drawing moves.</p>`;
+});
+A.defineTool("cg", {
+  label: "CG", icon: A.icon('<circle cx="12" cy="12" r="7"/><path d="M12 12h7a7 7 0 00-7-7zM12 12H5a7 7 0 007 7z" fill="currentColor"/>'), hint: "Tap to place a centre-of-gravity marker",
+  down(e, w) { A.draft = { tool: "cg", at: A.snapPoint(w, e) }; },
+  up() {
+    const d = A.draft; A.draft = null;
+    if (!d || d.tool !== "cg") return;
+    A.mutate(() => { const m = { id: F.nextId(A.doc, "c"), kind: "cg", at: { x: d.at.x, y: d.at.y }, label: "CG", labelOffset: null }; A.doc.geometry.markers.push(m); A.sel = [m.id]; });
+  },
+  cancel() { A.draft = null; },
+});
+A.PANELS.push((f) => {
+  if (f.kind !== "marker") return null;
+  const m = f.e;
+  return `<h2>Centre of gravity ${A.esc(m.id)}</h2>` + A.field(`${m.id}.label`, "Label", m.label ?? "", (v) => { m.label = v.trim() ? v : null; }) + A.coordFields(`${m.id}.at`, m.at)
+    + (m.labelOffset ? `<div class="btns">${A.button(`${m.id}.relabel`, "Reset label position", () => A.mutate(() => { m.labelOffset = null; }))}</div>` : "");
+});
+// Standard loads at the CG (or the axes origin), pointing along the body
+// axes as they appear in the current view.
+function addStandard(key) {
+  const doc = A.doc, s = F.STANDARD[key], cg = doc.geometry.markers[0];
+  const base = cg ? F.resolveAt(doc, cg.at) : { x: doc.view.triad.x, y: doc.view.triad.y };
+  const ax = F.bodyAxis(doc.view, s.axis, s.sign ?? 1);
+  const at = { x: base.x, y: base.y };
+  const show = { label: true, magnitude: true, angle: false, units: true };
+  let l;
+  if (s.moment) {
+    l = { id: F.nextId(doc, "m"), kind: "moment", style: "applied", label: key, at, magnitude: null, unit: null, sense: ax.plane === "into" ? "cw" : "ccw", axis: ax.plane === "in" ? "inplane" : "normal", dir: ax.plane === "in" ? ax.dir : 0, dirRef: "global", show, labelOffset: null };
+  } else {
+    // Lift acts slightly apart from the CG so its symbol does not hide the weight's.
+    if (key === "L" && ax.plane !== "in") { const g = F.gridStep(A.cam.k) * 3, aft = F.bodyAxis(doc.view, "x", -1); if (aft.plane === "in") { at.x += g * Math.cos(F.rad(aft.dir)); at.y += g * Math.sin(F.rad(aft.dir)); } }
+    l = { id: F.nextId(doc, "f"), kind: key === "W" ? "weight" : "force", style: "applied", label: key, at, magnitude: null, unit: null, dir: ax.plane === "in" ? ax.dir : 270, dirRef: "global", plane: ax.plane, anchor: key === "T" || key === "D" || key === "L" ? "tail" : "head",
+      input: { mode: "polar", slope: null, toward: null }, show, labelOffset: null };
+  }
+  A.mutate(() => { A.doc.geometry.loads.push(l); A.sel = [l.id]; });
+}
+A.DOC_SECTIONS.push(() => {
+  if (A.doc.view.triad.preset !== "aircraft") return "";
+  return `<h3>Aircraft loads</h3><p>Adds a load at the CG marker (or the axes origin) along the body axes of the ${A.esc(A.doc.view.triad.aircraftView)} view. Moments follow the right-hand rule.</p><div class="btns">`
+    + Object.keys(F.STANDARD).map((k) => A.button(`std.${k}`, `${k === "L" || k === "D" || k === "T" || k === "W" ? `${k}: ` : ""}${A.esc(F.STANDARD[k].name)}`, () => addStandard(k))).join("") + `</div>`;
+});
+A.addStandard = addStandard;
 })();
 </script>
 
