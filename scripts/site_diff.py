@@ -10,7 +10,9 @@ generated), then the path; site/corpus.json is listed first.
 A base commit from before site/ left Git still carries its committed output,
 which is used as is. Any later base commit is rebuilt from `git archive`; that
 build reads each external visualization at the commit pinned in the base's own
-data/visuals/<slug>.pin, from the visuals checkout that scripts/build.py uses.
+data/visuals/<slug>.pin, from the visuals checkout that scripts/build.py uses,
+and takes pinned downloads (such as beamdswitch's Kokoro weights) from the same
+download cache, so an unchanged pin is neither fetched again nor listed.
 
 Usage: scripts/build.py && scripts/site_diff.py <base-commit>
 """
@@ -61,6 +63,16 @@ def base_site(commit, workdir):
     return project / "site"
 
 
+def same_file(before, after):
+    """Whether two generated files hold the same bytes.
+
+    The build hard-links pinned downloads (model weights of hundreds of
+    megabytes) from one cache, so the base and current builds usually share the
+    inode and need no read; otherwise sizes, then contents, are compared.
+    """
+    return os.path.samefile(before, after) or filecmp.cmp(before, after, shallow=False)
+
+
 def changes(before_root, after_root):
     """Rows of (status, path) for files that differ between two site trees."""
     def files(root):
@@ -73,7 +85,7 @@ def changes(before_root, after_root):
             rows.append(("D", path))
         elif path not in before:
             rows.append(("A", path))
-        elif not filecmp.cmp(before_root / path, after_root / path, shallow=False):
+        elif not same_file(before_root / path, after_root / path):
             rows.append(("M", path))
     # Upload the corpus first: every page reads it by revision.
     return sorted(rows, key=lambda row: row[1] != "corpus.json")

@@ -58,6 +58,16 @@ ignores `site/`, so pull requests carry only source changes and two independent
 content pull requests do not conflict; CI and every deploy build it fresh. Keep
 source files outside `site/`.
 
+Some files are too large for Git, such as the Kokoro speech model behind
+`visuals/beamdswitch/` (about 440 MB). A visualization lists them in the JSON
+file named by its `downloads` field, each with an exact URL, byte count and
+sha256; the build fetches them into a cache, refuses any file that does not
+match its pin, and hard-links them into `site/`. The cache is
+`~/.cache/teoyujie-site/downloads` (or `$XDG_CACHE_HOME/teoyujie-site/downloads`
+when that is set), so rebuilds, other checkouts and `scripts/site_diff.py`
+fetch each file once. The first build
+needs network access to Hugging Face and jsDelivr.
+
 ## Test
 
 ```sh
