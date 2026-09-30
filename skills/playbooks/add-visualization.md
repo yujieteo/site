@@ -1,6 +1,6 @@
 # Add or republish a visualization
 
-Visualization HTML and data live in the separate public [`visuals`](https://github.com/yujieteo/visuals) repository (`viz/<slug>/index.html`, `data/<slug>/raw.json` or `.csv`). This repository holds only the metadata stub.
+Visualization HTML and data live in the separate public [`visuals`](https://github.com/yujieteo/visuals) repository (`viz/<slug>/index.html`, `data/<slug>/raw.json` or `.csv`). This repository holds only the metadata stub and the pinned visuals commit.
 
 A visualization built in this repository instead keeps its sources in `visuals/<slug>/` (never under the generated `site/`), and its stub points `html_path` and `data_path` at `visuals/<slug>/...`; the build resolves those paths against this repository, so steps 1, 3 and 4 do not apply.
 
