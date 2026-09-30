@@ -13,6 +13,8 @@ import { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, de
 import { UNIT_SYSTEMS, convertPattern, unitLabel } from "./units.mjs";
 import { issue } from "./warnings.mjs";
 import { marginText, noMarginSummary } from "./checks.mjs";
+import { buildTrace, traceFastenerId } from "./trace.mjs";
+import { ASSUMPTIONS } from "./meta.mjs";
 
 export const MAX_PLATES = 2;
 
@@ -236,7 +238,7 @@ export function mdTable(head, rows) {
 export const PRELIMINARY = "Preliminary sizing — verify against the governing specification.";
 
 /* `result` (optional) adds result tables; they are ignored on import. */
-export function toMarkdown(pattern, result = null, { version = "", date = "" } = {}) {
+export function toMarkdown(pattern, result = null, { version = "", date = "", verification = null, traceId = null } = {}) {
   const u = (kind) => unitLabel(pattern.unitSystem, kind);
   const json = toJSON(pattern);
   const lines = [
@@ -264,7 +266,13 @@ export function toMarkdown(pattern, result = null, { version = "", date = "" } =
       ["Fx", pattern.load.Fx, u("force")], ["Fy", pattern.load.Fy, u("force")], ["Fz", pattern.load.Fz, u("force")],
       ["Mx", pattern.load.Mx, u("moment")], ["My", pattern.load.My, u("moment")], ["Mz", pattern.load.Mz, u("moment")],
     ]));
-  if (result) lines.push("", ...resultSections(pattern, result));
+  if (result) lines.push("", ...resultSections(pattern, result), ...traceSection(pattern, result, traceId));
+  if (result) lines.push("", "## Assumptions", "", ...ASSUMPTIONS.map((a) => `- ${a}`));
+  if (result) {
+    lines.push("", "## Verification", "", verification
+      ? `Verification set ${verification.set}: ${verification.passed} pass, ${verification.pending} pending, ${verification.failed} fail; closed-form tolerance ${verification.tol} relative (or the stated ± where the specification rounds).${version ? ` Tool ${version}.` : ""}`
+      : "Verification not run for this export.", "", `*${PRELIMINARY}*`);
+  }
   lines.push("", "## Exact inputs", "",
     "Import reads this block. Editing it by hand makes import fall back to the tables above, and settings and defaults then revert.", "",
     `<!-- fastener-cg-json checksum=${checksum(json)} -->`, "```json", json.trimEnd(), "```", "");
@@ -373,6 +381,19 @@ function tensionSection(result, u) {
       row.push(t.Fb, f.checks.clamp.status);
       return row;
     }))];
+}
+
+/* Calculation trace for one fastener (the governing one by default), as tables. */
+function traceSection(pattern, result, traceId) {
+  if (!result.ok) return [];
+  const tr = buildTrace(pattern, result, traceId || traceFastenerId(result), (v) => String(Number(v.toPrecision(10))));
+  if (!tr) return [];
+  const out = ["", `## Calculation trace: ${tr.id}${tr.governing ? " (governing fastener)" : ""}`];
+  for (const s of tr.sections) {
+    out.push("", `### ${s.title}`, "", mdTable(["step", "formula", "substituted", "value", "unit"],
+      s.lines.map((l) => [l.label, l.formula, l.substituted, l.value === null || l.value === undefined ? "" : l.value, l.unit])));
+  }
+  return out;
 }
 
 function issueTable(issues) {

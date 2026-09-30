@@ -97,13 +97,16 @@ export function buildScene(pattern, result, view, { selected = null, transform: 
   // Reaction vectors: in-plane load on each fastener, the largest drawn 0.16 × the shorter side.
   const vectors = [];
   if (result && result.ok) {
-    const maxR = Math.max(...result.fasteners.map((f) => f.shear.Rs), 0);
+    // Vectors show the in-plane load on the selected design basis (the one the checks use).
+    const shearOf = (f) => f.basisShear || f.shear;
+    const maxR = Math.max(...result.fasteners.map((f) => shearOf(f).Rs), 0);
     if (maxR > 0) {
       const perForce = (0.16 * Math.min(width, height)) / scale / maxR; // world length per unit force
       for (const f of result.fasteners) {
-        if (!(f.shear.Rs > 0)) continue;
-        const from = { x: f.x, y: f.y }, to = { x: f.x + f.shear.Rx * perForce, y: f.y + f.shear.Ry * perForce };
-        vectors.push({ kind: "reaction", id: f.id, world: { from, to }, screen: { from: toScreen(from), to: toScreen(to) }, value: f.shear.Rs, label: "" });
+        const sh = shearOf(f);
+        if (!(sh.Rs > 0)) continue;
+        const from = { x: f.x, y: f.y }, to = { x: f.x + sh.Rx * perForce, y: f.y + sh.Ry * perForce };
+        vectors.push({ kind: "reaction", id: f.id, world: { from, to }, screen: { from: toScreen(from), to: toScreen(to) }, value: sh.Rs, label: "" });
       }
     }
   }
@@ -133,8 +136,10 @@ export function buildScene(pattern, result, view, { selected = null, transform: 
   const legend = [
     ...Object.entries(CENTROID_STYLE).map(([key, s]) => ({ key, shape: s.shape, colour: s.colour, label: s.label })),
     { key: "load", shape: "cross", colour: "load", label: "Load point P" },
-    { key: "reaction", shape: "arrow", colour: "reaction", label: "Fastener in-plane load (elastic)" },
+    { key: "reaction", shape: "arrow", colour: "reaction", label: `Fastener in-plane load (${result && result.ok && result.designBasis === "icr" ? "ICR at applied load" : "elastic"})` },
     { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
+    { key: "tension", shape: "disc", colour: "tension", label: "Fastener in tension" },
+    { key: "unloading", shape: "dashed", colour: "fg", label: "Unloading (clamp-up)" },
   ];
 
   if (icrPoint) legend.push({ key: "icr", shape: "icr", colour: "load", label: "Instantaneous centre of rotation (ICR)" });

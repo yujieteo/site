@@ -17,6 +17,11 @@ import { boltLoad, tStubPrying, preloadFromTorque } from "../visuals/fastener-cg
 import { rayToRect, edgeDistance } from "../visuals/fastener-cg/src/core/plates.mjs";
 import { suggestContactEdge, edgeFrame } from "../visuals/fastener-cg/src/core/contact.mjs";
 import { icrSolve, response, rotationState } from "../visuals/fastener-cg/src/core/icr.mjs";
+import { paintSvg } from "../visuals/fastener-cg/src/core/svgpaint.mjs";
+import { paint, paintLegend } from "../visuals/fastener-cg/src/ui/canvas.mjs";
+import { buildTrace, traceFastenerId } from "../visuals/fastener-cg/src/core/trace.mjs";
+import { reportHtml } from "../visuals/fastener-cg/src/core/report.mjs";
+import { TOOL_VERSION } from "../visuals/fastener-cg/src/core/meta.mjs";
 import { render, bundle } from "../visuals/fastener-cg/build.mjs";
 import { hitTest } from "../visuals/fastener-cg/src/ui/canvas.mjs";
 
@@ -1126,4 +1131,165 @@ test("M5 persistence, units, Markdown and scene: ICR settings round-trip; Δy is
   const { scale, ox, oy } = sc.transform;
   assert.deepEqual(sc.icr.screen, { x: ox + scale * r.icr.icr.x, y: oy - scale * r.icr.icr.y });
   assert.ok(sc.legend.some((e) => e.key === "icr"));
+});
+
+/* ---- M6: shared scene model, painters, trace, reports ---- */
+
+/* A canvas 2D context that records every call (methods) and ignores property writes. */
+function recordingContext() {
+  const calls = [];
+  const ctx = new Proxy({}, {
+    get(target, key) {
+      if (key === "calls") return calls;
+      if (key === "measureText") return (t) => ({ width: String(t).length * 6 });
+      if (key in target) return target[key];
+      return (...args) => { calls.push([key, ...args]); };
+    },
+    set(target, key, value) { target[key] = value; return true; },
+  });
+  return ctx;
+}
+const COLOURS = { bg: "#fff", fg: "#000", muted: "#666", faint: "#999", grid: "#eee", surface: "#f5f5f5", shear: "#00f", axial: "#f80", area: "#0a0", load: "#90c", reaction: "#000", tension: "#f80", focus: "#06f", mono: "monospace" };
+const near = (a, b) => Math.abs(a - b) <= 1e-3;
+const svgAttr = (svg, role, extra = "") => [...svg.matchAll(new RegExp(`<[a-z]+ [^>]*data-role="${role}"${extra}[^>]*>`, "g"))].map((m) => {
+  const tag = m[0];
+  const get = (k) => { const x = new RegExp(`\\s${k}="([^"]*)"`).exec(tag); return x ? x[1] : null; };
+  return { tag, get };
+});
+
+function sceneFixture() {
+  // Contact edge (method b), ICR, eccentric load, three centroids and reaction vectors all present.
+  const p = pattern([[50, 30], [50, -30], [-50, 30], [-50, -30]], { point: { x: 60, y: 0, z: 0 }, Fy: -10000, Mx: 12000 });
+  p.plates = [plateOf("P1")];
+  p.settings.axialMethod = "contact-edge";
+  p.settings.contactEdge = { plateId: "P1", edge: "yMin" };
+  p.settings.icr = { enabled: true, model: "crawford-kulak" };
+  p.defaults.icr = { rult: 40000, mu: 0.3937, lambda: 0.55, deltaMax: 8.6, deltaY: null };
+  const r = solve(p);
+  assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
+  return { p, r, scene: buildScene(p, r, { width: 700, height: 440 }) };
+}
+
+test("scene-model consistency: the SVG and canvas painters draw every key position from the scene", () => {
+  const { scene } = sceneFixture();
+  assert.ok(scene.contactEdge && scene.icr && scene.load && scene.centroids.length === 3);
+  const svg = paintSvg(scene);
+  const ctx = recordingContext();
+  paint(ctx, scene, COLOURS);
+  const calls = ctx.calls;
+  const has = (name, ...args) => calls.some((c) => c[0] === name && args.every((a, i) => near(c[i + 1], a)));
+
+  for (const c of scene.centroids) {
+    const [el] = svgAttr(svg, "centroid", ` data-key="${c.key}"`);
+    assert.ok(near(Number(el.get("data-x")), c.screen.x) && near(Number(el.get("data-y")), c.screen.y), `SVG ${c.key}`);
+    const s = c.size;
+    if (c.shape === "ring") assert.ok(has("arc", c.screen.x, c.screen.y, s), `canvas ring ${c.key}`);
+    if (c.shape === "diamond") assert.ok(has("moveTo", c.screen.x, c.screen.y - s), `canvas diamond ${c.key}`);
+    if (c.shape === "square") assert.ok(has("rect", c.screen.x - s, c.screen.y - s, 2 * s, 2 * s), `canvas square ${c.key}`);
+  }
+  const [load] = svgAttr(svg, "load");
+  assert.ok(near(Number(load.get("data-x")), scene.load.screen.x) && near(Number(load.get("data-y")), scene.load.screen.y));
+  assert.ok(has("moveTo", scene.load.screen.x - 7, scene.load.screen.y - 7));
+  const [icr] = svgAttr(svg, "icr");
+  assert.ok(near(Number(icr.get("data-x")), scene.icr.screen.x) && near(Number(icr.get("data-y")), scene.icr.screen.y));
+  assert.ok(has("arc", scene.icr.screen.x, scene.icr.screen.y, 7));
+  const [edge] = svgAttr(svg, "contact-edge");
+  const ce = scene.contactEdge.screen;
+  assert.deepEqual(["x1", "y1", "x2", "y2"].map((k) => Number(edge.get(k))), [ce.from.x, ce.from.y, ce.to.x, ce.to.y].map((v) => Number(v.toFixed(3))));
+  assert.ok(has("moveTo", ce.from.x, ce.from.y) && has("lineTo", ce.to.x, ce.to.y));
+  const vectors = svgAttr(svg, "vector");
+  assert.equal(vectors.length, scene.vectors.length);
+  for (const v of scene.vectors) {
+    const el = vectors.find((x) => x.get("data-id") === v.id && x.get("data-kind") === v.kind);
+    assert.ok(near(Number(el.get("data-x2")), v.screen.to.x) && near(Number(el.get("data-y2")), v.screen.to.y), `SVG vector ${v.id}`);
+    assert.ok(has("moveTo", v.screen.to.x, v.screen.to.y), `canvas arrow head at ${v.id}`);
+  }
+  // Every fastener marker in the SVG sits at the scene position.
+  for (const m of scene.markers) {
+    const el = svgAttr(svg, "fastener").find((x) => x.get("data-id") === m.id);
+    assert.ok(near(Number(el.get("cx")), m.screen.x) && near(Number(el.get("cy")), m.screen.y));
+    assert.ok(has("arc", m.screen.x, m.screen.y, m.radiusPx));
+  }
+  // The PNG legend painter handles every legend shape.
+  const lctx = recordingContext();
+  paintLegend(lctx, scene, COLOURS, scene.height);
+  assert.equal(lctx.calls.filter((c) => c[0] === "fillText").length, scene.legend.length);
+});
+
+test("calculation trace: every value is the solver's own intermediate value", () => {
+  const p = tee({ prying: true, preload: true });
+  p.plates[0].bearingAllowable = 300;
+  p.plates[0].shearOutAllowable = 200;
+  p.settings.icr = { enabled: true, model: "crawford-kulak" };
+  p.defaults.icr = { rult: 40000, mu: 0.3937, lambda: 0.55, deltaMax: 8.6, deltaY: null };
+  p.load.point = { x: 30, y: 0, z: 0 };
+  const r = solve(p);
+  assert.ok(r.ok, JSON.stringify(r.issues.filter((i) => i.tier === "error")));
+  const id = traceFastenerId(r);
+  assert.equal(id, r.critical.id, "the default trace is the governing (critical) fastener");
+  const tr = buildTrace(p, r, id);
+  const f = r.fasteners.find((q) => q.id === id);
+  const value = (sectionPrefix, label) => tr.sections.find((sct) => sct.title.startsWith(sectionPrefix)).lines.find((l) => l.label === label).value;
+  assert.equal(value("Reduced load", "Torsion about Cs"), r.reduced.shear.Mz);
+  assert.equal(value("Direct shear", "Rdy"), f.shear.Rdy);
+  assert.equal(value("Torsional shear", "Rtx"), f.shear.Rtx);
+  assert.equal(value("Torsional shear", "Resultant"), f.shear.Rs);
+  assert.equal(value("ICR", "At the applied load"), f.icr.atLoad.Rs);
+  assert.equal(value("ICR", "γ_ult"), r.icr.gamma);
+  assert.equal(value("Moment-induced tension", "Tension"), f.axial.T);
+  assert.equal(value("Tension chain", "Prying Q"), f.checks.tension.Q);
+  assert.equal(value("Tension chain", "Bolt load"), f.checks.tension.Fb);
+  assert.equal(value("Bearing and tear-out", "MS bearing, P1"), f.checks.modes.find((m) => m.mode === "bearing").ms);
+  const it = f.checks.modes[0];
+  assert.equal(value("Interaction", "IF(1)"), it.IF1);
+  assert.equal(value("Interaction", "k*"), it.kStar);
+  assert.equal(value("Interaction", "MS interaction"), it.ms);
+  // Any fastener can be traced; an unknown id or an errored result gives none.
+  assert.equal(buildTrace(p, r, "F4").id, "F4");
+  assert.equal(buildTrace(p, r, "nope"), null);
+  assert.equal(buildTrace(p, solve(pattern([])), "F1"), null);
+});
+
+test("PDF report: every required section, inline SVG, version, verification set and tolerance, warnings, preliminary line", () => {
+  const { p, r } = sceneFixture();
+  p.defaults.shearAllowable = 12000; p.defaults.tensionAllowable = 15000;
+  const res = solve(p);
+  const v = runVerification();
+  const html = reportHtml(p, res, { date: "2026-10-01", verification: v });
+  const sections = [...html.matchAll(/data-section="([a-z]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(sections, ["conventions", "diagram", "inputs", "reduced", "properties", "fasteners", "icr", "margins", "trace", "warnings", "assumptions"]);
+  assert.match(html, /<svg[^>]*aria-label="Fastener pattern diagram"/);
+  assert.ok(html.includes(TOOL_VERSION));
+  assert.ok(html.includes(`Verification set ${v.set}: ${v.passed} pass, ${v.pending} pending, ${v.failed} fail; closed-form tolerance ${v.tol} relative`));
+  assert.equal((html.match(/Preliminary sizing — verify against the governing specification\./g) || []).length, 2, "header and footer");
+  for (const i of res.issues) assert.ok(html.includes(`<td>${i.id}</td>`), `warning ${i.id} listed`);
+  assert.ok(res.issues.some((i) => i.id === "W-006"), "W-006 persists into the report");
+  assert.match(html, /Calculation trace — F\d \(governing fastener\)/);
+  assert.ok(!/https?:\/\/(?!www\.w3\.org)/.test(html), "no external references");
+  assert.equal(r.ok, true);
+  // A pattern with errors still reports its inputs and warnings.
+  const bad = reportHtml(pattern([]), solve(pattern([])), {});
+  assert.match(bad, /No results: the pattern has errors/);
+  assert.match(bad, /<td>E-001<\/td>/);
+});
+
+test("Markdown report: same sections as tables, the governing trace, assumptions and the verification footer", () => {
+  const { p, r } = sceneFixture();
+  const v = runVerification();
+  const md = toMarkdown(p, r, { version: TOOL_VERSION, date: "2026-10-01", verification: v });
+  for (const h of ["## Fasteners", "## Plates", "## Load", "## Centroids", "## Section properties", "## Reduced load", "## Axial method", "## Fastener loads (elastic)", "## Margins of safety", "## ICR method", "## Warnings", "## Calculation trace", "## Assumptions", "## Verification", "## Exact inputs"]) {
+    assert.ok(md.includes(h), h);
+  }
+  assert.ok(md.includes(`Verification set ${v.set}: ${v.passed} pass, ${v.pending} pending, ${v.failed} fail`));
+  assert.ok(!/!\[|<img|data:image/.test(md), "no embedded images");
+  assert.equal(toJSON(parseMarkdown(md).pattern), toJSON(p), "the report still imports");
+});
+
+test("verification panel data lists every VC, VB, VI, property and VR case, pending ones marked pending", () => {
+  const v = runVerification();
+  const pending = v.results.filter((r) => r.status === "pending").map((r) => r.id);
+  assert.deepEqual(pending, ["VR-01", "VR-02", "VR-03"]);
+  assert.ok(v.results.every((r) => ["pass", "pending"].includes(r.status)));
+  assert.ok(v.results.filter((r) => r.status === "pending").every((r) => r.pass === false));
+  assert.equal(v.set, "M6 (v1)");
 });

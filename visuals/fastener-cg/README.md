@@ -4,7 +4,7 @@ Centroids, section properties and elastic load distribution for a fastener
 group, with a general 3D eccentric load. `index.html` is one self-contained
 page that works offline; it is built from modular sources.
 
-Milestones M1 to M5 of the Draft v0.1 specification are in place. M1 covers geometry, the three
+All six milestones (M1 to M6) of the Draft v0.1 specification are in place (tool version 1.0.0). M1 covers geometry, the three
 centroids (shear Cs, axial Ca, area Cg), J, Ixx, Iyy, Ixy and principal axes,
 3D load reduction, elastic in-plane shear and axial method (a), canvas and
 table entry with generators, live recalculation, the unit toggle, and JSON and
@@ -29,11 +29,20 @@ instantaneous-centre-of-rotation (ICR) method with Crawford-Kulak and
 elastic-perfectly-plastic responses (in-plane shear only, ks ignored), the
 ultimate capacity multiplier γ_ult and proportionally scaled reactions, the
 design-basis selector (elastic or ICR reactions feed the checks) and the
-side-by-side elastic vs ICR comparison.
+side-by-side elastic vs ICR comparison. M6 adds the reports: PDF by browser
+print (dedicated print stylesheet, A4 or Letter, sections kept on one page,
+inline SVG diagram), a 2× PNG of the annotated diagram with legend and scale,
+and a Markdown report with the same sections as tables. Each report carries
+the tool version, the verification set and tolerance, the full warnings list
+and the "Preliminary sizing" line. M6 also adds the calculation trace, built
+from the solver's own intermediate values for the governing fastener (and for
+any fastener from the UI); the SVG and canvas painters, which both draw from
+the shared scene model and are checked against it by a test; and the full
+verification panel, where pending published-reference cases show as pending.
 
 | Path | Role |
 | --- | --- |
-| `src/core/*.mjs` | Dependency-free calculation core (ES modules): units, model, geometry, load reduction, elastic distribution, interaction and exact-k solve, prying and preload tension chain, plates (bearing, tear-out, geometry checks), contact-edge method (b), ICR solver, per-fastener checks, warnings catalogue, solve, generators, persistence, scene model, verification set |
+| `src/core/*.mjs` | Dependency-free calculation core (ES modules): units, model, geometry, load reduction, elastic distribution, interaction and exact-k solve, prying and preload tension chain, plates (bearing, tear-out, geometry checks), contact-edge method (b), ICR solver, per-fastener checks, calculation trace, SVG painter, report, warnings catalogue, solve, generators, persistence, scene model, verification set |
 | `src/ui/*.mjs` | Page controller, canvas painter, localStorage library and WebMCP tools |
 | `src/template.html` | Markup and styles, with one `/*@APP@*/` marker |
 | `build.mjs` | Inlines every module into `index.html` and writes `raw.json` (published metadata) |

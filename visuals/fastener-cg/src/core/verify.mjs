@@ -13,7 +13,7 @@ import { boltLoad, tStubPrying } from "./tension.mjs";
 import { icrSolve, response } from "./icr.mjs";
 import { fmt } from "./format.mjs";
 
-export const VERIFICATION_SET = "M5";
+export const VERIFICATION_SET = "M6 (v1)";
 export const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
