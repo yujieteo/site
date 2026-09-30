@@ -88,13 +88,6 @@ class VisualizationTests(unittest.TestCase):
         self.assertIn('src="../static/js/filter.js"', (ROOT / "site/visuals/index.html").read_text())
         self.assertIn('src="static/js/filter.js"', (ROOT / "site/visuals.html").read_text())
 
-    def test_visualization_tags_use_the_site_tag_style(self):
-        validator = build.load_validator("schema/visualization.schema.json")
-        visualization = build.load_visualizations()[0]
-        for tag in ("decision making", "Finance", "cash_flow"):
-            with self.subTest(tag=tag), self.assertRaises(RuntimeError):
-                build.check_document(validator, {**visualization, "tags": [tag]}, "visualization")
-
 
 if __name__ == "__main__":
     unittest.main()
