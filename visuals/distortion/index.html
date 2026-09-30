@@ -5410,6 +5410,7 @@ function setAutoplay(on) {
   if (on === ui.autoplay) return;
   ui.autoplay = on; ui.play = 1;
   $("t-autoplay").checked = on;
+  for (const id of ["buckle-status", "effects", "inset-text"]) $(id).setAttribute("aria-live", on ? "off" : "polite");
   if (on) { playStart = performance.now(); requestAnimationFrame(tick); }
   else refresh();
 }
