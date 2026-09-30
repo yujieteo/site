@@ -174,6 +174,25 @@ test("invalid models, mechanisms and singular systems give useful errors", () =>
   assert.throws(() => B.exportBdf({ ...good, loads: [] }), /non-zero load/);
 });
 
+test("shear extrema include interior zeros of total intensity in either direction", () => {
+  for (const sign of [-1, 1]) {
+    for (const split of [false, true]) {
+      const load = { kind: "dist", x1: 0, x2: 6, q1: -10000 * sign, q2: 10000 * sign };
+      const loads = split ? [
+        { ...load, q1: -6000 * sign, q2: 4000 * sign },
+        { ...load, q1: -4000 * sign, q2: 6000 * sign },
+      ] : [load];
+      const r = B.solve({ ...fixtures.cases[0].model, length: 6, divisions: 1,
+        supports: [{ kind: "pin", x: 0 }, { kind: "pin", x: 6 }],
+        loads: [...loads, { kind: "moment", x: 6, C: -60000 * sign }],
+      });
+      const ex = B.extremes(r);
+      close(ex.V.x, 3, 6, "interior shear position");
+      close(ex.V.value, -15000 * sign, 15000, "interior shear value");
+    }
+  }
+});
+
 test("section properties follow the standard formulas", () => {
   const r = B.sectionProperties({ shape: "rect", b: 0.1, h: 0.2 });
   close(r.A, 0.02, 1, "A"); close(r.I, 0.1 * 0.2 ** 3 / 12, 1e-4, "I"); close(r.Iy, 0.2 * 0.1 ** 3 / 12, 1e-4, "Iy"); close(r.c, 0.1, 1, "c");

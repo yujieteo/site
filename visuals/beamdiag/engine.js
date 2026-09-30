@@ -349,6 +349,10 @@
       // V is at most quadratic inside an element: find where it crosses zero.
       const qa = intensity(result.model, a, "right"), qb = intensity(result.model, b, "left"), h = b - a;
       const A = (qb - qa) / (2 * h), B = qa, C = ra.V; // V(s) = C + B s + A s²
+      if (qa !== qb) {
+        const s = -qa * h / (qb - qa);
+        if (s > 0 && s < h) take("V", a + s, internal(result, a + s, "right").V);
+      }
       const roots = Math.abs(A) < 1e-300 ? (B !== 0 ? [-C / B] : []) : (() => {
         const disc = B * B - 4 * A * C;
         return disc < 0 ? [] : [(-B + Math.sqrt(disc)) / (2 * A), (-B - Math.sqrt(disc)) / (2 * A)];
