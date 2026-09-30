@@ -188,3 +188,92 @@ test("shear lag makes the box flange strain peak at the webs", () => {
   const bot = strainAt(-H / 2, 0);
   assert.ok(bot > 0, "bottom flange in tension");
 });
+
+/* Largest wrinkle on a wall, and the sign changes along a line across it. */
+function wrinkles(m, st, wallId = 0, n = 80) {
+  const P = D.prepare(m, st), w = m.walls[wallId];
+  let peak = 0;
+  for (let i = 0; i <= n; i++) for (let j = 0; j <= n / 2; j++)
+    peak = Math.max(peak, Math.abs(D.wrinkle(P, w, w.u0 + ((w.u1 - w.u0) * i) / n, w.v0 + ((w.v1 - w.v0) * j) / (n / 2))));
+  return peak;
+}
+function crossings(m, st, v, n = 400) {
+  const P = D.prepare(m, st), w = m.walls[0];
+  let count = 0, prev = 0;
+  for (let i = 0; i <= n; i++) {
+    const val = D.wrinkle(P, w, w.u0 + ((w.u1 - w.u0) * i) / n, v);
+    if (Math.abs(val) > 1e-6) { if (prev && Math.sign(val) !== prev) count++; prev = Math.sign(val); }
+  }
+  return count;
+}
+
+test("panel shear buckling starts only past the marked threshold, and stiffeners raise it and shorten the waves", () => {
+  const m = D.buildModel("panel");
+  const bare = { stringers: false, frames: false }, stiff = { stringers: true, frames: true };
+  const crBare = D.criticalLoads(m, state("panel", {}, bare)).inplane, crStiff = D.criticalLoads(m, state("panel", {}, stiff)).inplane;
+  assert.ok(crBare.pos > 0 && crBare.pos < 1 && Math.abs(crBare.neg - crBare.pos) < 1e-12);
+  assert.ok(crStiff.pos > 1.5 * crBare.pos && crStiff.pos < 1, `stiffeners raise the threshold: ${crBare.pos} -> ${crStiff.pos}`);
+  for (const [opts, cr] of [[bare, crBare.pos], [stiff, crStiff.pos]]) {
+    for (const sign of [1, -1]) {
+      assert.equal(wrinkles(m, state("panel", { inplane: sign * cr * 0.98 }, opts)), 0, "flat below the threshold");
+      assert.ok(wrinkles(m, state("panel", { inplane: sign * Math.min(1, cr * 1.3) }, opts)) > 0.01, "wrinkled above it");
+    }
+  }
+  // a stringer's line is a nodal line of the stiffened skin
+  const P = D.prepare(m, state("panel", { inplane: 1 }, stiff));
+  for (const y of D.GEOM.panel.stringers) assert.ok(Math.abs(D.wrinkle(P, m.walls[0], 0.3, y + 1)) < 1e-9);
+  // the waves change: more, shorter half-waves between stiffeners
+  const v = 1.25;
+  assert.ok(crossings(m, state("panel", { inplane: 1 }, stiff), v) > crossings(m, state("panel", { inplane: 1 }, bare), v));
+  // stringers alone and frames alone each raise it
+  const s1 = D.criticalLoads(m, state("panel", {}, { stringers: true, frames: false })).inplane.pos;
+  const f1 = D.criticalLoads(m, state("panel", {}, { stringers: false, frames: true })).inplane.pos;
+  assert.ok(s1 > crBare.pos && f1 > crBare.pos);
+});
+
+test("shear waves run along the tension diagonal and flip with the shear", () => {
+  const m = D.buildModel("panel");
+  const along = (q, dx, dy) => {
+    const P = D.prepare(m, state("panel", { inplane: q }, { stringers: false, frames: false }));
+    // correlation of w with itself shifted along a diagonal: crests run along it
+    let c = 0;
+    for (let i = 0; i < 40; i++) for (let j = 0; j < 20; j++) {
+      const x = -1.5 + 3 * i / 40, y = -0.7 + 1.4 * j / 20;
+      c += D.wrinkle(P, m.walls[0], x, y + 1) * D.wrinkle(P, m.walls[0], x + dx, y + dy + 1);
+    }
+    return c;
+  };
+  assert.ok(along(0.8, 0.3, 0.3) > along(0.8, 0.3, -0.3), "positive shear: crests along +x+y");
+  assert.ok(along(-0.8, 0.3, -0.3) > along(-0.8, 0.3, 0.3), "negative shear: crests along +x-y");
+});
+
+test("compression: Poisson swell, and the box buckles on the compression side only", () => {
+  const box = D.buildModel("box"), w = box.walls[0];
+  const cr = D.criticalLoads(box, state("box")).bending.pos;
+  const P = D.prepare(box, state("box", { bending: Math.min(1, cr * 1.5) }));
+  let top = 0, bottom = 0;
+  for (let i = 0; i <= 60; i++) for (let j = 0; j <= 200; j++) {
+    const u = (6 * i) / 60, v = (w.path.length * j) / 200, q = D.lookup(w.path, v), val = Math.abs(D.wrinkle(P, w, u, v));
+    if (q.plate === 0) top = Math.max(top, val);
+    if (q.plate === 2) bottom = Math.max(bottom, val);
+  }
+  assert.ok(top > 0.005 && bottom === 0, `tip-up bending compresses the top flange: top ${top}, bottom ${bottom}`);
+  // near the clamp the moment is largest; the tip end stays flat
+  assert.equal(Math.abs(D.wrinkle(P, w, 5.8, 0)), 0);
+  // axial compression past its mark buckles the walls; tension never does
+  const crA = D.criticalLoads(box, state("box")).axial;
+  assert.ok(crA.neg > 0 && crA.pos === null);
+  assert.ok(wrinkles(box, state("box", { axial: -Math.min(1, crA.neg * 1.3) })) > 0.005);
+  assert.equal(wrinkles(box, state("box", { axial: 1 })), 0);
+});
+
+test("I-beam web buckles in shear; the tube never buckles", () => {
+  const ib = D.buildModel("ibeam"), cr = D.criticalLoads(ib, state("ibeam")).shear.pos;
+  assert.ok(cr > 0 && cr < 1);
+  assert.equal(wrinkles(ib, state("ibeam", { shear: cr * 0.95 }), 1), 0);
+  assert.ok(wrinkles(ib, state("ibeam", { shear: Math.min(1, cr * 1.4) }), 1) > 0.005);
+  assert.equal(wrinkles(ib, state("ibeam", { shear: 1, torsion: 1, bending: 1, axial: -1 }), 0), 0, "flanges stay flat");
+  const tube = D.buildModel("tube");
+  assert.equal(wrinkles(tube, state("tube", { shear: 1, torsion: 1, bending: 1, axial: -1 })), 0);
+  assert.deepEqual(Object.values(D.criticalLoads(tube, state("tube"))).filter((c) => c.pos || c.neg), []);
+});

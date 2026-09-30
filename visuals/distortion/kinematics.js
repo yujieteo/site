@@ -24,6 +24,18 @@
   const TWIST = { tube: 0.5, box: 0.6, ibeam: 1.2 }; // free-end twist (rad) at full torsion, warping free
   const LAMBDA_L = { box: 10, ibeam: 2.5 }; // Vlasov decay length ratio L*sqrt(GJ/(E*Cw)); the tube does not warp
   const LAG = 0.7;                  // shear-lag strength (assumed shape)
+  // Buckling (assumed shapes, qualitative thresholds). A plate's critical
+  // compression is C_S k_c / b and critical shear C_T k_s / b_short: the true
+  // (t/b)^2 dependence is compressed to 1/b so every case buckles inside the
+  // slider range, while the ordering (narrower plates, stiffeners: higher) holds.
+  const BUCKLE = {
+    // wrinkle: amplitude per plate width at 1x (growth saturates at 1.6 times
+    // this), kept small enough on the box that opposite walls never meet
+    panel: { C_S: 0.1, C_T: 0.0631, wrinkle: 0.1 },
+    box: { C_S: 0.108, C_T: 0.095, wrinkle: 0.05 },
+    ibeam: { C_S: 0.108, C_T: 0.095, wrinkle: 0.07 },
+  };
+  const RAMP = 0.35;                // wrinkles fade out over this length at a clamped or loaded end
 
   const GEOM = {
     tube: { R: 0.6, t: 0.05 },
@@ -175,7 +187,9 @@
     const psi = cumulative(path, rho).total / path.length;
     const omega = cumulative(path, (p) => rho(p) - psi).values;
     const m = mean(path, omega);
-    return omega.map((w) => w - m);
+    const out = omega.map((w) => w - m);
+    out.psiSign = Math.sign(psi);
+    return out;
   }
 
   /* Table-backed lookup of a per-sample array on a path. */
@@ -314,6 +328,7 @@
       kappa0: on("bending") * KAPPA_CLAMP * e,
       gQ: on("inplane") * GAMMA_Q * e,
     };
+    P.plates = plates(model, state);
     // Twist. Warping free: uniform rate. Warping restrained at the clamp
     // (Vlasov, tip torque, phi(0) = phi'(0) = 0, phi''(L) = 0):
     // phi'(x) = k (1 - cosh(lambda (L - x)) / cosh(lambda L)), same k = T/GJ.
@@ -362,11 +377,17 @@
   }
 
   /* Deformed position of the wall point (u, v, zeta). `opts.membrane` leaves
-   * out effects that are not in-plane strain of the wall (none yet). */
+   * out the buckling wrinkles, which are not in-plane strain of the wall. */
   function deform(P, wall, u, v, zeta, opts) {
-    if (P.model.structure === "panel") return deformPanel(P, wall, u, v, zeta, opts);
+    const w = opts && opts.membrane ? 0 : wrinkle(P, wall, u, v);
+    if (P.model.structure === "panel") {
+      const q = deformPanel(P, wall, u, v, zeta);
+      q[2] += w;
+      return q;
+    }
     const r = reference(wall, u, v, zeta);
     let { x, y, z } = r;
+    if (w) { y += w * r.q.ny; z += w * r.q.nz; }
     // Poisson: lateral strain follows the local axial strain (axial + bending),
     // held back by the clamp over a short length.
     const epsLocal = P.epsA - P.kappa(x) * y;
@@ -417,6 +438,131 @@
     const vs = wall.closed ? h : Math.min(v + h, wall.path.length) - Math.max(v - h, 0);
     const Fs = sub3(at(0, h), at(0, -h)).map((x) => x / vs);
     return dot3(Fu, Fs);
+  }
+
+  /* ---------- Buckling (threshold-triggered, assumed wave shapes) ---------- */
+
+  const ks = (r) => 5.34 + 4 / (r * r);                        // shear, simply supported, r = long/short
+  const kc = (a, b) => {                                       // compression along a, width b
+    const m = Math.max(1, Math.round(a / b));
+    return Math.pow((m * b) / a + a / (m * b), 2);
+  };
+
+  /* The buckling plates of a model under a state: each with its extent
+   * (x0..x1 along u, e0..e1 across, in wall coordinates), critical stresses
+   * and the demand functions sigma(x) (compression positive) and tau, both in
+   * slider units. Circular tube: none. */
+  function plates(model, state) {
+    const L_ = state.loads, out = [];
+    const on = (k) => (APPLIES[k].includes(model.structure) ? L_[k] || 0 : 0);
+    const N = on("axial"), V = on("shear"), T = on("torsion"), M = on("bending"), Q = on("inplane");
+    if (model.structure === "panel") {
+      const G = GEOM.panel, C = BUCKLE.panel;
+      const xs = [-G.A / 2, ...(state.frames ? G.frames : []), G.A / 2];
+      const ys = [-G.B / 2, ...(state.stringers ? G.stringers : []), G.B / 2];
+      for (let i = 0; i + 1 < xs.length; i++) for (let j = 0; j + 1 < ys.length; j++) {
+        const a = xs[i + 1] - xs[i], b = ys[j + 1] - ys[j];
+        out.push({
+          wall: 0, name: "skin", x0: xs[i], x1: xs[i + 1], e0: ys[j] + G.B / 2, e1: ys[j + 1] + G.B / 2, fadeEnds: false,
+          sigmaCr: (C.C_S * kc(a, b)) / b, tauCr: (C.C_T * ks(Math.max(a, b) / Math.min(a, b))) / Math.min(a, b),
+          sigma: () => -N, tau: Q,
+        });
+      }
+    } else if (model.structure === "box") {
+      const { B, H, rc } = GEOM.box, C = BUCKLE.box, w = model.walls[0];
+      const names = ["top flange", "left web", "bottom flange", "right web"];
+      for (let k = 0; k < 4; k++) {
+        const b = k % 2 ? H - 2 * rc : B - 2 * rc;
+        // shear strain sign along the path at the plate centre, from V and from T
+        const centre = w.path.points.findIndex((p) => p.plate === k && Math.abs(p.eta - b / 2) < 0.02);
+        const gV = w.shear.gamma[centre], gT = w.omega.psiSign;
+        const bend = k === 0 ? 1 : k === 2 ? -1 : 0;
+        out.push({
+          wall: 0, plate: k, name: names[k], x0: 0, x1: L, e0: 0, e1: b, fadeEnds: true,
+          sigmaCr: (C.C_S * kc(L, b)) / b, tauCr: (C.C_T * ks(L / b)) / b,
+          sigma: (x) => -N + bend * M * Math.max(0, 1 - x / L), tau: V * gV + T * gT,
+        });
+      }
+    } else if (model.structure === "ibeam") {
+      const { H, tf } = GEOM.ibeam, C = BUCKLE.ibeam, b = H - tf, w = model.walls[1];
+      out.push({
+        wall: 1, name: "web", x0: 0, x1: L, e0: tf / 2, e1: H - tf / 2, fadeEnds: true, plate: 0, v0: w.v0,
+        sigmaCr: Infinity, tauCr: (C.C_T * ks(L / b)) / b,
+        sigma: () => 0, tau: V,
+      });
+    }
+    return out;
+  }
+
+  /* Interaction ratio at x: compression over critical plus shear ratio squared. */
+  function ratio(pl, x) {
+    const s = Math.max(0, pl.sigma(x)) / pl.sigmaCr, t = pl.tau / pl.tauCr;
+    return { r: s + t * t, s, t2: t * t };
+  }
+
+  const smooth = (t) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
+
+  /* Out-of-plane wrinkle at (u, v): zero below the threshold, then growing as
+   * sqrt(r - 1). Shear: diagonal half-waves at about 45 degrees with crests
+   * along the tension diagonal; compression: square half-waves; mixed loads
+   * blend the two. The plate edges (and stiffeners) are nodal lines. */
+  function wrinkle(P, wall, u, v) {
+    if (!P.plates || !P.plates.length) return 0;
+    let e;
+    if (P.model.structure === "box") { const q = lookup(wall.path, v); if (q.plate < 0) return 0; e = q.eta; }
+    for (const pl of P.plates) {
+      if (pl.wall !== wall.id) continue;
+      if (P.model.structure === "box") { if (lookup(wall.path, v).plate !== pl.plate) continue; }
+      else { e = v; if (e < pl.e0 || e > pl.e1) continue; e -= pl.e0; }
+      if (u < pl.x0 || u > pl.x1) continue;
+      const { r, s, t2 } = ratio(pl, u);
+      if (r <= 1) return 0;
+      const a = pl.x1 - pl.x0, b = pl.e1 - pl.e0, xi = u - pl.x0;
+      const amp = BUCKLE[P.model.structure].wrinkle * b * 1.6 * Math.tanh(Math.sqrt(r - 1) / 1.6) * P.state.exaggeration;
+      const across = Math.sin((Math.PI * e) / b);
+      const along = pl.fadeEnds ? smooth(xi / RAMP) * smooth((a - xi) / RAMP) : Math.sin((Math.PI * xi) / a);
+      const lam = 1.1 * Math.min(a, b);
+      const diag = Math.sin((Math.PI * (xi - Math.sign(pl.tau || 1) * e)) / lam);
+      const m = pl.fadeEnds ? a / b : Math.max(1, Math.round(a / b));
+      const comp = Math.sin((Math.PI * m * xi) / a);
+      const shape = (t2 * diag + s * comp) / (t2 + s || 1);
+      return amp * across * along * shape;
+    }
+    return 0;
+  }
+
+  /* Buckling onset for each load acting alone: the slider value (either sign)
+   * where the first plate reaches its critical ratio, or null. */
+  function criticalLoads(model, state) {
+    const out = {};
+    for (const k of LOADS) {
+      out[k] = { pos: null, neg: null };
+      if (!APPLIES[k].includes(model.structure)) continue;
+      for (const sign of [1, -1]) {
+        const st = { ...state, loads: { axial: 0, shear: 0, torsion: 0, bending: 0, inplane: 0, [k]: sign } };
+        let best = Infinity;
+        for (const pl of plates(model, st)) {
+          const xs = pl.fadeEnds ? [RAMP, (pl.x0 + pl.x1) / 2] : [(pl.x0 + pl.x1) / 2];
+          for (const x of xs) { const { s, t2 } = ratio(pl, x); if (s + t2 > 0) best = Math.min(best, onset(s, t2)); }
+        }
+        if (best <= 1) out[k][sign > 0 ? "pos" : "neg"] = best;
+      }
+    }
+    return out;
+  }
+  /* Smallest load factor f with f s + f^2 t2 = 1 (s, t2 at unit load). */
+  function onset(s, t2) {
+    if (t2 <= 0) return s > 0 ? 1 / s : Infinity;
+    return (-s + Math.sqrt(s * s + 4 * t2)) / (2 * t2);
+  }
+
+  /* Is any plate buckled, and how far past its threshold (for the legend). */
+  function bucklingState(P) {
+    return (P.plates || []).map((pl) => {
+      let r = 0;
+      for (let k = 0; k <= 20; k++) { const x = pl.x0 + ((pl.x1 - pl.x0) * k) / 20; if (!pl.fadeEnds || (x > RAMP && x < pl.x1 - RAMP * 0.5)) r = Math.max(r, ratio(pl, x).r); }
+      return { name: pl.name, ratio: r, buckled: r > 1 };
+    });
   }
 
   /* Deformed position of the member axis (the section origin) at x, with the
@@ -546,7 +692,7 @@
 
   return {
     PATCH, patchFaces, placePatch, patchFromSliders, slidersFromPatch, patchParamLines, patchStrain, eig2, faceSign, defaultPatch,
-    L, NU, axisPoint, warping, fieldValue, GEOM, STRUCTURES, BEAMS, LOADS, APPLIES,
+    L, NU, axisPoint, warping, fieldValue, plates, wrinkle, criticalLoads, bucklingState, GEOM, STRUCTURES, BEAMS, LOADS, APPLIES,
     buildModel, defaultState, prepare, reference, deform, lookup, sampleArray,
   };
 });

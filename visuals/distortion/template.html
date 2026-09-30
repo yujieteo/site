@@ -52,6 +52,10 @@ legend, .group-title { font-weight: 650; font-size: 12px; text-transform: upperc
 .slider output { color: var(--muted); font-size: 12.5px; text-align: right; }
 .slider.dim { opacity: 0.38; }
 .track { position: relative; }
+.crit { position: absolute; top: 25px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 7px solid var(--text); transform: translateX(-50%); pointer-events: none; }
+.slider.has-crit { margin-bottom: 16px; }
+#buckle-status { margin: 0 0 12px; font-size: 12.5px; color: var(--muted); }
+#buckle-status strong { color: var(--text); font-weight: 600; }
 input[type=range] { width: 100%; margin: 4px 0 0; accent-color: var(--amber); height: 22px; }
 input[type=range]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
 button, select { font: inherit; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
@@ -120,6 +124,7 @@ button:focus-visible, select:focus-visible, summary:focus-visible, input[type=ch
     <fieldset id="loads">
       <legend>Loads</legend>
     </fieldset>
+    <p id="buckle-status" aria-live="polite"></p>
     <fieldset id="patch">
       <legend>Unit patch</legend>
       <p class="note" style="margin:0 0 8px">Drag the amber patch on the body, or tap the body to move it there.</p>
@@ -204,6 +209,30 @@ slider($("patch"), "along", "Position along the span", 0, 1, 0.005, 0.5);
 slider($("patch"), "around", "Position around the section", 0, 1, 0.002, 0);
 slider($("patch"), "angle", "Rotation", 0, 90, 1, 0);
 
+function critMarkers() {
+  const crit = D.criticalLoads(model, state), words = [];
+  for (const k of D.LOADS) {
+    const track = $(`s-${k}`).parentElement;
+    for (const m of track.querySelectorAll(".crit")) m.remove();
+    const marks = [crit[k].neg != null ? -crit[k].neg : null, crit[k].pos].filter((x) => x != null);
+    for (const x of marks) {
+      const m = document.createElement("span");
+      m.className = "crit"; m.title = "Buckling starts beyond this mark (this load alone)";
+      m.style.left = `calc(8px + (100% - 16px) * ${(x + 1) / 2})`;
+      track.appendChild(m);
+    }
+    $(`w-${k}`).classList.toggle("has-crit", marks.length > 0);
+    const s = $(`s-${k}`), base = s.getAttribute("aria-valuetext") || "";
+    if (marks.length) s.setAttribute("aria-valuetext", `${base}; buckling starts beyond ${level(Math.abs(marks[marks.length - 1]))} ${marks.length > 1 ? "either way" : LOAD_UI[k].words[marks[0] < 0 ? 0 : 1]}`);
+    if (marks.length) words.push(LOAD_UI[k].label.toLowerCase());
+  }
+  const P = D.prepare(model, state), b = D.bucklingState(P).filter((x) => x.buckled);
+  const names = [...new Set(b.map((x) => x.name))];
+  $("buckle-status").innerHTML = model.structure === "tube"
+    ? "The tube stays smooth: its buckling is not modelled."
+    : `${names.length ? `<strong>Buckled:</strong> ${names.join(", ")}.` : "No buckling."} ▲ on a slider marks where buckling starts for that load alone.`;
+}
+
 function syncControls() {
   for (const r of document.querySelectorAll("input[name=structure]")) r.checked = r.value === state.structure;
   for (const k of D.LOADS) {
@@ -223,6 +252,7 @@ function syncControls() {
     $(id).disabled = !on; $(id).closest("label").classList.toggle("dim", !on);
   }
   $("t-stringers").checked = state.stringers; $("t-frames").checked = state.frames;
+  critMarkers();
   const ps = D.slidersFromPatch(model, state.patch);
   $("s-along").value = ps.along; $("s-around").value = ps.around; $("s-angle").value = ps.angle;
   const w = model.walls[state.patch.wall];
@@ -285,8 +315,8 @@ function createView() {
   controls.enableDamping = false;
   controls.listenToKeyEvents(canvas);
 
-  scene.add(new T.HemisphereLight(0xffffff, 0x404850, 1.6));
-  const sun = new T.DirectionalLight(0xffffff, 1.6); sun.position.set(4, 8, 6); scene.add(sun);
+  scene.add(new T.HemisphereLight(0xffffff, 0x404850, 1.2));
+  const sun = new T.DirectionalLight(0xffffff, 2.0); sun.position.set(4, 8, 6); scene.add(sun);
   const fill = new T.DirectionalLight(0xffffff, 0.5); fill.position.set(-5, -3, -4); scene.add(fill);
 
   const bodyMat = new T.MeshStandardMaterial({ color: 0x8d949e, roughness: 0.55, metalness: 0.15, side: T.DoubleSide,
@@ -456,7 +486,7 @@ function createView() {
 
   function frame() {
     const L = model.length;
-    if (model.structure === "panel") { controls.target.set(0, 0, 0); camera.position.set(1.6, 1.9, 5.6); }
+    if (model.structure === "panel") { controls.target.set(0, 0, 0); camera.position.set(3.0, 2.6, 4.4); }
     else { controls.target.set(L / 2, 0, 0); camera.position.set(L / 2 + 4.2, 3.2, 7.2); }
     camera.near = 0.05; camera.far = 200; camera.updateProjectionMatrix();
     controls.update();

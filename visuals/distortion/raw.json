@@ -18,6 +18,8 @@
     { "id": "shear", "label": "Transverse shear", "basis": "analytic", "note": "thin-walled shear flow gives the wall shear strain; sections drift and warp. The bending moment a tip force also causes is left to the bending slider" },
     { "id": "torsion", "label": "Saint-Venant torsion", "basis": "analytic", "note": "rigid rotation of each section about the shear centre" },
     { "id": "warping", "label": "Torsional warping", "basis": "analytic", "note": "axial displacement -φ'ω from the sectorial coordinate ω: Vlasov for the open I-beam, the Bredt cell for the box (small), none for the circular tube. With the restraint toggle on, warping is held at the clamp and the twist rate follows φ'(x) ∝ 1 - cosh(λ(L - x))/cosh(λL)" },
-    { "id": "shearlag", "label": "Shear lag", "basis": "assumed", "note": "box flanges under bending: a cosine distribution of axial displacement across the flange, so the flange strain peaks at the webs" }
+    { "id": "shearlag", "label": "Shear lag", "basis": "assumed", "note": "box flanges under bending: a cosine distribution of axial displacement across the flange, so the flange strain peaks at the webs" },
+    { "id": "buckling", "label": "Buckling wrinkles", "basis": "assumed", "note": "threshold-triggered: flat below the critical load, then wrinkles growing as √(r - 1) with the interaction ratio r = σ/σcr + (τ/τcr)². Shear: diagonal half-waves at about 45° with crests along the tension diagonal; compression: square half-waves. Panel skin (shear and compression), box walls (shear, and compression on the compression flange), I-beam web (shear); the tube stays smooth" },
+    { "id": "thresholds", "label": "Buckling thresholds", "basis": "assumed", "note": "σcr ∝ k_c/b and τcr ∝ k_s/b_short with the classical plate coefficients: the true (t/b)² dependence is compressed so every case buckles inside the slider range, while stiffeners, which shrink the plates, still raise the threshold and shorten the waves" }
   ]
 }
