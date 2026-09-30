@@ -41,7 +41,7 @@ jobs:
 
       - name: Install Python dependencies
         working-directory: site
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt -r visuals/sectionlab/requirements-test.txt
 
       - name: Validate data
         working-directory: site
@@ -63,4 +63,4 @@ jobs:
 
       - name: Run Node tests
         working-directory: site
-        run: node --test 'tests/*.test.{mjs,cjs}'
+        run: node --test 'tests/*.test.{mjs,cjs}' 'visuals/sectionlab/tests/*.test.mjs'
