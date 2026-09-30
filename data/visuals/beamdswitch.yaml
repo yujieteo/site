@@ -1,0 +1,14 @@
+slug: beamdswitch
+title: beamdswitch
+summary: "Write a talk once in Markdown with LaTeX maths and get web slides, a printable notes handout, Kokoro-82M narration, Manim-style animation and a narrated, captioned MP4, all generated in your browser with nothing uploaded. The page is 2.3 MB; narration downloads Kokoro from this site the first time you ask for a voice (about 111 MB for WASM or 334 MB for WebGPU), and the browser caches it."
+source_url: https://github.com/yujieteo/site/tree/main/visuals/beamdswitch
+fetched: "2026-09-30"
+html_path: visuals/beamdswitch/index.html
+data_path: visuals/beamdswitch/raw.json
+webmcp_tools: [get_metadata, get_deck, go_to_frame, get_narration_status]
+tags: [slides, tools, computational]
+category: data visualization
+assets:
+  - visuals/beamdswitch/coi-serviceworker.js
+  - visuals/beamdswitch/site.js
+downloads: visuals/beamdswitch/raw.json

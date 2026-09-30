@@ -47,6 +47,15 @@ jobs:
         working-directory: site
         run: python scripts/validate.py
 
+      # The build fetches pinned downloads (beamdswitch's Kokoro weights, about
+      # 440 MB) into a cache keyed by sha256; keep it between runs.
+      - name: Cache pinned downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/teoyujie-site/downloads
+          key: downloads-${{ hashFiles('site/visuals/*/raw.json') }}
+          restore-keys: downloads-
+
       # site/ is generated and not committed; the tests read this build.
       - name: Build site
         working-directory: site

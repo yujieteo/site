@@ -3,6 +3,7 @@
 
 import csv
 import datetime
+import hashlib
 import html
 import io
 import json
@@ -11,6 +12,7 @@ import re
 import shutil
 import subprocess
 import unicodedata
+import urllib.request
 from collections import Counter
 from pathlib import Path
 
@@ -215,6 +217,133 @@ def load_visualization_sources(visualizations, visuals_repo):
             data = json.loads(data_text)
         sources[visualization["slug"]] = (html_bytes, data)
     return sources
+
+
+def visualization_file(visualization, relative_path, key):
+    """Resolve ``relative_path``, which must name a file in the visualization's visuals/<slug>/.
+
+    Return the file and its path relative to that folder, which is also its
+    path under site/visuals/<slug>/.
+    """
+    slug = visualization["slug"]
+    folder = (ROOT / "visuals" / slug).resolve()
+    source = (ROOT / relative_path).resolve()
+    if not source.is_relative_to(folder):
+        raise RuntimeError(f"Visualization {slug}: {key} must be under visuals/{slug}/: {relative_path}")
+    if not source.is_file():
+        raise RuntimeError(f"Visualization {slug}: {key} is missing: {relative_path}")
+    return source, source.relative_to(folder).as_posix()
+
+
+def download_cache():
+    """Directory of fetched downloads, one file per sha256, shared by every build.
+
+    It lives outside the repository so that site/ rebuilds, other checkouts and
+    scripts/site_diff.py's rebuild of the live commit reuse one fetch.
+    """
+    configured = os.environ.get("SITE_DOWNLOAD_CACHE")
+    if configured:
+        return Path(configured).expanduser().resolve()
+    return Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache") / "teoyujie-site" / "downloads"
+
+
+def sha256_of(path):
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while chunk := handle.read(1 << 20):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def fetch_download(entry, cache):
+    """Return the cached file for one pinned download, fetching it when needed.
+
+    The file is kept only if its size and sha256 match the pin, so a changed or
+    truncated upstream file fails the build instead of being published.
+    """
+    cached = cache / entry["sha256"]
+    if cached.is_file() and cached.stat().st_size == entry["bytes"] and sha256_of(cached) == entry["sha256"]:
+        return cached
+    cache.mkdir(parents=True, exist_ok=True)
+    partial = cache / f"{entry['sha256']}.{os.getpid()}.part"
+    digest, size = hashlib.sha256(), 0
+    request = urllib.request.Request(entry["url"], headers={"User-Agent": "teoyujie-site-build"})
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response, partial.open("wb") as handle:
+            while chunk := response.read(1 << 20):
+                digest.update(chunk)
+                size += len(chunk)
+                handle.write(chunk)
+        if size != entry["bytes"] or digest.hexdigest() != entry["sha256"]:
+            raise RuntimeError(
+                f"Download does not match its pin: {entry['url']} gave {size} bytes, "
+                f"sha256 {digest.hexdigest()}; expected {entry['bytes']} bytes, sha256 {entry['sha256']}"
+            )
+        os.replace(partial, cached)
+    except OSError as exc:
+        raise RuntimeError(f"Could not download {entry['url']}: {exc}") from None
+    finally:
+        partial.unlink(missing_ok=True)
+    print(f"Fetched {entry['url']} ({size} bytes)")
+    return cached
+
+
+DOWNLOAD_KEYS = {"path", "url", "sha256", "bytes"}
+
+
+def load_visualization_downloads(visualization, cache):
+    """Fetch the files listed in a visualization's ``downloads`` file.
+
+    Return (cached file, path under site/visuals/<slug>/, True) triples.
+    """
+    slug = visualization["slug"]
+    manifest, _ = visualization_file(visualization, visualization["downloads"], "downloads")
+    entries = json.loads(manifest.read_text(encoding="utf-8")).get("downloads")
+    if not isinstance(entries, list) or not entries:
+        raise RuntimeError(f"Visualization {slug}: {visualization['downloads']} has no downloads list")
+    files = []
+    for entry in entries:
+        if not isinstance(entry, dict) or not DOWNLOAD_KEYS <= entry.keys():
+            raise RuntimeError(f"Visualization {slug}: each download needs {sorted(DOWNLOAD_KEYS)}: {entry}")
+        path = entry["path"]
+        if (not isinstance(path, str) or not re.fullmatch(r"[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*", path)
+                or ".." in path.split("/")):
+            raise RuntimeError(f"Visualization {slug}: download path must be a relative path: {path}")
+        if not str(entry["url"]).startswith("https://"):
+            raise RuntimeError(f"Visualization {slug}: download url must use https: {entry['url']}")
+        if not re.fullmatch(r"[0-9a-f]{64}", str(entry["sha256"])):
+            raise RuntimeError(f"Visualization {slug}: download sha256 must be 64 hex digits: {path}")
+        if not isinstance(entry["bytes"], int) or entry["bytes"] <= 0:
+            raise RuntimeError(f"Visualization {slug}: download bytes must be a positive integer: {path}")
+        files.append((fetch_download(entry, cache), path, True))
+    return files
+
+
+def load_visualization_files(visualizations):
+    """Map each slug to the files published beside its index.html.
+
+    Each is (source, path under site/visuals/<slug>/, whether to hard-link it).
+
+    Only visualizations built in this repository have them: ``assets`` are files
+    in visuals/<slug>/, and ``downloads`` names a file that pins large files,
+    such as model weights, to a URL and sha256 so they are fetched at build
+    time instead of being committed.
+    """
+    published = {}
+    for visualization in visualizations:
+        slug = visualization["slug"]
+        files = [(*visualization_file(visualization, path, "asset"), False)
+                 for path in visualization.get("assets", [])]
+        if "downloads" in visualization:
+            files += load_visualization_downloads(visualization, download_cache())
+        seen = {"index.html", "data.json"}
+        for _, path, _ in files:
+            if path in seen:
+                raise RuntimeError(f"Visualization {slug}: two files publish to {path}")
+            seen.add(path)
+        if files:
+            published[slug] = files
+    return published
 
 
 def parse_frontmatter(raw_text):
@@ -1244,7 +1373,7 @@ def build_visuals_markdown(visualizations):
     return "# Visuals\n\n" + "\n\n".join(sections) + "\n"
 
 
-def publish_visualization_assets(sources):
+def publish_visualization_assets(sources, files):
     visuals_out = OUT / "visuals"
     visuals_out.mkdir(parents=True, exist_ok=True)
     for slug, (html_bytes, data) in sources.items():
@@ -1254,6 +1383,19 @@ def publish_visualization_assets(sources):
         (destination / "data.json").write_text(
             json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
         )
+        for source, path, link in files.get(slug, []):
+            target = destination / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            # Hard-link downloads from the cache rather than copy hundreds of
+            # megabytes; prepare_output() only ever unlinks site/, so the cache
+            # keeps its bytes.
+            if link:
+                try:
+                    os.link(source, target)
+                    continue
+                except OSError:
+                    pass  # another filesystem: copy
+            shutil.copyfile(source, target)
 
 
 def publish_decks():
@@ -1340,6 +1482,7 @@ def main():
     visualizations = load_visualizations()
     media_items = load_media_items()
     visualization_sources = load_visualization_sources(visualizations, resolve_visuals_repo())
+    visualization_files = load_visualization_files(visualizations)
     colophon = load_colophon()
     corpus = build_corpus(
         cv, about, resources, papers, posts, notes, visualizations, media_items, colophon
@@ -1347,7 +1490,7 @@ def main():
     records = {record["id"]: record for record in corpus["records"]}
 
     prepare_output()
-    publish_visualization_assets(visualization_sources)
+    publish_visualization_assets(visualization_sources, visualization_files)
     decks = publish_decks()
     publish_media_assets(media_items)
     (OUT / "corpus.json").write_text(
