@@ -21,7 +21,7 @@ static/              Source CSS and browser JavaScript
 templates/           Shared HTML templates
 tests/               Python (unittest) and Node tests
 visuals/             Visualizations built in this repo before publication (sources, data, build scripts)
-site/                Generated site (never edit by hand)
+site/                Generated site (not committed; never edit by hand)
 CONTEXT.md           Domain vocabulary (Published Corpus, Corpus Record, ...)
 SKILLS.md            Router from a task to the playbook that owns it
 llms.txt             Public guidance for LLM readers
@@ -50,15 +50,21 @@ export VISUALS_REPO=../visuals   # omit when the sibling checkout already exists
 open site/index.html
 ```
 
-The build recreates the generated `site/` directory from the sources, so a
-successful run leaves no Git diff. Keep source files outside `site/`.
+The build recreates the generated `site/` directory from the sources. Git
+ignores `site/`, so pull requests carry only source changes and two independent
+content pull requests do not conflict; CI and every deploy build it fresh. Keep
+source files outside `site/`.
 
 ## Test
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-node --test tests/corpus.test.mjs tests/vgc-turn-lab.test.mjs tests/convexity-action-engine.test.mjs tests/beamdiag.test.mjs tests/beamdiag-ui.test.mjs tests/subsidy-atlas.test.cjs tests/fastener-cg.test.mjs tests/lug-joint.test.mjs
+node --test 'tests/*.test.{mjs,cjs}'
 ```
+
+Many tests read the built `site/`, so run `scripts/build.py` first. Node runs
+every `tests/*.test.mjs` and `tests/*.test.cjs`, so a new Node test needs no
+change to this command or to CI.
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
 `package.json` or installed packages. The Python tests copy the repository to a
@@ -68,9 +74,14 @@ temporary directory and rebuild the site there, so they also read
 ## Continuous integration
 
 `.github/workflows/ci.yml` runs on pushes to `main` and on every pull request:
-validation, the build, a check that the committed `site/` matches its sources,
-and the Python and Node tests. It checks out a pinned `visuals` revision; update
-the `ref` in the workflow when a visualization is republished.
+validation, the build, and the Python and Node tests. On a pull request it also
+lists the generated files that change against the base branch in the job
+summary. It checks out a pinned `visuals` revision; update the `ref` in the
+workflow when a visualization is republished.
+
+`tests/test_independent_changes.py` proves the merge guarantee: it opens two
+content branches (new visualizations, a note and a blog post) from the same
+base in a scratch repository, builds each, and merges both without conflicts.
 
 ## Adding and changing content
 

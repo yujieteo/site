@@ -23,8 +23,9 @@ jobs:
           path: site
 
       # The published site embeds HTML and data generated in the separate
-      # public visuals repository. Pin the revision whose output matches the
-      # committed site; bump it when a visualization is republished.
+      # public visuals repository. Pin the revision the site is built from;
+      # bump it when a visualization is republished. scripts/site_diff.py reads
+      # this pin to rebuild a deployed commit.
       - name: Check out visuals
         uses: actions/checkout@v4
         with:
@@ -47,17 +48,10 @@ jobs:
         working-directory: site
         run: python scripts/validate.py
 
+      # site/ is generated and not committed; the tests read this build.
       - name: Build site
         working-directory: site
         run: python scripts/build.py
-
-      - name: Check the committed site matches its sources
-        working-directory: site
-        run: |
-          if ! git diff --exit-code -- site; then
-            echo "::error::Generated site/ is out of date; run scripts/build.py and commit the result."
-            exit 1
-          fi
 
       - name: Run Python tests
         working-directory: site
@@ -70,4 +64,21 @@ jobs:
 
       - name: Run Node tests
         working-directory: site
-        run: node --test tests/corpus.test.mjs tests/vgc-turn-lab.test.mjs tests/convexity-action-engine.test.mjs tests/beamdiag.test.mjs tests/beamdiag-ui.test.mjs tests/subsidy-atlas.test.cjs tests/fastener-cg.test.mjs tests/lug-joint.test.mjs
+        run: node --test 'tests/*.test.{mjs,cjs}'
+
+      # Reviewers see the generated files this pull request changes, the list a
+      # deploy of it would upload (skills/playbooks/deploy.md).
+      - name: Summarize generated files changed against the base branch
+        if: github.event_name == 'pull_request'
+        working-directory: site
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          {
+            echo "### Generated files changed against the base branch"
+            echo
+            echo '```text'
+            python scripts/site_diff.py "$BASE_SHA"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

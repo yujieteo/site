@@ -5,6 +5,6 @@
 ## Checklist
 
 - [ ] `scripts/validate.py` and `scripts/build.py` pass
-- [ ] Committed `site/` matches a fresh build
+- [ ] No generated `site/` files committed (Git ignores `site/`)
 - [ ] Python and Node tests pass
 - [ ] No credentials, hostnames, or private paths
