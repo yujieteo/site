@@ -11,7 +11,7 @@ Use for edits to the build, schemas, templates, browser JavaScript, or tests, no
 | Corpus projection | `scripts/published_corpus.py`, `schema/generated/corpus.schema.json` |
 | Page shell and browser code | `templates/base.html`, `static/` (`shell.js`: mobile menu and theme switch; `filter.js`: list filters; `notes-views.js`: notes timeline) |
 | Homepage facets, featured cards, links | `data/tag-facets.yaml`, `pinned` in `data/cv/cv.yaml`, `attach_links` in `scripts/published_corpus.py` |
-| Tests | `tests/test_*.py` (unittest), `tests/corpus.test.mjs` (Node) |
+| Tests | `tests/test_*.py` (unittest), `tests/*.test.mjs` (Node) |
 
 1. Change the source, never `site/`. The build recreates `site/` from scratch.
 2. If the change alters output, rebuild and commit the resulting `site/` diff; CI fails when `site/` is stale.

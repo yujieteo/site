@@ -3,69 +3,116 @@
 :root{--bg:#ffffff;--fg:#1d1d1f;--muted:#6e6e73;--surface:#f5f5f7;--border:#d2d2d7;--focus:#0071e3;--pos:#0071e3;--danger:#c43d2f;--warn:#8a5a00;--warnbg:#fff6e0;--dangerbg:#fdeceb;--posbg:#eaf3fe;--sans:Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;--mono:SFMono-Regular, Consolas, Liberation Mono, monospace;--r:0.5rem;color-scheme:light}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 var(--sans)}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--sans)}
 main,footer,.bar{width:min(100% - 2rem,72rem);margin:auto}
-main{padding:.75rem 0 1.5rem}
-h1{margin:0;font-size:clamp(1.35rem,4vw,2rem);line-height:1.1;letter-spacing:-.03em}
-h2{margin:1.1rem 0 .4rem;font-size:1.05rem;line-height:1.25}
+main{padding:0 0 1.5rem}
+h1{margin:0;font-size:clamp(1.6rem,5vw,2.4rem);line-height:1.1;letter-spacing:-.03em}
+h2{margin:1.1rem 0 .4rem;font-size:1.15rem;line-height:1.25}
 h3{margin:.9rem 0 .3rem;font:600 .72rem/1.3 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 p{margin:.3rem 0}
 a{color:inherit;text-underline-offset:.18em}
 button,select,input{font:inherit;color:inherit}
 button{cursor:pointer;border:1px solid var(--border);border-radius:var(--r);background:var(--bg);padding:.3rem .6rem;min-height:2.25rem}
 button:hover{background:var(--surface)}
+select{border:1px solid var(--border);border-radius:var(--r);background:var(--bg);padding:.25rem .5rem;min-height:2.25rem;max-width:100%;min-width:0}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 button[aria-pressed=true]{border-color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg)}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:40;background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.skip:focus{top:.5rem}
 .top{border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:5}
-.bar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;padding:.5rem 0}
-.searchbtn{flex:1 1 16rem;display:flex;justify-content:space-between;align-items:center;text-align:left;color:var(--muted);min-height:2.6rem;padding:.4rem .75rem;background:var(--surface)}
-kbd{font:.72rem var(--mono);border:1px solid var(--border);border-bottom-width:2px;border-radius:4px;padding:0 .3rem;background:var(--bg);color:var(--muted)}
-nav.tabs{display:flex;flex-wrap:wrap;gap:.25rem}
-nav.tabs a{padding:.35rem .55rem;border-radius:var(--r);text-decoration:none;font:600 .75rem var(--mono);letter-spacing:.04em;min-height:2.25rem;display:inline-flex;align-items:center}
+.bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.5rem 1rem;align-items:center;padding:.5rem 0}
+.brand{font:600 .78rem var(--mono);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.searchbtn{display:flex;gap:.5rem;align-items:center;text-align:left;color:var(--muted);min-height:2.5rem;padding:.35rem .7rem;background:var(--surface);min-width:0;max-width:34rem}
+.searchbtn span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.searchbtn svg,.bigsearch svg{flex:none}
+kbd{font:.72rem var(--mono);border:1px solid var(--border);border-bottom-width:2px;border-radius:4px;padding:0 .3rem;background:var(--bg);color:var(--muted);white-space:nowrap}
+nav.tabs{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none}
+nav.tabs a{padding:.35rem .6rem;border-radius:var(--r);text-decoration:none;font:600 .75rem var(--mono);letter-spacing:.04em;min-height:2.25rem;display:inline-flex;align-items:center;white-space:nowrap}
+nav.tabs a:hover{background:var(--surface)}
 nav.tabs a[aria-current=page]{background:var(--fg);color:var(--bg)}
-.method{color:var(--muted);max-width:90ch;font-size:.82rem;margin:.5rem 0}
-.method strong{color:var(--fg)}
-.ctx{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.35rem .9rem;padding:.5rem .6rem;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);margin:.5rem 0}
-.ctx label{display:grid;grid-template-columns:1fr auto;gap:0 .4rem;font:.72rem var(--mono);color:var(--muted);align-items:center}
-.ctx label b{color:var(--fg);font-weight:600}
-.ctx input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--fg);min-height:1.5rem}
-.ctx .row{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;font:.72rem var(--mono);color:var(--muted)}
-.chip{font:.72rem var(--mono);border:1px solid var(--border);border-radius:1rem;padding:.1rem .55rem;min-height:1.9rem;background:var(--bg)}
-.chip.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.lenses{display:flex;gap:.3rem;overflow-x:auto;padding:.2rem 0 .4rem;scrollbar-width:thin}
-.lenses button{white-space:nowrap;font-size:.75rem;min-height:2rem}
+@media(max-width:760px){.bar{grid-template-columns:minmax(0,1fr);gap:.35rem}.brand{display:none}.searchbtn{max-width:none}}
+.hero{padding:1.5rem 0 .25rem}
+.lede{color:var(--muted);max-width:62ch;margin:.5rem 0 .9rem;font-size:1rem}
+.bigsearch{display:flex;gap:.6rem;align-items:center;width:min(100%,40rem);min-height:3.1rem;padding:.5rem .9rem;font-size:1.05rem;color:var(--muted);text-align:left;border-color:var(--fg);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.bigsearch span{flex:1}
+.examples{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;margin:.7rem 0 0;font-size:.85rem;color:var(--muted)}
+.examples button{font-size:.85rem;min-height:2rem;border-radius:1rem;padding:.1rem .7rem}
+.examples .how{border:0;text-decoration:underline;text-underline-offset:.2em;color:var(--fg);margin-left:.4rem;padding:.1rem .3rem}
+.hero.off{padding:0}
+.hero.off>:not(h1){display:none}
+.hero.off h1,.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lbl{font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ctx{border:1px solid var(--border);border-radius:var(--r);background:var(--surface);margin:.9rem 0 .6rem;padding:.55rem .7rem}
+.ctxbar{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;align-items:center}
+.seg{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
+.seg .lbl{margin-right:.2rem}
+.lensl{display:flex;gap:.45rem;align-items:center;min-width:0;max-width:100%}
+.lensl select{max-width:16rem}
+.adjust{margin-left:auto;display:inline-flex;gap:.4rem;align-items:center;font-weight:600}
+.adjust::after{content:"▾";font-size:.8em;color:var(--muted)}
+.adjust[aria-expanded=true]::after{content:"▴"}
+.count{background:var(--fg);color:var(--bg);border-radius:1rem;padding:0 .45rem;font:600 .7rem/1.6 var(--mono)}
+.count[hidden]{display:none}
+.ctxsum{font-size:.82rem;color:var(--muted);margin:.45rem 0 0}
+.ctxpanel{display:grid;gap:1rem 1.5rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin-top:.6rem;padding-top:.7rem;border-top:1px solid var(--border)}
+.ctxpanel[hidden]{display:none}
+fieldset{border:0;margin:0;padding:0;min-width:0;display:grid;gap:.55rem;align-content:start}
+legend{font:600 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:0;margin-bottom:.4rem}
+label.rng{display:grid;grid-template-columns:1fr auto;gap:0 .4rem;font-size:.85rem;color:var(--muted);align-items:center}
+label.rng b{color:var(--fg);font:600 .78rem var(--mono)}
+label.rng input{grid-column:1/-1;width:100%;accent-color:var(--fg);min-height:1.6rem;margin:0}
+label.check{display:flex;gap:.45rem;align-items:center;font-size:.85rem;min-height:2rem}
+label.check input{width:1.1rem;height:1.1rem;accent-color:var(--fg)}
+.btnrow{display:flex;flex-wrap:wrap;gap:.3rem}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr));gap:.4rem 1rem;margin:.3rem 0}
+.ctxpanel .disc,.ctxfoot{grid-column:1/-1}
+.ctxpanel .disc{margin:0}
+.ctxfoot{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.ctxfoot button[hidden]{display:none}
+.chip{font:.75rem var(--mono);border:1px solid var(--border);border-radius:1rem;padding:.1rem .6rem;min-height:2rem;background:var(--bg);display:inline-flex;align-items:center;justify-content:center}
+.chip[hidden]{display:none}
+.chip.on,.chip.cur,.chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg);box-shadow:none}
 .act{border:0;background:none;padding:0;min-height:0;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:.2em;text-align:left;font-weight:600;cursor:pointer;border-radius:3px}
 .act:hover{text-decoration-color:var(--fg);background:none}
 .act.danger{color:var(--danger)}
 .act.muted{color:var(--muted);font-weight:400}
+.rowbtn{border:0;background:none;padding:0;min-height:0;text-align:left;color:inherit;font:inherit;text-decoration:underline dotted;text-decoration-color:var(--border);text-underline-offset:.22em;border-radius:3px}
+.rowbtn:hover{background:none;color:var(--fg);text-decoration-color:var(--fg)}
+@media(pointer:coarse){.rowbtn{min-height:1.75rem}}
 .grid{display:grid;gap:.6rem}
 @media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
-.card{border:1px solid var(--border);border-radius:var(--r);padding:.55rem .7rem;min-width:0}
+.card{border:1px solid var(--border);border-radius:var(--r);padding:.6rem .75rem;min-width:0;overflow-wrap:anywhere}
 .card h3{margin-top:0}
-.nowcls{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr))}
-.nowcls .card .act{font-size:1.05rem}
-.nowcls .alts{font-size:.8rem;color:var(--muted)}
-.card.avoid{border-color:var(--danger);background:var(--dangerbg)}
+.nowcls{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr))}
+.act.lead{font-size:1.08rem}
+.also{display:flex;flex-wrap:wrap;gap:.15rem .75rem;align-items:baseline;margin:.4rem 0 0;font-size:.85rem}
+.also .lbl{margin-right:-.2rem}
+.also .act{min-height:1.5rem}
+.card.avoid{border-color:var(--danger);background:var(--dangerbg);--muted:#5c5c61}
 .card.warnc{border-color:var(--warn);background:var(--warnbg)}
-.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;align-items:baseline;margin-top:.6rem}
-.head .name{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:700;letter-spacing:-.02em;margin:0}
-.sub{color:var(--muted);font:.75rem var(--mono)}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem 1rem;align-items:baseline;margin-top:1rem}
+.head .name{font-size:clamp(1.45rem,4.5vw,2.1rem);font-weight:700;letter-spacing:-.02em;margin:0;line-height:1.15}
+.badges{display:flex;flex-wrap:wrap;gap:.3rem}
+.sub{color:var(--muted);font:.78rem var(--mono)}
 .badge{display:inline-block;font:600 .7rem/1.6 var(--mono);padding:0 .5rem;border-radius:1rem;border:1px solid var(--border);white-space:nowrap}
 .badge.clear{border-color:var(--pos);color:var(--pos)}
 .badge.noted{color:var(--muted)}
 .badge.warning{border-color:var(--warn);background:var(--warnbg);color:var(--warn)}
 .badge.danger{border-color:var(--danger);background:var(--danger);color:#fff}
-.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.3rem .8rem;margin:.5rem 0}
-.quick div{border-top:1px solid var(--border);padding-top:.2rem;min-width:0}
-.quick dt{font:.65rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.4rem 1rem;margin:.3rem 0 .6rem}
+.quick div{border-top:1px solid var(--border);padding-top:.25rem;min-width:0}
+.quick dt{font:.68rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .quick dd{margin:0;font-weight:600;overflow-wrap:anywhere}
-.btns{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
+.btns{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
 .btns button{font:600 .75rem var(--mono);letter-spacing:.05em}
-.btns .do{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.spec{display:grid;gap:.5rem}
-@media(min-width:900px){.spec{grid-template-columns:repeat(3,1fr)}}
-.kv{width:100%;border-collapse:collapse;font-size:.82rem}
-.kv td,.kv th{padding:.2rem .3rem;border-bottom:1px solid var(--surface);text-align:left;vertical-align:top}
+.btns .do{background:var(--fg);color:var(--bg);border-color:var(--fg);padding-inline:1rem}
+.btns .keyhint{margin-left:.3rem}
+.pagenav{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;margin:.3rem 0 .6rem}
+.pagenav .lbl{margin-right:.2rem}
+section>h2{border-top:1px solid var(--border);padding-top:1rem;margin-top:1.6rem}
+.spec{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
+.kv{width:100%;border-collapse:collapse;font-size:.85rem}
+.kv td,.kv th{padding:.22rem .3rem;border-bottom:1px solid var(--surface);text-align:left;vertical-align:top}
 .kv th{font-weight:400;color:var(--muted)}
 .kv tr.click{cursor:pointer}
 .kv tr.click:hover td,.kv tr.click:hover th{background:var(--surface)}
@@ -75,40 +122,53 @@ nav.tabs a[aria-current=page]{background:var(--fg);color:var(--bg)}
 .dots{font-family:var(--mono);letter-spacing:-.05em;white-space:nowrap}
 .dots .off{color:var(--border)}
 .unk{font:600 .75rem var(--mono);color:var(--warn)}
-.pv{display:inline-block;font:600 .6rem/1.5 var(--mono);letter-spacing:.05em;padding:0 .3rem;border-radius:3px;vertical-align:middle;white-space:nowrap}
+.pv{display:inline-block;font:600 .62rem/1.5 var(--mono);letter-spacing:.05em;padding:0 .3rem;border-radius:3px;vertical-align:middle;white-space:nowrap}
 .pv-OBSERVED{border:1px solid var(--fg)}
 .pv-EMPIRICAL{background:var(--fg);color:var(--bg)}
 .pv-INFERRED{border:1px dotted var(--fg)}
 .pv-MODEL{border:1px solid var(--pos);color:var(--pos)}
 .pv-JUDGEMENT{border:1px dashed var(--muted);color:var(--muted);font-style:italic}
-.pv-PERSONAL{background:var(--posbg);color:var(--pos);border:1px dotted var(--pos)}
+.pv-PERSONAL{background:var(--posbg);color:var(--fg);border:1px dotted var(--pos)}
 .pv-SINGAPORE{border:1px dashed var(--warn);color:var(--warn)}
 .tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--r);max-width:100%}
-table.sheet{border-collapse:collapse;font-size:.8rem;min-width:100%}
+table.sheet{border-collapse:collapse;font-size:.82rem;min-width:100%}
 table.sheet th,table.sheet td{padding:.25rem .45rem;border-bottom:1px solid var(--surface);text-align:left;white-space:nowrap}
 table.sheet thead th{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--border);vertical-align:bottom}
-table.sheet tbody th{position:sticky;left:0;background:var(--bg);font-weight:400;color:var(--muted);cursor:pointer;z-index:1}
+table.sheet tbody th{position:sticky;left:0;background:var(--bg);font-weight:400;color:var(--muted);z-index:1}
 table.sheet tbody th:hover{color:var(--fg)}
-table.sheet tr.grp th{font:600 .65rem var(--mono);letter-spacing:.07em;color:var(--fg);background:var(--surface);cursor:default}
+table.sheet tr.grp th{font:600 .68rem var(--mono);letter-spacing:.07em;color:var(--fg);background:var(--surface);cursor:default}
 table.sheet tr.grp td{background:var(--surface)}
-table.sheet td.dom,table.sheet th.dom{opacity:.42}
+table.sheet td.dom,table.sheet th.dom{color:var(--muted);font-style:italic}
 table.sheet .best{font-weight:700}
 table.sheet .colx{border:0;background:none;min-height:0;padding:0 .2rem;color:var(--muted)}
-.cls{display:inline-block;font:.65rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
-.alts{display:grid;gap:.15rem .9rem;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));margin:.3rem 0}
-.alts div{display:flex;gap:.4rem;align-items:baseline;min-width:0}
-.alts .cls{min-width:7.2rem}
+@media(max-width:560px){table.sheet tbody th,table.sheet thead th:first-child{white-space:normal;min-width:6.5rem;max-width:8rem}}
+.cls{display:inline-block;font:.68rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.alts{display:grid;gap:.55rem 1.25rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));margin:.4rem 0}
+.alts>div{min-width:0}
+.alts .cls{display:block}
+.alts .note{margin-left:.35rem}
+.alts .badge{margin-right:.35rem}
+.cmplist{list-style:none;padding:0;margin:.5rem 0;display:flex;flex-wrap:wrap;gap:.35rem}
+.cmplist li{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--border);border-radius:1rem;padding:.05rem .15rem .05rem .7rem}
+.cmplist li.top{border-color:var(--pos)}
+.cmplist li.top .cls{color:var(--pos)}
+.cmplist .x{border:0;border-radius:1rem;min-height:2rem;min-width:2rem;padding:0;color:var(--muted);font-size:1.1rem;line-height:1}
+.viewbar{display:flex;flex-wrap:wrap;gap:.4rem .5rem;align-items:center;margin:.4rem 0 .7rem}
+.viewbar select{font-weight:600;max-width:min(100%,20rem)}
+.stepper{display:inline-flex;gap:.2rem}
+.stepper .chip{min-width:2.25rem;min-height:2.25rem;font-size:1rem;padding:0}
 .panel{border:1px solid var(--fg);border-radius:var(--r);padding:.6rem .75rem;margin:.6rem 0;background:var(--bg)}
 .panel.why{border-color:var(--pos)}
-.panel .x{float:right}
-.note{font-size:.78rem;color:var(--muted)}
+.panel .x{float:right;min-width:2.25rem}
+.note{font-size:.84rem;color:var(--muted)}
 .warnbox{border:1px solid var(--warn);background:var(--warnbg);border-radius:var(--r);padding:.45rem .65rem;margin:.45rem 0}
 .dangerbox{border:2px solid var(--danger);background:var(--dangerbg);border-radius:var(--r);padding:.5rem .7rem;margin:.45rem 0}
 .dangerbox b,.dangerbox strong{color:var(--danger)}
 .views{display:flex;flex-wrap:wrap;gap:.25rem;margin:.3rem 0}
 .views button{font:.72rem var(--mono);min-height:2rem;padding:.15rem .5rem}
-.views button.rec{border-style:dashed}
 svg.ch{width:100%;height:auto;display:block;font-family:var(--sans);overflow:visible}
+.chwrap{overflow-x:auto;max-width:52rem;margin:.3rem 0}
+@media(max-width:560px){.chwrap svg.ch{min-width:600px}}
 svg.ch text{font-size:11px;fill:var(--fg)}
 svg.ch .mut{fill:var(--muted)}
 svg.ch .ax{stroke:var(--border)}
@@ -117,7 +177,12 @@ svg.ch .pt:hover circle,svg.ch .pt:focus circle{stroke:var(--focus);stroke-width
 svg.ch .pt:focus{outline:none}
 svg.ch .lab{font-size:10.5px}
 details{border-top:1px solid var(--border);margin:.6rem 0;padding-top:.3rem}
-summary{cursor:pointer;min-height:2.25rem;display:flex;align-items:center;font-weight:600}
+summary{cursor:pointer;min-height:2.4rem;display:flex;gap:.45rem;align-items:center;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";flex:none;width:.45rem;height:.45rem;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);margin:0 .2rem 0 .1rem}
+details[open]>summary::before{transform:rotate(45deg);margin-top:-.2rem}
+summary:hover{text-decoration:underline;text-underline-offset:.2em}
+.method{max-width:90ch;font-size:.9rem}
 .yaml{font:.72rem/1.45 var(--mono);white-space:pre-wrap;background:var(--surface);padding:.5rem;border-radius:var(--r);max-height:28rem;overflow:auto}
 .yaml .miss{color:var(--warn)}
 .pal{position:fixed;inset:0;background:rgba(29,29,31,.35);z-index:20;display:flex;justify-content:center;align-items:flex-start;padding:6vh 1rem 1rem}
@@ -126,41 +191,48 @@ summary{cursor:pointer;min-height:2.25rem;display:flex;align-items:center;font-w
 .palin{display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border);padding:.5rem .75rem}
 .palin input{flex:1;border:0;font-size:1.15rem;padding:.4rem 0;background:none;min-width:0}
 .palin input:focus{outline:none}
+.palin:focus-within{box-shadow:inset 0 -2px 0 var(--focus)}
 .palmode{font:.7rem var(--mono);color:var(--muted)}
 .palchips{display:flex;flex-wrap:wrap;gap:.3rem;padding:.35rem .75rem;border-bottom:1px solid var(--surface);font:.7rem var(--mono);color:var(--muted)}
 .palchips:empty{display:none}
 .palbody{display:grid;grid-template-columns:1fr;overflow:hidden;min-height:0;flex:1}
 @media(min-width:760px){.palbody{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}}
 .palres{overflow:auto;padding:.25rem 0;margin:0;list-style:none}
-.palres li{padding:.4rem .75rem;cursor:pointer;display:flex;justify-content:space-between;gap:.5rem;align-items:baseline;border-left:3px solid transparent}
+.palres li{padding:.45rem .75rem;cursor:pointer;display:flex;justify-content:space-between;gap:.5rem;align-items:baseline;border-left:3px solid transparent}
 .palres li[aria-selected=true]{background:var(--surface);border-left-color:var(--fg)}
 .palres li .why{font:.68rem var(--mono);color:var(--muted);white-space:nowrap}
 .palres .sec{font:600 .65rem var(--mono);letter-spacing:.07em;color:var(--muted);cursor:default;padding-top:.6rem;text-transform:uppercase}
 .palprev{border-left:1px solid var(--surface);overflow:auto;padding:.5rem .8rem;display:none}
 @media(min-width:760px){.palprev{display:block}}
-.palfoot{font:.68rem var(--mono);color:var(--muted);padding:.35rem .75rem;border-top:1px solid var(--surface);display:flex;gap:.8rem;flex-wrap:wrap}
+.palfoot{font:.7rem var(--mono);color:var(--muted);padding:.4rem .75rem;border-top:1px solid var(--surface);display:flex;gap:.8rem;flex-wrap:wrap}
+@media(hover:none){.palfoot .keys,.searchbtn kbd,.bigsearch kbd,.keyhint{display:none}}
 .toast{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:.5rem .9rem;border-radius:var(--r);z-index:30;font-size:.85rem;max-width:calc(100% - 2rem)}
 .toast[hidden]{display:none}
 .hist td,.hist th{white-space:normal}
 .legend{display:flex;flex-wrap:wrap;gap:.35rem .8rem;font-size:.75rem;color:var(--muted);align-items:center;margin:.3rem 0}
 .sw{display:inline-block;width:1.4rem;height:0;border-top:2px solid var(--fg);vertical-align:middle;margin-right:.25rem}
-.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-footer{padding:1.25rem 0 2.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
+footer{padding:1.25rem 0 2.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.84rem}
 footer ul{padding-left:1.1rem;margin:.4rem 0}
-@media(max-width:560px){.pal{padding:0}.palbox{max-height:100vh;height:100%;border-radius:0}}
+dl.keys{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.3rem 1.2rem;margin:.4rem 0}
+dl.keys div{display:flex;gap:.6rem;align-items:baseline}
+dl.keys dt{min-width:5.5rem}
+dl.keys dd{margin:0}
+@media(max-width:560px){.pal{padding:0}.palbox{max-height:100vh;height:100%;border-radius:0}.ctxbar{gap:.5rem .8rem}.adjust{margin-left:0}.hero{padding-top:1rem}.bigsearch{display:none}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style></head><body>
-<header class="top"><div class="bar"><h1>What are you considering doing?</h1><button type="button" class="searchbtn" id="open-search" aria-haspopup="dialog"><span>Search an action or a situation: “swim”, “I have 30 minutes”, “what should I avoid tonight?”</span><kbd id="kbd">Ctrl K</kbd></button><nav class="tabs" aria-label="Views"><a href="#/now">NOW</a><a href="#/avoid">AVOID</a><a href="#/compare">COMPARE</a><a href="#/history">HISTORY</a><a href="#/data">DATA</a></nav></div></header>
-<main><p class="method"><strong>Ruin first, then payoff shape.</strong> Each action is screened for extreme, irreversible downside, then compared on reliable upside (harvest), right-tail upside (optionality), timing and opportunity cost against alternatives available now. <strong>Benefits, tails and timing are author judgement</strong> on ordinal 0–4 scales, labelled JUDGEMENT. <strong>How common an activity is</strong> comes from American Time Use Survey microdata (1,348 actions linked, OBSERVED); experienced affect from one published table and 31 actions from published experiments (EMPIRICAL). 1,374 canonical actions and 26 actions to avoid expand to 50,016 contextual instances (action × manner × timing). That is <strong>short of a 10,000-action canonical ontology</strong>. Click any number to see where it came from.</p>
+<button type="button" class="skip" id="skip">Skip to content</button>
+<header class="top"><div class="bar"><a class="brand" href="#/now">Convexity Action Engine</a><button type="button" class="searchbtn" id="open-search" aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K /"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search actions or situations</span><kbd id="kbd">Ctrl K</kbd></button><nav class="tabs" aria-label="Views"><a href="#/now">NOW</a><a href="#/avoid">AVOID</a><a href="#/compare">COMPARE</a><a href="#/history">HISTORY</a><a href="#/data">DATA</a></nav></div></header>
+<main>
+<section class="hero" id="hero"><h1>What are you considering doing?</h1><p class="lede">Ruin first, then payoff shape: every action is screened for extreme downside, then compared with the alternatives you actually have right now.</p><button type="button" class="bigsearch" id="hero-search" aria-haspopup="dialog"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search an action or describe your situation</span><kbd>/</kbd></button><div class="examples"><span>Try</span><button type="button" data-q="swim">swim</button><button type="button" data-q="I have 30 minutes">I have 30 minutes</button><button type="button" data-q="what should I avoid tonight?">what should I avoid tonight?</button><button type="button" data-q="tired and want to relax">tired and want to relax</button><button type="button" class="how" id="how">How it works</button></div></section>
 <section id="ctx" aria-label="Your context"></section>
-<div class="lenses" id="lenses" role="toolbar" aria-label="Decision lens"></div>
-<div id="app" aria-live="polite"></div>
+<div id="app"></div>
 <noscript><p>This page needs JavaScript. Actions to avoid, and why:</p><ul><li>Swim alone in open water: Same goal as swimming, but with no one to help if something goes wrong.</li><li>Swim after drinking: Two ordinary actions whose combination creates a catastrophic tail.</li><li>Drive after drinking: Small per-trip probability, repeated across trips, with irreversible and legal consequences.</li><li>Text while driving: The message rarely matters; the tail is permanent.</li><li>Drive while exhausted: Fatigue is invisible to the driver until the micro-sleep.</li><li>Cycle on roads at night without lights: Same exercise benefit is available with lights or on a park connector.</li><li>Run hard in the midday heat: In Singapore the same run in the early morning or evening keeps the benefit and drops most of the heat tail.</li><li>Hike alone without telling anyone: Telling someone your route costs a minute and caps the tail.</li><li>Swim in the sea during a thunderstorm: Outdoor water during lightning combines two catastrophic tails.</li><li>Lift heavy without warming up: The warm-up is cheap; the injury can cost months.</li><li>Exercise through sharp pain: Stopping keeps nearly all of the long-run benefit.</li><li>Ignore chest pain: Waiting changes nothing if it is benign and can be irreversible if it is not.</li><li>Skip your medication: Taking it is a two-minute action with a large protected downside.</li><li>Mix medication with alcohol: Check the label or ask a pharmacist first.</li><li>Leave the stove on and go out: A two-second check removes a catastrophic tail.</li><li>Send an angry email: Drafting now and sending tomorrow keeps every option.</li><li>Post something inflammatory online: The upside is small and brief; the record is permanent.</li><li>Invest borrowed money in a speculative asset: Unlevered, diversified saving keeps most upside without the ruin path.</li><li>Gamble to win back losses: Negative expected value, repeated, with an absorbing bottom.</li><li>Take on high-interest debt for a purchase: Waiting or buying second-hand keeps the item within reach without the tail.</li><li>Sign a contract without reading it: Reading the key clauses is cheap relative to the lock-in.</li><li>Click a suspicious link: Going to the site directly costs seconds.</li><li>Quit your job impulsively: Searching while employed keeps the same upside with a floor.</li><li>Make a major decision while exhausted or angry: Sleeping on it is reversible; many major decisions are not.</li><li>Doomscroll past midnight: Not dangerous, just poor payoff: little upside and it taxes tomorrow.</li><li>Stay up all night before a big day: Poor payoff rather than ruin: sleep usually beats the extra hours.</li></ul></noscript>
-<details><summary>Method, assumptions and what is not here</summary><ul class="note"><li>Benefits, costs, right tail, downside, reversibility, decay, regret and timing curves are ordinal author judgements on a 0-4 scale, labelled JUDGEMENT, with whether each is a category prior or an action-specific estimate.</li><li>How common an activity is (share of U.S. adults doing it on an average day, minutes when done) comes from American Time Use Survey 2014-2016 microdata, recomputed with the survey weights by derive_atus.py from the CRAN atus mirror (OBSERVED). The crosswalk from each action to an ATUS group is judgement; category-level links describe the broader group, and the page says so. It is U.S. data, not Singapore.</li><li>Experienced affect comes from Kahneman et al. (2004) Table 1 (909 employed women in Texas), and 31 actions link to published experiments with abstract-level findings (EMPIRICAL). These are shared with visuals/everyday-actions and read from there.</li><li>O*NET, OECD and Singapore time-use data could not be retrieved from the build environment and are listed without links. ATUS activity-code labels were written from the lexicon&#x27;s structure because bls.gov was unreachable; the sports codes were checked against their observed durations.</li><li>The ontology has 1,374 canonical actions and 26 actions to avoid; contextual instances (action x at most one manner x timing) are not counted as distinct actions, so the 10,000-canonical-action target is not met.</li><li>Extreme-downside probabilities are word labels (very low, low, unknown, moderate), never numbers. Unknown is shown as unknown, not as safe. The repeated-exposure chart uses a per-exposure probability you choose, clearly marked as hypothetical.</li><li>Singapore context (daylight about 07:00-19:15, midday heat 11:00-16:00, typical opening hours, lightning) is a separate adjustment on top of the global prior and can be switched off. Live weather is not known; outdoor actions say so.</li><li>Class scores, time fit and lens rankings are MODEL transforms of the facts and inherit their confidence. Decision history is stored only in this browser, shown with its sample size and never used to change rankings.</li></ul></details>
+<details id="method"><summary>How it works: method, evidence labels, assumptions and what is not here</summary><p class="method"><strong>Ruin first, then payoff shape.</strong> Each action is screened for extreme, irreversible downside, then compared on reliable upside (harvest), right-tail upside (optionality), timing and opportunity cost against alternatives available now. <strong>Benefits, tails and timing are author judgement</strong> on ordinal 0–4 scales, labelled JUDGEMENT. <strong>How common an activity is</strong> comes from American Time Use Survey microdata (1,348 actions linked, OBSERVED); experienced affect from one published table and 31 actions from published experiments (EMPIRICAL). 1,374 canonical actions and 26 actions to avoid expand to 50,016 contextual instances (action × manner × timing). That is <strong>short of a 10,000-action canonical ontology</strong>. Select any row name to see where its number came from.</p><ul class="note"><li>Benefits, costs, right tail, downside, reversibility, decay, regret and timing curves are ordinal author judgements on a 0-4 scale, labelled JUDGEMENT, with whether each is a category prior or an action-specific estimate.</li><li>How common an activity is (share of U.S. adults doing it on an average day, minutes when done) comes from American Time Use Survey 2014-2016 microdata, recomputed with the survey weights by derive_atus.py from the CRAN atus mirror (OBSERVED). The crosswalk from each action to an ATUS group is judgement; category-level links describe the broader group, and the page says so. It is U.S. data, not Singapore.</li><li>Experienced affect comes from Kahneman et al. (2004) Table 1 (909 employed women in Texas), and 31 actions link to published experiments with abstract-level findings (EMPIRICAL). These are shared with visuals/everyday-actions and read from there.</li><li>O*NET, OECD and Singapore time-use data could not be retrieved from the build environment and are listed without links. ATUS activity-code labels were written from the lexicon&#x27;s structure because bls.gov was unreachable; the sports codes were checked against their observed durations.</li><li>The ontology has 1,374 canonical actions and 26 actions to avoid; contextual instances (action x at most one manner x timing) are not counted as distinct actions, so the 10,000-canonical-action target is not met.</li><li>Extreme-downside probabilities are word labels (very low, low, unknown, moderate), never numbers. Unknown is shown as unknown, not as safe. The repeated-exposure chart uses a per-exposure probability you choose, clearly marked as hypothetical.</li><li>Singapore context (daylight about 07:00-19:15, midday heat 11:00-16:00, typical opening hours, lightning) is a separate adjustment on top of the global prior and can be switched off. Live weather is not known; outdoor actions say so.</li><li>Class scores, time fit and lens rankings are MODEL transforms of the facts and inherit their confidence. Decision history is stored only in this browser, shown with its sample size and never used to change rankings.</li></ul></details>
 </main>
-<footer>Ontology written 2026-09-29. Spreadsheet views (actions.csv, aliases.csv, sources.csv) are on the DATA tab and next to raw.json in the site repository; ATUS figures are recomputed by derive_atus.py. Keyboard: Ctrl/⌘ K search · ↑ ↓ Enter · Esc close · C compare · V views · E evidence · A alternatives · N now.</footer>
-<div class="pal" id="pal" hidden role="dialog" aria-modal="true" aria-label="Action search"><div class="palbox"><div class="palin"><label class="visually-hidden" for="q">What are you considering?</label><input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="What are you considering?" role="combobox" aria-expanded="true" aria-controls="res" aria-autocomplete="list"><span class="palmode" id="palmode"></span><button type="button" id="palclose" aria-label="Close search">Esc</button></div><div class="palchips" id="palchips"></div><div class="palbody"><ul class="palres" id="res" role="listbox" aria-label="Results"></ul><div class="palprev" id="prev" aria-live="polite"></div></div><div class="palfoot"><span>↑ ↓ move</span><span>Enter open</span><span>Esc close</span><span id="palhint"></span></div></div></div>
+<footer><p>Ontology written 2026-09-29. Spreadsheet views (actions.csv, aliases.csv, sources.csv) are on the DATA tab and next to raw.json in the site repository; ATUS figures are recomputed by derive_atus.py.</p><details id="keys"><summary>Keyboard shortcuts</summary><dl class="keys"><div><dt><kbd>Ctrl/⌘ K</kbd> <kbd>/</kbd></dt><dd>search</dd></div><div><dt><kbd>↑</kbd> <kbd>↓</kbd> <kbd>Enter</kbd></dt><dd>choose a result</dd></div><div><dt><kbd>Esc</kbd></dt><dd>close search or a panel</dd></div><div><dt><kbd>C</kbd></dt><dd>compare alternatives</dd></div><div><dt><kbd>V</kbd></dt><dd>jump to the chart</dd></div><div><dt><kbd>A</kbd></dt><dd>jump to alternatives</dd></div><div><dt><kbd>E</kbd></dt><dd>open deep mode (evidence)</dd></div><div><dt><kbd>N</kbd></dt><dd>back to now</dd></div><div><dt><kbd>?</kbd></dt><dd>these shortcuts</dd></div></dl></details></footer>
+<div class="pal" id="pal" hidden role="dialog" aria-modal="true" aria-label="Action search"><div class="palbox"><div class="palin"><label class="visually-hidden" for="q">What are you considering?</label><input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Try “swim”, “I have 30 minutes” or “what should I avoid tonight?”" role="combobox" aria-expanded="true" aria-controls="res" aria-autocomplete="list"><span class="palmode" id="palmode"></span><button type="button" id="palclose">Close</button></div><div class="palchips" id="palchips" aria-label="What your words set"></div><div class="palbody"><ul class="palres" id="res" role="listbox" aria-label="Results"></ul><div class="palprev" id="prev" aria-live="polite"></div></div><div class="palfoot"><span class="keys">↑ ↓ move</span><span class="keys">Esc close</span><span id="palhint"></span></div></div></div>
 <div class="toast" id="toast" hidden role="status"></div>
+<div class="visually-hidden" id="announce" role="status" aria-live="polite"></div>
 <script>"use strict";
 /* Convexity Action Engine. Layers kept separate:
    DATA (D.actions: judged facts) -> CONTEXT (C) -> MODEL (inst/ev/classes) -> LENSES -> UI.
@@ -178,10 +250,17 @@ const CLSD={harvest:"reliable benefit with diminishing returns",optionality:"bou
 const TIER=["clear","noted","warning","danger"],TIERL={clear:"Ruin screen: clear",noted:"Tail noted, screen clear",warning:"Relevant downside",danger:"Extreme downside"};
 const NS="http://www.w3.org/2000/svg";
 const $=s=>document.querySelector(s);
-function el(t,a,...k){const e=document.createElement(t);if(a)for(const[x,v]of Object.entries(a)){if(v==null||v===false)continue;if(x==="class")e.className=v;else if(x==="text")e.textContent=v;else if(x.slice(0,2)==="on")e.addEventListener(x.slice(2),v);else e.setAttribute(x,v===true?"":v)}for(const c of k.flat(9)){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(String(c)))}return e}
+/* ARIA states are "true"/"false" strings; other boolean attributes are present ("") or absent (null). */
+const attrVal=(x,v)=>v==null?null:x.slice(0,5)==="aria-"&&typeof v==="boolean"?String(v):v===false?null:v===true?"":v;
+function el(t,a,...k){const e=document.createElement(t);if(a)for(const[x,v]of Object.entries(a)){if(x.slice(0,2)==="on"&&typeof v==="function"){e.addEventListener(x.slice(2),v);continue}const s=attrVal(x,v);if(s==null)continue;if(x==="class")e.className=s;else if(x==="text")e.textContent=s;else e.setAttribute(x,s)}for(const c of k.flat(9)){if(c==null||c===false)continue;e.append(c.nodeType?c:document.createTextNode(String(c)))}return e}
 function sv(t,a,...k){const e=document.createElementNS(NS,t);if(a)for(const[x,v]of Object.entries(a)){if(v==null)continue;if(x==="text")e.textContent=v;else if(x.slice(0,2)==="on")e.addEventListener(x.slice(2),v);else e.setAttribute(x,v)}for(const c of k.flat(9))if(c)e.append(c);return e}
 const store={get(k,d){try{const v=localStorage.getItem("cae:"+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem("cae:"+k,JSON.stringify(v))}catch(e){}}};
 const clamp=(v,a=0,b=4)=>Math.max(a,Math.min(b,v));
+const smooth=()=>matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth";
+function announce(t){const a=$("#announce");if(!a)return;a.textContent="";setTimeout(()=>{a.textContent=t},50)}
+/* Disclosures remember whether you opened them, so re-rendering after a change does not snap them shut. */
+const OPEN=new Set();
+function disc(id,summary,...kids){return el("details",{id,class:"disc",open:OPEN.has(id)?true:null,ontoggle:e=>{if(e.target.open)OPEN.add(id);else OPEN.delete(id)}},el("summary",null,summary),...kids)}
 const fmtH=h=>{h=((h%24)+24)%24;const m=Math.round(h*60)%1440;return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0")};
 const fmtMin=m=>m>=90?(Math.round(m/6)/10)+" h":Math.round(m)+" min";
 const norm=s=>s.normalize("NFKD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[’']/g,"").replace(/[^a-z0-9 ]+/g," ").replace(/\s+/g," ").trim();
@@ -189,9 +268,13 @@ const norm=s=>s.normalize("NFKD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/
 /* ---------- CONTEXT ---------- */
 function sgNow(){try{const p=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Singapore",hour:"2-digit",minute:"2-digit",weekday:"short",hourCycle:"h23"}).formatToParts(new Date());const g=t=>(p.find(x=>x.type===t)||{}).value;return{h:(+g("hour"))+(+g("minute"))/60,wd:g("weekday")}}catch(e){const d=new Date();return{h:d.getHours()+d.getMinutes()/60,wd:"Mon"}}}
 const now0=sgNow();
-const C=Object.assign({h:Math.round(now0.h*2)/2,live:true,T:60,E:.6,tol:.3,N:.5,H:.5,wk:now0.wd==="Sat"||now0.wd==="Sun",sg:true,W:{hea:1,car:1,lrn:1,soc:1,joy:1,rec:1,hom:1,fin:1},sq:null,lens:"convex"},store.get("ctx",{}));
+const CTX0={T:60,E:.6,tol:.3,N:.5,H:.5,sg:true,W:{hea:1,car:1,lrn:1,soc:1,joy:1,rec:1,hom:1,fin:1},sq:null,lens:"convex"};
+const C=Object.assign({h:Math.round(now0.h*2)/2,live:true,wk:now0.wd==="Sat"||now0.wd==="Sun"},JSON.parse(JSON.stringify(CTX0)),store.get("ctx",{}));
 if(C.live)C.h=Math.round(sgNow().h*2)/2;
 let ver=1;const bump=()=>{ver++;store.set("ctx",{T:C.T,E:C.E,tol:C.tol,N:C.N,H:C.H,sg:C.sg,W:C.W,sq:C.sq,lens:C.lens,live:C.live})};
+/* Settings that differ from the defaults, so the page can say what is changed and offer a reset. */
+function ctxChanges(){const out=C.live?[]:["h"];for(const k of Object.keys(CTX0)){const a=C[k],b=CTX0[k];if(k==="W"?Object.keys(b).some(w=>Math.abs((a[w]??1)-b[w])>1e-9):typeof b==="number"?Math.abs(a-b)>1e-9:a!==b)out.push(k)}return out}
+function resetCtx(){Object.assign(C,JSON.parse(JSON.stringify(CTX0)),{live:true,h:Math.round(sgNow().h*2)/2});bump()}
 
 /* ---------- INSTANCES: (action, manner, timing) ---------- */
 function modOK(b,m){const d=MM[m];if(!d)return false;return d.flag?b.flags.includes(d.flag):b.places.includes(m)}
@@ -289,6 +372,8 @@ const LENSES=[
  {id:"habit",name:"Habit / default",keys:["freq","typ"],d:"Descriptive: what people commonly do at this hour. Not a recommendation.",f:(o,e)=>{const x=observed(o);const f=x&&x.rel==="action"?clamp(Math.log10(x.rate*1000+1)*1.35):o.f.freq;return f*(o.f.typ?mix(o.f.typ,e.h):.5)}},
 ];
 const LBY={};LENSES.forEach(l=>LBY[l.id]=l);
+/* Lenses grouped for the picker; every lens appears exactly once. */
+const LENSGROUPS=[["Recommended",["convex"]],["Risk first",["ruin","tail","minimax","precaution","rev","robust"]],["Value",["eu","oppcost","satisfice","time","long"]],["Upside and learning",["opt","voi","explore","regret"]],["Goals and habits",["health","joy","habit"]]];
 function regretS(S){const E=S.map(o=>ev(o));const sc=[-1,0,1].map(s=>E.map((e,i)=>e.V+s*(S[i].f.unc/4)*.6*e.up));const best=sc.map(r=>Math.max(...r));return S.map((o,i)=>-Math.max(...sc.map((r,j)=>best[j]-r[i]))+.15*o.f.reg)}
 function oppS(S){const rate=Math.max(0,...S.map(o=>Math.max(0,ev(o).V)/Math.max(5,mins(o.f))));return S.map(o=>ev(o).V-rate*mins(o.f))}
 function satS(S){const E=S.map(o=>ev(o).V),thr=.6*Math.max(...E);return S.map((o,i)=>(E[i]>=thr&&E[i]>0?1:0)+(1-o.f.act/4)*.3+(1-Math.min(240,mins(o.f))/240)*.2)}
@@ -381,7 +466,8 @@ const FI={obs:["Observed participation","Share of U.S. adults (15+) doing this A
  typ:["Typical time","When people typically do it: descriptive, judged from time-use patterns, not fitted."],best:["Judged optimum","Normative time window under a health or performance objective; separate evidence grade."],open:["Opening hours (Singapore)","Typical hours; a Singapore adjustment."],out:["Outdoor","Outdoor: daylight, heat and weather adjustments apply in Singapore."],ruin:["Extreme downside","Kind, word-label probability, severity, irreversibility and repeated exposure."]};
 const MODELF={fit:["Time fit","tfAt(): judged optimum curve (or a mild typical-time curve) × Singapore adjustments (hours, daylight, heat)."],up:["Reliable upside","Mean of your three most-weighted benefit dimensions, blended with long-term value by the Horizon control."],V:["Contextual value","up × fit + 0.3 × right tail − costs − downside × (1 − tolerance); penalised if it does not fit your time or is closed."],mins:["Total time","Typical duration + setup."],cls:["Class scores","Formulas over judged facts: harvest = upside × (1 − uncertainty/8); optionality = right tail × (1 − downside/5) × option factor, cut sharply by extreme downside; …"],cost:["Cost","Time, activation (scaled by low energy), physical effort and money (scaled by the Money weight)."]};
 const GRADE=["none","low","medium","high"];
-function explain(key,o){const b=o.b,f=o.f,own=b.own.includes(key),cat=D.categories[b.cat],box=el("div",{class:"panel",role:"region","aria-label":"Where this number came from"},el("button",{class:"x",type:"button",onclick:e=>e.target.closest(".panel").remove(),"aria-label":"Close"},"×"));
+function closePanel(e){const p=e.currentTarget.closest(".panel"),from=p._from;p.remove();if(from&&from.isConnected)from.focus()}
+function explain(key,o){const b=o.b,f=o.f,own=b.own.includes(key),cat=D.categories[b.cat],box=el("div",{class:"panel",role:"region","aria-label":"Where this number came from"},el("button",{class:"x",type:"button",onclick:closePanel,"aria-label":"Close explanation"},"×"));
  const info=FI[key]||MODELF[key]||[key,""];box.append(el("h3",null,"WHERE DID THIS COME FROM? · "+nameOf(o)),el("p",null,el("strong",null,info[0]+". "),info[1]));
  const dl=el("table",{class:"kv"});const row=(k,v)=>dl.append(el("tr",null,el("th",null,k),el("td",null,v)));
  if(key==="obs"){const x=observed(o);row("Type",[pv("OBSERVED")," survey microdata, recomputed; "+(x&&x.rel==="action"?"mapped for this action":"category-level group: describes the broader activity, not this exact action")]);if(x){row("ATUS group",x.code+" "+x.label);row("Participation",pct1(x.rate)+" on an average day");row("Minutes when done",Math.round(x.min)+" min (n = "+x.n.toLocaleString("en")+" diary days doing it)")}row("Population","U.S. civilian noninstitutional population age 15+, 2014–2016; primary activity only. Not Singapore.");row("Source",el("a",{href:"https://github.com/cran/atus",rel:"noopener noreferrer"},"BLS ATUS via CRAN atus 0.2"));row("Limitations","describes how common the activity group is, not whether it is good; the crosswalk to this action is judgement")}
@@ -413,23 +499,40 @@ let CMP=store.get("cmp",[]);
 const cmpGo=ids=>{CMP=ids;store.set("cmp",ids);go("#/compare?actions="+ids.join(","))};
 
 /* ---------- CONTEXT UI ---------- */
-function slider(key,label,min,max,step,fmt,sub){const v=sub?C.W[key]:C[key],out=el("b",null,fmt(v));const i=el("input",{type:"range",min,max,step,value:v,"aria-label":label});i.addEventListener("input",()=>{const x=+i.value;if(sub)C.W[key]=x;else C[key]=x;if(key==="h")C.live=false;out.textContent=fmt(x);bump();schedule()});return el("label",null,el("span",null,label),out,i)}
+function slider(key,label,min,max,step,fmt,sub){const v=sub?C.W[key]:C[key],out=el("b",{"aria-hidden":"true"},fmt(v));const i=el("input",{type:"range",id:"r-"+key,min,max,step,value:v,"aria-label":label,"aria-valuetext":fmt(v)});i.addEventListener("input",()=>{const x=+i.value;if(sub)C.W[key]=x;else C[key]=x;if(key==="h")C.live=false;out.textContent=fmt(x);i.setAttribute("aria-valuetext",fmt(x));bump();ctxStatus();schedule()});return el("label",{class:"rng"},el("span",null,label),out,i)}
 const pct=v=>v<.34?"low":v<.67?"medium":"high";
-function renderCtx(){const box=$("#ctx");box.replaceChildren();const g=el("div",{class:"ctx"});
- const tchips=el("div",{class:"row"},el("span",null,"I HAVE"),[5,15,30,60,120,240].map(t=>el("button",{type:"button",class:"chip"+(C.T===t?" on":""),"aria-pressed":C.T===t,onclick:()=>{C.T=t;bump();render()}},t<60?t+"m":t/60+"h")),el("span",null," · status quo: "),C.sq&&inst(C.sq)?aBtn(inst(C.sq)):el("span",{class:"unk"},"not set"),el("button",{type:"button",class:"chip",onclick:()=>openPal("sq")},C.sq?"change":"set what you're doing now"),C.sq?el("button",{type:"button",class:"chip",onclick:()=>{C.sq=null;bump();render()}},"clear"):null);
- g.append(tchips,slider("h","Singapore time"+(C.live?" (now)":""),0,23.5,.5,fmtH),slider("E","Energy",0,1,.05,pct),slider("tol","Downside tolerance",0,1,.05,pct),slider("N","Novelty",0,1,.05,v=>v<.34?"familiar":v<.67?"either":"explore"),slider("H","Time horizon",0,1,.05,v=>v<.25?"today":v<.5?"weeks":v<.75?"months":"years"));
- const rel=likelyRelevant();g.append(el("div",{class:"row"},el("span",null,"LIKELY RELEVANT NOW:"),rel.map(k=>el("span",{class:"chip"},BENL[k].toLowerCase())),el("span",null,"(inferred from time and energy; weights below are yours)"),el("label",{style:"display:inline-flex;gap:.3rem;align-items:center"},el("input",{type:"checkbox",checked:C.sg?true:null,onchange:e=>{C.sg=e.target.checked;bump();render()}}),"Singapore adjustments"),C.live?null:el("button",{type:"button",class:"chip",onclick:()=>{C.live=true;C.h=Math.round(sgNow().h*2)/2;bump();render()}},"back to now")));
- const wd=el("details",null,el("summary",null,"Your objectives (explicit weights, never inferred)"),el("div",{class:"ctx"},BEN.map(k=>slider(k,BENL[k],0,2,.1,v=>v.toFixed(1)+"×",true))));g.append(el("div",{class:"row",style:"display:block"},wd));box.append(g);
- const lb=$("#lenses");lb.replaceChildren(el("span",{class:"sub",style:"align-self:center;white-space:nowrap"},"VIEW THROUGH"),...LENSES.map(l=>el("button",{type:"button","aria-pressed":C.lens===l.id,title:l.d,onclick:()=>{setLens(l.id)}},l.name)))}
+const novL=v=>v<.34?"familiar":v<.67?"either":"explore",horL=v=>v<.25?"today":v<.5?"weeks":v<.75?"months":"years",tLabel=t=>t<60?t+"m":t/60+"h";
+function ctxSummary(){const sq=C.sq&&inst(C.sq);return[fmtH(C.h)+(C.live?" now":" (chosen)"),"energy "+pct(C.E),"downside tolerance "+pct(C.tol),"novelty: "+novL(C.N),"horizon: "+horL(C.H),"Singapore adjustments "+(C.sg?"on":"off"),"doing now: "+(sq?nameOf(sq):"not set"),BEN.some(k=>Math.abs(C.W[k]-1)>1e-9)?"custom objective weights":null].filter(Boolean).join(" · ")}
+let ctxOpen=!!store.get("ctxopen",false);
+/* The badge counts settings hidden in the panel; time available and the lens are always visible in the bar. */
+function ctxStatus(){const all=ctxChanges(),n=all.filter(k=>k!=="T"&&k!=="lens").length,s=$("#ctxsum"),c=$("#ctxcount"),rs=$("#ctxreset"),bn=$("#backnow");if(s)s.textContent=ctxSummary();if(c){c.textContent=n?n+" changed":"";c.hidden=!n}if(rs)rs.hidden=!all.length;if(bn)bn.hidden=C.live}
+function renderCtx(){const box=$("#ctx");box.replaceChildren();const Ts=[5,15,30,60,120,240],sq=C.sq&&inst(C.sq),rel=likelyRelevant();
+ const seg=el("div",{class:"seg",role:"group","aria-labelledby":"t-lbl"},el("span",{class:"lbl",id:"t-lbl"},"I have"),Ts.map(t=>el("button",{type:"button",id:"t-"+t,class:"chip","aria-pressed":C.T===t,onclick:()=>{C.T=t;bump();render()}},tLabel(t))),Ts.includes(C.T)?null:el("span",{class:"chip cur"},fmtMin(C.T)));
+ const lsel=el("select",{id:"lenssel","aria-describedby":"lensdesc",title:LBY[C.lens].d,onchange:e=>setLens(e.target.value)},LENSGROUPS.map(([g,ids])=>el("optgroup",{label:g},ids.map(id=>el("option",{value:id,selected:C.lens===id?true:null},LBY[id].name)))));
+ const panel=el("div",{id:"ctxpanel",class:"ctxpanel",hidden:ctxOpen?null:true},
+  el("fieldset",null,el("legend",null,"When and how you feel"),slider("h","Singapore time"+(C.live?" (now)":""),0,23.5,.5,fmtH),el("button",{type:"button",id:"backnow",class:"chip",hidden:C.live?true:null,onclick:()=>{C.live=true;C.h=Math.round(sgNow().h*2)/2;bump();render()}},"Back to the current time"),slider("E","Energy",0,1,.05,pct),el("label",{class:"check"},el("input",{type:"checkbox",id:"sgchk",checked:C.sg?true:null,onchange:e=>{C.sg=e.target.checked;bump();render()}}),"Singapore adjustments (opening hours, daylight, heat)")),
+  el("fieldset",null,el("legend",null,"How you like to decide"),slider("tol","Downside tolerance",0,1,.05,pct),slider("N","Novelty",0,1,.05,novL),slider("H","Time horizon",0,1,.05,horL),el("p",{class:"note",id:"lensdesc"},el("strong",null,LBY[C.lens].name+": "),LBY[C.lens].d)),
+  el("fieldset",null,el("legend",null,"What you are doing now"),el("p",null,sq?["Continuing ",aBtn(sq)," is compared against switching."]:el("span",{class:"note"},"Not set. Set it so that switching is compared against continuing.")),el("div",{class:"btnrow"},el("button",{type:"button",id:"sqset",class:"chip",onclick:()=>openPal("sq")},sq?"Change":"Set what you're doing now"),sq?el("button",{type:"button",id:"sqclear",class:"chip",onclick:()=>{C.sq=null;bump();render()}},"Clear"):null),el("p",{class:"note"},"Likely relevant now, inferred from time and energy: ",rel.map((k,i)=>[i?", ":"",BENL[k].toLowerCase()]),". Your weights below are explicit and never inferred.")),
+  disc("weights","Your objectives (explicit weights, never inferred)",el("div",{class:"wgrid"},BEN.map(k=>slider(k,BENL[k],0,2,.1,v=>v.toFixed(1)+"×",true)))),
+  el("div",{class:"ctxfoot"},el("button",{type:"button",id:"ctxreset",onclick:()=>{resetCtx();render();announce("All settings are back to their defaults")}},"Reset everything to defaults",el("span",{class:"visually-hidden"}," (including time available and the lens)")),el("span",{class:"note"},"Settings are kept in this browser only.")));
+ const tog=el("button",{type:"button",id:"ctxtoggle",class:"adjust","aria-expanded":ctxOpen,"aria-controls":"ctxpanel",onclick:()=>{ctxOpen=!ctxOpen;store.set("ctxopen",ctxOpen);tog.setAttribute("aria-expanded",String(ctxOpen));panel.hidden=!ctxOpen;tog.firstChild.textContent=ctxOpen?"Hide context":"Adjust context"}},el("span",null,ctxOpen?"Hide context":"Adjust context"),el("span",{class:"count",id:"ctxcount"}));
+ box.append(el("div",{class:"ctx"},el("div",{class:"ctxbar"},seg,el("label",{class:"lensl"},el("span",{class:"lbl"},"Judge by"),lsel),tog),el("p",{class:"ctxsum",id:"ctxsum"}),panel));ctxStatus()}
 function likelyRelevant(){const r=[];if(C.E<.4)r.push("rec");if((C.h>=11.5&&C.h<13.5)||(C.h>=18&&C.h<20.5))r.push("hea");if(C.h>=8&&C.h<18&&!C.wk)r.push("car");if(C.h>=18&&C.h<23)r.push("soc");if(C.h>=21||C.h<6)r.push("rec");if(!r.length)r.push("hea","car");return[...new Set(r)].slice(0,4)}
 let lensChange=null;
-function setLens(id){const r=route();let S=null;if(r.name==="a"&&inst(r.id))S=defaultSet(inst(r.id));else if(r.name==="compare")S=cmpSet();if(S&&S.length>1){const a=topOf(S,C.lens),b=topOf(S,id);lensChange=a!==b?{from:C.lens,to:id,a,b}:{from:C.lens,to:id,same:a}}C.lens=id;bump();render()}
+function setLens(id){const r=route();let S=null;if(r.name==="a"&&inst(r.id))S=defaultSet(inst(r.id));else if(r.name==="compare")S=cmpSet();if(S&&S.length>1){const a=topOf(S,C.lens),b=topOf(S,id);lensChange=a!==b?{from:C.lens,to:id,a,b}:{from:C.lens,to:id,same:a}}C.lens=id;bump();render();announce("Judging by "+LBY[id].name)}
 let pending=0;function schedule(){if(pending)return;pending=requestAnimationFrame(()=>{pending=0;renderApp()})}
 
 /* ---------- VIEWS (charts) ---------- */
 const VIEWS=[["spec","Spec sheet"],["timing","Time of day"],["tail","Ruin / tail risk"],["payoff","Payoff shape"],["optionality","Right-tail upside"],["harvest","Harvest curve"],["decay","Opportunity decay"],["regret","Regret horizon"],["revunc","Reversibility × uncertainty"],["actval","Activation × value"],["onemore","One more / value of information"],["timefit","Available-time fit"],["explore","Explore / exploit"],["pareto","Pareto frontier"],["philosophy","Philosophy comparison"],["sensitivity","Sensitivity"],["halflife","Decision half-life"],["defaults","Default vs deliberate"],["optiongraph","Option-value graph"]];
 function defaultView(o){if(o.b.cat==="avoid"||ev(o).r.tier==="danger"||ev(o).r.tier==="warning")return"tail";if(/continue|another|keep/.test(o.b.id))return"onemore";if(o.f.tail>=3)return"optionality";return"timing"}
-function picker(cur,onpick,rec){return el("div",{class:"views",role:"toolbar","aria-label":"Visualise as"},el("span",{class:"sub",style:"align-self:center"},"VISUALISE AS"),VIEWS.map(([k,l])=>el("button",{type:"button","aria-pressed":cur===k,class:k===rec?"rec":null,title:k===rec?"suggested for this question":null,onclick:()=>onpick(k)},l+(k===rec&&cur!==k?" ·suggested":""))))}
+/* Charts grouped by the question they answer; every view appears exactly once. */
+const VIEWGROUPS=[["Decide",["spec","philosophy","sensitivity","pareto"]],["Risk",["tail","payoff","revunc"]],["Upside",["optionality","optiongraph","explore","onemore"]],["Timing",["timing","decay","halflife","timefit","regret"]],["Effort and habit",["harvest","actval","defaults"]]];
+const VL=Object.fromEntries(VIEWS),VORDER=VIEWGROUPS.flatMap(g=>g[1]);
+/* Charts keep a readable size: capped on wide screens, scrolled sideways on narrow ones. */
+function chartNode(n){n.querySelectorAll("svg.ch").forEach(s=>{const w=el("div",{class:"chwrap"});s.replaceWith(w);w.append(s)});return n}
+function picker(cur,onpick,rec){const ix=VORDER.indexOf(cur),step=d=>onpick(VORDER[(ix+d+VORDER.length)%VORDER.length]);
+ const sel=el("select",{id:"viewsel",onchange:e=>onpick(e.target.value)},VIEWGROUPS.map(([g,ks])=>el("optgroup",{label:g},ks.map(k=>el("option",{value:k,selected:k===cur?true:null},VL[k]+(k===rec?" (suggested)":""))))));
+ return el("div",{class:"viewbar"},el("label",{class:"lbl",for:"viewsel"},"Show as"),sel,el("span",{class:"stepper"},el("button",{type:"button",id:"viewprev",class:"chip","aria-label":"Previous chart",onclick:()=>step(-1)},"‹"),el("button",{type:"button",id:"viewnext",class:"chip","aria-label":"Next chart",onclick:()=>step(1)},"›")),el("span",{class:"note"},(ix+1)+" of "+VORDER.length),rec&&rec!==cur?el("button",{type:"button",class:"chip",onclick:()=>onpick(rec)},"Suggested: "+VL[rec]):null)}
 function svgBox(w,h,label){return sv("svg",{class:"ch",viewBox:`0 0 ${w} ${h}`,role:"img","aria-label":label})}
 function pt(svg,x,y,o,opts={}){const e=ev(o),danger=e.r.tier==="danger"||o.b.cat==="avoid",g=sv("g",{class:"pt",tabindex:"0",role:"link","aria-label":nameOf(o),onclick:()=>openA(o),onkeydown:ev2=>{if(ev2.key==="Enter"||ev2.key===" "){ev2.preventDefault();openA(o)}}});g.append(sv("title",{text:nameOf(o)}),sv("circle",{cx:x,cy:y,r:opts.r||5,fill:opts.main?"var(--fg)":danger?"var(--danger)":opts.muted?"var(--border)":"var(--pos)",stroke:"var(--bg)","stroke-width":1.5}));if(opts.label!==false)g.append(sv("text",{x:x+7,y:y+3.5,class:"lab"+(opts.muted?" mut":""),text:(opts.short?opts.short:nameOf(o)).slice(0,28)}));svg.append(g);return g}
 function quad(title,labels,S,xf,yf,xl,yl,extra){const W=640,H=380,m={l:40,r:20,t:20,b:36},svg=svgBox(W,H,title),X=v=>m.l+v/4*(W-m.l-m.r),Y=v=>H-m.b-v/4*(H-m.t-m.b);
@@ -535,9 +638,11 @@ const ROWS=[["TIME"],["fit","Time fit",o=>{const e=ev(o);return fitL(e)+(e.fits?
  ["EVIDENCE"],["obs","Observed: done on an average day",o=>{const x=observed(o);return x?[pv("OBSERVED")," "+pct1(x.rate)+(x.rel==="action"?"":" (group)")]:el("span",{class:"unk"},"?")}],["obs","Observed: minutes when done",o=>{const x=observed(o);return x?Math.round(x.min)+" min"+(x.rel==="action"?"":" (group)"):el("span",{class:"unk"},"?")}],["drm","Experienced positive affect",o=>{const x=affect(o);return x?[pv("EMPIRICAL")," "+x.positive_affect.toFixed(2)+"/6"+(x.rel==="action"?"":" (group)")]:el("span",{class:"unk"},"?")}],["cites","Cited experiments",o=>cites(o).length?[pv("EMPIRICAL")," "+cites(o).length+" ("+cites(o).map(c=>c.rel).join(", ")+")"]:"none"],["ev","Literature grade",o=>GRADE[o.b.ev]+" (author's grade)"],["prov","Provenance",o=>[pv("JUDGEMENT")," ",pv("MODEL"),personal(o.b.id).n?[" ",pv("PERSONAL")," n="+personal(o.b.id).n]:null]]];
 function cmpSet(){const r=route();const ids=(r.actions.length?r.actions:CMP);return ids.map(inst).filter(Boolean)}
 function specSheet(S,editable){const dom=dominance(S),tops=topOf(S,C.lens);const thead=el("tr",null,el("th",null,el("span",{class:"sub"},"LENS: "+LBY[C.lens].name)),S.map((o,i)=>el("th",{class:dom[i]?"dom":null},aBtn(o),editable?el("button",{type:"button",class:"colx","aria-label":"Remove "+nameOf(o),onclick:()=>cmpGo(S.filter(x=>x!==o).map(x=>x.id))},"×"):null,o===tops?el("div",{class:"cls",style:"color:var(--pos)"},"▲ top under lens"):null,dom[i]?el("div",{class:"cls"},"dominated"):null)));
- const body=ROWS.map(r=>{if(r.length===1)return el("tr",{class:"grp"},el("th",null,r[0]),S.map(()=>el("td")));const[k,l,fn]=r;return el("tr",null,el("th",{tabindex:"0",title:"Where does this come from?",onclick:ev2=>showExplain(k,S,ev2.target),onkeydown:e=>{if(e.key==="Enter")showExplain(k,S,e.target)}},l),S.map((o,i)=>el("td",{class:dom[i]?"dom":null},fn(o))))});
- const wrap=el("div");wrap.append(el("div",{class:"tablewrap"},el("table",{class:"sheet"},el("thead",null,thead),el("tbody",null,body))),el("p",{class:"note"},"Click a row name to see where its values came from; click a column to open that action. Faded columns are dominated under the Pareto criteria (Pareto view). No total score is shown: the rows are the trade-off."));return wrap}
-function showExplain(k,S,anchor){const host=document.getElementById("explain-host");if(!host)return;host.replaceChildren(...S.slice(0,4).map(o=>explain(k==="cls"?"cls":k==="prov"?"ev":k,o)));host.scrollIntoView({block:"nearest",behavior:"smooth"})}
+ const body=ROWS.map(r=>{if(r.length===1)return el("tr",{class:"grp"},el("th",null,r[0]),S.map(()=>el("td")));const[k,l,fn]=r;return el("tr",null,el("th",{scope:"row"},el("button",{type:"button",class:"rowbtn",title:"Where does this come from?",onclick:ev2=>showExplain(k,S,ev2.currentTarget)},l)),S.map((o,i)=>el("td",{class:dom[i]?"dom":null},fn(o))))});
+ const wrap=el("div",{class:"sheetwrap"});wrap.append(el("div",{class:"tablewrap"},el("table",{class:"sheet"},el("thead",null,thead),el("tbody",null,body))),el("p",{class:"note"},"Select a row name to see where its values came from; select a column name to open that action. Grey italic columns are dominated under the Pareto criteria (Pareto view). No total score is shown: the rows are the trade-off."));return wrap}
+/* Explanations open right below the table or cards that asked for them, and take focus; closing returns it. */
+function showPanels(anchor,panels){const box=anchor.closest(".spec,.sheetwrap")||anchor;let h=box.nextElementSibling;if(!h||!h.classList.contains("xhost")){h=el("div",{class:"xhost"});box.after(h)}panels.forEach(p=>{p._from=anchor});h.replaceChildren(...panels);const t=h.querySelector("h3");if(t){t.tabIndex=-1;t.focus({preventScroll:true})}h.scrollIntoView({block:"nearest",behavior:smooth()})}
+function showExplain(k,S,anchor){showPanels(anchor,S.slice(0,4).map(o=>explain(k==="cls"?"cls":k==="prov"?"ev":k,o)))}
 
 /* ---------- PAGES ---------- */
 function quickBlock(o,S){const e=ev(o),al=S||defaultSet(o),others=al.filter(x=>x!==o&&x.b.cat!=="inaction"),bestAlt=others.slice().sort((a,b)=>ev(b).V-ev(a).V)[0],topDim=BEN.slice().sort((a,b)=>o.f[b]*C.W[b]-o.f[a]*C.W[a])[0],clsTop=CLS.slice(0,6).filter(k=>e.cls[k]>=2.2).sort((a,b)=>e.cls[b]-e.cls[a]).slice(0,3);
@@ -549,33 +654,35 @@ function ruinBox(o){const e=ev(o),r=o.f.ruin;if(e.r.tier==="clear")return el("p"
 function givingUp(o,S){const others=S.filter(x=>x!==o),ranked=others.slice().sort((a,b)=>lensScores([b,o],C.lens)[0]-lensScores([a,o],C.lens)[0]),b=ranked[0];if(!b)return null;const d=k=>(o.f[k]||0)-(b.f[k]||0),keys=BEN.concat(["tail","lt","opt","info"]),L=k=>({tail:"right-tail upside",lt:"long-term value",opt:"option creation",info:"information"})[k]||BENL[k].toLowerCase();
  const gain=keys.filter(k=>d(k)>=.9).map(k=>"+ "+L(k)),lose=keys.filter(k=>d(k)<=-.9).map(k=>"− "+L(k));if(mins(o.f)<mins(b.f)-10)gain.push("+ "+Math.round(mins(b.f)-mins(o.f))+" min saved");if(mins(o.f)>mins(b.f)+10)lose.push("− "+Math.round(mins(o.f)-mins(b.f))+" more minutes");if(tierIx(o)>tierIx(b))lose.push("− a worse extreme-downside screen");if(tierIx(o)<tierIx(b))gain.push("+ a better extreme-downside screen");
  return el("div",{class:"card"},el("h3",null,"WHAT AM I GIVING UP?"),el("p",null,"You chose ",aBtn(o),". Strongest forgone alternative under ",LBY[C.lens].name,": ",aBtn(b),"."),el("div",{class:"grid g2"},el("div",null,el("strong",null,"You gain"),el("ul",{class:"note"},gain.length?gain.map(x=>el("li",null,x)):el("li",null,"nothing clearly more"))),el("div",null,el("strong",null,"You give up"),el("ul",{class:"note"},lose.length?lose.map(x=>el("li",null,x)):el("li",null,"nothing clearly more")))),el("p",{class:"note"},"Not reduced to one number: these are the dimensions that differ by about a point or more."))}
-function whyPanel(S){if(!lensChange)return null;const lc=lensChange;lensChange=null;if(lc.same)return el("div",{class:"panel why"},el("button",{class:"x",type:"button",onclick:e=>e.target.closest(".panel").remove()},"×"),el("strong",null,LBY[lc.from].name+" → "+LBY[lc.to].name+": "),"the top choice stays ",aBtn(lc.same),".");
+function whyPanel(S){if(!lensChange)return null;const lc=lensChange;lensChange=null;if(lc.same)return el("div",{class:"panel why"},el("button",{class:"x",type:"button",onclick:closePanel,"aria-label":"Close"},"×"),el("strong",null,LBY[lc.from].name+" → "+LBY[lc.to].name+": "),"the top choice stays ",aBtn(lc.same),".");
  const a=lc.a,b=lc.b,ea=ev(a),eb=ev(b),lines=[],dm=mins(b.f)-mins(a.f);if(Math.abs(dm)>=5)lines.push((dm<0?"−":"+")+Math.abs(Math.round(dm))+" min total time");if(b.f.setup!==a.f.setup)lines.push((b.f.setup<a.f.setup?"−":"+")+Math.abs(b.f.setup-a.f.setup)+" min setup/travel");if(b.f.dur[0]!==a.f.dur[0])lines.push((b.f.dur[0]<a.f.dur[0]?"shorter":"longer")+" minimum useful dose ("+b.f.dur[0]+" vs "+a.f.dur[0]+" min)");
  for(const k of LBY[lc.to].keys){if(["mins","up","cost","ruin","typ"].includes(k))continue;const d=(b.f[k]||0)-(a.f[k]||0);if(Math.abs(d)>=.9)lines.push((d>0?"higher ":"lower ")+(FI[k]?FI[k][0].toLowerCase():k)+" ("+lv(b.f[k]).toLowerCase()+" vs "+lv(a.f[k]).toLowerCase()+")")}
  if(tierIx(a)!==tierIx(b))lines.push("extreme-downside screen: "+ev(b).r.tier+" vs "+ea.r.tier);const ra=ea.up*ea.t.f,rb=eb.up*eb.t.f,ratio=ra>0?rb/ra:null,u=b.f.unc/10;
- return el("div",{class:"panel why"},el("button",{class:"x",type:"button",onclick:e=>e.target.closest(".panel").remove()},"×"),el("h3",null,"WHY DID THE RESULT CHANGE?"),el("p",null,aBtn(a)," → ",aBtn(b)),el("p",null,"You switched ",el("strong",null,LBY[lc.from].name)," → ",el("strong",null,LBY[lc.to].name),". ",LBY[lc.to].d),el("ul",null,lines.map(x=>el("li",null,x))),ratio!=null&&ratio<1.2?el("p",null,"while retaining an estimated ",el("strong",null,Math.round(clamp(ratio*(1-u),0,9)*100)+"–"+Math.round(clamp(ratio*(1+u),0,9)*100)+"%")," of the reliable upside (range from judged uncertainty)."):null)}
+ return el("div",{class:"panel why"},el("button",{class:"x",type:"button",onclick:closePanel,"aria-label":"Close"},"×"),el("h3",null,"WHY DID THE RESULT CHANGE?"),el("p",null,aBtn(a)," → ",aBtn(b)),el("p",null,"You switched ",el("strong",null,LBY[lc.from].name)," → ",el("strong",null,LBY[lc.to].name),". ",LBY[lc.to].d),el("ul",null,lines.map(x=>el("li",null,x))),ratio!=null&&ratio<1.2?el("p",null,"while retaining an estimated ",el("strong",null,Math.round(clamp(ratio*(1-u),0,9)*100)+"–"+Math.round(clamp(ratio*(1+u),0,9)*100)+"%")," of the reliable upside (range from judged uncertainty)."):null)}
+function jump(id){const t=document.getElementById(id);if(!t)return;if(t.tagName==="DETAILS")t.open=true;t.scrollIntoView({block:"start",behavior:smooth()});const f=id==="chart"?$("#viewsel"):t.tagName==="DETAILS"?t.querySelector("summary"):t.querySelector("h2");if(f){if(f.tagName==="H2")f.tabIndex=-1;f.focus({preventScroll:true})}}
 function actionPage(o,view){const box=el("div"),e=ev(o),S=defaultSet(o),d=delayOf(o);
- box.append(el("div",{class:"head"},el("div",null,el("p",{class:"name"},nameOf(o).toUpperCase()),el("p",{class:"sub"},(C.sg?"Singapore":"Global prior")+" · "+(d?"in "+Math.round(d)+" h, ~"+fmtH(e.h):"now "+fmtH(C.h))+" · ~"+fmtMin(mins(o.f))+" · "+D.categories[o.b.cat].label+(o.mod||o.tm!=="now"?" · contextual instance of ":""),o.mod||o.tm!=="now"?aBtn(inst(o.b.id)):null)),el("span",null,o.b.sg?el("span",{class:"badge",style:"margin-right:.3rem"},"SINGAPORE"):null,el("span",{class:"badge "+e.r.tier},TIERL[e.r.tier]))));
- box.append(ruinBox(o));box.append(quickBlock(o,S));
- const vwrap=el("div",{id:"viewhost"});
- box.append(el("div",{class:"btns"},el("button",{type:"button",class:"do",onclick:()=>record(o,"did")},"DO"),el("button",{type:"button",onclick:()=>cmpGo(S.map(x=>x.id)),title:"C"},"COMPARE"),el("button",{type:"button",onclick:()=>{record(o,"later");const l=alternatives(o).find(a=>a.cls==="Temporal");if(l)openA(l.o)}},"LATER"),el("button",{type:"button",onclick:()=>{vwrap.scrollIntoView({block:"start",behavior:"smooth"});const b=vwrap.querySelector(".views button");if(b)b.focus()},title:"V"},"VISUALISE"),el("button",{type:"button",onclick:()=>{const dd=document.getElementById("deep");dd.open=true;dd.scrollIntoView({block:"start",behavior:"smooth"})},title:"E"},"EVIDENCE"),el("button",{type:"button",onclick:()=>openPal("other",o)},"I CHOSE SOMETHING ELSE")));
+ box.append(el("div",{class:"head"},el("div",null,el("h2",{class:"name"},nameOf(o)),el("p",{class:"sub"},(C.sg?"Singapore":"Global prior")+" · "+(d?"in "+Math.round(d)+" h, ~"+fmtH(e.h):"now "+fmtH(C.h))+" · ~"+fmtMin(mins(o.f))+" · "+D.categories[o.b.cat].label+(o.mod||o.tm!=="now"?" · contextual instance of ":""),o.mod||o.tm!=="now"?aBtn(inst(o.b.id)):null)),el("span",{class:"badges"},o.b.sg?el("span",{class:"badge"},"SINGAPORE"):null,el("span",{class:"badge "+e.r.tier},TIERL[e.r.tier]))));
+ box.append(ruinBox(o),el("h3",null,"At a glance"),quickBlock(o,S));
+ box.append(el("div",{class:"btns"},el("button",{type:"button",class:"do",onclick:()=>record(o,"did")},"DO IT"),el("button",{type:"button",onclick:()=>cmpGo(S.map(x=>x.id)),"aria-keyshortcuts":"C"},"COMPARE ALTERNATIVES"),el("button",{type:"button",onclick:()=>{record(o,"later");const l=alternatives(o).find(a=>a.cls==="Temporal");if(l)openA(l.o)}},"LATER"),el("button",{type:"button",onclick:()=>openPal("other",o)},"I CHOSE SOMETHING ELSE")));
+ box.append(el("nav",{class:"pagenav","aria-label":"On this page"},el("span",{class:"lbl"},"On this page"),[["chart","Chart","V"],["alts","Alternatives","A"],["facts","Facts and evidence",null],["deep","Deep mode","E"]].map(([id,l,k])=>el("button",{type:"button",class:"chip",onclick:()=>jump(id),"aria-keyshortcuts":k},l))));
  const wp=whyPanel(S);if(wp)box.append(wp);
- box.append(el("div",{id:"explain-host"}));
+ const cur=view||defaultView(o);
+ box.append(el("section",{id:"chart","aria-labelledby":"chart-h"},el("h2",{id:"chart-h"},"Chart"),picker(cur,v=>go("#/a/"+o.id+"?view="+v),defaultView(o)),chartNode(VFN[cur](cur==="timing"||cur==="harvest"||cur==="onemore"||cur==="optiongraph"?[o].concat(S.slice(1)):S))));
+ const al=alternatives(o),alts=el("section",{id:"alts","aria-labelledby":"alts-h"},el("h2",{id:"alts-h"},"Alternatives"),el("p",{class:"note"},"Generated by opportunity cost: substitutes, other uses of the same time, better timing, a different dose, complements, the status quo and doing nothing."),el("div",{class:"alts"},al.map(a=>el("div",null,el("span",{class:"cls"},a.cls),aBtn(a.o),el("span",{class:"note"},a.why)))));
+ {const gu=givingUp(o,S);if(gu)alts.append(gu)}
+ const ra=relatedAvoid(o);if(ra.length)alts.append(el("div",{class:"card avoid",style:"margin-top:.6rem"},el("h3",null,"RELATED ACTIONS WITH MATERIAL DOWNSIDE"),el("div",{class:"alts"},ra.map(x=>el("div",null,el("span",{class:"badge "+ev(x).r.tier},x.f.ruin.kind.split(",")[0]),aBtn(x)))),el("p",{class:"note"},"Shown because they share a goal or context with this action but carry worse left-tail exposure. Avoiding a bad exposure is often easier than starting an ideal action.")));
+ alts.append(disc("cww","Compared with what? ("+S.length+" options evaluated, "+al.length+" alternatives generated)",el("div",{class:"alts"},S.map(x=>el("div",null,el("span",{class:"cls"},x===o?"this":((al.find(a=>a.o===x)||{}).cls||"")),aBtn(x),el("span",{class:"note"},LBY[C.lens].name+": "+lensWords(S,C.lens)[S.indexOf(x)]))))));
+ const rel=related(o);alts.append(disc("related","Related actions: seven meanings of “similar”",el("div",{class:"alts"},Object.entries(rel).map(([k,xs])=>el("div",null,el("span",{class:"cls"},k),el("div",{class:"also"},xs.length?xs.map(x=>aBtn(x)):"—"))))));
+ box.append(alts);
  const spec=el("div",{class:"spec"},specCard("TIME",o,[["fit","Current fit",fitL(e)+(e.t.notes.length?" · "+e.t.notes[0]:"")],["best","Best window",o.f.best?o.f.best.map(([h,s])=>fmtH(h-s)+"–"+fmtH(h+s)).join(", "):"no normative claim"],["dur","Typical duration",o.f.dur[0]+"–"+o.f.dur[2]+" min"],["setup","Setup / travel",o.f.setup+" min"],["open","Opening (Singapore)",o.f.open?fmtH(o.f.open[0])+"–"+fmtH(o.f.open[1]):"not hour-bound"]]),
   specCard("PAYOFF",o,[["up","Reliable upside",[dots(e.up)," ",lv(e.up)]],["tail","Right-tail upside",[dots(o.f.tail)," ",lv(o.f.tail)]],["dn","Downside",lvc(o.f.dn)],["ruin","Tail downside",o.f.ruin?lv(o.f.ruin.sev)+" severity · "+o.f.ruin.p:"none recorded"]]),
   specCard("DECISION",o,[["act","Activation",lvc(o.f.act)],["rev","Reversibility",lv(o.f.rev)],["decay","Opportunity decay",lv(o.f.decay)],["reg","Regret if skipped",lv(o.f.reg)],["opt","Option value",lv(o.f.opt)],["info","Information value",lv(o.f.info)]]),
   specCard("CLASS",o,CLS.map(k=>["cls",CLSL[k],bar(e.cls[k],k==="fragility"?"dg":k==="optionality"?"pos":"")])),
   specCard("EVIDENCE",o,[["obs","Observed (ATUS)",[pv("OBSERVED")," ",obsText(observed(o))]],["drm","Experienced affect",[pv("EMPIRICAL")," ",affText(affect(o))]],["cites","Experiments",[pv("EMPIRICAL")," ",cites(o).length?cites(o).map(c=>shortCite(c)+" · "+c.rel).join("; "):"none attached"]],["ev","Overall confidence",(o.b.cites||[]).some(c=>c.rel==="direct")?"Medium for how it lands socially; low elsewhere":"Low / mixed"],["ev","Literature grade",GRADE[o.b.ev]],["prov","Estimated fields",o.b.own.length+" action-specific, rest category prior"],["prov","Personal","n = "+personal(o.b.id).n]]));
- box.append(spec);
- const al=alternatives(o),cww=el("details",null,el("summary",null,"Compared with what? ("+S.length+" options evaluated, "+al.length+" alternatives generated)"),el("div",{class:"alts"},S.map(x=>el("div",null,el("span",{class:"cls"},x===o?"this":((al.find(a=>a.o===x)||{}).cls||"")),aBtn(x),el("span",{class:"note"},LBY[C.lens].name+": "+lensWords(S,C.lens)[S.indexOf(x)])))));
- box.append(el("h3",{id:"alts"},"ALTERNATIVES (BY OPPORTUNITY COST)"),el("div",{class:"alts"},al.map(a=>el("div",null,el("span",{class:"cls"},a.cls),aBtn(a.o),el("span",{class:"note"},a.why)))),cww);
- {const gu=givingUp(o,S);if(gu)box.append(gu)}
- const ra=relatedAvoid(o);if(ra.length)box.append(el("div",{class:"card avoid",style:"margin-top:.6rem"},el("h3",null,"RELATED ACTIONS WITH MATERIAL DOWNSIDE"),el("div",{class:"alts"},ra.map(x=>el("div",null,el("span",{class:"badge "+ev(x).r.tier},x.f.ruin.kind.split(",")[0]),aBtn(x)))),el("p",{class:"note"},"Shown because they share a goal or context with this action but carry worse left-tail exposure. Avoiding a bad exposure is often easier than starting an ideal action.")));
- const rel=related(o);box.append(el("details",null,el("summary",null,"Related actions: seven meanings of “similar”"),el("div",{class:"alts"},Object.entries(rel).map(([k,xs])=>el("div",{style:"display:block"},el("span",{class:"cls"},k),el("div",null,xs.length?xs.map((x,i)=>[i?" · ":"",aBtn(x)]):"—"))))));
- const cur=view||defaultView(o);vwrap.append(el("h2",null,"Visualise"),picker(cur,v=>go("#/a/"+o.id+"?view="+v),defaultView(o)),VFN[cur](cur==="timing"||cur==="harvest"||cur==="onemore"||cur==="optiongraph"?[o].concat(S.slice(1)):S));box.append(vwrap);
+ box.append(el("section",{id:"facts","aria-labelledby":"facts-h"},el("h2",{id:"facts-h"},"Facts and evidence"),el("p",{class:"note"},"Select any row name to see where its value came from: observed data, published studies, judgement or model."),spec));
  box.append(deep(o,S));return box}
-function specCard(title,o,rows){return el("div",{class:"card"},el("h3",null,title),el("table",{class:"kv"},rows.map(([k,l,v])=>el("tr",{class:"click",tabindex:"0",title:"Where did this come from?",onclick:()=>{const h=document.getElementById("explain-host");h.replaceChildren(explain(k,o));h.scrollIntoView({block:"nearest",behavior:"smooth"})},onkeydown:e=>{if(e.key==="Enter")e.currentTarget.click()}},el("th",null,l),el("td",null,v)))))}
-function deep(o,S){const d=el("details",{id:"deep"},el("summary",null,"Deep mode: evidence, action spec, assumptions, lenses, sensitivity, personal history"));const f=o.f,cf=confidence(S);
+function specCard(title,o,rows){return el("div",{class:"card"},el("h3",null,title),el("table",{class:"kv"},rows.map(([k,l,v])=>{const b=el("button",{type:"button",class:"rowbtn",title:"Where did this come from?",onclick:e=>showPanels(e.currentTarget,[explain(k,o)])},l);return el("tr",{class:"click",onclick:e=>{if(!e.target.closest("button,a"))b.click()}},el("th",{scope:"row"},b),el("td",null,v))})))}
+function deep(o,S){const d=disc("deep","Deep mode: evidence, action spec, assumptions, lenses, sensitivity, personal history");const f=o.f,cf=confidence(S);
  d.append(el("h3",null,"CONFIDENCE PROPAGATION"),el("table",{class:"kv"},cf.parts.map(([k,v])=>el("tr",null,el("th",null,k),el("td",null,v))),el("tr",null,el("th",null,"Overall comparison"),el("td",null,el("strong",null,cf.overall)))));
  const lines=[],own=new Set(o.b.own),Y=(k,v,miss)=>lines.push(el("span",{class:miss?"miss":null},k+": "+(miss?"MISSING":v)+(miss?"":own.has(k.trim().split(":")[0])?"":"")+"\n"));
  const yv=v=>v==null?null:Array.isArray(v)?JSON.stringify(v):typeof v==="number"?String(Math.round(v*10)/10):String(v);
@@ -585,21 +692,24 @@ function deep(o,S){const d=el("details",{id:"deep"},el("summary",null,"Deep mode
  d.append(el("h3",null,"PHILOSOPHIES"),V_philosophy(S),el("h3",null,"SENSITIVITY"),V_sensitivity(S));
  const ph=personal(o.b.id);d.append(el("h3",null,"PERSONAL HISTORY"),el("p",null,pv("PERSONAL")," observations: n = "+ph.n+(ph.n?" · mean satisfaction "+ph.sat.toFixed(1)+"/5":"")+". "+(ph.n<5?"Too few to personalise: population judgement is used unchanged.":"Shown alongside the model; never used to re-rank.")));
  return d}
-function nowPage(){const box=el("div"),P=nowPicks(),AV=avoidNow();box.append(el("h2",null,"What could I do now? · "+fmtH(C.h)+" · "+(C.T<60?C.T+" min":C.T/60+" h")+" available"),el("p",{class:"note"},"One strong candidate per payoff class, not a single ranking. Each already passed the ruin screen, fits your time and is open now. Change the context above and they move."));
- const g=el("div",{class:"nowcls"});CLS.slice(0,6).forEach(k=>{const[a,...rest]=P[k];g.append(el("div",{class:"card"},el("h3",null,"BEST "+CLSL[k].toUpperCase()),a?aBtn(a):"—",a?el("p",{class:"note"},CLSD[k]+" · "+fitL(ev(a)).toLowerCase()+" now · ~"+fmtMin(mins(a.f))):null,rest.length?el("p",{class:"alts"},"also: ",rest.map((x,i)=>[i?" · ":"",aBtn(x,"muted")])):null))});
- const top=AV[0],te=top&&ev(top);g.append(el("div",{class:"card avoid"},el("h3",null,"AVOID"),top?aBtn(top):"—",top?el("p",{class:"note"},top.f.ruin.kind+" · "+top.f.ruin.p+" · safer: ",aBtn(inst(top.b.avoid.safer))):null,el("p",{class:"alts"},"also: ",AV.slice(1,3).map((x,i)=>[i?" · ":"",aBtn(x)]))));box.append(g);
+function nowPage(){const box=el("div"),P=nowPicks(),AV=avoidNow();box.append(el("div",{class:"head"},el("h2",{style:"margin:0"},"What could I do now?"),el("p",{class:"sub"},fmtH(C.h)+" · "+(C.T<60?C.T+" min":C.T/60+" h")+" available")),el("p",{class:"note"},"One strong candidate per payoff class, not a single ranking. Each already passed the ruin screen, fits your time and is open now. Change your context and they move."));
+ const g=el("div",{class:"nowcls"});CLS.slice(0,6).forEach(k=>{const[a,...rest]=P[k];g.append(el("div",{class:"card"},el("h3",null,"BEST "+CLSL[k].toUpperCase()),a?aBtn(a,"lead"):"—",a?el("p",{class:"note"},CLSD[k]+" · "+fitL(ev(a)).toLowerCase()+" now · ~"+fmtMin(mins(a.f))):null,rest.length?el("p",{class:"also"},el("span",{class:"lbl"},"Also"),rest.map(x=>aBtn(x,"muted"))):null))});
+ const top=AV[0];g.append(el("div",{class:"card avoid"},el("h3",null,"AVOID"),top?aBtn(top,"lead"):"—",top?el("p",{class:"note"},top.f.ruin.kind+" · "+top.f.ruin.p+" · safer: ",aBtn(inst(top.b.avoid.safer))):null,el("p",{class:"also"},el("span",{class:"lbl"},"Also"),AV.slice(1,3).map(x=>aBtn(x)))));box.append(g);
  const sq=C.sq&&inst(C.sq);box.append(el("div",{class:"card",style:"margin-top:.6rem"},el("h3",null,"STATUS QUO"),sq?el("p",null,"Continuing ",aBtn(sq)," is itself an action. ",el("button",{type:"button",class:"chip",onclick:()=>cmpGo([sq.id].concat(CLS.slice(0,6).map(k=>P[k][0]).filter(Boolean).map(x=>x.id)).filter((v,i,a)=>a.indexOf(v)===i).slice(0,7))},"compare switching vs continuing")):el("p",null,"Tell the engine what you are doing now, so switching is compared against continuing. ",el("button",{type:"button",class:"chip",onclick:()=>openPal("sq")},"set status quo"))));
- box.append(el("h2",null,"Compare the class leaders"),specSheet(CLS.slice(0,6).map(k=>P[k][0]).filter((v,i,a)=>v&&a.indexOf(v)===i).concat(sq?[sq]:[]).concat([inst("do-nothing")])));return box}
+ const leaders=CLS.slice(0,6).map(k=>P[k][0]).filter((v,i,a)=>v&&a.indexOf(v)===i).concat(sq?[sq]:[]).concat([inst("do-nothing")]);
+ box.append(disc("leaders","Compare the class leaders side by side ("+leaders.length+" options, every fact)",el("div",{class:"btns"},el("button",{type:"button",onclick:()=>cmpGo(leaders.map(x=>x.id))},"OPEN IN COMPARE")),specSheet(leaders)));return box}
 function avoidPage(){const box=el("div"),AV=avoidNow();box.append(el("h2",null,"What should I avoid?"),el("p",{class:"note"},"Sorted by severity, irreversibility, repeated exposure and tail uncertainty, weighted up when the current hour is when the risk usually arises. Not sorted by expected loss. Probabilities are words because no numbers are known."));
  AV.forEach(o=>{const e=ev(o),r=o.f.ruin;box.append(el("div",{class:"card "+(e.r.tier==="danger"?"avoid":e.r.tier==="warning"?"warnc":""),style:"margin:.4rem 0"},el("div",{class:"head",style:"margin:0"},aBtn(o),el("span",{class:"badge "+e.r.tier},TIERL[e.r.tier])),el("div",{class:"grid g4 note"},el("div",null,el("strong",null,"Why this matters: "),o.b.avoid.why),el("div",null,el("strong",null,"What triggers it: "),r.trig),el("div",null,el("strong",null,"Safer substitute: "),aBtn(inst(o.b.avoid.safer))),el("div",null,el("strong",null,"Source / confidence: "),pv("JUDGEMENT")," "+r.kind+"; probability "+r.p+"; severity "+lv(r.sev).toLowerCase()+", irreversibility "+lv(r.irrev).toLowerCase()+(r.rep?"; repeated exposure":"")))))});return box}
-function comparePage(view){const S=cmpSet(),box=el("div");if(!S.length){box.append(el("h2",null,"Compare"),el("p",null,"Search an action and press COMPARE, or add actions here. "),el("button",{type:"button",onclick:()=>openPal("add")},"+ ADD ALTERNATIVE"));return box}
- box.append(el("div",{class:"head"},el("h2",{style:"margin:0"},"Compare: "+S.map(nameOf).join(" · ")),el("div",{class:"btns",style:"margin:0"},el("button",{type:"button",onclick:()=>openPal("add")},"+ ADD ALTERNATIVE ",el("kbd",null,"⌘K")),el("button",{type:"button",onclick:()=>{const top=topOf(S,C.lens);record(top,"did")}},"DO THE TOP ONE"))));
- const wp=whyPanel(S);if(wp)box.append(wp);box.append(el("div",{id:"explain-host"}));
- const cur=view||"spec";box.append(picker(cur,v=>go("#/compare?actions="+S.map(x=>x.id).join(",")+"&view="+v),"spec"),VFN[cur](S));
+function comparePage(view){const S=cmpSet(),box=el("div");if(!S.length){box.append(el("h2",null,"Compare"),el("p",null,"Nothing to compare yet. Open an action and press COMPARE ALTERNATIVES, or add actions one by one."),el("button",{type:"button",onclick:()=>openPal("add")},"+ ADD AN ACTION"));return box}
+ const top=topOf(S,C.lens);
+ box.append(el("div",{class:"head"},el("h2",{style:"margin:0"},"Compare "+S.length+" options"),el("div",{class:"btns",style:"margin:0"},el("button",{type:"button",onclick:()=>openPal("add")},"+ ADD ALTERNATIVE ",el("kbd",{class:"keyhint"},$("#kbd").textContent)),el("button",{type:"button",onclick:()=>record(top,"did"),title:"Records "+nameOf(top)},"DO THE TOP ONE"))));
+ box.append(el("ul",{class:"cmplist","aria-label":"Options in this comparison"},S.map(o=>el("li",{class:o===top?"top":null},aBtn(o),o===top?el("span",{class:"cls"},"top under lens"):null,el("button",{type:"button",class:"x","aria-label":"Remove "+nameOf(o)+" from the comparison",onclick:()=>cmpGo(S.filter(x=>x!==o).map(x=>x.id))},"×")))));
+ const wp=whyPanel(S);if(wp)box.append(wp);
+ const cur=view||"spec";box.append(el("section",{id:"chart","aria-label":"Chart"},picker(cur,v=>go("#/compare?actions="+S.map(x=>x.id).join(",")+"&view="+v),"spec"),chartNode(VFN[cur](S))));
  const dom=dominance(S),g=S.filter((o,i)=>!dom[i]);if(cur!=="spec"&&cur!=="pareto")box.append(el("p",{class:"note"},"Non-dominated under current criteria: ",g.map((x,i)=>[i?" · ":"",aBtn(x)])));
- if(cur!=="philosophy")box.append(el("details",null,el("summary",null,"Philosophy comparison and disagreement"),V_philosophy(S)));
- if(cur!=="sensitivity")box.append(el("details",null,el("summary",null,"Sensitivity: what would change the answer?"),V_sensitivity(S)));
- {const gu=givingUp(topOf(S,C.lens),S);if(gu)box.append(gu)}return box}
+ if(cur!=="philosophy")box.append(disc("philo","Philosophy comparison and disagreement",V_philosophy(S)));
+ if(cur!=="sensitivity")box.append(disc("sens","Sensitivity: what would change the answer?",V_sensitivity(S)));
+ {const gu=givingUp(top,S);if(gu)box.append(gu)}return box}
 function historyPage(){const box=el("div");box.append(el("h2",null,"Decision history"),el("p",{class:"note"},"Stored only in this browser (localStorage). Optional. Rate outcomes later to calibrate; the model never re-ranks from your history, it only shows it with its sample size."));
  if(!HIST.length){box.append(el("p",null,"Nothing recorded yet. Press DO on an action."));return box}
  const tb=el("table",{class:"sheet hist"},el("thead",null,el("tr",null,["When","Action","Choice","Model's top (lens)","Satisfaction","Would repeat?","Unexpected"].map(h=>el("th",null,h)))),el("tbody",null,HIST.slice(0,60).map((h,i)=>el("tr",null,el("td",null,new Date(h.t).toLocaleString("en-SG",{timeZone:"Asia/Singapore",dateStyle:"short",timeStyle:"short"})),el("td",null,inst(h.id)?aBtn(inst(h.id)):h.name),el("td",null,h.choice==="other"&&h.other&&inst(h.other)?["chose ",aBtn(inst(h.other))]:h.choice),el("td",null,inst(h.rec)?aBtn(inst(h.rec)):"—"," ",el("span",{class:"note"},"("+(LBY[h.lens]||{name:h.lens}).name+")")),el("td",null,el("select",{"aria-label":"Satisfaction",onchange:e=>{h.sat=+e.target.value||null;store.set("hist",HIST)}},["—",1,2,3,4,5].map(v=>el("option",{value:v==="—"?"":v,selected:h.sat==v?true:null},String(v))))),el("td",null,el("select",{"aria-label":"Would repeat",onchange:e=>{h.rep=e.target.value;store.set("hist",HIST)}},["","yes","no"].map(v=>el("option",{value:v,selected:h.rep===v?true:null},v||"—")))),el("td",null,el("select",{"aria-label":"Unexpected",onchange:e=>{h.unx=e.target.value;store.set("hist",HIST)}},["","upside","downside","both"].map(v=>el("option",{value:v,selected:h.unx===v?true:null},v||"—"))))))));
@@ -615,21 +725,27 @@ function dataPage(){const box=el("div"),nC=ORD.length,nA=AVOIDS.length;box.appen
   el("button",{type:"button",onclick:()=>{const rows=[["instance_id","name","action_id","manner","timing"]];for(const a of ORD){const ms=[null].concat(Object.keys(MM).filter(m=>modOK(a,m)));for(const m of ms)for(const t of TIMES){const o=inst(a.id+(m?"~"+m:"")+(t!=="now"?"@"+t:""));rows.push([o.id,a.name+(m?MM[m].suffix:"")+TM[t].suffix,a.id,m||"",t])}}download("contextual_instances.csv",rows)}},"contextual_instances.csv"),
   el("button",{type:"button",onclick:()=>download("unknowns.csv",[["action_id","missing_fields"]].concat(A.map(a=>[a.id,["typ","best","open","ruin"].filter(k=>a[k]==null).concat(["emotional_energy","upside_ceiling","probability_distribution"]).join(";")])))},"unknowns.csv")),
  el("h3",null,"SOURCES"),el("div",{class:"tablewrap"},el("table",{class:"sheet hist"},el("thead",null,el("tr",null,["Id","Title","Type","Status","Notes"].map(h=>el("th",null,h)))),el("tbody",null,D.sources.map(s=>el("tr",null,el("td",null,s.id),el("td",null,s.title),el("td",null,s.type),el("td",null,s.status),el("td",null,s.notes)))))),
- el("h3",null,"CATEGORY PRIORS (JUDGEMENT)"),el("div",{class:"tablewrap"},el("table",{class:"sheet"},el("thead",null,el("tr",null,el("th",null,"Category"),el("th",null,"n"),KEYS.map(k=>el("th",{title:(FI[k]||[k])[0]},k)))),el("tbody",null,Object.entries(D.categories).map(([k,c])=>el("tr",null,el("th",{onclick:()=>{$("#q").value=c.label;openPal("open")}},c.label),el("td",null,A.filter(a=>a.cat===k).length),KEYS.map(kk=>el("td",null,c.prior[kk]==null?"?":String(c.prior[kk])))))))),
+ el("h3",null,"CATEGORY PRIORS (JUDGEMENT)"),el("div",{class:"tablewrap"},el("table",{class:"sheet"},el("thead",null,el("tr",null,el("th",null,"Category"),el("th",null,"n"),KEYS.map(k=>el("th",{title:(FI[k]||[k])[0]},k)))),el("tbody",null,Object.entries(D.categories).map(([k,c])=>el("tr",null,el("th",{scope:"row"},el("button",{type:"button",class:"rowbtn",title:"Search this category",onclick:()=>openPalWith(c.label)},c.label)),el("td",null,A.filter(a=>a.cat===k).length),KEYS.map(kk=>el("td",null,c.prior[kk]==null?"?":String(c.prior[kk])))))))),
  el("h3",null,"PROVENANCE LEGEND"),el("p",null,["OBSERVED","EMPIRICAL","INFERRED","MODEL","JUDGEMENT","PERSONAL","SINGAPORE"].map(t=>[pv(t)," "]),el("span",{class:"note"},"OBSERVED: recomputed ATUS microdata. EMPIRICAL: published tables and experiments. INFERRED is defined but unused.")));return box}
 
 /* ---------- RENDER ---------- */
-function render(){renderCtx();renderApp()}
-function renderApp(){const r=route(),app=$("#app");document.querySelectorAll("nav.tabs a").forEach(a=>{a.toggleAttribute("aria-current",false);if(a.getAttribute("href")==="#/"+r.name)a.setAttribute("aria-current","page")});let node;
- if(r.name==="a"){const o=inst(r.id);node=o?actionPage(o,r.view&&VFN[r.view]?r.view:null):el("p",null,"Unknown action. Press Ctrl/⌘ K to search.");if(o)document.title=nameOf(o)+" · Convexity Action Engine"}
+/* Re-rendering replaces nodes; put focus back on the control that had it (matched by id). */
+function keepFocus(fn){const a=document.activeElement,id=a&&a!==document.body?a.id:"";fn();if(id&&(!document.activeElement||document.activeElement===document.body)){const f=document.getElementById(id);if(f)f.focus({preventScroll:true})}}
+function render(){keepFocus(()=>{renderCtx();renderApp()})}
+const pageKey=r=>r.name+"/"+(r.id||"");
+function renderApp(){keepFocus(()=>{const r=route(),app=$("#app");document.querySelectorAll("nav.tabs a").forEach(a=>{a.toggleAttribute("aria-current",false);if(a.getAttribute("href")==="#/"+r.name)a.setAttribute("aria-current","page")});$("#hero").classList.toggle("off",r.name!=="now");let node;
+ if(r.name==="a"){const o=inst(r.id);node=o?actionPage(o,r.view&&VFN[r.view]?r.view:null):el("div",null,el("h2",null,"Unknown action"),el("p",null,"No action has the id “"+r.id+"”. ",el("button",{type:"button",class:"chip",onclick:()=>openPal("open")},"Search actions")));if(o)document.title=nameOf(o)+" · Convexity Action Engine"}
  else if(r.name==="compare"){node=comparePage(r.view&&VFN[r.view]?r.view:null);document.title="Compare · Convexity Action Engine"}
- else if(r.name==="avoid")node=avoidPage();else if(r.name==="history")node=historyPage();else if(r.name==="data")node=dataPage();else{node=nowPage();document.title="Convexity Action Engine"}
- const y=scrollY;app.replaceChildren(node);if(renderApp._last===location.hash)scrollTo(0,y);else if(renderApp._last)scrollTo(0,0);renderApp._last=location.hash}
-
+ else if(r.name==="avoid"){node=avoidPage();document.title="Avoid · Convexity Action Engine"}else if(r.name==="history"){node=historyPage();document.title="History · Convexity Action Engine"}else if(r.name==="data"){node=dataPage();document.title="Data · Convexity Action Engine"}else{node=nowPage();document.title="Convexity Action Engine"}
+ /* Only a new page resets scroll and moves focus to its heading; a new chart, lens or setting keeps your place. */
+ const key=pageKey(r),first=renderApp._key==null,same=renderApp._key===key,y=scrollY;app.replaceChildren(node);renderApp._key=key;
+ if(same)scrollTo(0,y);else if(!first){scrollTo(0,0);const h=app.querySelector("h2");if(h){h.tabIndex=-1;h.focus({preventScroll:true});announce(h.textContent)}}})}
 /* ---------- PALETTE ---------- */
 let palMode="open",palCtx=null,palSel=0,palItems=[];
-function openPal(mode,ctxO){palMode=mode||"open";palCtx=ctxO||null;const p=$("#pal");p.hidden=false;const q=$("#q");$("#palmode").textContent={open:"",add:"ADD ALTERNATIVE",sq:"SET STATUS QUO",other:"WHAT DID YOU CHOOSE?"}[palMode];q.focus();q.select();palUpdate()}
-function closePal(){$("#pal").hidden=true;$("#open-search").focus()}
+let palReturn=null;const BG=()=>[$(".top"),$("main"),$("footer")];
+function openPal(mode,ctxO){palMode=mode||"open";palCtx=ctxO||null;const p=$("#pal");if(p.hidden)palReturn=document.activeElement;p.hidden=false;BG().forEach(x=>{x.inert=true});const q=$("#q");$("#palmode").textContent={open:"",add:"ADD ALTERNATIVE",sq:"SET STATUS QUO",other:"WHAT DID YOU CHOOSE?"}[palMode];q.focus();q.select();palUpdate()}
+function closePal(){$("#pal").hidden=true;BG().forEach(x=>{x.inert=false});const r=palReturn&&palReturn.isConnected&&palReturn!==document.body?palReturn:$("#open-search");palReturn=null;r.focus({preventScroll:true})}
+function openPalWith(text){openPal("open");$("#q").value=text;palSel=0;palUpdate()}
 function palUpdate(){const raw=$("#q").value,{P,res,now}=search(raw),list=$("#res"),chips=$("#palchips");list.replaceChildren();chips.replaceChildren();palItems=[];
  const ch=[];if(P.ctx.T)ch.push("time ≤ "+fmtMin(P.ctx.T));if(P.ctx.E!=null)ch.push("energy "+(P.ctx.E<.5?"low":"high"));if(P.ctx.N)ch.push("explore");if(P.mod)ch.push("manner: "+MM[P.mod].label);if(P.tm)ch.push("timing: "+(P.tm==="later"?"best later slot":TM[P.tm].label));if(P.mode)ch.push("mode: "+P.mode);if(P.view)ch.push("view: "+(VIEWS.find(v=>v[0]===P.view)||[0,P.view])[1]);if(P.goal)ch.push("goal: "+P.goal);ch.push(...P.chips);ch.forEach(c=>chips.append(el("span",{class:"chip"},c)));
  const sec=t=>list.append(el("li",{class:"sec",role:"presentation"},t)),item=(o,why)=>{const i=palItems.length;palItems.push(o);const e=ev(o);list.append(el("li",{role:"option",id:"opt"+i,"aria-selected":i===palSel,onclick:()=>{palSel=i;palChoose()},onmousemove:()=>{if(palSel!==i){palSel=i;palHi()}}},el("span",null,nameOf(o)),el("span",{class:"why"},(e.r.tier==="danger"?"⚠ ":"")+(o.b.cat==="avoid"?"avoid · "+o.f.ruin.kind.split(",")[0]:(why||D.categories[o.b.cat].label)+" · "+fitL(e).toLowerCase()))))};
@@ -639,7 +755,7 @@ function palUpdate(){const raw=$("#q").value,{P,res,now}=search(raw),list=$("#re
  else{sec("Actions");res.forEach(r=>item(r.o,r.why==="exact"?"exact":r.why==="avoid"?"avoid":null));if(P.goal){sec("Same goal: "+P.goal);ORD.filter(a=>a.goals.includes(P.goal)||norm(D.categories[a.cat].label)===P.goal).map(a=>inst(a.id)).filter(o=>!palItems.includes(o)).sort((a,b)=>ev(b).V-ev(a).V).slice(0,5).forEach(o=>item(o,"goal"))}
   if(palItems[0]){const rel=related(palItems[0]);sec("Related");[...rel["Same goal"],...rel["Convex alternative"]].filter(o=>!palItems.includes(o)).slice(0,4).forEach(o=>item(o,"related"))}
   if(!palItems.length)list.append(el("li",{class:"sec"},"No match. Try a verb (“swim”), a goal (“exercise”), or a situation (“I have 30 minutes”)."))}
- palSel=Math.min(palSel,Math.max(0,palItems.length-1));palHi();$("#palhint").textContent=palMode==="add"?"Enter adds to comparison":palMode==="sq"?"Enter sets what you are doing now":"Enter opens · views follow the question"}
+ palSel=Math.min(palSel,Math.max(0,palItems.length-1));palHi();$("#palhint").textContent=palMode==="add"?"Enter adds it to the comparison":palMode==="sq"?"Enter sets what you are doing now":palMode==="other"?"Enter records what you chose":"Enter opens it; the chart follows your question"}
 function palHi(){document.querySelectorAll("#res li[role=option]").forEach(li=>li.setAttribute("aria-selected",li.id==="opt"+palSel));const cur=document.getElementById("opt"+palSel);if(cur){cur.scrollIntoView({block:"nearest"});$("#q").setAttribute("aria-activedescendant",cur.id)}const o=palItems[palSel],pr=$("#prev");pr.replaceChildren();if(!o)return;const e=ev(o);
  pr.append(el("p",{class:"name",style:"font-weight:700;font-size:1.2rem;margin:0"},nameOf(o).toUpperCase()),el("p",null,el("span",{class:"badge "+e.r.tier},TIERL[e.r.tier])),el("table",{class:"kv"},[["NOW",[bar(e.t.f*4,"pos")," ",fitL(e)]],["TIME",fmtMin(mins(o.f))],["RELIABLE UPSIDE",lv(e.up)],["RIGHT TAIL",lv(o.f.tail)],["DOWNSIDE",lvc(o.f.dn)],["REVERSIBLE",lv(o.f.rev)],["EVIDENCE","low (judgement)"]].map(([k,v])=>el("tr",null,el("th",null,k),el("td",null,v)))),quickBlock(o),el("div",{class:"btns"},el("button",{type:"button",class:"do",onclick:()=>{record(o,"did");closePal()}},"DO"),el("button",{type:"button",onclick:()=>{closePal();cmpGo(defaultSet(o).map(x=>x.id))}},"COMPARE"),el("button",{type:"button",onclick:()=>{const l=alternatives(o).find(a=>a.cls==="Temporal");record(o,"later");closePal();if(l)openA(l.o)}},"LATER")))}
 function palChoose(){const o=palItems[palSel];if(!o)return;const raw=$("#q").value.trim(),{P}=search(raw);if(raw){const rec=store.get("recent",[]).filter(x=>x!==raw);rec.unshift(raw);store.set("recent",rec.slice(0,10))}
@@ -648,20 +764,26 @@ function palChoose(){const o=palItems[palSel];if(!o)return;const raw=$("#q").val
  if(palMode==="sq"){C.sq=o.id;bump();render();toast("Status quo set: "+nameOf(o));return}
  if(palMode==="other"&&palCtx){record(palCtx,"other",o.id);openA(o);return}
  renderCtx();openA(o,P.view&&VFN[P.view]?P.view:null)}
+function boot(){
 $("#q").addEventListener("input",()=>{palSel=0;palUpdate()});
 $("#q").addEventListener("keydown",e=>{if(e.key==="ArrowDown"){e.preventDefault();palSel=Math.min(palItems.length-1,palSel+1);palHi()}else if(e.key==="ArrowUp"){e.preventDefault();palSel=Math.max(0,palSel-1);palHi()}else if(e.key==="Enter"){e.preventDefault();palChoose()}else if(e.key==="Escape"){e.preventDefault();closePal()}});
 $("#pal").addEventListener("click",e=>{if(e.target.id==="pal")closePal()});$("#palclose").addEventListener("click",closePal);$("#open-search").addEventListener("click",()=>openPal("open"));
+$("#pal").addEventListener("keydown",e=>{if(e.key!=="Tab")return;const f=[...$(".palbox").querySelectorAll("input,button,select,a[href]")].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],b=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();b.focus()}else if(!e.shiftKey&&document.activeElement===b){e.preventDefault();a.focus()}});
+$("#hero-search").addEventListener("click",()=>openPal("open"));document.querySelectorAll("[data-q]").forEach(b=>b.addEventListener("click",()=>openPalWith(b.dataset.q)));
+$("#how").addEventListener("click",()=>jump("method"));$("#skip").addEventListener("click",()=>{const h=$("#app h2")||$("#app");h.tabIndex=-1;h.focus()});
 if(/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent))$("#kbd").textContent="⌘ K";
 document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&!e.altKey&&!e.shiftKey&&e.key.toLowerCase()==="k"){e.preventDefault();$("#pal").hidden?openPal("open"):closePal();return}
  if(!$("#pal").hidden)return;const t=e.target;if(e.metaKey||e.ctrlKey||e.altKey||/INPUT|SELECT|TEXTAREA/.test(t.tagName)||t.isContentEditable)return;const r=route(),k=e.key.toLowerCase();
- if(k==="/"){e.preventDefault();openPal("open")}else if(k==="escape"){const p=document.querySelector(".panel");if(p)p.remove();else if(r.name!=="now")go("#/now")}
+ if(k==="/"){e.preventDefault();openPal("open")}else if(e.key==="?"){e.preventDefault();jump("keys")}else if(k==="escape"){const p=document.querySelector(".panel .x");if(p)p.click();else if(r.name!=="now")go("#/now")}
  else if(k==="c"){if(r.name==="a"&&inst(r.id))cmpGo(defaultSet(inst(r.id)).map(x=>x.id));else go("#/compare")}
- else if(k==="v"){const b=document.querySelector(".views button[aria-pressed=true]")||document.querySelector(".views button");if(b){b.scrollIntoView({block:"center"});b.focus()}}
- else if(k==="e"){const d=document.getElementById("deep");if(d){d.open=true;d.scrollIntoView({block:"start"})}else go("#/data")}
- else if(k==="a"){const a=document.getElementById("alts");if(a)a.scrollIntoView({block:"start"})}else if(k==="n")go("#/now")});
+ else if(k==="v"){if($("#viewsel"))jump("chart")}
+ else if(k==="e"){if($("#deep"))jump("deep");else go("#/data")}
+ else if(k==="a"){if($("#alts"))jump("alts")}else if(k==="n")go("#/now")});
 addEventListener("hashchange",()=>{lensChange=null;renderApp()});
 setInterval(()=>{if(C.live){const h=Math.round(sgNow().h*2)/2;if(h!==C.h){C.h=h;ver++;render()}}},60000);
-render();
+render()}
+/* The model above has no DOM dependency; the page boots only where its shell exists (tests load the model alone). */
+if(typeof document!=="undefined"&&document.getElementById("app"))boot();
 
 /* ---------- WebMCP (read-only) ---------- */
 const result=v=>({content:[{type:"text",text:JSON.stringify(v)}]}),mc=(typeof document!=="undefined"&&document.modelContext)||(typeof navigator!=="undefined"&&navigator.modelContext);
