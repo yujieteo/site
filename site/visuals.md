@@ -7,6 +7,13 @@ Build a straight beam with pinned and fixed supports, point forces, couples and 
 - Fetched: 2026-09-30
 - WebMCP tools: get_metadata, get_current_beam, solve_beam, export_nastran_bdf
 
+## Fastener Pattern CG Tracker
+Place a bolt or rivet group on a canvas or in a table, with per-fastener area and shear and axial stiffness, and read its shear, axial and area centroids, polar moment J, Ixx, Iyy, Ixy and principal axes. A general 3D load applied at any point is reduced to the group and shared among the fasteners by the elastic method (direct and torsional shear, centroid neutral-axis tension). Patterns save as JSON or Markdown and the page runs offline; for preliminary sizing and hand-calculation cross-checks.
+- HTML: https://teoyujie.org/visuals/fastener-cg/index.html
+- Data: https://teoyujie.org/visuals/fastener-cg/data.json
+- Fetched: 2026-09-30
+- WebMCP tools: get_metadata, get_current_pattern, analyze_pattern, export_markdown
+
 ## Subsidy Atlas
 Find free LLM tokens, cloud credits, ride and delivery promotions, policy rebates and merchant-funded financing. Filter by category, subsidiser, offer depth and lifecycle; inspect sourced evidence and historical loss-leader lessons, with a separate speculative early-access watchlist. As of 30 September 2026; unknown cost subsidies remain unknown.
 - HTML: https://teoyujie.org/visuals/subsidy-atlas/index.html

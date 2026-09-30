@@ -1,0 +1,2980 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:,">
+<meta name="description" content="Place fasteners on a canvas or in a table and get the shear, axial and area centroids, polar moment J, Ixx, Iyy, Ixy and principal axes, then distribute a general 3D eccentric load to every fastener by the elastic method. Runs offline in your browser.">
+<title>Fastener Pattern CG Tracker</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--muted:#6e6e73;--faint:#a1a1a6;--surface:#f5f5f7;--border:#d2d2d7;--grid:#e8e8ed;--focus:#0071e3;--shear:#2a78d6;--axial:#eb6834;--area:#1baf7a;--load:#8e44ad;--reaction:#1d1d1f;--tension:#eb6834;--bad:#c4261d;--warn:#b26b00;--note:#2a78d6;--ok:#1b8a5a;--sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--r:.5rem;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1d1f;--fg:#f5f5f7;--muted:#a1a1a6;--faint:#6e6e73;--surface:#2c2c2e;--border:#48484a;--grid:#333336;--focus:#2997ff;--shear:#3987e5;--axial:#e0763f;--area:#199e70;--load:#b77fdc;--reaction:#f5f5f7;--tension:#e0763f;--bad:#ff6961;--warn:#e5a13a;--note:#5aa2f0;--ok:#3cc98a}}
+:root[data-theme="dark"]{--bg:#1d1d1f;--fg:#f5f5f7;--muted:#a1a1a6;--faint:#6e6e73;--surface:#2c2c2e;--border:#48484a;--grid:#333336;--focus:#2997ff;--shear:#3987e5;--axial:#e0763f;--area:#199e70;--load:#b77fdc;--reaction:#f5f5f7;--tension:#e0763f;--bad:#ff6961;--warn:#e5a13a;--note:#5aa2f0;--ok:#3cc98a;color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 var(--sans);letter-spacing:-.011em;-webkit-font-smoothing:antialiased}
+main{width:min(100% - 2rem,80rem);margin:auto;padding:clamp(1.25rem,5vw,3rem) 0 3rem}
+a{color:inherit;text-underline-offset:.18em}
+h1{font-size:clamp(2rem,6vw,3.25rem);line-height:1.04;letter-spacing:-.045em;margin:.35rem 0 .8rem;max-width:20ch}
+h2{font-size:1.4rem;letter-spacing:-.02em;margin:0 0 .35rem;line-height:1.2}
+h3{font:600 .72rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 .5rem}
+p{margin:.5rem 0;max-width:70ch}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.5}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.eyebrow{font:600 .75rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0;display:flex;flex-wrap:wrap;gap:.25rem .9rem}
+.eyebrow a{text-decoration:none}
+.eyebrow a:hover{text-decoration:underline}
+.lede{font-size:1.125rem;max-width:66ch}
+.muted{color:var(--muted)}
+.small{font-size:.875rem}
+.prelim{font-size:.875rem;border-left:3px solid var(--warn);padding:.2rem .7rem;margin:.75rem 0}
+section{margin-top:clamp(2rem,6vw,3.25rem);padding-top:1.25rem;border-top:1px solid var(--border)}
+.btn{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--border);background:var(--bg);border-radius:999px;padding:.25rem .8rem;min-height:2.25rem;font-size:.875rem;white-space:nowrap}
+@media (hover:hover){.btn:hover:not(:disabled){background:var(--surface)}}
+.btn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg);font-weight:600}
+.btn.danger{color:var(--bad)}
+.toolbar{display:flex;flex-wrap:wrap;gap:.6rem 1.1rem;align-items:center;margin:1.25rem 0 .75rem;padding:.6rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.group{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;min-width:0}
+.label{font:600 .7rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:.2rem}
+select,input[type="number"],input[type="text"]{border:1px solid var(--border);background:var(--bg);border-radius:var(--r);padding:.3rem .5rem;min-height:2.25rem;font-size:.875rem;min-width:0;width:100%}
+input[type="number"]{font-variant-numeric:tabular-nums}
+.toolbar select,.toolbar input{width:auto}
+#name{width:min(18rem,100%)}
+#precision{width:4.2rem}
+[aria-invalid="true"]{border-color:var(--bad)!important;box-shadow:0 0 0 1px var(--bad)}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:var(--bg);padding:.25rem .8rem;min-height:2.25rem;font-size:.875rem}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.banner{border:1px solid var(--bad);border-radius:var(--r);padding:.55rem .8rem;margin:.5rem 0;font-size:.9rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.banner[hidden]{display:none}
+.app{display:grid;gap:1.25rem 1.75rem;grid-template-columns:minmax(0,1fr) minmax(0,23rem);align-items:start}
+@media (max-width:62rem){.app{grid-template-columns:minmax(0,1fr)}}
+.figure{margin:0;min-width:0}
+.stage{position:relative;border:1px solid var(--border);border-radius:calc(var(--r)*1.5);overflow:hidden;background:var(--bg)}
+#canvas{display:block;width:100%;height:clamp(20rem,58vh,36rem);touch-action:none;cursor:crosshair}
+#canvas:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.canvas-tools{display:flex;flex-wrap:wrap;gap:.4rem .9rem;align-items:center;margin:.6rem 0}
+.canvas-tools input[type="number"]{width:5.5rem}
+.legend{display:flex;flex-wrap:wrap;gap:.3rem 1rem;list-style:none;margin:.5rem 0 0;padding:0;font-size:.8125rem;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:.35rem}
+.legend svg{flex:none}
+.hint{font-size:.8125rem;color:var(--muted);margin:.35rem 0 0}
+.panel{display:flex;flex-direction:column;gap:1rem;min-width:0}
+.card{border:1px solid var(--border);border-radius:calc(var(--r)*1.5);padding:.85rem;min-width:0}
+.row{display:grid;gap:.4rem;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end}
+.row+.row{margin-top:.5rem}
+.row.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+label.f{display:flex;flex-direction:column;gap:.15rem;font-size:.75rem;color:var(--muted);min-width:0}
+label.f span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.note{font-size:.8125rem;color:var(--muted);margin:.35rem 0 0}
+.convention{display:flex;gap:.8rem;align-items:center}
+.convention svg{flex:none}
+.convention ul{margin:0;padding-left:1rem;font-size:.8125rem;color:var(--muted)}
+details.gen>summary{cursor:pointer;font-weight:600;font-size:.9rem;min-height:2.25rem;display:flex;align-items:center}
+.gen .body{border:1px solid var(--border);border-radius:var(--r);padding:.7rem;margin-top:.3rem}
+.gen .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.table-wrap{position:relative;overflow-x:auto;margin-top:.5rem;border:1px solid var(--border);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;font-size:.8125rem}
+th,td{text-align:left;padding:.35rem .5rem;border-bottom:1px solid var(--grid);vertical-align:middle}
+th{font-weight:600;background:var(--surface);white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+#fastener-table{min-width:46rem}
+#fastener-table input{min-height:1.9rem;padding:.15rem .35rem}
+#fastener-table td{padding:.2rem .3rem}
+#fastener-table tr.selected td{background:color-mix(in srgb,var(--focus) 12%,transparent)}
+#fastener-table input.override{border-color:var(--axial);font-weight:600}
+#fastener-table input::placeholder{color:var(--faint)}
+.results-grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
+.stale{opacity:.35}
+.tag{display:inline-block;font:600 .68rem var(--mono);letter-spacing:.03em;border:1px solid var(--border);border-radius:999px;padding:0 .45rem;margin-left:.3rem;color:var(--muted);white-space:nowrap}
+.tag.unloading{color:var(--axial);border-color:var(--axial)}
+.tag.tension{color:var(--tension)}
+.swatch{display:inline-block;vertical-align:middle;margin-right:.35rem}
+.issues{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem}
+.issues li{border-left:3px solid var(--border);padding:.15rem .6rem;font-size:.875rem}
+.issues li.error{border-color:var(--bad)}
+.issues li.warning{border-color:var(--warn)}
+.issues li.note{border-color:var(--note)}
+.issues .id{font:600 .75rem var(--mono);margin-right:.35rem}
+.issues li.error .id{color:var(--bad)}
+.issues li.warning .id{color:var(--warn)}
+.issues li.note .id{color:var(--note)}
+.issues .detail{display:block;color:var(--muted)}
+.issues button.link{border:0;background:none;padding:0;text-decoration:underline;color:inherit;font:inherit}
+.counts{display:flex;gap:.8rem;font-size:.8125rem;color:var(--muted);margin:0 0 .5rem}
+.pass{color:var(--ok);font-weight:600}
+.fail{color:var(--bad);font-weight:600}
+.blocked{border:1px dashed var(--bad);border-radius:var(--r);padding:.8rem;color:var(--muted)}
+.verify-case>summary{cursor:pointer}
+code{font:.875em var(--mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+dialog{border:1px solid var(--border);border-radius:calc(var(--r)*1.5);background:var(--bg);color:var(--fg);max-width:min(30rem,calc(100% - 2rem))}
+dialog::backdrop{background:rgb(0 0 0/.35)}
+dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.method li{margin:.3rem 0}
+.method{max-width:78ch}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="eyebrow"><a href="../../visuals.html">Visuals</a><span>Structural engineering</span><span>Runs offline in your browser</span></p>
+  <h1>Fastener Pattern CG Tracker</h1>
+  <p class="lede">Place a fastener group on the canvas or in the table. The page reports its shear, axial and area centroids, polar moment J, Ixx, Iyy, Ixy and principal axes, reduces a general 3D load applied anywhere to the group, and shares it among the fasteners by the elastic method. Every number is recalculated as you edit.</p>
+  <p class="prelim"><b>Preliminary sizing — verify against the governing specification.</b> The tool ships no allowables and follows no single design code.</p>
+</header>
+
+<div class="toolbar" role="group" aria-label="Pattern">
+  <div class="group"><label class="label" for="name">Pattern</label><input id="name" type="text" autocomplete="off"></div>
+  <div class="group" role="group" aria-label="Unit system"><span class="label">Units</span>
+    <span class="seg"><button type="button" data-units="N-mm" aria-pressed="true">N, mm</button><button type="button" data-units="in-lbf" aria-pressed="false">lbf, in</button></span>
+  </div>
+  <div class="group"><label class="label" for="precision">Sig. figs</label><input id="precision" type="number" min="1" max="15" step="1"></div>
+  <div class="group"><button class="btn" type="button" id="new-example">New from example</button></div>
+</div>
+
+<div class="toolbar" role="group" aria-label="Library and files">
+  <div class="group"><label class="label" for="library">Library</label><select id="library" aria-describedby="library-note"></select>
+    <button class="btn" type="button" id="lib-load">Load</button><button class="btn" type="button" id="lib-save">Save</button><button class="btn danger" type="button" id="lib-delete">Delete</button></div>
+  <div class="group"><span class="label">File</span>
+    <button class="btn" type="button" id="import">Import JSON or Markdown…</button><input id="import-file" type="file" accept=".json,.md,.markdown,application/json,text/markdown,text/plain" hidden>
+    <button class="btn" type="button" id="export-json">Export JSON</button><button class="btn" type="button" id="export-md">Export Markdown</button></div>
+</div>
+<p id="library-note" class="note">The working pattern autosaves in this browser on every edit, separately from the named library.</p>
+<div id="storage-banner" class="banner" role="alert" hidden><span id="storage-message"></span><button class="btn" type="button" id="storage-export">Export JSON</button></div>
+
+<div class="app">
+  <div class="figure">
+    <div class="stage">
+      <canvas id="canvas" tabindex="0" role="application" aria-label="Fastener pattern. Click empty space to add a fastener, drag a fastener or the load point to move it. With a fastener selected, arrow keys move it by the snap step and Delete removes it." aria-describedby="canvas-status"></canvas>
+    </div>
+    <p id="canvas-status" class="sr" aria-live="polite"></p>
+    <ul class="legend" id="legend" aria-label="Legend"></ul>
+    <div class="canvas-tools">
+      <div class="group"><button class="btn" type="button" id="snap" aria-pressed="true">Snap to grid</button><label class="label" for="snap-step">Step</label><input id="snap-step" type="number" min="0" step="any"><span class="small muted" data-unit="length"></span></div>
+      <div class="group"><button class="btn" type="button" id="add-fastener">+ Fastener</button><button class="btn danger" type="button" id="delete-fastener" disabled>Delete selected</button><button class="btn" type="button" id="fit-plate">Fit plate to pattern</button></div>
+    </div>
+    <p class="hint">Click empty space to add a fastener; drag a fastener or the load point P to move it. Arrow keys move the selected fastener by one snap step (Shift ×10); Delete removes it.</p>
+
+    <details class="gen" id="generators">
+      <summary>Generators: rectangular array, staggered rows, bolt circle, mirror</summary>
+      <div class="body">
+        <div class="row"><label class="f"><span>Generator</span><select id="gen-kind">
+          <option value="rect">Rectangular array</option><option value="stagger">Staggered rows</option><option value="circle">Bolt circle</option><option value="mirror">Mirror</option>
+        </select></label><span></span></div>
+        <div id="gen-fields"></div>
+        <p id="gen-error" class="note" role="alert"></p>
+        <div class="actions" id="gen-actions">
+          <button class="btn primary" type="button" id="gen-replace">Replace pattern</button>
+          <button class="btn" type="button" id="gen-append">Add to pattern</button>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="panel">
+    <div class="card">
+      <h3>Sign convention</h3>
+      <div class="convention">
+        <svg width="112" height="104" viewBox="0 0 112 104" role="img" aria-label="Right-handed axes: x right, y up, z toward the viewer; positive Mz counter-clockwise">
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+          <g stroke="currentColor" fill="none" stroke-width="1.6">
+            <line x1="30" y1="74" x2="96" y2="74" marker-end="url(#ah)"/>
+            <line x1="30" y1="74" x2="30" y2="10" marker-end="url(#ah)"/>
+            <circle cx="30" cy="74" r="6"/>
+            <path d="M58 44 A16 16 0 1 1 74 60" marker-end="url(#ah)" stroke="var(--load)"/>
+          </g>
+          <circle cx="30" cy="74" r="1.8" fill="currentColor"/>
+          <g font-family="var(--mono)" font-size="11" fill="currentColor">
+            <text x="98" y="92" text-anchor="end">x</text><text x="38" y="14">y</text><text x="8" y="94">z</text><text x="76" y="30" fill="var(--load)">+Mz</text>
+          </g>
+        </svg>
+        <ul>
+          <li>Right-handed: x right, y up, z toward you.</li>
+          <li>Faying surface z = 0; fasteners at (x, y).</li>
+          <li>+Fz is tension (pulls the loaded plate away).</li>
+          <li>Moments by the right-hand rule; +Mz is CCW.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Load</h3>
+      <div class="row three">
+        <label class="f"><span>Point x (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="load.point.x"></label>
+        <label class="f"><span>Point y (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="load.point.y"></label>
+        <label class="f"><span>Point z (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="load.point.z"></label>
+      </div>
+      <div class="row three">
+        <label class="f"><span>Fx (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="load.Fx"></label>
+        <label class="f"><span>Fy (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="load.Fy"></label>
+        <label class="f"><span>Fz (<i data-unit="force"></i>)</span><input type="number" step="any" data-path="load.Fz"></label>
+      </div>
+      <div class="row three">
+        <label class="f"><span>Mx (<i data-unit="moment"></i>)</span><input type="number" step="any" data-path="load.Mx"></label>
+        <label class="f"><span>My (<i data-unit="moment"></i>)</span><input type="number" step="any" data-path="load.My"></label>
+        <label class="f"><span>Mz (<i data-unit="moment"></i>)</span><input type="number" step="any" data-path="load.Mz"></label>
+      </div>
+      <div class="row">
+        <label class="f"><span>Loaded plate</span><select id="applied-plate" data-path="load.appliedPlate"></select></label>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Methods</h3>
+      <div class="row">
+        <label class="f"><span>Axial method</span><select data-path="settings.axialMethod">
+          <option value="centroid">(a) Centroid neutral axis</option>
+          <option value="contact-edge" disabled>(b) Contact edge — milestone M4</option>
+        </select></label>
+        <label class="f"><span>Design basis</span><select data-path="settings.designBasis">
+          <option value="elastic">Elastic</option>
+          <option value="icr" disabled>ICR — milestone M5</option>
+        </select></label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Group defaults</h3>
+      <div class="row">
+        <label class="f"><span>Area A (<i data-unit="area"></i>)</span><input type="number" step="any" data-path="defaults.area"></label>
+        <label class="f"><span>Diameter D (<i data-unit="length"></i>)</span><input type="number" step="any" data-path="defaults.diameter"></label>
+      </div>
+      <div class="row">
+        <label class="f"><span>Shear stiffness ks</span><input type="number" step="any" data-path="defaults.ks"></label>
+        <label class="f"><span>Axial stiffness ka</span><input type="number" step="any" data-path="defaults.ka"></label>
+      </div>
+      <p class="note">Fasteners use these unless a table cell overrides them (bold). Clearing a cell returns it to the default.</p>
+    </div>
+
+    <div class="card">
+      <h3>Plates</h3>
+      <div id="plates"></div>
+      <p class="note">Outlines are drawn on the canvas. Bearing, tear-out and a second plate arrive with milestone M4.</p>
+    </div>
+  </div>
+</div>
+
+<section aria-labelledby="table-h">
+  <h2 id="table-h">Fasteners</h2>
+  <p class="muted small">Every cell is keyboard-editable. Blank override cells use the group default shown in grey.</p>
+  <div class="table-wrap"><table id="fastener-table">
+    <thead><tr><th scope="col">id</th><th scope="col">Label</th><th scope="col">x (<i data-unit="length"></i>)</th><th scope="col">y (<i data-unit="length"></i>)</th><th scope="col">A (<i data-unit="area"></i>)</th><th scope="col">ks</th><th scope="col">ka</th><th scope="col">D (<i data-unit="length"></i>)</th><th scope="col"><span class="sr">Remove</span></th></tr></thead>
+    <tbody id="fastener-rows"></tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="warnings-h">
+  <h2 id="warnings-h">Warnings</h2>
+  <p class="counts" id="issue-counts"></p>
+  <ul class="issues" id="issues" aria-live="polite"></ul>
+</section>
+
+<section aria-labelledby="results-h">
+  <h2 id="results-h">Results</h2>
+  <div id="results"></div>
+</section>
+
+<section aria-labelledby="verify-h">
+  <h2 id="verify-h">Verification</h2>
+  <p>Runs the hand-calculation cases and property tests from the specification on this page's own solver. The same cases run in the repository's test suite.</p>
+  <button class="btn primary" type="button" id="run-verify">Run verification</button>
+  <div id="verify-results"></div>
+</section>
+
+<section class="method" aria-labelledby="method-h">
+  <h2 id="method-h">Method</h2>
+  <ul>
+    <li><b>Three centroids</b>, always reported separately: shear Cs (weighted by ks; the headline CG), axial Ca (weighted by ka) and area Cg (weighted by A).</li>
+    <li><b>J</b> = Σ ks(u² + v²) about Cs. <b>Ixx</b> = Σ ka q², <b>Iyy</b> = Σ ka p², <b>Ixy</b> = Σ ka p q about Ca. Principal values I₁,₂ = (Ixx + Iyy)/2 ± √(((Ixx − Iyy)/2)² + Ixy²); θp = ½ atan2(−2Ixy, Ixx − Iyy), CCW from +x to the I₁ axis. Section properties are in length² × weight.</li>
+    <li><b>Load reduction</b> from P = (xp, yp, zp) to Q on z = 0 with r = P − Q: Mx,Q = Mx + ry Fz − zp Fy; My,Q = My + zp Fx − rx Fz; Mz,Q = Mz + rx Fy − ry Fx. Shear and torsion reduce to Cs, axial load and bending to Ca.</li>
+    <li><b>Elastic in-plane shear</b>: direct Rd = F ks/Σks; torsional Rtx = −Mz,s ks v / J, Rty = +Mz,s ks u / J.</li>
+    <li><b>Axial method (a)</b>, rigid plate with the neutral axis through Ca: D = Ixx Iyy − Ixy², θx = (Iyy Mx,a + Ixy My,a)/D, θy = (Ixy Mx,a + Ixx My,a)/D, T = ka(Fz/Ka + θx q − θy p). Negative T is unloading (clamp-up), shown as computed.</li>
+    <li><b>Equilibrium closure</b> (ΣR = F, ΣM = M for shear and axial) is checked on every calculation to a 1e-9 relative residual; a failure blocks the results.</li>
+    <li>Unit switching converts stored values in place to 12 significant figures (1 in = 25.4 mm, 1 lbf = 4.4482216152605 N). Imports keep the file's unit system.</li>
+  </ul>
+</section>
+</main>
+
+<dialog id="collision">
+  <form method="dialog">
+    <h2>Name already in the library</h2>
+    <p id="collision-text"></p>
+    <div class="actions">
+      <button class="btn primary" value="overwrite">Overwrite</button>
+      <button class="btn" value="keep">Keep both</button>
+      <button class="btn" value="cancel">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(() => {
+"use strict";
+/* ---- core/units.mjs ---- */
+const __m0 = (() => {
+/* Unit systems and in-place conversion of a pattern (spec 3.2).
+ *
+ * Two systems: "N-mm" and "in-lbf". Switching converts every stored
+ * dimensional value, rounded to 12 significant figures. Relative stiffness
+ * factors, exponents and ratios are dimensionless and never change.
+ */
+
+const UNIT_SYSTEMS = ["N-mm", "in-lbf"];
+
+const MM_PER_IN = 25.4;
+const N_PER_LBF = 4.4482216152605;
+
+/* Symbols shown next to each quantity kind. */
+const UNIT_LABELS = {
+  "N-mm": { length: "mm", force: "N", moment: "N·mm", stress: "MPa", area: "mm²", section: "mm²", invLength: "1/mm", none: "" },
+  "in-lbf": { length: "in", force: "lbf", moment: "in·lbf", stress: "psi", area: "in²", section: "in²", invLength: "1/in", none: "" },
+};
+
+/* Multiplier taking one unit of `kind` in N-mm to in-lbf. */
+const TO_IN_LBF = {
+  length: 1 / MM_PER_IN,
+  force: 1 / N_PER_LBF,
+  moment: 1 / (N_PER_LBF * MM_PER_IN),
+  stress: MM_PER_IN * MM_PER_IN / N_PER_LBF,
+  area: 1 / (MM_PER_IN * MM_PER_IN),
+  section: 1 / (MM_PER_IN * MM_PER_IN),
+  invLength: MM_PER_IN,
+  none: 1,
+};
+
+function unitLabel(system, kind) {
+  return (UNIT_LABELS[system] || UNIT_LABELS["N-mm"])[kind] ?? "";
+}
+
+function round12(value) {
+  if (typeof value !== "number" || !Number.isFinite(value) || value === 0) return value;
+  return Number(value.toPrecision(12));
+}
+
+function convertValue(value, kind, from, to) {
+  if (from === to || typeof value !== "number" || !Number.isFinite(value)) return value;
+  const factor = TO_IN_LBF[kind];
+  if (factor === undefined) throw new Error(`Unknown quantity kind ${kind}`);
+  return round12(from === "N-mm" ? value * factor : value / factor);
+}
+
+/* Quantity kind of every dimensional field in a fastener property set
+ * (group defaults and per-fastener overrides share this shape). */
+const PROPERTY_KINDS = {
+  diameter: "length",
+  area: "area",
+  ks: "none",
+  ka: "none",
+  shearAllowable: "force",
+  tensionAllowable: "force",
+  icr: { rult: "force", mu: "invLength", lambda: "none", deltaMax: "length" },
+  prying: { b: "length", a: "length", p: "length", holeDiameter: "length", boltStrengthB: "force", manualFactor: "none" },
+  preload: { pMax: "force", pMin: "force", phi: "none" },
+};
+
+const PLATE_KINDS = {
+  thickness: "length", xMin: "length", xMax: "length", yMin: "length", yMax: "length",
+  bearingAllowable: "stress", shearOutAllowable: "stress", minEdgeRatio: "none", flangeStrength: "stress",
+};
+
+const LOAD_KINDS = {
+  point: { x: "length", y: "length", z: "length" },
+  Fx: "force", Fy: "force", Fz: "force", Mx: "moment", My: "moment", Mz: "moment",
+};
+
+function convertObject(object, kinds, from, to) {
+  if (!object || typeof object !== "object") return object;
+  const out = Array.isArray(object) ? [...object] : { ...object };
+  for (const [key, kind] of Object.entries(kinds)) {
+    if (!(key in out)) continue;
+    out[key] = typeof kind === "string" ? convertValue(out[key], kind, from, to) : convertObject(out[key], kind, from, to);
+  }
+  return out;
+}
+
+/* Return a copy of `pattern` expressed in `to`. */
+function convertPattern(pattern, to) {
+  const from = pattern.unitSystem;
+  if (!UNIT_SYSTEMS.includes(to)) throw new Error(`Unknown unit system ${to}`);
+  if (from === to) return pattern;
+  return {
+    ...pattern,
+    unitSystem: to,
+    defaults: convertObject(pattern.defaults, PROPERTY_KINDS, from, to),
+    fasteners: (pattern.fasteners || []).map((f) => ({
+      ...f,
+      x: convertValue(f.x, "length", from, to),
+      y: convertValue(f.y, "length", from, to),
+      overrides: convertObject(f.overrides || {}, PROPERTY_KINDS, from, to),
+    })),
+    plates: (pattern.plates || []).map((p) => convertObject(p, PLATE_KINDS, from, to)),
+    load: convertObject(pattern.load, LOAD_KINDS, from, to),
+  };
+}
+return { UNIT_SYSTEMS, MM_PER_IN, N_PER_LBF, UNIT_LABELS, unitLabel, round12, convertValue, PROPERTY_KINDS, PLATE_KINDS, LOAD_KINDS, convertPattern };
+})();
+
+/* ---- core/warnings.mjs ---- */
+const __m1 = (() => {
+/* Warnings catalogue (spec section 6).
+ *
+ * Three tiers: errors block results and name the offending field or
+ * fastener, warnings show results with a flag, notes are informational.
+ * Each issue raised by the core is { id, tier, title, detail, fastener,
+ * field }; `title` is the catalogue condition and `detail` says what
+ * triggered it in this pattern.
+ */
+
+const CATALOG = {
+  "E-001": "No fasteners",
+  "E-002": "Non-numeric or missing required field",
+  "E-003": "Non-positive area, ks or ka",
+  "E-004": "Fastener outside its plate outline",
+  "E-005": "Overlapping fasteners (centre distance < diameter)",
+  "E-006": "Edge distance < D/2",
+  "E-007": "Diameter, thickness or allowable missing for an enabled check",
+  "E-008": "Interaction exponent ≤ 0",
+  "E-009": "Preload enabled without a valid φ (0 < φ < 1)",
+  "E-010": "Equilibrium closure failure",
+  "E-011": "Collinear pattern with bending moment about the unresolved axis",
+  "E-012": "Method (b): moment component perpendicular to the contact edge is not zero",
+  "E-013": "Import: invalid file, or schemaVersion newer than supported",
+  "E-014": "P_max < P_min",
+  "W-001": "Single fastener (no torsion resistance)",
+  "W-002": "Collinear pattern",
+  "W-003": "Zero load",
+  "W-004": "Pattern extent > 10⁴ in the current unit (likely unit mix-up)",
+  "W-005": "Method (a) assumes the joint stays clamped",
+  "W-006": "Exponents ≠ (1, 1): MS is the exact scale factor, not 1/IF − 1",
+  "W-007": "Exponent between 0 and 1: non-convex, unconservative",
+  "W-008": "Scale-factor solve failed: MS not computed",
+  "W-009": "Load point outside the plate outline",
+  "W-010": "Contact edge on the wrong side for the applied moment",
+  "W-011": "Edge distance below the keyed minimum e/D",
+  "W-012": "Manual prying factor overrides the T-stub result",
+  "W-013": "Separation reached: post-separation formulas in use",
+  "W-014": "ICR not converged",
+  "W-015": "ICR basis: reactions use the proportional scaling convention",
+  "W-016": "Fasteners unloading under method (a): method (b) recommended",
+  "W-017": "Preload alone exceeds the allowable at k = 0",
+  "W-018": "Import: optional fields defaulted, or Markdown fallback lost settings",
+  "W-019": "More than ~200 fasteners",
+  "W-021": "Method (b): no contact reaction exists (C < 0)",
+  "N-001": "Load line passes through the shear centroid (zero torsion)",
+  "N-002": "Centroids differ: which one each calculation uses",
+  "N-003": "Older schema migrated",
+  "N-004": "ICR ignores ks",
+  "N-005": "Friction slip not evaluated; clamp force reported only",
+  "N-006": "Unloading fasteners counted as zero tension in the interaction",
+  "N-007": "Preload disabled",
+  "N-008": "ICR curve parameters are editable defaults; confirm for the fastener",
+};
+
+const TIERS = { E: "error", W: "warning", N: "note" };
+const TIER_ORDER = { error: 0, warning: 1, note: 2 };
+
+function tierOf(id) {
+  return TIERS[id[0]];
+}
+
+function issue(id, detail = "", { fastener = null, field = null } = {}) {
+  if (!(id in CATALOG)) throw new Error(`Unknown warning id ${id}`);
+  return { id, tier: tierOf(id), title: CATALOG[id], detail, fastener, field };
+}
+
+/* Errors first, then warnings, then notes; catalogue order within a tier. */
+function sortIssues(issues) {
+  const ids = Object.keys(CATALOG);
+  return [...issues].sort((a, b) => TIER_ORDER[a.tier] - TIER_ORDER[b.tier] || ids.indexOf(a.id) - ids.indexOf(b.id));
+}
+
+const hasErrors = (issues) => issues.some((i) => i.tier === "error");
+return { CATALOG, TIERS, tierOf, issue, sortIssues, hasErrors };
+})();
+
+/* ---- core/model.mjs ---- */
+const __m2 = (() => {
+const { convertPattern } = __m0;
+const { issue } = __m1;
+/* Pattern data model (spec section 4).
+ *
+ * A pattern holds inputs and settings only. Group `defaults` supply every
+ * fastener property; each fastener stores sparse `overrides`, so editing a
+ * default never touches an overridden fastener.
+ */
+
+
+
+
+const SCHEMA_VERSION = 1;
+const SOFT_FASTENER_LIMIT = 200;
+
+function defaultSettings() {
+  return {
+    designBasis: "elastic",
+    axialMethod: "centroid",
+    contactEdge: { plateId: "P1", edge: "yMin" },
+    interaction: { a: 2, b: 2 },
+    prying: { enabled: false },
+    preload: { enabled: false },
+    icr: { enabled: false, model: "crawford-kulak" },
+    precision: 4,
+    pageSize: "A4",
+  };
+}
+
+/* Group defaults in N-mm; the ICR values are the metric equivalents of the
+ * common structural-bolt curve (editable defaults, not recommendations). */
+function defaultProperties() {
+  return {
+    diameter: 12, area: 113.1, ks: 1, ka: 1,
+    shearAllowable: null, tensionAllowable: null,
+    icr: { rult: null, mu: 0.3937, lambda: 0.55, deltaMax: 8.6 },
+    prying: { b: null, a: null, p: null, holeDiameter: null, boltStrengthB: null, manualFactor: null },
+    preload: { pMax: null, pMin: null, phi: null },
+  };
+}
+
+function defaultPlate(id = "P1") {
+  return {
+    id, thickness: 10, xMin: -80, xMax: 80, yMin: -50, yMax: 50,
+    bearingAllowable: null, shearOutAllowable: null, minEdgeRatio: null, flangeStrength: null,
+  };
+}
+
+function defaultLoad() {
+  return { appliedPlate: "P1", point: { x: 150, y: 0, z: 0 }, Fx: 0, Fy: -10000, Fz: 0, Mx: 0, My: 0, Mz: 0 };
+}
+
+/* The spec's example: a 2×2 bracket loaded 150 mm to the right (VC-01). */
+function examplePattern(unitSystem = "N-mm") {
+  const pattern = {
+    schemaVersion: SCHEMA_VERSION,
+    name: "Bracket A - 2x2",
+    unitSystem: "N-mm",
+    settings: defaultSettings(),
+    defaults: defaultProperties(),
+    fasteners: [
+      { id: "F1", label: "", x: 50, y: 30, overrides: {} },
+      { id: "F2", label: "", x: 50, y: -30, overrides: {} },
+      { id: "F3", label: "", x: -50, y: 30, overrides: {} },
+      { id: "F4", label: "", x: -50, y: -30, overrides: {} },
+    ],
+    plates: [defaultPlate("P1")],
+    load: defaultLoad(),
+  };
+  return unitSystem === "N-mm" ? pattern : convertPattern(pattern, unitSystem);
+}
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+
+const isPlainObject = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+
+/* Overlay sparse overrides on defaults, recursing into nested groups. */
+function mergeProps(base, overrides) {
+  const out = { ...base };
+  for (const [key, value] of Object.entries(overrides || {})) {
+    out[key] = isPlainObject(value) && isPlainObject(base[key]) ? mergeProps(base[key], value) : value;
+  }
+  return out;
+}
+
+/* Every property of fastener `f`, defaults filled in. */
+function resolveFastener(pattern, f) {
+  return { id: f.id, label: f.label || "", x: f.x, y: f.y, ...mergeProps(pattern.defaults, f.overrides) };
+}
+
+/* Next free id. Ids are never reused within a pattern: the counter lives in
+ * the pattern (`nextId`) and never goes below one past the largest id seen. */
+function nextFastenerId(pattern) {
+  const used = (pattern.fasteners || []).map((f) => Number(/^F(\d+)$/.exec(f.id)?.[1] || 0));
+  const n = Math.max(pattern.nextId || 1, ...used.map((u) => u + 1), 1);
+  pattern.nextId = n + 1;
+  return `F${n}`;
+}
+
+function addFastener(pattern, x, y, extra = {}) {
+  const f = { id: nextFastenerId(pattern), label: "", x, y, overrides: {}, ...extra };
+  pattern.fasteners.push(f);
+  return f;
+}
+
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+
+/* Input checks that need no solve: E-001, E-002, E-003 and W-019. */
+function validateInputs(pattern) {
+  const issues = [];
+  const fasteners = pattern.fasteners || [];
+  if (fasteners.length === 0) issues.push(issue("E-001", "Add at least one fastener."));
+  if (fasteners.length > SOFT_FASTENER_LIMIT) {
+    issues.push(issue("W-019", `${fasteners.length} fasteners; the soft limit is about ${SOFT_FASTENER_LIMIT}.`));
+  }
+  const need = (value, field, label, fastener = null) => {
+    if (!isNum(value)) {
+      issues.push(issue("E-002", `${label} is ${value === null || value === undefined || value === "" ? "missing" : `not a number (“${value}”)`}.`, { fastener, field }));
+      return false;
+    }
+    return true;
+  };
+  for (const [key, label] of [["area", "Default area A"], ["ks", "Default ks"], ["ka", "Default ka"]]) {
+    const v = pattern.defaults?.[key];
+    if (need(v, `defaults.${key}`, label) && !(v > 0)) {
+      issues.push(issue("E-003", `${label} must be greater than zero (is ${v}).`, { field: `defaults.${key}` }));
+    }
+  }
+  for (const f of fasteners) {
+    need(f.x, "x", `${f.id} x`, f.id);
+    need(f.y, "y", `${f.id} y`, f.id);
+    for (const key of ["area", "ks", "ka"]) {
+      if (!f.overrides || !(key in f.overrides)) continue;
+      const v = f.overrides[key];
+      if (need(v, key, `${f.id} ${key}`, f.id) && !(v > 0)) {
+        issues.push(issue("E-003", `${f.id} ${key} must be greater than zero (is ${v}).`, { fastener: f.id, field: key }));
+      }
+    }
+  }
+  const load = pattern.load || {};
+  for (const axis of ["x", "y", "z"]) need(load.point?.[axis], `load.point.${axis}`, `Load point ${axis}`);
+  for (const key of ["Fx", "Fy", "Fz", "Mx", "My", "Mz"]) need(load[key], `load.${key}`, key);
+  return issues;
+}
+return { SCHEMA_VERSION, SOFT_FASTENER_LIMIT, defaultSettings, defaultProperties, defaultPlate, defaultLoad, examplePattern, clone, mergeProps, resolveFastener, nextFastenerId, addFastener, validateInputs };
+})();
+
+/* ---- core/geometry.mjs ---- */
+const __m3 = (() => {
+/* Centroids and section properties (spec 5.1).
+ *
+ * Three centroids are always kept separate: shear Cs (weight ks, the
+ * headline CG, used for torsion and J), axial Ca (weight ka, used for
+ * out-of-plane bending, Ixx, Iyy, Ixy) and area Cg (weight A, geometric
+ * reference). Section properties are in length² × weight.
+ */
+
+const RAD = 180 / Math.PI;
+
+function extentOf(points) {
+  if (!points.length) return 0;
+  const xs = points.map((p) => p.x), ys = points.map((p) => p.y);
+  return Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys));
+}
+
+function weightedCentroid(fasteners, weightKey) {
+  let w = 0, wx = 0, wy = 0;
+  for (const f of fasteners) {
+    const k = f[weightKey];
+    w += k; wx += k * f.x; wy += k * f.y;
+  }
+  return { x: wx / w, y: wy / w, weight: weightKey, sum: w };
+}
+
+/* Coincidence tolerance: 1e-9 × pattern extent (1e-9 when the extent is zero). */
+function coincidenceTolerance(extent) {
+  return 1e-9 * (extent > 0 ? extent : 1);
+}
+
+function principal(Ixx, Iyy, Ixy) {
+  const mean = (Ixx + Iyy) / 2;
+  const radius = Math.hypot((Ixx - Iyy) / 2, Ixy);
+  let thetaRad = 0.5 * Math.atan2(-2 * Ixy, Ixx - Iyy);
+  if (thetaRad <= -Math.PI / 2 + 1e-15) thetaRad += Math.PI; // report (−90°, 90°]; the axis is the same line
+  return { I1: mean + radius, I2: mean - radius, thetaRad, thetaDeg: thetaRad * RAD };
+}
+
+/* `fasteners` are resolved (x, y, area, ks, ka all numeric and positive). */
+function sectionProperties(fasteners) {
+  const extent = extentOf(fasteners);
+  const tol = coincidenceTolerance(extent);
+  const Cs = weightedCentroid(fasteners, "ks");
+  const Ca = weightedCentroid(fasteners, "ka");
+  const Cg = weightedCentroid(fasteners, "area");
+  let J = 0, Ixx = 0, Iyy = 0, Ixy = 0;
+  const per = fasteners.map((f) => {
+    const u = f.x - Cs.x, v = f.y - Cs.y, p = f.x - Ca.x, q = f.y - Ca.y;
+    J += f.ks * (u * u + v * v);
+    Ixx += f.ka * q * q;
+    Iyy += f.ka * p * p;
+    Ixy += f.ka * p * q;
+    return { id: f.id, u, v, p, q };
+  });
+  const near = (a, b) => Math.hypot(a.x - b.x, a.y - b.y) < tol;
+  const centroids = [
+    { key: "Cs", name: "Shear centroid", weight: "ks", usedFor: "Torsion, J", x: Cs.x, y: Cs.y },
+    { key: "Ca", name: "Axial centroid", weight: "ka", usedFor: "Out-of-plane bending, Ixx, Iyy, Ixy", x: Ca.x, y: Ca.y },
+    { key: "Cg", name: "Area centroid", weight: "A", usedFor: "Geometric reference", x: Cg.x, y: Cg.y },
+  ];
+  for (const c of centroids) {
+    c.coincidentWith = centroids.filter((o) => o !== c && near(o, c)).map((o) => o.key);
+  }
+  return {
+    extent, tol, centroids, Cs, Ca, Cg,
+    Ks: Cs.sum, Ka: Ca.sum, J, Ixx, Iyy, Ixy,
+    D: Ixx * Iyy - Ixy * Ixy,
+    principal: principal(Ixx, Iyy, Ixy),
+    per,
+  };
+}
+return { extentOf, weightedCentroid, coincidenceTolerance, principal, sectionProperties };
+})();
+
+/* ---- core/loads.mjs ---- */
+const __m4 = (() => {
+/* Static reduction of the applied load to a point on the faying surface (spec 5.2).
+ *
+ * The load (Fx, Fy, Fz, Mx, My, Mz) acts at P = (xp, yp, zp). Moving it to
+ * Q = (xq, yq, 0) adds r × F with r = P − Q:
+ *   Mx,Q = Mx + ry·Fz − zp·Fy
+ *   My,Q = My + zp·Fx − rx·Fz
+ *   Mz,Q = Mz + rx·Fy − ry·Fx
+ */
+
+function transferMoments(load, q) {
+  const { point: P, Fx, Fy, Fz, Mx, My, Mz } = load;
+  const rx = P.x - q.x, ry = P.y - q.y, zp = P.z;
+  return {
+    Q: { x: q.x, y: q.y },
+    rx, ry, zp,
+    Mx: Mx + ry * Fz - zp * Fy,
+    My: My + zp * Fx - rx * Fz,
+    Mz: Mz + rx * Fy - ry * Fx,
+  };
+}
+
+/* In-plane shear and torsion reduce to Cs; axial load and bending to Ca. */
+function reduceLoad(load, Cs, Ca) {
+  const s = transferMoments(load, Cs);
+  const a = transferMoments(load, Ca);
+  return {
+    Fx: load.Fx, Fy: load.Fy, Fz: load.Fz,
+    shear: { Q: s.Q, rx: s.rx, ry: s.ry, zp: s.zp, Mz: s.Mz },
+    axial: { Q: a.Q, rx: a.rx, ry: a.ry, zp: a.zp, Mx: a.Mx, My: a.My },
+  };
+}
+return { transferMoments, reduceLoad };
+})();
+
+/* ---- core/elastic.mjs ---- */
+const __m5 = (() => {
+/* Elastic distribution (spec 5.3 and 5.4).
+ *
+ * In-plane: direct shear shared by ks, torsion by a rigid plate rotating
+ * about Cs. Out-of-plane, method (a): rigid plate, neutral axis through Ca,
+ * w = w0 + θx·q − θy·p. Positive T is tension; negative T is unloading
+ * (clamp-up) and is reported as computed.
+ */
+
+/* `props` from sectionProperties, `red` from reduceLoad. */
+function elasticShear(fasteners, props, red) {
+  const { Ks, J } = props;
+  const Mz = red.shear.Mz;
+  return fasteners.map((f, i) => {
+    const { u, v } = props.per[i];
+    const share = f.ks / Ks;
+    const Rdx = red.Fx * share, Rdy = red.Fy * share;
+    // J = 0 (one fastener, or all at one point): no torsional resistance; closure then reports it.
+    const Rtx = J > 0 ? -Mz * f.ks * v / J : 0;
+    const Rty = J > 0 ? Mz * f.ks * u / J : 0;
+    const Rx = Rdx + Rtx, Ry = Rdy + Rty;
+    return { id: f.id, share, u, v, Rdx, Rdy, Rtx, Rty, Rx, Ry, Rs: Math.hypot(Rx, Ry), angleDeg: Math.atan2(Ry, Rx) * 180 / Math.PI };
+  });
+}
+
+/* Relative tolerance below which D, I₁ or I₂ count as zero. */
+const SINGULAR_TOL = 1e-10;
+
+/*
+ * Method (a). Returns { T: [...], mode, unresolved } where mode is
+ * "general" (D > 0, the spec's closed form), "collinear" (one principal
+ * value vanishes: bending is resisted about the other principal axis only)
+ * or "point" (all fasteners coincide: only Fz is resisted).
+ * `unresolved` is the bending component the pattern cannot resist; the
+ * caller raises W-002 or E-011 from it.
+ */
+function elasticAxialCentroid(fasteners, props, red) {
+  const { Ka, Ixx, Iyy, Ixy, D, principal: pr } = props;
+  const Fz = red.Fz, Mx = red.axial.Mx, My = red.axial.My;
+  const scale = Math.max(Ixx + Iyy, 0);
+  const T = new Array(fasteners.length);
+  if (scale > 0 && D > SINGULAR_TOL * scale * scale) {
+    const thetaX = (Iyy * Mx + Ixy * My) / D;
+    const thetaY = (Ixy * Mx + Ixx * My) / D;
+    fasteners.forEach((f, i) => {
+      const { p, q } = props.per[i];
+      const direct = f.ka * Fz / Ka, moment = f.ka * (thetaX * q - thetaY * p);
+      T[i] = { id: f.id, p, q, direct, moment, T: direct + moment };
+    });
+    return { mode: "general", thetaX, thetaY, D, T, unresolved: null };
+  }
+  // Principal frame: axis 1 at θp, axis 2 perpendicular. In that frame
+  // Ixy' = 0, so T = ka·(Fz/Ka + M1·q'/I1 − M2·p'/I2).
+  const c = Math.cos(pr.thetaRad), s = Math.sin(pr.thetaRad);
+  const M1 = Mx * c + My * s, M2 = -Mx * s + My * c;
+  const resolved1 = scale > 0 && pr.I1 > SINGULAR_TOL * scale;
+  const mode = resolved1 ? "collinear" : "point";
+  fasteners.forEach((f, i) => {
+    const { p, q } = props.per[i];
+    const q1 = -p * s + q * c;
+    const direct = f.ka * Fz / Ka, moment = resolved1 ? f.ka * M1 * q1 / pr.I1 : 0;
+    T[i] = { id: f.id, p, q, direct, moment, T: direct + moment };
+  });
+  const unresolved = resolved1
+    ? { axisDeg: (pr.thetaRad + Math.PI / 2) * 180 / Math.PI, moment: M2, components: { Mx: -M2 * s, My: M2 * c } }
+    : { axisDeg: null, moment: Math.hypot(Mx, My), components: { Mx, My } };
+  return { mode, M1, M2, I1: pr.I1, T, unresolved };
+}
+return { elasticShear, SINGULAR_TOL, elasticAxialCentroid };
+})();
+
+/* ---- core/solve.mjs ---- */
+const __m6 = (() => {
+const { resolveFastener, validateInputs } = __m2;
+const { sectionProperties } = __m3;
+const { reduceLoad } = __m4;
+const { elasticShear, elasticAxialCentroid } = __m5;
+const { issue, hasErrors, sortIssues } = __m1;
+/* One calculation: validate, resolve properties, reduce the load, distribute
+ * it, raise the catalogue issues and check equilibrium closure.
+ *
+ * Returns { ok, issues, ... }. When any error is raised `ok` is false and
+ * no result fields are present, so nothing downstream can show numbers the
+ * checks have rejected.
+ */
+
+
+
+
+
+
+
+const EXTENT_WARNING = 1e4;
+const CLOSURE_TOL = 1e-9;
+const ZERO_TOL = 1e-9;
+
+const sum = (xs) => xs.reduce((a, b) => a + b, 0);
+
+/* Equilibrium closure, per basis: ΣR = F and ΣM = M about the reduction point. */
+function closure(shear, axial, red, props) {
+  const forceScale = Math.hypot(red.Fx, red.Fy, red.Fz) + sum(shear.map((r) => r.Rs)) + sum(axial.map((t) => Math.abs(t.T)));
+  const lever = Math.max(props.extent, 1e-300);
+  const momentScale = Math.hypot(red.axial.Mx, red.axial.My, red.shear.Mz) + forceScale * lever;
+  const checks = [
+    { name: "ΣRx = Fx", residual: sum(shear.map((r) => r.Rx)) - red.Fx, scale: forceScale },
+    { name: "ΣRy = Fy", residual: sum(shear.map((r) => r.Ry)) - red.Fy, scale: forceScale },
+    { name: "Σ(u·Ry − v·Rx) = Mz,s", residual: sum(shear.map((r) => r.u * r.Ry - r.v * r.Rx)) - red.shear.Mz, scale: momentScale },
+    { name: "ΣT = Fz", residual: sum(axial.map((t) => t.T)) - red.Fz, scale: forceScale },
+    { name: "ΣT·q = Mx,a", residual: sum(axial.map((t) => t.T * t.q)) - red.axial.Mx, scale: momentScale },
+    { name: "Σ(−T·p) = My,a", residual: sum(axial.map((t) => -t.T * t.p)) - red.axial.My, scale: momentScale },
+  ];
+  for (const c of checks) {
+    c.relative = c.scale > 0 ? Math.abs(c.residual) / c.scale : Math.abs(c.residual);
+    c.pass = c.relative <= CLOSURE_TOL;
+  }
+  return { tol: CLOSURE_TOL, checks, pass: checks.every((c) => c.pass) };
+}
+
+function solve(pattern) {
+  const issues = validateInputs(pattern);
+  if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
+
+  const settings = pattern.settings || {};
+  const fasteners = pattern.fasteners.map((f) => resolveFastener(pattern, f));
+  const props = sectionProperties(fasteners);
+  const load = pattern.load;
+  const red = reduceLoad(load, props.Cs, props.Ca);
+
+  const n = fasteners.length;
+  if (n === 1) issues.push(issue("W-001", "One fastener cannot resist torsion.", { fastener: fasteners[0].id }));
+  if (props.extent > EXTENT_WARNING) {
+    issues.push(issue("W-004", `The pattern spans ${props.extent.toPrecision(4)} ${pattern.unitSystem === "in-lbf" ? "in" : "mm"}; check the unit system.`));
+  }
+  const loadZero = ["Fx", "Fy", "Fz", "Mx", "My", "Mz"].every((k) => load[k] === 0);
+  if (loadZero) issues.push(issue("W-003", "All six load components are zero."));
+
+  const Fin = Math.hypot(red.Fx, red.Fy);
+  if (Fin > 0 && Math.abs(red.shear.Mz) <= ZERO_TOL * Fin * Math.max(props.extent, Math.hypot(red.shear.rx, red.shear.ry), 1)) {
+    issues.push(issue("N-001", "Mz,s = 0: in-plane shear is direct only."));
+  }
+  const differ = props.centroids.filter((c) => c.coincidentWith.length < 2);
+  if (differ.length) {
+    issues.push(issue("N-002", "Torsion and J use the shear centroid Cs (ks); out-of-plane bending, Ixx, Iyy and Ixy use the axial centroid Ca (ka); the area centroid Cg (A) is a geometric reference only."));
+  }
+
+  const shear = elasticShear(fasteners, props, red);
+  const axialMethod = settings.axialMethod || "centroid";
+  const axial = elasticAxialCentroid(fasteners, props, red);
+
+  if (axial.mode !== "general") {
+    const scale = Math.hypot(red.axial.Mx, red.axial.My) + Math.abs(red.Fz) * props.extent;
+    const unresolved = Math.abs(axial.unresolved.moment);
+    const where = axial.mode === "collinear"
+      ? `about the pattern line (${axial.unresolved.axisDeg.toPrecision(4)}° from +x)`
+      : "(all fasteners at one point)";
+    if (unresolved > ZERO_TOL * scale) {
+      issues.push(issue("E-011", `Bending ${where} is ${unresolved.toPrecision(4)} and cannot be resisted.`, { field: "load" }));
+    } else if (n > 1) {
+      issues.push(issue("W-002", `All fasteners lie on one line; bending ${where} cannot be resisted (it is zero here).`));
+    }
+  }
+
+  if (axialMethod === "centroid" && (red.Fz !== 0 || red.axial.Mx !== 0 || red.axial.My !== 0)) {
+    issues.push(issue("W-005", "Method (a) keeps the neutral axis at Ca and assumes the plates stay in contact everywhere."));
+  }
+  const tensionScale = Math.max(...axial.T.map((t) => Math.abs(t.T)), 0);
+  const unloading = axial.T.filter((t) => t.T < -ZERO_TOL * tensionScale);
+  for (const t of axial.T) t.unloading = unloading.includes(t);
+  if (unloading.length) {
+    issues.push(issue("W-016", `Unloading (clamp-up) under method (a): ${unloading.map((t) => t.id).join(", ")}. The contact-edge method (b) is recommended.`, { fastener: unloading[0].id }));
+  }
+
+  if (hasErrors(issues)) return { ok: false, issues: sortIssues(issues) };
+
+  const close = closure(shear, axial.T, red, props);
+  if (!close.pass) {
+    const failed = close.checks.filter((c) => !c.pass);
+    const why = props.J === 0 && red.shear.Mz !== 0 ? ` Torsion Mz,s = ${red.shear.Mz.toPrecision(4)} with J = 0 cannot be resisted.` : "";
+    issues.push(issue("E-010", `${failed.map((c) => `${c.name} (residual ${c.residual.toPrecision(3)})`).join("; ")}.${why}`));
+    return { ok: false, issues: sortIssues(issues), closure: close };
+  }
+
+  const fastenerResults = fasteners.map((f, i) => ({ ...f, shear: shear[i], axial: axial.T[i] }));
+  return {
+    ok: true,
+    issues: sortIssues(issues),
+    unitSystem: pattern.unitSystem,
+    props,
+    reduced: red,
+    axial: { method: axialMethod, mode: axial.mode, thetaX: axial.thetaX, thetaY: axial.thetaY, D: axial.D },
+    fasteners: fastenerResults,
+    closure: close,
+  };
+}
+return { EXTENT_WARNING, CLOSURE_TOL, ZERO_TOL, closure, solve };
+})();
+
+/* ---- core/format.mjs ---- */
+const __m7 = (() => {
+/* Display formatting. Exports keep full precision; the screen shows
+ * `precision` significant figures (default 4). */
+
+/* `scale` snaps round-off noise (|v| < 1e-9·scale) to zero. */
+function fmt(value, precision = 4, scale = 0) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return "—";
+  if (scale > 0 && Math.abs(value) < 1e-9 * scale) value = 0;
+  if (value === 0) return "0";
+  const rounded = Number(value.toPrecision(precision));
+  const a = Math.abs(rounded);
+  const text = a >= 1e-4 && a < 1e12 ? String(rounded) : rounded.toExponential(Math.max(0, precision - 1)).replace(/\.?0+e/, "e");
+  return text.replace(/^-/, "−");
+}
+
+const fmtDeg = (value, precision = 4) => `${fmt(value, precision)}°`;
+return { fmt, fmtDeg };
+})();
+
+/* ---- core/scene.mjs ---- */
+const __m8 = (() => {
+const { unitLabel } = __m0;
+/* Shared scene model (spec section 9, "Diagram consistency").
+ *
+ * Decides every piece of diagram geometry: scale, world-to-screen
+ * transform, marker positions, vector end points, label text and legend.
+ * Painters (the on-screen canvas now; the print SVG and PNG later) only turn
+ * these primitives into drawing calls, so geometry cannot differ between them.
+ */
+
+
+
+const CENTROID_STYLE = {
+  Cs: { shape: "ring", size: 10, colour: "shear", label: "Cs shear centroid (CG)" },
+  Ca: { shape: "diamond", size: 7, colour: "axial", label: "Ca axial centroid" },
+  Cg: { shape: "square", size: 4, colour: "area", label: "Cg area centroid" },
+};
+
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+
+/* 1, 2 or 5 × 10ⁿ nearest below `x`. */
+function niceStep(x) {
+  if (!(x > 0)) return 1;
+  const e = Math.pow(10, Math.floor(Math.log10(x)));
+  const m = x / e;
+  return (m >= 5 ? 5 : m >= 2 ? 2 : 1) * e;
+}
+
+/*
+ * pattern: current inputs; result: solve() output (may be !ok);
+ * view: { width, height, padding }. Returns { transform, toScreen, toWorld, ...primitives }.
+ * `transform` is { scale, ox, oy }: screen = (ox + scale·x, oy − scale·y).
+ */
+function buildScene(pattern, result, view, { selected = null, transform: fixed = null } = {}) {
+  const { width, height, padding = 36 } = view;
+  const fasteners = (pattern.fasteners || []).filter((f) => isNum(f.x) && isNum(f.y));
+  const pts = fasteners.map((f) => ({ x: f.x, y: f.y }));
+  for (const p of pattern.plates || []) {
+    if ([p.xMin, p.xMax, p.yMin, p.yMax].every(isNum)) pts.push({ x: p.xMin, y: p.yMin }, { x: p.xMax, y: p.yMax });
+  }
+  const L = pattern.load || {};
+  const loadPoint = L.point && isNum(L.point.x) && isNum(L.point.y) ? { x: L.point.x, y: L.point.y, z: L.point.z } : null;
+  if (loadPoint) pts.push(loadPoint);
+  if (!pts.length) pts.push({ x: 0, y: 0 });
+  pts.push({ x: 0, y: 0 }); // keep the datum in view
+  let xMin = Math.min(...pts.map((p) => p.x)), xMax = Math.max(...pts.map((p) => p.x));
+  let yMin = Math.min(...pts.map((p) => p.y)), yMax = Math.max(...pts.map((p) => p.y));
+  const span = Math.max(xMax - xMin, yMax - yMin) || 100;
+  const margin = span * 0.12;
+  xMin -= margin; xMax += margin; yMin -= margin; yMax += margin;
+  let scale = Math.min((width - 2 * padding) / (xMax - xMin || 1), (height - 2 * padding) / (yMax - yMin || 1));
+  let ox = padding + ((width - 2 * padding) - scale * (xMax - xMin)) / 2 - scale * xMin;
+  let oy = height - padding - ((height - 2 * padding) - scale * (yMax - yMin)) / 2 + scale * yMin;
+  // A caller may pin the transform (e.g. while dragging, so the view does not refit under the pointer).
+  if (fixed) ({ scale, ox, oy } = fixed);
+  const transform = { scale, ox, oy };
+  const toScreen = (p) => ({ x: ox + scale * p.x, y: oy - scale * p.y });
+  const toWorld = (s) => ({ x: (s.x - ox) / scale, y: (oy - s.y) / scale });
+
+  const world = { xMin, xMax, yMin, yMax };
+  const u = unitLabel(pattern.unitSystem, "length");
+  const fu = unitLabel(pattern.unitSystem, "force");
+
+  const plates = (pattern.plates || []).filter((p) => [p.xMin, p.xMax, p.yMin, p.yMax].every(isNum)).map((p) => {
+    const a = toScreen({ x: p.xMin, y: p.yMax }), b = toScreen({ x: p.xMax, y: p.yMin });
+    return { id: p.id, world: { xMin: p.xMin, xMax: p.xMax, yMin: p.yMin, yMax: p.yMax }, screen: { x: a.x, y: a.y, w: b.x - a.x, h: b.y - a.y }, label: p.id };
+  });
+
+  const resolvedById = new Map(result && result.ok ? result.fasteners.map((f) => [f.id, f]) : []);
+  const markers = fasteners.map((f) => {
+    const r = resolvedById.get(f.id);
+    const d = r && isNum(r.diameter) ? r.diameter : isNum(pattern.defaults?.diameter) ? pattern.defaults.diameter : null;
+    const radiusPx = Math.max(4, Math.min(18, d ? (d / 2) * scale : 6));
+    const unloading = !!(r && r.axial.unloading);
+    const tension = !!(r && r.axial.T > 0 && !unloading);
+    return { id: f.id, label: f.label || f.id, world: { x: f.x, y: f.y }, screen: toScreen(f), radiusPx, selected: f.id === selected, tension, unloading };
+  });
+
+  const centroids = result && result.ok
+    ? result.props.centroids.map((c) => ({ key: c.key, name: c.name, world: { x: c.x, y: c.y }, screen: toScreen(c), coincidentWith: c.coincidentWith, ...CENTROID_STYLE[c.key] }))
+    : [];
+
+  // Reaction vectors: in-plane load on each fastener, the largest drawn 0.16 × the shorter side.
+  const vectors = [];
+  if (result && result.ok) {
+    const maxR = Math.max(...result.fasteners.map((f) => f.shear.Rs), 0);
+    if (maxR > 0) {
+      const perForce = (0.16 * Math.min(width, height)) / scale / maxR; // world length per unit force
+      for (const f of result.fasteners) {
+        if (!(f.shear.Rs > 0)) continue;
+        const from = { x: f.x, y: f.y }, to = { x: f.x + f.shear.Rx * perForce, y: f.y + f.shear.Ry * perForce };
+        vectors.push({ kind: "reaction", id: f.id, world: { from, to }, screen: { from: toScreen(from), to: toScreen(to) }, value: f.shear.Rs, label: "" });
+      }
+    }
+  }
+  // Applied in-plane force at the load point: fixed 0.2 × shorter side, direction only.
+  if (loadPoint && isNum(L.Fx) && isNum(L.Fy) && Math.hypot(L.Fx, L.Fy) > 0) {
+    const len = (0.2 * Math.min(width, height)) / scale, F = Math.hypot(L.Fx, L.Fy);
+    const from = loadPoint, to = { x: loadPoint.x + (L.Fx / F) * len, y: loadPoint.y + (L.Fy / F) * len };
+    vectors.push({ kind: "applied", id: "load", world: { from, to }, screen: { from: toScreen(from), to: toScreen(to) }, value: F, label: `F = ${Number(F.toPrecision(4))} ${fu}` });
+  }
+  const moments = [];
+  if (loadPoint && isNum(L.Mz) && L.Mz !== 0) moments.push({ kind: "Mz", screen: toScreen(loadPoint), ccw: L.Mz > 0, radiusPx: 16 });
+
+  const load = loadPoint ? { world: loadPoint, screen: toScreen(loadPoint), label: `P (z = ${isNum(loadPoint.z) ? Number(loadPoint.z.toPrecision(4)) : "?"} ${u})` } : null;
+
+  const axisLen = 0.12 * Math.min(width, height);
+  const origin = toScreen({ x: 0, y: 0 });
+  const axes = {
+    origin,
+    x: { from: origin, to: { x: origin.x + axisLen, y: origin.y }, label: "x" },
+    y: { from: origin, to: { x: origin.x, y: origin.y - axisLen }, label: "y" },
+    z: { at: origin, label: "z (toward viewer)" },
+  };
+
+  const barWorld = niceStep((0.22 * width) / scale);
+  const scaleBar = { world: barWorld, px: barWorld * scale, label: `${Number(barWorld.toPrecision(6))} ${u}`, screen: { x: padding, y: height - padding / 2 } };
+
+  const legend = [
+    ...Object.entries(CENTROID_STYLE).map(([key, s]) => ({ key, shape: s.shape, colour: s.colour, label: s.label })),
+    { key: "load", shape: "cross", colour: "load", label: "Load point P" },
+    { key: "reaction", shape: "arrow", colour: "reaction", label: "Fastener in-plane load (elastic)" },
+    { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
+  ];
+
+  return { width, height, transform, world, toScreen, toWorld, plates, markers, centroids, vectors, moments, load, axes, scaleBar, legend };
+}
+
+/* Snap-grid lines covering the visible world window. */
+function gridLines(scene, step) {
+  if (!(step > 0)) return [];
+  const { toWorld, width, height } = scene;
+  const a = toWorld({ x: 0, y: height }), b = toWorld({ x: width, y: 0 });
+  if ((b.x - a.x) / step > 400 || (b.y - a.y) / step > 400) return [];
+  const lines = [];
+  for (let x = Math.ceil(a.x / step) * step; x <= b.x; x += step) lines.push({ axis: "x", value: x, px: scene.toScreen({ x, y: 0 }).x });
+  for (let y = Math.ceil(a.y / step) * step; y <= b.y; y += step) lines.push({ axis: "y", value: y, px: scene.toScreen({ x: 0, y }).y });
+  return lines;
+}
+return { CENTROID_STYLE, niceStep, buildScene, gridLines };
+})();
+
+/* ---- core/generators.mjs ---- */
+const __m9 = (() => {
+const { round12 } = __m0;
+/* Pattern generators (spec section 7): rectangular array, staggered rows,
+ * bolt circle and mirror. Generators return plain (x, y) points; the caller
+ * assigns ids so ids stay unique within the pattern.
+ */
+
+
+
+const pt = (x, y) => ({ x: round12(x) || 0, y: round12(y) || 0 });
+
+function count(value, label, min = 1) {
+  if (!Number.isInteger(value) || value < min) throw new Error(`${label} must be a whole number ≥ ${min}.`);
+  return value;
+}
+function finite(value, label) {
+  if (typeof value !== "number" || !Number.isFinite(value)) throw new Error(`${label} must be a number.`);
+  return value;
+}
+
+/* nx × ny grid at pitch (sx, sy), centred on (cx, cy). */
+function rectangularArray({ nx, ny, sx, sy, cx = 0, cy = 0 }) {
+  count(nx, "Columns"); count(ny, "Rows"); finite(sx, "Column pitch"); finite(sy, "Row pitch"); finite(cx, "Centre x"); finite(cy, "Centre y");
+  const out = [];
+  for (let j = 0; j < ny; j++) {
+    for (let i = 0; i < nx; i++) out.push(pt(cx + (i - (nx - 1) / 2) * sx, cy + ((ny - 1) / 2 - j) * sy));
+  }
+  return out;
+}
+
+/* `rows` rows of `perRow` fasteners at pitch `sx`, rows `sy` apart, every
+ * second row shifted by half a pitch; centred on (cx, cy). */
+function staggeredRows({ rows, perRow, sx, sy, cx = 0, cy = 0 }) {
+  count(rows, "Rows"); count(perRow, "Fasteners per row"); finite(sx, "Pitch"); finite(sy, "Gauge"); finite(cx, "Centre x"); finite(cy, "Centre y");
+  const out = [];
+  for (let j = 0; j < rows; j++) {
+    const shift = j % 2 ? sx / 2 : 0;
+    const offset = rows > 1 ? sx / 4 : 0; // centre the staggered block
+    for (let i = 0; i < perRow; i++) out.push(pt(cx + (i - (perRow - 1) / 2) * sx + shift - offset, cy + ((rows - 1) / 2 - j) * sy));
+  }
+  return out;
+}
+
+/* n fasteners on a circle of radius r about (cx, cy), the first at `startDeg` CCW from +x. */
+function boltCircle({ n, r, cx = 0, cy = 0, startDeg = 0 }) {
+  count(n, "Number of fasteners"); finite(r, "Radius"); finite(cx, "Centre x"); finite(cy, "Centre y"); finite(startDeg, "Start angle");
+  if (!(r > 0)) throw new Error("Radius must be greater than zero.");
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const t = (startDeg + (360 * i) / n) * Math.PI / 180;
+    out.push(pt(cx + r * Math.cos(t), cy + r * Math.sin(t)));
+  }
+  return out;
+}
+
+/* Mirror images of `points` about the line x = c ("x") or y = c ("y").
+ * Images that land on an existing point (within `tol`) are skipped. */
+function mirror(points, { axis, c = 0, existing = points, tol = 1e-9 }) {
+  if (axis !== "x" && axis !== "y") throw new Error("Mirror axis must be x or y.");
+  finite(c, "Mirror line");
+  const images = points.map((p) => (axis === "x" ? pt(2 * c - p.x, p.y) : pt(p.x, 2 * c - p.y)));
+  const taken = [...existing];
+  const out = [];
+  for (const q of images) {
+    if (taken.some((e) => Math.hypot(e.x - q.x, e.y - q.y) <= tol)) continue;
+    taken.push(q);
+    out.push(q);
+  }
+  return out;
+}
+return { rectangularArray, staggeredRows, boltCircle, mirror };
+})();
+
+/* ---- core/persist.mjs ---- */
+const __m10 = (() => {
+const { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, defaultSettings, resolveFastener } = __m2;
+const { UNIT_SYSTEMS, convertPattern, unitLabel } = __m0;
+const { issue } = __m1;
+/* Persistence (spec section 8): canonical JSON and Markdown, import and export.
+ *
+ * JSON stores inputs and settings only, exactly as entered, tagged with
+ * `unitSystem`. Markdown holds readable tables plus one fenced JSON block;
+ * import prefers that block and falls back to the fastener, plate and load
+ * tables when it is missing or was hand-edited (its checksum no longer
+ * matches). Import validation lists every problem at once; a file with any
+ * error does not load. The app adopts the file's unit system: nothing is
+ * converted on import.
+ */
+
+
+
+
+
+const MAX_PLATES = 2;
+
+/* Older schema versions that can be migrated, as { from: fn(raw) -> raw at from+1 }.
+ * Version 1 is the first published schema, so none exist yet; N-003 is raised
+ * whenever one runs. */
+const MIGRATIONS = {};
+
+const ENUMS = {
+  "settings.designBasis": ["elastic"],
+  "settings.axialMethod": ["centroid"],
+  "settings.icr.model": ["crawford-kulak", "elastic-plastic"],
+  "settings.pageSize": ["A4", "Letter"],
+  "settings.contactEdge.edge": ["xMin", "xMax", "yMin", "yMax"],
+};
+const NOT_NULL = new Set(["area", "ks", "ka"]);
+const PLATE_NULLABLE = new Set(["thickness", "bearingAllowable", "shearOutAllowable", "minEdgeRatio", "flangeStrength"]);
+
+const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+
+/* Fill `value` from `template`, recording defaulted and invalid fields. */
+function conform(value, template, path, ctx, { nullable = () => true } = {}) {
+  if (isObj(template)) {
+    if (!isObj(value)) {
+      ctx.errors.push(`${path} must be an object.`);
+      return clone(template);
+    }
+    const out = {};
+    for (const [key, t] of Object.entries(template)) {
+      const p = `${path}.${key}`;
+      if (!(key in value)) {
+        ctx.defaulted.push(p);
+        out[key] = clone(t);
+      } else {
+        out[key] = conform(value[key], t, p, ctx, { nullable });
+      }
+    }
+    for (const key of Object.keys(value)) if (!(key in template)) ctx.ignored.push(`${path}.${key}`);
+    return out;
+  }
+  if (typeof template === "number" || template === null) {
+    if (isNum(value) || (value === null && nullable(path))) return value;
+    if (ctx.lenient && (value === null || typeof value === "string")) return value;
+    ctx.errors.push(`${path} must be a number${nullable(path) ? " or null" : ""} (found ${JSON.stringify(value)}).`);
+    return template;
+  }
+  if (typeof template === "boolean") {
+    if (typeof value === "boolean") return value;
+    ctx.errors.push(`${path} must be true or false.`);
+    return template;
+  }
+  if (typeof value !== "string") {
+    ctx.errors.push(`${path} must be text.`);
+    return template;
+  }
+  const allowed = ENUMS[path.replace(/^pattern\./, "")];
+  if (allowed && !allowed.includes(value)) ctx.errors.push(`${path} must be one of ${allowed.join(", ")} (found “${value}”).`);
+  return value;
+}
+
+/* Sparse overrides: only keys the defaults know, same shapes. */
+function conformOverrides(value, template, path, ctx) {
+  if (!isObj(value)) {
+    ctx.errors.push(`${path} must be an object.`);
+    return {};
+  }
+  const out = {};
+  for (const [key, v] of Object.entries(value)) {
+    const p = `${path}.${key}`;
+    if (!(key in template)) {
+      ctx.ignored.push(p);
+    } else if (isObj(template[key])) {
+      out[key] = conformOverrides(v, template[key], p, ctx);
+    } else {
+      out[key] = conform(v, template[key], p, ctx, { nullable: () => !NOT_NULL.has(key) });
+    }
+  }
+  return out;
+}
+
+/* Validate and normalise a parsed object. Returns { pattern, issues, errors }.
+ * `lenient` restores the app's own saved state (working copy, library): blank,
+ * text and out-of-range values are kept as entered so the page flags them,
+ * instead of rejecting the whole pattern. */
+function normalizePattern(raw, { lenient = false } = {}) {
+  const fail = (...messages) => ({ pattern: null, errors: messages, issues: [issue("E-013", messages.join(" "))] });
+  if (!isObj(raw)) return fail("The file does not hold a pattern object.");
+  let version = raw.schemaVersion;
+  if (!Number.isInteger(version) || version < 1) return fail(`schemaVersion must be a whole number ≥ 1 (found ${JSON.stringify(version)}).`);
+  if (version > SCHEMA_VERSION) {
+    return fail(`schemaVersion ${version} is newer than this tool supports (${SCHEMA_VERSION}); it was not loaded. Use a newer version of the tool.`);
+  }
+  const notes = [];
+  let data = raw;
+  while (version < SCHEMA_VERSION) {
+    const step = MIGRATIONS[version];
+    if (!step) return fail(`schemaVersion ${version} has no migration to ${SCHEMA_VERSION}.`);
+    data = step(data);
+    notes.push(issue("N-003", `Migrated from schemaVersion ${version} to ${version + 1}.`));
+    version += 1;
+  }
+
+  const ctx = { errors: [], defaulted: [], ignored: [], lenient };
+  if (!UNIT_SYSTEMS.includes(data.unitSystem)) {
+    ctx.errors.push(`unitSystem must be ${UNIT_SYSTEMS.join(" or ")} (found ${JSON.stringify(data.unitSystem)}); values are never converted or guessed on import.`);
+  }
+  const unitSystem = UNIT_SYSTEMS.includes(data.unitSystem) ? data.unitSystem : "N-mm";
+  // App defaults are in N-mm; express them in the file's system before filling gaps.
+  const inUnits = (p) => convertPattern({ unitSystem: "N-mm", ...p }, unitSystem);
+  const base = inUnits({ defaults: defaultProperties(), plates: [defaultPlate("P1")], load: defaultLoad(), fasteners: [] });
+
+  let name = data.name;
+  if (typeof name !== "string" || !name.trim()) {
+    if (name !== undefined && typeof name !== "string") ctx.errors.push("name must be text.");
+    else ctx.defaulted.push("name");
+    name = "Untitled pattern";
+  }
+  const settings = "settings" in data ? conform(data.settings, defaultSettings(), "settings", ctx, { nullable: () => false }) : (ctx.defaulted.push("settings"), defaultSettings());
+  if (!lenient && isNum(settings.precision) && !(Number.isInteger(settings.precision) && settings.precision >= 1 && settings.precision <= 15)) {
+    ctx.errors.push("settings.precision must be a whole number from 1 to 15.");
+  }
+  const defaults = "defaults" in data
+    ? conform(data.defaults, base.defaults, "defaults", ctx, { nullable: (p) => !NOT_NULL.has(p.split(".").pop()) })
+    : (ctx.defaulted.push("defaults"), base.defaults);
+
+  const fasteners = [];
+  if (!Array.isArray(data.fasteners)) {
+    ctx.errors.push("fasteners must be a list.");
+  } else {
+    const seen = new Set();
+    data.fasteners.forEach((f, i) => {
+      const at = `fasteners[${i}]`;
+      if (!isObj(f)) return ctx.errors.push(`${at} must be an object.`);
+      const id = f.id;
+      if (typeof id !== "string" || !id) ctx.errors.push(`${at}.id must be non-empty text.`);
+      else if (seen.has(id)) ctx.errors.push(`${at}.id “${id}” is used twice.`);
+      seen.add(id);
+      const label = f.label === undefined ? (ctx.defaulted.push(`${at}.label`), "") : f.label;
+      if (typeof label !== "string") ctx.errors.push(`${at}.label must be text.`);
+      for (const axis of ["x", "y"]) if (!isNum(f[axis]) && !(lenient && (f[axis] === null || typeof f[axis] === "string"))) ctx.errors.push(`${at}.${axis} (${id}) must be a number (found ${JSON.stringify(f[axis])}).`);
+      const overrides = f.overrides === undefined ? {} : conformOverrides(f.overrides, base.defaults, `${at}.overrides`, ctx);
+      for (const key of Object.keys(f)) if (!["id", "label", "x", "y", "overrides"].includes(key)) ctx.ignored.push(`${at}.${key}`);
+      fasteners.push({ id, label, x: f.x, y: f.y, overrides });
+    });
+  }
+
+  let plates;
+  if (!("plates" in data)) {
+    ctx.defaulted.push("plates");
+    plates = base.plates;
+  } else if (!Array.isArray(data.plates)) {
+    ctx.errors.push("plates must be a list.");
+    plates = [];
+  } else {
+    if (data.plates.length > MAX_PLATES) ctx.errors.push(`At most ${MAX_PLATES} plates are supported (found ${data.plates.length}).`);
+    const seen = new Set();
+    plates = data.plates.map((p, i) => {
+      const plate = conform(p, { ...base.plates[0], id: `P${i + 1}` }, `plates[${i}]`, ctx, { nullable: (path) => PLATE_NULLABLE.has(path.split(".").pop()) });
+      if (seen.has(plate.id)) ctx.errors.push(`plates[${i}].id “${plate.id}” is used twice.`);
+      seen.add(plate.id);
+      return plate;
+    });
+  }
+
+  const load = "load" in data ? conform(data.load, base.load, "load", ctx, { nullable: () => false }) : (ctx.defaulted.push("load"), base.load);
+
+  if (ctx.errors.length) {
+    return { pattern: null, errors: ctx.errors, issues: [issue("E-013", `The file has ${ctx.errors.length} problem${ctx.errors.length > 1 ? "s" : ""}: ${ctx.errors.join(" ")}`)] };
+  }
+  const issues = [...notes];
+  if (ctx.defaulted.length || ctx.ignored.length) {
+    const parts = [];
+    if (ctx.defaulted.length) parts.push(`defaulted: ${ctx.defaulted.join(", ")}`);
+    if (ctx.ignored.length) parts.push(`ignored unknown fields: ${ctx.ignored.join(", ")}`);
+    issues.push(issue("W-018", parts.join("; ") + "."));
+  }
+  const pattern = { schemaVersion: SCHEMA_VERSION, name, unitSystem, settings, defaults, fasteners, plates, load };
+  if (Number.isInteger(data.nextId)) pattern.nextId = data.nextId;
+  return { pattern, issues, errors: [] };
+}
+
+/* ---- JSON ---- */
+
+/* Canonical key order, full precision. */
+function toJSON(pattern) {
+  const { schemaVersion, name, unitSystem, settings, defaults, fasteners, plates, load, nextId } = pattern;
+  const out = { schemaVersion, name, unitSystem, settings, defaults, fasteners, plates, load };
+  if (nextId !== undefined) out.nextId = nextId;
+  return JSON.stringify(out, null, 2) + "\n";
+}
+
+function parseJSON(text, options) {
+  let raw;
+  try {
+    raw = JSON.parse(text);
+  } catch (e) {
+    return { pattern: null, errors: [`Not valid JSON: ${e.message}`], issues: [issue("E-013", `Not valid JSON: ${e.message}`)] };
+  }
+  return normalizePattern(raw, options);
+}
+
+/* ---- Markdown ---- */
+
+/* FNV-1a, 32 bit: detects a hand-edited JSON block. */
+function checksum(text) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h.toString(16).padStart(8, "0");
+}
+
+const cell = (v) => (v === null || v === undefined ? "" : String(v).replace(/\|/g, "\\|").replace(/\n/g, " "));
+const row = (cells) => `| ${cells.map(cell).join(" | ")} |`;
+function mdTable(head, rows) {
+  return [row(head), row(head.map(() => "---")), ...rows.map(row)].join("\n");
+}
+
+const PRELIMINARY = "Preliminary sizing — verify against the governing specification.";
+
+/* `result` (optional) adds result tables; they are ignored on import. */
+function toMarkdown(pattern, result = null, { version = "", date = "" } = {}) {
+  const u = (kind) => unitLabel(pattern.unitSystem, kind);
+  const json = toJSON(pattern);
+  const lines = [
+    `# Fastener pattern: ${pattern.name}`,
+    "",
+    `*${PRELIMINARY}*`,
+    "",
+    `- Unit system: \`${pattern.unitSystem}\``,
+    `- Axes: right-handed, x right, y up, z toward the viewer; faying surface z = 0; positive Fz is tension; positive Mz is counter-clockwise viewed from +z.`,
+  ];
+  if (version) lines.push(`- Tool: Fastener Pattern CG Tracker ${version}`);
+  if (date) lines.push(`- Exported: ${date}`);
+  const resolved = pattern.fasteners.map((f) => resolveFastener(pattern, f));
+  lines.push("", "## Fasteners", "",
+    mdTable(["id", "label", `x (${u("length")})`, `y (${u("length")})`, `area (${u("area")})`, "ks", "ka", `diameter (${u("length")})`],
+      resolved.map((f) => [f.id, f.label, f.x, f.y, f.area, f.ks, f.ka, f.diameter])),
+    "", "## Plates", "",
+    mdTable(["id", `thickness (${u("length")})`, `xMin (${u("length")})`, `xMax (${u("length")})`, `yMin (${u("length")})`, `yMax (${u("length")})`],
+      pattern.plates.map((p) => [p.id, p.thickness, p.xMin, p.xMax, p.yMin, p.yMax])),
+    "", "## Load", "",
+    mdTable(["quantity", "value", "unit"], [
+      ["appliedPlate", pattern.load.appliedPlate, ""],
+      ["point.x", pattern.load.point.x, u("length")], ["point.y", pattern.load.point.y, u("length")], ["point.z", pattern.load.point.z, u("length")],
+      ["Fx", pattern.load.Fx, u("force")], ["Fy", pattern.load.Fy, u("force")], ["Fz", pattern.load.Fz, u("force")],
+      ["Mx", pattern.load.Mx, u("moment")], ["My", pattern.load.My, u("moment")], ["Mz", pattern.load.Mz, u("moment")],
+    ]));
+  if (result) lines.push("", ...resultSections(pattern, result));
+  lines.push("", "## Exact inputs", "",
+    "Import reads this block. Editing it by hand makes import fall back to the tables above, and settings and defaults then revert.", "",
+    `<!-- fastener-cg-json checksum=${checksum(json)} -->`, "```json", json.trimEnd(), "```", "");
+  return lines.join("\n");
+}
+
+function resultSections(pattern, result) {
+  const u = (kind) => unitLabel(pattern.unitSystem, kind);
+  if (!result.ok) {
+    return ["## Results", "", "Not computed: the pattern has errors.", "", ...issueTable(result.issues)];
+  }
+  const { props: p, reduced: r } = result;
+  return [
+    "## Centroids", "",
+    mdTable(["centroid", `x (${u("length")})`, `y (${u("length")})`, "weight", "used for", "coincident with"],
+      p.centroids.map((c) => [`${c.name} ${c.key}`, c.x, c.y, c.weight, c.usedFor, c.coincidentWith.join(", ") || "—"])),
+    "", "## Section properties", "",
+    mdTable(["property", "value", "unit"], [
+      ["J (about Cs)", p.J, u("section")], ["Ixx (about Ca)", p.Ixx, u("section")], ["Iyy (about Ca)", p.Iyy, u("section")],
+      ["Ixy (about Ca)", p.Ixy, u("section")], ["I1", p.principal.I1, u("section")], ["I2", p.principal.I2, u("section")],
+      ["θp (CCW from +x to I1 axis)", p.principal.thetaDeg, "°"], ["Σks", p.Ks, ""], ["Σka", p.Ka, ""],
+    ]),
+    "", "## Reduced load", "",
+    mdTable(["quantity", "value", "unit", "reduced to"], [
+      ["Fx", r.Fx, u("force"), ""], ["Fy", r.Fy, u("force"), ""], ["Fz", r.Fz, u("force"), ""],
+      ["Mz,s", r.shear.Mz, u("moment"), `Cs (${r.shear.Q.x}, ${r.shear.Q.y}, 0)`],
+      ["Mx,a", r.axial.Mx, u("moment"), `Ca (${r.axial.Q.x}, ${r.axial.Q.y}, 0)`],
+      ["My,a", r.axial.My, u("moment"), `Ca (${r.axial.Q.x}, ${r.axial.Q.y}, 0)`],
+    ]),
+    "", "## Fastener loads (elastic)", "",
+    mdTable(["id", `Rdx (${u("force")})`, `Rdy (${u("force")})`, `Rtx (${u("force")})`, `Rty (${u("force")})`, `Rs (${u("force")})`, "direction (°)", `T (${u("force")})`, "state"],
+      result.fasteners.map((f) => [f.id, f.shear.Rdx, f.shear.Rdy, f.shear.Rtx, f.shear.Rty, f.shear.Rs, f.shear.angleDeg, f.axial.T, f.axial.unloading ? "unloading" : f.axial.T > 0 ? "tension" : "—"])),
+    "", "## Equilibrium closure", "",
+    mdTable(["check", "residual", "relative", "pass"], result.closure.checks.map((c) => [c.name, c.residual, c.relative, c.pass ? "yes" : "no"])),
+    "", ...issueTable(result.issues),
+  ];
+}
+
+function issueTable(issues) {
+  return ["## Warnings", "", issues.length
+    ? mdTable(["id", "tier", "condition", "detail", "fastener or field"], issues.map((i) => [i.id, i.tier, i.title, i.detail, i.fastener || i.field || ""]))
+    : "None."];
+}
+
+/* Split a Markdown table under `## heading` into rows of cells. */
+function readTable(text, heading) {
+  const lines = text.split(/\r?\n/);
+  const start = lines.findIndex((l) => l.trim().toLowerCase() === `## ${heading}`.toLowerCase());
+  if (start < 0) return null;
+  const rows = [];
+  for (let i = start + 1; i < lines.length; i++) {
+    const l = lines[i].trim();
+    if (l.startsWith("## ")) break;
+    if (!l.startsWith("|")) {
+      if (rows.length) break;
+      continue;
+    }
+    const cells = l.replace(/^\|/, "").replace(/\|$/, "").split(/(?<!\\)\|/).map((c) => c.trim().replace(/\\\|/g, "|"));
+    if (cells.every((c) => /^:?-{3,}:?$/.test(c))) continue;
+    rows.push(cells);
+  }
+  if (!rows.length) return null;
+  const [head, ...body] = rows;
+  return body.map((cells) => Object.fromEntries(head.map((h, i) => [h.replace(/\s*\(.*\)$/, ""), cells[i] ?? ""])));
+}
+
+const num = (s) => (s === "" || s === undefined ? null : Number(s));
+
+/* Rebuild a pattern from the fastener, plate and load tables only. */
+function fromTables(text) {
+  const unit = /Unit system:\s*`?([A-Za-z-]+)`?/.exec(text)?.[1];
+  const name = /^# Fastener pattern:\s*(.+)$/m.exec(text)?.[1]?.trim();
+  const fastenerRows = readTable(text, "Fasteners");
+  const plateRows = readTable(text, "Plates");
+  const loadRows = readTable(text, "Load");
+  const errors = [];
+  if (!unit) errors.push("No “Unit system” line; units are never guessed.");
+  if (!fastenerRows) errors.push("No “## Fasteners” table.");
+  if (!loadRows) errors.push("No “## Load” table.");
+  if (errors.length) return { raw: null, errors };
+  const appDefaults = convertPattern({ unitSystem: "N-mm", defaults: defaultProperties(), fasteners: [], plates: [], load: defaultLoad() }, UNIT_SYSTEMS.includes(unit) ? unit : "N-mm").defaults;
+  const fasteners = fastenerRows.map((r) => {
+    const overrides = {};
+    for (const key of ["area", "ks", "ka", "diameter"]) {
+      const v = num(r[key]);
+      if (r[key] !== undefined && r[key] !== "" && v !== appDefaults[key]) overrides[key] = Number.isFinite(v) ? v : r[key];
+    }
+    return { id: r.id, label: r.label || "", x: num(r.x), y: num(r.y), overrides };
+  });
+  const plates = (plateRows || []).map((r) => ({
+    id: r.id, thickness: num(r.thickness), xMin: num(r.xMin), xMax: num(r.xMax), yMin: num(r.yMin), yMax: num(r.yMax),
+  }));
+  const load = { point: {} };
+  for (const r of loadRows) {
+    const key = r.quantity;
+    if (key === "appliedPlate") load.appliedPlate = r.value;
+    else if (key?.startsWith("point.")) load.point[key.slice(6)] = num(r.value);
+    else if (key) load[key] = num(r.value);
+  }
+  return { raw: { schemaVersion: SCHEMA_VERSION, name, unitSystem: unit, fasteners, plates, load }, errors: [] };
+}
+
+function parseMarkdown(text) {
+  text = text.replace(/\r\n?/g, "\n");
+  const block = /<!--\s*fastener-cg-json checksum=([0-9a-f]{8})\s*-->\s*```json\s*\n([\s\S]*?)\n```/.exec(text)
+    || /```json\s*\n([\s\S]*?)\n```/.exec(text);
+  let reason = "no JSON block";
+  if (block) {
+    const body = block.length === 3 ? block[2] : block[1];
+    const sum = block.length === 3 ? block[1] : null;
+    if (sum && checksum(body + "\n") === sum) {
+      const parsed = parseJSON(body);
+      if (parsed.pattern || !parsed.errors.some((e) => e.startsWith("Not valid JSON"))) return { ...parsed, source: "json" };
+      reason = "the JSON block does not parse";
+    } else {
+      reason = sum ? "the JSON block was edited (checksum mismatch)" : "the JSON block has no checksum";
+    }
+  }
+  const tables = fromTables(text);
+  if (!tables.raw) {
+    return { pattern: null, errors: tables.errors, issues: [issue("E-013", `Markdown import: ${reason}, and the tables could not be read: ${tables.errors.join(" ")}`)], source: "tables" };
+  }
+  const parsed = normalizePattern(tables.raw);
+  if (!parsed.pattern) return { ...parsed, source: "tables" };
+  const lost = issue("W-018", `Markdown import used the tables because ${reason}. Settings and group defaults reverted to app defaults (${Object.keys(defaultSettings()).join(", ")}; ${Object.keys(defaultProperties()).join(", ")}); only area, ks, ka and diameter were read per fastener; result tables were ignored.`);
+  return { ...parsed, issues: [lost, ...parsed.issues.filter((i) => i.id !== "W-018")], source: "tables" };
+}
+
+/* Detect the format from the name and content. */
+function parsePatternFile(text, filename = "") {
+  if (/\.json$/i.test(filename) || /^\s*\{/.test(text)) return { ...parseJSON(text), source: "json" };
+  return parseMarkdown(text);
+}
+return { MAX_PLATES, MIGRATIONS, normalizePattern, toJSON, parseJSON, checksum, mdTable, PRELIMINARY, toMarkdown, parseMarkdown, parsePatternFile };
+})();
+
+/* ---- core/verify.mjs ---- */
+const __m11 = (() => {
+const { examplePattern } = __m2;
+const { solve } = __m6;
+/* Verification set (spec section 10), shared by the in-app "Run verification"
+ * panel and the Node test suite so both run exactly the same cases.
+ *
+ * Hand-calculation cases are in N-mm with uniform fasteners (ks = ka = 1).
+ * Closed-form expectations use a 1e-9 relative tolerance; values the spec
+ * quotes rounded use its stated absolute tolerance.
+ */
+
+
+
+
+const VERIFICATION_SET = "M1";
+const REL_TOL = 1e-9;
+
+function pattern(points, load = {}) {
+  const p = examplePattern("N-mm");
+  p.name = "verification";
+  p.fasteners = points.map(([x, y], i) => ({ id: `F${i + 1}`, label: "", x, y, overrides: {} }));
+  p.load = { appliedPlate: "P1", point: { x: 0, y: 0, z: 0 }, Fx: 0, Fy: 0, Fz: 0, Mx: 0, My: 0, Mz: 0, ...load };
+  return p;
+}
+
+const RECT = [[50, 30], [50, -30], [-50, 30], [-50, -30]];
+const circle = (n, r, start = 0) => Array.from({ length: n }, (_, i) => {
+  const t = (start + 360 * i / n) * Math.PI / 180;
+  return [r * Math.cos(t), r * Math.sin(t)];
+});
+
+/* A check passes when |actual − expected| ≤ abs, or ≤ rel·max(|expected|, scale). */
+function check(label, actual, expected, { rel = REL_TOL, abs = 0, scale = 0 } = {}) {
+  const err = Math.abs(actual - expected);
+  const pass = Number.isFinite(actual) && (err <= abs || err <= rel * Math.max(Math.abs(expected), scale));
+  return { label, actual, expected, tol: abs ? `±${abs}` : `${rel} rel`, pass };
+}
+const truth = (label, ok, detail = "") => ({ label, actual: detail, expected: "", tol: "", pass: !!ok });
+
+const byId = (r, id) => r.fasteners.find((f) => f.id === id);
+const at = (r, x, y) => r.fasteners.find((f) => Math.abs(f.x - x) < 1e-9 && Math.abs(f.y - y) < 1e-9);
+
+function solved(p) {
+  const r = solve(p);
+  if (!r.ok) throw new Error(`solve failed: ${r.issues.filter((i) => i.tier === "error").map((i) => `${i.id} ${i.detail}`).join("; ")}`);
+  return r;
+}
+
+const HAND_CASES = [
+  {
+    id: "VC-01", title: "2×2 rectangle, Fy = −10 000 N at (150, 0, 0)",
+    run() {
+      const r = solved(pattern(RECT, { point: { x: 150, y: 0, z: 0 }, Fy: -10000 }));
+      return [
+        check("Cs.x", r.props.Cs.x, 0, { scale: 50 }), check("Cs.y", r.props.Cs.y, 0, { scale: 50 }),
+        check("Ca.x", r.props.Ca.x, 0, { scale: 50 }), check("Ca.y", r.props.Ca.y, 0, { scale: 50 }),
+        check("J", r.props.J, 13600),
+        check("Mz,s", r.reduced.shear.Mz, -1.5e6),
+        ...r.fasteners.map((f) => check(`Rdy ${f.id}`, f.shear.Rdy, -2500)),
+        check("Rs at (50, 30)", at(r, 50, 30).shear.Rs, 8670.8, { abs: 0.1 }),
+        check("Rs at (50, −30)", at(r, 50, -30).shear.Rs, 8670.8, { abs: 0.1 }),
+        check("Rs at (−50, 30)", at(r, -50, 30).shear.Rs, 4476.2, { abs: 0.1 }),
+        check("Rs at (−50, −30)", at(r, -50, -30).shear.Rs, 4476.2, { abs: 0.1 }),
+        truth("equilibrium closure", r.closure.pass),
+      ];
+    },
+  },
+  {
+    id: "VC-02", title: "L-shape (0, 0), (100, 0), (0, 100)",
+    run() {
+      const r = solved(pattern([[0, 0], [100, 0], [0, 100]]));
+      const p = r.props;
+      return [
+        check("centroid x", p.Cs.x, 100 / 3), check("centroid y", p.Cs.y, 100 / 3),
+        check("Ixx", p.Ixx, 20000 / 3), check("Iyy", p.Iyy, 20000 / 3), check("Ixy", p.Ixy, -10000 / 3),
+        check("J", p.J, 40000 / 3),
+        check("I1", p.principal.I1, 10000), check("I2", p.principal.I2, 10000 / 3),
+        check("θp (°)", p.principal.thetaDeg, 45),
+      ];
+    },
+  },
+  {
+    id: "VC-03", title: "6-fastener bolt circle, R = 50 mm, 60° spacing",
+    run() {
+      const r = solved(pattern(circle(6, 50)));
+      const p = r.props;
+      return [
+        check("J", p.J, 15000), check("Ixx", p.Ixx, 7500), check("Iyy", p.Iyy, 7500),
+        check("Ixy", p.Ixy, 0, { scale: 7500 }),
+        check("centroid x", p.Cs.x, 0, { scale: 50 }), check("centroid y", p.Cs.y, 0, { scale: 50 }),
+      ];
+    },
+  },
+  {
+    id: "VC-04", title: "VC-01 pattern, Mx,a = 12 000 N·mm",
+    run() {
+      const r = solved(pattern(RECT, { Mx: 12000 }));
+      return [
+        check("Mx,a", r.reduced.axial.Mx, 12000),
+        ...r.fasteners.map((f) => check(`T ${f.id} (y = ${f.y})`, f.axial.T, f.y > 0 ? 100 : -100)),
+      ];
+    },
+  },
+  {
+    id: "VC-05", title: "VC-01 pattern, My,a = 20 000 N·mm",
+    run() {
+      const r = solved(pattern(RECT, { My: 20000 }));
+      return [
+        check("My,a", r.reduced.axial.My, 20000),
+        ...r.fasteners.map((f) => check(`T ${f.id} (x = ${f.x})`, f.axial.T, f.x > 0 ? -100 : 100)),
+      ];
+    },
+  },
+  {
+    id: "VC-06", title: "VC-01 pattern, Fx = 1 000 N at (0, 0, zp = 50)",
+    run() {
+      const r = solved(pattern(RECT, { point: { x: 0, y: 0, z: 50 }, Fx: 1000 }));
+      return [
+        check("My,a", r.reduced.axial.My, 50000),
+        ...r.fasteners.map((f) => check(`T ${f.id} (x = ${f.x})`, f.axial.T, f.x > 0 ? -250 : 250)),
+      ];
+    },
+  },
+  {
+    id: "VC-09", title: "Circle group, pure Mz",
+    run() {
+      const N = 8, R = 60, Mz = 48000;
+      const r = solved(pattern(circle(N, R, 10), { Mz }));
+      const expected = Mz / (N * R);
+      return r.fasteners.flatMap((f) => {
+        const tangent = Math.atan2(f.y, f.x) + Math.PI / 2;
+        const along = f.shear.Rx * Math.cos(tangent) + f.shear.Ry * Math.sin(tangent);
+        return [check(`tangential ${f.id}`, along, expected), check(`magnitude ${f.id}`, f.shear.Rs, expected)];
+      });
+    },
+  },
+];
+
+/* ---- Property tests ---- */
+
+const ASYM = [[0, 0], [120, 10], [30, 80], [-40, 55], [75, -35]];
+const ASYM_LOAD = { point: { x: 210, y: -40, z: 35 }, Fx: 1800, Fy: -5200, Fz: 2600, Mx: 41000, My: -23000, Mz: 150000 };
+const withOverrides = (p) => {
+  p.fasteners[1].overrides = { ks: 2.5, ka: 0.6 };
+  p.fasteners[3].overrides = { ks: 0.7, ka: 1.8, area: 200 };
+  return p;
+};
+const base = () => withOverrides(pattern(ASYM, ASYM_LOAD));
+const scaleOf = (r) => Math.max(...r.fasteners.map((f) => Math.max(f.shear.Rs, Math.abs(f.axial.T))));
+
+function transform(p, fn, { rotateLoad = null, mirrorLoad = null } = {}) {
+  const q = JSON.parse(JSON.stringify(p));
+  q.fasteners.forEach((f) => Object.assign(f, fn(f.x, f.y)));
+  const P = q.load.point;
+  Object.assign(P, fn(P.x, P.y));
+  if (rotateLoad) Object.assign(q.load, rotateLoad(q.load));
+  if (mirrorLoad) Object.assign(q.load, mirrorLoad(q.load));
+  return q;
+}
+
+const PROPERTY_CASES = [
+  {
+    id: "P-01", title: "Translation invariance",
+    run() {
+      const p = base();
+      const a = solved(p), b = solved(transform(p, (x, y) => ({ x: x + 1234.5, y: y - 678.25 })));
+      const S = scaleOf(a);
+      return a.fasteners.flatMap((f, i) => [
+        check(`Rx ${f.id}`, b.fasteners[i].shear.Rx, f.shear.Rx, { scale: S }),
+        check(`Ry ${f.id}`, b.fasteners[i].shear.Ry, f.shear.Ry, { scale: S }),
+        check(`T ${f.id}`, b.fasteners[i].axial.T, f.axial.T, { scale: S }),
+      ]);
+    },
+  },
+  {
+    id: "P-02", title: "Rotation invariance (37° about the origin)",
+    run() {
+      const t = 37 * Math.PI / 180, c = Math.cos(t), s = Math.sin(t);
+      const rot = (x, y) => ({ x: c * x - s * y, y: s * x + c * y });
+      const p = base();
+      const q = transform(p, rot, {
+        rotateLoad: (L) => {
+          const F = rot(L.Fx, L.Fy), M = rot(L.Mx, L.My);
+          return { Fx: F.x, Fy: F.y, Mx: M.x, My: M.y };
+        },
+      });
+      const a = solved(p), b = solved(q);
+      const S = scaleOf(a);
+      return a.fasteners.flatMap((f, i) => {
+        const g = b.fasteners[i], R = rot(f.shear.Rx, f.shear.Ry);
+        return [
+          check(`|R| ${f.id}`, g.shear.Rs, f.shear.Rs, { scale: S }),
+          check(`Rx rotated ${f.id}`, g.shear.Rx, R.x, { scale: S }),
+          check(`Ry rotated ${f.id}`, g.shear.Ry, R.y, { scale: S }),
+          check(`T ${f.id}`, g.axial.T, f.axial.T, { scale: S }),
+        ];
+      });
+    },
+  },
+  {
+    id: "P-03", title: "Mirror symmetry about x = 0",
+    run() {
+      const p = pattern([[40, 20], [-40, 20], [70, -30], [-70, -30]], { point: { x: 0, y: 90, z: 20 }, Fy: -3000, Fz: 1500, Mx: 25000 });
+      const r = solved(p);
+      const S = scaleOf(r);
+      const pairs = [["F1", "F2"], ["F3", "F4"]];
+      return pairs.flatMap(([a, b]) => {
+        const A = byId(r, a), B = byId(r, b);
+        return [
+          check(`Rx ${a} = −Rx ${b}`, A.shear.Rx, -B.shear.Rx, { scale: S }),
+          check(`Ry ${a} = Ry ${b}`, A.shear.Ry, B.shear.Ry, { scale: S }),
+          check(`T ${a} = T ${b}`, A.axial.T, B.axial.T, { scale: S }),
+        ];
+      });
+    },
+  },
+  {
+    id: "P-04", title: "Linear scaling (doubling the load doubles elastic results)",
+    run() {
+      const p = base();
+      const q = JSON.parse(JSON.stringify(p));
+      for (const k of ["Fx", "Fy", "Fz", "Mx", "My", "Mz"]) q.load[k] *= 2;
+      const a = solved(p), b = solved(q);
+      const S = 2 * scaleOf(a);
+      return a.fasteners.flatMap((f, i) => [
+        check(`Rs ${f.id}`, b.fasteners[i].shear.Rs, 2 * f.shear.Rs, { scale: S }),
+        check(`T ${f.id}`, b.fasteners[i].axial.T, 2 * f.axial.T, { scale: S }),
+      ]);
+    },
+  },
+  {
+    id: "P-05", title: "Equilibrium closure (asymmetric, weighted, full 3D load)",
+    run() {
+      const r = solved(base());
+      return r.closure.checks.map((c) => truth(c.name, c.pass, `relative residual ${c.relative.toExponential(2)}`));
+    },
+  },
+  {
+    id: "P-06", title: "Sign convention (VC-04 to VC-06)",
+    run() {
+      const cases = HAND_CASES.filter((c) => ["VC-04", "VC-05", "VC-06"].includes(c.id));
+      return cases.map((c) => truth(c.id, c.run().every((x) => x.pass)));
+    },
+  },
+];
+
+const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES];
+
+/* Run every case; a case that throws fails with the message. */
+function runVerification(cases = ALL_CASES) {
+  const results = cases.map((c) => {
+    try {
+      const checks = c.run();
+      return { id: c.id, title: c.title, checks, pass: checks.length > 0 && checks.every((x) => x.pass) };
+    } catch (e) {
+      return { id: c.id, title: c.title, checks: [], pass: false, error: e.message };
+    }
+  });
+  return { set: VERIFICATION_SET, tol: REL_TOL, results, pass: results.every((r) => r.pass) };
+}
+return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, ALL_CASES, runVerification };
+})();
+
+/* ---- core/meta.mjs ---- */
+const __m12 = (() => {
+/* Tool identity and the conventions every report repeats. */
+
+const TOOL_NAME = "Fastener Pattern CG Tracker";
+const TOOL_VERSION = "0.1.0-m1";
+const MILESTONE = "M1";
+
+const CONVENTIONS = [
+  "Right-handed axes: x right, y up, z toward the viewer.",
+  "The faying surface is the plane z = 0; fasteners are located by (x, y) and z is the fastener axis.",
+  "Positive Fz is tension: it pulls the loaded plate away from the other plate.",
+  "Moments follow the right-hand rule about each axis; positive Mz is counter-clockwise viewed from +z.",
+  "The origin is a user-defined datum.",
+];
+
+const ASSUMPTIONS = [
+  "Headline CG is the shear centroid Cs; J is about Cs; Ixx, Iyy and Ixy are about the axial centroid Ca.",
+  "Elastic in-plane shear: rigid plate rotating about Cs, fasteners sharing load in proportion to ks.",
+  "Axial method (a): rigid plate with the neutral axis through Ca; the joint is assumed to stay clamped (W-005). Unloading fasteners are shown as computed.",
+  "Section properties are in length² × stiffness weight.",
+  "All allowables are keyed in by the user; the tool ships none.",
+];
+return { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS };
+})();
+
+/* ---- ui/canvas.mjs ---- */
+const __m13 = (() => {
+const { gridLines } = __m8;
+/* Canvas painter and pointer handling. All geometry comes from the scene
+ * model; this file only turns its primitives into Canvas 2D calls. */
+
+
+
+function palette(el) {
+  const cs = getComputedStyle(el);
+  const v = (name) => cs.getPropertyValue(name).trim();
+  return {
+    bg: v("--bg"), fg: v("--fg"), muted: v("--muted"), faint: v("--faint"), grid: v("--grid"), border: v("--border"),
+    focus: v("--focus"), shear: v("--shear"), axial: v("--axial"), area: v("--area"), load: v("--load"),
+    reaction: v("--reaction"), tension: v("--tension"), surface: v("--surface"), mono: v("--mono"),
+  };
+}
+
+function arrow(ctx, from, to, colour, width = 1.6, head = 8) {
+  const dx = to.x - from.x, dy = to.y - from.y, len = Math.hypot(dx, dy);
+  if (len < 1) return;
+  const ux = dx / len, uy = dy / len;
+  ctx.strokeStyle = colour; ctx.fillStyle = colour; ctx.lineWidth = width;
+  ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x - ux * head * 0.8, to.y - uy * head * 0.8); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(to.x, to.y);
+  ctx.lineTo(to.x - ux * head - uy * head * 0.45, to.y - uy * head + ux * head * 0.45);
+  ctx.lineTo(to.x - ux * head + uy * head * 0.45, to.y - uy * head - ux * head * 0.45);
+  ctx.closePath(); ctx.fill();
+}
+
+function centroidPath(ctx, shape, x, y, s) {
+  ctx.beginPath();
+  if (shape === "ring") {
+    ctx.arc(x, y, s, 0, 2 * Math.PI);
+    ctx.moveTo(x - s * 1.5, y); ctx.lineTo(x + s * 1.5, y);
+    ctx.moveTo(x, y - s * 1.5); ctx.lineTo(x, y + s * 1.5);
+  } else if (shape === "diamond") {
+    ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath();
+  } else if (shape === "square") {
+    ctx.rect(x - s, y - s, 2 * s, 2 * s);
+  }
+}
+
+/* Text at (x, y), moved to the left of `anchorX` when it would run off the right edge. */
+function label(ctx, text, x, y, anchorX, width) {
+  const w = ctx.measureText(text).width;
+  ctx.fillText(text, x + w > width - 4 ? Math.max(4, anchorX - (x - anchorX) - w) : x, y);
+}
+
+/* Paint `scene` onto a 2D context sized in CSS pixels. */
+function paint(ctx, scene, colours, { snapStep = 0, snapOn = false } = {}) {
+  const { width, height } = scene;
+  ctx.fillStyle = colours.bg; ctx.fillRect(0, 0, width, height);
+  const font = (size, weight = 400) => `${weight} ${size}px ${colours.mono || "monospace"}`;
+
+  if (snapOn) {
+    ctx.strokeStyle = colours.grid; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (const l of gridLines(scene, snapStep)) {
+      if (l.axis === "x") { ctx.moveTo(Math.round(l.px) + 0.5, 0); ctx.lineTo(Math.round(l.px) + 0.5, height); }
+      else { ctx.moveTo(0, Math.round(l.px) + 0.5); ctx.lineTo(width, Math.round(l.px) + 0.5); }
+    }
+    ctx.stroke();
+  }
+
+  // Axes through the datum.
+  const { axes } = scene;
+  ctx.setLineDash([4, 4]); ctx.strokeStyle = colours.faint; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, axes.origin.y); ctx.lineTo(width, axes.origin.y); ctx.moveTo(axes.origin.x, 0); ctx.lineTo(axes.origin.x, height); ctx.stroke();
+  ctx.setLineDash([]);
+  arrow(ctx, axes.x.from, axes.x.to, colours.muted, 1.4, 7);
+  arrow(ctx, axes.y.from, axes.y.to, colours.muted, 1.4, 7);
+  ctx.strokeStyle = colours.muted; ctx.beginPath(); ctx.arc(axes.origin.x, axes.origin.y, 5, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = colours.muted; ctx.beginPath(); ctx.arc(axes.origin.x, axes.origin.y, 1.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.font = font(11); ctx.fillText("x", axes.x.to.x + 4, axes.x.to.y + 4); ctx.fillText("y", axes.y.to.x + 5, axes.y.to.y + 4);
+  ctx.fillText("z⊙", axes.origin.x - 22, axes.origin.y + 16);
+
+  for (const p of scene.plates) {
+    ctx.strokeStyle = colours.muted; ctx.lineWidth = 1.2; ctx.fillStyle = colours.surface;
+    ctx.globalAlpha = 0.5; ctx.fillRect(p.screen.x, p.screen.y, p.screen.w, p.screen.h); ctx.globalAlpha = 1;
+    ctx.strokeRect(p.screen.x, p.screen.y, p.screen.w, p.screen.h);
+    ctx.fillStyle = colours.muted; ctx.font = font(11, 600); ctx.fillText(p.label, p.screen.x + 5, p.screen.y + 14);
+  }
+
+  for (const m of scene.markers) {
+    ctx.beginPath(); ctx.arc(m.screen.x, m.screen.y, m.radiusPx, 0, 2 * Math.PI);
+    ctx.fillStyle = m.tension ? colours.tension : colours.bg;
+    ctx.globalAlpha = m.tension ? 0.35 : 1; ctx.fill(); ctx.globalAlpha = 1;
+    ctx.lineWidth = m.selected ? 3 : 1.6;
+    ctx.strokeStyle = m.selected ? colours.focus : colours.fg;
+    if (m.unloading) ctx.setLineDash([3, 2]);
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = colours.fg; ctx.font = font(10.5);
+    label(ctx, m.label, m.screen.x + m.radiusPx + 3, m.screen.y - m.radiusPx - 1, m.screen.x, width);
+  }
+
+  for (const v of scene.vectors) {
+    if (v.kind === "reaction") arrow(ctx, v.screen.from, v.screen.to, colours.reaction, 1.5, 7);
+  }
+
+  // Centroids, drawn largest first so coincident markers stay nested and visible.
+  for (const c of [...scene.centroids].sort((a, b) => b.size - a.size)) {
+    ctx.lineWidth = 2; ctx.strokeStyle = colours[c.colour];
+    centroidPath(ctx, c.shape, c.screen.x, c.screen.y, c.size);
+    if (c.shape === "square") { ctx.fillStyle = colours[c.colour]; ctx.fill(); } else ctx.stroke();
+  }
+
+  if (scene.load) {
+    const { x, y } = scene.load.screen;
+    ctx.strokeStyle = colours.load; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x - 7, y - 7); ctx.lineTo(x + 7, y + 7); ctx.moveTo(x + 7, y - 7); ctx.lineTo(x - 7, y + 7); ctx.stroke();
+    ctx.fillStyle = colours.load; ctx.font = font(11, 600); label(ctx, scene.load.label, x + 10, y + 18, x, width);
+  }
+  for (const v of scene.vectors) {
+    if (v.kind !== "applied") continue;
+    arrow(ctx, v.screen.from, v.screen.to, colours.load, 2.2, 10);
+    ctx.fillStyle = colours.load; ctx.font = font(11, 600); label(ctx, v.label, v.screen.to.x + 6, v.screen.to.y - 6, v.screen.to.x, width);
+  }
+  for (const m of scene.moments) {
+    const { x, y } = m.screen, r = m.radiusPx;
+    // Canvas angles grow clockwise on screen, so a counter-clockwise moment sweeps them downwards.
+    const a0 = 0.6, a1 = m.ccw ? a0 - 1.5 * Math.PI : a0 + 1.5 * Math.PI;
+    ctx.strokeStyle = colours.load; ctx.lineWidth = 1.8;
+    ctx.beginPath(); ctx.arc(x, y, r, a0, a1, m.ccw); ctx.stroke();
+    const end = { x: x + r * Math.cos(a1), y: y + r * Math.sin(a1) };
+    const dir = m.ccw ? { x: Math.sin(a1), y: -Math.cos(a1) } : { x: -Math.sin(a1), y: Math.cos(a1) };
+    arrow(ctx, { x: end.x - 6 * dir.x, y: end.y - 6 * dir.y }, end, colours.load, 1.8, 7);
+  }
+
+  const b = scene.scaleBar;
+  ctx.strokeStyle = colours.fg; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(b.screen.x, b.screen.y - 4); ctx.lineTo(b.screen.x, b.screen.y); ctx.lineTo(b.screen.x + b.px, b.screen.y); ctx.lineTo(b.screen.x + b.px, b.screen.y - 4); ctx.stroke();
+  ctx.fillStyle = colours.fg; ctx.font = font(10.5); ctx.fillText(b.label, b.screen.x + b.px + 6, b.screen.y + 3);
+}
+
+/* Hit test: the fastener under a screen point, else the load point, else null. */
+function hitTest(scene, pt) {
+  let best = null, bestD = Infinity;
+  for (const m of scene.markers) {
+    const d = Math.hypot(m.screen.x - pt.x, m.screen.y - pt.y);
+    if (d <= Math.max(m.radiusPx, 9) + 3 && d < bestD) { best = { kind: "fastener", id: m.id }; bestD = d; }
+  }
+  if (best) return best;
+  if (scene.load && Math.hypot(scene.load.screen.x - pt.x, scene.load.screen.y - pt.y) <= 12) return { kind: "load" };
+  return null;
+}
+return { palette, centroidPath, paint, hitTest };
+})();
+
+/* ---- ui/storage.mjs ---- */
+const __m14 = (() => {
+/* Browser persistence (spec 8.1): a named library and a separately
+ * autosaved working pattern, both in localStorage. Every access is guarded:
+ * storage can be missing (private windows) or full. */
+
+const LIBRARY_KEY = "fastener-cg:library:v1";
+const WORKING_KEY = "fastener-cg:working:v1";
+
+class StorageFullError extends Error {}
+
+function store() {
+  try {
+    return typeof localStorage !== "undefined" ? localStorage : null;
+  } catch {
+    return null;
+  }
+}
+
+function write(key, value) {
+  const s = store();
+  if (!s) throw new Error("Browser storage is not available here; export the pattern to a file instead.");
+  try {
+    s.setItem(key, value);
+  } catch (e) {
+    const full = e && (e.name === "QuotaExceededError" || e.name === "NS_ERROR_DOM_QUOTA_REACHED" || e.code === 22 || e.code === 1014);
+    throw full ? new StorageFullError("Browser storage is full, so the pattern was not saved. Export it to a file to keep it.") : e;
+  }
+}
+
+function read(key) {
+  const s = store();
+  if (!s) return null;
+  try {
+    return s.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+/* { name: { pattern, saved } } */
+function readLibrary() {
+  try {
+    const value = JSON.parse(read(LIBRARY_KEY) || "{}");
+    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  } catch {
+    return {};
+  }
+}
+
+function writeLibrary(library) {
+  write(LIBRARY_KEY, JSON.stringify(library));
+}
+
+function readWorking() {
+  return read(WORKING_KEY);
+}
+
+function writeWorking(json) {
+  write(WORKING_KEY, json);
+}
+
+/* "Name", "Name (2)", "Name (3)", … — the first not in `taken`. */
+function uniqueName(name, taken) {
+  if (!taken.includes(name)) return name;
+  const stem = name.replace(/ \(\d+\)$/, "");
+  for (let i = 2; ; i++) {
+    const candidate = `${stem} (${i})`;
+    if (!taken.includes(candidate)) return candidate;
+  }
+}
+return { LIBRARY_KEY, WORKING_KEY, StorageFullError, readLibrary, writeLibrary, readWorking, writeWorking, uniqueName };
+})();
+
+/* ---- ui/webmcp.mjs ---- */
+const __m15 = (() => {
+const { CATALOG } = __m1;
+const { normalizePattern, toJSON } = __m10;
+const { solve } = __m6;
+const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m12;
+const { UNIT_LABELS } = __m0;
+/* WebMCP tools: let an agent read the page's pattern and run the same
+ * solver on any pattern without changing the page. */
+
+
+
+
+
+
+
+const text = (value) => ({ content: [{ type: "text", text: JSON.stringify(value) }] });
+
+/* A compact, JSON-safe view of a solve() result. */
+function summarize(result) {
+  if (!result.ok) return { ok: false, issues: result.issues };
+  const p = result.props, r = result.reduced;
+  return {
+    ok: true,
+    unitSystem: result.unitSystem,
+    centroids: p.centroids.map(({ key, name, weight, x, y, coincidentWith }) => ({ key, name, weight, x, y, coincidentWith })),
+    section: { J: p.J, Ixx: p.Ixx, Iyy: p.Iyy, Ixy: p.Ixy, I1: p.principal.I1, I2: p.principal.I2, thetaDeg: p.principal.thetaDeg, sumKs: p.Ks, sumKa: p.Ka },
+    reducedLoad: { Fx: r.Fx, Fy: r.Fy, Fz: r.Fz, MzAtCs: r.shear.Mz, MxAtCa: r.axial.Mx, MyAtCa: r.axial.My },
+    fasteners: result.fasteners.map((f) => ({
+      id: f.id, x: f.x, y: f.y, Rdx: f.shear.Rdx, Rdy: f.shear.Rdy, Rtx: f.shear.Rtx, Rty: f.shear.Rty,
+      Rs: f.shear.Rs, directionDeg: f.shear.angleDeg, T: f.axial.T, unloading: !!f.axial.unloading,
+    })),
+    closure: result.closure.checks.map(({ name, residual, pass }) => ({ name, residual, pass })),
+    issues: result.issues,
+  };
+}
+
+const patternSchema = { type: "object", description: "A pattern in the page's canonical JSON format (schemaVersion 1), as returned by get_current_pattern." };
+
+function registerTools({ current, markdown }) {
+  const mc = (typeof document !== "undefined" && document.modelContext) || (typeof navigator !== "undefined" && navigator.modelContext);
+  if (!mc || typeof mc.registerTool !== "function") return false;
+  const parse = (input) => normalizePattern(input && input.pattern ? input.pattern : input);
+  mc.registerTool({
+    name: "get_metadata",
+    description: "Return the tool version, milestone, units, sign conventions, assumptions and the full warnings catalogue (error, warning and note ids).",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    annotations: { readOnlyHint: true },
+    async execute() { return text({ title: TOOL_NAME, version: TOOL_VERSION, milestone: MILESTONE, units: UNIT_LABELS, conventions: CONVENTIONS, assumptions: ASSUMPTIONS, warnings: CATALOG }); },
+  });
+  mc.registerTool({
+    name: "get_current_pattern",
+    description: "Return the pattern on the page (canonical JSON inputs) and its results: centroids, J, Ixx, Iyy, Ixy, principal axes, reduced load, per-fastener loads and warnings.",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    annotations: { readOnlyHint: true },
+    async execute() { const { pattern, result } = current(); return text({ pattern: JSON.parse(toJSON(pattern)), results: summarize(result) }); },
+  });
+  mc.registerTool({
+    name: "analyze_pattern",
+    description: "Validate and solve a pattern given as canonical JSON and return the same results as get_current_pattern. Does not change the page.",
+    inputSchema: { type: "object", properties: { pattern: patternSchema }, required: ["pattern"], additionalProperties: false },
+    annotations: { readOnlyHint: true },
+    async execute(input) {
+      const parsed = parse(input);
+      if (!parsed.pattern) return text({ ok: false, issues: parsed.issues });
+      return text({ importIssues: parsed.issues, results: summarize(solve(parsed.pattern)) });
+    },
+  });
+  mc.registerTool({
+    name: "export_markdown",
+    description: "Return the Markdown export (input and result tables plus the exact JSON block) for a given pattern, or for the page's pattern when none is given.",
+    inputSchema: { type: "object", properties: { pattern: patternSchema }, additionalProperties: false },
+    annotations: { readOnlyHint: true },
+    async execute(input) {
+      if (!input || !input.pattern) return text({ markdown: markdown(current().pattern) });
+      const parsed = parse(input);
+      if (!parsed.pattern) return text({ ok: false, issues: parsed.issues });
+      return text({ markdown: markdown(parsed.pattern) });
+    },
+  });
+  return true;
+}
+return { summarize, registerTools };
+})();
+
+/* ---- ui/app.mjs ---- */
+const __m16 = (() => {
+const { examplePattern, addFastener, clone } = __m2;
+const { solve } = __m6;
+const { convertPattern, unitLabel, round12, UNIT_SYSTEMS } = __m0;
+const { fmt } = __m7;
+const { buildScene, CENTROID_STYLE } = __m8;
+const { rectangularArray, staggeredRows, boltCircle, mirror } = __m9;
+const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m10;
+const { runVerification } = __m11;
+const { sortIssues } = __m1;
+const { TOOL_VERSION } = __m12;
+const { paint, palette, hitTest, centroidPath } = __m13;
+const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m14;
+const { registerTools } = __m15;
+/* Page controller: state, inputs, table, canvas, results, warnings,
+ * library and files. Calculations all come from ../core. */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+const SNAP_DEFAULT = { "N-mm": 5, "in-lbf": 0.25 };
+const DEBOUNCE_AFTER_MS = 50;
+
+const state = {
+  pattern: null,
+  result: null,
+  selected: null,
+  snap: { on: true, step: 5 },
+  importIssues: [],
+  lastSolveMs: 0,
+  scene: null,
+  drag: null,
+};
+
+/* ---------- model helpers ---------- */
+
+function getPath(obj, path) {
+  return path.split(".").reduce((o, k) => (o == null ? undefined : o[k]), obj);
+}
+function setPath(obj, path, value) {
+  const keys = path.split(".");
+  let o = obj;
+  for (const k of keys.slice(0, -1)) o = o[k] ??= {};
+  o[keys.at(-1)] = value;
+}
+/* '' → null; numbers → number; anything else is kept as typed so E-002 can name it. */
+function parseInput(text) {
+  const t = String(text).trim();
+  if (t === "") return null;
+  const n = Number(t);
+  return Number.isFinite(n) ? n : t;
+}
+const inputText = (v) => (v === null || v === undefined ? "" : String(v));
+const units = (kind) => unitLabel(state.pattern.unitSystem, kind);
+const precision = () => {
+  const p = state.pattern.settings?.precision;
+  return Number.isInteger(p) && p >= 1 && p <= 15 ? p : 4;
+};
+const f = (v, scale = 0) => fmt(v, precision(), scale);
+const snapValue = (v) => (state.snap.on && state.snap.step > 0 ? round12(Math.round(v / state.snap.step) * state.snap.step) : round12(v));
+
+/* ---------- recalculation ---------- */
+
+let timer = 0;
+function changed({ structure = false } = {}) {
+  if (structure) renderStructure();
+  clearTimeout(timer);
+  if (state.lastSolveMs > DEBOUNCE_AFTER_MS) timer = setTimeout(recompute, 120);
+  else recompute();
+}
+
+function recompute() {
+  const t0 = performance.now();
+  state.result = solve(state.pattern);
+  state.lastSolveMs = performance.now() - t0;
+  renderResults();
+  renderIssues();
+  markInvalid();
+  draw();
+  autosave();
+}
+
+function autosave() {
+  try {
+    writeWorking(toJSON(state.pattern));
+  } catch (e) {
+    storageProblem(e);
+  }
+}
+
+function storageProblem(e) {
+  const banner = $("#storage-banner");
+  if (!e) { banner.hidden = true; return; }
+  $("#storage-message").textContent = e instanceof StorageFullError ? e.message : `Could not save in this browser: ${e.message}`;
+  banner.hidden = false;
+}
+
+/* ---------- rendering: inputs ---------- */
+
+function renderUnits() {
+  for (const el of $$("[data-unit]")) el.textContent = units(el.dataset.unit);
+  for (const b of $$("[data-units]")) b.setAttribute("aria-pressed", String(b.dataset.units === state.pattern.unitSystem));
+}
+
+function renderInputs() {
+  $("#name").value = state.pattern.name;
+  $("#precision").value = state.pattern.settings.precision;
+  const plates = state.pattern.plates;
+  $("#applied-plate").innerHTML = plates.map((p) => `<option value="${esc(p.id)}">${esc(p.id)}</option>`).join("") || `<option value="">(none)</option>`;
+  for (const el of $$("[data-path]")) {
+    const v = getPath(state.pattern, el.dataset.path);
+    el.value = inputText(v);
+  }
+  $("#snap").setAttribute("aria-pressed", String(state.snap.on));
+  $("#snap-step").value = state.snap.step;
+  renderPlates();
+}
+
+function renderPlates() {
+  $("#plates").innerHTML = state.pattern.plates.map((p, i) => `
+    <div class="row three" data-plate="${i}">
+      ${["xMin", "xMax", "thickness", "yMin", "yMax"].map((k) => `<label class="f"><span>${esc(p.id)} ${k} (${units("length")})</span><input type="number" step="any" data-plate-key="${k}" value="${esc(inputText(p[k]))}"></label>`).join("")}
+    </div>`).join("");
+}
+
+function renderTable() {
+  const d = state.pattern.defaults;
+  const cell = (fa, key) => {
+    const has = fa.overrides && key in fa.overrides;
+    return `<td><input type="number" step="any" aria-label="${esc(fa.id)} ${key}" data-id="${esc(fa.id)}" data-key="${key}" class="${has ? "override" : ""}" value="${has ? esc(inputText(fa.overrides[key])) : ""}" placeholder="${esc(inputText(d[key]))}"></td>`;
+  };
+  $("#fastener-rows").innerHTML = state.pattern.fasteners.map((fa) => `
+    <tr data-row="${esc(fa.id)}" class="${fa.id === state.selected ? "selected" : ""}">
+      <th scope="row">${esc(fa.id)}</th>
+      <td><input type="text" aria-label="${esc(fa.id)} label" data-id="${esc(fa.id)}" data-key="label" value="${esc(fa.label)}"></td>
+      <td><input type="number" step="any" aria-label="${esc(fa.id)} x" data-id="${esc(fa.id)}" data-key="x" value="${esc(inputText(fa.x))}"></td>
+      <td><input type="number" step="any" aria-label="${esc(fa.id)} y" data-id="${esc(fa.id)}" data-key="y" value="${esc(inputText(fa.y))}"></td>
+      ${cell(fa, "area")}${cell(fa, "ks")}${cell(fa, "ka")}${cell(fa, "diameter")}
+      <td><button class="btn danger" type="button" data-remove="${esc(fa.id)}" aria-label="Remove ${esc(fa.id)}">×</button></td>
+    </tr>`).join("") || `<tr><td colspan="9" class="muted">No fasteners. Click the canvas, use a generator or “+ Fastener”.</td></tr>`;
+}
+
+function renderLibrary() {
+  const lib = readLibrary();
+  const names = Object.keys(lib).sort((a, b) => a.localeCompare(b));
+  $("#library").innerHTML = names.length
+    ? names.map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join("")
+    : `<option value="">(empty)</option>`;
+  $("#lib-load").disabled = $("#lib-delete").disabled = !names.length;
+}
+
+function renderSelection() {
+  for (const tr of $$("#fastener-rows tr[data-row]")) tr.classList.toggle("selected", tr.dataset.row === state.selected);
+  $("#delete-fastener").disabled = !state.selected;
+}
+
+function renderStructure() {
+  renderUnits();
+  renderInputs();
+  renderTable();
+  renderSelection();
+}
+
+function renderAll() {
+  renderStructure();
+  renderLibrary();
+  renderLegend();
+  recompute();
+}
+
+/* Flag inputs named by error issues. */
+function markInvalid() {
+  for (const el of $$("[aria-invalid]")) el.removeAttribute("aria-invalid");
+  for (const i of state.result.issues) {
+    if (i.tier !== "error") continue;
+    if (i.fastener && i.field) $(`#fastener-rows input[data-id="${CSS.escape(i.fastener)}"][data-key="${CSS.escape(i.field)}"]`)?.setAttribute("aria-invalid", "true");
+    else if (i.field) $(`[data-path="${CSS.escape(i.field)}"]`)?.setAttribute("aria-invalid", "true");
+  }
+  const p = state.pattern.settings.precision;
+  if (!(Number.isInteger(p) && p >= 1 && p <= 15)) $("#precision").setAttribute("aria-invalid", "true");
+}
+
+/* ---------- rendering: canvas ---------- */
+
+const canvas = () => $("#canvas");
+
+function draw() {
+  const el = canvas();
+  const rect = el.getBoundingClientRect();
+  const width = Math.max(1, rect.width), height = Math.max(1, rect.height);
+  const dpr = window.devicePixelRatio || 1;
+  if (el.width !== Math.round(width * dpr) || el.height !== Math.round(height * dpr)) {
+    el.width = Math.round(width * dpr);
+    el.height = Math.round(height * dpr);
+  }
+  const ctx = el.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  // Keep the view fixed while dragging so the pattern does not slide under the pointer.
+  const frozen = state.drag && state.drag.moved ? state.drag.transform : null;
+  state.scene = buildScene(state.pattern, state.result, { width, height }, { selected: state.selected, transform: frozen });
+  paint(ctx, state.scene, palette(el), { snapOn: state.snap.on, snapStep: state.snap.step });
+}
+
+function legendIcon(entry, colours) {
+  const c = colours[entry.colour] || colours.fg;
+  if (entry.shape === "arrow") return `<svg width="22" height="12" aria-hidden="true"><line x1="1" y1="6" x2="15" y2="6" stroke="${c}" stroke-width="2"/><path d="M21 6L14 2V10z" fill="${c}"/></svg>`;
+  if (entry.shape === "cross") return `<svg width="14" height="14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" stroke="${c}" stroke-width="2"/></svg>`;
+  return centroidSvg(entry.key, c);
+}
+
+function centroidSvg(key, colour) {
+  const s = CENTROID_STYLE[key];
+  if (s.shape === "ring") return `<svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="${colour}" stroke-width="2"/><path d="M1 11H21M11 1V21" stroke="${colour}" stroke-width="2"/></svg>`;
+  if (s.shape === "diamond") return `<svg width="16" height="16" aria-hidden="true"><path d="M8 1L15 8L8 15L1 8z" fill="none" stroke="${colour}" stroke-width="2"/></svg>`;
+  return `<svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="${colour}"/></svg>`;
+}
+
+function renderLegend() {
+  const colours = palette(canvas());
+  const scene = buildScene(state.pattern, null, { width: 100, height: 100 });
+  $("#legend").innerHTML = scene.legend.map((e) => `<li>${legendIcon(e, colours)}<span>${esc(e.label)}</span></li>`).join("")
+    + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="${colours.tension}" fill-opacity=".35" stroke="${colours.fg}" stroke-width="1.5"/></svg><span>Fastener in tension</span></li>`
+    + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="${colours.fg}" stroke-width="1.5" stroke-dasharray="3 2"/></svg><span>Unloading (clamp-up)</span></li>`;
+}
+
+function eventPoint(e) {
+  const r = canvas().getBoundingClientRect();
+  return { x: e.clientX - r.left, y: e.clientY - r.top };
+}
+
+function announce(text) {
+  $("#canvas-status").textContent = text;
+}
+
+function select(id, { scroll = false } = {}) {
+  state.selected = id;
+  renderSelection();
+  draw();
+  if (scroll && id) $(`#fastener-rows tr[data-row="${CSS.escape(id)}"]`)?.scrollIntoView({ block: "nearest" });
+}
+
+function moveFastener(id, x, y) {
+  const fa = state.pattern.fasteners.find((q) => q.id === id);
+  if (!fa) return;
+  fa.x = x; fa.y = y;
+  for (const key of ["x", "y"]) {
+    const input = $(`#fastener-rows input[data-id="${CSS.escape(id)}"][data-key="${key}"]`);
+    if (input && document.activeElement !== input) input.value = inputText(fa[key]);
+  }
+  changed();
+}
+
+function removeFastener(id) {
+  state.pattern.fasteners = state.pattern.fasteners.filter((q) => q.id !== id);
+  if (state.selected === id) state.selected = null;
+  announce(`Removed ${id}.`);
+  changed({ structure: true });
+}
+
+function bindCanvas() {
+  const el = canvas();
+  el.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0 || !state.scene) return;
+    const pt = eventPoint(e);
+    const hit = hitTest(state.scene, pt);
+    state.drag = { hit, start: pt, moved: false, transform: state.scene.transform };
+    el.setPointerCapture(e.pointerId);
+    if (hit?.kind === "fastener") select(hit.id); // no scrolling: the canvas must stay under the pointer
+  });
+  el.addEventListener("pointermove", (e) => {
+    const pt = eventPoint(e);
+    const d = state.drag;
+    if (!d) {
+      const hit = state.scene && hitTest(state.scene, pt);
+      el.style.cursor = hit ? "move" : "crosshair";
+      return;
+    }
+    if (!d.moved && Math.hypot(pt.x - d.start.x, pt.y - d.start.y) < 3) return;
+    d.moved = true;
+    if (!d.hit) return;
+    const { scale, ox, oy } = d.transform;
+    const w = { x: snapValue((pt.x - ox) / scale), y: snapValue((oy - pt.y) / scale) };
+    if (d.hit.kind === "fastener") moveFastener(d.hit.id, w.x, w.y);
+    else if (d.hit.kind === "load") {
+      state.pattern.load.point.x = w.x; state.pattern.load.point.y = w.y;
+      $('[data-path="load.point.x"]').value = w.x; $('[data-path="load.point.y"]').value = w.y;
+      changed();
+    }
+  });
+  const end = (e) => {
+    const d = state.drag;
+    state.drag = null;
+    if (!d) return;
+    if (!d.hit && !d.moved && e.type === "pointerup") {
+      const { scale, ox, oy } = d.transform;
+      const w = { x: snapValue((d.start.x - ox) / scale), y: snapValue((oy - d.start.y) / scale) };
+      const fa = addFastener(state.pattern, w.x, w.y);
+      state.selected = fa.id;
+      announce(`Added ${fa.id} at (${f(w.x)}, ${f(w.y)}).`);
+      changed({ structure: true });
+    } else if (!d.hit && !d.moved) {
+      // cancelled
+    } else if (!d.hit) {
+      select(null);
+    } else {
+      draw(); // re-fit the view now the drag is over
+    }
+  };
+  el.addEventListener("pointerup", end);
+  el.addEventListener("pointercancel", end);
+  el.addEventListener("keydown", (e) => {
+    const id = state.selected;
+    const ids = state.pattern.fasteners.map((q) => q.id);
+    if (e.key === "Tab") return;
+    if ((e.key === "n" || e.key === "p") && ids.length) {
+      const i = ids.indexOf(id), n = ids.length;
+      select(e.key === "n" ? ids[(i + 1) % n] : ids[(i - 1 + n) % n]);
+      announce(`Selected ${state.selected}.`);
+      e.preventDefault();
+      return;
+    }
+    if (!id) return;
+    const fa = state.pattern.fasteners.find((q) => q.id === id);
+    const step = (state.snap.step > 0 ? state.snap.step : 1) * (e.shiftKey ? 10 : 1);
+    const moves = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, step], ArrowDown: [0, -step] };
+    if (moves[e.key] && typeof fa.x === "number" && typeof fa.y === "number") {
+      moveFastener(id, round12(fa.x + moves[e.key][0]), round12(fa.y + moves[e.key][1]));
+      announce(`${id} at (${f(fa.x)}, ${f(fa.y)}).`);
+      e.preventDefault();
+    } else if (e.key === "Delete" || e.key === "Backspace") {
+      removeFastener(id);
+      e.preventDefault();
+    } else if (e.key === "Escape") {
+      select(null);
+    }
+  });
+  new ResizeObserver(() => draw()).observe(el);
+  matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => { renderLegend(); draw(); });
+}
+
+/* ---------- rendering: results ---------- */
+
+function table(head, rows, { numeric = [] } = {}) {
+  return `<div class="table-wrap"><table><thead><tr>${head.map((h, i) => `<th scope="col" class="${numeric.includes(i) ? "num" : ""}">${h}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c, i) => `<td class="${numeric.includes(i) ? "num" : ""}">${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+
+function renderResults() {
+  const r = state.result;
+  const out = $("#results");
+  if (!r.ok) {
+    const n = r.issues.filter((i) => i.tier === "error").length;
+    out.innerHTML = `<p class="blocked">No results: ${n} error${n === 1 ? "" : "s"} must be fixed first (see Warnings). Errors block every result so no number is shown that the checks rejected.</p>`;
+    return;
+  }
+  const colours = palette(canvas());
+  const p = r.props, red = r.reduced;
+  const L = units("length"), F = units("force"), M = units("moment"), S = units("section");
+  const lenScale = Math.max(p.extent, 1);
+  const forceScale = Math.max(...r.fasteners.map((q) => Math.max(q.shear.Rs, Math.abs(q.axial.T))), Math.hypot(red.Fx, red.Fy, red.Fz), 0);
+  const momScale = Math.max(Math.abs(red.shear.Mz), Math.hypot(red.axial.Mx, red.axial.My), forceScale * lenScale);
+  const secScale = Math.max(p.J, p.Ixx + p.Iyy);
+
+  const centroids = table(["", "Centroid", `x (${L})`, `y (${L})`, "Weight", "Used for"],
+    p.centroids.map((c) => [
+      centroidSvg(c.key, colours[CENTROID_STYLE[c.key].colour]),
+      `${esc(c.name)} <b>${c.key}</b>${c.key === "Cs" ? ' <span class="tag">CG</span>' : ""}${c.coincidentWith.length ? ` <span class="tag">coincident with ${c.coincidentWith.join(", ")}</span>` : ""}`,
+      f(c.x, lenScale), f(c.y, lenScale), c.weight, esc(c.usedFor),
+    ]), { numeric: [2, 3] });
+
+  const props = table(["Property", "Value", "Unit"], [
+    ["J about Cs", f(p.J, secScale), S], ["Ixx about Ca", f(p.Ixx, secScale), S], ["Iyy about Ca", f(p.Iyy, secScale), S],
+    ["Ixy about Ca", f(p.Ixy, secScale), S], ["I₁ (major)", f(p.principal.I1, secScale), S], ["I₂ (minor)", f(p.principal.I2, secScale), S],
+    ["θp, CCW from +x to the I₁ axis", f(p.principal.thetaDeg, 360), "°"], ["Σks", f(p.Ks), ""], ["Σka", f(p.Ka), ""],
+  ], { numeric: [1] });
+
+  const reduced = table(["Component", "Value", "Unit", "Reduced to", "Transfer"], [
+    ["Fx", f(red.Fx, forceScale), F, "", ""], ["Fy", f(red.Fy, forceScale), F, "", ""], ["Fz", f(red.Fz, forceScale), F, "", ""],
+    ["Mz,s", f(red.shear.Mz, momScale), M, `Cs (${f(red.shear.Q.x, lenScale)}, ${f(red.shear.Q.y, lenScale)}, 0)`, `Mz + rx·Fy − ry·Fx; rx = ${f(red.shear.rx, lenScale)}, ry = ${f(red.shear.ry, lenScale)}`],
+    ["Mx,a", f(red.axial.Mx, momScale), M, `Ca (${f(red.axial.Q.x, lenScale)}, ${f(red.axial.Q.y, lenScale)}, 0)`, `Mx + ry·Fz − zp·Fy; ry = ${f(red.axial.ry, lenScale)}, zp = ${f(red.axial.zp, lenScale)}`],
+    ["My,a", f(red.axial.My, momScale), M, `Ca (${f(red.axial.Q.x, lenScale)}, ${f(red.axial.Q.y, lenScale)}, 0)`, `My + zp·Fx − rx·Fz; rx = ${f(red.axial.rx, lenScale)}, zp = ${f(red.axial.zp, lenScale)}`],
+  ], { numeric: [1] });
+
+  const maxRs = Math.max(...r.fasteners.map((q) => q.shear.Rs));
+  const maxT = Math.max(...r.fasteners.map((q) => q.axial.T));
+  const per = table(["Fastener", `Rdx (${F})`, `Rdy (${F})`, `Rtx (${F})`, `Rty (${F})`, `Rs (${F})`, "Direction", `T (${F})`, "State"],
+    r.fasteners.map((q) => {
+      const tags = [];
+      if (q.shear.Rs === maxRs && maxRs > 0) tags.push('<span class="tag">max shear</span>');
+      if (q.axial.T === maxT && maxT > 0) tags.push('<span class="tag tension">max tension</span>');
+      const st = q.axial.unloading ? '<span class="tag unloading">unloading</span>' : q.axial.T > 1e-9 * forceScale ? "tension" : "—";
+      return [`<button class="btn" type="button" data-select="${esc(q.id)}">${esc(q.id)}</button> ${tags.join("")}`,
+        f(q.shear.Rdx, forceScale), f(q.shear.Rdy, forceScale), f(q.shear.Rtx, forceScale), f(q.shear.Rty, forceScale),
+        `<b>${f(q.shear.Rs, forceScale)}</b>`, q.shear.Rs > 0 ? `${f(q.shear.angleDeg, 360)}°` : "—", f(q.axial.T, forceScale), st];
+    }), { numeric: [1, 2, 3, 4, 5, 6, 7] });
+
+  const closure = table(["Equilibrium check", "Residual", "Relative", ""],
+    r.closure.checks.map((c) => [esc(c.name), fmt(c.residual, 3), c.relative.toExponential(1), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']),
+    { numeric: [1, 2] });
+
+  const axialNote = r.axial.mode === "general"
+    ? `Method (a): D = ${f(r.axial.D, secScale * secScale)}, θx = ${f(r.axial.thetaX)}, θy = ${f(r.axial.thetaY)}.`
+    : r.axial.mode === "collinear" ? "Method (a), collinear pattern: bending resisted about the pattern's major principal axis only." : "Method (a): all fasteners at one point; only Fz is resisted.";
+
+  out.innerHTML = `
+    <div class="results-grid">
+      <div><h3>Centroids</h3>${centroids}</div>
+      <div><h3>Section properties</h3>${props}</div>
+    </div>
+    <h3 style="margin-top:1.25rem">Reduced load</h3>${reduced}
+    <h3 style="margin-top:1.25rem">Fastener loads — elastic</h3>
+    <p class="note">In-plane: direct Rd plus torsional Rt about Cs, resultant Rs and its direction CCW from +x. Out-of-plane: T by ${esc(axialNote)} Positive T is tension; unloading fasteners are shown as computed.</p>
+    ${per}
+    <h3 style="margin-top:1.25rem">Equilibrium closure (tolerance ${r.closure.tol} relative)</h3>${closure}`;
+}
+
+function renderIssues() {
+  const issues = sortIssues([...state.importIssues, ...state.result.issues]);
+  const count = (t) => issues.filter((i) => i.tier === t).length;
+  $("#issue-counts").innerHTML = `<span>${count("error")} errors</span><span>${count("warning")} warnings</span><span>${count("note")} notes</span>`;
+  $("#issues").innerHTML = issues.length ? issues.map((i) => `
+    <li class="${i.tier}"><span class="id">${i.id}</span><b>${esc(i.title)}</b>${i.fastener ? ` — <button class="link" type="button" data-select="${esc(i.fastener)}">${esc(i.fastener)}</button>` : ""}${i.field && !i.fastener ? ` — <code>${esc(i.field)}</code>` : ""}${i.fastener && i.field ? ` <code>${esc(i.field)}</code>` : ""}
+    <span class="detail">${esc(i.detail)}</span></li>`).join("") : `<li class="note">No warnings.</li>`;
+}
+
+/* ---------- verification ---------- */
+
+function renderVerification() {
+  const v = runVerification();
+  const passed = v.results.filter((r) => r.pass).length;
+  $("#verify-results").innerHTML = `
+    <p><span class="${v.pass ? "pass" : "fail"}">${passed} of ${v.results.length} cases pass</span> · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
+    ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.pass ? "pass" : "fail"}">${r.pass ? "pass" : "fail"}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
+      ${r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
+        esc(c.label), typeof c.actual === "number" ? String(Number(c.actual.toPrecision(10))) : esc(c.actual),
+        typeof c.expected === "number" ? String(Number(c.expected.toPrecision(10))) : esc(c.expected), esc(c.tol), c.pass ? '<span class="pass">pass</span>' : '<span class="fail">fail</span>']), { numeric: [1, 2] })}
+    </details>`).join("")}`;
+}
+
+/* ---------- generators ---------- */
+
+const GEN_FIELDS = {
+  rect: [["nx", "Columns", 2], ["ny", "Rows", 2], ["sx", "Column pitch", 100, "length"], ["sy", "Row pitch", 60, "length"], ["cx", "Centre x", 0, "length"], ["cy", "Centre y", 0, "length"]],
+  stagger: [["rows", "Rows", 2], ["perRow", "Per row", 3], ["sx", "Pitch", 60, "length"], ["sy", "Gauge (row spacing)", 40, "length"], ["cx", "Centre x", 0, "length"], ["cy", "Centre y", 0, "length"]],
+  circle: [["n", "Fasteners", 6], ["r", "Radius", 50, "length"], ["startDeg", "First at (° from +x)", 0], ["cx", "Centre x", 0, "length"], ["cy", "Centre y", 0, "length"]],
+  mirror: [["c", "Line position", 0, "length"]],
+};
+const genValues = {};
+
+function renderGenerator() {
+  const kind = $("#gen-kind").value;
+  const fields = GEN_FIELDS[kind];
+  const vals = genValues[kind] ??= Object.fromEntries(fields.map(([k, , v]) => [k, v]));
+  $("#gen-fields").innerHTML = `
+    ${kind === "mirror" ? `<div class="row"><label class="f"><span>Mirror about</span><select id="gen-axis"><option value="x">vertical line x = c</option><option value="y">horizontal line y = c</option></select></label>
+      <label class="f"><span>Mirror</span><select id="gen-scope"><option value="all">all fasteners</option><option value="selected">selected fastener</option></select></label></div>` : ""}
+    <div class="row three">${fields.map(([k, label, , kindU]) => `<label class="f"><span>${esc(label)}${kindU ? ` (${units(kindU)})` : ""}</span><input type="number" step="any" data-gen="${k}" value="${esc(vals[k])}"></label>`).join("")}</div>`;
+  if (kind === "mirror") {
+    $("#gen-axis").value = vals.axis || "x";
+    $("#gen-scope").value = vals.scope || "all";
+  }
+  $("#gen-replace").hidden = kind === "mirror";
+  $("#gen-append").textContent = kind === "mirror" ? "Add mirror images" : "Add to pattern";
+  $("#gen-error").textContent = "";
+}
+
+function runGenerator(replace) {
+  const kind = $("#gen-kind").value;
+  const vals = genValues[kind];
+  for (const el of $$("[data-gen]")) vals[el.dataset.gen] = Number(el.value);
+  if (kind === "mirror") { vals.axis = $("#gen-axis").value; vals.scope = $("#gen-scope").value; }
+  const intKeys = ["nx", "ny", "rows", "perRow", "n"];
+  try {
+    for (const k of intKeys) if (k in vals && !Number.isInteger(vals[k])) throw new Error("Counts must be whole numbers.");
+    let points, sources = null;
+    if (kind === "rect") points = rectangularArray(vals);
+    else if (kind === "stagger") points = staggeredRows(vals);
+    else if (kind === "circle") points = boltCircle(vals);
+    else {
+      sources = state.pattern.fasteners.filter((q) => typeof q.x === "number" && typeof q.y === "number" && (vals.scope === "all" || q.id === state.selected));
+      if (!sources.length) throw new Error(vals.scope === "all" ? "There are no fasteners to mirror." : "Select a fastener to mirror.");
+      const imgs = sources.map((q) => mirror([q], { axis: vals.axis, c: vals.c, existing: [] })[0]);
+      const taken = state.pattern.fasteners.filter((q) => typeof q.x === "number").map((q) => ({ x: q.x, y: q.y }));
+      points = [];
+      imgs.forEach((p, i) => {
+        if (taken.some((t) => Math.hypot(t.x - p.x, t.y - p.y) <= 1e-9 * Math.max(1, Math.abs(p.x), Math.abs(p.y)))) return;
+        taken.push(p);
+        points.push({ ...p, from: sources[i] });
+      });
+      if (!points.length) throw new Error("Every mirror image lands on an existing fastener.");
+    }
+    if (replace) state.pattern.fasteners = [];
+    for (const p of points) {
+      addFastener(state.pattern, p.x, p.y, p.from ? { label: p.from.label, overrides: clone(p.from.overrides || {}) } : {});
+    }
+    state.selected = null;
+    $("#gen-error").textContent = `${replace ? "Replaced the pattern with" : "Added"} ${points.length} fastener${points.length === 1 ? "" : "s"}.`;
+    changed({ structure: true });
+  } catch (e) {
+    $("#gen-error").textContent = e.message;
+  }
+}
+
+/* ---------- files and library ---------- */
+
+function slug(name) {
+  return (name || "pattern").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "pattern";
+}
+
+function download(text, filename, type) {
+  const url = URL.createObjectURL(new Blob([text], { type }));
+  const a = document.createElement("a");
+  a.href = url; a.download = filename;
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+const exportJSON = () => download(toJSON(state.pattern), `${slug(state.pattern.name)}.json`, "application/json");
+const markdownOf = (pattern = state.pattern, result = state.result) => toMarkdown(pattern, result, { version: TOOL_VERSION, date: new Date().toISOString().slice(0, 10) });
+const exportMarkdown = () => download(markdownOf(), `${slug(state.pattern.name)}.md`, "text/markdown");
+
+/* Resolve a library name collision: "overwrite", "keep" or "cancel". */
+function askCollision(name) {
+  const dialog = $("#collision");
+  $("#collision-text").textContent = `“${name}” is already in the library. Overwrite it, keep both (the new one gets a numbered name), or cancel?`;
+  if (typeof dialog.showModal !== "function") {
+    return Promise.resolve(confirm(`“${name}” is already in the library. OK overwrites it; Cancel keeps both.`) ? "overwrite" : "keep");
+  }
+  return new Promise((resolve) => {
+    dialog.addEventListener("close", () => resolve(dialog.returnValue || "cancel"), { once: true });
+    dialog.returnValue = "";
+    dialog.showModal();
+  });
+}
+
+/* Put `pattern` in the library under its name, asking on a collision. Returns the stored name or null. */
+async function saveToLibrary(pattern) {
+  const lib = readLibrary();
+  let name = pattern.name;
+  if (name in lib) {
+    const choice = await askCollision(name);
+    if (choice === "cancel") return null;
+    if (choice === "keep") name = uniqueName(name, Object.keys(lib));
+  }
+  const stored = { ...clone(pattern), name };
+  lib[name] = { pattern: JSON.parse(toJSON(stored)), saved: new Date().toISOString() };
+  try {
+    writeLibrary(lib);
+    storageProblem(null);
+  } catch (e) {
+    storageProblem(e);
+    return null;
+  }
+  return name;
+}
+
+function loadPattern(pattern, issues = []) {
+  state.pattern = pattern;
+  state.selected = null;
+  state.importIssues = issues;
+  if (!Number.isFinite(state.snap.step) || state.snap.unitSystem !== pattern.unitSystem) {
+    state.snap = { on: state.snap.on, step: SNAP_DEFAULT[pattern.unitSystem], unitSystem: pattern.unitSystem };
+  }
+  renderAll();
+  renderGenerator();
+}
+
+async function importFile(file) {
+  const text = await file.text();
+  const parsed = parsePatternFile(text, file.name);
+  if (!parsed.pattern) {
+    state.importIssues = parsed.issues.map((i) => ({ ...i, detail: `${file.name}: ${i.detail}${/not loaded/.test(i.detail) ? "" : " The file was not loaded."}` }));
+    renderIssues();
+    $("#warnings-h").scrollIntoView({ block: "start" });
+    return;
+  }
+  const name = await saveToLibrary(parsed.pattern);
+  if (name === null) {
+    if (!$("#storage-banner").hidden) loadPattern(parsed.pattern, parsed.issues); // storage failed: still open it
+    return;
+  }
+  parsed.pattern.name = name;
+  loadPattern(parsed.pattern, parsed.issues.map((i) => ({ ...i, detail: `${file.name}: ${i.detail}` })));
+  renderLibrary();
+  $("#library").value = name;
+}
+
+/* ---------- bindings ---------- */
+
+function bind() {
+  $("#name").addEventListener("input", (e) => { state.pattern.name = e.target.value; autosave(); });
+  $("#precision").addEventListener("input", (e) => {
+    const v = parseInput(e.target.value);
+    state.pattern.settings.precision = typeof v === "number" ? v : state.pattern.settings.precision;
+    changed();
+  });
+  for (const b of $$("[data-units]")) {
+    b.addEventListener("click", () => {
+      const to = b.dataset.units;
+      if (to === state.pattern.unitSystem || !UNIT_SYSTEMS.includes(to)) return;
+      state.pattern = convertPattern(state.pattern, to);
+      state.snap = { on: state.snap.on, step: SNAP_DEFAULT[to], unitSystem: to };
+      changed({ structure: true });
+      renderGenerator();
+    });
+  }
+  $("#new-example").addEventListener("click", () => loadPattern(examplePattern(state.pattern.unitSystem)));
+
+  for (const el of $$("[data-path]")) {
+    const handler = () => {
+      const isSelect = el.tagName === "SELECT";
+      setPath(state.pattern, el.dataset.path, isSelect ? el.value : parseInput(el.value));
+      changed();
+    };
+    el.addEventListener(el.tagName === "SELECT" ? "change" : "input", handler);
+  }
+  $("#plates").addEventListener("input", (e) => {
+    const key = e.target.dataset.plateKey;
+    const i = Number(e.target.closest("[data-plate]")?.dataset.plate);
+    if (!key || !state.pattern.plates[i]) return;
+    state.pattern.plates[i][key] = parseInput(e.target.value);
+    changed();
+  });
+
+  const rows = $("#fastener-rows");
+  rows.addEventListener("input", (e) => {
+    const { id, key } = e.target.dataset;
+    const fa = state.pattern.fasteners.find((q) => q.id === id);
+    if (!fa || !key) return;
+    if (key === "label") fa.label = e.target.value;
+    else if (key === "x" || key === "y") fa[key] = parseInput(e.target.value);
+    else {
+      const v = parseInput(e.target.value);
+      fa.overrides ??= {};
+      if (v === null) delete fa.overrides[key];
+      else fa.overrides[key] = v;
+      e.target.classList.toggle("override", v !== null);
+    }
+    changed();
+  });
+  rows.addEventListener("focusin", (e) => {
+    const id = e.target.dataset?.id;
+    if (id && id !== state.selected) select(id);
+  });
+  rows.addEventListener("click", (e) => {
+    const id = e.target.closest("[data-remove]")?.dataset.remove;
+    if (id) removeFastener(id);
+  });
+  document.addEventListener("click", (e) => {
+    const id = e.target.closest("[data-select]")?.dataset.select;
+    if (!id) return;
+    select(id, { scroll: true });
+    $(`#fastener-rows input[data-id="${CSS.escape(id)}"][data-key="x"]`)?.focus();
+  });
+
+  $("#add-fastener").addEventListener("click", () => {
+    const xs = state.pattern.fasteners.filter((q) => typeof q.x === "number");
+    const x = xs.length ? snapValue(Math.max(...xs.map((q) => q.x)) + (state.snap.step || 10) * 4) : 0;
+    const y = xs.length ? xs[xs.length - 1].y : 0;
+    const fa = addFastener(state.pattern, x, y);
+    state.selected = fa.id;
+    changed({ structure: true });
+    $(`#fastener-rows input[data-id="${CSS.escape(fa.id)}"][data-key="x"]`)?.focus();
+  });
+  $("#delete-fastener").addEventListener("click", () => state.selected && removeFastener(state.selected));
+  $("#fit-plate").addEventListener("click", () => {
+    const pts = state.pattern.fasteners.filter((q) => typeof q.x === "number" && typeof q.y === "number");
+    if (!pts.length || !state.pattern.plates.length) return;
+    const D = state.pattern.defaults.diameter;
+    const m = typeof D === "number" && D > 0 ? 2 * D : 0.1 * Math.max(1, ...pts.map((q) => Math.hypot(q.x, q.y)));
+    Object.assign(state.pattern.plates[0], {
+      xMin: round12(Math.min(...pts.map((q) => q.x)) - m), xMax: round12(Math.max(...pts.map((q) => q.x)) + m),
+      yMin: round12(Math.min(...pts.map((q) => q.y)) - m), yMax: round12(Math.max(...pts.map((q) => q.y)) + m),
+    });
+    changed({ structure: true });
+  });
+  $("#snap").addEventListener("click", () => { state.snap.on = !state.snap.on; $("#snap").setAttribute("aria-pressed", String(state.snap.on)); draw(); });
+  $("#snap-step").addEventListener("input", (e) => {
+    const v = Number(e.target.value);
+    if (Number.isFinite(v) && v >= 0) { state.snap.step = v; e.target.removeAttribute("aria-invalid"); draw(); }
+    else e.target.setAttribute("aria-invalid", "true");
+  });
+
+  $("#gen-kind").addEventListener("change", renderGenerator);
+  $("#gen-replace").addEventListener("click", () => runGenerator(true));
+  $("#gen-append").addEventListener("click", () => runGenerator(false));
+
+  $("#export-json").addEventListener("click", exportJSON);
+  $("#storage-export").addEventListener("click", exportJSON);
+  $("#export-md").addEventListener("click", exportMarkdown);
+  $("#import").addEventListener("click", () => $("#import-file").click());
+  $("#import-file").addEventListener("change", async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (file) await importFile(file);
+  });
+  $("#lib-save").addEventListener("click", async () => {
+    const name = await saveToLibrary(state.pattern);
+    if (name === null) return;
+    state.pattern.name = name;
+    $("#name").value = name;
+    autosave();
+    renderLibrary();
+    $("#library").value = name;
+  });
+  $("#lib-load").addEventListener("click", () => {
+    const entry = readLibrary()[$("#library").value];
+    if (!entry) return;
+    const parsed = normalizePattern(entry.pattern, { lenient: true });
+    if (parsed.pattern) loadPattern(parsed.pattern, parsed.issues);
+    else { state.importIssues = parsed.issues; renderIssues(); }
+  });
+  $("#lib-delete").addEventListener("click", () => {
+    const name = $("#library").value;
+    const lib = readLibrary();
+    if (!(name in lib) || !confirm(`Delete “${name}” from the library?`)) return;
+    delete lib[name];
+    try { writeLibrary(lib); } catch (e) { storageProblem(e); }
+    renderLibrary();
+  });
+  $("#run-verify").addEventListener("click", renderVerification);
+}
+
+/* ---------- start ---------- */
+
+function initialPattern() {
+  const saved = readWorking();
+  if (saved) {
+    const parsed = parseJSON(saved, { lenient: true });
+    if (parsed.pattern) return parsed.pattern;
+  }
+  return examplePattern("N-mm");
+}
+
+function start() {
+  const pattern = initialPattern();
+  state.snap = { on: true, step: SNAP_DEFAULT[pattern.unitSystem], unitSystem: pattern.unitSystem };
+  state.pattern = pattern;
+  bind();
+  bindCanvas();
+  renderGenerator();
+  renderAll();
+  registerTools({
+    current: () => ({ pattern: state.pattern, result: state.result }),
+    markdown: (pattern) => markdownOf(pattern, solve(pattern)),
+  });
+}
+return { start };
+})();
+
+/* ---- ui/main.mjs ---- */
+const __m17 = (() => {
+const { start } = __m16;
+/* Entry point of the built page. */
+
+
+
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+else start();
+return {};
+})();
+})();
+</script>
+</body>
+</html>
