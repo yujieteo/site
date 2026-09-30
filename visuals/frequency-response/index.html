@@ -1220,12 +1220,12 @@ function polyText(p, v = "s") {
   if (!terms.length) return "0";
   return terms.map((t, i) => (i === 0 ? (t.neg ? "−" : "") + t.t : (t.neg ? " − " : " + ") + t.t)).join("");
 }
-function describeBlock(b) {
+function describeBlock(b, v = "s") {
   if (b.form === "preset") {
     const ps = Object.entries(b.params).map(([k, v]) => `${PARAM_LABELS[k] || k} = ${fmt(v)}`).join(", ");
     return `${PRESETS[b.preset].label}${ps ? ` with ${ps}` : ""}`;
   }
-  if (b.form === "tf") return `(${polyText(trimPoly(b.num))}) / (${polyText(trimPoly(b.den))})`;
+  if (b.form === "tf") return `(${polyText(trimPoly(b.num), v)}) / (${polyText(trimPoly(b.den), v)})`;
   return `zeros [${b.zeros.map((z) => fmtC(z)).join(", ")}], poles [${b.poles.map((z) => fmtC(z)).join(", ")}], gain ${fmt(b.gain)}`;
 }
 
@@ -1271,13 +1271,14 @@ function toMarkdown(inputs, results) {
   const x = normalise(inputs), r = results || analyze(x), u = x.displayUnits;
   const disc = x.timeDomain === "discrete", v = disc ? "z" : "s";
   const F = (w) => (w === null || w === undefined ? "—" : !Number.isFinite(w) ? `∞ ${u.freq}` : `${fmt(freqTo(w, u.freq, x.Ts))} ${u.freq}`);
+  const blockV = (key) => (disc && x.discretization[key] === "z" ? "z" : "s");
   const how = (key) => (!disc ? "" : x.discretization[key] === "z" ? " (entered in z)" : ` (entered in s, discretised by ${DISCRETE_METHODS[x.discretization[key]]}${x.discretization[key] === "tustin" && x.discretization.prewarp > 0 ? ` with prewarp at ${fmt(x.discretization.prewarp)} rad/s` : ""})`);
   const lines = [];
   lines.push("# Frequency-response report", "", `> **${DISCLAIMER}**`, "");
   lines.push("## System", "");
   lines.push(`- Time domain: ${x.timeDomain}${disc ? `, Ts = ${fmt(x.Ts, 6)} s, Nyquist frequency π/Ts = ${fmt(Math.PI / x.Ts, 6)} rad/s` : ""}`);
-  lines.push(`- Plant G: ${describeBlock(x.plant)}${how("plant")}`);
-  lines.push(`- Controller C: ${describeBlock(x.controller)}${how("controller")}`);
+  lines.push(`- Plant G: ${describeBlock(x.plant, blockV("plant"))}${how("plant")}`);
+  lines.push(`- Controller C: ${describeBlock(x.controller, blockV("controller"))}${how("controller")}`);
   lines.push(`- Loop gain K: ${fmt(x.K, 6)}`);
   lines.push(disc ? `- Delay d: ${fmt(x.delaySamples)} samples (${fmt(x.delaySamples * x.Ts, 6)} s)` : `- Delay τ: ${fmt(x.delay, 6)} s`);
   lines.push(disc ? `- Open loop: L(z) = K·C(z)·G(z)${x.delaySamples > 0 ? "·z^(−d)" : ""}, unity negative feedback` : `- Open loop: L(s) = K·C(s)·G(s)${x.delay > 0 ? "·e^(−sτ)" : ""}, unity negative feedback`, "");

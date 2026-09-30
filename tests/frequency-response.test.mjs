@@ -419,6 +419,13 @@ test("discrete exports carry rad/sample and Ts, and phase 1 input files still im
   assert.throws(() => F.freqTo(1, "rad/sample"), /Ts/);
 });
 
+test("the Markdown report writes a block entered in z in terms of z and one entered in s in terms of s", () => {
+  const zmd = F.toMarkdown(inZ({ form: "tf", num: [Ts], den: [1, -1] }));
+  assert.ok(zmd.includes("- Plant G: (0.1) / (z − 1) (entered in z)"), zmd);
+  const smd = F.toMarkdown(fromS({ form: "tf", num: [1], den: [1, 1] }, "zoh"));
+  assert.ok(smd.includes("- Plant G: (1) / (s + 1) (entered in s, discretised by"), smd);
+});
+
 test("matrix exponential, characteristic polynomial and state-space round trip", () => {
   const E = F.expm([[-1, 2, 0], [0, -1, 0], [0, 0, 0.5]]);
   // Jordan block [[−1, 2], [0, −1]]: e^(At) = e^(−t)·[[1, 2t], [0, 1]].
