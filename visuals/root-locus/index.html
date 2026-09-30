@@ -854,8 +854,9 @@ function polyStr(p, x, sig) {
   }
   return out || '0';
 }
-/* Roots with multiplicity: a group of k nearby roots is one k-fold root when the polynomial and its first k - 1
-   derivatives vanish at the group's centre, found by Newton on the (k - 1)th derivative (where the root is simple). */
+/* Roots with multiplicity: a group of k nearby roots is one k-fold root when it is no wider than the eps^(1/k) scatter
+   of a true k-fold root and the polynomial and its first k - 1 derivatives vanish at the group's centre, found by
+   Newton on the (k - 1)th derivative (where the root is simple). */
 function rootsWithMultiplicity(p) {
   var roots = proots(p).sort(function (a, b) { return b.re - a.re || b.im - a.im; }), used = roots.map(function () { return false; }), out = [];
   var ders = [p], absD;
@@ -880,7 +881,9 @@ function rootsWithMultiplicity(p) {
         c = csub(c, step);
         if (!(cabs(step) > 1e-15 * Math.max(1, cabs(c)))) break;
       }
-      if (vanishes(c, k)) {
+      var radius = 0;
+      for (t = 0; t < k; t++) radius = Math.max(radius, cdist(roots[near[t]], c));
+      if (radius <= 10 * Math.pow(2.2e-16, 1 / k) * Math.max(1, cabs(c)) && vanishes(c, k)) {
         for (t = 0; t < k; t++) used[near[t]] = true;
         out.push({ r: c, mult: k });
         return;

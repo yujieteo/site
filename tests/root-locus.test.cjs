@@ -229,6 +229,14 @@ test('ZOH maps repeated poles to exact repeated z-poles and keeps the DC gain', 
   }
 });
 
+test('distinct close roots stay distinct while true repeated roots merge', () => {
+  for (const [G, want] of [['1 / ((s + 1) * (s + 1.0001))', '1 / ((s + 1)*(s + 1.0001))'], ['1 / ((s + 10) * (s + 10.001))', '1 / ((s + 10)*(s + 10.001))'],
+    ['1 / (s + 1)**12', '1 / (s + 1)**12'], ['1 / ((s - 3) * (s + 1)**11)', '1 / ((s - 3)*(s + 1)**11)']]) {
+    const g = R.parseField(G, 's', 'G');
+    assert.equal(R.factoredStr(g.num, g.den, 's', 6), want, G);
+  }
+});
+
 test('ZOH warns when the polynomial G(z) no longer matches the sampled plant', () => {
   const z = (G, T) => R.analyze(s({mode: 'z', sampleTime: T, method: 'zoh', fields: {G}})).warnings.filter(w => w.kind === 'discretisation');
   same(z('1 / (s + 1)**3', 0.1), []);
