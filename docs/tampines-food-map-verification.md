@@ -1,6 +1,6 @@
 # Tampines food map: review evidence
 
-The map is integrated into **Good food in Tampines**, not published as another page. Its filters still scope the ranked list, calorie chart and table. Numbered floor-directory buttons show the existing signature dish and nutrition estimate; their source link opens the original ranked entry.
+The approved scope is **integration only**: add the Visuals map feature to **Good food in Tampines**. Separate-page publication is not required; no additional page or Visuals pin bump belongs to this change. Its filters still scope the ranked list, calorie chart and table. Numbered floor-directory buttons show the existing signature dish and nutrition estimate; their source link opens the original ranked entry.
 
 ## Source and limits
 
@@ -8,9 +8,9 @@ The map is integrated into **Good food in Tampines**, not published as another p
 - Map data: OpenStreetMap contributors, ODbL, 2026-05-06. Attribution, licence and source links appear on the page.
 - That geometry covers **three malls**, containing 34 of the current 50 places. The 16 Our Tampines Hub entries remain filterable, with an explicitly unplotted floor directory. No Hub coordinate was added.
 - Numbers are list ranks grouped by sourced unit/floor, not shop positions. All existing dataset fields, including ranking, sources and nutrition, are unchanged.
-- The earlier separate-page publishing work remains in a preservation branch; this change does not bump the Visuals pin, merge or deploy anything.
+- This review changes source and generated assets only. Deployment and final live-site evidence belong to the outer delivery pipeline, not this review phase.
 
-## Checks (2026-09-30)
+## Original checks (2026-09-30, before focus review fixes)
 
 ```text
 stage,check,status,evidence
@@ -30,7 +30,17 @@ A,diff hygiene,PASS,git diff --check
 B,deployment,NOT RUN,review-only change
 ```
 
-The browser checks exercise cuisine/mall combinations, empty mapped selections, all four mall directories, matching list/bar/table counts, estimates and not-estimable dishes, incompatible-selection clearing, original list/source navigation, calorie expansion and sort, and 44px directory targets. Phone details scroll into view after selection. Escape clears details and restores focus.
+The browser checks exercise cuisine/mall combinations, empty mapped selections, all four mall directories, matching list/bar/table counts, estimates and not-estimable dishes, incompatible-selection clearing, original list/source navigation, calorie expansion and sort, and 44px directory targets. Phone details scroll into view after selection.
+
+## Focus and metadata review fixes
+
+Resize redraws only the map geometry, leaving directory buttons and detail actions intact and restoring the focused mall marker. Escape clears map details and hides tooltips, but restores directory focus only when the key event originates inside the map section. Focus outside that section stays where it is.
+
+`scripts/verify_tampines_food_browser.js` now exercises width and height changes in both directions for every directory button, both detail actions and all mall markers. It checks Escape from map controls, calorie bars, filter chips, chart sorting and ranked entries, including real keyboard events. It also executes the registered `get_metadata` tool and compares its response with the pre-existing contract: geometry stays local to the map renderer and is not added to the metadata response.
+
+Focused review verification passed at 1440×1100, 390×844 touch and 320×844 touch: 871 browser assertions per viewport, plus real marker activation, directory Escape, calorie-bar Escape with and without a map selection, and the executed WebMCP metadata contract. These checks ran against the regenerated native page.
+
+Final delivery evidence must describe the enhanced native page, not claim publication of a second map page. No deployment was performed in this review phase.
 
 ### Reproduce the browser suite
 
