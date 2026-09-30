@@ -18,7 +18,7 @@ schema/              JSON Schemas for the YAML data
 scripts/             build.py, validate.py, notes.py, podcast.py, ...
 skills/              Agent playbooks, principles, and reference notes
 static/              Source CSS and browser JavaScript
-templates/           Shared HTML templates
+templates/           Shared HTML templates and the beamdswitch report template
 tests/               Python (unittest) and Node tests
 visuals/             Visualizations built in this repo before publication (sources, data, build scripts)
 site/                Generated site (not committed; never edit by hand)
