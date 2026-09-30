@@ -57,7 +57,7 @@ successful run leaves no Git diff. Keep source files outside `site/`.
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-node --test tests/corpus.test.mjs tests/vgc-turn-lab.test.mjs
+node --test tests/corpus.test.mjs tests/vgc-turn-lab.test.mjs tests/convexity-action-engine.test.mjs
 ```
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
