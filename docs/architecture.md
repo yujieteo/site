@@ -15,10 +15,11 @@ that each add or republish a different visualization do not conflict) and
 written to `site/visuals/<slug>/`; the visuals checkout's own `HEAD` does not
 affect the build.
 
-One shared source can still conflict: `data/notes.md` lists dates newest
-first, so two pull requests that each add a new newest date insert at the same
-spot. Its layout is written by the FPL wiki's publish script, so splitting it
-is a follow-up in that repository.
+Notes are the one shared source that can still conflict. The captain chose to
+keep every note in the single file `data/notes.md`, so notes changes land one
+at a time: two pull requests that each edit the top of `data/notes.md` (a new
+newest date), the same date section, or `data/note-tags.json` can still
+conflict.
 
 ## Published Corpus
 

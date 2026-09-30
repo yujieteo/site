@@ -84,8 +84,11 @@ validation, the build, and the Python and Node tests. It checks out the
 `tests/test_independent_changes.py` proves the merge guarantee: it opens two
 content branches (new visualizations with their own visuals pins, a note and a
 blog post) from the same base in a scratch repository, builds each, and merges
-both without conflicts. Two branches that each add a new newest date to
-`data/notes.md` still conflict; see [docs/architecture.md](docs/architecture.md).
+both without conflicts. Notes stay in one file, `data/notes.md`, by the
+captain's choice, so notes changes land one at a time: two branches that each
+edit the top of `data/notes.md`, the same date section, or
+`data/note-tags.json` can still conflict; see
+[docs/architecture.md](docs/architecture.md).
 
 ## Adding and changing content
 
