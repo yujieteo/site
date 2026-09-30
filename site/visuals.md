@@ -106,7 +106,7 @@ Older Singapore residents report stronger connection to the country but less int
 - WebMCP tools: get_data, get_metadata, query
 
 ## Good food in Tampines
-The 50 places food writers recommend most across Tampines Mall, Tampines 1, Century Square and Our Tampines Hub, ranked by how many independent guides name them. Filter by cuisine or mall, see a sourced calorie estimate (carbohydrate, protein, fat) for each signature dish, and read what each mall offers. Checked against the malls' own directories as of 30 September 2026.
+The 50 places food writers recommend most across Tampines Mall, Tampines 1, Century Square and Our Tampines Hub, ranked by how many independent guides name them. Filter by cuisine or mall, see a sourced calorie estimate (carbohydrate, protein, fat) for 45 of the 50 signature dishes, and read what each mall offers. Checked against the malls' own directories as of 30 September 2026.
 - HTML: https://teoyujie.org/visuals/tampines-food/index.html
 - Data: https://teoyujie.org/visuals/tampines-food/data.json
 - Fetched: 2026-09-30
