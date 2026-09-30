@@ -11,6 +11,11 @@ that uses a different method, plus closed forms.
 | M–κ, κ_lim, M_lim, M_p, M_p(N) | strip fibres with exact strip moments, quadratic stress interpolation | `reference/plasticref.py`: exact width function, 400-point Gauss–Legendre between breakpoints | 1e-6 relative | 1e-8 |
 | YAML | `src/yaml.js` | PyYAML (tests only) | exact data equality both ways | — |
 
+"Relative" is measured against the larger of the two values and the section's own
+scale: √A raised to the property's length dimension, and M_lim for curve moments. Values that are zero only up to rounding (cx of a symmetric
+section, M at κ = 0 under axial force) therefore compare on that scale rather than
+against themselves.
+
 ## Torsion accuracy
 
 `reference/torsion_accuracy.py` runs the page's own formula (through Node) and the
