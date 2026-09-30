@@ -10,11 +10,18 @@ function loadBrowserAtlas(modelContext) {
   const fields = Object.fromEntries(['q', 'category', 'subsidiser', 'depth', 'stage', 'includeHistorical']
     .map(name => [name, {value: '', checked: false}]));
   const cards = data.entries.map(entry => ({dataset: {product: entry.id}}));
+  const buttons = Object.keys(data.vocabulary.stage).flatMap(stage => Object.keys(data.vocabulary.depth).map(depth => {
+    const attributes = {};
+    return {dataset: {depth, stage}, closest() { return this; },
+      setAttribute(name, value) { attributes[name] = value; }, getAttribute: name => attributes[name]};
+  }));
+  const listeners = {};
   const nodes = {
     'atlas-data': {textContent: JSON.stringify(data)},
     filters: {elements: {namedItem: name => fields[name]}, addEventListener() {}},
-    matrix: {querySelectorAll: () => [], querySelector: () => nodes.history, addEventListener() {}},
-    history: {}, count: {}, empty: {},
+    matrix: {querySelectorAll: () => buttons, querySelector: () => nodes.history,
+      addEventListener(type, listener) { listeners[type] = listener; }},
+    catalogue: {focus() {}}, history: {}, count: {}, empty: {},
   };
   const document = {
     modelContext,
@@ -23,7 +30,8 @@ function loadBrowserAtlas(modelContext) {
   };
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../visuals/subsidy-atlas/engine.js'), 'utf8'),
     {document, navigator: {}});
-  return {cards, nodes};
+  const click = button => listeners.click({target: button});
+  return {cards, nodes, fields, buttons, click};
 }
 
 test('document WebMCP registers and executes all three read-only tools without navigator WebMCP', async () => {
@@ -68,6 +76,33 @@ test('catalogue renders when document WebMCP is unavailable', () => {
   assert.equal(nodes.matrix.hidden, false);
   assert.equal(nodes.history.hidden, true);
   assert.equal(nodes.empty.hidden, true);
+});
+
+test('matrix cells stay navigable: selecting moves between cells and reselecting clears', () => {
+  const {cards, fields, buttons, click} = loadBrowserAtlas(undefined);
+  const cell = (stage, depth) => buttons.find(button => button.dataset.stage === stage && button.dataset.depth === depth);
+  const visible = () => cards.filter(card => !card.hidden).map(card => card.dataset.product);
+  const pressed = () => buttons.filter(button => button.getAttribute('aria-pressed') === 'true');
+  fields.category.value = 'llm';
+  fields.includeHistorical.checked = true;
+  const baseline = matrix(data, filterEntries(data, {category: 'llm', includeHistorical: true}));
+  const [first, second] = baseline.filter(entry => entry.ids.length > 0);
+  assert.ok(first && second);
+  click(cell(first.stage, first.depth));
+  assert.deepEqual(visible(), first.ids);
+  assert.deepEqual(pressed(), [cell(first.stage, first.depth)]);
+  for (const {stage, depth, ids} of baseline) {
+    assert.equal(cell(stage, depth).textContent, ids.length || '—');
+    assert.equal(cell(stage, depth).disabled, ids.length === 0 && !(stage === first.stage && depth === first.depth));
+  }
+  click(cell(second.stage, second.depth));
+  assert.deepEqual(visible(), second.ids);
+  assert.deepEqual(pressed(), [cell(second.stage, second.depth)]);
+  assert.equal(fields.category.value, 'llm');
+  click(cell(second.stage, second.depth));
+  assert.deepEqual(pressed(), []);
+  assert.deepEqual([fields.depth.value, fields.stage.value], ['', '']);
+  assert.deepEqual(visible(), filterEntries(data, {category: 'llm', includeHistorical: true}).map(entry => entry.id));
 });
 
 test('current catalogue excludes old loss reports and forecasts', () => {

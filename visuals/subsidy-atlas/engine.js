@@ -44,12 +44,14 @@
     cards.forEach(card => { card.hidden = !ids.has(card.dataset.product); });
     document.getElementById('count').textContent = `${entries.length} of ${data.entries.length} records · ${entries.filter(entry => entry.stage !== 'historical').length} current programmes / reported incentives`;
     document.getElementById('empty').hidden = entries.length > 0;
-    const cells = matrix(data, entries);
+    const cells = matrix(data, filterEntries(data, {...filters, depth: '', stage: ''}));
     for (const button of chart.querySelectorAll('button')) {
       const cell = cells.find(cell => cell.depth === button.dataset.depth && cell.stage === button.dataset.stage);
+      const selected = cell.depth === filters.depth && cell.stage === filters.stage;
       button.textContent = cell.ids.length || '—';
-      button.disabled = cell.ids.length === 0;
-      button.setAttribute('aria-label', `${data.vocabulary.stage[cell.stage]}, ${data.vocabulary.depth[cell.depth]}: ${cell.ids.length} records. Filter catalogue.`);
+      button.disabled = cell.ids.length === 0 && !selected;
+      button.setAttribute('aria-pressed', String(selected));
+      button.setAttribute('aria-label', `${data.vocabulary.stage[cell.stage]}, ${data.vocabulary.depth[cell.depth]}: ${cell.ids.length} records. ${selected ? 'Clear cell filter' : 'Filter catalogue'}.`);
     }
     chart.querySelector('[data-history-row]').hidden = !filters.includeHistorical;
     chart.hidden = false;
@@ -73,8 +75,9 @@
   chart.addEventListener('click', event => {
     const button = event.target.closest('button');
     if (!button) return;
-    field('depth').value = button.dataset.depth;
-    field('stage').value = button.dataset.stage;
+    const selected = button.getAttribute('aria-pressed') === 'true';
+    field('depth').value = selected ? '' : button.dataset.depth;
+    field('stage').value = selected ? '' : button.dataset.stage;
     render();
     document.getElementById('catalogue').focus();
   });

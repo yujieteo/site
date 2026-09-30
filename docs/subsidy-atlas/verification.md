@@ -10,9 +10,10 @@ stage,check,status,evidence
 A,data validation,PASS,scripts/validate.py: All data files valid
 A,site build,PASS,scripts/build.py: 19 visualizations including subsidy-atlas
 A,Python suite,PASS,101 tests; 120.227s
-A,Node suite,PASS,24 tests including five Subsidy Atlas behavior tests
+A,Node suite,PASS,tests/subsidy-atlas.test.cjs: 8 Subsidy Atlas behavior tests pass
 A,generated visualization,PASS,build.py --verify plus dataset reproducibility test
 A,desktop browser,PASS,1440x1000; search and matrix drilldown; native keyboard expansion
+A,matrix navigation,PASS,1440x1000; selection moves between cells and reselecting clears it; category and search kept
 A,phone browser,PASS,390x844 device emulation; 390px document width; nine default records
 A,narrow phone,PASS,320px viewport; no horizontal overflow; empty results message
 A,dark mode,PASS,390px viewport; dark tokens applied; no horizontal overflow
@@ -25,6 +26,13 @@ A,browser console,PASS,no errors
   historical records are hidden; three forecasts are a separate section.
 - Search for `solar`: three matching policy records. Matrix drilldown sets
   depth to `partial` and stage to `tapering` and focuses the catalogue heading.
+- Matrix counts ignore only the depth and stage filters, so after drilldown
+  the other populated cells stay enabled and the selected cell is outlined
+  (`aria-pressed`). With LLMs + historical selected, clicking Acquisition ×
+  Free shows two records. Clicking Historical × Unknown moves the selection
+  and shows one record, with the category still set. Clicking it again clears
+  depth and stage and restores all three records. A Node test replays this
+  sequence and fails on the old self-collapsing matrix.
 - Pressing Tab, then Enter from that heading focuses and expands the first
   result's native summary. The Singapore EV evidence, denominator and deadline
   are available without a pointer.
@@ -35,7 +43,9 @@ A,browser console,PASS,no errors
   generative-video allowances and future solar support from catalogue evidence,
   with observed signals and reversal conditions. Node tests also verify conjunctive filters,
   both categories for the combined Grab record, invalid filter rejection,
-  exact matrix totals and explicit speculation flags on retrieval.
+  exact matrix totals, matrix cell navigation, `document.modelContext`
+  registration of the three read-only WebMCP tools, and explicit
+  speculation flags on retrieval.
 - At 390px, enabled matrix cells are approximately 59 × 44px and the document
   width is 390px. At 320px the document does not overflow. Chrome's window
   resize alone had a 500px minimum, so phone checks used device emulation and
@@ -46,6 +56,17 @@ valid 390 × 844 PNG files. Their dimensions and image contents were independent
 read and checked; the screenshots below are the actual phone captures.
 
 ## Screenshots for the PR
+
+`desktop-matrix.png` was captured after the matrix navigation fix. The
+other screenshots come from the first commit (392b852). Later commits removed
+the analogy graph (9c494f5), moved WebMCP registration to
+`document.modelContext` (a9c4846) and changed matrix selection. Those older
+screenshots have not been refreshed. They may still show removed precedent
+links, and the matrix in `desktop-details.png` shows the old collapsed state.
+
+Desktop matrix after drilldown (selected cell outlined, neighbours enabled):
+
+![Desktop matrix](desktop-matrix.png)
 
 Desktop overview / filters:
 
