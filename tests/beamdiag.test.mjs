@@ -42,7 +42,8 @@ test("stiffness solution agrees with the independent Python (exact Macaulay) ref
     const Fs = Math.max(...ref.reactions.map((r) => Math.abs(r.Fy)));
     const Ms = Math.max(...ref.points.flatMap((p) => [Math.abs(p.Mleft), Math.abs(p.Mright)]));
     const vs = Math.max(...ref.points.map((p) => Math.abs(p.v)));
-    const ts = Math.max(...ref.points.map((p) => Math.abs(p.theta)));
+    // Slopes can vanish at every sampled point (all supports and midspans of equal spans); fall back to v/L.
+    const ts = Math.max(...ref.points.map((p) => Math.abs(p.theta)), vs / result.model.length);
     assert.equal(result.reactions.length, ref.reactions.length);
     ref.reactions.forEach((r, i) => {
       assert.equal(result.reactions[i].x, r.x);
@@ -207,4 +208,38 @@ test("NASTRAN deck is well-formed large-field bulk data for the solved mesh", ()
   }
   assert.equal(B.nastranReal(-1.2345678901234e-300).length, 16);
   assert.equal(B.nastranReal(0), "0.0");
+});
+
+test("no cap on supports, loads or elements: 150 supports, 200 loads and a fine mesh solve and export in full", () => {
+  const S = 150, L = 149;
+  const model = {
+    length: L, divisions: 50, material: { E: 200e9, nu: 0.3 }, section: { A: 5e-3, I: 8e-5 },
+    supports: Array.from({ length: S }, (_, i) => ({ kind: i % 37 === 0 ? "fixed" : "pin", x: i })),
+    loads: [
+      ...Array.from({ length: 149 }, (_, i) => ({ kind: "point", x: i + 0.25, F: -1000 * (1 + (i % 7)) })),
+      ...Array.from({ length: 50 }, (_, i) => ({ kind: "moment", x: 3 * i + 0.6, C: 500 * (i % 2 ? 1 : -1) })),
+      { kind: "dist", x1: 0, x2: L, q1: -2000, q2: -8000 },
+    ],
+  };
+  const result = B.solve(model), eq = result.equilibrium;
+  assert.equal(result.reactions.length, S);
+  assert.ok(Math.abs(eq.Fy) <= 1e-10 * eq.scaleF && Math.abs(eq.Mz) <= 1e-10 * eq.scaleM);
+  for (const s of model.supports) assert.equal(B.at(result, s.x).v, 0);
+  // A finer mesh gives the same reactions up to round-off: the element count is free and exact.
+  const coarse = B.solve({ ...model, divisions: 1 }), Rs = Math.max(...coarse.reactions.map((r) => Math.abs(r.Fy)));
+  result.reactions.forEach((r, i) => close(r.Fy, coarse.reactions[i].Fy, Rs, `R at ${r.x}`, 1e-8));
+
+  const bulk = B.exportBdf(model).split("\n");
+  const grids = bulk.filter((l) => l.startsWith("GRID*")).length, spcs = bulk.filter((l) => l.startsWith("SPC1*"));
+  assert.equal(grids, result.nodes.length);
+  assert.ok(grids > 10000);
+  assert.equal(bulk.filter((l) => l.startsWith("CBAR*")).length, grids - 1);
+  assert.equal(spcs.length, S);
+  assert.equal(bulk.filter((l) => l.startsWith("FORCE*")).length, 149);
+  assert.equal(bulk.filter((l) => l.startsWith("MOMENT*")).length, 50);
+  assert.equal(bulk.filter((l) => l.startsWith("PLOAD1*")).length, grids - 1);
+  // Every support lands on its own GRID with the right constrained components.
+  const ids = new Set(spcs.map((l) => l.slice(40, 56).trim()));
+  assert.equal(ids.size, S);
+  assert.equal(spcs.filter((l) => l.slice(24, 40).trim() === "126").length, model.supports.filter((s) => s.kind === "fixed").length);
 });

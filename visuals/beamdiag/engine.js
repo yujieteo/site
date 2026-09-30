@@ -9,13 +9,17 @@
  * Internal forces use the usual beam convention: V(x) is the sum of the upward
  * forces left of the section, M(x) is positive when sagging, dM/dx = V, dV/dx = q.
  *
- * The beam is discretised with two-node Hermite elements whose nodes include
- * every support, point load, couple and distributed-load end, with consistent
- * (work-equivalent) nodal loads. For Euler–Bernoulli beams this makes nodal
- * deflections and support reactions exact, so statically indeterminate supports
- * (fixed–fixed, propped cantilevers, continuous spans) are solved without any
- * equilibrium-only shortcut. V and M are then recovered exactly by statics from
- * the loads and the reactions, which keeps every jump at a point force or couple.
+ * The stiffness system uses two-node Hermite elements between the supports and
+ * the beam ends only, loaded by consistent (work-equivalent) nodal loads from
+ * every point force, couple and distributed load inside each element. For
+ * Euler–Bernoulli beams these are the exact fixed-end actions, so nodal
+ * deflections and support reactions are exact and statically indeterminate
+ * supports (fixed–fixed, propped cantilevers, continuous spans) are solved
+ * without any equilibrium-only shortcut. Keeping load points out of the matrix
+ * keeps it well conditioned however closely loads are spaced. V and M are then
+ * recovered exactly by statics from the loads and the reactions, which keeps
+ * every jump at a point force or couple, and deflection by integrating M/EI
+ * exactly across the plotting mesh (every event, subdivided).
  */
 (function (root, factory) {
   const api = factory();
@@ -24,7 +28,6 @@
 })(typeof self !== "undefined" ? self : this, function () {
   "use strict";
 
-  const LIMITS = { supports: 8, loads: 20, divisions: 40 };
   const SUPPORT_KINDS = ["pin", "fixed"];
 
   class ModelError extends Error {
@@ -66,11 +69,10 @@
     if (!Number.isFinite(E * I) || E * I <= 0) fail("Flexural rigidity EI overflows; check the units of E and I.", "section.I");
 
     const divisions = input.divisions ?? 4;
-    if (!Number.isInteger(divisions) || divisions < 1 || divisions > LIMITS.divisions)
-      fail(`Elements per segment must be a whole number from 1 to ${LIMITS.divisions}.`, "divisions");
+    if (!Number.isInteger(divisions) || divisions < 1)
+      fail("Elements per segment must be a whole number, at least 1.", "divisions");
 
     if (!Array.isArray(input.supports) || input.supports.length === 0) fail("Add at least one support.", "supports");
-    if (input.supports.length > LIMITS.supports) fail(`Use at most ${LIMITS.supports} supports.`, "supports");
     const supports = input.supports.map((s, i) => {
       if (!SUPPORT_KINDS.includes(s && s.kind)) fail(`Support ${i + 1} must be a pin or fixed support.`, `supports.${i}.kind`);
       return { kind: s.kind, x: at(s.x, `Support ${i + 1} position`, `supports.${i}.x`) };
@@ -84,7 +86,6 @@
       fail("Mechanism: a single pin lets the beam rotate freely. Add a second support or make it fixed.", "supports");
 
     if (!Array.isArray(input.loads)) fail("Loads must be a list.", "loads");
-    if (input.loads.length > LIMITS.loads) fail(`Use at most ${LIMITS.loads} loads.`, "loads");
     const loads = input.loads.map((l, i) => {
       const label = `Load ${i + 1}`;
       switch (l && l.kind) {
@@ -135,49 +136,80 @@
     return q;
   }
 
-  /* Solve K u = f by Gaussian elimination with partial pivoting; flags singular systems. */
-  function gauss(K, f) {
-    const n = f.length, a = K.map((row, i) => [...row, f[i]]);
-    const scale = Math.max(...K.map((row) => Math.max(...row.map(Math.abs))), 0);
+  /* Symmetric banded matrix: row i keeps K[i][i..i+BAND]. Beam DOFs only couple within one element, so BAND = 3. */
+  const BAND = 3;
+  const banded = (n) => Array.from({ length: n }, () => new Float64Array(BAND + 1));
+  const entry = (K, i, j) => (Math.abs(i - j) > BAND ? 0 : i <= j ? K[i][j - i] : K[j][i - j]);
+
+  /* Solve K u = f for symmetric positive definite banded K by LDLᵀ elimination.
+     The system is first scaled to a unit diagonal, which makes the pivot test independent of
+     units and element lengths; a vanishing scaled pivot means a mechanism. */
+  function solveBanded(K, f) {
+    const n = f.length, d = K.map((row) => 1 / Math.sqrt(row[0]));
+    if (d.some((v) => !(v > 0 && Number.isFinite(v))))
+      fail("The stiffness matrix is singular: the supports do not hold the beam in place.", "supports");
+    const a = K.map((row, i) => row.map((v, k) => (i + k < n ? v * d[i] * d[i + k] : 0))), u = f.map((v, i) => v * d[i]);
     for (let c = 0; c < n; c++) {
-      let p = c;
-      for (let r = c + 1; r < n; r++) if (Math.abs(a[r][c]) > Math.abs(a[p][c])) p = r;
-      if (!(Math.abs(a[p][c]) > 1e-11 * scale))
+      if (!(a[c][0] > 1e-12))
         fail("The stiffness matrix is singular: the supports do not hold the beam in place.", "supports");
-      [a[c], a[p]] = [a[p], a[c]];
-      for (let r = c + 1; r < n; r++) {
-        const m = a[r][c] / a[c][c];
-        if (m !== 0) for (let k = c; k <= n; k++) a[r][k] -= m * a[c][k];
+      for (let r = c + 1; r <= Math.min(n - 1, c + BAND); r++) {
+        const m = a[c][r - c] / a[c][0];
+        if (m === 0) continue;
+        for (let k = r; k <= Math.min(n - 1, c + BAND); k++) a[r][k - r] -= m * a[c][k - c];
+        u[r] -= m * u[c];
       }
     }
-    const u = Array(n).fill(0);
     for (let r = n - 1; r >= 0; r--) {
-      let s = a[r][n];
-      for (let k = r + 1; k < n; k++) s -= a[r][k] * u[k];
-      u[r] = s / a[r][r];
+      let s = u[r];
+      for (let k = r + 1; k <= Math.min(n - 1, r + BAND); k++) s -= a[r][k - r] * u[k];
+      u[r] = s / a[r][0];
     }
-    return u;
+    return u.map((v, i) => v * d[i]);
   }
+
+  /* Hermite shape functions on an element of length l at ξ ∈ [0, 1] (values and x-derivatives),
+     ordered v_i, θ_i, v_j, θ_j. */
+  const hermite = (l, t) => [1 - 3 * t * t + 2 * t ** 3, l * (t - 2 * t * t + t ** 3), 3 * t * t - 2 * t ** 3, l * (t ** 3 - t * t)];
+  const hermiteSlope = (l, t) => [(6 * t * t - 6 * t) / l, 1 - 4 * t + 3 * t * t, (6 * t - 6 * t * t) / l, 3 * t * t - 2 * t];
+  const GAUSS5 = [[-0.9061798459386640, 0.2369268850561891], [-0.5384693101056831, 0.4786286704993665], [0, 0.5688888888888889],
+    [0.5384693101056831, 0.4786286704993665], [0.9061798459386640, 0.2369268850561891]];
 
   function solve(input) {
     const model = validate(input), nodes = mesh(model), EI = model.material.E * model.section.I;
-    const n = nodes.length * 2, K = Array.from({ length: n }, () => Array(n).fill(0)), f = Array(n).fill(0);
-    const index = (x) => nodes.indexOf(x);
+    // Stiffness stations: the ends and every support. Loads between them enter as consistent nodal loads.
+    const stations = [...new Set([0, model.length, ...model.supports.map((s) => s.x)])].sort((a, b) => a - b);
+    const n = stations.length * 2, K = banded(n), f = Array(n).fill(0);
+    const where = new Map(stations.map((x, i) => [x, i])), index = (x) => where.get(x);
+    const element = (x) => { // the element with stations[e] < x < stations[e + 1]
+      let lo = 0, hi = stations.length - 2;
+      while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (stations[mid] < x) lo = mid; else hi = mid - 1; }
+      return lo;
+    };
+    const spread = (e, weights, value) => weights.forEach((w, i) => { f[2 * e + i] += w * value; });
 
-    for (let e = 0; e < nodes.length - 1; e++) {
-      const l = nodes[e + 1] - nodes[e], k = EI / l ** 3, d = [2 * e, 2 * e + 1, 2 * e + 2, 2 * e + 3];
+    for (let e = 0; e < stations.length - 1; e++) {
+      const l = stations[e + 1] - stations[e], k = EI / l ** 3, d = [2 * e, 2 * e + 1, 2 * e + 2, 2 * e + 3];
       const ke = [[12, 6 * l, -12, 6 * l], [6 * l, 4 * l * l, -6 * l, 2 * l * l], [-12, -6 * l, 12, -6 * l], [6 * l, 2 * l * l, -6 * l, 4 * l * l]];
-      for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) K[d[i]][d[j]] += k * ke[i][j];
-      // Consistent nodal loads for the linear intensity qa → qb across this element.
-      const qa = intensity(model, nodes[e], "right"), qb = intensity(model, nodes[e + 1], "left");
-      f[d[0]] += l * (7 * qa + 3 * qb) / 20;
-      f[d[1]] += l * l * (3 * qa + 2 * qb) / 60;
-      f[d[2]] += l * (3 * qa + 7 * qb) / 20;
-      f[d[3]] -= l * l * (2 * qa + 3 * qb) / 60;
+      for (let i = 0; i < 4; i++) for (let j = i; j < 4; j++) K[d[i]][d[j] - d[i]] += k * ke[i][j];
     }
-    for (const l of model.loads) {
-      if (l.kind === "point") f[2 * index(l.x)] += l.F;
-      if (l.kind === "moment") f[2 * index(l.x) + 1] += l.C;
+    for (const ld of model.loads) {
+      if (ld.kind === "point" || ld.kind === "moment") {
+        const i = index(ld.x);
+        if (i !== undefined) { f[2 * i + (ld.kind === "point" ? 0 : 1)] += ld.kind === "point" ? ld.F : ld.C; continue; }
+        const e = element(ld.x), a = stations[e], l = stations[e + 1] - a, t = (ld.x - a) / l;
+        if (ld.kind === "point") spread(e, hermite(l, t), ld.F);
+        else spread(e, hermiteSlope(l, t), ld.C);
+      } else {
+        // ∫ N q dx over each element's share of the load: N is cubic and q linear, so 5-point Gauss is exact.
+        for (let e = 0; e < stations.length - 1; e++) {
+          const a = stations[e], l = stations[e + 1] - a, lo = Math.max(a, ld.x1), hi = Math.min(a + l, ld.x2);
+          if (!(hi > lo)) continue;
+          for (const [g, w] of GAUSS5) {
+            const x = lo + (hi - lo) * (g + 1) / 2, q = ld.q1 + (ld.q2 - ld.q1) * (x - ld.x1) / (ld.x2 - ld.x1);
+            spread(e, hermite(l, (x - a) / l), w * q * (hi - lo) / 2);
+          }
+        }
+      }
     }
 
     const fixed = new Set();
@@ -185,21 +217,33 @@
       fixed.add(2 * index(s.x));
       if (s.kind === "fixed") fixed.add(2 * index(s.x) + 1);
     }
+    // Dropping constrained DOFs keeps the free system banded with the same BAND.
     const free = [...Array(n).keys()].filter((i) => !fixed.has(i));
     const u = Array(n).fill(0);
-    if (free.length) gauss(free.map((i) => free.map((j) => K[i][j])), free.map((i) => f[i])).forEach((v, i) => { u[free[i]] = v; });
+    if (free.length) {
+      const Kf = banded(free.length);
+      free.forEach((i, a) => { for (let b = a; b < Math.min(free.length, a + BAND + 1); b++) Kf[a][b - a] = entry(K, i, free[b]); });
+      solveBanded(Kf, free.map((i) => f[i])).forEach((v, a) => { u[free[a]] = v; });
+    }
     if (u.some((v) => !Number.isFinite(v))) fail("The solution overflowed; check that E, I and the loads use consistent units.", "section.I");
 
-    const residual = (i) => K[i].reduce((s, kij, j) => s + kij * u[j], 0) - f[i];
+    const residual = (i) => {
+      let s = -f[i];
+      for (let j = Math.max(0, i - BAND); j <= Math.min(n - 1, i + BAND); j++) s += entry(K, i, j) * u[j];
+      return s;
+    };
     const reactions = model.supports.map((s) => {
       const i = index(s.x);
       return { kind: s.kind, x: s.x, Fy: residual(2 * i), Mz: s.kind === "fixed" ? residual(2 * i + 1) : 0 };
     }).sort((a, b) => a.x - b.x);
 
-    const result = {
-      model, nodes, reactions,
-      displacements: nodes.map((x, i) => ({ x, v: u[2 * i], theta: u[2 * i + 1] })),
-    };
+    // Deflection on the plotting mesh: stations take the solved values; other nodes integrate M/EI
+    // exactly from the previous node (no event lies strictly between two mesh nodes).
+    const result = { model, nodes, reactions, displacements: [] };
+    for (const x of nodes) {
+      const i = index(x), prev = result.displacements.at(-1);
+      result.displacements.push(i !== undefined ? { x, v: u[2 * i], theta: u[2 * i + 1] } : { x, ...integrate(result, prev, x) });
+    }
     result.equilibrium = equilibrium(result);
     return result;
   }
@@ -247,10 +291,19 @@
 
   /* Deflection and slope at x: nodal values from the stiffness solution, integrated exactly from M/EI inside an element. */
   function deflection(result, x) {
-    const { nodes, displacements, model } = result, EI = model.material.E * model.section.I;
-    let e = nodes.findIndex((n, i) => i < nodes.length - 1 && x >= n && x <= nodes[i + 1]);
-    if (e < 0) e = nodes.length - 2;
-    const x0 = nodes[e], s = x - x0, { v, theta } = displacements[e];
+    const { nodes, displacements } = result;
+    // Binary search for the element containing x (the last one whose start is at or before x).
+    let lo = 0, hi = nodes.length - 2;
+    while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (nodes[mid] <= x) lo = mid; else hi = mid - 1; }
+    const e = lo;
+    if (x === nodes[e + 1]) { const { v, theta } = displacements[e + 1]; return { v, theta }; }
+    return integrate(result, displacements[e], x);
+  }
+
+  /* v and θ at x from their values at an earlier point `from` with no event between: θ' = M/EI, v' = θ.
+     M is at most cubic there, so 3-point Gauss integrates M and (x − t)M exactly. */
+  function integrate(result, from, x) {
+    const EI = result.model.material.E * result.model.section.I, x0 = from.x, s = x - x0, { v, theta } = from;
     if (s === 0) return { v, theta };
     let dv = 0, dt = 0;
     for (const [g, w] of GAUSS) {
@@ -378,10 +431,10 @@
 
   /* Build a NASTRAN deck that encodes exactly the model the browser solved. */
   function exportBdf(input, { title = "BEAMDIAG LINEAR STATIC" } = {}) {
-    const result = solve(input), { model, nodes } = result;
+    const model = validate(input), nodes = mesh(model);
     const hasLoad = model.loads.some((l) => (l.kind === "point" && l.F !== 0) || (l.kind === "moment" && l.C !== 0) || (l.kind === "dist" && (l.q1 !== 0 || l.q2 !== 0)));
     if (!hasLoad) fail("Add a non-zero load before exporting a NASTRAN deck.", "loads");
-    const gid = (x) => nodes.indexOf(x) + 1;
+    const ids = new Map(nodes.map((x, i) => [x, i + 1])), gid = (x) => ids.get(x);
     const safeTitle = String(title).replace(/[^A-Za-z0-9 _.,()+\-]/g, " ").slice(0, 60).trim() || "BEAMDIAG";
     const lines = [
       "$ BEAMDIAG export: MSC Nastran SOL 101 linear static deck.",
@@ -437,5 +490,5 @@
     return Number.isInteger(x) ? String(x) : String(+x.toPrecision(6));
   }
 
-  return { LIMITS, SUPPORT_KINDS, ModelError, sectionProperties, indeterminacy, validate, mesh, solve, internal, deflection, at, diagram, extremes, exportBdf, largeEntry, nastranReal };
+  return { SUPPORT_KINDS, ModelError, sectionProperties, indeterminacy, validate, mesh, solve, internal, deflection, at, diagram, extremes, exportBdf, largeEntry, nastranReal };
 });

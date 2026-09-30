@@ -38,7 +38,7 @@
   "Loads act in the plane of bending through the shear centre; no axial load, torsion, temperature or dynamics.",
   "A pin restrains deflection; a fixed support restrains deflection and slope. Supports are rigid."
  ],
- "method": "Direct stiffness method with two-node Hermite beam elements. Nodes sit at every support, point load, couple and distributed-load end, and distributed loads enter as consistent nodal loads, which makes nodal deflections and reactions exact for Euler–Bernoulli beams; statically indeterminate supports need no special handling. Shear and moment are then recovered exactly by statics from the loads and reactions, and deflection between nodes by integrating M/EI. Results are checked against an independent exact-arithmetic Python solver (Macaulay integration with compatibility conditions) on shared fixtures.",
+ "method": "Direct stiffness method with two-node Hermite beam elements between the supports and the beam ends. Point forces, couples and distributed loads inside each element enter as consistent nodal loads, which are the exact fixed-end actions for Euler–Bernoulli beams, so nodal deflections and reactions are exact and statically indeterminate supports need no special handling. Load points stay out of the stiffness matrix, so closely spaced loads do not degrade its conditioning, and there is no cap on the number of supports or loads. Shear and moment are then recovered exactly by statics from the loads and reactions, and deflection between nodes by integrating M/EI. Results are checked against an independent exact-arithmetic Python solver (Macaulay integration with compatibility conditions) on shared fixtures.",
  "materials": [
   {
    "id": "steel",

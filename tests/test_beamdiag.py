@@ -148,8 +148,10 @@ class BeamDiagTest(unittest.TestCase):
             for a, b in zip(original.reactions, from_deck.reactions):
                 self.assertAlmostEqual(float(a["Fy"]), float(b["Fy"]), delta=1e-8 * scale)
                 self.assertAlmostEqual(float(a["Mz"]), float(b["Mz"]), delta=1e-8 * scale * float(original.L))
-            for x in reference.sample_points(model):
-                self.assertAlmostEqual(float(original.v(x)), float(from_deck.v(x)), delta=1e-8 * abs(float(original.v(float(original.L) / 2))) + 1e-15)
+            xs = reference.sample_points(model)
+            scale_v = max(abs(float(original.v(x))) for x in xs)
+            for x in xs:
+                self.assertAlmostEqual(float(original.v(x)), float(from_deck.v(x)), delta=1e-8 * scale_v + 1e-15)
 
     def test_bdf_reader_rejects_what_it_cannot_represent(self):
         deck = self.js["simply-supported-udl"]["bdf"]

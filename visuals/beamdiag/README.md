@@ -24,6 +24,10 @@ python reference.py --check  # fail if reference.json is stale
 The tests are `tests/beamdiag.test.mjs` (Node) and `tests/test_beamdiag.py`
 (Python, which also runs the engine through `node`).
 
+Supports, loads and elements per segment have no count cap: supports go at any
+positions along a beam of any length, and the banded stiffness solver and the
+deck exporter handle every node and support.
+
 Units are SI (m, N, Pa); loads are positive upward and couples positive
 counter-clockwise; M is positive when sagging. The page lists the full
 conventions and assumptions.

@@ -85,6 +85,8 @@ input[type="number"]{font-variant-numeric:tabular-nums}
 label.f{display:flex;flex-direction:column;gap:.15rem;font-size:.75rem;color:var(--muted);min-width:0}
 label.f span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+/* Any number of supports and loads: long lists scroll inside their panel instead of stretching the page. */
+.items{max-height:28rem;overflow-y:auto;overscroll-behavior:contain}
 .item{border-top:1px solid var(--grid);padding-top:.5rem;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem;align-items:end}
 .item:first-child{border-top:0;padding-top:0}
 .item .fields{display:grid;gap:.4rem;grid-template-columns:repeat(auto-fit,minmax(5.2rem,1fr));min-width:0}
@@ -148,7 +150,7 @@ code{font:.875em var(--mono)}
       <h3>Beam</h3>
       <div class="row">
         <label class="f"><span>Length L (m)</span><input id="length" type="number" step="0.1" min="0.001" data-field="length"></label>
-        <label class="f"><span>Elements per segment</span><input id="divisions" type="number" step="1" min="1" max="40" data-field="divisions"></label>
+        <label class="f"><span>Elements per segment</span><input id="divisions" type="number" step="1" min="1" data-field="divisions"></label>
       </div>
     </div>
     <div class="card">
@@ -332,7 +334,6 @@ function buildSupports() {
     li.append(fields, removeButton(`Remove support ${i + 1}`, () => { state.supports.splice(i, 1); update(); }));
     list.append(li);
   });
-  $("add-support").disabled = state.supports.length >= B.LIMITS.supports;
 }
 
 function buildLoads() {
@@ -366,7 +367,6 @@ function buildLoads() {
     li.append(fields, removeButton(`Remove load ${i + 1}, ${LOAD_NAMES[l.kind]}`, () => { state.loads.splice(i, 1); update(); }));
     list.append(li);
   });
-  for (const b of document.querySelectorAll("[data-add]")) b.disabled = state.loads.length >= B.LIMITS.loads;
 }
 
 const SECTION_FIELDS = {
@@ -420,7 +420,6 @@ function markInvalid(field) {
 function update({ keepForm = false } = {}) {
   if (!keepForm) buildForm();
   else if (state.preset) { state.preset = null; $("preset").value = ""; $("preset-note").textContent = ""; }
-  $("add-support").disabled = state.supports.length >= B.LIMITS.supports;
   let error = null;
   try {
     result = B.solve(modelOf(state));
@@ -543,8 +542,17 @@ function drawBeam(svg, panel, X) {
   });
   // Beam
   el("rect", { x: X(0), y: yb - 4, width: X(L) - X(0), height: 8, rx: 2, fill: "var(--surface)", stroke: "var(--fg)", "stroke-width": 1.5 }, g);
-  // Supports and their reactions
+  // Supports and their reactions. With many close supports, label only those whose text has room;
+  // every reaction is still listed below the figure and in the table.
   const reactions = result.reactions;
+  const labelled = new Set();
+  let freeFrom = -Infinity;
+  for (const r of reactions) {
+    const x = X(r.x), w = 7 * (nf(Math.abs(r.Fy) / kN, 2).length + 5);
+    const anchor = r.x <= 0.08 * L ? "start" : r.x >= 0.92 * L ? "end" : "middle";
+    const left = anchor === "start" ? x : anchor === "end" ? x - w : x - w / 2;
+    if (left >= freeFrom) { labelled.add(r.x); freeFrom = left + w + 6; }
+  }
   state.supports.forEach((s, i) => {
     if (!Number.isFinite(s.x)) return;
     const x = X(s.x);
@@ -571,6 +579,9 @@ function drawBeam(svg, panel, X) {
       const up = r.Fy >= 0, ya = yb + 34, len = 20;
       el("line", { x1: x, x2: x, y1: up ? ya + len : ya, y2: up ? ya : ya + len, stroke: "var(--react)", "stroke-width": 2 }, g);
       arrowHead(x, up ? ya - 1 : ya + len + 1, up ? -1 : 1, "var(--react)", 4);
+    }
+    if (r && labelled.has(r.x)) {
+      const up = r.Fy >= 0, ya = yb + 34, len = 20;
       const anchor = s.x <= 0.08 * L ? "start" : s.x >= 0.92 * L ? "end" : "middle";
       text(g, x + (anchor === "start" ? -2 : anchor === "end" ? 2 : 0), ya + len + 14, `${nf(Math.abs(r.Fy) / kN, 2)} kN ${up ? "↑" : "↓"}`, { class: "val react", "text-anchor": anchor });
       if (s.kind === "fixed" && Math.abs(r.Mz) > 1e-9 * (Math.abs(r.Fy) + 1)) {
@@ -867,7 +878,14 @@ function wire() {
   $("divisions").addEventListener("input", () => { state.divisions = Number($("divisions").value); update({ keepForm: true }); });
   $("add-support").addEventListener("click", () => {
     const L = state.length, taken = new Set(state.supports.map((s) => s.x));
-    const x = [L / 2, L / 4, (3 * L) / 4, L, 0].find((v) => !taken.has(v)) ?? L / 3;
+    // Try the usual spots first, then the middle of the widest gap between supports and ends.
+    const gap = () => {
+      const xs = [...new Set([0, L, ...taken])].sort((a, b) => a - b);
+      let best = 0;
+      for (let i = 1; i < xs.length; i++) if (xs[i] - xs[i - 1] > xs[best + 1] - xs[best]) best = i - 1;
+      return (xs[best] + xs[best + 1]) / 2;
+    };
+    const x = [L / 2, L / 4, (3 * L) / 4, L, 0].find((v) => !taken.has(v)) ?? gap();
     state.supports.push({ kind: "pin", x: +x.toPrecision(10) });
     update();
     const inputs = document.querySelectorAll("#supports input");

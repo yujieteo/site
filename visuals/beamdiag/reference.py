@@ -194,7 +194,7 @@ def integrate(c, a, p, k, x):
 
 
 def sample_points(model):
-    """Every event position plus quarter points of the beam."""
+    """Every event position, quarter points of the beam and the midpoint between each neighbouring pair."""
     L = F(model["length"])
     xs = {F(0), L, L / 4, L / 2, 3 * L / 4}
     for s in model["supports"]:
@@ -203,7 +203,8 @@ def sample_points(model):
         for key in ("x", "x1", "x2"):
             if key in load:
                 xs.add(F(load[key]))
-    return sorted(xs)
+    xs = sorted(xs)
+    return sorted(xs + [(a + b) / 2 for a, b in zip(xs, xs[1:])])
 
 
 def solve_fixture(model):
