@@ -12,9 +12,9 @@ const close = (actual, expected, tol, label) =>
   assert.ok(Math.abs(actual - expected) <= tol, `${label}: ${actual} vs ${expected} (±${tol})`);
 const third = (K, extra = {}) => ({ plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K, ...extra });
 
-test("in-page self-tests (spec section 11, phase 1) all pass", () => {
+test("in-page self-tests (spec section 11, phases 1 and 2) all pass", () => {
   const t = F.selfTests();
-  assert.ok(t.length >= 30);
+  assert.ok(t.length >= 60);
   assert.equal(t.filter((x) => !x.pass).map((x) => `${x.name}: ${x.detail}`).join("\n"), "");
   assert.ok(t.every((x) => x.tolerance), "every self-test states its tolerance");
 });
@@ -162,7 +162,7 @@ test("validation blocks bad input with a message and flags soft warnings", () =>
   for (const re of [/K must be a non-zero/, /Delay τ must be/, /ω_min must be less than ω_max/, /numerator coefficients/]) assert.match(text, re);
   assert.equal(F.analyze({ plant: { form: "tf", num: [1], den: [0, 0] } }).errors[0].field, "plant.den");
   assert.match(F.analyze({ plant: { form: "zpk", zeros: [{ re: -1, im: 1 }], poles: [], gain: 1 } }).errors[0].message, /conjugate pairs/);
-  assert.match(F.analyze({ timeDomain: "discrete" }).errors[0].message, /phase 2/);
+  assert.match(F.analyze({ timeDomain: "hybrid" }).errors[0].message, /continuous or discrete/);
   const codes = (x) => F.analyze(x).warnings.map((w) => w.code);
   assert.ok(codes({ plant: { form: "tf", num: [1, 0, 0], den: [1, 1] } }).includes("improper"));
   assert.ok(codes({ plant: { form: "tf", num: [1], den: [1, -1] }, K: 2 }).includes("rhp-pole"));
@@ -212,6 +212,230 @@ test("exports carry the disclaimer, use canonical units and round-trip through i
   assert.throws(() => F.importJSON("{"), /Not valid JSON/);
   assert.throws(() => F.importJSON(JSON.stringify({ schemaVersion: 99 })), /newer/);
   assert.equal(F.importJSON(JSON.stringify({ K: 4 })).K, 4, "a bare inputs object imports too");
+});
+
+
+/* ---------- phase 2: discrete time ---------- */
+const Ts = 0.1;
+const inZ = (plant, extra = {}) => ({ timeDomain: "discrete", Ts, plant, controller: { form: "tf", num: [1], den: [1] }, discretization: { plant: "z", controller: "z", prewarp: 0 }, K: 1, ...extra });
+const fromS = (plant, method, extra = {}) => ({ timeDomain: "discrete", Ts, plant, controller: { form: "tf", num: [1], den: [1] }, discretization: { plant: method, controller: "z", prewarp: 0 }, K: 1, ...extra });
+const cdiv = (a, b) => { const d = b.re * b.re + b.im * b.im; return { re: (a.re * b.re + a.im * b.im) / d, im: (a.im * b.re - a.re * b.im) / d }; };
+const cmul = (a, b) => ({ re: a.re * b.re - a.im * b.im, im: a.re * b.im + a.im * b.re });
+const horner = (p, z) => p.reduce((v, c) => ({ re: v.re * z.re - v.im * z.im + c, im: v.re * z.im + v.im * z.re }), { re: 0, im: 0 });
+const Gs = (s) => cdiv(horner([1, 2], s), horner([1, 0.4, 4], s)); // (s + 2)/(s² + 0.4s + 4)
+const plant2 = { form: "tf", num: [1, 2], den: [1, 0.4, 4] };
+
+test("Tustin (with and without prewarp), forward and backward Euler equal G(s) at the substituted s", () => {
+  const subs = {
+    tustin: (z) => cmul({ re: 2 / Ts, im: 0 }, cdiv({ re: z.re - 1, im: z.im }, { re: z.re + 1, im: z.im })),
+    forward: (z) => ({ re: (z.re - 1) / Ts, im: z.im / Ts }),
+    backward: (z) => cdiv({ re: z.re - 1, im: z.im }, { re: z.re * Ts, im: z.im * Ts }),
+  };
+  for (const [method, sub] of Object.entries(subs)) {
+    for (const w of [0.3, 2, 9, 25]) {
+      const z = { re: Math.cos(w * Ts), im: Math.sin(w * Ts) };
+      const got = F.responseAt(fromS(plant2, method), w), want = Gs(sub(z));
+      close(got.re, want.re, 1e-9, `${method} Re at ${w}`);
+      close(got.im, want.im, 1e-9, `${method} Im at ${w}`);
+    }
+  }
+  const wp = 15, c = wp / Math.tan((wp * Ts) / 2);
+  for (const w of [1, 15, 30]) {
+    const z = { re: Math.cos(w * Ts), im: Math.sin(w * Ts) };
+    const got = F.responseAt(fromS(plant2, "tustin", { discretization: { plant: "tustin", controller: "z", prewarp: wp } }), w);
+    const want = Gs(cmul({ re: c, im: 0 }, cdiv({ re: z.re - 1, im: z.im }, { re: z.re + 1, im: z.im })));
+    close(got.re, want.re, 1e-9, `prewarped Re at ${w}`);
+    close(got.im, want.im, 1e-9, `prewarped Im at ${w}`);
+  }
+});
+
+test("zero-order hold maps poles to e^(pTs), keeps the DC gain and matches the first-order closed form", () => {
+  const r = F.analyze(fromS(plant2, "zoh"));
+  const pc = F.analyze({ plant: plant2, K: 1 }).loop.poles;
+  for (const p of pc) {
+    const e = { re: Math.exp(p.re * Ts) * Math.cos(p.im * Ts), im: Math.exp(p.re * Ts) * Math.sin(p.im * Ts) };
+    assert.ok(r.loop.poles.some((q) => Math.hypot(q.re - e.re, q.im - e.im) < 1e-12), `pole e^(pTs) for ${JSON.stringify(p)}`);
+  }
+  const dc = F.responseAt(fromS(plant2, "zoh"), 1e-6);
+  close(dc.re, 0.5, 1e-6, "DC gain G(0) = 0.5");
+  // ZOH of a/(s + a) is (1 − e^(−aTs))/(z − e^(−aTs)).
+  const a = 3, q = Math.exp(-a * Ts), fo = F.analyze(fromS({ form: "tf", num: [a], den: [1, a] }, "zoh"));
+  close(fo.loop.numerator[0], 1 - q, 1e-14, "ZOH numerator");
+  close(fo.loop.denominator[1], -q, 1e-14, "ZOH pole");
+});
+
+test("relative degree 3: Tustin zeros exactly at −1, backward Euler zeros exactly at 0, s = 0 poles exactly at z = 1", () => {
+  const type1 = { form: "tf", num: [1], den: [1, 3, 2, 0] }, distinct = { form: "tf", num: [1], den: [1, 6, 11, 6] };
+  for (const plant of [type1, distinct]) {
+    for (const [method, z0] of [["tustin", -1], ["backward", 0]]) {
+      for (const prewarp of method === "tustin" ? [0, 5] : [0]) {
+        const r = F.analyze(fromS(plant, method, { discretization: { plant: method, controller: "z", prewarp } }));
+        const label = `${method} prewarp ${prewarp} of ${plant.den}`;
+        assert.equal(JSON.stringify(r.loop.zeros.map((z) => [z.re, z.im])), JSON.stringify([[z0, 0], [z0, 0], [z0, 0]]), label);
+        if (plant === type1) assert.ok(r.loop.poles.some((p) => p.re === 1 && p.im === 0), `${label}: pole exactly at z = 1`);
+        assert.ok(!r.warnings.some((w) => ["rhp-zero", "nonconvergence"].includes(w.code)), `${label}: ${r.warnings.map((w) => w.message).join("; ")}`);
+        assert.ok(!r.margins.phaseCrossovers.some((c) => c.atNyquist), `${label}: no crossover at π/Ts`);
+        if (method === "tustin") assert.equal(JSON.stringify(r.warnings.filter((w) => w.code === "axis-zero").map((w) => w.message.split(",")[0])), JSON.stringify(["L has 3 zeros at z = −1"]), `${label}: zeros at z = −1 reported once`);
+        // num/den agree with the factored form and with the state-space discretisation.
+        for (const w of [0.5, 3, 20]) {
+          const z = { re: Math.cos(w * Ts), im: Math.sin(w * Ts) };
+          const fromPoly = cdiv(horner(r.loop.numerator, z), horner(r.loop.denominator, z));
+          const d = F.discretize(plant.num, plant.den, method, Ts, prewarp), ss = cdiv(horner(d.num, z), horner(d.den, z));
+          close(fromPoly.re, ss.re, 1e-9 * Math.hypot(ss.re, ss.im), `${label} Re at ${w}`);
+          close(fromPoly.im, ss.im, 1e-9 * Math.hypot(ss.re, ss.im), `${label} Im at ${w}`);
+        }
+      }
+    }
+  }
+});
+
+test("repeated poles: discretised num/den match G(s(z)) exactly and the phase has no spurious crossover near π/Ts", () => {
+  const pow = (root, k) => Array.from({ length: k }).reduce((p) => p.map((c, i) => c - root * (p[i - 1] || 0)).concat(-root * p[p.length - 1]), [1]);
+  const subs = {
+    tustin: (z) => cmul({ re: 2 / Ts, im: 0 }, cdiv({ re: z.re - 1, im: z.im }, { re: z.re + 1, im: z.im })),
+    forward: (z) => ({ re: (z.re - 1) / Ts, im: z.im / Ts }),
+    backward: (z) => cdiv({ re: z.re - 1, im: z.im }, { re: z.re * Ts, im: z.im * Ts }),
+  };
+  const wN = Math.PI / Ts;
+  for (const [a, k, num] of [[1, 3, [1]], [2, 5, [1]], [1, 3, [1, 2]]]) {
+    const plant = { form: "tf", num, den: pow(-a, k) };
+    for (const method of ["zoh", "tustin", "forward", "backward"]) {
+      const r = F.analyze(fromS(plant, method)), label = `${method} of (${num})/(s + ${a})^${k}`;
+      const L = (z) => cdiv(horner(r.loop.numerator, z), horner(r.loop.denominator, z));
+      if (method === "zoh") {
+        pow(Math.exp(-a * Ts), k).forEach((c, i) => close(r.loop.denominator[i], c, 1e-12 * Math.max(1, Math.abs(c)), `${label} den[${i}]`));
+        close(L({ re: 1, im: 0 }).re, num[num.length - 1] / a ** k, 1e-9, `${label} DC gain`);
+      } else {
+        for (const w of [0.5, 3, 20]) {
+          const z = { re: Math.cos(w * Ts), im: Math.sin(w * Ts) }, got = L(z), want = cdiv(horner(num, subs[method](z)), horner(plant.den, subs[method](z)));
+          const tol = 1e-8 * Math.hypot(want.re, want.im);
+          close(got.re, want.re, tol, `${label} Re at ${w}`);
+          close(got.im, want.im, tol, `${label} Im at ${w}`);
+        }
+      }
+      assert.ok(!r.warnings.some((w) => w.code === "nonconvergence"), `${label}: ${r.warnings.map((w) => w.message).join("; ")}`);
+      assert.ok(!r.margins.phaseCrossovers.some((c) => !c.atNyquist && c.w > 0.99 * wN), `${label}: no crossover beside π/Ts`);
+    }
+  }
+});
+
+test("discrete phase keeps the atan2 branch for real roots on or outside the unit circle", () => {
+  const phase = (x, w) => F.responseAt(x, w).phaseDeg;
+  const integ = inZ({ form: "tf", num: [Ts], den: [1, -1] });
+  close(phase(integ, 0.01), -90.029, 1e-3, "Ts/(z − 1) near DC");
+  close(phase(integ, Math.PI / Ts), -180, 1e-9, "Ts/(z − 1) at π/Ts");
+  assert.equal(F.analyze(integ).margins.phaseCrossovers[0].phaseDeg, -180);
+  close(phase(inZ({ form: "tf", num: [Ts], den: [1, -1.5] }), 3), -151.517, 1e-3, "Ts/(z − 1.5)");
+  close(phase(inZ({ form: "tf", num: [1, -1.5], den: [1, -0.5] }), 3), 118.533, 1e-3, "(z − 1.5)/(z − 0.5)");
+  for (const [method, at3] of [["zoh", -226.470], ["tustin", -218.203], ["forward", -240.260], ["backward", -195.701]]) {
+    const x = fromS({ form: "tf", num: [1], den: [1, 3, 2, 0] }, method);
+    assert.ok(phase(x, 0.01) < -90 && phase(x, 0.01) > -91, `${method} near DC: ${phase(x, 0.01)}`);
+    close(phase(x, 3), at3, 1e-3, `${method} at 3 rad/s`);
+    assert.equal(F.analyze(x).margins.phaseCrossovers[0].phaseDeg, -180, `${method} crossover phase`);
+  }
+});
+
+test("discrete phase stays continuous past the level of a complex pole inside the unit circle", () => {
+  const rows = F.curves(fromS(plant2, "zoh")), r = F.analyze(fromS(plant2, "zoh"));
+  for (let i = 1; i < rows.length; i++) assert.ok(Math.abs(rows[i].phaseDeg - rows[i - 1].phaseDeg) < 90, `jump at ${rows[i].w}`);
+  assert.equal(r.margins.phaseCrossovers.length, 1);
+  assert.equal(r.margins.phaseCrossovers[0].atNyquist, true);
+});
+
+test("L(z) = K·Ts/(z − 1): one exact crossover at the Nyquist frequency, GM = 20·log₁₀(2/(K·Ts)), stable iff 0 < K·Ts < 2", () => {
+  for (const [K, verdict] of [[1, "stable"], [10, "stable"], [19.9, "stable"], [20, "marginal"], [20.1, "unstable"], [40, "unstable"]]) {
+    const r = F.analyze(inZ({ form: "tf", num: [Ts], den: [1, -1] }, { K }));
+    assert.equal(r.closedLoop.verdict, verdict, `K = ${K}`);
+    close(r.closedLoop.poles[0].re, 1 - K * Ts, 1e-12, `pole at K = ${K}`);
+    assert.equal(r.margins.phaseCrossovers.length, 1, `K = ${K}: one phase crossover`);
+    const c = r.margins.phaseCrossovers[0];
+    assert.equal(c.w, Math.PI / Ts);
+    assert.equal(c.atNyquist, true);
+    close(c.gmDb, 20 * Math.log10(2 / (K * Ts)), 1e-9, `GM at K = ${K}`);
+    assert.equal(r.grid.wMax, Math.PI / Ts, "grid ends exactly at π/Ts");
+    assert.equal(r.warnings.filter((w) => w.code === "nonconvergence").length, 0);
+  }
+});
+
+test("an integer-sample delay is exact, and the closed-loop poles stay available with it", () => {
+  const d = F.analyze(inZ({ form: "tf", num: [1], den: [1] }, { delaySamples: 2, K: 0.5 }));
+  assert.equal(d.closedLoop.available, true);
+  // z² + 0.5 = 0: poles ±j√0.5, inside the unit circle.
+  assert.equal(d.closedLoop.verdict, "stable");
+  for (const p of d.closedLoop.poles) close(Math.hypot(p.re, p.im), Math.sqrt(0.5), 1e-12, "|p|");
+  assert.equal(F.analyze(inZ({ form: "tf", num: [1], den: [1] }, { delaySamples: 2, K: 1.5 })).closedLoop.verdict, "unstable");
+  for (const w of [0.5, 5, 30]) {
+    const e = F.responseAt(inZ({ form: "tf", num: [1], den: [1] }, { delaySamples: 4 }), w);
+    close(e.mag, 1, 1e-12, "|z^(−4)|");
+    close(e.phaseDeg, (-4 * w * Ts * 180) / Math.PI, 1e-9, "phase −dωTs");
+  }
+  const dm = F.analyze(fromS(plant2, "zoh", { K: 2 })).margins.governing.delayMargin;
+  close(dm.samples, dm.seconds / Ts, 1e-12, "delay margin in samples");
+});
+
+test("discrete validation: Ts, fractional delay, prewarp, improper blocks, presets in z and the Nyquist cap", () => {
+  const err = (x) => F.analyze(x).errors.map((e) => e.message).join("\n");
+  assert.match(err(inZ({ form: "tf", num: [1], den: [1, -0.5] }, { Ts: 0 })), /Sample time Ts/);
+  assert.match(err(inZ({ form: "tf", num: [1], den: [1, -0.5] }, { delaySamples: 1.5 })), /fractional delays are not supported/);
+  assert.match(err(fromS(plant2, "tustin", { discretization: { plant: "tustin", controller: "z", prewarp: 40 } })), /prewarp frequency must be below the Nyquist/);
+  assert.match(err(fromS({ form: "tf", num: [1, 0, 0], den: [1, 1] }, "zoh")), /improper/);
+  assert.match(err(inZ({ form: "preset", preset: "first-order", params: { k: 1, tau: 1 } })), /presets are continuous-time prototypes/);
+  assert.match(err(inZ({ form: "tf", num: [1], den: [1, -0.5] }, { range: { auto: false, wMin: 40, wMax: 50, pointsPerDecade: 100 } })), /below the Nyquist frequency/);
+  const clipped = F.analyze(inZ({ form: "tf", num: [1], den: [1, -0.5] }, { range: { auto: false, wMin: 0.1, wMax: 100, pointsPerDecade: 100 } }));
+  assert.ok(clipped.warnings.some((w) => w.code === "nyquist-clip"));
+  assert.equal(clipped.grid.wMax, Math.PI / Ts);
+  const codes = (x) => F.analyze(x).warnings.map((w) => w.code);
+  assert.ok(codes(inZ({ form: "tf", num: [1], den: [1, -1.5] })).includes("rhp-pole"));
+  assert.ok(codes(inZ({ form: "zpk", zeros: [], poles: [{ re: 0, im: 1 }, { re: 0, im: -1 }], gain: 1 })).includes("axis-pole"));
+  assert.ok(codes(inZ({ form: "tf", num: [1, 0, 0], den: [1, -0.5] })).includes("improper"));
+});
+
+test("the continuous overlay is present only when every block is discretised from s", () => {
+  const both = F.curves({ ...fromS(plant2, "tustin"), discretization: { plant: "tustin", controller: "tustin", prewarp: 0 } });
+  assert.ok(both.every((r) => r.contMag !== null && r.asymMagDb === null));
+  // Tustin keeps the DC value, so the two curves meet at low frequency.
+  close(both[0].mag, both[0].contMag, 1e-6, "overlay at low frequency");
+  assert.ok(F.curves(inZ(plant2)).every((r) => r.contMag === null));
+  assert.ok(F.curves({ plant: plant2 }).every((r) => r.contMag === null && r.asymMagDb !== null));
+});
+
+test("discrete exports carry rad/sample and Ts, and phase 1 input files still import", () => {
+  const x = F.normalise({ ...fromS(plant2, "zoh", { delaySamples: 1 }), displayUnits: { freq: "rad/sample" } });
+  const md = F.toMarkdown(x);
+  assert.match(md, /Ts = 0\.1 s/);
+  assert.match(md, /zero-order hold/);
+  assert.match(md, /rad\/sample/);
+  const csv = F.toCSV(x).split("\n");
+  const cols = csv[2].split(","), row = csv[3].split(",").map(Number);
+  close(row[cols.indexOf("omega_rad_per_sample")], row[0] * Ts, 1e-15, "rad/sample column");
+  const back = F.importJSON(F.toResultsJSON(x));
+  assert.equal(F.canonicalJSON(F.analyze(back)), F.canonicalJSON(F.analyze(x)));
+  // A phase 1 (schemaVersion 1) inputs file has no discrete fields and stays continuous.
+  const v1 = F.importJSON(JSON.stringify({ kind: "frequency-response-inputs", schemaVersion: 1, inputs: { schemaVersion: 1, timeDomain: "continuous", plant: plant2, K: 2, delay: 0.1 } }));
+  assert.equal(v1.timeDomain, "continuous");
+  assert.equal(F.analyze(v1).ok, true);
+  assert.equal(F.normalise({ displayUnits: { freq: "rad/sample" } }).displayUnits.freq, "rad/s", "rad/sample falls back in continuous time");
+  close(F.freqTo(Math.PI / Ts, "rad/sample", Ts), Math.PI, 1e-15, "π rad/sample");
+  assert.throws(() => F.freqTo(1, "rad/sample"), /Ts/);
+});
+
+test("the Markdown report writes a block entered in z in terms of z and one entered in s in terms of s", () => {
+  const zmd = F.toMarkdown(inZ({ form: "tf", num: [Ts], den: [1, -1] }));
+  assert.ok(zmd.includes("- Plant G: (0.1) / (z − 1) (entered in z)"), zmd);
+  const smd = F.toMarkdown(fromS({ form: "tf", num: [1], den: [1, 1] }, "zoh"));
+  assert.ok(smd.includes("- Plant G: (1) / (s + 1) (entered in s, discretised by"), smd);
+});
+
+test("matrix exponential, characteristic polynomial and state-space round trip", () => {
+  const E = F.expm([[-1, 2, 0], [0, -1, 0], [0, 0, 0.5]]);
+  // Jordan block [[−1, 2], [0, −1]]: e^(At) = e^(−t)·[[1, 2t], [0, 1]].
+  close(E[0][0], Math.exp(-1), 1e-14, "e^A[0][0]"); close(E[0][1], 2 * Math.exp(-1), 1e-14, "e^A[0][1]"); close(E[2][2], Math.exp(0.5), 1e-14, "e^A[2][2]");
+  close(E[1][0], 0, 1e-15, "e^A[1][0]");
+  assert.equal(F.charPoly([[2, 0], [0, 3]]).map((c) => Math.round(c * 1e12) / 1e12).join(), "1,-5,6");
+  const ss = F.tf2ss([2, 3, 1], [1, 4, 5, 2]), back = F.ss2tf(ss);
+  const want = [2, 3, 1];
+  back.num.forEach((c, i) => close(c, want[i], 1e-12, `num[${i}]`));
+  [1, 4, 5, 2].forEach((c, i) => close(back.den[i], c, 1e-12, `den[${i}]`));
 });
 
 test("raw.json is the published metadata and default example of the page", async () => {

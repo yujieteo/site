@@ -1,6 +1,6 @@
 slug: frequency-response
 title: Frequency-Response Visualiser
-summary: "Explore how poles, zeros, gain, delay and a controller shape a feedback loop's frequency response. Phase 1 covers single-loop continuous-time systems: a Bode plot with straight-line asymptotes and |S| and |T| overlays, every gain and phase crossover with gain, phase and delay margins, Ms, Mt, vector margin, bandwidth and closed-loop poles, with user-set thresholds. Exports Markdown, JSON, CSV and SVG, imports its own JSON, checks itself against analytic cases on every load, and runs offline. Exploration only, not a verified control-design toolchain."
+summary: "Explore how poles, zeros, gain, delay, sampling and a controller shape a feedback loop's frequency response, in continuous or discrete time. Blocks entered in s can be discretised by zero-order hold, Tustin (with optional prewarp) or forward or backward Euler, with the continuous response overlaid on the discrete one. A Bode plot and a pole-zero map show every gain and phase crossover with gain, phase and delay margins, Ms, Mt, vector margin, bandwidth and closed-loop poles against user-set thresholds. Exports Markdown, JSON, CSV and SVG, imports its own JSON, checks itself against analytic cases on every load, and runs offline. Exploration only, not a verified control-design toolchain."
 source_url: https://github.com/yujieteo/site/tree/main/visuals/frequency-response
 fetched: "2026-09-30"
 html_path: visuals/frequency-response/index.html
