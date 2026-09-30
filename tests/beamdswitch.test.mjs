@@ -13,7 +13,13 @@ const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const VIZ = join(ROOT, "visuals/beamdswitch");
 const SITE = join(ROOT, "site/visuals/beamdswitch");
 const raw = JSON.parse(await readFile(join(VIZ, "raw.json"), "utf8"));
-const yaml = await readFile(join(ROOT, "data/visuals/beamdswitch.yaml"), "utf8");
+const PYTHON = process.env.PYTHON || (existsSync(join(ROOT, ".venv/bin/python")) ? join(ROOT, ".venv/bin/python") : "python3");
+// The catalogue stub as the build reads it.
+const catalogue = JSON.parse(execFileSync(PYTHON, ["-c", [
+  "import json, sys; sys.path.insert(0, 'scripts')",
+  "from build import load_visualizations",
+  "print(json.dumps(next(v for v in load_visualizations() if v['slug'] == 'beamdswitch'), default=str))",
+].join("\n")], { cwd: ROOT, encoding: "utf8" }));
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const sha256File = (path) => new Promise((resolve, reject) => {
   const hash = createHash("sha256");
@@ -35,7 +41,16 @@ test("index.html is the vendored beamdswitch.html plus only the marked site bloc
   // and the block loads only files published beside the page.
   const scripts = [...block[0].matchAll(/<script src="([^"]+)"/g)].map((m) => m[1]);
   assert.deepEqual(scripts, ["coi-serviceworker.js", "site.js"]);
+  assert.ok(text.indexOf("<body>") < text.indexOf(block[0]), "site block opens the body, outside the app's head");
   assert.ok(text.indexOf(block[0]) < text.indexOf("<script>"), "site block precedes the app's scripts");
+  // The notice is static and styled inline, so it depends on no id or class of the app.
+  assert.doesNotMatch(block[0], /\s(id|class)=/);
+  const MiB = 1048576, voice = raw.downloads.find((d) => d.loaded === "voice").bytes;
+  const firstLoad = (kinds) => Math.round((raw.downloads.filter((d) => kinds.includes(d.loaded)).reduce((n, d) => n + d.bytes, 0) + voice) / MiB);
+  const sizes = block[0].match(/about (\d+) MB for WASM or (\d+) MB for WebGPU/);
+  assert.ok(sizes, "notice states the first-load sizes");
+  assert.deepEqual([Number(sizes[1]), Number(sizes[2])], [firstLoad(["narration", "wasm"]), firstLoad(["narration", "webgpu"])]);
+  assert.match(block[0], /service worker/);
 });
 
 test("every Kokoro file is pinned to an exact URL and sha256, and none is committed", () => {
@@ -59,7 +74,8 @@ test("every Kokoro file is pinned to an exact URL and sha256, and none is commit
   }
   const committed = execFileSync("git", ["ls-files", "visuals/beamdswitch"], { cwd: ROOT, encoding: "utf8" }).split("\n");
   assert.deepEqual(committed.filter((f) => /\.(onnx|wasm|bin|mjs)$|kokoro/.test(f)), []);
-  assert.match(yaml, /^downloads: visuals\/beamdswitch\/raw\.json$/m);
+  assert.equal(catalogue.downloads, "visuals/beamdswitch/raw.json");
+  assert.equal(catalogue.data_path, "visuals/beamdswitch/raw.json");
 });
 
 test("the build publishes every pinned download, byte for byte, beside the page", { skip: !existsSync(SITE) && "site/ not built" }, async () => {
@@ -156,7 +172,7 @@ async function siteTools({ isolated = true, controller = {} } = {}) {
   ];
   const ctx = { deck: { meta: { title: "Beams" }, frames }, i: 0, step: 0, go(i, s) { this.i = i; this.step = s; }, engine: { stats: { device: "wasm", dtype: "q8", loadMs: 5, sentences: 2, genMs: 9, audioSec: 3 } } };
   const window = { crossOriginIsolated: isolated, beamdswitch: ctx };
-  const document = { baseURI: "https://teoyujie.org/visuals/beamdswitch/index.html", getElementById: () => null, modelContext: { registerTool: (t) => { tools[t.name] = t; } } };
+  const document = { baseURI: "https://teoyujie.org/visuals/beamdswitch/index.html", modelContext: { registerTool: (t) => { tools[t.name] = t; } } };
   const fetchStub = async (url) => {
     assert.equal(String(url), "https://teoyujie.org/visuals/beamdswitch/data.json");
     return { ok: true, json: async () => raw };
@@ -170,7 +186,7 @@ async function siteTools({ isolated = true, controller = {} } = {}) {
 
 test("site.js registers the WebMCP tools the catalogue lists", async () => {
   const { tools, call, ctx } = await siteTools();
-  const listed = yaml.match(/^webmcp_tools: \[(.*)\]$/m)[1].split(",").map((s) => s.trim());
+  const listed = catalogue.webmcp_tools;
   assert.deepEqual(Object.keys(tools).sort(), [...listed].sort());
   assert.ok(listed.length >= 3);
   const meta = await call("get_metadata");
@@ -195,7 +211,6 @@ test("site.js reports single-threaded and unavailable narration", async () => {
 });
 
 // ---------------------------------------------------------------- deploy
-const PYTHON = process.env.PYTHON || (existsSync(join(ROOT, ".venv/bin/python")) ? join(ROOT, ".venv/bin/python") : "python3");
 
 test("site_diff lists new and changed large files but not hard-linked unchanged ones", () => {
   const dir = mkdtempSync(join(tmpdir(), "bd-diff-"));

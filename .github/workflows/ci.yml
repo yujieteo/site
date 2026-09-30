@@ -53,7 +53,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/teoyujie-site/downloads
-          key: downloads-${{ hashFiles('site/visuals/*/raw.json') }}
+          key: downloads-${{ hashFiles('site/visuals/beamdswitch/raw.json') }}
           restore-keys: downloads-
 
       # site/ is generated and not committed; the tests read this build.

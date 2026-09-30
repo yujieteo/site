@@ -8,9 +8,9 @@ in the visitor's browser. Published at `/visuals/beamdswitch/index.html`.
 
 | File | What |
 | --- | --- |
-| `index.html` | `beamdswitch.html` from the private `yujieteo/beamdswitch` repository, vendored unchanged except for one marked block in `<head>` that loads the two files below |
+| `index.html` | `beamdswitch.html` from the private `yujieteo/beamdswitch` repository, vendored unchanged except for one marked block at the start of `<body>` that loads the two files below and shows a static notice about the narration download |
 | `coi-serviceworker.js` | service worker scoped to this folder: cross-origin isolation and module MIME types (below) |
-| `site.js` | the About button, the site's sizes and thread status in the Kokoro dialog, and the WebMCP tools |
+| `site.js` | the WebMCP tools |
 | `raw.json` | the upstream commit and sha256, and the pinned Kokoro downloads; published as `data.json` |
 
 The upstream repository is private, so CI cannot check it out at a pin; the
@@ -19,7 +19,7 @@ sha256 of `beamdswitch.html`, and `tests/beamdswitch.test.mjs` checks that
 `index.html` without the marked block has exactly those bytes.
 
 To update: build `beamdswitch.html` in the beamdswitch repository, copy it
-here as `index.html`, put the marked block back after the viewport `<meta>`,
+here as `index.html`, put the marked block back right after `<body>`,
 and set `upstream.commit`, `upstream.sha256` and `upstream.bytes` in
 `raw.json`. If its `scripts/fetch-kokoro.mjs` changed versions, update the
 matching `downloads` entries too.
@@ -35,7 +35,7 @@ beamdswitch's `fetch-kokoro.mjs` writes to `kokoro/`, with its default voices.
 site. The page's own guard still refuses a Kokoro folder on another origin and
 any remote fetch from its worker.
 
-First load, which the About button shows:
+First load, which the notice at the foot of the page and the catalogue summary state:
 
 | Engine | Downloads, once | Files |
 | --- | --- | --- |
@@ -64,12 +64,11 @@ all. The consequences:
 | worker active, not isolated | WASM on one thread, about a sixth of real time; WebGPU as usual |
 | worker blocked (some private windows or privacy settings) | unavailable; slides, handout, animation and silent video still work |
 
-`site.js` shows the state that applies in the About dialog and in the Kokoro
-dialog. Checked in headless Chrome against a server that serves `.mjs` as
+The notice at the foot of the page says narration needs the service worker;
+`get_narration_status` reports which row applies. Checked in headless Chrome against a server that serves `.mjs` as
 nginx 1.22 does: isolated after the reload, WASM q8 and WebGPU fp32 narration
 both produced finite audio, and with the worker removed the `.mjs` import
 failed as described.
 
 After deploying, open the page once in a browser and confirm that
-`crossOriginIsolated` is `true` in the console, or that the About dialog says
-"Ready, with threads".
+`crossOriginIsolated` is `true` in the console.

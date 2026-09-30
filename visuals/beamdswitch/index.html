@@ -3,10 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<!-- teoyujie.org additions: begin. Everything else is beamdswitch.html as vendored; see README.md. -->
-<script src="coi-serviceworker.js"></script>
-<script src="site.js" defer></script>
-<!-- teoyujie.org additions: end -->
 <title>beamdswitch</title>
 <meta name="description" content="Write a talk in Markdown; get web slides, a notes handout, Kokoro narration and a Manim-style video, all generated in your browser.">
 <link rel="icon" href="data:,">
@@ -193,6 +189,14 @@ body.present #stage{border-radius:0;box-shadow:none}
 </style>
 </head>
 <body>
+<!-- teoyujie.org additions: begin. Everything else is beamdswitch.html as vendored; see README.md. -->
+<script src="coi-serviceworker.js"></script>
+<script src="site.js" defer></script>
+<aside role="note" style="position:fixed;left:8px;right:8px;bottom:8px;z-index:4;display:flex;gap:10px;align-items:flex-start;max-width:720px;margin:0 auto;padding:8px 12px;border-radius:8px;background:#141413;color:#FAF9F5;font:13px/1.4 system-ui,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.25)">
+<span style="flex:1">Narration downloads the Kokoro voice model from this site the first time you ask for a voice: about 111 MB for WASM or 334 MB for WebGPU (about 440 MB for all files). Your browser caches it afterwards. Narration needs this page's service worker, so it will not load where service workers are blocked, as in some private windows.</span>
+<button type="button" onclick="this.parentNode.remove()" aria-label="Dismiss" style="flex:none;border:0;background:none;color:inherit;font:inherit;font-size:18px;line-height:1;cursor:pointer;padding:0 2px">&times;</button>
+</aside>
+<!-- teoyujie.org additions: end -->
 <div id="app">
   <div id="top">
     <span class="brand">beamdswitch</span>
