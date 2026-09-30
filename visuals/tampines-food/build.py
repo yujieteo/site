@@ -50,7 +50,7 @@ MALLS = [
 # Yeo et al. (2021) spellings shown with the usual one; yeo2021.csv keeps them verbatim.
 PRINTED_AS = {"Laska": "Laksa", "Nasi Ambang": "Nasi ambeng"}
 STATUSES = {"open", "closed", "not yet open"}
-MATCHES = {"same dish", "similar dish"}
+MATCHES = {"same dish", "similar dish", "generic equivalent"}
 
 # One paragraph per mall. {placeholders} are filled from the ranked data so the
 # counts in the prose cannot drift from the list.
@@ -88,8 +88,9 @@ METHOD = [
 
 CALORIE_METHOD = [
     "Each figure is an estimate for a reference dish, not a measurement of the outlet's own dish. Where Yeo et al. (2021) measured the same or a comparable Singapore hawker meal, its portion and nutrient values are used. Otherwise the closest U.S. survey recipe from FoodData Central (FNDDS) is used, with a stated portion.",
+    "A dish matched to the measured dish or a close variant is labelled an estimate; a dish matched to a generic equivalent (lor mee as noodles with gravy, udon as cooked noodles, a pork rice bowl as pork with rice) is labelled approximate and names its equivalent and source.",
     "Bars split energy into carbohydrate, protein and fat using 4, 4 and 9 kcal per gram. That split can differ by a few kilocalories from the stated total energy, which comes from the source.",
-    "Dishes with no defensible reference (buffets, shared plates, dishes neither source covers) are marked unknown rather than guessed.",
+    "Buffets and shared or build-your-own plates have no fixed per-person portion and are marked not estimable rather than guessed.",
 ]
 
 
@@ -106,8 +107,8 @@ def nutrition_for(row, yeo, fndds):
     source = row["nutrition_source"]
     if not source:
         if not row["nutrition_note"]:
-            fail(f"{row['id']}: an unknown estimate needs a reason in nutrition_note")
-        return {"status": "unknown", "reason": row["nutrition_note"]}
+            fail(f"{row['id']}: a not-estimable dish needs a reason in nutrition_note")
+        return {"status": "not_estimable", "reason": row["nutrition_note"]}
     if row["match"] not in MATCHES:
         fail(f"{row['id']}: match must be one of {sorted(MATCHES)}")
     if source == "yeo2021":
@@ -132,7 +133,7 @@ def nutrition_for(row, yeo, fndds):
         fail(f"{row['id']}: unknown nutrition source {source!r}")
     grams_of = {k: round(v * grams / 100, 1) for k, v in per100.items()}
     return {
-        "status": "estimate",
+        "status": "approximate" if row["match"] == "generic equivalent" else "estimate",
         "source": source,
         "reference": reference,
         "reference_key": row["nutrition_ref"],

@@ -9,8 +9,9 @@
  ],
  "calorie_method": [
   "Each figure is an estimate for a reference dish, not a measurement of the outlet's own dish. Where Yeo et al. (2021) measured the same or a comparable Singapore hawker meal, its portion and nutrient values are used. Otherwise the closest U.S. survey recipe from FoodData Central (FNDDS) is used, with a stated portion.",
+  "A dish matched to the measured dish or a close variant is labelled an estimate; a dish matched to a generic equivalent (lor mee as noodles with gravy, udon as cooked noodles, a pork rice bowl as pork with rice) is labelled approximate and names its equivalent and source.",
   "Bars split energy into carbohydrate, protein and fat using 4, 4 and 9 kcal per gram. That split can differ by a few kilocalories from the stated total energy, which comes from the source.",
-  "Dishes with no defensible reference (buffets, shared plates, dishes neither source covers) are marked unknown rather than guessed."
+  "Buffets and shared or build-your-own plates have no fixed per-person portion and are marked not estimable rather than guessed."
  ],
  "cuisines": [
   {
@@ -533,8 +534,23 @@
    },
    "rank": 8,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No udon dish in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Noodles, cooked (FDC 2708352)",
+    "reference_key": "2708352",
+    "match": "generic equivalent",
+    "portion": "2 × 1 cup, cooked = 320 g",
+    "grams": 320,
+    "energy_kcal": 438,
+    "carbohydrate_g": 80.0,
+    "protein_g": 14.4,
+    "fat_g": 6.6,
+    "kcal_from": {
+     "carbohydrate": 320,
+     "protein": 58,
+     "fat": 59
+    },
+    "note": "Plain cooked noodles standing in for the udon; the tempura and dipping sauce are not modelled. A bowl is taken as two cups."
    }
   },
   {
@@ -606,8 +622,23 @@
    },
    "rank": 10,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No thunder tea rice in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Rice, white, with other vegetables, no added fat (FDC 2709027)",
+    "reference_key": "2709027",
+    "match": "generic equivalent",
+    "portion": "2 × 1 cup = 344 g",
+    "grams": 344,
+    "energy_kcal": 368,
+    "carbohydrate_g": 79.7,
+    "protein_g": 8.1,
+    "fat_g": 0.9,
+    "kcal_from": {
+     "carbohydrate": 319,
+     "protein": 32,
+     "fat": 8
+    },
+    "note": "Rice with mixed vegetables standing in for the bowl; the tea broth, peanuts and tofu are not modelled. A bowl is taken as two cups."
    }
   },
   {
@@ -635,7 +666,7 @@
    },
    "rank": 11,
    "nutrition": {
-    "status": "unknown",
+    "status": "not_estimable",
     "reason": "A whole grilled fish is shared at the table, so there is no per-person reference."
    }
   },
@@ -663,8 +694,23 @@
    },
    "rank": 12,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No filled min jiang kueh pancake in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Pancakes, plain (FDC 2708304)",
+    "reference_key": "2708304",
+    "match": "generic equivalent",
+    "portion": "1 × 1 extra large pancake = 150 g",
+    "grams": 150,
+    "energy_kcal": 423,
+    "carbohydrate_g": 53.0,
+    "protein_g": 11.1,
+    "fat_g": 18.1,
+    "kcal_from": {
+     "carbohydrate": 212,
+     "protein": 44,
+     "fat": 163
+    },
+    "note": "A plain pancake standing in for the filled min jiang kueh; the peanut filling is not modelled."
    }
   },
   {
@@ -819,8 +865,23 @@
    },
    "rank": 16,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No lor mee in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Chicken or turkey and noodles with gravy (FDC 2706530)",
+    "reference_key": "2706530",
+    "match": "generic equivalent",
+    "portion": "2 × 1 cup = 448 g",
+    "grams": 448,
+    "energy_kcal": 627,
+    "carbohydrate_g": 68.2,
+    "protein_g": 31.3,
+    "fat_g": 25.4,
+    "kcal_from": {
+     "carbohydrate": 273,
+     "protein": 125,
+     "fat": 229
+    },
+    "note": "Noodles with gravy standing in for the lor mee. A bowl is taken as two cups."
    }
   },
   {
@@ -846,8 +907,23 @@
    },
    "rank": 17,
    "nutrition": {
-    "status": "unknown",
-    "reason": "Served with sides; neither source has the whole plate."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Chicken, NS as to part, fried, coated, skin / coating eaten (FDC 2705949)",
+    "reference_key": "2705949",
+    "match": "generic equivalent",
+    "portion": "2 × 1 piece = 170 g",
+    "grams": 170,
+    "energy_kcal": 427,
+    "carbohydrate_g": 12.1,
+    "protein_g": 37.0,
+    "fat_g": 25.5,
+    "kcal_from": {
+     "carbohydrate": 48,
+     "protein": 148,
+     "fat": 230
+    },
+    "note": "Fried coated chicken standing in for the chicken chop; the sides are not included."
    }
   },
   {
@@ -960,8 +1036,23 @@
    },
    "rank": 20,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No comparable dish in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Orange chicken (FDC 2706443)",
+    "reference_key": "2706443",
+    "match": "generic equivalent",
+    "portion": "1 × 1 cup = 252 g",
+    "grams": 252,
+    "energy_kcal": 660,
+    "carbohydrate_g": 56.6,
+    "protein_g": 36.4,
+    "fat_g": 32.0,
+    "kcal_from": {
+     "carbohydrate": 226,
+     "protein": 146,
+     "fat": 288
+    },
+    "note": "Orange chicken standing in for the honey-glazed chicken; the sides are not included."
    }
   },
   {
@@ -1073,8 +1164,23 @@
    },
    "rank": 23,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No comparable rice bowl in either nutrition source."
+    "status": "approximate",
+    "source": "yeo2021",
+    "reference": "Roasted Chicken Rice (Table 1, Chinese)",
+    "reference_key": "Roasted Chicken Rice",
+    "match": "generic equivalent",
+    "portion": "285 g, the portion Yeo et al. bought",
+    "grams": 285,
+    "energy_kcal": 523,
+    "carbohydrate_g": 66.7,
+    "protein_g": 23.7,
+    "fat_g": 18.0,
+    "kcal_from": {
+     "carbohydrate": 267,
+     "protein": 95,
+     "fat": 162
+    },
+    "note": "Japanese chicken rice bowl; the reference is Singapore roasted chicken rice."
    }
   },
   {
@@ -1185,8 +1291,23 @@
    },
    "rank": 26,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No mango pomelo sago in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Pudding, tapioca, ready-to-eat (FDC 2705696)",
+    "reference_key": "2705696",
+    "match": "generic equivalent",
+    "portion": "1 × 1 cup = 260 g",
+    "grams": 260,
+    "energy_kcal": 338,
+    "carbohydrate_g": 56.4,
+    "protein_g": 5.1,
+    "fat_g": 10.1,
+    "kcal_from": {
+     "carbohydrate": 226,
+     "protein": 20,
+     "fat": 91
+    },
+    "note": "Tapioca pudding standing in for the sago dessert; the mango and pomelo are not modelled."
    }
   },
   {
@@ -1296,8 +1417,23 @@
    },
    "rank": 29,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No scallion pancake in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Chinese pancake (FDC 2708343)",
+    "reference_key": "2708343",
+    "match": "generic equivalent",
+    "portion": "4 × 1 pancake = 112 g",
+    "grams": 112,
+    "energy_kcal": 232,
+    "carbohydrate_g": 50.8,
+    "protein_g": 4.5,
+    "fat_g": 0.4,
+    "kcal_from": {
+     "carbohydrate": 203,
+     "protein": 18,
+     "fat": 4
+    },
+    "note": "A serving is taken as four thin pancakes; the pan-fried scallion version is richer than the reference."
    }
   },
   {
@@ -1404,8 +1540,23 @@
    },
    "rank": 32,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No Japanese curry with a breaded cutlet in either nutrition source. SETHLUI.com calls the stall Japanese Curry House, at the same unit."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Chicken curry with rice (FDC 2706438)",
+    "reference_key": "2706438",
+    "match": "generic equivalent",
+    "portion": "2 × 1 cup = 400 g",
+    "grams": 400,
+    "energy_kcal": 464,
+    "carbohydrate_g": 60.5,
+    "protein_g": 19.8,
+    "fat_g": 16.0,
+    "kcal_from": {
+     "carbohydrate": 242,
+     "protein": 79,
+     "fat": 144
+    },
+    "note": "Chicken curry with rice standing in for the curry rice; the breaded cutlet is not modelled. A plate is taken as two cups. SETHLUI.com calls the stall Japanese Curry House, at the same unit."
    }
   },
   {
@@ -1472,7 +1623,7 @@
    },
    "rank": 34,
    "nutrition": {
-    "status": "unknown",
+    "status": "not_estimable",
     "reason": "A buffet has no fixed portion."
    }
   },
@@ -1499,8 +1650,23 @@
    },
    "rank": 35,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No grilled pork rice bowl in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Ham or pork and rice, no sauce (FDC 2706515)",
+    "reference_key": "2706515",
+    "match": "generic equivalent",
+    "portion": "2 × 1 cup = 392 g",
+    "grams": 392,
+    "energy_kcal": 561,
+    "carbohydrate_g": 65.9,
+    "protein_g": 26.4,
+    "fat_g": 19.6,
+    "kcal_from": {
+     "carbohydrate": 264,
+     "protein": 106,
+     "fat": 176
+    },
+    "note": "Plain pork with rice standing in for the grilled pork bowl. A bowl is taken as two cups."
    }
   },
   {
@@ -1691,8 +1857,23 @@
    },
    "rank": 40,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No fish soup with rice or noodles in either nutrition source. SETHLUI.com lists it as The Fish Soup 义德鱼汤, at the same unit."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Soup, fish or shrimp (FDC 2707143)",
+    "reference_key": "2707143",
+    "match": "generic equivalent",
+    "portion": "2 × 1 cup = 490 g",
+    "grams": 490,
+    "energy_kcal": 147,
+    "carbohydrate_g": 19.8,
+    "protein_g": 12.6,
+    "fat_g": 2.3,
+    "kcal_from": {
+     "carbohydrate": 79,
+     "protein": 50,
+     "fat": 21
+    },
+    "note": "Fish soup standing in for the fried fish soup; the rice or noodles are not modelled. A bowl is taken as two cups. SETHLUI.com lists it as The Fish Soup 义德鱼汤, at the same unit."
    }
   },
   {
@@ -1717,8 +1898,23 @@
    },
    "rank": 41,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No prawn noodle soup in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Shrimp and noodles with soy-based sauce (FDC 2706557)",
+    "reference_key": "2706557",
+    "match": "generic equivalent",
+    "portion": "2 × 1 cup = 448 g",
+    "grams": 448,
+    "energy_kcal": 632,
+    "carbohydrate_g": 36.6,
+    "protein_g": 45.8,
+    "fat_g": 32.5,
+    "kcal_from": {
+     "carbohydrate": 146,
+     "protein": 183,
+     "fat": 292
+    },
+    "note": "Shrimp and noodles in a soy-based sauce standing in for the prawn noodle soup. A bowl is taken as two cups."
    }
   },
   {
@@ -1744,7 +1940,7 @@
    },
    "rank": 42,
    "nutrition": {
-    "status": "unknown",
+    "status": "not_estimable",
     "reason": "Hotpot is shared and has no fixed portion."
    }
   },
@@ -1813,8 +2009,23 @@
    },
    "rank": 44,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No snow ice dessert in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Sherbet, all flavors (FDC 2705677)",
+    "reference_key": "2705677",
+    "match": "generic equivalent",
+    "portion": "1 × 1 cup = 175 g",
+    "grams": 175,
+    "energy_kcal": 252,
+    "carbohydrate_g": 53.2,
+    "protein_g": 1.9,
+    "fat_g": 3.5,
+    "kcal_from": {
+     "carbohydrate": 213,
+     "protein": 8,
+     "fat": 32
+    },
+    "note": "Sherbet standing in for the shaved-ice dessert; the durian flavour is not modelled."
    }
   },
   {
@@ -1840,8 +2051,23 @@
    },
    "rank": 45,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No claypot sesame chicken in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Chicken, NS as to part, stewed, skin eaten (FDC 2705939)",
+    "reference_key": "2705939",
+    "match": "generic equivalent",
+    "portion": "1 × 1 cup, cooked, diced = 135 g",
+    "grams": 135,
+    "energy_kcal": 265,
+    "carbohydrate_g": 0.0,
+    "protein_g": 31.8,
+    "fat_g": 14.7,
+    "kcal_from": {
+     "carbohydrate": 0,
+     "protein": 127,
+     "fat": 132
+    },
+    "note": "Stewed chicken standing in for the claypot chicken; the sesame and vegetables are not modelled."
    }
   },
   {
@@ -1867,7 +2093,7 @@
    },
    "rank": 46,
    "nutrition": {
-    "status": "unknown",
+    "status": "not_estimable",
     "reason": "A buffet has no fixed portion."
    }
   },
@@ -1894,8 +2120,23 @@
    },
    "rank": 47,
    "nutrition": {
-    "status": "unknown",
-    "reason": "No char siew rice in either nutrition source."
+    "status": "approximate",
+    "source": "fndds2024",
+    "reference": "Barbecue pork, with sauce (FDC 2706399)",
+    "reference_key": "2706399",
+    "match": "generic equivalent",
+    "portion": "3 × 1 slice = 180 g",
+    "grams": 180,
+    "energy_kcal": 407,
+    "carbohydrate_g": 22.0,
+    "protein_g": 31.6,
+    "fat_g": 20.3,
+    "kcal_from": {
+     "carbohydrate": 88,
+     "protein": 126,
+     "fat": 183
+    },
+    "note": "Barbecue pork with sauce standing in for the char siew; the rice is not modelled. Three slices are taken as the pork serving."
    }
   },
   {
@@ -1921,7 +2162,7 @@
    },
    "rank": 48,
    "nutrition": {
-    "status": "unknown",
+    "status": "not_estimable",
     "reason": "Each bowl is built and weighed by the customer."
    }
   },

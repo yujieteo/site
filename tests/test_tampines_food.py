@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +23,18 @@ def raw():
 def read_csv(name):
     with open(VIZ / name, newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
+
+
+class _AnchorParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.hrefs = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            href = dict(attrs).get("href")
+            if href:
+                self.hrefs.append(href)
 
 
 class TampinesFoodTest(unittest.TestCase):
@@ -89,17 +102,22 @@ class TampinesFoodTest(unittest.TestCase):
 
     def test_calorie_fields_are_consistent(self):
         yeo = {r["dish_as_published"]: r for r in read_csv("yeo2021.csv")}
-        estimates = 0
+        estimate = approximate = not_estimable = 0
         for o in raw()["outlets"]:
             n = o["nutrition"]
-            if n["status"] == "unknown":
+            if n["status"] == "not_estimable":
+                not_estimable += 1
                 self.assertTrue(n["reason"], o["id"])
                 self.assertNotIn("energy_kcal", n, o["id"])
                 continue
-            estimates += 1
-            self.assertEqual(n["status"], "estimate")
-            self.assertIn(n["source"], {"yeo2021", "fndds2024"})
-            self.assertIn(n["match"], {"same dish", "similar dish"})
+            self.assertIn(n["source"], {"yeo2021", "fndds2024"}, o["id"])
+            if n["status"] == "approximate":
+                approximate += 1
+                self.assertEqual(n["match"], "generic equivalent", o["id"])
+            else:
+                estimate += 1
+                self.assertEqual(n["status"], "estimate", o["id"])
+                self.assertIn(n["match"], {"same dish", "similar dish"}, o["id"])
             for key in ("energy_kcal", "carbohydrate_g", "protein_g", "fat_g", "grams"):
                 self.assertGreaterEqual(n[key], 0, (o["id"], key))
             self.assertEqual(n["kcal_from"], {"carbohydrate": round(n["carbohydrate_g"] * 4),
@@ -112,13 +130,17 @@ class TampinesFoodTest(unittest.TestCase):
                 self.assertAlmostEqual(n["energy_kcal"], float(row["serving_kcal"]), delta=float(row["serving_kcal"]) * 0.02)
                 self.assertAlmostEqual(n["protein_g"], float(row["serving_protein_g"]), delta=1)
                 self.assertAlmostEqual(n["carbohydrate_g"], float(row["serving_carbohydrate_g"]), delta=1)
-        self.assertGreaterEqual(estimates, 25)
+        self.assertEqual((estimate, approximate, not_estimable), (29, 16, 5))
 
     def test_published_copy_matches_sources(self):
         published = ROOT / "site" / "visuals" / "tampines-food"
         self.assertEqual((published / "index.html").read_text(encoding="utf-8"), (VIZ / "index.html").read_text(encoding="utf-8"))
         self.assertEqual(json.loads((published / "data.json").read_text(encoding="utf-8")), raw())
-        self.assertIn('href="visuals/tampines-food/index.html"', (ROOT / "site" / "visuals.html").read_text(encoding="utf-8"))
+        parser = _AnchorParser()
+        parser.feed((ROOT / "site" / "visuals.html").read_text(encoding="utf-8"))
+        target = "visuals/tampines-food/index.html"
+        self.assertIn(target, parser.hrefs)
+        self.assertTrue((ROOT / "site" / target).is_file())
 
 
 if __name__ == "__main__":
