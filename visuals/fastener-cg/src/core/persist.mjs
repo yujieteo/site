@@ -55,6 +55,7 @@ function conform(value, template, path, ctx, { nullable = () => true } = {}) {
   }
   if (typeof template === "number" || template === null) {
     if (isNum(value) || (value === null && nullable(path))) return value;
+    if (ctx.lenient && (value === null || typeof value === "string")) return value;
     ctx.errors.push(`${path} must be a number${nullable(path) ? " or null" : ""} (found ${JSON.stringify(value)}).`);
     return template;
   }
@@ -92,8 +93,11 @@ function conformOverrides(value, template, path, ctx) {
   return out;
 }
 
-/* Validate and normalise a parsed object. Returns { pattern, issues, errors }. */
-export function normalizePattern(raw) {
+/* Validate and normalise a parsed object. Returns { pattern, issues, errors }.
+ * `lenient` restores the app's own saved state (working copy, library): blank,
+ * text and out-of-range values are kept as entered so the page flags them,
+ * instead of rejecting the whole pattern. */
+export function normalizePattern(raw, { lenient = false } = {}) {
   const fail = (...messages) => ({ pattern: null, errors: messages, issues: [issue("E-013", messages.join(" "))] });
   if (!isObj(raw)) return fail("The file does not hold a pattern object.");
   let version = raw.schemaVersion;
@@ -111,7 +115,7 @@ export function normalizePattern(raw) {
     version += 1;
   }
 
-  const ctx = { errors: [], defaulted: [], ignored: [] };
+  const ctx = { errors: [], defaulted: [], ignored: [], lenient };
   if (!UNIT_SYSTEMS.includes(data.unitSystem)) {
     ctx.errors.push(`unitSystem must be ${UNIT_SYSTEMS.join(" or ")} (found ${JSON.stringify(data.unitSystem)}); values are never converted or guessed on import.`);
   }
@@ -127,7 +131,7 @@ export function normalizePattern(raw) {
     name = "Untitled pattern";
   }
   const settings = "settings" in data ? conform(data.settings, defaultSettings(), "settings", ctx, { nullable: () => false }) : (ctx.defaulted.push("settings"), defaultSettings());
-  if (isNum(settings.precision) && !(Number.isInteger(settings.precision) && settings.precision >= 1 && settings.precision <= 15)) {
+  if (!lenient && isNum(settings.precision) && !(Number.isInteger(settings.precision) && settings.precision >= 1 && settings.precision <= 15)) {
     ctx.errors.push("settings.precision must be a whole number from 1 to 15.");
   }
   const defaults = "defaults" in data
@@ -148,7 +152,7 @@ export function normalizePattern(raw) {
       seen.add(id);
       const label = f.label === undefined ? (ctx.defaulted.push(`${at}.label`), "") : f.label;
       if (typeof label !== "string") ctx.errors.push(`${at}.label must be text.`);
-      for (const axis of ["x", "y"]) if (!isNum(f[axis])) ctx.errors.push(`${at}.${axis} (${id}) must be a number (found ${JSON.stringify(f[axis])}).`);
+      for (const axis of ["x", "y"]) if (!isNum(f[axis]) && !(lenient && (f[axis] === null || typeof f[axis] === "string"))) ctx.errors.push(`${at}.${axis} (${id}) must be a number (found ${JSON.stringify(f[axis])}).`);
       const overrides = f.overrides === undefined ? {} : conformOverrides(f.overrides, base.defaults, `${at}.overrides`, ctx);
       for (const key of Object.keys(f)) if (!["id", "label", "x", "y", "overrides"].includes(key)) ctx.ignored.push(`${at}.${key}`);
       fasteners.push({ id, label, x: f.x, y: f.y, overrides });
@@ -200,14 +204,14 @@ export function toJSON(pattern) {
   return JSON.stringify(out, null, 2) + "\n";
 }
 
-export function parseJSON(text) {
+export function parseJSON(text, options) {
   let raw;
   try {
     raw = JSON.parse(text);
   } catch (e) {
     return { pattern: null, errors: [`Not valid JSON: ${e.message}`], issues: [issue("E-013", `Not valid JSON: ${e.message}`)] };
   }
-  return normalizePattern(raw);
+  return normalizePattern(raw, options);
 }
 
 /* ---- Markdown ---- */

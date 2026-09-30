@@ -7,7 +7,7 @@ import { convertPattern, unitLabel, round12, UNIT_SYSTEMS } from "../core/units.
 import { fmt } from "../core/format.mjs";
 import { buildScene, CENTROID_STYLE } from "../core/scene.mjs";
 import { rectangularArray, staggeredRows, boltCircle, mirror } from "../core/generators.mjs";
-import { toJSON, toMarkdown, parseJSON, parsePatternFile } from "../core/persist.mjs";
+import { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } from "../core/persist.mjs";
 import { runVerification } from "../core/verify.mjs";
 import { sortIssues } from "../core/warnings.mjs";
 import { TOOL_VERSION } from "../core/meta.mjs";
@@ -706,7 +706,7 @@ function bind() {
   $("#lib-load").addEventListener("click", () => {
     const entry = readLibrary()[$("#library").value];
     if (!entry) return;
-    const parsed = parseJSON(JSON.stringify(entry.pattern));
+    const parsed = normalizePattern(entry.pattern, { lenient: true });
     if (parsed.pattern) loadPattern(parsed.pattern, parsed.issues);
     else { state.importIssues = parsed.issues; renderIssues(); }
   });
@@ -726,7 +726,7 @@ function bind() {
 function initialPattern() {
   const saved = readWorking();
   if (saved) {
-    const parsed = parseJSON(saved);
+    const parsed = parseJSON(saved, { lenient: true });
     if (parsed.pattern) return parsed.pattern;
   }
   return examplePattern("N-mm");

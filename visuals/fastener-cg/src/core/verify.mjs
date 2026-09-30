@@ -127,7 +127,7 @@ export const HAND_CASES = [
       return r.fasteners.flatMap((f) => {
         const tangent = Math.atan2(f.y, f.x) + Math.PI / 2;
         const along = f.shear.Rx * Math.cos(tangent) + f.shear.Ry * Math.sin(tangent);
-        return [check(`tangential ${f.id}`, along, expected), check(`radial ${f.id}`, f.shear.Rs, expected)];
+        return [check(`tangential ${f.id}`, along, expected), check(`magnitude ${f.id}`, f.shear.Rs, expected)];
       });
     },
   },

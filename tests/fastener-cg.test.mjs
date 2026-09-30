@@ -239,6 +239,29 @@ test("import: newer schema refused (E-013), every problem listed, optional field
   assert.equal(normalizePattern([]).issues[0].id, "E-013");
 });
 
+test("the autosaved working pattern restores blank and out-of-range fields as entered; file import stays strict", () => {
+  const p = examplePattern("N-mm");
+  p.fasteners[0].x = null;
+  p.fasteners[1].y = "abc";
+  p.fasteners[2].overrides = { area: null };
+  p.load.Fx = null;
+  p.settings.precision = 20;
+  const saved = toJSON(p);
+  assert.equal(parseJSON(saved).pattern, null, "file import rejects it");
+
+  const restored = parseJSON(saved, { lenient: true });
+  assert.ok(restored.pattern, restored.errors.join("\n"));
+  assert.deepEqual(restored.pattern, JSON.parse(saved));
+  const flagged = solve(restored.pattern).issues.filter((i) => i.id === "E-002").map((i) => i.field);
+  for (const field of ["x", "y", "area", "load.Fx"]) assert.ok(flagged.includes(field), `E-002 for ${field}`);
+
+  assert.ok(normalizePattern(JSON.parse(saved), { lenient: true }).pattern, "library entries restore too");
+  assert.equal(parseJSON("{nope", { lenient: true }).pattern, null);
+  const corrupt = JSON.parse(saved);
+  corrupt.load = [];
+  assert.equal(parseJSON(JSON.stringify(corrupt), { lenient: true }).pattern, null);
+});
+
 test("Markdown export holds readable tables and one checksummed JSON block that import prefers", () => {
   const p = examplePattern("N-mm");
   p.fasteners[0].overrides = { ka: 2 };
