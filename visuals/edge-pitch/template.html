@@ -183,14 +183,14 @@ footer{margin-top:3rem;font-size:.8125rem;color:var(--muted)}
         <figcaption>MS against e_end/D at the entered load. Bearing stops at e/D = 1.5: F_bru is not extrapolated. The dotted line is the minimum e/D.</figcaption>
       </figure>
       <figure>
-        <svg id="chart-p" class="chart" role="img" aria-label="MS against fastener spacing for net section and inter-rivet buckling"></svg>
+        <svg id="chart-p" class="chart" role="img" aria-label="MS against pitch for net section and inter-rivet buckling"></svg>
         <ul class="legend"><li><i class="line" style="border-color:var(--c1)"></i>Net section</li><li><i class="line" style="border-color:var(--c2)"></i>Inter-rivet buckling</li></ul>
-        <figcaption>MS against the fastener spacing: pitch p with the load across the rows, row spacing g with it along them. Net section improves and inter-rivet buckling worsens as the spacing grows; the buckling curve crosses zero at the maximum spacing.</figcaption>
+        <figcaption>MS against pitch p. With the load across the rows p sets the net-section strip and buckling follows the row spacing g, so its curve is flat; with the load along the rows p is the buckling length and net section follows g. A falling buckling curve crosses zero at the maximum pitch.</figcaption>
       </figure>
       <figure>
         <svg id="chart-s" class="chart" role="img" aria-label="Inter-rivet buckling stress against spacing over thickness"></svg>
         <ul class="legend"><li><i class="line" style="border-color:var(--c1)"></i>σ_ir (Johnson, then Euler)</li><li><i class="line" style="border-color:var(--bad)"></i>Applied sheet stress</li></ul>
-        <figcaption>Inter-rivet buckling stress σ_ir against p/t, with the applied compressive sheet stress as a horizontal line.</figcaption>
+        <figcaption>Inter-rivet buckling stress σ_ir against the spacing along the load over thickness (g/t with the load across the rows, p/t along them), with the applied compressive sheet stress as a horizontal line.</figcaption>
       </figure>
     </div>
   </div>
@@ -276,7 +276,7 @@ function fieldHTML(f) {
   const control = f.kind === "enum"
     ? `<select id="${id(f)}">${f.options.map((o) => `<option value="${o[0]}">${esc(o[1])}</option>`).join("")}</select>`
     : `<input type="number" id="${id(f)}" inputmode="decimal" step="any" ${f.kind === "count" ? 'min="1" step="1"' : ""}>`;
-  const extra = f.path === "load.sigmaSheet" ? `<label class="check"><input type="checkbox" id="derive-sigma"> derive from P/(W·t)</label>` : "";
+  const extra = f.path === "load.sigmaSheet" ? `<label class="check"><input type="checkbox" id="derive-sigma"> derive from P/(width across the load · t)</label>` : "";
   return `<label class="f" id="wrap-${id(f)}" for="${id(f)}"><span class="n"><b>${esc(f.label)}</b>${unit}</span>${control}${extra}${tags.length ? `<span class="tags">${tags.join("")}</span>` : ""}<span class="msg" id="msg-${id(f)}"></span></label>`;
 }
 function onField(f, el) {
@@ -337,7 +337,7 @@ function refresh() {
     [g ? fmt(g.ms) : "—", `Governing strength MS · ${g ? g.title : "none evaluated"}`, g && g.ms < 0],
     [fmt(gg.ms), `Governing geometric MS · ${gg.title}`, gg.ms < 0],
     [u(r.derived.Pf, "force"), `Load per fastener (equal share of ${r.derived.n})`],
-    [u(r.derived.sigmaSheet, "stress"), r.derived.sigmaDerived ? "Sheet stress P/(W·t)" : "Compressive sheet stress (entered)"],
+    [u(r.derived.sigmaSheet, "stress"), r.derived.sigmaDerived ? (r.derived.direction === "parallel" ? "Sheet stress P/(B·t), B = 2·e_end + (n_r − 1)·g" : "Sheet stress P/(W·t)") : "Compressive sheet stress (entered)"],
   ].map(([b, s, bad]) => `<li><b${bad ? ' style="color:var(--bad)"' : ""}>${esc(b)}</b><span>${esc(s)}</span></li>`).join("");
   $("warnings").innerHTML = r.warnings.map((w) => `<li>${esc(w.message)}</li>`).join("");
   $("strength").innerHTML = `<thead><tr><th>Check</th><th>Allowable</th><th>Applied</th><th>MS</th><th class="l">Source</th></tr></thead><tbody>${r.strength.map((c) =>
@@ -382,7 +382,7 @@ function drawSchematic(r) {
   }
   $("schematic").setAttribute("viewBox", vb.join(" "));
   $("schematic").innerHTML = `<title id="schem-title">Joint schematic to scale</title>${s.join("")}`;
-  $("schem-note").textContent = `To scale: the checked sheet, free end on the left, load P ${along ? "along the rows (net section and inter-rivet buckling use g)" : "to the right, across the rows (net section and inter-rivet buckling use p)"}. W = ${u(W, "length")}, t = ${u(x.sheet.t, "length")}, p = ${u(G.p, "length")}, D_h = ${u(F.Dh, "length")}. Each hole is coloured by its own governing strength margin; the marginal band is MS < ${fmt(x.rules.marginal)}.`;
+  $("schem-note").textContent = `To scale: the checked sheet, free end on the left, load P ${along ? "along the rows (net section uses g across the load, inter-rivet buckling p along it)" : "to the right, across the rows (net section uses p across the load, inter-rivet buckling g along it)"}. W = ${u(W, "length")}, t = ${u(x.sheet.t, "length")}, p = ${u(G.p, "length")}, D_h = ${u(F.Dh, "length")}. Each hole is coloured by its own governing strength margin; the marginal band is MS < ${fmt(x.rules.marginal)}.`;
 }
 
 /* ---------- Charts ---------- */
@@ -435,12 +435,12 @@ function drawCharts(r) {
   });
   const sp = E.sweepPitch(x);
   const L = (v) => E.toDisplay(v, "length", units);
-  const spc = r.derived.spacing;
+  const spc = r.derived.along;
   chart($("chart-p"), {
     series: [{ cls: "s1", pts: sp.map((p) => [L(p.p), p.netSection]) }, { cls: "s2", pts: sp.map((p) => [L(p.p), p.interRivet]) }],
-    xLabel: `${spc.sym} (${E.unitSym("length", units)})`, yLabel: "MS", xDom: [L(sp[0].p), L(sp[sp.length - 1].p)], yDom: msDomain(sp.flatMap((p) => [p.netSection, p.interRivet])), zero: true,
-    vlines: [{ x: L((spc.sym === "g" ? x.rules.gDmin : x.rules.pDmin) * x.fastener.D), cls: "rule" }],
-    points: [{ x: L(spc.L), y: by.netSection.ms, cls: "p1", title: `Net section MS ${fmt(by.netSection.ms)}` }, { x: L(spc.L), y: by.interRivet.ms, cls: "p2", title: `Inter-rivet MS ${fmt(by.interRivet.ms)}` }],
+    xLabel: `p (${E.unitSym("length", units)})`, yLabel: "MS", xDom: [L(sp[0].p), L(sp[sp.length - 1].p)], yDom: msDomain(sp.flatMap((p) => [p.netSection, p.interRivet])), zero: true,
+    vlines: [{ x: L(x.rules.pDmin * x.fastener.D), cls: "rule" }],
+    points: [{ x: L(x.geometry.p), y: by.netSection.ms, cls: "p1", title: `Net section MS ${fmt(by.netSection.ms)}` }, { x: L(x.geometry.p), y: by.interRivet.ms, cls: "p2", title: `Inter-rivet MS ${fmt(by.interRivet.ms)}` }],
   });
   const ss = E.sweepSlenderness(x);
   const S = (v) => E.toDisplay(v, "stress", units);
@@ -543,7 +543,7 @@ function registerTools() {
       sheet: { type: "object", description: "t, W (mm), shear (single | double)" },
       material: { type: "object", description: "E, Ftu, Fty, Fcy, Fsu, Fbru15, Fbru20 (MPa), nu" },
       geometry: { type: "object", description: "pattern (single | aligned | staggered), rows, perRow, eEnd, eSide, p, g (mm)" },
-      load: { type: "object", description: "P (N), share (equal), direction (normal = across the rows, pitch p sets net section and inter-rivet buckling | parallel = along the rows, row spacing g takes that role; needs rows ≥ 2), sigmaSheet (MPa compressive, null = P/(W·t))" },
+      load: { type: "object", description: "P (N), share (equal), direction (normal = across the rows: net section on p, inter-rivet buckling on g | parallel = along the rows: net section on g, inter-rivet buckling on p; needs rows ≥ 2), sigmaSheet (MPa compressive, null = P over the width across the load times t: W, or 2·eEnd + (rows − 1)·g along the rows)" },
       buckling: { type: "object", description: "c (end fixity)" },
       rules: { type: "object", description: "eDmin, eDnom, pDmin, pDtyp, gDmin, cskMax, marginal" },
     },

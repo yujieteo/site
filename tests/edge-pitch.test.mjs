@@ -104,16 +104,16 @@ test("inter-rivet buckling follows the shared column function on the Euler and J
   close(E.columnStrength(Ecol, Fcy, 0, 1).sigma, Fcy, 1e-12, "zero length");
   close(E.columnStrength(Ecol, Fcy, 200, 4).sigma, E.columnStrength(Ecol, Fcy, 100, 1).sigma, 1e-12, "fixity c = 4 halves the length");
 
-  // Placeholder joint (Johnson): L/ρ = 24√12/1.6.
+  // Placeholder joint (Johnson), load across the rows: L = g, L/ρ = 19.2√12/1.6.
   const r = E.solve(E.example());
   const ir = byId(r.strength, "interRivet");
-  const lr = (24 * Math.sqrt(12)) / 1.6;
+  const lr = (19.2 * Math.sqrt(12)) / 1.6;
   assert.equal(ir.branch, "johnson");
   close(ir.allowable, 300 - (300 ** 2 * lr ** 2) / (4 * Math.PI ** 2 * 70000), 1e-12, "σ_ir Johnson");
   close(ir.applied, 10000 / (115.2 * 1.6), 1e-12, "derived sheet stress");
 
-  // Long pitch (Euler) with an entered compressive stress and a failing margin.
-  const x = joint({ "geometry.p": 60, "sheet.W": 259.2, "load.sigmaSheet": 80 });
+  // Long pitch along the load (Euler) with an entered compressive stress and a failing margin.
+  const x = joint({ "load.direction": "parallel", "geometry.p": 60, "sheet.W": 259.2, "load.sigmaSheet": 80 });
   const s = E.solve(x);
   const lr2 = (60 * Math.sqrt(12)) / 1.6;
   const irE = byId(s.strength, "interRivet");
@@ -248,35 +248,76 @@ test("interior-row bearing at e/D = g/D enters the strength checks and can gover
   assert.equal(byId(E.solve(joint({ "geometry.rows": 1, "geometry.pattern": "single" })).strength, "bearingInterior"), undefined);
 });
 
-test("load direction swaps the pitch and row-spacing roles in net section and inter-rivet buckling", () => {
+test("net section uses the spacing across the load and inter-rivet buckling the spacing along it", () => {
   const across = E.solve(E.example());
   const along = E.solve(joint({ "load.direction": "parallel" }));
   assert.equal(across.ok && along.ok, true);
-  const { P } = E.example().load, { Dh } = E.example().fastener, t = 1.6, rows = 2, perRow = 5, p = 24, g = 19.2;
+  const { P } = E.example().load, { Dh } = E.example().fastener, t = 1.6, rows = 2, perRow = 5, p = 24, g = 19.2, eEnd = 9.6, W = 115.2;
+  const johnson = (L) => 300 - (300 ** 2 * ((L * Math.sqrt(12)) / t) ** 2) / (4 * Math.PI ** 2 * 70000);
 
+  // Across the rows: strip p across the load, buckling length g along it, σ = P/(W·t).
   close(byId(across.strength, "netSection").allowable, 400 * (p - Dh) * t, 1e-12, "net across");
   close(byId(across.strength, "netSection").applied, P / perRow, 1e-12, "strip across");
+  close(byId(across.strength, "interRivet").slenderness, (g * Math.sqrt(12)) / t, 1e-12, "buckling length g");
+  close(byId(across.strength, "interRivet").allowable, johnson(g), 1e-12, "σ_ir on g");
+  close(across.derived.sigmaSheet, P / (W * t), 1e-12, "sheet stress on W");
+  close(byId(across.strength, "maxPitch").applied, g, 1e-12, "maximum row spacing against g");
+  assert.equal(byId(across.strength, "maxPitch").title, "Maximum row spacing");
+
+  // Along the rows: strip g across the load, buckling length p along it, σ = P/((2·e_end + g)·t).
   close(byId(along.strength, "netSection").allowable, 400 * (g - Dh) * t, 1e-12, "net along");
   close(byId(along.strength, "netSection").applied, P / rows, 1e-12, "strip along");
+  close(byId(along.strength, "interRivet").slenderness, (p * Math.sqrt(12)) / t, 1e-12, "buckling length p");
+  close(byId(along.strength, "interRivet").allowable, johnson(p), 1e-12, "σ_ir on p");
+  close(along.derived.sigmaSheet, P / ((2 * eEnd + g) * t), 1e-12, "sheet stress across the load");
+  close(byId(along.strength, "interRivet").applied, P / ((2 * eEnd + g) * t), 1e-12, "applied σ along");
+  close(byId(along.strength, "maxPitch").applied, p, 1e-12, "maximum pitch against p");
+  assert.equal(byId(along.strength, "maxPitch").title, "Maximum pitch");
 
-  close(byId(across.strength, "interRivet").slenderness, (p * Math.sqrt(12)) / t, 1e-12, "buckling length p");
-  close(byId(along.strength, "interRivet").slenderness, (g * Math.sqrt(12)) / t, 1e-12, "buckling length g");
-  close(byId(across.strength, "maxPitch").applied, p, 1e-12, "max pitch against p");
-  close(byId(along.strength, "maxPitch").applied, g, 1e-12, "max spacing against g");
-
-  assert.equal(across.governing.id, "interRivet");
-  assert.equal(along.governing.id, "netSection");
+  close(across.governing.ms, johnson(g) / (P / (W * t)) - 1, 1e-12, "governing across");
+  assert.equal(along.governing.id, "interRivet");
+  close(along.governing.ms, johnson(p) / (P / ((2 * eEnd + g) * t)) - 1, 1e-12, "governing along");
   for (const id of ["bearing", "bearingInterior", "shearOut", "sideEdge"]) assert.equal(byId(along.strength, id).ms, byId(across.strength, id).ms, id);
 
-  const sp = E.sweepPitch(joint({ "load.direction": "parallel" }), 40);
-  const at = sp.reduce((a, q) => (Math.abs(q.p - g) < Math.abs(a.p - g) ? q : a));
-  assert.ok(at.netSection < sp[sp.length - 1].netSection);
-  assert.match(E.toMarkdown(joint({ "load.direction": "parallel" })), /Load along the rows: net section, inter-rivet buckling and maximum spacing use g/);
-  assert.match(E.toMarkdown(E.example()), /Load across the rows: net section, inter-rivet buckling and maximum spacing use p/);
+  // Sweeping p moves net section across the rows and buckling along them.
+  const flat = (list) => list.every((q) => Math.abs(q - list[0]) < 1e-12);
+  const spA = E.sweepPitch(E.example(), 40), spL = E.sweepPitch(joint({ "load.direction": "parallel" }), 40);
+  assert.ok(flat(spA.map((q) => q.interRivet)) && !flat(spA.map((q) => q.netSection)));
+  assert.ok(flat(spL.map((q) => q.netSection)) && !flat(spL.map((q) => q.interRivet)));
+
+  assert.match(E.toMarkdown(joint({ "load.direction": "parallel" })), /Load along the rows: net section uses g = 19\.2 mm across the load; inter-rivet buckling and maximum spacing use p = 24 mm along it/);
+  assert.match(E.toMarkdown(E.example()), /Load across the rows: net section uses p = 24 mm across the load; inter-rivet buckling and maximum spacing use g = 19\.2 mm along it/);
 
   const one = E.solve(joint({ "load.direction": "parallel", "geometry.rows": 1, "geometry.pattern": "single" }));
   assert.equal(one.ok, false);
   assert.match(one.errors.find((e) => e.path === "load.direction").message, /at least two rows/);
+});
+
+test("staggered rows loaded along the rows account for the p/2 offset", () => {
+  const Dh = 4.9;
+  const zig = E.solve(joint({ "load.direction": "parallel", "geometry.pattern": "staggered", "sheet.W": 127.2 }));
+  const n1 = byId(zig.strength, "netSection");
+  close(n1.straight, 19.2 - Dh / 2, 1e-12, "straight meets every other row");
+  close(n1.zigzag, 19.2 - Dh + 24 ** 2 / (16 * 19.2), 1e-12, "zig-zag with stagger p/2 and gauge g");
+  close(n1.width, n1.zigzag, 1e-12, "zig-zag governs");
+  const tight = E.solve(joint({ "load.direction": "parallel", "geometry.pattern": "staggered", "geometry.g": 8, "sheet.W": 127.2 }));
+  const n2 = byId(tight.strength, "netSection");
+  close(n2.width, 8 - Dh / 2, 1e-12, "straight governs");
+  assert.match(n2.path, /straight, g − D_h\/2/);
+});
+
+test("one fastener along the load leaves inter-rivet buckling unevaluated with a warning", () => {
+  for (const patch of [{ "geometry.rows": 1, "geometry.pattern": "single" }, { "load.direction": "parallel", "geometry.perRow": 1, "sheet.W": 19.2 }]) {
+    const r = E.solve(joint(patch));
+    assert.equal(r.ok, true, JSON.stringify(patch));
+    for (const id of ["interRivet", "maxPitch"]) {
+      assert.equal(byId(r.strength, id).allowable, null);
+      assert.equal(byId(r.strength, id).ms, null);
+      assert.equal(byId(r.strength, id).status, "one fastener along the load");
+    }
+    assert.match(messages(r.warnings), /Only one fastener along the load/);
+    assert.notEqual(r.governing.id, "interRivet");
+  }
 });
 
 test("holes are coloured by their own governing margin", () => {
