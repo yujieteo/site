@@ -14,10 +14,6 @@ import build_reference  # noqa: E402
 import cases as C  # noqa: E402
 import sectionref as R  # noqa: E402
 
-LENGTH_DIM = {"A": 2, "cx": 1, "cy": 1, "Ix": 4, "Iy": 4, "Ixy": 4, "I1": 4, "I2": 4, "Ip": 4, "Qx": 3, "Qy": 3,
-              "Sx_top": 3, "Sx_bottom": 3, "Sy_right": 3, "Sy_left": 3}
-
-
 class ReferenceTest(unittest.TestCase):
     def test_fixture_and_reference_files_are_current(self):
         self.assertEqual(build_reference.main(["--check"]), 0)
@@ -44,9 +40,9 @@ class ReferenceTest(unittest.TestCase):
             p = R.properties(case["model"])
             for e in case["expect"]:
                 q = e["quantity"]
-                if q not in LENGTH_DIM:
+                if q not in build_reference.DIM:
                     continue
-                scale = max(abs(e["value"]), abs(p[q]), math.sqrt(p["A"]) ** LENGTH_DIM[q])
+                scale = max(abs(e["value"]), abs(p[q]), math.sqrt(p["A"]) ** build_reference.DIM[q])
                 self.assertLessEqual(abs(p[q] - e["value"]), 1e-9 * scale, f"{case['id']} {q} = {e['formula']}")
                 checked += 1
         self.assertGreaterEqual(checked, 25)
