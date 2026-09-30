@@ -7,7 +7,7 @@ that uses a different method, plus closed forms.
 | --- | --- | --- | --- | --- |
 | Area properties, Q | Green's theorem on exact lines and arcs, 16-point Gauss–Legendre | `reference/sectionref.py`: polygons + circular segments + disks with closed-form moments; exact disk ∩ half-plane clipping for Q | 1e-9 relative | 1e-15 |
 | Closed forms (A, I, Q, J, Z_p, …) | as above | formulas in `reference/cases.py` | 1e-9 relative | 1e-15 |
-| Torsion constant | exact formulas, Saint-Venant series, Bredt–Batho | `reference/prandtl.py`: Prandtl stress function, linear FEM, three uniform refinements, Richardson | per formula, stated in `torsion-accuracy.json` | see the table |
+| Torsion constant | exact formulas, Saint-Venant series, Bredt–Batho, Vlasov thin-walled open section | `reference/prandtl.py`: Prandtl stress function, linear FEM, three uniform refinements, Richardson | per formula, stated in `torsion-accuracy.json` | see the table |
 | M–κ, κ_lim, M_lim, M_p, M_p(N) | strip fibres with exact strip moments, quadratic stress interpolation | `reference/plasticref.py`: exact width function, 400-point Gauss–Legendre between breakpoints | 1e-6 relative | 1e-8 |
 | YAML | `src/yaml.js` | PyYAML (tests only) | exact data equality both ways | — |
 
@@ -33,10 +33,10 @@ largest relative error. The stated accuracies are:
 
 For exact formulas the 0.01% bound is the reference's own accuracy, not the
 formula's. Bredt–Batho underestimates J; its error grows with t / b and is largest
-for sharp corners. The open-section formula overestimates J for the I, channel, Z, tee and angle, underestimates it
-for the cross, and ignores
-root fillets, which add 6–20% stiffness, so filleted rolled shapes show "n/a". A formula whose measured error exceeds its stated accuracy is
-recorded as withdrawn and the page shows "n/a" for it.
+for sharp corners. The open-section formula overestimates J for the I, channel, Z,
+tee and angle, underestimates it for the cross, and ignores root fillets, which add
+6–20% stiffness, so filleted rolled shapes show "n/a". A formula whose measured error
+exceeds its stated accuracy is recorded as withdrawn and the page shows "n/a" for it.
 
 ## Running the checks
 
