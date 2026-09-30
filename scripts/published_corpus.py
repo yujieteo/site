@@ -27,25 +27,13 @@ def _hash(value):
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
-def _note_identity(date, content):
-    return note_id(date, content).removeprefix("note:")
-
-
-def note_record_id(date, content):
-    return _record_id("note", _note_identity(date, content))
-
-
 def _slug(value):
     slug = re.sub(r"[^a-z0-9]+", "-", str(value).lower()).strip("-")
     return slug or _hash(str(value))[:12]
 
 
-def _record_id(kind, identity):
-    return f"{kind}:{identity}"
-
-
 def _record(kind, identity, **fields):
-    public = {"id": _record_id(kind, identity), "kind": kind}
+    public = {"id": f"{kind}:{identity}", "kind": kind}
     public.update({key: value for key, value in fields.items() if value not in (None, "", [])})
     public["revision"] = _hash(_canonical(public))
     return public
@@ -81,21 +69,14 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
             url="colophon.html", tags=[],
         ))
 
-    for resource in resources:
-        identity = _hash(f"{resource['url']}\0{resource['title']}")
-        records.append(_record(
-            "resource", identity, title=resource["title"], url=resource["url"],
-            summary=resource.get("note", ""), content=resource.get("note", ""),
-            tags=resource["tags"], category=resource["category"],
-        ))
-
-    for paper in papers:
-        identity = _hash(f"{paper['url']}\0{paper['title']}")
-        records.append(_record(
-            "paper", identity, title=paper["title"], url=paper["url"],
-            summary=paper.get("note", ""), content=paper.get("note", ""),
-            tags=paper["tags"], category=paper["category"],
-        ))
+    for kind, entries in (("resource", resources), ("paper", papers)):
+        for entry in entries:
+            identity = _hash(f"{entry['url']}\0{entry['title']}")
+            records.append(_record(
+                kind, identity, title=entry["title"], url=entry["url"],
+                summary=entry.get("note", ""), content=entry.get("note", ""),
+                tags=entry["tags"], category=entry["category"],
+            ))
 
     for post in posts:
         records.append(_record(
@@ -107,10 +88,9 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
 
     for day in notes["entries"]:
         for note in day["notes"]:
-            identity = _note_identity(day["date"], note["content"])
-            record_id = _record_id("note", identity)
+            record_id = note_id(day["date"], note["content"])
             records.append(_record(
-                "note", identity, title=note["plain_text"][:100],
+                "note", record_id.removeprefix("note:"), title=note["plain_text"][:100],
                 url=f"notes.html#{record_id}", date=day["date"], tags=note["tags"],
                 summary=note["plain_text"][:240], content=note["content"],
                 contentHtml=note["body_html"],
@@ -129,23 +109,19 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
 
     for item in media_items:
         if "video" in item:
-            records.append(_record(
-                "video", item["id"], title=item["title"],
-                summary=item["summary"], url=f"media/{item['id']}.html",
-                date=item["date"], tags=item["focus_tags"],
-                videoUrl=f"media/{item['video']}",
-                captionsUrl=f"media/{item['captions']}",
-                posterUrl=f"media/{item['poster']}",
-                durationSeconds=item["duration_seconds"],
-            ))
+            kind, assets = "video", {
+                "videoUrl": f"media/{item['video']}",
+                "captionsUrl": f"media/{item['captions']}",
+                "posterUrl": f"media/{item['poster']}",
+            }
         else:
-            records.append(_record(
-                "podcast", item["id"], title=item["title"],
-                summary=item["summary"], url=f"media/{item['id']}.html",
-                date=item["date"], tags=item["focus_tags"],
-                audioUrl=f"media/{item['audio']}",
-                durationSeconds=item["duration_seconds"],
-            ))
+            kind, assets = "podcast", {"audioUrl": f"media/{item['audio']}"}
+        records.append(_record(
+            kind, item["id"], title=item["title"],
+            summary=item["summary"], url=f"media/{item['id']}.html",
+            date=item["date"], tags=item["focus_tags"], **assets,
+            durationSeconds=item["duration_seconds"],
+        ))
 
     unique_records = []
     seen_ids = set()

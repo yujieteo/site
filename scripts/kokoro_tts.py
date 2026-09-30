@@ -29,14 +29,13 @@ def _load_runtime():
     try:
         import lameenc
         import numpy
-        import soundfile
         from kokoro import KPipeline
     except ImportError as exc:
         raise KokoroUnavailable(
             "Podcast audio generation needs the optional Kokoro dependencies. "
             "Install them with: uv pip install -r requirements-podcast.txt"
         ) from exc
-    return numpy, soundfile, lameenc, KPipeline
+    return numpy, lameenc, KPipeline
 
 
 class KokoroSynthesizer:
@@ -51,7 +50,6 @@ class KokoroSynthesizer:
     def __init__(self, voice=DEFAULT_VOICE):
         self.voice = voice
         self._numpy = None
-        self._soundfile = None
         self._pipeline = None
         self._encoder = None
         self._parts = []
@@ -61,9 +59,8 @@ class KokoroSynthesizer:
     def _ensure_runtime(self):
         if self._pipeline is not None:
             return
-        numpy, soundfile, _, pipeline_class = _load_runtime()
+        numpy, _, pipeline_class = _load_runtime()
         self._numpy = numpy
-        self._soundfile = soundfile
         self._pipeline = pipeline_class(lang_code="a")
 
     def _section_audio(self, text):
@@ -73,14 +70,12 @@ class KokoroSynthesizer:
             for _, _, audio in self._pipeline(text, voice=self.voice)
         ]
         if chunks:
-            data = self._numpy.concatenate(chunks)
-        else:
-            data = self._numpy.zeros(0, dtype="float32")
-        return data, self.sample_rate
+            return self._numpy.concatenate(chunks)
+        return self._numpy.zeros(0, dtype="float32")
 
     def start(self, path):
         self._ensure_runtime()
-        _, _, lameenc, _ = _load_runtime()
+        _, lameenc, _ = _load_runtime()
         self._path = Path(path)
         self._path.parent.mkdir(parents=True, exist_ok=True)
         encoder = lameenc.Encoder()
@@ -95,9 +90,8 @@ class KokoroSynthesizer:
     def add(self, text):
         if self._encoder is None:
             raise KokoroUnavailable("start() must be called before add()")
-        data, rate = self._section_audio(text)
-        if rate != self.sample_rate:
-            raise RuntimeError(f"Kokoro returned {rate} Hz audio, expected {self.sample_rate} Hz")
+        data = self._section_audio(text)
+        rate = self.sample_rate
         if self._frames == 0:
             self._write(self._numpy.zeros(int(LEAD_SILENCE_SECONDS * rate), dtype="float32"))
         self._write(data)

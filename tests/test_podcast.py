@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 import shutil
@@ -23,29 +24,6 @@ from podcast import (
     plan_episode,
     speech_text,
 )
-
-
-def make_registry(extra=()):
-    tags = {
-        "agents": {"class": "topic", "description": "Agents."},
-        "tools": {"class": "topic", "description": "Tools."},
-        "programming": {"class": "topic", "description": "Programming."},
-        "math.ag": {"class": "arxiv-math", "description": "Algebraic geometry."},
-        "todo": {"class": "action", "description": "Work to do."},
-    }
-    for name, tag_class in extra:
-        tags[name] = {"class": tag_class, "description": name}
-    return {
-        "tags": {
-            name: {
-                "class": definition["class"],
-                "description": definition["description"],
-                "aliases": [],
-                "replaced_by": None,
-            }
-            for name, definition in tags.items()
-        },
-    }
 
 
 def make_document(entries):
@@ -100,6 +78,10 @@ REGISTRY_JSON = {
         },
     },
 }
+
+
+def make_registry():
+    return {"tags": copy.deepcopy(REGISTRY_JSON["tags"])}
 
 
 def write_notes(root):

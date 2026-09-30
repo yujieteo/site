@@ -117,20 +117,26 @@ def load_registry(path=TAGS_PATH):
     return {"tags": tags, "aliases": aliases}
 
 
-def _split_frontmatter(text, path, errors):
+def split_frontmatter(text):
+    """Return (YAML frontmatter, body) of Markdown that opens with a ``---`` block.
+
+    Raises ValueError naming the problem when the block is missing or unterminated.
+    """
     if not text.startswith("---"):
-        errors.append(f"{path}: missing YAML frontmatter")
-        return "", text
+        raise ValueError("missing YAML frontmatter")
     parts = text.split("---", 2)
     if len(parts) != 3:
-        errors.append(f"{path}: unterminated YAML frontmatter")
-        return "", text
+        raise ValueError("unterminated YAML frontmatter")
     return parts[1], parts[2].lstrip("\n")
 
 
 def parse_notes(text, registry, path="data/notes.md"):
     errors = []
-    frontmatter, body = _split_frontmatter(text, path, errors)
+    try:
+        frontmatter, body = split_frontmatter(text)
+    except ValueError as exc:
+        errors.append(f"{path}: {exc}")
+        frontmatter, body = "", text
     matches = list(HEADING.finditer(body))
     leading = body[:matches[0].start()].strip() if matches else body.strip()
     if not matches:
