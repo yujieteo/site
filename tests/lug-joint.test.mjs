@@ -211,12 +211,25 @@ test("sweep covers 0° to 90° when every coefficient is present and explains wh
   assert.equal(s.points[0].Pall, L.solve(x).joint.Pall);
 });
 
-test("the calculation core has no DOM access", async () => {
+test("the calculation core runs without DOM, storage, clock or randomness and is deterministic", async () => {
   const src = await readFile(new URL("../visuals/lug-joint/engine.js", import.meta.url), "utf8");
-  const code = src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
-  for (const word of ["document", "window", "localStorage", "location", "navigator", "Date.now", "Math.random"]) {
-    assert.ok(!new RegExp(`\\b${word.replace(".", "\\.")}\\b`).test(code), `engine.js uses ${word}`);
-  }
+  const ctx = vm.createContext({});
+  vm.runInContext(`
+    for (const name of ["document", "window", "localStorage", "location", "navigator"])
+      Object.defineProperty(globalThis, name, { get() { throw new Error(name + " touched"); } });
+    Math.random = () => { throw new Error("Math.random touched"); };
+    Date = new Proxy(Date, { get() { throw new Error("Date touched"); }, construct() { throw new Error("Date touched"); } });
+    var self = globalThis;`, ctx);
+  vm.runInContext(src, ctx);
+  const run = (api) => {
+    const x = api.example96();
+    const swept = api.example96();
+    for (const m of ["female", "male"]) Object.assign(swept[m], { havD: 0.6, Ktru: 1.0, Ktry: 0.9 });
+    return JSON.stringify([api.solve(x), api.sweep(swept, 10), api.selfTests()]);
+  };
+  const first = run(ctx.LugJoint);
+  assert.equal(run(ctx.LugJoint), first);
+  assert.equal(run(L), first);
 });
 
 test("built page is self-contained and registers its WebMCP tools", async () => {
