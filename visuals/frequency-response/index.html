@@ -923,7 +923,7 @@ function factorArg(loop, s, r) {
   const d = csub(s, r);
   if (loop.domain !== "z") return carg(d);
   if (cabs(r) < 1) return carg(cmul(d, cx(0, -1))) + Math.PI / 2;
-  return carg(cmul(d, cx(-r.re, r.im))) + carg(cx(-r.re, -r.im));
+  return carg(cmul(d, cx(-r.re, r.im))) + carg(cx(-r.re, 0 - r.im));
 }
 function evalLoop(loop, w) {
   const s = loop.domain === "z" ? cpolar(1, w * loop.Ts) : cx(0, w);

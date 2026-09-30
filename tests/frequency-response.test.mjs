@@ -319,6 +319,22 @@ test("repeated poles: discretised num/den match G(s(z)) exactly and the phase ha
   }
 });
 
+test("discrete phase keeps the atan2 branch for real roots on or outside the unit circle", () => {
+  const phase = (x, w) => F.responseAt(x, w).phaseDeg;
+  const integ = inZ({ form: "tf", num: [Ts], den: [1, -1] });
+  close(phase(integ, 0.01), -90.029, 1e-3, "Ts/(z − 1) near DC");
+  close(phase(integ, Math.PI / Ts), -180, 1e-9, "Ts/(z − 1) at π/Ts");
+  assert.equal(F.analyze(integ).margins.phaseCrossovers[0].phaseDeg, -180);
+  close(phase(inZ({ form: "tf", num: [Ts], den: [1, -1.5] }), 3), -151.517, 1e-3, "Ts/(z − 1.5)");
+  close(phase(inZ({ form: "tf", num: [1, -1.5], den: [1, -0.5] }), 3), 118.533, 1e-3, "(z − 1.5)/(z − 0.5)");
+  for (const [method, at3] of [["zoh", -226.470], ["tustin", -218.203], ["forward", -240.260], ["backward", -195.701]]) {
+    const x = fromS({ form: "tf", num: [1], den: [1, 3, 2, 0] }, method);
+    assert.ok(phase(x, 0.01) < -90 && phase(x, 0.01) > -91, `${method} near DC: ${phase(x, 0.01)}`);
+    close(phase(x, 3), at3, 1e-3, `${method} at 3 rad/s`);
+    assert.equal(F.analyze(x).margins.phaseCrossovers[0].phaseDeg, -180, `${method} crossover phase`);
+  }
+});
+
 test("discrete phase stays continuous past the level of a complex pole inside the unit circle", () => {
   const rows = F.curves(fromS(plant2, "zoh")), r = F.analyze(fromS(plant2, "zoh"));
   for (let i = 1; i < rows.length; i++) assert.ok(Math.abs(rows[i].phaseDeg - rows[i - 1].phaseDeg) < 90, `jump at ${rows[i].w}`);
