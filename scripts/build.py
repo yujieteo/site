@@ -241,9 +241,6 @@ def download_cache():
     It lives outside the repository so that site/ rebuilds, other checkouts and
     scripts/site_diff.py's rebuild of the live commit reuse one fetch.
     """
-    configured = os.environ.get("SITE_DOWNLOAD_CACHE")
-    if configured:
-        return Path(configured).expanduser().resolve()
     return Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache") / "teoyujie-site" / "downloads"
 
 
