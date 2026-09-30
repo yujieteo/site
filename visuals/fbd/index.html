@@ -529,7 +529,7 @@ function renderScene(doc, o) {
   const out = [];
   const ext = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
   const grow = (x, y, r = 0) => { ext.x0 = Math.min(ext.x0, x - r); ext.y0 = Math.min(ext.y0, y - r); ext.x1 = Math.max(ext.x1, x + r); ext.y1 = Math.max(ext.y1, y + r); };
-  const labels = [];
+  const labels = [], blocks = [];
   const ctx = {
     doc, o, a, pal, live, sel, out, grow, labels,
     map: (x, y) => o.map(x, y),
@@ -560,9 +560,14 @@ function renderScene(doc, o) {
     hit(d) { if (live) out.push(`<path class="hit" d="${d}" style="stroke-width:44;stroke-linecap:round;stroke-linejoin:round"/>`); },
     halo(d, w) { if (live) out.push(`<path class="sel-halo" d="${d}" style="stroke-width:${n2(w)};stroke-linecap:round;stroke-linejoin:round"/>`); },
     label(req) { labels.push(req); },
+    // Keep-out box for other items' labels (simple collision avoidance).
+    block(pts, owner, pad = 3 * a) {
+      const xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]);
+      blocks.push({ x0: Math.min(...xs) - pad, x1: Math.max(...xs) + pad, y0: Math.min(...ys) - pad, y1: Math.max(...ys) + pad, owner });
+    },
   };
   for (const r of RENDER) r(ctx);
-  placeLabels(ctx);
+  placeLabels(ctx, blocks);
   return { svg: out.join(""), ext };
 }
 function textWidth(str, size) { return Math.max(1, plainLabel(str).length) * size * 0.58; }
@@ -576,10 +581,11 @@ const pathOf = (pts, closed) => "M" + pts.map((p) => `${n2(p[0])} ${n2(p[1])}`).
 // Labels: automatic placement tries the preferred side then the compass
 // points, avoiding labels already placed; a dragged label keeps its offset
 // (in annotation px) and a thin leader line back to its anchor.
-function placeLabels(ctx) {
+function placeLabels(ctx, blocks) {
   const { labels, a, live, out } = ctx;
   const boxes = [];
-  const overlaps = (b) => boxes.some((c) => b.x0 < c.x1 && b.x1 > c.x0 && b.y0 < c.y1 && b.y1 > c.y0);
+  const hits = (b, c) => b.x0 < c.x1 && b.x1 > c.x0 && b.y0 < c.y1 && b.y1 > c.y0;
+  const overlaps = (b, owner) => boxes.some((c) => hits(b, c)) || blocks.some((c) => hits(b, c));
   for (const L of labels) {
     const size = 13 * a, w = textWidth(L.text, size) + 4 * a, h = size * 1.3;
     let cx, cy;
@@ -587,13 +593,13 @@ function placeLabels(ctx) {
     else {
       const dirs = [L.prefer ?? [0, -1], [0, -1], [1, 0], [0, 1], [-1, 0], [0.7, -0.7], [0.7, 0.7], [-0.7, 0.7], [-0.7, -0.7]];
       let pick = null;
-      for (const gap of [8 * a, 22 * a]) {
+      for (const gap of [6 * a, 18 * a, 34 * a]) {
         for (const d0 of dirs) {
           const d = unit(d0);
           const reach = gap + Math.abs(d[0]) * w / 2 + Math.abs(d[1]) * h / 2;
           const c = [L.at[0] + d[0] * reach, L.at[1] + d[1] * reach];
           const b = { x0: c[0] - w / 2, x1: c[0] + w / 2, y0: c[1] - h / 2, y1: c[1] + h / 2 };
-          if (!overlaps(b)) { pick = c; break; }
+          if (!overlaps(b, L.id.split("#")[0])) { pick = c; break; }
         }
         if (pick) break;
       }
@@ -602,7 +608,7 @@ function placeLabels(ctx) {
     }
     const box = { x0: cx - w / 2, x1: cx + w / 2, y0: cy - h / 2, y1: cy + h / 2 };
     boxes.push(box);
-    out.push(live ? `<g data-id="${escHtml(L.id)}" data-label="1" data-kind="label">` : "<g>");
+    out.push(live ? `<g data-id="${escHtml(L.id)}" data-label="1" data-kind="label" data-ax="${n2(L.at[0])}" data-ay="${n2(L.at[1])}" data-cx="${n2(cx)}" data-cy="${n2(cy)}">` : "<g>");
     if (L.offset) {
       const ex = Math.max(box.x0, Math.min(L.at[0], box.x1)), ey = Math.max(box.y0, Math.min(L.at[1], box.y1));
       if (Math.hypot(ex - L.at[0], ey - L.at[1]) > 3 * a) ctx.line(L.at, [ex, ey], L.col, 0.8 * a);
@@ -733,6 +739,326 @@ root.FBD = {
   vec: { sub, len, unit, along, screenDir, pathOf, n2 },
 };
 })(typeof window !== "undefined" ? window : globalThis);
+</script>
+
+<script id="fbd-loads" data-core>
+/* Loads and supports: point forces, moments, distributed loads, self-weight
+   and reactions (a drawing style, not a separate type); pin, roller and
+   fixed supports. Every field except the direction is optional. */
+(function (F) {
+"use strict";
+const { sub, len, unit, along, screenDir, pathOf, n2 } = F.vec;
+const LOAD_KINDS = ["force", "moment", "distributed", "weight"];
+const KEYS = {
+  force: ["id", "kind", "style", "label", "at", "magnitude", "unit", "dir", "dirRef", "plane", "anchor", "input", "show", "labelOffset"],
+  moment: ["id", "kind", "style", "label", "at", "magnitude", "unit", "sense", "axis", "dir", "dirRef", "show", "labelOffset"],
+  distributed: ["id", "kind", "style", "label", "body", "edge", "s1", "s2", "w1", "w2", "h1", "h2", "unit", "dirMode", "flip", "show", "labelOffset"],
+};
+KEYS.weight = KEYS.force;
+const QTY = { force: "force", weight: "force", moment: "moment", distributed: "distributed" };
+
+function normShow(c, v, p) {
+  const s = v === undefined ? {} : c.obj(v, p, ["label", "magnitude", "angle", "units"]);
+  return { label: c.bool(s.label, `${p}.label`, true), magnitude: c.bool(s.magnitude, `${p}.magnitude`, true), angle: c.bool(s.angle, `${p}.angle`, false), units: c.bool(s.units, `${p}.units`, true) };
+}
+function normOffset(c, v, p) {
+  if (v === undefined || v === null) return null;
+  if (!Array.isArray(v) || v.length !== 2) { c.err(p, "expected [dx, dy] or null"); return null; }
+  return [c.num(v[0], `${p}[0]`), c.num(v[1], `${p}[1]`)];
+}
+function normInput(c, v, p) {
+  const s = v === undefined ? {} : c.obj(v, p, ["mode", "slope", "toward"]);
+  let slope = null, toward = null;
+  if (s.slope !== undefined && s.slope !== null) {
+    if (!Array.isArray(s.slope) || s.slope.length !== 2) c.err(`${p}.slope`, "expected [run, rise] or null");
+    else slope = [c.num(s.slope[0], `${p}.slope[0]`), c.num(s.slope[1], `${p}.slope[1]`)];
+  }
+  if (s.toward !== undefined && s.toward !== null) { const t = c.obj(s.toward, `${p}.toward`, ["x", "y"]); toward = { x: c.num(t.x, `${p}.toward.x`), y: c.num(t.y, `${p}.toward.y`) }; }
+  return { mode: c.oneOf(s.mode, `${p}.mode`, ["polar", "components", "slope", "toward"], "polar"), slope, toward };
+}
+function unitOf(c, v, p, kind) {
+  if (v === undefined || v === null) return null;
+  const all = Object.keys(F.UNITS[QTY[kind]]);
+  return c.oneOf(v, p, all);
+}
+F.NORM.load = (c, v, p) => {
+  if (v === null || typeof v !== "object" || Array.isArray(v)) { c.err(p, "expected an object"); return { id: "", kind: "force" }; }
+  const kind = c.oneOf(v.kind, `${p}.kind`, LOAD_KINDS);
+  const l = c.obj(v, p, KEYS[kind]);
+  const base = { id: c.str(l.id, `${p}.id`, undefined, { nonEmpty: true }), kind, style: c.oneOf(l.style, `${p}.style`, ["applied", "reaction"], "applied"), label: c.str(l.label, `${p}.label`, null, { nullable: true }) };
+  if (kind === "distributed") {
+    return { ...base, body: c.str(l.body, `${p}.body`), edge: c.num(l.edge, `${p}.edge`, 0, { int: true, min: 0 }), s1: c.num(l.s1, `${p}.s1`), s2: c.num(l.s2, `${p}.s2`),
+      w1: c.num(l.w1, `${p}.w1`, null, { nullable: true, min: 0 }), w2: c.num(l.w2, `${p}.w2`, null, { nullable: true, min: 0 }),
+      h1: c.num(l.h1, `${p}.h1`, 1, { min: 0 }), h2: c.num(l.h2, `${p}.h2`, 1, { min: 0 }), unit: unitOf(c, l.unit, `${p}.unit`, kind),
+      dirMode: c.oneOf(l.dirMode, `${p}.dirMode`, ["perpendicular", "vertical"], "perpendicular"), flip: c.bool(l.flip, `${p}.flip`, false),
+      show: normShow(c, l.show, `${p}.show`), labelOffset: normOffset(c, l.labelOffset, `${p}.labelOffset`) };
+  }
+  const common = { at: F.normAt(c, l.at, `${p}.at`), magnitude: c.num(l.magnitude, `${p}.magnitude`, null, { nullable: true, min: 0 }), unit: unitOf(c, l.unit, `${p}.unit`, kind) };
+  if (kind === "moment") {
+    return { ...base, ...common, sense: c.oneOf(l.sense, `${p}.sense`, ["ccw", "cw"], "ccw"), axis: c.oneOf(l.axis, `${p}.axis`, ["normal", "inplane"], "normal"),
+      dir: c.num(l.dir, `${p}.dir`, 0), dirRef: c.oneOf(l.dirRef, `${p}.dirRef`, ["global", "member"], "global"),
+      show: normShow(c, l.show, `${p}.show`), labelOffset: normOffset(c, l.labelOffset, `${p}.labelOffset`) };
+  }
+  return { ...base, ...common, dir: c.num(l.dir, `${p}.dir`, 270), dirRef: c.oneOf(l.dirRef, `${p}.dirRef`, ["global", "member"], "global"),
+    plane: c.oneOf(l.plane, `${p}.plane`, ["in", "out", "into"], "in"), anchor: c.oneOf(l.anchor, `${p}.anchor`, ["head", "tail"], "head"),
+    input: normInput(c, l.input, `${p}.input`), show: normShow(c, l.show, `${p}.show`), labelOffset: normOffset(c, l.labelOffset, `${p}.labelOffset`) };
+};
+F.NORM.support = (c, v, p) => {
+  const s = c.obj(v, p, ["id", "kind", "at", "angle", "label", "labelOffset"]);
+  return { id: c.str(s.id, `${p}.id`, undefined, { nonEmpty: true }), kind: c.oneOf(s.kind, `${p}.kind`, ["pin", "roller", "fixed"]), at: F.normAt(c, s.at, `${p}.at`),
+    angle: c.num(s.angle, `${p}.angle`, 270), label: c.str(s.label, `${p}.label`, null, { nullable: true }), labelOffset: normOffset(c, s.labelOffset, `${p}.labelOffset`) };
+};
+F.REFS.push((doc, c) => {
+  doc.geometry.loads.forEach((l, i) => {
+    const p = `geometry.loads[${i}]`;
+    if (l.kind === "distributed") {
+      const b = F.body(doc, l.body);
+      if (!b) c.err(`${p}.body`, `unknown body "${l.body}"`);
+      else if (l.edge >= F.edgeCount(b)) c.err(`${p}.edge`, `body "${b.id}" has only ${F.edgeCount(b)} edge(s)`);
+      return;
+    }
+    F.checkAt(doc, c, l.at, `${p}.at`);
+    if (l.dirRef === "member" && !(l.at && "body" in l.at)) c.err(`${p}.dirRef`, `"member" needs the load attached to a body`);
+  });
+  doc.geometry.supports.forEach((s, i) => F.checkAt(doc, c, s.at, `geometry.supports[${i}].at`));
+});
+
+/* ---------- directions and text ---------- */
+// World direction (degrees CCW from +x) of a force or in-plane moment.
+function loadDir(doc, l) {
+  if (l.dirRef === "member" && l.at && "body" in l.at) {
+    const r = F.resolveAt(doc, l.at);
+    if (r && r.angle !== null) return F.wrap360(r.angle + l.dir);
+  }
+  return F.wrap360(l.dir);
+}
+// Angle shown to people: from the triad x-axis, or from the member.
+function displayAngle(doc, l) {
+  if (l.dirRef === "member") return F.clean(F.wrap180(doc.view.triad.ySense * l.dir));
+  return F.toTriad(doc.view, loadDir(doc, l));
+}
+function unitFor(doc, l) { return l.unit ?? doc.view.units[QTY[l.kind]]; }
+function components(doc, l) {
+  if (l.magnitude === null) return null;
+  const a = F.rad(F.toTriad(doc.view, loadDir(doc, l)));
+  return [l.magnitude * Math.cos(a), l.magnitude * Math.sin(a)];
+}
+function magText(doc, l, v) {
+  const u = unitFor(doc, l);
+  return F.formatQuantity(v, QTY[l.kind], u, l.show.units);
+}
+function angleText(doc, l) {
+  if (l.kind === "distributed") return l.dirMode === "vertical" ? "vertical" : "⊥ member";
+  if (l.kind === "moment" && l.axis === "normal") return l.sense === "ccw" ? "↺" : "↻";
+  if ((l.kind === "force" || l.kind === "weight") && l.plane !== "in") return l.plane === "out" ? "out of page" : "into page";
+  const mode = l.input ? l.input.mode : "polar";
+  if (mode === "components" && l.magnitude !== null) {
+    const [x, y] = components(doc, l), u = unitFor(doc, l), f = F.UNITS[QTY[l.kind]][u];
+    return `(${F.fmt(x / f, 4)}, ${F.fmt(y / f, 4)})${l.show.units ? " " + u : ""}`;
+  }
+  if (mode === "slope" && l.input.slope) return `slope ${F.fmt(l.input.slope[0])}:${F.fmt(l.input.slope[1])}`;
+  return `∠${F.fmt(displayAngle(doc, l), 4)}°${l.dirRef === "member" ? " to member" : ""}`;
+}
+function loadText(doc, l) {
+  const parts = [];
+  const lab = l.show.label && l.label ? l.label : null;
+  let mag = null;
+  if (l.show.magnitude) {
+    if (l.kind === "distributed") {
+      if (l.w1 !== null && l.w2 !== null) mag = l.w1 === l.w2 ? magText(doc, l, l.w1) : `${F.formatQuantity(l.w1, "distributed", unitFor(doc, l), false)}–${magText(doc, l, l.w2)}`;
+      else if (l.w1 !== null || l.w2 !== null) mag = magText(doc, l, l.w1 ?? l.w2);
+    } else if (l.magnitude !== null) mag = magText(doc, l, l.magnitude);
+  }
+  if (lab && mag) parts.push(`${lab} = ${mag}`); else if (lab || mag) parts.push(lab || mag);
+  if (l.show.angle) parts.push(angleText(doc, l));
+  return parts.join(" ");
+}
+
+/* ---------- drawing ---------- */
+// Clearance from a beam's centreline to its surface along direction u (px).
+function beamGap(ctx, at, u) {
+  if (!at || !("body" in at) || at.centroid) return 0;
+  const b = F.body(ctx.doc, at.body);
+  if (!b || b.type !== "beam") return b && b.type === "rod" ? 3 * ctx.a : 0;
+  const half = Math.max(b.depth * ctx.o.k, 2) / 2;
+  const [p, q] = F.edge(ctx.doc, b, 0), m = unit(sub(ctx.map(q.x, q.y), ctx.map(p.x, p.y)));
+  const s = Math.abs(u[0] * m[1] - u[1] * m[0]);
+  return Math.min(half / Math.max(s, 0.25), half * 4);
+}
+function colourOf(pal, l, base) { return l.style === "reaction" ? pal.reaction : pal[base]; }
+function shaft(ctx, p, q, col, reaction, w = 1.8) {
+  ctx.line(p, q, col, w * ctx.a, reaction ? `stroke-dasharray="${n2(7 * ctx.a)} ${n2(3.5 * ctx.a)}"` : "");
+}
+const ARROW = 56;
+function drawForce(ctx, l) {
+  const { doc, a, pal } = ctx;
+  const r = F.resolveAt(doc, l.at);
+  if (!r) return;
+  const P = ctx.map(r.x, r.y), col = colourOf(pal, l, "force"), rx = l.style === "reaction";
+  ctx.open(l.id, "load");
+  let anchor = P, prefer;
+  if (l.plane !== "in") {
+    const R = 9 * a;
+    if (ctx.sel.has(l.id)) ctx.halo(`M${n2(P[0] - R)} ${n2(P[1])}a${n2(R)} ${n2(R)} 0 1 0 ${n2(2 * R)} 0a${n2(R)} ${n2(R)} 0 1 0 ${n2(-2 * R)} 0`, 10);
+    ctx.circle(P, R, `fill:${pal.paper};stroke:${col};stroke-width:${n2(1.6 * a)}${rx ? `;stroke-dasharray:${n2(4 * a)} ${n2(2.5 * a)}` : ""}`);
+    if (l.plane === "out") ctx.circle(P, 2.6 * a, `fill:${col};stroke:none`);
+    else { const d = R * 0.62; ctx.line([P[0] - d, P[1] - d], [P[0] + d, P[1] + d], col, 1.6 * a); ctx.line([P[0] - d, P[1] + d], [P[0] + d, P[1] - d], col, 1.6 * a); }
+    ctx.hit(`M${n2(P[0])} ${n2(P[1])}l0.01 0`);
+    ctx.block([[P[0] - R, P[1] - R], [P[0] + R, P[1] + R]], l.id);
+    prefer = [0.7, -0.7];
+  } else {
+    const u = screenDir(loadDir(doc, l)), gap = beamGap(ctx, l.at, u);
+    let head, t;
+    if (l.anchor === "head") { head = along(P, u, -gap); t = along(head, u, -ARROW * a); }
+    else { t = along(P, u, gap); head = along(t, u, ARROW * a); }
+    if (ctx.sel.has(l.id)) ctx.halo(pathOf([t, head]), 12);
+    shaft(ctx, t, along(head, u, -8 * a), col, rx);
+    ctx.head(head, u, col, 11 * a, 4.2 * a, rx);
+    ctx.hit(pathOf([t, head]));
+    ctx.block([t, head], l.id);
+    anchor = l.anchor === "head" ? t : head;
+    prefer = l.anchor === "head" ? [-u[0], -u[1]] : u;
+  }
+  labelFor(ctx, l, anchor, prefer, col);
+  ctx.close();
+}
+function labelFor(ctx, l, at, prefer, col) {
+  const text = loadText(ctx.doc, l);
+  if (text) ctx.label({ id: `${l.id}#label`, text, at, prefer, col, offset: l.labelOffset });
+}
+function arcPts(C, r, a0, a1, steps = 28) {
+  const pts = [];
+  for (let i = 0; i <= steps; i++) { const t = F.rad(a0 + (a1 - a0) * i / steps); pts.push([C[0] + r * Math.cos(t), C[1] - r * Math.sin(t)]); }
+  return pts;
+}
+function drawMoment(ctx, l) {
+  const { doc, a, pal } = ctx;
+  const r = F.resolveAt(doc, l.at);
+  if (!r) return;
+  const P = ctx.map(r.x, r.y), col = colourOf(pal, l, "moment"), rx = l.style === "reaction";
+  ctx.open(l.id, "load");
+  if (l.axis === "inplane") {
+    // Moment vector by the right-hand rule: a double-headed arrow.
+    const u = screenDir(loadDir(doc, l)), tip = along(P, u, ARROW * a);
+    if (ctx.sel.has(l.id)) ctx.halo(pathOf([P, tip]), 12);
+    shaft(ctx, P, along(tip, u, -16 * a), col, rx);
+    ctx.head(tip, u, col, 10 * a, 4 * a, rx);
+    ctx.head(along(tip, u, -8 * a), u, col, 10 * a, 4 * a, rx);
+    ctx.hit(pathOf([P, tip]));
+    ctx.block([P, tip], l.id);
+    labelFor(ctx, l, tip, u, col);
+  } else {
+    const R = 20 * a, ccw = l.sense === "ccw";
+    const pts = ccw ? arcPts(P, R, -60, 200) : arcPts(P, R, 240, -20);
+    const d = pathOf(pts);
+    if (ctx.sel.has(l.id)) ctx.halo(d, 12);
+    ctx.path(pathOf(pts.slice(0, -2)), `fill:none;stroke:${col};stroke-width:${n2(1.8 * a)}${rx ? `;stroke-dasharray:${n2(6 * a)} ${n2(3 * a)}` : ""}`, pts);
+    const e = pts[pts.length - 1], e0 = pts[pts.length - 3];
+    ctx.head(e, unit(sub(e, e0)), col, 10 * a, 4.2 * a, rx);
+    ctx.circle(P, 2.2 * a, `fill:${col};stroke:none`);
+    ctx.hit(d);
+    ctx.block(pts, l.id);
+    labelFor(ctx, l, [P[0], P[1] - R], [0.35, -1], col);
+  }
+  ctx.close();
+}
+// Distributed load geometry in screen px: arrow feet on the member, tails
+// out on the load side, heights from the intensities (or the schematic
+// handles when the values are blank).
+function distGeom(ctx, l) {
+  const { doc, a } = ctx;
+  const b = F.body(doc, l.body);
+  if (!b) return null;
+  const [p, q] = F.edge(doc, b, l.edge);
+  const L = Math.hypot(q.x - p.x, q.y - p.y) || 1, ux = (q.x - p.x) / L, uy = (q.y - p.y) / L;
+  const at = (s) => ctx.map(p.x + ux * s, p.y + uy * s);
+  let wv = l.dirMode === "vertical" ? [0, -1] : [uy, -ux]; // world direction the arrows point
+  if (l.flip) wv = [-wv[0], -wv[1]];
+  const ds = [wv[0], -wv[1]];
+  const gap = beamGap(ctx, { body: b.id, edge: l.edge, s: 0, n: 0 }, ds);
+  const [h1, h2] = distHeights(l);
+  const H = 36 * a;
+  const A = along(at(l.s1), ds, -gap), B = along(at(l.s2), ds, -gap);
+  return { A, B, ds, H, h1, h2, tailA: along(A, ds, -H * h1), tailB: along(B, ds, -H * h2) };
+}
+function distHeights(l) {
+  if (l.w1 !== null && l.w2 !== null) { const m = Math.max(l.w1, l.w2); return m > 0 ? [l.w1 / m, l.w2 / m] : [1, 1]; }
+  return [Math.min(l.h1, 2), Math.min(l.h2, 2)];
+}
+function drawDistributed(ctx, l) {
+  const { a, pal } = ctx;
+  const g = distGeom(ctx, l);
+  if (!g) return;
+  const col = colourOf(pal, l, "dist"), rx = l.style === "reaction";
+  ctx.open(l.id, "load");
+  const span = len(sub(g.B, g.A)), n = Math.max(2, Math.round(span / (24 * a)) + 1);
+  const outline = [g.A, g.tailA, g.tailB, g.B];
+  if (ctx.sel.has(l.id)) ctx.halo(pathOf(outline, true), 8);
+  for (let i = 0; i < n; i++) {
+    const t = i / (n - 1), foot = [g.A[0] + (g.B[0] - g.A[0]) * t, g.A[1] + (g.B[1] - g.A[1]) * t], h = g.H * (g.h1 + (g.h2 - g.h1) * t);
+    if (h < 9 * a) continue;
+    shaft(ctx, along(foot, g.ds, -h), along(foot, g.ds, -6 * a), col, rx, 1.3);
+    ctx.head(foot, g.ds, col, 8 * a, 3.2 * a, rx);
+  }
+  ctx.line(g.tailA, g.tailB, col, 1.6 * a);
+  if (ctx.live) ctx.out.push(`<path class="hitf" d="${pathOf(outline, true)}"/>`);
+  ctx.hit(pathOf([g.tailA, g.tailB]));
+  ctx.block(outline, l.id);
+  const mid = [(g.tailA[0] + g.tailB[0]) / 2, (g.tailA[1] + g.tailB[1]) / 2];
+  labelFor(ctx, l, mid, [-g.ds[0], -g.ds[1]], col);
+  ctx.close();
+}
+function drawSupport(ctx, s) {
+  const { doc, a, pal } = ctx;
+  const r = F.resolveAt(doc, s.at);
+  if (!r) return;
+  const d = screenDir(s.angle), t = [-d[1], d[0]], col = pal.support;
+  let P = ctx.map(r.x, r.y);
+  const on = supportBody(doc, s);
+  let half = 0;
+  if (on && on.type === "beam") half = Math.max(on.depth * ctx.o.k, 2) / 2;
+  ctx.open(s.id, "support");
+  const st = `fill:${pal.paper};stroke:${col};stroke-width:${n2(1.5 * a)};stroke-linejoin:round`;
+  let ground, gw;
+  if (s.kind === "fixed") {
+    gw = Math.max(16 * a, half + 8 * a);
+    ground = P;
+  } else {
+    P = along(P, d, half);
+    const hgt = s.kind === "pin" ? 16 * a : 12 * a, base = along(P, d, hgt);
+    ctx.poly([P, along(base, t, 10 * a), along(base, t, -10 * a)], st);
+    ground = base; gw = 15 * a;
+    if (s.kind === "roller") {
+      for (const k of [-5.5, 5.5]) ctx.circle(along(along(base, d, 3.2 * a), t, k * a), 3.2 * a, st);
+      ground = along(base, d, 6.4 * a);
+    }
+    ctx.circle(P, 3 * a, st);
+  }
+  const g0 = along(ground, t, -gw), g1 = along(ground, t, gw);
+  ctx.line(g0, g1, col, 1.8 * a);
+  const nH = Math.max(4, Math.round(gw * 2 / (6 * a)));
+  for (let i = 0; i <= nH; i++) { const p = along(g0, t, (2 * gw) * i / nH); ctx.line(p, along(along(p, d, 7 * a), t, -6 * a), col, 1 * a); }
+  if (ctx.sel.has(s.id)) ctx.halo(pathOf([P, along(ground, d, 6 * a)]), 36 * a);
+  ctx.hit(pathOf([P, along(ground, d, 4 * a)]));
+  ctx.block([along(g0, d, 7 * a), along(g1, d, 7 * a), P], s.id);
+  if (s.label) ctx.label({ id: `${s.id}#label`, text: s.label, at: along(ground, d, 8 * a), prefer: d, col, offset: s.labelOffset });
+  ctx.close();
+}
+function supportBody(doc, s) {
+  if ("body" in s.at) return F.body(doc, s.at.body);
+  if ("joint" in s.at) return doc.geometry.bodies.find((b) => b.joints.includes(s.at.joint) && b.type === "beam") || null;
+  return null;
+}
+F.RENDER.splice(F.RENDER.length - 1, 0, (ctx) => {
+  for (const s of ctx.doc.geometry.supports) drawSupport(ctx, s);
+  const g = ctx.doc.geometry.loads;
+  for (const l of g) if (l.kind === "distributed") drawDistributed(ctx, l);
+  for (const l of g) if (l.kind === "force" || l.kind === "weight") drawForce(ctx, l);
+  for (const l of g) if (l.kind === "moment") drawMoment(ctx, l);
+});
+
+Object.assign(F, { beamGap, LOAD_KINDS, QTY, loadDir, displayAngle, components, loadText, angleText, unitFor, distGeom, distHeights, supportBody, ARROW });
+})(typeof window !== "undefined" ? window.FBD : globalThis.FBD);
 </script>
 
 <script id="fbd-ui" data-ui>
@@ -1252,6 +1578,7 @@ function panel() {
     const f = findAny(sel[0]);
     for (const p of PANELS) { const h = f && p(f); if (h) { html = h; break; } }
   }
+  if (TOOLS[tool] && TOOLS[tool].panel) html = TOOLS[tool].panel() + (sel.length ? html : "");
   if (draft && draft.pts) html = `<h2>Plate</h2><p>${draft.pts.length} vertices. Tap the first vertex or Finish to close.</p><div class="btns">${button("poly.finish", "Finish plate", finishPolygon)}${button("poly.cancel", "Cancel", () => { draft = null; refresh(); })}</div>` + html;
   body_.innerHTML = html + `<div class="err" id="panel-err" role="alert"></div>`;
 }
@@ -1437,6 +1764,464 @@ function boot() {
 window.FBDBoot = boot;
 })();
 </script>
+<script id="fbd-loads-ui" data-ui>
+/* Loads and supports: tools, handles, attachment and the properties panel. */
+(function () {
+"use strict";
+const F = window.FBD, A = window.FBDApp;
+const { sub, len, unit, along, screenDir, n2 } = F.vec;
+const opts = { style: "applied", support: "pin" };
+
+/* ---------- attachment ---------- */
+// Where a tap lands: a joint, a point along a member (or plate edge), the
+// inside of a plate, or free space. Lines take no loads.
+function attach(w, e) {
+  const doc = A.doc, k = A.cam.k, R = (A.isTouch(e) ? 22 : 12) / k, snap = doc.view.snap && !(e && e.altKey);
+  let best = null;
+  for (const j of doc.geometry.joints) { const d = Math.hypot(j.x - w.x, j.y - w.y); if (d < R && (!best || d < best.d)) best = { d, j }; }
+  if (best) return { at: { joint: best.j.id }, pos: { x: best.j.x, y: best.j.y } };
+  let near = null;
+  for (const b of doc.geometry.bodies) {
+    if (b.type === "line") continue;
+    const n = F.nearestOnBody(doc, b, w.x, w.y);
+    if (!n) continue;
+    const tol = R + (b.type === "beam" ? b.depth / 2 : 0);
+    if (n.dist < tol && (!near || n.dist < near.dist)) near = n;
+  }
+  if (near) {
+    let s = near.s;
+    if (snap) {
+      const g = F.gridStep(k);
+      s = Math.min(near.L, Math.max(0, Math.round(s / g) * g));
+      if (Math.abs(near.s - near.L / 2) < R) s = near.L / 2;
+    }
+    const at = { body: near.body, edge: near.edge, s: F.clean(s), n: 0 };
+    return { at, pos: F.resolveAt(doc, at) };
+  }
+  const p = A.snapPoint(w, e);
+  for (const b of doc.geometry.bodies) {
+    if (b.type !== "polygon" || !F.pointInPolygon(doc, b, p.x, p.y)) continue;
+    const [p0, q0] = F.edge(doc, b, 0), L = Math.hypot(q0.x - p0.x, q0.y - p0.y) || 1, ux = (q0.x - p0.x) / L, uy = (q0.y - p0.y) / L;
+    const at = { body: b.id, edge: 0, s: F.clean((p.x - p0.x) * ux + (p.y - p0.y) * uy), n: F.clean(-(p.x - p0.x) * uy + (p.y - p0.y) * ux) };
+    return { at, pos: F.resolveAt(doc, at) };
+  }
+  return { at: { x: p.x, y: p.y }, pos: { x: p.x, y: p.y } };
+}
+function snapDir(world, e) { const v = A.doc.view; return F.fromTriad(v, A.snapAngle(F.toTriad(v, world), e)); }
+const aim = (from, to) => F.wrap360(F.deg(Math.atan2(to.y - from.y, to.x - from.x)));
+
+function newForce(kind, at, dir) {
+  return { id: F.nextId(A.doc, "f"), kind, style: opts.style, label: null, at, magnitude: null, unit: null, dir: F.clean(dir), dirRef: "global", plane: "in", anchor: "head",
+    input: { mode: "polar", slope: null, toward: null }, show: { label: true, magnitude: true, angle: false, units: true }, labelOffset: null };
+}
+function newMoment(at) {
+  return { id: F.nextId(A.doc, "m"), kind: "moment", style: opts.style, label: null, at, magnitude: null, unit: null, sense: "ccw", axis: "normal", dir: 0, dirRef: "global",
+    show: { label: true, magnitude: true, angle: false, units: true }, labelOffset: null };
+}
+function supportAngle(kind, at) {
+  const doc = A.doc;
+  if ("joint" in at) {
+    const b = doc.geometry.bodies.find((x) => x.type !== "line" && x.type !== "polygon" && x.joints.includes(at.joint));
+    if (b) {
+      const other = F.joint(doc, b.joints.find((j) => j !== at.joint)), me = F.joint(doc, at.joint);
+      if (kind === "fixed") return aim(other, me);
+      return F.wrap360(F.edgeAngle(doc, b, 0) - 90 + (Math.cos(F.rad(F.edgeAngle(doc, b, 0))) < -1e-9 ? 180 : 0));
+    }
+  }
+  if ("body" in at && !at.centroid) {
+    const b = F.body(doc, at.body), a0 = F.edgeAngle(doc, b, at.edge || 0);
+    return kind === "fixed" ? F.wrap360(a0 + 180) : F.wrap360(a0 - 90 + (Math.cos(F.rad(a0)) < -1e-9 ? 180 : 0));
+  }
+  return 270;
+}
+const styleSeg = () => `<h3>Next ${opts.style === "reaction" ? "reaction" : "load"}</h3>` + A.seg("tool.style", [["applied", "Applied load"], ["reaction", "Reaction"]], opts.style, (v) => { opts.style = v; });
+
+/* ---------- tools ---------- */
+const ic = A.icon;
+function forceTool(name, label, icon, hint, kind) {
+  A.defineTool(name, {
+    label, icon: ic(icon), hint, panel: kind === "force" ? styleSeg : null,
+    down(e, w) {
+      const r = attach(w, e);
+      if (kind === "weight" && "body" in r.at) { const bid = r.at.body; r.at = { body: bid, centroid: true }; r.pos = F.resolveAt(A.doc, r.at); }
+      A.draft = { tool: name, at: r.at, pos: r.pos, dir: 270, sx: e.clientX, sy: e.clientY, moved: false };
+    },
+    move(e, w) {
+      const d = A.draft;
+      if (!d || d.tool !== name) return;
+      if (Math.hypot(e.clientX - d.sx, e.clientY - d.sy) > 10) { d.moved = true; d.dir = snapDir(aim(w, d.pos), e); }
+      A.schedule();
+    },
+    up() {
+      const d = A.draft;
+      A.draft = null;
+      if (!d || d.tool !== name) return;
+      A.mutate(() => {
+        const l = newForce(kind, d.at, d.dir);
+        if (kind === "weight") l.style = "applied";
+        A.doc.geometry.loads.push(l);
+        A.sel = [l.id];
+      });
+    },
+    cancel() { A.draft = null; },
+  });
+}
+forceTool("force", "Force", '<path d="M12 3v15"/><path d="M7 13l5 6 5-6"/>', "Tap a point or member; drag away from it to aim the arrow", "force");
+A.defineTool("moment", {
+  label: "Moment", icon: ic('<path d="M19 12a7 7 0 11-3-5.7"/><path d="M17 2v5h-5"/>'), hint: "Tap a point or member", panel: styleSeg,
+  down(e, w) { A.draft = { tool: "moment", ...attach(w, e) }; },
+  up() {
+    const d = A.draft; A.draft = null;
+    if (!d || d.tool !== "moment") return;
+    A.mutate(() => { const l = newMoment(d.at); A.doc.geometry.loads.push(l); A.sel = [l.id]; });
+  },
+  cancel() { A.draft = null; },
+});
+A.defineTool("distributed", {
+  label: "Distributed", icon: ic('<path d="M3 19h18"/><path d="M3 6h18"/><path d="M6 6v10M12 6v10M18 6v10"/><path d="M4.5 14L6 16l1.5-2M10.5 14l1.5 2 1.5-2M16.5 14l1.5 2 1.5-2"/>'), hint: "Tap a member for a load along its whole length, or drag along it",
+  panel: styleSeg,
+  down(e, w) {
+    const doc = A.doc, R = (A.isTouch(e) ? 22 : 12) / A.cam.k;
+    let near = null;
+    for (const b of doc.geometry.bodies) {
+      if (b.type === "line") continue;
+      const n = F.nearestOnBody(doc, b, w.x, w.y);
+      if (n && n.dist < R + (b.type === "beam" ? b.depth / 2 : 0) && (!near || n.dist < near.dist)) near = n;
+    }
+    if (!near) { A.toast("Start a distributed load on a member or plate edge"); return; }
+    const s = snapS(near.s, near.L, e);
+    A.draft = { tool: "distributed", body: near.body, edge: near.edge, L: near.L, s1: s, s2: s };
+  },
+  move(e, w) {
+    const d = A.draft;
+    if (!d || d.tool !== "distributed") return;
+    d.s2 = snapS(project(d.body, d.edge, w), d.L, e);
+    A.schedule();
+  },
+  up() {
+    const d = A.draft; A.draft = null;
+    if (!d || d.tool !== "distributed") return;
+    let s1 = Math.min(d.s1, d.s2), s2 = Math.max(d.s1, d.s2);
+    if (s2 - s1 < 1e-9) { s1 = 0; s2 = d.L; }
+    A.mutate(() => {
+      const l = { id: F.nextId(A.doc, "q"), kind: "distributed", style: opts.style, label: null, body: d.body, edge: d.edge, s1: F.clean(s1), s2: F.clean(s2), w1: null, w2: null, h1: 1, h2: 1, unit: null,
+        dirMode: "perpendicular", flip: false, show: { label: true, magnitude: true, angle: false, units: true }, labelOffset: null };
+      A.doc.geometry.loads.push(l); A.sel = [l.id];
+    });
+  },
+  cancel() { A.draft = null; },
+});
+function project(bid, e, w) {
+  const doc = A.doc, b = F.body(doc, bid), [p, q] = F.edge(doc, b, e), L = Math.hypot(q.x - p.x, q.y - p.y) || 1;
+  return ((w.x - p.x) * (q.x - p.x) + (w.y - p.y) * (q.y - p.y)) / L;
+}
+function snapS(s, L, e) {
+  s = Math.max(0, Math.min(L, s));
+  if (!A.doc.view.snap || (e && e.altKey)) return s;
+  const g = F.gridStep(A.cam.k);
+  const R = (A.isTouch(e) ? 22 : 12) / A.cam.k;
+  if (L - s < R) return L;
+  return Math.max(0, Math.min(L, Math.round(s / g) * g));
+}
+forceTool("weight", "Weight", '<rect x="7" y="3" width="10" height="7" rx="1"/><path d="M12 10v10"/><path d="M8.5 16.5L12 20l3.5-3.5"/>', "Tap a body for its self-weight at the centroid, or tap any point", "weight");
+A.defineTool("support", {
+  label: "Support", icon: ic('<path d="M12 5l-6 9h12z"/><path d="M4 18h16"/><path d="M6 18l-2 3M10 18l-2 3M14 18l-2 3M18 18l-2 3"/>'), hint: "Tap a joint or member end to place the support",
+  panel: () => `<h3>Next support</h3>` + A.seg("tool.support", [["pin", "Pin"], ["roller", "Roller"], ["fixed", "Fixed"]], opts.support, (v) => { opts.support = v; }),
+  down(e, w) { A.draft = { tool: "support", ...attach(w, e) }; },
+  up() {
+    const d = A.draft; A.draft = null;
+    if (!d || d.tool !== "support") return;
+    const at = d.at.centroid ? { x: d.pos.x, y: d.pos.y } : d.at;
+    A.mutate(() => {
+      const s = { id: F.nextId(A.doc, "s"), kind: opts.support, at, angle: F.clean(supportAngle(opts.support, at)), label: null, labelOffset: null };
+      A.doc.geometry.supports.push(s); A.sel = [s.id];
+    });
+  },
+  cancel() { A.draft = null; },
+});
+
+/* previews while placing */
+A.PREVIEWS.push(() => {
+  const d = A.draft;
+  if (!d || !d.tool) return "";
+  if (d.tool === "force" || d.tool === "weight") {
+    const P = A.w2s(d.pos.x, d.pos.y), u = screenDir(d.dir), t = along(P, u, -F.ARROW);
+    return `<line x1="${n2(t[0])}" y1="${n2(t[1])}" x2="${n2(P[0])}" y2="${n2(P[1])}" style="stroke:var(--sel);stroke-width:2;stroke-dasharray:5 3"/><circle cx="${n2(P[0])}" cy="${n2(P[1])}" r="4" style="fill:var(--sel)"/>` +
+      `<text x="${n2(t[0])}" y="${n2(t[1] - 10)}" text-anchor="middle" style="fill:var(--sel);font:12px var(--mono)">∠${F.fmt(F.toTriad(A.doc.view, d.dir), 4)}°</text>`;
+  }
+  if (d.tool === "distributed") {
+    const b = F.body(A.doc, d.body), [p, q] = F.edge(A.doc, b, d.edge), L = d.L || 1;
+    const at = (s) => A.w2s(p.x + (q.x - p.x) * s / L, p.y + (q.y - p.y) * s / L);
+    const a0 = at(d.s1), a1 = at(d.s2);
+    return `<line x1="${n2(a0[0])}" y1="${n2(a0[1])}" x2="${n2(a1[0])}" y2="${n2(a1[1])}" style="stroke:var(--sel);stroke-width:8;stroke-opacity:.5;stroke-linecap:round"/>`;
+  }
+  return "";
+});
+
+/* ---------- handles and drags ---------- */
+function forceGeom(l) {
+  const doc = A.doc, r = F.resolveAt(doc, l.at);
+  if (!r) return null;
+  const P = A.w2s(r.x, r.y), u = screenDir(F.loadDir(doc, l));
+  const ctx = { doc, o: { k: A.cam.k }, a: 1, map: A.w2s };
+  const gap = F.beamGap(ctx, l.at, u);
+  if (l.anchor === "head") { const head = along(P, u, -gap); return { P, u, free: along(head, u, -F.ARROW), head }; }
+  const t = along(P, u, gap); return { P, u, free: along(t, u, F.ARROW), head: along(t, u, F.ARROW) };
+}
+A.HANDLES.push((id, f) => {
+  if (f.kind !== "load") return "";
+  const l = f.e;
+  if ((l.kind === "force" || l.kind === "weight") && l.plane === "in") { const g = forceGeom(l); return g ? A.handleSvg(`tip:${id}`, g.free) : ""; }
+  if (l.kind === "moment" && l.axis === "inplane") { const r = F.resolveAt(A.doc, l.at); if (!r) return ""; const P = A.w2s(r.x, r.y); return A.handleSvg(`tip:${id}`, along(P, screenDir(F.loadDir(A.doc, l)), F.ARROW)); }
+  if (l.kind === "distributed") {
+    const g = F.distGeom({ doc: A.doc, o: { k: A.cam.k }, a: 1, map: A.w2s }, l);
+    if (!g) return "";
+    return A.handleSvg(`dist:${id}:s1`, g.A, "square") + A.handleSvg(`dist:${id}:s2`, g.B, "square") + A.handleSvg(`dist:${id}:h1`, g.tailA) + A.handleSvg(`dist:${id}:h2`, g.tailB);
+  }
+  return "";
+});
+function setWorldDir(l, world) {
+  if (l.dirRef === "member") { const r = F.resolveAt(A.doc, l.at); l.dir = F.clean(F.wrap360(world - (r && r.angle !== null ? r.angle : 0))); }
+  else l.dir = F.clean(F.wrap360(world));
+}
+A.DRAGS.tip = (key) => {
+  const l = A.findAny(key.split(":")[1]).e;
+  return {
+    move(e, w) {
+      const r = F.resolveAt(A.doc, l.at);
+      const world = l.kind === "moment" || l.anchor === "tail" ? aim(r, w) : aim(w, r);
+      setWorldDir(l, snapDir(world, e));
+      if (l.input) l.input.mode = "polar";
+    },
+  };
+};
+A.DRAGS.dist = (key) => {
+  const [, id, which] = key.split(":");
+  const l = A.findAny(id).e, b = F.body(A.doc, l.body), L = F.edgeLength(A.doc, b, l.edge);
+  const w0 = { w1: l.w1, w2: l.w2 }, maxW = Math.max(l.w1 ?? 0, l.w2 ?? 0);
+  return {
+    move(e, w) {
+      if (which === "s1" || which === "s2") { l[which] = F.clean(snapS(project(l.body, l.edge, w), L, e)); return; }
+      const g = F.distGeom({ doc: A.doc, o: { k: A.cam.k }, a: 1, map: A.w2s }, l);
+      const foot = which === "h1" ? g.A : g.B, p = A.w2s(w.x, w.y);
+      const h = Math.max(0, Math.min(2, -((p[0] - foot[0]) * g.ds[0] + (p[1] - foot[1]) * g.ds[1]) / g.H));
+      const key2 = which === "h1" ? "w1" : "w2";
+      if (w0.w1 !== null && w0.w2 !== null && maxW > 0) l[key2] = F.clean(Math.round(h * maxW * 1e6) / 1e6);
+      else l[which] = F.clean(Math.round(h * 100) / 100);
+    },
+    end() { if (l.s1 > l.s2) [l.s1, l.s2, l.h1, l.h2, l.w1, l.w2] = [l.s2, l.s1, l.h2, l.h1, l.w2, l.w1]; },
+  };
+};
+A.DRAGS.label = (key, w0) => {
+  const id = key.split("#")[0], f = A.findAny(id);
+  if (!f || !("labelOffset" in f.e)) return null;
+  const g = document.querySelector(`#scene [data-id="${CSS.escape(key)}"]`);
+  if (!g) return null;
+  const ax = +g.dataset.ax, ay = +g.dataset.ay, cx = +g.dataset.cx, cy = +g.dataset.cy;
+  const s0 = A.w2s(w0.x, w0.y);
+  return {
+    move(e, w) {
+      const s = A.w2s(w.x, w.y);
+      f.e.labelOffset = [Math.round((cx + s[0] - s0[0] - ax) * 10) / 10, Math.round((cy + s[1] - s0[1] - ay) * 10) / 10];
+    },
+  };
+};
+// Dragging one load, support or marker re-attaches it where it is dropped;
+// a distributed load slides along its member. Larger selections translate.
+const baseMove = A.DRAGS.move;
+A.DRAGS.move = (id, w0, e0) => {
+  const f = A.sel.length === 1 ? A.findAny(A.sel[0]) : null;
+  if (f && f.kind === "load" && f.e.kind === "distributed") {
+    const l = f.e, b = F.body(A.doc, l.body), L = F.edgeLength(A.doc, b, l.edge), s1 = l.s1, s2 = l.s2, p0 = project(l.body, l.edge, w0);
+    return { move(e, w) { let d = project(l.body, l.edge, w) - p0; d = Math.max(-s1, Math.min(L - s2, d)); if (A.doc.view.snap && !e.altKey) { const g = F.gridStep(A.cam.k); d = Math.round((s1 + d) / g) * g - s1; d = Math.max(-s1, Math.min(L - s2, d)); } l.s1 = F.clean(s1 + d); l.s2 = F.clean(s2 + d); } };
+  }
+  if (f && (f.kind === "load" || f.kind === "support" || f.kind === "marker")) {
+    const e = f.e;
+    return {
+      move(ev, w) {
+        const r = attach(w, ev);
+        if (e.kind === "weight" && "body" in r.at && !r.at.centroid) r.at = { body: r.at.body, centroid: true };
+        if (f.kind === "support" && r.at.centroid) r.at = { x: r.pos.x, y: r.pos.y };
+        if (e.dirRef === "member" && !("body" in r.at)) { const world = F.loadDir(A.doc, e); e.dirRef = "global"; e.dir = F.clean(world); }
+        e.at = r.at;
+      },
+    };
+  }
+  return baseMove(id, w0, e0);
+};
+A.MOVERS.push((sel, joints, items) => {
+  const g = A.doc.geometry;
+  for (const l of [...g.loads, ...g.supports, ...g.markers]) if (sel.includes(l.id) && l.at && "x" in l.at) items.push(l.at);
+});
+
+/* ---------- bookkeeping: delete, duplicate, merge ---------- */
+const atRefs = (at) => at ? ("joint" in at ? at.joint : "body" in at ? at.body : null) : null;
+A.JOINT_USERS.push((u) => { const g = A.doc.geometry; for (const x of [...g.loads, ...g.supports, ...g.markers]) if (x.at && "joint" in x.at) u.add(x.at.joint); });
+A.DELETE_HOOKS.push((del) => {
+  const g = A.doc.geometry;
+  for (const x of [...g.loads, ...g.supports, ...g.markers]) {
+    const ref = x.kind === "distributed" ? x.body : atRefs(x.at);
+    if (ref && del.has(ref)) del.add(x.id);
+  }
+});
+A.MERGE_HOOKS.push((a, b) => { const g = A.doc.geometry; for (const x of [...g.loads, ...g.supports, ...g.markers]) if (x.at && x.at.joint === a) x.at.joint = b; });
+A.DUP_HOOKS.push((ids, map, step, out) => {
+  const g = A.doc.geometry;
+  for (const [list, prefix] of [[g.loads, null], [g.supports, "s"], [g.markers, "c"]]) {
+    for (const x of list.slice()) {
+      const ref = x.kind === "distributed" ? x.body : atRefs(x.at);
+      const picked = ids.includes(x.id), follows = ref && map.has(ref);
+      if (!picked && !follows) continue;
+      const c = JSON.parse(JSON.stringify(x));
+      c.id = F.nextId(A.doc, prefix || { force: "f", weight: "f", moment: "m", distributed: "q" }[x.kind]);
+      if (c.kind === "distributed") { if (follows) c.body = map.get(ref); }
+      else if (follows) { if ("joint" in c.at) c.at.joint = map.get(ref); else c.at.body = map.get(ref); }
+      else if ("x" in c.at) { c.at.x += step; c.at.y -= step; }
+      list.push(c);
+      if (picked) out.push(c.id);
+    }
+  }
+});
+
+/* ---------- properties ---------- */
+const esc = A.esc;
+function attachSection(x) {
+  const doc = A.doc, at = x.at, U = doc.view.units.length;
+  const detach = A.button(`${x.id}.detach`, "Detach", () => A.mutate(() => { const r = F.resolveAt(A.doc, x.at); if (x.dirRef === "member") { x.dir = F.clean(F.loadDir(A.doc, x)); x.dirRef = "global"; } x.at = { x: F.clean(r.x), y: F.clean(r.y) }; }));
+  let h = `<h3>Position</h3>`;
+  if ("joint" in at) return h + `<p>At joint ${esc(at.joint)}; it follows the joint.</p><div class="btns">${detach}</div>`;
+  if ("body" in at && at.centroid) return h + `<p>At the centroid of ${esc(at.body)}; it follows the body.</p><div class="btns">${detach}</div>`;
+  if ("body" in at) {
+    const b = F.body(doc, at.body), [p, q] = F.edge(doc, b, at.edge), L = F.edgeLength(doc, b, at.edge);
+    h += `<p>On ${esc(b.type === "polygon" ? "plate" : b.type)} ${esc(b.id)}${b.type === "polygon" ? `, edge ${esc(p.id)}–${esc(q.id)}` : ""}: ${esc(F.formatQuantity(at.s, "length", U))} from ${esc(p.id)} (length ${esc(F.formatQuantity(L, "length", U))}).</p>`;
+    h += A.lenField(`${x.id}.s`, "From " + esc(p.id), at.s, (v) => { at.s = v; });
+    if (b.type === "polygon") h += A.lenField(`${x.id}.n`, "Offset in", at.n, (v) => { at.n = v; });
+    return h + `<div class="btns">${detach}</div>`;
+  }
+  return h + A.coordFields(`${x.id}.at`, at);
+}
+function showSection(l) {
+  const s = l.show;
+  return `<h3>Show on drawing</h3><div class="checks">` + A.check(`${l.id}.show.label`, "Label", s.label, (v) => { s.label = v; }) + A.check(`${l.id}.show.magnitude`, "Magnitude", s.magnitude, (v) => { s.magnitude = v; })
+    + A.check(`${l.id}.show.angle`, l.kind === "moment" && l.axis === "normal" ? "Sense" : l.kind === "distributed" ? "Direction" : "Angle", s.angle, (v) => { s.angle = v; }) + A.check(`${l.id}.show.units`, "Units", s.units, (v) => { s.units = v; }) + `</div>`
+    + (l.labelOffset ? `<div class="btns">${A.button(`${l.id}.relabel`, "Reset label position", () => A.mutate(() => { l.labelOffset = null; }))}</div>` : "");
+}
+function unitSelect(l) {
+  const q = F.QTY[l.kind], sys = A.doc.view.units.system;
+  const list = [["", `Drawing default (${A.doc.view.units[q]})`], ...F.SYSTEM_UNITS[sys][q].map((u) => [u, u])];
+  if (l.unit && !F.SYSTEM_UNITS[sys][q].includes(l.unit)) list.push([l.unit, l.unit]);
+  return A.select(`${l.id}.unit`, "Units", l.unit ?? "", list, (v) => { l.unit = v || null; });
+}
+function magField(l) {
+  const q = F.QTY[l.kind], u = F.unitFor(A.doc, l);
+  return A.field(`${l.id}.mag`, "Magnitude", l.magnitude === null ? "" : F.formatQuantity(l.magnitude, q, u), (t) => {
+    const m = /^(.*?)(?:∠|@)(.*)$/.exec(t);
+    const r = F.parseQuantity(m ? m[1] : t, q, u);
+    if (r.error) return r.error;
+    if (m && l.kind !== "moment") { const an = F.parseAngle(m[2]); if (an.error) return an.error; if (an.value !== null) { setDisplayAngle(l, an.value); l.input.mode = "polar"; } }
+    let v = r.value;
+    if (v !== null && v < 0) { v = -v; if (l.kind === "moment" && l.axis === "normal") l.sense = l.sense === "ccw" ? "cw" : "ccw"; else setWorldDir(l, F.loadDir(A.doc, l) + 180); }
+    l.magnitude = v === null ? null : F.clean(v);
+  }, { placeholder: l.kind === "moment" ? "blank, or e.g. 5 kN·m" : "blank, or e.g. 10 kN ∠ 30°" });
+}
+function setDisplayAngle(l, a) {
+  if (l.dirRef === "member") l.dir = F.clean(F.wrap360(A.doc.view.triad.ySense * a));
+  else l.dir = F.fromTriad(A.doc.view, a);
+}
+function directionSection(l) {
+  const doc = A.doc, v = doc.view, t = v.triad, q = F.QTY[l.kind], u = F.unitFor(doc, l), f = F.UNITS[q][u];
+  const mode = l.input.mode;
+  let h = `<h3>Direction</h3>` + A.seg(`${l.id}.plane`, [["in", "In plane"], ["out", "⊙ Out of page"], ["into", "⊗ Into page"]], l.plane, (x) => { l.plane = x; });
+  if (l.plane !== "in") return h;
+  h += A.seg(`${l.id}.mode`, [["polar", "Polar"], ["components", "Components"], ["slope", "Slope"], ["toward", "Toward"]], mode, (x) => { l.input.mode = x; });
+  const ang = F.displayAngle(doc, l);
+  if (mode === "polar") h += A.angField(`${l.id}.angle`, l.dirRef === "member" ? "Angle to member" : `Angle from ${esc(F.plainLabel(t.labels[0]))}`, ang, (a) => setDisplayAngle(l, a));
+  if (mode === "components") {
+    const c = F.components(doc, l);
+    const comp = (i, label) => A.field(`${l.id}.c${i}`, label, c ? F.fmt(c[i] / f) + " " + u : "", (txt) => {
+      const r = F.parseQuantity(txt, q, u);
+      if (r.error) return r.error;
+      const cur = F.components(doc, l) ?? [0, 0];
+      cur[i] = r.value ?? 0;
+      const m = Math.hypot(cur[0], cur[1]);
+      if (m === 0) return "Components cannot both be zero";
+      l.magnitude = F.clean(m);
+      setWorldDir(l, F.fromTriad(v, F.deg(Math.atan2(cur[1], cur[0]))));
+    });
+    h += comp(0, `${esc(F.plainLabel(t.labels[0]))} component`) + comp(1, `${esc(F.plainLabel(t.labels[1]))} component`);
+    if (!c) h += `<p>Entering components also sets the magnitude.</p>`;
+  }
+  if (mode === "slope") {
+    h += A.field(`${l.id}.slope`, `Run : rise`, l.input.slope ? `${F.fmt(l.input.slope[0])}:${F.fmt(l.input.slope[1])}` : "", (txt) => {
+      const m = /^\s*(-?\d*\.?\d+)\s*:\s*(-?\d*\.?\d+)\s*$/.exec(txt);
+      if (!m) return "Enter a ratio such as 4:3 (run along the first axis : rise along the second)";
+      const run = Number(m[1]), rise = Number(m[2]);
+      if (run === 0 && rise === 0) return "The ratio cannot be 0:0";
+      l.input.slope = [run, rise];
+      setWorldDir(l, F.fromTriad(v, F.deg(Math.atan2(rise, run))));
+    }, { placeholder: "e.g. 4:3" });
+    h += `<p>Run along ${esc(F.plainLabel(t.labels[0]))}, rise along ${esc(F.plainLabel(t.labels[1]))}; signs set the quadrant.</p>`;
+  }
+  if (mode === "toward") {
+    const tw = l.input.toward ?? { x: 0, y: 0 };
+    const set = (k) => (val) => {
+      const r = F.parseQuantity(val, "length", v.units.length);
+      if (r.error) return r.error;
+      if (r.value === null) return "Enter a coordinate";
+      const p = { ...(l.input.toward ?? { x: t.x, y: t.y }) };
+      p[k] = r.value + t[k];
+      const at = F.resolveAt(doc, l.at);
+      if (Math.hypot(p.x - at.x, p.y - at.y) < 1e-9) return "That is the load's own point";
+      l.input.toward = { x: F.clean(p.x), y: F.clean(p.y) };
+      const world = l.kind === "moment" || l.anchor === "tail" ? aim(at, p) : aim(p, at);
+      setWorldDir(l, world);
+    };
+    h += A.field(`${l.id}.tx`, "Toward x", l.input.toward ? F.formatQuantity(tw.x - t.x, "length", v.units.length) : "", set("x")) + A.field(`${l.id}.ty`, "Toward y", l.input.toward ? F.formatQuantity(tw.y - t.y, "length", v.units.length) : "", set("y"));
+    h += `<p>${l.anchor === "head" ? "The arrow comes from" : "The arrow points at"} this point. The direction is fixed when you enter it.</p>`;
+  }
+  if (mode !== "polar") h += `<p>Angle ${esc(F.fmt(ang, 5))}°${l.dirRef === "member" ? " to the member" : ""}.</p>`;
+  const onBody = l.at && "body" in l.at && F.resolveAt(doc, l.at)?.angle !== null;
+  h += `<div class="checks">` + (onBody ? A.check(`${l.id}.rel`, "Relative to member", l.dirRef === "member", (on) => { const world = F.loadDir(A.doc, l); l.dirRef = on ? "member" : "global"; setWorldDir(l, world); }) : "")
+    + A.check(`${l.id}.anchor`, "Tail at the point", l.anchor === "tail", (on) => { l.anchor = on ? "tail" : "head"; }) + `</div>`;
+  return h;
+}
+function styleRow(l) { return A.seg(`${l.id}.style`, [["applied", "Applied"], ["reaction", "Reaction"]], l.style, (x) => { l.style = x; }); }
+A.PANELS.push((f) => {
+  if (f.kind !== "load") return null;
+  const l = f.e, names = { force: "Force", weight: "Self-weight", moment: "Moment", distributed: "Distributed load" };
+  let h = `<h2>${names[l.kind]} ${esc(l.id)}</h2>` + styleRow(l);
+  h += A.field(`${l.id}.label`, "Label", l.label ?? "", (v) => { l.label = v.trim() ? v : null; }, { placeholder: l.kind === "moment" ? "e.g. M_A" : l.kind === "distributed" ? "e.g. w" : "e.g. F_1 or \\alpha" });
+  if (l.kind === "distributed") {
+    const b = F.body(A.doc, l.body), [p] = F.edge(A.doc, b, l.edge), u = F.unitFor(A.doc, l);
+    const wf = (k, label) => A.field(`${l.id}.${k}`, label, l[k] === null ? "" : F.formatQuantity(l[k], "distributed", u), (t) => { const r = F.parseQuantity(t, "distributed", u); if (r.error) return r.error; if (r.value !== null && r.value < 0) return "Enter a positive intensity; use Flip to reverse"; l[k] = r.value === null ? null : F.clean(r.value); });
+    h += wf("w1", "Start intensity") + wf("w2", "End intensity") + unitSelect(l);
+    h += `<p>Equal ends give a uniform load; one end at zero gives a triangle. Blank values keep the drawn shape.</p>`;
+    h += `<h3>Extent on ${esc(b.id)}</h3>` + A.lenField(`${l.id}.s1`, `Start from ${esc(p.id)}`, l.s1, (v) => { l.s1 = v; if (l.s1 > l.s2) return "Start must not pass the end"; }) + A.lenField(`${l.id}.s2`, `End from ${esc(p.id)}`, l.s2, (v) => { l.s2 = v; if (l.s1 > l.s2) return "End must not come before the start"; });
+    h += `<h3>Direction</h3>` + A.seg(`${l.id}.dirMode`, [["perpendicular", "Perpendicular"], ["vertical", "Global vertical"]], l.dirMode, (x) => { l.dirMode = x; }) + `<div class="btns">${A.button(`${l.id}.flip`, "Flip direction", () => A.mutate(() => { l.flip = !l.flip; }))}</div>`;
+  } else {
+    h += magField(l) + unitSelect(l);
+    if (l.kind === "moment") {
+      h += `<h3>Axis and sense</h3>` + A.seg(`${l.id}.axis`, [["normal", "About the page normal"], ["inplane", "Vector in plane"]], l.axis, (x) => { l.axis = x; });
+      if (l.axis === "normal") h += A.seg(`${l.id}.sense`, [["ccw", "↺ Counter-clockwise"], ["cw", "↻ Clockwise"]], l.sense, (x) => { l.sense = x; }) + `<div class="btns">${A.button(`${l.id}.flipm`, "Flip sense", () => A.mutate(() => { l.sense = l.sense === "ccw" ? "cw" : "ccw"; }))}</div>`;
+      else h += A.angField(`${l.id}.angle`, "Vector angle", F.displayAngle(A.doc, l), (a) => setDisplayAngle(l, a)) + `<p>Double-headed arrow: the moment vector by the right-hand rule.</p>`;
+    } else h += directionSection(l);
+    h += attachSection(l);
+  }
+  return h + showSection(l);
+});
+A.PANELS.push((f) => {
+  if (f.kind !== "support") return null;
+  const s = f.e;
+  let h = `<h2>Support ${esc(s.id)}</h2>` + A.seg(`${s.id}.kind`, [["pin", "Pin"], ["roller", "Roller"], ["fixed", "Fixed"]], s.kind, (x) => { s.kind = x; });
+  h += A.field(`${s.id}.label`, "Label", s.label ?? "", (v) => { s.label = v.trim() ? v : null; }, { placeholder: "e.g. A" });
+  h += A.angField(`${s.id}.angle`, "Ground side", F.toTriad(A.doc.view, s.angle), (a) => { s.angle = F.fromTriad(A.doc.view, a); });
+  h += `<p>The direction from the support towards the ground, measured like load angles.</p>`;
+  h += `<div class="btns">${A.button(`${s.id}.rot`, "Rotate 90°", () => A.mutate(() => { s.angle = F.clean(F.wrap360(s.angle + 90)); }))}</div>`;
+  return h + attachSection(s) + (s.labelOffset ? `<div class="btns">${A.button(`${s.id}.relabel`, "Reset label position", () => A.mutate(() => { s.labelOffset = null; }))}</div>` : "");
+});
+})();
+</script>
+
 <script id="fbd-start">
 window.FBDBoot();
 </script>
