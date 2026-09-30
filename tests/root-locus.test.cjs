@@ -237,6 +237,14 @@ test('distinct close roots stay distinct while true repeated roots merge', () =>
   }
 });
 
+test('on-screen factored form (4 sig figs) never shows distinct close roots as a repeated root', () => {
+  for (const [G, want] of [['1 / ((s + 1) * (s + 1.0001))', '1 / ((s + 1)*(s + 1.0001))'], ['1 / ((s + 1) * (s + 2))', '1 / ((s + 1)*(s + 2))'],
+    ['1 / (s + 1)**12', '1 / (s + 1)**12'], ['1 / (s**2 * (s + 1.0001) * (s + 1))', '1 / (s**2*(s + 1)*(s + 1.0001))']]) {
+    const g = R.parseField(G, 's', 'G');
+    assert.equal(R.factoredStr(g.num, g.den, 's', 4), want, G);
+  }
+});
+
 test('ZOH warns when the polynomial G(z) no longer matches the sampled plant', () => {
   const z = (G, T) => R.analyze(s({mode: 'z', sampleTime: T, method: 'zoh', fields: {G}})).warnings.filter(w => w.kind === 'discretisation');
   same(z('1 / (s + 1)**3', 0.1), []);

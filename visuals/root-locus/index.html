@@ -893,17 +893,21 @@ function rootsWithMultiplicity(p) {
   });
   return out;
 }
-/* Factor text: real roots as (x - r), conjugate pairs as quadratics, repeats as powers. */
+/* Factor text: real roots as (x - r), conjugate pairs as quadratics, repeats (one multiplicity cluster) as powers.
+   Distinct roots that print alike at sig figures get more figures, so they are never shown as one repeated root. */
 function factorTerms(p, x, sig) {
-  var items = [];
-  rootsWithMultiplicity(ptrim(p)).forEach(function (it) {
-    var r = it.r, sc = Math.max(1, cabs(r)), text;
-    if (Math.abs(r.im) <= 1e-7 * sc) text = Math.abs(r.re) <= 1e-12 * sc ? x : '(' + x + (r.re < 0 ? ' + ' : ' - ') + fmt(Math.abs(r.re), sig) + ')';
-    else if (r.im > 0) text = '(' + polyStr([r.re * r.re + r.im * r.im, -2 * r.re, 1], x, sig) + ')';
-    else return;
-    var hit = items.find(function (h) { return h.text === text; });
-    if (hit) hit.mult += it.mult; else items.push({ text: text, mult: it.mult });
-  });
+  var clusters = rootsWithMultiplicity(ptrim(p)), items;
+  for (var s = sig; ; s++) {
+    items = [];
+    clusters.forEach(function (it) {
+      var r = it.r, sc = Math.max(1, cabs(r)), text;
+      if (Math.abs(r.im) <= 1e-7 * sc) text = Math.abs(r.re) <= 1e-12 * sc ? x : '(' + x + (r.re < 0 ? ' + ' : ' - ') + fmt(Math.abs(r.re), s) + ')';
+      else if (r.im > 0) text = '(' + polyStr([r.re * r.re + r.im * r.im, -2 * r.re, 1], x, s) + ')';
+      else return;
+      items.push({ text: text, mult: it.mult });
+    });
+    if (s >= 15 || items.every(function (a, i) { return items.findIndex(function (b) { return b.text === a.text; }) === i; })) break;
+  }
   return items.map(function (it) { return it.mult > 1 ? it.text + '**' + it.mult : it.text; });
 }
 function factoredStr(num, den, x, sig) {
