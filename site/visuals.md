@@ -119,6 +119,13 @@ The 50 places food writers recommend most across Tampines Mall, Tampines 1, Cent
 - Fetched: 2026-09-30
 - WebMCP tools: get_metadata, query_outlets, get_outlet, get_calorie_breakdown
 
+## TOTO ball frequency
+How often each Singapore Pools TOTO ball, 1 to 49, was a winning number in the last 3 months, 6 months or 1 year, from 105 published draws up to 28 September 2026. Balls turn darker when drawn more than 3, 5 or 10 times; hover or tap for exact counts, sort by most drawn, or highlight one band. Every draw is random, so past counts do not predict future draws.
+- HTML: https://teoyujie.org/visuals/toto-frequency/index.html
+- Data: https://teoyujie.org/visuals/toto-frequency/data.json
+- Fetched: 2026-09-30
+- WebMCP tools: get_metadata, get_ball_counts, get_ball, list_draws
+
 ## How Singapore attractions are marketed
 See which words recur in 106 descriptions of Singapore tourist attractions and where the described places are located.
 - HTML: https://teoyujie.org/visuals/tourist-attractions/index.html
