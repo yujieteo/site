@@ -4,10 +4,12 @@
  * Not for certification. Exploration and preliminary sizing only.
  *
  * Joint: one checked sheet (a single-lap sheet, or the middle plate of a
- * double-shear joint) with `rows` rows of `perRow` fasteners. The rows lie
- * across the load. Row 0 is the end row, at the end distance e_end from the
- * free end; the outer fasteners of every row sit at the side edge distance
- * e_side from the side edges. Every fastener takes an equal share of P.
+ * double-shear joint) with `rows` rows of `perRow` fasteners. Row 0 is the
+ * end row, at the end distance e_end from the free end; the outer fasteners of
+ * every row sit at the side edge distance e_side from the side edges. Every
+ * fastener takes an equal share of P. With the load across the rows the pitch
+ * p sets the net-section strip and the inter-rivet buckling length; with the
+ * load along the rows the row spacing g takes that role.
  *
  * Strength checks report allowable, applied and MS = allowable/applied − 1.
  * Geometric checks report MS_geom = actual/minimum − 1 and are kept apart, so
@@ -188,6 +190,7 @@
     if (G.eSide <= F.Dh / 2) err("geometry.eSide", "Side edge distance e_side must exceed the hole radius D_h/2.");
     if (F.head === "countersunk" && F.csk >= S.t) err("fastener.csk", "Countersink depth must be less than the thickness t.");
     if (G.pattern === "single" && G.rows !== 1) err("geometry.rows", "A single-row pattern has exactly one row.");
+    if (alongRows(x) && G.rows < 2) err("load.direction", "Load along the rows needs at least two rows: the row spacing g sets the net-section strip and the inter-rivet buckling length.");
     const need = patternWidth(x);
     if (S.W < need * (1 - 1e-9)) err("sheet.W", `Width W is narrower than the pattern: 2·e_side + (n_f − 1)·p${stagger(x) ? " + p/2" : ""} = ${fmt(need)} mm.`);
     if (errors.length) return { errors, warnings };
@@ -209,8 +212,9 @@
     if (G.pattern !== "single" && G.rows < 2) w("geometry.rows", `The ${G.pattern} pattern assumes at least two rows; with one row it is checked as a single row.`);
     if (G.perRow < 2) w("geometry.perRow", "Fewer than two fasteners per row: net section uses the plate width W − D_h, not the pitch.");
     if (G.rows * G.perRow < 2) w("geometry.perRow", "A single fastener: the pattern checks assume more than one.");
-    if (G.rows > 1 && G.g / F.D < 2) w("geometry.g", `g/D = ${fmt(G.g / F.D)}: interior-row bearing uses F_bru at e/D = g/D.`);
-    if (x.load.direction === "parallel") w("load.direction", "Load along the rows: the checks still take the rows across the load (net section per pitch strip, shear-out at e_end). Treat them as nominal.");
+    if (G.rows > 1 && G.g / F.D < 1.5) w("geometry.g", `g/D = ${fmt(G.g / F.D)} is below 1.5, outside the tabulated range for interior-row bearing; F_bru is not extrapolated, so interior-row bearing is not evaluated.`);
+    else if (G.rows > 1 && G.g / F.D < 2) w("geometry.g", `g/D = ${fmt(G.g / F.D)}: interior-row bearing uses F_bru at e/D = g/D.`);
+    if (alongRows(x)) w("load.direction", "Load along the rows: net section, inter-rivet buckling and maximum spacing use the row spacing g; bearing, shear-out and side edge still take the rows across the load. Treat those as nominal.");
     if (x.material.Fbru20 < x.material.Fbru15) w("material.Fbru20", "F_bru at e/D = 2.0 is below the value at 1.5.");
     if (S.W > need * (1 + 1e-6)) w("sheet.W", `Width W exceeds 2·e_side + (n_f − 1)·p${stagger(x) ? " + p/2" : ""} = ${fmt(need)} mm; the side ligament is checked at e_side.`);
     return { errors, warnings };
@@ -221,6 +225,10 @@
   }
 
   const stagger = (x) => x.geometry.pattern === "staggered" && x.geometry.rows > 1;
+  const alongRows = (x) => x.load.direction === "parallel";
+  // Fastener spacing across the load: the net-section strip width and the
+  // inter-rivet buckling length. n is the number of strips sharing P.
+  const spacing = (x) => (alongRows(x) ? { sym: "g", L: x.geometry.g, n: x.geometry.rows } : { sym: "p", L: x.geometry.p, n: x.geometry.perRow });
   const patternWidth = (x) => 2 * x.geometry.eSide + (x.geometry.perRow - 1) * x.geometry.p + (stagger(x) ? x.geometry.p / 2 : 0);
   const sheetStress = (x) => (x.load.sigmaSheet == null ? x.load.P / (x.sheet.W * x.sheet.t) : x.load.sigmaSheet);
 
@@ -264,8 +272,10 @@
 
   // Net width per pitch strip; staggered rows also try the zig-zag path through
   // one hole in each row (Cochrane: stagger g along the load, gauge p/2 across it).
+  // Along the rows the strip is g wide and the straight g − D_h is used.
   function netWidth(x) {
     const { fastener: F, geometry: G, sheet: S } = x;
+    if (alongRows(x)) return { width: G.g - F.Dh, path: "straight, g − D_h", straight: G.g - F.Dh, zigzag: null };
     if (G.perRow < 2) return { width: S.W - F.Dh, path: "plate width W − D_h", straight: S.W - F.Dh, zigzag: null };
     const straight = G.p - F.Dh;
     if (!stagger(x)) return { width: straight, path: "straight, p − D_h", straight, zigzag: null };
@@ -276,14 +286,14 @@
   function netSection(x) {
     const { geometry: G, sheet: S, material: M, load: L } = x;
     const n = netWidth(x);
-    const applied = G.perRow < 2 ? L.P : L.P / G.perRow;
+    const applied = alongRows(x) || G.perRow > 1 ? L.P / spacing(x).n : L.P;
     return { ...n, applied, allowable: n.width > 0 ? M.Ftu * n.width * S.t : 0, stress: n.width > 0 ? applied / (n.width * S.t) : Infinity };
   }
 
-  function buckling(p, x) {
+  function buckling(len, x) {
     const { sheet: S, material: M, buckling: B } = x;
-    const slender = p / rho(S.t);
-    return { slenderness: slender, pt: p / S.t, ...columnStrength(M.E, M.Fcy, slender, B.c) };
+    const slender = len / rho(S.t);
+    return { slenderness: slender, pt: len / S.t, ...columnStrength(M.E, M.Fcy, slender, B.c) };
   }
 
   function maxPitch(x) {
@@ -307,28 +317,33 @@
     const strip = G.perRow < 2 ? L.P : L.P / G.perRow;
 
     const br = bearing(G.eEnd, x);
+    const bi = G.rows > 1 ? bearing(G.g, x) : null;
+    const sp = spacing(x);
     const soPlane = G.eEnd - F.Dh / 2;
     const net = netSection(x);
     const sideA = (G.eSide - F.Dh / 2) * S.t;
     const sigma = sheetStress(x);
-    const bk = buckling(G.p, x);
+    const bk = buckling(sp.L, x);
     const pMax = maxPitch(x);
 
     const strength = [
       check("bearing", "Bearing (end row)", "force", br.allowable, Pf, ["niu", "user"], "P_br = F_bru(e/D)·D·t, F_bru linear between e/D = 1.5 and 2.0",
         { eD: br.eD, Fbru: br.Fbru, status: br.Fbru == null ? "outside tabulated range" : null }),
+      bi && check("bearingInterior", "Bearing (interior rows)", "force", bi.allowable, Pf, ["niu", "user"], "P_br = F_bru(g/D)·D·t, interior rows take e/D = g/D",
+        { eD: bi.eD, Fbru: bi.Fbru, status: bi.Fbru == null ? "outside tabulated range" : null }),
       check("shearOut", "Shear-out (end distance)", "force", 2 * soPlane * S.t * M.Fsu, Pf, ["classical", "niu"], "P_so = 2·(e_end − D_h/2)·t·F_su",
         { plane: soPlane, note: "Plane length e_end − D_h/2: confirm the convention against your copy." }),
-      check("netSection", "Net section between holes", "force", net.allowable, net.applied, ["classical"], stagger(x) ? "σ_net = (P/n_f) / (w_net·t), w_net = min(p − D_h, p − 2D_h + g²/p)" : "σ_net = (P/n_f) / ((p − D_h)·t)",
+      check("netSection", "Net section between holes", "force", net.allowable, net.applied, ["classical"], alongRows(x) ? "σ_net = (P/n_r) / ((g − D_h)·t), load along the rows" : stagger(x) ? "σ_net = (P/n_f) / (w_net·t), w_net = min(p − D_h, p − 2D_h + g²/p)" : "σ_net = (P/n_f) / ((p − D_h)·t)",
         { width: net.width, path: net.path, stress: net.stress, straight: net.straight, zigzag: net.zigzag }),
       check("sideEdge", "Side-edge net section", "force", M.Ftu * sideA, strip / 2, ["classical"], "(P/n_f)/2 across (e_side − D_h/2)·t against F_tu",
         { area: sideA, note: "Each ligament beside the edge hole takes half its strip load (tool convention)." }),
-      check("interRivet", "Inter-rivet buckling", "stress", sigma > 0 ? bk.sigma : null, sigma, ["classical"], "σ_ir from Euler/Johnson with L = p, ρ = t/√12, fixity c",
+      check("interRivet", "Inter-rivet buckling", "stress", sigma > 0 ? bk.sigma : null, sigma, ["classical"], `σ_ir from Euler/Johnson with L = ${sp.sym}, ρ = t/√12, fixity c`,
         { branch: bk.branch, slenderness: bk.slenderness, sigmaE: bk.sigmaE, derived: L.sigmaSheet == null, status: sigma > 0 ? null : "no compressive sheet stress" }),
-      check("maxPitch", "Maximum pitch", "length", sigma > 0 ? pMax : null, G.p, ["classical"], "p_max where σ_ir(p_max) = applied sheet stress",
+      check("maxPitch", alongRows(x) ? "Maximum row spacing" : "Maximum pitch", "length", sigma > 0 ? pMax : null, sp.L, ["classical"], `${sp.sym}_max where σ_ir(${sp.sym}_max) = applied sheet stress`,
         { status: sigma > 0 ? null : "no compressive sheet stress", governs: false, note: "A length ratio that restates the inter-rivet buckling condition, so it does not set the governing mode." }),
-    ];
-    if (strength[5].ms != null && strength[5].ms < 0) warnings.push({ path: "geometry.p", message: `σ_ir = ${fmt(bk.sigma)} MPa is below the applied sheet stress ${fmt(sigma)} MPa at p = ${fmt(G.p)} mm; the maximum pitch is ${fmt(pMax)} mm.` });
+    ].filter(Boolean);
+    const mp = strength.find((c) => c.id === "maxPitch");
+    if (mp.ms != null && mp.ms < 0) warnings.push({ path: "geometry." + sp.sym, message: `σ_ir = ${fmt(bk.sigma)} MPa is below the applied sheet stress ${fmt(sigma)} MPa at ${sp.sym} = ${fmt(sp.L)} mm; the maximum ${sp.sym === "p" ? "pitch" : "row spacing"} is ${fmt(pMax)} mm.` });
 
     const geometric = [
       geomCheck("eEndD", "End distance e_end/D", G.eEnd / F.D, R.eDmin, R.eDnom, ["niu", "nasa"]),
@@ -341,7 +356,7 @@
     const holes = holeMargins(x, strength);
     return {
       ok: true, errors: [], warnings, inputs: x,
-      derived: { n, Pf, strip, sigmaSheet: sigma, sigmaDerived: L.sigmaSheet == null, rho: rho(S.t), patternWidth: patternWidth(x) },
+      derived: { n, Pf, strip, spacing: { sym: sp.sym, L: sp.L, direction: L.direction }, sigmaSheet: sigma, sigmaDerived: L.sigmaSheet == null, rho: rho(S.t), patternWidth: patternWidth(x) },
       strength, geometric,
       governing: governing(strength), governingGeom: governing(geometric),
       holes,
@@ -364,16 +379,13 @@
   function holeMargins(x, strength) {
     const G = x.geometry;
     const by = Object.fromEntries(strength.map((c) => [c.id, c]));
-    const Pf = x.load.P / (G.rows * G.perRow);
-    const interior = G.rows > 1 ? bearing(G.g, x) : null;
-    const msInterior = interior ? ms(interior.allowable, Pf) : null;
     const holes = [];
     for (let r = 0; r < G.rows; r++) {
       for (let i = 0; i < G.perRow; i++) {
         const shift = stagger(x) && r % 2 === 1 ? G.p / 2 : 0;
         const list = [["netSection", by.netSection.ms], ["interRivet", by.interRivet.ms]];
         if (r === 0) list.push(["bearing", by.bearing.ms], ["shearOut", by.shearOut.ms]);
-        else list.push(["bearingInterior", msInterior]);
+        else list.push(["bearingInterior", by.bearingInterior.ms]);
         const y = G.eSide + i * G.p + shift;
         if (Math.min(y, x.sheet.W - y) <= G.eSide * (1 + 1e-9)) list.push(["sideEdge", by.sideEdge.ms]);
         let gov = null;
@@ -400,14 +412,16 @@
     return pts;
   }
 
+  // Sweeps the spacing that sets net section and buckling: p across the rows, g along them.
   function sweepPitch(x, steps = 60) {
+    const sp = spacing(x);
     const lo = x.fastener.Dh * 1.05;
-    const hi = Math.max(x.geometry.p * 2, x.fastener.D * 10);
+    const hi = Math.max(sp.L * 2, x.fastener.D * 10);
     const sigma = sheetStress(x);
     const pts = [];
     for (let k = 0; k <= steps; k++) {
       const p = lo + ((hi - lo) * k) / steps;
-      const y = { ...x, geometry: { ...x.geometry, p } };
+      const y = { ...x, geometry: { ...x.geometry, [sp.sym]: p } };
       const net = netSection(y);
       pts.push({ p, netSection: ms(net.allowable, net.applied), interRivet: sigma > 0 ? ms(buckling(p, x).sigma, sigma) : null });
     }
@@ -415,7 +429,7 @@
   }
 
   function sweepSlenderness(x, steps = 80) {
-    const hi = Math.max((x.geometry.p / x.sheet.t) * 2, 40);
+    const hi = Math.max((spacing(x).L / x.sheet.t) * 2, 40);
     const pts = [];
     for (let k = 0; k <= steps; k++) {
       const pt = (hi * k) / steps;
@@ -429,23 +443,24 @@
   const ASSUMPTIONS = [
     "Equal load share: every fastener carries P / (n_r · n_f). Load transfer, fastener flexibility and end-fastener peaking are not modelled.",
     "The checked sheet carries the full fastener load: a single-lap sheet, or the middle plate of a double-shear joint. For an outer plate of a double-shear joint, enter half the load.",
-    "Rows lie across the load. Row 0, at e_end from the free end, takes bearing and shear-out at e_end; interior rows take bearing at e/D = g/D.",
+    "Row 0, at e_end from the free end, takes bearing and shear-out at e_end; interior rows take bearing at e/D = g/D. Bearing, shear-out and side edge always take the rows across the load.",
+    "Load direction: across the rows (default), the pitch p sets the net-section strip and the inter-rivet buckling length; along the rows, the row spacing g takes both roles (strip g − D_h carrying P/n_r, buckling length g, maximum row spacing).",
     "F_bru is linear between your values at e/D = 1.5 and 2.0, is held at the 2.0 value above 2.0, and is not extrapolated below 1.5.",
-    "Net section between holes carries the whole strip load P/n_f at the end row. Staggered rows also try the zig-zag path through one hole of each row (Cochrane s²/4g).",
-    "Side-edge net section: each ligament beside the edge hole takes half of that strip's load.",
-    "Inter-rivet buckling treats the sheet between fasteners as a column of length p, radius of gyration t/√12 and end fixity c, under the compressive sheet stress (entered, or P/(W·t) when left blank).",
+    "Net section between holes carries the whole strip load at the end row: P/n_f across the rows, P/n_r along them. Across the rows, staggered rows also try the zig-zag path through one hole of each row (Cochrane s²/4g); along the rows the straight path g − D_h is used.",
+    "Side-edge net section: each ligament beside the edge hole takes half of its pitch strip's load, (P/n_f)/2.",
+    "Inter-rivet buckling treats the sheet between fasteners as a column of length p (load across the rows) or g (load along the rows), radius of gyration t/√12 and end fixity c, under the compressive sheet stress (entered, or P/(W·t) when left blank).",
     "Single-lap and double-shear joints only: no lugs, eccentric loading or prying; no fatigue, fastener strength, preload or torque.",
   ];
 
   const FORMULAS = [
     { id: "eD", check: "Edge distance ratio", text: "MS_geom = (e/D) / (e/D)_min − 1", source: ["niu", "nasa"], note: "RP-1228 p. 21 states a 1.5D minimum and a 2D nominal edge distance." },
     { id: "pD", check: "Pitch ratio", text: "MS_geom = (p/D) / (p/D)_min − 1; also p/D ÷ typical", source: ["niu", "nasa"], note: "RP-1228 pp. 21 and 34 state a 4D nominal spacing; the minimum is an unsourced default." },
-    { id: "bearing", check: "Bearing", text: "P_br = F_bru(e/D) · D · t", source: ["niu", "user"], note: "Confirm against your copy. F_bru values are yours." },
+    { id: "bearing", check: "Bearing", text: "P_br = F_bru(e/D) · D · t", source: ["niu", "user"], note: "Confirm against your copy. F_bru values are yours. End row at e/D = e_end/D; interior rows at e/D = g/D." },
     { id: "shearOut", check: "Shear-out", text: "P_so = 2 · (e_end − D_h/2) · t · F_su", source: ["classical"], note: "Two shear planes. The plane-length convention: confirm against your copy (Niu)." },
-    { id: "netSection", check: "Net section", text: "σ_net = (P/n_f) / ((p − D_h) · t) ≤ F_tu", source: ["classical"], note: "Staggered rows: w_net = min(p − D_h, p − 2D_h + g²/p)." },
+    { id: "netSection", check: "Net section", text: "σ_net = (P/n_f) / ((p − D_h) · t) ≤ F_tu", source: ["classical"], note: "Load across the rows. Staggered rows: w_net = min(p − D_h, p − 2D_h + g²/p). Load along the rows: σ_net = (P/n_r) / ((g − D_h) · t)." },
     { id: "sideEdge", check: "Side-edge net section", text: "(P/n_f)/2 / ((e_side − D_h/2) · t) ≤ F_tu", source: ["classical"], note: "" },
-    { id: "interRivet", check: "Inter-rivet buckling", text: "σ_E = π²E/(p/(ρ√c))²; Johnson σ = F_cy − F_cy²(p/(ρ√c))²/(4π²E) when σ_E > F_cy/2; ρ = t/√12", source: ["classical", "niu"], note: "Fixity c: confirm against your copy." },
-    { id: "maxPitch", check: "Maximum pitch", text: "p_max solves σ_ir(p_max) = σ_applied", source: ["classical"], note: "RP-1228 p. 34: spacing above 4D is acceptable only if sealing or inter-rivet buckling is not a problem." },
+    { id: "interRivet", check: "Inter-rivet buckling", text: "σ_E = π²E/(p/(ρ√c))²; Johnson σ = F_cy − F_cy²(p/(ρ√c))²/(4π²E) when σ_E > F_cy/2; ρ = t/√12", source: ["classical", "niu"], note: "Load across the rows; along the rows g replaces p. Fixity c: confirm against your copy." },
+    { id: "maxPitch", check: "Maximum pitch", text: "p_max solves σ_ir(p_max) = σ_applied", source: ["classical"], note: "Along the rows, g_max against g. RP-1228 p. 34: spacing above 4D is acceptable only if sealing or inter-rivet buckling is not a problem." },
   ];
 
   /* ---------- Export and import ---------- */
@@ -528,6 +543,7 @@
     } else {
       L.push("## Strength margins", "", "| Check | Allowable | Applied | MS | Source |", "| --- | --- | --- | --- | --- |");
       for (const c of r.strength) L.push(`| ${c.title} | ${c.allowable == null ? c.status || "—" : u(c.allowable, c.kind)} | ${u(c.applied, c.kind)} | ${m(c.ms)} | ${tags(c.source)} |`);
+      L.push("", `Load ${r.derived.spacing.direction === "parallel" ? "along" : "across"} the rows: net section, inter-rivet buckling and maximum spacing use ${r.derived.spacing.sym} = ${u(r.derived.spacing.L, "length")}.`);
       L.push("", `Governing strength mode: **${r.governing ? `${r.governing.title}, MS = ${fmt(r.governing.ms)}` : "none evaluated"}**.`, "");
       L.push("## Geometric margins", "", "Meeting a geometry rule is not the same as passing strength.", "", "| Check | Actual | Minimum | MS_geom | Actual ÷ typical | Source |", "| --- | --- | --- | --- | --- | --- |");
       for (const c of r.geometric) L.push(`| ${c.title} | ${m(c.actual)} | ${m(c.minimum)} | ${m(c.ms)} | ${m(c.ratioToTypical)} | ${tags(c.source)} |`);
@@ -546,13 +562,14 @@
 
   // Hand calculation for the example joint, worked by hand:
   //   P_f = 10000/10 = 1000 N; bearing e/D = 9.6/4.8 = 2.0 → 750·4.8·1.6 = 5760 N
+  //   interior bearing g/D = 19.2/4.8 = 4.0 → held at 750 → 5760 N
   //   shear-out 2·(9.6 − 2.45)·1.6·250 = 5720 N
   //   net section (24 − 4.9)·1.6·400 = 12224 N against 10000/5 = 2000 N
   //   side edge (9.6 − 2.45)·1.6·400 = 4576 N against 2000/2 = 1000 N
   //   σ = 10000/(115.2·1.6) = 54.253472… MPa; L/ρ = 24·√12/1.6 = 51.9615…
   //   σ_E = π²·70000/2700 = 255.88 > 150 → Johnson 300 − 300²·2700/(4π²·70000) = 212.0677… MPa
   const HAND = [
-    ["strength.bearing.allowable", 5760], ["strength.shearOut.allowable", 5720],
+    ["strength.bearing.allowable", 5760], ["strength.bearingInterior.allowable", 5760], ["strength.shearOut.allowable", 5720],
     ["strength.netSection.allowable", 12224], ["strength.netSection.applied", 2000],
     ["strength.sideEdge.allowable", 4576], ["strength.sideEdge.applied", 1000],
     ["derived.sigmaSheet", 10000 / (115.2 * 1.6)],
@@ -574,7 +591,7 @@
     }
     const z = { ...x, geometry: { ...x.geometry, pattern: "staggered", g: 8 }, sheet: { ...x.sheet, W: 127.2 } };
     const rz = solve(z);
-    test("staggered net section takes the zig-zag path when g²/p < D_h", rz.ok && close(rz.strength[2].width, 24 - 9.8 + 64 / 24), rz.ok ? `w_net = ${fmt(rz.strength[2].width)}` : "");
+    test("staggered net section takes the zig-zag path when g²/p < D_h", rz.ok && close(lookup(rz, "strength.netSection.width"), 24 - 9.8 + 64 / 24), rz.ok ? `w_net = ${fmt(lookup(rz, "strength.netSection.width"))}` : "");
 
     for (const [eD, want] of [[1.5, x.material.Fbru15], [2.0, x.material.Fbru20]]) {
       const got = fbru(eD, x.material.Fbru15, x.material.Fbru20);
@@ -625,7 +642,7 @@
   return {
     SCHEMA_VERSION, KIND, DISCLAIMER, UNITS, TAGS, SOURCES, FIELDS, FIELD, DEFAULT_SOURCES, ASSUMPTIONS, FORMULAS, HAND,
     unitSym, toDisplay, fromDisplay, convertInputs, example, normalise, validate, solve, fbru, columnStrength, slendernessFor,
-    netWidth, maxPitch, sheetStress, sweepED, sweepPitch, sweepSlenderness, inputsJSON, resultsJSON, parseImport, lookup, runVector,
+    netWidth, maxPitch, sheetStress, spacing, sweepED, sweepPitch, sweepSlenderness, inputsJSON, resultsJSON, parseImport, lookup, runVector,
     toMarkdown, selfTests, get, set, fmt,
   };
 });

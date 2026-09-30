@@ -183,12 +183,12 @@ footer{margin-top:3rem;font-size:.8125rem;color:var(--muted)}
         <figcaption>MS against e_end/D at the entered load. Bearing stops at e/D = 1.5: F_bru is not extrapolated. The dotted line is the minimum e/D.</figcaption>
       </figure>
       <figure>
-        <svg id="chart-p" class="chart" role="img" aria-label="MS against pitch for net section and inter-rivet buckling"></svg>
+        <svg id="chart-p" class="chart" role="img" aria-label="MS against fastener spacing for net section and inter-rivet buckling"></svg>
         <ul class="legend"><li><i class="line" style="border-color:var(--c1)"></i>Net section</li><li><i class="line" style="border-color:var(--c2)"></i>Inter-rivet buckling</li></ul>
-        <figcaption>MS against pitch p. Net section improves and inter-rivet buckling worsens as p grows; the buckling curve crosses zero at the maximum pitch.</figcaption>
+        <figcaption>MS against the fastener spacing: pitch p with the load across the rows, row spacing g with it along them. Net section improves and inter-rivet buckling worsens as the spacing grows; the buckling curve crosses zero at the maximum spacing.</figcaption>
       </figure>
       <figure>
-        <svg id="chart-s" class="chart" role="img" aria-label="Inter-rivet buckling stress against p/t"></svg>
+        <svg id="chart-s" class="chart" role="img" aria-label="Inter-rivet buckling stress against spacing over thickness"></svg>
         <ul class="legend"><li><i class="line" style="border-color:var(--c1)"></i>σ_ir (Johnson, then Euler)</li><li><i class="line" style="border-color:var(--bad)"></i>Applied sheet stress</li></ul>
         <figcaption>Inter-rivet buckling stress σ_ir against p/t, with the applied compressive sheet stress as a horizontal line.</figcaption>
       </figure>
@@ -372,11 +372,17 @@ function drawSchematic(r) {
   if (G.rows > 1) dimH(h0.x, h0.x + G.g, W + off + fs * 0.6, `g ${u(G.g, "length")}`);
   dimV(0, h0.y, -off * 0.3, `e_side`);
   if (G.perRow > 1) dimV(h0.y, h0.y + G.p, -off * 0.3, `p`);
-  const ay = W / 2, ax = Lp + pad * 0.1;
-  s.push(`<path class="arrow" d="M${ax} ${ay} H${ax + pad * 0.7} M${ax + pad * 0.7 - fs * 0.6} ${ay - fs * 0.5} L${ax + pad * 0.7} ${ay} L${ax + pad * 0.7 - fs * 0.6} ${ay + fs * 0.5}" vector-effect="non-scaling-stroke" stroke-width="2"/><text x="${ax + pad * 0.1}" y="${ay - fs * 0.6}" font-size="${fs}">P</text>`);
+  const along = x.load.direction === "parallel";
+  if (along) {
+    const ax = Lp - tail / 2, ay = W + pad * 0.1, a = pad * 0.7;
+    s.push(`<path class="arrow" d="M${ax} ${ay} V${ay + a} M${ax - fs * 0.5} ${ay + a - fs * 0.6} L${ax} ${ay + a} L${ax + fs * 0.5} ${ay + a - fs * 0.6}" vector-effect="non-scaling-stroke" stroke-width="2"/><text x="${ax + fs * 0.6}" y="${ay + a * 0.6}" font-size="${fs}">P</text>`);
+  } else {
+    const ay = W / 2, ax = Lp + pad * 0.1;
+    s.push(`<path class="arrow" d="M${ax} ${ay} H${ax + pad * 0.7} M${ax + pad * 0.7 - fs * 0.6} ${ay - fs * 0.5} L${ax + pad * 0.7} ${ay} L${ax + pad * 0.7 - fs * 0.6} ${ay + fs * 0.5}" vector-effect="non-scaling-stroke" stroke-width="2"/><text x="${ax + pad * 0.1}" y="${ay - fs * 0.6}" font-size="${fs}">P</text>`);
+  }
   $("schematic").setAttribute("viewBox", vb.join(" "));
   $("schematic").innerHTML = `<title id="schem-title">Joint schematic to scale</title>${s.join("")}`;
-  $("schem-note").textContent = `To scale: the checked sheet, free end on the left, load P to the right. W = ${u(W, "length")}, t = ${u(x.sheet.t, "length")}, p = ${u(G.p, "length")}, D_h = ${u(F.Dh, "length")}. Each hole is coloured by its own governing strength margin; the marginal band is MS < ${fmt(x.rules.marginal)}.`;
+  $("schem-note").textContent = `To scale: the checked sheet, free end on the left, load P ${along ? "along the rows (net section and inter-rivet buckling use g)" : "to the right, across the rows (net section and inter-rivet buckling use p)"}. W = ${u(W, "length")}, t = ${u(x.sheet.t, "length")}, p = ${u(G.p, "length")}, D_h = ${u(F.Dh, "length")}. Each hole is coloured by its own governing strength margin; the marginal band is MS < ${fmt(x.rules.marginal)}.`;
 }
 
 /* ---------- Charts ---------- */
@@ -429,20 +435,21 @@ function drawCharts(r) {
   });
   const sp = E.sweepPitch(x);
   const L = (v) => E.toDisplay(v, "length", units);
+  const spc = r.derived.spacing;
   chart($("chart-p"), {
     series: [{ cls: "s1", pts: sp.map((p) => [L(p.p), p.netSection]) }, { cls: "s2", pts: sp.map((p) => [L(p.p), p.interRivet]) }],
-    xLabel: `p (${E.unitSym("length", units)})`, yLabel: "MS", xDom: [L(sp[0].p), L(sp[sp.length - 1].p)], yDom: msDomain(sp.flatMap((p) => [p.netSection, p.interRivet])), zero: true,
-    vlines: [{ x: L(x.rules.pDmin * x.fastener.D), cls: "rule" }],
-    points: [{ x: L(x.geometry.p), y: by.netSection.ms, cls: "p1", title: `Net section MS ${fmt(by.netSection.ms)}` }, { x: L(x.geometry.p), y: by.interRivet.ms, cls: "p2", title: `Inter-rivet MS ${fmt(by.interRivet.ms)}` }],
+    xLabel: `${spc.sym} (${E.unitSym("length", units)})`, yLabel: "MS", xDom: [L(sp[0].p), L(sp[sp.length - 1].p)], yDom: msDomain(sp.flatMap((p) => [p.netSection, p.interRivet])), zero: true,
+    vlines: [{ x: L((spc.sym === "g" ? x.rules.gDmin : x.rules.pDmin) * x.fastener.D), cls: "rule" }],
+    points: [{ x: L(spc.L), y: by.netSection.ms, cls: "p1", title: `Net section MS ${fmt(by.netSection.ms)}` }, { x: L(spc.L), y: by.interRivet.ms, cls: "p2", title: `Inter-rivet MS ${fmt(by.interRivet.ms)}` }],
   });
   const ss = E.sweepSlenderness(x);
   const S = (v) => E.toDisplay(v, "stress", units);
   const Fcy = x.material.Fcy;
   chart($("chart-s"), {
     series: [{ cls: "s1", pts: ss.filter((p) => p.pt > 0).map((p) => [p.pt, S(p.sigma)]) }],
-    xLabel: "p / t", yLabel: `σ_ir (${E.unitSym("stress", units)})`, xDom: [0, ss[ss.length - 1].pt], yDom: [0, S(Math.max(Fcy, r.derived.sigmaSheet) * 1.05)],
+    xLabel: `${spc.sym} / t`, yLabel: `σ_ir (${E.unitSym("stress", units)})`, xDom: [0, ss[ss.length - 1].pt], yDom: [0, S(Math.max(Fcy, r.derived.sigmaSheet) * 1.05)],
     hlines: r.derived.sigmaSheet > 0 ? [{ y: S(r.derived.sigmaSheet), cls: "applied" }] : [],
-    points: [{ x: x.geometry.p / x.sheet.t, y: S(by.interRivet.allowable), cls: "p1", title: `σ_ir ${u(by.interRivet.allowable, "stress")} at p/t = ${fmt(x.geometry.p / x.sheet.t)}` }],
+    points: [{ x: spc.L / x.sheet.t, y: S(by.interRivet.allowable), cls: "p1", title: `σ_ir ${u(by.interRivet.allowable, "stress")} at ${spc.sym}/t = ${fmt(spc.L / x.sheet.t)}` }],
   });
 }
 
@@ -536,7 +543,7 @@ function registerTools() {
       sheet: { type: "object", description: "t, W (mm), shear (single | double)" },
       material: { type: "object", description: "E, Ftu, Fty, Fcy, Fsu, Fbru15, Fbru20 (MPa), nu" },
       geometry: { type: "object", description: "pattern (single | aligned | staggered), rows, perRow, eEnd, eSide, p, g (mm)" },
-      load: { type: "object", description: "P (N), share (equal), direction (normal | parallel), sigmaSheet (MPa compressive, null = P/(W·t))" },
+      load: { type: "object", description: "P (N), share (equal), direction (normal = across the rows, pitch p sets net section and inter-rivet buckling | parallel = along the rows, row spacing g takes that role; needs rows ≥ 2), sigmaSheet (MPa compressive, null = P/(W·t))" },
       buckling: { type: "object", description: "c (end fixity)" },
       rules: { type: "object", description: "eDmin, eDnom, pDmin, pDtyp, gDmin, cskMax, marginal" },
     },

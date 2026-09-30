@@ -31,7 +31,7 @@
         "Niu",
         "user allowable"
       ],
-      "note": "Confirm against your copy. F_bru values are yours."
+      "note": "Confirm against your copy. F_bru values are yours. End row at e/D = e_end/D; interior rows at e/D = g/D."
     },
     {
       "check": "Shear-out",
@@ -47,7 +47,7 @@
       "source": [
         "classical"
       ],
-      "note": "Staggered rows: w_net = min(p − D_h, p − 2D_h + g²/p)."
+      "note": "Load across the rows. Staggered rows: w_net = min(p − D_h, p − 2D_h + g²/p). Load along the rows: σ_net = (P/n_r) / ((g − D_h) · t)."
     },
     {
       "check": "Side-edge net section",
@@ -64,7 +64,7 @@
         "classical",
         "Niu"
       ],
-      "note": "Fixity c: confirm against your copy."
+      "note": "Load across the rows; along the rows g replaces p. Fixity c: confirm against your copy."
     },
     {
       "check": "Maximum pitch",
@@ -72,17 +72,18 @@
       "source": [
         "classical"
       ],
-      "note": "RP-1228 p. 34: spacing above 4D is acceptable only if sealing or inter-rivet buckling is not a problem."
+      "note": "Along the rows, g_max against g. RP-1228 p. 34: spacing above 4D is acceptable only if sealing or inter-rivet buckling is not a problem."
     }
   ],
   "assumptions": [
     "Equal load share: every fastener carries P / (n_r · n_f). Load transfer, fastener flexibility and end-fastener peaking are not modelled.",
     "The checked sheet carries the full fastener load: a single-lap sheet, or the middle plate of a double-shear joint. For an outer plate of a double-shear joint, enter half the load.",
-    "Rows lie across the load. Row 0, at e_end from the free end, takes bearing and shear-out at e_end; interior rows take bearing at e/D = g/D.",
+    "Row 0, at e_end from the free end, takes bearing and shear-out at e_end; interior rows take bearing at e/D = g/D. Bearing, shear-out and side edge always take the rows across the load.",
+    "Load direction: across the rows (default), the pitch p sets the net-section strip and the inter-rivet buckling length; along the rows, the row spacing g takes both roles (strip g − D_h carrying P/n_r, buckling length g, maximum row spacing).",
     "F_bru is linear between your values at e/D = 1.5 and 2.0, is held at the 2.0 value above 2.0, and is not extrapolated below 1.5.",
-    "Net section between holes carries the whole strip load P/n_f at the end row. Staggered rows also try the zig-zag path through one hole of each row (Cochrane s²/4g).",
-    "Side-edge net section: each ligament beside the edge hole takes half of that strip's load.",
-    "Inter-rivet buckling treats the sheet between fasteners as a column of length p, radius of gyration t/√12 and end fixity c, under the compressive sheet stress (entered, or P/(W·t) when left blank).",
+    "Net section between holes carries the whole strip load at the end row: P/n_f across the rows, P/n_r along them. Across the rows, staggered rows also try the zig-zag path through one hole of each row (Cochrane s²/4g); along the rows the straight path g − D_h is used.",
+    "Side-edge net section: each ligament beside the edge hole takes half of its pitch strip's load, (P/n_f)/2.",
+    "Inter-rivet buckling treats the sheet between fasteners as a column of length p (load across the rows) or g (load along the rows), radius of gyration t/√12 and end fixity c, under the compressive sheet stress (entered, or P/(W·t) when left blank).",
     "Single-lap and double-shear joints only: no lugs, eccentric loading or prying; no fatigue, fastener strength, preload or torque."
   ],
   "not_in_scope": [

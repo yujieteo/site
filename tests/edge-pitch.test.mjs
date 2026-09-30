@@ -224,6 +224,61 @@ test("in-page self-test passes", () => {
   assert.deepEqual(t.filter((x) => !x.pass), []);
 });
 
+test("interior-row bearing at e/D = g/D enters the strength checks and can govern", () => {
+  const x = joint({ "geometry.g": 7.5, "geometry.eSide": 20, "sheet.W": 136, "load.sigmaSheet": 10 });
+  const r = E.solve(x);
+  assert.equal(r.ok, true);
+  const bi = byId(r.strength, "bearingInterior");
+  const f = 600 + ((7.5 / 4.8 - 1.5) / 0.5) * 150;
+  close(bi.allowable, f * 4.8 * 1.6, 1e-12, "interior bearing");
+  close(bi.ms, (f * 4.8 * 1.6) / 1000 - 1, 1e-12, "interior bearing MS");
+  assert.equal(r.governing.id, "bearingInterior");
+  close(r.governing.ms, bi.ms, 1e-12, "governing MS");
+  for (const h of r.holes.filter((q) => q.row === 1)) assert.equal(h.governing.id, "bearingInterior");
+  assert.match(E.toMarkdown(x), /Governing strength mode: \*\*Bearing \(interior rows\)/);
+  assert.equal(E.resultsJSON(x).results.governing.id, "bearingInterior");
+
+  const low = E.solve(joint({ "geometry.g": 6.5 }));
+  const out = byId(low.strength, "bearingInterior");
+  assert.equal(out.allowable, null);
+  assert.equal(out.ms, null);
+  assert.equal(out.status, "outside tabulated range");
+  assert.match(messages(low.warnings), /outside the tabulated range for interior-row bearing/);
+
+  assert.equal(byId(E.solve(joint({ "geometry.rows": 1, "geometry.pattern": "single" })).strength, "bearingInterior"), undefined);
+});
+
+test("load direction swaps the pitch and row-spacing roles in net section and inter-rivet buckling", () => {
+  const across = E.solve(E.example());
+  const along = E.solve(joint({ "load.direction": "parallel" }));
+  assert.equal(across.ok && along.ok, true);
+  const { P } = E.example().load, { Dh } = E.example().fastener, t = 1.6, rows = 2, perRow = 5, p = 24, g = 19.2;
+
+  close(byId(across.strength, "netSection").allowable, 400 * (p - Dh) * t, 1e-12, "net across");
+  close(byId(across.strength, "netSection").applied, P / perRow, 1e-12, "strip across");
+  close(byId(along.strength, "netSection").allowable, 400 * (g - Dh) * t, 1e-12, "net along");
+  close(byId(along.strength, "netSection").applied, P / rows, 1e-12, "strip along");
+
+  close(byId(across.strength, "interRivet").slenderness, (p * Math.sqrt(12)) / t, 1e-12, "buckling length p");
+  close(byId(along.strength, "interRivet").slenderness, (g * Math.sqrt(12)) / t, 1e-12, "buckling length g");
+  close(byId(across.strength, "maxPitch").applied, p, 1e-12, "max pitch against p");
+  close(byId(along.strength, "maxPitch").applied, g, 1e-12, "max spacing against g");
+
+  assert.equal(across.governing.id, "interRivet");
+  assert.equal(along.governing.id, "netSection");
+  for (const id of ["bearing", "bearingInterior", "shearOut", "sideEdge"]) assert.equal(byId(along.strength, id).ms, byId(across.strength, id).ms, id);
+
+  const sp = E.sweepPitch(joint({ "load.direction": "parallel" }), 40);
+  const at = sp.reduce((a, q) => (Math.abs(q.p - g) < Math.abs(a.p - g) ? q : a));
+  assert.ok(at.netSection < sp[sp.length - 1].netSection);
+  assert.match(E.toMarkdown(joint({ "load.direction": "parallel" })), /Load along the rows: net section, inter-rivet buckling and maximum spacing use g/);
+  assert.match(E.toMarkdown(E.example()), /Load across the rows: net section, inter-rivet buckling and maximum spacing use p/);
+
+  const one = E.solve(joint({ "load.direction": "parallel", "geometry.rows": 1, "geometry.pattern": "single" }));
+  assert.equal(one.ok, false);
+  assert.match(one.errors.find((e) => e.path === "load.direction").message, /at least two rows/);
+});
+
 test("holes are coloured by their own governing margin", () => {
   const r = E.solve(joint({ "geometry.eSide": 5, "sheet.W": 106 }));
   const edge = r.holes.filter((h) => h.index === 0 || h.index === 4);
@@ -302,7 +357,7 @@ test("built page is self-contained, carries the banner and registers its WebMCP 
   const bad = await call("solve_joint", { fastener: { Dh: 30 } });
   assert.match(messages(bad.errors), /smaller than the pitch/);
   const current = await call("get_current_joint", {});
-  assert.equal(current.strength.length, 6);
+  assert.equal(current.strength.length, 7);
   const tests = await call("run_self_tests", {});
   assert.equal(tests.passed, tests.total);
   const meta = await call("get_metadata", {});
