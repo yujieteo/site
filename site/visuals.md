@@ -105,13 +105,6 @@ Older Singapore residents report stronger connection to the country but less int
 - Fetched: 2026-09-27
 - WebMCP tools: get_data, get_metadata, query
 
-## Tampines hub food map: Tampines Mall, Century Square and Tampines 1
-The 20 best-rated guide-recommended places to eat in the three malls beside Tampines MRT, with review summaries and HPB calorie estimates: the typical main is about 646 kcal, and 15 of 28 mains pass 600 kcal.
-- HTML: https://teoyujie.org/visuals/tampines-food-map/index.html
-- Data: https://teoyujie.org/visuals/tampines-food-map/data.json
-- Fetched: 2026-09-29
-- WebMCP tools: get_data, get_metadata, query
-
 ## How Singapore attractions are marketed
 See which words recur in 106 descriptions of Singapore tourist attractions and where the described places are located.
 - HTML: https://teoyujie.org/visuals/tourist-attractions/index.html

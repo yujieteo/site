@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: yujieteo/visuals
-          ref: f02884d371523b9eed2a401b7e5515ee9e99ebae
+          ref: ee206b04404a57a7250b2670346fb0e3b319b7b5
           path: visuals
 
       - name: Set up Python
