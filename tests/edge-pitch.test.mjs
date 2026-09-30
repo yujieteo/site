@@ -297,13 +297,18 @@ test("staggered rows loaded along the rows account for the p/2 offset", () => {
   const Dh = 4.9;
   const zig = E.solve(joint({ "load.direction": "parallel", "geometry.pattern": "staggered", "sheet.W": 127.2 }));
   const n1 = byId(zig.strength, "netSection");
-  close(n1.straight, 19.2 - Dh / 2, 1e-12, "straight meets every other row");
-  close(n1.zigzag, 19.2 - Dh + 24 ** 2 / (16 * 19.2), 1e-12, "zig-zag with stagger p/2 and gauge g");
-  close(n1.width, n1.zigzag, 1e-12, "zig-zag governs");
-  const tight = E.solve(joint({ "load.direction": "parallel", "geometry.pattern": "staggered", "geometry.g": 8, "sheet.W": 127.2 }));
-  const n2 = byId(tight.strength, "netSection");
-  close(n2.width, 8 - Dh / 2, 1e-12, "straight governs");
-  assert.match(n2.path, /straight, g − D_h\/2/);
+  // Two rows: one hole of two on a straight section; one diagonal over two strips.
+  close(n1.straight, 19.2 - Dh / 2, 1e-12, "straight, rows = 2");
+  close(n1.zigzag, (2 * 19.2 - 2 * Dh + 24 ** 2 / (16 * 19.2)) / 2, 1e-12, "zig-zag, rows = 2");
+  close(n1.width, 15.2375, 1e-12, "zig-zag governs, rows = 2");
+  // Three rows: two holes of three on a straight section; two diagonals over three strips.
+  const three = byId(E.solve(joint({ "load.direction": "parallel", "geometry.pattern": "staggered", "geometry.rows": 3, "sheet.W": 127.2 })).strength, "netSection");
+  close(three.straight, (3 * 19.2 - 2 * Dh) / 3, 1e-12, "straight, rows = 3");
+  close(three.zigzag, (3 * 19.2 - 3 * Dh + 2 * 24 ** 2 / (16 * 19.2)) / 3, 1e-12, "zig-zag, rows = 3");
+  close(three.width, three.zigzag, 1e-12, "zig-zag governs, rows = 3");
+  const tight = byId(E.solve(joint({ "load.direction": "parallel", "geometry.pattern": "staggered", "geometry.rows": 3, "geometry.g": 8, "sheet.W": 127.2 })).strength, "netSection");
+  close(tight.width, (3 * 8 - 2 * Dh) / 3, 1e-12, "straight governs, rows = 3");
+  assert.match(tight.path, /^straight/);
 });
 
 test("one fastener along the load leaves inter-rivet buckling unevaluated with a warning", () => {
