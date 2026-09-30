@@ -21,14 +21,16 @@ test("in-page self-tests (spec section 11, phase 1) all pass", () => {
 
 test("K/(s(s+1)(s+2)): critical gain 6 at √2 rad/s, stable below and unstable above", () => {
   const r6 = F.analyze(third(6));
-  close(r6.margins.governing.gm.w, Math.SQRT2, 1e-9, "ω_pc");
-  close(r6.margins.governing.gm.dB, 0, 1e-9, "GM at K = 6");
+  assert.equal(r6.margins.phaseCrossovers.length, 1);
+  close(r6.margins.phaseCrossovers[0].w, Math.SQRT2, 1e-9, "ω_pc");
+  close(r6.margins.phaseCrossovers[0].gmDb, 0, 1e-9, "GM at K = 6");
+  assert.equal(r6.checks.find((c) => c.id === "gm").pass, false);
   assert.equal(r6.closedLoop.verdict, "marginal");
   for (const [K, unstable] of [[1, 0], [3, 0], [5.9, 0], [6.1, 2], [9, 2], [60, 2]]) {
     assert.equal(F.analyze(third(K)).closedLoop.unstable, unstable, `K = ${K}`);
   }
   const r3 = F.analyze(third(3));
-  close(r3.margins.governing.gm.dB, 20 * Math.log10(2), 1e-9, "GM at K = 3");
+  close(r3.margins.governing.gmUpper.dB, 20 * Math.log10(2), 1e-9, "GM at K = 3");
   assert.ok(r3.margins.governing.pm.deg > 0);
 });
 
@@ -61,6 +63,65 @@ test("a delay adds exactly −ωτ of phase and every phase crossover is found e
     const d = F.responseAt(third(3, { delay: tau }), w).phaseDeg - F.responseAt(third(3), w).phaseDeg;
     close(d, (-w * tau * 180) / Math.PI, 1e-9, `delay phase at ${w}`);
   }
+});
+
+test("a conditionally stable loop reports an upper and a lower gain margin and checks both", () => {
+  const cond = (K) => ({ plant: { form: "zpk", zeros: [{ re: -0.1, im: 0 }, { re: -0.1, im: 0 }], poles: [{ re: 0, im: 0 }, { re: 0, im: 0 }, { re: 0, im: 0 }, { re: -10, im: 0 }, { re: -20, im: 0 }], gain: 1 }, K });
+  for (const K of [200, 400]) {
+    const r = F.analyze(cond(K));
+    assert.equal(r.closedLoop.verdict, "stable", `K = ${K}`);
+    const { gmUpper, gmLower } = r.margins.governing;
+    assert.ok(gmUpper.dB > 6 && gmLower.dB < -6, `K = ${K}: upper ${gmUpper.dB}, lower ${gmLower.dB}`);
+    assert.equal(r.checks.find((c) => c.id === "gm").pass, true, `K = ${K}`);
+    for (const g of [gmUpper, gmLower]) close(-20 * Math.log10(F.responseAt(cond(K), g.w).mag), g.dB, 1e-9, `GM at ${g.w}`);
+    const md = F.toMarkdown(cond(K), r);
+    assert.match(md, /\| Upper gain margin \(gain increase\) \| \d/);
+    assert.match(md, /\| Lower gain margin \(gain reduction\) \| −\d/);
+  }
+  const at200 = F.analyze(cond(200)).margins.governing;
+  close(at200.gmLower.dB, -25.76, 0.01, "lower margin at K = 200");
+  close(at200.gmUpper.dB, 29.28, 0.01, "upper margin at K = 200");
+  // Scaling K by the lower margin puts the loop on the boundary.
+  assert.equal(F.analyze(cond(200 * Math.pow(10, at200.gmLower.dB / 20))).closedLoop.verdict, "marginal");
+  // A lower margin inside the threshold fails the check.
+  assert.equal(F.analyze({ ...cond(200), thresholds: { gmDb: 30, pmDeg: 45, ms: 2 } }).checks.find((c) => c.id === "gm").pass, false);
+});
+
+test("a finite negative real DC gain is a phase crossover at ω = 0", () => {
+  const r = F.analyze({ plant: { form: "tf", num: [2], den: [1, -1] }, K: 1 });
+  assert.equal(r.closedLoop.verdict, "stable");
+  assert.deepEqual([...r.margins.phaseCrossovers.map((c) => c.w)], [0]);
+  close(r.margins.governing.gmLower.dB, -20 * Math.log10(2), 1e-12, "lower GM of 2/(s − 1)");
+  assert.equal(r.margins.governing.gmUpper, null);
+  assert.equal(r.checks.find((c) => c.id === "gm").pass, true);
+  assert.equal(F.analyze({ plant: { form: "tf", num: [2], den: [1, -1] }, K: 0.5 }).closedLoop.verdict, "marginal");
+  const neg = F.analyze({ plant: { form: "tf", num: [1], den: [1, 1] }, K: -0.5 });
+  assert.equal(neg.margins.phaseCrossovers[0].w, 0);
+  close(neg.margins.governing.gmUpper.dB, 20 * Math.log10(2), 1e-12, "upper GM of −0.5/(s + 1)");
+  // Biproper loop with L(∞) real negative: the crossover sits at ω = ∞.
+  const bi = F.analyze({ plant: { form: "tf", num: [-0.5, -2], den: [1, 1] }, K: 1 });
+  assert.equal(bi.margins.governing.gmUpper.w, Infinity);
+  close(bi.margins.governing.gmUpper.dB, 20 * Math.log10(2), 1e-12, "upper GM of L(∞) = −0.5");
+});
+
+test("a gain crossover with PM ≤ 0 leaves a delay margin of 0", () => {
+  const r = F.analyze({ plant: { form: "zpk", zeros: [], poles: [{ re: 0, im: 1 }, { re: 0, im: -1 }], gain: 1 }, K: 0.5 });
+  assert.equal(r.margins.gainCrossovers.length, 2);
+  assert.equal(r.closedLoop.verdict, "marginal");
+  const dm = r.margins.governing.delayMargin;
+  assert.equal(dm.seconds, 0);
+  close(dm.w, Math.sqrt(1.5), 1e-9, "zero-PM crossover");
+  assert.match(dm.message, /PM ≤ 0/);
+  assert.match(F.toMarkdown({ plant: { form: "zpk", zeros: [], poles: [{ re: 0, im: 1 }, { re: 0, im: -1 }], gain: 1 }, K: 0.5 }, r), /\| Delay margin \| 0 s \(A gain crossover/);
+});
+
+test("|T(0)| cancels common origin zeros and poles", () => {
+  // PI(1, 1)·s/(s + 1) = 1, so T = 1/2 at every frequency.
+  const x = { plant: { form: "tf", num: [1, 0], den: [1, 1] }, controller: { form: "preset", preset: "pi", params: { kp: 1, ti: 1 } }, K: 1 };
+  const r = F.analyze(x);
+  close(F.responseAt(x, 1).T, 0.5, 1e-12, "|T|");
+  assert.equal(r.margins.resonance.ok, true);
+  close(r.margins.resonance.mrDb, 0, 1e-9, "Mr");
 });
 
 test("sensitivity peaks, vector margin and bandwidth are consistent with the response", () => {
@@ -157,11 +218,20 @@ test("the engine runs without DOM, storage, clock or randomness and is determini
   assert.equal(run(G), run(F));
 });
 
-test("page is self-contained, shows the banner and registers its WebMCP tools", async () => {
+// The stub is flat YAML: one `key: value` per line, values plain, double-quoted or a flow list.
+const parseStub = (text) => Object.fromEntries(text.split("\n").filter((l) => l.trim() && !l.startsWith("#")).map((l) => {
+  const i = l.indexOf(": "), v = l.slice(i + 2).trim();
+  return [l.slice(0, i), v.startsWith("[") ? v.slice(1, -1).split(",").map((s) => s.trim()) : v.startsWith('"') ? JSON.parse(v) : v];
+}));
+
+test("the delivered page is a single file that loads no external resources", () => {
   assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+stylesheet|https?:\/\/(?!www\.w3\.org)/);
-  assert.match(html, /Exploration only\./);
-  const stub = await readFile(new URL("../data/visuals/frequency-response.yaml", import.meta.url), "utf8");
-  const names = /webmcp_tools: \[(.*)\]/.exec(stub)[1].split(",").map((s) => s.trim());
+});
+
+test("page registers the WebMCP tools its site stub declares", async () => {
+  const stub = parseStub(await readFile(new URL("../data/visuals/frequency-response.yaml", import.meta.url), "utf8"));
+  assert.equal(stub.html_path, "visuals/frequency-response/index.html");
+  const names = stub.webmcp_tools;
   const inert = () => new Proxy(function () {}, {
     get: (t, k) => (k === "modelContext" ? undefined : k === Symbol.iterator ? [][Symbol.iterator] : k === Symbol.toPrimitive ? () => 0 : inert()),
     set: () => true, apply: () => inert(), construct: () => inert(),
@@ -176,8 +246,8 @@ test("page is self-contained, shows the banner and registers its WebMCP tools", 
   assert.deepEqual(tools.map((t) => t.name), names);
   const call = async (name, input) => JSON.parse((await tools.find((t) => t.name === name).execute(input)).content[0].text);
   const a = await call("analyze_loop", third(6));
-  close(a.governing.gm.dB, 0, 1e-9, "analyze_loop GM");
-  close(a.governing.gm.w, Math.SQRT2, 1e-9, "analyze_loop ω_pc");
+  close(a.phase_crossovers[0].gmDb, 0, 1e-9, "analyze_loop GM");
+  close(a.phase_crossovers[0].w, Math.SQRT2, 1e-9, "analyze_loop ω_pc");
   assert.match((await call("analyze_loop", { K: 0 })).errors[0].message, /non-zero/);
   const cur = await call("get_current_system", {});
   assert.equal(cur.inputs.K, 3);

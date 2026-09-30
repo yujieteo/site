@@ -690,6 +690,13 @@ function makeGrid(loop, wMin, wMax, ppd, warnings) {
   return ws;
 }
 
+/** Lowest-order coefficients of the loop numerator and denominator after cancelling common factors of s. */
+function dcTerms(loop) {
+  const low = (p) => { let k = 0; while (k < p.length - 1 && p[p.length - 1 - k] === 0) k++; return k; };
+  const k = Math.min(low(loop.num), low(loop.den));
+  return { n0: loop.num[loop.num.length - 1 - k], d0: loop.den[loop.den.length - 1 - k] };
+}
+
 /* ---------- analysis ---------- */
 function analyze(inputs) {
   const built = buildLoop(inputs);
@@ -731,10 +738,21 @@ function analyze(inputs) {
       phaseCrossovers.push({ w, phaseDeg: target, magnitude: e.mag, gmDb: -toDb(e.mag) });
     }
   }
+  // L(0) and, without delay, L(∞) are real; when either is finite and negative the phase sits on −180° there.
+  const { n0, d0 } = dcTerms(loop);
+  const onTarget = (deg) => -180 + 360 * Math.round((deg + 180) / 360);
+  if (n0 !== 0 && d0 !== 0 && n0 / d0 < 0) phaseCrossovers.unshift({ w: 0, phaseDeg: onTarget(pts[0].phaseDeg), magnitude: Math.abs(n0 / d0), gmDb: -toDb(Math.abs(n0 / d0)) });
+  if (loop.tau === 0 && degree(loop.num) === degree(loop.den) && loop.gain < 0) phaseCrossovers.push({ w: Infinity, phaseDeg: onTarget(pts[pts.length - 1].phaseDeg), magnitude: Math.abs(loop.gain), gmDb: -toDb(Math.abs(loop.gain)) });
   const pmGov = gainCrossovers.length ? gainCrossovers.reduce((m, c) => (c.pmDeg < m.pmDeg ? c : m)) : null;
-  const gmGov = phaseCrossovers.length ? phaseCrossovers.reduce((m, c) => (Math.abs(c.gmDb) < Math.abs(m.gmDb) ? c : m)) : null;
+  // Upper margin: the smallest gain increase to instability; lower margin: the smallest gain reduction.
+  const ups = phaseCrossovers.filter((c) => c.gmDb >= 0), downs = phaseCrossovers.filter((c) => c.gmDb < 0);
+  const gmUpper = ups.length ? ups.reduce((m, c) => (c.gmDb < m.gmDb ? c : m)) : null;
+  const gmLower = downs.length ? downs.reduce((m, c) => (c.gmDb > m.gmDb ? c : m)) : null;
+  const noPm = gainCrossovers.filter((c) => c.pmDeg <= 0);
   const dms = gainCrossovers.filter((c) => c.delayMargin !== null);
-  const dmGov = dms.length ? dms.reduce((m, c) => (c.delayMargin < m.delayMargin ? c : m)) : null;
+  const dmGov = noPm.length
+    ? { seconds: 0, w: noPm[0].w, message: `A gain crossover at ${fmt(noPm[0].w)} rad/s has PM ≤ 0°, so any added delay leaves the loop at or past the stability boundary.` }
+    : dms.length ? (({ delayMargin, w }) => ({ seconds: delayMargin, w }))(dms.reduce((m, c) => (c.delayMargin < m.delayMargin ? c : m))) : null;
 
   // Peaks of |S| and |T|, refined by golden section around the grid maximum.
   const peak = (fn, label) => {
@@ -749,7 +767,6 @@ function analyze(inputs) {
   };
   const Ms = peak(sensitivity, "Ms"), Mt = peak(complementary, "Mt");
   // |T(0)| exactly from the polynomials (a delay does not change the DC gain).
-  const n0 = loop.num[loop.num.length - 1], d0 = loop.den[loop.den.length - 1];
   const tLow = d0 === 0 ? 1 : n0 + d0 === 0 ? Infinity : Math.abs(n0 / (n0 + d0));
   let resonance = null, bandwidth = null;
   if (Mt.ok && tLow > 0 && Number.isFinite(tLow)) {
@@ -795,8 +812,9 @@ function analyze(inputs) {
   if (closedLoop.available && closedLoop.verdict === "unstable") warnings.push({ code: "cl-unstable", message: `The closed loop is unstable with ${closedLoop.unstable} right-half-plane pole(s); the margins describe the loop, not a stable design.` });
 
   const th = x.thresholds;
+  const gmLimit = !gmLower ? gmUpper : !gmUpper ? gmLower : gmUpper.gmDb <= -gmLower.gmDb ? gmUpper : gmLower;
   const checks = [
-    { id: "gm", label: "Gain margin ≥ threshold", threshold: th.gmDb, unit: "dB", value: gmGov ? gmGov.gmDb : null, pass: gmGov ? gmGov.gmDb >= th.gmDb : true, note: gmGov ? "" : "no phase crossover (infinite gain margin)" },
+    { id: "gm", label: "Gain margin: upper ≥ threshold, lower ≤ −threshold", threshold: th.gmDb, unit: "dB", value: gmLimit ? gmLimit.gmDb : null, pass: (!gmUpper || gmUpper.gmDb >= th.gmDb) && (!gmLower || gmLower.gmDb <= -th.gmDb), note: gmLimit ? "" : "no phase crossover (infinite gain margin)" },
     { id: "pm", label: "Phase margin ≥ threshold", threshold: th.pmDeg, unit: "deg", value: pmGov ? pmGov.pmDeg : null, pass: pmGov ? pmGov.pmDeg >= th.pmDeg : null, note: pmGov ? "" : "no gain crossover" },
     { id: "ms", label: "Ms ≤ threshold", threshold: th.ms, unit: "", value: Ms.ok ? Ms.value : null, pass: Ms.ok ? Ms.value <= th.ms : false, note: Ms.ok ? "" : Ms.message },
   ].map((c) => ({ ...c, source: THRESHOLD_NOTE }));
@@ -809,8 +827,9 @@ function analyze(inputs) {
       gainCrossovers, phaseCrossovers,
       governing: {
         pm: pmGov && { deg: pmGov.pmDeg, w: pmGov.w },
-        gm: gmGov && { dB: gmGov.gmDb, w: gmGov.w },
-        delayMargin: dmGov && { seconds: dmGov.delayMargin, w: dmGov.w },
+        gmUpper: gmUpper && { dB: gmUpper.gmDb, w: gmUpper.w },
+        gmLower: gmLower && { dB: gmLower.gmDb, w: gmLower.w },
+        delayMargin: dmGov,
       },
       Ms, Mt, vectorMargin: Ms.ok ? { ok: true, value: 1 / Ms.value, w: Ms.w } : { ok: false, message: Ms.message },
       resonance, bandwidth,
@@ -926,9 +945,10 @@ function toMarkdown(inputs, results) {
     lines.push(`- Frequency grid: ${F(r.grid.wMin)} to ${F(r.grid.wMax)}, ${r.grid.points} points (${r.grid.pointsPerDecade} per decade${r.grid.auto ? ", auto-ranged from pole/zero corners" : ""})`, "");
     const g = r.margins.governing;
     lines.push("## Margins (governing)", "", "| Quantity | Value | At |", "|---|---|---|");
-    lines.push(`| Gain margin | ${g.gm ? `${fmt(g.gm.dB)} dB` : "∞ (no phase crossover)"} | ${g.gm ? F(g.gm.w) : "—"} |`);
+    lines.push(`| Upper gain margin (gain increase) | ${g.gmUpper ? `${fmt(g.gmUpper.dB)} dB` : "∞ (no phase crossover with \\|L\\| < 1)"} | ${g.gmUpper ? F(g.gmUpper.w) : "—"} |`);
+    lines.push(`| Lower gain margin (gain reduction) | ${g.gmLower ? `${fmt(g.gmLower.dB)} dB` : "none (no phase crossover with \\|L\\| > 1)"} | ${g.gmLower ? F(g.gmLower.w) : "—"} |`);
     lines.push(`| Phase margin | ${g.pm ? `${fmt(g.pm.deg)}°` : "— (no gain crossover)"} | ${g.pm ? F(g.pm.w) : "—"} |`);
-    lines.push(`| Delay margin | ${g.delayMargin ? `${fmt(g.delayMargin.seconds)} s` : "—"} | ${g.delayMargin ? F(g.delayMargin.w) : "—"} |`);
+    lines.push(`| Delay margin | ${g.delayMargin ? `${fmt(g.delayMargin.seconds)} s${g.delayMargin.message ? ` (${g.delayMargin.message})` : ""}` : "—"} | ${g.delayMargin ? F(g.delayMargin.w) : "—"} |`);
     const pk = (p, fmtv) => (p.ok ? fmtv(p) : p.message);
     lines.push(`| Ms = max\\|S\\| | ${pk(r.margins.Ms, (p) => `${fmt(p.value)} (${fmt(toDb(p.value))} dB)${p.atEdge ? " at range edge" : ""}`)} | ${r.margins.Ms.ok ? F(r.margins.Ms.w) : "—"} |`);
     lines.push(`| Mt = max\\|T\\| | ${pk(r.margins.Mt, (p) => `${fmt(p.value)} (${fmt(toDb(p.value))} dB)${p.atEdge ? " at range edge" : ""}`)} | ${r.margins.Mt.ok ? F(r.margins.Mt.w) : "—"} |`);
@@ -1007,15 +1027,28 @@ function selfTests() {
   // K/(s(s+1)(s+2)): critical gain 6 at √2.
   const third = (K) => normalise({ plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K });
   const r6 = analyze(third(6));
-  add("K/(s(s+1)(s+2)), K = 6: phase crossover at √2 rad/s", r6.margins.governing.gm.w, Math.SQRT2, 1e-9, true);
-  add("K = 6: gain margin 0 dB (critical gain)", r6.margins.governing.gm.dB, 0, 1e-9);
+  add("K/(s(s+1)(s+2)), K = 6: phase crossover at √2 rad/s", r6.margins.phaseCrossovers[0].w, Math.SQRT2, 1e-9, true);
+  add("K = 6: gain margin 0 dB (critical gain)", r6.margins.phaseCrossovers[0].gmDb, 0, 1e-9);
   const r3 = analyze(third(3));
-  add("K = 3: gain margin 20·log₁₀2 = 6.0206 dB", r3.margins.governing.gm.dB, toDb(2), 1e-9);
+  add("K = 3: gain margin 20·log₁₀2 = 6.0206 dB", r3.margins.governing.gmUpper.dB, toDb(2), 1e-9);
   add("K = 3: critical gain K/|L(ω_pc)| = 6", 3 / r3.margins.phaseCrossovers[0].magnitude, 6, 1e-9, true);
   addBool("K = 3: closed loop stable (0 unstable poles)", r3.closedLoop.available && r3.closedLoop.verdict === "stable", `verdict ${r3.closedLoop.verdict}`);
   addBool("K = 6: closed-loop poles ±j√2 on the jω axis (marginal)", r6.closedLoop.verdict === "marginal" && r6.closedLoop.poles.some((p) => Math.abs(p.im - Math.SQRT2) < 1e-9), `verdict ${r6.closedLoop.verdict}; poles ${r6.closedLoop.poles.map((p) => fmtC(p, 10)).join(", ")}`);
   const r9 = analyze(third(9));
   addBool("K = 9: closed loop unstable with 2 right-half-plane poles", r9.closedLoop.unstable === 2, `${r9.closedLoop.unstable} unstable`);
+
+  // Conditionally stable loop: an upper and a lower gain margin, both checked against the threshold.
+  const cond = analyze(normalise({ plant: { form: "zpk", zeros: [cx(-0.1), cx(-0.1)], poles: [cx(0), cx(0), cx(0), cx(-10), cx(-20)], gain: 1 }, K: 200 }));
+  addBool("Conditional loop, K = 200: stable with upper GM > 0 dB and lower GM < 0 dB, GM check passes", cond.closedLoop.verdict === "stable" && cond.margins.governing.gmUpper.dB > 6 && cond.margins.governing.gmLower.dB < -6 && cond.checks[0].pass, `upper ${fmt(cond.margins.governing.gmUpper.dB)} dB, lower ${fmt(cond.margins.governing.gmLower.dB)} dB`);
+  // Negative real DC gain: a phase crossover at ω = 0.
+  const dc = analyze(tf([2], [1, -1]));
+  add("2/(s − 1): lower gain margin −6.0206 dB at ω = 0", dc.margins.governing.gmLower.dB, -toDb(2), 1e-12);
+  // A zero-PM crossover leaves no delay margin.
+  const osc = analyze(normalise({ plant: { form: "zpk", zeros: [], poles: [cx(0, 1), cx(0, -1)], gain: 1 }, K: 0.5 }));
+  add("0.5/(s² + 1): delay margin 0 s (a gain crossover has PM 0°)", osc.margins.governing.delayMargin.seconds, 0, 0);
+  // Origin zeros and poles cancel before the DC gain is read.
+  const pis = analyze(normalise({ plant: { form: "tf", num: [1, 0], den: [1, 1] }, controller: { form: "preset", preset: "pi", params: { kp: 1, ti: 1 } }, K: 1 }));
+  add("PI(1, 1)·s/(s + 1) = 1: resonant peak 0 dB relative to |T(0)| = 0.5", pis.margins.resonance.mrDb, 0, 1e-9);
 
   // Root finder.
   const known = [cx(-1), cx(-2), cx(-3), cx(-1, 2), cx(-1, -2)];
@@ -1258,9 +1291,10 @@ function statItems(r) {
   const cls = (c) => (c && c.pass === false ? ' class="fail"' : "");
   const cl = r.closedLoop;
   return [
-    `<li${cls(checks.gm)}><b>${g.gm ? `${fmt(g.gm.dB)} dB` : "∞"}</b><span>Gain margin${g.gm ? ` at ${F_(g.gm.w)}` : ", no phase crossover"}</span></li>`,
+    `<li${g.gmUpper && g.gmUpper.dB < checks.gm.threshold ? ' class="fail"' : ""}><b>${g.gmUpper ? `${fmt(g.gmUpper.dB)} dB` : "∞"}</b><span>Upper gain margin${g.gmUpper ? ` at ${F_(g.gmUpper.w)}` : ", none"}</span></li>`,
+    `<li${g.gmLower && g.gmLower.dB > -checks.gm.threshold ? ' class="fail"' : ""}><b>${g.gmLower ? `${fmt(g.gmLower.dB)} dB` : "—"}</b><span>Lower gain margin${g.gmLower ? ` at ${F_(g.gmLower.w)}` : ", none"}</span></li>`,
     `<li${cls(checks.pm)}><b>${g.pm ? phText(g.pm.deg) : "—"}</b><span>Phase margin${g.pm ? ` at ${F_(g.pm.w)}` : ", no gain crossover"}</span></li>`,
-    `<li><b>${g.delayMargin ? `${fmt(g.delayMargin.seconds)} s` : "—"}</b><span>Delay margin</span></li>`,
+    `<li${g.delayMargin && g.delayMargin.message ? ' class="fail"' : ""}><b>${g.delayMargin ? `${fmt(g.delayMargin.seconds)} s` : "—"}</b><span>Delay margin${g.delayMargin && g.delayMargin.message ? `: ${esc(g.delayMargin.message)}` : ""}</span></li>`,
     `<li${cls(checks.ms)}><b>${r.margins.Ms.ok ? fmt(r.margins.Ms.value) : "—"}</b><span>Ms = max|S|${r.margins.Ms.ok ? `, vector margin ${fmt(1 / r.margins.Ms.value)}` : ""}</span></li>`,
     `<li><b>${r.margins.Mt.ok ? fmt(r.margins.Mt.value) : "—"}</b><span>Mt = max|T|${r.margins.resonance.ok ? `, Mr ${fmt(r.margins.resonance.mrDb)} dB` : ""}</span></li>`,
     `<li><b>${r.margins.bandwidth.ok ? F_(r.margins.bandwidth.w) : "—"}</b><span>−3 dB bandwidth of T</span></li>`,
@@ -1397,7 +1431,7 @@ function bodeSVG(W) {
     }
     for (const c of result.margins.phaseCrossovers) {
       if (!inX(c.w)) continue;
-      const labelled = gov.gm && gov.gm.w === c.w;
+      const labelled = [gov.gmUpper, gov.gmLower].some((gm) => gm && gm.w === c.w);
       const x = X(F.freqTo(c.w, u.freq)), ym = Y[0](mv(c.magnitude)), y0 = Y[0](zero), yc = Y[1](phv(c.phaseDeg));
       g.push(`<circle cx="${x}" cy="${yc}" r="3.5" style="fill:var(--bad)"/>`);
       g.push(`<line x1="${x}" x2="${x}" y1="${top[0]}" y2="${yc}" style="stroke:var(--bad);stroke-opacity:${labelled ? ".35" : ".15"}"/>`);
