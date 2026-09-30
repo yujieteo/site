@@ -37,7 +37,7 @@
   "chs": {
    "method": "exact",
    "stated": 0.0001,
-   "measured": 1.88e-07,
+   "measured": 1.63e-07,
    "cases": 3,
    "pass": true,
    "note": "exact solution; the stated bound is the reference's own accuracy",
@@ -50,9 +50,9 @@
      },
      "radii": [],
      "J_formula": 1479036.689,
-     "J_reference": 1479036.702,
-     "reference_error": 9.87e-08,
-     "rel_error": -9.019e-09
+     "J_reference": 1479036.697,
+     "reference_error": 6.15e-08,
+     "rel_error": -5.577e-09
     },
     {
      "shape": "chs",
@@ -62,9 +62,9 @@
      },
      "radii": [],
      "J_formula": 5796238.446,
-     "J_reference": 5796239.536,
-     "reference_error": 1.94e-06,
-     "rel_error": -1.881e-07
+     "J_reference": 5796239.392,
+     "reference_error": 1.77e-06,
+     "rel_error": -1.633e-07
     },
     {
      "shape": "chs",
@@ -232,9 +232,9 @@
       0.0
      ],
      "J_formula": 1882384.0,
-     "J_reference": 1899863.179,
-     "reference_error": 6.12e-05,
-     "rel_error": -0.0092
+     "J_reference": 1899869.685,
+     "reference_error": 5.01e-05,
+     "rel_error": -0.009204
     },
     {
      "shape": "rhs",
@@ -254,9 +254,9 @@
       0.0
      ],
      "J_formula": 1893308.055,
-     "J_reference": 1903935.608,
-     "reference_error": 3.02e-05,
-     "rel_error": -0.005582
+     "J_reference": 1903941.88,
+     "reference_error": 2.32e-05,
+     "rel_error": -0.005585
     },
     {
      "shape": "rhs",
@@ -276,9 +276,9 @@
       0.0
      ],
      "J_formula": 4286875.0,
-     "J_reference": 4394518.13,
-     "reference_error": 0.000138,
-     "rel_error": -0.02449
+     "J_reference": 4394541.868,
+     "reference_error": 0.000105,
+     "rel_error": -0.0245
     },
     {
      "shape": "rhs",
@@ -298,8 +298,8 @@
       0.0
      ],
      "J_formula": 4337456.378,
-     "J_reference": 4405725.729,
-     "reference_error": 7.27e-05,
+     "J_reference": 4405752.485,
+     "reference_error": 5.19e-05,
      "rel_error": -0.0155
     },
     {
@@ -320,8 +320,8 @@
       0.0
      ],
      "J_formula": 7290000.0,
-     "J_reference": 7709049.199,
-     "reference_error": 0.000208,
+     "J_reference": 7709054.873,
+     "reference_error": 0.000209,
      "rel_error": -0.05436
     },
     {
@@ -342,8 +342,8 @@
       0.0
      ],
      "J_formula": 7381212.347,
-     "J_reference": 7660346.721,
-     "reference_error": 9.75e-05,
+     "J_reference": 7660342.737,
+     "reference_error": 9.95e-05,
      "rel_error": -0.03644
     },
     {
@@ -364,9 +364,9 @@
       0.0
      ],
      "J_formula": 5088043.459,
-     "J_reference": 5119236.744,
-     "reference_error": 3.51e-05,
-     "rel_error": -0.006093
+     "J_reference": 5119251.243,
+     "reference_error": 3.13e-05,
+     "rel_error": -0.006096
     },
     {
      "shape": "rhs",
@@ -386,9 +386,9 @@
       0.0
      ],
      "J_formula": 5108238.896,
-     "J_reference": 5127114.833,
-     "reference_error": 1.65e-05,
-     "rel_error": -0.003682
+     "J_reference": 5127125.116,
+     "reference_error": 1.43e-05,
+     "rel_error": -0.003684
     },
     {
      "shape": "rhs",
@@ -408,9 +408,9 @@
       0.0
      ],
      "J_formula": 11833642.24,
-     "J_reference": 12027049.91,
-     "reference_error": 9.76e-05,
-     "rel_error": -0.01608
+     "J_reference": 12027115.82,
+     "reference_error": 7.54e-05,
+     "rel_error": -0.01609
     },
     {
      "shape": "rhs",
@@ -430,8 +430,8 @@
       0.0
      ],
      "J_formula": 11935300.93,
-     "J_reference": 12056911.25,
-     "reference_error": 4.71e-05,
+     "J_reference": 12056966.45,
+     "reference_error": 3.73e-05,
      "rel_error": -0.01009
     },
     {
@@ -452,9 +452,9 @@
       0.0
      ],
      "J_formula": 20886428.57,
-     "J_reference": 21649088.32,
-     "reference_error": 0.000163,
-     "rel_error": -0.03523
+     "J_reference": 21649309.77,
+     "reference_error": 0.000124,
+     "rel_error": -0.03524
     },
     {
      "shape": "rhs",
@@ -474,8 +474,8 @@
       0.0
      ],
      "J_formula": 21137194.63,
-     "J_reference": 21641999.42,
-     "reference_error": 8.57e-05,
+     "J_reference": 21642188.95,
+     "reference_error": 6.08e-05,
      "rel_error": -0.02333
     },
     {
@@ -496,9 +496,9 @@
       0.0
      ],
      "J_formula": 12268645.29,
-     "J_reference": 12314012.39,
-     "reference_error": 2.13e-05,
-     "rel_error": -0.003684
+     "J_reference": 12314036.42,
+     "reference_error": 2.01e-05,
+     "rel_error": -0.003686
     },
     {
      "shape": "rhs",
@@ -518,9 +518,9 @@
       0.0
      ],
      "J_formula": 12298141.17,
-     "J_reference": 12325731.3,
-     "reference_error": 1.1e-05,
-     "rel_error": -0.002238
+     "J_reference": 12325748.74,
+     "reference_error": 9.91e-06,
+     "rel_error": -0.00224
     },
     {
      "shape": "rhs",
@@ -540,9 +540,9 @@
       0.0
      ],
      "J_formula": 28737257.65,
-     "J_reference": 29022908.17,
-     "reference_error": 5.09e-05,
-     "rel_error": -0.009842
+     "J_reference": 29023033.74,
+     "reference_error": 5.08e-05,
+     "rel_error": -0.009847
     },
     {
      "shape": "rhs",
@@ -562,9 +562,9 @@
       0.0
      ],
      "J_formula": 28890083.58,
-     "J_reference": 29071996.92,
-     "reference_error": 2.4e-05,
-     "rel_error": -0.006257
+     "J_reference": 29072076.54,
+     "reference_error": 2.43e-05,
+     "rel_error": -0.00626
     },
     {
      "shape": "rhs",
@@ -584,9 +584,9 @@
       0.0
      ],
      "J_formula": 51333750.0,
-     "J_reference": 52491734.32,
-     "reference_error": 9.89e-05,
-     "rel_error": -0.02206
+     "J_reference": 52492203.39,
+     "reference_error": 7.74e-05,
+     "rel_error": -0.02207
     },
     {
      "shape": "rhs",
@@ -606,9 +606,406 @@
       0.0
      ],
      "J_formula": 51745714.24,
-     "J_reference": 52532398.4,
-     "reference_error": 4.72e-05,
+     "J_reference": 52532710.68,
+     "reference_error": 3.73e-05,
      "rel_error": -0.01498
+    }
+   ]
+  },
+  "open-thin-wall": {
+   "method": "Vlasov thin-walled open section",
+   "stated": 0.06,
+   "measured": 0.0567,
+   "cases": 16,
+   "pass": true,
+   "note": "sharp-cornered I, channel, Z, tee, angle and cross sections with walls up to 0.15 of the smaller outside dimension; the formula overestimates J except for the cross",
+   "checks": [
+    {
+     "shape": "ishape",
+     "dims": {
+      "b": 150.0,
+      "h": 300.0,
+      "tf": 10.7,
+      "tw": 7.1
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 157018.8508,
+     "J_reference": 153249.5917,
+     "reference_error": 0.000134,
+     "rel_error": 0.0246
+    },
+    {
+     "shape": "ishape",
+     "dims": {
+      "b": 300.0,
+      "h": 300.0,
+      "tf": 19.0,
+      "tw": 11.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 1496470.333,
+     "J_reference": 1455215.774,
+     "reference_error": 9.84e-05,
+     "rel_error": 0.02835
+    },
+    {
+     "shape": "ishape",
+     "dims": {
+      "b": 200.0,
+      "h": 600.0,
+      "tf": 10.0,
+      "tw": 6.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 175813.3333,
+     "J_reference": 172718.8071,
+     "reference_error": 8.72e-05,
+     "rel_error": 0.01792
+    },
+    {
+     "shape": "ishape",
+     "dims": {
+      "b": 100.0,
+      "h": 100.0,
+      "tf": 15.0,
+      "tw": 15.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 320625.0,
+     "J_reference": 311967.6847,
+     "reference_error": 0.000415,
+     "rel_error": 0.02775
+    },
+    {
+     "shape": "channel",
+     "dims": {
+      "b": 100.0,
+      "h": 300.0,
+      "tf": 15.0,
+      "tw": 9.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 284130.0,
+     "J_reference": 273470.9316,
+     "reference_error": 9.52e-05,
+     "rel_error": 0.03898
+    },
+    {
+     "shape": "channel",
+     "dims": {
+      "b": 60.0,
+      "h": 100.0,
+      "tf": 9.0,
+      "tw": 9.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 49086.0,
+     "J_reference": 48652.0149,
+     "reference_error": 0.000308,
+     "rel_error": 0.00892
+    },
+    {
+     "shape": "zed",
+     "dims": {
+      "b": 80.0,
+      "h": 200.0,
+      "tf": 10.0,
+      "tw": 8.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 83093.33333,
+     "J_reference": 81755.99815,
+     "reference_error": 0.000138,
+     "rel_error": 0.01636
+    },
+    {
+     "shape": "zed",
+     "dims": {
+      "b": 60.0,
+      "h": 100.0,
+      "tf": 9.0,
+      "tw": 9.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 49086.0,
+     "J_reference": 48651.71068,
+     "reference_error": 0.00031,
+     "rel_error": 0.008926
+    },
+    {
+     "shape": "tee",
+     "dims": {
+      "b": 150.0,
+      "h": 150.0,
+      "tf": 12.0,
+      "tw": 8.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 110976.0,
+     "J_reference": 107576.8148,
+     "reference_error": 0.000138,
+     "rel_error": 0.0316
+    },
+    {
+     "shape": "tee",
+     "dims": {
+      "b": 100.0,
+      "h": 100.0,
+      "tf": 15.0,
+      "tw": 15.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 216562.5,
+     "J_reference": 206912.0422,
+     "reference_error": 0.000348,
+     "rel_error": 0.04664
+    },
+    {
+     "shape": "angle",
+     "dims": {
+      "b": 100.0,
+      "h": 100.0,
+      "t": 10.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 63333.33333,
+     "J_reference": 61952.56978,
+     "reference_error": 0.000208,
+     "rel_error": 0.02229
+    },
+    {
+     "shape": "angle",
+     "dims": {
+      "b": 150.0,
+      "h": 90.0,
+      "t": 6.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 16848.0,
+     "J_reference": 16669.11507,
+     "reference_error": 0.000192,
+     "rel_error": 0.01073
+    },
+    {
+     "shape": "angle",
+     "dims": {
+      "b": 60.0,
+      "h": 60.0,
+      "t": 9.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 26973.0,
+     "J_reference": 26068.16996,
+     "reference_error": 0.000138,
+     "rel_error": 0.03471
+    },
+    {
+     "shape": "cross",
+     "dims": {
+      "b": 200.0,
+      "h": 200.0,
+      "tb": 10.0,
+      "th": 10.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 130000.0,
+     "J_reference": 132451.4439,
+     "reference_error": 0.000407,
+     "rel_error": -0.01851
+    },
+    {
+     "shape": "cross",
+     "dims": {
+      "b": 200.0,
+      "h": 200.0,
+      "tb": 30.0,
+      "th": 30.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 3330000.0,
+     "J_reference": 3530013.169,
+     "reference_error": 0.000861,
+     "rel_error": -0.05666
+    },
+    {
+     "shape": "cross",
+     "dims": {
+      "b": 300.0,
+      "h": 150.0,
+      "tb": 12.0,
+      "th": 20.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 540800.0,
+     "J_reference": 553956.942,
+     "reference_error": 0.000364,
+     "rel_error": -0.02375
     }
    ]
   },
@@ -638,8 +1035,8 @@
       0.0
      ],
      "J_formula": 1890326.448,
-     "J_reference": 1898618.231,
-     "reference_error": 6.92e-05,
+     "J_reference": 1898618.66,
+     "reference_error": 5.42e-05,
      "rel_error": -0.004367
     },
     {
@@ -660,8 +1057,8 @@
       2.0
      ],
      "J_formula": 1904378.168,
-     "J_reference": 1908042.162,
-     "reference_error": 6.09e-07,
+     "J_reference": 1908041.686,
+     "reference_error": 2.79e-07,
      "rel_error": -0.00192
     },
     {
@@ -682,8 +1079,8 @@
       4.0
      ],
      "J_formula": 1915936.464,
-     "J_reference": 1918482.091,
-     "reference_error": 2.93e-07,
+     "J_reference": 1918481.945,
+     "reference_error": 1.28e-07,
      "rel_error": -0.001327
     },
     {
@@ -704,8 +1101,8 @@
       0.0
      ],
      "J_formula": 4330694.191,
-     "J_reference": 4385084.077,
-     "reference_error": 0.000163,
+     "J_reference": 4385089.547,
+     "reference_error": 0.000116,
      "rel_error": -0.0124
     },
     {
@@ -726,9 +1123,9 @@
       5.0
      ],
      "J_formula": 4389875.299,
-     "J_reference": 4417220.243,
-     "reference_error": 1.71e-06,
-     "rel_error": -0.006191
+     "J_reference": 4417217.64,
+     "reference_error": 7.01e-07,
+     "rel_error": -0.00619
     },
     {
      "shape": "rhs",
@@ -748,8 +1145,8 @@
       10.0
      ],
      "J_formula": 4409420.335,
-     "J_reference": 4429792.356,
-     "reference_error": 1.05e-06,
+     "J_reference": 4429791.809,
+     "reference_error": 5.24e-07,
      "rel_error": -0.004599
     },
     {
@@ -770,8 +1167,8 @@
       0.0
      ],
      "J_formula": 7428554.102,
-     "J_reference": 7659017.199,
-     "reference_error": 0.000239,
+     "J_reference": 7659015.064,
+     "reference_error": 0.00024,
      "rel_error": -0.03009
     },
     {
@@ -792,8 +1189,8 @@
       10.0
      ],
      "J_formula": 7481684.276,
-     "J_reference": 7612204.041,
-     "reference_error": 2.41e-06,
+     "J_reference": 7612204.598,
+     "reference_error": 2.42e-06,
      "rel_error": -0.01715
     },
     {
@@ -814,8 +1211,8 @@
       20.0
      ],
      "J_formula": 7216668.231,
-     "J_reference": 7316379.197,
-     "reference_error": 1.98e-06,
+     "J_reference": 7316379.534,
+     "reference_error": 1.97e-06,
      "rel_error": -0.01363
     },
     {
@@ -836,9 +1233,9 @@
       0.0
      ],
      "J_formula": 5102390.351,
-     "J_reference": 5117107.154,
-     "reference_error": 4.02e-05,
-     "rel_error": -0.002876
+     "J_reference": 5117110.956,
+     "reference_error": 3.4e-05,
+     "rel_error": -0.002877
     },
     {
      "shape": "rhs",
@@ -858,8 +1255,8 @@
       2.0
      ],
      "J_formula": 5128611.982,
-     "J_reference": 5135036.21,
-     "reference_error": 4.03e-07,
+     "J_reference": 5135035.409,
+     "reference_error": 1.98e-07,
      "rel_error": -0.001251
     },
     {
@@ -880,9 +1277,9 @@
       4.0
      ],
      "J_formula": 5151492.548,
-     "J_reference": 5155923.892,
-     "reference_error": 1.9e-07,
-     "rel_error": -0.0008595
+     "J_reference": 5155923.655,
+     "reference_error": 7.97e-08,
+     "rel_error": -0.0008594
     },
     {
      "shape": "rhs",
@@ -902,9 +1299,9 @@
       0.0
      ],
      "J_formula": 11914960.39,
-     "J_reference": 12011705.87,
-     "reference_error": 0.000115,
-     "rel_error": -0.008054
+     "J_reference": 12011721.35,
+     "reference_error": 8.26e-05,
+     "rel_error": -0.008056
     },
     {
      "shape": "rhs",
@@ -924,8 +1321,8 @@
       5.0
      ],
      "J_formula": 12039308.8,
-     "J_reference": 12087200.42,
-     "reference_error": 1.18e-06,
+     "J_reference": 12087194.28,
+     "reference_error": 5.05e-07,
      "rel_error": -0.003962
     },
     {
@@ -946,8 +1343,8 @@
       10.0
      ],
      "J_formula": 12111016.3,
-     "J_reference": 12146708.04,
-     "reference_error": 6.81e-07,
+     "J_reference": 12146706.65,
+     "reference_error": 3.2e-07,
      "rel_error": -0.002938
     },
     {
@@ -968,9 +1365,9 @@
       0.0
      ],
      "J_formula": 21158367.63,
-     "J_reference": 21573014.33,
-     "reference_error": 0.000194,
-     "rel_error": -0.01922
+     "J_reference": 21573129.54,
+     "reference_error": 0.00014,
+     "rel_error": -0.01923
     },
     {
      "shape": "rhs",
@@ -990,8 +1387,8 @@
       10.0
      ],
      "J_formula": 21401444.8,
-     "J_reference": 21636426.0,
-     "reference_error": 2.87e-06,
+     "J_reference": 21636411.45,
+     "reference_error": 1.31e-06,
      "rel_error": -0.01086
     },
     {
@@ -1012,8 +1409,8 @@
       20.0
      ],
      "J_formula": 21222988.71,
-     "J_reference": 21407690.66,
-     "reference_error": 2.02e-06,
+     "J_reference": 21407688.73,
+     "reference_error": 1.1e-06,
      "rel_error": -0.008628
     },
     {
@@ -1034,9 +1431,9 @@
       0.0
      ],
      "J_formula": 12289374.0,
-     "J_reference": 12311020.63,
-     "reference_error": 2.43e-05,
-     "rel_error": -0.001758
+     "J_reference": 12311029.1,
+     "reference_error": 2.17e-05,
+     "rel_error": -0.001759
     },
     {
      "shape": "rhs",
@@ -1056,9 +1453,9 @@
       2.0
      ],
      "J_formula": 12327791.22,
-     "J_reference": 12337498.66,
-     "reference_error": 2.51e-07,
-     "rel_error": -0.0007868
+     "J_reference": 12337497.42,
+     "reference_error": 1.19e-07,
+     "rel_error": -0.0007867
     },
     {
      "shape": "rhs",
@@ -1078,9 +1475,9 @@
       4.0
      ],
      "J_formula": 12362121.62,
-     "J_reference": 12368966.17,
-     "reference_error": 1.19e-07,
-     "rel_error": -0.0005534
+     "J_reference": 12368965.94,
+     "reference_error": 5.48e-08,
+     "rel_error": -0.0005533
     },
     {
      "shape": "rhs",
@@ -1100,9 +1497,9 @@
       0.0
      ],
      "J_formula": 28855416.99,
-     "J_reference": 29002071.28,
-     "reference_error": 5.82e-05,
-     "rel_error": -0.005057
+     "J_reference": 29002146.15,
+     "reference_error": 5.6e-05,
+     "rel_error": -0.005059
     },
     {
      "shape": "rhs",
@@ -1122,8 +1519,8 @@
       5.0
      ],
      "J_formula": 29044968.3,
-     "J_reference": 29121513.57,
-     "reference_error": 7.01e-07,
+     "J_reference": 29121509.16,
+     "reference_error": 4.05e-07,
      "rel_error": -0.002628
     },
     {
@@ -1144,8 +1541,8 @@
       10.0
      ],
      "J_formula": 29170983.27,
-     "J_reference": 29230241.83,
-     "reference_error": 4.67e-07,
+     "J_reference": 29230241.07,
+     "reference_error": 2.5e-07,
      "rel_error": -0.002027
     },
     {
@@ -1166,9 +1563,9 @@
       0.0
      ],
      "J_formula": 51733586.6,
-     "J_reference": 52393250.37,
-     "reference_error": 0.000118,
-     "rel_error": -0.01259
+     "J_reference": 52393543.76,
+     "reference_error": 8.57e-05,
+     "rel_error": -0.0126
     },
     {
      "shape": "rhs",
@@ -1188,9 +1585,9 @@
       10.0
      ],
      "J_formula": 52169832.73,
-     "J_reference": 52574790.44,
-     "reference_error": 2.07e-06,
-     "rel_error": -0.007703
+     "J_reference": 52574765.56,
+     "reference_error": 9.66e-07,
+     "rel_error": -0.007702
     },
     {
      "shape": "rhs",
@@ -1210,8 +1607,8 @@
       20.0
      ],
      "J_formula": 52106062.43,
-     "J_reference": 52442823.55,
-     "reference_error": 1.54e-06,
+     "J_reference": 52442821.21,
+     "reference_error": 8.31e-07,
      "rel_error": -0.006421
     }
    ]

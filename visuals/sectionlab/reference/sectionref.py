@@ -266,8 +266,8 @@ def fillet(verts, radii):
         bl = math.hypot(*bis)
         dist = r / math.sin(interior / 2)
         convex = cross > 0
-        s = 1 if convex else -1
-        centre = (px + s * bis[0] / bl * dist, py + s * bis[1] / bl * dist)
+        # u2 − u1 points to the fillet centre for convex and concave corners alike.
+        centre = (px + bis[0] / bl * dist, py + bis[1] / bl * dist)
         corners.append((t1, t2, (centre, r, convex)))
     tangent_points = []
     pieces = []
@@ -346,7 +346,33 @@ def shape_geometry(shape, d, radii):
         r, ri = d["d"] / 2, d["d"] / 2 - d["t"]
         return ([(1.0, ("disk", (0.0, 0.0), r)), (-1.0, ("disk", (0.0, 0.0), ri))],
                 [[("arc", (0.0, 0.0), r, 0.0, TAU)], [("arc", (0.0, 0.0), ri, TAU, 0.0)]])
-    raise ValueError(f"reference has no geometry for shape {shape!r}")
+    # Phase 2: parallel-flange rolled and built-up shapes, outlines listed counter-clockwise.
+    if shape == "ishape":
+        b, h, tf, tw = d["b"], d["h"], d["tf"], d["tw"]
+        outline = [(0, 0), (b, 0), (b, tf), ((b + tw) / 2, tf), ((b + tw) / 2, h - tf), (b, h - tf), (b, h), (0, h),
+                   (0, h - tf), ((b - tw) / 2, h - tf), ((b - tw) / 2, tf), (0, tf)]
+    elif shape == "channel":
+        b, h, tf, tw = d["b"], d["h"], d["tf"], d["tw"]
+        outline = [(0, 0), (b, 0), (b, tf), (tw, tf), (tw, h - tf), (b, h - tf), (b, h), (0, h)]
+    elif shape == "angle":
+        b, h, t = d["b"], d["h"], d["t"]
+        outline = [(0, 0), (b, 0), (b, t), (t, t), (t, h), (0, h)]
+    elif shape == "tee":
+        b, h, tf, tw = d["b"], d["h"], d["tf"], d["tw"]
+        x0 = (b - tw) / 2
+        outline = [(x0, 0), (x0 + tw, 0), (x0 + tw, h - tf), (b, h - tf), (b, h), (0, h), (0, h - tf), (x0, h - tf)]
+    elif shape == "zed":
+        b, h, tf, tw = d["b"], d["h"], d["tf"], d["tw"]
+        s = b - tw  # the top flange overhangs the web to the left by b − tw
+        outline = [(s, 0), (s + b, 0), (s + b, tf), (s + tw, tf), (s + tw, h), (0, h), (0, h - tf), (s, h - tf)]
+    elif shape == "cross":
+        b, h, tb, th = d["b"], d["h"], d["tb"], d["th"]
+        xl, xr, yb, yt = (b - th) / 2, (b + th) / 2, (h - tb) / 2, (h + tb) / 2
+        outline = [(b, yb), (b, yt), (xr, yt), (xr, h), (xl, h), (xl, yt), (0, yt), (0, yb), (xl, yb), (xl, 0), (xr, 0), (xr, yb)]
+    else:
+        raise ValueError(f"reference has no geometry for shape {shape!r}")
+    pieces, contour = fillet(centred([(float(x), float(y)) for x, y in outline]), radii)
+    return pieces, [contour]
 
 
 def part_geometry(part):

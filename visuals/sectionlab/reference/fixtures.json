@@ -1347,6 +1347,657 @@
      "formula": "5√3/16 R⁴"
     }
    ]
+  },
+  {
+   "id": "ishape-sharp",
+   "plastic": true,
+   "model": {
+    "sectionlab": 1,
+    "title": "I 300 x 150, sharp",
+    "materials": [
+     {
+      "id": "s355",
+      "name": "Steel",
+      "E": 210000,
+      "sigma02": 355,
+      "n": 25,
+      "eps_lim": 0.015
+     }
+    ],
+    "parts": [
+     {
+      "id": "i",
+      "name": "i",
+      "shape": "ishape",
+      "dims": {
+       "b": 150.0,
+       "h": 300.0,
+       "tf": 10.7,
+       "tw": 7.1
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": 0.0,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     }
+    ],
+    "plastic": {
+     "axis": "x",
+     "N": 0.0,
+     "solve": "zero-cross"
+    },
+    "E_base": 210000
+   },
+   "expect": [
+    {
+     "quantity": "A",
+     "value": 5188.059999999998,
+     "formula": "b h − (b − tw)(h − 2tf)"
+    },
+    {
+     "quantity": "Ix",
+     "value": 79989869.46313326,
+     "formula": "(b h³ − (b − tw) hw³)/12"
+    },
+    {
+     "quantity": "Iy",
+     "value": 6027059.500383333,
+     "formula": "(2 tf b³ + hw tw³)/12"
+    },
+    {
+     "quantity": "Qx",
+     "value": 301049.1895,
+     "formula": "b tf (h − tf)/2 + tw hw²/8"
+    },
+    {
+     "quantity": "Zp",
+     "value": 602098.379,
+     "formula": "b tf (h − tf) + tw hw²/4"
+    },
+    {
+     "quantity": "J",
+     "value": 157018.8507666666,
+     "formula": "(2 b tf³ + (h − tf) tw³)/3, thin-walled mid-line"
+    }
+   ]
+  },
+  {
+   "id": "ishape-rolled",
+   "plastic": true,
+   "model": {
+    "sectionlab": 1,
+    "title": "IPE 300 proportions",
+    "materials": [
+     {
+      "id": "s355",
+      "name": "Steel",
+      "E": 210000,
+      "sigma02": 355,
+      "n": 25,
+      "eps_lim": 0.015
+     }
+    ],
+    "parts": [
+     {
+      "id": "i",
+      "name": "i",
+      "shape": "ishape",
+      "dims": {
+       "b": 150.0,
+       "h": 300.0,
+       "tf": 10.7,
+       "tw": 7.1
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       15.0,
+       15.0,
+       0,
+       0,
+       0,
+       0,
+       15.0,
+       15.0,
+       0
+      ],
+      "x": 0.0,
+      "y": 0.0,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     }
+    ],
+    "plastic": {
+     "axis": "y",
+     "N": 0.0,
+     "solve": "zero-cross"
+    },
+    "E_base": 210000
+   },
+   "expect": [
+    {
+     "quantity": "A",
+     "value": 5381.2016529422945,
+     "formula": "sharp area + 4 (1 − π/4) r² (root fillets)"
+    }
+   ]
+  },
+  {
+   "id": "channel-sharp",
+   "plastic": true,
+   "model": {
+    "sectionlab": 1,
+    "title": "Channel 300 x 100, sharp",
+    "materials": [
+     {
+      "id": "s355",
+      "name": "Steel",
+      "E": 210000,
+      "sigma02": 355,
+      "n": 25,
+      "eps_lim": 0.015
+     }
+    ],
+    "parts": [
+     {
+      "id": "c",
+      "name": "c",
+      "shape": "channel",
+      "dims": {
+       "b": 100.0,
+       "h": 300.0,
+       "tf": 15.0,
+       "tw": 9.0
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": 0.0,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     }
+    ],
+    "plastic": {
+     "axis": "x",
+     "N": 0.0,
+     "solve": "zero-cross"
+    },
+    "E_base": 210000
+   },
+   "expect": [
+    {
+     "quantity": "A",
+     "value": 5430.0,
+     "formula": "2 b tf + (h − 2tf) tw"
+    },
+    {
+     "quantity": "cx",
+     "value": -20.361878453038674,
+     "formula": "Σ A x / A from the back, bounding box centred"
+    },
+    {
+     "quantity": "Ix",
+     "value": 75737250.0,
+     "formula": "(b h³ − (b − tw) hw³)/12"
+    },
+    {
+     "quantity": "Zp",
+     "value": 591525.0,
+     "formula": "b tf (h − tf) + tw hw²/4"
+    },
+    {
+     "quantity": "J",
+     "value": 284130.0,
+     "formula": "(2 (b − tw/2) tf³ + (h − tf) tw³)/3"
+    }
+   ]
+  },
+  {
+   "id": "angle-rolled-sharp",
+   "plastic": true,
+   "model": {
+    "sectionlab": 1,
+    "title": "Equal angle 100 x 10",
+    "materials": [
+     {
+      "id": "s355",
+      "name": "Steel",
+      "E": 210000,
+      "sigma02": 355,
+      "n": 25,
+      "eps_lim": 0.015
+     }
+    ],
+    "parts": [
+     {
+      "id": "a",
+      "name": "a",
+      "shape": "angle",
+      "dims": {
+       "b": 100.0,
+       "h": 100.0,
+       "t": 10.0
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": 0.0,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     }
+    ],
+    "plastic": {
+     "axis": "major",
+     "N": 0.0,
+     "solve": "zero-cross"
+    },
+    "E_base": 210000
+   },
+   "expect": [
+    {
+     "quantity": "A",
+     "value": 1900.0,
+     "formula": "t (2b − t)"
+    },
+    {
+     "quantity": "cx",
+     "value": -21.31578947368421,
+     "formula": "(b² + b t − t²)/(2(2b − t)) from the heel"
+    },
+    {
+     "quantity": "thetaDeg",
+     "value": 45.0,
+     "formula": "equal legs: major axis at +45°"
+    },
+    {
+     "quantity": "J",
+     "value": 63333.333333333336,
+     "formula": "(2b − t) t³/3"
+    }
+   ]
+  },
+  {
+   "id": "tee-sharp",
+   "plastic": true,
+   "model": {
+    "sectionlab": 1,
+    "title": "Tee 150 x 150, sharp",
+    "materials": [
+     {
+      "id": "s355",
+      "name": "Steel",
+      "E": 210000,
+      "sigma02": 355,
+      "n": 25,
+      "eps_lim": 0.015
+     }
+    ],
+    "parts": [
+     {
+      "id": "t",
+      "name": "t",
+      "shape": "tee",
+      "dims": {
+       "b": 150.0,
+       "h": 150.0,
+       "tf": 12.0,
+       "tw": 8.0
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": 0.0,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     }
+    ],
+    "plastic": {
+     "axis": "x",
+     "N": 0.0,
+     "solve": "zero-cross"
+    },
+    "E_base": 210000
+   },
+   "expect": [
+    {
+     "quantity": "A",
+     "value": 2904.0,
+     "formula": "b tf + (h − tf) tw"
+    },
+    {
+     "quantity": "cy",
+     "value": 40.48760330578513,
+     "formula": "Σ A y / A from the stem bottom"
+    },
+    {
+     "quantity": "J",
+     "value": 110976.0,
+     "formula": "(b tf³ + (h − tf/2) tw³)/3"
+    }
+   ]
+  },
+  {
+   "id": "zed-sharp",
+   "plastic": true,
+   "model": {
+    "sectionlab": 1,
+    "title": "Z 200 x 80, sharp",
+    "materials": [
+     {
+      "id": "s355",
+      "name": "Steel",
+      "E": 210000,
+      "sigma02": 355,
+      "n": 25,
+      "eps_lim": 0.015
+     }
+    ],
+    "parts": [
+     {
+      "id": "z",
+      "name": "z",
+      "shape": "zed",
+      "dims": {
+       "b": 80.0,
+       "h": 200.0,
+       "tf": 10.0,
+       "tw": 8.0
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": 0.0,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     }
+    ],
+    "plastic": {
+     "axis": "x",
+     "N": 0.0,
+     "solve": "fixed-axis"
+    },
+    "E_base": 210000
+   },
+   "expect": [
+    {
+     "quantity": "A",
+     "value": 3040.0,
+     "formula": "2 b tf + (h − 2tf) tw"
+    },
+    {
+     "quantity": "cx",
+     "value": 0.0,
+     "formula": "point symmetry about the web centre"
+    },
+    {
+     "quantity": "cy",
+     "value": 0.0,
+     "formula": "point symmetry"
+    }
+   ]
+  },
+  {
+   "id": "cross-sharp",
+   "plastic": true,
+   "model": {
+    "sectionlab": 1,
+    "title": "Cross",
+    "materials": [
+     {
+      "id": "s355",
+      "name": "Steel",
+      "E": 210000,
+      "sigma02": 355,
+      "n": 25,
+      "eps_lim": 0.015
+     }
+    ],
+    "parts": [
+     {
+      "id": "x",
+      "name": "x",
+      "shape": "cross",
+      "dims": {
+       "b": 200.0,
+       "h": 160.0,
+       "tb": 20.0,
+       "th": 12.0
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": 0.0,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     }
+    ],
+    "plastic": {
+     "axis": "x",
+     "N": 0.0,
+     "solve": "zero-cross"
+    },
+    "E_base": 210000
+   },
+   "expect": [
+    {
+     "quantity": "A",
+     "value": 5680.0,
+     "formula": "b tb + (h − tb) th"
+    },
+    {
+     "quantity": "Ix",
+     "value": 4221333.333333333,
+     "formula": "(th h³ + (b − th) tb³)/12"
+    },
+    {
+     "quantity": "Iy",
+     "value": 13353493.333333334,
+     "formula": "(tb b³ + (h − tb) th³)/12"
+    }
+   ]
+  },
+  {
+   "id": "built-up",
+   "plastic": true,
+   "model": {
+    "sectionlab": 1,
+    "title": "Built-up girder with rolled parts",
+    "materials": [
+     {
+      "id": "s355",
+      "name": "Steel",
+      "E": 210000,
+      "sigma02": 355,
+      "n": 25,
+      "eps_lim": 0.015
+     }
+    ],
+    "parts": [
+     {
+      "id": "top",
+      "name": "top",
+      "shape": "rect",
+      "dims": {
+       "b": 200,
+       "h": 16
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": 192,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     },
+     {
+      "id": "web",
+      "name": "web",
+      "shape": "rect",
+      "dims": {
+       "b": 10,
+       "h": 368
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": 0.0,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     },
+     {
+      "id": "bot",
+      "name": "bot",
+      "shape": "rect",
+      "dims": {
+       "b": 300,
+       "h": 20
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "x": 0.0,
+      "y": -194,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     },
+     {
+      "id": "ch",
+      "name": "ch",
+      "shape": "channel",
+      "dims": {
+       "b": 90,
+       "h": 260,
+       "tf": 14,
+       "tw": 8
+      },
+      "radii": [
+       0,
+       0,
+       2,
+       12,
+       12,
+       2,
+       0,
+       0
+      ],
+      "x": 195,
+      "y": -54,
+      "orientation": 0,
+      "material": "s355",
+      "void": false
+     },
+     {
+      "id": "zz",
+      "name": "zz",
+      "shape": "zed",
+      "dims": {
+       "b": 60,
+       "h": 120,
+       "tf": 8,
+       "tw": 6
+      },
+      "radii": [
+       0,
+       0,
+       0,
+       6,
+       0,
+       0,
+       0,
+       6
+      ],
+      "x": -150,
+      "y": -120,
+      "orientation": 90,
+      "material": "s355",
+      "void": false
+     }
+    ],
+    "plastic": {
+     "axis": "minor",
+     "N": 0.0,
+     "solve": "fixed-axis"
+    },
+    "E_base": 210000
+   },
+   "expect": []
   }
  ]
 }
