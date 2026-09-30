@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="data:,">
-<meta name="description" content="Explore how poles, zeros, gain, delay, sampling and a controller shape a loop's frequency response in continuous or discrete time: Bode plot, pole-zero map, ZOH, Tustin and Euler discretisation, gain, phase and delay margins, sensitivity peaks and closed-loop poles, with Markdown, JSON, CSV and SVG exports and self-tests. Exploration only; runs offline in your browser.">
+<meta name="description" content="Explore how poles, zeros, gain, delay, sampling and a controller shape a loop's frequency response in continuous or discrete time: Bode, Nyquist (with the encirclement count) and Nichols views, pole-zero map, ZOH, Tustin and Euler discretisation, gain, phase and delay margins, sensitivity peaks and closed-loop poles, with Markdown, JSON, CSV and SVG exports and self-tests. Exploration only; runs offline in your browser.">
 <title>Frequency-Response Visualiser</title>
 <style>
 :root{--bg:#fff;--fg:#1d1d1f;--muted:#6e6e73;--faint:#a1a1a6;--surface:#f5f5f7;--border:#d2d2d7;--grid:#e8e8ed;--focus:#0071e3;--c1:#2a78d6;--c2:#eb6834;--c3:#8a4fd8;--c4:#0f8b8d;--ok:#1a7f4b;--bad:#c4261d;--warn:#9a6700;--sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--r:.5rem;color-scheme:light dark}
@@ -116,7 +116,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 <header>
   <p class="eyebrow"><a href="../../visuals.html">Visuals</a><span>Control theory</span><span>Works offline</span></p>
   <h1>Frequency-Response Visualiser</h1>
-  <p class="lede">See how poles, zeros, gain, delay and a controller shape a feedback loop's frequency response, and what that does to its margins and closed-loop stability. Phase 2 of 4 covers single loops in continuous or discrete time, on a Bode plot and a pole-zero map.</p>
+  <p class="lede">See how poles, zeros, gain, delay and a controller shape a feedback loop's frequency response, and what that does to its margins and closed-loop stability. Phase 3 of 4 covers single loops in continuous or discrete time, on Bode, Nyquist and Nichols views and a pole-zero map.</p>
   <div class="banner" role="note"><span><b>Exploration only.</b> Not a substitute for a verified control-design toolchain. Every export repeats this notice.</span><button class="badge" type="button" id="selftest-badge" aria-describedby="selftest-title">Self-tests…</button></div>
 </header>
 
@@ -143,10 +143,10 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 <div class="tabs" role="tablist" aria-label="Views">
   <button role="tab" type="button" id="tab-system" aria-controls="panel-system" aria-selected="true">System</button>
   <button role="tab" type="button" id="tab-bode" aria-controls="panel-bode" aria-selected="false" tabindex="-1">Bode</button>
+  <button role="tab" type="button" id="tab-nyq" aria-controls="panel-nyq" aria-selected="false" tabindex="-1">Nyquist</button>
+  <button role="tab" type="button" id="tab-nic" aria-controls="panel-nic" aria-selected="false" tabindex="-1">Nichols</button>
   <button role="tab" type="button" id="tab-pz" aria-controls="panel-pz" aria-selected="false" tabindex="-1">Pole-zero map</button>
   <button role="tab" type="button" id="tab-report" aria-controls="panel-report" aria-selected="false" tabindex="-1">Report</button>
-  <button role="tab" type="button" disabled title="Phase 3" aria-selected="false" tabindex="-1">Nyquist · phase 3</button>
-  <button role="tab" type="button" disabled title="Phase 3" aria-selected="false" tabindex="-1">Nichols · phase 3</button>
   <button role="tab" type="button" disabled title="Phase 4" aria-selected="false" tabindex="-1">Singular values · phase 4</button>
 </div>
 
@@ -213,6 +213,44 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
   <div class="tablewrap"><table><thead><tr><th class="l">Crossover</th><th>Frequency</th><th>Margin</th><th>Delay margin</th></tr></thead><tbody id="bode-crossovers"></tbody></table></div>
 </section>
 
+<section role="tabpanel" id="panel-nyq" aria-labelledby="tab-nyq" hidden>
+  <ul class="stats" id="nyq-stats"></ul>
+  <div class="legend">
+    <span style="color:var(--c1)"><span class="sw"></span> ω &gt; 0</span>
+    <label class="check" style="color:var(--c1)"><input type="checkbox" id="nyq-neg" checked><span class="sw dash"></span> ω &lt; 0 (mirror)</label>
+    <label class="check" style="color:var(--c2)"><input type="checkbox" id="nyq-ms" checked> 1/Ms circle</label>
+    <label class="check"><input type="checkbox" id="nyq-zoom"> zoom to −1</label>
+    <label class="check"><input type="checkbox" id="nyq-log"> compressed (log-radius)</label>
+  </div>
+  <div class="plot" id="nyq-plot" aria-label="Nyquist plot of L"></div>
+  <p class="readout" id="nyq-readout" aria-live="polite">Move over the plot to read values.</p>
+  <div class="actions">
+    <button class="btn small" type="button" data-export="nyqsvg">Download SVG</button>
+    <button class="btn small" type="button" data-copy="nyqsvg">Copy SVG</button>
+    <button class="btn small" type="button" data-export="nyqcsv">Download CSV</button>
+    <button class="btn small" type="button" data-copy="nyqcsv">Copy CSV</button>
+  </div>
+  <p class="note" id="nyq-convention"></p>
+</section>
+
+<section role="tabpanel" id="panel-nic" aria-labelledby="tab-nic" hidden>
+  <div class="legend">
+    <span style="color:var(--c1)"><span class="sw"></span> L(jω)</span>
+    <label class="check" style="color:var(--muted)"><input type="checkbox" id="nic-m" checked><span class="sw"></span> constant |T| (M, dB)</label>
+    <label class="check" style="color:var(--c3)"><input type="checkbox" id="nic-n"><span class="sw dash"></span> constant ∠T (N, deg)</label>
+    <label class="check" style="color:var(--c2)"><input type="checkbox" id="nic-ms" checked><span class="sw"></span> Ms boundary</label>
+  </div>
+  <div class="plot" id="nic-plot" aria-label="Nichols chart of L"></div>
+  <p class="readout" id="nic-readout" aria-live="polite">Move over the plot to read values.</p>
+  <div class="actions">
+    <button class="btn small" type="button" data-export="nicsvg">Download SVG</button>
+    <button class="btn small" type="button" data-copy="nicsvg">Copy SVG</button>
+    <button class="btn small" type="button" data-export="niccsv">Download CSV</button>
+    <button class="btn small" type="button" data-copy="niccsv">Copy CSV</button>
+  </div>
+  <p class="note">Critical points (−180° + k·360°, 0 dB) are marked with +. M-contours are closed-loop magnitude |T| in dB, N-contours closed-loop phase ∠T; the Ms boundary is |1 + L| = 1/Ms for this loop's Ms, so the locus just touches it.</p>
+</section>
+
 <section role="tabpanel" id="panel-pz" aria-labelledby="tab-pz" hidden>
   <div class="legend">
     <span style="color:var(--c1)">× open-loop poles</span>
@@ -239,6 +277,10 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
         <tr><td class="l">Inputs-only JSON</td><td><button class="btn small" type="button" data-export="inputs">Download</button> <button class="btn small" type="button" data-copy="inputs">Copy</button></td></tr>
         <tr><td class="l">Bode CSV</td><td><button class="btn small" type="button" data-export="csv">Download</button> <button class="btn small" type="button" data-copy="csv">Copy</button></td></tr>
         <tr><td class="l">Bode SVG</td><td><button class="btn small" type="button" data-export="svg">Download</button> <button class="btn small" type="button" data-copy="svg">Copy</button></td></tr>
+        <tr><td class="l">Nyquist CSV (full contour)</td><td><button class="btn small" type="button" data-export="nyqcsv">Download</button> <button class="btn small" type="button" data-copy="nyqcsv">Copy</button></td></tr>
+        <tr><td class="l">Nyquist SVG</td><td><button class="btn small" type="button" data-export="nyqsvg">Download</button> <button class="btn small" type="button" data-copy="nyqsvg">Copy</button></td></tr>
+        <tr><td class="l">Nichols CSV</td><td><button class="btn small" type="button" data-export="niccsv">Download</button> <button class="btn small" type="button" data-copy="niccsv">Copy</button></td></tr>
+        <tr><td class="l">Nichols SVG</td><td><button class="btn small" type="button" data-export="nicsvg">Download</button> <button class="btn small" type="button" data-copy="nicsvg">Copy</button></td></tr>
         <tr><td class="l">Pole-zero map SVG</td><td><button class="btn small" type="button" data-export="pzsvg">Download</button> <button class="btn small" type="button" data-copy="pzsvg">Copy</button></td></tr>
       </tbody></table></div>
       <div class="fallback" id="fallback" hidden>
@@ -266,7 +308,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 </section>
 
 <footer>
-  <p>Exploration only. Classical textbook methods (Bode, gain, phase and delay margins, sensitivity peaks, zero-order hold, Tustin and Euler discretisation) with a hand-written root finder and matrix exponential; no library, no network. Nyquist and Nichols views (phase 3) and multi-loop systems (phase 4) are later phases.</p>
+  <p>Exploration only. Classical textbook methods (Bode, gain, phase and delay margins, sensitivity peaks, zero-order hold, Tustin and Euler discretisation) with a hand-written root finder and matrix exponential; no library, no network. Multi-loop (MIMO) systems follow in phase 4.</p>
 </footer>
 </main>
 <noscript><p style="text-align:center">This tool needs JavaScript.</p></noscript>
@@ -277,7 +319,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 "use strict";
 
 const SCHEMA_VERSION = 2;
-const PHASE = 2;
+const PHASE = 3;
 const DISCLAIMER = "EXPLORATION ONLY. Not a substitute for a verified control-design toolchain. Classical textbook methods, unverified against any certified tool; margin thresholds are unsourced defaults. Check every result independently before relying on it.";
 const CONVENTIONS = [
   "Open loop L(s) = K · C(s) · G(s) · e^(−sτ) with unity negative feedback; S = 1/(1 + L), T = L/(1 + L).",
@@ -291,9 +333,11 @@ const CONVENTIONS = [
   "Discrete phase crossovers include ω = 0 when L(1) is finite, real and negative, and ω = π/Ts when L(−1) is finite, real and negative (z = −1 makes L real, so a crossover can sit exactly at the Nyquist frequency). The ω = ∞ crossover applies only in continuous time.",
   "Discretisation is done in state space: each continuous block is realised in controllable canonical form (it must be proper), then Ad, Bd, Cd, Dd come from zero-order hold (exact, via the matrix exponential of [[A, B], [0, 0]]·Ts by scaling and squaring with a degree-6 Padé approximant), Tustin (s = c·(z − 1)/(z + 1) with c = 2/Ts, or c = ωp/tan(ωp·Ts/2) with prewarp frequency ωp), forward Euler (s = (z − 1)/Ts) or backward Euler (s = (z − 1)/(z·Ts)). The z-domain transfer function is det-based: den = det(zI − Ad), num = Dd·den + det(zI − Ad + Bd·Cd) − den, with characteristic polynomials from a Hessenberg reduction; leading numerator coefficients below 1e-12 of the largest are treated as round-off and dropped. The discrete poles and zeros come from the exact root maps rather than by re-rooting: Tustin z = (c + p)/(c − p) plus n − m zeros at exactly z = −1, forward Euler z = 1 + p·Ts, backward Euler z = 1/(1 − p·Ts) plus n − m zeros at exactly z = 0, and ZOH poles z = e^(p·Ts) with the zeros from the discretised numerator; num and den stay the state-space result.",
   "When every block is discretised from s, the continuous response L(jω) (with delay d·Ts) is overlaid on the discrete one to show warping and aliasing. Straight-line asymptotes are drawn in continuous time only.",
+  "Nyquist: the count Z = N + P uses the argument principle on 1 + L round the whole contour (the lower half is the conjugate mirror of the upper half). Continuous time: up the jω axis from −j∞ to +j∞, closed clockwise through the right half-plane (by an arc for an improper loop, otherwise at |L| → 0), indented to the right round jω-axis poles. Discrete time: anticlockwise round the unit circle, indented outwards round unit-circle poles. Boundary poles therefore count as stable. N is the net number of clockwise encirclements of −1, P the open-loop poles strictly in the unstable region (of the delay-free part), Z the unstable closed-loop poles; a non-causal L(z) adds its degree excess. The contour is refined adaptively wherever arg(1 + L) turns by more than 45° or the locus jumps further than its distance to −1 (capped at 120 000 evaluations); a leftover turn above 90° or a non-integer winding marks the count unresolved. Where the closed-loop poles are available the two verdicts are compared and any disagreement is flagged first among the warnings.",
+  "Nichols: open-loop phase (degrees, unwrapped) against magnitude (dB), with the critical point (−180° + k·360°, 0 dB) repeated every 360°. Constant-|T| = M contours solve (M² − 1)|L|² + 2M²·cos φ·|L| + M² = 0 for its positive roots (two branches when M > 1); constant-∠T = ψ contours are |L| = sin(φ − ψ)/sin ψ where that is positive and on the right branch; the Ms boundary is |1 + L| = 1/Ms, i.e. |L| = −cos φ ± √(cos²φ − 1 + 1/Ms²).",
 ];
 const ASSUMPTIONS = [
-  "Unity negative feedback and LTI systems, in continuous or discrete time chosen globally (no mixed sampled-data loops); SISO only in this phase (Nyquist and Nichols follow in phase 3, MIMO in phase 4).",
+  "Unity negative feedback and LTI systems, in continuous or discrete time chosen globally (no mixed sampled-data loops); SISO only in this phase (MIMO follows in phase 4).",
   "Continuous delays are exact e^(−jωτ) in the response; no Padé approximation is used in plots. Discrete delays are integer samples; fractional delays are not supported.",
   "Each block in discrete time is either entered directly in z or entered in s and discretised by its own method (ZOH, Tustin with optional prewarp, forward or backward Euler); presets are continuous prototypes and must be discretised.",
   "Margin thresholds are user inputs; the pre-filled values are unsourced defaults, not requirements.",
@@ -1019,6 +1063,202 @@ function dcPhaseDeg(loop) {
   return (ph * 180) / Math.PI;
 }
 
+/* ---------- Nyquist contour and stability count ---------- */
+const NYQ_BUDGET = 120000;
+const NYQ_MAX_DEPTH = 40;
+/** L at an arbitrary point (s, or z in discrete time), with its delay, as log-magnitude and angle so huge values stay finite. */
+function evalPoint(loop, s) {
+  let logm = Math.log(Math.abs(loop.gain)), ang = loop.gain < 0 ? Math.PI : 0;
+  for (const z of loop.zeros) { const d = csub(s, z); logm += Math.log(cabs(d)); ang += carg(d); }
+  for (const p of loop.poles) { const d = csub(s, p); logm -= Math.log(cabs(d)); ang -= carg(d); }
+  if (loop.domain === "z") { logm -= loop.d * Math.log(cabs(s)); ang -= loop.d * carg(s); }
+  else if (loop.tau > 0) { logm -= s.re * loop.tau; ang -= s.im * loop.tau; }
+  const L = cpolar(Math.exp(Math.min(logm, 700)), ang);
+  // arg(1 + L): for |L| beyond e^35 the 1 is below round-off.
+  const argF = logm > 35 ? Math.atan2(Math.sin(ang), Math.cos(ang)) : carg(cadd(cx(1), L));
+  const dist = logm > 35 ? Infinity : cabs(cadd(cx(1), L));
+  return { L, logm, argF, dist };
+}
+const wrapPi = (a) => a - 2 * Math.PI * Math.floor((a + Math.PI) / (2 * Math.PI));
+
+/**
+ * The upper half U of the Nyquist contour as segments s(t), t ∈ [0, 1]; the lower half is its mirror (conjugate
+ * symmetry). Continuous: from the real axis (s = 0, or around the origin) up the jω axis to jR, with right-hand
+ * semicircles of radius ε around jω-axis poles, and for an improper loop the arc from jR to R. Discrete: the upper
+ * unit circle from z = 1 to z = −1, indented outwards around unit-circle poles. Boundary poles therefore lie
+ * outside the enclosed unstable region and count as stable.
+ */
+function nyquistSegments(loop, wLo, wHi) {
+  const z = loop.domain === "z", segs = [];
+  const eps = 1e-6;
+  const bpoles = [];
+  for (const p of loop.poles) {
+    const k = rootClass(loop, p);
+    if (!k.boundary || p.im < 0) continue;
+    const w = k.dc ? 0 : z && k.nyq ? nyquistOf(loop.Ts) : k.w;
+    if (!bpoles.some((b) => Math.abs(b - w) <= 1e-6 * Math.max(1e-12, w))) bpoles.push(w);
+  }
+  bpoles.sort((a, b) => a - b);
+  const toS = (w) => (z ? cpolar(1, w * loop.Ts) : cx(0, w));
+  const logSeg = (w0, w1, kind = "pos") => {
+    if (!(w1 > w0)) return;
+    const u0 = Math.log10(w0), u1 = Math.log10(w1);
+    segs.push({ kind, n: Math.max(16, Math.ceil((u1 - u0) * 60)), s: (t) => toS(Math.pow(10, u0 + (u1 - u0) * t)), w: (t) => Math.pow(10, u0 + (u1 - u0) * t) });
+  };
+  const indent = (w0, phi0, phi1) => {
+    // Semicircle of radius ε·scale around the boundary point, on the unstable side.
+    if (z) { const c = cpolar(1, w0 * loop.Ts); segs.push({ kind: "indent", n: 24, s: (t) => cmul(c, cadd(cx(1), cpolar(eps, phi0 + (phi1 - phi0) * t))), w: () => w0 }); }
+    else { const r = eps * Math.max(w0, wLo * 1e-3); segs.push({ kind: "indent", n: 24, s: (t) => cadd(cx(0, w0), cpolar(r, phi0 + (phi1 - phi0) * t)), w: () => w0 }); }
+  };
+  const radius = (w0) => (z ? eps / loop.Ts : eps * Math.max(w0, wLo * 1e-3));
+  const wEnd = z ? nyquistOf(loop.Ts) : wHi;
+  let w = 0;
+  if (bpoles[0] === 0) { indent(0, 0, Math.PI / 2); w = radius(0); bpoles.shift(); }
+  else { segs.push({ kind: "pos", n: 8, s: (t) => toS(wLo * t), w: (t) => wLo * t }); w = wLo; }
+  const endsOnPole = z && bpoles.length && Math.abs(bpoles[bpoles.length - 1] - wEnd) <= 1e-6 * wEnd;
+  for (const b of bpoles) {
+    if (endsOnPole && b === bpoles[bpoles.length - 1]) break;
+    const r = radius(b);
+    logSeg(w, b - r);
+    indent(b, -Math.PI / 2, Math.PI / 2);
+    w = b + r;
+  }
+  if (endsOnPole) { logSeg(w, wEnd - radius(wEnd)); indent(wEnd, -Math.PI / 2, 0); }
+  else logSeg(w, wEnd);
+  if (!z && degree(loop.num) > degree(loop.den)) {
+    const R = wEnd;
+    segs.push({ kind: "arc", n: 64, s: (t) => cpolar(R, (Math.PI / 2) * (1 - t)), w: () => Infinity });
+  }
+  return segs;
+}
+
+/** Sample the segments adaptively: refine where arg(1 + L) turns by more than 45° or the locus jumps further than its distance to −1. */
+function nyquistPath(loop, wLo, wHi) {
+  const pts = [];
+  let evals = 0, unresolved = false;
+  const at = (seg, t) => { evals++; const e = evalPoint(loop, seg.s(t)); return { t, w: seg.w(t), kind: seg.kind, ...e }; };
+  const bad = (a, b) => {
+    if (Math.abs(wrapPi(b.argF - a.argF)) > Math.PI / 4) return true;
+    if (a.logm > 35 || b.logm > 35) return false;
+    return cabs(csub(b.L, a.L)) > 0.5 * Math.min(a.dist, b.dist);
+  };
+  for (const seg of loop.nyqSegs) {
+    let prev = at(seg, 0);
+    pts.push(prev);
+    for (let i = 1; i <= seg.n; i++) {
+      const next = at(seg, i / seg.n);
+      const stack = [[prev, next, 0]], out = [];
+      while (stack.length) {
+        const [a, b, depth] = stack.pop();
+        if (bad(a, b) && depth < NYQ_MAX_DEPTH && evals < NYQ_BUDGET) {
+          const m = at(seg, (a.t + b.t) / 2);
+          stack.push([m, b, depth + 1], [a, m, depth + 1]);
+        } else {
+          if (Math.abs(wrapPi(b.argF - a.argF)) > Math.PI / 2) unresolved = true;
+          out.push(b);
+        }
+      }
+      pts.push(...out);
+      prev = next;
+    }
+  }
+  return { pts, unresolved, evals };
+}
+
+/**
+ * Nyquist count Z = N + P. N is the net number of clockwise encirclements of −1 by L around the whole contour
+ * (upper half plus its conjugate mirror), P the open-loop poles strictly in the unstable region. In discrete time the
+ * contour runs anticlockwise round the unit circle, so N = −(winding of 1 + L); a non-causal L(z) adds the degree
+ * excess of the characteristic polynomial.
+ */
+function nyquistCount(loop, closedLoop, wLo, wHi) {
+  const z = loop.domain === "z";
+  if (!z && loop.tau > 0 && degree(loop.num) > degree(loop.den)) return { available: false, message: "The loop is improper and delayed, so the Nyquist contour cannot be closed at infinity; no count is given." };
+  const ws = [];
+  // The jω path must run far enough that |L| is small (or the arc is used), so the rest of the contour cannot encircle −1.
+  let wR = wHi;
+  if (!z) {
+    const mags = loop.zeros.concat(loop.poles).map(cabs);
+    wR = Math.max(wHi, 100 * Math.max(0, ...mags), loop.tau > 0 ? 100 / loop.tau : 0);
+    if (degree(loop.num) <= degree(loop.den)) for (let i = 0; i < 12 && evalPoint(loop, cx(0, wR)).logm > Math.log(1e-3) && degree(loop.num) < degree(loop.den); i++) wR *= 10;
+    if (degree(loop.num) > degree(loop.den)) wR = Math.max(wR, 1e3 * Math.max(1, ...mags, ...(closedLoop.available ? closedLoop.poles.map(cabs) : [])));
+  }
+  loop.nyqSegs = nyquistSegments(loop, wLo, wR);
+  const path = nyquistPath(loop, wLo, wR);
+  const U = path.pts;
+  // Full closed contour: continuous — mirror(U) reversed then U (clockwise round the right half-plane);
+  // discrete — U then mirror(U) reversed (anticlockwise round the unit circle).
+  const mirror = U.map((p) => ({ ...p, argF: -p.argF })).reverse();
+  const full = z ? U.concat(mirror) : mirror.concat(U);
+  let total = 0, minDist = Infinity;
+  for (let i = 0; i < full.length; i++) {
+    const a = full[i], b = full[(i + 1) % full.length];
+    total += wrapPi(b.argF - a.argF);
+    minDist = Math.min(minDist, a.dist);
+  }
+  const W = total / (2 * Math.PI), Wr = Math.round(W);
+  const P = loop.poles.filter((p) => rootClass(loop, p).unstable).length;
+  const excess = z ? Math.max(0, degree(loop.num) - (degree(loop.den) + loop.d)) : 0;
+  const N = Wr === 0 ? 0 : -Wr;
+  const onContour = minDist < 1e-9;
+  const unresolved = path.unresolved || Math.abs(W - Wr) > 0.05;
+  const Z = N + P + excess;
+  const out = {
+    available: true, N, P, Z, winding: W, wLow: wLo, wHigh: wR, excess, points: full.length, evaluations: path.evals, unresolved, onContour,
+    verdict: onContour ? "marginal" : Z === 0 ? "stable" : "unstable",
+    convention: z
+      ? "Z = N + P: the contour runs anticlockwise round the unit circle (z = e^(jωTs), ω from −π/Ts to π/Ts), indented outwards round unit-circle poles, so those count as stable; N is the net number of clockwise encirclements of −1 by L, P the open-loop poles outside the unit circle, Z the closed-loop poles outside it."
+      : "Z = N + P: the contour runs up the jω axis from −j∞ to +j∞ and closes clockwise through the right half-plane, indented to the right round jω-axis poles, so those count as stable; N is the net number of clockwise encirclements of −1 by L, P the open-loop poles in the right half-plane (of the delay-free part), Z the closed-loop poles in the right half-plane.",
+  };
+  if (onContour) out.message = "L passes through −1 on the contour (a closed-loop pole on the stability boundary), so the encirclement count is not defined there.";
+  if (closedLoop.available) {
+    const agree = !onContour && closedLoop.marginal === 0 ? closedLoop.unstable === Z : onContour && closedLoop.marginal > 0;
+    out.crossCheck = { available: true, eigenUnstable: closedLoop.unstable, eigenMarginal: closedLoop.marginal, agree };
+  } else out.crossCheck = { available: false, message: closedLoop.message };
+  return out;
+}
+/** The Nyquist locus for plots and CSV: the upper-half contour (the lower half is its conjugate). */
+function nyquistLocus(inputs) {
+  const built = buildLoop(inputs);
+  if (built.errors.length) return null;
+  const { loop } = built;
+  const r = analyze(inputs);
+  if (!r.ok || !r.nyquist.available) return null;
+  const cl = r.closedLoop;
+  // Recreate the contour the count used.
+  loop.nyqSegs = nyquistSegments(loop, r.nyquist.wLow, r.nyquist.wHigh);
+  const path = nyquistPath(loop, r.nyquist.wLow, r.nyquist.wHigh);
+  return path.pts.map((p) => ({ w: p.w, kind: p.kind, re: p.L.re, im: p.L.im, logm: p.logm, clMarginal: cl.available && cl.marginal > 0 }));
+}
+
+/* ---------- Nichols chart contours ---------- */
+/** |L| on the constant-|T| = M contour at open-loop phase φ: the positive roots of (M² − 1)|L|² + 2M²·cos φ·|L| + M² = 0. */
+function mContour(M, phiDeg) {
+  const c = Math.cos((phiDeg * Math.PI) / 180), a = M * M - 1, b = 2 * M * M * c, cc = M * M;
+  if (Math.abs(a) < 1e-15) return c < 0 ? [-1 / (2 * c)] : [];
+  const disc = b * b - 4 * a * cc;
+  if (disc < 0) return [];
+  const sq = Math.sqrt(disc);
+  return [(-b + sq) / (2 * a), (-b - sq) / (2 * a)].filter((r) => r > 0 && Number.isFinite(r));
+}
+/** |L| on the constant-∠T = ψ contour at open-loop phase φ: |L| = sin(φ − ψ)/sin ψ where positive and on the right branch. */
+function nContour(psiDeg, phiDeg) {
+  const psi = (psiDeg * Math.PI) / 180, phi = (phiDeg * Math.PI) / 180;
+  const r = Math.sin(phi - psi) / Math.sin(psi);
+  if (!(r > 0) || !Number.isFinite(r)) return null;
+  const L = cpolar(r, phi), T = cdiv(L, cadd(cx(1), L));
+  return Math.abs(wrapPi(carg(T) - psi)) < 1e-6 ? r : null;
+}
+/** |L| on the Ms boundary |1 + L| = 1/Ms at phase φ. */
+function msBoundary(Ms, phiDeg) {
+  const c = Math.cos((phiDeg * Math.PI) / 180), disc = c * c - 1 + 1 / (Ms * Ms);
+  if (disc < 0) return [];
+  const sq = Math.sqrt(disc);
+  return [-c + sq, -c - sq].filter((r) => r > 0);
+}
+const NICHOLS_M_DB = [12, 6, 3, 1, 0.5, 0, -1, -3, -6, -12, -20];
+const NICHOLS_N_DEG = [-5, -10, -20, -30, -60, -90, -120, -150];
+
 /* ---------- analysis ---------- */
 function analyze(inputs) {
   const built = buildLoop(inputs);
@@ -1121,7 +1361,7 @@ function analyze(inputs) {
   let closedLoop;
   const olUnstable = loop.poles.filter((p) => rootClass(loop, p).unstable).length;
   if (!z && loop.tau > 0) {
-    closedLoop = { available: false, message: "A delay is present, so the closed-loop pole check is unavailable (the Nyquist count arrives in phase 3)." };
+    closedLoop = { available: false, message: "A delay is present, so the closed-loop pole check is unavailable; the Nyquist count is the only stability verdict." };
     warnings.push({ code: "delay-no-poles", message: closedLoop.message });
   } else {
     const den = z && loop.d ? polyMul(loop.den, [1].concat(new Array(loop.d).fill(0))) : loop.den;
@@ -1143,6 +1383,13 @@ function analyze(inputs) {
       }
     }
   }
+  // Nyquist count, cross-checked against the closed-loop poles where both exist.
+  const nyquist = nyquistCount(loop, closedLoop, range.wMin, range.wMax);
+  if (nyquist.available) {
+    if (nyquist.onContour) warnings.push({ code: "nyquist-boundary", message: nyquist.message });
+    if (nyquist.unresolved && !nyquist.onContour) warnings.push({ code: "nyquist-unresolved", message: `The Nyquist locus is still unresolved after refinement (${nyquist.evaluations} evaluations); the encirclement count N = ${nyquist.N} may be wrong.` });
+    if (nyquist.crossCheck.available && !nyquist.crossCheck.agree) warnings.unshift({ code: "nyquist-mismatch", message: `NYQUIST AND CLOSED-LOOP POLES DISAGREE: the Nyquist count gives Z = ${nyquist.Z} unstable closed-loop pole(s) but the characteristic roots give ${closedLoop.unstable} (${closedLoop.marginal} on the boundary). Neither verdict should be trusted until this is resolved.` });
+  } else warnings.push({ code: "nyquist-unavailable", message: nyquist.message });
   if (closedLoop.available && closedLoop.verdict === "stable" && phaseCrossovers.some((c) => c.gmDb < 0)) warnings.push({ code: "conditional", message: "The loop is conditionally stable: reducing the gain enough would destabilise it (a phase crossover has |L| > 1)." });
   if (closedLoop.available && closedLoop.verdict === "unstable") warnings.push({ code: "cl-unstable", message: `The closed loop is unstable with ${closedLoop.unstable} pole(s) ${z ? "outside the unit circle" : "in the right half-plane"}; the margins describe the loop, not a stable design.` });
 
@@ -1168,7 +1415,7 @@ function analyze(inputs) {
       Ms, Mt, vectorMargin: Ms.ok ? { ok: true, value: 1 / Ms.value, w: Ms.w } : { ok: false, message: Ms.message },
       resonance, bandwidth,
     },
-    closedLoop, checks,
+    closedLoop, nyquist, checks,
   };
 }
 
@@ -1253,10 +1500,24 @@ function importJSON(text) {
   return x;
 }
 
-function toCSV(inputs) {
+/** CSV of a view's data in canonical units: "bode" (default), "nyquist" (the full contour) or "nichols". */
+function toCSV(inputs, view = "bode") {
   const x = normalise(inputs), rows = curves(x);
   if (!rows) return `# ${DISCLAIMER}\n# No data: the inputs have blocking errors.\n`;
   const n = (v) => (typeof v === "number" && Number.isFinite(v) ? String(v) : "");
+  if (view === "nyquist") {
+    const loc = nyquistLocus(x);
+    if (!loc) return `# ${DISCLAIMER}\n# No Nyquist data for these inputs.\n`;
+    // Upper half as computed, then its conjugate mirror in contour order (negative frequencies).
+    const up = loc.map((p) => [p.kind, p.w, p.re, p.im]);
+    const down = loc.slice().reverse().map((p) => [p.kind === "pos" ? "neg" : p.kind, Number.isFinite(p.w) ? -p.w : p.w, p.re, -p.im]);
+    return [`# ${DISCLAIMER}`, "# Nyquist contour of L: kind is pos/neg (frequency axis), indent (semicircle round a boundary pole, omega is its centre) or arc; omega in rad/s.", "kind,omega_rad_s,re_L,im_L"]
+      .concat(up.concat(down).map((r) => [r[0], n(r[1]), n(r[2]), n(r[3])].join(","))).join("\n") + "\n";
+  }
+  if (view === "nichols") {
+    return [`# ${DISCLAIMER}`, "# Nichols locus of L: open-loop phase (degrees, unwrapped) and magnitude (dB); omega in rad/s.", "omega_rad_s,phase_deg,mag_db"]
+      .concat(rows.map((r) => [r.w, r.phaseDeg, toDb(r.mag)].map(n).join(","))).join("\n") + "\n";
+  }
   if (x.timeDomain === "discrete") {
     const head = "omega_rad_s,freq_hz,omega_rad_per_sample,mag_abs,mag_db,phase_deg,sensitivity_abs,complementary_abs,continuous_mag_abs,continuous_phase_deg";
     return [`# ${DISCLAIMER}`, `# Discrete time, Ts = ${x.Ts} s. Canonical units: rad/s, absolute magnitude (and dB), degrees (unwrapped). Continuous columns are the overlay L(jω) and are empty when a block is entered in z.`, head]
@@ -1315,6 +1576,15 @@ function toMarkdown(inputs, results) {
       lines.push(`- Closed-loop poles: ${r.closedLoop.poles.map((z) => fmtC(z, 6)).join(", ")}`);
     } else lines.push(`- ${r.closedLoop.message}`);
     lines.push("");
+    const nq = r.nyquist;
+    lines.push("## Nyquist stability count", "");
+    if (nq.available) {
+      lines.push(`- N = ${nq.N} (net clockwise encirclements of −1), P = ${nq.P} (open-loop poles ${disc ? "outside the unit circle" : "in the right half-plane"}), Z = N + P${nq.excess ? ` + ${nq.excess}` : ""} = ${nq.Z}`);
+      lines.push(`- Verdict: **${nq.verdict}**${nq.onContour ? " (L passes through −1; the count is not defined there)" : ""}${nq.unresolved && !nq.onContour ? " — locus unresolved after refinement, count may be wrong" : ""}`);
+      lines.push(nq.crossCheck.available ? `- Cross-check with the closed-loop poles: ${nq.crossCheck.agree ? "agrees" : "**DISAGREES**"} (${nq.crossCheck.eigenUnstable} unstable, ${nq.crossCheck.eigenMarginal} on the boundary)` : `- Cross-check: ${nq.crossCheck.message}`);
+      lines.push(`- Contour: ${nq.points} points after adaptive refinement; convention: ${nq.convention}`);
+    } else lines.push(`- ${nq.message}`);
+    lines.push("");
   }
   lines.push("## Warnings", "", ...(r.warnings.length ? r.warnings.map((w) => `- ${w.message}`) : ["- None."]), "");
   lines.push("## Conventions", "", ...CONVENTIONS.map((c) => `- ${c}`), "");
@@ -1324,7 +1594,7 @@ function toMarkdown(inputs, results) {
   return lines.join("\n");
 }
 
-/* ---------- self-tests (spec section 11, phases 1 and 2) ---------- */
+/* ---------- self-tests (spec section 11, phases 1 to 3) ---------- */
 function selfTests() {
   const out = [];
   const add = (name, actual, expected, tol, relative = false) => {
@@ -1434,6 +1704,56 @@ function selfTests() {
   add("Units: rad/sample → rad/s round-trip (Ts = 0.1 s)", freqFrom(freqTo(7.5, "rad/sample", Ts), "rad/sample", Ts), 7.5, 1e-14);
   add("Units: the Nyquist frequency is π rad/sample", freqTo(Math.PI / Ts, "rad/sample", Ts), Math.PI, 1e-15);
 
+  // Nyquist (spec section 11): K/(s(s+1)(s+2)) and a set of cases against the closed-loop poles in both domains.
+  for (const K of [3, 5.9, 6.1, 9]) {
+    const nq = analyze(third(K)).nyquist, want = K < 6 ? 0 : 2;
+    addBool(`Nyquist, K/(s(s+1)(s+2)) with K = ${K}: Z = ${want}`, nq.available && nq.Z === want && !nq.unresolved, `N = ${nq.N}, P = ${nq.P}, Z = ${nq.Z}`);
+  }
+  const nyqCases = [
+    ["2/(s − 1): P = 1, N = −1, Z = 0", tf([2], [1, -1])],
+    ["0.5/(s − 1): P = 1, Z = 1", tf([0.5], [1, -1])],
+    ["conditionally stable loop, K = 200", normalise({ plant: { form: "zpk", zeros: [cx(-0.1), cx(-0.1)], poles: [cx(0), cx(0), cx(0), cx(-10), cx(-20)], gain: 1 }, K: 200 })],
+    ["conditionally stable loop, K = 2 (unstable)", normalise({ plant: { form: "zpk", zeros: [cx(-0.1), cx(-0.1)], poles: [cx(0), cx(0), cx(0), cx(-10), cx(-20)], gain: 1 }, K: 2 })],
+    ["double integrator with lead, 3(s + 1)/(s²(s + 2)(s + 3))", tf([3, 3], [1, 5, 6, 0, 0])],
+    ["biproper −(0.5s + 2)/(s + 1)", tf([-0.5, -2], [1, 1])],
+    ["K·Ts/(z − 1), K·Ts = 0.5", dz({ form: "tf", num: [Ts], den: [1, -1] }, { K: 5 })],
+    ["K·Ts/(z − 1), K·Ts = 2.5", dz({ form: "tf", num: [Ts], den: [1, -1] }, { K: 25 })],
+    ["0.5·z^(−2)", dz({ form: "tf", num: [1], den: [1] }, { delaySamples: 2, K: 0.5 })],
+    ["1.5·z^(−2)", dz({ form: "tf", num: [1], den: [1] }, { delaySamples: 2, K: 1.5 })],
+    ["ZOH of 2/(s − 1)", fromS("zoh", 0, { form: "tf", num: [2], den: [1, -1] })],
+    ["Tustin of 20/(s(s + 1)(s + 2)) (unstable)", normalise({ ...fromS("tustin", 0, { form: "tf", num: [20], den: [1, 3, 2, 0] }) })],
+  ];
+  for (const [label, x] of nyqCases) {
+    const r = analyze(x), nq = r.nyquist;
+    addBool(`Nyquist vs closed-loop poles (${r.loop.domain === "z" ? "discrete" : "continuous"}): ${label}`, nq.available && nq.crossCheck.available && nq.crossCheck.agree && !nq.unresolved, `N = ${nq.N}, P = ${nq.P}, Z = ${nq.Z}; closed-loop poles give ${r.closedLoop.unstable} unstable`);
+  }
+  for (const [tauD, want] of [[1, 0], [1.5, 2]]) {
+    const nq = analyze(tf([2], [1, 1], { delay: tauD })).nyquist;
+    addBool(`Nyquist with delay, 2e^(−${tauD}s)/(s + 1): Z = ${want} (critical delay 2π/(3√3) ≈ 1.209 s)`, nq.available && nq.Z === want && !nq.unresolved, `N = ${nq.N}, P = ${nq.P}, Z = ${nq.Z}`);
+  }
+
+  // Nichols (spec section 11).
+  const k6 = responseAt(third(6), Math.SQRT2);
+  add("Nichols: the K = 6 loop passes through −180° at ω = √2", k6.phaseDeg, -180, 1e-9);
+  add("Nichols: … and through 0 dB there", toDb(k6.mag), 0, 1e-9);
+  let worstM = 0;
+  for (const Mt of [0.5, 0.9, 1, 1.4, 2, 4]) for (let ph = -355; ph <= -5; ph += 10) for (const r of mContour(Mt, ph)) {
+    const L = cpolar(r, (ph * Math.PI) / 180);
+    worstM = Math.max(worstM, Math.abs(cabs(L) / cabs(cadd(cx(1), L)) - Mt) / Mt);
+  }
+  add("Nichols: constant-M contour points return |T| = M (worst relative error, M from 0.5 to 4)", worstM, 0, 1e-12);
+  let worstN = 0;
+  for (const psi of NICHOLS_N_DEG) for (let ph = -355; ph <= -5; ph += 5) {
+    const r = nContour(psi, ph);
+    if (r === null) continue;
+    const L = cpolar(r, (ph * Math.PI) / 180);
+    worstN = Math.max(worstN, Math.abs(wrapPi(carg(cdiv(L, cadd(cx(1), L))) - (psi * Math.PI) / 180)));
+  }
+  add("Nichols: constant-N contour points return ∠T = ψ (worst error, rad)", worstN, 0, 1e-12);
+  let worstMs = 0;
+  for (let ph = -270; ph <= -90; ph += 5) for (const r of msBoundary(2, ph)) worstMs = Math.max(worstMs, Math.abs(cabs(cadd(cx(1), cpolar(r, (ph * Math.PI) / 180))) - 0.5));
+  add("Nichols: Ms = 2 boundary points satisfy |1 + L| = 1/Ms (worst error)", worstMs, 0, 1e-12);
+
   // Root finder.
   const known = [cx(-1), cx(-2), cx(-3), cx(-1, 2), cx(-1, -2)];
   const found = polyRoots(polyFromRoots(known)).roots;
@@ -1470,7 +1790,8 @@ const META = {
   phase: PHASE,
   disclaimer: DISCLAIMER,
   units: "Canonical: rad/s, seconds, absolute magnitude, degrees. Display toggles change only what is shown.",
-  scope: "Phase 2 of 4: SISO Bode view, margins, closed-loop poles and pole-zero map in continuous or discrete time, with ZOH, Tustin (optional prewarp), forward and backward Euler discretisation, integer-sample delays, a continuous-over-discrete overlay, self-tests and exports.",
+  scope: "Phase 3 of 4: SISO Bode, Nyquist and Nichols views, margins, the Nyquist stability count cross-checked against the closed-loop poles, and the pole-zero map, in continuous or discrete time, with ZOH, Tustin (optional prewarp), forward and backward Euler discretisation, integer-sample delays, a continuous-over-discrete overlay, self-tests and exports.",
+  nichols: { mContoursDb: NICHOLS_M_DB, nContoursDeg: NICHOLS_N_DEG },
   discretization: { methods: { ...DISCRETE_METHODS, z: "entered directly in z" }, prewarp: "Tustin prewarp frequency in rad/s; 0 means none" },
   conventions: CONVENTIONS,
   assumptions: ASSUMPTIONS,
@@ -1484,6 +1805,7 @@ const api = {
   FREQ_UNITS, MAG_UNITS, PHASE_UNITS,
   cx, cabs, carg, polyRoots, polyFromRoots, polyMul, polyAdd, trimPoly, brent, goldenMax,
   expm, charPoly, tf2ss, ss2tf, discretize, matMul, DISCRETE_METHODS,
+  nyquistLocus, mContour, nContour, msBoundary, NICHOLS_M_DB, NICHOLS_N_DEG,
   freqTo, freqFrom, magTo, magFrom, phaseTo, phaseFrom, wrapDeg, toDb,
   defaultInputs, normalise, normaliseBlock, blockTf, blockZpk, buildLoop, analyze, curves, responseAt,
   fmt, fmtC, polyText, describeBlock,
@@ -1675,6 +1997,8 @@ function wireSettings() {
     $(`ed-${key}`).addEventListener("input", (e) => { if (e.target.tagName !== "SELECT") onEditor(key, e); });
     $(`ed-${key}`).addEventListener("change", (e) => { if (e.target.tagName === "SELECT") onEditor(key, e); });
   }
+  for (const [id, k] of [["nyq-neg", "neg"], ["nyq-ms", "ms"], ["nyq-zoom", "zoom"], ["nyq-log", "log"]]) $(id).addEventListener("change", (e) => { nyqView[k] = e.target.checked; renderNyq(); });
+  for (const [id, k] of [["nic-m", "m"], ["nic-n", "n"], ["nic-ms", "ms"]]) $(id).addEventListener("change", (e) => { nicView[k] = e.target.checked; renderNic(); });
   for (const [id, k] of [["show-asym", "asym"], ["show-cont", "cont"], ["show-S", "S"], ["show-T", "T"], ["show-marks", "marks"]]) $(id).addEventListener("change", (e) => { view[k] = e.target.checked; renderBode(); });
   return u;
 }
@@ -1687,6 +2011,8 @@ function recompute() {
   syncRange();
   renderSystem();
   renderBode();
+  renderNyq();
+  renderNic();
   renderPz();
   renderReport();
 }
@@ -1718,6 +2044,7 @@ function statItems(r) {
     `<li><b>${r.margins.Mt.ok ? fmt(r.margins.Mt.value) : "—"}</b><span>Mt = max|T|${r.margins.resonance.ok ? `, Mr ${fmt(r.margins.resonance.mrDb)} dB` : ""}</span></li>`,
     `<li><b>${r.margins.bandwidth.ok ? F_(r.margins.bandwidth.w) : "—"}</b><span>−3 dB bandwidth of T</span></li>`,
     `<li${cl.available && cl.verdict !== "stable" ? ' class="fail"' : ""}><b>${cl.available ? cl.verdict : "n/a"}</b><span>Closed loop${cl.available ? `, ${cl.unstable} unstable pole(s)` : " (pole check unavailable)"}</span></li>`,
+    r.nyquist.available ? `<li${r.nyquist.verdict !== "stable" || (r.nyquist.crossCheck.available && !r.nyquist.crossCheck.agree) ? ' class="fail"' : ""}><b>Z = ${r.nyquist.Z}</b><span>Nyquist (N = ${r.nyquist.N}, P = ${r.nyquist.P})${r.nyquist.crossCheck.available ? (r.nyquist.crossCheck.agree ? ", agrees with the poles" : ", DISAGREES with the poles") : ""}</span></li>` : "",
   ].join("");
 }
 function renderWarnings(el, r) {
@@ -1738,6 +2065,7 @@ function renderSystem() {
     row("Open-loop poles", `${esc(L.poles.map((z) => fmtC(z)).join(", ") || "none")} <span class="muted">(${L.openLoopUnstable} ${disc ? "outside the unit circle" : "in the RHP"})</span>`),
     row("Closed-loop poles", cl.available ? esc(cl.poles.map((z) => fmtC(z, 6)).join(", ")) : esc(cl.message)),
     row("Characteristic polynomial", cl.available ? esc(F.polyText(cl.characteristic, v)) : "—"),
+    row("Nyquist count", r.nyquist.available ? `N = ${r.nyquist.N}, P = ${r.nyquist.P}, Z = ${r.nyquist.Z} (${esc(r.nyquist.verdict)})` : esc(r.nyquist.message)),
     row("Frequency grid", `${esc(F_(r.grid.wMin))} to ${esc(F_(r.grid.wMax))}, ${r.grid.points} points`),
   ].join("");
   renderWarnings($("sys-warnings"), r);
@@ -1932,6 +2260,226 @@ function exportSVG() {
   return standaloneSVG(bodeSVG(900).svg);
 }
 
+/* ---------- Nyquist plot (SVG) ---------- */
+const nyqView = { neg: true, ms: true, zoom: false, log: false };
+let nyqLocus = null, nyqGeom = null;
+/** Compressed view: |L| → log(1 + |L|)/log 2, so the unit circle and −1 stay put while large loops fold in. */
+const nyqMap = (p) => {
+  if (!nyqView.log) return p;
+  const r = Math.hypot(p.re, p.im);
+  if (r === 0) return p;
+  const k = Math.log1p(r) / Math.LN2 / r;
+  return { re: p.re * k, im: p.im * k };
+};
+function nyqSVG(W) {
+  const loc = nyqLocus, H = Math.round(Math.min(620, Math.max(360, W * 0.72)));
+  const m = { l: 56, r: 16, t: 30, b: 40 }, pw = W - m.l - m.r, phh = H - m.t - m.b;
+  const up = loc.map((p) => ({ ...p })), down = loc.map((p) => ({ ...p, im: -p.im })).reverse();
+  const Ms = result.margins.Ms.ok ? result.margins.Ms.value : null;
+  // View: zoom round −1, or fit the bulk of the locus (the 95th percentile of |L|) plus −1 and the origin.
+  let x0, x1, y0, y1;
+  if (nyqView.zoom) { x0 = -2.5; x1 = 0.5; y0 = -1.5; y1 = 1.5; }
+  else {
+    // Fit to the analysis frequency range: the contour also runs down towards ω = 0 and round indentations, where |L| is huge.
+    const g0 = result.grid.wMin, g1 = result.grid.wMax;
+    const inRange = up.filter((p) => p.kind === "pos" && p.w >= g0 && p.w <= g1);
+    const mags = inRange.map((p) => Math.hypot(p.re, p.im)).filter(Number.isFinite).sort((a, b) => a - b);
+    // At most |L| = 10, so the critical region stays readable; the compressed view shows the rest.
+    const lim = Math.min(10, Math.max(1.5, 1.1 * (mags[Math.floor(0.9 * (mags.length - 1))] || 1)));
+    const pts = inRange.concat(nyqView.neg ? inRange.map((p) => ({ ...p, im: -p.im })) : []).filter((p) => Math.hypot(p.re, p.im) <= lim).map(nyqMap);
+    x0 = Math.min(-1.2, 0, ...pts.map((p) => p.re)); x1 = Math.max(0.2, ...pts.map((p) => p.re));
+    y0 = Math.min(-0.2, ...pts.map((p) => p.im)); y1 = Math.max(0.2, ...pts.map((p) => p.im));
+    if (!nyqView.neg) y0 = Math.min(y0, -0.2);
+  }
+  const span = Math.max(x1 - x0, y1 - y0) * 1.1, scale = Math.min(pw, phh) / span;
+  const cxm = (x0 + x1) / 2, cym = (y0 + y1) / 2;
+  const X = (v) => m.l + pw / 2 + (v - cxm) * scale, Y = (v) => m.t + phh / 2 - (v - cym) * scale;
+  const vx0 = cxm - pw / 2 / scale, vx1 = cxm + pw / 2 / scale, vy0 = cym - phh / 2 / scale, vy1 = cym + phh / 2 / scale;
+  const g = [];
+  g.push(`<rect x="0" y="0" width="${W}" height="${H}" style="fill:var(--bg)"/>`);
+  g.push(`<text x="${m.l}" y="16" style="fill:var(--warn);font:600 11px var(--mono)">EXPLORATION ONLY — not a verified control-design toolchain</text>`);
+  g.push(`<clipPath id="nyqclip"><rect x="${m.l}" y="${m.t}" width="${pw}" height="${phh}"/></clipPath>`);
+  if (!nyqView.log) {
+    for (const v of niceTicks(vx0, vx1, 6, false)) { g.push(`<line x1="${X(v)}" x2="${X(v)}" y1="${m.t}" y2="${m.t + phh}" style="stroke:var(--grid)"/>`); g.push(`<text x="${X(v)}" y="${m.t + phh + 15}" text-anchor="middle" style="fill:var(--muted);font:11px var(--mono)">${fmt(v, 3)}</text>`); }
+    for (const v of niceTicks(vy0, vy1, 6, false)) { g.push(`<line x1="${m.l}" x2="${m.l + pw}" y1="${Y(v)}" y2="${Y(v)}" style="stroke:var(--grid)"/>`); g.push(`<text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--muted);font:11px var(--mono)">${fmt(v, 3)}</text>`); }
+  } else {
+    // Rings at |L| = 0.1, 1, 10, 100, 1000 in the compressed radius.
+    for (const r of [0.1, 1, 10, 100, 1000]) {
+      const rr = Math.log1p(r) / Math.LN2;
+      g.push(`<circle clip-path="url(#nyqclip)" cx="${X(0)}" cy="${Y(0)}" r="${rr * scale}" style="fill:none;stroke:var(--grid)"/><text clip-path="url(#nyqclip)" x="${X(rr * Math.SQRT1_2) + 3}" y="${Y(rr * Math.SQRT1_2)}" style="fill:var(--muted);font:10px var(--mono)">|L|=${fmt(r)}</text>`);
+    }
+  }
+  g.push(`<g clip-path="url(#nyqclip)"><line x1="${m.l}" x2="${m.l + pw}" y1="${Y(0)}" y2="${Y(0)}" style="stroke:var(--muted)"/><line x1="${X(0)}" x2="${X(0)}" y1="${m.t}" y2="${m.t + phh}" style="stroke:var(--muted)"/>`);
+  g.push(`<circle cx="${X(0)}" cy="${Y(0)}" r="${scale}" style="fill:none;stroke:var(--muted);stroke-dasharray:3 4"/>`);
+  const ring = (cx0, rad) => {
+    let d = "";
+    for (let k = 0; k <= 180; k++) { const q = nyqMap({ re: cx0 + rad * Math.cos((k * Math.PI) / 90), im: rad * Math.sin((k * Math.PI) / 90) }); d += `${k ? "L" : "M"}${X(q.re).toFixed(1)} ${Y(q.im).toFixed(1)}`; }
+    return d + "Z";
+  };
+  if (nyqView.ms && Ms) g.push(`<path d="${ring(-1, 1 / Ms)}" style="fill:var(--c2);fill-opacity:.08;stroke:var(--c2);stroke-width:1.3"/>`);
+  const lim = 1e5, P = (p) => { const q = nyqMap(p); return [Math.max(-lim, Math.min(lim, X(q.re))), Math.max(-lim, Math.min(lim, Y(q.im)))]; };
+  const pathOf = (list) => {
+    let d = "", pen = false;
+    for (const p of list) {
+      if (!Number.isFinite(p.re) || !Number.isFinite(p.im)) { pen = false; continue; }
+      const [a, b] = P(p);
+      d += `${pen ? "L" : "M"}${a.toFixed(1)} ${b.toFixed(1)}`; pen = true;
+    }
+    return d;
+  };
+  if (nyqView.neg) g.push(`<path d="${pathOf(down)}" style="fill:none;stroke:var(--c1);stroke-width:1.4;stroke-dasharray:6 4;stroke-opacity:.7"/>`);
+  g.push(`<path d="${pathOf(up)}" style="fill:none;stroke:var(--c1);stroke-width:2"/>`);
+  // Direction arrows (increasing ω along the whole contour) at points inside the view.
+  const inside = (p) => { const q = nyqMap(p); return q.re > vx0 && q.re < vx1 && q.im > vy0 && q.im < vy1; };
+  const arrows = (list, dash) => {
+    const idx = list.map((p, i) => (inside(p) ? i : -1)).filter((i) => i > 0 && i < list.length - 1);
+    for (const f of [0.2, 0.5, 0.8]) {
+      const i = idx[Math.floor(f * (idx.length - 1))];
+      if (i === undefined) continue;
+      const [ax, ay] = P(list[i - 1]), [bx, by] = P(list[i + 1]);
+      const ang = Math.atan2(by - ay, bx - ax), [cx0, cy0] = P(list[i]);
+      if (!Number.isFinite(ang) || (ax === bx && ay === by)) continue;
+      g.push(`<path d="M${cx0 + 7 * Math.cos(ang)} ${cy0 + 7 * Math.sin(ang)}L${cx0 + 7 * Math.cos(ang + 2.5)} ${cy0 + 7 * Math.sin(ang + 2.5)}L${cx0 + 7 * Math.cos(ang - 2.5)} ${cy0 + 7 * Math.sin(ang - 2.5)}Z" style="fill:var(--c1);fill-opacity:${dash ? 0.6 : 1}"/>`);
+    }
+  };
+  arrows(up, false);
+  if (nyqView.neg) arrows(down, true);
+  const [mx, my] = P({ re: -1, im: 0 });
+  g.push(`<path d="M${mx - 7} ${my}L${mx + 7} ${my}M${mx} ${my - 7}L${mx} ${my + 7}" style="stroke:var(--bad);stroke-width:2.5"/></g>`);
+  g.push(`<text x="${mx}" y="${my + 20}" text-anchor="middle" style="fill:var(--bad);font:600 11px var(--mono)">−1</text>`);
+  g.push(`<rect x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:none;stroke:var(--border)"/>`);
+  const nq = result.nyquist;
+  if (nq.available) g.push(`<text x="${m.l + pw - 6}" y="${m.t + 16}" text-anchor="end" style="fill:var(--fg);font:600 12px var(--mono)">N = ${nq.N}, P = ${nq.P}, Z = ${nq.Z}${nq.excess ? ` (+${nq.excess})` : ""}</text>`);
+  g.push(`<text x="${m.l + pw / 2}" y="${H - 6}" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Re L${nyqView.log ? " (compressed radius)" : ""}</text>`);
+  g.push(`<text transform="translate(14 ${m.t + phh / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Im L</text>`);
+  g.push(`<g data-cursor style="display:none"><circle data-cm r="5" style="fill:none;stroke:var(--fg);stroke-width:1.5"/></g>`);
+  g.push(`<rect data-hit x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:transparent"/>`);
+  return { svg: `<svg xmlns="${NS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Nyquist plot of L" style="font-family:var(--sans)">${g.join("")}</svg>`, geom: { P, up, W } };
+}
+function renderNyq() {
+  const host = $("nyq-plot");
+  if (!result.ok) { host.innerHTML = '<p class="note">No plot: fix the errors above.</p>'; $("nyq-stats").innerHTML = ""; return; }
+  const nq = result.nyquist, cl = result.closedLoop, disc = result.loop.domain === "z";
+  $("nyq-stats").innerHTML = nq.available ? [
+    `<li><b>${nq.N}</b><span>N, net clockwise encirclements of −1</span></li>`,
+    `<li><b>${nq.P}</b><span>P, open-loop poles ${disc ? "outside the unit circle" : "in the RHP"}</span></li>`,
+    `<li${nq.Z ? ' class="fail"' : ""}><b>${nq.Z}</b><span>Z = N + P${nq.excess ? ` + ${nq.excess}` : ""}, unstable closed-loop poles</span></li>`,
+    `<li${nq.verdict !== "stable" ? ' class="fail"' : ""}><b>${nq.verdict}</b><span>Nyquist verdict${nq.unresolved && !nq.onContour ? " (locus unresolved)" : ""}</span></li>`,
+    `<li${nq.crossCheck.available && !nq.crossCheck.agree ? ' class="fail"' : ""}><b>${nq.crossCheck.available ? (nq.crossCheck.agree ? "agrees" : "DISAGREES") : "n/a"}</b><span>${nq.crossCheck.available ? `with the closed-loop poles (${cl.unstable} unstable)` : "no closed-loop pole check (delay present)"}</span></li>`,
+  ].join("") : `<li><b>n/a</b><span>${esc(nq.message)}</span></li>`;
+  $("nyq-convention").textContent = nq.available ? `Convention: ${nq.convention}` : "";
+  if ($("panel-nyq").hidden) return;
+  nyqLocus = F.nyquistLocus(state);
+  if (!nyqLocus) { host.innerHTML = '<p class="note">No Nyquist locus for these inputs.</p>'; return; }
+  const W = Math.max(320, Math.round(host.clientWidth || 900));
+  const out = nyqSVG(W);
+  host.innerHTML = out.svg;
+  nyqGeom = out.geom;
+  const svg = host.querySelector("svg"), hit = svg.querySelector("[data-hit]");
+  const move = (ev) => {
+    const box = svg.getBoundingClientRect(), x = ((ev.clientX - box.left) / box.width) * W, y = ((ev.clientY - box.top) / box.height) * (box.height / box.width * W);
+    let best = -1, bd = Infinity;
+    nyqGeom.up.forEach((p, i) => { if (p.kind === "arc") return; const [a, b] = nyqGeom.P(p); const d = (a - x) ** 2 + (b - y) ** 2; if (d < bd) { bd = d; best = i; } });
+    if (best < 0) return;
+    const p = nyqGeom.up[best], [a, b] = nyqGeom.P(p), c = svg.querySelector("[data-cursor]");
+    c.style.display = ""; c.querySelector("[data-cm]").setAttribute("cx", a); c.querySelector("[data-cm]").setAttribute("cy", b);
+    const mag = Math.hypot(p.re, p.im), ph = (Math.atan2(p.im, p.re) * 180) / Math.PI;
+    $("nyq-readout").innerHTML = `<b>${p.kind === "indent" ? `indentation round ω = ${esc(F_(p.w))}` : `ω = ${esc(F_(p.w))}`}</b> · <span style="color:var(--c1)">L = ${esc(fmtC({ re: p.re, im: p.im }))}</span> · ${esc(magText(mag))}, ${esc(phText(ph))} (wrapped)`;
+  };
+  hit.addEventListener("pointermove", move);
+  hit.addEventListener("pointerdown", move);
+  hit.addEventListener("pointerleave", () => { svg.querySelector("[data-cursor]").style.display = "none"; });
+}
+
+/* ---------- Nichols chart (SVG) ---------- */
+const nicView = { m: true, n: false, ms: true };
+let nicGeom = null;
+function nicSVG(W) {
+  const H = Math.round(Math.min(620, Math.max(380, W * 0.66)));
+  const m = { l: 56, r: 16, t: 30, b: 40 }, pw = W - m.l - m.r, phh = H - m.t - m.b;
+  const pts = rows.map((d) => ({ w: d.w, x: d.phaseDeg, y: F.toDb(d.mag) }));
+  const useful = pts.filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y) && p.y > -60 && p.y < 60);
+  const src = useful.length > 1 ? useful : pts.filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
+  let x0 = Math.min(-200, ...src.map((p) => p.x)) - 10, x1 = Math.max(-160, ...src.map((p) => p.x)) + 10;
+  if (x1 - x0 > 1440) x0 = x1 - 1440;
+  let y0 = Math.max(-60, Math.min(-12, ...src.map((p) => p.y)) - 3), y1 = Math.min(60, Math.max(12, ...src.map((p) => p.y)) + 3);
+  const X = (v) => m.l + ((v - x0) / (x1 - x0)) * pw, Y = (v) => m.t + phh - ((v - y0) / (y1 - y0)) * phh;
+  const g = [];
+  g.push(`<rect x="0" y="0" width="${W}" height="${H}" style="fill:var(--bg)"/>`);
+  g.push(`<text x="${m.l}" y="16" style="fill:var(--warn);font:600 11px var(--mono)">EXPLORATION ONLY — not a verified control-design toolchain</text>`);
+  g.push(`<clipPath id="nicclip"><rect x="${m.l}" y="${m.t}" width="${pw}" height="${phh}"/></clipPath>`);
+  for (const v of niceTicks(x0, x1, 8, true)) { g.push(`<line x1="${X(v)}" x2="${X(v)}" y1="${m.t}" y2="${m.t + phh}" style="stroke:var(--grid)"/>`); g.push(`<text x="${X(v)}" y="${m.t + phh + 15}" text-anchor="middle" style="fill:var(--muted);font:11px var(--mono)">${fmt(v, 4)}</text>`); }
+  for (const v of niceTicks(y0, y1, 7, false)) { g.push(`<line x1="${m.l}" x2="${m.l + pw}" y1="${Y(v)}" y2="${Y(v)}" style="stroke:var(--grid)"/>`); g.push(`<text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--muted);font:11px var(--mono)">${fmt(v, 3)}</text>`); }
+  // Contours are periodic in φ, so one sweep over the visible phase range repeats them every 360°.
+  const steps = Math.min(4000, Math.ceil((x1 - x0) / 0.25));
+  const sweep = (fn) => {
+    const lines = [[], []];
+    for (let i = 0; i <= steps; i++) {
+      const ph = x0 + ((x1 - x0) * i) / steps, rs = fn(ph);
+      for (let b = 0; b < 2; b++) {
+        const r = rs[b];
+        if (r === undefined) { if (lines[b].length && lines[b][lines[b].length - 1] !== null) lines[b].push(null); continue; }
+        lines[b].push([X(ph), Y(Math.max(y0 - 50, Math.min(y1 + 50, F.toDb(r))))]);
+      }
+    }
+    return lines.map((l) => { let d = "", pen = false; for (const q of l) { if (!q) { pen = false; continue; } d += `${pen ? "L" : "M"}${q[0].toFixed(1)} ${q[1].toFixed(1)}`; pen = true; } return d; }).join("");
+  };
+  const cg = [];
+  if (nicView.m) for (const mdb of F.NICHOLS_M_DB) {
+    const M = Math.pow(10, mdb / 20);
+    cg.push(`<path d="${sweep((ph) => F.mContour(M, ph).sort((a, b) => b - a))}" style="fill:none;stroke:var(--muted);stroke-width:${mdb === 0 ? 1.2 : 0.8};stroke-opacity:.7"/>`);
+    // Label the closed contours (M > 1) at their top on the −180° line, the open ones (M ≤ 1) at the left edge.
+    const at = mdb > 0 ? -180 + 360 * Math.round(((x0 + x1) / 2 + 180) / 360) : x0 + 4;
+    const r = F.mContour(M, at).sort((a, b) => b - a)[0];
+    if (r !== undefined) { const yl = Y(F.toDb(r)); if (yl > m.t + 8 && yl < m.t + phh - 4) cg.push(`<text x="${X(at) + 3}" y="${yl - 2}" style="fill:var(--muted);font:10px var(--mono)">${mdb} dB</text>`); }
+  }
+  if (nicView.n) for (const psi of F.NICHOLS_N_DEG) {
+    cg.push(`<path d="${sweep((ph) => { const r = F.nContour(psi, ph); return r === null ? [] : [r]; })}" style="fill:none;stroke:var(--c3);stroke-width:0.8;stroke-dasharray:4 3;stroke-opacity:.8"/>`);
+  }
+  if (nicView.ms && result.margins.Ms.ok) {
+    const Ms = result.margins.Ms.value;
+    cg.push(`<path d="${sweep((ph) => F.msBoundary(Ms, ph).sort((a, b) => b - a))}" style="fill:none;stroke:var(--c2);stroke-width:1.5"/>`);
+  }
+  g.push(`<g clip-path="url(#nicclip)">${cg.join("")}`);
+  for (let k = Math.ceil((x0 + 180) / 360); -180 + 360 * k <= x1; k++) {
+    const cx0 = X(-180 + 360 * k), cy0 = Y(0);
+    g.push(`<path d="M${cx0 - 7} ${cy0}L${cx0 + 7} ${cy0}M${cx0} ${cy0 - 7}L${cx0} ${cy0 + 7}" style="stroke:var(--bad);stroke-width:2.5"/>`);
+  }
+  let d = "", pen = false;
+  for (const p of pts) { if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) { pen = false; continue; } d += `${pen ? "L" : "M"}${X(p.x).toFixed(1)} ${Y(Math.max(y0 - 100, Math.min(y1 + 100, p.y))).toFixed(1)}`; pen = true; }
+  g.push(`<path d="${d}" style="fill:none;stroke:var(--c1);stroke-width:2"/></g>`);
+  g.push(`<rect x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:none;stroke:var(--border)"/>`);
+  g.push(`<text x="${m.l + pw / 2}" y="${H - 6}" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Open-loop phase (deg, unwrapped)</text>`);
+  g.push(`<text transform="translate(14 ${m.t + phh / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Open-loop magnitude (dB)</text>`);
+  g.push(`<g data-cursor style="display:none"><circle data-cm r="5" style="fill:none;stroke:var(--fg);stroke-width:1.5"/></g>`);
+  g.push(`<rect data-hit x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:transparent"/>`);
+  return { svg: `<svg xmlns="${NS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Nichols chart of L" style="font-family:var(--sans)">${g.join("")}</svg>`, geom: { X, Y, pts, W, H } };
+}
+function renderNic() {
+  const host = $("nic-plot");
+  if (!result.ok || !rows) { host.innerHTML = '<p class="note">No chart: fix the errors above.</p>'; return; }
+  if ($("panel-nic").hidden) return;
+  const W = Math.max(320, Math.round(host.clientWidth || 900));
+  const out = nicSVG(W);
+  host.innerHTML = out.svg;
+  nicGeom = out.geom;
+  const svg = host.querySelector("svg"), hit = svg.querySelector("[data-hit]");
+  const move = (ev) => {
+    const box = svg.getBoundingClientRect(), x = ((ev.clientX - box.left) / box.width) * nicGeom.W, y = ((ev.clientY - box.top) / box.height) * nicGeom.H;
+    let best = -1, bd = Infinity;
+    nicGeom.pts.forEach((p, i) => { const d = (nicGeom.X(p.x) - x) ** 2 + (nicGeom.Y(p.y) - y) ** 2; if (d < bd) { bd = d; best = i; } });
+    if (best < 0) return;
+    const p = nicGeom.pts[best], c = svg.querySelector("[data-cursor]");
+    c.style.display = ""; c.querySelector("[data-cm]").setAttribute("cx", nicGeom.X(p.x)); c.querySelector("[data-cm]").setAttribute("cy", nicGeom.Y(p.y));
+    const L = F.cx(Math.pow(10, p.y / 20) * Math.cos((p.x * Math.PI) / 180), Math.pow(10, p.y / 20) * Math.sin((p.x * Math.PI) / 180));
+    const T = Math.hypot(L.re, L.im) / Math.hypot(1 + L.re, L.im);
+    $("nic-readout").innerHTML = `<b>ω = ${esc(F_(p.w))}</b> · <span style="color:var(--c1)">L: ${esc(fmt(p.y))} dB, ${esc(fmt(p.x))}°</span> · |T| ${esc(fmt(F.toDb(T)))} dB`;
+  };
+  hit.addEventListener("pointermove", move);
+  hit.addEventListener("pointerdown", move);
+  hit.addEventListener("pointerleave", () => { svg.querySelector("[data-cursor]").style.display = "none"; });
+}
+
 /* ---------- pole-zero map (SVG) ---------- */
 function pzSVG(W) {
   const r = result, L = r.loop, disc = L.domain === "z";
@@ -2002,6 +2550,10 @@ const EXPORTS = {
   inputs: { name: "frequency-response-inputs.json", type: "application/json", make: () => F.toInputsJSON(state) },
   csv: { name: "frequency-response-bode.csv", type: "text/csv", make: () => F.toCSV(state) },
   svg: { name: "frequency-response-bode.svg", type: "image/svg+xml", make: exportSVG },
+  nyqsvg: { name: "frequency-response-nyquist.svg", type: "image/svg+xml", make: () => { if (!result.ok) return null; nyqLocus = F.nyquistLocus(state); return nyqLocus ? standaloneSVG(nyqSVG(800).svg) : null; } },
+  nyqcsv: { name: "frequency-response-nyquist.csv", type: "text/csv", make: () => F.toCSV(state, "nyquist") },
+  nicsvg: { name: "frequency-response-nichols.svg", type: "image/svg+xml", make: () => (result.ok && rows ? standaloneSVG(nicSVG(900).svg) : null) },
+  niccsv: { name: "frequency-response-nichols.csv", type: "text/csv", make: () => F.toCSV(state, "nichols") },
   pzsvg: { name: "frequency-response-pole-zero.svg", type: "image/svg+xml", make: () => (result.ok ? standaloneSVG(pzSVG(700)) : null) },
 };
 function showFallback(msg, text) {
@@ -2059,7 +2611,7 @@ function wireExports() {
 }
 
 /* ---------- tabs ---------- */
-const TABS = ["system", "bode", "pz", "report"];
+const TABS = ["system", "bode", "nyq", "nic", "pz", "report"];
 function selectTab(name) {
   for (const t of TABS) {
     const on = t === name;
@@ -2068,6 +2620,8 @@ function selectTab(name) {
   }
   if (name === "bode") renderBode();
   if (name === "pz") renderPz();
+  if (name === "nyq") renderNyq();
+  if (name === "nic") renderNic();
 }
 function wireTabs() {
   for (const t of TABS) {
@@ -2078,7 +2632,7 @@ function wireTabs() {
     });
   }
   let pending = 0;
-  addEventListener("resize", () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(() => { if (!$("panel-bode").hidden) renderBode(); if (!$("panel-pz").hidden) renderPz(); }); });
+  addEventListener("resize", () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(() => { if (!$("panel-bode").hidden) renderBode(); if (!$("panel-pz").hidden) renderPz(); if (!$("panel-nyq").hidden) renderNyq(); if (!$("panel-nic").hidden) renderNic(); }); });
 }
 
 /* ---------- self-tests ---------- */
@@ -2102,7 +2656,7 @@ function summary(r) {
     governing: r.margins.governing,
     gain_crossovers: r.margins.gainCrossovers, phase_crossovers: r.margins.phaseCrossovers,
     Ms: r.margins.Ms, Mt: r.margins.Mt, vector_margin: r.margins.vectorMargin, resonance: r.margins.resonance, bandwidth: r.margins.bandwidth,
-    closed_loop: r.closedLoop, checks: r.checks,
+    closed_loop: r.closedLoop, nyquist: r.nyquist, checks: r.checks,
     warnings: r.warnings.map((w) => w.message),
   };
 }
@@ -2129,8 +2683,8 @@ function registerTools() {
   };
   mc.registerTool({ name: "get_metadata", description: "Return the scope, conventions, assumptions, sources, presets, threshold defaults and disclaimer of this frequency-response visualiser.", inputSchema: empty, annotations: { readOnlyHint: true }, async execute() { return out(F.META); } });
   mc.registerTool({ name: "get_current_system", description: "Return the loop on the page (canonical inputs) with its margins, crossovers, sensitivity peaks, closed-loop poles, threshold checks and warnings.", inputSchema: empty, annotations: { readOnlyHint: true }, async execute() { return out({ inputs: state, ...summary(F.analyze(state)) }); } });
-  mc.registerTool({ name: "analyze_loop", description: "Analyse a SISO loop without changing the page, in continuous time (L = K·C·G·e^(−sτ)) or discrete time (L = K·C·G·z^(−d), blocks discretised by ZOH, Tustin or Euler, or entered in z): gain, phase and delay margins, Ms, Mt, bandwidth, closed-loop poles and warnings, or the blocking errors.", inputSchema, annotations: { readOnlyHint: true }, async execute(i) { return out(summary(F.analyze(F.normalise(i || {})))); } });
-  mc.registerTool({ name: "run_self_tests", description: "Run the analytic self-tests (first-order corner, second-order peak, integrator, pure delay, K/(s(s+1)(s+2)) critical gain, ZOH and Euler poles, Tustin warping and prewarp, discrete delay, K·Ts/(z − 1) Nyquist-frequency crossover, matrix exponential, root finder, unit and export round-trips) and return each with its tolerance.", inputSchema: empty, annotations: { readOnlyHint: true }, async execute() { const t = F.selfTests(); return out({ passed: t.filter((x) => x.pass).length, total: t.length, results: t }); } });
+  mc.registerTool({ name: "analyze_loop", description: "Analyse a SISO loop without changing the page, in continuous time (L = K·C·G·e^(−sτ)) or discrete time (L = K·C·G·z^(−d), blocks discretised by ZOH, Tustin or Euler, or entered in z): gain, phase and delay margins, Ms, Mt, bandwidth, closed-loop poles, the Nyquist count N, P, Z with its cross-check, and warnings, or the blocking errors.", inputSchema, annotations: { readOnlyHint: true }, async execute(i) { return out(summary(F.analyze(F.normalise(i || {})))); } });
+  mc.registerTool({ name: "run_self_tests", description: "Run the analytic self-tests (first-order corner, second-order peak, integrator, pure delay, K/(s(s+1)(s+2)) critical gain, ZOH and Euler poles, Tustin warping and prewarp, discrete delay, K·Ts/(z − 1) Nyquist-frequency crossover, Nyquist counts against the closed-loop poles in both domains, Nichols critical point and M/N-contour and Ms-boundary checks, matrix exponential, root finder, unit and export round-trips) and return each with its tolerance.", inputSchema: empty, annotations: { readOnlyHint: true }, async execute() { const t = F.selfTests(); return out({ passed: t.filter((x) => x.pass).length, total: t.length, results: t }); } });
 }
 
 /* ---------- start ---------- */
