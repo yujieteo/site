@@ -2,7 +2,8 @@
 
 Write a talk in Markdown with LaTeX; get web slides, a print handout, a
 continuous article (Markdown or print), Kokoro narration, Manim-style animation
-and a narrated, captioned MP4, all generated in the visitor's browser. Published at `/visuals/beamdswitch/index.html`.
+and a narrated, captioned MP4, all generated in the visitor's browser.
+Published at `/visuals/beamdswitch/index.html`.
 
 ## Files
 
