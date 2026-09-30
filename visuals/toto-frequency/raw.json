@@ -9,7 +9,7 @@
  "method": [
   "Each row is one TOTO draw as Singapore Pools publishes it: the draw list names every draw and its date, and each draw's own results page gives the six winning numbers and the additional number. fetch.py read those pages on the retrieval date; no draw was typed by hand.",
   "A window counts back from the latest draw in the data: 3 months, 6 months or 1 year means every draw dated after the same calendar day that many months earlier, up to and including the latest draw.",
-  "A ball's count is the number of draws in the window whose six winning numbers include it. The additional number is not part of that count; it is drawn after them, so it is counted separately and shown beside the main count.",
+  "A ball's count is the number of draws in the window whose six winning numbers include it. The additional number is drawn after them and is excluded from that count.",
   "Colour bands follow the counts asked for: 3 or fewer, more than 3 (4 or 5), more than 5 (6 to 10) and more than 10 (11 or more).",
   "The average is what every ball would get if the six winning numbers were spread evenly: 6 × draws ÷ 49. It is a reference line, not a prediction."
  ],
@@ -82,11 +82,6 @@
     "6m": 4,
     "1y": 8
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 0
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -103,11 +98,6 @@
     "3m": 0,
     "6m": 5,
     "1y": 10
-   },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 2
    },
    "bands": {
     "3m": "b0",
@@ -126,11 +116,6 @@
     "6m": 8,
     "1y": 14
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 0
-   },
    "bands": {
     "3m": "b0",
     "6m": "b2",
@@ -147,11 +132,6 @@
     "3m": 3,
     "6m": 8,
     "1y": 16
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 2
    },
    "bands": {
     "3m": "b0",
@@ -170,11 +150,6 @@
     "6m": 5,
     "1y": 12
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 1
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -191,11 +166,6 @@
     "3m": 5,
     "6m": 9,
     "1y": 16
-   },
-   "additional": {
-    "3m": 1,
-    "6m": 2,
-    "1y": 2
    },
    "bands": {
     "3m": "b1",
@@ -214,11 +184,6 @@
     "6m": 12,
     "1y": 15
    },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 3
-   },
    "bands": {
     "3m": "b2",
     "6m": "b3",
@@ -235,11 +200,6 @@
     "3m": 5,
     "6m": 9,
     "1y": 15
-   },
-   "additional": {
-    "3m": 2,
-    "6m": 3,
-    "1y": 4
    },
    "bands": {
     "3m": "b1",
@@ -258,11 +218,6 @@
     "6m": 6,
     "1y": 10
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 1
-   },
    "bands": {
     "3m": "b0",
     "6m": "b2",
@@ -279,11 +234,6 @@
     "3m": 0,
     "6m": 4,
     "1y": 11
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 1,
-    "1y": 1
    },
    "bands": {
     "3m": "b0",
@@ -302,11 +252,6 @@
     "6m": 10,
     "1y": 17
    },
-   "additional": {
-    "3m": 2,
-    "6m": 3,
-    "1y": 3
-   },
    "bands": {
     "3m": "b1",
     "6m": "b2",
@@ -323,11 +268,6 @@
     "3m": 2,
     "6m": 5,
     "1y": 11
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 2,
-    "1y": 3
    },
    "bands": {
     "3m": "b0",
@@ -346,11 +286,6 @@
     "6m": 4,
     "1y": 13
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 1
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -367,11 +302,6 @@
     "3m": 4,
     "6m": 6,
     "1y": 13
-   },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 3
    },
    "bands": {
     "3m": "b1",
@@ -390,11 +320,6 @@
     "6m": 4,
     "1y": 14
    },
-   "additional": {
-    "3m": 0,
-    "6m": 2,
-    "1y": 2
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -411,11 +336,6 @@
     "3m": 4,
     "6m": 9,
     "1y": 14
-   },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 4
    },
    "bands": {
     "3m": "b1",
@@ -434,11 +354,6 @@
     "6m": 4,
     "1y": 10
    },
-   "additional": {
-    "3m": 0,
-    "6m": 1,
-    "1y": 3
-   },
    "bands": {
     "3m": "b1",
     "6m": "b1",
@@ -455,11 +370,6 @@
     "3m": 2,
     "6m": 5,
     "1y": 12
-   },
-   "additional": {
-    "3m": 2,
-    "6m": 4,
-    "1y": 4
    },
    "bands": {
     "3m": "b0",
@@ -478,11 +388,6 @@
     "6m": 5,
     "1y": 12
    },
-   "additional": {
-    "3m": 1,
-    "6m": 2,
-    "1y": 4
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -499,11 +404,6 @@
     "3m": 1,
     "6m": 4,
     "1y": 9
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 1,
-    "1y": 2
    },
    "bands": {
     "3m": "b0",
@@ -522,11 +422,6 @@
     "6m": 6,
     "1y": 8
    },
-   "additional": {
-    "3m": 0,
-    "6m": 3,
-    "1y": 6
-   },
    "bands": {
     "3m": "b0",
     "6m": "b2",
@@ -543,11 +438,6 @@
     "3m": 7,
     "6m": 9,
     "1y": 23
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 0
    },
    "bands": {
     "3m": "b2",
@@ -566,11 +456,6 @@
     "6m": 12,
     "1y": 15
    },
-   "additional": {
-    "3m": 0,
-    "6m": 1,
-    "1y": 1
-   },
    "bands": {
     "3m": "b2",
     "6m": "b3",
@@ -587,11 +472,6 @@
     "3m": 1,
     "6m": 2,
     "1y": 11
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 1,
-    "1y": 2
    },
    "bands": {
     "3m": "b0",
@@ -610,11 +490,6 @@
     "6m": 7,
     "1y": 13
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 1
-   },
    "bands": {
     "3m": "b1",
     "6m": "b2",
@@ -631,11 +506,6 @@
     "3m": 3,
     "6m": 8,
     "1y": 12
-   },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 2
    },
    "bands": {
     "3m": "b0",
@@ -654,11 +524,6 @@
     "6m": 7,
     "1y": 12
    },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 3
-   },
    "bands": {
     "3m": "b1",
     "6m": "b2",
@@ -675,11 +540,6 @@
     "3m": 1,
     "6m": 5,
     "1y": 11
-   },
-   "additional": {
-    "3m": 1,
-    "6m": 2,
-    "1y": 2
    },
    "bands": {
     "3m": "b0",
@@ -698,11 +558,6 @@
     "6m": 5,
     "1y": 8
    },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 2
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -719,11 +574,6 @@
     "3m": 5,
     "6m": 10,
     "1y": 14
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 2,
-    "1y": 3
    },
    "bands": {
     "3m": "b1",
@@ -742,11 +592,6 @@
     "6m": 4,
     "1y": 14
    },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 3
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -763,11 +608,6 @@
     "3m": 5,
     "6m": 7,
     "1y": 15
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 1,
-    "1y": 1
    },
    "bands": {
     "3m": "b1",
@@ -786,11 +626,6 @@
     "6m": 10,
     "1y": 17
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 0
-   },
    "bands": {
     "3m": "b2",
     "6m": "b2",
@@ -807,11 +642,6 @@
     "3m": 3,
     "6m": 4,
     "1y": 15
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 1
    },
    "bands": {
     "3m": "b0",
@@ -830,11 +660,6 @@
     "6m": 7,
     "1y": 18
    },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 3
-   },
    "bands": {
     "3m": "b1",
     "6m": "b2",
@@ -851,11 +676,6 @@
     "3m": 5,
     "6m": 8,
     "1y": 14
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 1,
-    "1y": 2
    },
    "bands": {
     "3m": "b1",
@@ -874,11 +694,6 @@
     "6m": 6,
     "1y": 14
    },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 3
-   },
    "bands": {
     "3m": "b1",
     "6m": "b2",
@@ -895,11 +710,6 @@
     "3m": 2,
     "6m": 5,
     "1y": 12
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 0
    },
    "bands": {
     "3m": "b0",
@@ -918,11 +728,6 @@
     "6m": 14,
     "1y": 19
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 3
-   },
    "bands": {
     "3m": "b2",
     "6m": "b3",
@@ -939,11 +744,6 @@
     "3m": 3,
     "6m": 5,
     "1y": 10
-   },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 3
    },
    "bands": {
     "3m": "b0",
@@ -962,11 +762,6 @@
     "6m": 4,
     "1y": 8
    },
-   "additional": {
-    "3m": 0,
-    "6m": 2,
-    "1y": 3
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -983,11 +778,6 @@
     "3m": 4,
     "6m": 6,
     "1y": 11
-   },
-   "additional": {
-    "3m": 1,
-    "6m": 1,
-    "1y": 1
    },
    "bands": {
     "3m": "b1",
@@ -1006,11 +796,6 @@
     "6m": 6,
     "1y": 15
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 0
-   },
    "bands": {
     "3m": "b1",
     "6m": "b2",
@@ -1027,11 +812,6 @@
     "3m": 5,
     "6m": 8,
     "1y": 12
-   },
-   "additional": {
-    "3m": 3,
-    "6m": 3,
-    "1y": 4
    },
    "bands": {
     "3m": "b1",
@@ -1050,11 +830,6 @@
     "6m": 0,
     "1y": 5
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 1
-   },
    "bands": {
     "3m": "b0",
     "6m": "b0",
@@ -1071,11 +846,6 @@
     "3m": 5,
     "6m": 9,
     "1y": 17
-   },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 2
    },
    "bands": {
     "3m": "b1",
@@ -1094,11 +864,6 @@
     "6m": 5,
     "1y": 10
    },
-   "additional": {
-    "3m": 0,
-    "6m": 0,
-    "1y": 0
-   },
    "bands": {
     "3m": "b0",
     "6m": "b1",
@@ -1116,11 +881,6 @@
     "6m": 8,
     "1y": 13
    },
-   "additional": {
-    "3m": 1,
-    "6m": 2,
-    "1y": 4
-   },
    "bands": {
     "3m": "b1",
     "6m": "b2",
@@ -1137,11 +897,6 @@
     "3m": 2,
     "6m": 5,
     "1y": 12
-   },
-   "additional": {
-    "3m": 2,
-    "6m": 2,
-    "1y": 4
    },
    "bands": {
     "3m": "b0",

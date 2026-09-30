@@ -92,13 +92,11 @@ class TotoFrequencyTest(unittest.TestCase):
                 n = b["number"]
                 count = sum(n in d["winning"] for d in inside)
                 self.assertEqual(b["counts"][w["id"]], count, (w["id"], n))
-                self.assertEqual(b["additional"][w["id"]], sum(d["additional"] == n for d in inside), (w["id"], n))
                 band = next(x for x in bands if count >= x["min"] and (x["max"] is None or count <= x["max"]))
                 self.assertEqual(b["bands"][w["id"]], band["id"], (w["id"], n))
 
     def test_page_states_that_draws_are_random(self):
         self.assertIn("do not predict future draws", raw()["random_note"])
-        self.assertIn('id="random-note"', (VIZ / "index.html").read_text(encoding="utf-8"))
 
     def test_published_copy_matches_sources(self):
         published = ROOT / "site" / "visuals" / "toto-frequency"

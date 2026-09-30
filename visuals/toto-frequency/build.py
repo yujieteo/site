@@ -35,7 +35,7 @@ BANDS = [
 METHOD = [
     "Each row is one TOTO draw as Singapore Pools publishes it: the draw list names every draw and its date, and each draw's own results page gives the six winning numbers and the additional number. fetch.py read those pages on the retrieval date; no draw was typed by hand.",
     "A window counts back from the latest draw in the data: 3 months, 6 months or 1 year means every draw dated after the same calendar day that many months earlier, up to and including the latest draw.",
-    "A ball's count is the number of draws in the window whose six winning numbers include it. The additional number is not part of that count; it is drawn after them, so it is counted separately and shown beside the main count.",
+    "A ball's count is the number of draws in the window whose six winning numbers include it. The additional number is drawn after them and is excluded from that count.",
     "Colour bands follow the counts asked for: 3 or fewer, more than 3 (4 or 5), more than 5 (6 to 10) and more than 10 (11 or more).",
     "The average is what every ball would get if the six winning numbers were spread evenly: 6 × draws ÷ 49. It is a reference line, not a prediction.",
 ]
@@ -114,12 +114,11 @@ def build():
 
     balls = []
     for n in BALLS:
-        ball = {"number": n, "counts": {}, "additional": {}, "bands": {}, "last_drawn": None}
+        ball = {"number": n, "counts": {}, "bands": {}, "last_drawn": None}
         for w in windows:
             inside = [d for d in kept if d["date"] > w["after"]]
             count = sum(n in d["winning"] for d in inside)
             ball["counts"][w["id"]] = count
-            ball["additional"][w["id"]] = sum(d["additional"] == n for d in inside)
             ball["bands"][w["id"]] = band_of(count)
         hit = next((d for d in kept if n in d["winning"]), None)
         if hit:
