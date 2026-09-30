@@ -9,10 +9,5 @@ webmcp_tools:
   - get_data
   - get_metadata
   - query
-tags:
-  - graduate employment
-  - salary
-  - computing
-  - singapore
-  - universities
+tags: [graduate-employment, salary, computing, singapore, universities]
 category: data visualization

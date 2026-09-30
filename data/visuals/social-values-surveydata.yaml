@@ -9,10 +9,5 @@ webmcp_tools:
   - get_data
   - get_metadata
   - query
-tags:
-  - social values
-  - age
-  - belonging
-  - civic participation
-  - singapore
+tags: [social-values, age, belonging, civic-participation, singapore]
 category: data visualization

@@ -32,6 +32,11 @@ if (form) {
   let cursor = null;
   let previousCursors = [];
   let renderId = 0;
+  // Corpus URLs are relative to the site root; pages below it (visuals/index.html)
+  // reach that root through the same prefix as their corpus link.
+  const corpusHref = document.querySelector('meta[name="site-corpus"]')?.content || "";
+  const rootPrefix = corpusHref.slice(0, corpusHref.lastIndexOf("/") + 1);
+  const siteHref = (url) => (/^[a-z][a-z0-9+.-]*:|^[/#]/i.test(url) ? url : `${rootPrefix}${url}`);
 
   const escapeHtml = (value) => String(value ?? "").replace(
     /[&<>"']/g,
@@ -54,7 +59,7 @@ if (form) {
         ? `Note, ${target.date} — ${String(target.summary || "").split(/(?<=[.!?])\s/)[0]}`
         : `${kindLabels[target.kind] || target.kind} — ${target.title}`;
       return [`<li><span class="related-rel">${escapeHtml(linkLabels[link.rel] || link.rel)}</span> `
-        + `<a href="${escapeHtml(target.url)}">${escapeHtml(label)}</a></li>`];
+        + `<a href="${escapeHtml(siteHref(target.url))}">${escapeHtml(label)}</a></li>`];
     });
     return items.length
       ? `<ul class="related-list related-compact" aria-label="Related items">${items.join("")}</ul>`
@@ -62,8 +67,10 @@ if (form) {
   };
 
   const entryHtml = (entry, corpus) => {
-    const time = entry.date
-      ? `<time datetime="${escapeHtml(entry.date)}">${escapeHtml(entry.date)}</time>`
+    // Visuals are dated by when their data was fetched.
+    const dateValue = entry.date || entry.fetched;
+    const time = dateValue
+      ? `${entry.date ? "" : "Fetched "}<time datetime="${escapeHtml(dateValue)}">${escapeHtml(dateValue)}</time>`
       : "";
     const reading = entry.readingMinutes
       ? `<span class="reading-time">${Number(entry.readingMinutes)} min read</span>`
@@ -81,7 +88,7 @@ if (form) {
         + `<div class="entry-tags" aria-label="Tags">${tags}</div>${related}</article>`;
     }
     const title = entry.url
-      ? `<a href="${escapeHtml(entry.url)}">${escapeHtml(entry.title)}</a>`
+      ? `<a href="${escapeHtml(siteHref(entry.url))}">${escapeHtml(entry.title)}</a>`
       : escapeHtml(entry.title);
     const summary = entry.summary ? `<p class="entry-abstract">${escapeHtml(entry.summary)}</p>` : "";
     return `<article class="entry">${date}<${headingTag} class="entry-title" tabindex="-1">${title}</${headingTag}>`

@@ -6,5 +6,5 @@ fetched: "2026-09-30"
 html_path: visuals/subsidy-atlas/index.html
 data_path: visuals/subsidy-atlas/raw.json
 webmcp_tools: [get_metadata, search_products, get_product]
-tags: [subsidies, consumer economics, artificial intelligence, cloud, incentives]
+tags: [subsidies, consumer-economics, ai, cloud, incentives]
 category: data visualization

@@ -9,9 +9,5 @@ webmcp_tools:
   - get_data
   - get_metadata
   - query
-tags:
-  - football
-  - finance
-  - premier league
-  - manchester city
+tags: [football, finance, premier-league, manchester-city]
 category: data visualization

@@ -66,8 +66,9 @@ Tags in one facet are OR'd, facets are AND'd (`tagGroups` in
 `index.html?subject=energy&region=singapore`. Each facet shows its eight most
 used tags and a "Show all" toggle. Resource facets come from
 `data/tag-facets.yaml` (the build fails on an unassigned tag), note facets from
-the tag classes in `data/note-tags.json`, and paper-link facets from the
-vocabularies in `scripts/paper_tags.py`.
+the tag classes in `data/note-tags.json`, paper-link facets from the
+vocabularies in `scripts/paper_tags.py`, and the Visuals page has one Topic
+facet of the visuals' own `tags`.
 
 ## Links between items
 

@@ -9,9 +9,5 @@ webmcp_tools:
   - get_data
   - get_metadata
   - query
-tags:
-  - decision making
-  - experimentation
-  - real options
-  - convexity
+tags: [decision-making, experimentation, real-options, convexity]
 category: data visualization
