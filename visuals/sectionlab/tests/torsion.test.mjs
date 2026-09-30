@@ -69,18 +69,23 @@ test("examples with a single shape report J", () => {
 
 test("thin-walled open sections: mid-line lengths, sharp corners only, and the thickness domain", () => {
   const J = (shape, d) => T.formula(shape, d, new Array(L.shapes.SHAPES[shape].corners(d).length).fill(0));
-  near(J("ishape", { b: 150, h: 300, tf: 10, tw: 6 }).J, (2 * 150 * 1000 + 290 * 216) / 3, 1e-14, { msg: "I: flanges full width, web to flange mid-lines" });
-  near(J("channel", { b: 100, h: 300, tf: 15, tw: 9 }).J, J("zed", { b: 100, h: 300, tf: 15, tw: 9 }).J, 1e-14, { msg: "channel and Z share their walls" });
+  near(J("ishape", { b: 150, h: 300, tf: 10, tw: 8 }).J, (2 * 150 * 1000 + 290 * 512) / 3, 1e-14, { msg: "I: flanges full width, web to flange mid-lines" });
+  near(J("channel", { b: 100, h: 300, tf: 15, tw: 11 }).J, J("zed", { b: 100, h: 300, tf: 15, tw: 11 }).J, 1e-14, { msg: "channel and Z share their walls" });
   near(J("angle", { b: 100, h: 60, t: 8 }).J, ((100 + 60 - 8) * 512) / 3, 1e-14, { msg: "angle: one leg runs to the other's mid-line" });
-  near(J("cross", { b: 200, h: 160, tb: 20, th: 12 }).J, (200 * 8000 + 140 * 1728) / 3, 1e-14, { msg: "cross" });
+  near(J("cross", { b: 200, h: 160, tb: 20, th: 15 }).J, (200 * 8000 + 140 * 3375) / 3, 1e-14, { msg: "cross" });
   for (const shape of ["ishape", "channel", "zed", "tee", "angle", "cross"]) {
     const d = L.shapes.defaults(shape);
-    assert.equal(J(shape, d).id, "open-thin-wall", shape);
     const rolled = T.formula(shape, d, L.shapes.SHAPES[shape].defaultRadii(d));
     if (L.shapes.SHAPES[shape].defaultRadii(d).some((r) => r > 0)) assert.match(rolled.reason, /Root fillets/, `${shape} with its default fillets`);
   }
   assert.match(J("tee", { b: 100, h: 100, tf: 16, tw: 8 }).reason, /walls up to 0.15/);
   assert.equal(J("tee", { b: 100, h: 100, tf: 15, tw: 15 }).id, "open-thin-wall");
+  for (const [shape, thick, thin] of [["ishape", "tf", "tw"], ["channel", "tf", "tw"], ["zed", "tf", "tw"], ["tee", "tf", "tw"], ["cross", "tb", "th"]]) {
+    for (const [big, small] of [[thick, thin], [thin, thick]]) {
+      assert.equal(J(shape, { b: 140, h: 140, [big]: 21, [small]: 15 }).id, "open-thin-wall", `${shape} ${big}/${small} = 1.4`);
+      assert.match(J(shape, { b: 140, h: 140, [big]: 21, [small]: 14.9 }).reason, /at most 1.4 times the thinner/, `${shape} ${big}/${small} > 1.4`);
+    }
+  }
 });
 
 test("a sharp rolled shape on its own reports J with the open-section accuracy; with fillets it is n/a", () => {

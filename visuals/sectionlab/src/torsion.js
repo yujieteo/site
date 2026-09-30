@@ -19,7 +19,8 @@
  *                             checked, and their accuracy stated, separately)
  *   I, channel, Z, tee, angle,  Vlasov thin-walled open section: J = (1/3) Σ L t³ over the
  *   cross (sharp corners)       wall mid-lines, for walls up to 0.15 of the smaller outside
- *                               dimension; root fillets make it n/a
+ *                               dimension with the thicker wall at most 1.4 times the thinner;
+ *                               root fillets make it n/a
  */
 (function (root, factory) {
   if (typeof module === "object" && module.exports) module.exports = factory();
@@ -43,6 +44,8 @@
 
   /* Largest wall, as a fraction of the smaller outside dimension, for the thin-walled open-section formula. */
   const OPEN_MAX_T_RATIO = 0.15;
+  /* Largest ratio of the thicker wall to the thinner one for the thin-walled open-section formula. */
+  const OPEN_MAX_WALL_RATIO = 1.4;
 
   /* Saint-Venant constant of a thin-walled open section from its wall mid-lines, J = (1/3) Σ L t³:
      flanges and legs run to the mid-line of the wall they meet, so no length is counted twice. */
@@ -103,6 +106,7 @@
         if (!allZero(radii)) return { reason: "Root fillets and rounded toes add torsional stiffness the thin-walled formula leaves out (6–20% measured), so it is given only for sharp corners." };
         const walls = shape === "angle" ? [d.t] : shape === "cross" ? [d.tb, d.th] : [d.tf, d.tw];
         if (Math.max(...walls) > OPEN_MAX_T_RATIO * Math.min(d.b, d.h)) return { reason: `The thin-walled formula is used only for walls up to ${OPEN_MAX_T_RATIO} of the smaller outside dimension.` };
+        if (Math.max(...walls) / Math.min(...walls) > OPEN_MAX_WALL_RATIO) return { reason: `The thin-walled formula is used only when the thicker wall is at most ${OPEN_MAX_WALL_RATIO} times the thinner.` };
         return { id: "open-thin-wall", method: "Vlasov thin-walled open section", J: openMidline(shape, d), text: "J = (1/3) Σ L t³ over the wall mid-lines" };
       }
       default:
@@ -125,5 +129,5 @@
 
   const pct = (x) => `${+(x * 100).toPrecision(2)}%`;
 
-  return { BREDT_MAX_T_RATIO, OPEN_MAX_T_RATIO, rectangleSeries, openMidline, formula, torsion };
+  return { BREDT_MAX_T_RATIO, OPEN_MAX_T_RATIO, OPEN_MAX_WALL_RATIO, rectangleSeries, openMidline, formula, torsion };
 });

@@ -35,7 +35,7 @@ STATED = {
     "triangle-equilateral": (1e-4, "exact (Saint-Venant)", EXACT),
     "rect": (1e-4, "Saint-Venant series", "series summed to convergence; the stated bound is the reference's own accuracy"),
     "rhs-bredt-sharp": (0.06, "Bredt–Batho (thin wall)", "sharp or mixed corners, t ≤ 0.1 of the smaller outside dimension; the formula underestimates J"),
-    "open-thin-wall": (0.06, "Vlasov thin-walled open section", "sharp-cornered I, channel, Z, tee, angle and cross sections with walls up to 0.15 of the smaller outside dimension; the formula overestimates J except for the cross"),
+    "open-thin-wall": (0.06, "Vlasov thin-walled open section", "sharp-cornered I, channel, Z, tee, angle and cross sections with walls up to 0.15 of the smaller outside dimension and the thicker wall at most 1.4 times the thinner; the formula overestimates J for the I, channel, Z, tee and angle and underestimates it for the cross"),
     "rhs-bredt-rounded": (0.035, "Bredt–Batho (thin wall)", "uniform rounded corners (inner radius = outer − t), t ≤ 0.1 of the smaller outside dimension; the formula underestimates J"),
 }
 
@@ -66,17 +66,22 @@ def cases():
                     k = {"r=t": 1, "r=2t": 2, "r=3t": 3}[corners]
                     radii = [k * t] * 4 + [(k - 1) * t] * 4
                 out.append(("rhs", {"b": b, "h": h, "t": t}, radii))
-    # Thin-walled open sections: typical rolled proportions and the stockiest walls the domain allows.
+    # Thin-walled open sections: typical proportions, then the corners of the domain at b = h (where the
+    # error is largest): stockiest walls at 0.15 min(b, h), each wall in turn the thicker at the 1.4 ratio limit.
     open_cases = [
-        ("ishape", {"b": 150.0, "h": 300.0, "tf": 10.7, "tw": 7.1}), ("ishape", {"b": 300.0, "h": 300.0, "tf": 19.0, "tw": 11.0}),
-        ("ishape", {"b": 200.0, "h": 600.0, "tf": 10.0, "tw": 6.0}), ("ishape", {"b": 100.0, "h": 100.0, "tf": 15.0, "tw": 15.0}),
-        ("channel", {"b": 100.0, "h": 300.0, "tf": 15.0, "tw": 9.0}), ("channel", {"b": 60.0, "h": 100.0, "tf": 9.0, "tw": 9.0}),
+        ("ishape", {"b": 150.0, "h": 300.0, "tf": 10.7, "tw": 8.0}), ("ishape", {"b": 200.0, "h": 600.0, "tf": 10.0, "tw": 7.5}),
+        ("ishape", {"b": 100.0, "h": 100.0, "tf": 15.0, "tw": 15.0}),
+        ("channel", {"b": 100.0, "h": 300.0, "tf": 15.0, "tw": 11.0}), ("channel", {"b": 60.0, "h": 100.0, "tf": 9.0, "tw": 9.0}),
         ("zed", {"b": 80.0, "h": 200.0, "tf": 10.0, "tw": 8.0}), ("zed", {"b": 60.0, "h": 100.0, "tf": 9.0, "tw": 9.0}),
-        ("tee", {"b": 150.0, "h": 150.0, "tf": 12.0, "tw": 8.0}), ("tee", {"b": 100.0, "h": 100.0, "tf": 15.0, "tw": 15.0}),
-        ("angle", {"b": 100.0, "h": 100.0, "t": 10.0}), ("angle", {"b": 150.0, "h": 90.0, "t": 6.0}), ("angle", {"b": 60.0, "h": 60.0, "t": 9.0}),
+        ("tee", {"b": 150.0, "h": 150.0, "tf": 12.0, "tw": 9.0}), ("tee", {"b": 100.0, "h": 100.0, "tf": 15.0, "tw": 15.0}),
+        ("angle", {"b": 100.0, "h": 100.0, "t": 10.0}), ("angle", {"b": 150.0, "h": 90.0, "t": 6.0}), ("angle", {"b": 100.0, "h": 100.0, "t": 15.0}),
+        ("angle", {"b": 100.0, "h": 60.0, "t": 9.0}),
         ("cross", {"b": 200.0, "h": 200.0, "tb": 10.0, "th": 10.0}), ("cross", {"b": 200.0, "h": 200.0, "tb": 30.0, "th": 30.0}),
-        ("cross", {"b": 300.0, "h": 150.0, "tb": 12.0, "th": 20.0}),
+        ("cross", {"b": 300.0, "h": 150.0, "tb": 16.0, "th": 20.0}),
     ]
+    for shape in ("ishape", "channel", "zed", "tee", "cross"):
+        thick, thin = ("tb", "th") if shape == "cross" else ("tf", "tw")
+        open_cases += [(shape, {"b": 140.0, "h": 140.0, thick: 21.0, thin: 15.0}), (shape, {"b": 140.0, "h": 140.0, thick: 15.0, thin: 21.0})]
     corners = {"ishape": 12, "channel": 8, "zed": 8, "tee": 8, "angle": 6, "cross": 12}
     out += [(s, d, [0.0] * corners[s]) for s, d in open_cases]
     return out
@@ -125,7 +130,7 @@ def measure():
         raise SystemExit(f"formulas without a stated accuracy: {sorted(unknown)}")
     return {
         "generated_by": "reference/torsion_accuracy.py",
-        "reference": "Prandtl stress function by linear finite elements: coarse Delaunay mesh (spacing ≤ t/2 for hollow shapes), three uniform refinements with boundary points on the true arcs, Richardson extrapolation at the observed order",
+        "reference": "Prandtl stress function by linear finite elements: coarse Delaunay mesh (spacing ≤ min(wall)/2.5 for shapes with wall dimensions), three uniform refinements with boundary points on the true arcs, Richardson extrapolation at the observed order",
         "formulas": out,
     }
 

@@ -1373,7 +1373,7 @@
        "b": 150.0,
        "h": 300.0,
        "tf": 10.7,
-       "tw": 7.1
+       "tw": 8.0
       },
       "radii": [
        0,
@@ -1406,32 +1406,32 @@
    "expect": [
     {
      "quantity": "A",
-     "value": 5188.059999999998,
+     "value": 5438.799999999996,
      "formula": "b h − (b − tw)(h − 2tf)"
     },
     {
      "quantity": "Ix",
-     "value": 79989869.46313326,
+     "value": 81611696.73733325,
      "formula": "(b h³ − (b − tw) hw³)/12"
     },
     {
      "quantity": "Iy",
-     "value": 6027059.500383333,
+     "value": 6030636.933333334,
      "formula": "(2 tf b³ + hw tw³)/12"
     },
     {
      "quantity": "Qx",
-     "value": 301049.1895,
+     "value": 309781.21,
      "formula": "b tf (h − tf)/2 + tw hw²/8"
     },
     {
      "quantity": "Zp",
-     "value": 602098.379,
+     "value": 619562.42,
      "formula": "b tf (h − tf) + tw hw²/4"
     },
     {
      "quantity": "J",
-     "value": 157018.8507666666,
+     "value": 171878.16666666663,
      "formula": "(2 b tf³ + (h − tf) tw³)/3, thin-walled mid-line"
     }
    ]
@@ -1524,7 +1524,7 @@
        "b": 100.0,
        "h": 300.0,
        "tf": 15.0,
-       "tw": 9.0
+       "tw": 11.0
       },
       "radii": [
        0,
@@ -1553,27 +1553,27 @@
    "expect": [
     {
      "quantity": "A",
-     "value": 5430.0,
+     "value": 5970.0,
      "formula": "2 b tf + (h − 2tf) tw"
     },
     {
      "quantity": "cx",
-     "value": -20.361878453038674,
+     "value": -22.13819095477387,
      "formula": "Σ A x / A from the back, bounding box centred"
     },
     {
      "quantity": "Ix",
-     "value": 75737250.0,
+     "value": 79017750.0,
      "formula": "(b h³ − (b − tw) hw³)/12"
     },
     {
      "quantity": "Zp",
-     "value": 591525.0,
+     "value": 627975.0,
      "formula": "b tf (h − tf) + tw hw²/4"
     },
     {
      "quantity": "J",
-     "value": 284130.0,
+     "value": 339070.0,
      "formula": "(2 (b − tw/2) tf³ + (h − tf) tw³)/3"
     }
    ]
@@ -1674,7 +1674,7 @@
        "b": 150.0,
        "h": 150.0,
        "tf": 12.0,
-       "tw": 8.0
+       "tw": 9.0
       },
       "radii": [
        0,
@@ -1703,17 +1703,17 @@
    "expect": [
     {
      "quantity": "A",
-     "value": 2904.0,
+     "value": 3042.0,
      "formula": "b tf + (h − tf) tw"
     },
     {
      "quantity": "cy",
-     "value": 40.48760330578513,
+     "value": 38.37869822485207,
      "formula": "Σ A y / A from the stem bottom"
     },
     {
      "quantity": "J",
-     "value": 110976.0,
+     "value": 121392.0,
      "formula": "(b tf³ + (h − tf/2) tw³)/3"
     }
    ]

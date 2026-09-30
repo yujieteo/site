@@ -1,6 +1,6 @@
 {
  "generated_by": "reference/torsion_accuracy.py",
- "reference": "Prandtl stress function by linear finite elements: coarse Delaunay mesh (spacing ≤ t/2 for hollow shapes), three uniform refinements with boundary points on the true arcs, Richardson extrapolation at the observed order",
+ "reference": "Prandtl stress function by linear finite elements: coarse Delaunay mesh (spacing ≤ min(wall)/2.5 for shapes with wall dimensions), three uniform refinements with boundary points on the true arcs, Richardson extrapolation at the observed order",
  "formulas": {
   "circle": {
    "method": "exact",
@@ -615,10 +615,10 @@
   "open-thin-wall": {
    "method": "Vlasov thin-walled open section",
    "stated": 0.06,
-   "measured": 0.0567,
-   "cases": 16,
+   "measured": 0.0577,
+   "cases": 26,
    "pass": true,
-   "note": "sharp-cornered I, channel, Z, tee, angle and cross sections with walls up to 0.15 of the smaller outside dimension; the formula overestimates J except for the cross",
+   "note": "sharp-cornered I, channel, Z, tee, angle and cross sections with walls up to 0.15 of the smaller outside dimension and the thicker wall at most 1.4 times the thinner; the formula overestimates J for the I, channel, Z, tee and angle and underestimates it for the cross",
    "checks": [
     {
      "shape": "ishape",
@@ -626,7 +626,7 @@
       "b": 150.0,
       "h": 300.0,
       "tf": 10.7,
-      "tw": 7.1
+      "tw": 8.0
      },
      "radii": [
       0.0,
@@ -642,37 +642,10 @@
       0.0,
       0.0
      ],
-     "J_formula": 157018.8508,
-     "J_reference": 153249.5917,
-     "reference_error": 0.000134,
-     "rel_error": 0.0246
-    },
-    {
-     "shape": "ishape",
-     "dims": {
-      "b": 300.0,
-      "h": 300.0,
-      "tf": 19.0,
-      "tw": 11.0
-     },
-     "radii": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-     ],
-     "J_formula": 1496470.333,
-     "J_reference": 1455215.774,
-     "reference_error": 9.84e-05,
-     "rel_error": 0.02835
+     "J_formula": 171878.1667,
+     "J_reference": 168501.2642,
+     "reference_error": 0.000195,
+     "rel_error": 0.02004
     },
     {
      "shape": "ishape",
@@ -680,7 +653,7 @@
       "b": 200.0,
       "h": 600.0,
       "tf": 10.0,
-      "tw": 6.0
+      "tw": 7.5
      },
      "radii": [
       0.0,
@@ -696,10 +669,10 @@
       0.0,
       0.0
      ],
-     "J_formula": 175813.3333,
-     "J_reference": 172718.8071,
-     "reference_error": 8.72e-05,
-     "rel_error": 0.01792
+     "J_formula": 216302.0833,
+     "J_reference": 213735.8909,
+     "reference_error": 0.000133,
+     "rel_error": 0.01201
     },
     {
      "shape": "ishape",
@@ -734,7 +707,7 @@
       "b": 100.0,
       "h": 300.0,
       "tf": 15.0,
-      "tw": 9.0
+      "tw": 11.0
      },
      "radii": [
       0.0,
@@ -746,10 +719,10 @@
       0.0,
       0.0
      ],
-     "J_formula": 284130.0,
-     "J_reference": 273470.9316,
-     "reference_error": 9.52e-05,
-     "rel_error": 0.03898
+     "J_formula": 339070.0,
+     "J_reference": 331013.9097,
+     "reference_error": 0.000136,
+     "rel_error": 0.02434
     },
     {
      "shape": "channel",
@@ -826,7 +799,7 @@
       "b": 150.0,
       "h": 150.0,
       "tf": 12.0,
-      "tw": 8.0
+      "tw": 9.0
      },
      "radii": [
       0.0,
@@ -838,10 +811,10 @@
       0.0,
       0.0
      ],
-     "J_formula": 110976.0,
-     "J_reference": 107576.8148,
-     "reference_error": 0.000138,
-     "rel_error": 0.0316
+     "J_formula": 121392.0,
+     "J_reference": 118040.5792,
+     "reference_error": 0.000207,
+     "rel_error": 0.02839
     },
     {
      "shape": "tee",
@@ -909,7 +882,27 @@
     {
      "shape": "angle",
      "dims": {
-      "b": 60.0,
+      "b": 100.0,
+      "h": 100.0,
+      "t": 15.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 208125.0,
+     "J_reference": 201143.2868,
+     "reference_error": 0.000138,
+     "rel_error": 0.03471
+    },
+    {
+     "shape": "angle",
+     "dims": {
+      "b": 100.0,
       "h": 60.0,
       "t": 9.0
      },
@@ -921,10 +914,10 @@
       0.0,
       0.0
      ],
-     "J_formula": 26973.0,
-     "J_reference": 26068.16996,
-     "reference_error": 0.000138,
-     "rel_error": 0.03471
+     "J_formula": 36693.0,
+     "J_reference": 35786.64392,
+     "reference_error": 0.000219,
+     "rel_error": 0.02533
     },
     {
      "shape": "cross",
@@ -985,7 +978,7 @@
      "dims": {
       "b": 300.0,
       "h": 150.0,
-      "tb": 12.0,
+      "tb": 16.0,
       "th": 20.0
      },
      "radii": [
@@ -1002,10 +995,256 @@
       0.0,
       0.0
      ],
-     "J_formula": 540800.0,
-     "J_reference": 553956.942,
-     "reference_error": 0.000364,
-     "rel_error": -0.02375
+     "J_formula": 766933.3333,
+     "J_reference": 796230.3737,
+     "reference_error": 0.000682,
+     "rel_error": -0.03679
+    },
+    {
+     "shape": "ishape",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tf": 21.0,
+      "tw": 15.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 998235.0,
+     "J_reference": 945799.0907,
+     "reference_error": 0.000392,
+     "rel_error": 0.05544
+    },
+    {
+     "shape": "ishape",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tf": 15.0,
+      "tw": 21.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 700875.0,
+     "J_reference": 693485.0729,
+     "reference_error": 0.000446,
+     "rel_error": 0.01066
+    },
+    {
+     "shape": "channel",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tf": 21.0,
+      "tw": 15.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 951930.0,
+     "J_reference": 919559.0545,
+     "reference_error": 0.000135,
+     "rel_error": 0.0352
+    },
+    {
+     "shape": "channel",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tf": 15.0,
+      "tw": 21.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 677250.0,
+     "J_reference": 675083.2496,
+     "reference_error": 0.000228,
+     "rel_error": 0.00321
+    },
+    {
+     "shape": "zed",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tf": 21.0,
+      "tw": 15.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 951930.0,
+     "J_reference": 919531.9161,
+     "reference_error": 0.000181,
+     "rel_error": 0.03523
+    },
+    {
+     "shape": "zed",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tf": 15.0,
+      "tw": 21.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 677250.0,
+     "J_reference": 675087.9636,
+     "reference_error": 0.00022,
+     "rel_error": 0.003203
+    },
+    {
+     "shape": "tee",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tf": 21.0,
+      "tw": 15.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 577867.5,
+     "J_reference": 546324.8111,
+     "reference_error": 0.000353,
+     "rel_error": 0.05774
+    },
+    {
+     "shape": "tee",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tf": 15.0,
+      "tw": 21.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 566527.5,
+     "J_reference": 542409.9081,
+     "reference_error": 0.000277,
+     "rel_error": 0.04446
+    },
+    {
+     "shape": "cross",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tb": 21.0,
+      "th": 15.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 566055.0,
+     "J_reference": 571171.9993,
+     "reference_error": 0.000826,
+     "rel_error": -0.008959
+    },
+    {
+     "shape": "cross",
+     "dims": {
+      "b": 140.0,
+      "h": 140.0,
+      "tb": 15.0,
+      "th": 21.0
+     },
+     "radii": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "J_formula": 543375.0,
+     "J_reference": 571217.8387,
+     "reference_error": 0.000704,
+     "rel_error": -0.04874
     }
    ]
   },

@@ -29,11 +29,12 @@ largest relative error. The stated accuracies are:
 | sharp rectangle | 0.01% | Saint-Venant series |
 | rectangular hollow, sharp or mixed corners | 6% | Bredt–Batho, t ≤ 0.1 min(b, h) |
 | rectangular hollow, rounded uniform wall | 3.5% | Bredt–Batho, t ≤ 0.1 min(b, h), inner radius = outer − t |
-| I, channel, Z, tee, angle, cross with sharp corners | 6% | Vlasov thin-walled open section, J = (1/3) Σ L t³ on the mid-lines, walls ≤ 0.15 min(b, h) |
+| I, channel, Z, tee, angle, cross with sharp corners | 6% | Vlasov thin-walled open section, J = (1/3) Σ L t³ on the mid-lines, walls ≤ 0.15 min(b, h), thicker wall ≤ 1.4 × thinner |
 
 For exact formulas the 0.01% bound is the reference's own accuracy, not the
 formula's. Bredt–Batho underestimates J; its error grows with t / b and is largest
-for sharp corners. The open-section formula overestimates J (the cross excepted) and ignores
+for sharp corners. The open-section formula overestimates J for the I, channel, Z, tee and angle, underestimates it
+for the cross, and ignores
 root fillets, which add 6–20% stiffness, so filleted rolled shapes show "n/a". A formula whose measured error exceeds its stated accuracy is
 recorded as withdrawn and the page shows "n/a" for it.
 

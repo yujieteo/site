@@ -233,7 +233,7 @@ def polygon_case():
 # ---------- phase 2: rolled and built-up shapes ----------
 
 def ishape_case():
-    b, h, tf, tw = 150.0, 300.0, 10.7, 7.1
+    b, h, tf, tw = 150.0, 300.0, 10.7, 8.0
     hw = h - 2 * tf
     return {
         "id": "ishape-sharp", "plastic": True,
@@ -259,7 +259,7 @@ def ishape_rolled_case():
 
 
 def channel_case():
-    b, h, tf, tw = 100.0, 300.0, 15.0, 9.0
+    b, h, tf, tw = 100.0, 300.0, 15.0, 11.0
     hw = h - 2 * tf
     A = 2 * b * tf + hw * tw
     xc = (2 * b * tf * b / 2 + hw * tw * tw / 2) / A  # from the back of the web
@@ -290,7 +290,7 @@ def rolled_angle_case():
 
 
 def tee_case():
-    b, h, tf, tw = 150.0, 150.0, 12.0, 8.0
+    b, h, tf, tw = 150.0, 150.0, 12.0, 9.0
     A = b * tf + (h - tf) * tw
     yc = (b * tf * (h - tf / 2) + (h - tf) * tw * (h - tf) / 2) / A  # from the stem bottom
     return {

@@ -33,7 +33,7 @@
     "The modular ratio uses the tension modulus E of each material.",
     "Torsion is given only for a single part with no voids; composite sections and sections with voids show n/a.",
     "Bredt–Batho is used for rectangular hollow sections only when the wall is uniform (each inner corner radius equals the outer radius minus t, or both are 0) and t is at most 0.1 of the smaller outside dimension.",
-    "The thin-walled (Vlasov) torsion constant J = (1/3) Σ L t³ over the wall mid-lines is used for I, channel, Z, tee, angle and cross sections only with sharp corners and walls up to 0.15 of the smaller outside dimension; root fillets add 6–20% torsional stiffness the formula leaves out, so rolled shapes with fillets show n/a.",
+    "The thin-walled (Vlasov) torsion constant J = (1/3) Σ L t³ over the wall mid-lines is used for I, channel, Z, tee, angle and cross sections only with sharp corners, walls up to 0.15 of the smaller outside dimension and the thicker wall at most 1.4 times the thinner; root fillets add 6–20% torsional stiffness the formula leaves out, so rolled shapes with fillets show n/a.",
     "Rolled shapes have parallel flanges (no tapered flanges); a root fillet is a concave corner radius, and flange toes are convex corner radii.",
     "Mode (b) rotates the neutral axis so the moment about the perpendicular axis is zero; mode (a) keeps it parallel to the bending axis and reports the cross moment that needs.",
     "Z_p is given only when every solid part has the same material with equal tension and compression σ0.2; otherwise M_p is reported.",
