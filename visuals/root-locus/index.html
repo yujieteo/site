@@ -544,13 +544,12 @@ function expm(A) {
 }
 /* Solve (zI - A) x = b for complex z. */
 function resolvent(A, b, z) {
-  var n = A.length, M = [], i, j, r, det = cx(1);
+  var n = A.length, M = [], i, j, r;
   for (i = 0; i < n; i++) { M.push([]); for (j = 0; j < n; j++) M[i].push(cx(i === j ? z.re - A[i][j] : -A[i][j], i === j ? z.im : 0)); M[i].push(cx(b[i], 0)); }
   for (var c = 0; c < n; c++) {
     var piv = c;
     for (r = c + 1; r < n; r++) if (cabs(M[r][c]) > cabs(M[piv][c])) piv = r;
     var t = M[c]; M[c] = M[piv]; M[piv] = t;
-    det = cmul(det, piv === c ? M[c][c] : cscale(M[c][c], -1));
     for (r = c + 1; r < n; r++) {
       var f = cdiv(M[r][c], M[c][c]);
       for (j = c; j <= n; j++) M[r][j] = csub(M[r][j], cmul(f, M[c][j]));
@@ -562,7 +561,7 @@ function resolvent(A, b, z) {
     for (j = i + 1; j < n; j++) sacc = csub(sacc, cmul(M[i][j], x[j]));
     x[i] = cdiv(sacc, M[i][i]);
   }
-  return { x: x, det: det };
+  return x;
 }
 
 /* ---------- input parser: a small hand-written Python subset. Nothing is ever passed to eval. ---------- */
@@ -855,26 +854,39 @@ function polyStr(p, x, sig) {
   }
   return out || '0';
 }
-/* Roots with multiplicity: close clusters are merged when the polynomial and its derivatives vanish at their centroid. */
+/* Roots with multiplicity: a group of k nearby roots is one k-fold root when the polynomial and its first k - 1
+   derivatives vanish at the group's centre, found by Newton on the (k - 1)th derivative (where the root is simple). */
 function rootsWithMultiplicity(p) {
   var roots = proots(p).sort(function (a, b) { return b.re - a.re || b.im - a.im; }), used = roots.map(function () { return false; }), out = [];
-  var absP = p.map(Math.abs);
+  var ders = [p], absD;
+  for (var d = 1; d <= roots.length; d++) ders.push(pder(ders[d - 1]));
+  absD = ders.map(function (q) { return q.map(Math.abs); });
+  function vanishes(c, k) {
+    if (!isFinite(c.re) || !isFinite(c.im)) return false;
+    for (var j = 0; j < k; j++) if (!(cabs(pevalC(ders[j], c)) <= 1e-8 * Math.max(pevalR(absD[j], cabs(c)), 1e-300))) return false;
+    return true;
+  }
   roots.forEach(function (r, i) {
     if (used[i]) return;
-    var members = [];
-    roots.forEach(function (q, j) { if (!used[j] && cdist(q, r) <= 1e-3 * Math.max(1, cabs(r))) members.push(j); });
-    var c = cx(0);
-    members.forEach(function (j) { c = cadd(c, roots[j]); });
-    c = cscale(c, 1 / members.length);
-    var m = members.length, radius = 0;
-    members.forEach(function (j) { radius = Math.max(radius, cdist(roots[j], c)); });
-    var ok = m > 1 && radius <= 10 * Math.pow(2.2e-16, 1 / m) * Math.max(1, cabs(c)), dp = p, da = absP;
-    for (var k = 0; ok && k < members.length; k++) {
-      if (cabs(pevalC(dp, c)) > 1e-5 * Math.max(pevalR(da, cabs(c)), 1e-300)) ok = false;
-      dp = pder(dp); da = pder(da);
+    var near = [];
+    roots.forEach(function (q, j) { if (!used[j]) near.push(j); });
+    near.sort(function (a, b) { return cdist(roots[a], r) - cdist(roots[b], r); });
+    for (var k = near.length; k >= 2; k--) {
+      var c = cx(0);
+      for (var t = 0; t < k; t++) c = cadd(c, roots[near[t]]);
+      c = cscale(c, 1 / k);
+      for (var it = 0; it < 8; it++) {
+        var step = cdiv(pevalC(ders[k - 1], c), pevalC(ders[k], c));
+        c = csub(c, step);
+        if (!(cabs(step) > 1e-15 * Math.max(1, cabs(c)))) break;
+      }
+      if (vanishes(c, k)) {
+        for (t = 0; t < k; t++) used[near[t]] = true;
+        out.push({ r: c, mult: k });
+        return;
+      }
     }
-    if (ok) { members.forEach(function (j) { used[j] = true; }); out.push({ r: c, mult: members.length }); }
-    else { used[i] = true; out.push({ r: r, mult: 1 }); }
+    used[i] = true; out.push({ r: r, mult: 1 });
   });
   return out;
 }
@@ -923,25 +935,37 @@ function zohDiscretise(num, den, T) {
   M[n - 1][n] = T;
   var E = expm(M), Phi = [], Gam = [];
   for (i = 0; i < n; i++) { Phi.push(E[i].slice(0, n)); Gam.push(E[i][n]); }
-  var zp = proots(den).map(function (p) { return cexp(cscale(p, T)); }), Mpts = n + 1;
+  var zp = [];
+  rootsWithMultiplicity(den).forEach(function (it) { var e = cexp(cscale(it.r, T)); for (var q = 0; q < it.mult; q++) zp.push(e); });
+  var denz = pfromRoots(zp), Mpts = n + 1;
   var rho = 1.25 * Math.max(1, Math.max.apply(null, zp.map(cabs)));
+  function exact(z) {
+    var xres = resolvent(Phi, Gam, z), g = cx(dd, 0);
+    for (var q = 0; q < n; q++) g = cadd(g, cscale(xres[q], b[q] || 0));
+    return g;
+  }
   var vals = [];
   for (var k = 0; k < Mpts; k++) {
     var th = 2 * Math.PI * k / Mpts + Math.PI / Mpts, z = cscale(cexp(cx(0, th)), rho);
-    var res = resolvent(Phi, Gam, z), g = cx(dd, 0);
-    for (i = 0; i < n; i++) g = cadd(g, cscale(res.x[i], b[i] || 0));
-    vals.push({ th: th, v: cmul(g, res.det), d: res.det });
+    vals.push({ th: th, v: cmul(exact(z), pevalC(denz, z)) });
   }
-  var numz = [], denz = [];
+  var numz = [];
   for (j = 0; j < Mpts; j++) {
-    var accN = cx(0), accD = cx(0);
-    vals.forEach(function (pt) { var w = cexp(cx(0, -j * pt.th)); accN = cadd(accN, cmul(pt.v, w)); accD = cadd(accD, cmul(pt.d, w)); });
-    numz.push(accN.re / (Mpts * Math.pow(rho, j))); denz.push(accD.re / (Mpts * Math.pow(rho, j)));
+    var acc = cx(0);
+    vals.forEach(function (pt) { acc = cadd(acc, cmul(pt.v, cexp(cx(0, -j * pt.th)))); });
+    numz.push(acc.re / (Mpts * Math.pow(rho, j)));
   }
   if (dd === 0) numz[n] = 0;
-  var out = monic(numz, denz), big = maxAbs(out.num);
-  out.num = ptrim(out.num.map(function (c) { return Math.abs(c) < 1e-12 * big ? 0 : c; }));
-  return out;
+  var big = maxAbs(numz);
+  numz = ptrim(numz.map(function (c) { return Math.abs(c) < 1e-12 * big ? 0 : c; }));
+  var checks = [0, 1, 2].map(function (q) { var zc = cscale(cexp(cx(0, 2 * Math.PI * q / Mpts + 0.37)), rho); return { z: zc, want: exact(zc) }; });
+  if (den[0] !== 0 && num[0] !== 0) checks.push({ z: cx(1), want: cx(num[0] / den[0]), dc: true });
+  var worst = null;
+  checks.forEach(function (c) {
+    var got = cdiv(pevalC(numz, c.z), pevalC(denz, c.z)), rel = cabs(csub(got, c.want)) / cabs(c.want);
+    if (!(rel <= 1e-6) && (!worst || !(rel <= worst.rel))) worst = { rel: rel, dc: !!c.dc };
+  });
+  return { num: numz, den: denz, mismatch: worst };
 }
 function tustinDiscretise(num, den, T) {
   var n = ptrim(den).length - 1, w = 2 / T;
@@ -1042,6 +1066,7 @@ function buildLoop(inputs) {
       return { ok: false, errors: errors, hints: hints };
     }
     Gz = method === 'zoh' ? zohDiscretise(Gs.num, Gs.den, T) : method === 'tustin' ? tustinDiscretise(Gs.num, Gs.den, T) : matchedDiscretise(Gs.num, Gs.den, T);
+    if (Gz.mismatch) warnings.push({ kind: 'discretisation', level: 'warn', text: 'ZOH check: the coefficients of G(z) differ from the exact sampled plant by ' + (isFinite(Gz.mismatch.rel) ? fmt(Gz.mismatch.rel * 100, 2) + '%' : 'a non-finite amount') + (Gz.mismatch.dc ? ' in the DC gain' : ' off the fitting points') + '. Repeated or clustered poles close to z = 1 make the polynomial form ill-conditioned; the z-plane locus may be wrong. Try a larger T or a lower-order plant.' });
     if (Gz.gainMatchedAt) warnings.push({ kind: 'discretisation', level: 'info', text: 'Matched pole-zero: G has a pole or zero at s = 0, so the gain is matched at ω = ' + fmt(Gz.gainMatchedAt, 4) + ' rad/s instead of DC.' });
     G = { num: Gz.num, den: dv > 0 ? pmul(Gz.den, ppow([0, 1], dv)) : Gz.den };
     delayInfo = { kind: 'samples', n: dv };

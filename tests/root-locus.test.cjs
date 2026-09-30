@@ -218,11 +218,24 @@ test('Tustin, matched and Pade match hand results; order above 12 is refused', (
   assert.match(big.errors.G, /G has order 13; the limit is 12/);
 });
 
-test('ZOH keeps the DC gain for repeated poles', () => {
-  for (const [G, T] of [['1 / (s + 1)**3', 0.1], ['1 / (s + 1)**6', 0.5]]) {
+test('ZOH maps repeated poles to exact repeated z-poles and keeps the DC gain', () => {
+  for (const [G, T, poles, tol] of [['1 / (s + 1)**3', 0.1, [-1, -1, -1], 1e-9], ['1 / (s + 1)**6', 0.5, Array(6).fill(-1), 1e-9],
+    ['1 / (s + 1)**12', 0.1, Array(12).fill(-1), 1e-5], ['1 / ((s - 3) * (s + 1)**11)', 0.1, [3, ...Array(11).fill(-1)], 1e-4]]) {
     const g = R.parseField(G, 's', 'G'), z = R.zohDiscretise(g.num, g.den, T);
-    const dc = R.pevalR(z.num, 1) / R.pevalR(z.den, 1), want = g.num[0] / g.den[0];
-    close(dc, want, 1e-9 * Math.abs(want), `${G} at T = ${T}`);
+    const want = R.pfromRoots(poles.map(p => R.cx(Math.exp(p * T))));
+    z.den.forEach((c, i) => close(c, want[i], 1e-12 * Math.max(...want.map(Math.abs)), `${G}: z-denominator coefficient ${i}`));
+    const dc = R.pevalR(z.num, 1) / poles.reduce((acc, p) => acc * (1 - Math.exp(p * T)), 1), dcWant = g.num[0] / g.den[0];
+    close(dc, dcWant, tol * Math.abs(dcWant), `${G} at T = ${T}: DC gain`);
+  }
+});
+
+test('ZOH warns when the polynomial G(z) no longer matches the sampled plant', () => {
+  const z = (G, T) => R.analyze(s({mode: 'z', sampleTime: T, method: 'zoh', fields: {G}})).warnings.filter(w => w.kind === 'discretisation');
+  same(z('1 / (s + 1)**3', 0.1), []);
+  same(z('1 / ((s + 1)**2 * (s**2 + 2*s + 5)**2)', 0.2), []);
+  for (const [G, T] of [['1 / (s + 1)**12', 0.1], ['1 / (s + 1)**8', 0.01]]) {
+    const [w] = z(G, T);
+    assert.ok(w && w.level === 'warn' && /ZOH check/.test(w.text), G);
   }
 });
 
