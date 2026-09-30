@@ -1,0 +1,22 @@
+id: 2026-09-30-structural-engineering
+date: '2026-09-30'
+title: Notes on structural engineering
+summary: Condensed notes on structural engineering from 8 notes dated 2026-09-30 to
+  2026-09-30.
+focus_tags:
+- structural-engineering
+notes:
+- note:d0c4991cdca96249210b9b58040a8b816bdeb35cd6350c11b26dcb609bd78d42
+- note:e5d90e23f895e3c7e8cfe617e4ac5904fc8df7170ff1a21c2d2d3638026467b1
+- note:d765027eb911d05a61e54964fb0131f401e94d934cac708d72d70d040a4f25dd
+- note:14350a74bea90fc4d2f6108236ab6f1dd4b0dacf3cfa50767fb0d2920ff296fd
+- note:065b8fd6109ce8ae02b478cb1fb03b6fc3543075c40bc369a1902cfa873746f1
+- note:9ab0e780b2e2d56d93a366088cb53c579198a790111016a11741edf877f37f7c
+- note:8368cfd024cb143eecbc3c3bbd960eea89004ca4b85b3f82aec34b2c479bbdc2
+- note:5ab806dceffeba480b19bc25007e0e635ea5930ec7b4284e4d67d143318dcbfb
+duration_seconds: 492.0
+voice: af_heart
+audio: audio/2026-09-30-structural-engineering.mp3
+links:
+- rel: related
+  target: blog:statically-indeterminate-beams

@@ -1257,9 +1257,12 @@ def publish_visualization_assets(sources):
 
 
 def publish_decks():
-    """Copy each slide deck's self-contained index.html to site/decks/<slug>/.
+    """Copy each slide deck's index.html to site/decks/<slug>/.
 
-    Only index.html is published. A deck's presenter notes.md is private and
+    A deck is its index.html plus, for a deck built from PDF slides (the
+    beamsuperswitch web deck), the per-page images under slides/**/*.svg and
+    any printable PDFs (handout, article) beside index.html. Nothing else is
+    published: a deck's presenter notes.md is private and
     stays out of the site even when it sits beside the deck in data/decks/.
     """
     decks_dir = DATA / "decks"
@@ -1270,6 +1273,12 @@ def publish_decks():
         destination = OUT / "decks" / source.parent.name
         destination.mkdir(parents=True)
         shutil.copyfile(source, destination / "index.html")
+        for pdf in sorted(source.parent.glob("*.pdf")):
+            shutil.copyfile(pdf, destination / pdf.name)
+        for slide in sorted((source.parent / "slides").rglob("*.svg")):
+            target = destination / slide.relative_to(source.parent)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(slide, target)
         slugs.append(source.parent.name)
     return slugs
 

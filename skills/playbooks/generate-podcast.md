@@ -45,8 +45,10 @@ and the [output contract](../reference/podcast-output-contract.md).
 - `plan` selects the episode without rendering audio; review the focus and
   candidate counts before committing to a long render.
 - `generate` writes the metadata and MP3. Useful flags: `--target-minutes N`
-  sets the duration aim, `--date YYYY-MM-DD` sets the episode date, and
-  `--voice <id>` changes the Kokoro voice.
+  sets the duration aim, `--date YYYY-MM-DD` sets the episode date,
+  `--voice <id>` changes the Kokoro voice, and `--focus <tag> [<tag> ...]`
+  covers exactly those canonical content tags instead of choosing a focus
+  (use it for an episode on a subject written up as dated notes).
 - Check the printed duration and listen to a sample when the result matters.
 
 ## Publish

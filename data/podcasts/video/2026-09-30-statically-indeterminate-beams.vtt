@@ -1,0 +1,157 @@
+WEBVTT
+
+00:00.500 --> 00:04.500
+Some beams have more supports than equilibrium can pay for.
+
+00:04.500 --> 00:11.100
+This recap shows where the extra equations come from, works two examples, and checks every number twice.
+
+00:11.800 --> 00:13.300
+Part 1.
+
+00:13.300 --> 00:14.675
+Counting.
+
+00:15.375 --> 00:19.100
+A beam in a plane gives three equilibrium equations.
+
+00:19.100 --> 00:23.850
+A simply supported beam has three reactions, so it is determinate.
+
+00:23.850 --> 00:27.225
+A propped cantilever has four, one too many.
+
+00:27.225 --> 00:30.600
+So does a beam continuous over three supports.
+
+00:30.600 --> 00:33.500
+A beam fixed at both ends has six.
+
+00:33.500 --> 00:39.125
+Each surplus reaction needs one extra equation, and it comes from compatibility.
+
+00:39.825 --> 00:41.150
+Part 2.
+
+00:41.150 --> 00:43.075
+The force method.
+
+00:43.775 --> 00:48.000
+Pick one reaction as the redundant, here the force in the prop.
+
+00:48.000 --> 00:52.700
+Remove it, and the beam becomes a cantilever, which statics can solve.
+
+00:52.700 --> 00:58.300
+Find how far the tip falls under the load, and how far it rises per unit prop force.
+
+00:58.300 --> 01:02.050
+The real prop does not move, so the two must cancel.
+
+01:02.050 --> 01:05.075
+Then equilibrium gives everything else.
+
+01:05.775 --> 01:14.775
+A cantilever under a uniform load sags w L to the fourth over eight E I at the tip: here, 101.25 millimetres.
+
+01:14.775 --> 01:18.525
+A unit tip force lifts it L cubed over three E I.
+
+01:18.525 --> 01:25.000
+Setting the two equal gives the prop force: three eighths of the load, 22.5 kilonewtons.
+
+01:25.000 --> 01:32.900
+Equilibrium then gives 37.5 kilonewtons and a hogging moment of 45 kilonewton metres at the wall.
+
+01:33.600 --> 01:38.825
+Without the prop, the wall carries a moment of 180 kilonewton metres.
+
+01:38.825 --> 01:49.025
+With it, the wall moment falls to 45, and the largest sagging moment is 25.3, where the shear is zero, 3.75 metres from the wall.
+
+01:49.025 --> 01:52.425
+The moment changes sign a quarter of the way along.
+
+01:53.125 --> 01:54.600
+Part 3.
+
+01:54.600 --> 01:56.750
+Continuous beams.
+
+01:57.450 --> 02:02.700
+For a beam over several supports, take the moments over the supports as the redundants.
+
+02:02.700 --> 02:08.400
+Each span becomes simply supported, and the slopes on either side of a support must match.
+
+02:08.400 --> 02:11.275
+That gives the three moment equation.
+
+02:11.275 --> 02:16.700
+At pinned ends the moment is zero, so one interior support means one equation.
+
+02:17.400 --> 02:22.050
+Two spans, of 4 and 6 metres, carry 10 kilonewtons per metre.
+
+02:22.050 --> 02:27.550
+The three moment equation reads 20 times M B equals minus 700.
+
+02:27.550 --> 02:32.800
+So the moment over the middle support is 35 kilonewton metres, hogging.
+
+02:32.800 --> 02:37.350
+Each span, taken on its own with that end moment, gives the reactions.
+
+02:38.050 --> 02:43.650
+The moment over the support, 35 kilonewton metres, is the largest in the beam.
+
+02:43.650 --> 02:52.525
+The long span still sags by up to 29.2, and the short span, held down by the support moment, sags only 6.33.
+
+02:53.225 --> 02:54.575
+Part 4.
+
+02:54.575 --> 02:55.625
+Checks.
+
+02:56.325 --> 02:59.575
+Moment distribution gets there another way.
+
+02:59.575 --> 03:03.775
+Lock joint B, and each span starts with its fixed end moment.
+
+03:03.775 --> 03:13.375
+Release the joint, and an unbalance of 25 kilonewton metres is shared in proportion to stiffness: 15 to the short span and 10 to the long one.
+
+03:13.375 --> 03:17.250
+The end moments come out at 35, the same answer.
+
+03:17.950 --> 03:19.875
+Run four checks.
+
+03:19.875 --> 03:22.800
+The reactions must add up to the load.
+
+03:22.800 --> 03:26.525
+Equal spans must give w L squared over eight.
+
+03:26.525 --> 03:30.000
+The deflection must be zero at every support.
+
+03:30.000 --> 03:36.575
+And an independent solver must agree: the beam visualizer on this site matches every number in this talk.
+
+03:37.275 --> 03:39.425
+Remember four things.
+
+03:39.425 --> 03:41.800
+Count the unknowns first.
+
+03:41.800 --> 03:45.525
+Write one compatibility equation per redundant.
+
+03:45.525 --> 03:48.950
+For continuous beams, use the support moments.
+
+03:48.950 --> 03:52.900
+And check with a second method, not only with equilibrium.

@@ -740,6 +740,12 @@
       "aliases": [],
       "replaced_by": null
     },
+    "structural-engineering": {
+      "class": "topic",
+      "description": "Use for notes about structural analysis and design: beams, frames, supports, internal forces and deflections.",
+      "aliases": [],
+      "replaced_by": null
+    },
     "systems": {
       "class": "topic",
       "description": "Use for notes about systems.",
