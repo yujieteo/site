@@ -24,6 +24,18 @@ python reference.py --check  # fail if reference.json is stale
 The tests are `tests/beamdiag.test.mjs` (Node) and `tests/test_beamdiag.py`
 (Python, which also runs the engine through `node`).
 
+`tests/beamdiag-browser.test.mjs` drags a handle with real mouse events in
+Chrome, so it is skipped unless `BEAMDIAG_BROWSER_URL` points at a Chrome
+started with remote debugging. CI does not run it; run it by hand from the
+repository root after changing the page's handles or overlays:
+
+```sh
+# start an isolated Chrome with remote debugging (macOS path shown; use your Chrome binary elsewhere)
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+  --remote-debugging-port=9227 --user-data-dir="$(mktemp -d)" --allow-file-access-from-files &
+BEAMDIAG_BROWSER_URL=http://127.0.0.1:9227 node --test tests/beamdiag-browser.test.mjs
+```
+
 Supports, loads and elements per segment have no count cap: supports go at any
 positions along a beam of any length, and the banded stiffness solver and the
 deck exporter handle every node and support.
