@@ -37,31 +37,26 @@ function pattern(points, load = {}) {
   return p;
 }
 
-test("the whole in-app verification set passes, with pending reference cases counted apart", () => {
+test("the whole in-app verification set passes, published-reference cases included", () => {
   const v = runVerification();
   for (const r of v.results) {
-    if (r.status === "pending") continue;
     assert.ok(r.pass, `${r.id} ${r.error || r.checks.filter((c) => !c.pass).map((c) => `${c.label}: ${c.actual} vs ${c.expected}`).join("; ")}`);
   }
   assert.deepEqual(v.results.map((r) => r.id), ["VC-01", "VC-02", "VC-03", "VC-04", "VC-05", "VC-06", "VC-07", "VC-08", "VB-01", "VB-02", "VI-01", "VI-02", "VI-03", "VC-09",
     "P-01", "P-02", "P-03", "P-04", "P-05", "P-06", "P-07", "P-08", "P-09", "P-10", "P-11", "P-12", "P-13", "P-14", "VR-01", "VR-02", "VR-03"]);
   assert.equal(HAND_CASES.length + PROPERTY_CASES.length + REFERENCE_CASES.length, v.results.length);
-  const vr = v.results.find((r) => r.id === "VR-01");
-  assert.equal(vr.status, "pending");
-  assert.equal(vr.pass, false);
-  assert.match(vr.pending, /spec open question 2/);
-  assert.deepEqual([v.passed, v.pending, v.failed, v.pass], [28, 3, 0, true]);
-  for (const id of ["VR-02", "VR-03"]) assert.equal(v.results.find((r) => r.id === id).status, "pending");
-  assert.match(v.results.find((r) => r.id === "VR-03").pending, /open question 3/);
+  assert.deepEqual([v.passed, v.failed, v.pass], [31, 0, true]);
+  assert.ok(REFERENCE_CASES.every((c) => typeof c.run === "function" && !("pending" in c)), "no reference case is left pending");
+  assert.equal(v.results.find((r) => r.id === "VR-02").checks.length, 154, "every value of the b = 3 in block of Table 13.1");
 });
 
-test("a failing case fails the set; a pending case does not", () => {
-  const pending = { id: "X-P", title: "pending", pending: "no values" };
+test("a failing or throwing case fails the set", () => {
   const ok = { id: "X-1", title: "ok", run: () => [{ label: "x", pass: true }] };
   const bad = { id: "X-2", title: "bad", run: () => [{ label: "x", pass: false }] };
-  assert.equal(runVerification([ok, pending]).pass, true);
-  assert.deepEqual(runVerification([ok, pending, bad]).results.map((r) => r.status), ["pass", "pending", "fail"]);
-  assert.equal(runVerification([ok, pending, bad]).pass, false);
+  const boom = { id: "X-3", title: "boom", run: () => { throw new Error("no"); } };
+  assert.equal(runVerification([ok]).pass, true);
+  assert.deepEqual(runVerification([ok, bad, boom]).results.map((r) => r.status), ["pass", "fail", "fail"]);
+  assert.deepEqual([runVerification([ok, bad, boom]).passed, runVerification([ok, bad, boom]).failed, runVerification([ok, bad, boom]).pass], [1, 2, false]);
 });
 
 test("VC-01 independently: 2×2 bracket, Fy = −10 000 N at (150, 0, 0)", () => {
@@ -423,6 +418,10 @@ test("the published page and data are built from the current sources", async () 
   const raw = JSON.parse(outputs["raw.json"]);
   assert.equal(raw.warnings.length, Object.keys(CATALOG).length);
   assert.ok(raw.verification.cases.length >= 31);
+  // The panel cites both published references and promises nothing later.
+  assert.ok(html.includes('<a href="https://www.boltcouncil.org/files/2ndEditionGuide.pdf">'));
+  assert.ok(html.includes('<a href="https://ej.aisc.org/index.php/engj/article/download/378/377">'));
+  assert.ok(!/await published|not yet entered|show as pending/i.test(html), "no text implying reference values arrive later");
 });
 
 /* ---- M2: allowables, interaction, exact-k MS ---- */
@@ -1256,11 +1255,13 @@ test("PDF report: every required section, inline SVG, version, verification set 
   const res = solve(p);
   const v = runVerification();
   const html = reportHtml(p, res, { date: "2026-10-01", verification: v });
+  const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const sections = [...html.matchAll(/data-section="([a-z]+)"/g)].map((m) => m[1]);
   assert.deepEqual(sections, ["conventions", "diagram", "inputs", "reduced", "properties", "fasteners", "icr", "margins", "trace", "warnings", "assumptions"]);
   assert.match(html, /<svg[^>]*aria-label="Fastener pattern diagram"/);
   assert.ok(html.includes(TOOL_VERSION));
-  assert.ok(html.includes(`Verification set ${v.set}: ${v.passed} pass, ${v.pending} pending, ${v.failed} fail; closed-form tolerance ${v.tol} relative`));
+  assert.ok(html.includes(`Verification set ${v.set}: ${v.passed} pass, ${v.failed} fail; closed-form tolerance ${v.tol} relative`));
+  assert.ok(html.includes(esc(v.scope)) && v.references.every((r) => html.includes(esc(r))), "footer cites the published references and their scope");
   assert.equal((html.match(/Preliminary sizing — verify against the governing specification\./g) || []).length, 2, "header and footer");
   for (const i of res.issues) assert.ok(html.includes(`<td>${i.id}</td>`), `warning ${i.id} listed`);
   assert.ok(res.issues.some((i) => i.id === "W-006"), "W-006 persists into the report");
@@ -1280,18 +1281,19 @@ test("Markdown report: same sections as tables, the governing trace, assumptions
   for (const h of ["## Fasteners", "## Plates", "## Load", "## Centroids", "## Section properties", "## Reduced load", "## Axial method", "## Fastener loads (elastic)", "## Margins of safety", "## ICR method", "## Warnings", "## Calculation trace", "## Assumptions", "## Verification", "## Exact inputs"]) {
     assert.ok(md.includes(h), h);
   }
-  assert.ok(md.includes(`Verification set ${v.set}: ${v.passed} pass, ${v.pending} pending, ${v.failed} fail`));
+  assert.ok(md.includes(`Verification set ${v.set}: ${v.passed} pass, ${v.failed} fail`));
+  assert.ok(md.includes(v.scope) && v.references.every((r, i) => md.includes(`${i + 1}. ${r}`)), "footer cites the published references and their scope");
   assert.ok(!/!\[|<img|data:image/.test(md), "no embedded images");
   assert.equal(toJSON(parseMarkdown(md).pattern), toJSON(p), "the report still imports");
 });
 
-test("verification panel data lists every VC, VB, VI, property and VR case, pending ones marked pending", () => {
+test("verification panel data lists every VC, VB, VI, property and VR case, all passing, with the references", () => {
   const v = runVerification();
-  const pending = v.results.filter((r) => r.status === "pending").map((r) => r.id);
-  assert.deepEqual(pending, ["VR-01", "VR-02", "VR-03"]);
-  assert.ok(v.results.every((r) => ["pass", "pending"].includes(r.status)));
-  assert.ok(v.results.filter((r) => r.status === "pending").every((r) => r.pass === false));
-  assert.equal(v.set, "M6 (v1)");
+  assert.ok(v.results.every((r) => r.status === "pass"));
+  assert.deepEqual(v.results.filter((r) => r.id.startsWith("VR-")).map((r) => r.id), ["VR-01", "VR-02", "VR-03"]);
+  assert.equal(v.set, "M6 (v2)");
+  assert.equal(v.references.length, 2);
+  assert.match(v.scope, /not to the current AISC Manual/);
 });
 
 test("reaction-vector legend names the shear source actually drawn: elastic when the ICR basis has no converged reactions", () => {

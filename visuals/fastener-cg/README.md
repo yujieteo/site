@@ -4,7 +4,7 @@ Centroids, section properties and elastic load distribution for a fastener
 group, with a general 3D eccentric load. `index.html` is one self-contained
 page that works offline; it is built from modular sources.
 
-All six milestones (M1 to M6) of the Draft v0.1 specification are implemented (tool version 0.6.0-m6), but the published-reference verification cases VR-01 to VR-03 (AISC prying and ICR references, spec open questions 2 and 3) await published values, so M3 and M5 are not closed. M1 covers geometry, the three
+All six milestones (M1 to M6) of the Draft v0.1 specification are implemented (tool version 0.6.0-m6); the published-reference cases are described under [Published references](#published-references). M1 covers geometry, the three
 centroids (shear Cs, axial Ca, area Cg), J, Ixx, Iyy, Ixy and principal axes,
 3D load reduction, elastic in-plane shear and axial method (a), canvas and
 table entry with generators, live recalculation, the unit toggle, and JSON and
@@ -38,8 +38,8 @@ warnings list and the "Preliminary sizing" line. M6 also adds the calculation tr
 from the solver's own intermediate values for the governing fastener (and for
 any fastener from the UI); the SVG and canvas painters, which both draw from
 the shared scene model and are checked against it by a test; and the full
-verification panel, where the pending published-reference cases VR-01 to VR-03
-show as pending.
+verification panel, which runs every case including the published-reference
+cases VR-01 to VR-03.
 
 | Path | Role |
 | --- | --- |
@@ -63,3 +63,33 @@ verification cases the page's "Run verification" button runs
 The bundler in `build.mjs` accepts only named relative imports and `export`
 on `function`, `const` and `class` declarations, and fails the build on
 anything else.
+
+## Published references
+
+The specification asked for the ICR results and the T-stub prying equations to
+be checked against the current AISC Manual. That Manual is not used. VR-01 to
+VR-03 are keyed instead to two openly readable sources, cited in the
+verification panel and in the PDF and Markdown report footers:
+
+1. G. L. Kulak, J. W. Fisher and J. H. A. Struik, *Guide to Design Criteria for
+   Bolted and Riveted Joints*, 2nd ed., Wiley, 1987; republished by the Research
+   Council on Structural Connections, 2001.
+   <https://www.boltcouncil.org/files/2ndEditionGuide.pdf>
+2. G. D. Brandt, "Rapid Determination of Ultimate Strength of Eccentrically
+   Loaded Bolt Groups", *Engineering Journal*, AISC, Second Quarter 1982,
+   pp. 94–100. <https://ej.aisc.org/index.php/engj/article/download/378/377>
+
+| Case | Source | What it checks | Tolerance |
+| --- | --- | --- | --- |
+| VR-01 | Guide, sections 17.5 and 17.6, Eqs. 17.8 to 17.12 and 17.18 | The T-stub prying equations, written in the Guide's form with a' = a + d/2, b' = b − d/2, a ≤ 1.25·b and α capped at 1, give the same α, Q and bolt force as the tool | 1e-9 relative (algebraic identity) |
+| VR-02 | Guide, Table 13.1 (reprinted from the AISC Manual, 8th ed., 1980), b = 3 in block | ICR coefficient C = P_u/Rult for one row of 2 to 12 bolts at 14 eccentricities (154 values), Crawford-Kulak curve with μ = 10 /in, λ = 0.55, Δmax = 0.34 in as given by Brandt | 2%, or half a unit in the table's last printed digit where that is larger |
+| VR-03 | Brandt, Examples 1 and 2; Guide Eq. 13.12 | C_u = 1.40 (three bolts, vertical load) and 1.10 (six bolts, inclined load); the ICR lies on the far side of the group from the load line; the governing bolt; P(e + r0) = Σ r·R | 2% on C_u (Brandt's values are iterated to about 1%); exact for the rest |
+
+What this does not cover: the ICR coefficients have not been checked against
+the current AISC Manual's tables, and the prying equations have not been
+checked against the current AISC Manual's procedure (with its resistance
+factors). The Guide gives no numerical prying example, so VR-01 confirms the
+equation form and constants only. The tool's treatment of α' < 0 as no prying
+is its own convention; the Guide is silent on it. Spec open question 3 (ICR
+side convention) is closed by VR-03; open question 2 (prying constants) is
+closed only against the Guide's Struik–de Back equations.

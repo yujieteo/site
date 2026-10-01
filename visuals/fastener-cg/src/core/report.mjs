@@ -39,7 +39,7 @@ export function reportHtml(pattern, result, opts = {}) {
   const L = u("length"), F = u("force"), M = u("moment"), S = u("section");
   const v = opts.verification;
   const verifyLine = v
-    ? `Verification set ${esc(v.set)}: ${v.passed} pass, ${v.pending} pending, ${v.failed} fail; closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds).`
+    ? `Verification set ${esc(v.set)}: ${v.passed} pass, ${v.failed} fail; closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds).`
     : "Verification not run.";
   const out = [];
   out.push(`<header class="r-head"><p class="r-eyebrow">${esc(TOOL_NAME)} · ${esc(TOOL_VERSION)}</p><h1>${esc(pattern.name)}</h1>
@@ -123,7 +123,8 @@ export function reportHtml(pattern, result, opts = {}) {
     ? table(["id", "tier", "condition", "detail", "fastener or field"], issues.map((i) => [i.id, i.tier, esc(i.title), esc(i.detail), esc((i.fasteners && i.fasteners.length ? i.fasteners.join(", ") : "") || i.field || "")]))
     : "<p>None.</p>"));
   out.push(section("assumptions", "Assumptions", `<ul>${ASSUMPTIONS.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>`));
-  out.push(`<footer class="r-foot"><p>${esc(TOOL_NAME)} ${esc(TOOL_VERSION)} · ${esc(verifyLine)}</p><p><b>${esc(PRELIMINARY)}</b></p></footer>`);
+  const refs = v ? `<p>${esc(v.scope)}</p><ol class="r-refs">${v.references.map((r) => `<li>${esc(r)}</li>`).join("")}</ol>` : "";
+  out.push(`<footer class="r-foot"><p>${esc(TOOL_NAME)} ${esc(TOOL_VERSION)} · ${esc(verifyLine)}</p>${refs}<p><b>${esc(PRELIMINARY)}</b></p></footer>`);
   return out.join("\n");
 }
 

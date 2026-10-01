@@ -13,7 +13,7 @@ import { boltLoad, tStubPrying } from "./tension.mjs";
 import { icrSolve, response } from "./icr.mjs";
 import { fmt } from "./format.mjs";
 
-export const VERIFICATION_SET = "M6 (v1)";
+export const VERIFICATION_SET = "M6 (v2)";
 export const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
@@ -563,20 +563,140 @@ PROPERTY_CASES.push(
   },
 );
 
-/* Published-reference cases. A case with `pending` set has no reference
- * values entered yet: it is reported as pending, neither pass nor fail. */
+/* Published-reference cases (spec 10.2). The current AISC Manual is not
+ * used: these cases are keyed to openly readable sources instead, listed in
+ * REFERENCES and cited in the panel, the reports and the README.
+ *
+ *   [Guide] Kulak, Fisher and Struik, Guide to Design Criteria for Bolted and
+ *           Riveted Joints, 2nd ed. (Wiley 1987; RCSC 2001).
+ *   [Brandt] Brandt, "Rapid Determination of Ultimate Strength of
+ *           Eccentrically Loaded Bolt Groups", AISC Engineering Journal,
+ *           Second Quarter 1982, pp. 94-100.
+ *
+ * Both use the Crawford-Kulak curve R = Rult·(1 − e^(−10Δ))^0.55 with
+ * Δmax = 0.34 in [Brandt, Background; Guide 13.5.2]; the cases key those
+ * constants in N-mm (μ = 10/25.4 per mm, Δmax = 0.34·25.4 mm), so the
+ * coefficients C = P_u/Rult are dimensionless and exact to the source.
+ * Not checked: the current AISC Manual's tables, and its prying procedure
+ * with resistance factors.
+ */
+export const REFERENCES = [
+  "Kulak, G. L., Fisher, J. W. and Struik, J. H. A., Guide to Design Criteria for Bolted and Riveted Joints, 2nd ed., Wiley, 1987; republished by the Research Council on Structural Connections, 2001. Table 13.1 (eccentric-load coefficients C, reprinted from the AISC Manual of Steel Construction, 8th ed., 1980), Eq. 13.12, and Eqs. 17.8 to 17.12 and 17.17 to 17.18 with section 17.6.",
+  "Brandt, G. D., Rapid Determination of Ultimate Strength of Eccentrically Loaded Bolt Groups, Engineering Journal, AISC, Second Quarter 1982, pp. 94-100. Examples 1 and 2.",
+];
+
+/* The scope statement every report repeats beside REFERENCES. */
+export const REFERENCE_SCOPE = "Published-reference cases VR-01 to VR-03 are keyed to the sources below, not to the current AISC Manual: the ICR coefficients have not been checked against the current AISC Manual's tables, and the T-stub prying equations were checked for form and constants only (the Guide gives no numerical worked example).";
+
+const IN = 25.4; // mm per inch
+const CK = { rult: 1000, mu: 10 / IN, lambda: 0.55, deltaMax: 0.34 * IN, deltaY: null };
+
+/* ICR coefficient C = P_u/Rult through the full solve, for points and load point in inches (keyed in mm). */
+function coefficient(points, Fx, Fy, at) {
+  const p = pattern(points.map(([x, y]) => [x * IN, y * IN]), { point: { x: at[0] * IN, y: at[1] * IN, z: 0 }, Fx, Fy });
+  p.settings.icr = { enabled: true, model: "crawford-kulak" };
+  p.defaults.icr = { ...CK };
+  const r = solved(p);
+  return { r, C: (r.icr.gamma * Math.hypot(Fx, Fy)) / CK.rult };
+}
+
+/* [Guide] Table 13.1, block b = 3 in: one vertical row of n bolts at pitch b, load parallel to the row at lever l (in). */
+const TABLE_13_1 = {
+  3: [0.88, 1.75, 2.81, 3.90, 4.98, 6.06, 7.12, 8.17, 9.20, 10.2, 11.3],
+  4: [0.69, 1.40, 2.36, 3.40, 4.47, 5.56, 6.64, 7.72, 8.78, 9.84, 10.9],
+  5: [0.56, 1.15, 2.01, 2.95, 3.98, 5.05, 6.13, 7.22, 8.30, 9.38, 10.4],
+  6: [0.48, 0.97, 1.73, 2.58, 3.55, 4.57, 5.63, 6.70, 7.79, 8.87, 9.96],
+  7: [0.41, 0.83, 1.51, 2.28, 3.17, 4.13, 5.15, 6.20, 7.27, 8.36, 9.44],
+  8: [0.36, 0.73, 1.34, 2.04, 2.85, 3.75, 4.72, 5.73, 6.78, 7.85, 8.93],
+  9: [0.32, 0.65, 1.21, 1.83, 2.59, 3.42, 4.34, 5.31, 6.32, 7.36, 8.42],
+  10: [0.29, 0.59, 1.09, 1.66, 2.36, 3.14, 4.00, 4.92, 5.89, 6.90, 7.94],
+  12: [0.24, 0.49, 0.92, 1.40, 2.00, 2.68, 3.44, 4.27, 5.15, 6.09, 7.06],
+  16: [0.18, 0.37, 0.70, 1.06, 1.53, 2.06, 2.67, 3.33, 4.06, 4.85, 5.68],
+  20: [0.15, 0.29, 0.56, 0.85, 1.24, 1.67, 2.16, 2.72, 3.33, 3.99, 4.70],
+  24: [0.12, 0.25, 0.47, 0.71, 1.03, 1.40, 1.82, 2.29, 2.81, 3.37, 3.99],
+  30: [0.10, 0.20, 0.37, 0.57, 0.83, 1.12, 1.46, 1.84, 2.27, 2.73, 3.24],
+  36: [0.08, 0.16, 0.31, 0.48, 0.69, 0.94, 1.22, 1.54, 1.90, 2.29, 2.72],
+};
+/* 2%, or half a unit in the table's last printed digit where that is larger (small C). */
+const tableTol = (C) => Math.max(0.02 * C, C >= 10 ? 0.05 : 0.005);
+const row = (n, pitch) => Array.from({ length: n }, (_, i) => [0, ((n - 1) / 2 - i) * pitch]);
+
+/* [Guide] 17.5-17.6 prying, written in the Guide's own form with modified a', b'. */
+function guidePrying(T, { b, a, p: w, dh, D: d, t, Fp: sy }) {
+  const aP = Math.min(a, 1.25 * b) + d / 2, bP = b - d / 2; // 17.6: a ≤ 1.25b; a' = a + d/2, b' = b − d/2
+  const delta = 1 - dh / w; // net / gross flange area at the bolt line
+  const M = (w * t * t * sy) / 4; // Eq. 17.9
+  const alpha = Math.min(((T * bP) / M - 1) / delta, 1); // Eq. 17.8 with b'; "if α ≥ 1.0, it is taken as 1.0"
+  const Q = (alpha * delta * M) / aP; // Eq. 17.10 with a'
+  return { aP, bP, delta, M, alpha, Q, B: T + Q, B1711: T * (1 + (delta * alpha * bP) / ((1 + delta * alpha) * aP)) };
+}
+const PRY = { b: 1.5, a: 1.5, p: 3.5, dh: 0.8125, D: 0.75, t: 0.6, Fp: 36 }; // in, ksi: ¾-in. bolts
+
 export const REFERENCE_CASES = [
   {
-    id: "VR-02", title: "AISC Manual eccentric-load coefficient tables (ICR, Crawford-Kulak), ~2% tolerance",
-    pending: "published table values not yet entered (current AISC Manual not available)",
+    id: "VR-01", title: "T-stub prying against the Struik–de Back equations in the Kulak–Fisher–Struik Guide (Eqs. 17.8 to 17.12, 17.18), modified a' and b'",
+    run() {
+      // The Guide gives the equations but no numerical worked example, so this
+      // confirms the equation form and constants, not published numbers.
+      const g0 = guidePrying(1, PRY);
+      const onset = g0.M / g0.bP, full = (g0.M * (1 + g0.delta)) / g0.bP; // α = 0 and α = 1
+      const cases = [[0.25, PRY], [0.5, PRY], [0.8, PRY], [1.5, PRY], [0.6, { ...PRY, a: 3 }]];
+      return [
+        ...cases.flatMap(([f, geo]) => {
+          const T = onset + f * (full - onset);
+          const g = guidePrying(T, geo);
+          const tool = tStubPrying(T, { ...geo, B: 30 });
+          const tag = `T = ${fmt(T, 4)} kip${geo.a !== PRY.a ? `, a = ${geo.a} in (> 1.25·b)` : ""}`;
+          const out = [
+            check(`α, ${tag}`, tool.alpha, g.alpha),
+            check(`Q (Eq. 17.10), ${tag}`, tool.Q, g.Q),
+            check(`bolt force T + Q (Eq. 17.10a), ${tag}`, T + tool.Q, g.B),
+          ];
+          if (g.alpha < 1) {
+            out.push(check(`bolt force, Eq. 17.11 form, ${tag}`, T + tool.Q, g.B1711));
+            // Eq. 17.18: at the bolt force B = T + Q the required flange thickness is the keyed t.
+            out.push(check(`t from Eq. 17.18 at B = T + Q, ${tag}`, Math.sqrt((4 * g.B * g.aP * g.bP) / (geo.p * geo.Fp * (g.aP + g.alpha * g.delta * (g.aP + g.bP)))), geo.t));
+          }
+          return out;
+        }),
+        check("a limited to 1.25·b (17.6)", tStubPrying(1, { ...PRY, a: 3, B: 30 }).aUsed, 1.25 * PRY.b),
+        truth("Q independent of the keyed bolt reference B", Math.abs(tStubPrying(0.5 * (onset + full), { ...PRY, B: 30 }).Q - tStubPrying(0.5 * (onset + full), { ...PRY, B: 90 }).Q) < 1e-12),
+      ];
+    },
   },
   {
-    id: "VR-03", title: "ICR side convention against a published worked example",
-    pending: "published worked example not yet entered (spec open question 3)",
+    id: "VR-02", title: "ICR coefficients C against Table 13.1 of the Kulak–Fisher–Struik Guide (AISC 8th ed., 1980), b = 3 in, 2% or table rounding",
+    run() {
+      return Object.entries(TABLE_13_1).flatMap(([l, Cs]) => Cs.map((C, j) => {
+        const n = j + 2;
+        const { C: tool } = coefficient(row(n, 3), 0, -1000, [Number(l), 0]);
+        return check(`C, n = ${n}, l = ${l} in`, tool, C, { abs: tableTol(C) });
+      }));
+    },
   },
   {
-    id: "VR-01", title: "AISC T-stub prying worked example",
-    pending: "published reference values not yet entered (spec open question 2)",
+    id: "VR-03", title: "ICR side convention and coefficient against Brandt (1982) Examples 1 and 2",
+    run() {
+      // Example 1: three bolts at 3-in. pitch on x = 0, unit load −y at x = +4 in; C_u = 1.40.
+      const e1 = coefficient(row(3, 3), 0, -1000, [4, 0]);
+      const i1 = e1.r.icr;
+      const r0 = -i1.icr.x / IN, sumRR = i1.loads.reduce((a, l) => a + (l.rho / IN) * (l.R / CK.rult), 0);
+      // Example 2: two columns x = ±3, rows y = −3, 0, 3 (Brandt's bolts 1 to 6); load (0.6, −0.8) through (20, 5) in; C_u = 1.10.
+      const pts = [[-3, -3], [-3, 0], [-3, 3], [3, -3], [3, 0], [3, 3]];
+      const e2 = coefficient(pts, 600, -800, [20, 5]);
+      const i2 = e2.r.icr;
+      const momentAbout = (O) => ((20 * IN - O.x) * -800 - (5 * IN - O.y) * 600) / IN; // N·in, unit load ×1000
+      const M0 = momentAbout({ x: 0, y: 0 }), Mi = momentAbout(i2.icr);
+      return [
+        check("Ex. 1: C_u (Brandt 1.40)", e1.C, 1.40, { rel: 0.02 }),
+        truth("Ex. 1: ICR on the bolt line's far side from the load (x < 0, y = 0)", i1.icr.x < 0 && Math.abs(i1.icr.y) < 1e-6 * IN, `ICR x = ${fmt(i1.icr.x / IN, 3)} in`),
+        truth("Ex. 1: end bolts at Δmax = 0.34 in, middle bolt below it", Math.abs(i1.loads[0].delta - CK.deltaMax) < 1e-9 && Math.abs(i1.loads[2].delta - CK.deltaMax) < 1e-9 && i1.loads[1].delta < CK.deltaMax),
+        check("Ex. 1: Guide Eq. 13.12, P_u·(e + r0) = Σ r_i·R_i", e1.C * (4 + r0), sumRR, { rel: 1e-6 }),
+        check("Ex. 2: C_u (Brandt 1.10)", e2.C, 1.10, { rel: 0.02 }),
+        truth("Ex. 2: bolt 6 at (3, 3) governs, as in Brandt's Tables 2.1 and 2.2", i2.governing === "F6"),
+        truth("Ex. 2: ICR on the centroid's far side from the load line (moment arm grows: |M about ICR| > |M about centroid|, same sign)", Math.sign(Mi) === Math.sign(M0) && Math.abs(Mi) > Math.abs(M0), `M about centroid ${fmt(M0 / 1000, 3)}, about ICR ${fmt(Mi / 1000, 3)} (Brandt: −19 and −20.136 at his last trial centre)`),
+      ];
+    },
   },
 ];
 
@@ -587,11 +707,10 @@ REFERENCE_CASES.sort(idOrder);
 
 export const ALL_CASES = [...HAND_CASES, ...PROPERTY_CASES, ...REFERENCE_CASES];
 
-/* Run every case; a case that throws fails with the message. Status is
- * "pass", "fail" or "pending"; the set passes when no case fails. */
+/* Run every case; a case that throws fails with the message. The set
+ * passes when every case passes. */
 export function runVerification(cases = ALL_CASES) {
   const results = cases.map((c) => {
-    if (c.pending) return { id: c.id, title: c.title, checks: [], status: "pending", pass: false, pending: c.pending };
     try {
       const checks = c.run();
       const pass = checks.length > 0 && checks.every((x) => x.pass);
@@ -600,6 +719,6 @@ export function runVerification(cases = ALL_CASES) {
       return { id: c.id, title: c.title, checks: [], status: "fail", pass: false, error: e.message };
     }
   });
-  const count = (status) => results.filter((r) => r.status === status).length;
-  return { set: VERIFICATION_SET, tol: REL_TOL, results, passed: count("pass"), pending: count("pending"), failed: count("fail"), pass: count("fail") === 0 };
+  const passed = results.filter((r) => r.pass).length;
+  return { set: VERIFICATION_SET, tol: REL_TOL, results, passed, failed: results.length - passed, pass: passed === results.length, scope: REFERENCE_SCOPE, references: REFERENCES };
 }

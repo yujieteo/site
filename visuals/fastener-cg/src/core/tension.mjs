@@ -1,8 +1,10 @@
 /* Prying and preload: the tension chain from external tension T to the
  * bolt load that feeds the interaction (spec 5.6).
  *
- * Prying (T-stub, Kulak/AISC style, keyed B and Fp so no code factor is
- * built in) acts only on positive external tension:
+ * Prying (T-stub: the Struik-de Back equilibrium model with modified a'
+ * and b', Kulak-Fisher-Struik Guide 2nd ed. Eqs. 17.8 to 17.12, checked by
+ * VR-01; keyed B and Fp so no code factor is built in) acts only on
+ * positive external tension:
  *   a_used = min(a, 1.25·b)
  *   b' = b − D/2    a' = a_used + D/2    ρ = b'/a'    δ = 1 − d_h/p
  *   t_c = √(4·B·b' / (p·Fp))

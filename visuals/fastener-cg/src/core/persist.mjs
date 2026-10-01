@@ -270,8 +270,10 @@ export function toMarkdown(pattern, result = null, { version = "", date = "", ve
   if (result) lines.push("", "## Assumptions", "", ...ASSUMPTIONS.map((a) => `- ${a}`));
   if (result) {
     lines.push("", "## Verification", "", verification
-      ? `Verification set ${verification.set}: ${verification.passed} pass, ${verification.pending} pending, ${verification.failed} fail; closed-form tolerance ${verification.tol} relative (or the stated ± where the specification rounds).${version ? ` Tool ${version}.` : ""}`
-      : "Verification not run for this export.", "", `*${PRELIMINARY}*`);
+      ? `Verification set ${verification.set}: ${verification.passed} pass, ${verification.failed} fail; closed-form tolerance ${verification.tol} relative (or the stated ± where the specification rounds).${version ? ` Tool ${version}.` : ""}`
+      : "Verification not run for this export.");
+    if (verification) lines.push("", verification.scope, "", ...verification.references.map((r, i) => `${i + 1}. ${r}`));
+    lines.push("", `*${PRELIMINARY}*`);
   }
   lines.push("", "## Exact inputs", "",
     "Import reads this block. Editing it by hand makes import fall back to the tables above, and settings and defaults then revert.", "",
