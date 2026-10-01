@@ -1,0 +1,772 @@
+{
+  "title": "Information gain",
+  "slug": "information-gain",
+  "description": "Catalogue data for the information gain visualizer. The page does not fetch this file: these examples, units, limits and wording thresholds are inlined in index.html, and a test keeps them equal. Example probabilities are illustrative, not measurements.",
+  "fetched": "2026-10-01",
+  "url": "https://teoyujie.org/visuals/information-gain",
+  "units_in_minutes": {
+    "s": 0.016666666666666666,
+    "min": 1,
+    "h": 60,
+    "d": 1440
+  },
+  "limits": {
+    "checks": 12,
+    "text": 160,
+    "hypothesis": 300,
+    "time": 100000
+  },
+  "thresholds": {
+    "learning": [
+      [
+        0.3,
+        "large"
+      ],
+      [
+        0.1,
+        "moderate"
+      ],
+      [
+        0.01,
+        "small"
+      ],
+      [
+        1e-9,
+        "very small"
+      ],
+      [
+        0,
+        "none"
+      ]
+    ],
+    "uncertainty": [
+      [
+        0.95,
+        "very uncertain"
+      ],
+      [
+        0.75,
+        "quite uncertain"
+      ],
+      [
+        0.5,
+        "some uncertainty remains"
+      ],
+      [
+        0.15,
+        "fairly sure"
+      ],
+      [
+        1e-9,
+        "almost settled"
+      ]
+    ],
+    "separation": [
+      [
+        1,
+        "conclusive"
+      ],
+      [
+        0.6,
+        "highly diagnostic"
+      ],
+      [
+        0.3,
+        "moderately diagnostic"
+      ],
+      [
+        0.1,
+        "weakly diagnostic"
+      ],
+      [
+        1e-9,
+        "barely diagnostic"
+      ],
+      [
+        0,
+        "not diagnostic"
+      ]
+    ],
+    "strength": [
+      [
+        4.32,
+        "very strongly"
+      ],
+      [
+        2,
+        "strongly"
+      ],
+      [
+        1,
+        "moderately"
+      ],
+      [
+        0.2,
+        "slightly"
+      ]
+    ],
+    "little": 0.05,
+    "surprising": 0.1
+  },
+  "initial": {
+    "example": "restaurant",
+    "hypothesis": "The restaurant wait will be longer than 20 minutes.",
+    "prior": {
+      "phrase": null,
+      "pct": 70
+    },
+    "checks": [
+      {
+        "id": "c1",
+        "name": "Ask the host for an estimate",
+        "resultA": "Host says over 20 minutes",
+        "resultB": "Host says 20 minutes or less",
+        "a": {
+          "phrase": null,
+          "pct": 85
+        },
+        "b": {
+          "phrase": null,
+          "pct": 20
+        },
+        "time": {
+          "value": 1,
+          "unit": "min",
+          "free": false
+        }
+      },
+      {
+        "id": "c2",
+        "name": "Watch how many groups are seated over 5 minutes",
+        "resultA": "Fewer than 2 groups seated",
+        "resultB": "2 or more groups seated",
+        "a": {
+          "phrase": null,
+          "pct": 90
+        },
+        "b": {
+          "phrase": null,
+          "pct": 15
+        },
+        "time": {
+          "value": 5,
+          "unit": "min",
+          "free": false
+        }
+      },
+      {
+        "id": "c3",
+        "name": "Check how many parties leave the queue",
+        "resultA": "Nobody leaves the queue",
+        "resultB": "Someone leaves the queue",
+        "a": {
+          "phrase": null,
+          "pct": 75
+        },
+        "b": {
+          "phrase": null,
+          "pct": 60
+        },
+        "time": {
+          "value": 3,
+          "unit": "min",
+          "free": false
+        }
+      },
+      {
+        "id": "c4",
+        "name": "Simply wait another 10 minutes",
+        "resultA": "Still not seated after 10 minutes",
+        "resultB": "Seated within 10 minutes",
+        "a": {
+          "phrase": null,
+          "pct": 95
+        },
+        "b": {
+          "phrase": null,
+          "pct": 10
+        },
+        "time": {
+          "value": 10,
+          "unit": "min",
+          "free": false
+        }
+      }
+    ],
+    "trail": [],
+    "budget": {
+      "on": false,
+      "value": 5,
+      "unit": "min"
+    },
+    "objective": null,
+    "view": "total",
+    "level": 1,
+    "selected": "c1"
+  },
+  "examples": [
+    {
+      "id": "restaurant",
+      "label": "Restaurant queue",
+      "hypothesis": "The restaurant wait will be longer than 20 minutes.",
+      "prior": {
+        "pct": 70,
+        "phrase": null
+      },
+      "checks": [
+        {
+          "name": "Ask the host for an estimate",
+          "time": {
+            "value": 1,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Host says over 20 minutes",
+          "resultB": "Host says 20 minutes or less",
+          "a": {
+            "pct": 85,
+            "phrase": null
+          },
+          "b": {
+            "pct": 20,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Watch how many groups are seated over 5 minutes",
+          "time": {
+            "value": 5,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Fewer than 2 groups seated",
+          "resultB": "2 or more groups seated",
+          "a": {
+            "pct": 90,
+            "phrase": null
+          },
+          "b": {
+            "pct": 15,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Check how many parties leave the queue",
+          "time": {
+            "value": 3,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Nobody leaves the queue",
+          "resultB": "Someone leaves the queue",
+          "a": {
+            "pct": 75,
+            "phrase": null
+          },
+          "b": {
+            "pct": 60,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Simply wait another 10 minutes",
+          "time": {
+            "value": 10,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Still not seated after 10 minutes",
+          "resultB": "Seated within 10 minutes",
+          "a": {
+            "pct": 95,
+            "phrase": null
+          },
+          "b": {
+            "pct": 10,
+            "phrase": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "parcel",
+      "label": "Parcel delivery",
+      "hypothesis": "The parcel will arrive today.",
+      "prior": {
+        "pct": 60,
+        "phrase": null
+      },
+      "note": "Illustrative only: there is no live delivery integration.",
+      "checks": [
+        {
+          "name": "Look at the tracking status",
+          "time": {
+            "value": 1,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Tracking says out for delivery",
+          "resultB": "Not yet out for delivery",
+          "a": {
+            "pct": 85,
+            "phrase": null
+          },
+          "b": {
+            "pct": 15,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Contact the courier",
+          "time": {
+            "value": 15,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Courier confirms delivery today",
+          "resultB": "Courier cannot confirm",
+          "a": {
+            "pct": 90,
+            "phrase": null
+          },
+          "b": {
+            "pct": 10,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Wait until the next normal delivery window",
+          "time": {
+            "value": 3,
+            "unit": "h",
+            "free": false
+          },
+          "resultA": "It arrives in that window",
+          "resultB": "Nothing arrives in that window",
+          "a": {
+            "pct": 70,
+            "phrase": null
+          },
+          "b": {
+            "pct": 0,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Check whether the local depot has received it",
+          "time": {
+            "value": 5,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Depot shows it received",
+          "resultB": "Depot has no record",
+          "a": {
+            "pct": 95,
+            "phrase": null
+          },
+          "b": {
+            "pct": 50,
+            "phrase": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "phishing",
+      "label": "Phishing email",
+      "hypothesis": "This email is phishing.",
+      "prior": {
+        "pct": 30,
+        "phrase": null
+      },
+      "note": "A probability is not a security procedure: report suspected phishing the way your organisation asks, and never click a link to test it.",
+      "checks": [
+        {
+          "name": "Inspect the sender domain",
+          "time": {
+            "value": 30,
+            "unit": "s",
+            "free": false
+          },
+          "resultA": "Domain does not match the company",
+          "resultB": "Domain matches the company",
+          "a": {
+            "pct": 70,
+            "phrase": null
+          },
+          "b": {
+            "pct": 5,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Inspect the destination URL without clicking",
+          "time": {
+            "value": 30,
+            "unit": "s",
+            "free": false
+          },
+          "resultA": "Link goes to an unrelated site",
+          "resultB": "Link goes to the company's own site",
+          "a": {
+            "pct": 80,
+            "phrase": null
+          },
+          "b": {
+            "pct": 3,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Check independently whether the company sent it",
+          "time": {
+            "value": 10,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Company says it did not send it",
+          "resultB": "Company confirms it sent it",
+          "a": {
+            "pct": 97,
+            "phrase": null
+          },
+          "b": {
+            "pct": 2,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Check the message headers",
+          "time": {
+            "value": 5,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Headers show a failed authentication check",
+          "resultB": "Headers look normal",
+          "a": {
+            "pct": 60,
+            "phrase": null
+          },
+          "b": {
+            "pct": 5,
+            "phrase": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "shopping",
+      "label": "Shopping",
+      "hypothesis": "The item will still be available when I arrive.",
+      "prior": {
+        "pct": 60,
+        "phrase": null
+      },
+      "checks": [
+        {
+          "name": "Check the stock indicator online",
+          "time": {
+            "value": 1,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Shown in stock",
+          "resultB": "Shown as low or out of stock",
+          "a": {
+            "pct": 90,
+            "phrase": null
+          },
+          "b": {
+            "pct": 40,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Call the shop",
+          "time": {
+            "value": 5,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Staff say it is on the shelf",
+          "resultB": "Staff say it has gone",
+          "a": {
+            "pct": 95,
+            "phrase": null
+          },
+          "b": {
+            "pct": 10,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Go immediately",
+          "time": {
+            "value": 30,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "It is on the shelf now",
+          "resultB": "It has already gone",
+          "a": {
+            "pct": 100,
+            "phrase": null
+          },
+          "b": {
+            "pct": 40,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Wait and check again later",
+          "time": {
+            "value": 2,
+            "unit": "h",
+            "free": false
+          },
+          "resultA": "Still shown in stock later",
+          "resultB": "Shown out of stock later",
+          "a": {
+            "pct": 90,
+            "phrase": null
+          },
+          "b": {
+            "pct": 20,
+            "phrase": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "project",
+      "label": "Project completion",
+      "hypothesis": "I will finish this task today.",
+      "prior": {
+        "pct": 50,
+        "phrase": null
+      },
+      "checks": [
+        {
+          "name": "Inspect the remaining tasks",
+          "time": {
+            "value": 10,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Under 3 hours of work left",
+          "resultB": "More than 3 hours left",
+          "a": {
+            "pct": 80,
+            "phrase": null
+          },
+          "b": {
+            "pct": 30,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Resolve the largest dependency",
+          "time": {
+            "value": 45,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "The dependency clears quickly",
+          "resultB": "The dependency is stuck",
+          "a": {
+            "pct": 85,
+            "phrase": null
+          },
+          "b": {
+            "pct": 35,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Time one representative subtask",
+          "time": {
+            "value": 20,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "It takes less than estimated",
+          "resultB": "It takes longer than estimated",
+          "a": {
+            "pct": 70,
+            "phrase": null
+          },
+          "b": {
+            "pct": 25,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Ask the collaborator for status",
+          "time": {
+            "value": 2,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Their part is ready",
+          "resultB": "Their part is not ready",
+          "a": {
+            "pct": 75,
+            "phrase": null
+          },
+          "b": {
+            "pct": 40,
+            "phrase": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "fault",
+      "label": "Mechanical fault",
+      "hypothesis": "The battery is causing the problem.",
+      "prior": {
+        "pct": 40,
+        "phrase": null
+      },
+      "note": "A general illustration of choosing what to check, not a professional diagnosis.",
+      "checks": [
+        {
+          "name": "Measure the battery voltage at rest",
+          "time": {
+            "value": 5,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Voltage is low",
+          "resultB": "Voltage looks normal",
+          "a": {
+            "pct": 75,
+            "phrase": null
+          },
+          "b": {
+            "pct": 15,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Try another battery",
+          "time": {
+            "value": 20,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "The fault disappears",
+          "resultB": "The fault remains",
+          "a": {
+            "pct": 90,
+            "phrase": null
+          },
+          "b": {
+            "pct": 5,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Inspect a related component",
+          "time": {
+            "value": 10,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Corrosion or a loose connection",
+          "resultB": "It looks fine",
+          "a": {
+            "pct": 40,
+            "phrase": null
+          },
+          "b": {
+            "pct": 30,
+            "phrase": null
+          }
+        },
+        {
+          "name": "Observe whether the fault appears under load",
+          "time": {
+            "value": 2,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "Fault appears only under load",
+          "resultB": "Fault also appears at rest",
+          "a": {
+            "pct": 85,
+            "phrase": null
+          },
+          "b": {
+            "pct": 50,
+            "phrase": null
+          }
+        }
+      ]
+    }
+  ],
+  "teaching_presets": [
+    {
+      "id": "useless",
+      "label": "Uninformative check",
+      "hypothesis": "It will rain this afternoon.",
+      "prior": {
+        "pct": 50,
+        "phrase": null
+      },
+      "note": "Both probabilities are 70%: this result is just as likely either way, so it cannot teach you anything. Drag them apart to see expected learning appear.",
+      "checks": [
+        {
+          "name": "Notice whether the bus is on time",
+          "time": {
+            "value": 1,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "The bus is on time",
+          "resultB": "The bus is late",
+          "a": {
+            "pct": 70,
+            "phrase": null
+          },
+          "b": {
+            "pct": 70,
+            "phrase": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "diagnostic",
+      "label": "Highly diagnostic check",
+      "hypothesis": "The switch by the door controls the hallway light.",
+      "prior": {
+        "pct": 50,
+        "phrase": null
+      },
+      "note": "95% against 5% at a 50% prior. Drag the two probabilities toward each other and watch expected learning collapse.",
+      "checks": [
+        {
+          "name": "Flip the switch and watch the hallway",
+          "time": {
+            "value": 1,
+            "unit": "min",
+            "free": false
+          },
+          "resultA": "The hallway light changes",
+          "resultB": "The hallway light does not change",
+          "a": {
+            "pct": 95,
+            "phrase": null
+          },
+          "b": {
+            "pct": 5,
+            "phrase": null
+          }
+        }
+      ]
+    }
+  ]
+}
