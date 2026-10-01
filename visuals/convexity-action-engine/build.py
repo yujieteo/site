@@ -236,6 +236,7 @@ table.sheet .colx{border:0;background:none;min-height:0;padding:0 .2rem;color:va
 .panel.why{border-color:var(--pos)}
 .panel .x{float:right;min-width:2.25rem}
 .note{font-size:.84rem;color:var(--muted)}
+.deckrow{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:1.5rem 0 .3rem}
 .warnbox{border:1px solid var(--warn);background:var(--warnbg);border-radius:var(--r);padding:.45rem .65rem;margin:.45rem 0}
 .dangerbox{border:2px solid var(--danger);background:var(--dangerbg);border-radius:var(--r);padding:.5rem .7rem;margin:.45rem 0}
 .dangerbox b,.dangerbox strong{color:var(--danger)}
@@ -297,6 +298,7 @@ dl.keys dd{margin:0}
 """
 
 JS_PATH = HERE / "engine.js"
+BEAMDSWITCH_PATH = HERE / "beamdswitch.js"  # the site's standard beamdswitch report template, unchanged
 
 
 def load():
@@ -401,6 +403,8 @@ def render(raw, meta, tokens):
         css = css.replace(f"%%{key}%%", val)
     data = json.dumps(page_data(raw, meta), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     js = JS_PATH.read_text(encoding="utf-8").replace("%%DATA%%", data)
+    beamdswitch = BEAMDSWITCH_PATH.read_text(encoding="utf-8")
+    assert "</script" not in beamdswitch, "beamdswitch.js must not contain </script"
     n_canon = sum(1 for a in raw["actions"] if a["cat"] != "avoid")
     n_avoid = len(raw["actions"]) - n_canon
     n_inst = instance_count(raw)
@@ -421,6 +425,8 @@ def render(raw, meta, tokens):
 <section class="hero" id="hero"><h1>{escape(H1)}</h1><p class="lede">{escape(LEDE)}</p><button type="button" class="bigsearch" id="hero-search" aria-haspopup="dialog">{icon}<span>Search an action or describe your situation</span><kbd>/</kbd></button><div class="examples"><span>Try</span>{examples}<button type="button" class="how" id="how">How it works</button></div></section>
 <section id="ctx" aria-label="Your context"></section>
 <div id="app"></div>
+<div class="deckrow"><button type="button" id="save-beamdswitch" title="Save a narrated Markdown talk about this page, to open in beamdswitch">beamdswitch</button><button type="button" id="copy-beamdswitch" title="Copy the narrated Markdown talk, to paste into beamdswitch">Copy deck</button><span id="deck-status" class="note" role="status"></span></div>
+<p class="note">The beamdswitch button saves this page in your current context as a narrated talk: a Markdown deck with your context, the method and lens, the ruin screen, the options compared and the confidence checks (on NOW, the class leaders and what to avoid), every value as shown here, and a spoken narration on every slide. Open it in <a href="../beamdswitch/">beamdswitch</a> to get slides, a handout, narration and a video. Copy deck puts the same deck on the clipboard, to paste into beamdswitch if the download does not arrive.</p>
 <noscript><p>This page needs JavaScript. Actions to avoid, and why:</p><ul>{noscript}</ul></noscript>
 <details id="method"><summary>How it works: method, evidence labels, assumptions and what is not here</summary><p class="method"><strong>Ruin first, then payoff shape.</strong> Each action is screened for extreme, irreversible downside, then compared on reliable upside (harvest), right-tail upside (optionality), timing and opportunity cost against alternatives available now. <strong>Benefits, tails and timing are author judgement</strong> on ordinal 0–4 scales, labelled JUDGEMENT. <strong>How common an activity is</strong> comes from American Time Use Survey microdata ({n_obs:,} actions linked, OBSERVED); experienced affect from one published table and {n_cite} actions from published experiments (EMPIRICAL). {n_canon:,} canonical actions and {n_avoid} actions to avoid expand to {n_inst:,} contextual instances (action × manner × timing). That is <strong>short of a 10,000-action canonical ontology</strong>. Select any row name to see where its number came from.</p><ul class="note">{assumptions}</ul></details>
 </main>
@@ -428,6 +434,7 @@ def render(raw, meta, tokens):
 <div class="pal" id="pal" hidden role="dialog" aria-modal="true" aria-label="Action search"><div class="palbox"><div class="palin"><label class="visually-hidden" for="q">What are you considering?</label><input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="{escape(PLACEHOLDER)}" role="combobox" aria-expanded="true" aria-controls="res" aria-autocomplete="list"><span class="palmode" id="palmode"></span><button type="button" id="palclose">Close</button></div><div class="palchips" id="palchips" aria-label="What your words set"></div><div class="palbody"><ul class="palres" id="res" role="listbox" aria-label="Results"></ul><div class="palprev" id="prev" aria-live="polite"></div></div><div class="palfoot"><span class="keys">↑ ↓ move</span><span class="keys">Esc close</span><span id="palhint"></span></div></div></div>
 <div class="toast" id="toast" hidden role="status"></div>
 <div class="visually-hidden" id="announce" role="status" aria-live="polite"></div>
+<script id="beamdswitch">\n{beamdswitch}</script>
 <script>{js}</script></body></html>
 '''
 
@@ -509,7 +516,8 @@ def verify(raw, meta, html):
     for name, text in spreadsheets(raw).items():
         assert (DATA / name).read_text(encoding="utf-8") == text, f"{name} is stale: rerun the builder"
 
-    assert html.count("<h1>") == 1 and html.count("<script") == 1
+    assert html.count("<h1>") == 1 and html.count("<script") == 2
+    assert f'<script id="beamdswitch">\n{BEAMDSWITCH_PATH.read_text(encoding="utf-8")}</script>' in html, "beamdswitch.js is inlined unchanged"
     assert "<script src=" not in html and '<link rel="stylesheet"' not in html
     assert not re.search(r'''(?:src|href)=["']https?://''', html), "external asset"
     assert html.count("mc?.registerTool") == 4 and html.count("readOnlyHint:true") == 4

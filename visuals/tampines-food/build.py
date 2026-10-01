@@ -9,10 +9,13 @@ Inputs, all checked in next to this file:
   yeo2021.csv      Yeo et al. (2021) Tables 1-6, transcribed
   fndds.csv        the FNDDS rows outlets.csv uses (written by extract_fndds.py)
   map.json         attributed, projected OSM geometry from the Visuals map
+  beamdswitch.js   the site's standard beamdswitch report template, unchanged
+  report.js        the page's numbers as a beamdswitch report
 
 Outputs:
   raw.json         the dataset (published as data.json)
-  index.html       its <script id="dataset"> block is rewritten in place
+  index.html       its <script id="dataset">, <script id="beamdswitch"> and <script id="report">
+                   blocks are rewritten in place
 
     python build.py            # regenerate raw.json and index.html
     python build.py --verify   # check both are fresh without writing
@@ -286,6 +289,16 @@ def render(dataset):
     )
     if count != 1:
         fail('index.html has no <script id="dataset" type="application/json"> block')
+    for block_id, name in (("beamdswitch", "beamdswitch.js"), ("report", "report.js")):
+        script = (HERE / name).read_text(encoding="utf-8")
+        if "</script" in script:
+            fail(f"{name} must not contain </script")
+        new_page, count = re.subn(
+            rf'(<script id="{block_id}">).*?(</script>)',
+            lambda m: m.group(1) + "\n" + script + m.group(2), new_page, count=1, flags=re.S,
+        )
+        if count != 1:
+            fail(f'index.html has no <script id="{block_id}"> block')
     return raw, new_page
 
 

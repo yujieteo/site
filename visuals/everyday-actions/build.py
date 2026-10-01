@@ -6,11 +6,14 @@ Inputs, all checked in next to this file:
   crosswalk.csv        normalized activity <-> DRM row <-> ATUS tier codes
   decisions.csv        100 actions with authored ordinal codes (not measurements)
   evidence.json        studies cited by decisions.csv and the reconsideration section
+  beamdswitch.js       the site's standard beamdswitch report template, unchanged
+  report.js            the page's axes and its current view as a beamdswitch report
 
 Outputs:
   data.csv             one row per normalized activity; missing values stay empty
   sources.json         citations plus one record per number shown in the graph
-  index.html           the <script id="dataset"> block is rewritten in place
+  index.html           the <script id="dataset">, <script id="beamdswitch"> and <script id="report">
+                       blocks are rewritten in place
 
     python build.py
 """
@@ -148,6 +151,18 @@ def main():
     )
     if count != 1:
         raise SystemExit("index.html needs exactly one <script id=\"dataset\"> block")
+    for block_id, name in (("beamdswitch", "beamdswitch.js"), ("report", "report.js")):
+        script = (HERE / name).read_text(encoding="utf-8")
+        if "</script" in script:
+            raise SystemExit(f"{name} must not contain </script")
+        html, count = re.subn(
+            rf'(<script id="{block_id}">).*?(</script>)',
+            lambda match: match.group(1) + "\n" + script + match.group(2),
+            html,
+            flags=re.S,
+        )
+        if count != 1:
+            raise SystemExit(f'index.html needs exactly one <script id="{block_id}"> block')
     html_path.write_text(html, encoding="utf-8")
     print(f"{len(rows)} activities, {len(measurements)} measurements, {len(decisions)} decisions")
 

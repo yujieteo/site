@@ -161,6 +161,7 @@ table.sheet .colx{border:0;background:none;min-height:0;padding:0 .2rem;color:va
 .panel.why{border-color:var(--pos)}
 .panel .x{float:right;min-width:2.25rem}
 .note{font-size:.84rem;color:var(--muted)}
+.deckrow{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:1.5rem 0 .3rem}
 .warnbox{border:1px solid var(--warn);background:var(--warnbg);border-radius:var(--r);padding:.45rem .65rem;margin:.45rem 0}
 .dangerbox{border:2px solid var(--danger);background:var(--dangerbg);border-radius:var(--r);padding:.5rem .7rem;margin:.45rem 0}
 .dangerbox b,.dangerbox strong{color:var(--danger)}
@@ -226,6 +227,8 @@ dl.keys dd{margin:0}
 <section class="hero" id="hero"><h1>What are you considering doing?</h1><p class="lede">Ruin first, then payoff shape: every action is screened for extreme downside, then compared with the alternatives you actually have right now.</p><button type="button" class="bigsearch" id="hero-search" aria-haspopup="dialog"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search an action or describe your situation</span><kbd>/</kbd></button><div class="examples"><span>Try</span><button type="button" data-q="swim">swim</button><button type="button" data-q="I have 30 minutes">I have 30 minutes</button><button type="button" data-q="what should I avoid tonight?">what should I avoid tonight?</button><button type="button" data-q="tired and want to relax">tired and want to relax</button><button type="button" class="how" id="how">How it works</button></div></section>
 <section id="ctx" aria-label="Your context"></section>
 <div id="app"></div>
+<div class="deckrow"><button type="button" id="save-beamdswitch" title="Save a narrated Markdown talk about this page, to open in beamdswitch">beamdswitch</button><button type="button" id="copy-beamdswitch" title="Copy the narrated Markdown talk, to paste into beamdswitch">Copy deck</button><span id="deck-status" class="note" role="status"></span></div>
+<p class="note">The beamdswitch button saves this page in your current context as a narrated talk: a Markdown deck with your context, the method and lens, the ruin screen, the options compared and the confidence checks (on NOW, the class leaders and what to avoid), every value as shown here, and a spoken narration on every slide. Open it in <a href="../beamdswitch/">beamdswitch</a> to get slides, a handout, narration and a video. Copy deck puts the same deck on the clipboard, to paste into beamdswitch if the download does not arrive.</p>
 <noscript><p>This page needs JavaScript. Actions to avoid, and why:</p><ul><li>Swim alone in open water: Same goal as swimming, but with no one to help if something goes wrong.</li><li>Swim after drinking: Two ordinary actions whose combination creates a catastrophic tail.</li><li>Drive after drinking: Small per-trip probability, repeated across trips, with irreversible and legal consequences.</li><li>Text while driving: The message rarely matters; the tail is permanent.</li><li>Drive while exhausted: Fatigue is invisible to the driver until the micro-sleep.</li><li>Cycle on roads at night without lights: Same exercise benefit is available with lights or on a park connector.</li><li>Run hard in the midday heat: In Singapore the same run in the early morning or evening keeps the benefit and drops most of the heat tail.</li><li>Hike alone without telling anyone: Telling someone your route costs a minute and caps the tail.</li><li>Swim in the sea during a thunderstorm: Outdoor water during lightning combines two catastrophic tails.</li><li>Lift heavy without warming up: The warm-up is cheap; the injury can cost months.</li><li>Exercise through sharp pain: Stopping keeps nearly all of the long-run benefit.</li><li>Ignore chest pain: Waiting changes nothing if it is benign and can be irreversible if it is not.</li><li>Skip your medication: Taking it is a two-minute action with a large protected downside.</li><li>Mix medication with alcohol: Check the label or ask a pharmacist first.</li><li>Leave the stove on and go out: A two-second check removes a catastrophic tail.</li><li>Send an angry email: Drafting now and sending tomorrow keeps every option.</li><li>Post something inflammatory online: The upside is small and brief; the record is permanent.</li><li>Invest borrowed money in a speculative asset: Unlevered, diversified saving keeps most upside without the ruin path.</li><li>Gamble to win back losses: Negative expected value, repeated, with an absorbing bottom.</li><li>Take on high-interest debt for a purchase: Waiting or buying second-hand keeps the item within reach without the tail.</li><li>Sign a contract without reading it: Reading the key clauses is cheap relative to the lock-in.</li><li>Click a suspicious link: Going to the site directly costs seconds.</li><li>Quit your job impulsively: Searching while employed keeps the same upside with a floor.</li><li>Make a major decision while exhausted or angry: Sleeping on it is reversible; many major decisions are not.</li><li>Doomscroll past midnight: Not dangerous, just poor payoff: little upside and it taxes tomorrow.</li><li>Stay up all night before a big day: Poor payoff rather than ruin: sleep usually beats the extra hours.</li></ul></noscript>
 <details id="method"><summary>How it works: method, evidence labels, assumptions and what is not here</summary><p class="method"><strong>Ruin first, then payoff shape.</strong> Each action is screened for extreme, irreversible downside, then compared on reliable upside (harvest), right-tail upside (optionality), timing and opportunity cost against alternatives available now. <strong>Benefits, tails and timing are author judgement</strong> on ordinal 0–4 scales, labelled JUDGEMENT. <strong>How common an activity is</strong> comes from American Time Use Survey microdata (1,348 actions linked, OBSERVED); experienced affect from one published table and 31 actions from published experiments (EMPIRICAL). 1,374 canonical actions and 26 actions to avoid expand to 50,016 contextual instances (action × manner × timing). That is <strong>short of a 10,000-action canonical ontology</strong>. Select any row name to see where its number came from.</p><ul class="note"><li>Benefits, costs, right tail, downside, reversibility, decay, regret and timing curves are ordinal author judgements on a 0-4 scale, labelled JUDGEMENT, with whether each is a category prior or an action-specific estimate.</li><li>How common an activity is (share of U.S. adults doing it on an average day, minutes when done) comes from American Time Use Survey 2014-2016 microdata, recomputed with the survey weights by derive_atus.py from the CRAN atus mirror (OBSERVED). The crosswalk from each action to an ATUS group is judgement; category-level links describe the broader group, and the page says so. It is U.S. data, not Singapore.</li><li>Experienced affect comes from Kahneman et al. (2004) Table 1 (909 employed women in Texas), and 31 actions link to published experiments with abstract-level findings (EMPIRICAL). These are shared with visuals/everyday-actions and read from there.</li><li>O*NET, OECD and Singapore time-use data could not be retrieved from the build environment and are listed without links. ATUS activity-code labels were written from the lexicon&#x27;s structure because bls.gov was unreachable; the sports codes were checked against their observed durations.</li><li>The ontology has 1,374 canonical actions and 26 actions to avoid; contextual instances (action x at most one manner x timing) are not counted as distinct actions, so the 10,000-canonical-action target is not met.</li><li>Extreme-downside probabilities are word labels (very low, low, unknown, moderate), never numbers. Unknown is shown as unknown, not as safe. The repeated-exposure chart uses a per-exposure probability you choose, clearly marked as hypothetical.</li><li>Singapore context (daylight about 07:00-19:15, midday heat 11:00-16:00, typical opening hours, lightning) is a separate adjustment on top of the global prior and can be switched off. Live weather is not known; outdoor actions say so.</li><li>Class scores, time fit and lens rankings are MODEL transforms of the facts and inherit their confidence. Decision history is stored only in this browser, shown with its sample size and never used to change rankings.</li></ul></details>
 </main>
@@ -233,6 +236,95 @@ dl.keys dd{margin:0}
 <div class="pal" id="pal" hidden role="dialog" aria-modal="true" aria-label="Action search"><div class="palbox"><div class="palin"><label class="visually-hidden" for="q">What are you considering?</label><input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Try “swim”, “I have 30 minutes” or “what should I avoid tonight?”" role="combobox" aria-expanded="true" aria-controls="res" aria-autocomplete="list"><span class="palmode" id="palmode"></span><button type="button" id="palclose">Close</button></div><div class="palchips" id="palchips" aria-label="What your words set"></div><div class="palbody"><ul class="palres" id="res" role="listbox" aria-label="Results"></ul><div class="palprev" id="prev" aria-live="polite"></div></div><div class="palfoot"><span class="keys">↑ ↓ move</span><span class="keys">Esc close</span><span id="palhint"></span></div></div></div>
 <div class="toast" id="toast" hidden role="status"></div>
 <div class="visually-hidden" id="announce" role="status" aria-live="polite"></div>
+<script id="beamdswitch">
+/* The standard beamdswitch report template, shared by every visualisation.
+ *
+ * beamdswitch (https://teoyujie.org/visuals/beamdswitch/) turns one Markdown deck into slides, a
+ * handout, narration and a video. `deck(report)` writes a report in its deck syntax, always in the
+ * same order (templates/beamdswitch-report.md shows the skeleton):
+ *
+ *   front matter and title slide
+ *   # Set-up               what was modelled, its units and conventions
+ *   # Method               how the tool solved it
+ *   # Results              the numbers, with key equations and plots
+ *   # Checks and takeaway  what confirms the numbers, ending on one ::: key frame
+ *
+ * A report is plain data, so it can be built and tested without a page:
+ *   { meta: { title, subtitle, author, date, voice }, narration, notes,
+ *     setup, method, results, checks: [frame, ...] }
+ * and each frame is
+ *   { title, body, narration, notes, key, plot: { x: [a, b], xlabel, ylabel, curves: ["expr", ...] } }
+ * `body` is Markdown (LaTeX maths in $...$ or $$...$$); `narration` is plain spoken prose, one
+ * caption per sentence; `key`, `plot` and `notes` are optional. Every frame must be narrated, and
+ * the last checks frame must carry a key. The visualisation supplies every number already
+ * formatted, so the deck says exactly what its page shows.
+ */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === "object" && module.exports) module.exports = api;
+  else root.Beamdswitch = api;
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  const SECTIONS = [["setup", "Set-up"], ["method", "Method"], ["results", "Results"], ["checks", "Checks and takeaway"]];
+
+  const oneLine = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+  /* Markdown lines that would end a frame or a div early are refused rather than written. */
+  function block(text, what) {
+    const s = String(text ?? "").replace(/\r\n?/g, "\n").trim();
+    for (const line of s.split("\n"))
+      if (/^#{1,2}\s/.test(line) || /^\s*:{3,}/.test(line)) throw new Error(`${what} must not contain a heading or a ::: line: ${line}`);
+    return s;
+  }
+  /* Narration is read aloud: no maths, markup or line structure. */
+  function spoken(text, what) {
+    const s = oneLine(text);
+    if (!s) throw new Error(`${what} needs a narration.`);
+    if (/[$\\`*_#|<>]/.test(s)) throw new Error(`${what} narration must be plain spoken prose: ${s}`);
+    return s;
+  }
+  const div = (name, text) => [`::: ${name}`, text, ":::"];
+
+  function frame(f, where) {
+    const title = oneLine(f.title), what = `Frame "${title}" in ${where}`;
+    if (!title) throw new Error(`A frame in ${where} needs a title.`);
+    const out = [`## ${title}`, ""];
+    if (f.body) out.push(block(f.body, what), "");
+    if (f.plot) {
+      const p = f.plot, lines = [`x: ${p.x[0]}, ${p.x[1]}`];
+      if (p.xlabel) lines.push(`xlabel: ${oneLine(p.xlabel)}`);
+      if (p.ylabel) lines.push(`ylabel: ${oneLine(p.ylabel)}`);
+      for (const c of p.curves) lines.push(`y = ${oneLine(c)}`);
+      out.push(...div("plot", lines.join("\n")), "");
+    }
+    if (f.key) out.push(...div("key", block(f.key, what)), "");
+    if (f.notes) out.push(...div("notes", block(f.notes, what)), "");
+    out.push(...div("narration", spoken(f.narration, what)), "");
+    return out;
+  }
+
+  function deck(report) {
+    const meta = report.meta || {};
+    if (!oneLine(meta.title)) throw new Error("The report needs a title.");
+    const checks = report.checks || [];
+    if (!checks.length || !checks.at(-1).key) throw new Error("The last checks frame must carry a ::: key.");
+    const out = ["---"];
+    for (const k of ["title", "subtitle", "author", "date", "voice"]) if (oneLine(meta[k])) out.push(`${k}: ${oneLine(meta[k])}`);
+    out.push("---", "");
+    if (report.notes) out.push(...div("notes", block(report.notes, "The title slide")), "");
+    out.push(...div("narration", spoken(report.narration, "The title slide")), "");
+    SECTIONS.forEach(([id, title], i) => {
+      const frames = report[id] || [];
+      if (!frames.length) throw new Error(`The ${title} section needs at least one frame.`);
+      out.push(`# ${title}`, "", ...div("narration", `Part ${i + 1}. ${title}.`), "");
+      for (const f of frames) out.push(...frame(f, title));
+    });
+    return out.join("\n");
+  }
+
+  return { SECTIONS, deck };
+});
+</script>
 <script>"use strict";
 /* Convexity Action Engine. Layers kept separate:
    DATA (D.actions: judged facts) -> CONTEXT (C) -> MODEL (inst/ev/classes) -> LENSES -> UI.
@@ -645,8 +737,7 @@ function showPanels(anchor,panels){const box=anchor.closest(".spec,.sheetwrap")|
 function showExplain(k,S,anchor){showPanels(anchor,S.slice(0,4).map(o=>explain(k==="cls"?"cls":k==="prov"?"ev":k,o)))}
 
 /* ---------- PAGES ---------- */
-function quickBlock(o,S){const e=ev(o),al=S||defaultSet(o),others=al.filter(x=>x!==o&&x.b.cat!=="inaction"),bestAlt=others.slice().sort((a,b)=>ev(b).V-ev(a).V)[0],topDim=BEN.slice().sort((a,b)=>o.f[b]*C.W[b]-o.f[a]*C.W[a])[0],clsTop=CLS.slice(0,6).filter(k=>e.cls[k]>=2.2).sort((a,b)=>e.cls[b]-e.cls[a]).slice(0,3);
- const dl=el("dl",{class:"quick"},[["Suitability now",fitL(e)+(e.fits?"":" · needs "+minDose(o.f)+" min")],["Class",clsTop.length?clsTop.map(k=>CLSL[k]).join(" / "):"none strong"],["Main upside",BENL[topDim]+" ("+lv(o.f[topDim]).toLowerCase()+")"+(o.f.tail>=2.5?" · right tail "+lv(o.f.tail).toLowerCase():"")],["Main downside",o.f.dn>=1?lvc(o.f.dn)+" ordinary downside":mins(o.f)>60?"~"+fmtMin(mins(o.f))+" of your time":"little"],["Tail risk",e.r.tier==="clear"?"none recorded":e.r.tier==="noted"?"noted: "+o.f.ruin.kind+" ("+o.f.ruin.p+")":o.f.ruin.kind+" · "+o.f.ruin.p],["Evidence",(()=>{const x=observed(o),c=cites(o).filter(c=>c.rel==="direct");return[x?"observed: "+pct1(x.rate)+" do it daily"+(x.rel==="action"?"":" (group)"):"judgement only",c.length?" · tested: "+c.map(c=>c.citation.split(",")[0]).join(", "):""]})()],["Best alternative",bestAlt?aBtn(bestAlt):"—"],["Main trade-off",bestAlt?tradeoff(o,bestAlt):"—"]].map(([k,v])=>el("div",null,el("dt",null,k),el("dd",null,v))));return dl}
+function quickBlock(o,S){return el("dl",{class:"quick"},quickRows(o,S).map(([k,v])=>el("div",null,el("dt",null,k),el("dd",null,typeof v==="string"?v:aBtn(v)))))}
 function tradeoff(a,b){const d=k=>(a.f[k]||0)-(b.f[k]||0),gain=BEN.concat(["tail","lt"]).filter(k=>d(k)>=1).sort((x,y)=>d(y)-d(x))[0],lose=BEN.concat(["tail","lt"]).filter(k=>d(k)<=-1).sort((x,y)=>d(x)-d(y))[0],cost2=mins(a.f)-mins(b.f);const L=k=>k==="tail"?"right tail":k==="lt"?"long-term value":BENL[k].toLowerCase();return(gain?"more "+L(gain):"similar benefit")+" ↔ "+(lose?"less "+L(lose):cost2>10?"+"+Math.round(cost2)+" min":a.f.act>b.f.act?"higher activation":"little difference")}
 function ruinBox(o){const e=ev(o),r=o.f.ruin;if(e.r.tier==="clear")return el("p",null,el("span",{class:"badge clear"},"RUIN SCREEN: CLEAR")," ",el("span",{class:"note"},"no extreme downside recorded (judgement; absence is not proof)"));
  if(e.r.tier==="noted")return el("p",null,el("span",{class:"badge noted"},"RUIN SCREEN: CLEAR · TAIL NOTED")," ",el("span",{class:"note"},r.kind+" · probability "+r.p+" · severe if it happens · "+(r.rep?"repeated exposure":"one-off")+(e.r.ctx.length?" · "+e.r.ctx.join("; "):"")));
@@ -728,6 +819,47 @@ function dataPage(){const box=el("div"),nC=ORD.length,nA=AVOIDS.length;box.appen
  el("h3",null,"CATEGORY PRIORS (JUDGEMENT)"),el("div",{class:"tablewrap"},el("table",{class:"sheet"},el("thead",null,el("tr",null,el("th",null,"Category"),el("th",null,"n"),KEYS.map(k=>el("th",{title:(FI[k]||[k])[0]},k)))),el("tbody",null,Object.entries(D.categories).map(([k,c])=>el("tr",null,el("th",{scope:"row"},el("button",{type:"button",class:"rowbtn",title:"Search this category",onclick:()=>openPalWith(c.label)},c.label)),el("td",null,A.filter(a=>a.cat===k).length),KEYS.map(kk=>el("td",null,c.prior[kk]==null?"?":String(c.prior[kk])))))))),
  el("h3",null,"PROVENANCE LEGEND"),el("p",null,["OBSERVED","EMPIRICAL","INFERRED","MODEL","JUDGEMENT","PERSONAL","SINGAPORE"].map(t=>[pv(t)," "]),el("span",{class:"note"},"OBSERVED: recomputed ATUS microdata. EMPIRICAL: published tables and experiments. INFERRED is defined but unused.")));return box}
 
+/* ---------- BEAMDSWITCH REPORT ----------
+   The page as shown, as a report for the standard beamdswitch template (beamdswitch.js,
+   Beamdswitch.deck): an action or comparison page reports its options, NOW and the other pages
+   report the class leaders. Every value is the page's own word or number for the current context. */
+const mdT=s=>String(s??"").replace(/\s+/g," ").trim().replace(/[\\$*_`|<>[\]]/g,"\\$&");
+const sayT=s=>String(s??"").replace(/~\s?/g,"about ").replace(/(\d)\s?%/g,"$1 percent").replace(/&/g," and ").replace(/\b1 ?min\b/g,"1 minute").replace(/\b1 ?h\b/g,"1 hour").replace(/(\d) ?min\b/g,"$1 minutes").replace(/(\d) ?h\b/g,"$1 hours").replace(/[–↔→]/g," to ").replace(/[▲⚠×·]/g," ").replace(/[“”"]/g,"").replace(/[$\\`*_#|<>[\]]/g," ").replace(/\s+/g," ").trim();
+const listT=xs=>xs.length<2?xs.join(""):xs.slice(0,-1).join(", ")+" and "+xs[xs.length-1];
+const rowT=cells=>"| "+cells.map(c=>mdT(c)).join(" | ")+" |";
+/* The "At a glance" rows of an action page, as text; quickBlock draws the same rows. */
+function quickRows(o,S){const e=ev(o),al=S||defaultSet(o),others=al.filter(x=>x!==o&&x.b.cat!=="inaction"),bestAlt=others.slice().sort((a,b)=>ev(b).V-ev(a).V)[0],topDim=BEN.slice().sort((a,b)=>o.f[b]*C.W[b]-o.f[a]*C.W[a])[0],clsTop=CLS.slice(0,6).filter(k=>e.cls[k]>=2.2).sort((a,b)=>e.cls[b]-e.cls[a]).slice(0,3);
+ const x=observed(o),c=cites(o).filter(c=>c.rel==="direct");
+ return[["Suitability now",fitL(e)+(e.fits?"":" · needs "+minDose(o.f)+" min")],["Class",clsTop.length?clsTop.map(k=>CLSL[k]).join(" / "):"none strong"],["Main upside",BENL[topDim]+" ("+lv(o.f[topDim]).toLowerCase()+")"+(o.f.tail>=2.5?" · right tail "+lv(o.f.tail).toLowerCase():"")],["Main downside",o.f.dn>=1?lvc(o.f.dn)+" ordinary downside":mins(o.f)>60?"~"+fmtMin(mins(o.f))+" of your time":"little"],["Tail risk",e.r.tier==="clear"?"none recorded":e.r.tier==="noted"?"noted: "+o.f.ruin.kind+" ("+o.f.ruin.p+")":o.f.ruin.kind+" · "+o.f.ruin.p],["Evidence",(x?"observed: "+pct1(x.rate)+" do it daily"+(x.rel==="action"?"":" (group)"):"judgement only")+(c.length?" · tested: "+c.map(c=>c.citation.split(",")[0]).join(", "):"")],["Best alternative",bestAlt||"—"],["Main trade-off",bestAlt?tradeoff(o,bestAlt):"—"]]}
+function ctxFrame(){const s=ctxSummary();return{title:"Your context: "+fmtH(C.h)+(C.live?" now":" (chosen)")+", "+(C.T<60?C.T+" min":C.T/60+" h")+" available",body:[...s.split(" · ").map(x=>"- "+mdT(x)),"- Available time: "+(C.T<60?C.T+" min":C.T/60+" h")].join("\n"),notes:"Context is set with the controls under the search bar; every value below is for this context.",narration:"The context is "+sayT(fmtH(C.h))+(C.live?", now,":", a chosen time,")+" in "+(C.sg?"Singapore":"a global setting")+", with "+sayT(C.T<60?C.T+" min":C.T/60+" h")+" available, energy "+pct(C.E)+", downside tolerance "+pct(C.tol)+" and a horizon of "+horL(C.H)+"."}}
+function methodFrame(){const L=LBY[C.lens];return{title:"Ruin first, then payoff shape, judged by "+L.name,body:["- **Screen.** Each action is screened for extreme, irreversible downside first: "+TIER.map(t=>mdT(TIERL[t])).join(" · ")+".","- **Shape.** Then it is compared on reliable upside (harvest), right-tail upside (optionality), timing and opportunity cost against alternatives available now.","- **Lens.** "+mdT(L.name)+": "+mdT(L.d),"- **Labels.** Benefits, tails and timing are author judgement on ordinal 0–4 scales (JUDGEMENT); fit and classes come from the model (MODEL); how common an activity is comes from ATUS microdata (OBSERVED)."].join("\n"),narration:"Each action is screened for extreme, irreversible downside first. Then it is compared on reliable upside, right-tail upside, timing and opportunity cost against the alternatives available now. The decision lens is "+sayT(L.name)+": "+sayT(L.d)+" Benefits, tails and timing are the author's judgement on word scales, not measurements."}}
+function compareReport(o,S,page){const L=LBY[C.lens],top=topOf(S,C.lens),words=lensWords(S,C.lens),e=ev(o),r=o.f.ruin,al=alternatives(o),cf=confidence(S),s=S.length>1&&L.id!=="robust"?sensitivity(S):null,q=quickRows(o,S),role=x=>x===o?(page==="a"?"this":"first option"):((al.find(a=>a.o===x)||{}).cls||"option");
+ const results=[{title:"Ruin screen for "+nameOf(o)+": "+TIERL[e.r.tier],body:e.r.tier==="clear"?"No extreme downside recorded (judgement; absence is not proof).":[rowT(["Kind","Probability","Severity","Irreversibility","Repeated exposure","What triggers it"]),"| --- | --- | --- | --- | --- | --- |",rowT([r.kind,r.p,lv(r.sev),lv(r.irrev),r.rep?"yes":"no",r.trig||"—"]),...(e.r.ctx.length?["","Context: "+mdT(e.r.ctx.join("; "))]:[]),...(o.b.avoid?["","**Why this matters:** "+mdT(o.b.avoid.why)+" **Safer substitute:** "+mdT(nameOf(inst(o.b.avoid.safer)))]:[])].join("\n"),narration:e.r.tier==="clear"?sayT(nameOf(o))+" clears the ruin screen: no extreme downside is recorded, though absence is not proof.":"For "+sayT(nameOf(o))+", the ruin screen reads "+sayT(TIERL[e.r.tier]).toLowerCase()+": "+sayT(r.kind)+", with probability "+sayT(r.p)+", severity "+lv(r.sev).toLowerCase()+"."+(o.b.avoid?" A safer substitute is "+sayT(nameOf(inst(o.b.avoid.safer)))+".":"")},
+ {title:"At a glance: "+nameOf(o),body:q.map(([k,v])=>"- **"+k+":** "+mdT(typeof v==="string"?v:nameOf(v))).join("\n"),narration:"At a glance, "+sayT(nameOf(o))+" is "+sayT(fitL(e)).toLowerCase()+" now. Its main upside is "+sayT(q[2][1]).toLowerCase()+", and its main downside is "+sayT(q[3][1]).toLowerCase()+"."+(typeof q[6][1]!=="string"?" The best alternative is "+sayT(nameOf(q[6][1]))+".":"")},
+ {title:"Under "+L.name+": "+nameOf(top)+" comes top of "+S.length+" options",body:[rowT(["Option","Role",L.name,"Time fit","Total time","Reliable upside","Right tail","Ordinary downside","Ruin screen"]),"| --- | --- | --- | --- | ---: | --- | --- | --- | --- |",...S.map((x,i)=>rowT([nameOf(x),role(x),words[i],fitL(ev(x))+(ev(x).fits?"":" · too long"),fmtMin(mins(x.f)),lv(ev(x).up),lv(x.f.tail),lvc(x.f.dn),TIERL[ev(x).r.tier]]))].join("\n"),notes:"No total score is shown: the rows are the trade-off. The lens words compare these options with each other, not with every action.",narration:"Under "+sayT(L.name)+", "+sayT(nameOf(top))+" comes top of the "+S.length+" options. "+listT(S.filter(x=>x!==top).slice(0,3).map(x=>sayT(nameOf(x))+" is "+words[S.indexOf(x)].toLowerCase()))+"."}];
+ const checks=[{title:"Confidence: "+cf.overall.split(":")[0],body:[rowT(["Input","Confidence"]),"| --- | --- |",...cf.parts.map(p=>rowT(p)),rowT(["Overall comparison",cf.overall])].join("\n"),narration:"Confidence is low or mixed: every input is judgement, so no conclusion here is high-confidence. How common each activity is comes from observed survey data where it is linked."}];
+ if(s&&s.top)checks.push({title:"Robustness: "+nameOf(s.top)+" holds in ~"+Math.round(s.robust*20)*5+"% of perturbed contexts",body:[("- Current choice ("+mdT(L.name)+"): "+mdT(nameOf(s.top))+"."),("- Robustness: "+(s.robust>=.8?"high":s.robust>=.5?"moderate":"fragile")+" · holds in ~"+Math.round(s.robust*20)*5+"% of perturbed contexts (MODEL)."),...(s.rows.length?s.rows.map(([x,rs2])=>"- "+mdT(nameOf(x))+" becomes preferable if "+mdT(rs2.map(r=>r.l+(r.dir<0?" < ~":" > ~")+r.v).join(" · or "))+"."):["- No single control flips the choice within its range."])].join("\n"),notes:"Thresholds come from sweeping one control at a time through the model. The inputs are judgements, so read them as direction and rough size, not precision.",narration:"The top choice holds in about "+Math.round(s.robust*20)*5+" percent of perturbed contexts, which is "+(s.robust>=.8?"high":s.robust>=.5?"moderate":"fragile")+". "+(s.rows.length?listT(s.rows.slice(0,2).map(([x])=>sayT(nameOf(x))))+" could take over if a control moves.":"No single control flips the choice within its range.")});
+ checks.push({title:"Takeaway",key:"Under "+mdT(L.name)+", **"+mdT(nameOf(top))+"** comes top of "+S.length+" options. "+mdT(nameOf(o))+": "+mdT(TIERL[e.r.tier])+". Every input is judgement: read this as a structured opinion, not a measurement.",narration:"Under "+sayT(L.name)+", "+sayT(nameOf(top))+" comes top. Every input is judgement, so read this as a structured opinion, not a measurement."});
+ return{meta:{title:"Convexity Action Engine: "+(page==="a"?nameOf(o):"compare "+S.length+" options"),subtitle:S.length+" options judged by "+L.name+", screened for ruin first",date:(C.sg?"Singapore":"Global prior")+" · "+fmtH(C.h)},
+ narration:"This talk weighs "+(page==="a"?sayT(nameOf(o))+" against "+(S.length-1)+" alternatives":S.length+" options")+" in your current context, screened for ruin first. Every judged value is a word on a scale, labelled as judgement.",notes:"Benefits, tails and timing are author judgement on ordinal 0–4 scales, labelled JUDGEMENT on the page.",
+ setup:[ctxFrame(),{title:"The options: "+(page==="a"?nameOf(o)+" and "+(S.length-1)+" alternatives":S.length+" options"),body:[rowT(["Option","Role","Why it is here"]),"| --- | --- | --- |",...S.map(x=>rowT([nameOf(x),role(x),x===o?(page==="a"?"the action you opened":"first in the comparison"):((al.find(a=>a.o===x)||{}).why||"added to the comparison")]))].join("\n"),narration:(page==="a"?"The alternatives are generated by opportunity cost: ":"The options are ")+listT(S.filter(x=>x!==o).map(x=>sayT(nameOf(x))))+"."}],
+ method:[methodFrame()],results,checks}}
+function nowReport(){const P=nowPicks(),AV=avoidNow(),L=LBY[C.lens],ks=CLS.slice(0,6).filter(k=>P[k][0]),leaders=ks.map(k=>P[k][0]).filter((v,i,a)=>a.indexOf(v)===i),top=AV[0],cf=confidence(leaders.length?leaders:[inst("do-nothing")]);
+ const results=[{title:"What could I do now? "+(ks.length?"Best "+CLSL[ks[0]].toLowerCase()+": "+nameOf(P[ks[0]][0]):"nothing fits"),body:[rowT(["Class","Best now","Fit","Time","Also"]),"| --- | --- | --- | ---: | --- |",...CLS.slice(0,6).map(k=>{const[a,...rest]=P[k];return rowT([CLSL[k],a?nameOf(a):"—",a?fitL(ev(a)):"—",a?fmtMin(mins(a.f)):"—",rest.map(nameOf).join(", ")||"—"])})].join("\n"),notes:"One strong candidate per payoff class, not a single ranking. Each already passed the ruin screen, fits the available time and is open now.",narration:"One strong candidate per payoff class, each already through the ruin screen and open now: "+listT(ks.map(k=>"for "+CLSL[k].toLowerCase()+", "+sayT(nameOf(P[k][0]))))+"."}];
+ if(top)results.push({title:"Avoid: "+nameOf(top)+", "+top.f.ruin.kind,body:["- **Why this matters:** "+mdT(top.b.avoid.why),"- **What triggers it:** "+mdT(top.f.ruin.trig),"- **Probability:** "+mdT(top.f.ruin.p)+"; severity "+lv(top.f.ruin.sev).toLowerCase()+", irreversibility "+lv(top.f.ruin.irrev).toLowerCase()+(top.f.ruin.rep?"; repeated exposure":""),"- **Safer substitute:** "+mdT(nameOf(inst(top.b.avoid.safer))),"- **Also avoid:** "+AV.slice(1,3).map(x=>mdT(nameOf(x))).join(", ")].join("\n"),narration:"The action most worth avoiding now is "+sayT(nameOf(top))+": "+sayT(top.f.ruin.kind)+", with probability "+sayT(top.f.ruin.p)+". A safer substitute is "+sayT(nameOf(inst(top.b.avoid.safer)))+"."});
+ return{meta:{title:"Convexity Action Engine: what could I do now?",subtitle:"One candidate per payoff class at "+fmtH(C.h)+", screened for ruin first",date:(C.sg?"Singapore":"Global prior")+" · "+fmtH(C.h)},
+ narration:"This talk lists what fits now, one candidate per payoff class, screened for ruin first, and the action most worth avoiding. Every judged value is a word on a scale, labelled as judgement.",notes:"Benefits, tails and timing are author judgement on ordinal 0–4 scales, labelled JUDGEMENT on the page.",
+ setup:[ctxFrame()],method:[methodFrame()],results,
+ checks:[{title:"Confidence: "+cf.overall.split(":")[0],body:[rowT(["Input","Confidence"]),"| --- | --- |",...cf.parts.map(p=>rowT(p))].join("\n"),narration:"Confidence is low or mixed: every input is judgement, so no conclusion here is high-confidence."},
+  {title:"Takeaway",key:(ks.length?"Now: "+ks.map(k=>CLSL[k].toLowerCase()+", **"+mdT(nameOf(P[k][0]))+"**").join("; ")+". ":"")+(top?"Avoid "+mdT(nameOf(top))+"; safer: "+mdT(nameOf(inst(top.b.avoid.safer)))+". ":"")+"Every input is judgement: read this as a structured opinion, not a measurement.",narration:(ks.length?"Right now, "+sayT(nameOf(P[ks[0]][0]))+" is the strongest "+CLSL[ks[0]].toLowerCase()+" pick. ":"")+(top?"Avoid "+sayT(nameOf(top))+". ":"")+"Every input is judgement, so read this as a structured opinion."}]}}
+/* r is a route ({name, id, actions}); the page passes route(). */
+function deckReport(r){if(r.name==="a"&&inst(r.id)){const o=inst(r.id);return compareReport(o,defaultSet(o),"a")}
+ if(r.name==="compare"){const S=(r.actions&&r.actions.length?r.actions:CMP).map(inst).filter(Boolean);if(S.length)return compareReport(S[0],S,"compare")}
+ return nowReport()}
+async function saveDeck(copyOnly){const st=$("#deck-status"),text=Beamdswitch.deck(deckReport(route())),name="convexity-action-engine-beamdswitch.md";
+ if(!copyOnly)try{const u=URL.createObjectURL(new Blob([text],{type:"text/markdown"})),a=el("a",{href:u,download:name});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);st.textContent="Saved "+name+": open it in beamdswitch.";return}catch(e){}
+ try{await navigator.clipboard.writeText(text);st.textContent=copyOnly?"Copied the beamdswitch deck: paste it into beamdswitch.":"Copied the beamdswitch deck, as saving is blocked here: paste it into beamdswitch."}catch(e){st.textContent=copyOnly?"Could not copy the beamdswitch deck here: use the beamdswitch button to save it.":"Could not save or copy the beamdswitch deck here."}}
+
 /* ---------- RENDER ---------- */
 /* Re-rendering replaces nodes; put focus back on the control that had it (matched by id). */
 function keepFocus(fn){const a=document.activeElement,id=a&&a!==document.body?a.id:"";fn();if(id&&(!document.activeElement||document.activeElement===document.body)){const f=document.getElementById(id);if(f)f.focus({preventScroll:true})}}
@@ -770,7 +902,7 @@ $("#q").addEventListener("keydown",e=>{if(e.key==="ArrowDown"){e.preventDefault(
 $("#pal").addEventListener("click",e=>{if(e.target.id==="pal")closePal()});$("#palclose").addEventListener("click",closePal);$("#open-search").addEventListener("click",()=>openPal("open"));
 $("#pal").addEventListener("keydown",e=>{if(e.key!=="Tab")return;const f=[...$(".palbox").querySelectorAll("input,button,select,a[href]")].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],b=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();b.focus()}else if(!e.shiftKey&&document.activeElement===b){e.preventDefault();a.focus()}});
 $("#hero-search").addEventListener("click",()=>openPal("open"));document.querySelectorAll("[data-q]").forEach(b=>b.addEventListener("click",()=>openPalWith(b.dataset.q)));
-$("#how").addEventListener("click",()=>jump("method"));$("#skip").addEventListener("click",()=>{const h=$("#app h2")||$("#app");h.tabIndex=-1;h.focus()});
+$("#how").addEventListener("click",()=>jump("method"));$("#save-beamdswitch").addEventListener("click",()=>saveDeck(false));$("#copy-beamdswitch").addEventListener("click",()=>saveDeck(true));$("#skip").addEventListener("click",()=>{const h=$("#app h2")||$("#app");h.tabIndex=-1;h.focus()});
 if(/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent))$("#kbd").textContent="⌘ K";
 document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&!e.altKey&&!e.shiftKey&&e.key.toLowerCase()==="k"){e.preventDefault();$("#pal").hidden?openPal("open"):closePal();return}
  if(!$("#pal").hidden)return;const t=e.target;if(e.metaKey||e.ctrlKey||e.altKey||/INPUT|SELECT|TEXTAREA/.test(t.tagName)||t.isContentEditable)return;const r=route(),k=e.key.toLowerCase();

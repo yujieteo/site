@@ -44,11 +44,20 @@ citations, not assets. Design tokens come from `static/css/style.css`.
   and reversal conditions. They are not announced promotions or purchase-date
   recommendations.
 
+## beamdswitch deck
+
+The beamdswitch button saves the records shown, with the current filters, as
+a narrated Markdown deck for [beamdswitch](https://teoyujie.org/visuals/beamdswitch/);
+Copy deck puts it on the clipboard. `SubsidyAtlas.report` in `engine.js` builds
+the report from the dataset's own claims and citations, and `beamdswitch.js`
+is the site's standard template (`templates/beamdswitch.js`, unchanged), which
+`build.py` inlines.
+
 ## Verify
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -p 'test_subsidy_atlas.py'
-node --test tests/subsidy-atlas.test.cjs
+node --test tests/subsidy-atlas.test.cjs tests/subsidy-atlas-beamdswitch.test.mjs
 ```
 
 Python tests validate the serialized dataset, source references, fixed
