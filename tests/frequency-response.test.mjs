@@ -697,6 +697,42 @@ test("high-gain MIMO loops close the det(I + L) contour where it has settled and
   }
 });
 
+test("a continuous delay keeps the det(I + L) contour running until it settles, and a delayed feedthrough path gives no count", () => {
+  // (s + 2)/(s + 1) with a 0.01 s input delay and controller 1/(s + 1), K = 1e6: only the plant has feedthrough, so det(I + L) → 1.
+  // Stopping at 100/τ = 1e4 rad/s used to report Z = 32. |L| ≈ K/ω stays above 1 up to 1e6 rad/s while the delay turns it once per
+  // 2π/τ, so each half of the contour encircles the origin 1592 times (checked against a dense sweep): Z = 3184, the same as the single loop.
+  const plant = { form: "ss", A: [[-1]], B: [[1]], C: [[1]], D: [[1]] };
+  const r = F.analyze(mimo({ plant, controller: { form: "ss", A: [[-1]], B: [[1]], C: [[1]], D: [[0]] }, delays: [0.01] }, { K: 1e6 }));
+  assert.equal(r.ok, true, JSON.stringify(r.errors));
+  assert.equal(r.closedLoop.available, false);
+  assert.ok(r.nyquist.wHigh >= 1e7, `contour ends at ${r.nyquist.wHigh} rad/s`);
+  assert.equal(r.nyquist.unresolved, false);
+  assert.equal(r.nyquist.Z, 3184);
+  assert.equal(F.analyze({ plant: { form: "tf", num: [1, 2], den: [1, 2, 1] }, K: 1e6, delay: 0.01 }).nyquist.Z, 3184, "single-loop count of the same loop");
+  // A gain controller passes the delayed plant feedthrough straight round the loop: det(I + L) never settles.
+  const fed = F.analyze(mimo({ plant, controller: { form: "gain", K: [[1]] }, delays: [0.01] }, { K: 0.5 }));
+  assert.equal(fed.ok, true);
+  assert.equal(fed.nyquist.available, false);
+  assert.match(fed.nyquist.message, /delayed feedthrough/);
+  assert.ok(fed.warnings.some((w) => w.code === "nyquist-unavailable"));
+  // The same loop without the delay settles at det(I + D_G·D_C) = 1.5 and agrees with its eigenvalues.
+  const free = F.analyze(mimo({ plant, controller: { form: "gain", K: [[1]] }, delays: [0] }, { K: 0.5 }));
+  assert.equal(free.nyquist.crossCheck.agree, true);
+});
+
+test("MIMO peaks and crossings are refined between grid points, so the grid density does not change them", () => {
+  const coarse = { range: { auto: false, wMin: 0.1, wMax: 1000, pointsPerDecade: 10 } }, fine = { range: { auto: false, wMin: 0.1, wMax: 1000, pointsPerDecade: 60 } };
+  for (const breakAt of ["output", "input"]) {
+    const a = F.analyze(mimo({ ...F.MIMO_PRESETS["distillation-lv"].make(), breakAt }, coarse)).margins.chosen;
+    const b = F.analyze(mimo({ ...F.MIMO_PRESETS["distillation-lv"].make(), breakAt }, fine)).margins.chosen;
+    close(a.sensitivity.maxSigmaS.value, b.sensitivity.maxSigmaS.value, 1e-6, `max σ(S) at the ${breakAt}`);
+    close(a.sensitivity.maxSigmaT.value, b.sensitivity.maxSigmaT.value, 1e-6, `max σ(T) at the ${breakAt}`);
+    close(a.eigenLocus.pm.deg, b.eigenLocus.pm.deg, 1e-6, `eigenvalue-locus PM at the ${breakAt}`);
+    a.loopAtATime.forEach((c, i) => c.pm && close(c.pm.deg, b.loopAtATime[i].pm.deg, 1e-6, `loop-at-a-time PM ${i + 1}`));
+  }
+  assert.equal(F.analyze(mimo({ ...sat() }, { range: { auto: true, wMin: 0.01, wMax: 100, pointsPerDecade: 2000 } })).grid.pointsPerDecade, 60);
+});
+
 test("transfer-matrix plants of any size default to zero delays shaped for the plant", () => {
   const e = (a) => ({ num: [1], den: [1, a] });
   for (const entries of [[[e(1)]], [[e(1), e(2), e(3)]], [[e(1)], [e(2)], [e(3)]]]) {

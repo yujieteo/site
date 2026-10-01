@@ -378,10 +378,10 @@ const CONVENTIONS = [
   "Discrete phase crossovers include ω = 0 when L(1) is finite, real and negative, and ω = π/Ts when L(−1) is finite, real and negative (z = −1 makes L real, so a crossover can sit exactly at the Nyquist frequency). The ω = ∞ crossover applies only in continuous time.",
   "Discretisation is done in state space: each continuous block is realised in controllable canonical form (it must be proper), then Ad, Bd, Cd, Dd come from zero-order hold (exact, via the matrix exponential of [[A, B], [0, 0]]·Ts by scaling and squaring with a degree-6 Padé approximant), Tustin (s = c·(z − 1)/(z + 1) with c = 2/Ts, or c = ωp/tan(ωp·Ts/2) with prewarp frequency ωp), forward Euler (s = (z − 1)/Ts) or backward Euler (s = (z − 1)/(z·Ts)). The z-domain transfer function is det-based: den = det(zI − Ad), num = Dd·den + det(zI − Ad + Bd·Cd) − den, with characteristic polynomials from a Hessenberg reduction; leading numerator coefficients below 1e-12 of the largest are treated as round-off and dropped. The discrete poles and zeros come from the exact root maps rather than by re-rooting: Tustin z = (c + p)/(c − p) plus n − m zeros at exactly z = −1, forward Euler z = 1 + p·Ts, backward Euler z = 1/(1 − p·Ts) plus n − m zeros at exactly z = 0, and ZOH poles z = e^(p·Ts) with the zeros from the discretised numerator; num and den stay the state-space result.",
   "When every block is discretised from s, the continuous response L(jω) (with delay d·Ts) is overlaid on the discrete one to show warping and aliasing. Straight-line asymptotes are drawn in continuous time only.",
-  "Nyquist: the count Z = N + P uses the argument principle on 1 + L round the whole contour (the lower half is the conjugate mirror of the upper half). Continuous time: up the jω axis from −j∞ to +j∞, closed clockwise through the right half-plane (by an arc for an improper loop, otherwise at |L| → 0), indented to the right round jω-axis poles. Discrete time: anticlockwise round the unit circle, indented outwards round unit-circle poles. Boundary poles therefore count as stable. N is the net number of clockwise encirclements of −1, P the open-loop poles strictly in the unstable region (of the delay-free part), Z the unstable closed-loop poles; a non-causal L(z) adds its degree excess. The contour is refined adaptively wherever arg(1 + L) turns by more than 45° or the locus jumps further than its distance to −1 (capped at 120 000 evaluations); a leftover turn above 90° or a non-integer winding marks the count unresolved. Where the closed-loop poles are available the two verdicts are compared and any disagreement is flagged first among the warnings.",
+  "Nyquist: the count Z = N + P uses the argument principle on 1 + L round the whole contour (the lower half is the conjugate mirror of the upper half). Continuous time: up the jω axis from −j∞ to +j∞, closed clockwise through the right half-plane (by an arc for an improper loop, otherwise at |L| → 0), indented to the right round jω-axis poles. Discrete time: anticlockwise round the unit circle, indented outwards round unit-circle poles. Boundary poles therefore count as stable. N is the net number of clockwise encirclements of −1, P the open-loop poles strictly in the unstable region (of the delay-free part), Z the unstable closed-loop poles; a non-causal L(z) adds its degree excess. The contour is refined adaptively wherever arg(1 + L) turns by more than 45°, a delay turns L by more than 45° while |L| > 0.5, or the locus jumps further than its distance to −1 (capped at 120 000 evaluations); a leftover turn above 90° or a non-integer winding marks the count unresolved. Where the closed-loop poles are available the two verdicts are compared and any disagreement is flagged first among the warnings.",
   "Nichols: open-loop phase (degrees, unwrapped) against magnitude (dB), with the critical point (−180° + k·360°, 0 dB) repeated every 360°. Constant-|T| = M contours solve (M² − 1)|L|² + 2M²·cos φ·|L| + M² = 0 for its positive roots (two branches when M > 1); constant-∠T = ψ contours are |L| = sin(φ − ψ)/sin ψ where that is positive and on the right branch; the Ms boundary is |1 + L| = 1/Ms, i.e. |L| = −cos φ ± √(cos²φ − 1 + 1/Ms²).",
   "MIMO: plant G (p × m) and controller C (m × p) are state space, a static gain (controller only), or a transfer matrix realised by stacking one controllable-canonical block per non-zero entry; that realisation is not minimal and can hide modes. The loop broken at the plant output is L_o = G·Δ·C (p × p) and at the plant input L_i = Δ·C·G (m × m), with delays e^(−sτ) applied to G per plant input (G·Δ), per plant output (Δ·G) or per entry (G_ij·e^(−sτ_ij)); in discrete time they are whole samples held as shift-register states (per output through the transposed realisation, per entry by stacking one delayed copy of the plant per output row, which is not minimal). G(s) = C(sI − A)⁻¹B + D is evaluated through a Hessenberg form of A by complex elimination at each frequency. Closed-loop poles are the eigenvalues of A_cl (complex Hessenberg reduction and shifted QR). The generalised Nyquist count uses the winding of det(I + L) about 0 on the same contour, refinement and indentation as the single-loop count, P being the unstable eigenvalues of the open-loop state matrix; it never depends on eigenvalue matching.",
-  "MIMO margins, at both breaking points (the chosen one drives the checks): eigenvalue loci λᵢ(L), matched between neighbouring frequencies only for colouring, give the eigenvalue-locus phase margin at |λ| = 1 and the uniform scalar-gain margins (all loops scaled together) at negative-real-axis crossings, which can be optimistic for non-normal L (crossings exactly at ω = 0 or π/Ts are not read). The return difference α = min σ_min(I + L) (one-sided Jacobi SVD, golden-section refined) is a genuine but conservative bound: simultaneous gain margins from 1/(1 + α) to 1/(1 − α) and phase margins of ±2·asin(α/2). max σ_max(S) = 1/α and max σ_max(T) are reported, and loop-at-a-time margins are the classical margins of each diagonal channel with the other loops open, which ignore cross-coupling. Disk margins and structured singular value (μ) analysis are out of scope.",
+  "MIMO margins, at both breaking points (the chosen one drives the checks): eigenvalue loci λᵢ(L), matched between neighbouring frequencies only for colouring, give the eigenvalue-locus phase margin at |λ| = 1 and the uniform scalar-gain margins (all loops scaled together) at negative-real-axis crossings, which can be optimistic for non-normal L (crossings exactly at ω = 0 or π/Ts are not read). The return difference α = min σ_min(I + L) (one-sided Jacobi SVD, golden-section refined) is a genuine but conservative bound: simultaneous gain margins from 1/(1 + α) to 1/(1 − α) and phase margins of ±2·asin(α/2). max σ_max(S) = 1/α and max σ_max(T) (golden-section refined) are reported, and loop-at-a-time margins are the classical margins of each diagonal channel with the other loops open, which ignore cross-coupling. The MIMO grid uses at most 60 points per decade; every crossing and peak is refined between grid points (Brent and golden-section search), so the reported margins do not depend on the grid density. Disk margins and structured singular value (μ) analysis are out of scope.",
 ];
 const ASSUMPTIONS = [
   "Unity negative feedback and LTI systems, in continuous or discrete time chosen globally (no mixed sampled-data loops); SISO, or MIMO with up to 6 inputs and 6 outputs and about 50 states.",
@@ -1189,8 +1189,10 @@ function nyquistPath(loop) {
   const pts = [];
   let evals = 0, unresolved = false;
   const at = (seg, t) => { evals++; const e = evalPoint(loop, seg.s(t)); return { t, w: seg.w(t), kind: seg.kind, ...e }; };
+  // A delay turns L by (ω_b − ω_a)·τ between samples; wherever |L| can reach 1 that turn must be resolved, or whole circles alias away.
+  const aliased = (a, b) => loop.tau > 0 && Math.abs(b.w - a.w) * loop.tau > Math.PI / 4 && Math.max(a.logm, b.logm) > Math.log(0.5);
   const bad = (a, b) => {
-    if (Math.abs(wrapPi(b.argF - a.argF)) > Math.PI / 4) return true;
+    if (aliased(a, b) || Math.abs(wrapPi(b.argF - a.argF)) > Math.PI / 4) return true;
     if (a.logm > 35 || b.logm > 35) return false;
     return cabs(csub(b.L, a.L)) > 0.5 * Math.min(a.dist, b.dist);
   };
@@ -1206,7 +1208,7 @@ function nyquistPath(loop) {
           const m = at(seg, (a.t + b.t) / 2);
           stack.push([m, b, depth + 1], [a, m, depth + 1]);
         } else {
-          if (Math.abs(wrapPi(b.argF - a.argF)) > Math.PI / 2) unresolved = true;
+          if (Math.abs(wrapPi(b.argF - a.argF)) > Math.PI / 2 || aliased(a, b)) unresolved = true;
           out.push(b);
         }
       }
@@ -2220,7 +2222,7 @@ function hessSolve(H, s, B) {
 }
 
 /* ---------- MIMO: systems, loop, analysis ---------- */
-const MIMO_MAX_CHANNELS = 6, MIMO_MAX_STATES = 50;
+const MIMO_MAX_CHANNELS = 6, MIMO_MAX_STATES = 50, MIMO_MAX_PPD = 60;
 const ssEmpty = (p, m, D) => ({ A: [], B: [], C: Array.from({ length: p }, () => []), D, n: 0, p, m });
 const isMatrix = (M, r, c) => Array.isArray(M) && M.length === r && M.every((row) => Array.isArray(row) && row.length === c && row.every(finite));
 const blockDiag = (A1, A2) => {
@@ -2576,6 +2578,12 @@ function mimoMeasures(loop, ws, at, jumps, GCs) {
   };
   let tI = 0;
   Tmax.forEach((v, i) => { if (v > Tmax[tI]) tI = i; });
+  let tPeak = Tmax[tI], wT = ws[tI];
+  if (tI > 0 && tI < ws.length - 1 && Number.isFinite(tPeak)) {
+    const sigmaT = (uu) => { const L = mimoL(loop, mimoPoint(loop, Math.pow(10, uu)), at); return csvd(csolve(transpose(plusI(L)), transpose(L)))[0]; };
+    const g = goldenMax(sigmaT, Math.log10(ws[tI - 1]), Math.log10(ws[tI + 1]));
+    if (g.ok && g.f > tPeak) { tPeak = g.f; wT = Math.pow(10, g.x); }
+  }
   // Loop-at-a-time: classical margins of each diagonal channel with the other loops open.
   const lat = Array.from({ length: nL }, (_, i) => {
     const r = responseMargins((w) => mimoL(loop, mimoPoint(loop, w), at)[i][i], ws, jumps, Ls.map((L) => L[i][i]));
@@ -2586,7 +2594,7 @@ function mimoMeasures(loop, ws, at, jumps, GCs) {
     at, size: nL,
     eigenLocus: { pm: pm && { deg: pm.pmDeg, w: pm.w, locus: pm.locus + 1 }, gmUpper: ups.length ? (({ gmDb, w, locus }) => ({ dB: gmDb, w, locus: locus + 1 }))(ups.reduce((a, c) => (c.gmDb < a.gmDb ? c : a))) : null, gmLower: downs.length ? (({ gmDb, w, locus }) => ({ dB: gmDb, w, locus: locus + 1 }))(downs.reduce((a, c) => (c.gmDb > a.gmDb ? c : a))) : null, crossings: { unitCircle: pms.length, negativeRealAxis: gms.length } },
     returnDifference: rd,
-    sensitivity: { maxSigmaS: { value: 1 / alpha, w: wAlpha }, maxSigmaT: { value: Tmax[tI], w: ws[tI] } },
+    sensitivity: { maxSigmaS: { value: 1 / alpha, w: wAlpha }, maxSigmaT: { value: tPeak, w: wT } },
     loopAtATime: lat,
     conditionMax: cond,
     _curves: { Ls, sv, svI, Tmax, loci },
@@ -2609,7 +2617,7 @@ function analyzeMimo(inputs) {
   let range = x.range.auto ? auto : { wMin: x.range.wMin, wMax: x.range.wMax };
   if (!x.range.auto && (!finite(x.range.wMin) || !finite(x.range.wMax) || x.range.wMin <= 0 || x.range.wMin >= x.range.wMax)) return { schemaVersion: SCHEMA_VERSION, ok: false, system: "mimo", errors: [{ field: "range.wMin", message: "ω_min and ω_max must be positive with ω_min < ω_max." }], warnings };
   if (z && range.wMax > wN) { if (!x.range.auto) warnings.push({ code: "nyquist-clip", message: `ω_max was clipped to the Nyquist frequency π/Ts = ${fmt(wN)} rad/s.` }); range = { wMin: Math.min(range.wMin, wN / 100), wMax: wN }; }
-  const ppd = Number.isInteger(x.range.pointsPerDecade) ? Math.min(x.range.pointsPerDecade, 200) : 100;
+  const ppd = Number.isInteger(x.range.pointsPerDecade) ? Math.min(x.range.pointsPerDecade, MIMO_MAX_PPD) : MIMO_MAX_PPD;
   const ws = makeGrid(pseudo, range.wMin, range.wMax, ppd, warnings);
   // Closed-loop eigenvalues (unavailable with a continuous delay).
   let closedLoop;
@@ -2632,15 +2640,17 @@ function analyzeMimo(inputs) {
   }
   if (!olEig.converged) warnings.push({ code: "nonconvergence", message: "The open-loop eigenvalue iteration did not converge; P may be wrong." });
   // Generalised Nyquist: winding of det(I + L) about 0 (the same counter as SISO, fed with F = det(I + L)).
-  // det(I + L) at infinity: det(I + D_G·D_C), unless a delayed feedthrough keeps it turning.
-  pseudo.hfL = loop.tau && loop.G.D.some((row, i) => row.some((g, j) => g !== 0 && loop.tau[i][j] > 0)) ? null : csub(cdet(plusI(toC(matMul(loop.G.D, loop.C.D)))), cx(1));
+  // det(I + L) at infinity is det(I + D_G·D_C), unless a delayed plant feedthrough reaches a controller feedthrough and keeps it turning.
+  const delayedFeed = !!loop.tau && loop.G.D.some((row, i) => row.some((g, j) => g !== 0 && loop.tau[i][j] > 0 && loop.C.D[j].some((c) => c !== 0)));
+  pseudo.hfL = csub(cdet(plusI(toC(matMul(loop.G.D, loop.C.D)))), cx(1));
   pseudo.evalF = (s) => {
     let F;
     try { F = cdet(plusI(mimoL(loop, s))); } catch (e) { F = cx(Infinity); }
     const Lm1 = csub(F, cx(1)), mag = cabs(Lm1);
     return { L: Lm1, logm: mag > 0 ? Math.log(mag) : -Infinity, argF: carg(F), dist: cabs(F) };
   };
-  const nyquist = nyquistCount(pseudo, closedLoop);
+  const nyquist = delayedFeed ? { available: false, message: "A delayed feedthrough path (D_G·e^(−sτ)·D_C ≠ 0) keeps det(I + L) turning as ω → ∞, so the contour cannot be closed; no generalised Nyquist count is given." } : nyquistCount(pseudo, closedLoop);
+  if (!nyquist.available) warnings.push({ code: "nyquist-unavailable", message: nyquist.message });
   if (nyquist.available) {
     nyquist.convention = nyquist.convention.replace("encirclements of −1 by L", "encirclements of the origin by det(I + L)").replace("L passes through −1", "det(I + L) passes through 0");
     if (nyquist.onContour) warnings.push({ code: "nyquist-boundary", message: "det(I + L) passes through 0 on the contour (a closed-loop pole on the stability boundary), so the encirclement count is not defined there." });
@@ -2943,7 +2953,7 @@ function onMimoEditor(key, e) {
   else if (k === "entries") { const r = parseTfm(t.value); b.entries = r.E; mimoParseError(key, t, r.error); }
   else { const r = parseMatrix(t.value); b[k] = r.M; mimoParseError(key, t, r.error); }
   syncMimoDelays();
-  recompute();
+  recomputeSoon();
 }
 function mimoParseError(key, input, msg) {
   const slot = input.parentElement.querySelector(`[data-err="${input.dataset.mk}"]`);
@@ -2999,7 +3009,7 @@ function wireMimo() {
     state.mimo.delays = r.error ? (entry ? [[NaN]] : [NaN]) : entry ? r.M : r.values;
     $("mimo-delays-err").textContent = r.error || "";
     if (r.error) parseErrors["mimo.delays"] = r.error; else delete parseErrors["mimo.delays"];
-    recompute();
+    recomputeSoon();
   });
   for (const key of ["plant", "controller"]) {
     $(`mimo-ed-${key}`).addEventListener("input", (e) => { if (e.target.tagName !== "SELECT") onMimoEditor(key, e); });
@@ -3069,20 +3079,20 @@ function wireSettings() {
     if (!e.target.checked && result && result.ok) { state.range.wMin = result.grid.wMin; state.range.wMax = result.grid.wMax; }
     state.range.auto = e.target.checked; recompute();
   });
-  const freqIn = (id, k) => $(id).addEventListener("input", (e) => { state.range[k] = e.target.value === "" || (state.displayUnits.freq === "rad/sample" && !(state.Ts > 0)) ? NaN : F.freqFrom(Number(e.target.value), state.displayUnits.freq, state.Ts); recompute(); });
+  const freqIn = (id, k) => $(id).addEventListener("input", (e) => { state.range[k] = e.target.value === "" || (state.displayUnits.freq === "rad/sample" && !(state.Ts > 0)) ? NaN : F.freqFrom(Number(e.target.value), state.displayUnits.freq, state.Ts); recomputeSoon(); });
   $("set-domain").addEventListener("change", (e) => {
     state.timeDomain = e.target.value;
     if (state.timeDomain !== "discrete" && state.displayUnits.freq === "rad/sample") { state.displayUnits.freq = "rad/s"; $("set-freq").value = "rad/s"; }
     syncDomain(); renderEditor("plant"); renderEditor("controller"); if (isMimo()) syncMimo(); recompute();
   });
-  $("set-ts").addEventListener("input", (e) => { state.Ts = e.target.value === "" ? NaN : Number(e.target.value); recompute(); });
+  $("set-ts").addEventListener("input", (e) => { state.Ts = e.target.value === "" ? NaN : Number(e.target.value); recomputeSoon(); });
   for (const key of ["plant", "controller"]) $(`in-disc-${key}`).addEventListener("change", (e) => { state.discretization[key] = e.target.value; renderEditor(key); if (isMimo()) renderMimoEditor(key); recompute(); });
   wireMimo();
-  $("in-prewarp").addEventListener("input", (e) => { state.discretization.prewarp = e.target.value === "" ? NaN : Number(e.target.value); recompute(); });
+  $("in-prewarp").addEventListener("input", (e) => { state.discretization.prewarp = e.target.value === "" ? NaN : Number(e.target.value); recomputeSoon(); });
   $("in-delay-d").addEventListener("input", (e) => { state.delaySamples = e.target.value === "" ? NaN : Number(e.target.value); recompute(); });
   freqIn("set-wmin", "wMin"); freqIn("set-wmax", "wMax");
-  $("set-ppd").addEventListener("input", (e) => { state.range.pointsPerDecade = e.target.value === "" ? NaN : Number(e.target.value); recompute(); });
-  const numIn = (id, set) => $(id).addEventListener("input", (e) => { set(e.target.value === "" ? NaN : Number(e.target.value)); recompute(); });
+  $("set-ppd").addEventListener("input", (e) => { state.range.pointsPerDecade = e.target.value === "" ? NaN : Number(e.target.value); recomputeSoon(); });
+  const numIn = (id, set) => $(id).addEventListener("input", (e) => { set(e.target.value === "" ? NaN : Number(e.target.value)); recomputeSoon(); });
   numIn("in-K", (v) => (state.K = v)); numIn("in-delay", (v) => (state.delay = v));
   numIn("in-gm", (v) => (state.thresholds.gmDb = v)); numIn("in-pm", (v) => (state.thresholds.pmDeg = v)); numIn("in-ms", (v) => (state.thresholds.ms = v));
   for (const key of Object.keys(BLOCKS)) {
@@ -3104,7 +3114,15 @@ function entryRows() {
   if (!mrows || !mrows.rows[0].entries[i] || !mrows.rows[0].entries[i][j]) return null;
   return mrows.rows.map((r) => ({ w: r.w, mag: r.entries[i][j].mag, phaseDeg: r.entries[i][j].phaseDeg, S: NaN, T: NaN, asymMagDb: null, asymPhaseDeg: null, contMag: null, contPhaseDeg: null }));
 }
+/** Typing in multivariable mode waits for a pause, so a full MIMO analysis never runs on every keystroke. */
+let recomputeTimer = null;
+function recomputeSoon() {
+  if (!isMimo()) return recompute();
+  clearTimeout(recomputeTimer);
+  recomputeTimer = setTimeout(recompute, 250);
+}
 function recompute() {
+  if (recomputeTimer !== null) { clearTimeout(recomputeTimer); recomputeTimer = null; }
   result = F.analyze(state);
   mrows = result.ok && isMimo() ? F.mimoCurves(state) : null;
   if (mrows && !mrows.rows[0].entries[mimoEntry[0]]) mimoEntry = [0, 0];
