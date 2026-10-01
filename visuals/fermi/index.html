@@ -771,7 +771,7 @@ self.Fermi = (function () {
   /* Narration is read aloud: symbols become words. */
   function speak(t) {
     return oneLine(String(t ?? "")
-      .replace(/ × 10([⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (m, e) => ` times 10 to the power ${e.replace(/./g, (c) => UNSUP[c])}`)
+      .replace(/( × )?10([⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (m, x, e) => `${x ? " times " : ""}10 to the power ${e.replace(/./g, (c) => UNSUP[c]).trim()}`)
       .replace(/([A-Za-z])²/g, "$1 squared").replace(/([A-Za-z])³/g, "$1 cubed")
       .replace(/[⁻⁰¹²³⁴⁵⁶⁷⁸⁹]/g, (c) => UNSUP[c])
       .replace(/(\d)\s*[–-]\s*(\d)/g, "$1 to $2").replace(/–/g, " to ")

@@ -339,6 +339,8 @@ test("every scenario's deck opens in beamdswitch as the standard narrated templa
   assert.match(md, /^## Sensitivity to the assumptions: Groups ahead matters most$/m);
   assert.match(md, /^≈ 30 min \(range ≈ 13–75 min\); improve Groups ahead first\.$/m);
   assert.match(F.speak("≈ 13–75 min/cycle, 2 × 10⁶ m²"), /^about 13 to 75 min per cycle, 2 times 10 to the power 6 m squared$/);
+  for (const [best, said] of [[30, "around 10 to the power 1: in the tens."], [4000, "around 10 to the power 3: in the thousands."], [0.02, "around 10 to the power minus 2: in the hundredths."]])
+    assert.ok(F.speak(F.scale(chain([["mul", best]])).text).endsWith(`is ${said}`), `narrates the scale of ${best}`);
 });
 
 test("the page boots, its WebMCP tools answer, and the deck buttons export the page as set", async () => {
