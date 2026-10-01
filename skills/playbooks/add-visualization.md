@@ -1,11 +1,22 @@
 # Add or change a visualization
 
-A visualization is published from one of two places. Everything new is built in this repository.
+A visualization is published from one of two places. Everything new is published from this repository, but a new tool built here develops first in a standalone repository of its own (see [New tools start in their own repository](#new-tools-start-in-their-own-repository)).
 
 - **In this repository (the default):** its own folder `visuals/<slug>/`: `index.html`, `raw.json` (published as `data.json`), a `README.md` saying what each file is and how to rebuild, often a `LICENSE`, and any build script or sources. Its stub's `html_path` and `data_path` start with `visuals/<slug>/`. Never put sources under the generated `site/`.
 - **In the public [`visuals`](https://github.com/yujieteo/visuals) repository:** `viz/<slug>/index.html` and `data/<slug>/raw.json` (or `.csv`), published at the commit pinned in `data/visuals/<slug>.pin`. Older data visualizations such as `haze-singapore` live there.
 
 Some folders under `visuals/` track or vendor another repository (for example `beamdiag` and `beamdswitch`). The folder's `README.md` names the upstream and says how to update it; follow it rather than editing the copy freely. A folder with a standalone repository (its `AGENTS.md` names `yujieteo/<name>`) is a port: the visualization and its tests develop in that repository, whose CI runs them, and `visuals/<slug>/` is refreshed from it by copying the repository minus `tests/` and `.github/`. Change such a visualization in its standalone repository, run its tests there, then port the page files here; this repository runs no logic tests for it, only `tests/test_visual_ports.py` (add the slug to `PORTS` when you port a new one). The folder carries `AGENTS.md` (for agents changing it, identical in both copies), `SKILLS.md` (for agents using it) and an MIT `LICENSE`, and links only to files inside itself; `tests/test_visual_folder_docs.py` checks them, and a change to a page's WebMCP tools, exports or commands updates them too.
+
+## New tools start in their own repository
+
+Every new tool, and every unlanded one whose tests were written here, develops in a public standalone repository `yujieteo/<slug>` before it reaches this site:
+
+1. Put the folder's files at the repository root and its tests in `tests/`, with paths adjusted to the root. Copy (never symlink) the helpers and fixtures they import, such as `tests/beamdswitch-deck-checks.mjs`, `tests/fixtures/beamdswitch/` and read-only copies of `templates/beamdswitch.js` and `templates/beamdswitch-report.md`. A check of the catalogue stub stays here, not there.
+2. Add `AGENTS.md` (saying the repository is where the tool and its tests develop and the site's folder is a port of its page files minus `tests/` and `.github/`), `SKILLS.md`, an MIT `LICENSE` (Copyright (c) 2026 Yu Jie Teo) and `.github/workflows/ci.yml` running `node --test 'tests/*.test.{mjs,cjs}'` on Node 22, plus Python unittest or a `--check` build only when the tool has them. [yujieteo/mohr](https://github.com/yujieteo/mohr) is the model.
+3. Run the tests there, push, and confirm the repository's CI passes. Fix real bugs there first.
+4. Port it here: `visuals/<slug>/` is the repository minus `tests/` and `.github/`, byte for byte, with its stub in `data/visuals/<slug>.yaml`. Add no logic tests here; add the slug to `PORTS` in `tests/test_visual_ports.py`, which checks the port.
+
+Later changes follow the same order: change and test the standalone repository, then port the page files here.
 
 ## Steps
 
@@ -14,7 +25,7 @@ Some folders under `visuals/` track or vendor another repository (for example `b
 3. Add or edit `data/visuals/<slug>.yaml` with `slug`, `title`, `summary`, `source_url`, `fetched`, `html_path`, `data_path`, `webmcp_tools` (at least three), `tags`, and `category`, plus optional `links` (see [Link related items](../reference/links.md)). `schema/visualization.schema.json` is the authority; copy a neighbouring stub such as `data/visuals/mohr.yaml`. The Visuals page lists visuals newest `fetched` first, with same-day visuals in slug order.
 4. Reuse tags already used by other visuals or notes (lowercase, hyphenated); the Visuals page shows them as filters, so add a new tag only for a genuinely new subject.
 5. A tool built here may list `assets` (further files in `visuals/<slug>/`, published beside its `index.html`) and `downloads` (a JSON file whose `downloads` list pins files too large for Git, such as model weights, by `path`, `url`, `sha256` and `bytes`; the build fetches them). Never commit those large files; `data/visuals/beamdswitch.yaml` is the example, and the [README](../../README.md#build) describes the download cache.
-6. Test a tool with Node's built-in runner: `tests/<slug>.test.mjs` loads the engine from `index.html` (see [the Mohr test](https://github.com/yujieteo/mohr/blob/main/tests/mohr.test.mjs) in yujieteo/mohr) and checks results against the tool's own values and its references. Python checks go in `tests/test_<slug>.py`. Never add Vitest or another test framework. For a tool ported from a standalone repository, those tests live in that repository's `tests/` (with the path `<slug>/` dropped, since the folder is its root) and its CI runs them; here, only check the port in `tests/test_visual_ports.py`.
+6. Test a tool with Node's built-in runner in its standalone repository: `tests/<slug>.test.mjs` loads the engine from `index.html` (see [the Mohr test](https://github.com/yujieteo/mohr/blob/main/tests/mohr.test.mjs) in yujieteo/mohr) and checks results against the tool's own values and its references. Python checks go in `tests/test_<slug>.py`. Never add Vitest or another test framework. For a tool ported from a standalone repository, those tests live in that repository's `tests/` (with the path `<slug>/` dropped, since the folder is its root) and its CI runs them; here, only check the port in `tests/test_visual_ports.py`.
 7. For a narrated beamdswitch report, follow [Narrated reports](#narrated-reports) below.
 8. Run [Stage A](../verify.md#stage-a-pre-deploy). Follow [Deploy generated files](deploy.md) when the request includes publication.
 
