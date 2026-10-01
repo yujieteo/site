@@ -67,7 +67,12 @@ function copyControl(key) {
   return { scope, button, status };
 }
 
-const settle = () => new Promise((resolve) => setTimeout(resolve, 80));
+// Mocked timers: the status message lands after copy-markdown.js's 50 ms
+// delay without real waiting, and its 2 s clear never holds the process open.
+const mockTimers = (t) => {
+  t.mock.timers.enable({ apis: ["setTimeout"] });
+  return () => t.mock.timers.tick(50);
+};
 
 test("writeToClipboard reports success, refusal and absence", async () => {
   const written = [];
@@ -78,24 +83,26 @@ test("writeToClipboard reports success, refusal and absence", async () => {
   assert.equal(await writeToClipboard("# A", {}), false);
 });
 
-test("a click copies that button's Markdown and confirms in the live region", async () => {
+test("a click copies that button's Markdown and confirms in the live region", async (t) => {
+  const settle = mockTimers(t);
   const written = [];
   const doc = new FakeDocument({ "note:a": "First [x](https://teoyujie.org/a)\n", "note:b": "Second\n" });
   setupCopyButtons(doc, { writeText: async (text) => { written.push(text); } });
   const { scope, button, status } = copyControl("note:b");
   await doc.click(button);
-  await settle();
+  settle();
   assert.deepEqual(written, ["Second\n"]);
   assert.equal(status.textContent, "Copied");
   assert.equal(scope.children.length, 1);
 });
 
-test("without the Clipboard API the Markdown is shown selected in a read-only textarea", async () => {
+test("without the Clipboard API the Markdown is shown selected in a read-only textarea", async (t) => {
+  const settle = mockTimers(t);
   const doc = new FakeDocument({ page: "# Title\n\n$$x^2$$\n" });
   setupCopyButtons(doc, undefined);
   const { scope, button, status } = copyControl("page");
   await doc.click(button);
-  await settle();
+  settle();
   const box = scope.children[1];
   assert.equal(box.className, "copy-fallback");
   const [label, area] = box.children;
@@ -108,7 +115,8 @@ test("without the Clipboard API the Markdown is shown selected in a read-only te
   assert.match(status.textContent, /selected below/);
 });
 
-test("a refused write falls back too, and a second click reuses the same textarea", async () => {
+test("a refused write falls back too, and a second click reuses the same textarea", async (t) => {
+  mockTimers(t);
   const doc = new FakeDocument({ page: "# Title\n" });
   setupCopyButtons(doc, { writeText: async () => { throw new DOMException("denied", "NotAllowedError"); } });
   const { scope, button } = copyControl("page");
@@ -129,19 +137,20 @@ test("showFallback attaches to the button's parent when there is no copy scope",
 test("neither the clipboard nor the fallback path fetches or uses execCommand", async (t) => {
   const fetchCalls = [];
   t.mock.method(globalThis, "fetch", async (...args) => { fetchCalls.push(args); return new Response(""); });
+  const settle = mockTimers(t);
   for (const clipboard of [{ writeText: async () => {} }, undefined]) {
     const doc = new FakeDocument({ page: "# Title\n" });
     setupCopyButtons(doc, clipboard);
     const { button, status } = copyControl("page");
     await doc.click(button);
-    await settle();
+    settle();
     assert.ok(status.textContent);
     assert.deepEqual(doc.execCommandCalls, []);
   }
   assert.deepEqual(fetchCalls, []);
 });
 
-test("the note copy control filtered notes render names that note, labels it by date and text, and has a live status", () => {
+test("the copy control for a filtered note names that note, labels it by date and text, and has a live status", () => {
   const html = noteCopyControlHtml(
     "note:a\"b", "2026-01-02", "Sharpe ratio is mean excess return over its standard deviation.",
   );
