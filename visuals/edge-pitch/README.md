@@ -12,6 +12,9 @@ is one self-contained file with no dependencies that works offline.
 | `template.html` | Page markup, styles, UI, the to-scale schematic, the plots and the WebMCP tools |
 | `raw.json` | Checks, assumptions, scope, sources, the test-vector format and the placeholder example (published as `data.json`) |
 | `build.py` | Inlines `raw.json`, `engine.js` and `beamdswitch.js` into `template.html` to write `index.html` |
+| `AGENTS.md` | Notes for coding agents: where changes go (this folder upstream; the standalone repository is a read-only mirror), how to build and test, and the conventions. |
+| `SKILLS.md` | For agents using the tool: its tasks, inputs, read-only WebMCP tools, exports and a worked example. |
+| `LICENSE` | MIT. |
 
 ```sh
 python build.py   # rebuild index.html after editing template.html, engine.js, beamdswitch.js or raw.json
