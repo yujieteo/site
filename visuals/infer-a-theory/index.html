@@ -208,6 +208,7 @@ summary{display:flex;align-items:center;min-height:2.75rem;font-weight:600;curso
       <button type="button" class="btn small" id="rg-step">One RG step →</button>
       <button type="button" class="btn small" id="rg-run">Run toward IR</button>
       <button type="button" class="btn small" id="rg-reset">Reset to observed scale</button>
+      <button type="button" class="btn small" id="rg-uv">Inspect compatible UV theories</button>
     </div>
     <p class="tiny muted" id="scale-note"></p>
   </section>
@@ -2750,6 +2751,7 @@ const store = {
 };
 const reduced = () => { try { return matchMedia("(prefers-reduced-motion: reduce)").matches; } catch { return false; } };
 const clone = (o) => JSON.parse(JSON.stringify(o));
+let tsOpen = false;
 let S = IT.exampleState(), R = null, stale = true, selObs = null, sel = null, conv = "clt", expert = store.get("level") === "expert", rel = null, runToken = 0, animTimer = 0;
 const fmt = IT.fmt, fsc = IT.fmtScale;
 const UNITS = [["ms", 0.001], ["s", 1], ["min", 60], ["h", 3600]];
@@ -2852,6 +2854,7 @@ function rerenderCard(i) {
   if (!el) return renderCards();
   const had = el.contains(document.activeElement) ? document.activeElement.id : null;
   el.outerHTML = cardHtml(S.observations[i], i);
+  nameFields();
   if (had && $(had)) $(had).focus();
 }
 
@@ -2964,7 +2967,7 @@ function renderScale() {
   $("ladder").style.gridTemplateColumns = `repeat(${rs.length},minmax(0,1fr))`;
   $("ladder").innerHTML = rs.map((x, k) => `<span class="${x.kind}${k === sel ? " sel" : ""}${x.kind === "uv" && x.level.label === "not identifiable" ? " lost" : ""}">${fsc(x.step)}</span>`).join("");
   $("scale-note").textContent = R && R.status === "ok" ? "Dashed: finer scales (compatible UV theories, inverse RG). Solid: the observed scale and coarser scales (forward RG). The slider moves all three RG views." : "Infer the theory to explore scales.";
-  $("rg-step").disabled = sel >= rs.length - 1; $("rg-finer").disabled = sel <= 0; $("rg-run").disabled = sel >= rs.length - 1; $("rg-reset").disabled = sel === obsIdx;
+  $("rg-step").disabled = sel >= rs.length - 1; $("rg-finer").disabled = sel <= 0; $("rg-run").disabled = sel >= rs.length - 1; $("rg-reset").disabled = sel === obsIdx; $("rg-uv").disabled = !rs.some((x) => x.kind === "uv");
 }
 
 /* ---------- RG views ---------- */
@@ -3051,7 +3054,7 @@ function renderRG() {
   let h = `<div class="legend"><span><i class="sw obs"></i>observed scale (●)</span><span><i class="sw"></i>coarser: forward RG (■, solid)</span><span><i class="sw uv"></i>finer: compatible UV theories (△, dashed)</span><span><i class="sw band"></i>90% band</span></div>`;
   h += `<h3>1. Couplings against log ℓ ${bin ? "(decimation)" : conv === "clt" ? "(rescaled by √2 per step)" : "(plain averages, units kept)"}</h3><div class="grid2">${R.basis.map((id) => `<figure class="fig">${lineChart(couplingSeries(id), { title: `Running coupling ${IT.OPS[id].sym} against log scale`, ylabel: `${IT.OPS[id].sym}  ${IT.OPS[id].op}` })}</figure>`).join("")}</div>`;
   h += `<p class="tiny muted">Coarser scales show moment-matched projections into the basis (not exact actions); finer scales show the spread of compatible theories, not a single backward line.</p>`;
-  h += `<h3>2. Theory-space projection</h3>${theorySpace()}`;
+  h += `<details${expert || tsOpen ? " open" : ""} id="ts-box"><summary>2. Theory-space projection</summary><div class="dpanel">${theorySpace()}</div></details>`;
   h += `<h3>3. Observables against log ℓ</h3><div class="grid2">${bin
     ? [["P(+1)", "uv:pPlus", "pPlus"], ["lag-1 spin correlation", "uv:rho1", "rho1"]].map(([t, u, i]) => `<figure class="fig">${lineChart(obsSeries(t, u, i), { title: `${t} against log scale`, ylabel: t })}</figure>`).join("")
     : [["standard deviation", "uv:sd", "sd", false], ["lag-1 correlation", "uv:rho1", "rho1", false]].map(([t, u, i]) => `<figure class="fig">${lineChart(obsSeries(t, u, i), { title: `${t} against log scale`, ylabel: t })}</figure>`).join("")
@@ -3095,7 +3098,7 @@ function selectedRung(r) {
     <p class="small"><b>${n ? "Projected" : "Observed-scale"} action</b> (most probable resampled theory, ${conv === "clt" ? "rescaled" : "plain"} units): ${R.basis.map((id) => `${esc(IT.OPS[id].sym)} = ${fmt(th.g[id], 3)}`).join(", ")}${th.w ? `; tail width w = ${fmt(th.w, 3)}` : ""}.</p>
     <p class="small">S′_projected = Σ g′ᵢ Oᵢ is the moment-matched (minimum-KL) member of the basis; the exact S′ generally contains operators outside it. <span class="tag ${cls}">${word}</span> ${rung.diag.kl !== undefined ? `KL ${fmt(rung.diag.kl, 2)} nats${rung.diag.kind === "gauss" ? " per step (exact rate)" : rung.diag.kind === "ring" ? " per retained spin (16-spin ring)" : " (one-site marginal)"}` : ""}${rung.diag.rho2 !== undefined && rung.diag.kind === "tm" ? `; ρ(2) residual ${fmt(rung.diag.rho2)}, tail-ratio residual ${fmt(rung.diag.tail)} (log)` : ""}. Across the resampled theories: ${esc(verdictText(band))}.</p>
     ${rung.diag.verdict === "failure" ? `<p class="small"><b>RG projection failure:</b> the selected truncated operator basis no longer describes the coarse theory adequately.</p>` : ""}
-    ${betas ? `<h3>Numerical beta estimates (finite differences ${fsc(r.step)} → ${fsc(r.step * 2)})</h3><ul class="small">${betas}</ul><p class="tiny muted">β ≈ [g(2ℓ) − g(ℓ)] / ln 2 between rungs: numerical estimates, not analytic beta functions.</p>` : ""}</div>`;
+    ${betas ? `<div class="expert-only"><h3>Numerical beta estimates (finite differences ${fsc(r.step)} → ${fsc(r.step * 2)})</h3><ul class="small">${betas}</ul><p class="tiny muted">β ≈ [g(2ℓ) − g(ℓ)] / ln 2 between rungs: numerical estimates, not analytic beta functions.</p></div><p class="tiny muted">Expert shows numerical beta estimates and the relevant, irrelevant and marginal directions.</p>` : ""}</div>`;
 }
 function relevanceHtml() {
   if (!rel) return `<p class="small">Linearise the one-step projected RG map around a fixed point: Gaussian white noise rescaled by √2 per step (continuous), or free spins (binary). A perturbation εO that grows is relevant, one that shrinks is irrelevant, one that persists is marginal.</p><button type="button" class="btn small" data-act="relevance">Compute (numerical, about a second)</button>`;
@@ -3170,8 +3173,10 @@ function renderExample() {
   for (const b of document.querySelectorAll("[data-conv]")) b.setAttribute("aria-pressed", String(b.dataset.conv === conv));
   document.body.classList.toggle("expert", expert);
 }
-function renderAll() { renderExample(); renderCards(); renderClaims(); renderTheory(); renderScale(); renderCouplings(); renderRG(); renderPred(); renderNext(); }
-function renderResults() { renderClaims(); renderTheory(); renderScale(); renderCouplings(); renderRG(); renderPred(); renderNext(); }
+/* Give every form control a name (for autofill heuristics and assistive tools). */
+function nameFields() { let k = 0; for (const el of document.querySelectorAll("input,select,textarea")) if (!el.name) el.name = el.id || `${el.dataset.f || "field"}-${el.dataset.i ?? ""}-${el.dataset.j ?? ""}-${k++}`; }
+function renderAll() { renderExample(); renderCards(); renderClaims(); renderTheory(); renderScale(); renderCouplings(); renderRG(); renderPred(); renderNext(); nameFields(); }
+function renderResults() { renderClaims(); renderTheory(); renderScale(); renderCouplings(); renderRG(); renderPred(); renderNext(); nameFields(); }
 
 /* ---------- inference (sliced so the page stays responsive) ---------- */
 function markStale() { stale = true; renderClaims(); renderTheory(); }
@@ -3219,6 +3224,7 @@ document.addEventListener("click", (e) => {
     case "rg-finer": stopAnim(); sel = Math.max(0, sel - 1); renderScale(); renderRG(); return;
     case "rg-reset": stopAnim(); sel = rungs().findIndex((r) => r.kind === "obs"); renderScale(); renderRG(); return;
     case "rg-run": return runIR();
+    case "rg-uv": { stopAnim(); const rs = rungs(); const k = rs.findIndex((r) => r.kind === "uv" && r.depth === 1); if (k >= 0) { sel = k; renderScale(); renderRG(); $("sec-rg").scrollIntoView({ block: "start", behavior: reduced() ? "auto" : "smooth" }); } return; }
   }
   if (act === "interpret") { const o = S.observations[i]; o.interpretation = null; IT.interpretAll(S); rerenderCard(i); markStale(); const it = o.interpretation; announce(it.status === "ok" ? `Interpreted observation ${i + 1}: ${it.claims.map((c) => c.reading).join("; ")}` : `Observation ${i + 1}: ${it.notes[0] || it.status}`); return; }
   if (act === "remove") { S.observations.splice(i, 1); if (selObs === i) selObs = null; renderCards(); markStale(); return; }
@@ -3268,6 +3274,7 @@ function claimField(o, i, j, f, t, type) {
   if (type === "change") { cl.reading = cl.reading && cl.reading.startsWith("edited") ? cl.reading : `${cl.reading || ""} (edited)`; rerenderCard(i); const el = document.querySelector(`[data-i="${i}"][data-j="${j}"][data-f="${f}"]`); if (el) { el.closest("details")?.setAttribute("open", ""); el.focus(); } }
   markStale();
 }
+document.addEventListener("toggle", (e) => { if (e.target.id === "ts-box") tsOpen = e.target.open; }, true);
 document.addEventListener("input", onField);
 document.addEventListener("change", onField);
 document.addEventListener("keydown", (e) => {
