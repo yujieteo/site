@@ -1,5 +1,7 @@
 # Add a note
 
+Every note lives in the single file `data/notes.md`; never split it into other files. Two branches that edit it can conflict (see [docs/architecture.md](../../docs/architecture.md)), so land notes changes one at a time.
+
 1. Inspect `data/notes.md`, including all dated headings and the requested date section.
 2. Add each note as a separate Markdown paragraph at the top of the matching `## YYYY-MM-DD` section.
 3. If the date is absent, insert one heading in descending date order. Do not duplicate a date heading.
