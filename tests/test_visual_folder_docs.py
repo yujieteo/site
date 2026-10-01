@@ -1,7 +1,10 @@
-"""A visualization folder with an AGENTS.md is mirrored byte for byte as a standalone repository.
+"""A visualization folder with an AGENTS.md has a standalone repository of its own.
 
-It must carry its own LICENSE and SKILLS.md, its agent docs must link only to files inside the
-folder, and a SKILLS.md that lists WebMCP tools must cover every tool its catalogue stub names.
+For a folder ported from its standalone repository, that repository is where the visualization and its
+tests develop and the folder is a port of its page files (the repository minus tests/ and .github/); for
+the rest, the folder is still mirrored there. Either way the folder must carry its own LICENSE and
+SKILLS.md, its agent docs must link only to files inside the folder, and a SKILLS.md that lists WebMCP
+tools must cover every tool its catalogue stub names.
 """
 
 import re

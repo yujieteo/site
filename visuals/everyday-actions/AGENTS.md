@@ -4,7 +4,7 @@ Everyday activities plotted by how often people do them (ATUS 2014-2016) and how
 
 ## Source of truth
 
-This folder is `visuals/everyday-actions/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/everyday-actions), and that is the source of truth. The standalone repository [yujieteo/everyday-actions](https://github.com/yujieteo/everyday-actions) is a read-only, exact mirror of this folder: make every change upstream in yujieteo/site, never in the mirror.
+The standalone repository [yujieteo/everyday-actions](https://github.com/yujieteo/everyday-actions) is where this visualisation and its tests develop and where CI runs them. `visuals/everyday-actions/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/everyday-actions) is a port of its page files, refreshed when the visualisation is updated, and the site runs no logic tests for it. Porting copies the folder minus `tests/` and `.github/`.
 
 ## Files and data
 
@@ -22,17 +22,16 @@ This folder is `visuals/everyday-actions/` in [yujieteo/site](https://github.com
 | `build.py` | Writes `data.csv` and `sources.json` and rewrites the dataset, template and report blocks of `index.html` |
 | `data.csv` | Generated: one row per activity, missing values empty (the published data file) |
 
-Tests live upstream, outside this folder: `tests/everyday-actions-beamdswitch.test.mjs` and `tests/test_everyday_actions.py`.
+Tests live in `tests/` of yujieteo/everyday-actions: `tests/everyday-actions-beamdswitch.test.mjs` and `tests/test_everyday_actions.py`.
 
 ## Build, test and verify
 
-Run from the root of a yujieteo/site checkout (set up as its README says):
+Run from the root of a yujieteo/everyday-actions checkout (Python 3 standard library and Node 22; nothing to install):
 
 ```sh
-.venv/bin/python visuals/everyday-actions/build.py   # regenerate data.csv, sources.json and index.html
+python3 build.py   # regenerate data.csv, sources.json and index.html
 node --test tests/everyday-actions-beamdswitch.test.mjs
-.venv/bin/python scripts/build.py                    # needs VISUALS_REPO; see the site README
-.venv/bin/python -m unittest discover -s tests -p 'test_everyday_actions.py'
+python3 -m unittest discover -s tests -p 'test_everyday_actions.py'
 ```
 
 ## Conventions

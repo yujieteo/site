@@ -4,7 +4,7 @@ The 50 places food writers recommend most across Tampines Mall, Tampines 1, Cent
 
 ## Source of truth
 
-This folder is `visuals/tampines-food/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/tampines-food), and that is the source of truth. The standalone repository [yujieteo/tampines-food](https://github.com/yujieteo/tampines-food) is a read-only, exact mirror of this folder: make every change upstream in yujieteo/site, never in the mirror.
+The standalone repository [yujieteo/tampines-food](https://github.com/yujieteo/tampines-food) is where this visualisation and its tests develop and where CI runs them. `visuals/tampines-food/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/tampines-food) is a port of its page files, refreshed when the visualisation is updated, and the site runs no logic tests for it. Porting copies the folder minus `tests/` and `.github/`.
 
 ## Files and data
 
@@ -20,18 +20,17 @@ This folder is `visuals/tampines-food/` in [yujieteo/site](https://github.com/yu
 | `beamdswitch.js` | The site's standard beamdswitch report template, an unchanged copy of `templates/beamdswitch.js` |
 | `build.py` | Ranks the outlets, writes `raw.json` (published as `data.json`) and rewrites the dataset, template and report blocks of `index.html` |
 
-Tests live upstream, outside this folder: `tests/tampines-food-beamdswitch.test.mjs` and `tests/test_tampines_food.py`.
+Tests live in `tests/` of yujieteo/tampines-food: `tests/tampines-food-beamdswitch.test.mjs` and `tests/test_tampines_food.py`.
 
 ## Build, test and verify
 
-Run from the root of a yujieteo/site checkout (set up as its README says):
+Run from the root of a yujieteo/tampines-food checkout (Python 3 standard library and Node 22; nothing to install):
 
 ```sh
-.venv/bin/python visuals/tampines-food/build.py           # regenerate raw.json and index.html
-.venv/bin/python visuals/tampines-food/build.py --verify  # check both are fresh
+python3 build.py           # regenerate raw.json and index.html
+python3 build.py --verify  # check both are fresh
 node --test tests/tampines-food-beamdswitch.test.mjs
-.venv/bin/python scripts/build.py                         # needs VISUALS_REPO; see the site README
-.venv/bin/python -m unittest discover -s tests -p 'test_tampines_food.py'
+python3 -m unittest discover -s tests -p 'test_tampines_food.py'
 ```
 
 ## Conventions

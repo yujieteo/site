@@ -4,7 +4,7 @@ A searchable decision engine for everyday actions: press Ctrl/⌘ K, type what y
 
 ## Source of truth
 
-This folder is `visuals/convexity-action-engine/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/convexity-action-engine), and that is the source of truth. The standalone repository [yujieteo/convexity-action-engine](https://github.com/yujieteo/convexity-action-engine) is a read-only, exact mirror of this folder: make every change upstream in yujieteo/site, never in the mirror.
+The standalone repository [yujieteo/convexity-action-engine](https://github.com/yujieteo/convexity-action-engine) is where this visualisation and its tests develop and where CI runs them. `visuals/convexity-action-engine/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/convexity-action-engine) is a port of its page files, refreshed when the visualisation is updated, and the site runs no logic tests for it. Porting copies the folder minus `tests/` and `.github/`.
 
 ## Files and data
 
@@ -19,19 +19,20 @@ This folder is `visuals/convexity-action-engine/` in [yujieteo/site](https://git
 | `build.py` | Writes `index.html` and the spreadsheet views `actions.csv`, `aliases.csv` and `sources.csv`; `--verify` checks they are fresh |
 | `index.html` | Generated: never edit it by hand |
 
-Tests live upstream, outside this folder: `tests/convexity-action-engine.test.mjs`, `tests/convexity-action-engine-beamdswitch.test.mjs` and `tests/test_convexity_action_engine.py`.
+Tests live in `tests/` of yujieteo/convexity-action-engine: `tests/convexity-action-engine.test.mjs`, `tests/convexity-action-engine-beamdswitch.test.mjs` and `tests/test_convexity_action_engine.py`.
 
 ## Build, test and verify
 
-Run from the root of a yujieteo/site checkout (set up as its README says):
+Run from the root of a yujieteo/convexity-action-engine checkout (Python 3 standard library and Node 22; nothing to install):
+
+`author.py` (and so `build.py`, which imports it) reads `drm_table1.csv` and `evidence.json` from the sibling folder `../everyday-actions/`: check out [yujieteo/everyday-actions](https://github.com/yujieteo/everyday-actions) beside this repository (in yujieteo/site the two folders are already siblings under `visuals/`). The tests carry read-only copies in `tests/fixtures/everyday-actions/`.
 
 ```sh
-.venv/bin/python visuals/convexity-action-engine/author.py          # after editing author.py
-.venv/bin/python visuals/convexity-action-engine/build.py           # regenerate index.html and the CSVs
-.venv/bin/python visuals/convexity-action-engine/build.py --verify  # check they are fresh
+python3 author.py          # after editing author.py
+python3 build.py           # regenerate index.html and the CSVs
+python3 build.py --verify  # check they are fresh
 node --test tests/convexity-action-engine.test.mjs tests/convexity-action-engine-beamdswitch.test.mjs
-.venv/bin/python scripts/build.py                                   # needs VISUALS_REPO; see the site README
-.venv/bin/python -m unittest discover -s tests -p 'test_convexity_action_engine.py'
+python3 -m unittest discover -s tests -p 'test_convexity_action_engine.py'
 ```
 
 ## Conventions

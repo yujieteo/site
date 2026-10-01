@@ -72,12 +72,19 @@ needs network access to Hugging Face and jsDelivr.
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-node --test 'tests/*.test.{mjs,cjs}' 'visuals/md-explorer/tests/*.test.mjs'
+node --test 'tests/*.test.{mjs,cjs}'
 ```
 
 Many tests read the built `site/`, so run `scripts/build.py` first. Node runs
 every `tests/*.test.mjs` and `tests/*.test.cjs`, so a new Node test needs no
 change to this command or to CI.
+
+A visualization mirrored as a standalone repository (its folder's `AGENTS.md`
+names `yujieteo/<name>`) develops there: its logic tests live and run in that
+repository's CI, and `visuals/<slug>/` is a port of its page files, refreshed
+when the visualization is updated. This repository tests only how the site
+publishes the port (`tests/test_visual_ports.py`, plus the cross-cutting suites),
+so updating a visualization means running its tests in its own repository.
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
 `package.json` or installed packages. The Python tests copy the repository to a
