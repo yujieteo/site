@@ -26,6 +26,7 @@ PORTS = {
     "fastener-cg": "fastener-cg",
     "fermi": "fermi",
     "frequency-response": "frequency-response",
+    "generating-functions": "generating-functions",
     "grep-visualiser": "grep-visualiser",
     "infer-a-theory": "infer-a-theory",
     "information-gain": "information-gain",
