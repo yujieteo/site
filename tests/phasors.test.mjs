@@ -84,6 +84,7 @@ test("degenerate cases (spec section 4) behave exactly as tabled", () => {
   const rowsA = P.readoutRows(a);
   assert.ok(rowsA.some((r) => r[1] === "I" && r[2] === "unbounded"));
   assert.ok(rowsA.some((r) => r[1] === "V_L" && r[2] === "unbounded"));
+  assert.equal(P.describe("impedance", a), "Impedance plane: Z is zero, current unbounded, angle undefined.");
   // Parallel, R off, at f0: impedance unbounded, total current 0.
   const b = P.compute(circuit({ mode: "parallel", R_on: false, f: fr }));
   assert.equal(b.unbounded, "impedance");
@@ -251,8 +252,8 @@ test("the engine has no forbidden calls and runs without DOM, storage, clock or 
   assert.equal(run(G), run(P));
 });
 
-// Boots both page scripts against an inert DOM. Every way a page could reach the network is a trap
-// that records the attempt, so tests can assert the page never tries.
+// Boots both page scripts against an inert DOM. Every way a page could reach the network or storage is
+// a trap that records the attempt, so tests can assert the page never tries.
 const bootPage = () => {
   const inert = () => new Proxy(function () {}, {
     get: (t, k) => (k === "modelContext" ? undefined : k === Symbol.iterator ? [][Symbol.iterator] : k === Symbol.toPrimitive ? () => 0 : inert()),
@@ -265,7 +266,11 @@ const bootPage = () => {
   });
   const loaders = new Set(["script", "link", "img", "iframe", "audio", "video", "source", "object", "embed"]);
   const document = new Proxy(inert(), {
-    get: (t, k) => (k === "createElement" ? (tag) => { if (loaders.has(String(tag).toLowerCase())) network.push(`createElement(${tag})`); return inert(); } : t[k]),
+    get: (t, k) => {
+      if (k === "cookie") network.push("document.cookie");
+      return k === "createElement" ? (tag) => { if (loaders.has(String(tag).toLowerCase())) network.push(`createElement(${tag})`); return inert(); } : t[k];
+    },
+    set: (t, k) => { if (k === "cookie") network.push("document.cookie"); return true; },
   });
   const tools = [];
   const ctx = vm.createContext({
@@ -277,6 +282,7 @@ const bootPage = () => {
     Image: trap("Image"), Worker: trap("Worker"), SharedWorker: trap("SharedWorker"), importScripts: trap("importScripts"),
   });
   ctx.self = ctx; ctx.window = ctx;
+  for (const name of ["localStorage", "sessionStorage"]) Object.defineProperty(ctx, name, { get() { network.push(name); return inert(); } });
   const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)];
   assert.deepEqual(scripts.map((m) => /id="([^"]+)"/.exec(m[0])?.[1]), ["ph-engine", "ph-ui"]);
   for (const m of scripts) vm.runInContext(m[1], ctx);
@@ -316,17 +322,46 @@ test("the page boots without a real DOM, registers the stub's WebMCP tools and m
   deq(network, []);
 });
 
-test("the page has the house head, header and no external references", () => {
-  for (const s of ['<meta charset="utf-8">', 'content="width=device-width, initial-scale=1, viewport-fit=cover"', '<link rel="icon" href="data:,">', "<title>Phasor and Impedance Visualiser</title>",
-    '<meta name="description"', '<meta property="og:title"', '<meta property="og:description"', '<meta property="og:type" content="website">', '<meta property="og:url" content="https://teoyujie.org/visuals/phasors">',
-    '<meta property="og:site_name"', '<meta name="twitter:card" content="summary">', '<link rel="canonical" href="https://teoyujie.org/visuals/phasors">',
-    '<a href="../../visuals.html">Visuals</a><span>Circuits</span><span>Works offline</span>', 'role="note"', 'id="selftest-badge"', "<noscript><p>This tool needs JavaScript.</p></noscript>",
-    'aria-live="polite"', '<a href="../beamdswitch/index.html">Open beamdswitch, then drop the file in</a>'])
-    assert.ok(html.includes(s), s);
-  assert.doesNotMatch(html, /og:image/);
-  assert.doesNotMatch(html, /\ssrc="(?:https?:)?\/\//, "no external src");
-  for (const m of html.matchAll(/<link\b[^>]*>/g)) assert.match(m[0], /rel="(?:icon|canonical)"/, m[0]);
-  assert.doesNotMatch(html, /@import|url\(\s*["']?https?:/);
-  assert.doesNotMatch(html, /localStorage|sessionStorage|document\.cookie/);
+// A minimal element model of the page: every start tag with its attributes and its text content.
+const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', "#39": "'" };
+const decode = (v) => v.replace(/&(amp|lt|gt|quot|#39);/g, (m, k) => ENTITIES[k]);
+const parsePage = (src) => [...src.matchAll(/<([a-z][a-z0-9]*)\b((?:[^>"']|"[^"]*"|'[^']*')*)>/gi)].map((m) => {
+  const tag = m[1].toLowerCase(), attrs = {};
+  for (const a of m[2].matchAll(/([a-z][\w:-]*)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+)))?/gi)) attrs[a[1].toLowerCase()] = decode(a[2] ?? a[3] ?? a[4] ?? "");
+  const close = src.indexOf(`</${tag}>`, m.index);
+  const text = close < 0 ? "" : decode(src.slice(m.index + m[0].length, close).replace(/<[^>]*>/g, "")).trim();
+  return { tag, attrs, text, inHead: m.index < src.indexOf("</head>") };
+});
+
+test("the page has the house head and header, and its markup loads nothing external", () => {
+  const els = parsePage(html), head = els.filter((e) => e.inHead);
+  const meta = (k, v) => head.filter((e) => e.tag === "meta" && e.attrs[k] === v).map((e) => e.attrs.content);
+  const links = head.filter((e) => e.tag === "link").map((e) => [e.attrs.rel, e.attrs.href]);
+  assert.equal(head.find((e) => e.tag === "meta" && "charset" in e.attrs).attrs.charset.toLowerCase(), "utf-8");
+  deq(meta("name", "viewport"), ["width=device-width, initial-scale=1, viewport-fit=cover"]);
+  deq(links, [["icon", "data:,"], ["canonical", "https://teoyujie.org/visuals/phasors"]]);
+  deq(head.filter((e) => e.tag === "title").map((e) => e.text), ["Phasor and Impedance Visualiser"]);
+  for (const [k, v] of [["name", "description"], ["property", "og:title"], ["property", "og:description"], ["property", "og:site_name"]]) {
+    const c = meta(k, v); assert.equal(c.length, 1, v); assert.ok(c[0].trim(), v);
+  }
+  deq(meta("property", "og:type"), ["website"]);
+  deq(meta("property", "og:url"), ["https://teoyujie.org/visuals/phasors"]);
+  deq(meta("name", "twitter:card"), ["summary"]);
+  deq(meta("property", "og:image"), []);
+
+  const body = els.filter((e) => !e.inHead);
+  const eyebrow = body.find((e) => e.tag === "p" && /\beyebrow\b/.test(e.attrs.class || ""));
+  assert.ok(eyebrow, "eyebrow line");
+  assert.ok(body.some((e) => e.tag === "a" && e.attrs.href === "../../visuals.html" && e.text === "Visuals"), "back-link to Visuals");
+  assert.equal(eyebrow.text, "VisualsCircuitsWorks offline");
+  const note = body.find((e) => e.attrs.role === "note");
+  assert.ok(note && note.text, "role=note line");
+  assert.equal(body.find((e) => e.attrs.id === "selftest-badge")?.tag, "button");
+  deq(body.filter((e) => e.tag === "noscript").map((e) => e.text), ["This tool needs JavaScript."]);
+  assert.ok(body.some((e) => e.attrs["aria-live"] === "polite" && e.attrs.id === "sentence"), "polite live sentence");
+  assert.ok(body.some((e) => e.tag === "a" && e.attrs.href === "../beamdswitch/index.html" && e.text === "Open beamdswitch, then drop the file in"), "beamdswitch link");
+
+  deq(els.filter((e) => "src" in e.attrs).map((e) => e.attrs.src), [], "no element loads a src");
+  for (const e of els.filter((x) => x.tag === "style")) assert.doesNotMatch(e.text, /@import|url\(/i, "styles load nothing");
   assert.ok(Buffer.byteLength(html) < 120 * 1024, `index.html is ${Buffer.byteLength(html)} bytes`);
 });

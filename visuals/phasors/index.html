@@ -602,6 +602,7 @@ function admittanceScene(r) {
 }
 
 const PI_LABELS = ["0", "\u03c0/2", "\u03c0", "3\u03c0/2", "2\u03c0"];
+const curveCache = {};
 function waveScene(r, wt) {
   const W = 480, H = 220, cx = 80, cy = 104, R = 70, x0 = 172, x1 = 466, A0 = 70;
   const p = [];
@@ -613,8 +614,12 @@ function waveScene(r, wt) {
   PI_LABELS.forEach((s, n) => { const x = X(n * Math.PI / 2); p.push(Ln("wf-tick" + n, x, cy + A0 + 4, x, cy + A0 + 10, "muted"), T("wf-tick" + n + "-t", x, cy + A0 + 24, s, { cls: "muted", size: 11, anchor: "middle" })); });
   p.push(T("wf-ax-t", x1, H - 4, "\u03c9t (rad)", { cls: "muted", size: 11, anchor: "end" }), T("wf-ax-yt", x0 - 6, cy - A0 + 4, "+1", { cls: "muted", size: 11, anchor: "end" }), T("wf-ax-yb", x0 - 6, cy + A0 + 4, MINUS + "1", { cls: "muted", size: 11, anchor: "end" }));
   const curve = (id, shift, cls, key) => {
-    let d = "";
-    for (let n = 0; n <= 120; n++) { const t = TAU * n / 120; d += (n ? "L" : "M") + fixed(X(t), 2) + " " + fixed(Y(Math.sin(t - shift)), 2); }
+    const c = curveCache[id];
+    let d = c && c.shift === shift ? c.d : "";
+    if (!d) {
+      for (let n = 0; n <= 120; n++) { const t = TAU * n / 120; d += (n ? "L" : "M") + fixed(X(t), 2) + " " + fixed(Y(Math.sin(t - shift)), 2); }
+      curveCache[id] = { shift, d };
+    }
     p.push({ t: "path", id, d, cls, key, w: 2.25 });
   };
   curve("wf-v", 0, "v", "V");
@@ -706,7 +711,7 @@ function describe(kind, r) {
     const cur = r.unbounded === "current" ? "current unbounded" : `current ${say(r.I, "A")}${r.phi === null ? "" : " at " + sayDeg(-r.phi)}`;
     return `Phasor diagram, ${mode} ${on}: V ${say(r.V, "V")} at 0 degrees, ${cur}. ` + r.parts.map((q) => `${partName(r.mode, q.k).replace("_", " ")} ${say(q.mag, r.mode === "series" ? "V" : "A")}${q.deg === null ? "" : " at " + sayDeg(q.deg)}`).join(", ") + ".";
   }
-  if (kind === "impedance") return r.Z ? `Impedance plane: Z = ${say(r.Z.re, OHM)} resistance plus ${say(r.Z.im, OHM)} reactance, magnitude ${say(r.Zmag, OHM)} at ${sayDeg(r.phi)}.` : `Impedance plane: ${r.unbounded === "current" ? "Z is zero, current unbounded" : "Z unbounded"}.`;
+  if (kind === "impedance") return r.unbounded ? `Impedance plane: ${r.unbounded === "current" ? "Z is zero, current unbounded, angle undefined" : "Z unbounded"}.` : `Impedance plane: Z = ${say(r.Z.re, OHM)} resistance plus ${say(r.Z.im, OHM)} reactance, magnitude ${say(r.Zmag, OHM)} at ${sayDeg(r.phi)}.`;
   if (kind === "admittance") return r.unbounded ? "Admittance plane: Y is zero, impedance unbounded." : `Admittance plane: Y = ${say(r.Y.re, "S")} conductance plus ${say(r.Y.im, "S")} susceptance, magnitude ${say(r.Ymag, "S")}.`;
   if (kind === "waveform") return `Waveforms over one cycle, per unit of peak: v(t) peak ${say(Math.SQRT2 * r.V, "V")}; ` + (r.unbounded === "current" ? "current unbounded." : r.I === 0 ? "no current." : `i(t) peak ${say(Math.SQRT2 * r.I, "A")}, shifted by ${sayDeg(r.phi)}.`);
   return r.unbounded === "current" ? "Power triangle: S and Q unbounded." : `Power triangle: P ${say(r.P, "W")}, Q ${say(r.Q, "var")}, S ${say(r.S, "VA")}.`;
@@ -924,7 +929,7 @@ function buildDeck(s) {
     else { const t = fixed(Math.abs(ph), 6); pl.push(t === "0.000000" ? "y = sin(x)" : `y = sin(x ${ph > 0 ? "-" : "+"} ${t})`); }
   }
   L.push(...block("plot", pl), "");
-  L.push(`Navy: $v(t)$, peak $\\sqrt{2}\\,V = ${tq(Math.SQRT2 * r.V, "V")}$. ` + (r.unbounded === "current" ? "The current is unbounded." : r.I === 0 ? "No current flows." : `Orange: $i(t)$, peak $\\sqrt{2}\\,I = ${tq(Math.SQRT2 * r.I, "A")}$.`));
+  L.push(`Blue: $v(t)$, peak $\\sqrt{2}\\,V = ${tq(Math.SQRT2 * r.V, "V")}$. ` + (r.unbounded === "current" ? "The current is unbounded." : r.I === 0 ? "No current flows." : `Orange: $i(t)$, peak $\\sqrt{2}\\,I = ${tq(Math.SQRT2 * r.I, "A")}$.`));
   frame(L, ["Both curves are scaled to their own peak so the shift is visible whatever the amplitudes."],
     [`The voltage peaks at ${say(Math.SQRT2 * r.V, "V")}. ` + (r.unbounded === "current" ? "The current is unbounded, so it is not drawn." : r.I === 0 ? "No current flows from the source." : `The current peaks at ${say(Math.SQRT2 * r.I, "A")}. ${r.phi > 0.05 ? "The current curve is shifted right: it lags." : r.phi < -0.05 ? "The current curve is shifted left: it leads." : "The two curves line up: they are in phase."}`)]);
   // Power
@@ -1106,7 +1111,6 @@ function syncControls(opts) {
   $("extra-f").textContent = "ω = 2πf = " + disp(res.omega, "rad/s");
   $("extra-R").textContent = i.mode === "parallel" ? "G = 1/R = " + disp(1 / i.R, "S") : "";
   $("tri").checked = state.displayOptions.powerTriangle;
-  $("go-f0").disabled = !res.lc || res.f0 < P.RANGES.f.min || res.f0 > P.RANGES.f.max;
   if ($("date") !== document.activeElement) $("date").value = state.export.date;
 }
 
@@ -1307,8 +1311,6 @@ function registerTools() {
 function start() {
   buildQuantity($("elements"), "R", true); buildQuantity($("elements"), "L", true); buildQuantity($("elements"), "C", true);
   buildQuantity($("source"), "f", false); buildQuantity($("source"), "V", false);
-  $("source").insertAdjacentHTML("beforeend", '<div class="row"><button class="btn" type="button" id="go-f0">Set f to f₀</button></div>');
-  $("go-f0").addEventListener("click", () => { if (res.lc) set({ f: res.f0 }); });
   for (const r of document.querySelectorAll('input[name="mode"]')) r.addEventListener("change", () => set({ mode: r.value }));
   for (const p of P.PRESETS) {
     const b = document.createElement("button");
