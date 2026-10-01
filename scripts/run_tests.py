@@ -12,7 +12,7 @@ changed against that ref: visuals/<slug>/ and data/visuals/<slug>.yaml or .pin. 
 build scripts, the templates, CI or the requirements covers every folder, as does a run without --base
 (pushes to main) or one whose changes cannot be listed. Cross-cutting tests always run.
 
-Usage: scripts/run_tests.py [python] [node] [--base REF] [--slowest N]
+Usage: scripts/run_tests.py [python] [node] [--base REF]
 """
 
 import argparse
@@ -27,6 +27,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SLOWEST = 10
 BUDGET = ROOT / "tests" / "time-budget.json"
 # A changed path that selects one visualisation folder for the per-folder checks.
 VISUAL_PATH = re.compile(r"visuals/([^/]+)/|data/visuals/([^/]+)\.(?:yaml|pin)$")
@@ -88,7 +89,7 @@ class TimedModule(unittest.TestSuite):
         return result
 
 
-def run_python(slowest):
+def run_python():
     """Run the unittest suite; return (passed, slowest modules, slowest tests) with times in seconds."""
     os.chdir(ROOT)
     tests = ROOT / "tests"
@@ -97,10 +98,10 @@ def run_python(slowest):
     result = unittest.TextTestRunner(verbosity=1).run(suite)
     modules = sorted(TimedModule.seconds.items(), key=lambda item: -item[1])
     durations = sorted(result.collectedDurations, key=lambda item: -item[1])
-    return result.wasSuccessful(), modules[:slowest], durations[:slowest]
+    return result.wasSuccessful(), modules[:SLOWEST], durations[:SLOWEST]
 
 
-def run_node(slowest):
+def run_node():
     """Run node --test with its spec reporter; return (passed, slowest files, slowest tests)."""
     with tempfile.TemporaryDirectory() as directory:
         log = Path(directory) / "durations.jsonl"
@@ -120,8 +121,8 @@ def run_node(slowest):
             tests.append((f"{name}: {record['name']}", record["seconds"]))
     return (
         passed,
-        sorted(files.items(), key=lambda item: -item[1])[:slowest],
-        sorted(tests, key=lambda item: -item[1])[:slowest],
+        sorted(files.items(), key=lambda item: -item[1])[:SLOWEST],
+        sorted(tests, key=lambda item: -item[1])[:SLOWEST],
     )
 
 
@@ -137,23 +138,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("suites", nargs="*", choices=["python", "node"], help="the suites to run (default both)")
     parser.add_argument("--base", help="select per-visualisation checks by the changes against this ref")
-    parser.add_argument("--slowest", type=int, default=10, help="how many slowest tests to list (default 10)")
     args = parser.parse_args()
 
-    overhead = time.perf_counter()
     budgets = json.loads(BUDGET.read_text(encoding="utf-8"))
     value, described = selection(args.base)
     if value is None:
         os.environ.pop("SITE_TEST_VISUALS", None)
     else:
         os.environ["SITE_TEST_VISUALS"] = value
-    overhead = time.perf_counter() - overhead
     print(f"per-visualisation checks: {described}", flush=True)
 
     reports, failures = [], []
     for suite in dict.fromkeys(args.suites or ["python", "node"]):
         start = time.perf_counter()
-        passed, groups, tests = (run_python if suite == "python" else run_node)(args.slowest)
+        passed, groups, tests = (run_python if suite == "python" else run_node)()
         seconds = time.perf_counter() - start
         budget = budgets[f"{suite}_seconds"]
         reports.append(report(suite, seconds, budget, groups, tests))
@@ -166,7 +164,7 @@ def main():
                 f"{BUDGET.relative_to(ROOT)}; its slowest tests:{slow}"
             )
 
-    text = "\n".join([*reports, f"selection and budget tooling: {overhead:.2f} s"])
+    text = "\n".join(reports)
     print("\n" + text, flush=True)
     if summary := os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(summary, "a", encoding="utf-8") as handle:

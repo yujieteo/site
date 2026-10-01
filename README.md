@@ -84,9 +84,10 @@ slowest modules, files and tests. A suite over its budget in
 `tests/time-budget.json` fails with its slowest tests named. The budget does
 not grow with the number of visualisations: per-visualisation checks must stay
 constant-cost, and heavy or end-to-end tests belong in the visualisation's own
-repository. It is 600 s for Python, about twice the roughly 300 s CI took in
-October 2026 (about 100 s on a laptop), and 60 s for Node, which took under a
-second; raising it is a deliberate edit to that file. Node runs every
+repository. Its values (600 s for Python, 60 s for Node) are a provisional
+ceiling, not a benchmark derived from today's timings: the suite is expected to
+grow as more visualisations and tests arrive, so they are deliberately
+adjustable in that one file, and a pull request that raises them states why. Node runs every
 `tests/*.test.mjs` and `tests/*.test.cjs`, so a new Node test needs no change
 to this command or to CI.
 
