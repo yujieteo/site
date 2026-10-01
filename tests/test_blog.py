@@ -21,14 +21,7 @@ class BlogPostPageTests(unittest.TestCase):
             published = ROOT / "site/blog" / source.name
             self.assertEqual(published.read_bytes(), source.read_bytes(), source.name)
 
-    def test_copy_button_carries_the_markdown_source(self):
-        match = re.search(
-            r'<script type="application/json" id="post-markdown">(.*?)</script>',
-            self.page, re.DOTALL,
-        )
-        self.assertIsNotNone(match)
-        source = (ROOT / "data/blog" / f"{SLUG}.md").read_text(encoding="utf-8")
-        self.assertEqual(json.loads(match.group(1)), source)
+    def test_view_markdown_links_the_published_source(self):
         self.assertIn(f'href="{SLUG}.md"', self.page)
 
     def test_left_sidebar_lists_every_post_and_marks_the_current_one(self):

@@ -96,6 +96,7 @@ main,
 .active-filters,
 .site-nav,
 .page-action-status,
+.copy-fallback,
 .site-search-dialog[open],
 .site-search-dialog[open]::backdrop,
 .site-search-results > * {
@@ -166,6 +167,7 @@ a {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+textarea:focus-visible,
 summary:focus-visible,
 .entry-title:focus-visible {
   outline: 0.125rem solid var(--focus);
@@ -1359,8 +1361,58 @@ mjx-container[display="true"] {
   font-size: var(--text-xs);
 }
 
-.page-action-status:empty {
-  display: none;
+.note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.copy-note {
+  min-height: 2rem;
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  color: var(--secondary);
+  font: inherit;
+  font-size: var(--text-xs);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+}
+
+.copy-note:hover {
+  color: var(--foreground);
+  text-decoration-color: currentColor;
+}
+
+.copy-fallback {
+  display: grid;
+  flex: 1 1 100%;
+  gap: var(--space-2);
+  min-width: 0;
+  margin-top: var(--space-3);
+}
+
+.copy-fallback-hint {
+  color: var(--secondary);
+  font-size: var(--text-xs);
+}
+
+.copy-fallback-text {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) / 2);
+  background: var(--surface);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  resize: vertical;
 }
 
 @media (max-width: 72rem) {

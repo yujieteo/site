@@ -189,7 +189,8 @@ def parse_notes(text, registry, path="data/notes.md"):
                     errors.append(f"{label}: unknown tag #{tag}; add it to data/note-tags.json if genuinely new")
                 elif definition["replaced_by"] is not None:
                     errors.append(f"{label}: #{tag} is deprecated; use #{definition['replaced_by']}")
-            notes.append({"id": note_id(iso_date, content), "content": content, "tags": raw_tags})
+            notes.append({"id": note_id(iso_date, content), "content": content, "tags": raw_tags,
+                          "source": block})
         entries.append({
             "date": iso_date,
             "display_date": parsed_date.strftime("%-d %B %Y") if parsed_date else iso_date,

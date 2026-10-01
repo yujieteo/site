@@ -1,22 +1,6 @@
-// Blog post page: copy the Markdown source, highlight the current section in
-// the "On this page" list, and collapse the post list on narrow screens.
-
-const source = document.getElementById("post-markdown");
-const copyButton = document.querySelector("[data-copy-markdown]");
-const copyStatus = document.querySelector("[data-copy-status]");
-
-if (source && copyButton) {
-  const markdown = JSON.parse(source.textContent);
-  copyButton.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(markdown);
-      copyStatus.textContent = "Copied";
-    } catch {
-      copyStatus.textContent = "Copy failed; use View Markdown";
-    }
-    setTimeout(() => { copyStatus.textContent = ""; }, 2000);
-  });
-}
+// Blog post page: highlight the current section in the "On this page" list,
+// and collapse the post list on narrow screens. Copy Markdown is
+// copy-markdown.js.
 
 const nav = document.querySelector("[data-docs-nav]");
 const narrow = window.matchMedia("(max-width: 48rem)");
