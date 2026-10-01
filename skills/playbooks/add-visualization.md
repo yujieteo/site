@@ -23,12 +23,17 @@ Three older folders predate this: `beamdiag` and `beamdswitch` track or vendor a
 
 Every change is tested end to end as well as by its unit and logic tests: in its own repository the visualization is exercised as a real page in a browser, and here the port is checked in the built site. The no-mistakes pipeline runs twice per change:
 
-1. **In `yujieteo/<slug>`**, before the site pull request. It runs the repository's unit, logic and browser end-to-end tests against a clone of `yujieteo/site` with the change ported in, so the page is validated in the site context (shell, catalogue stub, WebMCP tools, published `data.json`) as well as on its own.
-2. **On the site pull request** that ports it. Only the site-level tests run: [Stage A](../verify.md#stage-a-pre-deploy) (validate, build, the Python and Node suites, including `tests/test_visual_ports.py`), which checks the port end to end in the built site. The logic and browser tests are not repeated here.
+1. **In `yujieteo/<slug>`**, before the site pull request. It runs the repository's unit, logic and browser end-to-end tests against a clone of `yujieteo/site` with the change ported in, so the page is validated in the site context (shell, catalogue stub, WebMCP tools, published `data.json`) as well as on its own. Take a shallow clone (`git clone --depth 1 https://github.com/yujieteo/site`), port the change into it, and build and browse only that one visualization's page; never run the full site build or the site's test suite there.
+2. **On the site pull request** that ports it. Only the site-level tests run: [Stage A](../verify.md#stage-a-pre-deploy) (validate, build, the Python and Node suites, including `tests/test_visual_ports.py`), which checks the port end to end in the built site. The logic and browser tests are not repeated here, and the first run does not repeat the site suite: each check runs in exactly one of the two.
 
 ## Site test cost
 
-Every site test runs on every deploy, so a slow one delays every change. Time each site test you add, for example `time .venv/bin/python -m unittest tests.test_visual_ports` or `time node --test tests/<file>.test.mjs`, and keep each well under a second. Never put rebuilds, subprocess builds, full-corpus scans, browser launches or network access in a site test; that work belongs in the standalone repository's CI. List each site test you add and its time in the pull request description.
+Plan for many more visualizations, tests and parallel workers than today; the site suite is already a bottleneck, so its current running time is not a benchmark to stay under.
+
+- The site suite's total time is a budget that must not grow with the number of visualizations. A per-visualization site check is constant-cost and data-driven: one entry in a list such as `PORTS`, with no per-visualization build or browser step on the site.
+- Heavy and end-to-end tests live in the visualization's own repository, where they run only when it changes.
+- Never put rebuilds, subprocess builds, full-corpus scans, browser launches or network access in a site test.
+- Time every site test you add, for example `time .venv/bin/python -m unittest tests.test_visual_ports` or `time node --test tests/<file>.test.mjs`, and keep each well under a second. A pull request that adds site test time lists each added test with its time, and says how much it adds to the suite and why.
 
 ## Narrated reports
 
