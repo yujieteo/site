@@ -201,6 +201,7 @@ footer{margin-top:3rem;font-size:.8125rem;color:var(--muted)}
   <p class="note">Every file is canonical SI (mm, N, MPa); <code>displayUnits</code> only restores the unit toggle. Every export repeats the disclaimer, the warnings and the assumptions.</p>
   <div class="io">
     <div><b>Markdown report</b><p>Inputs, results, formula sources, warnings, assumptions and disclaimer.</p><div class="row"><button class="btn" type="button" data-dl="md">Download</button><button class="btn" type="button" data-copy="md">Copy</button></div></div>
+    <div><b>beamdswitch deck</b><p>A narrated Markdown talk on this joint, every number as shown here, to open in <a href="https://teoyujie.org/visuals/beamdswitch/">beamdswitch</a> for slides, a handout and a video.</p><div class="row"><button class="btn" type="button" id="save-beamdswitch" title="Save a narrated Markdown talk about this joint, to open in beamdswitch">beamdswitch</button><button class="btn" type="button" id="copy-beamdswitch" title="Copy the beamdswitch deck to the clipboard">Copy deck</button></div></div>
     <div><b>Results JSON</b><p>Full inputs, results and <code>schemaVersion</code>.</p><div class="row"><button class="btn" type="button" data-dl="results">Download</button><button class="btn" type="button" data-copy="results">Copy</button></div></div>
     <div><b>Inputs-only JSON</b><p>Just the inputs, to share or reload.</p><div class="row"><button class="btn" type="button" data-dl="inputs">Download</button><button class="btn" type="button" data-copy="inputs">Copy</button></div></div>
     <div><b>Import</b><p>An inputs JSON, a results JSON, or a test vector (inputs plus expected results).</p><div class="row"><button class="btn" type="button" id="import">Choose file…</button></div>
@@ -231,6 +232,9 @@ footer{margin-top:3rem;font-size:.8125rem;color:var(--muted)}
 
 <script>
 /*@ENGINE@*/
+</script>
+<script>
+/*@BEAMDSWITCH@*/
 </script>
 <script>
 (function () {
@@ -474,6 +478,35 @@ async function copy(kind) {
   try { await navigator.clipboard.writeText(p.text); say(`Copied ${p.name.replace(/^edge-pitch-/, "")} to the clipboard.`); } catch (e) { say("Copy failed: the browser blocked clipboard access."); }
 }
 function say(msg) { $("status").textContent = msg; }
+
+/* ---------- beamdswitch deck ----------
+   The report template lives in beamdswitch.js; the engine fills it from the solved joint. */
+function reportDeck() {
+  const report = E.jointReport(state, units, { vectors: userVectors });
+  return report && Beamdswitch.deck(report);
+}
+async function saveDeck() {
+  const text = reportDeck(), name = "edge-pitch-beamdswitch.md";
+  if (!text) { say("Fix the joint first: there is no solution to save."); return; }
+  try {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([text], { type: "text/markdown" }));
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+    say(`Saved ${name}: open it in beamdswitch.`);
+  } catch (e) {
+    try { await navigator.clipboard.writeText(text); say("Copied the beamdswitch deck, as saving is blocked here: paste it into beamdswitch."); }
+    catch (e2) { say("Could not save or copy the beamdswitch deck here."); }
+  }
+}
+async function copyDeck() {
+  const text = reportDeck();
+  if (!text) { say("Fix the joint first: there is no solution to copy."); return; }
+  try { await navigator.clipboard.writeText(text); say("Copied the beamdswitch deck: paste it into beamdswitch."); }
+  catch (e) { say("Copy failed: the browser blocked clipboard access."); }
+}
 function importText(text) {
   let got;
   try { got = E.parseImport(text); } catch (e) { say("Import failed: " + e.message); return; }
@@ -516,6 +549,8 @@ function wire() {
   for (const b of document.querySelectorAll("[data-units]")) b.addEventListener("click", () => { units = b.dataset.units; syncForm(); refresh(); });
   for (const b of document.querySelectorAll("[data-dl]")) b.addEventListener("click", () => download(b.dataset.dl));
   for (const b of document.querySelectorAll("[data-copy]")) b.addEventListener("click", () => copy(b.dataset.copy));
+  $("save-beamdswitch").addEventListener("click", saveDeck);
+  $("copy-beamdswitch").addEventListener("click", copyDeck);
   $("reset").addEventListener("click", () => { state = E.example(); syncForm(); refresh(); say("Reset to the placeholder joint."); });
   $("selftest").addEventListener("click", () => { const t = runSelfTests(); say(`Self-test: ${t.filter((q) => q.pass).length} of ${t.length} pass.`); });
   $("import").addEventListener("click", () => $("file").click());

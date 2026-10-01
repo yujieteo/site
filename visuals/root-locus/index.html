@@ -235,7 +235,10 @@ footer{color:var(--muted);font-size:.8rem;padding:0 16px 2rem;max-width:1600px;m
         <div class="toolbar">
           <button type="button" class="primary" id="exportBtn">Export Markdown</button>
           <button type="button" id="copyBtn">Copy Markdown</button>
+          <button type="button" id="saveDeckBtn" title="Save a narrated Markdown talk about this check, to open in beamdswitch">beamdswitch</button>
+          <button type="button" id="copyDeckBtn" title="Copy the beamdswitch deck to the clipboard">Copy deck</button>
         </div>
+        <p class="hint">The beamdswitch button saves this check as a narrated talk: a Markdown deck with the set-up, method, results and checks, every number as shown here, and a spoken narration on every slide. Open it in <a href="https://teoyujie.org/visuals/beamdswitch/">beamdswitch</a> to get slides, a handout, narration and a video. Copy deck puts the same deck on the clipboard, and if saving is blocked the beamdswitch button copies it instead.</p>
         <p class="hint" id="ioStatus" role="status"></p>
         <label for="importFile">Import a .md or .json record</label>
         <input id="importFile" type="file" accept=".md,.markdown,.json,.txt,text/markdown,application/json,text/plain">
@@ -269,6 +272,96 @@ footer{color:var(--muted);font-size:.8rem;padding:0 16px 2rem;max-width:1600px;m
   <p class="hint">In the z-plane, G is still entered in s and discretised; C and H use z.</p>
   <form method="dialog"><button class="primary">Close</button></form>
 </dialog>
+<script>
+/* The standard beamdswitch report template, shared by every visualisation.
+ *
+ * beamdswitch (https://teoyujie.org/visuals/beamdswitch/) turns one Markdown deck into slides, a
+ * handout, narration and a video. `deck(report)` writes a report in its deck syntax, always in the
+ * same order (templates/beamdswitch-report.md shows the skeleton):
+ *
+ *   front matter and title slide
+ *   # Set-up               what was modelled, its units and conventions
+ *   # Method               how the tool solved it
+ *   # Results              the numbers, with key equations and plots
+ *   # Checks and takeaway  what confirms the numbers, ending on one ::: key frame
+ *
+ * A report is plain data, so it can be built and tested without a page:
+ *   { meta: { title, subtitle, author, date, voice }, narration, notes,
+ *     setup, method, results, checks: [frame, ...] }
+ * and each frame is
+ *   { title, body, narration, notes, key, plot: { x: [a, b], xlabel, ylabel, curves: ["expr", ...] } }
+ * `body` is Markdown (LaTeX maths in $...$ or $$...$$); `narration` is plain spoken prose, one
+ * caption per sentence; `key`, `plot` and `notes` are optional. Every frame must be narrated, and
+ * the last checks frame must carry a key. The visualisation supplies every number already
+ * formatted, so the deck says exactly what its page shows.
+ */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === "object" && module.exports) module.exports = api;
+  else root.Beamdswitch = api;
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  const SECTIONS = [["setup", "Set-up"], ["method", "Method"], ["results", "Results"], ["checks", "Checks and takeaway"]];
+
+  const oneLine = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+  /* Markdown lines that would end a frame or a div early are refused rather than written. */
+  function block(text, what) {
+    const s = String(text ?? "").replace(/\r\n?/g, "\n").trim();
+    for (const line of s.split("\n"))
+      if (/^#{1,2}\s/.test(line) || /^\s*:{3,}/.test(line)) throw new Error(`${what} must not contain a heading or a ::: line: ${line}`);
+    return s;
+  }
+  /* Narration is read aloud: no maths, markup or line structure. */
+  function spoken(text, what) {
+    const s = oneLine(text);
+    if (!s) throw new Error(`${what} needs a narration.`);
+    if (/[$\\`*_#|<>]/.test(s)) throw new Error(`${what} narration must be plain spoken prose: ${s}`);
+    return s;
+  }
+  const div = (name, text) => [`::: ${name}`, text, ":::"];
+
+  function frame(f, where) {
+    const title = oneLine(f.title), what = `Frame "${title}" in ${where}`;
+    if (!title) throw new Error(`A frame in ${where} needs a title.`);
+    const out = [`## ${title}`, ""];
+    if (f.body) out.push(block(f.body, what), "");
+    if (f.plot) {
+      const p = f.plot, lines = [`x: ${p.x[0]}, ${p.x[1]}`];
+      if (p.xlabel) lines.push(`xlabel: ${oneLine(p.xlabel)}`);
+      if (p.ylabel) lines.push(`ylabel: ${oneLine(p.ylabel)}`);
+      for (const c of p.curves) lines.push(`y = ${oneLine(c)}`);
+      out.push(...div("plot", lines.join("\n")), "");
+    }
+    if (f.key) out.push(...div("key", block(f.key, what)), "");
+    if (f.notes) out.push(...div("notes", block(f.notes, what)), "");
+    out.push(...div("narration", spoken(f.narration, what)), "");
+    return out;
+  }
+
+  function deck(report) {
+    const meta = report.meta || {};
+    if (!oneLine(meta.title)) throw new Error("The report needs a title.");
+    const checks = report.checks || [];
+    if (!checks.length || !checks.at(-1).key) throw new Error("The last checks frame must carry a ::: key.");
+    const out = ["---"];
+    for (const k of ["title", "subtitle", "author", "date", "voice"]) if (oneLine(meta[k])) out.push(`${k}: ${oneLine(meta[k])}`);
+    out.push("---", "");
+    if (report.notes) out.push(...div("notes", block(report.notes, "The title slide")), "");
+    out.push(...div("narration", spoken(report.narration, "The title slide")), "");
+    SECTIONS.forEach(([id, title], i) => {
+      const frames = report[id] || [];
+      if (!frames.length) throw new Error(`The ${title} section needs at least one frame.`);
+      out.push(`# ${title}`, "", ...div("narration", `Part ${i + 1}. ${title}.`), "");
+      for (const f of frames) out.push(...frame(f, title));
+    });
+    return out.join("\n");
+  }
+
+  return { SECTIONS, deck };
+});
+
+</script>
 <script>
 'use strict';
 /* ===== Numeric core: plain functions, no DOM. Loadable in Node through the module.exports guard below. ===== */
@@ -1718,6 +1811,169 @@ function runSelfTests() {
 }
 
 /* ---------- machine-readable summary and WebMCP tools ---------- */
+/* ---------- beamdswitch report ----------
+   locusReport(inputs, opts) describes the check as a report for the standard beamdswitch template
+   (beamdswitch.js; templates/beamdswitch-report.md). Every number is read from analyze() and written
+   with fmt at the page's on-screen 4 significant figures, so the deck says what the page shows.
+   opts.analysis reuses the page's analysis. Returns null when the loop cannot be analysed. */
+var REPORT_SIG = 4;
+// "1.5e-7" is said "1.5 times ten to the minus 7"; "-0.5" is said "minus 0.5"; "∞" is said "infinity".
+function sayNumber(text) {
+  text = String(text);
+  if (text === '∞' || text === '-∞') return (text[0] === '-' ? 'minus ' : '') + 'infinity';
+  var m = /^(-?)(\d+(?:\.\d+)?)(?:e([+-]?\d+))?$/.exec(text);
+  if (!m) return text;
+  return (m[1] ? 'minus ' : '') + m[2] + (m[3] == null ? '' : ' times ten to the ' + (Number(m[3]) < 0 ? 'minus ' : '') + Math.abs(Number(m[3])));
+}
+// A point of the plane said as fmtC writes it: "-0.3337 + 0.5623j" is said "minus 0.3337 plus 0.5623 j".
+function sayComplex(z, sig) {
+  var m = cabs(z), re = Math.abs(z.re) < 1e-9 * m ? 0 : z.re, im = Math.abs(z.im) < 1e-9 * m ? 0 : z.im;
+  if (im === 0) return sayNumber(fmt(re, sig));
+  var ims = sayNumber(fmt(Math.abs(im), sig)) + ' j';
+  if (re === 0) return (im < 0 ? 'minus ' : '') + ims;
+  return sayNumber(fmt(re, sig)) + (im < 0 ? ' minus ' : ' plus ') + ims;
+}
+var SPOKEN_REQS = {
+  zetaMin: function (v) { return 'a damping ratio of at least ' + sayNumber(fmt(v, REPORT_SIG)); },
+  wnMin: function (v) { return 'a natural frequency of at least ' + sayNumber(fmt(v, REPORT_SIG)) + ' radians per second'; },
+  wnMax: function (v) { return 'a natural frequency of at most ' + sayNumber(fmt(v, REPORT_SIG)) + ' radians per second'; },
+  settlingTime: function (v) { return 'a 2 percent settling time of at most ' + sayNumber(fmt(v, REPORT_SIG)) + ' seconds'; }
+};
+var SPOKEN_REQ_NAMES = { stability: 'stability', zetaMin: 'the minimum damping ratio', wnMin: 'the minimum natural frequency', wnMax: 'the maximum natural frequency', settlingTime: 'the settling time' };
+function locusReport(inputs, opts) {
+  opts = opts || {};
+  var analysis = opts.analysis || analyze(inputs);
+  if (!analysis.ok) return null;
+  var S = REPORT_SIG, loop = analysis.loop, x = loop.x, z = loop.mode === 'z', F = loop.fields, ann = analysis.annotations;
+  var k = Number(inputs.k), atk = closedLoopAt(analysis, k, inputs.requirements), scan = analysis.scan, reqs = scan.requirements;
+  var plane = z ? 'z-plane' : 's-plane', n = orderOf(loop.den), m = orderOf(loop.num);
+  var code = function (s) { return mdCode(s); };
+  var count = function (q, one, many) { return q + ' ' + (q === 1 ? one : many); };
+  var failing = [];
+  atk.poles.forEach(function (a) { a.fails.forEach(function (f) { if (failing.indexOf(f) < 0) failing.push(f); }); });
+  var verdict = scan.active.length ? (atk.pass ? 'PASS' : 'FAIL') : (atk.stable ? 'Stable' : 'Unstable');
+  var intervalSaid = function (iv) {
+    if (iv.toKMax) return (iv.lo === 0 ? 'every gain above 0' : 'gains above ' + sayNumber(fmt(iv.lo, S))) + ', up to the end of the sweep at ' + sayNumber(fmt(iv.hi, S));
+    return 'gains between ' + sayNumber(fmt(iv.lo, S)) + ' and ' + sayNumber(fmt(iv.hi, S));
+  };
+  var verdictSaid = scan.intervals.length
+    ? (scan.active.length ? 'Every requirement is met for ' : 'The loop is stable for ') + scan.intervals.map(intervalSaid).join(', and for ') + '.'
+    : (scan.active.length ? 'No gain meets every requirement' : 'No gain up to ' + sayNumber(fmt(analysis.kMax, S)) + ' is stable') +
+      (scan.nearest ? '; the nearest miss is at K equals ' + sayNumber(fmt(scan.nearest.k, S)) + ', where ' + SPOKEN_REQ_NAMES[scan.nearest.binding] + ' binds.' : '.');
+
+  var blockRows = [['C(' + x + ')', inputs.fields.C, F.C, x]];
+  if (z) blockRows.push(['G(s)', inputs.fields.G, F.Gs, 's'], ['G(z), ' + METHODS[loop.method], null, F.Gz, 'z']);
+  else blockRows.push(['G(s)' + (loop.delay.Td > 0 ? ' with Padé delay' : ''), inputs.fields.G, F.G, 's']);
+  blockRows.push(['H(' + x + ')', inputs.fields.H, F.H, x], ['L(' + x + ')/K', null, { num: loop.num, den: loop.den }, x]);
+  var delayText = loop.delay.kind === 'pade'
+    ? (loop.delay.Td > 0 ? 'Td = ' + fmt(loop.delay.Td, S) + ' s, Padé order ' + loop.delay.order : 'none')
+    : (loop.delay.n > 0 ? 'n = ' + loop.delay.n + (loop.delay.n === 1 ? ' sample' : ' samples') + ', z**-' + loop.delay.n : 'none');
+  var openSaid = function (list) { return list.map(function (p) { return sayComplex(p, S); }).join(', '); };
+
+  var setup = [
+    {
+      title: 'The loop: L(' + x + ') = K · ' + code(factoredStr(loop.num, loop.den, x, S)),
+      body: ['| Block | Entered | Factored form |', '| --- | --- | --- |'].concat(blockRows.map(function (b) {
+        return '| ' + b[0] + ' | ' + (b[1] == null ? '—' : code(b[1])) + ' | ' + code(factoredStr(b[2].num, b[2].den, b[3], S)) + ' |';
+      }), ['', '- Plane: ' + (z ? 'z-plane (discrete time), T = ' + fmt(loop.T, S) + ' s, G discretised by ' + METHODS[loop.method] : 's-plane (continuous time)'),
+        '- Delay: ' + delayText, '- Open loop: ' + count(n, 'pole', 'poles') + ', ' + count(m, 'zero', 'zeros') + '; polynomials normalised so each denominator is monic']).join('\n'),
+      notes: 'Open loop L = K·C·G·H, with K ≥ 0. In the z-plane, G is entered in s and discretised; C and H are entered in z.',
+      narration: 'The open loop is the gain K times the compensator, the plant and the feedback path, checked in the ' + plane + '. ' +
+        'It has ' + count(n, 'pole', 'poles') + (n ? ', at ' + openSaid(loop.poles) : '') + ', and ' + count(m, 'zero', 'zeros') + (m ? ', at ' + openSaid(loop.zeros) : '') + '.' +
+        (z ? ' The plant is sampled every ' + sayNumber(fmt(loop.T, S)) + ' seconds.' : '') +
+        (loop.delay.kind === 'pade' && loop.delay.Td > 0 ? ' A delay of ' + sayNumber(fmt(loop.delay.Td, S)) + ' seconds is approximated by a Padé approximant of order ' + loop.delay.order + '.' : '')
+    },
+    {
+      title: scan.active.length ? 'Requirements: stability and ' + count(scan.active.length, 'more', 'more') : 'Requirement: stability only',
+      body: ['| Requirement | Value |', '| --- | --- |', '| ' + REQ_LABELS.stability + ' | always on |'].concat(REQ_KEYS.filter(function (key) { return reqs[key] !== undefined; }).map(function (key) {
+        return '| ' + REQ_LABELS[key] + ' | ' + fmt(reqs[key], S) + (key === 'zetaMin' ? '' : key === 'settlingTime' ? ' s (Re(s) ≤ ' + fmt(-4 / reqs[key], S) + ')' : ' rad/s') + ' |';
+      })).join('\n'),
+      notes: z ? 'In the z-plane the allowed region is mapped through z = exp(s·T).' : 'A 2% settling time Ts asks for Re(s) ≤ −4/Ts.',
+      narration: 'Every closed-loop pole must be ' + (z ? 'inside the unit circle' : 'in the left half-plane') + (scan.active.length ? ', with ' + scan.active.map(function (key) { return SPOKEN_REQS[key](reqs[key]); }).join(', and ') : '') + '.'
+    }
+  ];
+
+  var method = [
+    {
+      title: 'Characteristic equation: D_L(' + x + ') + K · N_L(' + x + ') = 0',
+      body: ['$$ 1 + K\\,C(' + x + ')\\,G(' + x + ')\\,H(' + x + ') = 0 \\iff D_L(' + x + ') + K\\,N_L(' + x + ') = 0 $$', '',
+        '- N_L(' + x + ') = ' + code(polyStr(loop.num, x, S)), '- D_L(' + x + ') = ' + code(polyStr(loop.den, x, S)),
+        '- K swept from 0 to K max = ' + fmt(analysis.kMax, S) + (inputs.kMax == null ? ' (auto)' : '')].join('\n'),
+      notes: 'Roots come from the balanced companion matrix with Francis QR; branches are matched between K steps so they never swap.',
+      narration: 'The closed-loop poles are the roots of the open-loop denominator plus K times its numerator. ' +
+        'The page finds those roots as K sweeps from 0 to ' + sayNumber(fmt(analysis.kMax, S)) + ', and tracks each branch from an open-loop pole.'
+    },
+    {
+      title: 'Annotations, computed analytically',
+      body: ['- Critical K: ' + (ann.crossings.length ? ann.crossings.map(function (c) { return crossingText(c, loop, S); }).join('; ') : 'no ' + (z ? 'unit-circle' : 'imaginary-axis') + ' crossing for 0 < K ≤ ∞'),
+        '- Breakaway / break-in: ' + (ann.breakpoints.length ? ann.breakpoints.map(function (b) { return b.kind + ' ' + x + ' = ' + fmt(b.x, S) + ' (K = ' + fmt(b.k, S) + ')'; }).join('; ') : 'none on the real axis'),
+        '- Asymptotes: ' + (ann.asymptotes ? 'centroid ' + fmt(ann.asymptotes.centroid, S) + ', angles ' + ann.asymptotes.angles.map(function (v) { return fmt(v, S) + '°'; }).join(', ') : 'none (as many zeros as poles)'),
+        '- Real-axis segments: ' + (ann.segments.length ? ann.segments.map(function (sg) { return '(' + fmt(sg[0], S) + ', ' + fmt(sg[1], S) + ')'; }).join(', ') : 'none')].join('\n'),
+      notes: 'Breakaway and break-in points are the real roots of N·D′ − N′·D on the locus; crossings solve Im(D·conj N) = 0 on the ' + (z ? 'unit circle' : 'imaginary axis') + '.',
+      narration: (ann.crossings.length
+        ? 'The locus crosses the ' + (z ? 'unit circle' : 'imaginary axis') + ' at ' + ann.crossings.map(function (c) { return 'K equals ' + sayNumber(fmt(c.k, S)) + ', at a frequency of ' + sayNumber(fmt(c.omega, S)) + ' radians per second'; }).join(', and at ') + '.'
+        : 'The locus never crosses the ' + (z ? 'unit circle' : 'imaginary axis') + ' for positive K.') + ' ' +
+        (ann.breakpoints.length
+          ? ann.breakpoints.map(function (b) { return 'There is a ' + b.kind + ' point at ' + x + ' equals ' + sayNumber(fmt(b.x, S)) + ', where K is ' + sayNumber(fmt(b.k, S)) + '.'; }).join(' ')
+          : 'There is no breakaway or break-in point on the real axis.') +
+        (ann.asymptotes ? ' ' + count(ann.asymptotes.count, 'asymptote leaves', 'asymptotes leave') + ' from a centroid at ' + sayNumber(fmt(ann.asymptotes.centroid, S)) + '.' : '')
+    }
+  ];
+
+  var d = dominant(atk), dr = d && poleRow(d, loop, S);
+  var results = [
+    {
+      title: 'Closed-loop poles at K = ' + fmt(k, S) + ': ' + verdict,
+      body: ['| Pole ' + x + ' |' + (z ? ' s = ln(z)/T |' : '') + ' ζ | ωn (rad/s) | Status |', '| --- |' + (z ? ' --- |' : '') + ' --- | --- | --- |'].concat(atk.poles.map(function (a) {
+        var r = poleRow(a, loop, S);
+        return '| ' + r.pole + ' |' + (z ? ' ' + r.s + ' |' : '') + ' ' + r.zeta + ' | ' + r.wn + ' | ' + (a.pass ? 'ok' : a.stable ? 'fails req.' : 'unstable') + ' |';
+      })).join('\n'),
+      notes: 'Poles are sorted with the dominant one, ' + (z ? 'the largest |z|' : 'the largest real part') + ', first.',
+      narration: 'At K equals ' + sayNumber(fmt(k, S)) + ' the loop has ' + count(atk.poles.length, 'closed-loop pole', 'closed-loop poles') + ', and it is ' + (atk.stable ? 'stable' : 'unstable') + '. ' +
+        (d ? 'The dominant pole is at ' + sayComplex(d.pole, S) + (dr.zeta === '—' ? ', at the origin, with no defined damping ratio.' : ', with a damping ratio of ' + sayNumber(dr.zeta) + ' and a natural frequency of ' + sayNumber(dr.wn) + ' radians per second.') : '')
+    },
+    {
+      title: 'Closed loop T(' + x + ') at K = ' + fmt(k, S),
+      body: ['$$ T(' + x + ') = \\frac{K\\,C\\,G}{1 + K\\,C\\,G\\,H} $$', '', '- T(' + x + ') = ' + code(factoredStr(atk.T.num, atk.T.den, x, S)), '- Expanded: ' + code(ratStr(atk.T.num, atk.T.den, x, S))].join('\n'),
+      narration: 'The closed loop from reference to output is K times the compensator and plant, over one plus the open loop. Its denominator holds the ' + count(atk.poles.length, 'pole', 'poles') + ' in the table.'
+    },
+    {
+      title: 'Verdict: ' + verdict + ' at K = ' + fmt(k, S) + (failing.length ? ', failing ' + failing.map(function (f) { return REQ_LABELS[f]; }).join(', ') : ''),
+      body: ['- ' + verdictText(analysis, S)].concat(z && scan.active.length ? ['- The region is mapped to the z-plane through z = exp(s·T).'] : []).join('\n'),
+      narration: 'At K equals ' + sayNumber(fmt(k, S)) + ' the check ' + (scan.active.length ? (atk.pass ? 'passes every requirement' : 'fails ' + failing.map(function (f) { return SPOKEN_REQ_NAMES[f]; }).join(' and ')) : (atk.stable ? 'is stable' : 'is unstable')) + '. ' + verdictSaid
+    }
+  ];
+
+  var tests = runSelfTests(), passedCases = tests.cases.filter(function (c) { return c.checks.every(function (q) { return q.pass; }); }).length;
+  var hintList = Object.keys(analysis.hints || {}).map(function (f) { return f + ': ' + analysis.hints[f].join(' '); });
+  var warnCount = analysis.warnings.length + hintList.length;
+  var checks = [
+    {
+      title: 'Self-tests: ' + passedCases + ' of ' + tests.cases.length + ' verification cases pass',
+      body: tests.cases.map(function (c) { return '- ' + (c.checks.every(function (q) { return q.pass; }) ? 'PASS' : 'FAIL') + ': ' + code(c.name); }).join('\n'),
+      notes: 'The section 8 verification cases, computed by the same numeric core the page uses. Also at ?selftest.',
+      narration: 'The page runs ' + tests.cases.length + ' verification cases against hand results, and ' + (passedCases === tests.cases.length ? 'all of them pass' : passedCases + ' pass while ' + (tests.cases.length - passedCases) + ' fail') + '.'
+    },
+    {
+      title: warnCount ? count(warnCount, 'warning', 'warnings') + ' from the page' : 'No warnings from the page',
+      body: warnCount ? analysis.warnings.map(function (w) { return '- ' + (w.level === 'hazard' ? 'HAZARD: ' : w.level === 'warn' ? 'Warning: ' : 'Note: ') + w.text; }).concat(hintList.map(function (h) { return '- Input hint, ' + h; })).join('\n') : '- None.',
+      narration: warnCount ? 'The page raises ' + count(warnCount, 'warning', 'warnings') + ', listed on this slide.' : 'The page raises no warnings for this loop.'
+    },
+    {
+      title: 'Takeaway',
+      key: '**' + verdict + '** at K = ' + fmt(k, S) + (d ? '; dominant pole ' + dr.pole + ', ζ = ' + dr.zeta + ', ωn = ' + dr.wn + ' rad/s' : '') + '. ' + verdictText(analysis, S),
+      narration: 'At K equals ' + sayNumber(fmt(k, S)) + ' the loop is ' + (scan.active.length ? (atk.pass ? 'stable and meets every requirement' : (atk.stable ? 'stable but misses a requirement' : 'unstable')) : (atk.stable ? 'stable' : 'unstable')) + '. ' + verdictSaid
+    }
+  ];
+
+  return {
+    meta: { title: 'Root locus design check: ' + plane + ' loop with ' + count(n, 'pole', 'poles') + ' and ' + count(m, 'zero', 'zeros'), subtitle: verdict + ' at K = ' + fmt(k, S) },
+    notes: 'Root locus of D_L + K·N_L = 0 for K ≥ 0. Frequencies are in rad/s and times in s.',
+    narration: 'This report checks a feedback loop by root locus in the ' + plane + '. Frequencies are in radians per second and times in seconds.',
+    setup: setup, method: method, results: results, checks: checks
+  };
+}
+
 function summarize(inputs) {
   var a = analyze(inputs);
   if (!a.ok) return { ok: false, errors: a.errors };
@@ -1794,7 +2050,7 @@ if (typeof module !== 'undefined') module.exports = {
   buildLoop: buildLoop, annotate: annotate, sweepLocus: sweepLocus, analyze: analyze, closedLoopAt: closedLoopAt, inRegion: inRegion,
   scanRequirements: scanRequirements, branchSwaps: branchSwaps, exportMarkdown: exportMarkdown, parseRecord: parseRecord,
   recordJson: recordJson, createSession: createSession, applyImport: applyImport, runSelfTests: runSelfTests,
-  summarize: summarize, webmcpTools: webmcpTools
+  summarize: summarize, webmcpTools: webmcpTools, locusReport: locusReport
 };
 
 /* ===== Page UI (browser only) ===== */
@@ -2241,6 +2497,28 @@ if (typeof document !== 'undefined') (function () {
     function fallback() { var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; } t.remove(); ioStatus(ok ? 'Copied the Markdown record.' : 'Copy failed; use Export Markdown instead.'); }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { ioStatus('Copied the Markdown record.'); }, fallback); else fallback();
   });
+  /* ----- beamdswitch deck: the report template lives in the beamdswitch script above; locusReport fills it ----- */
+  function reportDeck() { var report = analysis && locusReport(inputs, { analysis: analysis }); return report && Beamdswitch.deck(report); }
+  function clipboardWrite(text) { return navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(text) : Promise.reject(new Error('no clipboard')); }
+  function saveDeck() {
+    var text = reportDeck(), name = 'root-locus-beamdswitch.md';
+    if (!text) { ioStatus('Fix the loop first: there is no analysis to save.'); return; }
+    try {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([text], { type: 'text/markdown' })); a.download = name; document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+      ioStatus('Saved ' + name + ': open it in beamdswitch.');
+    } catch (e) {
+      return clipboardWrite(text).then(function () { ioStatus('Copied the beamdswitch deck, as saving is blocked here: paste it into beamdswitch.'); }, function () { ioStatus('Could not save or copy the beamdswitch deck here.'); });
+    }
+  }
+  function copyDeck() {
+    var text = reportDeck();
+    if (!text) { ioStatus('Fix the loop first: there is no analysis to copy.'); return; }
+    return clipboardWrite(text).then(function () { ioStatus('Copied the beamdswitch deck: paste it into beamdswitch.'); }, function () { ioStatus('Copy failed: the browser blocked clipboard access.'); });
+  }
+  $('saveDeckBtn').addEventListener('click', saveDeck);
+  $('copyDeckBtn').addEventListener('click', copyDeck);
   function doImport(text, source) {
     var r = applyImport({ inputs: inputs }, text);
     if (r.error) { $('importErr').textContent = 'Import failed (' + source + '): ' + r.error + ' The current check is unchanged.'; $('ioSec').open = true; return; }

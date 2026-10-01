@@ -8,18 +8,21 @@ Analysis Manual* (1986) chapter 9. Everything runs in the browser and
 
 | File | Role |
 | --- | --- |
-| `engine.js` | Pure calculation core: validation, every chapter 9 failure mode, the Eq. 9-31 interaction, the angle sweep, unit conversion, JSON and URL-hash serialisation, and the self-tests. No DOM access. Works in the browser (`LugJoint`) and in Node (`require`). |
+| `engine.js` | Pure calculation core: validation, every chapter 9 failure mode, the Eq. 9-31 interaction, the angle sweep, unit conversion, JSON and URL-hash serialisation, the joint's beamdswitch report (`jointReport`), and the self-tests. No DOM access. Works in the browser (`LugJoint`) and in Node (`require`). |
+| `beamdswitch.js` | The standard beamdswitch report template (`deck(report)` writes a report as a beamdswitch Markdown deck); a copy of the site's shared [`templates/beamdswitch.js`](../../templates/beamdswitch.js), kept identical by the tests |
 | `template.html` | Page markup, styles, UI code, charts and WebMCP tools |
 | `raw.json` | Method, assumptions, scope, reference notes, examples and sources (published as `data.json`) |
-| `build.py` | Inlines `raw.json` and `engine.js` into `template.html` to write `index.html` |
+| `build.py` | Inlines `raw.json`, `engine.js` and `beamdswitch.js` into `template.html` to write `index.html` |
 
 ```sh
-python build.py   # rebuild index.html after editing template.html, engine.js or raw.json
+python build.py   # rebuild index.html after editing template.html, engine.js, beamdswitch.js or raw.json
 ```
 
 The tests are `tests/lug-joint.test.mjs` (Node: the Sec. 9.6 worked example at
 1%, the interaction checks, validation errors and warnings, unit and file
-round-trips, and the page's WebMCP tools) and `tests/test_lug_joint.py`
+round-trips, and the page's WebMCP tools), `tests/lug-joint-beamdswitch.test.mjs`
+(Node: the beamdswitch deck, parsed with beamdswitch's own parsers, and its
+buttons) and `tests/test_lug_joint.py`
 (Python: build reproducibility, the published copy and the self-tests). The
 page runs the same self-tests on every load and shows a pass/fail badge.
 
@@ -36,3 +39,13 @@ The Bruhn/Niu reference column starts empty: each formula is flagged
 "not cross-checked" until a reference is entered on the page, and the entries
 save with the inputs. The page's Reference notes list where the chapter's
 worked example disagrees with its own equations.
+
+The beamdswitch button, under the failure-mode table, saves the joint as a
+narrated talk for [beamdswitch](https://teoyujie.org/visuals/beamdswitch/):
+one Markdown deck with the set-up, method, results (with the Eq. 9-31
+interaction curve under an oblique or transverse load) and checks, every
+number in the chosen units as the page shows it and a spoken narration on
+every slide, written with the site's standard report template
+([`templates/beamdswitch-report.md`](../../templates/beamdswitch-report.md)).
+Copy deck puts the same deck on the clipboard; if saving is blocked, the
+beamdswitch button copies it instead.
