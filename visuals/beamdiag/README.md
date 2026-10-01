@@ -6,7 +6,7 @@ indeterminate beams, plus an MSC Nastran `.bdf` exporter. Everything runs in
 the browser; `index.html` is one self-contained file.
 
 This copy tracks [yujieteo/beamdiag](https://github.com/yujieteo/beamdiag)
-(commit `7a5831f`). The site keeps its own breadcrumb (back to Visuals), the
+(commit `bb6d349`). The site keeps its own breadcrumb (back to Visuals), the
 catalogue entry in `data/visuals/beamdiag.yaml`, the WebMCP tool checks and
 the page tests below, and three page fixes: the section cursor line ignores
 the pointer, so a handle can be dragged through it; axis ranges and load-arrow
@@ -16,26 +16,28 @@ table as well as the diagrams. Everything else here should match that repository
 
 | File | Role |
 | --- | --- |
-| `engine.js` | Stiffness-method solver, exact V/M recovery, section properties, NASTRAN SOL 101 exporter. Works in the browser (`BeamDiag`) and in Node (`require`). |
+| `engine.js` | Stiffness-method solver, exact V/M recovery, section properties, NASTRAN SOL 101 exporter, number formatting and the beam's beamdswitch report (`beamReport`). Works in the browser (`BeamDiag`) and in Node (`require`). |
+| `beamdswitch.js` | The standard beamdswitch report template (`deck(report)` writes a report as a beamdswitch Markdown deck); a copy of the site's shared [`templates/beamdswitch.js`](../../templates/beamdswitch.js), kept identical by the tests |
 | `template.html` | Page markup, styles and UI code |
 | `raw.json` | Presets, materials, conventions, NASTRAN notes and sources (published as `data.json`) |
-| `build.py` | Inlines `raw.json` and `engine.js` into `template.html` to write `index.html` |
+| `build.py` | Inlines `raw.json`, `engine.js` and `beamdswitch.js` into `template.html` to write `index.html` |
 | `reference.py` | Independent exact-arithmetic Python solver (Macaulay integration and compatibility) and a reader for the exported decks |
 | `fixtures.json` | Shared test beams with closed-form expectations |
 | `reference.json` | `reference.py` output on the fixtures, compared with `engine.js` by the tests |
 
 ```sh
-python build.py              # rebuild index.html after editing template.html, engine.js or raw.json
+python build.py              # rebuild index.html after editing template.html, engine.js, beamdswitch.js or raw.json
 python reference.py          # rebuild reference.json after editing fixtures.json
 python reference.py --check  # fail if reference.json is stale
 ```
 
 The tests are `tests/beamdiag.test.mjs`, `tests/beamdiag-ui.test.mjs`,
-`tests/beamdiag-review-regressions.test.mjs` and `tests/beamdiag-figure.test.mjs`
-(Node; the last two run the built page in the stand-in DOM of
+`tests/beamdiag-review-regressions.test.mjs`, `tests/beamdiag-figure.test.mjs`
+and `tests/beamdiag-beamdswitch.test.mjs` (Node; the last three run the built page in the stand-in DOM of
 `tests/beamdiag-page-harness.mjs`), and `tests/test_beamdiag.py` and
 `tests/test_beamdiag_random.py` (Python, which also run the engine through
-`node`). [beamdiag's docs/verification.md](https://github.com/yujieteo/beamdiag/blob/main/docs/verification.md)
+`node`). The beamdswitch test parses the decks with a read-only copy of
+beamdswitch's deck and plot parsers in `tests/fixtures/beamdswitch/`. [beamdiag's docs/verification.md](https://github.com/yujieteo/beamdiag/blob/main/docs/verification.md)
 lists what each checks.
 
 `tests/beamdiag-browser.test.mjs` drags a handle with real mouse events in
@@ -66,6 +68,14 @@ positive when sagging. The page lists the full conventions and assumptions.
 Every diagram has labelled x and y axes in the chosen units. The diagrams with
 every result can be saved as PNG, SVG or a one-page PDF, drawn in the page and
 saved straight to the device.
+
+The beamdswitch button saves the beam as a narrated talk for
+[beamdswitch](https://teoyujie.org/visuals/beamdswitch/): one Markdown deck
+with the set-up, the method, the results with their plots, and the checks,
+with spoken narration on every slide, written with the site's standard report
+template ([`templates/beamdswitch-report.md`](../../templates/beamdswitch-report.md)).
+Open it in beamdswitch to get slides, a handout, narration and a video. If the
+browser blocks the download, the deck is copied to the clipboard instead.
 
 The exported deck is laid out as it would be written by hand: small-field bulk
 data under `$` comment banners, switching a group to large field only when a
