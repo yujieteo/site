@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTS = {
     "bayes": "bayes",
     "convexity-action-engine": "convexity-action-engine",
+    "delta-cohomology": "delta-cohomology",
     "distortion": "distortion",
     "edge-pitch": "edge-pitch",
     "entropy-combinatorics": "entropy-combinatorics",
