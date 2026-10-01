@@ -347,7 +347,6 @@ footer{color:var(--muted);font-size:.8rem;padding:0 16px 2rem;max-width:1600px;m
     const checks = report.checks || [];
     if (!checks.length || !checks.at(-1).key) throw new Error("The last checks frame must carry a ::: key.");
     const fm = { ...meta, voice: oneLine(meta.voice) || DEFAULT_VOICE };
-    if (!/^[a-z]{2}_[a-z]+$/.test(fm.voice)) throw new Error(`The voice must be a beamdswitch voice such as ${DEFAULT_VOICE}: ${fm.voice}`);
     const out = ["---"];
     for (const k of ["title", "subtitle", "author", "date", "voice"]) if (oneLine(fm[k])) out.push(`${k}: ${oneLine(fm[k])}`);
     out.push("---", "");

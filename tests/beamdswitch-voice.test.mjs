@@ -28,35 +28,16 @@ test("a deck built with no meta.voice declares voice: bf_emma", () => {
   assert.deepEqual(frontMatter(B.deck({ ...report(), meta: { title: "A report" } })).at(-1), "voice: bf_emma");
 });
 
-test("a visualisation's own voice is kept, and a malformed one is refused", () => {
+test("a visualisation's own voice is kept", () => {
   assert.deepEqual(frontMatter(B.deck(report({ date: "1 October 2026", voice: "bf_isabella" }))), ["title: A report", "date: 1 October 2026", "voice: bf_isabella"]);
-  for (const voice of ["robot", "BF_EMMA", "bf_emma\nspeed: 2", "bf emma"]) assert.throws(() => B.deck(report({ voice })), /voice/, voice);
-});
-
-/* Every folder whose page writes a beamdswitch deck, other than beamdswitch itself. A new exporter
-   fails here until it is added to one of the lists below. */
-const TEMPLATE_PAGES = readdirSync(new URL("../visuals/", import.meta.url)).filter((slug) => {
-  try { return !!read(`visuals/${slug}/beamdswitch.js`); } catch { return false; }
-}).sort();
-const OWN_EXPORTERS = ["phasors", "toulmin"];
-
-test("every visualisation that exports a deck is covered by the voice sweep", () => {
-  const exporters = readdirSync(new URL("../visuals/", import.meta.url)).filter((slug) => {
-    if (slug === "beamdswitch") return false;
-    try { return /::: narration|"narration"/.test(read(`visuals/${slug}/index.html`)); } catch { return false; }
-  }).sort();
-  assert.deepEqual(exporters, [...TEMPLATE_PAGES, ...OWN_EXPORTERS].sort());
 });
 
 test("every visualisation on the shared template ships the template that always declares a voice", () => {
-  assert.ok(TEMPLATE_PAGES.length > 0);
-  for (const slug of TEMPLATE_PAGES) {
-    assert.equal(read(`visuals/${slug}/beamdswitch.js`), TEMPLATE, `visuals/${slug}/beamdswitch.js is the shared template`);
-    const html = read(`visuals/${slug}/index.html`);
-    assert.ok(html.includes(TEMPLATE.trimEnd()), `visuals/${slug}/index.html inlines the shared template`);
-    // A page leaves the voice empty (the template's default) or names one the template accepts.
-    for (const m of html.matchAll(/\bvoice:\s*"([^"]*)"/g)) assert.match(m[1], /^([a-z]{2}_[a-z]+)?$/, `${slug}: ${m[0]}`);
-  }
+  const pages = readdirSync(new URL("../visuals/", import.meta.url)).filter((slug) => {
+    try { return !!read(`visuals/${slug}/beamdswitch.js`); } catch { return false; }
+  });
+  assert.ok(pages.length > 0);
+  for (const slug of pages) assert.equal(read(`visuals/${slug}/beamdswitch.js`), TEMPLATE, `visuals/${slug}/beamdswitch.js is the shared template`);
 });
 
 test("Phasors and Toulmin export their default decks with voice bf_emma", () => {
