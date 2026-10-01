@@ -1,11 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import vm from "node:vm";
+import { createHash } from "node:crypto";
 import { assertButtonsExport, assertInlined, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const html = read("visuals/information-gain/index.html");
-const engine = /<script id="information-gain-engine">\n([\s\S]*?)<\/script>/.exec(html)[1];
-const load = () => { const ctx = {}; ctx.self = ctx; vm.runInNewContext(engine, ctx); return ctx.InformationGain; };
+const block = (id) => new RegExp(`<script id="${id}">\\n([\\s\\S]*?)</script>`).exec(html)[1];
+const data = block("information-gain-phrases"), engine = block("information-gain-engine");
+const load = () => { const ctx = {}; ctx.self = ctx; vm.runInNewContext(data, ctx); vm.runInNewContext(engine, ctx); return ctx.InformationGain; };
+const D = (() => { const ctx = {}; ctx.self = ctx; vm.runInNewContext(data, ctx); return ctx.PhraseData; })();
 const G = load();
 const T = (await import("node:module")).createRequire(import.meta.url)("../templates/beamdswitch.js");
 const plain = (v) => JSON.parse(JSON.stringify(v));
@@ -211,9 +214,44 @@ const EDGE = [
   ...["parcel", "phishing", "shopping", "project", "fault"].map((id) => ({ ...G.load(id), objective: "most" })),
 ];
 
+test("the phrase layer is Kent's scale and every survey answer from probly.csv, kept as separate sources", () => {
+  const csv = read("visuals/information-gain/probly.csv"), S = D.EMPIRICAL_PHRASE_DATA;
+  assert.equal(createHash("sha256").update(csv).digest("hex"), S.source.sha256);
+  const [head, ...rows] = csv.trim().split(/\r?\n/).map((l) => l.split(","));
+  assert.deepEqual(plain(S.columns.map((c) => c[0])), head);
+  assert.equal(rows.length, S.respondents);
+  S.columns.forEach(([label, values], j) => assert.deepEqual(plain(values), rows.map((r) => Number(r[j])), label));
+  assert.match(S.source.licence, /^MIT License, copyright \(c\) 2016 Zoni Nation$/);
+  assert.match(D.KENT_DATA.source.url, /Words-of-Estimative-Probability\.pdf$/);
+  assert.match(data, /The MIT License \(MIT\)\n \*\n \* Copyright \(c\) 2016 Zoni Nation/, "the licence notice travels with the embedded answers");
+  assert.match(read("visuals/information-gain/LICENSE"), /Copyright \(c\) 2016 Zoni Nation[\s\S]*Words of Estimative Probability/);
+  assert.match(html, /Used under the MIT License, copyright © 2016 Zoni Nation/);
+  // The vocabulary: survey median first, else the middle of Kent's range; Kent's range shown separately.
+  const likely = G.phrase("likely");
+  assert.deepEqual([likely.value, likely.basis, likely.kent.lo, likely.kent.hi, likely.kent.group, likely.survey.q1, likely.survey.q3], [70, "median survey answer", 63, 87, "probable", 65, 75]);
+  assert.equal(G.phrase("virtually certain").value, 93);
+  assert.equal(G.phrase("virtually certain").basis, "middle of Kent's range");
+  assert.equal(G.phrase("very good chance").kent, null);
+  assert.equal(G.phrase("certain").value, 100);
+  assert.equal(G.phrase("possible"), null, "Kent's possibility words carry no odds");
+  const all = G.phrases();
+  assert.equal(all.length, new Set(all.map((p) => p.id)).size);
+  for (let i = 1; i < all.length; i++) assert.ok(all[i - 1].value <= all[i].value, "ordered by working value");
+  for (const p of all) assert.ok(Number.isFinite(p.value) && p.value >= 0 && p.value <= 100, p.id);
+  assert.equal(G.defaults().prior.phrase, "likely");
+  assert.equal(G.defaults().prior.pct, 70, "the restaurant prior: likely ≈ 70%");
+  assert.equal(G.load("parcel").prior.pct, G.phrase("better than even").value);
+  assert.match(G.phraseNote({ phrase: "likely", pct: 70 }), /^Working value 70% \(median survey answer\)\. Kent's reference \(as “probable”\): 63%–87%\. Survey of 46 readers: median 70%, middle half 65%–75%\.$/);
+  assert.match(G.phraseNote({ phrase: "likely", pct: 95 }), /outside both reference ranges/);
+  assert.equal(G.phraseNote({ phrase: null, pct: 40 }), "");
+  assert.equal(G.scenario({ prior: { phrase: "made up", pct: 40 } }).prior.phrase, null, "an unknown phrase is never given numbers");
+  assert.match(G.analysis(G.defaults()), /^likely — 70%$/m);
+  assert.doesNotMatch(read("tests/information-gain.test.mjs"), new RegExp("visuals/" + "bayes"), "this page stands alone");
+});
+
 test("Copy analysis gives the question, checks, rankings and trail, never NaN or Infinity", () => {
   const md = G.analysis(EDGE[1]);
-  for (const line of ["## Question", "The restaurant wait will be longer than 20 minutes.", "## Starting belief", "70%", "## Remaining uncertainty", "1. Ask the host for an estimate (observed)",
+  for (const line of ["## Question", "The restaurant wait will be longer than 20 minutes.", "## Starting belief", "likely — 70%", "## Remaining uncertainty", "1. Ask the host for an estimate (observed)",
     "   Time: 1 min", '   P("Host says over 20 minutes" | H): 85%', '   P("Host says over 20 minutes" | not H): 20%', "## Most information overall", "## Most information per minute", "## Learning trail", "## Best next check (learn fastest, within the budget)"])
     assert.ok(md.split("\n").includes(line), line);
   assert.match(md, /Expected information: \d\.\d\d bits/);
@@ -223,6 +261,8 @@ test("Copy analysis gives the question, checks, rankings and trail, never NaN or
 
 test("raw.json and the catalogue stub match the engine", () => {
   const raw = JSON.parse(read("visuals/information-gain/raw.json"));
+  assert.deepEqual(raw.kent, plain(D.KENT_DATA));
+  assert.deepEqual(raw.survey, plain(D.EMPIRICAL_PHRASE_DATA));
   assert.deepEqual(raw.thresholds, plain(G.THRESHOLDS));
   assert.deepEqual(raw.units_in_minutes, plain(G.UNITS));
   assert.deepEqual(raw.limits, plain(G.LIMITS));
@@ -247,7 +287,8 @@ test("the page is one offline file with the metadata it promises", () => {
   assert.match(html, /prefers-color-scheme:dark/);
   assert.match(html, /<div id="nojs">[\s\S]*If E occurs: posterior = 90%[\s\S]*Enable JavaScript to compare your own checks interactively/);
   assert.match(html, /<div id="app" hidden/);
-  const own = html.length - read("templates/beamdswitch.js").length;
+  // The budget excludes the reused phrase-calibration data and the site's shared deck template.
+  const own = Buffer.byteLength(html) - Buffer.byteLength(data) - Buffer.byteLength(read("templates/beamdswitch.js"));
   assert.ok(own < 100_000, `the page's own code is ${own} bytes, under the ~100 KB budget`);
 });
 

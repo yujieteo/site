@@ -12,8 +12,8 @@
 <meta property="og:description" content="Express uncertain beliefs in plain English, compare possible observations by expected information gain and time cost, and see how new evidence changes what you believe.">
 <meta property="og:url" content="https://teoyujie.org/visuals/information-gain">
 <style>
-:root{--bg:#fff;--fg:#1d1d1f;--muted:#6e6e73;--rule:#d2d2d7;--base:#f5f5f7;--accent:#0071e3;--accent-soft:rgba(0,113,227,.14);--on-accent:#fff;--warn:#b25000;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--r:.6rem;--ease:.35s ease;color-scheme:light dark}
-@media (prefers-color-scheme:dark){:root{--bg:#1d1d1f;--fg:#f5f5f7;--muted:#a1a1a6;--rule:#48484a;--base:#2c2c2e;--accent:#2997ff;--accent-soft:rgba(41,151,255,.22);--on-accent:#1d1d1f;--warn:#ff9f43}}
+:root{--bg:#fff;--fg:#1d1d1f;--muted:#6e6e73;--rule:#d2d2d7;--base:#f5f5f7;--accent:#0071e3;--on-accent:#fff;--warn:#b25000;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--r:.6rem;--ease:.35s ease;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#1d1d1f;--fg:#f5f5f7;--muted:#a1a1a6;--rule:#48484a;--base:#2c2c2e;--accent:#2997ff;--on-accent:#1d1d1f;--warn:#ff9f43}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--sans);letter-spacing:-.011em;-webkit-font-smoothing:antialiased}
@@ -77,7 +77,6 @@ input[type=range]{width:100%;min-height:2.75rem;margin:0;accent-color:var(--acce
 .axis .tl.first{transform:none}.axis .tl.last{transform:translateX(-100%)}
 .mk{position:absolute;top:.45rem;width:1.15rem;height:1.15rem;margin-left:-.575rem;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--accent)}
 .mk.ghost{background:var(--bg);border:2px solid var(--muted);box-shadow:none}
-.mk.hollow{background:var(--bg);border:2px solid var(--accent);box-shadow:none}
 .meter{height:.75rem;border-radius:999px;background:var(--base);overflow:hidden;margin:.35rem 0}
 .meter>span{display:block;height:100%;background:var(--fg);border-radius:999px}
 .unc-val{font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums}
@@ -95,9 +94,9 @@ input[type=range]{width:100%;min-height:2.75rem;margin:0;accent-color:var(--acce
 .field:first-child{margin-top:0}
 .derived{font-size:.875rem;color:var(--muted);margin:.6rem 0 0}
 .learn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:.75rem 0}
-.learn dt{font-size:.8125rem;font-weight:600;color:var(--muted)}
+.learn dt,.rank dt,.stop dt{font-size:.8125rem;font-weight:600;color:var(--muted)}
 .learn dd{margin:0;font-size:1.35rem;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.learn dd small{display:block;font-size:.8125rem;font-weight:600;color:var(--muted);letter-spacing:0}
+.learn dd small,.rank dd small{display:block;font-size:.8125rem;font-weight:600;color:var(--muted);letter-spacing:0}
 .diag{font-weight:600;margin:0}
 .diag-lines{margin:.35rem 0 0;padding-left:1.1rem;font-size:.9375rem}
 .tree{margin-top:.9rem}
@@ -129,9 +128,7 @@ input[type=range]{width:100%;min-height:2.75rem;margin:0;accent-color:var(--acce
 .rank{display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem;margin:1.25rem 0 0}
 @media (min-width:40rem){.rank{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .rank div{border:1px solid var(--rule);border-radius:var(--r);padding:.7rem .9rem}
-.rank dt{font-size:.8125rem;font-weight:600;color:var(--muted)}
 .rank dd{margin:.15rem 0 0;font-weight:700;font-size:1.05rem}
-.rank dd small{display:block;font-weight:600;color:var(--muted);font-size:.875rem;font-variant-numeric:tabular-nums}
 .best{margin-top:1rem;border:2px solid var(--accent);border-radius:var(--r);padding:.8rem 1rem}
 .best p{margin:0}
 .budget{margin-top:1.25rem}
@@ -153,14 +150,12 @@ th:first-child,td:first-child{text-align:left}
 .trail .via{font-size:.8125rem;color:var(--muted);overflow-wrap:anywhere}
 .stop{margin-top:1.25rem;padding:.8rem 1rem;background:var(--base);border-radius:var(--r)}
 .stop dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.5rem;margin:.4rem 0}
-.stop dt{font-size:.8125rem;color:var(--muted);font-weight:600}.stop dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.stop dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
 details{border-top:1px solid var(--rule);margin-top:1rem}
 summary{display:flex;align-items:center;min-height:2.75rem;font-weight:600;cursor:pointer}
 .panel{padding:.25rem 0 .75rem}
 .panel p,.panel li{font-size:.9375rem;max-width:66ch}
-.figs{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;margin-top:.5rem}
-@media (min-width:46rem){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}}
-figure{margin:0}
+figure{margin:.5rem 0 0;max-width:30rem}
 figcaption{font-size:.8125rem;color:var(--muted);margin-top:.3rem}
 svg{display:block;width:100%;height:auto;overflow:visible}
 svg text{font:11px var(--sans);fill:var(--muted)}
@@ -170,8 +165,6 @@ svg text{font:11px var(--sans);fill:var(--muted)}
 .c-start{fill:var(--bg);stroke:var(--muted);stroke-width:2}
 .c-post{fill:var(--bg);stroke:var(--accent);stroke-width:2}
 .c-link{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:3 3;fill:none}
-.c-cell{fill:var(--accent)}
-.c-diag{stroke:var(--fg);stroke-width:1.5;stroke-dasharray:4 3}
 .math{font-family:var(--mono);font-size:.8125rem;background:var(--base);border-radius:var(--r);padding:.6rem .8rem;overflow-x:auto;white-space:pre;max-width:100%}
 .tests{list-style:none;padding:0;font-size:.875rem}
 .tests li::before{content:"✓ ";font-weight:700}.tests li.fail::before{content:"✗ ";color:var(--warn)}
@@ -265,7 +258,6 @@ svg text{font:11px var(--sans);fill:var(--muted)}
     <ol class="bars" id="bars"></ol>
     <dl class="rank" id="rank"></dl>
     <div id="explain"></div>
-    <div class="tablewrap l2" id="table"></div>
     <fieldset class="budget">
       <legend>Time budget</legend>
       <div class="row">
@@ -300,16 +292,10 @@ svg text{font:11px var(--sans);fill:var(--muted)}
       <summary>Why does this work?</summary>
       <div class="panel" id="how-panel">
         <p>A useful observation is one whose possible results depend strongly on whether H or not H is true. Not one that sounds dramatic, and not simply one that is likely.</p>
-        <div class="figs">
-          <figure>
-            <div id="curve"></div>
-            <figcaption id="curve-cap"></figcaption>
-          </figure>
-          <figure>
-            <div id="land"></div>
-            <figcaption id="land-cap"></figcaption>
-          </figure>
-        </div>
+        <figure>
+          <div id="curve"></div>
+          <figcaption id="curve-cap"></figcaption>
+        </figure>
         <div class="tablewrap">
           <table>
             <caption class="sr">Remaining uncertainty at each probability</caption>
@@ -319,6 +305,12 @@ svg text{font:11px var(--sans);fill:var(--muted)}
         </div>
         <p>A bit has no everyday physical meaning here. The useful reading is: more bits remaining means more uncertainty still unresolved. 50% is maximum uncertainty for a yes-or-no question; at exactly 0% or 100% there is none left, and ordinary updating can no longer move the belief.</p>
         <p><b>Expected and actual learning differ.</b> Before checking, expected learning averages over the results you might see. After checking, the belief change from the particular result can be much larger or smaller: a check that usually teaches little can occasionally produce a very informative result.</p>
+        <p><b>Where the phrase meanings come from.</b> The same probability language as the Bayesian reasoning visual, from two sources kept separate:</p>
+        <ul>
+          <li><b>Sherman Kent's reference scale</b>: “Words of Estimative Probability”, <i>Studies in Intelligence</i> 8(4), CIA, 1964, approved for release 1993 (<a href="https://www.cia.gov/resources/csi/static/Words-of-Estimative-Probability.pdf">PDF</a>), a work of the United States government. A proposed standard, not a measurement: ranges are his centre ± “give or take” as printed, and his synonyms take their group's range.</li>
+          <li><b>How people read the words</b>: “Perceptions of Probability and Numbers” by zonination (<a href="https://github.com/zonination/perceptions/blob/51207062aa173777264d3acce0131e1e2456d966/probly.csv">probly.csv</a>, commit 5120706). 46 volunteers on Reddit's r/samplesize (2015) each gave a number for 17 phrases; a self-selected online sample, not a representative survey. Every answer is embedded unchanged and the median and middle half are computed here. Used under the MIT License, copyright © 2016 Zoni Nation: permission is granted to use, copy, modify and distribute it provided the copyright and permission notice are included; it is provided “as is”, without warranty of any kind.</li>
+        </ul>
+        <p>A phrase's working value is the median survey answer, or the middle of Kent's range when the survey did not ask about it. You can move it, type your own number, or go outside both ranges; the number shown is the one used.</p>
         <div class="l3">
           <p><b>Three quantities, plus surprise.</b></p>
           <ol>
@@ -450,14 +442,125 @@ rate = IG / time  (time in minutes; zero time is "essentially free")</pre>
   return { SECTIONS, deck };
 });
 </script>
+<script id="information-gain-phrases">
+/* Embedded probability-language data. Nothing is fetched at run time; raw.json beside this page mirrors these constants and a test keeps them equal.
+ * KENT_DATA             Sherman Kent's proposed scale, transcribed from the essay (a proposal, not a measurement).
+ * EMPIRICAL_PHRASE_DATA Every individual answer from the "Perceptions of Probability" survey, as published (probly.csv beside this page).
+ * The same data, in the same form, as the Bayesian reasoning visual, so the two pages speak one probability language. */
+(function (root) {
+"use strict";
+const KENT_DATA = {
+  source: {
+    title: "Words of Estimative Probability",
+    authors: "Sherman Kent",
+    publication: "Studies in Intelligence, vol. 8, no. 4 (CIA), 1964; approved for release 22 September 1993",
+    date: "1964",
+    url: "https://www.cia.gov/resources/csi/static/Words-of-Estimative-Probability.pdf",
+    licence: "Work of the United States government (public domain)",
+    measured: "Nothing was measured: Kent proposed numerical odds for five estimative phrases used in National Intelligence Estimates, plus lists of accepted synonyms.",
+    transformation: "The chart's centre and 'give or take' values are copied as printed; lower = centre - give or take and upper = centre + give or take. Synonyms inherit the range of the phrase they are listed under. Bracketed alternatives are split: 'odds [or chances] overwhelming' becomes two phrases, 'chances a little better [or less]' becomes two, and 'we doubt, doubtful' becomes two. 'Probably' and 'almost certainly' are the adverb forms Kent himself uses for 'probable' and 'almost certain' (footnote 9 and the 'probably'/'we believe' bracket). The 'possible' group carries no odds in the essay, so it is shown without numbers."
+  },
+  /* The five orders of likelihood in Kent's chart, as printed: centre % and "give or take" %. */
+  scale: [
+    { phrase: "almost certain", centre: 93, giveOrTake: 6, printed: "93%, give or take almost 6%" },
+    { phrase: "probable", centre: 75, giveOrTake: 12, printed: "75%, give or take about 12%" },
+    { phrase: "chances about even", centre: 50, giveOrTake: 10, printed: "50%, give or take about 10%" },
+    { phrase: "probably not", centre: 30, giveOrTake: 10, printed: "30%, give or take about 10%" },
+    { phrase: "almost certainly not", centre: 7, giveOrTake: 5, printed: "7%, give or take about 5%" }
+  ],
+  /* The chart's two limits. */
+  endpoints: [
+    { phrase: "certain", value: 100, printed: "100% certainty" },
+    { phrase: "impossible", value: 0, printed: "0% Impossibility" }
+  ],
+  /* Kent's synonym tables ("The Growth of Variants"), keyed by the chart phrase they stand for. */
+  synonyms: {
+    "almost certain": ["virtually certain", "all but certain", "highly probable", "highly likely", "odds overwhelming", "chances overwhelming"],
+    "probable": ["likely", "we believe", "we estimate"],
+    "chances about even": ["chances a little better", "chances a little less"],
+    "probably not": ["improbable", "unlikely", "we believe that … not", "we estimate that … not", "we doubt", "doubtful"]
+  },
+  /* Adverb forms Kent uses in his own text for chart phrases. */
+  textForms: { "probably": "probable", "almost certainly": "almost certain" },
+  /* "Possible" and its synonyms: Kent attaches no odds to them. */
+  possible: ["possible", "conceivable", "could", "may", "might", "perhaps"],
+  /* Kent's own glosses, quoted from the "Important note to consumers". */
+  notes: {
+    "unlikely": "Kent's note to consumers: “unlikely” means the chances of it happening are “about one in four”.",
+    "almost certainly not": "Kent's note to consumers: “almost certain … not” still leaves “an appreciable chance, say five percent or less”."
+  }
+};
+
+/* The survey answers below are from zonination/perceptions (probly.csv), used under this licence:
+ *
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 Zoni Nation
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+const EMPIRICAL_PHRASE_DATA = {
+  source: {
+    title: "Perceptions of Probability and Numbers",
+    authors: "zonination (Zoni Nation)",
+    publication: "GitHub repository zonination/perceptions, file probly.csv; first shared on Reddit r/dataisbeautiful",
+    date: "Survey run on Reddit's r/samplesize in 2015; file as of commit 5120706, 25 August 2017",
+    url: "https://github.com/zonination/perceptions/blob/51207062aa173777264d3acce0131e1e2456d966/probly.csv",
+    licence: "MIT License, copyright (c) 2016 Zoni Nation",
+    sha256: "235c1b22fc8bd096f8235b93e8d4801bcaf5b6f042dd90cc81a0d3afa45e4ee9",
+    measured: "Volunteers on Reddit's r/samplesize answered “What probability would you assign to the phrase “[phrase]”?” for 17 phrases (the list of an earlier intelligence-analyst study). 46 people answered every phrase. It is a self-selected online sample, not a representative survey.",
+    transformation: "Every answer is embedded unchanged, one column per phrase in the file's order (row i of each column is respondent i). Phrase labels are lower-cased for display. Nothing is removed: the file has some identical rows and some answers that look like misreadings (for example 15% for “highly likely”), and they stay in. The median, quartiles, 10th and 90th percentiles (linear interpolation between ordered answers), mean and 10-point histogram bins are calculated in this page from those answers."
+  },
+  respondents: 46,
+  columns: [
+    ["Almost Certainly", [95,95,95,95,98,95,85,97,95,90,90,99,60,88.7,99,95,97,99,95,95,90,92,98,98,90,95,95,98,85,80,98,96,99,85,90,95,98,98,80,95,99,85,90,95,85,95]],
+    ["Highly Likely", [80,75,85,85,95,99,95,95,95,85,90,97,80,69,98,90,90,95,95,90,80,85,90,92,90,85,90,95,85,15,80,85,85,84,95,85,96,96,90,90,90,80,70,80,90,80]],
+    ["Very Good Chance", [85,75,85,85,80,85,65,75,80,90,85,70,70,80,85,80,70,75,90,75,80,75,75,91,75,80,80,75,90,74,75,80,75,87,80,80,90,82,70,90,80,80,80,90,75,75]],
+    ["Probable", [75,51,70,70,70,90,80,70,70,70,70,75,70,51,85,70,51,60,60,80,75,60,80,85,75,75,60,85,60,65,65,75,80,50,70,64,90,75,80,80,90,70,75,75,65,75]],
+    ["Likely", [66,75,75,75,70,75,40,70,65,75,60,75,60,70,75,70,65,65,80,75,80,70,85,85,65,65,75,90,65,65,70,70,75,60,90,80,90,86,80,90,60,70,70,70,65,60]],
+    ["Probably", [75,51,70,70,75,75,45,80,80,70,75,75,55,60,65,80,60,75,75,75,75,60,85,85,80,75,60,85,76,65,55,90,90,65,60,80,80,80,80,90,50,70,65,75,60,68]],
+    ["We Believe", [66,51,80,80,65,80,80,75,65,65,80,90,60,50,5,85,75,80,75,50,60,85,85,70,80,50,60,75,50,60,60,80,50,50,60,75,70,45,70,85,90,65,70,100,95,55]],
+    ["Better Than Even", [55,51,60,60,60,65,60,55,55,60,60,67,55,5,65,60,51,55,60,50.1,60,57,60,60,60,60,51,98,51,60,55,60,51,60,80,80,53,69,60,55,60,51,60,60,55,51]],
+    ["About Even", [50,50,50,50,50,50,45,50,50,52,50,50,50,50,50,50,50,50,50,50,50,50,49,50,50,50,50,50,50,50,50,50,50,50,40,50,50,52,50,48,50,45,50,50,50,49]],
+    ["We Doubt", [40,20,30,30,10,7,45,25,20,60,25,17,20,30,100,30,5,25,25,25,40,25,5,30,12,33,10,40,33,38,25,5,1,60,25,10,40,21,10,15,40,30,15,10,95,25]],
+    ["Improbable", [20,49,10,10,50,15,35,30,30,20,1,10,5,49,1,40,10,3,10,20,30,33,15,7,25,10,49,7,25,29,20,9,0.001,3,3,10,4,12,0,20,20,15,35,5,5,20]],
+    ["Unlikely", [30,25,25,25,5,8,20,15,35,30,15,10,30,20,10,30,15,15,10,25,10,10,2,18,35,25,20,10,25,36,12,3,10,24,5,25,30,34,20,35,10,35,20,10,20,35]],
+    ["Probably Not", [15,49,25,25,20,15,40,25,35,45,40,25,30,40,100,40,10,30,20,49.9,25,10,10,27,30,25,40,25,20,34,35,20,10,30,20,20,30,26,30,15,40,30,25,20,40,40]],
+    ["Little Chance", [20,5,20,20,5,5,20,20,15,20,20,17,10,13,100,15,15,10,25,25,20,7,2,17,20,10,15,10,10,29,15,20,5,20,4,8,8,18,10,15,5,10,5,10,25,17]],
+    ["Almost No Chance", [5,5,1,1,1,1,10,3,5,10,15,2,5,2,95,1,2,1,5,5,5,3,5,2,2,2,5,2,1,7,1,10,0.05,5,2,2,1,7,1,5,1,5,2,1,2,5]],
+    ["Highly Unlikely", [25,10,5,5,2,3,20,5,15,6,10,3,5,3,90,5,7,5,5,5,5,3,5,3,10,5,20,5,15,15,8,5,10,15,2,5,5,3,10,8,30,15,10,5,5,10]],
+    ["Chances Are Slight", [25,5,15,15,10,20,30,10,10,25,15,5,15,5,35,10,5,40,10,10,5,13,5,10,20,5,10,5,15,30,15,12,5,30,30,5,10,13,10,10,15,20,10,5,10,15]]
+
+  ]
+};
+
+root.PhraseData = { KENT_DATA, EMPIRICAL_PHRASE_DATA };
+})(typeof self !== "undefined" ? self : this);
+</script>
 <script id="information-gain-engine">
 /* Information gain: the pure core. No DOM, storage, clock or network use, so Node can load it.
  * Beliefs are probabilities in [0, 1]; information is in bits (log base 2); times are minutes. */
 (function (root, factory) {
-  const api = factory();
+  const api = factory(root.PhraseData);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.InformationGain = api;
-})(typeof self !== "undefined" ? self : this, function () {
+})(typeof self !== "undefined" ? self : this, function (D) {
   "use strict";
 
   /* ---------- constants: every threshold the wording uses (documented on the page and in raw.json) ---------- */
@@ -544,10 +647,47 @@ rate = IG / time  (time in minutes; zero time is "essentially free")</pre>
   }
 
   /* ---------- probability inputs ---------- */
-  /* The embedded probability-language data, set by the page (see usePhrases). */
-  let PHRASES = [];
-  function usePhrases(list) { PHRASES = Array.isArray(list) ? list.filter((x) => x && typeof x.id === "string") : []; return PHRASES; }
-  const phrase = (id) => PHRASES.find((x) => x.id === id) || null;
+  /* The probability-language vocabulary, merged from the embedded Kent scale and survey answers (the same system as the
+     Bayesian reasoning visual). Kent's ranges and the survey stay separate; a phrase's working value is the median survey
+     answer, else the middle of Kent's range. Kent's possibility words carry no odds, so they are not offered. */
+  function quantile(s, q) { const h = (s.length - 1) * q, i = Math.floor(h); return i + 1 < s.length ? s[i] + (h - i) * (s[i + 1] - s[i]) : s[i]; }
+  const norm = (t) => String(t ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+  const VOCAB = new Map();
+  const entry = (label) => { const id = norm(label); if (!VOCAB.has(id)) VOCAB.set(id, { id, label: id, kent: null, survey: null }); return VOCAB.get(id); };
+  if (D && D.KENT_DATA && D.EMPIRICAL_PHRASE_DATA) {
+    for (const k of D.KENT_DATA.scale) {
+      const r = { group: k.phrase, centre: k.centre, lo: k.centre - k.giveOrTake, hi: k.centre + k.giveOrTake };
+      entry(k.phrase).kent = { ...r, via: "chart" };
+      for (const syn of D.KENT_DATA.synonyms[k.phrase] || []) entry(syn).kent = { ...r, via: "synonym" };
+    }
+    for (const [form, group] of Object.entries(D.KENT_DATA.textForms)) entry(form).kent = { ...VOCAB.get(group).kent, via: "text" };
+    for (const e of D.KENT_DATA.endpoints) entry(e.phrase).kent = { group: e.phrase, centre: e.value, lo: e.value, hi: e.value, via: "endpoint" };
+    for (const [label, values] of D.EMPIRICAL_PHRASE_DATA.columns) {
+      const s = [...values].sort((x, y) => x - y);
+      entry(label).survey = { n: s.length, median: quantile(s, 0.5), q1: quantile(s, 0.25), q3: quantile(s, 0.75) };
+    }
+  }
+  for (const ph of VOCAB.values()) {
+    if (ph.survey) Object.assign(ph, { value: ph.survey.median, basis: "median survey answer" });
+    else Object.assign(ph, { value: ph.kent.via === "endpoint" ? ph.kent.centre : (ph.kent.lo + ph.kent.hi) / 2, basis: ph.kent.via === "endpoint" ? "Kent's end of the scale" : "middle of Kent's range" });
+  }
+  const PHRASES = [...VOCAB.values()].sort((x, y) => x.value - y.value || x.id.localeCompare(y.id));
+  const phrases = () => PHRASES;
+  const phrase = (id) => VOCAB.get(id) || null;
+  const pc = (x) => `${Number(x.toFixed(1))}%`;
+  /* What a phrase means in each source, and where the chosen number sits against it. */
+  function phraseNote(spec) {
+    const ph = spec && spec.phrase && phrase(spec.phrase);
+    if (!ph) return "";
+    const out = [`Working value ${pc(ph.value)} (${ph.basis}).`];
+    if (ph.kent) out.push(`Kent's reference${ph.kent.via === "chart" ? "" : ` (as “${ph.kent.group}”)`}: ${ph.kent.lo === ph.kent.hi ? pc(ph.kent.lo) : `${pc(ph.kent.lo)}–${pc(ph.kent.hi)}`}.`);
+    else out.push("Not on Kent's scale.");
+    if (ph.survey) out.push(`Survey of ${ph.survey.n} readers: median ${pc(ph.survey.median)}, middle half ${pc(ph.survey.q1)}–${pc(ph.survey.q3)}.`);
+    else out.push("Not in the survey.");
+    const lo = ph.survey ? Math.min(ph.survey.q1, ph.kent ? ph.kent.lo : 101) : ph.kent.lo, hi = ph.survey ? Math.max(ph.survey.q3, ph.kent ? ph.kent.hi : -1) : ph.kent.hi;
+    if (isNum(spec.pct) && (spec.pct < lo || spec.pct > hi)) out.push(`Your ${pc(spec.pct)} is outside both reference ranges for “${ph.label}”: that is allowed, and it is the number used.`);
+    return out.join(" ");
+  }
   function parsePct(text) {
     const s = String(text ?? "").trim().replace(/\s*%$/, "");
     if (!s) return { ok: false, value: null, error: "Enter a percentage from 0 to 100." };
@@ -760,15 +900,16 @@ rate = IG / time  (time in minutes; zero time is "essentially free")</pre>
   }
 
   /* ---------- examples (illustrative numbers, not data) ---------- */
-  const P = (pct, phraseId) => ({ pct, phrase: phraseId || null });
+  /* A phrase example starts at the phrase's working value. */
+  const P = (pct, phraseId) => ({ pct: phraseId && phrase(phraseId) ? phrase(phraseId).value : pct, phrase: phraseId && phrase(phraseId) ? phraseId : null });
   const C = (name, value, unit, resultA, resultB, a, b) => ({ name, time: { value, unit, free: false }, resultA, resultB, a: P(a), b: P(b) });
   const EXAMPLES = [
-    { id: "restaurant", label: "Restaurant queue", hypothesis: "The restaurant wait will be longer than 20 minutes.", prior: P(70), checks: [
+    { id: "restaurant", label: "Restaurant queue", hypothesis: "The restaurant wait will be longer than 20 minutes.", prior: P(70, "likely"), checks: [
       C("Ask the host for an estimate", 1, "min", "Host says over 20 minutes", "Host says 20 minutes or less", 85, 20),
       C("Watch how many groups are seated over 5 minutes", 5, "min", "Fewer than 2 groups seated", "2 or more groups seated", 90, 15),
       C("Check how many parties leave the queue", 3, "min", "Nobody leaves the queue", "Someone leaves the queue", 75, 60),
       C("Simply wait another 10 minutes", 10, "min", "Still not seated after 10 minutes", "Seated within 10 minutes", 95, 10)] },
-    { id: "parcel", label: "Parcel delivery", hypothesis: "The parcel will arrive today.", prior: P(60),
+    { id: "parcel", label: "Parcel delivery", hypothesis: "The parcel will arrive today.", prior: P(60, "better than even"),
       note: "Illustrative only: there is no live delivery integration.", checks: [
       C("Look at the tracking status", 1, "min", "Tracking says out for delivery", "Not yet out for delivery", 85, 15),
       C("Contact the courier", 15, "min", "Courier confirms delivery today", "Courier cannot confirm", 90, 10),
@@ -780,12 +921,12 @@ rate = IG / time  (time in minutes; zero time is "essentially free")</pre>
       C("Inspect the destination URL without clicking", 30, "s", "Link goes to an unrelated site", "Link goes to the company's own site", 80, 3),
       C("Check independently whether the company sent it", 10, "min", "Company says it did not send it", "Company confirms it sent it", 97, 2),
       C("Check the message headers", 5, "min", "Headers show a failed authentication check", "Headers look normal", 60, 5)] },
-    { id: "shopping", label: "Shopping", hypothesis: "The item will still be available when I arrive.", prior: P(60), checks: [
+    { id: "shopping", label: "Shopping", hypothesis: "The item will still be available when I arrive.", prior: P(60, "better than even"), checks: [
       C("Check the stock indicator online", 1, "min", "Shown in stock", "Shown as low or out of stock", 90, 40),
       C("Call the shop", 5, "min", "Staff say it is on the shelf", "Staff say it has gone", 95, 10),
       C("Go immediately", 30, "min", "It is on the shelf now", "It has already gone", 100, 40),
       C("Wait and check again later", 2, "h", "Still shown in stock later", "Shown out of stock later", 90, 20)] },
-    { id: "project", label: "Project completion", hypothesis: "I will finish this task today.", prior: P(50), checks: [
+    { id: "project", label: "Project completion", hypothesis: "I will finish this task today.", prior: P(50, "about even"), checks: [
       C("Inspect the remaining tasks", 10, "min", "Under 3 hours of work left", "More than 3 hours left", 80, 30),
       C("Resolve the largest dependency", 45, "min", "The dependency clears quickly", "The dependency is stuck", 85, 35),
       C("Time one representative subtask", 20, "min", "It takes less than estimated", "It takes longer than estimated", 70, 25),
@@ -798,14 +939,14 @@ rate = IG / time  (time in minutes; zero time is "essentially free")</pre>
       C("Observe whether the fault appears under load", 2, "min", "Fault appears only under load", "Fault also appears at rest", 85, 50)] },
   ];
   const TEACHING = [
-    { id: "useless", label: "Uninformative check", hypothesis: "It will rain this afternoon.", prior: P(50),
+    { id: "useless", label: "Uninformative check", hypothesis: "It will rain this afternoon.", prior: P(50, "about even"),
       note: "Both probabilities are 70%: this result is just as likely either way, so it cannot teach you anything. Drag them apart to see expected learning appear.", checks: [
       C("Notice whether the bus is on time", 1, "min", "The bus is on time", "The bus is late", 70, 70)] },
-    { id: "diagnostic", label: "Highly diagnostic check", hypothesis: "The switch by the door controls the hallway light.", prior: P(50),
+    { id: "diagnostic", label: "Highly diagnostic check", hypothesis: "The switch by the door controls the hallway light.", prior: P(50, "about even"),
       note: "95% against 5% at a 50% prior. Drag the two probabilities toward each other and watch expected learning collapse.", checks: [
       C("Flip the switch and watch the hallway", 1, "min", "The hallway light changes", "The hallway light does not change", 95, 5)] },
   ];
-  const CUSTOM = { id: "custom", label: "Custom", hypothesis: "", prior: P(50), checks: [{ name: "", time: { value: null, unit: "min", free: false }, resultA: "", resultB: "", a: P(null), b: P(null) }] };
+  const CUSTOM = { id: "custom", label: "Custom", hypothesis: "", prior: P(50, "about even"), checks: [{ name: "", time: { value: null, unit: "min", free: false }, resultA: "", resultB: "", a: P(null), b: P(null) }] };
   const presets = () => [...EXAMPLES, ...TEACHING, CUSTOM];
   function load(id) {
     const e = presets().find((x) => x.id === id) || EXAMPLES[0];
@@ -854,41 +995,41 @@ rate = IG / time  (time in minutes; zero time is "essentially free")</pre>
     .replace(/(\d) percent/g, "$1 percent").replace(/\s+([.,;:!?])/g, "$1");
   const list = (xs) => xs.map((x) => `- ${x}`).join("\n");
   function report(x) {
-    const E = evaluate(x), S = E.S, hyp = oneLine(S.hypothesis) || "the hypothesis", now = E.belief;
-    const setupChecks = E.rows.length ? E.rows.map((r) => `${md(r.name)} (${md(timeText(r.time))}): P(${md(r.labels[0])} given H) = ${inputPct(r.a === null ? null : r.a * 100)}, given not H = ${inputPct(r.b === null ? null : r.b * 100)}`) : ["No checks entered"];
-    const infoRows = E.byInfo.length ? E.byInfo.map((r, i) => `${i + 1}. ${md(r.name)}: ${bitsText(r.ig)} expected${r.fits ? "" : " (outside the time budget)"}`) : ["No complete checks to compare"];
-    const rateRows = E.byRate.length ? E.byRate.map((r, i) => `${i + 1}. ${md(r.name)}: ${rateText(r.rate)}`) : ["No checks with a time to compare"];
+    const E = evaluate(x), S = E.S, hyp = oneLine(S.hypothesis).replace(/\.$/, "") || "the hypothesis", m = E.most, f = E.fastest, n = E.rows.length;
+    const pr = (v) => inputPct(v === null ? null : v * 100), t = selfTests(), passed = t.filter((r) => r.pass).length;
     const results = [
-      { title: E.most ? `Most informative: ${E.most.name}, ${bitsText(E.most.ig)} expected` : "No remaining check can change the belief",
-        body: list(infoRows.map((r) => r.replace(/^\d+\. /, ""))), narration: E.most ? `${say(E.most.name)} is expected to teach the most, about ${say(bitsText(E.most.ig))}, out of ${say(bitsText(E.entropy))} of uncertainty left.` : "None of the remaining checks can change the belief." },
-      { title: E.fastest ? `Fastest: ${E.fastest.name}, ${rateText(E.fastest.rate)}` : "No check can be ranked by time",
-        body: list(rateRows.map((r) => r.replace(/^\d+\. /, ""))), narration: E.fastest ? `Per unit of time, ${say(E.fastest.name)} teaches fastest: ${say(rateText(E.fastest.rate).replace("bits/", "bits per "))}. ${say(E.explain.join(" "))}` : "No check has both a time and a chance to change the belief." },
+      { title: m ? `Most informative: ${m.name}, ${bitsText(m.ig)} expected` : "No remaining check can change the belief",
+        body: list(E.byInfo.length ? E.byInfo.map((r) => `${md(r.name)}: ${bitsText(r.ig)}${r.fits ? "" : " (outside the time budget)"}`) : ["No complete checks to compare"]),
+        narration: m ? `${say(m.name)} is expected to teach the most, about ${say(bitsText(m.ig))} of the ${say(bitsText(E.entropy))} of uncertainty left.` : "None of the remaining checks can change the belief." },
+      { title: f ? `Fastest: ${f.name}, ${rateText(f.rate)}` : "No check can be ranked by time",
+        body: list(E.byRate.length ? E.byRate.map((r) => `${md(r.name)}: ${rateText(r.rate)}`) : ["No checks with a time to compare"]),
+        narration: f ? `Per unit of time, ${say(f.name)} teaches fastest, at ${say(rateText(f.rate).replace("bits/", "bits per "))}. ${say(E.explain.join(" "))}` : "No check has both a time and a chance to change the belief." },
     ];
     if (E.steps.length) results.push({
-      title: `Observed: ${pctText(E.prior)} → ${pctText(now)}`,
+      title: `Observed: ${pctText(E.prior)} → ${pctText(E.belief)}`,
       body: list(E.steps.map((s) => `${md(s.name)}: ${md(s.label)}, ${pctText(s.before)} → ${pctText(s.after)}; belief change ${bitsText(s.kl)} (expected ${bitsText(s.expected)}), surprise ${bitsText(s.surprisal)}`)),
       narration: E.steps.map((s) => `After ${say(s.name)} gave ${say(s.label)}, the belief moved from ${say(pctText(s.before))} to ${say(pctText(s.after))}, a belief change of ${say(bitsText(s.kl))}.`).join(" "),
     });
-    const t = selfTests(), passed = t.filter((r) => r.pass).length, m = E.most;
-    const key = m ? `Check ${md(m.name)} for the most information (${bitsText(m.ig)}); ${E.fastest && E.fastest !== m ? `${md(E.fastest.name)} teaches fastest (${rateText(E.fastest.rate)})` : "it is also the fastest"}.` : `${E.stop.text}`;
     return {
-      meta: { title: `Information gain: ${hyp.replace(/\.$/, "")}`, subtitle: E.most ? `Most informative: ${E.most.name}` : E.stop.text.replace(/\.$/, "") },
+      meta: { title: `Information gain: ${hyp}`, subtitle: m ? `Most informative: ${m.name}` : E.stop.text.replace(/\.$/, "") },
       narration: "This talk asks which check would most reduce uncertainty about a yes or no question. Beliefs are percentages and information is measured in bits.",
       setup: [
-        { title: `The question: ${hyp.replace(/\.$/, "")}`, body: list([`Hypothesis H: ${md(hyp)}`, `Starting belief: ${md(belief0(S))}`, ...(E.steps.length ? [`Belief now: ${pctText(now)}`] : []), `Uncertainty remaining: ${bitsText(E.entropy)} (${uncertaintyWords(now) || "no belief entered"})`]),
-          narration: `The question is whether ${say(hyp.replace(/\.$/, "").replace(/^./, (c) => c.toLowerCase()))}. The starting belief is ${say(inputPct(S.prior.pct))}${E.steps.length ? `, and it is now ${say(pctText(now))}` : ""}, leaving ${say(bitsText(E.entropy))} of uncertainty.` },
-        { title: `${E.rows.length} possible check${E.rows.length === 1 ? "" : "s"}`, body: list(setupChecks), narration: `There ${E.rows.length === 1 ? "is one check" : `are ${E.rows.length} checks`} to compare, each with a time cost and the chance of its result if the hypothesis is true or false.` },
+        { title: `The question: ${hyp}`, body: list([`Hypothesis H: ${md(hyp)}`, `Starting belief: ${md(belief0(S))}`, ...(E.steps.length ? [`Belief now: ${pctText(E.belief)}`] : []), `Uncertainty remaining: ${bitsText(E.entropy)} (${uncertaintyWords(E.belief) || "no belief entered"})`]),
+          narration: `The question is whether ${say(hyp.replace(/^./, (c) => c.toLowerCase()))}. The starting belief is ${say(inputPct(S.prior.pct))}${E.steps.length ? `, and it is now ${say(pctText(E.belief))}` : ""}, leaving ${say(bitsText(E.entropy))} of uncertainty.` },
+        { title: `${n} possible check${n === 1 ? "" : "s"}`, body: list(n ? E.rows.map((r) => `${md(r.name)} (${md(timeText(r.time))}): P(${md(r.labels[0])} given H) = ${pr(r.a)}, given not H = ${pr(r.b)}`) : ["No checks entered"]),
+          narration: `There ${n === 1 ? "is one check" : `are ${n} checks`} to compare, each with a time cost and the chance of its result if the hypothesis is true or false.` },
       ],
       method: [{
         title: "Expected learning is uncertainty before minus expected uncertainty after",
         body: "$$ h(p) = -p\\log_2 p - (1-p)\\log_2(1-p) $$\n\n$$ \\mathrm{IG} = h(p) - P(E)\\,h(P(H\\mid E)) - P(\\lnot E)\\,h(P(H\\mid \\lnot E)) $$\n\n" + list(["Equals the mutual information between the hypothesis and the result", "Information rate: expected bits divided by the time the check takes", "An observed result is scored by the KL divergence from prior to posterior"]),
-        narration: "Uncertainty is binary entropy, one bit at fifty percent and zero at certainty. A check's expected learning is the uncertainty now minus the uncertainty expected after seeing its result, which equals the mutual information between the hypothesis and the result. Dividing by the check's time gives the information rate.",
+        narration: "Uncertainty is binary entropy, one bit at fifty percent and zero at certainty. A check's expected learning is the uncertainty now minus the uncertainty expected after its result, which equals the mutual information between the hypothesis and the result. Dividing by the check's time gives the information rate.",
       }],
       results,
       checks: [
-        { title: `Self-tests: ${passed} of ${t.length} pass`, body: list([`Expected information gain = mutual information = expected KL divergence${m ? ` (${exact(m.ig)}, ${exact(m.an.mi)}, ${exact(m.an.expectedKL)} bits for ${md(m.name)})` : ""}`, "1 bit at 50%; 0 bits for a useless check; prior entropy for a perfect check", "Exact 0% and 100% and zero-time checks handled without infinities"]),
+        { title: `Self-tests: ${passed} of ${t.length} pass`, body: list([`Expected information gain = mutual information = expected KL divergence${m ? ` (${exact(m.ig)}, ${exact(m.an.mi)}, ${exact(m.an.expectedKL)} bits for ${md(m.name)})` : ""}`, "1 bit at 50%; 0 bits for a useless check; prior entropy for a perfect check"]),
           narration: `${passed} of ${t.length} built in self-tests pass, including the identity that expected information gain equals mutual information and the expected belief change.` },
-        { title: "Takeaway", body: E.stop.text, key, narration: `${m ? `${say(m.name)} is expected to teach the most.` : ""} ${say(E.stop.text)} Before spending time checking something, ask whether its possible answers would actually change what you believe.` },
+        { title: "Takeaway", body: E.stop.text, key: m ? `Check ${md(m.name)} for the most information (${bitsText(m.ig)}); ${f && f !== m ? `${md(f.name)} teaches fastest (${rateText(f.rate)})` : "it is also the fastest"}.` : E.stop.text,
+          narration: `${m ? `${say(m.name)} is expected to teach the most.` : ""} ${say(E.stop.text)} Before spending time checking something, ask whether its possible answers would actually change what you believe.` },
       ],
     };
   }
@@ -925,7 +1066,7 @@ rate = IG / time  (time in minutes; zero time is "essentially free")</pre>
 
   return {
     UNITS, UNIT_LABEL, LIMITS, THRESHOLDS, EXAMPLES, TEACHING, CUSTOM, EXTREME,
-    entropy, kl, surprisal, binary, mutualInformation, analyze, rate, usePhrases, phrase, parsePct, prob, val,
+    entropy, kl, surprisal, binary, mutualInformation, analyze, rate, phrases, phrase, phraseNote, parsePct, prob, val,
     check, nextId, scenario, minutes, nameOf, labelsOf, uncertaintyWords, learningWord, resultEffect, diagnose, realised,
     pctText, inputPct, bitsText, exact, rateText, timeText, minutesText, evaluate, explainCompare, stopping,
     presets, load, defaults, noteOf, analysis, report, say, selfTests,
@@ -955,7 +1096,7 @@ let E = G.evaluate(S);
 const announce = (t) => { $("live").textContent = t; };
 
 /* ---------- probability inputs (one picker for the prior and both conditional probabilities) ---------- */
-const PH = () => G.phrases ? G.phrases() : [];
+const PH = () => G.phrases();
 function specOf(key) {
   if (key === "prior") return S.prior;
   const [id, f] = key.split(".");
@@ -964,17 +1105,17 @@ function specOf(key) {
 }
 function picker(key, legend, disabled) {
   const sp = specOf(key), id = `p-${key.replace(".", "-")}`, dis = disabled ? " disabled" : "", list = PH();
-  const opts = list.map((p) => `<option value="${esc(p.id)}"${sp.phrase === p.id ? " selected" : ""}>${esc(p.label)}</option>`).join("");
+  const opts = list.map((p) => `<option value="${esc(p.id)}"${sp.phrase === p.id ? " selected" : ""}>${esc(p.label)} · ${+p.value.toFixed(1)}%</option>`).join("");
   const text = drafts[key] !== undefined ? drafts[key] : sp.pct === null ? "" : String(+sp.pct.toFixed(2));
   return `<fieldset class="prob" id="${id}"${dis}>
-  <legend id="${id}-lg">${legend}</legend>
-  <div class="prob-row">${list.length ? `<label class="sr" for="${id}-ph">In words</label><select id="${id}-ph" data-pk="${key}" data-pf="phrase"><option value="">Number only</option>${opts}</select>` : ""}
-    <span class="pct"><label class="sr" for="${id}-tx">Percentage</label><input type="number" id="${id}-tx" min="0" max="100" step="any" inputmode="decimal" data-pk="${key}" data-pf="text" value="${esc(text)}" aria-describedby="${id}-msg ${id}-ref"><span aria-hidden="true">%</span></span>
-  </div>
-  <label class="sr" for="${id}-rg">Slider, percent</label>
-  <input type="range" id="${id}-rg" min="0" max="100" step="1" data-pk="${key}" data-pf="range" value="${sp.pct === null ? 50 : Math.round(sp.pct)}">
-  <p class="ref" id="${id}-ref"></p>
-  <p class="err" id="${id}-msg"></p>
+<legend id="${id}-lg">${legend}</legend>
+<div class="prob-row">${list.length ? `<label class="sr" for="${id}-ph">In words</label><select id="${id}-ph" data-pk="${key}" data-pf="phrase"><option value="">Number only</option>${opts}</select>` : ""}
+<span class="pct"><label class="sr" for="${id}-tx">Percentage</label><input type="number" id="${id}-tx" min="0" max="100" step="any" inputmode="decimal" data-pk="${key}" data-pf="text" value="${esc(text)}" aria-describedby="${id}-msg ${id}-ref"><span aria-hidden="true">%</span></span>
+</div>
+<label class="sr" for="${id}-rg">Slider, percent</label>
+<input type="range" id="${id}-rg" min="0" max="100" step="1" data-pk="${key}" data-pf="range" value="${sp.pct === null ? 50 : Math.round(sp.pct)}">
+<p class="ref" id="${id}-ref"></p>
+<p class="err" id="${id}-msg"></p>
 </fieldset>`;
 }
 function pickerOut(key) {
@@ -982,7 +1123,7 @@ function pickerOut(key) {
   if (!sp) return;
   rg.setAttribute("aria-valuetext", sp.pct === null ? "not set" : `${+sp.pct.toFixed(2)} percent`);
   $(`${id}-msg`).textContent = drafts[key] !== undefined ? G.parsePct(drafts[key]).error || "" : sp.pct === null ? "Enter a percentage from 0 to 100." : "";
-  $(`${id}-ref`).textContent = G.phraseNote ? G.phraseNote(sp) : "";
+  $(`${id}-ref`).textContent = G.phraseNote(sp);
 }
 
 /* ---------- structure: rebuilt when checks are added, removed, moved, selected or observed ---------- */
@@ -1015,33 +1156,33 @@ function card(c, i, done) {
   const sel = c.id === S.selected, id = c.id, dis = done ? " disabled" : "", L = G.labelsOf(c);
   const units = Object.keys(G.UNITS).map((u) => `<option value="${u}"${c.time.unit === u ? " selected" : ""}>${G.UNIT_LABEL[u][1]}</option>`).join("");
   return `<li class="card${sel ? " sel" : ""}${done ? " done" : ""}" id="card-${id}">
-  <h3><button type="button" class="card-toggle" data-act="select" data-id="${id}" aria-expanded="${sel}" aria-controls="body-${id}"><span class="num">${String.fromCharCode(65 + i)}.</span><span id="title-${id}"></span><span class="chev" aria-hidden="true">${sel ? "▾" : "▸"}</span></button></h3>
-  <p class="card-sum" id="sum-${id}"></p>
-  <div id="body-${id}"${sel ? "" : " hidden"}>
-    ${done ? `<p class="small muted">Observed, so its numbers are locked. Undo the observation in the learning trail to edit it.</p>` : ""}
-    <div class="cols">
-      <div>
-        <div class="field"><label class="label" for="n-${id}">What could you check?</label><input type="text" id="n-${id}" maxlength="160" data-ck="name" data-id="${id}" value="${esc(c.name)}" placeholder="e.g. Ask the host for a wait estimate"${dis}></div>
-        <fieldset class="field"><legend>How long would it take?</legend>
-          <div class="row"><label class="sr" for="t-${id}">Time</label><input type="number" id="t-${id}" min="0" step="any" inputmode="decimal" data-ck="time" data-id="${id}" value="${c.time.value === null ? "" : c.time.value}"${dis || (c.time.free ? " disabled" : "")}>
-          <label class="sr" for="u-${id}">Unit</label><select id="u-${id}" data-ck="unit" data-id="${id}"${dis || (c.time.free ? " disabled" : "")}>${units}</select></div>
-          <label class="chk"><input type="checkbox" id="f-${id}" data-ck="free" data-id="${id}"${c.time.free ? " checked" : ""}${dis}> No meaningful time cost</label>
-        </fieldset>
-        <div class="field"><label class="label" for="ra-${id}">Possible result A</label><input type="text" id="ra-${id}" maxlength="160" data-ck="resultA" data-id="${id}" value="${esc(c.resultA)}" placeholder="e.g. Host says over 20 minutes"${dis}></div>
-        <div class="field"><label class="label" for="rb-${id}">Possible result B (the opposite)</label><input type="text" id="rb-${id}" maxlength="160" data-ck="resultB" data-id="${id}" value="${esc(c.resultB)}" placeholder="e.g. Host says 20 minutes or less"${dis}></div>
-        ${picker(`${id}.a`, `If the hypothesis is true, how likely is <span id="qa-${id}">${q(L[0])}</span>?`, done)}
-        ${picker(`${id}.b`, `If the hypothesis is false, how likely is <span id="qb-${id}">${q(L[0])}</span>?`, done)}
-        <p class="derived l2" id="der-${id}"></p>
-      </div>
-      <div id="out-${id}" aria-live="off"></div>
-    </div>
-    ${done ? "" : `<fieldset class="observe"><legend>What happened? I observed…</legend><div class="actions" id="obs-${id}"></div></fieldset>
-    <div class="tools">
-      <button type="button" class="btn quiet" data-act="up" data-id="${id}"${i === 0 ? " disabled" : ""}>Move up</button>
-      <button type="button" class="btn quiet" data-act="down" data-id="${id}"${i === S.checks.length - 1 ? " disabled" : ""}>Move down</button>
-      <button type="button" class="btn quiet" data-act="remove" data-id="${id}">Remove</button>
-    </div>`}
-  </div>
+<h3><button type="button" class="card-toggle" data-act="select" data-id="${id}" aria-expanded="${sel}" aria-controls="body-${id}"><span class="num">${String.fromCharCode(65 + i)}.</span><span id="title-${id}"></span><span class="chev" aria-hidden="true">${sel ? "▾" : "▸"}</span></button></h3>
+<p class="card-sum" id="sum-${id}"></p>
+<div id="body-${id}"${sel ? "" : " hidden"}>
+${done ? `<p class="small muted">Observed, so its numbers are locked. Undo the observation in the learning trail to edit it.</p>` : ""}
+<div class="cols">
+<div>
+<div class="field"><label class="label" for="n-${id}">What could you check?</label><input type="text" id="n-${id}" maxlength="160" data-ck="name" data-id="${id}" value="${esc(c.name)}" placeholder="e.g. Ask the host for a wait estimate"${dis}></div>
+<fieldset class="field"><legend>How long would it take?</legend>
+<div class="row"><label class="sr" for="t-${id}">Time</label><input type="number" id="t-${id}" min="0" step="any" inputmode="decimal" data-ck="time" data-id="${id}" value="${c.time.value === null ? "" : c.time.value}"${dis || (c.time.free ? " disabled" : "")}>
+<label class="sr" for="u-${id}">Unit</label><select id="u-${id}" data-ck="unit" data-id="${id}"${dis || (c.time.free ? " disabled" : "")}>${units}</select></div>
+<label class="chk"><input type="checkbox" id="f-${id}" data-ck="free" data-id="${id}"${c.time.free ? " checked" : ""}${dis}> No meaningful time cost</label>
+</fieldset>
+<div class="field"><label class="label" for="ra-${id}">Possible result A</label><input type="text" id="ra-${id}" maxlength="160" data-ck="resultA" data-id="${id}" value="${esc(c.resultA)}" placeholder="e.g. Host says over 20 minutes"${dis}></div>
+<div class="field"><label class="label" for="rb-${id}">Possible result B (the opposite)</label><input type="text" id="rb-${id}" maxlength="160" data-ck="resultB" data-id="${id}" value="${esc(c.resultB)}" placeholder="e.g. Host says 20 minutes or less"${dis}></div>
+${picker(`${id}.a`, `If the hypothesis is true, how likely is <span id="qa-${id}">${q(L[0])}</span>?`, done)}
+${picker(`${id}.b`, `If the hypothesis is false, how likely is <span id="qb-${id}">${q(L[0])}</span>?`, done)}
+<p class="derived l2" id="der-${id}"></p>
+</div>
+<div id="out-${id}" aria-live="off"></div>
+</div>
+${done ? "" : `<fieldset class="observe"><legend>What happened? I observed…</legend><div class="actions" id="obs-${id}"></div></fieldset>
+<div class="tools">
+<button type="button" class="btn quiet" data-act="up" data-id="${id}"${i === 0 ? " disabled" : ""}>Move up</button>
+<button type="button" class="btn quiet" data-act="down" data-id="${id}"${i === S.checks.length - 1 ? " disabled" : ""}>Move down</button>
+<button type="button" class="btn quiet" data-act="remove" data-id="${id}">Remove</button>
+</div>`}
+</div>
 </li>`;
 }
 function thresholdText() {
@@ -1118,7 +1259,6 @@ function compareOut() {
   $("rank").innerHTML = `<div><dt>Most informative overall</dt><dd>${dd(E.most, E.most && `${approx(bits(E.most.ig))} expected · ${esc(G.timeText(E.most.time))}`)}</dd></div>
     <div><dt>Fastest information (per minute)</dt><dd>${dd(E.fastest, E.fastest && approx(G.rateText(E.fastest.rate)))}</dd></div>`;
   $("explain").innerHTML = E.explain.map((l) => `<p class="small">${esc(l)}</p>`).join("");
-  $("table").innerHTML = E.live.length ? `<table><caption class="sr">Remaining checks</caption><thead><tr><th scope="col">Check</th><th scope="col">Learn</th><th scope="col">Time</th><th scope="col">Learn / min</th><th scope="col">P(${"A"})</th></tr></thead><tbody>${E.live.map((r) => `<tr><td>${esc(r.name)}</td><td>${bits(r.ig)}</td><td>${esc(G.timeText(r.time))}</td><td>${G.rateText(r.rate)}</td><td>${pctS(r.an.outcomes[0].prob)}</td></tr>`).join("")}</tbody></table>` : "";
   $("budget-out").textContent = E.budget === null ? "Turn this on to mark which checks fit the time you have." : `${E.inBudget.length} of ${E.live.length} remaining check${E.live.length === 1 ? "" : "s"} fit in ${G.minutesText(E.budget)}${E.live.some((r) => r.rate.kind === "unknown") ? "; checks with no time entered do not count as fitting" : ""}.`;
   const b = E.best, within = E.budget !== null ? ` within ${G.minutesText(E.budget)}` : "";
   $("best").innerHTML = !S.objective ? `<p class="muted">Choose what “best” means: learning the most, or learning fastest. The page never picks for you.</p>`
@@ -1154,17 +1294,14 @@ function split(p) {
 function whyOut() {
   const r = E.rows.find((x) => x.id === S.selected && x.an && !x.observed), out = [];
   if (E.belief !== null && (E.belief === 0 || E.belief === 1)) out.push(G.EXTREME);
-  if (r) out.push(`For ${q(r.name)}: ${esc(r.diag.headline)}`, ...r.diag.lines.map(esc));
+  if (r) out.push(`For ${q(r.name)}: ${esc(r.diag.headline)}`);
   out.push(...E.explain.map(esc));
   if (E.entropy !== null && E.entropy > 0 && E.entropy < 0.5) out.push("You are already quite sure, so even a good check has less uncertainty left to remove.");
   out.push("Before spending time checking something, ask whether the possible answers would actually change what you believe.");
   $("why").innerHTML = out.map((l) => `<p>${l}</p>`).join("");
   if ($("how").open) figures(r);
-  const t = G.selfTests(), pass = t.filter((x) => x.pass).length;
-  $("tests-sum").textContent = `${pass} of ${t.length} pass.`;
-  $("tests").innerHTML = t.map((x) => `<li class="${x.pass ? "" : "fail"}">${esc(x.name)}${x.pass ? "" : " — failed"}</li>`).join("");
 }
-/* Entropy curve with the beliefs on it, and the diagnosticity landscape of P(E | H) against P(E | not H). */
+/* The entropy curve with the beliefs on it. */
 function figures(r) {
   const W = 300, H = 150, X = (p) => 30 + p * (W - 40), Y = (h) => H - 25 - h * (H - 40);
   let d = "";
@@ -1176,17 +1313,6 @@ function figures(r) {
   $("curve").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(desc)}"><path class="c-axis" d="M30,${Y(0)}H${W - 10}M30,${Y(0)}V${Y(1)}"/><text x="2" y="${Y(1) + 4}">1 bit</text><text x="2" y="${Y(0) + 4}">0</text>
     ${[0, 0.5, 1].map((p) => `<text x="${X(p)}" y="${H - 8}" text-anchor="middle">${p * 100}%</text>`).join("")}<path class="c-line" d="${d}"/>${links}${E.steps.length ? pt(E.prior, "c-start") : ""}${posts.map((o) => pt(o.posterior, "c-post", 4)).join("")}${pt(E.belief, "c-now")}</svg>`;
   $("curve-cap").textContent = `${desc} Filled dot: now. Hollow blue dots: where the selected check's results would leave you.`;
-  const N = 16, s = 140, cell = s / N, h = E.entropy || 0;
-  let cells = "";
-  if (E.belief !== null && h > 0) for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) {
-    const a = (i + 0.5) / N, b = (j + 0.5) / N, o = G.analyze(E.belief, G.binary(a, b)).ig / h;
-    if (o > 0.02) cells += `<rect class="c-cell" x="${(20 + i * cell).toFixed(1)}" y="${(s - (j + 1) * cell).toFixed(1)}" width="${cell.toFixed(2)}" height="${cell.toFixed(2)}" opacity="${o.toFixed(2)}"/>`;
-  }
-  const here = r ? `<circle class="c-now" cx="${(20 + r.a * s).toFixed(1)}" cy="${(s - r.b * s).toFixed(1)}" r="5"/>` : "";
-  const ldesc = `Diagnosticity map at your current belief: horizontal P(result | H), vertical P(result | not H). The dashed diagonal, where they are equal, gives no information; shading grows with expected learning away from it.${r ? ` The selected check sits at ${G.inputPct(r.a * 100)} and ${G.inputPct(r.b * 100)}, expected learning ${bits(r.ig)}.` : ""}`;
-  $("land").innerHTML = `<svg viewBox="0 0 ${s + 30} ${s + 30}" role="img" aria-label="${esc(ldesc)}">${cells}<rect x="20" y="0" width="${s}" height="${s}" fill="none" class="c-axis"/><path class="c-diag" d="M20,${s}L${20 + s},0"/>${here}
-    <text x="20" y="${s + 14}">0%</text><text x="${20 + s}" y="${s + 14}" text-anchor="end">P(result | H) 100%</text><text x="16" y="${s}" text-anchor="end">0</text><text transform="translate(10 ${s / 2}) rotate(-90)" text-anchor="middle">P(result | not H) 100% ↑</text></svg>`;
-  $("land-cap").textContent = ldesc;
 }
 
 /* ---------- events ---------- */
@@ -1308,19 +1434,18 @@ $("copy-beamdswitch").addEventListener("click", () => copy(deck(), "Copied the b
 const result = (v) => ({ content: [{ type: "text", text: JSON.stringify(v) }] });
 const ro = { readOnlyHint: true }, none = { type: "object", properties: {}, additionalProperties: false };
 const row = (r) => ({ name: r.name, time: G.timeText(r.time), minutes: r.minutes, p_result_if_h: r.a, p_result_if_not_h: r.b, observed: r.observed,
-  expected_bits: r.an ? +r.ig.toFixed(4) : null, rate: r.rate ? G.rateText(r.rate) : null, fits_budget: r.fits, diagnosis: r.diag ? r.diag.headline : null,
-  results: r.an ? r.an.outcomes.map((o, i) => ({ result: r.labels[i], probability: o.possible ? +o.prob.toFixed(4) : 0, posterior: o.posterior === null ? null : +o.posterior.toFixed(4) })) : null });
+  expected_bits: r.an ? r.ig : null, rate: r.rate ? G.rateText(r.rate) : null, fits_budget: r.fits, posteriors: r.an ? r.an.outcomes.map((o) => o.posterior) : null });
 const tools = [
-  { name: "get_metadata", description: "Return what this information gain tool does, its examples, units and the documented wording thresholds.", inputSchema: none, annotations: ro,
+  { name: "get_metadata", description: "What this tool does: examples, units and wording thresholds.", inputSchema: none, annotations: ro,
     async execute() { return result({ title: document.title, url: "https://teoyujie.org/visuals/information-gain", examples: [...G.EXAMPLES, ...G.TEACHING].map((x) => ({ id: x.id, label: x.label, hypothesis: x.hypothesis })), units_in_minutes: G.UNITS, thresholds: G.THRESHOLDS, limits: G.LIMITS }); } },
-  { name: "get_current_state", description: "Return the page's hypothesis, starting and current belief, remaining uncertainty, every check with its expected information and rate, both rankings, the best next check if an objective is chosen, and the learning trail.", inputSchema: none, annotations: ro,
+  { name: "get_current_state", description: "The page as set: beliefs, uncertainty, every check with its expected information and rate, both rankings, the best next check and the learning trail.", inputSchema: none, annotations: ro,
     async execute() {
       const e = G.evaluate(S);
       return result({ hypothesis: S.hypothesis, starting_belief: e.prior, belief: e.belief, uncertainty_bits: e.entropy, checks: e.rows.map(row),
         most_informative: e.most ? e.most.name : null, fastest: e.fastest ? e.fastest.name : null, objective: S.objective, best_next_check: e.best ? e.best.name : null,
         budget_minutes: e.budget, trail: e.steps.map((s) => ({ check: s.name, result: s.label, before: s.before, after: s.after, belief_change_bits: s.kl, surprise_bits: s.surprisal, expected_bits: s.expected })), note: e.stop.text });
     } },
-  { name: "analyze_check", description: "Analyse one yes/no check: expected information gain (bits), each result's chance and posterior, belief change and surprise per result, and the information rate. Probabilities are 0–1; minutes is optional (0 means essentially free).", annotations: ro,
+  { name: "analyze_check", description: "Analyse one yes/no check: expected information (bits), each result's chance, posterior, belief change and surprise, and the rate. Probabilities 0–1; minutes optional (0 is free).", annotations: ro,
     inputSchema: { type: "object", properties: { prior: { type: "number", minimum: 0, maximum: 1 }, p_result_if_h: { type: "number", minimum: 0, maximum: 1 }, p_result_if_not_h: { type: "number", minimum: 0, maximum: 1 }, minutes: { type: "number", minimum: 0 } }, required: ["prior", "p_result_if_h", "p_result_if_not_h"], additionalProperties: false },
     async execute(i) {
       const ok = (x) => typeof x === "number" && x >= 0 && x <= 1;
@@ -1330,13 +1455,16 @@ const tools = [
         rate: G.rateText(rt), bits_per_minute: rt.kind === "rate" ? rt.perMin : null, diagnosis: G.diagnose(i.prior, i.p_result_if_h, i.p_result_if_not_h, ["the result", "its opposite"], an),
         results: an.outcomes.map((o) => ({ probability: o.prob, possible: o.possible, posterior: o.posterior, belief_change_bits: o.kl, surprise_bits: o.surprisal })) });
     } },
-  { name: "run_self_tests", description: "Run the page's built-in deterministic self-tests (entropy, posteriors, the expected-information = mutual-information = expected-KL identity, sequential updates, rates and zero time).", inputSchema: none, annotations: ro,
+  { name: "run_self_tests", description: "Run the built-in deterministic self-tests.", inputSchema: none, annotations: ro,
     async execute() { return result(G.selfTests()); } },
 ];
 self.InformationGainTools = tools;
 const mc = (typeof document !== "undefined" && document.modelContext) || (typeof navigator !== "undefined" && navigator.modelContext);
 if (mc && typeof mc.registerTool === "function") for (const t of tools) mc.registerTool(t);
 
+const T = G.selfTests();
+$("tests-sum").textContent = `${T.filter((x) => x.pass).length} of ${T.length} pass.`;
+$("tests").innerHTML = T.map((x) => `<li class="${x.pass ? "" : "fail"}">${esc(x.name)}${x.pass ? "" : " — failed"}</li>`).join("");
 structure();
 })();
 </script>
