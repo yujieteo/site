@@ -39,16 +39,19 @@ class ToonTests(unittest.TestCase):
 
 
 class TagTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Parsing the paper-links file takes seconds; read it once for the class.
+        cls.records = yaml.safe_load((ROOT / "data/paper-links/paper-links.yaml").read_text(encoding="utf-8"))
+
     def test_every_record_is_tagged_with_a_leading_arxiv_class(self):
-        records = yaml.safe_load((ROOT / "data/paper-links/paper-links.yaml").read_text(encoding="utf-8"))
-        for record in records:
+        for record in self.records:
             self.assertTrue(record.get("tags"), record["title"])
             self.assertTrue(paper_tags.is_arxiv_class(record["tags"][0]), record["title"])
 
     def test_committed_tags_match_rules(self):
-        records = yaml.safe_load((ROOT / "data/paper-links/paper-links.yaml").read_text(encoding="utf-8"))
         cache = paper_tags.load_arxiv_cache()
-        stale = [r["title"] for r in records if r["tags"] != paper_tags.tag_record(r, cache)]
+        stale = [r["title"] for r in self.records if r["tags"] != paper_tags.tag_record(r, cache)]
         self.assertEqual(stale, [], "run: python scripts/paper_tags.py --write")
 
     def test_legacy_arxiv_ids_use_their_archive(self):
