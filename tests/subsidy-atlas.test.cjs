@@ -22,6 +22,7 @@ function loadBrowserAtlas(modelContext) {
     matrix: {querySelectorAll: () => buttons, querySelector: () => nodes.history,
       addEventListener(type, listener) { listeners[type] = listener; }},
     catalogue: {focus() {}}, history: {}, count: {}, empty: {},
+    'save-beamdswitch': {addEventListener() {}}, 'copy-beamdswitch': {addEventListener() {}}, 'deck-status': {},
   };
   const document = {
     modelContext,
