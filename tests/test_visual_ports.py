@@ -39,6 +39,7 @@ PORTS = {
     "phasors": "phasors",
     "probabilistic-method": "probabilistic-method",
     "queue-time": "queue-time",
+    "riemann-roch": "riemann-roch",
     "root-locus": "root-locus",
     "stability": "stability",
     "subsidy-atlas": "subsidy-atlas",
