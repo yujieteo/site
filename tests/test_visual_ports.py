@@ -22,6 +22,7 @@ PORTS = {
     "bayes": "bayes",
     "convexity-action-engine": "convexity-action-engine",
     "edge-pitch": "edge-pitch",
+    "etale-fundamental-group": "etale-fundamental-group",
     "everyday-actions": "everyday-actions",
     "fastener-cg": "fastener-cg",
     "fermi": "fermi",
