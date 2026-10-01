@@ -3124,7 +3124,7 @@ function renderNext() {
   $("target-box").hidden = S.objective.type !== "target";
   for (const b of document.querySelectorAll("[data-objective]")) b.setAttribute("aria-pressed", String(b.dataset.objective === S.objective.type));
   $("use-cost").checked = !!S.useCost;
-  if (R && R.targets) $("target").innerHTML = R.targets.map((t) => `<option value="${t.key}"${t.key === (R.objective || S.objective.target) ? " selected" : ""}>${esc(t.label)}</option>`).join("");
+  if (R && R.targets) { const sel = (R.targets.find((t) => t.key === S.objective.target) || R.targets[0]).key; $("target").innerHTML = R.targets.map((t) => `<option value="${t.key}"${t.key === sel ? " selected" : ""}>${esc(t.label)}</option>`).join(""); }
   if (!R || R.status !== "ok") { box.innerHTML = `<p class="muted small">After inference, the page ranks candidate measurements by expected information gain.</p>`; return; }
   const top = R.ranking[0], maxG = Math.max(...R.ranking.map((r) => r.gain.bits), 1e-9);
   const item = (r, k) => `<article class="exp${k === 0 ? " best" : ""}">${k === 0 ? `<p class="small muted" style="margin:0">MOST USEFUL NEXT OBSERVATION</p>` : ""}
