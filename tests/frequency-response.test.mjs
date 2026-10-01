@@ -12,9 +12,9 @@ const close = (actual, expected, tol, label) =>
   assert.ok(Math.abs(actual - expected) <= tol, `${label}: ${actual} vs ${expected} (±${tol})`);
 const third = (K, extra = {}) => ({ plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K, ...extra });
 
-test("in-page self-tests (spec section 11, phases 1 to 3) all pass", () => {
+test("in-page self-tests (spec section 11, all phases) all pass", () => {
   const t = F.selfTests();
-  assert.ok(t.length >= 80);
+  assert.ok(t.length >= 100);
   assert.equal(t.filter((x) => !x.pass).map((x) => `${x.name}: ${x.detail}`).join("\n"), "");
   assert.ok(t.every((x) => x.tolerance), "every self-test states its tolerance");
 });
@@ -575,6 +575,300 @@ test("the report and WebMCP summary carry the Nyquist count and its convention",
   assert.equal(json.results.nyquist.P, 1);
 });
 
+/* ---------- phase 4: MIMO ---------- */
+const I2 = [[1, 0], [0, 1]];
+const mimo = (mi, extra = {}) => ({ system: "mimo", K: 1, ...extra, mimo: { breakAt: "output", ...mi } });
+const sat = () => F.MIMO_PRESETS["spinning-satellite"].make();
+const diagTfm = (e1, e2) => ({ form: "tfm", entries: [[e1, { num: [0], den: [1] }], [{ num: [0], den: [1] }, e2]] });
+
+test("a diagonal MIMO loop reproduces its single loops: eigenvalue loci, singular values and det(I + L) winding", () => {
+  for (const extra of [{}, { timeDomain: "discrete", Ts, discretization: { plant: "zoh", controller: "z", prewarp: 0 } }]) {
+    const e1 = { num: [2], den: [1, -1] }, e2 = { num: [9], den: [1, 3, 2, 0] };
+    const x = mimo({ plant: diagTfm(e1, e2), controller: { form: "gain", K: I2 } }, extra);
+    const r = F.analyze(x), c = F.mimoCurves(x);
+    const one = (e) => ({ plant: { form: "tf", ...e }, controller: { form: "tf", num: [1], den: [1] }, K: 1, ...extra });
+    const s1 = F.analyze(one(e1)).nyquist, s2 = F.analyze(one(e2)).nyquist;
+    assert.equal(r.nyquist.N, s1.N + s2.N, `N (${extra.timeDomain || "continuous"})`);
+    assert.equal(r.nyquist.P, s1.P + s2.P, "P");
+    assert.equal(r.nyquist.Z, s1.Z + s2.Z, "Z");
+    assert.equal(r.nyquist.crossCheck.agree, true);
+    for (const row of c.rows.filter((_, i) => i % 40 === 0)) {
+      const a = F.responseAt(one(e1), row.w), b = F.responseAt(one(e2), row.w);
+      const want = [a, b].map((v) => ({ re: v.re, im: v.im }));
+      const err = (p, q) => Math.hypot(p.re - q.re, p.im - q.im);
+      const best = Math.min(err(row.eig[0], want[0]) + err(row.eig[1], want[1]), err(row.eig[0], want[1]) + err(row.eig[1], want[0]));
+      assert.ok(best <= 1e-9 * Math.max(1, a.mag, b.mag), `eigenvalues at ${row.w}`);
+      const mags = [a.mag, b.mag].sort((p, q) => q - p);
+      close(row.sv[0], mags[0], 1e-9 * mags[0], "σ1"); close(row.sv[1], mags[1], 1e-9 * Math.max(mags[1], 1e-12), "σ2");
+    }
+  }
+});
+
+test("generalised Nyquist on det(I + L) agrees with the closed-loop eigenvalues, and a delay leaves it as the only verdict", () => {
+  const cases = [
+    [mimo({ ...sat() }), 0],
+    [mimo({ ...sat() }, { K: -0.5 }), null],
+    [mimo({ ...F.MIMO_PRESETS["distillation-lv"].make(), breakAt: "input" }), 0],
+    [mimo({ ...sat(), delays: [1, 0] }, { timeDomain: "discrete", Ts: 0.01, discretization: { plant: "zoh", controller: "z", prewarp: 0 } }), null],
+    [mimo({ ...sat() }, { K: 3, timeDomain: "discrete", Ts: 0.05, discretization: { plant: "tustin", controller: "z", prewarp: 0 } }), null],
+  ];
+  for (const [x, Z] of cases) {
+    const r = F.analyze(x);
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.nyquist.crossCheck.agree, true, `agrees: ${JSON.stringify(x.mimo.preset || x.K)}`);
+    assert.equal(r.nyquist.unresolved, false);
+    if (Z !== null) assert.equal(r.nyquist.Z, Z);
+  }
+  const delayed = F.analyze(mimo({ ...sat(), delays: [0.02, 0] }));
+  assert.equal(delayed.closedLoop.available, false);
+  assert.equal(delayed.nyquist.available, true);
+  assert.ok(delayed.warnings.some((w) => w.code === "delay-no-poles"));
+});
+
+test("a non-square plant gives the same count at its input and output (Sylvester: det(I + GC) = det(I + CG))", () => {
+  const plant = { form: "ss", A: [[-1, 0], [0, -3]], B: [[1, 0, 2], [0, 1, 1]], C: [[1, 0], [1, 1]], D: [[0, 0, 0], [0, 0, 0]] };
+  const controller = { form: "gain", K: [[2, 0], [0, 1], [1, -1]] };
+  const out = F.analyze(mimo({ plant, controller, breakAt: "output" }, { K: 4 })), inp = F.analyze(mimo({ plant, controller, breakAt: "input" }, { K: 4 }));
+  assert.equal(out.loop.outputs, 2); assert.equal(out.loop.inputs, 3);
+  assert.equal(out.margins.output.size, 2); assert.equal(out.margins.input.size, 3);
+  assert.equal(out.nyquist.Z, inp.nyquist.Z);
+  assert.equal(out.nyquist.N, inp.nyquist.N);
+  assert.equal(out.margins.chosen.at, "output"); assert.equal(inp.margins.chosen.at, "input");
+  close(out.margins.output.returnDifference.alpha, inp.margins.output.returnDifference.alpha, 1e-12, "both breaking points are always reported");
+});
+
+test("the stacked transfer-matrix path warns about hidden modes and still agrees with its own eigenvalues", () => {
+  // Both entries of the first row share the pole at s = 1: the stacked realisation duplicates it.
+  const plant = { form: "tfm", entries: [[{ num: [1], den: [1, -1] }, { num: [2], den: [1, -1] }], [{ num: [1], den: [1, 2] }, { num: [1], den: [1, 3] }]] };
+  const r = F.analyze(mimo({ plant, controller: { form: "gain", K: [[3, 0], [0, 3]] } }));
+  assert.equal(r.loop.realisation, "stacked transfer matrix");
+  assert.equal(r.loop.plantStates, 4);
+  assert.ok(r.warnings.some((w) => w.code === "hidden-modes"));
+  assert.ok(r.warnings.some((w) => w.code === "hidden-modes-likely"));
+  assert.equal(r.loop.openLoopUnstable, 2, "the duplicated unstable pole is counted twice in P");
+  assert.equal(r.nyquist.crossCheck.agree, true);
+  assert.match(F.toMarkdown(mimo({ plant, controller: { form: "gain", K: I2 } })), /hidden/);
+});
+
+test("a 1 × 1 MIMO loop matches the single-loop path, including discretisation", () => {
+  // 3/(s(s + 1)(s + 2)) in controllable canonical form; its crossovers are well away from the ±180° phase-margin ambiguity.
+  const siso = { plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, controller: { form: "tf", num: [1], den: [1] }, K: 3 };
+  const ss = { form: "ss", A: [[0, 1, 0], [0, 0, 1], [0, -2, -3]], B: [[0], [0], [1]], C: [[1, 0, 0]], D: [[0]] };
+  for (const extra of [{}, { timeDomain: "discrete", Ts: 0.1, discretization: { plant: "zoh", controller: "z", prewarp: 0 } }, { timeDomain: "discrete", Ts: 0.1, discretization: { plant: "tustin", controller: "z", prewarp: 3 } }]) {
+    const x = mimo({ plant: ss, controller: { form: "gain", K: [[1]] }, delays: [0] }, { K: 3, ...extra });
+    const c = F.mimoCurves(x);
+    for (const row of c.rows.filter((_, i) => i % 60 === 0)) {
+      const e = F.responseAt({ ...siso, ...extra }, row.w), m = row.entries[0][0];
+      close(m.re, e.re, 1e-9 * Math.max(1, e.mag), `Re at ${row.w}`); close(m.im, e.im, 1e-9 * Math.max(1, e.mag), `Im at ${row.w}`);
+    }
+    const a = F.analyze(x), b = F.analyze({ ...siso, ...extra });
+    assert.equal(a.nyquist.Z, b.nyquist.Z);
+    close(a.margins.chosen.loopAtATime[0].pm.deg, b.margins.governing.pm.deg, 1e-6, "loop-at-a-time PM = SISO PM");
+    close(a.margins.chosen.eigenLocus.pm.deg, b.margins.governing.pm.deg, 1e-6, "eigenvalue-locus PM = SISO PM");
+    close(a.margins.chosen.sensitivity.maxSigmaS.value, b.margins.Ms.value, 1e-6, "max σ(S) = Ms");
+  }
+});
+
+test("MIMO validation blocks bad dimensions, too many channels and fractional discrete delays", () => {
+  const err = (x) => F.analyze(x).errors.map((e) => e.message).join("\n");
+  assert.match(err(mimo({ plant: { form: "ss", A: [[0]], B: [[1, 1]], C: [[1]], D: [[0, 0], [0, 0]] }, controller: { form: "gain", K: I2 } })), /matching dimensions/);
+  assert.match(err(mimo({ ...sat(), controller: { form: "gain", K: [[1, 0, 0], [0, 1, 0]] } })), /Controller C must be 2 × 2/);
+  const big = Array.from({ length: 7 }, (_, i) => Array.from({ length: 7 }, (_, j) => (i === j ? 1 : 0)));
+  assert.match(err(mimo({ plant: { form: "ss", A: [], B: [], C: [], D: big }, controller: { form: "gain", K: big } })), /At most 6 inputs and 6 outputs/);
+  assert.match(err(mimo({ ...sat(), delays: [0.5, 0] }, { timeDomain: "discrete", Ts: 0.1, discretization: { plant: "zoh", controller: "z", prewarp: 0 } })), /whole number of samples/);
+  assert.match(err(mimo({ ...sat(), delays: [1] })), /one per plant input/);
+  assert.match(err(mimo({ plant: { form: "tfm", entries: [[{ num: [1, 0, 0], den: [1, 1] }]] }, controller: { form: "gain", K: [[1]] } })), /improper/);
+});
+
+test("high-gain MIMO loops close the det(I + L) contour where it has settled and agree with the closed-loop eigenvalues", () => {
+  // 1/(s + 1)² is stable for every K > 0; before the contour ran far enough, K = 1e6 and 1e8 gave a spurious Z = 1.
+  const lag2 = { form: "ss", A: [[0, 1], [-1, -2]], B: [[0], [1]], C: [[1, 0]], D: [[0]] };
+  // (s + 2)/(s + 1) has feedthrough 1, so det(I + L) tends to 1 + K rather than 1.
+  const lead = { form: "ss", A: [[-1]], B: [[1]], C: [[1]], D: [[1]] };
+  const twoByTwo = { form: "ss", A: [[0, 1, 0, 0], [-1, -2, 0, 0], [0, 0, -1, 0], [0, 0, 0, -3]], B: [[0, 0], [1, 0], [1, 1], [0, 1]], C: [[1, 0, 1, 0], [0, 0, 0, 1]], D: [[0, 0], [0, 0]] };
+  for (const [plant, K] of [[lag2, 1e4], [lag2, 1e6], [lag2, 1e8], [lead, 1e6], [twoByTwo, 1e6], [twoByTwo, 1e8]]) {
+    const size = plant.D.length;
+    const r = F.analyze(mimo({ plant, controller: { form: "gain", K: plant.D[0].map((_, i) => plant.D.map((__, j) => (i === j ? 1 : 0))) } }, { K }));
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.closedLoop.available, true);
+    assert.equal(r.nyquist.Z, r.closedLoop.unstable, `${size} × ${size} at K = ${K}: Z = ${r.nyquist.Z}, eigenvalues ${r.closedLoop.unstable}`);
+    assert.equal(r.nyquist.crossCheck.agree, true);
+    assert.ok(!r.warnings.some((w) => w.code === "nyquist-mismatch"));
+  }
+});
+
+test("a continuous delay keeps the det(I + L) contour running until it settles, and a delayed feedthrough path gives no count", () => {
+  // (s + 2)/(s + 1) with a 0.01 s input delay and controller 1/(s + 1), K = 1e6: only the plant has feedthrough, so det(I + L) → 1.
+  // Stopping at 100/τ = 1e4 rad/s used to report Z = 32. |L| ≈ K/ω stays above 1 up to 1e6 rad/s while the delay turns it once per
+  // 2π/τ, so each half of the contour encircles the origin 1592 times (checked against a dense sweep): Z = 3184, the same as the single loop.
+  const plant = { form: "ss", A: [[-1]], B: [[1]], C: [[1]], D: [[1]] };
+  const r = F.analyze(mimo({ plant, controller: { form: "ss", A: [[-1]], B: [[1]], C: [[1]], D: [[0]] }, delays: [0.01] }, { K: 1e6 }));
+  assert.equal(r.ok, true, JSON.stringify(r.errors));
+  assert.equal(r.closedLoop.available, false);
+  assert.ok(r.nyquist.wHigh >= 1e7, `contour ends at ${r.nyquist.wHigh} rad/s`);
+  assert.equal(r.nyquist.unresolved, false);
+  assert.equal(r.nyquist.Z, 3184);
+  assert.equal(F.analyze({ plant: { form: "tf", num: [1, 2], den: [1, 2, 1] }, K: 1e6, delay: 0.01 }).nyquist.Z, 3184, "single-loop count of the same loop");
+  // A gain controller passes the delayed plant feedthrough straight round the loop: det(I + L) never settles.
+  const fed = F.analyze(mimo({ plant, controller: { form: "gain", K: [[1]] }, delays: [0.01] }, { K: 0.5 }));
+  assert.equal(fed.ok, true);
+  assert.equal(fed.nyquist.available, false);
+  assert.match(fed.nyquist.message, /delayed feedthrough/);
+  assert.ok(fed.warnings.some((w) => w.code === "nyquist-unavailable"));
+  // The same loop without the delay settles at det(I + D_G·D_C) = 1.5 and agrees with its eigenvalues.
+  const free = F.analyze(mimo({ plant, controller: { form: "gain", K: [[1]] }, delays: [0] }, { K: 0.5 }));
+  assert.equal(free.nyquist.crossCheck.agree, true);
+});
+
+test("an undelayed feedthrough channel does not force delay refinement of det(I + L) to the evaluation cap", () => {
+  // diag(e^(−0.1s)/(s + 1), 1) with K·I: det(I + L) = (1 + K·e^(−0.1s)/(s + 1))·(1 + K), so the count is that of the single delayed loop.
+  const plant = { form: "ss", A: [[-1]], B: [[1, 0]], C: [[1], [0]], D: [[0, 0], [0, 1]] };
+  for (const K of [1, 100, 1e4]) {
+    const r = F.analyze(mimo({ plant, controller: { form: "gain", K: I2 }, delays: [0.1, 0] }, { K }));
+    const single = F.analyze({ plant: { form: "tf", num: [1], den: [1, 1] }, K, delay: 0.1 }).nyquist;
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.nyquist.unresolved, false, `K = ${K}: ${r.nyquist.evaluations} evaluations`);
+    assert.equal(single.unresolved, false);
+    assert.equal(r.nyquist.Z, single.Z, `K = ${K}`);
+  }
+});
+
+test("MIMO peaks and crossings are refined between grid points, so the grid density does not change them", () => {
+  const coarse = { range: { auto: false, wMin: 0.1, wMax: 1000, pointsPerDecade: 10 } }, fine = { range: { auto: false, wMin: 0.1, wMax: 1000, pointsPerDecade: 60 } };
+  for (const breakAt of ["output", "input"]) {
+    const a = F.analyze(mimo({ ...F.MIMO_PRESETS["distillation-lv"].make(), breakAt }, coarse)).margins.chosen;
+    const b = F.analyze(mimo({ ...F.MIMO_PRESETS["distillation-lv"].make(), breakAt }, fine)).margins.chosen;
+    close(a.sensitivity.maxSigmaS.value, b.sensitivity.maxSigmaS.value, 1e-6, `max σ(S) at the ${breakAt}`);
+    close(a.sensitivity.maxSigmaT.value, b.sensitivity.maxSigmaT.value, 1e-6, `max σ(T) at the ${breakAt}`);
+    close(a.eigenLocus.pm.deg, b.eigenLocus.pm.deg, 1e-6, `eigenvalue-locus PM at the ${breakAt}`);
+    a.loopAtATime.forEach((c, i) => c.pm && close(c.pm.deg, b.loopAtATime[i].pm.deg, 1e-6, `loop-at-a-time PM ${i + 1}`));
+  }
+  assert.equal(F.analyze(mimo({ ...sat() }, { range: { auto: true, wMin: 0.01, wMax: 100, pointsPerDecade: 2000 } })).grid.pointsPerDecade, 60);
+});
+
+test("transfer-matrix plants of any size default to zero delays shaped for the plant", () => {
+  const e = (a) => ({ num: [1], den: [1, a] });
+  for (const entries of [[[e(1)]], [[e(1), e(2), e(3)]], [[e(1)], [e(2)], [e(3)]]]) {
+    const plant = { form: "tfm", entries }, p = entries.length, m = entries[0].length;
+    const controller = { form: "gain", K: Array.from({ length: m }, (_, i) => Array.from({ length: p }, (_, j) => (i === j ? 1 : 0))) };
+    const x = { system: "mimo", K: 1, mimo: { plant, controller } };
+    const r = F.analyze(x);
+    assert.equal(r.ok, true, `${p} × ${m}: ${JSON.stringify(r.errors)}`);
+    const plain = (v) => JSON.parse(JSON.stringify(v));
+    assert.deepEqual(plain(r.loop.delays), new Array(m).fill(0));
+    assert.deepEqual(plain(F.normalise(x).mimo.delays), new Array(m).fill(0));
+    assert.deepEqual(plain(F.normalise({ ...x, mimo: { ...x.mimo, delayAt: "output" } }).mimo.delays), new Array(p).fill(0));
+    assert.deepEqual(plain(F.normalise({ ...x, mimo: { ...x.mimo, delayAt: "entry" } }).mimo.delays), Array.from({ length: p }, () => new Array(m).fill(0)));
+  }
+});
+
+test("MIMO delays per plant output and per plant entry are exact in continuous and discrete time", () => {
+  const ph = (row, i, j) => Math.atan2(row.entries[i][j].im, row.entries[i][j].re);
+  const wrap = (a) => a - 2 * Math.PI * Math.round(a / (2 * Math.PI));
+  const cases = [
+    ["output", [0.02, 0.05], (i) => [0.02, 0.05][i]],
+    ["entry", [[0.01, 0], [0.04, 0.03]], (i, j) => [[0.01, 0], [0.04, 0.03]][i][j]],
+    ["input", [0.03, 0.01], (i, j) => [0.03, 0.01][j]],
+  ];
+  for (const [delayAt, delays, tau] of cases) {
+    // K = I and the loop broken at the output: L = G_τ, so each entry is G_ij·e^(−jωτ_ij).
+    const range = { auto: false, wMin: 0.1, wMax: 100, pointsPerDecade: 50 };
+    const free = F.mimoCurves(mimo({ ...sat() }, { range })), x = mimo({ ...sat(), delayAt, delays }, { range });
+    const c = F.mimoCurves(x), r = F.analyze(x);
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.loop.delayAt, delayAt);
+    assert.equal(r.closedLoop.available, false);
+    assert.equal(r.nyquist.available, true);
+    assert.equal(c.rows.length, free.rows.length);
+    c.rows.filter((_, k) => k % 20 === 0).forEach((row) => {
+      const k = c.rows.indexOf(row);
+      for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) {
+        close(row.entries[i][j].mag, free.rows[k].entries[i][j].mag, 1e-12 * Math.max(1, row.entries[i][j].mag), `|L${i + 1}${j + 1}| ${delayAt}`);
+        close(wrap(ph(row, i, j) - ph(free.rows[k], i, j) + row.w * tau(i, j)), 0, 1e-9, `∠L${i + 1}${j + 1} ${delayAt} at ${row.w}`);
+      }
+    });
+  }
+  // Discrete: whole-sample delays become shift-register states, so the closed-loop eigenvalues stay available and agree.
+  // Per entry, each output row gets its own copy of the plant, so the plant must be stable for the copies to stay harmless.
+  // K = 0.01·I broken at the output keeps L = 0.01·G_τ and the closed loop stable.
+  const disc = { timeDomain: "discrete", Ts: 0.5, discretization: { plant: "zoh", controller: "z", prewarp: 0 }, range: { auto: false, wMin: 0.001, wMax: 6, pointsPerDecade: 50 } };
+  const lv = () => ({ plant: F.MIMO_PRESETS["distillation-lv"].make().plant, controller: { form: "gain", K: [[0.01, 0], [0, 0.01]] } });
+  const dcases = [["output", [2, 1], (i) => [2, 1][i], 3], ["entry", [[1, 0], [2, 1]], (i, j) => [[1, 0], [2, 1]][i][j], 2 + 4]];
+  for (const [delayAt, delays, d, extraStates] of dcases) {
+    const free = F.mimoCurves(mimo({ ...lv() }, disc)), x = mimo({ ...lv(), delayAt, delays }, disc);
+    const c = F.mimoCurves(x), r = F.analyze(x);
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.loop.plantStates, 2 + extraStates, `${delayAt} realisation size`);
+    assert.equal(r.nyquist.crossCheck.available, true);
+    assert.equal(r.nyquist.crossCheck.agree, true, `${delayAt}: Z = ${r.nyquist.Z}, eigenvalues ${r.closedLoop.unstable}`);
+    assert.equal(c.rows.length, free.rows.length);
+    for (const k of [0, 60, 120, c.rows.length - 1]) {
+      const row = c.rows[k];
+      for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) {
+        close(row.entries[i][j].mag, free.rows[k].entries[i][j].mag, 1e-9 * Math.max(1, row.entries[i][j].mag), `|L${i + 1}${j + 1}| ${delayAt} discrete`);
+        close(wrap(ph(row, i, j) - ph(free.rows[k], i, j) + row.w * 0.5 * d(i, j)), 0, 1e-9, `∠L${i + 1}${j + 1} ${delayAt} discrete at ${row.w}`);
+      }
+    }
+    if (delayAt === "entry") assert.ok(r.warnings.some((w) => w.code === "delay-copies"));
+  }
+  const err = (x) => F.analyze(x).errors.map((e) => e.message).join("\n");
+  assert.match(err(mimo({ ...sat(), delayAt: "output", delays: [0.1] })), /one per plant output/);
+  assert.match(err(mimo({ ...sat(), delayAt: "entry", delays: [0.1, 0.2] })), /2 × 2 matrix/);
+  assert.match(err(mimo({ ...sat(), delayAt: "sideways" })), /per plant entry/);
+  assert.match(F.toMarkdown(mimo({ ...sat(), delayAt: "entry", delays: [[0.01, 0], [0.04, 0.03]] })), /Delays: 0\.01, 0; 0\.04, 0\.03 s \(per plant entry\)/);
+});
+
+test("a 6 × 6 MIMO loop at the state limit is analysed in full, and more states are refused", () => {
+  let seed = 11;
+  const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647 - 0.5; };
+  const plant = (n) => ({
+    form: "ss", A: Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => (i === j ? -1 - 0.3 * i : 0.2 * rnd()))),
+    B: Array.from({ length: n }, () => Array.from({ length: 6 }, rnd)), C: Array.from({ length: 6 }, () => Array.from({ length: n }, rnd)), D: Array.from({ length: 6 }, () => new Array(6).fill(0)),
+  });
+  const K = Array.from({ length: 6 }, (_, i) => Array.from({ length: 6 }, (_, j) => (i === j ? 5 : 0)));
+  const r = F.analyze(mimo({ plant: plant(48), controller: { form: "gain", K } }));
+  assert.equal(r.ok, true, JSON.stringify(r.errors));
+  assert.equal(r.nyquist.crossCheck.agree, true);
+  for (const at of ["output", "input"]) assert.equal(r.margins[at].loopAtATime.length, 6);
+  assert.match(F.analyze(mimo({ plant: plant(51), controller: { form: "gain", K } })).errors.map((e) => e.message).join("\n"), /about 50 states/);
+});
+
+test("MIMO exports carry both breaking points, every view as CSV, and round-trip through import", () => {
+  const x = F.normalise(mimo({ ...F.MIMO_PRESETS["distillation-lv"].make(), breakAt: "input", delays: [1, 0] }, { timeDomain: "discrete", Ts: 0.5, discretization: { plant: "zoh", controller: "tustin", prewarp: 0 }, K: 0.8 }));
+  const r = F.analyze(x);
+  const md = F.toMarkdown(x, r);
+  for (const re of [/Plant output \(L_o\) \| Plant input \(L_i\)/, /Return difference/, /Loop-at-a-time/, /Generalised Nyquist on det\(I \+ L\)/, /Disk margins and structured singular value/]) assert.match(md, re);
+  assert.ok(md.includes(F.DISCLAIMER));
+  for (const [view, head] of [["bode", "mag_L11"], ["singular", "sigma_min_I_plus_L"], ["nyquist", "re_det_I_plus_L"], ["eig", "re_lambda_1"], ["nichols", "phase_deg_lambda_1"]]) {
+    const csv = F.toCSV(x, view);
+    assert.ok(csv.includes(F.DISCLAIMER), view);
+    assert.ok(csv.includes(head), `${view} has ${head}`);
+  }
+  const back = F.importJSON(F.toResultsJSON(x, r));
+  assert.equal(F.canonicalJSON(F.analyze(back)), F.canonicalJSON(r));
+  assert.equal(back.system, "mimo");
+  const siso = F.importJSON(JSON.stringify({ kind: "frequency-response-inputs", schemaVersion: 2, inputs: { plant: { form: "tf", num: [1], den: [1, 1] }, K: 2 } }));
+  assert.equal(siso.system, "siso", "older files without system stay single-loop");
+});
+
+test("kernel: Hessenberg-QR eigenvalues keep trace and determinant, and the Jacobi SVD matches eig(AᴴA)", () => {
+  let seed = 7;
+  const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647 - 0.5; };
+  for (const n of [3, 8, 25]) {
+    const A = Array.from({ length: n }, () => Array.from({ length: n }, rnd));
+    const { values, converged } = F.ceig(A);
+    assert.equal(converged, true);
+    const tr = A.reduce((t, row, i) => t + row[i], 0);
+    close(values.reduce((t, v) => t + v.re, 0), tr, 1e-10, `trace n = ${n}`);
+    close(values.reduce((t, v) => t + v.im, 0), 0, 1e-10, `imaginary sum n = ${n}`);
+    const det = F.cdet(F.toC(A)), prod = values.reduce((p, v) => ({ re: p.re * v.re - p.im * v.im, im: p.re * v.im + p.im * v.re }), { re: 1, im: 0 });
+    close(prod.re, det.re, 1e-9 * Math.max(1, Math.abs(det.re)), `det n = ${n}`);
+    const sv = F.csvd(A), AtA = A[0].map((_, i) => A[0].map((__, j) => A.reduce((t, row) => t + row[i] * row[j], 0)));
+    const ev = F.ceig(AtA).values.map((v) => Math.sqrt(Math.max(0, v.re))).sort((a, b) => b - a);
+    sv.forEach((v, i) => close(v, ev[i], 1e-8 * Math.max(1, ev[0]), `σ${i + 1} n = ${n}`));
+  }
+});
+
 test("raw.json is the published metadata and default example of the page", async () => {
   const raw = JSON.parse(await readFile(new URL("../visuals/frequency-response/raw.json", import.meta.url), "utf8"));
   const { schemaVersion, example, ...meta } = raw;
@@ -640,4 +934,7 @@ test("page registers the WebMCP tools its site stub declares", async () => {
   const meta = await call("get_metadata", {});
   assert.match(meta.disclaimer, /EXPLORATION ONLY/);
   assert.equal(meta.thresholdDefaults.source, "unsourced default");
+  const m = await call("analyze_loop", { system: "mimo", K: 1, mimo: { ...F.MIMO_PRESETS["spinning-satellite"].make(), breakAt: "output" } });
+  assert.equal(m.system, "mimo");
+  close(m.margins.chosen.eigenLocus.pm.deg, (Math.atan(0.1) * 180) / Math.PI, 1e-6, "analyze_loop MIMO eigenvalue-locus PM");
 });
