@@ -7,9 +7,11 @@ import vm from "node:vm";
 import { parseDeck, splitSentences } from "./fixtures/beamdswitch/deck.mjs";
 import { parsePlot } from "./fixtures/beamdswitch/plot.mjs";
 
+export { parseDeck, parsePlot };
+
 const read = (path) => readFileSync(new URL(path, import.meta.url), "utf8");
 export const TEMPLATE = read("../templates/beamdswitch.js");
-const SECTIONS = [...read("../templates/beamdswitch-report.md").matchAll(/^# (.+)$/gm)].map((m) => m[1]);
+export const SECTIONS = [...read("../templates/beamdswitch-report.md").matchAll(/^# (.+)$/gm)].map((m) => m[1]);
 
 export const divs = (children, name, out = []) => {
   for (const c of children) if (c.type === "div") { if (c.name === name) out.push(c); divs(c.children, name, out); }
@@ -39,6 +41,27 @@ export function checkDeck(md, what) {
     assert.ok(plot.curves.length > 0, what);
   }
   return deck;
+}
+
+/* checkDeck, then every plot with the frame it sits on; each curve must be finite across its x range. */
+export function checkDeckPlots(md, what) {
+  const deck = checkDeck(md, what);
+  const plots = deck.frames.flatMap((f) => divs(f.children, "plot").map((d) => ({ frame: f, spec: parsePlot(textOf(d)) })));
+  for (const { frame, spec } of plots) for (const c of spec.curves) for (let i = 0; i <= 20; i++) {
+    const x = spec.x[0] + ((spec.x[1] - spec.x[0]) * i) / 20;
+    assert.ok(Number.isFinite(c.f(x)), `${what}: "${c.src}" on "${frame.title}" is finite at x = ${x}`);
+  }
+  return { deck, plots };
+}
+
+/* A visualisation's copy of the template is the site's shared one, unchanged; its built page inlines
+   that copy verbatim and carries the beamdswitch and Copy deck buttons. */
+export function assertSharedTemplate(slug, page = "index.html") {
+  assert.equal(read(`../visuals/${slug}/beamdswitch.js`), TEMPLATE, `templates/beamdswitch.js and visuals/${slug}/beamdswitch.js must stay identical`);
+  const html = read(`../visuals/${slug}/${page}`);
+  assert.ok(html.includes(TEMPLATE.trimEnd()), `visuals/${slug}/${page} inlines beamdswitch.js`);
+  assert.match(html, /id="save-beamdswitch"[^>]*>beamdswitch<\/button>/, `${slug}: the beamdswitch button`);
+  assert.match(html, /id="copy-beamdswitch"[^>]*>Copy deck<\/button>/, `${slug}: the Copy deck button`);
 }
 
 /* ---------- a stand-in DOM: enough for a page script to start and for its buttons to be clicked ---------- */
