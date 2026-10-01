@@ -4,6 +4,7 @@
 // filtered view can be shared. With no filter, a list the build rendered
 // (the notes) is left as it is, so its anchors keep working.
 import { getItem, loadCorpus, searchSite } from "./corpus.js";
+import { noteCopyControlHtml } from "./copy-markdown.js";
 import { fadeIn } from "./fade.js";
 
 const form = document.querySelector("[data-filter-form]");
@@ -83,9 +84,10 @@ if (form) {
     )).join("");
     const related = relatedHtml(entry, corpus);
     if (entry.kind === "note") {
-      return `<article class="note-item entry" id="${escapeHtml(entry.id)}">${date}`
+      return `<article class="note-item entry" id="${escapeHtml(entry.id)}" data-copy-scope>${date}`
         + `<div class="note-body">${entry.contentHtml || ""}</div>`
-        + `<div class="entry-tags" aria-label="Tags">${tags}</div>${related}</article>`;
+        + `<div class="entry-tags" aria-label="Tags">${tags}</div>${related}`
+        + `${noteCopyControlHtml(entry.id, entry.date, entry.summary || "")}</article>`;
     }
     const title = entry.url
       ? `<a href="${escapeHtml(siteHref(entry.url))}">${escapeHtml(entry.title)}</a>`

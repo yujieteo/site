@@ -15,6 +15,7 @@ import unicodedata
 import urllib.request
 from collections import Counter
 from pathlib import Path
+from urllib.parse import urljoin
 
 import markdown
 import yaml
@@ -31,6 +32,7 @@ STATIC = ROOT / "static"
 OUT = ROOT / "site"
 BASE_TEMPLATE = (TEMPLATES / "base.html").read_text(encoding="utf-8")
 MEDIA_ASSET_KEYS = ("audio", "video", "captions", "poster")
+SITE_URL = "https://teoyujie.org/"
 
 
 def render_markdown(text):
@@ -397,6 +399,75 @@ def reading_minutes(body_markdown):
     return max(1, int(words / READING_WORDS_PER_MINUTE + 0.5))
 
 
+# Code and math are kept verbatim; a link target is an inline link or image
+# destination (only when a closing parenthesis follows, as CommonMark requires),
+# a reference definition, or an HTML href/src attribute.
+# Indented code blocks are not detected, since list continuations look the same.
+MARKDOWN_LINK_TARGETS = re.compile(
+    r"(?P<fence>^ {0,3}(?P<fchar>`{3,}|~{3,}).*?^ {0,3}(?P=fchar)[`~]*[ \t]*$)"
+    r"|(?P<code>(?P<ticks>`+)[\s\S]+?(?<!`)(?P=ticks)(?!`))"
+    r"|(?P<math>\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)"
+    r"|(?<![\\$\w])\$(?=\S)[^$\n]*?(?<=\S)\$(?!\d))"
+    r"|(?P<inline>\]\(\s*)(?P<dest><[^>\n]*>|(?:[^\s()]|\([^\s()]*\))++)"
+    r"(?=\s*(?:\"[^\"]*\"|'[^']*'|\([^()]*\))?\s*\))"
+    r"|(?P<refdef>^ {0,3}\[[^\]\n]+\]:[ \t]*)(?P<refdest><[^>\n]*>|\S+)"
+    r"|(?P<attr>\b(?:href|src)=(?P<quote>[\"']))(?P<url>[^\"'\n]*)(?P=quote)",
+    re.MULTILINE | re.DOTALL,
+)
+URL_SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
+
+
+def absolute_url(url, base_url):
+    """Resolve a relative link target against the page it is published on."""
+    bracketed = url.startswith("<") and url.endswith(">")
+    target = url[1:-1] if bracketed else url
+    if not target or URL_SCHEME.match(target):
+        return url
+    resolved = urljoin(base_url, target)
+    return f"<{resolved}>" if bracketed else resolved
+
+
+def absolute_markdown(text, base_url):
+    """Return Markdown with every relative link and image resolved against ``base_url``."""
+    def replace(match):
+        if match.group("inline"):
+            return match.group("inline") + absolute_url(match.group("dest"), base_url)
+        if match.group("refdef"):
+            return match.group("refdef") + absolute_url(match.group("refdest"), base_url)
+        if match.group("attr"):
+            quote = match.group("quote")
+            return match.group("attr") + absolute_url(match.group("url"), base_url) + quote
+        return match.group(0)
+
+    return MARKDOWN_LINK_TARGETS.sub(replace, text)
+
+
+def titled_markdown(title, body):
+    """Front matter is dropped, so give the copy its title unless it opens with one."""
+    body = body.strip("\n") + "\n"
+    return body if body.startswith("# ") else f"# {title}\n\n{body}"
+
+
+def markdown_sources_script(sources):
+    """Embed each copyable Markdown source, keyed by its button's data-copy-markdown."""
+    data = json.dumps(sources, ensure_ascii=False).replace("<", "\\u003c")
+    return f'<script type="application/json" id="markdown-sources">{data}</script>'
+
+
+def copy_markdown_script(root=""):
+    return f'<script type="module" src="{root}static/js/copy-markdown.js"></script>'
+
+
+def page_copy_actions(extra=""):
+    """Copy Markdown button for a whole page, whose source is the "page" entry."""
+    return (
+        '<div class="page-actions" data-copy-control>'
+        '<button type="button" class="page-action" data-copy-markdown="page">Copy Markdown</button>'
+        f'{extra}<span class="page-action-status" data-copy-status aria-live="polite"></span>'
+        '</div>'
+    )
+
+
 def format_reading_time(minutes):
     return f"{minutes} min read"
 
@@ -421,6 +492,9 @@ def load_blog_posts():
             "tags": normalize_tags(meta.get("tags"), category),
             "body_markdown": body,
             "source_markdown": raw,
+            "copy_markdown": absolute_markdown(
+                titled_markdown(title, body), f"{SITE_URL}blog/{slug}.html"
+            ),
             "body_html": render_markdown(body),
             "reading_minutes": reading_minutes(body),
             "links": meta.get("links", []),
@@ -451,6 +525,7 @@ def load_daily_notes():
             notes.append({
                 "id": note["id"],
                 "content": note["content"],
+                "source": note["source"],
                 "body_html": body_html,
                 "plain_text": re.sub(r"\s+", " ", plain_text).strip(),
                 "tags": note["tags"],
@@ -995,13 +1070,26 @@ def load_about():
     }
 
 
+def about_markdown(cv, about):
+    """The About page as one Markdown document: its intro, then each section."""
+    parts = [f'# {cv["name"]}', about["intro"].strip()]
+    for section in about["sections"]:
+        parts += [f'## {section["title"]}', section["content"].strip()]
+    return absolute_markdown("\n\n".join(parts) + "\n", f"{SITE_URL}about.html")
+
+
 def build_about(cv, about, corpus_revision):
     sections_html = "".join(
         f'<h2 class="section-title" id="{esc(sec["slug"])}">{esc(sec["title"])}</h2>'
         f'{sec["content_html"]}'
         for sec in about["sections"]
     )
-    content = f'<h1 class="page-title">{esc(cv["name"])}</h1>{about["intro_html"]}{sections_html}'
+    content = (
+        '<div class="docs-title-row" data-copy-scope>'
+        f'<h1 class="page-title">{esc(cv["name"])}</h1>{page_copy_actions()}</div>'
+        f'{about["intro_html"]}{sections_html}'
+        f'{markdown_sources_script({"page": about_markdown(cv, about)})}{copy_markdown_script()}'
+    )
     return render_page(cv, "about", "About", content, corpus_revision)
 
 
@@ -1045,19 +1133,28 @@ def build_notes(cv, notes, records, corpus_revision):
         group_facets(counts, NOTE_FACETS, note_classifier(notes["registry"])), counts
     )
     days_html = []
+    sources = {}
     for entry in notes["entries"]:
         items_html = []
         for note in entry["notes"]:
             record_id = note["id"]
+            sources[record_id] = absolute_markdown(note["source"] + "\n", f"{SITE_URL}notes.html")
             tags_html = "".join(
                 f'<button type="button" class="tag" data-tag="{esc(tag)}">{esc(tag)}</button>'
                 for tag in note["tags"]
             )
             items_html.append(
-                f'<article class="note-item" id="{esc(record_id)}">'
+                f'<article class="note-item" id="{esc(record_id)}" data-copy-scope>'
                 f'<div class="note-body">{note["body_html"]}</div>'
                 f'<div class="entry-tags" aria-label="Tags">{tags_html}</div>'
-                f'{render_links(records[record_id], records, compact=True)}</article>'
+                f'{render_links(records[record_id], records, compact=True)}'
+                '<div class="note-actions" data-copy-control>'
+                f'<button type="button" class="copy-note" data-copy-markdown="{esc(record_id)}" '
+                f'aria-label="Copy Markdown of note from {esc(entry["display_date"])}: '
+                f'{esc(note["plain_text"][:40].strip())}">'
+                'Copy Markdown</button>'
+                '<span class="page-action-status" data-copy-status aria-live="polite"></span>'
+                '</div></article>'
             )
         if items_html:
             days_html.append(
@@ -1078,7 +1175,7 @@ def build_notes(cv, notes, records, corpus_revision):
         f'<div class="notes-intro">{intro_html}</div>'
         f'<p class="page-links"><a class="more-link" href="open-questions.html">Open questions '
         f'<span class="more-link-count">{open_count} open</span></a></p>'
-        f'{filters_html}'
+        f'{filters_html}{markdown_sources_script(sources)}{copy_markdown_script()}'
     )
     return render_page(
         cv, "notes", notes["title"], content, corpus_revision,
@@ -1209,14 +1306,19 @@ def load_colophon():
         "summary": str(meta.get("summary", "")),
         "body_markdown": body,
         "body_html": render_markdown(body),
+        "copy_markdown": absolute_markdown(
+            titled_markdown(meta["title"], body), f"{SITE_URL}colophon.html"
+        ),
     }
 
 
 def build_colophon(cv, colophon, corpus_revision):
     body_html, _ = add_heading_anchors(colophon["body_html"])
     content = (
-        f'<h1 class="page-title">{esc(colophon["title"])}</h1>'
+        '<div class="docs-title-row" data-copy-scope>'
+        f'<h1 class="page-title">{esc(colophon["title"])}</h1>{page_copy_actions()}</div>'
         f'<div class="post-body">{body_html}</div>'
+        f'{markdown_sources_script({"page": colophon["copy_markdown"]})}{copy_markdown_script()}'
     )
     return render_page(cv, None, colophon["title"], content, corpus_revision)
 
@@ -1301,25 +1403,21 @@ def build_blog_post(cv, post, posts, records, corpus_revision):
     body_html = re.sub(r"</?h1(?=>|\s)", lambda match: match.group(0).replace("h1", "h2"),
                        post["body_html"])
     body_html, headings = add_heading_anchors(body_html)
-    markdown_json = json.dumps(post["source_markdown"], ensure_ascii=False).replace("<", "\\u003c")
-    actions = (
-        '<div class="page-actions">'
-        '<button type="button" class="page-action" data-copy-markdown>Copy Markdown</button>'
+    actions = page_copy_actions(
         f'<a class="page-action" href="{esc(post["slug"])}.md" type="text/markdown">View Markdown</a>'
-        '<span class="page-action-status" data-copy-status aria-live="polite"></span>'
-        '</div>'
-        f'<script type="application/json" id="post-markdown">{markdown_json}</script>'
-    )
+    ) + markdown_sources_script({"page": post["copy_markdown"]})
     content = (
         '<div class="docs-layout">'
         f'{render_blog_sidebar(posts, post["slug"])}'
         '<article class="docs-article">'
-        f'<div class="docs-title-row"><h1 class="page-title">{esc(post["title"])}</h1>{actions}</div>'
+        f'<div class="docs-title-row" data-copy-scope><h1 class="page-title">{esc(post["title"])}</h1>'
+        f'{actions}</div>'
         f'{meta_line}<div class="post-body">{body_html}</div>'
         f'{render_links(records["blog:" + post["slug"]], records, root="../")}</article>'
         f'<aside class="docs-aside">{render_blog_toc(headings)}</aside>'
         '</div>'
         '<script type="module" src="../static/js/post.js"></script>'
+        f'{copy_markdown_script("../")}'
     )
     return render_page(
         cv, "blog", post["title"], content, corpus_revision, root="../",

@@ -104,6 +104,18 @@ the nearest minute at 220 words per minute (minimum 1). It appears in the post
 meta line and post list as "N min read" / "N min", and as `readingMinutes` on
 the post's `blog` Corpus Record, which the blog index renders.
 
+## Copy Markdown
+
+Every page built from Markdown has a Copy Markdown button: each blog post, the
+colophon, the About page (its intro and sections as one document), and each
+note on `notes.html`. The build embeds each item's Markdown in the page as JSON
+(`#markdown-sources`), with front matter replaced by the page title and every
+relative link, image and `href`/`src` resolved to an absolute
+`https://teoyujie.org/` URL; code and math are left as written.
+`static/js/copy-markdown.js` copies it with `navigator.clipboard.writeText` and,
+when that is missing or refused, shows it selected in a read-only textarea to
+copy by hand. It makes no network requests.
+
 ## Notes
 
 `data/notes.md` is the sole source of truth for notes; `site/notes.html` is
