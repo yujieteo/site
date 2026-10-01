@@ -1,6 +1,7 @@
 ---
 title: {{Tool}} analysis: {{what was modelled}}
 subtitle: {{what the report finds}}
+voice: bf_emma
 ---
 
 ::: narration
