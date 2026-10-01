@@ -1136,7 +1136,7 @@ def build_notes(cv, notes, records, corpus_revision):
     sources = {}
     for entry in notes["entries"]:
         items_html = []
-        for number, note in enumerate(entry["notes"], 1):
+        for note in entry["notes"]:
             record_id = note["id"]
             sources[record_id] = absolute_markdown(note["source"] + "\n", f"{SITE_URL}notes.html")
             tags_html = "".join(
@@ -1150,7 +1150,8 @@ def build_notes(cv, notes, records, corpus_revision):
                 f'{render_links(records[record_id], records, compact=True)}'
                 '<div class="note-actions" data-copy-control>'
                 f'<button type="button" class="copy-note" data-copy-markdown="{esc(record_id)}" '
-                f'aria-label="Copy Markdown of note {number} from {esc(entry["display_date"])}">'
+                f'aria-label="Copy Markdown of note from {esc(entry["display_date"])}: '
+                f'{esc(note["plain_text"][:40].strip())}">'
                 'Copy Markdown</button>'
                 '<span class="page-action-status" data-copy-status aria-live="polite"></span>'
                 '</div></article>'

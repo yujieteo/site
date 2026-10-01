@@ -87,7 +87,7 @@ if (form) {
       return `<article class="note-item entry" id="${escapeHtml(entry.id)}" data-copy-scope>${date}`
         + `<div class="note-body">${entry.contentHtml || ""}</div>`
         + `<div class="entry-tags" aria-label="Tags">${tags}</div>${related}`
-        + `${noteCopyControlHtml(entry.id, `Copy Markdown of note from ${dateValue}`)}</article>`;
+        + `${noteCopyControlHtml(entry.id, entry.date, entry.summary || "")}</article>`;
     }
     const title = entry.url
       ? `<a href="${escapeHtml(siteHref(entry.url))}">${escapeHtml(entry.title)}</a>`

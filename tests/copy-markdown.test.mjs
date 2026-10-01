@@ -141,13 +141,15 @@ test("neither the clipboard nor the fallback path fetches or uses execCommand", 
   assert.deepEqual(fetchCalls, []);
 });
 
-test("the note copy control filtered notes render names that note and has a live status", () => {
-  const html = noteCopyControlHtml("note:a\"b", "Copy Markdown of note from 2026-01-02");
+test("the note copy control filtered notes render names that note, labels it by date and text, and has a live status", () => {
+  const html = noteCopyControlHtml(
+    "note:a\"b", "2026-01-02", "Sharpe ratio is mean excess return over its standard deviation.",
+  );
   const button = html.match(/<button ([^>]*)>Copy Markdown<\/button>/)[1];
   const attributes = Object.fromEntries([...button.matchAll(/([\w-]+)="([^"]*)"/g)].map((m) => [m[1], m[2]]));
   assert.equal(attributes.class, "copy-note");
   assert.equal(attributes["data-copy-markdown"], "note:a&quot;b");
-  assert.equal(attributes["aria-label"], "Copy Markdown of note from 2026-01-02");
+  assert.equal(attributes["aria-label"], "Copy Markdown of note from 2 January 2026: Sharpe ratio is mean excess return over");
   assert.match(html, /^<div class="note-actions" data-copy-control>/);
   assert.match(html, /<span class="page-action-status" data-copy-status aria-live="polite"><\/span><\/div>$/);
 });

@@ -13,8 +13,20 @@ const escapeAttribute = (value) => String(value).replace(
   (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character],
 );
 
-// The per-note copy control, for notes the browser renders after filtering.
-export function noteCopyControlHtml(id, label) {
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July",
+  "August", "September", "October", "November", "December"];
+
+// "2026-01-02" as "2 January 2026", the notes page's display date.
+const displayDate = (isoDate) => {
+  const [, year, month, day] = String(isoDate).match(/^(\d{4})-(\d{2})-(\d{2})$/) ?? [];
+  return year && MONTHS[month - 1] ? `${Number(day)} ${MONTHS[month - 1]} ${year}` : String(isoDate);
+};
+
+// The per-note copy control, for notes the browser renders after filtering;
+// its label matches the one the build gives the same note.
+export function noteCopyControlHtml(id, isoDate, plainText) {
+  const excerpt = [...String(plainText)].slice(0, 40).join("").trim();
+  const label = `Copy Markdown of note from ${displayDate(isoDate)}: ${excerpt}`;
   return '<div class="note-actions" data-copy-control>'
     + `<button type="button" class="copy-note" data-copy-markdown="${escapeAttribute(id)}" `
     + `aria-label="${escapeAttribute(label)}">Copy Markdown</button>`
