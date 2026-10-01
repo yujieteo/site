@@ -13,6 +13,9 @@ Analysis Manual* (1986) chapter 9. Everything runs in the browser and
 | `template.html` | Page markup, styles, UI code, charts and WebMCP tools |
 | `raw.json` | Method, assumptions, scope, reference notes, examples and sources (published as `data.json`) |
 | `build.py` | Inlines `raw.json`, `engine.js` and `beamdswitch.js` into `template.html` to write `index.html` |
+| `AGENTS.md` | Notes for coding agents: where changes go (this folder upstream; the standalone repository is a read-only mirror), how to build and test, and the conventions. |
+| `SKILLS.md` | For agents using the tool: its tasks, inputs, read-only WebMCP tools, exports and a worked example. |
+| `LICENSE` | MIT. |
 
 ```sh
 python build.py   # rebuild index.html after editing template.html, engine.js, beamdswitch.js or raw.json

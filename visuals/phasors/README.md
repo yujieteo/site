@@ -11,6 +11,9 @@ Published at `https://teoyujie.org/visuals/phasors`.
 | --- | --- |
 | `index.html` | The whole tool. `<script id="ph-engine">` is the pure core (circuit, formatter, diagram scenes, SVG, hash, JSON, report, deck, self-tests; no DOM, storage, clock, randomness, `Intl` or locale calls; `self.Phasors` in the browser). `<script id="ph-ui">` is the page, the animation and the WebMCP tools. Edit this file directly. |
 | `raw.json` | Published metadata (`META`: scope, conventions, ranges, presets, default state, degenerate cases, sources), `schemaVersion` and the default inputs as `example`; must equal the engine's `META` and `defaultInputs()`. |
+| `AGENTS.md` | Notes for coding agents: where changes go (this folder upstream; the standalone repository is a read-only mirror), how to build and test, and the conventions. |
+| `SKILLS.md` | For agents using the tool: its tasks, inputs, read-only WebMCP tools, exports and a worked example. |
+| `LICENSE` | MIT. |
 
 The tests are `tests/phasors.test.mjs`, run with Node's built-in runner
 (`node --test`). They extract the engine script from `index.html` and run the

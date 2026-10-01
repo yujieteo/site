@@ -17,6 +17,8 @@ quantities of an update, the formula and the source notes.
 | `probly.csv` | The survey file exactly as published (zonination/perceptions at commit `51207062`, sha256 `235c1b22…4ee9`); the test checks the embedded answers against it. |
 | `raw.json` | Catalogue data, published as `data.json`: the Kent scale, the survey answers, the example scenarios and the initial state. The page never fetches it; the test says when it has drifted from the page. |
 | `LICENSE` | MIT for the page; the survey data's own MIT notice; Kent's essay is a US government work. |
+| `AGENTS.md` | Notes for coding agents: where changes go (this folder upstream; the standalone repository is a read-only mirror), how to build and test, and the conventions. |
+| `SKILLS.md` | For agents using the tool: its tasks, inputs, read-only WebMCP tools, exports and a worked example. |
 
 ## Data
 
