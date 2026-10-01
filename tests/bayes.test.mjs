@@ -3,6 +3,8 @@ import assert from "node:assert/strict";
 import vm from "node:vm";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { assertButtonsExport, assertInlined, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const html = read("visuals/bayes/index.html");
@@ -14,12 +16,14 @@ const plain = (v) => JSON.parse(JSON.stringify(v));
 const near = (x, y, tol = 1e-12) => assert.ok(Math.abs(x - y) < tol, `${x} ≈ ${y}`);
 const direct = (p, a, b) => (a * p) / (a * p + b * (1 - p));
 // The catalogue stub as the site's own validator reads it (scripts/validate.py: PyYAML, then the visualisation JSON Schema).
-const catalogue = () => JSON.parse(execFileSync("python3", ["-c", `import json, sys, jsonschema
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const PYTHON = process.env.PYTHON || (existsSync(`${ROOT}.venv/bin/python`) ? `${ROOT}.venv/bin/python` : "python3");
+const catalogue = () => JSON.parse(execFileSync(PYTHON, ["-c", `import json, sys, jsonschema
 sys.path.insert(0, "scripts")
 from validate import ROOT, load_document
 doc, err = load_document(ROOT / "data/visuals/bayes.yaml")
 schema = json.loads((ROOT / "schema/visualization.schema.json").read_text(encoding="utf-8"))
-print(json.dumps({"stub": doc, "errors": [err] if err else [e.message for e in jsonschema.Draft7Validator(schema).iter_errors(doc)]}))`], { cwd: new URL("../", import.meta.url), encoding: "utf8" }));
+print(json.dumps({"stub": doc, "errors": [err] if err else [e.message for e in jsonschema.Draft7Validator(schema).iter_errors(doc)]}))`], { cwd: ROOT, encoding: "utf8" }));
 
 test("the in-page self-checks all pass", () => {
   const checks = B.selfTest();
