@@ -720,6 +720,19 @@ test("a continuous delay keeps the det(I + L) contour running until it settles, 
   assert.equal(free.nyquist.crossCheck.agree, true);
 });
 
+test("an undelayed feedthrough channel does not force delay refinement of det(I + L) to the evaluation cap", () => {
+  // diag(e^(−0.1s)/(s + 1), 1) with K·I: det(I + L) = (1 + K·e^(−0.1s)/(s + 1))·(1 + K), so the count is that of the single delayed loop.
+  const plant = { form: "ss", A: [[-1]], B: [[1, 0]], C: [[1], [0]], D: [[0, 0], [0, 1]] };
+  for (const K of [1, 100, 1e4]) {
+    const r = F.analyze(mimo({ plant, controller: { form: "gain", K: I2 }, delays: [0.1, 0] }, { K }));
+    const single = F.analyze({ plant: { form: "tf", num: [1], den: [1, 1] }, K, delay: 0.1 }).nyquist;
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.nyquist.unresolved, false, `K = ${K}: ${r.nyquist.evaluations} evaluations`);
+    assert.equal(single.unresolved, false);
+    assert.equal(r.nyquist.Z, single.Z, `K = ${K}`);
+  }
+});
+
 test("MIMO peaks and crossings are refined between grid points, so the grid density does not change them", () => {
   const coarse = { range: { auto: false, wMin: 0.1, wMax: 1000, pointsPerDecade: 10 } }, fine = { range: { auto: false, wMin: 0.1, wMax: 1000, pointsPerDecade: 60 } };
   for (const breakAt of ["output", "input"]) {
