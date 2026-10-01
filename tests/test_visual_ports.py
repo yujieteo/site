@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 # slug -> standalone repository name
 PORTS = {
     "bayes": "bayes",
+    "beamdiag": "beamdiag",
     "convexity-action-engine": "convexity-action-engine",
     "delta-cohomology": "delta-cohomology",
     "distortion": "distortion",

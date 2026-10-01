@@ -22,7 +22,7 @@ The site is static and every page is public. The whole collection is also publis
 
 ## Engineering tools
 
-- [Beam diagram creator](https://teoyujie.org/visuals/beamdiag/index.html): Shear, moment and deflection of straight beams, including statically indeterminate ones, with an MSC Nastran export.
+- [Beam diagram creator](https://teoyujie.org/visuals/beamdiag/index.html): Shear, moment and deflection of straight beams, including statically indeterminate ones, with step-by-step hand calculations and an MSC Nastran export.
 - [Sectionlab](https://teoyujie.org/visuals/sectionlab/index.html): Cross-section properties, torsion constant and moment–curvature.
 - [Structural Stability Visualiser](https://teoyujie.org/visuals/stability/index.html): Column buckling, beam-columns, plate shear buckling and diagonal tension.
 - [Mohr's Circle Visualiser](https://teoyujie.org/visuals/mohr/index.html): 3D stress and strain transformation with failure checks.
