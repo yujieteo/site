@@ -21,7 +21,11 @@ decks with beamdswitch's own parser (`tests/fixtures/beamdswitch/deck.mjs`),
 compare the sentence splitter and timing constants with the vendored build in
 `visuals/beamdswitch/index.html`, and cover escaping, JSON round trips and
 import rejection, the checklist and prompts, limits, paragraphs, accessible
-names, the colour contrast of the shipped tokens, `raw.json` and the stub.
+names, the colour contrast of the shipped tokens, `raw.json` and the stub. They
+also boot the page script in `node:vm` against a stub DOM and storage to check
+the WebMCP tools, the 12-argument limit, tab keys and deck copying.
+`tests/toulmin-browser.test.mjs` checks the 320 px layout in a real Chrome and
+is skipped unless `TOULMIN_BROWSER_URL` names a remote-debugging endpoint.
 
 ## Narration timing
 
