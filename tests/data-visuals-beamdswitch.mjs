@@ -82,8 +82,8 @@ function element(tag, store = {}) {
 }
 
 // Runs a built page's scripts in the stand-in DOM. click(id) clicks a button and waits for its handlers;
-// saved holds each downloaded file's text and copied each clipboard write.
-export async function openPage(slug, { hash = "", search = "" } = {}) {
+// saved holds each downloaded file's text and copied each clipboard write. globals replaces or adds browser globals.
+export async function openPage(slug, { hash = "", search = "", globals = {} } = {}) {
   const html = read(`visuals/${slug}/index.html`);
   const byId = new Map(), bySelector = new Map(), urls = new Map(), created = [], saved = [], copied = [];
   for (const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) {
@@ -115,6 +115,7 @@ export async function openPage(slug, { hash = "", search = "" } = {}) {
     matchMedia: () => element("media", { matches: false }), getComputedStyle: () => element("style"),
     addEventListener() {}, removeEventListener() {}, scrollTo() {}, innerWidth: 1200, innerHeight: 800, scrollX: 0, scrollY: 0, devicePixelRatio: 1,
     ResizeObserver: class { observe() {} disconnect() {} }, IntersectionObserver: class { observe() {} disconnect() {} },
+    ...globals,
   });
   context.window = context.self = context.globalThis = context;
   for (const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) if (!/type="application\/json"/.test(m[1])) vm.runInContext(m[2], context);
