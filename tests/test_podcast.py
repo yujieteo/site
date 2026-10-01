@@ -417,7 +417,68 @@ class GenerateTests(unittest.TestCase):
 
 
 class PodcastBuildTests(unittest.TestCase):
-    def _make_project(self, directory):
+    """One copy of the repository, holding an audio episode and a video, built once for the class."""
+
+    EPISODE_ID = "2026-09-27-agents"
+    VIDEO_ID = "2026-09-27-fpl"
+
+    @classmethod
+    def setUpClass(cls):
+        cls._directory = tempfile.TemporaryDirectory()
+        cls.project = project = cls._make_project(cls._directory.name)
+        episode_id, video_id = cls.EPISODE_ID, cls.VIDEO_ID
+        audio_directory = project / "data" / "podcasts" / "audio"
+        audio_directory.mkdir(parents=True)
+        (audio_directory / f"{episode_id}.mp3").write_bytes(b"fake-audio")
+        (project / "data" / "podcasts" / f"{episode_id}.yaml").write_text(
+            yaml.safe_dump({
+                "id": episode_id,
+                "date": "2026-09-27",
+                "title": "Notes on agents",
+                "summary": "Condensed notes on agents.",
+                "focus_tags": ["agents"],
+                "notes": [f"note:{'0' * 64}"],
+                "duration_seconds": 1800.0,
+                "voice": "af_heart",
+                "audio": f"audio/{episode_id}.mp3",
+            }, sort_keys=False),
+            encoding="utf-8",
+        )
+        video_directory = project / "data" / "podcasts" / "video"
+        video_directory.mkdir(parents=True)
+        (video_directory / f"{video_id}.mp4").write_bytes(b"fake-video")
+        (video_directory / f"{video_id}.vtt").write_bytes(b"WEBVTT\n\n")
+        (video_directory / f"{video_id}.jpg").write_bytes(b"fake-poster")
+        (project / "data" / "podcasts" / f"{video_id}.yaml").write_text(
+            yaml.safe_dump({
+                "id": video_id,
+                "date": "2026-09-27",
+                "title": "FPL explainer",
+                "summary": "Where the points hide.",
+                "focus_tags": ["fpl"],
+                "duration_seconds": 183.67,
+                "video": f"video/{video_id}.mp4",
+                "captions": f"video/{video_id}.vtt",
+                "poster": f"video/{video_id}.jpg",
+            }, sort_keys=False),
+            encoding="utf-8",
+        )
+        subprocess.run(
+            [str(Path(sys.executable)), "scripts/build.py"],
+            cwd=project,
+            check=True,
+            capture_output=True,
+            text=True,
+            env=os.environ | {"VISUALS_REPO": str(project)},
+        )
+        cls.corpus = json.loads((project / "site" / "corpus.json").read_text(encoding="utf-8"))
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._directory.cleanup()
+
+    @staticmethod
+    def _make_project(directory):
         project = Path(directory) / "site-project"
         shutil.copytree(
             ROOT,
@@ -451,115 +512,59 @@ class PodcastBuildTests(unittest.TestCase):
         cv_path.write_text(yaml.safe_dump(cv, sort_keys=False), encoding="utf-8")
         return project
 
-    def _build(self, project):
-        subprocess.run(
-            [str(Path(sys.executable)), "scripts/build.py"],
-            cwd=project,
-            check=True,
-            capture_output=True,
-            text=True,
-            env=os.environ | {"VISUALS_REPO": str(project)},
+    def test_build_publishes_audio_pages_legacy_redirects_and_corpus(self):
+        project, episode_id = self.project, self.EPISODE_ID
+        index_html = (project / "site" / "media" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(f'audio/{episode_id}.mp3', index_html)
+        self.assertIn("Notes on agents", index_html)
+        episode_html = (
+            project / "site" / "media" / f"{episode_id}.html"
+        ).read_text(encoding="utf-8")
+        self.assertIn("<audio", episode_html)
+        self.assertEqual(
+            (project / "site" / "media" / "audio" / f"{episode_id}.mp3").read_bytes(),
+            b"fake-audio",
         )
 
-    def test_build_publishes_audio_pages_legacy_redirects_and_corpus(self):
-        with tempfile.TemporaryDirectory() as directory:
-            project = self._make_project(directory)
-            episode_id = "2026-09-27-agents"
-            audio_directory = project / "data" / "podcasts" / "audio"
-            audio_directory.mkdir(parents=True)
-            (audio_directory / f"{episode_id}.mp3").write_bytes(b"fake-audio")
-            (project / "data" / "podcasts" / f"{episode_id}.yaml").write_text(
-                yaml.safe_dump({
-                    "id": episode_id,
-                    "date": "2026-09-27",
-                    "title": "Notes on agents",
-                    "summary": "Condensed notes on agents.",
-                    "focus_tags": ["agents"],
-                    "notes": [f"note:{'0' * 64}"],
-                    "duration_seconds": 1800.0,
-                    "voice": "af_heart",
-                    "audio": f"audio/{episode_id}.mp3",
-                }, sort_keys=False),
-                encoding="utf-8",
-            )
-            self._build(project)
+        redirect_index = (
+            project / "site" / "podcast" / "index.html"
+        ).read_text(encoding="utf-8")
+        self.assertIn("url=/media/index.html", redirect_index)
+        redirect_episode = (
+            project / "site" / "podcast" / f"{episode_id}.html"
+        ).read_text(encoding="utf-8")
+        self.assertIn(f"url=/media/{episode_id}.html", redirect_episode)
+        self.assertEqual(
+            (project / "site" / "podcast" / "audio" / f"{episode_id}.mp3").read_bytes(),
+            b"fake-audio",
+        )
 
-            index_html = (project / "site" / "media" / "index.html").read_text(encoding="utf-8")
-            self.assertIn(f'audio/{episode_id}.mp3', index_html)
-            self.assertIn("Notes on agents", index_html)
-            episode_html = (
-                project / "site" / "media" / f"{episode_id}.html"
-            ).read_text(encoding="utf-8")
-            self.assertIn("<audio", episode_html)
-            self.assertEqual(
-                (project / "site" / "media" / "audio" / f"{episode_id}.mp3").read_bytes(),
-                b"fake-audio",
-            )
-
-            redirect_index = (
-                project / "site" / "podcast" / "index.html"
-            ).read_text(encoding="utf-8")
-            self.assertIn("url=/media/index.html", redirect_index)
-            redirect_episode = (
-                project / "site" / "podcast" / f"{episode_id}.html"
-            ).read_text(encoding="utf-8")
-            self.assertIn(f"url=/media/{episode_id}.html", redirect_episode)
-            self.assertEqual(
-                (project / "site" / "podcast" / "audio" / f"{episode_id}.mp3").read_bytes(),
-                b"fake-audio",
-            )
-
-            corpus = json.loads((project / "site" / "corpus.json").read_text(encoding="utf-8"))
-            record = next(record for record in corpus["records"] if record["id"] == f"podcast:{episode_id}")
-            self.assertEqual(record["audioUrl"], f"media/audio/{episode_id}.mp3")
-            self.assertEqual(record["durationSeconds"], 1800.0)
+        record = next(record for record in self.corpus["records"] if record["id"] == f"podcast:{episode_id}")
+        self.assertEqual(record["audioUrl"], f"media/audio/{episode_id}.mp3")
+        self.assertEqual(record["durationSeconds"], 1800.0)
 
     def test_build_publishes_video_with_captions_and_poster(self):
-        with tempfile.TemporaryDirectory() as directory:
-            project = self._make_project(directory)
-            video_id = "2026-09-27-fpl"
-            video_directory = project / "data" / "podcasts" / "video"
-            video_directory.mkdir(parents=True)
-            (video_directory / f"{video_id}.mp4").write_bytes(b"fake-video")
-            (video_directory / f"{video_id}.vtt").write_bytes(b"WEBVTT\n\n")
-            (video_directory / f"{video_id}.jpg").write_bytes(b"fake-poster")
-            (project / "data" / "podcasts" / f"{video_id}.yaml").write_text(
-                yaml.safe_dump({
-                    "id": video_id,
-                    "date": "2026-09-27",
-                    "title": "FPL explainer",
-                    "summary": "Where the points hide.",
-                    "focus_tags": ["fpl"],
-                    "duration_seconds": 183.67,
-                    "video": f"video/{video_id}.mp4",
-                    "captions": f"video/{video_id}.vtt",
-                    "poster": f"video/{video_id}.jpg",
-                }, sort_keys=False),
-                encoding="utf-8",
-            )
-            self._build(project)
+        project, video_id = self.project, self.VIDEO_ID
+        item_html = (
+            project / "site" / "media" / f"{video_id}.html"
+        ).read_text(encoding="utf-8")
+        self.assertIn("<video", item_html)
+        self.assertIn('kind="captions"', item_html)
+        self.assertIn(f'video/{video_id}.mp4', item_html)
+        self.assertIn(f'video/{video_id}.jpg', item_html)
+        self.assertEqual(
+            (project / "site" / "media" / "video" / f"{video_id}.mp4").read_bytes(),
+            b"fake-video",
+        )
+        self.assertEqual(
+            (project / "site" / "media" / "video" / f"{video_id}.vtt").read_bytes(),
+            b"WEBVTT\n\n",
+        )
 
-            item_html = (
-                project / "site" / "media" / f"{video_id}.html"
-            ).read_text(encoding="utf-8")
-            self.assertIn("<video", item_html)
-            self.assertIn('kind="captions"', item_html)
-            self.assertIn(f'video/{video_id}.mp4', item_html)
-            self.assertIn(f'video/{video_id}.jpg', item_html)
-            self.assertEqual(
-                (project / "site" / "media" / "video" / f"{video_id}.mp4").read_bytes(),
-                b"fake-video",
-            )
-            self.assertEqual(
-                (project / "site" / "media" / "video" / f"{video_id}.vtt").read_bytes(),
-                b"WEBVTT\n\n",
-            )
-
-            corpus = json.loads((project / "site" / "corpus.json").read_text(encoding="utf-8"))
-            record = next(record for record in corpus["records"] if record["id"] == f"video:{video_id}")
-            self.assertEqual(record["videoUrl"], f"media/video/{video_id}.mp4")
-            self.assertEqual(record["captionsUrl"], f"media/video/{video_id}.vtt")
-            self.assertEqual(record["posterUrl"], f"media/video/{video_id}.jpg")
+        record = next(record for record in self.corpus["records"] if record["id"] == f"video:{video_id}")
+        self.assertEqual(record["videoUrl"], f"media/video/{video_id}.mp4")
+        self.assertEqual(record["captionsUrl"], f"media/video/{video_id}.vtt")
+        self.assertEqual(record["posterUrl"], f"media/video/{video_id}.jpg")
 
 
 if __name__ == "__main__":

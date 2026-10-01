@@ -18,17 +18,16 @@ import reference  # noqa: E402
 
 FIXTURES = json.loads((VIZ / "fixtures.json").read_text(encoding="utf-8"))
 
-# Solve every fixture with the browser engine and export its NASTRAN deck.
+# Solve every fixture with the browser engine and export its NASTRAN deck in every unit convention.
+# (tests/beamdiag.test.mjs checks the engine's results against reference.json, which
+# test_reference_json_is_current keeps current.)
 NODE_SCRIPT = r"""
 const B = require(process.argv[1] + "/engine.js");
 const fixtures = require(process.argv[1] + "/fixtures.json");
 const out = {};
 for (const c of fixtures.cases) {
-  const r = B.solve(c.model);
-  const xs = [...new Set([0, r.model.length, ...r.model.supports.map((s) => s.x),
-    ...r.model.loads.flatMap((l) => (l.kind === "dist" ? [l.x1, l.x2] : [l.x]))])];
   const units = Object.fromEntries(Object.keys(B.UNIT_SYSTEMS).map((u) => [u, B.exportBdf(c.model, { units: u })]));
-  out[c.id] = { reactions: r.reactions, points: xs.map((x) => B.at(r, x)), bdf: B.exportBdf(c.model), units };
+  out[c.id] = { reactions: B.solve(c.model).reactions, bdf: B.exportBdf(c.model), units };
 }
 out["@units"] = B.UNIT_SYSTEMS;
 process.stdout.write(JSON.stringify(out));
@@ -138,70 +137,32 @@ class BeamDiagTest(unittest.TestCase):
         with self.assertRaises(reference.Singular):
             reference.Beam(model)
 
-    def test_browser_engine_agrees_with_python_reference(self):
-        for case in FIXTURES["cases"]:
-            beam = reference.Beam(case["model"])
-            js = self.js[case["id"]]
-            scale_f = max(abs(float(r["Fy"])) for r in beam.reactions)
-            xs = reference.sample_points(case["model"])
-            scale_m = max(abs(float(beam.M(x))) for x in xs)
-            scale_v = max(abs(float(beam.v(x))) for x in xs)
-            for r_js, r_py in zip(js["reactions"], beam.reactions):
-                self.assertEqual(r_js["x"], float(r_py["x"]))
-                self.assertAlmostEqual(r_js["Fy"], float(r_py["Fy"]), delta=1e-9 * scale_f)
-                self.assertAlmostEqual(r_js["Mz"], float(r_py["Mz"]), delta=1e-9 * scale_m)
-            for p in js["points"]:
-                x = p["x"]
-                if x > 0:
-                    self.assertAlmostEqual(p["Vleft"], float(beam.V(x, "left")), delta=1e-9 * scale_f)
-                    self.assertAlmostEqual(p["Mleft"], float(beam.M(x, "left")), delta=1e-9 * scale_m)
-                if x < float(beam.L):
-                    self.assertAlmostEqual(p["Vright"], float(beam.V(x, "right")), delta=1e-9 * scale_f)
-                    self.assertAlmostEqual(p["Mright"], float(beam.M(x, "right")), delta=1e-9 * scale_m)
-                self.assertAlmostEqual(p["v"], float(beam.v(x)), delta=1e-9 * scale_v)
-
-    def test_nastran_deck_encodes_the_same_beam(self):
-        for case in FIXTURES["cases"]:
-            model = case["model"]
-            deck = reference.model_from_bdf(self.js[case["id"]]["bdf"])
-            got = deck["model"]
-            self.assertEqual(deck["params"], {"POST": "0"})
-            self.assertEqual(deck["case"]["SPC"], "1")
-            self.assertEqual(deck["case"]["LOAD"], "2")
-            self.assertAlmostEqual(got["length"], model["length"], places=9)
-            self.assertAlmostEqual(got["material"]["E"] / model["material"]["E"], 1, places=9)
-            self.assertAlmostEqual(got["material"]["nu"], model["material"]["nu"], places=9)
-            self.assertAlmostEqual(got["section"]["A"] / model["section"]["A"], 1, places=9)
-            self.assertAlmostEqual(got["section"]["I"] / model["section"]["I"], 1, places=9)
-            self.assertEqual(sorted((s["kind"], round(s["x"], 9)) for s in got["supports"]),
-                             sorted((s["kind"], round(s["x"], 9)) for s in model["supports"]))
-            # Re-solving the deck's own model reproduces the original reactions and deflections.
-            original, from_deck = reference.Beam(model), reference.Beam(got)
-            scale = max(abs(float(r["Fy"])) for r in original.reactions)
-            for a, b in zip(original.reactions, from_deck.reactions):
-                self.assertAlmostEqual(float(a["Fy"]), float(b["Fy"]), delta=1e-8 * scale)
-                self.assertAlmostEqual(float(a["Mz"]), float(b["Mz"]), delta=1e-8 * scale * float(original.L))
-            xs = reference.sample_points(model)
-            scale_v = max(abs(float(original.v(x))) for x in xs)
-            for x in xs:
-                self.assertAlmostEqual(float(original.v(x)), float(from_deck.v(x)), delta=1e-8 * scale_v + 1e-15)
-
     def test_nastran_deck_in_every_unit_convention_encodes_the_same_beam(self):
         systems = self.js["@units"]
         self.assertEqual(sorted(systems), ["N-m", "N-mm", "kN-m", "kip-in", "lbf-in"])
         for case in FIXTURES["cases"]:
             model = case["model"]
             original = reference.Beam(model)
+            # The default deck is the SI one, so it is checked below with the other conventions.
+            self.assertEqual(self.js[case["id"]]["bdf"], self.js[case["id"]]["units"]["N-m"])
             for uid, u in systems.items():
                 with self.subTest(case=case["id"], units=uid):
                     text = self.js[case["id"]]["units"][uid]
                     self.assertIn(f"$ Units {u['ascii']}.", text)
-                    got = reference.model_from_bdf(text)["model"]
+                    deck = reference.model_from_bdf(text)
+                    got = deck["model"]
+                    self.assertEqual(deck["params"], {"POST": "0"})
+                    self.assertEqual(deck["case"]["SPC"], "1")
+                    self.assertEqual(deck["case"]["LOAD"], "2")
                     f = u["factor"]
                     # The deck's numbers are the model in this convention.
                     self.assertAlmostEqual(got["length"] * f["length"] / model["length"], 1, places=12)
                     self.assertAlmostEqual(got["material"]["E"] * f["stress"] / model["material"]["E"], 1, places=12)
+                    self.assertAlmostEqual(got["material"]["nu"], model["material"]["nu"], places=9)
+                    self.assertAlmostEqual(got["section"]["A"] * f["area"] / model["section"]["A"], 1, places=9)
                     self.assertAlmostEqual(got["section"]["I"] * f["inertia"] / model["section"]["I"], 1, places=12)
+                    self.assertEqual(sorted((s["kind"], round(s["x"] * f["length"], 9)) for s in got["supports"]),
+                                     sorted((s["kind"], round(s["x"], 9)) for s in model["supports"]))
                     # Solved in its own units, then converted to SI, it gives the original reactions and deflections.
                     beam = reference.Beam(got)
                     scale = max(abs(float(r["Fy"])) for r in original.reactions)
@@ -246,7 +207,7 @@ class BeamDiagTest(unittest.TestCase):
         page = json.loads(run.stdout)
         self.assertEqual(page["names"], stub["webmcp_tools"])
         case = FIXTURES["cases"][0]
-        expected = node_results()[case["id"]]
+        expected = self.js[case["id"]]
         self.assertEqual(page["solve"]["reactions"], expected["reactions"])
         # The deck tool writes in the page's unit convention, which opens as N, mm, MPa.
         self.assertEqual(page["bdf"]["bdf"], expected["units"]["N-mm"])
