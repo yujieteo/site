@@ -6,7 +6,7 @@ indeterminate beams, plus an MSC Nastran `.bdf` exporter. Everything runs in
 the browser; `index.html` is one self-contained file.
 
 This copy tracks [yujieteo/beamdiag](https://github.com/yujieteo/beamdiag)
-(commit `bb6d349`). The site keeps its own breadcrumb (back to Visuals), the
+(commit `db117e2`). The site keeps its own breadcrumb (back to Visuals), the
 catalogue entry in `data/visuals/beamdiag.yaml`, the WebMCP tool checks and
 the page tests below, and three page fixes: the section cursor line ignores
 the pointer, so a handle can be dragged through it; axis ranges and load-arrow
@@ -74,8 +74,10 @@ The beamdswitch button saves the beam as a narrated talk for
 with the set-up, the method, the results with their plots, and the checks,
 with spoken narration on every slide, written with the site's standard report
 template ([`templates/beamdswitch-report.md`](../../templates/beamdswitch-report.md)).
-Open it in beamdswitch to get slides, a handout, narration and a video. If the
-browser blocks the download, the deck is copied to the clipboard instead.
+Open it in beamdswitch to get slides, a handout, narration and a video. Copy
+deck, beside it, puts the same deck on the clipboard to paste into beamdswitch,
+for when the browser blocks the download (a blocked download fails silently, so
+the page cannot tell and copy on its own).
 
 The exported deck is laid out as it would be written by hand: small-field bulk
 data under `$` comment banners, switching a group to large field only when a
