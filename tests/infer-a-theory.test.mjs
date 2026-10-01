@@ -253,6 +253,9 @@ test("the binary field: an Ising-like chain whose couplings are probability para
   assert.ok(J.q50 > 0, "bad followed by bad: persistence J₁ > 0");
   assert.ok(r.ir.length > 2 && r.ir.every((b) => b.worst === "exact"), "nearest-neighbour decimation is exact at every step");
   assert.equal(claims("Bad intervals are uncommon.", 10, "binary").claims[0].kind, "pMinus");
+  const asked = IT.analyse({ ...st, objective: { ...st.objective, type: "target" } }, { uvDepth: 1, skipHessian: true });
+  assert.equal(asked.objective, asked.targets[0].key, "an unset or stale target falls back to the first offered prediction");
+  assert.ok(asked.ranking.some((x) => x.gain.nats > 0));
 });
 
 test("raw.json and the catalogue stub match the engine", () => {
@@ -267,10 +270,18 @@ test("raw.json and the catalogue stub match the engine", () => {
   assert.deepEqual(raw.phrase_sources.kent, plain(PH.KENT_DATA.source));
   assert.deepEqual(raw.phrase_sources.survey, plain(PH.EMPIRICAL_PHRASE_DATA.source));
   assert.equal(IT.DICTIONARY.length, 17);
-  const stub = read("data/visuals/infer-a-theory.yaml");
-  assert.match(stub, /^webmcp_tools: \[get_metadata, get_current_state, interpret_observation, rank_next_experiments\]$/m);
-  assert.match(stub, /^html_path: visuals\/infer-a-theory\/index\.html$/m);
+  const stub = parseStub(read("data/visuals/infer-a-theory.yaml"));
+  assert.equal(stub.slug, "infer-a-theory");
+  assert.equal(stub.html_path, "visuals/infer-a-theory/index.html");
+  assert.equal(stub.data_path, "visuals/infer-a-theory/raw.json");
+  assert.deepEqual(stub.assets, ["visuals/infer-a-theory/probly.csv"]);
+  assert.deepEqual(stub.webmcp_tools, ["get_metadata", "get_current_state", "interpret_observation", "rank_next_experiments"]);
 });
+
+const parseStub = (text) => Object.fromEntries(text.split("\n").filter((l) => /^\w+: /.test(l)).map((l) => {
+  const i = l.indexOf(": "), v = l.slice(i + 2).trim();
+  return [l.slice(0, i), v.startsWith("[") ? v.slice(1, -1).split(",").map((s) => s.trim()) : v.startsWith('"') ? JSON.parse(v) : v];
+}));
 
 test("the page is one offline file with the metadata it promises", () => {
   assert.match(html, /<title>Infer a Theory — From Observations to Effective Actions and Renormalisation<\/title>/);

@@ -1402,10 +1402,9 @@ function parse(text, opts = {}) {
   // ---- tails and asymmetry ----
   const tailNoun = String.raw`(?:deviations?|excursions?|drops?|dips?|falls?|spikes?|jumps?|swings?|moves?|outliers?|values?|changes?|events?)`;
   if ((m = new RegExp(String.raw`\b(?:large|big|extreme|sharp)\s+([a-z]+\s+)?${tailNoun}\s+(?:occur|happen|appear|are|show up|come)\s+(much |far |a lot |slightly )?(more|less)\s+(?:often|common(?:ly)?|frequent(?:ly)?)\s+than\s+(?:in\s+)?(?:a |an )?(gaussian|normal|bell)`).exec(t))) {
-    const dir = (m[1] || "") + t.slice(0, m.index + m[0].length), lo = SIDE_LO.test(m[1] || ""), hi = SIDE_HI.test(m[1] || ""), more = m[3] === "more", much = /much|far|a lot/.test(m[2] || "");
+    const lo = SIDE_LO.test(m[1] || ""), hi = SIDE_HI.test(m[1] || ""), more = m[3] === "more", much = /much|far|a lot/.test(m[2] || "");
     const v = more ? Math.log(much ? 2 : 1) : -Math.log(much ? 2 : 1);
     const mk = (kind, side) => claim(kind, { op: more ? ">" : "<", value: v, reading: `P(φ ${side === "lo" ? "<" : ">"} μ ${side === "lo" ? "−" : "+"} 2.5σ) ${more ? ">" : "<"} ${much ? (more ? "2 × " : "½ × ") : ""}the Gaussian value` });
-    void dir;
     return set("tails", lo && !hi ? [mk("tailLo", "lo")] : hi && !lo ? [mk("tailHi", "hi")] : [mk("tailLo", "lo"), mk("tailHi", "hi")], ["“Large” is read as more than 2.5 standard deviations from the mean (page default; edit k)."]);
   }
   if ((m = new RegExp(String.raw`\b(?:large\s+|big\s+|extreme\s+)?([a-z]+)\s+${tailNoun}\s+(?:are|is|occur|happen)\s+(much |far )?more\s+(?:common|frequent|likely|often)\s+than\s+(?:large\s+|big\s+)?([a-z]+)\s+(?:ones|${tailNoun})`).exec(t)) && (SIDE_LO.test(m[1]) || SIDE_HI.test(m[1]))) {
@@ -2043,8 +2042,7 @@ function adequacy(constraints, ens, basis, nonstationary) {
   for (const c of use) {
     const h = holdsFor(ens, c), post = sum(h.map((x, k) => x * w[k]));
     c.posteriorHolds = post;
-    const target = c.form === "prop" ? (c.op === "<" || c.op === ">" || c.op === "between" ? c.q : c.q) : c.q;
-    if (target >= 0.6 && post < 0.25) failing.push({ c, post });
+    if (c.q >= 0.6 && post < 0.25) failing.push({ c, post });
   }
   const sug = new Set();
   for (const f of failing) for (const id of (SUGGEST[f.c.kind] || (() => []))(f.c)) if (!basis.includes(id)) sug.add(id);
@@ -2097,12 +2095,11 @@ function gaussKLRate(exactCov, projSol, R = 256) {
 }
 function marginalKL(dExact, projSol) {
   const n = 300, lo = dExact.quantile(1e-6), hi = dExact.quantile(1 - 1e-6);
-  let kl = 0, pe = 0, pp = 0;
+  let kl = 0;
   for (let i = 1; i <= n; i++) {
     const x0 = lo + (hi - lo) * (i - 1) / n, x1 = lo + (hi - lo) * i / n;
     const a = Math.max(0, dExact.cdf(x1) - dExact.cdf(x0)), b = Math.max(1e-300, projSol.cdf(x1) - projSol.cdf(x0));
     if (a > 0) kl += a * Math.log(a / b);
-    pe += a; pp += b;
   }
   return Math.max(0, kl);
 }
@@ -2224,10 +2221,8 @@ function relevance(mode, basis) {
   const fp = { mode, g: Object.fromEntries(ids.map((id) => [id, 0])), w: ids.some(isTail) ? 1 : undefined };
   if (ids.includes("phi2")) fp.g.phi2 = 0.5;
   const gaussian = !ids.some((id) => ["phi3", "phi4", "phi6"].includes(id) || isTail(id));
-  const fpFull = { ...fp, g: { ...fp.g, phi2: 0.5 } };
   // A fixed uniform grid on [−6, 6] (trapezoid rule, spectrally accurate for these smooth densities); formal perturbations
   // such as −εφ³ stay harmless there.
-  void fpFull;
   const grid = gaussian ? undefined : { z: Float64Array.from(range(65), (i) => -6 + i * 0.1875), q: Float64Array.from(range(65), (i) => (i === 0 || i === 64 ? 0.09375 : 0.1875)), lost: 0 };
   const s2 = Math.SQRT2;
   const step = (th) => {
@@ -2261,9 +2256,9 @@ function linearise(fp, ids, eps, step, epsBy = {}) {
   const J = ids.map(() => new Array(ids.length).fill(0));
   ids.forEach((id, j) => {
     // Central differences; small formal perturbations (a slightly negative φ⁴ is harmless on the bounded grid).
-    const e = epsBy[id] || eps, oneSided = false;
+    const e = epsBy[id] || eps;
     const up = { ...fp, g: { ...fp.g, [id]: (fp.g[id] || 0) + e } }, dn = { ...fp, g: { ...fp.g, [id]: (fp.g[id] || 0) - e } };
-    const a = step(up), b = oneSided ? null : step(dn);
+    const a = step(up), b = step(dn);
     ids.forEach((_, i) => { J[i][j] = a && b ? (a[i] - b[i]) / (2 * e) : a ? (a[i] - base[i]) / e : NaN; });
   });
   const ok = J.every((r) => r.every(Number.isFinite));
@@ -2481,11 +2476,11 @@ const BINARY_EXAMPLE = {
   observations: [["Bad intervals are uncommon.", 10, {}], ["It is very likely that a bad interval is followed by another bad interval.", 10, { mode: "phrase", phrase: "very likely", q: 0.85, own: true }]],
 };
 function exampleState(ex = WORKED) {
-  const st = { mode: ex.mode, basis: [...ex.basis], labels: ex.labels || { plus: "good", minus: "bad" }, priorWidth: "default", objective: { type: "theory", target: "uv:tailLo" }, useCost: false, costs: {}, example: ex.id,
+  const st = { mode: ex.mode, basis: [...ex.basis], labels: ex.labels || { plus: "good", minus: "bad" }, priorWidth: "default", objective: { type: "theory", target: null }, useCost: false, costs: {}, example: ex.id,
     observations: ex.observations.map(([t, s, c]) => observation(t, s, c)) };
   return interpretAll(st);
 }
-const blankState = (mode = "continuous") => ({ mode, basis: mode === "binary" ? ["h", "J1"] : ["phi2", "k1"], labels: { plus: "good", minus: "bad" }, priorWidth: "default", objective: { type: "theory", target: "uv:tailLo" }, useCost: false, costs: {}, example: null, observations: [] });
+const blankState = (mode = "continuous") => ({ mode, basis: mode === "binary" ? ["h", "J1"] : ["phi2", "k1"], labels: { plus: "good", minus: "bad" }, priorWidth: "default", objective: { type: "theory", target: null }, useCost: false, costs: {}, example: null, observations: [] });
 /* The whole pipeline as a generator: observations → claims → ensemble posterior → RG flows → UV ensembles → next experiment. */
 function* analyseSteps(state, opts = {}) {
   const table = phraseTable(opts.phraseData || root.InferPhraseData);
@@ -2529,7 +2524,7 @@ function* analyseSteps(state, opts = {}) {
   const uv = yield* uvSteps({ mode, prior, constraints, refStep, physical, designExtras, maxDepth: opts.uvDepth ?? LIMITS.uvDepth, K1uv: opts.K1uv, K2uv: opts.K2uv });
   yield { phase: "design" };
   const design = uv.length && uv[0].ens.weights ? uv[0].ens : ens;
-  const objective = state.objective && state.objective.type === "target" ? state.objective.target : null;
+  const objective = state.objective && state.objective.type === "target" ? (targets.find((t) => t.key === state.objective.target) || targets[0]).key : null;
   const ranking = rankExperiments(design, cands, { target: objective, useCost: state.useCost });
   return {
     ...base, status: "ok", refStep, prior: describePrior(prior), ens, couplings, directions: dirs, hessian: hess, conflicts: confl, adequacy: adq, evidence, affects, location: loc,
@@ -2692,11 +2687,10 @@ function spokenText(t) {
     .replace(/[()]/g, ", ").replace(/[^\w\s.,'’;:+\-]/g, " ").replace(/\s+,/g, ",").replace(/\s+/g, " ").trim();
 }
 /* The effective action as text, term by term. */
-function actionText(basis, mode, plain = false) {
+function actionText(basis, mode) {
   const ids = basisCheck(mode, basis).ids;
   if (mode === "binary") return ids.map((id) => (id === "h" ? "-h\\sum_t \\sigma_t" : `-J_${OPS[id].lag}\\sum_t \\sigma_t\\sigma_{t+${OPS[id].lag}}`)).join(" ");
   const tex = { phi1: "g_1\\sum_t\\phi_t", phi2: "g_2\\sum_t\\phi_t^2", phi3: "g_3\\sum_t\\phi_t^3", phi4: "g_4\\sum_t\\phi_t^4", phi6: "g_6\\sum_t\\phi_t^6", tail: "g_{\\rm tail}\\sum_t V(\\phi_t)", tailLo: "g_{\\rm tail-}\\sum_t V_-(\\phi_t)", tailHi: "g_{\\rm tail+}\\sum_t V_+(\\phi_t)" };
-  void plain;
   return ids.map((id) => tex[id] || `k_${OPS[id].lag}\\sum_t(\\phi_{t+${OPS[id].lag}}-\\phi_t)^2`).join(" + ");
 }
 function actionPlain(basis, mode) {
@@ -2950,7 +2944,7 @@ function dirBars(d) {
 
 /* ---------- scale ladder ---------- */
 function rungs() {
-  if (!R || R.status !== "ok") return [{ kind: "obs", step: Math.min(...S.observations.map((o) => o.scale).filter((x) => x > 0), 10), label: "observed" }];
+  if (!R || R.status !== "ok") { const sc = S.observations.map((o) => o.scale).filter((x) => x > 0); return [{ kind: "obs", step: sc.length ? Math.min(...sc) : 10, label: "observed" }]; }
   const out = [];
   for (const l of [...R.uv].reverse()) out.push({ kind: "uv", depth: l.depth, step: l.step, level: l });
   out.push({ kind: "obs", n: 0, step: R.refStep });
@@ -3130,7 +3124,7 @@ function renderNext() {
   $("target-box").hidden = S.objective.type !== "target";
   for (const b of document.querySelectorAll("[data-objective]")) b.setAttribute("aria-pressed", String(b.dataset.objective === S.objective.type));
   $("use-cost").checked = !!S.useCost;
-  if (R && R.targets) $("target").innerHTML = R.targets.map((t) => `<option value="${t.key}"${t.key === S.objective.target ? " selected" : ""}>${esc(t.label)}</option>`).join("");
+  if (R && R.targets) $("target").innerHTML = R.targets.map((t) => `<option value="${t.key}"${t.key === (R.objective || S.objective.target) ? " selected" : ""}>${esc(t.label)}</option>`).join("");
   if (!R || R.status !== "ok") { box.innerHTML = `<p class="muted small">After inference, the page ranks candidate measurements by expected information gain.</p>`; return; }
   const top = R.ranking[0], maxG = Math.max(...R.ranking.map((r) => r.gain.bits), 1e-9);
   const item = (r, k) => `<article class="exp${k === 0 ? " best" : ""}">${k === 0 ? `<p class="small muted" style="margin:0">MOST USEFUL NEXT OBSERVATION</p>` : ""}
@@ -3250,7 +3244,7 @@ function onField(e) {
   if (f === "text") { o.text = t.value; S.example = null; markStale(); return; }
   if (f === "scale" || f === "unit") {
     const card = document.querySelector(`[data-card="${i}"]`), v = +card.querySelector('[data-f="scale"]').value, u = card.querySelector('[data-f="unit"]').value;
-    if (v > 0) { o.scale = v * UNITS.find((x) => x[0] === u)[1]; if (o.interpretation && o.interpretation.scaleSource === "card") { o.interpretation.claims.forEach((c) => { c.scale = o.scale; }); o.interpretation.cardScale = o.scale; } }
+    if (v > 0) { o.scale = v * UNITS.find((x) => x[0] === u)[1]; if (o.interpretation) { if (o.interpretation.scaleSource === "card") o.interpretation.claims.forEach((c) => { c.scale = o.scale; }); o.interpretation.cardScale = o.scale; } }
     markStale(); return;
   }
   if (f === "cmode") { o.confidence = { mode: t.value, phrase: o.confidence.phrase || (o.interpretation?.confidence?.phrase ?? ""), q: t.value === "exact" ? 0.9 : undefined }; if (t.value === "range") Object.assign(o.confidence, { lo: 0.7, hi: 0.9 }); rerenderCard(i); markStale(); return; }
