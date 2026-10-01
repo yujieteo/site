@@ -37,7 +37,9 @@ test("every visualisation on the shared template ships the template that always 
     try { return !!read(`visuals/${slug}/beamdswitch.js`); } catch { return false; }
   });
   assert.ok(pages.length > 0);
-  for (const slug of pages) assert.equal(read(`visuals/${slug}/beamdswitch.js`), TEMPLATE, `visuals/${slug}/beamdswitch.js is the shared template`);
+  // Every page, or only those a pull request changes (SITE_TEST_VISUALS; see tests/visual_selection.py).
+  const selected = process.env.SITE_TEST_VISUALS?.split(",");
+  for (const slug of pages.filter((slug) => !selected || selected.includes(slug))) assert.equal(read(`visuals/${slug}/beamdswitch.js`), TEMPLATE, `visuals/${slug}/beamdswitch.js is the shared template`);
 });
 
 test("Phasors and Toulmin export their default decks with voice bf_emma", () => {
