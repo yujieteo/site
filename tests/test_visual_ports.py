@@ -33,6 +33,7 @@ PORTS = {
     "md-explorer": "md-explorer",
     "packets-to-playback": "packets-to-playback",
     "phasors": "phasors",
+    "probabilistic-method": "probabilistic-method",
     "queue-time": "queue-time",
     "root-locus": "root-locus",
     "subsidy-atlas": "subsidy-atlas",
