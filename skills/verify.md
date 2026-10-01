@@ -31,6 +31,8 @@ Every site test runs on every deploy. Time each site test you add (for example
 `time .venv/bin/python -m unittest tests.test_visual_ports`), keep each well under
 a second, and never put rebuilds, subprocess builds, full-corpus scans, browser
 launches or network access in one; list the added tests and their times in the
-pull request description. See [Site test cost](playbooks/add-visualization.md#site-test-cost).
+pull request description. See [Site test cost](playbooks/add-visualization.md#site-test-cost). Browser end-to-end tests belong in the
+visualization's own repository; this stage is the site-level end-to-end check of a
+port, and the second of the [two no-mistakes runs](playbooks/add-visualization.md#end-to-end-testing-and-the-two-pipeline-runs).
 
 After deploying, run [Stage B](verify-post-deploy.md) and report it with the same fields.
