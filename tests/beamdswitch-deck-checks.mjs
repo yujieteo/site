@@ -25,6 +25,7 @@ export function checkDeck(md, what) {
   const deck = parseDeck(md);
   assert.equal(deck.frames[0].kind, "title", what);
   assert.ok(deck.meta.title, `${what}: has a title`);
+  assert.match(deck.meta.voice ?? "", /^[a-z]{2}_[a-z]+$/, `${what}: names its narration voice`);
   assert.deepEqual(deck.frames.filter((f) => f.kind === "section").map((f) => f.title), SECTIONS, `${what}: the template's sections, in order`);
   for (const s of SECTIONS) assert.ok(deck.frames.some((f) => f.kind === "frame" && f.section === s), `${what}: ${s} has a frame`);
   const last = deck.frames.at(-1);

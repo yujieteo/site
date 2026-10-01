@@ -30,10 +30,11 @@ const divs = (children, name, out = []) => {
 };
 
 // The deck opens in beamdswitch as the standard template: title slide, the four sections in order,
-// every slide narrated in plain spoken prose written in the deck, ending on one ::: key.
+// a narration voice named, every slide narrated in plain spoken prose written in the deck, ending on one ::: key.
 export function assertStandardDeck(md, what) {
   const deck = parseDeck(md);
   assert.equal(deck.frames[0].kind, "title", what);
+  assert.match(deck.meta.voice ?? "", /^[a-z]{2}_[a-z]+$/, `${what}: names its narration voice`);
   assert.deepEqual(deck.frames.filter((f) => f.kind === "section").map((f) => f.title), SECTIONS, what);
   assert.equal(md.match(/^::: narration$/gm).length, deck.frames.length, `${what}: one ::: narration per slide`);
   for (const f of deck.frames) {
