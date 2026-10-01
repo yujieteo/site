@@ -680,6 +680,110 @@ test("MIMO validation blocks bad dimensions, too many channels and fractional di
   assert.match(err(mimo({ plant: { form: "tfm", entries: [[{ num: [1, 0, 0], den: [1, 1] }]] }, controller: { form: "gain", K: [[1]] } })), /improper/);
 });
 
+test("high-gain MIMO loops close the det(I + L) contour where it has settled and agree with the closed-loop eigenvalues", () => {
+  // 1/(s + 1)² is stable for every K > 0; before the contour ran far enough, K = 1e6 and 1e8 gave a spurious Z = 1.
+  const lag2 = { form: "ss", A: [[0, 1], [-1, -2]], B: [[0], [1]], C: [[1, 0]], D: [[0]] };
+  // (s + 2)/(s + 1) has feedthrough 1, so det(I + L) tends to 1 + K rather than 1.
+  const lead = { form: "ss", A: [[-1]], B: [[1]], C: [[1]], D: [[1]] };
+  const twoByTwo = { form: "ss", A: [[0, 1, 0, 0], [-1, -2, 0, 0], [0, 0, -1, 0], [0, 0, 0, -3]], B: [[0, 0], [1, 0], [1, 1], [0, 1]], C: [[1, 0, 1, 0], [0, 0, 0, 1]], D: [[0, 0], [0, 0]] };
+  for (const [plant, K] of [[lag2, 1e4], [lag2, 1e6], [lag2, 1e8], [lead, 1e6], [twoByTwo, 1e6], [twoByTwo, 1e8]]) {
+    const size = plant.D.length;
+    const r = F.analyze(mimo({ plant, controller: { form: "gain", K: plant.D[0].map((_, i) => plant.D.map((__, j) => (i === j ? 1 : 0))) } }, { K }));
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.closedLoop.available, true);
+    assert.equal(r.nyquist.Z, r.closedLoop.unstable, `${size} × ${size} at K = ${K}: Z = ${r.nyquist.Z}, eigenvalues ${r.closedLoop.unstable}`);
+    assert.equal(r.nyquist.crossCheck.agree, true);
+    assert.ok(!r.warnings.some((w) => w.code === "nyquist-mismatch"));
+  }
+});
+
+test("transfer-matrix plants of any size default to zero delays shaped for the plant", () => {
+  const e = (a) => ({ num: [1], den: [1, a] });
+  for (const entries of [[[e(1)]], [[e(1), e(2), e(3)]], [[e(1)], [e(2)], [e(3)]]]) {
+    const plant = { form: "tfm", entries }, p = entries.length, m = entries[0].length;
+    const controller = { form: "gain", K: Array.from({ length: m }, (_, i) => Array.from({ length: p }, (_, j) => (i === j ? 1 : 0))) };
+    const x = { system: "mimo", K: 1, mimo: { plant, controller } };
+    const r = F.analyze(x);
+    assert.equal(r.ok, true, `${p} × ${m}: ${JSON.stringify(r.errors)}`);
+    const plain = (v) => JSON.parse(JSON.stringify(v));
+    assert.deepEqual(plain(r.loop.delays), new Array(m).fill(0));
+    assert.deepEqual(plain(F.normalise(x).mimo.delays), new Array(m).fill(0));
+    assert.deepEqual(plain(F.normalise({ ...x, mimo: { ...x.mimo, delayAt: "output" } }).mimo.delays), new Array(p).fill(0));
+    assert.deepEqual(plain(F.normalise({ ...x, mimo: { ...x.mimo, delayAt: "entry" } }).mimo.delays), Array.from({ length: p }, () => new Array(m).fill(0)));
+  }
+});
+
+test("MIMO delays per plant output and per plant entry are exact in continuous and discrete time", () => {
+  const ph = (row, i, j) => Math.atan2(row.entries[i][j].im, row.entries[i][j].re);
+  const wrap = (a) => a - 2 * Math.PI * Math.round(a / (2 * Math.PI));
+  const cases = [
+    ["output", [0.02, 0.05], (i) => [0.02, 0.05][i]],
+    ["entry", [[0.01, 0], [0.04, 0.03]], (i, j) => [[0.01, 0], [0.04, 0.03]][i][j]],
+    ["input", [0.03, 0.01], (i, j) => [0.03, 0.01][j]],
+  ];
+  for (const [delayAt, delays, tau] of cases) {
+    // K = I and the loop broken at the output: L = G_τ, so each entry is G_ij·e^(−jωτ_ij).
+    const range = { auto: false, wMin: 0.1, wMax: 100, pointsPerDecade: 50 };
+    const free = F.mimoCurves(mimo({ ...sat() }, { range })), x = mimo({ ...sat(), delayAt, delays }, { range });
+    const c = F.mimoCurves(x), r = F.analyze(x);
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.loop.delayAt, delayAt);
+    assert.equal(r.closedLoop.available, false);
+    assert.equal(r.nyquist.available, true);
+    assert.equal(c.rows.length, free.rows.length);
+    c.rows.filter((_, k) => k % 20 === 0).forEach((row) => {
+      const k = c.rows.indexOf(row);
+      for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) {
+        close(row.entries[i][j].mag, free.rows[k].entries[i][j].mag, 1e-12 * Math.max(1, row.entries[i][j].mag), `|L${i + 1}${j + 1}| ${delayAt}`);
+        close(wrap(ph(row, i, j) - ph(free.rows[k], i, j) + row.w * tau(i, j)), 0, 1e-9, `∠L${i + 1}${j + 1} ${delayAt} at ${row.w}`);
+      }
+    });
+  }
+  // Discrete: whole-sample delays become shift-register states, so the closed-loop eigenvalues stay available and agree.
+  // Per entry, each output row gets its own copy of the plant, so the plant must be stable for the copies to stay harmless.
+  // K = 0.01·I broken at the output keeps L = 0.01·G_τ and the closed loop stable.
+  const disc = { timeDomain: "discrete", Ts: 0.5, discretization: { plant: "zoh", controller: "z", prewarp: 0 }, range: { auto: false, wMin: 0.001, wMax: 6, pointsPerDecade: 50 } };
+  const lv = () => ({ plant: F.MIMO_PRESETS["distillation-lv"].make().plant, controller: { form: "gain", K: [[0.01, 0], [0, 0.01]] } });
+  const dcases = [["output", [2, 1], (i) => [2, 1][i], 3], ["entry", [[1, 0], [2, 1]], (i, j) => [[1, 0], [2, 1]][i][j], 2 + 4]];
+  for (const [delayAt, delays, d, extraStates] of dcases) {
+    const free = F.mimoCurves(mimo({ ...lv() }, disc)), x = mimo({ ...lv(), delayAt, delays }, disc);
+    const c = F.mimoCurves(x), r = F.analyze(x);
+    assert.equal(r.ok, true, JSON.stringify(r.errors));
+    assert.equal(r.loop.plantStates, 2 + extraStates, `${delayAt} realisation size`);
+    assert.equal(r.nyquist.crossCheck.available, true);
+    assert.equal(r.nyquist.crossCheck.agree, true, `${delayAt}: Z = ${r.nyquist.Z}, eigenvalues ${r.closedLoop.unstable}`);
+    assert.equal(c.rows.length, free.rows.length);
+    for (const k of [0, 60, 120, c.rows.length - 1]) {
+      const row = c.rows[k];
+      for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) {
+        close(row.entries[i][j].mag, free.rows[k].entries[i][j].mag, 1e-9 * Math.max(1, row.entries[i][j].mag), `|L${i + 1}${j + 1}| ${delayAt} discrete`);
+        close(wrap(ph(row, i, j) - ph(free.rows[k], i, j) + row.w * 0.5 * d(i, j)), 0, 1e-9, `∠L${i + 1}${j + 1} ${delayAt} discrete at ${row.w}`);
+      }
+    }
+    if (delayAt === "entry") assert.ok(r.warnings.some((w) => w.code === "delay-copies"));
+  }
+  const err = (x) => F.analyze(x).errors.map((e) => e.message).join("\n");
+  assert.match(err(mimo({ ...sat(), delayAt: "output", delays: [0.1] })), /one per plant output/);
+  assert.match(err(mimo({ ...sat(), delayAt: "entry", delays: [0.1, 0.2] })), /2 × 2 matrix/);
+  assert.match(err(mimo({ ...sat(), delayAt: "sideways" })), /per plant entry/);
+  assert.match(F.toMarkdown(mimo({ ...sat(), delayAt: "entry", delays: [[0.01, 0], [0.04, 0.03]] })), /Delays: 0\.01, 0; 0\.04, 0\.03 s \(per plant entry\)/);
+});
+
+test("a 6 × 6 MIMO loop at the state limit is analysed in full, and more states are refused", () => {
+  let seed = 11;
+  const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647 - 0.5; };
+  const plant = (n) => ({
+    form: "ss", A: Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => (i === j ? -1 - 0.3 * i : 0.2 * rnd()))),
+    B: Array.from({ length: n }, () => Array.from({ length: 6 }, rnd)), C: Array.from({ length: 6 }, () => Array.from({ length: n }, rnd)), D: Array.from({ length: 6 }, () => new Array(6).fill(0)),
+  });
+  const K = Array.from({ length: 6 }, (_, i) => Array.from({ length: 6 }, (_, j) => (i === j ? 5 : 0)));
+  const r = F.analyze(mimo({ plant: plant(48), controller: { form: "gain", K } }));
+  assert.equal(r.ok, true, JSON.stringify(r.errors));
+  assert.equal(r.nyquist.crossCheck.agree, true);
+  for (const at of ["output", "input"]) assert.equal(r.margins[at].loopAtATime.length, 6);
+  assert.match(F.analyze(mimo({ plant: plant(51), controller: { form: "gain", K } })).errors.map((e) => e.message).join("\n"), /about 50 states/);
+});
+
 test("MIMO exports carry both breaking points, every view as CSV, and round-trip through import", () => {
   const x = F.normalise(mimo({ ...F.MIMO_PRESETS["distillation-lv"].make(), breakAt: "input", delays: [1, 0] }, { timeDomain: "discrete", Ts: 0.5, discretization: { plant: "zoh", controller: "tustin", prewarp: 0 }, K: 0.8 }));
   const r = F.analyze(x);

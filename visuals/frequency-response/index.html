@@ -171,7 +171,8 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
           <div class="stack">
             <label class="f"><span class="n"><b>Example</b></span><select id="mimo-preset"></select></label>
             <label class="f"><span class="n"><b>Loop broken at</b></span><select id="mimo-break" data-field="mimo.breakAt"><option value="output">Plant output: L_o = G·C</option><option value="input">Plant input: L_i = C·G</option></select></label>
-            <label class="f"><span class="n"><b>Input delays</b><small id="mimo-delay-unit">s, one per plant input</small></span><input type="text" id="mimo-delays" data-field="mimo.delays" spellcheck="false"><span class="err" id="mimo-delays-err"></span></label>
+            <label class="f"><span class="n"><b>Delays applied</b></span><select id="mimo-delay-at" data-field="mimo.delayAt"><option value="input">Per plant input: G·diag(e^(−sτⱼ))</option><option value="output">Per plant output: diag(e^(−sτᵢ))·G</option><option value="entry">Per plant entry: G_ij·e^(−sτᵢⱼ)</option></select></label>
+            <label class="f"><span class="n"><b>Delays</b><small id="mimo-delay-unit">s, one per plant input</small></span><input type="text" id="mimo-delays" data-field="mimo.delays" spellcheck="false"><span class="err" id="mimo-delays-err"></span></label>
           </div>
           <p class="note">Examples are classical 2 × 2 textbook systems with <span class="tag">unsourced default</span> values. Margins are reported at both breaking points; the chosen one drives the checks and plots.</p>
         </fieldset>
@@ -379,12 +380,12 @@ const CONVENTIONS = [
   "When every block is discretised from s, the continuous response L(jω) (with delay d·Ts) is overlaid on the discrete one to show warping and aliasing. Straight-line asymptotes are drawn in continuous time only.",
   "Nyquist: the count Z = N + P uses the argument principle on 1 + L round the whole contour (the lower half is the conjugate mirror of the upper half). Continuous time: up the jω axis from −j∞ to +j∞, closed clockwise through the right half-plane (by an arc for an improper loop, otherwise at |L| → 0), indented to the right round jω-axis poles. Discrete time: anticlockwise round the unit circle, indented outwards round unit-circle poles. Boundary poles therefore count as stable. N is the net number of clockwise encirclements of −1, P the open-loop poles strictly in the unstable region (of the delay-free part), Z the unstable closed-loop poles; a non-causal L(z) adds its degree excess. The contour is refined adaptively wherever arg(1 + L) turns by more than 45° or the locus jumps further than its distance to −1 (capped at 120 000 evaluations); a leftover turn above 90° or a non-integer winding marks the count unresolved. Where the closed-loop poles are available the two verdicts are compared and any disagreement is flagged first among the warnings.",
   "Nichols: open-loop phase (degrees, unwrapped) against magnitude (dB), with the critical point (−180° + k·360°, 0 dB) repeated every 360°. Constant-|T| = M contours solve (M² − 1)|L|² + 2M²·cos φ·|L| + M² = 0 for its positive roots (two branches when M > 1); constant-∠T = ψ contours are |L| = sin(φ − ψ)/sin ψ where that is positive and on the right branch; the Ms boundary is |1 + L| = 1/Ms, i.e. |L| = −cos φ ± √(cos²φ − 1 + 1/Ms²).",
-  "MIMO: plant G (p × m) and controller C (m × p) are state space, a static gain (controller only), or a transfer matrix realised by stacking one controllable-canonical block per non-zero entry; that realisation is not minimal and can hide modes. The loop broken at the plant output is L_o = G·Δ·C (p × p) and at the plant input L_i = Δ·C·G (m × m), with Δ = diag(e^(−sτ_j)) per-input delays (whole samples, held as shift-register states, in discrete time). G(s) = C(sI − A)⁻¹B + D is evaluated through a Hessenberg form of A by complex elimination at each frequency. Closed-loop poles are the eigenvalues of A_cl (complex Hessenberg reduction and shifted QR). The generalised Nyquist count uses the winding of det(I + L) about 0 on the same contour, refinement and indentation as the single-loop count, P being the unstable eigenvalues of the open-loop state matrix; it never depends on eigenvalue matching.",
+  "MIMO: plant G (p × m) and controller C (m × p) are state space, a static gain (controller only), or a transfer matrix realised by stacking one controllable-canonical block per non-zero entry; that realisation is not minimal and can hide modes. The loop broken at the plant output is L_o = G·Δ·C (p × p) and at the plant input L_i = Δ·C·G (m × m), with delays e^(−sτ) applied to G per plant input (G·Δ), per plant output (Δ·G) or per entry (G_ij·e^(−sτ_ij)); in discrete time they are whole samples held as shift-register states (per output through the transposed realisation, per entry by stacking one delayed copy of the plant per output row, which is not minimal). G(s) = C(sI − A)⁻¹B + D is evaluated through a Hessenberg form of A by complex elimination at each frequency. Closed-loop poles are the eigenvalues of A_cl (complex Hessenberg reduction and shifted QR). The generalised Nyquist count uses the winding of det(I + L) about 0 on the same contour, refinement and indentation as the single-loop count, P being the unstable eigenvalues of the open-loop state matrix; it never depends on eigenvalue matching.",
   "MIMO margins, at both breaking points (the chosen one drives the checks): eigenvalue loci λᵢ(L), matched between neighbouring frequencies only for colouring, give the eigenvalue-locus phase margin at |λ| = 1 and the uniform scalar-gain margins (all loops scaled together) at negative-real-axis crossings, which can be optimistic for non-normal L (crossings exactly at ω = 0 or π/Ts are not read). The return difference α = min σ_min(I + L) (one-sided Jacobi SVD, golden-section refined) is a genuine but conservative bound: simultaneous gain margins from 1/(1 + α) to 1/(1 − α) and phase margins of ±2·asin(α/2). max σ_max(S) = 1/α and max σ_max(T) are reported, and loop-at-a-time margins are the classical margins of each diagonal channel with the other loops open, which ignore cross-coupling. Disk margins and structured singular value (μ) analysis are out of scope.",
 ];
 const ASSUMPTIONS = [
-  "Unity negative feedback and LTI systems, in continuous or discrete time chosen globally (no mixed sampled-data loops); SISO, or MIMO with up to 6 inputs and 6 outputs and about 60 states.",
-  "MIMO input is state space first; a transfer matrix is a convenience path whose stacked realisation can contain hidden modes, so its open-loop pole count can overcount P. The user chooses the loop-breaking point (plant input or output); the generalised Nyquist count uses det(I + L), and eigenvalue loci serve visualisation and the eigenvalue-based margins. MIMO Nichols views show eigenvalue loci and are illustrative, not a robustness proof. MIMO delays are per plant input channel.",
+  "Unity negative feedback and LTI systems, in continuous or discrete time chosen globally (no mixed sampled-data loops); SISO, or MIMO with up to 6 inputs and 6 outputs and about 50 states.",
+  "MIMO input is state space first; a transfer matrix is a convenience path whose stacked realisation can contain hidden modes, so its open-loop pole count can overcount P. The user chooses the loop-breaking point (plant input or output); the generalised Nyquist count uses det(I + L), and eigenvalue loci serve visualisation and the eigenvalue-based margins. MIMO Nichols views show eigenvalue loci and are illustrative, not a robustness proof. MIMO delays are per plant input channel, per plant output channel or per plant entry.",
   "Continuous delays are exact e^(−jωτ) in the response; no Padé approximation is used in plots. Discrete delays are integer samples; fractional delays are not supported.",
   "Each block in discrete time is either entered directly in z or entered in s and discretised by its own method (ZOH, Tustin with optional prewarp, forward or backward Euler); presets are continuous prototypes and must be discretised.",
   "Margin thresholds are user inputs; the pre-filled values are unsourced defaults, not requirements.",
@@ -1233,7 +1234,9 @@ function nyquistCount(loop, closedLoop) {
   if (!z) {
     const mags = loop.zeros.concat(loop.poles).map(cabs);
     wR = Math.max(wR, 100 * Math.max(0, ...mags), loop.tau > 0 ? 100 / loop.tau : 0);
-    if (degree(loop.num) <= degree(loop.den)) for (let i = 0; i < 12 && evalPoint(loop, cx(0, wR)).logm > Math.log(1e-3) && degree(loop.num) < degree(loop.den); i++) wR *= 10;
+    // L(jω) must have settled on its value at infinity: 0 for a strictly proper loop, det(I + D_L) − 1 for MIMO.
+    const tail = loop.evalF ? loop.hfL : degree(loop.num) < degree(loop.den) ? cx(0) : null;
+    if (tail) for (let i = 0; i < 12 && cabs(csub(evalPoint(loop, cx(0, wR)).L, tail)) > 1e-3 * Math.max(1, cabs(tail)); i++) wR *= 10;
     if (degree(loop.num) > degree(loop.den)) wR = Math.max(wR, 1e3 * Math.max(1, ...mags, ...(closedLoop.available ? closedLoop.poles.map(cabs) : [])));
   }
   loop.nyqSegs = nyquistSegments(loop, wLo, wR);
@@ -1631,7 +1634,7 @@ function mimoMarkdown(x, r) {
   L.push(`- Plant G: ${desc(x.mimo.plant)}${disc ? (x.discretization.plant === "z" ? " (entered in z)" : ` (discretised by ${DISCRETE_METHODS[x.discretization.plant]})`) : ""}`);
   L.push(`- Controller C: ${desc(x.mimo.controller)}${disc ? (x.discretization.controller === "z" ? " (entered in z)" : ` (discretised by ${DISCRETE_METHODS[x.discretization.controller]})`) : ""}`);
   L.push(`- Loop gain K: ${fmt(x.K, 6)}; unity negative feedback; loop broken at the plant **${x.mimo.breakAt}** (${x.mimo.breakAt === "output" ? "L_o = G·C" : "L_i = C·G"})`);
-  L.push(`- Input delays: ${disc ? `${x.mimo.delays.join(", ")} samples` : `${x.mimo.delays.map((v) => fmt(v)).join(", ")} s`}`, "");
+  L.push(`- Delays: ${Array.isArray(x.mimo.delays) ? delaysText(x.mimo.delayAt, x.mimo.delays, disc) : "—"}`, "");
   if (!r.ok) { L.push("## Errors (calculation blocked)", "", ...r.errors.map((e) => `- ${e.message}`), ""); }
   else {
     L.push(`- Realisation: ${r.loop.realisation}; ${r.loop.plantStates} plant and ${r.loop.controllerStates} controller states`);
@@ -1932,6 +1935,9 @@ function selfTests() {
       ["diagonal loop with an unstable pole", diagM()],
       ["satellite, ZOH at Ts = 0.01 s with a one-sample input delay", sat({ K: 1, timeDomain: "discrete", Ts: 0.01, discretization: { plant: "zoh", controller: "z", prewarp: 0 }, mimo: { delays: [1, 0] } })],
       ["satellite, Tustin at Ts = 0.05 s, K = 3", sat({ K: 3, timeDomain: "discrete", Ts: 0.05, discretization: { plant: "tustin", controller: "z", prewarp: 0 } })],
+      ["satellite, ZOH at Ts = 0.01 s with output delays of 2 and 1 samples", sat({ K: 1, timeDomain: "discrete", Ts: 0.01, discretization: { plant: "zoh", controller: "z", prewarp: 0 }, mimo: { delayAt: "output", delays: [2, 1] } })],
+      ["distillation LV, ZOH at Ts = 0.5 s with per-entry delays [[1, 0], [2, 1]] samples", normalise({ system: "mimo", K: 1, timeDomain: "discrete", Ts: 0.5, discretization: { plant: "zoh", controller: "zoh", prewarp: 0 }, mimo: { ...MIMO_PRESETS["distillation-lv"].make(), breakAt: "input", delayAt: "entry", delays: [[1, 0], [2, 1]] } })],
+      ["1 × 1 state-space 1/(s + 1)² at K = 1e8 (high gain)", normalise({ system: "mimo", K: 1e8, mimo: { plant: { form: "ss", A: [[0, 1], [-1, -2]], B: [[0], [1]], C: [[1, 0]], D: [[0]] }, controller: { form: "gain", K: [[1]] }, breakAt: "output", delays: [0] } })],
     ];
     for (const [label, xx] of mimoCases) {
       const rr = analyzeMimo(xx), nq = rr.nyquist;
@@ -2124,27 +2130,35 @@ function csvd(A0) {
   let A = toC(A0);
   if (!A.length || !A[0].length) return [];
   if (A[0].length > A.length) A = A[0].map((_, j) => A.map((row) => cconj(row[j])));
-  const m = A.length, n = A[0].length, U = A.map((r) => r.slice());
+  // Columns held as flat real and imaginary arrays (U[k][j] at k·n + j) so the rotations allocate nothing.
+  const m = A.length, n = A[0].length, Ur = new Float64Array(m * n), Ui = new Float64Array(m * n);
+  A.forEach((row, k) => row.forEach((v, j) => { Ur[k * n + j] = v.re; Ui[k * n + j] = v.im; }));
   for (let sweep = 0; sweep < 60; sweep++) {
     let off = 0;
     for (let i = 0; i < n - 1; i++) for (let j = i + 1; j < n; j++) {
-      let alpha = 0, beta = 0, g = cx(0);
-      for (let k = 0; k < m; k++) { alpha += cabs2(U[k][i]); beta += cabs2(U[k][j]); g = cadd(g, cmul(cconj(U[k][i]), U[k][j])); }
-      const ga = cabs(g);
+      let alpha = 0, beta = 0, gr = 0, gi = 0;
+      for (let k = 0; k < m; k++) {
+        const ar = Ur[k * n + i], ai = Ui[k * n + i], br = Ur[k * n + j], bi = Ui[k * n + j];
+        alpha += ar * ar + ai * ai; beta += br * br + bi * bi; gr += ar * br + ai * bi; gi += ar * bi - ai * br;
+      }
+      const ga = Math.hypot(gr, gi);
       if (ga === 0 || ga <= 1e-15 * Math.sqrt(alpha * beta)) continue;
       off = Math.max(off, ga / Math.sqrt(alpha * beta));
       const zeta = (beta - alpha) / (2 * ga), t = (zeta >= 0 ? 1 : -1) / (Math.abs(zeta) + Math.sqrt(1 + zeta * zeta));
-      const c = 1 / Math.sqrt(1 + t * t), s = c * t, ph = cscale(g, 1 / ga);
+      const c = 1 / Math.sqrt(1 + t * t), s = c * t, pr = gr / ga, pi = gi / ga;
       for (let k = 0; k < m; k++) {
-        const ui = U[k][i], uj = cmul(U[k][j], cconj(ph));
-        const ni = csub(cscale(ui, c), cscale(uj, s)), nj = cadd(cscale(ui, s), cscale(uj, c));
-        U[k][i] = ni; U[k][j] = cmul(nj, ph);
+        const ar = Ur[k * n + i], ai = Ui[k * n + i], br = Ur[k * n + j], bi = Ui[k * n + j];
+        // u_j·conj(ph), then the rotation, then multiply column j back by ph.
+        const vr = br * pr + bi * pi, vi = bi * pr - br * pi;
+        const nr = ar * s + vr * c, ni = ai * s + vi * c;
+        Ur[k * n + i] = ar * c - vr * s; Ui[k * n + i] = ai * c - vi * s;
+        Ur[k * n + j] = nr * pr - ni * pi; Ui[k * n + j] = nr * pi + ni * pr;
       }
     }
     if (off < 1e-15) break;
   }
   const sv = [];
-  for (let j = 0; j < n; j++) { let s = 0; for (let k = 0; k < m; k++) s += cabs2(U[k][j]); sv.push(Math.sqrt(s)); }
+  for (let j = 0; j < n; j++) { let s = 0; for (let k = 0; k < m; k++) s += Ur[k * n + j] * Ur[k * n + j] + Ui[k * n + j] * Ui[k * n + j]; sv.push(Math.sqrt(s)); }
   return sv.sort((a, b) => b - a);
 }
 /** Real upper-Hessenberg form A = Q·H·Qᵀ by Householder reflections, for fast repeated (sI − A) solves. */
@@ -2169,30 +2183,44 @@ function rhessenberg(A0) {
 }
 /** Solve (s·I − H)·X = B for upper-Hessenberg real H, complex s and complex B, in O(n²) per column. */
 function hessSolve(H, s, B) {
-  const n = H.length, m = B[0].length;
-  const M = H.map((row, i) => row.map((h, j) => (i === j ? cx(s.re - h, s.im) : cx(-h))));
-  const X = B.map((r) => r.slice());
+  // Flat real and imaginary arrays (row-major) so the elimination allocates nothing per entry.
+  const n = H.length, m = B[0].length, Mr = new Float64Array(n * n), Mi = new Float64Array(n * n), Xr = new Float64Array(n * m), Xi = new Float64Array(n * m);
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) Mr[i * n + j] = -H[i][j];
+    Mr[i * n + i] += s.re; Mi[i * n + i] = s.im;
+    for (let j = 0; j < m; j++) { Xr[i * m + j] = B[i][j].re; Xi[i * m + j] = B[i][j].im; }
+  }
+  const swap = (A, a, b, w) => { for (let j = 0; j < w; j++) { const t = A[a * w + j]; A[a * w + j] = A[b * w + j]; A[b * w + j] = t; } };
+  // Smith's division a / b into q.
+  const q = { re: 0, im: 0 };
+  const div = (ar, ai, br, bi) => {
+    if (Math.abs(br) >= Math.abs(bi)) { const r = bi / br, d = br + bi * r; q.re = (ar + ai * r) / d; q.im = (ai - ar * r) / d; }
+    else { const r = br / bi, d = br * r + bi; q.re = (ar * r + ai) / d; q.im = (ai * r - ar) / d; }
+  };
+  const abs2 = (r, c) => Mr[r * n + c] * Mr[r * n + c] + Mi[r * n + c] * Mi[r * n + c];
   for (let k = 0; k < n - 1; k++) {
     // Only row k + 1 has an entry below the diagonal in column k.
-    if (cabs2(M[k + 1][k]) > cabs2(M[k][k])) { [M[k], M[k + 1]] = [M[k + 1], M[k]]; [X[k], X[k + 1]] = [X[k + 1], X[k]]; }
-    if (cabs2(M[k][k]) === 0) throw new Error("singular matrix");
-    const f = cdiv(M[k + 1][k], M[k][k]);
-    if (f.re !== 0 || f.im !== 0) {
-      for (let j = k; j < n; j++) M[k + 1][j] = csub(M[k + 1][j], cmul(f, M[k][j]));
-      for (let j = 0; j < m; j++) X[k + 1][j] = csub(X[k + 1][j], cmul(f, X[k][j]));
+    if (abs2(k + 1, k) > abs2(k, k)) { swap(Mr, k, k + 1, n); swap(Mi, k, k + 1, n); swap(Xr, k, k + 1, m); swap(Xi, k, k + 1, m); }
+    if (abs2(k, k) === 0) throw new Error("singular matrix");
+    div(Mr[(k + 1) * n + k], Mi[(k + 1) * n + k], Mr[k * n + k], Mi[k * n + k]);
+    const fr = q.re, fi = q.im;
+    if (fr !== 0 || fi !== 0) {
+      for (let j = k; j < n; j++) { const ar = Mr[k * n + j], ai = Mi[k * n + j]; Mr[(k + 1) * n + j] -= fr * ar - fi * ai; Mi[(k + 1) * n + j] -= fr * ai + fi * ar; }
+      for (let j = 0; j < m; j++) { const ar = Xr[k * m + j], ai = Xi[k * m + j]; Xr[(k + 1) * m + j] -= fr * ar - fi * ai; Xi[(k + 1) * m + j] -= fr * ai + fi * ar; }
     }
   }
-  if (n && cabs2(M[n - 1][n - 1]) === 0) throw new Error("singular matrix");
+  if (n && abs2(n - 1, n - 1) === 0) throw new Error("singular matrix");
   for (let j = 0; j < m; j++) for (let i = n - 1; i >= 0; i--) {
-    let acc = X[i][j];
-    for (let k = i + 1; k < n; k++) acc = csub(acc, cmul(M[i][k], X[k][j]));
-    X[i][j] = cdiv(acc, M[i][i]);
+    let accr = Xr[i * m + j], acci = Xi[i * m + j];
+    for (let k = i + 1; k < n; k++) { const ar = Mr[i * n + k], ai = Mi[i * n + k], br = Xr[k * m + j], bi = Xi[k * m + j]; accr -= ar * br - ai * bi; acci -= ar * bi + ai * br; }
+    div(accr, acci, Mr[i * n + i], Mi[i * n + i]);
+    Xr[i * m + j] = q.re; Xi[i * m + j] = q.im;
   }
-  return X;
+  return Array.from({ length: n }, (_, i) => Array.from({ length: m }, (_, j) => cx(Xr[i * m + j], Xi[i * m + j])));
 }
 
 /* ---------- MIMO: systems, loop, analysis ---------- */
-const MIMO_MAX_CHANNELS = 6, MIMO_MAX_STATES = 60;
+const MIMO_MAX_CHANNELS = 6, MIMO_MAX_STATES = 50;
 const ssEmpty = (p, m, D) => ({ A: [], B: [], C: Array.from({ length: p }, () => []), D, n: 0, p, m });
 const isMatrix = (M, r, c) => Array.isArray(M) && M.length === r && M.every((row) => Array.isArray(row) && row.length === c && row.every(finite));
 const blockDiag = (A1, A2) => {
@@ -2301,6 +2329,42 @@ function addInputDelays(sys, d) {
   }
   return { ...sys, A: A2, B: B2, C: C2, D: D2, n: N };
 }
+/** Integer-sample output delays through the transposed realisation: z^(−d_i) on output i. */
+function addOutputDelays(sys, d) {
+  if (!d.some((k) => k)) return sys;
+  const tr = (s) => ({ ...s, A: transpose(s.A), B: transpose(s.C), C: transpose(s.B), D: transpose(s.D), p: s.m, m: s.p });
+  return tr(addInputDelays(tr(sys), d));
+}
+/** Integer-sample per-entry delays z^(−d_ij): one copy of the plant per output row with its own input delays (not minimal). */
+function addEntryDelays(sys, d) {
+  if (!d.some((row) => row.some((k) => k))) return sys;
+  const { p, m } = sys;
+  const rows = d.map((di, i) => addInputDelays({ ...sys, C: [sys.C[i]], D: [sys.D[i]], p: 1 }, di));
+  const N = rows.reduce((t, r) => t + r.n, 0), A = matZeros(N, N), B = matZeros(N, m), C = matZeros(p, N);
+  let off = 0;
+  rows.forEach((r, i) => {
+    for (let a = 0; a < r.n; a++) { for (let b = 0; b < r.n; b++) A[off + a][off + b] = r.A[a][b]; for (let j = 0; j < m; j++) B[off + a][j] = r.B[a][j]; C[i][off + a] = r.C[0][a]; }
+    off += r.n;
+  });
+  return { ...sys, A, B, C, D: rows.map((r) => r.D[0]), n: N };
+}
+const DELAY_AT = { input: "per plant input", output: "per plant output", entry: "per plant entry" };
+/** Size { p, m } of a plant block in any form, or null when it cannot be read. */
+function plantSize(b) {
+  const M = !isObj(b) ? null : b.form === "tfm" ? b.entries : b.form === "gain" ? b.K : b.D;
+  return Array.isArray(M) && M.length && Array.isArray(M[0]) ? { p: M.length, m: M[0].length } : null;
+}
+/** Zero delays shaped for the plant: m per input, p per output, or a p × m matrix per entry. */
+function zeroDelays(plant, delayAt) {
+  const sz = plantSize(plant);
+  if (!sz) return null;
+  return delayAt === "entry" ? matZeros(sz.p, sz.m) : new Array(delayAt === "output" ? sz.p : sz.m).fill(0);
+}
+/** Delays as text: one list, or matrix rows separated by "; ". */
+function delaysText(delayAt, delays, disc) {
+  const f = (v) => (Array.isArray(v) ? v.map(f).join(", ") : disc || typeof v !== "number" ? String(v) : fmt(v));
+  return `${delays.map(f).join(delayAt === "entry" ? "; " : ", ")} ${disc ? "samples" : "s"} (${DELAY_AT[delayAt] || delayAt})`;
+}
 /** Precompute a Hessenberg form so G(s) = C·Q·(sI − H)⁻¹·Qᵀ·B + D costs O(n²) per frequency. */
 function prepSS(sys) {
   if (!sys.n) return { ...sys, H: [], CQ: [], QtB: [] };
@@ -2326,9 +2390,17 @@ function buildMimo(inputs) {
   const p = G.p, m = G.m;
   if (p > MIMO_MAX_CHANNELS || m > MIMO_MAX_CHANNELS) errors.push({ field: "mimo.plant", message: `At most ${MIMO_MAX_CHANNELS} inputs and ${MIMO_MAX_CHANNELS} outputs are supported (the plant has ${p} × ${m}).` });
   if (Cc.p !== m || Cc.m !== p) errors.push({ field: "mimo.controller", message: `Controller C must be ${m} × ${p} (plant inputs × plant outputs) for a ${p} × ${m} plant; it is ${Cc.p} × ${Cc.m}.` });
-  const delays = Array.isArray(mi.delays) && mi.delays.length ? mi.delays : new Array(m).fill(0);
-  if (delays.length !== m || delays.some((v) => !finite(v) || v < 0)) errors.push({ field: "mimo.delays", message: `Input delays must be ${m} numbers ≥ 0, one per plant input.` });
-  else if (disc && delays.some((v) => !Number.isInteger(v))) errors.push({ field: "mimo.delays", message: "In discrete time each input delay must be a whole number of samples; fractional delays are not supported." });
+  const delayAt = mi.delayAt;
+  const delays = Array.isArray(mi.delays) && mi.delays.length ? mi.delays : zeroDelays(mi.plant, delayAt);
+  let tau = null;
+  if (!DELAY_AT[delayAt]) errors.push({ field: "mimo.delayAt", message: "Delays must be per plant input, per plant output or per plant entry." });
+  else {
+    const flat = delayAt === "entry" ? (Array.isArray(delays) && delays.length === p && delays.every((r) => Array.isArray(r) && r.length === m) ? delays.flat() : null) : delays.length === (delayAt === "output" ? p : m) ? delays : null;
+    const want = delayAt === "entry" ? `a ${p} × ${m} matrix of numbers ≥ 0, one per plant entry` : delayAt === "output" ? `${p} numbers ≥ 0, one per plant output` : `${m} numbers ≥ 0, one per plant input`;
+    if (!flat || flat.some((v) => !finite(v) || v < 0)) errors.push({ field: "mimo.delays", message: `Delays must be ${want}.` });
+    else if (disc && flat.some((v) => !Number.isInteger(v))) errors.push({ field: "mimo.delays", message: "In discrete time each delay must be a whole number of samples; fractional delays are not supported." });
+    else tau = Array.from({ length: p }, (_, i) => Array.from({ length: m }, (_, j) => (delayAt === "entry" ? delays[i][j] : delayAt === "output" ? delays[i] : delays[j])));
+  }
   if (disc) {
     for (const key of ["plant", "controller"]) if (!METHODS.includes(x.discretization[key])) errors.push({ field: `discretization.${key}`, message: `Unknown discretisation method for the ${key}.` });
     const pw = x.discretization.prewarp;
@@ -2350,7 +2422,8 @@ function buildMimo(inputs) {
     const dz = (sys, key) => (x.discretization[key] === "z" ? sys : discretizeSS(sys, x.discretization[key], x.Ts, x.discretization.prewarp));
     try { G = dz(G, "plant"); Cc = dz(Cc, "controller"); }
     catch (e) { errors.push({ field: "mimo.plant", message: `Discretisation failed (${e.message}).` }); return { x, errors, warnings }; }
-    G = addInputDelays(G, delays);
+    if (delayAt === "entry" && G.n && p > 1 && tau.some((row) => row.some((k) => k))) warnings.push({ code: "delay-copies", message: "Per-entry discrete delays are realised with one copy of the plant per output row, so the plant's modes are repeated as hidden modes (a non-minimal realisation): P and the closed-loop eigenvalues count every copy, so a marginal or unstable plant mode can make the verdict pessimistic or the eigenvalue check disagree. Prefer per-input or per-output delays where they fit." });
+    G = delayAt === "entry" ? addEntryDelays(G, delays) : delayAt === "output" ? addOutputDelays(G, delays) : addInputDelays(G, delays);
     if (x.discretization.plant === "z") contG = null;
     if (x.discretization.controller === "z") contC = null;
   }
@@ -2359,21 +2432,22 @@ function buildMimo(inputs) {
   const Kc = { ...Cc, C: Cc.n ? matScale(Cc.C, x.K) : Cc.C, D: matScale(Cc.D, x.K) };
   const loop = {
     x, disc, domain: disc ? "z" : "s", Ts: disc ? x.Ts : null, p, m, breakAt: mi.breakAt,
-    G, C: Kc, PG: prepSS(G), PC: prepSS(Kc), delays: disc ? delays.map(() => 0) : delays, delaySamples: disc ? delays : null,
+    G, C: Kc, PG: prepSS(G), PC: prepSS(Kc), delayAt, delays: disc ? null : delays, delaySamples: disc ? delays : null,
+    tau: !disc && tau.some((row) => row.some((k) => k > 0)) ? tau : null,
     contG, contC,
   };
   return { x, errors, warnings, loop };
 }
-/** L at a point s (or z): broken at the output L_o = G·Δ·C (p × p), or at the input L_i = Δ·C·G (m × m); Δ = diag(e^(−sτ_j)). */
-function mimoL(loop, s, at = loop.breakAt) {
+/** L at a point s (or z): broken at the output L_o = G_τ·C (p × p), or at the input L_i = C·G_τ (m × m); G_τ,ij = G_ij·e^(−sτ_ij). */
+function mimoL(loop, s, at = loop.breakAt) { return loopProduct(mimoGC(loop, s), at); }
+/** G_τ and C at a point, shared by both breaking points. */
+function mimoGC(loop, s) {
   let Gs = ssResponse(loop.PG, s);
   const Cs = ssResponse(loop.PC, s);
-  if (loop.delays.some((t) => t > 0)) {
-    const dl = loop.delays.map((t) => cexp(cx(-s.re * t, -s.im * t)));
-    Gs = Gs.map((row) => row.map((g, j) => cmul(g, dl[j])));
-  }
-  return at === "output" ? cmatMul(Gs, Cs) : cmatMul(Cs, Gs);
+  if (loop.tau) Gs = Gs.map((row, i) => row.map((g, j) => (loop.tau[i][j] ? cmul(g, cexp(cx(-s.re * loop.tau[i][j], -s.im * loop.tau[i][j]))) : g)));
+  return { Gs, Cs };
 }
+const loopProduct = ({ Gs, Cs }, at) => (at === "output" ? cmatMul(Gs, Cs) : cmatMul(Cs, Gs));
 const cexp = (a) => cpolar(Math.exp(a.re), a.im);
 const mimoPoint = (loop, w) => (loop.domain === "z" ? cpolar(1, w * loop.Ts) : cx(0, w));
 const plusI = (L) => L.map((row, i) => row.map((v, j) => (i === j ? cadd(v, cx(1)) : v)));
@@ -2417,8 +2491,8 @@ function matchEig(prev, cur) {
 }
 
 /** Classical SISO margins of a sampled complex response f(ω): gain and phase crossovers with continuity-tracked phase. */
-function responseMargins(f, ws, jumps = []) {
-  const vals = ws.map(f), u = ws.map(Math.log10);
+function responseMargins(f, ws, jumps = [], vals = ws.map(f)) {
+  const u = ws.map(Math.log10);
   const ph = [];
   vals.forEach((v, i) => ph.push(i === 0 ? carg(v) : ph[i - 1] + wrapPi(carg(v) - carg(vals[i - 1]))));
   const phAt = (uu, i) => ph[i] + wrapPi(carg(f(Math.pow(10, uu))) - carg(vals[i]));
@@ -2449,8 +2523,8 @@ function responseMargins(f, ws, jumps = []) {
 }
 
 /** MIMO measures at one breaking point on the frequency grid. */
-function mimoMeasures(loop, ws, at, jumps = []) {
-  const Ls = ws.map((w) => mimoL(loop, mimoPoint(loop, w), at));
+function mimoMeasures(loop, ws, at, jumps, GCs) {
+  const Ls = GCs.map((gc) => loopProduct(gc, at));
   const nL = Ls[0].length;
   const sv = Ls.map((L) => csvd(L));
   const svI = Ls.map((L) => csvd(plusI(L)));
@@ -2460,7 +2534,11 @@ function mimoMeasures(loop, ws, at, jumps = []) {
   let prev = null;
   for (const L of Ls) { const e = matchEig(prev, ceig(L).values); eigs.push(e); prev = e; }
   const loci = Array.from({ length: nL }, (_, k) => eigs.map((e) => e[k]));
-  const eigAt = (w, near) => { const e = ceig(mimoL(loop, mimoPoint(loop, w), at)).values; return e.reduce((b, v) => (cabs(csub(v, near)) < cabs(csub(b, near)) ? v : b)); };
+  // The eigenvalue at log-frequency uu nearest the locus interpolated between its grid values a (at u0) and b (at u1).
+  const eigAt = (uu, u0, u1, a, b) => {
+    const t = (uu - u0) / (u1 - u0), near = cx(a.re + (b.re - a.re) * t, a.im + (b.im - a.im) * t);
+    return ceig(mimoL(loop, mimoPoint(loop, Math.pow(10, uu)), at)).values.reduce((q, v) => (cabs(csub(v, near)) < cabs(csub(q, near)) ? v : q));
+  };
   // Eigenvalue-locus margins: |λ| = 1 crossings (phase margin) and negative-real-axis crossings (uniform scalar gain margin).
   const pms = [], gms = [];
   for (let k = 0; k < nL; k++) {
@@ -2468,17 +2546,15 @@ function mimoMeasures(loop, ws, at, jumps = []) {
     for (let i = 0; i < ws.length - 1; i++) {
       // A boundary pole makes the loci pass through infinity: no crossing is read across it.
       if (jumps.some((j) => j >= ws[i] && j <= ws[i + 1])) continue;
-      const a = lc[i], b = lc[i + 1];
-      const fm = (lam) => Math.log(cabs(lam));
-      if (fm(a) * fm(b) < 0) {
-        let lo = Math.log10(ws[i]), hi = Math.log10(ws[i + 1]), la = a, lam = a;
-        for (let it = 0; it < 60; it++) { const mid = (lo + hi) / 2; lam = eigAt(Math.pow(10, mid), la); if (fm(lam) * fm(a) > 0) { lo = mid; la = lam; } else hi = mid; }
-        if (Math.abs(cabs(lam) - 1) < 1e-6) pms.push({ locus: k, w: Math.pow(10, (lo + hi) / 2), pmDeg: wrapDeg(180 + (carg(lam) * 180) / Math.PI) });
+      const a = lc[i], b = lc[i + 1], u0 = Math.log10(ws[i]), u1 = Math.log10(ws[i + 1]);
+      const lamAt = (uu) => eigAt(uu, u0, u1, a, b);
+      if (Math.log(cabs(a)) * Math.log(cabs(b)) < 0) {
+        const r = brent((uu) => Math.log(cabs(lamAt(uu))), u0, u1), lam = r.ok && lamAt(r.x);
+        if (lam && Math.abs(cabs(lam) - 1) < 1e-6) pms.push({ locus: k, w: Math.pow(10, r.x), pmDeg: wrapDeg(180 + (carg(lam) * 180) / Math.PI) });
       }
       if (a.im * b.im < 0 && (a.re + b.re) / 2 < 0) {
-        let lo = Math.log10(ws[i]), hi = Math.log10(ws[i + 1]), la = a, lam = a;
-        for (let it = 0; it < 60; it++) { const mid = (lo + hi) / 2; lam = eigAt(Math.pow(10, mid), la); if (lam.im * a.im > 0) { lo = mid; la = lam; } else hi = mid; }
-        if (lam.re < 0 && Math.abs(lam.im) <= 1e-6 * cabs(lam)) gms.push({ locus: k, w: Math.pow(10, (lo + hi) / 2), gmDb: -toDb(cabs(lam)) });
+        const r = brent((uu) => lamAt(uu).im, u0, u1), lam = r.ok && lamAt(r.x);
+        if (lam && lam.re < 0 && Math.abs(lam.im) <= 1e-6 * cabs(lam)) gms.push({ locus: k, w: Math.pow(10, r.x), gmDb: -toDb(cabs(lam)) });
       }
     }
   }
@@ -2502,7 +2578,7 @@ function mimoMeasures(loop, ws, at, jumps = []) {
   Tmax.forEach((v, i) => { if (v > Tmax[tI]) tI = i; });
   // Loop-at-a-time: classical margins of each diagonal channel with the other loops open.
   const lat = Array.from({ length: nL }, (_, i) => {
-    const r = responseMargins((w) => mimoL(loop, mimoPoint(loop, w), at)[i][i], ws, jumps);
+    const r = responseMargins((w) => mimoL(loop, mimoPoint(loop, w), at)[i][i], ws, jumps, Ls.map((L) => L[i][i]));
     return { channel: i + 1, pm: r.pm && { deg: r.pm.pmDeg, w: r.pm.w }, gmUpper: r.gmUpper && { dB: r.gmUpper.gmDb, w: r.gmUpper.w }, gmLower: r.gmLower && { dB: r.gmLower.gmDb, w: r.gmLower.w } };
   });
   const cond = Math.max(...sv.map((s) => (s[s.length - 1] > 0 ? s[0] / s[s.length - 1] : Infinity)));
@@ -2526,7 +2602,7 @@ function analyzeMimo(inputs) {
   const { Aol, Acl, message } = mimoStateMatrices(loop);
   const olEig = ceig(Aol);
   const olPoles = cleanRoots(olEig.values);
-  const pseudo = { domain: loop.domain, Ts: loop.Ts, zeros: [], poles: olPoles, gain: 1, num: [1], den: [1], d: 0, tau: z ? 0 : Math.max(0, ...loop.delays) };
+  const pseudo = { domain: loop.domain, Ts: loop.Ts, zeros: [], poles: olPoles, gain: 1, num: [1], den: [1], d: 0, tau: loop.tau ? Math.max(...loop.tau.flat()) : 0 };
   const P = olPoles.filter((p) => rootClass(pseudo, p).unstable).length;
   // Frequency grid from the open-loop poles (as for SISO), or the manual range.
   const auto = autoRange(pseudo);
@@ -2537,8 +2613,8 @@ function analyzeMimo(inputs) {
   const ws = makeGrid(pseudo, range.wMin, range.wMax, ppd, warnings);
   // Closed-loop eigenvalues (unavailable with a continuous delay).
   let closedLoop;
-  if (!z && loop.delays.some((t) => t > 0)) {
-    closedLoop = { available: false, message: "Input delays are present, so the closed-loop eigenvalue check is unavailable; the generalised Nyquist count is the only stability verdict." };
+  if (loop.tau) {
+    closedLoop = { available: false, message: "Delays are present, so the closed-loop eigenvalue check is unavailable; the generalised Nyquist count is the only stability verdict." };
     warnings.push({ code: "delay-no-poles", message: closedLoop.message });
   } else if (!Acl) {
     closedLoop = { available: false, message };
@@ -2556,6 +2632,8 @@ function analyzeMimo(inputs) {
   }
   if (!olEig.converged) warnings.push({ code: "nonconvergence", message: "The open-loop eigenvalue iteration did not converge; P may be wrong." });
   // Generalised Nyquist: winding of det(I + L) about 0 (the same counter as SISO, fed with F = det(I + L)).
+  // det(I + L) at infinity: det(I + D_G·D_C), unless a delayed feedthrough keeps it turning.
+  pseudo.hfL = loop.tau && loop.G.D.some((row, i) => row.some((g, j) => g !== 0 && loop.tau[i][j] > 0)) ? null : csub(cdet(plusI(toC(matMul(loop.G.D, loop.C.D)))), cx(1));
   pseudo.evalF = (s) => {
     let F;
     try { F = cdet(plusI(mimoL(loop, s))); } catch (e) { F = cx(Infinity); }
@@ -2571,7 +2649,8 @@ function analyzeMimo(inputs) {
   }
   // Margins at both breaking points; the chosen one drives the checks.
   const jumps = boundaryFreqs(pseudo);
-  const both = { output: mimoMeasures(loop, ws, "output", jumps), input: mimoMeasures(loop, ws, "input", jumps) };
+  const GCs = ws.map((w) => mimoGC(loop, mimoPoint(loop, w)));
+  const both = { output: mimoMeasures(loop, ws, "output", jumps, GCs), input: mimoMeasures(loop, ws, "input", jumps, GCs) };
   const chosen = both[loop.breakAt];
   mimoLast = { key: JSON.stringify(x), upper: pseudo.nyqUpper || null, ws, curves: chosen._curves };
   if (chosen.conditionMax > 1e8) warnings.push({ code: "ill-conditioned", message: `L is ill-conditioned (condition number up to ${fmt(chosen.conditionMax)}); singular values and eigenvalues near the smallest gain are numerically fragile.` });
@@ -2589,7 +2668,7 @@ function analyzeMimo(inputs) {
     loop: {
       domain: loop.domain, Ts: loop.Ts, outputs: loop.p, inputs: loop.m, breakAt: loop.breakAt,
       plantStates: loop.G.n, controllerStates: loop.C.n, realisation: built.loop.G.stacked ? "stacked transfer matrix" : "state space",
-      delays: z ? null : loop.delays, delaySamples: z ? loop.delaySamples : null, nyquist: wN,
+      delayAt: loop.delayAt, delays: loop.delays, delaySamples: loop.delaySamples, nyquist: wN,
       openLoopPoles: olPoles, openLoopUnstable: P,
     },
     grid: { wMin: ws[0], wMax: ws[ws.length - 1], points: ws.length, pointsPerDecade: ppd, auto: x.range.auto },
@@ -2645,16 +2724,18 @@ const MIMO_PRESETS = {
     make: () => ({ plant: { form: "tfm", entries: [[{ num: [1], den: [1, 1] }, { num: [0], den: [1] }], [{ num: [0], den: [1] }, { num: [2], den: [1, 2, 0] }]] }, controller: { form: "gain", K: [[1, 0], [0, 1]] } }),
   },
 };
-function defaultMimo() { return { preset: "spinning-satellite", ...MIMO_PRESETS["spinning-satellite"].make(), breakAt: "output", delays: [0, 0] }; }
+function defaultMimo() { return { preset: "spinning-satellite", ...MIMO_PRESETS["spinning-satellite"].make(), breakAt: "output", delayAt: "input", delays: [0, 0] }; }
 function normaliseMimo(mi) {
   const d = defaultMimo();
   if (!isObj(mi)) return d;
   const sys = (b, fb) => (isObj(b) ? clone(b) : clone(fb));
+  const delayAt = mi.delayAt === undefined ? d.delayAt : mi.delayAt;
   return {
     preset: typeof mi.preset === "string" && MIMO_PRESETS[mi.preset] ? mi.preset : null,
     plant: sys(mi.plant, d.plant), controller: sys(mi.controller, d.controller),
     breakAt: mi.breakAt === undefined ? d.breakAt : mi.breakAt,
-    delays: Array.isArray(mi.delays) ? mi.delays.slice() : (isObj(mi.plant) && Array.isArray(mi.plant.D) && Array.isArray(mi.plant.D[0]) ? new Array(mi.plant.D[0].length).fill(0) : d.delays),
+    delayAt,
+    delays: Array.isArray(mi.delays) ? clone(mi.delays) : zeroDelays(isObj(mi.plant) ? mi.plant : d.plant, delayAt) || [],
   };
 }
 
@@ -2680,7 +2761,7 @@ const api = {
   cx, cabs, carg, polyRoots, polyFromRoots, polyMul, polyAdd, trimPoly, brent, goldenMax,
   expm, charPoly, tf2ss, ss2tf, discretize, matMul, DISCRETE_METHODS,
   nyquistLocus, mContour, nContour, msBoundary, NICHOLS_M_DB, NICHOLS_N_DEG,
-  ceig, csvd, cdet, csolve, rhessenberg, hessSolve, cmatMul, toC, discretizeSS, analyzeMimo, mimoCurves, MIMO_PRESETS, defaultMimo,
+  ceig, csvd, cdet, csolve, rhessenberg, hessSolve, cmatMul, toC, discretizeSS, analyzeMimo, mimoCurves, MIMO_PRESETS, defaultMimo, zeroDelays, delaysText,
   freqTo, freqFrom, magTo, magFrom, phaseTo, phaseFrom, wrapDeg, toDb,
   defaultInputs, normalise, normaliseBlock, blockTf, blockZpk, buildLoop, analyze, curves, responseAt,
   fmt, fmtC, polyText, describeBlock,
@@ -2870,20 +2951,26 @@ function mimoParseError(key, input, msg) {
   const f = `mimo.${key}.${input.dataset.mk}`;
   if (msg) parseErrors[f] = msg; else delete parseErrors[f];
 }
-/** Keep one delay per plant input when the plant's size changes. */
+const delayUnit = () => `${state.timeDomain === "discrete" ? "whole samples" : "s"}, ${state.mimo.delayAt === "entry" ? "outputs × inputs, rows separated by ;" : state.mimo.delayAt === "output" ? "one per plant output" : "one per plant input"}`;
+const mimoDelaysText = (d) => (state.mimo.delayAt === "entry" ? matText(d).replace(/\n/g, "; ") : realsText(d));
+/** Keep the delays shaped for the plant (one per input or output, or one per entry) when its size changes. */
 function syncMimoDelays() {
-  const pl = state.mimo.plant, m = Array.isArray(pl.D) && pl.D[0] ? pl.D[0].length : Array.isArray(pl.entries) && pl.entries[0] ? pl.entries[0].length : 0;
-  if (m && Array.isArray(state.mimo.delays) && state.mimo.delays.length !== m) {
-    state.mimo.delays = Array.from({ length: m }, (_, j) => (Number.isFinite(state.mimo.delays[j]) ? state.mimo.delays[j] : 0));
-    $("mimo-delays").value = realsText(state.mimo.delays);
-  }
+  const zero = F.zeroDelays(state.mimo.plant, state.mimo.delayAt), d = state.mimo.delays;
+  if (!zero || !Array.isArray(d)) return;
+  const entry = state.mimo.delayAt === "entry";
+  if (zero.length === d.length && zero.every((row, i) => !entry || (Array.isArray(d[i]) && d[i].length === row.length))) return;
+  const keep = (v) => (Number.isFinite(v) ? v : 0);
+  state.mimo.delays = entry ? zero.map((row, i) => row.map((_, j) => keep(Array.isArray(d[i]) ? d[i][j] : NaN))) : zero.map((_, j) => keep(d[j]));
+  $("mimo-delays").value = mimoDelaysText(state.mimo.delays);
+  $("mimo-delays-err").textContent = ""; delete parseErrors["mimo.delays"];
 }
 function syncMimo() {
   if (!state.mimo) state.mimo = F.defaultMimo();
   $("mimo-preset").innerHTML = `<option value="">Custom</option>` + Object.entries(F.MIMO_PRESETS).map(([k, p]) => `<option value="${k}"${state.mimo.preset === k ? " selected" : ""}>${esc(p.label)}</option>`).join("");
   $("mimo-break").value = state.mimo.breakAt;
-  $("mimo-delays").value = realsText(state.mimo.delays || []);
-  $("mimo-delay-unit").textContent = state.timeDomain === "discrete" ? "whole samples, one per plant input" : "s, one per plant input";
+  $("mimo-delay-at").value = state.mimo.delayAt;
+  $("mimo-delays").value = mimoDelaysText(state.mimo.delays || []);
+  $("mimo-delay-unit").textContent = delayUnit();
   renderMimoEditor("plant"); renderMimoEditor("controller");
 }
 function wireMimo() {
@@ -2895,14 +2982,21 @@ function wireMimo() {
   $("mimo-preset").addEventListener("change", (e) => {
     if (!e.target.value) { state.mimo.preset = null; return; }
     const made = F.MIMO_PRESETS[e.target.value].make();
-    state.mimo = { ...state.mimo, ...made, preset: e.target.value, delays: new Array(made.plant.D ? made.plant.D[0].length : made.plant.entries[0].length).fill(0) };
+    state.mimo = { ...state.mimo, ...made, preset: e.target.value, delays: F.zeroDelays(made.plant, state.mimo.delayAt) };
     mimoEntry = [0, 0];
     syncMimo(); recompute();
   });
   $("mimo-break").addEventListener("change", (e) => { state.mimo.breakAt = e.target.value; mimoEntry = [0, 0]; recompute(); });
+  $("mimo-delay-at").addEventListener("change", (e) => {
+    state.mimo.delayAt = e.target.value;
+    state.mimo.delays = F.zeroDelays(state.mimo.plant, state.mimo.delayAt) || [];
+    $("mimo-delays").value = mimoDelaysText(state.mimo.delays);
+    $("mimo-delays-err").textContent = ""; delete parseErrors["mimo.delays"];
+    syncDomain(); recompute();
+  });
   $("mimo-delays").addEventListener("input", (e) => {
-    const r = parseReals(e.target.value || "0");
-    state.mimo.delays = r.error ? [NaN] : r.values;
+    const entry = state.mimo.delayAt === "entry", r = entry ? parseMatrix(e.target.value || "0") : parseReals(e.target.value || "0");
+    state.mimo.delays = r.error ? (entry ? [[NaN]] : [NaN]) : entry ? r.M : r.values;
     $("mimo-delays-err").textContent = r.error || "";
     if (r.error) parseErrors["mimo.delays"] = r.error; else delete parseErrors["mimo.delays"];
     recompute();
@@ -2933,8 +3027,9 @@ function syncDomain() {
   for (const id of ["lbl-S", "lbl-T", "lbl-marks", "lbl-nyq-ms", "lbl-nic-l", "lbl-nic-ms"]) $(id).hidden = mimo;
   if (mimo) { $("lbl-asym").hidden = true; $("lbl-cont").hidden = true; }
   $("lbl-nyq-det").hidden = !mimo; $("nyq-mimo-note").hidden = !mimo; $("nic-mimo-note").hidden = !mimo; $("bode-mimo").hidden = !mimo;
-  if (mimo && state.mimo) $("mimo-delay-unit").textContent = disc ? "whole samples, one per plant input" : "s, one per plant input";
-  $("loop-note").innerHTML = mimo ? (disc ? "L = K · (G·C or C·G) in z, with z<sup>−d</sup> per plant input; unity negative feedback." : "L = K · (G·Δ·C or Δ·C·G), Δ = diag(e<sup>−sτⱼ</sup>) per plant input; unity negative feedback.") : $("loop-note").innerHTML;
+  if (mimo && state.mimo) $("mimo-delay-unit").textContent = delayUnit();
+  const at = mimo && state.mimo ? state.mimo.delayAt : "input", per = at === "entry" ? "per plant entry" : at === "output" ? "per plant output" : "per plant input";
+  $("loop-note").innerHTML = mimo ? (disc ? `L = K · (G·C or C·G) in z, with z<sup>−d</sup> delays on G ${per}; unity negative feedback.` : `L = K · (G<sub>τ</sub>·C or C·G<sub>τ</sub>), G<sub>τ</sub> = G with e<sup>−sτ</sup> delays ${per}; unity negative feedback.`) : $("loop-note").innerHTML;
 }
 function syncSettings() {
   const u = state.displayUnits;
@@ -3103,7 +3198,7 @@ function renderSystemMimo(r) {
   $("sys-table").innerHTML = [
     row("Size", `${L.outputs} outputs × ${L.inputs} inputs; loop broken at the plant ${L.breakAt}`),
     row("Realisation", `${esc(L.realisation)}; ${L.plantStates} plant + ${L.controllerStates} controller states`),
-    row("Input delays", disc ? `${(L.delaySamples || []).join(", ")} samples` : `${(L.delays || []).map((v) => fmt(v)).join(", ")} s`),
+    row("Delays", esc(F.delaysText(L.delayAt, disc ? L.delaySamples : L.delays, disc))),
     row("Open-loop poles", `${esc(L.openLoopPoles.map((z) => fmtC(z)).join(", ") || "none")} <span class="muted">(${L.openLoopUnstable} unstable)</span>`),
     row("Closed-loop eigenvalues", cl.available ? esc(cl.poles.map((z) => fmtC(z, 6)).join(", ")) : esc(cl.message)),
     row("Generalised Nyquist", r.nyquist.available ? `det(I + L): N = ${r.nyquist.N}, P = ${r.nyquist.P}, Z = ${r.nyquist.Z} (${esc(r.nyquist.verdict)})` : esc(r.nyquist.message)),
@@ -3843,7 +3938,7 @@ function registerTools() {
     description: "Loop definition in canonical units (rad/s, seconds). Anything left out takes the page's default example (K/(s(s+1)(s+2)) with K = 3).",
     properties: {
       system: { type: "string", enum: ["siso", "mimo"], description: "Single loop (plant/controller below) or multivariable (mimo below)" },
-      mimo: { type: "object", description: "MIMO only: {plant: {form:'ss', A, B, C, D} | {form:'tfm', entries:[[{num, den}]]}, controller: {form:'gain', K} | {form:'ss', ...} | {form:'tfm', ...}, breakAt: 'output' | 'input', delays: [per plant input, seconds or whole samples]}; matrices are arrays of rows" },
+      mimo: { type: "object", description: "MIMO only: {plant: {form:'ss', A, B, C, D} | {form:'tfm', entries:[[{num, den}]]}, controller: {form:'gain', K} | {form:'ss', ...} | {form:'tfm', ...}, breakAt: 'output' | 'input', delayAt: 'input' | 'output' | 'entry', delays: [one per plant input or output] or [[one per plant entry]], seconds or whole samples}; matrices are arrays of rows" },
       timeDomain: { type: "string", enum: ["continuous", "discrete"], description: "Global time domain" },
       Ts: { type: "number", description: "Sample time in seconds (> 0), discrete time only" },
       plant: { type: "object", description: "Plant G: {form:'tf', num:[...], den:[...]} (descending powers of s, or of z when entered in z), {form:'zpk', zeros:[{re,im}], poles:[{re,im}], gain}, or {form:'preset', preset, params} (continuous prototypes)" },

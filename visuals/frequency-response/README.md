@@ -20,7 +20,7 @@ samples in discrete time.
   |S| and |T|), a Nyquist plot with the count Z = N + P cross-checked against
   the closed-loop poles, a Nichols chart with M- and N-contours and the Ms
   boundary, and a pole-zero map.
-- **MIMO** (up to 6 × 6, about 60 states): plant in state space, or a transfer
+- **MIMO** (up to 6 × 6, about 50 states): plant in state space, or a transfer
   matrix realised by stacking (with a visible hidden-mode caveat); controller
   as a static gain, state space or transfer matrix; loop broken at the plant
   output (`L_o = G·C`) or input (`L_i = C·G`), with margins at both. Entry-wise
