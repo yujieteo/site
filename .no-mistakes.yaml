@@ -1,0 +1,37 @@
+# Per-repo no-mistakes overrides.
+#
+# commands.test mirrors the steps of .github/workflows/ci.yml (validate, build,
+# Python tests, Node tests) so the Test step runs the real suite instead of
+# asking an agent to improvise. no-mistakes loads repo commands from the
+# default-branch copy of this file, not from the pushed branch, so a change here
+# takes effect only once it is on main. Keep it in step with CI.
+#
+# A pipeline run worktree has no .venv and no sibling visuals checkout, so the
+# command creates the venv, installs CI's requirements, and, when VISUALS_REPO
+# is unset, clones yujieteo/visuals with full history into a temporary
+# directory, as CI checks it out. The build reuses the pinned-download cache in
+# ~/.cache/teoyujie-site/downloads, as CI restores it with actions/cache.
+commands:
+  test: |
+    set -eu
+    if [ -z "${VISUALS_REPO:-}" ]; then
+      visuals_tmp=$(mktemp -d)
+      trap 'rm -rf "$visuals_tmp"' EXIT
+      git clone --quiet https://github.com/yujieteo/visuals.git "$visuals_tmp/visuals"
+      export VISUALS_REPO="$visuals_tmp/visuals"
+    fi
+    if [ ! -x .venv/bin/python ]; then
+      "$(command -v python3.13 || command -v python3)" -m venv --clear .venv
+    fi
+    .venv/bin/pip install --quiet -r requirements.txt -r visuals/sectionlab/requirements-test.txt
+    .venv/bin/python scripts/validate.py
+    .venv/bin/python scripts/build.py
+    .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
+    node --test 'tests/*.test.{mjs,cjs}' 'visuals/sectionlab/tests/*.test.mjs' 'visuals/md-explorer/tests/*.test.mjs'
+
+test:
+  instructions: |
+    The configured commands.test is the test suite; it is what CI runs. Do not
+    run anything beyond it to test: do not download model weights or other large
+    assets yourself, and do not drive a browser. The build reads pinned
+    downloads from its own cache, as CI does.
