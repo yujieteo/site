@@ -490,16 +490,18 @@ self.Fermi = (function () {
        ≥ 2 large, ≥ 1.25 medium, > 1.02 small, otherwise little. It measures sensitivity to
      the entered assumptions only; it says nothing about causes. */
   const label = (f, i) => f.name || `Factor ${i + 1}`;
+  /* A factor has a usable range only when both sides are valid numbers and differ. */
+  const hasRange = (f) => f.low !== null && f.high !== null && f.high > f.low;
   function sensitivity(r) {
     if (r.low === null || r.best === null) return [];
     const rows = r.factors.map((f, i) => {
       const at = (v) => evaluate(r.factors, (g, j) => (j === i ? v : g.best));
-      const atLow = f.high > f.low ? at(f.low) : r.best, atHigh = f.high > f.low ? at(f.high) : r.best;
+      const ranged = hasRange(f), atLow = ranged ? at(f.low) : r.best, atHigh = ranged ? at(f.high) : r.best;
       const a = Math.min(atLow, atHigh), b = Math.max(atLow, atHigh);
       const zero = a === 0 && b > 0, score = zero ? Infinity : a > 0 ? Math.log(b) - Math.log(a) : 0;
       const ratio = a > 0 ? b / a : null;
-      const effect = !(f.high > f.low) ? "no range entered" : zero ? "can reach zero" : ratio >= 2 ? "large effect" : ratio >= 1.25 ? "medium effect" : ratio > 1.02 ? "small effect" : "little effect";
-      return { i, name: label(f, i), ranged: f.high > f.low, atLow, atHigh, a, b, score, ratio, zero, effect };
+      const effect = !ranged ? "no range entered" : zero ? "can reach zero" : ratio >= 2 ? "large effect" : ratio >= 1.25 ? "medium effect" : ratio > 1.02 ? "small effect" : "little effect";
+      return { i, name: label(f, i), ranged, atLow, atHigh, a, b, score, ratio, zero, effect };
     });
     rows.sort((x, y) => y.score - x.score || x.i - y.i);
     const finite = Math.max(0, ...rows.filter((x) => !x.zero).map((x) => x.score)), hasZero = rows.some((x) => x.zero);
@@ -680,7 +682,7 @@ self.Fermi = (function () {
         const need = f.op === "div" && t.i !== 0 ? v * b.ratio : v / b.ratio;
         if (Number.isFinite(need) && need > 0) {
           let s = `To reach the benchmark of ${withUnit(val(b.value), h.unit)}, ${label(f, t.i)} would need to be about ${withUnit(fmt(need, 2), f.unit)} instead of ${val(v)}.`;
-          if (f.high > f.low) s += need < f.low || need > f.high ? ` That is outside your range of ${fmtRange(f.low, f.high, 6, f.unit)}.` : " That is inside your range.";
+          if (hasRange(f)) s += need < f.low || need > f.high ? ` That is outside your range of ${fmtRange(f.low, f.high, 6, f.unit)}.` : " That is inside your range.";
           out.push(s);
         }
       }
@@ -712,7 +714,7 @@ self.Fermi = (function () {
   }
 
   /* ---------- copy summary ---------- */
-  const assumption = (f, i, ranged) => `${label(f, i)}: ${ranged && f.high > f.low ? `${val(f.low)} / ${val(f.best)} / ${val(f.high)}` : val(f.best)}${f.unit ? ` ${f.unit}` : ""}`;
+  const assumption = (f, i, ranged) => `${label(f, i)}: ${ranged && hasRange(f) ? `${val(f.low)} / ${val(f.best)} / ${val(f.high)}` : val(f.best)}${f.unit ? ` ${f.unit}` : ""}`;
   function summary(st, format = "text") {
     const r = compute(st), h = headline(r), rows = sensitivity(r), t = top(rows), md = format === "markdown";
     const q = r.s.question.trim() || "Fermi estimate", out = [md ? `**${q}**` : q, ""];
@@ -751,15 +753,15 @@ self.Fermi = (function () {
      to ×10 around the best. A span of ten times or more uses a labelled log scale. */
   function sliderScale(f) {
     let lo, hi;
-    if (f.high > f.low) { lo = f.low; hi = f.high; }
+    if (hasRange(f)) { lo = f.low; hi = f.high; }
     else if (f.best > 0) { lo = f.best / 10; hi = f.best * 10; }
     else { lo = 0; hi = 10; }
     const log = lo > 0 && hi / lo >= 10;
-    return { lo, hi, log, label: `${log ? "Log" : "Linear"} scale, ${fmt(lo, 3)} to ${fmt(hi, 3)}` };
+    return { lo, hi, log, label: `${log ? "Log" : "Linear"} scale, ${val(lo)} to ${val(hi)}` };
   }
   const STEPS = 1000;
   const toPos = (sc, v) => Math.round(STEPS * Math.min(1, Math.max(0, sc.log ? Math.log(v / sc.lo) / Math.log(sc.hi / sc.lo) : (v - sc.lo) / (sc.hi - sc.lo || 1))));
-  const fromPos = (sc, p) => { const t = Math.min(STEPS, Math.max(0, p)) / STEPS, v = sc.log ? sc.lo * (sc.hi / sc.lo) ** t : sc.lo + t * (sc.hi - sc.lo); return Number(v.toPrecision(3)); };
+  const fromPos = (sc, p) => { const t = Math.min(STEPS, Math.max(0, p)) / STEPS, v = sc.log ? sc.lo * (sc.hi / sc.lo) ** t : sc.lo + t * (sc.hi - sc.lo); return Math.min(sc.hi, Math.max(sc.lo, Number(v.toPrecision(3)))); };
 
   /* ---------- beamdswitch report (filled into templates/beamdswitch.js by the page) ---------- */
   const oneLine = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
@@ -784,7 +786,7 @@ self.Fermi = (function () {
     const spokenFactor = (f, i) => {
       const n = speak(mdText(label(f, i))), un = f.unit ? ` ${speak(mdText(f.unit))}` : "";
       if (f.best === null) return `${n} has no value yet.`;
-      return r.s.showRange && f.high > f.low ? `${n}: between ${speak(val(f.low))} and ${speak(val(f.high))}${un}, best guess ${speak(val(f.best))}.` : `${n}: ${speak(val(f.best))}${un}.`;
+      return r.s.showRange && hasRange(f) ? `${n}: between ${speak(val(f.low))} and ${speak(val(f.high))}${un}, best guess ${speak(val(f.best))}.` : `${n}: ${speak(val(f.best))}${un}.`;
     };
     const setup = [{
       title: `The question: ${q}`,
@@ -857,7 +859,7 @@ self.Fermi = (function () {
     defaults, example, blank, blankFactor, normalize, parseNum, check, terms, evaluate, compute, sensitivity, top, next,
     fmt, plain, sci, magnitude, fmtRange, sup, word, val, sigFor, parseUnit, termUnit, units, resultUnit,
     headline, expression, chainLines, trail, scale, benchmark, reverse, describe, summary, axis, sliderScale, toPos, fromPos,
-    speak, report, selfTest, label,
+    speak, report, selfTest, label, hasRange,
   };
 })();
 </script>
@@ -1160,10 +1162,10 @@ function renderSanity(r, h, rows) {
 }
 
 function renderAssumptions(r, h) {
-  const ratios = r.factors.map((f) => (f.best !== null && f.high > f.low ? (f.low > 0 ? f.high / f.low : null) : 1));
+  const ratios = r.factors.map((f) => (f.best !== null && F.hasRange(f) ? (f.low > 0 ? f.high / f.low : null) : 1));
   const maxLog = Math.max(Math.log(2), ...ratios.filter((x) => x).map(Math.log));
   $("assume").innerHTML = r.factors.map((f, i) => {
-    const ranged = S.showRange && f.best !== null && f.high > f.low, x = ratios[i];
+    const ranged = S.showRange && f.best !== null && F.hasRange(f), x = ratios[i];
     const vals = f.best === null ? "no best value yet" : ranged ? `${F.val(f.low)} — ${F.val(f.best)} — ${F.val(f.high)}` : F.val(f.best);
     const width = !ranged ? 0 : x === null ? 100 : Math.round((Math.log(x) / maxLog) * 100);
     const wtext = !ranged ? "single value" : x === null ? "from zero" : `high is ×${F.fmt(x, 2)} the low`;
@@ -1195,7 +1197,12 @@ function edit(t) {
   const i = +d.i, f = S.factors[i];
   if (!f) return;
   f[d.k] = d.k !== "name" && d.k !== "unit" && t.validity && t.validity.badInput ? "?" : String(t.value ?? "");
-  if (d.k === "best" && U.whatIf && U.whatIf.i === i) U.whatIf = null;
+  if (d.k === "best" && U.whatIf && U.whatIf.i === i) {
+    U.whatIf = null;
+    const c = $(`card-${i}`), p = c && c.querySelector(".whatif"), b = c && c.querySelector(`[data-act="whatif"][aria-pressed]`);
+    if (p) p.remove();
+    if (b) b.setAttribute("aria-pressed", "false");
+  }
   renderOutputs();
 }
 app.addEventListener("input", (ev) => edit(ev.target));

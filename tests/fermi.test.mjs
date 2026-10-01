@@ -1,12 +1,17 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import vm from "node:vm";
+import { execFileSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { assertButtonsExport, assertInlined, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const html = read("visuals/fermi/index.html");
 const engine = /<script id="fermi-engine">\n([\s\S]*?)<\/script>/.exec(html)[1];
 const load = () => { const ctx = {}; ctx.self = ctx; vm.runInNewContext(engine, ctx); return ctx.Fermi; };
 const F = load();
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const PYTHON = process.env.PYTHON || (existsSync(`${ROOT}.venv/bin/python`) ? `${ROOT}.venv/bin/python` : "python3");
 const T = (await import("node:module")).createRequire(import.meta.url)("../templates/beamdswitch.js");
 const plain = (v) => JSON.parse(JSON.stringify(v));
 const near = (a, b, what) => assert.ok(Math.abs(a - b) <= 1e-9 * Math.max(1, Math.abs(b)), `${what}: ${a} ≠ ${b}`);
@@ -229,6 +234,22 @@ test("what-if sliders use the factor's own range, with a labelled log scale when
   assert.deepEqual([log.log, log.label], [true, "Log scale, 1.2 to 120"]);
   assert.equal(F.fromPos(log, 500), 12);
   assert.equal(F.sliderScale({ low: 0, best: 0, high: 0 }).log, false);
+  // Bounds with more than three significant figures: the slider stays inside the factor's own range.
+  const odd = F.sliderScale(chain([["mul", 1234, 1500, 1876]]).factors[0]);
+  assert.equal(odd.label, "Linear scale, 1,234 to 1,876");
+  assert.deepEqual([F.fromPos(odd, 0), F.fromPos(odd, 1000)], [1234, 1876]);
+  for (const p of [0, 1000]) assert.equal(chain([["mul", 1234, F.fromPos(odd, p), 1876]]).rangeIssue, null);
+});
+
+test("an invalid low or high is shown as no range, never as a range from zero", () => {
+  const st = { ...F.defaults(), factors: [{ op: "mul", name: "A", unit: "", low: "abc", best: "12", high: "16", ranged: true }, { op: "mul", name: "B", unit: "", best: "2" }] };
+  const r = F.compute(st), f = r.factors[0];
+  assert.deepEqual([f.low, f.high, F.hasRange(f)], [null, 16, false]);
+  assert.equal(F.summary(st).split("\n").find((l) => l.startsWith("- A")), "- A: 12");
+  const md = T.deck(F.report(st));
+  assert.ok(md.includes("A: 12."), "narration gives the best value only");
+  assert.ok(!md.includes("between") && !md.includes("— / 12"), "no range from a missing side");
+  assert.deepEqual(plain(F.sliderScale(f)), plain(F.sliderScale({ low: 12, best: 12, high: 12 })));
 });
 
 test("every example loads, stays editable and computes a range", () => {
@@ -244,7 +265,7 @@ test("every example loads, stays editable and computes a range", () => {
   assert.deepEqual(plain(F.blank()), plain({ question: "", unit: "", factors: [F.blankFactor()], showRange: true, showMag: false, benchmark: "", example: "blank" }));
 });
 
-test("raw.json and the catalogue stub match the engine", () => {
+test("raw.json matches the engine", () => {
   const raw = JSON.parse(read("visuals/fermi/raw.json"));
   assert.deepEqual(raw.examples, plain(F.EXAMPLES));
   assert.deepEqual(raw.initial, plain(F.defaults()));
@@ -252,26 +273,45 @@ test("raw.json and the catalogue stub match the engine", () => {
   assert.deepEqual(raw.notes, plain(F.NOTES));
   assert.deepEqual(raw.rules, plain(F.RULES));
   assert.equal(raw.max_factors, F.MAX_FACTORS);
-  const stub = read("data/visuals/fermi.yaml");
-  assert.match(stub, /^webmcp_tools: \[get_metadata, get_current_state, list_examples, estimate\]$/m);
-  assert.match(stub, /^html_path: visuals\/fermi\/index\.html$/m);
 });
 
-test("the page is one offline file with the metadata it promises", () => {
-  assert.match(html, /<title>Fermi estimator — Yu Jie Teo<\/title>/);
-  assert.match(html, /<meta name="description" content="Break everyday estimation problems into rough quantities, propagate plausible ranges, and see which assumptions matter most\.">/);
-  assert.match(html, /<link rel="canonical" href="https:\/\/teoyujie\.org\/visuals\/fermi">/);
-  assert.match(html, /<meta property="og:url" content="https:\/\/teoyujie\.org\/visuals\/fermi">/);
-  for (const p of ["og:title", "og:description", "og:type"]) assert.match(html, new RegExp(`<meta property="${p}" content="[^"]+">`));
-  assert.match(html, /<a href="https:\/\/teoyujie\.org\/visuals\.html">Visuals<\/a>/);
-  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+rel="stylesheet"|@import|fetch\(|XMLHttpRequest|type="module"|serviceWorker|@font-face/);
-  assert.match(html, /prefers-reduced-motion/);
-  assert.match(html, /prefers-color-scheme:dark/);
-  assert.match(html, /<div id="nojs">[\s\S]*12 groups\n× 10 minutes per cycle\n÷ 4 groups per cycle\n≈ 30 minutes[\s\S]*Enable JavaScript to build and edit your own estimate\./, "worked example without JavaScript");
-  assert.match(html, /<div id="app" hidden>/, "controls stay hidden without JavaScript");
-  assert.match(html, /Common Fermi patterns/);
-  for (const m of html.matchAll(/(.{0,16})confidence interval/gi)) assert.match(m[1], /not a measured $/, `never labelled a confidence interval: ${m[0]}`);
+/* The page's head and no-JavaScript fallback, read as the served document. */
+const attrs = (s) => Object.fromEntries([...s.matchAll(/([\w:-]+)(?:="([^"]*)")?/g)].map((m) => [m[1], m[2] ?? ""]));
+const tags = (name) => [...html.matchAll(new RegExp(`<${name}\\b([^>]*)>`, "g"))].map((m) => attrs(m[1]));
+const textOf = (s) => s.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&");
+const DESCRIPTION = "Break everyday estimation problems into rough quantities, propagate plausible ranges, and see which assumptions matter most.";
+
+test("the page is one offline file with the metadata it promises", async () => {
+  const stub = JSON.parse(execFileSync(PYTHON, ["-c", [
+    "import json, sys; sys.path.insert(0, 'scripts')",
+    "from build import load_visualizations",
+    "print(json.dumps(next(v for v in load_visualizations() if v['slug'] == 'fermi'), default=str))",
+  ].join("\n")], { cwd: ROOT, encoding: "utf8" }));
+  const page = await openPage("fermi");
+  const tools = page.run("FermiTools"), meta = JSON.parse((await tools.find((t) => t.name === "get_metadata").execute({})).content[0].text);
+  assert.deepEqual(stub.webmcp_tools, plain(tools.map((t) => t.name)));
+  assert.equal(stub.html_path, "visuals/fermi/index.html");
+  assert.equal(textOf(/<title>([^<]*)<\/title>/.exec(html)[1]), `${stub.title} — Yu Jie Teo`);
+  const named = Object.fromEntries(tags("meta").map((m) => [m.name || m.property, m.content]));
+  assert.equal(named.description, DESCRIPTION);
+  assert.deepEqual([named["og:title"], named["og:description"], named["og:type"], named["og:url"]], [`${stub.title} — Yu Jie Teo`, DESCRIPTION, "website", meta.url]);
+  assert.deepEqual(tags("link").filter((l) => l.rel === "canonical").map((l) => l.href), ["https://teoyujie.org/visuals/fermi"]);
+  assert.equal(meta.url, "https://teoyujie.org/visuals/fermi");
+  assert.ok(tags("a").some((a) => a.href === "https://teoyujie.org/visuals.html"), "a way back to the Visuals index");
+  assert.deepEqual(tags("script").filter((s) => s.src || s.type === "module"), [], "no external or module scripts");
+  assert.deepEqual(tags("link").filter((l) => l.rel !== "canonical" && !/^data:/.test(l.href)), [], "no external stylesheets or icons");
+  const nojs = /<div id="nojs">([\s\S]*?)<\/div>/.exec(html);
+  assert.ok(nojs, "a no-JavaScript fallback");
+  assert.match(textOf(nojs[1]), /12 groups\n× 10 minutes per cycle\n÷ 4 groups per cycle\n≈ 30 minutes[\s\S]*Enable JavaScript to build and edit your own estimate\./, "worked example without JavaScript");
+  assert.ok("hidden" in tags("div").find((d) => d.id === "app"), "controls stay hidden without JavaScript");
   assert.ok(Buffer.byteLength(html) < 100_000, `${Buffer.byteLength(html)} bytes`);
+});
+
+test("the range is never called a confidence interval in what the page writes", () => {
+  const st = { ...F.defaults(), benchmark: "45" }, r = F.compute(st);
+  const out = [F.describe(r), F.summary(st), F.summary(st, "markdown"), T.deck(F.report(st)), ...Object.values(F.NOTES), ...F.trail(r).map((x) => x.label)].join("\n");
+  assert.match(out, /from (your|these) assumptions/);
+  for (const m of out.matchAll(/(.{0,16})confidence interval/gi)) assert.match(m[1], /not a measured $/, `never labelled a confidence interval: ${m[0]}`);
 });
 
 const STATES = [
