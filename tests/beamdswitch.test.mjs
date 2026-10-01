@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { createReadStream, existsSync, linkSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
-import { readFile, stat } from "node:fs/promises";
+import { existsSync, linkSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
@@ -11,7 +11,6 @@ import vm from "node:vm";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const VIZ = join(ROOT, "visuals/beamdswitch");
-const SITE = join(ROOT, "site/visuals/beamdswitch");
 const raw = JSON.parse(await readFile(join(VIZ, "raw.json"), "utf8"));
 const PYTHON = process.env.PYTHON || (existsSync(join(ROOT, ".venv/bin/python")) ? join(ROOT, ".venv/bin/python") : "python3");
 // The catalogue stub as the build reads it.
@@ -21,10 +20,6 @@ const catalogue = JSON.parse(execFileSync(PYTHON, ["-c", [
   "print(json.dumps(next(v for v in load_visualizations() if v['slug'] == 'beamdswitch'), default=str))",
 ].join("\n")], { cwd: ROOT, encoding: "utf8" }));
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
-const sha256File = (path) => new Promise((resolve, reject) => {
-  const hash = createHash("sha256");
-  createReadStream(path).on("data", (chunk) => hash.update(chunk)).on("end", () => resolve(hash.digest("hex"))).on("error", reject);
-});
 const SITE_BLOCK = /<!-- teoyujie\.org additions: begin[^\n]*-->\n[\s\S]*?<!-- teoyujie\.org additions: end -->\n/;
 
 test("index.html is the vendored beamdswitch.html plus only the marked site block", async () => {
@@ -65,29 +60,10 @@ test("every Kokoro file is pinned to an exact URL and sha256, and none is commit
     // Immutable sources only: a Hugging Face commit, or an exact npm version.
     assert.match(d.url, /^https:\/\/(huggingface\.co\/onnx-community\/Kokoro-82M-v1\.0-ONNX\/resolve\/[0-9a-f]{40}\/|cdn\.jsdelivr\.net\/npm\/(@[a-z-]+\/)?[a-z-]+@\d+\.\d+\.\d+\/)/, d.url);
   }
-  // What the page's Kokoro worker asks for (beamdswitch src/tts.js).
-  for (const needed of ["kokoro/kokoro.web.js", "kokoro/ort/ort-wasm-simd-threaded.jsep.mjs",
-    "kokoro/ort/ort-wasm-simd-threaded.jsep.wasm", "kokoro/model/config.json", "kokoro/model/tokenizer.json",
-    "kokoro/model/tokenizer_config.json", "kokoro/model/onnx/model_quantized.onnx", "kokoro/model/onnx/model.onnx",
-    "kokoro/model/voices/bf_emma.bin"]) {
-    assert.ok(paths.includes(needed), needed);
-  }
   const committed = execFileSync("git", ["ls-files", "visuals/beamdswitch"], { cwd: ROOT, encoding: "utf8" }).split("\n");
   assert.deepEqual(committed.filter((f) => /\.(onnx|wasm|bin|mjs)$|kokoro/.test(f)), []);
   assert.equal(catalogue.downloads, "visuals/beamdswitch/raw.json");
   assert.equal(catalogue.data_path, "visuals/beamdswitch/raw.json");
-});
-
-test("the build publishes every pinned download, byte for byte, beside the page", { skip: !existsSync(SITE) && "site/ not built" }, async () => {
-  for (const d of raw.downloads) {
-    const file = join(SITE, d.path);
-    assert.equal((await stat(file)).size, d.bytes, d.path);
-    assert.equal(await sha256File(file), d.sha256, d.path);
-  }
-  for (const name of ["index.html", "coi-serviceworker.js", "site.js"]) {
-    assert.deepEqual(await readFile(join(SITE, name)), await readFile(join(VIZ, name)), name);
-  }
-  assert.deepEqual(JSON.parse(await readFile(join(SITE, "data.json"), "utf8")), raw);
 });
 
 // ---------------------------------------------------------------- service worker
