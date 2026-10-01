@@ -42,10 +42,17 @@ test("edge cases: nobody ahead, no counters, huge queues, spare counters, very f
   assert.equal(Q.headline(stopped).head, "Queue is not moving");
   assert.equal(Q.roughRule(stopped.s), null);
   assert.equal(Q.describe(stopped), "8 people ahead, 0 counters. The queue is not moving.");
-  const t0 = Date.now(), big = est({ people: 1e9, counters: 50 });
-  assert.ok(Date.now() - t0 < 2000, "999 people at 50 counters stays fast");
+  // The guard is this process's CPU time, not wall-clock: suites run files in parallel and load
+  // stretches elapsed time. In this vm context the 400-run simulation takes about 0.8 s of CPU
+  // (about 60 ms in a page, where global lookups are cheap); 10 s still catches a blow-up.
+  const cpu0 = process.cpuUsage(), big = est({ people: 1e9, counters: 50 }), cpu = process.cpuUsage(cpu0);
+  assert.ok((cpu.user + cpu.system) / 1000 < 10_000, "999 people at 50 counters stays fast");
+  assert.equal(big.kind, "wait");
   assert.equal(big.s.people, 999);
-  assert.ok(Number.isFinite(big.mid) && big.mid > 30);
+  assert.equal(big.s.counters, 50);
+  assert.ok(Number.isFinite(big.lo) && Number.isFinite(big.hi) && Number.isFinite(big.mean), "a finite range for a huge queue");
+  assert.ok(big.lo <= big.mid && big.mid <= big.hi && big.mid > 30);
+  assert.ok(Math.abs(big.mean - Q.roughRule(big.s)) < 2, `mean ${big.mean} near the rough rule ${Q.roughRule(big.s)}`);
   assert.match(Q.headline(est({ people: 999, counters: 1 })).head, /^About \d+ h$/);
   const spare = est({ people: 2, counters: 10 });
   assert.ok(spare.mid > 0 && spare.mid < est({ people: 2, counters: 1 }).mid);
