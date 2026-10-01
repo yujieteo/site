@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTS = {
     "bayes": "bayes",
     "convexity-action-engine": "convexity-action-engine",
+    "distortion": "distortion",
     "edge-pitch": "edge-pitch",
     "everyday-actions": "everyday-actions",
     "fastener-cg": "fastener-cg",
@@ -31,10 +32,12 @@ PORTS = {
     "information-gain": "information-gain",
     "lug-joint": "lug-joint",
     "md-explorer": "md-explorer",
+    "mohr": "mohr",
     "packets-to-playback": "packets-to-playback",
     "phasors": "phasors",
     "queue-time": "queue-time",
     "root-locus": "root-locus",
+    "stability": "stability",
     "subsidy-atlas": "subsidy-atlas",
     "tampines-food": "tampines-food",
     "toto-frequency": "toto-frequency",
@@ -65,8 +68,12 @@ class VisualPortTests(unittest.TestCase):
         for slug, name in PORTS.items():
             with self.subTest(slug):
                 text = (ROOT / "visuals" / slug / "AGENTS.md").read_text(encoding="utf-8")
-                self.assertIn(f"The standalone repository [yujieteo/{name}](https://github.com/yujieteo/{name}) is where this visualisation and its tests develop", text)
-                self.assertIn("Porting copies the folder minus `tests/` and `.github/`.", text)
+                link = f"[yujieteo/{name}](https://github.com/yujieteo/{name})"
+                wordings = [
+                    (f"The standalone repository {link} is where this visualisation and its tests develop", "Porting copies the folder minus `tests/` and `.github/`."),
+                    (f"This repository, {link}, is the source of truth", "Porting copies this repository minus `tests/` and `.github/`"),
+                ]
+                self.assertTrue(any(all(part in text for part in wording) for wording in wordings), text)
 
     def test_stub_points_into_the_folder(self):
         for slug in PORTS:
