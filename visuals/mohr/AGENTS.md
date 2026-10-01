@@ -4,23 +4,23 @@ A teaching tool and calculator for 3D stress and small-strain transformation in 
 
 ## Source of truth
 
-This folder is `visuals/mohr/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/mohr), and that is the source of truth. The standalone repository [yujieteo/mohr](https://github.com/yujieteo/mohr) is a read-only, exact mirror of this folder: make every change upstream in yujieteo/site, never in the mirror.
+This repository, [yujieteo/mohr](https://github.com/yujieteo/mohr), is the source of truth: the tool and its tests are developed here, and its CI runs them here. `visuals/mohr/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/mohr) is a port of the page files, refreshed whenever the tool is updated, and the site runs no logic tests for it. Porting copies this repository minus `tests/` and `.github/`, so AGENTS.md and SKILLS.md must not link into either (the site checks that their links resolve).
 
 ## Files and data
 
 See [README.md](README.md). `index.html` is the whole tool with no build step: edit it directly. `<script id="mohr-engine">` is the numeric core (`self.Mohr`; no DOM, storage, clock or randomness), `<script id="mohr-beamdswitch">` is `beamdswitch.js` inlined, and `<script id="mohr-ui">` is the page and the WebMCP tools. `raw.json` (published as `data.json`) must equal the engine's `META` and `toJSON(defaultState())`.
 
-Tests live upstream, outside this folder: `tests/mohr.test.mjs` and `tests/mohr-beamdswitch.test.mjs`.
+The tests are in `tests/`, with read-only copies of beamdswitch's deck parsers and the site's shared template (`templates/beamdswitch.js` and `templates/beamdswitch-report.md`) in `tests/fixtures/beamdswitch/`.
 
 ## Build, test and verify
 
-Run from the root of a yujieteo/site checkout:
+There is no build step. From the repository root:
 
 ```sh
-node --test tests/mohr.test.mjs tests/mohr-beamdswitch.test.mjs
+node --test 'tests/*.test.{mjs,cjs}'
 ```
 
-The page also runs its self-test on every load and shows a pass/fail badge. After changing `META` or `defaultState()`, regenerate `raw.json` from the engine; the test says when it has drifted.
+CI (`.github/workflows/ci.yml`) runs the same command on every push and pull request: `tests/mohr.test.mjs` (engine, presets, conventions, import and export, WebMCP tools) and `tests/beamdswitch.test.mjs` (the beamdswitch deck). In yujieteo/site the only Mohr checks are the site's integration tests: the published copy, the catalogue stub and the folder docs. The page also runs its self-test on every load and shows a pass/fail badge. After changing `META` or `defaultState()`, regenerate `raw.json` from the engine; the test says when it has drifted. When the site's `templates/beamdswitch.js` changes, copy it to both `beamdswitch.js` and `tests/fixtures/beamdswitch/template.js` and paste it into `<script id="mohr-beamdswitch">`.
 
 ## Conventions
 
