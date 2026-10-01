@@ -38,6 +38,7 @@ PORTS = {
     "mohr": "mohr",
     "packets-to-playback": "packets-to-playback",
     "phasors": "phasors",
+    "pigeonhole": "pigeonhole",
     "probabilistic-method": "probabilistic-method",
     "queue-time": "queue-time",
     "riemann-roch": "riemann-roch",
