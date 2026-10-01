@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { assertInlined, assertStandardDeck, assertTemplateCopy, read } from "./data-visuals-beamdswitch.mjs";
+import { assertButtonsExport, assertInlined, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const require = createRequire(import.meta.url);
 const T = require("../visuals/toto-frequency/beamdswitch.js");
@@ -21,9 +21,12 @@ test("the site's shared beamdswitch template is the copy the TOTO page inlines",
   assertInlined(html, "report", read("visuals/toto-frequency/report.js"), "toto-frequency");
 });
 
-test("the page has a beamdswitch button and a Copy deck button beside it", () => {
-  const html = read("visuals/toto-frequency/index.html");
-  assert.match(html, /<button[^>]*id="save-beamdswitch"[^>]*>beamdswitch<\/button>\s*<button[^>]*id="copy-beamdswitch"[^>]*>Copy deck<\/button>/);
+test("the beamdswitch button saves, and Copy deck copies, the deck of the window shown", async () => {
+  const page = await openPage("toto-frequency"), band = D.bands[1];
+  await page.press((c) => c.text.startsWith("Last 1 year"));
+  await page.press((c) => c.attr("title") === `${R.bandText(band)} times`);
+  await page.press((c) => c.attr("data-ball") === "7");
+  await assertButtonsExport(page, "toto-frequency", deckFor({ window: "1y", sort: "number", band: band.id, open: 7 }));
 });
 
 test("every view's deck parses in beamdswitch into the standard template, narrated on every slide", () => {

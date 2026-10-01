@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { assertInlined, assertStandardDeck, assertTemplateCopy, read } from "./data-visuals-beamdswitch.mjs";
+import { assertButtonsExport, assertInlined, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const require = createRequire(import.meta.url);
 const T = require("../visuals/everyday-actions/beamdswitch.js");
@@ -22,7 +22,13 @@ test("the site's shared beamdswitch template is the copy the everyday-actions pa
   assertTemplateCopy("everyday-actions");
   assertInlined(html, "beamdswitch", read("templates/beamdswitch.js"), "everyday-actions");
   assertInlined(html, "report", read("visuals/everyday-actions/report.js"), "everyday-actions");
-  assert.match(html, /<button[^>]*id="save-beamdswitch"[^>]*>beamdswitch<\/button>\s*<button[^>]*id="copy-beamdswitch"[^>]*>Copy deck<\/button>/);
+});
+
+test("the beamdswitch button saves, and Copy deck copies, the deck of the charts as set", async () => {
+  const sel = DATA.activities[0].activity_id, tier = R.TIERS[0];
+  const page = await openPage("everyday-actions", { search: `?pop=weekend&sel=${sel}` });
+  await page.change("regret-tier", tier);
+  await assertButtonsExport(page, "everyday-actions", deckFor({ x: "drm_proportion_reporting", y: "drm_positive_affect", pop: "weekend", partial: true, sel, tier, domain: "", decision: null }));
 });
 
 test("every view's deck parses in beamdswitch into the standard template, narrated on every slide", () => {

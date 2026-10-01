@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 import { createRequire } from "node:module";
-import { assertStandardDeck, assertTemplateCopy, read } from "./data-visuals-beamdswitch.mjs";
+import { assertButtonsExport, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 // engine.js loads as in tests/convexity-action-engine.test.mjs: the model without the page shell.
 const require = createRequire(import.meta.url);
@@ -51,7 +51,13 @@ test("the site's shared beamdswitch template is the copy the Convexity Action En
   assertTemplateCopy("convexity-action-engine");
   const html = read("visuals/convexity-action-engine/index.html");
   assert.ok(html.includes(`<script id="beamdswitch">\n${read("templates/beamdswitch.js")}</script>`), "the page inlines beamdswitch.js unchanged");
-  assert.match(html, /<button[^>]*id="save-beamdswitch"[^>]*>beamdswitch<\/button><button[^>]*id="copy-beamdswitch"[^>]*>Copy deck<\/button>/);
+});
+
+test("the beamdswitch button saves, and Copy deck copies, the deck of the page the route shows", async () => {
+  const page = await openPage("convexity-action-engine", { hash: "#/a/swim" });
+  const expected = page.run(`Beamdswitch.deck(deckReport({ name: "a", id: "swim" }))`);
+  assert.notEqual(expected, page.run(`Beamdswitch.deck(deckReport({ name: "now" }))`));
+  await assertButtonsExport(page, "convexity-action-engine", expected);
 });
 
 test("every page's deck parses in beamdswitch into the standard template, narrated on every slide", () => {

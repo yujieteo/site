@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { assertInlined, assertStandardDeck, assertTemplateCopy, read } from "./data-visuals-beamdswitch.mjs";
+import { assertButtonsExport, assertInlined, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const require = createRequire(import.meta.url);
 const T = require("../visuals/tampines-food/beamdswitch.js");
@@ -24,8 +24,10 @@ test("the site's shared beamdswitch template is the copy the Tampines food page 
   assertInlined(html, "report", read("visuals/tampines-food/report.js"), "tampines-food");
 });
 
-test("the page has a beamdswitch button and a Copy deck button beside it", () => {
-  assert.match(read("visuals/tampines-food/index.html"), /<button[^>]*id="save-beamdswitch"[^>]*>beamdswitch<\/button>\s*<button[^>]*id="copy-beamdswitch"[^>]*>Copy deck<\/button>/);
+test("the beamdswitch button saves, and Copy deck copies, the deck of the places filtered", async () => {
+  const page = await openPage("tampines-food"), cuisine = estimated.cuisine;
+  await page.press((c) => c.attr("data-key") === `cuisine:${cuisine}`);
+  await assertButtonsExport(page, "tampines-food", deckFor({ cuisine, mall: null, sort: "energy", open: null }));
 });
 
 test("every filter's deck parses in beamdswitch into the standard template, narrated on every slide", () => {

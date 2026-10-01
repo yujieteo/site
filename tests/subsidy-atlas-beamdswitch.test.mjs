@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { assertStandardDeck, assertTemplateCopy, read } from "./data-visuals-beamdswitch.mjs";
+import { assertButtonsExport, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const require = createRequire(import.meta.url);
 const T = require("../visuals/subsidy-atlas/beamdswitch.js");
@@ -23,7 +23,12 @@ test("the site's shared beamdswitch template is the copy the Subsidy Atlas page 
   const html = read("visuals/subsidy-atlas/index.html");
   assert.ok(html.includes(`<script id="beamdswitch">\n${read("templates/beamdswitch.js")}</script>`), "the page inlines beamdswitch.js unchanged");
   assert.ok(html.includes(`<script>${read("visuals/subsidy-atlas/engine.js")}</script>`), "the page inlines engine.js unchanged");
-  assert.match(html, /<button[^>]*id="save-beamdswitch"[^>]*>beamdswitch<\/button><button[^>]*id="copy-beamdswitch"[^>]*>Copy deck<\/button>/);
+});
+
+test("the beamdswitch button saves, and Copy deck copies, the deck of the records the filters show", async () => {
+  const page = await openPage("subsidy-atlas");
+  page.run(`const f = document.getElementById("filters").elements; f.namedItem("q").value = "grab"; f.namedItem("includeHistorical").checked = true;`);
+  await assertButtonsExport(page, "subsidy-atlas", deckFor({ q: "grab", category: "", subsidiser: "", depth: "", stage: "", includeHistorical: true }));
 });
 
 test("every filter's deck parses in beamdswitch into the standard template, narrated on every slide", () => {
