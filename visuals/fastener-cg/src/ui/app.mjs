@@ -15,7 +15,9 @@ import { PRESETS } from "../core/interaction.mjs";
 import { preloadFromTorque } from "../core/tension.mjs";
 import { suggestContactEdge, EDGES } from "../core/contact.mjs";
 import { TOOL_VERSION } from "../core/meta.mjs";
-import { paint, palette, hitTest, centroidPath } from "./canvas.mjs";
+import { paint, palette, hitTest, centroidPath, paintLegend, legendHeight } from "./canvas.mjs";
+import { buildTrace, traceFastenerId } from "../core/trace.mjs";
+import { reportHtml } from "../core/report.mjs";
 import { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } from "./storage.mjs";
 import { registerTools } from "./webmcp.mjs";
 
@@ -84,6 +86,8 @@ function recompute() {
   renderInline();
   renderPresets();
   renderLegend();
+  renderTrace();
+  renderPageSize();
   draw();
   autosave();
 }
@@ -281,6 +285,8 @@ function draw() {
 function legendIcon(entry, colours) {
   const c = colours[entry.colour] || colours.fg;
   if (entry.shape === "arrow") return `<svg width="22" height="12" aria-hidden="true"><line x1="1" y1="6" x2="15" y2="6" stroke="${c}" stroke-width="2"/><path d="M21 6L14 2V10z" fill="${c}"/></svg>`;
+  if (entry.shape === "disc") return `<svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="${c}" fill-opacity=".35" stroke="${colours.fg}" stroke-width="1.5"/></svg>`;
+  if (entry.shape === "dashed") return `<svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="${colours.fg}" stroke-width="1.5" stroke-dasharray="3 2"/></svg>`;
   if (entry.shape === "icr") return `<svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="${c}" stroke-width="2"/><path d="M5 8H11M8 5V11" stroke="${c}" stroke-width="2"/></svg>`;
   if (entry.shape === "edge") return `<svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="${c}" stroke-width="3" stroke-dasharray="6 3"/></svg>`;
   if (entry.shape === "cross") return `<svg width="14" height="14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" stroke="${c}" stroke-width="2"/></svg>`;
@@ -297,9 +303,7 @@ function centroidSvg(key, colour) {
 function renderLegend() {
   const colours = palette(canvas());
   const scene = buildScene(state.pattern, state.result, { width: 100, height: 100 });
-  $("#legend").innerHTML = scene.legend.map((e) => `<li>${legendIcon(e, colours)}<span>${esc(e.label)}</span></li>`).join("")
-    + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="${colours.tension}" fill-opacity=".35" stroke="${colours.fg}" stroke-width="1.5"/></svg><span>Fastener in tension</span></li>`
-    + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="${colours.fg}" stroke-width="1.5" stroke-dasharray="3 2"/></svg><span>Unloading (clamp-up)</span></li>`;
+  $("#legend").innerHTML = scene.legend.map((e) => `<li>${legendIcon(e, colours)}<span>${esc(e.label)}</span></li>`).join("");
 }
 
 function eventPoint(e) {
@@ -631,12 +635,73 @@ function renderPresets() {
   }
 }
 
+/* ---------- calculation trace ---------- */
+
+function renderTrace() {
+  const r = state.result;
+  const pick = $("#trace-fastener");
+  const out = $("#trace");
+  if (!r.ok) {
+    pick.innerHTML = ""; pick.disabled = true;
+    out.innerHTML = `<p class="blocked">No trace: the pattern has errors.</p>`;
+    return;
+  }
+  const gov = traceFastenerId(r);
+  const ids = r.fasteners.map((q) => q.id);
+  const current = ids.includes(state.traceId) ? state.traceId : gov;
+  pick.disabled = false;
+  pick.innerHTML = ids.map((id) => `<option value="${esc(id)}"${id === current ? " selected" : ""}>${esc(id)}${id === gov ? " (governing)" : ""}</option>`).join("");
+  const tr = buildTrace(state.pattern, r, current, (v) => fmt(v, Math.max(precision(), 6)));
+  out.innerHTML = tr.sections.map((sec) => `<h3>${esc(sec.title)}</h3>${table(["Step", "Formula", "Substituted", "Value", "Unit"],
+    sec.lines.map((l) => [esc(l.label), `<code>${esc(l.formula)}</code>`, esc(l.substituted), typeof l.value === "number" ? fmt(l.value, Math.max(precision(), 6)) : esc(l.value ?? "—"), esc(l.unit)]), { numeric: [3] })}`).join("");
+}
+
+/* ---------- reports ---------- */
+
+function renderPageSize() {
+  const size = state.pattern.settings.pageSize === "Letter" ? "letter" : "A4";
+  $("#page-style").textContent = `@page{size:${size};margin:14mm}`;
+}
+
+const today = () => new Date().toISOString().slice(0, 10);
+
+function buildPrintReport() {
+  renderPageSize();
+  const v = runVerification();
+  $("#print-report").innerHTML = reportHtml(state.pattern, state.result, { date: today(), precision: precision(), verification: v });
+}
+
+function exportPng() {
+  const el = canvas();
+  const rect = el.getBoundingClientRect();
+  const width = Math.max(600, Math.round(rect.width)), height = Math.max(400, Math.round(rect.height));
+  const scene = buildScene(state.pattern, state.result, { width, height });
+  const extra = legendHeight(scene);
+  const out = document.createElement("canvas");
+  out.width = width * 2; out.height = (height + extra) * 2;
+  const ctx = out.getContext("2d");
+  ctx.setTransform(2, 0, 0, 2, 0, 0);
+  const colours = { ...palette(el), bg: "#ffffff", fg: "#1d1d1f", muted: "#6e6e73", faint: "#a1a1a6", grid: "#e8e8ed", surface: "#f5f5f7", reaction: "#1d1d1f" };
+  ctx.fillStyle = colours.bg; ctx.fillRect(0, 0, width, height + extra);
+  paint(ctx, scene, colours, { snapOn: false });
+  paintLegend(ctx, scene, colours, height);
+  out.toBlob((blob) => {
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = `${slug(state.pattern.name)}.png`;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }, "image/png");
+}
+
 /* ---------- verification ---------- */
 
 function renderVerification() {
   const v = runVerification();
   $("#verify-results").innerHTML = `
     <p><span class="${v.pass ? "pass" : "fail"}">${v.passed} pass${v.failed ? `, ${v.failed} fail` : ""}${v.pending ? `, ${v.pending} pending` : ""}</span> of ${v.results.length} cases · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
+    ${v.pending ? `<p class="pending">All six milestones are implemented, but ${esc(v.results.filter((r) => r.pending).map((r) => r.id).join(", "))} (AISC prying and ICR references, spec open questions 2 and 3) await published values, so M3 and M5 are not closed.</p>` : ""}
     ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.status}">${r.status}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
       ${r.pending ? `<p class="pending">pending: ${esc(r.pending)}</p>` : r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
         esc(c.label), typeof c.actual === "number" ? String(Number(c.actual.toPrecision(10))) : esc(c.actual),
@@ -723,7 +788,8 @@ function download(text, filename, type) {
 }
 
 const exportJSON = () => download(toJSON(state.pattern), `${slug(state.pattern.name)}.json`, "application/json");
-const markdownOf = (pattern = state.pattern, result = state.result) => toMarkdown(pattern, result, { version: TOOL_VERSION, date: new Date().toISOString().slice(0, 10) });
+/* Markdown report: the trace is for the governing fastener, and the footer cites the verification run. */
+const markdownOf = (pattern = state.pattern, result = state.result) => toMarkdown(pattern, result, { version: TOOL_VERSION, date: today(), verification: runVerification() });
 const exportMarkdown = () => download(markdownOf(), `${slug(state.pattern.name)}.md`, "text/markdown");
 
 /* Resolve a library name collision: "overwrite", "keep" or "cancel". */
@@ -994,6 +1060,10 @@ function bind() {
     renderLibrary();
   });
   $("#run-verify").addEventListener("click", renderVerification);
+  $("#trace-fastener").addEventListener("change", (e) => { state.traceId = e.target.value; renderTrace(); });
+  $("#print-report-btn").addEventListener("click", () => window.print());
+  window.addEventListener("beforeprint", buildPrintReport);
+  $("#export-png").addEventListener("click", exportPng);
   for (const b of $$("[data-preset]")) {
     b.addEventListener("click", () => {
       const p = PRESETS[b.dataset.preset];

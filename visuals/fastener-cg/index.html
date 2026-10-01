@@ -118,6 +118,30 @@ dialog{border:1px solid var(--border);border-radius:calc(var(--r)*1.5);backgroun
 dialog::backdrop{background:rgb(0 0 0/.35)}
 dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .method li{margin:.3rem 0}
+.trace-pick{max-width:18rem}
+#trace h3{margin:1rem 0 .3rem}
+#print-report{display:none}
+@media print{
+  :root{color-scheme:light}
+  body{background:#fff;color:#1d1d1f;font-size:10pt}
+  body>main,dialog,#storage-banner{display:none!important}
+  #print-report{display:block!important;color:#1d1d1f}
+  #print-report h1{font-size:18pt;margin:.2rem 0}
+  #print-report h2{font-size:12pt;margin:0 0 .3rem;border-bottom:1px solid #d2d2d7;padding-bottom:.15rem}
+  #print-report h3{font:600 8pt/1.4 monospace;text-transform:uppercase;letter-spacing:.05em;color:#6e6e73;margin:.5rem 0 .2rem}
+  #print-report .r-sec{break-inside:avoid;page-break-inside:avoid;margin:0 0 .6rem}
+  #print-report .r-sec[data-section="trace"],#print-report .r-sec[data-section="warnings"],#print-report .r-sec[data-section="inputs"]{break-inside:auto}
+  #print-report .r-sec[data-section="trace"] table,#print-report .r-sec[data-section="inputs"] table{break-inside:avoid}
+  #print-report table{border-collapse:collapse;width:100%;font-size:8pt;margin:.2rem 0}
+  #print-report th,#print-report td{border-bottom:1px solid #e8e8ed;padding:.12rem .3rem;text-align:left;vertical-align:top}
+  #print-report th{background:#f5f5f7}
+  #print-report td.num,#print-report th.num{text-align:right;font-variant-numeric:tabular-nums}
+  #print-report .r-conv{display:flex;gap:1rem;align-items:center}
+  #print-report .r-diagram svg{width:100%;height:auto;max-height:120mm}
+  #print-report .r-prelim{border-left:3px solid #b26b00;padding-left:.5rem}
+  #print-report .r-eyebrow{font:600 8pt monospace;color:#6e6e73;margin:0}
+  #print-report .r-foot{border-top:1px solid #d2d2d7;margin-top:.6rem;padding-top:.3rem;font-size:8pt}
+}
 .plate-block+.plate-block{margin-top:.8rem;padding-top:.6rem;border-top:1px solid var(--grid)}
 .plate-block h4{margin:0 0 .3rem;font-size:.85rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
 label.check{display:flex;align-items:center;gap:.45rem;font-weight:600;font-size:.9rem;min-height:2.25rem;cursor:pointer}
@@ -169,7 +193,7 @@ td.status{color:var(--muted);font-size:.78rem}
     <button class="btn" type="button" id="lib-load">Load</button><button class="btn" type="button" id="lib-save">Save</button><button class="btn danger" type="button" id="lib-delete">Delete</button></div>
   <div class="group"><span class="label">File</span>
     <button class="btn" type="button" id="import">Import JSON or Markdown…</button><input id="import-file" type="file" accept=".json,.md,.markdown,application/json,text/markdown,text/plain" hidden>
-    <button class="btn" type="button" id="export-json">Export JSON</button><button class="btn" type="button" id="export-md">Export Markdown</button></div>
+    <button class="btn" type="button" id="export-json">Export JSON</button><button class="btn" type="button" id="export-md">Export Markdown report</button></div>
 </div>
 <p id="library-note" class="note">The working pattern autosaves in this browser on every edit, separately from the named library.</p>
 <div id="storage-banner" class="banner" role="alert" hidden><span id="storage-message"></span><button class="btn" type="button" id="storage-export">Export JSON</button></div>
@@ -400,9 +424,25 @@ td.status{color:var(--muted);font-size:.78rem}
   <div id="results"></div>
 </section>
 
+<section aria-labelledby="trace-h">
+  <h2 id="trace-h">Calculation trace</h2>
+  <p>A worked calculation with every formula and its substituted numbers, read from the solver's own intermediate values. The reports show the governing fastener; pick any fastener here.</p>
+  <label class="f trace-pick"><span>Show trace for fastener…</span><select id="trace-fastener"></select></label>
+  <div id="trace"></div>
+</section>
+
+<section aria-labelledby="reports-h">
+  <h2 id="reports-h">Reports</h2>
+  <p>The PDF and Markdown reports carry the tool version, the verification set and tolerance, the full warnings list and the line <i>Preliminary sizing — verify against the governing specification.</i> The PDF is the full report (with the calculation trace for the governing fastener); the Markdown has the same sections as tables plus the exact inputs. The PNG is the annotated pattern diagram only, with legend and scale, at 2×.</p>
+  <div class="toolbar" role="group" aria-label="Reports">
+    <div class="group"><label class="label" for="page-size">Page</label><select id="page-size" data-path="settings.pageSize"><option value="A4">A4</option><option value="Letter">Letter</option></select></div>
+    <div class="group"><button class="btn primary" type="button" id="print-report-btn">Print / Save as PDF</button><button class="btn" type="button" id="export-png">Download PNG</button></div>
+  </div>
+</section>
+
 <section aria-labelledby="verify-h">
   <h2 id="verify-h">Verification</h2>
-  <p>Runs the hand-calculation cases and property tests from the specification on this page's own solver. The same cases run in the repository's test suite.</p>
+  <p>Runs the hand-calculation cases and property tests from the specification on this page's own solver. The same cases run in the repository's test suite. All six milestones are implemented, but the published-reference cases VR-01 to VR-03 (AISC prying and ICR references, spec open questions 2 and 3) await published values and show as pending, so M3 and M5 are not closed.</p>
   <button class="btn primary" type="button" id="run-verify">Run verification</button>
   <div id="verify-results"></div>
 </section>
@@ -427,6 +467,9 @@ td.status{color:var(--muted);font-size:.78rem}
   </ul>
 </section>
 </main>
+
+<div id="print-report" aria-hidden="true"></div>
+<style id="page-style">@page{size:A4;margin:14mm}</style>
 
 <dialog id="collision">
   <form method="dialog">
@@ -2210,14 +2253,18 @@ function buildScene(pattern, result, view, { selected = null, transform: fixed =
 
   // Reaction vectors: in-plane load on each fastener, the largest drawn 0.16 × the shorter side.
   const vectors = [];
+  const icrDrawn = !!(result && result.ok && result.designBasis === "icr" && result.fasteners.every((f) => f.basisShear));
   if (result && result.ok) {
-    const maxR = Math.max(...result.fasteners.map((f) => f.shear.Rs), 0);
+    // Vectors show the in-plane load on the selected design basis (the one the checks use).
+    const shearOf = (f) => f.basisShear || f.shear;
+    const maxR = Math.max(...result.fasteners.map((f) => shearOf(f).Rs), 0);
     if (maxR > 0) {
       const perForce = (0.16 * Math.min(width, height)) / scale / maxR; // world length per unit force
       for (const f of result.fasteners) {
-        if (!(f.shear.Rs > 0)) continue;
-        const from = { x: f.x, y: f.y }, to = { x: f.x + f.shear.Rx * perForce, y: f.y + f.shear.Ry * perForce };
-        vectors.push({ kind: "reaction", id: f.id, world: { from, to }, screen: { from: toScreen(from), to: toScreen(to) }, value: f.shear.Rs, label: "" });
+        const sh = shearOf(f);
+        if (!(sh.Rs > 0)) continue;
+        const from = { x: f.x, y: f.y }, to = { x: f.x + sh.Rx * perForce, y: f.y + sh.Ry * perForce };
+        vectors.push({ kind: "reaction", id: f.id, world: { from, to }, screen: { from: toScreen(from), to: toScreen(to) }, value: sh.Rs, label: "" });
       }
     }
   }
@@ -2247,8 +2294,10 @@ function buildScene(pattern, result, view, { selected = null, transform: fixed =
   const legend = [
     ...Object.entries(CENTROID_STYLE).map(([key, s]) => ({ key, shape: s.shape, colour: s.colour, label: s.label })),
     { key: "load", shape: "cross", colour: "load", label: "Load point P" },
-    { key: "reaction", shape: "arrow", colour: "reaction", label: "Fastener in-plane load (elastic)" },
+    { key: "reaction", shape: "arrow", colour: "reaction", label: `Fastener in-plane load (${icrDrawn ? "ICR at applied load" : "elastic"})` },
     { key: "applied", shape: "arrow", colour: "load", label: "Applied in-plane force" },
+    { key: "tension", shape: "disc", colour: "tension", label: "Fastener in tension" },
+    { key: "unloading", shape: "dashed", colour: "fg", label: "Unloading (clamp-up)" },
   ];
 
   if (icrPoint) legend.push({ key: "icr", shape: "icr", colour: "load", label: "Instantaneous centre of rotation (ICR)" });
@@ -2344,12 +2393,220 @@ function mirror(points, { axis, c = 0, existing = points, tol = 1e-9 }) {
 return { rectangularArray, staggeredRows, boltCircle, mirror };
 })();
 
-/* ---- core/persist.mjs ---- */
+/* ---- core/trace.mjs ---- */
 const __m16 = (() => {
+const { unitLabel } = __m0;
+const { EDGES } = __m10;
+const { resolveFastener } = __m2;
+/* Calculation trace (spec 9.1): a worked calculation for one fastener, each
+ * formula shown with substituted numbers.
+ *
+ * Every number is read from the solver's own results (section properties,
+ * reduced load, per-fastener shear and axial records, the tension chain,
+ * plate modes, the interaction solve and the ICR solution). Nothing is
+ * recomputed here, so the trace cannot disagree with the results: each
+ * line's `value` is the solver's value, and the substituted text only
+ * formats the solver's inputs to that value.
+ */
+
+
+
+
+
+/* The governing fastener: the critical one, else the largest in-plane load. */
+function traceFastenerId(result) {
+  if (!result || !result.ok || !result.fasteners.length) return null;
+  if (result.critical) return result.critical.id;
+  return result.fasteners.reduce((a, b) => ((b.basisShear?.Rs ?? b.shear.Rs) > (a.basisShear?.Rs ?? a.shear.Rs) ? b : a)).id;
+}
+
+/*
+ * Returns { id, sections: [{ title, lines: [{ label, formula, substituted, value, unit }] }] }.
+ * `num(v)` formats a number for display (the caller picks the precision).
+ */
+function buildTrace(pattern, result, id = traceFastenerId(result), num = (v) => String(Number(v.toPrecision(6)))) {
+  if (!result || !result.ok) return null;
+  const f = result.fasteners.find((q) => q.id === id);
+  if (!f) return null;
+  const u = (k) => unitLabel(pattern.unitSystem, k);
+  // Substituted numbers: negatives in parentheses so "− (−1500000)" reads correctly; `plain` for tuples.
+  const plain = (v) => (typeof v === "number" && Number.isFinite(v) ? num(v) : v === Infinity ? "∞" : "—");
+  const n = (v) => (typeof v === "number" && v < 0 && Number.isFinite(v) ? `(${num(v)})` : plain(v));
+  const p = result.props, red = result.reduced, sh = f.shear;
+  const line = (label, formula, substituted, value, unit = "") => ({ label, formula, substituted, value, unit });
+  const sections = [];
+
+  sections.push({
+    title: "Reduced load",
+    lines: [
+      line("Torsion about Cs", "Mz,s = Mz + rx·Fy − ry·Fx", `${plain(pattern.load.Mz)} + ${n(red.shear.rx)}·${n(red.Fy)} − ${n(red.shear.ry)}·${n(red.Fx)}`, red.shear.Mz, u("moment")),
+      line("Bending about Ca, x", "Mx,a = Mx + ry·Fz − zp·Fy", `${plain(pattern.load.Mx)} + ${n(red.axial.ry)}·${n(red.Fz)} − ${n(red.axial.zp)}·${n(red.Fy)}`, red.axial.Mx, u("moment")),
+      line("Bending about Ca, y", "My,a = My + zp·Fx − rx·Fz", `${plain(pattern.load.My)} + ${n(red.axial.zp)}·${n(red.Fx)} − ${n(red.axial.rx)}·${n(red.Fz)}`, red.axial.My, u("moment")),
+    ],
+  });
+
+  sections.push({
+    title: "Direct shear",
+    lines: [
+      line("Share", "ks / Σks", `${n(f.ks)} / ${n(p.Ks)}`, sh.share),
+      line("Rdx", "Fx·ks/Σks", `${n(red.Fx)}·${n(sh.share)}`, sh.Rdx, u("force")),
+      line("Rdy", "Fy·ks/Σks", `${n(red.Fy)}·${n(sh.share)}`, sh.Rdy, u("force")),
+    ],
+  });
+
+  sections.push({
+    title: "Torsional shear (about Cs)",
+    lines: [
+      line("Position from Cs", "(u, v) = (x − Cs.x, y − Cs.y)", `(${n(f.x)} − ${n(p.Cs.x)}, ${n(f.y)} − ${n(p.Cs.y)})`, `(${plain(sh.u)}, ${plain(sh.v)})`, u("length")),
+      line("Rtx", "−Mz,s·ks·v / J", `−${n(red.shear.Mz)}·${n(f.ks)}·${n(sh.v)} / ${n(p.J)}`, sh.Rtx, u("force")),
+      line("Rty", "+Mz,s·ks·u / J", `${n(red.shear.Mz)}·${n(f.ks)}·${n(sh.u)} / ${n(p.J)}`, sh.Rty, u("force")),
+      line("Resultant", "Rs = √((Rdx + Rtx)² + (Rdy + Rty)²)", `√(${n(sh.Rx)}² + ${n(sh.Ry)}²)`, sh.Rs, u("force")),
+    ],
+  });
+
+  // Resolved fasteners carry ICR inputs under `icr`; solve replaces them with results only when ICR converged.
+  if (result.icr && result.icr.status === "converged" && f.icr && f.icr.ultimate) {
+    const ic = result.icr;
+    sections.push({
+      title: `ICR (${ic.modelLabel})${result.designBasis === "icr" ? ", design basis" : ""}`,
+      lines: [
+        line("Distance from ICR", "ρ", !ic.icr ? (ic.mode === "translation" ? "uniform translation" : "no in-plane load") : `|(${plain(f.x)}, ${plain(f.y)}) − (${plain(ic.icr.x)}, ${plain(ic.icr.y)})|`, f.icr.ultimate.rho, u("length")),
+        line("Deformation", "Δ = Δmax,gov·ρ/ρ_gov", `governing ${ic.governing}`, f.icr.ultimate.delta, u("length")),
+        line("Ultimate load", ic.model === "elastic-plastic" ? "R = Rult·min(Δ/Δy, 1)" : "R = Rult·(1 − e^(−μΔ))^λ", `Rult = ${n(resolveFastener(pattern, pattern.fasteners.find((q) => q.id === f.id)).icr.rult)}, Δ = ${n(f.icr.ultimate.delta)}`, f.icr.ultimate.R, u("force")),
+        line("γ_ult", ic.mode === "pure-moment" ? "M_u / |Mz,s|" : "P_u / |F|", ic.mode === "pure-moment" ? `${n(ic.Mu)} / ${n(Math.abs(red.shear.Mz))}` : `${n(ic.Pu)} / ${n(Math.hypot(red.Fx, red.Fy))}`, ic.gamma),
+        line("At the applied load", "Rs = R / γ_ult (proportional scaling)", `${n(f.icr.ultimate.R)} / ${n(ic.gamma)}`, f.icr.atLoad.Rs, u("force")),
+      ],
+    });
+  }
+
+  const ax = f.axial, am = result.axial;
+  if (am.mode === "contact-edge") {
+    sections.push({
+      title: `Moment-induced tension, method (b): ${EDGES[am.edge].label} of ${am.plateId}`,
+      lines: [
+        line("Distance from the edge", "d (tension side > 0)", "", ax.d, u("length")),
+        line("Tension", "T = M_L·ka·d / Σ(ka·d²)", ax.tensionSide && am.ML > 0 ? `${n(am.ML)}·${n(f.ka)}·${n(ax.d)} / ${n(am.S)}` : "not on the tension side, or M_L ≤ 0", ax.T, u("force")),
+        line("Contact reaction", "C = ΣT − Fz", "", am.C, u("force")),
+      ],
+    });
+  } else {
+    sections.push({
+      title: "Moment-induced tension, method (a): neutral axis through Ca",
+      lines: [
+        line("Position from Ca", "(p, q)", `(${n(f.x)} − ${n(p.Ca.x)}, ${n(f.y)} − ${n(p.Ca.y)})`, `(${plain(ax.p)}, ${plain(ax.q)})`, u("length")),
+        line("Direct", "ka·Fz/Ka", `${n(f.ka)}·${n(red.Fz)}/${n(p.Ka)}`, ax.direct, u("force")),
+        am.mode === "general"
+          ? line("Bending", "ka·(θx·q − θy·p)", `${n(f.ka)}·(${n(am.thetaX)}·${n(ax.q)} − ${n(am.thetaY)}·${n(ax.p)})`, ax.moment, u("force"))
+          : line("Bending", "about the resolved principal axis only", am.mode, ax.moment, u("force")),
+        line("Tension", "T = direct + bending", `${n(ax.direct)} + ${n(ax.moment)}`, ax.T, u("force")),
+      ],
+    });
+  }
+
+  const t = f.checks.tension;
+  const tension = { title: "Tension chain", lines: [line("External tension", "T_ext = max(T, 0)", n(ax.T), t.Text, u("force"))] };
+  const pr = t.prying;
+  if (pr.method === "t-stub") {
+    tension.lines.push(
+      line("b', a', ρ, δ", "b − D/2, min(a, 1.25b) + D/2, b'/a', 1 − d_h/p", "", `${plain(pr.bP)}, ${plain(pr.aP)}, ${plain(pr.rho)}, ${plain(pr.delta)}`),
+      line("t_c", "√(4·B·b' / (p·Fp))", `B = ${n(pr.B)}`, pr.tc, u("length")),
+      line("α'", "(1/δ)·[(T/B)·(t_c/t)² − 1], clamped to [0, 1]", pr.alphaRaw === null ? "no tension" : `raw ${n(pr.alphaRaw)}`, pr.alpha),
+      line("Prying Q", "B·δ·α'·ρ·(t/t_c)²", `${n(pr.B)}·${n(pr.delta)}·${n(pr.alpha)}·${n(pr.rho)}·(${n(pr.t)}/${n(pr.tc)})²`, t.Q, u("force")),
+    );
+  } else if (pr.method === "manual") {
+    tension.lines.push(line("Prying Q (manual factor, W-012)", "(f − 1)·T_ext", `(${n(pr.factor)} − 1)·${n(t.Text)}`, t.Q, u("force")));
+  }
+  if (t.preload) {
+    const pl = t.preload;
+    tension.lines.push(
+      line("Preload share", "P_max + φ·T_ext", `${n(pl.pMax)} + ${n(pl.phi)}·${n(t.Text)}`, pl.shared, u("force")),
+      line("Clamp force", "P_min − (1 − φ)·T_ext", `${n(pl.pMin)} − (1 − ${n(pl.phi)})·${n(t.Text)}`, pl.clamp, u("force")),
+      line("Bolt load", "F_b = max(P_max + φT, T) + Q", `max(${n(pl.shared)}, ${n(t.Text)}) + ${n(t.Q)}`, t.Fb, u("force")),
+    );
+  } else {
+    tension.lines.push(line("Bolt tension", "T + Q", `${n(t.Text)} + ${n(t.Q)}`, t.Fb, u("force")));
+  }
+  sections.push(tension);
+
+  const plates = f.checks.modes.filter((m) => m.plate);
+  if (plates.length) {
+    const lines = [];
+    for (const m of plates) {
+      if (m.mode === "bearing") {
+        lines.push(line(`Bearing, ${m.plate}`, m.basis === "direct-load allowable" ? "R_br,allow keyed" : "R_br,allow = Fbr·D·t", m.capacity !== undefined ? n(m.capacity) : "not evaluated", m.capacity ?? null, u("force")));
+        if (m.status === "ok") lines.push(line(`MS bearing, ${m.plate}`, "R_br,allow / Rs − 1", `${n(m.capacity)} / ${n(m.Rs)} − 1`, m.ms));
+      } else {
+        if (m.e !== undefined) lines.push(line(`Edge distance along ${m.bearsTowards}, ${m.plate}`, "e (ray to the plate edge)", "", m.e, u("length")));
+        if (m.status === "ok") {
+          lines.push(line(`Tear-out capacity, ${m.plate}`, "2·t·(e − D/2)·Fsu", "", m.capacity, u("force")));
+          lines.push(line(`MS tear-out, ${m.plate}`, "capacity / Rs − 1", `${n(m.capacity)} / ${n(m.Rs)} − 1`, m.ms));
+        }
+      }
+    }
+    sections.push({ title: "Bearing and tear-out", lines });
+  }
+
+  const it = f.checks.modes.find((m) => m.mode === "interaction");
+  const itLines = [];
+  if (it.status === "not-evaluated") itLines.push(line("Interaction", "not evaluated", `no allowable entered: ${it.missing.join(", ")}`, null));
+  else if (it.Rs === null) itLines.push(line("Interaction", "not computed", it.reason || "", null));
+  else {
+    itLines.push(line("IF(1)", `(Rs/Fs)^a + (Rt/Ft)^b`, `(${n(it.Rs)}/${n(it.Fs)})^${n(it.a)} + (${n(it.Rt)}/${n(it.Ft)})^${n(it.b)}`, it.IF1));
+    if (it.status === "ok") {
+      itLines.push(line("k*", "IF(k*) = 1, bracketed Brent", `${it.iterations} iterations`, it.kStar));
+      itLines.push(line("MS interaction", "k* − 1", `${n(it.kStar)} − 1`, it.ms));
+    } else {
+      itLines.push(line("MS interaction", it.status, it.status === "unloaded" ? "no load on this fastener" : "MS not computed", it.ms));
+    }
+  }
+  if (f.checks.governing) itLines.push(line("Governing MS", `minimum across modes: ${f.checks.governing.label}`, "", f.checks.governing.ms));
+  sections.push({ title: `Interaction (${result.designBasis} basis)`, lines: itLines });
+
+  return { id: f.id, governing: id === traceFastenerId(result), sections };
+}
+return { traceFastenerId, buildTrace };
+})();
+
+/* ---- core/meta.mjs ---- */
+const __m17 = (() => {
+/* Tool identity and the conventions every report repeats. */
+
+const TOOL_NAME = "Fastener Pattern CG Tracker";
+const TOOL_VERSION = "0.6.0-m6";
+const MILESTONE = "M6";
+
+const CONVENTIONS = [
+  "Right-handed axes: x right, y up, z toward the viewer.",
+  "The faying surface is the plane z = 0; fasteners are located by (x, y) and z is the fastener axis.",
+  "Positive Fz is tension: it pulls the loaded plate away from the other plate.",
+  "Moments follow the right-hand rule about each axis; positive Mz is counter-clockwise viewed from +z.",
+  "The origin is a user-defined datum.",
+];
+
+const ASSUMPTIONS = [
+  "Headline CG is the shear centroid Cs; J is about Cs; Ixx, Iyy and Ixy are about the axial centroid Ca.",
+  "Elastic in-plane shear: rigid plate rotating about Cs, fasteners sharing load in proportion to ks.",
+  "Axial method (a): rigid plate with the neutral axis through Ca; the joint is assumed to stay clamped (W-005). Unloading fasteners are shown as computed.",
+  "Section properties are in length² × stiffness weight.",
+  "Prying (T-stub, keyed B and Fp) acts on positive external tension only, using the loaded plate's thickness t and flange strength Fp; a ≤ 1.25·b. A manual factor f replaces it with a bolt tension f·T (W-012).",
+  "Preload: F_b = max(P_max + φ·T, T) + Q; clamp force P_min − (1 − φ)·T; separation load P_min/(1 − φ). Prying Q is added to the bolt load (conservative). Preload does not scale with the load multiplier k. Friction slip is not evaluated (N-005).",
+  "Plates are axis-aligned rectangles (up to two). Every fastener passes through every plate. Bearing R = Fbr·D·t (or a direct-load allowable); tear-out capacity 2·t·(e − D/2)·Fsu with e cast along the bearing direction: −R in the loaded plate, +R in the other plate.",
+  "Axial method (b) uses a plate edge as the neutral axis with tension-only fasteners; v1 requires zero moment about the axis perpendicular to the edge (E-012), reduced to the projection of Ca onto the edge.",
+  "ICR (in-plane shear only, ks ignored): Crawford-Kulak or elastic-perfectly-plastic response, governing fastener at Δmax, ICR searched on the line through the Rult-weighted centroid (ks-independent) perpendicular to the load (refined off it for asymmetric groups); γ_ult = P_u/|F|; reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling, W-015).",
+  "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
+  "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero external tension (N-006); with preload their bolt load is P_max.",
+];
+return { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS };
+})();
+
+/* ---- core/persist.mjs ---- */
+const __m18 = (() => {
 const { SCHEMA_VERSION, clone, defaultLoad, defaultPlate, defaultProperties, defaultSettings, resolveFastener } = __m2;
 const { UNIT_SYSTEMS, convertPattern, unitLabel } = __m0;
 const { issue } = __m1;
 const { marginText, noMarginSummary } = __m8;
+const { buildTrace, traceFastenerId } = __m16;
+const { ASSUMPTIONS } = __m17;
 /* Persistence (spec section 8): canonical JSON and Markdown, import and export.
  *
  * JSON stores inputs and settings only, exactly as entered, tagged with
@@ -2360,6 +2617,8 @@ const { marginText, noMarginSummary } = __m8;
  * error does not load. The app adopts the file's unit system: nothing is
  * converted on import.
  */
+
+
 
 
 
@@ -2588,7 +2847,7 @@ function mdTable(head, rows) {
 const PRELIMINARY = "Preliminary sizing — verify against the governing specification.";
 
 /* `result` (optional) adds result tables; they are ignored on import. */
-function toMarkdown(pattern, result = null, { version = "", date = "" } = {}) {
+function toMarkdown(pattern, result = null, { version = "", date = "", verification = null, traceId = null } = {}) {
   const u = (kind) => unitLabel(pattern.unitSystem, kind);
   const json = toJSON(pattern);
   const lines = [
@@ -2616,7 +2875,13 @@ function toMarkdown(pattern, result = null, { version = "", date = "" } = {}) {
       ["Fx", pattern.load.Fx, u("force")], ["Fy", pattern.load.Fy, u("force")], ["Fz", pattern.load.Fz, u("force")],
       ["Mx", pattern.load.Mx, u("moment")], ["My", pattern.load.My, u("moment")], ["Mz", pattern.load.Mz, u("moment")],
     ]));
-  if (result) lines.push("", ...resultSections(pattern, result));
+  if (result) lines.push("", ...resultSections(pattern, result), ...traceSection(pattern, result, traceId));
+  if (result) lines.push("", "## Assumptions", "", ...ASSUMPTIONS.map((a) => `- ${a}`));
+  if (result) {
+    lines.push("", "## Verification", "", verification
+      ? `Verification set ${verification.set}: ${verification.passed} pass, ${verification.pending} pending, ${verification.failed} fail; closed-form tolerance ${verification.tol} relative (or the stated ± where the specification rounds).${version ? ` Tool ${version}.` : ""}`
+      : "Verification not run for this export.", "", `*${PRELIMINARY}*`);
+  }
   lines.push("", "## Exact inputs", "",
     "Import reads this block. Editing it by hand makes import fall back to the tables above, and settings and defaults then revert.", "",
     `<!-- fastener-cg-json checksum=${checksum(json)} -->`, "```json", json.trimEnd(), "```", "");
@@ -2727,6 +2992,19 @@ function tensionSection(result, u) {
     }))];
 }
 
+/* Calculation trace for one fastener (the governing one by default), as tables. */
+function traceSection(pattern, result, traceId) {
+  if (!result.ok) return [];
+  const tr = buildTrace(pattern, result, traceId || traceFastenerId(result), (v) => String(Number(v.toPrecision(10))));
+  if (!tr) return [];
+  const out = ["", `## Calculation trace: ${tr.id}${tr.governing ? " (governing fastener)" : ""}`];
+  for (const s of tr.sections) {
+    out.push("", `### ${s.title}`, "", mdTable(["step", "formula", "substituted", "value", "unit"],
+      s.lines.map((l) => [l.label, l.formula, l.substituted, l.value === null || l.value === undefined ? "" : l.value, l.unit])));
+  }
+  return out;
+}
+
 function issueTable(issues) {
   return ["## Warnings", "", issues.length
     ? mdTable(["id", "tier", "condition", "detail", "fastener or field"], issues.map((i) => [i.id, i.tier, i.title, i.detail, i.fastener || i.field || ""]))
@@ -2832,7 +3110,7 @@ return { MAX_PLATES, MIGRATIONS, normalizePattern, toJSON, parseJSON, checksum, 
 })();
 
 /* ---- core/verify.mjs ---- */
-const __m17 = (() => {
+const __m19 = (() => {
 const { examplePattern } = __m2;
 const { solve } = __m12;
 const { solveScale } = __m6;
@@ -2854,7 +3132,7 @@ const { fmt } = __m13;
 
 
 
-const VERIFICATION_SET = "M5";
+const VERIFICATION_SET = "M6 (v1)";
 const REL_TOL = 1e-9;
 
 function pattern(points, load = {}) {
@@ -3447,40 +3725,8 @@ function runVerification(cases = ALL_CASES) {
 return { VERIFICATION_SET, REL_TOL, HAND_CASES, PROPERTY_CASES, REFERENCE_CASES, ALL_CASES, runVerification };
 })();
 
-/* ---- core/meta.mjs ---- */
-const __m18 = (() => {
-/* Tool identity and the conventions every report repeats. */
-
-const TOOL_NAME = "Fastener Pattern CG Tracker";
-const TOOL_VERSION = "0.5.0-m5";
-const MILESTONE = "M5";
-
-const CONVENTIONS = [
-  "Right-handed axes: x right, y up, z toward the viewer.",
-  "The faying surface is the plane z = 0; fasteners are located by (x, y) and z is the fastener axis.",
-  "Positive Fz is tension: it pulls the loaded plate away from the other plate.",
-  "Moments follow the right-hand rule about each axis; positive Mz is counter-clockwise viewed from +z.",
-  "The origin is a user-defined datum.",
-];
-
-const ASSUMPTIONS = [
-  "Headline CG is the shear centroid Cs; J is about Cs; Ixx, Iyy and Ixy are about the axial centroid Ca.",
-  "Elastic in-plane shear: rigid plate rotating about Cs, fasteners sharing load in proportion to ks.",
-  "Axial method (a): rigid plate with the neutral axis through Ca; the joint is assumed to stay clamped (W-005). Unloading fasteners are shown as computed.",
-  "Section properties are in length² × stiffness weight.",
-  "Prying (T-stub, keyed B and Fp) acts on positive external tension only, using the loaded plate's thickness t and flange strength Fp; a ≤ 1.25·b. A manual factor f replaces it with a bolt tension f·T (W-012).",
-  "Preload: F_b = max(P_max + φ·T, T) + Q; clamp force P_min − (1 − φ)·T; separation load P_min/(1 − φ). Prying Q is added to the bolt load (conservative). Preload does not scale with the load multiplier k. Friction slip is not evaluated (N-005).",
-  "Plates are axis-aligned rectangles (up to two). Every fastener passes through every plate. Bearing R = Fbr·D·t (or a direct-load allowable); tear-out capacity 2·t·(e − D/2)·Fsu with e cast along the bearing direction: −R in the loaded plate, +R in the other plate.",
-  "Axial method (b) uses a plate edge as the neutral axis with tension-only fasteners; v1 requires zero moment about the axis perpendicular to the edge (E-012), reduced to the projection of Ca onto the edge.",
-  "ICR (in-plane shear only, ks ignored): Crawford-Kulak or elastic-perfectly-plastic response, governing fastener at Δmax, ICR searched on the line through the Rult-weighted centroid (ks-independent) perpendicular to the load (refined off it for asymmetric groups); γ_ult = P_u/|F|; reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling, W-015).",
-  "All allowables are keyed in by the user; the tool ships none. A check whose allowable is not entered is not evaluated and shows no margin.",
-  "Shear-tension interaction IF(k) = (k·Rs/Fs)^a + (k·Rt/Ft)^b with separate exponents; MS = k* − 1 at IF(k*) = 1 (exact load scale factor, bracketed Brent). Unloading fasteners enter with zero external tension (N-006); with preload their bolt load is P_max.",
-];
-return { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS };
-})();
-
 /* ---- ui/canvas.mjs ---- */
-const __m19 = (() => {
+const __m20 = (() => {
 const { gridLines } = __m14;
 /* Canvas painter and pointer handling. All geometry comes from the scene
  * model; this file only turns its primitives into Canvas 2D calls. */
@@ -3647,11 +3893,301 @@ function hitTest(scene, pt) {
   if (scene.load && Math.hypot(scene.load.screen.x - pt.x, scene.load.screen.y - pt.y) <= 12) return { kind: "load" };
   return null;
 }
-return { palette, centroidPath, paint, hitTest };
+
+/* Legend strip for the PNG export, below the diagram (top edge `y0`). */
+function paintLegend(ctx, scene, colours, y0) {
+  const col = scene.width / 2;
+  ctx.font = `400 11px ${colours.mono || "monospace"}`;
+  scene.legend.forEach((e, i) => {
+    const x = 12 + (i % 2) * col, y = y0 + 16 + Math.floor(i / 2) * 22, c = colours[e.colour] || colours.fg;
+    ctx.strokeStyle = c; ctx.fillStyle = c; ctx.lineWidth = 2;
+    if (e.shape === "arrow") arrow(ctx, { x, y: y - 4 }, { x: x + 20, y: y - 4 }, c, 2, 7);
+    else if (e.shape === "cross") { ctx.beginPath(); ctx.moveTo(x + 4, y - 9); ctx.lineTo(x + 14, y + 1); ctx.moveTo(x + 14, y - 9); ctx.lineTo(x + 4, y + 1); ctx.stroke(); }
+    else if (e.shape === "edge") { ctx.setLineDash([6, 3]); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, y - 4); ctx.lineTo(x + 20, y - 4); ctx.stroke(); ctx.setLineDash([]); }
+    else if (e.shape === "icr") { ctx.beginPath(); ctx.arc(x + 9, y - 4, 6, 0, 2 * Math.PI); ctx.stroke(); }
+    else if (e.shape === "disc" || e.shape === "dashed") {
+      ctx.beginPath(); ctx.arc(x + 9, y - 4, 5.5, 0, 2 * Math.PI);
+      if (e.shape === "disc") { ctx.globalAlpha = 0.35; ctx.fill(); ctx.globalAlpha = 1; } else ctx.setLineDash([3, 2]);
+      ctx.strokeStyle = colours.fg; ctx.lineWidth = 1.5; ctx.stroke(); ctx.setLineDash([]);
+    }
+    else {
+      centroidPath(ctx, e.shape, x + 9, y - 4, e.shape === "ring" ? 7 : e.shape === "diamond" ? 6 : 4);
+      if (e.shape === "square") ctx.fill(); else ctx.stroke();
+    }
+    ctx.fillStyle = colours.muted;
+    ctx.fillText(e.label, x + 26, y);
+  });
+}
+
+/* Height of the PNG legend strip for `scene`. */
+const legendHeight = (scene) => 22 * Math.ceil(scene.legend.length / 2) + 8;
+return { palette, centroidPath, paint, hitTest, paintLegend, legendHeight };
+})();
+
+/* ---- core/svgpaint.mjs ---- */
+const __m21 = (() => {
+/* SVG painter for the print (PDF) report. Like the canvas painter it only
+ * turns scene-model primitives into drawing calls; every coordinate comes
+ * from the scene, so geometry cannot differ between the two. Elements carry
+ * data-role attributes so the consistency test can read them back. */
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const r3 = (v) => Number(v.toFixed(3));
+
+const PRINT_COLOURS = {
+  bg: "#ffffff", fg: "#1d1d1f", muted: "#6e6e73", faint: "#a1a1a6", grid: "#e8e8ed", surface: "#f5f5f7",
+  shear: "#2a78d6", axial: "#eb6834", area: "#1baf7a", load: "#8e44ad", reaction: "#1d1d1f", tension: "#eb6834", focus: "#0071e3",
+};
+
+function arrow(from, to, colour, width, head, attrs) {
+  const dx = to.x - from.x, dy = to.y - from.y, len = Math.hypot(dx, dy);
+  if (len < 1) return "";
+  const ux = dx / len, uy = dy / len;
+  const bx = to.x - ux * head, by = to.y - uy * head;
+  const p1 = `${r3(bx - uy * head * 0.45)},${r3(by + ux * head * 0.45)}`, p2 = `${r3(bx + uy * head * 0.45)},${r3(by - ux * head * 0.45)}`;
+  return `<g ${attrs}><line x1="${r3(from.x)}" y1="${r3(from.y)}" x2="${r3(to.x - ux * head * 0.8)}" y2="${r3(to.y - uy * head * 0.8)}" stroke="${colour}" stroke-width="${width}"/>`
+    + `<polygon points="${r3(to.x)},${r3(to.y)} ${p1} ${p2}" fill="${colour}"/></g>`;
+}
+
+/* `tagged` adds the data attributes the consistency test reads (off for legend swatches). */
+function centroidShape(c, colour, tagged = true) {
+  const { x, y } = c.screen, s = c.size;
+  const attrs = tagged ? `data-role="centroid" data-key="${c.key}" data-x="${r3(x)}" data-y="${r3(y)}"` : `data-legend="${c.key}"`;
+  if (c.shape === "ring") {
+    return `<g ${attrs} stroke="${colour}" stroke-width="2" fill="none"><circle cx="${r3(x)}" cy="${r3(y)}" r="${s}"/>`
+      + `<line x1="${r3(x - s * 1.5)}" y1="${r3(y)}" x2="${r3(x + s * 1.5)}" y2="${r3(y)}"/><line x1="${r3(x)}" y1="${r3(y - s * 1.5)}" x2="${r3(x)}" y2="${r3(y + s * 1.5)}"/></g>`;
+  }
+  if (c.shape === "diamond") {
+    return `<path ${attrs} d="M${r3(x)} ${r3(y - s)}L${r3(x + s)} ${r3(y)}L${r3(x)} ${r3(y + s)}L${r3(x - s)} ${r3(y)}Z" fill="none" stroke="${colour}" stroke-width="2"/>`;
+  }
+  return `<rect ${attrs} x="${r3(x - s)}" y="${r3(y - s)}" width="${2 * s}" height="${2 * s}" fill="${colour}"/>`;
+}
+
+/* The annotated pattern diagram as a standalone SVG string (width × height from the scene). */
+function paintSvg(scene, colours = PRINT_COLOURS, { legend = true } = {}) {
+  const { width, height } = scene;
+  const legendH = legend ? 22 * Math.ceil(scene.legend.length / 2) + 8 : 0;
+  const out = [];
+  out.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height + legendH}" width="${width}" height="${height + legendH}" font-family="SFMono-Regular, Consolas, monospace" font-size="11" role="img" aria-label="Fastener pattern diagram">`);
+  out.push(`<rect width="${width}" height="${height + legendH}" fill="${colours.bg}"/>`);
+  const { axes } = scene;
+  out.push(`<g data-role="axes" stroke="${colours.faint}" stroke-dasharray="4 4"><line x1="0" y1="${r3(axes.origin.y)}" x2="${width}" y2="${r3(axes.origin.y)}"/><line x1="${r3(axes.origin.x)}" y1="0" x2="${r3(axes.origin.x)}" y2="${height}"/></g>`);
+  out.push(arrow(axes.x.from, axes.x.to, colours.muted, 1.4, 7, 'data-role="axis-x"'));
+  out.push(arrow(axes.y.from, axes.y.to, colours.muted, 1.4, 7, 'data-role="axis-y"'));
+  out.push(`<circle cx="${r3(axes.origin.x)}" cy="${r3(axes.origin.y)}" r="5" fill="none" stroke="${colours.muted}"/><circle cx="${r3(axes.origin.x)}" cy="${r3(axes.origin.y)}" r="1.6" fill="${colours.muted}"/>`);
+  out.push(`<g fill="${colours.muted}"><text x="${r3(axes.x.to.x + 4)}" y="${r3(axes.x.to.y + 4)}">x</text><text x="${r3(axes.y.to.x + 5)}" y="${r3(axes.y.to.y + 4)}">y</text><text x="${r3(axes.origin.x - 22)}" y="${r3(axes.origin.y + 16)}">z⊙</text></g>`);
+
+  scene.plates.forEach((p, i) => {
+    out.push(`<rect data-role="plate" data-id="${esc(p.id)}" x="${r3(p.screen.x)}" y="${r3(p.screen.y)}" width="${r3(p.screen.w)}" height="${r3(p.screen.h)}" fill="${colours.surface}" fill-opacity=".5" stroke="${colours.muted}" stroke-width="1.2"${i > 0 ? ' stroke-dasharray="6 3"' : ""}/>`);
+    out.push(i === 0
+      ? `<text x="${r3(p.screen.x + 5)}" y="${r3(p.screen.y + 14)}" fill="${colours.muted}" font-weight="600">${esc(p.label)}</text>`
+      : `<text x="${r3(p.screen.x + p.screen.w - 5)}" y="${r3(p.screen.y + p.screen.h - 5)}" text-anchor="end" fill="${colours.muted}" font-weight="600">${esc(p.label)}</text>`);
+  });
+  if (scene.contactEdge) {
+    const { from, to } = scene.contactEdge.screen;
+    out.push(`<line data-role="contact-edge" x1="${r3(from.x)}" y1="${r3(from.y)}" x2="${r3(to.x)}" y2="${r3(to.y)}" stroke="${colours.axial}" stroke-width="4" stroke-dasharray="10 5"/>`);
+    out.push(`<text x="${r3(Math.min(from.x, to.x) + 6)}" y="${r3(Math.max(from.y, to.y) + 14)}" fill="${colours.axial}" font-weight="600">${esc(scene.contactEdge.label)}</text>`);
+  }
+  for (const m of scene.markers) {
+    out.push(`<circle data-role="fastener" data-id="${esc(m.id)}" cx="${r3(m.screen.x)}" cy="${r3(m.screen.y)}" r="${r3(m.radiusPx)}" fill="${m.tension ? colours.tension : colours.bg}" fill-opacity="${m.tension ? 0.35 : 1}" stroke="${colours.fg}" stroke-width="1.6"${m.unloading ? ' stroke-dasharray="3 2"' : ""}/>`);
+    out.push(`<text x="${r3(m.screen.x + m.radiusPx + 3)}" y="${r3(m.screen.y - m.radiusPx - 1)}" fill="${colours.fg}">${esc(m.label)}</text>`);
+  }
+  for (const v of scene.vectors.filter((q) => q.kind === "reaction")) {
+    out.push(arrow(v.screen.from, v.screen.to, colours.reaction, 1.5, 7, `data-role="vector" data-kind="reaction" data-id="${esc(v.id)}" data-x1="${r3(v.screen.from.x)}" data-y1="${r3(v.screen.from.y)}" data-x2="${r3(v.screen.to.x)}" data-y2="${r3(v.screen.to.y)}"`));
+  }
+  for (const c of [...scene.centroids].sort((a, b) => b.size - a.size)) out.push(centroidShape(c, colours[c.colour]));
+  if (scene.icr) {
+    const { x, y } = scene.icr.screen;
+    out.push(`<g data-role="icr" data-x="${r3(x)}" data-y="${r3(y)}" stroke="${colours.load}" stroke-width="2" fill="none"><circle cx="${r3(x)}" cy="${r3(y)}" r="7"/><line x1="${r3(x - 4)}" y1="${r3(y)}" x2="${r3(x + 4)}" y2="${r3(y)}"/><line x1="${r3(x)}" y1="${r3(y - 4)}" x2="${r3(x)}" y2="${r3(y + 4)}"/></g>`);
+    out.push(`<text x="${r3(x + 10)}" y="${r3(y - 8)}" fill="${colours.load}" font-weight="600">${esc(scene.icr.label)}</text>`);
+  }
+  if (scene.load) {
+    const { x, y } = scene.load.screen;
+    out.push(`<g data-role="load" data-x="${r3(x)}" data-y="${r3(y)}" stroke="${colours.load}" stroke-width="2"><line x1="${r3(x - 7)}" y1="${r3(y - 7)}" x2="${r3(x + 7)}" y2="${r3(y + 7)}"/><line x1="${r3(x + 7)}" y1="${r3(y - 7)}" x2="${r3(x - 7)}" y2="${r3(y + 7)}"/></g>`);
+    out.push(`<text x="${r3(x + 10)}" y="${r3(y + 18)}" fill="${colours.load}" font-weight="600">${esc(scene.load.label)}</text>`);
+  }
+  for (const v of scene.vectors.filter((q) => q.kind === "applied")) {
+    out.push(arrow(v.screen.from, v.screen.to, colours.load, 2.2, 10, `data-role="vector" data-kind="applied" data-id="${esc(v.id)}" data-x1="${r3(v.screen.from.x)}" data-y1="${r3(v.screen.from.y)}" data-x2="${r3(v.screen.to.x)}" data-y2="${r3(v.screen.to.y)}"`));
+    out.push(`<text x="${r3(v.screen.to.x + 6)}" y="${r3(v.screen.to.y - 6)}" fill="${colours.load}" font-weight="600">${esc(v.label)}</text>`);
+  }
+  for (const m of scene.moments) {
+    const { x, y } = m.screen, r = m.radiusPx;
+    const a0 = 0.6, a1 = m.ccw ? a0 - 1.5 * Math.PI : a0 + 1.5 * Math.PI;
+    const p0 = { x: x + r * Math.cos(a0), y: y + r * Math.sin(a0) }, p1 = { x: x + r * Math.cos(a1), y: y + r * Math.sin(a1) };
+    out.push(`<path data-role="moment" d="M${r3(p0.x)} ${r3(p0.y)}A${r} ${r} 0 1 ${m.ccw ? 0 : 1} ${r3(p1.x)} ${r3(p1.y)}" fill="none" stroke="${colours.load}" stroke-width="1.8"/>`);
+  }
+  const b = scene.scaleBar;
+  out.push(`<g data-role="scale-bar" data-px="${r3(b.px)}"><path d="M${r3(b.screen.x)} ${r3(b.screen.y - 4)}V${r3(b.screen.y)}H${r3(b.screen.x + b.px)}V${r3(b.screen.y - 4)}" fill="none" stroke="${colours.fg}" stroke-width="1.5"/><text x="${r3(b.screen.x + b.px + 6)}" y="${r3(b.screen.y + 3)}" fill="${colours.fg}">${esc(b.label)}</text></g>`);
+
+  if (legend) {
+    out.push(`<g data-role="legend" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="${colours.muted}">`);
+    scene.legend.forEach((e, i) => {
+      const x = 12 + (i % 2) * (width / 2), y = height + 16 + Math.floor(i / 2) * 22;
+      out.push(legendIcon(e, x, y - 4, colours) + `<text x="${r3(x + 26)}" y="${r3(y)}">${esc(e.label)}</text>`);
+    });
+    out.push("</g>");
+  }
+  out.push("</svg>");
+  return out.join("");
+}
+
+function legendIcon(e, x, y, colours) {
+  const c = colours[e.colour] || colours.fg;
+  if (e.shape === "arrow") return arrow({ x, y }, { x: x + 20, y }, c, 2, 7, "");
+  if (e.shape === "cross") return `<path d="M${x + 4} ${y - 5}L${x + 14} ${y + 5}M${x + 14} ${y - 5}L${x + 4} ${y + 5}" stroke="${c}" stroke-width="2"/>`;
+  if (e.shape === "edge") return `<line x1="${x}" y1="${y}" x2="${x + 20}" y2="${y}" stroke="${c}" stroke-width="3" stroke-dasharray="6 3"/>`;
+  if (e.shape === "disc") return `<circle cx="${x + 9}" cy="${y}" r="5.5" fill="${c}" fill-opacity=".35" stroke="${colours.fg}" stroke-width="1.5"/>`;
+  if (e.shape === "dashed") return `<circle cx="${x + 9}" cy="${y}" r="5.5" fill="none" stroke="${colours.fg}" stroke-width="1.5" stroke-dasharray="3 2"/>`;
+  if (e.shape === "icr") return `<circle cx="${x + 9}" cy="${y}" r="6" fill="none" stroke="${c}" stroke-width="2"/>`;
+  return centroidShape({ key: e.key, shape: e.shape, size: e.shape === "ring" ? 7 : e.shape === "diamond" ? 6 : 4, screen: { x: x + 9, y } }, c, false);
+}
+return { PRINT_COLOURS, centroidShape, paintSvg };
+})();
+
+/* ---- core/report.mjs ---- */
+const __m22 = (() => {
+const { unitLabel } = __m0;
+const { resolveFastener } = __m2;
+const { fmt } = __m13;
+const { buildScene } = __m14;
+const { paintSvg } = __m21;
+const { buildTrace, traceFastenerId } = __m16;
+const { marginText } = __m8;
+const { PRELIMINARY } = __m18;
+const { TOOL_NAME, TOOL_VERSION, CONVENTIONS, ASSUMPTIONS } = __m17;
+/* Full report (spec section 9) for browser print / Save as PDF.
+ *
+ * Carries the tool version, the verification set and tolerance, the full
+ * warnings list and the "Preliminary sizing" line, and lays out: pattern
+ * name and date, units and sign convention, the diagram (inline SVG from
+ * the shared scene model), inputs, reduced load, the three centroids, J,
+ * Ixx, Iyy, Ixy, the per-fastener table, elastic vs ICR, margins per mode,
+ * the calculation trace, warnings and assumptions. Each section is a
+ * <section class="r-sec"> that the print stylesheet keeps on one page.
+ */
+
+
+
+
+
+
+
+
+
+
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function table(head, rows, numeric = []) {
+  return `<table><thead><tr>${head.map((h, i) => `<th${numeric.includes(i) ? ' class="num"' : ""}>${h}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c, i) => `<td${numeric.includes(i) ? ' class="num"' : ""}>${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+}
+const section = (id, title, body) => `<section class="r-sec" data-section="${id}"><h2>${esc(title)}</h2>${body}</section>`;
+
+const SIGN_CONVENTION_SVG = `<svg width="112" height="104" viewBox="0 0 112 104" role="img" aria-label="Right-handed axes: x right, y up, z toward the viewer; positive Mz counter-clockwise"><defs><marker id="rah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1d1d1f"/></marker></defs><g stroke="#1d1d1f" fill="none" stroke-width="1.6"><line x1="30" y1="74" x2="96" y2="74" marker-end="url(#rah)"/><line x1="30" y1="74" x2="30" y2="10" marker-end="url(#rah)"/><circle cx="30" cy="74" r="6"/><path d="M58 44 A16 16 0 1 1 74 60" marker-end="url(#rah)" stroke="#8e44ad"/></g><circle cx="30" cy="74" r="1.8" fill="#1d1d1f"/><g font-family="monospace" font-size="11" fill="#1d1d1f"><text x="98" y="92" text-anchor="end">x</text><text x="38" y="14">y</text><text x="8" y="94">z</text><text x="76" y="30" fill="#8e44ad">+Mz</text></g></svg>`;
+
+/*
+ * opts: { date, precision, verification (runVerification() summary), traceId, diagram: { width, height } }.
+ * Returns the report body HTML (no <html> wrapper).
+ */
+function reportHtml(pattern, result, opts = {}) {
+  const p = opts.precision ?? pattern.settings?.precision ?? 4;
+  const f = (v, scale = 0) => fmt(v, p, scale);
+  const u = (k) => unitLabel(pattern.unitSystem, k);
+  const L = u("length"), F = u("force"), M = u("moment"), S = u("section");
+  const v = opts.verification;
+  const verifyLine = v
+    ? `Verification set ${esc(v.set)}: ${v.passed} pass, ${v.pending} pending, ${v.failed} fail; closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds).`
+    : "Verification not run.";
+  const out = [];
+  out.push(`<header class="r-head"><p class="r-eyebrow">${esc(TOOL_NAME)} · ${esc(TOOL_VERSION)}</p><h1>${esc(pattern.name)}</h1>
+    <p>${esc(opts.date || "")} · unit system ${esc(pattern.unitSystem)} (${L}, ${F}, ${M})</p>
+    <p class="r-prelim"><b>${esc(PRELIMINARY)}</b></p></header>`);
+
+  out.push(section("conventions", "Units and sign convention", `<div class="r-conv">${SIGN_CONVENTION_SVG}<ul>${CONVENTIONS.map((c) => `<li>${esc(c)}</li>`).join("")}<li>Lengths ${L}, forces ${F}, moments ${M}, stresses ${u("stress")}, section properties ${S} (× weight).</li></ul></div>`));
+
+  const dia = opts.diagram || { width: 680, height: 420 };
+  const scene = buildScene(pattern, result, { width: dia.width, height: dia.height });
+  out.push(section("diagram", "Pattern diagram", `<div class="r-diagram">${paintSvg(scene)}</div>`));
+
+  const resolved = pattern.fasteners.map((q) => resolveFastener(pattern, q));
+  const ov = (q, k) => (q.overrides && k in q.overrides ? " *" : "");
+  out.push(section("inputs", "Inputs", `
+    <h3>Fasteners (* = per-fastener override)</h3>
+    ${table(["id", "label", `x (${L})`, `y (${L})`, `A (${u("area")})`, "ks", "ka", `D (${L})`, `Fs (${F})`, `Ft (${F})`],
+      resolved.map((q, i) => { const o = pattern.fasteners[i]; return [esc(q.id), esc(q.label), f(q.x), f(q.y), f(q.area) + ov(o, "area"), f(q.ks) + ov(o, "ks"), f(q.ka) + ov(o, "ka"), f(q.diameter) + ov(o, "diameter"), f(q.shearAllowable) + ov(o, "shearAllowable"), f(q.tensionAllowable) + ov(o, "tensionAllowable")]; }),
+      [2, 3, 4, 5, 6, 7, 8, 9])}
+    <h3>Plates</h3>
+    ${pattern.plates.length ? table(["id", `t (${L})`, `x (${L})`, `y (${L})`, `Fbr (${u("stress")})`, `bearing direct (${F})`, `Fsu (${u("stress")})`, "min e/D", `Fp (${u("stress")})`],
+      pattern.plates.map((pl) => [esc(pl.id) + (pl.id === pattern.load.appliedPlate ? " (loaded)" : ""), f(pl.thickness), `${f(pl.xMin)} to ${f(pl.xMax)}`, `${f(pl.yMin)} to ${f(pl.yMax)}`, f(pl.bearingAllowable), f(pl.bearingLoadAllowable), f(pl.shearOutAllowable), f(pl.minEdgeRatio), f(pl.flangeStrength)]), [1, 4, 5, 6, 7, 8]) : "<p>No plates.</p>"}
+    <h3>Load and settings</h3>
+    ${table(["item", "value"], [
+      ["Load point P", `(${f(pattern.load.point.x)}, ${f(pattern.load.point.y)}, ${f(pattern.load.point.z)}) ${L}`],
+      ["Forces", `Fx ${f(pattern.load.Fx)}, Fy ${f(pattern.load.Fy)}, Fz ${f(pattern.load.Fz)} ${F}`],
+      ["Moments", `Mx ${f(pattern.load.Mx)}, My ${f(pattern.load.My)}, Mz ${f(pattern.load.Mz)} ${M}`],
+      ["Axial method", pattern.settings.axialMethod === "contact-edge" ? `(b) contact edge: ${esc(pattern.settings.contactEdge?.plateId)} ${esc(pattern.settings.contactEdge?.edge)}` : "(a) centroid neutral axis"],
+      ["Design basis", esc(pattern.settings.designBasis || "elastic")],
+      ["Interaction exponents", `a = ${f(pattern.settings.interaction.a)}, b = ${f(pattern.settings.interaction.b)}`],
+      ["Prying", pattern.settings.prying?.enabled ? "on" : "off"], ["Preload", pattern.settings.preload?.enabled ? "on" : "off"],
+      ["ICR", pattern.settings.icr?.enabled ? `on (${esc(pattern.settings.icr.model)})` : "off"],
+    ])}`));
+
+  if (!result || !result.ok) {
+    out.push(section("results", "Results", "<p>No results: the pattern has errors (listed under Warnings).</p>"));
+  } else {
+    const pr = result.props, red = result.reduced;
+    out.push(section("reduced", "Reduced load", table(["component", "value", "unit", "reduced to"], [
+      ["Fx", f(red.Fx), F, ""], ["Fy", f(red.Fy), F, ""], ["Fz", f(red.Fz), F, ""],
+      ["Mz,s", f(red.shear.Mz), M, `Cs (${f(red.shear.Q.x)}, ${f(red.shear.Q.y)}, 0)`],
+      ["Mx,a", f(red.axial.Mx), M, `Ca (${f(red.axial.Q.x)}, ${f(red.axial.Q.y)}, 0)`],
+      ["My,a", f(red.axial.My), M, `Ca (${f(red.axial.Q.x)}, ${f(red.axial.Q.y)}, 0)`],
+    ], [1])));
+    out.push(section("properties", "Centroids and section properties", `
+      ${table(["centroid", `x (${L})`, `y (${L})`, "weight", "used for", ""], pr.centroids.map((c) => [`${esc(c.name)} ${c.key}`, f(c.x, pr.extent), f(c.y, pr.extent), c.weight, esc(c.usedFor), c.coincidentWith.length ? `coincident with ${c.coincidentWith.join(", ")}` : ""]), [1, 2])}
+      ${table(["property", "value", "unit"], [["J (about Cs)", f(pr.J), S], ["Ixx (about Ca)", f(pr.Ixx), S], ["Iyy (about Ca)", f(pr.Iyy), S], ["Ixy (about Ca)", f(pr.Ixy), S],
+        ["I₁", f(pr.principal.I1), S], ["I₂", f(pr.principal.I2), S], ["θp (CCW from +x to the I₁ axis)", f(pr.principal.thetaDeg, 360), "°"]], [1])}`));
+    const scale = Math.max(...result.fasteners.map((q) => Math.max(q.shear.Rs, Math.abs(q.axial.T))), 1);
+    out.push(section("fasteners", "Per-fastener loads", table(
+      ["id", `Rd, direct (${F})`, `Rtors, torsional (${F})`, `Rs (${F})`, `T (${F})`, `Q (${F})`, `F_b (${F})`, "joint", "governing MS", "mode"],
+      result.fasteners.map((q) => {
+        const t = q.checks.tension, g = q.checks.governing;
+        return [esc(q.id) + (result.critical?.id === q.id ? " (critical)" : ""), f(Math.hypot(q.shear.Rdx, q.shear.Rdy), scale), f(Math.hypot(q.shear.Rtx, q.shear.Rty), scale), f(q.shear.Rs, scale),
+          `${f(q.axial.T, scale)}${q.axial.unloading ? " unloading" : ""}`, f(t.Q, scale), f(t.Fb, scale), esc(q.checks.clamp.status),
+          g ? (Number.isFinite(g.ms) ? f(g.ms) : "∞") : "not evaluated", g ? esc(g.label) : ""];
+      }), [1, 2, 3, 4, 5, 6, 8])));
+    if (result.icr) {
+      const ic = result.icr;
+      out.push(section("icr", "Elastic vs ICR", ic.status !== "converged"
+        ? `<p>ICR not converged (W-014): ${esc(ic.reason)}. No ICR numbers are reported; the elastic result remains.</p>`
+        : `<p>${esc(ic.modelLabel)}; ICR ${ic.icr ? `at (${f(ic.icr.x)}, ${f(ic.icr.y)}) ${L}` : "at infinity (translation)"}; γ_ult = ${f(ic.gamma)}; ICR margin γ_ult − 1 = ${f(ic.margin)} (ultimate capacity, not comparable to allowable MS). Reactions at the applied load are the ultimate reactions ÷ γ_ult (proportional scaling convention). Checks use the <b>${esc(result.designBasis)}</b> basis.</p>
+          ${table(["id", `elastic Rs (${F})`, `ICR Rs at load (${F})`, "change"], result.comparison.rows.map((r) => [esc(r.id), f(r.elastic), f(r.icr), r.elastic > 0 ? `${f((r.icr / r.elastic - 1) * 100, 100)}%` : "—"]), [1, 2, 3])}
+          <p>Critical-fastener load: elastic ${esc(result.comparison.elasticCritical.id)} ${f(result.comparison.elasticCritical.Rs)} ${F} vs ICR ${esc(result.comparison.icrCritical.id)} ${f(result.comparison.icrCritical.Rs)} ${F}.</p>`));
+    }
+    const modeRows = result.fasteners.flatMap((q) => q.checks.modes.map((m) => [esc(q.id), esc(m.label), m.status === "ok" ? f(m.ms) : esc(marginText(m)), m.mode === "interaction" && m.IF1 !== undefined && m.status !== "not-evaluated" && m.Rs !== null ? f(m.IF1) : ""]));
+    out.push(section("margins", `Margins of safety per mode (${result.designBasis} basis)`, `
+      <p>${result.critical ? `Critical fastener <b>${esc(result.critical.id)}</b>: governing MS ${f(result.critical.ms)} (${esc(result.critical.label)}).` : "No finite margin: see the per-mode statuses."}
+      MS for the interaction is the exact load scale factor k* − 1 with IF(k*) = 1${result.interaction.a !== 1 || result.interaction.b !== 1 ? " (not the 1/IF − 1 convention; W-006)" : ""}. A mode without its allowable is not evaluated.</p>
+      ${table(["id", "mode", "MS", "IF(1)"], modeRows, [2, 3])}`));
+    const tid = opts.traceId || traceFastenerId(result);
+    const tr = buildTrace(pattern, result, tid, (x) => fmt(x, Math.max(p, 6)));
+    if (tr) {
+      out.push(section("trace", `Calculation trace — ${tr.id}${tr.governing ? " (governing fastener)" : ""}`,
+        tr.sections.map((s) => `<h3>${esc(s.title)}</h3>${table(["step", "formula", "substituted", "value", "unit"], s.lines.map((l) => [esc(l.label), esc(l.formula), esc(l.substituted), typeof l.value === "number" ? fmt(l.value, Math.max(p, 6)) : esc(l.value ?? "—"), esc(l.unit)]), [3])}`).join("")));
+    }
+  }
+
+  const issues = result ? result.issues : [];
+  out.push(section("warnings", "Warnings", issues.length
+    ? table(["id", "tier", "condition", "detail", "fastener or field"], issues.map((i) => [i.id, i.tier, esc(i.title), esc(i.detail), esc((i.fasteners && i.fasteners.length ? i.fasteners.join(", ") : "") || i.field || "")]))
+    : "<p>None.</p>"));
+  out.push(section("assumptions", "Assumptions", `<ul>${ASSUMPTIONS.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>`));
+  out.push(`<footer class="r-foot"><p>${esc(TOOL_NAME)} ${esc(TOOL_VERSION)} · ${esc(verifyLine)}</p><p><b>${esc(PRELIMINARY)}</b></p></footer>`);
+  return out.join("\n");
+}
+return { SIGN_CONVENTION_SVG, reportHtml };
 })();
 
 /* ---- ui/storage.mjs ---- */
-const __m20 = (() => {
+const __m23 = (() => {
 /* Browser persistence (spec 8.1): a named library and a separately
  * autosaved working pattern, both in localStorage. Every access is guarded:
  * storage can be missing (private windows) or full. */
@@ -3725,11 +4261,11 @@ return { LIBRARY_KEY, WORKING_KEY, StorageFullError, readLibrary, writeLibrary, 
 })();
 
 /* ---- ui/webmcp.mjs ---- */
-const __m21 = (() => {
+const __m24 = (() => {
 const { CATALOG } = __m1;
-const { normalizePattern, toJSON } = __m16;
+const { normalizePattern, toJSON } = __m18;
 const { solve } = __m12;
-const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m18;
+const { TOOL_NAME, TOOL_VERSION, MILESTONE, CONVENTIONS, ASSUMPTIONS } = __m17;
 const { UNIT_LABELS } = __m0;
 /* WebMCP tools: let an agent read the page's pattern and run the same
  * solver on any pattern without changing the page. */
@@ -3819,26 +4355,30 @@ return { summarize, registerTools };
 })();
 
 /* ---- ui/app.mjs ---- */
-const __m22 = (() => {
+const __m25 = (() => {
 const { examplePattern, addFastener, clone, defaultPlate } = __m2;
 const { solve } = __m12;
 const { convertPattern, unitLabel, round12, UNIT_SYSTEMS } = __m0;
 const { fmt } = __m13;
 const { buildScene, CENTROID_STYLE } = __m14;
 const { rectangularArray, staggeredRows, boltCircle, mirror } = __m15;
-const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m16;
-const { runVerification } = __m17;
+const { toJSON, toMarkdown, parseJSON, normalizePattern, parsePatternFile } = __m18;
+const { runVerification } = __m19;
 const { sortIssues } = __m1;
 const { marginText, noMarginSummary } = __m8;
 const { PRESETS } = __m6;
 const { preloadFromTorque } = __m7;
 const { suggestContactEdge, EDGES } = __m10;
-const { TOOL_VERSION } = __m18;
-const { paint, palette, hitTest, centroidPath } = __m19;
-const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m20;
-const { registerTools } = __m21;
+const { TOOL_VERSION } = __m17;
+const { paint, palette, hitTest, centroidPath, paintLegend, legendHeight } = __m20;
+const { buildTrace, traceFastenerId } = __m16;
+const { reportHtml } = __m22;
+const { readLibrary, writeLibrary, readWorking, writeWorking, uniqueName, StorageFullError } = __m23;
+const { registerTools } = __m24;
 /* Page controller: state, inputs, table, canvas, results, warnings,
  * library and files. Calculations all come from ../core. */
+
+
 
 
 
@@ -3923,6 +4463,8 @@ function recompute() {
   renderInline();
   renderPresets();
   renderLegend();
+  renderTrace();
+  renderPageSize();
   draw();
   autosave();
 }
@@ -4120,6 +4662,8 @@ function draw() {
 function legendIcon(entry, colours) {
   const c = colours[entry.colour] || colours.fg;
   if (entry.shape === "arrow") return `<svg width="22" height="12" aria-hidden="true"><line x1="1" y1="6" x2="15" y2="6" stroke="${c}" stroke-width="2"/><path d="M21 6L14 2V10z" fill="${c}"/></svg>`;
+  if (entry.shape === "disc") return `<svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="${c}" fill-opacity=".35" stroke="${colours.fg}" stroke-width="1.5"/></svg>`;
+  if (entry.shape === "dashed") return `<svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="${colours.fg}" stroke-width="1.5" stroke-dasharray="3 2"/></svg>`;
   if (entry.shape === "icr") return `<svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="${c}" stroke-width="2"/><path d="M5 8H11M8 5V11" stroke="${c}" stroke-width="2"/></svg>`;
   if (entry.shape === "edge") return `<svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="${c}" stroke-width="3" stroke-dasharray="6 3"/></svg>`;
   if (entry.shape === "cross") return `<svg width="14" height="14" aria-hidden="true"><path d="M2 2L12 12M12 2L2 12" stroke="${c}" stroke-width="2"/></svg>`;
@@ -4136,9 +4680,7 @@ function centroidSvg(key, colour) {
 function renderLegend() {
   const colours = palette(canvas());
   const scene = buildScene(state.pattern, state.result, { width: 100, height: 100 });
-  $("#legend").innerHTML = scene.legend.map((e) => `<li>${legendIcon(e, colours)}<span>${esc(e.label)}</span></li>`).join("")
-    + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="${colours.tension}" fill-opacity=".35" stroke="${colours.fg}" stroke-width="1.5"/></svg><span>Fastener in tension</span></li>`
-    + `<li><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="${colours.fg}" stroke-width="1.5" stroke-dasharray="3 2"/></svg><span>Unloading (clamp-up)</span></li>`;
+  $("#legend").innerHTML = scene.legend.map((e) => `<li>${legendIcon(e, colours)}<span>${esc(e.label)}</span></li>`).join("");
 }
 
 function eventPoint(e) {
@@ -4470,12 +5012,73 @@ function renderPresets() {
   }
 }
 
+/* ---------- calculation trace ---------- */
+
+function renderTrace() {
+  const r = state.result;
+  const pick = $("#trace-fastener");
+  const out = $("#trace");
+  if (!r.ok) {
+    pick.innerHTML = ""; pick.disabled = true;
+    out.innerHTML = `<p class="blocked">No trace: the pattern has errors.</p>`;
+    return;
+  }
+  const gov = traceFastenerId(r);
+  const ids = r.fasteners.map((q) => q.id);
+  const current = ids.includes(state.traceId) ? state.traceId : gov;
+  pick.disabled = false;
+  pick.innerHTML = ids.map((id) => `<option value="${esc(id)}"${id === current ? " selected" : ""}>${esc(id)}${id === gov ? " (governing)" : ""}</option>`).join("");
+  const tr = buildTrace(state.pattern, r, current, (v) => fmt(v, Math.max(precision(), 6)));
+  out.innerHTML = tr.sections.map((sec) => `<h3>${esc(sec.title)}</h3>${table(["Step", "Formula", "Substituted", "Value", "Unit"],
+    sec.lines.map((l) => [esc(l.label), `<code>${esc(l.formula)}</code>`, esc(l.substituted), typeof l.value === "number" ? fmt(l.value, Math.max(precision(), 6)) : esc(l.value ?? "—"), esc(l.unit)]), { numeric: [3] })}`).join("");
+}
+
+/* ---------- reports ---------- */
+
+function renderPageSize() {
+  const size = state.pattern.settings.pageSize === "Letter" ? "letter" : "A4";
+  $("#page-style").textContent = `@page{size:${size};margin:14mm}`;
+}
+
+const today = () => new Date().toISOString().slice(0, 10);
+
+function buildPrintReport() {
+  renderPageSize();
+  const v = runVerification();
+  $("#print-report").innerHTML = reportHtml(state.pattern, state.result, { date: today(), precision: precision(), verification: v });
+}
+
+function exportPng() {
+  const el = canvas();
+  const rect = el.getBoundingClientRect();
+  const width = Math.max(600, Math.round(rect.width)), height = Math.max(400, Math.round(rect.height));
+  const scene = buildScene(state.pattern, state.result, { width, height });
+  const extra = legendHeight(scene);
+  const out = document.createElement("canvas");
+  out.width = width * 2; out.height = (height + extra) * 2;
+  const ctx = out.getContext("2d");
+  ctx.setTransform(2, 0, 0, 2, 0, 0);
+  const colours = { ...palette(el), bg: "#ffffff", fg: "#1d1d1f", muted: "#6e6e73", faint: "#a1a1a6", grid: "#e8e8ed", surface: "#f5f5f7", reaction: "#1d1d1f" };
+  ctx.fillStyle = colours.bg; ctx.fillRect(0, 0, width, height + extra);
+  paint(ctx, scene, colours, { snapOn: false });
+  paintLegend(ctx, scene, colours, height);
+  out.toBlob((blob) => {
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = `${slug(state.pattern.name)}.png`;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }, "image/png");
+}
+
 /* ---------- verification ---------- */
 
 function renderVerification() {
   const v = runVerification();
   $("#verify-results").innerHTML = `
     <p><span class="${v.pass ? "pass" : "fail"}">${v.passed} pass${v.failed ? `, ${v.failed} fail` : ""}${v.pending ? `, ${v.pending} pending` : ""}</span> of ${v.results.length} cases · set ${esc(v.set)} · closed-form tolerance ${v.tol} relative (or the stated ± where the specification rounds) · tool ${esc(TOOL_VERSION)}</p>
+    ${v.pending ? `<p class="pending">All six milestones are implemented, but ${esc(v.results.filter((r) => r.pending).map((r) => r.id).join(", "))} (AISC prying and ICR references, spec open questions 2 and 3) await published values, so M3 and M5 are not closed.</p>` : ""}
     ${v.results.map((r) => `<details class="verify-case"><summary><span class="${r.status}">${r.status}</span> <b>${esc(r.id)}</b> ${esc(r.title)}</summary>
       ${r.pending ? `<p class="pending">pending: ${esc(r.pending)}</p>` : r.error ? `<p class="fail">${esc(r.error)}</p>` : table(["Check", "Actual", "Expected", "Tolerance", ""], r.checks.map((c) => [
         esc(c.label), typeof c.actual === "number" ? String(Number(c.actual.toPrecision(10))) : esc(c.actual),
@@ -4562,7 +5165,8 @@ function download(text, filename, type) {
 }
 
 const exportJSON = () => download(toJSON(state.pattern), `${slug(state.pattern.name)}.json`, "application/json");
-const markdownOf = (pattern = state.pattern, result = state.result) => toMarkdown(pattern, result, { version: TOOL_VERSION, date: new Date().toISOString().slice(0, 10) });
+/* Markdown report: the trace is for the governing fastener, and the footer cites the verification run. */
+const markdownOf = (pattern = state.pattern, result = state.result) => toMarkdown(pattern, result, { version: TOOL_VERSION, date: today(), verification: runVerification() });
 const exportMarkdown = () => download(markdownOf(), `${slug(state.pattern.name)}.md`, "text/markdown");
 
 /* Resolve a library name collision: "overwrite", "keep" or "cancel". */
@@ -4833,6 +5437,10 @@ function bind() {
     renderLibrary();
   });
   $("#run-verify").addEventListener("click", renderVerification);
+  $("#trace-fastener").addEventListener("change", (e) => { state.traceId = e.target.value; renderTrace(); });
+  $("#print-report-btn").addEventListener("click", () => window.print());
+  window.addEventListener("beforeprint", buildPrintReport);
+  $("#export-png").addEventListener("click", exportPng);
   for (const b of $$("[data-preset]")) {
     b.addEventListener("click", () => {
       const p = PRESETS[b.dataset.preset];
@@ -4872,8 +5480,8 @@ return { start };
 })();
 
 /* ---- ui/main.mjs ---- */
-const __m23 = (() => {
-const { start } = __m22;
+const __m26 = (() => {
+const { start } = __m25;
 /* Entry point of the built page. */
 
 

@@ -163,3 +163,31 @@ export function hitTest(scene, pt) {
   if (scene.load && Math.hypot(scene.load.screen.x - pt.x, scene.load.screen.y - pt.y) <= 12) return { kind: "load" };
   return null;
 }
+
+/* Legend strip for the PNG export, below the diagram (top edge `y0`). */
+export function paintLegend(ctx, scene, colours, y0) {
+  const col = scene.width / 2;
+  ctx.font = `400 11px ${colours.mono || "monospace"}`;
+  scene.legend.forEach((e, i) => {
+    const x = 12 + (i % 2) * col, y = y0 + 16 + Math.floor(i / 2) * 22, c = colours[e.colour] || colours.fg;
+    ctx.strokeStyle = c; ctx.fillStyle = c; ctx.lineWidth = 2;
+    if (e.shape === "arrow") arrow(ctx, { x, y: y - 4 }, { x: x + 20, y: y - 4 }, c, 2, 7);
+    else if (e.shape === "cross") { ctx.beginPath(); ctx.moveTo(x + 4, y - 9); ctx.lineTo(x + 14, y + 1); ctx.moveTo(x + 14, y - 9); ctx.lineTo(x + 4, y + 1); ctx.stroke(); }
+    else if (e.shape === "edge") { ctx.setLineDash([6, 3]); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, y - 4); ctx.lineTo(x + 20, y - 4); ctx.stroke(); ctx.setLineDash([]); }
+    else if (e.shape === "icr") { ctx.beginPath(); ctx.arc(x + 9, y - 4, 6, 0, 2 * Math.PI); ctx.stroke(); }
+    else if (e.shape === "disc" || e.shape === "dashed") {
+      ctx.beginPath(); ctx.arc(x + 9, y - 4, 5.5, 0, 2 * Math.PI);
+      if (e.shape === "disc") { ctx.globalAlpha = 0.35; ctx.fill(); ctx.globalAlpha = 1; } else ctx.setLineDash([3, 2]);
+      ctx.strokeStyle = colours.fg; ctx.lineWidth = 1.5; ctx.stroke(); ctx.setLineDash([]);
+    }
+    else {
+      centroidPath(ctx, e.shape, x + 9, y - 4, e.shape === "ring" ? 7 : e.shape === "diamond" ? 6 : 4);
+      if (e.shape === "square") ctx.fill(); else ctx.stroke();
+    }
+    ctx.fillStyle = colours.muted;
+    ctx.fillText(e.label, x + 26, y);
+  });
+}
+
+/* Height of the PNG legend strip for `scene`. */
+export const legendHeight = (scene) => 22 * Math.ceil(scene.legend.length / 2) + 8;

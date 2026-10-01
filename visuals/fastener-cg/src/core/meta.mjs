@@ -1,8 +1,8 @@
 /* Tool identity and the conventions every report repeats. */
 
 export const TOOL_NAME = "Fastener Pattern CG Tracker";
-export const TOOL_VERSION = "0.5.0-m5";
-export const MILESTONE = "M5";
+export const TOOL_VERSION = "0.6.0-m6";
+export const MILESTONE = "M6";
 
 export const CONVENTIONS = [
   "Right-handed axes: x right, y up, z toward the viewer.",

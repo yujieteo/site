@@ -1,7 +1,7 @@
 {
   "title": "Fastener Pattern CG Tracker",
-  "version": "0.5.0-m5",
-  "milestone": "M5",
+  "version": "0.6.0-m6",
+  "milestone": "M6",
   "unitSystems": {
     "N-mm": {
       "length": "mm",
@@ -257,7 +257,7 @@
     }
   ],
   "verification": {
-    "set": "M5",
+    "set": "M6 (v1)",
     "tolerance": 1e-9,
     "cases": [
       {
