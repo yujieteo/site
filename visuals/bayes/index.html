@@ -941,7 +941,7 @@ function report(state, checks) {
     results,
     checks: [
       { title: "What the update assumes", body: `- The evidence items are treated as independent; correlated clues would overstate the change\n- The result follows from the estimates entered, not from data${ok !== null ? `\n- In-page self-checks: ${ok} of ${checks.length} passed` : ""}`,
-        narration: `The calculation treats each piece of evidence as independent, so clues that tell you the same thing would overstate the change. The result follows from the estimates entered, not from data.${ok !== null ? ` The page's ${checks.length} self checks ${ok === checks.length ? "all passed" : `passed ${ok} times`}.` : ""}` },
+        narration: `The calculation treats each piece of evidence as independent, so clues that tell you the same thing would overstate the change. The result follows from the estimates entered, not from data.${ok !== null ? ` The page's ${checks.length} self checks: ${ok} of ${checks.length} passed.` : ""}` },
       { title: "Takeaway", key: n ? `Given these estimates, ${approx(e.prior.v)} → ${approx(e.final)}${e.final !== null ? ` (${natural(e.final)})` : ""}` : `Starting estimate ${approx(e.prior.v)}`,
         narration: n ? `Given these estimates, the update takes the hypothesis from ${speakPct(e.prior.v)} to ${speakPct(e.final)}.` : `The starting estimate is ${speakPct(e.prior.v)}, with no evidence yet.` }
     ]
@@ -1139,7 +1139,7 @@ function render() {
   $("show-range").checked = S.showRange;
   $("range-box").hidden = !S.showRange;
   $("r-range").innerHTML = !E.ambiguous ? "Every input is an exact number, so there is no range from phrase choices to show."
-    : g.lo === null || g.hi === null ? "One end of the range cannot be determined, because an extreme of your phrase ranges makes the evidence impossible both ways."
+    : g.lo === null || g.hi === null ? "One end of the range cannot be determined, because at an extreme of your phrase ranges the evidence you saw could not have appeared."
     : `<span class="kv"><span>Working estimate</span><b>${B.approx(st ? after : before)}</b></span><span class="kv"><span>Range from your phrase choices</span><b>${rangeText(g)}</b></span>`;
   axis(st ? before : null, st ? after : before, S.showRange && E.ambiguous && g.lo !== null && g.hi !== null ? g : null, st ? wa : wb);
   numbers(E, st, r);
@@ -1165,7 +1165,7 @@ function axis(before, after, g, w) {
   if (after !== null) h += `<span class="ax-post" style="left:${at(after)}"></span><span class="ax-lab bot ${side(after)}" style="left:${at(after)}">◆ ${before === null ? "estimate" : "after"} ${B.approx(after)}</span>`;
   block($("r-axis"), h);
   $("r-axis-legend").textContent = (near ? `Shaded: the middle half of survey answers for “${w.phrase}”. ` : "") + (g ? "Bracket: range from your phrase choices. " : "");
-  $("r-axis-text").textContent = before === null ? `On a 0 to 100% scale, the estimate is ${B.approx(after)}.` : after === null ? "The update cannot be determined." : before === after ? `On a 0 to 100% scale, the estimate stays at ${B.approx(after)}.` : `On a 0 to 100% scale, the estimate moves ${after > before ? "up" : "down"} from ${B.approx(before)} to ${B.approx(after)}.`;
+  $("r-axis-text").textContent = after === null ? "The update cannot be determined." : before === null ? `On a 0 to 100% scale, the estimate is ${B.approx(after)}.` : before === after ? `On a 0 to 100% scale, the estimate stays at ${B.approx(after)}.` : `On a 0 to 100% scale, the estimate moves ${after > before ? "up" : "down"} from ${B.approx(before)} to ${B.approx(after)}.`;
 }
 
 function numbers(E, st, r) {

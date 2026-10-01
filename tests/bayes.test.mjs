@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import vm from "node:vm";
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { assertButtonsExport, assertInlined, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const html = read("visuals/bayes/index.html");
@@ -12,6 +13,13 @@ const T = (await import("node:module")).createRequire(import.meta.url)("../templ
 const plain = (v) => JSON.parse(JSON.stringify(v));
 const near = (x, y, tol = 1e-12) => assert.ok(Math.abs(x - y) < tol, `${x} ≈ ${y}`);
 const direct = (p, a, b) => (a * p) / (a * p + b * (1 - p));
+// The catalogue stub as the site's own validator reads it (scripts/validate.py: PyYAML, then the visualisation JSON Schema).
+const catalogue = () => JSON.parse(execFileSync("python3", ["-c", `import json, sys, jsonschema
+sys.path.insert(0, "scripts")
+from validate import ROOT, load_document
+doc, err = load_document(ROOT / "data/visuals/bayes.yaml")
+schema = json.loads((ROOT / "schema/visualization.schema.json").read_text(encoding="utf-8"))
+print(json.dumps({"stub": doc, "errors": [err] if err else [e.message for e in jsonschema.Draft7Validator(schema).iter_errors(doc)]}))`], { cwd: new URL("../", import.meta.url), encoding: "utf8" }));
 
 test("the in-page self-checks all pass", () => {
   const checks = B.selfTest();
@@ -225,10 +233,11 @@ test("raw.json and the catalogue stub match the page", () => {
   assert.deepEqual(raw.scenarios, plain(B.SCENARIOS));
   assert.deepEqual(raw.initial, plain(B.defaults()));
   assert.equal(raw.url, "https://teoyujie.org/visuals/bayes");
-  const stub = read("data/visuals/bayes.yaml");
-  assert.match(stub, /^webmcp_tools: \[get_metadata, get_current_state, lookup_phrase, bayes_update\]$/m);
-  assert.match(stub, /^html_path: visuals\/bayes\/index\.html$/m);
-  assert.match(stub, /^data_path: visuals\/bayes\/raw\.json$/m);
+  const { stub, errors } = catalogue();
+  assert.deepEqual(errors, [], "the catalogue stub passes the site's visualisation schema");
+  assert.deepEqual([stub.slug, stub.html_path, stub.data_path], ["bayes", "visuals/bayes/index.html", "visuals/bayes/raw.json"]);
+  assert.deepEqual(stub.webmcp_tools, ["get_metadata", "get_current_state", "lookup_phrase", "bayes_update"]);
+  assert.deepEqual(stub.links, [{ rel: "related", target: "visualization:beamdswitch" }]);
   assert.equal(B.SCENARIOS.length, 6);
   assert.deepEqual(plain(B.SCENARIOS.map((s) => s.chip)), ["Restaurant", "Delivery", "Rain", "Phishing", "Shopping", "Project"]);
   for (const s of B.SCENARIOS) for (const e of [s.prior, ...s.evidence.flatMap((x) => [x.a, x.b])]) if (e.phrase) assert.ok(B.numbered(B.lookup(e.phrase)), `${s.id}: ${e.phrase}`);
@@ -240,15 +249,18 @@ test("the page is one offline file with the metadata and static fallback it prom
   for (const p of ["og:title", "og:description", "og:type", "og:url"]) assert.match(html, new RegExp(`<meta property="${p}" content="[^"]+">`));
   assert.match(html, /<meta name="description" content="[^"]+">/);
   assert.match(html, /<a href="https:\/\/teoyujie\.org\/visuals\.html">Visuals<\/a>/);
-  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+rel="stylesheet"|@import|fetch\(|XMLHttpRequest|type="module"|serviceWorker|sendBeacon|WebSocket|@font-face/);
-  assert.match(html, /prefers-reduced-motion/);
-  assert.match(html, /prefers-color-scheme:dark/);
+  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+rel="stylesheet"|@import|type="module"|@font-face/, "no external scripts, styles or fonts to load");
+  const css = /<style>\n([\s\S]*?)<\/style>/.exec(html)[1], media = (q) => css.split("\n").filter((l) => l.startsWith(`@media (${q})`)).join("\n");
+  for (const v of ["--bg", "--fg", "--accent"]) assert.match(media("prefers-color-scheme:dark"), new RegExp(`${v}:#`), `dark theme sets ${v}`);
+  const still = css.split("\n").filter((l) => !l.startsWith("@media (prefers-reduced-motion:no-preference)")).join("\n");
+  assert.match(media("prefers-reduced-motion:no-preference"), /transition:/);
+  assert.doesNotMatch(still, /transition|animation/, "motion only when the reader has not asked to reduce it");
   assert.match(html, /<noscript>[\s\S]*The reference chart works without JavaScript\.[\s\S]*Enable JavaScript to use the interactive Bayesian calculator\.[\s\S]*<\/noscript>/);
   assert.match(html, /<div id="app" hidden>/, "controls stay hidden without JavaScript");
   assert.match(html, /<div id="nojs">[\s\S]*P\(E \| not H\)[\s\S]*after = \(if true × before\)/, "the three quantities and the formula without JavaScript");
   assert.match(html, /<details id="tables" open>/, "the reference chart is open without JavaScript");
   assert.ok(html.includes(B.staticRows()), "the static reference rows are the engine's own");
-  assert.match(html, /aria-live="polite"/);
+  assert.match(html, /<p class="sr" id="live" aria-live="polite"><\/p>/, "the result is announced in a polite live region");
   assert.match(html, /Runs entirely in your browser\. Nothing you enter is sent anywhere\./);
   const logic = html.length - script("bayes-data").length - B.staticRows().length;
   assert.ok(logic < 100_000, `HTML, CSS and logic stay under 100 KB without the embedded data (${logic})`);
@@ -297,4 +309,47 @@ test("the page boots, its WebMCP tools answer, and the deck buttons export the s
   // Change the hypothesis through the page's own input handler, then export.
   page.run(`document.getElementById("app").listeners.input[0]({ target: { id: "hyp", value: "The bus will arrive within 10 minutes.", dataset: {} } })`);
   await assertButtonsExport(page, "bayes", T.deck(B.report({ ...B.defaults(), hypothesis: "The bus will arrive within 10 minutes." }, B.selfTest())));
+});
+
+// Opens the page with the given scenario saved, timers run at once, and every network API recording its use.
+const boot = async (saved = null) => {
+  const net = [];
+  const spy = (name) => function () { net.push(name); };
+  const page = await openPage("bayes", { globals: {
+    fetch: spy("fetch"), XMLHttpRequest: spy("XMLHttpRequest"), WebSocket: spy("WebSocket"), EventSource: spy("EventSource"),
+    setTimeout: (fn) => { fn(); return 0; },
+    localStorage: { getItem: (k) => (k === "bayes:scenario" && saved ? JSON.stringify(saved) : null), setItem() {}, removeItem() {} },
+  } });
+  page.run("navigator.sendBeacon = () => { throw new Error('sendBeacon'); }");
+  return { page, net, text: (id) => page.run(`document.getElementById(${JSON.stringify(id)}).textContent`) };
+};
+
+test("booted, the page swaps the no-JavaScript fallback for the app, announces the result and uses no network", async () => {
+  const { page, net, text } = await boot();
+  assert.equal(page.run(`document.getElementById("nojs").hidden`), true);
+  assert.equal(page.run(`document.getElementById("app").hidden`), false);
+  assert.equal(text("live"), "After the evidence: ≈56%, close to what people meant by “better than even”.");
+  page.run(`document.getElementById("app").listeners.input[0]({ target: { id: "hyp", value: "The bus is late.", dataset: {} } })`);
+  await page.click("save-beamdswitch");
+  await page.click("copy-beamdswitch");
+  assert.equal(page.saved.length, 1);
+  assert.deepEqual(net, []);
+});
+
+test("a step after an undetermined one says the update cannot be determined", async () => {
+  const { text } = await boot({ ...B.defaults(), sel: 1, evidence: [{ text: "", a: { value: 0 }, b: { value: 0 } }, { text: "next", a: { value: 50 }, b: { value: 20 } }] });
+  assert.equal(text("r-axis-text"), "The update cannot be determined.");
+  assert.equal(text("r-explain"), "An earlier step could not be determined, so this one cannot be computed either.");
+});
+
+test("an undeterminable range end does not blame evidence impossible both ways", async () => {
+  const { page, text } = await boot({ ...B.defaults(), showRange: true, prior: { custom: { label: "maybe", lo: 0, hi: 40 }, value: 20 }, evidence: [{ text: "seen", a: { value: 50 }, b: { value: 0 } }] });
+  assert.equal(text("r-after"), "100%");
+  assert.equal(page.run(`document.getElementById("r-range").innerHTML`), "One end of the range cannot be determined, because at an extreme of your phrase ranges the evidence you saw could not have appeared.");
+});
+
+test("the deck reports how many self-checks passed out of how many", () => {
+  const narr = (checks) => B.report(B.defaults(), checks).checks[0].narration;
+  assert.match(narr(B.selfTest()), /The page's (\d+) self checks: \1 of \1 passed\.$/);
+  assert.match(narr([{ ok: true }, { ok: false }, { ok: true }]), /The page's 3 self checks: 2 of 3 passed\.$/);
 });
