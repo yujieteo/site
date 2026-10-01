@@ -44,6 +44,7 @@ PORTS = {
     "queue-time": "queue-time",
     "riemann-roch": "riemann-roch",
     "root-locus": "root-locus",
+    "snake-lemma": "snake-lemma",
     "stability": "stability",
     "subsidy-atlas": "subsidy-atlas",
     "tampines-food": "tampines-food",
