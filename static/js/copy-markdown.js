@@ -8,6 +8,19 @@ const HINT = "Press Ctrl/⌘+C to copy.";
 const fallbacks = new WeakMap();
 let fallbackCount = 0;
 
+const escapeAttribute = (value) => String(value).replace(
+  /[&<>"']/g,
+  (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character],
+);
+
+// The per-note copy control, for notes the browser renders after filtering.
+export function noteCopyControlHtml(id, label) {
+  return '<div class="note-actions" data-copy-control>'
+    + `<button type="button" class="copy-note" data-copy-markdown="${escapeAttribute(id)}" `
+    + `aria-label="${escapeAttribute(label)}">Copy Markdown</button>`
+    + '<span class="page-action-status" data-copy-status aria-live="polite"></span></div>';
+}
+
 // Resolves true once the text is on the clipboard, false if it could not be.
 export async function writeToClipboard(text, clipboard) {
   if (!clipboard || typeof clipboard.writeText !== "function") return false;

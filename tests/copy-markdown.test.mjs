@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { setupCopyButtons, showFallback, writeToClipboard } from "../static/js/copy-markdown.js";
+import { noteCopyControlHtml, setupCopyButtons, showFallback, writeToClipboard } from "../static/js/copy-markdown.js";
 
 // Just enough DOM for copy-markdown.js: elements with children, attributes,
 // closest() over data-* selectors, and a document that dispatches clicks.
@@ -46,9 +46,11 @@ class FakeElement {
 class FakeDocument {
   constructor(sources) {
     this.listeners = [];
+    this.execCommandCalls = [];
     this.source = new FakeElement("script");
     this.source.textContent = JSON.stringify(sources);
   }
+  execCommand(...args) { this.execCommandCalls.push(args); return true; }
   getElementById(id) { return id === "markdown-sources" ? this.source : null; }
   createElement(tag) { return new FakeElement(tag); }
   addEventListener(type, listener) { if (type === "click") this.listeners.push(listener); }
@@ -122,4 +124,30 @@ test("showFallback attaches to the button's parent when there is no copy scope",
   parent.append(button);
   const area = showFallback(button, "text", new FakeDocument({}));
   assert.equal(area.parentElement.parentElement, parent);
+});
+
+test("neither the clipboard nor the fallback path fetches or uses execCommand", async (t) => {
+  const fetchCalls = [];
+  t.mock.method(globalThis, "fetch", async (...args) => { fetchCalls.push(args); return new Response(""); });
+  for (const clipboard of [{ writeText: async () => {} }, undefined]) {
+    const doc = new FakeDocument({ page: "# Title\n" });
+    setupCopyButtons(doc, clipboard);
+    const { button, status } = copyControl("page");
+    await doc.click(button);
+    await settle();
+    assert.ok(status.textContent);
+    assert.deepEqual(doc.execCommandCalls, []);
+  }
+  assert.deepEqual(fetchCalls, []);
+});
+
+test("the note copy control filtered notes render names that note and has a live status", () => {
+  const html = noteCopyControlHtml("note:a\"b", "Copy Markdown of note from 2026-01-02");
+  const button = html.match(/<button ([^>]*)>Copy Markdown<\/button>/)[1];
+  const attributes = Object.fromEntries([...button.matchAll(/([\w-]+)="([^"]*)"/g)].map((m) => [m[1], m[2]]));
+  assert.equal(attributes.class, "copy-note");
+  assert.equal(attributes["data-copy-markdown"], "note:a&quot;b");
+  assert.equal(attributes["aria-label"], "Copy Markdown of note from 2026-01-02");
+  assert.match(html, /^<div class="note-actions" data-copy-control>/);
+  assert.match(html, /<span class="page-action-status" data-copy-status aria-live="polite"><\/span><\/div>$/);
 });

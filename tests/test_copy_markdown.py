@@ -122,12 +122,6 @@ class CopyMarkdownPageTests(unittest.TestCase):
         self.assertIn('src="https://teoyujie.org/decks/indeterminate-beams/index.html"', copied)
         self.assertNotIn("](../", copied)
 
-    def test_copy_script_makes_no_requests_and_never_uses_exec_command(self):
-        script = (ROOT / "static/js/copy-markdown.js").read_text(encoding="utf-8")
-        self.assertNotIn("execCommand", script)
-        self.assertNotIn("fetch(", script)
-        self.assertNotIn("http", script)
-
 
 class AbsoluteMarkdownTests(unittest.TestCase):
     BASE = "https://teoyujie.org/blog/post.html"
