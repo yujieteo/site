@@ -36,10 +36,81 @@ test("raw.json publishes the engine's metadata", async () => {
   assert.deepEqual(raw, J(G.META));
 });
 
-test("footer version matches the VERSION constant", () => {
+/* ---------- the page script, booted against minimal DOM, storage, clipboard and Worker stubs ---------- */
+
+function bootPage({ saved = null, storageThrows = false, clipboardThrows = false } = {}) {
+  let now = 0;
+  let timers = [];
+  const setTimeout = (fn, ms) => { const t = { fn, at: now + (ms || 0) }; timers.push(t); return t; };
+  const clearTimeout = (t) => { timers = timers.filter((x) => x !== t); };
+  const advance = (ms) => {
+    const end = now + ms;
+    for (;;) {
+      const due = timers.filter((t) => t.at <= end).sort((a, b) => a.at - b.at)[0];
+      if (!due) break;
+      timers = timers.filter((t) => t !== due);
+      now = due.at;
+      due.fn();
+    }
+    now = end;
+  };
+  const els = new Map();
+  const el = (id) => {
+    if (!els.has(id)) {
+      const listeners = {};
+      els.set(id, {
+        id, textContent: "", innerHTML: "", value: "", checked: false, hidden: false, disabled: false, open: false, placeholder: "", dataset: {},
+        addEventListener(type, fn) { (listeners[type] = listeners[type] || []).push(fn); },
+        fire(type, e) { return Promise.all((listeners[type] || []).map((fn) => fn(Object.assign({ preventDefault() {}, target: {} }, e)))); },
+        querySelectorAll: () => [], insertAdjacentHTML(_, h) { this.innerHTML += h; }, focus() {}, scrollIntoView() {}, closest: () => null,
+      });
+    }
+    return els.get(id);
+  };
+  el("grep-engine").textContent = engineSrc;
+  el("grep-ui").textContent = uiSrc;
+  const workers = [];
+  class Worker {
+    constructor() { this.posted = []; this.terminated = false; workers.push(this); }
+    postMessage(m) { this.posted.push(m); }
+    terminate() { this.terminated = true; }
+  }
+  const tools = {};
+  const fail = () => { throw new Error("blocked"); };
+  const page = {
+    setTimeout, clearTimeout, TextEncoder, Worker,
+    Blob: class { constructor(parts) { this.parts = parts; } },
+    URL: { createObjectURL: () => "blob:worker" },
+    performance: { getEntriesByType: () => [] },
+    getSelection: fail,
+    document: {
+      getElementById: el, querySelectorAll: () => [], createRange: fail,
+      execCommand: clipboardThrows ? fail : () => true,
+      modelContext: { registerTool(t) { tools[t.name] = t; } },
+    },
+    navigator: { clipboard: { writeText: clipboardThrows ? async () => fail() : async () => {} } },
+  };
+  Object.defineProperty(page, "localStorage", {
+    get() {
+      if (storageThrows) fail();
+      return { getItem: () => (saved ? JSON.stringify(saved) : null), setItem() {} };
+    },
+  });
+  page.self = page;
+  vm.createContext(page);
+  vm.runInContext(engineSrc, page);
+  vm.runInContext(uiSrc, page);
+  const PG = page.GrepViz;
+  const jobs = () => workers.flatMap((w) => w.posted.map((m) => ({ w, m })));
+  const reply = async ({ w, m }) => { w.onmessage({ data: { id: m.id, result: PG.run(m.req) } }); await new Promise((r) => setImmediate(r)); };
+  return { el, advance, workers, jobs, reply, tools };
+}
+
+test("the footer shows the engine's version and build date", () => {
   assert.match(G.VERSION, /^\d+\.\d+\.\d+$/);
-  assert.match(uiSrc, /"v" \+ G\.VERSION/);
-  assert.match(uiSrc, /G\.BUILD_DATE/);
+  const p = bootPage();
+  assert.equal(p.el("version").textContent, "v" + G.VERSION);
+  assert.equal(p.el("build").textContent, "Built " + G.BUILD_DATE);
   assert.match(html, /Runs locally, nothing is sent\./);
 });
 
@@ -64,23 +135,64 @@ test("the code makes no network calls and uses no relative URLs", () => {
   assert.equal((html.match(/<script\b/g) || []).length, 2, "two inline scripts only");
 });
 
-test("storage and clipboard calls sit inside try/catch", () => {
-  for (const call of ["localStorage.getItem", "localStorage.setItem", "navigator.clipboard.writeText", "document.execCommand"]) {
-    const at = uiSrc.indexOf(call);
-    assert.ok(at > 0, call);
-    const before = uiSrc.slice(Math.max(0, at - 200), at);
-    assert.match(before, /try \{[^}]*$/, `${call} is guarded`);
-  }
-  assert.ok(!/sessionStorage|indexedDB/.test(uiSrc));
+test("the page still works when storage and the clipboard are blocked", async () => {
+  const p = bootPage({ storageThrows: true, clipboardThrows: true });
+  await p.reply(p.jobs()[0]);
+  assert.match(p.el("status").innerHTML, /translated/);
+  p.el("text").value = "x 1\n";
+  await p.el("text").fire("input");
+  p.advance(1000);
+  assert.equal(p.jobs().length, 2, "a save attempt does not stop the next run");
+  await p.el("copy").fire("click");
+  assert.equal(p.el("copy").textContent, "Select and copy");
 });
 
-test("matching runs in a Blob worker with a 1.5 s timeout", () => {
+test("matching runs in a worker that is terminated after the 1.5 s timeout", async () => {
   assert.equal(G.TIMEOUT_MS, 1500);
-  assert.match(uiSrc, /new Blob\(\[workerBody\]/);
-  assert.match(uiSrc, /new Worker\(workerUrl\)/);
-  assert.match(uiSrc, /worker\.terminate\(\)/);
   assert.equal(G.MAX_INPUT_BYTES, 2 * 1024 * 1024);
   assert.equal(G.MAX_HIGHLIGHTS, 5000);
+  const p = bootPage({ saved: { preset: "rg", patterns: ["(a+)+$"], files: [{ name: "input.txt", text: "aaaa!\n" }] } });
+  assert.equal(p.workers.length, 1);
+  assert.equal(p.jobs()[0].m.req.patterns[0], "(a+)+$");
+  p.advance(G.TIMEOUT_MS - 1);
+  assert.equal(p.workers[0].terminated, false);
+  p.advance(1);
+  await new Promise((r) => setImmediate(r));
+  assert.equal(p.workers[0].terminated, true);
+  assert.match(p.el("status").innerHTML, /timed out/);
+  assert.match(p.el("notes").innerHTML, /Rust regex runs in linear time/);
+});
+
+test("a run_pattern timeout that cancels the page's compare run makes the page run again", async () => {
+  const p = bootPage({ saved: { preset: "rg", compare: true, patterns: ["\\d+"], files: [{ name: "input.txt", text: "a 1\n" }] } });
+  const call = p.tools.run_pattern.execute({ preset: "pwsh", patterns: ["(a+)+$"], text: "aaaa!" });
+  await p.reply(p.jobs()[0]);
+  assert.equal(p.jobs().length, 3, "the compare run queues its next preset behind the WebMCP job");
+  p.advance(G.TIMEOUT_MS);
+  assert.equal(JSON.parse((await call).content[0].text).timeout, true);
+  await new Promise((r) => setImmediate(r));
+  p.advance(200);
+  for (let k = 3; k < 20 && p.jobs().length > k; k++) await p.reply(p.jobs()[k]);
+  assert.equal((p.el("compare-body").innerHTML.match(/<tr/g) || []).length, G.PRESET_IDS.length);
+});
+
+test("switching file tabs keeps the highlights of the latest run", async () => {
+  const p = bootPage({ saved: { preset: "rg", patterns: ["\\d+"], files: [{ name: "a.txt", text: "a 1\n" }, { name: "b.txt", text: "b 2\n" }] } });
+  await p.reply(p.jobs()[0]);
+  await p.el("file-tabs").fire("click", { target: { dataset: { file: "1" } } });
+  assert.match(p.el("highlight").innerHTML, /b <mark>2<\/mark>/);
+  await p.el("file-tabs").fire("click", { target: { dataset: { file: "0" } } });
+  assert.match(p.el("highlight").innerHTML, /a <mark>1<\/mark>/);
+});
+
+test("the page labels divergences and constructs it cannot emulate", async () => {
+  const differs = bootPage({ saved: { preset: "rg", patterns: ["foo(?=bar)"], files: [{ name: "input.txt", text: "foobar\n" }] } });
+  await differs.reply(differs.jobs()[0]);
+  assert.match(differs.el("notes").innerHTML, /Differs from real rg:/);
+  const cannot = bootPage({ saved: { preset: "rg", options: { rg: { P: true } }, patterns: ["a\\Kb"], files: [{ name: "input.txt", text: "ab\n" }] } });
+  await cannot.reply(cannot.jobs()[0]);
+  assert.match(cannot.el("notes").innerHTML, /Cannot emulate here:/);
+  assert.match(cannot.el("highlight").innerHTML, /^ab/);
 });
 
 /* ---------- BRE vs ERE ---------- */
@@ -220,8 +332,6 @@ test("known divergences carry a 'differs from real' warning but still run", () =
   assert.equal(compile("rg", ["(a)\\1"]).level, "differs");
   assert.equal(compile("rg", ["foo(?=bar)"], { P: true }).level, "exact");
   assert.equal(compile("rg", ["(?<=a+)b"], { P: true }).level, "differs", "unbounded PCRE2 look-behind");
-  assert.match(uiSrc, /Differs from real \$\{esc\(t\.real\)\}/);
-  assert.match(uiSrc, /Cannot emulate here:/);
 });
 
 test("real-engine pattern errors are reported, not matched", () => {
@@ -346,6 +456,32 @@ test("VS Code whole word: Find uses word separators, Search adds \\b only beside
   // "\d+" starts with a backslash, which is not a word character, so no leading \b is added.
   assert.deepEqual(spans(run("vssearch", ["\\d+"], "x12\n", { wholeWord: true })), [[1, 3]]);
   assert.match(compile("vssearch", ["a.b"], { regex: false, wholeWord: true }).source, /a\\u\{2e\}b/);
+});
+
+test("VS Code Find and Search with Regex off find literal text with - and /", () => {
+  const t = "2026-10-01 a/b (x)\n";
+  for (const preset of ["vsfind", "vssearch"]) {
+    for (const wholeWord of [false, true]) {
+      for (const lit of ["2026-10-01", "a/b", "(x)"]) {
+        const r = run(preset, [lit], t, { regex: false, wholeWord });
+        assert.equal(r.translation.level, "exact", `${preset} ${lit} wholeWord=${wholeWord}`);
+        assert.deepEqual(texts(r, t), [lit], `${preset} ${lit} wholeWord=${wholeWord}`);
+      }
+    }
+  }
+});
+
+test("rg accepts an escaped non-alphanumeric ASCII character as a literal", () => {
+  for (const c of "/\"%:=@!,;'`_") {
+    const r = run("rg", ["a\\" + c + "b"], `a${c}b\n`);
+    assert.equal(r.translation.level, "exact", `\\${c}`);
+    assert.equal(r.totals.matches, 1, `\\${c}`);
+    assert.equal(run("rg", ["[\\" + c + "]"], `${c}\n`).totals.matches, 1, `[\\${c}]`);
+  }
+  assert.equal(run("vssearch", ["a\\/b"], "a/b\n").totals.matches, 1);
+  assert.equal(compile("rg", ["\\é"]).level, "error", "non-ASCII escapes are rejected");
+  assert.equal(compile("rg", ["[\\é]"]).level, "error");
+  assert.deepEqual(texts(run("rg", ["\\<cat\\>"], "cat concat\n"), "cat concat\n"), ["cat"], "\\< and \\> stay word boundaries");
 });
 
 test("VS Code Search falls back to PCRE2 for look-around and backreferences", () => {

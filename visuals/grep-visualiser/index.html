@@ -570,6 +570,7 @@ function parsePattern(src, ctx, baseFlags) {
         const ch = charEscape(e, true);
         if (typeof ch === "string") return { ch };
         if (isAlnum(e)) throw new PatternError(`unrecognized escape \\${e} in class`);
+        if (d === "rust" && e.codePointAt(0) > 0x7f) throw new PatternError(`unrecognized escape \\${e} in class`);
         return { ch: e };
       }
       if (c === "[" && peek(1) === ":" && (d === "rust" || d === "pcre2")) {
@@ -821,7 +822,7 @@ function parsePattern(src, ctx, baseFlags) {
       return lit(ch);
     }
     if (isAlnum(e)) throw new PatternError(`unrecognized escape \\${e}`);
-    if (d === "rust" && !/[\\.+*?()|\[\]{}^$#&\-~ ]/.test(e) && e !== "<" && e !== ">") throw new PatternError(`unrecognized escape \\${e}`);
+    if (d === "rust" && e.codePointAt(0) > 0x7f) throw new PatternError(`unrecognized escape \\${e}`);
     return lit(e);
   }
 
@@ -1018,7 +1019,7 @@ function caseValues(root) {
 
 /* ---------- presets → translation ---------- */
 function vsLookaroundOrBackref(p) { return /\(\?<?[=!]|\\[1-9]|\\k</.test(p); }
-function jsEscape(s) { return s.replace(/[\\{}*+?|^$.[\]()\/-]/g, "\\$&"); }
+function jsEscape(s) { return s.replace(/[\\{}*+?|^$.[\]()]/g, "\\$&"); }
 // VS Code's strings.createRegExp: whole word adds \b only next to a word character of the source.
 function vsWholeWordWrap(src) {
   let out = src;
@@ -2373,7 +2374,7 @@ function wireControls() {
     refreshControls(); schedule();
   });
   // files
-  $("file-tabs").addEventListener("click", (e) => { const k = e.target.dataset.file; if (k === undefined) return; state.active = +k; refreshControls(); renderHighlight(); });
+  $("file-tabs").addEventListener("click", (e) => { const k = e.target.dataset.file; if (k === undefined) return; state.active = +k; refreshControls(); const r = last && last.result; renderHighlight(r && r.translation.level !== "cannot" && r.translation.level !== "error" ? r : null); });
   $("file-name").addEventListener("change", (e) => {
     const name = e.target.value.trim();
     if (!name || state.files.some((f, k) => k !== state.active && f.name === name)) { e.target.value = state.files[state.active].name; return; }
@@ -2433,14 +2434,16 @@ async function runAll() {
   $("input-size").textContent = `${state.files.length} file${state.files.length > 1 ? "s" : ""} · ${size.toLocaleString()} characters`;
   $("status").innerHTML = '<span class="muted">running…</span>';
   const main = await runJob(request(state.preset));
-  if (id !== runId || main.cancelled) return;
+  if (id !== runId) return;
+  if (main.cancelled) { schedule(); return; }
   last = main;
   renderMain(main);
   if (state.compare) {
     const rows = [];
     for (const p of G.PRESET_IDS) {
       const r = p === state.preset ? main : await runJob(request(p));
-      if (id !== runId || r.cancelled) return;
+      if (id !== runId) return;
+      if (r.cancelled) { schedule(); return; }
       rows.push({ preset: p, r });
     }
     renderCompare(rows);
