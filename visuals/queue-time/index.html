@@ -521,7 +521,7 @@ select{min-height:2.75rem;border:1px solid var(--rule);border-radius:var(--r);ba
     const min = Math.max(0, ((o.end ?? now) - o.start) / 60000), n = o.taps | 0;
     const text = `${plural(n, "person", "people")} served in ${clock(min)}`;
     if (!n || min < 0.25) return { text, minutes: null };
-    const c = servers(scenario(x)), rate = n / min;
+    const c = scenario(x).counters, rate = n / min;
     return { text, rate, rateText: rateText(rate), minutes: c ? Math.min(LIMITS.pace[1], Math.max(LIMITS.pace[0], c / rate)) : null };
   }
 
@@ -641,8 +641,8 @@ select{min-height:2.75rem;border:1px solid var(--rule);border-radius:var(--r);ba
 
   return {
     PACES, PACE_LABEL, WEIGHTS, FOOD_PRESETS, COMPLEXITY, BUSY, LIMITS, MODEL, ASSUMPTIONS,
-    clamp, defaults, foodDefaults, scenario, servers, estimate, headline, describe, roughRule, compare, backEstimate, observed,
-    startTimer, elapsed, clock, dur, span, speak, paceText, rateText, food, foodRange, foodStatus, visible, watchedText, report,
+    clamp, defaults, foodDefaults, scenario, servers, estimate, headline, describe, roughRule, compare, names, backEstimate, observed,
+    startTimer, elapsed, clock, dur, span, speak, plural, paceText, rateText, food, foodRange, foodStatus, visible, watchedText, report,
   };
 });
 </script>
@@ -765,9 +765,8 @@ function renderQueue() {
   $("compare").hidden = !S.compare;
   $("compare-open").hidden = !!S.compare;
   if (S.compare) {
-    const names = S.observed ? { a: "the observed queue", b: "the hypothetical" } : { a: "the first queue", b: "Queue B" };
     renderScn("b");
-    const k = Q.compare(S.queue, S.compare, names), ha = Q.headline(k.a), hb = Q.headline(k.b);
+    const k = Q.compare(S.queue, S.compare, Q.names(S)), ha = Q.headline(k.a), hb = Q.headline(k.b);
     $("a-name").textContent = S.observed ? "Observed queue" : "This queue";
     $("b-name").textContent = S.observed ? "Hypothetical" : "Queue B";
     $("a-head").textContent = ha.head; $("a-sub").textContent = ha.sub; $("a-desc").textContent = Q.describe(k.a);
@@ -781,7 +780,7 @@ function renderQueue() {
     const use = o.minutes ? `<p class="desc" id="watch-pace"></p>` : '<p class="hint">Tap when each person finishes; a pace appears after the first, once 15 seconds have passed.</p>';
     block($("observe"), `<p class="status" id="watch-text"></p>${use}` + actions(w.end ? "" : btn("watch-tap", "Someone finished", "primary"), o.minutes ? btn("watch-use", "Use this pace") : "", w.end ? btn("watch-clear", "Clear", "quiet") : btn("watch-stop", "Stop", "quiet")));
     $("watch-text").textContent = o.text;
-    if (o.minutes) $("watch-pace").textContent = `About ${Q.paceText(o.minutes)} at each counter (${o.rateText} across ${Q.servers(Q.scenario(S.queue))} counter${Q.servers(Q.scenario(S.queue)) === 1 ? "" : "s"})`;
+    if (o.minutes) $("watch-pace").textContent = `About ${Q.paceText(o.minutes)} at each counter (${o.rateText} across ${Q.plural(Q.scenario(S.queue).counters, "counter")})`;
   }
   return e;
 }
@@ -834,7 +833,7 @@ function announce(msg) {
     if (!t && S.mode === "food") { const g = Q.foodRange(S.food); t = `Expected around ${g.lo} to ${g.hi} minutes.`; }
     else if (!t) {
       t = Q.describe(Q.estimate(S.queue));
-      if (S.compare) { const k = Q.compare(S.queue, S.compare); t += ` Comparison: ${Q.speak(k.changes)} ${Q.speak(k.diff)}`; }
+      if (S.compare) { const k = Q.compare(S.queue, S.compare, Q.names(S)); t += ` Comparison: ${Q.speak(k.changes)} ${Q.speak(k.diff)}`; }
     }
     if ($("live").textContent !== t) $("live").textContent = t;
   }, msg ? 50 : 900);
@@ -957,7 +956,7 @@ const tools = [
     async execute() { return result({ title: document.title, url: "https://teoyujie.org/visuals/queue-time", modes: ["queue", "food"], paces_minutes_per_person: Q.PACES, weights: Q.WEIGHTS, food_presets_minutes: Q.FOOD_PRESETS, complexity: Q.COMPLEXITY, busy: Q.BUSY, limits: Q.LIMITS, model: Q.MODEL, assumptions: Q.ASSUMPTIONS }); } },
   { name: "get_current_state", description: "Return the page's current mode, queue, estimate, comparison, waiting timers and recorded waits, and the food-order range.", inputSchema: none, annotations: ro,
     async execute() {
-      const t = now(), k = S.compare && Q.compare(S.queue, S.compare);
+      const t = now(), k = S.compare && Q.compare(S.queue, S.compare, Q.names(S));
       return result({ mode: S.mode, queue: view(Q.estimate(S.queue)), comparison: k ? { other: view(k.b), changes: k.changes, difference: k.diff } : null,
         waiting_minutes: S.qTimer ? +Q.elapsed(S.qTimer, t).toFixed(2) : null, served: S.qDone ? { actual_minutes: +S.qDone.actual.toFixed(2), estimated: Q.span(S.qDone.lo, S.qDone.hi), back_estimate: Q.backEstimate(S.qDone.scenario, S.qDone.actual - S.qDone.offset) } : null,
         food: { ...Q.foodRange(S.food), waiting_minutes: S.fTimer ? +Q.elapsed(S.fTimer, t).toFixed(2) : null, arrived: S.fDone } });

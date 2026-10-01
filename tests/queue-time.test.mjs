@@ -104,6 +104,9 @@ test("back-estimation finds the pace that reproduces the measured wait", () => {
   assert.equal(o.text, "3 people served in 5 min");
   assert.ok(Math.abs(o.minutes - 2 / 0.6) < 1e-9, "2 counters finishing 0.6 people a minute: about 3.3 min each");
   assert.equal(Q.observed({ start: 0, taps: 0, end: null }, 60000, Q.defaults()).minutes, null);
+  const sep = { ...Q.defaults(), counters: 3, structure: "separate", people: 4 }, watched = Q.observed({ start: 0, taps: 7.5 * 2, end: 10 * 60000 }, 0, sep);
+  assert.ok(Math.abs(watched.minutes - 2) < 1e-9, "taps at all 3 counters, 1.5 people a minute: 2 min each, not 0.67");
+  assert.ok(Math.abs(est({ ...sep, pace: "custom", custom: watched.minutes }).mid - 8) < 3, "4 ahead in your own line at 2 min each: about 8 min");
 });
 
 test("timers come from timestamps, so a paused or backgrounded page keeps the right time", () => {
