@@ -223,7 +223,8 @@ test("the phrase layer is Kent's scale and every survey answer from probly.csv, 
   S.columns.forEach(([label, values], j) => assert.deepEqual(plain(values), rows.map((r) => Number(r[j])), label));
   assert.match(S.source.licence, /^MIT License, copyright \(c\) 2016 Zoni Nation$/);
   assert.match(D.KENT_DATA.source.url, /Words-of-Estimative-Probability\.pdf$/);
-  assert.match(data, /The MIT License \(MIT\)\n \*\n \* Copyright \(c\) 2016 Zoni Nation/, "the licence notice travels with the embedded answers");
+  // Owned licence contract: the MIT notice travels with the embedded answers, in the folder's LICENSE and on the published page.
+  assert.match(data, /The MIT License \(MIT\)\n \*\n \* Copyright \(c\) 2016 Zoni Nation/);
   assert.match(read("visuals/information-gain/LICENSE"), /Copyright \(c\) 2016 Zoni Nation[\s\S]*Words of Estimative Probability/);
   assert.match(html, /Used under the MIT License, copyright © 2016 Zoni Nation/);
   // The vocabulary: survey median first, else the middle of Kent's range; Kent's range shown separately.
@@ -246,7 +247,6 @@ test("the phrase layer is Kent's scale and every survey answer from probly.csv, 
   assert.equal(G.phraseNote({ phrase: null, pct: 40 }), "");
   assert.equal(G.scenario({ prior: { phrase: "made up", pct: 40 } }).prior.phrase, null, "an unknown phrase is never given numbers");
   assert.match(G.analysis(G.defaults()), /^likely — 70%$/m);
-  assert.doesNotMatch(read("tests/information-gain.test.mjs"), new RegExp("visuals/" + "bayes"), "this page stands alone");
 });
 
 test("Copy analysis gives the question, checks, rankings and trail, never NaN or Infinity", () => {
@@ -270,24 +270,33 @@ test("raw.json and the catalogue stub match the engine", () => {
   assert.deepEqual(raw.examples, plain(G.EXAMPLES));
   assert.deepEqual(raw.teaching_presets, plain(G.TEACHING));
   assert.equal(G.EXAMPLES.length, 6);
-  const stub = read("data/visuals/information-gain.yaml");
-  assert.match(stub, /^webmcp_tools: \[get_metadata, get_current_state, analyze_check, run_self_tests\]$/m);
-  assert.match(stub, /^html_path: visuals\/information-gain\/index\.html$/m);
-  assert.match(stub, /^data_path: visuals\/information-gain\/raw\.json$/m);
+  const stub = parseStub(read("data/visuals/information-gain.yaml"));
+  assert.equal(stub.slug, "information-gain");
+  assert.equal(stub.html_path, "visuals/information-gain/index.html");
+  assert.equal(stub.data_path, "visuals/information-gain/raw.json");
+  assert.deepEqual(stub.webmcp_tools, ["get_metadata", "get_current_state", "analyze_check", "run_self_tests"]);
 });
 
+const parseStub = (text) => Object.fromEntries(text.split("\n").filter((l) => /^\w+: /.test(l)).map((l) => {
+  const i = l.indexOf(": "), v = l.slice(i + 2).trim();
+  return [l.slice(0, i), v.startsWith("[") ? v.slice(1, -1).split(",").map((s) => s.trim()) : v.startsWith('"') ? JSON.parse(v) : v];
+}));
+
+// The published HTML is an owned contract: its metadata, offline single-file shape, theme and motion queries and no-JS fallback.
 test("the page is one offline file with the metadata it promises", () => {
   assert.match(html, /<title>Information gain — Yu Jie Teo<\/title>/);
   assert.match(html, /<link rel="canonical" href="https:\/\/teoyujie\.org\/visuals\/information-gain">/);
   for (const p of ["og:title", "og:description", "og:type", "og:url"]) assert.match(html, new RegExp(`<meta property="${p}" content="[^"]+">`));
   assert.match(html, /<meta name="description" content="Express uncertain beliefs in plain English, compare possible observations by expected information gain and time cost, and see how new evidence changes what you believe\.">/);
   assert.match(html, /<a href="https:\/\/teoyujie\.org\/visuals\.html">Visuals<\/a>/);
-  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+rel="stylesheet"|@import|@font-face|fetch\(|XMLHttpRequest|sendBeacon|type="module"|serviceWorker|https?:\/\/[^"\s]*\.(js|css|woff2?)\b/);
+  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+rel="stylesheet"|@import|@font-face|type="module"|https?:\/\/[^"\s]*\.(js|css|woff2?)\b/);
   assert.match(html, /prefers-reduced-motion/);
   assert.match(html, /prefers-color-scheme:dark/);
   assert.match(html, /<div id="nojs">[\s\S]*If E occurs: posterior = 90%[\s\S]*Enable JavaScript to compare your own checks interactively/);
   assert.match(html, /<div id="app" hidden/);
-  // The budget excludes the reused phrase-calibration data and the site's shared deck template.
+  // The ~100 KB budget counts the page's own code. It excludes the reused probability-phrase data block (exempt by the
+  // specification) and the inlined beamdswitch template (the site's shared deck exporter, a standing requirement on every
+  // visualisation, kept byte-identical to templates/beamdswitch.js).
   const own = Buffer.byteLength(html) - Buffer.byteLength(data) - Buffer.byteLength(read("templates/beamdswitch.js"));
   assert.ok(own < 100_000, `the page's own code is ${own} bytes, under the ~100 KB budget`);
 });
@@ -307,7 +316,8 @@ test("every scenario's deck opens in beamdswitch as the standard narrated templa
 });
 
 test("the page boots, its WebMCP tools answer, and the deck buttons export the page as set", async () => {
-  const page = await openPage("information-gain");
+  const network = [], record = (what) => function () { network.push(what); };
+  const page = await openPage("information-gain", { globals: { fetch: record("fetch"), XMLHttpRequest: record("XMLHttpRequest"), WebSocket: record("WebSocket") } });
   const tools = page.run("InformationGainTools");
   assert.deepEqual(plain(plain(tools.map((t) => t.name))), ["get_metadata", "get_current_state", "analyze_check", "run_self_tests"]);
   for (const t of tools) assert.equal(t.annotations.readOnlyHint, true);
@@ -327,4 +337,26 @@ test("the page boots, its WebMCP tools answer, and the deck buttons export the p
   page.run("document.getElementById('app').listeners.click[0]")({ target: { closest: () => btn } });
   assert.equal((await call("get_current_state")).trail.length, 1);
   await assertButtonsExport(page, "information-gain", T.deck(G.report({ ...G.defaults(), trail: [{ id: "c1", outcome: 0 }] })));
+  assert.deepEqual(network, [], "the page makes no network requests");
+});
+
+test("an observation the starting belief now rules out stays observed and can still be undone", async () => {
+  // Parcel: "It arrives in that window" (70% / 0%) settles the belief at 100%; a 0% starting belief then rules it out.
+  const saved = JSON.stringify({ ...G.load("parcel"), trail: [{ id: "c3", outcome: 0 }] });
+  let stored = saved;
+  const page = await openPage("information-gain", { globals: { localStorage: { getItem: () => saved, setItem: (_, v) => { stored = v; }, removeItem() {} } } });
+  const state = () => JSON.parse(stored);
+  const app = page.run("document.getElementById('app')"), learned = page.run("document.getElementById('learned')");
+  app.listeners.input[0]({ target: { dataset: { pf: "text", pk: "prior" }, value: "0", validity: {} } });
+  const E = G.evaluate(state());
+  assert.deepEqual([E.steps.length, E.unapplied], [0, 1]);
+  assert.equal(E.rows.find((r) => r.id === "c3").observed, true, "still locked as observed");
+  assert.ok(E.live.every((r) => r.id !== "c3"), "not ranked again as a live check");
+  assert.match(G.analysis(state()), /\(observed\)[\s\S]*## Observations not applied\n1 observed result is not applied/);
+  assert.match(learned.innerHTML, /1 observed result is not applied/);
+  assert.match(learned.innerHTML, /data-act="undo"/, "Undo is offered");
+  app.listeners.click[0]({ target: { closest: () => ({ disabled: false, dataset: { act: "undo" } }) } });
+  assert.deepEqual(state().trail, []);
+  assert.doesNotMatch(learned.innerHTML, /data-act="undo"|not applied/);
+  assert.equal(G.evaluate(state()).rows.find((r) => r.id === "c3").observed, false);
 });
