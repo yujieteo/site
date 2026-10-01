@@ -109,7 +109,6 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .counts{display:flex;gap:.8rem;font-size:.8125rem;color:var(--muted);margin:0 0 .5rem}
 .pass{color:var(--ok);font-weight:600}
 .fail{color:var(--bad);font-weight:600}
-.pending{color:var(--warn);font-weight:600}
 .blocked{border:1px dashed var(--bad);border-radius:var(--r);padding:.8rem;color:var(--muted)}
 .verify-case>summary{cursor:pointer}
 code{font:.875em var(--mono)}
@@ -141,6 +140,7 @@ dialog .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
   #print-report .r-prelim{border-left:3px solid #b26b00;padding-left:.5rem}
   #print-report .r-eyebrow{font:600 8pt monospace;color:#6e6e73;margin:0}
   #print-report .r-foot{border-top:1px solid #d2d2d7;margin-top:.6rem;padding-top:.3rem;font-size:8pt}
+  #print-report .r-refs{margin:.2rem 0;padding-left:1.2rem}
 }
 .plate-block+.plate-block{margin-top:.8rem;padding-top:.6rem;border-top:1px solid var(--grid)}
 .plate-block h4{margin:0 0 .3rem;font-size:.85rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
@@ -442,7 +442,8 @@ td.status{color:var(--muted);font-size:.78rem}
 
 <section aria-labelledby="verify-h">
   <h2 id="verify-h">Verification</h2>
-  <p>Runs the hand-calculation cases and property tests from the specification on this page's own solver. The same cases run in the repository's test suite. All six milestones are implemented, but the published-reference cases VR-01 to VR-03 (AISC prying and ICR references, spec open questions 2 and 3) await published values and show as pending, so M3 and M5 are not closed.</p>
+  <p>Runs the hand-calculation cases, property tests and published-reference cases from the specification on this page's own solver. The same cases run in the repository's test suite.</p>
+  <p>The published-reference cases use openly readable sources, not the current AISC Manual: VR-02 compares ICR coefficients with Table 13.1 of the <a href="https://www.boltcouncil.org/files/2ndEditionGuide.pdf">Kulak, Fisher and Struik <i>Guide to Design Criteria for Bolted and Riveted Joints</i>, 2nd ed.</a> (reprinted from the AISC Manual, 8th ed., 1980) to 2% or the table's rounding; VR-03 checks the ICR side and coefficient against Examples 1 and 2 of <a href="https://ej.aisc.org/index.php/engj/article/download/378/377">Brandt, AISC Engineering Journal, 1982</a>; VR-01 checks the T-stub prying equations against the Guide's Eqs. 17.8 to 17.12 and 17.18, which have no numerical worked example. The ICR coefficients have not been checked against the current AISC Manual's tables, nor the prying procedure against its current form.</p>
   <button class="btn primary" type="button" id="run-verify">Run verification</button>
   <div id="verify-results"></div>
 </section>

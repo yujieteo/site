@@ -257,7 +257,7 @@
     }
   ],
   "verification": {
-    "set": "M6 (v1)",
+    "set": "M6 (v2)",
     "tolerance": 1e-9,
     "cases": [
       {
@@ -374,15 +374,15 @@
       },
       {
         "id": "VR-01",
-        "title": "AISC T-stub prying worked example"
+        "title": "T-stub prying against the Struik–de Back equations in the Kulak–Fisher–Struik Guide (Eqs. 17.8 to 17.12, 17.18), modified a' and b'"
       },
       {
         "id": "VR-02",
-        "title": "AISC Manual eccentric-load coefficient tables (ICR, Crawford-Kulak), ~2% tolerance"
+        "title": "ICR coefficients C against Table 13.1 of the Kulak–Fisher–Struik Guide (AISC 8th ed., 1980), b = 3 in, 2% or table rounding"
       },
       {
         "id": "VR-03",
-        "title": "ICR side convention against a published worked example"
+        "title": "ICR side convention and coefficient against Brandt (1982) Examples 1 and 2"
       }
     ]
   },
