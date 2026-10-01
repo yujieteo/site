@@ -35,6 +35,7 @@ PORTS = {
     "mohr": "mohr",
     "packets-to-playback": "packets-to-playback",
     "phasors": "phasors",
+    "probabilistic-method": "probabilistic-method",
     "queue-time": "queue-time",
     "root-locus": "root-locus",
     "stability": "stability",
