@@ -23,6 +23,7 @@ PORTS = {
     "convexity-action-engine": "convexity-action-engine",
     "distortion": "distortion",
     "edge-pitch": "edge-pitch",
+    "etale-fundamental-group": "etale-fundamental-group",
     "everyday-actions": "everyday-actions",
     "fastener-cg": "fastener-cg",
     "fermi": "fermi",
