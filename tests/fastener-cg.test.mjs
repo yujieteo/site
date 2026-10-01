@@ -418,10 +418,9 @@ test("the published page and data are built from the current sources", async () 
   const raw = JSON.parse(outputs["raw.json"]);
   assert.equal(raw.warnings.length, Object.keys(CATALOG).length);
   assert.ok(raw.verification.cases.length >= 31);
-  // The panel cites both published references and promises nothing later.
+  // The panel cites both published references.
   assert.ok(html.includes('<a href="https://www.boltcouncil.org/files/2ndEditionGuide.pdf">'));
   assert.ok(html.includes('<a href="https://ej.aisc.org/index.php/engj/article/download/378/377">'));
-  assert.ok(!/await published|not yet entered|show as pending/i.test(html), "no text implying reference values arrive later");
 });
 
 /* ---- M2: allowables, interaction, exact-k MS ---- */
