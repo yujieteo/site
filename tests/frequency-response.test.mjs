@@ -12,9 +12,9 @@ const close = (actual, expected, tol, label) =>
   assert.ok(Math.abs(actual - expected) <= tol, `${label}: ${actual} vs ${expected} (±${tol})`);
 const third = (K, extra = {}) => ({ plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K, ...extra });
 
-test("in-page self-tests (spec section 11, phases 1 and 2) all pass", () => {
+test("in-page self-tests (spec section 11, phases 1 to 3) all pass", () => {
   const t = F.selfTests();
-  assert.ok(t.length >= 60);
+  assert.ok(t.length >= 80);
   assert.equal(t.filter((x) => !x.pass).map((x) => `${x.name}: ${x.detail}`).join("\n"), "");
   assert.ok(t.every((x) => x.tolerance), "every self-test states its tolerance");
 });
@@ -436,6 +436,143 @@ test("matrix exponential, characteristic polynomial and state-space round trip",
   const want = [2, 3, 1];
   back.num.forEach((c, i) => close(c, want[i], 1e-12, `num[${i}]`));
   [1, 4, 5, 2].forEach((c, i) => close(back.den[i], c, 1e-12, `den[${i}]`));
+});
+
+/* ---------- phase 3: Nyquist and Nichols ---------- */
+const nyq = (x) => { const r = F.analyze(x); assert.equal(r.ok, true); return { r, n: r.nyquist }; };
+
+test("Nyquist count Z = N + P agrees with the closed-loop poles across continuous and discrete cases", () => {
+  const cases = [
+    [{ plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K: 3 }, 0, 0, 0],
+    [{ plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K: 9 }, 2, 0, 2],
+    [{ plant: { form: "tf", num: [2], den: [1, -1] }, K: 1 }, -1, 1, 0],
+    [{ plant: { form: "tf", num: [0.5], den: [1, -1] }, K: 1 }, 0, 1, 1],
+    [{ plant: { form: "tf", num: [1, 1], den: [1, 5, 6, 0, 0] }, K: 3 }, 0, 0, 0],
+    [{ plant: { form: "tf", num: [-0.5, -2], den: [1, 1] }, K: 1 }, 1, 0, 1],
+    [{ plant: { form: "tf", num: [1, 0, 0], den: [1, 1] }, K: 1 }, 0, 0, 0],
+    [inZ({ form: "tf", num: [Ts], den: [1, -1] }, { K: 5 }), 0, 0, 0],
+    [inZ({ form: "tf", num: [Ts], den: [1, -1] }, { K: 25 }), 1, 0, 1],
+    [inZ({ form: "tf", num: [1], den: [1] }, { delaySamples: 2, K: 1.5 }), 2, 0, 2],
+    [fromS({ form: "tf", num: [2], den: [1, -1] }, "zoh"), -1, 1, 0],
+    [fromS({ form: "tf", num: [20], den: [1, 3, 2, 0] }, "tustin"), 2, 0, 2],
+  ];
+  for (const [x, N, P, Z] of cases) {
+    const { r, n } = nyq(x);
+    const label = JSON.stringify(x.plant) + ` K=${x.K} ${x.timeDomain || "continuous"}`;
+    assert.equal(n.available, true, label);
+    assert.equal(n.N, N, `N for ${label}`); assert.equal(n.P, P, `P for ${label}`); assert.equal(n.Z, Z, `Z for ${label}`);
+    assert.equal(n.unresolved, false, `resolved for ${label}`);
+    assert.equal(n.crossCheck.agree, true, `agrees for ${label}`);
+    assert.equal(r.closedLoop.unstable, Z);
+    close(n.winding, -N, 1e-6, `integer winding for ${label}`);
+  }
+});
+
+test("the Nyquist count does not depend on a manual display range above a boundary pole", () => {
+  const manual = (lo, hi) => ({ range: { auto: false, wMin: lo, wMax: hi, pointsPerDecade: 100 } });
+  const cases = [
+    // (s − 1)/(s³ + s² + s + 1): poles at ±j and −1, one unstable closed-loop pole at K = 5.
+    [{ plant: { form: "tf", num: [1, -1], den: [1, 1, 1, 1] }, K: 5 }, manual(3, 1000)],
+    // Ts/(z − 1)·1/(z + 0.5): a unit-circle pole at z = 1 and ω_min far above the auto lower bound.
+    [inZ({ form: "tf", num: [Ts], den: [1, -0.5, -0.5] }, { K: 25 }), manual(5, 20)],
+    // A unit-circle pair at ±j (ω = π/(2Ts)) with ω_min above it.
+    [inZ({ form: "tf", num: [1, -0.2], den: [1, 0, 1] }, { K: 4 }), manual(1.5 * Math.PI / (2 * Ts), 30)],
+  ];
+  for (const [x, m] of cases) {
+    const auto = nyq(x).n, man = nyq({ ...x, ...m });
+    const label = JSON.stringify(x.plant) + ` ${x.timeDomain || "continuous"}`;
+    assert.equal(auto.unresolved, false, `auto resolved for ${label}`);
+    assert.equal(auto.crossCheck.agree, true, `auto agrees for ${label}`);
+    for (const k of ["N", "P", "Z", "unresolved"]) assert.equal(man.n[k], auto[k], `${k} for ${label}`);
+    assert.equal(man.n.crossCheck.agree, true, `manual agrees for ${label}`);
+    assert.ok(!man.r.warnings.some((w) => w.code === "nyquist-unresolved" || w.code === "nyquist-mismatch"), `no Nyquist warning for ${label}`);
+    assert.deepEqual(F.nyquistLocus({ ...x, ...m }), F.nyquistLocus(x), `same locus for ${label}`);
+  }
+});
+
+test("with a continuous delay the Nyquist count is the only verdict and matches the analytic critical delay", () => {
+  // 2e^(−sτ)/(s + 1): |L| = 1 at ω = √3; instability once ωτ exceeds π − atan √3, i.e. τ > 2π/(3√3).
+  const tauC = (2 * Math.PI) / (3 * Math.sqrt(3));
+  for (const [tau, Z] of [[0.9 * tauC, 0], [1.1 * tauC, 2], [3, 2]]) {
+    const { r, n } = nyq({ plant: { form: "tf", num: [2], den: [1, 1] }, K: 1, delay: tau });
+    assert.equal(r.closedLoop.available, false);
+    assert.equal(n.crossCheck.available, false);
+    assert.equal(n.Z, Z, `τ = ${tau}`);
+    assert.equal(n.unresolved, false);
+  }
+  const bad = F.analyze({ plant: { form: "tf", num: [1, 0, 0], den: [1, 1] }, K: 1, delay: 0.1 });
+  assert.equal(bad.nyquist.available, false);
+  assert.ok(bad.warnings.some((w) => w.code === "nyquist-unavailable"));
+});
+
+test("a closed-loop pole on the boundary makes the count undefined and is reported, not miscounted", () => {
+  const { n, r } = nyq({ plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K: 6 });
+  assert.equal(n.onContour, true);
+  assert.equal(n.verdict, "marginal");
+  assert.ok(r.warnings.some((w) => w.code === "nyquist-boundary"));
+  assert.ok(!r.warnings.some((w) => w.code === "nyquist-unresolved"));
+  const d = nyq(inZ({ form: "tf", num: [Ts], den: [1, -1] }, { K: 20 })).n;
+  assert.equal(d.onContour, true);
+});
+
+test("the Nyquist locus is the upper contour with indentations; exports mirror it by conjugate symmetry", () => {
+  const x = { plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K: 3 };
+  const loc = F.nyquistLocus(x);
+  assert.ok(loc.length > 100);
+  assert.equal(loc[0].kind, "indent", "the contour starts round the pole at s = 0");
+  const pos = loc.filter((p) => p.kind === "pos");
+  const w = pos.map((p) => p.w);
+  assert.ok(w.every((v, i) => i === 0 || v >= w[i - 1]), "frequency increases along the upper half");
+  for (const p of pos.filter((_, i) => i % 97 === 0)) {
+    const e = F.responseAt(x, p.w);
+    close(p.re, e.re, 1e-9 * Math.max(1, Math.hypot(e.re, e.im)), `Re L at ${p.w}`);
+    close(p.im, e.im, 1e-9 * Math.max(1, Math.hypot(e.re, e.im)), `Im L at ${p.w}`);
+  }
+  const csv = F.toCSV(x, "nyquist").split("\n").filter((l) => /^(pos|neg|indent|arc),/.test(l)).map((l) => l.split(","));
+  assert.equal(csv.length, 2 * loc.length);
+  const first = csv[0], mirrored = csv[csv.length - 1];
+  close(Number(first[2]), Number(mirrored[2]), 0, "mirror keeps Re L");
+  close(Number(first[3]), -Number(mirrored[3]), 0, "mirror negates Im L");
+  assert.ok(csv.some((r) => r[0] === "neg" && Number(r[1]) < 0), "negative frequencies are listed");
+  const nic = F.toCSV(x, "nichols").split("\n").filter((l) => /^[0-9]/.test(l)).map((l) => l.split(",").map(Number));
+  const rows = F.curves(x);
+  assert.equal(nic.length, rows.length);
+  close(nic[10][1], rows[10].phaseDeg, 0, "Nichols phase column"); close(nic[10][2], 20 * Math.log10(rows[10].mag), 1e-12, "Nichols dB column");
+});
+
+test("Nichols contours: closed M > 1 contours, open M < 1 contours, N-contours and the Ms boundary hold their defining values", () => {
+  assert.equal(F.mContour(2, -180).length, 2, "two branches round the critical point for M > 1");
+  assert.equal(F.mContour(2, -60).length, 0, "no branch far from −180° for M = 2");
+  assert.equal(F.mContour(0.5, -60).length, 1, "a single branch for M < 1");
+  close(F.mContour(1, -180)[0], 0.5, 1e-15, "M = 1 at φ = −180° is |L| = 1/2");
+  for (const [M, ph] of [[2, -170], [0.5, -300], [1.4, -200], [0.9, -45]]) for (const r of F.mContour(M, ph)) {
+    const L = { re: r * Math.cos((ph * Math.PI) / 180), im: r * Math.sin((ph * Math.PI) / 180) };
+    close(Math.hypot(L.re, L.im) / Math.hypot(1 + L.re, L.im), M, 1e-12, `|T| on M = ${M} at ${ph}°`);
+  }
+  for (const [psi, ph] of [[-30, -60], [-90, -150], [-120, -170]]) {
+    const r = F.nContour(psi, ph);
+    assert.ok(r > 0, `N-contour ψ = ${psi} exists at φ = ${ph}`);
+    const L = { re: r * Math.cos((ph * Math.PI) / 180), im: r * Math.sin((ph * Math.PI) / 180) };
+    const T = cdiv(L, { re: 1 + L.re, im: L.im });
+    close(Math.atan2(T.im, T.re), (psi * Math.PI) / 180, 1e-12, `∠T on ψ = ${psi}`);
+  }
+  for (const r of F.msBoundary(2, -170)) close(Math.hypot(1 + r * Math.cos((-170 * Math.PI) / 180), r * Math.sin((-170 * Math.PI) / 180)), 0.5, 1e-12, "|1 + L| on the Ms boundary");
+  assert.equal(F.msBoundary(2, -90).length, 0, "the Ms = 2 boundary does not reach φ = −90°");
+  // The loop's own Ms boundary touches its locus: the smallest |1 + L| along the locus is 1/Ms.
+  const x = { plant: { form: "tf", num: [1], den: [1, 3, 2, 0] }, K: 3 }, r = F.analyze(x);
+  close(Math.min(...F.curves(x).map((d) => 1 / d.S)), 1 / r.margins.Ms.value, 5e-3, "min |1 + L| on the grid is 1/Ms (to grid resolution)");
+});
+
+test("the report and WebMCP summary carry the Nyquist count and its convention", () => {
+  const x = { plant: { form: "tf", num: [2], den: [1, -1] }, K: 1 };
+  const md = F.toMarkdown(x);
+  assert.match(md, /## Nyquist stability count/);
+  assert.match(md, /N = −?-?1 .*P = 1.*Z = N \+ P = 0/);
+  assert.match(md, /Cross-check with the closed-loop poles: agrees/);
+  assert.match(md, /clockwise encirclements of −1/);
+  const json = JSON.parse(F.toResultsJSON(x));
+  assert.equal(json.results.nyquist.Z, 0);
+  assert.equal(json.results.nyquist.P, 1);
 });
 
 test("raw.json is the published metadata and default example of the page", async () => {

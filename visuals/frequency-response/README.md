@@ -5,7 +5,7 @@ a substitute for a verified control-design toolchain; the page carries a
 permanent banner saying so and every export repeats it. `index.html` is one
 self-contained file with no dependencies, no network access and no build step.
 
-This is phase 2 of the four in the design spec: single-loop (SISO) loops in
+This is phase 3 of the four in the design spec: single-loop (SISO) loops in
 continuous time (`L = K·C·G·e^(−sτ)`) or discrete time (`L = K·C·G·z^(−d)` with
 sample time Ts, evaluated up to the Nyquist frequency π/Ts). In discrete time
 each block is either entered in z or entered in s and discretised in state
@@ -13,10 +13,19 @@ space by zero-order hold (hand-written matrix exponential), Tustin with an
 optional prewarp frequency, or forward or backward Euler; the continuous
 response is overlaid on the discrete one. Delays in discrete time are whole
 samples. Both domains get the Bode plot, gain, phase and delay margins, Ms, Mt,
-vector margin, resonant peak and bandwidth, closed-loop poles, a pole-zero map
-(s-plane or z-plane with the unit circle), threshold checks, exports and
-self-tests. Nyquist and Nichols (phase 3) and MIMO (phase 4) are not built yet;
-their tabs are shown disabled.
+vector margin, resonant peak and bandwidth, closed-loop poles, threshold
+checks, exports and self-tests, plus:
+
+- a Nyquist plot with the full contour (negative frequencies mirrored), −1,
+  direction arrows, the 1/Ms circle, a zoom to −1 and a compressed log-radius
+  view, and the count Z = N + P from the argument principle on an adaptively
+  refined contour indented round boundary poles, cross-checked against the
+  closed-loop poles (with a delay in continuous time it is the only verdict);
+- a Nichols chart with the critical point every 360°, closed-form constant-M
+  and constant-N contours and the loop's Ms boundary;
+- a pole-zero map (s-plane, or z-plane with the unit circle).
+
+MIMO (phase 4) is not built yet; its tab is shown disabled.
 
 | File | Role |
 | --- | --- |
