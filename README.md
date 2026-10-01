@@ -72,7 +72,7 @@ needs network access to Hugging Face and jsDelivr.
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-node --test 'tests/*.test.{mjs,cjs}' 'visuals/sectionlab/tests/*.test.mjs' 'visuals/md-explorer/tests/*.test.mjs'
+node --test 'tests/*.test.{mjs,cjs}' 'visuals/md-explorer/tests/*.test.mjs'
 ```
 
 Many tests read the built `site/`, so run `scripts/build.py` first. Node runs
@@ -80,9 +80,7 @@ every `tests/*.test.mjs` and `tests/*.test.cjs`, so a new Node test needs no
 change to this command or to CI.
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
-`package.json` or installed packages. The Sectionlab tests (run from
-`tests/test_sectionlab.py`) also need numpy, scipy and PyYAML:
-`.venv/bin/pip install -r visuals/sectionlab/requirements-test.txt`. The Python tests copy the repository to a
+`package.json` or installed packages. The Python tests copy the repository to a
 temporary directory and rebuild the site there, so they also read
 `VISUALS_REPO`.
 

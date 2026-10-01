@@ -35,7 +35,7 @@ from the root of the yujieteo/site checkout:
 .venv/bin/python scripts/validate.py
 .venv/bin/python scripts/build.py
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-node --test 'tests/*.test.{mjs,cjs}' 'visuals/sectionlab/tests/*.test.mjs' 'visuals/md-explorer/tests/*.test.mjs'
+node --test 'tests/*.test.{mjs,cjs}' 'visuals/md-explorer/tests/*.test.mjs'
 ```
 
 The build and the Python tests need the separate `visuals` checkout; set

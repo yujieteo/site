@@ -7,8 +7,7 @@ the browser; `index.html` is one self-contained file.
 
 This copy tracks [yujieteo/beamdiag](https://github.com/yujieteo/beamdiag)
 (commit `db117e2`). The site keeps its own breadcrumb (back to Visuals), the
-catalogue entry in `data/visuals/beamdiag.yaml`, the WebMCP tool checks and
-the page tests below, and three page fixes: the section cursor line ignores
+catalogue entry in `data/visuals/beamdiag.yaml`, and three page fixes: the section cursor line ignores
 the pointer, so a handle can be dragged through it; axis ranges and load-arrow
 scales are found with loops rather than `Math.max(...values)` (so any sample
 or load count draws); and an unsolvable edit greys the extremes and the values
@@ -31,19 +30,19 @@ python reference.py          # rebuild reference.json after editing fixtures.jso
 python reference.py --check  # fail if reference.json is stale
 ```
 
-The tests are `tests/beamdiag.test.mjs`, `tests/beamdiag-ui.test.mjs`,
-`tests/beamdiag-review-regressions.test.mjs`, `tests/beamdiag-figure.test.mjs`
-and `tests/beamdiag-beamdswitch.test.mjs` (Node; the last three run the built page in the stand-in DOM of
-`tests/beamdiag-page-harness.mjs`), and `tests/test_beamdiag.py` and
-`tests/test_beamdiag_random.py` (Python, which also run the engine through
-`node`). The beamdswitch test parses the decks with a read-only copy of
-beamdswitch's deck and plot parsers in `tests/fixtures/beamdswitch/`. [beamdiag's docs/verification.md](https://github.com/yujieteo/beamdiag/blob/main/docs/verification.md)
-lists what each checks.
+The engine, page, deck and reference tests live in
+[yujieteo/beamdiag](https://github.com/yujieteo/beamdiag) and run in its CI;
+[beamdiag's docs/verification.md](https://github.com/yujieteo/beamdiag/blob/main/docs/verification.md)
+lists what each checks. The site keeps only integration checks:
+`tests/test_beamdiag.py` (the catalogue entry, and that the published copy
+matches this folder) and `tests/beamdiag-beamdswitch.test.mjs` (this folder's
+`beamdswitch.js` is the site's shared template).
 
-`tests/beamdiag-browser.test.mjs` drags a handle with real mouse events in
-Chrome, so it is skipped unless `BEAMDIAG_BROWSER_URL` points at a Chrome
-started with remote debugging. CI does not run it; run it by hand from the
-repository root after changing the page's handles or overlays:
+`tests/beamdiag-browser.test.mjs` drags a handle in the published copy with
+real mouse events in Chrome, so it is skipped unless `BEAMDIAG_BROWSER_URL`
+points at a Chrome started with remote debugging. CI does not run it; run it by
+hand from the repository root after a build that changes the page's handles or
+overlays:
 
 ```sh
 # start an isolated Chrome with remote debugging (macOS path shown; use your Chrome binary elsewhere)

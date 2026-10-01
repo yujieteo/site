@@ -3,9 +3,10 @@ import assert from "node:assert/strict";
 
 // Run against an isolated Chrome started with --remote-debugging-port=9227:
 // BEAMDIAG_BROWSER_URL=http://127.0.0.1:9227 node --test tests/beamdiag-browser.test.mjs
+// yujieteo/beamdiag runs the same test against its index.html; the site checks the published copy.
 const browser = process.env.BEAMDIAG_BROWSER_URL;
+const path = "site/visuals/beamdiag/index.html";
 
-for (const path of ["visuals/beamdiag/index.html", "site/visuals/beamdiag/index.html"]) {
 test(`mouse dragging a point-force handle through the section cursor reaches the endpoint (${path})`, { skip: !browser, timeout: 15000 }, async () => {
   const url = new URL(`../${path}`, import.meta.url).href;
   const target = await (await fetch(`${browser}/json/new?${encodeURIComponent(url)}`, { method: "PUT" })).json();
@@ -60,4 +61,3 @@ test(`mouse dragging a point-force handle through the section cursor reaches the
     await fetch(`${browser}/json/close/${target.id}`);
   }
 });
-}
