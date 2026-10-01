@@ -750,27 +750,6 @@ svg .hl{stroke-width:4}
     }
     return (z) => Math.max(f, 1 + cv * z);
   }
-  /* Log density of one window's relative throughput (before the floor): the local action is its negative. */
-  function logDensity(m, x) {
-    const cv = m.cv;
-    if (!(cv > 0)) return null;
-    if (m.family === "lognormal") {
-      if (!(x > 0)) return -Infinity;
-      const s = Math.sqrt(Math.log1p(cv * cv)), u = (Math.log(x) + s * s / 2) / s;
-      return -0.5 * u * u - Math.log(x * s * Math.sqrt(2 * Math.PI));
-    }
-    if (m.family === "student") {
-      const nu = m.param, k = scale(m), t = (x - 1) / k;
-      return lgamma((nu + 1) / 2) - lgamma(nu / 2) - 0.5 * Math.log(nu * Math.PI) - (nu + 1) / 2 * Math.log1p(t * t / nu) - Math.log(k);
-    }
-    if (m.family === "pareto") {
-      const a = m.param, k = scale(m), p = a / (a - 1) - (x - 1) / k;
-      if (!(p >= 1)) return -Infinity;
-      return Math.log(a) - (a + 1) * Math.log(p) - Math.log(k);
-    }
-    const u = (x - 1) / cv;
-    return -0.5 * u * u - Math.log(cv * Math.sqrt(2 * Math.PI));
-  }
 
   /* ---------- scenario ---------- */
   const defaults = () => scenario({ preset: "football" });
@@ -849,7 +828,6 @@ svg .hl{stroke-width:4}
   /* Rate–distortion of a unit-variance Gaussian source: D(R) = 2^(-2R/R0), so Q = 1 - D. */
   const distortion = (mbps) => Math.pow(2, (-2 * mbps) / MODEL.r0);
   const quality = (mbps) => 1 - distortion(mbps);
-  const rateFor = (d) => (MODEL.r0 / 2) * Math.log2(1 / Math.min(1, Math.max(1e-12, d)));
 
   /* One rung's consequences under the scenario: download time, stall risk, latency, utility. */
   function rungOutcome(s, rung, smp) {
@@ -1147,9 +1125,9 @@ svg .hl{stroke-width:4}
     return family({ ...m, cv: Math.max(0.05, m.cv) });
   }
   function yBins(s) {
-    const t = [...new Set([s.segment / 2, s.segment, s.buffer].filter((v) => v > 0))].sort((p, q) => p - q);
-    const name = (v) => (v === s.buffer ? "stall" : v === s.segment ? "drains the buffer" : "keeps up");
-    return { edges: t, labels: ["fast", ...t.map(name)] };
+    if (!(s.buffer > 0)) return { edges: [], labels: ["stall"] };
+    const below = [s.segment / 2, s.segment].filter((v) => v < s.buffer);
+    return { edges: [...below, s.buffer], labels: [...["fast", "keeps up", "drains the buffer"].slice(0, below.length + 1), "stall"] };
   }
   function edgesFor(values, k) {
     const sorted = Float64Array.from(values).sort(), e = [];
@@ -1163,7 +1141,7 @@ svg .hl{stroke-width:4}
     return h + (k - 1) / (2 * n * Math.LN2); // Miller–Madow correction
   }
   function bottleneck(x) {
-    const s = scenario(x), m = modelOf(s), rung = RUNGS.find((r) => r.id === (s.candidate || s.current)) || RUNGS[1];
+    const s = scenario(x), m = modelOf(s), rung = RUNGS.find((r) => r.id === evaluate(x).chosen.id);
     const key = `${modelKey(m)}|${s.mbps}|${s.buffer}|${s.segment}|${s.loss}|${rung.id}`;
     let out = ibCache.get(key);
     if (out) return out;
@@ -1187,7 +1165,7 @@ svg .hl{stroke-width:4}
       feats.mean[h] = Math.log(st.mean); feats.sd[h] = st.sd / st.mean; feats.rho[h] = st.rho; feats.tail[h] = mn / st.mean;
       feats.last[h] = Math.log((buf[P - 1] + buf[P - 2] + buf[P - 3] + buf[P - 4]) / 4);
       const T = size / (fut / per);
-      ys[h] = s.buffer <= 0 ? yb.edges.length : binOf(yb.edges, T);
+      ys[h] = binOf(yb.edges, T);
       regimes[h] = ri;
     }
     const codes = {};
@@ -1266,8 +1244,8 @@ svg .hl{stroke-width:4}
 
   /* ---------- words ---------- */
   function headline(e) {
-    const b = e.best, cur = RUNGS.find((r) => r.id === e.s.current);
-    const verb = b.id === e.s.current ? `Stay at ${b.label}` : RUNGS.indexOf(b) < RUNGS.indexOf(cur) ? `Switch up to ${b.label}` : `Drop to ${b.label}`;
+    const b = e.best, at = (id) => RUNGS.findIndex((r) => r.id === id);
+    const verb = b.id === e.s.current ? `Stay at ${b.label}` : at(b.id) < at(e.s.current) ? `Switch up to ${b.label}` : `Drop to ${b.label}`;
     return { head: b.label, verb, sub: `${verb}: about ${secs(b.tMedian)} to download, stall risk ${pct(b.stall, e.sample.segments)}, live delay about ${secs(b.latency)}.` };
   }
   function describe(e) {
@@ -1316,8 +1294,8 @@ svg .hl{stroke-width:4}
 
   return {
     RUNGS, WINDOW, VARIABILITY, PERSISTENCE, TAILS, FAMILIES, PRESETS, LIMITS, MODEL, ASSUMPTIONS, OPERATORS, REGIMES, CANDIDATES,
-    clamp, erfc, Phi, PhiInv, lgamma, ibeta, studentCdf, studentTail, rng, normals, family, scale, sdOf, transform, logDensity, defaults, scenario, modelOf, windowsPer,
-    latent, trace, segmentSample, stallAt, compareFamilies, ecdf, quantile, mean, distortion, quality, rateFor, evaluate, pct, secs, fmt,
+    clamp, erfc, Phi, PhiInv, lgamma, ibeta, studentCdf, studentTail, rng, normals, family, scale, sdOf, transform, defaults, scenario, modelOf, windowsPer,
+    latent, trace, segmentSample, stallAt, compareFamilies, ecdf, quantile, mean, distortion, quality, evaluate, pct, secs, fmt,
     gaussianCouplings, couplingsInverse, ringAction, ringAR1, stats, klToGaussian, blockAverage, blockVariance, flow, truncatedStall,
     eigen, classify, scaling, clt, tilt, cumulantsAt, W, quartic, bottleneck, ibChoice, yBins, packets, playback, headline, describe, speak, report,
   };
@@ -1643,7 +1621,6 @@ function step7(e) {
     label: `The tail coupling, excess kurtosis, against block length; dashed, the halving expected for independent windows; hollow, the zero the Gaussian projection carries.` }));
   $("s7-text").textContent = prev ? `From ${scaleLabel(s, l)} the truncated projection predicted ρ = ${prev.predicted.rho.toFixed(2)} and sd = ${prev.predicted.sd.toFixed(2)} Mbps here; the exact blocks show ρ = ${L.rho.toFixed(2)} and sd = ${L.sd.toFixed(2)} Mbps. The mean of an AR(1) pair is not itself AR(1), and the projection drops the tail entirely (it predicts zero excess kurtosis; the blocks show ${L.deterministic ? "0" : L.exkurt.toFixed(2)}), so the truncated action drifts from the exact coarse-grained distribution. KL from the blocks to their Gaussian projection: ${L.kl.toFixed(3)} bits per block (sampling noise alone gives about ${L.klFloor.toFixed(3)}).` : "At the finest scale the couplings are estimated directly from the 125 ms windows. Take an RG step to see what the truncated projection predicts for the next scale and how it compares with the exact aggregation.";
 }
-let ibPending = 0;
 function step8(e) {
   const s = e.s;
   $("s8-beta-out").textContent = S.ibBeta.toFixed(1);
@@ -1724,7 +1701,7 @@ function scene(c, w, h, t) {
   const min = Math.floor(52 + t / 60), sec = Math.floor(t % 60);
   c.fillText(`HOM 1–1 AWY ${min}:${String(sec).padStart(2, "0")}`, w - 112 * k, 23 * k);
 }
-let play = null, raf = 0, visible = true, frozenT = 0;
+let play = null, raf = 0, visible = true;
 function drawPitch(t, rung, stalled) {
   if (!ctx || !lctx) return;
   const f = PIX[rung] || 2, W = canvas.width, H = canvas.height;

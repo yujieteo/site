@@ -1,6 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import vm from "node:vm";
+import { execFileSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { assertButtonsExport, assertInlined, assertStandardDeck, assertTemplateCopy, openPage, read } from "./data-visuals-beamdswitch.mjs";
 
 const html = read("visuals/packets-to-playback/index.html");
@@ -9,6 +12,30 @@ const load = () => { const ctx = {}; ctx.self = ctx; vm.runInNewContext(engine, 
 const P = load();
 const T = (await import("node:module")).createRequire(import.meta.url)("../templates/beamdswitch.js");
 const plain = (v) => JSON.parse(JSON.stringify(v));
+// The catalogue stub as the site's own validator reads it (scripts/validate.py: PyYAML, then the visualisation JSON Schema).
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const PYTHON = process.env.PYTHON || (existsSync(`${ROOT}.venv/bin/python`) ? `${ROOT}.venv/bin/python` : "python3");
+const catalogue = () => JSON.parse(execFileSync(PYTHON, ["-c", `import json, sys, jsonschema
+sys.path.insert(0, "scripts")
+from validate import ROOT, load_document
+doc, err = load_document(ROOT / "data/visuals/packets-to-playback.yaml")
+schema = json.loads((ROOT / "schema/visualization.schema.json").read_text(encoding="utf-8"))
+print(json.dumps({"stub": doc, "errors": [err] if err else [e.message for e in jsonschema.Draft7Validator(schema).iter_errors(doc)]}))`], { cwd: ROOT, encoding: "utf8" }));
+/* The document as a browser without JavaScript builds it: each element's id, attributes and open ancestors. */
+function elements(doc) {
+  const body = doc.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/g, "").replace(/<!--[\s\S]*?-->/g, "");
+  const VOID = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"]);
+  const open = [], out = new Map();
+  for (const m of body.matchAll(/<(\/?)([a-zA-Z][\w-]*)([^>]*)>/g)) {
+    const [, end, tag, attrs] = m, name = tag.toLowerCase();
+    if (end) { const i = open.findLastIndex((e) => e.name === name); if (i >= 0) open.length = i; continue; }
+    const e = { name, hidden: /(^|\s)hidden(\s|=|$)/.test(attrs), id: /\bid="([^"]+)"/.exec(attrs)?.[1], ancestors: open.slice() };
+    if (e.id) out.set(e.id, e);
+    if (!VOID.has(name) && !attrs.endsWith("/")) open.push(e);
+  }
+  return out;
+}
+const shown = (e) => !e.hidden && e.ancestors.every((a) => !a.hidden);
 const close = (a, b, tol, what) => assert.ok(Math.abs(a - b) <= tol, `${what}: ${a} vs ${b} (tolerance ${tol})`);
 
 /* Every number reachable from a value is finite: no NaN or Infinity anywhere (null is allowed). */
@@ -49,6 +76,10 @@ test("the three presets weigh quality, stalls and latency differently", () => {
   const movie = P.evaluate({ preset: "movie" }), call = P.evaluate({ preset: "call" }), live = P.evaluate({ preset: "football" });
   assert.equal(movie.best.id, "2160p", "a 30 s buffer makes 4K safe enough");
   assert.equal(call.best.id, "480p", "a call sacrifices quality for continuity");
+  assert.equal(P.headline(call).verb, "Drop to 480p", "the call's current 720p is above the recommendation");
+  assert.equal(P.headline(movie).verb, "Switch up to 4K");
+  assert.match(P.headline(P.evaluate({ mbps: 3 })).verb, /^Drop to /, "lower throughput steps the football stream down");
+  assert.match(P.report({ preset: "call" }).checks[1].key, /^Drop to 480p: /, "the deck's takeaway says the same");
   assert.ok(call.s.beta > live.s.beta && live.s.beta > movie.s.beta);
   assert.deepEqual(plain(P.RUNGS.map((r) => r.mbps)), [18, 7, 4, 2]);
 });
@@ -169,8 +200,7 @@ test("the truncated projection is exact for second-order statistics of a Gaussia
   const near = P.truncatedStall({}, 0, "1080p").stall, full = P.evaluate({}).rungs[1].stall;
   assert.ok(near < full, "dropping the tail understates the risk");
   assert.ok(P.truncatedStall({}, 6, "1080p").coarser && P.truncatedStall({}, 6, "1080p").stall < near, "coarser than a segment: the risk is understated further");
-  assert.match(html, /Truncated projection/);
-  assert.match(html, /not the true marginal/);
+  assert.match(P.report({}).results[1].body, /Truncated Gaussian AR\(1\) projection: an approximation, not the exact marginal/, "the deck labels the projection");
 });
 
 test("scaling: mean relevant, variance marginal, skew and kurtosis irrelevant around the Gaussian", () => {
@@ -202,7 +232,25 @@ test("the bottleneck trades bits kept for bits predicted", () => {
   assert.ok(z5.iZY > z1.iZY, "the most recent half second predicts the next segment");
   assert.equal(P.ibChoice(ib, 0).id, "Z1", "at β = 0 the bottleneck keeps the least");
   assert.equal(P.ibChoice(ib, 1e4).id, ib.candidates.reduce((a, b) => (b.iZY > a.iZY ? b : a)).id, "at large β it keeps the most predictive");
-  assert.deepEqual(plain(P.yBins(P.scenario({})).labels), ["fast", "keeps up", "drains the buffer", "stall"]);
+  for (const x of [{ preset: "call" }, { preset: "call", candidate: "2160p" }, {}, { mbps: 3 }])
+    assert.equal(P.bottleneck(x).rung, P.evaluate(x).chosen.id, `${JSON.stringify(x)}: Y is the download time at the rung the page names`);
+  assert.equal(P.bottleneck({ preset: "call" }).rung, "480p");
+});
+
+test("the bottleneck's Y bins are named by what the download time does to playback", () => {
+  const bins = (buffer) => { const b = P.yBins(P.scenario({ buffer })); return { edges: plain(b.edges), labels: plain(b.labels) }; };
+  // Football segments are 2 s: fast under 1 s, keeps up under 2 s, then drains the buffer until it stalls.
+  assert.deepEqual(bins(6.2), { edges: [1, 2, 6.2], labels: ["fast", "keeps up", "drains the buffer", "stall"] });
+  assert.deepEqual(bins(1.5), { edges: [1, 1.5], labels: ["fast", "keeps up", "stall"] }, "a buffer under one segment: anything over it stalls");
+  assert.deepEqual(bins(2), { edges: [1, 2], labels: ["fast", "keeps up", "stall"] });
+  assert.deepEqual(bins(1), { edges: [1], labels: ["fast", "stall"] });
+  assert.deepEqual(bins(0.5), { edges: [0.5], labels: ["fast", "stall"] });
+  assert.deepEqual(bins(0), { edges: [], labels: ["stall"] }, "an empty buffer: every download stalls");
+  for (const buffer of [0, 0.5, 1.5, 6.2]) {
+    const ib = P.bottleneck({ buffer });
+    assert.deepEqual(plain(ib.yLabels), bins(buffer).labels);
+    finite(plain(ib.candidates), `buffer ${buffer}`);
+  }
 });
 
 test("raw.json and the catalogue stub match the engine", () => {
@@ -211,27 +259,46 @@ test("raw.json and the catalogue stub match the engine", () => {
   for (const [k, v] of Object.entries({ rungs: P.RUNGS, variability: P.VARIABILITY, persistence: P.PERSISTENCE, tails: P.TAILS, families: P.FAMILIES, presets: P.PRESETS, limits: P.LIMITS, model: P.MODEL, operators: P.OPERATORS, regimes: P.REGIMES, bottleneck_candidates: P.CANDIDATES, assumptions: P.ASSUMPTIONS }))
     assert.deepEqual(raw[k], plain(v), k);
   assert.equal(raw.window_seconds, P.WINDOW);
-  const stub = read("data/visuals/packets-to-playback.yaml");
-  assert.match(stub, /^webmcp_tools: \[get_metadata, get_current_state, evaluate_bitrate, get_rg_flow\]$/m);
-  assert.match(stub, /^html_path: visuals\/packets-to-playback\/index\.html$/m);
-  assert.match(stub, /^data_path: visuals\/packets-to-playback\/raw\.json$/m);
+  const { stub, errors } = catalogue();
+  assert.deepEqual(errors, [], "the catalogue stub passes the site's visualisation schema");
+  assert.deepEqual([stub.slug, stub.html_path, stub.data_path], ["packets-to-playback", "visuals/packets-to-playback/index.html", "visuals/packets-to-playback/raw.json"]);
+  assert.deepEqual(stub.webmcp_tools, ["get_metadata", "get_current_state", "evaluate_bitrate", "get_rg_flow"]);
+  assert.deepEqual(stub.links, [{ rel: "related", target: "visualization:beamdswitch" }, { rel: "related", target: "visualization:queue-time" }]);
 });
 
-test("the page is one offline file with the metadata and fallback it promises", () => {
+test("the page is one offline file with the metadata and fallback it promises", async () => {
   assert.match(html, /<title>From Packets to Playback — Probability, Information and Renormalisation<\/title>/);
   assert.match(html, /<link rel="canonical" href="https:\/\/teoyujie\.org\/visuals\/packets-to-playback">/);
   assert.match(html, /<meta property="og:url" content="https:\/\/teoyujie\.org\/visuals\/packets-to-playback">/);
   assert.match(html, /<meta property="og:title" content="[^"]+">/);
   assert.match(html, /<meta name="description" content="Explore probability, information theory and renormalisation by deciding how a live video stream should adapt to a noisy network\.">/);
-  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+rel="stylesheet"|@import|fetch\(|XMLHttpRequest|type="module"|serviceWorker|<iframe|<video|<img[^>]+src="http|og:image/);
-  assert.match(html, /prefers-reduced-motion/);
-  assert.match(html, /prefers-color-scheme:dark/);
+  assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+rel="stylesheet"|@import|type="module"|<iframe|<video|<img[^>]+src="http|og:image/, "nothing for the document to load");
+  // Booted with every network API and the reduced-motion query recorded: the page asks for motion preference and never reaches the network.
+  const net = [], media = [], record = (what) => function () { net.push(what); };
+  const page = await openPage("packets-to-playback", { globals: {
+    fetch: record("fetch"), XMLHttpRequest: record("XMLHttpRequest"), WebSocket: record("WebSocket"), EventSource: record("EventSource"),
+    navigator: { clipboard: { writeText: async () => {} }, sendBeacon: record("sendBeacon"), serviceWorker: { register: record("serviceWorker") } },
+    matchMedia: (q) => { media.push(q); return { matches: true, addEventListener() {}, removeEventListener() {} }; },
+  } });
+  const tools = page.run("PacketsPlaybackTools");
+  for (const t of tools) await t.execute({});
+  page.run(`document.getElementById("app").listeners.input[0]({ target: { type: "number", value: "3", dataset: { k: "mbps" } } })`);
+  assert.deepEqual(net, [], "no network request");
+  assert.ok(media.includes("(prefers-reduced-motion: reduce)"), "the page asks whether to reduce motion");
+  assert.equal(page.run(`document.getElementById("app").hidden`), false, "with JavaScript the controls show");
+  assert.equal(page.run(`document.getElementById("nojs").hidden`), true, "with JavaScript the fallback hides");
+  // Dark theme: the stylesheet redefines the palette under prefers-color-scheme: dark.
+  const css = /<style>([\s\S]*?)<\/style>/.exec(html)[1], vars = (block) => Object.fromEntries([...block.matchAll(/(--[\w-]+):([^;}]+)/g)].map((m) => [m[1], m[2].trim()]));
+  const light = vars(/:root\{([^}]*)\}/.exec(css)[1]), dark = vars(/@media \(prefers-color-scheme:dark\)\{[^{]*\{([^}]*)\}/.exec(css)[1]);
+  for (const k of ["--bg", "--fg", "--surface"]) assert.ok(dark[k] && dark[k] !== light[k], `${k} changes in the dark scheme`);
   assert.match(html, /<a href="\.\.\/\.\.\/visuals\.html">Visuals<\/a>/, "the site's back link");
   const nojs = /<div id="nojs">([\s\S]*?)\n<\/div>/.exec(html)[1];
   assert.match(nojs, /<i>p<\/i>\(<i>x<\/i>\) = <i>Z<\/i><sup>−1<\/sup> e<sup>−<i>S<\/i>\(<i>x<\/i>\)<\/sup>/, "the identity without JavaScript");
   for (const t of [/need JavaScript/, /What information|<i>P<\/i>\(<i>T<\/i> &gt; <i>B<\/i>\)/, /Coarse-graining/, /RG and the information bottleneck/]) assert.match(nojs, t);
-  assert.match(html, /<div id="app" hidden>/, "controls stay hidden without JavaScript");
-  assert.match(html, /<\/div>\n\n<section id="dict"/, "the dictionary is static HTML outside the app, so it shows without JavaScript");
+  const els = elements(html);
+  assert.ok(!shown(els.get("app")), "controls stay hidden without JavaScript");
+  assert.ok(shown(els.get("nojs")), "the fallback shows without JavaScript");
+  assert.ok(shown(els.get("dict")) && !els.get("dict").ancestors.some((a) => a.id === "app"), "the dictionary is outside the app, so it shows without JavaScript");
   for (const k of ["action", "Z", "W", "J", "cumulant", "cov", "kernel", "marg", "cg", "fixed", "relevant", "irrelevant", "marginal", "kl"]) assert.match(html, new RegExp(`<tr data-key="${k}">`), k);
   assert.ok(Buffer.byteLength(html) < 200 * 1024, `about 200 kB or less (${Buffer.byteLength(html)} bytes)`);
 });
