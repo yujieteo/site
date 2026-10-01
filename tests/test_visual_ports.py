@@ -21,22 +21,31 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTS = {
     "bayes": "bayes",
     "convexity-action-engine": "convexity-action-engine",
+    "delta-cohomology": "delta-cohomology",
     "distortion": "distortion",
     "edge-pitch": "edge-pitch",
+    "entropy-combinatorics": "entropy-combinatorics",
+    "etale-fundamental-group": "etale-fundamental-group",
     "everyday-actions": "everyday-actions",
     "fastener-cg": "fastener-cg",
     "fermi": "fermi",
     "frequency-response": "frequency-response",
+    "generating-functions": "generating-functions",
     "grep-visualiser": "grep-visualiser",
     "infer-a-theory": "infer-a-theory",
     "information-gain": "information-gain",
+    "kent": "kent",
     "lug-joint": "lug-joint",
     "md-explorer": "md-explorer",
     "mohr": "mohr",
     "packets-to-playback": "packets-to-playback",
     "phasors": "phasors",
+    "pigeonhole": "pigeonhole",
+    "probabilistic-method": "probabilistic-method",
     "queue-time": "queue-time",
+    "riemann-roch": "riemann-roch",
     "root-locus": "root-locus",
+    "snake-lemma": "snake-lemma",
     "stability": "stability",
     "subsidy-atlas": "subsidy-atlas",
     "tampines-food": "tampines-food",
@@ -104,6 +113,10 @@ class VisualPortTests(unittest.TestCase):
     def test_fermi_title_is_the_catalogue_title(self):
         html = (ROOT / "visuals" / "fermi" / "index.html").read_text(encoding="utf-8")
         self.assertIn(f"<title>{stub('fermi')['title']} — Yu Jie Teo</title>", html)
+
+    def test_kent_title_is_the_catalogue_title(self):
+        html = (ROOT / "visuals" / "kent" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(f"<title>{stub('kent')['title']} — Yu Jie Teo</title>", html)
 
 
 if __name__ == "__main__":
