@@ -4,7 +4,7 @@ How often each Singapore Pools TOTO ball, 1 to 49, was a winning number in the l
 
 ## Source of truth
 
-This folder is `visuals/toto-frequency/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/toto-frequency), and that is the source of truth. The standalone repository [yujieteo/toto-frequency](https://github.com/yujieteo/toto-frequency) is a read-only, exact mirror of this folder: make every change upstream in yujieteo/site, never in the mirror.
+The standalone repository [yujieteo/toto-frequency](https://github.com/yujieteo/toto-frequency) is where this visualisation and its tests develop and where CI runs them. `visuals/toto-frequency/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/toto-frequency) is a port of its page files, refreshed when the visualisation is updated, and the site runs no logic tests for it. Porting copies the folder minus `tests/` and `.github/`.
 
 ## Files and data
 
@@ -16,19 +16,18 @@ This folder is `visuals/toto-frequency/` in [yujieteo/site](https://github.com/y
 | `beamdswitch.js` | The site's standard beamdswitch report template, an unchanged copy of `templates/beamdswitch.js` |
 | `build.py` | Counts the draws, writes `raw.json` (published as `data.json`) and rewrites the dataset, template and report blocks of `index.html` |
 
-Tests live upstream, outside this folder: `tests/toto-frequency-beamdswitch.test.mjs` and `tests/test_toto_frequency.py`.
+Tests live in `tests/` of yujieteo/toto-frequency: `tests/toto-frequency-beamdswitch.test.mjs` and `tests/test_toto_frequency.py`.
 
 ## Build, test and verify
 
-Run from the root of a yujieteo/site checkout (set up as its README says):
+Run from the root of a yujieteo/toto-frequency checkout (Python 3 standard library and Node 22; nothing to install):
 
 ```sh
-.venv/bin/python visuals/toto-frequency/fetch.py           # only to add new draws (needs network)
-.venv/bin/python visuals/toto-frequency/build.py           # regenerate raw.json and index.html
-.venv/bin/python visuals/toto-frequency/build.py --verify  # check both are fresh
+python3 fetch.py           # only to add new draws (needs network)
+python3 build.py           # regenerate raw.json and index.html
+python3 build.py --verify  # check both are fresh
 node --test tests/toto-frequency-beamdswitch.test.mjs
-.venv/bin/python scripts/build.py                          # needs VISUALS_REPO; see the site README
-.venv/bin/python -m unittest discover -s tests -p 'test_toto_frequency.py'
+python3 -m unittest discover -s tests -p 'test_toto_frequency.py'
 ```
 
 ## Conventions

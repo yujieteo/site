@@ -14,15 +14,15 @@ the product still exists. Check live eligibility before marking a programme
 current. Do not infer a per-token subsidy from company losses.
 
 ```sh
-.venv/bin/python visuals/subsidy-atlas/author.py
-.venv/bin/python visuals/subsidy-atlas/build.py
-.venv/bin/python visuals/subsidy-atlas/build.py --verify
-.venv/bin/python scripts/validate.py
-.venv/bin/python scripts/build.py
+python3 author.py
+python3 build.py
+python3 build.py --verify
 ```
 
-The site build also needs the external visuals checkout described in the root
-README. It copies the generated source HTML and publishes `raw.json` as
+`build.py` reads the design tokens from yujieteo/site's `static/css/style.css`,
+two directories up, so run it inside `visuals/subsidy-atlas/` of a site checkout
+(the tests lay out a copy beside `tests/fixtures/static/css/style.css`). The
+site's build copies the generated source HTML and publishes `raw.json` as
 `data.json`. The HTML embeds all styles, JavaScript and data; external URLs are
 citations, not assets. Design tokens come from `static/css/style.css`.
 
@@ -55,9 +55,11 @@ is the site's standard template (`templates/beamdswitch.js`, unchanged), which
 
 ## Verify
 
+From the root of a yujieteo/subsidy-atlas checkout, as CI does:
+
 ```sh
-.venv/bin/python -m unittest discover -s tests -p 'test_subsidy_atlas.py'
-node --test tests/subsidy-atlas.test.cjs tests/subsidy-atlas-beamdswitch.test.mjs
+node --test 'tests/*.test.{mjs,cjs}'
+python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
 Python tests validate the serialized dataset, source references, fixed

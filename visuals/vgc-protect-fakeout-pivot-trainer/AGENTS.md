@@ -4,7 +4,7 @@ A VGC turn lab built on Justin Tang's Delphox + Blastoise team in Regulation M-C
 
 ## Source of truth
 
-This folder is `visuals/vgc-protect-fakeout-pivot-trainer/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/vgc-protect-fakeout-pivot-trainer), and that is the source of truth. The standalone repository [yujieteo/vgc-trainer](https://github.com/yujieteo/vgc-trainer) is a read-only, exact mirror of this folder: make every change upstream in yujieteo/site, never in the mirror.
+The standalone repository [yujieteo/vgc-trainer](https://github.com/yujieteo/vgc-trainer) is where this visualisation and its tests develop and where CI runs them. `visuals/vgc-protect-fakeout-pivot-trainer/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/vgc-protect-fakeout-pivot-trainer) is a port of its page files, refreshed when the visualisation is updated, and the site runs no logic tests for it. Porting copies the folder minus `tests/` and `.github/`.
 
 ## Files and data
 
@@ -16,17 +16,16 @@ This folder is `visuals/vgc-protect-fakeout-pivot-trainer/` in [yujieteo/site](h
 | `template.html` | Page markup, styles and UI code |
 | `build.py` | Inlines `raw.json`, `sprites.json` and `engine.js` into `template.html` to write `index.html` |
 
-`index.html` is generated: edit the sources and rerun the build. Tests live upstream, outside this folder: `tests/vgc-turn-lab.test.mjs` and `tests/test_vgc_turn_lab.py`.
+`index.html` is generated: edit the sources and rerun the build. Tests live in `tests/` of yujieteo/vgc-trainer: `tests/vgc-turn-lab.test.mjs` and `tests/test_vgc_turn_lab.py`.
 
 ## Build, test and verify
 
-Run from the root of a yujieteo/site checkout (set up as its README says):
+Run from the root of a yujieteo/vgc-trainer checkout (Python 3 standard library and Node 22; nothing to install):
 
 ```sh
-.venv/bin/python visuals/vgc-protect-fakeout-pivot-trainer/build.py   # regenerate index.html
+python3 build.py   # regenerate index.html
 node --test tests/vgc-turn-lab.test.mjs
-.venv/bin/python scripts/build.py                                     # needs VISUALS_REPO; see the site README
-.venv/bin/python -m unittest discover -s tests -p 'test_vgc_turn_lab.py'
+python3 -m unittest discover -s tests -p 'test_vgc_turn_lab.py'
 ```
 
 ## Conventions

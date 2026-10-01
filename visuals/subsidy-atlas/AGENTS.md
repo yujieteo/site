@@ -4,25 +4,26 @@ A consumer guide to subsidised products (free LLM tokens, cloud credits, ride an
 
 ## Source of truth
 
-This folder is `visuals/subsidy-atlas/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/subsidy-atlas), and that is the source of truth. The standalone repository [yujieteo/subsidy-atlas](https://github.com/yujieteo/subsidy-atlas) is a read-only, exact mirror of this folder: make every change upstream in yujieteo/site, never in the mirror.
+The standalone repository [yujieteo/subsidy-atlas](https://github.com/yujieteo/subsidy-atlas) is where this visualisation and its tests develop and where CI runs them. `visuals/subsidy-atlas/` in [yujieteo/site](https://github.com/yujieteo/site/tree/main/visuals/subsidy-atlas) is a port of its page files, refreshed when the visualisation is updated, and the site runs no logic tests for it. Porting copies the folder minus `tests/` and `.github/`.
 
 ## Files and data
 
 See [README.md](README.md) for the evidence rules. `author.py` is the curated data source and writes `raw.json` (published as `data.json`); `engine.js` filters and builds the beamdswitch report; `style.css` and `beamdswitch.js` (an unchanged copy of `templates/beamdswitch.js`) are inlined by `build.py` into `index.html`, which is generated. `build.py` also reads the design tokens from the site's `static/css/style.css`, so it runs only inside a yujieteo/site checkout.
 
-Tests live upstream, outside this folder: `tests/subsidy-atlas.test.cjs`, `tests/subsidy-atlas-beamdswitch.test.mjs` and `tests/test_subsidy_atlas.py`.
+Tests live in `tests/` of yujieteo/subsidy-atlas: `tests/subsidy-atlas.test.cjs`, `tests/subsidy-atlas-beamdswitch.test.mjs` and `tests/test_subsidy_atlas.py`.
 
 ## Build, test and verify
 
-Run from the root of a yujieteo/site checkout (set up as its README says):
+Run from the root of a yujieteo/subsidy-atlas checkout (Python 3 standard library and Node 22; nothing to install):
+
+`build.py` inlines the design tokens from yujieteo/site's `static/css/style.css`, two directories up, so run it inside `visuals/subsidy-atlas/` of a site checkout; the tests build in a temporary copy laid out that way with the fixture `tests/fixtures/static/css/style.css`.
 
 ```sh
-.venv/bin/python visuals/subsidy-atlas/author.py          # after editing the evidence
-.venv/bin/python visuals/subsidy-atlas/build.py           # regenerate index.html
-.venv/bin/python visuals/subsidy-atlas/build.py --verify  # check it is fresh
+python3 author.py          # after editing the evidence
+python3 build.py           # regenerate index.html
+python3 build.py --verify  # check it is fresh
 node --test tests/subsidy-atlas.test.cjs tests/subsidy-atlas-beamdswitch.test.mjs
-.venv/bin/python scripts/build.py                         # needs VISUALS_REPO; see the site README
-.venv/bin/python -m unittest discover -s tests -p 'test_subsidy_atlas.py'
+python3 -m unittest discover -s tests -p 'test_subsidy_atlas.py'
 ```
 
 ## Conventions

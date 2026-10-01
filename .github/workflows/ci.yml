@@ -72,4 +72,4 @@ jobs:
 
       - name: Run Node tests
         working-directory: site
-        run: node --test 'tests/*.test.{mjs,cjs}' 'visuals/md-explorer/tests/*.test.mjs'
+        run: node --test 'tests/*.test.{mjs,cjs}'

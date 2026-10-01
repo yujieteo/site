@@ -36,7 +36,7 @@ samples in discrete time.
 | --- | --- |
 | `index.html` | The whole tool. `<script id="fr-engine">` is the pure calculation core (no DOM, storage, clock or randomness; `self.FreqResponse` in the browser); `<script id="fr-ui">` is the page, plots and WebMCP tools. Edit this file directly. |
 | `raw.json` | Published metadata (scope, conventions, assumptions, sources, presets, threshold defaults) and the default example; must equal the engine's `META` and `defaultInputs()` |
-| `AGENTS.md` | Notes for coding agents: where changes go (this folder upstream; the standalone repository is a read-only mirror), how to build and test, and the conventions. |
+| `AGENTS.md` | Notes for coding agents: where changes go (the standalone repository, where this visualisation and its tests develop; yujieteo/site holds a port of the page files), how to build and test, and the conventions. |
 | `SKILLS.md` | For agents using the tool: its tasks, inputs, read-only WebMCP tools, exports and a worked example. |
 | `LICENSE` | MIT. |
 
