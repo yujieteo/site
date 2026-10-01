@@ -34,6 +34,7 @@ PORTS = {
     "packets-to-playback": "packets-to-playback",
     "phasors": "phasors",
     "queue-time": "queue-time",
+    "riemann-roch": "riemann-roch",
     "root-locus": "root-locus",
     "subsidy-atlas": "subsidy-atlas",
     "tampines-food": "tampines-food",
