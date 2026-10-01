@@ -538,6 +538,7 @@ const sectionLabel = (s) => { const t = narrate(s).replace(/[.!?]["')\]]*$/, "")
 const numberWord = (n) => NUMBER_WORDS[n] || String(n);
 const capital = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 function normSpeed(v) {
+  if (v == null || String(v).trim() === "") return SPEED.default;
   const n = Number(v);
   if (!Number.isFinite(n)) return SPEED.default;
   return Math.min(SPEED.max, Math.max(SPEED.min, n));
@@ -648,7 +649,6 @@ function toJSON(essay) {
 }
 const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 function validateEssay(obj) {
-  const problems = [];
   const fail = (msg) => { throw new Error(msg); };
   const str = (v, name, max) => {
     if (v === undefined) return "";
@@ -702,9 +702,9 @@ function validateEssay(obj) {
     }
     let origin = "user";
     if (obj.origin !== undefined) { if (obj.origin !== "template" && obj.origin !== "user") fail('"origin" must be "template" or "user".'); origin = obj.origin; }
-    return { ok: true, essay: { format: "toulmin-essay", version: 1, essay, arguments: args, active, origin }, problems };
+    return { ok: true, essay: { format: "toulmin-essay", version: 1, essay, arguments: args, active, origin } };
   } catch (err) {
-    return { ok: false, error: err.message, newerVersion: isObj(obj) && typeof obj.version === "number" && obj.version > 1 };
+    return { ok: false, error: err.message };
   }
 }
 function parseEssayText(text) {
@@ -1165,8 +1165,8 @@ const actions = {
   "item-down"(btn) { itemMove(btn, 1); },
   undo() { const el = $("toast"), fn = el._undo; clearTimeout(toastTimer); el.innerHTML = ""; el._undo = null; if (fn) fn(); },
   "reload-essay"() { otherTab = false; const raw = store.get(KEY); const r = raw ? T.parseEssayText(raw) : null; if (r && r.ok) { essay = r.essay; holdStored = false; } renderAll(); announce("Essay reloaded from the other tab's save."); },
-  "dl-md"(btn) { const d = deck(); if (d.ok) download(T.slug(essay.essay.title) + ".md", d.text, "text/markdown", btn); },
-  "copy-md"(btn) { const d = deck(); if (d.ok) copyText(d.text, "x-fallback", btn); },
+  "dl-md"(btn) { const d = T.exportDeck(essay); if (d.ok) download(T.slug(essay.essay.title) + ".md", d.text, "text/markdown", btn); },
+  "copy-md"(btn) { const d = T.exportDeck(essay); if (d.ok) copyText(d.text, "x-fallback", btn); },
   "dl-json"(btn) { download(T.slug(essay.essay.title) + ".json", T.toJSON(essay), "application/json", btn); },
   "copy-json"(btn) { copyText(T.toJSON(essay), "x-fallback", btn); },
   "copy-para"(btn) { copyText($("para-out").textContent, "para-fallback", btn); },

@@ -319,7 +319,6 @@ test("limits: 2,000 characters, 10 items, 12 arguments, and the page enforces th
   assert.equal(T.view.counterText(1799, 2000), "");
   assert.equal(T.view.counterText(1800, 2000), "200 characters left");
   assert.equal(T.view.counterText(2000, 2000), "0 characters left");
-  assert.match(uiSrc, /essay\.arguments\.length >= T\.LIMITS\.arguments/);
 });
 
 test("tab labels: label, else the first 24 characters of the claim, else Argument N", () => {
@@ -431,8 +430,6 @@ test("ARIA tabs: roles, aria-selected, roving tabindex and aria-controls; one h1
   assert.equal((tabs.match(/aria-controls="argpanel"/g) || []).length, 3);
   assert.match(html, /role="tablist" aria-label="Arguments in essay order"/);
   assert.match(html, /role="tabpanel" id="argpanel"/);
-  assert.match(uiSrc, /setAttribute\("aria-labelledby", "tab-" \+ active\(\)\.id\)/);
-  for (const k of ["ArrowRight", "ArrowLeft", "Home", "End"]) assert.ok(uiSrc.includes(`"${k}"`), k);
   assert.equal((html.slice(0, html.indexOf("<script")).match(/<h1[\s>]/g) || []).length, 1);
   const page = T.view.argumentHTML(T.TEMPLATE, 2);
   assert.equal((page.match(/<h2[\s>]/g) || []).length, 1);
@@ -507,12 +504,10 @@ test("raw.json carries the same template, example, constants and connectives as 
   assert.deepEqual(raw.checklist.auto, J(T.AUTO_LINES));
   assert.deepEqual(raw.checklist.confirm, J(T.CONFIRM_LINES));
   assert.deepEqual(raw.hints, J(T.HINTS));
-  assert.match(uiSrc, /fetched: "2026-10-01"/);
   assert.equal(raw.fetched, "2026-10-01");
-  assert.ok(!uiSrc.includes("raw.json"), "the page never fetches raw.json");
 });
 
-test("the stub validates against the schema and its WebMCP tools match the page's read-only tools", async () => {
+test("the stub validates against the schema and its WebMCP tools match the tools the page registers", async () => {
   const schema = JSON.parse(await read("../schema/visualization.schema.json"));
   const yaml = await read("../data/visuals/toulmin.yaml");
   const stub = {};
@@ -536,13 +531,118 @@ test("the stub validates against the schema and its WebMCP tools match the page'
   assert.equal(stub.slug, "toulmin");
   assert.equal(stub.html_path, "visuals/toulmin/index.html");
   assert.equal(stub.data_path, "visuals/toulmin/raw.json");
-  const block = uiSrc.slice(uiSrc.indexOf("const tools = ["), uiSrc.indexOf("for (const t of tools)"));
-  const tools = [...block.matchAll(/\{ name: "(\w+)"/g)].map((m) => m[1]);
-  assert.equal((block.match(/annotations: ro,/g) || []).length, tools.length, "every tool is read-only");
-  assert.deepEqual(tools, ["get_data", "get_metadata", "query", "get_paragraph", "export_markdown"]);
-  assert.deepEqual(stub.webmcp_tools, tools);
-  assert.match(uiSrc, /const ro = \{ readOnlyHint: true \};/);
-  assert.match(uiSrc, /const mc = \(typeof document !== "undefined" && document\.modelContext\) \|\| \(typeof navigator !== "undefined" && navigator\.modelContext\);/);
+  assert.deepEqual(stub.webmcp_tools, bootPage().registered.map((t) => t.name));
+});
+
+/* ---------- the page script, booted against a minimal DOM ---------- */
+
+function bootPage({ saved = null } = {}) {
+  const els = new Map();
+  const make = (props = {}) => {
+    const attrs = {}, listeners = {};
+    return Object.assign({
+      textContent: "", innerHTML: "", value: "", hidden: false, disabled: false, open: false, placeholder: "", dataset: {}, style: {},
+      classList: { add() {}, remove() {}, toggle() {} },
+      setAttribute(k, v) { attrs[k] = String(v); }, getAttribute: (k) => (k in attrs ? attrs[k] : null),
+      addEventListener(type, fn) { (listeners[type] = listeners[type] || []).push(fn); },
+      fire(type, e = {}) { for (const fn of listeners[type] || []) fn(Object.assign({ preventDefault() {} }, e)); },
+      querySelectorAll: () => [], querySelector: () => make(), closest: () => null,
+      focus() { page.document.activeElement = this; },
+    }, props);
+  };
+  const $ = (id) => { if (!els.has(id)) els.set(id, make({ id })); return els.get(id); };
+  for (const id of ["export", "preflight"]) $(id).hidden = true;
+  const store = new Map(saved ? [["toulmin:v1", JSON.stringify(saved)]] : []);
+  const registered = [], copied = [];
+  const doc = make({ getElementById: $, body: make(), contains: () => true, activeElement: null });
+  const page = {
+    setTimeout: () => 0, clearTimeout() {}, addEventListener() {},
+    document: doc,
+    localStorage: { getItem: (k) => (store.has(k) ? store.get(k) : null), setItem: (k, v) => store.set(k, String(v)), removeItem: (k) => store.delete(k) },
+    navigator: { modelContext: { registerTool(t) { registered.push(t); } }, clipboard: { writeText: async (t) => { copied.push(t); } } },
+  };
+  page.self = page.window = page;
+  vm.createContext(page);
+  vm.runInContext(engineSrc, page);
+  vm.runInContext(uiSrc, page);
+  const click = (act, data = {}) => {
+    const btn = make({ dataset: Object.assign({ act }, data) });
+    doc.fire("click", { target: { closest: (sel) => (sel === "button[data-act]" ? btn : null) } });
+  };
+  const call = async (name, input) => JSON.parse((await registered.find((t) => t.name === name).execute(input)).content[0].text);
+  return { $, doc, registered, copied, click, call };
+}
+
+test("WebMCP: the page registers five read-only tools that report the essay without changing it", async () => {
+  const p = bootPage();
+  assert.deepEqual(p.registered.map((t) => t.name), ["get_data", "get_metadata", "query", "get_paragraph", "export_markdown"]);
+  for (const t of p.registered) assert.equal(t.annotations.readOnlyHint, true, t.name);
+  const before = await p.call("get_data");
+  assert.equal(before.essay.title, T.TEMPLATE.essay.title);
+  assert.deepEqual(J(before.columns), J(T.COLUMNS));
+  assert.deepEqual(J(before.rows), J(T.TEMPLATE.arguments.map((a, i) => T.argumentRow(a, i))));
+  assert.equal(before.total, 3);
+  const meta = await p.call("get_metadata");
+  assert.equal(meta.fetched, "2026-10-01");
+  assert.deepEqual(J(meta.constants), J(T.TIMING));
+  const byId = await p.call("query", { id: "a2" }), byPos = await p.call("query", { id: 2 });
+  assert.equal(byId.row.id, "a2");
+  assert.deepEqual(byPos.row, byId.row);
+  assert.equal((await p.call("query", { id: "a9" })).row, null);
+  assert.equal((await p.call("get_paragraph", {})).text, T.essayParagraph(T.TEMPLATE, "claim-first"));
+  assert.equal((await p.call("get_paragraph", { ordering: "grounds-first", scope: 1 })).text, T.paragraph(T.TEMPLATE.arguments[0], "grounds-first"));
+  assert.equal((await p.call("get_paragraph", { scope: "a7" })).text, null);
+  const md = await p.call("export_markdown", { voice: "bm_lewis", speed: 1.5 });
+  assert.equal(md.text, T.exportDeck(T.TEMPLATE, { voice: "bm_lewis", speed: 1.5 }).text);
+  assert.equal(parseDeck(md.text).meta.voice, "bm_lewis");
+  assert.deepEqual(await p.call("get_data"), before, "the tools leave the essay unchanged");
+  assert.equal((await p.call("export_markdown")).text, T.exportDeck(T.TEMPLATE).text);
+});
+
+test("the page stops adding arguments at 12 and disables the add button with a reason", async () => {
+  const p = bootPage({ saved: essayWith(Array.from({ length: 11 }, () => ({ claim: "c" }))) });
+  assert.equal(p.$("addarg").disabled, false);
+  p.click("add-arg");
+  assert.equal((await p.call("get_data")).total, 12);
+  assert.equal(p.$("addarg").disabled, true);
+  assert.equal(p.$("addarg-reason").textContent, "Maximum of 12 arguments reached.");
+  p.click("add-arg");
+  p.click("dup-arg");
+  assert.equal((await p.call("get_data")).total, 12);
+});
+
+test("ARIA tabs: the panel is labelled by the active tab and arrow, Home and End keys move focus", () => {
+  const p = bootPage();
+  assert.equal(p.$("argpanel").getAttribute("aria-labelledby"), "tab-a1");
+  const tabs = T.TEMPLATE.arguments.map((a, i) => p.$("tab-" + a.id));
+  p.$("tablist").querySelectorAll = () => tabs;
+  const key = (from, k) => { tabs[from].focus(); p.$("tablist").fire("keydown", { key: k }); return tabs.indexOf(p.doc.activeElement); };
+  assert.equal(key(0, "ArrowRight"), 1);
+  assert.equal(key(2, "ArrowRight"), 0);
+  assert.equal(key(0, "ArrowLeft"), 2);
+  assert.equal(key(1, "Home"), 0);
+  assert.equal(key(0, "End"), 2);
+  assert.deepEqual(J(tabs.map((t) => t.getAttribute("tabindex"))), ["-1", "-1", "0"]);
+  assert.equal(key(1, "a"), 1);
+  p.doc.fire("click", { target: { closest: (sel) => (sel === "[role=tab]" ? { dataset: { i: "2" } } : null) } });
+  assert.equal(p.$("argpanel").getAttribute("aria-labelledby"), "tab-a3");
+});
+
+test("Copy deck exports the latest text before the debounced refresh, and a cleared speed means 1", async () => {
+  const p = bootPage();
+  p.doc.fire("input", { target: { dataset: { e: "title" }, value: "Fresh title" } });
+  p.click("copy-md");
+  await new Promise((r) => setImmediate(r));
+  assert.equal(parseDeck(p.copied[0]).meta.title, "Fresh title");
+  p.$("x-speed").value = " ";
+  p.$("x-speed").fire("change", { target: p.$("x-speed") });
+  assert.equal(p.$("x-speed").value, "1");
+  p.click("copy-md");
+  await new Promise((r) => setImmediate(r));
+  assert.equal(parseDeck(p.copied[1]).meta.speed, "1");
+  assert.equal(T.normSpeed(""), 1);
+  assert.equal(T.normSpeed(null), 1);
+  assert.equal(T.normSpeed("0.2"), 0.5);
 });
 
 /* ---------- performance ---------- */
