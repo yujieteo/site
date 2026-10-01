@@ -5,7 +5,7 @@ A visualization is published from one of two places. Everything new is built in 
 - **In this repository (the default):** its own folder `visuals/<slug>/`: `index.html`, `raw.json` (published as `data.json`), a `README.md` saying what each file is and how to rebuild, often a `LICENSE`, and any build script or sources. Its stub's `html_path` and `data_path` start with `visuals/<slug>/`. Never put sources under the generated `site/`.
 - **In the public [`visuals`](https://github.com/yujieteo/visuals) repository:** `viz/<slug>/index.html` and `data/<slug>/raw.json` (or `.csv`), published at the commit pinned in `data/visuals/<slug>.pin`. Older data visualizations such as `haze-singapore` live there.
 
-Some folders under `visuals/` track or vendor another repository (for example `beamdiag` and `beamdswitch`) or have a public mirror. The folder's `README.md` names the upstream and says how to update it; follow it rather than editing the copy freely.
+Some folders under `visuals/` track or vendor another repository (for example `beamdiag` and `beamdswitch`) or have a public mirror. The folder's `README.md` names the upstream and says how to update it; follow it rather than editing the copy freely. A folder mirrored as a standalone repository also carries `AGENTS.md` (for agents changing it), `SKILLS.md` (for agents using it) and an MIT `LICENSE`, and links only to files inside itself; `tests/test_visual_folder_docs.py` checks them, and a change to a page's WebMCP tools, exports or commands updates them too.
 
 ## Steps
 
