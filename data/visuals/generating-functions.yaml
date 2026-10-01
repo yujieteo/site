@@ -1,0 +1,10 @@
+slug: generating-functions
+title: Generating Functions Lab
+summary: "Generating functions as a calculus for discrete structures: pick a problem, see its objects, encode them as coefficients, manipulate the series, read a coefficient back and watch an independent enumeration agree. Thirty-four levels run from the geometric series, shifts and Fibonacci through convolution, coin change, compositions, Catalan, Lagrange inversion, EGFs and the exponential formula, partitions and singularity analysis, to roots-of-unity filters, the DFT as evaluation at roots of unity, the inverse DFT as coefficient extraction and the cyclic convolution theorem. Explore, Guided, Problems (a 22-step ladder with hints), Compare and Transform modes, a Fourier lab with the exact N = 4 example and the character table, a finite-vector sandbox, exact integer, rational and cyclotomic arithmetic, a command palette, deep links, an in-page presentation and beamdswitch Markdown export. Runs offline."
+source_url: https://github.com/yujieteo/site/tree/main/visuals/generating-functions
+fetched: "2026-10-01"
+html_path: visuals/generating-functions/index.html
+data_path: visuals/generating-functions/raw.json
+webmcp_tools: [get_metadata, get_current_view, extract_coefficient, dft, run_self_tests]
+tags: [combinatorics, computational, probability, signal-processing]
+category: data visualization
