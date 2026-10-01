@@ -1,3 +1,7 @@
+import bisect
+import os
+import random
+import re
 import subprocess
 import sys
 import unittest
@@ -12,6 +16,29 @@ import paper_links_bib  # noqa: E402
 import paper_tags  # noqa: E402
 import papers  # noqa: E402
 from toon import encode, needs_quotes  # noqa: E402
+
+
+PAPERS = "data/paper-links/paper-links.yaml"
+TAG_SAMPLE_SIZE = 40
+TAG_SAMPLE_SEED = 20261001
+
+
+def changed_paper_records(count):
+    """Indices of paper-links records whose lines differ from origin/main in the working tree.
+
+    Empty when origin/main is not available (a shallow checkout), so the sample alone runs.
+    """
+    result = subprocess.run(["git", "diff", "--unified=0", "origin/main", "--", PAPERS],
+                            capture_output=True, text=True, cwd=ROOT)
+    if result.returncode != 0:
+        return set()
+    starts = paper_tags._record_starts((ROOT / PAPERS).read_text(encoding="utf-8").splitlines())
+    changed = set()
+    for start, length in re.findall(r"^@@ -\S+ \+(\d+)(?:,(\d+))? @@", result.stdout, re.M):
+        first = int(start) - 1
+        for line in range(first, first + max(int(length or 1), 1)):
+            changed.add(max(bisect.bisect_right(starts, line) - 1, 0))
+    return {i for i in changed if i < count}
 
 
 def run_cli(*args):
@@ -42,7 +69,7 @@ class TagTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # Parsing the paper-links file takes seconds; read it once for the class.
-        cls.records = yaml.safe_load((ROOT / "data/paper-links/paper-links.yaml").read_text(encoding="utf-8"))
+        cls.records = yaml.safe_load((ROOT / PAPERS).read_text(encoding="utf-8"))
 
     def test_every_record_is_tagged_with_a_leading_arxiv_class(self):
         for record in self.records:
@@ -50,8 +77,21 @@ class TagTests(unittest.TestCase):
             self.assertTrue(paper_tags.is_arxiv_class(record["tags"][0]), record["title"])
 
     def test_committed_tags_match_rules(self):
+        """Re-tag a sample of records and compare with the committed tags.
+
+        Re-tagging all of paper-links.yaml takes over a minute, so this checks
+        TAG_SAMPLE_SIZE records from a seeded shuffle (the same ones every run)
+        plus every record whose lines differ from origin/main in the working
+        tree. Set PAPER_TAGS_FULL=1 to re-tag every record.
+        """
         cache = paper_tags.load_arxiv_cache()
-        stale = [r["title"] for r in self.records if r["tags"] != paper_tags.tag_record(r, cache)]
+        if os.environ.get("PAPER_TAGS_FULL") == "1":
+            indices = range(len(self.records))
+        else:
+            indices = sorted(set(random.Random(TAG_SAMPLE_SEED).sample(range(len(self.records)), TAG_SAMPLE_SIZE))
+                             | changed_paper_records(len(self.records)))
+        stale = [self.records[i]["title"] for i in indices
+                 if self.records[i]["tags"] != paper_tags.tag_record(self.records[i], cache)]
         self.assertEqual(stale, [], "run: python scripts/paper_tags.py --write")
 
     def test_legacy_arxiv_ids_use_their_archive(self):

@@ -1,6 +1,6 @@
 /* Shared checks for the visualisations' beamdswitch decks, and a small stand-in DOM to click their
    beamdswitch and Copy deck buttons in Node. The decks are parsed with beamdswitch's own parsers
-   (read-only copies in tests/fixtures/beamdswitch/), as tests/beamdiag-beamdswitch.test.mjs does. */
+   (read-only copies in tests/fixtures/beamdswitch/). */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
