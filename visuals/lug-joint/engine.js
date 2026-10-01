@@ -591,6 +591,202 @@
     return normalise(JSON.parse(decodeURIComponent(m[1])));
   }
 
+  /* ---------- beamdswitch report ---------- */
+
+  // Words for narration: a deck's ::: narration is read aloud, so it carries no symbols.
+  const SPOKEN_UNITS = {
+    N: "newtons", kN: "kilonewtons", lbf: "pounds-force", kip: "kips", mm: "millimetres", m: "metres", in: "inches",
+    MPa: "megapascals", Pa: "pascals", GPa: "gigapascals", psi: "pounds per square inch", ksi: "kips per square inch",
+  };
+  // "1.234e+6" is said "1.234 times ten to the 6"; "-0.5" is said "minus 0.5".
+  function sayNumber(text) {
+    if (text === "∞") return "infinite";
+    const m = /^([-+]?)(\d+(?:\.\d+)?)(?:e([+-]?\d+))?$/.exec(String(text));
+    if (!m) return String(text);
+    const exp = m[3] == null ? "" : ` times ten to the ${Number(m[3]) < 0 ? "minus " : ""}${Math.abs(Number(m[3]))}`;
+    return `${m[1] === "-" ? "minus " : ""}${m[2]}${exp}`;
+  }
+  // The page's FS and MS digits.
+  const fsText = (x) => (x == null ? "—" : x === Infinity ? "∞" : x.toFixed(3));
+  const msText = (x) => (x == null ? "—" : x === Infinity ? "∞" : (x >= 0 ? "+" : "") + x.toFixed(3));
+
+  /*
+   * jointReport(input) describes a solved joint as a report for the standard beamdswitch template
+   * (beamdswitch.js; templates/beamdswitch-report.md). Every number is read from solve() and written
+   * in input.units with the page's own formatters, so the deck says what the page shows. Under an
+   * oblique or transverse load the ::: plot is the Eq. 9-31 interaction curve the page draws.
+   * Returns null when the inputs are blocked by errors.
+   */
+  function jointReport(input) {
+    if (validate(input).errors.length) return null;
+    const r = solve(input), J = r.joint, f = r.members.female, mm = r.members.male;
+    const units = input.units, G = input.geometry, Ld = input.load, pin = input.pin;
+    const sym = (kind) => (kind === "forcePerLength" ? `${units.force}/${units.length}` : kind === "none" ? "" : units[kind]);
+    const digits = (v, kind) => (v == null || !Number.isFinite(v) ? (v === Infinity ? "∞" : "—") : fmt(fromCanonical(v, kind, units[kind])));
+    const show = (v, kind) => (v == null || !Number.isFinite(v) ? digits(v, kind) : `${digits(v, kind)} ${sym(kind)}`);
+    const say = (v, kind) => `${sayNumber(digits(v, kind))} ${SPOKEN_UNITS[units[kind]]}`;
+    const tex = (v, kind) => `${digits(v, kind)}\\ \\text{${sym(kind)}}`;
+    const cu = r.controlling.ultimate, cy = r.controlling.yield, alpha = r.alpha;
+    const lower = (s) => s[0].toLowerCase() + s.slice(1);
+    const count = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+    const plain = (v) => (v == null ? "—" : fmt(v));
+
+    const memberRows = [["t", "length"], ["w", "length"], ["wT", "length"], ["Ftux", "stress"], ["Ftyx", "stress"], ["Ftu", "stress"], ["Fty", "stress"],
+      ["E", "stress"], ["eu", "none"], ["Fbru", "stress"], ["Fbry", "stress"], ["FtuT", "stress"], ["kbT", "none"]]
+      .map(([key, kind]) => {
+        const label = MEMBER_FIELDS.find((x) => x.key === key).label;
+        const cellOf = (M) => (key === "wT" && M.wT == null ? `${show(M.w, kind)} (= w)` : kind === "none" ? plain(M[key]) : show(M[key], kind));
+        return `| ${label} | ${cellOf(input.female)} | ${cellOf(input.male)} |`;
+      });
+    const bushRow = `| Bushing | ${input.female.bushed ? `Fcy.B = ${show(input.female.FcyB, "stress")}` : "none"} | ${input.male.bushed ? `Fcy.B = ${show(input.male.FcyB, "stress")}` : "none"} |`;
+    const coefRows = ["K", "Kn", "havD", "Ktru", "Ktry", "B", "B005"].map((key) => `| ${MEMBER_FIELDS.find((x) => x.key === key).label} | ${plain(input.female[key])} | ${plain(input.male[key])} |`);
+    const direction = alpha === 0 ? "axial" : alpha === 90 ? "transverse" : "oblique";
+
+    const setup = [
+      {
+        title: `The joint: D = ${show(G.D, "length")}, pin D_P = ${show(G.DP, "length")}, P_ult = ${show(Ld.P, "force")} at α = ${fmt(alpha)}°`,
+        body: [
+          "One male lug (member 2) between two identical female clevis legs (member 1) on one solid pin; full-radius ends, so e = w/2.",
+          "",
+          `- Hole D = ${show(G.D, "length")}, pin D_P = ${show(G.DP, "length")}, gap g = ${show(G.g, "length")}`,
+          `- Ultimate load P_ult = ${show(Ld.P, "force")} at α = ${fmt(alpha)}° (${direction}); ultimate factor ${fmt(Ld.uf)}, fitting factor ${fmt(Ld.ff)}, additional factor ${fmt(Ld.af)}`,
+          `- Pin: Ftu.P = ${show(pin.FtuP, "stress")}, Fsu.P = ${show(pin.FsuP, "stress")}, kb.P = ${fmt(pin.kbP)}`,
+          `- Units: ${units.force}, ${units.length}, ${units.stress}`,
+        ].join("\n"),
+        notes: "α runs from 0° (axial) to 90° (transverse) from the lug axis. Each female leg carries half the load.",
+        narration: `One male lug sits between two female clevis legs on a single pin. The hole is ${say(G.D, "length")} across and the pin ${say(G.DP, "length")}, with a gap of ${say(G.g, "length")}. ` +
+          `The ultimate load is ${say(Ld.P, "force")}, ${direction === "axial" ? "along the lug axis" : direction === "transverse" ? "across the lug axis" : `at ${sayNumber(fmt(alpha))} degrees to the lug axis`}, ` +
+          `with an ultimate factor of ${sayNumber(fmt(Ld.uf))} and a fitting factor of ${sayNumber(fmt(Ld.ff))}.`,
+      },
+      {
+        title: `The members: female legs t = ${show(input.female.t, "length")} each, male lug t = ${show(input.male.t, "length")}`,
+        body: ["| | Female leg (each) | Male lug |", "| --- | --- | --- |", ...memberRows, bushRow].join("\n"),
+        notes: "Allowables are the values entered on the page.",
+        narration: `Each female leg is ${say(input.female.t, "length")} thick and ${say(input.female.w, "length")} wide at the hole; the male lug is ${say(input.male.t, "length")} thick and ${say(input.male.w, "length")} wide. ` +
+          `Their ultimate tensile strengths are ${say(input.female.Ftu, "stress")} and ${say(input.male.Ftu, "stress")}.`,
+      },
+      {
+        title: "Keyed-in coefficients, read from the manual's figures",
+        body: ["| Coefficient | Female leg | Male lug |", "| --- | --- | --- |", ...coefRows].join("\n"),
+        notes: "K, Kn, hav/D, Ktru, Ktry, B and B0.05 are keyed in by you from AFFDL Figs. 9-2 to 9-17; the results are only as good as those readings.",
+        narration: `The bearing coefficient K is ${sayNumber(plain(input.female.K))} for the female legs and ${sayNumber(plain(input.male.K))} for the male lug, ` +
+          `and the net-tension coefficient is ${sayNumber(plain(input.female.Kn))} and ${sayNumber(plain(input.male.Kn))}. These are read from the manual's figures, not computed.`,
+      },
+    ];
+
+    const used = new Set(r.trace.map((t) => t.formula));
+    const method = [
+      {
+        title: `Yield cap ${fmt(r.cap)}; factored loads ${show(r.loads.Pu, "force")} ultimate and ${show(r.loads.Py, "force")} yield`,
+        body: [
+          `$$ \\text{cap} = \\frac{u_f}{f_f} = \\frac{${fmt(Ld.uf)}}{${fmt(Ld.ff)}} = ${fmt(r.cap)} $$`,
+          "",
+          `$$ P_u = P \\, f_f \\, a_f = ${tex(r.loads.Pu, "force")} \\qquad P_y = \\frac{P}{u_f} f_f \\, a_f = ${tex(r.loads.Py, "force")} $$`,
+          "",
+          "$$ FS = \\frac{\\text{allowable}}{\\text{factored load}} \\qquad MS = FS - 1 $$",
+        ].join("\n"),
+        notes: "Ultimate FS uses the capped allowable against P·ff·af; yield FS uses the uncapped yield allowable against P/uf·ff·af. The pin and the tangs have ultimate checks only.",
+        narration: `The yield cap is the ultimate factor over the fitting factor, ${sayNumber(fmt(r.cap))}. ` +
+          `The factored ultimate load is ${say(r.loads.Pu, "force")} and the factored yield load ${say(r.loads.Py, "force")}. ` +
+          "Each failure mode's safety factor is its allowable over the factored load, and the margin is that factor minus one.",
+      },
+      {
+        title: "AFFDL chapter 9: bearing, net tension, bushing, pin shear, pin bending and tangs",
+        // The slide keeps the chain from member to joint by equation number; every formula the trace used goes in the notes.
+        body: [
+          `- Each member: bearing (Eqs. 9-1 to 9-3) and net tension (9-4 to 9-6), Pu.L = min of the two (9-7)${alpha > 0 ? "; transverse bearing (9-28 to 9-30) and the oblique interaction (9-31)" : ""}`,
+          "- Bushing bearing (9-8, 9-9); lug-bushing strength Pu.L.B (9-10)",
+          "- Joint: Pu.L.B = min(2·Pu.L.B.1, Pu.L.B.2) (9-11)",
+          `- Pin: double shear (9-12) and bending (9-13 to 9-15)${J.weakPin ? ", then the load shift (9-16 to 9-18)" : ""}`,
+          `- Joint allowable Pall (${J.PallEq}); tangs (${alpha < 90 ? J.tangEq : "not checked at 90°"})`,
+        ].join("\n"),
+        notes: "Method: AFFDL Stress Analysis Manual (1986), chapter 9, following Melcon and Hoblit and Bruhn. Not cross-checked against Bruhn or Niu. " +
+          `Formulas used: ${FORMULAS.filter((x) => used.has(x.id) && x.id !== "cap" && x.id !== "fs").map((x) => `${x.affdl}, ${x.text}`).join("; ")}.`,
+        narration: "Each member is checked in bearing and net-section tension, and in its bushing. " +
+          "The joint takes the weaker of twice one female leg and the male lug, then the pin is checked in double shear and in bending" +
+          `${J.weakPin ? ", where a pin weak in bending lets the load shift towards the shear planes" : ""}. The tangs are checked last.`,
+      },
+    ];
+
+    // One table per part of the joint, so each fits on a slide: the female legs, the male lug, then the joint, pin and tangs.
+    const modeRow = (row) => `| ${row.mode}${row === cu ? " ◂" : ""} | ${row.eq} | ${digits(row.allowable, "force")} | ${digits(row.ultLoad, "force")} | ${fsText(row.FSu)} | ${msText(row.MSu)} | ${fsText(row.FSy)} | ${msText(row.MSy)} |`;
+    const short = (mode) => mode.replace(/^(Female leg|Male lug): /, "");
+    const PARTS = [[["female"], "Female legs (each)", "each female leg"], [["male"], "Male lug", "the male lug"], [["joint", "pin", "tang"], "Joint, pin and tangs", "the joint, pin and tangs"]];
+    const results = PARTS.map(([groups, name, spoken]) => {
+      const rows = r.rows.filter((row) => groups.includes(row.group)), modes = rows.filter((row) => !row.summary && !row.informative);
+      const least = modes.reduce((best, row) => (best == null || row.FSu < best.FSu ? row : best), null);
+      return {
+        title: `${name}: smallest ultimate MS ${msText(least.MSu)}, ${short(least.mode)}`,
+        body: [`| Mode | AFFDL | Allowable (${units.force}) | Factored load (${units.force}) | FS ult | MS ult | FS yield | MS yield |`, "| --- | --- | --- | --- | --- | --- | --- | --- |", ...rows.map(modeRow)].join("\n"),
+        notes: "◂ marks the controlling ultimate mode. A superseded stage-1 pin bending row is shown for information and does not control. The yield allowables and loads are on the page.",
+        narration: `For ${spoken}, ${count(modes.length, "failure mode is", "failure modes are")} checked. ` +
+          `The smallest ultimate safety factor is ${sayNumber(fsText(least.FSu))}, in ${lower(short(least.mode))}, a margin of ${sayNumber(msText(least.MSu))}.`,
+      };
+    });
+    results.push(
+      {
+        title: `Joint allowable Pall = ${show(J.Pall, "force")} (Eq. ${J.PallEq}), ${J.PallMode}`,
+        body: [
+          J.weakPin
+            ? `$$ P_{all} = \\min(P_{us.P},\\ P_{ub.P.max},\\ P_{u.L.B}) = \\min(${digits(J.Pus, "force")},\\ ${digits(J.Pubmax, "force")},\\ ${digits(J.PuLB, "force")}) = ${tex(J.Pall, "force")} $$`
+            : `$$ P_{all} = \\min(P_{u.L.B},\\ P_{us.P}) = \\min(${digits(J.PuLB, "force")},\\ ${digits(J.Pus, "force")}) = ${tex(J.Pall, "force")} $$`,
+          "",
+          `- Lug-bushing Pu.L.B = ${show(J.PuLB, "force")}, ${MEMBER_NAMES[J.lugGoverns].toLowerCase()} governs (Eq. 9-11)`,
+          `- Pin shear Pus.P = ${show(J.Pus, "force")} (Eq. 9-12); pin bending Pub.P = ${show(J.Pub, "force")} (Eq. 9-15)${J.weakPin ? `, after load shift Pub.P.max = ${show(J.Pubmax, "force")} (Eq. 9-16)` : ""}`,
+        ].join("\n"),
+        narration: `The joint allowable is ${say(J.Pall, "force")}, set by ${J.PallMode}. ` +
+          `The lug and bushing together allow ${say(J.PuLB, "force")}, and the pin allows ${say(J.Pus, "force")} in shear and ${say(J.weakPin ? J.Pubmax : J.Pub, "force")} in bending.`,
+      },
+      {
+        title: `Controlling mode: ${cu.mode}, ultimate MS ${msText(cu.MSu)}`,
+        body: [
+          `$$ FS_u = \\frac{${tex(cu.allowable, "force")}}{${tex(cu.ultLoad, "force")}} = ${fsText(cu.FSu)} \\qquad MS_u = ${msText(cu.MSu)} $$`,
+          "",
+          `- AFFDL Eq. ${cu.eq}`,
+          cy ? `- Yield controlled by ${cy.mode} (FS ${fsText(cy.FSy)}, MS ${msText(cy.MSy)})` : "- No yield check applies.",
+        ].join("\n"),
+        narration: `The controlling ultimate mode is ${lower(cu.mode)}: an allowable of ${say(cu.allowable, "force")} against a factored load of ${say(cu.ultLoad, "force")}, a safety factor of ${sayNumber(fsText(cu.FSu))} and a margin of ${sayNumber(msText(cu.MSu))}.` +
+          (cy ? ` In yield, ${lower(cy.mode)} controls, with a margin of ${sayNumber(msText(cy.MSy))}.` : ""),
+      },
+    );
+    if (alpha > 0) {
+      const ratio = (M) => (alpha < 90 ? `${digits(M.PuL, "force")} and ${digits(M.Ptru, "force")}` : digits(M.Ptru, "force"));
+      results.push({
+        title: `Oblique interaction, Eq. 9-31, at α = ${fmt(alpha)}°`,
+        body: `$$ \\left(\\frac{P}{P_{u.L}}\\right)^{${EXP}} + \\left(\\frac{P_{tr}}{P_{tru.L}}\\right)^{${EXP}} = 1 $$\n\nAxial and transverse lug strengths Pu.L and Ptru.L, in ${units.force}: female leg ${ratio(f)}; male lug ${ratio(mm)}.`,
+        plot: { x: [0, 1], xlabel: "P / Pu.L", ylabel: "Ptr / Ptru.L", curves: [`(1 - x^${EXP})^(1/${EXP})`] },
+        narration: `Under a load at ${sayNumber(fmt(alpha))} degrees, each member's axial and transverse strengths combine on this curve, with exponent ${sayNumber(String(EXP))}. ` +
+          `The male lug's combined strength is ${say(mm.Palpha, "force")} and one female leg's ${say(f.Palpha, "force")}.`,
+      });
+    }
+
+    const tests = selfTests(), passed = tests.filter((t) => t.pass).length;
+    const checks = [
+      {
+        title: `Self-tests: ${passed} of ${tests.length} pass`,
+        body: ["- The Sec. 9.6 worked example in SI against the chapter's governing lines at 1%", "- The Eq. 9-31 interaction checks", ...tests.filter((t) => !t.pass).map((t) => `- Fails: ${t.name}`)].join("\n"),
+        narration: `The page's self-tests run ${tests.length} checks, including the manual's worked example to within one percent, and ${passed === tests.length ? "all of them pass" : `${passed} pass while ${tests.length - passed} fail`}.`,
+      },
+      {
+        title: r.warnings.length ? `${r.warnings.length} ${r.warnings.length === 1 ? "warning" : "warnings"} from the page` : "No warnings from the page",
+        body: r.warnings.length ? r.warnings.map((w) => `- ${w.message}`).join("\n") : "- None.",
+        narration: r.warnings.length ? `The page raises ${r.warnings.length} ${r.warnings.length === 1 ? "warning" : "warnings"}, listed on this slide.` : "The page raises no warnings for this joint.",
+      },
+      {
+        title: "Takeaway",
+        key: `Joint allowable **Pall = ${show(J.Pall, "force")}** (Eq. ${J.PallEq}, ${J.PallMode}). Controlling mode: ${cu.mode}, FS ${fsText(cu.FSu)}, MS ${msText(cu.MSu)}. Preliminary sizing only.`,
+        narration: `The joint allows ${say(J.Pall, "force")}. Its smallest ultimate margin is ${sayNumber(msText(cu.MSu))}, in ${lower(cu.mode)}. This is preliminary sizing only, so check every result independently.`,
+      },
+    ];
+
+    return {
+      meta: { title: `Lug and pin joint: ${direction} load at α = ${fmt(alpha)}°`, subtitle: `Pall = ${show(J.Pall, "force")}; controlling mode ${cu.mode}, MS ${msText(cu.MSu)}` },
+      notes: "Preliminary-sizing tool only. It is not a certified stress analysis and has not been checked against Bruhn or Niu.",
+      narration: `This report sizes a double-shear lug and pin joint by the Air Force stress analysis manual, chapter 9. Forces are in ${SPOKEN_UNITS[units.force]}, lengths in ${SPOKEN_UNITS[units.length]} and stresses in ${SPOKEN_UNITS[units.stress]}.`,
+      setup, method, results, checks,
+    };
+  }
+
   /* ---------- Self-tests ---------- */
 
   function selfTests() {
@@ -642,6 +838,6 @@
   return {
     UNITS, PRESETS, DEFAULT_UNITS, SECTIONS, MEMBER_FIELDS, GEOMETRY_FIELDS, LOAD_FIELDS, PIN_FIELDS, FORMULAS,
     EXAMPLE_96_EXPECT, REFERENCE_CASES, InputError, lookupParams, unitFactor, toCanonical, fromCanonical, presetOf, example96, validate, solve,
-    obliqueAllowable, obliqueFS, sweep, interactionCurve, serialize, parse, normalise, toHash, fromHash, selfTests, fmt,
+    obliqueAllowable, obliqueFS, sweep, interactionCurve, serialize, parse, normalise, toHash, fromHash, jointReport, selfTests, fmt,
   };
 });

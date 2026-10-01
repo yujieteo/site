@@ -9,10 +9,12 @@ browser.
 
 | File | Role |
 | --- | --- |
-| `index.html` | The whole tool: one self-contained page with inline CSS and vanilla JS, no network requests. The script starts with the numeric core, then `if (typeof module !== 'undefined') module.exports = {…}`, then UI code that only runs when a `document` exists. |
+| `index.html` | The whole tool: one self-contained page with inline CSS and vanilla JS, no network requests. Its first script is `beamdswitch.js`, pasted in unchanged; the second starts with the numeric core, then `if (typeof module !== 'undefined') module.exports = {…}`, then UI code that only runs when a `document` exists. |
+| `beamdswitch.js` | The standard beamdswitch report template (`deck(report)` writes a report as a beamdswitch Markdown deck); a copy of the site's shared [`templates/beamdswitch.js`](../../templates/beamdswitch.js), kept identical, and identical to the page's first script, by the tests |
 | `raw.json` | Method notes, examples and the verification table (published as `data.json`); the tests check its examples match the page. |
 
-There is no build step: edit `index.html` directly.
+There is no build step: edit `index.html` directly. When `templates/beamdswitch.js` changes, copy it
+here and paste it over the page's first script.
 
 The core parses a Python subset by hand (never `eval`), finds roots from the
 balanced companion matrix with Francis QR, tracks branches over an adaptive K
@@ -27,5 +29,17 @@ built-in verification cases (the same ones the page shows at `?selftest`)
 plus parser, import, export, tracking and WebMCP checks:
 
 ```sh
-node --test tests/root-locus.test.cjs
+node --test tests/root-locus.test.cjs tests/root-locus-beamdswitch.test.mjs
 ```
+
+## beamdswitch deck
+
+The beamdswitch button (under Export and import) saves the check as a narrated
+talk for [beamdswitch](https://teoyujie.org/visuals/beamdswitch/): one Markdown
+deck with the set-up, method, results and checks, every number at the page's
+four significant figures and a spoken narration on every slide, written by
+`locusReport` with the site's standard report template
+([`templates/beamdswitch-report.md`](../../templates/beamdswitch-report.md)).
+Copy deck puts the same deck on the clipboard; if saving is blocked, the
+beamdswitch button copies it instead. `tests/root-locus-beamdswitch.test.mjs`
+parses the decks with beamdswitch's own parsers and clicks both buttons.

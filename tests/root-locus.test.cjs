@@ -8,13 +8,15 @@ const dir = path.join(__dirname, '../visuals/root-locus');
 const html = fs.readFileSync(path.join(dir, 'index.html'), 'utf8');
 const raw = JSON.parse(fs.readFileSync(path.join(dir, 'raw.json'), 'utf8'));
 
-// The page has one inline script: the numeric core, its module.exports guard, then UI code that only
-// runs when a document exists. Loading it here is exactly what the guard is for.
+// The page has two inline scripts: the shared beamdswitch report template, then the numeric core, its
+// module.exports guard, then UI code that only runs when a document exists. Loading the core here is
+// exactly what the guard is for.
+const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
+assert.equal(scripts.length, 2);
+const [templateScript, coreScript] = scripts;
 function loadCore() {
-  const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
-  assert.equal(scripts.length, 1);
   const module = {exports: {}};
-  vm.runInNewContext(scripts[0], {module, console});
+  vm.runInNewContext(coreScript, {module, console});
   return module.exports;
 }
 const R = loadCore();
@@ -66,9 +68,13 @@ function loadPage() {
     setTimeout: fn => { fn(); return 0; }, clearTimeout() {}, getComputedStyle: () => ({getPropertyValue: () => '', fontFamily: 'serif'}),
     Event: class { constructor(type) { this.type = type; } }};
   Object.defineProperties(context, traps);
-  const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
-  assert.equal(scripts.length, 1);
-  vm.runInNewContext(scripts[0], context);
+  vm.createContext(context);
+  // In a browser there is no module, so the template defines Beamdswitch on the page.
+  const module = context.module;
+  context.module = undefined;
+  vm.runInContext(templateScript, context);
+  context.module = module;
+  vm.runInContext(coreScript, context);
   const $ = id => document.getElementById(id);
   const fire = (id, type) => $(id).dispatchEvent(new context.Event(type));
   return {core: context.module.exports, $, fire, reached};

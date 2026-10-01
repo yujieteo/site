@@ -39,6 +39,7 @@ section{margin-top:clamp(2.5rem,7vw,4rem);padding-top:1.25rem;border-top:1px sol
 .label{font:600 .7rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:.2rem}
 select,input[type="number"],input[type="text"]{border:1px solid var(--border);background:var(--bg);border-radius:var(--r);padding:.3rem .5rem;min-height:2.25rem;font-size:.875rem;min-width:0;width:100%}
 .toolbar select{width:auto;max-width:100%}
+.deck{display:flex;flex-wrap:wrap;gap:.4rem .6rem;align-items:center;margin-top:1rem}
 input[type="number"]{font-variant-numeric:tabular-nums}
 [aria-invalid="true"]{border-color:var(--bad);box-shadow:0 0 0 1px var(--bad)}
 .badge{display:inline-flex;align-items:center;gap:.35rem;border-radius:999px;padding:.2rem .7rem;font:600 .8rem var(--mono);border:1px solid currentColor;text-decoration:none}
@@ -171,6 +172,12 @@ footer{margin-top:3rem;font-size:.8125rem;color:var(--muted)}
     <ul id="stats" class="stats"></ul>
     <ul id="warnings" class="warnings" aria-label="Warnings"></ul>
     <div class="tablewrap"><table id="modes" aria-label="Failure modes"></table></div>
+    <div class="deck" role="group" aria-label="Save a beamdswitch deck">
+      <button class="btn" type="button" id="save-beamdswitch" title="Save a narrated Markdown talk about this joint, to open in beamdswitch">beamdswitch</button>
+      <button class="btn" type="button" id="copy-beamdswitch" title="Copy the beamdswitch deck to the clipboard">Copy deck</button>
+      <span id="deck-status" class="small muted" role="status"></span>
+    </div>
+    <p class="small muted">The beamdswitch button saves this joint as a narrated talk: a Markdown deck with the set-up, method, results and checks, every number as shown here, and a spoken narration on every slide. Open it in <a href="https://teoyujie.org/visuals/beamdswitch/">beamdswitch</a> to get slides, a handout, narration and a video. Copy deck puts the same deck on the clipboard, and if saving is blocked the beamdswitch button copies it instead.</p>
     <div class="charts">
       <figure>
         <h3>Interaction, Eq. 9-31</h3>
@@ -234,6 +241,9 @@ const D = /*@DATA@*/;
 </script>
 <script>
 /*@ENGINE@*/
+</script>
+<script>
+/*@BEAMDSWITCH@*/
 </script>
 <script>
 (function () {
@@ -457,6 +467,34 @@ function renderTrace(r) {
     r.trace.map((t) => `<tr><td class="eq">${eqHtml(t.affdl)}</td><td class="l">${esc(t.quantity)}</td><td>${show(t.value, t.kind)}</td><td class="l muted">${esc(unitLabel(t.kind))}</td><td class="l">${esc(t.detail)}</td><td class="l">${esc(t.ref)}</td><td class="l">${flag(t.crossChecked)}</td></tr>`).join("") + "</tbody>";
 }
 
+/* ---------- beamdswitch deck ----------
+   The report template lives in beamdswitch.js; the engine fills it from the solved joint. */
+function reportDeck() {
+  const report = L.jointReport(state);
+  return report && Beamdswitch.deck(report);
+}
+function deckSay(msg) { $("deck-status").textContent = msg; }
+async function saveDeck() {
+  const text = reportDeck(), name = "lug-joint-beamdswitch.md";
+  if (!text) { deckSay("Fix the inputs first: there is no solution to save."); return; }
+  try {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([text], { type: "text/markdown" })); a.download = name;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    deckSay(`Saved ${name}: open it in beamdswitch.`);
+  } catch (e) {
+    try { await navigator.clipboard.writeText(text); deckSay("Copied the beamdswitch deck, as saving is blocked here: paste it into beamdswitch."); }
+    catch (e2) { deckSay("Could not save or copy the beamdswitch deck here."); }
+  }
+}
+async function copyDeck() {
+  const text = reportDeck();
+  if (!text) { deckSay("Fix the inputs first: there is no solution to copy."); return; }
+  try { await navigator.clipboard.writeText(text); deckSay("Copied the beamdswitch deck: paste it into beamdswitch."); }
+  catch (e) { deckSay("Copy failed: the browser blocked clipboard access."); }
+}
+
 /* ---------- charts ---------- */
 function placeholder(id, text) { $(id).innerHTML = `<p class="placeholder">${esc(text)}</p>`; }
 const NS = 'xmlns="http://www.w3.org/2000/svg"';
@@ -562,6 +600,8 @@ function wire() {
     setTimeout(() => { btn.textContent = "Copy link"; }, 1500);
   });
   $("print").addEventListener("click", () => window.print());
+  $("save-beamdswitch").addEventListener("click", saveDeck);
+  $("copy-beamdswitch").addEventListener("click", copyDeck);
   // Keep the input in the hash: scroll to the self-tests instead of following the anchor.
   $("badge").addEventListener("click", (e) => { e.preventDefault(); $("self-tests").scrollIntoView({ behavior: "smooth" }); });
   window.addEventListener("hashchange", () => {

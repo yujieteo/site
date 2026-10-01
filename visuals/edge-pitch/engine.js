@@ -571,6 +571,184 @@
     return L.join("\n");
   }
 
+  /* ---------- beamdswitch report ---------- */
+
+  // Words for narration: a deck's ::: narration is read aloud, so it carries no symbols.
+  const SPOKEN_UNITS = { mm: "millimetres", N: "newtons", MPa: "megapascals", in: "inches", lbf: "pounds-force", ksi: "kips per square inch" };
+  const SPOKEN_CHECKS = {
+    bearing: "bearing at the end row", bearingInterior: "bearing at the interior rows", shearOut: "shear-out", netSection: "net section between holes",
+    sideEdge: "side-edge net section", interRivet: "inter-rivet buckling", maxPitch: "the maximum spacing check",
+    eEndD: "end distance over diameter", eSideD: "side edge distance over diameter", pD: "pitch over diameter", gD: "row spacing over diameter", diagD: "diagonal spacing over diameter",
+  };
+  // Plot coefficients: twelve significant figures, far finer than any number the page shows.
+  const coef = (v) => String(+v.toPrecision(12));
+  // "1.234e+6" is said "1.234 times ten to the 6"; "-0.5" is said "minus 0.5".
+  function sayNumber(text) {
+    const m = /^(-?)(\d+(?:\.\d+)?)(?:e([+-]?\d+))?$/.exec(String(text));
+    if (!m) return String(text);
+    const exp = m[3] == null ? "" : ` times ten to the ${Number(m[3]) < 0 ? "minus " : ""}${Math.abs(Number(m[3]))}`;
+    return `${m[1] ? "minus " : ""}${m[2]}${exp}`;
+  }
+
+  /*
+   * jointReport(x, displayUnits, { vectors }) describes a solved joint as a report for the standard
+   * beamdswitch template (beamdswitch.js; templates/beamdswitch-report.md). Every number is read from
+   * solve() and written with the page's own formatter and units, so the deck says what the page shows.
+   * The ::: plot is the solver's bearing and shear-out margins against e_end/D, as sweepED() draws them.
+   * Returns null when the inputs are blocked by errors.
+   */
+  function jointReport(x, displayUnits = "SI", { vectors = [] } = {}) {
+    const r = solve(x);
+    if (!r.ok) return null;
+    const sys = displayUnits === "US" ? "US" : "SI";
+    const u = (v, kind) => (v == null ? "—" : `${fmt(toDisplay(v, kind, sys))} ${unitSym(kind, sys)}`);
+    const say = (v, kind) => `${sayNumber(fmt(toDisplay(v, kind, sys)))} ${SPOKEN_UNITS[unitSym(kind, sys)]}`;
+    const tex = (v, kind) => `${fmt(toDisplay(v, kind, sys))}\\ \\text{${unitSym(kind, sys)}}`;
+    const m = (v) => (v == null ? "—" : fmt(v));
+    const tags = (list) => list.map((t) => (t === "niu" ? "Niu (confirm against your copy)" : TAGS[t].label)).join(", ");
+    const option = (path) => { const f = FIELD[path], v = get(x, path); return (f.options.find((o) => o[0] === v) || [v, v])[1]; };
+    const { fastener: F, sheet: S, material: M, geometry: G, load: L, buckling: B, rules: R } = x;
+    const d = r.derived, g = r.governing, gg = r.governingGeom;
+    const kind = { "solid-rivet": "solid rivets", "blind-rivet": "blind rivets", bolt: "bolts" }[F.type];
+    const rowsWord = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+    const across = d.direction === "parallel" ? "along" : "across";
+
+    const setup = [
+      {
+        title: `The joint: ${rowsWord(G.rows, "row", "rows")} of ${G.perRow} ${kind}, D = ${u(F.D, "length")}, t = ${u(S.t, "length")}`,
+        body: [
+          `- Fastener: ${option("fastener.type").toLowerCase()}, D = ${u(F.D, "length")}, hole D_h = ${u(F.Dh, "length")}, ${option("fastener.head").toLowerCase()} head${F.head === "countersunk" ? ` (countersink ${u(F.csk, "length")})` : ""}`,
+          `- Sheet: t = ${u(S.t, "length")}, W = ${u(S.W, "length")}, ${option("sheet.shear").toLowerCase()}`,
+          `- Pattern: ${option("geometry.pattern").toLowerCase()}, ${rowsWord(G.rows, "row", "rows")} of ${G.perRow}, e_end = ${u(G.eEnd, "length")}, e_side = ${u(G.eSide, "length")}, p = ${u(G.p, "length")}${G.rows > 1 ? `, g = ${u(G.g, "length")}` : ""}`,
+          `- Load: P = ${u(L.P, "force")} ${across} the rows, equal share; compressive sheet stress ${u(d.sigmaSheet, "stress")}${d.sigmaDerived ? " (derived from P over the width across the load times t)" : " (entered)"}`,
+          `- Units: ${sys === "US" ? "in, lbf, ksi" : "mm, N, MPa"}`,
+        ].join("\n"),
+        notes: `Row 0 is the end row, at e_end from the free end; the outer fasteners of every row sit at e_side from the side edges.`,
+        narration: `The joint has ${rowsWord(G.rows, "row", "rows")} of ${G.perRow} ${kind}, ${d.n} in all, of diameter ${say(F.D, "length")} in holes of ${say(F.Dh, "length")}. ` +
+          `The sheet is ${say(S.t, "length")} thick and ${say(S.W, "length")} wide. ` +
+          `The end distance is ${say(G.eEnd, "length")}, the side edge distance ${say(G.eSide, "length")} and the pitch ${say(G.p, "length")}${G.rows > 1 ? `, with rows ${say(G.g, "length")} apart` : ""}. ` +
+          `A load of ${say(L.P, "force")} acts ${across} the rows.`,
+      },
+      {
+        title: "Allowables and rules: the values entered on the page",
+        body: [
+          "| Allowable | Value |", "| --- | --- |",
+          ...["material.E", "material.nu", "material.Ftu", "material.Fty", "material.Fcy", "material.Fsu", "material.Fbru15", "material.Fbru20", "buckling.c"].map((p) => {
+            const f = FIELD[p], v = get(x, p);
+            return `| ${f.label} | ${f.kind === "ratio" ? m(v) : u(v, f.kind)} |`;
+          }),
+          "",
+          `Geometry rules: (e/D)_min = ${m(R.eDmin)}, (e/D)_nom = ${m(R.eDnom)}, (p/D)_min = ${m(R.pDmin)}, (p/D)_typ = ${m(R.pDtyp)}${G.rows > 1 ? `, (g/D)_min = ${m(R.gDmin)}` : ""}.`,
+        ].join("\n"),
+        notes: "The tool ships with no allowables: its starting numbers are round placeholders, not material data. NASA RP-1228 states a 1.5D minimum and a 2D nominal edge distance and a 4D nominal spacing; the other rules are unsourced defaults.",
+        narration: `The allowables are the values entered on the page, not book values. ` +
+          `The ultimate tensile strength is ${say(M.Ftu, "stress")}, the ultimate shear strength ${say(M.Fsu, "stress")}, ` +
+          `and the bearing strength ${say(M.Fbru15, "stress")} at an edge distance of 1.5 diameters, rising to ${say(M.Fbru20, "stress")} at 2 diameters. ` +
+          `The minimum edge distance rule is ${sayNumber(m(R.eDmin))} diameters.`,
+      },
+    ];
+
+    const method = [
+      {
+        title: `Equal load share: ${u(d.Pf, "force")} per fastener`,
+        body: [
+          `$$ P_f = \\frac{P}{n_r n_f} = \\frac{${tex(L.P, "force")}}{${G.rows} \\cdot ${G.perRow}} = ${tex(d.Pf, "force")} $$`,
+          "",
+          "$$ MS = \\frac{\\text{allowable}}{\\text{applied}} - 1 \\qquad MS_{geom} = \\frac{\\text{actual}}{\\text{minimum}} - 1 $$",
+        ].join("\n"),
+        notes: ASSUMPTIONS.slice(0, 3).join(" "),
+        narration: `Every fastener takes an equal share of the load, ${say(d.Pf, "force")}. ` +
+          "Each strength check divides an allowable by the applied load and subtracts one, giving the margin of safety. " +
+          "Geometric rules divide a ratio such as end distance over diameter by its minimum, and are kept apart from strength.",
+      },
+      {
+        title: "Strength checks: bearing, shear-out, net section, side edge and inter-rivet buckling",
+        body: FORMULAS.filter((f) => !["eD", "pD"].includes(f.id)).map((f) => `- ${f.check}: \`${f.text}\` (${tags(f.source)})`).join("\n"),
+        notes: "Bearing interpolates F_bru linearly between your values at e/D = 1.5 and 2.0, holds the 2.0 value above 2.0 and never extrapolates below 1.5. Inter-rivet buckling uses Euler with a Johnson parabola below F_cy/2.",
+        narration: "Bearing uses the bearing strength interpolated at the edge distance ratio. Shear-out takes two shear planes from the hole to the free end. " +
+          "Net section and the side edge compare the tensile strength with the stress across the ligaments. " +
+          "Inter-rivet buckling treats the sheet between fasteners along the load as a short column.",
+      },
+    ];
+
+    const strengthRows = r.strength.map((c) => `| ${c.title} | ${c.allowable == null ? c.status || "—" : u(c.allowable, c.kind)} | ${u(c.applied, c.kind)} | ${m(c.ms)} |`);
+    const evaluated = r.strength.filter((c) => c.ms != null);
+    const gov = g && r.strength.find((c) => c.id === g.id);
+    const Pf = d.Pf, eD = G.eEnd / F.D, bearingAt = r.strength.find((c) => c.id === "bearing"), shearAt = r.strength.find((c) => c.id === "shearOut");
+    const results = [
+      {
+        title: "Strength margins",
+        body: ["| Check | Allowable | Applied | MS |", "| --- | --- | --- | --- |", ...strengthRows].join("\n"),
+        notes: `Load ${across} the rows: net section uses ${d.across.sym} = ${u(d.across.L, "length")} across the load; inter-rivet buckling uses ${d.along.sym}${d.along.L == null ? " (not evaluated: one fastener along the load)" : ` = ${u(d.along.L, "length")}`} along it.`,
+        narration: evaluated.length
+          ? evaluated.map((c) => `${SPOKEN_CHECKS[c.id][0].toUpperCase()}${SPOKEN_CHECKS[c.id].slice(1)} has a margin of ${sayNumber(m(c.ms))}.`).join(" ")
+          : "No strength check could be evaluated for this joint.",
+      },
+      gov
+        ? {
+          title: `Governing strength mode: ${gov.title}, MS = ${m(gov.ms)}`,
+          body: `$$ MS = \\frac{${tex(gov.allowable, gov.kind)}}{${tex(gov.applied, gov.kind)}} - 1 = ${m(gov.ms)} $$\n\n- ${gov.formula}`,
+          narration: `The governing strength mode is ${SPOKEN_CHECKS[gov.id]}: an allowable of ${say(gov.allowable, gov.kind)} against ${say(gov.applied, gov.kind)} applied, a margin of ${sayNumber(m(gov.ms))}.`,
+        }
+        : {
+          title: "Governing strength mode: none evaluated",
+          body: "No strength check has both an allowable and an applied load for this joint.",
+          narration: "No strength check could be evaluated, so no strength mode governs.",
+        },
+      {
+        title: `Margin against end distance: bearing and shear-out at e_end/D = ${m(eD)}`,
+        body: `Bearing (first curve) and shear-out (second curve) at the entered load of ${u(Pf, "force")} per fastener. F_bru is not extrapolated below e/D = 1.5.`,
+        plot: {
+          x: [1.5, 3], xlabel: "e_end / D", ylabel: "MS",
+          curves: [
+            `(${M.Fbru15} + min(max((x - 1.5) / 0.5, 0), 1) * (${M.Fbru20 - M.Fbru15})) * ${coef((F.D * S.t) / Pf)} - 1`,
+            `2 * (x * ${F.D} - ${coef(F.Dh / 2)}) * ${coef((S.t * M.Fsu) / Pf)} - 1`,
+          ],
+        },
+        narration: `The first curve is the bearing margin and the second the shear-out margin, against end distance over diameter. ` +
+          `At the entered ratio of ${sayNumber(m(eD))}, bearing ${bearingAt.ms == null ? "is not evaluated" : `has a margin of ${sayNumber(m(bearingAt.ms))}`} and shear-out ${sayNumber(m(shearAt.ms))}.`,
+      },
+      {
+        title: `Geometric margins: ${gg.title}, MS_geom = ${m(gg.ms)}`,
+        body: ["Meeting a geometry rule is not the same as passing strength.", "", "| Rule | Actual | Minimum | MS_geom | ÷ typical |", "| --- | --- | --- | --- | --- |",
+          ...r.geometric.map((c) => `| ${c.title} | ${m(c.actual)} | ${m(c.minimum)} | ${m(c.ms)} | ${m(c.ratioToTypical)} |`)].join("\n"),
+        narration: r.geometric.map((c) => `${SPOKEN_CHECKS[c.id][0].toUpperCase()}${SPOKEN_CHECKS[c.id].slice(1)} is ${sayNumber(m(c.actual))} against a minimum of ${sayNumber(m(c.minimum))}.`).join(" ") +
+          ` The governing geometric rule is ${SPOKEN_CHECKS[gg.id]}, with a margin of ${sayNumber(m(gg.ms))}.`,
+      },
+    ];
+
+    const tests = selfTests(vectors), passed = tests.filter((t) => t.pass).length, failed = tests.filter((t) => !t.pass);
+    const checks = [
+      {
+        title: `Self-test: ${passed} of ${tests.length} checks pass`,
+        body: [
+          "- Hand calculations for the placeholder joint, the bearing interpolation end points, SI/US round trips and the column function on both branches",
+          ...(vectors.length ? [`- ${vectors.length} imported test ${vectors.length === 1 ? "vector" : "vectors"}`] : []),
+          ...failed.map((t) => `- Fails: ${t.name}`),
+        ].join("\n"),
+        narration: `The page's self-test runs ${tests.length} checks, and ${passed === tests.length ? "all of them pass" : `${passed} pass while ${tests.length - passed} fail`}.`,
+      },
+      {
+        title: r.warnings.length ? `${r.warnings.length} ${r.warnings.length === 1 ? "warning" : "warnings"} from the page` : "No warnings from the page",
+        body: r.warnings.length ? r.warnings.map((w) => `- ${w.message}`).join("\n") : "- None.",
+        narration: r.warnings.length ? `The page raises ${r.warnings.length} ${r.warnings.length === 1 ? "warning" : "warnings"}, listed on this slide.` : "The page raises no warnings for this joint.",
+      },
+      {
+        title: "Takeaway",
+        key: `${gov ? `Governing strength mode: **${gov.title}**, MS = ${m(gov.ms)}.` : "No strength mode evaluated."} Governing geometric rule: ${gg.title}, MS_geom = ${m(gg.ms)}. Not for certification.`,
+        narration: `${gov ? `The joint's smallest strength margin is ${sayNumber(m(gov.ms))}, in ${SPOKEN_CHECKS[gov.id]}` : "No strength margin could be evaluated"}, ` +
+          `and its smallest geometric margin is ${sayNumber(m(gg.ms))}, in ${SPOKEN_CHECKS[gg.id]}. These are exploration results, not for certification.`,
+      },
+    ];
+
+    return {
+      meta: { title: `Edge margin and pitch: ${rowsWord(G.rows, "row", "rows")} of ${G.perRow} ${kind}`, subtitle: gov ? `Governing strength mode: ${gov.title}, MS = ${m(gov.ms)}` : "No strength mode evaluated" },
+      notes: DISCLAIMER,
+      narration: `This report checks the edge distance, pitch and margins of a fastened sheet joint. Lengths are in ${SPOKEN_UNITS[unitSym("length", sys)]}, forces in ${SPOKEN_UNITS[unitSym("force", sys)]} and stresses in ${SPOKEN_UNITS[unitSym("stress", sys)]}.`,
+      setup, method, results, checks,
+    };
+  }
+
   /* ---------- Self-tests ---------- */
 
   // Hand calculation for the example joint, worked by hand:
@@ -656,6 +834,6 @@
     SCHEMA_VERSION, KIND, DISCLAIMER, UNITS, TAGS, SOURCES, FIELDS, FIELD, DEFAULT_SOURCES, ASSUMPTIONS, FORMULAS, HAND,
     unitSym, toDisplay, fromDisplay, convertInputs, example, normalise, validate, solve, fbru, columnStrength, slendernessFor,
     netWidth, maxPitch, sheetStress, acrossSpacing, alongSpacing, loadedWidth, sweepED, sweepPitch, sweepSlenderness, inputsJSON, resultsJSON, parseImport, lookup, runVector,
-    toMarkdown, selfTests, get, set, fmt,
+    toMarkdown, jointReport, selfTests, get, set, fmt,
   };
 });

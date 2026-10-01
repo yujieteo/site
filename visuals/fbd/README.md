@@ -43,12 +43,21 @@ the normal site build. There is no solver: reactions are drawn, not computed.
   drawing as an SVG data URI, schedules of bodies, joints, loads and
   supports (blanks shown as `—`), the axes definition and the full JSON,
   which is the source of truth when the file is opened again.
+- **beamdswitch:** File › Save beamdswitch deck saves the drawing as a
+  narrated talk for [beamdswitch](https://teoyujie.org/visuals/beamdswitch/):
+  a Markdown deck with the drawing, its axes, bodies, loads, supports and
+  dimension checks, every value as the schedules write it and a spoken
+  narration on every slide, written with the site's standard report template
+  ([`templates/beamdswitch-report.md`](../../templates/beamdswitch-report.md)).
+  There is no solver, so it has no equations. Copy beamdswitch deck puts the
+  same deck on the clipboard; if saving is blocked, saving copies it instead.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
 | `index.html` | The whole tool. `<script data-core>` blocks are the DOM-free model (units, validation, serialisation, rendering, export); `<script data-ui>` blocks are the interface. Each block is one feature, in build order. |
+| `beamdswitch.js` | The standard beamdswitch report template (`deck(report)` writes a report as a beamdswitch Markdown deck); a copy of the site's shared [`templates/beamdswitch.js`](../../templates/beamdswitch.js), pasted unchanged into the page as `<script id="fbd-beamdswitch" data-core>` and kept identical by the tests. The `fbd-report` core block (`FBD.beamdswitchReport`) fills it from the drawing. |
 | `examples.json` | Reference drawings 1 to 5 from the specification, in the saved format. Published as the visualization's `data.json`. |
 | `tools/make-examples.mjs` | Rebuilds `examples.json` through the tool's own unit parsing and loader. |
 | `tools/sync-examples.mjs` | Copies `examples.json` into the page (File › Examples) so it stays one file. |
@@ -84,7 +93,7 @@ node visuals/fbd/tools/sync-examples.mjs
 ## Verify
 
 ```sh
-node --test tests/fbd.test.mjs
+node --test tests/fbd.test.mjs tests/fbd-beamdswitch.test.mjs
 ```
 
 The tests load every reference drawing and check that saving is identity and
@@ -94,7 +103,9 @@ geometry; that the 3000 mm member of drawing 1 measures 3000 mm at any zoom
 and in exports; that rotating the triad or switching preset never moves
 stored geometry; that the aircraft preset relabels its axes and shows PORT
 and STBD where the view has them; and that invalid files report clear
-errors.
+errors. `tests/fbd-beamdswitch.test.mjs` parses each drawing's beamdswitch
+deck with beamdswitch's own parsers, checks its schedules against the
+Markdown file's, and picks both File menu items.
 
 Drawing 6, building drawing 1 by touch alone, needs a browser. Open the page
 with touch emulation at phone size (for example 390 × 844) and run

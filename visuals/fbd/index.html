@@ -1215,7 +1215,7 @@ function parseFile(text) {
 }
 function slug(title) { return (title || "drawing").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "drawing"; }
 
-Object.assign(F, { exportSVG, svgDataUri, base64, toMarkdown, fromMarkdown, parseFile, slug, AXES_TEXT, MD_SECTIONS, EXPORT_SIZE, EXPORT_A });
+Object.assign(F, { exportSVG, svgDataUri, base64, toMarkdown, fromMarkdown, parseFile, slug, AXES_TEXT, MD_SECTIONS, EXPORT_SIZE, EXPORT_A, mdTable: table, pointText, axesRows, bodyRows, loadRows });
 })(typeof window !== "undefined" ? window.FBD : globalThis.FBD);
 </script>
 
@@ -1316,6 +1316,269 @@ F.AXES_TEXT.push((doc, rows) => {
 });
 
 Object.assign(F, { PRESETS, applyPreset, bodyAxis, STANDARD });
+})(typeof window !== "undefined" ? window.FBD : globalThis.FBD);
+</script>
+
+<script id="fbd-beamdswitch" data-core>
+/* The standard beamdswitch report template, shared by every visualisation.
+ *
+ * beamdswitch (https://teoyujie.org/visuals/beamdswitch/) turns one Markdown deck into slides, a
+ * handout, narration and a video. `deck(report)` writes a report in its deck syntax, always in the
+ * same order (templates/beamdswitch-report.md shows the skeleton):
+ *
+ *   front matter and title slide
+ *   # Set-up               what was modelled, its units and conventions
+ *   # Method               how the tool solved it
+ *   # Results              the numbers, with key equations and plots
+ *   # Checks and takeaway  what confirms the numbers, ending on one ::: key frame
+ *
+ * A report is plain data, so it can be built and tested without a page:
+ *   { meta: { title, subtitle, author, date, voice }, narration, notes,
+ *     setup, method, results, checks: [frame, ...] }
+ * and each frame is
+ *   { title, body, narration, notes, key, plot: { x: [a, b], xlabel, ylabel, curves: ["expr", ...] } }
+ * `body` is Markdown (LaTeX maths in $...$ or $$...$$); `narration` is plain spoken prose, one
+ * caption per sentence; `key`, `plot` and `notes` are optional. Every frame must be narrated, and
+ * the last checks frame must carry a key. The visualisation supplies every number already
+ * formatted, so the deck says exactly what its page shows.
+ */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === "object" && module.exports) module.exports = api;
+  else root.Beamdswitch = api;
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  const SECTIONS = [["setup", "Set-up"], ["method", "Method"], ["results", "Results"], ["checks", "Checks and takeaway"]];
+
+  const oneLine = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+  /* Markdown lines that would end a frame or a div early are refused rather than written. */
+  function block(text, what) {
+    const s = String(text ?? "").replace(/\r\n?/g, "\n").trim();
+    for (const line of s.split("\n"))
+      if (/^#{1,2}\s/.test(line) || /^\s*:{3,}/.test(line)) throw new Error(`${what} must not contain a heading or a ::: line: ${line}`);
+    return s;
+  }
+  /* Narration is read aloud: no maths, markup or line structure. */
+  function spoken(text, what) {
+    const s = oneLine(text);
+    if (!s) throw new Error(`${what} needs a narration.`);
+    if (/[$\\`*_#|<>]/.test(s)) throw new Error(`${what} narration must be plain spoken prose: ${s}`);
+    return s;
+  }
+  const div = (name, text) => [`::: ${name}`, text, ":::"];
+
+  function frame(f, where) {
+    const title = oneLine(f.title), what = `Frame "${title}" in ${where}`;
+    if (!title) throw new Error(`A frame in ${where} needs a title.`);
+    const out = [`## ${title}`, ""];
+    if (f.body) out.push(block(f.body, what), "");
+    if (f.plot) {
+      const p = f.plot, lines = [`x: ${p.x[0]}, ${p.x[1]}`];
+      if (p.xlabel) lines.push(`xlabel: ${oneLine(p.xlabel)}`);
+      if (p.ylabel) lines.push(`ylabel: ${oneLine(p.ylabel)}`);
+      for (const c of p.curves) lines.push(`y = ${oneLine(c)}`);
+      out.push(...div("plot", lines.join("\n")), "");
+    }
+    if (f.key) out.push(...div("key", block(f.key, what)), "");
+    if (f.notes) out.push(...div("notes", block(f.notes, what)), "");
+    out.push(...div("narration", spoken(f.narration, what)), "");
+    return out;
+  }
+
+  function deck(report) {
+    const meta = report.meta || {};
+    if (!oneLine(meta.title)) throw new Error("The report needs a title.");
+    const checks = report.checks || [];
+    if (!checks.length || !checks.at(-1).key) throw new Error("The last checks frame must carry a ::: key.");
+    const out = ["---"];
+    for (const k of ["title", "subtitle", "author", "date", "voice"]) if (oneLine(meta[k])) out.push(`${k}: ${oneLine(meta[k])}`);
+    out.push("---", "");
+    if (report.notes) out.push(...div("notes", block(report.notes, "The title slide")), "");
+    out.push(...div("narration", spoken(report.narration, "The title slide")), "");
+    SECTIONS.forEach(([id, title], i) => {
+      const frames = report[id] || [];
+      if (!frames.length) throw new Error(`The ${title} section needs at least one frame.`);
+      out.push(`# ${title}`, "", ...div("narration", `Part ${i + 1}. ${title}.`), "");
+      for (const f of frames) out.push(...frame(f, title));
+    });
+    return out.join("\n");
+  }
+
+  return { SECTIONS, deck };
+});
+
+</script>
+
+<script id="fbd-report" data-core>
+/* beamdswitch report: the drawing as a report for the site's standard beamdswitch template (the
+   fbd-beamdswitch script; templates/beamdswitch-report.md). Every value is the drawing's own,
+   written with the Markdown schedule's formatters. There is no solver, so the deck shows no
+   equations: it walks through the drawing, its axes, bodies, loads and supports. */
+(function (F) {
+"use strict";
+// Words for narration: a deck's ::: narration is read aloud, so it carries no symbols.
+const SPOKEN_UNITS = {
+  mm: "millimetres", cm: "centimetres", m: "metres", in: "inches", ft: "feet",
+  N: "newtons", kN: "kilonewtons", lbf: "pounds-force", kip: "kips",
+  "N·mm": "newton millimetres", "N·m": "newton metres", "kN·m": "kilonewton metres", "lbf·in": "pound-force inches", "lbf·ft": "pound-force feet", "kip·ft": "kip feet",
+  "N/mm": "newtons per millimetre", "N/m": "newtons per metre", "kN/m": "kilonewtons per metre", "lbf/in": "pounds-force per inch", "lbf/ft": "pounds-force per foot", "kip/ft": "kips per foot",
+};
+// "1.5e-7" is said "1.5 times ten to the minus 7"; "-60" is said "minus 60".
+function sayNumber(text) {
+  const m = /^(-?)(\d+(?:\.\d+)?)(?:e([+-]?\d+))?$/.exec(String(text));
+  if (!m) return String(text);
+  const exp = m[3] == null ? "" : ` times ten to the ${Number(m[3]) < 0 ? "minus " : ""}${Math.abs(Number(m[3]))}`;
+  return `${m[1] ? "minus " : ""}${m[2]}${exp}`;
+}
+const say = (value, kind, unit) => `${sayNumber(F.formatQuantity(value, kind, unit, false))} ${SPOKEN_UNITS[unit]}`;
+const sayAngle = (a) => `${sayNumber(F.fmt(a, 5))} degrees`;
+// Text read aloud: \alpha is said "alpha" and F_{AB} "F AB"; anything else that is not a word is dropped.
+const sayText = (s) => String(s || "").replace(/\\([A-Za-z]+)/g, " $1 ").replace(/[_^{}]/g, " ").replace(/[^\p{L}\p{N}' -]/gu, " ").replace(/\s+/g, " ").trim();
+// A label also says x' as "x prime".
+const sayLabel = (s) => sayText(String(s || "").replace(/'/g, " prime"));
+const count = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+// A schedule longer than a slide holds is split over several slides of at most PAGE rows each.
+const PAGE = 7;
+function paged(items, frame) {
+  const pages = [];
+  for (let i = 0; i < items.length; i += PAGE) pages.push(items.slice(i, i + PAGE));
+  return (pages.length ? pages : [[]]).map((page, k) => frame(page, pages.length > 1 ? ` (${k + 1} of ${pages.length})` : ""));
+}
+const cap = (s) => s[0].toUpperCase() + s.slice(1);
+const KIND_WORDS = { force: "force", weight: "self-weight", moment: "moment", distributed: "distributed load" };
+
+function bodyWords(doc, b) {
+  const U = doc.view.units.length;
+  if (b.type === "polygon") return `a plate of ${count(b.joints.length, "corner", "corners")}, ${sayNumber(F.fmt(F.polygonArea(doc, b) / Math.pow(F.UNITS.length[U], 2)))} square ${SPOKEN_UNITS[U]} in area`;
+  const what = b.type === "beam" ? "a beam" : b.type === "rod" ? "a rod" : `a ${b.role} line`;
+  return `${what} ${say(F.memberLength(doc, b), "length", U)} long at ${sayAngle(F.toTriad(doc.view, F.edgeAngle(doc, b, 0)))}`;
+}
+function placeWords(doc, at) {
+  if (!at) return "";
+  const U = doc.view.units.length;
+  if ("joint" in at) return `at joint ${at.joint}`;
+  if ("body" in at && at.centroid) return `at the centroid of ${at.body}`;
+  if ("body" in at) { const [p] = F.edge(doc, F.body(doc, at.body), at.edge); return `on ${at.body}, ${say(at.s, "length", U)} from ${p.id}`; }
+  return "at a free point";
+}
+function loadWords(doc, l) {
+  const u = F.unitFor(doc, l), q = F.QTY[l.kind], label = sayLabel(l.label);
+  let mag, dir, where;
+  if (l.kind === "distributed") {
+    mag = l.w1 === null && l.w2 === null ? "no intensity set" : l.w1 !== null && l.w2 !== null && l.w1 !== l.w2 ? `${say(l.w1, q, u)} rising to ${say(l.w2, q, u)}` : say(l.w1 ?? l.w2, q, u);
+    dir = (l.dirMode === "vertical" ? "acting vertically" : "acting perpendicular to the member") + (l.flip ? ", flipped" : "");
+    const b = F.body(doc, l.body), [p] = F.edge(doc, b, l.edge), U = doc.view.units.length;
+    where = `along ${l.body} from ${say(l.s1, "length", U)} to ${say(l.s2, "length", U)} from ${p.id}`;
+  } else {
+    mag = l.magnitude === null ? "no magnitude set" : say(l.magnitude, q, u);
+    if (l.kind === "moment") dir = l.axis === "normal" ? (l.sense === "ccw" ? "counter-clockwise" : "clockwise") : `as a vector at ${sayAngle(F.displayAngle(doc, l))}${l.dirRef === "member" ? " to the member" : ""}`;
+    else if (l.plane !== "in") dir = l.plane === "out" ? "out of the page" : "into the page";
+    else dir = `at ${sayAngle(F.displayAngle(doc, l))}${l.dirRef === "member" ? " to the member" : ""}`;
+    where = placeWords(doc, l.at);
+  }
+  return `${cap(KIND_WORDS[l.kind])} ${l.id}${label ? `, labelled ${label}` : ""}: ${l.style === "reaction" ? "a reaction" : "applied"}, ${mag}, ${dir}, ${where}.`;
+}
+
+/* beamdswitchReport(doc) returns the report object that Beamdswitch.deck writes as a deck. */
+function beamdswitchReport(doc) {
+  const g = doc.geometry, u = doc.view.units, t = doc.view.triad, U = u.length;
+  const title = String(doc.title || "Untitled drawing").replace(/\s+/g, " ").trim();
+  const applied = g.loads.filter((l) => l.style !== "reaction"), reactions = g.loads.filter((l) => l.style === "reaction");
+  const members = g.bodies.filter((b) => b.type !== "line"), lines = g.bodies.filter((b) => b.type === "line");
+  const dims = lines.filter((b) => b.role === "dimension");
+  const [a, b] = t.labels.map(F.plainLabel);
+  const table = (head, rows) => F.mdTable(head, rows).trim();
+  const unitsLine = `Lengths in ${u.length}, forces in ${u.force}, moments in ${u.moment} and distributed loads in ${u.distributed} unless a load sets its own unit.`;
+  const roundTrip = F.parseJSON(F.serialize(doc)), same = !roundTrip.errors.length && F.serialize(roundTrip.doc) === F.serialize(doc);
+
+  const setup = [
+    {
+      title: `The drawing: ${count(members.length, "member", "members")}, ${count(g.loads.length, "load", "loads")} and ${count(g.supports.length, "support", "supports")}`,
+      body: [`![${title.replace(/[[\]]/g, "")}](${F.svgDataUri(F.exportSVG(doc, { background: "white" }))})`, "", `- ${unitsLine}`, "- Arrow lengths are schematic, not proportional to magnitude."].join("\n"),
+      notes: `Drawn with FBD Drawer ${F.VERSION}. Values are stored in mm, N and N·mm; the drawing shows them in the units chosen on the page.`,
+      narration: `The drawing has ${count(members.length, "member", "members")}, ${count(g.joints.length, "joint", "joints")}, ${count(applied.length, "applied load", "applied loads")}, ${count(reactions.length, "reaction", "reactions")} and ${count(g.supports.length, "support", "supports")}. ` +
+        `Lengths are in ${SPOKEN_UNITS[u.length]}, forces in ${SPOKEN_UNITS[u.force]} and moments in ${SPOKEN_UNITS[u.moment]}.`,
+    },
+    {
+      title: `Axes: ${a} and ${b}, ${t.preset === "aircraft" ? `aircraft body axes, ${t.aircraftView} view` : "engineering"}`,
+      body: table(["Setting", "Value"], F.axesRows(doc)),
+      notes: "Moving, rotating or re-presetting the axes never changes stored geometry: they only change how positions and angles are shown.",
+      narration: `Angles are measured from the ${sayLabel(a)} axis towards the ${sayLabel(b)} axis, which is ${t.ySense > 0 ? "counter-clockwise" : "clockwise"} on the page, and the ${sayLabel(a)} axis is turned ${sayAngle(t.rotation)} from the page's horizontal. ` +
+        `Positive moments turn ${t.ySense > 0 ? "counter-clockwise" : "clockwise"}. Positions are read from the axes origin.`,
+    },
+    ...paged(g.bodies.map((x, i) => [x, F.bodyRows(doc)[i]]), (page, part) => ({
+      title: `Bodies, lengths in ${U}${part}`,
+      body: table(["ID", "Type", "Label", "Joints", "Size", "Angle"], page.map(([, row]) => row)),
+      narration: page.length ? page.map(([x]) => `Body ${x.id} is ${bodyWords(doc, x)}.`).join(" ") : "The drawing has no bodies yet.",
+    })),
+    ...paged(g.joints, (page, part) => ({
+      title: `Joints, measured from the axes origin${part}`,
+      body: table(["Joint", `x (${U})`, `y (${U})`], page.map((j) => [j.id, F.formatQuantity(j.x - t.x, "length", U, false), F.formatQuantity(j.y - t.y, "length", U, false)])),
+      narration: page.length ? page.map((j) => `Joint ${j.id} is at ${say(j.x - t.x, "length", U)} along ${sayLabel(a)} and ${say(j.y - t.y, "length", U)} along ${sayLabel(b)}.`).join(" ") : "The drawing has no joints yet.",
+    })),
+  ];
+
+  const method = [
+    {
+      title: "Loads are data, not pictures: there is no solver",
+      body: [
+        "- Every position is a real coordinate, stored in mm, N, N·mm and N/mm; switching units never moves anything",
+        "- Each load stores one direction, counter-clockwise from world +x, shown from the axes' first axis",
+        "- Dimension lines measure the geometry they span",
+        "- Reactions are drawn in the reaction style, not computed, so this deck has no equations",
+      ].join("\n"),
+      notes: "World coordinates are y up; displayed coordinates are relative to the axes origin.",
+      narration: "Every point in the drawing is a real coordinate, so the diagram is to scale and its dimension lines measure. Each load is stored as data: a magnitude, a direction and a point of action. " +
+        "There is no solver, so the reactions are drawn as the person drew them rather than computed.",
+    },
+  ];
+
+  const results = [
+    ...paged(g.loads.map((l, i) => [l, F.loadRows(doc)[i]]), (page, part) => ({
+      title: `Loads: ${count(applied.length, "applied load", "applied loads")} and ${count(reactions.length, "reaction", "reactions")}${part}`,
+      body: table(["ID", "Type", "Style", "Label", "Magnitude", "Direction", "Position"], page.map(([, row]) => row)),
+      notes: "Blank values are shown as —. Directions are measured from the axes' first axis.",
+      narration: page.length ? page.map(([l]) => loadWords(doc, l)).join(" ") : "No loads are drawn.",
+    })),
+    ...paged(g.supports, (page, part) => ({
+      title: `Supports: ${count(g.supports.length, "support", "supports")}${part}`,
+      body: table(["ID", "Type", "Label", "Position", "Ground side"], page.map((s) => [s.id, cap(s.kind), s.label ? F.htmlLabel(s.label) : null, F.pointText(doc, s.at), `∠${F.fmt(F.toTriad(doc.view, s.angle), 5)}°`])),
+      narration: page.length ? page.map((s) => `Support ${s.id} is a ${s.kind} support ${placeWords(doc, s.at)}.`).join(" ") : "No supports are drawn.",
+    })),
+    ...(g.markers.length ? paged(g.markers, (page, part) => ({
+      title: `Markers: ${count(g.markers.length, "centre of gravity", "centres of gravity")}${part}`,
+      body: table(["Marker", "Type", "Label", "Position"], page.map((m) => [m.id, "Centre of gravity", m.label ? F.htmlLabel(m.label) : null, F.pointText(doc, m.at)])),
+      narration: page.map((m) => `Marker ${m.id} is a centre of gravity ${placeWords(doc, m.at)}.`).join(" "),
+    })) : []),
+  ];
+
+  const checks = [
+    {
+      title: dims.length ? `Dimension lines measure: ${dims.map((x) => F.formatQuantity(F.memberLength(doc, x), "length", U)).join(", ")}` : "No dimension lines drawn",
+      body: dims.length ? dims.map((x) => `- ${x.id}${x.label ? ` (${F.htmlLabel(x.label)})` : ""}: ${F.formatQuantity(F.memberLength(doc, x), "length", U)} between ${x.joints.join(" and ")}`).join("\n") : "- The drawing has no dimension lines.",
+      narration: dims.length ? dims.map((x) => `Dimension ${x.id} measures ${say(F.memberLength(doc, x), "length", U)}.`).join(" ") : "The drawing has no dimension lines to check.",
+    },
+    {
+      title: same ? "The drawing reloads identically from its saved JSON" : "The drawing does not reload identically",
+      body: same ? "- Saving the drawing and opening the file again gives the same drawing, value for value." : roundTrip.errors.map((e) => `- ${e}`).join("\n") || "- The reloaded drawing differs.",
+      narration: same ? "Saving the drawing and opening it again gives the same drawing, value for value." : "Saving the drawing and opening it again does not give the same drawing.",
+    },
+    {
+      title: "Takeaway",
+      key: `${count(applied.length, "applied load", "applied loads")} and ${count(reactions.length, "reaction", "reactions")} on ${count(members.length, "member", "members")}, held by ${count(g.supports.length, "support", "supports")}. The reactions are drawn, not computed.`,
+      narration: `This free body diagram shows ${count(applied.length, "applied load", "applied loads")} and ${count(reactions.length, "reaction", "reactions")} on ${count(members.length, "member", "members")}, held by ${count(g.supports.length, "support", "supports")}. The reactions are drawn, not computed.`,
+    },
+  ];
+
+  return {
+    meta: { title: `Free body diagram: ${title}`, subtitle: `${count(g.loads.length, "load", "loads")} and ${count(g.supports.length, "support", "supports")}, drawn to scale` },
+    notes: "Drawn with FBD Drawer. There is no solver: reactions are drawn, not computed.",
+    narration: `This report walks through a free body diagram, ${sayText(title) || "untitled"}. It is drawn to scale, and every load in it is data.`,
+    setup, method, results, checks,
+  };
+}
+Object.assign(F, { beamdswitchReport });
 })(typeof window !== "undefined" ? window.FBD : globalThis.FBD);
 </script>
 
@@ -2555,6 +2818,10 @@ const MENU = [
   ["Save JSON", () => download(`${base()}.fbd.json`, new Blob([F.serialize(A.doc)], { type: "application/json" }))],
   ["Save Markdown", () => download(`${base()}.fbd.md`, new Blob([F.toMarkdown(A.doc)], { type: "text/markdown" }))],
   null,
+  ["Save beamdswitch deck", () => saveDeck()],
+  ["Copy beamdswitch deck", () => copyDeck()],
+  "-A narrated Markdown talk on this drawing, to open in beamdswitch for slides, a handout and a video.",
+  null,
   ["Download SVG", () => download(`${base()}.svg`, new Blob([F.exportSVG(A.doc, { background: prefs.background })], { type: "image/svg+xml" }))],
   ["Download PNG", () => pngBlob().then((b) => download(`${base()}.png`, b)).catch((e) => A.toast(e.message))],
   ["Copy PNG to clipboard", () => {
@@ -2563,6 +2830,23 @@ const MENU = [
   }],
   "bg",
 ];
+/* beamdswitch deck: the report template is the fbd-beamdswitch script; FBD.beamdswitchReport fills it
+   from the drawing. Saving falls back to the clipboard where downloads are blocked. */
+const deckText = () => window.Beamdswitch.deck(F.beamdswitchReport(A.doc));
+async function saveDeck() {
+  const text = deckText(), name = `${base()}-beamdswitch.md`;
+  try {
+    download(name, new Blob([text], { type: "text/markdown" }));
+    A.toast(`Saved ${name}: open it in beamdswitch.`);
+  } catch (e) {
+    try { await navigator.clipboard.writeText(text); A.toast("Copied the beamdswitch deck, as saving is blocked here: paste it into beamdswitch."); }
+    catch (e2) { A.toast("Could not save or copy the beamdswitch deck here."); }
+  }
+}
+async function copyDeck() {
+  try { await navigator.clipboard.writeText(deckText()); A.toast("Copied the beamdswitch deck: paste it into beamdswitch."); }
+  catch (e) { A.toast("Copy failed: the browser blocked clipboard access."); }
+}
 const EXTRA_MENU = [];
 const $file = Object.assign(document.createElement("input"), { type: "file", accept: ".json,.md,.markdown,application/json,text/markdown,text/plain", hidden: true });
 document.body.appendChild($file);
@@ -2622,7 +2906,7 @@ const TOOLS = [
 ];
 A.WEBMCP = TOOLS;
 for (const t of TOOLS) mc?.registerTool(t);
-A.EXTRA_MENU = EXTRA_MENU; A.openText = openText; A.pngBlob = pngBlob; A.download = download;
+A.EXTRA_MENU = EXTRA_MENU; A.openText = openText; A.pngBlob = pngBlob; A.download = download; A.saveDeck = saveDeck; A.copyDeck = copyDeck;
 })();
 </script>
 
