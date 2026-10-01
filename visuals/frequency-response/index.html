@@ -87,9 +87,14 @@ table{border-collapse:collapse;width:100%;font-size:.8125rem;font-variant-numeri
 th,td{padding:.35rem .5rem;border-bottom:1px solid var(--grid);text-align:right;vertical-align:top}
 th{font:600 .68rem/1.3 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap}
 th:first-child,td:first-child,td.l,th.l{text-align:left}
+th.nt{text-transform:none;letter-spacing:0;font-size:.75rem}
 td.pass{color:var(--ok);font-weight:600}
 td.fail{color:var(--bad);font-weight:600}
 .mono{font-family:var(--mono);font-size:.8125rem;overflow-wrap:anywhere}
+.entrygrid{display:grid;gap:.4rem;margin:.4rem 0 1rem;max-width:44rem}
+.entrygrid button{border:1px solid var(--border);background:var(--bg);border-radius:var(--r);padding:.2rem;min-width:0}
+.entrygrid button[aria-pressed="true"]{border-color:var(--c1);box-shadow:0 0 0 1px var(--c1)}
+.entrygrid svg{display:block;width:100%;height:auto}
 .legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:center;margin:.25rem 0 .5rem;font-size:.875rem}
 .sw{display:inline-block;width:1.4rem;height:0;border-top:3px solid currentColor;vertical-align:middle}
 .sw.dash{border-top-style:dashed}
@@ -116,12 +121,14 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 <header>
   <p class="eyebrow"><a href="../../visuals.html">Visuals</a><span>Control theory</span><span>Works offline</span></p>
   <h1>Frequency-Response Visualiser</h1>
-  <p class="lede">See how poles, zeros, gain, delay and a controller shape a feedback loop's frequency response, and what that does to its margins and closed-loop stability. Phase 3 of 4 covers single loops in continuous or discrete time, on Bode, Nyquist and Nichols views and a pole-zero map.</p>
+  <p class="lede">See how poles, zeros, gain, delay and a controller shape a feedback loop's frequency response, and what that does to its margins and closed-loop stability. It covers single loops and multivariable (MIMO) loops in continuous or discrete time, on Bode, singular-value, Nyquist and Nichols views and a pole-zero map.</p>
   <div class="banner" role="note"><span><b>Exploration only.</b> Not a substitute for a verified control-design toolchain. Every export repeats this notice.</span><button class="badge" type="button" id="selftest-badge" aria-describedby="selftest-title">Self-tests…</button></div>
 </header>
 
 <div class="toolbar" role="group" aria-label="Global settings">
   <div class="group">
+    <label class="label" for="set-system">Loop</label>
+    <select id="set-system"><option value="siso">Single loop (SISO)</option><option value="mimo">Multivariable (MIMO)</option></select>
     <label class="label" for="set-domain">Time</label>
     <select id="set-domain"><option value="continuous">Continuous (s)</option><option value="discrete">Discrete (z)</option></select>
     <span class="group" id="grp-ts" hidden><label class="label nt" for="set-ts">Ts (s)</label><input type="number" id="set-ts" step="any" min="0" data-field="Ts"></span>
@@ -143,11 +150,11 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 <div class="tabs" role="tablist" aria-label="Views">
   <button role="tab" type="button" id="tab-system" aria-controls="panel-system" aria-selected="true">System</button>
   <button role="tab" type="button" id="tab-bode" aria-controls="panel-bode" aria-selected="false" tabindex="-1">Bode</button>
+  <button role="tab" type="button" id="tab-sv" aria-controls="panel-sv" aria-selected="false" tabindex="-1">Singular values</button>
   <button role="tab" type="button" id="tab-nyq" aria-controls="panel-nyq" aria-selected="false" tabindex="-1">Nyquist</button>
   <button role="tab" type="button" id="tab-nic" aria-controls="panel-nic" aria-selected="false" tabindex="-1">Nichols</button>
   <button role="tab" type="button" id="tab-pz" aria-controls="panel-pz" aria-selected="false" tabindex="-1">Pole-zero map</button>
   <button role="tab" type="button" id="tab-report" aria-controls="panel-report" aria-selected="false" tabindex="-1">Report</button>
-  <button role="tab" type="button" disabled title="Phase 4" aria-selected="false" tabindex="-1">Singular values · phase 4</button>
 </div>
 
 <div class="error" id="errors" role="alert" hidden></div>
@@ -155,8 +162,22 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 <section role="tabpanel" id="panel-system" aria-labelledby="tab-system">
   <div class="layout">
     <div class="inputs">
-      <fieldset><legend>Plant G(s)</legend><div id="ed-plant" class="stack"></div></fieldset>
-      <fieldset><legend>Controller C(s)</legend><div id="ed-controller" class="stack"></div></fieldset>
+      <div id="siso-inputs" class="inputs">
+        <fieldset><legend>Plant G(s)</legend><div id="ed-plant" class="stack"></div></fieldset>
+        <fieldset><legend>Controller C(s)</legend><div id="ed-controller" class="stack"></div></fieldset>
+      </div>
+      <div id="mimo-inputs" class="inputs" hidden>
+        <fieldset><legend>MIMO loop</legend>
+          <div class="stack">
+            <label class="f"><span class="n"><b>Example</b></span><select id="mimo-preset"></select></label>
+            <label class="f"><span class="n"><b>Loop broken at</b></span><select id="mimo-break" data-field="mimo.breakAt"><option value="output">Plant output: L_o = G·C</option><option value="input">Plant input: L_i = C·G</option></select></label>
+            <label class="f"><span class="n"><b>Input delays</b><small id="mimo-delay-unit">s, one per plant input</small></span><input type="text" id="mimo-delays" data-field="mimo.delays" spellcheck="false"><span class="err" id="mimo-delays-err"></span></label>
+          </div>
+          <p class="note">Examples are classical 2 × 2 textbook systems with <span class="tag">unsourced default</span> values. Margins are reported at both breaking points; the chosen one drives the checks and plots.</p>
+        </fieldset>
+        <fieldset><legend>Plant G (outputs × inputs)</legend><div id="mimo-ed-plant" class="stack"></div></fieldset>
+        <fieldset><legend>Controller C (inputs × outputs)</legend><div id="mimo-ed-controller" class="stack"></div></fieldset>
+      </div>
       <fieldset id="fs-disc" hidden><legend>Discretisation</legend>
         <div class="grid">
           <label class="f"><span class="n"><b>Plant G</b></span><select id="in-disc-plant" data-field="discretization.plant"></select></label>
@@ -194,13 +215,17 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 
 <section role="tabpanel" id="panel-bode" aria-labelledby="tab-bode" hidden>
   <ul class="stats" id="bode-stats"></ul>
+  <div id="bode-mimo" hidden>
+    <p class="note">Entries of L at the chosen breaking point (magnitude in dB); pick one to plot it in full below.</p>
+    <div class="entrygrid" id="bode-grid"></div>
+  </div>
   <div class="legend" id="bode-legend">
     <span style="color:var(--c1)"><span class="sw"></span> L(jω)</span>
     <label class="check" style="color:var(--muted)" id="lbl-asym"><input type="checkbox" id="show-asym" checked><span class="sw dash"></span> asymptotes</label>
     <label class="check" style="color:var(--c4)" id="lbl-cont" hidden><input type="checkbox" id="show-cont" checked><span class="sw dash"></span> continuous L(jω)</label>
-    <label class="check" style="color:var(--c2)"><input type="checkbox" id="show-S"><span class="sw"></span> |S|</label>
-    <label class="check" style="color:var(--c3)"><input type="checkbox" id="show-T"><span class="sw"></span> |T|</label>
-    <label class="check" style="color:var(--bad)"><input type="checkbox" id="show-marks" checked> margins</label>
+    <label class="check" style="color:var(--c2)" id="lbl-S"><input type="checkbox" id="show-S"><span class="sw"></span> |S|</label>
+    <label class="check" style="color:var(--c3)" id="lbl-T"><input type="checkbox" id="show-T"><span class="sw"></span> |T|</label>
+    <label class="check" style="color:var(--bad)" id="lbl-marks"><input type="checkbox" id="show-marks" checked> margins</label>
   </div>
   <div class="plot" id="bode-plot" aria-label="Bode plot: magnitude above, phase below, on a shared logarithmic frequency axis"></div>
   <p class="readout" id="bode-readout" aria-live="polite">Move over the plot to read values.</p>
@@ -213,12 +238,26 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
   <div class="tablewrap"><table><thead><tr><th class="l">Crossover</th><th>Frequency</th><th>Margin</th><th>Delay margin</th></tr></thead><tbody id="bode-crossovers"></tbody></table></div>
 </section>
 
+<section role="tabpanel" id="panel-sv" aria-labelledby="tab-sv" hidden>
+  <div class="legend" id="sv-legend"></div>
+  <div class="plot" id="sv-plot" aria-label="Singular-value plot"></div>
+  <p class="readout" id="sv-readout" aria-live="polite">Move over the plot to read values.</p>
+  <div class="actions">
+    <button class="btn small" type="button" data-export="svsvg">Download SVG</button>
+    <button class="btn small" type="button" data-copy="svsvg">Copy SVG</button>
+    <button class="btn small" type="button" data-export="svcsv">Download CSV</button>
+    <button class="btn small" type="button" data-copy="svcsv">Copy CSV</button>
+  </div>
+  <p class="note" id="sv-note"></p>
+</section>
+
 <section role="tabpanel" id="panel-nyq" aria-labelledby="tab-nyq" hidden>
   <ul class="stats" id="nyq-stats"></ul>
   <div class="legend">
     <span style="color:var(--c1)"><span class="sw"></span> ω &gt; 0</span>
     <label class="check" style="color:var(--c1)"><input type="checkbox" id="nyq-neg" checked><span class="sw dash"></span> ω &lt; 0 (mirror)</label>
-    <label class="check" style="color:var(--c2)"><input type="checkbox" id="nyq-ms" checked> 1/Ms circle</label>
+    <label class="check" style="color:var(--c2)" id="lbl-nyq-ms"><input type="checkbox" id="nyq-ms" checked> 1/Ms circle</label>
+    <label class="check" style="color:var(--muted)" id="lbl-nyq-det" hidden><input type="checkbox" id="nyq-det" checked><span class="sw"></span> det(I + L) − 1</label>
     <label class="check"><input type="checkbox" id="nyq-zoom"> zoom to −1</label>
     <label class="check"><input type="checkbox" id="nyq-log"> compressed (log-radius)</label>
   </div>
@@ -230,15 +269,16 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
     <button class="btn small" type="button" data-export="nyqcsv">Download CSV</button>
     <button class="btn small" type="button" data-copy="nyqcsv">Copy CSV</button>
   </div>
+  <p class="note" id="nyq-mimo-note" hidden>MIMO: coloured curves are the eigenvalue loci λᵢ(L(jω)), matched between neighbouring frequencies for colouring only. The grey curve is det(I + L) − 1, so its encirclements of −1 are those of the origin by det(I + L), which the count uses.</p>
   <p class="note" id="nyq-convention"></p>
 </section>
 
 <section role="tabpanel" id="panel-nic" aria-labelledby="tab-nic" hidden>
   <div class="legend">
-    <span style="color:var(--c1)"><span class="sw"></span> L(jω)</span>
+    <span style="color:var(--c1)" id="lbl-nic-l"><span class="sw"></span> L(jω)</span>
     <label class="check" style="color:var(--muted)"><input type="checkbox" id="nic-m" checked><span class="sw"></span> constant |T| (M, dB)</label>
     <label class="check" style="color:var(--c3)"><input type="checkbox" id="nic-n"><span class="sw dash"></span> constant ∠T (N, deg)</label>
-    <label class="check" style="color:var(--c2)"><input type="checkbox" id="nic-ms" checked><span class="sw"></span> Ms boundary</label>
+    <label class="check" style="color:var(--c2)" id="lbl-nic-ms"><input type="checkbox" id="nic-ms" checked><span class="sw"></span> Ms boundary</label>
   </div>
   <div class="plot" id="nic-plot" aria-label="Nichols chart of L"></div>
   <p class="readout" id="nic-readout" aria-live="polite">Move over the plot to read values.</p>
@@ -248,6 +288,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
     <button class="btn small" type="button" data-export="niccsv">Download CSV</button>
     <button class="btn small" type="button" data-copy="niccsv">Copy CSV</button>
   </div>
+  <p class="note" id="nic-mimo-note" hidden><b>Illustrative, not a robustness proof:</b> the coloured curves are the eigenvalue loci of L, matched by continuity.</p>
   <p class="note">Critical points (−180° + k·360°, 0 dB) are marked with +. M-contours are closed-loop magnitude |T| in dB, N-contours closed-loop phase ∠T; the Ms boundary is |1 + L| = 1/Ms for this loop's Ms, so the locus just touches it.</p>
 </section>
 
@@ -277,6 +318,9 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
         <tr><td class="l">Inputs-only JSON</td><td><button class="btn small" type="button" data-export="inputs">Download</button> <button class="btn small" type="button" data-copy="inputs">Copy</button></td></tr>
         <tr><td class="l">Bode CSV</td><td><button class="btn small" type="button" data-export="csv">Download</button> <button class="btn small" type="button" data-copy="csv">Copy</button></td></tr>
         <tr><td class="l">Bode SVG</td><td><button class="btn small" type="button" data-export="svg">Download</button> <button class="btn small" type="button" data-copy="svg">Copy</button></td></tr>
+        <tr><td class="l">Singular values CSV</td><td><button class="btn small" type="button" data-export="svcsv">Download</button> <button class="btn small" type="button" data-copy="svcsv">Copy</button></td></tr>
+        <tr><td class="l">Singular values SVG</td><td><button class="btn small" type="button" data-export="svsvg">Download</button> <button class="btn small" type="button" data-copy="svsvg">Copy</button></td></tr>
+        <tr><td class="l">Eigenvalue loci CSV (MIMO)</td><td><button class="btn small" type="button" data-export="eigcsv">Download</button> <button class="btn small" type="button" data-copy="eigcsv">Copy</button></td></tr>
         <tr><td class="l">Nyquist CSV (full contour)</td><td><button class="btn small" type="button" data-export="nyqcsv">Download</button> <button class="btn small" type="button" data-copy="nyqcsv">Copy</button></td></tr>
         <tr><td class="l">Nyquist SVG</td><td><button class="btn small" type="button" data-export="nyqsvg">Download</button> <button class="btn small" type="button" data-copy="nyqsvg">Copy</button></td></tr>
         <tr><td class="l">Nichols CSV</td><td><button class="btn small" type="button" data-export="niccsv">Download</button> <button class="btn small" type="button" data-copy="niccsv">Copy</button></td></tr>
@@ -308,7 +352,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 </section>
 
 <footer>
-  <p>Exploration only. Classical textbook methods (Bode, gain, phase and delay margins, sensitivity peaks, zero-order hold, Tustin and Euler discretisation) with a hand-written root finder and matrix exponential; no library, no network. Multi-loop (MIMO) systems follow in phase 4.</p>
+  <p>Exploration only. Classical textbook methods (Bode, gain, phase and delay margins, sensitivity peaks, zero-order hold, Tustin and Euler discretisation) with a hand-written root finder and matrix exponential; no library, no network. MIMO loops use a hand-written complex linear-algebra kernel (Hessenberg-QR eigenvalues, Jacobi SVD, LU); disk margins and μ analysis are out of scope.</p>
 </footer>
 </main>
 <noscript><p style="text-align:center">This tool needs JavaScript.</p></noscript>
@@ -319,7 +363,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 "use strict";
 
 const SCHEMA_VERSION = 2;
-const PHASE = 3;
+const PHASE = 4;
 const DISCLAIMER = "EXPLORATION ONLY. Not a substitute for a verified control-design toolchain. Classical textbook methods, unverified against any certified tool; margin thresholds are unsourced defaults. Check every result independently before relying on it.";
 const CONVENTIONS = [
   "Open loop L(s) = K · C(s) · G(s) · e^(−sτ) with unity negative feedback; S = 1/(1 + L), T = L/(1 + L).",
@@ -335,9 +379,12 @@ const CONVENTIONS = [
   "When every block is discretised from s, the continuous response L(jω) (with delay d·Ts) is overlaid on the discrete one to show warping and aliasing. Straight-line asymptotes are drawn in continuous time only.",
   "Nyquist: the count Z = N + P uses the argument principle on 1 + L round the whole contour (the lower half is the conjugate mirror of the upper half). Continuous time: up the jω axis from −j∞ to +j∞, closed clockwise through the right half-plane (by an arc for an improper loop, otherwise at |L| → 0), indented to the right round jω-axis poles. Discrete time: anticlockwise round the unit circle, indented outwards round unit-circle poles. Boundary poles therefore count as stable. N is the net number of clockwise encirclements of −1, P the open-loop poles strictly in the unstable region (of the delay-free part), Z the unstable closed-loop poles; a non-causal L(z) adds its degree excess. The contour is refined adaptively wherever arg(1 + L) turns by more than 45° or the locus jumps further than its distance to −1 (capped at 120 000 evaluations); a leftover turn above 90° or a non-integer winding marks the count unresolved. Where the closed-loop poles are available the two verdicts are compared and any disagreement is flagged first among the warnings.",
   "Nichols: open-loop phase (degrees, unwrapped) against magnitude (dB), with the critical point (−180° + k·360°, 0 dB) repeated every 360°. Constant-|T| = M contours solve (M² − 1)|L|² + 2M²·cos φ·|L| + M² = 0 for its positive roots (two branches when M > 1); constant-∠T = ψ contours are |L| = sin(φ − ψ)/sin ψ where that is positive and on the right branch; the Ms boundary is |1 + L| = 1/Ms, i.e. |L| = −cos φ ± √(cos²φ − 1 + 1/Ms²).",
+  "MIMO: plant G (p × m) and controller C (m × p) are state space, a static gain (controller only), or a transfer matrix realised by stacking one controllable-canonical block per non-zero entry; that realisation is not minimal and can hide modes. The loop broken at the plant output is L_o = G·Δ·C (p × p) and at the plant input L_i = Δ·C·G (m × m), with Δ = diag(e^(−sτ_j)) per-input delays (whole samples, held as shift-register states, in discrete time). G(s) = C(sI − A)⁻¹B + D is evaluated through a Hessenberg form of A by complex elimination at each frequency. Closed-loop poles are the eigenvalues of A_cl (complex Hessenberg reduction and shifted QR). The generalised Nyquist count uses the winding of det(I + L) about 0 on the same contour, refinement and indentation as the single-loop count, P being the unstable eigenvalues of the open-loop state matrix; it never depends on eigenvalue matching.",
+  "MIMO margins, at both breaking points (the chosen one drives the checks): eigenvalue loci λᵢ(L), matched between neighbouring frequencies only for colouring, give the eigenvalue-locus phase margin at |λ| = 1 and the uniform scalar-gain margins (all loops scaled together) at negative-real-axis crossings, which can be optimistic for non-normal L (crossings exactly at ω = 0 or π/Ts are not read). The return difference α = min σ_min(I + L) (one-sided Jacobi SVD, golden-section refined) is a genuine but conservative bound: simultaneous gain margins from 1/(1 + α) to 1/(1 − α) and phase margins of ±2·asin(α/2). max σ_max(S) = 1/α and max σ_max(T) are reported, and loop-at-a-time margins are the classical margins of each diagonal channel with the other loops open, which ignore cross-coupling. Disk margins and structured singular value (μ) analysis are out of scope.",
 ];
 const ASSUMPTIONS = [
-  "Unity negative feedback and LTI systems, in continuous or discrete time chosen globally (no mixed sampled-data loops); SISO only in this phase (MIMO follows in phase 4).",
+  "Unity negative feedback and LTI systems, in continuous or discrete time chosen globally (no mixed sampled-data loops); SISO, or MIMO with up to 6 inputs and 6 outputs and about 60 states.",
+  "MIMO input is state space first; a transfer matrix is a convenience path whose stacked realisation can contain hidden modes, so its open-loop pole count can overcount P. The user chooses the loop-breaking point (plant input or output); the generalised Nyquist count uses det(I + L), and eigenvalue loci serve visualisation and the eigenvalue-based margins. MIMO Nichols views show eigenvalue loci and are illustrative, not a robustness proof. MIMO delays are per plant input channel.",
   "Continuous delays are exact e^(−jωτ) in the response; no Padé approximation is used in plots. Discrete delays are integer samples; fractional delays are not supported.",
   "Each block in discrete time is either entered directly in z or entered in s and discretised by its own method (ZOH, Tustin with optional prewarp, forward or backward Euler); presets are continuous prototypes and must be discretised.",
   "Margin thresholds are user inputs; the pre-filled values are unsourced defaults, not requirements.",
@@ -701,6 +748,7 @@ const PARAM_LABELS = { k: "k", tau: "τ (s)", wn: "ωn (rad/s)", zeta: "ζ", kp:
 function defaultInputs() {
   return {
     schemaVersion: SCHEMA_VERSION,
+    system: "siso",
     timeDomain: "continuous",
     Ts: 0.1,
     plant: { form: "preset", preset: "type1-third-order", params: {} },
@@ -735,6 +783,7 @@ function normalise(x) {
   const pick = (k) => (x[k] === undefined ? d[k] : x[k]);
   const out = {
     schemaVersion: SCHEMA_VERSION,
+    system: x.system === "mimo" ? "mimo" : "siso",
     timeDomain: pick("timeDomain"),
     Ts: pick("Ts"),
     plant: normaliseBlock(x.plant, d.plant),
@@ -747,6 +796,7 @@ function normalise(x) {
     thresholds: { ...d.thresholds, ...(isObj(x.thresholds) ? x.thresholds : {}) },
     displayUnits: { ...d.displayUnits },
   };
+  if (out.system === "mimo" || isObj(x.mimo)) out.mimo = normaliseMimo(x.mimo);
   const u = isObj(x.displayUnits) ? x.displayUnits : {};
   if (FREQ_UNITS.includes(u.freq)) out.displayUnits.freq = u.freq;
   if (MAG_UNITS.includes(u.mag)) out.displayUnits.mag = u.mag;
@@ -1068,6 +1118,7 @@ const NYQ_BUDGET = 120000;
 const NYQ_MAX_DEPTH = 40;
 /** L at an arbitrary point (s, or z in discrete time), with its delay, as log-magnitude and angle so huge values stay finite. */
 function evalPoint(loop, s) {
+  if (loop.evalF) return loop.evalF(s);
   let logm = Math.log(Math.abs(loop.gain)), ang = loop.gain < 0 ? Math.PI : 0;
   for (const z of loop.zeros) { const d = csub(s, z); logm += Math.log(cabs(d)); ang += carg(d); }
   for (const p of loop.poles) { const d = csub(s, p); logm -= Math.log(cabs(d)); ang -= carg(d); }
@@ -1261,6 +1312,7 @@ const NICHOLS_N_DEG = [-5, -10, -20, -30, -60, -90, -120, -150];
 
 /* ---------- analysis ---------- */
 function analyze(inputs) {
+  if (normalise(inputs).system === "mimo") return analyzeMimo(inputs);
   const built = buildLoop(inputs);
   const { x, errors, warnings, loop } = built;
   if (errors.length) return { schemaVersion: SCHEMA_VERSION, ok: false, errors, warnings };
@@ -1422,6 +1474,7 @@ function analyze(inputs) {
 
 /** Response curves on the analysis grid, in canonical units, for plots and CSV. */
 function curves(inputs) {
+  if (normalise(inputs).system === "mimo") return null;
   const built = buildLoop(inputs);
   if (built.errors.length) return null;
   const { loop } = built;
@@ -1503,9 +1556,15 @@ function importJSON(text) {
 
 /** CSV of a view's data in canonical units: "bode" (default), "nyquist" (the full contour) or "nichols". */
 function toCSV(inputs, view = "bode") {
-  const x = normalise(inputs), rows = curves(x);
-  if (!rows) return `# ${DISCLAIMER}\n# No data: the inputs have blocking errors.\n`;
+  const x = normalise(inputs);
   const n = (v) => (typeof v === "number" && Number.isFinite(v) ? String(v) : "");
+  if (x.system === "mimo") return mimoCSV(x, view, n);
+  const rows = curves(x);
+  if (!rows) return `# ${DISCLAIMER}\n# No data: the inputs have blocking errors.\n`;
+  if (view === "singular") {
+    return [`# ${DISCLAIMER}`, "# Single loop: the singular values reduce to magnitudes. omega in rad/s.", "omega_rad_s,abs_L,abs_1_plus_L,abs_S,abs_T"]
+      .concat(rows.map((r) => [r.w, r.mag, 1 / r.S, r.S, r.T].map(n).join(","))).join("\n") + "\n";
+  }
   if (view === "nyquist") {
     const loc = nyquistLocus(x);
     if (!loc) return `# ${DISCLAIMER}\n# No Nyquist data for these inputs.\n`;
@@ -1529,7 +1588,88 @@ function toCSV(inputs, view = "bode") {
     .concat(rows.map((r) => [r.w, r.w / TWO_PI, r.mag, toDb(r.mag), r.phaseDeg, r.S, r.T, r.asymMagDb, r.asymPhaseDeg].map(n).join(","))).join("\n") + "\n";
 }
 
+/** CSV of a MIMO view at the chosen breaking point: "bode" (entries of L), "singular", "nyquist" (det(I + L) contour), "eig" (eigenvalue loci) or "nichols". */
+function mimoCSV(x, view, n) {
+  const c = mimoCurves(x);
+  if (!c) return `# ${DISCLAIMER}\n# No data: the inputs have blocking errors.\n`;
+  const rows = c.rows, k = rows[0].entries.length, at = x.mimo.breakAt, head = [`# ${DISCLAIMER}`, `# MIMO loop broken at the plant ${at}; omega in rad/s, magnitudes absolute, phases in degrees.`];
+  if (view === "singular") {
+    return head.concat([["omega_rad_s", ...Array.from({ length: k }, (_, i) => `sigma_${i + 1}_L`), "sigma_min_I_plus_L", "sigma_max_S", "sigma_max_T"].join(",")])
+      .concat(rows.map((r) => [r.w, ...r.sv, r.sigmaMinIplusL, r.sigmaMaxS, r.sigmaMaxT].map(n).join(","))).join("\n") + "\n";
+  }
+  if (view === "eig" || view === "nichols") {
+    const cols = Array.from({ length: k }, (_, i) => (view === "eig" ? [`re_lambda_${i + 1}`, `im_lambda_${i + 1}`] : [`phase_deg_lambda_${i + 1}`, `mag_db_lambda_${i + 1}`])).flat();
+    const ph = new Array(k).fill(0);
+    return head.concat(["# Eigenvalue loci, matched between neighbouring frequencies by continuity (for colouring only)." + (view === "nichols" ? " Illustrative, not a robustness proof." : ""), ["omega_rad_s", ...cols].join(",")])
+      .concat(rows.map((r, idx) => [r.w, ...r.eig.map((e, i) => {
+        if (view === "eig") return [e.re, e.im];
+        ph[i] = idx === 0 ? carg(e) : ph[i] + wrapPi(carg(e) - carg(rows[idx - 1].eig[i]));
+        return [(ph[i] * 180) / Math.PI, toDb(cabs(e))];
+      }).flat()].map(n).join(","))).join("\n") + "\n";
+  }
+  if (view === "nyquist") {
+    if (!c.upper) return head.concat("# No contour for these inputs.").join("\n") + "\n";
+    const up = c.upper.map((p) => [p.kind, p.w, p.L.re + 1, p.L.im]);
+    const down = c.upper.slice().reverse().map((p) => [p.kind === "pos" ? "neg" : p.kind, Number.isFinite(p.w) ? -p.w : p.w, p.L.re + 1, -p.L.im]);
+    return head.concat(["# Generalised Nyquist contour of det(I + L); kind is pos/neg/indent.", "kind,omega_rad_s,re_det_I_plus_L,im_det_I_plus_L"])
+      .concat(up.concat(down).map((r) => [r[0], n(r[1]), n(r[2]), n(r[3])].join(","))).join("\n") + "\n";
+  }
+  const cols = [];
+  for (let i = 0; i < k; i++) for (let j = 0; j < k; j++) cols.push(`mag_L${i + 1}${j + 1}`, `phase_deg_L${i + 1}${j + 1}`);
+  return head.concat([["omega_rad_s", ...cols].join(",")])
+    .concat(rows.map((r) => [r.w, ...r.entries.flat().map((e) => [e.mag, e.phaseDeg]).flat()].map(n).join(","))).join("\n") + "\n";
+}
+
+function mimoMarkdown(x, r) {
+  const u = x.displayUnits, disc = x.timeDomain === "discrete";
+  const F = (w) => (w === null || w === undefined ? "—" : `${fmt(freqTo(w, u.freq, x.Ts))} ${u.freq}`);
+  const L = [];
+  L.push("# Frequency-response report (MIMO)", "", `> **${DISCLAIMER}**`, "");
+  L.push("## System", "");
+  L.push(`- Time domain: ${x.timeDomain}${disc ? `, Ts = ${fmt(x.Ts, 6)} s, Nyquist frequency π/Ts = ${fmt(Math.PI / x.Ts, 6)} rad/s` : ""}`);
+  const desc = (b) => (b.form === "ss" ? `state space, ${(b.A || []).length} states, ${b.D.length} outputs × ${b.D[0].length} inputs` : b.form === "gain" ? `static gain ${JSON.stringify(b.K)}` : `transfer matrix ${b.entries.length} × ${b.entries[0].length} (stacked realisation)`);
+  L.push(`- Plant G: ${desc(x.mimo.plant)}${disc ? (x.discretization.plant === "z" ? " (entered in z)" : ` (discretised by ${DISCRETE_METHODS[x.discretization.plant]})`) : ""}`);
+  L.push(`- Controller C: ${desc(x.mimo.controller)}${disc ? (x.discretization.controller === "z" ? " (entered in z)" : ` (discretised by ${DISCRETE_METHODS[x.discretization.controller]})`) : ""}`);
+  L.push(`- Loop gain K: ${fmt(x.K, 6)}; unity negative feedback; loop broken at the plant **${x.mimo.breakAt}** (${x.mimo.breakAt === "output" ? "L_o = G·C" : "L_i = C·G"})`);
+  L.push(`- Input delays: ${disc ? `${x.mimo.delays.join(", ")} samples` : `${x.mimo.delays.map((v) => fmt(v)).join(", ")} s`}`, "");
+  if (!r.ok) { L.push("## Errors (calculation blocked)", "", ...r.errors.map((e) => `- ${e.message}`), ""); }
+  else {
+    L.push(`- Realisation: ${r.loop.realisation}; ${r.loop.plantStates} plant and ${r.loop.controllerStates} controller states`);
+    L.push(`- Open-loop poles: ${r.loop.openLoopPoles.map((z) => fmtC(z)).join(", ") || "none"} (${r.loop.openLoopUnstable} unstable)`, "");
+    L.push("## Stability", "");
+    L.push(r.closedLoop.available ? `- Closed-loop eigenvalues: **${r.closedLoop.verdict}** (${r.closedLoop.unstable} unstable, ${r.closedLoop.marginal} on the boundary): ${r.closedLoop.poles.map((z) => fmtC(z, 6)).join(", ")}` : `- ${r.closedLoop.message}`);
+    const nq = r.nyquist;
+    if (nq.available) {
+      L.push(`- Generalised Nyquist on det(I + L): N = ${nq.N}, P = ${nq.P}, Z = ${nq.Z} — **${nq.verdict}**${nq.crossCheck.available ? `; cross-check with the eigenvalues ${nq.crossCheck.agree ? "agrees" : "**DISAGREES**"}` : ""}`);
+      L.push(`- Convention: ${nq.convention}`);
+    } else L.push(`- ${nq.message}`);
+    L.push("");
+    const row = (lbl, f) => `| ${lbl} | ${f(r.margins.output)} | ${f(r.margins.input)} |`;
+    L.push("## MIMO margins at both breaking points", "", "The chosen breaking point drives the threshold checks. Each measure is labelled by what it does and does not guarantee.", "", "| Measure | Plant output (L_o) | Plant input (L_i) |", "|---|---|---|");
+    L.push(row("Eigenvalue-locus phase margin (can be optimistic for non-normal L)", (m) => (m.eigenLocus.pm ? `${fmt(m.eigenLocus.pm.deg)}° at ${F(m.eigenLocus.pm.w)}` : "no unit-circle crossing")));
+    L.push(row("Uniform scalar-gain margin, upper (all loops scaled together)", (m) => (m.eigenLocus.gmUpper ? `${fmt(m.eigenLocus.gmUpper.dB)} dB at ${F(m.eigenLocus.gmUpper.w)}` : "∞")));
+    L.push(row("Uniform scalar-gain margin, lower", (m) => (m.eigenLocus.gmLower ? `${fmt(m.eigenLocus.gmLower.dB)} dB at ${F(m.eigenLocus.gmLower.w)}` : "none")));
+    L.push(row("Return difference α = min σ_min(I + L) (conservative, a genuine bound)", (m) => `${fmt(m.returnDifference.alpha)} at ${F(m.returnDifference.w)}`));
+    L.push(row("Guaranteed simultaneous gain margin from α", (m) => `${fmt(m.returnDifference.gmLowDb)} dB to ${Number.isFinite(m.returnDifference.gmHighDb) ? `+${fmt(m.returnDifference.gmHighDb)} dB` : "+∞"}`));
+    L.push(row("Guaranteed simultaneous phase margin from α", (m) => `±${fmt(m.returnDifference.pmDeg)}°`));
+    L.push(row("max σ_max(S)", (m) => `${fmt(m.sensitivity.maxSigmaS.value)} at ${F(m.sensitivity.maxSigmaS.w)}`));
+    L.push(row("max σ_max(T)", (m) => `${fmt(m.sensitivity.maxSigmaT.value)} at ${F(m.sensitivity.maxSigmaT.w)}`));
+    L.push(row("Loop-at-a-time PM per channel (ignores cross-coupling)", (m) => m.loopAtATime.map((c) => `${c.channel}: ${c.pm ? `${fmt(c.pm.deg)}°` : "—"}`).join("; ")));
+    L.push(row("Loop-at-a-time GM per channel (upper / lower)", (m) => m.loopAtATime.map((c) => `${c.channel}: ${c.gmUpper ? fmt(c.gmUpper.dB) : "∞"} / ${c.gmLower ? fmt(c.gmLower.dB) : "—"} dB`).join("; ")));
+    L.push(row("Largest condition number of L", (m) => fmt(m.conditionMax)), "");
+    L.push("## Threshold checks (chosen breaking point)", "", "| Check | Threshold | Value | Result | Threshold source |", "|---|---|---|---|---|");
+    for (const c of r.checks) L.push(`| ${c.label} | ${fmt(c.threshold)} ${c.unit} | ${c.value === null ? c.note : `${fmt(c.value)} ${c.unit}`} | ${c.pass === null ? "n/a" : c.pass ? "pass" : "fail"} | ${c.source} |`);
+    L.push("", "Disk margins and structured singular value (μ) analysis are out of scope.", "");
+  }
+  L.push("## Warnings", "", ...(r.warnings.length ? r.warnings.map((w) => `- ${w.message}`) : ["- None."]), "");
+  L.push("## Conventions", "", ...CONVENTIONS.map((c) => `- ${c}`), "");
+  L.push("## Assumptions", "", ...ASSUMPTIONS.map((c) => `- ${c}`), "");
+  L.push("## Sources", "", ...SOURCES.map((s) => `- [${s.tag}] ${s.text}`), "");
+  L.push("## Disclaimer", "", DISCLAIMER, "");
+  return L.join("\n");
+}
 function toMarkdown(inputs, results) {
+  if (normalise(inputs).system === "mimo") return mimoMarkdown(normalise(inputs), results || analyze(inputs));
   const x = normalise(inputs), r = results || analyze(x), u = x.displayUnits;
   const disc = x.timeDomain === "discrete", v = disc ? "z" : "s";
   const F = (w) => (w === null || w === undefined ? "—" : !Number.isFinite(w) ? `∞ ${u.freq}` : `${fmt(freqTo(w, u.freq, x.Ts))} ${u.freq}`);
@@ -1595,7 +1735,7 @@ function toMarkdown(inputs, results) {
   return lines.join("\n");
 }
 
-/* ---------- self-tests (spec section 11, phases 1 to 3) ---------- */
+/* ---------- self-tests (spec section 11, all phases) ---------- */
 function selfTests() {
   const out = [];
   const add = (name, actual, expected, tol, relative = false) => {
@@ -1755,6 +1895,53 @@ function selfTests() {
   for (let ph = -270; ph <= -90; ph += 5) for (const r of msBoundary(2, ph)) worstMs = Math.max(worstMs, Math.abs(cabs(cadd(cx(1), cpolar(r, (ph * Math.PI) / 180))) - 0.5));
   add("Nichols: Ms = 2 boundary points satisfy |1 + L| = 1/Ms (worst error)", worstMs, 0, 1e-12);
 
+  // MIMO (spec section 11): diagonal loops, kernel checks, generalised Nyquist against the closed-loop eigenvalues.
+  {
+    const diagM = (extra = {}) => normalise({ system: "mimo", K: 1, mimo: { plant: { form: "tfm", entries: [[{ num: [2], den: [1, -1] }, { num: [0], den: [1] }], [{ num: [0], den: [1] }, { num: [9], den: [1, 3, 2, 0] }]] }, controller: { form: "gain", K: [[1, 0], [0, 1]] }, breakAt: "output", delays: [0, 0] }, ...extra });
+    const dm = analyzeMimo(diagM()), dmc = mimoCurves(diagM());
+    const n1 = analyze(tf([2], [1, -1])).nyquist, n2 = analyze(third(9)).nyquist;
+    addBool("MIMO diag(2/(s − 1), 9/(s(s+1)(s+2))): det(I + L) winding equals the sum of the individual windings", dm.nyquist.N === n1.N + n2.N && dm.nyquist.P === n1.P + n2.P && dm.nyquist.Z === n1.Z + n2.Z, `MIMO N = ${dm.nyquist.N}, P = ${dm.nyquist.P}, Z = ${dm.nyquist.Z}; SISO N = ${n1.N} + ${n2.N}, Z = ${n1.Z} + ${n2.Z}`);
+    addBool("MIMO diagonal loop: generalised Nyquist agrees with the closed-loop eigenvalues", dm.nyquist.crossCheck.agree && dm.closedLoop.unstable === dm.nyquist.Z, `eigenvalues give ${dm.closedLoop.unstable} unstable`);
+    let worstEig = 0, worstSv = 0;
+    for (const row of dmc.rows.filter((_, i) => i % 50 === 0)) {
+      const l1 = responseAt(tf([2], [1, -1]), row.w), l2 = responseAt(third(9), row.w);
+      const want = [cx(l1.re, l1.im), cx(l2.re, l2.im)];
+      worstEig = Math.max(worstEig, Math.min(cabs(csub(row.eig[0], want[0])) + cabs(csub(row.eig[1], want[1])), cabs(csub(row.eig[0], want[1])) + cabs(csub(row.eig[1], want[0]))) / Math.max(1, l1.mag, l2.mag));
+      const mags = [l1.mag, l2.mag].sort((a, b) => b - a);
+      worstSv = Math.max(worstSv, Math.abs(row.sv[0] - mags[0]) / mags[0], Math.abs(row.sv[1] - mags[1]) / mags[1]);
+    }
+    add("MIMO diagonal loop: eigenvalue loci equal the individual loci (worst relative error)", worstEig, 0, 1e-9);
+    add("MIMO diagonal loop: singular values equal the entry magnitudes (worst relative error)", worstSv, 0, 1e-9);
+    const sortRe = (v) => v.map((z) => z.re).sort((a, b) => a - b);
+    const e1 = sortRe(ceig([[2, 0, 0], [0, 3, 4], [0, 4, 9]]).values);
+    add("Hessenberg-QR eigenvalues of [[2,0,0],[0,3,4],[0,4,9]] are 1, 2, 11 (worst error)", Math.max(Math.abs(e1[0] - 1), Math.abs(e1[1] - 2), Math.abs(e1[2] - 11)), 0, 1e-12);
+    const e2 = ceig([[0, 10], [-10, 0]]).values;
+    add("Hessenberg-QR eigenvalues of [[0, 10], [−10, 0]] are ±10j (worst error)", Math.max(...e2.map((z) => Math.abs(Math.abs(z.im) - 10) + Math.abs(z.re))), 0, 1e-12);
+    const sv2 = csvd([[1, 2], [3, 4]]), want2 = [Math.sqrt(15 + Math.sqrt(221)), Math.sqrt(15 - Math.sqrt(221))];
+    add("Jacobi SVD of [[1, 2], [3, 4]]: √(15 ± √221) (worst error)", Math.max(Math.abs(sv2[0] - want2[0]), Math.abs(sv2[1] - want2[1])), 0, 1e-12);
+    const sv3 = csvd([[cx(0, 3), cx(0)], [cx(0), cx(-4, 0)]]);
+    add("Jacobi SVD of diag(3j, −4): 4 and 3 (worst error)", Math.max(Math.abs(sv3[0] - 4), Math.abs(sv3[1] - 3)), 0, 1e-15);
+    const sat = (extra = {}) => normalise({ system: "mimo", ...extra, mimo: { ...MIMO_PRESETS["spinning-satellite"].make(), breakAt: "output", delays: [0, 0], ...(extra.mimo || {}) } });
+    const satR = analyzeMimo(sat({ K: 1 }));
+    add("Spinning satellite (a = 10), K = I: eigenvalue-locus phase margin atan(1/a) = 5.711° (analytic, λ = −(a + j)/(a + ω))", satR.margins.chosen.eigenLocus.pm.deg, (Math.atan(1 / 10) * 180) / Math.PI, 1e-6);
+    add("Spinning satellite: max σ_max(S) = 1/α with α = min σ_min(I + L)", satR.margins.chosen.sensitivity.maxSigmaS.value * satR.margins.chosen.returnDifference.alpha, 1, 1e-12);
+    const mimoCases = [
+      ["spinning satellite, K = 1", sat({ K: 1 })],
+      ["spinning satellite, K = −0.5", sat({ K: -0.5 })],
+      ["distillation LV, inverse-based PI", normalise({ system: "mimo", K: 1, mimo: { ...MIMO_PRESETS["distillation-lv"].make(), breakAt: "input", delays: [0, 0] } })],
+      ["diagonal loop with an unstable pole", diagM()],
+      ["satellite, ZOH at Ts = 0.01 s with a one-sample input delay", sat({ K: 1, timeDomain: "discrete", Ts: 0.01, discretization: { plant: "zoh", controller: "z", prewarp: 0 }, mimo: { delays: [1, 0] } })],
+      ["satellite, Tustin at Ts = 0.05 s, K = 3", sat({ K: 3, timeDomain: "discrete", Ts: 0.05, discretization: { plant: "tustin", controller: "z", prewarp: 0 } })],
+    ];
+    for (const [label, xx] of mimoCases) {
+      const rr = analyzeMimo(xx), nq = rr.nyquist;
+      addBool(`Generalised Nyquist vs closed-loop eigenvalues (${xx.timeDomain}): ${label}`, rr.ok && nq.available && nq.crossCheck.available && nq.crossCheck.agree && !nq.unresolved, rr.ok ? `N = ${nq.N}, P = ${nq.P}, Z = ${nq.Z}; eigenvalues give ${rr.closedLoop.unstable} unstable` : rr.errors.map((e) => e.message).join("; "));
+    }
+    const mbase = sat({ K: 0.8, timeDomain: "discrete", Ts: 0.02, mimo: { breakAt: "input", delays: [2, 1] }, discretization: { plant: "zoh", controller: "z", prewarp: 0 } });
+    const mres = analyzeMimo(mbase);
+    addBool("MIMO results JSON export then import reproduces identical results", mres.ok && canonicalJSON(analyze(importJSON(toResultsJSON(mbase, mres)))) === canonicalJSON(mres), "results compared as canonical JSON");
+  }
+
   // Root finder.
   const known = [cx(-1), cx(-2), cx(-3), cx(-1, 2), cx(-1, -2)];
   const found = polyRoots(polyFromRoots(known)).roots;
@@ -1786,12 +1973,698 @@ function curvesAt(x, w) {
   return { asymMagDb: asymptote(built.loop, w).db };
 }
 
+/* ---------- complex linear-algebra kernel (MIMO) ---------- */
+const cconj = (a) => cx(a.re, -a.im);
+const cscale = (a, k) => cx(a.re * k, a.im * k);
+const cabs2 = (a) => a.re * a.re + a.im * a.im;
+const czeros = (r, c) => Array.from({ length: r }, () => Array.from({ length: c }, () => cx(0)));
+const ceye = (n) => Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => cx(i === j ? 1 : 0)));
+const toC = (A) => A.map((row) => row.map((v) => (typeof v === "number" ? cx(v) : cx(v.re, v.im))));
+function cmatMul(A, B) {
+  const r = A.length, k = B.length, c = k ? B[0].length : 0, out = czeros(r, c);
+  for (let i = 0; i < r; i++) for (let t = 0; t < k; t++) {
+    const a = A[i][t];
+    if (a.re === 0 && a.im === 0) continue;
+    const Bt = B[t], Oi = out[i];
+    for (let j = 0; j < c; j++) { const b = Bt[j]; Oi[j] = cx(Oi[j].re + a.re * b.re - a.im * b.im, Oi[j].im + a.re * b.im + a.im * b.re); }
+  }
+  return out;
+}
+const cmatAdd = (A, B, k = 1) => A.map((row, i) => row.map((a, j) => cx(a.re + k * B[i][j].re, a.im + k * B[i][j].im)));
+/** LU with partial pivoting on a complex square matrix; returns { LU, piv, sign, singular }. */
+function cLU(A0) {
+  const n = A0.length, A = A0.map((r) => r.slice()), piv = Array.from({ length: n }, (_, i) => i);
+  let sign = 1, singular = false;
+  for (let k = 0; k < n; k++) {
+    let p = k, best = cabs2(A[k][k]);
+    for (let i = k + 1; i < n; i++) { const v = cabs2(A[i][k]); if (v > best) { best = v; p = i; } }
+    if (best === 0) { singular = true; continue; }
+    if (p !== k) { [A[k], A[p]] = [A[p], A[k]]; [piv[k], piv[p]] = [piv[p], piv[k]]; sign = -sign; }
+    const d = A[k][k];
+    for (let i = k + 1; i < n; i++) {
+      const f = cdiv(A[i][k], d);
+      A[i][k] = f;
+      if (f.re === 0 && f.im === 0) continue;
+      for (let j = k + 1; j < n; j++) A[i][j] = csub(A[i][j], cmul(f, A[k][j]));
+    }
+  }
+  return { LU: A, piv, sign, singular };
+}
+function cdet(A) {
+  if (!A.length) return cx(1);
+  const { LU, sign, singular } = cLU(A);
+  if (singular) return cx(0);
+  let d = cx(sign);
+  for (let i = 0; i < LU.length; i++) d = cmul(d, LU[i][i]);
+  return d;
+}
+/** Solve A·X = B (complex); throws on a singular A. */
+function csolve(A, B) {
+  const n = A.length, { LU, piv, singular } = cLU(A);
+  if (singular) throw new Error("singular matrix");
+  const m = B[0].length, X = piv.map((p) => B[p].slice());
+  for (let j = 0; j < m; j++) {
+    for (let i = 1; i < n; i++) { let s = X[i][j]; for (let k = 0; k < i; k++) s = csub(s, cmul(LU[i][k], X[k][j])); X[i][j] = s; }
+    for (let i = n - 1; i >= 0; i--) { let s = X[i][j]; for (let k = i + 1; k < n; k++) s = csub(s, cmul(LU[i][k], X[k][j])); X[i][j] = cdiv(s, LU[i][i]); }
+  }
+  return X;
+}
+/** Complex Hessenberg reduction by Householder reflections (similarity; eigenvalues kept). */
+function chessenberg(A0) {
+  const n = A0.length, H = A0.map((r) => r.slice());
+  for (let k = 0; k < n - 2; k++) {
+    let norm = 0;
+    for (let i = k + 1; i < n; i++) norm += cabs2(H[i][k]);
+    norm = Math.sqrt(norm);
+    if (norm === 0) continue;
+    const x0 = H[k + 1][k], ph = cabs(x0) === 0 ? cx(1) : cscale(x0, 1 / cabs(x0));
+    const v = [];
+    for (let i = k + 1; i < n; i++) v.push(H[i][k]);
+    v[0] = cadd(v[0], cscale(ph, norm));
+    let vn = 0;
+    for (const e of v) vn += cabs2(e);
+    if (vn === 0) continue;
+    // H ← (I − 2vvᴴ/vᴴv)·H·(I − 2vvᴴ/vᴴv)
+    for (let j = 0; j < n; j++) {
+      let s = cx(0);
+      for (let i = 0; i < v.length; i++) s = cadd(s, cmul(cconj(v[i]), H[k + 1 + i][j]));
+      s = cscale(s, 2 / vn);
+      for (let i = 0; i < v.length; i++) H[k + 1 + i][j] = csub(H[k + 1 + i][j], cmul(v[i], s));
+    }
+    for (let i = 0; i < n; i++) {
+      let s = cx(0);
+      for (let j = 0; j < v.length; j++) s = cadd(s, cmul(H[i][k + 1 + j], v[j]));
+      s = cscale(s, 2 / vn);
+      for (let j = 0; j < v.length; j++) H[i][k + 1 + j] = csub(H[i][k + 1 + j], cmul(s, cconj(v[j])));
+    }
+    for (let i = k + 2; i < n; i++) H[i][k] = cx(0);
+  }
+  return H;
+}
+/** Eigenvalues of a complex (or real) square matrix: Hessenberg reduction, then shifted QR with Givens rotations and deflation. */
+function ceig(A0) {
+  const n = A0.length;
+  if (!n) return { values: [], converged: true };
+  const H = chessenberg(toC(A0));
+  const vals = [];
+  let hi = n - 1, iter = 0, total = 0, converged = true;
+  const EPS = Number.EPSILON;
+  while (hi >= 0) {
+    if (hi === 0) { vals.push(H[0][0]); hi--; continue; }
+    let l = hi;
+    while (l > 0) {
+      const s = cabs(H[l - 1][l - 1]) + cabs(H[l][l]);
+      if (cabs(H[l][l - 1]) <= EPS * (s === 0 ? 1 : s)) { H[l][l - 1] = cx(0); break; }
+      l--;
+    }
+    if (l === hi) { vals.push(H[hi][hi]); hi--; iter = 0; continue; }
+    if (++total > 60 * n) { converged = false; for (let i = hi; i >= 0; i--) vals.push(H[i][i]); break; }
+    iter++;
+    // Wilkinson shift from the trailing 2×2 block; an exceptional shift every tenth iteration.
+    const a = H[hi - 1][hi - 1], b = H[hi - 1][hi], c = H[hi][hi - 1], d = H[hi][hi];
+    let mu;
+    if (iter % 10 === 0) mu = cadd(d, cx(0.75 * cabs(c), 0.5 * cabs(c)));
+    else {
+      const half = cscale(csub(a, d), 0.5), disc = csqrt(cadd(cmul(half, half), cmul(b, c)));
+      const m1 = cadd(cscale(cadd(a, d), 0.5), disc), m2 = csub(cscale(cadd(a, d), 0.5), disc);
+      mu = cabs(csub(m1, d)) <= cabs(csub(m2, d)) ? m1 : m2;
+    }
+    for (let k = l; k <= hi; k++) H[k][k] = csub(H[k][k], mu);
+    const rots = [];
+    for (let k = l; k < hi; k++) {
+      const x = H[k][k], y = H[k + 1][k], r = Math.hypot(cabs(x), cabs(y));
+      const cR = r === 0 ? cx(1) : cscale(x, 1 / r), sR = r === 0 ? cx(0) : cscale(y, 1 / r);
+      rots.push([cR, sR]);
+      for (let j = k; j <= hi; j++) {
+        const hk = H[k][j], hk1 = H[k + 1][j];
+        H[k][j] = cadd(cmul(cconj(cR), hk), cmul(cconj(sR), hk1));
+        H[k + 1][j] = csub(cmul(cR, hk1), cmul(sR, hk));
+      }
+    }
+    for (let k = l; k < hi; k++) {
+      const [cR, sR] = rots[k - l];
+      for (let i = l; i <= Math.min(k + 2, hi); i++) {
+        const hk = H[i][k], hk1 = H[i][k + 1];
+        H[i][k] = cadd(cmul(hk, cR), cmul(hk1, sR));
+        H[i][k + 1] = csub(cmul(hk1, cconj(cR)), cmul(hk, cconj(sR)));
+      }
+    }
+    for (let k = l; k <= hi; k++) H[k][k] = cadd(H[k][k], mu);
+  }
+  return { values: vals, converged };
+}
+function csqrt(a) {
+  const r = cabs(a);
+  if (r === 0) return cx(0);
+  const re = Math.sqrt((r + a.re) / 2), im = Math.sqrt(Math.max(0, (r - a.re) / 2));
+  return cx(re, a.im < 0 ? -im : im);
+}
+/** Singular values (descending) of a complex matrix by one-sided Jacobi rotations on its columns. */
+function csvd(A0) {
+  let A = toC(A0);
+  if (!A.length || !A[0].length) return [];
+  if (A[0].length > A.length) A = A[0].map((_, j) => A.map((row) => cconj(row[j])));
+  const m = A.length, n = A[0].length, U = A.map((r) => r.slice());
+  for (let sweep = 0; sweep < 60; sweep++) {
+    let off = 0;
+    for (let i = 0; i < n - 1; i++) for (let j = i + 1; j < n; j++) {
+      let alpha = 0, beta = 0, g = cx(0);
+      for (let k = 0; k < m; k++) { alpha += cabs2(U[k][i]); beta += cabs2(U[k][j]); g = cadd(g, cmul(cconj(U[k][i]), U[k][j])); }
+      const ga = cabs(g);
+      if (ga === 0 || ga <= 1e-15 * Math.sqrt(alpha * beta)) continue;
+      off = Math.max(off, ga / Math.sqrt(alpha * beta));
+      const zeta = (beta - alpha) / (2 * ga), t = (zeta >= 0 ? 1 : -1) / (Math.abs(zeta) + Math.sqrt(1 + zeta * zeta));
+      const c = 1 / Math.sqrt(1 + t * t), s = c * t, ph = cscale(g, 1 / ga);
+      for (let k = 0; k < m; k++) {
+        const ui = U[k][i], uj = cmul(U[k][j], cconj(ph));
+        const ni = csub(cscale(ui, c), cscale(uj, s)), nj = cadd(cscale(ui, s), cscale(uj, c));
+        U[k][i] = ni; U[k][j] = cmul(nj, ph);
+      }
+    }
+    if (off < 1e-15) break;
+  }
+  const sv = [];
+  for (let j = 0; j < n; j++) { let s = 0; for (let k = 0; k < m; k++) s += cabs2(U[k][j]); sv.push(Math.sqrt(s)); }
+  return sv.sort((a, b) => b - a);
+}
+/** Real upper-Hessenberg form A = Q·H·Qᵀ by Householder reflections, for fast repeated (sI − A) solves. */
+function rhessenberg(A0) {
+  const n = A0.length, H = A0.map((r) => r.slice()), Q = eye(n);
+  for (let k = 0; k < n - 2; k++) {
+    let norm = 0;
+    for (let i = k + 1; i < n; i++) norm += H[i][k] * H[i][k];
+    norm = Math.sqrt(norm);
+    if (norm === 0) continue;
+    const v = [];
+    for (let i = k + 1; i < n; i++) v.push(H[i][k]);
+    v[0] += (v[0] >= 0 ? 1 : -1) * norm;
+    const vn = v.reduce((s, e) => s + e * e, 0);
+    if (vn === 0) continue;
+    for (let j = 0; j < n; j++) { let s = 0; for (let i = 0; i < v.length; i++) s += v[i] * H[k + 1 + i][j]; s *= 2 / vn; for (let i = 0; i < v.length; i++) H[k + 1 + i][j] -= v[i] * s; }
+    for (let i = 0; i < n; i++) { let s = 0; for (let j = 0; j < v.length; j++) s += H[i][k + 1 + j] * v[j]; s *= 2 / vn; for (let j = 0; j < v.length; j++) H[i][k + 1 + j] -= s * v[j]; }
+    for (let i = 0; i < n; i++) { let s = 0; for (let j = 0; j < v.length; j++) s += Q[i][k + 1 + j] * v[j]; s *= 2 / vn; for (let j = 0; j < v.length; j++) Q[i][k + 1 + j] -= s * v[j]; }
+    for (let i = k + 2; i < n; i++) H[i][k] = 0;
+  }
+  return { H, Q };
+}
+/** Solve (s·I − H)·X = B for upper-Hessenberg real H, complex s and complex B, in O(n²) per column. */
+function hessSolve(H, s, B) {
+  const n = H.length, m = B[0].length;
+  const M = H.map((row, i) => row.map((h, j) => (i === j ? cx(s.re - h, s.im) : cx(-h))));
+  const X = B.map((r) => r.slice());
+  for (let k = 0; k < n - 1; k++) {
+    // Only row k + 1 has an entry below the diagonal in column k.
+    if (cabs2(M[k + 1][k]) > cabs2(M[k][k])) { [M[k], M[k + 1]] = [M[k + 1], M[k]]; [X[k], X[k + 1]] = [X[k + 1], X[k]]; }
+    if (cabs2(M[k][k]) === 0) throw new Error("singular matrix");
+    const f = cdiv(M[k + 1][k], M[k][k]);
+    if (f.re !== 0 || f.im !== 0) {
+      for (let j = k; j < n; j++) M[k + 1][j] = csub(M[k + 1][j], cmul(f, M[k][j]));
+      for (let j = 0; j < m; j++) X[k + 1][j] = csub(X[k + 1][j], cmul(f, X[k][j]));
+    }
+  }
+  if (n && cabs2(M[n - 1][n - 1]) === 0) throw new Error("singular matrix");
+  for (let j = 0; j < m; j++) for (let i = n - 1; i >= 0; i--) {
+    let acc = X[i][j];
+    for (let k = i + 1; k < n; k++) acc = csub(acc, cmul(M[i][k], X[k][j]));
+    X[i][j] = cdiv(acc, M[i][i]);
+  }
+  return X;
+}
+
+/* ---------- MIMO: systems, loop, analysis ---------- */
+const MIMO_MAX_CHANNELS = 6, MIMO_MAX_STATES = 60;
+const ssEmpty = (p, m, D) => ({ A: [], B: [], C: Array.from({ length: p }, () => []), D, n: 0, p, m });
+const isMatrix = (M, r, c) => Array.isArray(M) && M.length === r && M.every((row) => Array.isArray(row) && row.length === c && row.every(finite));
+const blockDiag = (A1, A2) => {
+  const n1 = A1.length, n2 = A2.length;
+  return Array.from({ length: n1 + n2 }, (_, i) => Array.from({ length: n1 + n2 }, (_, j) => (i < n1 ? (j < n1 ? A1[i][j] : 0) : j >= n1 ? A2[i - n1][j - n1] : 0)));
+};
+const transpose = (M) => (M.length ? M[0].map((_, j) => M.map((r) => r[j])) : []);
+const matZeros = (r, c) => Array.from({ length: r }, () => new Array(c).fill(0));
+
+/** Validate a state-space quadruple and return { A, B, C, D, n, p, m } or push errors. */
+function ssFrom(b, name, key, errors) {
+  const D = b.D;
+  if (!Array.isArray(D) || !D.length || !Array.isArray(D[0])) { errors.push({ field: `${key}.D`, message: `${name}: D must be a matrix (outputs × inputs).` }); return null; }
+  const p = D.length, m = D[0].length;
+  const A = Array.isArray(b.A) ? b.A : [], n = A.length;
+  const ok = isMatrix(D, p, m) && (n === 0 ? (!b.B || !b.B.length || b.B.every((r) => !r.length)) && (!b.C || b.C.every((r) => !r.length)) : isMatrix(A, n, n) && isMatrix(b.B, n, m) && isMatrix(b.C, p, n));
+  if (!ok) { errors.push({ field: `${key}.A`, message: `${name}: A (n × n), B (n × ${m}), C (${p} × n) and D (${p} × ${m}) must be numeric with matching dimensions.` }); return null; }
+  return n ? { A, B: b.B, C: b.C, D, n, p, m } : ssEmpty(p, m, D);
+}
+/** Stacked (non-minimal) realisation of a transfer matrix: one controllable-canonical block per non-zero entry. */
+function stackTfm(b, name, key, errors) {
+  const E = b.entries;
+  if (!Array.isArray(E) || !E.length || !Array.isArray(E[0]) || !E[0].length || E.some((r) => !Array.isArray(r) || r.length !== E[0].length)) { errors.push({ field: `${key}.entries`, message: `${name}: the transfer matrix must be a rectangular grid of entries.` }); return null; }
+  const p = E.length, m = E[0].length, blocks = [];
+  const D = matZeros(p, m);
+  for (let i = 0; i < p; i++) for (let j = 0; j < m; j++) {
+    const e = E[i][j] || {};
+    const num = Array.isArray(e.num) ? e.num : [], den = Array.isArray(e.den) ? e.den : [];
+    if (!num.length || !den.length || num.some((c) => !finite(c)) || den.some((c) => !finite(c))) { errors.push({ field: `${key}.entries`, message: `${name}: entry (${i + 1}, ${j + 1}) needs numeric numerator and denominator coefficients.` }); return null; }
+    const nn = trimPoly(num), dd = trimPoly(den);
+    if (dd.every((c) => c === 0)) { errors.push({ field: `${key}.entries`, message: `${name}: entry (${i + 1}, ${j + 1}) has an all-zero denominator.` }); return null; }
+    if (nn.every((c) => c === 0)) continue;
+    if (degree(nn) > degree(dd)) { errors.push({ field: `${key}.entries`, message: `${name}: entry (${i + 1}, ${j + 1}) is improper, so it has no state-space realisation.` }); return null; }
+    const s = tf2ss(nn, dd);
+    D[i][j] = s.D;
+    if (s.A.length) blocks.push({ i, j, s });
+  }
+  const n = blocks.reduce((t, bl) => t + bl.s.A.length, 0);
+  const A = matZeros(n, n), B = matZeros(n, m), C = matZeros(p, n);
+  let off = 0;
+  for (const { i, j, s } of blocks) {
+    const k = s.A.length;
+    for (let r = 0; r < k; r++) { for (let c = 0; c < k; c++) A[off + r][off + c] = s.A[r][c]; B[off + r][j] = s.B[r][0]; C[i][off + r] = s.C[0][r]; }
+    off += k;
+  }
+  return n ? { A, B, C, D, n, p, m, stacked: true, entryPoles: blocks.map((bl) => ({ i: bl.i, j: bl.j, den: trimPoly(E[bl.i][bl.j].den) })) } : { ...ssEmpty(p, m, D), stacked: true, entryPoles: [] };
+}
+function systemFrom(b, name, key, errors) {
+  if (!isObj(b)) { errors.push({ field: key, message: `${name} is missing.` }); return null; }
+  if (b.form === "ss") return ssFrom(b, name, key, errors);
+  if (b.form === "tfm") return stackTfm(b, name, key, errors);
+  if (b.form === "gain") {
+    if (!Array.isArray(b.K) || !b.K.length || !isMatrix(b.K, b.K.length, (b.K[0] || []).length) || !b.K[0].length) { errors.push({ field: `${key}.K`, message: `${name}: the gain must be a numeric matrix.` }); return null; }
+    return ssEmpty(b.K.length, b.K[0].length, b.K);
+  }
+  errors.push({ field: `${key}.form`, message: `${name}: unknown form.` });
+  return null;
+}
+/** Discretise a MIMO state-space model in state space (same formulas as the SISO path). */
+function discretizeSS(sys, method, Ts, prewarp = 0) {
+  const { A, B, C, D, n, p, m } = sys;
+  if (!n) return { ...sys };
+  const I = eye(n);
+  let Ad, Bd, Cd = C, Dd = D;
+  if (method === "zoh") {
+    const M = Array.from({ length: n + m }, (_, i) => Array.from({ length: n + m }, (_, j) => (i < n ? (j < n ? A[i][j] : B[i][j - n]) : 0) * Ts));
+    const E = expm(M);
+    Ad = E.slice(0, n).map((r) => r.slice(0, n));
+    Bd = E.slice(0, n).map((r) => r.slice(n));
+  } else if (method === "tustin") {
+    const c = prewarp > 0 ? prewarp / Math.tan((prewarp * Ts) / 2) : 2 / Ts;
+    const h = 2 / c, Mi = matSolve(matAdd(I, A, -h / 2), I);
+    Ad = matMul(Mi, matAdd(I, A, h / 2));
+    Bd = matScale(matMul(Mi, B), Math.sqrt(h));
+    Cd = matScale(matMul(C, Mi), Math.sqrt(h));
+    Dd = matAdd(D, matScale(matMul(matMul(C, Mi), B), h / 2));
+  } else if (method === "forward") { Ad = matAdd(I, A, Ts); Bd = matScale(B, Ts); }
+  else if (method === "backward") {
+    const Mi = matSolve(matAdd(I, A, -Ts), I);
+    Ad = Mi; Bd = matScale(matMul(Mi, B), Ts); Cd = matMul(C, Mi); Dd = matAdd(D, matScale(matMul(matMul(C, Mi), B), Ts));
+  } else throw new Error(`Unknown discretisation method ${method}`);
+  return { ...sys, A: Ad, B: Bd, C: Cd, D: Dd };
+}
+/** Append integer-sample input delays to a discrete plant as shift-register states (exact z^(−d) per input). */
+function addInputDelays(sys, d) {
+  const extra = d.reduce((s, k) => s + k, 0);
+  if (!extra) return sys;
+  const { A, B, C, D, n, p, m } = sys, N = n + extra;
+  const A2 = matZeros(N, N), B2 = matZeros(N, m), C2 = matZeros(p, N), D2 = matZeros(p, m);
+  for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) A2[i][j] = A[i][j];
+  for (let i = 0; i < p; i++) for (let j = 0; j < n; j++) C2[i][j] = C[i][j];
+  let off = n;
+  for (let j = 0; j < m; j++) {
+    if (!d[j]) {
+      for (let i = 0; i < n; i++) B2[i][j] = B[i][j];
+      for (let i = 0; i < p; i++) D2[i][j] = D[i][j];
+      continue;
+    }
+    // q1(k+1) = u_j, q_{r+1}(k+1) = q_r(k); the plant sees q_d.
+    B2[off][j] = 1;
+    for (let r = 1; r < d[j]; r++) A2[off + r][off + r - 1] = 1;
+    const last = off + d[j] - 1;
+    for (let i = 0; i < n; i++) A2[i][last] += B[i][j];
+    for (let i = 0; i < p; i++) C2[i][last] += D[i][j];
+    off += d[j];
+  }
+  return { ...sys, A: A2, B: B2, C: C2, D: D2, n: N };
+}
+/** Precompute a Hessenberg form so G(s) = C·Q·(sI − H)⁻¹·Qᵀ·B + D costs O(n²) per frequency. */
+function prepSS(sys) {
+  if (!sys.n) return { ...sys, H: [], CQ: [], QtB: [] };
+  const { H, Q } = rhessenberg(sys.A);
+  return { ...sys, H, CQ: toC(matMul(sys.C, Q)), QtB: toC(matMul(transpose(Q), sys.B)) };
+}
+function ssResponse(P, s) {
+  const Dc = toC(P.D);
+  if (!P.n) return Dc;
+  return cmatAdd(cmatMul(P.CQ, hessSolve(P.H, s, P.QtB)), Dc);
+}
+
+/** Build the MIMO loop: plant, controller, loop gain K, breaking point, delays, discretisation, and the state matrices. */
+function buildMimo(inputs) {
+  const x = normalise(inputs), mi = x.mimo, errors = [], warnings = [];
+  const disc = x.timeDomain === "discrete";
+  if (!finite(x.K) || x.K === 0) errors.push({ field: "K", message: "Loop gain K must be a non-zero number." });
+  if (disc && (!finite(x.Ts) || x.Ts <= 0)) errors.push({ field: "Ts", message: "Sample time Ts must be a positive number of seconds." });
+  if (!["input", "output"].includes(mi.breakAt)) errors.push({ field: "mimo.breakAt", message: "The loop must be broken at the plant input or the plant output." });
+  let G = systemFrom(mi.plant, "Plant G", "mimo.plant", errors);
+  let Cc = systemFrom(mi.controller, "Controller C", "mimo.controller", errors);
+  if (errors.length) return { x, errors, warnings };
+  const p = G.p, m = G.m;
+  if (p > MIMO_MAX_CHANNELS || m > MIMO_MAX_CHANNELS) errors.push({ field: "mimo.plant", message: `At most ${MIMO_MAX_CHANNELS} inputs and ${MIMO_MAX_CHANNELS} outputs are supported (the plant has ${p} × ${m}).` });
+  if (Cc.p !== m || Cc.m !== p) errors.push({ field: "mimo.controller", message: `Controller C must be ${m} × ${p} (plant inputs × plant outputs) for a ${p} × ${m} plant; it is ${Cc.p} × ${Cc.m}.` });
+  const delays = Array.isArray(mi.delays) && mi.delays.length ? mi.delays : new Array(m).fill(0);
+  if (delays.length !== m || delays.some((v) => !finite(v) || v < 0)) errors.push({ field: "mimo.delays", message: `Input delays must be ${m} numbers ≥ 0, one per plant input.` });
+  else if (disc && delays.some((v) => !Number.isInteger(v))) errors.push({ field: "mimo.delays", message: "In discrete time each input delay must be a whole number of samples; fractional delays are not supported." });
+  if (disc) {
+    for (const key of ["plant", "controller"]) if (!METHODS.includes(x.discretization[key])) errors.push({ field: `discretization.${key}`, message: `Unknown discretisation method for the ${key}.` });
+    const pw = x.discretization.prewarp;
+    if (!finite(pw) || pw < 0 || (finite(x.Ts) && x.Ts > 0 && pw >= nyquistOf(x.Ts))) errors.push({ field: "discretization.prewarp", message: "The Tustin prewarp frequency must be ≥ 0 and below the Nyquist frequency π/Ts." });
+  }
+  if (errors.length) return { x, errors, warnings };
+  if (G.stacked) warnings.push({ code: "hidden-modes", message: `The plant transfer matrix is realised by stacking one state-space block per entry (${G.n} states). This realisation is not minimal: it can contain hidden (uncontrollable or unobservable) modes, so its state count can exceed the McMillan degree, P can be overcounted and the Nyquist count misled. The count is cross-checked against the closed-loop eigenvalues and any mismatch is flagged; prefer a state-space model where you have one.` });
+  if (Cc.stacked && Cc.n) warnings.push({ code: "hidden-modes", message: `The controller transfer matrix is realised by stacking (${Cc.n} states); the same hidden-mode caveat applies.` });
+  const repeated = (sys) => {
+    if (!sys.stacked || sys.entryPoles.length < 2) return false;
+    const roots = sys.entryPoles.map((e) => polyRoots(e.den).roots);
+    for (let a = 0; a < roots.length; a++) for (let b = a + 1; b < roots.length; b++) if (roots[a].some((r) => roots[b].some((q) => cabs(csub(r, q)) <= 1e-6 * Math.max(1, cabs(r))))) return true;
+    return false;
+  };
+  if (repeated(G) || repeated(Cc)) warnings.push({ code: "hidden-modes-likely", message: "Entries of a stacked transfer matrix share poles, so the stacked realisation almost certainly contains hidden modes (duplicate copies of those poles)." });
+  // Discretise and add delays.
+  let contG = G, contC = Cc;
+  if (disc) {
+    const dz = (sys, key) => (x.discretization[key] === "z" ? sys : discretizeSS(sys, x.discretization[key], x.Ts, x.discretization.prewarp));
+    try { G = dz(G, "plant"); Cc = dz(Cc, "controller"); }
+    catch (e) { errors.push({ field: "mimo.plant", message: `Discretisation failed (${e.message}).` }); return { x, errors, warnings }; }
+    G = addInputDelays(G, delays);
+    if (x.discretization.plant === "z") contG = null;
+    if (x.discretization.controller === "z") contC = null;
+  }
+  if (G.n + Cc.n > MIMO_MAX_STATES) errors.push({ field: "mimo.plant", message: `At most about ${MIMO_MAX_STATES} states are supported (plant and controller have ${G.n + Cc.n}).` });
+  if (errors.length) return { x, errors, warnings };
+  const Kc = { ...Cc, C: Cc.n ? matScale(Cc.C, x.K) : Cc.C, D: matScale(Cc.D, x.K) };
+  const loop = {
+    x, disc, domain: disc ? "z" : "s", Ts: disc ? x.Ts : null, p, m, breakAt: mi.breakAt,
+    G, C: Kc, PG: prepSS(G), PC: prepSS(Kc), delays: disc ? delays.map(() => 0) : delays, delaySamples: disc ? delays : null,
+    contG, contC,
+  };
+  return { x, errors, warnings, loop };
+}
+/** L at a point s (or z): broken at the output L_o = G·Δ·C (p × p), or at the input L_i = Δ·C·G (m × m); Δ = diag(e^(−sτ_j)). */
+function mimoL(loop, s, at = loop.breakAt) {
+  let Gs = ssResponse(loop.PG, s);
+  const Cs = ssResponse(loop.PC, s);
+  if (loop.delays.some((t) => t > 0)) {
+    const dl = loop.delays.map((t) => cexp(cx(-s.re * t, -s.im * t)));
+    Gs = Gs.map((row) => row.map((g, j) => cmul(g, dl[j])));
+  }
+  return at === "output" ? cmatMul(Gs, Cs) : cmatMul(Cs, Gs);
+}
+const cexp = (a) => cpolar(Math.exp(a.re), a.im);
+const mimoPoint = (loop, w) => (loop.domain === "z" ? cpolar(1, w * loop.Ts) : cx(0, w));
+const plusI = (L) => L.map((row, i) => row.map((v, j) => (i === j ? cadd(v, cx(1)) : v)));
+
+/** Open- and closed-loop state matrices (delay-free continuous part, or the delay-augmented discrete plant). */
+function mimoStateMatrices(loop) {
+  const G = loop.G, K = loop.C, m = loop.m, p = loop.p;
+  const Aol = blockDiag(G.n ? G.A : [], K.n ? K.A : []);
+  // u = −(K_D·y + K_C·x_k), y = C_g·x_g + D_g·u  ⇒  (I + K_D·D_g)·u = −K_D·C_g·x_g − K_C·x_k.
+  const M = matAdd(eye(m), matMul(K.D, G.D));
+  let Minv;
+  try { Minv = matSolve(M, eye(m)); } catch (e) { return { Aol, Acl: null, message: "I + K_D·D_G is singular, so the closed loop is not well posed (algebraic loop)." }; }
+  const Ux = G.n ? matScale(matMul(Minv, matMul(K.D, G.C)), -1) : [];
+  const Uk = K.n ? matScale(matMul(Minv, K.C), -1) : [];
+  const n = G.n + K.n, Acl = matZeros(n, n);
+  const set = (r0, c0, Mx) => Mx.forEach((row, i) => row.forEach((v, j) => (Acl[r0 + i][c0 + j] += v)));
+  if (G.n) { set(0, 0, G.A); set(0, 0, matMul(G.B, Ux)); }
+  if (G.n && K.n) set(0, G.n, matMul(G.B, Uk));
+  if (K.n) {
+    // x_k' = A_k·x_k + B_k·y, y = (C_g + D_g·U_x)·x_g + D_g·U_k·x_k.
+    set(G.n, G.n, K.A);
+    if (G.n) set(G.n, 0, matMul(K.B, matAdd(G.C, matMul(G.D, Ux))));
+    set(G.n, G.n, matMul(K.B, matMul(G.D, Uk)));
+  }
+  return { Aol, Acl };
+}
+
+/** Eigenvalues by continuity: reorder each frequency's eigenvalues to best match the previous set (all permutations, p ≤ 6). */
+function matchEig(prev, cur) {
+  const n = cur.length;
+  if (!prev) return cur;
+  let best = null, bestCost = Infinity;
+  const perm = [...Array(n).keys()], used = new Array(n).fill(false), pick = [];
+  const rec = (k, cost) => {
+    if (cost >= bestCost) return;
+    if (k === n) { bestCost = cost; best = pick.slice(); return; }
+    for (let i = 0; i < n; i++) if (!used[i]) { used[i] = true; pick.push(i); rec(k + 1, cost + cabs(csub(cur[i], prev[k]))); pick.pop(); used[i] = false; }
+  };
+  rec(0, 0);
+  return (best || perm).map((i) => cur[i]);
+}
+
+/** Classical SISO margins of a sampled complex response f(ω): gain and phase crossovers with continuity-tracked phase. */
+function responseMargins(f, ws, jumps = []) {
+  const vals = ws.map(f), u = ws.map(Math.log10);
+  const ph = [];
+  vals.forEach((v, i) => ph.push(i === 0 ? carg(v) : ph[i - 1] + wrapPi(carg(v) - carg(vals[i - 1]))));
+  const phAt = (uu, i) => ph[i] + wrapPi(carg(f(Math.pow(10, uu))) - carg(vals[i]));
+  const gc = [], pc = [];
+  for (let i = 0; i < ws.length - 1; i++) {
+    if (jumps.some((j) => j >= ws[i] && j <= ws[i + 1])) continue;
+    const a = Math.log(cabs(vals[i])), b = Math.log(cabs(vals[i + 1]));
+    if (Number.isFinite(a) && Number.isFinite(b) && (a === 0 || a * b < 0)) {
+      const r = brent((uu) => Math.log(cabs(f(Math.pow(10, uu)))), u[i], u[i + 1]);
+      if (r.ok) { const w = Math.pow(10, r.x), pd = (phAt(r.x, i) * 180) / Math.PI; gc.push({ w, pmDeg: wrapDeg(180 + pd) }); }
+    }
+    const pa = (ph[i] * 180) / Math.PI, pb = (ph[i + 1] * 180) / Math.PI, lo = Math.min(pa, pb), hi = Math.max(pa, pb);
+    if (Math.abs(pb - pa) > 170) continue;
+    for (let k = Math.ceil((lo + 180) / 360); -180 + 360 * k <= hi; k++) {
+      const target = -180 + 360 * k;
+      if (target === pb && i + 1 < ws.length - 1) continue;
+      const r = brent((uu) => (phAt(uu, i) * 180) / Math.PI - target, u[i], u[i + 1]);
+      if (r.ok) { const w = Math.pow(10, r.x), mag = cabs(f(w)); pc.push({ w, gmDb: -toDb(mag) }); }
+    }
+  }
+  const pm = gc.length ? gc.reduce((a, c) => (c.pmDeg < a.pmDeg ? c : a)) : null;
+  const ups = pc.filter((c) => c.gmDb >= 0), downs = pc.filter((c) => c.gmDb < 0);
+  return {
+    gainCrossovers: gc, phaseCrossovers: pc, pm,
+    gmUpper: ups.length ? ups.reduce((a, c) => (c.gmDb < a.gmDb ? c : a)) : null,
+    gmLower: downs.length ? downs.reduce((a, c) => (c.gmDb > a.gmDb ? c : a)) : null,
+  };
+}
+
+/** MIMO measures at one breaking point on the frequency grid. */
+function mimoMeasures(loop, ws, at, jumps = []) {
+  const Ls = ws.map((w) => mimoL(loop, mimoPoint(loop, w), at));
+  const nL = Ls[0].length;
+  const sv = Ls.map((L) => csvd(L));
+  const svI = Ls.map((L) => csvd(plusI(L)));
+  const Tmax = Ls.map((L) => { try { return csvd(csolve(transpose(plusI(L)), transpose(L)))[0]; } catch (e) { return Infinity; } });
+  // Eigenvalue loci matched by continuity (colouring only; the stability count uses det(I + L)).
+  const eigs = [];
+  let prev = null;
+  for (const L of Ls) { const e = matchEig(prev, ceig(L).values); eigs.push(e); prev = e; }
+  const loci = Array.from({ length: nL }, (_, k) => eigs.map((e) => e[k]));
+  const eigAt = (w, near) => { const e = ceig(mimoL(loop, mimoPoint(loop, w), at)).values; return e.reduce((b, v) => (cabs(csub(v, near)) < cabs(csub(b, near)) ? v : b)); };
+  // Eigenvalue-locus margins: |λ| = 1 crossings (phase margin) and negative-real-axis crossings (uniform scalar gain margin).
+  const pms = [], gms = [];
+  for (let k = 0; k < nL; k++) {
+    const lc = loci[k];
+    for (let i = 0; i < ws.length - 1; i++) {
+      // A boundary pole makes the loci pass through infinity: no crossing is read across it.
+      if (jumps.some((j) => j >= ws[i] && j <= ws[i + 1])) continue;
+      const a = lc[i], b = lc[i + 1];
+      const fm = (lam) => Math.log(cabs(lam));
+      if (fm(a) * fm(b) < 0) {
+        let lo = Math.log10(ws[i]), hi = Math.log10(ws[i + 1]), la = a, lam = a;
+        for (let it = 0; it < 60; it++) { const mid = (lo + hi) / 2; lam = eigAt(Math.pow(10, mid), la); if (fm(lam) * fm(a) > 0) { lo = mid; la = lam; } else hi = mid; }
+        if (Math.abs(cabs(lam) - 1) < 1e-6) pms.push({ locus: k, w: Math.pow(10, (lo + hi) / 2), pmDeg: wrapDeg(180 + (carg(lam) * 180) / Math.PI) });
+      }
+      if (a.im * b.im < 0 && (a.re + b.re) / 2 < 0) {
+        let lo = Math.log10(ws[i]), hi = Math.log10(ws[i + 1]), la = a, lam = a;
+        for (let it = 0; it < 60; it++) { const mid = (lo + hi) / 2; lam = eigAt(Math.pow(10, mid), la); if (lam.im * a.im > 0) { lo = mid; la = lam; } else hi = mid; }
+        if (lam.re < 0 && Math.abs(lam.im) <= 1e-6 * cabs(lam)) gms.push({ locus: k, w: Math.pow(10, (lo + hi) / 2), gmDb: -toDb(cabs(lam)) });
+      }
+    }
+  }
+  const pm = pms.length ? pms.reduce((a, c) => (c.pmDeg < a.pmDeg ? c : a)) : null;
+  const ups = gms.filter((c) => c.gmDb >= 0), downs = gms.filter((c) => c.gmDb < 0);
+  // Return difference: α = min σ_min(I + L) gives guaranteed simultaneous gain and phase margins.
+  let iMin = 0;
+  svI.forEach((s, i) => { if (s[s.length - 1] < svI[iMin][svI[iMin].length - 1]) iMin = i; });
+  const sigmaMin = (uu) => { const s = csvd(plusI(mimoL(loop, mimoPoint(loop, Math.pow(10, uu)), at))); return s[s.length - 1]; };
+  let alpha = svI[iMin][svI[iMin].length - 1], wAlpha = ws[iMin];
+  if (iMin > 0 && iMin < ws.length - 1) {
+    const g = goldenMax((uu) => -sigmaMin(uu), Math.log10(ws[iMin - 1]), Math.log10(ws[iMin + 1]));
+    if (g.ok && -g.f < alpha) { alpha = -g.f; wAlpha = Math.pow(10, g.x); }
+  }
+  const rd = {
+    alpha, w: wAlpha,
+    gmLowDb: toDb(1 / (1 + alpha)), gmHighDb: alpha < 1 ? toDb(1 / (1 - alpha)) : Infinity,
+    pmDeg: alpha >= 2 ? 180 : (2 * Math.asin(alpha / 2) * 180) / Math.PI,
+  };
+  let tI = 0;
+  Tmax.forEach((v, i) => { if (v > Tmax[tI]) tI = i; });
+  // Loop-at-a-time: classical margins of each diagonal channel with the other loops open.
+  const lat = Array.from({ length: nL }, (_, i) => {
+    const r = responseMargins((w) => mimoL(loop, mimoPoint(loop, w), at)[i][i], ws, jumps);
+    return { channel: i + 1, pm: r.pm && { deg: r.pm.pmDeg, w: r.pm.w }, gmUpper: r.gmUpper && { dB: r.gmUpper.gmDb, w: r.gmUpper.w }, gmLower: r.gmLower && { dB: r.gmLower.gmDb, w: r.gmLower.w } };
+  });
+  const cond = Math.max(...sv.map((s) => (s[s.length - 1] > 0 ? s[0] / s[s.length - 1] : Infinity)));
+  return {
+    at, size: nL,
+    eigenLocus: { pm: pm && { deg: pm.pmDeg, w: pm.w, locus: pm.locus + 1 }, gmUpper: ups.length ? (({ gmDb, w, locus }) => ({ dB: gmDb, w, locus: locus + 1 }))(ups.reduce((a, c) => (c.gmDb < a.gmDb ? c : a))) : null, gmLower: downs.length ? (({ gmDb, w, locus }) => ({ dB: gmDb, w, locus: locus + 1 }))(downs.reduce((a, c) => (c.gmDb > a.gmDb ? c : a))) : null, crossings: { unitCircle: pms.length, negativeRealAxis: gms.length } },
+    returnDifference: rd,
+    sensitivity: { maxSigmaS: { value: 1 / alpha, w: wAlpha }, maxSigmaT: { value: Tmax[tI], w: ws[tI] } },
+    loopAtATime: lat,
+    conditionMax: cond,
+    _curves: { Ls, sv, svI, Tmax, loci },
+  };
+}
+
+/** Full MIMO analysis: closed-loop eigenvalues, generalised Nyquist on det(I + L), margins at both breaking points. */
+function analyzeMimo(inputs) {
+  const built = buildMimo(inputs);
+  const { x, errors, warnings, loop } = built;
+  if (errors.length) return { schemaVersion: SCHEMA_VERSION, ok: false, system: "mimo", errors, warnings };
+  const z = loop.domain === "z", wN = z ? nyquistOf(loop.Ts) : null;
+  const { Aol, Acl, message } = mimoStateMatrices(loop);
+  const olEig = ceig(Aol);
+  const olPoles = cleanRoots(olEig.values);
+  const pseudo = { domain: loop.domain, Ts: loop.Ts, zeros: [], poles: olPoles, gain: 1, num: [1], den: [1], d: 0, tau: z ? 0 : Math.max(0, ...loop.delays) };
+  const P = olPoles.filter((p) => rootClass(pseudo, p).unstable).length;
+  // Frequency grid from the open-loop poles (as for SISO), or the manual range.
+  const auto = autoRange(pseudo);
+  let range = x.range.auto ? auto : { wMin: x.range.wMin, wMax: x.range.wMax };
+  if (!x.range.auto && (!finite(x.range.wMin) || !finite(x.range.wMax) || x.range.wMin <= 0 || x.range.wMin >= x.range.wMax)) return { schemaVersion: SCHEMA_VERSION, ok: false, system: "mimo", errors: [{ field: "range.wMin", message: "ω_min and ω_max must be positive with ω_min < ω_max." }], warnings };
+  if (z && range.wMax > wN) { if (!x.range.auto) warnings.push({ code: "nyquist-clip", message: `ω_max was clipped to the Nyquist frequency π/Ts = ${fmt(wN)} rad/s.` }); range = { wMin: Math.min(range.wMin, wN / 100), wMax: wN }; }
+  const ppd = Number.isInteger(x.range.pointsPerDecade) ? Math.min(x.range.pointsPerDecade, 200) : 100;
+  const ws = makeGrid(pseudo, range.wMin, range.wMax, ppd, warnings);
+  // Closed-loop eigenvalues (unavailable with a continuous delay).
+  let closedLoop;
+  if (!z && loop.delays.some((t) => t > 0)) {
+    closedLoop = { available: false, message: "Input delays are present, so the closed-loop eigenvalue check is unavailable; the generalised Nyquist count is the only stability verdict." };
+    warnings.push({ code: "delay-no-poles", message: closedLoop.message });
+  } else if (!Acl) {
+    closedLoop = { available: false, message };
+    warnings.push({ code: "ill-posed", message });
+  } else if (!Acl.length) {
+    closedLoop = { available: true, poles: [], unstable: 0, marginal: 0, verdict: "stable" };
+  } else {
+    const e = ceig(Acl);
+    if (!e.converged) { closedLoop = { available: false, message: "The closed-loop eigenvalue iteration did not converge; no verdict is given." }; warnings.push({ code: "nonconvergence", message: closedLoop.message }); }
+    else {
+      const poles = cleanRoots(e.values), cls = poles.map((p) => rootClass(pseudo, p));
+      const unstable = cls.filter((k) => !k.boundary && k.unstable).length, marginal = cls.filter((k) => k.boundary).length;
+      closedLoop = { available: true, poles, unstable, marginal, verdict: unstable ? "unstable" : marginal ? "marginal" : "stable" };
+    }
+  }
+  if (!olEig.converged) warnings.push({ code: "nonconvergence", message: "The open-loop eigenvalue iteration did not converge; P may be wrong." });
+  // Generalised Nyquist: winding of det(I + L) about 0 (the same counter as SISO, fed with F = det(I + L)).
+  pseudo.evalF = (s) => {
+    let F;
+    try { F = cdet(plusI(mimoL(loop, s))); } catch (e) { F = cx(Infinity); }
+    const Lm1 = csub(F, cx(1)), mag = cabs(Lm1);
+    return { L: Lm1, logm: mag > 0 ? Math.log(mag) : -Infinity, argF: carg(F), dist: cabs(F) };
+  };
+  const nyquist = nyquistCount(pseudo, closedLoop);
+  if (nyquist.available) {
+    nyquist.convention = nyquist.convention.replace("encirclements of −1 by L", "encirclements of the origin by det(I + L)").replace("L passes through −1", "det(I + L) passes through 0");
+    if (nyquist.onContour) warnings.push({ code: "nyquist-boundary", message: "det(I + L) passes through 0 on the contour (a closed-loop pole on the stability boundary), so the encirclement count is not defined there." });
+    if (nyquist.unresolved && !nyquist.onContour) warnings.push({ code: "nyquist-unresolved", message: `The det(I + L) locus is still unresolved after refinement (${nyquist.evaluations} evaluations); the count N = ${nyquist.N} may be wrong.` });
+    if (nyquist.crossCheck.available && !nyquist.crossCheck.agree) warnings.unshift({ code: "nyquist-mismatch", message: `GENERALISED NYQUIST AND CLOSED-LOOP EIGENVALUES DISAGREE: det(I + L) gives Z = ${nyquist.Z} but the eigenvalues of A_cl give ${closedLoop.unstable} unstable (${closedLoop.marginal} on the boundary).${built.loop.G.stacked ? " The stacked transfer-matrix realisation may contain hidden modes." : ""} Neither verdict should be trusted until this is resolved.` });
+  }
+  // Margins at both breaking points; the chosen one drives the checks.
+  const jumps = boundaryFreqs(pseudo);
+  const both = { output: mimoMeasures(loop, ws, "output", jumps), input: mimoMeasures(loop, ws, "input", jumps) };
+  const chosen = both[loop.breakAt];
+  mimoLast = { key: JSON.stringify(x), upper: pseudo.nyqUpper || null, ws, curves: chosen._curves };
+  if (chosen.conditionMax > 1e8) warnings.push({ code: "ill-conditioned", message: `L is ill-conditioned (condition number up to ${fmt(chosen.conditionMax)}); singular values and eigenvalues near the smallest gain are numerically fragile.` });
+  if (chosen.returnDifference.alpha < 1e-6) warnings.push({ code: "near-singular", message: `I + L is nearly singular (σ_min = ${fmt(chosen.returnDifference.alpha)} at ${fmt(chosen.returnDifference.w)} rad/s).` });
+  if (closedLoop.available && closedLoop.verdict === "unstable") warnings.push({ code: "cl-unstable", message: `The closed loop is unstable with ${closedLoop.unstable} eigenvalue(s) ${z ? "outside the unit circle" : "in the right half-plane"}; the margins describe the loop, not a stable design.` });
+  const th = x.thresholds, el = chosen.eigenLocus;
+  const checks = [
+    { id: "gm", label: "Eigenvalue-locus gain margin: upper ≥ threshold, lower ≤ −threshold", threshold: th.gmDb, unit: "dB", value: el.gmUpper ? el.gmUpper.dB : el.gmLower ? el.gmLower.dB : null, pass: (!el.gmUpper || el.gmUpper.dB >= th.gmDb) && (!el.gmLower || el.gmLower.dB <= -th.gmDb), note: el.gmUpper || el.gmLower ? "" : "no negative-real-axis crossing (infinite uniform gain margin)" },
+    { id: "pm", label: "Eigenvalue-locus phase margin ≥ threshold", threshold: th.pmDeg, unit: "deg", value: el.pm ? el.pm.deg : null, pass: el.pm ? el.pm.deg >= th.pmDeg : null, note: el.pm ? "" : "no unit-circle crossing" },
+    { id: "ms", label: "max σ_max(S) ≤ threshold", threshold: th.ms, unit: "", value: chosen.sensitivity.maxSigmaS.value, pass: chosen.sensitivity.maxSigmaS.value <= th.ms, note: "" },
+  ].map((c) => ({ ...c, source: THRESHOLD_NOTE }));
+  const strip = (mm) => { const { _curves, ...rest } = mm; return rest; };
+  return {
+    schemaVersion: SCHEMA_VERSION, ok: true, system: "mimo", errors: [], warnings,
+    loop: {
+      domain: loop.domain, Ts: loop.Ts, outputs: loop.p, inputs: loop.m, breakAt: loop.breakAt,
+      plantStates: loop.G.n, controllerStates: loop.C.n, realisation: built.loop.G.stacked ? "stacked transfer matrix" : "state space",
+      delays: z ? null : loop.delays, delaySamples: z ? loop.delaySamples : null, nyquist: wN,
+      openLoopPoles: olPoles, openLoopUnstable: P,
+    },
+    grid: { wMin: ws[0], wMax: ws[ws.length - 1], points: ws.length, pointsPerDecade: ppd, auto: x.range.auto },
+    closedLoop, nyquist,
+    margins: { breakAt: loop.breakAt, chosen: strip(chosen), output: strip(both.output), input: strip(both.input) },
+    checks,
+  };
+}
+/** The latest MIMO analysis's grid, curves and upper-half det(I + L) contour, keyed by its canonical inputs; kept out of the results. */
+let mimoLast = { key: null, upper: null, ws: null, curves: null };
+/** MIMO curves on the analysis grid for plots and CSV, at the chosen breaking point. */
+function mimoCurves(inputs) {
+  const key = JSON.stringify(normalise(inputs));
+  if (mimoLast.key !== key) { const r = analyzeMimo(inputs); if (!r.ok) return null; }
+  if (mimoLast.key !== key) return null;
+  const z = normalise(inputs).timeDomain === "discrete";
+  const ws = mimoLast.ws;
+  const { Ls, sv, svI, Tmax, loci } = mimoLast.curves;
+  // Entry phases unwrapped by continuity along the grid.
+  const nL = Ls[0].length, ph = Array.from({ length: nL }, () => new Array(nL).fill(0));
+  const rows = ws.map((w, k) => {
+    const L = Ls[k];
+    const entries = L.map((row, i) => row.map((v, j) => {
+      const a = carg(v);
+      ph[i][j] = k === 0 ? a : ph[i][j] + wrapPi(a - carg(Ls[k - 1][i][j]));
+      return { mag: cabs(v), phaseDeg: (ph[i][j] * 180) / Math.PI, re: v.re, im: v.im };
+    }));
+    return { w, entries, sv: sv[k], sigmaMinIplusL: svI[k][svI[k].length - 1], sigmaMaxS: 1 / svI[k][svI[k].length - 1], sigmaMaxT: Tmax[k], eig: loci.map((lc) => lc[k]) };
+  });
+  return { rows, upper: mimoLast.upper, domain: z ? "z" : "s" };
+}
+
+
+/* ---------- MIMO presets (classical 2 × 2 textbook examples; values are unsourced defaults) ---------- */
+const MIMO_PRESETS = {
+  "spinning-satellite": {
+    label: "Spinning satellite, a = 10, controller K = I",
+    make: () => { const a = 10; return { plant: { form: "ss", A: [[0, a], [-a, 0]], B: [[1, 0], [0, 1]], C: [[1, a], [-a, 1]], D: [[0, 0], [0, 0]] }, controller: { form: "gain", K: [[1, 0], [0, 1]] } }; },
+  },
+  "distillation-lv": {
+    label: "Distillation column (LV) 1/(75s + 1)·G₀ with inverse-based PI controller",
+    make: () => {
+      const G0 = [[87.8, -86.4], [108.2, -109.6]], det = G0[0][0] * G0[1][1] - G0[0][1] * G0[1][0];
+      const Gi = [[G0[1][1] / det, -G0[0][1] / det], [-G0[1][0] / det, G0[0][0] / det]];
+      return {
+        plant: { form: "ss", A: [[-1 / 75, 0], [0, -1 / 75]], B: G0.map((r) => r.map((v) => v / 75)), C: [[1, 0], [0, 1]], D: [[0, 0], [0, 0]] },
+        controller: { form: "ss", A: [[0, 0], [0, 0]], B: [[1, 0], [0, 1]], C: Gi.map((r) => r.map((v) => 0.7 * v)), D: Gi.map((r) => r.map((v) => 52.5 * v)) },
+      };
+    },
+  },
+  "decoupled": {
+    label: "Two decoupled loops diag(1/(s + 1), 2/(s(s + 2))) as a transfer matrix, K = I",
+    make: () => ({ plant: { form: "tfm", entries: [[{ num: [1], den: [1, 1] }, { num: [0], den: [1] }], [{ num: [0], den: [1] }, { num: [2], den: [1, 2, 0] }]] }, controller: { form: "gain", K: [[1, 0], [0, 1]] } }),
+  },
+};
+function defaultMimo() { return { preset: "spinning-satellite", ...MIMO_PRESETS["spinning-satellite"].make(), breakAt: "output", delays: [0, 0] }; }
+function normaliseMimo(mi) {
+  const d = defaultMimo();
+  if (!isObj(mi)) return d;
+  const sys = (b, fb) => (isObj(b) ? clone(b) : clone(fb));
+  return {
+    preset: typeof mi.preset === "string" && MIMO_PRESETS[mi.preset] ? mi.preset : null,
+    plant: sys(mi.plant, d.plant), controller: sys(mi.controller, d.controller),
+    breakAt: mi.breakAt === undefined ? d.breakAt : mi.breakAt,
+    delays: Array.isArray(mi.delays) ? mi.delays.slice() : (isObj(mi.plant) && Array.isArray(mi.plant.D) && Array.isArray(mi.plant.D[0]) ? new Array(mi.plant.D[0].length).fill(0) : d.delays),
+  };
+}
+
 const META = {
   title: "Frequency-Response Visualiser",
   phase: PHASE,
   disclaimer: DISCLAIMER,
   units: "Canonical: rad/s, seconds, absolute magnitude, degrees. Display toggles change only what is shown.",
-  scope: "Phase 3 of 4: SISO Bode, Nyquist and Nichols views, margins, the Nyquist stability count cross-checked against the closed-loop poles, and the pole-zero map, in continuous or discrete time, with ZOH, Tustin (optional prewarp), forward and backward Euler discretisation, integer-sample delays, a continuous-over-discrete overlay, self-tests and exports.",
+  scope: "Phase 4 of 4: SISO and MIMO loops in continuous or discrete time. SISO: Bode, singular-value (magnitudes), Nyquist and Nichols views, margins, the Nyquist count cross-checked against the closed-loop poles, and the pole-zero map. MIMO (state space, or a transfer matrix with the hidden-mode caveat): entry-wise Bode, singular values of L, I + L, S and T, eigenvalue loci with the generalised Nyquist count on det(I + L) cross-checked against the closed-loop eigenvalues, eigenvalue-locus, return-difference, sensitivity-peak and loop-at-a-time margins at both breaking points. ZOH, Tustin (optional prewarp), forward and backward Euler discretisation, integer-sample delays, self-tests and exports.",
+  mimoPresets: Object.fromEntries(Object.entries(MIMO_PRESETS).map(([k, p]) => [k, { label: p.label }])),
   nichols: { mContoursDb: NICHOLS_M_DB, nContoursDeg: NICHOLS_N_DEG },
   discretization: { methods: { ...DISCRETE_METHODS, z: "entered directly in z" }, prewarp: "Tustin prewarp frequency in rad/s; 0 means none" },
   conventions: CONVENTIONS,
@@ -1807,6 +2680,7 @@ const api = {
   cx, cabs, carg, polyRoots, polyFromRoots, polyMul, polyAdd, trimPoly, brent, goldenMax,
   expm, charPoly, tf2ss, ss2tf, discretize, matMul, DISCRETE_METHODS,
   nyquistLocus, mContour, nContour, msBoundary, NICHOLS_M_DB, NICHOLS_N_DEG,
+  ceig, csvd, cdet, csolve, rhessenberg, hessSolve, cmatMul, toC, discretizeSS, analyzeMimo, mimoCurves, MIMO_PRESETS, defaultMimo,
   freqTo, freqFrom, magTo, magFrom, phaseTo, phaseFrom, wrapDeg, toDb,
   defaultInputs, normalise, normaliseBlock, blockTf, blockZpk, buildLoop, analyze, curves, responseAt,
   fmt, fmtC, polyText, describeBlock,
@@ -1825,7 +2699,7 @@ const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&
 const fmt = F.fmt, fmtC = F.fmtC;
 
 let state = F.defaultInputs();
-let result = null, rows = null;
+let result = null, rows = null, mrows = null, mimoEntry = [0, 0];
 const parseErrors = {};
 const view = { asym: true, cont: true, S: false, T: false, marks: true };
 
@@ -1929,6 +2803,116 @@ function setParseError(key, input, msg) {
   if (msg) parseErrors[`${key}.${input.dataset.k}`] = msg; else delete parseErrors[`${key}.${input.dataset.k}`];
 }
 
+/* ---------- MIMO editors ---------- */
+const isMimo = () => state.system === "mimo";
+const matText = (M) => (Array.isArray(M) ? M.map((r) => r.map(short).join(" ")).join("\n") : "");
+function parseMatrix(text) {
+  const lines = text.replace(/−/g, "-").split(/[\n;]+/).map((l) => l.trim()).filter(Boolean);
+  const M = [], bad = [];
+  for (const l of lines) { const r = parseReals(l); if (r.error) bad.push(l); M.push(r.values); }
+  return { M, error: bad.length ? `Not a number in: ${bad.join(" / ")}` : null };
+}
+const tfmText = (E) => (Array.isArray(E) ? E.map((row) => row.map((e) => `${realsText(e.num || [])} / ${realsText(e.den || [])}`).join(" | ")).join("\n") : "");
+function parseTfm(text) {
+  const rows = text.replace(/−/g, "-").split(/\n+/).map((l) => l.trim()).filter(Boolean), E = [], bad = [];
+  for (const line of rows) {
+    E.push(line.split("|").map((cell) => {
+      const parts = cell.split("/");
+      if (parts.length !== 2) { bad.push(cell.trim()); return { num: [NaN], den: [1] }; }
+      const n = parseReals(parts[0]), d = parseReals(parts[1]);
+      if (n.error || d.error) bad.push(cell.trim());
+      return { num: n.error ? [NaN] : n.values, den: d.error ? [NaN] : d.values };
+    }));
+  }
+  return { E, error: bad.length ? `Each entry must be "numerator / denominator": ${bad.join(" | ")}` : null };
+}
+function renderMimoEditor(key) {
+  const b = state.mimo[key], el = $(`mimo-ed-${key}`);
+  const v = state.timeDomain === "discrete" && state.discretization[key] === "z" ? "z" : "s";
+  const opt = (val, l) => `<option value="${val}"${b.form === val ? " selected" : ""}>${esc(l)}</option>`;
+  const forms = key === "plant" ? opt("ss", "State space (A, B, C, D)") + opt("tfm", "Transfer matrix") : opt("gain", "Static gain matrix") + opt("ss", "State space (A, B, C, D)") + opt("tfm", "Transfer matrix");
+  let h = `<label class="f"><span class="n"><b>Form</b></span><select data-mk="form">${forms}</select></label>`;
+  const area = (k, label, hint, val, rowsN = 3) => `<label class="f"><span class="n"><b>${label}</b><small>${hint}</small></span><textarea data-mk="${k}" data-field="mimo.${key}.${k}" rows="${rowsN}" spellcheck="false" style="min-height:0">${esc(val)}</textarea><span class="err" data-err="${k}"></span></label>`;
+  if (b.form === "ss") {
+    h += `<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(9rem,1fr))">${area("A", "A", "n × n", matText(b.A))}${area("B", "B", "n × inputs", matText(b.B))}${area("C", "C", "outputs × n", matText(b.C))}${area("D", "D", "outputs × inputs", matText(b.D))}</div>`;
+    h += `<p class="note">One row per line, entries separated by spaces. Leave A, B and C empty for a static system.${v === "z" ? " Entered in z: these are discrete-time matrices." : ""}</p>`;
+  } else if (b.form === "gain") {
+    h += area("K", "K", "inputs × outputs", matText(b.K));
+  } else {
+    h += area("entries", "Entries", `one row per line, entries separated by |, each "num / den" in powers of ${v}`, tfmText(b.entries), 3);
+    h += `<p class="note" style="color:var(--warn)">Hidden-mode caveat: a transfer matrix is realised by stacking one state-space block per entry. That realisation is not minimal, so it can contain hidden modes, overcount the open-loop unstable poles P and mislead the Nyquist count; the count is cross-checked against the closed-loop eigenvalues and any mismatch is flagged. Prefer state space where you have it.</p>`;
+  }
+  el.innerHTML = h;
+  for (const k of Object.keys(parseErrors)) if (k.startsWith(`mimo.${key}.`)) delete parseErrors[k];
+}
+function mimoTemplate(key, form) {
+  const cur = state.mimo.plant, p = Array.isArray(cur.D) ? cur.D.length : Array.isArray(cur.entries) ? cur.entries.length : 2;
+  const m = Array.isArray(cur.D) && cur.D[0] ? cur.D[0].length : Array.isArray(cur.entries) && cur.entries[0] ? cur.entries[0].length : 2;
+  const [r, c] = key === "plant" ? [p, m] : [m, p];
+  const I = (rr, cc) => Array.from({ length: rr }, (_, i) => Array.from({ length: cc }, (_, j) => (i === j ? 1 : 0)));
+  if (form === "gain") return { form, K: I(r, c) };
+  if (form === "tfm") return { form, entries: Array.from({ length: r }, (_, i) => Array.from({ length: c }, (_, j) => (i === j ? { num: [1], den: [1, 1] } : { num: [0], den: [1] }))) };
+  return { form: "ss", A: [[-1]], B: [Array.from({ length: c }, () => 1)], C: Array.from({ length: r }, () => [1]), D: Array.from({ length: r }, () => new Array(c).fill(0)) };
+}
+function onMimoEditor(key, e) {
+  const t = e.target, b = state.mimo[key], k = t.dataset.mk;
+  if (!k) return;
+  state.mimo.preset = null; $("mimo-preset").value = "";
+  if (k === "form") { state.mimo[key] = mimoTemplate(key, t.value); renderMimoEditor(key); }
+  else if (k === "entries") { const r = parseTfm(t.value); b.entries = r.E; mimoParseError(key, t, r.error); }
+  else { const r = parseMatrix(t.value); b[k] = r.M; mimoParseError(key, t, r.error); }
+  syncMimoDelays();
+  recompute();
+}
+function mimoParseError(key, input, msg) {
+  const slot = input.parentElement.querySelector(`[data-err="${input.dataset.mk}"]`);
+  if (slot) slot.textContent = msg || "";
+  const f = `mimo.${key}.${input.dataset.mk}`;
+  if (msg) parseErrors[f] = msg; else delete parseErrors[f];
+}
+/** Keep one delay per plant input when the plant's size changes. */
+function syncMimoDelays() {
+  const pl = state.mimo.plant, m = Array.isArray(pl.D) && pl.D[0] ? pl.D[0].length : Array.isArray(pl.entries) && pl.entries[0] ? pl.entries[0].length : 0;
+  if (m && Array.isArray(state.mimo.delays) && state.mimo.delays.length !== m) {
+    state.mimo.delays = Array.from({ length: m }, (_, j) => (Number.isFinite(state.mimo.delays[j]) ? state.mimo.delays[j] : 0));
+    $("mimo-delays").value = realsText(state.mimo.delays);
+  }
+}
+function syncMimo() {
+  if (!state.mimo) state.mimo = F.defaultMimo();
+  $("mimo-preset").innerHTML = `<option value="">Custom</option>` + Object.entries(F.MIMO_PRESETS).map(([k, p]) => `<option value="${k}"${state.mimo.preset === k ? " selected" : ""}>${esc(p.label)}</option>`).join("");
+  $("mimo-break").value = state.mimo.breakAt;
+  $("mimo-delays").value = realsText(state.mimo.delays || []);
+  $("mimo-delay-unit").textContent = state.timeDomain === "discrete" ? "whole samples, one per plant input" : "s, one per plant input";
+  renderMimoEditor("plant"); renderMimoEditor("controller");
+}
+function wireMimo() {
+  $("set-system").addEventListener("change", (e) => {
+    state.system = e.target.value;
+    if (isMimo()) syncMimo();
+    syncDomain(); recompute();
+  });
+  $("mimo-preset").addEventListener("change", (e) => {
+    if (!e.target.value) { state.mimo.preset = null; return; }
+    const made = F.MIMO_PRESETS[e.target.value].make();
+    state.mimo = { ...state.mimo, ...made, preset: e.target.value, delays: new Array(made.plant.D ? made.plant.D[0].length : made.plant.entries[0].length).fill(0) };
+    mimoEntry = [0, 0];
+    syncMimo(); recompute();
+  });
+  $("mimo-break").addEventListener("change", (e) => { state.mimo.breakAt = e.target.value; mimoEntry = [0, 0]; recompute(); });
+  $("mimo-delays").addEventListener("input", (e) => {
+    const r = parseReals(e.target.value || "0");
+    state.mimo.delays = r.error ? [NaN] : r.values;
+    $("mimo-delays-err").textContent = r.error || "";
+    if (r.error) parseErrors["mimo.delays"] = r.error; else delete parseErrors["mimo.delays"];
+    recompute();
+  });
+  for (const key of ["plant", "controller"]) {
+    $(`mimo-ed-${key}`).addEventListener("input", (e) => { if (e.target.tagName !== "SELECT") onMimoEditor(key, e); });
+    $(`mimo-ed-${key}`).addEventListener("change", (e) => { if (e.target.tagName === "SELECT") onMimoEditor(key, e); });
+  }
+}
+
 /* ---------- settings ---------- */
 const METHOD_LABELS = { zoh: "Zero-order hold", tustin: "Tustin (bilinear)", forward: "Forward Euler", backward: "Backward Euler", z: "Entered in z" };
 /** Show the controls that belong to the current time domain. */
@@ -1942,9 +2926,20 @@ function syncDomain() {
   $("pz-boundary").textContent = disc ? "— unit circle (stability boundary)" : "— jω axis (stability boundary)";
   $("pz-col-a").textContent = disc ? "|z|" : "ωn";
   $("pz-col-b").textContent = disc ? "ln(z)/Ts (s-plane)" : "ζ";
+  // Multivariable mode swaps the block editors and hides single-loop-only controls.
+  const mimo = isMimo();
+  $("siso-inputs").hidden = mimo; $("mimo-inputs").hidden = !mimo;
+  if (mimo) { $("lbl-delay").hidden = true; $("lbl-delay-d").hidden = true; }
+  for (const id of ["lbl-S", "lbl-T", "lbl-marks", "lbl-nyq-ms", "lbl-nic-l", "lbl-nic-ms"]) $(id).hidden = mimo;
+  if (mimo) { $("lbl-asym").hidden = true; $("lbl-cont").hidden = true; }
+  $("lbl-nyq-det").hidden = !mimo; $("nyq-mimo-note").hidden = !mimo; $("nic-mimo-note").hidden = !mimo; $("bode-mimo").hidden = !mimo;
+  if (mimo && state.mimo) $("mimo-delay-unit").textContent = disc ? "whole samples, one per plant input" : "s, one per plant input";
+  $("loop-note").innerHTML = mimo ? (disc ? "L = K · (G·C or C·G) in z, with z<sup>−d</sup> per plant input; unity negative feedback." : "L = K · (G·Δ·C or Δ·C·G), Δ = diag(e<sup>−sτⱼ</sup>) per plant input; unity negative feedback.") : $("loop-note").innerHTML;
 }
 function syncSettings() {
   const u = state.displayUnits;
+  $("set-system").value = state.system;
+  if (isMimo()) syncMimo();
   $("set-domain").value = state.timeDomain;
   $("set-ts").value = short(state.Ts);
   for (const key of ["plant", "controller"]) $(`in-disc-${key}`).innerHTML = Object.entries(METHOD_LABELS).map(([k, l]) => `<option value="${k}"${state.discretization[key] === k ? " selected" : ""}>${l}</option>`).join("");
@@ -1983,10 +2978,11 @@ function wireSettings() {
   $("set-domain").addEventListener("change", (e) => {
     state.timeDomain = e.target.value;
     if (state.timeDomain !== "discrete" && state.displayUnits.freq === "rad/sample") { state.displayUnits.freq = "rad/s"; $("set-freq").value = "rad/s"; }
-    syncDomain(); renderEditor("plant"); renderEditor("controller"); recompute();
+    syncDomain(); renderEditor("plant"); renderEditor("controller"); if (isMimo()) syncMimo(); recompute();
   });
   $("set-ts").addEventListener("input", (e) => { state.Ts = e.target.value === "" ? NaN : Number(e.target.value); recompute(); });
-  for (const key of ["plant", "controller"]) $(`in-disc-${key}`).addEventListener("change", (e) => { state.discretization[key] = e.target.value; renderEditor(key); recompute(); });
+  for (const key of ["plant", "controller"]) $(`in-disc-${key}`).addEventListener("change", (e) => { state.discretization[key] = e.target.value; renderEditor(key); if (isMimo()) renderMimoEditor(key); recompute(); });
+  wireMimo();
   $("in-prewarp").addEventListener("input", (e) => { state.discretization.prewarp = e.target.value === "" ? NaN : Number(e.target.value); recompute(); });
   $("in-delay-d").addEventListener("input", (e) => { state.delaySamples = e.target.value === "" ? NaN : Number(e.target.value); recompute(); });
   freqIn("set-wmin", "wMin"); freqIn("set-wmax", "wMax");
@@ -1998,20 +2994,31 @@ function wireSettings() {
     $(`ed-${key}`).addEventListener("input", (e) => { if (e.target.tagName !== "SELECT") onEditor(key, e); });
     $(`ed-${key}`).addEventListener("change", (e) => { if (e.target.tagName === "SELECT") onEditor(key, e); });
   }
-  for (const [id, k] of [["nyq-neg", "neg"], ["nyq-ms", "ms"], ["nyq-zoom", "zoom"], ["nyq-log", "log"]]) $(id).addEventListener("change", (e) => { nyqView[k] = e.target.checked; renderNyq(); });
+  $("sv-legend").addEventListener("change", (e) => { const id = e.target.dataset.sv; if (!id) return; if (e.target.checked) svView.hidden.delete(id); else svView.hidden.add(id); renderSv(); });
+  $("bode-grid").addEventListener("click", (e) => { const b = e.target.closest("[data-entry]"); if (!b) return; mimoEntry = b.dataset.entry.split(",").map(Number); rows = entryRows(); renderBode(); });
+  for (const [id, k] of [["nyq-neg", "neg"], ["nyq-ms", "ms"], ["nyq-zoom", "zoom"], ["nyq-log", "log"], ["nyq-det", "det"]]) $(id).addEventListener("change", (e) => { nyqView[k] = e.target.checked; renderNyq(); });
   for (const [id, k] of [["nic-m", "m"], ["nic-n", "n"], ["nic-ms", "ms"]]) $(id).addEventListener("change", (e) => { nicView[k] = e.target.checked; renderNic(); });
   for (const [id, k] of [["show-asym", "asym"], ["show-cont", "cont"], ["show-S", "S"], ["show-T", "T"], ["show-marks", "marks"]]) $(id).addEventListener("change", (e) => { view[k] = e.target.checked; renderBode(); });
   return u;
 }
 
 /* ---------- compute and render ---------- */
+/** Rows for the full Bode plot: the single loop, or the selected entry of the MIMO L. */
+function entryRows() {
+  const [i, j] = mimoEntry;
+  if (!mrows || !mrows.rows[0].entries[i] || !mrows.rows[0].entries[i][j]) return null;
+  return mrows.rows.map((r) => ({ w: r.w, mag: r.entries[i][j].mag, phaseDeg: r.entries[i][j].phaseDeg, S: NaN, T: NaN, asymMagDb: null, asymPhaseDeg: null, contMag: null, contPhaseDeg: null }));
+}
 function recompute() {
   result = F.analyze(state);
-  rows = result.ok ? F.curves(state) : null;
+  mrows = result.ok && isMimo() ? F.mimoCurves(state) : null;
+  if (mrows && !mrows.rows[0].entries[mimoEntry[0]]) mimoEntry = [0, 0];
+  rows = !result.ok ? null : isMimo() ? entryRows() : F.curves(state);
   renderErrors();
   syncRange();
   renderSystem();
   renderBode();
+  renderSv();
   renderNyq();
   renderNic();
   renderPz();
@@ -2032,7 +3039,23 @@ function renderErrors() {
   for (const k of Object.keys(parseErrors)) document.querySelectorAll(`[data-field="${k}"]`).forEach((el) => el.setAttribute("aria-invalid", "true"));
 }
 
+function mimoStatItems(r) {
+  const c = r.margins.chosen, el = c.eigenLocus, rd = c.returnDifference, cl = r.closedLoop, nq = r.nyquist;
+  const checks = Object.fromEntries(r.checks.map((k) => [k.id, k]));
+  const fail = (k) => (k && k.pass === false ? ' class="fail"' : "");
+  return [
+    `<li${cl.available && cl.verdict !== "stable" ? ' class="fail"' : ""}><b>${cl.available ? cl.verdict : "n/a"}</b><span>Closed-loop eigenvalues${cl.available ? `, ${cl.unstable} unstable` : " (unavailable)"}</span></li>`,
+    nq.available ? `<li${nq.verdict !== "stable" || (nq.crossCheck.available && !nq.crossCheck.agree) ? ' class="fail"' : ""}><b>Z = ${nq.Z}</b><span>det(I + L): N = ${nq.N}, P = ${nq.P}${nq.crossCheck.available ? (nq.crossCheck.agree ? ", agrees" : ", DISAGREES") : ""}</span></li>` : "",
+    `<li${fail(checks.pm)}><b>${el.pm ? phText(el.pm.deg) : "—"}</b><span>Eigenvalue-locus PM${el.pm ? ` at ${F_(el.pm.w)}` : ", no crossing"} (can be optimistic)</span></li>`,
+    `<li${fail(checks.gm)}><b>${el.gmUpper ? `${fmt(el.gmUpper.dB)} dB` : "∞"}${el.gmLower ? ` / ${fmt(el.gmLower.dB)} dB` : ""}</b><span>Uniform scalar-gain margin (upper / lower)</span></li>`,
+    `<li><b>${fmt(rd.alpha)}</b><span>α = min σ_min(I + L): guaranteed ${fmt(rd.gmLowDb)} to ${Number.isFinite(rd.gmHighDb) ? `+${fmt(rd.gmHighDb)}` : "+∞"} dB, ±${fmt(rd.pmDeg)}°</span></li>`,
+    `<li${fail(checks.ms)}><b>${fmt(c.sensitivity.maxSigmaS.value)}</b><span>max σ_max(S)</span></li>`,
+    `<li><b>${fmt(c.sensitivity.maxSigmaT.value)}</b><span>max σ_max(T)</span></li>`,
+    `<li><b>${c.loopAtATime.map((k) => (k.pm ? `${fmt(k.pm.deg, 3)}°` : "—")).join(", ")}</b><span>Loop-at-a-time PM per channel (ignores coupling)</span></li>`,
+  ].join("");
+}
 function statItems(r) {
+  if (r.system === "mimo") return mimoStatItems(r);
   const g = r.margins.governing, checks = Object.fromEntries(r.checks.map((c) => [c.id, c]));
   const cls = (c) => (c && c.pass === false ? ' class="fail"' : "");
   const cl = r.closedLoop;
@@ -2055,6 +3078,7 @@ function renderSystem() {
   const r = result;
   if (!r.ok) { $("sys-stats").innerHTML = ""; $("sys-table").innerHTML = ""; renderWarnings($("sys-warnings"), r); return; }
   $("sys-stats").innerHTML = statItems(r);
+  if (r.system === "mimo") { renderSystemMimo(r); return; }
   const L = r.loop, cl = r.closedLoop, disc = L.domain === "z", v = L.domain;
   const row = (k, val) => `<tr><th class="l" scope="row">${k}</th><td class="l mono">${val}</td></tr>`;
   $("sys-table").innerHTML = [
@@ -2068,6 +3092,29 @@ function renderSystem() {
     row("Characteristic polynomial", cl.available ? esc(F.polyText(cl.characteristic, v)) : "—"),
     row("Nyquist count", r.nyquist.available ? `N = ${r.nyquist.N}, P = ${r.nyquist.P}, Z = ${r.nyquist.Z} (${esc(r.nyquist.verdict)})` : esc(r.nyquist.message)),
     row("Frequency grid", `${esc(F_(r.grid.wMin))} to ${esc(F_(r.grid.wMax))}, ${r.grid.points} points`),
+  ].join("");
+  renderWarnings($("sys-warnings"), r);
+}
+
+function renderSystemMimo(r) {
+  const L = r.loop, cl = r.closedLoop, disc = L.domain === "z";
+  const row = (k, val) => `<tr><th class="l nt" scope="row">${k}</th><td class="l mono">${val}</td></tr>`;
+  const both = (lbl, f) => `<tr><th class="l nt" scope="row">${lbl}</th><td class="l mono">${f(r.margins.output)}</td><td class="l mono">${f(r.margins.input)}</td></tr>`;
+  $("sys-table").innerHTML = [
+    row("Size", `${L.outputs} outputs × ${L.inputs} inputs; loop broken at the plant ${L.breakAt}`),
+    row("Realisation", `${esc(L.realisation)}; ${L.plantStates} plant + ${L.controllerStates} controller states`),
+    row("Input delays", disc ? `${(L.delaySamples || []).join(", ")} samples` : `${(L.delays || []).map((v) => fmt(v)).join(", ")} s`),
+    row("Open-loop poles", `${esc(L.openLoopPoles.map((z) => fmtC(z)).join(", ") || "none")} <span class="muted">(${L.openLoopUnstable} unstable)</span>`),
+    row("Closed-loop eigenvalues", cl.available ? esc(cl.poles.map((z) => fmtC(z, 6)).join(", ")) : esc(cl.message)),
+    row("Generalised Nyquist", r.nyquist.available ? `det(I + L): N = ${r.nyquist.N}, P = ${r.nyquist.P}, Z = ${r.nyquist.Z} (${esc(r.nyquist.verdict)})` : esc(r.nyquist.message)),
+    row("Frequency grid", `${esc(F_(r.grid.wMin))} to ${esc(F_(r.grid.wMax))}, ${r.grid.points} points`),
+    `<tr><th class="l">Both breaking points</th><th class="l">Plant output (L_o)</th><th class="l">Plant input (L_i)</th></tr>`,
+    both("Eigenvalue-locus PM", (m) => (m.eigenLocus.pm ? `${fmt(m.eigenLocus.pm.deg)}°` : "—")),
+    both("Uniform gain margin up / down", (m) => `${m.eigenLocus.gmUpper ? fmt(m.eigenLocus.gmUpper.dB) : "∞"} / ${m.eigenLocus.gmLower ? fmt(m.eigenLocus.gmLower.dB) : "—"} dB`),
+    both("α = min σ_min(I + L)", (m) => fmt(m.returnDifference.alpha)),
+    both("max σ_max(S), max σ_max(T)", (m) => `${fmt(m.sensitivity.maxSigmaS.value)}, ${fmt(m.sensitivity.maxSigmaT.value)}`),
+    both("Loop-at-a-time PM", (m) => m.loopAtATime.map((k) => (k.pm ? `${fmt(k.pm.deg, 3)}°` : "—")).join(", ")),
+    both("Largest condition number of L", (m) => fmt(m.conditionMax)),
   ].join("");
   renderWarnings($("sys-warnings"), r);
 }
@@ -2174,7 +3221,7 @@ function bodeSVG(W) {
   for (const s of series) g.push(`<path clip-path="url(#clip0)" d="${path(s.vals, Y[0], my0, my1, false)}" style="fill:none;stroke:${s.color};stroke-width:${s.width}${s.dash ? `;stroke-dasharray:${s.dash}` : ""}"/>`);
   for (const s of pser) g.push(`<path clip-path="url(#clip1)" d="${path(s.vals, Y[1], py0, py1, true)}" style="fill:none;stroke:${s.color};stroke-width:${s.width}${s.dash ? `;stroke-dasharray:${s.dash}` : ""}"/>`);
   // Margin markers.
-  if (view.marks && result.ok) {
+  if (view.marks && result.ok && result.system !== "mimo") {
     const inX = (w) => { if (!Number.isFinite(w)) return false; const v = F.freqTo(w, u.freq, state.Ts); return v >= xs[0] && v <= xs[xs.length - 1]; };
     const zero = logMag ? 0 : 0;
     const gov = result.margins.governing;
@@ -2212,6 +3259,7 @@ function renderBode() {
     host.innerHTML = '<p class="note">No plot: fix the errors above.</p>'; $("bode-stats").innerHTML = ""; $("bode-crossovers").innerHTML = ""; geom = null; return;
   }
   $("bode-stats").innerHTML = statItems(result);
+  if (result.system === "mimo") renderBodeGrid();
   const W = Math.max(320, Math.round(host.clientWidth || 900));
   const out = bodeSVG(W);
   host.innerHTML = out.svg;
@@ -2228,10 +3276,29 @@ function renderBode() {
   hit.addEventListener("pointermove", move);
   hit.addEventListener("pointerdown", move);
   hit.addEventListener("pointerleave", () => { svg.querySelector("[data-cursor]").style.display = "none"; });
+  if (result.system === "mimo") { $("bode-crossovers").innerHTML = '<tr><td class="l" colspan="4">MIMO margins are in the System and Report tabs (eigenvalue loci, return difference, loop-at-a-time).</td></tr>'; return; }
   const rowsHtml = [];
   for (const c of result.margins.gainCrossovers) rowsHtml.push(`<tr><td class="l">Gain crossover (|L| = 0 dB)</td><td>${F_(c.w)}</td><td>PM ${phText(c.pmDeg)}</td><td>${c.delayMargin === null ? "—" : `${fmt(c.delayMargin)} s${c.delayMarginSamples !== undefined ? ` = ${fmt(c.delayMarginSamples)} samples` : ""}`}</td></tr>`);
   for (const c of result.margins.phaseCrossovers) rowsHtml.push(`<tr><td class="l">Phase crossover (∠L = ${fmt(c.phaseDeg)}°)${c.atNyquist ? " at π/Ts" : c.w === 0 ? " at DC" : ""}</td><td>${F_(c.w)}</td><td>GM ${fmt(c.gmDb)} dB</td><td>—</td></tr>`);
   $("bode-crossovers").innerHTML = rowsHtml.join("") || '<tr><td class="l" colspan="4">No crossovers in range.</td></tr>';
+}
+/** Small magnitude plots of every entry of the MIMO L; clicking one selects it for the full Bode plot. */
+function renderBodeGrid() {
+  const k = mrows.rows[0].entries.length, grid = $("bode-grid");
+  grid.style.gridTemplateColumns = `repeat(${k}, minmax(0, 1fr))`;
+  const W = 360, H = 120, ws = mrows.rows.map((r) => r.w), lx0 = Math.log10(ws[0]), lx1 = Math.log10(ws[ws.length - 1]);
+  const cells = [];
+  for (let i = 0; i < k; i++) for (let j = 0; j < k; j++) {
+    const db = mrows.rows.map((r) => F.toDb(r.entries[i][j].mag)), fin = db.filter(Number.isFinite);
+    const hi = fin.length ? Math.max(...fin) : 0, lo = fin.length ? Math.max(Math.min(...fin), hi - 120) : -1;
+    const Y = (v) => 20 + (H - 26) * (1 - (Math.max(lo, v) - lo) / ((hi - lo) || 1)), X = (w) => 4 + ((Math.log10(w) - lx0) / (lx1 - lx0)) * (W - 8);
+    let d = "", pen = false;
+    db.forEach((v, n) => { if (!Number.isFinite(v)) { pen = false; return; } d += `${pen ? "L" : "M"}${X(ws[n]).toFixed(1)} ${Y(v).toFixed(1)}`; pen = true; });
+    const zero = 0 >= lo && 0 <= hi ? `<line x1="4" x2="${W - 4}" y1="${Y(0)}" y2="${Y(0)}" style="stroke:var(--muted);stroke-dasharray:2 3"/>` : "";
+    const on = mimoEntry[0] === i && mimoEntry[1] === j;
+    cells.push(`<button type="button" data-entry="${i},${j}" aria-pressed="${on}" aria-label="L${i + 1}${j + 1}"><svg viewBox="0 0 ${W} ${H}" role="img"><text x="6" y="13" style="fill:var(--muted);font:12px var(--mono)">L${i + 1}${j + 1}${fin.length ? `  ${fmt(lo, 3)}…${fmt(hi, 3)} dB` : "  ≡ 0"}</text>${zero}<path d="${d}" style="fill:none;stroke:var(--c1);stroke-width:1.5"/></svg></button>`);
+  }
+  grid.innerHTML = cells.join("");
 }
 function cursorAt(svg, i) {
   const d = rows[i], x = geom.X(geom.xs[i]);
@@ -2261,8 +3328,84 @@ function exportSVG() {
   return standaloneSVG(bodeSVG(900).svg);
 }
 
+/* ---------- singular values (SVG) ---------- */
+const PALETTE = ["var(--c1)", "var(--c2)", "var(--c3)", "var(--c4)", "var(--warn)", "var(--ok)"];
+const svView = { hidden: new Set() };
+let svGeom = null;
+/** Series for the singular-value view: σᵢ(L), σ_min(I + L), σ_max(S), σ_max(T); for a single loop they are |L|, |1 + L|, |S|, |T|. */
+function svSeries() {
+  if (isMimo() && mrows) {
+    const k = mrows.rows[0].sv.length, out = [];
+    for (let i = 0; i < k; i++) out.push({ id: `s${i}`, label: `σ${i + 1}(L)`, color: PALETTE[i % PALETTE.length], vals: mrows.rows.map((r) => r.sv[i]) });
+    out.push({ id: "imin", label: "σ_min(I + L)", color: "var(--fg)", dash: "6 3", vals: mrows.rows.map((r) => r.sigmaMinIplusL) });
+    out.push({ id: "smax", label: "σ_max(S)", color: "var(--bad)", vals: mrows.rows.map((r) => r.sigmaMaxS) });
+    out.push({ id: "tmax", label: "σ_max(T)", color: "var(--muted)", dash: "3 3", vals: mrows.rows.map((r) => r.sigmaMaxT) });
+    return { ws: mrows.rows.map((r) => r.w), series: out };
+  }
+  const R = F.curves(state);
+  return { ws: R.map((r) => r.w), series: [
+    { id: "L", label: "|L|", color: "var(--c1)", vals: R.map((r) => r.mag) },
+    { id: "imin", label: "|1 + L|", color: "var(--fg)", dash: "6 3", vals: R.map((r) => 1 / r.S) },
+    { id: "smax", label: "|S|", color: "var(--bad)", vals: R.map((r) => r.S) },
+    { id: "tmax", label: "|T|", color: "var(--muted)", dash: "3 3", vals: R.map((r) => r.T) },
+  ] };
+}
+function svSVG(W) {
+  const { ws, series } = svSeries(), u = state.displayUnits, H = Math.round(Math.min(520, Math.max(320, W * 0.5)));
+  const m = { l: 62, r: 16, t: 30, b: 38 }, pw = W - m.l - m.r, phh = H - m.t - m.b;
+  const xs = ws.map((w) => F.freqTo(w, u.freq, state.Ts)), lx0 = Math.log10(xs[0]), lx1 = Math.log10(xs[xs.length - 1]);
+  const X = (v) => m.l + ((Math.log10(v) - lx0) / (lx1 - lx0)) * pw;
+  const vis = series.filter((s) => !svView.hidden.has(s.id));
+  const dbs = vis.map((s) => s.vals.map((v) => F.toDb(v)));
+  const [y0, y1] = extent(dbs.concat([[0]]), 200);
+  const Y = (v) => m.t + phh - ((v - y0) / (y1 - y0)) * phh;
+  const g = [];
+  g.push(`<rect x="0" y="0" width="${W}" height="${H}" style="fill:var(--bg)"/>`);
+  g.push(`<text x="${m.l}" y="16" style="fill:var(--warn);font:600 11px var(--mono)">EXPLORATION ONLY — not a verified control-design toolchain</text>`);
+  g.push(`<clipPath id="svclip"><rect x="${m.l}" y="${m.t}" width="${pw}" height="${phh}"/></clipPath>`);
+  for (let p = Math.ceil(lx0); p <= Math.floor(lx1); p++) { const x = X(Math.pow(10, p)); g.push(`<line x1="${x}" x2="${x}" y1="${m.t}" y2="${m.t + phh}" style="stroke:var(--grid)"/><text x="${x}" y="${m.t + phh + 15}" text-anchor="middle" style="fill:var(--muted);font:11px var(--mono)">${p >= -2 && p <= 3 ? fmt(Math.pow(10, p)) : `1e${p}`}</text>`); }
+  for (const v of niceTicks(y0, y1, 6, false)) g.push(`<line x1="${m.l}" x2="${m.l + pw}" y1="${Y(v)}" y2="${Y(v)}" style="stroke:var(--grid)"/><text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--muted);font:11px var(--mono)">${fmt(v, 3)}</text>`);
+  if (0 >= y0 && 0 <= y1) g.push(`<line x1="${m.l}" x2="${m.l + pw}" y1="${Y(0)}" y2="${Y(0)}" style="stroke:var(--fg);stroke-opacity:.5;stroke-dasharray:2 3"/>`);
+  vis.forEach((s, k) => {
+    let d = "", pen = false;
+    dbs[k].forEach((v, i) => { if (!Number.isFinite(v)) { pen = false; return; } d += `${pen ? "L" : "M"}${X(xs[i]).toFixed(1)} ${Y(Math.max(y0 - 50, Math.min(y1 + 50, v))).toFixed(1)}`; pen = true; });
+    g.push(`<path clip-path="url(#svclip)" d="${d}" style="fill:none;stroke:${s.color};stroke-width:${s.dash ? 1.5 : 2}${s.dash ? `;stroke-dasharray:${s.dash}` : ""}"/>`);
+  });
+  g.push(`<rect x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:none;stroke:var(--border)"/>`);
+  g.push(`<text x="${m.l + pw / 2}" y="${H - 6}" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Frequency (${u.freq})</text>`);
+  g.push(`<text transform="translate(14 ${m.t + phh / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Gain (dB)</text>`);
+  g.push(`<g data-cursor style="display:none"><line data-cl x1="0" x2="0" y1="${m.t}" y2="${m.t + phh}" style="stroke:var(--fg);stroke-opacity:.5"/></g>`);
+  g.push(`<rect data-hit x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:transparent"/>`);
+  return { svg: `<svg xmlns="${NS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Singular values" style="font-family:var(--sans)">${g.join("")}</svg>`, geom: { X, xs, ws, series, m, W, pw } };
+}
+function renderSv() {
+  const host = $("sv-plot");
+  if (!result.ok) { host.innerHTML = '<p class="note">No plot: fix the errors above.</p>'; return; }
+  $("sv-note").textContent = isMimo() ? `σᵢ(L) at the plant ${state.mimo.breakAt}; σ_min(I + L) = 1/σ_max(S) gives the return-difference margin; S = (I + L)⁻¹, T = L(I + L)⁻¹.` : "For a single loop the singular values reduce to magnitudes: |L|, |1 + L| = 1/|S|, |S| and |T|.";
+  if ($("panel-sv").hidden) return;
+  const { series } = svSeries();
+  $("sv-legend").innerHTML = series.map((s) => `<label class="check" style="color:${s.color}"><input type="checkbox" data-sv="${s.id}"${svView.hidden.has(s.id) ? "" : " checked"}><span class="sw${s.dash ? " dash" : ""}"></span> ${esc(s.label)}</label>`).join("");
+  const W = Math.max(320, Math.round(host.clientWidth || 900));
+  const out = svSVG(W);
+  host.innerHTML = out.svg;
+  svGeom = out.geom;
+  const svg = host.querySelector("svg"), hit = svg.querySelector("[data-hit]");
+  const move = (ev) => {
+    const box = svg.getBoundingClientRect(), x = ((ev.clientX - box.left) / box.width) * W, xs = svGeom.xs;
+    const lx = Math.pow(10, Math.log10(xs[0]) + ((x - svGeom.m.l) / svGeom.pw) * (Math.log10(xs[xs.length - 1]) - Math.log10(xs[0])));
+    let i = 0;
+    xs.forEach((v, k) => { if (Math.abs(Math.log10(v / lx)) < Math.abs(Math.log10(xs[i] / lx))) i = k; });
+    const c = svg.querySelector("[data-cursor]"); c.style.display = "";
+    c.querySelector("[data-cl]").setAttribute("x1", svGeom.X(xs[i])); c.querySelector("[data-cl]").setAttribute("x2", svGeom.X(xs[i]));
+    $("sv-readout").innerHTML = `<b>ω = ${esc(F_(svGeom.ws[i]))}</b> · ` + svGeom.series.filter((s) => !svView.hidden.has(s.id)).map((s) => `<span style="color:${s.color}">${esc(s.label)} ${esc(fmt(F.toDb(s.vals[i])))} dB</span>`).join(" · ");
+  };
+  hit.addEventListener("pointermove", move);
+  hit.addEventListener("pointerdown", move);
+  hit.addEventListener("pointerleave", () => { svg.querySelector("[data-cursor]").style.display = "none"; });
+}
+
 /* ---------- Nyquist plot (SVG) ---------- */
-const nyqView = { neg: true, ms: true, zoom: false, log: false };
+const nyqView = { neg: true, ms: true, zoom: false, log: false, det: true };
 let nyqLocus = null, nyqGeom = null;
 /** Compressed view: |L| → log(1 + |L|)/log 2, so the unit circle and −1 stay put while large loops fold in. */
 const nyqMap = (p) => {
@@ -2272,18 +3415,26 @@ const nyqMap = (p) => {
   const k = Math.log1p(r) / Math.LN2 / r;
   return { re: p.re * k, im: p.im * k };
 };
+/** Curves for the Nyquist view: the single-loop locus, or the MIMO eigenvalue loci plus det(I + L) − 1. */
+function nyqSeries() {
+  if (!isMimo()) return [{ label: "L", color: "var(--c1)", up: nyqLocus }];
+  const out = mrows.rows[0].eig.map((_, k) => ({ label: `λ${k + 1}`, color: PALETTE[k % PALETTE.length], up: mrows.rows.map((r) => ({ re: r.eig[k].re, im: r.eig[k].im, w: r.w, kind: "pos" })) }));
+  if (nyqView.det && mrows.upper) out.push({ label: "det(I + L) − 1", color: "var(--muted)", up: mrows.upper.map((p) => ({ re: p.L.re, im: p.L.im, w: p.w, kind: p.kind })) });
+  return out;
+}
 function nyqSVG(W) {
-  const loc = nyqLocus, H = Math.round(Math.min(620, Math.max(360, W * 0.72)));
+  const H = Math.round(Math.min(620, Math.max(360, W * 0.72)));
   const m = { l: 56, r: 16, t: 30, b: 40 }, pw = W - m.l - m.r, phh = H - m.t - m.b;
-  const up = loc.map((p) => ({ ...p })), down = loc.map((p) => ({ ...p, im: -p.im })).reverse();
-  const Ms = result.margins.Ms.ok ? result.margins.Ms.value : null;
+  const series = nyqSeries();
+  const up = series[0].up;
+  const Ms = !isMimo() && result.margins.Ms.ok ? result.margins.Ms.value : null;
   // View: zoom round −1, or fit the bulk of the locus (the 95th percentile of |L|) plus −1 and the origin.
   let x0, x1, y0, y1;
   if (nyqView.zoom) { x0 = -2.5; x1 = 0.5; y0 = -1.5; y1 = 1.5; }
   else {
     // Fit to the analysis frequency range: the contour also runs down towards ω = 0 and round indentations, where |L| is huge.
     const g0 = result.grid.wMin, g1 = result.grid.wMax;
-    const inRange = up.filter((p) => p.kind === "pos" && p.w >= g0 && p.w <= g1);
+    const inRange = series.flatMap((sr) => sr.up).filter((p) => p.kind === "pos" && p.w >= g0 && p.w <= g1);
     const mags = inRange.map((p) => Math.hypot(p.re, p.im)).filter(Number.isFinite).sort((a, b) => a - b);
     // At most |L| = 10, so the critical region stays readable; the compressed view shows the rest.
     const lim = Math.min(10, Math.max(1.5, 1.1 * (mags[Math.floor(0.9 * (mags.length - 1))] || 1)));
@@ -2328,11 +3479,14 @@ function nyqSVG(W) {
     }
     return d;
   };
-  if (nyqView.neg) g.push(`<path d="${pathOf(down)}" style="fill:none;stroke:var(--c1);stroke-width:1.4;stroke-dasharray:6 4;stroke-opacity:.7"/>`);
-  g.push(`<path d="${pathOf(up)}" style="fill:none;stroke:var(--c1);stroke-width:2"/>`);
+  for (const sr of series) {
+    sr.down = sr.up.map((p) => ({ ...p, im: -p.im })).reverse();
+    if (nyqView.neg) g.push(`<path d="${pathOf(sr.down)}" style="fill:none;stroke:${sr.color};stroke-width:1.4;stroke-dasharray:6 4;stroke-opacity:.7"/>`);
+    g.push(`<path d="${pathOf(sr.up)}" style="fill:none;stroke:${sr.color};stroke-width:2"/>`);
+  }
   // Direction arrows (increasing ω along the whole contour) at points inside the view.
   const inside = (p) => { const q = nyqMap(p); return q.re > vx0 && q.re < vx1 && q.im > vy0 && q.im < vy1; };
-  const arrows = (list, dash) => {
+  const arrows = (list, dash, color) => {
     const idx = list.map((p, i) => (inside(p) ? i : -1)).filter((i) => i > 0 && i < list.length - 1);
     for (const f of [0.2, 0.5, 0.8]) {
       const i = idx[Math.floor(f * (idx.length - 1))];
@@ -2340,29 +3494,29 @@ function nyqSVG(W) {
       const [ax, ay] = P(list[i - 1]), [bx, by] = P(list[i + 1]);
       const ang = Math.atan2(by - ay, bx - ax), [cx0, cy0] = P(list[i]);
       if (!Number.isFinite(ang) || (ax === bx && ay === by)) continue;
-      g.push(`<path d="M${cx0 + 7 * Math.cos(ang)} ${cy0 + 7 * Math.sin(ang)}L${cx0 + 7 * Math.cos(ang + 2.5)} ${cy0 + 7 * Math.sin(ang + 2.5)}L${cx0 + 7 * Math.cos(ang - 2.5)} ${cy0 + 7 * Math.sin(ang - 2.5)}Z" style="fill:var(--c1);fill-opacity:${dash ? 0.6 : 1}"/>`);
+      g.push(`<path d="M${cx0 + 7 * Math.cos(ang)} ${cy0 + 7 * Math.sin(ang)}L${cx0 + 7 * Math.cos(ang + 2.5)} ${cy0 + 7 * Math.sin(ang + 2.5)}L${cx0 + 7 * Math.cos(ang - 2.5)} ${cy0 + 7 * Math.sin(ang - 2.5)}Z" style="fill:${color};fill-opacity:${dash ? 0.6 : 1}"/>`);
     }
   };
-  arrows(up, false);
-  if (nyqView.neg) arrows(down, true);
+  for (const sr of series) { arrows(sr.up, false, sr.color); if (nyqView.neg) arrows(sr.down, true, sr.color); }
   const [mx, my] = P({ re: -1, im: 0 });
   g.push(`<path d="M${mx - 7} ${my}L${mx + 7} ${my}M${mx} ${my - 7}L${mx} ${my + 7}" style="stroke:var(--bad);stroke-width:2.5"/></g>`);
   g.push(`<text x="${mx}" y="${my + 20}" text-anchor="middle" style="fill:var(--bad);font:600 11px var(--mono)">−1</text>`);
   g.push(`<rect x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:none;stroke:var(--border)"/>`);
   const nq = result.nyquist;
-  if (nq.available) g.push(`<text x="${m.l + pw - 6}" y="${m.t + 16}" text-anchor="end" style="fill:var(--fg);font:600 12px var(--mono)">N = ${nq.N}, P = ${nq.P}, Z = ${nq.Z}${nq.excess ? ` (+${nq.excess})` : ""}</text>`);
+  if (nq.available) g.push(`<text x="${m.l + pw - 6}" y="${m.t + 16}" text-anchor="end" style="fill:var(--fg);font:600 12px var(--mono)">${isMimo() ? "det(I + L): " : ""}N = ${nq.N}, P = ${nq.P}, Z = ${nq.Z}${nq.excess ? ` (+${nq.excess})` : ""}</text>`);
+  if (isMimo()) series.forEach((sr, k) => g.push(`<text x="${m.l + 8}" y="${m.t + 16 + 14 * k}" style="fill:${sr.color};font:600 11px var(--mono)">${esc(sr.label)}</text>`));
   g.push(`<text x="${m.l + pw / 2}" y="${H - 6}" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Re L${nyqView.log ? " (compressed radius)" : ""}</text>`);
   g.push(`<text transform="translate(14 ${m.t + phh / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Im L</text>`);
   g.push(`<g data-cursor style="display:none"><circle data-cm r="5" style="fill:none;stroke:var(--fg);stroke-width:1.5"/></g>`);
   g.push(`<rect data-hit x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:transparent"/>`);
-  return { svg: `<svg xmlns="${NS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Nyquist plot of L" style="font-family:var(--sans)">${g.join("")}</svg>`, geom: { P, up, W } };
+  return { svg: `<svg xmlns="${NS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Nyquist plot of L" style="font-family:var(--sans)">${g.join("")}</svg>`, geom: { P, up: series.flatMap((sr) => sr.up.map((p) => ({ ...p, series: sr.label, color: sr.color }))), W } };
 }
 function renderNyq() {
   const host = $("nyq-plot");
   if (!result.ok) { host.innerHTML = '<p class="note">No plot: fix the errors above.</p>'; $("nyq-stats").innerHTML = ""; return; }
   const nq = result.nyquist, cl = result.closedLoop, disc = result.loop.domain === "z";
   $("nyq-stats").innerHTML = nq.available ? [
-    `<li><b>${nq.N}</b><span>N, net clockwise encirclements of −1</span></li>`,
+    `<li><b>${nq.N}</b><span>N, net clockwise encirclements of ${isMimo() ? "the origin by det(I + L)" : "−1"}</span></li>`,
     `<li><b>${nq.P}</b><span>P, open-loop poles ${disc ? "outside the unit circle" : "in the RHP"}</span></li>`,
     `<li${nq.Z ? ' class="fail"' : ""}><b>${nq.Z}</b><span>Z = N + P${nq.excess ? ` + ${nq.excess}` : ""}, unstable closed-loop poles</span></li>`,
     `<li${nq.verdict !== "stable" ? ' class="fail"' : ""}><b>${nq.verdict}</b><span>Nyquist verdict${nq.unresolved && !nq.onContour ? " (locus unresolved)" : ""}</span></li>`,
@@ -2370,8 +3524,8 @@ function renderNyq() {
   ].join("") : `<li><b>n/a</b><span>${esc(nq.message)}</span></li>`;
   $("nyq-convention").textContent = nq.available ? `Convention: ${nq.convention}` : "";
   if ($("panel-nyq").hidden) return;
-  nyqLocus = F.nyquistLocus(state);
-  if (!nyqLocus) { host.innerHTML = '<p class="note">No Nyquist locus for these inputs.</p>'; return; }
+  nyqLocus = isMimo() ? null : F.nyquistLocus(state);
+  if (isMimo() ? !mrows : !nyqLocus) { host.innerHTML = '<p class="note">No Nyquist locus for these inputs.</p>'; return; }
   const W = Math.max(320, Math.round(host.clientWidth || 900));
   const out = nyqSVG(W);
   host.innerHTML = out.svg;
@@ -2385,7 +3539,7 @@ function renderNyq() {
     const p = nyqGeom.up[best], [a, b] = nyqGeom.P(p), c = svg.querySelector("[data-cursor]");
     c.style.display = ""; c.querySelector("[data-cm]").setAttribute("cx", a); c.querySelector("[data-cm]").setAttribute("cy", b);
     const mag = Math.hypot(p.re, p.im), ph = (Math.atan2(p.im, p.re) * 180) / Math.PI;
-    $("nyq-readout").innerHTML = `<b>${p.kind === "indent" ? `indentation round ω = ${esc(F_(p.w))}` : `ω = ${esc(F_(p.w))}`}</b> · <span style="color:var(--c1)">L = ${esc(fmtC({ re: p.re, im: p.im }))}</span> · ${esc(magText(mag))}, ${esc(phText(ph))} (wrapped)`;
+    $("nyq-readout").innerHTML = `<b>${p.kind === "indent" ? `indentation round ω = ${esc(F_(p.w))}` : `ω = ${esc(F_(p.w))}`}</b> · <span style="color:${p.color}">${esc(p.series)} = ${esc(fmtC({ re: p.re, im: p.im }))}</span> · ${esc(magText(mag))}, ${esc(phText(ph))} (wrapped)`;
   };
   hit.addEventListener("pointermove", move);
   hit.addEventListener("pointerdown", move);
@@ -2398,7 +3552,13 @@ let nicGeom = null;
 function nicSVG(W) {
   const H = Math.round(Math.min(620, Math.max(380, W * 0.66)));
   const m = { l: 56, r: 16, t: 30, b: 40 }, pw = W - m.l - m.r, phh = H - m.t - m.b;
-  const pts = rows.map((d) => ({ w: d.w, x: d.phaseDeg, y: F.toDb(d.mag) }));
+  // Series: the single-loop locus, or the MIMO eigenvalue loci with phase unwrapped by continuity (illustrative only).
+  const nser = !isMimo() ? [{ label: "L", color: "var(--c1)", pts: rows.map((d) => ({ w: d.w, x: d.phaseDeg, y: F.toDb(d.mag) })) }]
+    : mrows.rows[0].eig.map((_, k) => {
+      let ph = 0;
+      return { label: `λ${k + 1}`, color: PALETTE[k % PALETTE.length], pts: mrows.rows.map((r, i) => { const a = Math.atan2(r.eig[k].im, r.eig[k].re); ph = i === 0 ? a : ph + (((a - Math.atan2(mrows.rows[i - 1].eig[k].im, mrows.rows[i - 1].eig[k].re) + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI)) - Math.PI; return { w: r.w, x: (ph * 180) / Math.PI, y: F.toDb(Math.hypot(r.eig[k].re, r.eig[k].im)), series: `λ${k + 1}` }; }) };
+    });
+  const pts = nser.flatMap((sr) => sr.pts);
   const useful = pts.filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y) && p.y > -60 && p.y < 60);
   const src = useful.length > 1 ? useful : pts.filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
   let x0 = Math.min(-200, ...src.map((p) => p.x)) - 10, x1 = Math.max(-160, ...src.map((p) => p.x)) + 10;
@@ -2437,7 +3597,7 @@ function nicSVG(W) {
   if (nicView.n) for (const psi of F.NICHOLS_N_DEG) {
     cg.push(`<path d="${sweep((ph) => { const r = F.nContour(psi, ph); return r === null ? [] : [r]; })}" style="fill:none;stroke:var(--c3);stroke-width:0.8;stroke-dasharray:4 3;stroke-opacity:.8"/>`);
   }
-  if (nicView.ms && result.margins.Ms.ok) {
+  if (nicView.ms && !isMimo() && result.margins.Ms.ok) {
     const Ms = result.margins.Ms.value;
     cg.push(`<path d="${sweep((ph) => F.msBoundary(Ms, ph).sort((a, b) => b - a))}" style="fill:none;stroke:var(--c2);stroke-width:1.5"/>`);
   }
@@ -2446,9 +3606,13 @@ function nicSVG(W) {
     const cx0 = X(-180 + 360 * k), cy0 = Y(0);
     g.push(`<path d="M${cx0 - 7} ${cy0}L${cx0 + 7} ${cy0}M${cx0} ${cy0 - 7}L${cx0} ${cy0 + 7}" style="stroke:var(--bad);stroke-width:2.5"/>`);
   }
-  let d = "", pen = false;
-  for (const p of pts) { if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) { pen = false; continue; } d += `${pen ? "L" : "M"}${X(p.x).toFixed(1)} ${Y(Math.max(y0 - 100, Math.min(y1 + 100, p.y))).toFixed(1)}`; pen = true; }
-  g.push(`<path d="${d}" style="fill:none;stroke:var(--c1);stroke-width:2"/></g>`);
+  for (const sr of nser) {
+    let d = "", pen = false;
+    for (const p of sr.pts) { if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) { pen = false; continue; } d += `${pen ? "L" : "M"}${X(p.x).toFixed(1)} ${Y(Math.max(y0 - 100, Math.min(y1 + 100, p.y))).toFixed(1)}`; pen = true; }
+    g.push(`<path d="${d}" style="fill:none;stroke:${sr.color};stroke-width:2"/>`);
+  }
+  g.push("</g>");
+  if (isMimo()) { g.push(`<text x="${m.l + 8}" y="${m.t + 16}" style="fill:var(--warn);font:600 11px var(--mono)">Eigenvalue loci — illustrative, not a robustness proof</text>`); nser.forEach((sr, k) => g.push(`<text x="${m.l + 8}" y="${m.t + 32 + 14 * k}" style="fill:${sr.color};font:600 11px var(--mono)">${esc(sr.label)}</text>`)); }
   g.push(`<rect x="${m.l}" y="${m.t}" width="${pw}" height="${phh}" style="fill:none;stroke:var(--border)"/>`);
   g.push(`<text x="${m.l + pw / 2}" y="${H - 6}" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Open-loop phase (deg, unwrapped)</text>`);
   g.push(`<text transform="translate(14 ${m.t + phh / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--muted);font:11px var(--sans)">Open-loop magnitude (dB)</text>`);
@@ -2458,7 +3622,7 @@ function nicSVG(W) {
 }
 function renderNic() {
   const host = $("nic-plot");
-  if (!result.ok || !rows) { host.innerHTML = '<p class="note">No chart: fix the errors above.</p>'; return; }
+  if (!result.ok || (isMimo() ? !mrows : !rows)) { host.innerHTML = '<p class="note">No chart: fix the errors above.</p>'; return; }
   if ($("panel-nic").hidden) return;
   const W = Math.max(320, Math.round(host.clientWidth || 900));
   const out = nicSVG(W);
@@ -2474,7 +3638,7 @@ function renderNic() {
     c.style.display = ""; c.querySelector("[data-cm]").setAttribute("cx", nicGeom.X(p.x)); c.querySelector("[data-cm]").setAttribute("cy", nicGeom.Y(p.y));
     const L = F.cx(Math.pow(10, p.y / 20) * Math.cos((p.x * Math.PI) / 180), Math.pow(10, p.y / 20) * Math.sin((p.x * Math.PI) / 180));
     const T = Math.hypot(L.re, L.im) / Math.hypot(1 + L.re, L.im);
-    $("nic-readout").innerHTML = `<b>ω = ${esc(F_(p.w))}</b> · <span style="color:var(--c1)">L: ${esc(fmt(p.y))} dB, ${esc(fmt(p.x))}°</span> · |T| ${esc(fmt(F.toDb(T)))} dB`;
+    $("nic-readout").innerHTML = `<b>ω = ${esc(F_(p.w))}</b> · <span style="color:var(--c1)">${esc(p.series || "L")}: ${esc(fmt(p.y))} dB, ${esc(fmt(p.x))}°</span>${p.series ? "" : ` · |T| ${esc(fmt(F.toDb(T)))} dB`}`;
   };
   hit.addEventListener("pointermove", move);
   hit.addEventListener("pointerdown", move);
@@ -2482,8 +3646,10 @@ function renderNic() {
 }
 
 /* ---------- pole-zero map (SVG) ---------- */
+/** The loop as the pole-zero map sees it (MIMO: open-loop eigenvalues as poles; transmission zeros are not computed). */
+const pzLoop = () => (result.system === "mimo" ? { ...result.loop, poles: result.loop.openLoopPoles, zeros: [] } : result.loop);
 function pzSVG(W) {
-  const r = result, L = r.loop, disc = L.domain === "z";
+  const r = result, L = pzLoop(), disc = L.domain === "z";
   const H = Math.round(Math.min(560, Math.max(320, W * 0.7)));
   const m = { l: 56, r: 16, t: 30, b: 40 };
   const cl = r.closedLoop.available ? r.closedLoop.poles : [];
@@ -2524,7 +3690,7 @@ function renderPz() {
   if (!result.ok) { host.innerHTML = '<p class="note">No map: fix the errors above.</p>'; $("pz-table").innerHTML = ""; return; }
   if ($("panel-pz").hidden) return;
   host.innerHTML = pzSVG(Math.max(320, Math.round(host.clientWidth || 900)));
-  const L = result.loop, disc = L.domain === "z", cl = result.closedLoop;
+  const L = pzLoop(), disc = L.domain === "z", cl = result.closedLoop;
   const where = (p) => {
     if (disc) { const m = F.cabs(p); return Math.abs(m - 1) <= 1e-9 ? "on the unit circle" : m < 1 ? "inside the unit circle" : "outside the unit circle"; }
     const tol = 1e-9 * Math.max(1, F.cabs(p));
@@ -2538,7 +3704,7 @@ function renderPz() {
   const add = (kind, list) => { for (const p of list) { const [a, b] = extra(p); rowsHtml.push(`<tr><td class="l">${kind}</td><td class="l mono">${esc(fmtC(p, 6))}</td><td>${esc(a)}</td><td>${esc(b)}</td><td class="l">${where(p)}</td></tr>`); } };
   add("Open-loop pole", L.poles); add("Open-loop zero", L.zeros);
   if (cl.available) add("Closed-loop pole", cl.poles);
-  $("pz-table").innerHTML = rowsHtml.join("") + (cl.available ? "" : `<tr><td class="l" colspan="5">${esc(cl.message)}</td></tr>`);
+  $("pz-table").innerHTML = rowsHtml.join("") + (cl.available ? "" : `<tr><td class="l" colspan="5">${esc(cl.message)}</td></tr>`) + (result.system === "mimo" ? '<tr><td class="l" colspan="5">MIMO: open-loop poles are the eigenvalues of the open-loop state matrix; transmission zeros are not computed.</td></tr>' : "");
 }
 
 /* ---------- report, exports, import ---------- */
@@ -2551,9 +3717,12 @@ const EXPORTS = {
   inputs: { name: "frequency-response-inputs.json", type: "application/json", make: () => F.toInputsJSON(state) },
   csv: { name: "frequency-response-bode.csv", type: "text/csv", make: () => F.toCSV(state) },
   svg: { name: "frequency-response-bode.svg", type: "image/svg+xml", make: exportSVG },
-  nyqsvg: { name: "frequency-response-nyquist.svg", type: "image/svg+xml", make: () => { if (!result.ok) return null; nyqLocus = F.nyquistLocus(state); return nyqLocus ? standaloneSVG(nyqSVG(800).svg) : null; } },
+  nyqsvg: { name: "frequency-response-nyquist.svg", type: "image/svg+xml", make: () => { if (!result.ok) return null; nyqLocus = isMimo() ? null : F.nyquistLocus(state); return (isMimo() ? mrows : nyqLocus) ? standaloneSVG(nyqSVG(800).svg) : null; } },
   nyqcsv: { name: "frequency-response-nyquist.csv", type: "text/csv", make: () => F.toCSV(state, "nyquist") },
-  nicsvg: { name: "frequency-response-nichols.svg", type: "image/svg+xml", make: () => (result.ok && rows ? standaloneSVG(nicSVG(900).svg) : null) },
+  nicsvg: { name: "frequency-response-nichols.svg", type: "image/svg+xml", make: () => (result.ok && (isMimo() ? mrows : rows) ? standaloneSVG(nicSVG(900).svg) : null) },
+  svsvg: { name: "frequency-response-singular-values.svg", type: "image/svg+xml", make: () => (result.ok ? standaloneSVG(svSVG(900).svg) : null) },
+  svcsv: { name: "frequency-response-singular-values.csv", type: "text/csv", make: () => F.toCSV(state, "singular") },
+  eigcsv: { name: "frequency-response-eigenvalue-loci.csv", type: "text/csv", make: () => (isMimo() ? F.toCSV(state, "eig") : `# ${F.DISCLAIMER}\n# Eigenvalue loci apply to MIMO loops only.\n`) },
   niccsv: { name: "frequency-response-nichols.csv", type: "text/csv", make: () => F.toCSV(state, "nichols") },
   pzsvg: { name: "frequency-response-pole-zero.svg", type: "image/svg+xml", make: () => (result.ok ? standaloneSVG(pzSVG(700)) : null) },
 };
@@ -2594,6 +3763,7 @@ function importText(text) {
   try {
     state = F.importJSON(text);
     for (const k of Object.keys(parseErrors)) delete parseErrors[k];
+    mimoEntry = [0, 0];
     renderEditor("plant"); renderEditor("controller"); syncSettings();
     recompute(); syncSettings();
     $("import-msg").textContent = "Imported.";
@@ -2612,7 +3782,7 @@ function wireExports() {
 }
 
 /* ---------- tabs ---------- */
-const TABS = ["system", "bode", "nyq", "nic", "pz", "report"];
+const TABS = ["system", "bode", "sv", "nyq", "nic", "pz", "report"];
 function selectTab(name) {
   for (const t of TABS) {
     const on = t === name;
@@ -2622,6 +3792,7 @@ function selectTab(name) {
   if (name === "bode") renderBode();
   if (name === "pz") renderPz();
   if (name === "nyq") renderNyq();
+  if (name === "sv") renderSv();
   if (name === "nic") renderNic();
 }
 function wireTabs() {
@@ -2633,7 +3804,7 @@ function wireTabs() {
     });
   }
   let pending = 0;
-  addEventListener("resize", () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(() => { if (!$("panel-bode").hidden) renderBode(); if (!$("panel-pz").hidden) renderPz(); if (!$("panel-nyq").hidden) renderNyq(); if (!$("panel-nic").hidden) renderNic(); }); });
+  addEventListener("resize", () => { cancelAnimationFrame(pending); pending = requestAnimationFrame(() => { if (!$("panel-bode").hidden) renderBode(); if (!$("panel-pz").hidden) renderPz(); if (!$("panel-nyq").hidden) renderNyq(); if (!$("panel-sv").hidden) renderSv(); if (!$("panel-nic").hidden) renderNic(); }); });
 }
 
 /* ---------- self-tests ---------- */
@@ -2649,6 +3820,7 @@ function runSelfTests() {
 
 /* ---------- WebMCP tools ---------- */
 function summary(r) {
+  if (r.ok && r.system === "mimo") return { disclaimer: F.DISCLAIMER, system: "mimo", loop: r.loop, closed_loop: r.closedLoop, nyquist: r.nyquist, margins: r.margins, checks: r.checks, warnings: r.warnings.map((w) => w.message) };
   if (!r.ok) return { errors: r.errors, warnings: r.warnings.map((w) => w.message) };
   return {
     disclaimer: F.DISCLAIMER,
@@ -2670,6 +3842,8 @@ function registerTools() {
     type: "object",
     description: "Loop definition in canonical units (rad/s, seconds). Anything left out takes the page's default example (K/(s(s+1)(s+2)) with K = 3).",
     properties: {
+      system: { type: "string", enum: ["siso", "mimo"], description: "Single loop (plant/controller below) or multivariable (mimo below)" },
+      mimo: { type: "object", description: "MIMO only: {plant: {form:'ss', A, B, C, D} | {form:'tfm', entries:[[{num, den}]]}, controller: {form:'gain', K} | {form:'ss', ...} | {form:'tfm', ...}, breakAt: 'output' | 'input', delays: [per plant input, seconds or whole samples]}; matrices are arrays of rows" },
       timeDomain: { type: "string", enum: ["continuous", "discrete"], description: "Global time domain" },
       Ts: { type: "number", description: "Sample time in seconds (> 0), discrete time only" },
       plant: { type: "object", description: "Plant G: {form:'tf', num:[...], den:[...]} (descending powers of s, or of z when entered in z), {form:'zpk', zeros:[{re,im}], poles:[{re,im}], gain}, or {form:'preset', preset, params} (continuous prototypes)" },
@@ -2684,7 +3858,7 @@ function registerTools() {
   };
   mc.registerTool({ name: "get_metadata", description: "Return the scope, conventions, assumptions, sources, presets, threshold defaults and disclaimer of this frequency-response visualiser.", inputSchema: empty, annotations: { readOnlyHint: true }, async execute() { return out(F.META); } });
   mc.registerTool({ name: "get_current_system", description: "Return the loop on the page (canonical inputs) with its margins, crossovers, sensitivity peaks, closed-loop poles, threshold checks and warnings.", inputSchema: empty, annotations: { readOnlyHint: true }, async execute() { return out({ inputs: state, ...summary(F.analyze(state)) }); } });
-  mc.registerTool({ name: "analyze_loop", description: "Analyse a SISO loop without changing the page, in continuous time (L = K·C·G·e^(−sτ)) or discrete time (L = K·C·G·z^(−d), blocks discretised by ZOH, Tustin or Euler, or entered in z): gain, phase and delay margins, Ms, Mt, bandwidth, closed-loop poles, the Nyquist count N, P, Z with its cross-check, and warnings, or the blocking errors.", inputSchema, annotations: { readOnlyHint: true }, async execute(i) { return out(summary(F.analyze(F.normalise(i || {})))); } });
+  mc.registerTool({ name: "analyze_loop", description: "Analyse a SISO or MIMO loop without changing the page. MIMO returns closed-loop eigenvalues, the generalised Nyquist count on det(I + L) with its cross-check, and eigenvalue-locus, return-difference, sensitivity-peak and loop-at-a-time margins at both breaking points. SISO loops run in continuous time (L = K·C·G·e^(−sτ)) or discrete time (L = K·C·G·z^(−d), blocks discretised by ZOH, Tustin or Euler, or entered in z): gain, phase and delay margins, Ms, Mt, bandwidth, closed-loop poles, the Nyquist count N, P, Z with its cross-check, and warnings, or the blocking errors.", inputSchema, annotations: { readOnlyHint: true }, async execute(i) { return out(summary(F.analyze(F.normalise(i || {})))); } });
   mc.registerTool({ name: "run_self_tests", description: "Run the analytic self-tests (first-order corner, second-order peak, integrator, pure delay, K/(s(s+1)(s+2)) critical gain, ZOH and Euler poles, Tustin warping and prewarp, discrete delay, K·Ts/(z − 1) Nyquist-frequency crossover, Nyquist counts against the closed-loop poles in both domains, Nichols critical point and M/N-contour and Ms-boundary checks, matrix exponential, root finder, unit and export round-trips) and return each with its tolerance.", inputSchema: empty, annotations: { readOnlyHint: true }, async execute() { const t = F.selfTests(); return out({ passed: t.filter((x) => x.pass).length, total: t.length, results: t }); } });
 }
 
