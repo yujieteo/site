@@ -32,6 +32,7 @@ PORTS = {
     "grep-visualiser": "grep-visualiser",
     "infer-a-theory": "infer-a-theory",
     "information-gain": "information-gain",
+    "kent": "kent",
     "lug-joint": "lug-joint",
     "md-explorer": "md-explorer",
     "mohr": "mohr",
@@ -108,6 +109,10 @@ class VisualPortTests(unittest.TestCase):
     def test_fermi_title_is_the_catalogue_title(self):
         html = (ROOT / "visuals" / "fermi" / "index.html").read_text(encoding="utf-8")
         self.assertIn(f"<title>{stub('fermi')['title']} — Yu Jie Teo</title>", html)
+
+    def test_kent_title_is_the_catalogue_title(self):
+        html = (ROOT / "visuals" / "kent" / "index.html").read_text(encoding="utf-8")
+        self.assertIn(f"<title>{stub('kent')['title']} — Yu Jie Teo</title>", html)
 
 
 if __name__ == "__main__":
