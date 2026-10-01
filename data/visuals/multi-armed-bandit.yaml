@@ -1,0 +1,10 @@
+slug: multi-armed-bandit
+title: "Multi-armed Bandit: Thompson Sampling and UCB"
+summary: "Choose the next trial among variants with uncertain success rates: Thompson Sampling and UCB1 recommendations from your own success/failure counts, with a seeded simulation of how they explore."
+source_url: https://arxiv.org/abs/1707.02038
+fetched: "2026-10-01"
+html_path: viz/multi-armed-bandit/index.html
+data_path: data/multi-armed-bandit/raw.json
+webmcp_tools: [get_data, get_metadata, query]
+tags: [decision-making, experimentation, probability, statistics]
+category: data visualization
