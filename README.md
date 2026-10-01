@@ -71,13 +71,34 @@ needs network access to Hugging Face and jsDelivr.
 ## Test
 
 ```sh
-.venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-node --test 'tests/*.test.{mjs,cjs}'
+.venv/bin/python scripts/run_tests.py                     # both suites, as CI runs them on main
+.venv/bin/python scripts/run_tests.py --base origin/main  # as CI runs them on a pull request
 ```
 
-Many tests read the built `site/`, so run `scripts/build.py` first. Node runs
-every `tests/*.test.mjs` and `tests/*.test.cjs`, so a new Node test needs no
-change to this command or to CI.
+Many tests read the built `site/`, so run `scripts/build.py` first.
+`scripts/run_tests.py` runs the same two suites as
+`python -m unittest discover -s tests -p 'test_*.py'` and
+`node --test 'tests/*.test.{mjs,cjs}'` (either still works on its own; pass
+`python` or `node` to run one), then reports each suite's wall time and its
+slowest modules, files and tests. A suite over its budget in
+`tests/time-budget.json` fails with its slowest tests named. The budget does
+not grow with the number of visualisations: per-visualisation checks must stay
+constant-cost, and heavy or end-to-end tests belong in the visualisation's own
+repository. Its values (600 s for Python, 60 s for Node) are a provisional
+ceiling, not a benchmark derived from today's timings: the suite is expected to
+grow as more visualisations and tests arrive, so they are deliberately
+adjustable in that one file, and a pull request that raises them states why. Node runs every
+`tests/*.test.mjs` and `tests/*.test.cjs`, so a new Node test needs no change
+to this command or to CI.
+
+With `--base`, the per-visualisation checks (`tests/test_visual_ports.py`,
+`tests/test_visual_folder_docs.py` and the shared-template check in
+`tests/beamdswitch-voice.test.mjs`) cover only the visualisation folders
+changed against that ref: `visuals/<slug>/` and `data/visuals/<slug>.yaml` or
+`.pin`. A change under `tests/`, `scripts/`, `templates/` or `.github/`, or to
+`requirements.txt`, covers every folder, as does a run without `--base` or one
+whose changes cannot be listed. The other tests always run. The selection
+reaches the tests through `SITE_TEST_VISUALS` (see `tests/visual_selection.py`).
 
 A visualization mirrored as a standalone repository (its folder's `AGENTS.md`
 names `yujieteo/<name>`) develops there: its logic tests live and run in that
@@ -94,7 +115,9 @@ temporary directory and rebuild the site there, so they also read
 ## Continuous integration
 
 `.github/workflows/ci.yml` runs on pushes to `main` and on every pull request:
-validation, the build, and the Python and Node tests. It checks out the
+validation, the build, and the Python and Node tests through
+`scripts/run_tests.py` (on a pull request, with `--base` set to the base
+branch), whose timing report also lands in the job summary. It checks out the
 `visuals` history, and the build reads each visualization at its pin; update
 `data/visuals/<slug>.pin` when a visualization is republished.
 

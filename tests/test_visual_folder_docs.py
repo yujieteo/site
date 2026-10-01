@@ -14,10 +14,14 @@ from urllib.parse import urlsplit
 
 import yaml
 
+from visual_selection import covers
+
 
 ROOT = Path(__file__).resolve().parents[1]
 LINK = re.compile(r"\]\(([^)\s]+)\)")
 FOLDERS = sorted(path.parent for path in (ROOT / "visuals").glob("*/AGENTS.md"))
+# The folders these checks cover in this run: every folder, or only those a pull request changes.
+SELECTED = [folder for folder in FOLDERS if covers(folder.name)]
 
 
 class VisualFolderDocsTest(unittest.TestCase):
@@ -25,7 +29,7 @@ class VisualFolderDocsTest(unittest.TestCase):
         self.assertTrue(FOLDERS)
 
     def test_folder_carries_licence_and_skills(self):
-        for folder in FOLDERS:
+        for folder in SELECTED:
             with self.subTest(folder.name):
                 self.assertTrue((folder / "SKILLS.md").is_file(), "SKILLS.md is missing")
                 licence = (folder / "LICENSE").read_text(encoding="utf-8")
@@ -33,7 +37,7 @@ class VisualFolderDocsTest(unittest.TestCase):
                 self.assertIn("Copyright (c) 2026 Yu Jie Teo", licence)
 
     def test_links_stay_inside_the_folder(self):
-        for folder in FOLDERS:
+        for folder in SELECTED:
             for doc in (folder / "AGENTS.md", folder / "SKILLS.md"):
                 for target in LINK.findall(doc.read_text(encoding="utf-8")):
                     parts = urlsplit(target)
@@ -45,14 +49,14 @@ class VisualFolderDocsTest(unittest.TestCase):
                         self.assertTrue(path.exists(), "link target is missing")
 
     def test_agents_md_names_the_live_page_and_upstream(self):
-        for folder in FOLDERS:
+        for folder in SELECTED:
             with self.subTest(folder.name):
                 text = (folder / "AGENTS.md").read_text(encoding="utf-8")
                 self.assertIn(f"https://teoyujie.org/visuals/{folder.name}/", text)
                 self.assertIn(f"https://github.com/yujieteo/site/tree/main/visuals/{folder.name}", text)
 
     def test_skills_md_lists_every_webmcp_tool(self):
-        for folder in FOLDERS:
+        for folder in SELECTED:
             text = (folder / "SKILLS.md").read_text(encoding="utf-8")
             stub = ROOT / "data" / "visuals" / f"{folder.name}.yaml"
             if "## WebMCP tools" not in text or not stub.is_file():

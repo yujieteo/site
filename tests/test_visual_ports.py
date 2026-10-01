@@ -15,6 +15,8 @@ from pathlib import Path
 
 import yaml
 
+from visual_selection import covers
+
 
 ROOT = Path(__file__).resolve().parents[1]
 # slug -> standalone repository name
@@ -53,6 +55,8 @@ PORTS = {
     "toulmin": "toulmin",
     "vgc-protect-fakeout-pivot-trainer": "vgc-trainer",
 }
+# The ports these checks cover in this run: every port, or only those a pull request changes.
+SELECTED = [slug for slug in PORTS if covers(slug)]
 
 
 def stub(slug):
@@ -66,7 +70,7 @@ def source_data(path):
 
 class VisualPortTests(unittest.TestCase):
     def test_port_carries_no_tests_or_ci(self):
-        for slug in PORTS:
+        for slug in SELECTED:
             with self.subTest(slug):
                 folder = ROOT / "visuals" / slug
                 self.assertTrue((folder / "index.html").is_file())
@@ -74,10 +78,10 @@ class VisualPortTests(unittest.TestCase):
                 self.assertFalse((folder / ".github").exists(), "CI lives in the standalone repository")
 
     def test_agents_md_names_the_standalone_repository_as_where_it_develops(self):
-        for slug, name in PORTS.items():
+        for slug in SELECTED:
             with self.subTest(slug):
                 text = (ROOT / "visuals" / slug / "AGENTS.md").read_text(encoding="utf-8")
-                link = f"[yujieteo/{name}](https://github.com/yujieteo/{name})"
+                link = f"[yujieteo/{PORTS[slug]}](https://github.com/yujieteo/{PORTS[slug]})"
                 wordings = [
                     (f"The standalone repository {link} is where this visualisation and its tests develop", "Porting copies the folder minus `tests/` and `.github/`."),
                     (f"This repository, {link}, is the source of truth", "Porting copies this repository minus `tests/` and `.github/`"),
@@ -85,7 +89,7 @@ class VisualPortTests(unittest.TestCase):
                 self.assertTrue(any(all(part in text for part in wording) for wording in wordings), text)
 
     def test_stub_points_into_the_folder(self):
-        for slug in PORTS:
+        for slug in SELECTED:
             with self.subTest(slug):
                 entry = stub(slug)
                 self.assertEqual(entry["slug"], slug)
@@ -95,7 +99,7 @@ class VisualPortTests(unittest.TestCase):
                     self.assertTrue((ROOT / path).is_file(), path)
 
     def test_page_registers_every_tool_the_stub_names(self):
-        for slug in PORTS:
+        for slug in SELECTED:
             html = (ROOT / "visuals" / slug / "index.html").read_text(encoding="utf-8")
             for tool in stub(slug).get("webmcp_tools", []):
                 with self.subTest(slug=slug, tool=tool):
@@ -104,16 +108,18 @@ class VisualPortTests(unittest.TestCase):
     def test_published_copy_is_the_port(self):
         if not (ROOT / "site" / "index.html").exists():
             self.skipTest("run scripts/build.py first")
-        for slug in PORTS:
+        for slug in SELECTED:
             with self.subTest(slug):
                 entry, published = stub(slug), ROOT / "site" / "visuals" / slug
                 self.assertEqual((published / "index.html").read_bytes(), (ROOT / entry["html_path"]).read_bytes())
                 self.assertEqual(json.loads((published / "data.json").read_text(encoding="utf-8")), source_data(entry["data_path"]))
 
+    @unittest.skipUnless(covers("fermi"), "fermi is unchanged")
     def test_fermi_title_is_the_catalogue_title(self):
         html = (ROOT / "visuals" / "fermi" / "index.html").read_text(encoding="utf-8")
         self.assertIn(f"<title>{stub('fermi')['title']} — Yu Jie Teo</title>", html)
 
+    @unittest.skipUnless(covers("kent"), "kent is unchanged")
     def test_kent_title_is_the_catalogue_title(self):
         html = (ROOT / "visuals" / "kent" / "index.html").read_text(encoding="utf-8")
         self.assertIn(f"<title>{stub('kent')['title']} — Yu Jie Teo</title>", html)

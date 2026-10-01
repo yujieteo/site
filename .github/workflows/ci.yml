@@ -21,6 +21,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: site
+          # A pull request checks out its merge commit; its first parent is
+          # the base branch, so scripts/run_tests.py diffs against HEAD^1.
+          fetch-depth: 2
 
       # The published site embeds HTML and data generated in the separate
       # public visuals repository. The build reads each visualization at the
@@ -61,9 +64,13 @@ jobs:
         working-directory: site
         run: python scripts/build.py
 
+      # scripts/run_tests.py reports each suite's wall time and slowest
+      # tests, fails a suite over its budget in tests/time-budget.json, and on
+      # a pull request runs the per-visualisation checks only for the
+      # visualisation folders it changes.
       - name: Run Python tests
         working-directory: site
-        run: python -m unittest discover -s tests -p 'test_*.py'
+        run: python scripts/run_tests.py python ${{ github.event_name == 'pull_request' && '--base HEAD^1' || '' }}
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -72,4 +79,4 @@ jobs:
 
       - name: Run Node tests
         working-directory: site
-        run: node --test 'tests/*.test.{mjs,cjs}'
+        run: python scripts/run_tests.py node ${{ github.event_name == 'pull_request' && '--base HEAD^1' || '' }}

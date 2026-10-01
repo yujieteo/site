@@ -17,8 +17,7 @@ set `VISUALS_REPO` when it is not at a supported sibling path.
 ```sh
 .venv/bin/python scripts/validate.py
 .venv/bin/python scripts/build.py
-.venv/bin/python -m unittest discover -s tests -p 'test_*.py'
-# Node tests: run the `node --test` command from the [README Test section](../README.md#test).
+.venv/bin/python scripts/run_tests.py  # Python and Node tests; see the [README Test section](../README.md#test)
 ```
 
 Every command above must exit successfully. The build recreates `site/` from the
