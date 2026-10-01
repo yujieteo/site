@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { assertSharedTemplate, checkDeckPlots, parseDeck } from "./beamdswitch-deck-checks.mjs";
+import { assertSharedTemplate, checkDeck, checkDeckPlots, parseDeck, standIn } from "./beamdswitch-deck-checks.mjs";
 
 const require = createRequire(import.meta.url);
 const D = require("../visuals/distortion/kinematics.js");
@@ -66,4 +67,39 @@ test("the narration speaks the loads and the patch in words", () => {
   assert.match(tt, /The tube never buckles here, because its buckling is not modelled\./);
   assert.match(said("compression"), /The top flange and bottom flange have passed their threshold and wrinkled\./);
   assert.match(said("default"), /No load is applied, so the structure keeps its shape\./);
+});
+
+/* ---------- the page's buttons ---------- */
+const html = readFileSync(new URL("../visuals/distortion/index.html", import.meta.url), "utf8");
+/* Without WebGL the page shows its no-WebGL message; the controls and the deck still work. */
+function page(opts = {}) {
+  const p = standIn({ ...opts, globals: { ResizeObserver: class { observe() {} }, performance } });
+  p.run(html);
+  p.status = () => p.$("deck-status").textContent;
+  return p;
+}
+
+test("the beamdswitch button saves the view's deck, and Copy deck copies the same deck", async () => {
+  const p = page(), c = CASES.find((x) => x.what === "default");
+  await p.$("save-beamdswitch").fire("click");
+  const name = `distortion-${c.state.structure}-beamdswitch.md`;
+  assert.equal(p.status(), `Saved ${name}: open it in beamdswitch.`);
+  const [file] = p.saved;
+  assert.equal(file.name, name);
+  assert.equal(file.blob.type, "text/markdown");
+  const md = await file.blob.text();
+  checkDeck(md, "saved");
+  assert.equal(md, deckFor(c));
+  await p.$("copy-beamdswitch").fire("click");
+  assert.equal(p.status(), "Copied the beamdswitch deck: paste it into beamdswitch.");
+  assert.equal(p.copied[0], md);
+});
+
+test("a blocked download says to use Copy deck, and a blocked clipboard says so", async () => {
+  const p = page({ saveFails: true, clipboardFails: true });
+  await p.$("save-beamdswitch").fire("click");
+  assert.equal(p.status(), "Could not save: downloads are blocked. Use Copy deck instead.");
+  await p.$("copy-beamdswitch").fire("click");
+  assert.equal(p.status(), "Could not copy the beamdswitch deck: the clipboard is blocked here.");
+  assert.equal(p.saved.length + p.copied.length, 0);
 });

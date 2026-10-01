@@ -2029,12 +2029,13 @@ function download({ text, name, type }) {
 /* ---------- beamdswitch deck ----------
    The report template lives in beamdswitch.js; the engine fills it from the analysis on this tab. */
 function reportDeck() {
-  try { return { text: Beamdswitch.deck(S.report(state.tab, current(), { displayUnits: state.units })), name: `stability-${state.tab}-beamdswitch.md` }; }
-  catch (e) { return null; }
+  if (!last.result || last.result.error) return null;
+  return { text: Beamdswitch.deck(S.report(state.tab, current(), { displayUnits: state.units })), name: `stability-${state.tab}-beamdswitch.md` };
 }
 /* A blocked download fails silently, so the page cannot fall back on its own: Copy deck is the explicit fallback. */
 function saveReport() {
-  const deck = reportDeck();
+  let deck;
+  try { deck = reportDeck(); } catch (e) { say(`Could not write the deck: ${e.message}`); return; }
   if (!deck) { say("Fix the inputs first: there is no result to save."); return; }
   try {
     download({ text: deck.text, name: deck.name, type: "text/markdown" });
@@ -2044,7 +2045,8 @@ function saveReport() {
   }
 }
 async function copyReport() {
-  const deck = reportDeck();
+  let deck;
+  try { deck = reportDeck(); } catch (e) { say(`Could not write the deck: ${e.message}`); return; }
   if (!deck) { say("Fix the inputs first: there is no result to copy."); return; }
   say((await copyText(deck.text)) ? "Copied the beamdswitch deck: paste it into beamdswitch." : "Could not copy the beamdswitch deck: the clipboard is blocked here.");
 }

@@ -2426,7 +2426,7 @@ const ACCURACY = {"generated_by":"reference/torsion_accuracy.py","reference":"Pr
         ? `The torsion constant comes from the ${spokenName(row(tors, "Method"))} formula, which the page states is accurate ${spokenName(row(tors, "Stated accuracy vs Prandtl reference")).replace(/%/, " percent")} of a numerical Prandtl solution.`
         : "Sectionlab gives a torsion constant only for a single library shape whose formula has been measured against a numerical Prandtl solution, and this section has none.",
     }];
-    if (pl && !pl.error) method.push({
+    if (pl) method.push({
       title: "Moment–curvature: Ramberg–Osgood fibres up to ε_lim",
       body: [
         "$$ \\varepsilon = \\frac{\\sigma}{E} + 0.002\\left(\\frac{\\sigma}{\\sigma_{0.2}}\\right)^n, \\qquad \\varepsilon = \\varepsilon_0 - \\kappa\\, v $$",
@@ -2471,7 +2471,7 @@ const ACCURACY = {"generated_by":"reference/torsion_accuracy.py","reference":"Pr
       narration: "The page gives no torsion constant for this section, and the slide says why.",
     }];
     let keyPlastic = "", saidPlastic = "";
-    if (pl && !pl.error) {
+    if (pl) {
       const v = (label) => row(plast, label) ?? "n/a";
       const Mlim = v("Allowable moment at ε_lim, M_lim"), klim = v("Curvature at ε_lim, κ_lim");
       const pts = pl.curve.map((s) => [s.kappa, s.M]);
@@ -2487,7 +2487,7 @@ const ACCURACY = {"generated_by":"reference/torsion_accuracy.py","reference":"Pr
       });
       keyPlastic = ` M_lim = ${Mlim} N·mm at ε_lim; shape factor ${v("Shape factor, M_p / M_el")}.`;
       saidPlastic = ` The allowable moment at the strain limit is ${sayVal(Mlim, "N·mm")}.`;
-    } else if (pl && pl.error) {
+    } else if (plast) {
       results.push({ title: "Plastic bending: n/a", body: table(plast), narration: "The page could not complete the moment-curvature analysis for this section, and the slide says why." });
     }
 

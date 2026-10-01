@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
-import { assertSharedTemplate, checkDeckPlots, parseDeck } from "./beamdswitch-deck-checks.mjs";
+import { assertSharedTemplate, checkDeck, checkDeckPlots, parseDeck, standIn } from "./beamdswitch-deck-checks.mjs";
 
 const html = readFileSync(new URL("../visuals/mohr/index.html", import.meta.url), "utf8");
 const script = (id) => new RegExp(`<script id="${id}">([\\s\\S]*?)</script>`).exec(html)[1];
@@ -92,4 +92,39 @@ test("the narration reads the numbers in the page's units and sign convention", 
   assert.match(comp, /with compression positive/);
   assert.match(said(CASES.find((c) => c.what === "GPa and %, 6 digits").st), /gigapascals/);
   assert.match(said(M.presetState(8)), /The principal strains are 809\.9 microstrain, minus 209\.9 microstrain and minus 257\.1 microstrain\./);
+});
+
+/* ---------- the page's buttons ---------- */
+function page(opts = {}) {
+  const p = standIn(opts);
+  p.run(html);
+  p.status = () => p.$("io-msg").textContent;
+  return p;
+}
+
+test("the beamdswitch button saves the state's deck, and Copy deck copies the same deck", async () => {
+  const p = page();
+  await p.$("save-beamdswitch").fire("click");
+  assert.equal(p.status(), "Saved mohr-beamdswitch.md: open it in beamdswitch.");
+  const [file] = p.saved;
+  assert.equal(file.name, "mohr-beamdswitch.md");
+  assert.equal(file.blob.type, "text/markdown");
+  const md = await file.blob.text();
+  assert.match(checkDeck(md, "saved").meta.title, /^Mohr's circle analysis: /);
+  await p.$("copy-beamdswitch").fire("click");
+  assert.equal(p.status(), "Copied the beamdswitch deck: paste it into beamdswitch.");
+  assert.equal(p.copied[0], md);
+  assert.equal(p.$("fallback-text").value, "", "nothing in the fallback panel");
+});
+
+test("a blocked download says to use Copy deck, and a blocked clipboard shows the deck to copy by hand", async () => {
+  const p = page({ saveFails: true, clipboardFails: true });
+  await p.$("save-beamdswitch").fire("click");
+  assert.equal(p.status(), "Could not save: downloads are blocked. Use Copy deck instead.");
+  assert.equal(p.saved.length, 0);
+  await p.$("copy-beamdswitch").fire("click");
+  assert.equal(p.$("fallback").hidden, false);
+  assert.equal(p.$("fallback-label").textContent, "Clipboard access is blocked; the deck is selected below. Press Ctrl+C or ⌘C.");
+  checkDeck(p.$("fallback-text").value, "fallback");
+  assert.equal(p.copied.length, 0);
 });

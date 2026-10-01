@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { assertSharedTemplate, checkDeckPlots, parseDeck } from "./beamdswitch-deck-checks.mjs";
+import { assertSharedTemplate, checkDeck, checkDeckPlots, parseDeck, standIn, textOf, Element } from "./beamdswitch-deck-checks.mjs";
 
 const require = createRequire(import.meta.url);
 const L = require("../visuals/sectionlab/src/engine.js");
@@ -15,6 +16,7 @@ const clone = (x) => JSON.parse(JSON.stringify(x));
 const CASES = [
   ...RAW.presets.map((p) => [p.id, p.model]),
   ["ipe about y, fixed axis", { ...clone(RAW.presets.find((p) => p.id === "ipe").model), plastic: { axis: "y", N: 0, solve: "fixed-axis" } }],
+  ["ipe with an axial force past ε_lim", { ...clone(RAW.presets.find((p) => p.id === "ipe").model), plastic: { axis: "x", N: 1e12, solve: "zero-cross" } }],
   ["angle about the major axis", { ...clone(RAW.presets.find((p) => p.id === "angle").model), plastic: { axis: "major", N: 0, solve: "zero-cross" } }],
   ["turned hexagon", { sectionlab: 1, title: "Hexagon", materials: [clone(RAW.materials[2])], E_base: RAW.materials[2].E,
     parts: [{ id: "hex", shape: "polygon", dims: { n: 6, d: 100 }, x: 10, y: -5, orientation: 90, material: RAW.materials[2].id }] }],
@@ -64,6 +66,15 @@ test("the plotted M–κ curve passes through every point the engine computed", 
   }
 });
 
+test("a moment–curvature analysis that fails has its own slide saying why", () => {
+  const { result, md } = CASES.find((c) => c.what === "ipe with an axial force past ε_lim");
+  assert.match(result.plastic.error, /The axial force alone strains the section past ε_lim/);
+  const frame = parseDeck(md).frames.find((f) => f.title === "Plastic bending: n/a");
+  assert.ok(frame, "the Plastic bending: n/a slide");
+  assert.equal(frame.section, "Results");
+  assert.ok(textOf(frame).includes(result.plastic.error), "the reason is on the slide");
+});
+
 test("the narration names the parts and reads the numbers in mm, N and MPa", () => {
   const said = (id) => parseDeck(CASES.find((c) => c.what === id).md).frames.map((f) => f.narration).join(" ");
   const tee = said("tee-hole");
@@ -73,4 +84,48 @@ test("the narration names the parts and reads the numbers in mm, N and MPa", () 
   assert.match(tee, /second moment of area is 2\.59209 times ten to the 7 millimetres to the fourth about x/);
   assert.match(said("rhs"), /The torsion constant is .+ millimetres to the fourth, from the Bredt–Batho \(thin wall\) formula/);
   assert.match(said("turned hexagon"), /with 6 sides and across corners 100 millimetres, centred at x 10 millimetres and y minus 5 millimetres, turned 90 degrees\./);
+});
+
+/* ---------- the page's buttons ---------- */
+const html = readFileSync(new URL("../visuals/sectionlab/index.html", import.meta.url), "utf8");
+/* The M–κ chart reads its plot geometry back from the svg it just wrote. */
+class ChartElement extends Element {
+  querySelector(sel) {
+    const e = new ChartElement(), plot = new RegExp(`<${sel}\\b[^>]*data-plot='([^']*)'`).exec(this.innerHTML);
+    if (plot) e.dataset.plot = plot[1];
+    return e;
+  }
+}
+function page(opts = {}) {
+  const p = standIn({ ...opts, Node: ChartElement, globals: { ResizeObserver: class { observe() {} }, MutationObserver: class { observe() {} }, TextEncoder, TextDecoder, atob, btoa } });
+  p.run(html);
+  p.status = () => p.$("export-status").textContent;
+  return p;
+}
+
+test("the beamdswitch button saves the section's deck, and Copy deck copies the same deck", async () => {
+  const p = page(), first = RAW.presets[0];
+  await p.$("save-beamdswitch").fire("click");
+  const name = `${first.model.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-beamdswitch.md`;
+  assert.equal(p.status(), `Saved ${name}: open it in beamdswitch.`);
+  const [file] = p.saved;
+  assert.equal(file.name, name);
+  assert.equal(file.blob.type, "text/markdown");
+  const md = await file.blob.text();
+  assert.equal(checkDeck(md, "saved").meta.title, `Section analysis: ${first.model.title}`);
+  assert.equal(md, T.deck(L.buildBeamdswitch(L.compute(first.model, { accuracy: ACCURACY }))));
+  await p.$("copy-beamdswitch").fire("click");
+  await new Promise((r) => setImmediate(r));
+  assert.equal(p.status(), "Copied the beamdswitch deck: paste it into beamdswitch.");
+  assert.equal(p.copied[0], md);
+});
+
+test("a blocked download says to use Copy deck, and a blocked clipboard says so", async () => {
+  const p = page({ saveFails: true, clipboardFails: true });
+  await p.$("save-beamdswitch").fire("click");
+  assert.equal(p.status(), "Could not save: downloads are blocked. Use Copy deck instead.");
+  await p.$("copy-beamdswitch").fire("click");
+  await new Promise((r) => setImmediate(r));
+  assert.equal(p.status(), "Could not copy the beamdswitch deck: the clipboard is blocked here.");
+  assert.equal(p.saved.length + p.copied.length, 0);
 });

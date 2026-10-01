@@ -54,14 +54,11 @@ export function checkDeckPlots(md, what) {
   return { deck, plots };
 }
 
-/* A visualisation's copy of the template is the site's shared one, unchanged; its built page inlines
-   that copy verbatim and carries the beamdswitch and Copy deck buttons. */
+/* A visualisation's copy of the template is the site's shared one, unchanged, and its built page
+   inlines that copy verbatim. */
 export function assertSharedTemplate(slug, page = "index.html") {
   assert.equal(read(`../visuals/${slug}/beamdswitch.js`), TEMPLATE, `templates/beamdswitch.js and visuals/${slug}/beamdswitch.js must stay identical`);
-  const html = read(`../visuals/${slug}/${page}`);
-  assert.ok(html.includes(TEMPLATE.trimEnd()), `visuals/${slug}/${page} inlines beamdswitch.js`);
-  assert.match(html, /id="save-beamdswitch"[^>]*>beamdswitch<\/button>/, `${slug}: the beamdswitch button`);
-  assert.match(html, /id="copy-beamdswitch"[^>]*>Copy deck<\/button>/, `${slug}: the Copy deck button`);
+  assert.ok(read(`../visuals/${slug}/${page}`).includes(TEMPLATE.trimEnd()), `visuals/${slug}/${page} inlines beamdswitch.js`);
 }
 
 /* ---------- a stand-in DOM: enough for a page script to start and for its buttons to be clicked ---------- */
@@ -78,8 +75,11 @@ export class Element {
   setAttribute(k, v) { this.attrs[k] = String(v); }
   getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; }
   removeAttribute(k) { delete this.attrs[k]; }
+  get parentElement() { return this; }
+  get tBodies() { return (this._tBodies ??= [new this.constructor("tbody")]); }
   appendChild(c) { this.children.push(c); return c; }
   append(...c) { this.children.push(...c); }
+  replaceChildren(...c) { this.children = c; }
   remove() {}
   click() {}
   focus() {}
@@ -99,19 +99,20 @@ Element.prototype.validity = { badInput: false };
 /*
  * Run a page's inline scripts in a fresh context with a stand-in DOM. Downloads are recorded in
  * `saved` (or throw when saveFails), clipboard writes in `copied` (or throw when clipboardFails).
- * `select(selector)` returns the elements a querySelectorAll call should see.
+ * `select(selector)` returns the elements a querySelectorAll call should see; `Node` is the element
+ * class, for a page that needs more of the DOM than Element offers.
  */
-export function standIn({ saveFails = false, clipboardFails = false, select = () => [], globals = {} } = {}) {
+export function standIn({ saveFails = false, clipboardFails = false, select = () => [], globals = {}, Node = Element } = {}) {
   const nodes = new Map(), saved = [], copied = [], blobs = new Map();
   const document = {
-    body: new Element("body"), documentElement: new Element("html"), activeElement: null,
-    getElementById(id) { if (!nodes.has(id)) nodes.set(id, new Element()); return nodes.get(id); },
+    body: new Node("body"), documentElement: new Node("html"), activeElement: null,
+    getElementById(id) { if (!nodes.has(id)) nodes.set(id, new Node()); return nodes.get(id); },
     createElement(tag) {
-      const e = new Element(tag);
-      if (tag === "a") e.click = () => { if (saveFails) throw new Error("downloads are blocked"); saved.push({ name: e.download, blob: blobs.get(e.href) }); };
+      const e = new Node(tag);
+      if (tag === "a") e.click = () => { if (saveFails) throw new Error("downloads are blocked"); saved.push({ name: e.download ?? e.getAttribute("download"), blob: blobs.get(e.href ?? e.getAttribute("href")) }); };
       return e;
     },
-    createElementNS: (_, tag) => new Element(tag),
+    createElementNS: (_, tag) => new Node(tag),
     createTextNode: (text) => ({ textContent: text }),
     querySelector: (s) => select(s)[0] || null,
     querySelectorAll: (s) => select(s),
@@ -128,6 +129,6 @@ export function standIn({ saveFails = false, clipboardFails = false, select = ()
     Event: class { constructor(type) { this.type = type; } }, ...globals,
   });
   context.window = context; context.self = context;
-  const run = (html) => { for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) vm.runInContext(m[1], context); };
+  const run = (html) => { for (const m of html.matchAll(/<script(?: id="[^"]*")?>([\s\S]*?)<\/script>/g)) vm.runInContext(m[1], context); };
   return { document, context, saved, copied, run, $: (id) => document.getElementById(id) };
 }

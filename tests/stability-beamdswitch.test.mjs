@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { assertSharedTemplate, checkDeckPlots, parseDeck } from "./beamdswitch-deck-checks.mjs";
+import { assertSharedTemplate, checkDeck, checkDeckPlots, parseDeck, standIn, Element } from "./beamdswitch-deck-checks.mjs";
 
 const require = createRequire(import.meta.url);
 const S = require("../visuals/stability/engine.js");
@@ -102,4 +103,61 @@ test("the headline numbers are the page's stats, and the narration says them in 
 test("a tab without a result has no deck to save", () => {
   assert.throws(() => S.report("diagonal", S.normalise("diagonal", { hc: 380, dc: 50, d: 60 }), {}), /kss unavailable/);
   assert.throws(() => S.report("column", S.normalise("column", { L: -1 }), {}), (e) => e instanceof S.InputError);
+});
+
+/* ---------- the page's buttons ---------- */
+const html = readFileSync(new URL("../visuals/stability/index.html", import.meta.url), "utf8");
+/* The plots look up their svg and tooltip inside the figure they just wrote. */
+class PlotElement extends Element { querySelector() { return new PlotElement(); } }
+function page(opts = {}) {
+  const p = standIn({ ...opts, Node: PlotElement });
+  p.run(html);
+  p.status = () => p.$("io-status").textContent;
+  return p;
+}
+
+test("the beamdswitch button saves the tab's deck, and Copy deck copies the same deck", async () => {
+  const p = page();
+  await p.$("save-beamdswitch").fire("click");
+  assert.equal(p.status(), "Saved stability-column-beamdswitch.md: open it in beamdswitch.");
+  const [file] = p.saved;
+  assert.equal(file.name, "stability-column-beamdswitch.md");
+  assert.equal(file.blob.type, "text/markdown");
+  const md = await file.blob.text();
+  assert.equal(checkDeck(md, "saved").meta.title, "Stability analysis: " + S.TAB_LABELS.column);
+  assert.equal(md, deckFor({ tab: "column", inputs: S.normalise("column", S.defaults("column")), units: "SI" }));
+  await p.$("copy-beamdswitch").fire("click");
+  assert.equal(p.status(), "Copied the beamdswitch deck: paste it into beamdswitch.");
+  assert.equal(p.copied[0], md);
+});
+
+test("a blocked download or clipboard says so, and Copy deck is the fallback", async () => {
+  const p = page({ saveFails: true, clipboardFails: true });
+  await p.$("save-beamdswitch").fire("click");
+  assert.equal(p.status(), "Could not save: downloads are blocked. Use Copy deck instead.");
+  await p.$("copy-beamdswitch").fire("click");
+  assert.equal(p.status(), "Could not copy the beamdswitch deck: the clipboard is blocked here.");
+  assert.equal(p.saved.length + p.copied.length, 0);
+  const fallback = page({ saveFails: true });
+  await fallback.$("save-beamdswitch").fire("click");
+  await fallback.$("copy-beamdswitch").fire("click");
+  checkDeck(fallback.copied[0], "copied");
+});
+
+test("only inputs without a result say to fix the inputs; any other failure says what went wrong", async () => {
+  const p = page();
+  const L = Object.assign(new Element("input"), { dataset: { key: "L", q: "length" }, value: "-5" });
+  await p.$("inputs").fire("input", L);
+  await p.$("save-beamdswitch").fire("click");
+  assert.equal(p.status(), "Fix the inputs first: there is no result to save.");
+  await p.$("copy-beamdswitch").fire("click");
+  assert.equal(p.status(), "Fix the inputs first: there is no result to copy.");
+
+  const broken = page();
+  broken.context.Beamdswitch = { deck() { throw new Error("narration is missing"); } };
+  await broken.$("save-beamdswitch").fire("click");
+  assert.equal(broken.status(), "Could not write the deck: narration is missing");
+  await broken.$("copy-beamdswitch").fire("click");
+  assert.equal(broken.status(), "Could not write the deck: narration is missing");
+  assert.equal(p.saved.length + p.copied.length + broken.saved.length + broken.copied.length, 0);
 });
