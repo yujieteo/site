@@ -27,4 +27,10 @@ Review the generated changes with `.venv/bin/python scripts/site_diff.py <base>`
 (see [Deploy generated files](playbooks/deploy.md)) and stop if they go beyond
 the intended sources. Do not deploy after a failure.
 
+Every site test runs on every deploy. Time each site test you add (for example
+`time .venv/bin/python -m unittest tests.test_visual_ports`), keep each well under
+a second, and never put rebuilds, subprocess builds, full-corpus scans, browser
+launches or network access in one; list the added tests and their times in the
+pull request description. See [Site test cost](playbooks/add-visualization.md#site-test-cost).
+
 After deploying, run [Stage B](verify-post-deploy.md) and report it with the same fields.
