@@ -27,4 +27,13 @@ Review the generated changes with `.venv/bin/python scripts/site_diff.py <base>`
 (see [Deploy generated files](playbooks/deploy.md)) and stop if they go beyond
 the intended sources. Do not deploy after a failure.
 
+Every site test runs on every deploy, and the suite's total time must not grow with
+the number of visualizations. Time each site test you add (for example
+`time .venv/bin/python -m unittest tests.test_visual_ports`), keep each well under
+a second, and never put rebuilds, subprocess builds, full-corpus scans, browser
+launches or network access in one; list the added tests, their times and why
+the time is needed in the pull request description. See [Site test cost](playbooks/add-visualization.md#site-test-cost). Browser end-to-end tests belong in the
+visualization's own repository; this stage is the site-level end-to-end check of a
+port, and the second of the [two no-mistakes runs](playbooks/add-visualization.md#end-to-end-testing-and-the-two-pipeline-runs).
+
 After deploying, run [Stage B](verify-post-deploy.md) and report it with the same fields.

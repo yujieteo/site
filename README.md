@@ -20,7 +20,7 @@ skills/              Agent playbooks, principles, and reference notes
 static/              Source CSS and browser JavaScript
 templates/           Shared HTML templates and the beamdswitch report template
 tests/               Python (unittest) and Node tests
-visuals/             Visualizations built in this repo before publication (sources, data, build scripts)
+visuals/             Visualizations published here, mostly ports of their standalone yujieteo/<slug> repositories
 site/                Generated site (not committed; never edit by hand)
 CONTEXT.md           Domain vocabulary (Published Corpus, Corpus Record, ...)
 SKILLS.md            Router from a task to the playbook that owns it
