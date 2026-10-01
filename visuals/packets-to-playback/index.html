@@ -213,7 +213,7 @@ svg .hl{stroke-width:4}
       </div>
     </div>
     <details id="rungs-box"><summary>All four rungs</summary><div class="panel tablewrap"><table id="rungs-table"><caption class="sr">Every candidate bitrate under the current scenario</caption><thead><tr><th scope="col">Rung</th><th scope="col">Bitrate</th><th scope="col">Median segment time</th><th scope="col">Stall probability <i>P</i>(<i>T</i> &gt; <i>B</i>)</th><th scope="col">Expected live delay</th><th scope="col">Quality <i>Q</i>(<i>R</i>)</th><th scope="col">Utility <i>U</i>(<i>R</i>)</th></tr></thead><tbody></tbody></table>
-      <p class="hint"><span class="eq"><i>U</i>(<i>R</i>) = <i>Q</i>(<i>R</i>) − α <i>P</i>(<i>T</i> &gt; <i>B</i> | <i>R</i>) − β <i>L</i></span> An explanatory decision model, not a production adaptive-bitrate algorithm. All numbers come from seeded synthetic segments, not from measurements.</p>
+      <p class="hint"><span class="eq"><i>U</i>(<i>R</i>) = <i>Q</i>(<i>R</i>) − α <i>P</i>(<i>T</i> &gt; <i>B</i> | <i>R</i>) − β <i>L</i></span> An explanatory decision model, not a production adaptive-bitrate algorithm. All numbers come from 4,096 seeded synthetic segments, not from measurements, so probabilities below 1 in 4,096 show as “&lt; 0.02%”. Each segment is assumed to download at the average throughput of the 125 ms windows it spans.</p>
     </div></details>
   </section>
 
@@ -244,6 +244,7 @@ svg .hl{stroke-width:4}
       <p>The next segment carries <span id="s0-size"></span> of video data at the chosen bitrate. With <span id="s0-buf"></span> buffered, it stalls if its download time <i>T</i> exceeds the buffer: the risk is <span class="eq" data-dict="expect"><i>P</i>(<i>T</i> &gt; <i>B</i>)</span>, a <em>tail</em> probability.</p>
       <div id="s0-chart"></div>
       <p id="s0-text"></p>
+      <p class="hint">Simplification: a segment downloads at the average throughput over one segment-length stretch of windows; lost packets are resent, so it carries 1 / (1 − loss) times its size.</p>
       <details><summary>Why is the mean not enough?</summary><div class="panel"><p>Two networks with the same mean download time can have very different chances of exceeding <i>B</i>. The decision depends on the shape of the distribution beyond <i>B</i>: on its tail, and on how strongly bad windows cluster in time. Knowing only <i>E</i>[<i>T</i>] throws that away.</p></div></details>
     </section>
 
@@ -260,6 +261,7 @@ svg .hl{stroke-width:4}
     <section class="step" data-step="2" aria-labelledby="h2">
       <h2 id="h2"><span class="n">3</span>Heavy tails</h2>
       <p>Four <em>candidate</em> models share the same typical middle half of windows and differ in the tails. None is claimed to describe Internet traffic in general; they are hypotheses to compare.</p>
+      <p class="hint">A modelling choice: the families are matched on their interquartile range, not their variance, so the tails add variance (the sd / mean column). Matched on variance instead, a heavy tail must take probability out of moderate dips to pay for its rare deep ones, which hides the effect this step is about.</p>
       <div class="controls">
         <div class="field"><label for="s2-family">Tail model</label><select id="s2-family" data-k="family"></select></div>
         <div class="field" id="s2-param-field"><label for="s2-param" id="s2-param-label">Tail parameter</label><input type="range" id="s2-param" step="0.1" data-k="param" aria-labelledby="s2-param-label"></div>
@@ -325,6 +327,7 @@ svg .hl{stroke-width:4}
       </div>
       <div class="ticks" id="scale-ticks" aria-hidden="true"></div>
       <p class="label" id="scale-now" style="margin-top:.5rem"></p>
+      <p class="hint">The finest windows are 125 ms rather than 100 ms, so every step is an exact average of two blocks and lands on 1 s, the 2 s segment and 8 s.</p>
       <div id="s6-chart"></div>
       <dl class="kv" id="s6-kv"></dl>
       <p id="s6-text"></p>
