@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { assertSharedTemplate, checkDeck, parseDeck } from "./beamdswitch-deck-checks.mjs";
+import { assertSharedTemplate, checkDeckPlots, parseDeck } from "./beamdswitch-deck-checks.mjs";
 
 const require = createRequire(import.meta.url);
 const D = require("../visuals/distortion/kinematics.js");
@@ -26,7 +26,7 @@ test("the Distortion page inlines the site's shared beamdswitch template unchang
 
 test("every view's deck opens in beamdswitch as the standard template, narrated on every slide", () => {
   for (const c of CASES) {
-    const md = deckFor(c), { deck, plots } = checkDeck(md, c.what);
+    const md = deckFor(c), { deck, plots } = checkDeckPlots(md, c.what);
     assert.equal(deck.meta.title, `Structural distortion: ${META.structures.find((s) => s.id === c.state.structure).label}`, c.what);
     assert.equal(plots.length, 0, `${c.what}: a qualitative view has nothing to plot`);
     // Unit-free: the deck states no measured number beyond the page's own words and the exaggeration.

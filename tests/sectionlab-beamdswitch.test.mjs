@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { assertSharedTemplate, checkDeck, parseDeck } from "./beamdswitch-deck-checks.mjs";
+import { assertSharedTemplate, checkDeckPlots, parseDeck } from "./beamdswitch-deck-checks.mjs";
 
 const require = createRequire(import.meta.url);
 const L = require("../visuals/sectionlab/src/engine.js");
@@ -29,7 +29,7 @@ test("the Sectionlab page inlines the site's shared beamdswitch template unchang
 
 test("every section's deck opens in beamdswitch as the standard template, narrated on every slide", () => {
   for (const { what, result, md } of CASES) {
-    const { deck } = checkDeck(md, what);
+    const { deck } = checkDeckPlots(md, what);
     assert.equal(deck.meta.title, `Section analysis: ${result.model.title || "Section"}`, what);
   }
 });
@@ -56,7 +56,7 @@ test("the numbers are the report object's, so the deck agrees with the page's ta
 test("the plotted M–κ curve passes through every point the engine computed", () => {
   for (const { what, result, md } of CASES) {
     const pl = result.plastic;
-    const { plots } = checkDeck(md, what);
+    const { plots } = checkDeckPlots(md, what);
     if (!pl || pl.error) { assert.equal(plots.length, 0, what); continue; }
     const [{ spec }] = plots, scale = Math.max(...pl.curve.map((s) => Math.abs(s.M)));
     assert.equal(spec.x[1], +pl.limit.kappa.toPrecision(12), what);

@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
-import { assertSharedTemplate, checkDeck, parseDeck } from "./beamdswitch-deck-checks.mjs";
+import { assertSharedTemplate, checkDeckPlots, parseDeck } from "./beamdswitch-deck-checks.mjs";
 
 const require = createRequire(import.meta.url);
 const S = require("../visuals/stability/engine.js");
@@ -33,7 +33,7 @@ test("the stability page inlines the site's shared beamdswitch template unchange
 
 test("every tab's deck opens in beamdswitch as the standard template, narrated on every slide", () => {
   for (const c of CASES) {
-    const md = deckFor(c), { deck } = checkDeck(md, c.what);
+    const md = deckFor(c), { deck } = checkDeckPlots(md, c.what);
     assert.equal(deck.meta.title, `Stability analysis: ${S.TAB_LABELS[c.tab]}`, c.what);
     assert.match(md, /^::: key\n.+ Not for certification\.\n:::$/m, `${c.what}: the takeaway repeats the notice`);
   }
@@ -52,7 +52,7 @@ test("the deck's results table is the page's results table, in the page's digits
 test("the plotted curves are the engine's own, in the display units", () => {
   const near = (got, want, what) => assert.ok(Math.abs(got - want) <= 1e-9 * Math.max(1, Math.abs(want)), `${what}: ${got} vs ${want}`);
   for (const c of CASES) {
-    const { plots } = checkDeck(deckFor(c), c.what), r = S.solve(c.tab, c.inputs), m = c.inputs.material;
+    const { plots } = checkDeckPlots(deckFor(c), c.what), r = S.solve(c.tab, c.inputs), m = c.inputs.material;
     const at = (spec, f) => { for (let i = 0; i <= 40; i++) { const x = spec.x[0] + ((spec.x[1] - spec.x[0]) * i) / 40; f(x); } };
     if (c.tab === "column") {
       const [{ spec }] = plots;

@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
-import { assertSharedTemplate, checkDeck, parseDeck } from "./beamdswitch-deck-checks.mjs";
+import { assertSharedTemplate, checkDeckPlots, parseDeck } from "./beamdswitch-deck-checks.mjs";
 
 const html = readFileSync(new URL("../visuals/mohr/index.html", import.meta.url), "utf8");
 const script = (id) => new RegExp(`<script id="${id}">([\\s\\S]*?)</script>`).exec(html)[1];
@@ -41,14 +41,14 @@ test("the Mohr page inlines the site's shared beamdswitch template unchanged", (
 
 test("every state's deck opens in beamdswitch as the standard template, narrated on every slide", () => {
   for (const { what, st } of CASES) {
-    const { deck } = checkDeck(deckFor(st), what);
+    const { deck } = checkDeckPlots(deckFor(st), what);
     assert.match(deck.meta.title, /^Mohr's circle analysis: (plane stress|plane strain|general 3D), (stress|strain)-driven$/, what);
   }
 });
 
 test("the principal values, circles and failure check are the page's, in its digits, units and sign", () => {
   for (const { what, st } of CASES) {
-    const md = deckFor(st), { deck, plots } = checkDeck(md, what), r = M.analyse(st), d = st.view.digits;
+    const md = deckFor(st), { deck, plots } = checkDeckPlots(md, what), r = M.analyse(st), d = st.view.digits;
     const snap = (x, ref) => (Math.abs(x) <= 1e-12 * ref ? 0 : x);
     for (const [res, isStress] of [[r.stress, true], [r.strain, false]]) {
       if (!res) { assert.ok(!deck.frames.some((f) => f.title.startsWith(`Principal ${isStress ? "stresses" : "strains"}`)), `${what}: no ${isStress ? "stress" : "strain"} side`); continue; }
