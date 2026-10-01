@@ -959,7 +959,10 @@ root.PhraseData = { KENT_DATA, EMPIRICAL_PHRASE_DATA };
     const ph = S.prior.phrase && phrase(S.prior.phrase);
     return `${ph ? `${ph.label} — ` : ""}${inputPct(S.prior.pct)}`;
   }
-  const unappliedText = (n) => `${n} observed result${n === 1 ? " is" : "s are"} not applied: the current starting belief or numbers rule ${n === 1 ? "it" : "them"} out. Undo ${n === 1 ? "it" : "them"} or change the starting belief.`;
+  function unappliedText(E) {
+    const n = E.unapplied, them = n === 1 ? "it" : "them", head = `${n} observed result${n === 1 ? " is" : "s are"} not applied`;
+    return E.prior === null ? `${head} yet: enter a starting belief to apply ${them}.` : `${head}: the current starting belief rules ${them} out. Undo ${them} or change the starting belief.`;
+  }
   function analysis(x) {
     const E = evaluate(x), S = E.S, L = [];
     L.push("# Information gain analysis", "", "## Question", S.hypothesis.trim() || "(no hypothesis entered)", "", "## Starting belief", belief0(S));
@@ -983,7 +986,7 @@ root.PhraseData = { KENT_DATA, EMPIRICAL_PHRASE_DATA };
       L.push("", "## Learning trail", `${pctText(E.prior)} (${bitsText(entropy(E.prior))})`);
       for (const s of E.steps) L.push(`→ ${s.name}: "${s.label}" → ${pctText(s.after)} (${bitsText(s.entropyAfter)}); belief change ${bitsText(s.kl)}, surprise ${bitsText(s.surprisal)}`);
     }
-    if (E.unapplied) L.push("", "## Observations not applied", unappliedText(E.unapplied));
+    if (E.unapplied) L.push("", "## Observations not applied", unappliedText(E));
     L.push("", "## Note", E.stop.text, "", "Calculated with https://teoyujie.org/visuals/information-gain");
     return L.join("\n");
   }
@@ -1283,7 +1286,7 @@ function learnOut() {
       <p class="small l3">D<sub>KL</sub>(posterior ‖ prior) = ${G.exact(last.kl)} bits; surprise −log₂ P(result) = ${G.exact(last.surprisal)} bits; entropy ${G.exact(last.entropyBefore)} → ${G.exact(last.entropyAfter)} bits.</p>`;
   }
   const trail = start === null ? "" : [`<li class="st">${pctS(start)} <small>${bits(G.entropy(start))}</small></li>`, ...st.map((s) => `<li class="via" aria-label="then ${esc(s.name)}: ${esc(s.label)}">→ ${esc(s.name)}: ${q(s.label)} →</li><li class="st">${pctS(s.after)} <small>${bits(s.entropyAfter)}</small></li>`)].join("");
-  html += `<p class="label" style="margin-top:1rem" id="trail-label">Learning trail</p><ol class="trail" aria-labelledby="trail-label">${trail}</ol>${E.unapplied ? `<p class="small">${esc(G.unappliedText(E.unapplied))}</p>` : ""}${S.trail.length ? `<div class="actions"><button type="button" class="btn small" data-act="undo">Undo last observation</button></div>` : ""}`;
+  html += `<p class="label" style="margin-top:1rem" id="trail-label">Learning trail</p><ol class="trail" aria-labelledby="trail-label">${trail}</ol>${E.unapplied ? `<p class="small">${esc(G.unappliedText(E))}</p>` : ""}${S.trail.length ? `<div class="actions"><button type="button" class="btn small" data-act="undo">Undo last observation</button></div>` : ""}`;
   $("learned").innerHTML = html;
   const best = E.byInfo[0];
   $("stop").innerHTML = `<p class="label">Do I know enough already?</p><dl><div><dt>Current belief</dt><dd>${E.belief === null ? "—" : st.length ? approx(pctS(E.belief)) : G.inputPct(S.prior.pct)}</dd></div><div><dt>Remaining uncertainty</dt><dd>${E.entropy === null ? "—" : approx(bits(E.entropy))}</dd></div><div><dt>Best remaining check</dt><dd>${best ? `${approx(bits(best.ig))} expected` : "—"}</dd></div></dl><p class="small">${esc(E.stop.text)}</p>`;
@@ -1393,7 +1396,7 @@ app.addEventListener("click", (ev) => {
     case "observe": {
       S.trail.push({ id: ds.id, outcome: +ds.outcome });
       const st = G.evaluate(S).steps.at(-1);
-      if (!st || st.id !== ds.id) { S.trail.pop(); if (E.unapplied) announce(G.unappliedText(E.unapplied)); return; }
+      if (!st || st.id !== ds.id) { S.trail.pop(); if (E.unapplied) announce(G.unappliedText(E)); return; }
       const next = S.checks.find((k) => !S.trail.some((t) => t.id === k.id));
       S.selected = next ? next.id : null;
       structure();
