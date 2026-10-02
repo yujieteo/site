@@ -800,6 +800,12 @@
       "aliases": [],
       "replaced_by": null
     },
+    "to-explore": {
+      "class": "action",
+      "description": "Something to try or look into, such as an answer to enter in a visualisation; no date or done-condition required.",
+      "aliases": [],
+      "replaced_by": null
+    },
     "todo": {
       "class": "action",
       "description": "An actionable item that remains to be completed.",
