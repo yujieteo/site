@@ -7,6 +7,10 @@ intro: >
 
 <!-- Use a ## YYYY-MM-DD heading. Separate notes with blank lines. Put tags last. -->
 
+## 2026-10-02
+
+Resolved the open todos and questions below; the author marked each resolved, and no answer is recorded here: 2026-09-26 on Mac agent-workstation migration; 2026-09-26 on whether agent tooling leaves human capabilities stronger; 2026-09-26 on a completion checklist for the skill-refinement workflow; 2026-09-26 on a design-systems skill; 2026-09-26 on compaction in the grilling skill; 2026-09-26 on token budgets, verification plans and the brain-and-hands model; 2026-09-26 on Karpathy's jobs repository; 2026-09-26 on what Wildcard means; 2026-09-26 on the strength-session experiment; 2026-09-25 on Kontsevich's deformation quantisation statement; 2026-09-25 on microblogging implementations for this website; 2026-09-25 on the NIST definition of cloud computing; 2026-09-25 on Fourier–Mukai transforms; 2026-09-25 on the Jev token-usage reference; 2026-09-25 on integral homomorphisms and covering maps; 2026-09-25 on Lebesgue measure from the Riesz representation theorem; 2026-09-25 on language-model memory and false premises; 2026-09-24 on ambiguous and presupposing terms; 2026-09-24 on completing the Wildcard item; 2026-09-24 on the Databricks research publications; 2026-09-24 on Alice's interpretability-paper spreadsheet; 2026-09-24 on the learning projects; 2026-09-24 on a GitHub repository structure for reusable materials; 2026-09-24 on cerebral folate deficiency and autistic features; 2026-09-24 on tldraw for presentations; 2025-11-06 on data movement, locality and compilers; 2025-10-20 on Neukirch's view of ramification. #knowledge-management
+
 ## 2026-09-30
 
 A beam is statically indeterminate when its supports provide more reaction components than equilibrium can find. A beam in a plane has three independent equilibrium equations, one for forces along it, one for forces across it, and one for moments, so the degree of indeterminacy of a single beam is the number of reactions minus three; R. C. Hibbeler's *Structural Analysis* counts determinacy the same way. A simply supported beam, with a pin and a roller, has three reactions and is determinate. A propped cantilever, fixed at one end and resting on a roller at the other, has four, so it is indeterminate to the first degree, and so is a beam continuous over three supports. A beam fixed at both ends has six reactions; with no axial load its two horizontal reactions drop out along with the horizontal equation, so for bending it has two redundants. Each redundant needs one extra equation, and that equation comes from compatibility: a deflection or a slope that the real supports force to take a known value, usually zero. #structural-engineering
@@ -141,15 +145,15 @@ Treat agent-facing tool descriptions, arguments, and outputs as untrusted. The [
 
 Agent tooling should help me become a better human, not merely replace more tasks. What capabilities, judgment, or attention should remain stronger after the automation is removed? #reflection #ai
 
-Mac agent-workstation migration: evaluate replacing `tmux` with `herdr` and Firefox with Chrome plus the Codex extension; install Codex and Claude Code; then make the `github.com/teoyujie/skills` repository usable from both tools. Build a repeatable Mac setup skill only after the manual path is understood. #todo #programming #tools
+Mac agent-workstation migration: evaluate replacing `tmux` with `herdr` and Firefox with Chrome plus the Codex extension; install Codex and Claude Code; then make the `github.com/teoyujie/skills` repository usable from both tools. Build a repeatable Mac setup skill only after the manual path is understood. #programming #tools
 
 Token-reduction tools need expiry dates and periodic re-evaluation because model and harness behaviour changes quickly. Current candidates serve different layers: Ponytail minimizes code, RTK condenses command output, Headroom trims read context, QMD searches Markdown, and “Jev” still needs its name, payment model, and mechanism verified. #llms #tools #tokens
 
 [Minami's skill-lifecycle essay](https://note.com/gtminami/n/na081914eff92?hl=en) argues that helper agents belong in independent contexts rather than being packaged as skills, while permanent project policy belongs in `AGENTS.md` or `CLAUDE.md`; frequently updated knowledge belongs behind retrieval, external state behind MCP or APIs, one-offs in prompts, and timed triggers in automation. #agents #skills #design
 
-Add a completion checklist to the skill-refinement workflow so every required step remains visible and any omission records a reason. #todo #skills #verification
+Add a completion checklist to the skill-refinement workflow so every required step remains visible and any omission records a reason. #skills #verification
 
-Build a design-systems skill only after defining the repeated procedure, selection boundary, and output that ordinary prompting does not already cover. #todo #skills #design
+Build a design-systems skill only after defining the repeated procedure, selection boundary, and output that ordinary prompting does not already cover. #skills #design
 
 The [Claude Developer Docs](https://platform.claude.com/docs/en/home) cover the path from API basics through tools, evaluation, cost control, and operation; the [Claude Cookbook](https://platform.claude.com/cookbook) supplies executable patterns for agents, retrieval, compaction, tool use, and evaluation. Use them to study agentic coding from reference and worked-example perspectives. #programming #llms #learning
 
@@ -163,11 +167,11 @@ Router files are pointers: keep `AGENTS.md` as a compact map to scoped instructi
 
 [A deep dive into pstack](https://flaviocopes.com/pstack/) describes `poteto-mode` as a router that selects principles, a playbook, specialist skills, model roles, and verification steps. This supports treating routers as first-class infrastructure rather than copying every procedure into one permanent prompt. #agents #programming #design
 
-Amend the `grilling` skill to use compaction deliberately: preserve decisions, unresolved objections, completion criteria, and the next action while discarding conversational repetition. #todo #skills #tokens
+Amend the `grilling` skill to use compaction deliberately: preserve decisions, unresolved objections, completion criteria, and the next action while discarding conversational repetition. #skills #tokens
 
-Set a token budget and a verification plan at the start of substantial agent work. Define the “brain and hands” model precisely: which agent owns judgment, which performs execution, and when the hands must escalate rather than improvise. #agents #planning #todo
+Set a token budget and a verification plan at the start of substantial agent work. Define the “brain and hands” model precisely: which agent owns judgment, which performs execution, and when the hands must escalate rather than improvise. #agents #planning
 
-[Karpathy's jobs repository](https://github.com/karpathy/jobs) turns Bureau of Labor Statistics occupation data into an interactive treemap and supports prompt-defined LLM scoring layers. Build a reusable skill and GitHub repository for similarly narrow, source-backed data visualisations, while keeping each score's assumptions and provenance visible. #todo #data-visualisation #skills
+[Karpathy's jobs repository](https://github.com/karpathy/jobs) turns Bureau of Labor Statistics occupation data into an interactive treemap and supports prompt-defined LLM scoring layers. Build a reusable skill and GitHub repository for similarly narrow, source-backed data visualisations, while keeping each score's assumptions and provenance visible. #data-visualisation #skills
 
 [Marcolli’s Talk on Motives and Quantum Field Theories](https://www.its.caltech.edu/~matilde/MotivesQFTtalkUNAM.pdf) Are residues of Feynman integrals periods of mixed Tate motives? Hopf algebras of renormalisation. Perturbative QFT with dimensional regularisation is the basic computation. Key steps are using Schwinger parameters and Feynman’s trick. Compare to periods and graph hypersurfaces. These are realisation of mixed Tate motives as per Bloch-Esnault-Kriemer? Regularisation replaces divergence integral by function with pole. Renormalisation enforces consistency over subgraphs. Recursive formula for Birkhoff decomposition is BPHZ. #math.ag
 
@@ -229,9 +233,9 @@ The Weil-conjecture proof compresses into three cohomological mechanisms: finite
 
 The corpus contains many open investigations but no linked outcome records. Without observations, additional TODOs increase the option set without improving later choices; the avoidable regret is accumulating exploration debt rather than learning. #regret #learning #feedback
 
-By 27 September 2026, spend ten minutes identifying what “Wildcard” means, its completion condition, and its next physical action; if it no longer matters, delete the commitment before its 8 October deadline. #todo #easy-win #act-now #exp-f19d0e3
+By 27 September 2026, spend ten minutes identifying what “Wildcard” means, its completion condition, and its next physical action; if it no longer matters, delete the commitment before its 8 October deadline. #easy-win #act-now #exp-f19d0e3
 
-Before the next strength session, place a full water bottle and earphones in the gym bag and schedule two 30-minute sessions for the following seven days. After the second session, record whether both occurred and whether the plan should be kept, reduced, or changed. #todo #experiment #exercise #exp-3a8d6c2
+Before the next strength session, place a full water bottle and earphones in the gym bag and schedule two 30-minute sessions for the following seven days. After the second session, record whether both occurred and whether the plan should be kept, reduced, or changed. #experiment #exercise #exp-3a8d6c2
 
 Give $S^1$ one vertex and one oriented edge. Both cellular chain groups are $\mathbf C$, and the boundary is zero because the edge starts and ends at the same vertex. Hence $H^0(S^1,\mathbf C)=\mathbf C$ and $H^1(S^1,\mathbf C)=\mathbf C$. Mental check: the alternating dimension is $1-1=0=\chi(S^1)$; Poincaré duality also pairs the two one-dimensional groups. This is the smallest model for cohomology as **closed data modulo exact data**. #math.at #cohomology #mental-computation
 
@@ -277,23 +281,23 @@ Let $\lambda=e^{2\pi i\theta}$. For $a_0=U$, $a_1=V$, $a_2=U^{-1}V^{-1}$, the ex
 
 [Talk on deformation quantization](https://www.youtube.com/watch?v=Lvel8eIHl9I): replace infinite-dimensional index theory on the loop space $LX$ with a higher notion of index theory on $X$. This may connect the deformation-quantisation perspective to the [earlier note on gauge theories and differential cohomology](notes.html#2026-09-22). #mathematics #physics
 
-Kontsevich proved that every finite-dimensional Poisson manifold admits a formal deformation quantisation. Add a link to a precise statement and identify the hypotheses used. #mathematics #todo
+Kontsevich proved that every finite-dimensional Poisson manifold admits a formal deformation quantisation. Add a link to a precise statement and identify the hypotheses used. #mathematics
 
 Simons describes signature formulas involving Pontryagin classes as one route into differential cohomology. Separately, the Chern–Gauss–Bonnet and Poincaré–Hopf theorems relate the Euler characteristic to curvature and to indices of zeros of a vector field. Do not conflate these formulas. #mathematics #differential-cohomology #topology
 
-Find microblogging or status-update implementations suitable for this website. #todo #website
+Find microblogging or status-update implementations suitable for this website. #website
 
 Stallman's [Anti-Glossary](https://stallman.org/antiglossary.html) argues that some familiar terms embed assumptions worth making explicit. Treat it as an author's case for particular wording, not as a neutral dictionary. #language #rhetoric
 
-The [NIST definition of cloud computing](https://csrc.nist.gov/pubs/sp/800/145/final) specifies five essential characteristics: on-demand self-service, broad network access, resource pooling, rapid elasticity, and measured service. Investigate how the definition supports comparison, procurement, and security analysis rather than treating it as a claim about every system called “cloud.” #computing #language #todo
+The [NIST definition of cloud computing](https://csrc.nist.gov/pubs/sp/800/145/final) specifies five essential characteristics: on-demand self-service, broad network access, resource pooling, rapid elasticity, and measured service. Investigate how the definition supports comparison, procurement, and security analysis rather than treating it as a claim about every system called “cloud.” #computing #language
 
 Calling software or tokens “consumed” can obscure what changes: software is usually copied or used, while compute, energy, money, or a token quota is spent. Likewise, “content” can flatten distinctions among different kinds of work. Prefer a concrete verb or noun when the distinction matters; these terms are not inherently wrong in every context. #computing #language
 
 [Periods](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kontzagi.pdf): Kontsevich and Zagier define periods as complex numbers whose real and imaginary parts are absolutely convergent integrals of rational functions with rational coefficients over domains given by polynomial inequalities with rational coefficients. They form a countable algebra under identities generated conjecturally by additivity, change of variables, and Stokes' theorem. Connections include Picard–Fuchs equations, $L$-values, and the Deligne and Beilinson conjectures; exponential periods provide a broader class. #math.ag #number-theory
 
-[Fourier–Mukai transforms](https://www.math.uni-bonn.de/people/huybrech/Garda2.pdf) express equivalences between derived categories and recover Serre duality through natural dualities of Hom or Ext groups. A Serre functor records these dualities but may not capture all noncommutative information. Investigate whether Hochschild homology supplies the missing invariant and how that compares with the radical of the trace pairing. #math.ag #category-theory #todo
+[Fourier–Mukai transforms](https://www.math.uni-bonn.de/people/huybrech/Garda2.pdf) express equivalences between derived categories and recover Serre duality through natural dualities of Hom or Ext groups. A Serre functor records these dualities but may not capture all noncommutative information. Investigate whether Hochschild homology supplies the missing invariant and how that compares with the radical of the trace pairing. #math.ag #category-theory
 
-Find the reference on using Jev to reduce language-model token usage; verify the tool's name and the claimed mechanism. #todo #llms #tools
+Find the reference on using Jev to reduce language-model token usage; verify the tool's name and the claimed mechanism. #llms #tools
 
 Breakfast: steamed egg with porridge, 100plus 320 ml. #nutrition
 
@@ -301,11 +305,11 @@ Lunch: brown rice with meatballs, cheese tofu and eggplant with curry gravy. Hot
 
 Dinner: sliced fish porridge with egg and Meiji protein milk. #nutrition
 
-In what precise setting are integral homomorphisms analogous to covering maps? Identify what “integral” means here and which properties correspond. #mathematics #todo
+In what precise setting are integral homomorphisms analogous to covering maps? Identify what “integral” means here and which properties correspond. #mathematics
 
-Explain how the Riesz representation theorem can produce Lebesgue measure from a positive linear functional, and distinguish this route from the usual outer-measure construction. #mathematics #todo #measure-theory
+Explain how the Riesz representation theorem can produce Lebesgue measure from a positive linear functional, and distinguish this route from the usual outer-measure construction. #mathematics #measure-theory
 
-Study how memory mechanisms and susceptibility to false premises affect language-model behaviour. “Psychology” is an analogy unless the claim concerns human cognition. #llms #cognition #todo
+Study how memory mechanisms and susceptibility to false premises affect language-model behaviour. “Psychology” is an analogy unless the claim concerns human cognition. #llms #cognition
 
 I expected ordinary use of language models to be enough, but widespread product-building has made effective use feel closer to a basic practical skill. The ceiling remains high, especially when outputs need strong verification. This is an assessment of current practice, not evidence that everyone must adopt the tools. #reflection #programming #llms #verification
 
@@ -331,25 +335,25 @@ Claude Code and computer-use systems are two interfaces for agent execution; com
 
 ## 2026-09-24
 
-Identify terms in mathematics, critical thinking, economics, and daily life that are ambiguous, misleading, or that silently presuppose a disputed viewpoint. Analyse the context and consequence instead of maintaining a context-free blacklist. #todo #language #rhetoric
+Identify terms in mathematics, critical thinking, economics, and daily life that are ambiguous, misleading, or that silently presuppose a disputed viewpoint. Analyse the context and consequence instead of maintaining a context-free blacklist. #language #rhetoric
 
 In [Did You Say “Intellectual Property”? It's a Seductive Mirage](https://www.gnu.org/philosophy/not-ipr.html), Stallman argues that grouping copyright, patent, and trademark law under one label encourages overgeneralisation. His [Words to Avoid (or Use with Care)](https://www.gnu.org/philosophy/words-to-avoid.html#piracy) similarly argues that word choice can import contested assumptions. These are advocacy essays: use their questions to separate legal regimes and surface framing, without treating Stallman's preferred vocabulary as neutral by default. #language #law #rhetoric #read
 
-Complete the item labelled “Wildcard” by 8 October 2026; add enough context to make the task actionable. #todo
+Complete the item labelled “Wildcard” by 8 October 2026; add enough context to make the task actionable. #planning
 
-Review the [Databricks research publications](https://www.databricks.com/research#publications) and record which papers are relevant and why. #todo #programming #learning
+Review the [Databricks research publications](https://www.databricks.com/research#publications) and record which papers are relevant and why. #programming #learning
 
-Find Alice's (“woog”) spreadsheet rating interpretability papers, verify its provenance, and save a durable link. #todo #interpretability #learning
+Find Alice's (“woog”) spreadsheet rating interpretability papers, verify its provenance, and save a durable link. #interpretability #learning
 
-Learning projects: build a production-ready full-stack web application, a DevOps Docker container, a basic compiler, and a real-world automation. #todo #programming #learning
+Learning projects: build a production-ready full-stack web application, a DevOps Docker container, a basic compiler, and a real-world automation. #programming #learning
 
 Be firm and express yourself clearly, even about small things. #learning #psychology #feedback
 
-Design a GitHub repository structure for reusable scripts, templates, infrastructure, bibliographies, snippets, playgrounds, notes, coding challenges, and curated resources. Decide which materials benefit from separate repositories rather than assuming each category needs one. Candidate reusable components include asynchronous protocols, SQLite patterns, a `pandas` cleaning pipeline, `matplotlib` defaults, multiprocessing templates, a subprocess wrapper, `grep` one-liners, GitHub Actions workflows, and a YAML configuration uploader. #todo #programming #knowledge-management
+Design a GitHub repository structure for reusable scripts, templates, infrastructure, bibliographies, snippets, playgrounds, notes, coding challenges, and curated resources. Decide which materials benefit from separate repositories rather than assuming each category needs one. Candidate reusable components include asynchronous protocols, SQLite patterns, a `pandas` cleaning pipeline, `matplotlib` defaults, multiprocessing templates, a subprocess wrapper, `grep` one-liners, GitHub Actions workflows, and a YAML configuration uploader. #programming #knowledge-management
 
 [Maxwell's equations](https://ncatlab.org/nlab/show/Maxwell's+equations) can be formulated using $U(1)$ differential cohomology. Local vector potentials differ by exact forms on overlaps; their compatibility data form a Čech cocycle, and gauge changes act by coboundaries. The first Chern class records quantised magnetic flux, while the Hodge star depends on the spacetime metric and relates the field strength to its dual. This develops the [earlier note on cocycles, connections, and gauge transformations](notes.html#2026-09-22). #mathematics #physics #differential-cohomology
 
-Research question: is cerebral folate deficiency associated with autistic features in a defined subgroup, and what evidence distinguishes association, a treatable comorbidity, and causation? Do not generalise a subgroup finding to autism as a whole. #health #todo
+Research question: is cerebral folate deficiency associated with autistic features in a defined subgroup, and what evidence distinguishes association, a treatable comorbidity, and causation? Do not generalise a subgroup finding to autism as a whole. #health
 
 Personal strength-training plan: choose sustainable exercises, include a leg press, and aim for two 30-minute sessions each week. During high-stress periods, reduce volume if needed while keeping effort appropriate and technique safe. #exercise
 
@@ -357,7 +361,7 @@ Personal Precor elliptical settings: rate 110, incline 10, resistance 8. The mac
 
 Personal Concept2 rowing cue: initiate the drive with the legs and target 20–22 strokes per minute. “70% leg power” is a coaching heuristic, not a directly measured ratio. #exercise
 
-Evaluate tldraw as a visual aid for presentations. #tools #todo
+Evaluate tldraw as a visual aid for presentations. #tools
 
 Fluid partial differential equations: study convex integration and the work of De Lellis and Székelyhidi. #mathematics #physics
 
@@ -449,7 +453,7 @@ Biology as a design reference: biological systems can be decentralised, energy-e
 
 Jim Keller's three-paradigm heuristic: a CPU supports general control flow where little is fixed in advance; a GPU exploits more predictable parallel timing while memory access may vary; a DSP targets computations where control and access patterns are largely known and the data varies. This is an explanatory simplification, not a complete taxonomy of processors. #computing
 
-Moving data consumes energy, making locality important. Instruction sets and compilers can shift some complexity from runtime to compilation, but whether they are simpler than CUDA or PyTorch depends on the layer and workload. Investigate how this trade-off extends to energy-intensive chip interconnects. #computing #systems #todo
+Moving data consumes energy, making locality important. Instruction sets and compilers can shift some complexity from runtime to compilation, but whether they are simpler than CUDA or PyTorch depends on the layer and workload. Investigate how this trade-off extends to energy-intensive chip interconnects. #computing #systems
 
 Hypothesis about representative democracy: voters may identify with a candidate's aims even when particular policies lack majority support, and fear of worse outcomes can motivate strategic participation or support for one state actor against another. Test this account against alternatives such as party identity, retrospective voting, and institutional constraints. #politics #todo
 
@@ -485,7 +489,7 @@ Use approximate costs for operations such as L1 cache access, branch mispredicti
 
 $\operatorname{Spec}\mathbb{R}[x]$ as the affine line over $\mathbb{C}$ modulo conjugation: closed points of $\mathbb{A}^1_k$ correspond to irreducible polynomials over $k$, or, for a perfect field, to finite Galois orbits in an algebraic closure. Over $\mathbb{R}$ these are real points and conjugate pairs of complex points. #math.ag
 
-Neukirch's perspective, relayed by Qiaochu Yuan: passing toward an algebraic closure of a number field can be viewed as removing arithmetic ramification. “Resolving singularities” is an analogy that needs a precise formulation before use as a theorem. #number-theory #todo
+Neukirch's perspective, relayed by Qiaochu Yuan: passing toward an algebraic closure of a number field can be viewed as removing arithmetic ramification. “Resolving singularities” is an analogy that needs a precise formulation before use as a theorem. #number-theory
 
 Schur's lemma over an algebraically closed field: an endomorphism of a finite-dimensional irreducible representation has an eigenvalue; the corresponding eigenspace is a nonzero invariant subspace, so irreducibility makes the endomorphism scalar. Other fields or infinite-dimensional representations require additional hypotheses. #representation-theory
 
