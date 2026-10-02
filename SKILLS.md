@@ -38,6 +38,7 @@ Each rule is owned by the file it links to; read that file for the detail.
 7. **Scope.** Do what was asked and nothing more: no unrequested features, refactors or content edits. See [minimal-diff-scope.md](skills/principles/minimal-diff-scope.md) and [preserve-user-content.md](skills/principles/preserve-user-content.md).
 8. **No secrets, no server config.** Never commit hostnames, credentials or private paths, and never change the web server's configuration. See [no-secrets-in-repo.md](skills/principles/no-secrets-in-repo.md) and [atomic-safe-deploy.md](skills/principles/atomic-safe-deploy.md).
 9. **Committed is not done.** A task is done when [Stage A](skills/verify.md#stage-a-pre-deploy) passes and the pull request is open, or, for a deploy, when [Stage B](skills/verify-post-deploy.md) passes. GitHub runs no checks on a pull request with merge conflicts: rebase it rather than wait for CI.
+10. **Review by risk.** Data-only changes and straight visualization ports take the fast path: Stage A, then a plain pull request without the no-mistakes pipeline. Anything touching site code, templates, scripts, tests, CI or deploy keeps the full pipeline. The diff decides; see [Review tier](skills/verify.md#review-tier).
 
 ## Background
 
