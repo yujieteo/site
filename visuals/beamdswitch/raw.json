@@ -2,7 +2,7 @@
   "title": "beamdswitch",
   "upstream": {
     "repository": "https://github.com/yujieteo/beamdswitch",
-    "commit": "1758ec68918c685d948d7b1e71885efc6726e919",
+    "commit": "fc627b5d56f8a75da870e1487d10b6e32b76bf29",
     "file": "beamdswitch.html",
     "sha256": "cbf12418cbb721ae92080b497ed25ab6f957957f67362f4ea7d3be2a97840868",
     "bytes": 3870041
