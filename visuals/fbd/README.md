@@ -56,7 +56,7 @@ the normal site build. There is no solver: reactions are drawn, not computed.
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | The whole tool. `<script data-core>` blocks are the DOM-free model (units, validation, serialisation, rendering, export); `<script data-ui>` blocks are the interface. Each block is one feature, in build order. |
+| `index.html` | The whole tool. `<script id="site-theme">` in the head applies the reader's site-wide Light or Dark choice (`localStorage` `theme`) before paint. `<script data-core>` blocks are the DOM-free model (units, validation, serialisation, rendering, export); `<script data-ui>` blocks are the interface. Each block is one feature, in build order. |
 | `beamdswitch.js` | The standard beamdswitch report template (`deck(report)` writes a report as a beamdswitch Markdown deck); a copy of the site's shared [`templates/beamdswitch.js`](../../templates/beamdswitch.js), pasted unchanged into the page as `<script id="fbd-beamdswitch" data-core>` and kept identical by the tests. The `fbd-report` core block (`FBD.beamdswitchReport`) fills it from the drawing. |
 | `examples.json` | Reference drawings 1 to 5 from the specification, in the saved format. Published as the visualization's `data.json`. |
 | `tools/make-examples.mjs` | Rebuilds `examples.json` through the tool's own unit parsing and loader. |
