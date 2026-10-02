@@ -17,22 +17,19 @@ set `VISUALS_REPO` when it is not at a supported sibling path.
 ```sh
 .venv/bin/python scripts/validate.py
 .venv/bin/python scripts/build.py
-.venv/bin/python scripts/run_tests.py  # Python and Node tests; see the [README Test section](../README.md#test)
+.venv/bin/python scripts/run_tests.py --base origin/main  # Python and Node tests, timed against tests/time-budget.json
 ```
 
-Every command above must exit successfully. The build recreates `site/` from the
+Every command above must exit successfully; on `main`, omit `--base` to run every
+per-visualization check (see the [README](../README.md#test)). The build recreates `site/` from the
 sources; `site/` is ignored by Git, so `git status` shows only source changes.
 Review the generated changes with `.venv/bin/python scripts/site_diff.py <base>`
 (see [Deploy generated files](playbooks/deploy.md)) and stop if they go beyond
 the intended sources. Do not deploy after a failure.
 
-Every site test runs on every deploy, and the suite's total time must not grow with
-the number of visualizations. Time each site test you add (for example
-`time .venv/bin/python -m unittest tests.test_visual_ports`), keep each well under
-a second, and never put rebuilds, subprocess builds, full-corpus scans, browser
-launches or network access in one; list the added tests, their times and why
-the time is needed in the pull request description. See [Site test cost](playbooks/add-visualization.md#site-test-cost). Browser end-to-end tests belong in the
-visualization's own repository; this stage is the site-level end-to-end check of a
-port, and the second of the [two no-mistakes runs](playbooks/add-visualization.md#end-to-end-testing-and-the-two-pipeline-runs).
+A site test you add must stay cheap and be timed: follow
+[Site test cost](playbooks/add-visualization.md#site-test-cost). This stage is the
+site-level end-to-end check of a visualization port, the second of the
+[two no-mistakes runs](playbooks/add-visualization.md#end-to-end-testing-and-the-two-pipeline-runs).
 
 After deploying, run [Stage B](verify-post-deploy.md) and report it with the same fields.

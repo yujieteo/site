@@ -560,8 +560,7 @@ kbd.key-hint {
 
 .entry-date,
 .post-meta,
-.result-count,
-.pager-label {
+.result-count {
   color: var(--secondary);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -910,10 +909,6 @@ kbd.key-hint {
   margin-inline: 0;
   padding-left: var(--space-4);
   border-left: 2px solid var(--border);
-  color: var(--secondary);
-}
-
-.empty-notes {
   color: var(--secondary);
 }
 
