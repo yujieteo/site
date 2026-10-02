@@ -22,6 +22,7 @@ templates/           Shared HTML templates and the beamdswitch report template
 tests/               Python (unittest) and Node tests
 visuals/             Visualizations published here, mostly ports of their standalone yujieteo/<slug> repositories
 site/                Generated site (not committed; never edit by hand)
+AGENTS.md            Entry point for agents; points to SKILLS.md
 CONTEXT.md           Domain vocabulary (Published Corpus, Corpus Record, ...)
 SKILLS.md            Router from a task to the playbook that owns it
 llms.txt             Public guidance for LLM readers

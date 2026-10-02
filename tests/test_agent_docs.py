@@ -1,4 +1,4 @@
-"""The agent entry points (SKILLS.md, llms.txt, skills/) name only files that exist."""
+"""The agent entry points (AGENTS.md, SKILLS.md, CONTRIBUTING.md, llms.txt, docs/architecture.md, skills/) name only files that exist."""
 
 import re
 import unittest
@@ -9,7 +9,10 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://teoyujie.org/"
 REPO_URL = "https://github.com/yujieteo/site/blob/main/"
-DOCS = [ROOT / "SKILLS.md", ROOT / "llms.txt", *sorted((ROOT / "skills").rglob("*.md"))]
+DOCS = [
+    *(ROOT / name for name in ("AGENTS.md", "SKILLS.md", "CONTRIBUTING.md", "llms.txt", "docs/architecture.md")),
+    *sorted((ROOT / "skills").rglob("*.md")),
+]
 LINK = re.compile(r"\]\(([^)\s]+)\)")
 # A backticked repository path such as `scripts/build.py` or `data/visuals/`.
 CODE_PATH = re.compile(r"`((?:data|docs|exports|schema|scripts|skills|static|templates|tests|visuals)/[^`\s]*)`")

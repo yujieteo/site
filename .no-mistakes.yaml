@@ -2,7 +2,10 @@
 #
 # commands.test mirrors the steps of .github/workflows/ci.yml (validate, build,
 # Python tests, Node tests) so the Test step runs the real suite instead of
-# asking an agent to improvise. no-mistakes loads repo commands from the
+# asking an agent to improvise. CI runs the two suites through
+# scripts/run_tests.py, which adds the timing report and the budget in
+# tests/time-budget.json; here they run directly, so a loaded local machine
+# does not trip a budget set for CI. no-mistakes loads repo commands from the
 # default-branch copy of this file, not from the pushed branch, so a change here
 # takes effect only once it is on main. Keep it in step with CI.
 #

@@ -8,12 +8,14 @@ the sources. `scripts/validate.py` checks every YAML file against `schema/`.
 never leaves stale output. `site/` is ignored by Git: pull requests carry only
 sources, so independent content changes never conflict on generated pages, and
 `scripts/site_diff.py` derives a deploy's upload set by rebuilding the live
-commit and comparing. Visualization HTML and data are read from the
-separate `visuals` repository at the commit pinned in
+commit and comparing. Each visualization's HTML and data come from one of two
+places and are written to `site/visuals/<slug>/`. Most are in this
+repository's `visuals/<slug>/`, a port of the page files of its standalone
+`yujieteo/<slug>` repository (the stub's paths start with `visuals/`). The
+rest are read from the separate `visuals` repository at the commit pinned in
 `data/visuals/<slug>.pin` (one file per visualization, so two pull requests
-that each add or republish a different visualization do not conflict) and
-written to `site/visuals/<slug>/`; the visuals checkout's own `HEAD` does not
-affect the build.
+that each add or republish a different visualization do not conflict); the
+visuals checkout's own `HEAD` does not affect the build.
 
 Notes are the one shared source that can still conflict. The captain chose to
 keep every note in the single file `data/notes.md`, so notes changes land one
