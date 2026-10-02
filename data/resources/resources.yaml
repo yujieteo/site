@@ -138,6 +138,11 @@
   category: "engineering"
   note: "The first finite element software learnt in depth, with mentorship during an internship."
 
+- title: "FreeCAD in the Browser"
+  url: "https://freecad.virtastic.app/"
+  category: "engineering"
+  note: "The open-source FreeCAD parametric 3D CAD modeller compiled to WebAssembly, running in a browser tab with nothing installed."
+
 - title: "Dexter Chua's Notes"
   url: "https://dec41.user.srcf.net/notes/"
   category: "mathematics"
