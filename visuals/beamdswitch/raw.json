@@ -2,10 +2,10 @@
   "title": "beamdswitch",
   "upstream": {
     "repository": "https://github.com/yujieteo/beamdswitch",
-    "commit": "74dca50f753b3104584e53014eb44375b5cf5a8f",
+    "commit": "1758ec68918c685d948d7b1e71885efc6726e919",
     "file": "beamdswitch.html",
-    "sha256": "7f1846e44169adc1a7814b605f19f10230f6bbd81ff93bdf8c9491a9ee94b23a",
-    "bytes": 2447947
+    "sha256": "cbf12418cbb721ae92080b497ed25ab6f957957f67362f4ea7d3be2a97840868",
+    "bytes": 3870041
   },
   "loaded": {
     "narration": "on the first narration or narrated video, whichever engine runs",
