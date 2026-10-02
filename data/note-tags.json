@@ -538,6 +538,12 @@
       "aliases": [],
       "replaced_by": null
     },
+    "parked": {
+      "class": "status",
+      "description": "Set aside until a date given in the note's text; neither resolved nor dropped.",
+      "aliases": [],
+      "replaced_by": null
+    },
     "performance": {
       "class": "topic",
       "description": "Use for notes about performance.",
