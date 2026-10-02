@@ -171,8 +171,7 @@ def field_list(value, command):
 # --- commands -------------------------------------------------------------
 
 def aggregates(records):
-    classes = Counter(t for r in records for t in r["tags"] if is_arxiv_class(t))
-    return classes
+    return Counter(t for r in records for t in r["tags"] if is_arxiv_class(t))
 
 
 def cmd_home(options, positionals, records):

@@ -40,9 +40,9 @@ ATOM = {"a": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/a
 STOP_WORDS = {"a", "an", "the", "on", "of", "and", "for", "in", "to", "via", "with", "from", "by", "at"}
 
 
-def load_papers(directory=DATA):
+def load_papers():
     records = []
-    for path in sorted(directory.glob("*.y*ml")):
+    for path in sorted(DATA.glob("*.y*ml")):
         data = yaml.safe_load(path.read_text(encoding="utf-8")) or []
         records.extend(data if isinstance(data, list) else [data])
     return records

@@ -243,11 +243,11 @@ def format_duration(seconds):
     return f"{total} sec"
 
 
-def media_player(item, prefix=""):
+def media_player(item):
     if "video" in item:
-        video_src = f"{prefix}{item['video']}"
-        captions_src = f"{prefix}{item['captions']}"
-        poster_src = f"{prefix}{item['poster']}"
+        video_src = item["video"]
+        captions_src = item["captions"]
+        poster_src = item["poster"]
         return (
             f'<video class="media-player" controls preload="metadata" playsinline '
             f'poster="{esc(poster_src)}">'
@@ -258,7 +258,7 @@ def media_player(item, prefix=""):
             f'<a href="{esc(video_src)}">Download the video</a>.'
             '</video>'
         )
-    src = f"{prefix}{item['audio']}"
+    src = item["audio"]
     return (
         f'<audio class="media-player" controls preload="metadata" src="{esc(src)}">'
         f'Your browser does not support the audio element. '

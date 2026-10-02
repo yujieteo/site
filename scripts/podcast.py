@@ -331,9 +331,9 @@ def plan_episode(document, registry, target_minutes=DEFAULT_TARGET_MINUTES,
     }
 
 
-def load_episodes(root=ROOT):
+def load_episodes():
     """Load every episode metadata file, newest first."""
-    directory = root / "data" / "podcasts"
+    directory = DATA / "podcasts"
     episodes = []
     if not directory.is_dir():
         return episodes
@@ -346,8 +346,8 @@ def load_episodes(root=ROOT):
     return episodes
 
 
-def load_site_name(root=ROOT):
-    path = root / "data" / "cv" / "cv.yaml"
+def load_site_name():
+    path = DATA / "cv" / "cv.yaml"
     try:
         with path.open(encoding="utf-8") as handle:
             document = yaml.safe_load(handle) or {}
@@ -377,38 +377,32 @@ def _summarize(plan, used_notes):
 
 
 def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
-                     voice=DEFAULT_VOICE, synthesizer=None, root=ROOT,
-                     wpm=DEFAULT_WPM, today=None, focus_tags=None):
-    """Render one episode and write its metadata and MP3 under ``root``."""
-    notes_path = root / "data" / "notes.md"
-    tags_path = root / "data" / "note-tags.json"
-    document, registry = load_notes(notes_path, tags_path)
-    previous = load_episodes(root)
+                     voice=DEFAULT_VOICE, focus_tags=None):
+    """Render one episode and write its metadata and MP3 under data/podcasts/."""
+    document, registry = load_notes(DATA / "notes.md", DATA / "note-tags.json")
     plan = plan_episode(
         document,
         registry,
         target_minutes=target_minutes,
         episode_date=episode_date,
-        previous=previous,
-        wpm=wpm,
-        today=today,
+        previous=load_episodes(),
         focus_tags=focus_tags,
     )
 
-    metadata_path = root / "data" / "podcasts" / f"{plan['id']}.yaml"
-    audio_path = root / "data" / "podcasts" / "audio" / f"{plan['id']}.mp3"
+    metadata_path = DATA / "podcasts" / f"{plan['id']}.yaml"
+    audio_path = DATA / "podcasts" / "audio" / f"{plan['id']}.mp3"
     if metadata_path.exists() or audio_path.exists():
         raise PodcastError(
             f"episode {plan['id']} already exists"
         )
 
-    script = build_script(plan, load_site_name(root))
+    script = build_script(plan, load_site_name())
     if not script["notes"]:
         raise PodcastError("data/notes.md has no speakable notes for this episode")
-    if synthesizer is None:
-        from kokoro_tts import KokoroSynthesizer
+    # Imported here: only rendering needs the optional requirements-podcast.txt.
+    from kokoro_tts import KokoroSynthesizer
 
-        synthesizer = KokoroSynthesizer(voice=voice)
+    synthesizer = KokoroSynthesizer(voice=voice)
 
     work_audio = audio_path.with_suffix(".mp3.part")
     target_seconds = target_minutes * 60
@@ -416,7 +410,7 @@ def generate_episode(target_minutes=DEFAULT_TARGET_MINUTES, episode_date=None,
     used_notes = []
     synthesizer.start(work_audio)
     try:
-        seconds_per_word = 60 / wpm
+        seconds_per_word = 60 / DEFAULT_WPM
 
         def add_segment(text):
             nonlocal seconds_per_word
@@ -528,7 +522,7 @@ def main(argv=None):
                 registry,
                 target_minutes=args.target_minutes,
                 episode_date=args.episode_date,
-                previous=load_episodes(ROOT),
+                previous=load_episodes(),
                 focus_tags=args.focus_tags,
             )
             summary = _plan_summary(plan)
