@@ -8,6 +8,15 @@ stage,check,status,evidence
 
 Use `PASS` or `FAIL` for `status`. Report each stage separately. Stop after a failure and mark the remaining checks `NOT RUN`.
 
+## Review tier
+
+Read the tier from the diff (`git diff --name-only origin/main...HEAD`), not from the request.
+
+- **Fast path:** Stage A below, then a plain pull request without the no-mistakes pipeline. It applies only when every changed path is one of:
+  - content under `data/`: notes, `data/calibrator/raw.toon`, catalogue stubs `data/visuals/<slug>.yaml`, blog posts, decks, podcasts and media, paper links and resources, but not a `data/visuals/<slug>.pin`;
+  - a straight port: `visuals/<slug>/` for a slug already in `PORTS` in `tests/test_visual_ports.py`, byte-identical to a `yujieteo/<slug>` commit (minus `tests/` and `.github/`) whose own no-mistakes run and CI passed. Name that commit in the pull request.
+- **Full pipeline:** everything else, including any change to `scripts/`, `templates/`, `static/`, `schema/`, `tests/`, `.github/`, deploy files, a `.pin`, `beamdswitch` or `fbd`, a first port (it adds to `PORTS`), or a port edited after copying. One such path puts the whole pull request on the full pipeline.
+
 ## Stage A: pre-deploy
 
 Run these commands from the repository root. The build and the Python tests
@@ -31,7 +40,8 @@ A site test you add must stay cheap and be timed: follow
 [Site test cost](playbooks/add-visualization.md#site-test-cost). Browser end-to-end
 tests belong in the dedicated technical E2E repository (pending; until it exists,
 the visualization's own repository stands in), never here. This stage is the
-site-level end-to-end check of a visualization port, the second of the
-[two no-mistakes runs](playbooks/add-visualization.md#end-to-end-testing-and-the-two-pipeline-runs).
+site-level end-to-end check of a visualization port, run inside the second of the
+[two no-mistakes runs](playbooks/add-visualization.md#end-to-end-testing-and-the-two-pipeline-runs),
+or alone for a straight port on the [fast path](#review-tier).
 
 After deploying, run [Stage B](verify-post-deploy.md) and report it with the same fields.
