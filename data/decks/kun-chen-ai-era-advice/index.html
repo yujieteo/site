@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script id="site-theme">try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<title>Kun Chen&#x27;s advice for engineers in the AI era</title>
+<meta name="description" content="A narrated beamdswitch deck of the career and AI advice Kun Chen gives in the A Life Engineered interview, one idea per slide, each with a short credited quote and a timestamp.">
+<style>
+/* House style for teoyujie.org visuals. Paste this whole block into the visual's
+   inline <style>, first, then add only domain rules after it. The rules are
+   explained in ../references/style-guide.md. Never link it: a visual stays one
+   self-contained file (§2). Values come from the site's static/css/style.css and
+   the visuals that already follow it (mohr, beamdiag, phasors). */
+
+:root {
+  /* Neutrals: the site's own tokens. */
+  --bg: #ffffff;
+  --fg: #1d1d1f;
+  --muted: #6e6e73;        /* secondary text, tick labels: 5.1:1 */
+  --faint: #a1a1a6;        /* decoration and context marks only, never text */
+  --surface: #f5f5f7;      /* insets, readouts, hover */
+  --border: #d2d2d7;       /* panel borders and section rules */
+  --control: #86868b;      /* button and field outlines: 3.6:1, so controls stand out (§20) */
+  --grid: #e8e8ed;         /* gridlines */
+  --axis: #86868b;         /* axes, baselines, ticks, zero lines */
+  /* Accent: state and interaction only (focus, links, pressed, sliders). */
+  --focus: #0071e3;
+  --on-focus: #ffffff;
+  /* Data: four series in fixed order, then the one highlight. */
+  --c1: #2a78d6;           /* blue */
+  --c2: #eb6834;           /* orange */
+  --c3: #8a4fd8;           /* violet */
+  --c4: #0f8b8d;           /* teal */
+  --hl: #c43d2f;           /* the datum the story is about */
+  /* Status: always paired with text or an icon. */
+  --ok: #1a7f4b;
+  --warn: #9a6700;
+  --bad: #c4261d;
+  --shadow: rgb(0 0 0 / 0.16);
+  /* Type, space, shape and motion: the site's scale. */
+  --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --math: "Cambria Math", "STIX Two Math", "Latin Modern Math", Cambria, "Times New Roman", serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --r: 0.5rem;
+  --fade-duration: 200ms;
+  --fade-ease: cubic-bezier(0.2, 0, 0, 1);
+  color-scheme: light dark;
+}
+
+/* Dark: follows the system unless the reader chose Light or Dark on the site
+   (the head script copies localStorage "theme" to <html data-theme>). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1d1d1f;
+    --fg: #f5f5f7;
+    --muted: #a1a1a6;
+    --faint: #6e6e73;
+    --surface: #2c2c2e;
+    --border: #48484a;
+    --control: #8e8e93;
+    --grid: #333336;
+    --axis: #8e8e93;
+    --focus: #2997ff;
+    --on-focus: #1d1d1f;
+    --c1: #3987e5;
+    --c2: #d95926;
+    --c3: #a77bf0;
+    --c4: #3bb6b8;
+    --hl: #ff6961;
+    --ok: #30c07a;
+    --warn: #e3b341;
+    --bad: #ff6961;
+    --shadow: rgb(0 0 0 / 0.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #1d1d1f;
+  --fg: #f5f5f7;
+  --muted: #a1a1a6;
+  --faint: #6e6e73;
+  --surface: #2c2c2e;
+  --border: #48484a;
+  --control: #8e8e93;
+  --grid: #333336;
+  --axis: #8e8e93;
+  --focus: #2997ff;
+  --on-focus: #1d1d1f;
+  --c1: #3987e5;
+  --c2: #d95926;
+  --c3: #a77bf0;
+  --c4: #3bb6b8;
+  --hl: #ff6961;
+  --ok: #30c07a;
+  --warn: #e3b341;
+  --bad: #ff6961;
+  --shadow: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 1rem/1.55 var(--sans);
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  width: min(100% - 2rem, 80rem);
+  margin: auto;
+  padding: clamp(1.25rem, 5vw, 3rem) 0 3rem;
+}
+
+a { color: var(--focus); }
+
+/* Page header: eyebrow, title, lede. */
+.eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) 0.9rem;
+  margin: 0;
+  color: var(--muted);
+  font: 600 var(--text-xs)/1.4 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.eyebrow a { color: inherit; text-decoration: none; }
+.eyebrow a:hover { text-decoration: underline; }
+h1 {
+  max-width: 20ch;
+  margin: 0.35rem 0 0.8rem;
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+h2 { margin: 0 0 var(--space-2); font-size: var(--text-lg); font-weight: 600; letter-spacing: -0.015em; }
+.lede { max-width: 66ch; margin: 0 0 var(--space-4); font-size: var(--text-lg); }
+.note { margin: var(--space-1) 0 0; color: var(--muted); font-size: var(--text-sm); }
+.label {
+  color: var(--muted);
+  font: 600 var(--text-xs)/1.4 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.num, output, input[type="number"] { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* Panels: flat, ruled, no shadow. */
+.card {
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--bg);
+}
+.inset { padding: var(--space-3); border-radius: var(--r); background: var(--surface); }
+.callout {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--focus);
+  border-radius: var(--r);
+}
+hr, .rule { height: 0; margin: var(--space-6) 0; border: 0; border-top: 1px solid var(--border); }
+
+/* Controls. */
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 2.25rem;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid var(--control);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  cursor: pointer;
+}
+button:hover, .btn:hover { background: var(--surface); }
+button[aria-pressed="true"], button[aria-selected="true"], .btn.on {
+  border-color: var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+}
+button.primary { border-color: var(--focus); background: var(--focus); color: var(--on-focus); }
+button:disabled { border-color: var(--grid); background: var(--bg); color: var(--faint); cursor: default; }
+input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea {
+  min-height: 2.25rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--control);
+  border-radius: var(--r);
+  background: var(--bg);
+}
+input:disabled, select:disabled { background: var(--surface); color: var(--muted); }
+input[type="range"], input[type="checkbox"], input[type="radio"] { accent-color: var(--focus); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.seg { display: inline-flex; overflow: hidden; border: 1px solid var(--control); border-radius: 999px; }
+.seg > button { min-height: 2.1rem; border: 0; border-radius: 0; }
+@media (pointer: coarse) {
+  button, .btn, select, input:not([type="checkbox"]):not([type="radio"]), .seg > button { min-height: 2.75rem; }
+}
+
+/* Charts: SVG text and marks take their colour from the tokens. */
+.chart { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { fill: var(--muted); font: 0.75rem var(--sans); }
+.chart .tick text { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.chart .axis-title { font-weight: 600; }
+.chart .direct-label { fill: var(--fg); }
+.chart .grid line { stroke: var(--grid); stroke-width: 1; }
+.chart .axis line, .chart .axis path, .chart .zero { stroke: var(--axis); stroke-width: 1; fill: none; }
+.chart .ref { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+.chart .series { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .context { stroke: var(--faint); fill: var(--faint); }
+.chart .hl { stroke: var(--hl); fill: var(--hl); }
+.tip {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+  font-size: var(--text-sm);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+/* Motion: state fades only, off under reduced motion. */
+a, button, input, select, summary, .btn {
+  transition-property: color, background-color, border-color, opacity;
+  transition-duration: var(--fade-duration);
+  transition-timing-function: var(--fade-ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --fade-duration: 0ms; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Print: always the light palette; mark controls that mean nothing on paper
+   with .no-print. */
+@media print {
+  :root:root {
+    --bg: #ffffff; --fg: #1d1d1f; --muted: #6e6e73; --faint: #a1a1a6; --surface: #f5f5f7;
+    --border: #d2d2d7; --control: #86868b; --grid: #e8e8ed; --axis: #86868b; --focus: #0071e3;
+    --c1: #2a78d6; --c2: #eb6834; --c3: #8a4fd8; --c4: #0f8b8d; --hl: #c43d2f;
+    --ok: #1a7f4b; --warn: #9a6700; --bad: #c4261d;
+    color-scheme: light;
+  }
+  .no-print { display: none !important; }
+}
+
+/* Deck page. */
+.toolbar { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: var(--space-3) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.btn { text-decoration: none; }
+.part { margin: 0 0 var(--space-8); }
+.part > h2 { font: 600 var(--text-xs)/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.slides { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.slide { min-width: 0; padding: var(--space-4); border: 1px solid var(--border); border-radius: var(--r); }
+.slide h3 { margin: 0 0 var(--space-2); font-size: 1rem; font-weight: 600; letter-spacing: -0.015em; }
+.slide ul { margin: 0 0 var(--space-3); padding-left: 1.1rem; font-size: var(--text-sm); }
+.slide li + li { margin-top: var(--space-1); }
+.quote { margin: 0; padding: var(--space-3); border-radius: var(--r); background: var(--surface); font-size: var(--text-sm); }
+.quote .label { display: block; margin-bottom: var(--space-1); }
+.quote a, .key a { color: var(--fg); }
+.key { margin: 0; padding: var(--space-3) var(--space-4); border: 1px solid var(--border); border-left: 3px solid var(--focus); border-radius: var(--r); font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+<p class="eyebrow"><a href="../../index.html">teoyujie.org</a><span>Deck</span><span>beamdswitch</span></p>
+<h1>Kun Chen&#x27;s advice for engineers in the AI era</h1>
+<p class="lede">16 slides of the advice Kun Chen, formerly E7 at Facebook and partner level at Microsoft, gives in <a href="https://youtu.be/q3ca41YIZjc">The 2% of Engineers Winning the AI Era (Ex-Meta L8)</a>, an interview by Steve on A Life Engineered. Each slide is one idea, paraphrased, with a short quote and timestamps into the video.</p>
+<div class="toolbar">
+<button type="button" class="primary no-print" id="present">Present with narration</button>
+<button type="button" class="no-print" id="download">Download deck (.md)</button>
+<a class="btn" href="talk-handout.pdf">Handout (PDF)</a>
+<a class="btn" href="talk-article.pdf">Article with narration (PDF)</a>
+<a class="btn" href="https://youtu.be/q3ca41YIZjc">Watch the interview</a>
+</div>
+<p class="note no-print" id="status" role="status">Present opens the deck in <a href="../../visuals/beamdswitch/index.html">beamdswitch</a> in a new tab, with slides, a handout, narration and video export, all generated in your browser. Keep this tab open while it loads. Narration downloads a voice model the first time (about 111 MB).</p>
+<hr>
+<section class="part"><h2>Keep growing</h2><ol class="slides" start="1"><li class="slide"><h3>Test your growth every month, not every review</h3><ul><li>Ask what you can do this month that you could not do last month.</li><li>Waiting for a missed promotion to notice you have stalled is a lagging signal.</li><li>As tools change faster, shorten the interval further.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;What did I do this month that I couldn&#x27;t do last month?&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=30">0:30</a>, <a href="https://youtu.be/q3ca41YIZjc?t=120">2:00</a>)</p></li><li class="slide"><h3>When the work gets comfortable, move</h3><ul><li>Bored, or no longer learning: change team, company or role.</li><li>Each of his moves, Microsoft to Facebook, news to games, engineer to manager and back, followed curiosity.</li><li>Treat side quests as a signal that the main quest has gone stale.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Never get comfortable&quot; with doing what you have always done. (<a href="https://youtu.be/q3ca41YIZjc?t=3301">55:01</a>, <a href="https://youtu.be/q3ca41YIZjc?t=3451">57:31</a>)</p></li></ol></section><section class="part"><h2>Do more than you are assigned</h2><ol class="slides" start="3"><li class="slide"><h3>Get the fundamentals right, then take initiative</h3><ul><li>Being good at the assigned work is table stakes; doing it fast frees time.</li><li>Spend that time on problems other people have: no one asked him to build the Bing click-data tool.</li><li>If deadlines leave no slack, negotiate the expectations with your manager.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Take initiative and identify problems that other people have.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=1021">17:01</a>, <a href="https://youtu.be/q3ca41YIZjc?t=1081">18:01</a>)</p></li><li class="slide"><h3>Start scrappy, control scope, ship for feedback</h3><ul><li>Reuse existing building blocks instead of reinventing them.</li><li>Cut scope precisely so something useful reaches people quickly.</li><li>Show a first version to a few users and iterate on what they say.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Try not to reinvent the wheels.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=901">15:01</a>, <a href="https://youtu.be/q3ca41YIZjc?t=960">16:00</a>)</p></li><li class="slide"><h3>Talk to your users before you build</h3><ul><li>The Messenger games platform was designed around high scores and launched without asking developers.</li><li>Retention after the holidays was poor: turn-based and real-time games did not fit.</li><li>Asking game developers led to a redesign that gave them the flexibility.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;We assumed it&#x27;s going to work.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=1561">26:01</a>, <a href="https://youtu.be/q3ca41YIZjc?t=1620">27:00</a>)</p></li><li class="slide"><h3>The title does not decide your job</h3><ul><li>Do not hide in the engineer&#x27;s corner, even as an introvert.</li><li>He travelled to game studios and shaped product decisions; that impact made staff.</li><li>Ask what the most impactful thing for the business is, whatever your title.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;The title does not matter.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=2580">43:00</a>)</p></li><li class="slide"><h3>When things run smoothly, find the step change</h3><ul><li>If a project would run just as well without you, you are not adding value there.</li><li>Rethink the strategy rather than growing it incrementally.</li><li>Chaos is where the interesting problems are.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Taking initiative step function changes.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=2700">45:00</a>, <a href="https://youtu.be/q3ca41YIZjc?t=2731">45:31</a>)</p></li></ol></section><section class="part"><h2>Advice by career stage</h2><ol class="slides" start="8"><li class="slide"><h3>Juniors: get very good, build a hundred things</h3><ul><li>Skill is the foundation of everything else.</li><li>He had built about a hundred projects before his first job; most earned nothing.</li><li>Side projects give breadth a big company&#x27;s stable stack will not, and fun keeps you going.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Build a lot of them.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=3060">51:00</a>, <a href="https://youtu.be/q3ca41YIZjc?t=3120">52:00</a>)</p></li><li class="slide"><h3>Seniors: know your leverage when you move</h3><ul><li>At senior levels, former colleagues recruit you; that is leverage.</li><li>The default is a lateral move, because the hiring company has every reason to offer one.</li><li>One negotiation can be worth a level, often one you already earned.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Realizing your leverage and know to negotiate.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=3510">58:30</a>, <a href="https://youtu.be/q3ca41YIZjc?t=3572">59:32</a>)</p></li><li class="slide"><h3>Management is support, not bigger scope</h3><ul><li>Wanting bigger impact or scope is a reason to stay an IC, not to manage.</li><li>Managing is supporting a team, recruiting and growing people.</li><li>Going back to IC on the same team worked; no one is watching as closely as you think.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Management is really more about supporting others.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=1831">30:31</a>, <a href="https://youtu.be/q3ca41YIZjc?t=1861">31:01</a>, <a href="https://youtu.be/q3ca41YIZjc?t=2341">39:01</a>)</p></li></ol></section><section class="part"><h2>Working with AI</h2><ol class="slides" start="11"><li class="slide"><h3>The 2% are pulling ahead; act with urgency</h3><ul><li>CTOs he spoke with see roughly 10 to 15% company-wide gains from AI.</li><li>About 2% of engineers use it deeply and are far more productive.</li><li>Impactful projects, and tokens, are moving to those people.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;An industrial revolution happening right in front of our eyes.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=3720">1:02:00</a>, <a href="https://youtu.be/q3ca41YIZjc?t=3781">1:03:01</a>, <a href="https://youtu.be/q3ca41YIZjc?t=3842">1:04:02</a>)</p></li><li class="slide"><h3>Treat every tool as temporary scaffold</h3><ul><li>The tooling will keep changing until the models plateau.</li><li>Expect to rebuild your setup every six months or sooner.</li><li>Invest in a habit of continuous learning, not in one specific tool.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Assuming everything is just temporary scaffold.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=4081">1:08:01</a>, <a href="https://youtu.be/q3ca41YIZjc?t=4142">1:09:02</a>)</p></li><li class="slide"><h3>Juniors can leapfrog; seniors orchestrate</h3><ul><li>Mastery of one language or framework is worth less now, so the gap to seniors has narrowed.</li><li>Seniors still hold scarce skills: architecture, scaling, flaky production.</li><li>They apply those by supervising many agents, not by coding everything themselves.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;A really good opportunity to leapfrog.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=4261">1:11:01</a>, <a href="https://youtu.be/q3ca41YIZjc?t=4412">1:13:32</a>, <a href="https://youtu.be/q3ca41YIZjc?t=4561">1:16:01</a>)</p></li><li class="slide"><h3>Automate your review judgement</h3><ul><li>A senior who reviews every AI change will lose that battle.</li><li>Turn what you look for in review into a skill or an agent.</li><li>Ask whether PR review, built for one human checking another, should still exist.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Not carry the burden manually.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=4800">1:20:00</a>, <a href="https://youtu.be/q3ca41YIZjc?t=4890">1:21:30</a>, <a href="https://youtu.be/q3ca41YIZjc?t=4920">1:22:00</a>)</p></li><li class="slide"><h3>Learn to lose control</h3><ul><li>Micromanaging agents&#x27; code makes you the bottleneck.</li><li>Write down principles that steer all the agents, as a manager would.</li><li>Move up a level: ask about testing, dogfooding and load, as an engineering manager does, without reading every line.</li></ul><p class="quote"><span class="label">Kun Chen</span> &quot;Learning to lose control is actually a very important skill.&quot; (<a href="https://youtu.be/q3ca41YIZjc?t=2070">34:30</a>, <a href="https://youtu.be/q3ca41YIZjc?t=5070">1:24:30</a>, <a href="https://youtu.be/q3ca41YIZjc?t=5131">1:25:31</a>)</p></li><li class="slide"><h3>Takeaway</h3><ul><li>Keep the monthly test, and move when you stop learning.</li><li>Do the unassigned work: talk to users, ship small, chase the step change.</li><li>With AI, invest in mindset, orchestration and judgement over any one tool.</li></ul><p class="key">Focus on the right problems, and bring judgement and taste to them. (<a href="https://youtu.be/q3ca41YIZjc?t=5582">1:33:02</a>)</p></li></ol></section>
+<hr>
+<p class="note">Source: Kun Chen, interviewed on A Life Engineered, <a href="https://youtu.be/q3ca41YIZjc">https://youtu.be/q3ca41YIZjc</a>. Quotes are short and credited; the rest is paraphrase. Deck by Yu Jie Teo, 2 October 2026.</p>
+</main>
+<script type="text/markdown" id="deck">---
+title: Kun Chen's advice for engineers in the AI era
+subtitle: Notes on "The 2% of Engineers Winning the AI Era (Ex-Meta L8)", A Life Engineered
+author: Yu Jie Teo
+date: 2 October 2026
+voice: bf_emma
+---
+
+Kun Chen, formerly E7 at Facebook and partner level at Microsoft, interviewed by Steve on [A Life Engineered](https://youtu.be/q3ca41YIZjc).
+
+Each slide is one piece of his advice, paraphrased, with a short quote and a timestamp link to the video.
+
+::: notes
+A summary of advice from one interview, not an endorsement of every claim. Quotes are short and credited; everything else is paraphrase.
+:::
+
+::: narration
+These slides collect the career advice Kun Chen gives in an interview on the channel A Life Engineered. Each slide is one idea, paraphrased, with a timestamp to the video.
+:::
+
+# Keep growing
+
+::: narration
+Part 1. Keep growing.
+:::
+
+## Test your growth every month, not every review
+
+- Ask what you can do this month that you could not do last month.
+- Waiting for a missed promotion to notice you have stalled is a lagging signal.
+- As tools change faster, shorten the interval further.
+
+::: block Kun Chen
+"What did I do this month that I couldn't do last month?" ([0:30](https://youtu.be/q3ca41YIZjc?t=30), [2:00](https://youtu.be/q3ca41YIZjc?t=120))
+:::
+
+::: narration
+Chen's first test is monthly. Ask what you can do this month that you could not do last month. A missed promotion tells you too late, and with tools changing this fast he would shorten the interval further.
+:::
+
+## When the work gets comfortable, move
+
+- Bored, or no longer learning: change team, company or role.
+- Each of his moves, Microsoft to Facebook, news to games, engineer to manager and back, followed curiosity.
+- Treat side quests as a signal that the main quest has gone stale.
+
+::: block Kun Chen
+"Never get comfortable" with doing what you have always done. ([55:01](https://youtu.be/q3ca41YIZjc?t=3301), [57:31](https://youtu.be/q3ca41YIZjc?t=3451))
+:::
+
+::: narration
+When the work becomes routine, Chen moves. Every change in his career, between companies, teams and roles, followed his curiosity. When he catches himself drifting into side quests, he takes it as a sign the main quest is no longer interesting.
+:::
+
+# Do more than you are assigned
+
+::: narration
+Part 2. Do more than you are assigned.
+:::
+
+## Get the fundamentals right, then take initiative
+
+- Being good at the assigned work is table stakes; doing it fast frees time.
+- Spend that time on problems other people have: no one asked him to build the Bing click-data tool.
+- If deadlines leave no slack, negotiate the expectations with your manager.
+
+::: block Kun Chen
+"Take initiative and identify problems that other people have." ([17:01](https://youtu.be/q3ca41YIZjc?t=1021), [18:01](https://youtu.be/q3ca41YIZjc?t=1081))
+:::
+
+::: narration
+Doing the assigned work well is the baseline, and doing it quickly buys free time. Chen spent his on problems nobody had assigned, such as a tool showing where users clicked on search results. If deadlines leave no room, he says to renegotiate them with your manager.
+:::
+
+## Start scrappy, control scope, ship for feedback
+
+- Reuse existing building blocks instead of reinventing them.
+- Cut scope precisely so something useful reaches people quickly.
+- Show a first version to a few users and iterate on what they say.
+
+::: block Kun Chen
+"Try not to reinvent the wheels." ([15:01](https://youtu.be/q3ca41YIZjc?t=901), [16:00](https://youtu.be/q3ca41YIZjc?t=960))
+:::
+
+::: narration
+Speed without lost quality comes from scope, not hours. Chen reuses what already exists, cuts scope tightly, puts a first version in front of a few people and iterates on their feedback.
+:::
+
+## Talk to your users before you build
+
+- The Messenger games platform was designed around high scores and launched without asking developers.
+- Retention after the holidays was poor: turn-based and real-time games did not fit.
+- Asking game developers led to a redesign that gave them the flexibility.
+
+::: block Kun Chen
+"We assumed it's going to work." ([26:01](https://youtu.be/q3ca41YIZjc?t=1561), [27:00](https://youtu.be/q3ca41YIZjc?t=1620))
+:::
+
+::: narration
+His team built a games platform around high scores without asking game developers first. Retention was poor, because many games have no high score. Only after talking to the developers did they redesign it, and then it took off.
+:::
+
+## The title does not decide your job
+
+- Do not hide in the engineer's corner, even as an introvert.
+- He travelled to game studios and shaped product decisions; that impact made staff.
+- Ask what the most impactful thing for the business is, whatever your title.
+
+::: block Kun Chen
+"The title does not matter." ([43:00](https://youtu.be/q3ca41YIZjc?t=2580))
+:::
+
+::: narration
+Chen's promotion to staff came from work beyond an engineer's usual remit: visiting game studios and shaping product decisions. His rule since then is that the title does not matter, only the most impactful thing he can do for the business.
+:::
+
+## When things run smoothly, find the step change
+
+- If a project would run just as well without you, you are not adding value there.
+- Rethink the strategy rather than growing it incrementally.
+- Chaos is where the interesting problems are.
+
+::: block Kun Chen
+"Taking initiative step function changes." ([45:00](https://youtu.be/q3ca41YIZjc?t=2700), [45:31](https://youtu.be/q3ca41YIZjc?t=2731))
+:::
+
+::: narration
+When a project runs smoothly, Chen gets uneasy, because it would run without him. He looks for a step change, rethinking the whole strategy, rather than incremental growth, and goes looking for the chaos where the interesting problems are.
+:::
+
+# Advice by career stage
+
+::: narration
+Part 3. Advice by career stage.
+:::
+
+## Juniors: get very good, build a hundred things
+
+- Skill is the foundation of everything else.
+- He had built about a hundred projects before his first job; most earned nothing.
+- Side projects give breadth a big company's stable stack will not, and fun keeps you going.
+
+::: block Kun Chen
+"Build a lot of them." ([51:00](https://youtu.be/q3ca41YIZjc?t=3060), [52:00](https://youtu.be/q3ca41YIZjc?t=3120))
+:::
+
+::: narration
+For juniors, Chen says be very good at what you do, and build many things you enjoy. He had built about a hundred before his first job. Side projects give breadth a big company's stable stack will not, and fun keeps you motivated.
+:::
+
+## Seniors: know your leverage when you move
+
+- At senior levels, former colleagues recruit you; that is leverage.
+- The default is a lateral move, because the hiring company has every reason to offer one.
+- One negotiation can be worth a level, often one you already earned.
+
+::: block Kun Chen
+"Realizing your leverage and know to negotiate." ([58:30](https://youtu.be/q3ca41YIZjc?t=3510), [59:32](https://youtu.be/q3ca41YIZjc?t=3572))
+:::
+
+::: narration
+For seniors, he says to recognise leverage. When a former colleague recruits you, they need you. The default is a lateral move, but one negotiation can be worth a whole level, which you may already be performing at.
+:::
+
+## Management is support, not bigger scope
+
+- Wanting bigger impact or scope is a reason to stay an IC, not to manage.
+- Managing is supporting a team, recruiting and growing people.
+- Going back to IC on the same team worked; no one is watching as closely as you think.
+
+::: block Kun Chen
+"Management is really more about supporting others." ([30:31](https://youtu.be/q3ca41YIZjc?t=1831), [31:01](https://youtu.be/q3ca41YIZjc?t=1861), [39:01](https://youtu.be/q3ca41YIZjc?t=2341))
+:::
+
+::: narration
+Chen managed for two years. His view now is that wanting bigger impact is not a reason to manage, since individual contributors can have that too. Management is supporting a team. When he went back to engineering on the same team, nobody cared as much as he had feared.
+:::
+
+# Working with AI
+
+::: narration
+Part 4. Working with AI.
+:::
+
+## The 2% are pulling ahead; act with urgency
+
+- CTOs he spoke with see roughly 10 to 15% company-wide gains from AI.
+- About 2% of engineers use it deeply and are far more productive.
+- Impactful projects, and tokens, are moving to those people.
+
+::: block Kun Chen
+"An industrial revolution happening right in front of our eyes." ([1:02:00](https://youtu.be/q3ca41YIZjc?t=3720), [1:03:01](https://youtu.be/q3ca41YIZjc?t=3781), [1:04:02](https://youtu.be/q3ca41YIZjc?t=3842))
+:::
+
+::: narration
+The average company sees modest gains from AI, Chen says, because only about two percent of engineers use it deeply. Those few are far more productive, and companies are moving the impactful projects to them. He treats it as an industrial revolution, and urges urgency.
+:::
+
+## Treat every tool as temporary scaffold
+
+- The tooling will keep changing until the models plateau.
+- Expect to rebuild your setup every six months or sooner.
+- Invest in a habit of continuous learning, not in one specific tool.
+
+::: block Kun Chen
+"Assuming everything is just temporary scaffold." ([1:08:01](https://youtu.be/q3ca41YIZjc?t=4081), [1:09:02](https://youtu.be/q3ca41YIZjc?t=4142))
+:::
+
+::: narration
+In three years, coding tools went from autocomplete to agents to orchestrators. Chen expects that to continue while the models improve, so he treats every tool as temporary scaffolding and invests in the habit of learning instead.
+:::
+
+## Juniors can leapfrog; seniors orchestrate
+
+- Mastery of one language or framework is worth less now, so the gap to seniors has narrowed.
+- Seniors still hold scarce skills: architecture, scaling, flaky production.
+- They apply those by supervising many agents, not by coding everything themselves.
+
+::: block Kun Chen
+"A really good opportunity to leapfrog." ([1:11:01](https://youtu.be/q3ca41YIZjc?t=4261), [1:13:32](https://youtu.be/q3ca41YIZjc?t=4412), [1:16:01](https://youtu.be/q3ca41YIZjc?t=4561))
+:::
+
+::: narration
+For juniors and mids, Chen calls this a chance to leapfrog seniors whose value rested on one language or framework. Seniors keep an edge in architecture and running systems at scale, and they use it by orchestrating many agents under their supervision.
+:::
+
+## Automate your review judgement
+
+- A senior who reviews every AI change will lose that battle.
+- Turn what you look for in review into a skill or an agent.
+- Ask whether PR review, built for one human checking another, should still exist.
+
+::: block Kun Chen
+"Not carry the burden manually." ([1:20:00](https://youtu.be/q3ca41YIZjc?t=4800), [1:21:30](https://youtu.be/q3ca41YIZjc?t=4890), [1:22:00](https://youtu.be/q3ca41YIZjc?t=4920))
+:::
+
+::: narration
+A senior engineer who reviews every AI change by hand will lose. Chen's advice is to capture what you look for in review as a skill or an agent. He also asks whether pull request review, designed for one human checking another, should survive in its current form.
+:::
+
+## Learn to lose control
+
+- Micromanaging agents' code makes you the bottleneck.
+- Write down principles that steer all the agents, as a manager would.
+- Move up a level: ask about testing, dogfooding and load, as an engineering manager does, without reading every line.
+
+::: block Kun Chen
+"Learning to lose control is actually a very important skill." ([34:30](https://youtu.be/q3ca41YIZjc?t=2070), [1:24:30](https://youtu.be/q3ca41YIZjc?t=5070), [1:25:31](https://youtu.be/q3ca41YIZjc?t=5131))
+:::
+
+::: narration
+Management taught Chen to give up direct control, and he applies that to agents. Rather than tweak every line, write the principles that guide them, and check readiness the way an engineering manager would, by asking about testing and feedback.
+:::
+
+## Takeaway
+
+- Keep the monthly test, and move when you stop learning.
+- Do the unassigned work: talk to users, ship small, chase the step change.
+- With AI, invest in mindset, orchestration and judgement over any one tool.
+
+::: key
+Focus on the right problems, and bring judgement and taste to them. ([1:33:02](https://youtu.be/q3ca41YIZjc?t=5582))
+:::
+
+Source: Kun Chen on [A Life Engineered](https://youtu.be/q3ca41YIZjc), "The 2% of Engineers Winning the AI Era (Ex-Meta L8)".
+
+::: narration
+To sum up. Check your growth every month, and move when you stop learning. Do the work nobody assigned. And with AI, invest in mindset, orchestration and judgement rather than any single tool. Chen's last word is to focus on the right problems, with judgement and taste.
+:::
+</script>
+<script>
+(() => {
+  const md = document.getElementById("deck").textContent;
+  const file = () => new Blob([md], { type: "text/markdown" });
+  document.getElementById("present").addEventListener("click", () => {
+    // beamdswitch loads ?src only from this origin; a blob URL made here is same-origin and lives
+    // as long as this tab does.
+    const src = URL.createObjectURL(file());
+    const url = new URL("../../visuals/beamdswitch/index.html", location.href);
+    url.searchParams.set("src", src);
+    url.searchParams.set("view", "");
+    if (!window.open(url.href, "_blank")) document.getElementById("status").textContent = "The browser blocked the new tab. Allow pop-ups for this site, or download the deck and open it in beamdswitch.";
+  });
+  document.getElementById("download").addEventListener("click", () => {
+    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(file()), download: "kun-chen-ai-era-advice.md" });
+    document.body.append(a); a.click(); a.remove();
+  });
+})();
+</script>
+</body>
+</html>
