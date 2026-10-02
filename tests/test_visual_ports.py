@@ -24,6 +24,7 @@ PORTS = {
     "bayes": "bayes",
     "beamdiag": "beamdiag",
     "calibrator": "calibrator",
+    "connes-qft": "connes-qft",
     "convexity-action-engine": "convexity-action-engine",
     "delta-cohomology": "delta-cohomology",
     "distortion": "distortion",
