@@ -44,6 +44,7 @@ PORTS = {
     "md-explorer": "md-explorer",
     "mohr": "mohr",
     "motives-periods": "motives-periods",
+    "multi-armed-bandit": "multi-armed-bandit",
     "packets-to-playback": "packets-to-playback",
     "phasors": "phasors",
     "pigeonhole": "pigeonhole",
