@@ -48,7 +48,7 @@ the normal site build. There is no solver: reactions are drawn, not computed.
   a Markdown deck with the drawing, its axes, bodies, loads, supports and
   dimension checks, every value as the schedules write it and a spoken
   narration on every slide, written with the site's standard report template
-  ([`templates/beamdswitch-report.md`](../../templates/beamdswitch-report.md)).
+  ([`templates/beamdswitch-report.md`](https://github.com/yujieteo/site/blob/main/templates/beamdswitch-report.md)).
   There is no solver, so it has no equations. Copy beamdswitch deck puts the
   same deck on the clipboard; if saving is blocked, saving copies it instead.
 
@@ -57,7 +57,7 @@ the normal site build. There is no solver: reactions are drawn, not computed.
 | File | Purpose |
 | --- | --- |
 | `index.html` | The whole tool. `<script id="site-theme">` in the head applies the reader's site-wide Light or Dark choice (`localStorage` `theme`) before paint. `<script data-core>` blocks are the DOM-free model (units, validation, serialisation, rendering, export); `<script data-ui>` blocks are the interface. Each block is one feature, in build order. |
-| `beamdswitch.js` | The standard beamdswitch report template (`deck(report)` writes a report as a beamdswitch Markdown deck); a copy of the site's shared [`templates/beamdswitch.js`](../../templates/beamdswitch.js), pasted unchanged into the page as `<script id="fbd-beamdswitch" data-core>` and kept identical by the tests. The `fbd-report` core block (`FBD.beamdswitchReport`) fills it from the drawing. |
+| `beamdswitch.js` | The standard beamdswitch report template (`deck(report)` writes a report as a beamdswitch Markdown deck); a copy of the site's shared [`templates/beamdswitch.js`](https://github.com/yujieteo/site/blob/main/templates/beamdswitch.js), pasted unchanged into the page as `<script id="fbd-beamdswitch" data-core>` and kept identical by the tests. The `fbd-report` core block (`FBD.beamdswitchReport`) fills it from the drawing. |
 | `examples.json` | Reference drawings 1 to 5 from the specification, in the saved format. Published as the visualization's `data.json`. |
 | `tools/make-examples.mjs` | Rebuilds `examples.json` through the tool's own unit parsing and loader. |
 | `tools/sync-examples.mjs` | Copies `examples.json` into the page (File › Examples) so it stays one file. |
@@ -86,15 +86,19 @@ name the exact path, for example `geometry.loads[1].at.body: unknown body
 ## Update the examples
 
 ```sh
-node visuals/fbd/tools/make-examples.mjs
-node visuals/fbd/tools/sync-examples.mjs
+node tools/make-examples.mjs
+node tools/sync-examples.mjs
 ```
 
 ## Verify
 
 ```sh
-node --test tests/fbd.test.mjs tests/fbd-beamdswitch.test.mjs
+node --test 'tests/*.test.mjs'
 ```
+
+The tests live in [yujieteo/fbd](https://github.com/yujieteo/fbd), where CI
+runs them; the site's `visuals/fbd/` is a port of the page files and runs
+none of them.
 
 The tests load every reference drawing and check that saving is identity and
 that JSON and Markdown round trips are identical; that units convert on entry
