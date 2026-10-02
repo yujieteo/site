@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build import absolute_markdown  # noqa: E402
+from copy_markdown import absolute_markdown  # noqa: E402
 from notes import split_frontmatter  # noqa: E402
 
 SITE = ROOT / "site"
