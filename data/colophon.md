@@ -11,8 +11,9 @@ except file hosting; search and filtering happen in your browser.
 - **Notes** live in one append-only file, `data/notes.md`. Each note sits under
   a dated heading and ends in tags from a registry, `data/note-tags.json`.
   Notes are never rewritten to mark them done: an item that answers an open
-  question links to it instead, and the [open questions](open-questions.html)
-  page shows the result.
+  question links to it instead, or a dated closing note lists it and only its
+  `todo` tag is removed, and the [open questions](open-questions.html) page
+  shows the result.
 - **Paper links and resources** are YAML files. Paper-link tags come from
   keyword rules and arXiv subject classes, and are also exported as BibTeX.
 - **Blog posts** are Markdown files with a small YAML header.
