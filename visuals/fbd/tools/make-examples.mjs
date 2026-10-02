@@ -1,7 +1,7 @@
 // Builds examples.json: the reference drawings from the design specification
 // (section 10), authored through the same unit parsing the tool uses, then
 // normalised by its loader so the file is exactly what the tool would save.
-// Run: node visuals/fbd/tools/make-examples.mjs && node visuals/fbd/tools/sync-examples.mjs
+// Run: node tools/make-examples.mjs && node tools/sync-examples.mjs
 import fs from "node:fs";
 import { loadCore } from "./core.mjs";
 
