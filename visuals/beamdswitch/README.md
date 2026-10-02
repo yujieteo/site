@@ -40,7 +40,7 @@ First load, which the notice at the foot of the page and the catalogue summary s
 
 | Engine | Downloads, once | Files |
 | --- | --- | --- |
-| page | 2.3 MB | `index.html` |
+| page | 3.7 MB | `index.html` |
 | WASM, 8-bit | 111 MB | runtime (`kokoro.web.js`, ONNX Runtime `.mjs` and `.wasm`), `model_quantized.onnx`, one voice |
 | WebGPU, fp32 | 334 MB | runtime, `model.onnx`, one voice |
 | each further voice | 0.5 MB | `model/voices/<voice>.bin` |
