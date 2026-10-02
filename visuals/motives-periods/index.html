@@ -600,7 +600,7 @@ summary{cursor:pointer;font-weight:600;min-height:32px}
   const sup = (n) => [...String(n)].map((c) => (c === "-" ? "⁻" : "⁰¹²³⁴⁵⁶⁷⁸⁹"[c])).join("");
 
   /* k·2πi as the page writes it: 2πi, −2πi, 2·… with the sign as a minus character. */
-  const timesTwoPiI = (k) => `${k === 1 ? "" : k === -1 ? "−" : minus(k)}2πi`;
+  const timesTwoPiI = (k) => `${k === 1 ? "" : k === -1 ? "−" : minus(k) + "·"}2πi`;
   function analyseTate(t) {
     const r = loopIntegral(t);
     const counts = PRIMES.slice(0, 5).map((q) => ({ q, p1: pointCountP1(q), gm: pointCountGm(q) }));
