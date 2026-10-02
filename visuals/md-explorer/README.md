@@ -5,9 +5,7 @@ in-tab and cross-tab links, backlinks, inline `#tags` and Ctrl/Cmd+K search.
 `index.html` is one self-contained file that works offline, with no build step
 and no runtime network requests. MIT licence (see `LICENSE`).
 
-Live at <https://teoyujie.org/visuals/md-explorer/>. The build spec named the
-page `visuals/md-explorer.html`; the site keeps one folder per visualization, so
-it is `visuals/md-explorer/index.html`.
+Live at <https://teoyujie.org/visuals/md-explorer/>.
 
 ## What it does
 
@@ -49,7 +47,7 @@ it is `visuals/md-explorer/index.html`.
 | --- | --- |
 | `index.html` | The whole tool. `<script id="marked-lib">` is marked; `<script id="mdx-core">` is the pure core (parsing, slugs, section tree, link resolution, the backlink index, tags, search scoring, routes and the sanitising renderer; no DOM or storage; `self.MdxCore`); `<script id="mdx-ui">` is the page and the WebMCP tools. Edit this file directly. |
 | `raw.json` | Published metadata; must equal the core's `META`. |
-| `tests/md-explorer.test.mjs` | In yujieteo/md-explorer, where the tests develop and run (the site's port carries no `tests/`). Node's built-in runner: `node --test tests/`. It loads marked and the core from `index.html` and checks slugs, the tree, links, the incremental backlink index, tags, search, routes, the security cases and a 5 MB input; it also boots the whole page in a `vm` with stub DOM and storage to check the CSP, that nothing fetches, the WebMCP tools and tab-switch edits. |
+| `tests/md-explorer.test.mjs` | Node's built-in runner: `node --test 'tests/*.test.{mjs,cjs}'` from the repository root, which CI (`.github/workflows/ci.yml`) also runs. It loads marked and the core from `index.html` and checks slugs, the tree, links, the incremental backlink index, tags, search, routes, the security cases and a 5 MB input; it also boots the whole page in a `vm` with stub DOM and storage to check the CSP, that nothing fetches, the WebMCP tools and tab-switch edits. |
 | `LICENSE` | MIT. |
 
 To update marked, replace the body of `<script id="marked-lib">` with the new
