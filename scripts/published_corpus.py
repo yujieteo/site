@@ -39,8 +39,33 @@ def _record(kind, identity, **fields):
     return public
 
 
+def _calibration_content(entry):
+    """Plain text of one answered Calibrator question, with its full provenance."""
+    question, response = entry["question"], entry["response"]
+    revisions = response["revision_count"] or 0
+    lines = [
+        question["proposition"],
+        *([question["context"]] if question["context"] else []),
+        f"Probability: {response['final_probability']}% (first answer {response['first_probability']}%,"
+        f" {revisions} revision{'' if revisions == 1 else 's'}).",
+        f"High: {question['high_action']}",
+        f"Low: {question['low_action']}",
+        f"Resolution: {question['resolution_status']}; rule: {question['resolution_rule']};"
+        f" horizon: {question['resolution_horizon']}.",
+    ]
+    if question["outcome"] is not None:
+        lines.append(f"Outcome: {'true' if question['outcome'] else 'false'}.")
+    if question["resolution_evidence"]:
+        lines.append(f"Evidence: {question['resolution_evidence']}")
+    for source in entry["sources"]:
+        lines.append(f"Source: {source['title']} <{source['url']}>")
+        lines += [f"Claim: {claim['claim']}" for claim in entry["claims"]
+                  if claim["source_id"] == source["source_id"]]
+    return "\n".join(lines)
+
+
 def build_published_corpus(cv, about, resources, papers, posts, notes, visualizations=(), media_items=(),
-                           colophon=None):
+                           colophon=None, calibrations=()):
     """Return the sole normalized projection of intentionally public content."""
     records = [
         _record(
@@ -121,6 +146,16 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
             summary=item["summary"], url=f"media/{item['id']}.html",
             date=item["date"], tags=item["focus_tags"], **assets,
             durationSeconds=item["duration_seconds"],
+        ))
+
+    # One record per answered Calibrator question: raw probabilities, not notes.
+    for entry in calibrations:
+        question, response = entry["question"], entry["response"]
+        records.append(_record(
+            "calibration", question["question_id"], title=question["proposition"],
+            summary=f"{response['final_probability']}% — {question['proposition']}",
+            content=_calibration_content(entry), url="visuals/calibrator/index.html",
+            dataUrl="calibrator/raw.toon", date=response["final_answered_at"][:10], tags=["calibrator"],
         ))
 
     unique_records = []

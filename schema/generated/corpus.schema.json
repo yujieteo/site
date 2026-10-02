@@ -15,7 +15,7 @@
         "additionalProperties": false,
         "properties": {
           "id": { "type": "string", "minLength": 1 },
-          "kind": { "enum": ["profile", "about", "resource", "paper", "note", "blog", "visualization", "podcast", "video"] },
+          "kind": { "enum": ["profile", "about", "resource", "paper", "note", "blog", "visualization", "podcast", "video", "calibration"] },
           "revision": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
           "title": { "type": "string" },
           "url": { "type": "string" },

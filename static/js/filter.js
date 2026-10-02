@@ -50,7 +50,7 @@ if (form) {
   };
   const kindLabels = {
     note: "Note", blog: "Post", visualization: "Visual", podcast: "Episode", video: "Video",
-    paper: "Paper link", resource: "Resource", about: "Page", profile: "Page",
+    paper: "Paper link", resource: "Resource", about: "Page", profile: "Page", calibration: "Calibration",
   };
   const relatedHtml = (entry, corpus) => {
     const items = (entry.links || []).flatMap((link) => {

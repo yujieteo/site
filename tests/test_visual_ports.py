@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTS = {
     "bayes": "bayes",
     "beamdiag": "beamdiag",
+    "calibrator": "calibrator",
     "convexity-action-engine": "convexity-action-engine",
     "delta-cohomology": "delta-cohomology",
     "distortion": "distortion",

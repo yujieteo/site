@@ -10,7 +10,7 @@ It is published at <https://teoyujie.org/>.
 ```text
 .github/             CI workflow and pull-request template
 data/                Canonical content (edit here)
-  about/ blog/ cv/ decks/ notes.md note-tags.json tag-facets.yaml colophon.md
+  about/ blog/ calibrator/ cv/ decks/ notes.md note-tags.json tag-facets.yaml colophon.md
   paper-links/ podcasts/ resources/ visuals/
 docs/                Architecture notes (build, corpus, WebMCP, media)
 exports/             Generated paper-link exports: paper-links.bib, paper-links.toon
@@ -143,6 +143,7 @@ Follow the playbook for the task; [SKILLS.md](SKILLS.md) lists them all:
 | Media items | `data/podcasts/<id>.yaml` plus audio or video assets |
 | Visualizations | `data/visuals/<slug>.yaml` (assets come from the visuals repo, or from `visuals/<slug>/` when the paths start with `visuals/`) |
 | Papers and resources | `data/paper-links/*.yaml`, `data/resources/*.yaml` (every resource tag needs a facet in `data/tag-facets.yaml`) |
+| Calibrator history | `data/calibrator/raw.toon` (exported Calibrator sessions appended losslessly; schema in `visuals/calibrator/README.md`; published as `site/calibrator/raw.toon`; each answered question is a `calibration:<question_id>` Corpus Record) |
 | Homepage pinned card | `pinned` (a Corpus Record id) in `data/cv/cv.yaml` |
 | Links between items | `links` on visuals, media items and blog posts; see [skills/reference/links.md](skills/reference/links.md) |
 | How the site is built | `data/colophon.md` (published as `colophon.html`) |

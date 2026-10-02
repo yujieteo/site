@@ -22,6 +22,7 @@ import yaml
 from jsonschema import Draft7Validator
 
 import paper_tags
+from calibration import RAW_PATH as CALIBRATION_RAW, answered_calibrations, load_raw
 from notes import load_notes, split_frontmatter
 from published_corpus import attach_links, build_published_corpus
 
@@ -917,7 +918,7 @@ def render_entry_list(kind, entries, placeholder, empty_message, facets, classif
 KIND_LABELS = {
     "note": "Note", "blog": "Post", "visualization": "Visual", "podcast": "Episode",
     "video": "Video", "paper": "Paper link", "resource": "Resource", "about": "Page",
-    "profile": "Page",
+    "profile": "Page", "calibration": "Calibration",
 }
 LINK_LABELS = {
     "resolves": "Resolves", "resolvedBy": "Resolved by", "extends": "Extends",
@@ -1529,12 +1530,15 @@ def prepare_output():
     (OUT / "podcast").mkdir()
     shutil.copytree(STATIC, OUT / "static")
     shutil.copy2(ROOT / "llms.txt", OUT / "llms.txt")
+    (OUT / "calibrator").mkdir()
+    shutil.copyfile(CALIBRATION_RAW, OUT / "calibrator" / "raw.toon")
 
 
-def build_corpus(cv, about, resources, papers, posts, notes, visualizations, media_items, colophon):
+def build_corpus(cv, about, resources, papers, posts, notes, visualizations, media_items, colophon,
+                 calibrations=()):
     """Project the sources into the Published Corpus, add authored links, and validate it."""
     corpus = build_published_corpus(
-        cv, about, resources, papers, posts, notes, visualizations, media_items, colophon
+        cv, about, resources, papers, posts, notes, visualizations, media_items, colophon, calibrations
     )
     authored_links = [
         *((f"visualization:{v['slug']}", link["rel"], link["target"])
@@ -1579,8 +1583,9 @@ def main():
     visualization_sources = load_visualization_sources(visualizations, resolve_visuals_repo())
     visualization_files = load_visualization_files(visualizations)
     colophon = load_colophon()
+    calibrations = answered_calibrations(load_raw())
     corpus = build_corpus(
-        cv, about, resources, papers, posts, notes, visualizations, media_items, colophon
+        cv, about, resources, papers, posts, notes, visualizations, media_items, colophon, calibrations
     )
     records = {record["id"]: record for record in corpus["records"]}
 

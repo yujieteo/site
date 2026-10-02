@@ -63,3 +63,17 @@ test("tag groups match any tag within a group and every group", () => {
   assert.deepEqual(ids([["energy", "prices"], ["singapore"]]), ["a", "c"]);
   assert.deepEqual(ids([[]]), ["a", "b", "c"]);
 });
+
+test("search indexes calibration records apart from notes", async () => {
+  const records = {
+    records: [
+      ...corpus.records,
+      { id: "calibration:q-1", kind: "calibration", title: "Should I stop project X?", summary: "40% — Should I stop project X?", content: "Should I stop project X?\nProbability: 40%", date: "2026-10-02", tags: ["calibrator"] },
+    ],
+  };
+  assert.deepEqual(searchSite(records, { text: "stop project" }).items.map((item) => item.id), ["calibration:q-1"]);
+  assert.deepEqual(searchSite(records, { kind: "calibration" }).items.map((item) => item.id), ["calibration:q-1"]);
+  assert.equal(searchSite(records, { text: "stop project", kind: "note" }).total, 0);
+  const labels = await readFile(new URL("../static/js/site-search.js", import.meta.url), "utf8");
+  assert.match(labels, /calibration: "Calibration"/, "global search names the kind");
+});

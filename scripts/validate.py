@@ -8,6 +8,7 @@ from pathlib import Path
 import jsonschema
 import yaml
 
+from calibration import CalibrationError, load_raw
 from notes import NotesError, load_notes, split_frontmatter
 
 
@@ -56,6 +57,12 @@ def validate_all():
         for diagnostic in exc.diagnostics:
             print(f"[FAIL] {diagnostic}")
         errors += len(exc.diagnostics)
+    try:
+        load_raw()
+    except (CalibrationError, OSError) as exc:
+        for line in str(exc).splitlines():
+            print(f"[FAIL] {line}")
+            errors += 1
     for schema_path in sorted(SCHEMA.glob("*.schema.json")):
         schema = json.loads(schema_path.read_text(encoding="utf-8"))
         try:

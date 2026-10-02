@@ -110,6 +110,12 @@
       "aliases": [],
       "replaced_by": null
     },
+    "calibrator": {
+      "class": "project",
+      "description": "A considered note derived from one or more Calibrator responses; provenance, used alongside semantic tags.",
+      "aliases": [],
+      "replaced_by": null
+    },
     "category-theory": {
       "class": "topic",
       "description": "Use for notes about category theory.",

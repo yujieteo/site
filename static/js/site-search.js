@@ -29,6 +29,7 @@ if (root && dialog && typeof dialog.showModal === "function") {
   const kindLabels = {
     profile: "Profile", about: "About", resource: "Resource", paper: "Paper",
     note: "Note", blog: "Blog", visualization: "Visual", podcast: "Podcast", video: "Video",
+    calibration: "Calibration",
   };
   let active = -1;
   let requestId = 0;
