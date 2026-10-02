@@ -1435,6 +1435,8 @@ function addTab(content, name, focus) {
   const t = newTab(content, name);
   S.tabs.push(t);
   parseTab(t);
+  // Switch now, not on the hashchange that follows: text typed in between belongs to the new tab.
+  switchTab(t.id);
   showTab(t.id);
   scheduleSave();
   if (focus) { setDrawer(true); el.editor.focus(); }
@@ -1529,7 +1531,7 @@ addEventListener("drop", async (e) => {
     parseTab(t);
     last = t;
   }
-  if (last) { scheduleSave(); showTab(last.id); }
+  if (last) { switchTab(last.id); showTab(last.id); }
   if (md.length < files.length) toast(`Skipped ${files.length - md.length} file(s) that are not .md`);
 });
 
