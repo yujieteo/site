@@ -89,7 +89,8 @@ These are the decisions that came out of the three.
   deadline, write a first-hand observation on three days a week, spend the
   information-cohomology afternoon in October, record the gym-bag experiment's
   outcome, and put my act-now todos in a calendar. The GitHub token audit and
-  the CLAUDE.md shims went to crewmates. The beamdiag forum post is parked until
+  the CLAUDE.md shims left my five for crewmates, though the audit is not yet
+  briefed. The beamdiag forum post is parked until
   1 November.
 - **Automated checks, not personal review.** Across two sessions I kept trusting
   automated checks over my own spot checks. In the second session I gave 95%
