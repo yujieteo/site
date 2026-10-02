@@ -28,7 +28,9 @@ Review the generated changes with `.venv/bin/python scripts/site_diff.py <base>`
 the intended sources. Do not deploy after a failure.
 
 A site test you add must stay cheap and be timed: follow
-[Site test cost](playbooks/add-visualization.md#site-test-cost). This stage is the
+[Site test cost](playbooks/add-visualization.md#site-test-cost). Browser end-to-end
+tests belong in the dedicated technical E2E repository (pending; until it exists,
+the visualization's own repository stands in), never here. This stage is the
 site-level end-to-end check of a visualization port, the second of the
 [two no-mistakes runs](playbooks/add-visualization.md#end-to-end-testing-and-the-two-pipeline-runs).
 
