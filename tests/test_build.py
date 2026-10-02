@@ -12,6 +12,10 @@ ROOT = Path(__file__).resolve().parents[1]
 VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
 REPO_IGNORE = shutil.ignore_patterns(".git", ".venv", "__pycache__")
 
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from build import MATHJAX_SCRIPT  # noqa: E402
+
 
 def digests(site):
     # site/ holds hundreds of MB of Kokoro weights; compare hashes, not bytes.
@@ -56,6 +60,12 @@ class BuildTests(unittest.TestCase):
             actual_files = digests(project / "site")
 
         self.assertEqual(actual_files, expected_files)
+
+
+class MathJaxTests(unittest.TestCase):
+    def test_maths_typesets_in_fira_math(self):
+        self.assertIn("font: 'mathjax-fira'", MATHJAX_SCRIPT)
+        self.assertIn("/mathjax/4.1.3/tex-mml-chtml.js", MATHJAX_SCRIPT)
 
 
 if __name__ == "__main__":

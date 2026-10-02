@@ -57,6 +57,8 @@ def time_tag(date, label=None, css_class=""):
     return f'<time{class_attr} datetime="{esc(date)}">{esc(date if label is None else label)}</time>'
 
 
+# MathJax 4 typesets in Fira Math: it fetches the mathjax-fira font package
+# for its own version from jsDelivr, so the font stays matched to the core.
 MATHJAX_SCRIPT = r"""
 <script>
   window.MathJax = {
@@ -68,6 +70,7 @@ MATHJAX_SCRIPT = r"""
     options: {
       skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input']
     },
+    output: { font: 'mathjax-fira' },
     chtml: { scale: 1.06 }
   };
   document.addEventListener('entries-rendered', function (event) {
@@ -78,7 +81,7 @@ MATHJAX_SCRIPT = r"""
   });
 </script>
 <script id="MathJax-script" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-mml-chtml.js"></script>
 """
 
 def load_yaml(path):
