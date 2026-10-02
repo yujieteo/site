@@ -1,8 +1,33 @@
 format: calibrator-raw
 version: 1
-sessions: []
-questions: []
-sources: []
-claims: []
-responses: []
-revisions: []
+sessions[1]{session_id,generated_at,generator,inputs,question_count,imported_at,exported_at,answered,skipped,unseen}:
+  2026-10-02-sample,"2026-10-02T08:00:00Z","example: external LLM question generator",data/notes.md@<commit>; calibrator/raw.toon@<commit>; public repositories; news retrieved 2026-10-02,5,"2026-10-02T03:23:40.246Z","2026-10-02T03:24:15.064Z",5,0,0
+questions[5]{question_id,session_id,proposition,context,high_action,low_action,origin,info_gain,action_impact,novelty,adversariality,relevance,explore_exploit,resolution_rule,resolution_horizon,resolution_status,outcome,resolution_evidence,generated_at}:
+  q-2026-10-02-001,2026-10-02-sample,Will spending two hours this week prototyping the smallest proof-agent experiment be higher-value than reading two more papers on it?,A recent open-source release makes small theorem-proving agents cheap to run locally.,prototype the experiment this week,keep reading first,news,82,90,70,65,88,exploit,Resolved true if a later note or repository shows the prototype ran and was judged more useful than the reading.,2026-10-16,unresolved,null,null,"2026-10-02T08:00:00Z"
+  q-2026-10-02-002,2026-10-02-sample,Should I stop project X before investing another ten hours in it?,The last three notes on X record no measurable progress.,stop X and write down why,continue X for ten more hours,notes,75,85,40,92,80,exploit,Resolved true if X is stopped within the horizon and no later note regrets it.,2026-11-01,unresolved,null,null,"2026-10-02T08:00:00Z"
+  q-2026-10-02-003,2026-10-02-sample,Am I continuing the site refactor because of sunk cost rather than expected future value?,Repository activity shows refactor commits but no new readers' features in a month.,freeze the refactor,finish the refactor,project,70,72,55,88,76,exploit,Unresolvable automatically unless a later note states the reason explicitly.,2026-12-31,unresolved,null,null,"2026-10-02T08:00:00Z"
+  q-2026-10-02-004,2026-10-02-sample,Will the result I rated 80% last session still look right after this month's new evidence?,Two later notes partly contradict it.,keep the belief,write a note revising it,calibration,60,45,35,70,66,exploit,Resolved by the next session's answer to the same latent variable.,next session,unresolved,null,null,"2026-10-02T08:00:00Z"
+  q-2026-10-02-005,2026-10-02-sample,Is a small immediate experiment better than more reading whenever my uncertainty is mainly empirical?,"",default to experiments first,keep deciding case by case,synthesis,66,58,62,50,70,explore,"Unresolved until several later records show experiments outperforming reading, or not.",2027-04-01,unresolved,null,null,"2026-10-02T08:00:00Z"
+sources[7]{question_id,source_id,title,url,published_at,retrieved_at}:
+  q-2026-10-02-001,s1,Example release notes for a small proof agent,"https://example.org/proof-agent-release",2026-09-30,"2026-10-02T07:40:00Z"
+  q-2026-10-02-001,s2,Notes,"https://teoyujie.org/notes.html",null,"2026-10-02T07:40:00Z"
+  q-2026-10-02-002,s1,Notes,"https://teoyujie.org/notes.html",null,"2026-10-02T07:40:00Z"
+  q-2026-10-02-003,s1,yujieteo/site commit history,"https://github.com/yujieteo/site/commits/main",null,"2026-10-02T07:40:00Z"
+  q-2026-10-02-004,s1,raw.toon,"https://teoyujie.org/calibrator/raw.toon",null,"2026-10-02T07:40:00Z"
+  q-2026-10-02-005,s1,raw.toon,"https://teoyujie.org/calibrator/raw.toon",null,"2026-10-02T07:40:00Z"
+  q-2026-10-02-005,s2,Notes,"https://teoyujie.org/notes.html",null,"2026-10-02T07:40:00Z"
+claims[6]{question_id,source_id,claim}:
+  q-2026-10-02-001,s1,The release runs on a laptop GPU in under an hour per problem.
+  q-2026-10-02-001,s2,"A note lists proof agents as a current interest, tagged #agents."
+  q-2026-10-02-002,s1,Three consecutive notes on X report no measurable progress.
+  q-2026-10-02-003,s1,Twelve of the last fifteen commits are refactors.
+  q-2026-10-02-004,s1,The earlier answer was 80%.
+  q-2026-10-02-005,s1,Four earlier answers favoured experiments when uncertainty was empirical.
+responses[5]{question_id,state,first_probability,final_probability,revision_count,time_to_first_answer_ms,time_to_final_answer_ms,first_shown_at,first_answered_at,final_answered_at}:
+  q-2026-10-02-001,answered,50,78,1,3690,9991,"2026-10-02T03:23:40.246Z","2026-10-02T03:23:43.936Z","2026-10-02T03:23:50.237Z"
+  q-2026-10-02-002,answered,50,50,0,4563,12729,"2026-10-02T03:23:44.059Z","2026-10-02T03:23:56.788Z","2026-10-02T03:23:56.788Z"
+  q-2026-10-02-003,answered,50,50,0,8280,8280,"2026-10-02T03:23:56.910Z","2026-10-02T03:24:05.190Z","2026-10-02T03:24:05.190Z"
+  q-2026-10-02-004,answered,50,50,0,6529,6529,"2026-10-02T03:24:05.312Z","2026-10-02T03:24:11.841Z","2026-10-02T03:24:11.841Z"
+  q-2026-10-02-005,answered,50,50,0,2979,2979,"2026-10-02T03:24:11.963Z","2026-10-02T03:24:14.942Z","2026-10-02T03:24:14.942Z"
+revisions[1]{question_id,revision,probability,at,ms_since_first_shown}:
+  q-2026-10-02-001,1,78,"2026-10-02T03:23:50.237Z",9991
