@@ -1287,8 +1287,9 @@ def build_open_questions(cv, notes, records, corpus_revision):
     content = (
         '<h1 class="page-title">Open questions</h1>'
         '<p class="page-lede">Notes tagged <code>todo</code>: questions to work out and things to '
-        'do. Notes are never edited to close them. When a note, post, visual or episode answers '
-        'one, it links back, and the question shows here as resolved.</p>'
+        'do. A note\'s text is never edited to close it, though its todo tag may be removed. '
+        'When a note, post, visual or episode answers one, it links back, and the question '
+        'shows here as resolved.</p>'
         f'<p class="oq-summary">{len(questions) - resolved} open &middot; {resolved} resolved'
         ' &middot; <a href="notes.html">All notes</a></p>'
         f'{body}'
