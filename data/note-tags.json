@@ -52,6 +52,12 @@
       "aliases": [],
       "replaced_by": null
     },
+    "agent-written": {
+      "class": "project",
+      "description": "A note written by an agent rather than the author; provenance, used alongside semantic tags.",
+      "aliases": [],
+      "replaced_by": null
+    },
     "agents": {
       "class": "topic",
       "description": "Agent workflows, orchestration, tool use, and operating constraints.",
