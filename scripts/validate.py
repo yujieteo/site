@@ -2,6 +2,7 @@
 """Validate YAML data files against matching JSON Schemas."""
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -15,6 +16,12 @@ from notes import NotesError, load_notes, split_frontmatter
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 SCHEMA = ROOT / "schema"
+# New #todo notes must state a date and a done-condition; sections dated
+# before this rule are exempt, so existing notes are never rechecked.
+TODO_RULE_SINCE = "2026-10-03"
+MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
+TODO_DATE = re.compile(rf"\b\d{{4}}-\d{{2}}-\d{{2}}\b|\b\d{{1,2}} (?:{MONTHS}) \d{{4}}\b")
+TODO_DONE = re.compile(r"\bdone when\b", re.IGNORECASE)
 
 
 def load_document(path):
@@ -29,6 +36,24 @@ def load_document(path):
     except yaml.YAMLError as exc:
         return None, f"could not parse YAML ({exc})"
     return json.loads(json.dumps(document, default=str)), None
+
+
+def undated_todos(document, since=TODO_RULE_SINCE):
+    """Return diagnostics for #todo notes dated on or after ``since`` that lack
+    a date or a "done when" condition. Entries are newest-first, so the scan
+    stops at the first older section and its cost stays flat as notes grow."""
+    diagnostics = []
+    for entry in document["entries"]:
+        if entry["date"] < since:
+            break
+        for index, note in enumerate(entry["notes"], 1):
+            if "todo" not in note["tags"]:
+                continue
+            missing = [label for label, pattern in (("a date", TODO_DATE), ('a "done when" condition', TODO_DONE))
+                       if not pattern.search(note["content"])]
+            if missing:
+                diagnostics.append(f"data/notes.md [{entry['date']} note {index}]: #todo needs {' and '.join(missing)}")
+    return diagnostics
 
 
 def validate_file(path, validator):
@@ -52,11 +77,15 @@ def validate_file(path, validator):
 def validate_all():
     errors = 0
     try:
-        load_notes(DATA / "notes.md", DATA / "note-tags.json")
+        document, _ = load_notes(DATA / "notes.md", DATA / "note-tags.json")
     except NotesError as exc:
         for diagnostic in exc.diagnostics:
             print(f"[FAIL] {diagnostic}")
         errors += len(exc.diagnostics)
+    else:
+        for diagnostic in undated_todos(document):
+            print(f"[FAIL] {diagnostic}")
+            errors += 1
     try:
         load_raw()
     except (CalibrationError, OSError) as exc:

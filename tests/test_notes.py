@@ -153,6 +153,27 @@ Math. #math.ag
 
         self.assertIn("must use class 'arxiv-math'", str(caught.exception))
 
+    def test_new_todos_need_a_date_and_done_condition(self):
+        from validate import undated_todos
+
+        def note(content, *tags):
+            return {"content": content, "tags": list(tags)}
+
+        document = {"entries": [
+            {"date": "2026-10-05", "notes": [
+                note("By 31 October 2026, ship it; done when the post is live.", "todo"),
+                note("Ship it; done when the post is live.", "todo"),
+                note("Ship it by 2026-10-31.", "todo"),
+                note("No date needed without a todo.", "agents"),
+            ]},
+            {"date": "2026-10-02", "notes": [note("Old undated todo.", "todo")]},
+        ]}
+
+        self.assertEqual(undated_todos(document, since="2026-10-03"), [
+            "data/notes.md [2026-10-05 note 2]: #todo needs a date",
+            'data/notes.md [2026-10-05 note 3]: #todo needs a "done when" condition',
+        ])
+
 
 if __name__ == "__main__":
     unittest.main()
