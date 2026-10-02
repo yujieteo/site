@@ -42,6 +42,7 @@ PORTS = {
     "lug-joint": "lug-joint",
     "md-explorer": "md-explorer",
     "mohr": "mohr",
+    "motives-periods": "motives-periods",
     "packets-to-playback": "packets-to-playback",
     "phasors": "phasors",
     "pigeonhole": "pigeonhole",
