@@ -86,9 +86,9 @@ Many tests read the built `site/`, so run `scripts/build.py` first.
 slowest modules, files and tests. A suite over its budget in
 `tests/time-budget.json` fails with its slowest tests named. The budget does
 not grow with the number of visualisations: per-visualisation checks must stay
-constant-cost, heavy tests belong in the visualisation's own repository, and browser
+constant-cost, heavy tests belong in the visualisation's folder in yujieteo/visuals, and browser
 end-to-end tests in the dedicated technical E2E repository (pending; until it
-exists, the visualisation's own repository stands in). Its values (600 s for Python, 60 s for Node) are a provisional
+exists, that folder stands in). Its values (600 s for Python, 60 s for Node) are a provisional
 ceiling, not a benchmark derived from today's timings: the suite is expected to
 grow as more visualisations and tests arrive, so they are deliberately
 adjustable in that one file, and a pull request that raises them states why. Node runs every
