@@ -2,8 +2,8 @@
 
 A visualization is either one of this repository's own, with a catalogue stub data/visuals/<slug>.yaml
 and its files in visuals/<slug>/ (the private beamdswitch and connes-qft), or a folder viz/<slug>/ of
-the public visuals repository, read as the checkout VISUALS_REPO has it: its visual.json is the
-catalogue entry, unless it says "published": false. Large files are listed in a downloads file and
+the public visuals repository, read as the visuals checkout find_visuals_repo finds has it: its visual.json
+is the catalogue entry, unless it says "published": false. Large files are listed in a downloads file and
 fetched into a cache shared by every build, checked against their sha256.
 """
 
