@@ -1,5 +1,7 @@
 """Repository checks that replace review by reading: committed artifacts, source-grep tests, the review tier."""
 
+import contextlib
+import io
 import sys
 import tempfile
 import textwrap
@@ -96,16 +98,34 @@ class SourceGrepTests(unittest.TestCase):
             });
         """), ["x.test.mjs: pages ship the template", "x.test.mjs: labels"])
 
-    def test_the_allowlist_names_every_existing_case_with_a_reason(self):
-        lines = [line for line in (ROOT / "tests" / "source-grep-allowlist.txt").read_text().splitlines()
-                 if line and not line.startswith("#")]
-        for line in lines:
-            with self.subTest(line=line):
-                self.assertRegex(line, r"\S  # \S")
+    def check(self, allowlist):
+        """(passed, printed rows) of the source-grep check of this repository's tests with ``allowlist``."""
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "allow.txt"
-            path.write_text("# comment\na.B.test_c  # reason\n\n", encoding="utf-8")
-            self.assertEqual(repo_check.allowlisted(path), {"a.B.test_c"})
+            path.write_text(allowlist, encoding="utf-8")
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                passed = repo_check.check_source_greps(path)
+        return passed, output.getvalue().splitlines()
+
+    def test_the_allowlist_passes_with_a_reason_for_every_case(self):
+        passed, rows = self.check(repo_check.ALLOWLIST.read_text(encoding="utf-8"))
+        self.assertTrue(passed, rows)
+
+    def test_an_allowlist_entry_without_a_reason_fails(self):
+        entries = repo_check.allowlisted()
+        first = next(iter(entries))
+        passed, rows = self.check("# comment\n" + "".join(
+            f"{test}\n" if test == first else f"{test}  # {reason}\n" for test, reason in entries.items()))
+        self.assertFalse(passed)
+        failures = [row for row in rows if ",FAIL," in row]
+        self.assertEqual(len(failures), 1, rows)
+        self.assertTrue(failures[0].endswith(f"allow.txt: {first} gives no reason"), failures[0])
+
+    def test_a_case_missing_from_the_allowlist_is_reported_without_failing(self):
+        passed, rows = self.check("")
+        self.assertTrue(passed)
+        self.assertEqual(len([row for row in rows if ",PASS,report only: " in row]), len(repo_check.allowlisted()))
 
 
 class TierTests(unittest.TestCase):

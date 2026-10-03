@@ -57,7 +57,7 @@ jobs:
         working-directory: site
         run: python scripts/validate.py
 
-      # Committed build or OS artifacts, tests that assert on the text of a code file, and (on a pull
+      # Committed build or OS artifacts, a report of tests that assert on code text, and (on a pull
       # request) the review tier; see scripts/repo_check.py.
       - name: Check repository
         working-directory: site

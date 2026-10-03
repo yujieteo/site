@@ -136,10 +136,12 @@ Two more checks replace what review used to find by reading:
 ```
 
 `scripts/repo_check.py` fails when Git tracks a `__pycache__/`, `*.pyc`,
-`.DS_Store` or AppleDouble `._*` file, or when `.gitignore` stops ignoring one,
-and on a test that reads a code file and matches its text instead of running
-it. The existing cases of the second are listed, each with its reason, in
-`tests/source-grep-allowlist.txt`. With `--base <ref>` it also prints the
+`.DS_Store` or AppleDouble `._*` file, or when `.gitignore` stops ignoring one.
+It reports, but does not fail on, a test that reads a code file and matches its
+text instead of running it. Making it fail is a later step, after a replay
+against past pull requests shows no false positives. The existing cases are listed, each with its reason, in
+`tests/source-grep-allowlist.txt`; an entry with no reason, or one that no
+longer matches, fails. With `--base <ref>` it also prints the
 [review tier](skills/verify.md#review-tier) of the changes.
 
 ## Continuous integration

@@ -8,8 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 CSS = (ROOT / "static/css/style.css").read_text(encoding="utf-8")
 
 # Text (WCAG 1.4.3) needs 4.5:1. --focus is the focus ring (1.4.11, 3:1) and also link-like button
-# text on the page background. --border is left out: it outlines controls that are identified by
-# their text, so a boundary contrast for it is a design decision, not a check.
+# text on the page background. --border is a documented deviation (skills/verify.md): it is about
+# 1.5:1 in the light theme and 1.9:1 in the dark theme, below the 3:1 of WCAG 1.4.11 for control
+# borders. Text contrast stays enforced; a border change is a design follow-up for the captain.
 TEXT = [("--foreground", "--background"), ("--foreground", "--surface"),
         ("--secondary", "--background"), ("--secondary", "--surface"),
         ("--focus", "--background")]

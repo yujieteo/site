@@ -5,11 +5,13 @@
 AppleDouble `._*` file, `Thumbs.db`) or when `.gitignore` stops ignoring one, so a stray file never
 reaches a commit or a deploy.
 
-`source-grep` fails on a test that reads a code file (a script under `static/`, `templates/` or
+`source-grep` reports a test that reads a code file (a script under `static/`, `templates/` or
 `scripts/`, or a page under `visuals/`) and matches its text (`assertIn`, `assertRegex`,
 `assert.match`, `assert.ok(text.includes(...))`): such a test passes whatever the code does. Its
 existing cases are listed in `tests/source-grep-allowlist.txt`; a new one is rewritten to run the
-code, or listed there with the reason it cannot.
+code, or listed there with the reason it cannot. For now a new case is only reported, until a replay
+against past pull requests shows no false positives; an allow-list entry with no reason, or one that
+no longer matches, fails.
 
 `tier` prints the review tier of the changes against `--base`: `fast` only when every changed path
 is content or a private visualization copy, else `full` with the paths that need the full pipeline
@@ -24,6 +26,7 @@ Usage: scripts/repo_check.py [artifacts] [source-grep] [tier] [--base REF]
 
 import argparse
 import ast
+import os
 import re
 import subprocess
 import sys
@@ -174,20 +177,25 @@ def source_greps(paths):
 
 
 def allowlisted(path=ALLOWLIST):
-    """The test ids in the allow-list: one per line, `<test id>  # <reason>`."""
+    """The test ids in the allow-list with their reasons: one per line, `<test id>  # <reason>`."""
     lines = path.read_text(encoding="utf-8").splitlines() if path.exists() else []
-    return {line.split("#", 1)[0].strip() for line in lines if line.split("#", 1)[0].strip()}
+    entries = [[part.strip() for part in line.split("#", 1)] + [""] for line in lines]
+    return {entry[0]: entry[1] for entry in entries if entry[0]}
 
 
-def check_source_greps():
+def check_source_greps(allowlist=ALLOWLIST):
     tests = sorted([*ROOT.glob("tests/test_*.py"), *ROOT.glob("tests/*.test.mjs"), *ROOT.glob("tests/*.test.cjs")])
     found = source_greps(tests)
-    allowed = allowlisted()
-    failures = [(where, f"{test} asserts on the text of a code file; run the code instead")
-                for test, where in found if test not in allowed]
-    stale = sorted(allowed - {test for test, _ in found})
-    failures += [(ALLOWLIST.relative_to(ROOT).as_posix(), f"{test} no longer matches; remove it") for test in stale]
-    return report("source-grep", failures, f"{len(tests)} test files; {len(found)} allow-listed source-grep tests")
+    allowed = allowlisted(allowlist)
+    listed = Path(os.path.relpath(allowlist, ROOT)).as_posix()
+    failures = [(listed, f"{test} gives no reason") for test, reason in allowed.items() if not reason]
+    failures += [(listed, f"{test} no longer matches; remove it")
+                 for test in sorted(allowed.keys() - {test for test, _ in found})]
+    new = [(where, test) for test, where in found if test not in allowed]
+    for where, test in new:
+        print(f"A,source-grep,PASS,report only: {where}: {test} asserts on the text of a code file; run the code instead")
+    return report("source-grep", failures,
+                  f"{len(tests)} test files; {len(found) - len(new)} allow-listed source-grep tests")
 
 
 def tier(changed):

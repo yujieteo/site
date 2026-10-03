@@ -44,10 +44,18 @@ npm ci && npm run typecheck                               # JSDoc types and unus
 
 Every command above must exit successfully; on `main`, omit `--base` to run every
 per-visualization check (see the [README](../README.md#test)). `scripts/repo_check.py`
-prints its rows in the `stage,check,status,evidence` form above. When it fails on a
-test that asserts on the text of a code file, rewrite the test to run the code; add it to
+prints its rows in the `stage,check,status,evidence` form above. For now the source-grep
+check only reports a test that asserts on the text of a code file (a `PASS` row that starts
+`report only:`); it fails only on an allow-list entry with no reason or one that no longer
+matches. Making it fail on a new case is a later step, after a replay against past pull
+requests shows no false positives. Rewrite a reported test to run the code; add it to
 `tests/source-grep-allowlist.txt`, with the reason, only when the code cannot run without
-a browser. The build recreates `site/` from the
+a browser.
+
+`tests/test_theme_contrast.py` checks text at 4.5:1 and the focus ring at 3:1 in both
+themes. It does not check `--border` against WCAG 1.4.11 (3:1). This is a known deviation:
+the border is about 1.5:1 in the light theme and 1.9:1 in the dark theme. A border change
+is a design follow-up for the captain. The build recreates `site/` from the
 sources; `site/` is ignored by Git, so `git status` shows only source changes.
 Review the generated changes with
 `.venv/bin/python scripts/site_diff.py <base> --visuals-base <visuals-base>`, where
