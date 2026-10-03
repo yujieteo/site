@@ -1,0 +1,12 @@
+{
+  "name": "site",
+  "private": true,
+  "description": "Pins the type-checking tools only; the site has no runtime dependencies or test framework.",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2"
+  }
+}

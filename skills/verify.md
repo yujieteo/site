@@ -36,7 +36,7 @@ set `VISUALS_REPO` when it is not at a supported sibling path.
 ```sh
 .venv/bin/python scripts/validate.py
 .venv/bin/python scripts/build.py
-.venv/bin/python scripts/typecheck.py --install          # JSDoc types in the site's JavaScript, checked by tsc
+npm ci && npm run typecheck                               # JSDoc types in the site's JavaScript, checked by tsc
 .venv/bin/python scripts/run_tests.py --base origin/main  # Python and Node tests, timed against tests/time-budget.json
 ```
 

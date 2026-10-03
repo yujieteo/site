@@ -77,11 +77,11 @@ jobs:
         with:
           node-version: "22"
 
-      # tsc checks the JSDoc types in the site's JavaScript (tsconfig.json). The
-      # script installs its pinned tools outside Git, as there is no package.json.
+      # tsc checks the JSDoc types in the site's JavaScript (tsconfig.json),
+      # with the versions package.json and package-lock.json pin.
       - name: Type-check JavaScript
         working-directory: site
-        run: python scripts/typecheck.py --install
+        run: npm ci && npm run typecheck
 
       - name: Run Node tests
         working-directory: site

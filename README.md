@@ -110,7 +110,7 @@ publishes the port (`tests/test_visual_ports.py`, plus the cross-cutting suites)
 so updating a visualization means running its tests in its own repository.
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
-`package.json` or installed packages. The Python tests copy the repository to a
+installed packages. The Python tests copy the repository to a
 temporary directory and rebuild the site there, so they also read
 `VISUALS_REPO`.
 
@@ -119,12 +119,11 @@ JavaScript: JSDoc types that `tsc` checks as `tsconfig.json` sets out, with
 nothing emitted.
 
 ```sh
-.venv/bin/python scripts/typecheck.py --install   # install the pinned tsc into .typecheck/, then check
+npm ci && npm run typecheck   # install the pinned tsc into node_modules/, then check
 ```
 
-`scripts/typecheck.py` pins the TypeScript and `@types/node` versions and
-installs them with `npm install --no-save` into `.typecheck/`, which Git
-ignores.
+`package.json` and `package-lock.json` pin the TypeScript and `@types/node`
+versions and nothing else; `node_modules/` is ignored by Git.
 
 ## Continuous integration
 
