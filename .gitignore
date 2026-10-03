@@ -17,3 +17,6 @@ __pycache__/
 
 # AppleDouble files that macOS writes beside files with extended attributes.
 ._*
+
+# Logs and the last verdict of scripts/verify.py.
+/.verify/

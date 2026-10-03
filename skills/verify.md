@@ -29,7 +29,24 @@ On a red run, fix the change on the branch, push, and wait for green again; neve
 
 ## Stage A: pre-deploy
 
-Run these commands from the repository root. The build and the Python tests
+Run Stage A with one call, from the repository root:
+
+```sh
+.venv/bin/python scripts/verify.py stage-a --base origin/main   # every step below, one TOON verdict
+.venv/bin/python scripts/verify.py typecheck                    # tsc errors by code and by file, first 20
+.venv/bin/python scripts/verify.py last                         # the last stage-a verdict, or stale
+```
+
+`stage-a` runs the steps below in order and stops at the first failure. It prints the
+verdict, the failed tests with their `file:line`, each step's status and time, the test
+time budget and the review tier, and writes each step's full output to `.verify/stage-a/<step>.log`.
+Read that log; do not pipe a build or test run through `tail` or `grep`. Exit codes: 0 pass,
+1 fail, 2 usage or environment error. After a fix, `--only <steps> --scoped-verdict` reruns the
+failed steps; without `--scoped-verdict`, `--only` reports `incomplete`, never `pass`. Run the
+whole of Stage A again before the pull request. `typecheck --file <path>` and `--since <ref>`
+narrow the counts, but the verdict still counts every error unless `--scoped-verdict` is given.
+
+The steps it runs, which you can also run by hand. The build and the Python tests
 need the separate `visuals` checkout described in the [README](../README.md#build);
 set `VISUALS_REPO` when it is not at a supported sibling path.
 

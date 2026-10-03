@@ -12,7 +12,7 @@ Use for edits to the build, schemas, templates, browser JavaScript, or tests, no
 | Page shell and browser code | `templates/base.html`, `static/css/style.css`, `static/js/` (`corpus.js`: corpus loader and queries; `webmcp.js`: WebMCP tools; `site-search.js`: global search; `filter.js`: list filters; `paper-bib.js` and `bibtex.js`: the Paper Links BibTeX export; `notes-views.js`: notes timeline; `post.js` and `copy-markdown.js`: blog post pages; `shell.js`: mobile menu and theme switch; `fade.js`: fades) |
 | Homepage facets, featured cards, links | `data/tag-facets.yaml`, `pinned` in `data/cv/cv.yaml`, `attach_links` in `scripts/published_corpus.py` |
 | Tests | `tests/test_*.py` (unittest), `tests/*.test.mjs`, `tests/*.test.cjs` (Node); `scripts/run_tests.py` runs and times both against `tests/time-budget.json` |
-| Repository checks and lint | `scripts/repo_check.py` (committed artifacts, source-grep tests, review tier), `ruff.toml`, `tsconfig.json` |
+| Repository checks and lint | `scripts/repo_check.py` (committed artifacts, source-grep tests, review tier), `ruff.toml`, `tsconfig.json`; `scripts/verify.py` runs all of Stage A, or the type check, in one call |
 
 1. Change the source, never `site/`. The build recreates `site/` from scratch.
 2. If the change alters output, rebuild and review it with `scripts/site_diff.py` (see [Deploy generated files](deploy.md)). Never commit `site/`; Git ignores it and CI builds it.
