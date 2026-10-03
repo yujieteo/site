@@ -16,7 +16,7 @@ Use for edits to the build, schemas, templates, browser JavaScript, or tests, no
 1. Change the source, never `site/`. The build recreates `site/` from scratch.
 2. If the change alters output, rebuild and review it with `scripts/site_diff.py` (see [Deploy generated files](deploy.md)). Never commit `site/`; Git ignores it and CI builds it.
 3. Add or update a test in `tests/` next to the behaviour you changed, keeping it cheap and timed as [Site test cost](add-visualization.md#site-test-cost) says.
-4. Keep the JavaScript you touch (`static/js/`, `scripts/`, `tests/`) typed with JSDoc so `scripts/typecheck.py` passes; files stay `.js` with no build step ([README](../../README.md#test)).
+4. Keep the JavaScript you touch (`static/js/`, `scripts/`, `tests/`) typed with JSDoc so `npm run typecheck` passes; files stay `.js` with no build step ([README](../../README.md#test)).
 5. Run [Stage A](../verify.md#stage-a-pre-deploy).
 
 UI motion is fades only. Use the `--fade-duration` / `--fade-ease` tokens in
