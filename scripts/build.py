@@ -107,6 +107,7 @@ def prepare_output():
     (OUT / "podcast").mkdir()
     shutil.copytree(STATIC, OUT / "static")
     shutil.copy2(ROOT / "llms.txt", OUT / "llms.txt")
+    shutil.copy2(STATIC / "favicon.ico", OUT / "favicon.ico")
     (OUT / "calibrator").mkdir()
     shutil.copyfile(CALIBRATION_RAW, OUT / "calibrator" / "raw.toon")
 

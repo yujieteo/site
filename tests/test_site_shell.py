@@ -111,3 +111,14 @@ class FadeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FaviconTests(unittest.TestCase):
+    def test_shell_links_the_favicon_and_the_build_serves_it_at_the_root(self):
+        template = (ROOT / "templates" / "base.html").read_text(encoding="utf-8")
+        self.assertIn('<link rel="icon" href="{root}static/favicon.svg"', template)
+        self.assertIn('<link rel="icon" href="{root}favicon.ico"', template)
+        self.assertTrue((ROOT / "static" / "favicon.svg").is_file())
+        self.assertTrue((ROOT / "static" / "favicon.ico").is_file())
+        build = (ROOT / "scripts" / "build.py").read_text(encoding="utf-8")
+        self.assertIn('OUT / "favicon.ico"', build)
