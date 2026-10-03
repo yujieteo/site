@@ -3,6 +3,7 @@
    then of the primary checkout when this checkout is a linked Git worktree. */
 import { execFileSync } from "node:child_process";
 import { existsSync, statSync } from "node:fs";
+import { homedir } from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -29,12 +30,13 @@ function primaryCheckout(root) {
  */
 export function findVisualsRepo(root, env) {
   if (env.VISUALS_REPO) {
-    if (!isVisualsCheckout(env.VISUALS_REPO)) {
+    const configured = env.VISUALS_REPO.replace(/^~(?=$|\/)/, homedir());
+    if (!isVisualsCheckout(configured)) {
       throw new Error(`VISUALS_REPO is ${JSON.stringify(env.VISUALS_REPO)}, which is not a yujieteo/visuals checkout `
         + "(a Git checkout with a viz/ folder). Fix: set VISUALS_REPO to the path of a yujieteo/visuals checkout, "
         + "or unset it to use a sibling checkout.");
     }
-    return path.resolve(env.VISUALS_REPO);
+    return path.resolve(configured);
   }
   const bases = [root];
   const primary = primaryCheckout(root);

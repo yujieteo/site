@@ -57,3 +57,12 @@ test("nothing found lists every path tried and the fix", (t) => {
     return true;
   });
 });
+
+test("a VISUALS_REPO under ~ is read from the home directory", (t) => {
+  const { tmp, worktree } = checkouts(t);
+  const home = process.env.HOME;
+  t.after(() => { process.env.HOME = home; });
+  process.env.HOME = tmp;
+  const visuals = makeVisuals(path.join(tmp, "elsewhere", "visuals"));
+  assert.equal(findVisualsRepo(worktree, { VISUALS_REPO: "~/elsewhere/visuals" }), visuals);
+});
