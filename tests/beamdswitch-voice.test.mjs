@@ -3,6 +3,7 @@
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import test from "node:test";
+import { pathToFileURL } from "node:url";
 import vm from "node:vm";
 import { parseDeck } from "./fixtures/beamdswitch/deck.mjs";
 
@@ -13,6 +14,10 @@ import { parseDeck } from "./fixtures/beamdswitch/deck.mjs";
 
 /** @param {string} path */
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+// The yujieteo/visuals checkout the build reads (VISUALS_REPO, as in CI; else a sibling checkout).
+const VISUALS = process.env.VISUALS_REPO ? pathToFileURL(`${process.env.VISUALS_REPO}/`) : new URL("../../visuals/", import.meta.url);
+/** @param {string} path */
+const readVisuals = (path) => readFileSync(new URL(path, VISUALS), "utf8");
 const TEMPLATE = read("templates/beamdswitch.js");
 /**
  * Run a script and return the global it defines; any, as each caller states the API it expects.
@@ -47,22 +52,25 @@ test("a visualisation's own voice is kept", () => {
 });
 
 test("every visualisation on the shared template ships the template that always declares a voice", () => {
-  const pages = readdirSync(new URL("../visuals/", import.meta.url)).filter((slug) => {
-    try { return !!read(`visuals/${slug}/beamdswitch.js`); } catch { return false; }
-  });
+  // This repository's own folders (visuals/<slug>/) and the visuals repository's (viz/<slug>/).
+  /** @param {(path: string) => string} reader @param {string} folder */
+  const copies = (reader, folder) => readdirSync(new URL(folder, folder === "visuals/" ? new URL("../", import.meta.url) : VISUALS))
+    .map((slug) => ({ slug, path: `${folder}${slug}/beamdswitch.js`, reader }))
+    .filter(({ path }) => { try { return !!reader(path); } catch { return false; } });
+  const pages = [...copies(read, "visuals/"), ...copies(readVisuals, "viz/")];
   assert.ok(pages.length > 0);
   // Every page, or only those a pull request changes (SITE_TEST_VISUALS; see tests/visual_selection.py).
   const selected = process.env.SITE_TEST_VISUALS?.split(",");
-  for (const slug of pages.filter((slug) => !selected || selected.includes(slug))) assert.equal(read(`visuals/${slug}/beamdswitch.js`), TEMPLATE, `visuals/${slug}/beamdswitch.js is the shared template`);
+  for (const { slug, path, reader } of pages.filter(({ slug }) => !selected || selected.includes(slug))) assert.equal(reader(path), TEMPLATE, `${path} is the shared template`);
 });
 
 test("Phasors and Toulmin export their default decks with voice bf_emma", () => {
   /** @param {string} slug */
-  const html = (slug) => read(`visuals/${slug}/index.html`);
+  const html = (slug) => readVisuals(`viz/${slug}/index.html`);
   /** @param {string} slug @param {string} id */
   const script = (slug, id) => {
     const match = new RegExp(`<script id="${id}">([\\s\\S]*?)</script>`).exec(html(slug));
-    assert.ok(match, `visuals/${slug}/index.html has a <script id="${id}">`);
+    assert.ok(match, `viz/${slug}/index.html has a <script id="${id}">`);
     return match[1];
   };
   const P = load(script("phasors", "ph-engine"), "Phasors");

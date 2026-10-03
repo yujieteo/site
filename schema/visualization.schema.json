@@ -28,14 +28,14 @@
     "assets": {
       "type": "array",
       "minItems": 1,
-      "description": "Further files of a visualization built in this repository, published beside its index.html at their path under visuals/<slug>/.",
-      "items": { "type": "string", "pattern": "^visuals/[a-z0-9-]+/(?!.*\\.\\.).+$" },
+      "description": "Further files of the visualization's folder (visuals/<slug>/ here, or viz/<slug>/ in the visuals repository), published beside its index.html at their path in that folder.",
+      "items": { "type": "string", "pattern": "^(?:visuals|viz)/[a-z0-9-]+/(?!.*\\.\\.).+$" },
       "uniqueItems": true
     },
     "downloads": {
       "type": "string",
-      "description": "A JSON file in this repository whose downloads list (path, https url, sha256, bytes) the build fetches, checks and publishes under site/visuals/<slug>/. For files too large for Git, such as model weights.",
-      "pattern": "^visuals/[a-z0-9-]+/(?!.*\\.\\.).+\\.json$"
+      "description": "A JSON file of the visualization's folder whose downloads list (path, https url, sha256, bytes) the build fetches, checks and publishes under site/visuals/<slug>/. For files too large for Git, such as model weights.",
+      "pattern": "^(?:visuals|viz)/[a-z0-9-]+/(?!.*\\.\\.).+\\.json$"
     },
     "links": {
       "type": "array",

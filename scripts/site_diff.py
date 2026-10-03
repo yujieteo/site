@@ -8,13 +8,16 @@ compares it, file by file, with the current build in site/. Each line is a
 generated), then the path; site/corpus.json is listed first.
 
 A base commit from before site/ left Git still carries its committed output,
-which is used as is. Any later base commit is rebuilt from `git archive`; that
-build reads each external visualization at the commit pinned in the base's own
-data/visuals/<slug>.pin, from the visuals checkout that scripts/build.py uses,
-and takes pinned downloads (such as beamdswitch's Kokoro weights) from the same
-download cache, so an unchanged pin is neither fetched again nor listed.
+which is used as is. Any later base commit is rebuilt from `git archive`. A
+base that still pins its external visualizations (data/visuals/<slug>.pin)
+reads each one at its pin from the visuals checkout that scripts/build.py uses;
+a later base builds every visual from the yujieteo/visuals commit its deploy
+read, given as --visuals-base (scripts/build.py prints the commit it reads), so
+a visual that changed since that deploy is listed. Pinned downloads (such as
+beamdswitch's Kokoro weights) come from the same download cache, so an
+unchanged pin is neither fetched again nor listed.
 
-Usage: scripts/build.py && scripts/site_diff.py <base-commit>
+Usage: scripts/build.py && scripts/site_diff.py <base-commit> [--visuals-base <visuals-commit>]
 """
 
 import argparse
@@ -48,19 +51,38 @@ def extract(repo, commit, destination, *paths):
         raise SystemExit(f"git archive {commit} failed in {repo}")
 
 
-def base_site(commit, workdir):
+def base_visuals(commit, visuals_base, workdir):
+    """The visuals checkout ``commit``'s build reads: the usual one for a base that pins its visuals,
+    otherwise a scratch clone of it at ``visuals_base``."""
+    visuals_repo = resolve_visuals_repo()
+    if git("ls-tree", "--name-only", commit, "data/visuals/").count(".pin"):
+        return visuals_repo
+    if visuals_base is None:
+        raise SystemExit(f"{commit} builds its visuals from yujieteo/visuals: give the visuals commit its "
+                         "deploy read as --visuals-base (scripts/build.py printed it)")
+    clone = workdir / "visuals"
+    git("clone", "--quiet", "--shared", "--no-checkout", str(visuals_repo), str(clone))
+    try:
+        git("checkout", "--quiet", visuals_base, cwd=clone)
+    except subprocess.CalledProcessError:
+        raise SystemExit(f"Unknown visuals commit: {visuals_base}") from None
+    return clone
+
+
+def base_site(commit, workdir, visuals_base=None):
     """Return the site/ tree that ``commit`` produces."""
     project = workdir / "base"
     if git("ls-tree", "--name-only", commit, "site").strip():
         extract(ROOT, commit, project, "site")
         return project / "site"
+    visuals_repo = base_visuals(commit, visuals_base, workdir)
     extract(ROOT, commit, project)
     subprocess.run(
         [sys.executable, "scripts/build.py"],
         cwd=project,
         check=True,
         stdout=subprocess.DEVNULL,
-        env=os.environ | {"VISUALS_REPO": str(resolve_visuals_repo())},
+        env=os.environ | {"VISUALS_REPO": str(visuals_repo)},
     )
     return project / "site"
 
@@ -96,6 +118,8 @@ def changes(before_root, after_root):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     parser.add_argument("base", help="commit whose build is live, usually the last deployed commit")
+    parser.add_argument("--visuals-base", help="yujieteo/visuals commit the live build read (needed once the "
+                        "base builds its visuals from yujieteo/visuals instead of pins)")
     args = parser.parse_args()
     if not OUT.is_dir():
         raise SystemExit("site/ is missing; run scripts/build.py first")
@@ -104,7 +128,7 @@ def main():
     except subprocess.CalledProcessError:
         raise SystemExit(f"Unknown base commit: {args.base}") from None
     with tempfile.TemporaryDirectory() as directory:
-        rows = changes(base_site(commit, Path(directory)), OUT)
+        rows = changes(base_site(commit, Path(directory), args.visuals_base), OUT)
     for status, path in rows:
         print(f"{status}\tsite/{path}")
 

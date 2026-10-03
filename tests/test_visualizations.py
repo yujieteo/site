@@ -1,6 +1,7 @@
+import csv
+import io
 import json
 import os
-import subprocess
 import sys
 import tempfile
 import unittest
@@ -14,6 +15,7 @@ VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).res
 sys.path.insert(0, str(SCRIPTS))
 
 import visual_sources  # noqa: E402
+from visual_selection import covers  # noqa: E402
 
 
 class VisualizationTests(unittest.TestCase):
@@ -24,22 +26,34 @@ class VisualizationTests(unittest.TestCase):
             with patch.dict(os.environ, {"VISUALS_REPO": str(repository)}):
                 self.assertEqual(visual_sources.resolve_visuals_repo(), repository.resolve())
 
-    def test_generated_visualization_matches_pinned_sources(self):
-        published = ROOT / "site" / "visuals" / "tourist-attractions"
-        pin = (ROOT / "data/visuals/tourist-attractions.pin").read_text(encoding="utf-8").strip()
+    def test_the_site_publishes_each_visuals_folder_unchanged(self):
+        """Every published viz/<slug>/ of the visuals checkout: its page, data and assets, byte for byte."""
+        entries = visual_sources.visuals_repo_visualizations(VISUALS_REPO)
+        self.assertGreater(len(entries), 0)
+        for entry in entries:
+            slug = entry["slug"]
+            if not covers(slug):
+                continue
+            with self.subTest(slug):
+                published = ROOT / "site" / "visuals" / slug
+                self.assertEqual((published / "index.html").read_bytes(),
+                                 (VISUALS_REPO / entry["html_path"]).read_bytes())
+                data = (VISUALS_REPO / entry["data_path"]).read_text(encoding="utf-8")
+                parsed = list(csv.DictReader(io.StringIO(data, newline=""))) if entry["data_path"].endswith(".csv") else json.loads(data)
+                self.assertEqual(json.loads((published / "data.json").read_text(encoding="utf-8")), parsed)
+                for asset in entry.get("assets", []):
+                    name = asset.removeprefix(f"viz/{slug}/")
+                    self.assertEqual((published / name).read_bytes(), (VISUALS_REPO / asset).read_bytes())
 
-        def pinned(path):
-            return subprocess.run(
-                ["git", "show", f"{pin}:{path}"], cwd=VISUALS_REPO, check=True, capture_output=True
-            ).stdout
+    def test_unpublished_visuals_folders_are_left_out(self):
+        unpublished = [path.parent.name for path in (VISUALS_REPO / "viz").glob("*/visual.json")
+                       if json.loads(path.read_text(encoding="utf-8")).get("published", True) is False]
+        listed = {entry["slug"] for entry in visual_sources.visuals_repo_visualizations(VISUALS_REPO)}
+        for slug in unpublished:
+            self.assertNotIn(slug, listed)
+            self.assertFalse((ROOT / "site" / "visuals" / slug).exists(), slug)
 
-        self.assertEqual(
-            (published / "index.html").read_bytes(), pinned("viz/tourist-attractions/index.html")
-        )
-        self.assertEqual(
-            json.loads((published / "data.json").read_text()),
-            json.loads(pinned("data/tourist-attractions/raw.json")),
-        )
+    def test_gallery_and_corpus_list_a_visuals_folder(self):
         corpus = json.loads((ROOT / "site/corpus.json").read_text())
         record = next(
             item for item in corpus["records"]

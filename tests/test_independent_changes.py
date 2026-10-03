@@ -1,12 +1,11 @@
 """Independent content pull requests merge without conflicts.
 
 The tests copy the repository into a scratch Git repository and clone the
-visuals repository beside it, open two content branches from the same base
-(each adding a visualization built in the visuals repository, pinned to its
-own visuals commit, and one built in this repository; one branch also adds a
-dated note and a blog post), build each branch as a contributor would, and
-merge both. The visuals clone stays checked out on a commit without either new
-visualization, so the build must read them at their pins. The same branches
+visuals repository beside it, which every build reads as it is checked out,
+open two content branches from the same base (each adding a visualization
+built in this repository; one also adds a dated note and a blog post), build
+each branch as a contributor would, and merge both. A visualization of the
+visuals repository is added there, never on a branch here. The same branches
 with the generated site/ committed, as it was before site/ left Git, are the
 control: they conflict.
 """
@@ -74,26 +73,6 @@ def local_visualization_files(slug):
     }
 
 
-def external_visualization_files(slug, pin):
-    return {
-        f"data/visuals/{slug}.yaml": stub(slug, f"viz/{slug}/index.html", f"data/{slug}/raw.json"),
-        f"data/visuals/{slug}.pin": pin + "\n",
-    }
-
-
-def publish_to_visuals(visuals, start, slug):
-    """Commit ``slug``'s HTML and data on top of ``start`` in ``visuals`` and return the commit."""
-    git(visuals, "checkout", "-q", "--detach", start)
-    sources = visualization_sources(slug)
-    for relative, content in (("viz", sources["index.html"]), ("data", sources["raw.json"])):
-        path = visuals / relative / slug / ("index.html" if relative == "viz" else "raw.json")
-        path.parent.mkdir(parents=True)
-        path.write_text(content, encoding="utf-8")
-    git(visuals, "add", "-A")
-    git(visuals, "commit", "-q", "-m", f"publish {slug}")
-    return git(visuals, "rev-parse", "HEAD").stdout.strip()
-
-
 class IndependentContentChangesTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -101,10 +80,8 @@ class IndependentContentChangesTests(unittest.TestCase):
         cls.project = project = Path(cls._directory.name) / "site-project"
         visuals = Path(cls._directory.name) / "visuals"
         git(ROOT, "clone", "-q", "--shared", str(VISUALS_REPO), str(visuals))
-        start = git(visuals, "rev-parse", "HEAD").stdout.strip()
-        pins = {slug: publish_to_visuals(visuals, start, slug)
-                for slug in ("independent-alpha", "independent-beta")}
-        git(visuals, "checkout", "-q", "--detach", start)
+        cls.visuals = visuals
+        cls.visuals_commit = git(visuals, "rev-parse", "HEAD").stdout.strip()
         ENV["VISUALS_REPO"] = str(visuals)
         listed = git(ROOT, "ls-files", "-z", "--cached", "--others", "--exclude-standard").stdout
         for relative in filter(None, listed.split("\0")):
@@ -127,14 +104,8 @@ class IndependentContentChangesTests(unittest.TestCase):
         cls.note_date = (newest + datetime.timedelta(days=1)).isoformat()
         heading = notes.index("\n## 20") + 1
         cls.branches = {
-            "add-alpha": (
-                external_visualization_files("independent-alpha", pins["independent-alpha"])
-                | local_visualization_files("independent-alpha-local")
-            ),
-            "add-beta-note-post": (
-                external_visualization_files("independent-beta", pins["independent-beta"])
-                | local_visualization_files("independent-beta-local")
-            ) | {
+            "add-alpha": local_visualization_files("independent-alpha-local"),
+            "add-beta-note-post": local_visualization_files("independent-beta-local") | {
                 "data/notes.md": (
                     notes[:heading]
                     + f"## {cls.note_date}\n\nAn independent note marker. #fpl\n\n"
@@ -203,16 +174,13 @@ class IndependentContentChangesTests(unittest.TestCase):
         ids = {record["id"] for record in corpus["records"]}
         self.assertLessEqual(
             {
-                "visualization:independent-alpha",
                 "visualization:independent-alpha-local",
-                "visualization:independent-beta",
                 "visualization:independent-beta-local",
                 "blog:independent-gamma",
             },
             ids,
         )
-        for slug in ("independent-alpha", "independent-alpha-local",
-                     "independent-beta", "independent-beta-local"):
+        for slug in ("independent-alpha-local", "independent-beta-local"):
             with self.subTest(slug=slug):
                 published = self.project / "site/visuals" / slug
                 self.assertEqual((published / "index.html").read_text(encoding="utf-8"),
@@ -237,12 +205,32 @@ class IndependentContentChangesTests(unittest.TestCase):
                         self.base_with_site, self.merged_with_site, "--", "site").stdout
         expected = sorted(committed.splitlines())
         self.assertIn("M\tsite/corpus.json", expected)
-        self.assertIn("A\tsite/visuals/independent-alpha/index.html", expected)
+        self.assertIn("A\tsite/visuals/independent-alpha-local/index.html", expected)
         for base in (self.base, self.base_with_site):
             with self.subTest(base="rebuilt" if base == self.base else "committed"):
-                rows = run(self.project, sys.executable, "scripts/site_diff.py", base).stdout.splitlines()
+                rows = run(self.project, sys.executable, "scripts/site_diff.py", base,
+                           "--visuals-base", self.visuals_commit).stdout.splitlines()
                 self.assertEqual(rows[0], "M\tsite/corpus.json")
                 self.assertEqual(sorted(rows), expected)
+
+    def test_site_diff_lists_a_visual_changed_in_the_visuals_repository_since_the_deploy(self):
+        """A deploy's upload set includes a visual that changed in yujieteo/visuals, not only in this repository."""
+        missing = run(self.project, sys.executable, "scripts/site_diff.py", "HEAD", check=False)
+        self.assertNotEqual(missing.returncode, 0)
+        self.assertIn("--visuals-base", missing.stderr)
+        slug = sorted(path.parent.name for path in (self.visuals / "viz").glob("*/visual.json")
+                      if json.loads(path.read_text(encoding="utf-8")).get("published", True))[0]
+        page = self.visuals / "viz" / slug / "index.html"
+        page.write_text(page.read_text(encoding="utf-8") + "<!-- changed in the visuals repository -->\n", encoding="utf-8")
+        git(self.visuals, "commit", "-q", "-am", f"change {slug}")
+        try:
+            self.build()
+            rows = run(self.project, sys.executable, "scripts/site_diff.py", "HEAD",
+                       "--visuals-base", self.visuals_commit).stdout.splitlines()
+            self.assertEqual(rows, [f"M\tsite/visuals/{slug}/index.html"])
+        finally:
+            git(self.visuals, "reset", "-q", "--hard", self.visuals_commit)
+            self.build()
 
 
 if __name__ == "__main__":
