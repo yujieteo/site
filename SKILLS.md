@@ -23,7 +23,7 @@ This file routes work; it holds no workflow steps. Find the one row that matches
 | Change the build, schemas, templates, browser code, scripts or tests | [change-site-code.md](skills/playbooks/change-site-code.md) |
 | Deploy to the live site, then verify it (one call: `scripts/deploy.py`) | [deploy.md](skills/playbooks/deploy.md), ending at [verify-post-deploy.md](skills/verify-post-deploy.md) |
 
-Every content and code playbook ends at [verify.md](skills/verify.md) (Stage A). Linking items to each other (`resolves`, `extends`, `uses`, `related`) is in [links.md](skills/reference/links.md).
+Every content and code playbook ends at [verify.md](skills/verify.md) (Stage A), which `.venv/bin/python scripts/verify.py stage-a --base origin/main` runs in one call. Linking items to each other (`resolves`, `extends`, `uses`, `related`) is in [links.md](skills/reference/links.md).
 
 ## Rules for every task
 
