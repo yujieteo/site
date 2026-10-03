@@ -26,7 +26,7 @@ def _escape(value):
     return "".join(out)
 
 
-def needs_quotes(value, delimiter=DELIMITER):
+def needs_quotes(value):
     """Apply the string quoting rules of TOON spec section 7.2."""
     return (
         value == ""
@@ -35,21 +35,21 @@ def needs_quotes(value, delimiter=DELIMITER):
         or bool(_NUMERIC.match(value))
         or any(char in value for char in ':"\\[]{}')
         or any(ord(char) < 0x20 for char in value)
-        or delimiter in value
+        or DELIMITER in value
         or value.startswith("-")
         or value.startswith("#")
     )
 
 
-def encode_string(value, delimiter=DELIMITER):
-    return f'"{_escape(value)}"' if needs_quotes(value, delimiter) else value
+def encode_string(value):
+    return f'"{_escape(value)}"' if needs_quotes(value) else value
 
 
 def encode_key(key):
     return key if _KEY.match(key) else f'"{_escape(key)}"'
 
 
-def encode_primitive(value, delimiter=DELIMITER):
+def encode_primitive(value):
     if value is None:
         return "null"
     if value is True:
@@ -63,7 +63,7 @@ def encode_primitive(value, delimiter=DELIMITER):
             return "null"
         text = repr(value)
         return text[:-2] if text.endswith(".0") else text
-    return encode_string(str(value), delimiter)
+    return encode_string(str(value))
 
 
 def _is_primitive(value):

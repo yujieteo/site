@@ -350,10 +350,10 @@ def arxiv_id(url):
     return re.sub(r"v\d+$", "", match.group("id"))
 
 
-def load_arxiv_cache(path=ARXIV_CACHE):
-    if not path.exists():
+def load_arxiv_cache():
+    if not ARXIV_CACHE.exists():
         return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(ARXIV_CACHE.read_text(encoding="utf-8"))
 
 
 STANDALONE_ARCHIVES = {"hep-th", "hep-ph", "hep-lat", "hep-ex", "math-ph", "quant-ph", "gr-qc", "nucl-th"}
@@ -460,7 +460,7 @@ def _record_starts(lines):
     return [index for index, line in enumerate(lines) if line.startswith("- ")]
 
 
-def write_tags(path=PAPERS, cache=None):
+def write_tags(path, cache):
     """Insert or replace a one-line ``tags:`` field in every record.
 
     The file is edited line by line so titles, URLs, and notes keep their
@@ -505,7 +505,7 @@ def write_tags(path=PAPERS, cache=None):
     return len(records)
 
 
-def report(path=PAPERS, cache=None):
+def report(path, cache):
     records = yaml.safe_load(path.read_text(encoding="utf-8")) or []
     classes = Counter()
     topics = Counter()

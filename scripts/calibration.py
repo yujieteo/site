@@ -104,8 +104,8 @@ def parse_raw(text, label="raw.toon"):
     return tables
 
 
-def load_raw(path=RAW_PATH):
-    return parse_raw(Path(path).read_text(encoding="utf-8"), Path(path).name)
+def load_raw():
+    return parse_raw(RAW_PATH.read_text(encoding="utf-8"), RAW_PATH.name)
 
 
 def answered_calibrations(tables):
