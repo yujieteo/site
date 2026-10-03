@@ -76,7 +76,7 @@ class RenameTagTests(TempRepo):
         self.write("data/blog/a.md", '---\ntitle: "Stats"\ntags: "fpl, stats,  slides"\n---\nThe stats body stays.\n')
         self.write("data/blog/b.md", "---\ntitle: B\ntags: [stats, other]\n---\n")
         self.write("data/podcasts/p.yaml", "id: p\nfocus_tags:\n- stats\n- fpl\nsummary: stats stay\n")
-        self.write("data/resources/r.yaml", "- title: stats\n  tags: [stats]\n- title: S\n  category: stats\n")
+        self.write("data/resources/r.yaml", "- title: stats\n  tags: [stats]\n- title: S\n  category: stats\n  tags: [fpl]\n")
         self.write("data/tag-facets.yaml", "# Facets.\nfacets:\n  - id: subject\n    tags: [maths, stats,\n           fpl]\n"
                                            "  - id: region\n    tags: [global]\n")
         self.write("scripts/vocab.py", 'TAGS = ("stats", "statistics-old")\n')
@@ -91,12 +91,22 @@ class RenameTagTests(TempRepo):
         self.assertEqual(self.read("data/blog/a.md"), '---\ntitle: "Stats"\ntags: "fpl, statistics,  slides"\n---\nThe stats body stays.\n')
         self.assertEqual(self.read("data/blog/b.md"), "---\ntitle: B\ntags: [statistics, other]\n---\n")
         self.assertEqual(self.read("data/podcasts/p.yaml"), "id: p\nfocus_tags:\n- statistics\n- fpl\nsummary: stats stay\n")
-        self.assertEqual(self.read("data/resources/r.yaml"), "- title: stats\n  tags: [statistics]\n- title: S\n  category: stats\n")
+        self.assertEqual(self.read("data/resources/r.yaml"), "- title: stats\n  tags: [statistics]\n- title: S\n  category: stats\n  tags: [fpl]\n")
         self.assertEqual(self.read("data/tag-facets.yaml"), "# Facets.\nfacets:\n  - id: subject\n    tags: [maths, statistics,\n"
                                                             "           fpl]\n  - id: region\n    tags: [global]\n")
-        self.assertIn("review by hand: data/resources/r.yaml:4 mentions stats", out)
         self.assertIn("review by hand: scripts/vocab.py:1 mentions stats", out)
         self.assertTrue(self.run_in(rename.main, "tag", "stats", "statistics")[1].startswith("no source names stats; nothing to do\n"))
+
+    def test_refuses_while_a_resource_takes_the_tag_from_its_category(self):
+        self.write("data/resources/r.yaml", "- title: stats\n  tags: [stats]\n- title: S\n  category: stats\n")
+        before = {path: self.read(path) for path in ("data/notes.md", "data/resources/r.yaml", "data/tag-facets.yaml")}
+        code, out, err = self.run_in(rename.main, "tag", "stats", "statistics")
+        self.assertEqual((code, out), (1, ""))
+        self.assertIn("add tags: or change the category first: data/resources/r.yaml:4", err)
+        self.assertEqual({path: self.read(path) for path in before}, before)
+        self.write("data/resources/r.yaml", "- title: stats\n  tags: [stats]\n- title: S\n  category: stats\n  tags: [fpl]\n")
+        self.assertEqual(self.run_in(rename.main, "tag", "stats", "statistics")[0], 0)
+        self.assertIn("statistics", self.read("data/tag-facets.yaml"))
 
     def test_check_writes_nothing_and_a_taken_name_is_refused(self):
         before = self.read("data/notes.md")

@@ -11,8 +11,9 @@ outside the renamed token stays byte for byte.
                      data/notes.md, blog front-matter tags, media focus_tags, the tags of
                      data/visuals/*.yaml and data/resources/*.yaml, and the facet tags of
                      data/tag-facets.yaml. Paper-link tags are left alone: scripts/paper_tags.py
-                     infers them. A resource with no tags, whose category is its tag, and a quoted
-                     OLD in scripts/, static/js/ or templates/ are listed, not changed.
+                     infers them. It refuses while a resource with no tags has category OLD, since
+                     the build gives it that tag: add tags: or change the category first. A quoted
+                     OLD in scripts/, static/js/ or templates/ is listed, not changed.
   field OLD NEW      a front-matter key in data/blog/*.md. Code that reads the field (schema/,
                      scripts/) is listed, not changed: change it in the same pull request.
   css-token OLD NEW  a custom property such as fade-ease (the leading -- is optional): CSS in static/css/ and in the <style>
@@ -152,6 +153,10 @@ def plan_tag(old, new, root):
     for name in (old, new):
         if not TAG.fullmatch(name):
             raise RenameError(f"tag {name!r} must be lowercase letters, digits, '_', '.' or '-'")
+    fallback = category_tags(root, old)
+    if fallback:
+        raise RenameError(f"these resources have no tags, so the build gives them their category {old!r} as a tag;"
+                          f" add tags: or change the category first: {', '.join(fallback)}")
     plans = []
     registry = root / "data" / "note-tags.json"
     plans.append((registry, rename_registry(registry.read_text(encoding="utf-8"), old, new)))
@@ -171,8 +176,7 @@ def plan_tag(old, new, root):
     if old in used and new in used:
         raise RenameError(f"data/tag-facets.yaml already has tag {new!r}")
     plans.append((facets, splice(text, yaml_tag_edits(records, {"tags"}, old, new))))
-    return plans, category_tags(root, old) + mentions(root, ("scripts/*.py", "static/js/*.js", "templates/*.html"),
-                                                       re.compile(rf"([\"']){re.escape(old)}\1"))
+    return plans, mentions(root, ("scripts/*.py", "static/js/*.js", "templates/*.html"), re.compile(rf"([\"']){re.escape(old)}\1"))
 
 
 def category_tags(root, old):
