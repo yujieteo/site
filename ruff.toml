@@ -1,0 +1,7 @@
+# ruff checks only the Python rules review used to raise by hand: pyflakes (F), which covers unused
+# imports (F401), redefinitions (F811), unused variables (F841) and undefined names. It is pinned
+# in requirements-lint.txt; run it with `ruff check`.
+extend-exclude = ["site", "tests/fixtures"]
+
+[lint]
+select = ["F"]

@@ -174,6 +174,15 @@ Math. #math.ag
             'data/notes.md [2026-10-05 note 3]: #todo needs a "done when" condition',
         ])
 
+    def test_date_headings_run_newest_first(self):
+        from validate import misordered_headings
+
+        self.assertEqual(misordered_headings("## 2026-10-03\n\nA. #agents\n\n## 2026-09-27\n\nB. #agents\n"), [])
+        # A new date appended at the end instead of in its place.
+        self.assertEqual(misordered_headings("## 2026-10-02\n\n## 2026-09-27\n\n## 2026-10-03\n"), [
+            "data/notes.md [2026-10-03]: headings run newest first; move this heading above [2026-09-27]",
+        ])
+
 
 if __name__ == "__main__":
     unittest.main()

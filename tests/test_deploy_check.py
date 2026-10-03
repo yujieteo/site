@@ -1,8 +1,10 @@
 """Stage B's deploy check: stray paths in the upload set and live document root, and console errors."""
 
+import hashlib
 import io
 import subprocess
 import sys
+import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
@@ -132,8 +134,10 @@ class ConsoleTests(unittest.TestCase):
         out = io.StringIO()
         with redirect_stdout(out):
             self.assertFalse(deploy_check.check_console(args, browser))
+        # The site root opens first, so a deck is never the first page of the session.
         self.assertEqual([call[1] for call in calls if call[0] == "open"],
-                         ["https://example.invalid/good.html", "https://example.invalid/bad.html"])
+                         ["https://example.invalid/", "https://example.invalid/good.html",
+                          "https://example.invalid/bad.html"])
         prefix = "B,console-errors,FAIL,https://example.invalid/bad.html: "
         self.assertEqual(out.getvalue().splitlines(), [
             prefix + "Uncaught ReferenceError: missing is not defined (0 args)",
@@ -150,6 +154,100 @@ class ConsoleTests(unittest.TestCase):
             self.assertTrue(deploy_check.check_console(
                 args, lambda *args: AXI_NETWORK_CLEAN if args[0] == "network" else AXI_CLEAN))
         self.assertEqual(out.getvalue(), "B,console-errors,PASS,1 changed pages\n")
+
+    def test_a_failed_warm_up_fails_before_any_page(self):
+        def browser(*args):
+            raise RuntimeError("chrome-devtools-axi open failed: error: No page is currently selected")
+
+        args = SimpleNamespace(uploads=io.StringIO("A\tsite/decks/a/index.html\n"), base_url="https://example.invalid/")
+        out = io.StringIO()
+        with redirect_stdout(out):
+            self.assertFalse(deploy_check.check_console(args, browser))
+        self.assertEqual(out.getvalue(), "B,console-errors,FAIL,https://example.invalid/: chrome-devtools-axi open"
+                                         " failed: error: No page is currently selected\n")
+
+    def test_an_axi_failure_names_the_error_it_printed_on_stdout(self):
+        # On a cold session, a deck's open printed its error on stdout and left stderr empty.
+        result = subprocess.CompletedProcess([], 1, stdout="error: No page is currently selected\ncode: BROWSER_ERROR\n",
+                                             stderr="")
+        with patch.object(deploy_check.subprocess, "run", return_value=result):
+            with self.assertRaisesRegex(RuntimeError, "^chrome-devtools-axi open failed: error: No page is currently selected$"):
+                deploy_check.axi("open", "https://example.invalid/decks/a/index.html")
+
+
+class LiveFileTests(unittest.TestCase):
+    def setUp(self):
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        self.site = Path(directory.name)
+        (self.site / "blog").mkdir()
+        (self.site / "blog/new.html").write_bytes(b"<h1>New</h1>")
+        (self.site / "corpus.json").write_bytes(b'{"revision": "b"}')
+        (self.site / "gone.html").write_bytes(b"built, never uploaded")
+        patcher = patch.object(deploy_check, "SITE", self.site)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_checksums_compare_each_live_file_with_the_build(self):
+        listing = (f"{hashlib.sha256(b'<h1>New</h1>').hexdigest()}  blog/new.html\n"
+                   f"{hashlib.sha256(b'old').hexdigest()}  corpus.json\n")
+        result = subprocess.CompletedProcess([], 1, stdout=listing, stderr="sha256sum: gone.html: No such file")
+        with patch.object(deploy_check.subprocess, "run", return_value=result) as run:
+            remote = deploy_check.remote_checksums("alias", "/srv/my site", ["blog/new.html", "corpus.json", "gone.html"])
+        self.assertEqual(run.call_args.args[0][4],
+                         "cd -- '/srv/my site' && sha256sum -- blog/new.html corpus.json gone.html")
+        self.assertEqual(deploy_check.checksum_problems(["blog/new.html", "corpus.json", "gone.html"], remote), [
+            ("corpus.json", "live sha256 differs from site/"),
+            ("gone.html", "missing in the document root"),
+        ])
+
+    def test_served_pages_must_be_the_built_bytes_with_http_200(self):
+        served = {"https://example.invalid/blog/new.html": (200, {}, b"<h1>New</h1>"),
+                  "https://example.invalid/corpus.json": (200, {}, b'{"revision": "a"}')}
+        http = lambda url, method: served[url]  # noqa: E731
+        self.assertIsNone(deploy_check.served_problem("blog/new.html", "https://example.invalid", http))
+        self.assertEqual(deploy_check.served_problem("corpus.json", "https://example.invalid/", http),
+                         "served bytes differ from site/")
+        self.assertEqual(deploy_check.served_problem("blog/new.html", "https://example.invalid",
+                                                     lambda url, method: (403, {}, b"")), "HTTP 403")
+
+    def test_a_large_download_is_checked_by_its_length(self):
+        weights = self.site / "weights.bin"
+        with open(weights, "wb") as handle:
+            handle.truncate(deploy_check.LARGE_BYTES + 1)
+        size = str(deploy_check.LARGE_BYTES + 1)
+        methods = []
+
+        def http(url, method):
+            methods.append(method)
+            return 200, {"Content-Length": size}, b""
+
+        self.assertIsNone(deploy_check.served_problem("weights.bin", "https://example.invalid", http))
+        self.assertEqual(methods, ["HEAD"])
+        self.assertEqual(deploy_check.served_problem("weights.bin", "https://example.invalid",
+                                                     lambda url, method: (200, {"Content-Length": "5"}, b"")),
+                         f"Content-Length 5, expected {size}")
+
+    def test_large_data_is_still_compared_byte_for_byte(self):
+        # The live corpus.json is about 29 MB; a size check alone would miss a stale revision.
+        corpus = self.site / "corpus.json"
+        with open(corpus, "wb") as handle:
+            handle.truncate(deploy_check.LARGE_BYTES + 1)
+        methods = []
+
+        def http(url, method):
+            methods.append(method)
+            return 200, {"Content-Length": str(deploy_check.LARGE_BYTES + 1)}, b"stale"
+
+        self.assertEqual(deploy_check.served_problem("corpus.json", "https://example.invalid", http),
+                         "served bytes differ from site/")
+        self.assertEqual(methods, ["GET"])
+
+    def test_a_file_missing_from_the_build_fails(self):
+        self.assertEqual(deploy_check.served_problem("stale.html", "https://example.invalid", None),
+                         deploy_check.NOT_BUILT)
+        self.assertEqual(deploy_check.checksum_problems(["stale.html"], {"stale.html": "x"}),
+                         [("stale.html", deploy_check.NOT_BUILT)])
 
 
 if __name__ == "__main__":

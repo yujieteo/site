@@ -17,7 +17,7 @@ import subprocess
 import urllib.request
 from pathlib import Path
 
-from site_data import DATA, ROOT, check_document, first_duplicate, load_all, load_validator
+from site_data import ROOT, check_document, first_duplicate, load_all, load_validator
 
 
 def resolve_visuals_repo():

@@ -61,5 +61,5 @@ test("every visualisation on the shared template ships the template that always 
   assert.ok(pages.length > 0);
   // Every page, or only those a pull request changes (SITE_TEST_VISUALS; see tests/visual_selection.py).
   const selected = process.env.SITE_TEST_VISUALS?.split(",");
-  for (const { slug, path, reader } of pages.filter(({ slug }) => !selected || selected.includes(slug))) assert.equal(reader(path), TEMPLATE, `${path} is the shared template`);
+  for (const { path, reader } of pages.filter(({ slug }) => !selected || selected.includes(slug))) assert.equal(reader(path), TEMPLATE, `${path} is the shared template`);
 });

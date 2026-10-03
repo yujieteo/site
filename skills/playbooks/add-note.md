@@ -4,7 +4,7 @@ Every note lives in the single file `data/notes.md`; never split it into other f
 
 1. Inspect `data/notes.md`, including all dated headings and the requested date section.
 2. Add each note as a separate Markdown paragraph at the top of the matching `## YYYY-MM-DD` section.
-3. If the date is absent, insert one heading in descending date order. Do not duplicate a date heading.
+3. If the date is absent, insert one heading in descending date order. Do not duplicate a date heading. `scripts/validate.py` fails on a duplicate date or a heading above an older one.
 4. Inspect `data/note-tags.json`. Reuse canonical tags whose descriptions fit, remove redundant tags, and replace aliases or deprecated tags with their canonical replacement.
 5. Add a canonical tag only when it names a genuinely distinct recurring topic, project, status, or action. Add its class, selection description, aliases, and `replaced_by` value to the registry in the same change. A `math.*` tag must be an offline arXiv mathematics category listed by the registry.
 6. Give every note at least one trailing canonical tag. Tag names are lowercase and can contain letters, numbers, underscores, hyphens, and dots. `todo` alone is valid. When an agent writes a note rather than the author, add `#agent-written` alongside its other tags; apply this going forward and do not retag older notes.

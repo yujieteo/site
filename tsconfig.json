@@ -9,6 +9,9 @@
     "checkJs": true,
     "noEmit": true,
     "strict": true,
+    // Unused locals and parameters are dead code; review used to find them by hand.
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "target": "ES2023",
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "module": "preserve",

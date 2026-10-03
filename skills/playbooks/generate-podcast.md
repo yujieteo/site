@@ -69,9 +69,10 @@ and the [output contract](../reference/podcast-output-contract.md).
    checksum verification, preserved prior files, and atomic renames as in
    [Deploy generated files](deploy.md). Include the other changed pages that
    `scripts/site_diff.py` lists. Never write deployment details into the repository.
-6. Run Stage B of [verification](../verify-post-deploy.md). Fetch the
-   deployed media index, episode page, and MP3 over HTTPS and require HTTP
-   200 responses with the expected episode. A 403 means the file is not
+6. Run Stage B of [verification](../verify-post-deploy.md). Its
+   `scripts/deploy_check.py served` step fetches the deployed media index,
+   episode page and MP3 over HTTPS and requires HTTP 200 with the built bytes,
+   so each carries the expected episode; a 403 means the file is not
    web-readable. Restore every preserved file if a deployed artifact is corrupt
    or incomplete.
 
