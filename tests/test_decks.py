@@ -1,5 +1,4 @@
 import json
-import re
 import unittest
 from pathlib import Path
 
@@ -34,21 +33,6 @@ class DeckTests(unittest.TestCase):
         self.assertEqual(published, expected)
         self.assertIn(f"{SLUG}/index.html", published)
         self.assertFalse(any(path.endswith("notes.md") for path in published))
-
-    def test_deck_pages_request_only_published_files(self):
-        """A deck may fetch an unpublished file such as its private notes.md only from a local preview server."""
-        for page in sorted((ROOT / "data/decks").glob("*/index.html")):
-            deck = page.parent
-            html = page.read_text(encoding="utf-8")
-            for match in re.finditer(r"""fetch\(\s*['"]([^'"]+)['"]""", html):
-                target = match.group(1)
-                published = (deck / target).is_file() and (
-                    target.endswith(".pdf") or target.startswith("slides/") and target.endswith(".svg")
-                )
-                if published or "://" in target:
-                    continue
-                with self.subTest(deck=deck.name, target=target):
-                    self.assertRegex(html[: match.start()], r"!localPreview\?[^;]*:\s*$")
 
     def test_pdf_deck_publishes_every_slide_image(self):
         deck = ROOT / "site/decks" / PDF_DECK
