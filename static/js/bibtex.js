@@ -82,6 +82,7 @@ export function formatAuthor(name) {
 /**
  * The key suffix for the nth repeat of a base key: a to z, then aa, ab, ...
  * @param {number} n
+ * @returns {string}
  */
 const keySuffix = (n) => (n >= 26 ? keySuffix(Math.floor(n / 26) - 1) : "") + String.fromCharCode(97 + (n % 26));
 
