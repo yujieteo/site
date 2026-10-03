@@ -14,7 +14,7 @@ Read the tier from the diff (`git diff --name-only origin/main...HEAD`), not fro
 
 - **Fast path:** Stage A below, then a plain pull request without the no-mistakes pipeline; the change reaches `main` only through [green CI](#fast-path-landing). It applies only when every changed path is one of:
   - content under `data/`: notes, `data/calibrator/raw.toon`, catalogue stubs `data/visuals/<slug>.yaml`, blog posts, decks, podcasts and media, paper links and resources, but not a `data/visuals/<slug>.pin`;
-  - a straight port: `visuals/<slug>/` for a slug already in `PORTS` in `tests/test_visual_ports.py`, byte-identical to a `yujieteo/<slug>` commit (minus `tests/` and `.github/`) whose own no-mistakes run and CI passed. Name that commit in the pull request.
+  - a straight port: `visuals/<slug>/` for a slug already in `PORTS` in `tests/test_visual_ports.py`, byte-identical to a `yujieteo/<slug>` commit (minus `tests/`, `.github/` and its type-check tooling) whose own no-mistakes run and CI passed. Name that commit in the pull request.
 - **Full pipeline:** everything else, including any change to `scripts/`, `templates/`, `static/`, `schema/`, `tests/`, `.github/`, deploy files, a `.pin` or `beamdswitch`, a first port (it adds to `PORTS`), or a port edited after copying. One such path puts the whole pull request on the full pipeline.
 
 ### Fast-path landing
