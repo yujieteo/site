@@ -45,15 +45,28 @@ jobs:
         with:
           python-version: "3.13"
           cache: pip
-          cache-dependency-path: site/requirements.txt
+          cache-dependency-path: |
+            site/requirements.txt
+            site/requirements-lint.txt
 
       - name: Install Python dependencies
         working-directory: site
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt -r requirements-lint.txt
 
       - name: Validate data
         working-directory: site
         run: python scripts/validate.py
+
+      # Committed build or OS artifacts, a report of tests that assert on code text, and (on a pull
+      # request) the review tier; see scripts/repo_check.py.
+      - name: Check repository
+        working-directory: site
+        run: python scripts/repo_check.py ${{ github.event_name == 'pull_request' && '--base HEAD^1' || '' }}
+
+      # Unused imports and variables, redefinitions and undefined names (ruff.toml).
+      - name: Lint Python
+        working-directory: site
+        run: ruff check
 
       # The build fetches pinned downloads (beamdswitch's Kokoro weights, about
       # 440 MB) into a cache keyed by sha256; keep it between runs.

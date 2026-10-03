@@ -1,0 +1,9 @@
+# Tests that assert on the text of a code file, kept until each is rewritten to run the code
+# (scripts/repo_check.py source-grep). One test id per line, then `#` and the reason it stays.
+# Do not add a new test here to pass the check: write the test to run the code instead.
+corpus.test.mjs: search indexes calibration records apart from notes  # pre-dates the check; the kind label lives in static/js/site-search.js, which needs a DOM to run
+test_blog.ReadingTimeTests.test_blog_index_renders_reading_time_from_the_corpus  # pre-dates the check; rewrite as a node test that renders an entry with static/js/filter.js
+test_site_shell.FadeTests.test_reduced_motion_turns_every_fade_off  # pre-dates the check; the fade.js part needs matchMedia, which only a browser has
+test_site_shell.GlobalSearchTests.test_search_reuses_the_shared_corpus_loader  # pre-dates the check; it checks the import graph, which needs a browser module loader to run
+test_site_shell.GlobalSearchTests.test_shortcut_is_desktop_only  # pre-dates the check; the shortcut guard needs matchMedia and a keyboard, which only a browser has
+test_visual_ports.VisualPortTests.test_page_registers_every_tool_the_stub_names  # pre-dates the check; registering the tools runs the page, and site tests launch no browser

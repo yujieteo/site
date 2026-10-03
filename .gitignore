@@ -14,3 +14,6 @@ __pycache__/
 
 # The type-checking tools package.json pins, installed by npm ci.
 /node_modules/
+
+# AppleDouble files that macOS writes beside files with extended attributes.
+._*

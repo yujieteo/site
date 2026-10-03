@@ -1,0 +1,2 @@
+# Lint tools for CI and Stage A, kept apart from the build and test requirements.
+ruff==0.14.0

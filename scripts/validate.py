@@ -22,6 +22,7 @@ TODO_RULE_SINCE = "2026-10-03"
 MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
 TODO_DATE = re.compile(rf"\b\d{{4}}-\d{{2}}-\d{{2}}\b|\b\d{{1,2}} (?:{MONTHS}) \d{{4}}\b")
 TODO_DONE = re.compile(r"\bdone when\b", re.IGNORECASE)
+NOTE_HEADING = re.compile(r"^## (\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
 
 
 def load_document(path):
@@ -56,6 +57,14 @@ def undated_todos(document, since=TODO_RULE_SINCE):
     return diagnostics
 
 
+def misordered_headings(text):
+    """Return diagnostics for each data/notes.md date heading newer than the one above it: the
+    headings run newest first, so a new date goes in its place, not at the end."""
+    dates = NOTE_HEADING.findall(text)
+    return [f"data/notes.md [{newer}]: headings run newest first; move this heading above [{older}]"
+            for older, newer in zip(dates, dates[1:]) if newer > older]
+
+
 def validate_file(path, validator):
     label = path.relative_to(DATA)
     document, load_error = load_document(path)
@@ -83,7 +92,8 @@ def validate_all():
             print(f"[FAIL] {diagnostic}")
         errors += len(exc.diagnostics)
     else:
-        for diagnostic in undated_todos(document):
+        diagnostics = undated_todos(document) + misordered_headings((DATA / "notes.md").read_text(encoding="utf-8"))
+        for diagnostic in diagnostics:
             print(f"[FAIL] {diagnostic}")
             errors += 1
     try:

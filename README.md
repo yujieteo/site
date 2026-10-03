@@ -124,12 +124,30 @@ npm ci && npm run typecheck   # install the pinned tsc into node_modules/, then 
 ```
 
 `package.json` and `package-lock.json` pin the TypeScript and `@types/node`
-versions and nothing else; `node_modules/` is ignored by Git.
+versions and nothing else; `node_modules/` is ignored by Git. `tsconfig.json`
+also fails on unused locals and parameters, and on unreachable code.
+
+Two more checks replace what review used to find by reading:
+
+```sh
+.venv/bin/pip install -r requirements-lint.txt
+.venv/bin/ruff check                        # unused imports and variables, redefinitions, undefined names (ruff.toml)
+.venv/bin/python scripts/repo_check.py      # committed build or OS artifacts, and tests that assert on code text
+```
+
+`scripts/repo_check.py` fails when Git tracks a `__pycache__/`, `*.pyc`,
+`.DS_Store` or AppleDouble `._*` file, or when `.gitignore` stops ignoring one.
+It reports, but does not fail on, a test that reads a code file and matches its
+text instead of running it. Making it fail is a later step, after a replay
+against past pull requests shows no false positives. The existing cases are listed, each with its reason, in
+`tests/source-grep-allowlist.txt`; an entry with no reason, or one that no
+longer matches, fails. With `--base <ref>` it also prints the
+[review tier](skills/verify.md#review-tier) of the changes.
 
 ## Continuous integration
 
 `.github/workflows/ci.yml` runs on pushes to `main`, on every pull request, and daily (and on demand), since the visuals change in yujieteo/visuals rather than here:
-validation, the build, the JavaScript type check, and the Python and Node tests through
+validation, `scripts/repo_check.py`, `ruff check`, the build, the JavaScript type check, and the Python and Node tests through
 `scripts/run_tests.py` (on a pull request, with `--base` set to the base
 branch), whose timing report also lands in the job summary. It checks out
 yujieteo/visuals `main`, and the build reads every visualization from it.
