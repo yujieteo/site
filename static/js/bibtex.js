@@ -14,7 +14,7 @@ const STOP_WORDS = new Set(["a", "an", "the", "on", "of", "and", "for", "in", "t
  *
  * `%`, `#` and `&` are escaped everywhere (`%` would start a comment in the
  * .bbl file); `_` and `^` only outside math. An unmatched `$` is escaped, and
- * unbalanced braces are escaped or closed.
+ * an unmatched `{` is closed and an unmatched `}` is written as a command.
  * @param {unknown} value
  * @returns {string}
  */
@@ -47,7 +47,8 @@ export function escapeText(value) {
       out += char;
     } else if (char === "}") {
       if (depth === 0) {
-        out += "\\}";
+        // BibTeX counts braces even after a backslash, so \} would not do.
+        out += "\\textbraceright{}";
       } else {
         depth -= 1;
         out += char;
@@ -72,10 +73,17 @@ export const escapeUrlArgument = (url) => urlField(url).replace(/([%#])/g, "\\$1
 export function formatAuthor(name) {
   const trimmed = name.trim();
   if (trimmed === "et al." || trimmed === "others") return "others";
+  const escaped = escapeText(trimmed);
   // Corporate authors stay one unit.
-  if (/\b(?:community|team|group|collaboration|consortium)\b/i.test(trimmed)) return `{${trimmed}}`;
-  return trimmed;
+  if (/\b(?:community|team|group|collaboration|consortium)\b/i.test(trimmed)) return `{${escaped}}`;
+  return escaped;
 }
+
+/**
+ * The key suffix for the nth repeat of a base key: a to z, then aa, ab, ...
+ * @param {number} n
+ */
+const keySuffix = (n) => (n >= 26 ? keySuffix(Math.floor(n / 26) - 1) : "") + String.fromCharCode(97 + (n % 26));
 
 /** @param {string} text */
 const ascii = (text) => text.normalize("NFKD").replace(/[^\x00-\x7f]/g, "");
@@ -100,7 +108,7 @@ export function citationKey(title, authors, year, used) {
   }
   base = base || "entry";
   let key = base;
-  for (let suffix = "a".charCodeAt(0); used.has(key); suffix += 1) key = `${base}${String.fromCharCode(suffix)}`;
+  for (let n = 0; used.has(key); n += 1) key = `${base}${keySuffix(n)}`;
   used.add(key);
   return key;
 }

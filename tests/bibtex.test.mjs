@@ -14,7 +14,7 @@ test("escapes BibTeX specials but keeps $...$ math", () => {
   assert.equal(escapeText("a $x_1^2$ b_c 50% & #1"), String.raw`a $x_1^2$ b\_c 50\% \& \#1`);
   assert.equal(escapeText("x^2"), String.raw`x\textasciicircum{}2`);
   assert.equal(escapeText("cost $5"), String.raw`cost \$5`);
-  assert.equal(escapeText("a } b {"), String.raw`a \} b {}`);
+  assert.equal(escapeText("a } b {"), String.raw`a \textbraceright{} b {}`);
   assert.equal(escapeText(String.raw`\alpha ends \ `), String.raw`\alpha ends \ `);
   assert.equal(escapeText("trailing \\"), String.raw`trailing \textbackslash{}`);
 });
@@ -67,4 +67,12 @@ test("keys stay unique within one file", () => {
   assert.deepEqual([...bib.matchAll(/^@misc\{([^,]+),/gm)].map((match) => match[1]),
     ["maynard2013small", "maynard2013smalla", "maynard2013smallb"]);
   assert.match(bib, /^% Exported from the Paper Links page[^\n]*\n% 3 entries\./);
+});
+
+test("keys stay letters past the 26th repeat, and author names are escaped", () => {
+  const twin = { url: "https://example.org/talk", citation: { authors: ["Miguel Vasconcelos$^{"], year: 2023 } };
+  const bib = renderBib(Array.from({ length: 29 }, () => paper({ title: "Lecture", ...twin })));
+  assert.deepEqual([...bib.matchAll(/^@misc\{([^,]+),/gm)].map((match) => match[1]).slice(26),
+    ["vasconcelos2023lecturez", "vasconcelos2023lectureaa", "vasconcelos2023lectureab"]);
+  assert.match(bib, /author += \{Miguel Vasconcelos\\\$\\textasciicircum\{\}\{\}\},/);
 });
