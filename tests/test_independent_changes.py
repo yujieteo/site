@@ -22,7 +22,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
+sys.path.insert(0, str(ROOT / "scripts"))
+from visual_sources import resolve_visuals_repo  # noqa: E402
+
+VISUALS_REPO = resolve_visuals_repo()
 ENV = os.environ | {
     "GIT_AUTHOR_NAME": "Test",
     "GIT_AUTHOR_EMAIL": "test@example.invalid",

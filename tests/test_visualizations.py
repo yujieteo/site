@@ -1,7 +1,6 @@
 import csv
 import io
 import json
-import os
 import sys
 import unittest
 from pathlib import Path
@@ -9,11 +8,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
-VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
 sys.path.insert(0, str(SCRIPTS))
 
 import visual_sources  # noqa: E402
 from visual_selection import covers  # noqa: E402
+
+VISUALS_REPO = visual_sources.resolve_visuals_repo()
 
 
 class VisualizationTests(unittest.TestCase):

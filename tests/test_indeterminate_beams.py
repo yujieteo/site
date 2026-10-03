@@ -8,7 +8,6 @@ values.
 """
 
 import json
-import os
 import re
 import subprocess
 import sys
@@ -18,7 +17,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 # The beam visualizer is the folder viz/beamdiag/ of the yujieteo/visuals checkout the build reads.
-VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
+sys.path.insert(0, str(ROOT / "scripts"))
+from visual_sources import resolve_visuals_repo  # noqa: E402
+
+VISUALS_REPO = resolve_visuals_repo()
 VIZ = VISUALS_REPO / "viz" / "beamdiag"
 sys.path.insert(0, str(VIZ))
 
