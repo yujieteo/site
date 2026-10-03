@@ -114,7 +114,7 @@ if (form) {
       ? `<a href="${escapeHtml(siteHref(entry.url))}">${escapeHtml(entry.title)}</a>`
       : escapeHtml(entry.title);
     const summary = entry.summary ? `<p class="entry-abstract">${escapeHtml(entry.summary)}</p>` : "";
-    return `<article class="entry">${date}<${headingTag} class="entry-title" tabindex="-1">${title}</${headingTag}>`
+    return `<article class="entry" data-id="${escapeHtml(entry.id)}">${date}<${headingTag} class="entry-title" tabindex="-1">${title}</${headingTag}>`
       + `${summary}<div class="entry-tags" aria-label="Tags">${tags}</div>${related}</article>`;
   };
 

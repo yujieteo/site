@@ -12,7 +12,6 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-import paper_links_bib  # noqa: E402
 import paper_tags  # noqa: E402
 import papers  # noqa: E402
 from toon import encode, needs_quotes  # noqa: E402
@@ -105,31 +104,33 @@ class TagTests(unittest.TestCase):
         self.assertIsNone(paper_tags.arxiv_id("https://example.com/paper.pdf"))
 
 
-class BibTests(unittest.TestCase):
-    def test_escape_text_keeps_math_and_escapes_specials(self):
-        escape = paper_links_bib.escape_text
-        self.assertEqual(escape("a $x_1^2$ b_c 50% & #1"), r"a $x_1^2$ b\_c 50\% \& \#1")
-        self.assertEqual(escape("x^2"), r"x\textasciicircum{}2")
-        self.assertEqual(escape("cost $5"), r"cost \$5")
-        self.assertEqual(escape("a } b {"), r"a \} b {}")
+class CitationTests(unittest.TestCase):
+    """The citation metadata the build gives each paper link for its BibTeX entry (static/js/bibtex.js)."""
 
-    def test_arxiv_entry_fields(self):
-        record = {"title": "Small Gaps Between Primes", "url": "https://arxiv.org/abs/1311.4600",
-                  "category": "arxiv.org", "tags": ["math.NT", "number-theory"],
-                  "authors": ["James Maynard"], "year": 2013, "note": "Sieve weights."}
-        entry = paper_links_bib.bib_entry(record, {}, set())
-        self.assertTrue(entry.startswith("@misc{maynard2013small,"))
-        for line in ["eprint        = {1311.4600}", "primaryClass  = {math.NT}", "author        = {James Maynard}"]:
-            self.assertIn(line, entry)
+    def test_arxiv_link_gets_eprint_year_and_primary_class(self):
+        record = {"title": "Small Gaps Between Primes", "url": "https://arxiv.org/pdf/1311.4600v3",
+                  "tags": ["number-theory", "math.NT", "math.CO"], "authors": ["James Maynard"]}
+        self.assertEqual(paper_tags.citation(record, {}),
+                         {"authors": ["James Maynard"], "year": 2013, "eprint": "1311.4600", "primaryClass": "math.NT"})
+
+    def test_cached_arxiv_metadata_takes_precedence(self):
+        record = {"title": "Maynard on primes", "url": "https://arxiv.org/abs/1311.4600",
+                  "tags": ["math.CO"], "authors": ["J. Maynard"], "year": 2014}
+        cache = {"1311.4600": {"title": "Small gaps between primes", "authors": ["James Maynard"], "year": 2013,
+                               "categories": ["math.NT"], "doi": "10.4007/annals.2015.181.1.7", "journal_ref": None}}
+        self.assertEqual(paper_tags.citation(record, cache), {
+            "authors": ["James Maynard"], "year": 2013, "title": "Small gaps between primes", "eprint": "1311.4600",
+            "primaryClass": "math.NT", "doi": "10.4007/annals.2015.181.1.7",
+        })
+
+    def test_other_links_carry_only_what_the_record_gives(self):
+        self.assertEqual(paper_tags.citation({"title": "Notes", "url": "https://example.org/n.pdf", "tags": ["math.NT"]}, {}), {})
+        self.assertEqual(paper_tags.citation({"title": "Notes", "url": "https://example.org/n.pdf", "year": 1999}, {}),
+                         {"year": 1999})
 
     def test_year_from_arxiv_id(self):
-        self.assertEqual(paper_links_bib.year_from_arxiv_id("2102.13459"), 2021)
-        self.assertEqual(paper_links_bib.year_from_arxiv_id("hep-th/9711200"), 1997)
-
-    def test_committed_bib_is_current(self):
-        result = subprocess.run([sys.executable, "scripts/paper_links_bib.py", "--check"],
-                                capture_output=True, text=True, cwd=ROOT)
-        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertEqual(paper_tags.year_from_arxiv_id("2102.13459"), 2021)
+        self.assertEqual(paper_tags.year_from_arxiv_id("hep-th/9711200"), 1997)
 
 
 class AxiCliTests(unittest.TestCase):

@@ -4,32 +4,43 @@
 Each record gets three kinds of tags, in this order:
 
 1. arXiv subject classes (``math.NT``, ``hep-th``, ``cs.LG`` ...), strongest
-   match first. The first one is used as ``primaryClass`` in the BibTeX export.
+   match first. The first one is the ``primaryClass`` of the link's BibTeX entry.
 2. Topic tags (``modular-forms``, ``langlands-program`` ...).
 3. Form and source tags (``lecture-notes``, ``survey``, ``arxiv`` ...).
 
 Classes are inferred from the title and note with the keyword rules below, so
 they describe the topic of every link, arXiv-hosted or not. For arXiv links,
-``scripts/paper_links_bib.py --fetch-arxiv`` can pull the official categories
-into ``data/arxiv-cache.json``; ``tag_record`` then puts those first.
+``--fetch-arxiv`` pulls official metadata (authors, title, year, categories,
+DOI) from the arXiv API into ``data/arxiv-cache.json``, which needs network
+access to export.arxiv.org; ``tag_record`` then puts the official categories
+first, and ``citation`` prefers the cached metadata for the BibTeX entries the
+Paper Links page builds in the browser (static/js/bibtex.js).
 
 Usage:
-    python scripts/paper_tags.py            # report tag coverage, change nothing
-    python scripts/paper_tags.py --write    # add or refresh tags in the YAML
+    python scripts/paper_tags.py                # report tag coverage, change nothing
+    python scripts/paper_tags.py --write        # add or refresh tags in the YAML
+    python scripts/paper_tags.py --fetch-arxiv  # refresh data/arxiv-cache.json first
 """
 
 import argparse
 import json
 import re
 import sys
+import time
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
 from collections import Counter
 from pathlib import Path
 
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-PAPERS = ROOT / "data" / "paper-links" / "paper-links.yaml"
+DATA = ROOT / "data" / "paper-links"
+PAPERS = DATA / "paper-links.yaml"
 ARXIV_CACHE = ROOT / "data" / "arxiv-cache.json"
+ARXIV_API = "http://export.arxiv.org/api/query"
+ATOM = {"a": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom"}
 
 ARXIV_ID = re.compile(
     r"arxiv\.org/(?:abs|pdf|html|format)/"
@@ -350,10 +361,56 @@ def arxiv_id(url):
     return re.sub(r"v\d+$", "", match.group("id"))
 
 
+def load_papers():
+    records = []
+    for path in sorted(DATA.glob("*.y*ml")):
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+        records.extend(data if isinstance(data, list) else [data])
+    return records
+
+
 def load_arxiv_cache():
     if not ARXIV_CACHE.exists():
         return {}
     return json.loads(ARXIV_CACHE.read_text(encoding="utf-8"))
+
+
+def fetch_arxiv(ids, cache, batch_size=100, pause=3.0):
+    """Fetch metadata for ids missing from cache; arXiv asks for 3 s between calls."""
+    missing = sorted(set(ids) - set(cache))
+    for start in range(0, len(missing), batch_size):
+        batch = missing[start:start + batch_size]
+        query = urllib.parse.urlencode({"id_list": ",".join(batch), "max_results": len(batch)})
+        with urllib.request.urlopen(f"{ARXIV_API}?{query}", timeout=60) as response:
+            root = ET.fromstring(response.read())
+        for entry in root.findall("a:entry", ATOM):
+            identifier = arxiv_id(entry.findtext("a:id", "", ATOM))
+            if not identifier:
+                continue
+            primary = entry.find("arxiv:primary_category", ATOM)
+            categories = [c.get("term") for c in entry.findall("a:category", ATOM)]
+            primary_term = primary.get("term") if primary is not None else None
+            if primary_term in categories:
+                categories.remove(primary_term)
+            cache[identifier] = {
+                "title": " ".join(entry.findtext("a:title", "", ATOM).split()),
+                "authors": [a.findtext("a:name", "", ATOM) for a in entry.findall("a:author", ATOM)],
+                "year": int(entry.findtext("a:published", "0000", ATOM)[:4]),
+                "categories": [c for c in [primary_term, *categories] if c],
+                "doi": entry.findtext("arxiv:doi", None, ATOM),
+                "journal_ref": entry.findtext("arxiv:journal_ref", None, ATOM),
+            }
+        print(f"fetched {min(start + batch_size, len(missing))}/{len(missing)} arXiv records", file=sys.stderr)
+        if start + batch_size < len(missing):
+            time.sleep(pause)
+    return cache
+
+
+def year_from_arxiv_id(identifier):
+    """New-style 2107.01234 -> 2021; old-style math/0401222 -> 2004."""
+    digits = identifier.split("/")[-1]
+    yy = int(digits[:2])
+    return (1900 if yy >= 91 else 2000) + yy
 
 
 STANDALONE_ARCHIVES = {"hep-th", "hep-ph", "hep-lat", "hep-ex", "math-ph", "quant-ph", "gr-qc", "nucl-th"}
@@ -456,6 +513,31 @@ def primary_class(tags):
     return None
 
 
+def citation(record, cache):
+    """The citation metadata of one paper link, for its BibTeX entry in the browser.
+
+    Cached arXiv metadata takes precedence over the record's own ``authors``,
+    ``year`` and title. An arXiv link with no cached or recorded year takes it
+    from its id, and one with no cached categories takes its ``primaryClass``
+    from its first arXiv-class tag. ``title`` appears only when it differs from
+    the record's.
+    """
+    identifier = arxiv_id(record.get("url", ""))
+    meta = cache.get(identifier, {}) if identifier else {}
+    fields = {
+        "authors": meta.get("authors") or record.get("authors"),
+        "year": meta.get("year") or record.get("year") or (year_from_arxiv_id(identifier) if identifier else None),
+    }
+    if meta.get("title") and meta["title"] != record["title"]:
+        fields["title"] = meta["title"]
+    if identifier:
+        fields["eprint"] = identifier
+        fields["primaryClass"] = (meta.get("categories") or [None])[0] or primary_class(record.get("tags"))
+    fields["doi"] = meta.get("doi")
+    fields["journalRef"] = meta.get("journal_ref")
+    return {key: value for key, value in fields.items() if value not in (None, "", [])}
+
+
 def _record_starts(lines):
     return [index for index, line in enumerate(lines) if line.startswith("- ")]
 
@@ -526,8 +608,14 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--write", action="store_true", help="write tags into the YAML file")
     parser.add_argument("--file", type=Path, default=PAPERS, help="paper-links YAML file")
+    parser.add_argument("--fetch-arxiv", action="store_true", help="fetch missing arXiv metadata into data/arxiv-cache.json first")
     args = parser.parse_args(argv)
     cache = load_arxiv_cache()
+    if args.fetch_arxiv:
+        ids = [i for i in (arxiv_id(r.get("url", "")) for r in load_papers()) if i]
+        cache = fetch_arxiv(ids, cache)
+        ARXIV_CACHE.write_text(json.dumps(cache, indent=1, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"cached metadata for {len(cache)} arXiv papers in {ARXIV_CACHE.relative_to(ROOT)}")
     if args.write:
         count = write_tags(args.file, cache)
         print(f"tagged {count} records in {args.file.relative_to(ROOT)}")

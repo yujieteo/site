@@ -5,7 +5,7 @@ import test from "node:test";
 
 const source = await readFile(new URL("../static/js/corpus.js", import.meta.url), "utf8");
 /** @type {typeof import("../static/js/corpus.js")} */
-const { getItem, loadCorpus, searchSite } = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
+const { getItem, loadCorpus, searchAll, searchSite } = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 
 /** A published record; the tests leave out its revision, which search never reads. @param {Omit<CorpusRecord, "revision">} fields */
 const record = (fields) => ({ revision: "", ...fields });
@@ -54,6 +54,14 @@ test("sorts and paginates with query-bound cursors", () => {
   const second = searchSite(corpus, { kind: "note", sort: "oldest", limit: 1, cursor: first.nextCursor });
   assert.equal(second.items[0].id, "note:new");
   assert.throws(() => searchSite(corpus, { kind: "paper", limit: 1, cursor: first.nextCursor }), /Invalid cursor/);
+});
+
+test("searchAll returns every match in the order searchSite pages through", () => {
+  const first = searchSite(corpus, { text: "geometry", limit: 1 });
+  const second = searchSite(corpus, { text: "geometry", limit: 1, cursor: first.nextCursor });
+  assert.deepEqual(searchAll(corpus, { text: "geometry" }).map((item) => item.id),
+    [...first.items, ...second.items].map((item) => item.id));
+  assert.throws(() => searchAll(corpus, /** @type {any} */ ({ query: "x" })), /Unknown search field/);
 });
 
 test("retrieves exact items and rejects missing IDs", () => {

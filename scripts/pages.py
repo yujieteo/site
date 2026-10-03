@@ -131,7 +131,35 @@ def build_paper_links(cv, papers, corpus_revision):
         default_show=False,
         noun="paper links",
     )
-    content = f'<h1 class="page-title">Paper Links</h1>{body}'
+    # static/js/paper-bib.js shows the BibTeX panel; it needs JavaScript, like the list itself.
+    bib_panel = (
+        '<section class="bib-export" data-bib-export aria-label="BibTeX export" hidden>'
+        '<p class="bib-export-hint">Tick <strong>Cite</strong> on links, or filter the list, to get BibTeX '
+        'for just those links.</p>'
+        '<div class="bib-export-row" data-copy-scope>'
+        '<span class="bib-export-label" data-bib-selected-count>0 selected</span>'
+        '<button type="button" class="bib-action" data-bib-scope="selected" data-bib-action="copy" '
+        'aria-label="Copy .bib of the selected links" disabled>'
+        'Copy .bib</button>'
+        '<button type="button" class="bib-action" data-bib-scope="selected" data-bib-action="download" '
+        'aria-label="Download .bib of the selected links" disabled>'
+        'Download .bib</button>'
+        '<button type="button" class="clear-filters" data-bib-clear disabled>Clear selection</button></div>'
+        '<div class="bib-export-row" data-copy-scope>'
+        '<span class="bib-export-label">All matches of the filters</span>'
+        '<button type="button" class="bib-action" data-bib-scope="filtered" data-bib-action="copy" '
+        'aria-label="Copy .bib of every link matching the filters" disabled>'
+        'Copy .bib</button>'
+        '<button type="button" class="bib-action" data-bib-scope="filtered" data-bib-action="download" '
+        'aria-label="Download .bib of every link matching the filters" disabled>'
+        'Download .bib</button></div>'
+        '<p class="page-action-status" data-bib-status aria-live="polite"></p>'
+        '</section>'
+    )
+    content = (
+        f'<h1 class="page-title">Paper Links</h1>{bib_panel}{body}'
+        '<script type="module" src="static/js/paper-bib.js"></script>'
+    )
     return render_page(cv, "paper_links", "Paper Links", content, corpus_revision, math=True)
 
 

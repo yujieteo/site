@@ -24,7 +24,17 @@
  * @property {number} [readingMinutes]
  * @property {string} [fetched]
  * @property {string[]} [webmcpTools]
+ * @property {Citation} [citation]
  * @property {{ rel: LinkRel, target: string }[]} [links]
+ * A paper link's citation metadata, for its BibTeX entry (static/js/bibtex.js).
+ * @typedef {object} Citation
+ * @property {string[]} [authors]
+ * @property {number} [year]
+ * @property {string} [title] the official title, when it differs from the record's
+ * @property {string} [eprint] the arXiv id
+ * @property {string} [primaryClass]
+ * @property {string} [doi]
+ * @property {string} [journalRef]
  * @typedef {{ schemaVersion: 1, revision: string, records: CorpusRecord[] }} Corpus
  * @typedef {"relevance" | "newest" | "oldest"} SortOrder
  * A search as callers (and WebMCP agents) send it; searchSite checks every field.
@@ -122,11 +132,10 @@ export async function loadCorpus() {
 }
 
 /**
- * @param {Corpus} corpus
- * @param {SearchInput} [input]
- * @returns {SearchResult}
+ * Checks every field of a search and fills in its defaults.
+ * @param {SearchInput} input
  */
-export function searchSite(corpus, input = {}) {
+const parseQuery = (input) => {
   for (const field of Object.keys(input)) {
     if (!ALLOWED_QUERY_FIELDS.has(field)) throw new Error(`Unknown search field: ${field}`);
   }
@@ -147,6 +156,16 @@ export function searchSite(corpus, input = {}) {
   if (!["relevance", "newest", "oldest"].includes(query.sort)) {
     throw new Error("sort must be relevance, newest, or oldest");
   }
+  return query;
+};
+
+/**
+ * Every record matching the query, in result order.
+ * @param {Corpus} corpus
+ * @param {ReturnType<typeof parseQuery>} query
+ * @returns {CorpusRecord[]}
+ */
+const rankRecords = (corpus, query) => {
   const queryTerms = terms(query.text);
   const ranked = corpus.records.flatMap((record, index) => {
     if (query.kind && record.kind !== query.kind) return [];
@@ -163,15 +182,36 @@ export function searchSite(corpus, input = {}) {
     if (query.sort === "oldest" && dateOrder) return -dateOrder;
     return left.index - right.index;
   });
+  return ranked.map(({ record }) => record);
+};
+
+/**
+ * @param {Corpus} corpus
+ * @param {SearchInput} [input]
+ * @returns {SearchResult}
+ */
+export function searchSite(corpus, input = {}) {
+  const query = parseQuery(input);
+  const ranked = rankRecords(corpus, query);
   const queryFingerprint = fingerprint(query);
   const offset = decodeCursor(input.cursor, queryFingerprint);
-  const page = ranked.slice(offset, offset + query.limit).map(({ record }) => record);
+  const page = ranked.slice(offset, offset + query.limit);
   const nextOffset = offset + page.length;
   return {
     items: page,
     nextCursor: nextOffset < ranked.length ? encodeCursor(nextOffset, queryFingerprint) : null,
     total: ranked.length,
   };
+}
+
+/**
+ * Every record searchSite pages through for the same search, in the same order.
+ * @param {Corpus} corpus
+ * @param {Omit<SearchInput, "limit" | "cursor">} [input]
+ * @returns {CorpusRecord[]}
+ */
+export function searchAll(corpus, input = {}) {
+  return rankRecords(corpus, parseQuery(input));
 }
 
 /**

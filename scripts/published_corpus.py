@@ -101,6 +101,8 @@ def build_published_corpus(cv, about, resources, papers, posts, notes, visualiza
                 kind, identity, title=entry["title"], url=entry["url"],
                 summary=entry.get("note", ""), content=entry.get("note", ""),
                 tags=entry["tags"], category=entry["category"],
+                # Paper links carry what their BibTeX entry needs (scripts/paper_tags.py citation).
+                citation=entry.get("citation") or None,
             ))
 
     for post in posts:
