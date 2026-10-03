@@ -20,9 +20,9 @@ the restore still runs, and the report and the deploy-log line are still written
 one line to the deploy log. The report lists the backup directories on the host.
 
 `report` prints the report of the last deploy in the log (or `--deploy ID`, an exact id). `backups`
-lists the backup directories on the host; it never removes one. Only the backup of the last deploy
-in the log is a rollback source; every other `fm-` backup is superseded, because a later deploy can
-have changed the same files.
+lists the backup directories on the host; it never removes one. The rollback source is the backup of
+the last deploy in the log that changed live files, if that deploy kept it and did not restore it; a
+deploy that stopped before the install does not count. Every other `fm-` backup is superseded.
 
 The verdict and the exit code follow every built file, not only the upload set.
 Exit codes: 0 pass, 1 fail, 2 usage or environment error (missing configuration, unknown commit,
@@ -64,7 +64,7 @@ DEFAULT_BACKUPS = "site-backups"
 WORKFLOW = "CI"
 # Every backup directory this tool creates starts with this; a pass removes only its own.
 PREFIX = "fm-deploy-"
-ROLLBACK = "rollback source of the last deploy"
+ROLLBACK = "rollback source of the live files"
 SUPERSEDED = "superseded: do not restore"
 BUILT_FROM = re.compile(r"from yujieteo/visuals (\S+)")
 STAMP = re.compile(r"(\d{8}-\d{6})")
@@ -305,9 +305,9 @@ def install_script(docroot, backup, deploy_id, paths, sums):
     restore = f"""#!/bin/sh
 # Restore the files that deploy {deploy_id} replaced; the files it added stay.
 set -eu
+docroot=$(cd -- {q(docroot)} && pwd)
 cd -- "$(dirname -- "$0")"
 backup=$(pwd)
-docroot={q(docroot)}
 n=0
 while IFS= read -r path; do
   target=$docroot/$path
@@ -335,6 +335,7 @@ cat > "$backup/restore.sh" <<'{HEREDOC}'
 {restore}{HEREDOC}
 cd -- "$backup/new"
 sha256sum -c -- "$backup/SHA256SUMS" > /dev/null
+echo verified
 tmp=
 trap '[ -z "$tmp" ] || rm -f -- "$tmp"' EXIT
 while IFS= read -r path; do
@@ -359,12 +360,14 @@ echo "installed $(wc -l < "$backup/replaced") replaced $(wc -l < "$backup/added"
 
 
 def install(remote, docroot, backup, deploy_id, paths, sums):
-    """(replaced, added, why the install failed or None)."""
+    """(replaced, added, whether live files may have changed, why the install failed or None)."""
     result = remote.run("sh -s", input=install_script(docroot, backup, deploy_id, paths, sums))
+    # Nothing in the document root changes before the upload verifies.
+    changed = "verified" in result.stdout.split()
     match = re.search(r"installed\s+(\d+) replaced\s+(\d+) added", result.stdout)
     if result.returncode or not match:
-        return 0, 0, f"install exited {result.returncode}: {result.stderr.strip()[-300:]}"
-    return int(match[1]), int(match[2]), None
+        return 0, 0, changed, f"install exited {result.returncode}: {result.stderr.strip()[-300:]}"
+    return int(match[1]), int(match[2]), changed, None
 
 
 def restore(remote, backup):
@@ -501,17 +504,18 @@ def deploy(args):
     reach(remote, config["docroot"])
     report = Report(args.command)
     report.facts.update({"id": deploy_id, "commit": commit, "base": base, "visuals_base": visuals_base or "pinned"})
-    state = {"rows": [], "uploaded": [], "built": [], "local": {}, "visuals": None}
+    state = {"rows": [], "uploaded": [], "built": [], "local": {}, "visuals": None, "changed": False}
     hints = []
     entries = read_log(config["state"])
-    newest = deploy_id if args.command == "run" else entries[-1]["id"] if entries else None
 
-    def done(live):
+    def done(live, rollback=None):
+        current = {"changed": state["changed"], "rollback": rollback}
         try:
-            report.backups = backup_rows(remote, config["backups"], newest)
+            source = rollback_source(entries + ([current] if args.command == "run" else []))
+            report.backups = backup_rows(remote, config["backups"], source)
         except UsageError as error:
             hints.append(f"Run `scripts/deploy.py backups` to list the backups: {error}")
-        return finish(report, args, config, files, hints, state["rows"], live)
+        return finish(report, args, config, files, hints, state["rows"], live, current)
 
     def ci():
         why, hint = ci_problem(commit, log)
@@ -576,12 +580,16 @@ def deploy(args):
     install_state = {"uploaded": False, "replaced": 0, "added": 0}
 
     def install_step():
-        why = upload(remote, backup, uploaded)
-        if not why:
-            install_state["uploaded"] = True
-            install_state["replaced"], install_state["added"], why = install(
-                remote, config["docroot"], backup, deploy_id, uploaded, state["local"])
-        report.counts.update({"replaced": install_state["replaced"], "installed_new": install_state["added"]})
+        try:
+            why = upload(remote, backup, uploaded)
+            if not why:
+                install_state["uploaded"] = True
+                # Until the install answers, assume it changed live files.
+                state["changed"] = True
+                install_state["replaced"], install_state["added"], state["changed"], why = install(
+                    remote, config["docroot"], backup, deploy_id, uploaded, state["local"])
+        finally:
+            report.counts.update({"replaced": install_state["replaced"], "installed_new": install_state["added"]})
         return [(backup, why)] if why else [], \
             f"{len(uploaded)} files verified on the host and renamed into place with mode 0644"
 
@@ -620,6 +628,7 @@ def deploy(args):
 
     live = {"site": commit, "visuals": state["visuals"]}
     rollback = f"`ssh {config['host']} sh {backup}/restore.sh`"
+    own = deploy_id
     if upload_problem and not install_state["uploaded"]:
         report.skip("restore", "restore", "nothing reached the document root")
         report.facts["backup"] = f"kept: {backup}"
@@ -632,7 +641,10 @@ def deploy(args):
         report.facts["backup"] = f"kept: {backup}"
         live = {"site": base, "visuals": visuals_base} if restored else None
         hints.append(f"Any files this deploy added stay on the host; their paths are in {backup}/added")
-        hints.append(f"Run the restore again by hand with {rollback}")
+        if restored:
+            own = None
+        else:
+            hints.append(f"Run the restore again by hand with {rollback}")
     elif report.failures:
         report.facts["backup"] = f"kept: {backup}"
         hints.append(f"Roll back by hand with {rollback} if the failures above need it")
@@ -640,9 +652,10 @@ def deploy(args):
     else:
         why = remove_own_backup(remote, config["backups"], deploy_id)
         report.facts["backup"] = f"removed: {backup}" if not why else f"kept: {backup} ({why})"
+        own = deploy_id if why else None
     if report.failures:
         hints.append(f"Read the full output in {log.path}")
-    return done(live)
+    return done(live, own if state["changed"] else None)
 
 
 def stale_files(state, live, outside):
@@ -694,7 +707,7 @@ def console_failures(uploaded, base_url):
     return failures
 
 
-def finish(report, args, config, files, hints, rows, live):
+def finish(report, args, config, files, hints, rows, live, backup):
     doc, full = report.document(files, limit=SHOWN_FAILURES), report.document(files)
     full["uploaded"] = [{"status": row[0], "path": row.split("\t", 1)[1].removeprefix("site/")}
                         for row in rows if row[:1] in {"A", "M"}]
@@ -703,7 +716,7 @@ def finish(report, args, config, files, hints, rows, live):
         facts = report.facts
         entry = {"id": facts["id"], "date": datetime.date.today().isoformat(), "verdict": report.verdict,
                  "commit": facts["commit"], "visuals": facts.get("visuals"), "base": facts["base"],
-                 "uploaded": len(full["uploaded"]), "live": live, "report": files["report"],
+                 "uploaded": len(full["uploaded"]), "live": live, **backup, "report": files["report"],
                  "summary": doc, "help": hints}
         log = config["state"] / "deploy-log.jsonl"
         doc["files"]["deploy_log"] = str(log)
@@ -734,10 +747,18 @@ def show_report(args):
     return 0 if entry["verdict"] == "pass" else 1
 
 
-def backup_rows(remote, backups, newest):
+def rollback_source(entries):
+    """The backup that rolls back the live files: that of the last deploy that changed them, if it
+    kept its backup and did not restore it. A deploy that changed nothing does not count."""
+    for entry in reversed(entries):
+        if entry.get("changed"):
+            return entry.get("rollback")
+    return None
+
+
+def backup_rows(remote, backups, source):
     """name,files,age_days,action of each backup directory on the host, the `fm-` ones first. Only
-    the backup of ``newest``, the last deploy, is a rollback source: a later deploy can have changed
-    the files of any older one."""
+    ``source`` is a rollback source: a later deploy can have changed the files of any other."""
     quoted = shlex.quote(backups)
     script = (f"[ -d {quoted} ] || exit 0; cd -- {quoted} && for d in */; do [ -d \"$d\" ] || continue; "
               "printf '%s\\t%s\\n' \"${d%/}\" \"$(find \"$d\" -type f | wc -l)\"; done")
@@ -750,7 +771,7 @@ def backup_rows(remote, backups, newest):
         name, _, count = line.partition("\t")
         stamp = STAMP.search(name)
         age = (today - datetime.datetime.strptime(stamp[1], "%Y%m%d-%H%M%S")).days if stamp else ""
-        action = "keep" if not name.startswith(PREFIX) else ROLLBACK if name == newest else SUPERSEDED
+        action = "keep" if not name.startswith(PREFIX) else ROLLBACK if name == source else SUPERSEDED
         rows.append({"name": name, "files": int(count.strip() or 0), "age_days": age, "action": action})
     rows.sort(key=lambda row: not row["name"].startswith(PREFIX))
     return rows
@@ -761,11 +782,11 @@ def list_backups(args):
     require(config, "host")
     log = Log(config["state"] / "backups.log")
     entries = read_log(config["state"])
-    rows = backup_rows(Remote(config["host"], log), config["backups"], entries[-1]["id"] if entries else None)
+    rows = backup_rows(Remote(config["host"], log), config["backups"], rollback_source(entries))
     doc = {"backups_dir": config["backups"],
            "counts": {"total": len(rows), "review": sum(row["action"] != "keep" for row in rows)},
            "backups": rows, "files": {"log": str(log.path)}}
-    hints = [f"Roll back the last deploy with `ssh {config['host']} sh {config['backups']}/{row['name']}/restore.sh`"
+    hints = [f"Roll back the live files with `ssh {config['host']} sh {config['backups']}/{row['name']}/restore.sh`"
              for row in rows if row["action"] == ROLLBACK]
     print(render(doc, hints))
     return 0

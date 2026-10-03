@@ -278,9 +278,10 @@ class FakeHostTests(unittest.TestCase):
         self.assertEqual(self.live("blog/new.html"), NEW["blog/new.html"])
         [backup] = (self.home / "site-backups").glob("fm-deploy-*")
         self.assertEqual((backup / "added").read_text(), "blog/new.html\n")
-        self.assertIn(f"sh site-backups/{backup.name}/restore.sh", out)
+        # The restore already ran, so this backup is no rollback source.
         self.assertIn(f"\n  {backup.name},", out)
-        self.assertIn(f",{deploy.ROLLBACK}\n", out)
+        self.assertIn(f',"{deploy.SUPERSEDED}"\n', out)
+        self.assertNotIn("restore.sh", out)
         [entry] = self.log()
         self.assertEqual(entry["verdict"], "fail")
         self.assertEqual(entry["live"], {"site": entry["base"], "visuals": VISUALS})
@@ -291,7 +292,37 @@ class FakeHostTests(unittest.TestCase):
         self.assertEqual(code, 0, out)
         self.assertIn("  total: 2\n  review: 1\n", out)
         self.assertLess(out.index(backup.name), out.index("20260929-145839"))
-        self.assertIn(f"Roll back the last deploy with `ssh fakehost sh site-backups/{backup.name}/restore.sh`", out)
+        self.assertNotIn("Roll back", out)
+
+    def later(self):
+        class Later(datetime.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return datetime.datetime.now(tz) + datetime.timedelta(minutes=1)
+
+        return patch.object(deploy, "datetime", SimpleNamespace(datetime=Later, date=datetime.date))
+
+    def test_a_later_run_that_installs_nothing_keeps_the_rollback_source(self):
+        # A stray live path fails Stage B but needs no restore: this deploy's files stay live.
+        (self.docroot / "._stray").write_bytes(b"x")
+        code, out = self.cli("run", "--execute", "--base", "HEAD", "--visuals-base", VISUALS)
+        self.assertEqual(code, 1, out)
+        self.assertIn("docroot-paths,._stray,", out)
+        [kept] = (self.home / "site-backups").glob("fm-deploy-*")
+        self.assertIn(f"\n  {kept.name},", out)
+        self.assertIn(f",{deploy.ROLLBACK}\n", out)
+
+        os.environ["FAKE_GH_RUNS"] = "[]"
+        with self.later():
+            code, out = self.cli("run", "--execute")
+        self.assertEqual(code, 1, out)
+        self.assertIn("A,ci-green,FAIL", out)
+        self.assertIn(f"\n  {kept.name},", out)
+        self.assertIn(f",{deploy.ROLLBACK}\n", out)
+
+        code, out = self.cli("backups")
+        self.assertEqual(code, 0, out)
+        self.assertIn(f"Roll back the live files with `ssh fakehost sh site-backups/{kept.name}/restore.sh`", out)
 
     def test_after_a_failed_then_a_passed_deploy_the_old_backup_is_superseded(self):
         os.environ["FAKE_AXI_ERROR_PAGE"] = "blog/new.html"
@@ -299,13 +330,7 @@ class FakeHostTests(unittest.TestCase):
         self.assertEqual(code, 1, out)
         [failed] = (self.home / "site-backups").glob("fm-deploy-*")
         os.environ["FAKE_AXI_ERROR_PAGE"] = ""
-
-        class Later(datetime.datetime):
-            @classmethod
-            def now(cls, tz=None):
-                return datetime.datetime.now(tz) + datetime.timedelta(minutes=1)
-
-        with patch.object(deploy, "datetime", SimpleNamespace(datetime=Later, date=datetime.date)):
+        with self.later():
             code, out = self.cli("run", "--execute")
         self.assertEqual(code, 0, out)
         for path, data in NEW.items():
@@ -344,6 +369,7 @@ class FakeHostTests(unittest.TestCase):
         self.assertEqual(code, 1, out)
         self.assertIn("install,upload-and-install,FAIL,1 failed; environment error", out)
         self.assertIn("closed by remote host", out)
+        self.assertIn("  replaced: 0\n  installed_new: 0\n", out)
         self.assertRegex(out, r"\n  restore,restore,PASS,restored 0")
         self.assertTrue(next(self.state.glob("fm-deploy-*/report.toon")).is_file())
         [entry] = self.log()
@@ -401,20 +427,24 @@ class FakeHostTests(unittest.TestCase):
         self.assertEqual(code, 0, out)
         self.assertIn(f"filter: {entry['id']}", out)
 
-    def test_install_and_restore_work_in_a_docroot_with_a_space(self):
-        docroot = self.home / "my site"
-        write_tree(docroot, OLD)
+    def test_install_and_restore_work_in_an_absolute_or_relative_docroot_with_a_space(self):
         remote = deploy.Remote("fakehost", deploy.Log(self.state / "space/deploy.log"))
-        backup, paths = "site-backups/fm-deploy-space", ["corpus.json", "blog/new.html"]
-        self.assertIsNone(deploy.upload(remote, backup, paths))
-        replaced, added, why = deploy.install(remote, str(docroot), backup, "fm-deploy-space", paths,
-                                              deploy.local_sums(paths))
-        self.assertIsNone(why)
-        self.assertEqual((replaced, added), (1, 1))
-        for path in paths:
-            self.assertEqual((docroot / path).read_bytes(), NEW[path], path)
-        self.assertEqual(deploy.restore(remote, backup), "restored 1")
-        self.assertEqual((docroot / "corpus.json").read_bytes(), OLD["corpus.json"])
+        paths = ["corpus.json", "blog/new.html"]
+        # A relative docroot is relative to the SSH home, for the install and the restore alike.
+        for name, given in (("absolute", str(self.home / "my site")), ("relative", "my site 2")):
+            with self.subTest(name):
+                docroot = self.home / given
+                write_tree(docroot, OLD)
+                backup = f"site-backups/fm-deploy-{name}"
+                self.assertIsNone(deploy.upload(remote, backup, paths))
+                replaced, added, changed, why = deploy.install(remote, given, backup, f"fm-deploy-{name}",
+                                                               paths, deploy.local_sums(paths))
+                self.assertIsNone(why)
+                self.assertEqual((replaced, added, changed), (1, 1, True))
+                for path in paths:
+                    self.assertEqual((docroot / path).read_bytes(), NEW[path], path)
+                self.assertEqual(deploy.restore(remote, backup), "restored 1")
+                self.assertEqual((docroot / "corpus.json").read_bytes(), OLD["corpus.json"])
 
 
 class InstallScriptTests(unittest.TestCase):
