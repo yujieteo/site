@@ -125,7 +125,7 @@ npm ci && npm run typecheck   # install the pinned tsc into node_modules/, then 
 
 `package.json` and `package-lock.json` pin the TypeScript and `@types/node`
 versions and nothing else; `node_modules/` is ignored by Git. `tsconfig.json`
-also fails on unused locals and parameters.
+also fails on unused locals and parameters, and on unreachable code.
 
 Two more checks replace what review used to find by reading:
 
