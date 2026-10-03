@@ -7,3 +7,5 @@ Set a web-readable mode on every installed file as part of the install: `chmod 6
 Deploys change only files in the site's document root. Never change the web server's configuration (such as nginx) or anything else on the server; a feature that seems to need it must work with static, page-level methods instead.
 
 On any post-deploy mismatch, restore every preserved prior file and report the failure.
+
+`scripts/deploy.py run --execute` follows these rules; see [Deploy generated files](../playbooks/deploy.md).

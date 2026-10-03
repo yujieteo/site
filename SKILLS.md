@@ -21,7 +21,7 @@ This file routes work; it holds no workflow steps. Find the one row that matches
 | Find or quote existing notes | [search-notes.md](skills/playbooks/search-notes.md) |
 | Add a paper link or resource | [add-paper-link-or-resource.md](skills/playbooks/add-paper-link-or-resource.md) |
 | Change the build, schemas, templates, browser code, scripts or tests | [change-site-code.md](skills/playbooks/change-site-code.md) |
-| Deploy to the live site, then verify it | [deploy.md](skills/playbooks/deploy.md), ending at [verify-post-deploy.md](skills/verify-post-deploy.md) |
+| Deploy to the live site, then verify it (one call: `scripts/deploy.py`) | [deploy.md](skills/playbooks/deploy.md), ending at [verify-post-deploy.md](skills/verify-post-deploy.md) |
 
 Every content and code playbook ends at [verify.md](skills/verify.md) (Stage A). Linking items to each other (`resolves`, `extends`, `uses`, `related`) is in [links.md](skills/reference/links.md).
 
