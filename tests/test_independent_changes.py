@@ -7,7 +7,7 @@ built in this repository; one also adds a dated note and a blog post), build
 each branch as a contributor would, and merge both. A visualization of the
 visuals repository is added there, never on a branch here. The same branches
 with the generated site/ committed, as it was before site/ left Git, are the
-control: they conflict.
+control: they conflict. A cheap check alone keeps site/ out of this repository's Git index.
 """
 
 import datetime
@@ -71,6 +71,14 @@ def local_visualization_files(slug):
         f"visuals/{slug}/raw.json": sources["raw.json"],
         f"tests/{slug}.test.mjs": 'import test from "node:test";\n\ntest("placeholder", () => {});\n',
     }
+
+
+class GeneratedSiteStaysUntrackedTests(unittest.TestCase):
+    """Committed build output is what made every parallel pull request conflict on rebase."""
+
+    def test_no_generated_site_file_is_tracked(self):
+        tracked = git(ROOT, "ls-files", "--", "site").stdout.split()
+        self.assertEqual(tracked, [], "site/ is generated: remove it from Git with git rm -r --cached site")
 
 
 class IndependentContentChangesTests(unittest.TestCase):
