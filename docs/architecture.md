@@ -10,8 +10,9 @@ sources, so independent content changes never conflict on generated pages, and
 `scripts/site_diff.py` derives a deploy's upload set by rebuilding the live
 commit and comparing. Each visualization's HTML and data come from one of two
 places and are written to `site/visuals/<slug>/`. Every public one is a folder
-`viz/<slug>/` of the separate `visuals` repository, read from the checkout
-`VISUALS_REPO` as it is checked out, with its catalogue entry in its
+`viz/<slug>/` of the separate `visuals` repository, read from the visuals
+checkout the build finds (`VISUALS_REPO`, else a sibling of this or the primary
+checkout) as it is checked out, with its catalogue entry in its
 `visual.json` (one folder per visualization, so two pull requests that each add
 or change a different visualization do not conflict). The two private ones,
 beamdswitch and connes-qft, are this repository's `visuals/<slug>/` with a

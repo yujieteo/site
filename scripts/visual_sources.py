@@ -20,22 +20,75 @@ from pathlib import Path
 from site_data import ROOT, check_document, first_duplicate, load_all, load_validator
 
 
-def resolve_visuals_repo():
-    configured = os.environ.get("VISUALS_REPO")
-    candidates = [Path(configured).expanduser()] if configured else []
-    candidates.extend([
-        ROOT.parent / "visuals",
-        ROOT.parent.parent / "visuals",
-        ROOT.parent.parent / "tmp" / "visuals",
-    ])
-    for candidate in candidates:
-        if candidate.is_dir():
-            return candidate.resolve()
-    checked = ", ".join(str(path) for path in candidates)
+SIBLINGS = (Path("..", "visuals"), Path("..", "..", "visuals"), Path("..", "..", "tmp", "visuals"))
+
+
+def primary_checkout(root):
+    """The primary checkout of the repository ``root`` belongs to, or None when Git cannot tell.
+
+    A linked worktree, such as a disposable agent worktree, shares the primary checkout's Git directory:
+    ``git rev-parse --git-common-dir`` names it, and the checkout is its parent (or, for a bare
+    repository, the Git directory itself).
+    """
+    try:
+        common = subprocess.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"], cwd=root,
+                                check=True, capture_output=True, text=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    common = Path(common)
+    return common.parent if common.name == ".git" else common
+
+
+def visuals_candidates(root=ROOT, environ=None):
+    """The places to look for the visuals checkout, in order, as (where it came from, path) pairs.
+
+    VISUALS_REPO alone when it is set; else the sibling paths of this checkout, then the same sibling
+    paths of the primary checkout when this checkout is a linked worktree.
+    """
+    environ = os.environ if environ is None else environ
+    if configured := environ.get("VISUALS_REPO"):
+        return [("VISUALS_REPO", Path(configured).expanduser())]
+    candidates = [("sibling of this checkout", root / sibling) for sibling in SIBLINGS]
+    primary = primary_checkout(root)
+    if primary is not None and primary.resolve() != root.resolve():
+        candidates += [(f"sibling of the primary checkout {primary}", primary / sibling) for sibling in SIBLINGS]
+    return candidates
+
+
+def is_visuals_checkout(path):
+    """Whether ``path`` is a yujieteo/visuals checkout: a Git checkout with a viz/ folder."""
+    return (path / "viz").is_dir() and (path / ".git").exists()
+
+
+def find_visuals_repo(root=ROOT, environ=None):
+    """Return (visuals checkout, where it came from) for the first candidate that is a visuals checkout.
+
+    Raise RuntimeError naming every path tried and the fix when there is none. The build never clones
+    or uses the network to find it.
+    """
+    candidates = visuals_candidates(root, environ)
+    if candidates[0][0] == "VISUALS_REPO":
+        path = candidates[0][1]
+        if not is_visuals_checkout(path):
+            raise RuntimeError(
+                f"VISUALS_REPO is {path}, which is not a yujieteo/visuals checkout (a Git checkout with a "
+                "viz/ folder). Set VISUALS_REPO to the path of a yujieteo/visuals checkout."
+            )
+        return path.resolve(), "VISUALS_REPO"
+    for source, path in candidates:
+        if is_visuals_checkout(path):
+            return path.resolve(), source
+    tried = "\n".join(f"  {os.path.normpath(path)} ({source})" for source, path in candidates)
     raise RuntimeError(
-        "Visuals repository not found. Set VISUALS_REPO or place it in a supported "
-        f"repository-relative location. Checked: {checked}"
+        "Visuals repository not found. Tried, in order:\n"
+        f"{tried}\n"
+        "Fix: export VISUALS_REPO=/path/to/visuals, or clone it next to the site checkout:\n"
+        f"  git clone https://github.com/yujieteo/visuals.git {root.parent / 'visuals'}"
     )
+
+
+def resolve_visuals_repo(root=ROOT, environ=None):
+    return find_visuals_repo(root, environ)[0]
 
 
 CATALOGUE_FIELDS = ("title", "summary", "source_url", "fetched", "webmcp_tools", "tags", "category", "links")
