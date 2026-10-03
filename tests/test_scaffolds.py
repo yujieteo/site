@@ -221,6 +221,7 @@ class AddLinksTests(TempRepo):
         super().setUp()
         self.write("data/paper-links/paper-links.yaml", "- title: Old\n  url: https://example.org/old/\n  category: example.org\n  note: Old.\n")
         self.write("data/resources/resources.yaml", '- title: "Docs"\n  url: "https://docs.example.org/"\n  category: "systems"\n')
+        self.write("data/tag-facets.yaml", "facets:\n  - id: subject\n    label: Subject\n    tags: [systems, a.example, c.example, d.example]\n")
 
     def links(self, *argv):
         return run(add_links.main, *argv, "--root", str(self.root))
@@ -271,6 +272,18 @@ class AddLinksTests(TempRepo):
         self.assertTrue((self.root / "data/resources/resources.yaml").read_text(encoding="utf-8").endswith(
             'category: "x"\n\n- title: C\n  url: https://c.example/\n  category: c.example\n  note: C.\n\n'
             '- title: D\n  url: https://d.example/\n  category: d.example\n  note: D.\n'))
+
+    def test_refuses_a_resource_tag_that_no_facet_lists(self):
+        self.write("in.txt", "https://github.com/foo A tool.\n")
+        before = (self.root / "data/resources/resources.yaml").read_text(encoding="utf-8")
+        code, _, err = self.links("resource", str(self.root / "in.txt"))
+        self.assertEqual(code, 1)
+        self.assertIn("has tag github.com, which no facet of data/tag-facets.yaml lists", err)
+        self.assertEqual((self.root / "data/resources/resources.yaml").read_text(encoding="utf-8"), before)
+        self.write("in.yaml", "- title: Foo\n  url: https://github.com/foo\n  category: github.com\n  tags: [systems, nope]\n")
+        self.assertIn("has tag nope", self.links("resource", str(self.root / "in.yaml"), "--check")[2])
+        self.write("in.yaml", "- title: Foo\n  url: https://github.com/foo\n  category: github.com\n  tags: [systems]\n")
+        self.assertEqual(self.links("resource", str(self.root / "in.yaml"))[0], 0)
 
     def test_check_writes_nothing(self):
         self.write("in.txt", "https://a.example/3 Three.\n")

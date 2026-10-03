@@ -12,7 +12,8 @@ Two steps keep the human review of titles and notes, the only judgment here:
    parse and a URL already in data/paper-links/ or data/resources/, and writes the records to
    review.yaml. Never name a canonical file here.
 2. Edit the titles and notes in review.yaml, then run `add_links.py paper review.yaml`. It runs the
-   same checks, appends the records to data/paper-links/paper-links.yaml (or
+   same checks (and, for a resource, that each of its tags is in a facet of data/tag-facets.yaml),
+   appends the records to data/paper-links/paper-links.yaml (or
    data/resources/resources.yaml), then, for paper links, runs `paper_tags.py --write` and
    `papers.py export` to refresh the tags and exports/paper-links.toon.
 
@@ -33,6 +34,7 @@ import yaml
 from jsonschema import Draft7Validator
 
 from parse_notes import parse_block
+from site_data import normalize_tags
 
 ROOT = Path(__file__).resolve().parent.parent
 KINDS = {
@@ -101,6 +103,17 @@ def checked(kind, records, root):
     return records
 
 
+def check_facets(records, root):
+    """Refuse a resource whose site tags (its tags, or else its category) are in no facet of data/tag-facets.yaml."""
+    facets = yaml.safe_load((root / "data" / "tag-facets.yaml").read_text(encoding="utf-8"))["facets"]
+    known = {tag for facet in facets for tag in facet["tags"]}
+    for index, record in enumerate(records, 1):
+        missing = [tag for tag in normalize_tags(record.get("tags"), record["category"]) if tag not in known]
+        if missing:
+            raise LinkError(f"record {index} ({record['url']}) has tag {', '.join(missing)}, which no facet of"
+                            " data/tag-facets.yaml lists; add tags: that a facet lists, or add the tag to a facet first")
+
+
 def dump(records):
     return yaml.safe_dump(records, allow_unicode=True, sort_keys=False, width=100)
 
@@ -153,6 +166,8 @@ def main(argv=None):
         if args.review and args.review.resolve().is_relative_to((root / "data").resolve()):
             raise LinkError("--review must name a file outside data/, never a canonical file")
         records = checked(args.kind, read_records(args.input), root)
+        if args.kind == "resource" and not args.review:
+            check_facets(records, root)
     except (LinkError, OSError, yaml.YAMLError) as exc:
         print(f"[FAIL] {exc}", file=sys.stderr)
         return 1
