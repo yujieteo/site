@@ -18,8 +18,7 @@ if __name__ == "__main__" and len(sys.argv) == 2 and sys.argv[1] in {"-v", "-V",
     sys.exit(0)
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from paper_links_bib import load_papers  # noqa: E402
-from paper_tags import arxiv_id, is_arxiv_class, primary_class  # noqa: E402
+from paper_tags import arxiv_id, is_arxiv_class, load_papers, primary_class  # noqa: E402
 from toon import encode  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent

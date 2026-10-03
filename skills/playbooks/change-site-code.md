@@ -9,7 +9,7 @@ Use for edits to the build, schemas, templates, browser JavaScript, or tests, no
 | Notes parsing and search | `scripts/notes.py`, `data/note-tags.json` |
 | Podcast planner and TTS | `scripts/podcast.py`, `scripts/kokoro_tts.py` (needs `requirements-podcast.txt`) |
 | Corpus projection | `scripts/published_corpus.py`, `schema/generated/corpus.schema.json` |
-| Page shell and browser code | `templates/base.html`, `static/css/style.css`, `static/js/` (`corpus.js`: corpus loader and queries; `webmcp.js`: WebMCP tools; `site-search.js`: global search; `filter.js`: list filters; `notes-views.js`: notes timeline; `post.js` and `copy-markdown.js`: blog post pages; `shell.js`: mobile menu and theme switch; `fade.js`: fades) |
+| Page shell and browser code | `templates/base.html`, `static/css/style.css`, `static/js/` (`corpus.js`: corpus loader and queries; `webmcp.js`: WebMCP tools; `site-search.js`: global search; `filter.js`: list filters; `paper-bib.js` and `bibtex.js`: the Paper Links BibTeX export; `notes-views.js`: notes timeline; `post.js` and `copy-markdown.js`: blog post pages; `shell.js`: mobile menu and theme switch; `fade.js`: fades) |
 | Homepage facets, featured cards, links | `data/tag-facets.yaml`, `pinned` in `data/cv/cv.yaml`, `attach_links` in `scripts/published_corpus.py` |
 | Tests | `tests/test_*.py` (unittest), `tests/*.test.mjs`, `tests/*.test.cjs` (Node); `scripts/run_tests.py` runs and times both against `tests/time-budget.json` |
 

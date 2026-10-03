@@ -13,6 +13,7 @@ import shutil
 
 from calibration import RAW_PATH as CALIBRATION_RAW, answered_calibrations, load_raw
 from notes_pages import build_notes, build_open_questions
+from paper_tags import citation, load_arxiv_cache
 from pages import (
     build_about, build_blog_index, build_blog_post, build_colophon, build_index, build_media_index,
     build_media_item, build_paper_links, build_visuals_index, build_visuals_markdown,
@@ -185,6 +186,9 @@ def main():
     papers = load_all("paper-links")
     for entry in [*resources, *papers]:
         entry["tags"] = normalize_tags(entry.get("tags"), entry["category"])
+    arxiv_cache = load_arxiv_cache()
+    for paper in papers:
+        paper["citation"] = citation(paper, arxiv_cache)
     posts = load_blog_posts()
     notes = load_daily_notes()
     visualizations = load_visualizations()

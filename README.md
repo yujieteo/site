@@ -13,7 +13,7 @@ data/                Canonical content (edit here)
   about/ blog/ calibrator/ cv/ decks/ notes.md note-tags.json tag-facets.yaml colophon.md
   paper-links/ podcasts/ resources/ visuals/
 docs/                Architecture notes (build, corpus, WebMCP, media)
-exports/             Generated paper-link exports: paper-links.bib, paper-links.toon
+exports/             Generated paper-link export: paper-links.toon
 schema/              JSON Schemas for the YAML data
 scripts/             build.py, validate.py, notes.py, podcast.py, ...
 skills/              Agent playbooks, principles, and reference notes
@@ -176,23 +176,29 @@ Records may also carry `authors` and `year` for citation.
 
 ```sh
 .venv/bin/python scripts/paper_tags.py --write        # (re)tag every record
-.venv/bin/python scripts/paper_links_bib.py           # write exports/paper-links.bib
 .venv/bin/python scripts/papers.py export             # write exports/paper-links.toon
 ```
 
-`exports/paper-links.bib` has one `@misc` entry per link, with `eprint`,
-`archivePrefix` and `primaryClass` for arXiv links, `keywords` from the tags and
-`abstract` from the note. It compiles with BibTeX and with biblatex/biber
-(`\nocite{*}` over all entries). With network access to `export.arxiv.org`,
-`scripts/paper_links_bib.py --fetch-arxiv` caches official arXiv metadata in
-`data/arxiv-cache.json`. The bib export and `paper_tags.py` then prefer the
-official authors, titles and categories.
+There is no full BibTeX export. On the Paper Links page a reader ticks
+**Cite** on the links they want, or filters the list, and copies or downloads a
+`.bib` of just those links. `static/js/bibtex.js` builds it in the browser from
+the Published Corpus, so it works offline: one `@misc` entry per link, with
+`eprint`, `archivePrefix` and `primaryClass` for arXiv links, `author` and
+`year` when known, `keywords` from the tags and `abstract` from the note. It
+compiles with BibTeX and with biblatex/biber. The build puts what the entries
+need into each paper record's `citation` (`citation` in `scripts/paper_tags.py`).
+With network access to `export.arxiv.org`, `scripts/paper_tags.py --fetch-arxiv`
+caches official arXiv metadata in `data/arxiv-cache.json`; the tags and the
+BibTeX entries then prefer the official authors, titles and categories.
+`scripts/verify_paper_bib_browser.js` checks the export in a browser
+(`chrome-devtools-axi run < scripts/verify_paper_bib_browser.js` against
+`python3 -m http.server 8744 --bind 127.0.0.1 --directory site`).
 
 `scripts/papers.py` is an [AXI](https://github.com/kunchenguid/axi) CLI over
 the same data. It prints [TOON](https://toonformat.dev/) on stdout. Run it
 without arguments for an overview, then use `list`, `search`, `view`, `tags`,
 and `export`, each with `--help`. `exports/paper-links.toon` is the
-lossless TOON version of the YAML with aggregate counts. Tests fail when either
-export is out of date.
+lossless TOON version of the YAML with aggregate counts. Tests fail when it is
+out of date.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
