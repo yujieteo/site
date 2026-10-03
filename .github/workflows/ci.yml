@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   pull_request:
+  # The visuals change in yujieteo/visuals, not here, and the build reads its main: a daily run (and one on
+  # demand) builds and tests the site with the latest visuals.
+  schedule:
+    - cron: "37 4 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: read

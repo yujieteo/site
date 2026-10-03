@@ -128,7 +128,7 @@ versions and nothing else; `node_modules/` is ignored by Git.
 
 ## Continuous integration
 
-`.github/workflows/ci.yml` runs on pushes to `main` and on every pull request:
+`.github/workflows/ci.yml` runs on pushes to `main`, on every pull request, and daily (and on demand), since the visuals change in yujieteo/visuals rather than here:
 validation, the build, the JavaScript type check, and the Python and Node tests through
 `scripts/run_tests.py` (on a pull request, with `--base` set to the base
 branch), whose timing report also lands in the job summary. It checks out
