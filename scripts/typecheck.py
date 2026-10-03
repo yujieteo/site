@@ -4,7 +4,7 @@
 The files stay JavaScript and nothing is emitted. The checker and the Node type definitions are pinned
 below and installed with npm install --no-save into .typecheck/ (ignored by Git), so the repository keeps no
 package.json. --install installs them when they are missing or at other versions; without it the check
-needs them already installed. scripts/run_tests.py runs this check when they are.
+needs them already installed.
 
 Usage: scripts/typecheck.py [--install]
 """

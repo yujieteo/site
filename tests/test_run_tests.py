@@ -40,26 +40,5 @@ class SelectionTests(unittest.TestCase):
             self.assertTrue(covers("kent"))
 
 
-class TypeCheckStepTests(unittest.TestCase):
-    """The types step runs scripts/typecheck.py's check only when its pinned tools are installed."""
-
-    def run_types(self, installed, passes=True):
-        # main() sets SITE_TEST_VISUALS for this process, which runs the other tests too; restore it.
-        environment = {k: v for k, v in os.environ.items() if k != "GITHUB_STEP_SUMMARY"}
-        with patch.dict(os.environ, environment, clear=True), \
-                patch.object(run_tests.typecheck, "installed", return_value=installed), \
-                patch.object(run_tests.typecheck, "check", return_value=passes) as check, \
-                patch.object(sys, "argv", ["run_tests.py", "types"]), \
-                patch("builtins.print"):
-            return run_tests.main(), check.called
-
-    def test_skipped_without_the_tools(self):
-        self.assertEqual(self.run_types(installed=False), (0, False))
-
-    def test_a_type_error_fails_the_run(self):
-        self.assertEqual(self.run_types(installed=True, passes=False), (1, True))
-        self.assertEqual(self.run_types(installed=True), (0, True))
-
-
 if __name__ == "__main__":
     unittest.main()

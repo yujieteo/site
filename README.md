@@ -122,8 +122,7 @@ nothing emitted.
 
 `scripts/typecheck.py` pins the TypeScript and `@types/node` versions and
 installs them with `npm install --no-save` into `.typecheck/`, which Git
-ignores. `scripts/run_tests.py` runs the same check (its `types` step) whenever
-those tools are installed. The Python tests copy the repository to a
+ignores. The Python tests copy the repository to a
 temporary directory and rebuild the site there, so they also read
 `VISUALS_REPO`.
 
