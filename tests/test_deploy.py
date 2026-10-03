@@ -155,6 +155,7 @@ class FakeHostTests(unittest.TestCase):
         self.assertLess(out.index("failures[1]"), out.index("checks["))
         self.assertIn("live-drift,blog/old.html,live sha256 differs from site/", out)
         self.assertIn("  live_differs_outside_upload: 1\n", out)
+        self.assertIn("A,live-drift,FAIL,1 failed; 1 of 2 built files outside the upload set match", out)
         self.assertIn("Pass an older --base", out)
 
     def test_stdout_lists_the_first_failures_and_the_report_file_all(self):

@@ -531,7 +531,7 @@ def deploy(args):
         if stale:
             hints.append("Pass an older --base (any commit before the live build), or --scoped-verdict to accept "
                          "the drift on purpose")
-        return stale, f"{others} built files outside the upload set match the live document root"
+        return stale, f"{others - len(stale)} of {others} built files outside the upload set match the live document root"
 
     report.step("A", "tree-clean", lambda: ([("HEAD", why)] if (why := tree_problem()) else [],
                                             "no uncommitted changes to tracked files"))
@@ -579,9 +579,9 @@ def deploy(args):
         outside = [item for item in failing if item[0] not in sent]
         report.counts["live_differs_outside_upload"] = len(outside)
         if args.scoped_verdict:
-            return inside, (f"{len(uploaded)} uploaded files match site/; scoped out: {len(outside)} of "
+            return inside, (f"{len(uploaded) - len(inside)} of {len(uploaded)} uploaded files match site/; scoped out: {len(outside)} of "
                             f"{len(state['built']) - len(sent)} other files differ")
-        return failing, f"{len(state['built'])} built files match the live document root"
+        return failing, f"{len(state['built']) - len(failing)} of {len(state['built'])} built files match the live document root"
 
     def docroot_paths():
         listing = remote_listing(remote, config["docroot"])
