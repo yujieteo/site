@@ -17,7 +17,7 @@ exports/             Generated paper-link export: paper-links.toon
 schema/              JSON Schemas for the YAML data
 scripts/             build.py, validate.py, notes.py, podcast.py, ...
 skills/              Agent playbooks, principles, and reference notes
-static/              Source CSS and browser JavaScript
+static/              Source CSS, browser JavaScript and favicons
 templates/           Shared HTML templates and the beamdswitch report template
 tests/               Python (unittest) and Node tests
 visuals/             The two private visualizations published here: beamdswitch (vendored) and connes-qft (a port)
