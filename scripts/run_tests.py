@@ -5,14 +5,16 @@ The Python suite runs with unittest (discovering tests/test_*.py) and the Node s
 (tests/*.test.{mjs,cjs}), exactly as before; this script only times them. Each suite must finish within
 its budget in tests/time-budget.json, and a suite over budget fails with its slowest tests named. The
 budget is fixed, not scaled by the number of visualisations: per-visualisation checks must stay
-constant-cost, and heavy tests belong in each visualisation's own repository.
+constant-cost, and heavy tests belong in each visualisation's own repository. The types step type-checks the
+site's JavaScript with scripts/typecheck.py; it is unbudgeted, and is skipped when the pinned tools are not
+installed (scripts/typecheck.py --install installs them).
 
 With --base, the per-visualisation checks (tests/visual_selection.py) cover only the visualisation folders
 changed against that ref: visuals/<slug>/ and data/visuals/<slug>.yaml or .pin. A change to the tests, the
 build scripts, the templates, CI or the requirements covers every folder, as does a run without --base
 (pushes to main) or one whose changes cannot be listed. Cross-cutting tests always run.
 
-Usage: scripts/run_tests.py [python] [node] [--base REF]
+Usage: scripts/run_tests.py [python] [node] [types] [--base REF]
 """
 
 import argparse
@@ -25,6 +27,8 @@ import tempfile
 import time
 import unittest
 from pathlib import Path
+
+import typecheck
 
 ROOT = Path(__file__).resolve().parents[1]
 SLOWEST = 10
@@ -136,7 +140,7 @@ def report(suite, seconds, budget, groups, tests):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("suites", nargs="*", choices=["python", "node"], help="the suites to run (default both)")
+    parser.add_argument("suites", nargs="*", choices=["python", "node", "types"], help="the suites to run (default all)")
     parser.add_argument("--base", help="select per-visualisation checks by the changes against this ref")
     args = parser.parse_args()
 
@@ -148,8 +152,17 @@ def main():
         os.environ["SITE_TEST_VISUALS"] = value
     print(f"per-visualisation checks: {described}", flush=True)
 
+    suites = list(dict.fromkeys(args.suites or ["python", "node", "types"]))
     reports, failures = [], []
-    for suite in dict.fromkeys(args.suites or ["python", "node"]):
+    if "types" in suites:
+        suites.remove("types")
+        if typecheck.installed():
+            print("type-checking the JavaScript (scripts/typecheck.py)", flush=True)
+            if not typecheck.check():
+                failures.append("the JavaScript type check failed")
+        else:
+            print("skipping the JavaScript type check: run scripts/typecheck.py --install to install its tools", flush=True)
+    for suite in suites:
         start = time.perf_counter()
         passed, groups, tests = (run_python if suite == "python" else run_node)()
         seconds = time.perf_counter() - start

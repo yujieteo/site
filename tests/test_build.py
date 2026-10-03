@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
-REPO_IGNORE = shutil.ignore_patterns(".git", ".venv", "__pycache__")
+REPO_IGNORE = shutil.ignore_patterns(".git", ".venv", ".typecheck", "__pycache__")
 
 sys.path.insert(0, str(ROOT / "scripts"))
 

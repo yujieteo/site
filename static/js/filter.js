@@ -6,52 +6,71 @@
 import { getItem, loadCorpus, searchSite } from "./corpus.js";
 import { noteCopyControlHtml } from "./copy-markdown.js";
 import { fadeIn } from "./fade.js";
+/** @import { Corpus, CorpusRecord } from "./corpus.js" */
 
-const form = document.querySelector("[data-filter-form]");
+/**
+ * The filters as they stand, announced in a filters-changed event and kept on the form as filterState.
+ * @typedef {{ text: string, tagGroups: string[][], kind: string | undefined, filtered: boolean }} FilterState
+ */
+
+const form = /** @type {(HTMLFormElement & { filterState?: FilterState }) | null} */ (
+  document.querySelector("[data-filter-form]"));
 if (form) {
-  const search = form.querySelector(".search-box");
-  const tagSearch = form.querySelector(".tag-search-box");
-  const menuButton = form.querySelector("[data-filters-toggle]");
-  const tagBar = form.querySelector("[data-tag-bar]");
-  const activeCount = form.querySelector("[data-active-count]");
-  const activeBar = document.querySelector("[data-active-filters]");
-  const activeList = document.querySelector("[data-active-filter-list]");
-  const clearButton = document.querySelector("[data-clear-filters]");
-  const list = document.querySelector("[data-entry-list]");
-  const empty = document.querySelector("[data-no-results]");
-  const count = form.querySelector("[data-result-count]");
-  const pager = document.querySelector("[data-pager]");
+  // scripts/filter_lists.py renders all of these with the form; only the tag search is optional.
+  const search = /** @type {HTMLInputElement} */ (form.querySelector(".search-box"));
+  const tagSearch = /** @type {HTMLInputElement | null} */ (form.querySelector(".tag-search-box"));
+  const menuButton = /** @type {HTMLButtonElement} */ (form.querySelector("[data-filters-toggle]"));
+  const tagBar = /** @type {HTMLElement} */ (form.querySelector("[data-tag-bar]"));
+  const activeCount = /** @type {HTMLElement} */ (form.querySelector("[data-active-count]"));
+  const activeBar = /** @type {HTMLElement} */ (document.querySelector("[data-active-filters]"));
+  const activeList = /** @type {HTMLElement} */ (document.querySelector("[data-active-filter-list]"));
+  const clearButton = /** @type {HTMLButtonElement} */ (document.querySelector("[data-clear-filters]"));
+  const list = /** @type {HTMLElement} */ (document.querySelector("[data-entry-list]"));
+  const empty = /** @type {HTMLElement} */ (document.querySelector("[data-no-results]"));
+  const count = /** @type {HTMLElement} */ (form.querySelector("[data-result-count]"));
+  const pager = /** @type {HTMLElement} */ (document.querySelector("[data-pager]"));
   const pageSize = 10;
   const noun = form.dataset.noun || "entries";
   const headingTag = form.dataset.entryHeading === "h3" ? "h3" : "h2";
   const initialHtml = list.innerHTML.trim();
-  const facetOf = new Map(
-    [...tagBar.querySelectorAll("button.tag[data-facet]")].map((button) => [button.dataset.tag, button.dataset.facet]),
-  );
+  /** The facet buttons; each carries data-tag and data-facet. */
+  const facetButtons = () => /** @type {NodeListOf<HTMLButtonElement & { dataset: { tag: string, facet: string } }>} */ (
+    tagBar.querySelectorAll("button.tag[data-facet]"));
+  const facetOf = new Map([...facetButtons()].map((button) => [button.dataset.tag, button.dataset.facet]));
   const facetOrder = [...new Set(facetOf.values())];
+  /** @type {Map<string, Set<string>>} */
   const selected = new Map(facetOrder.map((facet) => [facet, new Set()]));
+  // Every facet a tag button names is in `selected`.
+  const selectedIn = (/** @type {string} */ facet) => /** @type {Set<string>} */ (selected.get(facet));
+  /** @type {string | null} */
   let cursor = null;
+  /** @type {(string | null)[]} */
   let previousCursors = [];
   let renderId = 0;
   // Corpus URLs are relative to the site root; pages below it (visuals/index.html)
   // reach that root through the same prefix as their corpus link.
-  const corpusHref = document.querySelector('meta[name="site-corpus"]')?.content || "";
+  const corpusHref = /** @type {HTMLMetaElement | null} */ (document.querySelector('meta[name="site-corpus"]'))?.content || "";
   const rootPrefix = corpusHref.slice(0, corpusHref.lastIndexOf("/") + 1);
+  /** @param {string} url */
   const siteHref = (url) => (/^[a-z][a-z0-9+.-]*:|^[/#]/i.test(url) ? url : `${rootPrefix}${url}`);
 
+  /** @param {unknown} value */
   const escapeHtml = (value) => String(value ?? "").replace(
     /[&<>"']/g,
-    (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character],
+    (character) => /** @type {Record<string, string>} */ ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character],
   );
 
+  /** @type {Record<string, string>} */
   const linkLabels = {
     resolves: "Resolves", resolvedBy: "Resolved by", extends: "Extends", extendedBy: "Extended by",
     uses: "Uses", usedBy: "Used by", related: "Related",
   };
+  /** @type {Record<string, string>} */
   const kindLabels = {
     note: "Note", blog: "Post", visualization: "Visual", podcast: "Episode", video: "Video",
     paper: "Paper link", resource: "Resource", about: "Page", profile: "Page", calibration: "Calibration",
   };
+  /** @param {CorpusRecord} entry @param {Corpus} corpus */
   const relatedHtml = (entry, corpus) => {
     const items = (entry.links || []).flatMap((link) => {
       let target;
@@ -59,14 +78,16 @@ if (form) {
       const label = target.kind === "note"
         ? `Note, ${target.date} — ${String(target.summary || "").split(/(?<=[.!?])\s/)[0]}`
         : `${kindLabels[target.kind] || target.kind} — ${target.title}`;
+      // scripts/published_corpus.py gives every record a url.
       return [`<li><span class="related-rel">${escapeHtml(linkLabels[link.rel] || link.rel)}</span> `
-        + `<a href="${escapeHtml(siteHref(target.url))}">${escapeHtml(label)}</a></li>`];
+        + `<a href="${escapeHtml(siteHref(/** @type {string} */ (target.url)))}">${escapeHtml(label)}</a></li>`];
     });
     return items.length
       ? `<ul class="related-list related-compact" aria-label="Related items">${items.join("")}</ul>`
       : "";
   };
 
+  /** @param {CorpusRecord} entry @param {Corpus} corpus */
   const entryHtml = (entry, corpus) => {
     // Visuals are dated by when their data was fetched.
     const dateValue = entry.date || entry.fetched;
@@ -97,8 +118,8 @@ if (form) {
       + `${summary}<div class="entry-tags" aria-label="Tags">${tags}</div>${related}</article>`;
   };
 
-  const tagGroups = () => facetOrder.map((facet) => [...selected.get(facet)]).filter((group) => group.length);
-  const activeTags = () => facetOrder.flatMap((facet) => [...selected.get(facet)].map((tag) => [facet, tag]));
+  const tagGroups = () => facetOrder.map((facet) => [...selectedIn(facet)]).filter((group) => group.length);
+  const activeTags = () => facetOrder.flatMap((facet) => [...selectedIn(facet)].map((tag) => [facet, tag]));
   const isFiltered = () => search.value.trim() !== "" || activeTags().length > 0;
   const shouldShow = () => form.dataset.defaultShow === "true" || isFiltered();
 
@@ -116,14 +137,14 @@ if (form) {
     const params = new URLSearchParams(window.location.search);
     search.value = params.get("q") || "";
     facetOrder.forEach((facet) => {
-      selected.get(facet).clear();
-      params.getAll(facet).forEach((tag) => { if (facetOf.get(tag) === facet) selected.get(facet).add(tag); });
+      selectedIn(facet).clear();
+      params.getAll(facet).forEach((tag) => { if (facetOf.get(tag) === facet) selectedIn(facet).add(tag); });
     });
   };
 
   const syncControls = () => {
-    tagBar.querySelectorAll("button.tag[data-facet]").forEach((button) => {
-      const pressed = selected.get(button.dataset.facet).has(button.dataset.tag);
+    facetButtons().forEach((button) => {
+      const pressed = selectedIn(button.dataset.facet).has(button.dataset.tag);
       button.setAttribute("aria-pressed", String(pressed));
       // A selected tag stays visible even when its facet is collapsed.
       if (pressed) button.hidden = false;
@@ -140,6 +161,7 @@ if (form) {
     if (wasHidden && !activeBar.hidden) fadeIn(activeBar);
   };
 
+  /** @param {string} text */
   const setCount = (text) => {
     if (count.textContent === text) return;
     count.textContent = text;
@@ -197,12 +219,13 @@ if (form) {
     } catch (error) {
       if (current !== renderId) return;
       empty.hidden = false;
-      empty.textContent = error.message;
+      empty.textContent = /** @type {Error} */ (error).message;
       setCount("Filtering unavailable");
       pager.hidden = true;
     }
   };
 
+  /** @param {boolean} open */
   const setMenu = (open) => {
     menuButton.setAttribute("aria-expanded", String(open));
     tagBar.hidden = !open;
@@ -210,9 +233,10 @@ if (form) {
   };
 
   const restart = () => { cursor = null; previousCursors = []; writeUrl(); render(); };
+  /** @param {string} tag @param {string | undefined} facet */
   const toggleTag = (tag, facet = facetOf.get(tag)) => {
     if (!facet) return;
-    const tags = selected.get(facet);
+    const tags = selectedIn(facet);
     if (tags.has(tag)) tags.delete(tag);
     else tags.add(tag);
     restart();
@@ -225,10 +249,11 @@ if (form) {
 
   const filterTags = () => {
     const query = (tagSearch?.value || "").trim().toLowerCase();
-    tagBar.querySelectorAll(".facet").forEach((fieldset) => {
+    /** @type {NodeListOf<HTMLFieldSetElement>} */ (tagBar.querySelectorAll(".facet")).forEach((fieldset) => {
       const expanded = fieldset.querySelector(".facet-more")?.getAttribute("aria-expanded") === "true";
       let visible = 0;
-      fieldset.querySelectorAll("button.tag[data-facet]").forEach((button) => {
+      /** @type {NodeListOf<HTMLButtonElement & { dataset: { tag: string } }>} */ (
+        fieldset.querySelectorAll("button.tag[data-facet]")).forEach((button) => {
         const pressed = button.getAttribute("aria-pressed") === "true";
         button.hidden = query
           ? !button.dataset.tag.toLowerCase().includes(query)
@@ -236,50 +261,52 @@ if (form) {
         if (!button.hidden) visible += 1;
       });
       fieldset.hidden = query !== "" && visible === 0;
-      const more = fieldset.querySelector(".facet-more");
+      const more = /** @type {HTMLButtonElement | null} */ (fieldset.querySelector(".facet-more"));
       if (more) more.hidden = query !== "";
     });
   };
 
   form.addEventListener("submit", (event) => { event.preventDefault(); restart(); });
-  menuButton.addEventListener("click", () => setMenu(tagBar.hidden));
+  menuButton.addEventListener("click", () => setMenu(Boolean(tagBar.hidden)));
   search.addEventListener("input", restart);
   tagSearch?.addEventListener("input", filterTags);
   tagBar.addEventListener("click", (event) => {
-    const more = event.target.closest(".facet-more");
+    const target = /** @type {Element} */ (event.target);
+    const more = /** @type {HTMLButtonElement | null} */ (target.closest(".facet-more"));
     if (more) {
       const expanded = more.getAttribute("aria-expanded") !== "true";
       more.setAttribute("aria-expanded", String(expanded));
-      more.textContent = expanded ? "Show fewer" : more.dataset.showLabel;
+      more.textContent = expanded ? "Show fewer" : /** @type {string} */ (more.dataset.showLabel);
       filterTags();
       return;
     }
-    const button = event.target.closest("button.tag[data-facet]");
-    if (button) toggleTag(button.dataset.tag, button.dataset.facet);
+    const button = /** @type {HTMLButtonElement | null} */ (target.closest("button.tag[data-facet]"));
+    if (button) toggleTag(/** @type {string} */ (button.dataset.tag), button.dataset.facet);
   });
   activeList.addEventListener("click", (event) => {
-    const button = event.target.closest(".active-filter");
+    const button = /** @type {HTMLButtonElement | null} */ (/** @type {Element} */ (event.target).closest(".active-filter"));
     if (!button) return;
-    toggleTag(button.dataset.tag, button.dataset.facet);
-    (activeList.querySelector(".active-filter") || search).focus();
+    toggleTag(/** @type {string} */ (button.dataset.tag), button.dataset.facet);
+    (/** @type {HTMLButtonElement | null} */ (activeList.querySelector(".active-filter")) || search).focus();
   });
   clearButton.addEventListener("click", () => { clearAll(); search.focus(); });
   document.addEventListener("filters-clear", clearAll);
   // Tag chips on entries (and on the notes timeline) add that tag as a filter.
   document.querySelector("main")?.addEventListener("click", (event) => {
-    const button = event.target.closest("button.tag[data-tag]");
+    const button = /** @type {HTMLButtonElement | null} */ (/** @type {Element} */ (event.target).closest("button.tag[data-tag]"));
     if (!button || tagBar.contains(button)) return;
-    const facet = facetOf.get(button.dataset.tag);
+    const tag = /** @type {string} */ (button.dataset.tag);
+    const facet = facetOf.get(tag);
     if (!facet) return;
-    if (!selected.get(facet).has(button.dataset.tag)) toggleTag(button.dataset.tag, facet);
+    if (!selectedIn(facet).has(tag)) toggleTag(tag, facet);
     form.scrollIntoView({ block: "start" });
   });
   pager.addEventListener("click", (event) => {
-    const button = event.target.closest("button.pager-btn");
+    const button = /** @type {HTMLButtonElement | null} */ (/** @type {Element} */ (event.target).closest("button.pager-btn"));
     if (!button || button.disabled) return;
     if (button.dataset.direction === "next") {
       previousCursors.push(cursor);
-      cursor = pager.dataset.nextCursor;
+      cursor = /** @type {string} */ (pager.dataset.nextCursor);
     } else {
       cursor = previousCursors.pop() || null;
     }

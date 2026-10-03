@@ -6,17 +6,31 @@ import test from "node:test";
 import vm from "node:vm";
 import { parseDeck } from "./fixtures/beamdswitch/deck.mjs";
 
+/**
+ * templates/beamdswitch.js's API, which it sets on the global object.
+ * @typedef {{ DEFAULT_VOICE: string, SECTIONS: [string, string][], deck(report: object): string }} BeamdswitchApi
+ */
+
+/** @param {string} path */
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 const TEMPLATE = read("templates/beamdswitch.js");
-const load = (src, name) => { const ctx = {}; vm.createContext(ctx); ctx.self = ctx; vm.runInContext(src, ctx); return ctx[name]; };
+/**
+ * Run a script and return the global it defines; any, as each caller states the API it expects.
+ * @param {string} src @param {string} name @returns {any}
+ */
+const load = (src, name) => { const ctx = vm.createContext({}); ctx.self = ctx; vm.runInContext(src, ctx); return ctx[name]; };
+/** @type {BeamdswitchApi} */
 const B = load(TEMPLATE, "Beamdswitch");
 
+/** @param {string} title @param {boolean} [key] */
 const frame = (title, key) => ({ title, body: "- A point.", narration: "One sentence.", ...(key ? { key: "The takeaway." } : {}) });
+/** @param {object} [meta] */
 const report = (meta) => ({
   meta: { title: "A report", ...meta }, narration: "The title slide.",
   setup: [frame("Set-up")], method: [frame("Method")], results: [frame("Results")], checks: [frame("Checks", true)],
 });
-const frontMatter = (md) => /^---\n([\s\S]*?)\n---\n/.exec(md)[1].split("\n");
+/** @param {string} md */
+const frontMatter = (md) => /^---\n([\s\S]*?)\n---\n/.exec(md)?.[1].split("\n");
 
 test("a deck built with no meta.voice declares voice: bf_emma", () => {
   assert.equal(B.DEFAULT_VOICE, "bf_emma");
@@ -25,7 +39,7 @@ test("a deck built with no meta.voice declares voice: bf_emma", () => {
     assert.deepEqual(frontMatter(md), ["title: A report", "subtitle: Sub", "voice: bf_emma"], `meta.voice = ${JSON.stringify(voice)}`);
     assert.equal(parseDeck(md).meta.voice, "bf_emma");
   }
-  assert.deepEqual(frontMatter(B.deck({ ...report(), meta: { title: "A report" } })).at(-1), "voice: bf_emma");
+  assert.deepEqual(frontMatter(B.deck({ ...report(), meta: { title: "A report" } }))?.at(-1), "voice: bf_emma");
 });
 
 test("a visualisation's own voice is kept", () => {
@@ -43,8 +57,14 @@ test("every visualisation on the shared template ships the template that always 
 });
 
 test("Phasors and Toulmin export their default decks with voice bf_emma", () => {
+  /** @param {string} slug */
   const html = (slug) => read(`visuals/${slug}/index.html`);
-  const script = (slug, id) => new RegExp(`<script id="${id}">([\\s\\S]*?)</script>`).exec(html(slug))[1];
+  /** @param {string} slug @param {string} id */
+  const script = (slug, id) => {
+    const match = new RegExp(`<script id="${id}">([\\s\\S]*?)</script>`).exec(html(slug));
+    assert.ok(match, `visuals/${slug}/index.html has a <script id="${id}">`);
+    return match[1];
+  };
   const P = load(script("phasors", "ph-engine"), "Phasors");
   assert.equal(parseDeck(P.buildDeck(P.defaultState())).meta.voice, "bf_emma");
   const T = load(script("toulmin", "toulmin-engine"), "Toulmin");

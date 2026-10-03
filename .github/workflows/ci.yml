@@ -77,6 +77,12 @@ jobs:
         with:
           node-version: "22"
 
+      # tsc checks the JSDoc types in the site's JavaScript (tsconfig.json). The
+      # script installs its pinned tools outside Git, as there is no package.json.
+      - name: Type-check JavaScript
+        working-directory: site
+        run: python scripts/typecheck.py --install
+
       - name: Run Node tests
         working-directory: site
         run: python scripts/run_tests.py node ${{ github.event_name == 'pull_request' && '--base HEAD^1' || '' }}

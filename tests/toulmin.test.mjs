@@ -6,12 +6,16 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
 
+/** @param {string} p */
 const read = (p) => readFile(new URL(p, import.meta.url), "utf8");
+/** @param {RegExpExecArray | null} match @param {string} what */
+const found = (match, what) => { assert.ok(match, `${what} found`); return match; };
 const html = await read("../visuals/toulmin/index.html");
-const ctx = {};
-vm.createContext(ctx);
-vm.runInContext(/<script id="toulmin-engine">([\s\S]*?)<\/script>/.exec(html)[1], ctx);
+const ctx = vm.createContext({});
+vm.runInContext(found(/<script id="toulmin-engine">([\s\S]*?)<\/script>/.exec(html), "the Toulmin engine")[1], ctx);
+// The visualisation's own engine, typed in its own repository.
 const T = ctx.Toulmin;
+/** @param {unknown} x */
 const J = (x) => JSON.parse(JSON.stringify(x));
 
 const beam = await read("../visuals/beamdswitch/index.html");
@@ -21,11 +25,10 @@ function vendoredSplit() {
   const end = beam.indexOf("return i.trim()&&n.push(i.trim()),n}", at) + "return i.trim()&&n.push(i.trim()),n}".length;
   assert.ok(start > 0 && end > at, "beamdswitch's sentence splitter is in the vendored build");
   const fn = beam.slice(start, end);
-  const name = /^function (\w+)/.exec(fn)[1];
-  const c = {};
-  vm.createContext(c);
+  const name = found(/^function (\w+)/.exec(fn), "the splitter's name")[1];
+  const c = vm.createContext({});
   vm.runInContext(fn + `;globalThis.split=${name};`, c);
-  return c.split;
+  return /** @type {(text: string) => string[]} */ (c.split);
 }
 
 test("constants equal the vendored beamdswitch build: 130 wpm, 0.8 s floor, 0.35 s lead, 0.25 s gap, 0.6 s tail", () => {
@@ -53,7 +56,7 @@ test("sentence splitting is the vendored beamdswitch build's, exactly", () => {
     "no terminator at all",
     "   ",
     "A.B. Cd. Ef! Gh? Ij?! Kl.",
-    T.exportDeck(T.TEMPLATE).frames.map((f) => f.narration).join(" "),
+    T.exportDeck(T.TEMPLATE).frames.map((/** @type {{ narration: string }} */ f) => f.narration).join(" "),
   ];
   for (const s of cases) assert.deepEqual(J(T.splitSentences(s)), J(vendored(s)), s);
 });

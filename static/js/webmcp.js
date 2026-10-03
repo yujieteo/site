@@ -1,11 +1,28 @@
 import { getItem, loadCorpus, searchSite } from "./corpus.js";
+/** @import { CorpusRecord, SearchInput } from "./corpus.js" */
 
-const modelContext = document.modelContext;
-const corpusUrl = document.querySelector('meta[name="site-corpus"]')?.content;
+/**
+ * The part of the WebMCP API this page uses: a browser that supports it adds `document.modelContext`.
+ * @typedef {object} ModelContextTool
+ * @property {string} name
+ * @property {string} title
+ * @property {string} description
+ * @property {object} inputSchema
+ * @property {{ readOnlyHint?: boolean, untrustedContentHint?: boolean }} [annotations]
+ * The agent's arguments, as inputSchema describes them; any, so each tool states its own input type.
+ * @property {(input: any) => Promise<unknown>} execute
+ * @typedef {{ registerTool(tool: ModelContextTool): Promise<void> | void }} ModelContext
+ */
+
+const modelContext = /** @type {Document & { modelContext?: ModelContext }} */ (document).modelContext;
+const corpusUrl = /** @type {HTMLMetaElement | null} */ (document.querySelector('meta[name="site-corpus"]'))?.content;
+// Called only on records loadCorpus returned, so the corpus link exists.
+/** @param {string | undefined} value */
 const absoluteUrl = (value) => value
-  ? new URL(value, new URL(corpusUrl, document.baseURI)).href
+  ? new URL(value, new URL(/** @type {string} */ (corpusUrl), document.baseURI)).href
   : "";
 
+/** @param {CorpusRecord} record */
 const searchResult = (record) => ({
   id: record.id,
   revision: record.revision,
@@ -17,6 +34,7 @@ const searchResult = (record) => ({
   summary: record.summary || "",
 });
 
+/** @param {CorpusRecord} record */
 const itemResult = (record) => ({
   ...searchResult(record),
   category: record.category || "",
@@ -48,7 +66,7 @@ if (modelContext) {
         },
       },
       annotations,
-      execute: async (input) => {
+      execute: async (/** @type {SearchInput} */ input) => {
         const result = searchSite(await loadCorpus(), input);
         return { ...result, items: result.items.map(searchResult) };
       },
@@ -64,7 +82,7 @@ if (modelContext) {
         properties: { id: { type: "string", minLength: 1 } },
       },
       annotations,
-      execute: async ({ id }) => itemResult(getItem(await loadCorpus(), id)),
+      execute: async (/** @type {{ id: string }} */ { id }) => itemResult(getItem(await loadCorpus(), id)),
     }),
   ]).catch((error) => console.warn("WebMCP tools were not registered", error));
 }

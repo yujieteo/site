@@ -1,29 +1,41 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+/** @import { Corpus, CorpusRecord } from "../static/js/corpus.js" */
 
 const source = await readFile(new URL("../static/js/corpus.js", import.meta.url), "utf8");
+/** @type {typeof import("../static/js/corpus.js")} */
 const { getItem, loadCorpus, searchSite } = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 
-const corpus = {
-  records: [
-    { id: "note:new", kind: "note", title: "Algebraic geometry", content: "Moduli spaces", date: "2026-09-25", tags: ["math.ag"] },
-    { id: "note:old", kind: "note", title: "Geometry", content: "Curves", date: "2026-09-20", tags: ["math.ag"] },
-    { id: "paper:x", kind: "paper", title: "Algebra", content: "Groups", tags: ["algebra"] },
-  ],
-};
+/** A published record; the tests leave out its revision, which search never reads. @param {Omit<CorpusRecord, "revision">} fields */
+const record = (fields) => ({ revision: "", ...fields });
+/** @param {CorpusRecord[]} records @returns {Corpus} */
+const corpusOf = (records) => ({ schemaVersion: 1, revision: "", records });
+/**
+ * A browser global stood in for by an object with only what corpus.js uses; any, as it is not the real thing.
+ * @param {object} value @returns {any}
+ */
+const standIn = (value) => value;
+
+const corpus = corpusOf([
+  record({ id: "note:new", kind: "note", title: "Algebraic geometry", content: "Moduli spaces", date: "2026-09-25", tags: ["math.ag"] }),
+  record({ id: "note:old", kind: "note", title: "Geometry", content: "Curves", date: "2026-09-20", tags: ["math.ag"] }),
+  record({ id: "paper:x", kind: "paper", title: "Algebra", content: "Groups", tags: ["algebra"] }),
+]);
 
 test("loads a compatible corpus after a partial site publish", async () => {
-  globalThis.document = {
+  globalThis.document = standIn({
+    /** @param {string} selector */
     querySelector(selector) {
+      /** @type {Record<string, { content: string }>} */
       const metadata = {
         'meta[name="site-corpus"]': { content: "corpus.json" },
         'meta[name="site-corpus-revision"]': { content: "older-page-revision" },
       };
       return metadata[selector];
     },
-  };
-  globalThis.fetch = async () => ({
+  });
+  globalThis.fetch = async () => standIn({
     ok: true,
     json: async () => ({ ...corpus, schemaVersion: 1, revision: "newer-corpus-revision" }),
   });
@@ -50,13 +62,12 @@ test("retrieves exact items and rejects missing IDs", () => {
 });
 
 test("tag groups match any tag within a group and every group", () => {
-  const records = {
-    records: [
-      { id: "a", kind: "resource", title: "A", tags: ["energy", "singapore"] },
-      { id: "b", kind: "resource", title: "B", tags: ["energy", "europe"] },
-      { id: "c", kind: "resource", title: "C", tags: ["prices", "singapore"] },
-    ],
-  };
+  const records = corpusOf([
+    record({ id: "a", kind: "resource", title: "A", tags: ["energy", "singapore"] }),
+    record({ id: "b", kind: "resource", title: "B", tags: ["energy", "europe"] }),
+    record({ id: "c", kind: "resource", title: "C", tags: ["prices", "singapore"] }),
+  ]);
+  /** @param {string[][]} tagGroups */
   const ids = (tagGroups) => searchSite(records, { tagGroups }).items.map((item) => item.id).sort();
   assert.deepEqual(ids([["energy", "prices"]]), ["a", "b", "c"]);
   assert.deepEqual(ids([["energy"], ["singapore"]]), ["a"]);
@@ -65,12 +76,10 @@ test("tag groups match any tag within a group and every group", () => {
 });
 
 test("search indexes calibration records apart from notes", async () => {
-  const records = {
-    records: [
-      ...corpus.records,
-      { id: "calibration:q-1", kind: "calibration", title: "Should I stop project X?", summary: "40% — Should I stop project X?", content: "Should I stop project X?\nProbability: 40%", date: "2026-10-02", tags: ["calibrator"] },
-    ],
-  };
+  const records = corpusOf([
+    ...corpus.records,
+    record({ id: "calibration:q-1", kind: "calibration", title: "Should I stop project X?", summary: "40% — Should I stop project X?", content: "Should I stop project X?\nProbability: 40%", date: "2026-10-02", tags: ["calibrator"] }),
+  ]);
   assert.deepEqual(searchSite(records, { text: "stop project" }).items.map((item) => item.id), ["calibration:q-1"]);
   assert.deepEqual(searchSite(records, { kind: "calibration" }).items.map((item) => item.id), ["calibration:q-1"]);
   assert.equal(searchSite(records, { text: "stop project", kind: "note" }).total, 0);

@@ -6,26 +6,31 @@
 // only the button, and the key hints are hidden there by CSS.
 import { loadCorpus, searchSite } from "./corpus.js";
 import { cancelFade, fadeIn, fadeOut } from "./fade.js";
+/** @import { CorpusRecord, SearchResult } from "./corpus.js" */
 
 const root = document.querySelector("[data-site-search]");
 const dialog = root?.querySelector("dialog");
 if (root && dialog && typeof dialog.showModal === "function") {
-  const trigger = root.querySelector("[data-site-search-open]");
+  // templates/base.html renders all of these with the dialog.
+  const trigger = /** @type {HTMLButtonElement} */ (root.querySelector("[data-site-search-open]"));
   const shortcutLabel = root.querySelector("[data-site-search-shortcut]");
-  const form = dialog.querySelector("[data-site-search-form]");
-  const input = dialog.querySelector(".site-search-input");
-  const closeButton = dialog.querySelector("[data-site-search-close]");
-  const list = dialog.querySelector(".site-search-results");
-  const status = dialog.querySelector("[data-site-search-status]");
-  const emptyMessage = status.textContent;
+  const form = /** @type {HTMLFormElement} */ (dialog.querySelector("[data-site-search-form]"));
+  const input = /** @type {HTMLInputElement} */ (dialog.querySelector(".site-search-input"));
+  const closeButton = /** @type {HTMLButtonElement} */ (dialog.querySelector("[data-site-search-close]"));
+  const list = /** @type {HTMLElement} */ (dialog.querySelector(".site-search-results"));
+  const status = /** @type {HTMLElement} */ (dialog.querySelector("[data-site-search-status]"));
+  const emptyMessage = /** @type {string} */ (status.textContent);
   const corpusUrl = new URL(
-    document.querySelector('meta[name="site-corpus"]')?.content || "corpus.json",
+    /** @type {HTMLMetaElement | null} */ (document.querySelector('meta[name="site-corpus"]'))?.content || "corpus.json",
     document.baseURI,
   );
-  const platform = navigator.userAgentData?.platform || navigator.platform || "";
+  // User-Agent Client Hints are not in every browser, nor yet in TypeScript's DOM types.
+  const { userAgentData } = /** @type {Navigator & { userAgentData?: { platform: string } }} */ (navigator);
+  const platform = userAgentData?.platform || navigator.platform || "";
   const isMac = /mac|iphone|ipad|ipod/i.test(platform);
   const coarsePointer = window.matchMedia("(pointer: coarse)");
   const limit = 20;
+  /** @type {Record<string, string>} */
   const kindLabels = {
     profile: "Profile", about: "About", resource: "Resource", paper: "Paper",
     note: "Note", blog: "Blog", visualization: "Visual", podcast: "Podcast", video: "Video",
@@ -34,24 +39,30 @@ if (root && dialog && typeof dialog.showModal === "function") {
   let active = -1;
   let requestId = 0;
   let closing = 0;
+  /** @type {ReturnType<typeof setTimeout> | undefined} */
   let debounce;
+  /** @type {HTMLElement | null} */
   let returnFocus = null;
 
   if (shortcutLabel) shortcutLabel.textContent = isMac ? "⌘K" : "Ctrl K";
   if (!coarsePointer.matches) trigger.setAttribute("aria-keyshortcuts", isMac ? "Meta+K" : "Control+K");
 
+  /** @param {unknown} value */
   const escapeHtml = (value) => String(value ?? "").replace(
     /[&<>"']/g,
-    (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character],
+    (character) => /** @type {Record<string, string>} */ ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character],
   );
+  /** @param {unknown} value @param {number} length */
   const shorten = (value, length) => {
     const text = String(value ?? "").replace(/\s+/g, " ").trim();
     return text.length > length ? `${text.slice(0, length - 1).trimEnd()}…` : text;
   };
   // Corpus URLs are relative to corpus.json (the site root), not to this page.
+  /** @param {string} url */
   const resolve = (url) => new URL(url, corpusUrl).href;
   const options = () => [...list.querySelectorAll('[role="option"]')];
 
+  /** @param {number} index */
   const setActive = (index) => {
     const items = options();
     active = items.length && index >= 0 ? Math.min(index, items.length - 1) : -1;
@@ -64,6 +75,7 @@ if (root && dialog && typeof dialog.showModal === "function") {
     }
   };
 
+  /** @param {CorpusRecord} record @param {number} index */
   const resultHtml = (record, index) => {
     const title = shorten(record.title, 100) || "Untitled";
     const summary = shorten(record.summary || record.content, 150);
@@ -71,7 +83,7 @@ if (root && dialog && typeof dialog.showModal === "function") {
       .filter(Boolean).map(escapeHtml).join(" &middot; ");
     const showSummary = summary && !summary.startsWith(title.replace(/…$/, ""));
     return `<li role="option" id="site-search-option-${index}" aria-selected="false">`
-      + `<a class="site-search-result" href="${escapeHtml(resolve(record.url))}" tabindex="-1">`
+      + `<a class="site-search-result" href="${escapeHtml(resolve(/** @type {string} */ (record.url)))}" tabindex="-1">`
       + `<span class="site-search-kind" data-kind="${escapeHtml(record.kind)}">`
       + `${escapeHtml(kindLabels[record.kind] || record.kind)}</span>`
       + `<span class="site-search-text"><span class="site-search-title">${escapeHtml(title)}</span>`
@@ -80,6 +92,7 @@ if (root && dialog && typeof dialog.showModal === "function") {
       + "</span></a></li>";
   };
 
+  /** @param {string} text */
   const setStatus = (text) => {
     if (status.textContent === text) return;
     status.textContent = text;
@@ -96,6 +109,7 @@ if (root && dialog && typeof dialog.showModal === "function") {
       setStatus(emptyMessage);
       return;
     }
+    /** @type {SearchResult} */
     let result;
     try {
       const corpus = await loadCorpus();
@@ -153,6 +167,7 @@ if (root && dialog && typeof dialog.showModal === "function") {
     returnFocus = null;
   });
 
+  /** @param {number} index */
   const go = (index) => {
     const link = options()[index]?.querySelector("a");
     if (link) window.location.assign(link.href);
@@ -196,7 +211,7 @@ if (root && dialog && typeof dialog.showModal === "function") {
     }
   });
   list.addEventListener("mousemove", (event) => {
-    const option = event.target.closest('[role="option"]');
+    const option = /** @type {Element} */ (event.target).closest('[role="option"]');
     if (option) {
       const index = options().indexOf(option);
       if (index !== active) setActive(index);
@@ -205,6 +220,7 @@ if (root && dialog && typeof dialog.showModal === "function") {
   // Keep focus in the input when choosing with the mouse.
   list.addEventListener("mousedown", (event) => event.preventDefault());
 
+  /** @param {EventTarget | null} element */
   const isTextField = (element) => element instanceof HTMLElement && (
     element.isContentEditable || element.matches("textarea, select, input:not([type=button], "
       + "[type=checkbox], [type=radio], [type=submit], [type=reset], [type=range], [type=color])"));

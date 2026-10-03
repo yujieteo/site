@@ -110,14 +110,27 @@ publishes the port (`tests/test_visual_ports.py`, plus the cross-cutting suites)
 so updating a visualization means running its tests in its own repository.
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
-`package.json` or installed packages. The Python tests copy the repository to a
+`package.json` or installed packages.
+
+The site's own JavaScript (`static/js/`, `scripts/`, `tests/`) is type-checked
+JavaScript: JSDoc types that `tsc` checks as `tsconfig.json` sets out, with
+nothing emitted.
+
+```sh
+.venv/bin/python scripts/typecheck.py --install   # install the pinned tsc into .typecheck/, then check
+```
+
+`scripts/typecheck.py` pins the TypeScript and `@types/node` versions and
+installs them with `npm install --no-save` into `.typecheck/`, which Git
+ignores. `scripts/run_tests.py` runs the same check (its `types` step) whenever
+those tools are installed. The Python tests copy the repository to a
 temporary directory and rebuild the site there, so they also read
 `VISUALS_REPO`.
 
 ## Continuous integration
 
 `.github/workflows/ci.yml` runs on pushes to `main` and on every pull request:
-validation, the build, and the Python and Node tests through
+validation, the build, the JavaScript type check, and the Python and Node tests through
 `scripts/run_tests.py` (on a pull request, with `--base` set to the base
 branch), whose timing report also lands in the job summary. It checks out the
 `visuals` history, and the build reads each visualization at its pin; update
