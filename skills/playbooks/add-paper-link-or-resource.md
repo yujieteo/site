@@ -1,24 +1,10 @@
 # Add a paper link or resource
 
-Choose one path.
+`scripts/add_links.py` takes `paper` (for `data/paper-links/paper-links.yaml`) or `resource` (for `data/resources/resources.yaml`), and an input file: blank-line-separated blocks that each hold a URL and note text, or a YAML list of records. Each record needs `title`, `url`, and `category`, and a paper link also a `note`; the script checks them against `schema/paper-links.schema.json` or `schema/resources.schema.json`. It refuses a block it cannot parse (the parser's `skipped` count must be 0) and a URL already in `data/paper-links/` or `data/resources/`, so a record is appended once.
 
-## Parse URL and note blocks
-
-1. Put each source in its own blank-line-separated block. Each block must contain a URL and note text.
-2. Run `.venv/bin/python scripts/parse_notes.py <input-file> <temporary-yaml-file>`. Never use a canonical file as the destination because the parser overwrites it.
-3. Require the parser summary to report `skipped 0`.
-4. Review titles, categories, URLs, and notes in the temporary YAML. Remove records already present in the canonical YAML.
-5. Append the reviewed records to either `data/paper-links/*.yaml` or `data/resources/*.yaml`.
-6. For paper links, run the two commands in step 5 of the next section.
-
-## Add YAML by hand
-
-1. Add a record to the relevant canonical YAML file.
-2. For a paper link, provide `title`, `url`, `category`, and `note`.
-3. For a resource, provide `title`, `url`, and `category`. Add `note` when useful.
-4. For a resource, add `tags` only when they differ from the category fallback.
-5. For a paper link, optionally add `authors` (a list) and `year`. Then run `.venv/bin/python scripts/paper_tags.py --write` and `.venv/bin/python scripts/papers.py export`. These commands refresh the tags and `exports/paper-links.toon`.
-
-Run [Stage A](../verify.md#stage-a-pre-deploy). Then follow [Deploy generated files](deploy.md) when the request includes publication.
+1. Run `.venv/bin/python scripts/add_links.py <paper|resource> <input-file> --review <review.yaml>`, with `<review.yaml>` outside `data/`. It writes the parsed records there; it never writes a canonical file in this step.
+2. Judgment: review the titles, categories, URLs, and notes in `<review.yaml>` and edit them. For a resource, add `tags` only when they differ from the category fallback. For a paper link, optionally add `authors` (a list) and `year`. To add one record by hand, write it as a one-item YAML list in the same kind of file.
+3. Run `.venv/bin/python scripts/add_links.py <paper|resource> <review.yaml>`. It appends the reviewed records to the canonical YAML file. For a resource it first refuses a tag that no facet of `data/tag-facets.yaml` lists (the `category` is the tag when `tags` is empty): add `tags:` that a facet lists, or add the tag to a facet first. For paper links it then runs `.venv/bin/python scripts/paper_tags.py --write` and `.venv/bin/python scripts/papers.py export`, which refresh the tags and `exports/paper-links.toon`; the tag refresh takes several minutes on the full list. If the refresh fails or you stop it, the records stay appended and the script prints the two commands: run them by hand, because a second run refuses the records as duplicates. Add `--check` to print the records without appending them.
+4. Run [Stage A](../verify.md#stage-a-pre-deploy). Then follow [Deploy generated files](deploy.md) when the request includes publication.
 
 Principles: [Preserve user content](../principles/preserve-user-content.md) and [Minimal diff scope](../principles/minimal-diff-scope.md).

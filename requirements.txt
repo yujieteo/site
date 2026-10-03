@@ -1,3 +1,5 @@
 PyYAML>=6.0
 jsonschema>=4.0
 markdown>=3.0
+# The CSS and JavaScript parser of scripts/rename.py and its tests.
+ast-grep-py==0.45.3
