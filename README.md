@@ -92,8 +92,10 @@ needs network access to Hugging Face and jsDelivr.
 Many tests read the built `site/`, so run `scripts/build.py` first.
 `scripts/run_tests.py` runs the same two suites as
 `python -m unittest discover -s tests -p 'test_*.py'` and
-`node --test 'tests/*.test.{mjs,cjs}'` (either still works on its own; pass
-`python` or `node` to run one), then reports each suite's wall time and its
+`node --test 'tests/*.test.{mjs,cjs}'` (pass `python` or `node` to run one).
+Either suite still works on its own, but a direct `node --test` reads only
+`VISUALS_REPO` or `../visuals`, so in a worktree set `VISUALS_REPO` or use
+`scripts/run_tests.py node`. The script then reports each suite's wall time and its
 slowest modules, files and tests. A suite over its budget in
 `tests/time-budget.json` fails with its slowest tests named. The budget does
 not grow with the number of visualisations: per-visualisation checks must stay

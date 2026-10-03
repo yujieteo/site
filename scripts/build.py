@@ -193,7 +193,7 @@ def main():
     posts = load_blog_posts()
     notes = load_daily_notes()
     visuals_repo, visuals_source = find_visuals_repo()
-    print(f"Reading yujieteo/visuals {visuals_commit(visuals_repo)} from {visuals_repo} ({visuals_source})")
+    print(f"Reading yujieteo/visuals from {visuals_repo} ({visuals_source})")
     visualizations = load_visualizations(visuals_repo)
     media_items = load_media_items()
     visualization_sources = load_visualization_sources(visualizations, visuals_repo)

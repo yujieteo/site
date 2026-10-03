@@ -39,15 +39,12 @@ def primary_checkout(root):
     return common.parent if common.name == ".git" else common
 
 
-def visuals_candidates(root=ROOT, environ=None):
-    """The places to look for the visuals checkout, in order, as (where it came from, path) pairs.
+def sibling_candidates(root=ROOT):
+    """The sibling paths to look for the visuals checkout in, in order, as (where it came from, path) pairs.
 
-    VISUALS_REPO alone when it is set; else the sibling paths of this checkout, then the same sibling
-    paths of the primary checkout when this checkout is a linked worktree.
+    The sibling paths of this checkout, then the same sibling paths of the primary checkout when this
+    checkout is a linked worktree.
     """
-    environ = os.environ if environ is None else environ
-    if configured := environ.get("VISUALS_REPO"):
-        return [("VISUALS_REPO", Path(configured).expanduser())]
     candidates = [("sibling of this checkout", root / sibling) for sibling in SIBLINGS]
     primary = primary_checkout(root)
     if primary is not None and primary.resolve() != root.resolve():
@@ -61,20 +58,23 @@ def is_visuals_checkout(path):
 
 
 def find_visuals_repo(root=ROOT, environ=None):
-    """Return (visuals checkout, where it came from) for the first candidate that is a visuals checkout.
+    """Return (visuals checkout, where it came from): VISUALS_REPO when it is set, else the first sibling.
 
-    Raise RuntimeError naming every path tried and the fix when there is none. The build never clones
+    VISUALS_REPO, when set, must be a visuals checkout; the siblings are not tried. Raise RuntimeError
+    naming the bad value, or every path tried, and the fix when there is none. The build never clones
     or uses the network to find it.
     """
-    candidates = visuals_candidates(root, environ)
-    if candidates[0][0] == "VISUALS_REPO":
-        path = candidates[0][1]
+    environ = os.environ if environ is None else environ
+    if configured := environ.get("VISUALS_REPO"):
+        path = Path(configured).expanduser()
         if not is_visuals_checkout(path):
             raise RuntimeError(
-                f"VISUALS_REPO is {path}, which is not a yujieteo/visuals checkout (a Git checkout with a "
-                "viz/ folder). Set VISUALS_REPO to the path of a yujieteo/visuals checkout."
+                f"VISUALS_REPO is {configured!r}, which is not a yujieteo/visuals checkout (a Git checkout "
+                "with a viz/ folder). Fix: set VISUALS_REPO to the path of a yujieteo/visuals checkout, or "
+                "unset it to use a sibling checkout."
             )
         return path.resolve(), "VISUALS_REPO"
+    candidates = sibling_candidates(root)
     for source, path in candidates:
         if is_visuals_checkout(path):
             return path.resolve(), source
