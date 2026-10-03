@@ -259,6 +259,8 @@ class FakeHostTests(unittest.TestCase):
         code, out = self.cli("plan")
         self.assertEqual(code, 0, out)
         self.assertIn(f"  base: {entry['commit']}\n  visuals_base: {VISUALS}\n", out)
+        self.assertIn("result: nothing to upload; the live document root already matches the build", out)
+        self.assertNotIn("run --execute", out)
 
         code, out = self.cli("report")
         self.assertEqual(code, 0, out)

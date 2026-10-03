@@ -542,13 +542,15 @@ def deploy(args):
 
     if args.command == "plan" or report.stopped or not uploaded:
         live = None
+        nothing = not report.stopped and not uploaded
+        drift = report.counts.get("live_differs_outside_upload", 0)
+        if nothing:
+            report.facts["result"] = (f"nothing to upload; {drift} live files differ from the build (scoped out)" if drift
+                                      else "nothing to upload; the live document root already matches the build")
         if args.command == "run":
-            nothing = not report.stopped and not uploaded
-            if nothing:
-                report.facts["result"] = "nothing to upload; the live document root already matches the build"
             # Nothing reached the host: what was live stays live, or already is this build.
             live = {"site": commit, "visuals": state["visuals"]} if nothing else {"site": base, "visuals": visuals_base}
-        if args.command == "plan" and not report.stopped:
+        if args.command == "plan" and not report.stopped and uploaded:
             hints.append("Run `scripts/deploy.py run --execute` to deploy this upload set")
         if report.failures:
             hints.append(f"Read the full output in {log.path}")
