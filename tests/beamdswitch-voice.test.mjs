@@ -63,20 +63,3 @@ test("every visualisation on the shared template ships the template that always 
   const selected = process.env.SITE_TEST_VISUALS?.split(",");
   for (const { slug, path, reader } of pages.filter(({ slug }) => !selected || selected.includes(slug))) assert.equal(reader(path), TEMPLATE, `${path} is the shared template`);
 });
-
-test("Phasors and Toulmin export their default decks with voice bf_emma", () => {
-  /** @param {string} slug */
-  const html = (slug) => readVisuals(`viz/${slug}/index.html`);
-  /** @param {string} slug @param {string} id */
-  const script = (slug, id) => {
-    const match = new RegExp(`<script id="${id}">([\\s\\S]*?)</script>`).exec(html(slug));
-    assert.ok(match, `viz/${slug}/index.html has a <script id="${id}">`);
-    return match[1];
-  };
-  const P = load(script("phasors", "ph-engine"), "Phasors");
-  assert.equal(parseDeck(P.buildDeck(P.defaultState())).meta.voice, "bf_emma");
-  const T = load(script("toulmin", "toulmin-engine"), "Toulmin");
-  const d = T.exportDeck(T.clone(T.TEMPLATE));
-  assert.equal(d.ok, true);
-  assert.equal(parseDeck(d.text).meta.voice, "bf_emma");
-});

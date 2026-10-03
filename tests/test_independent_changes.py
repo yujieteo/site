@@ -218,6 +218,10 @@ class IndependentContentChangesTests(unittest.TestCase):
         missing = run(self.project, sys.executable, "scripts/site_diff.py", "HEAD", check=False)
         self.assertNotEqual(missing.returncode, 0)
         self.assertIn("--visuals-base", missing.stderr)
+        dirty = run(self.project, sys.executable, "scripts/site_diff.py", "HEAD",
+                    "--visuals-base", f"{self.visuals_commit}+dirty", check=False)
+        self.assertNotEqual(dirty.returncode, 0)
+        self.assertIn("clean yujieteo/visuals checkout", dirty.stderr)
         slug = sorted(path.parent.name for path in (self.visuals / "viz").glob("*/visual.json")
                       if json.loads(path.read_text(encoding="utf-8")).get("published", True))[0]
         page = self.visuals / "viz" / slug / "index.html"

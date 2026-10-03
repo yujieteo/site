@@ -43,8 +43,11 @@ npm ci && npm run typecheck                               # JSDoc types in the s
 Every command above must exit successfully; on `main`, omit `--base` to run every
 per-visualization check (see the [README](../README.md#test)). The build recreates `site/` from the
 sources; `site/` is ignored by Git, so `git status` shows only source changes.
-Review the generated changes with `.venv/bin/python scripts/site_diff.py <base>`
-(see [Deploy generated files](playbooks/deploy.md)) and stop if they go beyond
+Review the generated changes with
+`.venv/bin/python scripts/site_diff.py <base> --visuals-base <visuals-base>`, where
+`<visuals-base>` is the yujieteo/visuals commit the base's build read (for a pull
+request, the visuals commit `scripts/build.py` printed; see
+[Deploy generated files](playbooks/deploy.md)), and stop if they go beyond
 the intended sources. Do not deploy after a failure.
 
 A site test you add must stay cheap and be timed: follow

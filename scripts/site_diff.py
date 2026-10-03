@@ -60,6 +60,9 @@ def base_visuals(commit, visuals_base, workdir):
     if visuals_base is None:
         raise SystemExit(f"{commit} builds its visuals from yujieteo/visuals: give the visuals commit its "
                          "deploy read as --visuals-base (scripts/build.py printed it)")
+    if visuals_base.endswith("+dirty"):
+        raise SystemExit(f"--visuals-base {visuals_base} read uncommitted changes, which cannot be rebuilt: "
+                         "build from a clean yujieteo/visuals checkout at a commit on visuals main")
     clone = workdir / "visuals"
     git("clone", "--quiet", "--shared", "--no-checkout", str(visuals_repo), str(clone))
     try:
