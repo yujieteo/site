@@ -231,6 +231,11 @@ function gaugeGrid(N = 8, seed = 0.6) {
   const chi = Q.range(N).map((i) => Q.range(N).map((j) => Math.sin((2 * PI * i) / N) * Math.cos((2 * PI * j) / N)));
   return { Ax, Ay, chi, N };
 }
+/* The potential shifted by the gauge function at the chosen (or animated) amplitude. */
+function gaugeShift(c) {
+  const g = gaugeGrid(), amp = c.s.auto ? 2 * Math.sin(c.t * 0.8) : c.s.s;
+  return { g, amp, T: QED.gaugeTransform(g.Ax, g.Ay, g.chi, amp) };
+}
 scene({
   id: "potential", track: "qft", title: "Potential versus field strength", sections: [7],
   summary: "Two layers: the potential A<sub>μ</sub> and the physical field F<sub>μν</sub>. Perform A ↦ A + ∂χ: the arrows of A move, the plaquettes of F do not change at all.",
@@ -245,8 +250,7 @@ scene({
       return { title: "GAUGE FUNCTION χ(x)", sub: "on the lattice", body: svg(220, 220, heatmap(g.chi, { size: 26, x: 6, y: 6, cls: "ck", name: "χ" }), "gauge function") };
     },
     field: (c) => {
-      const g = gaugeGrid(), amp = c.s.auto ? 2 * Math.sin(c.t * 0.8) : c.s.s;
-      const T = QED.gaugeTransform(g.Ax, g.Ay, g.chi, amp);
+      const { g, amp, T } = gaugeShift(c);
       let s = "";
       const sc = 44;
       for (let i = 0; i < g.N; i++) for (let j = 0; j < g.N; j++) {
@@ -256,15 +260,13 @@ scene({
       return { title: "POTENTIAL A", sub: `χ amplitude ${amp.toFixed(2)}`, body: svg(370, 370, s, "potential arrows"), foot: "Link arrows: A_x (blue), A_y (violet). They change with χ." };
     },
     diagram: (c) => {
-      const g = gaugeGrid(), amp = c.s.auto ? 2 * Math.sin(c.t * 0.8) : c.s.s;
-      const T = QED.gaugeTransform(g.Ax, g.Ay, g.chi, amp);
+      const { g, amp, T } = gaugeShift(c);
       const F = QED.latticeCurl(T.Ax, T.Ay);
       const s = heatmap(F.map((r) => r.map((v) => v)), { size: 26, x: 6, y: 6, cls: "qft", name: "F_xy" });
       return { title: "FIELD STRENGTH F", sub: "plaquettes", body: svg(220, 220, s, "field strength"), foot: "F_xy = ∂_xA_y − ∂_yA_x on each plaquette: identical for every χ." };
     },
     algebra: (c) => {
-      const g = gaugeGrid(), amp = c.s.auto ? 2 * Math.sin(c.t * 0.8) : c.s.s;
-      const T = QED.gaugeTransform(g.Ax, g.Ay, g.chi, amp);
+      const { g, amp, T } = gaugeShift(c);
       const F0 = QED.latticeCurl(g.Ax, g.Ay).flat(), F1 = QED.latticeCurl(T.Ax, T.Ay).flat();
       const dA = Math.max(...g.Ax.flat().map((a, k) => Math.abs(a - T.Ax.flat()[k])));
       const dF = Math.max(...F0.map((f, k) => Math.abs(f - F1[k])));
@@ -275,6 +277,12 @@ scene({
 });
 
 /* ---------- §8 local U(1) gauge symmetry ---------- */
+/* A fixed phase pattern θ₀ for ψ and its gauge-rotated copy θ at the chosen strength. */
+function phaseFrame(c) {
+  const N = 8, g = gaugeGrid(N);
+  const th0 = Q.range(N).map((i) => Q.range(N).map((j) => 0.4 * i + 0.25 * j));
+  return { N, g, th0, th: QED.transformPhase(th0, g.chi, 1.5, c.s.chi) };
+}
 scene({
   id: "gauge", track: "qft", title: "Local U(1) gauge symmetry", sections: [8],
   summary: "Rotate the phase of ψ(x) by e<sup>−ieχ(x)</sup> at every point and shift A by ∂χ. Neighbouring phases compared naively change; compared through the connection, they do not.",
@@ -283,17 +291,13 @@ scene({
   controls: (c) => slider("chi", "transformation strength", 0, 1, 0.01, c.s.chi, (v) => v.toFixed(2)),
   panels: {
     field: (c) => {
-      const N = 8, g = gaugeGrid(N);
-      const th0 = Q.range(N).map((i) => Q.range(N).map((j) => 0.4 * i + 0.25 * j));
-      const th = QED.transformPhase(th0, g.chi, 1.5, c.s.chi);
+      const { N, th } = phaseFrame(c);
       let s = "";
       for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) { const x = 26 + i * 44, y = 26 + j * 44; s += circ(x, y, 14, "", 'fill="none" stroke="var(--rule)"') + arrow(x, y, x + 13 * Math.cos(th[i][j]), y - 13 * Math.sin(th[i][j]), "ck", "", 4); }
       return { title: "PHASE OF ψ(x)", sub: "small arrows on circles", body: svg(370, 370, s, "phases"), foot: `ψ(x) ↦ e^{−ieχ(x)}ψ(x) at strength ${c.s.chi.toFixed(2)}.` };
     },
     diagram: (c) => {
-      const N = 8, g = gaugeGrid(N);
-      const th0 = Q.range(N).map((i) => Q.range(N).map((j) => 0.4 * i + 0.25 * j));
-      const th = QED.transformPhase(th0, g.chi, 1.5, c.s.chi);
+      const { g, th0, th } = phaseFrame(c);
       const T = QED.gaugeTransform(g.Ax, g.Ay, g.chi, c.s.chi);
       const naive0 = QED.naiveComparison(th0).flat(), naive1 = QED.naiveComparison(th).flat();
       const cov0 = QED.linkComparison(th0, g.Ax, 1.5).flat(), cov1 = QED.linkComparison(th, T.Ax, 1.5).flat();
@@ -399,6 +403,8 @@ scene({
 
 /* ---------- §11 from classical to quantum field ---------- */
 const STRING_SHAPE = (x0) => (x) => (x < x0 ? x / x0 : (1 - x) / (1 - x0)) * 0.6;
+/* The first 12 Fourier coefficients of the string plucked at the chosen position. */
+const pluckModes = (c) => QED.stringModes(STRING_SHAPE(c.s.pluck), 12);
 scene({
   id: "modes", track: "qft", title: "From classical field to quantum field", sections: [11],
   summary: "A vibrating string, Fourier-expanded: each coefficient q<sub>k</sub> is an oscillator of frequency ω<sub>k</sub>. Quantize each one, q<sub>k</sub>, p<sub>k</sub> ⇝ a<sub>k</sub>, a<sub>k</sub><sup>†</sup>: the field becomes a quantum field.",
@@ -408,7 +414,7 @@ scene({
   controls: (c) => `${stepper("stage", ["FIELD", "INFINITELY MANY OSCILLATORS", "QUANTUM FIELD"], c.s.stage)} ${slider("pluck", "pluck position", 0.1, 0.9, 0.01, c.s.pluck, (v) => v.toFixed(2))}`,
   panels: {
     field: (c) => {
-      const q = QED.stringModes(STRING_SHAPE(c.s.pluck), 12);
+      const q = pluckModes(c);
       const y = (x, t) => q.reduce((s2, qk, i) => s2 + qk * Math.sin((i + 1) * PI * x) * Math.cos((i + 1) * PI * t * 0.5), 0);
       let s = ln(20, 90, 380, 90, "grid");
       s += path(pathD(Q.linspace(0, 1, 120).map((x) => [20 + 360 * x, 90 - 110 * y(x, c.t)])), "qft", 'fill="none" stroke-width="2.2"');
@@ -416,7 +422,7 @@ scene({
       return { title: "STRING", sub: "φ(x) = ∑ q_k sin(kπx)", body: svg(400, 200, s, "vibrating string"), foot: c.s.stage >= 1 ? "Below: the first four normal modes, each oscillating at its own frequency." : "" };
     },
     diagram: (c) => {
-      const q = QED.stringModes(STRING_SHAPE(c.s.pluck), 12);
+      const q = pluckModes(c);
       return { title: "FOURIER COEFFICIENTS", sub: "computed", body: barChart({ W: 400, H: 190, items: q.map((v, i) => ({ label: `${i + 1}`, value: Math.abs(v), cls: i < 4 ? ["ck", "ncg", "aqft", "qft"][i] : "qft", tip: `q_${i + 1} = ${fmt(v, 4)}` })), xlabel: "mode k", ylabel: "|q_k|" }) };
     },
     algebra: (c) => {
@@ -431,7 +437,7 @@ scene({
       return { title: "OSCILLATORS", sub: c.s.stage === 2 ? "quantized" : "classical", body: svg(400, 195, s, "oscillator ladders") };
     },
     space: (c) => {
-      const q = QED.stringModes(STRING_SHAPE(c.s.pluck), 12);
+      const q = pluckModes(c);
       let s = "";
       for (let i = 0; i < 40; i++) for (let j = 0; j < 20; j++) { const x = i / 39, t = j * 0.15 + c.t; const v = q.reduce((s2, qk, k) => s2 + qk * Math.sin((k + 1) * PI * x) * Math.cos((k + 1) * PI * t * 0.5), 0); s += rect(20 + i * 9, 180 - j * 8.5, 9, 8.5, v > 0 ? "fqft" : "fck", `fill-opacity="${Math.min(1, Math.abs(v) * 3).toFixed(2)}"`); }
       return { title: "SPACETIME HISTORY", sub: "displacement over (x, t)", body: svg(400, 195, s + txt(20, 14, "a classical field history: one configuration", "xs ink2"), "string history") };

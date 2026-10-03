@@ -150,6 +150,8 @@ scene({
 });
 
 /* ---------- §33–34 dimensional regularization, pole extractor, minimal subtraction ---------- */
+/* The Laurent series on show: QED vacuum polarization at the current μ, or the spec's 3/ε + 7 + 2ε. */
+const dimregSeries = (c) => (c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]));
 scene({
   id: "dimreg", track: "qft", title: "Dimensional regularization and the pole extractor", sections: [33, 34],
   summary: "In d = 4 − ε the divergent integral becomes a Laurent series a₋₁/ε + a₀ + a₁ε + …, drawn as vertical layers around ε = 0. The pole extractor separates POLE PART, FINITE PART and VANISHING PART; minimal subtraction removes the pole.",
@@ -158,11 +160,11 @@ scene({
   controls: (c) => `${seg("example", [["qed", "QED vacuum polarization"], ["spec", "I(ε) = 3/ε + 7 + 2ε"]], c.s.example)} ${toggle("split", "extract the pole", c.s.split)} ${slider("g.eps", "ε", 0, 0.5, 0.01, G.eps, (v) => v.toFixed(2))}`,
   panels: {
     field: (c) => {
-      const S = c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]);
+      const S = dimregSeries(c);
       return { title: "LAURENT LAYERS", sub: "around ε = 0", body: svg(400, 200, laurentLayers(S, { x: 10, y: 10, w: 380, h: 180, split: c.s.split }), "Laurent layers"), foot: `I(ε) = ${lseries(S)}` };
     },
     diagram: (c) => {
-      const S = c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]);
+      const S = dimregSeries(c);
       const es = Q.linspace(0.02, 0.5, 60);
       const ser = [{ pts: es.map((e) => [e, LS.evalAt(S, e)]), cls: "qft", label: "I(ε)" }];
       if (c.s.split) ser.push({ pts: es.map((e) => [e, LS.evalAt(LS.regular(S), e)]), cls: "ck", label: "I(ε) − pole (MS)" });
@@ -170,14 +172,14 @@ scene({
       return { title: "I(ε) AS ε → 0", sub: "the pole blows up", body: lineChart({ W: 400, H: 200, xr: [0, 0.5], yr: [Math.min(...ys), Math.max(...ys)], series: ser, vlines: [{ x: G.eps, label: `ε = ${G.eps.toFixed(2)}` }], xlabel: "ε", yfmt: (v) => fmt(v, 2) }) };
     },
     algebra: (c) => {
-      const S = c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]);
+      const S = dimregSeries(c);
       const P = LS.pole(S), R = LS.regular(S);
       return { title: "POLE EXTRACTOR", sub: "T and 1 − T", body: table(["part", "terms", "fate"], [[`<span data-link="laurent-pole">POLE PART</span>`, esc(LS.toText(P)), "removed by the counterterm (MS)"], [`<span data-link="laurent-finite">FINITE PART</span>`, fmt(LS.coef(S, 0), 6), "the renormalized value at ε = 0"], [`<span data-link="laurent-vanish">VANISHING PART</span>`, esc(LS.toText(LS.make(1, R.c.slice(1), R.hi))), "→ 0 as ε → 0"]]) + `<p class="small">Minimal subtraction: counterterm = −T[I]; renormalized = (1 − T)[I] evaluated at ε = 0. In Connes–Kreimer language T is the projection onto the pole part and these are the Birkhoff factors of a primitive graph.</p>` };
     },
     space: (c) => ({ title: "DIMENSION AS A DIAL", sub: `d = ${(4 - G.eps).toFixed(2)}`, body: `<p class="small">${tex("\\int\\frac{d^dk}{(2\\pi)^d}\\frac{1}{(k^2+\\Delta)^2} = \\frac{\\Gamma(2-d/2)}{(4\\pi)^{d/2}}\\Delta^{d/2-2}")}: finite for every d &lt; 4. Γ(ε/2) = 2/ε − γ + … carries the divergence as a pole.</p>${kv([["Γ(ε/2) at this ε", G.eps > 0 ? fmt(Q.gamma(G.eps / 2), 6) : "pole"], ["series 2/ε − γ + …", G.eps > 0 ? fmt(LS.evalAt(LS.gammaHalfEps(3), G.eps), 6) : "pole"]])}` }),
   },
   notes: () => `<p>${formula("I(\\varepsilon) = \\frac{a_{-1}}{\\varepsilon} + a_0 + a_1\\varepsilon + \\cdots")} For the QED vacuum polarization every coefficient is computed by expanding ${tex("\\Gamma(\\varepsilon/2)(4\\pi\\mu^2/\\Delta)^{\\varepsilon/2}")} and integrating over the Feynman parameter. With the specification's example ${tex("3/\\varepsilon + 7 + 2\\varepsilon")} the pole part is 3/ε, the finite part 7, and 2ε vanishes.</p>`,
-  md: (c) => { const S = c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]); return { sections: [{ heading: "Laurent series", body: `\\[ I(\\varepsilon) = ${LS.toTeX(S)} \\]` }, { heading: "Pole extraction", body: `- POLE PART: ${LS.toText(LS.pole(S))}\n- FINITE PART: ${fmt(LS.coef(S, 0), 8)}\n- VANISHING PART: the remaining positive powers` }] }; },
+  md: (c) => { const S = dimregSeries(c); return { sections: [{ heading: "Laurent series", body: `\\[ I(\\varepsilon) = ${LS.toTeX(S)} \\]` }, { heading: "Pole extraction", body: `- POLE PART: ${LS.toText(LS.pole(S))}\n- FINITE PART: ${fmt(LS.coef(S, 0), 8)}\n- VANISHING PART: the remaining positive powers` }] }; },
 });
 
 /* ---------- §102 Feynman parameters ---------- */

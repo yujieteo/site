@@ -6,6 +6,8 @@
 const CK_GRAPHS = ["sigma2_rainbow", "sigma2_crossed", "sigma2_vp", "pi2_se", "pi2_crossed", "lambda2_ladder", "sigma3_rainbow", "sigma3_double"];
 const TOY_NOTE = "Toy Feynman rules (the Connes–Kreimer iterated-integral model): the combinatorics is the graph's, the Laurent coefficients are the model's, not QED's.";
 const graphSelect = (key, value, ids = CK_GRAPHS) => `<label class="ctl">graph <select data-bind="s.${key}">${ids.map((id) => `<option value="${id}"${id === value ? " selected" : ""}>${esc(GR.byId(id).name)}</option>`).join("")}</select></label>`;
+/* The chosen catalogue graph and its divergent proper 1PI subgraphs. */
+const graphWithSubs = (c) => { const g = GR.byId(c.s.graph); return { g, subs: GR.divergentSubgraphs(g) }; };
 /* Boxes for every divergent subgraph, nested ones drawn larger. */
 function subgraphBoxes(g, subs, opts = {}) {
   return subs.map((s, i) => {
@@ -157,11 +159,11 @@ scene({
   actions: { pick: (c, arg) => { c.s.sel = c.s.sel === Number(arg) ? -1 : Number(arg); } },
   panels: {
     diagram: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g);
+      const { g, subs } = graphWithSubs(c);
       return { title: "DIVERGENT SUBGRAPHS", sub: `${subs.length} found`, body: svg(400, 240, feynman(g, [16, 16, 368, 210], { boxes: subgraphBoxes(g, subs, { labels: true, sel: c.s.sel, act: "pick" }) }), "subgraphs"), foot: subs.map((s, i) => `<span data-link="sub${i}">γ${i + 1}: ${esc(s.residue.name)} (L = ${s.L}, ω = ${s.omega})</span>`).join(" · ") || "no subdivergences" };
     },
     field: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g), tree = GR.containmentTree(g, subs);
+      const { g, subs } = graphWithSubs(c), tree = GR.containmentTree(g, subs);
       const root = tree.findIndex((n) => n.whole);
       const lines = [];
       const walk = (idx, prefix, last) => { const n = tree[idx]; lines.push(`${prefix}${idx === root ? "" : last ? "└── " : "├── "}${n.whole ? "Γ" : `γ${idx + 1}`}`); const ch = tree.filter((m) => m.parent === idx); ch.forEach((m, k) => walk(m.index, idx === root ? "" : prefix + (last ? "    " : "│   "), k === ch.length - 1)); };
@@ -255,7 +257,7 @@ scene({
   },
   panels: {
     diagram: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g);
+      const { g, subs } = graphWithSubs(c);
       const boxes = subs.map((s, i) => ({ vertices: s.vertices, edges: s.edges, depth: subs.filter((t) => t !== s && GR.relation(s, t) === "contains").length, cls: c.s.chosen.includes(i) ? "sel" : "", label: `γ${i + 1}`, act: "pick", arg: i, link: `sub${i}` }));
       return { title: "CANDIDATE SUBGRAPHS", sub: "click a box to toggle", body: svg(400, 240, feynman(g, [16, 16, 368, 210], { boxes }), "forest candidates"), foot: c.s.reject ? `<span class="fail">Rejected: γ${c.s.reject[0] + 1} and γ${c.s.reject[1] + 1} overlap.</span>` : `Chosen: {${c.s.chosen.map((i) => `γ${i + 1}`).join(", ") || "∅"}} — a legal forest.` };
     },
@@ -264,7 +266,7 @@ scene({
       return { title: "ALL FORESTS", sub: `${forests.length} legal`, body: table(["forest", "subtraction term"], forests.map((f) => { const names = f.map((s) => `γ${subgraphs.indexOf(s) + 1}`); return [`{${names.join(", ") || "∅"}}`, f.length ? `${names.map((n) => `(−T<sub>${n}</sub>)`).join("")} φ(Γ)` : "φ(Γ)"]; })) + `<p class="small">Zimmermann: R(Γ) = (1 − T_Γ) ∑_F ∏_{γ∈F}(−T_γ) φ(Γ). In the Hopf algebra the same sum is the convolution γ₋ ⋆ φ.</p>` };
     },
     field: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g);
+      const { g, subs } = graphWithSubs(c);
       return { title: "RELATIONS", sub: "nested / disjoint / overlapping", body: table(["", ...subs.map((_, i) => `γ${i + 1}`)], subs.map((s, i) => [`γ${i + 1}`, ...subs.map((t, j) => (i === j ? "—" : GR.relation(s, t)))])) };
     },
     space: () => ({ title: "WHY OVERLAPS ARE EXCLUDED", body: `<p class="small">Two overlapping subdivergences share lines; contracting one destroys the other. A forest only ever contracts subgraphs that can be contracted in some order, from the inside out.</p>` }),
@@ -358,7 +360,7 @@ scene({
       return { title: "THE NUMBERS", sub: "toy Feynman rules", body: kv([["φ(Γ)", esc(LS.toText(b.phi, { sig: 4 }))], ["γ₋(Γ)", esc(LS.toText(b.minus, { sig: 4 }))], ["γ₊(Γ)", esc(LS.toText(LS.truncate(b.plus, 2), { sig: 4 }))], ["γ₊(Γ)(0)", fmt(b.renormalized, 10)], ["γ₋<sup>⋆−1</sup> ⋆ γ₊ − φ", Math.max(0, ...b.reconstruction.c.map(Math.abs)) < 1e-10 ? "0 (reconstructs φ)" : esc(LS.toText(b.reconstruction))]]) + `<p class="tiny muted">${TOY_NOTE}</p>` };
     },
     diagram: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g);
+      const { g, subs } = graphWithSubs(c);
       return { title: "THE GRAPH", sub: esc(g.name), body: svg(400, 200, feynman(g, [16, 16, 368, 175], { boxes: subgraphBoxes(g, subs, { labels: true }) }), "graph") };
     },
     space: (c) => {

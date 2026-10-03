@@ -3791,6 +3791,11 @@ function gaugeGrid(N = 8, seed = 0.6) {
   const chi = Q.range(N).map((i) => Q.range(N).map((j) => Math.sin((2 * PI * i) / N) * Math.cos((2 * PI * j) / N)));
   return { Ax, Ay, chi, N };
 }
+/* The potential shifted by the gauge function at the chosen (or animated) amplitude. */
+function gaugeShift(c) {
+  const g = gaugeGrid(), amp = c.s.auto ? 2 * Math.sin(c.t * 0.8) : c.s.s;
+  return { g, amp, T: QED.gaugeTransform(g.Ax, g.Ay, g.chi, amp) };
+}
 scene({
   id: "potential", track: "qft", title: "Potential versus field strength", sections: [7],
   summary: "Two layers: the potential A<sub>μ</sub> and the physical field F<sub>μν</sub>. Perform A ↦ A + ∂χ: the arrows of A move, the plaquettes of F do not change at all.",
@@ -3805,8 +3810,7 @@ scene({
       return { title: "GAUGE FUNCTION χ(x)", sub: "on the lattice", body: svg(220, 220, heatmap(g.chi, { size: 26, x: 6, y: 6, cls: "ck", name: "χ" }), "gauge function") };
     },
     field: (c) => {
-      const g = gaugeGrid(), amp = c.s.auto ? 2 * Math.sin(c.t * 0.8) : c.s.s;
-      const T = QED.gaugeTransform(g.Ax, g.Ay, g.chi, amp);
+      const { g, amp, T } = gaugeShift(c);
       let s = "";
       const sc = 44;
       for (let i = 0; i < g.N; i++) for (let j = 0; j < g.N; j++) {
@@ -3816,15 +3820,13 @@ scene({
       return { title: "POTENTIAL A", sub: `χ amplitude ${amp.toFixed(2)}`, body: svg(370, 370, s, "potential arrows"), foot: "Link arrows: A_x (blue), A_y (violet). They change with χ." };
     },
     diagram: (c) => {
-      const g = gaugeGrid(), amp = c.s.auto ? 2 * Math.sin(c.t * 0.8) : c.s.s;
-      const T = QED.gaugeTransform(g.Ax, g.Ay, g.chi, amp);
+      const { g, amp, T } = gaugeShift(c);
       const F = QED.latticeCurl(T.Ax, T.Ay);
       const s = heatmap(F.map((r) => r.map((v) => v)), { size: 26, x: 6, y: 6, cls: "qft", name: "F_xy" });
       return { title: "FIELD STRENGTH F", sub: "plaquettes", body: svg(220, 220, s, "field strength"), foot: "F_xy = ∂_xA_y − ∂_yA_x on each plaquette: identical for every χ." };
     },
     algebra: (c) => {
-      const g = gaugeGrid(), amp = c.s.auto ? 2 * Math.sin(c.t * 0.8) : c.s.s;
-      const T = QED.gaugeTransform(g.Ax, g.Ay, g.chi, amp);
+      const { g, amp, T } = gaugeShift(c);
       const F0 = QED.latticeCurl(g.Ax, g.Ay).flat(), F1 = QED.latticeCurl(T.Ax, T.Ay).flat();
       const dA = Math.max(...g.Ax.flat().map((a, k) => Math.abs(a - T.Ax.flat()[k])));
       const dF = Math.max(...F0.map((f, k) => Math.abs(f - F1[k])));
@@ -3835,6 +3837,12 @@ scene({
 });
 
 /* ---------- §8 local U(1) gauge symmetry ---------- */
+/* A fixed phase pattern θ₀ for ψ and its gauge-rotated copy θ at the chosen strength. */
+function phaseFrame(c) {
+  const N = 8, g = gaugeGrid(N);
+  const th0 = Q.range(N).map((i) => Q.range(N).map((j) => 0.4 * i + 0.25 * j));
+  return { N, g, th0, th: QED.transformPhase(th0, g.chi, 1.5, c.s.chi) };
+}
 scene({
   id: "gauge", track: "qft", title: "Local U(1) gauge symmetry", sections: [8],
   summary: "Rotate the phase of ψ(x) by e<sup>−ieχ(x)</sup> at every point and shift A by ∂χ. Neighbouring phases compared naively change; compared through the connection, they do not.",
@@ -3843,17 +3851,13 @@ scene({
   controls: (c) => slider("chi", "transformation strength", 0, 1, 0.01, c.s.chi, (v) => v.toFixed(2)),
   panels: {
     field: (c) => {
-      const N = 8, g = gaugeGrid(N);
-      const th0 = Q.range(N).map((i) => Q.range(N).map((j) => 0.4 * i + 0.25 * j));
-      const th = QED.transformPhase(th0, g.chi, 1.5, c.s.chi);
+      const { N, th } = phaseFrame(c);
       let s = "";
       for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) { const x = 26 + i * 44, y = 26 + j * 44; s += circ(x, y, 14, "", 'fill="none" stroke="var(--rule)"') + arrow(x, y, x + 13 * Math.cos(th[i][j]), y - 13 * Math.sin(th[i][j]), "ck", "", 4); }
       return { title: "PHASE OF ψ(x)", sub: "small arrows on circles", body: svg(370, 370, s, "phases"), foot: `ψ(x) ↦ e^{−ieχ(x)}ψ(x) at strength ${c.s.chi.toFixed(2)}.` };
     },
     diagram: (c) => {
-      const N = 8, g = gaugeGrid(N);
-      const th0 = Q.range(N).map((i) => Q.range(N).map((j) => 0.4 * i + 0.25 * j));
-      const th = QED.transformPhase(th0, g.chi, 1.5, c.s.chi);
+      const { g, th0, th } = phaseFrame(c);
       const T = QED.gaugeTransform(g.Ax, g.Ay, g.chi, c.s.chi);
       const naive0 = QED.naiveComparison(th0).flat(), naive1 = QED.naiveComparison(th).flat();
       const cov0 = QED.linkComparison(th0, g.Ax, 1.5).flat(), cov1 = QED.linkComparison(th, T.Ax, 1.5).flat();
@@ -3959,6 +3963,8 @@ scene({
 
 /* ---------- §11 from classical to quantum field ---------- */
 const STRING_SHAPE = (x0) => (x) => (x < x0 ? x / x0 : (1 - x) / (1 - x0)) * 0.6;
+/* The first 12 Fourier coefficients of the string plucked at the chosen position. */
+const pluckModes = (c) => QED.stringModes(STRING_SHAPE(c.s.pluck), 12);
 scene({
   id: "modes", track: "qft", title: "From classical field to quantum field", sections: [11],
   summary: "A vibrating string, Fourier-expanded: each coefficient q<sub>k</sub> is an oscillator of frequency ω<sub>k</sub>. Quantize each one, q<sub>k</sub>, p<sub>k</sub> ⇝ a<sub>k</sub>, a<sub>k</sub><sup>†</sup>: the field becomes a quantum field.",
@@ -3968,7 +3974,7 @@ scene({
   controls: (c) => `${stepper("stage", ["FIELD", "INFINITELY MANY OSCILLATORS", "QUANTUM FIELD"], c.s.stage)} ${slider("pluck", "pluck position", 0.1, 0.9, 0.01, c.s.pluck, (v) => v.toFixed(2))}`,
   panels: {
     field: (c) => {
-      const q = QED.stringModes(STRING_SHAPE(c.s.pluck), 12);
+      const q = pluckModes(c);
       const y = (x, t) => q.reduce((s2, qk, i) => s2 + qk * Math.sin((i + 1) * PI * x) * Math.cos((i + 1) * PI * t * 0.5), 0);
       let s = ln(20, 90, 380, 90, "grid");
       s += path(pathD(Q.linspace(0, 1, 120).map((x) => [20 + 360 * x, 90 - 110 * y(x, c.t)])), "qft", 'fill="none" stroke-width="2.2"');
@@ -3976,7 +3982,7 @@ scene({
       return { title: "STRING", sub: "φ(x) = ∑ q_k sin(kπx)", body: svg(400, 200, s, "vibrating string"), foot: c.s.stage >= 1 ? "Below: the first four normal modes, each oscillating at its own frequency." : "" };
     },
     diagram: (c) => {
-      const q = QED.stringModes(STRING_SHAPE(c.s.pluck), 12);
+      const q = pluckModes(c);
       return { title: "FOURIER COEFFICIENTS", sub: "computed", body: barChart({ W: 400, H: 190, items: q.map((v, i) => ({ label: `${i + 1}`, value: Math.abs(v), cls: i < 4 ? ["ck", "ncg", "aqft", "qft"][i] : "qft", tip: `q_${i + 1} = ${fmt(v, 4)}` })), xlabel: "mode k", ylabel: "|q_k|" }) };
     },
     algebra: (c) => {
@@ -3991,7 +3997,7 @@ scene({
       return { title: "OSCILLATORS", sub: c.s.stage === 2 ? "quantized" : "classical", body: svg(400, 195, s, "oscillator ladders") };
     },
     space: (c) => {
-      const q = QED.stringModes(STRING_SHAPE(c.s.pluck), 12);
+      const q = pluckModes(c);
       let s = "";
       for (let i = 0; i < 40; i++) for (let j = 0; j < 20; j++) { const x = i / 39, t = j * 0.15 + c.t; const v = q.reduce((s2, qk, k) => s2 + qk * Math.sin((k + 1) * PI * x) * Math.cos((k + 1) * PI * t * 0.5), 0); s += rect(20 + i * 9, 180 - j * 8.5, 9, 8.5, v > 0 ? "fqft" : "fck", `fill-opacity="${Math.min(1, Math.abs(v) * 3).toFixed(2)}"`); }
       return { title: "SPACETIME HISTORY", sub: "displacement over (x, t)", body: svg(400, 195, s + txt(20, 14, "a classical field history: one configuration", "xs ink2"), "string history") };
@@ -4469,6 +4475,8 @@ scene({
 });
 
 /* ---------- §33–34 dimensional regularization, pole extractor, minimal subtraction ---------- */
+/* The Laurent series on show: QED vacuum polarization at the current μ, or the spec's 3/ε + 7 + 2ε. */
+const dimregSeries = (c) => (c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]));
 scene({
   id: "dimreg", track: "qft", title: "Dimensional regularization and the pole extractor", sections: [33, 34],
   summary: "In d = 4 − ε the divergent integral becomes a Laurent series a₋₁/ε + a₀ + a₁ε + …, drawn as vertical layers around ε = 0. The pole extractor separates POLE PART, FINITE PART and VANISHING PART; minimal subtraction removes the pole.",
@@ -4477,11 +4485,11 @@ scene({
   controls: (c) => `${seg("example", [["qed", "QED vacuum polarization"], ["spec", "I(ε) = 3/ε + 7 + 2ε"]], c.s.example)} ${toggle("split", "extract the pole", c.s.split)} ${slider("g.eps", "ε", 0, 0.5, 0.01, G.eps, (v) => v.toFixed(2))}`,
   panels: {
     field: (c) => {
-      const S = c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]);
+      const S = dimregSeries(c);
       return { title: "LAURENT LAYERS", sub: "around ε = 0", body: svg(400, 200, laurentLayers(S, { x: 10, y: 10, w: 380, h: 180, split: c.s.split }), "Laurent layers"), foot: `I(ε) = ${lseries(S)}` };
     },
     diagram: (c) => {
-      const S = c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]);
+      const S = dimregSeries(c);
       const es = Q.linspace(0.02, 0.5, 60);
       const ser = [{ pts: es.map((e) => [e, LS.evalAt(S, e)]), cls: "qft", label: "I(ε)" }];
       if (c.s.split) ser.push({ pts: es.map((e) => [e, LS.evalAt(LS.regular(S), e)]), cls: "ck", label: "I(ε) − pole (MS)" });
@@ -4489,14 +4497,14 @@ scene({
       return { title: "I(ε) AS ε → 0", sub: "the pole blows up", body: lineChart({ W: 400, H: 200, xr: [0, 0.5], yr: [Math.min(...ys), Math.max(...ys)], series: ser, vlines: [{ x: G.eps, label: `ε = ${G.eps.toFixed(2)}` }], xlabel: "ε", yfmt: (v) => fmt(v, 2) }) };
     },
     algebra: (c) => {
-      const S = c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]);
+      const S = dimregSeries(c);
       const P = LS.pole(S), R = LS.regular(S);
       return { title: "POLE EXTRACTOR", sub: "T and 1 − T", body: table(["part", "terms", "fate"], [[`<span data-link="laurent-pole">POLE PART</span>`, esc(LS.toText(P)), "removed by the counterterm (MS)"], [`<span data-link="laurent-finite">FINITE PART</span>`, fmt(LS.coef(S, 0), 6), "the renormalized value at ε = 0"], [`<span data-link="laurent-vanish">VANISHING PART</span>`, esc(LS.toText(LS.make(1, R.c.slice(1), R.hi))), "→ 0 as ε → 0"]]) + `<p class="small">Minimal subtraction: counterterm = −T[I]; renormalized = (1 − T)[I] evaluated at ε = 0. In Connes–Kreimer language T is the projection onto the pole part and these are the Birkhoff factors of a primitive graph.</p>` };
     },
     space: (c) => ({ title: "DIMENSION AS A DIAL", sub: `d = ${(4 - G.eps).toFixed(2)}`, body: `<p class="small">${tex("\\int\\frac{d^dk}{(2\\pi)^d}\\frac{1}{(k^2+\\Delta)^2} = \\frac{\\Gamma(2-d/2)}{(4\\pi)^{d/2}}\\Delta^{d/2-2}")}: finite for every d &lt; 4. Γ(ε/2) = 2/ε − γ + … carries the divergence as a pole.</p>${kv([["Γ(ε/2) at this ε", G.eps > 0 ? fmt(Q.gamma(G.eps / 2), 6) : "pole"], ["series 2/ε − γ + …", G.eps > 0 ? fmt(LS.evalAt(LS.gammaHalfEps(3), G.eps), 6) : "pole"]])}` }),
   },
   notes: () => `<p>${formula("I(\\varepsilon) = \\frac{a_{-1}}{\\varepsilon} + a_0 + a_1\\varepsilon + \\cdots")} For the QED vacuum polarization every coefficient is computed by expanding ${tex("\\Gamma(\\varepsilon/2)(4\\pi\\mu^2/\\Delta)^{\\varepsilon/2}")} and integrating over the Feynman parameter. With the specification's example ${tex("3/\\varepsilon + 7 + 2\\varepsilon")} the pole part is 3/ε, the finite part 7, and 2ε vanishes.</p>`,
-  md: (c) => { const S = c.s.example === "qed" ? ENG.vacuumPolarization({ mu: muNow(), hi: 2 }).series : LS.exact(-1, [3, 7, 2]); return { sections: [{ heading: "Laurent series", body: `\\[ I(\\varepsilon) = ${LS.toTeX(S)} \\]` }, { heading: "Pole extraction", body: `- POLE PART: ${LS.toText(LS.pole(S))}\n- FINITE PART: ${fmt(LS.coef(S, 0), 8)}\n- VANISHING PART: the remaining positive powers` }] }; },
+  md: (c) => { const S = dimregSeries(c); return { sections: [{ heading: "Laurent series", body: `\\[ I(\\varepsilon) = ${LS.toTeX(S)} \\]` }, { heading: "Pole extraction", body: `- POLE PART: ${LS.toText(LS.pole(S))}\n- FINITE PART: ${fmt(LS.coef(S, 0), 8)}\n- VANISHING PART: the remaining positive powers` }] }; },
 });
 
 /* ---------- §102 Feynman parameters ---------- */
@@ -4800,6 +4808,8 @@ scene({
 const CK_GRAPHS = ["sigma2_rainbow", "sigma2_crossed", "sigma2_vp", "pi2_se", "pi2_crossed", "lambda2_ladder", "sigma3_rainbow", "sigma3_double"];
 const TOY_NOTE = "Toy Feynman rules (the Connes–Kreimer iterated-integral model): the combinatorics is the graph's, the Laurent coefficients are the model's, not QED's.";
 const graphSelect = (key, value, ids = CK_GRAPHS) => `<label class="ctl">graph <select data-bind="s.${key}">${ids.map((id) => `<option value="${id}"${id === value ? " selected" : ""}>${esc(GR.byId(id).name)}</option>`).join("")}</select></label>`;
+/* The chosen catalogue graph and its divergent proper 1PI subgraphs. */
+const graphWithSubs = (c) => { const g = GR.byId(c.s.graph); return { g, subs: GR.divergentSubgraphs(g) }; };
 /* Boxes for every divergent subgraph, nested ones drawn larger. */
 function subgraphBoxes(g, subs, opts = {}) {
   return subs.map((s, i) => {
@@ -4951,11 +4961,11 @@ scene({
   actions: { pick: (c, arg) => { c.s.sel = c.s.sel === Number(arg) ? -1 : Number(arg); } },
   panels: {
     diagram: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g);
+      const { g, subs } = graphWithSubs(c);
       return { title: "DIVERGENT SUBGRAPHS", sub: `${subs.length} found`, body: svg(400, 240, feynman(g, [16, 16, 368, 210], { boxes: subgraphBoxes(g, subs, { labels: true, sel: c.s.sel, act: "pick" }) }), "subgraphs"), foot: subs.map((s, i) => `<span data-link="sub${i}">γ${i + 1}: ${esc(s.residue.name)} (L = ${s.L}, ω = ${s.omega})</span>`).join(" · ") || "no subdivergences" };
     },
     field: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g), tree = GR.containmentTree(g, subs);
+      const { g, subs } = graphWithSubs(c), tree = GR.containmentTree(g, subs);
       const root = tree.findIndex((n) => n.whole);
       const lines = [];
       const walk = (idx, prefix, last) => { const n = tree[idx]; lines.push(`${prefix}${idx === root ? "" : last ? "└── " : "├── "}${n.whole ? "Γ" : `γ${idx + 1}`}`); const ch = tree.filter((m) => m.parent === idx); ch.forEach((m, k) => walk(m.index, idx === root ? "" : prefix + (last ? "    " : "│   "), k === ch.length - 1)); };
@@ -5049,7 +5059,7 @@ scene({
   },
   panels: {
     diagram: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g);
+      const { g, subs } = graphWithSubs(c);
       const boxes = subs.map((s, i) => ({ vertices: s.vertices, edges: s.edges, depth: subs.filter((t) => t !== s && GR.relation(s, t) === "contains").length, cls: c.s.chosen.includes(i) ? "sel" : "", label: `γ${i + 1}`, act: "pick", arg: i, link: `sub${i}` }));
       return { title: "CANDIDATE SUBGRAPHS", sub: "click a box to toggle", body: svg(400, 240, feynman(g, [16, 16, 368, 210], { boxes }), "forest candidates"), foot: c.s.reject ? `<span class="fail">Rejected: γ${c.s.reject[0] + 1} and γ${c.s.reject[1] + 1} overlap.</span>` : `Chosen: {${c.s.chosen.map((i) => `γ${i + 1}`).join(", ") || "∅"}} — a legal forest.` };
     },
@@ -5058,7 +5068,7 @@ scene({
       return { title: "ALL FORESTS", sub: `${forests.length} legal`, body: table(["forest", "subtraction term"], forests.map((f) => { const names = f.map((s) => `γ${subgraphs.indexOf(s) + 1}`); return [`{${names.join(", ") || "∅"}}`, f.length ? `${names.map((n) => `(−T<sub>${n}</sub>)`).join("")} φ(Γ)` : "φ(Γ)"]; })) + `<p class="small">Zimmermann: R(Γ) = (1 − T_Γ) ∑_F ∏_{γ∈F}(−T_γ) φ(Γ). In the Hopf algebra the same sum is the convolution γ₋ ⋆ φ.</p>` };
     },
     field: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g);
+      const { g, subs } = graphWithSubs(c);
       return { title: "RELATIONS", sub: "nested / disjoint / overlapping", body: table(["", ...subs.map((_, i) => `γ${i + 1}`)], subs.map((s, i) => [`γ${i + 1}`, ...subs.map((t, j) => (i === j ? "—" : GR.relation(s, t)))])) };
     },
     space: () => ({ title: "WHY OVERLAPS ARE EXCLUDED", body: `<p class="small">Two overlapping subdivergences share lines; contracting one destroys the other. A forest only ever contracts subgraphs that can be contracted in some order, from the inside out.</p>` }),
@@ -5152,7 +5162,7 @@ scene({
       return { title: "THE NUMBERS", sub: "toy Feynman rules", body: kv([["φ(Γ)", esc(LS.toText(b.phi, { sig: 4 }))], ["γ₋(Γ)", esc(LS.toText(b.minus, { sig: 4 }))], ["γ₊(Γ)", esc(LS.toText(LS.truncate(b.plus, 2), { sig: 4 }))], ["γ₊(Γ)(0)", fmt(b.renormalized, 10)], ["γ₋<sup>⋆−1</sup> ⋆ γ₊ − φ", Math.max(0, ...b.reconstruction.c.map(Math.abs)) < 1e-10 ? "0 (reconstructs φ)" : esc(LS.toText(b.reconstruction))]]) + `<p class="tiny muted">${TOY_NOTE}</p>` };
     },
     diagram: (c) => {
-      const g = GR.byId(c.s.graph), subs = GR.divergentSubgraphs(g);
+      const { g, subs } = graphWithSubs(c);
       return { title: "THE GRAPH", sub: esc(g.name), body: svg(400, 200, feynman(g, [16, 16, 368, 175], { boxes: subgraphBoxes(g, subs, { labels: true }) }), "graph") };
     },
     space: (c) => {
@@ -5625,6 +5635,11 @@ scene({
 });
 
 /* ---------- §76–77 commutant visualizer and factors ---------- */
+/* The algebra generated by the chosen Pauli strings (the identity alone when none is chosen). */
+function commutantAlgebra(c) {
+  const gens = c.s.gens.length ? c.s.gens : ["II"];
+  return { gens, a: AQ.analyseAlgebra(gens.map(AQ.pauliString), 4) };
+}
 scene({
   id: "commutant", track: "aqft", title: "Commutant visualizer and factors", sections: [76, 77],
   summary: "The 16 two-qubit Pauli operators as nodes, joined when they commute. Choose an algebra 𝓜 by its generators: the page computes 𝓜, its commutant 𝓜′ (everything commuting with it), 𝓜″ (closure back to 𝓜) and the centre Z(𝓜) = 𝓜 ∩ 𝓜′. Trivial centre: FACTOR.",
@@ -5635,8 +5650,7 @@ scene({
   actions: { gen: (c, arg) => { c.s.gens = c.s.gens.includes(arg) ? c.s.gens.filter((g) => g !== arg) : [...c.s.gens, arg]; c.s.preset = "custom"; } },
   panels: {
     field: (c) => {
-      const gens = c.s.gens.length ? c.s.gens : ["II"];
-      const a = AQ.analyseAlgebra(gens.map(AQ.pauliString), 4);
+      const { a } = commutantAlgebra(c);
       const set = { M: a.M, "M'": a.Mprime, "M''": a.Mbiprime, Z: a.centre }[c.s.show];
       const R = 95, cx = 200, cy = 115;
       const pos = PAULI2.map((p, i) => [cx + R * Math.cos((2 * PI * i) / 16 - PI / 2), cy + R * Math.sin((2 * PI * i) / 16 - PI / 2)]);
@@ -5649,13 +5663,11 @@ scene({
       return { title: "OPERATORS AS NODES", sub: `lines join commuting pairs; filled = in ${c.s.show}`, body: svg(400, 230, s, "Pauli commutation graph"), foot: "Click a node to add or remove it as a generator (orange ring)." };
     },
     algebra: (c) => {
-      const gens = c.s.gens.length ? c.s.gens : ["II"];
-      const a = AQ.analyseAlgebra(gens.map(AQ.pauliString), 4);
+      const { gens, a } = commutantAlgebra(c);
       return { title: "COMPUTED", sub: "on ℂ² ⊗ ℂ²", body: kv([["generators", gens.join(", ")], ["dim 𝓜", String(a.dimM)], ["dim 𝓜′", String(a.dimMprime)], ["dim 𝓜″", String(a.dimMbiprime)], ["𝓜″ = 𝓜", a.bicommutantEqual ? '<span class="pass">yes</span>' : '<span class="fail">no</span>'], ["dim Z(𝓜)", String(a.dimCentre)], ["factor", a.factor ? '<b class="pass">FACTOR: Z(𝓜) = ℂ1</b>' : '<span class="fail">not a factor</span>']]) };
     },
     diagram: (c) => {
-      const gens = c.s.gens.length ? c.s.gens : ["II"];
-      const a = AQ.analyseAlgebra(gens.map(AQ.pauliString), 4);
+      const { a } = commutantAlgebra(c);
       const W = 400, s = `<circle cx="160" cy="95" r="70" class="bgaqft" stroke="var(--aqft)"/><circle cx="240" cy="95" r="70" class="bgncg" stroke="var(--ncg)"/>` + txt(110, 95, `𝓜 (${a.dimM})`, "sm", 'text-anchor="middle"') + txt(290, 95, `𝓜′ (${a.dimMprime})`, "sm", 'text-anchor="middle"') + txt(200, 99, `Z (${a.dimCentre})`, "sm", 'text-anchor="middle" style="font-weight:650"') + txt(200, 184, a.factor ? "overlap = ℂ1 only: a factor" : "a larger overlap: not a factor", "xs ink2", 'text-anchor="middle"');
       return { title: "THE CENTRE AS THE OVERLAP", sub: "Z(𝓜) = 𝓜 ∩ 𝓜′", body: svg(W, 190, s, "centre") };
     },
