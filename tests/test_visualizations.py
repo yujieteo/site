@@ -13,7 +13,7 @@ SCRIPTS = ROOT / "scripts"
 VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
 sys.path.insert(0, str(SCRIPTS))
 
-import build  # noqa: E402
+import visual_sources  # noqa: E402
 
 
 class VisualizationTests(unittest.TestCase):
@@ -22,7 +22,7 @@ class VisualizationTests(unittest.TestCase):
             repository = Path(directory) / "visuals"
             repository.mkdir()
             with patch.dict(os.environ, {"VISUALS_REPO": str(repository)}):
-                self.assertEqual(build.resolve_visuals_repo(), repository.resolve())
+                self.assertEqual(visual_sources.resolve_visuals_repo(), repository.resolve())
 
     def test_generated_visualization_matches_pinned_sources(self):
         published = ROOT / "site" / "visuals" / "tourist-attractions"
@@ -62,7 +62,7 @@ class VisualizationTests(unittest.TestCase):
         self.assertEqual((ROOT / "site/llms.txt").read_text().count("[Visuals]("), 1)
 
     def test_visualizations_are_newest_first_with_same_day_ties_by_slug(self):
-        visualizations = build.load_visualizations()
+        visualizations = visual_sources.load_visualizations()
         order = [(visualization["fetched"], visualization["slug"]) for visualization in visualizations]
         self.assertEqual(
             order, sorted(order, key=lambda item: (-int(item[0].replace("-", "")), item[1]))
@@ -74,7 +74,7 @@ class VisualizationTests(unittest.TestCase):
         )
 
     def test_gallery_lists_visualizations_in_order_with_their_tags(self):
-        visualizations = build.load_visualizations()
+        visualizations = visual_sources.load_visualizations()
         for page, prefix in (("site/visuals.html", "visuals/"), ("site/visuals/index.html", "")):
             with self.subTest(page=page):
                 gallery = (ROOT / page).read_text()

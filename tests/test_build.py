@@ -16,7 +16,7 @@ REPO_IGNORE = shutil.ignore_patterns(".git", ".venv", "__pycache__")
 
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build import build_blog_post  # noqa: E402
+from pages import build_blog_post  # noqa: E402
 
 
 def digests(site):

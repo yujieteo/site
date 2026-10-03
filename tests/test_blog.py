@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build import load_blog_posts, reading_minutes  # noqa: E402
+from site_data import load_blog_posts, reading_minutes  # noqa: E402
 SLUG = "from-cech-cocycles-to-the-weil-conjectures"
 
 

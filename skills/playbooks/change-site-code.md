@@ -4,7 +4,7 @@ Use for edits to the build, schemas, templates, browser JavaScript, or tests, no
 
 | Area | Where |
 | --- | --- |
-| Static-site generator | `scripts/build.py` (imports `notes.py`, `published_corpus.py`, `paper_tags.py`) |
+| Static-site generator | `scripts/build.py` and its stage modules; [architecture](../../docs/architecture.md#data-flow) lists which module owns each stage |
 | YAML/schema checks | `scripts/validate.py`, `schema/*.schema.json` |
 | Notes parsing and search | `scripts/notes.py`, `data/note-tags.json` |
 | Podcast planner and TTS | `scripts/podcast.py`, `scripts/kokoro_tts.py` (needs `requirements-podcast.txt`) |

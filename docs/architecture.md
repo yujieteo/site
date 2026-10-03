@@ -17,6 +17,15 @@ rest are read from the separate `visuals` repository at the commit pinned in
 that each add or republish a different visualization do not conflict); the
 visuals checkout's own `HEAD` does not affect the build.
 
+`scripts/build.py` runs the build in stages, each in its own module:
+`site_data.py` loads and checks the sources in `data/`, `visual_sources.py`
+finds each visualization's files and pinned downloads, `published_corpus.py`
+projects everything into the Published Corpus, and `pages.py` and
+`notes_pages.py` render the pages from the shared pieces in `site_html.py`
+(page shell, escaping, Related links), `filter_lists.py` (list filters and tag
+facets) and `copy_markdown.py` (Copy Markdown sources). `build.py` itself
+writes `site/`.
+
 Notes are the one shared source that can still conflict. The captain chose to
 keep every note in the single file `data/notes.md`, so notes changes land one
 at a time: two pull requests that each edit the top of `data/notes.md` (a new
@@ -99,7 +108,7 @@ any note something resolves, newest first, each marked Open or Resolved.
 
 Each `data/blog/<slug>.md` becomes `site/blog/<slug>.html` (post list, article,
 table of contents) plus a copy of its Markdown source. The build estimates a
-reading time with `reading_minutes()` in `scripts/build.py`: frontmatter,
+reading time with `reading_minutes()` in `scripts/site_data.py`: frontmatter,
 fenced code blocks, HTML tags and link targets are skipped, a word is any
 whitespace-separated token with a letter or digit, and the count is rounded to
 the nearest minute at 220 words per minute (minimum 1). It appears in the post

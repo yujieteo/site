@@ -16,7 +16,7 @@ const PYTHON = process.env.PYTHON || (existsSync(join(ROOT, ".venv/bin/python"))
 // The catalogue stub as the build reads it.
 const catalogue = JSON.parse(execFileSync(PYTHON, ["-c", [
   "import json, sys; sys.path.insert(0, 'scripts')",
-  "from build import load_visualizations",
+  "from visual_sources import load_visualizations",
   "print(json.dumps(next(v for v in load_visualizations() if v['slug'] == 'beamdswitch'), default=str))",
 ].join("\n")], { cwd: ROOT, encoding: "utf8" }));
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");

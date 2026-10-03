@@ -25,7 +25,9 @@ import sys
 import tempfile
 from pathlib import Path
 
-from build import OUT, ROOT, resolve_visuals_repo
+from build import OUT
+from site_data import ROOT
+from visual_sources import resolve_visuals_repo
 
 
 def git(*args, cwd=ROOT):
