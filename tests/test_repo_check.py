@@ -99,33 +99,35 @@ class SourceGrepTests(unittest.TestCase):
         """), ["x.test.mjs: pages ship the template", "x.test.mjs: labels"])
 
     def check(self, allowlist):
-        """(passed, printed rows) of the source-grep check of this repository's tests with ``allowlist``."""
+        """(passed, printed rows) of the source-grep check of a repository with one source-grep test."""
         with tempfile.TemporaryDirectory() as directory:
-            path = Path(directory) / "allow.txt"
-            path.write_text(allowlist, encoding="utf-8")
+            root = Path(directory)
+            (root / "tests").mkdir()
+            (root / "tests" / "test_x.py").write_text(textwrap.dedent("""
+                class Tests(unittest.TestCase):
+                    def test_fade(self):
+                        script = (ROOT / "static/js/fade.js").read_text()
+                        self.assertIn("fade", script)
+            """), encoding="utf-8")
+            (root / repo_check.ALLOWLIST).write_text(allowlist, encoding="utf-8")
             output = io.StringIO()
             with contextlib.redirect_stdout(output):
-                passed = repo_check.check_source_greps(path)
+                passed = repo_check.check_source_greps(root)
         return passed, output.getvalue().splitlines()
 
-    def test_the_allowlist_passes_with_a_reason_for_every_case(self):
-        passed, rows = self.check(repo_check.ALLOWLIST.read_text(encoding="utf-8"))
-        self.assertTrue(passed, rows)
+    def test_an_allowlisted_case_with_a_reason_passes(self):
+        self.assertEqual(self.check("# comment\ntest_x.Tests.test_fade  # needs a browser\n"),
+                         (True, ["A,source-grep,PASS,1 test files; 1 allow-listed source-grep tests"]))
 
     def test_an_allowlist_entry_without_a_reason_fails(self):
-        entries = repo_check.allowlisted()
-        first = next(iter(entries))
-        passed, rows = self.check("# comment\n" + "".join(
-            f"{test}\n" if test == first else f"{test}  # {reason}\n" for test, reason in entries.items()))
-        self.assertFalse(passed)
-        failures = [row for row in rows if ",FAIL," in row]
-        self.assertEqual(len(failures), 1, rows)
-        self.assertTrue(failures[0].endswith(f"allow.txt: {first} gives no reason"), failures[0])
+        self.assertEqual(self.check("test_x.Tests.test_fade\n"), (False, [
+            "A,source-grep,FAIL,tests/source-grep-allowlist.txt: test_x.Tests.test_fade gives no reason"]))
 
     def test_a_case_missing_from_the_allowlist_is_reported_without_failing(self):
-        passed, rows = self.check("")
-        self.assertTrue(passed)
-        self.assertEqual(len([row for row in rows if ",PASS,report only: " in row]), len(repo_check.allowlisted()))
+        self.assertEqual(self.check(""), (True, [
+            "A,source-grep,PASS,report only: tests/test_x.py:3: test_x.Tests.test_fade asserts on the text of a"
+            " code file; run the code instead",
+            "A,source-grep,PASS,1 test files; 0 allow-listed source-grep tests"]))
 
 
 class TierTests(unittest.TestCase):

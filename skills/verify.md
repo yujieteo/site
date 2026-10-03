@@ -55,7 +55,9 @@ a browser.
 `tests/test_theme_contrast.py` checks text at 4.5:1 and the focus ring at 3:1 in both
 themes. It does not check `--border` against WCAG 1.4.11 (3:1). This is a known deviation:
 the border is about 1.5:1 in the light theme and 1.9:1 in the dark theme. A border change
-is a design follow-up for the captain. The build recreates `site/` from the
+is a design follow-up for the captain.
+
+The build recreates `site/` from the
 sources; `site/` is ignored by Git, so `git status` shows only source changes.
 Review the generated changes with
 `.venv/bin/python scripts/site_diff.py <base> --visuals-base <visuals-base>`, where

@@ -26,14 +26,13 @@ Usage: scripts/repo_check.py [artifacts] [source-grep] [tier] [--base REF]
 
 import argparse
 import ast
-import os
 import re
 import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
-ALLOWLIST = ROOT / "tests" / "source-grep-allowlist.txt"
+ALLOWLIST = "tests/source-grep-allowlist.txt"
 
 # Folders and files that a build, an editor or the OS leaves behind and that Git must never track.
 ARTIFACT_NAMES = {"__pycache__", ".DS_Store", "Thumbs.db"}
@@ -166,30 +165,29 @@ def code_path(path):
     return bool(SOURCE_PATH.search(path)) and not GENERATED.search(path)
 
 
-def source_greps(paths):
+def source_greps(paths, root=ROOT):
     found = []
     for path in paths:
         text = path.read_text(encoding="utf-8")
-        relative = path.relative_to(ROOT).as_posix()
+        relative = path.relative_to(root).as_posix()
         scan = python_source_greps if path.suffix == ".py" else js_source_greps
         found += [(test, f"{relative}:{line}") for test, line in scan(text, relative)]
     return found
 
 
-def allowlisted(path=ALLOWLIST):
+def allowlisted(path):
     """The test ids in the allow-list with their reasons: one per line, `<test id>  # <reason>`."""
     lines = path.read_text(encoding="utf-8").splitlines() if path.exists() else []
     entries = [[part.strip() for part in line.split("#", 1)] + [""] for line in lines]
     return {entry[0]: entry[1] for entry in entries if entry[0]}
 
 
-def check_source_greps(allowlist=ALLOWLIST):
-    tests = sorted([*ROOT.glob("tests/test_*.py"), *ROOT.glob("tests/*.test.mjs"), *ROOT.glob("tests/*.test.cjs")])
-    found = source_greps(tests)
-    allowed = allowlisted(allowlist)
-    listed = Path(os.path.relpath(allowlist, ROOT)).as_posix()
-    failures = [(listed, f"{test} gives no reason") for test, reason in allowed.items() if not reason]
-    failures += [(listed, f"{test} no longer matches; remove it")
+def check_source_greps(root=ROOT):
+    tests = sorted([*root.glob("tests/test_*.py"), *root.glob("tests/*.test.mjs"), *root.glob("tests/*.test.cjs")])
+    found = source_greps(tests, root)
+    allowed = allowlisted(root / ALLOWLIST)
+    failures = [(ALLOWLIST, f"{test} gives no reason") for test, reason in allowed.items() if not reason]
+    failures += [(ALLOWLIST, f"{test} no longer matches; remove it")
                  for test in sorted(allowed.keys() - {test for test, _ in found})]
     new = [(where, test) for test, where in found if test not in allowed]
     for where, test in new:
