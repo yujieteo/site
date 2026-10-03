@@ -10,7 +10,8 @@ or reads a saved copy with --from) and applies one rule:
   it has none. The file's own convention decides the type, never a guess.
 
 Every other diagnostic needs a person to choose the type, so the script lists it and changes
-nothing. A parameter that already has an @param is skipped, so a second run changes nothing. With
+nothing. A parameter that already has an @param is not edited again but listed, since tsc still
+reports it (for example an arrow function inside the line's expression); a second run changes nothing. With
 --check it writes nothing and lists the edits it would make.
 
 Usage: scripts/jsdoc_types.py [--from TSC_OUTPUT] [--check]
@@ -58,12 +59,12 @@ def jsdoc_above(lines, index):
 
 
 def add_params(lines, index, params):
-    """Add @param tags for params, [(name, type)], to the JSDoc of the function on lines[index]."""
+    """Add @param tags for params, [(name, type)], to the JSDoc of the function on lines[index]; return those added."""
     block = jsdoc_above(lines, index)
     text = "\n".join(lines[block[0]:block[1] + 1]) if block else ""
     params = [(name, type_name) for name, type_name in params if not re.search(rf"@param\s+\{{[^}}]*\}}\s+\[?{re.escape(name)}\b", text)]
     if not params:
-        return False
+        return params
     tags = [f"@param {{{type_name}}} {name}" for name, type_name in params]
     indent = re.match(r"\s*", lines[index])[0]
     if not block:
@@ -76,7 +77,7 @@ def add_params(lines, index, params):
         star = re.match(r"\s*", lines[block[1]])[0]
         for offset, tag in enumerate(tags):
             lines.insert(block[1] + offset, f"{star}* {tag}")
-    return True
+    return params
 
 
 def plan(text, root=ROOT):
@@ -91,18 +92,21 @@ def plan(text, root=ROOT):
             text_of_file = path.read_text(encoding="utf-8")
             if FUNCTION_LINE.search(text_of_file.splitlines()[int(item["line"]) - 1]):
                 type_name = documented_types(text_of_file).get(named["name"])
+        label = f"{item['path']}({item['line']},{item['col']}): {item['code']} {item['message']}"
         if type_name:
-            fixable[path][int(item["line"])].append((named["name"], type_name))
+            fixable[path][int(item["line"])].append((named["name"], type_name, label))
         else:
-            left.append(f"{item['path']}({item['line']},{item['col']}): {item['code']} {item['message']}")
+            left.append(label)
     files, edits = {}, []
     for path, by_line in fixable.items():
         original = path.read_text(encoding="utf-8")
         lines = original.splitlines()
         for line in sorted(by_line, reverse=True):
-            if add_params(lines, line - 1, by_line[line]):
-                names = ", ".join(f"{name}: {type_name}" for name, type_name in by_line[line])
+            added = add_params(lines, line - 1, [(name, type_name) for name, type_name, _ in by_line[line]])
+            if added:
+                names = ", ".join(f"{name}: {type_name}" for name, type_name in added)
                 edits.append(f"{path.relative_to(root)}:{line}: @param {names}")
+            left += [label for name, _, label in by_line[line] if name not in dict(added)]
         updated = "\n".join(lines) + ("\n" if original.endswith("\n") else "")
         if updated != original:
             files[path] = updated

@@ -76,7 +76,10 @@ class RenameTagTests(TempRepo):
         self.write("data/blog/a.md", '---\ntitle: "Stats"\ntags: "fpl, stats,  slides"\n---\nThe stats body stays.\n')
         self.write("data/blog/b.md", "---\ntitle: B\ntags: [stats, other]\n---\n")
         self.write("data/podcasts/p.yaml", "id: p\nfocus_tags:\n- stats\n- fpl\nsummary: stats stay\n")
-        self.write("data/resources/r.yaml", "- title: stats\n  tags: [stats]\n")
+        self.write("data/resources/r.yaml", "- title: stats\n  tags: [stats]\n- title: S\n  category: stats\n")
+        self.write("data/tag-facets.yaml", "# Facets.\nfacets:\n  - id: subject\n    tags: [maths, stats,\n           fpl]\n"
+                                           "  - id: region\n    tags: [global]\n")
+        self.write("scripts/vocab.py", 'TAGS = ("stats", "statistics-old")\n')
 
     def test_renames_the_tag_in_every_structure_and_nowhere_else(self):
         code, out, err = self.run_in(rename.main, "tag", "stats", "statistics")
@@ -88,8 +91,12 @@ class RenameTagTests(TempRepo):
         self.assertEqual(self.read("data/blog/a.md"), '---\ntitle: "Stats"\ntags: "fpl, statistics,  slides"\n---\nThe stats body stays.\n')
         self.assertEqual(self.read("data/blog/b.md"), "---\ntitle: B\ntags: [statistics, other]\n---\n")
         self.assertEqual(self.read("data/podcasts/p.yaml"), "id: p\nfocus_tags:\n- statistics\n- fpl\nsummary: stats stay\n")
-        self.assertEqual(self.read("data/resources/r.yaml"), "- title: stats\n  tags: [statistics]\n")
-        self.assertEqual(self.run_in(rename.main, "tag", "stats", "statistics")[1], "no source names stats; nothing to do\n")
+        self.assertEqual(self.read("data/resources/r.yaml"), "- title: stats\n  tags: [statistics]\n- title: S\n  category: stats\n")
+        self.assertEqual(self.read("data/tag-facets.yaml"), "# Facets.\nfacets:\n  - id: subject\n    tags: [maths, statistics,\n"
+                                                            "           fpl]\n  - id: region\n    tags: [global]\n")
+        self.assertIn("review by hand: data/resources/r.yaml:4 mentions stats", out)
+        self.assertIn("review by hand: scripts/vocab.py:1 mentions stats", out)
+        self.assertTrue(self.run_in(rename.main, "tag", "stats", "statistics")[1].startswith("no source names stats; nothing to do\n"))
 
     def test_check_writes_nothing_and_a_taken_name_is_refused(self):
         before = self.read("data/notes.md")
@@ -100,6 +107,7 @@ class RenameTagTests(TempRepo):
         self.assertIn("already has tag or alias 'statistic'", self.run_in(rename.main, "tag", "stats", "statistic")[2])
         self.assertIn("already has tag or alias 'fpl'", self.run_in(rename.main, "tag", "stats", "fpl")[2])
         self.assertIn("must be lowercase", self.run_in(rename.main, "tag", "stats", "Bad Tag")[2])
+        self.assertIn("data/tag-facets.yaml already has tag 'global'", self.run_in(rename.main, "tag", "stats", "global")[2])
 
 
 class RenameFieldAndTokenTests(TempRepo):
@@ -113,18 +121,18 @@ class RenameFieldAndTokenTests(TempRepo):
         self.write("data/blog/b.md", "---\ncategory: A\nkind: B\n---\n")
         self.assertIn("already has field 'kind'", self.run_in(rename.main, "field", "category", "kind")[2])
 
-    def test_renames_a_css_token_but_not_comments_strings_or_longer_names(self):
+    def test_renames_a_css_token_but_not_comments_strings_class_names_or_longer_names(self):
         self.write("static/css/style.css", '/* --fade-ease here */\n:root { --fade-ease: ease; --fade-ease-out: x; }\n'
-                                           'a { transition: opacity var(--fade-ease); content: "--fade-ease"; }\n')
+                                           '.btn--fade-ease { transition: opacity var(--fade-ease); content: "--fade-ease"; }\n')
         self.write("templates/base.html", '<style>p { color: var(--fade-ease) }</style><p style="x: var(--fade-ease)">--fade-ease</p>')
-        self.write("static/js/fade.js", 'get("--fade-ease"); get("--fade-ease-out"); // --fade-ease\n')
+        self.write("static/js/fade.js", 'get("--fade-ease"); get("--fade-ease-out"); // get("--fade-ease")\n')
         self.write("tests/test_x.py", 'TOKEN = "--fade-ease"\n')
         code, out, _ = self.run_in(rename.main, "css-token", "fade-ease", "fade-curve")
         self.assertEqual(code, 0)
         self.assertEqual(self.read("static/css/style.css"), '/* --fade-ease here */\n:root { --fade-curve: ease; --fade-ease-out: x; }\n'
-                                                            'a { transition: opacity var(--fade-curve); content: "--fade-ease"; }\n')
+                                                            '.btn--fade-ease { transition: opacity var(--fade-curve); content: "--fade-ease"; }\n')
         self.assertEqual(self.read("templates/base.html"), '<style>p { color: var(--fade-curve) }</style><p style="x: var(--fade-curve)">--fade-ease</p>')
-        self.assertEqual(self.read("static/js/fade.js"), 'get("--fade-curve"); get("--fade-ease-out"); // --fade-ease\n')
+        self.assertEqual(self.read("static/js/fade.js"), 'get("--fade-curve"); get("--fade-ease-out"); // get("--fade-ease")\n')
         self.assertIn("review by hand: tests/test_x.py:1", out)
         self.assertNotIn("static/css/style.css:", out)
         self.assertEqual(self.run_in(rename.main, "css-token", "fade-ease", "fade-curve")[0], 0)
@@ -192,6 +200,16 @@ class JsdocTypesTests(TempRepo):
         self.write("tsc.txt", tsc.replace("(9,", "(10,").replace("(4,", "(5,"))
         self.run_in(jsdoc_types.main, "--from", str(self.root / "tsc.txt"))
         self.assertEqual(self.read("static/js/a.js"), before)
+
+    def test_lists_a_gap_that_the_added_jsdoc_does_not_close(self):
+        self.write("static/js/r.js", "/** @param {number} sum */\nfunction f(sum) { return sum; }\n"
+                                     "const total = [1].reduce((sum, row) => sum + row, 0);\n")
+        self.write("tsc.txt", "static/js/r.js(3,27): error TS7006: Parameter 'sum' implicitly has an 'any' type.\n")
+        self.assertIn("added static/js/r.js:3: @param sum: number", self.run_in(jsdoc_types.main, "--from", str(self.root / "tsc.txt"))[1])
+        self.write("tsc.txt", "static/js/r.js(4,27): error TS7006: Parameter 'sum' implicitly has an 'any' type.\n")
+        code, out, _ = self.run_in(jsdoc_types.main, "--from", str(self.root / "tsc.txt"))
+        self.assertEqual((code, out), (0, "not changed, choose the type by hand: static/js/r.js(4,27): TS7006 "
+                                          "Parameter 'sum' implicitly has an 'any' type.\n"))
 
 
 class SourceGrepRewriteTests(TempRepo):

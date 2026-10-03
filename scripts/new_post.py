@@ -4,14 +4,14 @@
 The front matter holds title, date, summary, category, tags and slug, as schema/blog.schema.json
 requires. Each tag must already be known: used by another blog post, or a canonical tag or alias in
 data/note-tags.json (an alias becomes its canonical tag). A tag for a genuinely new topic is a
-judgment, so it needs --new-tag. The post body is left for the author.
+judgment: add it to data/note-tags.json by hand first. The post body is left for the author.
 
 The script refuses an invalid slug or date, an unknown tag, and an existing post with other front
 matter. Run again with the same arguments, it changes nothing. With --check it writes nothing and
 prints the file it would write.
 
 Usage: scripts/new_post.py SLUG --title T --summary S --category C --tag TAG [--tag TAG ...]
-       [--date YYYY-MM-DD] [--new-tag TAG] [--check]
+       [--date YYYY-MM-DD] [--check]
 """
 
 import argparse
@@ -48,7 +48,7 @@ def blog_tags(blog_dir):
     return known
 
 
-def resolve_tags(tags, new_tags, root):
+def resolve_tags(tags, root):
     """The post's tags, aliases replaced by their canonical tag, in order and without repeats."""
     registry = load_registry(root / "data" / "note-tags.json")
     known = blog_tags(root / "data" / "blog") | set(registry["tags"])
@@ -60,12 +60,9 @@ def resolve_tags(tags, new_tags, root):
         definition = registry["tags"].get(tag)
         if definition and definition["replaced_by"]:
             tag = definition["replaced_by"]
-        if tag not in known and tag not in new_tags:
-            raise PostError(f"unknown tag {tag!r}; reuse a known tag, or pass --new-tag {tag} for a new topic")
+        if tag not in known:
+            raise PostError(f"unknown tag {tag!r}; reuse a known tag, or add a new topic to data/note-tags.json first")
         resolved.append(tag)
-    unused = sorted(set(new_tags) - set(resolved))
-    if unused:
-        raise PostError(f"--new-tag {', '.join(unused)} is not among the --tag values")
     return list(dict.fromkeys(resolved))
 
 
@@ -98,7 +95,7 @@ def scaffold(args, root=ROOT):
             raise PostError(f"--{field} must not be empty")
     if not args.tag:
         raise PostError("give at least one --tag")
-    tags = resolve_tags(args.tag, args.new_tag, root)
+    tags = resolve_tags(args.tag, root)
     text = render(args.slug, args.title.strip(), args.date, args.summary.strip(), args.category.strip(), tags)
     path = root / "data" / "blog" / f"{args.slug}.md"
     if path.exists():
@@ -118,7 +115,6 @@ def parser():
     result.add_argument("--summary", required=True, help="one or two sentences for the blog index")
     result.add_argument("--category", required=True)
     result.add_argument("--tag", action="append", default=[], help="a known tag; repeat for each tag")
-    result.add_argument("--new-tag", action="append", default=[], help="allow this --tag value as a new topic")
     result.add_argument("--date", default=date.today().isoformat(), help="YYYY-MM-DD (default today)")
     result.add_argument("--check", action="store_true", help="write nothing; print the file it would write")
     result.add_argument("--root", type=Path, default=ROOT, help=argparse.SUPPRESS)

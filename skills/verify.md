@@ -59,7 +59,7 @@ npm ci && npm run typecheck                               # JSDoc types and unus
 .venv/bin/python scripts/run_tests.py --base origin/main  # Python and Node tests, timed against tests/time-budget.json
 ```
 
-`.venv/bin/python scripts/stage_a.py --base origin/main` runs the same commands in this order and prints one row each, stopping at the first failure with the rest `NOT RUN`; pass `--no-npm-ci` when `node_modules` is already installed. Every command above must exit successfully; on `main`, omit `--base` to run every
+Every command above must exit successfully; on `main`, omit `--base` to run every
 per-visualization check (see the [README](../README.md#test)). `scripts/repo_check.py`
 prints its rows in the `stage,check,status,evidence` form above. For now the source-grep
 check only reports a test that asserts on the text of a code file (a `PASS` row that starts

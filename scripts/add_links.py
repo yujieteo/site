@@ -39,6 +39,7 @@ KINDS = {
     "paper": ("paper-links", "paper-links.yaml"),
     "resource": ("resources", "resources.yaml"),
 }
+REFRESH = (["scripts/paper_tags.py", "--write"], ["scripts/papers.py", "export"])
 
 
 class LinkError(ValueError):
@@ -116,8 +117,16 @@ def append(target, records):
 
 
 def refresh(root):
-    for command in (["scripts/paper_tags.py", "--write"], ["scripts/papers.py", "export"]):
-        subprocess.run([sys.executable, *command], cwd=root, check=True)
+    """Refresh the paper tags and export; on a failure or an interrupt, print the commands to run by hand."""
+    try:
+        for command in REFRESH:
+            subprocess.run([sys.executable, *command], cwd=root, check=True)
+    except (subprocess.CalledProcessError, KeyboardInterrupt):
+        print("[FAIL] the records are appended, but the refresh did not finish; a second run refuses them as"
+              " duplicates, so run these by hand:", *(f"  .venv/bin/python {' '.join(command)}" for command in REFRESH),
+              sep="\n", file=sys.stderr)
+        return False
+    return True
 
 
 def parser():
@@ -157,8 +166,8 @@ def main(argv=None):
         return 0
     append(target, records)
     print(f"appended {len(records)} records to {target.relative_to(root.resolve())}")
-    if args.kind == "paper" and not args.no_refresh:
-        refresh(root)
+    if args.kind == "paper" and not args.no_refresh and not refresh(root):
+        return 1
     return 0
 
 

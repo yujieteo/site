@@ -3,13 +3,16 @@
 
 Each rename edits parsed structure, never raw text: YAML through the node positions PyYAML's composer
 reports, notes through scripts/notes.py's trailing-tag syntax, JSON through a parse and an identical
-re-dump, and CSS through a small tokenizer that skips comments and strings. Formatting outside the
-renamed token stays byte for byte.
+re-dump, and CSS and JavaScript through the syntax trees of ast-grep (the ast-grep-py package, pinned
+in requirements.txt), so comments, strings and class names such as .btn--primary stay. Formatting
+outside the renamed token stays byte for byte.
 
   tag OLD NEW        data/note-tags.json (the key and every replaced_by), the trailing tags in
-                     data/notes.md, blog front-matter tags, media focus_tags, and the tags of
-                     data/visuals/*.yaml and data/resources/*.yaml. Paper-link tags are left alone:
-                     scripts/paper_tags.py infers them.
+                     data/notes.md, blog front-matter tags, media focus_tags, the tags of
+                     data/visuals/*.yaml and data/resources/*.yaml, and the facet tags of
+                     data/tag-facets.yaml. Paper-link tags are left alone: scripts/paper_tags.py
+                     infers them. A resource with no tags, whose category is its tag, and a quoted
+                     OLD in scripts/, static/js/ or templates/ are listed, not changed.
   field OLD NEW      a front-matter key in data/blog/*.md. Code that reads the field (schema/,
                      scripts/) is listed, not changed: change it in the same pull request.
   css-token OLD NEW  a custom property such as fade-ease (the leading -- is optional): CSS in static/css/ and in the <style>
@@ -29,6 +32,7 @@ import sys
 from pathlib import Path
 
 import yaml
+from ast_grep_py import SgRoot
 
 from notes import TRAILING_TAGS, split_frontmatter
 
@@ -37,10 +41,9 @@ TAG = re.compile(r"^[a-z0-9][a-z0-9_.-]*$")
 FIELD = re.compile(r"^[a-z_][a-z0-9_]*$")
 TOKEN = re.compile(r"^--[A-Za-z0-9_-]+$")
 NOTE_TAG = re.compile(r"#([A-Za-z0-9][A-Za-z0-9_.-]*)")
-# CSS: a comment, a string, or a custom-property name, in the order a tokenizer meets them.
-CSS_TOKENS = re.compile(r"/\*.*?\*/|\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'|--[A-Za-z0-9_-]+", re.DOTALL)
-STYLE_BLOCK = re.compile(r"(<style\b[^>]*>)(.*?)(</style>)", re.DOTALL | re.IGNORECASE)
-STYLE_ATTR = re.compile(r"(\sstyle=)(\"[^\"]*\"|'[^']*')", re.IGNORECASE)
+# The tree-sitter-css nodes that hold a custom-property name: a declaration's property, a value such
+# as the argument of var(), and the name of an @property rule.
+CSS_NAMES = ("property_name", "plain_value", "keyword_query")
 
 
 class RenameError(ValueError):
@@ -94,9 +97,9 @@ def mappings(node):
             yield from mappings(item)
 
 
-def yaml_tag_edits(text, keys, old, new, offset=0):
+def yaml_tag_edits(node, keys, old, new, offset=0):
     edits = []
-    for mapping in mappings(yaml.compose(text)):
+    for mapping in mappings(node):
         for key, value in mapping.value:
             if isinstance(key, yaml.ScalarNode) and key.value in keys:
                 edits += tag_list_edits(value, old, new, offset)
@@ -156,12 +159,33 @@ def plan_tag(old, new, root):
     plans.append((notes, rename_note_tags(notes.read_text(encoding="utf-8"), old, new)))
     for path in sorted((root / "data" / "blog").glob("*.md")):
         text, frontmatter, offset = front_matter(path)
-        plans.append((path, splice(text, yaml_tag_edits(frontmatter, {"tags"}, old, new, offset))))
+        plans.append((path, splice(text, yaml_tag_edits(yaml.compose(frontmatter), {"tags"}, old, new, offset))))
     for folder, keys in (("podcasts", {"focus_tags"}), ("visuals", {"tags"}), ("resources", {"tags"})):
         for path in sorted((root / "data" / folder).glob("*.yaml")):
             text = path.read_text(encoding="utf-8")
-            plans.append((path, splice(text, yaml_tag_edits(text, keys, old, new))))
-    return plans, []
+            plans.append((path, splice(text, yaml_tag_edits(yaml.compose(text), keys, old, new))))
+    facets = root / "data" / "tag-facets.yaml"
+    text = facets.read_text(encoding="utf-8")
+    records = dict((key.value, value) for key, value in yaml.compose(text).value)["facets"]
+    used = {tag for facet in yaml.safe_load(text)["facets"] for tag in facet["tags"]}
+    if old in used and new in used:
+        raise RenameError(f"data/tag-facets.yaml already has tag {new!r}")
+    plans.append((facets, splice(text, yaml_tag_edits(records, {"tags"}, old, new))))
+    return plans, category_tags(root, old) + mentions(root, ("scripts/*.py", "static/js/*.js", "templates/*.html"),
+                                                       re.compile(rf"([\"']){re.escape(old)}\1"))
+
+
+def category_tags(root, old):
+    """path:line of each resource with no tags whose category, its tag on the site, is old."""
+    found = []
+    for path in sorted((root / "data" / "resources").glob("*.yaml")):
+        for mapping in mappings(yaml.compose(path.read_text(encoding="utf-8"))):
+            fields = {key.value: value for key, value in mapping.value if isinstance(key, yaml.ScalarNode)}
+            category, tags = fields.get("category"), fields.get("tags")
+            if (isinstance(category, yaml.ScalarNode) and category.value == old
+                    and (tags is None or not tags.value)):
+                found.append(f"{path.relative_to(root)}:{category.start_mark.line + 1}")
+    return found
 
 
 # ---------- field ----------
@@ -189,17 +213,39 @@ def plan_field(old, new, root):
 
 # ---------- css-token ----------
 
+def node_edit(node, new, offset=0, trim=0):
+    """An edit that replaces an ast-grep node, less trim characters at each end, with new."""
+    span = node.range()
+    return offset + span.start.index + trim, offset + span.end.index - trim, new
+
+
+def css_edits(css, old, new, offset=0):
+    """Edits that rename the custom property old where CSS names one, never in a comment, string or selector."""
+    names = SgRoot(css, "css").root().find_all(any=[{"kind": kind} for kind in CSS_NAMES])
+    return [node_edit(node, new, offset) for node in names if node.text() == old]
+
+
 def rename_css(css, old, new):
-    return CSS_TOKENS.sub(lambda match: new if match[0] == old else match[0], css)
+    return splice(css, css_edits(css, old, new))
 
 
 def rename_html(text, old, new):
-    text = STYLE_BLOCK.sub(lambda match: match[1] + rename_css(match[2], old, new) + match[3], text)
-    return STYLE_ATTR.sub(lambda match: match[1] + match[2][0] + rename_css(match[2][1:-1], old, new) + match[2][-1], text)
+    """Rename old in the <style> blocks and style attributes of an HTML template."""
+    root = SgRoot(text, "html").root()
+    edits = []
+    for style in root.find_all(kind="raw_text", inside={"kind": "style_element"}):
+        edits += css_edits(style.text(), old, new, style.range().start.index)
+    for attribute in root.find_all(kind="attribute"):
+        name, value = attribute.find(kind="attribute_name"), attribute.find(kind="attribute_value")
+        if name and value and name.text().lower() == "style":
+            edits += css_edits("a{" + value.text() + "}", old, new, value.range().start.index - 2)
+    return splice(text, edits)
 
 
 def rename_js_literals(text, old, new):
-    return re.sub(rf"([\"'`]){re.escape(old)}\1", lambda match: f"{match[1]}{new}{match[1]}", text)
+    """Rename the JavaScript string literals that are exactly old; comments and longer strings stay."""
+    literals = SgRoot(text, "javascript").root().find_all(any=[{"kind": "string"}, {"kind": "template_string"}])
+    return splice(text, [node_edit(node, new, trim=1) for node in literals if node.text()[1:-1] == old])
 
 
 def plan_css_token(old, new, root):
@@ -210,8 +256,7 @@ def plan_css_token(old, new, root):
     plans = []
     for path in sorted((root / "static" / "css").glob("*.css")):
         text = path.read_text(encoding="utf-8")
-        tokens = {match[0] for match in CSS_TOKENS.finditer(text)}
-        if old in tokens and new in tokens:
+        if css_edits(text, old, old) and css_edits(text, new, new):
             raise RenameError(f"{path.relative_to(root)} already uses {new}")
         plans.append((path, rename_css(text, old, new)))
     for path in sorted((root / "templates").glob("*.html")):

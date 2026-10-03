@@ -1,5 +1,5 @@
-"""The content scaffolds (new_post, add_note, add_video, add_deck, add_links) and the Stage A runner,
-each run on a small temporary repository: no build, browser or network."""
+"""The content scaffolds (new_post, add_note, add_video, add_deck, add_links), each run on a small
+temporary repository: no build, browser or network."""
 
 import contextlib
 import io
@@ -19,7 +19,6 @@ import add_links  # noqa: E402
 import add_note  # noqa: E402
 import add_video  # noqa: E402
 import new_post  # noqa: E402
-import stage_a  # noqa: E402
 
 REGISTRY = {
     "version": 1,
@@ -108,8 +107,8 @@ class NewPostTests(TempRepo):
 
     def test_refuses_unknown_tags_bad_input_and_other_front_matter(self):
         self.assertIn("unknown tag 'quantum'", self.post("--tag", "quantum")[2])
-        self.assertEqual(self.post("--tag", "quantum", "--new-tag", "quantum")[0], 0)
-        self.assertIn("other front matter", self.post("--tag", "website")[2])
+        self.assertEqual(self.post("--tag", "website")[0], 0)
+        self.assertIn("other front matter", self.post("--tag", "todo")[2])
         self.assertIn("must be YYYY-MM-DD", run(new_post.main, "b", "--title", "T", "--summary", "S", "--category", "C",
                                                 "--tag", "website", "--date", "4 Oct", "--root", str(self.root))[2])
         self.assertIn("slug", run(new_post.main, "Bad_Slug", "--title", "T", "--summary", "S", "--category", "C",
@@ -241,6 +240,15 @@ class AddLinksTests(TempRepo):
                                       "  category: example.org\n  note: A new paper. With detail.\n"))
         self.assertIn("already in data/paper-links/paper-links.yaml", self.links("paper", str(review), "--no-refresh")[2])
 
+    def test_a_failed_refresh_keeps_the_records_and_prints_the_commands(self):
+        self.write("scripts/paper_tags.py", "raise SystemExit(1)\n")
+        self.write("in.yaml", "- title: New\n  url: https://example.org/new\n  category: example.org\n  note: New.\n")
+        code, _, err = self.links("paper", str(self.root / "in.yaml"))
+        self.assertEqual(code, 1)
+        self.assertIn("title: New", (self.root / "data/paper-links/paper-links.yaml").read_text(encoding="utf-8"))
+        self.assertEqual(err.splitlines()[1:], ["  .venv/bin/python scripts/paper_tags.py --write",
+                                                "  .venv/bin/python scripts/papers.py export"])
+
     def test_refuses_duplicates_unparsed_blocks_and_canonical_review_files(self):
         self.write("in.txt", "http://www.example.org/old A duplicate.\n")
         self.assertIn("already in", self.links("paper", str(self.root / "in.txt"), "--check")[2])
@@ -270,23 +278,6 @@ class AddLinksTests(TempRepo):
         code, out, _ = self.links("resource", str(self.root / "in.txt"), "--check")
         self.assertEqual((code, "would append 1 records" in out), (0, True))
         self.assertEqual((self.root / "data/resources/resources.yaml").read_text(encoding="utf-8"), before)
-
-
-class StageATests(unittest.TestCase):
-    def test_lists_the_verify_md_commands_in_order(self):
-        self.assertEqual([check for check, _ in stage_a.steps("origin/main")],
-                         ["validate", "repo-check", "ruff", "build", "npm-ci", "typecheck", "tests"])
-        self.assertEqual(dict(stage_a.steps("origin/main"))["tests"][-2:], ["--base", "origin/main"])
-        self.assertNotIn("npm-ci", dict(stage_a.steps(None, npm_ci=False)))
-
-    def test_stops_after_the_first_failure(self):
-        python = sys.executable
-        plan = [("one", [python, "-c", "print('first, ok')"]), ("two", [python, "-c", "import sys; sys.exit('broke')"]),
-                ("three", [python, "-c", "pass"])]
-        out = io.StringIO()
-        self.assertFalse(stage_a.run(plan, ROOT, out))
-        self.assertEqual(out.getvalue().splitlines(), [
-            "stage,check,status,evidence", "A,one,PASS,first; ok", "A,two,FAIL,broke", "A,three,NOT RUN,stopped after two failed"])
 
 
 if __name__ == "__main__":
