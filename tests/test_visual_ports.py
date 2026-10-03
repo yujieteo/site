@@ -27,6 +27,7 @@ PORTS = {
     "connes-qft": "connes-qft",
     "convexity-action-engine": "convexity-action-engine",
     "delta-cohomology": "delta-cohomology",
+    "diagonal-tension": "diagonal-tension",
     "distortion": "distortion",
     "edge-pitch": "edge-pitch",
     "entropy-combinatorics": "entropy-combinatorics",
