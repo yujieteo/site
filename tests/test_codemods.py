@@ -153,15 +153,27 @@ class MoveLinksTests(TempRepo):
         self.write("SKILLS.md", "[Add](skills/playbooks/add-note.md#steps) and [Other](skills/playbooks/other.md).\n")
         self.write("skills/playbooks/a.md", "See [note](add-note.md) and `skills/playbooks/add-note.md`, not `skills/playbooks/add-note.mdx`.\n"
                                             "[repo](https://github.com/yujieteo/site/blob/main/skills/playbooks/add-note.md)\n")
-        self.write("skills/playbooks/add-note.md", "# Add\n")
+        self.write("skills/playbooks/add-note.md", "# Add\n\nSee [search](search-notes.md) and [steps](#steps).\n")
+        self.write("skills/playbooks/search-notes.md", "# Search\n")
         code, out, _ = self.run_in(move_links.main, "skills/playbooks/add-note.md", "skills/notes/add-note.md")
         self.assertEqual(code, 0)
         self.assertEqual(self.read("SKILLS.md"), "[Add](skills/notes/add-note.md#steps) and [Other](skills/playbooks/other.md).\n")
         self.assertEqual(self.read("skills/playbooks/a.md"),
                          "See [note](../notes/add-note.md) and `skills/notes/add-note.md`, not `skills/playbooks/add-note.mdx`.\n"
                          "[repo](https://github.com/yujieteo/site/blob/main/skills/notes/add-note.md)\n")
+        self.assertEqual(self.read("skills/playbooks/add-note.md"), "# Add\n\nSee [search](../playbooks/search-notes.md) and [steps](#steps).\n")
         self.assertIn("move it with git mv", out)
         self.assertIn("nothing to do", self.run_in(move_links.main, "skills/playbooks/add-note.md", "skills/notes/add-note.md")[1])
+
+    def test_a_moved_file_keeps_its_relative_links_after_git_mv(self):
+        self.write("skills/notes/deep/add-note.md", "[s](search-notes.md), [p](../principles/p.md), [gone](missing.md)\n")
+        self.write("skills/playbooks/search-notes.md", "# Search\n")
+        self.write("skills/principles/p.md", "# P\n")
+        self.assertEqual(self.run_in(move_links.main, "skills/playbooks/add-note.md", "skills/notes/deep/add-note.md")[0], 0)
+        expected = "[s](../../playbooks/search-notes.md), [p](../../principles/p.md), [gone](missing.md)\n"
+        self.assertEqual(self.read("skills/notes/deep/add-note.md"), expected)
+        self.assertIn("nothing to do", self.run_in(move_links.main, "skills/playbooks/add-note.md", "skills/notes/deep/add-note.md")[1])
+        self.assertEqual(self.read("skills/notes/deep/add-note.md"), expected)
 
     def test_a_folder_move_rewrites_paths_inside_it(self):
         self.write("README.md", "[ref](skills/reference/links.md) and `skills/reference/`\n")

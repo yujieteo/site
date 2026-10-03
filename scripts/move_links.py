@@ -6,6 +6,9 @@ and skills/**/*.md. In each one, a Markdown link whose target resolves to OLD, o
 the folder OLD, gets the relative path to NEW from that file, with its #anchor kept; a
 https://github.com/yujieteo/site/blob/main/ link and a backticked path such as `scripts/old.py` (in
 inline code or a code block) change the same way. OLD and NEW are paths from the repository root.
+A file that moves itself (OLD, or a file in the folder OLD) also gets its relative links rewritten
+from its new folder, so that each still reaches the same file; a link that already resolves from
+there stays.
 
 The script only rewrites links: move the file with `git mv` too. tests/test_agent_docs.py then
 checks that every link resolves. With --check it writes nothing and lists the files it would change.
@@ -42,7 +45,25 @@ def moved(path, old, new):
     return None
 
 
-def rewrite_link(target, doc, old, new, root):
+def exists_after(path, old, new, root):
+    """Whether the repository path exists once OLD moves to NEW, whether or not git mv has run."""
+    if (root / old).exists():
+        back = moved(path, new, old)
+        if back:
+            return (root / back).exists()
+        if moved(path, old, new):
+            return False
+    return (root / path).exists()
+
+
+def repo_path(absolute, root):
+    """The repository path of an absolute path, or None outside the repository."""
+    return PurePosixPath(Path(absolute).relative_to(root)).as_posix() if Path(absolute).is_relative_to(root) else None
+
+
+def rewrite_link(target, place, old, new, root):
+    """The link target from a file whose folder is place, (before the move, after it)."""
+    before, after = place
     parts = urlsplit(target)
     fragment = f"#{parts.fragment}" if parts.fragment else ""
     if target.startswith(REPO_URL):
@@ -50,13 +71,19 @@ def rewrite_link(target, doc, old, new, root):
         return f"{REPO_URL}{path}{fragment}" if path else target
     if parts.scheme or parts.netloc or not parts.path:
         return target
-    absolute = os.path.normpath(doc.parent / parts.path)
-    if not Path(absolute).is_relative_to(root):
+    if before != after:
+        current = repo_path(os.path.normpath(after / parts.path), root)
+        if current and exists_after(current, old, new, root):
+            return target
+    resolved = repo_path(os.path.normpath(before / parts.path), root)
+    if not resolved:
         return target
-    path = moved(PurePosixPath(Path(absolute).relative_to(root)).as_posix(), old, new)
+    path = moved(resolved, old, new)
     if not path:
-        return target
-    relative = PurePosixPath(os.path.relpath(root / path, doc.parent)).as_posix()
+        if before == after or not exists_after(resolved, old, new, root):
+            return target
+        path = resolved
+    relative = PurePosixPath(os.path.relpath(root / path, after)).as_posix()
     return relative + ("/" if parts.path.endswith("/") and not relative.endswith("/") else "") + fragment
 
 
@@ -65,14 +92,14 @@ def rewrite_code(code, old, new):
     return pattern.sub(new.rstrip("/"), code)
 
 
-def rewrite(text, doc, old, new, root):
+def rewrite(text, place, old, new, root):
     pieces, last = [], 0
     for match in CODE.finditer(text):
         prose = text[last:match.start()]
-        pieces.append(LINK.sub(lambda link: link[1] + rewrite_link(link[2], doc, old, new, root) + link[3], prose))
+        pieces.append(LINK.sub(lambda link: link[1] + rewrite_link(link[2], place, old, new, root) + link[3], prose))
         pieces.append(rewrite_code(match[0], old, new))
         last = match.end()
-    pieces.append(LINK.sub(lambda link: link[1] + rewrite_link(link[2], doc, old, new, root) + link[3], text[last:]))
+    pieces.append(LINK.sub(lambda link: link[1] + rewrite_link(link[2], place, old, new, root) + link[3], text[last:]))
     return "".join(pieces)
 
 
@@ -90,8 +117,11 @@ def main(argv=None):
         return 1
     changed = 0
     for doc in docs(root):
+        path = repo_path(doc, root)
+        before = (moved(path, new, old) if not (root / old).exists() else None) or path
+        place = ((root / before).parent, (root / (moved(before, old, new) or before)).parent)
         text = doc.read_text(encoding="utf-8")
-        updated = rewrite(text, doc, old, new, root)
+        updated = rewrite(text, place, old, new, root)
         if updated != text:
             changed += 1
             if not args.check:
