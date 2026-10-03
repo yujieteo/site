@@ -20,8 +20,8 @@ except file hosting; search and filtering happen in your browser.
   those links; your browser builds it from the site's data.
 - **Blog posts** are Markdown files with a small YAML header.
 - **Visuals** are built by small scripts, most of them in a separate public
-  [visuals repository](https://github.com/yujieteo/visuals) that this site pins
-  to an exact revision. Each publishes its data alongside the page.
+  [visuals repository](https://github.com/yujieteo/visuals) that this site
+  builds from. Each publishes its data alongside the page.
 - **Media** (podcast episodes and explainer videos) is produced locally.
   Episodes are condensed from the notes, and each lists the notes it used.
 - Everything public is indexed in `corpus.json`, the Published Corpus. Each

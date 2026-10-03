@@ -9,17 +9,19 @@ never leaves stale output. `site/` is ignored by Git: pull requests carry only
 sources, so independent content changes never conflict on generated pages, and
 `scripts/site_diff.py` derives a deploy's upload set by rebuilding the live
 commit and comparing. Each visualization's HTML and data come from one of two
-places and are written to `site/visuals/<slug>/`. Most are in this
-repository's `visuals/<slug>/`, a port of the page files of its standalone
-`yujieteo/<slug>` repository (the stub's paths start with `visuals/`). The
-rest are read from the separate `visuals` repository at the commit pinned in
-`data/visuals/<slug>.pin` (one file per visualization, so two pull requests
-that each add or republish a different visualization do not conflict); the
-visuals checkout's own `HEAD` does not affect the build.
+places and are written to `site/visuals/<slug>/`. Every public one is a folder
+`viz/<slug>/` of the separate `visuals` repository, read from the checkout
+`VISUALS_REPO` as it is checked out, with its catalogue entry in its
+`visual.json` (one folder per visualization, so two pull requests that each add
+or change a different visualization do not conflict). The two private ones,
+beamdswitch and connes-qft, are this repository's `visuals/<slug>/` with a
+catalogue stub `data/visuals/<slug>.yaml`. The build prints the visuals commit
+it read, which `scripts/site_diff.py --visuals-base` needs to rebuild a live
+deploy.
 
 `scripts/build.py` runs the build in stages, each in its own module:
 `site_data.py` loads and checks the sources in `data/`, `visual_sources.py`
-finds each visualization's files and pinned downloads, `published_corpus.py`
+finds each visualization's catalogue entry, files and pinned downloads, `published_corpus.py`
 projects everything into the Published Corpus, and `pages.py` and
 `notes_pages.py` render the pages from the shared pieces in `site_html.py`
 (page shell, escaping, Related links), `filter_lists.py` (list filters and tag

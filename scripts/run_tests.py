@@ -5,10 +5,10 @@ The Python suite runs with unittest (discovering tests/test_*.py) and the Node s
 (tests/*.test.{mjs,cjs}), exactly as before; this script only times them. Each suite must finish within
 its budget in tests/time-budget.json, and a suite over budget fails with its slowest tests named. The
 budget is fixed, not scaled by the number of visualisations: per-visualisation checks must stay
-constant-cost, and heavy tests belong in each visualisation's own repository.
+constant-cost, and heavy tests belong in each visualisation's folder in yujieteo/visuals.
 
 With --base, the per-visualisation checks (tests/visual_selection.py) cover only the visualisation folders
-changed against that ref: visuals/<slug>/ and data/visuals/<slug>.yaml or .pin. A change to the tests, the
+changed against that ref: visuals/<slug>/ and data/visuals/<slug>.yaml. A change to the tests, the
 build scripts, the templates, CI or the requirements covers every folder, as does a run without --base
 (pushes to main) or one whose changes cannot be listed. Cross-cutting tests always run.
 
@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SLOWEST = 10
 BUDGET = ROOT / "tests" / "time-budget.json"
 # A changed path that selects one visualisation folder for the per-folder checks.
-VISUAL_PATH = re.compile(r"visuals/([^/]+)/|data/visuals/([^/]+)\.(?:yaml|pin)$")
+VISUAL_PATH = re.compile(r"visuals/([^/]+)/|data/visuals/([^/]+)\.yaml$")
 # A change under any of these can affect every folder's checks, so it selects them all.
 COVERS_ALL = ("tests/", "scripts/", "templates/", ".github/", "requirements.txt")
 

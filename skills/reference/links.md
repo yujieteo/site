@@ -1,6 +1,6 @@
 # Link related items
 
-A visualization (`data/visuals/<slug>.yaml`), media item (`data/podcasts/<id>.yaml`) or blog post (frontmatter in `data/blog/<slug>.md`) may carry `links` to other Corpus Records:
+A visualization (its `visual.json` in yujieteo/visuals, or `data/visuals/<slug>.yaml` here), media item (`data/podcasts/<id>.yaml`) or blog post (frontmatter in `data/blog/<slug>.md`) may carry `links` to other Corpus Records:
 
 ```yaml
 links:

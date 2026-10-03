@@ -20,7 +20,7 @@ skills/              Agent playbooks, principles, and reference notes
 static/              Source CSS and browser JavaScript
 templates/           Shared HTML templates and the beamdswitch report template
 tests/               Python (unittest) and Node tests
-visuals/             Visualizations published here, mostly ports of their standalone yujieteo/<slug> repositories
+visuals/             The two private visualizations published here: beamdswitch (vendored) and connes-qft (a port)
 site/                Generated site (not committed; never edit by hand)
 AGENTS.md            Entry point for agents; points to SKILLS.md
 CONTEXT.md           Domain vocabulary (Published Corpus, Corpus Record, ...)
@@ -36,14 +36,16 @@ global Search popup in every page header, Cmd/Ctrl+K) and the read-only WebMCP t
 ## Build
 
 The build needs two checkouts: this repository and the public
-[`visuals`](https://github.com/yujieteo/visuals) repository that holds the
-HTML and data for each visualization. `scripts/build.py` looks for the visuals
-checkout at `../visuals`, `../../visuals`, then `../../tmp/visuals`; set
-`VISUALS_REPO` to its path when it lives anywhere else. Without it the build
-and the Python tests fail with `Visuals repository not found`. The build reads
-each visualization at the visuals commit pinned in `data/visuals/<slug>.pin`,
-fetching that commit from the checkout's `origin` when it is missing, so the
-branch the checkout is on does not matter.
+[`visuals`](https://github.com/yujieteo/visuals) repository, which holds every
+public visualization in its own folder `viz/<slug>/` with its catalogue entry,
+`visual.json`. `scripts/build.py` looks for the visuals checkout at
+`../visuals`, `../../visuals`, then `../../tmp/visuals`; set `VISUALS_REPO` to
+its path when it lives anywhere else. Without it the build and the Python tests
+fail with `Visuals repository not found`. The build publishes every folder whose
+`visual.json` does not say `"published": false`, reading the checkout as it is
+checked out, and prints the visuals commit it read: check out the commit to
+publish (normally `origin/main`) before a deploy build, and record that commit
+with the deploy.
 
 ```sh
 python3 -m venv .venv
@@ -84,9 +86,9 @@ Many tests read the built `site/`, so run `scripts/build.py` first.
 slowest modules, files and tests. A suite over its budget in
 `tests/time-budget.json` fails with its slowest tests named. The budget does
 not grow with the number of visualisations: per-visualisation checks must stay
-constant-cost, heavy tests belong in the visualisation's own repository, and browser
+constant-cost, heavy tests belong in the visualisation's folder in yujieteo/visuals, and browser
 end-to-end tests in the dedicated technical E2E repository (pending; until it
-exists, the visualisation's own repository stands in). Its values (600 s for Python, 60 s for Node) are a provisional
+exists, that folder stands in). Its values (600 s for Python, 60 s for Node) are a provisional
 ceiling, not a benchmark derived from today's timings: the suite is expected to
 grow as more visualisations and tests arrive, so they are deliberately
 adjustable in that one file, and a pull request that raises them states why. Node runs every
@@ -94,20 +96,19 @@ adjustable in that one file, and a pull request that raises them states why. Nod
 to this command or to CI.
 
 With `--base`, the per-visualisation checks (`tests/test_visual_ports.py`,
-`tests/test_visual_folder_docs.py` and the shared-template check in
-`tests/beamdswitch-voice.test.mjs`) cover only the visualisation folders
-changed against that ref: `visuals/<slug>/` and `data/visuals/<slug>.yaml` or
-`.pin`. A change under `tests/`, `scripts/`, `templates/` or `.github/`, or to
+`tests/test_visual_folder_docs.py`, `tests/test_visualizations.py` and the
+shared-template check in `tests/beamdswitch-voice.test.mjs`) cover only the
+visualisation folders changed against that ref: `visuals/<slug>/` and
+`data/visuals/<slug>.yaml`. A change under `tests/`, `scripts/`, `templates/` or `.github/`, or to
 `requirements.txt`, covers every folder, as does a run without `--base` or one
 whose changes cannot be listed. The other tests always run. The selection
 reaches the tests through `SITE_TEST_VISUALS` (see `tests/visual_selection.py`).
 
-A visualization mirrored as a standalone repository (its folder's `AGENTS.md`
-names `yujieteo/<name>`) develops there: its logic tests live and run in that
-repository's CI, and `visuals/<slug>/` is a port of its page files, refreshed
-when the visualization is updated. This repository tests only how the site
-publishes the port (`tests/test_visual_ports.py`, plus the cross-cutting suites),
-so updating a visualization means running its tests in its own repository.
+A public visualization develops in its folder of yujieteo/visuals, whose CI
+runs its tests only when it changes. This repository tests only how the site
+publishes it (`tests/test_visualizations.py`, plus the cross-cutting suites);
+the private connes-qft develops in its own repository and `visuals/connes-qft/`
+is a port of its page files (`tests/test_visual_ports.py`).
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
 installed packages. The Python tests copy the repository to a
@@ -127,15 +128,14 @@ versions and nothing else; `node_modules/` is ignored by Git.
 
 ## Continuous integration
 
-`.github/workflows/ci.yml` runs on pushes to `main` and on every pull request:
+`.github/workflows/ci.yml` runs on pushes to `main`, on every pull request, and daily (and on demand), since the visuals change in yujieteo/visuals rather than here:
 validation, the build, the JavaScript type check, and the Python and Node tests through
 `scripts/run_tests.py` (on a pull request, with `--base` set to the base
-branch), whose timing report also lands in the job summary. It checks out the
-`visuals` history, and the build reads each visualization at its pin; update
-`data/visuals/<slug>.pin` when a visualization is republished.
+branch), whose timing report also lands in the job summary. It checks out
+yujieteo/visuals `main`, and the build reads every visualization from it.
 
 `tests/test_independent_changes.py` proves the merge guarantee: it opens two
-content branches (new visualizations with their own visuals pins, a note and a
+content branches (new visualizations of this repository, a note and a
 blog post) from the same base in a scratch repository, builds each, and merges
 both without conflicts. Notes stay in one file, `data/notes.md`, by the
 captain's choice, so notes changes land one at a time: two branches that each
@@ -153,9 +153,9 @@ Follow the playbook for the task; [SKILLS.md](SKILLS.md) lists them all:
 | Blog posts | `data/blog/*.md` with YAML frontmatter (each is also published as `site/blog/<slug>.md`) |
 | Slide decks | `data/decks/<slug>/index.html` |
 | Media items | `data/podcasts/<id>.yaml` plus audio or video assets |
-| Visualizations | `data/visuals/<slug>.yaml` (assets come from the visuals repo, or from `visuals/<slug>/` when the paths start with `visuals/`) |
+| Visualizations | `viz/<slug>/visual.json` in yujieteo/visuals; `data/visuals/<slug>.yaml` for the two private ones here (their files in `visuals/<slug>/`) |
 | Papers and resources | `data/paper-links/*.yaml`, `data/resources/*.yaml` (every resource tag needs a facet in `data/tag-facets.yaml`) |
-| Calibrator history | `data/calibrator/raw.toon` (exported Calibrator sessions appended losslessly; schema in `visuals/calibrator/README.md`; published as `site/calibrator/raw.toon`; each answered question is a `calibration:<question_id>` Corpus Record) |
+| Calibrator history | `data/calibrator/raw.toon` (exported Calibrator sessions appended losslessly; schema in `viz/calibrator/README.md` of yujieteo/visuals; published as `site/calibrator/raw.toon`; each answered question is a `calibration:<question_id>` Corpus Record) |
 | Homepage pinned card | `pinned` (a Corpus Record id) in `data/cv/cv.yaml` |
 | Links between items | `links` on visuals, media items and blog posts; see [skills/reference/links.md](skills/reference/links.md) |
 | How the site is built | `data/colophon.md` (published as `colophon.html`) |

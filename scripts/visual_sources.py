@@ -1,8 +1,9 @@
 """Find each visualization's published files: its HTML and data, assets and pinned downloads.
 
-A visualization is either built in this repository (visuals/<slug>/) or read
-from the separate visuals repository at the commit pinned in
-data/visuals/<slug>.pin. Large files are listed in a downloads file and
+A visualization is either one of this repository's own, with a catalogue stub data/visuals/<slug>.yaml
+and its files in visuals/<slug>/ (the private beamdswitch and connes-qft), or a folder viz/<slug>/ of
+the public visuals repository, read as the checkout VISUALS_REPO has it: its visual.json is the
+catalogue entry, unless it says "published": false. Large files are listed in a downloads file and
 fetched into a cache shared by every build, checked against their sha256.
 """
 
@@ -37,8 +38,36 @@ def resolve_visuals_repo():
     )
 
 
-def load_visualizations():
+CATALOGUE_FIELDS = ("title", "summary", "source_url", "fetched", "webmcp_tools", "tags", "category", "links")
+
+
+def visuals_repo_visualizations(visuals_repo):
+    """The visuals repository's published visualizations, as catalogue entries.
+
+    Each viz/<slug>/visual.json becomes the stub its folder would have had here, with paths relative to
+    the visuals repository: html_path viz/<slug>/index.html and data_path viz/<slug>/<its data file>.
+    """
+    entries = []
+    for path in sorted((visuals_repo / "viz").glob("*/visual.json")):
+        slug = path.parent.name
+        meta = json.loads(path.read_text(encoding="utf-8"))
+        if meta.get("published", True) is False:
+            continue
+        folder = f"viz/{slug}/"
+        entry = {"slug": slug, **{key: meta[key] for key in CATALOGUE_FIELDS if key in meta},
+                 "html_path": f"{folder}index.html", "data_path": folder + meta.get("data", "")}
+        if "assets" in meta:
+            entry["assets"] = [folder + asset for asset in meta["assets"]]
+        if "downloads" in meta:
+            entry["downloads"] = folder + meta["downloads"]
+        entries.append(entry)
+    return entries
+
+
+def load_visualizations(visuals_repo=None):
+    """Every visualization: this repository's stubs and the visuals repository's folders, newest first."""
     visualizations = load_all("visuals")
+    visualizations += visuals_repo_visualizations(visuals_repo or resolve_visuals_repo())
     validator = load_validator("schema/visualization.schema.json")
     for visualization in visualizations:
         check_document(validator, visualization,
@@ -46,59 +75,45 @@ def load_visualizations():
     duplicate = first_duplicate(visualization["slug"] for visualization in visualizations)
     if duplicate is not None:
         raise RuntimeError(f"Duplicate visualization slug: {duplicate}")
-    # Newest first, like notes and the blog; a stable sort keeps same-day
-    # visualizations in slug order.
+    # Newest first, like notes and the blog, and same-day visualizations in slug order, whichever
+    # repository they come from.
+    visualizations.sort(key=lambda visualization: visualization["slug"])
     visualizations.sort(key=lambda visualization: visualization["fetched"], reverse=True)
     return visualizations
 
 
-def visualization_pin(slug):
-    """Return the visuals commit that an externally built visualization is published from."""
-    path = DATA / "visuals" / f"{slug}.pin"
-    if not path.is_file():
-        raise RuntimeError(f"Visualization pin is missing: data/visuals/{slug}.pin")
-    pin = path.read_text(encoding="utf-8").strip()
-    if not re.fullmatch(r"[0-9a-f]{40}", pin):
-        raise RuntimeError(f"Visualization pin is not a full commit hash: data/visuals/{slug}.pin")
-    return pin
+def visuals_commit(visuals_repo):
+    """The visuals commit a build reads, with "+dirty" when the checkout has uncommitted changes."""
+    commit = git(visuals_repo, "rev-parse", "HEAD").decode().strip()
+    return commit + ("+dirty" if git(visuals_repo, "status", "--porcelain", "--", "viz").strip() else "")
 
 
 def git(repo, *args):
     return subprocess.run(["git", *args], cwd=repo, check=True, capture_output=True).stdout
 
 
+def folder_of(visuals_repo, visualization):
+    """The folder a visualization's files must stay inside: visuals/<slug>/ here or viz/<slug>/ there."""
+    slug = visualization["slug"]
+    if visualization["html_path"].startswith("visuals/"):
+        return ROOT / "visuals" / slug, ROOT
+    return visuals_repo / "viz" / slug, visuals_repo
+
+
 def visualization_source(visuals_repo, visualization, key):
     """Return the bytes of a visualization's ``html_path`` or ``data_path``.
 
-    Paths under visuals/ name visualizations built in this repository; every
-    other path is read from the separate visuals repository at the commit
-    pinned in data/visuals/<slug>.pin, whatever that checkout has checked out.
+    Paths under visuals/ name visualizations built in this repository; paths under viz/ are read from the
+    visuals repository checkout, as it is checked out.
     """
     relative_path = visualization[key]
-    if relative_path.startswith("visuals/"):
-        source = (ROOT / relative_path).resolve()
-        try:
-            source.relative_to(ROOT.resolve())
-        except ValueError as exc:
-            raise RuntimeError(f"Visualization source escapes its repository: {relative_path}") from exc
-        if not source.is_file():
-            raise RuntimeError(f"Visualization source is missing: {relative_path}")
-        return source.read_bytes()
-    pin = visualization_pin(visualization["slug"])
-    try:
-        git(visuals_repo, "cat-file", "-e", f"{pin}^{{commit}}")
-    except subprocess.CalledProcessError:
-        try:
-            git(visuals_repo, "fetch", "--quiet", "--no-tags", "origin", pin)
-        except subprocess.CalledProcessError as exc:
-            raise RuntimeError(
-                f"Visuals commit {pin} is not in {visuals_repo} and could not be fetched: "
-                f"{exc.stderr.decode().strip()}"
-            ) from None
-    try:
-        return git(visuals_repo, "show", f"{pin}:{relative_path}")
-    except subprocess.CalledProcessError:
-        raise RuntimeError(f"Visualization source is missing at visuals {pin}: {relative_path}") from None
+    folder, base = folder_of(visuals_repo, visualization)
+    source = (base / relative_path).resolve()
+    if not source.is_relative_to(folder.resolve()):
+        raise RuntimeError(f"Visualization {visualization['slug']}: {key} must be in its folder: {relative_path}")
+    if not source.is_file():
+        raise RuntimeError(f"Visualization source is missing: {relative_path}")
+    return source.read_bytes()
 
 
 def load_visualization_sources(visualizations, visuals_repo):
@@ -115,20 +130,20 @@ def load_visualization_sources(visualizations, visuals_repo):
     return sources
 
 
-def visualization_file(visualization, relative_path, key):
-    """Resolve ``relative_path``, which must name a file in the visualization's visuals/<slug>/.
+def visualization_file(visuals_repo, visualization, relative_path, key):
+    """Resolve ``relative_path``, which must name a file in the visualization's folder.
 
     Return the file and its path relative to that folder, which is also its
     path under site/visuals/<slug>/.
     """
     slug = visualization["slug"]
-    folder = (ROOT / "visuals" / slug).resolve()
-    source = (ROOT / relative_path).resolve()
-    if not source.is_relative_to(folder):
-        raise RuntimeError(f"Visualization {slug}: {key} must be under visuals/{slug}/: {relative_path}")
+    folder, base = folder_of(visuals_repo, visualization)
+    source = (base / relative_path).resolve()
+    if not source.is_relative_to(folder.resolve()):
+        raise RuntimeError(f"Visualization {slug}: {key} must be in its folder: {relative_path}")
     if not source.is_file():
         raise RuntimeError(f"Visualization {slug}: {key} is missing: {relative_path}")
-    return source, source.relative_to(folder).as_posix()
+    return source, source.relative_to(folder.resolve()).as_posix()
 
 
 def download_cache():
@@ -184,13 +199,13 @@ def fetch_download(entry, cache):
 DOWNLOAD_KEYS = {"path", "url", "sha256", "bytes"}
 
 
-def load_visualization_downloads(visualization, cache):
+def load_visualization_downloads(visuals_repo, visualization, cache):
     """Fetch the files listed in a visualization's ``downloads`` file.
 
     Return (cached file, path under site/visuals/<slug>/, True) triples.
     """
     slug = visualization["slug"]
-    manifest, _ = visualization_file(visualization, visualization["downloads"], "downloads")
+    manifest, _ = visualization_file(visuals_repo, visualization, visualization["downloads"], "downloads")
     entries = json.loads(manifest.read_text(encoding="utf-8")).get("downloads")
     if not isinstance(entries, list) or not entries:
         raise RuntimeError(f"Visualization {slug}: {visualization['downloads']} has no downloads list")
@@ -212,23 +227,22 @@ def load_visualization_downloads(visualization, cache):
     return files
 
 
-def load_visualization_files(visualizations):
+def load_visualization_files(visualizations, visuals_repo):
     """Map each slug to the files published beside its index.html.
 
     Each is (source, path under site/visuals/<slug>/, whether to hard-link it).
 
-    Only visualizations built in this repository have them: ``assets`` are files
-    in visuals/<slug>/, and ``downloads`` names a file that pins large files,
-    such as model weights, to a URL and sha256 so they are fetched at build
-    time instead of being committed.
+    ``assets`` are further files of the visualization's folder, and ``downloads`` names a file that pins
+    large files, such as model weights, to a URL and sha256 so they are fetched at build time instead of
+    being committed.
     """
     published = {}
     for visualization in visualizations:
         slug = visualization["slug"]
-        files = [(*visualization_file(visualization, path, "asset"), False)
+        files = [(*visualization_file(visuals_repo, visualization, path, "asset"), False)
                  for path in visualization.get("assets", [])]
         if "downloads" in visualization:
-            files += load_visualization_downloads(visualization, download_cache())
+            files += load_visualization_downloads(visuals_repo, visualization, download_cache())
         seen = {"index.html", "data.json"}
         for _, path, _ in files:
             if path in seen:

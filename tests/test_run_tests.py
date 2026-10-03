@@ -15,8 +15,8 @@ from visual_selection import covers  # noqa: E402
 
 class SelectionTests(unittest.TestCase):
     def test_changed_folders_and_stubs_select_their_slugs(self):
-        changed = ["visuals/kent/index.html", "data/visuals/bayes.yaml", "data/visuals/arm.pin", "data/notes.md"]
-        self.assertEqual(run_tests.selected_slugs(changed), "arm,bayes,kent")
+        changed = ["visuals/connes-qft/index.html", "data/visuals/beamdswitch.yaml", "data/notes.md"]
+        self.assertEqual(run_tests.selected_slugs(changed), "beamdswitch,connes-qft")
 
     def test_content_outside_the_visualisations_selects_no_folders(self):
         self.assertEqual(run_tests.selected_slugs(["data/notes.md", "README.md", "static/css/style.css"]), "")

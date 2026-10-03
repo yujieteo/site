@@ -1,19 +1,21 @@
-// The site's integration of the Toulmin port (visuals/toulmin/) with the beamdswitch build the site vendors
-// at visuals/beamdswitch/: the engine's narration timing and sentence splitting must match that build.
-// Toulmin's own logic tests develop and run in yujieteo/toulmin.
+// The site's integration of Toulmin (viz/toulmin/ in the yujieteo/visuals checkout the build reads) with the
+// beamdswitch build the site vendors at visuals/beamdswitch/: the engine's narration timing and sentence
+// splitting must match that build. Toulmin's own logic tests are in its folder there.
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { pathToFileURL } from "node:url";
 import vm from "node:vm";
 
 /** @param {string} p */
 const read = (p) => readFile(new URL(p, import.meta.url), "utf8");
 /** @param {RegExpExecArray | null} match @param {string} what */
 const found = (match, what) => { assert.ok(match, `${what} found`); return match; };
-const html = await read("../visuals/toulmin/index.html");
+const VISUALS = process.env.VISUALS_REPO ? pathToFileURL(`${process.env.VISUALS_REPO}/`) : new URL("../../visuals/", import.meta.url);
+const html = await readFile(new URL("viz/toulmin/index.html", VISUALS), "utf8");
 const ctx = vm.createContext({});
 vm.runInContext(found(/<script id="toulmin-engine">([\s\S]*?)<\/script>/.exec(html), "the Toulmin engine")[1], ctx);
-// The visualisation's own engine, typed in its own repository.
+// The visualisation's own engine, typed in its folder of the visuals repository.
 const T = ctx.Toulmin;
 /** @param {unknown} x */
 const J = (x) => JSON.parse(JSON.stringify(x));

@@ -26,7 +26,7 @@ from site_data import (
 )
 from site_html import build_redirect
 from visual_sources import (
-    load_visualization_files, load_visualization_sources, load_visualizations, resolve_visuals_repo,
+    load_visualization_files, load_visualization_sources, load_visualizations, resolve_visuals_repo, visuals_commit,
 )
 
 STATIC = ROOT / "static"
@@ -191,10 +191,11 @@ def main():
         paper["citation"] = citation(paper, arxiv_cache)
     posts = load_blog_posts()
     notes = load_daily_notes()
-    visualizations = load_visualizations()
+    visuals_repo = resolve_visuals_repo()
+    visualizations = load_visualizations(visuals_repo)
     media_items = load_media_items()
-    visualization_sources = load_visualization_sources(visualizations, resolve_visuals_repo())
-    visualization_files = load_visualization_files(visualizations)
+    visualization_sources = load_visualization_sources(visualizations, visuals_repo)
+    visualization_files = load_visualization_files(visualizations, visuals_repo)
     colophon = load_colophon()
     calibrations = answered_calibrations(load_raw())
     corpus = build_corpus(
@@ -220,7 +221,8 @@ def main():
         f"Built site into {OUT}/ "
         f"({len(resources)} resources, {len(papers)} paper links, "
         f"{len(posts)} blog posts, {len(visualizations)} visualizations, "
-        f"{len(media_items)} media items, {len(decks)} decks)"
+        f"{len(media_items)} media items, {len(decks)} decks) "
+        f"from yujieteo/visuals {visuals_commit(visuals_repo)}"
     )
 
 

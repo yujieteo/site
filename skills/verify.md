@@ -13,9 +13,9 @@ Use `PASS` or `FAIL` for `status`. Report each stage separately. Stop after a fa
 Read the tier from the diff (`git diff --name-only origin/main...HEAD`), not from the request.
 
 - **Fast path:** Stage A below, then a plain pull request without the no-mistakes pipeline; the change reaches `main` only through [green CI](#fast-path-landing). It applies only when every changed path is one of:
-  - content under `data/`: notes, `data/calibrator/raw.toon`, catalogue stubs `data/visuals/<slug>.yaml`, blog posts, decks, podcasts and media, paper links and resources, but not a `data/visuals/<slug>.pin`;
-  - a straight port: `visuals/<slug>/` for a slug already in `PORTS` in `tests/test_visual_ports.py`, byte-identical to a `yujieteo/<slug>` commit (minus `tests/`, `.github/` and its type-check tooling) whose own no-mistakes run and CI passed. Name that commit in the pull request.
-- **Full pipeline:** everything else, including any change to `scripts/`, `templates/`, `static/`, `schema/`, `tests/`, `.github/`, deploy files, a `.pin` or `beamdswitch`, a first port (it adds to `PORTS`), or a port edited after copying. One such path puts the whole pull request on the full pipeline.
+  - content under `data/`: notes, `data/calibrator/raw.toon`, catalogue stubs `data/visuals/<slug>.yaml`, blog posts, decks, podcasts and media, paper links and resources;
+  - a straight copy of a private visualization: `visuals/connes-qft/` byte-identical to a yujieteo/connes-qft commit (minus `tests/`, `.github/` and its type-check tooling) whose own checks passed, or `visuals/beamdswitch/` re-vendored as its README says. Name that commit in the pull request.
+- **Full pipeline:** everything else, including any change to `scripts/`, `templates/`, `static/`, `schema/`, `tests/`, `.github/`, deploy files, a new private visualization (it adds to `PORTS`), or a copy edited after copying. One such path puts the whole pull request on the full pipeline.
 
 ### Fast-path landing
 
@@ -43,16 +43,17 @@ npm ci && npm run typecheck                               # JSDoc types in the s
 Every command above must exit successfully; on `main`, omit `--base` to run every
 per-visualization check (see the [README](../README.md#test)). The build recreates `site/` from the
 sources; `site/` is ignored by Git, so `git status` shows only source changes.
-Review the generated changes with `.venv/bin/python scripts/site_diff.py <base>`
-(see [Deploy generated files](playbooks/deploy.md)) and stop if they go beyond
+Review the generated changes with
+`.venv/bin/python scripts/site_diff.py <base> --visuals-base <visuals-base>`, where
+`<visuals-base>` is the yujieteo/visuals commit the base's build read (for a pull
+request, the visuals commit `scripts/build.py` printed; see
+[Deploy generated files](playbooks/deploy.md)), and stop if they go beyond
 the intended sources. Do not deploy after a failure.
 
 A site test you add must stay cheap and be timed: follow
-[Site test cost](playbooks/add-visualization.md#site-test-cost). Browser end-to-end
-tests belong in the dedicated technical E2E repository (pending; until it exists,
-the visualization's own repository stands in), never here. This stage is the
-site-level end-to-end check of a visualization port, run inside the second of the
-[two no-mistakes runs](playbooks/add-visualization.md#end-to-end-testing-and-the-two-pipeline-runs),
-or alone for a straight port on the [fast path](#review-tier).
+[Site test cost](playbooks/add-visualization.md#site-test-cost). Model and browser
+end-to-end tests belong to the visualization's folder in yujieteo/visuals or the
+technical E2E checks, never here ([Test ownership](playbooks/add-visualization.md#test-ownership)).
+This stage is the site-level check of every visualization the site publishes.
 
 After deploying, run [Stage B](verify-post-deploy.md) and report it with the same fields.

@@ -1,7 +1,7 @@
-"""The site's integration of the visualizations ported from their standalone repositories.
+"""The site's integration of the visualizations it still ports from their standalone repositories.
 
-Each folder below is a port of the page files of a standalone repository (yujieteo/<name>), where the
-visualization and its logic tests develop and run. The site checks only how it publishes the port: the
+Each folder below is a port of the page files of a private standalone repository (yujieteo/<name>),
+where the visualization and its logic tests develop and run. The site checks only how it publishes the port: the
 catalogue stub points into the folder and names the WebMCP tools the page registers, the build publishes
 the page and its data unchanged, and the port carries no tests or CI of its own. That each folder's
 beamdswitch.js is templates/beamdswitch.js unchanged is checked by tests/beamdswitch-voice.test.mjs.
@@ -19,48 +19,10 @@ from visual_selection import covers
 
 
 ROOT = Path(__file__).resolve().parents[1]
-# slug -> standalone repository name
+# slug -> standalone repository name. Only private visualizations stay ports here; every public one is a
+# folder of yujieteo/visuals, which the build reads directly (tests/test_visualizations.py).
 PORTS = {
-    "bayes": "bayes",
-    "beamdiag": "beamdiag",
-    "calibrator": "calibrator",
     "connes-qft": "connes-qft",
-    "convexity-action-engine": "convexity-action-engine",
-    "delta-cohomology": "delta-cohomology",
-    "diagonal-tension": "diagonal-tension",
-    "distortion": "distortion",
-    "edge-pitch": "edge-pitch",
-    "entropy-combinatorics": "entropy-combinatorics",
-    "etale-fundamental-group": "etale-fundamental-group",
-    "everyday-actions": "everyday-actions",
-    "fbd": "fbd",
-    "fastener-cg": "fastener-cg",
-    "fermi": "fermi",
-    "frequency-response": "frequency-response",
-    "generating-functions": "generating-functions",
-    "grep-visualiser": "grep-visualiser",
-    "infer-a-theory": "infer-a-theory",
-    "information-gain": "information-gain",
-    "kent": "kent",
-    "lug-joint": "lug-joint",
-    "md-explorer": "md-explorer",
-    "mohr": "mohr",
-    "motives-periods": "motives-periods",
-    "multi-armed-bandit": "multi-armed-bandit",
-    "packets-to-playback": "packets-to-playback",
-    "phasors": "phasors",
-    "pigeonhole": "pigeonhole",
-    "probabilistic-method": "probabilistic-method",
-    "queue-time": "queue-time",
-    "riemann-roch": "riemann-roch",
-    "root-locus": "root-locus",
-    "snake-lemma": "snake-lemma",
-    "stability": "stability",
-    "subsidy-atlas": "subsidy-atlas",
-    "tampines-food": "tampines-food",
-    "toto-frequency": "toto-frequency",
-    "toulmin": "toulmin",
-    "vgc-protect-fakeout-pivot-trainer": "vgc-trainer",
 }
 # The ports these checks cover in this run: every port, or only those a pull request changes.
 SELECTED = [slug for slug in PORTS if covers(slug)]
@@ -120,16 +82,6 @@ class VisualPortTests(unittest.TestCase):
                 entry, published = stub(slug), ROOT / "site" / "visuals" / slug
                 self.assertEqual((published / "index.html").read_bytes(), (ROOT / entry["html_path"]).read_bytes())
                 self.assertEqual(json.loads((published / "data.json").read_text(encoding="utf-8")), source_data(entry["data_path"]))
-
-    @unittest.skipUnless(covers("fermi"), "fermi is unchanged")
-    def test_fermi_title_is_the_catalogue_title(self):
-        html = (ROOT / "visuals" / "fermi" / "index.html").read_text(encoding="utf-8")
-        self.assertIn(f"<title>{stub('fermi')['title']} — Yu Jie Teo</title>", html)
-
-    @unittest.skipUnless(covers("kent"), "kent is unchanged")
-    def test_kent_title_is_the_catalogue_title(self):
-        html = (ROOT / "visuals" / "kent" / "index.html").read_text(encoding="utf-8")
-        self.assertIn(f"<title>{stub('kent')['title']} — Yu Jie Teo</title>", html)
 
 
 if __name__ == "__main__":
