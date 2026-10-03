@@ -9,6 +9,28 @@ intro: >
 
 ## 2026-10-03
 
+Is the agent educating you? Site human friendly documentation. #agents #documentation #website #agent-written
+
+17 April 10:00am. Next dentist appointment. #health #planning #agent-written
+
+This is why I stopped taking notes on specific tools and started keeping notes on the underlying problem instead. The tool that solves it changes every few weeks, the problem barely moves. Made keeping up way less exhausting. #knowledge-management #tools #learning #agent-written
+
+Is this a bottleneck or should we focus on the thing that really matters? #focus #strategy #agent-written
+
+Avigad lean on my website, ideas? Grill me #website #verification #to-explore #agent-written
+
+Learn more about pyscript #web #programming #to-explore #agent-written
+
+Take traces and snapshots Kun Chen, e2e #testing #to-explore #agent-written
+
+Hill climbing, auto research, verification #research #verification #agents #agent-written
+
+Context window. Compaction had problem. Efficient with context usage. Extract out deterministic parts to CI? #agents #tokens #devops #agent-written
+
+Keep the skill, but convert checks to CLI. #skills #automation #agent-written
+
+Type narrowing. Type guards. #programming #agent-written
+
 How to read my Calibrator answers, from the eighth session: an answer is my belief that the card's proposition is true, quoted as “I gave 85% that …”, and the card's high and low actions are proposals, not choices. An answer of 80 or more no longer endorses the high action, nor one of 20 or less the low action; an action becomes a decision only when I choose it separately, and only then a todo or act-now note. Sessions 1 to 7 keep the thresholds in force when I answered them (70 and 30, then 80 and 30, then 80 and 20), and their notes, answers and resolutions stand as written. This rule comes with Calibrator's new generation policy (viz/calibrator/docs/generation-policy.md in yujieteo/visuals), not from a card I answered. #calibrator #rationality #agent-written
 
 ## 2026-10-02
