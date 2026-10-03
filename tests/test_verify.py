@@ -89,6 +89,11 @@ class ParserTests(unittest.TestCase):
         self.assertEqual((row["test"], row["file_line"]), ("adds", "tests/a.test.mjs:2"))
         self.assertTrue(row["message"].startswith("AssertionError"))
 
+    def test_node_parent_of_a_failed_subtest_is_not_a_failure(self):
+        nested = NODE.replace("test at tests/a.test.mjs:2:1", "test at tests/a.test.mjs:1:1\n✖ grp (2.1ms)\n"
+                              "  '1 subtest failed'\n\ntest at tests/a.test.mjs:2:1")
+        self.assertEqual([row["test"] for row in verify.parse_node(nested)], ["adds"])
+
     def test_suite_budget_row(self):
         text = "python suite: 4.2 s of its 600 s budget (1%)\n  slowest modules:\n     1.00 s  m\n" \
                "  slowest tests:\n     0.90 s  test_a (m.T.test_a)\n"
@@ -115,11 +120,11 @@ class TypecheckScopeTests(unittest.TestCase):
         self.assertEqual(document["scope"]["errors_outside_scope"], 3)
         self.assertEqual(document["totals"]["errors"], 4)
 
-    def test_scoped_verdict_says_so_and_counts_the_rest(self):
+    def test_a_file_with_no_errors_lists_none_and_fails_on_the_total(self):
         with mock.patch.object(verify, "run_tsc", return_value=(2, TSC.replace("static/js/corpus.js(2,1)", "x.js(2,1)"))):
-            code, document = run("typecheck", "--file", "static/js/corpus.js", "--scoped-verdict")
-        self.assertEqual((code, document["verdict"]), (0, "pass"))
-        self.assertIn("scoped: 4 errors outside the scope", document["scope"]["verdict_basis"])
+            code, document = run("typecheck", "--file", "static/js/corpus.js")
+        self.assertEqual((code, document["verdict"], document["first"]), (1, "fail", []))
+        self.assertEqual(document["scope"]["verdict_basis"], "total: all 4 errors count, in scope or not")
 
     def test_a_missing_path_is_a_usage_error(self):
         code, document = run("typecheck", "--file", "static/js/no-such-file.js")
@@ -146,8 +151,16 @@ class TypecheckScopeTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertEqual((document["scope"]["errors_in_scope"], document["scope"]["errors_outside_scope"]), (2, 2))
 
-    def test_scoped_verdict_without_a_filter_is_a_usage_error(self):
-        self.assertEqual(run("typecheck", "--scoped-verdict")[0], 2)
+    def test_typecheck_has_no_scoped_verdict(self):
+        with contextlib.redirect_stderr(io.StringIO()):
+            self.assertEqual(verify.main(["typecheck", "--file", "static/js/corpus.js", "--scoped-verdict"]), 2)
+
+    def test_hints_run_the_venv_python(self):
+        document = run("typecheck")[1]
+        self.assertTrue(document["help"])
+        for hint in document["help"]:
+            if "verify.py" in hint:
+                self.assertIn("`.venv/bin/python scripts/verify.py ", hint)
 
     def test_tsc_failure_with_no_parseable_error_is_an_environment_error(self):
         with mock.patch.object(verify, "run_tsc", return_value=(1, "npm ERR! missing script\n")):
@@ -192,6 +205,7 @@ class StageATests(unittest.TestCase):
         code, document = self.stage()
         self.assertEqual(document["failures"][0]["file_line"], "tests/test_x.py:3")
         self.assertIn("python.log", document["help"][0])
+        self.assertIn("`.venv/bin/python scripts/verify.py stage-a --only python --scoped-verdict`", document["help"][1])
 
     def test_only_is_not_a_pass_of_stage_a(self):
         self.steps[0] = step("validate", 1)

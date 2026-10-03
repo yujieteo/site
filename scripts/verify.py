@@ -14,13 +14,13 @@ code and by file, and the first errors, in a stable order. `--file` and `--since
 tree changed since.
 
 No false pass: a filter or scope option prints the filtered count next to the total, and the verdict
-and exit code follow the total unless `--scoped-verdict` is given; the result then says so and counts
-what lies outside the scope. A filter that matches nothing, a missing path or an unknown ref is a usage
-error. Exit codes: 0 pass, 1 fail, 2 usage or environment error.
+and exit code follow the total. Only `stage-a --only` takes `--scoped-verdict`; the result then says
+so and counts the steps that lie outside the scope. A filter that matches nothing, a missing path or
+an unknown ref is a usage error. Exit codes: 0 pass, 1 fail, 2 usage or environment error.
 
-Usage: scripts/verify.py stage-a [--base REF] [--only STEP,...] [--scoped-verdict]
-       scripts/verify.py typecheck [--summary] [--file PATH]... [--since REF] [--first N] [--scoped-verdict]
-       scripts/verify.py last
+Usage: .venv/bin/python scripts/verify.py stage-a [--base REF] [--only STEP,...] [--scoped-verdict]
+       .venv/bin/python scripts/verify.py typecheck [--summary] [--file PATH]... [--since REF] [--first N]
+       .venv/bin/python scripts/verify.py last
 """
 
 import argparse
@@ -40,10 +40,9 @@ import toon  # noqa: E402
 
 LOG_DIR = ROOT / ".verify"
 PYTHON = sys.executable
+VERIFY = ".venv/bin/python scripts/verify.py"
 # The failed tests each step lists at most; the steps table counts them all.
 FAILURES_SHOWN = 20
-# Extensions tsc checks here (tsconfig.json include).
-TYPED = (".js", ".mjs", ".cjs", ".ts", ".mts", ".cts")
 
 
 class UsageError(Exception):
@@ -120,7 +119,7 @@ def in_scope(file, paths):
     return any(file == path or file.startswith(path.rstrip("/") + "/") for path in paths)
 
 
-def summarize_typecheck(errors, checked, files=(), since=None, changed=None, first=20, scoped=False):
+def summarize_typecheck(errors, checked, files=(), since=None, changed=None, first=20):
     """Return (TOON document, exit code) for the parsed tsc errors and the checked files."""
     paths, labels = [], []
     if files:
@@ -147,8 +146,7 @@ def summarize_typecheck(errors, checked, files=(), since=None, changed=None, fir
     for error in filtered:
         by_code.setdefault(error["code"], []).append(error)
         by_file[error["file"]] = by_file.get(error["file"], 0) + 1
-    counted = filtered if scoped else errors
-    verdict = "fail" if counted else "pass"
+    verdict = "fail" if errors else "pass"
     document = {"verdict": verdict, "totals": {"errors": len(errors), "files_with_errors": len({e["file"] for e in errors}),
                                                "files_checked": len(checked)}}
     if labels:
@@ -158,8 +156,7 @@ def summarize_typecheck(errors, checked, files=(), since=None, changed=None, fir
             "files_in_scope": sum(1 for file in checked if in_scope(file, paths)),
             "errors_in_scope": len(filtered),
             "errors_outside_scope": outside,
-            "verdict_basis": (f"scoped: {outside} errors outside the scope are not counted" if scoped
-                              else f"total: all {len(errors)} errors count, in scope or not"),
+            "verdict_basis": f"total: all {len(errors)} errors count, in scope or not",
         }
     document["by_code"] = [{"code": code, "count": len(rows), "example": f"{rows[0]['file']}:{rows[0]['line']}"}
                            for code, rows in sorted(by_code.items(), key=lambda item: (-len(item[1]), item[0]))]
@@ -167,7 +164,7 @@ def summarize_typecheck(errors, checked, files=(), since=None, changed=None, fir
                            for file, count in sorted(by_file.items(), key=lambda item: (-item[1], item[0]))]
     document["first"] = [{"file_line": f"{e['file']}:{e['line']}", "code": e["code"], "message": e["message"]}
                          for e in filtered[:first]]
-    return document, 1 if counted else 0
+    return document, 1 if errors else 0
 
 
 def typecheck(args):
@@ -181,14 +178,14 @@ def typecheck(args):
         raise UsageError(f"tsc exited {code} with no parseable error: read {rel(log)}")
     changed = changed_since(args.since) if args.since is not None else None
     document, exit_code = summarize_typecheck(errors, checked, args.file or (), args.since, changed,
-                                              args.first, args.scoped_verdict)
+                                              args.first)
     document["log"] = rel(log)
     hints = []
     if document["by_file"]:
-        hints.append(f"Run `scripts/verify.py typecheck --file {document['by_file'][0]['file']}` to see one file")
+        hints.append(f"Run `{VERIFY} typecheck --file {document['by_file'][0]['file']}` to see one file")
     if exit_code:
         hints.append(f"Read {rel(log)} for every error and its continuation lines")
-    document["help"] = hints or ["Run `scripts/verify.py stage-a --base origin/main` for the whole of Stage A"]
+    document["help"] = hints or [f"Run `{VERIFY} stage-a --base origin/main` for the whole of Stage A"]
     return document, exit_code
 
 
@@ -230,6 +227,8 @@ def parse_node(text, step="node"):
                 name = re.sub(r"\s*\([\d.]+m?s\)$", "", lines[index + 1].strip().lstrip("✖").strip())
             if index + 2 < len(lines):
                 message = lines[index + 2]
+            if re.match(r"^\s*'?\d+ subtests? failed", message):
+                continue
             found.append(failure(step, name, f"{rel(match[1])}:{match[2]}", message))
     return found
 
@@ -402,10 +401,10 @@ def stage_a(args):
     if stopped:
         hints.append(f"Read {rel(out_dir / (stopped + '.log'))} for the full output of {stopped}")
         rest = ",".join(row["step"] for row in steps if row["status"] in ("fail", "not-run"))
-        hints.append(f"Run `scripts/verify.py stage-a{' --base ' + args.base if args.base else ''} "
+        hints.append(f"Run `{VERIFY} stage-a{' --base ' + args.base if args.base else ''} "
                      f"--only {rest} --scoped-verdict` after a fix, then the whole of Stage A")
         if stopped == "typecheck":
-            hints.append("Run `scripts/verify.py typecheck` for the errors by code and by file")
+            hints.append(f"Run `{VERIFY} typecheck` for the errors by code and by file")
     elif verdict == "incomplete":
         hints.append("Run without --only for the Stage A verdict, or add --scoped-verdict to judge only the scope")
     else:
@@ -421,14 +420,14 @@ def stage_a(args):
 def last(_args):
     path = LOG_DIR / "last.toon"
     if not path.exists():
-        raise UsageError("no stage-a run is recorded: run scripts/verify.py stage-a")
+        raise UsageError(f"no stage-a run is recorded: run {VERIFY} stage-a")
     document = toon.decode(path.read_text(encoding="utf-8"))
     exit_code, recorded = document.pop("exit"), document.pop("tree")
     head, dirty = tree_state()
     if (document["head"], recorded) != (head, dirty):
         document = {"verdict": "stale", "recorded_verdict": document["verdict"], **{
             key: value for key, value in document.items() if key != "verdict"}}
-        document["help"] = ["The commit or working tree changed since this run: run scripts/verify.py stage-a again"]
+        document["help"] = [f"The commit or working tree changed since this run: run {VERIFY} stage-a again"]
         exit_code = 1
     return document, exit_code
 
@@ -445,21 +444,18 @@ def main(argv=None):
     check.add_argument("--file", action="append", help="count only errors in this file or folder (repeatable)")
     check.add_argument("--since", help="count only errors in files changed since this ref")
     check.add_argument("--first", type=int, default=20, help="how many errors to list (default 20)")
-    check.add_argument("--scoped-verdict", action="store_true", help="judge only the errors in the scope")
     commands.add_parser("last", help="print the verdict of the last stage-a run")
     try:
         args = parser.parse_args(argv)
     except SystemExit as error:
         return 2 if error.code else 0
     try:
-        if getattr(args, "scoped_verdict", False) and args.command == "typecheck" and not (args.file or args.since):
-            raise UsageError("--scoped-verdict needs --file or --since")
         if args.command == "typecheck" and args.first < 0:
             raise UsageError("--first must be 0 or more")
         document, exit_code = {"stage-a": stage_a, "typecheck": typecheck, "last": last}[args.command](args)
     except UsageError as error:
         print(toon.encode({"verdict": "error", "error": str(error),
-                           "help": ["Run `scripts/verify.py --help` for the commands and options"]}))
+                           "help": [f"Run `{VERIFY} --help` for the commands and options"]}))
         return 2
     print(toon.encode(document))
     return exit_code

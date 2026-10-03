@@ -44,7 +44,7 @@ Read that log; do not pipe a build or test run through `tail` or `grep`. Exit co
 1 fail, 2 usage or environment error. After a fix, `--only <steps> --scoped-verdict` reruns the
 failed steps; without `--scoped-verdict`, `--only` reports `incomplete`, never `pass`. Run the
 whole of Stage A again before the pull request. `typecheck --file <path>` and `--since <ref>`
-narrow the counts, but the verdict still counts every error unless `--scoped-verdict` is given.
+narrow the counts and the listed errors, but the verdict and exit code always count every error.
 
 The steps it runs, which you can also run by hand. The build and the Python tests
 need the separate `visuals` checkout described in the [README](../README.md#build);
