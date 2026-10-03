@@ -15,15 +15,18 @@ the prior file preserved in the backup, then a rename), `corpus.json` first. It 
 (skills/verify-post-deploy.md): the live sha256 of every built file, stray paths in the document
 root, every upload served over HTTPS with the built bytes, and console errors on each changed page.
 A Stage B failure on an uploaded file restores every preserved prior file. A pass removes this
-deploy's backup directory and nothing else. Each run appends one line to the deploy log.
+deploy's backup directory and nothing else. Once the upload starts, an SSH failure is a failed check:
+the restore still runs, and the report and the deploy-log line are still written. Each run appends
+one line to the deploy log. The report lists the backup directories on the host.
 
-`report` prints the report of the last deploy in the log (or `--deploy ID`). `backups` lists the
-backup directories on the host; it never removes one.
+`report` prints the report of the last deploy in the log (or `--deploy ID`, an exact id). `backups`
+lists the backup directories on the host; it never removes one. Only the backup of the last deploy
+in the log is a rollback source; every other `fm-` backup is superseded, because a later deploy can
+have changed the same files.
 
-The verdict and the exit code follow every built file, not only the upload set, unless
-`--scoped-verdict` is given; the report then says so and counts the files outside the scope.
+The verdict and the exit code follow every built file, not only the upload set.
 Exit codes: 0 pass, 1 fail, 2 usage or environment error (missing configuration, unknown commit,
-missing site/, SSH unreachable, a filter that matches nothing).
+missing site/, SSH unreachable before the upload, an unknown deploy id).
 
 The host (an SSH alias, which also supplies the user), the document root and the site URL are
 runtime configuration, never committed: flags, then the environment (SITE_DEPLOY_HOST,
@@ -33,15 +36,14 @@ docroot, base_url, backups, state_dir and visuals_repo. Full logs, the upload ro
 report go to one directory per deploy under the state directory, whose path the output names.
 
 Usage:
-  scripts/deploy.py [plan] [--base COMMIT --visuals-base COMMIT] [--scoped-verdict]
-  scripts/deploy.py run --execute [--base COMMIT --visuals-base COMMIT] [--scoped-verdict]
+  scripts/deploy.py [plan] [--base COMMIT --visuals-base COMMIT]
+  scripts/deploy.py run --execute [--base COMMIT --visuals-base COMMIT]
   scripts/deploy.py report [--deploy ID]
-  scripts/deploy.py backups [--match GLOB]
+  scripts/deploy.py backups
 """
 
 import argparse
 import datetime
-import fnmatch
 import json
 import os
 import re
@@ -62,6 +64,8 @@ DEFAULT_BACKUPS = "site-backups"
 WORKFLOW = "CI"
 # Every backup directory this tool creates starts with this; a pass removes only its own.
 PREFIX = "fm-deploy-"
+ROLLBACK = "rollback source of the last deploy"
+SUPERSEDED = "superseded: do not restore"
 BUILT_FROM = re.compile(r"from yujieteo/visuals (\S+)")
 STAMP = re.compile(r"(\d{8}-\d{6})")
 HEREDOC = "FM_DEPLOY_EOF"
@@ -319,6 +323,8 @@ umask 022
 docroot=$(cd -- {q(docroot)} && pwd)
 mkdir -p -- {q(backup)}
 backup=$(cd -- {q(backup)} && pwd)
+: > "$backup/replaced"
+: > "$backup/added"
 cat > "$backup/PATHS" <<'{HEREDOC}'
 {listing}
 {HEREDOC}
@@ -329,8 +335,6 @@ cat > "$backup/restore.sh" <<'{HEREDOC}'
 {restore}{HEREDOC}
 cd -- "$backup/new"
 sha256sum -c -- "$backup/SHA256SUMS" > /dev/null
-: > "$backup/replaced"
-: > "$backup/added"
 tmp=
 trap '[ -z "$tmp" ] || rm -f -- "$tmp"' EXIT
 while IFS= read -r path; do
@@ -366,7 +370,10 @@ def install(remote, docroot, backup, deploy_id, paths, sums):
 def restore(remote, backup):
     script = f"{shlex.quote(backup)}/restore.sh"
     # The install writes restore.sh before it changes any live file; without it nothing was installed.
-    result = remote.run(f"if [ -f {script} ]; then sh -- {script}; else echo 'restored 0 (nothing installed)'; fi")
+    try:
+        result = remote.run(f"if [ -f {script} ]; then sh -- {script}; else echo 'restored 0 (nothing installed)'; fi")
+    except UsageError as error:
+        return f"restore failed: {error}"
     if result.returncode:
         return f"restore failed: {result.stderr.strip()[-300:]}"
     return result.stdout.strip()
@@ -376,7 +383,10 @@ def remove_own_backup(remote, backups, deploy_id):
     # Only the directory this deploy created; the name is checked again so nothing else can match.
     if not deploy_id.startswith(PREFIX) or "/" in deploy_id:
         raise ValueError(f"not a backup this tool creates: {deploy_id}")
-    result = remote.run(f"rm -rf -- {shlex.quote(backups)}/{shlex.quote(deploy_id)}")
+    try:
+        result = remote.run(f"rm -rf -- {shlex.quote(backups)}/{shlex.quote(deploy_id)}")
+    except UsageError as error:
+        return f"removing the backup failed: {error}"
     return None if result.returncode == 0 else f"removing the backup failed: {result.stderr.strip()}"
 
 
@@ -388,6 +398,7 @@ class Report:
     def __init__(self, mode):
         self.mode = mode
         self.checks, self.failures, self.facts, self.counts = [], [], {}, {}
+        self.backups = None
         self.stopped = False
 
     def check(self, stage, name, failures, evidence):
@@ -436,6 +447,8 @@ class Report:
             if limit is not None and len(self.failures) > limit:
                 doc["counts"]["failures_shown"] = limit
         doc["checks"] = self.checks
+        if self.backups is not None:
+            doc["backups"] = self.backups
         doc["files"] = dict(files)
         return doc
 
@@ -487,10 +500,18 @@ def deploy(args):
     files = {"report": str(directory / "report.toon"), "log": str(log.path), "rows": str(directory / "rows.txt")}
     reach(remote, config["docroot"])
     report = Report(args.command)
-    report.facts.update({"id": deploy_id, "commit": commit, "base": base, "visuals_base": visuals_base or "pinned",
-                         "scope": "uploaded files only (--scoped-verdict)" if args.scoped_verdict else "every built file"})
+    report.facts.update({"id": deploy_id, "commit": commit, "base": base, "visuals_base": visuals_base or "pinned"})
     state = {"rows": [], "uploaded": [], "built": [], "local": {}, "visuals": None}
     hints = []
+    entries = read_log(config["state"])
+    newest = deploy_id if args.command == "run" else entries[-1]["id"] if entries else None
+
+    def done(live):
+        try:
+            report.backups = backup_rows(remote, config["backups"], newest)
+        except UsageError as error:
+            hints.append(f"Run `scripts/deploy.py backups` to list the backups: {error}")
+        return finish(report, args, config, files, hints, state["rows"], live)
 
     def ci():
         why, hint = ci_problem(commit, log)
@@ -526,11 +547,8 @@ def deploy(args):
         stale = stale_files(state, remote_sums(remote, config["docroot"], state["built"]), outside=True)
         others = len(state["built"]) - len(state["uploaded"])
         report.counts["live_differs_outside_upload"] = len(stale)
-        if args.scoped_verdict:
-            return [], f"scoped out (--scoped-verdict): {len(stale)} of {others} files outside the upload set differ"
         if stale:
-            hints.append("Pass an older --base (any commit before the live build), or --scoped-verdict to accept "
-                         "the drift on purpose")
+            hints.append("Pass an older --base (any commit before the live build)")
         return stale, f"{others - len(stale)} of {others} built files outside the upload set match the live document root"
 
     report.step("A", "tree-clean", lambda: ([("HEAD", why)] if (why := tree_problem()) else [],
@@ -543,10 +561,8 @@ def deploy(args):
     if args.command == "plan" or report.stopped or not uploaded:
         live = None
         nothing = not report.stopped and not uploaded
-        drift = report.counts.get("live_differs_outside_upload", 0)
         if nothing:
-            report.facts["result"] = (f"nothing to upload; {drift} live files differ from the build (scoped out)" if drift
-                                      else "nothing to upload; the live document root already matches the build")
+            report.facts["result"] = "nothing to upload; the live document root already matches the build"
         if args.command == "run":
             # Nothing reached the host: what was live stays live, or already is this build.
             live = {"site": commit, "visuals": state["visuals"]} if nothing else {"site": base, "visuals": visuals_base}
@@ -554,7 +570,7 @@ def deploy(args):
             hints.append("Run `scripts/deploy.py run --execute` to deploy this upload set")
         if report.failures:
             hints.append(f"Read the full output in {log.path}")
-        return finish(report, args, config, files, hints, state["rows"], live)
+        return done(live)
 
     # Upload into this deploy's backup directory, verify it there, and install it atomically.
     install_state = {"uploaded": False, "replaced": 0, "added": 0}
@@ -569,18 +585,12 @@ def deploy(args):
         return [(backup, why)] if why else [], \
             f"{len(uploaded)} files verified on the host and renamed into place with mode 0644"
 
-    report.step("install", "upload-and-install", install_step)
-    upload_failed = report.stopped
+    upload_failed = not report.step("install", "upload-and-install", install_step, stop=False)
     sent = set(uploaded)
 
     def checksums():
         failing = stale_files(state, remote_sums(remote, config["docroot"], state["built"]), outside=False)
-        inside = [item for item in failing if item[0] in sent]
-        outside = [item for item in failing if item[0] not in sent]
-        report.counts["live_differs_outside_upload"] = len(outside)
-        if args.scoped_verdict:
-            return inside, (f"{len(uploaded) - len(inside)} of {len(uploaded)} uploaded files match site/; scoped out: {len(outside)} of "
-                            f"{len(state['built']) - len(sent)} other files differ")
+        report.counts["live_differs_outside_upload"] = sum(item[0] not in sent for item in failing)
         return failing, f"{len(state['built']) - len(failing)} of {len(state['built'])} built files match the live document root"
 
     def docroot_paths():
@@ -596,7 +606,7 @@ def deploy(args):
             f"{len(deploy_check.page_urls(uploaded, config['base_url']))} changed pages"
 
     # Stage B runs every check; only a failure that touches an uploaded file restores the prior files.
-    report.stopped = False if not upload_failed else True
+    report.stopped = upload_failed
     for name, check in (("checksums", checksums), ("docroot-paths", docroot_paths), ("served", served),
                         ("console-errors", console)):
         report.step("B", name, check, stop=False)
@@ -632,7 +642,7 @@ def deploy(args):
         report.facts["backup"] = f"removed: {backup}" if not why else f"kept: {backup} ({why})"
     if report.failures:
         hints.append(f"Read the full output in {log.path}")
-    return finish(report, args, config, files, hints, state["rows"], live)
+    return done(live)
 
 
 def stale_files(state, live, outside):
@@ -711,13 +721,11 @@ def show_report(args):
     if not entries:
         raise UsageError(f"no deploy log at {config['state'] / 'deploy-log.jsonl'}",
                          ["Run `scripts/deploy.py run --execute` first"])
-    chosen = [entry for entry in entries if entry["id"].startswith(args.deploy)] if args.deploy else entries[-1:]
+    chosen = [entry for entry in entries if entry["id"] == args.deploy] if args.deploy else entries[-1:]
     if not chosen:
-        raise UsageError(f"--deploy {args.deploy} matches none of {len(entries)} deploys in the log",
+        raise UsageError(f"no deploy {args.deploy} among the {len(entries)} deploys in the log",
                          ["Run `scripts/deploy.py report` to see the last deploy"])
-    if len(chosen) > 1:
-        raise UsageError(f"--deploy {args.deploy} matches {len(chosen)} deploys; give more of the id")
-    entry = chosen[0]
+    entry = chosen[-1]
     recent = [{"id": item["id"], "date": item["date"], "verdict": item["verdict"], "commit": item["commit"][:12],
                "uploaded": item["uploaded"]} for item in entries[-5:]]
     doc = {"selected": {"shown": 1, "total": len(entries), "filter": args.deploy or "last"}, **entry["summary"],
@@ -726,35 +734,39 @@ def show_report(args):
     return 0 if entry["verdict"] == "pass" else 1
 
 
-def list_backups(args):
-    config = load_config(args)
-    require(config, "host")
-    log = Log(config["state"] / "backups.log")
-    backups = shlex.quote(config["backups"])
-    script = (f"[ -d {backups} ] || exit 0; cd -- {backups} && for d in */; do [ -d \"$d\" ] || continue; "
+def backup_rows(remote, backups, newest):
+    """name,files,age_days,action of each backup directory on the host, the `fm-` ones first. Only
+    the backup of ``newest``, the last deploy, is a rollback source: a later deploy can have changed
+    the files of any older one."""
+    quoted = shlex.quote(backups)
+    script = (f"[ -d {quoted} ] || exit 0; cd -- {quoted} && for d in */; do [ -d \"$d\" ] || continue; "
               "printf '%s\\t%s\\n' \"${d%/}\" \"$(find \"$d\" -type f | wc -l)\"; done")
-    result = Remote(config["host"], log).run(script)
+    result = remote.run(script)
     if result.returncode:
-        raise UsageError(f"listing {config['backups']} failed: {result.stderr.strip()}")
+        raise UsageError(f"listing {backups} failed: {result.stderr.strip()}")
     today = datetime.datetime.now()
     rows = []
     for line in result.stdout.splitlines():
         name, _, count = line.partition("\t")
         stamp = STAMP.search(name)
         age = (today - datetime.datetime.strptime(stamp[1], "%Y%m%d-%H%M%S")).days if stamp else ""
-        # A passing deploy removes its own backup, so one left behind belongs to a failed or cut-off run.
-        action = "review: restore source of a failed deploy" if name.startswith(PREFIX) else "keep"
+        action = "keep" if not name.startswith(PREFIX) else ROLLBACK if name == newest else SUPERSEDED
         rows.append({"name": name, "files": int(count.strip() or 0), "age_days": age, "action": action})
-    shown = [row for row in rows if fnmatch.fnmatch(row["name"], args.match)] if args.match else rows
-    if args.match and not shown:
-        raise UsageError(f"--match {args.match} matches none of {len(rows)} backups",
-                         ["Run `scripts/deploy.py backups` to list them all"])
-    shown.sort(key=lambda row: not row["name"].startswith(PREFIX))
-    doc = {"backups_dir": config["backups"], "counts": {"shown": len(shown), "total": len(rows),
-                                                         "review": sum(row["action"] != "keep" for row in rows)},
-           "backups": shown, "files": {"log": str(log.path)}}
-    hints = [f"Roll back with `ssh {config['host']} sh {config['backups']}/{row['name']}/restore.sh`"
-             for row in shown if row["action"] != "keep"]
+    rows.sort(key=lambda row: not row["name"].startswith(PREFIX))
+    return rows
+
+
+def list_backups(args):
+    config = load_config(args)
+    require(config, "host")
+    log = Log(config["state"] / "backups.log")
+    entries = read_log(config["state"])
+    rows = backup_rows(Remote(config["host"], log), config["backups"], entries[-1]["id"] if entries else None)
+    doc = {"backups_dir": config["backups"],
+           "counts": {"total": len(rows), "review": sum(row["action"] != "keep" for row in rows)},
+           "backups": rows, "files": {"log": str(log.path)}}
+    hints = [f"Roll back the last deploy with `ssh {config['host']} sh {config['backups']}/{row['name']}/restore.sh`"
+             for row in rows if row["action"] == ROLLBACK]
     print(render(doc, hints))
     return 0
 
@@ -767,8 +779,6 @@ def parser():
         command = commands.add_parser(name, help=help_text)
         command.add_argument("--base", help="site commit whose build is live (default: the deploy log)")
         command.add_argument("--visuals-base", help="visuals commit the live build read (default: the deploy log)")
-        command.add_argument("--scoped-verdict", action="store_true",
-                             help="let the verdict follow the upload set only; the report counts the rest")
         command.add_argument("--host", help="SSH host alias")
         command.add_argument("--docroot", help="document root on the host")
         command.add_argument("--base-url", help="public URL of the site root")
@@ -777,10 +787,9 @@ def parser():
         if name == "run":
             command.add_argument("--execute", action="store_true", help="really deploy")
     report = commands.add_parser("report", help="print the report of the last deploy")
-    report.add_argument("--deploy", help="the deploy id (or its start) to show")
+    report.add_argument("--deploy", help="the exact deploy id to show")
     report.add_argument("--state", help=f"local directory for logs and reports (default {DEFAULT_STATE})")
     backups = commands.add_parser("backups", help="list the backup directories on the host")
-    backups.add_argument("--match", help="show only the backups whose name matches this glob")
     backups.add_argument("--host", help="SSH host alias")
     backups.add_argument("--backups", help=f"backup directory on the host (default {DEFAULT_BACKUPS})")
     backups.add_argument("--state", help=f"local directory for logs (default {DEFAULT_STATE})")

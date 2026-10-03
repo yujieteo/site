@@ -2,8 +2,8 @@
 small shell scripts, the host's home is a temporary folder, and an HTTP server serves its document
 root. The build and the upload set are stubbed; no network is used."""
 
+import datetime
 import functools
-import hashlib
 import io
 import json
 import os
@@ -17,6 +17,7 @@ import unittest
 from contextlib import redirect_stdout
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,6 +40,9 @@ if [ "$1" != "$FAKE_SSH_HOST" ]; then
   exit 255
 fi
 shift
+case "$*" in
+  ${FAKE_SSH_DROP:-}) echo "Connection to $FAKE_SSH_HOST closed by remote host." >&2; exit 255 ;;
+esac
 cd "$FAKE_SSH_HOME" && HOME="$FAKE_SSH_HOME" exec sh -c "$*"
 """
 FAKE_GH = """#!/bin/sh
@@ -102,7 +106,7 @@ class FakeHostTests(unittest.TestCase):
         env = {
             "PATH": f"{bin_dir}{os.pathsep}{os.environ['PATH']}",
             "FAKE_SSH_HOST": "fakehost", "FAKE_SSH_HOME": str(self.home), "FAKE_GH_RUNS": GREEN,
-            "FAKE_AXI_STATE": str(self.tmp / "axi-page"), "FAKE_AXI_ERROR_PAGE": "",
+            "FAKE_AXI_STATE": str(self.tmp / "axi-page"), "FAKE_AXI_ERROR_PAGE": "", "FAKE_SSH_DROP": "",
             "SITE_DEPLOY_CONFIG": str(self.tmp / "deploy.toml"), "SITE_DEPLOY_HOST": "fakehost",
             "SITE_DEPLOY_DOCROOT": str(self.docroot), "SITE_DEPLOY_STATE": str(self.state),
             "SITE_DEPLOY_BASE_URL": f"http://127.0.0.1:{server.server_address[1]}/",
@@ -170,13 +174,6 @@ class FakeHostTests(unittest.TestCase):
         report = next(self.state.glob("fm-deploy-*/report.toon")).read_text()
         self.assertIn(f"failures[{deploy.SHOWN_FAILURES + 1}]", report)
         self.assertIn("live-drift,blog/extra-20.html,", report)
-
-    def test_scoped_verdict_says_so_and_counts_what_lies_outside(self):
-        (self.docroot / "blog/old.html").write_bytes(b"<p>stale</p>")
-        code, out = self.cli("plan", "--base", "HEAD", "--visuals-base", VISUALS, "--scoped-verdict")
-        self.assertEqual(code, 0, out)
-        self.assertIn("scope: uploaded files only (--scoped-verdict)", out)
-        self.assertIn("scoped out (--scoped-verdict): 1 of 2 files outside the upload set differ", out)
 
     def test_an_upload_missing_from_the_build_fails(self):
         self.rows = ROWS + ["A\tsite/blog/gone.html"]
@@ -249,6 +246,7 @@ class FakeHostTests(unittest.TestCase):
             self.assertRegex(out, rf"\n  \w+,{check},PASS,")
         self.assertIn("  replaced: 1\n  installed_new: 1\n", out)
         self.assertIn("backup: \"removed: site-backups/fm-deploy-", out)
+        self.assertIn("backups[1]{name,files,age_days,action}:\n  20260929-145839,1,", out)
         # The older backup is not this deploy's own, so it stays.
         self.assertEqual(sorted(p.name for p in (self.home / "site-backups").iterdir()), ["20260929-145839"])
         [entry] = self.log()
@@ -281,6 +279,8 @@ class FakeHostTests(unittest.TestCase):
         [backup] = (self.home / "site-backups").glob("fm-deploy-*")
         self.assertEqual((backup / "added").read_text(), "blog/new.html\n")
         self.assertIn(f"sh site-backups/{backup.name}/restore.sh", out)
+        self.assertIn(f"\n  {backup.name},", out)
+        self.assertIn(f",{deploy.ROLLBACK}\n", out)
         [entry] = self.log()
         self.assertEqual(entry["verdict"], "fail")
         self.assertEqual(entry["live"], {"site": entry["base"], "visuals": VISUALS})
@@ -289,8 +289,37 @@ class FakeHostTests(unittest.TestCase):
 
         code, out = self.cli("backups")
         self.assertEqual(code, 0, out)
-        self.assertIn("  shown: 2\n  total: 2\n  review: 1\n", out)
+        self.assertIn("  total: 2\n  review: 1\n", out)
         self.assertLess(out.index(backup.name), out.index("20260929-145839"))
+        self.assertIn(f"Roll back the last deploy with `ssh fakehost sh site-backups/{backup.name}/restore.sh`", out)
+
+    def test_after_a_failed_then_a_passed_deploy_the_old_backup_is_superseded(self):
+        os.environ["FAKE_AXI_ERROR_PAGE"] = "blog/new.html"
+        code, out = self.cli("run", "--execute", "--base", "HEAD", "--visuals-base", VISUALS)
+        self.assertEqual(code, 1, out)
+        [failed] = (self.home / "site-backups").glob("fm-deploy-*")
+        os.environ["FAKE_AXI_ERROR_PAGE"] = ""
+
+        class Later(datetime.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return datetime.datetime.now(tz) + datetime.timedelta(minutes=1)
+
+        with patch.object(deploy, "datetime", SimpleNamespace(datetime=Later, date=datetime.date)):
+            code, out = self.cli("run", "--execute")
+        self.assertEqual(code, 0, out)
+        for path, data in NEW.items():
+            self.assertEqual(self.live(path), data, path)
+        self.assertIn(f"\n  {failed.name},", out)
+        self.assertIn(f',"{deploy.SUPERSEDED}"\n', out)
+        self.assertNotIn("restore.sh", out)
+
+        code, out = self.cli("backups")
+        self.assertEqual(code, 0, out)
+        self.assertIn(f"\n  {failed.name},", out)
+        self.assertIn(f',"{deploy.SUPERSEDED}"\n', out)
+        self.assertNotIn(deploy.ROLLBACK, out)
+        self.assertNotIn("Roll back", out)
 
     def test_a_corrupt_upload_is_never_installed(self):
         real_install_script = deploy.install_script
@@ -303,8 +332,36 @@ class FakeHostTests(unittest.TestCase):
         self.assertEqual(code, 1, out)
         self.assertIn("install,upload-and-install,FAIL", out)
         self.assertIn("B,checksums,NOT RUN", out)
+        self.assertRegex(out, r"\n  restore,restore,PASS,restored 0\n")
         self.assertEqual(self.live("corpus.json"), OLD["corpus.json"])
         self.assertFalse((self.docroot / "blog/new.html").exists())
+        [entry] = self.log()
+        self.assertEqual(entry["live"], {"site": entry["base"], "visuals": VISUALS})
+
+    def test_an_ssh_drop_during_the_install_still_restores_reports_and_logs(self):
+        os.environ["FAKE_SSH_DROP"] = "sh -s"
+        code, out = self.cli("run", "--execute", "--base", "HEAD", "--visuals-base", VISUALS)
+        self.assertEqual(code, 1, out)
+        self.assertIn("install,upload-and-install,FAIL,1 failed; environment error", out)
+        self.assertIn("closed by remote host", out)
+        self.assertRegex(out, r"\n  restore,restore,PASS,restored 0")
+        self.assertTrue(next(self.state.glob("fm-deploy-*/report.toon")).is_file())
+        [entry] = self.log()
+        self.assertEqual(entry["verdict"], "fail")
+        self.assertEqual(entry["live"], {"site": entry["base"], "visuals": VISUALS})
+
+    def test_an_ssh_drop_during_the_restore_leaves_the_live_state_unknown(self):
+        os.environ["FAKE_AXI_ERROR_PAGE"] = "blog/new.html"
+        os.environ["FAKE_SSH_DROP"] = "if *restore.sh*"
+        code, out = self.cli("run", "--execute", "--base", "HEAD", "--visuals-base", VISUALS)
+        self.assertEqual(code, 1, out)
+        self.assertIn("restore,restore,FAIL", out)
+        self.assertIn("Run the restore again by hand", out)
+        [entry] = self.log()
+        self.assertIsNone(entry["live"])
+        code, out = self.cli("plan")
+        self.assertEqual(code, 2, out)
+        self.assertIn("left the live state unknown", out)
 
     def test_the_upload_bundle_holds_only_the_upload_set(self):
         if shutil.which("xattr"):
@@ -330,25 +387,34 @@ class FakeHostTests(unittest.TestCase):
             with self.subTest(name), self.assertRaises(ValueError):
                 deploy.remove_own_backup(None, "site-backups", name)
 
-    # --- report and backups filters ----------------------------------------------------------------
+    # --- report --deploy -------------------------------------------------------------------------
 
-    def test_filters_report_shown_and_total_and_fail_when_nothing_matches(self):
+    def test_report_deploy_takes_an_exact_id(self):
         self.cli("run", "--execute", "--base", "HEAD", "--visuals-base", VISUALS)
-        code, out = self.cli("report", "--deploy", "fm-deploy-nothing")
-        self.assertEqual(code, 2, out)
-        self.assertIn("matches none of 1 deploys", out)
         [entry] = self.log()
+        for unknown in ("fm-deploy-nothing", entry["id"][:12]):
+            with self.subTest(unknown):
+                code, out = self.cli("report", "--deploy", unknown)
+                self.assertEqual(code, 2, out)
+                self.assertIn(f"no deploy {unknown} among the 1 deploys in the log", out)
         code, out = self.cli("report", "--deploy", entry["id"])
         self.assertEqual(code, 0, out)
         self.assertIn(f"filter: {entry['id']}", out)
 
-        code, out = self.cli("backups", "--match", "nothing-*")
-        self.assertEqual(code, 2, out)
-        self.assertIn("matches none of 1 backups", out)
-        code, out = self.cli("backups", "--match", "2026*")
-        self.assertEqual(code, 0, out)
-        self.assertIn("  shown: 1\n  total: 1\n", out)
-        self.assertIn("20260929-145839,1,", out)
+    def test_install_and_restore_work_in_a_docroot_with_a_space(self):
+        docroot = self.home / "my site"
+        write_tree(docroot, OLD)
+        remote = deploy.Remote("fakehost", deploy.Log(self.state / "space/deploy.log"))
+        backup, paths = "site-backups/fm-deploy-space", ["corpus.json", "blog/new.html"]
+        self.assertIsNone(deploy.upload(remote, backup, paths))
+        replaced, added, why = deploy.install(remote, str(docroot), backup, "fm-deploy-space", paths,
+                                              deploy.local_sums(paths))
+        self.assertIsNone(why)
+        self.assertEqual((replaced, added), (1, 1))
+        for path in paths:
+            self.assertEqual((docroot / path).read_bytes(), NEW[path], path)
+        self.assertEqual(deploy.restore(remote, backup), "restored 1")
+        self.assertEqual((docroot / "corpus.json").read_bytes(), OLD["corpus.json"])
 
 
 class InstallScriptTests(unittest.TestCase):
@@ -356,12 +422,6 @@ class InstallScriptTests(unittest.TestCase):
         for path in ("a\nb.html", "/etc/passwd", "", deploy.HEREDOC):
             with self.subTest(path=path), self.assertRaises(deploy.UsageError):
                 deploy.safe_path(path)
-
-    def test_the_script_checks_sha256_before_it_installs(self):
-        sums = {"index.html": hashlib.sha256(b"x").hexdigest()}
-        script = deploy.install_script("/srv/my site", "site-backups/fm-deploy-a", "fm-deploy-a", ["index.html"], sums)
-        self.assertLess(script.index("sha256sum -c"), script.index('done < "$backup/PATHS"'))
-        self.assertIn("docroot=$(cd -- '/srv/my site' && pwd)", script)
 
 
 if __name__ == "__main__":
