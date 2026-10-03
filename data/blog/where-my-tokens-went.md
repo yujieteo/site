@@ -70,10 +70,10 @@ writing the cache, not reading it.
 |---|---:|---|---|
 | Main session context size | 1,290 | It ran at 600,000–970,000 tokens of context, and every turn re-read it | Rotate to a fresh session regularly |
 | Notifications that needed no action | 623 | 745 of 1,379 main turns; 44% of the main session's cost | Filter them before they wake the main session |
-| Multi-repository worker sessions | — | Workers that handled 5–9 repositories in one session; contexts reached nearly 750,000 tokens | One repository per worker session |
+| Multi-repository worker sessions | — | Workers that handled 5–9 repositories in one session; contexts peaked at about 746,000 tokens | One repository per worker session |
 | Supervisor outage | 325 | A bug stopped the small supervisor, so its wake-ups went to the main session | Fixed |
 | One-hour cache on short pipeline sessions | 844 | Sessions with a median of 6 calls paid the one-hour cache-write price; 55% of pipeline cost | Use the five-minute cache |
-| Pipeline waste | about 700 | Discarded or restarted runs, repeated review-and-fix rounds, workers polling their status | Batch fixes, cap re-reviews, wait instead of poll |
+| Pipeline waste | about 700 | Discarded or restarted runs, repeated review-and-fix rounds, workers polling their status | Batch fixes before re-pushing; re-review only the fix diff when it is small; one waiting command instead of status polling |
 
 A few notes on the table.
 
