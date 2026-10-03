@@ -4,14 +4,14 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { pathToFileURL } from "node:url";
 import vm from "node:vm";
+import { visualsUrl } from "./visuals-repo.mjs";
 
 /** @param {string} p */
 const read = (p) => readFile(new URL(p, import.meta.url), "utf8");
 /** @param {RegExpExecArray | null} match @param {string} what */
 const found = (match, what) => { assert.ok(match, `${what} found`); return match; };
-const VISUALS = process.env.VISUALS_REPO ? pathToFileURL(`${process.env.VISUALS_REPO}/`) : new URL("../../visuals/", import.meta.url);
+const VISUALS = visualsUrl();
 const html = await readFile(new URL("viz/toulmin/index.html", VISUALS), "utf8");
 const ctx = vm.createContext({});
 vm.runInContext(found(/<script id="toulmin-engine">([\s\S]*?)<\/script>/.exec(html), "the Toulmin engine")[1], ctx);

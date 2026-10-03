@@ -31,7 +31,7 @@ On a red run, fix the change on the branch, push, and wait for green again; neve
 
 Run these commands from the repository root. The build and the Python tests
 need the separate `visuals` checkout described in the [README](../README.md#build);
-set `VISUALS_REPO` when it is not at a supported sibling path.
+set `VISUALS_REPO` when it is not a sibling of this checkout or of its primary checkout.
 
 ```sh
 .venv/bin/python scripts/validate.py                      # data against schema/, notes tags, todos and date order

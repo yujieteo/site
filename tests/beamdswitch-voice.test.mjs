@@ -3,8 +3,8 @@
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import test from "node:test";
-import { pathToFileURL } from "node:url";
 import vm from "node:vm";
+import { visualsUrl } from "./visuals-repo.mjs";
 import { parseDeck } from "./fixtures/beamdswitch/deck.mjs";
 
 /**
@@ -14,8 +14,8 @@ import { parseDeck } from "./fixtures/beamdswitch/deck.mjs";
 
 /** @param {string} path */
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
-// The yujieteo/visuals checkout the build reads (VISUALS_REPO, as in CI; else a sibling checkout).
-const VISUALS = process.env.VISUALS_REPO ? pathToFileURL(`${process.env.VISUALS_REPO}/`) : new URL("../../visuals/", import.meta.url);
+// The yujieteo/visuals checkout the build reads.
+const VISUALS = visualsUrl();
 /** @param {string} path */
 const readVisuals = (path) => readFileSync(new URL(path, VISUALS), "utf8");
 const TEMPLATE = read("templates/beamdswitch.js");

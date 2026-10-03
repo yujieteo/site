@@ -26,6 +26,8 @@ import time
 import unittest
 from pathlib import Path
 
+from visual_sources import find_visuals_repo
+
 ROOT = Path(__file__).resolve().parents[1]
 SLOWEST = 10
 BUDGET = ROOT / "tests" / "time-budget.json"
@@ -147,6 +149,10 @@ def main():
     else:
         os.environ["SITE_TEST_VISUALS"] = value
     print(f"per-visualisation checks: {described}", flush=True)
+    # The tests read the visuals checkout the build finds, so a worktree needs no VISUALS_REPO either.
+    visuals_repo, source = find_visuals_repo()
+    os.environ["VISUALS_REPO"] = str(visuals_repo)
+    print(f"visuals checkout: {visuals_repo} ({source})", flush=True)
 
     reports, failures = [], []
     for suite in dict.fromkeys(args.suites or ["python", "node"]):

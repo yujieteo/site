@@ -2,8 +2,8 @@
 
 A visualization is either one of this repository's own, with a catalogue stub data/visuals/<slug>.yaml
 and its files in visuals/<slug>/ (the private beamdswitch and connes-qft), or a folder viz/<slug>/ of
-the public visuals repository, read as the checkout VISUALS_REPO has it: its visual.json is the
-catalogue entry, unless it says "published": false. Large files are listed in a downloads file and
+the public visuals repository, read as the visuals checkout find_visuals_repo finds has it: its visual.json
+is the catalogue entry, unless it says "published": false. Large files are listed in a downloads file and
 fetched into a cache shared by every build, checked against their sha256.
 """
 
@@ -20,22 +20,75 @@ from pathlib import Path
 from site_data import ROOT, check_document, first_duplicate, load_all, load_validator
 
 
-def resolve_visuals_repo():
-    configured = os.environ.get("VISUALS_REPO")
-    candidates = [Path(configured).expanduser()] if configured else []
-    candidates.extend([
-        ROOT.parent / "visuals",
-        ROOT.parent.parent / "visuals",
-        ROOT.parent.parent / "tmp" / "visuals",
-    ])
-    for candidate in candidates:
-        if candidate.is_dir():
-            return candidate.resolve()
-    checked = ", ".join(str(path) for path in candidates)
+SIBLINGS = (Path("..", "visuals"), Path("..", "..", "visuals"), Path("..", "..", "tmp", "visuals"))
+
+
+def primary_checkout(root):
+    """The primary checkout of the repository ``root`` belongs to, or None when Git cannot tell.
+
+    A linked worktree, such as a disposable agent worktree, shares the primary checkout's Git directory:
+    ``git rev-parse --git-common-dir`` names it, and the checkout is its parent (or, for a bare
+    repository, the Git directory itself).
+    """
+    try:
+        common = subprocess.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"], cwd=root,
+                                check=True, capture_output=True, text=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    common = Path(common)
+    return common.parent if common.name == ".git" else common
+
+
+def sibling_candidates(root=ROOT):
+    """The sibling paths to look for the visuals checkout in, in order, as (where it came from, path) pairs.
+
+    The sibling paths of this checkout, then the same sibling paths of the primary checkout when this
+    checkout is a linked worktree.
+    """
+    candidates = [("sibling of this checkout", root / sibling) for sibling in SIBLINGS]
+    primary = primary_checkout(root)
+    if primary is not None and primary.resolve() != root.resolve():
+        candidates += [(f"sibling of the primary checkout {primary}", primary / sibling) for sibling in SIBLINGS]
+    return candidates
+
+
+def is_visuals_checkout(path):
+    """Whether ``path`` is a yujieteo/visuals checkout: a Git checkout with a viz/ folder."""
+    return (path / "viz").is_dir() and (path / ".git").exists()
+
+
+def find_visuals_repo(root=ROOT, environ=None):
+    """Return (visuals checkout, where it came from): VISUALS_REPO when it is set, else the first sibling.
+
+    VISUALS_REPO, when set, must be a visuals checkout; the siblings are not tried. Raise RuntimeError
+    naming the bad value, or every path tried, and the fix when there is none. The build never clones
+    or uses the network to find it.
+    """
+    environ = os.environ if environ is None else environ
+    if configured := environ.get("VISUALS_REPO"):
+        path = Path(configured).expanduser()
+        if not is_visuals_checkout(path):
+            raise RuntimeError(
+                f"VISUALS_REPO is {configured!r}, which is not a yujieteo/visuals checkout (a Git checkout "
+                "with a viz/ folder). Fix: set VISUALS_REPO to the path of a yujieteo/visuals checkout, or "
+                "unset it to use a sibling checkout."
+            )
+        return path.resolve(), "VISUALS_REPO"
+    candidates = sibling_candidates(root)
+    for source, path in candidates:
+        if is_visuals_checkout(path):
+            return path.resolve(), source
+    tried = "\n".join(f"  {os.path.normpath(path)} ({source})" for source, path in candidates)
     raise RuntimeError(
-        "Visuals repository not found. Set VISUALS_REPO or place it in a supported "
-        f"repository-relative location. Checked: {checked}"
+        "Visuals repository not found. Tried, in order:\n"
+        f"{tried}\n"
+        "Fix: export VISUALS_REPO=/path/to/visuals, or clone it next to the site checkout:\n"
+        f"  git clone https://github.com/yujieteo/visuals.git {root.parent / 'visuals'}"
     )
+
+
+def resolve_visuals_repo(root=ROOT, environ=None):
+    return find_visuals_repo(root, environ)[0]
 
 
 CATALOGUE_FIELDS = ("title", "summary", "source_url", "fetched", "webmcp_tools", "tags", "category", "links")

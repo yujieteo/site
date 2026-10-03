@@ -38,10 +38,21 @@ global Search popup in every page header, Cmd/Ctrl+K) and the read-only WebMCP t
 The build needs two checkouts: this repository and the public
 [`visuals`](https://github.com/yujieteo/visuals) repository, which holds every
 public visualization in its own folder `viz/<slug>/` with its catalogue entry,
-`visual.json`. `scripts/build.py` looks for the visuals checkout at
-`../visuals`, `../../visuals`, then `../../tmp/visuals`; set `VISUALS_REPO` to
-its path when it lives anywhere else. Without it the build and the Python tests
-fail with `Visuals repository not found`. The build publishes every folder whose
+`visual.json`. `scripts/build.py` finds the visuals checkout in this order:
+
+1. `VISUALS_REPO`, when it is set. The build fails if it is not a visuals
+   checkout; it does not fall back to the other paths.
+2. `../visuals`, `../../visuals`, then `../../tmp/visuals`, relative to this
+   checkout.
+3. The same three paths relative to the primary checkout, when this checkout is
+   a linked Git worktree (found with `git rev-parse --git-common-dir`). So a
+   disposable worktree of `~/src/site` finds `~/src/visuals`.
+
+A visuals checkout is a Git checkout with a `viz/` folder. The build prints the
+path it used, where it came from and its commit. When none is found, the build
+and `scripts/run_tests.py` fail with `Visuals repository not found`, every path
+they tried, and the fix: set `VISUALS_REPO`, or clone yujieteo/visuals next to
+the site checkout. They never clone or use the network to find it. The build publishes every folder whose
 `visual.json` does not say `"published": false`, reading the checkout as it is
 checked out, and prints the visuals commit it read: check out the commit to
 publish (normally `origin/main`) before a deploy build, and record that commit
@@ -50,7 +61,7 @@ with the deploy.
 ```sh
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-export VISUALS_REPO=../visuals   # omit when the sibling checkout already exists
+export VISUALS_REPO=../visuals   # omit when a sibling checkout already exists
 .venv/bin/python scripts/validate.py
 .venv/bin/python scripts/build.py
 open site/index.html
@@ -81,8 +92,9 @@ needs network access to Hugging Face and jsDelivr.
 Many tests read the built `site/`, so run `scripts/build.py` first.
 `scripts/run_tests.py` runs the same two suites as
 `python -m unittest discover -s tests -p 'test_*.py'` and
-`node --test 'tests/*.test.{mjs,cjs}'` (either still works on its own; pass
-`python` or `node` to run one), then reports each suite's wall time and its
+`node --test 'tests/*.test.{mjs,cjs}'` (either still works on its own and
+finds the visuals checkout as the build does; pass `python` or `node` to run
+one), then reports each suite's wall time and its
 slowest modules, files and tests. A suite over its budget in
 `tests/time-budget.json` fails with its slowest tests named. The budget does
 not grow with the number of visualisations: per-visualisation checks must stay
@@ -112,8 +124,9 @@ is a port of its page files (`tests/test_visual_ports.py`).
 
 Python 3.13 and Node 22 are the versions CI uses; the Node tests need no
 installed packages. The Python tests copy the repository to a
-temporary directory and rebuild the site there, so they also read
-`VISUALS_REPO`.
+temporary directory and rebuild the site there, so they also read the visuals
+checkout: `scripts/run_tests.py` finds it as the build does and sets
+`VISUALS_REPO` for both suites.
 
 The site's own JavaScript (`static/js/`, `scripts/`, `tests/`) is type-checked
 JavaScript: JSDoc types that `tsc` checks as `tsconfig.json` sets out, with

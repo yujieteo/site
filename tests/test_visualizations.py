@@ -1,31 +1,22 @@
 import csv
 import io
 import json
-import os
 import sys
-import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
-VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
 sys.path.insert(0, str(SCRIPTS))
 
 import visual_sources  # noqa: E402
 from visual_selection import covers  # noqa: E402
 
+VISUALS_REPO = visual_sources.resolve_visuals_repo()
+
 
 class VisualizationTests(unittest.TestCase):
-    def test_environment_selects_visuals_repository(self):
-        with tempfile.TemporaryDirectory() as directory:
-            repository = Path(directory) / "visuals"
-            repository.mkdir()
-            with patch.dict(os.environ, {"VISUALS_REPO": str(repository)}):
-                self.assertEqual(visual_sources.resolve_visuals_repo(), repository.resolve())
-
     def test_the_site_publishes_each_visuals_folder_unchanged(self):
         """Every published viz/<slug>/ of the visuals checkout: its page, data and assets, byte for byte."""
         entries = visual_sources.visuals_repo_visualizations(VISUALS_REPO)

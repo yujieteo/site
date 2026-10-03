@@ -11,10 +11,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VISUALS_REPO = Path(os.environ.get("VISUALS_REPO", ROOT.parent / "visuals")).resolve()
+sys.path.insert(0, str(ROOT / "scripts"))
+from visual_sources import resolve_visuals_repo  # noqa: E402
+
+VISUALS_REPO = resolve_visuals_repo()
 REPO_IGNORE = shutil.ignore_patterns(".git", ".venv", "node_modules", "__pycache__")
 
-sys.path.insert(0, str(ROOT / "scripts"))
 
 from pages import build_blog_post  # noqa: E402
 

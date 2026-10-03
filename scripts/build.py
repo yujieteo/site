@@ -26,7 +26,7 @@ from site_data import (
 )
 from site_html import build_redirect
 from visual_sources import (
-    load_visualization_files, load_visualization_sources, load_visualizations, resolve_visuals_repo, visuals_commit,
+    load_visualization_files, load_visualization_sources, load_visualizations, find_visuals_repo, visuals_commit,
 )
 
 STATIC = ROOT / "static"
@@ -192,7 +192,8 @@ def main():
         paper["citation"] = citation(paper, arxiv_cache)
     posts = load_blog_posts()
     notes = load_daily_notes()
-    visuals_repo = resolve_visuals_repo()
+    visuals_repo, visuals_source = find_visuals_repo()
+    print(f"Reading yujieteo/visuals from {visuals_repo} ({visuals_source})")
     visualizations = load_visualizations(visuals_repo)
     media_items = load_media_items()
     visualization_sources = load_visualization_sources(visualizations, visuals_repo)
