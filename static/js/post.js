@@ -4,19 +4,19 @@
 
 const nav = document.querySelector("[data-docs-nav]");
 const narrow = window.matchMedia("(max-width: 48rem)");
-if (nav && narrow.matches) nav.open = false;
+if (nav instanceof HTMLDetailsElement && narrow.matches) nav.open = false;
 
 const toc = document.querySelector("[data-toc]");
 if (toc) {
   const links = new Map(
-    [...toc.querySelectorAll('a[href^="#"]')].map((link) => [
+    [.../** @type {NodeListOf<HTMLAnchorElement>} */ (toc.querySelectorAll('a[href^="#"]'))].map((link) => [
       decodeURIComponent(link.hash.slice(1)),
       link,
     ]),
   );
   const headings = [...links.keys()]
     .map((id) => document.getElementById(id))
-    .filter(Boolean);
+    .filter((heading) => heading !== null);
 
   const update = () => {
     // The current section is the last heading scrolled past the top band.

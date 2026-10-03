@@ -9,8 +9,17 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 
+/**
+ * visuals/beamdswitch/raw.json: the vendored page's upstream and the Kokoro files it downloads.
+ * @typedef {{ path: string, url: string, sha256: string, bytes: number, loaded: string }} Download
+ * @typedef {{ upstream: { bytes: number, sha256: string, commit: string }, loaded: Record<string, unknown>, downloads: Download[] }} Raw
+ * The service worker's event handlers, as it registers them on self.
+ * @typedef {Record<string, (event: any) => void>} Listeners
+ */
+
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const VIZ = join(ROOT, "visuals/beamdswitch");
+/** @type {Raw} */
 const raw = JSON.parse(await readFile(join(VIZ, "raw.json"), "utf8"));
 const PYTHON = process.env.PYTHON || (existsSync(join(ROOT, ".venv/bin/python")) ? join(ROOT, ".venv/bin/python") : "python3");
 // The catalogue stub as the build reads it.
@@ -19,6 +28,7 @@ const catalogue = JSON.parse(execFileSync(PYTHON, ["-c", [
   "from visual_sources import load_visualizations",
   "print(json.dumps(next(v for v in load_visualizations() if v['slug'] == 'beamdswitch'), default=str))",
 ].join("\n")], { cwd: ROOT, encoding: "utf8" }));
+/** @param {Buffer} bytes */
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const SITE_BLOCK = /<!-- teoyujie\.org additions: begin[^\n]*-->\n[\s\S]*?<!-- teoyujie\.org additions: end -->\n/;
 
@@ -27,7 +37,7 @@ test("index.html is the vendored beamdswitch.html plus only the marked site bloc
   const text = html.toString("latin1");
   const block = text.match(SITE_BLOCK);
   assert.ok(block, "site block present");
-  assert.equal(text.match(new RegExp(SITE_BLOCK, "g")).length, 1);
+  assert.equal(text.match(new RegExp(SITE_BLOCK, "g"))?.length, 1);
   const upstream = Buffer.from(text.replace(SITE_BLOCK, ""), "latin1");
   assert.equal(upstream.length, raw.upstream.bytes);
   assert.equal(sha256(upstream), raw.upstream.sha256);
@@ -40,7 +50,8 @@ test("index.html is the vendored beamdswitch.html plus only the marked site bloc
   assert.ok(text.indexOf(block[0]) < text.indexOf("<script>"), "site block precedes the app's scripts");
   // The notice is static and styled inline, so it depends on no id or class of the app.
   assert.doesNotMatch(block[0], /\s(id|class)=/);
-  const MiB = 1048576, voice = raw.downloads.find((d) => d.loaded === "voice").bytes;
+  const MiB = 1048576, voice = raw.downloads.find((d) => d.loaded === "voice")?.bytes ?? NaN;
+  /** @param {string[]} kinds */
   const firstLoad = (kinds) => Math.round((raw.downloads.filter((d) => kinds.includes(d.loaded)).reduce((n, d) => n + d.bytes, 0) + voice) / MiB);
   const sizes = block[0].match(/about (\d+) MB for WASM or (\d+) MB for WebGPU/);
   assert.ok(sizes, "notice states the first-load sizes");
@@ -70,8 +81,9 @@ test("every Kokoro file is pinned to an exact URL and sha256, and none is commit
 const swSource = await readFile(join(VIZ, "coi-serviceworker.js"), "utf8");
 
 function serviceWorker() {
+  /** @type {Listeners} */
   const listeners = {};
-  const self = { location: new URL("https://teoyujie.org/visuals/beamdswitch/coi-serviceworker.js"), addEventListener: (type, fn) => { listeners[type] = fn; } };
+  const self = { location: new URL("https://teoyujie.org/visuals/beamdswitch/coi-serviceworker.js"), addEventListener: (/** @type {string} */ type, /** @type {Listeners[string]} */ fn) => { listeners[type] = fn; } };
   vm.runInNewContext(swSource, { self, Headers, Response, URL, fetch: undefined });
   return listeners;
 }
@@ -80,34 +92,52 @@ test("the service worker isolates same-origin responses and types .mjs and .wasm
   const listeners = serviceWorker();
   assert.deepEqual(Object.keys(listeners).sort(), ["activate", "fetch", "install"]);
   // The handler calls the global fetch; give the sandbox one per request.
+  /** @param {string} url @param {Response} response @returns {Promise<Response | null>} */
   const run = async (url, response) => {
     const context = vm.createContext({ Headers, Response, URL, fetch: async () => response });
+    /** @type {Listeners} */
     const captured = {};
-    context.self = { location: new URL("https://teoyujie.org/visuals/beamdswitch/coi-serviceworker.js"), addEventListener: (t, fn) => { captured[t] = fn; } };
+    context.self = { location: new URL("https://teoyujie.org/visuals/beamdswitch/coi-serviceworker.js"), addEventListener: (/** @type {string} */ t, /** @type {Listeners[string]} */ fn) => { captured[t] = fn; } };
     vm.runInContext(swSource, context);
+    /** @type {Promise<Response> | null} */
     let responded = null;
-    captured.fetch({ request: { url, cache: "default", mode: "cors" }, respondWith: (p) => { responded = p; } });
+    captured.fetch({ request: { url, cache: "default", mode: "cors" }, respondWith: (/** @type {Promise<Response>} */ p) => { responded = p; } });
     return responded && await responded;
   };
-  const mjs = await run("https://teoyujie.org/visuals/beamdswitch/kokoro/ort/ort-wasm-simd-threaded.jsep.mjs",
+  /** @param {string} url @param {Response} response */
+  const handled = async (url, response) => {
+    const result = await run(url, response);
+    assert.ok(result, `the worker responds to ${url}`);
+    return result;
+  };
+  const mjs = await handled("https://teoyujie.org/visuals/beamdswitch/kokoro/ort/ort-wasm-simd-threaded.jsep.mjs",
     new Response("export default 1", { headers: { "Content-Type": "application/octet-stream" } }));
   assert.equal(mjs.headers.get("Content-Type"), "text/javascript");
   assert.equal(mjs.headers.get("Cross-Origin-Embedder-Policy"), "require-corp");
   assert.equal(mjs.headers.get("Cross-Origin-Opener-Policy"), "same-origin");
   assert.equal(await mjs.text(), "export default 1");
-  const wasm = await run("https://teoyujie.org/visuals/beamdswitch/kokoro/ort/x.wasm", new Response("", { headers: { "Content-Type": "application/octet-stream" } }));
+  const wasm = await handled("https://teoyujie.org/visuals/beamdswitch/kokoro/ort/x.wasm", new Response("", { headers: { "Content-Type": "application/octet-stream" } }));
   assert.equal(wasm.headers.get("Content-Type"), "application/wasm");
-  const page = await run("https://teoyujie.org/visuals/beamdswitch/index.html", new Response("<p>", { headers: { "Content-Type": "text/html" } }));
+  const page = await handled("https://teoyujie.org/visuals/beamdswitch/index.html", new Response("<p>", { headers: { "Content-Type": "text/html" } }));
   assert.equal(page.headers.get("Content-Type"), "text/html");
   assert.equal(page.headers.get("Cross-Origin-Opener-Policy"), "same-origin");
-  const missing = await run("https://teoyujie.org/visuals/beamdswitch/nope.mjs", new Response("", { status: 404, headers: { "Content-Type": "text/html" } }));
+  const missing = await handled("https://teoyujie.org/visuals/beamdswitch/nope.mjs", new Response("", { status: 404, headers: { "Content-Type": "text/html" } }));
   assert.equal(missing.status, 404);
   assert.equal(missing.headers.get("Content-Type"), "text/html");
   assert.equal(await run("https://huggingface.co/x.onnx", new Response("")), null, "cross-origin requests are not handled");
 });
 
+/**
+ * @param {object} [options]
+ * @param {boolean} [options.isolated]
+ * @param {object | null} [options.controller]
+ * @param {boolean} [options.active]
+ * @param {string | null} [options.flag]
+ */
 function pageSide({ isolated = false, controller = null, active = true, flag = null } = {}) {
+  /** @type {Map<string, string>} */
   const storage = new Map(flag ? [["beamdswitch-coi-reload", flag]] : []);
+  /** @type {{ reloads: number, registered: string | null, listeners: Listeners }} */
   const calls = { reloads: 0, registered: null, listeners: {} };
   const registration = { active: active ? {} : null };
   const window = { crossOriginIsolated: isolated, isSecureContext: true };
@@ -115,8 +145,8 @@ function pageSide({ isolated = false, controller = null, active = true, flag = n
     window, URL, console: { warn() {} },
     document: { currentScript: { src: "https://teoyujie.org/visuals/beamdswitch/coi-serviceworker.js" } },
     location: { reload: () => { calls.reloads++; } },
-    sessionStorage: { getItem: (k) => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v), removeItem: (k) => storage.delete(k) },
-    navigator: { serviceWorker: { controller, register: (src) => { calls.registered = src; return Promise.resolve(registration); }, addEventListener: (t, fn) => { calls.listeners[t] = fn; } } },
+    sessionStorage: { getItem: (/** @type {string} */ k) => storage.get(k) ?? null, setItem: (/** @type {string} */ k, /** @type {string} */ v) => storage.set(k, v), removeItem: (/** @type {string} */ k) => storage.delete(k) },
+    navigator: { serviceWorker: { controller, register: (/** @type {string} */ src) => { calls.registered = src; return Promise.resolve(registration); }, addEventListener: (/** @type {string} */ t, /** @type {Listeners[string]} */ fn) => { calls.listeners[t] = fn; } } },
   };
   vm.runInNewContext(swSource, context);
   return { calls, storage };
@@ -140,22 +170,28 @@ test("the page registers the worker in its own directory and reloads at most onc
 });
 
 // ---------------------------------------------------------------- site.js
+/**
+ * @typedef {{ name: string, execute(input?: object): Promise<{ content: { text: string }[] }> }} Tool
+ * @param {{ isolated?: boolean, controller?: object | null }} [options]
+ */
 async function siteTools({ isolated = true, controller = {} } = {}) {
+  /** @type {Record<string, Tool>} */
   const tools = {};
   const frames = [
     { index: 0, kind: "title", title: "Beams", section: "", steps: 1, notes: "", narration: "Beams." },
     { index: 1, kind: "frame", title: "Compatibility", section: "Method", steps: 3, notes: "n", narration: "a. b. c." },
   ];
-  const ctx = { deck: { meta: { title: "Beams" }, frames }, i: 0, step: 0, go(i, s) { this.i = i; this.step = s; }, engine: { stats: { device: "wasm", dtype: "q8", loadMs: 5, sentences: 2, genMs: 9, audioSec: 3 } } };
+  const ctx = { deck: { meta: { title: "Beams" }, frames }, i: 0, step: 0, go(/** @type {number} */ i, /** @type {number} */ s) { this.i = i; this.step = s; }, engine: { stats: { device: "wasm", dtype: "q8", loadMs: 5, sentences: 2, genMs: 9, audioSec: 3 } } };
   const window = { crossOriginIsolated: isolated, beamdswitch: ctx };
-  const document = { baseURI: "https://teoyujie.org/visuals/beamdswitch/index.html", modelContext: { registerTool: (t) => { tools[t.name] = t; } } };
-  const fetchStub = async (url) => {
+  const document = { baseURI: "https://teoyujie.org/visuals/beamdswitch/index.html", modelContext: { registerTool: (/** @type {Tool} */ t) => { tools[t.name] = t; } } };
+  const fetchStub = async (/** @type {URL | string} */ url) => {
     assert.equal(String(url), "https://teoyujie.org/visuals/beamdswitch/data.json");
     return { ok: true, json: async () => raw };
   };
   vm.runInNewContext(await readFile(join(VIZ, "site.js"), "utf8"), {
     window, document, fetch: fetchStub, URL, navigator: { serviceWorker: { controller } },
   });
+  /** @param {string} name @param {object} [input] */
   const call = async (name, input) => JSON.parse((await tools[name].execute(input)).content[0].text);
   return { tools, call, ctx };
 }
@@ -166,6 +202,7 @@ test("site.js registers the WebMCP tools the catalogue lists", async () => {
   assert.deepEqual(Object.keys(tools).sort(), [...listed].sort());
   assert.ok(listed.length >= 3);
   const meta = await call("get_metadata");
+  /** @param {string[]} kinds */
   const sum = (kinds) => raw.downloads.filter((d) => kinds.includes(d.loaded)).reduce((n, d) => n + d.bytes, 0) + 522240;
   assert.deepEqual(meta.first_load_bytes, { page: raw.upstream.bytes, wasm: sum(["narration", "wasm"]), webgpu: sum(["narration", "webgpu"]), voice: 522240 });
   assert.equal(meta.upstream.commit, raw.upstream.commit);

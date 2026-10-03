@@ -6,31 +6,39 @@ import { noteCopyControlHtml, setupCopyButtons, showFallback, writeToClipboard }
 // Just enough DOM for copy-markdown.js: elements with children, attributes,
 // closest() over data-* selectors, and a document that dispatches clicks.
 class FakeElement {
+  /** @param {string} tagName @param {Record<string, string>} [attributes] */
   constructor(tagName, attributes = {}) {
     this.tagName = tagName.toUpperCase();
     this.attributes = { ...attributes };
+    /** @type {any[]} the elements copy-markdown.js appends; tests read their textarea properties */
     this.children = [];
+    /** @type {FakeElement | null} */
     this.parentElement = null;
     this.textContent = "";
+    /** @type {Record<string, string>} */
     this.dataset = {};
     if ("data-copy-markdown" in attributes) this.dataset.copyMarkdown = attributes["data-copy-markdown"];
     this.focused = false;
     this.selected = false;
   }
+  /** @param {...FakeElement} children */
   append(...children) {
     for (const child of children) {
       child.parentElement = this;
       this.children.push(child);
     }
   }
+  /** @param {string} selector */
   matches(selector) {
     const name = selector.match(/^\[([\w-]+)\]$/)?.[1];
     return name !== undefined && name in this.attributes;
   }
+  /** @param {string} selector @returns {FakeElement | null} */
   closest(selector) {
-    for (let node = this; node; node = node.parentElement) if (node.matches(selector)) return node;
+    for (let node = /** @type {FakeElement | null} */ (this); node; node = node.parentElement) if (node.matches(selector)) return node;
     return null;
   }
+  /** @param {string} selector @returns {FakeElement | null} */
   querySelector(selector) {
     for (const child of this.children) {
       if (child.matches(selector)) return child;
@@ -44,19 +52,36 @@ class FakeElement {
 }
 
 class FakeDocument {
+  /** @param {Record<string, string>} sources */
   constructor(sources) {
+    /** @type {((event: { target: FakeElement }) => unknown)[]} */
     this.listeners = [];
+    /** @type {unknown[][]} */
     this.execCommandCalls = [];
     this.source = new FakeElement("script");
     this.source.textContent = JSON.stringify(sources);
   }
+  /** @param {...unknown} args */
   execCommand(...args) { this.execCommandCalls.push(args); return true; }
+  /** @param {string} id */
   getElementById(id) { return id === "markdown-sources" ? this.source : null; }
+  /** @param {string} tag */
   createElement(tag) { return new FakeElement(tag); }
+  /** @param {string} type @param {(event: { target: FakeElement }) => unknown} listener */
   addEventListener(type, listener) { if (type === "click") this.listeners.push(listener); }
+  /** @param {FakeElement} target */
   async click(target) { for (const listener of this.listeners) await listener({ target }); }
 }
 
+/**
+ * The fakes passed where copy-markdown.js expects the DOM, which they imitate only in part.
+ * @param {FakeDocument} fake @returns {Document}
+ */
+const asDocument = (fake) => /** @type {any} */ (fake);
+/** @param {FakeElement} fake @returns {Element} */
+const asElement = (fake) => /** @type {any} */ (fake);
+
+/** @param {string} key */
 function copyControl(key) {
   const scope = new FakeElement("article", { "data-copy-scope": "" });
   const control = new FakeElement("div", { "data-copy-control": "" });
@@ -69,12 +94,14 @@ function copyControl(key) {
 
 // Mocked timers: the status message lands after copy-markdown.js's 50 ms
 // delay without real waiting, and its 2 s clear never holds the process open.
+/** @param {import("node:test").TestContext} t */
 const mockTimers = (t) => {
   t.mock.timers.enable({ apis: ["setTimeout"] });
   return () => t.mock.timers.tick(50);
 };
 
 test("writeToClipboard reports success, refusal and absence", async () => {
+  /** @type {string[]} */
   const written = [];
   assert.equal(await writeToClipboard("# A", { writeText: async (text) => { written.push(text); } }), true);
   assert.deepEqual(written, ["# A"]);
@@ -85,9 +112,10 @@ test("writeToClipboard reports success, refusal and absence", async () => {
 
 test("a click copies that button's Markdown and confirms in the live region", async (t) => {
   const settle = mockTimers(t);
+  /** @type {string[]} */
   const written = [];
   const doc = new FakeDocument({ "note:a": "First [x](https://teoyujie.org/a)\n", "note:b": "Second\n" });
-  setupCopyButtons(doc, { writeText: async (text) => { written.push(text); } });
+  setupCopyButtons(asDocument(doc), { writeText: async (text) => { written.push(text); } });
   const { scope, button, status } = copyControl("note:b");
   await doc.click(button);
   settle();
@@ -99,7 +127,7 @@ test("a click copies that button's Markdown and confirms in the live region", as
 test("without the Clipboard API the Markdown is shown selected in a read-only textarea", async (t) => {
   const settle = mockTimers(t);
   const doc = new FakeDocument({ page: "# Title\n\n$$x^2$$\n" });
-  setupCopyButtons(doc, undefined);
+  setupCopyButtons(asDocument(doc), undefined);
   const { scope, button, status } = copyControl("page");
   await doc.click(button);
   settle();
@@ -118,7 +146,7 @@ test("without the Clipboard API the Markdown is shown selected in a read-only te
 test("a refused write falls back too, and a second click reuses the same textarea", async (t) => {
   mockTimers(t);
   const doc = new FakeDocument({ page: "# Title\n" });
-  setupCopyButtons(doc, { writeText: async () => { throw new DOMException("denied", "NotAllowedError"); } });
+  setupCopyButtons(asDocument(doc), { writeText: async () => { throw new DOMException("denied", "NotAllowedError"); } });
   const { scope, button } = copyControl("page");
   await doc.click(button);
   await doc.click(button);
@@ -130,17 +158,18 @@ test("showFallback attaches to the button's parent when there is no copy scope",
   const parent = new FakeElement("div");
   const button = new FakeElement("button", { "data-copy-markdown": "page" });
   parent.append(button);
-  const area = showFallback(button, "text", new FakeDocument({}));
-  assert.equal(area.parentElement.parentElement, parent);
+  const area = showFallback(asElement(button), "text", asDocument(new FakeDocument({})));
+  assert.equal(area.parentElement?.parentElement, parent);
 });
 
 test("neither the clipboard nor the fallback path fetches or uses execCommand", async (t) => {
+  /** @type {unknown[][]} */
   const fetchCalls = [];
-  t.mock.method(globalThis, "fetch", async (...args) => { fetchCalls.push(args); return new Response(""); });
+  t.mock.method(globalThis, "fetch", async (/** @type {unknown[]} */ ...args) => { fetchCalls.push(args); return new Response(""); });
   const settle = mockTimers(t);
   for (const clipboard of [{ writeText: async () => {} }, undefined]) {
     const doc = new FakeDocument({ page: "# Title\n" });
-    setupCopyButtons(doc, clipboard);
+    setupCopyButtons(asDocument(doc), clipboard);
     const { button, status } = copyControl("page");
     await doc.click(button);
     settle();
@@ -154,7 +183,7 @@ test("the copy control for a filtered note names that note, labels it by date an
   const html = noteCopyControlHtml(
     "note:a\"b", "2026-01-02", "Sharpe ratio is mean excess return over its standard deviation.",
   );
-  const button = html.match(/<button ([^>]*)>Copy Markdown<\/button>/)[1];
+  const button = html.match(/<button ([^>]*)>Copy Markdown<\/button>/)?.[1] ?? "";
   const attributes = Object.fromEntries([...button.matchAll(/([\w-]+)="([^"]*)"/g)].map((m) => [m[1], m[2]]));
   assert.equal(attributes.class, "copy-note");
   assert.equal(attributes["data-copy-markdown"], "note:a&quot;b");

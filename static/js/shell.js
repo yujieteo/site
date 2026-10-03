@@ -7,11 +7,12 @@ import { fadeIn } from "./fade.js";
 const header = document.querySelector(".site-header");
 const toggle = header?.querySelector("[data-nav-toggle]");
 const nav = header?.querySelector(".site-nav");
-if (toggle && nav) {
+if (header instanceof HTMLElement && toggle instanceof HTMLElement && nav instanceof HTMLElement) {
   const narrow = window.matchMedia("(max-width: 36rem)");
   header.classList.add("has-nav-toggle");
   toggle.hidden = false;
 
+  /** @param {boolean} open */
   const setOpen = (open, { focus = false } = {}) => {
     toggle.setAttribute("aria-expanded", String(open));
     header.classList.toggle("nav-open", open);
@@ -33,7 +34,7 @@ if (toggle && nav) {
   });
   // Tabbing out of the open menu closes it, so it never covers the page.
   header.addEventListener("focusout", (event) => {
-    if (narrow.matches && header.classList.contains("nav-open") && !header.contains(event.relatedTarget)
+    if (narrow.matches && header.classList.contains("nav-open") && !header.contains(/** @type {Node | null} */ (event.relatedTarget))
         && event.relatedTarget) {
       setOpen(false);
     }
@@ -42,24 +43,26 @@ if (toggle && nav) {
 }
 
 const themeSwitch = document.querySelector("[data-theme-switch]");
-if (themeSwitch) {
+if (themeSwitch instanceof HTMLElement) {
   const root = document.documentElement;
   const read = () => {
     try { return localStorage.getItem("theme") || "system"; } catch { return "system"; }
   };
+  /** @param {string} choice */
   const apply = (choice) => {
     if (choice === "light" || choice === "dark") root.dataset.theme = choice;
     else delete root.dataset.theme;
-    themeSwitch.querySelectorAll("[data-theme-choice]").forEach((button) => {
+    /** @type {NodeListOf<HTMLElement>} */ (themeSwitch.querySelectorAll("[data-theme-choice]")).forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.themeChoice === choice));
     });
   };
   apply(read());
   themeSwitch.hidden = false;
   themeSwitch.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-theme-choice]");
+    const button = /** @type {HTMLElement | null} */ (/** @type {Element} */ (event.target).closest("[data-theme-choice]"));
     if (!button) return;
-    const choice = button.dataset.themeChoice;
+    // The selector above guarantees the attribute.
+    const choice = /** @type {string} */ (button.dataset.themeChoice);
     try {
       if (choice === "system") localStorage.removeItem("theme");
       else localStorage.setItem("theme", choice);

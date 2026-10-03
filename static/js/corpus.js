@@ -1,10 +1,55 @@
+/**
+ * @typedef {"profile" | "about" | "resource" | "paper" | "note" | "blog" | "visualization" | "podcast"
+ *   | "video" | "calibration"} RecordKind
+ * @typedef {"resolves" | "extends" | "uses" | "related" | "resolvedBy" | "extendedBy" | "usedBy"} LinkRel
+ * One published item, as schema/generated/corpus.schema.json defines it.
+ * @typedef {object} CorpusRecord
+ * @property {string} id
+ * @property {RecordKind} kind
+ * @property {string} revision
+ * @property {string} [title]
+ * @property {string} [url]
+ * @property {string} [date]
+ * @property {string[]} [tags]
+ * @property {string} [category]
+ * @property {string} [summary]
+ * @property {string} [content]
+ * @property {string} [contentHtml]
+ * @property {string} [dataUrl]
+ * @property {string} [audioUrl]
+ * @property {string} [videoUrl]
+ * @property {string} [captionsUrl]
+ * @property {string} [posterUrl]
+ * @property {number} [durationSeconds]
+ * @property {number} [readingMinutes]
+ * @property {string} [fetched]
+ * @property {string[]} [webmcpTools]
+ * @property {{ rel: LinkRel, target: string }[]} [links]
+ * @typedef {{ schemaVersion: 1, revision: string, records: CorpusRecord[] }} Corpus
+ * @typedef {"relevance" | "newest" | "oldest"} SortOrder
+ * A search as callers (and WebMCP agents) send it; searchSite checks every field.
+ * @typedef {object} SearchInput
+ * @property {string} [text]
+ * @property {string} [kind]
+ * @property {string[]} [tags]
+ * @property {string[][]} [tagGroups]
+ * @property {number} [limit]
+ * @property {string | null} [cursor]
+ * @property {string} [sort]
+ * @typedef {{ items: CorpusRecord[], nextCursor: string | null, total: number }} SearchResult
+ */
+
 const SCHEMA_VERSION = 1;
 const ALLOWED_QUERY_FIELDS = new Set(["text", "kind", "tags", "tagGroups", "limit", "cursor", "sort"]);
+/** @type {Promise<Corpus> | undefined} */
 let corpusPromise;
 
+/** @param {unknown} value */
 const normalize = (value) => String(value ?? "").normalize("NFKC").toLowerCase();
+/** @param {unknown} value */
 const terms = (value) => normalize(value).trim().split(/\s+/).filter(Boolean);
 
+/** @param {unknown} value */
 const fingerprint = (value) => {
   let hash = 2166136261;
   for (const character of JSON.stringify(value)) {
@@ -14,9 +59,15 @@ const fingerprint = (value) => {
   return (hash >>> 0).toString(16);
 };
 
+/** @param {number} offset @param {string} queryFingerprint */
 const encodeCursor = (offset, queryFingerprint) =>
   btoa(JSON.stringify({ offset, queryFingerprint }));
 
+/**
+ * @param {string | null | undefined} cursor
+ * @param {string} queryFingerprint
+ * @returns {number}
+ */
 const decodeCursor = (cursor, queryFingerprint) => {
   if (!cursor) return 0;
   try {
@@ -29,11 +80,17 @@ const decodeCursor = (cursor, queryFingerprint) => {
   }
 };
 
+/** @param {CorpusRecord} record */
 const searchableText = (record) => normalize([
   record.title, record.summary, record.content, record.category,
   ...(record.tags || []), record.date,
 ].filter(Boolean).join(" "));
 
+/**
+ * @param {CorpusRecord} record
+ * @param {string[]} queryTerms
+ * @returns {number | null} the score, or null when the record misses a term
+ */
 const scoreRecord = (record, queryTerms) => {
   if (!queryTerms.length) return 0;
   const title = normalize(record.title);
@@ -48,10 +105,11 @@ const scoreRecord = (record, queryTerms) => {
     + 1, 0);
 };
 
+/** @returns {Promise<Corpus>} */
 export async function loadCorpus() {
   if (corpusPromise) return corpusPromise;
   corpusPromise = (async () => {
-    const url = document.querySelector('meta[name="site-corpus"]')?.content;
+    const url = /** @type {HTMLMetaElement | null} */ (document.querySelector('meta[name="site-corpus"]'))?.content;
     if (!url) throw new Error("Published corpus metadata is missing");
     const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) throw new Error("Published corpus is unavailable");
@@ -63,6 +121,11 @@ export async function loadCorpus() {
   return corpusPromise;
 }
 
+/**
+ * @param {Corpus} corpus
+ * @param {SearchInput} [input]
+ * @returns {SearchResult}
+ */
 export function searchSite(corpus, input = {}) {
   for (const field of Object.keys(input)) {
     if (!ALLOWED_QUERY_FIELDS.has(field)) throw new Error(`Unknown search field: ${field}`);
@@ -111,6 +174,11 @@ export function searchSite(corpus, input = {}) {
   };
 }
 
+/**
+ * @param {Corpus} corpus
+ * @param {string} id
+ * @returns {CorpusRecord}
+ */
 export function getItem(corpus, id) {
   const record = corpus.records.find((item) => item.id === id);
   if (!record) throw new Error(`No published item has id ${id}`);

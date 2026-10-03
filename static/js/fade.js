@@ -18,9 +18,11 @@ const timing = () => {
   };
 };
 
-const enabled = (element) => element && typeof element.animate === "function"
+/** @param {Element | null | undefined} element @returns {element is Element} */
+const enabled = (element) => !!element && typeof element.animate === "function"
   && !reducedMotion.matches && timing().duration > 0;
 
+/** @param {Element | null | undefined} element */
 export function fadeIn(element) {
   if (!enabled(element)) return;
   element.animate([{ opacity: 0 }, { opacity: 1 }], timing());
@@ -28,6 +30,11 @@ export function fadeIn(element) {
 
 // Resolves true once the element has faded out (or at once when motion is
 // off), false if the fade was cancelled, for example by reopening.
+/**
+ * @param {Element} element
+ * @param {KeyframeAnimationOptions} [options]
+ * @returns {Promise<boolean>}
+ */
 export function fadeOut(element, options = {}) {
   if (!enabled(element)) return Promise.resolve(true);
   const animation = element.animate(
@@ -37,6 +44,7 @@ export function fadeOut(element, options = {}) {
   return animation.finished.then(() => true, () => false);
 }
 
+/** @param {Element | null | undefined} element */
 export function cancelFade(element) {
   element?.getAnimations?.().forEach((animation) => animation.cancel());
 }

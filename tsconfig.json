@@ -1,0 +1,28 @@
+// Type-checked JavaScript: tsc checks the JSDoc types in the site's own browser code, scripts and Node
+// tests, and emits nothing. scripts/typecheck.py installs the pinned tsc and runs it with this file.
+// Left out: the visualisations under visuals/ (ported from their own repositories) and
+// templates/beamdswitch.js, which every narrated visualisation copies byte for byte; they convert with the
+// visualisations. Beamdswitch's vendored parsers in tests/fixtures/ stay unedited, typed by their .d.mts files.
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "strict": true,
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    // scripts/verify_tampines_food_browser.js awaits at top level without importing anything.
+    "moduleDetection": "force",
+    "typeRoots": ["./.typecheck/node_modules/@types"],
+    "types": ["node"],
+    "skipLibCheck": true
+  },
+  "include": [
+    "static/js/**/*.js",
+    "scripts/**/*.js", "scripts/**/*.mjs", "scripts/**/*.d.ts",
+    "tests/**/*.mjs", "tests/**/*.cjs", "tests/**/*.d.mts"
+  ],
+  "exclude": ["tests/fixtures/beamdswitch/*.mjs"]
+}
