@@ -65,6 +65,8 @@ PREFIX = "fm-deploy-"
 BUILT_FROM = re.compile(r"from yujieteo/visuals (\S+)")
 STAMP = re.compile(r"(\d{8}-\d{6})")
 HEREDOC = "FM_DEPLOY_EOF"
+# Failing items printed on stdout; the report file lists every one.
+SHOWN_FAILURES = 20
 SSH_UNREACHABLE = 255
 
 
@@ -425,14 +427,17 @@ class Report:
     def verdict(self):
         return "fail" if self.failures else "pass"
 
-    def document(self, hints, files, extra=None):
-        doc = {"deploy": {"mode": self.mode, "verdict": self.verdict, **self.facts}, "counts": self.counts}
+    def document(self, files, limit=None):
+        """The report; ``limit`` caps the failing items listed (the report file lists them all)."""
+        doc = {"deploy": {"mode": self.mode, "verdict": self.verdict, **self.facts}, "counts": dict(self.counts)}
         if self.failures:
-            doc["failures"] = self.failures
+            doc["counts"]["failures"] = len(self.failures)
+            doc["failures"] = self.failures[:limit]
+            if limit is not None and len(self.failures) > limit:
+                doc["counts"]["failures_shown"] = limit
         doc["checks"] = self.checks
-        doc.update(extra or {})
-        doc["files"] = files
-        return doc, hints
+        doc["files"] = dict(files)
+        return doc
 
 
 def render(doc, hints):
@@ -678,8 +683,7 @@ def console_failures(uploaded, base_url):
 
 
 def finish(report, args, config, files, hints, rows, live):
-    doc, hints = report.document(hints, files)
-    full = dict(doc)
+    doc, full = report.document(files, limit=SHOWN_FAILURES), report.document(files)
     full["uploaded"] = [{"status": row[0], "path": row.split("\t", 1)[1].removeprefix("site/")}
                         for row in rows if row[:1] in {"A", "M"}]
     Path(files["report"]).write_text(render(full, hints) + "\n", encoding="utf-8")

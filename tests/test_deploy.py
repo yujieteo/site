@@ -157,6 +157,19 @@ class FakeHostTests(unittest.TestCase):
         self.assertIn("  live_differs_outside_upload: 1\n", out)
         self.assertIn("Pass an older --base", out)
 
+    def test_stdout_lists_the_first_failures_and_the_report_file_all(self):
+        for index in range(deploy.SHOWN_FAILURES + 1):
+            path = f"blog/extra-{index:02}.html"
+            (self.site / path).write_bytes(b"built")
+            (self.docroot / path).write_bytes(b"stale")
+        code, out = self.cli("plan", "--base", "HEAD", "--visuals-base", VISUALS)
+        self.assertEqual(code, 1, out)
+        self.assertIn(f"  failures: {deploy.SHOWN_FAILURES + 1}\n  failures_shown: {deploy.SHOWN_FAILURES}\n", out)
+        self.assertNotIn("blog/extra-20.html", out)
+        report = next(self.state.glob("fm-deploy-*/report.toon")).read_text()
+        self.assertIn(f"failures[{deploy.SHOWN_FAILURES + 1}]", report)
+        self.assertIn("live-drift,blog/extra-20.html,", report)
+
     def test_scoped_verdict_says_so_and_counts_what_lies_outside(self):
         (self.docroot / "blog/old.html").write_bytes(b"<p>stale</p>")
         code, out = self.cli("plan", "--base", "HEAD", "--visuals-base", VISUALS, "--scoped-verdict")
