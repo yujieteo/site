@@ -167,6 +167,49 @@ class TypecheckScopeTests(unittest.TestCase):
             self.assertEqual(run("typecheck")[0], 2)
 
 
+@unittest.skipUnless((ROOT / "node_modules" / "typescript").is_dir(), "typescript is not installed: run npm ci")
+class TypecheckLiveTests(unittest.TestCase):
+    """The pinned tsc runs on a small project with known errors; a filter narrows the list, not the verdict."""
+
+    def setUp(self):
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        root = Path(temp.name).resolve()
+        (root / "node_modules").symlink_to(ROOT / "node_modules")
+        (root / "package.json").write_text('{"scripts": {"typecheck": "tsc -p tsconfig.json --noEmit"}}')
+        (root / "tsconfig.json").write_text('{"compilerOptions": {"allowJs": true, "checkJs": true, "noEmit": true,'
+                                            ' "strict": true, "noUnusedLocals": true, "types": []},'
+                                            ' "include": ["static/js/**/*.js"]}')
+        (root / "static" / "js").mkdir(parents=True)
+        (root / "static" / "js" / "old.js").write_text("const unusedOld = 1;\nexport {};\n")
+        for argv in (["init", "-q"], ["add", "-A"],
+                     ["-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "old"]):
+            verify.subprocess.run(["git", *argv], cwd=root, check=True, capture_output=True)
+        (root / "static" / "js" / "new.js").write_text(
+            "export function f(a) { return a; }\n/** @type {number} */\nexport const n = 'x';\n")
+        for patch in (mock.patch.object(verify, "ROOT", root), mock.patch.object(verify, "LOG_DIR", root / ".verify")):
+            patch.start()
+            self.addCleanup(patch.stop)
+
+    def test_summary_file_and_since_against_real_tsc(self):
+        code, document = run("typecheck", "--summary")
+        self.assertEqual((code, document["verdict"]), (1, "fail"))
+        self.assertEqual(document["totals"], {"errors": 3, "files_with_errors": 2, "files_checked": 2})
+        self.assertEqual(document["by_code"], [
+            {"code": "TS2322", "count": 1, "example": "static/js/new.js:3"},
+            {"code": "TS6133", "count": 1, "example": "static/js/old.js:1"},
+            {"code": "TS7006", "count": 1, "example": "static/js/new.js:1"}])
+        self.assertEqual(document["by_file"], [{"file": "static/js/new.js", "count": 2},
+                                               {"file": "static/js/old.js", "count": 1}])
+        self.assertEqual([e["file_line"] for e in document["first"]],
+                         ["static/js/new.js:1", "static/js/new.js:3", "static/js/old.js:1"])
+        for argv in (["--file", "static/js/new.js"], ["--since", "HEAD"]):
+            code, document = run("typecheck", "--summary", *argv)
+            self.assertEqual((code, document["verdict"], document["totals"]["errors"]), (1, "fail", 3))
+            self.assertEqual((document["scope"]["errors_in_scope"], document["scope"]["errors_outside_scope"]), (2, 1))
+            self.assertEqual(document["by_file"], [{"file": "static/js/new.js", "count": 2}])
+
+
 def step(name, code=0, output=""):
     command = [sys.executable, "-c", f"import sys; print({output!r}); sys.exit({code})"]
     parse = {"python": lambda text: verify.parse_tests("python", text)}.get(name, lambda text: [])
