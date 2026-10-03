@@ -56,7 +56,7 @@ class PathTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertEqual(deploy_check.problem(path), reason)
 
-    def test_live_listing_runs_find_in_the_docroot_and_skips_the_backup(self):
+    def test_live_listing_runs_find_in_the_docroot_backup_included(self):
         listing = "./index.html\n./fm-backup\n./fm-backup/._index.html\n./blog/._a.html\n"
         result = subprocess.CompletedProcess([], 0, stdout=listing, stderr="")
         with patch.object(deploy_check.subprocess, "run", return_value=result) as run:
@@ -64,14 +64,14 @@ class PathTests(unittest.TestCase):
         command = run.call_args.args[0]
         self.assertEqual(command[:4], ["ssh", "-n", "--", "alias"])
         self.assertEqual(command[4], "cd -- '/srv/my site' && find . -mindepth 1")
-        self.assertEqual(
-            deploy_check.problems(deploy_check.skip_backup(live, "fm-backup")),
-            [("blog/._a.html", "AppleDouble file")],
-        )
+        self.assertEqual(deploy_check.problems(live), [
+            ("fm-backup/._index.html", "AppleDouble file"),
+            ("blog/._a.html", "AppleDouble file"),
+        ])
 
     def test_a_stray_upload_fails_before_the_live_listing(self):
         args = SimpleNamespace(uploads=io.StringIO("A\tsite/._a.html\n"), host="alias",
-                               docroot="/srv", backup=None)
+                               docroot="/srv")
         out = io.StringIO()
         with patch.object(deploy_check, "remote_listing") as listing, redirect_stdout(out):
             self.assertFalse(deploy_check.check_paths(args))
@@ -84,9 +84,10 @@ class PathTests(unittest.TestCase):
 
 AXI_ERRORS = """console:
 ## Console messages
-Showing 1-2 of 2 (Page 1 of 1).
+Showing 1-3 of 3 (Page 1 of 1).
 msgid=1 [error] Uncaught ReferenceError: missing is not defined (0 args)
-msgid=4 [error] Failed to load resource: the server responded with a status of 404 () (0 args) [2 times]
+msgid=4 [error] Failed to load resource: the server responded with a status of 404 () (0 args)
+msgid=5 [error] Failed to load resource: net::ERR_NAME_NOT_RESOLVED (0 args)
 help[2]:
   Run `chrome-devtools-axi console-get <id>` to see a specific message
 """
@@ -98,24 +99,23 @@ reqid=1 GET https://example.invalid/bad.html [200]
 reqid=2 GET https://example.invalid/static/js/gone.js [404]
 reqid=3 GET https://example.invalid/static/css/style.css [304]
 reqid=4 GET https://cdn.example.invalid/font.woff2 [failed - net::ERR_NAME_NOT_RESOLVED]
-reqid=5 GET https://example.invalid/favicon.ico [404]
+reqid=5 GET https://example.invalid/media/video/a.mp4 [failed - net::ERR_ABORTED]
 """
 AXI_NETWORK_CLEAN = "network:\nreqid=1 GET https://example.invalid/a.html [200]\n"
 
 
 class ConsoleTests(unittest.TestCase):
-    def test_console_errors_are_parsed_from_axi_output(self):
-        self.assertEqual(deploy_check.console_errors(AXI_ERRORS), [
+    def test_console_errors_name_failed_loads_by_url(self):
+        self.assertEqual(deploy_check.console_errors(AXI_ERRORS, AXI_NETWORK), [
             "Uncaught ReferenceError: missing is not defined (0 args)",
+            "Failed to load resource: the server responded with a status of 404 () (0 args)"
+            " [https://example.invalid/static/js/gone.js]",
+            "Failed to load resource: net::ERR_NAME_NOT_RESOLVED (0 args)"
+            " [https://cdn.example.invalid/font.woff2]",
         ])
-        self.assertEqual(deploy_check.console_errors(AXI_CLEAN), [])
 
-    def test_failed_requests_are_named_by_url_except_the_favicon(self):
-        self.assertEqual(deploy_check.failed_requests(AXI_NETWORK), [
-            "https://example.invalid/static/js/gone.js [404]",
-            "https://cdn.example.invalid/font.woff2 [failed - net::ERR_NAME_NOT_RESOLVED]",
-        ])
-        self.assertEqual(deploy_check.failed_requests(AXI_NETWORK_CLEAN), [])
+    def test_a_failed_request_without_a_console_error_passes(self):
+        self.assertEqual(deploy_check.console_errors(AXI_CLEAN, AXI_NETWORK), [])
 
     def test_each_changed_page_is_loaded_once_and_errors_fail(self):
         calls = []
@@ -137,8 +137,10 @@ class ConsoleTests(unittest.TestCase):
         prefix = "B,console-errors,FAIL,https://example.invalid/bad.html: "
         self.assertEqual(out.getvalue().splitlines(), [
             prefix + "Uncaught ReferenceError: missing is not defined (0 args)",
-            prefix + "https://example.invalid/static/js/gone.js [404]",
-            prefix + "https://cdn.example.invalid/font.woff2 [failed - net::ERR_NAME_NOT_RESOLVED]",
+            prefix + "Failed to load resource: the server responded with a status of 404 () (0 args)"
+            " [https://example.invalid/static/js/gone.js]",
+            prefix + "Failed to load resource: net::ERR_NAME_NOT_RESOLVED (0 args)"
+            " [https://cdn.example.invalid/font.woff2]",
         ])
 
     def test_clean_pages_pass(self):

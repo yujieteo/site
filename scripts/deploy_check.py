@@ -8,14 +8,13 @@ file, of which every `A` and `M` path was uploaded.
 (apart from the public `.well-known/`), or a private path (a home or temporary
 directory, an editor or Python leftover) in the upload set and, given an SSH
 host alias and the document root on it, in the live document root listed over
-SSH. `--backup` names this deploy's own `fm-` backup directory in the document
-root, which the listing skips until Stage B passes and it is removed.
+SSH, this deploy's `fm-` backup directory included.
 
 `console` loads each changed HTML page once in a headless browser
 (`chrome-devtools-axi`, in its own named session) and fails on any console
-error, such as an uncaught exception, and on any request that failed to load,
-named by its URL. The browser's own `/favicon.ico` request is skipped: the
-pages declare no icon and the site serves none.
+error, such as an uncaught exception or a resource that failed to load. The
+console reports a failed load without its URL, so the page's network list is
+read only to name it.
 
 Each check prints `stage,check,status,evidence` rows, as skills/verify.md
 reports them, and exits non-zero on a failure. The host, document root and
@@ -23,7 +22,7 @@ site URL are resolved at deploy time; never commit them.
 
 Usage:
   scripts/site_diff.py <base> > uploads.txt
-  scripts/deploy_check.py paths uploads.txt [--host ALIAS --docroot PATH [--backup NAME]]
+  scripts/deploy_check.py paths uploads.txt [--host ALIAS --docroot PATH]
   scripts/deploy_check.py console uploads.txt --base-url https://<site>/
 """
 
@@ -34,7 +33,6 @@ import shlex
 import subprocess
 import sys
 from pathlib import PurePosixPath
-from urllib.parse import urlsplit
 
 # The one dot directory a web root may serve: RFC 8615 well-known URIs.
 PUBLIC_DOT_DIRS = {".well-known"}
@@ -45,7 +43,7 @@ PRIVATE_NAMES = {"__pycache__", "node_modules", "Thumbs.db", "desktop.ini"}
 PRIVATE_SUFFIXES = (".pyc", ".swp", ".swo", ".bak", ".orig", ".rej", ".tmp", "~")
 BROWSER_SESSION = "site-stage-b"
 CONSOLE_ERROR = re.compile(r"^msgid=\d+ \[error\] (.*)$")
-# The console reports a failed load without its URL; the network list names it instead.
+# The console reports a failed load without its URL; the network list names it.
 RESOURCE_ERROR = "Failed to load resource:"
 REQUEST = re.compile(r"^reqid=\d+ \S+ (\S+) \[(.*)\]")
 LOADED = re.compile(r"^[123]\d\d$|^pending$")
@@ -95,33 +93,35 @@ def remote_listing(host, docroot):
     return [line.removeprefix("./") for line in result.stdout.splitlines() if line]
 
 
-def skip_backup(paths, backup):
-    if not backup:
-        return paths
-    return [path for path in paths if PurePosixPath(path).parts[0] != backup]
-
-
 def page_urls(paths, base_url):
     """The URL of each changed HTML page, relative to ``base_url``."""
     base = base_url.rstrip("/") + "/"
     return [base + path for path in paths if path.endswith(".html")]
 
 
-def console_errors(output):
-    """The console error messages in `chrome-devtools-axi console` output, less failed loads."""
+def failed_requests(network):
+    """(URL, status) of each request in `chrome-devtools-axi network` output that did not load."""
     return [
-        match[1] for line in output.splitlines()
-        if (match := CONSOLE_ERROR.match(line)) and not match[1].startswith(RESOURCE_ERROR)
-    ]
-
-
-def failed_requests(output):
-    """The requests in `chrome-devtools-axi network` output that did not load, but the favicon."""
-    return [
-        f"{match[1]} [{match[2]}]" for line in output.splitlines()
+        (match[1], match[2].removeprefix("failed - ")) for line in network.splitlines()
         if (match := REQUEST.match(line)) and not LOADED.match(match[2])
-        and urlsplit(match[1]).path != "/favicon.ico"
     ]
+
+
+def console_errors(console, network):
+    """The console error messages in `chrome-devtools-axi console` output, each failed
+    load named by the URLs of the failed requests with its status."""
+    failed = failed_requests(network)
+    errors = []
+    for line in console.splitlines():
+        if not (match := CONSOLE_ERROR.match(line)):
+            continue
+        message = match[1]
+        if message.startswith(RESOURCE_ERROR):
+            urls = [url for url, status in failed if status in message]
+            if urls:
+                message += f" [{', '.join(urls)}]"
+        errors.append(message)
+    return errors
 
 
 def axi(*args):
@@ -132,10 +132,10 @@ def axi(*args):
 
 
 def page_errors(url, browser=axi):
-    """Load ``url`` once and return its console errors and failed requests."""
+    """Load ``url`` once and return its console errors."""
     browser("open", url)
-    return (console_errors(browser("console", "--type", "error", "--limit", "100"))
-            + failed_requests(browser("network", "--limit", "1000")))
+    return console_errors(browser("console", "--type", "error", "--limit", "100"),
+                          browser("network", "--limit", "1000"))
 
 
 def report(check, failures, passed):
@@ -151,7 +151,7 @@ def check_paths(args):
     sent = uploads(args.uploads.read().splitlines())
     ok = report("upload-paths", problems(sent), f"{len(sent)} uploaded paths")
     if ok and args.host:
-        live = skip_backup(remote_listing(args.host, args.docroot), args.backup)
+        live = remote_listing(args.host, args.docroot)
         ok = report("docroot-paths", problems(live), f"{len(live)} live paths")
     elif args.host:
         print("B,docroot-paths,NOT RUN,upload-paths failed")
@@ -176,7 +176,6 @@ def main():
     paths.add_argument("uploads", type=argparse.FileType(), help="saved site_diff.py rows")
     paths.add_argument("--host", help="SSH host alias of the live site")
     paths.add_argument("--docroot", help="document root on the host")
-    paths.add_argument("--backup", help="this deploy's backup folder in the document root")
     console = commands.add_parser("console", help="fail on console errors in changed pages")
     console.add_argument("uploads", type=argparse.FileType(), help="saved site_diff.py rows")
     console.add_argument("--base-url", required=True, help="public URL of the site root")
