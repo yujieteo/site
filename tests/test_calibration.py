@@ -1,6 +1,6 @@
 """The site's side of Calibrator: raw.toon parsing, calibration Corpus Records and the #calibrator tag.
 
-The instrument's own logic is tested in yujieteo/calibrator; the port is checked in test_visual_ports.py.
+The instrument's own logic is tested in yujieteo/visuals viz/calibrator/; the port is checked in test_visual_ports.py.
 Every check here works on a small in-memory history and stays well under a second.
 """
 
