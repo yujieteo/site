@@ -19,9 +19,8 @@
   const visible = new Set();
   const css = (el, n) => getComputedStyle(el).getPropertyValue(n).trim();
 
-  // Eye glyphs, drawn in a unit circle at (x, y) with half-size h; e is -1 for the left eye.
+  // Eye glyphs 1 to 6, drawn in a unit circle at (x, y) with half-size h; e is -1 for the left eye.
   const eyes = [
-    (c, x, y, h, e, blink) => c.ellipse(x, y, 0.4 * h, 0.6 * h * (1 - 0.9 * blink), 0, 0, 7), // oval (filled)
     (c, x, y, h) => (c.moveTo(x - h, y), c.lineTo(x + h, y)), // – –
     (c, x, y, h) => (c.moveTo(x - h, y + 0.6 * h), c.lineTo(x, y - 0.6 * h), c.lineTo(x + h, y + 0.6 * h)), // ^ ^
     (c, x, y, h, e) => (c.moveTo(x + e * 0.7 * h, y - h), c.lineTo(x - e * 0.7 * h, y), c.lineTo(x + e * 0.7 * h, y + h)), // > <
@@ -44,15 +43,13 @@
     const [px, py] = cv.pointer || [-1, -1];
     const got = api.update(+(cv.dataset.seed || 1), +cv.dataset.scene, clock, p, px, py);
     const n = got & 0xffff, nf = got >>> 16;
-    const d = new Float32Array(mem.buffer, api.dots(), n * 5);
-    const f = new Float32Array(mem.buffer, api.face(), nf * 12);
-    const L = new Float32Array(mem.buffer, api.lights(), 24); // 6 lights; 0 is the sun or pin light
+    const [d, f, L] = [n * 5, nf * 10, 24].map((len, i) => new Float32Array(mem.buffer, api.buf(i), len)); // light 0 is the sun
     const hues = [shade, accent, light, ...css(cv, "--cast").split(/\s+/).filter(Boolean)];
     ctx.setTransform(1, 0, 0, 1, b * s, b * s), ctx.clearRect(-b * s, -b * s, W, W);
     ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
     ctx.save(), ctx.beginPath(), ctx.roundRect(0, 0, s, s, 4 * dpr), ctx.clip();
-    // Sky: one flat colour, a touch paler when the sun is up.
-    ctx.fillStyle = mix(base, light, L[3] * 0.12), ctx.fillRect(0, 0, s, s);
+    // Sky: one flat colour, warmed by the sun when it is up.
+    ctx.fillStyle = mix(base, light, L[3] * 0.2), ctx.fillRect(0, 0, s, s);
     // Dots: three tones at three opacities, one path each.
     for (let t = 0; t < 3; t++) for (let a = 1; a <= 3; a++) {
       ctx.beginPath();
@@ -63,12 +60,9 @@
       }
       ctx.globalAlpha = a / 3, ctx.fillStyle = hues[t], ctx.fill();
     }
-    // Light: two dappled patches, then the sun with one hard-edged halo.
-    ctx.globalCompositeOperation = "screen", ctx.fillStyle = light, ctx.globalAlpha = 0.14;
-    for (let k = 4; k < 12; k += 4) {
-      ctx.save(), ctx.translate(L[k] * s, L[k + 1] * s), ctx.rotate(-0.6), ctx.scale(1, 0.6);
-      disc(ctx, 0, 0, L[k + 2] * s), ctx.restore();
-    }
+    // Light: dappled patches (the engine has already lit the dots under them), then the sun and one hard halo.
+    const dapples = () => { for (let k = 4; k < 24; k += 4) disc(ctx, L[k] * s, L[k + 1] * s, L[k + 2] * s); };
+    ctx.globalCompositeOperation = "screen", ctx.fillStyle = light, ctx.globalAlpha = 0.18, dapples();
     if (L[3] > 0.05) {
       ctx.globalAlpha = 0.15 * L[3], disc(ctx, L[0] * s, L[1] * s, L[2] * s * 2.5);
       ctx.globalAlpha = Math.ceil(L[3] * 2) / 2, disc(ctx, L[0] * s, L[1] * s, L[2] * s);
@@ -76,16 +70,17 @@
     ctx.restore(), (ctx.globalCompositeOperation = "source-over"), (ctx.globalAlpha = 1);
     // Characters, unclipped: a disc and two glyph eyes that look somewhere.
     ctx.lineWidth = 0.12, ctx.lineJoin = "miter";
-    for (let i = 0; i < nf * 12; i += 12) {
-      const [x, y, r, k, gx, gy, blink, g, sq, eye, halo, pulse] = f.subarray(i, i + 12);
-      const c = hues[k] || light;
-      ctx.fillStyle = c, ctx.globalAlpha = 0.3;
-      if (halo + pulse > 0.05) disc(ctx, x * s, y * s, r * s * (1.15 + 0.1 * halo + 0.5 * (1 - pulse) * (pulse > 0.05)));
-      ctx.globalAlpha = 1, ctx.save(), ctx.translate(x * s, y * s), ctx.scale(r * s * (1 + sq), r * s * (1 - sq));
-      disc(ctx, 0, 0, 1);
+    for (let i = 0; i < nf * 10; i += 10) {
+      const [x, y, r, k, gx, gy, , g, sq, pulse] = f.subarray(i, i + 10), sx = r * s * (1 + sq), sy = r * s * (1 - sq);
+      ctx.fillStyle = hues[k] || light, ctx.globalAlpha = 0.3;
+      if (pulse > 0.05) disc(ctx, x * s, y * s, r * s * (1.65 - 0.5 * pulse));
+      ctx.globalAlpha = 1, ctx.save(), ctx.translate(x * s, y * s), ctx.scale(sx, sy), disc(ctx, 0, 0, 1), ctx.clip();
+      // Dapples fall on the body too, as flat lighter patches.
+      ctx.save(), ctx.scale(1 / sx, 1 / sy), ctx.translate(-x * s, -y * s);
+      ctx.globalCompositeOperation = "screen", ctx.fillStyle = light, ctx.globalAlpha = 0.35, dapples(), ctx.restore();
       ctx.fillStyle = ctx.strokeStyle = ink || shade, ctx.beginPath();
-      for (const e of [-1, 1]) eyes[g | 0](ctx, e * 0.48 + gx * 0.22, -0.1 + gy * 0.18, 0.26 * eye, e, blink);
-      g ? ctx.stroke() : ctx.fill();
+      for (const e of [-1, 1]) eyes[g - 1](ctx, e * 0.48 + gx * 0.22, -0.1 + gy * 0.18, 0.26, e);
+      ctx.stroke();
       ctx.restore();
     }
   }
@@ -105,7 +100,6 @@
     if (!on) cancelAnimationFrame(raf), (raf = 0);
     kick();
   };
-  window.engine = { kick, draw };
 
   const io = new IntersectionObserver((es) => {
     for (const e of es) e.isIntersecting ? (visible.add(e.target), draw(e.target)) : visible.delete(e.target);

@@ -18,7 +18,7 @@ Open `dist/index.html` directly; nothing is fetched at runtime.
 
 | Path | Owns |
 | --- | --- |
-| `engine/` | Rust → WebAssembly. Every frame is a pure function of seed, scene, time, scroll progress and pointer. Five characters (sleepy, happy, flustered, dizzy, curious) appear across scenes; scenes 6 and 7 are the Stories and Play doors. Interface v4 is documented at the top of `lib.rs`. |
+| `engine/` | Rust → WebAssembly. Every frame is a pure function of seed, scene, time, scroll progress and pointer. Five characters (sleepy, happy, flustered, dizzy, curious) appear across scenes; scenes 6 and 7 are the Stories and Play doors. Interface v5 is documented at the top of `lib.rs`. |
 | `web/host.js` | The browser boundary: one clock, one scheduler, Canvas drawing, Pause, reduced motion, story chapters. |
 | `web/shell.html`, `web/style.css` | The one page shell every page shares. |
 | `site/` | The builder: parses stories, sanitises notes, inlines the wasm as base64. |

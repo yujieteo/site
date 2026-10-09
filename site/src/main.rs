@@ -31,24 +31,19 @@ fn canvas(scene: u32, palette: &str, extra: &str) -> String {
     format!(r#"<canvas class="frame" data-scene="{scene}" style="{}" {extra} aria-hidden="true"></canvas>"#, esc(&style))
 }
 
-struct Page {
-    path: String,
-    title: String,
-    body: String,
-}
-
-fn render(p: &Page, wasm: &str) -> String {
-    let root = "../".repeat(p.path.matches('/').count());
-    let script = if p.body.contains("<canvas") {
-        let motion = if p.body.contains("data-motion") { "" } else {
+/// One page: its path under dist/, title and body. Pages with a canvas get the engine.
+fn render((path, title, body): &(String, String, String), wasm: &str) -> String {
+    let root = "../".repeat(path.matches('/').count());
+    let script = if body.contains("<canvas") {
+        let motion = if body.contains("data-motion") { "" } else {
             r#"<footer class="top"><span data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></footer>"#
         };
         format!("{motion}<script id=\"wasm\" type=\"application/octet-stream\">{wasm}</script>\n<script>{HOST}</script>")
     } else {
         String::new()
     };
-    SHELL.replace("{{title}}", &esc(&p.title)).replace("{{style}}", STYLE).replace("{{root}}", &root)
-        .replace("{{body}}", &p.body).replace("{{script}}", &script)
+    SHELL.replace("{{title}}", &esc(title)).replace("{{style}}", STYLE).replace("{{root}}", &root)
+        .replace("{{body}}", body).replace("{{script}}", &script)
 }
 
 struct Story {
@@ -173,21 +168,18 @@ fn main() {
         r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
         s.slug, canvas(s.thumb, &s.palette, ""), esc(&s.title), esc(&s.summary))).collect();
     let mut pages = vec![
-        Page { path: "index.html".into(), title: "Yu Jie".into(), body: format!(
+        ("index.html".into(), "Yu Jie".into(), format!(
             r#"<p class="lede">Notes, stories and toys.</p><div class="doors">{}{}{}</div>"#,
-            door("notes/index.html", 3, "#6b686e #2c2b2e #bab7bd #f2f1ef", "Notes", "A working log, sanitised."),
-            door("stories/index.html", 6, "#5f625c #252623 #c9c5bd #f3f1ec", "Stories", "Visual explanations, told in order."),
-            door("play/index.html", 7, "#d3d0cb #3a3836 #8f948c #faf9f6", "Play", "Toys to play with.")) },
-        Page { path: "notes/index.html".into(), title: "Notes".into(),
-            body: format!(r#"<h1>Notes</h1><div class="notes">{}</div>"#, notes(&notes_path)) },
-        Page { path: "stories/index.html".into(), title: "Stories".into(),
-            body: format!(r#"<h1>Stories</h1><ul class="list">{cards}</ul>"#) },
-        Page { path: "play/index.html".into(), title: "Play".into(),
-            body: r#"<h1>Play</h1><p class="lede">Toys arrive here as they are made.</p>"#.into() },
+            door("notes/index.html", 3, "#5e3f78 #2a1838 #8fd0a8 #ffd08a", "Notes", "A working log, sanitised."),
+            door("stories/index.html", 6, "#3f5f4a #17261c #f08ca0 #ffe48a", "Stories", "Visual explanations, told in order."),
+            door("play/index.html", 7, "#e8968f #3a2340 #3f9e86 #fff3a0", "Play", "Toys to play with."))),
+        ("notes/index.html".into(), "Notes".into(), format!(r#"<h1>Notes</h1><div class="notes">{}</div>"#, notes(&notes_path))),
+        ("stories/index.html".into(), "Stories".into(), format!(r#"<h1>Stories</h1><ul class="list">{cards}</ul>"#)),
+        ("play/index.html".into(), "Play".into(), r#"<h1>Play</h1><p class="lede">Toys arrive here as they are made.</p>"#.into()),
     ];
-    pages.extend(stories.into_iter().map(|s| Page { path: format!("stories/{}/index.html", s.slug), title: s.title, body: s.html }));
+    pages.extend(stories.into_iter().map(|s| (format!("stories/{}/index.html", s.slug), s.title, s.html)));
     for p in &pages {
-        let out = Path::new("dist").join(&p.path);
+        let out = Path::new("dist").join(&p.0);
         fs::create_dir_all(out.parent().unwrap()).unwrap();
         fs::write(&out, render(p, &wasm)).unwrap();
         println!("{}", out.display());

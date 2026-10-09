@@ -1,6 +1,6 @@
 title: A grammar of dots
 summary: Six motions, one engine. The vocabulary every story here is drawn with.
-palette: #66696d #2a2b2d #c4c0b8 #f3f1ec
+palette: #4f6f92 #1f2a3c #f0a050 #ffe39a
 thumb: 4
 
 ## Rest

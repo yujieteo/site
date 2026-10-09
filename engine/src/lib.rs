@@ -1,14 +1,15 @@
-//! Dot engine, interface v4. Every scene is a pure function of (seed, scene, time,
+//! Dot engine, interface v5. Every scene is a pure function of (seed, scene, time,
 //! progress, pointer), so pause and replay are exact.
 //!
 //! Units: the tile is the unit square, y down; time in seconds. Characters may leave it.
 //! Dots: 5 f32 each — x, y, radius, colour (0 shadow, 0.5 accent, 1 light), alpha.
-//! Faces: 12 f32 each — x, y, radius, tone, gaze x, gaze y, blink (0 open, 1 shut),
-//! eye glyph, squash (+ flat, - tall), eye opening, halo, pulse.
+//! Faces: 10 f32 each — x, y, radius, tone, gaze x, gaze y, blink (0 open, 1 shut),
+//! eye glyph, squash (+ flat, - tall), pulse.
 //! Tone 3 + i is character i's colour (the host's `--cast` list).
 //! Lights: 4 f32 each — x, y, radius, intensity (0..1). Light 0 is the sun or pin light;
-//! the rest are dappled patches, as of sun through leaves.
-//! Progress and pointer are negative when absent. `update` returns dots | faces << 16.
+//! the rest are dappled patches, as of sun through leaves, and they light the dots beneath.
+//! Progress and pointer are negative when absent. `update` returns dots | faces << 16;
+//! `buf(0..3)` points at the dots, faces and lights.
 
 use std::f32::consts::{PI, TAU};
 
@@ -17,33 +18,34 @@ pub const SCENES: u32 = 8;
 pub const LIGHTS: usize = 6;
 pub const FACES: usize = 8;
 
-/// The characters. Character i wears eye glyph i + 1, drawn by the host:
-/// 1 – –, 2 ^ ^, 3 > <, 4 + +, 5 O O, and 6 * * when a flustered one is touched.
-pub const MOODS: [&str; 5] = ["sleepy", "happy", "flustered", "dizzy", "curious"];
+/// The characters: sleepy, happy, flustered, dizzy, curious. Character i wears eye glyph
+/// i + 1, drawn by the host: 1 – –, 2 ^ ^, 3 > <, 4 + +, 5 O O, and 6 * * when a flustered one is touched.
 const SLEEPY: usize = 0;
 const HAPPY: usize = 1;
 const FLUSTERED: usize = 2;
 const DIZZY: usize = 3;
 const CURIOUS: usize = 4;
 
-/// One frame being written: dots and faces, with the pointer that disturbs both.
+/// One frame being written: dots and faces, the pointer that disturbs both, and the dapples.
 pub struct Out<'a> {
     d: &'a mut [f32],
-    n: usize,
     f: &'a mut [f32],
+    n: usize,
     nf: usize,
     seed: u32,
     t: f32,
     px: f32,
     py: f32,
+    lit: &'a [f32],
 }
 
 impl Out<'_> {
-    /// A dot; near the pointer it swells and is pushed aside.
+    /// A dot; near the pointer it swells and is pushed aside, and in a dapple it turns a tone lighter.
     fn dot(&mut self, x: f32, y: f32, r: f32, c: f32, a: f32) {
         let (dx, dy) = (x - self.px, y - self.py);
         let k = if self.px >= 0.0 { (-(dx * dx + dy * dy) * 90.0).exp() } else { 0.0 };
-        let v = [x + dx * k * 0.8, y + dy * k * 0.8, (r * (1.0 + 0.9 * k)).max(0.0), c.max(0.0).min(1.0), a.max(k).max(0.0).min(1.0)];
+        let sun = self.lit[4..].chunks(4).any(|l| (x - l[0]).hypot(y - l[1]) < l[2]) as u8 as f32;
+        let v = [x + dx * k * 0.8, y + dy * k * 0.8, (r * (1.0 + 0.9 * k)).max(0.0), (c + 0.5 * sun).max(0.0).min(1.0), a.max(k).max(0.0).min(1.0)];
         if self.n < MAX && v.iter().all(|v| v.is_finite()) {
             self.d[self.n * 5..self.n * 5 + 5].copy_from_slice(&v);
             self.n += 1;
@@ -67,9 +69,9 @@ impl Out<'_> {
             _ if blink > 0.5 => 1.0,
             _ => g,
         };
-        if self.nf < FACES && self.f.len() >= self.nf * 12 + 12 {
-            let q = [x, y, r, 3.0 + m as f32, gx / gl, gy / gl, blink, g, 0.04 + (sq + 0.1 * near as u8 as f32).max(-0.03).min(0.03), 1.0, 0.0, pulse];
-            self.f[self.nf * 12..self.nf * 12 + 12].copy_from_slice(&q);
+        if self.nf < FACES && self.f.len() >= self.nf * 10 + 10 {
+            let q = [x, y, r, 3.0 + m as f32, gx / gl, gy / gl, blink, g, 0.04 + (sq + 0.1 * near as u8 as f32).max(-0.03).min(0.03), pulse];
+            self.f[self.nf * 10..self.nf * 10 + 10].copy_from_slice(&q);
             self.nf += 1;
         }
     }
@@ -95,7 +97,8 @@ fn grid(n: usize, mut f: impl FnMut(f32, f32)) {
 /// Fill `d` (at least MAX*5), `faces` and `light`; return the dot and face counts.
 pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f32], faces: &mut [f32], light: &mut [f32; LIGHTS * 4]) -> (usize, usize) {
     let (px, py) = if px >= 0.0 && py >= 0.0 { (px, py) } else { (-1.0, -1.0) };
-    let mut o = Out { d, n: 0, f: faces, nf: 0, seed, t, px, py };
+    dapple(seed, t, light);
+    let mut o = Out { d, f: faces, n: 0, nf: 0, seed, t, px, py, lit: &light[..] };
     let mut pin = (0.74, 0.22, 0.025, 0.0);
     match scene % SCENES {
         // Rest: an all-over polka field of uneven sizes, breathing out from a sleeper.
@@ -185,9 +188,11 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
             let day = smooth((u - 0.2) / 0.4);
             let sy = 0.86 - 0.6 * smooth((u - 0.1) / 0.6);
             pin = (0.72, sy, 0.06, if sy < 0.7 { 0.2 + 0.8 * day } else { 0.0 });
-            for i in 0..7 {
-                let tw = 0.6 + 0.4 * (t * 2.0 + i as f32).sin();
-                o.dot(0.1 + 0.8 * rnd(seed, i), 0.08 + 0.4 * rnd(seed, i + 40), 0.006, 1.0, (1.0 - day) * tw);
+            // Starlight: each star twinkles, and every third wears a faint flat halo.
+            for i in 0..15 {
+                let (x, y, tw) = (0.05 + 0.9 * rnd(seed, i), 0.04 + 0.5 * rnd(seed, i + 40), 0.5 + 0.5 * (t * 2.0 + i as f32 * 1.7).sin());
+                o.dot(x, y, 0.004 + 0.004 * tw, 1.0, 1.0 - day);
+                o.dot(x, y, 0.022 * tw * (i % 3 == 0) as u8 as f32, 1.0, 0.25 * (1.0 - day));
             }
             o.dot(0.45, 1.5, 0.8, 0.0, 1.0);
             let (g, hop) = match () {
@@ -220,13 +225,13 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
             o.face(0.88 + 0.006 * gone as u8 as f32 * (t * 40.0).sin(), ground(0.88) - 0.05, 0.05, FLUSTERED, (0.32, ay), 0.0, 0.0, 0.0);
         }
     }
-    shine(seed, t, pin, light);
-    (o.n, o.nf)
+    let n = (o.n, o.nf);
+    light[..4].copy_from_slice(&[pin.0, pin.1, pin.2, pin.3.max(0.0).min(1.0)]);
+    n
 }
 
-/// Light 0 is the sun or pin light; the rest drift slowly like sun through leaves.
-fn shine(seed: u32, t: f32, pin: (f32, f32, f32, f32), light: &mut [f32; LIGHTS * 4]) {
-    light[..4].copy_from_slice(&[pin.0, pin.1, pin.2, pin.3.max(0.0).min(1.0)]);
+/// Lights 1.. drift slowly like sun through leaves.
+fn dapple(seed: u32, t: f32, light: &mut [f32; LIGHTS * 4]) {
     for k in 1..LIGHTS {
         let (u, k) = (k as f32, k as u32);
         light[k as usize * 4..k as usize * 4 + 4].copy_from_slice(&[
@@ -241,22 +246,16 @@ fn shine(seed: u32, t: f32, pin: (f32, f32, f32, f32), light: &mut [f32; LIGHTS 
 // The WebAssembly boundary: the host reads both buffers after each call.
 // They live for the module's lifetime and never move; memory never grows.
 static mut DOTS: [f32; MAX * 5] = [0.0; MAX * 5];
-static mut FACE: [f32; FACES * 12] = [0.0; FACES * 12];
+static mut FACE: [f32; FACES * 10] = [0.0; FACES * 10];
 static mut LIGHT: [f32; LIGHTS * 4] = [0.0; LIGHTS * 4];
 
 #[unsafe(no_mangle)]
-pub extern "C" fn dots() -> *const f32 {
-    &raw const DOTS as *const f32
-}
-
-#[unsafe(no_mangle)]
-pub extern "C" fn face() -> *const f32 {
-    &raw const FACE as *const f32
-}
-
-#[unsafe(no_mangle)]
-pub extern "C" fn lights() -> *const f32 {
-    &raw const LIGHT as *const f32
+pub extern "C" fn buf(i: u32) -> *const f32 {
+    match i {
+        0 => &raw const DOTS as *const f32,
+        1 => &raw const FACE as *const f32,
+        _ => &raw const LIGHT as *const f32,
+    }
 }
 
 #[unsafe(no_mangle)]
@@ -272,60 +271,43 @@ pub extern "C" fn update(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32
 mod tests {
     use super::*;
 
-    fn run_at(scene: u32, t: f32, p: f32, px: f32) -> (Vec<f32>, [f32; FACES * 12], usize, usize) {
-        let (mut d, mut f, mut l) = (vec![0.0; MAX * 5], [0.0; FACES * 12], [0.0; LIGHTS * 4]);
+    type Frame = (Vec<f32>, [f32; FACES * 10], [f32; LIGHTS * 4], usize, usize);
+    fn run(scene: u32, t: f32, p: f32, px: f32) -> Frame {
+        let (mut d, mut f, mut l) = (vec![0.0; MAX * 5], [0.0; FACES * 10], [0.0; LIGHTS * 4]);
         let (n, m) = frame(42, scene, t, p, px, px, &mut d, &mut f, &mut l);
         assert!(l.chunks(4).all(|c| c.iter().all(|v| v.is_finite()) && (0.0..=1.0).contains(&c[3])));
-        (d, f, n, m)
-    }
-
-    fn run(scene: u32, t: f32) -> (Vec<f32>, [f32; FACES * 12], usize, usize) {
-        run_at(scene, t, -1.0, -1.0)
+        (d, f, l, n, m)
     }
 
     #[test]
     fn every_scene_is_bounded_finite_and_deterministic() {
         for s in 0..SCENES {
             for t in [0.0, 1.3, 9.7, 1e6] {
-                let (d, f, n, m) = run(s, t);
+                let (d, f, _, n, m) = run(s, t, -1.0, -1.0);
                 assert!(n > 0 && n <= MAX && m > 0, "scene {s} count {n}");
                 assert!(d.iter().chain(&f).all(|v| v.is_finite()));
                 assert!(d[..n * 5].chunks(5).all(|c| (0.0..=1.0).contains(&c[3]) && (0.0..=1.0).contains(&c[4])));
-                assert!(f[..m * 12].chunks(12).all(|q| (3.0..8.0).contains(&q[3]) && (1.0..=6.0).contains(&q[7])));
-                assert_eq!(run(s, t).0, d);
+                assert!(f[..m * 10].chunks(10).all(|q| (3.0..8.0).contains(&q[3]) && (1.0..=6.0).contains(&q[7])));
+                assert_eq!(run(s, t, -1.0, -1.0).0, d);
             }
         }
     }
 
     #[test]
-    fn the_gap_stays_empty() {
-        let (d, _, n, _) = run(5, 3.0);
+    fn scenes_keep_their_promises() {
+        let (d, _, _, n, _) = run(5, 3.0, -1.0, -1.0); // the gap stays empty
         assert!(d[..n * 5].chunks(5).all(|c| (c[0] - 0.68).hypot(c[1] - 0.38) > 0.16));
-    }
-
-    #[test]
-    fn convergence_follows_progress() {
-        let (d, _, n, _) = run_at(4, 0.0, 1.0, -1.0);
-        assert_eq!(n, 196);
-        assert!((d[0] - 0.5 / 14.0).abs() < 1e-6 && (d[1] - 0.5 / 14.0).abs() < 1e-6);
-    }
-
-    #[test]
-    fn the_pointer_pushes_dots_aside() {
-        let ((a, ..), (b, ..)) = (run_at(4, 0.0, 1.0, -1.0), run_at(4, 0.0, 1.0, 0.5));
+        let (a, _, _, n, _) = run(4, 0.0, 1.0, -1.0); // convergence follows progress
+        assert!(n == 196 && (a[0] - 0.5 / 14.0).abs() < 1e-6 && (a[1] - 0.5 / 14.0).abs() < 1e-6);
+        let (d, _, l, n, _) = run(0, 0.0, -1.0, -1.0); // dapples light the dots beneath them
+        let lit: Vec<bool> = d[..n * 5].chunks(5).map(|c| l[4..].chunks(4).any(|q| (c[0] - q[0]).hypot(c[1] - q[1]) < q[2])).collect();
+        assert!(lit.contains(&true) && d[..n * 5].chunks(5).zip(&lit).all(|(c, &on)| on == (c[3] >= 0.5) || c[3] == 0.5));
+        let b = run(4, 0.0, 1.0, 0.5).0; // the pointer pushes dots aside
         let i = 6 * 14 + 6; // the grid dot just up-left of the pointer
         assert!(b[i * 5] < a[i * 5] && b[i * 5 + 2] > a[i * 5 + 2]);
-    }
-
-    #[test]
-    fn the_sleeper_wakes_and_the_jumper_leaves_the_frame() {
-        assert_eq!((run_at(6, 0.0, 0.1, -1.0).1[7], run_at(6, 0.0, 0.9, -1.0).1[7]), (1.0, 2.0));
-        let ys: Vec<f32> = (0..200).map(|k| run(7, k as f32 * 0.02).1[1]).collect();
-        assert!(ys.iter().any(|&y| y < 0.0) && ys.iter().any(|&y| y > 0.5));
-    }
-
-    #[test]
-    fn bad_input_is_ignored() {
-        assert!(update(1, 0, f32::NAN, f32::INFINITY, f32::NAN, 0.5) > 0);
+        assert_eq!((run(6, 0.0, 0.1, -1.0).1[7], run(6, 0.0, 0.9, -1.0).1[7]), (1.0, 2.0)); // the sleeper wakes
+        let ys: Vec<f32> = (0..200).map(|k| run(7, k as f32 * 0.02, -1.0, -1.0).1[1]).collect();
+        assert!(ys.iter().any(|&y| y < 0.0) && ys.iter().any(|&y| y > 0.5)); // the jumper leaves the frame
+        assert!(update(1, 0, f32::NAN, f32::INFINITY, f32::NAN, 0.5) > 0); // bad input is ignored
     }
 }
