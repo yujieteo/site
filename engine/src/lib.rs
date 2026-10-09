@@ -5,7 +5,7 @@
 //! Units: the frame is the unit square, y down; time in seconds.
 //! Dots: 5 f32 each — x, y, radius, colour (0 shadow, 0.5 accent, 1 light), alpha.
 //! Faces: 12 f32 each — x, y, radius, tone, gaze x, gaze y, blink (0 open, 1 shut),
-//! mouth (-1 frown .. 1 smile, 0 none), squash (+ flat, - tall), eye opening, halo, pulse.
+//! eye glyph (see CAST), squash (+ flat, - tall), eye opening, halo, pulse.
 //! Tone 2 is the light colour; tone 3 + i is cast member i's colour.
 //! Lights: 4 f32 each — x, y, radius, intensity (0..1). Light 0 is the pin light;
 //! the rest are dappled patches, as of sun through leaves.
@@ -26,19 +26,20 @@ pub struct Persona {
     r: f32,
     home: [f32; 2],
     pull: f32,
-    mouth: f32,
+    glyph: f32,
     eye: f32,
     bob: f32,
 }
 
+/// Eyes are glyphs, drawn by the host: 0 oval, 1 – –, 2 ^ ^, 3 > <, 4 + +, 5 O O, 6 * *.
 #[rustfmt::skip]
 pub const CAST: [Persona; 6] = [
-    Persona { mood: "curious",  colour: "#2f5bff", r: 0.085, home: [0.27, 0.3],  pull: 1.0,  mouth: 0.3,  eye: 1.3, bob: 0.015 },
-    Persona { mood: "shy",      colour: "#ff8fc8", r: 0.065, home: [0.74, 0.24], pull: -1.2, mouth: 0.15, eye: 0.9, bob: 0.01 },
-    Persona { mood: "sleepy",   colour: "#8b7cf6", r: 0.1,   home: [0.24, 0.72], pull: 0.0,  mouth: 0.0,  eye: 0.3, bob: 0.008 },
-    Persona { mood: "cheerful", colour: "#ffc800", r: 0.09,  home: [0.53, 0.52], pull: 0.4,  mouth: 0.9,  eye: 1.0, bob: 0.03 },
-    Persona { mood: "grumpy",   colour: "#ff4a1c", r: 0.08,  home: [0.78, 0.68], pull: -0.3, mouth: -0.6, eye: 0.8, bob: 0.005 },
-    Persona { mood: "calm",     colour: "#12c48b", r: 0.075, home: [0.5, 0.86],  pull: 0.15, mouth: 0.2,  eye: 0.9, bob: 0.012 },
+    Persona { mood: "sleepy",    colour: "#ff6a00", r: 0.1,   home: [0.25, 0.25], pull: 0.0,  glyph: 1.0, eye: 1.0, bob: 0.008 },
+    Persona { mood: "happy",     colour: "#e6007e", r: 0.085, home: [0.72, 0.22], pull: 0.4,  glyph: 2.0, eye: 1.0, bob: 0.03 },
+    Persona { mood: "flustered", colour: "#0050ff", r: 0.09,  home: [0.22, 0.72], pull: -1.2, glyph: 3.0, eye: 1.0, bob: 0.01 },
+    Persona { mood: "dizzy",     colour: "#00b140", r: 0.08,  home: [0.5, 0.5],   pull: -0.3, glyph: 4.0, eye: 1.0, bob: 0.02 },
+    Persona { mood: "curious",   colour: "#8f3ffc", r: 0.09,  home: [0.78, 0.66], pull: 1.0,  glyph: 5.0, eye: 1.1, bob: 0.015 },
+    Persona { mood: "starry",    colour: "#ffd400", r: 0.075, home: [0.52, 0.86], pull: 0.6,  glyph: 6.0, eye: 1.0, bob: 0.012 },
 ];
 
 pub struct Out<'a> {
@@ -258,11 +259,16 @@ impl Cast {
             let gl = gx.hypot(gy).max(1e-3);
             let ph = (t + rnd(7, i as u32) * 4.0) % (3.0 + u * 0.4);
             let blink = if ph < 0.18 { (ph / 0.18 * PI).sin() } else { 0.0 };
-            let shake = if q.mouth < 0.0 { 0.01 * e * (since * 40.0).sin() } else { 0.0 };
-            let mouth = (q.mouth + e * if q.mouth < 0.0 { -0.4 } else { 0.6 }).clamp(-1.0, 1.0);
+            let shake = if q.pull < -1.0 { 0.01 * e * (since * 40.0).sin() } else { 0.0 };
+            // A poke squeezes the eyes to > < (the flustered one sees stars); a blink shuts them to – –.
+            let glyph = match () {
+                _ if e > 0.3 => if q.glyph == 3.0 { 6.0 } else { 3.0 },
+                _ if blink > 0.5 => 1.0,
+                _ => q.glyph,
+            };
             faces[i * 12..i * 12 + 12].copy_from_slice(&[
-                x + shake, y, q.r, 3.0 + u, gx / gl, gy / gl, blink, mouth,
-                0.3 * e * (since * 14.0).sin(), q.eye + (1.3 - q.eye) * e, 0.3, e,
+                x + shake, y, q.r, 3.0 + u, gx / gl, gy / gl, blink, glyph,
+                0.3 * e * (since * 14.0).sin(), q.eye + 0.3 * e, 0.0, e,
             ]);
         }
         shine(7, t, (lx - 0.03, ly - 0.04, (-since * 1.5).exp()), light);
@@ -361,7 +367,7 @@ mod tests {
             assert!(n == 324 && m == CAST.len() && f.iter().chain(&d[..n * 5]).all(|v| v.is_finite()));
             assert!(f.chunks(12).take(m).all(|q| (q[2]..=1.0 - q[2]).contains(&q[0]) && (q[2]..=1.0 - q[2]).contains(&q[1])));
             if k == 601 {
-                assert!(f[2 * 12 + 9] > 1.0 && f[2 * 12 + 11] > 0.9, "the sleepy one wakes when poked");
+                assert!(f[2 * 12 + 7] == 6.0 && f[11] < 0.1 && f[2 * 12 + 11] > 0.9, "the poked one reacts alone");
             }
         }
     }

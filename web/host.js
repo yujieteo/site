@@ -19,42 +19,25 @@
   const visible = new Set();
   const css = (el, n) => getComputedStyle(el).getPropertyValue(n).trim();
 
-  // Colour helpers: palettes are #rrggbb; tint mixes toward another colour and sets alpha.
-  const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
-  const tint = (h, a, to = h, k = 0) => `rgba(${rgb(h).map((v, i) => Math.round(v + (rgb(to)[i] - v) * k))},${a})`;
-  // Dots are soft orbs lit from the upper left: one sprite per colour, reused every frame.
-  const orbs = new Map();
-  const orb = (c) => {
-    if (!orbs.has(c)) {
-      const o = document.createElement("canvas"), x = o.getContext("2d");
-      o.width = o.height = 64;
-      const g = x.createRadialGradient(24, 22, 1, 32, 32, 32);
-      g.addColorStop(0, tint(c, 1, "#ffffff", 0.4)), g.addColorStop(0.6, tint(c, 1)), g.addColorStop(1, tint(c, 1, "#000000", 0.3));
-      x.fillStyle = g, x.arc(32, 32, 31.5, 0, 7), x.fill();
-      orbs.set(c, o);
-    }
-    return orbs.get(c);
-  };
-  // Film grain, made once.
-  const grain = document.createElement("canvas"), gc = grain.getContext("2d");
-  grain.width = grain.height = 96;
-  const noise = gc.createImageData(96, 96);
-  for (let i = 0; i < noise.data.length; i += 4) noise.data.fill(Math.random() * 255, i, i + 3), (noise.data[i + 3] = 255);
-  gc.putImageData(noise, 0, 0);
-  // A soft pool of light, squashed and tilted like sun through leaves.
-  const glow = (ctx, x, y, r, c, a, squash) => {
-    ctx.save(), ctx.translate(x, y), ctx.rotate(-0.6), ctx.scale(1, squash);
-    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, r);
-    g.addColorStop(0, tint(c, a)), g.addColorStop(0.6, tint(c, a * 0.7)), g.addColorStop(1, tint(c, 0));
-    ctx.fillStyle = g, ctx.fillRect(-r, -r, 2 * r, 2 * r), ctx.restore();
-  };
+  // Eye glyphs, drawn in a unit circle at (x, y) with half-size h; e is -1 for the left eye.
+  const eyes = [
+    (c, x, y, h, e, blink) => c.ellipse(x, y, 0.4 * h, 0.6 * h * (1 - 0.9 * blink), 0, 0, 7), // oval (filled)
+    (c, x, y, h) => (c.moveTo(x - h, y), c.lineTo(x + h, y)), // – –
+    (c, x, y, h) => (c.moveTo(x - h, y + 0.6 * h), c.lineTo(x, y - 0.6 * h), c.lineTo(x + h, y + 0.6 * h)), // ^ ^
+    (c, x, y, h, e) => (c.moveTo(x + e * 0.7 * h, y - h), c.lineTo(x - e * 0.7 * h, y), c.lineTo(x + e * 0.7 * h, y + h)), // > <
+    (c, x, y, h) => (c.moveTo(x - h, y), c.lineTo(x + h, y), c.moveTo(x, y - h), c.lineTo(x, y + h)), // + +
+    (c, x, y, h) => (c.moveTo(x + 0.75 * h, y), c.arc(x, y, 0.75 * h, 0, 7)), // O O
+    (c, x, y, h) => [0.5, 1.55, 2.6].forEach((a) => (c.moveTo(x - h * Math.cos(a), y - h * Math.sin(a)), c.lineTo(x + h * Math.cos(a), y + h * Math.sin(a)))), // * *
+  ];
+  const disc = (ctx, x, y, r) => (ctx.beginPath(), ctx.arc(x, y, r, 0, 7), ctx.fill());
 
+  // Flat colour only: every shape is one solid fill; light is a few hard-edged, lighter shapes.
   function draw(cv) {
     const ctx = cv.getContext("2d"), dpr = Math.min(devicePixelRatio || 1, 2);
     const s = Math.round(cv.clientWidth * dpr);
     if (!s) return;
     if (cv.width !== s) cv.width = cv.height = s;
-    const [base, shade, accent, light] = ["--base", "--shade", "--accent", "--light"].map((n) => css(cv, n));
+    const [base, shade, accent, light, ink] = ["--base", "--shade", "--accent", "--light", "--ink"].map((n) => css(cv, n));
     const p = cv.dataset.progress === undefined ? -1 : +cv.dataset.progress;
     const [px, py] = cv.pointer || [-1, -1];
     const got = api.update(+(cv.dataset.seed || 1), +cv.dataset.scene, clock, p, px, py);
@@ -62,46 +45,40 @@
     const d = new Float32Array(mem.buffer, api.dots(), n * 5);
     const f = (cv.faces = new Float32Array(mem.buffer, api.face(), nf * 12));
     const L = new Float32Array(mem.buffer, api.lights(), 24); // 6 lights; 0 is the pin light
-    // The field: flat colour, falling off toward the shadow colour at the edges.
+    const hues = [shade, accent, light, ...css(cv, "--cast").split(/\s+/).filter(Boolean)];
     ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
     ctx.fillStyle = base, ctx.fillRect(0, 0, s, s);
-    const v = ctx.createRadialGradient(s * 0.5, s * 0.4, s * 0.2, s * 0.5, s * 0.5, s * 0.8);
-    v.addColorStop(0, tint(shade, 0)), v.addColorStop(1, tint(shade, +(css(cv, "--falloff") || 0.55)));
-    ctx.fillStyle = v, ctx.fillRect(0, 0, s, s);
-    const hues = [shade, accent, light, ...css(cv, "--cast").split(/\s+/).filter(Boolean)];
-    const tone = hues.map(orb);
-    for (let i = 0; i < n * 5; i += 5) {
-      const c = d[i + 3], r = d[i + 2] * s;
-      ctx.globalAlpha = d[i + 4];
-      ctx.drawImage(tone[c < 0.34 ? 0 : c < 0.67 ? 1 : 2], d[i] * s - r, d[i + 1] * s - r, 2 * r, 2 * r);
+    // Dots: three tones at three opacities, one path each.
+    for (let t = 0; t < 3; t++) for (let a = 1; a <= 3; a++) {
+      ctx.beginPath();
+      for (let i = 0; i < n * 5; i += 5) {
+        const c = d[i + 3], r = d[i + 2] * s;
+        if ((c < 0.34 ? 0 : c < 0.67 ? 1 : 2) !== t || Math.ceil(d[i + 4] * 3) !== a) continue;
+        ctx.moveTo(d[i] * s + r, d[i + 1] * s), ctx.arc(d[i] * s, d[i + 1] * s, r, 0, 7);
+      }
+      ctx.globalAlpha = a / 3, ctx.fillStyle = hues[t], ctx.fill();
     }
-    // Characters: an orb, two eyes that look somewhere, sometimes a mouth, a halo when moved.
-    ctx.globalAlpha = 1, ctx.lineCap = "round";
+    // Characters: a disc and two glyph eyes that look somewhere.
+    ctx.lineWidth = 0.12, ctx.lineJoin = "miter";
     for (let i = 0; i < nf * 12; i += 12) {
-      const [x, y, r, k, gx, gy, blink, mouth, sq, eye, halo, pulse] = f.subarray(i, i + 12);
+      const [x, y, r, k, gx, gy, blink, g, sq, eye, halo, pulse] = f.subarray(i, i + 12);
       const c = hues[k] || light;
-      if (halo + pulse > 0.05) glow(ctx, x * s, y * s, r * s * (1.6 + 0.15 * halo + 0.3 * pulse), k > 2 ? c : accent, 0.25 * halo + 0.4 * pulse, 1);
-      ctx.save(), ctx.translate(x * s, y * s), ctx.scale(r * s * (1 + sq), r * s * (1 - sq));
-      ctx.drawImage(tone[k] || tone[2], -1, -1, 2, 2);
-      for (const e of [-1, 1]) {
-        const ex = e * 0.32 + gx * 0.08, ey = -0.12 + gy * 0.08, h = 0.17 * eye * (1 - 0.92 * blink);
-        ctx.fillStyle = "#fff", ctx.beginPath(), ctx.ellipse(ex, ey, 0.15, h, 0, 0, 7), ctx.fill();
-        ctx.fillStyle = shade, ctx.beginPath(), ctx.ellipse(ex + gx * 0.06, ey + gy * 0.06 * eye, 0.08, Math.min(h, 0.09), 0, 0, 7), ctx.fill();
-      }
-      if (Math.abs(mouth) > 0.05) {
-        ctx.strokeStyle = shade, ctx.lineWidth = 0.07, ctx.beginPath(), ctx.moveTo(-0.2, 0.3);
-        ctx.quadraticCurveTo(0, 0.3 + 0.25 * mouth, 0.2, 0.3), ctx.stroke();
-      }
+      ctx.fillStyle = k > 2 ? c : accent, ctx.globalAlpha = 0.3;
+      if (halo + pulse > 0.05) disc(ctx, x * s, y * s, r * s * (1.15 + 0.1 * halo + 0.5 * (1 - pulse) * (pulse > 0.05)));
+      ctx.globalAlpha = 1, ctx.save(), ctx.translate(x * s, y * s), ctx.scale(r * s * (1 + sq), r * s * (1 - sq));
+      ctx.fillStyle = c, disc(ctx, 0, 0, 1);
+      ctx.fillStyle = ctx.strokeStyle = ink || shade, ctx.beginPath();
+      for (const e of [-1, 1]) eyes[g | 0](ctx, e * 0.48 + gx * 0.22, -0.1 + gy * 0.18, 0.26 * eye, e, blink);
+      g ? ctx.stroke() : ctx.fill();
       ctx.restore();
     }
-    // Light falls on everything: dappled patches, then the pin light, then grain.
-    ctx.globalCompositeOperation = "screen";
-    for (let k = 4; k < 24; k += 4) glow(ctx, L[k] * s, L[k + 1] * s, L[k + 2] * s, light, L[k + 3], 0.6);
-    ctx.globalCompositeOperation = "lighter";
-    glow(ctx, L[0] * s, L[1] * s, L[2] * s * 4, light, L[3] * 0.5, 1);
-    glow(ctx, L[0] * s, L[1] * s, L[2] * s * 0.5, "#ffffff", L[3], 1);
-    ctx.globalCompositeOperation = "overlay", ctx.globalAlpha = 0.08;
-    ctx.fillStyle = ctx.createPattern(grain, "repeat"), ctx.fillRect(0, 0, s, s);
+    // Light: dappled patches and a pin light, each one flat, lighter shape.
+    ctx.globalCompositeOperation = "screen", ctx.fillStyle = light, ctx.globalAlpha = 0.14;
+    for (let k = 4; k < 24; k += 4) {
+      ctx.save(), ctx.translate(L[k] * s, L[k + 1] * s), ctx.rotate(-0.6), ctx.scale(1, 0.6);
+      disc(ctx, 0, 0, L[k + 2] * s), ctx.restore();
+    }
+    if (L[3] > 0.1) disc(ctx, L[0] * s, L[1] * s, L[2] * s * 3), (ctx.globalAlpha = Math.ceil(L[3] * 2) / 2), disc(ctx, L[0] * s, L[1] * s, L[2] * s * 0.6);
     ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
   }
 
