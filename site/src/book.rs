@@ -56,7 +56,7 @@ fn say_lock(slug: &str, dir: &Path, d: &doc::Doc) {
     let look = |w: &str| {
         let l = w.replace('’', "'").to_lowercase();
         match l.as_str() { "a" => return Some("ə".into()), "the" => return Some("ðə".into()), _ => {} }
-        find(w).or_else(|| find(&l)).or_else(|| ["s", "es", "ies", "d", "ed", "ied", "ing", "ing"].iter().zip(["", "", "y", "", "", "y", "", "e"]).find_map(|(suf, back)| {
+        d.get("pronounce").split(',').find_map(|p| Some(p.trim().strip_prefix(w)?.strip_prefix(' ')?.trim().into())).or_else(|| find(w)).or_else(|| find(&l)).or_else(|| ["s", "es", "ies", "d", "ed", "ied", "ing", "ing"].iter().zip(["", "", "y", "", "", "y", "", "e"]).find_map(|(suf, back)| {
             let base = l.strip_suffix(suf)?;
             let undouble = base.is_ascii() && base.len() > 2 && base.as_bytes()[base.len() - 1] == base.as_bytes()[base.len() - 2];
             let p = find(&format!("{base}{back}")).or_else(|| undouble.then(|| find(&base[..base.len() - 1])).flatten())?;
