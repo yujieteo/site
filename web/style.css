@@ -1,62 +1,48 @@
 :root {
-  /* Neutral text spends no colour; it takes four values: fg for names, fg2 for reading,
-     muted for asides, faint for labels. Scenes use Araki's odd neighbours; lights are tinted.
-     Light after LoveFrom; dark after OpenAI. */
-  --bg: #f4f3f1;
-  --fg: #141414;
-  --fg2: #3f3e3c;
-  --muted: #74726e;
-  --faint: #a9a7a3;
-  --line: #e0dedb;
-  --focus: #141414;
-  --serif: "Iowan Old Style", Baskerville, Palatino, Georgia, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --base: #4f6f92;
-  --shade: #1f2a3c;
-  --accent: #f0a050;
-  --light: #ffe39a;
-  --ink: #16121c;
-  /* After Araki: odd neighbours at full chroma. sleepy happy flustered dizzy curious */
-  --cast: #7a3cff #ffc400 #ff2e74 #b4e600 #00c9b7;
-  color-scheme: light dark;
+  /* Colour comes from the theme (generated from engine/src/theme.rs): fg for names, fg2 for
+     reading, muted for asides. Scenes carry their own palettes. Fonts are embedded subsets. */
+  --sans: "Fira Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --serif: "Libertinus Serif", "Iowan Old Style", Palatino, Georgia, serif;
+  --mono: "Fira Mono", "SFMono-Regular", Consolas, monospace;
+  --math: "Fira Math", math;
+  --text: var(--sans);
+  --head: var(--serif);
+  --focus: var(--fg);
 }
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #000000; --fg: #f2f2f2; --fg2: #c2c2c2; --muted: #8a8a8a; --faint: #5a5a5a; --line: #262626; --focus: #f2f2f2; }
-}
+[data-font=book] { --text: "Libertinus Serif", serif; --head: var(--text); }
+[data-font=tex] { --text: "Latin Modern Roman", serif; --head: var(--text); }
 * { box-sizing: border-box; min-width: 0; }
-body { margin: 0; background: var(--bg); color: var(--fg2); font: 1rem/1.6 var(--sans); }
+body { margin: 0; background: var(--bg); color: var(--fg2); font: 1rem/1.6 var(--text); }
 a { color: inherit; text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+a:hover, article a { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-color: var(--line); }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-h1, h2 { color: var(--fg); font: 400 2.5rem/1.1 var(--serif); letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+h1, h2, h3 { color: var(--fg); font: 400 2.5rem/1.1 var(--head); letter-spacing: -0.01em; margin: 0 0 0.5rem; }
 h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; margin-top: 2rem; }
 p { margin: 0 0 1rem; }
 .muted, small { color: var(--muted); font-size: 0.875rem; }
-.top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.25rem; padding: 1.25rem 16px; font: 1.0625rem/1.4 var(--serif); }
-.top > a { white-space: nowrap; }
-.top > a { color: var(--fg); }
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.25rem; padding: 1.25rem 16px; font: 1.0625rem/1.4 var(--head); }
+.top > a { white-space: nowrap; color: var(--fg); }
 .top nav { display: flex; gap: 1.25rem; color: var(--muted); }
-footer.top { color: var(--faint); }
+footer.top { color: var(--muted); }
 main { overflow-x: clip; max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6rem; }
-.lede { font: 1.375rem/1.4 var(--serif); max-width: 32rem; margin-bottom: 4rem; }
-.frame { display: block; width: 100%; aspect-ratio: 1; border-radius: 4px; touch-action: pan-y;
-  background: var(--base); }
+.lede { font: 1.375rem/1.4 var(--head); max-width: 32rem; margin-bottom: 4rem; }
+.frame { display: block; width: 100%; aspect-ratio: 1; border-radius: 4px; touch-action: pan-y; background: var(--sky); }
 /* A door's canvas overhangs its tile so characters can leap out of it. */
 .frame[data-bleed] { width: 130%; margin: -15%; background: none; position: relative; z-index: 1; }
 .doors { display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
 .door h2 { margin-top: 1rem; }
 .list { list-style: none; padding: 0; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); }
 .list h2 { font-size: 1.375rem; margin-top: 0.75rem; }
+button, select { font: inherit; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 99px; padding: 0.25rem 0.75rem; cursor: pointer; }
 
 /* Story: a sticky stage beside (wide) or above (narrow) the chapters. */
 .story { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr); }
 .stage { position: sticky; top: 0; padding: 0.5rem 0; background: var(--bg); z-index: 1; }
 .stage .frame { max-width: min(100%, 52vh); margin: 0 auto; }
-.bar { height: 2px; background: var(--faint); transform-origin: left; transform: scaleX(0); }
-.controls { display: flex; justify-content: space-between; align-items: center; font: 0.75rem var(--mono); color: var(--faint); padding-top: 0.5rem; }
-button { font: inherit; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 99px; padding: 0.25rem 0.75rem; cursor: pointer; }
-.chapter { min-height: 70vh; padding: 2rem 0; max-width: 30rem; }
+.bar { height: 2px; background: var(--muted); transform-origin: left; transform: scaleX(0); }
+.controls { display: flex; justify-content: space-between; align-items: center; font: 0.75rem var(--mono); color: var(--muted); padding-top: 0.5rem; }
+.chapter { min-height: 70vh; padding: 2rem 0; max-width: 34rem; }
 .chapter h2 { font-size: 2rem; }
 @media (min-width: 52rem) {
   .story { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
@@ -65,8 +51,57 @@ button { font: inherit; color: var(--muted); background: none; border: 1px solid
 }
 details { border-top: 1px solid var(--line); padding: 1rem 0; }
 
+/* Notebook: quiet tools, cells as code, controls and output. */
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; font-size: 0.875rem; color: var(--muted); margin: -2.5rem 0 2.5rem; }
+.tools [aria-current] { color: var(--fg); }
+.tools .sp { flex: 1; }
+.tools button, .tools select { border: 0; padding: 0.25rem 0; field-sizing: content; }
+.export { border: 0; padding: 0; }
+.export summary { cursor: pointer; }
+.export[open] { flex-basis: 100%; }
+.export div { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; padding-top: 0.5rem; }
+.editor { display: block; width: 100%; height: 60vh; font: 0.875rem/1.5 var(--mono); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.75rem; margin-bottom: 2rem; }
+.code { font: 0.8125rem/1.55 var(--mono); color: var(--fg); background: var(--surface); border-radius: 4px; padding: 0.75rem; margin: 1rem 0 0.5rem; overflow-x: auto; }
+.code .k { color: var(--accent-text); } .code .s { color: var(--green); } .code .n { color: var(--warm); } .code .c { color: var(--muted); }
+.cell { margin: 1.5rem 0; }
+.out pre, .err { font: 0.8125rem/1.55 var(--mono); color: var(--fg); white-space: pre-wrap; overflow-wrap: anywhere; margin: 0.5rem 0; }
+.err { color: var(--warm); }
+.stale .out, .stale .ctls { opacity: 0.45; }
+.stale .code { box-shadow: inset 2px 0 var(--warm); }
+.ctls label { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: var(--muted); }
+.ctls input { flex: 1; accent-color: var(--fg); }
+.ctls output { font: 0.8125rem var(--mono); color: var(--fg); min-width: 3ch; text-align: right; }
+.caption, figcaption { font-size: 0.875rem; color: var(--muted); }
+.plot { display: block; width: 100%; height: auto; font: 15px var(--text); }
+.plot .gr { stroke: var(--line); } .plot .ax { fill: var(--muted); } .plot .rl { stroke: var(--fg2); stroke-dasharray: 4 4; }
+.plot path { fill: none; stroke-width: 2; stroke-linejoin: round; }
+.l0 { stroke: var(--accent); } .l1 { stroke: var(--warm); } .l2 { stroke: var(--green); } .l3 { stroke: var(--fg2); }
+.d0 { fill: var(--accent); } .d1 { fill: var(--warm); } .d2 { fill: var(--green); } .d3 { fill: var(--fg2); }
+.say { color: var(--muted); font-style: italic; border-left: 2px solid var(--line); padding-left: 1rem; margin: 1.5rem 0; }
+math { font-family: var(--math); }
+.eq { overflow-x: auto; margin: 1rem 0; }
+figure { margin: 1.5rem 0; }
+figure img { display: block; max-width: 100%; height: auto; }
+.refs ol { padding-left: 1.25rem; font-size: 0.875rem; overflow-wrap: anywhere; }
+.still { display: none; max-width: 20rem; margin: 1rem 0; }
+
+/* Views: one page, four layouts. */
+[data-view=slides] { scroll-snap-type: y proximity; }
+[data-view=slides] .chapter { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; }
+[data-view=slides] .chapter h2 { font-size: 2.5rem; }
+[data-view=slides] .code, [data-view=slides] .say, [data-view=slides] .caption, [data-view=slides] .refs { display: none; }
+:is([data-view=handout], [data-view=article]) .stage, :is([data-view=handout], [data-view=article]) .code { display: none; }
+:is([data-view=handout], [data-view=article]) .story { grid-template-columns: minmax(0, 1fr); max-width: 40rem; }
+:is([data-view=handout], [data-view=article]) .still { display: block; }
+:is([data-view=handout], [data-view=article]) .chapter { min-height: 0; max-width: none; }
+[data-view=handout] .chapter { border-top: 1px solid var(--line); }
+[data-view=article] article { counter-reset: s; }
+[data-view=article] .chapter h2::before { counter-increment: s; content: counter(s) ". "; color: var(--muted); }
+[data-view=article] .say, [data-view=article] .ctls { display: none; }
+
 /* Notes */
 .notes { max-width: 40rem; }
-.notes h2 { font: 0.75rem var(--mono); color: var(--faint); margin: 3rem 0 1rem; }
+.notes h2 { font: 0.75rem var(--mono); color: var(--muted); margin: 3rem 0 1rem; }
 .note { white-space: pre-line; overflow-wrap: anywhere; margin: 0 0 1.25rem; }
-.note b { font: 400 0.75rem var(--mono); color: var(--faint); margin-right: 0.5rem; }
+.note b { font: 400 0.75rem var(--mono); color: var(--muted); margin-right: 0.5rem; }
+@media print { .tools, .controls, .top nav { display: none; } .stage { position: static; } }

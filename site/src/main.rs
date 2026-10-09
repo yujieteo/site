@@ -1,106 +1,57 @@
-//! Builds dist/: the landing page, Notes, Stories and Play. Every page is
-//! one self-contained HTML file; pages with a canvas carry the engine inline.
+//! Builds dist/: the landing page, Notes, Stories and Play. Every page is one self-contained
+//! HTML file; every story is a notebook (`book`).
 //! Usage: site [notes.json]  (default ../site/data/uniichat/memory.json)
 
+mod book;
+mod cells;
+
+use book::{FONTS, font};
+use engine::{doc, pack, theme};
 use std::{fmt::Write, fs, path::Path};
 
 const SHELL: &str = include_str!("../../web/shell.html");
 const STYLE: &str = include_str!("../../web/style.css");
-const HOST: &str = include_str!("../../web/host.js");
+pub const HOST: &str = include_str!("../../web/host.js");
 const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
 
-fn esc(s: &str) -> String {
-    s.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;").replace('"', "&quot;")
-}
+use doc::esc;
 
-fn base64(b: &[u8]) -> String {
-    const A: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    let mut s = String::with_capacity(b.len().div_ceil(3) * 4);
-    for c in b.chunks(3) {
-        let n = c.iter().enumerate().fold(0u32, |n, (i, &x)| n | (x as u32) << (16 - 8 * i));
-        for i in 0..4 {
-            s.push(if i <= c.len() { A[(n >> (18 - 6 * i) & 63) as usize] as char } else { '=' });
-        }
-    }
-    s
+fn font_css(n: usize) -> String {
+    FONTS[..n].iter().map(|(fam, f)| format!("@font-face{{font-family:\"{fam}\";src:url({}) format(\"opentype\")}}\n", pack::data_url("f.otf", &font(f)))).collect()
 }
 
 fn canvas(scene: u32, palette: &str, extra: &str) -> String {
-    let vars = ["--base", "--shade", "--accent", "--light"].iter().zip(palette.split_whitespace());
-    let style: String = vars.map(|(k, v)| format!("{k}:{v};")).collect();
-    format!(r#"<canvas class="frame" data-scene="{scene}" style="{}" {extra} aria-hidden="true"></canvas>"#, esc(&style))
+    format!(r#"<canvas class="frame" data-scene="{scene}" style="{}" {extra} aria-hidden="true"></canvas>"#, esc(&vars(palette)))
 }
 
-/// One page: its path under dist/, title and body. Pages with a canvas get the engine.
-fn render((path, title, body): &(String, String, String), wasm: &str) -> String {
-    let root = "../".repeat(path.matches('/').count());
-    let script = if body.contains("<canvas") {
-        let motion = if body.contains("data-motion") { "" } else {
-            r#"<footer class="top"><span data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></footer>"#
-        };
-        format!("{motion}<script id=\"wasm\" type=\"application/octet-stream\">{wasm}</script>\n<script>{HOST}</script>")
-    } else {
-        String::new()
-    };
-    SHELL.replace("{{title}}", &esc(title)).replace("{{style}}", STYLE).replace("{{root}}", &root)
-        .replace("{{body}}", body).replace("{{script}}", &script)
+/// A scene palette (sky, shade, glow, light) as CSS custom properties.
+pub fn vars(palette: &str) -> String {
+    ["--sky", "--shade", "--glow", "--light"].iter().zip(palette.split_whitespace()).map(|(k, v)| format!("{k}:{v};")).collect()
 }
 
-struct Story {
-    slug: String,
-    title: String,
-    summary: String,
-    palette: String,
-    thumb: u32,
-    html: String,
+pub struct Page {
+    pub path: String,
+    pub title: String,
+    pub body: String,
+    pub attrs: String,
+    pub fonts: usize,
+    pub script: String,
 }
 
-/// A story file: `key: value` header lines, then `## Heading` chapters, each with an
-/// optional `scene: N` line and paragraphs. A final `# Notes` block becomes a disclosure.
-fn story(slug: &str, src: &str) -> Story {
-    let mut s = Story { slug: slug.into(), title: slug.into(), summary: String::new(), palette: String::new(), thumb: 0, html: String::new() };
-    let (mut chapters, mut notes, mut in_notes) = (String::new(), String::new(), false);
-    for block in src.split("\n\n").map(str::trim).filter(|b| !b.is_empty()) {
-        if let Some(h) = block.strip_prefix("## ") {
-            let (h, rest) = h.split_once('\n').unwrap_or((h, ""));
-            let (scene, rest) = match rest.strip_prefix("scene: ") {
-                Some(r) => r.split_once('\n').unwrap_or((r, "")),
-                None => ("0", rest),
-            };
-            if !chapters.is_empty() {
-                chapters.push_str("</section>");
-            }
-            write!(chapters, r#"<section class="chapter" data-chapter="{}"><h2>{}</h2>"#, esc(scene.trim()), esc(h)).unwrap();
-            if !rest.trim().is_empty() {
-                write!(chapters, "<p>{}</p>", esc(rest.trim())).unwrap();
-            }
-        } else if block.starts_with("# Notes") {
-            in_notes = true;
-        } else if in_notes {
-            write!(notes, "<p>{}</p>", esc(block)).unwrap();
-        } else if !chapters.is_empty() {
-            write!(chapters, "<p>{}</p>", esc(block)).unwrap();
-        } else {
-            for line in block.lines() {
-                match line.split_once(": ") {
-                    Some(("title", v)) => s.title = v.into(),
-                    Some(("summary", v)) => s.summary = v.into(),
-                    Some(("palette", v)) => s.palette = v.into(),
-                    Some(("thumb", v)) => s.thumb = v.parse().unwrap_or(0),
-                    _ => panic!("{slug}: unknown header line {line:?}"),
-                }
-            }
-        }
+impl Page {
+    fn new(path: &str, title: &str, body: String) -> Page {
+        Page { path: path.into(), title: title.into(), body, attrs: String::new(), fonts: 3, script: String::new() }
     }
-    let n = chapters.matches("class=\"chapter\"").count();
-    let stage = canvas(0, &s.palette, "data-stage");
-    let notes = if notes.is_empty() { notes } else { format!("<details><summary>Notes and sources</summary>{notes}</details>") };
-    s.html = format!(
-        r#"<h1>{}</h1><p class="lede">{}</p><div class="story"><div class="stage">{stage}<div class="controls"><span data-count>1 / {n}</span><span data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></div><div class="bar" data-bar></div></div><article>{chapters}</section>{notes}</article></div>"#,
-        esc(&s.title),
-        esc(&s.summary),
-    );
-    s
+}
+
+fn render(p: &Page, wasm: &str) -> String {
+    let root = "../".repeat(p.path.matches('/').count());
+    let script = if !p.script.is_empty() { p.script.clone() } else if p.body.contains("<canvas") {
+        format!(r#"<footer class="top"><span data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></footer><script id="wasm" type="application/octet-stream">{wasm}</script>
+<script>{HOST}</script>"#)
+    } else { String::new() };
+    SHELL.replace("{{attrs}}", &p.attrs).replace("{{title}}", &esc(&p.title)).replace("{{root}}", &root)
+        .replace("{{style}}", &(font_css(p.fonts) + &theme::css() + STYLE)).replace("{{body}}", &p.body).replace("{{script}}", &script)
 }
 
 /// Redact private details from a log line; None when it must not be published at all.
@@ -154,35 +105,40 @@ fn notes(path: &str) -> String {
 
 fn main() {
     let notes_path = std::env::args().nth(1).unwrap_or("../site/data/uniichat/memory.json".into());
-    let wasm = base64(&fs::read(WASM).expect("build the engine first: see README"));
-    let mut stories: Vec<Story> = fs::read_dir("content/stories").unwrap().flatten()
-        .filter(|e| e.path().extension().is_some_and(|x| x == "story"))
-        .map(|e| story(&e.path().file_stem().unwrap().to_string_lossy(), &fs::read_to_string(e.path()).unwrap()))
-        .collect();
-    stories.sort_by(|a, b| a.slug.cmp(&b.slug));
-
+    let engine_wasm = fs::read(WASM).expect("build the engine first: see README");
+    let wasm = pack::base64(&engine_wasm);
+    let mut slugs: Vec<String> = fs::read_dir("content/stories").unwrap().flatten()
+        .filter(|e| e.path().join("index.md").exists()).map(|e| e.file_name().to_string_lossy().into_owned()).collect();
+    slugs.sort();
+    let (mut stories, mut pages, mut files) = (vec![], vec![], vec![]);
+    for slug in &slugs {
+        let (s, p, f) = book::notebook(slug, &engine_wasm);
+        stories.push(s);
+        pages.extend(p);
+        files.extend(f.into_iter().map(|(n, b)| (format!("stories/{slug}/{n}"), b)));
+    }
     let door = |href: &str, scene: u32, palette: &str, name: &str, line: &str| {
         format!(r#"<a class="door" href="{href}">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, canvas(scene, palette, "data-bleed"))
     };
     let cards: String = stories.iter().map(|s| format!(
         r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
         s.slug, canvas(s.thumb, &s.palette, ""), esc(&s.title), esc(&s.summary))).collect();
-    let mut pages = vec![
-        ("index.html".into(), "Yu Jie".into(), format!(
+    pages.extend([
+        Page::new("index.html", "Yu Jie", format!(
             r#"<p class="lede">Notes, stories and toys.</p><div class="doors">{}{}{}</div>"#,
             door("notes/index.html", 3, "#5e3f78 #2a1838 #8fd0a8 #ffd08a", "Notes", "A working log, sanitised."),
             door("stories/index.html", 6, "#3f5f4a #17261c #f08ca0 #ffe48a", "Stories", "Visual explanations, told in order."),
             door("play/index.html", 7, "#e8968f #3a2340 #3f9e86 #fff3a0", "Play", "Toys to play with."))),
-        ("notes/index.html".into(), "Notes".into(), format!(r#"<h1>Notes</h1><div class="notes">{}</div>"#, notes(&notes_path))),
-        ("stories/index.html".into(), "Stories".into(), format!(r#"<h1>Stories</h1><ul class="list">{cards}</ul>"#)),
-        ("play/index.html".into(), "Play".into(), r#"<h1>Play</h1><p class="lede">Toys arrive here as they are made.</p>"#.into()),
-    ];
-    pages.extend(stories.into_iter().map(|s| (format!("stories/{}/index.html", s.slug), s.title, s.html)));
-    for p in &pages {
-        let out = Path::new("dist").join(&p.0);
+        Page::new("notes/index.html", "Notes", format!(r#"<h1>Notes</h1><div class="notes">{}</div>"#, notes(&notes_path))),
+        Page::new("stories/index.html", "Stories", format!(r#"<h1>Stories</h1><ul class="list">{cards}</ul>"#)),
+        Page::new("play/index.html", "Play", r#"<h1>Play</h1><p class="lede">Toys arrive here as they are made.</p>"#.into()),
+    ]);
+    let pages: Vec<(String, Vec<u8>)> = pages.iter().map(|p| (p.path.clone(), render(p, &wasm).into_bytes())).collect();
+    for (path, bytes) in pages.iter().chain(&files) {
+        let out = Path::new("dist").join(path);
         fs::create_dir_all(out.parent().unwrap()).unwrap();
-        fs::write(&out, render(p, &wasm)).unwrap();
-        println!("{}", out.display());
+        fs::write(&out, bytes).unwrap();
+        println!("{} {}", out.display(), bytes.len());
     }
 }
 
@@ -191,24 +147,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn base64_matches_rfc4648() {
-        assert_eq!(base64(b"foobar"), "Zm9vYmFy");
-        assert_eq!(base64(b"fooba"), "Zm9vYmE=");
-        assert_eq!(base64(b"f"), "Zg==");
-    }
-
-    #[test]
     fn sanitize_redacts_and_refuses() {
         assert_eq!(sanitize("[pi d3d2] see ~/notes/a.md and `/Users/me/x`.").unwrap(), "see [private path] and `[private path]`.");
         assert_eq!(sanitize("mail me@x.org at teoyujie.org").unwrap(), "mail [email] at [site]");
         assert!(sanitize("key ghp_abc").is_none());
-    }
-
-    #[test]
-    fn story_parses_chapters_and_notes() {
-        let s = story("t", "title: T\nsummary: S\npalette: #000 #111 #222 #333\nthumb: 2\n\n## One\nscene: 4\nBody.\n\n# Notes\n\nSource.");
-        assert_eq!((s.title.as_str(), s.thumb), ("T", 2));
-        assert!(s.html.contains(r#"data-chapter="4"><h2>One</h2><p>Body.</p>"#));
-        assert!(s.html.contains("1 / 1") && s.html.contains("<details>"));
     }
 }
