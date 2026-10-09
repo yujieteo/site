@@ -130,15 +130,13 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
     let dialog = |id: &str, title: &str, body: String| format!(r#"<dialog id="{id}" aria-label="{title}"><form method="dialog"><h2>{title}</h2>{body}<button class="x" aria-label="Close">×</button></form></dialog>"#);
     let group = |name: &str, items: String| format!(r#"<h3>{name}</h3><div class="choices">{items}</div>"#);
     let render: String = VIEWS.iter().map(|(f, name, line)| button("view", f, &format!("{name}<small>{line}</small>"), "")).collect();
-    let swatches: String = theme::THEMES.iter().map(|t| button("theme", t.0, &format!("<i></i>{}", t.0), &format!(r#" data-theme="{}" class="swatch""#, t.0))).collect();
     let pdfs: String = VIEWS.iter().enumerate().map(|(i, v)| button("pdf", &i.to_string(), v.1, "")).collect();
     let media: String = MEDIA.iter().map(|(a, name, line)| button(a, "", &format!("{name}<small>{line}</small>"), "")).collect();
     let source: String = [("zip", "Source ZIP"), ("save", "HTML"), ("manifest", "Manifest")].iter().map(|(a, name)| button(a, "", name, "")).collect();
     let tools = format!(
-        r#"<nav class="tools" aria-label="Notebook">{}<button type="button" data-act="edit">Edit</button><button type="button" data-act="open" data-arg="render">Render</button><button type="button" data-act="open" data-arg="theme">Theme</button><button type="button" data-act="open" data-arg="export">Export</button><span class="sp" data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></nav>{}{}{}"#,
+        r#"<nav class="tools" aria-label="Notebook">{}<button type="button" data-act="edit">Edit</button><button type="button" data-act="open" data-arg="render">Render</button><button type="button" data-act="open" data-arg="export">Export</button><span class="sp" data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></nav>{}{}"#,
         if has_cells { r#"<button type="button" data-act="run">Run</button>"# } else { "" },
         dialog("render", "Render", format!(r#"<div class="choices">{render}</div>"#)),
-        dialog("theme", "Theme", format!(r#"<p class="muted">Light or dark follows your device.</p><div class="choices">{swatches}</div>"#)),
         dialog("export", "Export", group("PDF", pdfs) + &if narrated { group("Narration", media) } else { String::new() } + &group("Source", source)));
     let assets = pack::base64(&pack::bundle(&files.iter().map(|f| (f.0.as_str(), f.1.as_slice())).collect::<Vec<_>>()));
     let script = format!(

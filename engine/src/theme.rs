@@ -55,13 +55,13 @@ pub fn palette(id: &str, colors: &str) -> [u32; 11] {
     p
 }
 
-/// Every family as CSS: `data-theme` on any element picks a family (so a swatch shows its own);
-/// light or dark follows the device.
+/// Every family as CSS: `data-theme` on <html> picks a family. Light or dark follows the device
+/// unless <html data-mode> holds the reader's choice (the header's button).
 pub fn css() -> String {
-    let vars = |s: &str| s.split(' ').zip(TOKENS).map(|(h, t)| format!("--{t}:#{h};")).collect::<String>();
+    let vars = |s: &str, m: &str| format!("{}color-scheme:{m}", s.split(' ').zip(TOKENS).map(|(h, t)| format!("--{t}:#{h};")).collect::<String>());
     THEMES.iter().map(|(f, _, _, l, d)| {
-        let r = if *f == "site" { ":root,[data-theme=site]".into() } else { format!("[data-theme={f}]") };
-        format!("{r}{{{}color-scheme:light}}@media(prefers-color-scheme:dark){{{r}{{{}color-scheme:dark}}}}\n", vars(l), vars(d))
+        let r = if *f == "site" { ":root".into() } else { format!(":root[data-theme={f}]") };
+        format!("{r}{{{}}}@media(prefers-color-scheme:dark){{{r}:not([data-mode=light]){{{}}}}}{r}[data-mode=dark]{{{}}}\n", vars(l, "light"), vars(d, "dark"), vars(d, "dark"))
     }).collect()
 }
 
@@ -76,6 +76,7 @@ mod tests {
         assert_eq!(find("custom nord-light"), Some(("nord", false)));
         assert_eq!(palette("solarized-dark", "")[0], 0x002B36);
         assert_eq!(palette("custom nord", "accent #ff8800, bogus #000000")[6], 0xff8800);
-        assert!(css().contains("@media(prefers-color-scheme:dark){[data-theme=gruvbox]{--bg:#282828;"));
+        assert!(css().contains("@media(prefers-color-scheme:dark){:root[data-theme=gruvbox]:not([data-mode=light]){--bg:#282828;"));
+        assert!(css().contains(":root[data-mode=dark]{--bg:#000000;"));
     }
 }

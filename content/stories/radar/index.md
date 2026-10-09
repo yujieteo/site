@@ -11,20 +11,20 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts
 
 R1 is a ground radar. T3 is an aircraft eighty-eight kilometres away, flying on at 350 m/s. The beam stays where T3 was at the start. This notebook asks one question: does R1 detect T3?
 
-<!-- skill: This notebook ports visuals/viz/radar-network, link R1 > R1:T3. Keep every number traceable to data/preset.json there. The t = 0 assertions in "The budget" pin the reference values; if a parameter changes, recompute them from the reference, never loosen the tolerance. -->
+<!-- skill: This notebook ports visuals/viz/radar-network, link R1 > R1:T3. Keep every number traceable to data/preset.json there. The controls start at the preset; the t = 0 assertions in "The budget" pin the preset's reference values whatever the controls say. If a parameter changes, recompute them from the reference, never loosen the tolerance. -->
 
 <!-- skill: Narration lives in say blocks, one per chapter, written to be heard: short sentences, numbers rounded as spoken, no symbols. -->
 
-## The link {scene=8 t=7}
+## The link
 
-One transmitter and one receiver share an antenna, so the pulse travels out and the echo travels back. Every number here is the preset's: synthetic, except the 10 GHz carrier.
+One transmitter and one receiver share an antenna, so the pulse travels out and the echo travels back. The preset is synthetic, except the 10 GHz carrier; the controls start at it, and every chapter below follows them.
 
 ```toml
 libm = "=0.2.16"
 ```
 
 ```rust
-//| caption: The preset. Maths goes through `libm`, so this page and its build agree to the last bit.
+//| caption: The preset, and the link the controls make of it. Maths goes through `libm`, so this page and its build agree to the last bit.
 use libm::{atan2, exp, lgamma, log, log10, pow, sqrt};
 const C: f64 = 299_792_458.0; // m/s
 const K: f64 = 1.380_649e-23; // J/K
@@ -32,7 +32,15 @@ const K: f64 = 1.380_649e-23; // J/K
 /// R1's transmitter, antenna and detector, and T3's echo.
 struct Link { f: f64, pt: f64, g0: f64, beam: f64, floor: f64, loss: f64, rcs: f64, ts: f64, tau: f64, pulses: f64, pfa: f64, pd_req: f64 }
 
-let link = Link { f: 10e9, pt: 100e3, g0: 30.0, beam: 10.0, floor: 30.0, loss: 6.0, rcs: 1.0, ts: 600.0, tau: 10e-6, pulses: 64.0, pfa: 1e-6, pd_req: 0.9 };
+let preset = Link { f: 10e9, pt: 100e3, g0: 30.0, beam: 10.0, floor: 30.0, loss: 6.0, rcs: 1.0, ts: 600.0, tau: 10e-6, pulses: 64.0, pfa: 1e-6, pd_req: 0.9 };
+let link = Link {
+    pt: slider("Transmit power (kW)", 10.0, 1000.0, 10.0, 100.0) * 1e3,
+    rcs: slider("Target cross-section (m²)", 0.1, 10.0, 0.1, 1.0),
+    pulses: slider("Pulses integrated", 1.0, 256.0, 1.0, 64.0),
+    pfa: pow(10.0, -slider("False alarms, one in 10^n", 3.0, 10.0, 1.0, 6.0)),
+    pd_req: slider("Required Pd", 0.5, 0.99, 0.01, 0.9),
+    ..preset
+};
 let eta = -log(link.pfa);
 println!("wavelength {:.4} m, threshold η = {eta:.4}", C / link.f);
 ```
@@ -41,7 +49,7 @@ println!("wavelength {:.4} m, threshold η = {eta:.4}", C / link.f);
 R one sends a hundred kilowatt pulse at ten gigahertz. Sixty four pulses add up coherently before it decides.
 ```
 
-## Geometry {scene=8 t=7}
+## Geometry
 
 The beam is fixed on T3's starting point. As T3 flies, it drifts off the beam's axis and the gain falls: twelve decibels at the edge of the ten-degree beam, never more than thirty.
 
@@ -68,7 +76,7 @@ println!("boresight azimuth {:.9}°, elevation {:.9}°", atan2(bore[1], bore[0])
 The beam points where T three was at the start, and stays there. T three flies on, and slowly leaves it.
 ```
 
-## Detection {scene=8 t=7}
+## Detection
 
 The detector compares the integrated echo with a threshold set by the false-alarm rate alone:
 
@@ -123,10 +131,10 @@ $$
 P_r = \frac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 R^4 L}, \quad \rho_1 = \frac{P_r \tau}{k T_s}
 $$
 
-Move the time. Below the required $P_d$ the target dot stays amber.
+Move the time here, or the link's controls in the first chapter. Below the required $P_d$ the target dot stays amber.
 
 ```rust
-//| caption: The link at the chosen time. The reference values at t = 0 are asserted, so a drift fails the build.
+//| caption: The link at the chosen time. The preset's reference values at t = 0 are asserted, so a drift fails the build.
 /// Everything the detector sees at time t.
 struct At { r: f64, off: f64, g: f64, pr: f64, rho1: f64, pd: f64, margin: f64, rmax: f64 }
 fn budget(l: &Link, eta: f64, req_db: f64, r1: (V, V), t3: (V, V), bore: V, t: f64) -> At {
@@ -143,12 +151,13 @@ fn budget(l: &Link, eta: f64, req_db: f64, r1: (V, V), t3: (V, V), bore: V, t: f
 
 let t = slider("Time (s)", 0.0, 120.0, 1.0, 0.0);
 let now = budget(&link, eta, req_db, r1, t3, bore, t);
-let zero = budget(&link, eta, req_db, r1, t3, bore, 0.0);
-for (got, want, tol) in [(zero.r, 87_678.0, 0.5), (zero.pr, 1.9251e-16, 5e-21), (zero.rho1, 0.23239, 5e-6), (link.pulses * zero.rho1, 14.873, 5e-4), (zero.pd, 0.61462, 5e-6), (zero.margin, -1.4595, 5e-5), (zero.rmax, 80_612.0, 0.5)] {
+let eta0 = -log(preset.pfa);
+let zero = budget(&preset, eta0, required_db(&preset, eta0), r1, t3, bore, 0.0);
+for (got, want, tol) in [(zero.r, 87_678.0, 0.5), (zero.pr, 1.9251e-16, 5e-21), (zero.rho1, 0.23239, 5e-6), (preset.pulses * zero.rho1, 14.873, 5e-4), (zero.pd, 0.61462, 5e-6), (zero.margin, -1.4595, 5e-5), (zero.rmax, 80_612.0, 0.5)] {
     assert!((got - want).abs() < tol, "the reference gives {want}, this gives {got}");
 }
 println!("t = {t:.0} s: R = {:.3} km, {:.3}° off the beam, G = {:.2} dBi", now.r / 1e3, now.off, now.g);
-println!("Pr = {:.4e} W, ρ₁ = {:.5}, ρ_N = {:.3}", now.pr, now.rho1, link.pulses * now.rho1);
+println!("Pr = {:.4e} W, ρ_1 = {:.5}, ρ_N = {:.3}", now.pr, now.rho1, link.pulses * now.rho1);
 println!("Pd = {:.5}, margin {:.4} dB, R_max = {:.3} km", now.pd, now.margin, now.rmax / 1e3);
 let (a, b) = (at(r1.0, r1.1, t), at(t3.0, t3.1, t));
 stage(&[40.0, 10.0, 160.0, a[0] / 1e3, a[1] / 1e3, b[0] / 1e3, b[1] / 1e3, bore[0], bore[1], now.rmax / 1e3, now.pd, t3.1[0] / 1e3, t3.1[1] / 1e3]);
@@ -158,7 +167,7 @@ stage(&[40.0, 10.0, 160.0, a[0] / 1e3, a[1] / 1e3, b[0] / 1e3, b[1] / 1e3, bore[
 At the start, T three is about eighty eight kilometres out. R one could reach about eighty one. So the detection probability is only about sixty one percent, one and a half decibels short.
 ```
 
-## Two minutes {scene=8 t=40}
+## Two minutes
 
 T3 flies away from R1 and off the beam at once, so the margin only falls.
 

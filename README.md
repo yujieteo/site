@@ -41,7 +41,7 @@ title: One radar, one target
 summary: One line for the Stories index.
 palette: #2f4a5c #13222c #f2a541 #fbe8a6   (scene sky, shade, glow, light)
 thumb: 41213                                (optional: a seeded thumbnail for the index card)
-theme: site                                 (a family; light or dark follows the device)
+theme: site                                 (a family; light or dark is the reader's, see below)
 colors: accent #c0653f                      (custom overrides, comma separated)
 print: site-light                           (export theme; default: the theme's own preset)
 seed: 20261003
@@ -50,7 +50,9 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
 ---
 ```
 
-- Each `##` heading is a chapter with a shared scene: `## The link {scene=8 t=7}`. `#` headings fold.
+- Each `##` heading is a chapter. A chapter shows a scene only when its heading names one
+  (`## The budget {scene=8 t=7}`); scenes are not inherited, and a frame equal to the previous
+  chapter's is dropped, so no picture repeats from slide to slide. `#` headings fold.
 - ```` ```rust ```` fences are cells. Cells run in data-flow order, never in page order: a cell that
   uses `x` runs after the cell whose top-level `let x` defines it, each name has one defining cell,
   and cycles are errors. Items (`fn`, `struct`, `use`, `const`) are shared by all cells. Every run is
@@ -67,13 +69,16 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
 - A chapter is a slide (title, scene, body) followed by its narration. Render (a dialog) switches the
   view in place: Notebook (code, controls, outputs, live scenes), Slides (one 16:9 slide per chapter),
   Handout (each slide with its narration beside it) and Article (continuous prose, numbered sections).
-  Theme and Export are dialogs too; light or dark always follows the device.
+  Export is a dialog too. Light or dark follows the device until the header's button (on every
+  page) picks the other; the choice is remembered in the browser.
 - Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
   (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document, outputs and display lists,
   in the export theme with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,
   assets, manifest) and `manifest.json` with every version and hash. Edit, Run, Export and Save (one
-  editable HTML file) work in the page, and the page's PDFs are byte-identical to the build's. Edited
-  cells and their dependants are marked stale until Run, and Export stops on stale or failed outputs.
+  editable HTML file) work in the page, and the page's PDFs are byte-identical to the build's. Edit
+  opens the Markdown in insert mode (Esc for Vim) and the page follows the text as it changes. Run
+  re-runs the compiled cells from clean and reports it. Edited cells and their dependants are marked
+  stale (their code runs after a rebuild), and Export stops on stale or failed outputs.
   PDF images are PNGs in grey, RGB or palette colour with at most binary or colour-key transparency.
 - Narration is rendered in the page, like BeamdSwitch: Export → Podcast (WAV), Captions (WebVTT) or
   Video (the slides as the narration reaches them, with the podcast as sound). Rust splits the
@@ -92,5 +97,5 @@ with a credential pattern refused.
 
 ## Budget
 
-The repository stays under 25,000 lines and the engine under 2,000 code lines (`scripts/loc.sh`, run in
+The repository stays under 25,000 lines and the engine under 3,000 code lines (`scripts/loc.sh`, run in
 CI). Prefer deleting to adding.

@@ -27,7 +27,7 @@ struct Font { data: Vec<u8>, map: BTreeMap<u32, u16>, used: BTreeMap<u16, char>,
 impl Font {
     fn new(data: Vec<u8>) -> Font {
         let b = &data;
-        let t = |tag: &[u8]| (0..be(b, 4, 2)).map(|i| 12 + 16 * i).find(|&o| &b[o..o + 4] == tag).map_or(0, |o| be(b, o + 8, 4));
+        let t = |tag: &[u8]| (0..be(b, 4, 2)).map(|i| 12 + 16 * i).find(|&o| b.get(o..o + 4) == Some(tag)).map_or(0, |o| be(b, o + 8, 4));
         let (cm, hh, mut map) = (t(b"cmap"), t(b"hhea"), BTreeMap::new());
         for o in (0..be(b, cm + 2, 2)).map(|i| cm + be(b, cm + 8 + 8 * i, 4)) {
             if be(b, o, 2) == 12 {
@@ -40,7 +40,7 @@ impl Font {
                     let f = |k: usize| be(b, o + 14 + 2 * s + k * 2 * n + 2 * (k > 0) as usize, 2);
                     for c in f(1)..=f(0).min(0xfffe) {
                         let g = if f(3) == 0 { c } else { be(b, o + 16 + 6 * n + 2 * s + f(3) + 2 * (c - f(1)), 2) };
-                        map.insert(c as u32, if g == 0 { 0 } else { ((g + f(2)) & 0xffff) as u16 });
+                        map.insert(c as u32, if f(3) != 0 && g == 0 { 0 } else { ((g + f(2)) & 0xffff) as u16 });
                     }
                 }
             }
@@ -92,27 +92,37 @@ impl Pdf<'_> {
     fn page(&mut self) {
         let (n, st) = ((self.pages.len() + 1).to_string(), St(0, 9.0, self.pal[4], 0));
         self.pages.push((format!("{} rg 0 0 {} {} re f\n", rgb(self.pal[0]), self.w, self.h), String::new()));
-        if !self.slides && n != "1" { let x = (self.w - self.run(st, &n).2) / 2.0; self.put(x, self.h - self.m / 2.0, st, &n); }
+        if !self.slides && n != "1" { let x = (self.w - self.run(st, &n).1) / 2.0; self.put(x, self.h - self.m / 2.0, st, &n); }
         self.y = self.m;
     }
     /// Room for `h` more points: on a slide there is no next page, so the rest is dropped.
     fn need(&mut self, h: f32) -> bool { self.y + h <= self.h - self.m || (!self.slides && (self.page(), true).1) }
-    /// A run of text: its font, glyph IDs as hex, and width.
-    fn run(&mut self, st: St, s: &str) -> (usize, String, f32) {
-        let file = FILES[st.0];
-        let i = self.fonts.iter().position(|f| f.0 == file).unwrap_or_else(|| (self.fonts.push((file, Font::new((self.get)(&format!("fonts/{file}.otf")).unwrap_or_default()))), self.fonts.len() - 1).1);
-        let f = &mut self.fonts[i].1;
-        let (mut hex, mut w) = (String::new(), 0);
-        for c in s.chars() {
-            let g = f.map.get(&(c as u32)).copied().unwrap_or(0);
-            (_, w) = (f.used.insert(g, c), w + f.adv(g as usize));
-            w!(hex, "{g:04X}");
-        }
-        (i, hex, w as f32 * st.1 / 1000.0)
+    fn font(&mut self, k: usize) -> usize {
+        let file = FILES[k];
+        self.fonts.iter().position(|f| f.0 == file).unwrap_or_else(|| (self.fonts.push((file, Font::new((self.get)(&format!("fonts/{file}.otf")).unwrap_or_default()))), self.fonts.len() - 1).1)
     }
-    fn put(&mut self, x: f32, y: f32, st: St, s: &str) -> f32 {
-        let ((i, hex, w), c, h) = (self.run(st, s), rgb(st.2), self.h);
-        w!(self.out(), "BT /F{i} {} Tf {} Tr 0.3 w {c} rg {c} RG 1 0 {} 1 {x:.2} {:.2} Tm <{hex}> Tj ET\n", st.1, (st.3 & 1) * 2, (st.3 & 2) as f32 * 0.1, h - y);
+    /// A run of text as pieces, each in the first font with its characters (the style's, then
+    /// sans, then maths): font, glyph IDs as hex, width; and the whole width.
+    fn run(&mut self, st: St, s: &str) -> (Vec<(usize, String, f32)>, f32) {
+        let mut v: Vec<(usize, String, f32)> = vec![];
+        for c in s.chars() {
+            let mut i = self.font(st.0);
+            for k in [0, 3] { if !self.fonts[i].1.map.contains_key(&(c as u32)) { i = self.font(k) } }
+            if !self.fonts[i].1.map.contains_key(&(c as u32)) { i = self.font(st.0) }
+            let f = &mut self.fonts[i].1;
+            let g = f.map.get(&(c as u32)).copied().unwrap_or(0);
+            let w = (f.used.insert(g, c), f.adv(g as usize) as f32 * st.1 / 1000.0).1;
+            match v.last_mut() { Some(p) if p.0 == i => (w!(p.1, "{g:04X}"), p.2 += w).1, _ => v.push((i, format!("{g:04X}"), w)) }
+        }
+        let w = v.iter().map(|p| p.2).sum();
+        (v, w)
+    }
+    fn put(&mut self, mut x: f32, y: f32, st: St, s: &str) -> f32 {
+        let ((v, w), c, h) = (self.run(st, s), rgb(st.2), self.h);
+        for (i, hex, pw) in v {
+            w!(self.out(), "BT /F{i} {} Tf {} Tr 0.3 w {c} rg {c} RG 1 0 {} 1 {x:.2} {:.2} Tm <{hex}> Tj ET\n", st.1, (st.3 & 1) * 2, (st.3 & 2) as f32 * 0.1, h - y);
+            x += pw;
+        }
         w
     }
     fn link(&mut self, r: [f32; 4], u: &str) {
@@ -121,35 +131,58 @@ impl Pdf<'_> {
     }
     fn stroke(&mut self, pts: &[(f32, f32)], w: f32, c: u32) {
         let p: Vec<String> = pts.iter().map(|q| format!("{:.2} {:.2}", q.0, self.h - q.1)).collect();
-        w!(self.out(), "{} RG {w:.2} w 1 J 1 j {} m {} l S\n", rgb(c), p[0], p[1..].join(" l "));
+        let Some((a, rest)) = p.split_first().filter(|r| !r.1.is_empty()) else { return };
+        w!(self.out(), "{} RG {w:.2} w 1 J 1 j {a} m {} l S\n", rgb(c), rest.join(" l "));
     }
 
-    /// TeX maths in Fira Math: italic letters, spaced relations, fractions, roots, scripts.
-    fn mbox(&mut self, m: &M, s: f32) -> Bx {
-        let mut glyph = |t: String, s: f32, pad: f32| Bx(self.run(St(3, s, 0, 0), &t).2 + 2.0 * pad, 0.75 * s, 0.25 * s, vec![(pad, 0.0, s, t)], vec![]);
+    /// TeX maths in Fira Math: italic letters, spaced relations, fractions, roots, scripts, and
+    /// in display style (`d`) large operators with their limits above and below.
+    fn mbox(&mut self, m: &M, s: f32, d: bool) -> Bx {
+        let mut glyph = |t: String, s: f32, pad: f32| Bx(self.run(St(3, s, 0, 0), &t).1 + 2.0 * pad, 0.75 * s, 0.25 * s, vec![(pad, 0.0, s, t)], vec![]);
         match m {
             M::I(t) if t.chars().count() == 1 => glyph(t.chars().map(italic).collect(), s, 0.0),
             M::I(t) => glyph(t.clone(), s, 0.1 * s),
+            M::T(t) if t.chars().all(char::is_whitespace) => Bx(t.chars().map(|c| match c { '\u{2003}' => 1.0, '\u{2009}' => 0.17, _ => 0.25 }).sum::<f32>() * s, 0.0, 0.0, vec![], vec![]),
             M::N(t) | M::T(t) => glyph(t.clone(), s, 0.0),
-            M::O(t) => glyph(t.clone(), if "∑∏∫".contains(t.as_str()) { 1.4 * s } else { s }, if "=<>≤≥≈≠∼→±×⋅∝∈∣+−".contains(t.as_str()) { 0.22 * s } else { 0.0 }),
-            M::R(v) => v.iter().fold(Bx::default(), |mut b, m| (b.place(self.mbox(m, s), b.0, 0.0), b).1),
-            M::F(n, d) => {
-                let (n, d, ax) = (self.mbox(n, 0.8 * s), self.mbox(d, 0.8 * s), 0.27 * s);
-                let (w, nx, ny, dx, dy) = (n.0.max(d.0) + 0.2 * s, n.0, ax + 0.15 * s + n.2, d.0, ax - 0.15 * s - d.1);
+            M::O(t) if "∑∏∫".contains(t.as_str()) => {
+                let k = if d { 2.2 } else { 1.2 }; // as the page sets it, centred on the maths axis
+                let mut b = Bx::default();
+                (b.place(glyph(t.clone(), k * s, 0.08 * s), 0.0, 0.27 * s - 0.33 * k * s), b).1
+            }
+            M::O(t) => glyph(t.clone(), s, if "=<>≤≥≈≠∼→±×⋅∝∈∣+−".contains(t.as_str()) { 0.22 * s } else { 0.0 }),
+            M::R(v) => (0..v.len()).fold(Bx::default(), |mut b, k| {
+                let x = match &v[k] { M::O(o) if doc::sign(v, k) => self.mbox(&M::T(o.clone()), s, d), m => self.mbox(m, s, d) };
+                (b.place(x, b.0, 0.0), b).1
+            }),
+            M::F(n, dn) => {
+                let k = if d { 1.0 } else { 0.8 };
+                let (n, dn, ax) = (self.mbox(n, k * s, false), self.mbox(dn, k * s, false), 0.27 * s);
+                let (w, nx, ny, dx, dy) = (n.0.max(dn.0) + 0.2 * s, n.0, ax + 0.15 * s + n.2, dn.0, ax - 0.15 * s - dn.1);
                 let mut b = Bx(w, 0.0, 0.0, vec![], vec![(vec![(0.0, ax), (w, ax)], 0.05 * s)]);
-                (b.place(n, (w - nx) / 2.0, ny), b.place(d, (w - dx) / 2.0, dy), b).2
+                (b.place(n, (w - nx) / 2.0, ny), b.place(dn, (w - dx) / 2.0, dy), b).2
             }
             M::Q(x) => {
-                let x = self.mbox(x, s);
-                let (top, w, d) = (x.1 + 0.15 * s, x.0 + 0.55 * s, x.2);
-                let mut b = Bx(w, top + 0.05 * s, 0.0, vec![], vec![(vec![(0.0, 0.3 * s), (0.12 * s, 0.38 * s), (0.28 * s, -d), (0.45 * s, top), (w, top)], 0.05 * s)]);
+                let x = self.mbox(x, s, d);
+                let (top, w, dp) = (x.1 + 0.15 * s, x.0 + 0.55 * s, x.2);
+                let mut b = Bx(w, top + 0.05 * s, 0.0, vec![], vec![(vec![(0.0, 0.3 * s), (0.12 * s, 0.38 * s), (0.28 * s, -dp), (0.45 * s, top), (w, top)], 0.05 * s)]);
                 (b.place(x, 0.5 * s, 0.0), b).1
             }
+            M::S(x, sb, sp) if d && doc::big(x) => {
+                let x = self.mbox(x, s, d);
+                let (hi, lo) = (sp.as_ref().map(|p| self.mbox(p, 0.7 * s, false)), sb.as_ref().map(|q| self.mbox(q, 0.7 * s, false)));
+                let w = [&hi, &lo].into_iter().flatten().fold(x.0, |w, b| w.max(b.0));
+                let (top, bot, xw) = (x.1 + 0.12 * s, x.2 + 0.12 * s, x.0);
+                let mut b = Bx(w, 0.0, 0.0, vec![], vec![]);
+                b.place(x, (w - xw) / 2.0, 0.0);
+                if let Some(p) = hi { let (pw, pd) = (p.0, p.2); b.place(p, (w - pw) / 2.0, top + pd) }
+                if let Some(q) = lo { let (qw, qa) = (q.0, q.1); b.place(q, (w - qw) / 2.0, -(bot + qa)) }
+                (b.0 += 0.1 * s, b).1
+            }
             M::S(x, sb, sp) => {
-                let mut b = self.mbox(x, s);
-                let (w, a, d) = (b.0, b.1, b.2);
-                if let Some(p) = sp { b.place(self.mbox(p, 0.7 * s), w + 0.05 * s, (a - 0.35 * s).max(0.4 * s)) }
-                if let Some(q) = sb { b.place(self.mbox(q, 0.7 * s), w + 0.05 * s, -(d.max(0.2 * s))) }
+                let mut b = self.mbox(x, s, d);
+                let (w, a, dp) = (b.0, b.1, b.2);
+                if let Some(p) = sp { b.place(self.mbox(p, 0.7 * s, false), w + 0.05 * s, (a - 0.35 * s).max(0.4 * s)) }
+                if let Some(q) = sb { b.place(self.mbox(q, 0.7 * s, false), w + 0.05 * s, -(dp.max(0.2 * s))) }
                 (b.0 += 0.05 * s, b).1
             }
         }
@@ -180,9 +213,9 @@ impl Pdf<'_> {
     /// A piece's width; drawn too when `at` is its baseline origin.
     fn piece(&mut self, p: &Piece, at: Option<(f32, f32)>) -> f32 {
         let w = match (&p.3, at) {
-            (Some(m), _) => { let b = self.mbox(m, p.0.1); (b.0, at.map(|(x, y)| self.mdraw(b, x, y, p.0.2))).0 }
+            (Some(m), _) => { let b = self.mbox(m, p.0.1, false); (b.0, at.map(|(x, y)| self.mdraw(b, x, y, p.0.2))).0 }
             (_, Some((x, y))) => self.put(x, y, p.0, &p.1),
-            _ => self.run(p.0, &p.1).2,
+            _ => self.run(p.0, &p.1).1,
         };
         if let (Some(u), Some((x, y))) = (&p.2, at) { self.link([x, y + 0.25 * p.0.1, x + w, y - 0.8 * p.0.1], u) }
         w
@@ -191,7 +224,7 @@ impl Pdf<'_> {
     fn para(&mut self, s: &str, st: St, indent: f32) {
         let words = self.words(s, st);
         let wid: Vec<f32> = words.iter().map(|w| w.iter().map(|p| self.piece(p, None)).sum()).collect();
-        let (space, lead, col, mut i) = (self.run(st, " ").2, 1.35 * st.1, self.col - indent, 0);
+        let (space, lead, col, mut i) = (self.run(st, " ").1, 1.35 * st.1, self.col - indent, 0);
         while i < words.len() {
             let (mut j, mut used) = (i + 1, wid[i]);
             while j < words.len() && used + space + wid[j] <= col { (used, j) = (used + space + wid[j], j + 1) }
@@ -210,7 +243,7 @@ impl Pdf<'_> {
     /// Monospaced lines, wrapped at the column, on the surface colour when `bg`.
     fn code(&mut self, text: &str, bg: bool) {
         let st = St(2, 8.0, self.pal[2], 0);
-        let per = ((self.col - 12.0) / self.run(st, "0").2).max(1.0) as usize;
+        let per = ((self.col - 12.0) / self.run(st, "0").1).max(1.0) as usize;
         for l in text.lines().map(|l| l.chars().collect::<Vec<_>>()) {
             for part in l.chunks(per).map(|p| p.iter().collect::<String>()).chain(l.is_empty().then(String::new)) {
                 if !self.need(10.5) { return }
@@ -277,7 +310,7 @@ impl Pdf<'_> {
                 Some("circle") => self.stroke(&[at(f("cx"), f("cy")); 2], 2.0 * k * f("r"), c),
                 Some("text") => {
                     let (t, st, (u, v)) = (strip(e.split_once('>').map_or("", |s| s.1)), St(0, 15.0 * k, c, 0), at(f("x"), f("y")));
-                    let tw = self.run(st, &t).2 * match a("text-anchor") { "middle" => 0.5, "end" => 1.0, _ => 0.0 };
+                    let tw = self.run(st, &t).1 * match a("text-anchor") { "middle" => 0.5, "end" => 1.0, _ => 0.0 };
                     self.put(u - tw, v, st, &t);
                 }
                 _ => {}
@@ -304,9 +337,9 @@ impl Pdf<'_> {
     fn png(&mut self, b: &[u8]) -> Option<(usize, usize)> {
         let (mut o, mut idat, mut plte, mut trns, mut ih) = (8, vec![], vec![], vec![], [0; 5]);
         while o + 8 <= b.len() && b.starts_with(b"\x89PNG\r\n\x1a\n") {
-            let d = b.get(o + 8..o + 8 + be(b, o, 4))?;
+            let d = b.get(o + 8..(o + 8).saturating_add(be(b, o, 4)))?;
             match &b[o + 4..o + 8] {
-                b"IHDR" => ih = [be(d, 0, 4), be(d, 4, 4), d[8] as usize, d[9] as usize, d[12] as usize],
+                b"IHDR" => ih = [be(d, 0, 4), be(d, 4, 4), be(d, 8, 1), be(d, 9, 1), be(d, 12, 1)],
                 b"PLTE" => plte = d.to_vec(),
                 b"tRNS" => trns = d.to_vec(),
                 b"IDAT" => idat.extend_from_slice(d),
@@ -316,7 +349,7 @@ impl Pdf<'_> {
         }
         let [w, h, depth, ct, interlace] = ih;
         let hex: String = plte.iter().map(|x| format!("{x:02X}")).collect();
-        let (cs, n) = match ct { 0 => ("/DeviceGray".into(), 1), 2 => ("/DeviceRGB".into(), 3), 3 => (format!("[/Indexed/DeviceRGB {} <{hex}>]", plte.len() / 3 - 1), 1), _ => return None };
+        let (cs, n) = match ct { 0 => ("/DeviceGray".into(), 1), 2 => ("/DeviceRGB".into(), 3), 3 => (format!("[/Indexed/DeviceRGB {} <{hex}>]", (plte.len() / 3).checked_sub(1)?), 1), _ => return None };
         let mask = match ct {
             3 => trns.iter().take_while(|&&a| a < 128).count().checked_sub(1).map_or(String::new(), |n| format!("0 {n}")),
             _ => trns.chunks(2).map(|v| format!("{0} {0}", be(v, 0, 2))).collect::<Vec<_>>().join(" "),
@@ -344,8 +377,8 @@ impl Pdf<'_> {
         }
     }
     fn math(&mut self, t: &str) {
-        let mut b = self.mbox(&doc::tex(t), 12.0);
-        if b.0 > self.col { b = self.mbox(&doc::tex(t), 12.0 * self.col / b.0) }
+        let mut b = self.mbox(&doc::tex(t), 12.0, true);
+        if b.0 > self.col { b = self.mbox(&doc::tex(t), 12.0 * self.col / b.0, true) }
         if !self.need(b.1 + b.2 + 12.0) { return }
         let (x, y) = (self.x + (self.col - b.0) / 2.0, self.y + b.1 + 6.0);
         self.y = y + b.2 + 8.0;
@@ -409,20 +442,20 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
         match b {
             B::H(2, t, _) if let Some(c) = chapters.iter().find(|c| c.at == at) => {
                 (skip, n) = (false, n + 1);
-                let ops = scene::list(d.get("seed").parse().unwrap_or(1), c.scene, c.t, c.p, -1.0, -1.0, stage, [sc[0], sc[1], sc[2], sc[3]]);
+                let ops = c.scene.map(|sn| scene::list(d.get("seed").parse().unwrap_or(1), sn, c.t, c.p, -1.0, -1.0, stage, [sc[0], sc[1], sc[2], sc[3]]));
                 if slides {
                     (p.x, p.col) = (mx, w - 2.0 * mx);
                     notes.push(vec![]);
                     p.page();
                     p.para(t, St(1, 26.0, fg, 0), 0.0);
                     let s = h - p.y - m;
-                    (p.frame(&ops, w - mx - s, p.y, s), p.col = w - 3.0 * mx - s);
+                    if let Some(ops) = ops { (p.frame(&ops, w - mx - s, p.y, s), p.col = w - 3.0 * mx - s); }
                     continue;
                 }
-                let s = p.col * 0.45;
+                let s = if ops.is_some() { p.col * 0.45 } else { 0.0 };
                 p.need(s + 66.0);
                 p.heading(&if form == 3 { format!("{n}  {t}") } else { t.clone() }, 14.0);
-                if p.figure(s, s, &mut |p, x, y| p.frame(&ops, x, y, s)) { p.caption(&format!("{t}, at t = {} s.", c.t), true) }
+                if let Some(ops) = ops && p.figure(s, s, &mut |p, x, y| p.frame(&ops, x, y, s)) { p.caption(&format!("{t}, at t = {} s.", c.t), true) }
             }
             // On slides, a part (`#`) is left out with what follows it, up to the next heading.
             B::H(1, _, _) if slides => skip = true,
@@ -466,4 +499,19 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
         refs.iter().enumerate().for_each(|(i, (t, u))| p.para(&format!("{}. {t}: [{u}]({u})", i + 1), St(0, 9.0, fg2, 0), 0.0));
     }
     p.finish(d.get("title"))
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn malformed_input_does_not_panic() {
+        let png = |chunks: &[(&[u8], &[u8])]| [b"\x89PNG\r\n\x1a\n".to_vec(), chunks.iter().flat_map(|(t, d)| [&(d.len() as u32).to_be_bytes()[..], t, d, &[0; 4]].concat()).collect()].concat();
+        let bad = [png(&[(b"IHDR", &[0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 0, 0, 0])]), png(&[(b"IHDR", &[1])]), b"\x89PNG\r\n\x1a\n\xff\xff\xff\xffIDAT".to_vec(), vec![]];
+        let d = crate::doc::parse("---\ntitle: T\n---\n## A {scene=8}\n\n![x](x.png)\n\n$$\n\\frac{\n$$\n\n```rust\nlet a = 1;\n```");
+        for b in bad {
+            for form in 0..super::FORMS.len() {
+                super::write(&d, &["<svg><path d=\"M\"/></svg>".into()], &[f32::NAN], &|p| (p == "x.png").then(|| b.clone()), form);
+            }
+        }
+    }
 }

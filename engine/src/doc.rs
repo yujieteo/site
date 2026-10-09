@@ -1,5 +1,5 @@
 //! Markdown and TeX: one parser for every view. A notebook is front matter, then blocks;
-//! each `##` heading is a chapter with a shared scene (`{scene=8 t=3}`), ```` ```rust ````
+//! each `##` heading is a chapter, with a scene if it names one (`{scene=8 t=3}`), ```` ```rust ````
 //! fences are cells, ```` ```say ```` fences are narration and HTML comments hold agent skills.
 
 use crate::cell;
@@ -13,8 +13,9 @@ pub enum B { H(usize, String, String), P(String), L(bool, Vec<String>), C(String
 
 pub struct Doc { pub meta: Vec<(String, String)>, pub blocks: Vec<B> }
 
-/// A chapter: its heading's block index, title and scene state for still frames.
-pub struct Ch { pub at: usize, pub title: String, pub scene: u32, pub t: f32, pub p: f32 }
+/// A chapter: its heading's block index, title and scene state for still frames. A chapter
+/// shows a scene only when its heading names one, and not the same frame as the chapter before.
+pub struct Ch { pub at: usize, pub title: String, pub scene: Option<u32>, pub t: f32, pub p: f32 }
 
 pub fn attr<'a>(a: &'a str, k: &str) -> Option<&'a str> { a.split_whitespace().find_map(|x| x.strip_prefix(k)?.strip_prefix('=')) }
 
@@ -27,8 +28,9 @@ impl Doc {
         let mut v: Vec<Ch> = vec![];
         for (at, h, a) in self.blocks.iter().enumerate().filter_map(|(at, b)| match b { B::H(2, h, a) => Some((at, h, a)), _ => None }) {
             let f = |k, d: f32| attr(a, k).and_then(|x| x.parse().ok()).unwrap_or(d);
-            let scene = attr(a, "scene").and_then(|x| x.parse().ok()).unwrap_or(v.last().map_or(0, |c| c.scene));
-            v.push(Ch { at, title: h.clone(), scene, t: f("t", 7.0), p: f("p", -1.0) });
+            let mut c = Ch { at, title: h.clone(), scene: attr(a, "scene").and_then(|x| x.parse().ok()), t: f("t", 7.0), p: f("p", -1.0) };
+            if v.last().is_some_and(|l| (l.scene, l.t, l.p) == (c.scene, c.t, c.p)) { c.scene = None }
+            v.push(c);
         }
         v
     }
@@ -44,15 +46,6 @@ impl Doc {
 /// A list item: ordered or not, and its text.
 fn item(t: &str) -> Option<(bool, &str)> {
     t.strip_prefix("- ").map(|r| (false, r)).or_else(|| t.split_once(". ").filter(|(n, _)| !n.is_empty() && n.bytes().all(|b| b.is_ascii_digit())).map(|(_, r)| (true, r)))
-}
-
-/// The source with front-matter `key: value` set (added if missing), all else untouched.
-pub fn set_meta(src: &str, k: &str, v: &str) -> String {
-    let line = format!("{k}: {v}");
-    let Some((head, tail)) = src.strip_prefix("---\n").and_then(|r| r.find("\n---").map(|e| r.split_at(e))) else { return format!("---\n{line}\n---\n\n{src}") };
-    let mut l: Vec<&str> = head.lines().collect();
-    match l.iter().position(|x| x.split_once(':').is_some_and(|x| x.0.trim() == k)) { Some(i) => l[i] = &line, None => l.push(&line) }
-    format!("---\n{}{tail}", l.join("\n"))
 }
 
 pub fn parse(src: &str) -> Doc {
@@ -169,7 +162,8 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
     while c.get(*i).is_some_and(|c| c.is_whitespace()) { *i += 1 }
     let ch = (*c.get(*i)?, *i += 1).0;
     let run = |i: &mut usize, f: fn(&char) -> bool| {
-        let s = *i;
+        let s = (*i).min(c.len()); // a command at the very end has stepped past it
+        *i = s;
         while c.get(*i).is_some_and(f) { *i += 1 }
         c[s..*i].iter().collect::<String>()
     };
@@ -179,7 +173,8 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
         '\\' => {
             let name = run(i, char::is_ascii_alphabetic);
             match name.as_str() {
-                "" => match (*c.get(*i)?, *i += 1).0 { x if ",;: !".contains(x) => M::T(" ".into()), x => M::O(x.into()) },
+                // Spaces as Unicode spaces, which neither MathML nor the PDF collapses; `\!` is dropped.
+                "" => match (*c.get(*i)?, *i += 1).0 { ',' => M::T("\u{2009}".into()), ';' | ':' => M::T("\u{2005}".into()), ' ' => M::T(" ".into()), '!' => M::T("".into()), x => M::O(x.into()) },
                 "frac" => M::F(Box::new(atom(c, i)?), Box::new(atom(c, i)?)),
                 "sqrt" => M::Q(Box::new(atom(c, i)?)),
                 "text" | "mathrm" | "operatorname" => {
@@ -188,7 +183,8 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
                     if name == "text" { M::T(t) } else { M::I(t) }
                 }
                 "left" | "right" | "big" | "Big" => atom(c, i).filter(|m| *m != M::O(".".into())).unwrap_or(M::R(vec![])),
-                "quad" | "qquad" => M::T("  ".into()),
+                "quad" => M::T("\u{2003}".into()),
+                "qquad" => M::T("\u{2003}\u{2003}".into()),
                 n if FUNS.split(' ').any(|f| f == n) => M::I(n.into()),
                 n => look(GREEK, n).map(M::I).or_else(|| look(OPS, n).map(M::O)).unwrap_or(M::T(n.into())),
             }
@@ -199,24 +195,38 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
     })
 }
 
+/// A large operator: limits go above and below it in display style.
+pub fn big(m: &M) -> bool { matches!(m, M::O(o) if o == "∑" || o == "∏") || *m == M::I("lim".into()) }
+/// Whether the k-th of a row is a sign rather than a binary operator: it follows an operator.
+pub fn sign(v: &[M], k: usize) -> bool {
+    matches!(&v[k], M::O(o) if o == "−" || o == "+" || o == "±") && (k == 0 || matches!(&v[k - 1], M::O(o) if !")]|⟩⌋⌉∣".contains(o.as_str())))
+}
+
+/// MathML Core; `d` is display style, kept by rows and roots, dropped in fractions and scripts.
 pub fn mathml(src: &str, display: bool) -> String {
-    fn ml(m: &M) -> String {
-        let b = |m: &Option<Box<M>>| m.as_deref().map(ml).unwrap_or_default();
+    fn ml(m: &M, d: bool) -> String {
+        let b = |m: &Option<Box<M>>| m.as_deref().map(|m| ml(m, false)).unwrap_or_default();
         match m {
             M::I(s) => format!("<mi>{}</mi>", esc(s)),
             M::N(s) => format!("<mn>{}</mn>", esc(s)),
-            M::O(s) => format!("<mo>{}</mo>", esc(s)),
+            // The font subset has no display variants, so a display operator is set larger.
+            M::O(s) => format!("<mo{}>{}</mo>", if d && big(m) { " mathsize=\"2.2em\"" } else { "" }, esc(s)),
             M::T(s) => format!("<mtext>{}</mtext>", esc(s)),
-            M::R(v) => format!("<mrow>{}</mrow>", v.iter().map(ml).collect::<String>()),
-            M::F(a, c) => format!("<mfrac>{}{}</mfrac>", ml(a), ml(c)),
-            M::Q(a) => format!("<msqrt>{}</msqrt>", ml(a)),
+            M::R(v) => format!("<mrow>{}</mrow>", (0..v.len()).map(|k| match &v[k] {
+                M::O(o) if sign(v, k) => format!("<mo form=\"prefix\">{o}</mo>"),
+                M::I(f) if FUNS.split(' ').any(|g| g == f) && v.get(k + 1) != Some(&M::O("(".into())) => format!("<mi>{f}</mi><mspace width=\"0.17em\"/>"),
+                m => ml(m, d),
+            }).collect::<String>()),
+            M::F(a, c) => format!("<mfrac>{}{}</mfrac>", ml(a, false), ml(c, false)),
+            M::Q(a) => format!("<msqrt>{}</msqrt>", ml(a, d)),
             M::S(x, s, p) => {
-                let tag = match (s.is_some(), p.is_some()) { (true, true) => "msubsup", (true, _) => "msub", _ => "msup" };
-                format!("<{tag}>{}{}{}</{tag}>", ml(x), b(s), b(p))
+                let (lo, hi) = if big(x) { ("under", "over") } else { ("sub", "sup") };
+                let tag = match (s.is_some(), p.is_some()) { (true, true) => format!("m{lo}{hi}"), (true, _) => format!("m{lo}"), _ => format!("m{hi}") };
+                format!("<{tag}>{}{}{}</{tag}>", ml(x, d), b(s), b(p))
             }
         }
     }
-    format!("<math{}>{}</math>", if display { " display=\"block\"" } else { "" }, ml(&tex(src)))
+    format!("<math{}>{}</math>", if display { " display=\"block\"" } else { "" }, ml(&tex(src), display))
 }
 
 /// What a run produced for the compiled cells, and how the current cells map onto them.
@@ -238,7 +248,8 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
         match b {
             B::H(1, h, _) => { w!(o, "{}<details><summary>{}</summary>", if det { "</details>" } else { "" }, inline(h)); det = true }
             B::H(2, h, _) if let Some((n, c)) = chapters.iter().enumerate().find(|c| c.1.at == at) => {
-                w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide\"><h2>{}</h2><canvas class=\"frame\" data-scene=\"{}\" data-t=\"{}\" data-progress=\"{}\" aria-hidden=\"true\"></canvas>", n + 1, inline(h), c.scene, c.t, c.p);
+                w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide\"><h2>{}</h2>", n + 1, inline(h));
+                if let Some(sc) = c.scene { w!(o, "<canvas class=\"frame\" data-scene=\"{sc}\" data-t=\"{}\" data-progress=\"{}\" aria-hidden=\"true\"></canvas>", c.t, c.p) }
             }
             B::H(n, h, _) => w!(o, "<h{n}>{}</h{n}>", inline(h)),
             B::P(p) => w!(o, "<p>{}</p>", inline(p)),
@@ -250,8 +261,9 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
                 let (caption, code) = cell::opts(s);
                 let stale = if run.stale.get(k) == Some(&true) { " stale" } else { "" };
                 w!(o, "<div class=\"cell{stale}\" data-cell=\"{k}\"><pre class=\"code\"><code>{}</code></pre>", cell::hl(&code));
-                if let Some(Some(j)) = run.map.get(k) {
-                    w!(o, "<div class=\"ctls\" data-ctl=\"{j}\">{}</div><div class=\"out\" data-out=\"{j}\">{}</div>", run.ctl[*j], run.out[*j]);
+                if let Some(&Some(j)) = run.map.get(k) {
+                    let at = |v: &[String]| v.get(j).cloned().unwrap_or_default();
+                    w!(o, "<div class=\"ctls\" data-ctl=\"{j}\">{}</div><div class=\"out\" data-out=\"{j}\">{}</div>", at(&run.ctl), at(&run.out));
                 }
                 w!(o, "{}</div>", if caption.is_empty() { "".into() } else { format!("<p class=\"caption\">{}</p>", inline(&caption)) });
                 k += 1;
@@ -288,15 +300,25 @@ mod tests {
         assert_eq!(d.blocks[2], B::L(false, vec!["i".into(), "j k".into()]));
         assert_eq!(d.cells(), vec![("let a = 1;", 15)]);
         assert_eq!((d.skills(), d.links()), (vec!["skill: be brief"], vec![("l".into(), "u".into())]));
-        assert_eq!(set_meta("---\na: 1\ntheme: x\n---\nB", "theme", "nord"), "---\na: 1\ntheme: nord\n---\nB");
-        assert_eq!(set_meta("B", "theme", "nord"), "---\ntheme: nord\n---\n\nB");
         let c = &d.chapters()[0];
-        assert_eq!((c.scene, c.t, c.p), (8, 3.0, -1.0));
+        assert_eq!((c.scene, c.t, c.p), (Some(8), 3.0, -1.0));
+        let scenes: Vec<_> = parse("## A {scene=1}\n\n## B\n\n## C {scene=1}\n\n## D {scene=1}\n\n## E {scene=1 t=2}").chapters().iter().map(|c| c.scene).collect();
+        assert_eq!(scenes, [Some(1), None, Some(1), None, Some(1)]);
         assert_eq!(inline("*a* **b** `c<` \\*"), "<em>a</em> <strong>b</strong> <code>c&lt;</code> *");
         assert_eq!(mathml("x_i^2 - \\alpha", false), "<math><mrow><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><mi>α</mi></mrow></math>");
         assert!(mathml("\\frac{1}{\\sqrt{2}} \\text{ dB}", true).contains("<mfrac><mrow><mn>1</mn></mrow><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></mfrac><mtext> dB</mtext>"));
         let html = article(&d, &Run { out: vec!["O".into()], ctl: vec!["C".into()], map: vec![Some(0)], stale: vec![true] }, &|s| format!("data:{s}"));
         assert!(html.contains("id=\"c1\"><div class=\"slide\"><h2>One</h2><canvas class=\"frame\" data-scene=\"8\"") && html.contains("class=\"cell stale\"") && html.contains("data-out=\"0\">O</div>"));
         assert!(html.contains("src=\"data:a.png\"") && html.contains("<details><summary>Notes</summary><p>End.</p></details><section class=\"refs\">"));
+    }
+
+    #[test]
+    fn malformed_input_does_not_panic() {
+        for m in ["x \\text", "\\mathrm", "\\frac{", "x^", "{{{", "\\", "\\sqrt[", "}", "\\left(", "_"] {
+            mathml(m, true);
+        }
+        for s in ["---", "---\n", "```", "$$", "## {scene=", "![", "[a](", "<!--", "- ", "*", "**", "`", "$x"] {
+            article(&parse(s), &Run::default(), &|s| s.into());
+        }
     }
 }

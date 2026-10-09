@@ -80,7 +80,8 @@ fn ticks(a: f64, b: f64) -> (Vec<f64>, usize) {
     let raw = (b - a).abs().max(1e-12) / 5.0;
     let p = 10f64.powf(raw.log10().floor());
     let step = [1.0, 2.0, 5.0, 10.0].iter().map(|m| m * p).find(|s| *s >= raw).unwrap_or(10.0 * p);
-    let v = ((a / step).ceil() as i64..).map(|i| i as f64 * step).take_while(|v| *v <= b + step * 1e-9).collect();
+    let s = (a / step).ceil();
+    let v = (0..12).map(|k| (s + k as f64) * step).take_while(|v| v.is_finite() && *v <= b + step * 1e-9).collect();
     (v, (-step.log10().floor()).max(0.0) as usize)
 }
 
@@ -177,5 +178,10 @@ mod tests {
         nb_input(0, 99.0);
         assert!(run(prog).contains("a = 10"));
         assert_eq!(ticks(0.0, 1.0), (vec![0.0, 0.2, 0.4, 0.6000000000000001, 0.8, 1.0], 1));
+        for (a, b) in [(0.0, f64::MAX), (f64::MIN, f64::MAX), (f64::NAN, 1.0), (1e300, -1e300), (f64::MAX, f64::MAX)] {
+            assert!(ticks(a, b).0.len() < 12);
+        }
+        Plot::new().svg();
+        Plot::new().line(&[f64::NAN], &[f64::INFINITY]).svg();
     }
 }

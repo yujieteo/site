@@ -60,9 +60,8 @@ pub extern "C" fn paint(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32,
 /// Markdown for the page. Op 0: the article for an edited source (input bundle: src, built,
 /// then each compiled cell's `o` output and `c` controls, then `assets`, a bundle), with changed
 /// cells and their dependants marked stale. Op 1: the skill comments as JSON. Op 2: the
-/// source with a front-matter key set (input: src, key, value). Op 3: the narration plan
-/// (`say::plan`; input: src, assets). Ops 4, 5, 6: the podcast WAV, captions and line times
-/// from the synthesised audio (input: src, assets, then each line's `a`, f32 samples).
+/// narration plan (`say::plan`; input: src, assets). Ops 3, 4, 5: the podcast WAV, captions and
+/// line times from the synthesised audio (input: src, assets, then each line's `a`, f32 samples).
 #[unsafe(no_mangle)]
 pub extern "C" fn md(op: u32) -> u32 {
     let raw = input();
@@ -83,10 +82,9 @@ pub extern "C" fn md(op: u32) -> u32 {
             doc::article(&d, &run, &img)
         }
         1 => format!("[{}]", d.skills().iter().map(|s| pack::json(s)).collect::<Vec<_>>().join(",")),
-        2 => doc::set_meta(text("src"), text("key"), text("value")),
-        3 => say::plan(&d, lock),
-        4 => return ret(say::wav(&d, lock, &audio)),
-        5 => say::vtt(&d, lock, &audio),
+        2 => say::plan(&d, lock),
+        3 => return ret(say::wav(&d, lock, &audio)),
+        4 => say::vtt(&d, lock, &audio),
         _ => return ret(say::times(&d, lock, &audio)),
     };
     ret(out.into_bytes())

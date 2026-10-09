@@ -88,7 +88,7 @@
       cv.pointer = [((e.clientX - b.left) / b.width) * k - o, ((e.clientY - b.top) / b.height) * k - o];
       if (!playing || still(cv)) draw(cv);
     });
-    cv.addEventListener("pointerleave", () => ((cv.pointer = null), draw(cv)));
+    cv.addEventListener("pointerleave", () => (delete cv.pointer, draw(cv)));
   };
   $$("canvas[data-scene]").forEach(watch);
   new ResizeObserver(redraw).observe(document.body);
@@ -136,12 +136,11 @@
   });
   article.addEventListener("input", ({ target: t }) => t.dataset.k && (t.nextElementSibling?.tagName === "OUTPUT" && (t.nextElementSibling.textContent = t.value), run()));
 
-  // Tools: the theme lives in the source, so Save keeps it; the view is the page.
-  const meta = (k, v) => ((source = md(2, [["src", source], ["key", k], ["value", v]])), editor && (editor.value = source));
+  // Tools: the view is the page; light or dark is the site's (the header's button).
   const download = (name, data) => Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([data])), download: name }).click();
   const raw = (s) => s.replaceAll("</", "<\\/");
   const say = (msg) => status && (status.textContent = msg);
-  const mark = () => $$("[data-act=view],[data-act=theme]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.arg === html.dataset[b.dataset.act]));
+  const mark = () => $$("[data-act=view]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.arg === html.dataset[b.dataset.act]));
   // Narration: Rust plans the lines and their Kokoro phonemes; a module worker runs kokoro-js
   // 1.2.1 on bytes from kokoro/ beside the site, each checked against kokoro.lock (manifest
   // "voice"); any other fetch fails. Rust then lays out the podcast, captions and timings.
@@ -160,14 +159,14 @@
       postMessage({ audio }); } catch (e) { postMessage({ error: String(e.message || e) }); } };`;
   let voice, spoken;
   const narration = () => spoken?.src === source ? spoken.p : (spoken = { src: source, p: new Promise((ok, no) => {
-    const plan = JSON.parse(md(3, [["src", source], ["assets", assets]])), pins = JSON.parse(manifest).source.voice?.files;
+    const plan = JSON.parse(md(2, [["src", source], ["assets", assets]])), pins = JSON.parse(manifest).source.voice?.files;
     if (!plan.lines.length || !pins) return no(Error("This notebook has no narration."));
     voice ||= new Worker(URL.createObjectURL(new Blob([VOICE], { type: "text/javascript" })), { type: "module" });
     voice.onmessage = ({ data: m }) => {
       if (m.at != null) return say(`Narrating line ${m.at + 1} of ${m.of}…`);
       if (m.error) return (spoken = null), no(Error(m.error));
       const e = [["src", source], ["assets", assets], ...m.audio.map((a) => ["a", new Uint8Array(a.buffer, a.byteOffset, a.byteLength)])], get = (op) => call("md", bundle(e), op);
-      ok({ plan, wav: get(4), vtt: dec.decode(get(5)), times: new Float32Array(get(6).buffer) });
+      ok({ plan, wav: get(3), vtt: dec.decode(get(4)), times: new Float32Array(get(5).buffer) });
     };
     voice.onerror = (e) => ((spoken = null), no(Error(e.message || "The voice needs the site served over HTTP, with kokoro/ installed (scripts/kokoro.sh).")));
     say("Loading the voice…"), voice.postMessage({ base: new URL("kokoro/", $(".top > a").href).href, pins, ...plan });
@@ -189,8 +188,8 @@
     const shot = (t) => {
       const i = Math.max(0, times.findLastIndex((s) => s <= t)), ch = plan.lines[i].chapter, sec = chapters[ch - 1], f = sec && $(".frame", sec);
       ctx.fillStyle = v("--bg"), ctx.fillRect(0, 0, 1280, 720), (ctx.textBaseline = "top");
-      const y = text(sec ? $("h2", sec).textContent : $("h1").textContent, 51, 51, sec ? 512 : 1000, 56, v("--fg"));
-      text(plan.lines[i].text, 51, y + 24, sec ? 512 : 900, 29, v("--fg2"));
+      const y = text(sec ? $("h2", sec).textContent : $("h1").textContent, 51, 51, f ? 512 : 1000, 56, v("--fg"));
+      text(plan.lines[i].text, 51, y + 24, f ? 512 : 900, 29, v("--fg2"));
       if (f) paint(ctx, f.dataset, (+f.dataset.t || 0) + t - times[plan.lines.findIndex((l) => l.chapter === ch)], pal(f), 600, 40, 640);
     };
     await document.fonts.load(`56px ${v("--sans")}`);
@@ -207,10 +206,14 @@
   let editor;
   const KEYS = { Escape: 27, Enter: 10, Backspace: 8, Tab: 9, ArrowLeft: 8592, ArrowDown: 8595, ArrowUp: 8593, ArrowRight: 8594 };
   const act = {
-    run,
+    // Run: a clean run of the compiled cells, reported, its outputs flashed. Code edits need a rebuild.
+    run: async () => {
+      const t = performance.now(), r = await run(), err = $(".err", article);
+      article.classList.remove("ran"), void article.offsetWidth, article.classList.add("ran");
+      say(err ? `Run failed: ${err.textContent}` : `Ran ${r.out.length} cells in ${Math.round(performance.now() - t)} ms${$(".stale", article) ? "; edited code runs after a rebuild" : ""}.`);
+    },
     open: (id) => (mark(), $("#" + id).showModal()),
     view: (v) => ((html.dataset.view = v), history.replaceState(null, "", v + ".html"), redraw(), kick()),
-    theme: (f) => ((html.dataset.theme = f), meta("theme", f)),
     // The editor: Rust (`vim`) owns modes, motions, operators, commands, text and undo. The textarea
     // keeps insert-mode typing, keyboard composition, touch selection, paste and the clipboard.
     edit: () => {
@@ -218,16 +221,19 @@
       const box = Object.assign(document.createElement("div"), { className: "vim" });
       box.innerHTML = `<div class="pad">${[["Esc", 27], ["Ctrl", 17], [":", 58], ["Tab", 9], ["←", 8592], ["↓", 8595], ["↑", 8593], ["→", 8594]].map(([l, k]) =>
         `<button type="button" data-key="${k}">${l}</button>`).join("")}<output></output></div><textarea class="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>`;
-      $(".tools").after(box), (editor = box.lastChild), (editor.value = source), editor.setSelectionRange(0, 0);
+      const end = source.startsWith("---\n") ? source.indexOf("\n---\n", 3) : -1, body = end < 0 ? 0 : end + 5; // the cursor starts after the front matter
+      $(".tools").after(box), (editor = box.lastChild), (editor.value = source), editor.setSelectionRange(body, body);
       const ctrl = $("[data-key='17']", box), on = (t, f) => editor.addEventListener(t, f);
-      let mode, shown = [], last;
+      let mode, shown = [], last, live;
+      // Edits show as they are made: the page re-renders from the text a moment after it changes.
+      const changed = () => editor.value !== source && (clearTimeout(live), (live = setTimeout(() => ((source = editor.value), render()), 250)));
       const vim = (key, reg) => {
         const v = dec.decode(call("vim", bundle([["text", editor.value], ...(reg == null ? [] : [["reg", reg]])]), key, editor.selectionStart, editor.selectionEnd)).split("\n");
         const [m, sel, todo, line, n] = v, rest = v.slice(5).join("\n");
         if (editor.value !== (last = rest.slice(+n))) editor.value = last;
         (mode = m), editor.setSelectionRange(...(shown = sel.split(" ").map(Number))), ($("output", box).textContent = line);
-        const ex = { y: () => navigator.clipboard?.writeText(rest.slice(0, +n)).catch(() => {}), w: () => ((source = last), render()), q: act.edit, run, save: act.save };
-        todo.split(" ").forEach((a) => ex[a]?.());
+        const ex = { y: () => navigator.clipboard?.writeText(rest.slice(0, +n)).catch(() => {}), w: () => ((source = last), render()), q: act.edit, run: act.run, save: act.save };
+        todo.split(" ").forEach((a) => ex[a]?.()), changed();
       };
       const send = (k) => (ctrl.ariaPressed === "true" && k > 96 && k < 123 && (k &= 31), (ctrl.ariaPressed = "false"), vim(k));
       const keys = (s) => [...s].forEach((c) => send(c.codePointAt(0)));
@@ -241,17 +247,19 @@
       // Outside insert mode typing is keys: cancellable input becomes keys; the rest (composition) is undone first.
       on("beforeinput", (e) => mode === "i" || (e.preventDefault(), keys({ insertText: e.data, insertLineBreak: "\n", deleteContentBackward: "\b" }[e.inputType] || "")));
       on("input", () => {
-        if (mode === "i" || editor.value === last) return;
+        if (mode === "i") return changed();
+        if (editor.value === last) return;
         const v = editor.value; let i = 0;
         while (v[i] === last[i]) i++;
         (editor.value = last), keys(v.slice(i, i + v.length - last.length));
       });
       on("paste", (e) => mode === "i" || (e.preventDefault(), vim(112, e.clipboardData.getData("text/plain"))));
       document.addEventListener("selectionchange", () => document.activeElement === editor && mode !== "i" && (editor.selectionStart !== shown[0] || editor.selectionEnd !== shown[1]) && vim(0));
-      vim(0), editor.focus();
+      vim(0), vim(105), editor.focus(); // it opens in insert mode: typing edits, Esc for Vim
     },
     save: () => {
-      const doc = html.cloneNode(true);
+      const doc = html.cloneNode(true); // without the reader's light or dark choice
+      doc.removeAttribute("data-mode");
       $("#source", doc).textContent = raw(source), ($("#run", doc).textContent = raw(JSON.stringify(result)));
       $$(".vim", doc).forEach((e) => e.remove()), $$("canvas", doc).forEach((c) => (c.removeAttribute("width"), c.removeAttribute("height")));
       download(name + ".html", "<!doctype html>\n" + doc.outerHTML);
