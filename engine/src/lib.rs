@@ -10,6 +10,7 @@ pub mod doc;
 pub mod draw;
 pub mod nb;
 pub mod pack;
+pub mod pdf;
 pub mod scene;
 pub mod theme;
 
@@ -79,10 +80,26 @@ pub extern "C" fn md(op: u32) -> u32 {
     ret(out.into_bytes())
 }
 
+/// A PDF form (`pdf::FORMS`). Input bundle: src, each cell's `o` output, `stage` (f32s), then
+/// files by path: `fonts/<name>.otf`, and `assets`, a bundle.
+#[unsafe(no_mangle)]
+pub extern "C" fn pdf(form: u32) -> u32 {
+    let raw = input();
+    let b = files(&raw);
+    let get = |n: &str| b.iter().find(|x| x.0 == n).map(|x| x.1.to_vec());
+    let out: Vec<String> = b.iter().filter(|x| x.0 == "o").map(|x| String::from_utf8_lossy(x.1).into_owned()).collect();
+    let stage: Vec<f32> = get("stage").unwrap_or_default().chunks_exact(4).map(|c| f32::from_le_bytes(c.try_into().unwrap())).collect();
+    let d = doc::parse(std::str::from_utf8(&get("src").unwrap_or_default()).unwrap_or(""));
+    ret(pdf::write(&d, &out, &stage, &get, form as usize))
+}
+
 /// A stored ZIP of the input bundle, in its order; an `assets` entry is itself a bundle.
 #[unsafe(no_mangle)]
 pub extern "C" fn zip() -> u32 {
-    let raw = input();
-    let files = pack::unbundle(&raw).into_iter().flat_map(|f| if f.0 == "assets" { pack::unbundle(f.1) } else { vec![f] }).collect::<Vec<_>>();
-    ret(pack::zip(&files))
+    ret(pack::zip(&files(&input())))
+}
+
+/// A bundle's entries, with a nested `assets` bundle expanded in place.
+fn files(raw: &[u8]) -> Vec<(&str, &[u8])> {
+    pack::unbundle(raw).into_iter().flat_map(|f| if f.0 == "assets" { pack::unbundle(f.1) } else { vec![f] }).collect()
 }

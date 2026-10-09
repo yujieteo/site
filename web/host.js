@@ -202,9 +202,17 @@
       download(location.pathname.split("/").at(-2) + ".html", "<!doctype html>\n" + doc.outerHTML);
     },
     zip: () => download("source.zip", call("zip", bundle([["index.md", source], ["assets", assets], ["manifest.json", manifest.slice(10, manifest.indexOf(',"outputs":'))]]))),
+    manifest: () => download("manifest.json", manifest),
+    // Exports stop on stale or failed outputs; fonts are the page's own embedded files.
+    pdf: (form) => {
+      if ($(".stale", article) || result.err) return status && (status.textContent = "Export stopped: outputs are stale or failed. Run first; code edits need a rebuild.");
+      const css = $("style").textContent, font = (f) => ["fonts/" + f.file, b64(css.split(`"${f.family}";src:url(data:font/otf;base64,`)[1].split(")")[0])];
+      const files = JSON.parse(manifest).source.font.files.map(font);
+      download($(`[data-act=pdf][data-arg="${form}"]`).dataset.name, call("pdf", bundle([["src", source], ...result.out.map((o) => ["o", o]), ["stage", new Uint8Array(stage.buffer)], ...files, ["assets", assets]]), +form));
+    },
   };
   label();
-  $$("[data-act]").forEach((b) => b.addEventListener(b.tagName === "SELECT" ? "change" : "click", () => (b.tagName === "SELECT" ? ((html.dataset.theme = b.value), persist()) : act[b.dataset.act]())));
+  $$("[data-act]").forEach((b) => b.addEventListener(b.tagName === "SELECT" ? "change" : "click", () => (b.tagName === "SELECT" ? ((html.dataset.theme = b.value), persist()) : act[b.dataset.act](b.dataset.arg))));
 
   // The agent API: the same actions as the controls, plus the skill comments as text.
   window.notebook = {
@@ -213,6 +221,6 @@
     setSource: (s) => ((source = s), editor && (editor.value = s), render()),
     skills: () => JSON.parse(md(1, [["src", source]])),
     run: (v = {}) => (Object.entries(v).forEach(([k, x]) => { const el = $(`[data-k="${k}"]`, article); if (el) el.value = x; }), run()),
-    export: (kind) => act[kind]?.(),
+    export: (kind, form) => act[kind]?.(form), // "pdf" (form 0-3: notebook, slides, handout, article), "zip", "save", "manifest"
   };
 })();

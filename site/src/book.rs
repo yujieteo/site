@@ -2,7 +2,7 @@
 //! handout, article — that share one body, and its exports, all under one manifest.
 
 use crate::{HOST, Page, cells, vars};
-use engine::{doc::{self, esc}, pack, theme};
+use engine::{doc::{self, esc}, pack, pdf, theme};
 use std::{fmt::Write, fs, path::Path};
 
 const TOOLCHAIN: &str = include_str!("../../rust-toolchain.toml");
@@ -52,7 +52,7 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
     // The source export and the manifest that every HTML form carries.
     let source: Vec<(&str, &[u8])> = std::iter::once(("index.md", src.as_bytes())).chain(files.iter().map(|f| (f.0.as_str(), f.1.as_slice()))).collect();
     let theme_id = match d.get("theme") { "" => "site", t => t };
-    let export_theme = match (d.get("print"), theme::find(theme_id)) { ("", Some(_)) => theme_id, ("", None) => theme::THEMES.iter().find(|t| t.0 == theme_id).map_or("site-light", |t| t.1), (p, _) => p };
+    let export_theme = theme::export(theme_id, d.get("print"));
     let preset = match d.get("font") { "" => "sans", f => f };
     let crates: Vec<String> = files.iter().filter(|f| f.0 == "Cargo.lock").flat_map(|f| String::from_utf8_lossy(&f.1).split("[[package]]").skip(1).map(|p| {
         let get = |k: &str| p.lines().find_map(|l| l.strip_prefix(&format!("{k} = \""))).unwrap_or("\"").trim_end_matches('"').to_string();
@@ -65,7 +65,10 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
         "{{\"engine\":\"{}\",\"notebook\":\"{slug}\",\"rustc\":\"{rustc}\",\"source\":{{{}}},\"crates\":[{}],\"theme\":{{\"id\":{},\"export\":{},\"palette_version\":{},\"overrides\":{}}},\"font\":{{\"preset\":{},\"files\":[{}]}},\"seed\":{}}}",
         engine::VERSION, hashes(&source), crates.join(","), pack::json(theme_id), pack::json(export_theme), theme::VERSION, pack::json(d.get("colors")), pack::json(preset), fonts.join(","), pack::json(d.get("seed")));
     let zip = pack::zip(&[source.clone(), vec![("manifest.json", src_manifest.as_bytes())]].concat());
-    let exports: Vec<(String, Vec<u8>)> = vec![("source.zip".into(), zip)];
+    let stage: Vec<f32> = run["stage"].as_array().unwrap().iter().map(|v| v.as_f64().map_or(f32::NAN, |x| x as f32)).collect();
+    let get = |n: &str| if n.starts_with("fonts/") { fs::read(n).ok() } else { files.iter().find(|f| f.0 == n).map(|f| f.1.clone()) };
+    let pdfs = pdf::FORMS.iter().enumerate().map(|(i, f)| (format!("{f}.pdf"), pdf::write(&d, &strs("out"), &stage, &get, i)));
+    let exports: Vec<(String, Vec<u8>)> = std::iter::once(("source.zip".into(), zip)).chain(pdfs).collect();
     let outs: Vec<(&str, &[u8])> = exports.iter().map(|e| (e.0.as_str(), e.1.as_slice())).collect();
     let manifest = format!("{{\"source\":{src_manifest},\"outputs\":{{{}}}}}", hashes(&outs));
 
@@ -73,10 +76,10 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
     let first = d.chapters().first().map_or(0, |c| c.scene);
     let count = d.chapters().len().max(1);
     let opts: String = theme::THEMES.iter().map(|t| format!("<option value=\"{0}\" data-light=\"{1}\" data-dark=\"{2}\"{3}>{0}</option>", t.0, t.1, t.2, if theme::find(theme_id).map_or(theme_id, |f| f.0) == t.0 { " selected" } else { "" })).collect();
-    let links: String = exports.iter().map(|e| format!("<a href=\"{0}\" download>{0}</a>", e.0)).collect();
+    let links: String = VIEWS.iter().enumerate().map(|(i, v)| format!(r#"<button type="button" data-act="pdf" data-arg="{i}" data-name="{}.pdf">{} PDF</button>"#, pdf::FORMS[i], v.1)).collect();
     let tools = |view: &str| {
         let views: String = VIEWS.iter().map(|(f, name)| format!("<a href=\"{f}.html\"{}>{name}</a>", if *f == view { " aria-current=\"page\"" } else { "" })).collect();
-        format!(r#"<nav class="tools" aria-label="Notebook">{views}<span class="sp"></span>{}<button type="button" data-act="edit">Edit</button><button type="button" data-act="scheme" title="Light or dark">Light</button><button type="button" data-act="font" title="Font">Sans</button><select data-act="theme" aria-label="Theme">{opts}</select><details class="export"><summary>Export</summary><div>{links}<a href="manifest.json" download>manifest.json</a><button type="button" data-act="save">Save HTML</button><button type="button" data-act="zip">Source ZIP</button></div></details></nav>"#,
+        format!(r#"<nav class="tools" aria-label="Notebook">{views}<span class="sp"></span>{}<button type="button" data-act="edit">Edit</button><button type="button" data-act="scheme" title="Light or dark">Light</button><button type="button" data-act="font" title="Font">Sans</button><select data-act="theme" aria-label="Theme">{opts}</select><details class="export"><summary>Export</summary><div>{links}<button type="button" data-act="zip">Source ZIP</button><button type="button" data-act="save">Save HTML</button><button type="button" data-act="manifest">Manifest</button></div></details></nav>"#,
             if has_cells { r#"<button type="button" data-act="run">Run</button>"# } else { "" })
     };
     let assets = pack::base64(&pack::bundle(&files.iter().map(|f| (f.0.as_str(), f.1.as_slice())).collect::<Vec<_>>()));

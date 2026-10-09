@@ -10,7 +10,7 @@ use engine::{doc, pack, theme};
 use std::{fmt::Write, fs, path::Path};
 
 const SHELL: &str = include_str!("../../web/shell.html");
-const STYLE: &str = include_str!("../../web/style.css");
+const STYLE: &str = concat!(include_str!("../../web/style.css"), include_str!("../../web/book.css"));
 pub const HOST: &str = include_str!("../../web/host.js");
 const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
 

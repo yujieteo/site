@@ -165,7 +165,7 @@ impl Plot {
         for v in &yt {
             w!(s, "<line class=\"gr\" x1=\"{l}\" y1=\"{0:.1}\" x2=\"{r}\" y2=\"{0:.1}\"/><text class=\"ax\" x=\"56\" y=\"{1:.1}\" text-anchor=\"end\">{2:.3$}</text>", py(*v), py(*v) + 5.0, v, yd);
         }
-        for v in &self.rules {
+        for v in self.rules.iter().filter(|v| (y0..=y1).contains(*v)) {
             w!(s, "<line class=\"rl\" x1=\"{l}\" y1=\"{0:.1}\" x2=\"{r}\" y2=\"{0:.1}\"/>", py(*v));
         }
         for (i, (x, y, dots)) in self.series.iter().enumerate() {

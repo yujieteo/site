@@ -21,9 +21,10 @@ the budgets and reports payload and output sizes.
 
 | Path | Owns |
 | --- | --- |
-| `engine/` | Rust, native and WebAssembly. `doc` (Markdown, TeX to MathML), `cell` (cell data flow), `nb` (the cells' runtime: text, controls, plots, stage), `draw` (display lists), `theme`, `pack` (SHA-256, ZIP, base64), `scene` (the dot scenes: a frame is a pure function of seed, scene, time, progress, pointer and stage). |
+| `engine/` | Rust, native and WebAssembly. `doc` (Markdown, TeX to MathML), `cell` (cell data flow), `nb` (the cells' runtime: text, controls, plots, stage), `draw` (display lists), `pdf` (the PDF views), `theme`, `pack` (SHA-256, ZIP, base64), `scene` (the dot scenes: a frame is a pure function of seed, scene, time, progress, pointer and stage). |
 | `web/host.js` | The browser boundary: one clock, Canvas execution of display lists, the run worker, tools, the agent API. |
 | `web/shell.html`, `web/style.css` | The one page shell every page shares. |
+| `web/book.css` | A notebook's views, tools, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (notes, doors, index). |
 | `content/stories/<slug>/` | A notebook: `index.md` and its assets (images, `Cargo.lock`). |
 | `fonts/` | Embedded font subsets (Fira Sans, Fira Mono, Fira Math, Libertinus Serif, Latin Modern Roman); `fonts.txt` holds their hashes. |
@@ -53,10 +54,13 @@ voice: af_heart
 - In cells: `println!`, `html`, `slider`, `choice`, `stage` (numbers for data scenes) and `Plot`.
 - ```` ```toml ```` fences add pinned crates; ```` ```say ```` fences are narration; `$…$` and `$$`
   are TeX; `<!-- … -->` comments are agent skills, exposed as text through `window.notebook.skills()`.
-- Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`. Exports: source ZIP
-  (Markdown, assets, manifest) and `manifest.json` with every version and hash. Edit, Run and Save
-  (one editable HTML file) work in the page; edited cells and their dependants are marked stale
-  until Run.
+- Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
+  (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document, outputs and display lists,
+  in the export theme with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,
+  assets, manifest) and `manifest.json` with every version and hash. Edit, Run, Export and Save (one
+  editable HTML file) work in the page, and the page's PDFs are byte-identical to the build's. Edited
+  cells and their dependants are marked stale until Run, and Export stops on stale or failed outputs.
+  PDF images are PNGs in grey, RGB or palette colour with at most binary or colour-key transparency.
 
 Notes are read at build time from a UniiChat export (default `../site/data/uniichat/memory.json`), never
 committed here. Each line is sanitised again: session tags dropped, paths and emails redacted, any line

@@ -30,6 +30,15 @@ pub fn find(id: &str) -> Option<(&'static str, bool)> {
     THEMES.iter().find_map(|t| if id == t.1 { Some((t.0, false)) } else if id == t.2 { Some((t.0, true)) } else { None })
 }
 
+/// The preset canonical exports use: `print`, else the theme's own preset, else its family's light one.
+pub fn export<'a>(theme: &'a str, print: &'a str) -> &'a str {
+    match (print, find(theme)) {
+        ("", Some(_)) => theme,
+        ("", None) => THEMES.iter().find(|t| t.0 == theme).map_or("site-light", |t| t.1),
+        (p, _) => p,
+    }
+}
+
 fn hex(s: &str) -> Option<u32> {
     let s = s.trim().trim_start_matches('#');
     if s.len() == 6 { u32::from_str_radix(s, 16).ok() } else { None }

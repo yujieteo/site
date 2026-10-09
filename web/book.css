@@ -1,0 +1,64 @@
+/* The notebook: font presets, the story layout, tools, cells, figures and the four views. */
+[data-font=book] { --text: "Libertinus Serif", serif; --head: var(--text); }
+[data-font=tex] { --text: "Latin Modern Roman", serif; --head: var(--text); }
+
+/* Story: a sticky stage beside (wide) or above (narrow) the chapters. */
+.story { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr); }
+.stage { position: sticky; top: 0; padding: 0.5rem 0; background: var(--bg); z-index: 1; }
+.stage .frame { max-width: min(100%, 52vh); margin: 0 auto; }
+.bar { height: 2px; background: var(--muted); transform-origin: left; transform: scaleX(0); }
+.controls { display: flex; justify-content: space-between; align-items: center; font: 0.75rem var(--mono); color: var(--muted); padding-top: 0.5rem; }
+.chapter { min-height: 70vh; padding: 2rem 0; max-width: 34rem; }
+.chapter h2 { font-size: 2rem; }
+@media (min-width: 52rem) {
+  .story { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .stage { align-self: start; top: 2rem; }
+  .chapter { min-height: 90vh; }
+}
+/* Notebook: quiet tools, cells as code, controls and output. */
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; font-size: 0.875rem; color: var(--muted); margin: -2.5rem 0 2.5rem; }
+.tools [aria-current] { color: var(--fg); }
+.tools .sp { flex: 1; }
+.tools button, .tools select { border: 0; padding: 0.25rem 0; field-sizing: content; }
+.export { border: 0; padding: 0; }
+.export summary { cursor: pointer; }
+.export[open] { flex-basis: 100%; }
+.export div { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; padding-top: 0.5rem; }
+.editor { display: block; width: 100%; height: 60vh; font: 0.875rem/1.5 var(--mono); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.75rem; margin-bottom: 2rem; }
+.code { font: 0.8125rem/1.55 var(--mono); color: var(--fg); background: var(--surface); border-radius: 4px; padding: 0.75rem; margin: 1rem 0 0.5rem; overflow-x: auto; }
+.code .k { color: var(--accent-text); } .code .s { color: var(--green); } .code .n { color: var(--warm); } .code .c { color: var(--muted); }
+.cell { margin: 1.5rem 0; }
+.out pre, .err { font: 0.8125rem/1.55 var(--mono); color: var(--fg); white-space: pre-wrap; overflow-wrap: anywhere; margin: 0.5rem 0; }
+.err { color: var(--warm); }
+.stale .out, .stale .ctls { opacity: 0.45; }
+.stale .code { box-shadow: inset 2px 0 var(--warm); }
+.ctls label { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: var(--muted); }
+.ctls input { flex: 1; accent-color: var(--fg); }
+.ctls output { font: 0.8125rem var(--mono); color: var(--fg); min-width: 3ch; text-align: right; }
+.caption, figcaption { font-size: 0.875rem; color: var(--muted); }
+.plot { display: block; width: 100%; height: auto; font: 15px var(--text); }
+.plot .gr { stroke: var(--line); } .plot .ax { fill: var(--muted); } .plot .rl { stroke: var(--fg2); stroke-dasharray: 4 4; }
+.plot path { fill: none; stroke-width: 2; stroke-linejoin: round; }
+.l0 { stroke: var(--accent); } .l1 { stroke: var(--warm); } .l2 { stroke: var(--green); } .l3 { stroke: var(--fg2); }
+.d0 { fill: var(--accent); } .d1 { fill: var(--warm); } .d2 { fill: var(--green); } .d3 { fill: var(--fg2); }
+.say { color: var(--muted); font-style: italic; border-left: 2px solid var(--line); padding-left: 1rem; margin: 1.5rem 0; }
+math { font-family: var(--math); }
+.eq { overflow-x: auto; margin: 1rem 0; }
+figure { margin: 1.5rem 0; }
+figure img { display: block; max-width: 100%; height: auto; }
+.refs ol { padding-left: 1.25rem; font-size: 0.875rem; overflow-wrap: anywhere; }
+.still { display: none; max-width: 20rem; margin: 1rem 0; }
+
+/* Views: one page, four layouts. */
+[data-view=slides] { scroll-snap-type: y proximity; }
+[data-view=slides] .chapter { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; }
+[data-view=slides] .chapter h2 { font-size: 2.5rem; }
+[data-view=slides] .code, [data-view=slides] .say, [data-view=slides] .caption, [data-view=slides] .refs { display: none; }
+:is([data-view=handout], [data-view=article]) .stage, :is([data-view=handout], [data-view=article]) .code { display: none; }
+:is([data-view=handout], [data-view=article]) .story { grid-template-columns: minmax(0, 1fr); max-width: 40rem; }
+:is([data-view=handout], [data-view=article]) .still { display: block; }
+:is([data-view=handout], [data-view=article]) .chapter { min-height: 0; max-width: none; }
+[data-view=handout] .chapter { border-top: 1px solid var(--line); }
+[data-view=article] article { counter-reset: s; }
+[data-view=article] .chapter h2::before { counter-increment: s; content: counter(s) ". "; color: var(--muted); }
+[data-view=article] .say, [data-view=article] .ctls { display: none; }
