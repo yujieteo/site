@@ -39,24 +39,15 @@ fn tokens(s: &str) -> Vec<String> {
 
 /// Every narrated sentence with its chapter.
 pub fn sentences(d: &Doc) -> Vec<(usize, String)> {
-    let (mut ch, mut v) = (0, vec![]);
-    for b in &d.blocks {
-        match b {
-            B::H(2, ..) => ch += 1,
-            B::C(l, s, _) if l == "say" => {
-                for p in s.split("\n\n").map(|p| p.split_whitespace().collect::<Vec<_>>().join(" ")) {
-                    let mut rest = p.as_str();
-                    while !rest.is_empty() {
-                        let end = [". ", "? ", "! "].iter().filter_map(|e| rest.find(e)).min().map_or(rest.len(), |i| i + 1);
-                        v.push((ch, rest[..end].to_string()));
-                        rest = rest[end..].trim_start();
-                    }
-                }
-            }
-            _ => {}
-        }
-    }
-    v
+    let mut ch = 0;
+    d.blocks.iter().flat_map(|b| match b {
+        B::H(2, ..) => (ch += 1, vec![]).1,
+        B::C(l, s, _) if l == "say" => s.split("\n\n").flat_map(|p| {
+            let p = p.split_whitespace().collect::<Vec<_>>().join(" ").replace(". ", ".\n").replace("? ", "?\n").replace("! ", "!\n");
+            p.lines().map(|x| (ch, x.to_string())).collect::<Vec<_>>()
+        }).collect(),
+        _ => vec![],
+    }).collect()
 }
 
 /// The distinct words to pronounce, in order of first use.
@@ -95,13 +86,9 @@ pub fn plan(d: &Doc, lock: &str) -> String {
     format!("{{\"voice\":{},\"speed\":{},\"lines\":[{}]}}", pack::json(voice(d)), speed(d), l.join(","))
 }
 
-pub fn voice(d: &Doc) -> &str {
-    match d.get("voice") { "" => "af_heart", v => v }
-}
+pub fn voice(d: &Doc) -> &str { match d.get("voice") { "" => "af_heart", v => v } }
 
-fn speed(d: &Doc) -> f32 {
-    d.get("speed").parse().unwrap_or(1.0)
-}
+fn speed(d: &Doc) -> f32 { d.get("speed").parse().unwrap_or(1.0) }
 
 /// The schedule: each line's start, in samples, after a lead-in and a pause between lines
 /// (longer between chapters), and the total length.

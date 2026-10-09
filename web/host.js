@@ -6,13 +6,8 @@
   const text = (id) => $("#" + id)?.textContent.replaceAll("<\\/", "</");
   const b64 = (s) => Uint8Array.from(atob(s.trim()), (c) => c.charCodeAt(0));
   let api, module;
-  try {
-    module = await WebAssembly.compile(b64(text("wasm")));
-    api = (await WebAssembly.instantiate(module, {})).exports;
-  } catch (e) {
-    if (status) status.textContent = `Live drawing unavailable: ${e.message}`;
-    return;
-  }
+  try { (module = await WebAssembly.compile(b64(text("wasm")))), (api = (await WebAssembly.instantiate(module, {})).exports); }
+  catch (e) { return status && (status.textContent = `Live drawing unavailable: ${e.message}`); }
   const enc = new TextEncoder(), dec = new TextDecoder();
   // One call across the boundary: input bytes in, output bytes out.
   const call = (f, input, ...args) => {
@@ -22,13 +17,9 @@
     return new Uint8Array(api.memory.buffer, api.out(), n).slice();
   };
   const bundle = (entries) => {
-    const parts = entries.flatMap(([n, v]) => {
-      const b = typeof v === "string" ? enc.encode(v) : v, len = new Uint8Array(new Uint32Array([b.length]).buffer);
-      return [enc.encode(n), new Uint8Array(1), len, b];
-    });
+    const parts = entries.flatMap(([n, v]) => (v = typeof v === "string" ? enc.encode(v) : v, [enc.encode(n), new Uint8Array(1), new Uint8Array(new Uint32Array([v.length]).buffer), v]));
     const out = new Uint8Array(parts.reduce((s, p) => s + p.length, 0));
-    parts.reduce((o, p) => (out.set(p, o), o + p.length), 0);
-    return out;
+    return parts.reduce((o, p) => (out.set(p, o), o + p.length), 0), out;
   };
 
   // Drawing: the engine returns a display list (kind, shape, five numbers, rgb, alpha, screen).
@@ -54,16 +45,12 @@
       else if (sh === 1) ctx.ellipse(a, c, e, f, 0, 0, 7);
       else if (sh === 2) ctx.moveTo(a, c), ctx.lineTo(e, f);
       else ctx.arc(a, c, e, 0, 7);
-      if (k === 1) {
-        ctx.save(), ctx.clip(), (clipped = true);
-        continue;
-      }
+      if (k === 1) { ctx.save(), ctx.clip(), (clipped = true); continue; }
       ctx.globalAlpha = alpha, ctx.globalCompositeOperation = screen ? "screen" : "source-over";
       if (sh < 2) ctx.fillStyle = hex(rgb), ctx.fill();
       else (ctx.strokeStyle = hex(rgb)), (ctx.lineWidth = sh === 2 ? g : f), (ctx.lineCap = "round"), ctx.stroke();
     }
-    if (clipped) ctx.restore();
-    ctx.restore();
+    clipped && ctx.restore(), ctx.restore();
   }
   const pal = (cv) => ["--sky", "--shade", "--glow", "--light"].map((v) => colour(cv, v));
   function draw(cv) {
@@ -147,12 +134,7 @@
     worker.onmessage = (e) => finish(e.data);
     worker.postMessage([module, values()]);
   });
-  article.addEventListener("input", (e) => {
-    if (!e.target.dataset.k) return;
-    const o = e.target.nextElementSibling;
-    if (o?.tagName === "OUTPUT") o.textContent = e.target.value;
-    run();
-  });
+  article.addEventListener("input", ({ target: t }) => t.dataset.k && (t.nextElementSibling?.tagName === "OUTPUT" && (t.nextElementSibling.textContent = t.value), run()));
 
   // Tools: the theme lives in the source, so Save keeps it; the view is the page.
   const meta = (k, v) => ((source = md(2, [["src", source], ["key", k], ["value", v]])), editor && (editor.value = source));
@@ -164,18 +146,17 @@
   // 1.2.1 on bytes from kokoro/ beside the site, each checked against kokoro.lock (manifest
   // "voice"); any other fetch fails. Rust then lays out the podcast, captions and timings.
   const VOICE = `const real = fetch, HF = "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/", hex = (b) => [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, "0")).join("");
-    let base, pins, tts;
-    const get = async (p) => { const r = await real(base + p).catch(() => ({})); if (!r.ok) throw Error("voice not installed: kokoro/" + p + " (scripts/kokoro.sh)");
-      const b = await r.arrayBuffer(); if (hex(await crypto.subtle.digest("SHA-256", b)) !== pins[p]) throw Error("kokoro/" + p + " does not match kokoro.lock"); return b; };
-    const url = async (p, type) => URL.createObjectURL(new Blob([await get(p)], { type }));
+    let base, pins, tts, url = async (p, type) => URL.createObjectURL(new Blob([await get(p)], { type }));
+    const get = async (p) => { const r = await real(base + p).catch(() => ({})), b = r.ok ? await r.arrayBuffer() : 0; if (!b) throw Error("No voice at kokoro/" + p + ": install it with scripts/kokoro.sh and serve the site over HTTP.");
+      return hex(await crypto.subtle.digest("SHA-256", b)) === pins[p] ? b : Promise.reject(Error("kokoro/" + p + " does not match kokoro.lock")); };
     self.fetch = async (u, o) => (u = String(u?.url ?? u), u.startsWith("blob:") ? real(u, o) : u.startsWith(HF) ? new Response(await get("model/" + u.slice(HF.length))) : new Response(null, { status: 404 }));
     Object.defineProperty(self, "caches", { value: { open: async () => ({ match: async () => {}, put: async () => {} }) } }); // never serves unchecked bytes
     onmessage = async ({ data: { lines, voice, speed, ...m } }) => { try { ({ base, pins } = m);
       if (!tts) { const { KokoroTTS, env } = await import(await url("kokoro.web.js", "text/javascript"));
         env.wasmPaths = { mjs: await url("ort/ort-wasm-simd-threaded.jsep.mjs", "text/javascript"), wasm: await url("ort/ort-wasm-simd-threaded.jsep.wasm", "application/wasm") };
         tts = await KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", { dtype: "q8", device: "wasm" }); }
-      const audio = [];
-      for (const [i, l] of lines.entries()) postMessage({ at: i, of: lines.length }), audio.push((await (l.ph ? tts.generate_from_ids(tts.tokenizer(l.ph, { truncation: true }).input_ids, { voice, speed }) : tts.generate(l.text, { voice, speed }))).audio);
+      const audio = [], o = { voice, speed };
+      for (const [i, l] of lines.entries()) postMessage({ at: i, of: lines.length }), audio.push((await (l.ph ? tts.generate_from_ids(tts.tokenizer(l.ph, { truncation: true }).input_ids, o) : tts.generate(l.text, o))).audio);
       postMessage({ audio }); } catch (e) { postMessage({ error: String(e.message || e) }); } };`;
   let voice, spoken;
   const narration = () => spoken?.src === source ? spoken.p : (spoken = { src: source, p: new Promise((ok, no) => {
@@ -188,7 +169,7 @@
       const e = [["src", source], ["assets", assets], ...m.audio.map((a) => ["a", new Uint8Array(a.buffer, a.byteOffset, a.byteLength)])], get = (op) => call("md", bundle(e), op);
       ok({ plan, wav: get(4), vtt: dec.decode(get(5)), times: new Float32Array(get(6).buffer) });
     };
-    voice.onerror = (e) => ((spoken = null), no(Error(e.message || "The voice failed to start.")));
+    voice.onerror = (e) => ((spoken = null), no(Error(e.message || "The voice needs the site served over HTTP, with kokoro/ installed (scripts/kokoro.sh).")));
     say("Loading the voice…"), voice.postMessage({ base: new URL("kokoro/", $(".top > a").href).href, pins, ...plan });
   }) }).p;
   const name = location.pathname.split("/").at(-2);
@@ -199,9 +180,9 @@
     const cv = Object.assign(document.createElement("canvas"), { width: 1280, height: 720 }), ctx = cv.getContext("2d"), css = getComputedStyle(html), v = (k) => css.getPropertyValue(k);
     const type = ["video/mp4;codecs=avc1,mp4a.40.2", "video/webm;codecs=vp9,opus", "video/webm"].find((t) => MediaRecorder.isTypeSupported(t));
     const rec = new MediaRecorder(new MediaStream([...cv.captureStream(30).getTracks(), ...dest.stream.getTracks()]), { mimeType: type }), chunks = [];
-    const chapters = $$(".chapter", article), font = (px, w = 400) => (ctx.font = `${w} ${px}px ${v("--sans")}`);
+    const chapters = $$(".chapter", article);
     const text = (s, x, y, w, px, colour) => {
-      ctx.fillStyle = colour, font(px);
+      (ctx.fillStyle = colour), (ctx.font = `${px}px ${v("--sans")}`);
       const ls = s.split(" ").reduce((ls, word) => (ls.at(-1) && ctx.measureText(ls.at(-1) + " " + word).width > w ? ls.push(word) : (ls[ls.length - 1] = (ls.at(-1) + " " + word).trim()), ls), [""]);
       return ls.forEach((l, i) => ctx.fillText(l, x, y + i * px * 1.3)), y + ls.length * px * 1.3;
     };

@@ -6,8 +6,6 @@ use engine::{doc::{self, esc}, pack, pdf, say, theme};
 use std::{fmt::Write, fs, path::Path};
 
 const TOOLCHAIN: &str = include_str!("../../rust-toolchain.toml");
-/// The narration pins: sha256, path under kokoro/, source, member.
-pub const KOKORO: &str = include_str!("../../kokoro.lock");
 /// Embedded fonts: CSS family, file under fonts/. Text pages use the first two.
 pub const FONTS: [(&str, &str); 3] = [("Fira Sans", "sans"), ("Fira Mono", "mono"), ("Fira Math", "math")];
 /// Views: page, name, what it is. The Render dialog switches between them in place.
@@ -17,7 +15,7 @@ const VIEWS: [(&str, &str, &str); 4] = [
     ("handout", "Handout", "Each slide with its narration beside it"),
     ("article", "Article", "Continuous prose, numbered sections"),
 ];
-const MEDIA: [(&str, &str); 3] = [("video", "Video"), ("podcast", "Podcast"), ("captions", "Captions")];
+const MEDIA: [(&str, &str, &str); 3] = [("video", "Video", "The slides, narrated"), ("podcast", "Podcast", "The narration as WAV"), ("captions", "Captions", "WebVTT subtitles")];
 
 pub fn font(file: &str) -> Vec<u8> {
     fs::read(format!("fonts/{file}.otf")).expect("fonts/ is part of the source")
@@ -37,8 +35,9 @@ pub struct Story {
     pub chapters: Vec<String>,
 }
 
+/// The narration pins (kokoro.lock): sha256 and path under kokoro/.
 pub fn pins() -> impl Iterator<Item = (&'static str, &'static str)> {
-    KOKORO.lines().filter(|l| !l.starts_with('#')).filter_map(|l| l.split_once(' ').map(|(h, r)| (h, r.split(' ').next().unwrap())))
+    include_str!("../../kokoro.lock").lines().filter(|l| !l.starts_with('#')).filter_map(|l| l.split_once(' ').map(|(h, r)| (h, r.split(' ').next().unwrap())))
 }
 
 /// The narration's pronunciations, written beside the notebook as say.lock when the pinned Misaki
@@ -68,18 +67,12 @@ fn say_lock(slug: &str, dir: &Path, d: &doc::Doc) {
             })
         }))
     };
-    let mut lock = String::from("# Kokoro phonemes for this notebook's narration, written by the build from Misaki 0.9.4\n# (kokoro.lock). Override a word with `pronounce: word phonemes` in the front matter.\n");
-    let mut missing = vec![];
+    let (mut lock, mut missing) = (String::from("# Kokoro phonemes for this notebook's narration, written by the build from Misaki 0.9.4\n# (kokoro.lock). Override a word with `pronounce: word phonemes` in the front matter.\n"), vec![]);
     for w in &words {
-        let p = look(w).unwrap_or_else(|| (missing.push(w.as_str()), String::new()).1);
-        writeln!(lock, "{w}\t{p}").unwrap();
+        writeln!(lock, "{w}\t{}", look(w).unwrap_or_else(|| (missing.push(w.as_str()), String::new()).1)).unwrap();
     }
-    if !missing.is_empty() {
-        eprintln!("{slug}: no pronunciation for {} (spoken by kokoro-js G2P)", missing.join(" "));
-    }
-    if fs::read_to_string(dir.join("say.lock")).ok().as_deref() != Some(lock.as_str()) {
-        fs::write(dir.join("say.lock"), lock).unwrap();
-    }
+    if !missing.is_empty() { eprintln!("{slug}: no pronunciation for {} (spoken by kokoro-js G2P)", missing.join(" ")) }
+    if fs::read_to_string(dir.join("say.lock")).ok() != Some(lock.clone()) { fs::write(dir.join("say.lock"), lock).unwrap() }
 }
 
 /// A notebook: its pages and its exports under dist/stories/<slug>/.
@@ -115,7 +108,8 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
     }).collect::<Vec<_>>()).collect();
     let hashes = |v: &[(&str, &[u8])]| v.iter().map(|(n, b)| format!("{}:{}", pack::json(n), pack::json(&pack::sha256(b)))).collect::<Vec<_>>().join(",");
     let fonts: Vec<String> = FONTS.iter().map(|(fam, f)| { let b = font(f); format!("{{\"family\":{},\"file\":\"{f}.otf\",\"bytes\":{},\"sha256\":\"{}\"}}", pack::json(fam), b.len(), pack::sha256(&b)) }).collect();
-    let voice = if say::sentences(&d).is_empty() { String::new() } else {
+    let narrated = !say::sentences(&d).is_empty();
+    let voice = if !narrated { String::new() } else {
         let files: Vec<String> = pins().map(|(h, p)| format!("{}:\"{h}\"", pack::json(p))).collect();
         format!(",\"voice\":{{\"name\":{},\"model\":\"Kokoro-82M v1.0 q8\",\"files\":{{{}}}}}", pack::json(say::voice(&d)), files.join(","))
     };
@@ -138,14 +132,14 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
     let render: String = VIEWS.iter().map(|(f, name, line)| button("view", f, &format!("{name}<small>{line}</small>"), "")).collect();
     let swatches: String = theme::THEMES.iter().map(|t| button("theme", t.0, &format!("<i></i>{}", t.0), &format!(r#" data-theme="{}" class="swatch""#, t.0))).collect();
     let pdfs: String = VIEWS.iter().enumerate().map(|(i, v)| button("pdf", &i.to_string(), v.1, "")).collect();
-    let media: String = MEDIA.iter().map(|(a, name)| button(a, "", name, "")).collect();
+    let media: String = MEDIA.iter().map(|(a, name, line)| button(a, "", &format!("{name}<small>{line}</small>"), "")).collect();
     let source: String = [("zip", "Source ZIP"), ("save", "HTML"), ("manifest", "Manifest")].iter().map(|(a, name)| button(a, "", name, "")).collect();
     let tools = format!(
         r#"<nav class="tools" aria-label="Notebook">{}<button type="button" data-act="edit">Edit</button><button type="button" data-act="open" data-arg="render">Render</button><button type="button" data-act="open" data-arg="theme">Theme</button><button type="button" data-act="open" data-arg="export">Export</button><span class="sp" data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></nav>{}{}{}"#,
         if has_cells { r#"<button type="button" data-act="run">Run</button>"# } else { "" },
         dialog("render", "Render", format!(r#"<div class="choices">{render}</div>"#)),
         dialog("theme", "Theme", format!(r#"<p class="muted">Light or dark follows your device.</p><div class="choices">{swatches}</div>"#)),
-        dialog("export", "Export", group("PDF", pdfs) + &group("Narration", media) + &group("Source", source)));
+        dialog("export", "Export", group("PDF", pdfs) + &if narrated { group("Narration", media) } else { String::new() } + &group("Source", source)));
     let assets = pack::base64(&pack::bundle(&files.iter().map(|f| (f.0.as_str(), f.1.as_slice())).collect::<Vec<_>>()));
     let script = format!(
         "<script id=\"source\" type=\"text/markdown\">{0}</script><script id=\"built\" type=\"text/markdown\">{0}</script><script id=\"run\" type=\"application/json\">{1}</script><script id=\"manifest\" type=\"application/json\">{manifest}</script><script id=\"assets\" type=\"application/octet-stream\">{assets}</script><script id=\"wasm\" type=\"application/octet-stream\">{2}</script>\n<script>{HOST}</script>",

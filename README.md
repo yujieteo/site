@@ -12,21 +12,25 @@ nix develop -c ./build.sh [path/to/uniichat/memory.json]
 Tests the crates, compiles `engine` to `wasm32-unknown-unknown`, compiles each notebook's cells, then
 writes `dist/`. The toolchain is pinned once, in `rust-toolchain.toml`; `flake.nix` builds that exact
 toolchain (nixpkgs 26.05 + rust-overlay), and rustup reads the same file, which CI uses.
-Open `dist/index.html` directly; nothing is fetched at runtime.
+Open `dist/index.html` directly; nothing is fetched at runtime, except the voice for a narration
+export (below), which needs the site served over HTTP.
 
 `scripts/repro.sh` builds twice from clean and compares every output's hash. `scripts/loc.sh` checks
-the budgets and reports payload and output sizes.
+the budgets and reports payload and output sizes. `scripts/kokoro.sh` fetches the narration voice
+into `kokoro/` (not committed, about 118 MB) and checks every file against `kokoro.lock`; the build
+then serves it beside the site.
 
 ## Layout
 
 | Path | Owns |
 | --- | --- |
-| `engine/` | Rust, native and WebAssembly. `doc` (Markdown, TeX to MathML), `cell` (cell data flow), `nb` (the cells' runtime: text, controls, plots, stage), `draw` (display lists), `pdf` (the PDF views), `theme`, `pack` (SHA-256, ZIP, base64), `scene` (the dot scenes: a frame is a pure function of seed, scene, time, progress, pointer and stage), `thumb` (seeded thumbnails). |
-| `web/host.js` | The browser boundary: one clock, Canvas execution of display lists, the run worker, tools, the agent API. |
+| `engine/` | Rust, native and WebAssembly. `doc` (Markdown, TeX to MathML), `cell` (cell data flow), `nb` (the cells' runtime: text, controls, plots, stage), `draw` (display lists), `pdf` (the PDF views), `theme`, `pack` (SHA-256, ZIP, base64), `scene` (the dot scenes: a frame is a pure function of seed, scene, time, progress, pointer and stage), `thumb` (seeded thumbnails), `say` (narration: sentences, Kokoro phonemes, podcast, captions, timings). |
+| `web/host.js` | The browser boundary: one clock, Canvas execution of display lists, the run worker, the voice worker, the video recorder, tools, the agent API. |
+| `kokoro.lock`, `scripts/kokoro.sh` | The narration's pinned files: kokoro-js 1.2.1, ONNX Runtime Web, Kokoro-82M v1.0 (q8) with two US voices, and the Misaki 0.9.4 lexicons the build reads. |
 | `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search. |
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (notes, doors, index). |
-| `content/stories/<slug>/` | A notebook: `index.md` and its assets (images, `Cargo.lock`). |
+| `content/stories/<slug>/` | A notebook: `index.md` and its assets (images, `Cargo.lock`, `say.lock`). |
 | `fonts/` | Embedded font subsets (Fira Sans, Fira Mono, Fira Math); `fonts.txt` holds their hashes. |
 
 ## Notebooks
@@ -41,7 +45,8 @@ theme: site                                 (a family; light or dark follows the
 colors: accent #c0653f                      (custom overrides, comma separated)
 print: site-light                           (export theme; default: the theme's own preset)
 seed: 20261003
-voice: af_heart
+voice: af_heart                             (narration: af_heart or am_michael; speed: 1)
+pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes for words, comma separated)
 ---
 ```
 
@@ -70,6 +75,16 @@ voice: af_heart
   editable HTML file) work in the page, and the page's PDFs are byte-identical to the build's. Edited
   cells and their dependants are marked stale until Run, and Export stops on stale or failed outputs.
   PDF images are PNGs in grey, RGB or palette colour with at most binary or colour-key transparency.
+- Narration is rendered in the page, like BeamdSwitch: Export → Podcast (WAV), Captions (WebVTT) or
+  Video (the slides as the narration reaches them, with the podcast as sound). Rust splits the
+  ```` ```say ```` fences into sentences and spells each word in Kokoro's phonemes from `say.lock`,
+  which the build writes from the pinned Misaki lexicons (US gold, then silver, then regular -s, -ed
+  and -ing endings; `pronounce:` overrides). A worker runs Kokoro-82M through kokoro-js on bytes
+  from `kokoro/`, each checked against `kokoro.lock`; every other fetch fails. A sentence with an
+  unknown word is spoken by kokoro-js's own G2P instead, and the captions say so. Rust lays out the
+  podcast, captions and timings; the captions' notes keep the voice, IPA, phonemes and each line's
+  audio hash. The podcast is byte-identical across runs in one browser; the video is recorded in
+  real time (MP4 where the browser records it, else WebM), so it is not byte-reproducible.
 
 Notes are read at build time from a UniiChat export (default `../site/data/uniichat/memory.json`), never
 committed here. Each line is sanitised again: session tags dropped, paths and emails redacted, any line

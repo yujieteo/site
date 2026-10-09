@@ -78,8 +78,7 @@ pub fn build(slug: &str, dir: &Path, d: &Doc) -> Result<Built, String> {
     write("Cargo.toml", &MANIFEST.replace("SLUG", slug).replace("DEPS", &deps))?;
     write("src/lib.rs", &src)?;
     write("src/main.rs", "fn main() {\n    engine::nb::native(nb::program)\n}\n")?;
-    let lock = dir.join("Cargo.lock");
-    let locked = lock.exists();
+    let (lock, locked) = (dir.join("Cargo.lock"), dir.join("Cargo.lock").exists());
     if locked { fs::copy(&lock, root.join("Cargo.lock")).map_err(|e| e.to_string())?; }
     let pwd = std::env::current_dir().unwrap();
     let home = std::env::var("CARGO_HOME").unwrap_or(format!("{}/.cargo", std::env::var("HOME").unwrap_or_default()));
