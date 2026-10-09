@@ -167,21 +167,17 @@ fn main() {
     stories.sort_by(|a, b| a.slug.cmp(&b.slug));
 
     let door = |href: &str, scene: u32, palette: &str, name: &str, line: &str| {
-        format!(r#"<a class="door" href="{href}">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, canvas(scene, palette, ""))
+        format!(r#"<a class="door" href="{href}">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, canvas(scene, palette, "data-bleed"))
     };
     let cards: String = stories.iter().map(|s| format!(
         r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
         s.slug, canvas(s.thumb, &s.palette, ""), esc(&s.title), esc(&s.summary))).collect();
     let mut pages = vec![
         Page { path: "index.html".into(), title: "Yujie Teo".into(), body: format!(
-            r#"<section class="hero" style="--cast:{}">{}<div class="cast">{}</div></section><p class="lede">Notes, stories and tools.</p><div class="doors">{}{}{}</div>"#,
-            engine::CAST.map(|q| q.colour).join(" "),
-            canvas(engine::CAST_SCENE, "", "data-cast"),
-            engine::CAST.iter().enumerate().map(|(i, q)| format!(
-                r#"<button type="button" data-poke="{i}" style="--c:{}">{}</button>"#, q.colour, q.mood)).collect::<String>(),
-            door("notes/index.html", 3, "#ffd60a #1a1446 #ff2d87 #fffbe8", "Notes", "A working log, sanitised."),
-            door("stories/index.html", 1, "#ff2d87 #2b0f54 #b6ff3b #fff3b0", "Stories", "Visual explanations, told in order."),
-            door("playground/index.html", 2, "#13c4c4 #3d0b4f #ff7a1a #fdf7e6", "Playground", "Durable tools for repeated work.")) },
+            r#"<p class="lede">Notes, stories and tools.</p><div class="doors">{}{}{}</div>"#,
+            door("notes/index.html", 3, "#2d3a8c #141a3d #ffb38a #fff1c9", "Notes", "A working log, sanitised."),
+            door("stories/index.html", 6, "#1d2b6b #0e1230 #ff7f6a #ffe3a3", "Stories", "Visual explanations, told in order."),
+            door("playground/index.html", 7, "#3fa7e0 #1b3a5c #7a4cc2 #fff8dc", "Playground", "Durable tools for repeated work.")) },
         Page { path: "notes/index.html".into(), title: "Notes".into(),
             body: format!(r#"<h1>Notes</h1><div class="notes">{}</div>"#, notes(&notes_path)) },
         Page { path: "stories/index.html".into(), title: "Stories".into(),

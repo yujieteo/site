@@ -11,12 +11,10 @@
   --shade: #1a1446;
   --accent: #ff2d87;
   --light: #fffbe8;
+  --ink: #14122b;
+  --cast: #6f7bd9 #e8a817 #ff7f6a #c6e83c #19b8a6; /* sleepy happy flustered dizzy curious */
   color-scheme: light dark;
 }
-.hero { --base: #000000; --shade: #3a3a3a; --accent: #ffd400; --light: #ffffff; --ink: #000000; max-width: 32rem; margin: 0 auto 3rem; }
-.hero .frame { touch-action: manipulation; cursor: pointer; }
-.cast { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding-top: 1rem; font-size: 0.875rem; }
-.cast button::before { content: ""; display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--c); margin-right: 0.4em; }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #000; --fg: #fff; --muted: #8e8e8e; --line: #2a2a2a; --focus: #fff; }
 }
@@ -31,10 +29,12 @@ p { margin: 0 0 1rem; }
 .muted, small { color: var(--muted); font-size: 0.875rem; }
 .top { display: flex; justify-content: space-between; gap: 1rem; padding: 1.25rem 16px; font-size: 0.875rem; }
 .top nav { display: flex; gap: 1.25rem; }
-main { max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6rem; }
+main { overflow-x: clip; max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6rem; }
 .lede { font: 1.375rem/1.4 var(--serif); max-width: 32rem; margin-bottom: 4rem; }
 .frame { display: block; width: 100%; aspect-ratio: 1; border-radius: 4px; touch-action: pan-y;
   background: var(--base); }
+/* A door's canvas overhangs its tile so characters can leap out of it. */
+.frame[data-bleed] { width: 130%; margin: -15%; background: none; position: relative; z-index: 1; }
 .doors { display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
 .door h2 { margin-top: 1rem; }
 .list { list-style: none; padding: 0; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); }

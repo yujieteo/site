@@ -30,24 +30,33 @@
     (c, x, y, h) => [0.5, 1.55, 2.6].forEach((a) => (c.moveTo(x - h * Math.cos(a), y - h * Math.sin(a)), c.lineTo(x + h * Math.cos(a), y + h * Math.sin(a)))), // * *
   ];
   const disc = (ctx, x, y, r) => (ctx.beginPath(), ctx.arc(x, y, r, 0, 7), ctx.fill());
+  const mix = (a, b, w) => "#" + [1, 3, 5].map((i) => Math.round(parseInt(a.substr(i, 2), 16) * (1 - w) + parseInt(b.substr(i, 2), 16) * w).toString(16).padStart(2, "0")).join("");
+  const BLEED = 0.15; // a door's canvas overhangs its tile by this much on every side
 
   // Flat colour only: every shape is one solid fill; light is a few hard-edged, lighter shapes.
   function draw(cv) {
     const ctx = cv.getContext("2d"), dpr = Math.min(devicePixelRatio || 1, 2);
-    const s = Math.round(cv.clientWidth * dpr);
-    if (!s) return;
-    if (cv.width !== s) cv.width = cv.height = s;
+    const W = Math.round(cv.clientWidth * dpr), b = "bleed" in cv.dataset ? BLEED : 0, s = W / (1 + 2 * b);
+    if (!W) return;
+    if (cv.width !== W) cv.width = cv.height = W;
     const [base, shade, accent, light, ink] = ["--base", "--shade", "--accent", "--light", "--ink"].map((n) => css(cv, n));
     const p = cv.dataset.progress === undefined ? -1 : +cv.dataset.progress;
     const [px, py] = cv.pointer || [-1, -1];
     const got = api.update(+(cv.dataset.seed || 1), +cv.dataset.scene, clock, p, px, py);
     const n = got & 0xffff, nf = got >>> 16;
     const d = new Float32Array(mem.buffer, api.dots(), n * 5);
-    const f = (cv.faces = new Float32Array(mem.buffer, api.face(), nf * 12));
-    const L = new Float32Array(mem.buffer, api.lights(), 24); // 6 lights; 0 is the pin light
+    const f = new Float32Array(mem.buffer, api.face(), nf * 12);
+    const L = new Float32Array(mem.buffer, api.lights(), 24); // 6 lights; 0 is the sun or pin light
     const hues = [shade, accent, light, ...css(cv, "--cast").split(/\s+/).filter(Boolean)];
+    ctx.setTransform(1, 0, 0, 1, b * s, b * s), ctx.clearRect(-b * s, -b * s, W, W);
     ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
-    ctx.fillStyle = base, ctx.fillRect(0, 0, s, s);
+    ctx.save(), ctx.beginPath(), ctx.roundRect(0, 0, s, s, 4 * dpr), ctx.clip();
+    // Sky: flat bands, bluer overhead and paler, warmer toward the horizon as the sun climbs (Rayleigh).
+    for (let k = 0; k < 6; k++) {
+      const h = k / 5, sun = L[3];
+      ctx.fillStyle = mix(mix(base, light, sun * (0.1 + 0.4 * h * h)), accent, sun * 0.35 * h ** 4);
+      ctx.fillRect(0, Math.floor((k * s) / 6), s, Math.ceil(s / 6) + 1);
+    }
     // Dots: three tones at three opacities, one path each.
     for (let t = 0; t < 3; t++) for (let a = 1; a <= 3; a++) {
       ctx.beginPath();
@@ -58,28 +67,32 @@
       }
       ctx.globalAlpha = a / 3, ctx.fillStyle = hues[t], ctx.fill();
     }
-    // Characters: a disc and two glyph eyes that look somewhere.
-    ctx.lineWidth = 0.12, ctx.lineJoin = "miter";
-    for (let i = 0; i < nf * 12; i += 12) {
-      const [x, y, r, k, gx, gy, blink, g, sq, eye, halo, pulse] = f.subarray(i, i + 12);
-      const c = hues[k] || light;
-      ctx.fillStyle = k > 2 ? c : accent, ctx.globalAlpha = 0.3;
-      if (halo + pulse > 0.05) disc(ctx, x * s, y * s, r * s * (1.15 + 0.1 * halo + 0.5 * (1 - pulse) * (pulse > 0.05)));
-      ctx.globalAlpha = 1, ctx.save(), ctx.translate(x * s, y * s), ctx.scale(r * s * (1 + sq), r * s * (1 - sq));
-      ctx.fillStyle = c, disc(ctx, 0, 0, 1);
-      ctx.fillStyle = ctx.strokeStyle = ink || shade, ctx.beginPath();
-      for (const e of [-1, 1]) eyes[g | 0](ctx, e * 0.48 + gx * 0.22, -0.1 + gy * 0.18, 0.26 * eye, e, blink);
-      g ? ctx.stroke() : ctx.fill();
-      ctx.restore();
-    }
-    // Light: dappled patches and a pin light, each one flat, lighter shape.
+    // Light: dappled patches, then the sun in hard-edged steps of forward scatter (Mie).
     ctx.globalCompositeOperation = "screen", ctx.fillStyle = light, ctx.globalAlpha = 0.14;
     for (let k = 4; k < 24; k += 4) {
       ctx.save(), ctx.translate(L[k] * s, L[k + 1] * s), ctx.rotate(-0.6), ctx.scale(1, 0.6);
       disc(ctx, 0, 0, L[k + 2] * s), ctx.restore();
     }
-    if (L[3] > 0.1) disc(ctx, L[0] * s, L[1] * s, L[2] * s * 3), (ctx.globalAlpha = Math.ceil(L[3] * 2) / 2), disc(ctx, L[0] * s, L[1] * s, L[2] * s * 0.6);
-    ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
+    if (L[3] > 0.05) {
+      ctx.globalAlpha = 0.12 * L[3];
+      for (const k of [4.5, 3, 2]) disc(ctx, L[0] * s, L[1] * s, L[2] * s * k);
+      ctx.globalAlpha = Math.ceil(L[3] * 2) / 2, disc(ctx, L[0] * s, L[1] * s, L[2] * s);
+    }
+    ctx.restore(), (ctx.globalCompositeOperation = "source-over"), (ctx.globalAlpha = 1);
+    // Characters, unclipped: a disc and two glyph eyes that look somewhere.
+    ctx.lineWidth = 0.12, ctx.lineJoin = "miter";
+    for (let i = 0; i < nf * 12; i += 12) {
+      const [x, y, r, k, gx, gy, blink, g, sq, eye, halo, pulse] = f.subarray(i, i + 12);
+      const c = hues[k] || light;
+      ctx.fillStyle = c, ctx.globalAlpha = 0.3;
+      if (halo + pulse > 0.05) disc(ctx, x * s, y * s, r * s * (1.15 + 0.1 * halo + 0.5 * (1 - pulse) * (pulse > 0.05)));
+      ctx.globalAlpha = 1, ctx.save(), ctx.translate(x * s, y * s), ctx.scale(r * s * (1 + sq), r * s * (1 - sq));
+      disc(ctx, 0, 0, 1);
+      ctx.fillStyle = ctx.strokeStyle = ink || shade, ctx.beginPath();
+      for (const e of [-1, 1]) eyes[g | 0](ctx, e * 0.48 + gx * 0.22, -0.1 + gy * 0.18, 0.26 * eye, e, blink);
+      g ? ctx.stroke() : ctx.fill();
+      ctx.restore();
+    }
   }
 
   const frame = (now) => {
@@ -107,20 +120,12 @@
     io.observe(cv);
     cv.addEventListener("pointermove", (e) => {
       const b = cv.getBoundingClientRect();
-      cv.pointer = [(e.clientX - b.left) / b.width, (e.clientY - b.top) / b.height];
+      const k = "bleed" in cv.dataset ? 1 + 2 * BLEED : 1, o = (k - 1) / 2;
+      cv.pointer = [((e.clientX - b.left) / b.width) * k - o, ((e.clientY - b.top) / b.height) * k - o];
       if (!playing) draw(cv);
-    });
-    // A tap on a character pokes it; the buttons beside the canvas do the same from the keyboard.
-    cv.addEventListener("click", (e) => {
-      const b = cv.getBoundingClientRect(), x = (e.clientX - b.left) / b.width, y = (e.clientY - b.top) / b.height, f = cv.faces || [];
-      for (let i = 0; i < f.length; i += 12) if (Math.hypot(x - f[i], y - f[i + 1]) < f[i + 2] && "cast" in cv.dataset) poke(cv, i / 12);
     });
     cv.addEventListener("pointerleave", () => ((cv.pointer = null), playing || draw(cv)));
   }
-  function poke(cv, i) {
-    api.poke(i), playing || draw(cv);
-  }
-  for (const b of document.querySelectorAll("[data-poke]")) b.addEventListener("click", () => poke(b.closest("section").querySelector("canvas"), +b.dataset.poke));
   new ResizeObserver(() => visible.forEach(draw)).observe(document.body);
   motion?.addEventListener("click", () => setPlaying(!playing));
   reduce.addEventListener("change", () => setPlaying(!reduce.matches));
