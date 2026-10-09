@@ -57,32 +57,42 @@
     const [base, shade, accent, light] = ["--base", "--shade", "--accent", "--light"].map((n) => css(cv, n));
     const p = cv.dataset.progress === undefined ? -1 : +cv.dataset.progress;
     const [px, py] = cv.pointer || [-1, -1];
-    const n = api.update(+(cv.dataset.seed || 1), +cv.dataset.scene, clock, p, px, py);
+    const got = api.update(+(cv.dataset.seed || 1), +cv.dataset.scene, clock, p, px, py);
+    const n = got & 0xffff, nf = got >>> 16;
     const d = new Float32Array(mem.buffer, api.dots(), n * 5);
-    const f = new Float32Array(mem.buffer, api.face(), 8);
+    const f = (cv.faces = new Float32Array(mem.buffer, api.face(), nf * 12));
     const L = new Float32Array(mem.buffer, api.lights(), 24); // 6 lights; 0 is the pin light
     // The field: flat colour, falling off toward the shadow colour at the edges.
     ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
     ctx.fillStyle = base, ctx.fillRect(0, 0, s, s);
     const v = ctx.createRadialGradient(s * 0.5, s * 0.4, s * 0.2, s * 0.5, s * 0.5, s * 0.8);
-    v.addColorStop(0, tint(shade, 0)), v.addColorStop(1, tint(shade, 0.55));
+    v.addColorStop(0, tint(shade, 0)), v.addColorStop(1, tint(shade, +(css(cv, "--falloff") || 0.55)));
     ctx.fillStyle = v, ctx.fillRect(0, 0, s, s);
-    const tone = [shade, accent, light].map(orb);
+    const hues = [shade, accent, light, ...css(cv, "--cast").split(/\s+/).filter(Boolean)];
+    const tone = hues.map(orb);
     for (let i = 0; i < n * 5; i += 5) {
       const c = d[i + 3], r = d[i + 2] * s;
       ctx.globalAlpha = d[i + 4];
       ctx.drawImage(tone[c < 0.34 ? 0 : c < 0.67 ? 1 : 2], d[i] * s - r, d[i + 1] * s - r, 2 * r, 2 * r);
     }
-    // The character: one orb, two eyes, a halo.
-    const [x, y, r, gx, gy, blink, halo, pulse] = [f[0] * s, f[1] * s, f[2] * s, f[3], f[4], f[5], f[6], f[7]];
-    ctx.globalAlpha = 1;
-    glow(ctx, x, y, r * (1.6 + 0.15 * halo + 0.3 * pulse), accent, 0.35 + 0.2 * halo + 0.4 * pulse, 1);
-    ctx.drawImage(tone[2], x - r, y - r, 2 * r, 2 * r);
-    ctx.fillStyle = shade;
-    for (const k of [-1, 1]) {
-      ctx.beginPath();
-      ctx.ellipse(x + k * r * 0.32 + gx * r * 0.18, y - r * 0.1 + gy * r * 0.18, r * 0.09, r * 0.13 * (1 - 0.9 * blink), 0, 0, 7);
-      ctx.fill();
+    // Characters: an orb, two eyes that look somewhere, sometimes a mouth, a halo when moved.
+    ctx.globalAlpha = 1, ctx.lineCap = "round";
+    for (let i = 0; i < nf * 12; i += 12) {
+      const [x, y, r, k, gx, gy, blink, mouth, sq, eye, halo, pulse] = f.subarray(i, i + 12);
+      const c = hues[k] || light;
+      if (halo + pulse > 0.05) glow(ctx, x * s, y * s, r * s * (1.6 + 0.15 * halo + 0.3 * pulse), k > 2 ? c : accent, 0.25 * halo + 0.4 * pulse, 1);
+      ctx.save(), ctx.translate(x * s, y * s), ctx.scale(r * s * (1 + sq), r * s * (1 - sq));
+      ctx.drawImage(tone[k] || tone[2], -1, -1, 2, 2);
+      for (const e of [-1, 1]) {
+        const ex = e * 0.32 + gx * 0.08, ey = -0.12 + gy * 0.08, h = 0.17 * eye * (1 - 0.92 * blink);
+        ctx.fillStyle = "#fff", ctx.beginPath(), ctx.ellipse(ex, ey, 0.15, h, 0, 0, 7), ctx.fill();
+        ctx.fillStyle = shade, ctx.beginPath(), ctx.ellipse(ex + gx * 0.06, ey + gy * 0.06 * eye, 0.08, Math.min(h, 0.09), 0, 0, 7), ctx.fill();
+      }
+      if (Math.abs(mouth) > 0.05) {
+        ctx.strokeStyle = shade, ctx.lineWidth = 0.07, ctx.beginPath(), ctx.moveTo(-0.2, 0.3);
+        ctx.quadraticCurveTo(0, 0.3 + 0.25 * mouth, 0.2, 0.3), ctx.stroke();
+      }
+      ctx.restore();
     }
     // Light falls on everything: dappled patches, then the pin light, then grain.
     ctx.globalCompositeOperation = "screen";
@@ -123,8 +133,17 @@
       cv.pointer = [(e.clientX - b.left) / b.width, (e.clientY - b.top) / b.height];
       if (!playing) draw(cv);
     });
+    // A tap on a character pokes it; the buttons beside the canvas do the same from the keyboard.
+    cv.addEventListener("click", (e) => {
+      const b = cv.getBoundingClientRect(), x = (e.clientX - b.left) / b.width, y = (e.clientY - b.top) / b.height, f = cv.faces || [];
+      for (let i = 0; i < f.length; i += 12) if (Math.hypot(x - f[i], y - f[i + 1]) < f[i + 2] && "cast" in cv.dataset) poke(cv, i / 12);
+    });
     cv.addEventListener("pointerleave", () => ((cv.pointer = null), playing || draw(cv)));
   }
+  function poke(cv, i) {
+    api.poke(i), playing || draw(cv);
+  }
+  for (const b of document.querySelectorAll("[data-poke]")) b.addEventListener("click", () => poke(b.closest("section").querySelector("canvas"), +b.dataset.poke));
   new ResizeObserver(() => visible.forEach(draw)).observe(document.body);
   motion?.addEventListener("click", () => setPlaying(!playing));
   reduce.addEventListener("change", () => setPlaying(!reduce.matches));

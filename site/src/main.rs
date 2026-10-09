@@ -174,7 +174,11 @@ fn main() {
         s.slug, canvas(s.thumb, &s.palette, ""), esc(&s.title), esc(&s.summary))).collect();
     let mut pages = vec![
         Page { path: "index.html".into(), title: "Yujie Teo".into(), body: format!(
-            r#"<p class="lede">Notes, stories and tools.</p><div class="doors">{}{}{}</div>"#,
+            r#"<section class="hero" style="--cast:{}">{}<div class="cast">{}</div></section><p class="lede">Notes, stories and tools.</p><div class="doors">{}{}{}</div>"#,
+            engine::CAST.map(|q| q.colour).join(" "),
+            canvas(engine::CAST_SCENE, "", "data-cast"),
+            engine::CAST.iter().enumerate().map(|(i, q)| format!(
+                r#"<button type="button" data-poke="{i}" style="--c:{}">{}</button>"#, q.colour, q.mood)).collect::<String>(),
             door("notes/index.html", 3, "#ffd60a #1a1446 #ff2d87 #fffbe8", "Notes", "A working log, sanitised."),
             door("stories/index.html", 1, "#ff2d87 #2b0f54 #b6ff3b #fff3b0", "Stories", "Visual explanations, told in order."),
             door("playground/index.html", 2, "#13c4c4 #3d0b4f #ff7a1a #fdf7e6", "Playground", "Durable tools for repeated work.")) },

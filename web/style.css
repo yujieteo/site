@@ -13,7 +13,12 @@
   --light: #fffbe8;
   color-scheme: light dark;
 }
+.hero { --base: #f5f2ec; --shade: #16161a; --accent: #ff4a1c; --light: #ffffff; --falloff: 0.06; max-width: 32rem; margin: 0 auto 3rem; }
+.hero .frame { touch-action: manipulation; cursor: pointer; }
+.cast { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding-top: 1rem; font-size: 0.875rem; }
+.cast button::before { content: ""; display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--c); margin-right: 0.4em; }
 @media (prefers-color-scheme: dark) {
+  .hero { --base: #121214; --shade: #000; }
   :root { --bg: #000; --fg: #fff; --muted: #8e8e8e; --line: #2a2a2a; --focus: #fff; }
 }
 * { box-sizing: border-box; min-width: 0; }

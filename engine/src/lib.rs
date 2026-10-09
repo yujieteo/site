@@ -1,18 +1,45 @@
-//! Dot engine, interface v2. Every frame is a pure function of
-//! (seed, scene, time, progress, pointer), so pause and replay are exact.
+//! Dot engine, interface v3. Story scenes (below SCENES) are pure functions of
+//! (seed, scene, time, progress, pointer), so pause and replay are exact. The cast
+//! (CAST_SCENE) is a small spring simulation stepped by elapsed time: no time, no motion.
 //!
 //! Units: the frame is the unit square, y down; time in seconds.
 //! Dots: 5 f32 each — x, y, radius, colour (0 shadow, 0.5 accent, 1 light), alpha.
-//! Face: 8 f32 — x, y, radius, gaze x, gaze y, blink (0 open, 1 shut), halo, pulse.
+//! Faces: 12 f32 each — x, y, radius, tone, gaze x, gaze y, blink (0 open, 1 shut),
+//! mouth (-1 frown .. 1 smile, 0 none), squash (+ flat, - tall), eye opening, halo, pulse.
+//! Tone 2 is the light colour; tone 3 + i is cast member i's colour.
 //! Lights: 4 f32 each — x, y, radius, intensity (0..1). Light 0 is the pin light;
 //! the rest are dappled patches, as of sun through leaves.
-//! Progress and pointer are negative when absent.
+//! Progress and pointer are negative when absent. `update` returns dots | faces << 16.
 
 use std::f32::consts::{PI, TAU};
 
 pub const MAX: usize = 1024;
 pub const SCENES: u32 = 6;
 pub const LIGHTS: usize = 6;
+pub const FACES: usize = 8;
+pub const CAST_SCENE: u32 = 6;
+
+/// A cast member: a colour and a temperament. `pull` > 0 approaches the pointer, < 0 avoids it.
+pub struct Persona {
+    pub mood: &'static str,
+    pub colour: &'static str,
+    r: f32,
+    home: [f32; 2],
+    pull: f32,
+    mouth: f32,
+    eye: f32,
+    bob: f32,
+}
+
+#[rustfmt::skip]
+pub const CAST: [Persona; 6] = [
+    Persona { mood: "curious",  colour: "#2f5bff", r: 0.085, home: [0.27, 0.3],  pull: 1.0,  mouth: 0.3,  eye: 1.3, bob: 0.015 },
+    Persona { mood: "shy",      colour: "#ff8fc8", r: 0.065, home: [0.74, 0.24], pull: -1.2, mouth: 0.15, eye: 0.9, bob: 0.01 },
+    Persona { mood: "sleepy",   colour: "#8b7cf6", r: 0.1,   home: [0.24, 0.72], pull: 0.0,  mouth: 0.0,  eye: 0.3, bob: 0.008 },
+    Persona { mood: "cheerful", colour: "#ffc800", r: 0.09,  home: [0.53, 0.52], pull: 0.4,  mouth: 0.9,  eye: 1.0, bob: 0.03 },
+    Persona { mood: "grumpy",   colour: "#ff4a1c", r: 0.08,  home: [0.78, 0.68], pull: -0.3, mouth: -0.6, eye: 0.8, bob: 0.005 },
+    Persona { mood: "calm",     colour: "#12c48b", r: 0.075, home: [0.5, 0.86],  pull: 0.15, mouth: 0.2,  eye: 0.9, bob: 0.012 },
+];
 
 pub struct Out<'a> {
     d: &'a mut [f32],
@@ -47,7 +74,7 @@ fn grid(n: usize, mut f: impl FnMut(f32, f32)) {
 }
 
 /// Fill `d` (at least MAX*5), `face` and `light`; return the dot count.
-pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f32], face: &mut [f32; 8], light: &mut [f32; LIGHTS * 4]) -> usize {
+pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f32], face: &mut [f32; 12], light: &mut [f32; LIGHTS * 4]) -> usize {
     let mut o = Out { d, n: 0 };
     let (mut fx, mut fy, mut fr) = (0.5, 0.5, 0.12);
     let (mut tx, mut ty) = (0.5, 0.9); // what the face looks at
@@ -143,7 +170,13 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
     let gl = gx.hypot(gy).max(1e-3);
     let ph = (t + rnd(seed, 7) * 4.0) % 4.2;
     let blink = if ph < 0.18 { (ph / 0.18 * PI).sin() } else { 0.0 };
-    *face = [fx, fy, fr, gx / gl, gy / gl, blink, 0.5 + 0.5 * (t * 0.8).sin(), pulse];
+    *face = [fx, fy, fr, 2.0, gx / gl, gy / gl, blink, 0.0, 0.0, 1.0, 0.5 + 0.5 * (t * 0.8).sin(), pulse];
+    shine(seed, t, pin, light);
+    o.n
+}
+
+/// Light 0 is the pin light; the rest drift slowly like sun through leaves.
+fn shine(seed: u32, t: f32, pin: (f32, f32, f32), light: &mut [f32; LIGHTS * 4]) {
     light[..4].copy_from_slice(&[pin.0, pin.1, 0.035, pin.2.clamp(0.0, 1.0)]);
     for k in 1..LIGHTS {
         let (u, k) = (k as f32, k as u32);
@@ -154,13 +187,94 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
             0.25 + 0.15 * (t * 0.4 + 1.7 * u).sin(),
         ]);
     }
-    o.n
+}
+
+/// The cast: springs pull each member home; the pointer attracts or repels by temperament;
+/// members keep their distance. A poke makes one hop and react.
+pub struct Cast {
+    p: [[f32; 2]; 6],
+    v: [[f32; 2]; 6],
+    poked: [f32; 6],
+    last: f32,
+}
+
+impl Cast {
+    pub const fn new() -> Self {
+        Cast { p: [[0.0; 2]; 6], v: [[0.0; 2]; 6], poked: [-1e3; 6], last: -1.0 }
+    }
+
+    pub fn poke(&mut self, i: usize) {
+        if i < CAST.len() {
+            self.poked[i] = self.last;
+            self.v[i][1] -= 0.7;
+        }
+    }
+
+    /// Advance to time `t`, then draw; returns (dots, faces).
+    pub fn step(&mut self, t: f32, px: f32, py: f32, d: &mut [f32], faces: &mut [f32], light: &mut [f32; LIGHTS * 4]) -> (usize, usize) {
+        if self.last < 0.0 {
+            (self.p, self.last) = (CAST.each_ref().map(|q| q.home), t);
+        }
+        let dt = (t - self.last).clamp(0.0, 0.05);
+        self.last = t;
+        let here = px >= 0.0 && py >= 0.0;
+        for (i, q) in CAST.iter().enumerate() {
+            let ([x, y], u) = (self.p[i], i as f32);
+            let mut a = [
+                (q.home[0] + q.bob * (t * 0.7 + u).sin() - x) * 14.0 - 4.0 * self.v[i][0],
+                (q.home[1] + q.bob * (t * 1.3 + 2.0 * u).cos() - y) * 14.0 - 4.0 * self.v[i][1],
+            ];
+            let mut push = |dx: f32, dy: f32, f: &dyn Fn(f32) -> f32| {
+                let dist = dx.hypot(dy).max(1e-3);
+                (a[0], a[1]) = (a[0] + dx / dist * f(dist), a[1] + dy / dist * f(dist));
+            };
+            if here {
+                push(px - x, py - y, &|r| q.pull * (0.4 - r).max(0.0) * 20.0 - (q.r + 0.04 - r).max(0.0) * 80.0);
+            }
+            for (j, o) in CAST.iter().enumerate().filter(|&(j, _)| j != i) {
+                push(x - self.p[j][0], y - self.p[j][1], &|r| (q.r + o.r + 0.03 - r).max(0.0) * 60.0);
+            }
+            for k in 0..2 {
+                self.v[i][k] += a[k] * dt;
+                self.p[i][k] = (self.p[i][k] + self.v[i][k] * dt).max(q.r).min(1.0 - q.r);
+            }
+        }
+        // The ground: a faint dot field that lifts under the pointer and ripples from the last poke.
+        let last = (0..CAST.len()).max_by(|&a, &b| self.poked[a].total_cmp(&self.poked[b])).unwrap_or(0);
+        let (since, [lx, ly]) = (t - self.poked[last], self.p[last]);
+        let mut o = Out { d, n: 0 };
+        grid(18, |x, y| {
+            let near = if here { (-((x - px).powi(2) + (y - py).powi(2)) * 60.0).exp() } else { 0.0 };
+            let ring = (-((x - lx).hypot(y - ly) - since * 0.5).powi(2) * 400.0).exp() * (-since).exp();
+            let w = (near + ring).min(1.0);
+            o.dot(x, y, 0.004 + 0.008 * w, 0.5 * w, 0.18 + 0.6 * w);
+        });
+        for (i, q) in CAST.iter().enumerate() {
+            let ([x, y], u, since) = (self.p[i], i as f32, t - self.poked[i]);
+            let e = (-since * 2.5).exp();
+            let (tx, ty) = if here { (px, py) } else { (0.5 + 0.3 * (t * 0.3 + u).sin(), 0.5 + 0.3 * (t * 0.23 + 2.0 * u).cos()) };
+            let away = if here && q.pull < -1.0 { -1.0 } else { 1.0 }; // the shy one looks away
+            let (gx, gy) = ((tx - x) * away, (ty - y) * away);
+            let gl = gx.hypot(gy).max(1e-3);
+            let ph = (t + rnd(7, i as u32) * 4.0) % (3.0 + u * 0.4);
+            let blink = if ph < 0.18 { (ph / 0.18 * PI).sin() } else { 0.0 };
+            let shake = if q.mouth < 0.0 { 0.01 * e * (since * 40.0).sin() } else { 0.0 };
+            let mouth = (q.mouth + e * if q.mouth < 0.0 { -0.4 } else { 0.6 }).clamp(-1.0, 1.0);
+            faces[i * 12..i * 12 + 12].copy_from_slice(&[
+                x + shake, y, q.r, 3.0 + u, gx / gl, gy / gl, blink, mouth,
+                0.3 * e * (since * 14.0).sin(), q.eye + (1.3 - q.eye) * e, 0.3, e,
+            ]);
+        }
+        shine(7, t, (lx - 0.03, ly - 0.04, (-since * 1.5).exp()), light);
+        (o.n, CAST.len())
+    }
 }
 
 // The WebAssembly boundary: the host reads both buffers after each call.
 // They live for the module's lifetime and never move; memory never grows.
 static mut DOTS: [f32; MAX * 5] = [0.0; MAX * 5];
-static mut FACE: [f32; 8] = [0.0; 8];
+static mut FACE: [f32; FACES * 12] = [0.0; FACES * 12];
+static mut CAST_NOW: Cast = Cast::new();
 static mut LIGHT: [f32; LIGHTS * 4] = [0.0; LIGHTS * 4];
 
 #[unsafe(no_mangle)]
@@ -182,16 +296,27 @@ pub extern "C" fn lights() -> *const f32 {
 pub extern "C" fn update(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32) -> u32 {
     let ok = |v: f32| if v.is_finite() { v } else { -1.0 };
     // SAFETY: wasm32 is single-threaded and these are the only references.
-    let (d, f, l) = unsafe { (&mut *&raw mut DOTS, &mut *&raw mut FACE, &mut *&raw mut LIGHT) };
-    frame(seed, scene, ok(t).max(0.0), ok(p), ok(px), ok(py), d, f, l) as u32
+    let (d, f, l, c) = unsafe { (&mut *&raw mut DOTS, &mut *&raw mut FACE, &mut *&raw mut LIGHT, &mut *&raw mut CAST_NOW) };
+    let (t, p, px, py) = (ok(t).max(0.0), ok(p), ok(px), ok(py));
+    let (n, faces) = match (scene == CAST_SCENE, f.first_chunk_mut()) {
+        (true, _) | (_, None) => c.step(t, px, py, d, f, l),
+        (false, Some(face)) => (frame(seed, scene, t, p, px, py, d, face, l), 1),
+    };
+    (n | faces << 16) as u32
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn poke(i: u32) {
+    // SAFETY: as in `update`.
+    unsafe { (*&raw mut CAST_NOW).poke(i as usize) }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
-    fn run(scene: u32, t: f32) -> (Vec<f32>, [f32; 8], usize) {
-        let (mut d, mut f, mut l) = (vec![0.0; MAX * 5], [0.0; 8], [0.0; LIGHTS * 4]);
+    fn run(scene: u32, t: f32) -> (Vec<f32>, [f32; 12], usize) {
+        let (mut d, mut f, mut l) = (vec![0.0; MAX * 5], [0.0; 12], [0.0; LIGHTS * 4]);
         let n = frame(42, scene, t, -1.0, -1.0, -1.0, &mut d, &mut f, &mut l);
         assert!(l.chunks(4).all(|c| c.iter().all(|v| v.is_finite()) && (0.0..=1.0).contains(&c[3])));
         (d, f, n)
@@ -218,10 +343,27 @@ mod tests {
 
     #[test]
     fn convergence_follows_progress() {
-        let (mut d, mut f, mut l) = (vec![0.0; MAX * 5], [0.0; 8], [0.0; LIGHTS * 4]);
+        let (mut d, mut f, mut l) = (vec![0.0; MAX * 5], [0.0; 12], [0.0; LIGHTS * 4]);
         let n = frame(1, 4, 0.0, 1.0, -1.0, -1.0, &mut d, &mut f, &mut l);
         assert_eq!(n, 196);
         assert!((d[0] - 0.5 / 14.0).abs() < 1e-6 && (d[1] - 0.5 / 14.0).abs() < 1e-6);
+    }
+
+    #[test]
+    fn the_cast_stays_in_frame_and_reacts() {
+        let (mut c, mut d, mut f, mut l) = (Cast::new(), vec![0.0; MAX * 5], [0.0; FACES * 12], [0.0; LIGHTS * 4]);
+        for k in 0..2000 {
+            let t = k as f32 / 60.0;
+            if k == 600 {
+                c.poke(2);
+            }
+            let (n, m) = c.step(t, (t * 0.7).sin() * 0.5 + 0.5, 0.5, &mut d, &mut f, &mut l);
+            assert!(n == 324 && m == CAST.len() && f.iter().chain(&d[..n * 5]).all(|v| v.is_finite()));
+            assert!(f.chunks(12).take(m).all(|q| (q[2]..=1.0 - q[2]).contains(&q[0]) && (q[2]..=1.0 - q[2]).contains(&q[1])));
+            if k == 601 {
+                assert!(f[2 * 12 + 9] > 1.0 && f[2 * 12 + 11] > 0.9, "the sleepy one wakes when poked");
+            }
+        }
     }
 
     #[test]

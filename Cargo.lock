@@ -82,6 +82,7 @@ dependencies = [
 name = "site"
 version = "1.0.0"
 dependencies = [
+ "engine",
  "serde_json",
 ]
 
