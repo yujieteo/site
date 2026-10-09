@@ -1,4 +1,4 @@
-//! Builds dist/: the landing page, Notes, Stories and Playground. Every page is
+//! Builds dist/: the landing page, Notes, Stories and Play. Every page is
 //! one self-contained HTML file; pages with a canvas carry the engine inline.
 //! Usage: site [notes.json]  (default ../site/data/uniichat/memory.json)
 
@@ -174,16 +174,16 @@ fn main() {
         s.slug, canvas(s.thumb, &s.palette, ""), esc(&s.title), esc(&s.summary))).collect();
     let mut pages = vec![
         Page { path: "index.html".into(), title: "Yu Jie".into(), body: format!(
-            r#"<p class="lede">Notes, stories and tools.</p><div class="doors">{}{}{}</div>"#,
-            door("notes/index.html", 3, "#5d4b68 #2a2130 #a7c2a0 #efe6d4", "Notes", "A working log, sanitised."),
-            door("stories/index.html", 6, "#56604a #23271e #d29da0 #f2e6cc", "Stories", "Visual explanations, told in order."),
-            door("playground/index.html", 7, "#d4b2aa #3a2f38 #6f8a78 #f7ecdf", "Playground", "Durable tools for repeated work.")) },
+            r#"<p class="lede">Notes, stories and toys.</p><div class="doors">{}{}{}</div>"#,
+            door("notes/index.html", 3, "#6b686e #2c2b2e #bab7bd #f2f1ef", "Notes", "A working log, sanitised."),
+            door("stories/index.html", 6, "#5f625c #252623 #c9c5bd #f3f1ec", "Stories", "Visual explanations, told in order."),
+            door("play/index.html", 7, "#d3d0cb #3a3836 #8f948c #faf9f6", "Play", "Toys to play with.")) },
         Page { path: "notes/index.html".into(), title: "Notes".into(),
             body: format!(r#"<h1>Notes</h1><div class="notes">{}</div>"#, notes(&notes_path)) },
         Page { path: "stories/index.html".into(), title: "Stories".into(),
             body: format!(r#"<h1>Stories</h1><ul class="list">{cards}</ul>"#) },
-        Page { path: "playground/index.html".into(), title: "Playground".into(),
-            body: r#"<h1>Playground</h1><p class="lede">Tools arrive here as they are ported.</p>"#.into() },
+        Page { path: "play/index.html".into(), title: "Play".into(),
+            body: r#"<h1>Play</h1><p class="lede">Toys arrive here as they are made.</p>"#.into() },
     ];
     pages.extend(stories.into_iter().map(|s| Page { path: format!("stories/{}/index.html", s.slug), title: s.title, body: s.html }));
     for p in &pages {

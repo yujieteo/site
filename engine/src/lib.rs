@@ -203,7 +203,7 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
             let arrive = smooth((u - 0.45) / 0.15);
             o.face(1.14 - 0.3 * arrive, 0.7, 0.08, CURIOUS, (0.3, 0.61), if u > 0.7 { 2.0 } else { 0.0 }, 0.0, 0.0);
         }
-        // Playground: friends at play on a grassy hill. One bounces clean out of the frame.
+        // Play: friends at play on a grassy hill. One bounces clean out of the frame.
         _ => {
             pin = (0.8, 0.18, 0.05, 1.0);
             let ground = |x: f32| 1.55 - (0.5625 - (x - 0.5) * (x - 0.5)).max(0.0).sqrt();

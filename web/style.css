@@ -1,37 +1,43 @@
 :root {
-  /* Light: warm paper and soft black, after LoveFrom. Dark: true black and greys, after OpenAI. */
-  --bg: #f5f2ec;
-  --fg: #1c1b19;
-  --muted: #76726a;
-  --line: #dcd7cd;
-  --focus: #1c1b19;
+  /* Near-neutral grounds and text spend the colour budget on the characters alone.
+     Text takes four values: fg for names, fg2 for reading, muted for asides, faint for labels.
+     Light after LoveFrom; dark after OpenAI. */
+  --bg: #f4f3f1;
+  --fg: #141414;
+  --fg2: #3f3e3c;
+  --muted: #74726e;
+  --faint: #a9a7a3;
+  --line: #e0dedb;
+  --focus: #141414;
   --serif: "Iowan Old Style", Baskerville, Palatino, Georgia, serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --base: #6b7f8c;
-  --shade: #2b3036;
-  --accent: #d9a46b;
-  --light: #f3eadb;
-  --ink: #2a2430;
-  /* After Araki, muted: odd neighbours, low chroma. sleepy happy flustered dizzy curious */
-  --cast: #a08cb8 #c8a04a #c47a62 #b5b86a #5aa8a2;
+  --base: #66696d;
+  --shade: #2a2b2d;
+  --accent: #c4c0b8;
+  --light: #f3f1ec;
+  --ink: #16121c;
+  /* After Araki: odd neighbours at full chroma. sleepy happy flustered dizzy curious */
+  --cast: #7a3cff #ffc400 #ff2e74 #b4e600 #00c9b7;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #000000; --fg: #ececec; --muted: #8e8e8e; --line: #2f2f2f; --focus: #ececec; }
+  :root { --bg: #000000; --fg: #f2f2f2; --fg2: #c2c2c2; --muted: #8a8a8a; --faint: #5a5a5a; --line: #262626; --focus: #f2f2f2; }
 }
 * { box-sizing: border-box; min-width: 0; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 1rem/1.6 var(--sans); }
+body { margin: 0; background: var(--bg); color: var(--fg2); font: 1rem/1.6 var(--sans); }
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-h1, h2 { font: 400 2.5rem/1.1 var(--serif); letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+h1, h2 { color: var(--fg); font: 400 2.5rem/1.1 var(--serif); letter-spacing: -0.01em; margin: 0 0 0.5rem; }
 h2 { font-size: 1.75rem; }
 p { margin: 0 0 1rem; }
 .muted, small { color: var(--muted); font-size: 0.875rem; }
 .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.25rem; padding: 1.25rem 16px; font: 1.0625rem/1.4 var(--serif); }
 .top > a { white-space: nowrap; }
-.top nav { display: flex; gap: 1.25rem; }
+.top > a { color: var(--fg); }
+.top nav { display: flex; gap: 1.25rem; color: var(--muted); }
+footer.top { color: var(--faint); }
 main { overflow-x: clip; max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6rem; }
 .lede { font: 1.375rem/1.4 var(--serif); max-width: 32rem; margin-bottom: 4rem; }
 .frame { display: block; width: 100%; aspect-ratio: 1; border-radius: 4px; touch-action: pan-y;
@@ -47,9 +53,9 @@ main { overflow-x: clip; max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6r
 .story { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr); }
 .stage { position: sticky; top: 0; padding: 0.5rem 0; background: var(--bg); z-index: 1; }
 .stage .frame { max-width: min(100%, 52vh); margin: 0 auto; }
-.bar { height: 2px; background: var(--fg); transform-origin: left; transform: scaleX(0); }
-.controls { display: flex; justify-content: space-between; align-items: center; font: 0.75rem var(--mono); color: var(--muted); padding-top: 0.5rem; }
-button { font: inherit; color: var(--fg); background: none; border: 1px solid var(--line); border-radius: 99px; padding: 0.25rem 0.75rem; cursor: pointer; }
+.bar { height: 2px; background: var(--faint); transform-origin: left; transform: scaleX(0); }
+.controls { display: flex; justify-content: space-between; align-items: center; font: 0.75rem var(--mono); color: var(--faint); padding-top: 0.5rem; }
+button { font: inherit; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 99px; padding: 0.25rem 0.75rem; cursor: pointer; }
 .chapter { min-height: 70vh; padding: 2rem 0; max-width: 30rem; }
 .chapter h2 { font-size: 2rem; }
 @media (min-width: 52rem) {
@@ -61,6 +67,6 @@ details { border-top: 1px solid var(--line); padding: 1rem 0; }
 
 /* Notes */
 .notes { max-width: 40rem; }
-.notes h2 { font: 0.75rem var(--mono); color: var(--muted); margin: 3rem 0 1rem; }
+.notes h2 { font: 0.75rem var(--mono); color: var(--faint); margin: 3rem 0 1rem; }
 .note { white-space: pre-line; overflow-wrap: anywhere; margin: 0 0 1.25rem; }
-.note b { font: 400 0.75rem var(--mono); color: var(--muted); margin-right: 0.5rem; }
+.note b { font: 400 0.75rem var(--mono); color: var(--faint); margin-right: 0.5rem; }
