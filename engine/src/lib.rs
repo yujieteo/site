@@ -1,7 +1,7 @@
 //! The notebook engine, v2. One crate, compiled natively (for the builder and a notebook's
 //! cells) and to WebAssembly (for the page). Modules:
 //! scene (dot scenes), thumb (seeded thumbnails), draw (display list), theme, doc (Markdown and TeX),
-//! cell (Rust cell dataflow), nb (cell runtime), vim, pdf, pack (hashes, ZIP).
+//! cell (Rust cell dataflow), nb (cell runtime), vim, pdf, pack (hashes, ZIP), say (narration).
 macro_rules! w {
     ($($t:tt)*) => { { use std::fmt::Write as _; let _ = write!($($t)*); } };
 }
@@ -11,6 +11,7 @@ pub mod draw;
 pub mod nb;
 pub mod pack;
 pub mod pdf;
+pub mod say;
 pub mod scene;
 pub mod theme;
 pub mod thumb;
@@ -59,7 +60,9 @@ pub extern "C" fn paint(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32,
 /// Markdown for the page. Op 0: the article for an edited source (input bundle: src, built,
 /// then each compiled cell's `o` output and `c` controls, then `assets`, a bundle), with changed
 /// cells and their dependants marked stale. Op 1: the skill comments as JSON. Op 2: the
-/// source with a front-matter key set (input: src, key, value).
+/// source with a front-matter key set (input: src, key, value). Op 3: the narration plan
+/// (`say::plan`; input: src, assets). Ops 4, 5, 6: the podcast WAV, captions and line times
+/// from the synthesised audio (input: src, assets, then each line's `a`, f32 samples).
 #[unsafe(no_mangle)]
 pub extern "C" fn md(op: u32) -> u32 {
     let raw = input();
@@ -67,18 +70,24 @@ pub extern "C" fn md(op: u32) -> u32 {
     let text = |n: &str| b.iter().find(|x| x.0 == n).map_or("", |x| std::str::from_utf8(x.1).unwrap_or(""));
     let all = |n: &str| b.iter().filter(|x| x.0 == n).map(|x| String::from_utf8_lossy(x.1).into_owned()).collect::<Vec<_>>();
     let d = doc::parse(text("src"));
+    let assets = pack::unbundle(b.iter().find(|x| x.0 == "assets").map_or(&[], |x| x.1));
+    let lock = assets.iter().find(|x| x.0 == "say.lock").map_or("", |x| std::str::from_utf8(x.1).unwrap_or(""));
+    let audio: Vec<Vec<f32>> = b.iter().filter(|x| x.0 == "a").map(|x| x.1.chunks_exact(4).map(|c| f32::from_le_bytes(c.try_into().unwrap())).collect()).collect();
     let out = match op {
         0 => {
             let built = doc::parse(text("built"));
             let (now, was): (Vec<&str>, Vec<&str>) = (d.cells().iter().map(|c| c.0).collect(), built.cells().iter().map(|c| c.0).collect());
             let (map, stale) = cell::stale(&now, &was);
             let run = doc::Run { out: all("o"), ctl: all("c"), map, stale };
-            let assets = pack::unbundle(b.iter().find(|x| x.0 == "assets").map_or(&[], |x| x.1));
             let img = |p: &str| assets.iter().find(|x| x.0 == p).map_or(p.into(), |x| pack::data_url(p, x.1));
             doc::article(&d, &run, &img)
         }
         1 => format!("[{}]", d.skills().iter().map(|s| pack::json(s)).collect::<Vec<_>>().join(",")),
-        _ => doc::set_meta(text("src"), text("key"), text("value")),
+        2 => doc::set_meta(text("src"), text("key"), text("value")),
+        3 => say::plan(&d, lock),
+        4 => return ret(say::wav(&d, lock, &audio)),
+        5 => say::vtt(&d, lock, &audio),
+        _ => return ret(say::times(&d, lock, &audio)),
     };
     ret(out.into_bytes())
 }

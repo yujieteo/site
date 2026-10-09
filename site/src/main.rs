@@ -151,6 +151,10 @@ fn main() {
         Page::new("stories/index.html", "Stories", format!(r#"<h1>Stories</h1><ul class="list">{cards}</ul>"#)),
         Page::new("play/index.html", "Play", r#"<h1>Play</h1><p class="lede">Toys arrive here as they are made.</p>"#.into()),
     ]);
+    // The voice (kokoro.lock, scripts/kokoro.sh) is served beside the site when every pinned file
+    // is present and matches; the build reads the Misaki lexicons itself, so they are not served.
+    let voice: Vec<_> = book::pins().filter(|p| !p.1.starts_with("misaki/")).map(|(h, p)| fs::read(format!("kokoro/{p}")).ok().filter(|b| pack::sha256(b) == h).map(|b| (format!("kokoro/{p}"), b))).collect();
+    if voice.iter().all(Option::is_some) { files.extend(voice.into_iter().flatten()) } else { eprintln!("kokoro/ incomplete: narration export needs scripts/kokoro.sh") }
     let pages: Vec<(String, Vec<u8>)> = pages.iter().map(|p| (p.path.clone(), render(p, &wasm, &index).into_bytes())).collect();
     for (path, bytes) in pages.iter().chain(&files) {
         let out = Path::new("dist").join(path);

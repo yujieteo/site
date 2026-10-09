@@ -2,10 +2,12 @@
 //! handout, article — that share one body, and its exports, all under one manifest.
 
 use crate::{HOST, Page, cells, vars};
-use engine::{doc::{self, esc}, pack, pdf, theme};
+use engine::{doc::{self, esc}, pack, pdf, say, theme};
 use std::{fmt::Write, fs, path::Path};
 
 const TOOLCHAIN: &str = include_str!("../../rust-toolchain.toml");
+/// The narration pins: sha256, path under kokoro/, source, member.
+pub const KOKORO: &str = include_str!("../../kokoro.lock");
 /// Embedded fonts: CSS family, file under fonts/. Text pages use the first two.
 pub const FONTS: [(&str, &str); 3] = [("Fira Sans", "sans"), ("Fira Mono", "mono"), ("Fira Math", "math")];
 /// Views: page, name, what it is. The Render dialog switches between them in place.
@@ -35,11 +37,57 @@ pub struct Story {
     pub chapters: Vec<String>,
 }
 
+pub fn pins() -> impl Iterator<Item = (&'static str, &'static str)> {
+    KOKORO.lines().filter(|l| !l.starts_with('#')).filter_map(|l| l.split_once(' ').map(|(h, r)| (h, r.split(' ').next().unwrap())))
+}
+
+/// The narration's pronunciations, written beside the notebook as say.lock when the pinned Misaki
+/// lexicons are in kokoro/ (scripts/kokoro.sh): US gold, then silver, then the regular -s, -ed and
+/// -ing endings. Words left empty are spoken by kokoro-js's own G2P. Without the lexicons, the
+/// committed say.lock stands.
+fn say_lock(slug: &str, dir: &Path, d: &doc::Doc) {
+    let words = say::words(d);
+    let lex = |f: &str| fs::read(format!("kokoro/misaki/us_{f}.json")).ok()
+        .filter(|b| pins().any(|p| p == (pack::sha256(b).as_str(), format!("misaki/us_{f}.json").as_str())))
+        .and_then(|b| serde_json::from_slice::<serde_json::Value>(&b).ok());
+    let (false, Some(gold), Some(silver)) = (words.is_empty(), lex("gold"), lex("silver")) else { return };
+    let find = |w: &str| [&gold, &silver].iter().find_map(|l| l[w].as_str().or(l[w]["DEFAULT"].as_str())).map(String::from);
+    let tail = |p: &str, a: &str, b: &str, s: [&'static str; 3]| match p.chars().rev().find(|c| !"ˈˌ".contains(*c)) {
+        Some(c) if a.contains(c) => s[0], Some(c) if b.contains(c) => s[1], _ => s[2] };
+    let look = |w: &str| {
+        let l = w.replace('’', "'").to_lowercase();
+        match l.as_str() { "a" => return Some("ə".into()), "the" => return Some("ðə".into()), _ => {} }
+        find(w).or_else(|| find(&l)).or_else(|| ["s", "es", "ies", "d", "ed", "ied", "ing", "ing"].iter().zip(["", "", "y", "", "", "y", "", "e"]).find_map(|(suf, back)| {
+            let base = l.strip_suffix(suf)?;
+            let undouble = base.is_ascii() && base.len() > 2 && base.as_bytes()[base.len() - 1] == base.as_bytes()[base.len() - 2];
+            let p = find(&format!("{base}{back}")).or_else(|| undouble.then(|| find(&base[..base.len() - 1])).flatten())?;
+            Some(p.clone() + match *suf {
+                "ing" => "ɪŋ",
+                _ if suf.ends_with('s') => tail(&p, "szʃʒʧʤ", "ptkfθ", ["ᵻz", "s", "z"]),
+                _ => tail(&p, "td", "pkfθʃsʧ", ["ᵻd", "t", "d"]),
+            })
+        }))
+    };
+    let mut lock = String::from("# Kokoro phonemes for this notebook's narration, written by the build from Misaki 0.9.4\n# (kokoro.lock). Override a word with `pronounce: word phonemes` in the front matter.\n");
+    let mut missing = vec![];
+    for w in &words {
+        let p = look(w).unwrap_or_else(|| (missing.push(w.as_str()), String::new()).1);
+        writeln!(lock, "{w}\t{p}").unwrap();
+    }
+    if !missing.is_empty() {
+        eprintln!("{slug}: no pronunciation for {} (spoken by kokoro-js G2P)", missing.join(" "));
+    }
+    if fs::read_to_string(dir.join("say.lock")).ok().as_deref() != Some(lock.as_str()) {
+        fs::write(dir.join("say.lock"), lock).unwrap();
+    }
+}
+
 /// A notebook: its pages and its exports under dist/stories/<slug>/.
 pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(String, Vec<u8>)>) {
     let dir = Path::new("content/stories").join(slug);
     let src = fs::read_to_string(dir.join("index.md")).unwrap();
     let d = doc::parse(&src);
+    say_lock(slug, &dir, &d);
     let mut files: Vec<(String, Vec<u8>)> = fs::read_dir(&dir).unwrap().flatten()
         .map(|e| (e.file_name().to_string_lossy().into_owned(), fs::read(e.path()).unwrap()))
         .filter(|f| f.0 != "index.md").collect();
@@ -67,9 +115,13 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
     }).collect::<Vec<_>>()).collect();
     let hashes = |v: &[(&str, &[u8])]| v.iter().map(|(n, b)| format!("{}:{}", pack::json(n), pack::json(&pack::sha256(b)))).collect::<Vec<_>>().join(",");
     let fonts: Vec<String> = FONTS.iter().map(|(fam, f)| { let b = font(f); format!("{{\"family\":{},\"file\":\"{f}.otf\",\"bytes\":{},\"sha256\":\"{}\"}}", pack::json(fam), b.len(), pack::sha256(&b)) }).collect();
+    let voice = if say::sentences(&d).is_empty() { String::new() } else {
+        let files: Vec<String> = pins().map(|(h, p)| format!("{}:\"{h}\"", pack::json(p))).collect();
+        format!(",\"voice\":{{\"name\":{},\"model\":\"Kokoro-82M v1.0 q8\",\"files\":{{{}}}}}", pack::json(say::voice(&d)), files.join(","))
+    };
     let rustc = TOOLCHAIN.lines().find_map(|l| l.strip_prefix("channel = ")).unwrap_or("").trim_matches('"');
     let src_manifest = format!(
-        "{{\"engine\":\"{}\",\"notebook\":\"{slug}\",\"rustc\":\"{rustc}\",\"source\":{{{}}},\"crates\":[{}],\"theme\":{{\"id\":{},\"export\":{},\"palette_version\":{},\"overrides\":{}}},\"font\":{{\"files\":[{}]}},\"seed\":{}}}",
+        "{{\"engine\":\"{}\",\"notebook\":\"{slug}\",\"rustc\":\"{rustc}\",\"source\":{{{}}},\"crates\":[{}],\"theme\":{{\"id\":{},\"export\":{},\"palette_version\":{},\"overrides\":{}}},\"font\":{{\"files\":[{}]}},\"seed\":{}{voice}}}",
         engine::VERSION, hashes(&source), crates.join(","), pack::json(theme_id), pack::json(export_theme), theme::VERSION, pack::json(d.get("colors")), fonts.join(","), pack::json(d.get("seed")));
     let zip = pack::zip(&[source.clone(), vec![("manifest.json", src_manifest.as_bytes())]].concat());
     let stage: Vec<f32> = run["stage"].as_array().unwrap().iter().map(|v| v.as_f64().map_or(f32::NAN, |x| x as f32)).collect();

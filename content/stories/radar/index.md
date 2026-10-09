@@ -6,6 +6,7 @@ thumb: 26457
 theme: site
 seed: 20261003
 voice: af_heart
+pronounce: gigahertz ɡˈɪɡəhˌɜɹts
 ---
 
 R1 is a ground radar. T3 is an aircraft eighty-eight kilometres away, flying on at 350 m/s. The beam stays where T3 was at the start. This notebook asks one question: does R1 detect T3?
