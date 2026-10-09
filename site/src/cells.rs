@@ -4,10 +4,7 @@
 use engine::{cell, doc::Doc};
 use std::{fs, path::Path, process::Command};
 
-pub struct Built {
-    pub run: serde_json::Value,
-    pub wasm: Vec<u8>,
-}
+pub struct Built { pub run: serde_json::Value, pub wasm: Vec<u8> }
 
 const MANIFEST: &str = r#"[package]
 name = "nb-SLUG"
@@ -40,21 +37,15 @@ strip = true
 pub fn program(d: &Doc) -> Result<(String, Vec<usize>), String> {
     let cells = d.cells();
     let split: Vec<cell::Cell> = cells.iter().map(|c| cell::split(c.0)).collect();
-    let order = cell::order(&split)?;
-    let ex = cell::exports(&split);
+    let (order, ex) = (cell::order(&split)?, cell::exports(&split));
     let (mut src, mut map) = (String::new(), vec![]);
     let mut put = |text: &str, md: usize| {
-        for (i, l) in text.split('\n').enumerate() {
-            src.push_str(l);
-            src.push('\n');
-            map.push(if md > 0 { md + i } else { 0 });
-        }
+        src += &format!("{text}\n");
+        map.extend((0..=text.matches('\n').count()).map(|i| if md > 0 { md + i } else { 0 }));
     };
     put("#![allow(unused, clippy::all)]\nuse engine::{print, println, nb::*};", 0);
     let line = |k: usize, off: usize| cells[k].1 + cells[k].0[..off].matches('\n').count();
-    for (k, c) in split.iter().enumerate() {
-        c.items.iter().for_each(|(off, it)| put(it, line(k, *off)));
-    }
+    for (k, c) in split.iter().enumerate() { c.items.iter().for_each(|(off, it)| put(it, line(k, *off))) }
     put("pub fn program() -> Result<(), Box<dyn std::error::Error>> {", 0);
     for &k in &order {
         let names = ex[k].join(", ") + if ex[k].len() == 1 { "," } else { "" };
@@ -68,15 +59,12 @@ pub fn program(d: &Doc) -> Result<(String, Vec<usize>), String> {
 
 /// Rewrite `src/lib.rs:L:C` in compiler and panic messages to `<md>:N:C`.
 fn locate(msg: &str, map: &[usize], md: &str) -> String {
-    let mut out = String::new();
-    let mut rest = msg;
-    while let Some(i) = rest.find("src/lib.rs:") {
-        out.push_str(&rest[..i]);
-        rest = &rest[i + 11..];
-        let n: String = rest.chars().take_while(char::is_ascii_digit).collect();
+    let (mut out, mut rest) = (String::new(), msg);
+    while let Some((head, tail)) = rest.split_once("src/lib.rs:") {
+        let n: String = tail.chars().take_while(char::is_ascii_digit).collect();
         let line = n.parse::<usize>().ok().and_then(|n| map.get(n.wrapping_sub(1))).copied().unwrap_or(0);
-        out += &if line > 0 { format!("{md}:{line}") } else { format!("(generated):{n}") };
-        rest = &rest[n.len()..];
+        out += &if line > 0 { format!("{head}{md}:{line}") } else { format!("{head}(generated):{n}") };
+        rest = &tail[n.len()..];
     }
     out + rest
 }
@@ -92,19 +80,14 @@ pub fn build(slug: &str, dir: &Path, d: &Doc) -> Result<Built, String> {
     write("src/main.rs", "fn main() {\n    engine::nb::native(nb::program)\n}\n")?;
     let lock = dir.join("Cargo.lock");
     let locked = lock.exists();
-    if locked {
-        fs::copy(&lock, root.join("Cargo.lock")).map_err(|e| e.to_string())?;
-    }
+    if locked { fs::copy(&lock, root.join("Cargo.lock")).map_err(|e| e.to_string())?; }
     let pwd = std::env::current_dir().unwrap();
     let home = std::env::var("CARGO_HOME").unwrap_or(format!("{}/.cargo", std::env::var("HOME").unwrap_or_default()));
     let cargo = |args: &[&str]| {
-        let mut c = Command::new(std::env::var("CARGO").unwrap_or("cargo".into()));
-        c.args(args).args(if locked { &["--locked"][..] } else { &[] }).current_dir(&root)
+        let o = Command::new(std::env::var("CARGO").unwrap_or("cargo".into())).args(args).args(if locked { &["--locked"][..] } else { &[] }).current_dir(&root)
             .env("CARGO_TARGET_DIR", pwd.join("target/nb/target"))
-            .env("RUSTFLAGS", format!("--remap-path-prefix={}=/src --remap-path-prefix={home}=/cargo", pwd.display()));
-        let o = c.output().map_err(|e| e.to_string())?;
-        let err = locate(&String::from_utf8_lossy(&o.stderr), &map, &format!("content/stories/{slug}/index.md"));
-        if o.status.success() { Ok(o.stdout) } else { Err(err) }
+            .env("RUSTFLAGS", format!("--remap-path-prefix={}=/src --remap-path-prefix={home}=/cargo", pwd.display())).output().map_err(|e| e.to_string())?;
+        if o.status.success() { Ok(o.stdout) } else { Err(locate(&String::from_utf8_lossy(&o.stderr), &map, &format!("content/stories/{slug}/index.md"))) }
     };
     let out = cargo(&["run", "--release", "-q", "--bin", "main"])?;
     cargo(&["build", "--release", "-q", "--lib", "--target", "wasm32-unknown-unknown"])?;

@@ -30,16 +30,11 @@ pub fn find(id: &str) -> Option<(&'static str, bool)> {
 
 /// The preset canonical exports use: `print`, else the theme's own preset, else its family's light one.
 pub fn export<'a>(theme: &'a str, print: &'a str) -> &'a str {
-    match (print, find(theme)) {
-        ("", Some(_)) => theme,
-        ("", None) => THEMES.iter().find(|t| t.0 == theme).map_or("site-light", |t| t.1),
-        (p, _) => p,
-    }
+    if !print.is_empty() { print } else if find(theme).is_some() { theme } else { THEMES.iter().find(|t| t.0 == theme).map_or("site-light", |t| t.1) }
 }
 
 fn hex(s: &str) -> Option<u32> {
-    let s = s.trim().trim_start_matches('#');
-    if s.len() == 6 { u32::from_str_radix(s, 16).ok() } else { None }
+    Some(s.trim().trim_start_matches('#')).filter(|s| s.len() == 6).and_then(|s| u32::from_str_radix(s, 16).ok())
 }
 
 /// Overrides as `token #rrggbb` pairs, comma separated.
@@ -55,9 +50,7 @@ pub fn palette(id: &str, colors: &str) -> [u32; 11] {
     let (fam, dark) = find(id).unwrap_or(("site", false));
     let t = THEMES.iter().find(|t| t.0 == fam).unwrap();
     let mut p = [0; 11];
-    for (v, h) in p.iter_mut().zip((if dark { t.4 } else { t.3 }).split(' ')) {
-        *v = hex(h).unwrap_or(0);
-    }
+    p.iter_mut().zip((if dark { t.4 } else { t.3 }).split(' ')).for_each(|(v, h)| *v = hex(h).unwrap_or(0));
     overrides(colors).into_iter().for_each(|(i, c)| p[i] = c);
     p
 }

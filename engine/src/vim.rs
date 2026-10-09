@@ -3,16 +3,12 @@
 //! browser's), and the clipboard; it shows the text, selection and status line `step` returns.
 
 pub struct Vim {
-    pub t: Vec<char>,
-    pub c: usize,
+    pub t: Vec<char>, pub c: usize, // text and cursor
     pub mode: char, // 'n' normal, 'i' insert, 'v' visual, 'V' visual line, ':' command line
-    anchor: usize,
-    pend: Vec<char>,
-    msg: String,
+    anchor: usize, pend: Vec<char>, msg: String, // visual mode's other end, pending keys, status
     reg: (String, bool), // the register, and whether it holds whole lines
     find: String,
-    undo: Vec<(Vec<char>, usize)>,
-    redo: Vec<(Vec<char>, usize)>,
+    undo: Vec<(Vec<char>, usize)>, redo: Vec<(Vec<char>, usize)>,
     act: String, // for the page: "y" (copy the register), "w", "q", "run", "save"
 }
 
@@ -39,8 +35,7 @@ impl Vim {
         }
         if let Some(r) = reg { self.reg = (r.into(), r.ends_with('\n')) }
         if key != '\0' { self.key(key) }
-        let n = self.t.len();
-        (self.c, self.anchor) = (self.c.min(n), self.anchor.min(n));
+        (self.c, self.anchor) = (self.c.min(self.t.len()), self.anchor.min(self.t.len()));
         if self.mode != 'i' && self.c > self.bol(self.c) && self.t.get(self.c).is_none_or(|&c| c == '\n') { self.c -= 1 }
         let u = |i: usize| self.t[..i].iter().map(|c| c.len_utf16()).sum::<usize>();
         let ((a, b), status) = (self.shown(), match self.mode {
@@ -210,16 +205,10 @@ impl Vim {
         if s.is_empty() { return }
         self.snap();
         let c = self.c;
-        if lines {
-            self.c = if after { self.eol(c) } else { self.bol(c) };
-            let at = self.c + after as usize;
-            self.ins(&if after { format!("\n{}", s.strip_suffix('\n').unwrap_or(&s)) } else { s });
-            self.c = at;
-        } else {
-            self.c = if after { (c + 1).min(self.eol(c)) } else { c };
-            self.ins(&s);
-            self.c -= 1;
-        }
+        self.c = match (lines, after) { (true, true) => self.eol(c), (true, false) => self.bol(c), (false, true) => (c + 1).min(self.eol(c)), _ => c };
+        let at = self.c + after as usize;
+        self.ins(&if lines && after { format!("\n{}", s.strip_suffix('\n').unwrap_or(&s)) } else { s });
+        if lines { self.c = at } else { self.c -= 1 }
     }
 
     fn back(&mut self, undo: bool) {

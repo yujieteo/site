@@ -24,14 +24,9 @@ pub fn encode(ops: &[Op]) -> Vec<u8> {
         Sh::Seg(a, b, c, d, e) => [2.0, a, b, c, d, e],
         Sh::Ring(a, b, c, d) => [3.0, a, b, c, d, 0.0],
     };
-    let mut o = vec![];
-    for op in ops {
-        let v: Vec<f32> = match op {
-            Op::Fill(s, c, a, scr) => [&[0.0][..], &sh(s), &[*c as f32, *a, *scr as u8 as f32]].concat(),
-            Op::Clip(Some(s)) => [&[1.0][..], &sh(s), &[0.0; 3]].concat(),
-            Op::Clip(None) => vec![2.0; 10],
-        };
-        o.extend(v.iter().flat_map(|f| f.to_le_bytes()));
-    }
-    o
+    ops.iter().flat_map(|op| match op {
+        Op::Fill(s, c, a, scr) => [&[0.0][..], &sh(s), &[*c as f32, *a, *scr as u8 as f32]].concat(),
+        Op::Clip(Some(s)) => [&[1.0][..], &sh(s), &[0.0; 3]].concat(),
+        Op::Clip(None) => vec![2.0; 10],
+    }).flat_map(f32::to_le_bytes).collect()
 }
