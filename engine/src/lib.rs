@@ -1,6 +1,6 @@
 //! The notebook engine, v2. One crate, compiled natively (for the builder and a notebook's
 //! cells) and to WebAssembly (for the page). Modules:
-//! scene (dot scenes), draw (display list and rasteriser), theme, doc (Markdown and TeX),
+//! scene (dot scenes), thumb (seeded thumbnails), draw (display list), theme, doc (Markdown and TeX),
 //! cell (Rust cell dataflow), nb (cell runtime), vim, pdf, pack (hashes, ZIP).
 macro_rules! w {
     ($($t:tt)*) => { { use std::fmt::Write as _; let _ = write!($($t)*); } };
@@ -13,6 +13,7 @@ pub mod pack;
 pub mod pdf;
 pub mod scene;
 pub mod theme;
+pub mod thumb;
 pub mod vim;
 
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");

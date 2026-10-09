@@ -2,11 +2,10 @@
   /* Colour comes from the theme (generated from engine/src/theme.rs): fg for names, fg2 for
      reading, muted for asides. Scenes carry their own palettes. Fonts are embedded subsets. */
   --sans: "Fira Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --serif: "Libertinus Serif", "Iowan Old Style", Palatino, Georgia, serif;
   --mono: "Fira Mono", "SFMono-Regular", Consolas, monospace;
   --math: "Fira Math", math;
   --text: var(--sans);
-  --head: var(--serif);
+  --head: var(--sans);
   --focus: var(--fg);
 }
 * { box-sizing: border-box; min-width: 0; }
@@ -32,7 +31,20 @@ main { overflow-x: clip; max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6r
 .door h2 { margin-top: 1rem; }
 .list { list-style: none; padding: 0; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); }
 .list h2 { font-size: 1.375rem; margin-top: 0.75rem; }
-button, select { font: inherit; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 99px; padding: 0.25rem 0.75rem; cursor: pointer; }
+button { font: inherit; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 99px; padding: 0.25rem 0.75rem; cursor: pointer; }
+dialog { width: min(34rem, calc(100% - 32px)); padding: 0; color: var(--fg2); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
+dialog::backdrop { background: rgb(0 0 0 / 0.4); }
+/* Search: a small icon in the header; Ctrl K or ⌘K anywhere. */
+.top nav { align-items: center; }
+.search { border: 0; padding: 0.25rem; line-height: 0; }
+.search svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.find { margin-top: 12vh; }
+.find input { width: 100%; font: inherit; font-size: 1.125rem; color: var(--fg); background: none; border: 0; border-bottom: 1px solid var(--line); padding: 0.875rem 1rem; outline: none; }
+.find ol { list-style: none; margin: 0; padding: 0.5rem; max-height: 60vh; overflow-y: auto; }
+.find ol:empty { display: none; }
+.find a { display: block; padding: 0.5rem 0.75rem; border-radius: 6px; color: var(--fg); text-decoration: none; }
+.find a:is(:hover, :focus) { background: var(--surface); outline: none; }
+.find small { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 
 details { border-top: 1px solid var(--line); padding: 1rem 0; }
 
@@ -41,4 +53,4 @@ details { border-top: 1px solid var(--line); padding: 1rem 0; }
 .notes h2 { font: 0.75rem var(--mono); color: var(--muted); margin: 3rem 0 1rem; }
 .note { white-space: pre-line; overflow-wrap: anywhere; margin: 0 0 1.25rem; }
 .note b { font: 400 0.75rem var(--mono); color: var(--muted); margin-right: 0.5rem; }
-@media print { .tools, .controls, .top nav { display: none; } .stage { position: static; } }
+@media print { .tools, .top nav, .search { display: none; } }

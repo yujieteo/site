@@ -2,7 +2,7 @@
 title: A grammar of dots
 summary: Six motions, one engine. The vocabulary every story here is drawn with.
 palette: #4f6f92 #1f2a3c #f0a050 #ffe39a
-thumb: 4
+thumb: 12108
 ---
 
 ## Rest {scene=0}

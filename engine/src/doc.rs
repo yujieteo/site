@@ -333,19 +333,23 @@ pub struct Run {
 
 /// The notebook body: chapters as sections, cells with their controls and outputs,
 /// narration, figures, then references. `img` resolves an asset path for the page.
+/// A chapter is a slide (title, scene, body) followed by its narration, every `say` in one aside.
 pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
-    let (mut o, mut k, mut open) = (String::new(), 0, "");
+    let (mut o, mut k, mut sec, mut det, mut say) = (String::new(), 0, false, false, String::new());
+    let aside = |s: &str| if s.is_empty() { s.into() } else { format!("<aside class=\"say\">{s}</aside>") };
+    macro_rules! shut { () => { if std::mem::take(&mut sec) { w!(o, "</div>{}</section>", aside(&std::mem::take(&mut say))) } } }
     let chapters = d.chapters();
     for (at, b) in d.blocks.iter().enumerate() {
         match b {
             B::H(1, h, _) => {
-                w!(o, "{open}<details><summary>{}</summary>", inline(h));
-                open = "</details>";
+                shut!();
+                w!(o, "{}<details><summary>{}</summary>", if det { "</details>" } else { "" }, inline(h));
+                det = true;
             }
-            B::H(2, h, _) if let Some(c) = chapters.iter().find(|c| c.at == at) => {
-                o += if open == "</section>" { open } else { "" };
-                w!(o, "<section class=\"chapter\" data-chapter=\"{}\"><h2>{}</h2><canvas class=\"frame still\" data-scene=\"{0}\" data-t=\"{}\" data-progress=\"{}\" aria-hidden=\"true\"></canvas>", c.scene, inline(h), c.t, c.p);
-                open = "</section>";
+            B::H(2, h, _) if let Some((n, c)) = chapters.iter().enumerate().find(|c| c.1.at == at) => {
+                shut!();
+                w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide\"><h2>{}</h2><canvas class=\"frame\" data-scene=\"{}\" data-t=\"{}\" data-progress=\"{}\" aria-hidden=\"true\"></canvas>", n + 1, inline(h), c.scene, c.t, c.p);
+                sec = true;
             }
             B::H(n, h, _) => w!(o, "<h{n}>{}</h{n}>", inline(h)),
             B::P(p) => w!(o, "<p>{}</p>", inline(p)),
@@ -366,7 +370,10 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
                 o += "</div>";
                 k += 1;
             }
-            B::C(l, s, _) if l == "say" => w!(o, "<aside class=\"say\">{}</aside>", s.split("\n\n").map(|p| format!("<p>{}</p>", inline(p))).collect::<String>()),
+            B::C(l, s, _) if l == "say" => {
+                let p: String = s.split("\n\n").map(|p| format!("<p>{}</p>", inline(p))).collect();
+                if sec { say += &p } else { o += &aside(&p) }
+            }
             B::C(l, s, _) => w!(o, "<pre class=\"code\" data-lang=\"{}\"><code>{}</code></pre>", esc(l), esc(s)),
             B::M(m) => w!(o, "<div class=\"eq\">{}</div>", mathml(m, true)),
             B::Raw(h) => o += h,
@@ -374,7 +381,8 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
             B::Img(alt, src) => w!(o, "<figure><img src=\"{}\" alt=\"{}\"><figcaption>{}</figcaption></figure>", img(src), esc(alt), inline(alt)),
         }
     }
-    o += open;
+    shut!();
+    o += if det { "</details>" } else { "" };
     let refs = d.links();
     if !refs.is_empty() {
         w!(o, "<section class=\"refs\"><h3>References</h3><ol>{}</ol></section>", refs.iter().map(|(t, u)| format!("<li>{} <a href=\"{}\">{}</a></li>", esc(t), esc(u), esc(u))).collect::<String>());
@@ -395,14 +403,14 @@ mod tests {
         assert_eq!(d.cells(), vec![("let a = 1;", 15)]);
         assert_eq!((d.skills(), d.links()), (vec!["skill: be brief"], vec![("l".into(), "u".into())]));
         assert_eq!(set_meta("---\na: 1\ntheme: x\n---\nB", "theme", "nord"), "---\na: 1\ntheme: nord\n---\nB");
-        assert_eq!(set_meta("B", "font", "tex"), "---\nfont: tex\n---\n\nB");
+        assert_eq!(set_meta("B", "theme", "nord"), "---\ntheme: nord\n---\n\nB");
         let c = &d.chapters()[0];
         assert_eq!((c.scene, c.t, c.p), (8, 3.0, -1.0));
         assert_eq!(inline("*a* **b** `c<` \\*"), "<em>a</em> <strong>b</strong> <code>c&lt;</code> *");
         assert_eq!(mathml("x_i^2 - \\alpha", false), "<math><mrow><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><mi>α</mi></mrow></math>");
         assert!(mathml("\\frac{1}{\\sqrt{2}} \\text{ dB}", true).contains("<mfrac><mrow><mn>1</mn></mrow><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></mfrac><mtext> dB</mtext>"));
         let html = article(&d, &Run { out: vec!["O".into()], ctl: vec!["C".into()], map: vec![Some(0)], stale: vec![true] }, &|s| format!("data:{s}"));
-        assert!(html.contains("data-chapter=\"8\"><h2>One</h2>") && html.contains("class=\"cell stale\"") && html.contains("data-out=\"0\">O</div>"));
+        assert!(html.contains("id=\"c1\"><div class=\"slide\"><h2>One</h2><canvas class=\"frame\" data-scene=\"8\"") && html.contains("class=\"cell stale\"") && html.contains("data-out=\"0\">O</div>"));
         assert!(html.contains("src=\"data:a.png\"") && html.contains("<details><summary>Notes</summary><p>End.</p></details><section class=\"refs\">"));
     }
 }

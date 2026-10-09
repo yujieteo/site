@@ -363,6 +363,23 @@ impl Pdf<'_> {
         self.imgs.push(stream(&dict, &idat));
         Some((w, h))
     }
+    /// The handout: each slide page drawn small, as a bordered box, with its narration beside it.
+    fn handout(&mut self, notes: Vec<Vec<String>>) {
+        let (slides, sw, sh) = (std::mem::take(&mut self.pages), self.w, self.h);
+        (self.w, self.h, self.m, self.slides) = (595.28, 841.89, 56.69, false);
+        let (x0, bw) = (self.x, 0.56 * (self.w - 2.0 * self.x));
+        let (k, line) = (bw / sw, rgb(self.pal[5]));
+        self.page();
+        for ((c, _), say) in slides.iter().zip(notes) {
+            self.need(sh * k + 14.0);
+            let (y, pg, b) = (self.y, self.pages.len(), self.h - self.y - sh * k);
+            w!(self.out(), "q q {k:.5} 0 0 {k:.5} {x0:.2} {b:.2} cm 0 0 {sw} {sh} re W n\n{c}Q {line} RG 0.5 w {x0:.2} {b:.2} {bw:.2} {:.2} re S Q\n", sh * k);
+            (self.x, self.col) = (x0 + bw + 14.0, self.w - 2.0 * x0 - bw - 14.0);
+            say.iter().for_each(|t| self.para(t, St(0, 9.5, self.pal[3], 0), 0.0));
+            (self.x, self.col) = (x0, self.w - 2.0 * x0);
+            self.y = if self.pages.len() == pg { self.y.max(y + sh * k) } else { self.y } + 14.0;
+        }
+    }
     fn math(&mut self, t: &str) {
         let mut b = self.mbox(&doc::tex(t), 12.0);
         if b.0 > self.col { b = self.mbox(&doc::tex(t), 12.0 * self.col / b.0) }
@@ -415,18 +432,17 @@ impl Pdf<'_> {
 /// One form (`FORMS`) of a notebook. `out` is each cell's output HTML, `stage` the scenes' data;
 /// `get` resolves `fonts/<name>.otf` and the notebook's assets.
 pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Option<Vec<u8>>, form: usize) -> Vec<u8> {
-    let slides = form == 1;
-    let (body, head) = match d.get("font") { "book" => ("book", "book"), "tex" => ("tex", "tex"), _ => ("sans", "book") };
+    let slides = form == 1 || form == 2; // a handout lays out the slides, then sets them beside their narration
     let (w, h, m, mx) = if slides { (720.0, 405.0, 36.0, 36.0) } else { (595.28, 841.89, 56.69, 62.36) };
     let pal = theme::palette(theme::export(match d.get("theme") { "" => "site", t => t }, d.get("print")), d.get("colors"));
-    let mut p = Pdf { get, files: [body, head, "mono", "math"], fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, x: mx, col: w - 2.0 * mx, y: 0.0, slides, fig: 0 };
+    let mut p = Pdf { get, files: ["sans", "sans", "mono", "math"], fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, x: mx, col: w - 2.0 * mx, y: 0.0, slides, fig: 0 };
     let (fg, fg2, muted, text) = (pal[2], pal[3], pal[4], St(0, if slides { 13.0 } else { 11.0 }, pal[3], 0));
     let sc: Vec<u32> = d.get("palette").split_whitespace().filter_map(|c| u32::from_str_radix(c.trim_start_matches('#'), 16).ok()).chain([0; 4]).collect();
     p.page();
     p.para(d.get("title"), St(1, if slides { 32.0 } else { 22.0 }, fg, 0), 0.0);
     p.para(d.get("summary"), St(1, 13.0, fg2, 0), 0.0);
     p.para(&format!("[Interactive version](index.html) · {}", FORMS[form]), St(0, 9.0, muted, 0), 0.0);
-    let (chapters, mut k, mut n, mut skip) = (d.chapters(), 0, 0, false);
+    let (chapters, mut k, mut n, mut skip, mut notes) = (d.chapters(), 0, 0, false, vec![vec![]]);
     for (at, b) in d.blocks.iter().enumerate() {
         match b {
             B::H(2, t, _) if let Some(c) = chapters.iter().find(|c| c.at == at) => {
@@ -434,13 +450,14 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
                 let ops = scene::list(d.get("seed").parse().unwrap_or(1), c.scene, c.t, c.p, -1.0, -1.0, stage, [sc[0], sc[1], sc[2], sc[3]]);
                 if slides {
                     (p.x, p.col) = (mx, w - 2.0 * mx);
+                    notes.push(vec![]);
                     p.page();
                     p.para(t, St(1, 26.0, fg, 0), 0.0);
                     let s = h - p.y - m;
                     (p.frame(&ops, w - mx - s, p.y, s), p.col = w - 3.0 * mx - s);
                     continue;
                 }
-                let s = p.col * if form == 2 { 0.7 } else { 0.45 };
+                let s = p.col * 0.45;
                 p.need(s + 66.0);
                 p.heading(&if form == 3 { format!("{n}  {t}") } else { t.clone() }, 14.0);
                 if p.figure(s, s, &mut |p, x, y| p.frame(&ops, x, y, s)) { p.caption(&format!("{t}, at t = {} s.", c.t), true) }
@@ -465,7 +482,11 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
                 if let Some(o) = out.get(k).filter(|_| !slides) { p.output(o, &caption) }
                 k += 1;
             }
-            B::C(l, s, _) if l == "say" => s.split("\n\n").filter(|_| form == 0 || form == 2).for_each(|t| p.para(t, St(0, 9.5, muted, 2), 12.0)),
+            B::C(l, s, _) if l == "say" => match form {
+                0 => s.split("\n\n").for_each(|t| p.para(t, St(0, 9.5, muted, 2), 12.0)),
+                2 => notes.last_mut().unwrap().extend(s.split("\n\n").map(String::from)),
+                _ => {}
+            },
             B::C(_, s, _) => if form == 0 { p.code(s, true) },
             B::M(t) => p.math(t),
             B::Img(_, _) if slides => {}
@@ -481,8 +502,12 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
             B::Raw(_) | B::Com(_) => {}
         }
     }
+    if form == 2 {
+        (p.x, p.col) = (62.36, 595.28 - 2.0 * 62.36);
+        p.handout(notes);
+    }
     let refs = d.links();
-    if !slides && !refs.is_empty() {
+    if form != 1 && !refs.is_empty() {
         p.heading("References", 12.0);
         refs.iter().enumerate().for_each(|(i, (t, u))| p.para(&format!("{}. {t}: [{u}]({u})", i + 1), St(0, 9.0, fg2, 0), 0.0));
     }

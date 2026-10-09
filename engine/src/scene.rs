@@ -16,6 +16,8 @@ use std::f32::consts::{PI, TAU};
 
 pub const MAX: usize = 1024;
 pub const SCENES: u32 = 9;
+/// Not a scene: the seeded thumbnail (`thumb`), which also picks its own palette.
+pub const THUMB: u32 = 100;
 pub const LIGHTS: usize = 6;
 pub const FACES: usize = 8;
 
@@ -28,7 +30,7 @@ const DIZZY: usize = 3;
 const CURIOUS: usize = 4;
 
 /// One frame being written: dots and faces, the pointer that disturbs both, and the dapples.
-pub struct Out<'a> {
+pub(crate) struct Out<'a> {
     d: &'a mut [f32],
     f: &'a mut [f32],
     n: usize,
@@ -42,7 +44,7 @@ pub struct Out<'a> {
 
 impl Out<'_> {
     /// A dot; near the pointer it swells and is pushed aside, and in a dapple it turns a tone lighter.
-    fn dot(&mut self, x: f32, y: f32, r: f32, c: f32, a: f32) {
+    pub(crate) fn dot(&mut self, x: f32, y: f32, r: f32, c: f32, a: f32) {
         let (dx, dy) = (x - self.px, y - self.py);
         let k = if self.px >= 0.0 { (-(dx * dx + dy * dy) * 90.0).exp() } else { 0.0 };
         let sun = self.lit[4..].chunks(4).any(|l| (x - l[0]).hypot(y - l[1]) < l[2]) as u8 as f32;
@@ -56,7 +58,7 @@ impl Out<'_> {
     /// Character `m` at (x, y), looking at `look` (or the pointer); `g` overrides its glyph.
     /// It blinks to – –, and squirms > < (* * if already flustered) when the pointer touches it.
     /// Bodies are stiff: always a little flattened, as if resting, and never deformed by more than 3%.
-    fn face(&mut self, x: f32, y: f32, r: f32, m: usize, look: (f32, f32), g: f32, sq: f32, pulse: f32) {
+    pub(crate) fn face(&mut self, x: f32, y: f32, r: f32, m: usize, look: (f32, f32), g: f32, sq: f32, pulse: f32) {
         let here = self.px >= 0.0;
         let (tx, ty) = if here { (self.px, self.py) } else { look };
         let (gx, gy) = (tx - x, ty - y);
@@ -77,19 +79,19 @@ impl Out<'_> {
         }
     }
 }
-fn rnd(seed: u32, i: u32) -> f32 {
+pub(crate) fn rnd(seed: u32, i: u32) -> f32 {
     let mut z = seed.wrapping_mul(0x9E37_79B9) ^ i.wrapping_mul(0x85EB_CA6B);
     z = (z ^ (z >> 16)).wrapping_mul(0x7FEB_352D);
     z = (z ^ (z >> 15)).wrapping_mul(0x846C_A68B);
     (z ^ (z >> 16)) as f32 / 4_294_967_296.0
 }
 
-fn smooth(x: f32) -> f32 {
+pub(crate) fn smooth(x: f32) -> f32 {
     let x = x.clamp(0.0, 1.0);
     x * x * (3.0 - 2.0 * x)
 }
 
-fn grid(n: usize, mut f: impl FnMut(f32, f32)) {
+pub(crate) fn grid(n: usize, mut f: impl FnMut(f32, f32)) {
     for i in 0..n * n {
         f(((i % n) as f32 + 0.5) / n as f32, ((i / n) as f32 + 0.5) / n as f32);
     }
@@ -102,6 +104,7 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f
     let mut o = Out { d, f: faces, n: 0, nf: 0, seed, t, px, py, lit: &light[..] };
     let mut pin = (0.74, 0.22, 0.025, 0.0);
     match scene % SCENES {
+        _ if scene == THUMB => pin = crate::thumb::frame(&mut o, seed, t),
         // Rest: an all-over polka field of uneven sizes, breathing out from a sleeper.
         0 => {
             pin.3 = 0.5 + 0.3 * (t * 0.5).sin();
@@ -286,7 +289,7 @@ pub fn mix(a: u32, b: u32, w: f32) -> u32 {
 pub fn list(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f32], pal: [u32; 4]) -> Vec<Op> {
     let (mut d, mut f, mut l) = (vec![0.0; MAX * 5], [0.0; FACES * 10], [0.0; LIGHTS * 4]);
     let (n, nf) = frame(seed, scene, t, p, px, py, stage, &mut d, &mut f, &mut l);
-    let [base, shade, accent, light] = pal;
+    let [base, shade, accent, light] = if scene == THUMB { crate::thumb::palette(seed) } else { pal };
     let hue = |k: usize| [shade, accent, light].get(k).copied().unwrap_or(CAST[k.saturating_sub(3).min(4)]);
     let tone = |c: f32| if c < 0.34 { 0 } else if c < 0.67 { 1 } else { 2 };
     let disc = |x: f32, y: f32, r: f32| Sh::Ell(x, y, r, r);
@@ -368,10 +371,8 @@ mod tests {
     fn lists_are_exact() {
         let pal = [0x4f6f92, 0x1f2a3c, 0xf0a050, 0xffe39a];
         for s in 0..SCENES {
-            let (mut a, mut b) = (vec![], vec![]);
-            crate::draw::raster(&list(42, s, 2.5, -1.0, -1.0, -1.0, &[], pal), 64, 0.15, &mut a);
-            crate::draw::raster(&list(42, s, 2.5, -1.0, -1.0, -1.0, &[], pal), 64, 0.15, &mut b);
-            assert!(a == b && a[(32 * 64 + 2) * 4 + 3] == 0, "scene {s}: exact, and the bleed stays clear");
+            let l = || crate::draw::encode(&list(42, s, 2.5, -1.0, -1.0, -1.0, &[], pal));
+            assert!(l() == l() && !l().is_empty(), "scene {s}");
         }
         assert_eq!(mix(0, 0xffffff, 0.5), 0x808080);
     }

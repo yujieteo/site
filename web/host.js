@@ -36,6 +36,8 @@
   let playing = !reduce.matches, clock = 7, last = 0, raf = 0, stage = new Float32Array(0);
   const visible = new Set(), BLEED = 0.15; // a door's canvas overhangs its tile by this much
   const hex = (n) => "#" + n.toString(16).padStart(6, "0");
+  // A chapter's frame is a still (its own t) in the handout and article; elsewhere it plays.
+  const still = (cv) => cv.dataset.t && /handout|article/.test(html.dataset.view);
   const colour = (cv, v) => parseInt(getComputedStyle(cv).getPropertyValue(v).trim().slice(1), 16) || 0;
   function draw(cv) {
     const ctx = cv.getContext("2d"), dpr = Math.min(devicePixelRatio || 1, 2);
@@ -45,7 +47,7 @@
     const d = cv.dataset, [px, py] = cv.pointer || [-1, -1];
     const pal = ["--sky", "--shade", "--glow", "--light"].map((v) => colour(cv, v));
     const ops = new Float32Array(call("paint", new Uint8Array(stage.buffer), +(d.seed || html.dataset.seed || 1), +d.scene,
-      d.t ? +d.t : clock, d.progress === undefined ? -1 : +d.progress, px, py, ...pal).buffer);
+      still(cv) ? +d.t : clock, d.progress === undefined ? -1 : +d.progress, px, py, ...pal).buffer);
     ctx.setTransform(1, 0, 0, 1, 0, 0), ctx.clearRect(0, 0, W, W), ctx.setTransform(s, 0, 0, s, b * s, b * s);
     let clipped = false;
     for (let i = 0; i < ops.length; i += 10) {
@@ -70,8 +72,8 @@
 
   const frame = (now) => {
     clock += Math.min((now - last) / 1000, 0.1), last = now;
-    visible.forEach((cv) => cv.dataset.t || draw(cv));
-    raf = playing && visible.size ? requestAnimationFrame(frame) : 0;
+    visible.forEach((cv) => still(cv) || draw(cv));
+    raf = playing && [...visible].some((cv) => !still(cv)) ? requestAnimationFrame(frame) : 0;
   };
   const kick = () => {
     if (playing && !raf && visible.size) raf = requestAnimationFrame((t) => ((last = t), frame(t)));
@@ -93,7 +95,7 @@
     cv.addEventListener("pointermove", (e) => {
       const b = cv.getBoundingClientRect(), k = "bleed" in cv.dataset ? 1 + 2 * BLEED : 1, o = (k - 1) / 2;
       cv.pointer = [((e.clientX - b.left) / b.width) * k - o, ((e.clientY - b.top) / b.height) * k - o];
-      if (!playing || cv.dataset.t) draw(cv);
+      if (!playing || still(cv)) draw(cv);
     });
     cv.addEventListener("pointerleave", () => ((cv.pointer = null), draw(cv)));
   };
@@ -102,31 +104,6 @@
   motion?.addEventListener("click", () => setPlaying(!playing));
   reduce.addEventListener("change", () => setPlaying(!reduce.matches));
   setPlaying(playing);
-
-  // Stories: the active chapter picks the stage's scene; scroll sets its progress.
-  const view = $("[data-stage]"), count = $("[data-count]"), bar = $("[data-bar]");
-  let chapters = [], active;
-  const sync = () => {
-    if (!view || !active) return;
-    const b = active.getBoundingClientRect(), page = document.documentElement;
-    view.dataset.scene = active.dataset.chapter;
-    view.dataset.progress = Math.min(1, Math.max(0, (innerHeight * 0.6 - b.top) / b.height));
-    count.textContent = `${chapters.indexOf(active) + 1} / ${chapters.length}`;
-    bar.style.transform = `scaleX(${page.scrollTop / Math.max(1, page.scrollHeight - innerHeight)})`;
-    if (!playing) draw(view);
-  };
-  const co = new IntersectionObserver((es) => {
-    for (const e of es) if (e.isIntersecting) active = e.target;
-    sync();
-  }, { rootMargin: "-65% 0px -35% 0px" });
-  const bind = () => {
-    co.disconnect(), (chapters = $$("[data-chapter]")), (active = chapters[0]);
-    chapters.forEach((c) => co.observe(c));
-    $$("article canvas[data-scene]").forEach(watch);
-    sync();
-  };
-  addEventListener("scroll", sync, { passive: true });
-  bind();
 
   // Notebook: outputs come from a clean run of the compiled cells in a worker, in data-flow order.
   const article = $("[data-article]");
@@ -137,7 +114,7 @@
   const md = (op, entries) => dec.decode(call("md", bundle(entries), op));
   const render = () => {
     article.innerHTML = md(0, [["src", source], ["built", built], ...result.out.map((o) => ["o", o]), ...result.ctl.map((c) => ["c", c]), ["assets", assets]]);
-    bind(), redraw();
+    $$("canvas[data-scene]", article).forEach(watch), redraw();
   };
   const WORKER = `onmessage = ({ data: [m, v] }) => { let e; try { e = new WebAssembly.Instance(m, {}).exports; v.forEach((x, k) => e.nb_input(k, x)); const n = e.nb_run();
     postMessage({ json: new TextDecoder().decode(new Uint8Array(e.memory.buffer, e.out(), n)) }); } catch (x) { postMessage({ trap: String(x), cell: e ? e.nb_cell() : 0 }); } };`;
@@ -173,21 +150,19 @@
     run();
   });
 
-  // Tools: view, theme, scheme and font live in the source, so Save keeps them.
+  // Tools: the theme lives in the source, so Save keeps it; the view is the page.
   const meta = (k, v) => ((source = md(2, [["src", source], ["key", k], ["value", v]])), editor && (editor.value = source));
-  const dark = () => (html.dataset.scheme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")) === "dark";
-  const theme = $("[data-act=theme]");
-  const persist = () => { const o = theme.selectedOptions[0]; meta("theme", dark() ? o.dataset.dark : o.dataset.light); };
   const download = (name, data) => Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([data])), download: name }).click();
   const raw = (s) => s.replaceAll("</", "<\\/");
+  const say = (msg) => status && (status.textContent = msg);
+  const mark = () => $$("[data-act=view],[data-act=theme]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.arg === html.dataset[b.dataset.act]));
   let editor;
   const KEYS = { Escape: 27, Enter: 10, Backspace: 8, Tab: 9, ArrowLeft: 8592, ArrowDown: 8595, ArrowUp: 8593, ArrowRight: 8594 };
-  const FONTS = { sans: "Sans", book: "Book", tex: "TeX" };
-  const label = () => (($("[data-act=scheme]").textContent = dark() ? "Dark" : "Light"), ($("[data-act=font]").textContent = FONTS[html.dataset.font]));
   const act = {
     run,
-    scheme: () => ((html.dataset.scheme = dark() ? "light" : "dark"), persist(), label()),
-    font: () => { const f = Object.keys(FONTS); meta("font", (html.dataset.font = f[(f.indexOf(html.dataset.font) + 1) % 3])), label(); },
+    open: (id) => (mark(), $("#" + id).showModal()),
+    view: (v) => ((html.dataset.view = v), history.replaceState(null, "", v + ".html"), redraw(), kick()),
+    theme: (f) => ((html.dataset.theme = f), meta("theme", f)),
     // The editor: Rust (`vim`) owns modes, motions, operators, commands, text and undo. The textarea
     // keeps insert-mode typing, keyboard composition, touch selection, paste and the clipboard.
     edit: () => {
@@ -212,7 +187,7 @@
       box.firstChild.addEventListener("click", (e) => { const k = +e.target.dataset.key; k === 17 ? (ctrl.ariaPressed = ctrl.ariaPressed !== "true") : k && send(k); });
       on("keydown", (e) => {
         let k = KEYS[e.key] || ([...e.key].length === 1 && !e.altKey && !e.metaKey && e.key.codePointAt(0));
-        if (e.ctrlKey) k = /^[a-z]$/.test(e.key) && !"acvx".includes(e.key) && k & 31; // the browser keeps Ctrl-A, C, V, X
+        if (e.ctrlKey) k = /^[a-z]$/.test(e.key) && !"acvxk".includes(e.key) && k & 31; // the browser keeps Ctrl-A, C, V, X; K searches
         if (k && (mode !== "i" || k === 27 || k === 9)) e.preventDefault(), send(k);
       });
       // Outside insert mode typing is keys: cancellable input becomes keys; the rest (composition) is undone first.
@@ -237,14 +212,14 @@
     manifest: () => download("manifest.json", manifest),
     // Exports stop on stale or failed outputs; fonts are the page's own embedded files.
     pdf: (form) => {
-      if ($(".stale", article) || result.err) return status && (status.textContent = "Export stopped: outputs are stale or failed. Run first; code edits need a rebuild.");
+      if ($(".stale", article) || result.err) return say("Export stopped: outputs are stale or failed. Run first; code edits need a rebuild.");
       const css = $("style").textContent, font = (f) => ["fonts/" + f.file, b64(css.split(`"${f.family}";src:url(data:font/otf;base64,`)[1].split(")")[0])];
       const files = JSON.parse(manifest).source.font.files.map(font);
-      download($(`[data-act=pdf][data-arg="${form}"]`).dataset.name, call("pdf", bundle([["src", source], ...result.out.map((o) => ["o", o]), ["stage", new Uint8Array(stage.buffer)], ...files, ["assets", assets]]), +form));
+      download(["notebook", "slides", "handout", "article"][form] + ".pdf", call("pdf", bundle([["src", source], ...result.out.map((o) => ["o", o]), ["stage", new Uint8Array(stage.buffer)], ...files, ["assets", assets]]), +form));
     },
   };
-  label();
-  $$("[data-act]").forEach((b) => b.addEventListener(b.tagName === "SELECT" ? "change" : "click", () => (b.tagName === "SELECT" ? ((html.dataset.theme = b.value), persist()) : act[b.dataset.act](b.dataset.arg))));
+  $$("[data-act]").forEach((b) => b.addEventListener("click", () => act[b.dataset.act](b.dataset.arg)));
+  $$("dialog").forEach((d) => d.addEventListener("click", (e) => e.target === d && d.close())); // the backdrop closes
 
   // The agent API: the same actions as the controls, plus the skill comments as text.
   window.notebook = {

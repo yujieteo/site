@@ -2,9 +2,8 @@
 title: One radar, one target
 summary: R1 holds its beam where T3 was. For two minutes, does it see it?
 palette: #2f4a5c #13222c #f2a541 #fbe8a6
-thumb: 8
+thumb: 26457
 theme: site
-font: sans
 seed: 20261003
 voice: af_heart
 ---

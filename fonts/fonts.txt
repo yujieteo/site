@@ -2,7 +2,5 @@ file      family              upstream (nixpkgs 26.05)                    licenc
 sans.otf  Fira Sans           fira-sans 4.301, FiraSans-Regular            OFL-1.1  43588  2c21f287f2ddbbcf909a964318e3fdcda1407c999945ad012bb6efd6559eff84
 mono.otf  Fira Mono           fira-mono 3.2, FiraMono-Regular              OFL-1.1  16540  4dcd2a46935bd9453a61e1b7c0a85b21220b8998cc26306ce7a608b4e49e1697
 math.otf  Fira Math           fira-math 0.3.4-unstable-2023-10-09          OFL-1.1  49736  bf158d921d3267b37dd8609f2261dee77ff498b25c2f54294de7ca246ef8dbbb
-book.otf  Libertinus Serif    libertinus 7.051, LibertinusSerif-Regular    OFL-1.1  31616  67be7141775a3501ec1809af4ebef8c667e1f3e0f84c1b84ce8781050534ba44
-tex.otf   Latin Modern Roman  lmodern 2.005, lmroman10-regular             GUST     24872  a77d8c0b8a7f2533b202ec2a4f371825b77a4c98b717e29bf3354faedcf991ec
 Subsets cut by scripts/fonts.sh with hb-subset (harfbuzz 13.2.1). Latin, Greek and typographic marks;
 Fira Math adds the mathematical operators and italic alphabets.
