@@ -173,11 +173,11 @@ fn main() {
         r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
         s.slug, canvas(s.thumb, &s.palette, ""), esc(&s.title), esc(&s.summary))).collect();
     let mut pages = vec![
-        Page { path: "index.html".into(), title: "Yujie Teo".into(), body: format!(
+        Page { path: "index.html".into(), title: "Yu Jie".into(), body: format!(
             r#"<p class="lede">Notes, stories and tools.</p><div class="doors">{}{}{}</div>"#,
-            door("notes/index.html", 3, "#2d3a8c #141a3d #ffb38a #fff1c9", "Notes", "A working log, sanitised."),
-            door("stories/index.html", 6, "#1d2b6b #0e1230 #ff7f6a #ffe3a3", "Stories", "Visual explanations, told in order."),
-            door("playground/index.html", 7, "#3fa7e0 #1b3a5c #7a4cc2 #fff8dc", "Playground", "Durable tools for repeated work.")) },
+            door("notes/index.html", 3, "#5d4b68 #2a2130 #a7c2a0 #efe6d4", "Notes", "A working log, sanitised."),
+            door("stories/index.html", 6, "#56604a #23271e #d29da0 #f2e6cc", "Stories", "Visual explanations, told in order."),
+            door("playground/index.html", 7, "#d4b2aa #3a2f38 #6f8a78 #f7ecdf", "Playground", "Durable tools for repeated work.")) },
         Page { path: "notes/index.html".into(), title: "Notes".into(),
             body: format!(r#"<h1>Notes</h1><div class="notes">{}</div>"#, notes(&notes_path)) },
         Page { path: "stories/index.html".into(), title: "Stories".into(),

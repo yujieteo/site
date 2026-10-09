@@ -1,22 +1,24 @@
 :root {
-  --bg: #fff;
-  --fg: #0d0d0d;
-  --muted: #6b6b6b;
-  --line: #e5e5e5;
-  --focus: #0d0d0d;
+  /* Light: warm paper and soft black, after LoveFrom. Dark: true black and greys, after OpenAI. */
+  --bg: #f5f2ec;
+  --fg: #1c1b19;
+  --muted: #76726a;
+  --line: #dcd7cd;
+  --focus: #1c1b19;
   --serif: "Iowan Old Style", Baskerville, Palatino, Georgia, serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --base: #ffd60a;
-  --shade: #1a1446;
-  --accent: #ff2d87;
-  --light: #fffbe8;
-  --ink: #14122b;
-  --cast: #6f7bd9 #e8a817 #ff7f6a #c6e83c #19b8a6; /* sleepy happy flustered dizzy curious */
+  --base: #6b7f8c;
+  --shade: #2b3036;
+  --accent: #d9a46b;
+  --light: #f3eadb;
+  --ink: #2a2430;
+  /* After Araki, muted: odd neighbours, low chroma. sleepy happy flustered dizzy curious */
+  --cast: #a08cb8 #c8a04a #c47a62 #b5b86a #5aa8a2;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #000; --fg: #fff; --muted: #8e8e8e; --line: #2a2a2a; --focus: #fff; }
+  :root { --bg: #000000; --fg: #ececec; --muted: #8e8e8e; --line: #2f2f2f; --focus: #ececec; }
 }
 * { box-sizing: border-box; min-width: 0; }
 body { margin: 0; background: var(--bg); color: var(--fg); font: 1rem/1.6 var(--sans); }
@@ -27,7 +29,8 @@ h1, h2 { font: 400 2.5rem/1.1 var(--serif); letter-spacing: -0.01em; margin: 0 0
 h2 { font-size: 1.75rem; }
 p { margin: 0 0 1rem; }
 .muted, small { color: var(--muted); font-size: 0.875rem; }
-.top { display: flex; justify-content: space-between; gap: 1rem; padding: 1.25rem 16px; font-size: 0.875rem; }
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.25rem; padding: 1.25rem 16px; font: 1.0625rem/1.4 var(--serif); }
+.top > a { white-space: nowrap; }
 .top nav { display: flex; gap: 1.25rem; }
 main { overflow-x: clip; max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6rem; }
 .lede { font: 1.375rem/1.4 var(--serif); max-width: 32rem; margin-bottom: 4rem; }

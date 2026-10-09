@@ -52,6 +52,7 @@ impl Out<'_> {
 
     /// Character `m` at (x, y), looking at `look` (or the pointer); `g` overrides its glyph.
     /// It blinks to – –, and squirms > < (* * if already flustered) when the pointer touches it.
+    /// Bodies are stiff: always a little flattened, as if resting, and never deformed by more than 3%.
     fn face(&mut self, x: f32, y: f32, r: f32, m: usize, look: (f32, f32), g: f32, sq: f32, pulse: f32) {
         let here = self.px >= 0.0;
         let (tx, ty) = if here { (self.px, self.py) } else { look };
@@ -67,7 +68,7 @@ impl Out<'_> {
             _ => g,
         };
         if self.nf < FACES && self.f.len() >= self.nf * 12 + 12 {
-            let q = [x, y, r, 3.0 + m as f32, gx / gl, gy / gl, blink, g, sq + 0.15 * near as u8 as f32, 1.0, 0.0, pulse];
+            let q = [x, y, r, 3.0 + m as f32, gx / gl, gy / gl, blink, g, 0.04 + (sq + 0.1 * near as u8 as f32).max(-0.03).min(0.03), 1.0, 0.0, pulse];
             self.f[self.nf * 12..self.nf * 12 + 12].copy_from_slice(&q);
             self.nf += 1;
         }
@@ -107,7 +108,7 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
                 let tone = if rnd(seed, i + 500) < 0.12 { 0.5 } else { 0.0 };
                 o.dot(x, y, 0.016 * (0.55 + 0.9 * rnd(seed, i)) * breath, tone, 0.92);
             }
-            o.face(0.5, 0.5, 0.12, SLEEPY, (0.5, 0.9), 0.0, 0.05 * (t * 0.8).sin(), 0.0);
+            o.face(0.5, 0.5, 0.12, SLEEPY, (0.5, 0.9), 0.0, 0.02 * (t * 0.8).sin(), 0.0);
         }
         // Signal: rings travel out from a happy one.
         1 => {
@@ -136,21 +137,21 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
         }
         // Sampling: seeded draws pile up into a distribution, then restart.
         3 => {
-            const N: u32 = 400;
-            const BINS: usize = 31;
-            let shown = (40 + (t * 60.0) as u32 % (N + 120)).min(N);
+            const N: u32 = 45;
+            const BINS: usize = 11;
+            let shown = (8 + (t * 10.0) as u32 % (N + 20)).min(N);
             let mut h = [0u16; BINS];
             let mut last = (0.5, 0.9);
             for i in 0..shown {
                 let g = (-2.0 * rnd(seed, 2 * i).max(1e-6).ln()).sqrt() * (TAU * rnd(seed, 2 * i + 1)).cos();
                 let b = ((g / 6.0 + 0.5) * BINS as f32).clamp(0.0, BINS as f32 - 1.0) as usize;
-                let (x, y) = ((b as f32 + 0.5) / BINS as f32, 0.95 - h[b] as f32 * 0.018);
+                let (x, y) = ((b as f32 + 0.5) / BINS as f32, 0.93 - h[b] as f32 * 0.045);
                 h[b] += 1;
-                let new = ((i + 30) as f32 - shown as f32).max(0.0) / 30.0;
-                o.dot(x, y, 0.008 + 0.005 * new, 0.4 + 0.6 * new, 0.9);
+                let new = ((i + 6) as f32 - shown as f32).max(0.0) / 6.0;
+                o.dot(x, y, 0.021, 0.4 + 0.6 * new, 1.0);
                 last = (x, y);
             }
-            pin = (last.0, last.1, 0.025, 0.9);
+            pin = (last.0, last.1, 0.03, 0.9);
             o.face(0.5, 0.18, 0.08, CURIOUS, last, 0.0, 0.0, 0.0);
         }
         // Convergence: a scattered field settles onto a grid; dizziness turns to delight.
@@ -163,7 +164,7 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
                 o.dot(sx + (x - sx) * s, sy + (y - sy) * s, 0.015, s, 0.5 + 0.5 * s);
             });
             pin = (0.47, 0.46, 0.025, s.powi(4)); // a glint once it settles
-            o.face(0.5, 0.5, 0.09, DIZZY, (0.5, 0.9), if s < 0.7 { 0.0 } else { 2.0 }, 0.08 * (1.0 - s) * (t * 9.0).sin(), s.powi(4));
+            o.face(0.5, 0.5, 0.09, DIZZY, (0.5, 0.9), if s < 0.7 { 0.0 } else { 2.0 }, 0.03 * (1.0 - s) * (t * 9.0).sin(), s.powi(4));
         }
         // A missing observation: the gap stays visible; a flustered one hesitates beside it.
         5 => {
@@ -178,28 +179,17 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
             });
             o.face(0.28 + 0.004 * (t * 30.0).sin(), 0.66, 0.1, FLUSTERED, (tx, 0.38), 0.0, 0.0, 0.0);
         }
-        // A story: night, a sleeper on a hill, the sun comes up, a friend arrives, the day begins.
+        // Stories: a sunrise over one hill. The sleeper wakes, and a friend comes to see.
         6 => {
             let u = if p >= 0.0 { p } else { (t / 14.0) % 1.0 };
             let day = smooth((u - 0.2) / 0.4);
             let sy = 0.86 - 0.6 * smooth((u - 0.1) / 0.6);
             pin = (0.72, sy, 0.06, if sy < 0.7 { 0.2 + 0.8 * day } else { 0.0 });
-            for i in 0..40 {
+            for i in 0..7 {
                 let tw = 0.6 + 0.4 * (t * 2.0 + i as f32).sin();
-                o.dot(rnd(seed, i), 0.6 * rnd(seed, i + 40), 0.004, 1.0, (1.0 - day) * tw);
+                o.dot(0.1 + 0.8 * rnd(seed, i), 0.08 + 0.4 * rnd(seed, i + 40), 0.006, 1.0, (1.0 - day) * tw);
             }
-            for i in 0..24 {
-                let x = (i as f32 + 0.5) / 24.0;
-                let mut y = 0.74 + 0.05 * (x * 7.0 + 1.0).sin();
-                while y < 1.03 {
-                    o.dot(x, y, 0.016, 0.0, 1.0);
-                    y += 0.045;
-                }
-            }
-            for i in 0..14 {
-                let y = 0.98 - i as f32 * 0.022;
-                o.dot(0.36 + 0.12 * (y * 18.0).sin() * (1.0 - y), y, 0.006, 0.5, (u * 20.0 - i as f32).max(0.0).min(1.0));
-            }
+            o.dot(0.45, 1.5, 0.8, 0.0, 1.0);
             let (g, hop) = match () {
                 _ if u < 0.4 => (1.0, 0.0),
                 _ if u < 0.55 => (5.0, 0.0),
@@ -207,34 +197,27 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, d: &mut [f
             };
             for k in 0..3 * (u < 0.4) as u32 {
                 let z = (t * 0.4 + k as f32 / 3.0) % 1.0;
-                o.dot(0.4 + 0.08 * z, 0.52 - 0.14 * z, 0.006 + 0.008 * z, 1.0, 1.0 - z);
+                o.dot(0.4 + 0.08 * z, 0.5 - 0.14 * z, 0.006 + 0.008 * z, 1.0, 1.0 - z);
             }
-            o.face(0.3, 0.66 - hop, 0.1, SLEEPY, (0.72, sy), g, if hop > 0.0 { -2.0 * hop } else { 0.04 * (t * 1.2).sin() }, 0.0);
+            o.face(0.3, 0.61 - hop, 0.1, SLEEPY, (0.72, sy), g, -0.5 * hop + 0.02 * (t * 1.2).sin(), 0.0);
             let arrive = smooth((u - 0.45) / 0.15);
-            o.face(1.14 - 0.3 * arrive, 0.64, 0.08, CURIOUS, (0.3, 0.66), if u > 0.7 { 2.0 } else { 0.0 }, 0.0, 0.0);
+            o.face(1.14 - 0.3 * arrive, 0.7, 0.08, CURIOUS, (0.3, 0.61), if u > 0.7 { 2.0 } else { 0.0 }, 0.0, 0.0);
         }
-        // A playground: a seesaw that throws a happy one out of the frame and catches it again.
+        // Playground: friends at play on a grassy hill. One bounces clean out of the frame.
         _ => {
-            pin = (0.82, 0.16, 0.05, 1.0);
+            pin = (0.8, 0.18, 0.05, 1.0);
+            let ground = |x: f32| 1.55 - (0.5625 - (x - 0.5) * (x - 0.5)).max(0.0).sqrt();
+            o.dot(0.5, 1.55, 0.75, 0.5, 1.0);
+            o.dot(0.16, 0.88, 0.012, 1.0, 1.0);
+            o.dot(0.74, 0.86, 0.012, 1.0, 1.0);
             let q = (t * 0.55) % 2.0;
-            let th = 0.22 * (PI * q).cos();
-            let (cx, cy, l) = (0.5, 0.74, 0.26);
-            for i in 0..21 {
-                let s = (i as f32 / 10.0 - 1.0) * l;
-                o.dot(cx + s * th.cos(), cy + s * th.sin(), 0.014, 0.5, 1.0);
-            }
-            for j in 0..5 {
-                for i in 0..=j {
-                    o.dot(cx + (i as f32 - j as f32 / 2.0) * 0.03, cy + 0.03 + j as f32 * 0.03, 0.012, 0.0, 1.0);
-                }
-            }
-            grid(22, |x, y| if y > 0.88 { o.dot(x + 0.01 * rnd(seed, (x * 99.0) as u32), y, 0.01, 0.0, 0.7) });
-            let (a, b) = (if q < 1.0 { 0.72 * (PI * q).sin() } else { 0.0 }, if q >= 1.0 { 0.3 * (PI * q).sin().abs() } else { 0.0 });
-            let ay = cy - l * th.sin() - 0.075 - a;
-            o.face(cx - l * th.cos(), ay, 0.075, HAPPY, (0.5, 0.0), 0.0, if a > 0.0 { -0.12 } else { 0.1 }, 0.0);
-            o.face(cx + l * th.cos(), cy + l * th.sin() - 0.075 - b, 0.075, DIZZY, (cx, ay), 0.0, 0.05 * (t * 7.0).sin(), 0.0);
+            let a = if q < 1.0 { 0.85 * (PI * q).sin() } else { 0.05 * (PI * 4.0 * q).sin().abs() };
+            let ay = ground(0.32) - 0.075 - a;
+            o.face(0.32, ay, 0.075, HAPPY, (0.5, 0.0), 0.0, -0.04 * a, 0.0);
+            let dx = 0.62 + 0.08 * (t * 0.9).sin();
+            o.face(dx, ground(dx) - 0.07, 0.07, DIZZY, (0.32, ay), 0.0, 0.02 * (t * 7.0).sin(), 0.0);
             let gone = ay < 0.075;
-            o.face(0.9 + 0.006 * gone as u8 as f32 * (t * 40.0).sin(), 0.84, 0.055, FLUSTERED, (cx - l, ay), 0.0, 0.0, 0.0);
+            o.face(0.88 + 0.006 * gone as u8 as f32 * (t * 40.0).sin(), ground(0.88) - 0.05, 0.05, FLUSTERED, (0.32, ay), 0.0, 0.0, 0.0);
         }
     }
     shine(seed, t, pin, light);

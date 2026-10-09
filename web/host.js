@@ -51,12 +51,8 @@
     ctx.setTransform(1, 0, 0, 1, b * s, b * s), ctx.clearRect(-b * s, -b * s, W, W);
     ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
     ctx.save(), ctx.beginPath(), ctx.roundRect(0, 0, s, s, 4 * dpr), ctx.clip();
-    // Sky: flat bands, bluer overhead and paler, warmer toward the horizon as the sun climbs (Rayleigh).
-    for (let k = 0; k < 6; k++) {
-      const h = k / 5, sun = L[3];
-      ctx.fillStyle = mix(mix(base, light, sun * (0.1 + 0.4 * h * h)), accent, sun * 0.35 * h ** 4);
-      ctx.fillRect(0, Math.floor((k * s) / 6), s, Math.ceil(s / 6) + 1);
-    }
+    // Sky: one flat colour, a touch paler when the sun is up.
+    ctx.fillStyle = mix(base, light, L[3] * 0.12), ctx.fillRect(0, 0, s, s);
     // Dots: three tones at three opacities, one path each.
     for (let t = 0; t < 3; t++) for (let a = 1; a <= 3; a++) {
       ctx.beginPath();
@@ -67,15 +63,14 @@
       }
       ctx.globalAlpha = a / 3, ctx.fillStyle = hues[t], ctx.fill();
     }
-    // Light: dappled patches, then the sun in hard-edged steps of forward scatter (Mie).
+    // Light: two dappled patches, then the sun with one hard-edged halo.
     ctx.globalCompositeOperation = "screen", ctx.fillStyle = light, ctx.globalAlpha = 0.14;
-    for (let k = 4; k < 24; k += 4) {
+    for (let k = 4; k < 12; k += 4) {
       ctx.save(), ctx.translate(L[k] * s, L[k + 1] * s), ctx.rotate(-0.6), ctx.scale(1, 0.6);
       disc(ctx, 0, 0, L[k + 2] * s), ctx.restore();
     }
     if (L[3] > 0.05) {
-      ctx.globalAlpha = 0.12 * L[3];
-      for (const k of [4.5, 3, 2]) disc(ctx, L[0] * s, L[1] * s, L[2] * s * k);
+      ctx.globalAlpha = 0.15 * L[3], disc(ctx, L[0] * s, L[1] * s, L[2] * s * 2.5);
       ctx.globalAlpha = Math.ceil(L[3] * 2) / 2, disc(ctx, L[0] * s, L[1] * s, L[2] * s);
     }
     ctx.restore(), (ctx.globalCompositeOperation = "source-over"), (ctx.globalAlpha = 1);
