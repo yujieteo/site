@@ -5,11 +5,13 @@ Three doors: **Notes**, **Stories**, **Playground**. Extreme minimalism; every p
 ## Build
 
 ```sh
-./build.sh [path/to/uniichat/memory.json]
+nix develop -c ./build.sh [path/to/uniichat/memory.json]
 ```
 
 Tests both crates, compiles `engine` to `wasm32-unknown-unknown`, then writes `dist/`.
-The toolchain is pinned in `rust-toolchain.toml` (rustup installs it and the wasm target).
+The toolchain is pinned once, in `rust-toolchain.toml`. `flake.nix` builds that exact toolchain and wasm target from it
+(nixpkgs 26.05 + rust-overlay); with direnv, `echo "use flake" > .envrc` enters the shell automatically.
+Without Nix, rustup reads the same file, and CI uses that path.
 Open `dist/index.html` directly; nothing is fetched at runtime.
 
 ## Layout
