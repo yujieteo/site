@@ -36,9 +36,7 @@ impl Doc {
     pub fn links(&self) -> Vec<(String, String)> {
         let mut v: Vec<(String, String)> = vec![];
         let texts = self.blocks.iter().flat_map(|b| match b { B::P(s) | B::H(_, s, _) => std::slice::from_ref(s), B::L(_, i) => i.as_slice(), _ => &[] });
-        for sp in texts.flat_map(|s| spans(s)) {
-            if let Sp::A(t, u) = sp && !v.iter().any(|x| x.1 == u) { v.push((t, u)) }
-        }
+        texts.flat_map(|s| spans(s)).for_each(|sp| if let Sp::A(t, u) = sp && !v.iter().any(|x| x.1 == u) { v.push((t, u)) });
         v
     }
 }
@@ -68,10 +66,7 @@ pub fn parse(src: &str) -> Doc {
     }
     while i < l.len() {
         let t = l[i].trim();
-        if t.is_empty() {
-            i += 1;
-            continue;
-        }
+        if t.is_empty() { i += 1; continue }
         let (b, next) = if let Some(lang) = t.strip_prefix("```") {
             let j = find(i + 1, &|x| x.trim_end() == "```");
             (B::C(lang.trim().into(), l[(i + 1).min(j)..j].join("\n"), i + 2), j + 1)
@@ -79,8 +74,7 @@ pub fn parse(src: &str) -> Doc {
             let j = find(i + 1, &|x| x.trim() == "$$");
             (B::M(l[i + 1..j].join("\n")), j + 1)
         } else if t.starts_with('#') {
-            let n = t.bytes().take_while(|&b| b == b'#').count();
-            let h = t[n..].trim();
+            let (n, h) = (t.bytes().take_while(|&b| b == b'#').count(), t.trim_start_matches('#').trim());
             let (h, a) = h.strip_suffix('}').and_then(|h| h.rsplit_once(" {")).unwrap_or((h, ""));
             (B::H(n, h.into(), a.into()), i + 1)
         } else if t.starts_with("<!--") {
@@ -119,25 +113,20 @@ pub fn spans(s: &str) -> Vec<Sp> {
     let text = |a: usize, b: usize| c[a..b].iter().collect::<String>();
     macro_rules! flush { () => { if !cur.is_empty() { v.push(Sp::T(std::mem::take(&mut cur), st)); } } }
     while i < c.len() {
-        match c[i] {
-            '\\' if i + 1 < c.len() => (cur.push(c[i + 1]), i += 2).1,
-            q @ ('`' | '$') if let Some(j) = close(q, i + 1) => {
-                flush!();
-                v.push(if q == '$' { Sp::M(text(i + 1, j)) } else { Sp::T(text(i + 1, j), st | 4) });
-                i = j + 1;
-            }
-            '*' => {
-                flush!();
-                let two = c.get(i + 1) == Some(&'*');
-                (st, i) = (st ^ if two { 1 } else { 2 }, i + 1 + two as usize);
-            }
+        // A marker ends the pending text: the span it makes (if any), where to go on, and the style after it.
+        let (sp, next, after) = match c[i] {
+            '\\' if i + 1 < c.len() => { (cur.push(c[i + 1]), i += 2); continue }
+            '`' if let Some(j) = close('`', i + 1) => (Some(Sp::T(text(i + 1, j), st | 4)), j + 1, st),
+            '$' if let Some(j) = close('$', i + 1) => (Some(Sp::M(text(i + 1, j))), j + 1, st),
+            '*' => { let two = c.get(i + 1) == Some(&'*'); (None, i + 1 + two as usize, st ^ if two { 1 } else { 2 }) }
             '[' if let Some(j) = close(']', i + 1) && c.get(j + 1) == Some(&'(') && let Some(k) = close(')', j + 2) => {
-                flush!();
-                v.push(Sp::A(text(i + 1, j), text(j + 2, k)));
-                i = k + 1;
+                (Some(Sp::A(text(i + 1, j), text(j + 2, k))), k + 1, st)
             }
-            ch => (cur.push(ch), i += 1).1,
-        }
+            ch => { (cur.push(ch), i += 1); continue }
+        };
+        flush!();
+        v.extend(sp);
+        (i, st) = (next, after);
     }
     flush!();
     v
@@ -166,8 +155,7 @@ pub fn tex(s: &str) -> M { M::R(row(&s.chars().collect::<Vec<_>>(), &mut 0, '\0'
 fn row(c: &[char], i: &mut usize, end: char) -> Vec<M> {
     let mut v = vec![];
     while *i < c.len() && c[*i] != end {
-        let ch = c[*i];
-        if ch == '^' || ch == '_' {
+        if let ch @ ('^' | '_') = c[*i] {
             *i += 1;
             let arg = Some(Box::new(atom(c, i).unwrap_or(M::R(vec![]))));
             let (b, sb, sp) = match v.pop() { Some(M::S(b, sb, sp)) => (b, sb, sp), m => (Box::new(m.unwrap_or(M::R(vec![]))), None, None) };
@@ -179,8 +167,7 @@ fn row(c: &[char], i: &mut usize, end: char) -> Vec<M> {
 
 fn atom(c: &[char], i: &mut usize) -> Option<M> {
     while c.get(*i).is_some_and(|c| c.is_whitespace()) { *i += 1 }
-    let ch = *c.get(*i)?;
-    *i += 1;
+    let ch = (*c.get(*i)?, *i += 1).0;
     let run = |i: &mut usize, f: fn(&char) -> bool| {
         let s = *i;
         while c.get(*i).is_some_and(f) { *i += 1 }
@@ -192,17 +179,12 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
         '\\' => {
             let name = run(i, char::is_ascii_alphabetic);
             match name.as_str() {
-                "" => {
-                    let x = *c.get(*i)?;
-                    *i += 1;
-                    if ",;: !".contains(x) { M::T(" ".into()) } else { M::O(x.into()) }
-                }
+                "" => match (*c.get(*i)?, *i += 1).0 { x if ",;: !".contains(x) => M::T(" ".into()), x => M::O(x.into()) },
                 "frac" => M::F(Box::new(atom(c, i)?), Box::new(atom(c, i)?)),
                 "sqrt" => M::Q(Box::new(atom(c, i)?)),
                 "text" | "mathrm" | "operatorname" => {
-                    while c.get(*i) == Some(&' ') { *i += 1 }
-                    *i += 1;
-                    let t = (run(i, |c| *c != '}'), *i += 1).0;
+                    // Spaces, the opening brace, the text, the closing brace.
+                    let t = (run(i, |c| *c == ' '), *i += 1, run(i, |c| *c != '}'), *i += 1).2;
                     if name == "text" { M::T(t) } else { M::I(t) }
                 }
                 "left" | "right" | "big" | "Big" => atom(c, i).filter(|m| *m != M::O(".".into())).unwrap_or(M::R(vec![])),
@@ -251,15 +233,12 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
     macro_rules! shut { () => { if std::mem::take(&mut sec) { w!(o, "</div>{}</section>", aside(&std::mem::take(&mut say))) } } }
     let chapters = d.chapters();
     for (at, b) in d.blocks.iter().enumerate() {
+        // A `#` or `##` heading closes the open section; every `##` is a chapter (`Doc::chapters`) and opens one.
+        if let B::H(l @ (1 | 2), ..) = b { shut!(); sec = *l == 2 }
         match b {
-            B::H(1, h, _) => {
-                shut!();
-                w!(o, "{}<details><summary>{}</summary>", if std::mem::replace(&mut det, true) { "</details>" } else { "" }, inline(h));
-            }
+            B::H(1, h, _) => { w!(o, "{}<details><summary>{}</summary>", if det { "</details>" } else { "" }, inline(h)); det = true }
             B::H(2, h, _) if let Some((n, c)) = chapters.iter().enumerate().find(|c| c.1.at == at) => {
-                shut!();
                 w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide\"><h2>{}</h2><canvas class=\"frame\" data-scene=\"{}\" data-t=\"{}\" data-progress=\"{}\" aria-hidden=\"true\"></canvas>", n + 1, inline(h), c.scene, c.t, c.p);
-                sec = true;
             }
             B::H(n, h, _) => w!(o, "<h{n}>{}</h{n}>", inline(h)),
             B::P(p) => w!(o, "<p>{}</p>", inline(p)),
@@ -274,8 +253,7 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
                 if let Some(Some(j)) = run.map.get(k) {
                     w!(o, "<div class=\"ctls\" data-ctl=\"{j}\">{}</div><div class=\"out\" data-out=\"{j}\">{}</div>", run.ctl[*j], run.out[*j]);
                 }
-                if !caption.is_empty() { w!(o, "<p class=\"caption\">{}</p>", inline(&caption)) }
-                o += "</div>";
+                w!(o, "{}</div>", if caption.is_empty() { "".into() } else { format!("<p class=\"caption\">{}</p>", inline(&caption)) });
                 k += 1;
             }
             B::C(l, s, _) if l == "say" => {

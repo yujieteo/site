@@ -6,10 +6,9 @@ pub struct Vim {
     pub t: Vec<char>, pub c: usize, // text and cursor
     pub mode: char, // 'n' normal, 'i' insert, 'v' visual, 'V' visual line, ':' command line
     anchor: usize, pend: Vec<char>, msg: String, // visual mode's other end, pending keys, status
-    reg: (String, bool), // the register, and whether it holds whole lines
-    find: String,
-    undo: Vec<(Vec<char>, usize)>, redo: Vec<(Vec<char>, usize)>,
-    act: String, // for the page: "y" (copy the register), "w", "q", "run", "save"
+    reg: (String, bool), find: String, // the register (and whether it holds whole lines), the search
+    // `act` is for the page: "y" (copy the register), "w", "q", "run", "save".
+    undo: Vec<(Vec<char>, usize)>, redo: Vec<(Vec<char>, usize)>, act: String,
 }
 
 impl Default for Vim {
@@ -86,8 +85,7 @@ impl Vim {
     /// Where motion `m` (count `n`) lands from the cursor, and how an operator takes it: 0 exclusive,
     /// 1 inclusive, 2 whole lines.
     fn motion(&self, m: &[char], n: usize, counted: bool) -> Option<(usize, u8)> {
-        let (t, c, len) = (&self.t, self.c, self.t.len());
-        let (b, e) = (self.bol(c), self.eol(c));
+        let (t, c, len, b, e) = (&self.t, self.c, self.t.len(), self.bol(self.c), self.eol(self.c));
         let cls = |i: usize| t.get(i).map_or(0, |c| if c.is_whitespace() { 0 } else if c.is_alphanumeric() || *c == '_' { 1 } else { 2 });
         let mut i = c;
         Some(match m {
@@ -130,31 +128,25 @@ impl Vim {
         if m.is_empty() || matches!(m, ['g' | 'f' | 't' | 'F' | 'T' | 'r']) { return None }
         self.pend.clear();
         let c = self.c;
+        if op.is_none() && matches!(m, [':' | '/']) { (self.mode, self.msg) = (':', m[0].into()); return Some(()) }
         if self.mode != 'n' {
-            let (a, b) = (c.min(self.anchor), c.max(self.anchor));
             let o = match m[0] { 'd' | 'x' | 'D' | 'X' => 'd', 'c' | 's' | 'C' | 'S' => 'c', 'y' | 'Y' => 'y', o @ ('>' | '<') => o, _ => ' ' };
-            match m[0] {
-                _ if o != ' ' => self.apply(o, a, b + 1, self.mode == 'V' || "DXYCS<>".contains(m[0])),
+            return Some(match m[0] {
+                _ if o != ' ' => self.apply(o, c.min(self.anchor), c.max(self.anchor) + 1, self.mode == 'V' || "DXYCS<>".contains(m[0])),
                 'o' => (self.c, self.anchor) = (self.anchor, c),
                 'v' | 'V' => self.mode = if self.mode == m[0] { 'n' } else { m[0] },
-                ':' | '/' => (self.mode, self.msg) = (':', m[0].into()),
                 _ => self.c = self.motion(m, n, counted)?.0,
-            }
-            return Some(());
+            });
         }
         let alias = match (op, m) { (None, ['x']) => "dl", (None, ['X']) => "dh", (None, ['D']) => "d$", (None, ['C']) => "c$", (None, ['s']) => "cl", (None, ['S']) => "cc", (None, ['Y']) => "yy", _ => "" };
-        if !alias.is_empty() {
-            self.pend = p[..k].iter().copied().chain(alias.chars()).collect();
-            return self.normal();
-        }
+        if !alias.is_empty() { self.pend = p[..k].iter().copied().chain(alias.chars()).collect(); return self.normal() }
         if let Some(o) = op {
             let word = o == 'c' && m == ['w'] && !self.t.get(c).is_none_or(|c| c.is_whitespace());
             let (mut to, kind) = if m == [o] { (self.at(self.line(c) + n - 1, 0), 2) } else { self.motion(if word { &['e'] } else { m }, n, counted)? };
             if m == ['w'] && !word && self.t[c.min(to)..c.max(to)].contains(&'\n') { to = self.eol(c) }
-            self.apply(o, c.min(to), c.max(to) + (kind > 0) as usize, kind == 2);
-            return Some(());
+            return Some(self.apply(o, c.min(to), c.max(to) + (kind > 0) as usize, kind == 2));
         }
-        match m {
+        Some(match m {
             ['i'] => self.insert(c),
             ['a'] => self.insert((c + 1).min(self.eol(c))),
             ['I'] => self.insert(self.motion(&['^'], 1, false)?.0),
@@ -162,7 +154,6 @@ impl Vim {
             ['o'] => { self.insert(self.eol(c)); self.ins("\n") }
             ['O'] => { self.insert(self.bol(c)); self.ins("\n"); self.c -= 1 }
             ['v' | 'V'] => (self.mode, self.anchor) = (m[0], c),
-            [':' | '/'] => (self.mode, self.msg) = (':', m[0].into()),
             ['p' | 'P'] => self.put(m[0] == 'p', n),
             ['u' | '\x12'] => for _ in 0..n { self.back(m[0] == 'u') },
             ['r', x] => if c + n <= self.eol(c) { self.snap(); self.t[c..c + n].fill(*x); self.c = c + n - 1 },
@@ -171,8 +162,7 @@ impl Vim {
                 if e < self.t.len() { self.snap(); let w = self.t[e + 1..].iter().take_while(|c| WS(c)).count(); self.t.splice(e..e + 1 + w, [' ']); self.c = e }
             }
             _ => self.c = self.motion(m, n, counted)?.0,
-        }
-        Some(())
+        })
     }
 
     /// Operator `o` (d, c, y, >, <) over [a, b), or over the whole lines it touches.
@@ -201,10 +191,9 @@ impl Vim {
     }
 
     fn put(&mut self, after: bool, n: usize) {
-        let (s, lines) = (self.reg.0.repeat(n), self.reg.1);
+        let (s, lines, c) = (self.reg.0.repeat(n), self.reg.1, self.c);
         if s.is_empty() { return }
         self.snap();
-        let c = self.c;
         self.c = match (lines, after) { (true, true) => self.eol(c), (true, false) => self.bol(c), (false, true) => (c + 1).min(self.eol(c)), _ => c };
         let at = self.c + after as usize;
         self.ins(&if lines && after { format!("\n{}", s.strip_suffix('\n').unwrap_or(&s)) } else { s });

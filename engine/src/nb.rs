@@ -45,21 +45,15 @@ macro_rules! println {
 }
 
 #[macro_export]
-macro_rules! print {
-    ($($t:tt)*) => { $crate::nb::text(&format!($($t)*)) };
-}
+macro_rules! print { ($($t:tt)*) => { $crate::nb::text(&format!($($t)*)) } }
 
-/// The next control's key, and the host's value for it.
-fn key(b: &mut Book) -> (usize, Option<f64>) {
-    b.n += 1;
-    (b.n - 1, INPUT.with_borrow(|v| v.get(b.n - 1).copied()).filter(|v| v.is_finite()))
-}
+/// The host's value for the next control, whose key is `b.n` before the call.
+fn input(b: &mut Book) -> Option<f64> { b.n += 1; INPUT.with_borrow(|v| v.get(b.n - 1).copied()).filter(|v| v.is_finite()) }
 
 /// A slider. Its value is the host's, clamped, or `value` on a clean run.
 pub fn slider(label: &str, min: f64, max: f64, step: f64, value: f64) -> f64 {
     with(|b| {
-        let (k, v) = key(b);
-        let v = v.map_or(value, |v| v.clamp(min, max));
+        let (k, v) = (b.n, input(b).map_or(value, |v| v.clamp(min, max)));
         w!(b.ctl[b.cell], "<label>{} <input type=\"range\" data-k=\"{k}\" min=\"{min}\" max=\"{max}\" step=\"{step}\" value=\"{v}\"><output>{v}</output></label>", esc(label));
         v
     })
@@ -68,8 +62,7 @@ pub fn slider(label: &str, min: f64, max: f64, step: f64, value: f64) -> f64 {
 /// A choice among options; returns the chosen index.
 pub fn choice(label: &str, opts: &[&str], default: usize) -> usize {
     with(|b| {
-        let (k, v) = key(b);
-        let v = v.map_or(default, |v| v as usize).min(opts.len().saturating_sub(1));
+        let (k, v) = (b.n, input(b).map_or(default, |v| v as usize).min(opts.len().saturating_sub(1)));
         let o: String = opts.iter().enumerate().map(|(i, o)| format!("<option value=\"{i}\"{}>{}</option>", if i == v { " selected" } else { "" }, esc(o))).collect();
         w!(b.ctl[b.cell], "<label>{} <select data-k=\"{k}\">{o}</select></label>", esc(label));
         v
@@ -81,12 +74,7 @@ pub fn stage(v: &[f64]) { with(|b| b.stage = v.to_vec()) }
 
 /// A line or dot plot as SVG, styled by the page's theme.
 #[derive(Default)]
-pub struct Plot {
-    series: Vec<(Vec<f64>, Vec<f64>, bool)>,
-    rules: Vec<f64>,
-    y: Option<(f64, f64)>,
-    labels: (String, String),
-}
+pub struct Plot { series: Vec<(Vec<f64>, Vec<f64>, bool)>, rules: Vec<f64>, y: Option<(f64, f64)>, labels: (String, String) }
 
 fn ticks(a: f64, b: f64) -> (Vec<f64>, usize) {
     let raw = (b - a).abs().max(1e-12) / 5.0;
@@ -107,12 +95,10 @@ impl Plot {
     pub fn svg(&self) -> String {
         let pts = || self.series.iter().flat_map(|s| s.0.iter().zip(&s.1)).filter(|p| p.0.is_finite() && p.1.is_finite());
         let range = |f: &dyn Fn((&f64, &f64)) -> f64| pts().map(f).fold((f64::MAX, f64::MIN), |r, v| (r.0.min(v), r.1.max(v)));
-        let (x0, x1) = range(&|p| *p.0);
-        let (y0, y1) = self.y.unwrap_or_else(|| range(&|p| *p.1));
+        let ((x0, x1), (y0, y1)) = (range(&|p| *p.0), self.y.unwrap_or_else(|| range(&|p| *p.1)));
         let (x1, y1) = (if x1 > x0 { x1 } else { x0 + 1.0 }, if y1 > y0 { y1 } else { y0 + 1.0 });
         let (l, r, t, b) = (64.0, 624.0, 16.0, 352.0);
-        let px = |x: f64| l + (x - x0) / (x1 - x0) * (r - l);
-        let py = |y: f64| b - (y - y0) / (y1 - y0) * (b - t);
+        let (px, py) = (|x: f64| l + (x - x0) / (x1 - x0) * (r - l), |y: f64| b - (y - y0) / (y1 - y0) * (b - t));
         let mut s = String::from("<svg class=\"plot\" viewBox=\"0 0 640 400\" role=\"img\">");
         let ((xt, xd), (yt, yd)) = (ticks(x0, x1), ticks(y0, y1));
         for v in &xt {

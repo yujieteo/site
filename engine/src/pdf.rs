@@ -5,9 +5,7 @@
 //! alpha) pass through undecoded. Geometry is fixed per form and nothing reads a clock, so
 //! equal input gives equal bytes.
 
-use crate::doc::{self, B, Doc, M, Sp};
-use crate::draw::{Op, Sh};
-use crate::{cell, pack, scene, theme};
+use crate::{cell, doc::{self, B, Doc, M, Sp}, draw::{Op, Sh}, pack, scene, theme};
 use std::collections::BTreeMap;
 
 pub const FORMS: [&str; 4] = ["notebook", "slides", "handout", "article"];
@@ -83,34 +81,22 @@ fn strip(h: &str) -> String {
 /// The writer: page geometry (width, height, margin; column left and width), the cursor's y
 /// (from the top), pages as (content, annotations), and the shared resources.
 struct Pdf<'a> {
-    get: &'a dyn Fn(&str) -> Option<Vec<u8>>,
-    fonts: Vec<(&'static str, Font)>,
-    pages: Vec<(String, String)>,
-    gs: BTreeMap<String, String>,
-    imgs: Vec<Vec<u8>>,
-    pal: [u32; 11],
-    w: f32, h: f32, m: f32, x: f32, col: f32, y: f32,
-    slides: bool, fig: usize,
+    get: &'a dyn Fn(&str) -> Option<Vec<u8>>, fonts: Vec<(&'static str, Font)>, pages: Vec<(String, String)>,
+    gs: BTreeMap<String, String>, imgs: Vec<Vec<u8>>, pal: [u32; 11],
+    w: f32, h: f32, m: f32, x: f32, col: f32, y: f32, slides: bool, fig: usize,
 }
 
 impl Pdf<'_> {
     fn out(&mut self) -> &mut String { &mut self.pages.last_mut().unwrap().0 }
+    /// A new page, numbered at the foot from the second on (not on slides).
     fn page(&mut self) {
-        let n = (self.pages.len() + 1).to_string();
+        let (n, st) = ((self.pages.len() + 1).to_string(), St(0, 9.0, self.pal[4], 0));
         self.pages.push((format!("{} rg 0 0 {} {} re f\n", rgb(self.pal[0]), self.w, self.h), String::new()));
-        if !self.slides && n != "1" {
-            let st = St(0, 9.0, self.pal[4], 0);
-            let x = (self.w - self.run(st, &n).2) / 2.0;
-            self.put(x, self.h - self.m / 2.0, st, &n);
-        }
+        if !self.slides && n != "1" { let x = (self.w - self.run(st, &n).2) / 2.0; self.put(x, self.h - self.m / 2.0, st, &n); }
         self.y = self.m;
     }
     /// Room for `h` more points: on a slide there is no next page, so the rest is dropped.
-    fn need(&mut self, h: f32) -> bool {
-        let fits = self.y + h <= self.h - self.m;
-        if !fits && !self.slides { self.page() }
-        fits || !self.slides
-    }
+    fn need(&mut self, h: f32) -> bool { self.y + h <= self.h - self.m || (!self.slides && (self.page(), true).1) }
     /// A run of text: its font, glyph IDs as hex, and width.
     fn run(&mut self, st: St, s: &str) -> (usize, String, f32) {
         let file = FILES[st.0];
@@ -212,11 +198,8 @@ impl Pdf<'_> {
             if !self.need(lead) { return }
             self.y += lead;
             let extra = if j < words.len() && j > i + 1 { (col - used) / (j - i - 1) as f32 } else { 0.0 };
-            let mut x = self.x + indent;
-            for w in &words[i..j] {
-                w.iter().for_each(|p| x += self.piece(p, Some((x, self.y))));
-                x += space + if extra < 3.0 * space { extra } else { 0.0 };
-            }
+            let (gap, mut x) = (space + if extra < 3.0 * space { extra } else { 0.0 }, self.x + indent);
+            for w in &words[i..j] { w.iter().for_each(|p| x += self.piece(p, Some((x, self.y)))); x += gap }
             i = j;
         }
         self.y += 0.45 * st.1;
@@ -246,9 +229,7 @@ impl Pdf<'_> {
     }
     /// A figure `w` by `h` at the column's centre: `draw` gets its left and top.
     fn figure(&mut self, w: f32, h: f32, draw: &mut dyn FnMut(&mut Self, f32, f32)) -> bool {
-        let fits = self.need(h + 24.0);
-        if fits { (draw(self, self.x + (self.col - w) / 2.0, self.y + 6.0), self.y += h + 10.0); }
-        fits
+        self.need(h + 24.0) && (draw(self, self.x + (self.col - w) / 2.0, self.y + 6.0), self.y += h + 10.0, true).2
     }
     /// A scene's display list in a square of side `s`. Discs are round-capped dots.
     fn frame(&mut self, ops: &[Op], x: f32, y: f32, s: f32) {
@@ -265,8 +246,7 @@ impl Pdf<'_> {
         for op in ops {
             if clipped && matches!(op, Op::Clip(_)) { (clipped, o) = (false, o + "Q\n") }
             match op {
-                Op::Clip(None) => {}
-                Op::Clip(Some(sh)) => (clipped, o) = (true, o + &format!("q {} W n\n", path(sh))),
+                Op::Clip(sh) => if let Some(sh) = sh { (clipped, o) = (true, o + &format!("q {} W n\n", path(sh))) },
                 Op::Fill(sh, c, a, screen) => {
                     let g = format!("/G{}{}", (a * 100.0).round(), *screen as u8);
                     self.gs.entry(g.clone()).or_insert(format!("<</ca {a:.2}/CA {a:.2}/BM/{}>>", if *screen { "Screen" } else { "Normal" }));
@@ -310,13 +290,11 @@ impl Pdf<'_> {
         while !rest.is_empty() {
             let end = [("<pre", "</pre>"), ("<svg", "</svg>")].into_iter().find(|t| rest.starts_with(t.0)).map(|t| t.1);
             let j = match end { Some(e) => rest.find(e).map_or(rest.len(), |j| j + e.len()), None => rest.char_indices().skip(1).find(|c| c.1 == '<').map_or(rest.len(), |c| c.0) };
-            let (a, b) = rest.split_at(j);
-            let w = (0.8 * self.col).min(360.0);
-            match end {
-                Some("</pre>") => self.code(&strip(a), false),
-                Some(_) => fig |= self.figure(w, w * 0.625, &mut |p, x, y| p.plot(a, x, y, w)),
-                None if !strip(a).trim().is_empty() => self.para(&strip(a), St(0, 10.0, self.pal[3], 0), 0.0),
-                None => {}
+            let ((a, b), w) = (rest.split_at(j), (0.8 * self.col).min(360.0));
+            match (end, strip(a)) {
+                (Some("</pre>"), t) => self.code(&t, false),
+                (Some(_), _) => fig |= self.figure(w, w * 0.625, &mut |p, x, y| p.plot(a, x, y, w)),
+                (None, t) => if !t.trim().is_empty() { self.para(&t, St(0, 10.0, self.pal[3], 0), 0.0) },
             }
             rest = b;
         }
@@ -368,11 +346,10 @@ impl Pdf<'_> {
     fn math(&mut self, t: &str) {
         let mut b = self.mbox(&doc::tex(t), 12.0);
         if b.0 > self.col { b = self.mbox(&doc::tex(t), 12.0 * self.col / b.0) }
-        if self.need(b.1 + b.2 + 12.0) {
-            let (x, y) = (self.x + (self.col - b.0) / 2.0, self.y + b.1 + 6.0);
-            self.y = y + b.2 + 8.0;
-            self.mdraw(b, x, y, self.pal[2]);
-        }
+        if !self.need(b.1 + b.2 + 12.0) { return }
+        let (x, y) = (self.x + (self.col - b.0) / 2.0, self.y + b.1 + 6.0);
+        self.y = y + b.2 + 8.0;
+        self.mdraw(b, x, y, self.pal[2]);
     }
 
     /// The file: catalog, pages, info, shared resources, fonts, images, then each page.
@@ -447,19 +424,16 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
                 p.heading(&if form == 3 { format!("{n}  {t}") } else { t.clone() }, 14.0);
                 if p.figure(s, s, &mut |p, x, y| p.frame(&ops, x, y, s)) { p.caption(&format!("{t}, at t = {} s.", c.t), true) }
             }
-            B::H(l, t, _) => {
-                skip = slides && *l == 1;
-                if !skip { p.heading(t, if *l == 1 { 16.0 } else { 12.0 }) }
-            }
-            _ if skip => {}
+            // On slides, a part (`#`) is left out with what follows it, up to the next heading.
+            B::H(1, _, _) if slides => skip = true,
+            B::H(l, t, _) => { skip = false; p.heading(t, if *l == 1 { 16.0 } else { 12.0 }) }
+            _ if skip || (slides && matches!(b, B::Img(..))) => {}
             B::P(t) => p.para(t, text, 0.0),
-            B::L(ord, items) => {
-                for (i, t) in items.iter().enumerate() {
-                    if !p.need(1.35 * text.1) { break }
-                    p.put(p.x + 2.0, p.y + 1.35 * text.1, text, &if *ord { format!("{}.", i + 1) } else { "•".into() });
-                    p.para(t, text, 16.0);
-                }
-            }
+            B::L(ord, items) => for (i, t) in items.iter().enumerate() {
+                if !p.need(1.35 * text.1) { break }
+                p.put(p.x + 2.0, p.y + 1.35 * text.1, text, &if *ord { format!("{}.", i + 1) } else { "•".into() });
+                p.para(t, text, 16.0);
+            },
             B::C(l, s, _) if l == "rust" => {
                 let (caption, code) = cell::opts(s);
                 if form == 0 { p.code(&code, true) }
@@ -473,7 +447,6 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
             },
             B::C(_, s, _) => if form == 0 { p.code(s, true) },
             B::M(t) => p.math(t),
-            B::Img(_, _) if slides => {}
             B::Img(alt, src) => match get(src).and_then(|b| p.png(&b)) {
                 Some((iw, ih)) => {
                     let (i, fw) = (p.imgs.len() - 1, p.col.min(iw as f32 * 0.75));

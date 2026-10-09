@@ -13,34 +13,28 @@ pub fn lex(s: &str) -> Vec<(T, &str)> {
     let run = |mut j: usize, f: &dyn Fn(usize) -> bool| { while j < b.len() && f(j) { j += 1 } j };
     let word = |j: usize| b[j].is_ascii_alphanumeric() || b[j] == b'_';
     while i < b.len() {
-        let c = b[i];
-        let raw = (c == b'r' || at(i, "br")) && s[i + 1 + (c == b'b') as usize..].trim_start_matches('#').starts_with('"');
+        // `q`: just past a string's `r`, `br`, `b"` or `"` prefix.
+        let (c, mut q) = (b[i], i + 1 + (b[i] == b'b') as usize);
+        let raw = (c == b'r' || at(i, "br")) && s[q..].trim_start_matches('#').starts_with('"');
         let (k, e) = match c {
             _ if c.is_ascii_whitespace() => (T::Ws, run(i, &|j| b[j].is_ascii_whitespace())),
             _ if at(i, "//") => (T::Com, run(i, &|j| b[j] != b'\n')),
             _ if at(i, "/*") => {
-                let (mut d, mut j) = (0, i);
-                while j < b.len() {
-                    if at(j, "/*") { d += 1; j += 2 } else if at(j, "*/") { d -= 1; j += 2; if d == 0 { break } } else { j += 1 }
-                }
+                let (mut d, mut j) = (1, i + 2);
+                while j < b.len() && d > 0 { j += if at(j, "/*") { d += 1; 2 } else if at(j, "*/") { d -= 1; 2 } else { 1 } }
                 (T::Com, j)
             }
             _ if raw => {
-                let j = i + 1 + (c == b'b') as usize;
-                let h = s[j..].bytes().take_while(|&x| x == b'#').count();
-                let end = format!("\"{}", "#".repeat(h));
-                (T::Str, s[j + h + 1..].find(&end).map_or(b.len(), |e| j + h + 1 + e + end.len()))
+                let end = format!("\"{}", "#".repeat(s[q..].bytes().take_while(|&x| x == b'#').count()));
+                (T::Str, s[q + end.len()..].find(&end).map_or(b.len(), |e| q + 2 * end.len() + e))
             }
             _ if (c == b'b' && at(i + 1, "\"")) || c == b'"' => {
-                let mut j = i + 1 + (c == b'b') as usize;
-                while j < b.len() && b[j] != b'"' { j += 1 + (b[j] == b'\\') as usize }
-                (T::Str, (j + 1).min(b.len()))
+                while q < b.len() && b[q] != b'"' { q += 1 + (b[q] == b'\\') as usize }
+                (T::Str, (q + 1).min(b.len()))
             }
             b'\'' if at(i + 1, "\\") => (T::Str, s[i + 2..].find('\'').map_or(b.len(), |e| i + 3 + e)),
-            b'\'' => {
-                let ch = s[i + 1..].chars().next().map_or(1, char::len_utf8);
-                if at(i + 1 + ch, "'") { (T::Str, i + 2 + ch) } else { (T::Life, run(i + 1, &word)) }
-            }
+            b'\'' if let Some((e, '\'')) = s[i + 1..].char_indices().nth(1) => (T::Str, i + 2 + e),
+            b'\'' => (T::Life, run(i + 1, &word)),
             _ if c.is_ascii_alphabetic() || c == b'_' || c >= 128 => (T::Id, run(i, &|j| word(j) || b[j] >= 128)),
             _ if c.is_ascii_digit() => (T::Num, run(i, &|j| word(j) || (b[j] == b'.' && b.get(j + 1).is_some_and(u8::is_ascii_digit)))),
             _ => (T::P, i + if at(i, "::") { 2 } else { 1 }),
@@ -57,8 +51,7 @@ const KW: &str = "as async await break const continue crate dyn else enum extern
 pub fn hl(s: &str) -> String {
     lex(s).iter().map(|&(k, t)| {
         let c = match k { T::Com => "c", T::Str => "s", T::Num => "n", T::Life => "k", T::Id if KW.split(' ').any(|w| w == t) => "k", _ => "" };
-        let t = crate::doc::esc(t);
-        if c.is_empty() { t } else { format!("<span class=\"{c}\">{t}</span>") }
+        if c.is_empty() { crate::doc::esc(t) } else { format!("<span class=\"{c}\">{}</span>", crate::doc::esc(t)) }
     }).collect()
 }
 
@@ -79,69 +72,51 @@ const MODS: &str = "pub unsafe async extern default";
 
 pub fn split(s: &str) -> Cell {
     let t: Vec<(T, &str)> = lex(s);
-    let off: Vec<usize> = t.iter().scan(0, |o, x| { let a = *o; *o += x.1.len(); Some(a) }).collect();
+    // A token's byte offset (tokens are slices of `s`) and text, and how it changes the nesting depth.
+    let off = |k: usize| t.get(k).map_or(s.len(), |x| x.1.as_ptr() as usize - s.as_ptr() as usize);
+    let tok = |j: usize| t.get(j).map_or("", |x| x.1);
+    let depth = |w: &str| match w { "{" | "(" | "[" => 1, "}" | ")" | "]" => -1, _ => 0 };
     let sig = |i: usize| (i..t.len()).find(|&j| !matches!(t[j].0, T::Ws | T::Com)).unwrap_or(t.len());
+    let part = |v: &mut Vec<(usize, String)>, a: usize, b: usize| if off(a) < off(b) { v.push((off(a), s[off(a)..off(b)].into())) };
     let (mut c, mut i, mut body_from) = (Cell::default(), 0, 0);
-    let part = |c: &mut Cell, a: usize, b: usize, item: bool| {
-        let (x, y) = (off.get(a).copied().unwrap_or(s.len()), off.get(b).copied().unwrap_or(s.len()));
-        if x < y { (if item { &mut c.items } else { &mut c.body }).push((x, s[x..y].into())) }
-    };
     while i < t.len() {
         // Does an item begin here? Attributes, then modifiers, then an item keyword.
         let mut j = sig(i);
-        while j < t.len() && t[j].1 == "#" {
+        while tok(j) == "#" {
             let mut d = 0;
-            j += 1;
-            while j < t.len() { d += match t[j].1 { "[" => 1, "]" => -1, _ => 0 }; j += 1; if d == 0 { break } }
-            j = sig(j);
+            j = sig((j + 1..t.len()).find(|&k| { d += match t[k].1 { "[" => 1, "]" => -1, _ => 0 }; d == 0 }).map_or(t.len(), |k| k + 1));
         }
-        loop {
-            let w = t.get(j).map_or("", |x| x.1);
-            if MODS.split(' ').any(|m| m == w) || (t.get(j).is_some_and(|x| x.0 == T::Str) && j > 0) {
-                j = sig(j + 1);
-                if t.get(j).is_some_and(|x| x.1 == "(") { while j < t.len() && t[j].1 != ")" { j += 1 } j = sig(j + 1) }
-            } else if w == "const" && t.get(sig(j + 1)).is_some_and(|x| x.1 == "fn") {
-                j = sig(j + 1);
-            } else { break }
+        while MODS.split(' ').any(|m| m == tok(j)) || (t.get(j).is_some_and(|x| x.0 == T::Str) && j > 0)
+            || (tok(j) == "const" && tok(sig(j + 1)) == "fn") {
+            j = sig(j + 1);
+            if tok(j) == "(" { while j < t.len() && t[j].1 != ")" { j += 1 } j = sig(j + 1) }
         }
-        let kw = t.get(j).map_or("", |x| x.1);
-        if ITEM.split(' ').any(|k| k == kw) {
-            let semi_only = ["use", "const", "static", "type"].contains(&kw);
-            let (mut d, mut k) = (0i32, j);
-            while k < t.len() {
-                match t[k].1 { "{" | "(" | "[" => d += 1, "}" | ")" | "]" => d -= 1, _ => {} }
-                k += 1;
-                if d == 0 && (t[k - 1].1 == ";" || (!semi_only && t[k - 1].1 == "}")) { break }
-            }
-            part(&mut c, body_from, i, false);
-            part(&mut c, i, k, true);
+        if ITEM.split(' ').any(|k| k == tok(j)) {
+            // It ends at depth 0 at a `;`, or a `}` for the kinds that can end with a body.
+            let (ends, mut d): (&[_], _) = (if ["use", "const", "static", "type"].contains(&tok(j)) { &[";"] } else { &[";", "}"] }, 0);
+            let k = (j..t.len()).find(|&k| { d += depth(t[k].1); d == 0 && ends.contains(&t[k].1) }).map_or(t.len(), |k| k + 1);
+            part(&mut c.body, body_from, i);
+            part(&mut c.items, i, k);
             (i, body_from) = (k, k);
             continue;
         }
         // A statement: note top-level `let` bindings, then run to its end at depth 0.
-        let first = sig(i);
-        let (mut d, mut in_pat) = (0i32, t.get(first).is_some_and(|x| x.1 == "let"));
-        let mut k = if in_pat { first + 1 } else { i };
-        while k < t.len() {
-            let (kind, w) = t[k];
-            match w { "{" | "(" | "[" => d += 1, "}" | ")" | "]" => d -= 1, _ => {} }
-            if in_pat && (d == 0 && (w == "=" || w == ";" || w == ":")) { in_pat = false }
-            if in_pat && kind == T::Id && !["mut", "ref"].contains(&w) && !w.starts_with('_') && !w.starts_with(char::is_uppercase)
-                && !matches!(t.get(sig(k + 1)).map(|x| x.1), Some("::" | "(" | "{")) && !(d > 0 && t.get(sig(k + 1)).is_some_and(|x| x.1 == ":")) {
-                c.defs.push(w.into());
-            }
-            k += 1;
-            if d <= 0 && (w == ";" || (w == "}" && d == 0 && !matches!(t.get(sig(k)).map(|x| x.1), Some("else" | "." | "?" | ")" | "," | "as")))) { break }
-        }
-        i = k;
+        let (mut d, mut in_pat) = (0, tok(sig(i)) == "let");
+        i = (if in_pat { sig(i) + 1 } else { i }..t.len()).find(|&k| {
+            let ((kind, w), next) = (t[k], || tok(sig(k + 1)));
+            d += depth(w);
+            in_pat &= !(d == 0 && matches!(w, "=" | ";" | ":"));
+            if in_pat && kind == T::Id && !["mut", "ref"].contains(&w) && !w.starts_with(|c: char| c == '_' || c.is_uppercase())
+                && !matches!(next(), "::" | "(" | "{") && !(d > 0 && next() == ":") { c.defs.push(w.into()) }
+            d <= 0 && (w == ";" || (w == "}" && d == 0 && !matches!(next(), "else" | "." | "?" | ")" | "," | "as")))
+        }).map_or(t.len(), |k| k + 1);
     }
-    part(&mut c, body_from, t.len(), false);
+    part(&mut c.body, body_from, t.len());
     let body: String = c.body.iter().map(|b| b.1.as_str()).collect::<Vec<_>>().join("\n");
     for (k, w) in lex(&body) {
         if k == T::Id { c.uses.push(w.into()) }
-        if k != T::Str { continue }
         // A format string's captures: `{name}` and `{name:…}`.
-        for p in w.split('{').skip(1) {
+        for p in w.split('{').skip(1).filter(|_| k == T::Str) {
             let n: String = p.chars().take_while(|c| c.is_alphanumeric() || *c == '_').collect();
             if !n.is_empty() && p[n.len()..].starts_with(['}', ':']) { c.uses.push(n) }
         }
@@ -158,24 +133,17 @@ pub fn order(cells: &[Cell]) -> Result<Vec<usize>, String> {
         }
     }
     let deps: Vec<Vec<usize>> = cells.iter().enumerate().map(|(k, c)| c.uses.iter().filter_map(|u| owner.get(u.as_str()).copied()).filter(|&j| j != k).collect()).collect();
-    let (mut done, mut out) = (vec![false; cells.len()], vec![]);
-    while out.len() < cells.len() {
-        let Some(k) = (0..cells.len()).find(|&k| !done[k] && deps[k].iter().all(|&j| done[j])) else {
-            let left: Vec<String> = (0..cells.len()).filter(|&k| !done[k]).map(|k| (k + 1).to_string()).collect();
-            return Err(format!("cells {} depend on each other", left.join(", ")));
-        };
-        done[k] = true;
-        out.push(k);
-    }
-    Ok(out)
+    let mut out = vec![];
+    while let Some(k) = (0..cells.len()).find(|k| !out.contains(k) && deps[*k].iter().all(|j| out.contains(j))) { out.push(k) }
+    let left: Vec<String> = (0..cells.len()).filter(|k| !out.contains(k)).map(|k| (k + 1).to_string()).collect();
+    if left.is_empty() { Ok(out) } else { Err(format!("cells {} depend on each other", left.join(", "))) }
 }
 
 /// Which names each cell must export: its definitions that another cell reads.
 pub fn exports(cells: &[Cell]) -> Vec<Vec<String>> {
     cells.iter().enumerate().map(|(k, c)| {
         let mut v: Vec<String> = c.defs.iter().filter(|d| cells.iter().enumerate().any(|(j, o)| j != k && o.uses.contains(d))).cloned().collect();
-        v.dedup();
-        v
+        (v.dedup(), v).1
     }).collect()
 }
 
