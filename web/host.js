@@ -181,24 +181,56 @@
   const download = (name, data) => Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([data])), download: name }).click();
   const raw = (s) => s.replaceAll("</", "<\\/");
   let editor;
+  const KEYS = { Escape: 27, Enter: 10, Backspace: 8, Tab: 9, ArrowLeft: 8592, ArrowDown: 8595, ArrowUp: 8593, ArrowRight: 8594 };
   const FONTS = { sans: "Sans", book: "Book", tex: "TeX" };
   const label = () => (($("[data-act=scheme]").textContent = dark() ? "Dark" : "Light"), ($("[data-act=font]").textContent = FONTS[html.dataset.font]));
   const act = {
     run,
     scheme: () => ((html.dataset.scheme = dark() ? "light" : "dark"), persist(), label()),
     font: () => { const f = Object.keys(FONTS); meta("font", (html.dataset.font = f[(f.indexOf(html.dataset.font) + 1) % 3])), label(); },
+    // The editor: Rust (`vim`) owns modes, motions, operators, commands, text and undo. The textarea
+    // keeps insert-mode typing, keyboard composition, touch selection, paste and the clipboard.
     edit: () => {
-      if (!editor) {
-        editor = Object.assign(document.createElement("textarea"), { className: "editor", spellcheck: false, value: source });
-        editor.setAttribute("autocapitalize", "off"), $(".tools").after(editor);
-        let t;
-        editor.addEventListener("input", () => (clearTimeout(t), (t = setTimeout(() => ((source = editor.value), render()), 250))));
-      } else editor.hidden = !editor.hidden;
+      if (editor) return (editor.parentNode.hidden = !editor.parentNode.hidden), editor.focus();
+      const box = Object.assign(document.createElement("div"), { className: "vim" });
+      box.innerHTML = `<div class="pad">${[["Esc", 27], ["Ctrl", 17], [":", 58], ["Tab", 9], ["←", 8592], ["↓", 8595], ["↑", 8593], ["→", 8594]].map(([l, k]) =>
+        `<button type="button" data-key="${k}">${l}</button>`).join("")}<output></output></div><textarea class="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>`;
+      $(".tools").after(box), (editor = box.lastChild), (editor.value = source), editor.setSelectionRange(0, 0);
+      const ctrl = $("[data-key='17']", box), on = (t, f) => editor.addEventListener(t, f);
+      let mode, shown = [], last;
+      const vim = (key, reg) => {
+        const v = dec.decode(call("vim", bundle([["text", editor.value], ...(reg == null ? [] : [["reg", reg]])]), key, editor.selectionStart, editor.selectionEnd)).split("\n");
+        const [m, sel, todo, line, n] = v, rest = v.slice(5).join("\n");
+        if (editor.value !== (last = rest.slice(+n))) editor.value = last;
+        (mode = m), editor.setSelectionRange(...(shown = sel.split(" ").map(Number))), ($("output", box).textContent = line);
+        const ex = { y: () => navigator.clipboard?.writeText(rest.slice(0, +n)).catch(() => {}), w: () => ((source = last), render()), q: act.edit, run, save: act.save };
+        todo.split(" ").forEach((a) => ex[a]?.());
+      };
+      const send = (k) => (ctrl.ariaPressed === "true" && k > 96 && k < 123 && (k &= 31), (ctrl.ariaPressed = "false"), vim(k));
+      const keys = (s) => [...s].forEach((c) => send(c.codePointAt(0)));
+      box.firstChild.addEventListener("pointerdown", (e) => e.preventDefault()); // focus, and the phone's keyboard, stay on the text
+      box.firstChild.addEventListener("click", (e) => { const k = +e.target.dataset.key; k === 17 ? (ctrl.ariaPressed = ctrl.ariaPressed !== "true") : k && send(k); });
+      on("keydown", (e) => {
+        let k = KEYS[e.key] || ([...e.key].length === 1 && !e.altKey && !e.metaKey && e.key.codePointAt(0));
+        if (e.ctrlKey) k = /^[a-z]$/.test(e.key) && !"acvx".includes(e.key) && k & 31; // the browser keeps Ctrl-A, C, V, X
+        if (k && (mode !== "i" || k === 27 || k === 9)) e.preventDefault(), send(k);
+      });
+      // Outside insert mode typing is keys: cancellable input becomes keys; the rest (composition) is undone first.
+      on("beforeinput", (e) => mode === "i" || (e.preventDefault(), keys({ insertText: e.data, insertLineBreak: "\n", deleteContentBackward: "\b" }[e.inputType] || "")));
+      on("input", () => {
+        if (mode === "i" || editor.value === last) return;
+        const v = editor.value; let i = 0;
+        while (v[i] === last[i]) i++;
+        (editor.value = last), keys(v.slice(i, i + v.length - last.length));
+      });
+      on("paste", (e) => mode === "i" || (e.preventDefault(), vim(112, e.clipboardData.getData("text/plain"))));
+      document.addEventListener("selectionchange", () => document.activeElement === editor && mode !== "i" && (editor.selectionStart !== shown[0] || editor.selectionEnd !== shown[1]) && vim(0));
+      vim(0), editor.focus();
     },
     save: () => {
       const doc = html.cloneNode(true);
       $("#source", doc).textContent = raw(source), ($("#run", doc).textContent = raw(JSON.stringify(result)));
-      $$(".editor", doc).forEach((e) => e.remove()), $$("canvas", doc).forEach((c) => (c.removeAttribute("width"), c.removeAttribute("height")));
+      $$(".vim", doc).forEach((e) => e.remove()), $$("canvas", doc).forEach((c) => (c.removeAttribute("width"), c.removeAttribute("height")));
       download(location.pathname.split("/").at(-2) + ".html", "<!doctype html>\n" + doc.outerHTML);
     },
     zip: () => download("source.zip", call("zip", bundle([["index.md", source], ["assets", assets], ["manifest.json", manifest.slice(10, manifest.indexOf(',"outputs":'))]]))),

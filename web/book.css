@@ -24,7 +24,12 @@
 .export summary { cursor: pointer; }
 .export[open] { flex-basis: 100%; }
 .export div { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; padding-top: 0.5rem; }
-.editor { display: block; width: 100%; height: 60vh; font: 0.875rem/1.5 var(--mono); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.75rem; margin-bottom: 2rem; }
+.vim { margin-bottom: 2rem; }
+.editor { display: block; width: 100%; height: 50vh; font: 0.875rem/1.5 var(--mono); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.75rem; }
+.pad { display: flex; flex-wrap: wrap; gap: 0.25rem; position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 0.25rem 0; }
+.pad output { flex-basis: 100%; min-height: 1.5em; font: 0.8125rem/1.5 var(--mono); color: var(--muted); }
+.pad button { flex: 1 0 2.5rem; min-height: 2.75rem; border: 1px solid var(--line); border-radius: 4px; font: 0.875rem var(--mono); }
+.pad [aria-pressed=true] { background: var(--fg); color: var(--bg); }
 .code { font: 0.8125rem/1.55 var(--mono); color: var(--fg); background: var(--surface); border-radius: 4px; padding: 0.75rem; margin: 1rem 0 0.5rem; overflow-x: auto; }
 .code .k { color: var(--accent-text); } .code .s { color: var(--green); } .code .n { color: var(--warm); } .code .c { color: var(--muted); }
 .cell { margin: 1.5rem 0; }

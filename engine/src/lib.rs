@@ -13,6 +13,7 @@ pub mod pack;
 pub mod pdf;
 pub mod scene;
 pub mod theme;
+pub mod vim;
 
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
@@ -20,6 +21,7 @@ use std::cell::RefCell;
 
 thread_local! {
     static IO: RefCell<(Vec<u8>, Vec<u8>)> = RefCell::default();
+    static ED: RefCell<vim::Vim> = RefCell::default();
 }
 
 /// The WebAssembly boundary. The host writes a call's input to `alloc(n)`, calls, and reads
@@ -91,6 +93,16 @@ pub extern "C" fn pdf(form: u32) -> u32 {
     let stage: Vec<f32> = get("stage").unwrap_or_default().chunks_exact(4).map(|c| f32::from_le_bytes(c.try_into().unwrap())).collect();
     let d = doc::parse(std::str::from_utf8(&get("src").unwrap_or_default()).unwrap_or(""));
     ret(pdf::write(&d, &out, &stage, &get, form as usize))
+}
+
+/// The editor (`vim::Vim::step`): one key (0 only syncs) and the textarea's selection in UTF-16
+/// units. Input bundle: `text`, and `reg` with the clipboard's text for a paste.
+#[unsafe(no_mangle)]
+pub extern "C" fn vim(key: u32, a: u32, b: u32) -> u32 {
+    let raw = input();
+    let b2 = pack::unbundle(&raw);
+    let get = |n: &str| b2.iter().find(|x| x.0 == n).map(|x| std::str::from_utf8(x.1).unwrap_or(""));
+    ret(ED.with_borrow_mut(|v| v.step(get("text").unwrap_or(""), a as usize, b as usize, get("reg"), char::from_u32(key).unwrap_or('\0'))).into_bytes())
 }
 
 /// A stored ZIP of the input bundle, in its order; an `assets` entry is itself a bundle.
