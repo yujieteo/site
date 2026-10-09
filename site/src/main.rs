@@ -166,8 +166,8 @@ fn main() {
         .collect();
     stories.sort_by(|a, b| a.slug.cmp(&b.slug));
 
-    let door = |href: &str, scene: u32, name: &str, line: &str| {
-        format!(r#"<a class="door" href="{href}">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, canvas(scene, "", ""))
+    let door = |href: &str, scene: u32, palette: &str, name: &str, line: &str| {
+        format!(r#"<a class="door" href="{href}">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, canvas(scene, palette, ""))
     };
     let cards: String = stories.iter().map(|s| format!(
         r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
@@ -175,9 +175,9 @@ fn main() {
     let mut pages = vec![
         Page { path: "index.html".into(), title: "Yujie Teo".into(), body: format!(
             r#"<p class="lede">Notes, stories and tools.</p><div class="doors">{}{}{}</div>"#,
-            door("notes/index.html", 3, "Notes", "A working log, sanitised."),
-            door("stories/index.html", 1, "Stories", "Visual explanations, told in order."),
-            door("playground/index.html", 2, "Playground", "Durable tools for repeated work.")) },
+            door("notes/index.html", 3, "#ffd60a #1a1446 #ff2d87 #fffbe8", "Notes", "A working log, sanitised."),
+            door("stories/index.html", 1, "#ff2d87 #2b0f54 #b6ff3b #fff3b0", "Stories", "Visual explanations, told in order."),
+            door("playground/index.html", 2, "#13c4c4 #3d0b4f #ff7a1a #fdf7e6", "Playground", "Durable tools for repeated work.")) },
         Page { path: "notes/index.html".into(), title: "Notes".into(),
             body: format!(r#"<h1>Notes</h1><div class="notes">{}</div>"#, notes(&notes_path)) },
         Page { path: "stories/index.html".into(), title: "Stories".into(),

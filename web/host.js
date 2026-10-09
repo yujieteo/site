@@ -19,38 +19,80 @@
   const visible = new Set();
   const css = (el, n) => getComputedStyle(el).getPropertyValue(n).trim();
 
+  // Colour helpers: palettes are #rrggbb; tint mixes toward another colour and sets alpha.
+  const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const tint = (h, a, to = h, k = 0) => `rgba(${rgb(h).map((v, i) => Math.round(v + (rgb(to)[i] - v) * k))},${a})`;
+  // Dots are soft orbs lit from the upper left: one sprite per colour, reused every frame.
+  const orbs = new Map();
+  const orb = (c) => {
+    if (!orbs.has(c)) {
+      const o = document.createElement("canvas"), x = o.getContext("2d");
+      o.width = o.height = 64;
+      const g = x.createRadialGradient(24, 22, 1, 32, 32, 32);
+      g.addColorStop(0, tint(c, 1, "#ffffff", 0.4)), g.addColorStop(0.6, tint(c, 1)), g.addColorStop(1, tint(c, 1, "#000000", 0.3));
+      x.fillStyle = g, x.arc(32, 32, 31.5, 0, 7), x.fill();
+      orbs.set(c, o);
+    }
+    return orbs.get(c);
+  };
+  // Film grain, made once.
+  const grain = document.createElement("canvas"), gc = grain.getContext("2d");
+  grain.width = grain.height = 96;
+  const noise = gc.createImageData(96, 96);
+  for (let i = 0; i < noise.data.length; i += 4) noise.data.fill(Math.random() * 255, i, i + 3), (noise.data[i + 3] = 255);
+  gc.putImageData(noise, 0, 0);
+  // A soft pool of light, squashed and tilted like sun through leaves.
+  const glow = (ctx, x, y, r, c, a, squash) => {
+    ctx.save(), ctx.translate(x, y), ctx.rotate(-0.6), ctx.scale(1, squash);
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, r);
+    g.addColorStop(0, tint(c, a)), g.addColorStop(0.6, tint(c, a * 0.7)), g.addColorStop(1, tint(c, 0));
+    ctx.fillStyle = g, ctx.fillRect(-r, -r, 2 * r, 2 * r), ctx.restore();
+  };
+
   function draw(cv) {
     const ctx = cv.getContext("2d"), dpr = Math.min(devicePixelRatio || 1, 2);
     const s = Math.round(cv.clientWidth * dpr);
     if (!s) return;
     if (cv.width !== s) cv.width = cv.height = s;
-    const [bg, shade, accent, light] = ["--base", "--shade", "--accent", "--light"].map((n) => css(cv, n));
+    const [base, shade, accent, light] = ["--base", "--shade", "--accent", "--light"].map((n) => css(cv, n));
     const p = cv.dataset.progress === undefined ? -1 : +cv.dataset.progress;
     const [px, py] = cv.pointer || [-1, -1];
     const n = api.update(+(cv.dataset.seed || 1), +cv.dataset.scene, clock, p, px, py);
     const d = new Float32Array(mem.buffer, api.dots(), n * 5);
     const f = new Float32Array(mem.buffer, api.face(), 8);
-    const g = ctx.createRadialGradient(s * 0.5, s * 0.4, 0, s * 0.5, s * 0.5, s * 0.75);
-    g.addColorStop(0, bg), g.addColorStop(1, shade);
-    ctx.globalAlpha = 1, ctx.fillStyle = g, ctx.fillRect(0, 0, s, s);
+    const L = new Float32Array(mem.buffer, api.lights(), 24); // 6 lights; 0 is the pin light
+    // The field: flat colour, falling off toward the shadow colour at the edges.
+    ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
+    ctx.fillStyle = base, ctx.fillRect(0, 0, s, s);
+    const v = ctx.createRadialGradient(s * 0.5, s * 0.4, s * 0.2, s * 0.5, s * 0.5, s * 0.8);
+    v.addColorStop(0, tint(shade, 0)), v.addColorStop(1, tint(shade, 0.55));
+    ctx.fillStyle = v, ctx.fillRect(0, 0, s, s);
+    const tone = [shade, accent, light].map(orb);
     for (let i = 0; i < n * 5; i += 5) {
-      const c = d[i + 3];
+      const c = d[i + 3], r = d[i + 2] * s;
       ctx.globalAlpha = d[i + 4];
-      ctx.fillStyle = c < 0.34 ? shade : c < 0.67 ? accent : light;
-      ctx.beginPath(), ctx.arc(d[i] * s, d[i + 1] * s, d[i + 2] * s, 0, 7), ctx.fill();
+      ctx.drawImage(tone[c < 0.34 ? 0 : c < 0.67 ? 1 : 2], d[i] * s - r, d[i + 1] * s - r, 2 * r, 2 * r);
     }
-    // The character: one circle, two eyes, a halo.
+    // The character: one orb, two eyes, a halo.
     const [x, y, r, gx, gy, blink, halo, pulse] = [f[0] * s, f[1] * s, f[2] * s, f[3], f[4], f[5], f[6], f[7]];
-    ctx.globalAlpha = 0.15 + 0.15 * halo + 0.4 * pulse, ctx.fillStyle = accent;
-    ctx.beginPath(), ctx.arc(x, y, r * (1.25 + 0.1 * halo + 0.2 * pulse), 0, 7), ctx.fill();
-    ctx.globalAlpha = 1, ctx.fillStyle = light;
-    ctx.beginPath(), ctx.arc(x, y, r, 0, 7), ctx.fill();
+    ctx.globalAlpha = 1;
+    glow(ctx, x, y, r * (1.6 + 0.15 * halo + 0.3 * pulse), accent, 0.35 + 0.2 * halo + 0.4 * pulse, 1);
+    ctx.drawImage(tone[2], x - r, y - r, 2 * r, 2 * r);
     ctx.fillStyle = shade;
     for (const k of [-1, 1]) {
       ctx.beginPath();
       ctx.ellipse(x + k * r * 0.32 + gx * r * 0.18, y - r * 0.1 + gy * r * 0.18, r * 0.09, r * 0.13 * (1 - 0.9 * blink), 0, 0, 7);
       ctx.fill();
     }
+    // Light falls on everything: dappled patches, then the pin light, then grain.
+    ctx.globalCompositeOperation = "screen";
+    for (let k = 4; k < 24; k += 4) glow(ctx, L[k] * s, L[k + 1] * s, L[k + 2] * s, light, L[k + 3], 0.6);
+    ctx.globalCompositeOperation = "lighter";
+    glow(ctx, L[0] * s, L[1] * s, L[2] * s * 4, light, L[3] * 0.5, 1);
+    glow(ctx, L[0] * s, L[1] * s, L[2] * s * 0.5, "#ffffff", L[3], 1);
+    ctx.globalCompositeOperation = "overlay", ctx.globalAlpha = 0.08;
+    ctx.fillStyle = ctx.createPattern(grain, "repeat"), ctx.fillRect(0, 0, s, s);
+    ctx.globalCompositeOperation = "source-over", ctx.globalAlpha = 1;
   }
 
   const frame = (now) => {
