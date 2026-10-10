@@ -1,7 +1,7 @@
 /* The notebook: quiet tools, dialogs for choices, cells, figures and the four views. */
 .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; font-size: 0.875rem; color: var(--muted); margin: -2.5rem 0 2.5rem; }
-.tools button { border: 0; padding: 0.25rem 0; }
-.tools .sp { flex: 1 1 12rem; text-align: right; font: 0.75rem var(--mono); }
+.tools button { border: 0; border-radius: 4px; padding: 0.25rem 0; }
+.tools .sp { flex: 1 1 12rem; font: 0.75rem var(--mono); }
 .tools .sp button { margin-left: 0.5rem; text-decoration: underline; text-underline-offset: 0.2em; }
 dialog form { position: relative; padding: 1.25rem; }
 dialog h2 { font-size: 1.25rem; padding-right: 2rem; }

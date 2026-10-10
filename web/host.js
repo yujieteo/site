@@ -82,7 +82,7 @@
   };
   const setPlaying = (on) => {
     playing = on;
-    if (motion) { motion.textContent = on ? "Pause" : "Play"; motion.setAttribute("aria-pressed", on); }
+    if (motion) { motion.textContent = on ? "Pause" : "Play"; motion.hidden = false; } // shown once the scenes can move
     if (!on) { cancelAnimationFrame(raf); raf = 0; }
     kick();
   };

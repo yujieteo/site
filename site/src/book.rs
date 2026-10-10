@@ -181,7 +181,7 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
         tool("edit", "", "Edit"),
         tool("open", r#" data-arg="render""#, "Render"),
         tool("open", r#" data-arg="export""#, "Export"),
-        r#"<span class="sp" data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button>"#.into(),
+        r#"<button type="button" data-motion hidden>Pause</button><span class="sp" data-engine-status role="status"></span>"#.into(),
     ].concat();
     let narration = if narrated { group("Narration", media) } else { String::new() };
     let tools = format!(r#"<nav class="tools" aria-label="Notebook">{tools}</nav>{}{}"#,
