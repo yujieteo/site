@@ -11,7 +11,8 @@
     const found = words.length ? items.filter(([id, , , hay]) => on[id[0]] && words.every((w) => hay.includes(w))) : [];
     const s = found.filter(([id]) => id[0] === "s").length, n = found.length - s;
     hits.hidden = !words.length;
-    out.value = words.length ? `${s} ${s === 1 ? "summary" : "summaries"}, ${n} ${n === 1 ? "note" : "notes"}${found.length > most ? `; the first ${most} shown` : ""}` : "";
+    const count = (k, one, many) => `${k} ${k === 1 ? one : many}`, cut = found.length > most ? `; the first ${most} shown` : "";
+    out.value = words.length ? `${count(s, "summary", "summaries")}, ${count(n, "note", "notes")}${cut}` : "";
     hits.replaceChildren(...found.slice(0, most).map(([id, label, text]) => {
       const li = document.createElement("li"), a = li.appendChild(Object.assign(document.createElement("a"), { href: "#" + id }));
       a.append(Object.assign(document.createElement("span"), { textContent: label }), text.length > 280 ? text.slice(0, 280) + "…" : text);
@@ -27,7 +28,8 @@
   };
   form.addEventListener("submit", (e) => e.preventDefault());
   q.addEventListener("input", show);
-  for (const b of form.querySelectorAll("button")) b.addEventListener("click", () => (b.setAttribute("aria-pressed", (on[b.value] = !on[b.value])), show()));
+  for (const b of form.querySelectorAll("button")) b.addEventListener("click", () => { on[b.value] = !on[b.value]; b.setAttribute("aria-pressed", on[b.value]); show(); });
   hits.addEventListener("click", (e) => e.target.closest("a")?.hash === location.hash && go());
-  addEventListener("hashchange", go), go();
+  addEventListener("hashchange", go);
+  go();
 })();

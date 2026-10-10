@@ -16,7 +16,8 @@ pub fn sha256(data: &[u8]) -> String {
         for i in 0..64 {
             w[i] = if i < 16 { u32::from_be_bytes(c[i * 4..i * 4 + 4].try_into().unwrap()) } else {
                 let (a, b) = (w[i - 15], w[i - 2]);
-                w[i - 16].wrapping_add(a.rotate_right(7) ^ a.rotate_right(18) ^ a >> 3).wrapping_add(w[i - 7]).wrapping_add(b.rotate_right(17) ^ b.rotate_right(19) ^ b >> 10)
+                let (s0, s1) = (a.rotate_right(7) ^ a.rotate_right(18) ^ a >> 3, b.rotate_right(17) ^ b.rotate_right(19) ^ b >> 10);
+                w[i - 16].wrapping_add(s0).wrapping_add(w[i - 7]).wrapping_add(s1)
             };
         }
         let mut v = h.clone();
@@ -64,7 +65,10 @@ pub fn base64(b: &[u8]) -> String {
 
 /// A data URL for an asset, typed by its extension.
 pub fn data_url(name: &str, b: &[u8]) -> String {
-    let t = match name.rsplit('.').next().unwrap_or("") { "png" => "image/png", "jpg" | "jpeg" => "image/jpeg", "svg" => "image/svg+xml", "otf" => "font/otf", "wasm" => "application/wasm", _ => "application/octet-stream" };
+    let t = match name.rsplit('.').next().unwrap_or("") {
+        "png" => "image/png", "jpg" | "jpeg" => "image/jpeg", "svg" => "image/svg+xml", "otf" => "font/otf", "wasm" => "application/wasm",
+        _ => "application/octet-stream",
+    };
     format!("data:{t};base64,{}", base64(b))
 }
 
@@ -72,7 +76,11 @@ pub fn data_url(name: &str, b: &[u8]) -> String {
 pub fn json(s: &str) -> String {
     let mut o = String::from('"');
     for c in s.chars() {
-        match c { '"' => o += "\\\"", '\\' => o += "\\\\", '\n' => o += "\\n", '<' => o += "\\u003c", c if (c as u32) < 32 => w!(o, "\\u{:04x}", c as u32), c => o.push(c) }
+        match c {
+            '"' => o += "\\\"", '\\' => o += "\\\\", '\n' => o += "\\n", '<' => o += "\\u003c",
+            c if (c as u32) < 32 => w!(o, "\\u{:04x}", c as u32),
+            c => o.push(c),
+        }
     }
     o + "\""
 }

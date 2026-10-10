@@ -21,8 +21,11 @@ fn rgb(c: u32) -> String { format!("{:.3} {:.3} {:.3}", (c >> 16) as f32 / 255.0
 
 fn stream(dict: &str, data: &[u8]) -> Vec<u8> { [format!("<<{dict}/Length {}>>stream\n", data.len()).as_bytes(), data, b"\nendstream"].concat() }
 
+/// A string as hex UTF-16 units.
+fn utf16(s: &str) -> String { s.encode_utf16().map(|u| format!("{u:04X}")).collect() }
+
 /// An OpenType font: character map, advances, metrics (bbox, ascent, descent), glyphs used.
-struct Font { data: Vec<u8>, map: BTreeMap<u32, u16>, used: BTreeMap<u16, char>, hm: usize, nh: usize, m: Vec<i16> }
+struct Font { data: Vec<u8>, map: BTreeMap<u32, u16>, used: BTreeMap<u16, char>, hm: usize, nh: usize, m: [i16; 6] }
 
 impl Font {
     fn new(data: Vec<u8>) -> Font {
@@ -45,7 +48,8 @@ impl Font {
                 }
             }
         }
-        let m = [t(b"head") + 36, t(b"head") + 38, t(b"head") + 40, t(b"head") + 42, hh + 4, hh + 6].iter().map(|&o| be(b, o, 2) as u16 as i16).collect();
+        let hd = t(b"head");
+        let m = [hd + 36, hd + 38, hd + 40, hd + 42, hh + 4, hh + 6].map(|o| be(b, o, 2) as u16 as i16);
         Font { hm: t(b"hmtx"), nh: be(b, hh + 34, 2).max(1), map, used: BTreeMap::new(), m, data }
     }
     fn adv(&self, g: usize) -> usize { be(&self.data, self.hm + 4 * g.min(self.nh - 1), 2) }
@@ -65,16 +69,20 @@ impl Bx {
         self.3.extend(b.3.into_iter().map(|(x, y, s, t)| (x + dx, y + dy, s, t)));
         self.4.extend(b.4.into_iter().map(|(p, w)| (p.into_iter().map(|(x, y)| (x + dx, y + dy)).collect(), w)));
     }
+    fn with(mut self, b: Bx, dx: f32, dy: f32) -> Bx { self.place(b, dx, dy); self }
 }
 
 fn italic(c: char) -> char {
     let k = |base: u32, from: char| char::from_u32(base + c as u32 - from as u32).unwrap_or(c);
-    match c { 'h' => 'ℎ', 'a'..='z' => k(0x1d44e, 'a'), 'A'..='Z' => k(0x1d434, 'A'), 'α'..='ω' => k(0x1d6fc, 'α'), 'ϵ' => '𝜖', 'ϕ' => '𝜙', _ => c }
+    match c {
+        'h' => 'ℎ', 'ϵ' => '𝜖', 'ϕ' => '𝜙', // Unicode's italic h is Planck's constant
+        'a'..='z' => k(0x1d44e, 'a'), 'A'..='Z' => k(0x1d434, 'A'), 'α'..='ω' => k(0x1d6fc, 'α'), _ => c,
+    }
 }
 
+/// HTML as text: each `<` drops what follows up to its `>`, and the escapes are undone.
 fn strip(h: &str) -> String {
-    let mut tag = false;
-    let s: String = h.chars().filter(|&c| (!tag && c != '<', tag = (tag || c == '<') && c != '>').0).collect();
+    let s: String = h.split('<').enumerate().map(|(i, p)| if i == 0 { p } else { p.split_once('>').map_or("", |x| x.1) }).collect();
     s.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", "\"").replace("&amp;", "&")
 }
 
@@ -96,10 +104,17 @@ impl Pdf<'_> {
         self.y = self.m;
     }
     /// Room for `h` more points: on a slide there is no next page, so the rest is dropped.
-    fn need(&mut self, h: f32) -> bool { self.y + h <= self.h - self.m || (!self.slides && (self.page(), true).1) }
+    fn need(&mut self, h: f32) -> bool {
+        let fits = self.y + h <= self.h - self.m;
+        if !fits && !self.slides { self.page() }
+        fits || !self.slides
+    }
+    /// A font slot's font, loaded on first use: fonts are numbered in the order they are needed.
     fn font(&mut self, k: usize) -> usize {
         let file = FILES[k];
-        self.fonts.iter().position(|f| f.0 == file).unwrap_or_else(|| (self.fonts.push((file, Font::new((self.get)(&format!("fonts/{file}.otf")).unwrap_or_default()))), self.fonts.len() - 1).1)
+        if let Some(i) = self.fonts.iter().position(|f| f.0 == file) { return i }
+        self.fonts.push((file, Font::new((self.get)(&format!("fonts/{file}.otf")).unwrap_or_default())));
+        self.fonts.len() - 1
     }
     /// A run of text as pieces, each in the first font with its characters (the style's, then
     /// sans, then maths): font, glyph IDs as hex, width; and the whole width.
@@ -107,27 +122,29 @@ impl Pdf<'_> {
         let mut v: Vec<(usize, String, f32)> = vec![];
         for c in s.chars() {
             let mut i = self.font(st.0);
-            for k in [0, 3] { if !self.fonts[i].1.map.contains_key(&(c as u32)) { i = self.font(k) } }
-            if !self.fonts[i].1.map.contains_key(&(c as u32)) { i = self.font(st.0) }
+            for k in [0, 3, st.0] { if !self.fonts[i].1.map.contains_key(&(c as u32)) { i = self.font(k) } }
             let f = &mut self.fonts[i].1;
             let g = f.map.get(&(c as u32)).copied().unwrap_or(0);
-            let w = (f.used.insert(g, c), f.adv(g as usize) as f32 * st.1 / 1000.0).1;
-            match v.last_mut() { Some(p) if p.0 == i => (w!(p.1, "{g:04X}"), p.2 += w).1, _ => v.push((i, format!("{g:04X}"), w)) }
+            f.used.insert(g, c);
+            let w = f.adv(g as usize) as f32 * st.1 / 1000.0;
+            match v.last_mut() { Some(p) if p.0 == i => { w!(p.1, "{g:04X}"); p.2 += w } _ => v.push((i, format!("{g:04X}"), w)) }
         }
         let w = v.iter().map(|p| p.2).sum();
         (v, w)
     }
     fn put(&mut self, mut x: f32, y: f32, st: St, s: &str) -> f32 {
         let ((v, w), c, h) = (self.run(st, s), rgb(st.2), self.h);
+        let (fill, slant) = ((st.3 & 1) * 2, (st.3 & 2) as f32 * 0.1); // bold also strokes; italic slants
         for (i, hex, pw) in v {
-            w!(self.out(), "BT /F{i} {} Tf {} Tr 0.3 w {c} rg {c} RG 1 0 {} 1 {x:.2} {:.2} Tm <{hex}> Tj ET\n", st.1, (st.3 & 1) * 2, (st.3 & 2) as f32 * 0.1, h - y);
+            w!(self.out(), "BT /F{i} {} Tf {fill} Tr 0.3 w {c} rg {c} RG 1 0 {slant} 1 {x:.2} {:.2} Tm <{hex}> Tj ET\n", st.1, h - y);
             x += pw;
         }
         w
     }
     fn link(&mut self, r: [f32; 4], u: &str) {
         let (h, u) = (self.h, u.replace('\\', "\\\\").replace('(', "\\(").replace(')', "\\)"));
-        w!(self.pages.last_mut().unwrap().1, "<</Type/Annot/Subtype/Link/Rect[{:.1} {:.1} {:.1} {:.1}]/Border[0 0 0]/A<</S/URI/URI({u})>>>>", r[0], h - r[1], r[2], h - r[3]);
+        let rect = format!("{:.1} {:.1} {:.1} {:.1}", r[0], h - r[1], r[2], h - r[3]);
+        w!(self.pages.last_mut().unwrap().1, "<</Type/Annot/Subtype/Link/Rect[{rect}]/Border[0 0 0]/A<</S/URI/URI({u})>>>>");
     }
     fn stroke(&mut self, pts: &[(f32, f32)], w: f32, c: u32) {
         let p: Vec<String> = pts.iter().map(|q| format!("{:.2} {:.2}", q.0, self.h - q.1)).collect();
@@ -142,54 +159,58 @@ impl Pdf<'_> {
         match m {
             M::I(t) if t.chars().count() == 1 => glyph(t.chars().map(italic).collect(), s, 0.0),
             M::I(t) => glyph(t.clone(), s, 0.1 * s),
-            M::T(t) if t.chars().all(char::is_whitespace) => Bx(t.chars().map(|c| match c { '\u{2003}' => 1.0, '\u{2009}' => 0.17, _ => 0.25 }).sum::<f32>() * s, 0.0, 0.0, vec![], vec![]),
+            M::T(t) if t.chars().all(char::is_whitespace) => {
+                let ems: f32 = t.chars().map(|c| match c { '\u{2003}' => 1.0, '\u{2009}' => 0.17, _ => 0.25 }).sum(); // quad, thin, space
+                Bx(ems * s, 0.0, 0.0, vec![], vec![])
+            }
             M::N(t) | M::T(t) => glyph(t.clone(), s, 0.0),
             M::O(t) if "∑∏∫".contains(t.as_str()) => {
                 let k = if d { 2.2 } else { 1.2 }; // as the page sets it, centred on the maths axis
-                let mut b = Bx::default();
-                (b.place(glyph(t.clone(), k * s, 0.08 * s), 0.0, 0.27 * s - 0.33 * k * s), b).1
+                Bx::default().with(glyph(t.clone(), k * s, 0.08 * s), 0.0, 0.27 * s - 0.33 * k * s)
             }
             M::O(t) => glyph(t.clone(), s, if "=<>≤≥≈≠∼→±×⋅∝∈∣+−".contains(t.as_str()) { 0.22 * s } else { 0.0 }),
             M::R(v) => (0..v.len()).fold(Bx::default(), |mut b, k| {
                 let x = match &v[k] { M::O(o) if doc::sign(v, k) => self.mbox(&M::T(o.clone()), s, d), m => self.mbox(m, s, d) };
-                (b.place(x, b.0, 0.0), b).1
+                b.place(x, b.0, 0.0);
+                b
             }),
             M::F(n, dn) => {
                 let k = if d { 1.0 } else { 0.8 };
                 let (n, dn, ax) = (self.mbox(n, k * s, false), self.mbox(dn, k * s, false), 0.27 * s);
                 let (w, nx, ny, dx, dy) = (n.0.max(dn.0) + 0.2 * s, n.0, ax + 0.15 * s + n.2, dn.0, ax - 0.15 * s - dn.1);
-                let mut b = Bx(w, 0.0, 0.0, vec![], vec![(vec![(0.0, ax), (w, ax)], 0.05 * s)]);
-                (b.place(n, (w - nx) / 2.0, ny), b.place(dn, (w - dx) / 2.0, dy), b).2
+                Bx(w, 0.0, 0.0, vec![], vec![(vec![(0.0, ax), (w, ax)], 0.05 * s)]).with(n, (w - nx) / 2.0, ny).with(dn, (w - dx) / 2.0, dy)
             }
             M::Q(x) => {
                 let x = self.mbox(x, s, d);
                 let (top, w, dp) = (x.1 + 0.15 * s, x.0 + 0.55 * s, x.2);
-                let mut b = Bx(w, top + 0.05 * s, 0.0, vec![], vec![(vec![(0.0, 0.3 * s), (0.12 * s, 0.38 * s), (0.28 * s, -dp), (0.45 * s, top), (w, top)], 0.05 * s)]);
-                (b.place(x, 0.5 * s, 0.0), b).1
+                let sign = vec![(0.0, 0.3 * s), (0.12 * s, 0.38 * s), (0.28 * s, -dp), (0.45 * s, top), (w, top)];
+                Bx(w, top + 0.05 * s, 0.0, vec![], vec![(sign, 0.05 * s)]).with(x, 0.5 * s, 0.0)
             }
             M::S(x, sb, sp) if d && doc::big(x) => {
                 let x = self.mbox(x, s, d);
-                let (hi, lo) = (sp.as_ref().map(|p| self.mbox(p, 0.7 * s, false)), sb.as_ref().map(|q| self.mbox(q, 0.7 * s, false)));
+                let hi = sp.as_ref().map(|p| self.mbox(p, 0.7 * s, false));
+                let lo = sb.as_ref().map(|q| self.mbox(q, 0.7 * s, false));
                 let w = [&hi, &lo].into_iter().flatten().fold(x.0, |w, b| w.max(b.0));
                 let (top, bot, xw) = (x.1 + 0.12 * s, x.2 + 0.12 * s, x.0);
-                let mut b = Bx(w, 0.0, 0.0, vec![], vec![]);
-                b.place(x, (w - xw) / 2.0, 0.0);
+                let mut b = Bx(w, 0.0, 0.0, vec![], vec![]).with(x, (w - xw) / 2.0, 0.0);
                 if let Some(p) = hi { let (pw, pd) = (p.0, p.2); b.place(p, (w - pw) / 2.0, top + pd) }
                 if let Some(q) = lo { let (qw, qa) = (q.0, q.1); b.place(q, (w - qw) / 2.0, -(bot + qa)) }
-                (b.0 += 0.1 * s, b).1
+                b.0 += 0.1 * s;
+                b
             }
             M::S(x, sb, sp) => {
                 let mut b = self.mbox(x, s, d);
                 let (w, a, dp) = (b.0, b.1, b.2);
                 if let Some(p) = sp { b.place(self.mbox(p, 0.7 * s, false), w + 0.05 * s, (a - 0.35 * s).max(0.4 * s)) }
                 if let Some(q) = sb { b.place(self.mbox(q, 0.7 * s, false), w + 0.05 * s, -(dp.max(0.2 * s))) }
-                (b.0 += 0.05 * s, b).1
+                b.0 += 0.05 * s;
+                b
             }
         }
     }
-    fn mdraw(&mut self, b: Bx, x: f32, y: f32, c: u32) {
-        b.3.into_iter().for_each(|(dx, dy, s, t)| _ = self.put(x + dx, y - dy, St(3, s, c, 0), &t));
-        b.4.into_iter().for_each(|(p, w)| self.stroke(&p.iter().map(|q| (x + q.0, y - q.1)).collect::<Vec<_>>(), w, c));
+    fn mdraw(&mut self, b: &Bx, x: f32, y: f32, c: u32) {
+        for (dx, dy, s, t) in &b.3 { self.put(x + dx, y - dy, St(3, *s, c, 0), t); }
+        for (p, w) in &b.4 { self.stroke(&p.iter().map(|q| (x + q.0, y - q.1)).collect::<Vec<_>>(), *w, c) }
     }
 
     /// Inline Markdown as words of styled pieces: text (code in mono, links coloured) or maths.
@@ -201,8 +222,8 @@ impl Pdf<'_> {
                 Sp::T(t, b) => (t, b, None),
                 Sp::A(t, u) => (t, 0, Some(u)),
             };
-            let code = bits & 4 > 0;
-            let s2 = St(if code { 2 } else { st.0 }, st.1 * if code { 0.9 } else { 1.0 }, if href.is_some() { self.pal[7] } else { st.2 }, st.3 | bits & 3);
+            let (font, size) = if bits & 4 > 0 { (2, st.1 * 0.9) } else { (st.0, st.1) };
+            let s2 = St(font, size, if href.is_some() { self.pal[7] } else { st.2 }, st.3 | bits & 3);
             for (k, part) in t.split(' ').enumerate() {
                 if k > 0 { v.push(vec![]) }
                 if !part.is_empty() { v.last_mut().unwrap().push((s2, part.into(), href.clone(), None)) }
@@ -213,7 +234,11 @@ impl Pdf<'_> {
     /// A piece's width; drawn too when `at` is its baseline origin.
     fn piece(&mut self, p: &Piece, at: Option<(f32, f32)>) -> f32 {
         let w = match (&p.3, at) {
-            (Some(m), _) => { let b = self.mbox(m, p.0.1, false); (b.0, at.map(|(x, y)| self.mdraw(b, x, y, p.0.2))).0 }
+            (Some(m), _) => {
+                let b = self.mbox(m, p.0.1, false);
+                if let Some((x, y)) = at { self.mdraw(&b, x, y, p.0.2) }
+                b.0
+            }
             (_, Some((x, y))) => self.put(x, y, p.0, &p.1),
             _ => self.run(p.0, &p.1).1,
         };
@@ -238,7 +263,9 @@ impl Pdf<'_> {
         self.y += 0.45 * st.1;
     }
     fn heading(&mut self, t: &str, size: f32) {
-        if self.need(3.0 * size) { (self.y += 0.6 * size, self.para(t, St(1, size, self.pal[2], 0), 0.0)); }
+        if !self.need(3.0 * size) { return }
+        self.y += 0.6 * size;
+        self.para(t, St(1, size, self.pal[2], 0), 0.0);
     }
     /// Monospaced lines, wrapped at the column, on the surface colour when `bg`.
     fn code(&mut self, text: &str, bg: bool) {
@@ -262,14 +289,23 @@ impl Pdf<'_> {
     }
     /// A figure `w` by `h` at the column's centre: `draw` gets its left and top.
     fn figure(&mut self, w: f32, h: f32, draw: &mut dyn FnMut(&mut Self, f32, f32)) -> bool {
-        self.need(h + 24.0) && (draw(self, self.x + (self.col - w) / 2.0, self.y + 6.0), self.y += h + 10.0, true).2
+        if !self.need(h + 24.0) { return false }
+        draw(self, self.x + (self.col - w) / 2.0, self.y + 6.0);
+        self.y += h + 10.0;
+        true
     }
     /// A scene's display list in a square of side `s`. Discs are round-capped dots.
     fn frame(&mut self, ops: &[Op], x: f32, y: f32, s: f32) {
-        const K: [(f32, f32); 13] = [(1.0, 0.0), (1.0, 0.5523), (0.5523, 1.0), (0.0, 1.0), (-0.5523, 1.0), (-1.0, 0.5523), (-1.0, 0.0), (-1.0, -0.5523), (-0.5523, -1.0), (0.0, -1.0), (0.5523, -1.0), (1.0, -0.5523), (1.0, 0.0)];
+        // A unit circle as four Bézier quarters: the start, then two controls and an end each.
+        const C: f32 = 0.5523;
+        const K: [(f32, f32); 13] =
+            [(1.0, 0.0), (1.0, C), (C, 1.0), (0.0, 1.0), (-C, 1.0), (-1.0, C), (-1.0, 0.0), (-1.0, -C), (-C, -1.0), (0.0, -1.0), (C, -1.0), (1.0, -C), (1.0, 0.0)];
         let (h, mut o, mut clipped) = (self.h, String::from("q\n"), false);
         let pt = |a: f32, b: f32| format!("{:.2} {:.2}", x + a * s, h - y - b * s);
-        let ell = |cx: f32, cy: f32, rx: f32, ry: f32| K.iter().enumerate().map(|(i, k)| pt(cx + k.0 * rx, cy + k.1 * ry) + ["", " c", " m"][(i % 3 == 0) as usize + (i == 0) as usize]).collect::<Vec<_>>().join(" ");
+        let ell = |cx: f32, cy: f32, rx: f32, ry: f32| {
+            let op = |i: usize| if i == 0 { " m" } else if i % 3 == 0 { " c" } else { "" };
+            K.iter().enumerate().map(|(i, k)| pt(cx + k.0 * rx, cy + k.1 * ry) + op(i)).collect::<Vec<_>>().join(" ")
+        };
         let path = |sh: &Sh| match *sh {
             Sh::Rect(a, b, c, d, _) => format!("{} {:.2} {:.2} re", pt(a, b + d), c * s, d * s),
             Sh::Ell(cx, cy, rx, ry) => ell(cx, cy, rx, ry),
@@ -277,9 +313,9 @@ impl Pdf<'_> {
             Sh::Ring(cx, cy, r, _) => ell(cx, cy, r, r),
         };
         for op in ops {
-            if clipped && matches!(op, Op::Clip(_)) { (clipped, o) = (false, o + "Q\n") }
+            if clipped && matches!(op, Op::Clip(_)) { o += "Q\n"; clipped = false }
             match op {
-                Op::Clip(sh) => if let Some(sh) = sh { (clipped, o) = (true, o + &format!("q {} W n\n", path(sh))) },
+                Op::Clip(sh) => if let Some(sh) = sh { w!(o, "q {} W n\n", path(sh)); clipped = true },
                 Op::Fill(sh, c, a, screen) => {
                     let g = format!("/G{}{}", (a * 100.0).round(), *screen as u8);
                     self.gs.entry(g.clone()).or_insert(format!("<</ca {a:.2}/CA {a:.2}/BM/{}>>", if *screen { "Screen" } else { "Normal" }));
@@ -322,7 +358,10 @@ impl Pdf<'_> {
         let (mut rest, mut fig) = (h, false);
         while !rest.is_empty() {
             let end = [("<pre", "</pre>"), ("<svg", "</svg>")].into_iter().find(|t| rest.starts_with(t.0)).map(|t| t.1);
-            let j = match end { Some(e) => rest.find(e).map_or(rest.len(), |j| j + e.len()), None => rest.char_indices().skip(1).find(|c| c.1 == '<').map_or(rest.len(), |c| c.0) };
+            let j = match end {
+                Some(e) => rest.find(e).map_or(rest.len(), |j| j + e.len()),
+                None => rest.char_indices().skip(1).find(|c| c.1 == '<').map_or(rest.len(), |c| c.0), // to the next tag
+            };
             let ((a, b), w) = (rest.split_at(j), (0.8 * self.col).min(360.0));
             match (end, strip(a)) {
                 (Some("</pre>"), t) => self.code(&t, false),
@@ -348,14 +387,20 @@ impl Pdf<'_> {
             o += 12 + d.len();
         }
         let [w, h, depth, ct, interlace] = ih;
+        if depth != 8 || interlace != 0 || w == 0 { return None }
         let hex: String = plte.iter().map(|x| format!("{x:02X}")).collect();
-        let (cs, n) = match ct { 0 => ("/DeviceGray".into(), 1), 2 => ("/DeviceRGB".into(), 3), 3 => (format!("[/Indexed/DeviceRGB {} <{hex}>]", (plte.len() / 3).checked_sub(1)?), 1), _ => return None };
+        let (cs, n) = match ct {
+            0 => ("/DeviceGray".into(), 1),
+            2 => ("/DeviceRGB".into(), 3),
+            3 => (format!("[/Indexed/DeviceRGB {} <{hex}>]", (plte.len() / 3).checked_sub(1)?), 1),
+            _ => return None,
+        };
         let mask = match ct {
             3 => trns.iter().take_while(|&&a| a < 128).count().checked_sub(1).map_or(String::new(), |n| format!("0 {n}")),
             _ => trns.chunks(2).map(|v| format!("{0} {0}", be(v, 0, 2))).collect::<Vec<_>>().join(" "),
         };
-        if depth != 8 || interlace != 0 || w == 0 { return None }
-        let dict = format!("/Type/XObject/Subtype/Image/Width {w}/Height {h}/ColorSpace {cs}/BitsPerComponent 8/Mask[{mask}]/Filter/FlateDecode/DecodeParms<</Predictor 15/Colors {n}/BitsPerComponent 8/Columns {w}>>");
+        let dict = format!("/Type/XObject/Subtype/Image/Width {w}/Height {h}/ColorSpace {cs}/BitsPerComponent 8/Mask[{mask}]\
+            /Filter/FlateDecode/DecodeParms<</Predictor 15/Colors {n}/BitsPerComponent 8/Columns {w}>>");
         self.imgs.push(stream(&dict, &idat));
         Some((w, h))
     }
@@ -369,7 +414,8 @@ impl Pdf<'_> {
         for ((c, _), say) in slides.iter().zip(notes) {
             self.need(sh * k + 14.0);
             let (y, pg, b) = (self.y, self.pages.len(), self.h - self.y - sh * k);
-            w!(self.out(), "q q {k:.5} 0 0 {k:.5} {x0:.2} {b:.2} cm 0 0 {sw} {sh} re W n\n{c}Q {line} RG 0.5 w {x0:.2} {b:.2} {bw:.2} {:.2} re S Q\n", sh * k);
+            w!(self.out(), "q q {k:.5} 0 0 {k:.5} {x0:.2} {b:.2} cm 0 0 {sw} {sh} re W n\n{c}Q "); // the slide, scaled and clipped
+            w!(self.out(), "{line} RG 0.5 w {x0:.2} {b:.2} {bw:.2} {:.2} re S Q\n", sh * k); // and its border
             (self.x, self.col) = (x0 + bw + 14.0, self.w - 2.0 * x0 - bw - 14.0);
             say.iter().for_each(|t| self.para(t, St(0, 9.5, self.pal[3], 0), 0.0));
             (self.x, self.col) = (x0, self.w - 2.0 * x0);
@@ -382,7 +428,7 @@ impl Pdf<'_> {
         if !self.need(b.1 + b.2 + 12.0) { return }
         let (x, y) = (self.x + (self.col - b.0) / 2.0, self.y + b.1 + 6.0);
         self.y = y + b.2 + 8.0;
-        self.mdraw(b, x, y, self.pal[2]);
+        self.mdraw(&b, x, y, self.pal[2]);
     }
 
     /// The file: catalog, pages, info, shared resources, fonts, images, then each page.
@@ -392,23 +438,30 @@ impl Pdf<'_> {
         let mut fonts = String::new();
         for (i, (_, f)) in self.fonts.iter().enumerate() {
             let file = add(stream("/Subtype/OpenType", &f.data));
-            let m = &f.m;
-            let desc = add(format!("<</Type/FontDescriptor/FontName/F{i}/Flags 4/FontBBox[{} {} {} {}]/ItalicAngle 0/Ascent {}/Descent {}/CapHeight {4}/StemV 80/FontFile3 {file} 0 R>>", m[0], m[1], m[2], m[3], m[4], m[5]).into_bytes());
+            let [x0, y0, x1, y1, asc, desc] = f.m;
+            let desc = add(format!("<</Type/FontDescriptor/FontName/F{i}/Flags 4/FontBBox[{x0} {y0} {x1} {y1}]/ItalicAngle 0\
+                /Ascent {asc}/Descent {desc}/CapHeight {asc}/StemV 80/FontFile3 {file} 0 R>>").into());
             let ws: Vec<String> = (0..f.nh).map(|g| f.adv(g).to_string()).collect();
-            let cid = add(format!("<</Type/Font/Subtype/CIDFontType0/BaseFont/F{i}/CIDSystemInfo<</Registry(Adobe)/Ordering(Identity)/Supplement 0>>/FontDescriptor {desc} 0 R/DW {}/W[0[{}]]>>", f.adv(f.nh), ws.join(" ")).into_bytes());
-            let map: Vec<String> = f.used.iter().filter(|u| *u.0 > 0).map(|(g, c)| format!("<{g:04X}><{}>", c.encode_utf16(&mut [0; 2]).iter().map(|u| format!("{u:04X}")).collect::<String>())).collect();
+            let cid = add(format!("<</Type/Font/Subtype/CIDFontType0/BaseFont/F{i}/CIDSystemInfo<</Registry(Adobe)/Ordering(Identity)\
+                /Supplement 0>>/FontDescriptor {desc} 0 R/DW {}/W[0[{}]]>>", f.adv(f.nh), ws.join(" ")).into());
+            // ToUnicode: each glyph used back to its character, in blocks of at most 100.
+            let map: Vec<String> = f.used.iter().filter(|u| *u.0 > 0).map(|(g, c)| format!("<{g:04X}><{}>", utf16(&c.to_string()))).collect();
             let cmap: String = map.chunks(100).map(|c| format!("{} beginbfchar\n{}\nendbfchar\n", c.len(), c.join("\n"))).collect();
-            let cmap = format!("/CIDInit/ProcSet findresource begin 12 dict begin begincmap/CIDSystemInfo<</Registry(Adobe)/Ordering(UCS)/Supplement 0>>def/CMapName/Adobe-Identity-UCS def/CMapType 2 def\n1 begincodespacerange <0000><FFFF> endcodespacerange\n{cmap}endcmap CMapName currentdict/CMap defineresource pop end end");
+            let cmap = format!("/CIDInit/ProcSet findresource begin 12 dict begin begincmap\
+                /CIDSystemInfo<</Registry(Adobe)/Ordering(UCS)/Supplement 0>>def/CMapName/Adobe-Identity-UCS def/CMapType 2 def\n\
+                1 begincodespacerange <0000><FFFF> endcodespacerange\n{cmap}endcmap CMapName currentdict/CMap defineresource pop end end");
             let tu = add(stream("", cmap.as_bytes()));
-            w!(fonts, "/F{i} {} 0 R", add(format!("<</Type/Font/Subtype/Type0/BaseFont/F{i}/Encoding/Identity-H/DescendantFonts[{cid} 0 R]/ToUnicode {tu} 0 R>>").into_bytes()));
+            let font = format!("<</Type/Font/Subtype/Type0/BaseFont/F{i}/Encoding/Identity-H/DescendantFonts[{cid} 0 R]/ToUnicode {tu} 0 R>>");
+            w!(fonts, "/F{i} {} 0 R", add(font.into()));
         }
         let imgs: String = self.imgs.into_iter().enumerate().map(|(i, b)| format!("/I{i} {} 0 R", add(b))).collect();
         let gs: String = self.gs.iter().map(|(k, v)| format!("{k}{v}")).collect();
         let kids: Vec<String> = self.pages.iter().map(|(c, a)| {
             let c = add(stream("", c.as_bytes()));
-            format!("{} 0 R", add(format!("<</Type/Page/Parent 2 0 R/MediaBox[0 0 {} {}]/Resources 4 0 R/Contents {c} 0 R/Annots[{a}]>>", self.w, self.h).into_bytes()))
+            let page = format!("<</Type/Page/Parent 2 0 R/MediaBox[0 0 {} {}]/Resources 4 0 R/Contents {c} 0 R/Annots[{a}]>>", self.w, self.h);
+            format!("{} 0 R", add(page.into()))
         }).collect();
-        let title: String = title.encode_utf16().map(|u| format!("{u:04X}")).collect();
+        let title = utf16(title);
         objs[0] = b"<</Type/Catalog/Pages 2 0 R/Lang(en)>>".to_vec();
         objs[1] = format!("<</Type/Pages/Kids[{}]/Count {}>>", kids.join(" "), kids.len()).into_bytes();
         objs[2] = format!("<</Title<FEFF{title}>/Producer(newsite engine {})>>", crate::VERSION).into_bytes();
@@ -419,7 +472,9 @@ impl Pdf<'_> {
             o.extend([format!("{} 0 obj\n", i + 1).as_bytes(), b, b"\nendobj\n"].concat());
         }
         let (id, n) = (&pack::sha256(&o)[..32], objs.len() + 1);
-        o.extend(format!("xref\n0 {n}\n0000000000 65535 f \n{at}trailer\n<</Size {n}/Root 1 0 R/Info 3 0 R/ID[<{id}><{id}>]>>\nstartxref\n{}\n%%EOF\n", o.len()).as_bytes());
+        let start = o.len();
+        o.extend(format!("xref\n0 {n}\n0000000000 65535 f \n{at}trailer\n<</Size {n}/Root 1 0 R/Info 3 0 R/ID[<{id}><{id}>]>>\n").as_bytes());
+        o.extend(format!("startxref\n{start}\n%%EOF\n").as_bytes());
         o
     }
 }
@@ -432,7 +487,8 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
     let pal = theme::palette(theme::export(match d.get("theme") { "" => "site", t => t }, d.get("print")), d.get("colors"));
     let mut p = Pdf { get, fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, x: mx, col: w - 2.0 * mx, y: 0.0, slides, fig: 0 };
     let (fg, fg2, muted, text) = (pal[2], pal[3], pal[4], St(0, if slides { 13.0 } else { 11.0 }, pal[3], 0));
-    let sc: Vec<u32> = d.get("palette").split_whitespace().filter_map(|c| u32::from_str_radix(c.trim_start_matches('#'), 16).ok()).chain([0; 4]).collect();
+    let (seed, hex) = (d.get("seed").parse().unwrap_or(1), |c: &str| u32::from_str_radix(c.trim_start_matches('#'), 16).ok());
+    let sc: Vec<u32> = d.get("palette").split_whitespace().filter_map(hex).chain([0; 4]).collect();
     p.page();
     p.para(d.get("title"), St(1, if slides { 32.0 } else { 22.0 }, fg, 0), 0.0);
     p.para(d.get("summary"), St(1, 13.0, fg2, 0), 0.0);
@@ -442,20 +498,25 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
         match b {
             B::H(2, t, _) if let Some(c) = chapters.iter().find(|c| c.at == at) => {
                 (skip, n) = (false, n + 1);
-                let ops = c.scene.map(|sn| scene::list(d.get("seed").parse().unwrap_or(1), sn, c.t, c.p, -1.0, -1.0, stage, [sc[0], sc[1], sc[2], sc[3]]));
+                let ops = c.scene.map(|sn| scene::list(seed, sn, c.t, c.p, -1.0, -1.0, stage, [sc[0], sc[1], sc[2], sc[3]]));
                 if slides {
                     (p.x, p.col) = (mx, w - 2.0 * mx);
                     notes.push(vec![]);
                     p.page();
                     p.para(t, St(1, 26.0, fg, 0), 0.0);
                     let s = h - p.y - m;
-                    if let Some(ops) = ops { (p.frame(&ops, w - mx - s, p.y, s), p.col = w - 3.0 * mx - s); }
+                    if let Some(ops) = ops {
+                        p.frame(&ops, w - mx - s, p.y, s); // the scene on the right, the text beside it
+                        p.col = w - 3.0 * mx - s;
+                    }
                     continue;
                 }
                 let s = if ops.is_some() { p.col * 0.45 } else { 0.0 };
                 p.need(s + 66.0);
                 p.heading(&if form == 3 { format!("{n}  {t}") } else { t.clone() }, 14.0);
-                if let Some(ops) = ops && p.figure(s, s, &mut |p, x, y| p.frame(&ops, x, y, s)) { p.caption(&format!("{t}, at t = {} s.", c.t), true) }
+                if let Some(ops) = ops && p.figure(s, s, &mut |p, x, y| p.frame(&ops, x, y, s)) {
+                    p.caption(&format!("{t}, at t = {} s.", c.t), true)
+                }
             }
             // On slides, a part (`#`) is left out with what follows it, up to the next heading.
             B::H(1, _, _) if slides => skip = true,
@@ -505,8 +566,9 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
 mod tests {
     #[test]
     fn malformed_input_does_not_panic() {
-        let png = |chunks: &[(&[u8], &[u8])]| [b"\x89PNG\r\n\x1a\n".to_vec(), chunks.iter().flat_map(|(t, d)| [&(d.len() as u32).to_be_bytes()[..], t, d, &[0; 4]].concat()).collect()].concat();
-        let bad = [png(&[(b"IHDR", &[0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 0, 0, 0])]), png(&[(b"IHDR", &[1])]), b"\x89PNG\r\n\x1a\n\xff\xff\xff\xffIDAT".to_vec(), vec![]];
+        let png = |t: &[u8], d: &[u8]| [b"\x89PNG\r\n\x1a\n", &(d.len() as u32).to_be_bytes()[..], t, d, &[0; 4]].concat();
+        // An empty palette, a short header, a chunk running past the end, and nothing.
+        let bad = [png(b"IHDR", &[0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 0, 0, 0]), png(b"IHDR", &[1]), b"\x89PNG\r\n\x1a\n\xff\xff\xff\xffIDAT".to_vec(), vec![]];
         let d = crate::doc::parse("---\ntitle: T\n---\n## A {scene=8}\n\n![x](x.png)\n\n$$\n\\frac{\n$$\n\n```rust\nlet a = 1;\n```");
         for b in bad {
             for form in 0..super::FORMS.len() {

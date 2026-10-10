@@ -51,7 +51,7 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
 ```
 
 - Each `##` heading is a chapter. A chapter shows a scene only when its heading names one
-  (`## The budget {scene=8 t=7}`); scenes are not inherited, and a frame equal to the previous
+  (`## The link {scene=6 t=7}`); scenes are not inherited, and a frame equal to the previous
   chapter's is dropped, so no picture repeats from slide to slide. `#` headings fold.
 - ```` ```rust ```` fences are cells. Cells run in data-flow order, never in page order: a cell that
   uses `x` runs after the cell whose top-level `let x` defines it, each name has one defining cell,

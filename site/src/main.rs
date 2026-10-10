@@ -18,7 +18,8 @@ const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
 use doc::esc;
 
 fn font_css(n: usize) -> String {
-    FONTS[..n].iter().map(|(fam, f)| format!("@font-face{{font-family:\"{fam}\";src:url({}) format(\"opentype\")}}\n", pack::data_url("f.otf", &font(f)))).collect()
+    let face = |fam: &str, f: &str| format!("@font-face{{font-family:\"{fam}\";src:url({}) format(\"opentype\")}}\n", pack::data_url("f.otf", &font(f)));
+    FONTS[..n].iter().map(|(fam, f)| face(fam, f)).collect()
 }
 
 /// A seeded thumbnail (`engine::thumb`): the seed alone picks its picture, palette and motion.
@@ -26,19 +27,9 @@ fn thumb(seed: u32, extra: &str) -> String {
     format!(r#"<canvas class="frame" data-scene="{}" data-seed="{seed}" {extra} aria-hidden="true"></canvas>"#, engine::scene::THUMB)
 }
 
-/// A scene palette (sky, shade, glow, light) as CSS custom properties.
-pub fn vars(palette: &str) -> String {
-    ["--sky", "--shade", "--glow", "--light"].iter().zip(palette.split_whitespace()).map(|(k, v)| format!("{k}:{v};")).collect()
-}
-
-pub struct Page {
-    pub path: String,
-    pub title: String,
-    pub body: String,
-    pub attrs: String,
-    pub fonts: usize,
-    pub script: String,
-}
+/// One HTML page: its path under dist/, title, body, attributes on <html>, how many `FONTS` it
+/// embeds, and its scripts (by default the engine and host when it has a canvas).
+pub struct Page { pub path: String, pub title: String, pub body: String, pub attrs: String, pub fonts: usize, pub script: String }
 
 impl Page {
     fn new(path: &str, title: &str, body: String) -> Page {
@@ -53,13 +44,15 @@ fn index(entries: &[(String, String, String)]) -> String {
 
 fn render(p: &Page, wasm: &str, index: &str) -> String {
     let root = "../".repeat(p.path.matches('/').count());
-    let script = if !p.script.is_empty() { p.script.clone() } else if p.body.contains("<canvas") {
-        format!(r#"<footer class="top"><span data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></footer><script id="wasm" type="application/octet-stream">{wasm}</script>
-<script>{HOST}</script>"#)
-    } else { String::new() };
+    let footer = r#"<footer class="top"><span data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></footer>"#;
+    let script = match () {
+        _ if !p.script.is_empty() => p.script.clone(),
+        _ if p.body.contains("<canvas") => format!("{footer}<script id=\"wasm\" type=\"application/octet-stream\">{wasm}</script>\n<script>{HOST}</script>"),
+        _ => String::new(),
+    };
     SHELL.replace("{{attrs}}", &p.attrs).replace("{{title}}", &esc(&p.title)).replace("{{root}}", &root)
-        .replace("{{style}}", &(font_css(p.fonts) + &theme::css() + STYLE)).replace("{{body}}", &p.body).replace("{{script}}", &script).replace("{{index}}", index)
-        .replace("{{themes}}", &themes())
+        .replace("{{style}}", &(font_css(p.fonts) + &theme::css() + STYLE)).replace("{{body}}", &p.body).replace("{{script}}", &script)
+        .replace("{{index}}", index).replace("{{themes}}", &themes())
 }
 
 /// The header's theme dialog: one button per family, its swatch the light and dark background and accent.
@@ -67,7 +60,8 @@ fn themes() -> String {
     theme::THEMES.iter().map(|(f, _, _, l, d)| {
         let c = |p: &str, i: usize| p.split(' ').nth(i).unwrap_or("000000").to_string();
         let name: Vec<String> = f.split('-').map(|w| w[..1].to_uppercase() + &w[1..]).collect();
-        format!(r#"<button type="button" value="{f}" style="--a:#{};--b:#{};--c:#{};--d:#{}"><i></i>{}</button>"#, c(l, 0), c(l, 6), c(d, 0), c(d, 6), name.join(" "))
+        let swatch = format!("--a:#{};--b:#{};--c:#{};--d:#{}", c(l, 0), c(l, 6), c(d, 0), c(d, 6));
+        format!(r#"<button type="button" value="{f}" style="{swatch}"><i></i>{}</button>"#, name.join(" "))
     }).collect()
 }
 
@@ -159,12 +153,17 @@ fn notes(path: &str) -> (String, Vec<(String, String, String)>) {
         if let Some(t) = text.as_ref().filter(|_| x.len() < 400) { *x += &format!("{t} ") }
     }
     // Every aligned block lies inside one root, so each well-formed summary is shown.
-    let shown = sums.iter().filter(|((lo, hi), t)| t.is_some() && lo < hi && *hi < notes.len() && (hi - lo + 1).is_power_of_two() && lo % (hi - lo + 1) == 0).count();
+    let aligned = |lo: usize, hi: usize| lo < hi && hi < notes.len() && (hi - lo + 1).is_power_of_two() && lo % (hi - lo + 1) == 0;
+    let shown = sums.iter().filter(|(k, t)| t.is_some() && aligned(k.0, k.1)).count();
     let mut tree = String::new();
     for (lo, size) in roots(notes.len()) { branch(&mut tree, &notes, &sums, lo, size, true) }
-    (format!(r#"<p class="lede">{} notes and {shown} summaries from UniiChat, oldest first. Each summary stands for the notes beneath it.</p>
-<form class="sift" role="search"><input type="search" placeholder="Search notes and summaries" aria-label="Search notes and summaries" autocomplete="off" spellcheck="false"><button type="button" value="s" aria-pressed="true">Summaries</button><button type="button" value="n" aria-pressed="true">Notes</button><output aria-live="polite"></output></form>
-<ol class="hits" hidden></ol><ol class="tree">{tree}</ol>"#, notes.len()), found)
+    let search = concat!(
+        r#"<form class="sift" role="search"><input type="search" placeholder="Search notes and summaries" aria-label="Search notes and summaries" "#,
+        r#"autocomplete="off" spellcheck="false"><button type="button" value="s" aria-pressed="true">Summaries</button>"#,
+        r#"<button type="button" value="n" aria-pressed="true">Notes</button><output aria-live="polite"></output></form>"#
+    );
+    let lede = format!("{} notes and {shown} summaries from UniiChat, oldest first. Each summary stands for the notes beneath it.", notes.len());
+    (format!("<p class=\"lede\">{lede}</p>\n{search}\n<ol class=\"hits\" hidden></ol><ol class=\"tree\">{tree}</ol>"), found)
 }
 
 fn main() {
@@ -188,15 +187,17 @@ fn main() {
         ("stories", 3_434, "Stories", "Visual explanations, told in order."),
         ("play", 5_113, "Play", "Toys to play with."),
     ];
-    let doors: String = DOORS.iter().map(|(dir, seed, name, line)| format!(r#"<a class="door" href="{dir}/index.html">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, thumb(*seed, "data-bleed"))).collect();
+    let doors: String = DOORS.iter().map(|(dir, seed, name, line)| format!(
+        r#"<a class="door" href="{dir}/index.html">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, thumb(*seed, "data-bleed"))).collect();
     let cards: String = stories.iter().map(|s| format!(
         r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
         s.slug, s.thumb.map_or(String::new(), |seed| thumb(seed, "")), esc(&s.title), esc(&s.summary))).collect();
     let (notes, mut found) = notes(&notes_path);
     found.splice(0..0, DOORS.iter().map(|(dir, _, name, line)| (name.to_string(), format!("{dir}/index.html"), line.to_string())));
     for s in &stories {
-        found.push((s.title.clone(), format!("stories/{}/index.html", s.slug), s.summary.clone()));
-        found.extend(s.chapters.iter().enumerate().map(|(i, c)| (format!("{} · {c}", s.title), format!("stories/{}/index.html#c{}", s.slug, i + 1), String::new())));
+        let page = format!("stories/{}/index.html", s.slug);
+        found.push((s.title.clone(), page.clone(), s.summary.clone()));
+        found.extend(s.chapters.iter().enumerate().map(|(i, c)| (format!("{} · {c}", s.title), format!("{page}#c{}", i + 1), String::new())));
     }
     let index = index(&found);
     pages.extend([
@@ -208,8 +209,12 @@ fn main() {
     ]);
     // The voice (kokoro.lock, scripts/kokoro.sh) is served beside the site when every pinned file
     // is present and matches; the build reads the Misaki lexicons itself, so they are not served.
-    let voice: Vec<_> = book::pins().filter(|p| !p.1.starts_with("misaki/")).map(|(h, p)| fs::read(format!("kokoro/{p}")).ok().filter(|b| pack::sha256(b) == h).map(|b| (format!("kokoro/{p}"), b))).collect();
-    if voice.iter().all(Option::is_some) { files.extend(voice.into_iter().flatten()) } else { eprintln!("kokoro/ incomplete: narration export needs scripts/kokoro.sh") }
+    let pinned = |(h, p): (&str, &str)| fs::read(format!("kokoro/{p}")).ok().filter(|b| pack::sha256(b) == h).map(|b| (format!("kokoro/{p}"), b));
+    let voice: Vec<_> = book::pins().filter(|p| !p.1.starts_with("misaki/")).map(pinned).collect();
+    match voice.into_iter().collect::<Option<Vec<_>>>() {
+        Some(v) => files.extend(v),
+        None => eprintln!("kokoro/ incomplete: narration export needs scripts/kokoro.sh"),
+    }
     let pages: Vec<(String, Vec<u8>)> = pages.iter().map(|p| (p.path.clone(), render(p, &wasm, &index).into_bytes())).collect();
     for (path, bytes) in pages.iter().chain(&files) {
         let out = Path::new("dist").join(path);

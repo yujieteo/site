@@ -132,7 +132,8 @@ pub fn order(cells: &[Cell]) -> Result<Vec<usize>, String> {
             return Err(format!("`{d}` is defined in cells {} and {}; give one a new name or prefix it with _", j + 1, k + 1));
         }
     }
-    let deps: Vec<Vec<usize>> = cells.iter().enumerate().map(|(k, c)| c.uses.iter().filter_map(|u| owner.get(u.as_str()).copied()).filter(|&j| j != k).collect()).collect();
+    let deps: Vec<Vec<usize>> = cells.iter().enumerate()
+        .map(|(k, c)| c.uses.iter().filter_map(|u| owner.get(u.as_str()).copied()).filter(|&j| j != k).collect()).collect();
     let mut out = vec![];
     while let Some(k) = (0..cells.len()).find(|k| !out.contains(k) && deps[*k].iter().all(|j| out.contains(j))) { out.push(k) }
     let left: Vec<String> = (0..cells.len()).filter(|k| !out.contains(k)).map(|k| (k + 1).to_string()).collect();
@@ -150,7 +151,8 @@ pub fn exports(cells: &[Cell]) -> Vec<Vec<String>> {
 /// Edited cells against compiled ones: each current cell shows the compiled output with the
 /// same text, or else the one at its position; changed cells and their dependants are stale.
 pub fn stale(now: &[&str], was: &[&str]) -> (Vec<Option<usize>>, Vec<bool>) {
-    let map: Vec<Option<usize>> = now.iter().enumerate().map(|(k, s)| was.iter().position(|w| w == s).or((k < was.len()).then_some(k))).collect();
+    let map: Vec<Option<usize>> = now.iter().enumerate()
+        .map(|(k, s)| was.iter().position(|w| w == s).or((k < was.len()).then_some(k))).collect();
     let mut st: Vec<bool> = now.iter().zip(&map).map(|(s, m)| m.is_none_or(|j| was[j] != *s)).collect();
     let cells: Vec<Cell> = now.iter().map(|s| split(s)).collect();
     loop {
@@ -166,24 +168,25 @@ fn sig(s: &str) -> Vec<(T, usize, usize)> {
     let mut v: Vec<(T, usize, usize)> = vec![];
     for (k, t) in lex(s).into_iter().filter(|x| !matches!(x.0, T::Ws | T::Com)) {
         let a = t.as_ptr() as usize - s.as_ptr() as usize;
-        match v.as_slice() {
-            [.., (T::Num, i, j), (T::P, _, e)] if s[*i..*j].ends_with(['e', 'E']) && !s[*i..].starts_with("0x") && matches!(&s[*j..*e], "+" | "-") && k == T::Num => {
-                let i = *i;
-                v.truncate(v.len() - 2);
-                v.push((T::Num, i, a + t.len()));
-            }
-            _ => v.push((k, a, a + t.len())),
+        if let [.., (T::Num, i, j), (T::P, _, e)] = v[..] && k == T::Num
+            && s[i..j].ends_with(['e', 'E']) && !s[i..].starts_with("0x") && matches!(&s[j..e], "+" | "-") {
+            v.truncate(v.len() - 2);
+            v.push((T::Num, i, a + t.len()));
+        } else {
+            v.push((k, a, a + t.len()));
         }
     }
     v
 }
 
-/// A float literal's value (`1.5`, `2e-3`, `1_000.0f32`, `7f64`), or None for an integer.
-fn float(t: &str) -> Option<f64> {
-    let core = t.trim_end_matches("f64").trim_end_matches("f32");
-    let f = core.len() < t.len() || core.contains(['.', 'e', 'E']);
-    (f && !t.contains(['u', 'i', 'x', 'o', 'b'])).then(|| core.replace('_', "").parse().ok()).flatten().filter(|x: &f64| x.is_finite())
+/// A decimal literal's value (`1.5`, `2e-3`, `1_000.0f32`, `7`): not hex, octal, binary or integer-typed.
+fn value(t: &str) -> Option<f64> {
+    let v = t.trim_end_matches("f64").trim_end_matches("f32").replace('_', "").parse().ok();
+    v.filter(|x: &f64| x.is_finite() && !t.contains(['u', 'i', 'x', 'o', 'b']))
 }
+
+/// A float literal: a decimal point, an exponent or a float suffix.
+fn float(t: &str) -> bool { value(t).is_some() && (t.ends_with("f64") || t.ends_with("f32") || t.contains(['.', 'e', 'E'])) }
 
 /// A cell's live numbers: the byte ranges of the float literals in its body, outside consts
 /// and statics, tuple fields and patterns. The builder reads each one through `nb::num`, so the
@@ -191,12 +194,15 @@ fn float(t: &str) -> Option<f64> {
 pub fn nums(s: &str) -> Vec<(usize, usize)> {
     let (body, t) = (split(s).body, sig(s));
     let (mut v, mut skip) = (vec![], false);
+    let tok = |j: usize| t.get(j).map_or("", |x| &s[x.1..x.2]);
     for (k, &(kind, a, e)) in t.iter().enumerate() {
         let w = &s[a..e];
         skip = (skip || matches!(w, "const" | "static")) && w != ";";
-        let tok = |j: usize| t.get(j).map_or("", |x| &s[x.1..x.2]);
-        if kind == T::Num && !skip && float(w).is_some() && (tok(k.wrapping_sub(1)) != "." || tok(k.wrapping_sub(2)) == ".") && !(tok(k + 1) == "=" && tok(k + 2) == ">")
-            && body.iter().any(|(o, b)| *o <= a && e <= o + b.len()) { v.push((a, e)) }
+        // `x.0.1` lexes as `x`, `.`, `0.1`: a tuple field, unlike the end of a range (`..1.0`).
+        let field = tok(k.wrapping_sub(1)) == "." && tok(k.wrapping_sub(2)) != ".";
+        let pattern = tok(k + 1) == "=" && tok(k + 2) == ">";
+        let in_body = body.iter().any(|(o, b)| *o <= a && e <= o + b.len());
+        if kind == T::Num && float(w) && !skip && !field && !pattern && in_body { v.push((a, e)) }
     }
     v
 }
@@ -214,10 +220,11 @@ pub fn retune<'a>(now: &[&'a str], was: &[&'a str]) -> (Vec<&'a str>, Vec<(usize
             let mut new = vec![];
             let same = tw.len() == tn.len() && tw.iter().zip(&tn).all(|(x, y)| {
                 let (a, b) = (&w[x.1..x.2], &n[y.1..y.2]);
-                match live.iter().position(|r| *r == (x.1, x.2)) {
-                    Some(j) => y.0 == T::Num && n.as_bytes()[y.1].is_ascii_digit() && !b.contains(['u', 'i', 'x', 'o', 'b']) && b.replace('_', "").trim_end_matches("f64").trim_end_matches("f32").parse::<f64>().is_ok_and(|v| v.is_finite() && (a == b || (new.push((first + j, v)), true).1)),
-                    None => a == b,
-                }
+                let Some(j) = live.iter().position(|r| *r == (x.1, x.2)) else { return a == b };
+                // A live number may become any decimal number.
+                let Some(v) = value(b).filter(|_| y.0 == T::Num) else { return false };
+                if a != b { new.push((first + j, v)) }
+                true
             });
             if same { (eff[k], set) = (w, [set, new].concat()) }
         }

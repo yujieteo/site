@@ -14,7 +14,8 @@ pub struct Vim {
 impl Default for Vim {
     fn default() -> Self {
         let msg = "i inserts, Esc returns, :w writes, :run runs, :q closes".into();
-        Vim { t: vec![], c: 0, mode: 'n', anchor: 0, pend: vec![], msg, reg: Default::default(), find: String::new(), undo: vec![], redo: vec![], act: String::new() }
+        let (t, pend, find, undo, redo, act) = Default::default();
+        Vim { t, c: 0, mode: 'n', anchor: 0, pend, msg, reg: Default::default(), find, undo, redo, act }
     }
 }
 
@@ -98,9 +99,31 @@ impl Vim {
             ['$'] => (e, 0),
             ['g', 'g'] => (self.at(if counted { n - 1 } else { 0 }, 0), 2),
             ['G'] => (self.at(if counted { n - 1 } else { usize::MAX }, 0), 2),
-            ['w'] => { for _ in 0..n { let k = cls(i); while i < len && k != 0 && cls(i) == k { i += 1 } while i < len && cls(i) == 0 { i += 1 } } (i, 0) }
-            ['e'] => { for _ in 0..n { i += 1; while i < len && cls(i) == 0 { i += 1 } while i + 1 < len && cls(i + 1) == cls(i) { i += 1 } } (i.min(len.max(1) - 1), 1) }
-            ['b'] => { for _ in 0..n { while i > 0 && cls(i - 1) == 0 { i -= 1 } let k = cls(i.max(1) - 1); while i > 0 && cls(i - 1) == k { i -= 1 } } (i, 0) }
+            // Words: past the rest of this one (w), to the end of the next (e), back to a start (b).
+            ['w'] => {
+                for _ in 0..n {
+                    let k = cls(i);
+                    while i < len && k != 0 && cls(i) == k { i += 1 }
+                    while i < len && cls(i) == 0 { i += 1 }
+                }
+                (i, 0)
+            }
+            ['e'] => {
+                for _ in 0..n {
+                    i += 1;
+                    while i < len && cls(i) == 0 { i += 1 }
+                    while i + 1 < len && cls(i + 1) == cls(i) { i += 1 }
+                }
+                (i.min(len.max(1) - 1), 1)
+            }
+            ['b'] => {
+                for _ in 0..n {
+                    while i > 0 && cls(i - 1) == 0 { i -= 1 }
+                    let k = cls(i.max(1) - 1);
+                    while i > 0 && cls(i - 1) == k { i -= 1 }
+                }
+                (i, 0)
+            }
             ['f' | 't', x] => { for _ in 0..n { i += 1 + t.get(i + 1..e)?.iter().position(|c| c == x)? } (i - (m[0] == 't') as usize, 1) }
             ['F' | 'T', x] => { for _ in 0..n { i = b + t[b..i].iter().rposition(|c| c == x)? } (i + (m[0] == 'T') as usize, 0) }
             ['n' | 'N'] => (self.search(m[0] == 'n')?, 0),
@@ -138,8 +161,9 @@ impl Vim {
                 _ => self.c = self.motion(m, n, counted)?.0,
             });
         }
-        let alias = match (op, m) { (None, ['x']) => "dl", (None, ['X']) => "dh", (None, ['D']) => "d$", (None, ['C']) => "c$", (None, ['s']) => "cl", (None, ['S']) => "cc", (None, ['Y']) => "yy", _ => "" };
-        if !alias.is_empty() { self.pend = p[..k].iter().copied().chain(alias.chars()).collect(); return self.normal() }
+        // Shorthands: x is dl, X dh, D d$, C c$, s cl, S cc and Y yy.
+        let alias = ["xdl", "Xdh", "Dd$", "Cc$", "scl", "Scc", "Yyy"].into_iter().find(|a| op.is_none() && m == [a.as_bytes()[0] as char]);
+        if let Some(a) = alias { self.pend = p[..k].iter().copied().chain(a[1..].chars()).collect(); return self.normal() }
         if let Some(o) = op {
             let word = o == 'c' && m == ['w'] && !self.t.get(c).is_none_or(|c| c.is_whitespace());
             let (mut to, kind) = if m == [o] { (self.at(self.line(c) + n - 1, 0), 2) } else { self.motion(if word { &['e'] } else { m }, n, counted)? };
@@ -157,9 +181,15 @@ impl Vim {
             ['p' | 'P'] => self.put(m[0] == 'p', n),
             ['u' | '\x12'] => for _ in 0..n { self.back(m[0] == 'u') },
             ['r', x] => if c + n <= self.eol(c) { self.snap(); self.t[c..c + n].fill(*x); self.c = c + n - 1 },
+            // Join: the line break and the next line's indent become one space.
             ['J'] => {
                 let e = self.eol(c);
-                if e < self.t.len() { self.snap(); let w = self.t[e + 1..].iter().take_while(|c| WS(c)).count(); self.t.splice(e..e + 1 + w, [' ']); self.c = e }
+                if e < self.t.len() {
+                    self.snap();
+                    let w = self.t[e + 1..].iter().take_while(|c| WS(c)).count();
+                    self.t.splice(e..e + 1 + w, [' ']);
+                    self.c = e;
+                }
             }
             _ => self.c = self.motion(m, n, counted)?.0,
         })

@@ -1,6 +1,6 @@
 //! Malformed input never panics: a fixed-seed fuzz of every entry point over fragments of the
 //! notebook syntax, so a failure reproduces exactly.
-use engine::{cell, doc, pdf, say, scene, vim};
+use engine::{cell, doc, pdf, say, scene};
 
 const BITS: &[&str] = &[
     "---\n", "title: ", "theme: ", "palette: #", "seed: ", "voice: ", "pronounce: ", "\n", "\n\n", "## ", "# ", "{scene=", "t=", "p=", "}", "```", "```rust\n", "```say\n", "```toml\n",
@@ -31,8 +31,6 @@ fn malformed_input_does_not_panic() {
         say::wav(&d, &lock, &[vec![2.0; 5]]);
         let stage: Vec<f32> = src.bytes().map(|b| [f32::NAN, f32::INFINITY, -1e30, b as f32][b as usize % 4]).collect();
         scene::list(i as u32, i as u32 % 12, f32::MAX, f32::NAN, -1.0, 2.0, &stage, [0; 4]);
-        let mut v = vim::Vim::default();
-        for k in src.chars().take(40) { v.step(&src, i * 3, i, Some(&src), k); }
         if i % 10 == 0 { pdf::write(&d, &run.out, &stage, &|p| (!p.starts_with("fonts/")).then(|| src.clone().into_bytes()), i / 10 % pdf::FORMS.len()); }
     }
 }

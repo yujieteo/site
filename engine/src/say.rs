@@ -17,12 +17,7 @@ pub const RATE: usize = 24_000;
 
 /// A spoken sentence: its chapter (0 before the first), text, phonemes (empty when any word is
 /// missing) and the missing words.
-pub struct Line {
-    pub chapter: usize,
-    pub text: String,
-    pub ph: String,
-    pub missing: Vec<String>,
-}
+pub struct Line { pub chapter: usize, pub text: String, pub ph: String, pub missing: Vec<String> }
 
 /// A sentence's words (letters, digits, apostrophes) and punctuation; anything else is a word too,
 /// so that it is reported rather than silently dropped.
@@ -42,9 +37,10 @@ pub fn sentences(d: &Doc) -> Vec<(usize, String)> {
     let mut ch = 0;
     d.blocks.iter().flat_map(|b| match b {
         B::H(2, ..) => (ch += 1, vec![]).1,
+        // A paragraph's words on one line, then a line per sentence.
         B::C(l, s, _) if l == "say" => s.split("\n\n").flat_map(|p| {
-            let p = p.split_whitespace().collect::<Vec<_>>().join(" ").replace(". ", ".\n").replace("? ", "?\n").replace("! ", "!\n");
-            p.lines().map(|x| (ch, x.to_string())).collect::<Vec<_>>()
+            let p = p.split_whitespace().collect::<Vec<_>>().join(" ");
+            p.replace(". ", ".\n").replace("? ", "?\n").replace("! ", "!\n").lines().map(|x| (ch, x.to_string())).collect::<Vec<_>>()
         }).collect(),
         _ => vec![],
     }).collect()
@@ -82,7 +78,8 @@ pub fn ipa(ph: &str) -> String {
 
 /// The plan the page speaks: voice, speed and each line's text and phonemes, as JSON.
 pub fn plan(d: &Doc, lock: &str) -> String {
-    let l: Vec<String> = lines(d, lock).iter().map(|l| format!("{{\"chapter\":{},\"text\":{},\"ph\":{}}}", l.chapter, pack::json(&l.text), pack::json(&l.ph))).collect();
+    let l: Vec<String> = lines(d, lock).iter()
+        .map(|l| format!("{{\"chapter\":{},\"text\":{},\"ph\":{}}}", l.chapter, pack::json(&l.text), pack::json(&l.ph))).collect();
     format!("{{\"voice\":{},\"speed\":{},\"lines\":[{}]}}", pack::json(voice(d)), speed(d), l.join(","))
 }
 
@@ -109,7 +106,8 @@ pub fn wav(d: &Doc, lock: &str, audio: &[Vec<f32>]) -> Vec<u8> {
         pcm[*s..s + a.len()].iter_mut().zip(a).for_each(|(o, x)| *o = (x.clamp(-1.0, 1.0) * 32767.0).round() as i16);
     }
     let len = 2 * n as u32;
-    let head: Vec<u32> = vec![0x4646_4952, 36 + len, 0x4556_4157, 0x2074_6d66, 16, 0x0001_0001, RATE as u32, 2 * RATE as u32, 0x0010_0002, 0x6174_6164, len];
+    // "RIFF", size, "WAVE", "fmt ", 16, PCM and mono, rate, bytes a second, 2-byte frames of 16 bits, "data", size.
+    let head = [0x4646_4952, 36 + len, 0x4556_4157, 0x2074_6d66, 16, 0x0001_0001, RATE as u32, 2 * RATE as u32, 0x0010_0002, 0x6174_6164, len];
     head.iter().flat_map(|v| v.to_le_bytes()).chain(pcm.iter().flat_map(|v| v.to_le_bytes())).collect()
 }
 
@@ -123,11 +121,18 @@ pub fn times(d: &Doc, lock: &str, audio: &[Vec<f32>]) -> Vec<u8> {
 pub fn vtt(d: &Doc, lock: &str, audio: &[Vec<f32>]) -> String {
     let lines = lines(d, lock);
     let (starts, _) = schedule(&lines, audio);
-    let ts = |s: usize| { let ms = s * 1000 / RATE; format!("{:02}:{:02}:{:02}.{:03}", ms / 3_600_000, ms / 60_000 % 60, ms / 1000 % 60, ms % 1000) };
-    let mut o = format!("WEBVTT\n\nNOTE\n{}: voice {} at speed {}, Kokoro-82M v1.0 (q8, kokoro-js 1.2.1; see kokoro.lock). Podcast sha256 {}.\n", d.get("title"), voice(d), speed(d), pack::sha256(&wav(d, lock, audio)));
+    let ts = |s: usize| {
+        let ms = s * 1000 / RATE;
+        format!("{:02}:{:02}:{:02}.{:03}", ms / 3_600_000, ms / 60_000 % 60, ms / 1000 % 60, ms % 1000)
+    };
+    let mut o = format!("WEBVTT\n\nNOTE\n{}: voice {} at speed {}, ", d.get("title"), voice(d), speed(d));
+    w!(o, "Kokoro-82M v1.0 (q8, kokoro-js 1.2.1; see kokoro.lock). Podcast sha256 {}.\n", pack::sha256(&wav(d, lock, audio)));
     for ((l, a), s) in lines.iter().zip(audio).zip(starts) {
         let bytes: Vec<u8> = a.iter().flat_map(|x| x.to_le_bytes()).collect();
-        let how = if l.ph.is_empty() { format!("fallback (kokoro-js G2P) for: {}", l.missing.join(" ")) } else { format!("ipa: {}\nphonemes: {}", ipa(&l.ph), l.ph) };
+        let how = match l.ph.as_str() {
+            "" => format!("fallback (kokoro-js G2P) for: {}", l.missing.join(" ")),
+            ph => format!("ipa: {}\nphonemes: {ph}", ipa(ph)),
+        };
         w!(o, "\nNOTE\n{how}\naudio sha256: {}\n\n{} --> {}\n{}\n", pack::sha256(&bytes), ts(s), ts(s + a.len()), l.text);
     }
     o

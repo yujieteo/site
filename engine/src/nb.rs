@@ -38,7 +38,7 @@ pub fn cell(i: usize) {
 
 pub fn text(s: &str) { with(|b| b.pre += s) }
 
-pub fn html(h: &str) { with(|b| (flush(b), b.out[b.cell] += h).1) }
+pub fn html(h: &str) { with(|b| { flush(b); b.out[b.cell] += h }) }
 
 #[macro_export]
 macro_rules! println {
@@ -56,7 +56,8 @@ fn input(b: &mut Book) -> Option<f64> { b.n += 1; INPUT.with_borrow(|v| v.get(b.
 pub fn slider(label: &str, min: f64, max: f64, step: f64, value: f64) -> f64 {
     with(|b| {
         let (k, v) = (b.n, input(b).map_or(value, |v| v.clamp(min, max)));
-        w!(b.ctl[b.cell], "<label>{} <input type=\"range\" data-k=\"{k}\" min=\"{min}\" max=\"{max}\" step=\"{step}\" value=\"{v}\"><output>{v}</output></label>", esc(label));
+        let range = format!("<input type=\"range\" data-k=\"{k}\" min=\"{min}\" max=\"{max}\" step=\"{step}\" value=\"{v}\">");
+        w!(b.ctl[b.cell], "<label>{} {range}<output>{v}</output></label>", esc(label));
         v
     })
 }
@@ -65,7 +66,8 @@ pub fn slider(label: &str, min: f64, max: f64, step: f64, value: f64) -> f64 {
 pub fn choice(label: &str, opts: &[&str], default: usize) -> usize {
     with(|b| {
         let (k, v) = (b.n, input(b).map_or(default, |v| v as usize).min(opts.len().saturating_sub(1)));
-        let o: String = opts.iter().enumerate().map(|(i, o)| format!("<option value=\"{i}\"{}>{}</option>", if i == v { " selected" } else { "" }, esc(o))).collect();
+        let sel = |i: usize| if i == v { " selected" } else { "" };
+        let o: String = opts.iter().enumerate().map(|(i, o)| format!("<option value=\"{i}\"{}>{}</option>", sel(i), esc(o))).collect();
         w!(b.ctl[b.cell], "<label>{} <select data-k=\"{k}\">{o}</select></label>", esc(label));
         v
     })
@@ -113,21 +115,25 @@ impl Plot {
         let mut s = String::from("<svg class=\"plot\" viewBox=\"0 0 640 400\" role=\"img\">");
         let ((xt, xd), (yt, yd)) = (ticks(x0, x1), ticks(y0, y1));
         for v in &xt {
-            w!(s, "<line class=\"gr\" x1=\"{0:.1}\" y1=\"{t}\" x2=\"{0:.1}\" y2=\"{b}\"/><text class=\"ax\" x=\"{0:.1}\" y=\"372\" text-anchor=\"middle\">{1:.2$}</text>", px(*v), v, xd);
+            w!(s, "<line class=\"gr\" x1=\"{0:.1}\" y1=\"{t}\" x2=\"{0:.1}\" y2=\"{b}\"/>", px(*v));
+            w!(s, "<text class=\"ax\" x=\"{:.1}\" y=\"372\" text-anchor=\"middle\">{:.2$}</text>", px(*v), v, xd);
         }
         for v in &yt {
-            w!(s, "<line class=\"gr\" x1=\"{l}\" y1=\"{0:.1}\" x2=\"{r}\" y2=\"{0:.1}\"/><text class=\"ax\" x=\"56\" y=\"{1:.1}\" text-anchor=\"end\">{2:.3$}</text>", py(*v), py(*v) + 5.0, v, yd);
+            w!(s, "<line class=\"gr\" x1=\"{l}\" y1=\"{0:.1}\" x2=\"{r}\" y2=\"{0:.1}\"/>", py(*v));
+            w!(s, "<text class=\"ax\" x=\"56\" y=\"{:.1}\" text-anchor=\"end\">{:.2$}</text>", py(*v) + 5.0, v, yd);
         }
         self.rules.iter().filter(|v| (y0..=y1).contains(*v)).for_each(|v| w!(s, "<line class=\"rl\" x1=\"{l}\" y1=\"{0:.1}\" x2=\"{r}\" y2=\"{0:.1}\"/>", py(*v)));
         for (i, (x, y, dots)) in self.series.iter().enumerate() {
-            let p: Vec<(f64, f64)> = x.iter().zip(y).filter(|p| p.0.is_finite() && p.1.is_finite()).map(|p| (px(*p.0), py(p.1.clamp(y0, y1)))).collect();
+            let p: Vec<(f64, f64)> = x.iter().zip(y).filter(|p| p.0.is_finite() && p.1.is_finite())
+                .map(|p| (px(*p.0), py(p.1.clamp(y0, y1)))).collect();
             if *dots {
                 p.iter().for_each(|q| w!(s, "<circle class=\"d{}\" cx=\"{:.1}\" cy=\"{:.1}\" r=\"4\"/>", i % 4, q.0, q.1));
             } else if !p.is_empty() {
                 w!(s, "<path class=\"l{}\" d=\"M{}\"/>", i % 4, p.iter().map(|q| format!("{:.1} {:.1}", q.0, q.1)).collect::<Vec<_>>().join("L"));
             }
         }
-        w!(s, "<text class=\"ax\" x=\"{r}\" y=\"396\" text-anchor=\"end\">{}</text><text class=\"ax\" x=\"{l}\" y=\"11\">{}</text></svg>", esc(&self.labels.0), esc(&self.labels.1));
+        w!(s, "<text class=\"ax\" x=\"{r}\" y=\"396\" text-anchor=\"end\">{}</text>", esc(&self.labels.0));
+        w!(s, "<text class=\"ax\" x=\"{l}\" y=\"11\">{}</text></svg>", esc(&self.labels.1));
         s
     }
 }
@@ -163,15 +169,16 @@ pub fn native(program: Program) {
     if !s.ends_with("\"err\":null}") { std::process::exit(1) }
 }
 
-#[unsafe(no_mangle)]
-pub extern "C" fn nb_input(k: u32, v: f64) {
-    INPUT.with_borrow_mut(|i| (i.resize(i.len().max(k as usize + 1), f64::NAN), i[k as usize] = v).1)
+/// The host sets control `k` (`nb_input`) or live number `k` (`nb_num`); unset ones are NaN.
+fn set(list: &'static std::thread::LocalKey<RefCell<Vec<f64>>>, k: u32, v: f64) {
+    list.with_borrow_mut(|l| { l.resize(l.len().max(k as usize + 1), f64::NAN); l[k as usize] = v })
 }
 
 #[unsafe(no_mangle)]
-pub extern "C" fn nb_num(k: u32, v: f64) {
-    NUMS.with_borrow_mut(|i| (i.resize(i.len().max(k as usize + 1), f64::NAN), i[k as usize] = v).1)
-}
+pub extern "C" fn nb_input(k: u32, v: f64) { set(&INPUT, k, v) }
+
+#[unsafe(no_mangle)]
+pub extern "C" fn nb_num(k: u32, v: f64) { set(&NUMS, k, v) }
 
 /// The cell running when the program stopped (after a trap).
 #[unsafe(no_mangle)]
@@ -194,7 +201,8 @@ mod tests {
     #[test]
     fn runs_from_clean_state_with_inputs() {
         let a = run(prog);
-        assert!(a.contains("\"out\":[\"\\u003cpre class=\\\"txt\\\">a = 3\\u003c/pre>\"") && a.contains("\"stage\":[3,null]") && a.ends_with("\"err\":\"cell 2: stop\"}"));
+        assert!(a.contains("\"out\":[\"\\u003cpre class=\\\"txt\\\">a = 3\\u003c/pre>\""));
+        assert!(a.contains("\"stage\":[3,null]") && a.ends_with("\"err\":\"cell 2: stop\"}"));
         nb_input(0, 7.0);
         assert!(run(prog).contains("a = 7") && run(prog) == run(prog));
         nb_input(0, 99.0);

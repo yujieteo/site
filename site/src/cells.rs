@@ -39,7 +39,7 @@ pub fn program(d: &Doc) -> Result<(String, Vec<usize>), String> {
     let split: Vec<cell::Cell> = cells.iter().map(|c| cell::split(c.0)).collect();
     let (order, ex) = (cell::order(&split)?, cell::exports(&split));
     let live: Vec<Vec<(usize, usize)>> = cells.iter().map(|c| cell::nums(c.0)).collect();
-    let first: Vec<usize> = live.iter().scan(0, |n, l| Some((*n, *n += l.len()).0)).collect();
+    let first: Vec<usize> = live.iter().scan(0, |n, l| { let k = *n; *n += l.len(); Some(k) }).collect(); // each cell's first live number
     let (mut src, mut map) = (String::new(), vec![]);
     let mut put = |text: &str, md: usize| {
         src += &format!("{text}\n");
@@ -84,7 +84,7 @@ fn locate(msg: &str, map: &[usize], md: &str) -> String {
 pub fn build(slug: &str, dir: &Path, d: &Doc) -> Result<Built, String> {
     let (src, map) = program(d)?;
     let root = Path::new("target/nb").join(slug);
-    let deps = d.fence("toml").join("\n");
+    let deps = d.fence("toml").iter().map(|f| f.0).collect::<Vec<_>>().join("\n");
     fs::create_dir_all(root.join("src")).map_err(|e| e.to_string())?;
     let write = |p: &str, s: &str| fs::write(root.join(p), s).map_err(|e| e.to_string());
     write("Cargo.toml", &MANIFEST.replace("SLUG", slug).replace("DEPS", &deps))?;
@@ -94,11 +94,12 @@ pub fn build(slug: &str, dir: &Path, d: &Doc) -> Result<Built, String> {
     if locked { fs::copy(&lock, root.join("Cargo.lock")).map_err(|e| e.to_string())?; }
     let pwd = std::env::current_dir().unwrap();
     let home = std::env::var("CARGO_HOME").unwrap_or(format!("{}/.cargo", std::env::var("HOME").unwrap_or_default()));
+    let remap = format!("--remap-path-prefix={}=/src --remap-path-prefix={home}=/cargo", pwd.display()); // no local paths in the wasm
     let cargo = |args: &[&str]| {
-        let o = Command::new(std::env::var("CARGO").unwrap_or("cargo".into())).args(args).args(if locked { &["--locked"][..] } else { &[] }).current_dir(&root)
-            .env("CARGO_TARGET_DIR", pwd.join("target/nb/target"))
-            .env("RUSTFLAGS", format!("--remap-path-prefix={}=/src --remap-path-prefix={home}=/cargo", pwd.display())).output().map_err(|e| e.to_string())?;
-        if o.status.success() { Ok(o.stdout) } else { Err(locate(&String::from_utf8_lossy(&o.stderr), &map, &format!("content/stories/{slug}/index.md"))) }
+        let o = Command::new(std::env::var("CARGO").unwrap_or("cargo".into())).args(args).args(if locked { &["--locked"][..] } else { &[] })
+            .current_dir(&root).env("CARGO_TARGET_DIR", pwd.join("target/nb/target")).env("RUSTFLAGS", &remap).output().map_err(|e| e.to_string())?;
+        if o.status.success() { return Ok(o.stdout) }
+        Err(locate(&String::from_utf8_lossy(&o.stderr), &map, &format!("content/stories/{slug}/index.md")))
     };
     let out = cargo(&["run", "--release", "-q", "--bin", "main"])?;
     cargo(&["build", "--release", "-q", "--lib", "--target", "wasm32-unknown-unknown"])?;

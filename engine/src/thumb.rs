@@ -11,7 +11,7 @@
 //! V (the rest) is hashed into the palette, size and tempo, so 41213 and 51213 are cousins:
 //! the same flustered leaper on ripples, in other colours and at another pace.
 
-use crate::scene::{Out, grid, rnd, smooth};
+use crate::scene::{Out, grid, polka, rnd, smooth};
 use std::f32::consts::{PI, TAU};
 
 /// The ground line: characters stand on it.
@@ -104,14 +104,7 @@ pub(crate) fn frame(o: &mut Out, seed: u32, t: f32) -> (f32, f32, f32, f32) {
     }
     let (cx, lift) = (cast[0].0, cast[0].1);
     match b {
-        0 => {
-            for i in 0..121 {
-                let (col, row) = ((i % 11) as f32, (i / 11) as f32);
-                let (x, y) = ((col + 0.25 + 0.5 * (row % 2.0)) / 11.0, (row + 0.5) / 11.0);
-                let breath = 1.0 + 0.15 * (t * 0.8 - (x - 0.5).hypot(y - 0.5) * 6.0).sin();
-                o.dot(x, y, 0.016 * (0.55 + 0.9 * r(10 + i)) * breath, if r(200 + i) < 0.12 { 0.5 } else { 0.0 }, 0.9);
-            }
-        }
+        0 => polka(o, t, 0.9, |i| r(10 + i), |i| r(200 + i)),
         // Rings run out from where the first character lands, brightest just after it touches down.
         1 => grid(16, |x, y| {
             let d = (x - cx).hypot(y - G);
@@ -175,21 +168,17 @@ pub(crate) fn frame(o: &mut Out, seed: u32, t: f32) -> (f32, f32, f32, f32) {
 
 #[cfg(test)]
 mod tests {
-    use crate::scene::{FACES, LIGHTS, MAX, THUMB, frame};
+    use crate::scene::{MAX, Out, THUMB, frame};
 
-    fn run(seed: u32, t: f32) -> (Vec<f32>, [f32; FACES * 10], usize, usize) {
-        let (mut d, mut f, mut l) = (vec![0.0; MAX * 5], [0.0; FACES * 10], [0.0; LIGHTS * 4]);
-        let (n, m) = frame(seed, THUMB, t, -1.0, -1.0, -1.0, &[], &mut d, &mut f, &mut l);
-        (d, f, n, m)
-    }
+    fn run(seed: u32, t: f32) -> Out { frame(seed, THUMB, t, -1.0, -1.0, -1.0, &[]) }
 
     #[test]
     fn every_digit_draws_bounded_and_exact() {
         for seed in (0..100).map(|k| 41_200 + k).chain([0, 7, 99_999_999]) {
             for t in [0.0, 1.3, 9.7, 1e5] {
-                let (d, f, n, m) = run(seed, t);
-                assert!(m > 0 && n <= MAX && d.iter().chain(&f).all(|v| v.is_finite()), "seed {seed} at {t}");
-                assert_eq!(run(seed, t).0, d);
+                let o = run(seed, t);
+                assert!(!o.faces.is_empty() && o.dots.len() <= MAX && o.dots.iter().flatten().chain(o.faces.iter().flatten()).all(|v| v.is_finite()));
+                assert_eq!(run(seed, t).dots, o.dots, "seed {seed} at {t}");
             }
         }
         assert_eq!(super::palette(41_213), super::palette(41_999)); // the variety picks the colours
@@ -198,11 +187,10 @@ mod tests {
 
     #[test]
     fn motions_keep_their_promises() {
-        let ys = |seed: u32| (0..400).map(|k| run(seed, k as f32 * 0.02).1[1]).collect::<Vec<_>>();
-        let top = |seed: u32| ys(seed).into_iter().fold(f32::MAX, f32::min);
+        let top = |seed: u32| (0..400).map(|k| run(seed, k as f32 * 0.02).faces[0][1]).fold(f32::MAX, f32::min);
         assert!(top(41_203) < 0.0, "a leaper leaves the frame");
         assert!(top(41_202) > 0.2 && top(41_202) < 0.6, "a bouncer stays in it");
         assert!(top(41_200) > 0.6, "a dozer stays down");
-        assert_eq!((run(41_206, 1.0).3, run(41_208, 1.0).3), (2, 3));
+        assert_eq!((run(41_206, 1.0).faces.len(), run(41_208, 1.0).faces.len()), (2, 3));
     }
 }

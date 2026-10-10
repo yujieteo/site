@@ -15,7 +15,7 @@ R1 is a ground radar. T3 is an aircraft eighty-eight kilometres away, flying on 
 
 <!-- skill: Narration lives in say blocks, one per chapter, written to be heard: short sentences, numbers rounded as spoken, no symbols. -->
 
-## The link {scene=8}
+## The link {scene=6}
 
 One transmitter and one receiver share an antenna, so the pulse travels out and the echo travels back. The preset is synthetic, except the 10 GHz carrier; the controls start at it, and every chapter below follows them.
 

@@ -30,7 +30,8 @@ pub fn find(id: &str) -> Option<(&'static str, bool)> {
 
 /// The preset canonical exports use: `print`, else the theme's own preset, else its family's light one.
 pub fn export<'a>(theme: &'a str, print: &'a str) -> &'a str {
-    if !print.is_empty() { print } else if find(theme).is_some() { theme } else { THEMES.iter().find(|t| t.0 == theme).map_or("site-light", |t| t.1) }
+    if !print.is_empty() { return print }
+    if find(theme).is_some() { theme } else { THEMES.iter().find(|t| t.0 == theme).map_or("site-light", |t| t.1) }
 }
 
 fn hex(s: &str) -> Option<u32> {
@@ -58,10 +59,11 @@ pub fn palette(id: &str, colors: &str) -> [u32; 11] {
 /// Every family as CSS: `data-theme` on <html> picks a family. Light or dark follows the device
 /// unless <html data-mode> holds the reader's choice (the header's button).
 pub fn css() -> String {
-    let vars = |s: &str, m: &str| format!("{}color-scheme:{m}", s.split(' ').zip(TOKENS).map(|(h, t)| format!("--{t}:#{h};")).collect::<String>());
+    let vars = |s: &str, m: &str| s.split(' ').zip(TOKENS).map(|(h, t)| format!("--{t}:#{h};")).collect::<String>() + "color-scheme:" + m;
     THEMES.iter().map(|(f, _, _, l, d)| {
         let r = if *f == "site" { ":root".into() } else { format!(":root[data-theme={f}]") };
-        format!("{r}{{{}}}@media(prefers-color-scheme:dark){{{r}:not([data-mode=light]){{{}}}}}{r}[data-mode=dark]{{{}}}\n", vars(l, "light"), vars(d, "dark"), vars(d, "dark"))
+        let (light, dark) = (vars(l, "light"), vars(d, "dark"));
+        format!("{r}{{{light}}}@media(prefers-color-scheme:dark){{{r}:not([data-mode=light]){{{dark}}}}}{r}[data-mode=dark]{{{dark}}}\n")
     }).collect()
 }
 
@@ -71,7 +73,6 @@ mod tests {
 
     #[test]
     fn presets_pair_and_override() {
-        assert_eq!(THEMES.len(), 7);
         assert_eq!(find("dracula"), Some(("dracula", true)));
         assert_eq!(find("custom nord-light"), Some(("nord", false)));
         assert_eq!(palette("solarized-dark", "")[0], 0x002B36);
