@@ -9,13 +9,14 @@
 //! Lights: 4 f32 each — x, y, radius, intensity (0..1). Light 0 is the sun or pin light;
 //! the rest are dappled patches, as of sun through leaves, and they light the dots beneath.
 //! Progress and pointer are negative when absent. The stage is a notebook's numbers for
-//! the scenes that show data (scene 6); missing or non-finite values take defaults.
+//! the scenes that show data (scene 6); missing or non-finite values take defaults. Scene 7 is
+//! the thumbnail of a seed that the stage holds (`staged`).
 
 use crate::draw::{Op, Sh};
 use std::f32::consts::{PI, TAU};
 
 pub const MAX: usize = 1024;
-pub const SCENES: u32 = 7;
+pub const SCENES: u32 = 8;
 /// Not a scene: the seeded thumbnail (`thumb`), which also picks its own palette.
 pub const THUMB: u32 = 100;
 pub const LIGHTS: usize = 6;
@@ -93,8 +94,20 @@ pub(crate) fn polka(o: &mut Out, t: f32, a: f32, size: impl Fn(u32) -> f32, warm
     }
 }
 
+/// Scene 7 is the thumbnail (`thumb`) of the seed whose high and low 16 bits are stage 0 and 1,
+/// or of the page's seed without them; any other scene keeps its seed.
+fn staged(seed: u32, scene: u32, stage: &[f32]) -> (u32, u32) {
+    let half = |i: usize| stage.get(i).filter(|v| v.is_finite()).map(|&v| v as u32 & 0xffff);
+    match (scene % SCENES, half(0), half(1)) {
+        (7, Some(hi), Some(lo)) => (hi << 16 | lo, THUMB),
+        (7, ..) => (seed, THUMB),
+        _ => (seed, scene),
+    }
+}
+
 /// One frame of a scene.
 pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f32]) -> Out {
+    let (seed, scene) = staged(seed, scene, stage);
     let (px, py) = if px >= 0.0 && py >= 0.0 { (px, py) } else { (-1.0, -1.0) };
     let mut o = Out { dots: vec![], faces: vec![], light: dapple(seed, t), seed, t, px, py };
     let mut pin = (0.74, 0.22, 0.025, 0.0);
@@ -235,6 +248,7 @@ pub fn mix(a: u32, b: u32, w: f32) -> u32 {
 
 /// One frame as a display list. `pal` is the scene's base, shade, accent and light.
 pub fn list(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f32], pal: [u32; 4]) -> Vec<Op> {
+    let (seed, scene) = staged(seed, scene, stage);
     let fr = frame(seed, scene, t, p, px, py, stage);
     let l = fr.light;
     let [base, shade, accent, light] = if scene == THUMB { crate::thumb::palette(seed) } else { pal };
@@ -338,5 +352,8 @@ mod tests {
         let link = run(6, 0.0, -1.0, -1.0); // the link: reach ring round the radar, pin on the target
         assert!((link.dots[0][0] - (0.125 + 80.6 / 160.0)).abs() < 1e-5 && (link.light[0] - 0.65625).abs() < 1e-5 && (link.light[3] - 0.61).abs() < 1e-6);
         assert_eq!(link.dots.last().unwrap()[3], 0.5); // below the required Pd the target is accent, not light
+        let seeded = |stage: &[f32]| crate::draw::encode(&list(42, 7, 2.5, -1.0, -1.0, -1.0, stage, [0; 4])); // scene 7: the staged seed's thumbnail
+        let thumb = |seed| crate::draw::encode(&list(seed, THUMB, 2.5, -1.0, -1.0, -1.0, &[], [0; 4]));
+        assert!(seeded(&[65_535.0, 65_535.0]) == thumb(u32::MAX) && seeded(&[0.0, 41_213.0]) == thumb(41_213) && seeded(&[]) == thumb(42));
     }
 }
