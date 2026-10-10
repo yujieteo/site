@@ -187,7 +187,7 @@ table(&["Card", "Use"], &raw()["nastran"]["cards"].as_array().unwrap().iter().ma
 
 ## Method and assumptions
 
-The solver puts a node at each end and each support, and joins the nodes with two-node Euler–Bernoulli beam elements. Each load inside an element enters as its consistent nodal loads, which are the exact fixed-end actions, so the nodal deflections and the reactions are exact. The shear and the moment then come by statics from the loads and the reactions, and the slope and the deflection by the integrals of $M/EI$ from the left end. The checks at the end of this page compare 23 beams with an exact solver in Python.
+The solver puts a node at each end and each support, and joins the nodes with two-node Euler–Bernoulli beam elements. Each load inside an element enters as its consistent nodal loads, which are the exact fixed-end actions, so the nodal deflections and the reactions are exact. The shear and the moment then come by statics from the loads and the reactions, and the slope and the deflection from the nodal values. The solver adds the integrals of $M/EI$ from the nearest node to the left. The checks at the end of this page compare 23 beams with an exact solver in Python.
 
 ```rust
 //| caption: The assumptions of the model, and the NASTRAN references.
@@ -243,7 +243,7 @@ for (c, r) in _cases["cases"].as_array().unwrap().iter().zip(_exact["cases"].as_
     }
     for p in points {
         for q in ["Vleft", "Vright", "Mleft", "Mright", "theta", "v"] {
-            let s = scale(q).max(if q == "theta" { scale("v") / _span } else { 0.0 });
+            let s = scale(q).max(if q == "theta" && scale("theta") == 0.0 { scale("v") / _span } else { 0.0 });
             check(q, f(&p["x"]), f(&p[q]), s);
         }
     }
@@ -319,7 +319,7 @@ fn sig(v: f64) -> String { fix(v, 4) }
 fn clean(v: f64, scale: f64) -> f64 { if v.abs() <= 1e-9 * scale { 0.0 } else { v } }
 
 /// The numbers in a piece of text, in order: "q -10 to -5 from 0 to 6" gives -10, -5, 0, 6.
-fn numbers(s: &str) -> Vec<f64> { s.split_whitespace().filter_map(|w| w.replace('−', "-").parse().ok()).filter(|v: &f64| v.is_finite()).collect() }
+fn numbers(s: &str) -> Vec<f64> { s.split(|c: char| c.is_whitespace() || c == ',' || c == ';').filter_map(|w| w.replace('−', "-").parse().ok()).filter(|v: &f64| v.is_finite()).collect() }
 fn parts(s: &str) -> impl Iterator<Item = &str> { s.split([',', ';']).map(str::trim).filter(|p| !p.is_empty()) }
 fn word(p: &str) -> String { p.split_whitespace().next().unwrap_or("").to_lowercase() }
 
