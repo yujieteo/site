@@ -391,10 +391,10 @@ fn about(l: &Value) -> String {
 fn theorem(t: &Value) -> String {
     let e = t["experiment"].as_object().unwrap();
     let (kind, name) = e.iter().find(|(k, _)| *k != "settings").map(|(k, v)| (k.as_str(), s(v))).unwrap();
-    let place = match kind { "model" => "the Monte Carlo models notebook", "physics" => "the Monte Carlo physics notebook", _ => "the Monte Carlo chains and rare events notebook" };
+    let place = match kind { "model" => r#"<a href="../mcmodels/index.html">the Monte Carlo models notebook</a>"#, "physics" => "the Monte Carlo physics notebook", _ => "the Monte Carlo chains and rare events notebook" };
     format!("{}<h3>Assumptions</h3>{}<h3>Proof</h3>{}<h3>Counterexample</h3>{}<h3>Reference</h3>{}{}",
         display(s(&t["statement"])), bullets(t["assumptions"].as_array().unwrap().iter()), para(s(&t["proof"])),
-        para(s(&t["counterexample"])), para(s(&t["reference"])), para(&format!("Its experiment, {name}, is in {place} of this series.")))
+        para(s(&t["counterexample"])), para(s(&t["reference"])), format!("<p>Its experiment, {}, is in {place} of this series.</p>", esc(&fit(name))))
 }
 
 /// The glossary terms that hold every word: those with the words in the term first.
