@@ -258,6 +258,12 @@ html(&rare_card_html(rare_card));
 The checks run natively at each build. The data cell reads the pinned files of visuals, then come the helpers of the page and the engines.
 
 ```rust
+//| caption: The checks of the data, the examples and the method cards.
+if cfg!(not(target_arch = "wasm32")) { checks() }
+println!("At the build, the checks passed: the text of the data, the 11 chain examples and the 17 rare-event examples against their references, and the examples of every method card.");
+```
+
+```rust
 //| caption: The checks.
 /// The checks: the text of the data, then every example of each laboratory with its own settings against its reference,
 /// and the designed failures as the catalogue states them.
@@ -406,12 +412,25 @@ fn fit(t: &str) -> String {
             '√' => "sqrt ",
             '\u{304}' => "bar",
             '\u{302}' => "hat",
+            'Ẑ' => "Zhat",
+            'ĝ' => "ghat",
             'ȳ' => "ybar",
             '∫' => "int ",
-            'ℓ' => "l",
             '⌊' => "floor(",
             '⌈' => "ceil(",
             '⌋' | '⌉' => ")",
+            'ℓ' => "l",
+            'ᵀ' => "^T",
+            '⟨' => "<",
+            '⟩' => ">",
+            '∝' => "is proportional to",
+            '‖' => "||",
+            '∈' => "in",
+            '∏' => "prod",
+            '⊙' => "*",
+            '⊂' => "is a subset of",
+            '€' => "EUR ",
+            '∑' => "sum ",
             c => { out.push(c); continue }
         };
         out += rep;
