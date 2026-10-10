@@ -139,7 +139,7 @@ pub fn inline(s: &str) -> String {
     spans(s).iter().map(|sp| match sp {
         Sp::T(t, st) => [(4, "code"), (2, "em"), (1, "strong")].iter().fold(esc(t), |h, (b, tag)| if st & b > 0 { format!("<{tag}>{h}</{tag}>") } else { h }),
         Sp::M(m) => mathml(m, false),
-        Sp::A(t, u) => format!("<a href=\"{}\">{}</a>", esc(u), esc(t)),
+        Sp::A(t, u) => format!("<a href=\"{}\">{}</a>", esc(u), inline(t)), // a link's text has its own styles
     }).collect()
 }
 
@@ -361,7 +361,7 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
     }
     shut!();
     o += if det { "</details>" } else { "" };
-    let refs: String = d.links().iter().map(|(t, u)| format!("<li>{} <a href=\"{1}\">{1}</a></li>", esc(t), esc(u))).collect();
+    let refs: String = d.links().iter().map(|(t, u)| format!("<li>{} <a href=\"{1}\">{1}</a></li>", inline(t), esc(u))).collect();
     if !refs.is_empty() { w!(o, "<section class=\"refs\"><h3>References</h3><ol>{refs}</ol></section>") }
     o
 }

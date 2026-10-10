@@ -219,11 +219,16 @@ impl Pdf<'_> {
     /// Inline Markdown as words of styled pieces: text (code in mono, links coloured) or maths.
     fn words(&self, s: &str, st: St) -> Vec<Vec<Piece>> {
         let mut v: Vec<Vec<Piece>> = vec![vec![]];
-        for sp in doc::spans(s) {
-            let (t, bits, href) = match sp {
+        // A link's text has its own styles: its runs keep the link.
+        let runs = doc::spans(s).into_iter().flat_map(|sp| match sp {
+            Sp::A(t, u) => doc::spans(&t).into_iter().map(|x| (x, Some(u.clone()))).collect(),
+            x => vec![(x, None)],
+        });
+        for (sp, href) in runs {
+            let (t, bits) = match sp {
                 Sp::M(m) => { v.last_mut().unwrap().push((st, String::new(), None, Some(doc::tex(&m)))); continue }
-                Sp::T(t, b) => (t, b, None),
-                Sp::A(t, u) => (t, 0, Some(u)),
+                Sp::T(t, b) => (t, b),
+                Sp::A(t, _) => (t, 0),
             };
             let (font, size) = if bits & 4 > 0 { (2, st.1 * 0.9) } else { (st.0, st.1) };
             let s2 = St(font, size, if href.is_some() { self.pal[7] } else { st.2 }, st.3 | bits & 3);
