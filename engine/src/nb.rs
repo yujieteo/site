@@ -1,6 +1,8 @@
 //! The cell runtime. A notebook compiles to one program that the builder runs natively and
 //! the page runs as WebAssembly: same code, same numbers. Cells write text, HTML and plots,
-//! declare controls (whose values the host supplies) and set the stage of data scenes.
+//! declare controls (whose values the host supplies) and set the stage of data scenes. The page
+//! keeps one instance for its runs, so a `static` may hold what a cell reads from `data!` bytes
+//! (parsed once); nothing else may outlive a run.
 
 use crate::{doc::esc, pack::json};
 use std::cell::RefCell;
@@ -15,6 +17,7 @@ thread_local! {
     static BOOK: RefCell<Book> = RefCell::default();
     static INPUT: RefCell<Vec<f64>> = const { RefCell::new(vec![]) };
     static NUMS: RefCell<Vec<f64>> = const { RefCell::new(vec![]) };
+    static TEXT: RefCell<Vec<Option<String>>> = const { RefCell::new(vec![]) };
     static PANIC: RefCell<String> = const { RefCell::new(String::new()) };
 }
 static CELL: AtomicUsize = AtomicUsize::new(0);
@@ -49,6 +52,11 @@ macro_rules! println {
 #[macro_export]
 macro_rules! print { ($($t:tt)*) => { $crate::nb::text(&format!($($t)*)) } }
 
+/// A file from yujieteo/visuals, as bytes in the program: its path there, pinned in visuals.lock
+/// (scripts/visuals.sh fetches it into visuals/; the builder refuses an unpinned path).
+#[macro_export]
+macro_rules! data { ($f:literal) => { include_bytes!(concat!(env!("NB_DATA"), "/", $f)) as &'static [u8] } }
+
 /// The host's value for the next control, whose key is `b.n` before the call.
 fn input(b: &mut Book) -> Option<f64> { b.n += 1; INPUT.with_borrow(|v| v.get(b.n - 1).copied()).filter(|v| v.is_finite()) }
 
@@ -62,15 +70,42 @@ pub fn slider(label: &str, min: f64, max: f64, step: f64, value: f64) -> f64 {
     })
 }
 
-/// A choice among options; returns the chosen index.
-pub fn choice(label: &str, opts: &[&str], default: usize) -> usize {
+/// A choice among options; returns the chosen index. The host sends the chosen option's text, so the
+/// choice keeps that option while the options change, and takes `default` when it is gone.
+pub fn choice<S: AsRef<str>>(label: &str, opts: &[S], default: usize) -> usize {
     with(|b| {
-        let (k, v) = (b.n, input(b).map_or(default, |v| v as usize).min(opts.len().saturating_sub(1)));
+        let k = b.n;
+        b.n += 1;
+        let text = TEXT.with_borrow(|t| t.get(k).cloned().flatten());
+        let v = text.and_then(|t| opts.iter().position(|o| o.as_ref() == t)).unwrap_or(default);
+        let v = v.min(opts.len().saturating_sub(1));
         let sel = |i: usize| if i == v { " selected" } else { "" };
-        let o: String = opts.iter().enumerate().map(|(i, o)| format!("<option value=\"{i}\"{}>{}</option>", sel(i), esc(o))).collect();
+        let o: String = opts.iter().enumerate().map(|(i, o)| format!("<option value=\"{0}\"{1}>{0}</option>", esc(o.as_ref()), sel(i))).collect();
         w!(b.ctl[b.cell], "<label>{} <select data-k=\"{k}\">{o}</select></label>", esc(label));
         v
     })
+}
+
+/// A text box; returns its text: the host's, or `value` on a clean run.
+pub fn field(label: &str, value: &str) -> String {
+    with(|b| {
+        let k = b.n;
+        b.n += 1;
+        let v = TEXT.with_borrow(|t| t.get(k).cloned().flatten()).unwrap_or_else(|| value.into());
+        let input = format!("<input type=\"search\" data-k=\"{k}\" value=\"{}\" autocomplete=\"off\" spellcheck=\"false\">", esc(&v));
+        w!(b.ctl[b.cell], "<label>{} {input}</label>", esc(label));
+        v
+    })
+}
+
+/// A table of text: a header, then rows. It scrolls sideways on a narrow page.
+pub fn table<S: AsRef<str>>(head: &[&str], rows: &[Vec<S>]) {
+    let tr = |tag: &str, r: &mut dyn Iterator<Item = &str>| {
+        let cells: String = r.map(|c| format!("<{tag}>{}</{tag}>", esc(c))).collect();
+        format!("<tr>{cells}</tr>")
+    };
+    let body: String = rows.iter().map(|r| tr("td", &mut r.iter().map(|c| c.as_ref()))).collect();
+    html(&format!("<table>{}{body}</table>", tr("th", &mut head.iter().copied())));
 }
 
 /// A live number: the builder writes each float literal of a cell's body as `num(k, literal)`,
@@ -155,7 +190,12 @@ pub fn run(program: Program) -> String {
 /// message waits for `nb_panic`.
 pub fn reply(program: Program) -> u32 {
     std::panic::set_hook(Box::new(|p| PANIC.set(format!("panicked: {}", p.payload_as_str().unwrap_or("?")))));
-    crate::ret(run(program).into_bytes())
+    let r = run(program);
+    // The next run brings its own inputs.
+    INPUT.take();
+    NUMS.take();
+    TEXT.take();
+    crate::ret(r.into_bytes())
 }
 
 #[unsafe(no_mangle)]
@@ -172,6 +212,13 @@ pub fn native(program: Program) {
 /// The host sets control `k` (`nb_input`) or live number `k` (`nb_num`); unset ones are NaN.
 fn set(list: &'static std::thread::LocalKey<RefCell<Vec<f64>>>, k: u32, v: f64) {
     list.with_borrow_mut(|l| { l.resize(l.len().max(k as usize + 1), f64::NAN); l[k as usize] = v })
+}
+
+/// Control `k`'s text (a text box's text, or a choice's option): the call's input bytes.
+#[unsafe(no_mangle)]
+pub extern "C" fn nb_field(k: u32) {
+    let s = String::from_utf8_lossy(&crate::input()).into_owned();
+    TEXT.with_borrow_mut(|t| { t.resize(t.len().max(k as usize + 1), None); t[k as usize] = Some(s) })
 }
 
 #[unsafe(no_mangle)]
@@ -192,8 +239,12 @@ mod tests {
         cell(0);
         let a = slider("Time", 0.0, 10.0, 1.0, 3.0);
         crate::println!("a = {a}");
+        let q = field("Find", "x<");
+        let c = choice("Pick", &["a", "b", q.as_str()], 1);
+        crate::println!("q = {q} {c}");
         cell(1);
         stage(&[a, f64::NAN]);
+        table(&["n", "<b>"], &[vec!["1", "a&b"]]);
         Plot::new().line(&[0.0, 1.0], &[0.0, 0.5]).rule(0.25).labels("t", "y").show();
         Err("stop".into())
     }
@@ -201,12 +252,18 @@ mod tests {
     #[test]
     fn runs_from_clean_state_with_inputs() {
         let a = run(prog);
-        assert!(a.contains("\"out\":[\"\\u003cpre class=\\\"txt\\\">a = 3\\u003c/pre>\""));
+        assert!(a.contains("\"out\":[\"\\u003cpre class=\\\"txt\\\">a = 3\\nq = x&lt; 1\\u003c/pre>\""));
         assert!(a.contains("\"stage\":[3,null]") && a.ends_with("\"err\":\"cell 2: stop\"}"));
         nb_input(0, 7.0);
         assert!(run(prog).contains("a = 7") && run(prog) == run(prog));
         nb_input(0, 99.0);
-        assert!(run(prog).contains("a = 10"));
+        assert!(run(prog).contains("a = 10") && run(prog).contains("q = x&lt;") && run(prog).contains("value=\\\"x&lt;\\\""));
+        crate::IO.with_borrow_mut(|io| io.0 = b"x<".to_vec());
+        nb_field(2);
+        assert!(run(prog).contains("q = x&lt; 2") && run(prog).replace("\\u003c", "<").contains("<option value=\\\"x&lt;\\\" selected>"));
+        crate::IO.with_borrow_mut(|io| io.0 = b"ab<".to_vec());
+        nb_field(1);
+        assert!(run(prog).contains("q = ab&lt; 1") && run(prog).replace("\\u003c", "<").contains("<th>&lt;b&gt;</th></tr><tr><td>1</td><td>a&amp;b</td>"));
         assert_eq!(ticks(0.0, 1.0), (vec![0.0, 0.2, 0.4, 0.6000000000000001, 0.8, 1.0], 1));
         for (a, b) in [(0.0, f64::MAX), (f64::MIN, f64::MAX), (f64::NAN, 1.0), (1e300, -1e300), (f64::MAX, f64::MAX)] {
             assert!(ticks(a, b).0.len() < 12);

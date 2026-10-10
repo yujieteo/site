@@ -45,7 +45,7 @@ pub fn program(d: &Doc) -> Result<(String, Vec<usize>), String> {
         src += &format!("{text}\n");
         map.extend((0..=text.matches('\n').count()).map(|i| if md > 0 { md + i } else { 0 }));
     };
-    put("#![allow(unused, clippy::all)]\nuse engine::{print, println, nb::*};", 0);
+    put("#![allow(unused, clippy::all)]\nuse engine::{data, print, println, nb::*};", 0);
     let line = |k: usize, off: usize| cells[k].1 + cells[k].0[..off].matches('\n').count();
     for (k, c) in split.iter().enumerate() { c.items.iter().for_each(|(off, it)| put(it, line(k, *off))) }
     put("pub fn program() -> Result<(), Box<dyn std::error::Error>> {", 0);
@@ -97,9 +97,10 @@ pub fn build(slug: &str, dir: &Path, d: &Doc) -> Result<Built, String> {
     let remap = format!("--remap-path-prefix={}=/src --remap-path-prefix={home}=/cargo", pwd.display()); // no local paths in the wasm
     let cargo = |args: &[&str]| {
         let o = Command::new(std::env::var("CARGO").unwrap_or("cargo".into())).args(args).args(if locked { &["--locked"][..] } else { &[] })
-            .current_dir(&root).env("CARGO_TARGET_DIR", pwd.join("target/nb/target")).env("RUSTFLAGS", &remap).output().map_err(|e| e.to_string())?;
+            .current_dir(&root).env("CARGO_TARGET_DIR", pwd.join("target/nb/target")).env("NB_DATA", pwd.join("visuals")).env("RUSTFLAGS", &remap)
+            .output().map_err(|e| e.to_string())?;
         if o.status.success() { return Ok(o.stdout) }
-        Err(locate(&String::from_utf8_lossy(&o.stderr), &map, &format!("content/stories/{slug}/index.md")))
+        Err(locate(&String::from_utf8_lossy(&o.stderr), &map, &dir.join("index.md").display().to_string()))
     };
     let out = cargo(&["run", "--release", "-q", "--bin", "main"])?;
     cargo(&["build", "--release", "-q", "--lib", "--target", "wasm32-unknown-unknown"])?;

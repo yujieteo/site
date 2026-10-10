@@ -1,4 +1,5 @@
 target/
 dist/
 kokoro/
+visuals/
 .claude/

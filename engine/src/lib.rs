@@ -36,7 +36,7 @@ pub extern "C" fn out() -> *const u8 { IO.with_borrow(|io| io.1.as_ptr()) }
 
 pub fn ret(v: Vec<u8>) -> u32 { let n = v.len() as u32; IO.with_borrow_mut(|io| io.1 = v); n }
 
-fn input() -> Vec<u8> { IO.with_borrow(|io| io.0.clone()) }
+pub(crate) fn input() -> Vec<u8> { IO.with_borrow(|io| io.0.clone()) }
 
 fn f32s(b: &[u8]) -> Vec<f32> { b.chunks_exact(4).map(|c| f32::from_le_bytes(c.try_into().unwrap())).collect() }
 

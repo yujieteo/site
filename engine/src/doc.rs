@@ -146,9 +146,49 @@ pub fn inline(s: &str) -> String {
 pub enum M { I(String), N(String), O(String), T(String),
     R(Vec<M>), F(Box<M>, Box<M>), Q(Box<M>), S(Box<M>, Option<Box<M>>, Option<Box<M>>) }
 
-const GREEK: &str = "alpha α beta β gamma γ delta δ epsilon ϵ varepsilon ε zeta ζ eta η theta θ kappa κ lambda λ mu μ nu ν xi ξ pi π rho ρ sigma σ tau τ phi ϕ varphi φ chi χ psi ψ omega ω Gamma Γ Delta Δ Theta Θ Lambda Λ Xi Ξ Pi Π Sigma Σ Phi Φ Psi Ψ Omega Ω";
-const OPS: &str = "cdot ⋅ times × le ≤ leq ≤ ge ≥ geq ≥ ne ≠ neq ≠ approx ≈ sim ∼ infty ∞ sum ∑ prod ∏ int ∫ to → rightarrow → pm ± partial ∂ propto ∝ ldots … cdots ⋯ in ∈ lfloor ⌊ rfloor ⌋ lceil ⌈ rceil ⌉ langle ⟨ rangle ⟩ mid ∣";
-const FUNS: &str = "ln log exp sin cos tan min max lim det arg";
+const GREEK: &str = "alpha α beta β gamma γ delta δ epsilon ϵ varepsilon ε zeta ζ eta η theta θ kappa κ lambda λ mu μ nu ν xi ξ pi π rho ρ sigma σ tau τ phi ϕ varphi φ chi χ psi ψ omega ω Gamma Γ Delta Δ Theta Θ Lambda Λ Xi Ξ Pi Π Sigma Σ Phi Φ Psi Ψ Omega Ω ell ℓ hbar ℏ aleph ℵ";
+const OPS: &str = "cdot ⋅ times × le ≤ leq ≤ ge ≥ geq ≥ ne ≠ neq ≠ approx ≈ sim ∼ infty ∞ sum ∑ prod ∏ int ∫ to → rightarrow → pm ± partial ∂ propto ∝ ldots … cdots ⋯ in ∈ lfloor ⌊ rfloor ⌋ lceil ⌈ rceil ⌉ langle ⟨ rangle ⟩ mid ∣ colon : subseteq ⊆ subset ⊂ supseteq ⊇ supset ⊃ otimes ⊗ oplus ⊕ mapsto ↦ circ ∘ cap ∩ cup ∪ bigcup ⋃ bigcap ⋂ cong ≅ wedge ∧ vee ∨ setminus ∖ nabla ∇ equiv ≡ neg ¬ bullet ∙ emptyset ∅ varnothing ∅ notin ∉ angle ∠ perp ⊥ simeq ≃ Rightarrow ⇒ Leftarrow ⇐ Leftrightarrow ⇔ iff ⟺ implies ⟹ leftarrow ← longrightarrow ⟶ hookrightarrow ↪ twoheadrightarrow ↠ vdash ⊢ models ⊨ ast ∗ star ⋆ dots … forall ∀ exists ∃ oint ∮ vert | lvert | rvert | Vert ‖ lVert ‖ rVert ‖ dagger † prec ≺ succ ≻ ll ≪ gg ≫ top ⊤ bot ⊥ rtimes ⋊ ltimes ⋉ coprod ∐ sqcup ⊔ uplus ⊎ restriction ↾ triangle △ lhd ⊲ unlhd ⊴ preceq ⪯ succeq ⪰ cdotp ⋅ leftrightarrow ↔ downarrow ↓ uparrow ↑ setminus ∖ nmid ∤ parallel ∥ asymp ≍ doteq ≐ subsetneq ⊊ supsetneq ⊋ ni ∋ sqsubseteq ⊑ odot ⊙ ominus ⊖ boxtimes ⊠ div ÷ lnot ¬ land ∧ lor ∨ leqslant ≤ geqslant ≥ prime ′";
+/// Combining marks for accents; a letter under one becomes math italic, as it would be alone.
+const ACCENTS: &str = "bar \u{304} overline \u{305} hat \u{302} widehat \u{302} tilde \u{303} widetilde \u{303} dot \u{307} ddot \u{308} vec \u{20d7} check \u{30c} acute \u{301} grave \u{300}";
+const FUNS: &str = "ln log exp sin cos tan min max lim det arg sup inf dim ker deg gcd lcm hom arcsin arccos arctan sinh cosh tanh cot sec csc liminf limsup Pr";
+
+/// A math alphabet in the letters the math font has: bold, bold italic, and the double-struck
+/// capitals; script and fraktur letters, which it lacks, stay plain.
+fn alpha(font: &str, m: M) -> M {
+    let map = |c: char| -> char {
+        let at = |base: u32, from: char| char::from_u32(base + c as u32 - from as u32).unwrap_or(c);
+        match (font, c) {
+            ("mathbb", _) => {
+                let pairs: Vec<char> = "CℂHℍNℕPℙQℚRℝZℤE𝔼F𝔽I𝕀L𝕃O𝕆T𝕋".chars().collect();
+                pairs.chunks(2).find(|p| p[0] == c).map_or(c, |p| p[1])
+            }
+            ("mathbf", 'A'..='Z') => at(0x1D400, 'A'), ("mathbf", 'a'..='z') => at(0x1D41A, 'a'),
+            ("boldsymbol", 'A'..='Z') => at(0x1D468, 'A'), ("boldsymbol", 'a'..='z') => at(0x1D482, 'a'),
+            _ => c,
+        }
+    };
+    match m {
+        M::I(t) => M::I(t.chars().map(map).collect()),
+        M::R(v) => M::R(v.into_iter().map(|m| alpha(font, m)).collect()),
+        m => m,
+    }
+}
+
+/// An accent over each letter of `m`, as a combining mark.
+fn mark(m: M, a: &str) -> M {
+    // A single letter is a variable: it turns math italic first, as an <mi> would draw it.
+    let it = |c: char| match c {
+        'h' => 'ℎ',
+        'a'..='z' => char::from_u32(0x1D44E + c as u32 - 'a' as u32).unwrap_or(c),
+        'A'..='Z' => char::from_u32(0x1D434 + c as u32 - 'A' as u32).unwrap_or(c),
+        c => c,
+    };
+    match m {
+        M::I(t) => M::I(t.chars().map(|c| format!("{}{a}", if t.chars().count() == 1 { it(c) } else { c })).collect()),
+        M::R(v) => M::R(v.into_iter().map(|m| mark(m, a)).collect()),
+        m => m,
+    }
+}
 
 fn look(table: &str, k: &str) -> Option<String> { table.split(' ').collect::<Vec<_>>().chunks(2).find(|p| p[0] == k).map(|p| p[1].into()) }
 
@@ -186,9 +226,13 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
                 // Spaces as Unicode spaces, which neither MathML nor the PDF collapses; `\!` is dropped.
                 "" => match next(i)? {
                     ',' => M::T("\u{2009}".into()), ';' | ':' => M::T("\u{2005}".into()), ' ' => M::T(" ".into()), '!' => M::T("".into()),
+                    '|' => M::O("‖".into()),
                     x => M::O(x.into()),
                 },
-                "frac" => M::F(Box::new(atom(c, i)?), Box::new(atom(c, i)?)),
+                "frac" | "tfrac" | "dfrac" => M::F(Box::new(atom(c, i)?), Box::new(atom(c, i)?)),
+                "binom" => M::R(vec![M::O("(".into()), M::F(Box::new(atom(c, i)?), Box::new(atom(c, i)?)), M::O(")".into())]),
+                "mathbb" | "mathbf" | "boldsymbol" | "mathcal" | "mathscr" | "mathfrak" | "mathsf" | "mathit" => alpha(&name, atom(c, i)?),
+                "pmod" => M::R(vec![M::T("\u{2005}(".into()), M::I("mod".into()), M::T("\u{2005}".into()), atom(c, i)?, M::O(")".into())]),
                 "sqrt" => M::Q(Box::new(atom(c, i)?)),
                 "text" | "mathrm" | "operatorname" => {
                     // Spaces, the opening brace, the text, the closing brace.
@@ -198,10 +242,13 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
                     *i += 1;
                     if name == "text" { M::T(t) } else { M::I(t) }
                 }
-                "left" | "right" | "big" | "Big" => atom(c, i).filter(|m| *m != M::O(".".into())).unwrap_or(M::R(vec![])),
+                "left" | "right" | "big" | "Big" | "bigl" | "bigr" | "Bigl" | "Bigr" | "bigg" | "Bigg" | "biggl" | "biggr" => {
+                    atom(c, i).filter(|m| *m != M::O(".".into())).unwrap_or(M::R(vec![]))
+                }
                 "quad" => M::T("\u{2003}".into()),
                 "qquad" => M::T("\u{2003}\u{2003}".into()),
                 n if FUNS.split(' ').any(|f| f == n) => M::I(n.into()),
+                n if let Some(a) = look(ACCENTS, n) => mark(atom(c, i)?, &a),
                 n => look(GREEK, n).map(M::I).or_else(|| look(OPS, n).map(M::O)).unwrap_or(M::T(n.into())),
             }
         }
@@ -326,6 +373,7 @@ mod tests {
         assert_eq!(scenes, [Some(1), None, Some(1), None, Some(1)]);
         assert_eq!(inline("*a* **b** `c<` \\*"), "<em>a</em> <strong>b</strong> <code>c&lt;</code> *");
         assert_eq!(mathml("x_i^2 - \\alpha", false), "<math><mrow><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><mi>α</mi></mrow></math>");
+        assert_eq!(mathml("f\\colon \\mathbb{R}^n \\to \\mathbf{v}, \\bar{x} \\mapsto \\sup", false), "<math><mrow><mi>f</mi><mo>:</mo><msup><mrow><mi>ℝ</mi></mrow><mi>n</mi></msup><mo>→</mo><mrow><mi>𝐯</mi></mrow><mo>,</mo><mrow><mi>𝑥\u{304}</mi></mrow><mo>↦</mo><mi>sup</mi><mspace width=\"0.17em\"/></mrow></math>");
         assert!(mathml("\\frac{1}{\\sqrt{2}} \\text{ dB}", true).contains("<mfrac><mrow><mn>1</mn></mrow><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></mfrac><mtext> dB</mtext>"));
         let html = article(&d, &Run { out: vec!["O".into()], ctl: vec!["C".into()], map: vec![Some(0)], stale: vec![true] }, &|s| format!("data:{s}"));
         assert!(html.contains("id=\"c1\"><div class=\"slide\"><h2>One</h2><canvas class=\"frame\" data-scene=\"8\"") && html.contains("class=\"cell stale\"") && html.contains("data-out=\"0\">O</div>"));

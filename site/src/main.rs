@@ -1,5 +1,5 @@
 //! Builds dist/: the landing page, Notes, Stories and Play. Every page is one self-contained
-//! HTML file; every story is a notebook (`book`).
+//! HTML file; every story and toy is a notebook (`book`).
 //! Usage: site [notes.json]  (default ../site/data/uniichat/memory.json)
 
 mod book;
@@ -170,15 +170,17 @@ fn main() {
     let notes_path = std::env::args().nth(1).unwrap_or("../site/data/uniichat/memory.json".into());
     let engine_wasm = fs::read(WASM).expect("build the engine first: see README");
     let wasm = pack::base64(&engine_wasm);
-    let mut slugs: Vec<String> = fs::read_dir("content/stories").unwrap().flatten()
-        .filter(|e| e.path().join("index.md").exists()).map(|e| e.file_name().to_string_lossy().into_owned()).collect();
-    slugs.sort();
     let (mut stories, mut pages, mut files) = (vec![], vec![], vec![]);
-    for slug in &slugs {
-        let (s, p, f) = book::notebook(slug, &engine_wasm);
-        stories.push(s);
-        pages.extend(p);
-        files.extend(f.into_iter().map(|(n, b)| (format!("stories/{slug}/{n}"), b)));
+    for door in ["stories", "play"] {
+        let mut slugs: Vec<String> = fs::read_dir(format!("content/{door}")).into_iter().flatten().flatten()
+            .filter(|e| e.path().join("index.md").exists()).map(|e| e.file_name().to_string_lossy().into_owned()).collect();
+        slugs.sort();
+        for slug in &slugs {
+            let (s, p, f) = book::notebook(door, slug, &engine_wasm);
+            stories.push(s);
+            pages.extend(p);
+            files.extend(f.into_iter().map(|(n, b)| (format!("{door}/{slug}/{n}"), b)));
+        }
     }
     // Doors and cards are seeded thumbnails: notes doze at night, stories stroll over a hill,
     // and play leaps clean out of its tile (see engine::thumb for the digits).
@@ -189,13 +191,13 @@ fn main() {
     ];
     let doors: String = DOORS.iter().map(|(dir, seed, name, line)| format!(
         r#"<a class="door" href="{dir}/index.html">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, thumb(*seed, "data-bleed"))).collect();
-    let cards: String = stories.iter().map(|s| format!(
+    let cards = |door: &str| -> String { stories.iter().filter(|s| s.door == door).map(|s| format!(
         r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
-        s.slug, s.thumb.map_or(String::new(), |seed| thumb(seed, "")), esc(&s.title), esc(&s.summary))).collect();
+        s.slug, s.thumb.map_or(String::new(), |seed| thumb(seed, "")), esc(&s.title), esc(&s.summary))).collect() };
     let (notes, mut found) = notes(&notes_path);
     found.splice(0..0, DOORS.iter().map(|(dir, _, name, line)| (name.to_string(), format!("{dir}/index.html"), line.to_string())));
     for s in &stories {
-        let page = format!("stories/{}/index.html", s.slug);
+        let page = format!("{}/{}/index.html", s.door, s.slug);
         found.push((s.title.clone(), page.clone(), s.summary.clone()));
         found.extend(s.chapters.iter().enumerate().map(|(i, c)| (format!("{} · {c}", s.title), format!("{page}#c{}", i + 1), String::new())));
     }
@@ -204,8 +206,8 @@ fn main() {
         Page::new("index.html", "Yu Jie", format!(r#"<p class="lede">Notes, stories and toys.</p><div class="doors">{doors}</div>"#)),
         Page { script: if notes.contains("class=\"tree\"") { format!("<script>{NOTES}</script>") } else { String::new() },
             ..Page::new("notes/index.html", "Notes", format!(r#"<h1>Notes</h1><div class="notes">{notes}</div>"#)) },
-        Page::new("stories/index.html", "Stories", format!(r#"<h1>Stories</h1><ul class="list">{cards}</ul>"#)),
-        Page::new("play/index.html", "Play", r#"<h1>Play</h1><p class="lede">Toys arrive here as they are made.</p>"#.into()),
+        Page::new("stories/index.html", "Stories", format!(r#"<h1>Stories</h1><ul class="list">{}</ul>"#, cards("stories"))),
+        Page::new("play/index.html", "Play", format!(r#"<h1>Play</h1><ul class="list">{}</ul>"#, cards("play"))),
     ]);
     // The voice (kokoro.lock, scripts/kokoro.sh) is served beside the site when every pinned file
     // is present and matches; the build reads the Misaki lexicons itself, so they are not served.

@@ -1,4 +1,4 @@
-//! A notebook (content/stories/<slug>/index.md) becomes four views — notebook, slides,
+//! A notebook (content/<door>/<slug>/index.md, the door stories or play) becomes four views — notebook, slides,
 //! handout, article — that share one body, and its exports, all under one manifest.
 
 use crate::{HOST, Page, cells};
@@ -33,12 +33,20 @@ fn vars(palette: &str) -> String {
 }
 
 /// What the landing page and search know of a story.
-pub struct Story { pub slug: String, pub title: String, pub summary: String, pub thumb: Option<u32>, pub chapters: Vec<String> }
+pub struct Story { pub door: String, pub slug: String, pub title: String, pub summary: String, pub thumb: Option<u32>, pub chapters: Vec<String> }
 
 /// The narration pins (kokoro.lock): sha256 and path under kokoro/.
 pub fn pins() -> impl Iterator<Item = (&'static str, &'static str)> {
     let pin = |l: &'static str| l.split_once(' ').map(|(h, r)| (h, r.split(' ').next().unwrap()));
     include_str!("../../kokoro.lock").lines().filter(|l| !l.starts_with('#')).filter_map(pin)
+}
+
+/// The visuals pins (visuals.lock): the commit, and sha256 and path per file under visuals/.
+fn visuals() -> (&'static str, Vec<(&'static str, &'static str)>) {
+    let lock = include_str!("../../visuals.lock");
+    let commit = lock.lines().find_map(|l| l.strip_prefix("commit ")).unwrap_or("");
+    let files = lock.lines().filter(|l| !l.starts_with('#') && !l.starts_with("commit ")).filter_map(|l| l.split_once(' '));
+    (commit, files.collect())
 }
 
 /// The narration's pronunciations, written beside the notebook as say.lock when the pinned Misaki
@@ -87,9 +95,9 @@ fn say_lock(slug: &str, dir: &Path, d: &doc::Doc) {
     if fs::read_to_string(dir.join("say.lock")).ok() != Some(lock.clone()) { fs::write(dir.join("say.lock"), lock).unwrap() }
 }
 
-/// A notebook: its pages and its exports under dist/stories/<slug>/.
-pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(String, Vec<u8>)>) {
-    let dir = Path::new("content/stories").join(slug);
+/// A notebook: its pages and its exports under dist/<door>/<slug>/.
+pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(String, Vec<u8>)>) {
+    let dir = Path::new("content").join(door).join(slug);
     let src = fs::read_to_string(dir.join("index.md")).unwrap();
     let d = doc::parse(&src);
     say_lock(slug, &dir, &d);
@@ -97,6 +105,17 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
         .map(|e| (e.file_name().to_string_lossy().into_owned(), fs::read(e.path()).unwrap()))
         .filter(|f| f.0 != "index.md").collect();
     files.sort();
+    // The visuals files its cells embed (`data!`), each pinned and present as pinned.
+    let (commit, pinned) = visuals();
+    let paths = d.cells().into_iter().flat_map(|c| c.0.split("data!(\"").skip(1).map(|r| r.split('"').next().unwrap_or("")));
+    let mut data: Vec<(&str, &str)> = paths.map(|p| {
+        let pin = *pinned.iter().find(|x| x.1 == p).unwrap_or_else(|| panic!("{slug}: data!(\"{p}\") is not pinned in visuals.lock"));
+        let ok = fs::read(format!("visuals/{p}")).is_ok_and(|b| pack::sha256(&b) == pin.0);
+        assert!(ok, "{slug}: visuals/{p} is missing or does not match visuals.lock: run scripts/visuals.sh");
+        pin
+    }).collect();
+    data.sort();
+    data.dedup();
     let has_cells = !d.cells().is_empty();
     let (run, wasm) = if has_cells {
         let b = cells::build(slug, &dir, &d).unwrap_or_else(|e| panic!("{slug}: {e}"));
@@ -129,11 +148,15 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
         let files: Vec<String> = pins().map(|(h, p)| format!("{}:\"{h}\"", pack::json(p))).collect();
         format!(",\"voice\":{{\"name\":{},\"model\":\"Kokoro-82M v1.0 q8\",\"files\":{{{}}}}}", pack::json(say::voice(&d)), files.join(","))
     };
+    let data = if data.is_empty() { String::new() } else {
+        let files: Vec<String> = data.iter().map(|(h, p)| format!("{}:\"{h}\"", pack::json(p))).collect();
+        format!(",\"visuals\":{{\"commit\":\"{commit}\",\"files\":{{{}}}}}", files.join(","))
+    };
     let rustc = TOOLCHAIN.lines().find_map(|l| l.strip_prefix("channel = ")).unwrap_or("").trim_matches('"');
     let theme = format!("{{\"id\":{},\"export\":{},\"palette_version\":{},\"overrides\":{}}}",
         pack::json(theme_id), pack::json(export_theme), theme::VERSION, pack::json(d.get("colors")));
     let src_manifest = format!("{{\"engine\":\"{}\",\"notebook\":\"{slug}\",\"rustc\":\"{rustc}\",\"source\":{{{}}},\"crates\":[{}],\"theme\":{theme},\
-        \"font\":{{\"files\":[{}]}},\"seed\":{}{voice}}}", engine::VERSION, hashes(&source), crates.join(","), fonts.join(","), pack::json(d.get("seed")));
+        \"font\":{{\"files\":[{}]}},\"seed\":{}{voice}{data}}}", engine::VERSION, hashes(&source), crates.join(","), fonts.join(","), pack::json(d.get("seed")));
     let zip = pack::zip(&[source.clone(), vec![("manifest.json", src_manifest.as_bytes())]].concat());
     let stage: Vec<f32> = run["stage"].as_array().unwrap().iter().map(|v| v.as_f64().map_or(f32::NAN, |x| x as f32)).collect();
     let get = |n: &str| if n.starts_with("fonts/") { fs::read(n).ok() } else { files.iter().find(|f| f.0 == n).map(|f| f.1.clone()) };
@@ -179,12 +202,13 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
     // The page wears the reader's theme (the header's); `theme`, `print` and `colors` are the exports'.
     let attrs = format!(" data-seed=\"{}\"", d.get("seed").parse::<u32>().unwrap_or(1));
     let chapters = d.chapters().into_iter().map(|c| c.title).collect();
-    let s = Story { slug: slug.into(), title: d.get("title").into(), summary: d.get("summary").into(), thumb: d.get("thumb").parse().ok(), chapters };
+    let (title, summary, thumb) = (d.get("title").into(), d.get("summary").into(), d.get("thumb").parse().ok());
+    let s = Story { door: door.into(), slug: slug.into(), title, summary, thumb, chapters };
     let (title, summary, style) = (esc(&s.title), esc(&s.summary), esc(&vars(d.get("palette"))));
     let body = format!(r#"<h1>{title}</h1><p class="lede">{summary}</p>{tools}<article data-article style="{style}">{article}</article>"#);
     let pages = VIEWS.iter().map(|(f, ..)| {
         let attrs = format!("{attrs} data-view=\"{f}\"");
-        Page { path: format!("stories/{slug}/{f}.html"), title: s.title.clone(), body: body.clone(), attrs, fonts: 3, script: script.clone() }
+        Page { path: format!("{door}/{slug}/{f}.html"), title: s.title.clone(), body: body.clone(), attrs, fonts: 3, script: script.clone() }
     }).collect();
     let mut out = exports;
     out.push(("manifest.json".into(), manifest.into_bytes()));
