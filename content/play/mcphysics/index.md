@@ -1,12 +1,12 @@
 ---
 title: Monte Carlo in statistical physics
-summary: Leave a metastable well, cool by simulated annealing, cross barriers by parallel tempering, and drive BTW and Manna sandpiles, each against the exact values of the finite system.
+summary: Run simulated annealing and parallel tempering on energy landscapes, and drive BTW and Manna sandpiles. Compare each run with the exact values of the finite system.
 thumb: 9127
 theme: site
 seed: 20261015
 ---
 
-This notebook runs Monte Carlo experiments from statistical physics on small finite systems. The first family moves a Metropolis chain on an energy landscape: the time to leave a metastable well, simulated annealing with four cooling schedules, and parallel tempering against one chain at a low temperature. The second family drives sandpiles slowly and records their avalanches: the BTW and Manna rules, finite-size effects and coarse-graining. Each landscape has an exact analysis on its grid, and each sandpile has exact values from Dhar's theory, so the notebook can show when a run agrees with the theory and when it does not.
+Compare each Monte Carlo run on a small finite system with its exact values. A landscape has an exact analysis on its grid. A sandpile has exact values from Dhar's theory.
 
 <!-- skill: This notebook ports the statistical-physics laboratory (physics.json) of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the file pinned in visuals.lock; never copy data into this file. The engine is the module physics in "The code". -->
 
@@ -23,7 +23,7 @@ println!("{}", fit(&cat().statement));
 
 ## An example
 
-The 6 examples come in 2 families. In the landscape examples, a Metropolis chain moves on a 61 × 61 grid of [−2, 2]², and it accepts a step with probability min(1, exp(−ΔV/T)). In the sandpile examples, the page adds grains to a lattice one drive at a time and relaxes the lattice completely after each drive.
+In a landscape example, a Metropolis chain moves on a 61 × 61 grid of [−2, 2]² and accepts a step with probability min(1, exp(−ΔV/T)). In a sandpile example, each drive adds grains, and the lattice relaxes fully after each drive.
 
 ```rust
 //| caption: The example.
@@ -38,7 +38,7 @@ about(ph_ex, &ph_state);
 
 ## Settings
 
-The settings start at the values of the example. The sizes are powers of 2: a setting of k gives 2^k replicates, steps, chains or drives. Each replicate or chain reads its own random stream, so the same seed gives the same run.
+A size setting k gives 2^k replicates, steps, chains or drives. Each replicate or chain has its own random stream, so the same seed gives the same run.
 
 ```rust
 //| caption: The settings of the example.
@@ -58,7 +58,7 @@ match ph_state.as_ref().map_err(String::clone).and_then(physics::job_of) {
 
 ## Results
 
-Each row gives an estimate with its 95 % interval and, where one exists, the exact value of the finite system. The claim says what kind of statement the row is: a theorem holds for the stated dynamics, a numerical value comes from a solve, and an observation holds only for this finite run.
+The Claim column gives the kind of each row. A theorem holds for the stated dynamics, a numerical value comes from a solve, and an observation holds only for this finite run.
 
 ```rust
 //| caption: Run the experiment.
@@ -75,7 +75,7 @@ match &*ph_out {
 
 ## Figures
 
-Each example has its own figures. The landscape shows the energy as contours, the minima, the minimax route from the trap to the global minimum and the states of the run. The other figures plot the estimates of the run against the exact values.
+Each example has its own figures. Most of them plot the run against the exact values.
 
 ```rust
 //| caption: The figure.
@@ -87,7 +87,7 @@ if let (Ok(s), Ok(o)) = (&ph_state, &*ph_out) { figure(s, o, ph_plot, ph_view) }
 
 ## Diagnostics
 
-The diagnostics say whether the run can support its estimates: censored exit times, Hajek's condition and the paired differences of the schedules, the swap rates of parallel tempering, and for a sandpile the grain balance, the burning test and the mean height in each half of the run.
+The diagnostics tell if the run can support its estimates.
 
 ```rust
 //| caption: The diagnostics.
@@ -96,7 +96,7 @@ if let Ok(o) = &*ph_out { diagnostics(ph_ex, o) }
 
 ## Methods
 
-Each card gives the estimator, its assumptions and settings, an example where the method works, an example where it fails, and a comparison with another method. The settings of a card are changes to the settings of its example.
+Each method card shows an example where the method works and an example where it fails. The settings of a card are changes to the settings of its example.
 
 ```rust
 //| caption: The method card.
@@ -106,8 +106,6 @@ html(&card(ph_card));
 ```
 
 # The code
-
-The data cell reads the pinned file of visuals, then come the helpers of the page and the engine.
 
 ```rust
 //| caption: The data.

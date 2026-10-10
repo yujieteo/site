@@ -1,12 +1,12 @@
 ---
 title: Theorems
-summary: Find a theorem among 2,055 and read its proof one step at a time. Then sort the whole catalogue of 2,389 results.
+summary: Find 1 of 2,055 theorems and read its proof 1 step at a time. Sort the catalogue of 2,389 results.
 thumb: 1479
 theme: site
 seed: 20261010
 ---
 
-Type the name of a theorem, or words from its statement. Pick a match. Then move the Step slider to read its proof one step at a time: what each step needs, what it does and what it gives. The later chapters show the moves that proofs share, the evidence for each result, and the catalogue of the Theorem Explorer, sorted by score, level or year.
+Find a theorem and read its proof 1 step at a time.
 
 <!-- skill: This notebook ports visuals/viz/theorem-explorer and visuals/viz/theorem-learner. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. The scores follow te-rubric/1 in the explorer's raw.json: overall = sum of w_i r_i / 4 when every weighted component is known, else unknown. Keep that rule as it is. -->
 
@@ -20,7 +20,7 @@ serde_json = { version = "=1.0.151", features = ["raw_value"] }
 
 ## Find a theorem
 
-Every word must occur in the name, an alias, a key concept or the statement. The names that hold every word come first, then the aliases, and the short names before the long ones. Only the theorems that have a proof are here.
+A theorem matches when its name, an alias, a key concept or its statement holds every word. Only theorems with a proof are here.
 
 ```rust
 //| caption: Words from the name or the statement.
@@ -37,7 +37,7 @@ if let Some(k) = theorem { html(&statement(&db().theorems[k])) }
 
 ## Its proof, step by step
 
-Each proof has 3 to 7 steps. At step 0 you see the outline: every step, what it needs and what it gives, and the role of each hypothesis. Move the slider to read one step in full. Some theorems have more than one proof: pick one.
+Move the Step slider to read 1 step in full. A proof has 3 to 7 steps.
 
 ```rust
 //| caption: One proof, one step at a time. Step 0 shows the outline.
@@ -52,7 +52,7 @@ match (theorem, &proof) {
 
 ## Proof moves
 
-A move is a step that many proofs share, for example "cover by open sets and keep finitely many of them". The list has the moves of the proof above.
+A move is a step that many proofs share.
 
 ```rust
 //| caption: One move of the proof, and the other theorems whose proofs use it.
@@ -74,7 +74,7 @@ match _here.get(choice("Move", &_here.iter().map(|&m| text(&db().moves[m]["n"]))
 
 ## Why it matters
 
-The Theorem Explorer judges each result on 7 components from 0 to 4. The weights make one overall score. The record also says why the result matters, what it relates to and where the evidence is.
+The Theorem Explorer scores each result from 0 to 4 on 7 components, and the weights make 1 overall score.
 
 ```rust
 //| caption: The explorer's record of the theorem that you picked.
@@ -105,7 +105,7 @@ match record {
 
 ## On arXiv
 
-The explorer counts the arXiv papers to August 2020 whose title or abstract names the result, in bins of years. The rate is per 10,000 papers, so that the growth of arXiv does not hide a trend.
+The counts stop at August 2020 and read only titles and abstracts. The rate per 10,000 papers removes the effect of arXiv growth.
 
 ```rust
 //| caption: Papers that name the theorem, per 10,000 papers: all of arXiv, and the mathematics group.
@@ -131,7 +131,7 @@ if _counts.is_empty() { println!("No paper names this theorem.") } else {
 
 ## The catalogue
 
-The catalogue has every named result of the explorer: theorems, lemmas, inequalities, formulas and more, with or without a proof. Find records by their words, then sort them. A record with an unknown score goes last. To read a proof, type its name in the Theorem box at the top.
+The catalogue has every named result, with or without a proof. Records with an unknown score go last. To read a proof, type its name in the Theorem box.
 
 ```rust
 //| caption: Words from the name, the aliases, the key concepts or the statement. Empty finds every record.
@@ -160,7 +160,7 @@ table(&["#", "Result", "Kind", "Score", "Level", "Year", "Proofs"], &_found.iter
 
 ## Concepts
 
-The learner has 11,949 concepts. Each has a definition, and many have a reminder, examples and the concepts that it needs first.
+The learner has 11,949 concepts, each with a definition.
 
 ```rust
 //| caption: A concept, found by its name or an alias.
@@ -194,11 +194,9 @@ match _hits.get(choice("Concept", &_hits.iter().map(|&i| text(&get(db().concepts
 
 ## About the data
 
-The data is the explorer's snapshot and the learner's assembly in yujieteo/visuals, at the commit that `visuals.lock` pins. The scores are judgements by a language model on public evidence. They are not measurements. A proof marked "authored, not checked" can contain errors: compare it with its source.
+The scores are judgements of a language model on public evidence, not measurements. A proof marked "authored, not checked" can have errors. Compare it with its source. The data is from yujieteo/visuals, pinned in `visuals.lock`.
 
 # The code that reads the data
-
-The page reads the 2 data files once, at its first run, and keeps them for its later runs.
 
 ```rust
 //| caption: The data files, inflated and parsed once.

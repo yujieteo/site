@@ -1,12 +1,12 @@
 ---
 title: Monte Carlo models
-summary: Run 252 Monte Carlo models, from a rare event to an option price, with 7 sampling methods, common random numbers and multilevel Monte Carlo. Read each estimate with its 95 % interval and, where the support is small, the exact value. Then the 9 methods with their examples, 5 real data sets with their fits and the groups of the workbench.
+summary: Run 252 Monte Carlo models with 7 sampling methods, common random numbers and multilevel Monte Carlo. Read each estimate with its 95 % interval and, for a small support, the exact value. Then read 9 method cards and 5 real data sets, and answer a guided interview.
 thumb: 7213
 theme: site
 seed: 20261013
 ---
 
-Pick a model. A model is a short text: its parameters, its random variables and their laws, its definitions and the quantities to estimate. A decision model also has alternatives, an objective and constraints. The notebook compiles the text, runs it with a sampling method and gives each estimate with a 95 % interval. When all the variables are discrete and the joint support is small, it also gives the exact value by enumeration. The later chapters give the law of the focus variable, the convergence of the run, the paths of a process, multilevel Monte Carlo, a parameter sweep, the 9 methods with their examples, 5 real data sets and the groups of the workbench.
+Run a model text and read each estimate with its 95 % interval. For discrete variables with a small joint support, the notebook also gives the exact value by enumeration.
 
 <!-- skill: This notebook ports the models, methods, data sets and groups of visuals/viz/monte-carlo-workbench, with the law names of laws.json. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. The model engine is in "The code": the core functions at the root, then the modules expr (the expression language), cat (the 39 catalogue laws), built (the constructed and custom laws), dep (the copulas and processes) and model (the model text, the runs, the intervals, the decision, the enumeration and multilevel Monte Carlo). -->
 
@@ -18,7 +18,7 @@ serde_json = "=1.0.151"
 
 ## A model
 
-The 252 models come in 3 kinds. A decision model compares 2 to 4 alternatives for a real question, such as the number of seats to sell on a flight. An experiment shows one property of a law or of a method, such as the zero-hit bound for a rare event. A law input defines a custom law by its PDF, its PMF, its CDF, its quantile function or a transform. 3 law inputs fail their checks on purpose, so the notebook shows their errors and does not run them.
+A decision model compares 2 to 4 alternatives. An experiment shows 1 property of a law or a method, and a law input defines a custom law. 3 law inputs fail their checks on purpose, so the notebook does not run them.
 
 ```rust
 //| caption: The law and the model.
@@ -34,22 +34,20 @@ let id = s(&entry["id"]);
 html(&about(entry));
 ```
 
-The model text has one statement on each line:
+The model text has 1 statement on each line:
 
-- `title:` and `problem:` give the question. `initial:`, `dynamics:`, `observation:`, `censoring:`, `truncation:` and `selection:` describe the model in words, and a censoring line also adds the observed time `T_obs` and the event indicator `T_event`.
-- `param p = 0.3 "note"` sets a parameter. An alternative or the parameter settings can change it.
-- `X ~ binomial(n = 10, p = p) repeat 3 {unit} "note"` draws a random variable from a law. `repeat` makes a vector of independent copies.
-- `name := expression` defines a value from the earlier names.
+- `title:`, `problem:`, `initial:`, `dynamics:`, `observation:`, `censoring:`, `truncation:` and `selection:` describe the model in words. A censoring line also adds the observed time `T_obs` and the event indicator `T_event`.
+- `param p = 0.3 "note"` sets a parameter.
+- `X ~ binomial(n = 10, p = p) repeat 3 {unit} "note"` draws a random variable, and `repeat` makes a vector of independent copies.
+- `name := expression` defines a value from earlier names.
 - `prob q = condition`, `mean q = expression` and `ratio q = E[a] / E[b]` are the quantities to estimate.
 - `alt "label": a = 1; b = 2` is an alternative. `maximise q` or `minimise q` is the objective, and `require q <= 0.05` is a constraint.
-- `focus X` names the variable of the plots, and `control C = expression` names the control of the control-variate method.
+- `focus X` names the variable of the plots. `control C = expression` names the control variate.
 - `law NAME(params) pdf(x) = expression on [lo, hi]` defines a custom law by its PDF, PMF, CDF, quantile function, MGF or characteristic function.
 
 ## Settings
 
-The method sets the sampler of every law and the estimator. Independent sampling uses the reference sampler of each law. The inverse transform maps one uniform to one value by the quantile function. Rejection sampling proposes from an envelope and accepts with the ratio of the densities. The Euler method steps a process on its time grid. Stratification, antithetic variables and control variates use the inverse transform and change the estimator. A comparison method runs the same replicates again, so the notebook can give the variance ratio of the 2 methods.
-
-The parameter settings change the parameters of the model, such as `p = 0.4; n = 12`, for all the alternatives. An assumption failure breaks one assumption of one method on purpose, so that you can see what the interval does then.
+The method sets the sampler of every law and the estimator. The parameter settings apply to all the alternatives. A comparison method runs the same replicates again and gives the variance ratio. An assumption failure breaks 1 assumption of 1 method on purpose.
 
 ```rust
 //| caption: The settings of the run.
@@ -70,7 +68,7 @@ let seed = slider("Seed", 0.0, 9999.0, 1.0, 2026.0) as u64;
 
 ## Results
 
-The notebook compiles the model for the settings and runs each alternative with the same replicates. The interval of a probability is the Wilson interval, or the exact one-sided bound 1 − 0.05^(1/n) when the run has no hits. The interval of a mean is the CLT interval, and the interval of a ratio comes from the delta method. A stratified, antithetic or control-variate run uses the interval of its own estimator. When the mean or the variance of a quantity is not finite, the notebook gives no interval, because the theorem behind it does not apply.
+The Interval column names each 95 % interval, or tells why there is none.
 
 ```rust
 //| caption: Compile the model and run it.
@@ -105,7 +103,7 @@ if let (Ok(m), Some(Ok(st)), false) = (&compiled, &stats, compare == "none") {
 
 ## The law of the focus variable
 
-The plot compares the values of the focus variable in the run with its exact law, when the notebook knows it: from the law of the variable, or from the enumeration of the joint support. A sample PMF is a dot at each value. A sample PDF is a histogram on 40 equal bins between the 0.5 % and 99.5 % quantiles. A logarithmic vertical axis shows a tail that a linear axis hides, and the tail plot shows a power law as a straight line.
+A logarithmic vertical axis shows a tail that a linear axis hides. The tail plot shows a power law as a straight line. A sample PDF has 40 bins between the 0.5 % and 99.5 % quantiles.
 
 ```rust
 //| caption: The plot, the axis and the alternative.
@@ -125,7 +123,7 @@ if let (Ok(m), Some(Ok(st))) = (&compiled, &stats) {
 
 ## Convergence
 
-The estimate and its 95 % interval at n = 16, 32, 64 and so on up to the size of the run. The interval narrows as 1/√n when the variance is finite. A heavy tail shows as jumps that do not die out, and a biased method as an interval that settles away from the exact value.
+With a finite variance, the interval narrows as 1/√n. A heavy tail shows as jumps that do not stop, and a biased method as an interval that stays away from the exact value.
 
 ```rust
 //| caption: The estimate and its interval as the run grows.
@@ -137,7 +135,7 @@ if let (Ok(m), Some(Ok(st))) = (&compiled, &stats) {
 
 ## Paths
 
-A process gives a path for each replicate, and its quantities read the path. The plot shows the first 20 paths of the focus variable. For other models it is empty.
+For a process, the plot shows the first 20 paths of the focus variable.
 
 ```rust
 //| caption: The first paths of the focus process.
@@ -148,7 +146,7 @@ if let (Ok(m), Some(Ok(st))) = (&compiled, &stats) {
 
 ## Multilevel Monte Carlo
 
-Multilevel Monte Carlo (Giles, 2008) estimates the quantity of the finest time grid as a sum: the quantity on the coarsest grid, plus the differences between each grid and the next coarser one. A fine and a coarse path use the same Brownian increments, so their difference has a small variance, and most replicates go to the cheap levels. The sample sizes minimise the cost for a target root mean square error ε, and the notebook adds levels until its bias test passes. 3 models set ε: the alarm level of a Brownian motion, the price of an option and a floating rate.
+Multilevel Monte Carlo (Giles, 2008) adds the differences between time grids to the quantity on the coarsest grid. A fine path and its coarse path use the same Brownian increments, so their difference has a small variance. The sample sizes give the lowest cost for the target error ε, and the notebook adds levels until its bias test passes.
 
 ```rust
 //| caption: The levels and the estimate for the target ε of the model.
@@ -163,7 +161,7 @@ match (&compiled, entry["settings"]["mlmc_eps"].as_f64()) {
 
 ## A parameter sweep
 
-Pick a parameter. The notebook runs the model at 9 values of it, from half to twice its value (or from −1 to +1 around it when it is not positive), with 2^12 replicates at each value, and plots the estimate of the quantity for each alternative with its interval.
+The sweep runs the model at 9 values of 1 parameter, from half to twice its value, with 2^12 replicates at each value. If the value is not positive, the sweep goes from −1 to +1 around it.
 
 ```rust
 //| caption: The swept parameter.
@@ -179,9 +177,9 @@ if let (Ok(m), true) = (&compiled, sweep > 0) {
 
 ## A guided interview
 
-When you do not know which law to use, the interview asks about the quantity: what one value measures, which mechanism makes it, its tail, its dependence and the data that you have. Each answer can make more questions relevant, and the notebook asks them in order. Rules go from the answers to the candidate laws and model components. A rule supports or excludes candidates with a weight, records an assumption that the answers do not settle, or stops the interview with "insufficient evidence". Each rule gives its reason and its basis: a theorem or a modelling assumption.
+Answer the interview to find a law for your quantity. Each rule reads the answers and supports or excludes candidate laws with a weight, records an assumption, or stops with "insufficient evidence".
 
-Start from one of the 6 examples or from no answers, then change the answers. "I do not know" is a valid answer: the interview keeps more candidates, and it records the assumption. The numbers (the mean, the standard deviation, an upper limit and the threshold of the decision) give the parameters of the model by moment matching.
+"I do not know" is a valid answer. The interview then keeps more candidates and records the assumption. The numbers that you type give the parameters of the model by moment matching.
 
 ```rust
 //| caption: The answers.
@@ -189,8 +187,6 @@ let _exs = iv_examples();
 let _start = choice("Start the interview from", &std::iter::once("No answers".to_string()).chain(_exs.iter().map(|x| x.0.clone())).collect::<Vec<_>>(), 1);
 let (iv_text, iv_notes) = answer_controls(if _start == 0 { "" } else { &_exs[_start - 1].1 });
 ```
-
-To test a rule, switch it off: give its id from the rule path. To build a candidate that is not first, pick it.
 
 ```rust
 //| caption: The rules switched off and the candidate to build.
@@ -205,14 +201,14 @@ let iv_eval = if _at == 0 { _ranked } else { interview::evaluate(ivdata(), &iv_t
 interview_status(&iv_eval, &iv_notes);
 ```
 
-The rule path lists the rules that fire for these answers, in the order of the rule graph. A rule that you switched off stays in the list, but it has no effect.
+A rule that you switch off stays in the rule path, but it has no effect.
 
 ```rust
 //| caption: The rule path.
 rule_path(&iv_eval);
 ```
 
-The score of a candidate is the sum of the weights of the rules that support it. A score of 2 or more is strong support. The rule graph cannot separate candidates with the same score: the rejection tests on the data can.
+The score of a candidate is the sum of the weights of the rules that support it, and 2 or more is strong support. Only the rejection tests on the data can separate candidates with the same score.
 
 ```rust
 //| caption: The candidates.
@@ -227,7 +223,7 @@ match iv_eval.candidates.iter().chain(&iv_eval.components).find(|c| iv_eval.chos
 }
 ```
 
-The interview writes the chosen candidate as a model text in the language of the first chapter. Where the answers give no numbers, the model uses illustrative values and says so. The notebook then compiles the text and runs it with independent sampling.
+The notebook writes the chosen candidate as a model text and runs it with independent sampling.
 
 ```rust
 //| caption: The model of the chosen candidate.
@@ -255,7 +251,7 @@ if let Some(Ok(b)) = &iv_built {
 
 ## Methods
 
-Each card gives the estimator of a method, its assumptions and its settings, then a model where the method suits, a model where it fails, and a comparison with another method. The notebook runs the 3 examples with 2^12 replicates and seed 2026, so you can read the claims of the card in the numbers. The variance ratio of a comparison is the variance of the other method over the variance of this method, for the same number of model evaluations: a ratio above 1 is a gain.
+Each card runs its 3 examples with 2^12 replicates and seed 2026. A variance ratio is the variance of the other method over the variance of this method, for the same number of model evaluations. A ratio above 1 is a gain.
 
 ```rust
 //| caption: The method card.
@@ -270,7 +266,7 @@ examples(card);
 
 ## Data sets
 
-5 real data sets from the history of statistics and engineering. For a count, the notebook fits the law of the data by maximum likelihood and tests the fit with Pearson's χ², with cells pooled to an expected count of at least 5. For the annual maxima of rainfall, it fits the GEV law and the Gumbel law by maximum likelihood, gives the standard errors from the observed information and the return levels, and tests ξ = 0 by the deviance. A p-value measures the fit of this data to one law. It does not prove the law.
+A p-value measures the fit of the data to 1 law, and it does not prove the law. Each fit is by maximum likelihood. The χ² test of a count pools its cells to an expected count of at least 5.
 
 ```rust
 //| caption: The data set.
@@ -280,7 +276,7 @@ dataset(set);
 
 ## Groups
 
-The workbench grew in 10 groups. This series of 4 notebooks holds them: the laws and the theory, these models and methods with the guided interview, the chains and rare events, and statistical physics.
+The 4 notebooks of this series hold the 10 groups of the workbench.
 
 ```rust
 //| caption: The groups of the workbench and the notebook of each.
