@@ -1,12 +1,12 @@
 ---
 title: Monte Carlo chains and rare events
-summary: Run Markov chains, sequential Monte Carlo, particle filters and quasi-Monte Carlo on 11 examples, with the diagnostics of each kind kept apart. Then estimate the probabilities of rare events with importance sampling, the cross-entropy method and splitting, against crude Monte Carlo.
+summary: Run Markov chains, sequential Monte Carlo, particle filters and quasi-Monte Carlo on 11 examples. Then estimate rare-event probabilities with importance sampling, the cross-entropy method and splitting, against crude Monte Carlo.
 thumb: 7814
 theme: site
 seed: 20261014
 ---
 
-This notebook has two parts. The first part is a laboratory for the methods that do not draw independent values from the law itself: Markov chains (Metropolis–Hastings, the Gibbs sampler and Hamiltonian Monte Carlo), the sequential Monte Carlo sampler, the particle filter and randomised quasi-Monte Carlo. Each example has a reference value, so you can see when a method works and when it fails. The second part estimates the probabilities of rare events. Crude Monte Carlo needs about 100/p replicates for a probability p, so the methods of that part change the law or split the paths.
+Each example has a reference value, so you can see when a method works and when it fails. The Chains chapters run methods that do not draw independent values from the law. The Rare events chapters estimate a small probability p. Crude Monte Carlo needs about 100/p replicates, so these methods change the law or split the paths.
 
 <!-- skill: This notebook ports the Markov chain, sequential and quasi-Monte Carlo laboratory (chains.json) and the rare-event laboratory (rare.json) of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. The engines are in "The code": the core functions at the root, then the modules chains and rare. -->
 
@@ -18,7 +18,7 @@ serde_json = "=1.0.151"
 
 ## Chains: an example
 
-The 11 examples come in 3 families. A target law is a density that the page knows only up to a constant, such as a posterior law. A state-space model has a hidden state that moves in time and observations of it, and the particle filter follows the state. An integral on the unit cube compares randomised Sobol points with independent points. 3 examples fail on purpose: two modes far apart, Neal's funnel and a discontinuous integrand in 8 dimensions.
+3 of the 11 examples fail on purpose: 2 modes far apart, Neal's funnel and a discontinuous integrand in 8 dimensions. The page knows a target law only up to a constant. A particle filter follows the hidden state of a state-space model. An integral example compares randomised Sobol points with independent points.
 
 ```rust
 //| caption: The example and its parameters.
@@ -35,7 +35,7 @@ html(&about_example(example));
 
 ## Chains: settings
 
-A Markov chain makes 2^k warm-up iterations, which the notebook discards, then 2^k draws. R independent chains start from dispersed points, or from one point. The sequential Monte Carlo sampler and the particle filter use N = 2^k particles, and each of the R runs gives one estimate. Randomised quasi-Monte Carlo uses n = 2^k scrambled Sobol points in each of R randomisations. The interval of each estimate comes from the spread of the R independent runs, so it does not depend on a theory of the method.
+Each interval comes from the spread of R independent runs, so it does not depend on a theory of the method. The size 2^k gives the draws of a Markov chain after 2^k warm-up iterations. It also gives the particles of a particle method, or the Sobol points of each randomisation.
 
 ```rust
 //| caption: The method and its settings.
@@ -69,7 +69,7 @@ let ch_path = PATH[choice("Path of the option", &PATH.map(|x| x.1), PATH.iter().
 
 ## Chains: estimates
 
-Each estimate is the mean of the R run estimates, with a 95 % t interval from their spread. For a Markov chain, the table also gives the Monte Carlo standard error from the effective sample size of the pooled chains. When the two disagree, the chains do not mix, or the runs are too few. The reference is an exact value or a numerical approximation with its method. A reference outside the interval is a sign of a bias, such as a chain that stays in one mode.
+A reference outside the interval is a sign of a bias, such as a chain that stays in 1 mode. For a Markov chain, the MCSE (Monte Carlo standard error) comes from the effective sample size of the pooled chains. If the MCSE and the interval disagree, the chains do not mix, or the runs are too few.
 
 ```rust
 //| caption: Run the laboratory.
@@ -93,13 +93,11 @@ match (&ch_lab.0, &ch_lab.1) {
 
 ## Chains: diagnostics
 
-The notebook keeps three kinds of diagnostic apart, because each one answers a different question.
+A good diagnostic does not prove that an estimate is correct. For example, 2 chains in the same wrong mode give R-hat near 1. The notebook keeps 3 kinds of diagnostic apart:
 
-- Markov-chain diagnostics ask if the chains mix: the acceptance rate, split R-hat (near 1 when the chains agree), the effective sample size, the integrated autocorrelation time τ and the divergent transitions of Hamiltonian Monte Carlo.
-- Weight degeneracy asks if the particles still represent the law: the weight ESS, the largest normalised weight, the number of resampling steps and the number of distinct ancestors that survive.
-- The estimation error asks how far the estimate is from the reference, from the spread of the independent runs.
-
-A good diagnostic does not prove that an estimate is correct. Two chains in the same wrong mode give R-hat near 1, as the example with two modes shows.
+- Markov-chain diagnostics tell if the chains mix. Split R-hat is near 1 when the chains agree.
+- Weight degeneracy tells if the particles still represent the law.
+- The estimation error tells how far the estimate is from the reference.
 
 ```rust
 //| caption: The diagnostics of each method.
@@ -108,7 +106,7 @@ if let (Ok(lab), Some((_, sm))) = &*ch_lab { diagnostics(lab, sm) }
 
 ## Chains: figures
 
-The figures of a Markov chain are the trace of the chains, the autocorrelation of a series and the draws on the target density. The figures of a particle system are the weights, the genealogy of the particles and, for a filter, the filter means against the reference. The figures of an integral are the error rate against n and the points. The figure Runs shows the estimate of each independent run.
+The list of figures changes with the family and the method.
 
 ```rust
 //| caption: The figure.
@@ -121,7 +119,7 @@ if let (Ok(lab), Some((blocks, sm))) = &*ch_lab { figure(lab, blocks, sm, ch_plo
 
 ## Chains: methods
 
-Each card gives the estimator, its assumptions and settings, an example where the method works, an example where it fails, and a comparison with another method.
+Each card shows an example where the method works and an example where it fails.
 
 ```rust
 //| caption: The method card.
@@ -132,7 +130,7 @@ html(&chain_card(ch_card));
 
 ## Rare events: an example
 
-The second part estimates small probabilities in three problems. The tail of a sum asks for P(S_n > b), where S_n is the sum of n independent claims. The ruin problem asks for the probability ψ(u) that an insurer with the initial capital u is ever ruined (the Cramér–Lundberg model). The catastrophe test follows K insurers that share catastrophe losses for T years, and it chooses the cheapest policy that keeps a systemic ruin below a target. The 17 examples show where each method works and where it fails.
+The 17 rare-event examples show where each method works and where it fails, in 3 problems.
 
 ```rust
 //| caption: The rare-event example and its model.
@@ -150,7 +148,7 @@ about_rare(rare_ex, &rare_law, &rare_params);
 
 ## Rare events: settings
 
-Each method runs R independent replications of N = 2^k paths. A path of the sum draws n claims, a path of the ruin problem draws the ladder heights of the walk until it ends, and a path of the catastrophe test draws the events of T years. The comparison method runs on the same problem with its own stream. An assumption failure breaks one assumption of one method on purpose, so that you can see what the failure does.
+An assumption failure breaks 1 assumption of 1 method on purpose. Each method runs R independent replications of N = 2^k paths, and the comparison method uses its own stream. A path draws the n claims of a sum, the ladder heights of a ruin walk, or the events of T years.
 
 ```rust
 //| caption: The method and its settings.
@@ -174,7 +172,7 @@ let rare_options = options_text(&rare::OPTIONS.iter().enumerate().map(|(i, o)| {
 
 ## Rare events: estimates
 
-Each method gives an interval that fits it. Direct simulation pools all its paths in a Wilson interval, and with no path in the event it gives the exact one-sided bound 1 − 0.05^(1/N). Exponential tilting pools its weighted paths in a central limit interval. The adaptive and multistage methods give a Student t interval from the spread of their R replications. The relative error is the standard error divided by the estimate. The work counts the random jumps or events that a method draws, so that methods of different cost can be compared.
+Each method gives the interval that fits it, and the table names it. The relative error is the standard error divided by the estimate. The work counts the random draws of a method, so you can compare methods of different cost.
 
 ```rust
 //| caption: Run the rare-event laboratory.
@@ -194,7 +192,7 @@ match &*rare_lab {
 
 ## Rare events: the decision
 
-The decision compares the estimate of the first method with the target. The target is met when the whole interval is below it, and it is not met when the whole interval is above it. When the interval holds the target, the run cannot separate them, and more replications are necessary before a decision. In the catastrophe test, the page chooses the cheapest of three policies: no action, a catastrophe layer that the insurers buy together, or extra capital for each insurer.
+The target is met when the whole interval of the first method is below it, and not met when the whole interval is above it. If the interval holds the target, run more replications before a decision. The catastrophe test chooses the cheapest policy that meets the target.
 
 ```rust
 //| caption: The decision.
@@ -203,7 +201,7 @@ if let Ok(l) = &*rare_lab { rare_decision(l) }
 
 ## Rare events: diagnostics
 
-A change of measure can give a wrong answer with a narrow interval. Thus read the diagnostics of each method with its estimate: the effective sample size of the weights, the largest share of one weight, the acceptance rates of the chain moves, the fractions of the stages and the number of events against its exact mean. A good diagnostic does not prove that an estimate is correct.
+A change of measure can give a wrong answer with a narrow interval. Thus read the diagnostics of each method with its estimate.
 
 ```rust
 //| caption: The diagnostics of each method.
@@ -212,7 +210,7 @@ if let Ok(l) = &*rare_lab { rare_diagnostics(l) }
 
 ## Rare events: figures
 
-The convergence figure shows the estimate after each replication against the work. The comparison shows the estimate and the interval of each method against the reference. The stages show how a multistage method climbs to the event. The tail shows the reference curves with the bounds and the asymptotic. For the catastrophe test, it shows the survival function of the total loss with the value at risk and the expected shortfall.
+The figures compare the methods with the reference, or show how a multistage method climbs to the event.
 
 ```rust
 //| caption: The figure.
@@ -222,7 +220,7 @@ if let Ok(l) = &*rare_lab { rare_figure(l, rare_plot) }
 
 ## Rare events: a sweep
 
-A sweep runs the first method at several values of one parameter, with at most 2^11 paths and 8 replications for each value. For the sum and the ruin problem, the figure shows the estimate, its interval and the reference. For the catastrophe test, it shows the probability of a systemic ruin under each policy against the target, and the table gives the policy that the run chooses at each value.
+A sweep runs the first method at several values of 1 parameter, with at most 2^11 paths and 8 replications for each value.
 
 ```rust
 //| caption: The sweep.
@@ -244,7 +242,7 @@ if _k > 0 {
 
 ## Rare events: methods
 
-Each card gives the estimator, its assumptions and settings, an example where the method works, an example where it fails, and a comparison with another method.
+Each card shows an example where the method works and an example where it fails.
 
 ```rust
 //| caption: The method card.
@@ -254,8 +252,6 @@ html(&rare_card_html(rare_card));
 ```
 
 # The code
-
-The data cell reads the pinned files of visuals, then come the helpers of the page and the engines.
 
 ```rust
 //| caption: The data.

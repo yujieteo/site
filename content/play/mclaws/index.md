@@ -1,12 +1,12 @@
 ---
 title: Monte Carlo laws
-summary: Read 60 probability laws, with their parameters, moments, transforms and limit cases. Draw from 39 of them and compare the sample with the exact law. Then the law of large numbers, 24 limit theorems and a glossary of 363 terms.
+summary: Read 60 probability laws, draw from 39 of them and compare each sample with the exact law. Then run the law of large numbers, and read 24 limit theorems and a glossary of 363 terms.
 thumb: 6389
 theme: site
 seed: 20261012
 ---
 
-Pick a law. The notebook gives its convention, its PMF or PDF, its parameters and their domains, its support, its moments, its transforms and its limit and special cases. For the 39 laws of the first 3 families, it also draws a sample by an exact method. It then compares the histogram with the exact PMF or PDF, and the sample mean with the exact mean. The later chapters run the law of large numbers and the central limit theorem on the same law, give 24 theorems with their proofs and counterexamples, and find a term in the glossary.
+Draw a sample from a probability law and compare it with the exact law.
 
 <!-- skill: This notebook ports the laws, theory, glossary and limits of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. Every sampler is an exact method (inversion, a transformation or rejection). Tests are disposable: check a change end to end in the built page; do not commit regression tests. -->
 
@@ -18,7 +18,7 @@ serde_json = "=1.0.151"
 
 ## A law
 
-The 60 laws of the catalogue are in 6 families: the discrete laws, the continuous laws, the positive, heavy-tailed and extreme-value laws, the censored and constructed laws, the conditional laws and copulas, and the processes. Each law has one convention for its parameters, and every formula on this page uses it.
+Each law has 1 convention for its parameters, and every formula on this page uses it.
 
 ```rust
 //| caption: The family and the law.
@@ -34,7 +34,7 @@ html(&about(entry));
 
 ## Draw a sample
 
-The notebook draws from the 39 laws of the first 3 families. Each sampler is exact: the inverse transform where the quantile function is explicit, or a known transformation of uniform, normal and exponential values. Rejection is used only for the gamma and zeta laws. A law with a vector parameter gets sliders for its scalars. Its histogram then shows one component, or a sum for the multivariate normal law.
+Each sampler is exact, and only the gamma and zeta laws use rejection. For a vector parameter, the histogram shows 1 component, or a sum for the multivariate normal law.
 
 ```rust
 //| caption: The sample size and the seed.
@@ -52,7 +52,7 @@ let sample: Result<Vec<f64>, String> = match spec {
 };
 ```
 
-The histogram is the sample's density on 40 equal bins between its 0.5 % and 99.5 % quantiles. A discrete law shows each value from the smallest draw to the 99.5 % quantile. The test row gives Pearson's χ² of the sample against the exact law, with its p-value. A p-value below about 0.001 at several seeds would show a sampler or a formula in error.
+In the χ² test row, a p-value below about 0.001 at several seeds shows an error in a sampler or a formula. The histogram has 40 equal bins from the 0.5 % to the 99.5 % quantile of the sample. A discrete law shows each value up to the 99.5 % quantile.
 
 ```rust
 //| caption: The sample against the exact law: histogram and PMF or PDF.
@@ -80,7 +80,7 @@ match &sample {
 
 ## The law of large numbers
 
-The strong law of large numbers says that the mean of n independent draws tends to the exact mean when $\mathbb{E}|X| < \infty$. The central limit theorem adds the size of the error when the variance $\sigma^2$ is finite: the mean is within $\mu \pm 1.96\,\sigma/\sqrt{n}$ with a probability that tends to 95 %. Both run here on the law and the parameters above. Try the Cauchy law, or a Pareto law with $\alpha \le 2$.
+The mean of n draws tends to the exact mean when $\mathbb{E}|X| < \infty$, and the CLT band needs a finite variance. To see a failure, try the Cauchy law, or a Pareto law with $\alpha \le 2$.
 
 ```rust
 //| caption: The running mean of one sample against log10 n, with the exact mean and the CLT band μ ± 1.96 σ / sqrt(n).
@@ -107,7 +107,7 @@ if let (Ok(xs), Some(_)) = (&sample, spec) {
 }
 ```
 
-The CLT interval $\bar X_n \pm 1.96\, s_n/\sqrt{n}$ uses the sample's own standard deviation $s_n$. The next cell makes 400 such intervals, each from n new draws, and counts how many hold the exact mean. With a finite variance the count tends to 95 %, but slowly for a skewed law. With an infinite variance it stays below.
+Each of the 400 intervals $\bar X_n \pm 1.96\, s_n/\sqrt{n}$ uses n new draws and their standard deviation $s_n$. With a finite variance, the fraction that holds the exact mean tends to 95 %, but slowly for a skewed law. With an infinite variance, it stays below 95 %.
 
 ```rust
 //| caption: How often the CLT interval holds the exact mean.
@@ -129,7 +129,7 @@ if let (Ok(_), Some(_)) = (&sample, spec) {
 
 ## Limit theorems
 
-The catalogue has 24 theorems that the Monte Carlo method rests on: the laws of large numbers, the error of the estimate, variance reduction, tails and extremes, large deviations and ruin, Markov chains, particles, quasi-Monte Carlo and statistical physics. Each has its assumptions, a proof in outline, a counterexample and a reference.
+The catalogue gives 24 theorems that the Monte Carlo method needs.
 
 ```rust
 //| caption: The theorem, its assumptions, its proof and a counterexample.
@@ -140,7 +140,7 @@ html(&theorem(th));
 
 ## Glossary
 
-Type one or more words. A term matches when every word is in the term or in its definition. The terms that hold the words in their name come first.
+A term matches when every word is in the term or its definition. Matches in the term come first.
 
 ```rust
 //| caption: The terms that match.
@@ -152,7 +152,7 @@ table(&["Term", "Definition"], &found.iter().take(30).map(|g| vec![fit(s(&g["ter
 
 ## Published run limits
 
-The workbench page published limits for the size and the time of a run, from speeds that it measured in a browser. They apply to that page, which ran its simulations in 4 workers. This notebook runs every cell again at each change, in one thread, so its samples are smaller.
+These limits are for the workbench page, which ran in 4 workers. This notebook runs in 1 thread, so its samples are smaller.
 
 ```rust
 //| caption: The limits and the measured speeds, as the data gives them.
