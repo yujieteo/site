@@ -30,7 +30,7 @@ against `visuals.lock`; files already there and matching need no network.
 | `web/host.js` | The browser boundary: one clock, Canvas execution of display lists, the run worker, the voice worker, the video recorder, tools, the agent API. |
 | `kokoro.lock`, `scripts/kokoro.sh` | The narration's pinned files: kokoro-js 1.2.1, ONNX Runtime Web, Kokoro-82M v1.0 (q8) with two US voices, and the Misaki 0.9.4 lexicons the build reads. |
 | `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, and each sealed artifact that a notebook embeds, with its SHA-256. Visuals owns the data. |
-| `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search. |
+| `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search and its dot (drawn at build time by `scene::face`). |
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (notes, doors, index). |
 | `content/stories/<slug>/`, `content/play/<slug>/` | A notebook (a story, or a tool in Play): `index.md` and its assets (images, `Cargo.lock`, `say.lock`). |

@@ -47,7 +47,15 @@ dialog::backdrop { background: rgb(0 0 0 / 0.4); }
 :is(.look, .sift) [aria-pressed=true] { color: var(--fg); border-color: var(--fg); }
 /* The search fields: large text over a rule. */
 :is(.find, .sift) input { font: inherit; font-size: 1.125rem; color: var(--fg); background: none; border: 0; border-bottom: 1px solid var(--line); outline: none; }
-.find input { width: 100%; padding: 0.875rem 1rem; }
+.find input { width: 100%; padding: 0.875rem 1rem 0.875rem 3.75rem; }
+/* The dot (built from engine::scene::face) sits at the field's left end: one drawing per state, and
+   only the one marked .on shows. --gx and --gy turn its eyes, which glide only when motion is welcome. */
+.find form { display: grid; grid-template-columns: minmax(0, 1fr); }
+.find :is(input, .dot) { grid-area: 1 / 1; }
+.find .dot { align-self: center; width: 2.5rem; height: 2.5rem; margin-left: 0.625rem; pointer-events: none; }
+.dot > :not(.on) { display: none; }
+.dot .eyes { translate: calc(var(--gx, 0) * var(--ex)) calc(var(--gy, 0) * var(--ey)); }
+@media (prefers-reduced-motion: no-preference) { .dot .eyes { transition: translate 0.2s ease-out; } }
 .find ol { list-style: none; margin: 0; padding: 0.5rem; max-height: 60vh; overflow-y: auto; }
 .find ol:empty { display: none; }
 .find a { display: block; padding: 0.5rem 0.75rem; border-radius: 6px; color: var(--fg); text-decoration: none; }

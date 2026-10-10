@@ -6,7 +6,7 @@ mod book;
 mod cells;
 
 use book::{FONTS, font};
-use engine::{doc, pack, theme};
+use engine::{doc, draw::{Op, Sh}, pack, scene, theme};
 use std::{collections::HashMap, fmt::Write, fs, path::Path};
 
 const SHELL: &str = include_str!("../../web/shell.html");
@@ -50,7 +50,7 @@ fn render(p: &Page, wasm: &str, index: &str) -> String {
         _ if p.body.contains("<canvas") => format!("{footer}<script id=\"wasm\" type=\"application/octet-stream\">{wasm}</script>\n<script>{HOST}</script>"),
         _ => String::new(),
     };
-    SHELL.replace("{{attrs}}", &p.attrs).replace("{{title}}", &esc(&p.title)).replace("{{root}}", &root)
+    SHELL.replace("{{dot}}", &dot()).replace("{{attrs}}", &p.attrs).replace("{{title}}", &esc(&p.title)).replace("{{root}}", &root)
         .replace("{{style}}", &(font_css(p.fonts) + &theme::css() + STYLE)).replace("{{body}}", &p.body).replace("{{script}}", &script)
         .replace("{{index}}", index).replace("{{themes}}", &themes())
 }
@@ -63,6 +63,29 @@ fn themes() -> String {
         let swatch = format!("--a:#{};--b:#{};--c:#{};--d:#{}", c(l, 0), c(l, 6), c(d, 0), c(d, 6));
         format!(r#"<button type="button" value="{f}" style="{swatch}"><i></i>{}</button>"#, name.join(" "))
     }).collect()
+}
+
+/// The search dialog's dot, the curious one: one drawing (`scene::face`) for each of the dialog's
+/// states, of which the dialog shows one (the first, asleep, until it opens). Its eyes are drawn
+/// looking ahead; the dialog turns them with --gx and --gy (-1 to 1), as far as `scene::GAZE` lets them.
+fn dot() -> String {
+    const STATES: [(&str, f32, f32); 5] = [("sleep", 1.0, 0.0), ("look", 5.0, 0.0), ("hit", 2.0, 0.0), ("miss", 3.0, 0.0), ("pick", 2.0, 1.0)];
+    let (r, sq) = (0.4, 0.04);
+    let svg = |op: &Op| match *op {
+        Op::Fill(Sh::Ell(x, y, a, b), c, al, _) => format!(r##"<ellipse cx="{x}" cy="{y}" rx="{a}" ry="{b}" fill="#{c:06x}" opacity="{al}"/>"##),
+        Op::Fill(Sh::Seg(x, y, u, v, w), c, ..) => format!(r##"<path d="M{x} {y}L{u} {v}" stroke="#{c:06x}" stroke-width="{w}"/>"##),
+        Op::Fill(Sh::Ring(x, y, rr, w), c, ..) => format!(r##"<circle cx="{x}" cy="{y}" r="{rr}" fill="none" stroke="#{c:06x}" stroke-width="{w}"/>"##),
+        Op::Clip(Some(_)) => r#"<g class="eyes">"#.into(), // what is drawn on the body: here only the eyes
+        Op::Clip(None) => "</g>".into(),
+        _ => String::new(),
+    };
+    let states: String = STATES.iter().enumerate().map(|(i, &(s, g, pulse))| {
+        let mut o = vec![];
+        scene::face(&mut o, [0.5, 0.5, r, 0.0, 0.0, 0.0, 0.0, g, sq, pulse], scene::CAST[4], |_| ());
+        format!(r#"<g data-s="{s}"{}>{}</g>"#, if i == 0 { r#" class="on""# } else { "" }, o.iter().map(svg).collect::<String>())
+    }).collect();
+    let (ex, ey) = (scene::GAZE.0 * r * (1.0 + sq), scene::GAZE.1 * r * (1.0 - sq));
+    format!(r#"<svg class="dot" viewBox="0 0 1 1" style="--ex:{ex}px;--ey:{ey}px" stroke-linecap="round" aria-hidden="true">{states}</svg>"#)
 }
 
 /// Redact private details from a log line; None when it must not be published at all.
