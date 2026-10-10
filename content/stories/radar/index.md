@@ -1,6 +1,6 @@
 ---
 title: One radar, one target
-summary: R1 holds its beam where T3 was. For two minutes, does it see it?
+summary: R1 holds its beam where T3 was. Does R1 see T3 in the next 2 minutes?
 palette: #2f4a5c #13222c #f2a541 #fbe8a6
 thumb: 26457
 theme: site
@@ -9,7 +9,7 @@ voice: af_heart
 pronounce: gigahertz ɡˈɪɡəhˌɜɹts
 ---
 
-R1 is a ground radar. T3 is an aircraft eighty-eight kilometres away, flying on at 350 m/s. The beam stays where T3 was at the start. This notebook asks one question: does R1 detect T3?
+Does the ground radar R1 detect the aircraft T3?
 
 <!-- skill: This notebook ports visuals/viz/radar-network, link R1 > R1:T3. Keep every number traceable to data/preset.json there. The controls start at the preset; the t = 0 assertions in "The budget" pin the preset's reference values whatever the controls say. If a parameter changes, recompute them from the reference, never loosen the tolerance. -->
 
@@ -17,7 +17,7 @@ R1 is a ground radar. T3 is an aircraft eighty-eight kilometres away, flying on 
 
 ## The link {scene=6}
 
-One transmitter and one receiver share an antenna, so the pulse travels out and the echo travels back. The preset is synthetic, except the 10 GHz carrier; the controls start at it, and every chapter below follows them.
+The preset is synthetic, except the 10 GHz carrier.
 
 ```toml
 libm = "=0.2.16"
@@ -46,12 +46,12 @@ println!("wavelength {:.4} m, threshold η = {eta:.4}", C / link.f);
 ```
 
 ```say
-R one sends a hundred kilowatt pulse at ten gigahertz. Sixty four pulses add up coherently before it decides.
+R one sends a hundred kilowatt pulse at ten gigahertz. It adds sixty four pulses before it decides.
 ```
 
 ## Geometry
 
-The beam is fixed on T3's starting point. As T3 flies, it drifts off the beam's axis and the gain falls: twelve decibels at the edge of the ten-degree beam, never more than thirty.
+The beam stays where T3 was at the start, so the gain falls as T3 flies off its axis.
 
 ```rust
 //| caption: Positions in metres, velocities in metres per second.
@@ -73,18 +73,18 @@ println!("boresight azimuth {:.9}°, elevation {:.9}°", atan2(bore[1], bore[0])
 ```
 
 ```say
-The beam points where T three was at the start, and stays there. T three flies on, and slowly leaves it.
+The beam stays where T three was at the start, and T three slowly leaves it.
 ```
 
 ## Detection
 
-The detector compares the integrated echo with a threshold set by the false-alarm rate alone:
+The false-alarm rate alone sets the threshold:
 
 $$
 \eta = -\ln P_{fa}
 $$
 
-For a steady target the probability of detection is Marcum's $Q_1$, a Poisson mixture of gamma tails:
+For a steady target, $P_d$ is Marcum's $Q_1$:
 
 $$
 P_d = \sum_{j=0}^{\infty} \frac{e^{-\rho_N} \rho_N^j}{j!} \, e^{-\eta} \sum_{i=0}^{j} \frac{\eta^i}{i!}
@@ -120,18 +120,18 @@ println!("ρ_req = {:.6} per pulse ({req_db:.5} dB) for Pd = {}", pow(10.0, req_
 ```
 
 ```say
-To be found nine times in ten, with one false alarm in a million, each pulse needs a signal to noise ratio of about minus four point nine decibels.
+For nine detections in ten, with one false alarm in a million, each pulse needs about minus four point nine decibels of signal to noise.
 ```
 
 ## The budget
 
-The radar equation gives the echo's power, and the pulse length and noise temperature turn it into a signal-to-noise ratio:
+The radar equation gives the signal-to-noise ratio:
 
 $$
 P_r = \frac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 R^4 L}, \quad \rho_1 = \frac{P_r \tau}{k T_s}
 $$
 
-Move the time here, or the link's controls in the first chapter; the picture there follows both. Below the required $P_d$ the target dot stays amber.
+Below the required $P_d$, the target dot in the first chapter is amber.
 
 ```rust
 //| caption: The link at the chosen time. The preset's reference values at t = 0 are asserted, so a drift fails the build.
@@ -164,12 +164,12 @@ stage(&[40.0, 10.0, 160.0, a[0] / 1e3, a[1] / 1e3, b[0] / 1e3, b[1] / 1e3, bore[
 ```
 
 ```say
-At the start, T three is about eighty eight kilometres out. R one could reach about eighty one. So the detection probability is only about sixty one percent, one and a half decibels short.
+At the start, T three is about eighty eight kilometres away, but R one reaches only about eighty one. So the detection probability is only about sixty one percent.
 ```
 
 ## Two minutes
 
-T3 flies away from R1 and off the beam at once, so the margin only falls.
+T3 flies away and off the beam, so the margin only falls.
 
 ```rust
 //| caption: $P_d$ over two minutes. The rule is the required 0.9; the dot is the chosen time.
@@ -186,9 +186,9 @@ Plot::new().line(&times, &path.iter().map(|a| a.margin).collect::<Vec<_>>()).rul
 ![The gain pattern: 30 dBi on the axis, falling 12 dB at the beam edge, floored 30 dB down.](beam.png)
 
 ```say
-And it only gets worse. T three flies away and off the beam at the same time. Within two minutes the chance of seeing it falls close to zero.
+T three flies away and off the beam. In two minutes, the detection probability falls close to zero.
 ```
 
 # Notes and sources
 
-The numbers come from the radar network visualiser's preset, link R1 to R1 through T3, at the [visuals repository](https://github.com/yujieteo/visuals/tree/32181d1596676077435fa563d03b9f3816fee234/viz/radar-network). Thermal noise only: no clutter, no interference.
+The numbers come from the radar network preset in [yujieteo/visuals](https://github.com/yujieteo/visuals/tree/32181d1596676077435fa563d03b9f3816fee234/viz/radar-network), link R1 to R1 through T3. The model has only thermal noise: no clutter and no interference.

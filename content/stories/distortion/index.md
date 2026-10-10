@@ -1,6 +1,6 @@
 ---
 title: How thin walls distort
-summary: Pull, bend, shear, twist and squeeze four thin-walled shapes, and watch a small square of their skin change shape.
+summary: Pull, bend, shear, twist and compress 4 thin-walled shapes, and see a small square on their skin change shape.
 thumb: 7396
 theme: site
 seed: 20261010
@@ -8,7 +8,7 @@ voice: af_heart
 pronounce: Poisson pwɑsˈOn
 ---
 
-A thin-walled member carries its load in its skin. This story loads four of them, one load at a time: a circular tube, a rectangular box and an I-beam, each a cantilever clamped at one end and loaded at the other, and a flat stiffened panel loaded in its own plane. A small square with a grid on it, the unit patch, sits on the skin. The inset in the corner of each figure flattens the patch and shows what the load does to it.
+A thin-walled member carries its load in its skin. The tube, the box and the I-beam are cantilevers, with a clamp at one end. The inset shows the unit patch, a small square on the skin, flat.
 
 <!-- skill: This story ports visuals/viz/distortion, the Structural Distortion Explorer. The notice, the shape labels and the label and basis (analytic or assumed shape) of every effect come only from raw.json through data!, pinned in visuals.lock. The cells in "The code" port its kinematics.js: keep its constants, and keep every effect labelled as raw.json labels it. -->
 
@@ -22,9 +22,7 @@ serde_json = "=1.0.151"
 
 ## Axial load
 
-**Exaggerated, qualitative visualisation. Not to scale, no units.** Every load is a slider fraction from −1 to 1, and every figure enlarges the change of shape.
-
-Pull the member and it stretches along its length and gets thinner across it; squeeze it and it shortens and swells. The sideways part is the Poisson effect, drawn here at its upper limit so that it shows; the clamp holds it back near the wall. The dashed lines are the shape before the load. Squeeze the box or the panel hard enough and their thin walls wrinkle: the last chapter explains where.
+An axial load changes the length of the member, and the Poisson effect changes its width. Every load is a slider fraction from −1 to 1. Dashed lines show the shape before the load.
 
 ```rust
 //| caption: Axial load. The inset flattens the patch: dashed before, solid after, with arrows along its principal directions, out where it stretches and in where it shortens.
@@ -37,14 +35,12 @@ figure(Setup { s: _s, ld: [_n, 0.0, 0.0, 0.0, 0.0], ex: _x, turn: _t, tilt: _p, 
 ```
 
 ```say
-Pull the member, and it stretches and gets thinner. Squeeze it, and it shortens and swells. The sideways change is the Poisson effect. Squeeze the box hard, and its walls wrinkle. Everything here is enlarged, and nothing has units.
+Pull the member, and it gets longer and thinner. Push it, and it gets shorter and thicker. That change of width is the Poisson effect. Everything here is enlarged, and nothing has units.
 ```
 
 ## Bending
 
-A force at the tip bends the cantilever. Its moment is largest at the clamp and falls to zero at the tip, so the curve is tightest at the wall. Plane sections stay plane and square to the bent axis: one side stretches and the other shortens. The map shades the size of the axial strain in the wall: the stronger the shade, the larger it is.
-
-In the box, the top and bottom walls, the flanges, do not take that strain evenly. Their middle lags behind their edges, so the strain peaks next to the side walls. This is shear lag, and here it is an assumed shape, not a solution. The view looks down on the top flange to show it.
+A force at the tip bends the cantilever most at the clamp, where the moment is largest. In the box, the strain in the top and bottom walls is largest next to the side walls. This is shear lag, an assumed shape.
 
 ```rust
 //| caption: Bending, seen from above. The patch sits on the top, near the clamp; the map is the size of the axial strain.
@@ -56,14 +52,12 @@ figure(Setup { s: _s, ld: [0.0, 0.0, 0.0, _m, 0.0], ex: _x, top: true, map: 1, t
 ```
 
 ```say
-A force at the tip bends the beam. One side stretches and the other shortens, most of all at the clamp. In the box, the middle of the top wall lags behind its edges. That is shear lag, and here it is an assumed shape.
+A force at the tip bends the beam most at the clamp. In the box, the middle of the top wall changes less than its edges. That is shear lag, an assumed shape.
 ```
 
 ## Shear
 
-A sideways force at the tip shears the member. Thin-walled theory gives the flow of shear round the section: in the I-beam and the box it runs mostly in the upright walls, the webs. The sections drift and warp a little out of their plane. The bending that such a force also causes is left to the bending chapter, so here the member only shears.
-
-Shear turns the square patch into a rhombus: one diagonal stretches and the other shortens. Turn the patch to 45° and its edges line up with those diagonals: the shear angle goes, and the edges stretch and shorten instead. The panel takes this load in its own plane, as pure shear.
+A sideways force at the tip shears the member. In the I-beam and the box, most of the shear is in the webs. Shear changes the square patch into a rhombus. Turn the patch to 45°, and its edges only stretch and shorten.
 
 ```rust
 //| caption: Shear. On the panel the slider is in-plane shear. The map is the size of the shear strain in the wall.
@@ -77,12 +71,12 @@ figure(Setup { s: _s, ld: _ld, angle: _a, ex: _x, map: 2, turn: _t, tilt: _p, ..
 ```
 
 ```say
-A sideways force at the tip shears the member. In the I-beam, the web carries most of it. Shear turns the square patch into a diamond. Turn the patch to forty five degrees, and its edges only stretch and shorten.
+A sideways force at the tip shears the member. Shear changes the square patch into a diamond. Turn the patch to forty five degrees, and its edges only stretch and shorten.
 ```
 
 ## Torsion
 
-A torque at the tip turns each section about its shear centre, as a rigid body: Saint-Venant torsion. The tube twists into a gentle helix and its skin goes into shear; the patch shears but hardly moves along the span. Pick the I-beam: its flange tips also slide along the span, in opposite directions. That is warping, the next chapter. The panel takes no torsion.
+A torque at the tip turns each section about its shear centre as a rigid body (Saint-Venant torsion). The tube twists into a helix. In the I-beam, the flange tips also move along the span: see Warping.
 
 ```rust
 //| caption: Torsion. The map is the size of the shear strain in the wall.
@@ -94,14 +88,12 @@ figure(Setup { s: _s, ld: [0.0, 0.0, _q, 0.0, 0.0], ex: _x, map: 2, turn: _t, ti
 ```
 
 ```say
-A twist at the tip turns each section about its centre. The tube twists into a gentle spiral, and its skin shears. The I-beam does more. Its flanges slide along the span.
+A twist at the tip turns each section. The tube twists into a spiral. The flanges of the I-beam also move along the span.
 ```
 
 ## Warping
 
-An open section such as the I-beam warps when it twists: each flange tip moves along the span, and the two tips of a flange move in opposite directions. The map shades the size of that movement. The patch sits on the top flange, near the clamp. The closed box warps a little; the circular tube does not warp at all.
-
-The clamp can let the section warp, or hold it flat. Held flat, the section cannot warp or twist at the wall, and the flanges bend in their own planes. The twist rate grows along the span as $\varphi'(x) \propto 1 - \cosh(\lambda(L - x))/\cosh(\lambda L)$: the beam twists less.
+An open section, such as the I-beam, warps when it twists: the 2 tips of a flange move along the span in opposite directions. If the clamp holds the section flat, the beam twists less, with the twist rate $\varphi'(x) \propto 1 - \cosh(\lambda(L - x))/\cosh(\lambda L)$.
 
 ```rust
 //| caption: Warping. The patch sits on the top flange, near the clamp; the map is the size of the movement along the span.
@@ -114,14 +106,12 @@ figure(Setup { s: _s, ld: [0.0, 0.0, _q, 0.0, 0.0], held: _h == 1, ex: _x, map: 
 ```
 
 ```say
-When the I-beam twists, its flange tips slide along the span, in opposite directions. Hold the section flat at the clamp, and the beam twists less. The tube does not warp at all.
+When the I-beam twists, its flange tips move along the span in opposite directions. Hold the section flat at the clamp, and the beam twists less.
 ```
 
 ## Buckling
 
-Thin plates buckle. Each plate stays flat until its interaction ratio $r = \sigma/\sigma_{cr} + (\tau/\tau_{cr})^2$ passes 1, and then wrinkles, more as $\sqrt{r - 1}$ grows. Shear makes diagonal waves and compression makes square ones. The plates are the panel skin, the box walls and the I-beam web; the circular tube stays smooth, because its buckling is not modelled.
-
-The thresholds and the wave shapes are assumed. The true $(t/b)^2$ dependence is compressed so that every case buckles inside the slider range, but a narrower plate still holds more. The panel starts bare: turn its stringers and frames on. They cut the skin into smaller bays, the thresholds rise and the waves get shorter.
+A thin plate stays flat until its interaction ratio $r = \sigma/\sigma_{cr} + (\tau/\tau_{cr})^2$ is more than 1. Then its wrinkles grow as $\sqrt{r - 1}$. The thresholds and the wave shapes are assumed. Set Stringers and Frames to on: the bays get smaller, the thresholds increase and the waves get shorter.
 
 ```rust
 //| caption: Buckling. The table gives each plate's largest ratio r now; the lines above it give where each load alone first buckles a plate.
@@ -139,12 +129,12 @@ thresholds(_st);
 ```
 
 ```say
-Thin plates buckle. Each one stays flat until the load passes its threshold, and then it wrinkles. Shear makes diagonal waves, and squeezing makes square ones. Stringers and frames cut the skin into smaller panels. The threshold rises, and the waves get shorter.
+A thin plate stays flat until the load is more than its threshold. Then it wrinkles. Stringers and frames cut the skin into smaller panels, so the threshold increases.
 ```
 
 # The code
 
-The model is unit-free, like its source. A wall is a thin plate swept along the member from a path across the section; a point on it is $(u, v, \zeta)$: along the member, round the section and through the thickness. The member runs along $x$ from the clamp at 0 to the loaded tip at $L$, with $y$ up and $z$ across.
+A point on a wall is $(u, v, \zeta)$: along the member, around the section and through the thickness. The member is along $x$, from the clamp at 0 to the tip at $L$, with $y$ up and $z$ across.
 
 ```rust
 //| caption: Settings and controls. The notice, the shape labels and the basis of each effect come from raw.json.
@@ -772,7 +762,7 @@ fn figure(st: Setup) {
 
 # Notes and sources
 
-This story ports the [Structural Distortion Explorer](https://github.com/yujieteo/visuals/tree/02fcb4f8fb17fca5f97b0049c323b7bf7b392d81/viz/distortion) of the visuals repository: its kinematics, constants and presets, drawn here as SVG instead of three.js. The labels, the notice and the basis of each effect come from its raw.json. Analytic effects follow thin-walled beam theory: Euler-Bernoulli bending, Saint-Venant torsion, Vlasov warping and the Bredt cell. Shear lag, the buckling thresholds and the wrinkles are assumed shapes.
+This story ports the [Structural Distortion Explorer](https://github.com/yujieteo/visuals/tree/02fcb4f8fb17fca5f97b0049c323b7bf7b392d81/viz/distortion) of yujieteo/visuals: its kinematics, constants and presets, drawn as SVG and not with three.js. The labels, the notice and the basis of each effect come from its raw.json. The analytic effects use thin-walled beam theory.
 
 ```rust
 //| caption: The effects, as raw.json labels them.
