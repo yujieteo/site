@@ -51,7 +51,7 @@ A notebook may embed a sealed artifact of visuals, `![name](viz/<slug>/index.htm
    | 3 | Scientific Modelling | 3 notebooks, 1 for each tool (Dimensionless Number Finder, Model Nondimensionalizer, Regime Map Builder). No custom equations: write a custom model as a Rust cell and rebuild. | Play |
    | 4 | Section Lab | Notebook (done). The solver is Rust in the cells. The port is checked end to end in the built page, with no committed regression tests. | Play |
    | 5 | Beam diagram | Notebook (done). Supports and loads as text boxes, the example as a `choice`, units, diagrams, the hand calculation by Macaulay's method and a NASTRAN deck. The port is checked end to end in the built page, with no committed regression tests. | Play |
-   | 6 | English Grammar | Story. Concepts and examples in chapters. Find box in the last chapter. | Stories |
+   | 6 | English Grammar | Story (done). Concepts and examples in chapters. Find box in the last chapter. The port is checked end to end in the built page, with no committed regression tests. | Stories |
    | 7 | Structural Distortion | Story. 1 chapter for each load (axial, bending, shear, torsion, warping, buckling). All 4 shapes by `choice`, loads by `slider`. 3D wireframe. Keep the "qualitative, no units" notice. | Stories |
    | 8 | Toulmin | Notebook (done). 1 chapter for each argument with fixed headings. Text boxes hold the parts of the argument, because a cell cannot read the Markdown that a reader writes in Edit mode. A cell checks the checklist and shows the paragraph. No JSON import. The port is checked end to end in the built page, with no committed regression tests. | Play |
 
