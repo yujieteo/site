@@ -181,8 +181,8 @@
   };`;
   let worker, busy = false, again = false;
   // A control is redrawn when its key, label, range or options change, never for its value, so a slider
-  // keeps its drag and a text box its focus.
-  const sig = (h) => (h.match(/data-k="\d+"|<label>[^<]*| max="[^"]*"|<option[^>]*>[^<]*/g) || []).join().replaceAll(" selected", "");
+  // keeps its drag and a text box its focus. The DOM writes `selected` back as `selected=""`.
+  const sig = (h) => (h.match(/data-k="\d+"|<label>[^<]*| max="[^"]*"|<option[^>]*>[^<]*/g) || []).join().replace(/ selected(="")?/g, "");
   const fail = (k, msg) => $(`[data-cell="${k}"]`, article)?.append(make("p", { className: "err", textContent: msg }));
   function apply(r) {
     $$(".err", article).forEach((e) => e.remove());
