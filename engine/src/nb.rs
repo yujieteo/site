@@ -18,6 +18,7 @@ thread_local! {
     static INPUT: RefCell<Vec<f64>> = const { RefCell::new(vec![]) };
     static NUMS: RefCell<Vec<f64>> = const { RefCell::new(vec![]) };
     static TEXT: RefCell<Vec<Option<String>>> = const { RefCell::new(vec![]) };
+    static LABEL: RefCell<Vec<Option<String>>> = const { RefCell::new(vec![]) };
     static PANIC: RefCell<String> = const { RefCell::new(String::new()) };
 }
 static CELL: AtomicUsize = AtomicUsize::new(0);
@@ -28,12 +29,14 @@ fn flush(b: &mut Book) {
     if !b.pre.is_empty() { w!(b.out[b.cell], "<pre class=\"txt\">{}</pre>", esc(std::mem::take(&mut b.pre).trim_end_matches('\n'))) }
 }
 
-/// Start cell `i` (page order); the generated program calls this.
+/// Start cell `i` (page order); the generated program calls this. A control's key is 100 × its cell
+/// + its place in the cell, so a cell whose controls change keeps the keys of the other cells.
 pub fn cell(i: usize) {
     CELL.store(i, Relaxed);
     with(|b| {
         flush(b);
         b.cell = i;
+        b.n = 100 * i;
         b.out.resize(b.out.len().max(i + 1), String::new());
         b.ctl.resize(b.out.len(), String::new());
     })
@@ -60,10 +63,14 @@ macro_rules! data { ($f:literal) => { include_bytes!(concat!(env!("NB_DATA"), "/
 /// The host's value for the next control, whose key is `b.n` before the call.
 fn input(b: &mut Book) -> Option<f64> { b.n += 1; INPUT.with_borrow(|v| v.get(b.n - 1).copied()).filter(|v| v.is_finite()) }
 
-/// A slider. Its value is the host's, clamped, or `value` on a clean run.
+/// A slider. Its value is the host's, clamped, or `value` on a clean run. The host sends the label with
+/// the value: when the key now holds a slider with another label (the options of a cell changed), it
+/// starts at `value`.
 pub fn slider(label: &str, min: f64, max: f64, step: f64, value: f64) -> f64 {
     with(|b| {
-        let (k, v) = (b.n, input(b).map_or(value, |v| v.clamp(min, max)));
+        let (k, host) = (b.n, input(b));
+        let same = LABEL.with_borrow(|t| t.get(k).cloned().flatten()).is_none_or(|l| l == label);
+        let v = host.filter(|_| same).map_or(value, |v| v.clamp(min, max));
         let range = format!("<input type=\"range\" data-k=\"{k}\" min=\"{min}\" max=\"{max}\" step=\"{step}\" value=\"{v}\">");
         w!(b.ctl[b.cell], "<label>{} {range}<output>{v}</output></label>", esc(label));
         v
@@ -200,6 +207,7 @@ pub fn reply(program: Program) -> u32 {
     INPUT.take();
     NUMS.take();
     TEXT.take();
+    LABEL.take();
     crate::ret(r.into_bytes())
 }
 
@@ -219,12 +227,18 @@ fn set(list: &'static std::thread::LocalKey<RefCell<Vec<f64>>>, k: u32, v: f64) 
     list.with_borrow_mut(|l| { l.resize(l.len().max(k as usize + 1), f64::NAN); l[k as usize] = v })
 }
 
+fn keep(list: &'static std::thread::LocalKey<RefCell<Vec<Option<String>>>>, k: u32) {
+    let s = String::from_utf8_lossy(&crate::input()).into_owned();
+    list.with_borrow_mut(|t| { t.resize(t.len().max(k as usize + 1), None); t[k as usize] = Some(s) })
+}
+
 /// Control `k`'s text (a text box's text, or a choice's option): the call's input bytes.
 #[unsafe(no_mangle)]
-pub extern "C" fn nb_field(k: u32) {
-    let s = String::from_utf8_lossy(&crate::input()).into_owned();
-    TEXT.with_borrow_mut(|t| { t.resize(t.len().max(k as usize + 1), None); t[k as usize] = Some(s) })
-}
+pub extern "C" fn nb_field(k: u32) { keep(&TEXT, k) }
+
+/// The label of the slider whose value control `k` sends: the call's input bytes.
+#[unsafe(no_mangle)]
+pub extern "C" fn nb_label(k: u32) { keep(&LABEL, k) }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn nb_input(k: u32, v: f64) { set(&INPUT, k, v) }
@@ -268,6 +282,12 @@ mod tests {
         assert!(a.contains("\"stage\":[3,null]") && a.ends_with("\"err\":\"cell 2: stop\"}"));
         nb_input(0, 7.0);
         assert!(run(prog).contains("a = 7") && run(prog) == run(prog));
+        crate::IO.with_borrow_mut(|io| io.0 = b"Size".to_vec());
+        nb_label(0);
+        assert!(run(prog).contains("a = 3"));
+        crate::IO.with_borrow_mut(|io| io.0 = b"Time".to_vec());
+        nb_label(0);
+        assert!(run(prog).contains("a = 7"));
         nb_input(0, 99.0);
         assert!(run(prog).contains("a = 10") && run(prog).contains("q = x&lt;") && run(prog).contains("value=\\\"x&lt;\\\""));
         crate::IO.with_borrow_mut(|io| io.0 = b"2:x<".to_vec());
