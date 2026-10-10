@@ -19,7 +19,7 @@ try {
 <button type="button" class="mode" aria-label="Theme" title="Theme"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button>
 </nav></header>
 <main>{{body}}</main>
-<dialog class="find" aria-label="Search"><form method="dialog"><input type="search" placeholder="Search notes and stories" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol></form></dialog>
+<dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search notes and stories" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol></form></dialog>
 <dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="fams">{{themes}}</div>
 <div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div></form></dialog>
 <script id="index" type="application/json">{{index}}</script>

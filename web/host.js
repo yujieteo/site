@@ -356,7 +356,7 @@
       if (editor) { const box = editor.parentNode; box.hidden = !box.hidden; return (box.hidden ? $("[data-act=edit]") : editor).focus(); } // :q gives focus back to Edit
       const box = make("div", { className: "vim" }), pad = PAD.map(([l, k]) => `<button type="button" data-key="${k}">${l}</button>`);
       box.innerHTML = `<div class="pad">${pad.join("")}<output></output></div>`
-        + `<textarea class="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>`;
+        + `<textarea class="editor" name="source" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>`;
       const end = source.startsWith("---\n") ? source.indexOf("\n---\n", 3) : -1, body = end < 0 ? 0 : end + 5; // after the front matter
       $(".tools").after(box);
       editor = box.lastChild; editor.value = source; editor.setSelectionRange(body, body);

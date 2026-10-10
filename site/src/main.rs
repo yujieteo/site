@@ -183,7 +183,7 @@ fn notes(path: &str) -> (String, Vec<(String, String, String)>) {
     let mut tree = String::new();
     for (lo, size) in roots(notes.len()) { branch(&mut tree, &notes, &sums, lo, size, true) }
     let search = concat!(
-        r#"<form class="sift" role="search"><input type="search" placeholder="Search notes and summaries" aria-label="Search notes and summaries" "#,
+        r#"<form class="sift" role="search"><input type="search" name="q" placeholder="Search notes and summaries" aria-label="Search notes and summaries" "#,
         r#"autocomplete="off" spellcheck="false"><button type="button" value="s" aria-pressed="true">Summaries</button>"#,
         r#"<button type="button" value="n" aria-pressed="true">Notes</button><output aria-live="polite"></output></form>"#
     );

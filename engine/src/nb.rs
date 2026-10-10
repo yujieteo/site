@@ -71,7 +71,7 @@ pub fn slider(label: &str, min: f64, max: f64, step: f64, value: f64) -> f64 {
         let (k, host) = (b.n, input(b));
         let same = LABEL.with_borrow(|t| t.get(k).cloned().flatten()).is_none_or(|l| l == label);
         let v = host.filter(|_| same).map_or(value, |v| v.clamp(min, max));
-        let range = format!("<input type=\"range\" data-k=\"{k}\" min=\"{min}\" max=\"{max}\" step=\"{step}\" value=\"{v}\">");
+        let range = format!("<input type=\"range\" data-k=\"{k}\" name=\"k{k}\" min=\"{min}\" max=\"{max}\" step=\"{step}\" value=\"{v}\">");
         w!(b.ctl[b.cell], "<label>{} {range}<output>{v}</output></label>", esc(label));
         v
     })
@@ -93,7 +93,7 @@ pub fn choice<S: AsRef<str>>(label: &str, opts: &[S], default: usize) -> usize {
         let v = v.min(opts.len().saturating_sub(1));
         let sel = |i: usize| if i == v { " selected" } else { "" };
         let o: String = opts.iter().enumerate().map(|(i, o)| format!("<option value=\"{i}:{0}\"{1}>{0}</option>", esc(o.as_ref()), sel(i))).collect();
-        w!(b.ctl[b.cell], "<label>{} <select data-k=\"{k}\">{o}</select></label>", esc(label));
+        w!(b.ctl[b.cell], "<label>{} <select data-k=\"{k}\" name=\"k{k}\">{o}</select></label>", esc(label));
         v
     })
 }
@@ -105,7 +105,7 @@ pub fn field(label: &str, value: &str) -> String {
         b.n += 1;
         let same = LABEL.with_borrow(|t| t.get(k).cloned().flatten()).is_none_or(|l| l == label);
         let v = TEXT.with_borrow(|t| t.get(k).cloned().flatten()).filter(|_| same).unwrap_or_else(|| value.into());
-        let input = format!("<input type=\"search\" data-k=\"{k}\" value=\"{}\" autocomplete=\"off\" spellcheck=\"false\">", esc(&v));
+        let input = format!("<input type=\"search\" data-k=\"{k}\" name=\"k{k}\" value=\"{}\" autocomplete=\"off\" spellcheck=\"false\">", esc(&v));
         w!(b.ctl[b.cell], "<label>{} {input}</label>", esc(label));
         v
     })
