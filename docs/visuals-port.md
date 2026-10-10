@@ -47,7 +47,7 @@ A notebook may embed a sealed artifact of visuals, `![name](viz/<slug>/index.htm
    | # | Tool | Form | Door |
    | --- | --- | --- | --- |
    | 1 | Theorem Explorer + Learner | 1 notebook. All data as gzip (about 42 MB raw, about 9 MB page), joined by theorem ID. Find box. Sorts and filters with `choice` and `slider`. New sort rules: edit the cell and rebuild. | Play |
-   | 2 | Monte Carlo | 4 notebooks, all 12 data sets: (1) laws, limits, theory, glossary (2) methods, models, datasets, groups (3) chains, rare (4) physics, interview | Play |
+   | 2 | Monte Carlo | 4 notebooks, all 12 data sets: (1) laws, limits, theory, glossary (done) (2) methods, models, datasets, groups (done), then interview (3) chains, rare (done) (4) physics. The interview builds a model in the model language of notebook 2, so it goes into notebook 2. | Play |
    | 3 | Scientific Modelling | 3 notebooks, 1 for each tool (Dimensionless Number Finder, Model Nondimensionalizer, Regime Map Builder). No custom equations: write a custom model as a Rust cell and rebuild. | Play |
    | 4 | Section Lab | Notebook. The solver is Rust in the cells, tested against the frozen reference fixtures. | Play |
    | 5 | Beam diagram | Notebook (done). Supports and loads as text boxes, the example as a `choice`, units, diagrams, the hand calculation by Macaulay's method and a NASTRAN deck. The 23 fixture beams are checked at every build. | Play |
