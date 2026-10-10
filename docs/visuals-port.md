@@ -25,7 +25,7 @@ A notebook may embed a sealed artifact of visuals, `![name](viz/<slug>/index.htm
    | Tool | Python lines |
    | --- | --- |
    | Theorem Explorer | 3,750 |
-   | Scientific Modelling | 1,180 |
+   | Scientific Modelling | 1,180 (dropped with the port, row 3) |
    | Theorem Learner | 964 |
    | English Grammar | 815 |
    | Monte Carlo | 152 |
@@ -48,7 +48,7 @@ A notebook may embed a sealed artifact of visuals, `![name](viz/<slug>/index.htm
    | --- | --- | --- | --- |
    | 1 | Theorem Explorer + Learner | 1 notebook. All data as gzip (about 42 MB raw, about 9 MB page), joined by theorem ID. Find box. Sorts and filters with `choice` and `slider`. New sort rules: edit the cell and rebuild. | Play |
    | 2 | Monte Carlo | 4 notebooks, all 12 data sets: (1) laws, limits, theory, glossary (done) (2) methods, models, datasets, groups and the interview (done) (3) chains, rare (done) (4) physics (done). The interview builds a model in the model language of notebook 2, so it goes into notebook 2. | Play |
-   | 3 | Scientific Modelling | 3 notebooks, 1 for each tool (Dimensionless Number Finder, Model Nondimensionalizer, Regime Map Builder). No custom equations: write a custom model as a Rust cell and rebuild. | Play |
+   | 3 | Scientific Modelling | Dropped. On 2026-10-10 the captain stopped the port: "Kill the project, it is not worth the code count". The sealed artifact needed about 40,000 lines, but the budget is 25,000. The tool stays as the JS page in visuals. | None |
    | 4 | Section Lab | Notebook (done). The solver is Rust in the cells. The port is checked end to end in the built page, with no committed regression tests. | Play |
    | 5 | Beam diagram | Notebook (done). Supports and loads as text boxes, the example as a `choice`, units, diagrams, the hand calculation by Macaulay's method and a NASTRAN deck. The port is checked end to end in the built page, with no committed regression tests. | Play |
    | 6 | English Grammar | Story (done). Concepts and examples in chapters. Find box in the last chapter. The port is checked end to end in the built page, with no committed regression tests. | Stories |
