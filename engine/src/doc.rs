@@ -223,24 +223,25 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
         '\\' => {
             let name = run(i, char::is_ascii_alphabetic);
             match name.as_str() {
-                // Spaces as Unicode spaces, which neither MathML nor the PDF collapses; `\!` is dropped.
+                // Spaces as Unicode spaces, which neither MathML nor the PDF collapses (`\ ` and the spaces of
+                // `\text` as no-break spaces); `\!` is dropped.
                 "" => match next(i)? {
-                    ',' => M::T("\u{2009}".into()), ';' | ':' => M::T("\u{2005}".into()), ' ' => M::T(" ".into()), '!' => M::T("".into()),
+                    ',' => M::T("\u{2009}".into()), ';' | ':' => M::T("\u{2005}".into()), ' ' => M::T("\u{a0}".into()), '!' => M::T("".into()),
                     '|' => M::O("‖".into()),
                     x => M::O(x.into()),
                 },
-                "frac" | "tfrac" | "dfrac" => M::F(Box::new(atom(c, i)?), Box::new(atom(c, i)?)),
-                "binom" => M::R(vec![M::O("(".into()), M::F(Box::new(atom(c, i)?), Box::new(atom(c, i)?)), M::O(")".into())]),
+                "frac" | "tfrac" | "dfrac" => M::F(Box::new(arg(c, i)?), Box::new(arg(c, i)?)),
+                "binom" => M::R(vec![M::O("(".into()), M::F(Box::new(arg(c, i)?), Box::new(arg(c, i)?)), M::O(")".into())]),
                 "mathbb" | "mathbf" | "boldsymbol" | "mathcal" | "mathscr" | "mathfrak" | "mathsf" | "mathit" => alpha(&name, atom(c, i)?),
                 "pmod" => M::R(vec![M::T("\u{2005}(".into()), M::I("mod".into()), M::T("\u{2005}".into()), atom(c, i)?, M::O(")".into())]),
-                "sqrt" => M::Q(Box::new(atom(c, i)?)),
+                "sqrt" => M::Q(Box::new(arg(c, i)?)),
                 "text" | "mathrm" | "operatorname" => {
                     // Spaces, the opening brace, the text, the closing brace.
                     run(i, |c| *c == ' ');
                     *i += 1;
                     let t = run(i, |c| *c != '}');
                     *i += 1;
-                    if name == "text" { M::T(t) } else { M::I(t) }
+                    if name == "text" { M::T(t.replace(' ', "\u{a0}")) } else { M::I(t) }
                 }
                 "left" | "right" | "big" | "Big" | "bigl" | "bigr" | "Bigl" | "Bigr" | "bigg" | "Bigg" | "biggl" | "biggr" => {
                     atom(c, i).filter(|m| *m != M::O(".".into())).unwrap_or(M::R(vec![]))
@@ -256,6 +257,13 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
         '-' => M::O("−".into()),
         c => M::O(c.into()),
     })
+}
+
+/// A command's argument: a group or one token, so `\tfrac12` is a half.
+fn arg(c: &[char], i: &mut usize) -> Option<M> {
+    while c.get(*i).is_some_and(|c| c.is_whitespace()) { *i += 1 }
+    if c.get(*i).is_some_and(char::is_ascii_digit) { *i += 1; return Some(M::N(c[*i - 1].into())) }
+    atom(c, i)
 }
 
 /// A large operator: limits go above and below it in display style.
@@ -374,7 +382,8 @@ mod tests {
         assert_eq!(inline("*a* **b** `c<` \\*"), "<em>a</em> <strong>b</strong> <code>c&lt;</code> *");
         assert_eq!(mathml("x_i^2 - \\alpha", false), "<math><mrow><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><mi>α</mi></mrow></math>");
         assert_eq!(mathml("f\\colon \\mathbb{R}^n \\to \\mathbf{v}, \\bar{x} \\mapsto \\sup", false), "<math><mrow><mi>f</mi><mo>:</mo><msup><mrow><mi>ℝ</mi></mrow><mi>n</mi></msup><mo>→</mo><mrow><mi>𝐯</mi></mrow><mo>,</mo><mrow><mi>𝑥\u{304}</mi></mrow><mo>↦</mo><mi>sup</mi><mspace width=\"0.17em\"/></mrow></math>");
-        assert!(mathml("\\frac{1}{\\sqrt{2}} \\text{ dB}", true).contains("<mfrac><mrow><mn>1</mn></mrow><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></mfrac><mtext> dB</mtext>"));
+        assert!(mathml("\\tfrac12 \\sqrt2", false).contains("<mfrac><mn>1</mn><mn>2</mn></mfrac><msqrt><mn>2</mn></msqrt>"));
+        assert!(mathml("\\frac{1}{\\sqrt{2}} \\text{ dB}", true).contains("<mfrac><mrow><mn>1</mn></mrow><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></mfrac><mtext>\u{a0}dB</mtext>"));
         let html = article(&d, &Run { out: vec!["O".into()], ctl: vec!["C".into()], map: vec![Some(0)], stale: vec![true] }, &|s| format!("data:{s}"));
         assert!(html.contains("id=\"c1\"><div class=\"slide\"><h2>One</h2><canvas class=\"frame\" data-scene=\"8\"") && html.contains("class=\"cell stale\"") && html.contains("data-out=\"0\">O</div>"));
         assert!(html.contains("src=\"data:a.png\"") && html.contains("<details><summary>Notes</summary><p>End.</p></details><section class=\"refs\">"));

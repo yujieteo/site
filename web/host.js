@@ -137,7 +137,7 @@
     };
     try {
       e ||= new WebAssembly.Instance(m, {}).exports;
-      v.forEach((x, k) => (typeof x === "string" ? (put(x), e.nb_field(k)) : e.nb_input(k, x)));
+      v.forEach((x, k) => (x == null ? 0 : typeof x === "string" ? (put(x), e.nb_field(k)) : (put(x[0]), e.nb_label(k), e.nb_input(k, x[1]))));
       t.forEach(([k, x]) => e.nb_num(k, x));
       postMessage({ json: read(e.nb_run()) });
     } catch (x) {
@@ -165,10 +165,11 @@
     if (err) fail(k, err);
     redraw();
   }
-  // A choice sends its option's "index:text", so it keeps that option while its options change; a text box sends its text.
+  // A choice sends its option's "index:text", so it keeps that option while its options change; a text box sends its
+  // text; a slider sends its label and value, so a slider with a new label at its key starts at its default.
   const values = () => {
     const v = [];
-    for (const el of $$("[data-k]", article)) v[+el.dataset.k] = el.tagName === "SELECT" || el.type === "search" ? el.value : +el.value;
+    for (const el of $$("[data-k]", article)) v[+el.dataset.k] = el.tagName === "SELECT" || el.type === "search" ? el.value : [el.parentElement.firstChild.textContent.trimEnd(), +el.value];
     return v;
   };
   // One run at a time: a change during a run asks for one more. A run is stopped after 10 s.
