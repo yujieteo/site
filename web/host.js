@@ -462,7 +462,8 @@
   try { draft = JSON.parse(localStorage.getItem(key)); } catch (e) {}
   if (typeof draft?.[1] === "string" && draft[1] !== built) {
     const discard = make("button", { type: "button", textContent: "Discard" });
-    discard.onclick = () => { window.notebook.setSource(built); say("Edits discarded."); };
+    // The button goes with the message, so the focus goes to Edit, not to the page.
+    discard.onclick = () => { window.notebook.setSource(built); say("Edits discarded."); $("[data-act=edit]")?.focus(); };
     window.notebook.setSource(draft[1]);
     status?.replaceChildren(`Restored your edits from this browser${draft[0] === built ? "" : ", made before this page was rebuilt"}. `, discard);
   }
