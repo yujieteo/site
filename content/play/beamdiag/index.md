@@ -6,15 +6,23 @@ theme: site
 seed: 20261011
 ---
 
-Pick an example, or type your own supports and loads. The notebook solves the beam and gives the reactions, the shear force, the bending moment, the slope and the deflection along it. Statically indeterminate beams, for example fixed–fixed spans and continuous beams, are solved by the stiffness method. The later chapters work the same beam by hand and write it as an MSC Nastran deck.
+The first chapter is the Beam diagram creator. Drag the supports and the loads, or type them, and read the reactions, the shear force, the bending moment and the deflection at once. The creator also shows the hand calculations, and saves the figure, a Nastran deck and the hand calculations as files. The chapters after it are the notebook: they solve the same beams in cells that you can read and change. Statically indeterminate beams, for example fixed–fixed spans and continuous beams, are solved by the stiffness method in both.
 
 <!-- skill: This notebook ports visuals/viz/beamdiag. The presets, materials, sign conventions, assumptions and NASTRAN notes come only through data!, from the files pinned in visuals.lock. The checks in "The code" solve the 23 fixture beams of visuals and compare them with the outputs of its exact Python solver (reference.json): keep the tolerance of 1e-9 of the largest value of each quantity. -->
+
+<!-- skill: The first chapter embeds the sealed page viz/beamdiag/index.html of visuals, pinned in visuals.lock. Its WebMCP tools (get_metadata, get_current_beam, solve_beam, export_nastran_bdf) are in that page; the notebook cells below do not depend on it. -->
 
 <!-- skill: To set the beam, write the text boxes: supports as "pin 0, fixed 6000"; loads as "F -20000 at 3000" (a force), "C 15000000 at 5500" (a couple), "q -10 from 0 to 6000" (a uniform load) or "q -10 to -5 from 0 to 6000" (a linear load), joined by commas. Every number is in the units that the Units choice gives. Forces and loads are + up, couples + counter-clockwise. An empty box keeps the example's part. -->
 
 ```toml
 serde_json = "=1.0.151"
 ```
+
+## The beam diagram creator
+
+The creator is a sealed page from yujieteo/visuals. Its solver is Rust, compiled to WebAssembly, and it runs in your browser. Drag a support or a load along the beam, or focus it and use the arrow keys. To type exact values, use the Supports and Loads tables.
+
+![Beam diagram creator](viz/beamdiag/index.html)
 
 ## The beam
 

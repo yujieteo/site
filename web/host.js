@@ -116,15 +116,29 @@
   // Edits are kept in this browser (a draft per notebook) until they match the built page again.
   let tuned = "[]";
   const key = "draft:" + location.pathname.replace(/[^/]*$/, "");
+  // A visuals page that the notebook embeds (![name](viz/<slug>/index.html)) runs in a frame from its pinned bytes.
+  // The frame has this page's origin, so it follows the reader's theme, and it grows to fit the page.
+  const pages = {};
+  const embed = () => $$("iframe[data-tool]", article).forEach((f) => {
+    const b = document.getElementById("tool:" + f.dataset.tool);
+    if (!b) return;
+    f.addEventListener("load", () => {
+      const d = f.contentDocument, fit = () => (f.style.height = Math.ceil(d.documentElement.getBoundingClientRect().height) + "px");
+      new ResizeObserver(fit).observe(d.documentElement);
+    }, { once: true });
+    f.src = pages[f.dataset.tool] ||= URL.createObjectURL(new Blob([b64(b.textContent)], { type: "text/html" }));
+  });
   const render = () => {
     try { source === built ? localStorage.removeItem(key) : localStorage.setItem(key, JSON.stringify([built, source])); } catch (e) {}
     const outputs = [...result.out.map((o) => ["o", o]), ...result.ctl.map((c) => ["c", c])];
     article.innerHTML = md(0, [["src", source], ["built", built], ...outputs, ["assets", assets]]);
     $$("canvas[data-scene]", article).forEach(watch);
     redraw();
+    embed();
     const t = md(6, [["src", source], ["built", built]]);
     if (t !== tuned) { tuned = t; run(); }
   };
+  embed();
   // The cells' worker keeps one instance for its runs, so data that a cell parsed once stays parsed; a trap
   // drops it. It is given the controls' values (texts as bytes) and the live numbers, and answers with the
   // run's JSON, or the trap and the cell that was running.

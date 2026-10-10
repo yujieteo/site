@@ -105,9 +105,9 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
         .map(|e| (e.file_name().to_string_lossy().into_owned(), fs::read(e.path()).unwrap()))
         .filter(|f| f.0 != "index.md").collect();
     files.sort();
-    // The visuals files its cells embed (`data!`), each pinned and present as pinned.
+    // The visuals files its cells embed (`data!`) and the visuals pages it embeds, each pinned and present as pinned.
     let (commit, pinned) = visuals();
-    let paths = d.cells().into_iter().flat_map(|c| c.0.split("data!(\"").skip(1).map(|r| r.split('"').next().unwrap_or("")));
+    let paths = d.cells().into_iter().flat_map(|c| c.0.split("data!(\"").skip(1).map(|r| r.split('"').next().unwrap_or(""))).chain(d.tools());
     let mut data: Vec<(&str, &str)> = paths.map(|p| {
         let pin = *pinned.iter().find(|x| x.1 == p).unwrap_or_else(|| panic!("{slug}: data!(\"{p}\") is not pinned in visuals.lock"));
         let ok = fs::read(format!("visuals/{p}")).is_ok_and(|b| pack::sha256(&b) == pin.0);
@@ -188,7 +188,8 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
         dialog("render", "Render", format!(r#"<div class="choices">{render}</div>"#)),
         dialog("export", "Export", group("PDF", pdfs) + &narration + &group("Source", source)));
     let assets = pack::base64(&pack::bundle(&files.iter().map(|f| (f.0.as_str(), f.1.as_slice())).collect::<Vec<_>>()));
-    // The page's data, each in an inert <script>: the source twice (edited and as built), the run, the manifest, the files, the cells' wasm.
+    // The page's data, each in an inert <script>: the source twice (edited and as built), the run, the manifest, the files, the cells' wasm,
+    // and the visuals pages it embeds.
     let data = |id: &str, ty: &str, body: &str| format!(r#"<script id="{id}" type="{ty}">{body}</script>"#);
     let script = [
         data("source", "text/markdown", &raw(&src)),
@@ -197,6 +198,7 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
         data("manifest", "application/json", &manifest),
         data("assets", "application/octet-stream", &assets),
         data("wasm", "application/octet-stream", &pack::base64(&wasm)),
+        d.tools().iter().map(|p| data(&format!("tool:{p}"), "application/octet-stream", &pack::base64(&fs::read(format!("visuals/{p}")).unwrap()))).collect(),
         format!("\n<script>{HOST}</script>"),
     ].concat();
     // The page wears the reader's theme (the header's); `theme`, `print` and `colors` are the exports'.
