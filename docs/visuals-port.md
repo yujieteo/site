@@ -4,6 +4,8 @@ Agreed with the captain on 2026-10-10 (grill rounds 1–7, Q1–Q32).
 
 Changed on 2026-10-10, after the grill: "make it into a notebook and be consistent with the other pages, not a sealed .html artifact". The Beam diagram is a notebook. Section Lab will be a notebook too, for the same reason. Thus there are no sealed artifacts, and the artifact rule and the 25,000-line budget for each artifact are not necessary.
 
+Changed again on 2026-10-10: "The beamdiag notebook, embed the ported beamdiag .html that was working as an artifact, but still retain the notebook." The Beam diagram notebook keeps all its chapters, and its first chapter embeds the sealed Rust/WebAssembly page `viz/beamdiag/index.html` of visuals, pinned in `visuals.lock`. The artifact rule is back (see below). Section Lab stays a notebook.
+
 ## Ownership
 
 - yujieteo/visuals stores all data and the fixtures.
@@ -13,7 +15,7 @@ Changed on 2026-10-10, after the grill: "make it into a notebook and be consiste
 
 ## Rule for AGENTS.md (site)
 
-Removed: there are no sealed artifacts (see the change above).
+A notebook may embed a sealed artifact of visuals, `![name](viz/<slug>/index.html)`, pinned in `visuals.lock`. A Rust crate in visuals builds the page to WebAssembly with the site's look (`look/`). Each artifact, with `look/`, stays within 25,000 lines of source; the `budget` step of the visuals checks enforces it. The notebook keeps its own cells, and the artifact never replaces them.
 
 ## Visuals work
 

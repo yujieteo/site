@@ -555,6 +555,7 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
                     let draw = &mut |p: &mut Pdf, x: f32, y: f32| w!(p.out(), "q {fw:.2} 0 0 {fh:.2} {x:.2} {:.2} cm /I{i} Do Q\n", h - y - fh);
                     if p.figure(fw, fh, draw) { p.caption(alt, true) }
                 }
+                None if src.ends_with(".html") => p.caption(&format!("({alt}: open the web page to use it)"), false),
                 None => p.caption(&format!("({alt})"), false),
             },
             B::Raw(_) | B::Com(_) => {}

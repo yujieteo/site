@@ -29,7 +29,7 @@ against `visuals.lock`; files already there and matching need no network.
 | `engine/` | Rust, native and WebAssembly. `doc` (Markdown, TeX to MathML), `cell` (cell data flow), `nb` (the cells' runtime: text, controls, plots, stage), `draw` (display lists), `pdf` (the PDF views), `theme`, `pack` (SHA-256, ZIP, base64), `scene` (the dot scenes: a frame is a pure function of seed, scene, time, progress, pointer and stage), `thumb` (seeded thumbnails), `say` (narration: sentences, Kokoro phonemes, podcast, captions, timings). |
 | `web/host.js` | The browser boundary: one clock, Canvas execution of display lists, the run worker, the voice worker, the video recorder, tools, the agent API. |
 | `kokoro.lock`, `scripts/kokoro.sh` | The narration's pinned files: kokoro-js 1.2.1, ONNX Runtime Web, Kokoro-82M v1.0 (q8) with two US voices, and the Misaki 0.9.4 lexicons the build reads. |
-| `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, with its SHA-256. Visuals owns the data. |
+| `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, and each sealed artifact that a notebook embeds, with its SHA-256. Visuals owns the data. |
 | `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search. |
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (notes, doors, index). |
@@ -68,6 +68,9 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   in the cell; a slider or text box keeps the page's value only while its label stays the same.
 - ```` ```toml ```` fences add pinned crates; ```` ```say ```` fences are narration; `$…$` and `$$`
   are TeX; `<!-- … -->` comments are agent skills, exposed as text through `window.notebook.skills()`.
+- `![name](viz/<slug>/index.html)` embeds a sealed artifact of yujieteo/visuals, pinned in `visuals.lock`:
+  the page carries its bytes and runs it in a frame of the page's origin, which follows the reader's theme
+  and grows to fit it. The PDFs name it only.
 - A thumbnail is one seed (`engine/src/thumb.rs`), read as digits so a known seed gives a known
   picture: units the motion (0 doze, 1 hop, 2 bounce, 3 leap out of the frame, 4 stroll,
   5 trampoline, 6 see-saw, 7 orbit, 8 wave, 9 juggle), tens the backdrop (0 polka, 1 ripples,

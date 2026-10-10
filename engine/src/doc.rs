@@ -27,6 +27,8 @@ impl Doc {
         self.blocks.iter().filter_map(|b| match b { B::C(l, s, n) if l == lang => Some((s.as_str(), *n)), _ => None }).collect()
     }
     pub fn cells(&self) -> Vec<(&str, usize)> { self.fence("rust") }
+    /// The visuals pages it embeds, ![name](viz/<slug>/index.html): sealed artifacts that run in a frame.
+    pub fn tools(&self) -> Vec<&str> { self.blocks.iter().filter_map(|b| match b { B::Img(_, s) if s.ends_with(".html") => Some(s.as_str()), _ => None }).collect() }
     pub fn skills(&self) -> Vec<&str> { self.blocks.iter().filter_map(|b| match b { B::Com(s) => Some(s.as_str()), _ => None }).collect() }
     pub fn chapters(&self) -> Vec<Ch> {
         let mut v: Vec<Ch> = vec![];
@@ -353,6 +355,7 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
             B::M(m) => w!(o, "<div class=\"eq\">{}</div>", mathml(m, true)),
             B::Raw(h) => o += h,
             B::Com(_) => {}
+            B::Img(alt, src) if src.ends_with(".html") => w!(o, "<figure class=\"tool\"><iframe data-tool=\"{}\" title=\"{}\"></iframe></figure>", esc(src), esc(alt)),
             B::Img(alt, src) => w!(o, "<figure><img src=\"{}\" alt=\"{}\"><figcaption>{}</figcaption></figure>", img(src), esc(alt), inline(alt)),
         }
     }
