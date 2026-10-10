@@ -130,23 +130,26 @@
     }, { once: true });
     f.src = pages[f.dataset.tool] ||= URL.createObjectURL(new Blob([b64(b.textContent)], { type: "text/html" }));
   });
+  // An edit redraws the notebook around an embedded frame: the frame and the elements that hold it stay, so its page
+  // keeps its state (a moved frame reloads), and everything beside them comes from the new text.
+  const graft = (cur, next, f, mark) => {
+    if (cur === f) return;
+    const keep = [...cur.childNodes].find((c) => c.contains(f)), kids = [...next.childNodes];
+    const into = kids.find((c) => c.contains(mark)), i = kids.indexOf(into);
+    [...cur.childNodes].forEach((c) => c !== keep && c.remove());
+    keep.before(...kids.slice(0, i));
+    keep.after(...kids.slice(i + 1));
+    graft(keep, into, f, mark);
+  };
   const render = () => {
     try { source === built ? localStorage.removeItem(key) : localStorage.setItem(key, JSON.stringify([built, source])); } catch (e) {}
     const outputs = [...result.out.map((o) => ["o", o]), ...result.ctl.map((c) => ["c", c])];
     const html = md(0, [["src", source], ["built", built], ...outputs, ["assets", assets]]);
     const keep = Object.values(frames).find((f) => article.contains(f));
-    const top = keep && [...article.children].find((c) => c.contains(keep));
     const next = document.createElement("template");
     next.innerHTML = html;
-    const mark = top && $$("iframe[data-tool]", next.content).find((f) => f.dataset.tool === keep.dataset.tool);
-    const nt = mark && [...next.content.children].find((c) => c.contains(mark));
-    if (nt) {
-      const kids = [...next.content.children], i = kids.indexOf(nt);
-      const all = [...article.children], j = all.indexOf(top);
-      all.forEach((c, k) => k !== j && c.remove());
-      article.prepend(...kids.slice(0, i));
-      article.append(...kids.slice(i + 1));
-    } else article.innerHTML = html;
+    const mark = keep && $$("iframe[data-tool]", next.content).find((f) => f.dataset.tool === keep.dataset.tool);
+    mark ? graft(article, next.content, keep, mark) : (article.innerHTML = html);
     $$("canvas[data-scene]", article).forEach(watch);
     redraw();
     embed();
@@ -205,9 +208,10 @@
   const run = () => new Promise((done) => {
     if (busy) { again = true; return done(result); }
     busy = true;
+    article.ariaBusy = "true";
     worker ||= new Worker(URL.createObjectURL(new Blob([WORKER], { type: "text/javascript" })));
     const finish = (r) => {
-      clearTimeout(timer); busy = false; apply(r); done(result);
+      clearTimeout(timer); busy = false; article.ariaBusy = "false"; apply(r); done(result);
       if (again) { again = false; run(); }
     };
     const timer = setTimeout(() => { worker.terminate(); worker = null; finish({ trap: "stopped after 10 s", cell: 0 }); }, 10000);
