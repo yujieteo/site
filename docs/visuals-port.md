@@ -30,7 +30,7 @@ A notebook may embed a sealed artifact of visuals, `![name](viz/<slug>/index.htm
    | English Grammar | 815 |
    | Monte Carlo | 152 |
 
-3. Freeze the outputs of each Python reference solver (Section Lab, Beam diagram) as JSON fixtures. The site notebooks test their Rust solvers against these fixtures. Then delete `reference.py`, `reference/*.py` and `requirements-test.txt`.
+3. Freeze the outputs of each Python reference solver (Section Lab, Beam diagram) as JSON fixtures. A port may compare its solver with these fixtures while it is built, in a disposable test that is not committed. Then delete `reference.py`, `reference/*.py` and `requirements-test.txt`.
 4. After the site port of a tool passes its tests, delete the old JS page and its `build.py`. Visuals keeps the data, the Rust data builders and the fixtures. Git history keeps the old pages.
 
 ## Site work
