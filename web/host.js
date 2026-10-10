@@ -188,8 +188,10 @@
     $$(".err", article).forEach((e) => e.remove());
     if (r.json) {
       result = JSON.parse(r.json);
+      const a = document.activeElement, k = a?.dataset.k; // a redrawn control keeps the focus at its key
       result.out.forEach((h, j) => { const el = $(`[data-out="${j}"]`, article); if (el && el.innerHTML !== h) el.innerHTML = h; });
       result.ctl.forEach((h, j) => { const el = $(`[data-ctl="${j}"]`, article); if (el && sig(el.innerHTML) !== sig(h)) el.innerHTML = h; });
+      if (k && !a.isConnected) $(`[data-k="${k}"]`, article)?.focus();
       stage = new Float32Array(result.stage.map((v) => v ?? NaN));
     }
     // A trap names its cell; an error from the run reads "cell N: …".
