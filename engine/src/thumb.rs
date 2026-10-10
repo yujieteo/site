@@ -17,6 +17,14 @@ use std::f32::consts::{PI, TAU};
 /// The ground line: characters stand on it.
 const G: f32 = 0.8;
 
+/// What each digit picks, by its value: the motion (units), the backdrop (tens) and the character (hundreds, mod 5).
+pub const MOTIONS: [&str; 10] = ["doze", "hop", "bounce", "leap", "stroll", "trampoline", "see-saw", "orbit", "wave", "juggle"];
+pub const BACKDROPS: [&str; 10] = ["polka", "ripples", "night", "hill", "sea", "rings", "rain", "halftone", "confetti", "plain"];
+pub const CHARACTERS: [&str; 5] = ["sleepy", "happy", "flustered", "dizzy", "curious"];
+
+/// A seed's parts: motion, backdrop, character and variety.
+pub fn parts(seed: u32) -> (usize, usize, usize, u32) { ((seed % 10) as usize, (seed / 10 % 10) as usize, (seed / 100 % 5) as usize, seed / 1000) }
+
 /// The picture's base, shade, accent and light colours, from the variety digits.
 pub fn palette(seed: u32) -> [u32; 4] {
     let (v, h) = (seed / 1000, 360.0 * rnd(seed / 1000, 1));
@@ -35,7 +43,7 @@ type Body = (f32, f32, f32, usize, f32, (f32, f32));
 
 /// The frame at time `t`; returns the pin light (x, y, radius, intensity).
 pub(crate) fn frame(o: &mut Out, seed: u32, t: f32) -> (f32, f32, f32, f32) {
-    let (m, b, c, v) = (seed % 10, seed / 10 % 10, (seed / 100 % 5) as usize, seed / 1000);
+    let (m, b, c, v) = parts(seed);
     let r = |i: u32| rnd(v, i);
     let (size, t) = (0.09 + 0.035 * r(3), t * (0.85 + 0.3 * r(4)));
     let mut pin = (0.2 + 0.6 * r(5), 0.16, 0.03, 0.35);
