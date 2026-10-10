@@ -353,7 +353,7 @@
     // The editor: Rust (`vim`) owns modes, motions, operators, commands, text and undo. The textarea
     // keeps insert-mode typing, keyboard composition, touch selection, paste and the clipboard.
     edit: () => {
-      if (editor) { editor.parentNode.hidden = !editor.parentNode.hidden; return editor.focus(); }
+      if (editor) { const box = editor.parentNode; box.hidden = !box.hidden; return (box.hidden ? $("[data-act=edit]") : editor).focus(); } // :q gives focus back to Edit
       const box = make("div", { className: "vim" }), pad = PAD.map(([l, k]) => `<button type="button" data-key="${k}">${l}</button>`);
       box.innerHTML = `<div class="pad">${pad.join("")}<output></output></div>`
         + `<textarea class="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>`;
@@ -393,6 +393,7 @@
       on("keydown", (e) => {
         let k = KEYS[e.key] || ([...e.key].length === 1 && !e.altKey && !e.metaKey && e.key.codePointAt(0));
         if (e.ctrlKey) k = /^[a-z]$/.test(e.key) && !"acvxk".includes(e.key) && k & 31; // the browser keeps Ctrl-A, C, V, X; K searches
+        if (k === 9 && mode === "n") return; // Esc, then Tab, moves the focus on
         if (k && (mode !== "i" || k === 27 || k === 9)) { e.preventDefault(); send(k); }
       });
       // Outside insert mode typing is keys: cancellable input becomes keys; the rest (composition) is undone first.
