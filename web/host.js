@@ -165,7 +165,7 @@
     if (err) fail(k, err);
     redraw();
   }
-  // A choice sends its option's text, so it keeps that option while its options change; a text box sends its text.
+  // A choice sends its option's "index:text", so it keeps that option while its options change; a text box sends its text.
   const values = () => {
     const v = [];
     for (const el of $$("[data-k]", article)) v[+el.dataset.k] = el.tagName === "SELECT" || el.type === "search" ? el.value : +el.value;

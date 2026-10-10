@@ -70,17 +70,22 @@ pub fn slider(label: &str, min: f64, max: f64, step: f64, value: f64) -> f64 {
     })
 }
 
-/// A choice among options; returns the chosen index. The host sends the chosen option's text, so the
-/// choice keeps that option while the options change, and takes `default` when it is gone.
+/// A choice among options; returns the chosen index. The host sends "index:text" of the chosen option: the
+/// choice keeps that option while the options change (the index if its text still matches, else the
+/// first option with that text), and takes `default` when it is gone.
 pub fn choice<S: AsRef<str>>(label: &str, opts: &[S], default: usize) -> usize {
     with(|b| {
         let k = b.n;
         b.n += 1;
         let text = TEXT.with_borrow(|t| t.get(k).cloned().flatten());
-        let v = text.and_then(|t| opts.iter().position(|o| o.as_ref() == t)).unwrap_or(default);
+        let mut v = default;
+        if let Some((i, t)) = text.as_deref().and_then(|t| t.split_once(':')) {
+            let at = i.parse::<usize>().ok().filter(|&i| opts.get(i).is_some_and(|o| o.as_ref() == t));
+            v = at.or_else(|| opts.iter().position(|o| o.as_ref() == t)).unwrap_or(default);
+        }
         let v = v.min(opts.len().saturating_sub(1));
         let sel = |i: usize| if i == v { " selected" } else { "" };
-        let o: String = opts.iter().enumerate().map(|(i, o)| format!("<option value=\"{0}\"{1}>{0}</option>", esc(o.as_ref()), sel(i))).collect();
+        let o: String = opts.iter().enumerate().map(|(i, o)| format!("<option value=\"{i}:{0}\"{1}>{0}</option>", esc(o.as_ref()), sel(i))).collect();
         w!(b.ctl[b.cell], "<label>{} <select data-k=\"{k}\">{o}</select></label>", esc(label));
         v
     })
@@ -249,6 +254,13 @@ mod tests {
         Err("stop".into())
     }
 
+    fn dup() -> Result<(), Box<dyn std::error::Error>> {
+        cell(0);
+        let c = choice("Pick", &["d", "d"], 0);
+        crate::println!("c = {c}");
+        Ok(())
+    }
+
     #[test]
     fn runs_from_clean_state_with_inputs() {
         let a = run(prog);
@@ -258,9 +270,12 @@ mod tests {
         assert!(run(prog).contains("a = 7") && run(prog) == run(prog));
         nb_input(0, 99.0);
         assert!(run(prog).contains("a = 10") && run(prog).contains("q = x&lt;") && run(prog).contains("value=\\\"x&lt;\\\""));
-        crate::IO.with_borrow_mut(|io| io.0 = b"x<".to_vec());
+        crate::IO.with_borrow_mut(|io| io.0 = b"2:x<".to_vec());
         nb_field(2);
-        assert!(run(prog).contains("q = x&lt; 2") && run(prog).replace("\\u003c", "<").contains("<option value=\\\"x&lt;\\\" selected>"));
+        assert!(run(prog).contains("q = x&lt; 2") && run(prog).replace("\\u003c", "<").contains("<option value=\\\"2:x&lt;\\\" selected>"));
+        crate::IO.with_borrow_mut(|io| io.0 = b"1:d".to_vec());
+        nb_field(0);
+        assert!(run(dup).contains("c = 1"));
         crate::IO.with_borrow_mut(|io| io.0 = b"ab<".to_vec());
         nb_field(1);
         assert!(run(prog).contains("q = ab&lt; 1") && run(prog).replace("\\u003c", "<").contains("<th>&lt;b&gt;</th></tr><tr><td>1</td><td>a&amp;b</td>"));
