@@ -98,12 +98,13 @@ pub fn choice<S: AsRef<str>>(label: &str, opts: &[S], default: usize) -> usize {
     })
 }
 
-/// A text box; returns its text: the host's, or `value` on a clean run.
+/// A text box; returns its text: the host's while the label stays the same, or `value`.
 pub fn field(label: &str, value: &str) -> String {
     with(|b| {
         let k = b.n;
         b.n += 1;
-        let v = TEXT.with_borrow(|t| t.get(k).cloned().flatten()).unwrap_or_else(|| value.into());
+        let same = LABEL.with_borrow(|t| t.get(k).cloned().flatten()).is_none_or(|l| l == label);
+        let v = TEXT.with_borrow(|t| t.get(k).cloned().flatten()).filter(|_| same).unwrap_or_else(|| value.into());
         let input = format!("<input type=\"search\" data-k=\"{k}\" value=\"{}\" autocomplete=\"off\" spellcheck=\"false\">", esc(&v));
         w!(b.ctl[b.cell], "<label>{} {input}</label>", esc(label));
         v
@@ -236,7 +237,7 @@ fn keep(list: &'static std::thread::LocalKey<RefCell<Vec<Option<String>>>>, k: u
 #[unsafe(no_mangle)]
 pub extern "C" fn nb_field(k: u32) { keep(&TEXT, k) }
 
-/// The label of the slider whose value control `k` sends: the call's input bytes.
+/// The label of the slider or text box whose value control `k` sends: the call's input bytes.
 #[unsafe(no_mangle)]
 pub extern "C" fn nb_label(k: u32) { keep(&LABEL, k) }
 
@@ -299,6 +300,12 @@ mod tests {
         crate::IO.with_borrow_mut(|io| io.0 = b"ab<".to_vec());
         nb_field(1);
         assert!(run(prog).contains("q = ab&lt; 1") && run(prog).replace("\\u003c", "<").contains("<th>&lt;b&gt;</th></tr><tr><td>1</td><td>a&amp;b</td>"));
+        crate::IO.with_borrow_mut(|io| io.0 = b"Seek".to_vec());
+        nb_label(1);
+        assert!(run(prog).contains("q = x&lt; 2"));
+        crate::IO.with_borrow_mut(|io| io.0 = b"Find".to_vec());
+        nb_label(1);
+        assert!(run(prog).contains("q = ab&lt; 1"));
         assert_eq!(ticks(0.0, 1.0), (vec![0.0, 0.2, 0.4, 0.6000000000000001, 0.8, 1.0], 1));
         for (a, b) in [(0.0, f64::MAX), (f64::MIN, f64::MAX), (f64::NAN, 1.0), (1e300, -1e300), (f64::MAX, f64::MAX)] {
             assert!(ticks(a, b).0.len() < 12);
