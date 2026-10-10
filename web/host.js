@@ -119,9 +119,11 @@
   // A visuals page that the notebook embeds (![name](viz/<slug>/index.html)) runs in a frame from its pinned bytes.
   // The frame has this page's origin, so it follows the reader's theme, and it grows to fit the page.
   const pages = {};
+  const frames = {};
   const embed = () => $$("iframe[data-tool]", article).forEach((f) => {
     const b = document.getElementById("tool:" + f.dataset.tool);
-    if (!b) return;
+    if (!b || f.getAttribute("src")) return;
+    frames[f.dataset.tool] = f;
     f.addEventListener("load", () => {
       const d = f.contentDocument, fit = () => (f.style.height = Math.ceil(d.documentElement.getBoundingClientRect().height) + "px");
       new ResizeObserver(fit).observe(d.documentElement);
@@ -131,7 +133,20 @@
   const render = () => {
     try { source === built ? localStorage.removeItem(key) : localStorage.setItem(key, JSON.stringify([built, source])); } catch (e) {}
     const outputs = [...result.out.map((o) => ["o", o]), ...result.ctl.map((c) => ["c", c])];
-    article.innerHTML = md(0, [["src", source], ["built", built], ...outputs, ["assets", assets]]);
+    const html = md(0, [["src", source], ["built", built], ...outputs, ["assets", assets]]);
+    const keep = Object.values(frames).find((f) => article.contains(f));
+    const top = keep && [...article.children].find((c) => c.contains(keep));
+    const next = document.createElement("template");
+    next.innerHTML = html;
+    const mark = top && $$("iframe[data-tool]", next.content).find((f) => f.dataset.tool === keep.dataset.tool);
+    const nt = mark && [...next.content.children].find((c) => c.contains(mark));
+    if (nt) {
+      const kids = [...next.content.children], i = kids.indexOf(nt);
+      const all = [...article.children], j = all.indexOf(top);
+      all.forEach((c, k) => k !== j && c.remove());
+      article.prepend(...kids.slice(0, i));
+      article.append(...kids.slice(i + 1));
+    } else article.innerHTML = html;
     $$("canvas[data-scene]", article).forEach(watch);
     redraw();
     embed();
