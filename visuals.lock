@@ -1,0 +1,6 @@
+# yujieteo/visuals files that notebooks read through data!("path"), at one commit. scripts/visuals.sh
+# fetches them into visuals/ (not committed) and checks every hash; the build refuses any other path.
+# sha256 path
+commit 32181d1596676077435fa563d03b9f3816fee234
+2da71d90953d25ba95d7086e03160bfb222ff676689356afb1459d749083e5a6 viz/theorem-explorer/raw.json
+b5a5313da12ea9c5e4248390377ef4c14e9418fd8fd99bb931f4c0c0cd7f0cd9 viz/theorem-learner/raw.json

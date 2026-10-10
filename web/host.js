@@ -125,25 +125,32 @@
     const t = md(6, [["src", source], ["built", built]]);
     if (t !== tuned) { tuned = t; run(); }
   };
-  // The cells' worker: a fresh instance per run, given the controls' values and the live numbers.
-  // It answers with the run's JSON, or the trap and the cell that was running.
-  const WORKER = `onmessage = ({ data: [m, v, t] }) => {
-    let e;
+  // The cells' worker keeps one instance for its runs, so data that a cell parsed once stays parsed; a trap
+  // drops it. It is given the controls' values (texts as bytes) and the live numbers, and answers with the
+  // run's JSON, or the trap and the cell that was running.
+  const WORKER = `let e;
+  onmessage = ({ data: [m, v, t] }) => {
     const read = (n) => new TextDecoder().decode(new Uint8Array(e.memory.buffer, e.out(), n));
+    const put = (x) => {
+      const b = new TextEncoder().encode(x), at = e.alloc(b.length);
+      new Uint8Array(e.memory.buffer, at, b.length).set(b);
+    };
     try {
-      e = new WebAssembly.Instance(m, {}).exports;
-      v.forEach((x, k) => e.nb_input(k, x));
+      e ||= new WebAssembly.Instance(m, {}).exports;
+      v.forEach((x, k) => (typeof x === "string" ? (put(x), e.nb_field(k)) : e.nb_input(k, x)));
       t.forEach(([k, x]) => e.nb_num(k, x));
       postMessage({ json: read(e.nb_run()) });
     } catch (x) {
       let msg = String(x);
       try { msg = read(e.nb_panic()) || msg; } catch {}
       postMessage({ trap: msg, cell: e ? e.nb_cell() : 0 });
+      e = null;
     }
   };`;
   let worker, busy = false, again = false;
-  // A control is replaced only when it changes kind, so a slider keeps its drag.
-  const sig = (h) => (h.match(/data-k="\d+"|<label>[^<]*/g) || []).join();
+  // A control is redrawn when its key, label, range or options change, never for its value, so a slider
+  // keeps its drag and a text box its focus.
+  const sig = (h) => (h.match(/data-k="\d+"|<label>[^<]*| max="[^"]*"|<option[^>]*>[^<]*/g) || []).join().replaceAll(" selected", "");
   const fail = (k, msg) => $(`[data-cell="${k}"]`, article)?.append(make("p", { className: "err", textContent: msg }));
   function apply(r) {
     $$(".err", article).forEach((e) => e.remove());
@@ -158,9 +165,10 @@
     if (err) fail(k, err);
     redraw();
   }
+  // A choice sends its option's text, so it keeps that option while its options change; a text box sends its text.
   const values = () => {
     const v = [];
-    for (const el of $$("[data-k]", article)) v[+el.dataset.k] = el.tagName === "SELECT" ? el.selectedIndex : +el.value;
+    for (const el of $$("[data-k]", article)) v[+el.dataset.k] = el.tagName === "SELECT" || el.type === "search" ? el.value : +el.value;
     return v;
   };
   // One run at a time: a change during a run asks for one more. A run is stopped after 10 s.

@@ -18,7 +18,9 @@ export (below), which needs the site served over HTTP.
 `scripts/repro.sh` builds twice from clean and compares every output's hash. `scripts/loc.sh` checks
 the budgets and reports payload and output sizes. `scripts/kokoro.sh` fetches the narration voice
 into `kokoro/` (not committed, about 118 MB) and checks every file against `kokoro.lock`; the build
-then serves it beside the site.
+then serves it beside the site. `scripts/visuals.sh` (run first by `build.sh`) fetches the
+yujieteo/visuals data files that notebooks read into `visuals/` (not committed) and checks every file
+against `visuals.lock`; files already there and matching need no network.
 
 ## Layout
 
@@ -27,10 +29,11 @@ then serves it beside the site.
 | `engine/` | Rust, native and WebAssembly. `doc` (Markdown, TeX to MathML), `cell` (cell data flow), `nb` (the cells' runtime: text, controls, plots, stage), `draw` (display lists), `pdf` (the PDF views), `theme`, `pack` (SHA-256, ZIP, base64), `scene` (the dot scenes: a frame is a pure function of seed, scene, time, progress, pointer and stage), `thumb` (seeded thumbnails), `say` (narration: sentences, Kokoro phonemes, podcast, captions, timings). |
 | `web/host.js` | The browser boundary: one clock, Canvas execution of display lists, the run worker, the voice worker, the video recorder, tools, the agent API. |
 | `kokoro.lock`, `scripts/kokoro.sh` | The narration's pinned files: kokoro-js 1.2.1, ONNX Runtime Web, Kokoro-82M v1.0 (q8) with two US voices, and the Misaki 0.9.4 lexicons the build reads. |
+| `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, with its SHA-256. Visuals owns the data. |
 | `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search. |
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (notes, doors, index). |
-| `content/stories/<slug>/` | A notebook: `index.md` and its assets (images, `Cargo.lock`, `say.lock`). |
+| `content/stories/<slug>/`, `content/play/<slug>/` | A notebook (a story, or a tool in Play): `index.md` and its assets (images, `Cargo.lock`, `say.lock`). |
 | `fonts/` | Embedded font subsets (Fira Sans, Fira Mono, Fira Math); `fonts.txt` holds their hashes. |
 
 ## Notebooks
@@ -56,8 +59,12 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
 - ```` ```rust ```` fences are cells. Cells run in data-flow order, never in page order: a cell that
   uses `x` runs after the cell whose top-level `let x` defines it, each name has one defining cell,
   and cycles are errors. Items (`fn`, `struct`, `use`, `const`) are shared by all cells. Every run is
-  a clean run, so outputs never depend on what ran before. `//| caption: …` captions a cell.
-- In cells: `println!`, `html`, `slider`, `choice`, `stage` (numbers for data scenes) and `Plot`.
+  a clean run, so outputs never depend on what ran before; the page keeps one instance, so a `static`
+  may hold what a cell parsed from `data!` bytes, and nothing else. `//| caption: …` captions a cell.
+- In cells: `println!`, `html`, `table`, `slider`, `choice`, `field` (a text box), `stage` (numbers
+  for data scenes), `Plot` and `data!("path")`: the bytes of a file pinned in `visuals.lock`, compiled
+  in. The page redraws a cell's controls when a key, label, range or option changes, so keep a
+  `field` apart from a `choice` whose options follow it.
 - ```` ```toml ```` fences add pinned crates; ```` ```say ```` fences are narration; `$…$` and `$$`
   are TeX; `<!-- … -->` comments are agent skills, exposed as text through `window.notebook.skills()`.
 - A thumbnail is one seed (`engine/src/thumb.rs`), read as digits so a known seed gives a known

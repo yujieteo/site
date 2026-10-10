@@ -357,14 +357,21 @@ impl Pdf<'_> {
     fn output(&mut self, h: &str, caption: &str) {
         let (mut rest, mut fig) = (h, false);
         while !rest.is_empty() {
-            let end = [("<pre", "</pre>"), ("<svg", "</svg>")].into_iter().find(|t| rest.starts_with(t.0)).map(|t| t.1);
+            // A paragraph runs to the next block tag; inline tags (em, a, maths) stay in it.
+            let block = |r: &str| ["<p", "<h", "<ul", "<ol", "<li", "<div", "<table", "<pre", "<svg"].iter().any(|t| r.starts_with(t));
+            let end = [("<pre", "</pre>"), ("<svg", "</svg>"), ("<table", "</table>")].into_iter().find(|t| rest.starts_with(t.0)).map(|t| t.1);
             let j = match end {
                 Some(e) => rest.find(e).map_or(rest.len(), |j| j + e.len()),
-                None => rest.char_indices().skip(1).find(|c| c.1 == '<').map_or(rest.len(), |c| c.0), // to the next tag
+                None => rest.char_indices().skip(1).find(|c| c.1 == '<' && block(&rest[c.0..])).map_or(rest.len(), |c| c.0),
             };
             let ((a, b), w) = (rest.split_at(j), (0.8 * self.col).min(360.0));
             match (end, strip(a)) {
                 (Some("</pre>"), t) => self.code(&t, false),
+                (Some("</table>"), _) => {
+                    // A table as rows of text, its cells two spaces apart.
+                    let rows = a.split("</tr>").map(|r| strip(&r.replace("</th>", "  ").replace("</td>", "  ")).trim_end().to_string());
+                    self.code(&rows.filter(|r| !r.is_empty()).collect::<Vec<_>>().join("\n"), false)
+                }
                 (Some(_), _) => fig |= self.figure(w, w * 0.625, &mut |p, x, y| p.plot(a, x, y, w)),
                 (None, t) => if !t.trim().is_empty() { self.para(&t, St(0, 10.0, self.pal[3], 0), 0.0) },
             }

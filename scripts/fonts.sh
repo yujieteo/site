@@ -12,5 +12,5 @@ cut() { "$hb" "$1" --no-hinting --layout-features=kern,liga --unicodes="$TEXT" -
 cut "$(out fira-sans)/share/fonts/opentype/FiraSans-Regular.otf" sans
 cut "$(out fira-mono)/share/fonts/opentype/FiraMono-Regular.otf" mono
 "$hb" "$(out fira-math)/share/fonts/opentype/FiraMath-Regular.otf" --no-hinting \
-  --unicodes="$TEXT,2200-22FF,210E,2308-230B,27E8-27E9,1D434-1D467,1D6E2-1D71B" -o fonts/math.otf
+  --unicodes="$TEXT,300-36F,20D7,2102,210D-210E,2113,2115,2119-211A,211D,2124,2190-21FF,2200-22FF,2308-230B,27C0-27FF,2AAF-2AB0,1D400-1D49B,1D53C-1D54B,1D6A8-1D7D7" -o fonts/math.otf
 sha256sum fonts/*.otf
