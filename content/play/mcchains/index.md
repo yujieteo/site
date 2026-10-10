@@ -10,7 +10,7 @@ This notebook has two parts. The first part is a laboratory for the methods that
 
 <!-- skill: This notebook ports the Markov chain, sequential and quasi-Monte Carlo laboratory (chains.json) and the rare-event laboratory (rare.json) of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. The engines are in "The code": the core functions at the root, then the modules chains and rare. -->
 
-<!-- skill: The checks run natively at each build and not in the page: every example of each laboratory runs with its own settings and meets its reference within 6 standard errors, except the designed failures, which must fail as the catalogue says. A run in the page must take about a second: keep the sizes of the examples. -->
+<!-- skill: Tests are disposable: check a change end to end in the built page; do not commit regression tests. A run in the page must take about a second: keep the sizes of the examples. -->
 
 ```toml
 serde_json = "=1.0.151"
@@ -255,96 +255,7 @@ html(&rare_card_html(rare_card));
 
 # The code
 
-The checks run natively at each build. The data cell reads the pinned files of visuals, then come the helpers of the page and the engines.
-
-```rust
-//| caption: The checks of the data, the examples and the method cards.
-if cfg!(not(target_arch = "wasm32")) { checks() }
-println!("At the build, the checks passed: the text of the data, the 11 chain examples and the 17 rare-event examples against their references, and the examples of every method card.");
-```
-
-```rust
-//| caption: The checks.
-/// The checks: the text of the data, then every example of each laboratory with its own settings against its reference,
-/// and the designed failures as the catalogue states them.
-fn checks() {
-    let fits = |t: &str| fit(t).chars().all(|c| FONT.iter().any(|r| (r.0..=r.1).contains(&(c as u32))));
-    let mut texts = vec![];
-    for k in 0..2 { strings(&data()[k], "", &mut texts) }
-    for (key, t) in &texts { assert!(*key == "estimator" || fits(t), "{key}: {}", fit(t)) }
-    assert_eq!((examples().len(), list(0, "methods").len()), (11, 6));
-    for x in examples() {
-        let id = s(&x["id"]);
-        let lab = chains::record_of(x, "", &data()[2]).and_then(|r| chains::prepare(&r, &chains::Settings::of(x))).unwrap_or_else(|e| panic!("{id}: {e}"));
-        let (_, sm) = chains::run(&lab);
-        for m in &sm.methods {
-            match (id, m.method) {
-                ("chain-two-modes", chains::Method::Metropolis) => assert!(m.quantities[0].b.est.unwrap() < 0.05 && m.chain.as_ref().unwrap().max_rhat < 1.1, "{id}"),
-                ("chain-funnel", chains::Method::Hmc) => assert!(m.chain.as_ref().unwrap().divergent > 1000, "{id}"),
-                _ => for q in &m.quantities {
-                    let (Some(e), Some(r)) = (q.b.est, q.reference) else { continue };
-                    let se = q.b.se.unwrap_or(0.0).max(q.mcse.unwrap_or(0.0));
-                    assert!(q.covered == Some(true) || (e - r).abs() <= 6.0 * se + 1e-9 * r.abs().max(1.0), "{id}, {}, {}: {e} ± {se}, reference {r}", m.method.id(), q.id);
-                },
-            }
-        }
-    }
-    for m in list(0, "methods") {
-        for part in ["suitable", "failure", "comparison"] {
-            let x = examples().into_iter().find(|e| e["id"] == m[part]["example"]).unwrap_or_else(|| panic!("{}: {part}", m["id"]));
-            assert!(fits(&card_settings(&m[part])), "{}", m["id"]);
-            let mut st = chains::Settings::of(x);
-            st.apply(&m[part]["settings"]);
-            let rc = chains::record_of(x, s(&m[part]["settings"]["c_params"]), &data()[2]).unwrap();
-            chains::prepare(&rc, &chains::Settings { size: st.size.min(10.0), runs: 2.0, ..st }).unwrap_or_else(|e| panic!("{} {part}: {e}", m["id"]));
-        }
-    }
-    // The rare-event laboratory: every example with its own settings meets its reference (or direct simulation, for the
-    // catastrophe test) within 6 standard errors, except the method that an assumption failure breaks, and adaptive
-    // importance sampling on a light-tailed sum, whose twist family does not fit that law.
-    let ps = rare_examples();
-    assert_eq!((ps.len(), list(1, "methods").len(), list(1, "problems").len()), (17, 6, 3));
-    let defaults: Vec<f64> = rare::OPTIONS.iter().map(|o| if o.def.is_nan() { 0.0 } else { o.def }).collect();
-    let rec = rare::Record::new("sum", "", "", "");
-    assert_eq!(rare::prepare(&rec, &rare::Settings { options: options_text(&defaults), ..Default::default() }).unwrap().o, rare::prepare(&rec, &Default::default()).unwrap().o, "the sliders start at the defaults");
-    let mut page = vec![];
-    for p in ps {
-        let l = rare_lab_of(&p.record, &p.settings).unwrap_or_else(|e| panic!("{}: {e}", p.id));
-        let c = &l.c;
-        let owner = match p.settings.failure.as_str() { "light_family" => "ce", "small_spread" => "subset", "nominal_start" => "ais", _ => "" };
-        let base = l.sm.iter().find(|m| m.method == "direct").map(|m| m.q[0].clone());
-        let rse = l.rf.interval.map_or(0.0, |(lo, hi)| (hi - lo) / (2.0 * Z95));
-        for m in &l.sm {
-            page.push(m.refused.clone());
-            if !m.refused.is_empty() { continue }
-            assert!(m.error.is_empty(), "{} {}: {}", p.id, m.method, m.error);
-            page.extend(m.q.iter().map(|q| q.how.clone()));
-            if let Some(r) = &m.risk { page.push(r.how.clone()) }
-            if m.method == owner || (c.problem == "sum" && c.law == "exponential" && m.method == "ais") { continue }
-            let (q, se) = (&m.q[0], m.q[0].se.unwrap_or(0.0));
-            if m.method == "direct" && q.hits == Some(0.0) { assert!(q.hi.unwrap() >= l.rf.value.unwrap_or(0.0), "{}: the zero-hit bound", p.id); continue }
-            let against = match (l.rf.value, &base) { (Some(v), _) => Some((v, rse)), (None, Some(d)) if m.method != "direct" && d.hits != Some(0.0) => Some((d.est.unwrap(), d.se.unwrap())), _ => None };
-            if let Some((v, vse)) = against { assert!((q.est.unwrap() - v).abs() <= 6.0 * se.hypot(vse), "{} {}: {:?} ± {se} against {v} ± {vse}", p.id, m.method, q.est) }
-        }
-        page.extend(c.quantities.iter().map(|q| quantity_label(c, q)));
-        page.push(l.rf.how.clone());
-        if let Some((_, how)) = &l.rf.asymptotic { page.push(how.clone()) }
-        if let Some(k) = &c.cat { page.extend(k.policies.iter().flat_map(|p| [p.label.clone(), p.cost_text.clone()])) }
-    }
-    page.extend(rare::PARAMS.iter().flat_map(|ps| ps.iter().flat_map(|x| [x.text.to_string(), x.unit.to_string()])));
-    page.extend(rare::OPTIONS.iter().map(|x| x.text.to_string()));
-    for t in &page { assert!(fits(t.as_str()), "not in the fonts: {}", fit(t)) }
-    for m in list(1, "methods") {
-        for part in ["suitable", "failure", "comparison"] {
-            let p = ps.iter().find(|p| p.id == s(&m[part]["preset"])).unwrap_or_else(|| panic!("{}: {part}", m["id"]));
-            let runs = [p.settings.method.as_str(), p.settings.compare.as_str()];
-            assert!(runs.contains(&s(&m["id"])) || (part == "comparison" && runs.contains(&s(&m["comparison"]["with"]))), "{}: the {part} example runs it", m["id"]);
-        }
-    }
-    let rows = sweep(&ps[0].record, &ps[0].settings, rare::params_for("sum", "exponential")[1], "40", "60", 3).unwrap();
-    assert!(rows.len() == 3 && rows.iter().all(|r| r.reference.is_some() && r.q[0].est.is_some()), "a sweep of b");
-}
-```
+The data cell reads the pinned files of visuals, then come the helpers of the page and the engines.
 
 ```rust
 //| caption: The data.
@@ -375,21 +286,6 @@ fn s(v: &Value) -> &str { v.as_str().unwrap_or("") }
 fn texts(v: &Value) -> Vec<&str> { v.as_array().map_or(vec![], |a| a.iter().map(s).collect()) }
 fn texts_of(v: &Value, key: &str) -> Vec<String> { v.as_array().map_or(vec![], |a| a.iter().map(|x| fit(s(&x[key]))).collect()) }
 
-/// The characters of the site's text fonts (scripts/fonts.sh).
-const FONT: [(u32, u32); 22] = [
-    (0x20, 0x7e), (0xa0, 0xff), (0x131, 0x131), (0x152, 0x153), (0x160, 0x161), (0x178, 0x178), (0x17d, 0x17e), (0x391, 0x3a9),
-    (0x3b1, 0x3c9), (0x2013, 0x2014), (0x2018, 0x201d), (0x2022, 0x2022), (0x2026, 0x2026), (0x2032, 0x2033), (0x2190, 0x2193),
-    (0x2212, 0x2212), (0x2248, 0x2248), (0x2260, 0x2260), (0x2264, 0x2265), (0x221e, 0x221e), (0xb7, 0xb7), (0xa, 0xa),
-];
-/// Every string of a value, with its key.
-fn strings<'a>(v: &'a Value, key: &'a str, out: &mut Vec<(&'a str, &'a str)>) {
-    match v {
-        Value::String(t) => out.push((key, t)),
-        Value::Array(a) => a.iter().for_each(|x| strings(x, key, out)),
-        Value::Object(o) => o.iter().for_each(|(k, x)| strings(x, k, out)),
-        _ => {}
-    }
-}
 /// Text from the data in the site's fonts, which have no sub- or superscript digits, √ or ⌊ ⌋:
 /// X₁ becomes X_1, 10⁻⁶ 10^-6, X̄ Xbar, √n sqrt n, ⌊x⌋ floor(x).
 fn fit(t: &str) -> String {

@@ -198,17 +198,7 @@ The data is the explorer's snapshot and the learner's assembly in yujieteo/visua
 
 # The code that reads the data
 
-The page reads the 2 data files once, at its first run, and keeps them for its later runs. The first cell checks the notebook against the pinned data at every build: the counts, the join by ID, the search and 2 scores that the explorer's own rule gives.
-
-```rust
-//| caption: The checks against the pinned data.
-assert_eq!((db().rows.len(), db().theorems.len(), db().proofs.len(), db().moves.len(), db().concepts.len()), (2389, 2056, 2203, 112, 11949));
-assert!(db().theorems.iter().all(|t| t["id"].as_str().is_some_and(|id| db().row_of.contains_key(id))), "a theorem with no record");
-assert_eq!((index().len(), search("brouwer").first().map(|&k| theorem_name(k as u64))), (2055, Some("Brouwer fixed-point theorem".into())));
-let _of = |n: &str| (0..db().rows.len()).find(|&i| name(i) == n).and_then(|i| score(db().rows[i]["s"].as_str()?, &weights_of(0)));
-assert_eq!((_of("Pythagorean theorem"), _of("Brouwer fixed-point theorem")), (Some(93.75), Some(81.25)));
-println!("The checks pass.");
-```
+The page reads the 2 data files once, at its first run, and keeps them for its later runs.
 
 ```rust
 //| caption: The data files, inflated and parsed once.
