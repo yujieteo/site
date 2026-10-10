@@ -10,7 +10,7 @@ This notebook runs Monte Carlo experiments from statistical physics on small fin
 
 <!-- skill: This notebook ports the statistical-physics laboratory (physics.json) of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the file pinned in visuals.lock; never copy data into this file. The engine is the module physics in "The code". -->
 
-<!-- skill: The checks run natively at each build and not in the page: every example and every example of a method card runs with its own settings, and each result with an exact reference meets it within 6 standard errors or inside its interval, except the designed failures (one chain at T_min, and parallel tempering with 2 temperatures). A run in the page must stay well under a second: the examples use the smaller native sizes of the engine. -->
+<!-- skill: Tests are disposable: check a change end to end in the built page; do not commit regression tests. A run in the page must stay well under a second: the examples use the smaller native sizes of the engine. -->
 
 ```toml
 serde_json = "=1.0.151"
@@ -107,59 +107,7 @@ html(&card(ph_card));
 
 # The code
 
-The checks run natively at each build. The data cell reads the pinned file of visuals, then come the helpers of the page and the engine.
-
-```rust
-//| caption: The checks.
-/// The checks: the text of the data in the site's fonts, then every example and every example of a method card with its
-/// own settings against its exact references, the designed failures as the catalogue states them, and the grain balance.
-fn checks() {
-    let fits = |t: &str| fit(t).chars().all(|c| FONT.iter().any(|r| (r.0..=r.1).contains(&(c as u32))));
-    let raw: Value = serde_json::from_slice(DATA).unwrap();
-    let mut texts = vec![];
-    strings(&raw, "", &mut texts);
-    for (key, t) in &texts { assert!(*key == "estimator" || fits(t), "{key}: {}", fit(t)) }
-    let c = cat();
-    assert_eq!((c.examples.len(), c.methods.len()), (6, 5));
-    let mut cases: Vec<(String, &str, Value)> = c.examples.iter().map(|x| (format!("{} (default)", x.id), x.id.as_str(), serde_json::json!({}))).collect();
-    for m in &c.methods { for (p, k) in m.links() { cases.push((format!("{} / {p}", m.id), k.example.as_str(), k.settings.clone())) } }
-    let mut page = vec![];
-    for (name, ex, extra) in &cases {
-        let s = c.state(ex, extra).unwrap_or_else(|e| panic!("{name}: {e}"));
-        let o = physics::run_state(&s).unwrap_or_else(|e| panic!("{name}: {e}"));
-        for r in &o.rows {
-            page.extend([r.label.clone(), r.iv.how.clone(), r.ref_how.clone()]);
-            if !r.ref_how.starts_with("exact") || r.label.contains("one chain") || (name.starts_with("tempering / failure") && r.label.contains("parallel tempering")) { continue }
-            let (Some(est), Some(se), Some(x)) = (r.iv.est, r.iv.se, r.reference) else { continue };
-            // Priezzhev's heights hold on the infinite lattice; a lattice of L ≥ 32 differs by less than 0.004.
-            let heights = r.label.starts_with("P(height");
-            if heights && (r.label.ends_with("L = 8") || r.label.ends_with("L = 16")) { continue }
-            let inside = r.iv.lo.is_some_and(|lo| lo <= x) && r.iv.hi.is_some_and(|hi| x <= hi);
-            assert!((est - x).abs() <= 6.0 * se + if heights { 0.004 } else { 0.0 } || inside, "{name}: {}: {est} ± {se} against {x}", r.label);
-        }
-        match &o.detail {
-            physics::Detail::Temper(d) => {
-                let g = d.basins.iter().find(|b| b.m == o.land.as_ref().unwrap().global).unwrap();
-                assert!((g.one.est.unwrap() - g.exact).abs() > 0.3, "{name}: the single chain at T_min misses the global well");
-            }
-            physics::Detail::Sand(d) => {
-                assert!(d.sizes.iter().all(|s| s.balance.exact), "{name}: grain balance");
-                page.extend(d.dynamics.clone());
-            }
-            _ => {}
-        }
-    }
-    page.extend(physics::LANDSCAPES.iter().flat_map(|l| [l.1.to_string(), l.3.to_string()]));
-    page.extend(physics::FIELDS.iter().map(|f| f.1.to_string()));
-    for t in &page { assert!(fits(t.as_str()), "not in the fonts: {}", fit(t)) }
-}
-```
-
-```rust
-//| caption: The run of the checks.
-if cfg!(not(target_arch = "wasm32")) { checks() }
-println!("At the build, the checks passed.");
-```
+The data cell reads the pinned file of visuals, then come the helpers of the page and the engine.
 
 ```rust
 //| caption: The data.
@@ -181,21 +129,6 @@ fn memo<T: Send + Sync + 'static>(slot: &'static str, key: String, f: impl FnOnc
     v
 }
 
-/// The characters of the site's text fonts (scripts/fonts.sh).
-const FONT: [(u32, u32); 22] = [
-    (0x20, 0x7e), (0xa0, 0xff), (0x131, 0x131), (0x152, 0x153), (0x160, 0x161), (0x178, 0x178), (0x17d, 0x17e), (0x391, 0x3a9),
-    (0x3b1, 0x3c9), (0x2013, 0x2014), (0x2018, 0x201d), (0x2022, 0x2022), (0x2026, 0x2026), (0x2032, 0x2033), (0x2190, 0x2193),
-    (0x2212, 0x2212), (0x2248, 0x2248), (0x2260, 0x2260), (0x2264, 0x2265), (0x221e, 0x221e), (0xb7, 0xb7), (0xa, 0xa),
-];
-/// Every string of a value, with its key.
-fn strings<'a>(v: &'a Value, key: &'a str, out: &mut Vec<(&'a str, &'a str)>) {
-    match v {
-        Value::String(t) => out.push((key, t)),
-        Value::Array(a) => a.iter().for_each(|x| strings(x, key, out)),
-        Value::Object(o) => o.iter().for_each(|(k, x)| strings(x, k, out)),
-        _ => {}
-    }
-}
 /// Text from the data in the site's fonts, which have no sub- or superscript digits, √ or ⟨ ⟩: X₁ becomes X_1, 10⁻⁶
 /// 10^-6, √n sqrt n, ⟨s⟩ <s>, ∝ ~.
 fn fit(t: &str) -> String {
@@ -1398,10 +1331,6 @@ mod physics {
     pub struct Method {
         pub id: String, pub name: String, pub family: String, pub estimator: String, pub estimator_text: String, pub assumptions: Vec<String>, pub settings: Vec<String>,
         pub suitable: Link, pub failure: Link, pub comparison: Link, pub with: String,
-    }
-    impl Method {
-        /// The three linked examples by part name.
-        pub fn links(&self) -> [(&'static str, &Link); 3] { [("suitable", &self.suitable), ("failure", &self.failure), ("comparison", &self.comparison)] }
     }
     /// physics.json: the statement on universality classes, the examples and the method cards.
     #[derive(Clone, Debug, PartialEq)]

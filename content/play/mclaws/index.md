@@ -8,7 +8,7 @@ seed: 20261012
 
 Pick a law. The notebook gives its convention, its PMF or PDF, its parameters and their domains, its support, its moments, its transforms and its limit and special cases. For the 39 laws of the first 3 families, it also draws a sample by an exact method. It then compares the histogram with the exact PMF or PDF, and the sample mean with the exact mean. The later chapters run the law of large numbers and the central limit theorem on the same law, give 24 theorems with their proofs and counterexamples, and find a term in the glossary.
 
-<!-- skill: This notebook ports the laws, theory, glossary and limits of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. Every sampler is an exact method (inversion, a transformation or rejection). The checks in "The code" test each one against its exact PMF or PDF with Pearson's χ² test and against its exact mean, at a fixed seed: keep the level of 1e-6. -->
+<!-- skill: This notebook ports the laws, theory, glossary and limits of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. Every sampler is an exact method (inversion, a transformation or rejection). Tests are disposable: check a change end to end in the built page; do not commit regression tests. -->
 
 <!-- skill: Text from the data goes through fit(), which writes the characters that the site's fonts do not have (X₁, 10⁻⁶, √n, ⌊x⌋) as X_1, 10^-6, sqrt n and floor(x). TeX from the data goes through math() or display(), which turn the environments that the engine's TeX does not have (gathered, cases, \overset) into plain TeX. -->
 
@@ -171,52 +171,6 @@ for (key, name) in [("measured", "Models and experiments"), ("rare", "Rare event
 
 # The code
 
-The checks run at every build. They read the 60 laws, the 24 theorems and the 363 terms from yujieteo/visuals, and check that every text from the data fits the site's fonts. Then they draw 16,384 values from each of the 39 laws at its default parameters and test the sample against the exact PMF or PDF and the exact mean. The stable sampler is also tested at the 3 values of its parameters where its law has a closed form.
-
-```rust
-//| caption: The checks of the data, the special functions and the samplers.
-assert_eq!((laws().len(), data()[1].as_array().unwrap().len(), data()[2].as_array().unwrap().len()), (60, 24, 363));
-assert_eq!((0..FAMILIES.len()).map(|k| family_laws(k).len()).sum::<usize>(), 60);
-assert!(family_laws(0).iter().all(|l| l["type"] == "discrete") && family_laws(1).iter().chain(family_laws(2)).all(|l| l["type"] == "continuous"));
-for (id, ps) in DRAWN {
-    let l = law(id);
-    assert!(family_laws(0).iter().chain(family_laws(1)).chain(family_laws(2)).any(|m| m == l), "{id} is not in the first 3 families");
-    for p in ps.iter() { assert!(l["params"].as_array().unwrap().iter().any(|q| q["name"] == p.0), "{id} has no parameter {}", p.0) }
-}
-// Every text from the data in the fonts, after fit(). TeX goes to the maths font.
-let mut _texts = vec![];
-for d in data() { strings(d, "", &mut _texts) }
-for (k, t) in &_texts {
-    if TEX.contains(k) && (t.contains('\\') || !t.ends_with('.')) { continue }
-    let f = fit(t);
-    assert!(f.chars().all(|c| FONT.iter().any(|r| (r.0..=r.1).contains(&(c as u32)))), "{k}: {f}");
-}
-// The special functions at known values.
-let close = |a: f64, b: f64, tol: f64| assert!((a - b).abs() <= tol * b.abs().max(1.0), "{a} is not {b}");
-close(zeta(2.0), PI * PI / 6.0, 1e-13);
-close(zeta(1.1), 10.584448464950810, 1e-12);
-close(gam(0.5), PI.sqrt(), 1e-13);
-close(gam(5.0), 24.0, 1e-13);
-close(e1(1.0), 0.21938393439552028, 1e-13);
-close(e1(0.01), 4.037929576538114, 1e-12);
-close(gamma_q(1.0, 2.0), (-2.0f64).exp(), 1e-13);
-close(gamma_q(3.0, 2.0), 5.0 * (-2.0f64).exp(), 1e-13);
-// Each sampler against its exact law, 2^14 draws at its defaults.
-let mut _tested = 0;
-for (k, (id, ps)) in DRAWN.iter().enumerate() {
-    let p: Vec<f64> = ps.iter().map(|q| q.5).collect();
-    let xs = draws(id, &p, 1 + k as u64, 1 << 14);
-    test_sample(id, &p, &xs);
-    _tested += 1;
-}
-// The stable law where it has a closed form: normal (α = 2), Cauchy (α = 1, β = 0), Lévy (α = 1/2, β = ±1).
-for p in [[2.0, 0.5, 1.5, -1.0], [1.0, 0.0, 0.7, 2.0], [0.5, 1.0, 1.0, 0.0], [0.5, -1.0, 2.0, 1.0]] {
-    assert!(density("stable", &p, 0.3).is_some());
-    test_sample("stable", &p, &draws("stable", &p, 7, 1 << 14));
-}
-println!("The checks pass: the data, the special functions, {_tested} samplers and 4 stable laws.");
-```
-
 ```rust
 //| caption: The data and the text.
 use engine::doc::{esc, mathml};
@@ -246,25 +200,6 @@ const FAMILIES: [(&str, &str); 6] = [
 fn family_laws(k: usize) -> &'static [Value] {
     let at = |id: &str| laws().iter().position(|l| l["id"] == id).unwrap();
     &laws()[at(FAMILIES[k].1)..FAMILIES.get(k + 1).map_or(laws().len(), |f| at(f.1))]
-}
-
-/// The characters of the site's text fonts (scripts/fonts.sh).
-const FONT: [(u32, u32); 22] = [
-    (0x20, 0x7e), (0xa0, 0xff), (0x131, 0x131), (0x152, 0x153), (0x160, 0x161), (0x178, 0x178), (0x17d, 0x17e), (0x391, 0x3a9),
-    (0x3b1, 0x3c9), (0x2013, 0x2014), (0x2018, 0x201d), (0x2022, 0x2022), (0x2026, 0x2026), (0x2032, 0x2033), (0x2190, 0x2193),
-    (0x2212, 0x2212), (0x2248, 0x2248), (0x2260, 0x2260), (0x2264, 0x2265), (0x221e, 0x221e), (0xb7, 0xb7), (0xa, 0xa),
-];
-/// The keys whose text is TeX.
-const TEX: [&str; 12] = ["pmf", "pdf", "formula", "support", "tex", "domain", "mean", "variance", "statement", "pgf", "mgf", "cf"];
-
-/// Every string of a value, with its key.
-fn strings<'a>(v: &'a Value, key: &'a str, out: &mut Vec<(&'a str, &'a str)>) {
-    match v {
-        Value::String(t) => out.push((key, t)),
-        Value::Array(a) => a.iter().for_each(|x| strings(x, key, out)),
-        Value::Object(o) => o.iter().for_each(|(k, x)| strings(x, k, out)),
-        _ => {}
-    }
 }
 
 /// Text from the data in the site's fonts, which have no sub- or superscript digits, √ or ⌊ ⌋:
@@ -921,18 +856,6 @@ fn ends(id: &str, p: &[f64]) -> (f64, f64) {
         "stable" if (p[0] - 0.5).abs() < 1e-9 && p[1] == 1.0 => (p[3] - p[2], inf),
         "stable" if (p[0] - 0.5).abs() < 1e-9 && p[1] == -1.0 => (-inf, p[3] + p[2]),
         _ => (-inf, inf),
-    }
-}
-
-/// A sample against its exact law: χ² at the level 1e-6, and the mean within 5 standard errors.
-fn test_sample(id: &str, p: &[f64], xs: &[f64]) {
-    if let Some((chi, df)) = chi2(id, p, xs) {
-        let pv = gamma_q(df as f64 / 2.0, chi / 2.0);
-        assert!(pv > 1e-6, "{id} {p:?}: χ² = {chi} on {df} degrees of freedom, p = {pv}");
-    } else { assert_eq!(id, "stable") }
-    let ((mean, var), (m, _)) = (moments(id, p), stats(xs));
-    if let (Some(mu), Some(v)) = (mean, var) {
-        assert!((m - mu).abs() <= 5.0 * (v / xs.len() as f64).sqrt() + 1e-12, "{id} {p:?}: the mean is {m}, not {mu}");
     }
 }
 

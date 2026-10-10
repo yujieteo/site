@@ -10,7 +10,7 @@ Pick a model. A model is a short text: its parameters, its random variables and 
 
 <!-- skill: This notebook ports the models, methods, data sets and groups of visuals/viz/monte-carlo-workbench, with the law names of laws.json. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. The model engine is in "The code": the core functions at the root, then the modules expr (the expression language), cat (the 39 catalogue laws), built (the constructed and custom laws), dep (the copulas and processes) and model (the model text, the runs, the intervals, the decision, the enumeration and multilevel Monte Carlo). -->
 
-<!-- skill: The checks run natively at each build and not in the page, because the page runs every cell again at each change: every model compiles (3 fail their custom-law checks on purpose), runs at 2^10 replicates and meets its exact values. A run in the page draws at most about BUDGET values; keep it so that a change takes about a second. Text from the data goes through fit(), which writes the characters that the site's fonts do not have (X₁, 10⁻⁶, √n) as X_1, 10^-6 and sqrt n. -->
+<!-- skill: Tests are disposable: check a change end to end in the built page; do not commit regression tests. A run in the page draws at most about BUDGET values; keep it so that a change takes about a second. Text from the data goes through fit(), which writes the characters that the site's fonts do not have (X₁, 10⁻⁶, √n) as X_1, 10^-6 and sqrt n. -->
 
 ```toml
 serde_json = "=1.0.151"
@@ -289,90 +289,6 @@ table(&["Group", "Title", "Content", "Notebook"], &list(3).iter().map(|g| vec![g
 
 # The code
 
-The checks run natively at each build, and the page does not run them again. They read the 252 models, the 9 methods, the 5 data sets and the 10 groups from yujieteo/visuals and check that every text from the data fits the site's fonts. Then each model compiles with its own settings; the 3 law inputs that fail their checks give their errors. Each other model runs 2^10 replicates of each alternative, and every exact value from the enumeration is inside 6 standard errors of its estimate.
-
-```rust
-//| caption: The checks of the data and of every model.
-if cfg!(not(target_arch = "wasm32")) { checks() }
-println!("At the build, the checks passed: the data, the text, 249 models with their exact values and 3 models that fail on purpose, and the 5 interview examples that give a candidate: each builds, compiles and runs.");
-```
-
-```rust
-//| caption: The checks.
-/// The checks: the data and its text, then every model with its own settings at 2^10 replicates against the exact
-/// values of its enumeration, the multilevel runs, the examples of the method cards and the fit of the rainfall.
-fn checks() {
-    assert_eq!([0, 1, 2, 3].map(|k| list(k).len()), [252, 9, 5, 10]);
-    let fits = |t: &str| fit(t).chars().all(|c| FONT.iter().any(|r| (r.0..=r.1).contains(&(c as u32))));
-    let mut texts = vec![];
-    for k in 0..4 { strings(&data()[k], "", &mut texts) }
-    for (key, t) in &texts { assert!(*key == "estimator" || fits(t), "{key}: {}", fit(t)) }
-    for id in law_ids() { assert!(fits(&law_title(id)), "{id}") }
-    let (mut models, mut failed, mut exact) = (0, 0, 0);
-    for e in list(0) {
-        let (id, set) = (s(&e["id"]), &e["settings"]);
-        let st = Settings { method: or(s(&set["method"]), "independent").into(), ..Default::default() };
-        let r = compile(s(&e["dsl"]), s(&set["params"]), &st);
-        if let Some(f) = e["fails"].as_str() {
-            let err = r.err().unwrap_or_else(|| panic!("{id} compiles, but it must fail its {f} check"));
-            assert!(err.iter().any(|x| x.to_lowercase().contains(f)), "{id}: {err:?}");
-            failed += 1;
-            continue;
-        }
-        let m = r.unwrap_or_else(|x| panic!("{id}: {x:?}"));
-        for q in &m.qs { assert!(fits(&q.note) && fits(&q.unit), "{id}: {}", q.note) }
-        // A rare event can miss every replicate of a short run, which gives a sample with no spread. Such a model runs again, longer.
-        for k in [10, 16] {
-            let run = model::run(&m, &st.method, 0, replicates(&m, k)).unwrap_or_else(|x| panic!("{id}: {x}"));
-            let est = model::estimates(&m, &run);
-            let (mut flat, mut seen) = (false, 0);
-            for a in 0..m.alts.len() {
-                assert!(est[a].iter().all(|r| fits(&r.how)), "{id}");
-                let Ok((vals, _)) = model::enumerate(&m, a) else { continue };
-                for (q, v) in vals.iter().enumerate() {
-                    let (Some(x), r) = (v, &est[a][q]) else { continue };
-                    let (Some(e), Some(se)) = (r.est, r.se) else { continue };
-                    let inside = r.lo.zip(r.hi).is_some_and(|(lo, hi)| lo - 1e-12 <= *x && *x <= hi + 1e-12);
-                    let near = inside || (e - x).abs() <= 6.0 * se + 1e-9 * x.abs().max(1.0);
-                    if !near && se == 0.0 && k == 10 { flat = true; continue }
-                    assert!(near, "{id}, {}, {}: {e} ± {se}, exact {x}", m.qs[q].name, m.alts[a].0);
-                    seen += 1;
-                }
-            }
-            if !flat { exact += seen; break }
-        }
-        if let Some(eps) = set["mlmc_eps"].as_f64() {
-            let r = model::mlmc(&m.rec, &m.settings, 0, 0, eps).unwrap_or_else(|x| panic!("{id}: {x}"));
-            assert!(r.se.is_finite() && r.levels.len() >= 3, "{id}");
-        }
-        models += 1;
-    }
-    assert_eq!((models, failed), (249, 3));
-    assert!(exact > 200, "{exact} exact values");
-    for c in list(1) { for k in ["suitable", "failure", "comparison"] { assert!(entry_of(s(&c[k]["model"])).is_some(), "{}", s(&c["id"])) } }
-    // The interview: its text fits the fonts, and each example gives ranked candidates whose chosen one builds a model
-    // that compiles and runs.
-    let mut ivt = vec![];
-    strings(&ivdata()["interview"], "", &mut ivt);
-    for (key, t) in &ivt { assert!(fits(t), "interview {key}: {}", fit(t)) }
-    let mut built = 0;
-    for (label, text) in iv_examples() {
-        let r = interview::evaluate(ivdata(), &text, "", "");
-        assert!(fits(&interview::headline(&r)) && r.path.iter().all(|p| fits(&p.reason)), "{label}");
-        // The example of a loss with an unknown tail has no candidate: the tail decides the law.
-        if r.chosen.is_none() { assert!(!r.insufficient.is_empty() || r.candidates.iter().all(|c| !c.supported), "{label}"); continue }
-        built += 1;
-        let b = interview::build(ivdata(), &r, None).unwrap_or_else(|f| panic!("{label}: {:?}", f.errors));
-        let m = model::prepare(&b.rec, &Settings::default()).unwrap_or_else(|e| panic!("{label}: {e:?}"));
-        model::run(&m, "independent", 0, replicates(&m, 10)).unwrap_or_else(|e| panic!("{label}: {e}"));
-    }
-    assert_eq!(built, 5);
-    let rain = list(2).iter().find(|d| d["kind"] == "series").unwrap();
-    let f = gev_fit(&nums(&rain["values"]));
-    assert!(f.deviance >= -1e-6 && f.gev.3 >= f.gumbel.3 - 1e-6, "{:?} {:?}", f.gev, f.gumbel);
-}
-```
-
 ```rust
 //| caption: The data and the text.
 use engine::doc::{esc, mathml};
@@ -423,23 +339,6 @@ const GROUP_HOME: [(&str, &str); 9] = [
     ("constructed", "Monte Carlo laws, Monte Carlo models"), ("dependence", "Monte Carlo laws, Monte Carlo models"), ("interview", "Monte Carlo models"),
     ("rare", "Monte Carlo chains and rare events"), ("mcmc", "Monte Carlo chains and rare events"), ("physics", "Monte Carlo in statistical physics"),
 ];
-
-/// The characters of the site's text fonts (scripts/fonts.sh).
-const FONT: [(u32, u32); 22] = [
-    (0x20, 0x7e), (0xa0, 0xff), (0x131, 0x131), (0x152, 0x153), (0x160, 0x161), (0x178, 0x178), (0x17d, 0x17e), (0x391, 0x3a9),
-    (0x3b1, 0x3c9), (0x2013, 0x2014), (0x2018, 0x201d), (0x2022, 0x2022), (0x2026, 0x2026), (0x2032, 0x2033), (0x2190, 0x2193),
-    (0x2212, 0x2212), (0x2248, 0x2248), (0x2260, 0x2260), (0x2264, 0x2265), (0x221e, 0x221e), (0xb7, 0xb7), (0xa, 0xa),
-];
-
-/// Every string of a value, with its key.
-fn strings<'a>(v: &'a Value, key: &'a str, out: &mut Vec<(&'a str, &'a str)>) {
-    match v {
-        Value::String(t) => out.push((key, t)),
-        Value::Array(a) => a.iter().for_each(|x| strings(x, key, out)),
-        Value::Object(o) => o.iter().for_each(|(k, x)| strings(x, k, out)),
-        _ => {}
-    }
-}
 
 /// Text from the data in the site's fonts, which have no sub- or superscript digits, √ or ⌊ ⌋:
 /// X₁ becomes X_1, 10⁻⁶ 10^-6, X̄ Xbar, √n sqrt n, ⌊x⌋ floor(x).

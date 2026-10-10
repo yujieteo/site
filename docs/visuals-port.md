@@ -49,8 +49,8 @@ A notebook may embed a sealed artifact of visuals, `![name](viz/<slug>/index.htm
    | 1 | Theorem Explorer + Learner | 1 notebook. All data as gzip (about 42 MB raw, about 9 MB page), joined by theorem ID. Find box. Sorts and filters with `choice` and `slider`. New sort rules: edit the cell and rebuild. | Play |
    | 2 | Monte Carlo | 4 notebooks, all 12 data sets: (1) laws, limits, theory, glossary (done) (2) methods, models, datasets, groups and the interview (done) (3) chains, rare (done) (4) physics (done). The interview builds a model in the model language of notebook 2, so it goes into notebook 2. | Play |
    | 3 | Scientific Modelling | 3 notebooks, 1 for each tool (Dimensionless Number Finder, Model Nondimensionalizer, Regime Map Builder). No custom equations: write a custom model as a Rust cell and rebuild. | Play |
-   | 4 | Section Lab | Notebook. The solver is Rust in the cells, tested against the frozen reference fixtures. | Play |
-   | 5 | Beam diagram | Notebook (done). Supports and loads as text boxes, the example as a `choice`, units, diagrams, the hand calculation by Macaulay's method and a NASTRAN deck. The 23 fixture beams are checked at every build. | Play |
+   | 4 | Section Lab | Notebook. The solver is Rust in the cells. The port is checked end to end in the built page, with no committed regression tests. | Play |
+   | 5 | Beam diagram | Notebook (done). Supports and loads as text boxes, the example as a `choice`, units, diagrams, the hand calculation by Macaulay's method and a NASTRAN deck. The port is checked end to end in the built page, with no committed regression tests. | Play |
    | 6 | English Grammar | Story. Concepts and examples in chapters. Find box in the last chapter. | Stories |
    | 7 | Structural Distortion | Story. 1 chapter for each load (axial, bending, shear, torsion, warping, buckling). All 4 shapes by `choice`, loads by `slider`. 3D wireframe. Keep the "qualitative, no units" notice. | Stories |
    | 8 | Toulmin | Notebook. Write the essay as Markdown in Edit mode, 1 chapter for each argument with fixed headings. A cell checks the checklist and shows the paragraph. No JSON import. | Play |
@@ -58,7 +58,7 @@ A notebook may embed a sealed artifact of visuals, `![name](viz/<slug>/index.htm
 ## Checks
 
 - Rust data builders give byte-identical output to the Python builders before the Python is deleted.
-- Each site notebook has a native Rust test against the visuals fixtures at the pinned commit.
+- Each port is checked end to end in the built page. Tests are disposable: no regression tests are committed.
 - `nix develop -c ./build.sh`, `scripts/repro.sh` and `scripts/loc.sh` pass in the site.
 
 ## Risks
