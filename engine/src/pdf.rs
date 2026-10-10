@@ -86,6 +86,9 @@ fn strip(h: &str) -> String {
     s.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", "\"").replace("&amp;", "&")
 }
 
+/// Text that `doc::spans` keeps literal: a backslash before each character that starts a marker.
+fn lit(s: &str) -> String { s.chars().map(|c| if "\\`$*[".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
+
 /// The writer: page geometry (width, height, margin; column left and width), the cursor's y
 /// (from the top), pages as (content, annotations), and the shared resources.
 struct Pdf<'a> {
@@ -373,7 +376,7 @@ impl Pdf<'_> {
                     self.code(&rows.filter(|r| !r.is_empty()).collect::<Vec<_>>().join("\n"), false)
                 }
                 (Some(_), _) => fig |= self.figure(w, w * 0.625, &mut |p, x, y| p.plot(a, x, y, w)),
-                (None, t) => if !t.trim().is_empty() { self.para(&t, St(0, 10.0, self.pal[3], 0), 0.0) },
+                (None, t) => if !t.trim().is_empty() { self.para(&lit(&t), St(0, 10.0, self.pal[3], 0), 0.0) },
             }
             rest = b;
         }
