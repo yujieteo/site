@@ -44,7 +44,7 @@ fn index(entries: &[(String, String, String)]) -> String {
 
 fn render(p: &Page, wasm: &str, index: &str) -> String {
     let root = "../".repeat(p.path.matches('/').count());
-    let footer = r#"<footer class="top"><span data-engine-status role="status"></span><button type="button" data-motion aria-pressed="true">Pause</button></footer>"#;
+    let footer = r#"<footer class="top"><span data-engine-status role="status"></span><button type="button" data-motion hidden>Pause</button></footer>"#;
     let script = match () {
         _ if !p.script.is_empty() => p.script.clone(),
         _ if p.body.contains("<canvas") => format!("{footer}<script id=\"wasm\" type=\"application/octet-stream\">{wasm}</script>\n<script>{HOST}</script>"),
