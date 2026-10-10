@@ -18,7 +18,7 @@ try {
 <button type="button" class="mode" aria-label="Theme" title="Theme"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button>
 </nav></header>
 <main>{{body}}</main>
-<dialog class="find" aria-label="Search"><form method="dialog"><input type="search" placeholder="Search notes and stories" aria-label="Search" autocomplete="off" spellcheck="false"><ol></ol></form></dialog>
+<dialog class="find" aria-label="Search"><form method="dialog"><input type="search" placeholder="Search notes and stories" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol></form></dialog>
 <dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="fams">{{themes}}</div>
 <div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div></form></dialog>
 <script id="index" type="application/json">{{index}}</script>
@@ -40,7 +40,29 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
       return li;
     }));
   };
-  const open = () => { if (!d.open) d.showModal(); q.select(); show(); };
+  // The dot (drawn by the builder from engine::scene::face) wakes as the dialog opens. Its eyes follow the caret,
+  // a focused hit or the pointer; it smiles at hits, frets at none, glows at a pick and sleeps when the dialog closes.
+  const dot = $(".dot", d), calm = matchMedia("(prefers-reduced-motion: reduce)");
+  let ctx;
+  const be = (s) => { $(".on", dot).classList.remove("on"); $(`[data-s=${s}]`, dot).classList.add("on"); };
+  const react = () => be(!q.value.trim() ? "look" : ol.children.length ? "hit" : "miss");
+  const look = (x, y) => {
+    const b = dot.getBoundingClientRect(), dx = x - b.x - b.width / 2, dy = y - b.y - b.height / 2, k = Math.max(Math.hypot(dx, dy), 3 * b.width);
+    dot.style.setProperty("--gx", dx / k); dot.style.setProperty("--gy", dy / k);
+  };
+  const caret = () => {
+    const s = getComputedStyle(q), b = q.getBoundingClientRect();
+    (ctx ||= document.createElement("canvas").getContext("2d")).font = `${s.fontSize} ${s.fontFamily}`;
+    const w = ctx.measureText(q.value.slice(0, q.selectionEnd ?? Infinity)).width - q.scrollLeft;
+    look(b.x + parseFloat(s.paddingLeft) + Math.min(Math.max(w, 0), q.clientWidth), b.y + b.height / 2);
+  };
+  const wake = () => d.open && $("[data-s=sleep].on", dot) && (react(), caret());
+  const open = () => { if (!d.open) d.showModal(); q.select(); show(); calm.matches ? wake() : setTimeout(wake, 180); };
+  d.addEventListener("close", () => be("sleep"));
+  d.addEventListener("pointermove", (e) => look(e.clientX, e.clientY));
+  ol.addEventListener("focusin", (e) => { const b = e.target.getBoundingClientRect(); look(b.x + b.width / 3, b.y + b.height / 2); });
+  ol.addEventListener("click", (e) => e.target.closest("a") && be("pick"));
+  q.addEventListener("input", () => { react(); caret(); });
   icon.addEventListener("click", open);
   addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() !== "k" || !(e.metaKey || e.ctrlKey) || e.defaultPrevented) return;

@@ -255,38 +255,46 @@ pub fn list(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f3
         o.push(Op::Fill(disc(l[0], l[1], l[2]), light, (l[3] * 2.0).ceil() / 2.0, true));
     }
     o.push(Op::Clip(None));
-    // Characters, unclipped: a body and two glyph eyes that look somewhere.
-    for &[x, y, r, k, gx, gy, _, g, sq, pulse] in &fr.faces {
-        if pulse > 0.05 {
-            o.push(Op::Fill(disc(x, y, r * (1.65 - 0.5 * pulse)), hue(k as usize), 0.3, false));
-        }
-        let (sx, sy) = (r * (1.0 + sq), r * (1.0 - sq));
-        let body = Sh::Ell(x, y, sx, sy);
-        o.extend([Op::Fill(body, hue(k as usize), 1.0, false), Op::Clip(Some(body))]);
-        dapples(&mut o, 0.35);
-        let h = 0.26;
-        let at = |u: f32, v: f32| (x + u * sx, y + v * sy);
-        for e in [-1.0f32, 1.0] {
-            let (cx, cy) = (e * 0.48 + gx * 0.22, -0.1 + gy * 0.18);
-            let mut seg = |a: (f32, f32), b: (f32, f32)| {
-                let (a, b) = (at(cx + a.0, cy + a.1), at(cx + b.0, cy + b.1));
-                o.push(Op::Fill(Sh::Seg(a.0, a.1, b.0, b.1, 0.12 * r), INK, 1.0, false));
-            };
-            match g as u8 {
-                1 => seg((-h, 0.0), (h, 0.0)),
-                2 => (seg((-h, 0.6 * h), (0.0, -0.6 * h)), seg((0.0, -0.6 * h), (h, 0.6 * h))).1,
-                3 => (seg((e * 0.7 * h, -h), (-e * 0.7 * h, 0.0)), seg((-e * 0.7 * h, 0.0), (e * 0.7 * h, h))).1,
-                4 => (seg((-h, 0.0), (h, 0.0)), seg((0.0, -h), (0.0, h))).1,
-                5 => {
-                    let (c, rr) = (at(cx, cy), 0.75 * h * r);
-                    o.push(Op::Fill(Sh::Ring(c.0, c.1, rr, 0.12 * r), INK, 1.0, false));
-                }
-                _ => [0.5f32, 1.55, 2.6].into_iter().for_each(|a| seg((-h * a.cos(), -h * a.sin()), (h * a.cos(), h * a.sin()))),
-            }
-        }
-        o.push(Op::Clip(None));
-    }
+    // Characters, unclipped, each with the dappled light on its body.
+    fr.faces.iter().for_each(|&f| face(&mut o, f, hue(f[3] as usize), |o| dapples(o, 0.35)));
     o
+}
+
+/// How far a character's eyes move towards its gaze, in body radii (across, down).
+pub const GAZE: (f32, f32) = (0.22, 0.18);
+
+/// One character (a face of `Out`) in colour `hue`: its pulse, its body, then on the body (clipped to
+/// it) the light that `lit` draws and two glyph eyes that look somewhere.
+pub fn face(o: &mut Vec<Op>, [x, y, r, _, gx, gy, _, g, sq, pulse]: [f32; 10], hue: u32, lit: impl Fn(&mut Vec<Op>)) {
+    if pulse > 0.05 {
+        let r = r * (1.65 - 0.5 * pulse);
+        o.push(Op::Fill(Sh::Ell(x, y, r, r), hue, 0.3, false));
+    }
+    let (sx, sy) = (r * (1.0 + sq), r * (1.0 - sq));
+    let body = Sh::Ell(x, y, sx, sy);
+    o.extend([Op::Fill(body, hue, 1.0, false), Op::Clip(Some(body))]);
+    lit(o);
+    let h = 0.26;
+    let at = |u: f32, v: f32| (x + u * sx, y + v * sy);
+    for e in [-1.0f32, 1.0] {
+        let (cx, cy) = (e * 0.48 + gx * GAZE.0, -0.1 + gy * GAZE.1);
+        let mut seg = |a: (f32, f32), b: (f32, f32)| {
+            let (a, b) = (at(cx + a.0, cy + a.1), at(cx + b.0, cy + b.1));
+            o.push(Op::Fill(Sh::Seg(a.0, a.1, b.0, b.1, 0.12 * r), INK, 1.0, false));
+        };
+        match g as u8 {
+            1 => seg((-h, 0.0), (h, 0.0)),
+            2 => (seg((-h, 0.6 * h), (0.0, -0.6 * h)), seg((0.0, -0.6 * h), (h, 0.6 * h))).1,
+            3 => (seg((e * 0.7 * h, -h), (-e * 0.7 * h, 0.0)), seg((-e * 0.7 * h, 0.0), (e * 0.7 * h, h))).1,
+            4 => (seg((-h, 0.0), (h, 0.0)), seg((0.0, -h), (0.0, h))).1,
+            5 => {
+                let (c, rr) = (at(cx, cy), 0.75 * h * r);
+                o.push(Op::Fill(Sh::Ring(c.0, c.1, rr, 0.12 * r), INK, 1.0, false));
+            }
+            _ => [0.5f32, 1.55, 2.6].into_iter().for_each(|a| seg((-h * a.cos(), -h * a.sin()), (h * a.cos(), h * a.sin()))),
+        }
+    }
+    o.push(Op::Clip(None));
 }
 
 #[cfg(test)]
