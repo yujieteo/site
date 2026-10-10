@@ -156,6 +156,12 @@ fn checks() {
 ```
 
 ```rust
+//| caption: The run of the checks.
+if cfg!(not(target_arch = "wasm32")) { checks() }
+println!("At the build, the checks passed.");
+```
+
+```rust
 //| caption: The data.
 use engine::doc::{esc, mathml};
 use serde_json::Value;
@@ -191,7 +197,7 @@ fn strings<'a>(v: &'a Value, key: &'a str, out: &mut Vec<(&'a str, &'a str)>) {
     }
 }
 /// Text from the data in the site's fonts, which have no sub- or superscript digits, √ or ⟨ ⟩: X₁ becomes X_1, 10⁻⁶
-/// 10^-6, √n sqrt n, ⟨s⟩ <s>.
+/// 10^-6, √n sqrt n, ⟨s⟩ <s>, ∝ ~.
 fn fit(t: &str) -> String {
     const SUB: &str = "₀₁₂₃₄₅₆₇₈₉";
     const SUP: &str = "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ";
@@ -215,6 +221,7 @@ fn fit(t: &str) -> String {
             '⟨' => "<",
             '⟩' => ">",
             '∑' => "sum ",
+            '∝' => "~",
             c => { out.push(c); continue }
         };
         out += rep;
