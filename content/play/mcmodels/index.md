@@ -177,6 +177,82 @@ if let (Ok(m), true) = (&compiled, sweep > 0) {
 }
 ```
 
+## A guided interview
+
+When you do not know which law to use, the interview asks about the quantity: what one value measures, which mechanism makes it, its tail, its dependence and the data that you have. Each answer can make more questions relevant, and the notebook asks them in order. Rules go from the answers to the candidate laws and model components. A rule supports or excludes candidates with a weight, records an assumption that the answers do not settle, or stops the interview with "insufficient evidence". Each rule gives its reason and its basis: a theorem or a modelling assumption.
+
+Start from one of the 6 examples or from no answers, then change the answers. "I do not know" is a valid answer: the interview keeps more candidates, and it records the assumption. The numbers (the mean, the standard deviation, an upper limit and the threshold of the decision) give the parameters of the model by moment matching.
+
+```rust
+//| caption: The answers.
+let _exs = iv_examples();
+let _start = choice("Start the interview from", &std::iter::once("No answers".to_string()).chain(_exs.iter().map(|x| x.0.clone())).collect::<Vec<_>>(), 1);
+let (iv_text, iv_notes) = answer_controls(if _start == 0 { "" } else { &_exs[_start - 1].1 });
+```
+
+To test a rule, switch it off: give its id from the rule path. To build a candidate that is not first, pick it.
+
+```rust
+//| caption: The rules switched off and the candidate to build.
+let iv_off = field("Rules switched off: their ids with commas, such as k1, v2", "").split(',').map(str::trim).filter(|x| !x.is_empty()).collect::<Vec<_>>().join(",");
+let _ranked = interview::evaluate(ivdata(), &iv_text, &iv_off, "");
+let _at = choice("Candidate to build", &std::iter::once("The candidate that the rules rank first".to_string()).chain(_ranked.candidates.iter().map(|c| fit(&c.name))).collect::<Vec<_>>(), 0);
+let iv_eval = if _at == 0 { _ranked } else { interview::evaluate(ivdata(), &iv_text, &iv_off, &_ranked.candidates[_at - 1].id) };
+```
+
+```rust
+//| caption: The status, the answers and the assumptions.
+interview_status(&iv_eval, &iv_notes);
+```
+
+The rule path lists the rules that fire for these answers, in the order of the rule graph. A rule that you switched off stays in the list, but it has no effect.
+
+```rust
+//| caption: The rule path.
+rule_path(&iv_eval);
+```
+
+The score of a candidate is the sum of the weights of the rules that support it. A score of 2 or more is strong support. The rule graph cannot separate candidates with the same score: the rejection tests on the data can.
+
+```rust
+//| caption: The candidates.
+candidates(&iv_eval);
+```
+
+```rust
+//| caption: The card of the chosen candidate.
+match iv_eval.candidates.iter().chain(&iv_eval.components).find(|c| iv_eval.chosen.as_ref() == Some(&c.id)) {
+    Some(c) => html(&iv_card(c)),
+    None => println!("The interview chooses no candidate."),
+}
+```
+
+The interview writes the chosen candidate as a model text in the language of the first chapter. Where the answers give no numbers, the model uses illustrative values and says so. The notebook then compiles the text and runs it with independent sampling.
+
+```rust
+//| caption: The model of the chosen candidate.
+let iv_built = iv_eval.chosen.as_ref().map(|_| interview::build(ivdata(), &iv_eval, None));
+match &iv_built {
+    None => println!("No model: the interview has no candidate for these answers."),
+    Some(Err(f)) => html(&format!("<p>The candidate gives no model:</p>{}{}", bullets(&f.errors), f.text.as_ref().map_or(String::new(), |t| format!("<pre>{}</pre>", esc(t))))),
+    Some(Ok(b)) => html(&built_html(b)),
+}
+```
+
+```rust
+//| caption: Run the model of the interview.
+if let Some(Ok(b)) = &iv_built {
+    let _st = Settings::default();
+    match model::prepare(&b.rec, &_st) {
+        Err(e) => html(&format!("<p>The model does not compile:</p>{}", bullets(&e))),
+        Ok(m) => match model::run(&m, &_st.method, 0, replicates(&m, 12)) {
+            Err(e) => println!("The run stopped. {}", fit(&e)),
+            Ok(st) => report(&m, &st, &(0..m.alts.len()).map(|a| model::enumerate(&m, a)).collect::<Vec<_>>(), 12),
+        },
+    }
+}
+```
+
 ## Methods
 
 Each card gives the estimator of a method, its assumptions and its settings, then a model where the method suits, a model where it fails, and a comparison with another method. The notebook runs the 3 examples with 2^12 replicates and seed 2026, so you can read the claims of the card in the numbers. The variance ratio of a comparison is the variance of the other method over the variance of this method, for the same number of model evaluations: a ratio above 1 is a gain.
@@ -204,7 +280,7 @@ dataset(set);
 
 ## Groups
 
-The workbench grew in 10 groups. This series of 4 notebooks holds them: the laws and the theory, these models and methods, the chains and rare events, and the statistical physics and the guided interview.
+The workbench grew in 10 groups. This series of 4 notebooks holds them: the laws and the theory, these models and methods with the guided interview, the chains and rare events, and statistical physics.
 
 ```rust
 //| caption: The groups of the workbench and the notebook of each.
@@ -218,7 +294,7 @@ The checks run natively at each build, and the page does not run them again. The
 ```rust
 //| caption: The checks of the data and of every model.
 if cfg!(not(target_arch = "wasm32")) { checks() }
-println!("At the build, the checks passed: the data, the text, 249 models with their exact values and 3 models that fail on purpose.");
+println!("At the build, the checks passed: the data, the text, 249 models with their exact values and 3 models that fail on purpose, and the 5 interview examples that give a candidate: each builds, compiles and runs.");
 ```
 
 ```rust
@@ -274,6 +350,23 @@ fn checks() {
     assert_eq!((models, failed), (249, 3));
     assert!(exact > 200, "{exact} exact values");
     for c in list(1) { for k in ["suitable", "failure", "comparison"] { assert!(entry_of(s(&c[k]["model"])).is_some(), "{}", s(&c["id"])) } }
+    // The interview: its text fits the fonts, and each example gives ranked candidates whose chosen one builds a model
+    // that compiles and runs.
+    let mut ivt = vec![];
+    strings(&ivdata()["interview"], "", &mut ivt);
+    for (key, t) in &ivt { assert!(fits(t), "interview {key}: {}", fit(t)) }
+    let mut built = 0;
+    for (label, text) in iv_examples() {
+        let r = interview::evaluate(ivdata(), &text, "", "");
+        assert!(fits(&interview::headline(&r)) && r.path.iter().all(|p| fits(&p.reason)), "{label}");
+        // The example of a loss with an unknown tail has no candidate: the tail decides the law.
+        if r.chosen.is_none() { assert!(!r.insufficient.is_empty() || r.candidates.iter().all(|c| !c.supported), "{label}"); continue }
+        built += 1;
+        let b = interview::build(ivdata(), &r, None).unwrap_or_else(|f| panic!("{label}: {:?}", f.errors));
+        let m = model::prepare(&b.rec, &Settings::default()).unwrap_or_else(|e| panic!("{label}: {e:?}"));
+        model::run(&m, "independent", 0, replicates(&m, 10)).unwrap_or_else(|e| panic!("{label}: {e}"));
+    }
+    assert_eq!(built, 5);
     let rain = list(2).iter().find(|d| d["kind"] == "series").unwrap();
     let f = gev_fit(&nums(&rain["values"]));
     assert!(f.deviance >= -1e-6 && f.gev.3 >= f.gumbel.3 - 1e-6, "{:?} {:?}", f.gev, f.gumbel);
@@ -327,8 +420,8 @@ const PLOTS: [(&str, &str); 5] = [("pmf", "PMF or PDF"), ("cdf", "CDF"), ("survi
 /// The notebook of this series that holds each group of the workbench.
 const GROUP_HOME: [(&str, &str); 9] = [
     ("discrete", "Monte Carlo laws, Monte Carlo models"), ("continuous", "Monte Carlo laws, Monte Carlo models"), ("tails", "Monte Carlo laws, Monte Carlo models"),
-    ("constructed", "Monte Carlo laws, Monte Carlo models"), ("dependence", "Monte Carlo laws, Monte Carlo models"), ("interview", "Monte Carlo physics"),
-    ("rare", "Monte Carlo chains and rare events"), ("mcmc", "Monte Carlo chains and rare events"), ("physics", "Monte Carlo physics"),
+    ("constructed", "Monte Carlo laws, Monte Carlo models"), ("dependence", "Monte Carlo laws, Monte Carlo models"), ("interview", "Monte Carlo models"),
+    ("rare", "Monte Carlo chains and rare events"), ("mcmc", "Monte Carlo chains and rare events"), ("physics", "Monte Carlo in statistical physics"),
 ];
 
 /// The characters of the site's text fonts (scripts/fonts.sh).
@@ -825,6 +918,102 @@ fn series(years: &[f64], x: &[f64]) {
     let (g, h): (Vec<f64>, Vec<f64>) = u.iter().map(|u| (gev_quantile(*u, p(f.gev)), gev_quantile(*u, p(f.gumbel)))).unzip();
     Plot::new().dots(&g, &sorted).dots(&h, &sorted).line(&[sorted[0], sorted[sorted.len() - 1]], &[sorted[0], sorted[sorted.len() - 1]])
         .labels("quantile of the fitted law at (i − 0.44)/(n + 0.12) (dots: GEV, then Gumbel)", "observed annual maximum").show();
+}
+```
+
+```rust
+//| caption: The guided interview.
+static IV: OnceLock<Value> = OnceLock::new();
+/// The interview (interview.json) with the groups of the workbench, as the module interview reads them.
+fn ivdata() -> &'static Value {
+    IV.get_or_init(|| {
+        let iv: Value = serde_json::from_slice(data!("viz/monte-carlo-workbench/data/interview.json")).unwrap();
+        serde_json::json!({ "interview": iv, "groups": data()[3].clone() })
+    })
+}
+/// The examples of the interview: label and answer text.
+fn iv_examples() -> Vec<(String, String)> { ivdata()["interview"]["examples"].as_array().unwrap().iter().map(|x| (fit(s(&x["label"])), s(&x["iv"]).to_string())).collect() }
+
+/// The controls of the interview: a choice for each question that the answers make relevant, in data order, then a
+/// text box for each number that they ask. Each starts at the value of the start text. Returns the answer text and the
+/// notices of values that the interview cannot use.
+fn answer_controls(start: &str) -> (String, Vec<String>) {
+    let d = ivdata();
+    let own = interview::parse(d, start);
+    let (mut iv, mut notes) = (interview::format(d, &own.answers, &own.evidence), own.notices.clone());
+    // An option label that two questions share gets the topic of its question, so that a choice never keeps it for another question.
+    let all: Vec<&str> = d["interview"]["questions"].as_array().unwrap().iter().flat_map(|q| q["options"].as_array().unwrap().iter().map(|o| s(&o["label"]))).collect();
+    for k in 0.. {
+        let (qs, _) = interview::form(d, &iv);
+        let Some(q) = qs.get(k) else { break };
+        let name = |o: &(String, String)| if all.iter().filter(|x| **x == o.1).count() > 1 { format!("{} ({})", fit(&o.1), q.short) } else { fit(&o.1) };
+        let mine = own.answers.get(&q.id);
+        let set = match mine.map(String::as_str) { None => "no answer".into(), Some("?") => "I do not know".into(), Some(v) => q.options.iter().find(|o| o.0 == v).map_or(v.to_string(), &name) };
+        let opts: Vec<String> = [format!("As the start sets: {set}"), format!("No answer on the {}", q.short), format!("I do not know the {}", q.short)].into_iter().chain(q.options.iter().map(&name)).collect();
+        let v = match choice(&fit(&q.text), &opts, 0) { 0 => mine.cloned().unwrap_or_default(), 1 => String::new(), 2 => "?".into(), i => q.options[i - 3].0.clone() };
+        match interview::set(d, &iv, &q.id, &v) { Ok(t) => iv = t, Err(e) => notes.push(e) }
+    }
+    for f in interview::form(d, &iv).1 {
+        let mine = own.evidence.get(&f.id);
+        let t = field(&format!("{} (the start sets {})", fit(&f.label), mine.map_or("no value".into(), |v| v.to_string())), &mine.map_or(String::new(), |v| v.to_string()));
+        match interview::set(d, &iv, &f.id, t.trim()) { Ok(x) => iv = x, Err(e) => notes.push(e) }
+    }
+    (iv, notes)
+}
+
+/// The status line, the reasons for insufficient evidence, the notices, the answer text and the unresolved assumptions.
+fn interview_status(r: &interview::Eval, notes: &[String]) {
+    let mut h = para(&interview::headline(r));
+    let why: Vec<String> = r.insufficient.iter().map(|n| format!("{} (rule {})", n.text, n.from)).collect();
+    if !why.is_empty() { h += &bullets(&why) }
+    let all: Vec<&String> = notes.iter().chain(&r.notices).collect();
+    if !all.is_empty() { h += &format!("<p>Notices:</p>{}", bullets(&all)) }
+    h += &format!("<p>The answer text: <code>{}</code>. The laws of the pool: {} ({} laws).</p>", esc(or(&r.canonical, "no answers")), esc(&fit(&r.pool.label)), r.pool.size);
+    if !r.assumptions.is_empty() { h += &format!("<p>Assumptions that the answers do not settle:</p>{}", bullets(&r.assumptions.iter().map(|n| format!("{} (rule {})", n.text, n.from)).collect::<Vec<_>>())) }
+    html(&h);
+}
+
+/// The rules that fire for the answers: the answers that make each fire, its effect, its targets, its basis and its reason.
+fn rule_path(r: &interview::Eval) {
+    if r.path.is_empty() { println!("No rule fires for these answers."); return }
+    let rows: Vec<Vec<String>> = r.path.iter().map(|p| vec![
+        format!("{}{}", p.id, if p.off { " (switched off)" } else { "" }),
+        p.when.iter().map(|c| format!("{}: {}", c.short, fit(&c.label))).collect::<Vec<_>>().join(" and "),
+        format!("{}{}", p.effect, p.weight.map_or(String::new(), |w| format!(" {w}"))),
+        p.targets.iter().map(|t| fit(&t.name)).collect::<Vec<_>>().join(", "),
+        format!("{}: {}", p.basis, fit(&p.source)),
+        fit(&p.reason),
+    ]).collect();
+    table(&["Rule", "When", "Effect", "Candidates", "Basis", "Reason"], &rows);
+}
+
+/// The ranked candidates with their scores and the rules behind each score.
+fn candidates(r: &interview::Eval) {
+    let rows: Vec<Vec<String>> = r.candidates.iter().filter(|c| c.score != 0.0 || c.excluded || c.rank <= 5).map(|c| vec![
+        c.rank.to_string(), fit(&c.name), fmt(c.score),
+        (if c.excluded { "excluded" } else if c.score >= interview::STRONG { "strong" } else if c.supported { "supported" } else { "–" }).into(),
+        c.reasons.iter().map(|x| format!("{} {}{}", x.rule, if x.delta > 0.0 { "+" } else { "" }, fmt(x.delta))).collect::<Vec<_>>().join(", "),
+    ]).collect();
+    table(&["Rank", "Candidate", "Score", "Support", "Rules"], &rows);
+    if !r.components.is_empty() { println!("Model components that the answers ask for: {}.", r.components.iter().map(|c| fit(&c.name)).collect::<Vec<_>>().join(", ")) }
+}
+
+/// A candidate's card: its reasons, its competing explanations, the tests that can reject it and its sampling methods.
+fn iv_card(c: &interview::Card) -> String {
+    let reasons: Vec<String> = c.reasons.iter().map(|x| format!("Rule {} ({}{}, {}: {}): {}", x.rule, if x.delta > 0.0 { "+" } else { "" }, fmt(x.delta), x.basis, x.source, x.text)).collect();
+    let comp: Vec<String> = c.competing.iter().map(|x| format!("{}: {}{}", x.name, x.text, x.score.map_or(String::new(), |v| format!(" (score {})", fmt(v))))).collect();
+    format!("<p><strong>{}</strong>, rank {} with score {}.</p><h3>Reasons</h3>{}<h3>Competing explanations</h3>{}<h3>Tests that can reject it</h3>{}{}",
+        esc(&fit(&c.name)), c.rank, fmt(c.score), bullets(&reasons), bullets(&comp), bullets(&c.tests), c.methods.as_ref().map_or(String::new(), |m| para(m)))
+}
+
+/// The model text of a candidate, its parameters, its mean and variance, and the sampling methods of its law.
+fn built_html(b: &interview::Built) -> String {
+    let v = |x: &V| match x { V::N(n) => fmt(*n), V::L(l) => format!("[{}]", l.iter().map(|y| fmt(*y)).collect::<Vec<_>>().join(", ")) };
+    let mut h = format!("<pre>{}</pre>", esc(&b.text));
+    if !b.illustrative.is_empty() { h += &para(&format!("Illustrative values, because the answers give no numbers for them: {}.", b.illustrative.join(", "))) }
+    h += &para(&format!("Parameters: {}. Mean {}, variance {}{}.", b.params.iter().map(|p| format!("{} = {}", p.0, v(&p.1))).collect::<Vec<_>>().join(", "), opt(b.mean), opt(b.variance),
+        b.component.map_or(String::new(), |k| format!(" (of entry {k})"))));
+    h + &bullets(&b.methods.iter().map(|m| format!("{}: {}", m.name, m.unavailable.as_deref().unwrap_or("available"))).collect::<Vec<_>>())
 }
 ```
 
@@ -4288,6 +4477,508 @@ mod model {
         let work: f64 = st.iter().enumerate().map(|(l, x)| x.0 * cost(l)).sum();
         let plain = (v > 0.0).then(|| st[big].4 / v * n0 * 2f64.powi(big as i32));
         Ok(Mlmc { levels: st.iter().enumerate().map(|(l, x)| (n0 * 2f64.powi(l as i32), x.0, x.1, x.2, cost(l))).collect(), est, se: v.sqrt(), bias, work, plain, alpha, beta, message })
+    }
+}
+```
+
+```rust
+//| caption: The guided interview: the rule graph, the evaluation and the model text of a candidate.
+mod interview {
+    //! The guided interview: the rule graph of the catalogue (data/interview.json) asks the questions that the earlier
+    //! answers make relevant. Its candidates cover the whole catalogue, and its rules go from answers to candidates. A rule
+    //! supports or excludes candidates with a weight, records an unresolved assumption, or returns "insufficient
+    //! evidence". Each rule states its reason and its basis: a theorem or a modelling assumption. `evaluate` reads the
+    //! answers, the rules that the reader switched off and the candidate that the reader picked. It returns the evidence,
+    //! the status, the ranked candidates with their reasons, the competing explanations, the rejection tests and the
+    //! sampling methods, the unresolved assumptions and the rule path. `build` writes a candidate as model text and reads
+    //! it with `model::parse`, so the interview makes the same model record as the editor.
+    use super::*;
+    use crate::model::{self, Item, Law, Rec};
+    use crate::{built, cat, expr};
+    use serde_json::{Map, Value};
+    use std::collections::BTreeMap;
+
+    /// The least score of a candidate with strong support.
+    pub const STRONG: f64 = 2.0;
+    /// The evidence names in the order that the model text declares them, with their labels.
+    const EVIDENCE: [(&str, &str); 4] = [("m", "mean"), ("sd", "standard deviation"), ("lim", "upper limit n"), ("c", "threshold of the decision")];
+    /// The questions on the mechanism, which the problem text of a model names.
+    const MECHANISMS: [&str; 6] = ["g", "gt", "gs", "gp", "ge", "gm"];
+    /// Names that keep their capital letter inside a sentence: a name that starts with the name of a person.
+    const PERSONS: [&str; 21] = ["Bernoulli", "Poisson", "Zipf", "Erlang", "Dirichlet", "Student", "Laplace", "Weibull", "Gompertz", "Pareto", "Burr", "Fréchet",
+        "Cauchy", "Lévy", "Gumbel", "Gaussian", "Clayton", "Frank", "Ornstein", "Hawkes", "Brownian"];
+
+    /// The answers to the questions (an option id or "?"), the numbers of the evidence, and the notices on the parts of
+    /// the answer text that the interview cannot read.
+    #[derive(Clone, Debug, PartialEq, Default)]
+    pub struct Answers { pub answers: BTreeMap<String, String>, pub evidence: BTreeMap<String, f64>, pub notices: Vec<String> }
+
+    /// The status of an evaluation: ranked candidates, or insufficient evidence.
+    #[derive(Clone, Copy, Debug, PartialEq)]
+    pub enum Status { Candidates, Insufficient }
+
+    /// The result of the interview for one answer text, as plain data.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Eval {
+        pub status: Status,
+        /// The rules that give insufficient evidence (from: the rule id), with their reasons.
+        pub insufficient: Vec<Note>,
+        pub notices: Vec<String>,
+        /// The questions with no answer (from: "question:ID"), then the assumptions that the rules record (from: the rule id).
+        pub assumptions: Vec<Note>,
+        /// The rules that fired, in order, with the rules that the reader switched off.
+        pub path: Vec<Step>,
+        /// The candidates with the best score, when the status is Candidates.
+        pub tie: Vec<String>,
+        pub top: Option<String>, pub chosen: Option<String>,
+        /// True when the reader picked a candidate that is not the top candidate.
+        pub picked: bool,
+        /// The questions that the interview asks for these answers, in data order.
+        pub answers: Vec<Answer>,
+        /// The evidence fields that the interview asks for these answers, with their values.
+        pub evidence: Vec<Evidence>,
+        pub pool: Pool,
+        /// The laws of the pool, ranked by score, then in data order.
+        pub candidates: Vec<Card>,
+        /// The model components with a positive score, ranked.
+        pub components: Vec<Card>,
+        /// The rules that the reader switched off and that exist.
+        pub off: Vec<String>,
+        /// The answer text in its canonical form.
+        pub canonical: String,
+    }
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Note { pub from: String, pub text: String }
+    /// One rule of the rule path: its effect, its weight, its basis, the answers that make it fire and its targets.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Step { pub id: String, pub effect: String, pub weight: Option<f64>, pub basis: String, pub source: String, pub reason: String, pub when: Vec<Cond>, pub targets: Vec<Target>, pub off: bool }
+    /// An answer that makes a rule fire.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Cond { pub question: String, pub text: String, pub short: String, pub value: String, pub label: String }
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Target { pub id: String, pub name: String, pub delta: f64 }
+    /// A question that the interview asks: value is an option id, or "?" when it is not answered or not known.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Answer { pub id: String, pub topic: String, pub text: String, pub short: String, pub value: String, pub label: String, pub answered: bool }
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Evidence { pub id: String, pub label: String, pub value: Option<f64> }
+    /// The laws for the kind of value: kind "?" when the reader does not know it, then every law of the catalogue.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Pool { pub kind: String, pub label: String, pub noun: String, pub size: usize }
+    /// A candidate law or model component with its reasons, its competing explanations, its rejection tests and its
+    /// sampling methods (the text of a component; `build` gives those of a law).
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Card {
+        pub id: String, pub name: String, pub prose: String, pub role: String, pub kind: String, pub law: String, pub group: i64, pub group_here: bool,
+        /// A law with a model template, from a group of this page.
+        pub available: bool,
+        pub example: Option<String>, pub rank: usize, pub score: f64, pub supported: bool, pub excluded: bool,
+        pub reasons: Vec<Reason>, pub competing: Vec<Competing>, pub tests: Vec<String>, pub methods: Option<String>,
+        /// An answer text that ranks this candidate first.
+        pub path: String,
+    }
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Reason { pub rule: String, pub delta: f64, pub basis: String, pub source: String, pub text: String }
+    /// A competing explanation: score None when the candidate is not in the pool or among the components.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Competing { pub id: String, pub name: String, pub text: String, pub score: Option<f64>, pub in_pool: bool }
+
+    fn s(v: &Value) -> &str { v.as_str().unwrap_or("") }
+    fn arr(v: &Value) -> &[Value] { v.as_array().map_or(&[], |a| a) }
+    fn cut(t: &str, n: usize) -> String { t.chars().take(n).collect() }
+    fn first_lower(t: &str) -> String { let mut c = t.chars(); c.next().map_or(String::new(), |f| f.to_lowercase().chain(c).collect()) }
+    fn find<'a>(list: &'a Value, id: &str) -> Option<&'a Value> { arr(list).iter().find(|x| x["id"] == id) }
+    /// The value of a question for a condition: "-" when the question is not asked (or not known).
+    fn val<'a>(v: &'a BTreeMap<String, String>, q: &str) -> &'a str { v.get(q).map_or("-", String::as_str) }
+
+    /// The conjunctions of a condition: an object, or a list of objects.
+    fn conjs(w: &Value) -> Vec<&Map<String, Value>> {
+        match w { Value::Array(a) => a.iter().filter_map(Value::as_object).collect(), Value::Object(o) => vec![o], _ => vec![] }
+    }
+    /// True when each named question has one of the listed values.
+    fn met(c: &Map<String, Value>, v: &BTreeMap<String, String>) -> bool { c.iter().all(|(q, opts)| arr(opts).iter().any(|o| o == val(v, q))) }
+    /// True when the condition is null, or when one of its conjunctions holds.
+    fn holds(w: &Value, v: &BTreeMap<String, String>) -> bool { w.is_null() || conjs(w).iter().any(|c| met(c, v)) }
+
+    /// A number as JavaScript writes it, with an exponent below 10^-6 and from 10^21.
+    fn js(x: f64) -> String {
+        if x == 0.0 { return "0".into() }
+        if x.is_finite() && (x.abs() < 1e-6 || x.abs() >= 1e21) { return format!("{x:e}").replace('e', if x.abs() >= 1.0 { "e+" } else { "e" }) }
+        format!("{x}")
+    }
+    /// A number for the model text and the answer text: at most 8 significant digits. As JavaScript's toPrecision, a
+    /// value halfway between two numbers of 8 digits goes to the one with the larger magnitude.
+    fn num(x: f64) -> String {
+        if !x.is_finite() || x == 0.0 { return js(x) }
+        let t = format!("{:.30e}", x.abs());
+        let (m, e) = t.split_once('e').unwrap_or((&t, "0"));
+        let d: Vec<u8> = m.bytes().filter(u8::is_ascii_digit).collect();
+        let k = d[..8].iter().fold(0u64, |k, b| 10 * k + (b - b'0') as u64) + (d[8] >= b'5') as u64;
+        js(format!("{k}e{}", e.parse::<i32>().unwrap_or(0) - 7).parse::<f64>().unwrap_or(x).copysign(x))
+    }
+    /// A number from text as JavaScript's Number() reads it; NaN when it is not a number.
+    fn number(t: &str) -> f64 {
+        let t = t.trim();
+        let radix = [("0x", 16), ("0X", 16), ("0o", 8), ("0O", 8), ("0b", 2), ("0B", 2)].into_iter().find(|r| t.starts_with(r.0));
+        if let Some((_, r)) = radix { return if t.len() > 2 && t[2..].chars().all(|c| c.is_digit(r)) { u64::from_str_radix(&t[2..], r).map_or(f64::NAN, |x| x as f64) } else { f64::NAN } }
+        if t.is_empty() { return 0.0 }
+        if t.chars().any(|c| c.is_ascii_alphabetic() && c != 'e' && c != 'E') { return f64::NAN }
+        t.parse().unwrap_or(f64::NAN)
+    }
+    /// A valid number for an evidence field: finite, in its range, whole if the field is whole, and sd larger than 0.
+    fn valid(e: &Value, x: f64) -> bool {
+        x.is_finite() && x >= e["min"].as_f64().unwrap_or(-INF) && x <= e["max"].as_f64().unwrap_or(INF) && (e["integer"] != true || x.fract() == 0.0) && !(e["id"] == "sd" && x <= 0.0)
+    }
+
+    /// Read the answer text, such as "k=cnt;g=evt;m=4.2", into answers and evidence. Unknown names, unknown options and
+    /// values that are not numbers in their range give notices, and the interview does not use them.
+    pub fn parse(data: &Value, text: &str) -> Answers {
+        let spec = &data["interview"];
+        let mut out = Answers::default();
+        for part in text.split(';').map(str::trim).filter(|p| !p.is_empty()) {
+            let m = part.split_once('=').filter(|(n, x)| !n.is_empty() && n.bytes().all(|b| b.is_ascii_lowercase()) && !x.is_empty() && !x.contains(['\n', '\r', '\u{2028}', '\u{2029}']));
+            let (q, e) = m.map_or((None, None), |(n, _)| (find(&spec["questions"], n), find(&spec["evidence"], n)));
+            match (m, q, e) {
+                (Some((n, x)), Some(q), _) if x == "?" || find(&q["options"], x).is_some() => { out.answers.insert(n.into(), x.into()); }
+                (Some(_), Some(_), _) => out.notices.push(format!("The interview answer \"{}\" names no option of that question.", cut(part, 30))),
+                (Some((n, x)), None, Some(e)) if valid(e, number(x)) => { out.evidence.insert(n.into(), number(x)); }
+                (Some(_), None, Some(e)) => out.notices.push(format!("The value \"{}\" is not a valid {}.", cut(part, 30), s(&e["label"]).to_lowercase())),
+                _ => out.notices.push(format!("\"{}\" is not an answer of the interview.", cut(part, 30))),
+            }
+        }
+        out
+    }
+
+    /// The values of all questions for these answers: the option id, "?" (asked, but not answered or not known), or "-"
+    /// (not asked, because an earlier answer makes it irrelevant). The interview asks the questions in data order.
+    pub fn values(data: &Value, answers: &BTreeMap<String, String>) -> BTreeMap<String, String> {
+        let mut v = BTreeMap::new();
+        for q in arr(&data["interview"]["questions"]) {
+            let x = if holds(&q["ask"], &v) { answers.get(s(&q["id"])).map_or("?", String::as_str) } else { "-" };
+            v.insert(s(&q["id"]).to_string(), x.to_string());
+        }
+        v
+    }
+
+    /// The answer text in its canonical form: questions, then evidence, in data order, without the answers to questions
+    /// and the evidence fields that the interview does not ask.
+    pub fn format(data: &Value, answers: &BTreeMap<String, String>, evidence: &BTreeMap<String, f64>) -> String {
+        let (spec, v) = (&data["interview"], values(data, answers));
+        let qs = arr(&spec["questions"]).iter().filter_map(|q| answers.get(s(&q["id"])).filter(|_| val(&v, s(&q["id"])) != "-").map(|a| format!("{}={a}", s(&q["id"]))));
+        let es = arr(&spec["evidence"]).iter().filter_map(|e| evidence.get(s(&e["id"])).filter(|_| holds(&e["ask"], &v)).map(|x| format!("{}={}", s(&e["id"]), num(*x))));
+        qs.chain(es).collect::<Vec<_>>().join(";")
+    }
+
+    /// The candidates that a target of a rule names: "tail:x" or "!tail:x" (the laws of the pool with or without the tail
+    /// x), "continuous" (the continuous laws of the pool), or one id in the pool or among the components.
+    fn resolve<'a>(t: &str, pool: &[&'a Value], comps: &[&'a Value]) -> Vec<&'a Value> {
+        let not = t.starts_with('!');
+        if let Some(tail) = t.strip_prefix('!').unwrap_or(t).strip_prefix("tail:") && !tail.is_empty() && tail.bytes().all(|b| b.is_ascii_lowercase()) {
+            return pool.iter().filter(|c| c["tails"].is_array() && arr(&c["tails"]).iter().any(|x| x == tail) != not).copied().collect();
+        }
+        if t == "continuous" { return pool.iter().filter(|c| c["discrete"] == false).copied().collect() }
+        pool.iter().chain(comps).filter(|c| c["id"] == t).copied().collect()
+    }
+
+    /// The name of a candidate inside a sentence: lower case, except a name that starts with the name of a person.
+    pub fn prose(name: &str) -> String { if name == "F" || PERSONS.iter().any(|p| name.starts_with(p)) { name.into() } else { first_lower(name) } }
+
+    /// The template of a candidate for a kind of value: its own, or the one of byKind for the kind or for "*".
+    pub fn template<'a>(c: &'a Value, kind: &str) -> Option<&'a Value> {
+        let (t, by) = (&c["template"], &c["template"]["byKind"]);
+        let t = if by.is_object() { by.get(kind).unwrap_or(&by["*"]) } else { t };
+        (!t.is_null()).then_some(t)
+    }
+
+    /// The groups of the workbench that are on this page.
+    fn here(data: &Value) -> Vec<i64> { arr(&data["groups"]).iter().filter(|g| g["status"] == "here").filter_map(|g| g["piece"].as_i64()).collect() }
+    /// A law with a template for the model text, from a group on this page.
+    fn available(c: &Value, here: &[i64]) -> bool { c["role"] == "law" && !c["template"].is_null() && c["group"].as_i64().is_some_and(|g| here.contains(&g)) }
+
+    /// The candidates by score, then in data order.
+    fn rank<'a>(list: &[&'a Value], score: &BTreeMap<String, f64>, cands: &[Value]) -> Vec<&'a Value> {
+        let order = |c: &Value| cands.iter().position(|x| x["id"] == c["id"]);
+        let mut l = list.to_vec();
+        l.sort_by(|a, b| score[s(&b["id"])].total_cmp(&score[s(&a["id"])]).then(order(a).cmp(&order(b))));
+        l
+    }
+
+    /// Evaluate the interview: the answer text, the rules that the reader switched off (ids with commas between them) and
+    /// the candidate that the reader picked ("" for none).
+    pub fn evaluate(data: &Value, iv: &str, off: &str, pick: &str) -> Eval {
+        let spec = &data["interview"];
+        let (qs, cands, rules) = (arr(&spec["questions"]), arr(&spec["candidates"]), arr(&spec["rules"]));
+        let Answers { answers, evidence, mut notices } = parse(data, iv);
+        let v = values(data, &answers);
+        let mut offs: Vec<String> = vec![];
+        for id in off.split(',').map(str::trim).filter(|x| !x.is_empty()) {
+            if find(&spec["rules"], id).is_none() { notices.push(format!("\"{}\" names no rule of the rule graph.", cut(id, 20))) } else if !offs.iter().any(|x| x == id) { offs.push(id.into()) }
+        }
+        let here = here(data);
+        let kind = match val(&v, "k") { "-" => "?", k => k }.to_string();
+        let pool: Vec<&Value> = cands.iter().filter(|c| c["role"] == "law" && (kind == "?" || arr(&c["kinds"]).iter().any(|k| *k == kind))).collect();
+        let comps: Vec<&Value> = cands.iter().filter(|c| c["role"] == "component").collect();
+        let mut score: BTreeMap<String, f64> = pool.iter().chain(&comps).map(|c| (s(&c["id"]).to_string(), 0.0)).collect();
+        let mut why: BTreeMap<String, Vec<(&Value, f64)>> = BTreeMap::new();
+        let q = |id: &str| find(&spec["questions"], id).unwrap_or(&Value::Null);
+        let label = |id: &str, x: &str| -> String {
+            if x == "?" { return if answers.get(id).is_some_and(|a| a == "?") { "I do not know" } else { "not answered" }.into() }
+            find(&q(id)["options"], x).map_or(x.into(), |o| s(&o["label"]).into())
+        };
+        let at = |id: &str| qs.iter().position(|x| x["id"] == id).unwrap_or(usize::MAX);
+        // The answers that make a rule fire: the first conjunction that holds, in the order of the questions.
+        let describe = |w: &Value| -> Vec<Cond> {
+            let Some(c) = conjs(w).into_iter().find(|c| met(c, &v)) else { return vec![] };
+            let mut keys: Vec<&String> = c.keys().collect();
+            keys.sort_by_key(|k| at(k));
+            keys.into_iter().map(|k| Cond { question: k.clone(), text: s(&q(k)["text"]).into(), short: s(&q(k)["short"]).into(), value: val(&v, k).into(), label: label(k, val(&v, k)) }).collect()
+        };
+        let step = |r: &Value, when: Vec<Cond>, targets: Vec<Target>, off: bool| Step { id: s(&r["id"]).into(), effect: s(&r["effect"]).into(), weight: r["weight"].as_f64(),
+            basis: s(&r["basis"]).into(), source: s(&r["source"]).into(), reason: s(&r["reason"]).into(), when, targets, off };
+        let note = |r: &Value| Note { from: s(&r["id"]).into(), text: s(&r["reason"]).into() };
+        let (mut path, mut insufficient, mut assumed) = (vec![], vec![], vec![]);
+        for r in rules {
+            if r["when"] == "weak" || !holds(&r["when"], &v) { continue }
+            let effect = s(&r["effect"]);
+            let mut targets: Vec<Target> = vec![];
+            if effect == "for" || effect == "against" {
+                let w = r["weight"].as_f64().unwrap_or(f64::NAN);
+                for c in arr(&r["targets"]).iter().flat_map(|t| resolve(s(t), &pool, &comps)) {
+                    if !targets.iter().any(|x| x.id == s(&c["id"])) { targets.push(Target { id: s(&c["id"]).into(), name: s(&c["name"]).into(), delta: if effect == "for" { w } else { -w } }) }
+                }
+                if targets.is_empty() { continue }
+            }
+            let is_off = offs.iter().any(|x| r["id"] == x.as_str());
+            path.push(step(r, describe(&r["when"]), targets.clone(), is_off));
+            if is_off { continue }
+            for t in &targets {
+                *score.entry(t.id.clone()).or_default() += t.delta;
+                why.entry(t.id.clone()).or_default().push((r, t.delta));
+            }
+            if effect == "insufficient" { insufficient.push(note(r)) }
+            if effect == "assume" { assumed.push(note(r)) }
+        }
+        let ranked = rank(&pool, &score, cands);
+        let best = ranked.first().map_or(0.0, |c| score[s(&c["id"])]);
+        if let Some(weak) = rules.iter().find(|r| r["when"] == "weak") && kind != "?" && best < STRONG {
+            let is_off = offs.iter().any(|x| weak["id"] == x.as_str());
+            path.push(step(weak, vec![], vec![], is_off));
+            if !is_off { insufficient.push(note(weak)) }
+        }
+        let open = qs.iter().filter(|x| val(&v, s(&x["id"])) == "?")
+            .map(|x| Note { from: format!("question:{}", s(&x["id"])),
+                text: format!("{}: {}", if answers.get(s(&x["id"])).is_some_and(|a| a == "?") { "Not known" } else { "Not answered" }, s(&x["text"])) });
+        let assumptions = open.chain(assumed).collect();
+
+        let status = if insufficient.is_empty() { Status::Candidates } else { Status::Insufficient };
+        let top = ranked.first().filter(|_| status == Status::Candidates).map(|c| s(&c["id"]).to_string());
+        let tie = if top.is_some() { ranked.iter().filter(|c| score[s(&c["id"])] == best).map(|c| s(&c["id"]).to_string()).collect() } else { vec![] };
+        let (mut chosen, mut picked) = (top.clone(), false);
+        if !pick.is_empty() {
+            if pool.iter().any(|c| c["id"] == pick) { chosen = Some(pick.into()); picked = top.as_deref() != Some(pick) }
+            else { notices.push(format!("The picked candidate \"{}\" is not a law for this kind of value.", cut(pick, 30))) }
+        }
+        let card = |(i, c): (usize, &&Value)| {
+            let (id, group) = (s(&c["id"]), c["group"].as_i64().unwrap_or(0));
+            let sc = score[id];
+            Card { id: id.into(), name: s(&c["name"]).into(), prose: prose(s(&c["name"])), role: s(&c["role"]).into(), kind: c["kind"].as_str().unwrap_or("law").into(),
+                law: s(&c["law"]).into(), group, group_here: here.contains(&group), available: available(c, &here), example: c["example"].as_str().map(String::from),
+                rank: i + 1, score: sc, supported: sc > 0.0, excluded: sc < 0.0,
+                reasons: why.get(id).map_or(&[][..], |w| w.as_slice()).iter()
+                    .map(|(r, d)| Reason { rule: s(&r["id"]).into(), delta: *d, basis: s(&r["basis"]).into(), source: s(&r["source"]).into(), text: s(&r["reason"]).into() }).collect(),
+                competing: arr(&c["competing"]).iter().map(|x| { let xid = s(&x["id"]); Competing { id: xid.into(), name: find(&spec["candidates"], xid).map_or(xid, |y| s(&y["name"])).into(),
+                    text: s(&x["text"]).into(), score: score.get(xid).copied(), in_pool: score.contains_key(xid) } }).collect(),
+                tests: arr(&c["tests"]).iter().map(|t| s(t).to_string()).collect(), methods: c["methods"].as_str().map(String::from), path: s(&c["path"]).into() }
+        };
+        let candidates = ranked.iter().enumerate().map(card).collect();
+        let components = rank(&comps, &score, cands).iter().filter(|c| score[s(&c["id"])] > 0.0).enumerate().map(card).collect();
+        let k = find(&q("k")["options"], &kind);
+        Eval {
+            status, insufficient, notices, assumptions, path, tie, top, chosen, picked,
+            answers: qs.iter().filter(|x| val(&v, s(&x["id"])) != "-").map(|x| { let id = s(&x["id"]); Answer { id: id.into(), topic: s(&x["topic"]).into(), text: s(&x["text"]).into(),
+                short: s(&x["short"]).into(), value: val(&v, id).into(), label: label(id, val(&v, id)), answered: answers.get(id).is_some_and(|a| a != "?") } }).collect(),
+            evidence: arr(&spec["evidence"]).iter().filter(|e| holds(&e["ask"], &v))
+                .map(|e| Evidence { id: s(&e["id"]).into(), label: s(&e["label"]).into(), value: evidence.get(s(&e["id"])).copied() }).collect(),
+            pool: Pool { label: k.map_or("every law of the catalogue", |o| s(&o["label"])).into(), noun: k.map_or("quantity", |o| s(&o["noun"])).into(), kind, size: pool.len() },
+            candidates, components, off: offs, canonical: format(data, &answers, &evidence),
+        }
+    }
+
+    /// A sampling method of the law of a model record: the method id and name, and the reason when the law does not have it.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Sampler { pub method: &'static str, pub name: &'static str, pub unavailable: Option<String> }
+
+    /// A candidate as a model: the model text, its record, the evidence names with illustrative values, the parameters of
+    /// the law, its mean and variance (of entry 1 of a vector law: then component is Some(1)), and its sampling methods.
+    #[derive(Clone)]
+    pub struct Built {
+        pub text: String, pub rec: Rec, pub illustrative: Vec<String>, pub params: Vec<(String, V)>,
+        pub mean: Option<f64>, pub variance: Option<f64>, pub component: Option<usize>, pub methods: Vec<Sampler>,
+    }
+    /// Why a candidate does not give a model: the errors, and the model text when the parser or the compiler gave them.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Failed { pub text: Option<String>, pub errors: Vec<String> }
+
+    /// The value of an expression of named numbers.
+    fn value_of(src: Option<&str>, env: &[(String, f64)]) -> Result<f64, String> {
+        let src = src.ok_or("An expression is text.")?;
+        let (e, _) = expr::build(src, &|n| env.iter().position(|x| x.0 == n))?;
+        match expr::eval(&e, &env.iter().map(|x| V::N(x.1)).collect::<Vec<_>>())? { V::N(x) if x.is_finite() => Ok(x), _ => Err(format!("{src} is not a finite number.")) }
+    }
+    /// The parameter names of a catalogue law or a constructed law, in order.
+    fn law_params(law: &str) -> Vec<String> {
+        cat::LAWS.iter().find(|l| l.0 == law).map(|l| l.2.iter().map(|p| p.to_string()).collect()).or_else(|| built::params(law).map(|p| p.into_iter().map(|x| x.0).collect())).unwrap_or_default()
+    }
+    /// True when the text has the name x as a whole word.
+    fn word(t: &str, x: &str) -> bool {
+        let w = |c: Option<char>| c.is_some_and(|c| c.is_ascii_alphanumeric() || c == '_');
+        t.match_indices(x).any(|(i, _)| !w(t[..i].chars().next_back()) && !w(t[i + x.len()..].chars().next()))
+    }
+
+    /// Write one candidate of an evaluation as model text (the chosen candidate when id is None), read it with
+    /// `model::parse` and compile it with `model::prepare`. A candidate whose law is not on this page, or evidence that
+    /// does not fit the law, gives the reason.
+    pub fn build(data: &Value, r: &Eval, id: Option<&str>) -> Result<Built, Failed> {
+        let fail = |errors: Vec<String>| Err(Failed { text: None, errors });
+        let id = id.or(r.chosen.as_deref()).filter(|x| !x.is_empty());
+        let Some(c) = id.and_then(|id| find(&data["interview"]["candidates"], id)) else {
+            return fail(vec![id.map_or("The interview has no candidate to write as a model.".into(), |i| format!("\"{}\" is not a candidate.", cut(i, 30)))]);
+        };
+        let (p, group) = (prose(s(&c["name"])), c["group"].as_i64().unwrap_or(0));
+        if !available(c, &here(data)) {
+            return fail(vec![if c["role"] == "law" { format!("The {p} law comes in group {group}, which is not on this page yet. Choose a candidate from this page, or write the model in the editor.") }
+                else { format!("The {p} is a model component of group {group}. The model record of this page cannot hold it yet.") }]);
+        }
+        let noun = &r.pool.noun;
+        let Some(t) = template(c, &r.pool.kind) else { return fail(vec![format!("The {p} law has no model template for a {noun}. Write the model in the editor.")]) };
+        let law = t["law"].as_str().unwrap_or(s(&c["law"]));
+        let given: BTreeMap<&str, f64> = r.evidence.iter().filter_map(|e| e.value.map(|x| (e.id.as_str(), x))).collect();
+        let (mean, prob) = ("mean average = X \"mean value\"".to_string(), "prob exceed = X > c \"probability above the threshold c\"".to_string());
+        let quantities: Vec<String> = match t["quantities"].as_array() {
+            Some(a) => a.iter().map(|x| s(x).to_string()).collect(),
+            None if r.answers.iter().any(|a| a.id == "q" && a.value == "avg") => vec![mean, prob],
+            None => vec![prob, mean],
+        };
+        let need_c = t["quantities"].as_array().is_none_or(|a| a.iter().any(|x| word(s(x), "c")));
+        let uses: Vec<(&str, &str)> = EVIDENCE.into_iter().filter(|n| arr(&t["uses"]).iter().any(|u| u == n.0)).chain(need_c.then_some(EVIDENCE[3])).collect();
+        let mut env: Vec<(String, f64)> = uses.iter().filter_map(|n| given.get(n.0).map(|x| (n.0.to_string(), if n.0 == "lim" { (x + 0.5).floor() } else { *x }))).collect();
+        let (mut illustrative, mut errors, mut lines) = (vec![], vec![], vec![]);
+        for &(n, what) in &uses {
+            let v = match given.get(n) {
+                Some(x) => Ok(*x),
+                None => {
+                    let src = if n == "c" { t["c"].as_str() } else { t["defaults"][n].as_str() };
+                    let v = value_of(src, &env).or_else(|e| if t["fallback"][n].is_null() { Err(e) } else { value_of(t["fallback"][n].as_str(), &env) });
+                    if v.is_ok() { illustrative.push(n.to_string()) }
+                    v
+                }
+            };
+            let mut v = match v { Ok(v) => v, Err(e) => { errors.push(format!("The {what} has no value: {e}")); continue } };
+            if n == "lim" { v = (v + 0.5).floor() }
+            match env.iter_mut().find(|x| x.0 == n) { Some(x) => x.1 = v, None => env.push((n.into(), v)) }
+            lines.push(format!("param {n} = {} \"{what}{}\"", num(v), if given.contains_key(n) { ", from the interview" } else { ": an illustrative value, because the interview has none" }));
+        }
+        if !errors.is_empty() { return fail(errors) }
+        for q in arr(&t["requires"]) {
+            if value_of(Some(&format!("if({}, 1, 0)", s(&q["expr"]))), &env) != Ok(1.0) { errors.push(format!("The evidence does not fit the {p} law. {}", s(&q["text"]))) }
+        }
+        if !errors.is_empty() { return fail(errors) }
+        lines.extend(arr(&t["extra"]).iter().map(|x| format!("param {} = {} \"{}\"", s(&x[0]), s(&x[1]), s(&x[2]))));
+        // The arguments in the order of the parameters of the law, which is the order of the templates.
+        let order = law_params(law);
+        let mut args: Vec<(&String, &Value)> = t["args"].as_object().map_or(vec![], |o| o.iter().collect());
+        args.sort_by_key(|a| order.iter().position(|x| x == a.0).unwrap_or(usize::MAX));
+        let args = args.iter().map(|(k, e)| format!("{k} = {}", s(e))).collect::<Vec<_>>().join(", ");
+        let mech = r.answers.iter().find(|a| MECHANISMS.contains(&a.id.as_str()) && a.answered);
+        let unknown: Vec<&str> = r.answers.iter().filter(|a| a.value == "?").map(|a| a.short.as_str()).collect();
+        let mut problem = vec![format!("From the guided interview: one value is a {noun}.")];
+        if let Some(m) = mech { let l = first_lower(&m.label); problem.push(format!("Mechanism: {}.", l.strip_suffix('.').unwrap_or(&l))) }
+        problem.push(if r.status == Status::Insufficient { format!("The interview returned insufficient evidence, and the reader chose the {p} law.") }
+            else if r.picked { format!("The rule graph ranks the {} law first, but the reader chose the {p} law.", r.candidates[0].prose) }
+            else { format!("The rule graph ranks the {p} law first.") });
+        if !unknown.is_empty() { problem.push(format!("Unresolved: {}.", unknown.join(", "))) }
+        let mut text = vec![format!("title: Interview: the {p} law for the {noun}"), format!("problem: {}", problem.join(" "))];
+        text.extend(lines);
+        text.push(format!("X ~ {law}({args}) \"candidate from the guided interview\""));
+        text.extend(quantities);
+        text.push(format!("focus {}", t["focus"].as_str().unwrap_or("X")));
+        let text = text.join("\n") + "\n";
+
+        let (rec, errors) = model::parse(&text);
+        if !errors.is_empty() { return Err(Failed { text: Some(text), errors }) }
+        let m = match model::prepare(&rec, &model::Settings { seed: 1, ..Default::default() }) {
+            Ok(m) => m,
+            Err(e) => return Err(Failed { text: Some(text), errors: e.into_iter().map(|e| format!("The evidence does not fit the {p} law. {e}")).collect() }),
+        };
+        let Some(Item::Var(x)) = m.node("X").map(|n| &n.item) else { return Err(Failed { text: Some(text), errors: vec!["The model has no variable X.".into()] }) };
+        let pv = m.args(x, 0, &m.alts[0].1).unwrap_or_default();
+        let (mean, variance) = match &x.law { Law::Cat(id) => cat::moments(id, &pv), Law::Built(id) => built::moments(id, &pv), _ => (None, None) };
+        let component = matches!(&x.law, Law::Cat(id) if cat::dim(id, &pv) > 0).then_some(1);
+        let kinds = [("independent", Kind::Reference), ("inverse", Kind::Inverse { cut: 1.0 }), ("rejection", Kind::Rejection { scale: 1.0 })];
+        let methods = kinds.into_iter().map(|(method, k)| {
+            let mut src = Src::new(1, 0, 0, 0, false);
+            let d = match &x.law { Law::Cat(id) => cat::draw(id, &pv, k, &mut src), Law::Built(id) => built::draw(id, &pv, k, &mut src), _ => Ok(V::N(0.0)) };
+            Sampler { method, name: model::METHODS.iter().find(|x| x.0 == method).map_or("", |x| x.1), unavailable: d.err() }
+        }).collect();
+        let params = law_params(law).into_iter().zip(pv).collect();
+        Ok(Built { text, rec, illustrative, params, mean, variance, component, methods })
+    }
+
+    /// A question that the interview asks for the current answers, with its options (id, label) and its answer: an option
+    /// id, "?" (I do not know) or None (not answered).
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Question { pub id: String, pub topic: String, pub text: String, pub short: String, pub help: String, pub options: Vec<(String, String)>, pub value: Option<String> }
+    /// An evidence field that the interview asks for the current answers, with its range and its value.
+    #[derive(Clone, Debug, PartialEq)]
+    pub struct Field { pub id: String, pub label: String, pub help: String, pub min: f64, pub max: f64, pub integer: bool, pub value: Option<f64> }
+
+    /// The questions and the evidence fields that the interview asks for this answer text, in data order.
+    pub fn form(data: &Value, iv: &str) -> (Vec<Question>, Vec<Field>) {
+        let (spec, a) = (&data["interview"], parse(data, iv));
+        let v = values(data, &a.answers);
+        let qs = arr(&spec["questions"]).iter().filter(|q| val(&v, s(&q["id"])) != "-").map(|q| Question { id: s(&q["id"]).into(), topic: s(&q["topic"]).into(),
+            text: s(&q["text"]).into(), short: s(&q["short"]).into(), help: s(&q["help"]).into(), value: a.answers.get(s(&q["id"])).cloned(),
+            options: arr(&q["options"]).iter().map(|o| (s(&o["id"]).to_string(), s(&o["label"]).to_string())).collect() }).collect();
+        let es = arr(&spec["evidence"]).iter().filter(|e| holds(&e["ask"], &v)).map(|e| Field { id: s(&e["id"]).into(), label: s(&e["label"]).into(), help: s(&e["help"]).into(),
+            min: e["min"].as_f64().unwrap_or(-INF), max: e["max"].as_f64().unwrap_or(INF), integer: e["integer"] == true, value: a.evidence.get(s(&e["id"])).copied() }).collect();
+        (qs, es)
+    }
+
+    /// The answer text after one change, in its canonical form: a question with an option id, "?" or "" (not answered),
+    /// or an evidence field with a number or "" (no value). A number out of its range, or a text longer than 200
+    /// characters, gives the notice of the page and no change.
+    pub fn set(data: &Value, iv: &str, id: &str, value: &str) -> Result<String, String> {
+        let spec = &data["interview"];
+        let Answers { mut answers, mut evidence, .. } = parse(data, iv);
+        if find(&spec["questions"], id).is_some() {
+            if value.is_empty() { answers.remove(id); } else { answers.insert(id.into(), value.into()); }
+        } else if let Some(e) = find(&spec["evidence"], id) {
+            let x = number(value);
+            if value.trim().is_empty() { evidence.remove(id); } else if valid(e, x) { evidence.insert(id.into(), x); } else { return Err(format!("{}: {}", s(&e["label"]), s(&e["help"]))) }
+        } else {
+            return Err(format!("\"{}\" is not an answer of the interview.", cut(id, 30)));
+        }
+        let text = format(data, &answers, &evidence);
+        if text.chars().count() > 200 { return Err("The interview answers hold at most 200 characters. Clear some numbers.".into()) }
+        Ok(text)
+    }
+
+    /// The rules switched off after the reader uses (`on`) or switches off one rule: ids with commas, at most 200 characters.
+    pub fn switch(off: &str, rule: &str, on: bool) -> String {
+        let mut ids: Vec<&str> = vec![];
+        for x in off.split(',').filter(|x| !x.is_empty()) { if !ids.contains(&x) { ids.push(x) } }
+        if on { ids.retain(|x| *x != rule) } else if !ids.contains(&rule) { ids.push(rule) }
+        cut(&ids.join(","), 200)
+    }
+
+    /// The status line of an evaluation, as the page shows it.
+    pub fn headline(r: &Eval) -> String {
+        if r.status == Status::Insufficient { return "Insufficient evidence. The interview does not propose a model, because:".into() }
+        let n = r.candidates.iter().filter(|c| c.supported).count();
+        let prose = |id: &String| r.candidates.iter().find(|c| &c.id == id).map_or(id.clone(), |c| c.prose.clone());
+        let tie = if r.tie.len() > 1 { format!(" The rule graph cannot separate {}: the rejection tests can.", r.tie.iter().map(prose).collect::<Vec<_>>().join(" and ")) } else { String::new() };
+        let first = r.candidates.first().map_or(String::new(), |c| format!(" The rule graph ranks the {} law first.", c.prose));
+        format!("{n} {} for the {}.{first}{tie}", if n == 1 { "candidate" } else { "candidates" }, r.pool.noun)
     }
 }
 ```
