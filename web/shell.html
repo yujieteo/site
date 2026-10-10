@@ -62,7 +62,6 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
   d.addEventListener("pointermove", (e) => look(e.clientX, e.clientY));
   ol.addEventListener("focusin", (e) => { const b = e.target.getBoundingClientRect(); look(b.x + b.width / 3, b.y + b.height / 2); });
   ol.addEventListener("click", (e) => e.target.closest("a") && be("pick"));
-  q.addEventListener("input", () => { react(); caret(); });
   icon.addEventListener("click", open);
   addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() !== "k" || !(e.metaKey || e.ctrlKey) || e.defaultPrevented) return;
@@ -70,6 +69,7 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
     d.open ? d.close() : open();
   });
   q.addEventListener("input", show);
+  q.addEventListener("input", () => { react(); caret(); });
   q.addEventListener("keydown", (e) => { if (e.key === "ArrowDown") { e.preventDefault(); $("a", ol)?.focus(); } });
   $("form", d).addEventListener("submit", () => { const a = $("a", ol); if (a) location.href = a.href; });
 })();
