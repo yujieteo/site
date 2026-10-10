@@ -91,7 +91,9 @@ fn dot() -> String {
 /// Redact private details from a log line; None when it must not be published at all.
 fn sanitize(text: &str) -> Option<String> {
     const SECRETS: [&str; 8] = ["sk-", "ghp_", "gho_", "github_pat_", "AKIA", "PRIVATE KEY", "password", "token="];
-    if SECRETS.iter().any(|s| text.contains(s)) {
+    // A marker counts only at the start of a word, so "task-based" does not hold a key.
+    let marked = |s: &str| text.match_indices(s).any(|(i, _)| !text[..i].ends_with(char::is_alphanumeric));
+    if SECRETS.iter().any(|s| marked(s)) {
         return None;
     }
     let mut t = text.trim();
@@ -110,7 +112,7 @@ fn sanitize(text: &str) -> Option<String> {
             _ if email => format!("{lead}[email]{tail}"),
             _ => word.into(),
         };
-        out.push_str(&r.replace("teoyujie.org", "[site]"));
+        out.push_str(&r.replace("teoyujie.org", "[site]").replace("Teoyujie.org", "[site]"));
     }
     Some(out)
 }
