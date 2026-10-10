@@ -1,12 +1,12 @@
 ---
 title: Beam diagram
-summary: Build a straight beam with pinned and fixed supports, forces, couples and distributed loads. Read its reactions, shear force, bending moment and deflection, the same answer by hand, and a NASTRAN deck.
+summary: Build a straight beam with pins, fixed supports, forces, couples and distributed loads. Get its reactions, shear force, bending moment and deflection, the same answer by hand, and a NASTRAN deck.
 thumb: 4136
 theme: site
 seed: 20261011
 ---
 
-The first chapter is the Beam diagram creator. Drag the supports and the loads, or type them, and read the reactions, the shear force, the bending moment and the deflection at once. The creator also shows the hand calculations, and saves the figure, a Nastran deck and the hand calculations as files. The chapters after it are the notebook: they solve the same beams in cells that you can read and change. Statically indeterminate beams, for example fixed–fixed spans and continuous beams, are solved by the stiffness method in both.
+The Beam diagram creator and the cells of this notebook solve the same beam by the stiffness method, also if it is statically indeterminate.
 
 <!-- skill: This notebook ports visuals/viz/beamdiag. The presets, materials, sign conventions, assumptions and NASTRAN notes come only through data!, from the files pinned in visuals.lock. Tests are disposable: check a change end to end in the built page; do not commit regression tests. -->
 
@@ -20,13 +20,13 @@ serde_json = "=1.0.151"
 
 ## The beam diagram creator
 
-The creator is a sealed page from yujieteo/visuals. Its solver is Rust, compiled to WebAssembly, and it runs in your browser. Drag a support or a load along the beam, or focus it and use the arrow keys. To type exact values, use the Supports and Loads tables.
+The creator is a sealed page from yujieteo/visuals. Drag a support or a load, or type exact values in its tables.
 
 ![Beam diagram creator](viz/beamdiag/index.html)
 
 ## The beam
 
-The beam is straight and runs from x = 0 at its left end to x = L. A pin stops the beam from moving up or down. A fixed support also stops it from turning. Forces and distributed loads are positive up, so a downward load is negative. Couples are positive counter-clockwise.
+The beam is straight, from x = 0 at its left end to x = L. Forces and distributed loads are positive up, and couples are positive counter-clockwise.
 
 ```rust
 //| caption: The example to start from, and the units of every number on this page.
@@ -34,7 +34,7 @@ let example = &list("presets")[choice("Example", &labels("presets"), 0)];
 let unit = &UNITS[choice("Units", &UNITS.iter().map(|u| u.name).collect::<Vec<_>>(), 0)];
 ```
 
-Leave a box empty to keep that part of the example. If you type only a length, the example's supports and loads stretch with it. Under the next cell, the notebook writes the beam in the words that the boxes take, so you can copy a part and change it.
+An empty box keeps that part of the example. A length alone scales the supports and the loads.
 
 ```rust
 //| caption: The length, the supports and the loads.
@@ -67,7 +67,7 @@ match &model {
 
 ## Reactions
 
-A beam in a plane has 2 equations of equilibrium: the forces sum to zero, and the moments sum to zero. A pin gives 1 unknown reaction and a fixed support gives 2. With 2 unknowns the beam is statically determinate. Each further unknown needs one condition of compatibility: the beam does not move at a support, and it does not turn at a fixed support.
+A plane beam has 2 equations of equilibrium. A pin gives 1 unknown reaction, and a fixed support gives 2. Each unknown after the second needs 1 condition of compatibility.
 
 ```rust
 //| caption: The support reactions: forces + up, couples + counter-clockwise.
@@ -84,7 +84,7 @@ if let Ok(m) = &model {
 
 ## Shear, moment and deflection
 
-The shear force V at a section is the sum of the upward forces to its left. The bending moment M is positive when it sags the beam. Then $dM/dx = V$ and $dV/dx = q$. At a point force, V jumps by the force. At a couple C, M jumps by −C. The slope θ and the deflection v come from $EI \frac{d^2 v}{dx^2} = M$. Move x to read one section; its point shows on each diagram.
+The shear force V at a section is the sum of the upward forces to its left. The bending moment M is positive when it sags the beam. Then $dM/dx = V$, $dV/dx = q$ and $EI \frac{d^2 v}{dx^2} = M$.
 
 ```rust
 //| caption: The section to read.
@@ -146,7 +146,7 @@ if let Ok(m) = &model {
 
 ## Values at supports and loads
 
-Where a point force or a couple acts, a diagram jumps. The table gives the values just to the left and just to the right of each support and load.
+At a point force, V jumps by the force, and at a couple C, M jumps by −C.
 
 ```rust
 //| caption: V, M, θ and v at each end, support and load.
@@ -162,7 +162,7 @@ if let Ok(m) = &model {
 
 ## By hand
 
-Macaulay's method writes the bending moment of the whole beam as one expression. The bracket $\langle x - a \rangle^n$, written <x − a>^n below, is $(x - a)^n$ when $x > a$ and zero before. Each reaction is an unknown in the expression. Integrate $EI \frac{d^2 v}{dx^2} = M$ twice, which adds the constants $C_1$ and $C_2$. Then the conditions fix every unknown: the shear and the moment are zero just past the right end (equilibrium), $v = 0$ at each support and $\theta = 0$ at each fixed support (compatibility). The stiffness solver gives the same numbers, and the equations below hold for them.
+Macaulay's method writes M for the whole beam as 1 expression, with the reactions as unknowns. The bracket $\langle x - a \rangle^n$, written <x − a>^n below, is $(x - a)^n$ when $x > a$, and zero before. The conditions below give each unknown.
 
 ```rust
 //| caption: The beam by Macaulay's method, in the units of this page.
@@ -171,7 +171,7 @@ if let Ok(m) = &model { println!("{}", by_hand(m, unit)) }
 
 ## NASTRAN deck
 
-The deck is an MSC Nastran SOL 101 linear static bulk data file (`.bdf`) for this beam, in the units of this page. It has a grid at each end, support and load, and the number of bars that you choose between each pair of neighbouring grids. A card group uses 16-character fields only when a value needs more than 8 characters to stay exact.
+The deck is an MSC Nastran SOL 101 linear static bulk data file (`.bdf`), in the units of this page. It has a grid at each end, support and load, and the number of bars that you choose between 2 grids.
 
 ```rust
 //| caption: The deck, and a link that saves it.
@@ -195,7 +195,7 @@ table(&["Card", "Use"], &raw()["nastran"]["cards"].as_array().unwrap().iter().ma
 
 ## Method and assumptions
 
-The solver puts a node at each end and each support, and joins the nodes with two-node Euler–Bernoulli beam elements. Each load inside an element enters as its consistent nodal loads, which are the exact fixed-end actions, so the nodal deflections and the reactions are exact. The shear and the moment then come by statics from the loads and the reactions, and the slope and the deflection from the nodal values. The solver adds the integrals of $M/EI$ from the nearest node to the left.
+The solver puts a node at each end and each support, with Euler–Bernoulli beam elements between them. Each load enters as its exact fixed-end actions, so the nodal deflections and the reactions are exact. Statics then gives V and M, and integrals of $M/EI$ give the slope and the deflection.
 
 ```rust
 //| caption: The assumptions of the model, and the NASTRAN references.

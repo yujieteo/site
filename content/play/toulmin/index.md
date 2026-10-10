@@ -1,12 +1,12 @@
 ---
 title: Toulmin arguments
-summary: Build an essay one Toulmin argument at a time: claim, grounds, warrant, backing, qualifier and rebuttals. A pilot-style checklist checks each argument, and the notebook writes it as a paragraph in two orders.
+summary: Build an essay 1 Toulmin argument at a time: claim, grounds, warrant, backing, qualifier and rebuttals. A pilot-style checklist checks each argument, and the notebook writes it as a paragraph in 2 orders.
 thumb: 2416
 theme: site
 seed: 20261016
 ---
 
-Build an essay one argument at a time. Each argument has six parts: a claim, its grounds, a warrant, a backing, a qualifier and rebuttals. Type the parts into the boxes of an argument's chapter. Under the boxes, a pilot-style checklist shows which parts are there, prompts tell you what to add, and the notebook writes the argument as a paragraph in two orders. The last chapter writes the whole essay. The boxes start with a template essay on surgical safety checklists: change it, or empty the boxes and write your own.
+Build an essay 1 argument at a time. The boxes start with a template essay on surgical safety checklists: change it, or write your own.
 
 <!-- skill: This notebook ports visuals/viz/toulmin. The parts, the checklist, the prompts, the paragraph lead-ins, the limits and the template essay come only through data!("viz/toulmin/raw.json"), pinned in visuals.lock. Never copy them into this file. A cell cannot read the Markdown that a reader writes in Edit mode before a rebuild, so each argument is a set of text boxes (field) that start from the template, and the Markdown keeps the guidance. -->
 
@@ -18,7 +18,7 @@ serde_json = "=1.0.151"
 
 ## The six parts
 
-Stephen Toulmin (*The Uses of Argument*, 1958) split an argument into six parts. His own example is about Harry, a man born in Bermuda. The grounds and the warrant carry the claim. The backing supports the warrant. The qualifier tells how strong the claim is, and the rebuttals tell when the claim fails.
+Stephen Toulmin (*The Uses of Argument*, 1958) divided an argument into 6 parts. His example is about Harry, a man born in Bermuda.
 
 ```rust
 //| caption: The parts, why each one matters, and Harry's argument.
@@ -31,13 +31,21 @@ list("Sources", arr(&raw()["sources"]).iter().map(|s| [st(&s["label"]), st(&s["u
 
 ## How to use it
 
-Each argument has a chapter with its boxes, under fixed labels: Claim, Grounds, Warrant, Backing, Qualifier and Rebuttals. A box holds one line. Pick how many grounds and how many rebuttals the argument has. A new box starts empty. A source is optional. The label names the argument in the essay. When the label is empty, the start of the claim names the argument.
+Each argument has a chapter of 1-line boxes. A source is optional. If the label is empty, the start of the claim names the argument.
 
-The checklist has two parts, as a pilot's checklist has. An automatic line is CLEAR when its part has text, and OPEN when it is empty. A confirm line is a question that only you can answer: read it, and change the argument until your answer is yes. A prompt shows when the claim is a question, or when the qualifier, the rebuttals or the warrant are missing.
+An automatic line of the checklist is CLEAR if its part has text, and OPEN if not. A confirm line is a question: change the argument until your answer is yes.
 
-Why boxes, and not Markdown? In Edit mode you can change the Markdown of this page, and the page shows the change at once. But a cell sees only its controls and the numbers in its code. It cannot read the words that you write in Edit mode until the site is built again. Thus the arguments are text boxes, which the cells read at once, and the Markdown keeps the guidance.
+A cell cannot read your Markdown edits until the next build, so the arguments are text boxes.
 
-The boxes are not kept: when you reload the page, they start again from the template. To keep your essay, copy its text from the last chapter, or export the page as a PDF. To add an argument, copy a chapter in Edit mode, change its number in its three cells, and add it to the list in the last cell. New cells run after the site is built again.
+Before you reload the page, copy your essay from the last chapter or export a PDF. The page does not keep the boxes: a reload starts them again from the template.
+
+To add an argument:
+
+1. In Edit mode, copy a chapter.
+2. Change its number in its 3 cells.
+3. Add it to the list in the last cell.
+
+The new chapter runs after the next build.
 
 ```rust
 //| caption: The limits. A box over its limit gets a note, and the checks use only the text up to the limit.
@@ -95,7 +103,7 @@ let arg2 = tail(&start2, 2, size2.1);
 
 ## Argument 3
 
-This argument is not finished: its checklist has open lines. Your turn: finish it.
+This argument has open lines. Complete them.
 
 ```rust
 //| caption: How many grounds and rebuttals.
@@ -114,7 +122,7 @@ let arg3 = tail(&start3, 3, size3.1);
 
 ## The essay
 
-The pre-flight shows the open lines of each argument. It warns you, but it does not stop the essay. Then the whole essay follows as text: the title, the thesis and each argument in the order that you pick.
+The pre-flight shows the open lines of each argument, but it does not stop the essay.
 
 ```rust
 //| caption: The pre-flight and the whole essay.

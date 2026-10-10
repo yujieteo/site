@@ -1,12 +1,12 @@
 ---
 title: Section lab
-summary: Build a cross-section from library shapes, holes and several materials. Read its area, centroid, second moments, principal axes, section moduli and first moments, its torsion constant where a measured formula exists, its Ramberg–Osgood moment–curvature curve, and the same properties by hand.
+summary: Build a cross-section from library shapes, holes and materials. Get its section properties, its torsion constant where a measured formula exists, its Ramberg–Osgood moment–curvature curve, and the same properties by hand.
 thumb: 2456
 theme: site
 seed: 20261016
 ---
 
-Build a structural cross-section from library shapes and read its section properties. A section is a list of parts: each part is a library shape with its dimensions, its corner radii, its position, a turn of 0° or 90° and a material, and a hole is a negative part. The notebook gives the area, the centroid, the second moments, the principal axes, the section moduli, the radii of gyration and the first moments Q. It gives a torsion constant only where a formula has a measured accuracy, and it gives the Ramberg–Osgood moment–curvature curve to a strain limit, with Z_p and the shape factor. The last chapter works the same properties by hand, by composite parts. Every part is an exact boundary of lines and circular arcs, and the solver is a port of the Section Lab of yujieteo/visuals, which agrees with independent Python references.
+The solver is a port of the Section Lab of yujieteo/visuals, and it agrees with independent Python references.
 
 <!-- skill: This notebook ports visuals/viz/sectionlab. The examples, the materials, the method, the conventions, the assumptions and the measured torsion accuracy come only through data!, from the files pinned in visuals.lock. It was compared with every case of reference/fixtures.json, reference/reference.json and reference/torsion-accuracy.json of visuals, to the tolerances of the JS tests; compare it again after a change to the solver. -->
 
@@ -23,11 +23,15 @@ println!("{}", s(&raw()["notice"]));
 
 ## The section
 
-Pick an example, then change its parts in the box. A part is one line of words, and a semicolon separates two parts:
+Choose an example. Then change its parts in the Parts box. A semicolon separates 2 parts, and each part has this form:
 
 `id: shape dimensions r radii at x y turn material`
 
-The dimensions follow the shape in the order of the table below, in mm. The radii follow `r`, one for each corner in the order of the table; without `r`, every corner is sharp. `at x y` puts the centre of the part's box at (x, y); without it, the part is at (0, 0). `turn` turns the part 90° counter-clockwise about that centre. A hole is a part with a minus sign before its shape and no material, for example `bolt: -circle 6 at 0 -40`; it must lie inside one solid part, and it takes that part's material. Solid parts may touch but not overlap.
+- The dimensions follow the shape, in mm, in the order of the table below.
+- `r` gives 1 radius for each corner, in the order of the table. Without `r`, the corners are sharp.
+- `at x y` puts the centre of the box of the part at (x, y). Without it, the centre is at (0, 0).
+- `turn` turns the part 90° counter-clockwise about that centre.
+- A hole has a minus sign before its shape and no material, for example `bolt: -circle 6 at 0 -40`.
 
 ```rust
 //| caption: The shapes of the catalogue: the dimensions in the order that a part takes them, and the corners in the order of its radii.
@@ -41,7 +45,7 @@ let ex = from_json(&example["model"])?;
 println!("{}", s(&example["note"]));
 ```
 
-The materials of the library are always there: their ids are in the table under the figure. The Materials box adds a material or changes one, as `id E σ0.2 n ε_lim` (E and σ0.2 in MPa), and `c E σ0.2 n ε_lim` after it gives the law in compression when it is not the same. E_base is the modulus that every part is transformed to; an empty box keeps the example's.
+The Materials box adds or changes a material, as `id E σ0.2 n ε_lim`, with E and σ0.2 in MPa. For a different law in compression, add `c E σ0.2 n ε_lim` after it. The library materials are always available. An empty E_base box keeps the value of the example.
 
 ```rust
 //| caption: The parts, more materials and E_base. A new example fills the Parts box again.
@@ -69,7 +73,7 @@ match &sec {
 
 ## Section properties
 
-Every property is about the centroid. A composite section is transformed to E_base: each solid part counts its modular ratio n_i = E_i / E_base, and each hole counts −n_i of the part that it is cut from, so A, S and I are in E_base-equivalent mm², mm³ and mm^4. Axis 1 carries the larger second moment I_1, and θ is the angle from x to axis 1, counter-clockwise. S_x+ uses the extreme fibre above the centroid and S_x− the one below; S_y+ the one to the right and S_y− the one to the left. Q_x is the first moment of the area above the centroidal x axis about that axis, which is the same as that of the area below it; Q_y is the same beside the y axis.
+Every property is about the centroid of the section after its transformation to E_base. Each solid part counts its modular ratio n_i = E_i / E_base, and each hole counts −n_i of its part. Thus A, S and I are in E_base-equivalent mm², mm³ and mm^4. The last chapter gives the conventions for the axes, S and Q.
 
 ```rust
 //| caption: The section properties, about the centroid.
@@ -80,7 +84,7 @@ if let Ok(c) = &sec {
 
 ## Torsion
 
-A torsion constant J comes only from a closed-form formula whose accuracy has been measured against a numerical Prandtl stress-function solution: linear finite elements, three uniform refinements and Richardson extrapolation. The section must be one library shape with no holes. A formula whose measured error is more than its stated accuracy is withdrawn, and every other section shows n/a.
+The torsion constant J comes only from a closed-form formula with a measured accuracy. The reference is a numerical Prandtl solution: linear finite elements, 3 uniform refinements and Richardson extrapolation. A formula with a measured error more than its stated accuracy is not used. Every other section shows n/a.
 
 ```rust
 //| caption: The torsion constant of this section, or why there is none.
@@ -102,9 +106,7 @@ table(&["Formula", "Method", "Stated", "Measured", "Cases", "Where it holds"], &
 
 ## Moment–curvature
 
-Each material follows the Ramberg–Osgood law $\varepsilon = \sigma / E + 0.002 (\sigma / \sigma_{0.2})^n$, in tension and, when it is given, with its own law in compression. Plane sections stay plane: the strain is $\varepsilon = \varepsilon_0 - \kappa v$, with v measured across the neutral axis from the elastic centroid. A positive curvature and moment compress the +v side, which is the top for bending about x. The solver cuts every part into 160 strips across the section and at each corner and arc, integrates the stresses over each strip's exact boundary, and finds the strain $\varepsilon_0$ that carries the axial force N. The curve runs to the curvature at which the first fibre of any part reaches its material's ε_lim; the moment there is M_lim. In mode (b) the neutral axis turns so that the moment about the other axis is zero; in mode (a) it stays parallel to the axis of bending, and the table gives the cross moment that this needs.
-
-M_el is the linear-elastic moment at which the first fibre reaches σ0.2, and M_p is the fully plastic moment of the σ0.2 stress block, both at N = 0. Z_p = M_p / σ0.2 and the shape factor M_p / M_el are section properties: they do not change with N. With an axial force, M_el(N) and M_p(N) are the same moments at N.
+Each material follows the Ramberg–Osgood law $\varepsilon = \sigma / E + 0.002 (\sigma / \sigma_{0.2})^n$, or a different law in compression if you give one. Plane sections stay plane: $\varepsilon = \varepsilon_0 - \kappa v$, with v across the neutral axis from the elastic centroid. The solver cuts each part into 160 strips and finds the $\varepsilon_0$ that carries the axial force N. The curve stops where the first fibre reaches its ε_lim, at the moment M_lim. The last chapter defines M_el, M_p and the modes (a) and (b).
 
 ```rust
 //| caption: The axis of bending, the mode and the axial force.
@@ -158,7 +160,7 @@ if let (Ok(c), Ok(r)) = (&sec, &pl) {
 
 ## By hand
 
-The solver integrates each property over the exact boundary of the whole transformed section. The steps below work the same answer the way it is worked on paper, by composite parts: each part's area, centroid and modular ratio, the area and the centroid from the first moments, each part's own second moments, the parallel-axis theorem, the principal axes, the section moduli, the radii of gyration, and the torsion formula with its numbers. Q, M_el, M_p and the moment–curvature curve come from numerical integration and iteration, so the steps quote them. Every number is the notebook's own, in mm, N and MPa.
+The steps below work the same properties on paper, by composite parts. Q, M_el, M_p and the moment–curvature curve need numerical integration and iteration, so the steps quote them. All numbers are in mm, N and MPa.
 
 ```rust
 //| caption: The section properties by hand, by composite parts.
