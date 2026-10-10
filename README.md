@@ -65,7 +65,7 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   for data scenes), `Plot` and `data!("path")`: the bytes of a file pinned in `visuals.lock`, compiled
   in. The page redraws a cell's controls when a key, label, range or option changes, so keep a
   `field` apart from a `choice` whose options follow it. A control's key is 100 × its cell + its place
-  in the cell; a slider keeps the page's value only while its label stays the same.
+  in the cell; a slider or text box keeps the page's value only while its label stays the same.
 - ```` ```toml ```` fences add pinned crates; ```` ```say ```` fences are narration; `$…$` and `$$`
   are TeX; `<!-- … -->` comments are agent skills, exposed as text through `window.notebook.skills()`.
 - A thumbnail is one seed (`engine/src/thumb.rs`), read as digits so a known seed gives a known
