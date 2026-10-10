@@ -2,16 +2,18 @@
 
 Agreed with the captain on 2026-10-10 (grill rounds 1–7, Q1–Q32).
 
+Changed on 2026-10-10, after the grill: "make it into a notebook and be consistent with the other pages, not a sealed .html artifact". The Beam diagram is a notebook. Section Lab will be a notebook too, for the same reason. Thus there are no sealed artifacts, and the artifact rule and the 25,000-line budget for each artifact are not necessary.
+
 ## Ownership
 
-- yujieteo/visuals stores all data and builds the 2 sealed artifacts.
+- yujieteo/visuals stores all data and the fixtures.
 - yujieteo/site owns the notebook text.
 - `visuals.lock` in the site pins 1 visuals commit and the SHA-256 of each file that the site uses. A script gets the files and checks them, as `scripts/kokoro.sh` does for the voice.
 - There are no runtime fetches. There is no page size limit. Every page uses the site look.
 
 ## Rule for AGENTS.md (site)
 
-An artifact is a sealed copy from visuals, pinned in `visuals.lock`. It is outside the budgets and the Rust rule. The site never edits it.
+Removed: there are no sealed artifacts (see the change above).
 
 ## Visuals work
 
@@ -26,15 +28,13 @@ An artifact is a sealed copy from visuals, pinned in `visuals.lock`. It is outsi
    | English Grammar | 815 |
    | Monte Carlo | 152 |
 
-3. Port Section Lab and Beam diagram to Rust, compiled to WebAssembly, as single-file sealed artifacts with the site look (site colour names, Fira fonts, `localStorage` keys `theme` and `mode`).
-4. Compare each Rust solver against its Python reference solver. Freeze the reference outputs as JSON fixtures. Then delete `reference.py`, `reference/*.py` and `requirements-test.txt`.
-5. After the site port of a tool passes its tests, delete the old JS page and its `build.py`. Visuals keeps the data, the Rust data builders and the fixtures. Git history keeps the old pages.
+3. Freeze the outputs of each Python reference solver (Section Lab, Beam diagram) as JSON fixtures. The site notebooks test their Rust solvers against these fixtures. Then delete `reference.py`, `reference/*.py` and `requirements-test.txt`.
+4. After the site port of a tool passes its tests, delete the old JS page and its `build.py`. Visuals keeps the data, the Rust data builders and the fixtures. Git history keeps the old pages.
 
 ## Site work
 
 1. Add `visuals.lock` and its fetch-and-check script.
-2. Add the AGENTS.md rule above.
-3. Add 5 engine parts, inside the 3,000 engine code lines:
+2. Add 5 engine parts, inside the 3,000 engine code lines:
    1. A function that gives a cell a data file
    2. Gzip inflate
    3. A table output
@@ -47,8 +47,8 @@ An artifact is a sealed copy from visuals, pinned in `visuals.lock`. It is outsi
    | 1 | Theorem Explorer + Learner | 1 notebook. All data as gzip (about 42 MB raw, about 9 MB page), joined by theorem ID. Find box. Sorts and filters with `choice` and `slider`. New sort rules: edit the cell and rebuild. | Play |
    | 2 | Monte Carlo | 4 notebooks, all 12 data sets: (1) laws, limits, theory, glossary (2) methods, models, datasets, groups (3) chains, rare (4) physics, interview | Play |
    | 3 | Scientific Modelling | 3 notebooks, 1 for each tool (Dimensionless Number Finder, Model Nondimensionalizer, Regime Map Builder). No custom equations: write a custom model as a Rust cell and rebuild. | Play |
-   | 4 | Section Lab | Sealed Rust artifact from visuals | Play |
-   | 5 | Beam diagram | Sealed Rust artifact from visuals | Play |
+   | 4 | Section Lab | Notebook. The solver is Rust in the cells, tested against the frozen reference fixtures. | Play |
+   | 5 | Beam diagram | Notebook (done). Supports and loads as text boxes, the example as a `choice`, units, diagrams, the hand calculation by Macaulay's method and a NASTRAN deck. The 23 fixture beams are checked at every build. | Play |
    | 6 | English Grammar | Story. Concepts and examples in chapters. Find box in the last chapter. | Stories |
    | 7 | Structural Distortion | Story. 1 chapter for each load (axial, bending, shear, torsion, warping, buckling). All 4 shapes by `choice`, loads by `slider`. 3D wireframe. Keep the "qualitative, no units" notice. | Stories |
    | 8 | Toulmin | Notebook. Write the essay as Markdown in Edit mode, 1 chapter for each argument with fixed headings. A cell checks the checklist and shows the paragraph. No JSON import. | Play |
