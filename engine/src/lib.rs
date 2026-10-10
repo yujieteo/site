@@ -62,6 +62,7 @@ pub extern "C" fn paint(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32,
 /// cells and their dependants marked stale. Op 1: the skill comments as JSON. Op 2: the
 /// narration plan (`say::plan`; input: src, assets). Ops 3, 4, 5: the podcast WAV, captions and
 /// line times from the synthesised audio (input: src, assets, then each line's `a`, f32 samples).
+/// Op 6: the live numbers an edit changed (`cell::retune`; input: src, built) as `[[k, value]…]`.
 #[unsafe(no_mangle)]
 pub extern "C" fn md(op: u32) -> u32 {
     let raw = input();
@@ -72,11 +73,11 @@ pub extern "C" fn md(op: u32) -> u32 {
     let assets = pack::unbundle(b.iter().find(|x| x.0 == "assets").map_or(&[], |x| x.1));
     let lock = assets.iter().find(|x| x.0 == "say.lock").map_or("", |x| std::str::from_utf8(x.1).unwrap_or(""));
     let audio: Vec<Vec<f32>> = b.iter().filter(|x| x.0 == "a").map(|x| x.1.chunks_exact(4).map(|c| f32::from_le_bytes(c.try_into().unwrap())).collect()).collect();
+    let built = doc::parse(text("built"));
+    let (now, was): (Vec<&str>, Vec<&str>) = (d.cells().iter().map(|c| c.0).collect(), built.cells().iter().map(|c| c.0).collect());
     let out = match op {
         0 => {
-            let built = doc::parse(text("built"));
-            let (now, was): (Vec<&str>, Vec<&str>) = (d.cells().iter().map(|c| c.0).collect(), built.cells().iter().map(|c| c.0).collect());
-            let (map, stale) = cell::stale(&now, &was);
+            let (map, stale) = cell::stale(&cell::retune(&now, &was).0, &was);
             let run = doc::Run { out: all("o"), ctl: all("c"), map, stale };
             let img = |p: &str| assets.iter().find(|x| x.0 == p).map_or(p.into(), |x| pack::data_url(p, x.1));
             doc::article(&d, &run, &img)
@@ -85,7 +86,8 @@ pub extern "C" fn md(op: u32) -> u32 {
         2 => say::plan(&d, lock),
         3 => return ret(say::wav(&d, lock, &audio)),
         4 => say::vtt(&d, lock, &audio),
-        _ => return ret(say::times(&d, lock, &audio)),
+        5 => return ret(say::times(&d, lock, &audio)),
+        _ => format!("[{}]", cell::retune(&now, &was).1.iter().map(|(k, v)| format!("[{k},{v}]")).collect::<Vec<_>>().join(",")),
     };
     ret(out.into_bytes())
 }

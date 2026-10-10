@@ -15,7 +15,7 @@ R1 is a ground radar. T3 is an aircraft eighty-eight kilometres away, flying on 
 
 <!-- skill: Narration lives in say blocks, one per chapter, written to be heard: short sentences, numbers rounded as spoken, no symbols. -->
 
-## The link
+## The link {scene=8}
 
 One transmitter and one receiver share an antenna, so the pulse travels out and the echo travels back. The preset is synthetic, except the 10 GHz carrier; the controls start at it, and every chapter below follows them.
 
@@ -123,7 +123,7 @@ println!("ρ_req = {:.6} per pulse ({req_db:.5} dB) for Pd = {}", pow(10.0, req_
 To be found nine times in ten, with one false alarm in a million, each pulse needs a signal to noise ratio of about minus four point nine decibels.
 ```
 
-## The budget {scene=8}
+## The budget
 
 The radar equation gives the echo's power, and the pulse length and noise temperature turn it into a signal-to-noise ratio:
 
@@ -131,7 +131,7 @@ $$
 P_r = \frac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 R^4 L}, \quad \rho_1 = \frac{P_r \tau}{k T_s}
 $$
 
-Move the time here, or the link's controls in the first chapter. Below the required $P_d$ the target dot stays amber.
+Move the time here, or the link's controls in the first chapter; the picture there follows both. Below the required $P_d$ the target dot stays amber.
 
 ```rust
 //| caption: The link at the chosen time. The preset's reference values at t = 0 are asserted, so a drift fails the build.

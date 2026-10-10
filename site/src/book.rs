@@ -142,12 +142,8 @@ pub fn notebook(slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>, Vec<(Strin
     let script = format!(
         "<script id=\"source\" type=\"text/markdown\">{0}</script><script id=\"built\" type=\"text/markdown\">{0}</script><script id=\"run\" type=\"application/json\">{1}</script><script id=\"manifest\" type=\"application/json\">{manifest}</script><script id=\"assets\" type=\"application/octet-stream\">{assets}</script><script id=\"wasm\" type=\"application/octet-stream\">{2}</script>\n<script>{HOST}</script>",
         raw(&src), raw(&run.to_string()), pack::base64(&wasm));
-    let fam = theme::find(theme_id).map_or(theme_id, |f| f.0);
-    let mut attrs = format!(" data-seed=\"{}\" data-theme=\"{}\"", d.get("seed").parse::<u32>().unwrap_or(1), esc(fam));
-    let custom: String = theme::overrides(d.get("colors")).iter().map(|(i, c)| format!("--{}:#{c:06x};", theme::TOKENS[*i])).collect();
-    if !custom.is_empty() {
-        write!(attrs, " style=\"{custom}\"").unwrap();
-    }
+    // The page wears the reader's theme (the header's); `theme`, `print` and `colors` are the exports'.
+    let attrs = format!(" data-seed=\"{}\"", d.get("seed").parse::<u32>().unwrap_or(1));
     let s = Story { slug: slug.into(), title: d.get("title").into(), summary: d.get("summary").into(), palette: d.get("palette").into(), thumb: d.get("thumb").parse().ok(), chapters: d.chapters().into_iter().map(|c| c.title).collect() };
     let body = format!(r#"<h1>{}</h1><p class="lede">{}</p>{tools}<article data-article style="{}">{article}</article>"#, esc(&s.title), esc(&s.summary), esc(&vars(&s.palette)));
     let pages = VIEWS.iter().map(|(f, ..)| {

@@ -14,6 +14,8 @@ struct Book { cell: usize, out: Vec<String>, ctl: Vec<String>, pre: String, n: u
 thread_local! {
     static BOOK: RefCell<Book> = RefCell::default();
     static INPUT: RefCell<Vec<f64>> = const { RefCell::new(vec![]) };
+    static NUMS: RefCell<Vec<f64>> = const { RefCell::new(vec![]) };
+    static PANIC: RefCell<String> = const { RefCell::new(String::new()) };
 }
 static CELL: AtomicUsize = AtomicUsize::new(0);
 
@@ -68,6 +70,14 @@ pub fn choice(label: &str, opts: &[&str], default: usize) -> usize {
         v
     })
 }
+
+/// A live number: the builder writes each float literal of a cell's body as `num(k, literal)`,
+/// so the page can change it without a rebuild (`nb_num`, `cell::retune`).
+pub fn num<F: Float>(k: usize, v: F) -> F { NUMS.with_borrow(|n| n.get(k).copied()).filter(|x| x.is_finite()).map_or(v, F::of) }
+
+pub trait Float: Copy { fn of(x: f64) -> Self; }
+impl Float for f64 { fn of(x: f64) -> f64 { x } }
+impl Float for f32 { fn of(x: f64) -> f32 { x as f32 } }
 
 /// The numbers a data scene draws (see `scene`).
 pub fn stage(v: &[f64]) { with(|b| b.stage = v.to_vec()) }
@@ -135,8 +145,15 @@ pub fn run(program: Program) -> String {
     format!("{{\"out\":[{}],\"ctl\":[{}],\"stage\":[{}],\"err\":{err}}}", arr(&b.out), arr(&b.ctl), stage.join(","))
 }
 
-/// For the page: run and leave the JSON in the output buffer.
-pub fn reply(program: Program) -> u32 { crate::ret(run(program).into_bytes()) }
+/// For the page: run and leave the JSON in the output buffer. A panic aborts (a trap); its
+/// message waits for `nb_panic`.
+pub fn reply(program: Program) -> u32 {
+    std::panic::set_hook(Box::new(|p| PANIC.set(format!("panicked: {}", p.payload_as_str().unwrap_or("?")))));
+    crate::ret(run(program).into_bytes())
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn nb_panic() -> u32 { crate::ret(PANIC.take().into_bytes()) }
 
 /// For the builder: run natively, print the JSON, and fail on error or panic.
 pub fn native(program: Program) {
@@ -149,6 +166,11 @@ pub fn native(program: Program) {
 #[unsafe(no_mangle)]
 pub extern "C" fn nb_input(k: u32, v: f64) {
     INPUT.with_borrow_mut(|i| (i.resize(i.len().max(k as usize + 1), f64::NAN), i[k as usize] = v).1)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn nb_num(k: u32, v: f64) {
+    NUMS.with_borrow_mut(|i| (i.resize(i.len().max(k as usize + 1), f64::NAN), i[k as usize] = v).1)
 }
 
 /// The cell running when the program stopped (after a trap).

@@ -1,7 +1,8 @@
 /* The notebook: quiet tools, dialogs for choices, cells, figures and the four views. */
 .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; font-size: 0.875rem; color: var(--muted); margin: -2.5rem 0 2.5rem; }
 .tools button { border: 0; padding: 0.25rem 0; }
-.tools .sp { flex: 1; text-align: right; font: 0.75rem var(--mono); }
+.tools .sp { flex: 1 1 12rem; text-align: right; font: 0.75rem var(--mono); }
+.tools .sp button { margin-left: 0.5rem; text-decoration: underline; text-underline-offset: 0.2em; }
 dialog form { position: relative; padding: 1.25rem; }
 dialog h2 { font-size: 1.25rem; padding-right: 2rem; }
 dialog h3 { font: 0.75rem var(--mono); color: var(--muted); margin: 1.25rem 0 0.5rem; }
@@ -52,7 +53,7 @@ figure img { display: block; max-width: 100%; height: auto; }
 :is([data-view=slides], [data-view=handout]) .slide:not(:has(> .frame)) > * { margin-right: 4cqi; }
 :is([data-view=slides], [data-view=handout]) .slide h2 { font-size: 4.4cqi; margin-top: 3.5cqi; }
 :is([data-view=slides], [data-view=handout]) .slide .frame { position: absolute; top: 3.125cqi; right: 3.125cqi; width: 50cqi; max-width: none; margin: 0; }
-:is([data-view=slides], [data-view=handout]) .slide :is(.out, .caption), :is([data-view=slides], [data-view=handout], [data-view=article]) .code { display: none; }
+:is([data-view=slides], [data-view=handout]) .slide :is(.out, .caption, .ctls), :is([data-view=slides], [data-view=handout], [data-view=article]) .code { display: none; }
 [data-view=slides] { scroll-snap-type: y mandatory; }
 [data-view=slides] .chapter { max-width: none; min-height: 100svh; display: grid; align-content: center; scroll-snap-align: center; }
 [data-view=slides] .slide { width: min(100%, 150svh); margin: 0 auto; }

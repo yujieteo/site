@@ -103,12 +103,19 @@
   const built = text("built"), assets = b64(text("assets")), manifest = text("manifest");
   stage = new Float32Array(result.stage.map((v) => v ?? NaN));
   const md = (op, entries) => dec.decode(call("md", bundle(entries), op));
+  // An edit that only changes numbers in cell bodies reruns the compiled cells with the new values.
+  // Edits are kept in this browser (a draft per notebook) until they match the built page again.
+  let tuned = "[]";
+  const key = "draft:" + location.pathname.replace(/[^/]*$/, "");
   const render = () => {
+    try { source === built ? localStorage.removeItem(key) : localStorage.setItem(key, JSON.stringify([built, source])); } catch (e) {}
     article.innerHTML = md(0, [["src", source], ["built", built], ...result.out.map((o) => ["o", o]), ...result.ctl.map((c) => ["c", c]), ["assets", assets]]);
     $$("canvas[data-scene]", article).forEach(watch), redraw();
+    const t = md(6, [["src", source], ["built", built]]);
+    if (t !== tuned) (tuned = t), run();
   };
-  const WORKER = `onmessage = ({ data: [m, v] }) => { let e; try { e = new WebAssembly.Instance(m, {}).exports; v.forEach((x, k) => e.nb_input(k, x)); const n = e.nb_run();
-    postMessage({ json: new TextDecoder().decode(new Uint8Array(e.memory.buffer, e.out(), n)) }); } catch (x) { postMessage({ trap: String(x), cell: e ? e.nb_cell() : 0 }); } };`;
+  const WORKER = `onmessage = ({ data: [m, v, t] }) => { let e; try { e = new WebAssembly.Instance(m, {}).exports; v.forEach((x, k) => e.nb_input(k, x)); t.forEach(([k, x]) => e.nb_num(k, x)); const n = e.nb_run();
+    postMessage({ json: new TextDecoder().decode(new Uint8Array(e.memory.buffer, e.out(), n)) }); } catch (x) { let m = String(x); try { const k = e.nb_panic(); m = new TextDecoder().decode(new Uint8Array(e.memory.buffer, e.out(), k)) || m; } catch {} postMessage({ trap: m, cell: e ? e.nb_cell() : 0 }); } };`;
   let worker, busy = false, again = false;
   const sig = (h) => (h.match(/data-k="\d+"|<label>[^<]*/g) || []).join();
   const fail = (k, msg) => { const c = $(`[data-cell="${k}"]`, article); if (c) c.insertAdjacentHTML("beforeend", '<p class="err"></p>'), (c.lastChild.textContent = msg); };
@@ -132,11 +139,11 @@
     const finish = (r) => (clearTimeout(timer), (busy = false), apply(r), done(result), again && ((again = false), run()));
     const timer = setTimeout(() => (worker.terminate(), (worker = null), finish({ trap: "stopped after 10 s", cell: 0 })), 10000);
     worker.onmessage = (e) => finish(e.data);
-    worker.postMessage([module, values()]);
+    worker.postMessage([module, values(), JSON.parse(tuned)]);
   });
   article.addEventListener("input", ({ target: t }) => t.dataset.k && (t.nextElementSibling?.tagName === "OUTPUT" && (t.nextElementSibling.textContent = t.value), run()));
 
-  // Tools: the view is the page; light or dark is the site's (the header's button).
+  // Tools: the view is the page; the theme is the site's (the header's dialog).
   const download = (name, data) => Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([data])), download: name }).click();
   const raw = (s) => s.replaceAll("</", "<\\/");
   const say = (msg) => status && (status.textContent = msg);
@@ -258,8 +265,8 @@
       vim(0), vim(105), editor.focus(); // it opens in insert mode: typing edits, Esc for Vim
     },
     save: () => {
-      const doc = html.cloneNode(true); // without the reader's light or dark choice
-      doc.removeAttribute("data-mode");
+      const doc = html.cloneNode(true); // without the reader's theme
+      doc.removeAttribute("data-mode"), doc.removeAttribute("data-theme");
       $("#source", doc).textContent = raw(source), ($("#run", doc).textContent = raw(JSON.stringify(result)));
       $$(".vim", doc).forEach((e) => e.remove()), $$("canvas", doc).forEach((c) => (c.removeAttribute("width"), c.removeAttribute("height")));
       download(name + ".html", "<!doctype html>\n" + doc.outerHTML);
@@ -289,4 +296,11 @@
     run: (v = {}) => (Object.entries(v).forEach(([k, x]) => { const el = $(`[data-k="${k}"]`, article); if (el) el.value = x; }), run()),
     export: (kind, form) => act[kind]?.(form), // "pdf" (form 0-3: notebook, slides, handout, article), "zip", "save", "manifest", "podcast", "captions", "video"
   };
+  let draft;
+  try { draft = JSON.parse(localStorage.getItem(key)); } catch (e) {}
+  if (typeof draft?.[1] === "string" && draft[1] !== built) {
+    const discard = Object.assign(document.createElement("button"), { type: "button", textContent: "Discard" });
+    discard.onclick = () => (window.notebook.setSource(built), say("Edits discarded."));
+    window.notebook.setSource(draft[1]), status?.replaceChildren(`Restored your edits from this browser${draft[0] === built ? "" : ", made before this page was rebuilt"}. `, discard);
+  }
 })();

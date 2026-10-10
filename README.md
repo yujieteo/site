@@ -41,9 +41,9 @@ title: One radar, one target
 summary: One line for the Stories index.
 palette: #2f4a5c #13222c #f2a541 #fbe8a6   (scene sky, shade, glow, light)
 thumb: 41213                                (optional: a seeded thumbnail for the index card)
-theme: site                                 (a family; light or dark is the reader's, see below)
-colors: accent #c0653f                      (custom overrides, comma separated)
-print: site-light                           (export theme; default: the theme's own preset)
+theme: site                                 (the exports' family; the page wears the reader's theme)
+colors: accent #c0653f                      (export overrides, comma separated)
+print: site-light                           (export preset; default: the theme's own preset)
 seed: 20261003
 voice: af_heart                             (narration: af_heart or am_michael; speed: 1)
 pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes for words, comma separated)
@@ -69,16 +69,21 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
 - A chapter is a slide (title, scene, body) followed by its narration. Render (a dialog) switches the
   view in place: Notebook (code, controls, outputs, live scenes), Slides (one 16:9 slide per chapter),
   Handout (each slide with its narration beside it) and Article (continuous prose, numbered sections).
-  Export is a dialog too. Light or dark follows the device until the header's button (on every
-  page) picks the other; the choice is remembered in the browser.
+  Export is a dialog too. The theme is the reader's, for the whole site: the header's button opens a
+  dialog of the seven families (`engine/src/theme.rs`) and Auto, Light or Dark (Auto follows the
+  device), remembered in the browser. Exports keep the notebook's own `theme`, `print` and `colors`.
 - Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
   (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document, outputs and display lists,
   in the export theme with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,
   assets, manifest) and `manifest.json` with every version and hash. Edit, Run, Export and Save (one
   editable HTML file) work in the page, and the page's PDFs are byte-identical to the build's. Edit
-  opens the Markdown in insert mode (Esc for Vim) and the page follows the text as it changes. Run
-  re-runs the compiled cells from clean and reports it. Edited cells and their dependants are marked
-  stale (their code runs after a rebuild), and Export stops on stale or failed outputs.
+  opens the Markdown in insert mode (Esc for Vim) and the page follows the text as it changes; the
+  edits are kept in the browser until they match the built page again or are discarded. Run re-runs
+  the compiled cells from clean and reports it. Float literals in a cell's body (not in `fn`, `const`
+  or other items) are live: the builder reads each through `nb::num`, so an edit that changes only
+  those numbers re-runs at once with the new values (`cell::retune`). Any other edited cell and its
+  dependants are marked stale (their code runs after a rebuild), and Export stops on stale or failed
+  outputs. A panic in the page shows its message at its cell.
   PDF images are PNGs in grey, RGB or palette colour with at most binary or colour-key transparency.
 - Narration is rendered in the page, like BeamdSwitch: Export → Podcast (WAV), Captions (WebVTT) or
   Video (the slides as the narration reaches them, with the podcast as sound). Rust splits the
@@ -92,8 +97,11 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   real time (MP4 where the browser records it, else WebM), so it is not byte-reproducible.
 
 Notes are read at build time from a UniiChat export (default `../site/data/uniichat/memory.json`), never
-committed here. Each line is sanitised again: session tags dropped, paths and emails redacted, any line
-with a credential pattern refused.
+committed here: its notes and its summaries, one per aligned block of 2, 4, 8, ... notes. The page is the
+summary tree, oldest first (each summary opens onto its two halves, down to the notes), with a search
+over notes and summaries (every word must appear) whose hits open the tree where they are. Each line is
+sanitised again: session tags dropped, paths and emails redacted, any line with a credential pattern
+withheld.
 
 ## Budget
 

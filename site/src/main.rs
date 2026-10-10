@@ -7,11 +7,12 @@ mod cells;
 
 use book::{FONTS, font};
 use engine::{doc, pack, theme};
-use std::{fmt::Write, fs, path::Path};
+use std::{collections::HashMap, fmt::Write, fs, path::Path};
 
 const SHELL: &str = include_str!("../../web/shell.html");
 const STYLE: &str = concat!(include_str!("../../web/style.css"), include_str!("../../web/book.css"));
 pub const HOST: &str = include_str!("../../web/host.js");
+const NOTES: &str = include_str!("../../web/notes.js");
 const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
 
 use doc::esc;
@@ -58,6 +59,16 @@ fn render(p: &Page, wasm: &str, index: &str) -> String {
     } else { String::new() };
     SHELL.replace("{{attrs}}", &p.attrs).replace("{{title}}", &esc(&p.title)).replace("{{root}}", &root)
         .replace("{{style}}", &(font_css(p.fonts) + &theme::css() + STYLE)).replace("{{body}}", &p.body).replace("{{script}}", &script).replace("{{index}}", index)
+        .replace("{{themes}}", &themes())
+}
+
+/// The header's theme dialog: one button per family, its swatch the light and dark background and accent.
+fn themes() -> String {
+    theme::THEMES.iter().map(|(f, _, _, l, d)| {
+        let c = |p: &str, i: usize| p.split(' ').nth(i).unwrap_or("000000").to_string();
+        let name: Vec<String> = f.split('-').map(|w| w[..1].to_uppercase() + &w[1..]).collect();
+        format!(r#"<button type="button" value="{f}" style="--a:#{};--b:#{};--c:#{};--d:#{}"><i></i>{}</button>"#, c(l, 0), c(l, 6), c(d, 0), c(d, 6), name.join(" "))
+    }).collect()
 }
 
 /// Redact private details from a log line; None when it must not be published at all.
@@ -87,30 +98,73 @@ fn sanitize(text: &str) -> Option<String> {
     Some(out)
 }
 
-/// The Notes page body, and one search entry per day.
+/// The largest aligned blocks that tile notes 0..n, as (first, size): UniiChat summarises each
+/// aligned block of 2, 4, 8, ... notes, so these are the tree's roots.
+fn roots(n: usize) -> Vec<(usize, usize)> {
+    let (mut v, mut lo) = (vec![], 0);
+    while lo < n {
+        let mut size = 1;
+        while lo % (size * 2) == 0 && lo + size * 2 <= n { size *= 2 }
+        v.push((lo, size));
+        lo += size;
+    }
+    v
+}
+
+type Note = (String, &'static str, Option<String>);
+
+/// One branch of the summary tree: a summary that opens onto its two halves, down to the notes.
+fn branch(h: &mut String, notes: &[Note], sums: &HashMap<(usize, usize), Option<String>>, lo: usize, size: usize, root: bool) {
+    const HELD: &str = "<i>Withheld.</i>";
+    if size == 1 {
+        let (date, kind, text) = &notes[lo];
+        let text = text.as_deref().map_or(HELD.into(), esc);
+        let kind = if kind.is_empty() { "" } else { " · " }.to_string() + kind;
+        write!(h, r#"<li id="n{lo}"><span>#{lo} · {}{kind}</span>{text}</li>"#, esc(date)).unwrap();
+        return;
+    }
+    let hi = lo + size - 1;
+    let text = match sums.get(&(lo, hi)) { Some(Some(t)) => esc(t), Some(None) => HELD.into(), None => "<i>No summary yet.</i>".into() };
+    let (a, b) = (&notes[lo].0, &notes[hi].0);
+    let dates = if a == b { esc(a) } else { format!("{} – {}", esc(a), esc(b)) };
+    let open = if root { " open" } else { "" };
+    write!(h, r#"<li id="s{lo}-{hi}"><details{open}><summary><span>#{lo}–{hi} · {dates}</span>{text}</summary><ol>"#).unwrap();
+    branch(h, notes, sums, lo, size / 2, false);
+    branch(h, notes, sums, lo + size / 2, size / 2, false);
+    h.push_str("</ol></details></li>");
+}
+
+/// The Notes page body: the UniiChat log as its summary tree, oldest first, with a search over
+/// notes and summaries (web/notes.js). Also one site-search entry per day.
 fn notes(path: &str) -> (String, Vec<(String, String, String)>) {
     let Ok(raw) = fs::read_to_string(path) else {
         return (format!("<p class=\"muted\">No notes export at {}.</p>", esc(path)), vec![]);
     };
     let v: serde_json::Value = serde_json::from_str(&raw).expect("notes export is not JSON");
-    let mut items: Vec<_> = v["memories"].as_array().expect("notes export has no memories").iter()
-        .filter_map(|m| Some((m["date"].as_str()?, m["kind"].as_str()?, sanitize(m["text"].as_str()?)?)))
-        .filter(|(_, k, _)| ["note", "user", "unii"].contains(k))
-        .collect();
-    items.reverse();
-    let (mut html, mut day, mut found) = (String::new(), "", vec![]);
-    for (date, kind, text) in items {
-        if date != day {
-            write!(html, "<h2 id=\"{0}\">{0}</h2>", esc(date)).unwrap();
-            found.push((format!("Notes · {date}"), format!("notes/index.html#{date}"), String::new()));
-            day = date;
+    // A note keeps its place in the tree even when it is withheld (a kind not published, or sanitize refuses it).
+    let notes: Vec<Note> = v["memories"].as_array().expect("notes export has no memories").iter().map(|m| {
+        let kind = match m["kind"].as_str() { Some("note") => "note", Some("user") => "asked", Some("unii") => "answered", _ => "" };
+        let text = m["text"].as_str().filter(|_| !kind.is_empty()).and_then(sanitize);
+        (m["date"].as_str().unwrap_or("").to_string(), kind, text)
+    }).collect();
+    let sums: HashMap<_, _> = v["nodes"].as_array().into_iter().flatten()
+        .filter_map(|n| Some(((n["lo"].as_u64()? as usize, n["hi"].as_u64()? as usize), n["text"].as_str().and_then(sanitize)))).collect();
+    let (mut found, mut day) = (vec![], None);
+    for (i, (date, _, text)) in notes.iter().enumerate() {
+        if day != Some(date) {
+            found.push((format!("Notes · {date}"), format!("notes/index.html#n{i}"), String::new()));
+            day = Some(date);
         }
-        let label = match kind { "user" => "asked", "unii" => "answered", _ => "note" };
-        write!(html, "<p class=\"note\"><b>{label}</b>{}</p>", esc(&text)).unwrap();
         let x: &mut String = &mut found.last_mut().unwrap().2;
-        if x.len() < 400 { *x += &format!("{text} ") }
+        if let Some(t) = text.as_ref().filter(|_| x.len() < 400) { *x += &format!("{t} ") }
     }
-    (html, found)
+    // Every aligned block lies inside one root, so each well-formed summary is shown.
+    let shown = sums.iter().filter(|((lo, hi), t)| t.is_some() && lo < hi && *hi < notes.len() && (hi - lo + 1).is_power_of_two() && lo % (hi - lo + 1) == 0).count();
+    let mut tree = String::new();
+    for (lo, size) in roots(notes.len()) { branch(&mut tree, &notes, &sums, lo, size, true) }
+    (format!(r#"<p class="lede">{} notes and {shown} summaries from UniiChat, oldest first. Each summary stands for the notes beneath it.</p>
+<form class="sift" role="search"><input type="search" placeholder="Search notes and summaries" aria-label="Search notes and summaries" autocomplete="off" spellcheck="false"><button type="button" value="s" aria-pressed="true">Summaries</button><button type="button" value="n" aria-pressed="true">Notes</button><output aria-live="polite"></output></form>
+<ol class="hits" hidden></ol><ol class="tree">{tree}</ol>"#, notes.len()), found)
 }
 
 fn main() {
@@ -147,7 +201,8 @@ fn main() {
     let index = index(&found);
     pages.extend([
         Page::new("index.html", "Yu Jie", format!(r#"<p class="lede">Notes, stories and toys.</p><div class="doors">{doors}</div>"#)),
-        Page::new("notes/index.html", "Notes", format!(r#"<h1>Notes</h1><div class="notes">{notes}</div>"#)),
+        Page { script: if notes.contains("class=\"tree\"") { format!("<script>{NOTES}</script>") } else { String::new() },
+            ..Page::new("notes/index.html", "Notes", format!(r#"<h1>Notes</h1><div class="notes">{notes}</div>"#)) },
         Page::new("stories/index.html", "Stories", format!(r#"<h1>Stories</h1><ul class="list">{cards}</ul>"#)),
         Page::new("play/index.html", "Play", r#"<h1>Play</h1><p class="lede">Toys arrive here as they are made.</p>"#.into()),
     ]);
@@ -173,5 +228,12 @@ mod tests {
         assert_eq!(sanitize("[pi d3d2] see ~/notes/a.md and `/Users/me/x`.").unwrap(), "see [private path] and `[private path]`.");
         assert_eq!(sanitize("mail me@x.org at teoyujie.org").unwrap(), "mail [email] at [site]");
         assert!(sanitize("key ghp_abc").is_none());
+    }
+
+    #[test]
+    fn notes_tile_into_summary_roots() {
+        assert_eq!(roots(546), [(0, 512), (512, 32), (544, 2)]);
+        assert_eq!(roots(37), [(0, 32), (32, 4), (36, 1)]);
+        assert!(roots(0).is_empty());
     }
 }

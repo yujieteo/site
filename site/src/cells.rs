@@ -38,6 +38,8 @@ pub fn program(d: &Doc) -> Result<(String, Vec<usize>), String> {
     let cells = d.cells();
     let split: Vec<cell::Cell> = cells.iter().map(|c| cell::split(c.0)).collect();
     let (order, ex) = (cell::order(&split)?, cell::exports(&split));
+    let live: Vec<Vec<(usize, usize)>> = cells.iter().map(|c| cell::nums(c.0)).collect();
+    let first: Vec<usize> = live.iter().scan(0, |n, l| Some((*n, *n += l.len()).0)).collect();
     let (mut src, mut map) = (String::new(), vec![]);
     let mut put = |text: &str, md: usize| {
         src += &format!("{text}\n");
@@ -50,11 +52,21 @@ pub fn program(d: &Doc) -> Result<(String, Vec<usize>), String> {
     for &k in &order {
         let names = ex[k].join(", ") + if ex[k].len() == 1 { "," } else { "" };
         put(&format!("cell({k});\nlet ({names}) = {{"), 0);
-        split[k].body.iter().for_each(|(off, b)| put(b, line(k, *off)));
+        split[k].body.iter().for_each(|(off, b)| put(&tune(cells[k].0, *off, off + b.len(), &live[k], first[k]), line(k, *off)));
         put(&format!(";\n({names})\n}};"), 0);
     }
     put("Ok(())\n}\n#[unsafe(no_mangle)]\npub extern \"C\" fn nb_run() -> u32 {\n    reply(program)\n}", 0);
     Ok((src, map))
+}
+
+/// The body text `s[a..e]` with each live number `x` (`cell::nums`) read as `num(k, x)`.
+fn tune(s: &str, a: usize, e: usize, live: &[(usize, usize)], first: usize) -> String {
+    let (mut out, mut at) = (String::new(), a);
+    for (j, &(i, f)) in live.iter().enumerate().filter(|x| a <= x.1.0 && x.1.1 <= e) {
+        out += &format!("{}engine::nb::num({}, {})", &s[at..i], first + j, &s[i..f]);
+        at = f;
+    }
+    out + &s[at..e]
 }
 
 /// Rewrite `src/lib.rs:L:C` in compiler and panic messages to `<md>:N:C`.

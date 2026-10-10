@@ -2,12 +2,13 @@
 <html lang="en"{{attrs}}>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>try { const m = localStorage.getItem("mode"); if (m === "light" || m === "dark") document.documentElement.dataset.mode = m; } catch (e) {}</script>
+<script>try { const h = document.documentElement, m = localStorage.getItem("mode"), t = localStorage.getItem("theme"); if (m === "light" || m === "dark") h.dataset.mode = m; if (t) h.dataset.theme = t; } catch (e) {}</script>
 <title>{{title}}</title>
 <style>{{style}}</style>
-<header class="top"><a href="{{root}}index.html">Yu Jie</a><nav><a href="{{root}}notes/index.html">Notes</a><a href="{{root}}stories/index.html">Stories</a><a href="{{root}}play/index.html">Play</a><button type="button" class="search" aria-label="Search" aria-keyshortcuts="Control+K Meta+K"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.75" cy="6.75" r="4.75"/><path d="m10.25 10.25 4 4"/></svg></button><button type="button" class="mode" aria-label="Dark mode" title="Light or dark"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button></nav></header>
+<header class="top"><a href="{{root}}index.html">Yu Jie</a><nav><a href="{{root}}notes/index.html">Notes</a><a href="{{root}}stories/index.html">Stories</a><a href="{{root}}play/index.html">Play</a><button type="button" class="search" aria-label="Search" aria-keyshortcuts="Control+K Meta+K"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.75" cy="6.75" r="4.75"/><path d="m10.25 10.25 4 4"/></svg></button><button type="button" class="mode" aria-label="Theme" title="Theme"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button></nav></header>
 <main>{{body}}</main>
 <dialog class="find" aria-label="Search"><form method="dialog"><input type="search" placeholder="Search notes and stories" aria-label="Search" autocomplete="off" spellcheck="false"><ol></ol></form></dialog>
+<dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="fams">{{themes}}</div><div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div></form></dialog>
 <script id="index" type="application/json">{{index}}</script>
 <script>
 // Search: Ctrl K (⌘K on a Mac) or the header's icon. Every word must appear; the builder writes the index.
@@ -31,17 +32,22 @@
   $("form", d).addEventListener("submit", () => { const a = $("a", ol); if (a) location.href = a.href; });
   d.addEventListener("click", (e) => e.target === d && d.close());
 })();
-// Light or dark: the device's, until the header's button picks the other; the choice is remembered.
+// Theme: a family and light, dark or the device's (Auto), picked in the header's dialog and
+// remembered for every page. Exports keep their own theme.
 (() => {
-  const b = document.querySelector(".mode"), h = document.documentElement, dev = matchMedia("(prefers-color-scheme: dark)");
-  const own = () => (dev.matches ? "dark" : "light"), now = () => h.dataset.mode || own(), show = () => b.setAttribute("aria-pressed", now() === "dark");
-  b.addEventListener("click", () => {
-    const m = now() === "dark" ? "light" : "dark";
-    m === own() ? delete h.dataset.mode : (h.dataset.mode = m);
-    try { h.dataset.mode ? localStorage.setItem("mode", m) : localStorage.removeItem("mode"); } catch (e) {}
+  const h = document.documentElement, d = document.querySelector(".look"), fam = (b) => b.parentNode.className === "fams";
+  const show = () => d.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.value === (fam(b) ? h.dataset.theme || "site" : h.dataset.mode || "auto")));
+  const set = (k, v) => {
+    v ? (h.dataset[k] = v) : delete h.dataset[k];
+    try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {}
     show();
+  };
+  document.querySelector(".mode").addEventListener("click", () => (show(), d.showModal()));
+  d.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (e.target === d) d.close();
+    else if (b) fam(b) ? set("theme", b.value === "site" ? "" : b.value) : set("mode", b.value === "auto" ? "" : b.value);
   });
-  dev.addEventListener("change", show), show();
 })();
 </script>
 {{script}}

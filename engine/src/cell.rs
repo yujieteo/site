@@ -161,6 +161,71 @@ pub fn stale(now: &[&str], was: &[&str]) -> (Vec<Option<usize>>, Vec<bool>) {
     }
 }
 
+/// The significant tokens as (kind, start, end): no spaces or comments, and `1e-6` one number.
+fn sig(s: &str) -> Vec<(T, usize, usize)> {
+    let mut v: Vec<(T, usize, usize)> = vec![];
+    for (k, t) in lex(s).into_iter().filter(|x| !matches!(x.0, T::Ws | T::Com)) {
+        let a = t.as_ptr() as usize - s.as_ptr() as usize;
+        match v.as_slice() {
+            [.., (T::Num, i, j), (T::P, _, e)] if s[*i..*j].ends_with(['e', 'E']) && !s[*i..].starts_with("0x") && matches!(&s[*j..*e], "+" | "-") && k == T::Num => {
+                let i = *i;
+                v.truncate(v.len() - 2);
+                v.push((T::Num, i, a + t.len()));
+            }
+            _ => v.push((k, a, a + t.len())),
+        }
+    }
+    v
+}
+
+/// A float literal's value (`1.5`, `2e-3`, `1_000.0f32`, `7f64`), or None for an integer.
+fn float(t: &str) -> Option<f64> {
+    let core = t.trim_end_matches("f64").trim_end_matches("f32");
+    let f = core.len() < t.len() || core.contains(['.', 'e', 'E']);
+    (f && !t.contains(['u', 'i', 'x', 'o', 'b'])).then(|| core.replace('_', "").parse().ok()).flatten().filter(|x: &f64| x.is_finite())
+}
+
+/// A cell's live numbers: the byte ranges of the float literals in its body, outside consts
+/// and statics, tuple fields and patterns. The builder reads each one through `nb::num`, so the
+/// page can change it (`retune`) without a rebuild. Literals in hoisted items stay fixed.
+pub fn nums(s: &str) -> Vec<(usize, usize)> {
+    let (body, t) = (split(s).body, sig(s));
+    let (mut v, mut skip) = (vec![], false);
+    for (k, &(kind, a, e)) in t.iter().enumerate() {
+        let w = &s[a..e];
+        skip = (skip || matches!(w, "const" | "static")) && w != ";";
+        let tok = |j: usize| t.get(j).map_or("", |x| &s[x.1..x.2]);
+        if kind == T::Num && !skip && float(w).is_some() && (tok(k.wrapping_sub(1)) != "." || tok(k.wrapping_sub(2)) == ".") && !(tok(k + 1) == "=" && tok(k + 2) == ">")
+            && body.iter().any(|(o, b)| *o <= a && e <= o + b.len()) { v.push((a, e)) }
+    }
+    v
+}
+
+/// Number-only edits. Each current cell that matches the compiled cell at its position token
+/// for token, except for new values of its live numbers, takes the compiled text (so it is not
+/// stale); the new values come back keyed as the builder numbers them: the live numbers of
+/// earlier cells, then their place in the cell.
+pub fn retune<'a>(now: &[&'a str], was: &[&'a str]) -> (Vec<&'a str>, Vec<(usize, f64)>) {
+    let (mut eff, mut set, mut first) = (now.to_vec(), vec![], 0);
+    for (k, &w) in was.iter().enumerate() {
+        let live = nums(w);
+        if let Some(&n) = now.get(k) && n != w {
+            let (tw, tn) = (sig(w), sig(n));
+            let mut new = vec![];
+            let same = tw.len() == tn.len() && tw.iter().zip(&tn).all(|(x, y)| {
+                let (a, b) = (&w[x.1..x.2], &n[y.1..y.2]);
+                match live.iter().position(|r| *r == (x.1, x.2)) {
+                    Some(j) => y.0 == T::Num && n.as_bytes()[y.1].is_ascii_digit() && !b.contains(['u', 'i', 'x', 'o', 'b']) && b.replace('_', "").trim_end_matches("f64").trim_end_matches("f32").parse::<f64>().is_ok_and(|v| v.is_finite() && (a == b || (new.push((first + j, v)), true).1)),
+                    None => a == b,
+                }
+            });
+            if same { (eff[k], set) = (w, [set, new].concat()) }
+        }
+        first += live.len();
+    }
+    (eff, set)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -189,5 +254,17 @@ mod tests {
         assert!(order(&["let a = b;", "let b = a;"].map(split)).unwrap_err().contains("depend on each other"));
         let (map, st) = stale(&["let x = 3.0;", "let y = x;", "let z = 1;"], &["let x = 2.0;", "let y = x;", "let z = 1;"]);
         assert_eq!((map, st), (vec![Some(0), Some(1), Some(2)], vec![true, true, false]));
+    }
+
+    #[test]
+    fn live_numbers_change_without_a_rebuild() {
+        let s = "const K: f64 = 1.5;\nfn f() -> f64 { 2.5 }\nlet a = (1.0, 2e-3, 7, 3f32);\nlet b = a.0.1 + 0.5..1.0;\nmatch x { 4.0 => 1, _ => 2 };";
+        let n: Vec<&str> = nums(s).iter().map(|&(a, e)| &s[a..e]).collect();
+        assert_eq!(n, ["1.0", "2e-3", "3f32", "0.5", "1.0"]);
+        let was = ["let a = 1.0;", "let b = a * 2.0 + 3e-1;"];
+        let (eff, set) = retune(&["let a = 1.0;", "let b = a * 2.5  + 3e-2; // more"], &was);
+        assert_eq!((eff, set), (was.to_vec(), vec![(1, 2.5), (2, 0.03)]));
+        assert_eq!(retune(&["let a = 1.0;", "let b = a * 2.0 - 3e-1;"], &was), (vec!["let a = 1.0;", "let b = a * 2.0 - 3e-1;"], vec![]));
+        assert_eq!(retune(&["let a = 4;"], &was).1, [(0, 4.0)]);
     }
 }
