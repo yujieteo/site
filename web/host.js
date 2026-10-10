@@ -354,7 +354,7 @@
     // keeps insert-mode typing, keyboard composition, touch selection, paste and the clipboard.
     edit: () => {
       if (editor) { const box = editor.parentNode; box.hidden = !box.hidden; return (box.hidden ? $("[data-act=edit]") : editor).focus(); } // :q gives focus back to Edit
-      const box = make("div", { className: "vim" }), pad = PAD.map(([l, k]) => `<button type="button" data-key="${k}">${l}</button>`);
+      const box = make("div", { className: "vim" }), pad = PAD.map(([l, k]) => `<button type="button" tabindex="-1" data-key="${k}"${k === 17 ? ' aria-pressed="false"' : ""}>${l}</button>`);
       box.innerHTML = `<div class="pad">${pad.join("")}<output></output></div>`
         + `<textarea class="editor" name="source" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>`;
       const end = source.startsWith("---\n") ? source.indexOf("\n---\n", 3) : -1, body = end < 0 ? 0 : end + 5; // after the front matter
@@ -381,7 +381,7 @@
         todo.split(" ").forEach((a) => ex[a]?.());
         changed();
       };
-      // The pad's Ctrl holds for the next key only.
+      // The pad is for touch, so Tab skips it; its Ctrl holds for the next key only.
       const send = (k) => { if (ctrl.ariaPressed === "true" && k > 96 && k < 123) k &= 31; ctrl.ariaPressed = "false"; vim(k); };
       const keys = (s) => [...s].forEach((c) => send(c.codePointAt(0)));
       box.firstChild.addEventListener("pointerdown", (e) => e.preventDefault()); // focus, and the phone's keyboard, stay on the text
