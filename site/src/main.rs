@@ -19,21 +19,9 @@ const LINKS: &str = "viz/links/index.html";
 
 use doc::esc;
 
-/// The reader's font choices (Theme dialog): CSS family, then the file under fonts/ by name (`.otf` or `.ttf`).
-/// The first two are the default set-up, a text font and a math font; replace those two files to use licensed
-/// ones, nothing else changes. Every page embeds them; a browser loads one when it is used.
-const CHOICES: [(&str, &str); 5] = [("Serif Text", "serif"), ("Serif Math", "serif-math"), ("Source Serif 4", "source-serif"), ("Inter", "inter"), ("OpenDyslexic", "dyslexic")];
-
 fn font_css(n: usize) -> String {
-    let face = |fam: &str, ext: &str, bytes: Vec<u8>| {
-        let fmt = if ext == "ttf" { "truetype" } else { "opentype" };
-        format!("@font-face{{font-family:\"{fam}\";src:url({}) format(\"{fmt}\")}}\n", pack::data_url(&format!("f.{ext}"), &bytes))
-    };
-    let chosen = CHOICES.iter().map(|(fam, stem)| {
-        let (ext, bytes) = ["otf", "ttf"].iter().find_map(|e| Some((*e, fs::read(format!("fonts/{stem}.{e}")).ok()?))).expect("fonts/ is part of the source");
-        face(fam, ext, bytes)
-    });
-    FONTS[..n].iter().map(|(fam, f)| face(fam, "otf", font(f))).chain(chosen).collect()
+    let face = |fam: &str, f: &str| format!("@font-face{{font-family:\"{fam}\";src:url({}) format(\"opentype\")}}\n", pack::data_url("f.otf", &font(f)));
+    FONTS[..n].iter().map(|(fam, f)| face(fam, f)).collect()
 }
 
 /// A seeded thumbnail (`engine::thumb`): the seed alone picks its picture, palette and motion.

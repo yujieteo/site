@@ -35,7 +35,7 @@ against `visuals.lock`; files already there and matching need no network.
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (notes, doors, index). |
 | `content/stories/<slug>/`, `content/play/<slug>/` | A notebook (a story, or a tool in Play): `index.md` and its assets (images, `Cargo.lock`, `say.lock`). |
-| `fonts/` | Embedded font subsets (Fira Sans, Fira Mono, Fira Math, and the reader's choices: BaskervilleF with Termes Math, Source Serif 4, Inter, OpenDyslexic); `fonts.txt` holds their hashes and licences. |
+| `fonts/` | Embedded font subsets (Fira Sans, Fira Mono, Fira Math); `fonts.txt` holds their hashes. |
 
 ## Notebooks
 
@@ -81,7 +81,7 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   Handout (each slide with its narration beside it) and Article (continuous prose, numbered sections).
   Export is a dialog too. The theme is the reader's, for the whole site: the header's button opens a
   dialog of the 19 families (`engine/src/theme.rs`; Rose Pine is the default; sources in `docs/themes.md`), Auto, Light or Dark (Auto follows the
-  device) and a font set-up of a text font and a matching TeX math font (`fonts/fonts.txt`), remembered in the browser. The header is translucent, and sections and pages fade (not under reduced motion). Exports keep the notebook's own `theme` and the Fira fonts.
+  device), remembered in the browser. The header is translucent, and sections and pages fade (not under reduced motion). Exports keep the notebook's own `theme`.
 - Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
   (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document, outputs and display lists,
   in the export theme with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,

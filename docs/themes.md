@@ -1,6 +1,6 @@
 # Themes
 
-The Theme dialog offers 19 families, Auto, Light or Dark, and 5 font set-ups. Rose Pine is the default.
+The Theme dialog offers 19 families, Auto, Light or Dark. Rose Pine is the default.
 A family with one scheme (marked "one") wears it in light and dark mode. `engine/src/theme.rs` holds the palettes.
 
 The captain chose 15 themes from the appearance settings of the Codex app: Absolutely, Catppuccin, Everforest, GitHub,
@@ -30,22 +30,6 @@ and string colours. Where a text colour was below 4.5:1 on `bg` or `surface`, th
 | Vercel (light, dark) | Geist colours (`#000`, `#ededed`, `#a1a1a1`, `#0070f3`; [vercel.com/geist/colors](https://vercel.com/geist/colors)). Recalled, not checked against a file: see the PR. |
 | VS Code Plus (light, dark) | Shiki `light-plus` and `dark-plus`, which Codex uses: the Light+ and Dark+ themes of VS Code |
 | Xcode (light, dark) | Xcode "Default" light and dark source-editor colours. Recalled, not checked against a file: see the PR. |
-
-## Fonts
-
-Each file is a Latin subset made by `scripts/fonts.sh`. `fonts/fonts.txt` holds the hashes. The browser loads a font only when the reader picks it.
-
-Each choice is a pair of a text font and a math font with an OpenType MATH table. MathML uses the math font everywhere. Exports keep Fira.
-
-| Choice in the dialog | Text file | Math file | Licence |
-| --- | --- | --- | --- |
-| BaskervilleF (Libre Baskerville fork), Termes (Times-style) math. Default | `serif.otf` | `serif-math.otf` | OFL-1.1, GUST Font Licence |
-| Fira Sans, Fira Math | `sans.otf` | `math.otf` | OFL-1.1 |
-| Source Serif 4, Termes (Times-style) math | `source-serif.otf` | `serif-math.otf` | OFL-1.1, GUST Font Licence |
-| Inter, Fira Math | `inter.ttf` | `math.otf` | OFL-1.1 |
-| OpenDyslexic, Fira Math | `dyslexic.otf` | `math.otf` | OFL-1.1 |
-
-The default files come from TeX Live (nixpkgs 26.05). BaskervilleF is a fork of Libre Baskerville. It is not Storm Baskerville. Termes Math is a Times-style font. It is not Times New Roman. The GUST Font Licence is LPPL-based and allows a modified subset. It asks for a new name, so the subset is "Serif Math". To use licensed fonts, replace `serif.*` and `serif-math.*` by file swap.
 
 ## Header and fades
 
