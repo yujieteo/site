@@ -133,29 +133,59 @@ if _counts.is_empty() { println!("No paper names this theorem.") } else {
 
 The catalogue has every named result, with or without a proof. Records with an unknown score go last. To read a proof, type its name in the Theorem box.
 
+To study one subject, type arXiv topics, such as math.FA. The list then holds the records of those topics and every prerequisite that they need, at any depth, even when the prerequisite has another topic. Sort by dependency to read the basic results first. Tick Known on a row to hide it. The ticks stay in this browser.
+
 ```rust
-//| caption: Words from the name, the aliases, the key concepts or the statement. Empty finds every record.
+//| caption: Words from the name, the aliases, the key concepts or the statement. Empty finds every record. Topics are arXiv categories, archives or groups, with commas between them.
 let catalogue_query = field("Find in the catalogue", "");
+let topics = field("Topics", "");
 ```
 
 ```rust
-//| caption: The catalogue, found and sorted. The last column gives the count of proofs.
+//| caption: The catalogue, found and sorted. Depth is 0 for a result with no prerequisite, else 1 more than its deepest prerequisite. For the dependency sort, Lowest first puts the basic results first. The last column gives the count of proofs.
 let kind = choice("Kind", &KINDS.map(|k| k.0), 0);
 let order_by = choice("Sort by", &SORTS, 0);
 let preset = choice("Weights", &["Balanced", "Practitioner", "Researcher"], 0);
 let low_first = choice("Order", &["Highest first", "Lowest first"], 0) == 1;
-let shown = slider("Rows", 5.0, 100.0, 5.0, 20.0) as usize;
-let _found = find(&catalogue_query, kind, order_by, preset, low_first);
+let size = choice("Rows per page", &["100", "250", "500", "All"], 0);
+let show_known = choice("Known results", &["Hidden", "Shown"], 0) == 1;
+let marked: BTreeSet<String> = kept("Known").split_whitespace().map(String::from).collect();
+let _scope = scope(&topics);
+let mut _found = find(&catalogue_query, kind, order_by, preset, low_first, _scope.as_ref().map(|s| &s.1));
+let _listed = _found.len();
+_found.retain(|&i| show_known || !marked.contains(db().rows[i]["id"].as_str().unwrap_or("")));
+let _per = [100, 250, 500, usize::MAX][size].min(_found.len().max(1));
+let _pages = _found.len().div_ceil(_per).max(1);
+let _page = (pager(&format!("Page (1 to {_pages})"), _pages)).clamp(1, _pages);
+let (_first, _last) = ((_page - 1) * _per, (_page * _per).min(_found.len()));
 let _w = weights_of(preset);
-println!("{} of {} records match.", _found.len(), db().rows.len());
-table(&["#", "Result", "Kind", "Score", "Level", "Year", "Proofs"], &_found.iter().take(shown).enumerate().map(|(k, &i)| {
+if let Some((m, s)) = &_scope {
+    let n = |v: &[bool]| v.iter().filter(|&&x| x).count();
+    println!("{} records have the topics, and {} more are prerequisites.", n(m), n(s) - n(m));
+}
+println!("{} of {} records match.", _listed, db().rows.len());
+let _hidden = _listed - _found.len();
+let _known = db().rows.iter().filter(|r| marked.contains(r["id"].as_str().unwrap_or(""))).count();
+println!("{_known} records are marked Known. {_hidden} {} hidden here.", if _hidden == 1 { "is" } else { "are" });
+if order_by == 12 && graph().3 > 0 { println!("{} groups of results need each other in a cycle. Each group has one depth.", graph().3) }
+if _found.is_empty() { println!("No record to show.") } else {
+    println!("Rows {} to {} of {}. Page {_page} of {_pages}.", _first + 1, _last, _found.len());
+}
+let _rows: String = _found[_first.._last].iter().enumerate().map(|(k, &i)| {
     let r = &db().rows[i];
-    let proofs = r["id"].as_str().and_then(|id| db().learned.get(id)).map_or(0, |&t| proofs_of(&db().theorems[t]).len());
-    vec![(k + 1).to_string(), name(i), r["t"].as_str().unwrap_or("").replace("not-a-result:", "not a result: "),
+    let id = r["id"].as_str().unwrap_or("");
+    let proofs = db().learned.get(id).map_or(0, |&t| proofs_of(&db().theorems[t]).len());
+    let cells = [(_first + k + 1).to_string(), name(i), format!("{}{}", graph().1[i], if graph().2[i] { " (cycle)" } else { "" }),
+        r["t"].as_str().unwrap_or("").replace("not-a-result:", "not a result: "),
         score(r["s"].as_str().unwrap_or(""), &_w).map_or("unknown".into(), |v| format!("{v:.1}")),
         r["lv"].as_u64().and_then(|l| LEVELS.get(l as usize)).unwrap_or(&"").to_string(), r["yr"].as_u64().map_or(String::new(), |y| y.to_string()),
-        if proofs > 0 { proofs.to_string() } else { String::new() }]
-}).collect::<Vec<_>>());
+        if proofs > 0 { proofs.to_string() } else { String::new() }];
+    let on = if marked.contains(id) { " checked" } else { "" };
+    format!("<tr>{}<td><input type=\"checkbox\" data-mark=\"{}\" aria-label=\"Known: {}\"{on}></td></tr>",
+        cells.iter().map(|c| format!("<td>{}</td>", esc(c))).collect::<String>(), esc(id), esc(&name(i)))
+}).collect();
+html(&format!("<table><tr>{}<th>Known</th></tr>{_rows}</table>",
+    ["#", "Result", "Depth", "Kind", "Score", "Level", "Year", "Proofs"].map(|h| format!("<th>{h}</th>")).concat()));
 ```
 
 ## Concepts
@@ -202,7 +232,7 @@ The scores are judgements of a language model on public evidence, not measuremen
 //| caption: The data files, inflated and parsed once.
 use engine::doc::esc;
 use serde_json::{Value, value::RawValue};
-use std::{collections::BTreeMap, sync::OnceLock};
+use std::{collections::{BTreeMap, BTreeSet}, sync::OnceLock};
 
 type Raw = &'static RawValue;
 const EXPLORER: &[u8] = data!("viz/theorem-explorer/raw.json");
@@ -221,7 +251,7 @@ fn pack(file: &'static [u8], name: &str) -> &'static str {
 }
 
 /// The explorer's records and relations, and the learner's theorems, proofs, moves and concepts, joined by ID.
-struct Db { rows: Vec<Value>, relations: Vec<Value>, detail: Vec<Raw>, pop: BTreeMap<&'static str, Raw>, rubric: Value,
+struct Db { rows: Vec<Value>, relations: Vec<Value>, detail: Vec<Raw>, pop: BTreeMap<&'static str, Raw>, rubric: Value, tax: Value,
     theorems: Vec<Value>, proofs: Vec<Raw>, moves: Vec<Value>, concepts: Vec<Raw>, links: Vec<Value>,
     learned: BTreeMap<String, usize>, row_of: BTreeMap<String, usize> }
 
@@ -240,6 +270,7 @@ fn db() -> &'static Db {
         let (rows, relations) = (take("rows"), take("relations"));
         Db { learned: ids(&theorems), row_of: ids(&rows), rows, relations, detail: serde_json::from_str(pack(EXPLORER, "detail")).unwrap(),
             pop: serde_json::from_str(pack(EXPLORER, "popularity")).unwrap(), rubric: serde_json::from_str(top(EXPLORER)["rubric"].get()).unwrap(),
+            tax: serde_json::from_str(top(EXPLORER)["taxonomy"].get()).unwrap(),
             theorems, proofs, moves, concepts, links }
     })
 }
@@ -362,8 +393,8 @@ fn walk(t: &Value, p: &Value, k: usize) -> String {
 const KINDS: [(&str, &str); 14] = [("Results", "result"), ("Everything", ""), ("Theorems", "theorem"), ("Lemmas", "lemma"), ("Inequalities", "inequality"),
     ("Identities", "identity"), ("Formulas", "formula"), ("Principles", "principle"), ("Criteria", "criterion"), ("Proved conjectures", "conjecture-proved"),
     ("Constructions", "construction"), ("Classifications", "classification"), ("Other results", "other-result"), ("Not results", "not-a-result")];
-const SORTS: [&str; 12] = ["Score", "Effectiveness", "Research influence", "Practical impact", "Reach", "Low hypothesis burden", "Proof simplicity",
-    "Application simplicity", "Level", "Year", "Dependents", "Name"];
+const SORTS: [&str; 13] = ["Score", "Effectiveness", "Research influence", "Practical impact", "Reach", "Low hypothesis burden", "Proof simplicity",
+    "Application simplicity", "Level", "Year", "Dependents", "Name", "Dependency order"];
 
 /// The weights of a rubric preset (balanced, practitioner, researcher), in component order.
 fn weights_of(preset: usize) -> Vec<f64> {
@@ -375,16 +406,88 @@ fn score(s: &str, w: &[f64]) -> Option<f64> {
     s.bytes().zip(w).filter(|p| *p.1 > 0.0).map(|(c, w)| c.is_ascii_digit().then(|| w * (c - b'0') as f64 / 4.0)).sum()
 }
 
+/// The upper end of a record's score: an unknown weighted component counts as 4, rounded to 4 places.
+fn upper(s: &str, w: &[f64]) -> f64 {
+    let t: f64 = s.bytes().zip(w).filter(|p| *p.1 > 0.0).map(|(c, w)| if c.is_ascii_digit() { w * (c - b'0') as f64 / 4.0 } else { *w }).sum();
+    (t * 1e4).round() / 1e4
+}
+
+/// The prerequisite graph: each record's prerequisites, its depth, whether it is on a cycle, and the count of cycles.
+/// A record without prerequisite has depth 0, else 1 more than its deepest. The records of one cycle (a strongly
+/// connected group, found by Tarjan's walk) share one depth.
+fn graph() -> &'static (Vec<Vec<usize>>, Vec<usize>, Vec<bool>, usize) {
+    static G: OnceLock<(Vec<Vec<usize>>, Vec<usize>, Vec<bool>, usize)> = OnceLock::new();
+    G.get_or_init(|| {
+        let n = db().rows.len();
+        let pre: Vec<Vec<usize>> = db().rows.iter().enumerate().map(|(i, r)| {
+            let p: BTreeSet<usize> = arr(&r["pre"]).iter().filter_map(Value::as_u64).map(|j| j as usize).filter(|&j| j != i && j < n).collect();
+            p.into_iter().collect()
+        }).collect();
+        let (mut idx, mut low, mut comp, mut stack, mut comps) = (vec![n; n], vec![0; n], vec![n; n], vec![], Vec::<Vec<usize>>::new());
+        let mut count = 0;
+        for root in 0..n {
+            if idx[root] != n { continue }
+            (idx[root], low[root], count) = (count, count, count + 1);
+            stack.push(root);
+            let mut work = vec![(root, 0)];
+            while let Some(&(v, k)) = work.last() {
+                if k < pre[v].len() {
+                    work.last_mut().unwrap().1 += 1;
+                    let w = pre[v][k];
+                    if idx[w] == n {
+                        (idx[w], low[w], count) = (count, count, count + 1);
+                        stack.push(w);
+                        work.push((w, 0));
+                    } else if comp[w] == n { low[v] = low[v].min(idx[w]) }
+                } else {
+                    work.pop();
+                    if let Some(&(u, _)) = work.last() { low[u] = low[u].min(low[v]) }
+                    if low[v] == idx[v] {
+                        let mut m = vec![];
+                        while let Some(w) = stack.pop() { comp[w] = comps.len(); m.push(w); if w == v { break } }
+                        comps.push(m);
+                    }
+                }
+            }
+        }
+        // A component comes after every component that it reaches, so the depths of its prerequisites are known.
+        let mut cd = vec![0; comps.len()];
+        for (c, m) in comps.iter().enumerate() {
+            cd[c] = m.iter().flat_map(|&v| &pre[v]).filter(|&&w| comp[w] != c).map(|&w| cd[comp[w]] + 1).max().unwrap_or(0);
+        }
+        let cycles = comps.iter().filter(|m| m.len() > 1).count();
+        let (depth, cyclic) = (comp.iter().map(|&c| cd[c]).collect(), comp.iter().map(|&c| comps[c].len() > 1).collect());
+        (pre, depth, cyclic, cycles)
+    })
+}
+
+/// The records tagged with a topic (an arXiv category, archive or group, or an alias) and, as the second set, those
+/// records with every prerequisite that they need at any depth. None when no topic is set.
+fn scope(list: &str) -> Option<(Vec<bool>, Vec<bool>)> {
+    let tags: Vec<&str> = list.split(',').map(str::trim).filter(|t| !t.is_empty()).collect();
+    if tags.is_empty() { return None }
+    let tax = &db().tax;
+    let tags: Vec<&str> = tags.iter().map(|t| tax["aliases"][*t].as_str().unwrap_or(t)).collect();
+    let members: Vec<bool> = db().rows.iter().map(|r| arr(&r["cat"]).iter().filter_map(Value::as_u64).any(|c| {
+        let k = &tax["categories"][c as usize];
+        tags.iter().any(|t| [&k[0], &k[2], &k[3]].iter().any(|x| x.as_str() == Some(t)))
+    })).collect();
+    let mut all = members.clone();
+    let mut todo: Vec<usize> = (0..all.len()).filter(|&i| all[i]).collect();
+    while let Some(i) = todo.pop() { for &j in &graph().0[i] { if !all[j] { all[j] = true; todo.push(j) } } }
+    Some((members, all))
+}
+
 fn name(r: usize) -> String { text(&db().rows[r]["n"]) }
 
 /// The records that hold every word, of a kind, in an order. Unknown keys go last.
-fn find(words: &str, kind: usize, by: usize, preset: usize, low_first: bool) -> Vec<usize> {
+fn find(words: &str, kind: usize, by: usize, preset: usize, low_first: bool, only: Option<&Vec<bool>>) -> Vec<usize> {
     let (rows, w, words) = (&db().rows, weights_of(preset), words.to_lowercase());
     let want = KINDS[kind].1;
     let mut found: Vec<usize> = (0..rows.len()).filter(|&i| {
         let (t, q) = (rows[i]["t"].as_str().unwrap_or(""), rows[i]["q"].as_str().unwrap_or(""));
         let ok = match want { "" => true, "result" => !t.starts_with("not-a-result"), k => t.starts_with(k) };
-        ok && words.split_whitespace().all(|x| q.contains(x))
+        ok && only.is_none_or(|o| o[i]) && words.split_whitespace().all(|x| q.contains(x))
     }).collect();
     let key = |i: usize| -> Option<f64> {
         let r = &rows[i];
@@ -398,7 +501,12 @@ fn find(words: &str, kind: usize, by: usize, preset: usize, low_first: bool) -> 
             _ => None,
         }
     };
-    if by == 11 { found.sort_by_key(|&i| name(i).to_lowercase()) } else {
+    if by == 11 { found.sort_by_key(|&i| name(i).to_lowercase()) } else if by == 12 {
+        let d = &graph().1;
+        let hi = |i: usize| upper(rows[i]["s"].as_str().unwrap_or(""), &w);
+        found.sort_by(|&a, &b| if low_first { d[a].cmp(&d[b]) } else { d[b].cmp(&d[a]) }
+            .then_with(|| hi(b).total_cmp(&hi(a))).then_with(|| name(a).to_lowercase().cmp(&name(b).to_lowercase())).then(a.cmp(&b)))
+    } else {
         found.sort_by(|&a, &b| match (key(a), key(b)) {
             (Some(x), Some(y)) => if low_first { x.total_cmp(&y) } else { y.total_cmp(&x) }.then(a.cmp(&b)),
             (x, y) => y.is_some().cmp(&x.is_some()).then(a.cmp(&b)),
