@@ -307,7 +307,7 @@
     const chapters = $$(".chapter", article), chunks = [];
     // Text wrapped to width w from (x, y); returns the y below it.
     const para = (s, x, y, w, px, colour) => {
-      ctx.fillStyle = colour; ctx.font = `${px}px ${v("--sans")}`;
+      ctx.fillStyle = colour; ctx.font = `${px}px ${v("--text")}`;
       const lines = [""];
       for (const word of s.split(" ")) {
         const line = lines.at(-1) + " " + word;
@@ -325,7 +325,7 @@
       // The scene plays from its own t, starting as its chapter's first line is spoken.
       if (f) paint(ctx, f.dataset, (+f.dataset.t || 0) + t - times[plan.lines.findIndex((l) => l.chapter === ch)], pal(f), 600, 40, 640);
     };
-    await document.fonts.load(`56px ${v("--sans")}`);
+    await document.fonts.load(`56px ${v("--text")}`);
     rec.ondataavailable = (e) => chunks.push(e.data);
     src.buffer = buf; src.connect(dest); rec.start(1000); src.start();
     const t0 = ac.currentTime;
@@ -417,7 +417,7 @@
     },
     save: () => {
       const doc = html.cloneNode(true);
-      doc.removeAttribute("data-mode"); doc.removeAttribute("data-theme"); // without the reader's theme
+      doc.removeAttribute("data-mode"); doc.dataset.font = "sans"; doc.dataset.theme = "site"; // the site's own look, not the reader's
       $("#source", doc).textContent = raw(source); $("#run", doc).textContent = raw(JSON.stringify(result));
       $$(".vim", doc).forEach((e) => e.remove());
       $$("dialog[open]", doc).forEach((d) => d.removeAttribute("open")); // Export is still open as it saves
