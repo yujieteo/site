@@ -320,6 +320,14 @@ fn fit(t: &str) -> String {
 }
 fn bullets<S: AsRef<str>>(v: &[S]) -> String { format!("<ul>{}</ul>", v.iter().map(|x| format!("<li>{}</li>", esc(&fit(x.as_ref())))).collect::<String>()) }
 fn para(t: &str) -> String { format!("<p>{}</p>", esc(&fit(t))) }
+/// TeX from the data in the engine's TeX, which has no environments: a cases block gives "a  c, b  d" after a brace.
+fn display(t: &str) -> String {
+    let t = match (t.find("\\begin{cases}"), t.find("\\end{cases}")) {
+        (Some(i), Some(j)) => format!("{}\\left\\{{ {} \\right.{}", &t[..i], t[i + 13..j].replace('&', "\\quad ").replace("\\\\", ", \\quad "), &t[j + 11..]),
+        _ => t.into(),
+    };
+    mathml(&t, true)
+}
 /// A number with 4 significant digits.
 fn fmt(x: f64) -> String {
     if !x.is_finite() { return if x.is_nan() { "–".into() } else if x > 0.0 { "∞".into() } else { "−∞".into() } }
@@ -550,7 +558,7 @@ fn chain_card(m: &Value) -> String {
     let ex = |part: &str| list(0, "examples").iter().find(|e| e["id"] == m[part]["example"]).map_or(String::new(), |e| fit(s(&e["title"])));
     let with = list(0, "methods").iter().find(|x| x["id"] == m["comparison"]["with"]).map_or("", |x| s(&x["name"]));
     format!("<p><strong>{}.</strong> {}.</p>{}{}<h3>Assumptions</h3>{}<h3>Settings</h3>{}<h3>Where it works: {}</h3>{}<p>Settings: {}.</p><h3>Where it fails: {}</h3>{}<p>Settings: {}.</p><h3>Comparison with {}: {}</h3>{}",
-        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), mathml(s(&m["estimator"]), true), para(s(&m["estimatorText"])), bullets(&texts(&m["assumptions"])), bullets(&texts(&m["settings"])),
+        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), display(s(&m["estimator"])), para(s(&m["estimatorText"])), bullets(&texts(&m["assumptions"])), bullets(&texts(&m["settings"])),
         esc(&ex("suitable")), para(s(&m["suitable"]["text"])), esc(&card_settings(&m["suitable"])), esc(&ex("failure")), para(s(&m["failure"]["text"])), esc(&card_settings(&m["failure"])),
         esc(&fit(with)), esc(&ex("comparison")), para(s(&m["comparison"]["text"])))
 }
@@ -855,7 +863,7 @@ fn show_sweep(problem: &str, name: &str, rows: &[SweepRow]) {
 fn rare_card_html(m: &Value) -> String {
     let ex = |part: &str| rare_examples().iter().find(|p| p.id == s(&m[part]["preset"])).map_or(String::new(), |p| fit(&p.title));
     format!("<p><strong>{}.</strong> {}.</p>{}{}<h3>Assumptions</h3>{}<h3>Settings</h3>{}<h3>Where it works: {}</h3>{}<h3>Where it fails: {}</h3>{}<h3>Comparison with {}: {}</h3>{}",
-        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), mathml(s(&m["estimator"]), true), para(s(&m["estimatorText"])), bullets(&texts(&m["assumptions"])), bullets(&texts(&m["settings"])),
+        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), display(s(&m["estimator"])), para(s(&m["estimatorText"])), bullets(&texts(&m["assumptions"])), bullets(&texts(&m["settings"])),
         esc(&ex("suitable")), para(s(&m["suitable"]["text"])), esc(&ex("failure")), para(s(&m["failure"]["text"])),
         esc(&rare_name(s(&m["comparison"]["with"])).to_lowercase()), esc(&ex("comparison")), para(s(&m["comparison"]["text"])))
 }
