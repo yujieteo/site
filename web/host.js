@@ -250,7 +250,7 @@
       return u.startsWith(HF) ? new Response(await get("model/" + u.slice(HF.length))) : new Response(null, { status: 404 });
     };
     Object.defineProperty(self, "caches", { value: { open: async () => ({ match: async () => {}, put: async () => {} }) } });
-    onmessage = async ({ data: { lines, voice, speed, ...m } }) => {
+    onmessage = async ({ data: { lines, voice, ...m } }) => {
       try {
         ({ base, pins } = m);
         if (!tts) {
@@ -259,7 +259,7 @@
           env.wasmPaths = { mjs: await url(ort + "mjs", "text/javascript"), wasm: await url(ort + "wasm", "application/wasm") };
           tts = await KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", { dtype: "q8", device: "wasm" });
         }
-        const audio = [], o = { voice, speed };
+        const audio = [], o = { voice }; // kokoro-js speaks at its default speed, 1
         for (const [i, l] of lines.entries()) {
           postMessage({ at: i, of: lines.length });
           // From the planned phonemes; a line without them falls back to kokoro-js's own G2P.

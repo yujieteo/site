@@ -47,7 +47,7 @@ palette: #2f4a5c #13222c #f2a541 #fbe8a6   (scene sky, shade, glow, light)
 thumb: 41213                                (optional: a seeded thumbnail for the index card)
 theme: site                                 (the exports' family; the page wears the reader's theme)
 seed: 20261003
-voice: af_heart                             (narration: af_heart or am_michael; speed: 1)
+voice: af_heart                             (narration: af_heart or am_michael)
 pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes for words, comma separated)
 ---
 ```

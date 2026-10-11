@@ -76,16 +76,14 @@ pub fn ipa(ph: &str) -> String {
     ph.chars().map(|c| IPA.iter().find(|m| m.0 == c).map_or(c.to_string(), |m| m.1.into())).collect()
 }
 
-/// The plan the page speaks: voice, speed and each line's text and phonemes, as JSON.
+/// The plan the page speaks: voice and each line's text and phonemes, as JSON.
 pub fn plan(d: &Doc, lock: &str) -> String {
     let l: Vec<String> = lines(d, lock).iter()
         .map(|l| format!("{{\"chapter\":{},\"text\":{},\"ph\":{}}}", l.chapter, pack::json(&l.text), pack::json(&l.ph))).collect();
-    format!("{{\"voice\":{},\"speed\":{},\"lines\":[{}]}}", pack::json(voice(d)), speed(d), l.join(","))
+    format!("{{\"voice\":{},\"lines\":[{}]}}", pack::json(voice(d)), l.join(","))
 }
 
 pub fn voice(d: &Doc) -> &str { match d.get("voice") { "" => "af_heart", v => v } }
-
-fn speed(d: &Doc) -> f32 { d.get("speed").parse().unwrap_or(1.0) }
 
 /// The schedule: each line's start, in samples, after a lead-in and a pause between lines
 /// (longer between chapters), and the total length.
@@ -125,7 +123,7 @@ pub fn vtt(d: &Doc, lock: &str, audio: &[Vec<f32>]) -> String {
         let ms = s * 1000 / RATE;
         format!("{:02}:{:02}:{:02}.{:03}", ms / 3_600_000, ms / 60_000 % 60, ms / 1000 % 60, ms % 1000)
     };
-    let mut o = format!("WEBVTT\n\nNOTE\n{}: voice {} at speed {}, ", d.get("title"), voice(d), speed(d));
+    let mut o = format!("WEBVTT\n\nNOTE\n{}: voice {} at speed 1, ", d.get("title"), voice(d));
     w!(o, "Kokoro-82M v1.0 (q8, kokoro-js 1.2.1; see kokoro.lock). Podcast sha256 {}.\n", pack::sha256(&wav(d, lock, audio)));
     for ((l, a), s) in lines.iter().zip(audio).zip(starts) {
         let bytes: Vec<u8> = a.iter().flat_map(|x| x.to_le_bytes()).collect();
