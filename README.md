@@ -46,8 +46,6 @@ summary: One line for the Stories index.
 palette: #2f4a5c #13222c #f2a541 #fbe8a6   (scene sky, shade, glow, light)
 thumb: 41213                                (optional: a seeded thumbnail for the index card)
 theme: site                                 (the exports' family; the page wears the reader's theme)
-colors: accent #c0653f                      (export overrides, comma separated)
-print: site-light                           (export preset; default: the theme's own preset)
 seed: 20261003
 voice: af_heart                             (narration: af_heart or am_michael; speed: 1)
 pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes for words, comma separated)
@@ -83,7 +81,7 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   Handout (each slide with its narration beside it) and Article (continuous prose, numbered sections).
   Export is a dialog too. The theme is the reader's, for the whole site: the header's button opens a
   dialog of the seven families (`engine/src/theme.rs`) and Auto, Light or Dark (Auto follows the
-  device), remembered in the browser. Exports keep the notebook's own `theme`, `print` and `colors`.
+  device), remembered in the browser. Exports keep the notebook's own `theme`.
 - Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
   (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document, outputs and display lists,
   in the export theme with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,

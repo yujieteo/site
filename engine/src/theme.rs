@@ -1,6 +1,5 @@
 //! Themes: seven light/dark families, the site's own pair first. The page follows the device's
-//! light or dark setting; exports use one preset. A theme ID names a family or one preset;
-//! `custom ID` keeps that base and applies explicit `token #rrggbb` overrides.
+//! light or dark setting; exports use one preset. A theme ID names a family or one preset.
 
 pub const VERSION: u32 = 1;
 pub const TOKENS: [&str; 11] = ["bg", "surface", "fg", "fg2", "muted", "line", "accent", "accent-text", "warm", "green", "chrome"];
@@ -22,37 +21,23 @@ pub const THEMES: [(&str, &str, &str, &str, &str); 7] = [
         "2E3440 3B4252 ECEFF4 D8DEE9 7B88A1 434C5E 88C0D0 88C0D0 D08770 A3BE8C 242933"),
 ];
 
-/// The family and scheme of a preset ID (`custom ` prefix allowed). Unknown IDs are None.
+/// The family and scheme of a preset ID. Unknown IDs are None.
 pub fn find(id: &str) -> Option<(&'static str, bool)> {
-    let id = id.trim().trim_start_matches("custom").trim();
+    let id = id.trim();
     THEMES.iter().find_map(|t| if id == t.1 { Some((t.0, false)) } else if id == t.2 { Some((t.0, true)) } else { None })
 }
 
-/// The preset canonical exports use: `print`, else the theme's own preset, else its family's light one.
-pub fn export<'a>(theme: &'a str, print: &'a str) -> &'a str {
-    if !print.is_empty() { return print }
+/// The preset canonical exports use: the theme's own preset, else its family's light one.
+pub fn export(theme: &str) -> &str {
     if find(theme).is_some() { theme } else { THEMES.iter().find(|t| t.0 == theme).map_or("site-light", |t| t.1) }
 }
 
-fn hex(s: &str) -> Option<u32> {
-    Some(s.trim().trim_start_matches('#')).filter(|s| s.len() == 6).and_then(|s| u32::from_str_radix(s, 16).ok())
-}
-
-/// Overrides as `token #rrggbb` pairs, comma separated.
-pub fn overrides(colors: &str) -> Vec<(usize, u32)> {
-    colors.split(',').filter_map(|p| {
-        let (k, v) = p.trim().split_once(' ')?;
-        Some((TOKENS.iter().position(|t| *t == k.trim())?, hex(v)?))
-    }).collect()
-}
-
-/// The exact palette of a preset with overrides applied. Unknown IDs fall back to site-light.
-pub fn palette(id: &str, colors: &str) -> [u32; 11] {
+/// The exact palette of a preset. Unknown IDs fall back to site-light.
+pub fn palette(id: &str) -> [u32; 11] {
     let (fam, dark) = find(id).unwrap_or(("site", false));
     let t = THEMES.iter().find(|t| t.0 == fam).unwrap();
     let mut p = [0; 11];
-    p.iter_mut().zip((if dark { t.4 } else { t.3 }).split(' ')).for_each(|(v, h)| *v = hex(h).unwrap_or(0));
-    overrides(colors).into_iter().for_each(|(i, c)| p[i] = c);
+    p.iter_mut().zip((if dark { t.4 } else { t.3 }).split(' ')).for_each(|(v, h)| *v = u32::from_str_radix(h, 16).unwrap_or(0));
     p
 }
 
@@ -72,11 +57,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn presets_pair_and_override() {
+    fn presets_pair() {
         assert_eq!(find("dracula"), Some(("dracula", true)));
-        assert_eq!(find("custom nord-light"), Some(("nord", false)));
-        assert_eq!(palette("solarized-dark", "")[0], 0x002B36);
-        assert_eq!(palette("custom nord", "accent #ff8800, bogus #000000")[6], 0xff8800);
+        assert_eq!(find("nord-light"), Some(("nord", false)));
+        assert_eq!(palette("solarized-dark")[0], 0x002B36);
         assert!(css().contains("@media(prefers-color-scheme:dark){:root[data-theme=gruvbox]:not([data-mode=light]){--bg:#282828;"));
         assert!(css().contains(":root[data-mode=dark]{--bg:#000000;"));
     }
