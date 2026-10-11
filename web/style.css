@@ -1,28 +1,21 @@
 :root {
   /* Colour comes from the theme (generated from engine/src/theme.rs): fg for names, fg2 for
      reading, muted for asides. Scenes carry their own palettes. Fonts are embedded subsets. */
-  --text: "Serif Text", Baskerville, "Times New Roman", serif;
+  --sans: "Fira Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   --mono: "Fira Mono", "SFMono-Regular", Consolas, monospace;
-  --math: "Serif Math", "STIX Two Math", "Times New Roman", math;
+  --math: "Fira Math", math;
 }
-/* Font set-ups (Theme dialog): a text font and a math font with an OpenType MATH table. The default is a serif
-   pair (fonts/serif.*, fonts/serif-math.*: BaskervilleF and TeX Gyre Termes Math, open stand-ins for licensed fonts; replace those two files
-   to use the licensed ones). They set --text and --math, so every page's text and maths follow; code keeps its own. */
-:root[data-font=sans] { --text: "Fira Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; --math: "Fira Math", math; }
-:root[data-font=source] { --text: "Source Serif 4", Georgia, serif; }
-:root[data-font=inter] { --text: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; --math: "Fira Math", math; }
-:root[data-font=dyslexic] { --text: "OpenDyslexic", "Comic Sans MS", sans-serif; --math: "Fira Math", math; }
 * { box-sizing: border-box; min-width: 0; }
-body { margin: 0; background: var(--bg); color: var(--fg2); font: 1rem/1.6 var(--text); }
+body { margin: 0; background: var(--bg); color: var(--fg2); font: 1rem/1.6 var(--sans); }
 a { color: inherit; text-decoration: none; }
 a:hover, article a { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-color: var(--line); }
 :focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
-h1, h2, h3 { color: var(--fg); font: 400 2.5rem/1.1 var(--text); letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+h1, h2, h3 { color: var(--fg); font: 400 2.5rem/1.1 var(--sans); letter-spacing: -0.01em; margin: 0 0 0.5rem; }
 h2 { font-size: 1.75rem; }
 h3 { font-size: 1.25rem; margin-top: 2rem; }
 p { margin: 0 0 1rem; }
 .muted, small { color: var(--muted); font-size: 0.875rem; }
-.top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.25rem; padding: 1.25rem 16px; font: 1.0625rem/1.4 var(--text); }
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.25rem; padding: 1.25rem 16px; font: 1.0625rem/1.4 var(--sans); }
 .top > a { white-space: nowrap; color: var(--fg); }
 /* The header floats over the page: the theme's background at 80%, the content blurred behind it.
    Text keeps 4.5:1 because the blur and the 80% veil keep it within a few percent of the background. */
@@ -33,7 +26,7 @@ header.top { position: sticky; top: 0; z-index: 5; background: var(--bg); view-t
 .top nav { display: flex; align-items: center; gap: 1.25rem; color: var(--muted); }
 footer.top { color: var(--muted); }
 main { overflow-x: clip; max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6rem; }
-.lede { font: 1.375rem/1.4 var(--text); max-width: 32rem; margin-bottom: 4rem; }
+.lede { font: 1.375rem/1.4 var(--sans); max-width: 32rem; margin-bottom: 4rem; }
 .frame { display: block; width: 100%; aspect-ratio: 1; border-radius: 4px; touch-action: pan-y; background: var(--sky); }
 /* A door's canvas overhangs its tile so characters can leap out of it. */
 .frame[data-bleed] { width: 130%; margin: -15%; background: none; position: relative; z-index: 1; }
@@ -56,13 +49,7 @@ dialog::backdrop { background: rgb(0 0 0 / 0.4); }
 /* A family's swatch: its light background and accent, then its dark ones. */
 .fams i { flex: none; width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1px solid var(--line);
   background: conic-gradient(var(--a) 0 25%, var(--b) 0 50%, var(--c) 0 75%, var(--d) 0); }
-.modes, .fonts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.modes + p.muted { margin: 1.25rem 0 0.5rem; }
-.fonts [value=default] { font-family: "Serif Text", serif; }
-.fonts [value=sans] { font-family: "Fira Sans", sans-serif; }
-.fonts [value=source] { font-family: "Source Serif 4", serif; }
-.fonts [value=inter] { font-family: "Inter", sans-serif; }
-.fonts [value=dyslexic] { font-family: "OpenDyslexic", sans-serif; }
+.modes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 :is(.look, .sift) [aria-pressed=true] { color: var(--fg); border-color: var(--fg); }
 /* The search fields: large text over a rule. */
 :is(.find, .sift) input { font: inherit; font-size: 1.125rem; color: var(--fg); background: none; border: 0; border-bottom: 1px solid var(--line); outline: none; }

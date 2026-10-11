@@ -46,7 +46,7 @@ dialog .x { position: absolute; top: 0.75rem; right: 0.75rem; border: 0; font-si
   .ctls:has(label + label) :is(select, [type=search]) { grid-column: span 2; }
 }
 .caption, figcaption { font-size: 0.875rem; color: var(--muted); }
-.plot { display: block; width: 100%; height: auto; font: 15px var(--text); }
+.plot { display: block; width: 100%; height: auto; font: 15px var(--sans); }
 .plot .gr { stroke: var(--line); } .plot .ax { fill: var(--muted); } .plot .rl { stroke: var(--fg2); stroke-dasharray: 4 4; }
 .plot path { fill: none; stroke-width: 2; stroke-linejoin: round; }
 .l0 { stroke: var(--accent); } .l1 { stroke: var(--warm); } .l2 { stroke: var(--green); } .l3 { stroke: var(--fg2); }

@@ -9,8 +9,6 @@ try {
   const h = document.documentElement, m = localStorage.getItem("mode"), t = localStorage.getItem("theme");
   if (m === "light" || m === "dark") h.dataset.mode = m;
   if (t) h.dataset.theme = t;
-  const f = localStorage.getItem("font");
-  if (f) h.dataset.font = f;
 } catch (e) {}
 </script>
 <title>{{title}}</title>
@@ -23,8 +21,7 @@ try {
 <main>{{body}}</main>
 <dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search notes, stories, play" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol></form></dialog>
 <dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="fams">{{themes}}</div>
-<div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div>
-<p class="muted">Font</p><div class="fonts"><button type="button" value="default">BaskervilleF (Libre Baskerville fork), Termes (Times-style) math</button><button type="button" value="sans">Fira Sans, Fira Math</button><button type="button" value="source">Source Serif 4, Termes (Times-style) math</button><button type="button" value="inter">Inter, Fira Math</button><button type="button" value="dyslexic">OpenDyslexic, Fira Math</button></div><button class="x" aria-label="Close">×</button></form></dialog>
+<div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div><button class="x" aria-label="Close">×</button></form></dialog>
 <script id="index" type="application/json">{{index}}</script>
 <script>
 // Any dialog closes on a click on its backdrop.
@@ -77,11 +74,11 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
   q.addEventListener("keydown", (e) => { if (e.key === "ArrowDown") { e.preventDefault(); $("a", ol)?.focus(); } });
   $("form", d).addEventListener("submit", () => { const a = $("a", ol); if (a) location.href = a.href; });
 })();
-// Theme: a family, light, dark or the device's (Auto), and a font, picked in the header's dialog and
+// Theme: a family, light, dark or the device's (Auto), picked in the header's dialog and
 // remembered for every page. Exports keep their own theme.
 (() => {
   const h = document.documentElement, d = document.querySelector(".look");
-  const keys = { fams: ["theme", "rose-pine"], modes: ["mode", "auto"], fonts: ["font", "default"] };
+  const keys = { fams: ["theme", "rose-pine"], modes: ["mode", "auto"] };
   const chosen = (b) => { const [k, v] = keys[b.parentNode.className]; return b.value === (h.dataset[k] || v); };
   const show = () => d.querySelectorAll("button[value]").forEach((b) => b.setAttribute("aria-pressed", chosen(b)));
   const set = (k, v) => {
