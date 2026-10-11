@@ -2,9 +2,9 @@
 # pages that the site embeds. scripts/visuals.sh fetches them into visuals/ (not committed) and checks
 # every hash; the build refuses any other path.
 # sha256 path
-commit 95c52d412e14b9770615d9e08508158c29efcf78
-2da71d90953d25ba95d7086e03160bfb222ff676689356afb1459d749083e5a6 viz/theorem-explorer/raw.json
-b5a5313da12ea9c5e4248390377ef4c14e9418fd8fd99bb931f4c0c0cd7f0cd9 viz/theorem-learner/raw.json
+commit b5bb07b742c02961c44dd0f7b96dc774f4555d19
+e5f7ff84a3b205ec1e326479581594414f31a77f9d5446b53878fadd3732c6de viz/theorem-explorer/raw.json
+9811ccca4841a6b189613490e3b4f9bb2e2ad11adac3329907f4de0a489b8cc5 viz/theorem-learner/raw.json
 cc1f911865193727be1aa81c385ff59f670caff22bdc1a9facede9b0c4562918 viz/beamdiag/raw.json
 6815f21c1cd9ac7ed82c178a1e585c74b037e067da98c34b955ecf1849691e50 viz/beamdiag/index.html
 212edbb6a14426c835c1542f9c0018ad856856be64f552cb3bf85374dc951ce6 viz/links/index.html
