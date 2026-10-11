@@ -19,9 +19,21 @@ const LINKS: &str = "viz/links/index.html";
 
 use doc::esc;
 
+/// The reader's font choices (Theme dialog): CSS family, then the file under fonts/ by name (`.otf` or `.ttf`).
+/// The first two are the default set-up, a text font and a math font; replace those two files to use licensed
+/// ones, nothing else changes. Every page embeds them; a browser loads one when it is used.
+const CHOICES: [(&str, &str); 5] = [("Serif Text", "serif"), ("Serif Math", "serif-math"), ("Source Serif 4", "source-serif"), ("Inter", "inter"), ("OpenDyslexic", "dyslexic")];
+
 fn font_css(n: usize) -> String {
-    let face = |fam: &str, f: &str| format!("@font-face{{font-family:\"{fam}\";src:url({}) format(\"opentype\")}}\n", pack::data_url("f.otf", &font(f)));
-    FONTS[..n].iter().map(|(fam, f)| face(fam, f)).collect()
+    let face = |fam: &str, ext: &str, bytes: Vec<u8>| {
+        let fmt = if ext == "ttf" { "truetype" } else { "opentype" };
+        format!("@font-face{{font-family:\"{fam}\";src:url({}) format(\"{fmt}\")}}\n", pack::data_url(&format!("f.{ext}"), &bytes))
+    };
+    let chosen = CHOICES.iter().map(|(fam, stem)| {
+        let (ext, bytes) = ["otf", "ttf"].iter().find_map(|e| Some((*e, fs::read(format!("fonts/{stem}.{e}")).ok()?))).expect("fonts/ is part of the source");
+        face(fam, ext, bytes)
+    });
+    FONTS[..n].iter().map(|(fam, f)| face(fam, "otf", font(f))).chain(chosen).collect()
 }
 
 /// A seeded thumbnail (`engine::thumb`): the seed alone picks its picture, palette and motion.
@@ -60,8 +72,10 @@ fn render(p: &Page, wasm: &str, index: &str) -> String {
 /// The header's theme dialog: one button per family, its swatch the light and dark background and accent.
 fn themes() -> String {
     theme::THEMES.iter().map(|(f, _, _, l, d)| {
+        let (l, d) = (if l.is_empty() { d } else { l }, if d.is_empty() { l } else { d }); // one scheme: both swatches show it
         let c = |p: &str, i: usize| p.split(' ').nth(i).unwrap_or("000000").to_string();
         let name: Vec<String> = f.split('-').map(|w| w[..1].to_uppercase() + &w[1..]).collect();
+        let name = match *f { "github" => vec!["GitHub".into()], "vscode-plus" => vec!["VS Code Plus".into()], "xcode" => vec!["Xcode".into()], _ => name };
         let swatch = format!("--a:#{};--b:#{};--c:#{};--d:#{}", c(l, 0), c(l, 6), c(d, 0), c(d, 6));
         format!(r#"<button type="button" value="{f}" style="{swatch}"><i></i>{}</button>"#, name.join(" "))
     }).collect()
