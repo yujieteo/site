@@ -116,6 +116,8 @@ withheld.
 Notes has a second source, Links: the paper links, the sealed artifact `viz/links` of yujieteo/visuals,
 pinned in `visuals.lock`. Its page (`notes/links/`) carries the artifact's bytes and runs it in a frame,
 as a notebook does. A switch at the top of each Notes page moves between UniiChat and Links.
+Ctrl K also finds each link by title, category and tags: the builder writes them from `viz/links/links.json` (pinned in
+`visuals.lock`) to `links-index.js`, which the search loads on the first word typed. A hit opens the link itself.
 
 ## Budget
 

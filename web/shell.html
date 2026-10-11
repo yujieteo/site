@@ -27,16 +27,21 @@ try {
 // Any dialog closes on a click on its backdrop.
 document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (e) => e.target === d && d.close()));
 // Search: Ctrl K (⌘K on a Mac) or the header's icon. Every word must appear; the builder writes the index.
+// The links (links-index.js, large) load on the first word typed, and a link opens its own address.
 (() => {
   const $ = (s, r = document) => r.querySelector(s), d = $(".find"), q = $("input", d), ol = $("ol", d), icon = $(".search");
   const root = $(".top > a").getAttribute("href").replace(/index\.html$/, ""), all = JSON.parse($("#index").textContent);
+  let links = [], loading;
   icon.title = `Search (${/Mac|iP/.test(navigator.platform) ? "⌘" : "Ctrl "}K)`;
   const show = () => {
     const words = q.value.toLowerCase().split(/\s+/).filter(Boolean);
+    if (words.length && !loading) {
+      loading = document.head.appendChild(Object.assign(document.createElement("script"), { src: root + "links-index.js", onload: () => { links = self.linksIndex; show(); } }));
+    }
     const hit = ([title, , text]) => words.every((w) => (title + " " + text).toLowerCase().includes(w));
-    ol.replaceChildren(...all.filter(hit).slice(0, 12).map(([title, href, text]) => {
+    ol.replaceChildren(...all.concat(links).filter(hit).slice(0, 12).map(([title, href, text]) => {
       const li = document.createElement("li");
-      const a = li.appendChild(Object.assign(document.createElement("a"), { href: root + href, textContent: title }));
+      const a = li.appendChild(Object.assign(document.createElement("a"), { href: /^https?:/.test(href) ? href : root + href, textContent: title }));
       if (text) a.appendChild(Object.assign(document.createElement("small"), { textContent: text.slice(0, 120) }));
       return li;
     }));

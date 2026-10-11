@@ -16,6 +16,8 @@ const NOTES: &str = include_str!("../../web/notes.js");
 const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
 /// The paper links: a sealed visuals page, pinned in visuals.lock, that Notes' Links page runs in a frame.
 const LINKS: &str = "viz/links/index.html";
+/// Its records (title, url, category, tags, note), from which the builder writes the search entries of the links.
+const LINKS_DATA: &str = "viz/links/links.json";
 
 use doc::esc;
 
@@ -42,6 +44,18 @@ impl Page {
 /// Search entries (title, path from the root, text to match) as JSON for every page's Ctrl/Cmd-K.
 fn index(entries: &[(String, String, String)]) -> String {
     format!("[{}]", entries.iter().map(|(t, h, x)| format!("[{},{},{}]", pack::json(t), pack::json(h), pack::json(x))).collect::<Vec<_>>().join(","))
+}
+
+/// The links' search entries (title, url, category and tags) as a script that the search loads on the first
+/// word typed: `self.linksIndex`, in the shape of `index`. A link's note is left out to keep it small.
+fn links_index() -> String {
+    let v: serde_json::Value = serde_json::from_str(&fs::read_to_string(format!("visuals/{LINKS_DATA}")).unwrap()).expect("links.json is not JSON");
+    let s = |l: &serde_json::Value, k: &str| l[k].as_str().unwrap_or("").to_string();
+    let found: Vec<_> = v.as_array().expect("links.json is not a list").iter().map(|l| {
+        let tags: Vec<_> = l["tags"].as_array().into_iter().flatten().filter_map(|t| t.as_str()).collect();
+        (s(l, "title"), s(l, "url"), format!("{} {}", s(l, "category"), tags.join(" ")))
+    }).collect();
+    format!("self.linksIndex={};", index(&found))
 }
 
 fn render(p: &Page, wasm: &str, index: &str) -> String {
@@ -258,6 +272,7 @@ fn main() {
         Some(v) => files.extend(v),
         None => eprintln!("kokoro/ incomplete: narration export needs scripts/kokoro.sh"),
     }
+    files.push(("links-index.js".into(), links_index().into_bytes()));
     let pages: Vec<(String, Vec<u8>)> = pages.iter().map(|p| (p.path.clone(), render(p, &wasm, &index).into_bytes())).collect();
     for (path, bytes) in pages.iter().chain(&files) {
         let out = Path::new("dist").join(path);
