@@ -29,7 +29,7 @@ against `visuals.lock`; files already there and matching need no network.
 | `engine/` | Rust, native and WebAssembly. `doc` (Markdown, TeX to MathML), `cell` (cell data flow), `nb` (the cells' runtime: text, controls, plots, stage), `draw` (display lists), `pdf` (the PDF views), `theme`, `pack` (SHA-256, ZIP, base64), `scene` (the dot scenes: a frame is a pure function of seed, scene, time, progress, pointer and stage), `thumb` (seeded thumbnails), `say` (narration: sentences, Kokoro phonemes, podcast, captions, timings). |
 | `web/host.js` | The browser boundary: one clock, Canvas execution of display lists, the run worker, the voice worker, the video recorder, tools, the agent API. |
 | `kokoro.lock`, `scripts/kokoro.sh` | The narration's pinned files: kokoro-js 1.2.1, ONNX Runtime Web, Kokoro-82M v1.0 (q8) with two US voices, and the Misaki 0.9.4 lexicons the build reads. |
-| `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, and each sealed artifact that a notebook embeds, with its SHA-256. Visuals owns the data. |
+| `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, and each sealed artifact that a notebook or the Links page of Notes embeds, with its SHA-256. Visuals owns the data. |
 | `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search and its dot (drawn at build time by `scene::face`). |
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (notes, doors, index). |
@@ -113,6 +113,10 @@ summary tree, oldest first (each summary opens onto its two halves, down to the 
 over notes and summaries (every word must appear) whose hits open the tree where they are. Each line is
 sanitised again: session tags dropped, paths and emails redacted, any line with a credential pattern
 withheld.
+
+Notes has a second source, Links: the paper links, the sealed artifact `viz/links` of yujieteo/visuals,
+pinned in `visuals.lock`. Its page (`notes/links/`) carries the artifact's bytes and runs it in a frame,
+as a notebook does. A switch at the top of each Notes page moves between UniiChat and Links.
 
 ## Budget
 

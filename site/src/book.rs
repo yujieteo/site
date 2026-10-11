@@ -49,6 +49,14 @@ fn visuals() -> (&'static str, Vec<(&'static str, &'static str)>) {
     (commit, files.collect())
 }
 
+/// The pin (sha256, path) of the visuals file `p` that `who` reads, once visuals/`p` is present as pinned.
+pub fn pin(who: &str, p: &str) -> (&'static str, &'static str) {
+    let pin = *visuals().1.iter().find(|x| x.1 == p).unwrap_or_else(|| panic!("{who}: {p} is not pinned in visuals.lock"));
+    let ok = fs::read(format!("visuals/{p}")).is_ok_and(|b| pack::sha256(&b) == pin.0);
+    assert!(ok, "{who}: visuals/{p} is missing or does not match visuals.lock: run scripts/visuals.sh");
+    pin
+}
+
 /// The narration's pronunciations, written beside the notebook as say.lock when the pinned Misaki
 /// lexicons are in kokoro/ (scripts/kokoro.sh): US gold, then silver, then the regular -s, -ed and
 /// -ing endings. Words left empty are spoken by kokoro-js's own G2P. Without the lexicons, the
@@ -106,14 +114,9 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
         .filter(|f| f.0 != "index.md").collect();
     files.sort();
     // The visuals files its cells embed (`data!`) and the visuals pages it embeds, each pinned and present as pinned.
-    let (commit, pinned) = visuals();
+    let commit = visuals().0;
     let paths = d.cells().into_iter().flat_map(|c| c.0.split("data!(\"").skip(1).map(|r| r.split('"').next().unwrap_or(""))).chain(d.tools());
-    let mut data: Vec<(&str, &str)> = paths.map(|p| {
-        let pin = *pinned.iter().find(|x| x.1 == p).unwrap_or_else(|| panic!("{slug}: data!(\"{p}\") is not pinned in visuals.lock"));
-        let ok = fs::read(format!("visuals/{p}")).is_ok_and(|b| pack::sha256(&b) == pin.0);
-        assert!(ok, "{slug}: visuals/{p} is missing or does not match visuals.lock: run scripts/visuals.sh");
-        pin
-    }).collect();
+    let mut data: Vec<(&str, &str)> = paths.map(|p| pin(slug, p)).collect();
     data.sort();
     data.dedup();
     let has_cells = !d.cells().is_empty();

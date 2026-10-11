@@ -64,7 +64,10 @@ dialog::backdrop { background: rgb(0 0 0 / 0.4); }
 
 details { border-top: 1px solid var(--line); padding: 1rem 0; }
 
-/* Notes: a search, its hits, then the summary tree (each summary opens onto its two halves). */
+/* Notes: a switch between its sources (UniiChat, Links), the current one in the text colour. */
+.sources { display: flex; gap: 1.25rem; margin-bottom: 2rem; color: var(--muted); }
+.sources [aria-current] { color: var(--fg); text-decoration: underline; text-underline-offset: 0.3em; }
+/* UniiChat: a search, its hits, then the summary tree (each summary opens onto its two halves). */
 .notes { max-width: 40rem; }
 .notes .lede { margin-bottom: 2rem; }
 .sift { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }

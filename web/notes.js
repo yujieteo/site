@@ -1,6 +1,18 @@
-// Notes: search the notes and their summaries (every word must appear), and open the tree to a hit.
+// Notes, Links: the paper links, a sealed visuals page, run in a frame from its pinned bytes. The frame has this
+// page's origin, so it follows the reader's theme, and it grows to fit its page.
+for (const f of document.querySelectorAll("iframe[data-tool]")) {
+  const b = document.getElementById("tool:" + f.dataset.tool).textContent.trim();
+  f.addEventListener("load", () => {
+    const d = f.contentDocument.documentElement;
+    new ResizeObserver(() => (f.style.height = Math.ceil(d.getBoundingClientRect().height) + "px")).observe(d);
+  }, { once: true });
+  f.src = URL.createObjectURL(new Blob([Uint8Array.from(atob(b), (c) => c.charCodeAt(0))], { type: "text/html" }));
+}
+// Notes, UniiChat: search the notes and their summaries (every word must appear), and open the tree to a hit.
 (() => {
-  const $ = (s, r = document) => r.querySelector(s), form = $(".sift"), q = $("input", form), out = $("output", form), hits = $(".hits");
+  const $ = (s, r = document) => r.querySelector(s), form = $(".sift");
+  if (!form) return;
+  const q = $("input", form), out = $("output", form), hits = $(".hits");
   const items = [...document.querySelectorAll(".tree li[id]")].map((li) => {
     const head = $(":scope > details > summary", li) || li, label = head.firstElementChild.textContent;
     return [li.id, label, head.textContent.slice(label.length), head.textContent.toLowerCase()];

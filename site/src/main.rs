@@ -1,5 +1,5 @@
-//! Builds dist/: the landing page, Notes, Stories and Play. Every page is one self-contained
-//! HTML file; every story and toy is a notebook (`book`).
+//! Builds dist/: the landing page, Notes (UniiChat and Links), Stories and Play. Every page is one
+//! self-contained HTML file; every story and toy is a notebook (`book`).
 //! Usage: site [notes.json]  (default ../site/data/uniichat/memory.json)
 
 mod book;
@@ -14,6 +14,8 @@ const STYLE: &str = concat!(include_str!("../../web/style.css"), include_str!(".
 pub const HOST: &str = include_str!("../../web/host.js");
 const NOTES: &str = include_str!("../../web/notes.js");
 const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
+/// The paper links: a sealed visuals page, pinned in visuals.lock, that Notes' Links page runs in a frame.
+const LINKS: &str = "viz/links/index.html";
 
 use doc::esc;
 
@@ -153,6 +155,12 @@ fn branch(h: &mut String, notes: &[Note], sums: &HashMap<(usize, usize), Option<
     h.push_str("</ol></details></li>");
 }
 
+/// The switch between the sources of Notes, `on` the current one; `up` leads from the page to notes/.
+fn sources(up: &str, on: usize) -> String {
+    let link = |i: usize, href: &str, name: &str| format!(r#"<a href="{up}{href}"{}>{name}</a>"#, if i == on { r#" aria-current="page""# } else { "" });
+    format!(r#"<nav class="sources" aria-label="Notes sources">{}{}</nav>"#, link(0, "index.html", "UniiChat"), link(1, "links/index.html", "Links"))
+}
+
 /// The Notes page body: the UniiChat log as its summary tree, oldest first, with a search over
 /// notes and summaries (web/notes.js). Also one site-search entry per day.
 fn notes(path: &str) -> (String, Vec<(String, String, String)>) {
@@ -221,6 +229,10 @@ fn main() {
         s.slug, s.thumb.map_or(String::new(), |seed| thumb(seed, "")), esc(&s.title), esc(&s.summary))).collect() };
     let (notes, mut found) = notes(&notes_path);
     found.splice(0..0, DOORS.iter().map(|(dir, _, name, line)| (name.to_string(), format!("{dir}/index.html"), line.to_string())));
+    let lede = "Links to papers, lecture notes, slides, books and talks, with their tags. Search them, filter them, and get BibTeX for the ones you pick.";
+    found.insert(1, ("Notes · Links".into(), "notes/links/index.html".into(), lede.into()));
+    book::pin("notes", LINKS);
+    let links = pack::base64(&fs::read(format!("visuals/{LINKS}")).unwrap());
     for s in &stories {
         let page = format!("{}/{}/index.html", s.door, s.slug);
         found.push((s.title.clone(), page.clone(), s.summary.clone()));
@@ -230,7 +242,9 @@ fn main() {
     pages.extend([
         Page::new("index.html", "Yu Jie", format!(r#"<p class="lede">Notes, stories and toys.</p><div class="doors">{doors}</div>"#)),
         Page { script: if notes.contains("class=\"tree\"") { format!("<script>{NOTES}</script>") } else { String::new() },
-            ..Page::new("notes/index.html", "Notes", format!(r#"<h1>Notes</h1><div class="notes">{notes}</div>"#)) },
+            ..Page::new("notes/index.html", "Notes", format!(r#"<h1>Notes</h1>{}<div class="notes">{notes}</div>"#, sources("", 0))) },
+        Page { script: format!(r#"<script id="tool:{LINKS}" type="application/octet-stream">{links}</script><script>{NOTES}</script>"#),
+            ..Page::new("notes/links/index.html", "Links", format!(r#"<h1>Notes</h1>{}<p class="lede">{lede}</p><figure class="tool"><iframe data-tool="{LINKS}" title="Paper links"></iframe></figure>"#, sources("../", 1))) },
         Page::new("stories/index.html", "Stories", format!(r#"<h1>Stories</h1><ul class="list">{}</ul>"#, cards("stories"))),
         Page::new("play/index.html", "Play", format!(r#"<h1>Play</h1><ul class="list">{}</ul>"#, cards("play"))),
     ]);
