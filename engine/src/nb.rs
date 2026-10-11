@@ -111,6 +111,22 @@ pub fn field(label: &str, value: &str) -> String {
     })
 }
 
+/// A page number from 1 to `pages`, with Previous and Next buttons. Like a slider, it starts at 1 when its label changes.
+pub fn pager(label: &str, pages: usize) -> usize {
+    let k = with(|b| b.n);
+    let v = slider(label, 1.0, pages as f64, 1.0, 1.0) as usize;
+    with(|b| w!(b.ctl[b.cell], "<button type=\"button\" data-for=\"{k}\" data-d=\"-1\">Previous</button><button type=\"button\" data-for=\"{k}\" data-d=\"1\">Next</button>"));
+    v
+}
+
+/// A text that the page keeps in this browser, with no box: the host fills it from the browser's storage, and a
+/// `data-mark` checkbox in the cell's output adds or drops its value in the text (words with a space between them).
+pub fn kept(label: &str) -> String {
+    let v = field(label, "");
+    with(|b| { let c = &mut b.ctl[b.cell]; let at = c.rfind("<label>").unwrap(); c.replace_range(at..at + 7, "<label hidden data-store>") });
+    v
+}
+
 /// A table of text: a header, then rows. It scrolls sideways on a narrow page.
 pub fn table<S: AsRef<str>>(head: &[&str], rows: &[Vec<S>]) {
     let tr = |tag: &str, r: &mut dyn Iterator<Item = &str>| {

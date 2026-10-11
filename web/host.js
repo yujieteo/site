@@ -107,6 +107,7 @@
 
   // Notebook: outputs come from a clean run of the compiled cells in a worker, in data-flow order.
   const article = $("[data-article]");
+  const kept = () => $("[data-store] input", article), keep = "kept:" + location.pathname;
   if (!article || !text("source")) return;
   let source = text("source"), result = JSON.parse(text("run"));
   const built = text("built"), assets = b64(text("assets")), manifest = text("manifest");
@@ -225,6 +226,22 @@
     if (t.nextElementSibling?.tagName === "OUTPUT") t.nextElementSibling.textContent = t.value;
     run();
   });
+
+  // A pager's button steps its slider. A Known box adds or drops its id in the kept text, which the browser stores.
+  article.addEventListener("click", ({ target: t }) => {
+    const s = t.dataset.d && $(`[data-k="${t.dataset.for}"]`, article);
+    if (s) { s.value = +s.value + +t.dataset.d; s.dispatchEvent(new Event("input", { bubbles: true })); }
+  });
+  article.addEventListener("change", ({ target: t }) => {
+    const s = kept();
+    if (!t.dataset.mark || !s) return;
+    const ids = new Set(s.value.split(" ").filter(Boolean));
+    ids[t.checked ? "add" : "delete"](t.dataset.mark);
+    s.value = [...ids].join(" ");
+    try { localStorage.setItem(keep, s.value); } catch (e) {}
+    run();
+  });
+  try { const v = kept() && localStorage.getItem(keep); if (v) { kept().value = v; run(); } } catch (e) {}
 
   // Tools: the view is the page; the theme is the site's (the header's dialog).
   const download = (name, data) => make("a", { href: URL.createObjectURL(new Blob([data])), download: name }).click();
