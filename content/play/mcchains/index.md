@@ -884,12 +884,6 @@ impl V {
     pub fn list(&self) -> Vec<f64> { match self { V::N(x) => vec![*x], V::L(v) => v.clone() } }
 }
 
-/// The sampler of a method: the law's reference sampler, its inverse transform, its rejection sampler, or the Euler
-/// scheme of a diffusion. The inverse transform keeps the part `cut` of its table (1, or 0.99 for the assumption
-/// failure "table_cut"), and the rejection sampler scales its envelope by `scale` (1, or 0.5 for "envelope").
-#[derive(Clone, Copy, PartialEq, Debug)]
-pub enum Kind { Reference, Inverse { cut: f64 }, Rejection { scale: f64 }, Euler }
-
 /// The uniforms of one draw. The state is a hash of the seed, the stream, the replicate and the place of the draw, so
 /// a draw does not depend on the other draws. `flip` gives 1 − u (the antithetic partner), and a stratum (k, K)
 /// maps the next uniform to (k + u)/K. Rejection samplers count their proposals and acceptances.
@@ -972,7 +966,6 @@ pub fn lgam(x: f64) -> f64 {
     0.5 * (2.0 * PI).ln() + (x + 0.5) * t.ln() - t + a.ln()
 }
 pub fn gam(x: f64) -> f64 { if x < 0.5 { PI / ((PI * x).sin() * gam(1.0 - x)) } else { lgam(x).exp() } }
-pub fn lbeta(a: f64, b: f64) -> f64 { lgam(a) + lgam(b) - lgam(a + b) }
 pub fn lchoose(n: f64, k: f64) -> f64 { lgam(n + 1.0) - lgam(k + 1.0) - lgam(n - k + 1.0) }
 
 /// The Hurwitz zeta function ζ(s, a) = Σ_{k ≥ 0} (k + a)^(−s) for s > 1, by Euler–Maclaurin summation from a + 10.
