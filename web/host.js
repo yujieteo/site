@@ -420,6 +420,7 @@
       doc.removeAttribute("data-mode"); doc.removeAttribute("data-theme"); // without the reader's theme
       $("#source", doc).textContent = raw(source); $("#run", doc).textContent = raw(JSON.stringify(result));
       $$(".vim", doc).forEach((e) => e.remove());
+      $$("dialog[open]", doc).forEach((d) => d.removeAttribute("open")); // Export is still open as it saves
       $$("canvas", doc).forEach((c) => { c.removeAttribute("width"); c.removeAttribute("height"); });
       download(name + ".html", "<!doctype html>\n" + doc.outerHTML);
     },
