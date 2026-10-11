@@ -21,7 +21,7 @@ try {
 <main>{{body}}</main>
 <dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search notes and stories" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol></form></dialog>
 <dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="fams">{{themes}}</div>
-<div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div></form></dialog>
+<div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div><button class="x" aria-label="Close">×</button></form></dialog>
 <script id="index" type="application/json">{{index}}</script>
 <script>
 // Any dialog closes on a click on its backdrop.
@@ -79,7 +79,7 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
 (() => {
   const h = document.documentElement, d = document.querySelector(".look"), fam = (b) => b.parentNode.className === "fams";
   const chosen = (b) => b.value === (fam(b) ? h.dataset.theme || "site" : h.dataset.mode || "auto");
-  const show = () => d.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", chosen(b)));
+  const show = () => d.querySelectorAll("button[value]").forEach((b) => b.setAttribute("aria-pressed", chosen(b)));
   const set = (k, v) => {
     v ? (h.dataset[k] = v) : delete h.dataset[k];
     try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {}
@@ -87,7 +87,7 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
   };
   document.querySelector(".mode").addEventListener("click", () => (show(), d.showModal()));
   d.addEventListener("click", (e) => {
-    const b = e.target !== d && e.target.closest("button");
+    const b = e.target !== d && e.target.closest("button[value]"); // not the close button
     if (b) fam(b) ? set("theme", b.value === "site" ? "" : b.value) : set("mode", b.value === "auto" ? "" : b.value);
   });
 })();
