@@ -13,7 +13,8 @@ Tests the crates, compiles `engine` to `wasm32-unknown-unknown`, compiles each n
 writes `dist/`. The toolchain is pinned once, in `rust-toolchain.toml`; `flake.nix` builds that exact
 toolchain (nixpkgs 26.05 + rust-overlay), and rustup reads the same file, which CI uses.
 Open `dist/index.html` directly; nothing is fetched at runtime, except the voice for a narration
-export (below), which needs the site served over HTTP.
+export (below). Two things need the site served over HTTP: that voice, and the embedded visuals
+pages, whose frames must share the page's origin to fit their height and follow the theme.
 
 `scripts/repro.sh` builds twice from clean and compares every output's hash. `scripts/loc.sh` checks
 the budgets and reports payload and output sizes. `scripts/kokoro.sh` fetches the narration voice
