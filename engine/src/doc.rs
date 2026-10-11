@@ -246,7 +246,8 @@ fn atom(c: &[char], i: &mut usize) -> Option<M> {
                     if name == "text" { M::T(t.replace(' ', "\u{a0}")) } else { M::I(t) }
                 }
                 "left" | "right" | "big" | "Big" | "bigl" | "bigr" | "Bigl" | "Bigr" | "bigg" | "Bigg" | "biggl" | "biggr" => {
-                    atom(c, i).filter(|m| *m != M::O(".".into())).unwrap_or(M::R(vec![]))
+                    // `\right.` draws nothing; a lone `.` reads as a number.
+                    atom(c, i).filter(|m| *m != M::N(".".into())).unwrap_or(M::R(vec![]))
                 }
                 "quad" => M::T("\u{2003}".into()),
                 "qquad" => M::T("\u{2003}\u{2003}".into()),

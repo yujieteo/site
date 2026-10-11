@@ -13,7 +13,8 @@ Tests the crates, compiles `engine` to `wasm32-unknown-unknown`, compiles each n
 writes `dist/`. The toolchain is pinned once, in `rust-toolchain.toml`; `flake.nix` builds that exact
 toolchain (nixpkgs 26.05 + rust-overlay), and rustup reads the same file, which CI uses.
 Open `dist/index.html` directly; nothing is fetched at runtime, except the voice for a narration
-export (below), which needs the site served over HTTP.
+export (below). Two things need the site served over HTTP: that voice, and the embedded visuals
+pages, whose frames must share the page's origin to fit their height and follow the theme.
 
 `scripts/repro.sh` builds twice from clean and compares every output's hash. `scripts/loc.sh` checks
 the budgets and reports payload and output sizes. `scripts/kokoro.sh` fetches the narration voice
@@ -45,10 +46,8 @@ summary: One line for the Stories index.
 palette: #2f4a5c #13222c #f2a541 #fbe8a6   (scene sky, shade, glow, light)
 thumb: 41213                                (optional: a seeded thumbnail for the index card)
 theme: site                                 (the exports' family; the page wears the reader's theme)
-colors: accent #c0653f                      (export overrides, comma separated)
-print: site-light                           (export preset; default: the theme's own preset)
 seed: 20261003
-voice: af_heart                             (narration: af_heart or am_michael; speed: 1)
+voice: af_heart                             (narration: af_heart or am_michael)
 pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes for words, comma separated)
 ---
 ```
@@ -82,7 +81,7 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   Handout (each slide with its narration beside it) and Article (continuous prose, numbered sections).
   Export is a dialog too. The theme is the reader's, for the whole site: the header's button opens a
   dialog of the seven families (`engine/src/theme.rs`) and Auto, Light or Dark (Auto follows the
-  device), remembered in the browser. Exports keep the notebook's own `theme`, `print` and `colors`.
+  device), remembered in the browser. Exports keep the notebook's own `theme`.
 - Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
   (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document, outputs and display lists,
   in the export theme with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,

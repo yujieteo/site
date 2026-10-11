@@ -24,9 +24,6 @@ pub const FACES: usize = 8;
 
 /// The characters: sleepy, happy, flustered, dizzy, curious. Character i wears eye glyph
 /// i + 1, drawn by `draw`: 1 – –, 2 ^ ^, 3 > <, 4 + +, 5 O O, and 6 * * when a flustered one is touched.
-const SLEEPY: usize = 0;
-const HAPPY: usize = 1;
-const FLUSTERED: usize = 2;
 const DIZZY: usize = 3;
 const CURIOUS: usize = 4;
 
@@ -110,26 +107,9 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f
     let (seed, scene) = staged(seed, scene, stage);
     let (px, py) = if px >= 0.0 && py >= 0.0 { (px, py) } else { (-1.0, -1.0) };
     let mut o = Out { dots: vec![], faces: vec![], light: dapple(seed, t), seed, t, px, py };
-    let mut pin = (0.74, 0.22, 0.025, 0.0);
+    let pin;
     match scene % SCENES {
         _ if scene == THUMB => pin = crate::thumb::frame(&mut o, seed, t),
-        // Rest: an all-over polka field of uneven sizes, breathing out from a sleeper.
-        0 => {
-            pin.3 = 0.5 + 0.3 * (t * 0.5).sin();
-            polka(&mut o, t, 0.92, |i| rnd(seed, i), |i| rnd(seed, i + 500));
-            o.face(0.5, 0.5, 0.12, SLEEPY, (0.5, 0.9), 0.0, 0.02 * (t * 0.8).sin(), 0.0);
-        }
-        // Signal: rings travel out from a happy one.
-        1 => {
-            let pulse = (0.5 + 0.5 * (t * 3.0).cos()).powi(8);
-            pin = (0.42, 0.5, 0.025, pulse);
-            grid(16, |x, y| {
-                let r = (x - 0.3).hypot(y - 0.5);
-                let w = (r * 25.0 - t * 3.0).cos().max(0.0) * (-r * 2.0).exp();
-                o.dot(x, y, 0.006 + 0.018 * w, w, 0.35 + 0.65 * w);
-            });
-            o.face(0.3, 0.5, 0.12, HAPPY, (1.0, 0.5), 0.0, 0.0, pulse);
-        }
         // Scan: an angle sweeps round a fixed centre; a curious one follows it.
         2 => {
             let a = t * 0.9;
@@ -144,25 +124,6 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f
             }
             o.face(0.5, 0.5, 0.09, CURIOUS, (0.5 + a.cos(), 0.5 + a.sin()), 0.0, 0.0, 0.0);
         }
-        // Sampling: seeded draws pile up into a distribution, then restart.
-        3 => {
-            const N: u32 = 45;
-            const BINS: usize = 11;
-            let shown = (8 + (t * 10.0) as u32 % (N + 20)).min(N);
-            let mut h = [0u16; BINS];
-            let mut last = (0.5, 0.9);
-            for i in 0..shown {
-                let g = (-2.0 * rnd(seed, 2 * i).max(1e-6).ln()).sqrt() * (TAU * rnd(seed, 2 * i + 1)).cos();
-                let b = ((g / 6.0 + 0.5) * BINS as f32).clamp(0.0, BINS as f32 - 1.0) as usize;
-                let (x, y) = ((b as f32 + 0.5) / BINS as f32, 0.93 - h[b] as f32 * 0.045);
-                h[b] += 1;
-                let new = ((i + 6) as f32 - shown as f32).max(0.0) / 6.0;
-                o.dot(x, y, 0.021, 0.4 + 0.6 * new, 1.0);
-                last = (x, y);
-            }
-            pin = (last.0, last.1, 0.03, 0.9);
-            o.face(0.5, 0.18, 0.08, CURIOUS, last, 0.0, 0.0, 0.0);
-        }
         // Convergence: a scattered field settles onto a grid; dizziness turns to delight.
         4 => {
             let s = smooth(if p >= 0.0 { p * 1.4 } else { (t % 8.0) / 5.0 });
@@ -174,19 +135,6 @@ pub fn frame(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f
             });
             pin = (0.47, 0.46, 0.025, s.powi(4)); // a glint once it settles
             o.face(0.5, 0.5, 0.09, DIZZY, (0.5, 0.9), if s < 0.7 { 0.0 } else { 2.0 }, 0.03 * (1.0 - s) * (t * 9.0).sin(), s.powi(4));
-        }
-        // A missing observation: the gap stays visible; a flustered one hesitates beside it.
-        5 => {
-            let tx = 0.68 + 0.05 * (t * 0.7).sin();
-            pin = (tx, 0.38, 0.025, 0.35 + 0.15 * (t * 2.0).sin());
-            grid(14, |x, y| {
-                let r = (x - 0.68).hypot(y - 0.38);
-                let edge = (-(r - 0.16).powi(2) * 2000.0).exp() * (0.5 + 0.5 * (t * 2.0).sin());
-                if r > 0.16 {
-                    o.dot(x, y, 0.013 + 0.008 * edge, 0.2 + 0.8 * edge, 0.6 + 0.4 * edge);
-                }
-            });
-            o.face(0.28 + 0.004 * (t * 30.0).sin(), 0.66, 0.1, FLUSTERED, (tx, 0.38), 0.0, 0.0, 0.0);
         }
         // Link: one radar watches one target. The beam is a fan of gain, the ring its reach.
         // Stage, in km and km/s: view centre and span, radar, target, boresight, reach, Pd, velocity.
@@ -339,13 +287,11 @@ mod tests {
 
     #[test]
     fn scenes_keep_their_promises() {
-        let gap = run(5, 3.0, -1.0, -1.0); // the gap stays empty
-        assert!(gap.dots.iter().all(|c| (c[0] - 0.68).hypot(c[1] - 0.38) > 0.16));
         let a = run(4, 0.0, 1.0, -1.0).dots; // convergence follows progress
         assert!(a.len() == 196 && (a[0][0] - 0.5 / 14.0).abs() < 1e-6 && (a[0][1] - 0.5 / 14.0).abs() < 1e-6);
-        let rest = run(0, 0.0, -1.0, -1.0); // dapples light the dots beneath them
-        let lit: Vec<bool> = rest.dots.iter().map(|c| rest.light[4..].chunks(4).any(|q| (c[0] - q[0]).hypot(c[1] - q[1]) < q[2])).collect();
-        assert!(lit.contains(&true) && rest.dots.iter().zip(&lit).all(|(c, &on)| on == (c[3] >= 0.5) || c[3] == 0.5));
+        let start = run(4, 0.0, 0.0, -1.0); // dapples light the dots beneath them
+        let lit: Vec<bool> = start.dots.iter().map(|c| start.light[4..].chunks(4).any(|q| (c[0] - q[0]).hypot(c[1] - q[1]) < q[2])).collect();
+        assert!(lit.contains(&true) && start.dots.iter().zip(&lit).all(|(c, &on)| on == (c[3] == 0.5)));
         let b = run(4, 0.0, 1.0, 0.5).dots; // the pointer pushes dots aside
         let i = 6 * 14 + 6; // the grid dot just up-left of the pointer
         assert!(b[i][0] < a[i][0] && b[i][2] > a[i][2]);

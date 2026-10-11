@@ -135,7 +135,7 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
     // The source export and the manifest that every HTML form carries.
     let source: Vec<(&str, &[u8])> = std::iter::once(("index.md", src.as_bytes())).chain(files.iter().map(|f| (f.0.as_str(), f.1.as_slice()))).collect();
     let theme_id = match d.get("theme") { "" => "site", t => t };
-    let export_theme = theme::export(theme_id, d.get("print"));
+    let export_theme = theme::export(theme_id);
     let cargo_lock = files.iter().find(|f| f.0 == "Cargo.lock").map(|f| String::from_utf8_lossy(&f.1).into_owned()).unwrap_or_default();
     let crates: Vec<String> = cargo_lock.split("[[package]]").skip(1).map(|p| {
         let get = |k: &str| p.lines().find_map(|l| l.strip_prefix(&format!("{k} = \""))).unwrap_or("\"").trim_end_matches('"').to_string();
@@ -156,8 +156,9 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
         format!(",\"visuals\":{{\"commit\":\"{commit}\",\"files\":{{{}}}}}", files.join(","))
     };
     let rustc = TOOLCHAIN.lines().find_map(|l| l.strip_prefix("channel = ")).unwrap_or("").trim_matches('"');
-    let theme = format!("{{\"id\":{},\"export\":{},\"palette_version\":{},\"overrides\":{}}}",
-        pack::json(theme_id), pack::json(export_theme), theme::VERSION, pack::json(d.get("colors")));
+    // The record keeps an empty "overrides" (the removed `colors:`), so a manifest keeps its bytes.
+    let theme = format!("{{\"id\":{},\"export\":{},\"palette_version\":{},\"overrides\":\"\"}}",
+        pack::json(theme_id), pack::json(export_theme), theme::VERSION);
     let src_manifest = format!("{{\"engine\":\"{}\",\"notebook\":\"{slug}\",\"rustc\":\"{rustc}\",\"source\":{{{}}},\"crates\":[{}],\"theme\":{theme},\
         \"font\":{{\"files\":[{}]}},\"seed\":{}{voice}{data}}}", engine::VERSION, hashes(&source), crates.join(","), fonts.join(","), pack::json(d.get("seed")));
     let zip = pack::zip(&[source.clone(), vec![("manifest.json", src_manifest.as_bytes())]].concat());

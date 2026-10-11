@@ -499,7 +499,7 @@ impl Pdf<'_> {
 pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Option<Vec<u8>>, form: usize) -> Vec<u8> {
     let slides = form == 1 || form == 2; // a handout lays out the slides, then sets them beside their narration
     let (w, h, m, mx) = if slides { (720.0, 405.0, 36.0, 36.0) } else { A4 };
-    let pal = theme::palette(theme::export(match d.get("theme") { "" => "site", t => t }, d.get("print")), d.get("colors"));
+    let pal = theme::palette(theme::export(match d.get("theme") { "" => "site", t => t }));
     let mut p = Pdf { get, fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, x: mx, col: w - 2.0 * mx, y: 0.0, slides, fig: 0 };
     let (fg, fg2, muted, text) = (pal[2], pal[3], pal[4], St(0, if slides { 13.0 } else { 11.0 }, pal[3], 0));
     let (seed, hex) = (d.get("seed").parse().unwrap_or(1), |c: &str| u32::from_str_radix(c.trim_start_matches('#'), 16).ok());
