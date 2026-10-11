@@ -1,6 +1,6 @@
 ---
 title: Theorems
-summary: Find 1 of 2,055 theorems and read its proof 1 step at a time. Sort the catalogue of 2,389 results.
+summary: Find 1 of 2,522 theorems and read its proof 1 step at a time. Sort the catalogue of 3,098 results.
 thumb: 1479
 theme: site
 seed: 20261010
