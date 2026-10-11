@@ -30,7 +30,7 @@ fn malformed_input_does_not_panic() {
         say::vtt(&d, &lock, &[vec![f32::NAN; 3], vec![]]);
         say::wav(&d, &lock, &[vec![2.0; 5]]);
         let stage: Vec<f32> = src.bytes().map(|b| [f32::NAN, f32::INFINITY, -1e30, b as f32][b as usize % 4]).collect();
-        scene::list(i as u32, i as u32 % 12, f32::MAX, f32::NAN, -1.0, 2.0, &stage, [0; 4]);
+        scene::list(i as u32, i as u32 % 12, f32::MAX, f32::NAN, -1.0, 2.0, &stage, [0; 4], [0; 11]);
         if i % 10 == 0 { pdf::write(&d, &run.out, &stage, &|p| (!p.starts_with("fonts/")).then(|| src.clone().into_bytes()), i / 10 % pdf::FORMS.len()); }
     }
 }

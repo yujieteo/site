@@ -70,12 +70,14 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
 - `![name](viz/<slug>/index.html)` embeds a sealed artifact of yujieteo/visuals, pinned in `visuals.lock`:
   the page carries its bytes and runs it in a frame of the page's origin, which follows the reader's theme
   and grows to fit it. The PDFs name it only.
-- A thumbnail is one seed (`engine/src/thumb.rs`), read as digits so a known seed gives a known
-  picture: units the motion (0 doze, 1 hop, 2 bounce, 3 leap out of the frame, 4 stroll,
-  5 trampoline, 6 see-saw, 7 orbit, 8 wave, 9 juggle), tens the backdrop (0 polka, 1 ripples,
-  2 night, 3 hill, 4 sea, 5 rings, 6 rain, 7 halftone, 8 confetti, 9 plain), hundreds the character
-  (mod 5: sleepy, happy, flustered, dizzy, curious); the rest is hashed into palette, size and tempo.
-  The landing page's doors are seeds too. The generator has its own budget of 500 lines.
+- A thumbnail is one seed (`engine/src/thumb.rs`), cut by remainders so a known seed gives a known
+  picture: the seed mod 20 the motion (doze, hop, bounce, leap, stroll, trampoline, orbit, dance, juggle,
+  skate, pulse, peek, zigzag, swing, hover, chase, startle, roll, bloom, sway), ÷ 20 mod 20 the backdrop
+  (polka to bubbles), ÷ 400 mod 15 the character (5 moods in 5 tints), ÷ 6000 mod 6 the composition
+  (solo, pair, trio, line, mirror, pet); the rest is the variety (tint, tempo, size, mirror, details).
+  That is 1,944,000 kinds of picture. Every colour is a token of the reader's theme (the export theme in
+  PDFs) and a character keeps 3:1 against its backdrop. The landing page's doors are seeds too. The
+  generator has its own budget of 500 lines.
 - A chapter is a slide (title, scene, body) followed by its narration. Render (a dialog) switches the
   view in place: Notebook (code, controls, outputs, live scenes), Slides (one 16:9 slide per chapter),
   Handout (each slide with its narration beside it) and Article (continuous prose, numbered sections).

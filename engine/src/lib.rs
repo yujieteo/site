@@ -53,11 +53,15 @@ impl<'a> Parts<'a> {
     }
 }
 
-/// One frame's display list (`scene::list`, `draw::encode`); the input holds the stage as f32s.
+/// One frame's display list (`scene::list`, `draw::encode`); the input holds the stage as f32s, then the 11 tokens of the theme.
 #[unsafe(no_mangle)]
 pub extern "C" fn paint(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, base: u32, shade: u32, accent: u32, light: u32) -> u32 {
     let ok = |v: f32| if v.is_finite() { v } else { -1.0 };
-    let ops = scene::list(seed, scene, ok(t).max(0.0), ok(p), ok(px), ok(py), &f32s(&input()), [base, shade, accent, light]);
+    let v = f32s(&input());
+    let (stage, tokens) = v.split_at(v.len().saturating_sub(11));
+    let mut th = [0; 11];
+    th.iter_mut().zip(tokens).for_each(|(c, &f)| *c = f as u32);
+    let ops = scene::list(seed, scene, ok(t).max(0.0), ok(p), ok(px), ok(py), stage, [base, shade, accent, light], th);
     ret(draw::encode(&ops))
 }
 

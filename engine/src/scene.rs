@@ -5,7 +5,7 @@
 //! Dots: 5 f32 each — x, y, radius, colour (0 shadow, 0.5 accent, 1 light), alpha.
 //! Faces: 10 f32 each — x, y, radius, tone, gaze x, gaze y, blink (0 open, 1 shut),
 //! eye glyph, squash (+ flat, - tall), pulse.
-//! Tone 3 + i is character i's colour (`CAST`). `list` turns a frame into a display list.
+//! Tone 3 + i is character i's colour (`CAST`; a thumbnail's bodies come from its theme). `list` turns a frame into a display list.
 //! Lights: 4 f32 each — x, y, radius, intensity (0..1). Light 0 is the sun or pin light;
 //! the rest are dappled patches, as of sun through leaves, and they light the dots beneath.
 //! Progress and pointer are negative when absent. The stage is a notebook's numbers for
@@ -194,13 +194,17 @@ pub fn mix(a: u32, b: u32, w: f32) -> u32 {
     (0..3).map(|i| i * 8).map(|s| ((((a >> s) & 255) as f32 * (1.0 - w) + ((b >> s) & 255) as f32 * w).round() as u32) << s).sum()
 }
 
-/// One frame as a display list. `pal` is the scene's base, shade, accent and light.
-pub fn list(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f32], pal: [u32; 4]) -> Vec<Op> {
+/// One frame as a display list. `pal` is the scene's base, shade, accent and light; `th` the 11 tokens of the theme
+/// (`theme::TOKENS` order), from which a thumbnail takes every colour.
+pub fn list(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f32], pal: [u32; 4], th: [u32; 11]) -> Vec<Op> {
     let (seed, scene) = staged(seed, scene, stage);
     let fr = frame(seed, scene, t, p, px, py, stage);
     let l = fr.light;
-    let [base, shade, accent, light] = if scene == THUMB { crate::thumb::palette(seed) } else { pal };
-    let hue = |k: usize| [shade, accent, light].get(k).copied().unwrap_or(CAST[k.saturating_sub(3).min(4)]);
+    let thumb = scene == THUMB;
+    let (pal, cast) = if thumb { crate::thumb::look(seed, &th) } else { (pal, CAST) };
+    let [base, shade, accent, light] = pal;
+    let scr = !(thumb && crate::thumb::ratio(th[0], 0) > 4.0); // on a light background the lights tint instead of brighten
+    let hue = |k: usize| [shade, accent, light].get(k).copied().unwrap_or(cast[k.saturating_sub(3).min(4)]);
     let tone = |c: f32| if c < 0.34 { 0 } else if c < 0.67 { 1 } else { 2 };
     let disc = |x: f32, y: f32, r: f32| Sh::Ell(x, y, r, r);
     let tile = Sh::Rect(0.0, 0.0, 1.0, 1.0, 0.0);
@@ -210,15 +214,18 @@ pub fn list(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f3
     dots.sort_by_key(|c| (tone(c[3]), (c[4] * 3.0).ceil() as u8));
     o.extend(dots.iter().map(|c| Op::Fill(disc(c[0], c[1], c[2]), hue(tone(c[3])), (c[4] * 3.0).ceil() / 3.0, false)));
     // Light: dappled patches (the scene has already lit the dots under them), a hard halo and the sun.
-    let dapples = |o: &mut Vec<Op>, a: f32| o.extend(l[4..].chunks(4).map(|q| Op::Fill(disc(q[0], q[1], q[2]), light, a, true)));
+    let dapples = |o: &mut Vec<Op>, a: f32| o.extend(l[4..].chunks(4).map(|q| Op::Fill(disc(q[0], q[1], q[2]), light, a, scr)));
     dapples(&mut o, 0.18);
     if l[3] > 0.05 {
-        o.push(Op::Fill(disc(l[0], l[1], l[2] * 2.5), light, 0.15 * l[3], true));
-        o.push(Op::Fill(disc(l[0], l[1], l[2]), light, (l[3] * 2.0).ceil() / 2.0, true));
+        o.push(Op::Fill(disc(l[0], l[1], l[2] * 2.5), light, 0.15 * l[3], scr));
+        o.push(Op::Fill(disc(l[0], l[1], l[2]), light, (l[3] * 2.0).ceil() / 2.0, scr));
     }
     o.push(Op::Clip(None));
     // Characters, unclipped, each with the dappled light on its body.
-    fr.faces.iter().for_each(|&f| face(&mut o, f, hue(f[3] as usize), |o| dapples(o, 0.35)));
+    fr.faces.iter().for_each(|&f| {
+        let (c, eyes) = (hue(f[3] as usize), if thumb { crate::thumb::ink(hue(f[3] as usize), &th) } else { INK });
+        face(&mut o, f, c, eyes, |o| if !thumb { dapples(o, 0.35) });
+    });
     o
 }
 
@@ -226,8 +233,8 @@ pub fn list(seed: u32, scene: u32, t: f32, p: f32, px: f32, py: f32, stage: &[f3
 pub const GAZE: (f32, f32) = (0.22, 0.18);
 
 /// One character (a face of `Out`) in colour `hue`: its pulse, its body, then on the body (clipped to
-/// it) the light that `lit` draws and two glyph eyes that look somewhere.
-pub fn face(o: &mut Vec<Op>, [x, y, r, _, gx, gy, _, g, sq, pulse]: [f32; 10], hue: u32, lit: impl Fn(&mut Vec<Op>)) {
+/// it) the light that `lit` draws and two glyph eyes in colour `ink` that look somewhere.
+pub fn face(o: &mut Vec<Op>, [x, y, r, _, gx, gy, _, g, sq, pulse]: [f32; 10], hue: u32, ink: u32, lit: impl Fn(&mut Vec<Op>)) {
     if pulse > 0.05 {
         let r = r * (1.65 - 0.5 * pulse);
         o.push(Op::Fill(Sh::Ell(x, y, r, r), hue, 0.3, false));
@@ -242,7 +249,7 @@ pub fn face(o: &mut Vec<Op>, [x, y, r, _, gx, gy, _, g, sq, pulse]: [f32; 10], h
         let (cx, cy) = (e * 0.48 + gx * GAZE.0, -0.1 + gy * GAZE.1);
         let mut seg = |a: (f32, f32), b: (f32, f32)| {
             let (a, b) = (at(cx + a.0, cy + a.1), at(cx + b.0, cy + b.1));
-            o.push(Op::Fill(Sh::Seg(a.0, a.1, b.0, b.1, 0.12 * r), INK, 1.0, false));
+            o.push(Op::Fill(Sh::Seg(a.0, a.1, b.0, b.1, 0.12 * r), ink, 1.0, false));
         };
         match g as u8 {
             1 => seg((-h, 0.0), (h, 0.0)),
@@ -251,7 +258,7 @@ pub fn face(o: &mut Vec<Op>, [x, y, r, _, gx, gy, _, g, sq, pulse]: [f32; 10], h
             4 => (seg((-h, 0.0), (h, 0.0)), seg((0.0, -h), (0.0, h))).1,
             5 => {
                 let (c, rr) = (at(cx, cy), 0.75 * h * r);
-                o.push(Op::Fill(Sh::Ring(c.0, c.1, rr, 0.12 * r), INK, 1.0, false));
+                o.push(Op::Fill(Sh::Ring(c.0, c.1, rr, 0.12 * r), ink, 1.0, false));
             }
             _ => [0.5f32, 1.55, 2.6].into_iter().for_each(|a| seg((-h * a.cos(), -h * a.sin()), (h * a.cos(), h * a.sin()))),
         }
@@ -279,7 +286,7 @@ mod tests {
                 assert!(o.faces.iter().all(|q| q.iter().all(|v| v.is_finite()) && (3.0..8.0).contains(&q[3]) && (1.0..=6.0).contains(&q[7])));
                 assert_eq!(run(s, t, -1.0, -1.0).dots, o.dots);
             }
-            let l = || crate::draw::encode(&list(42, s, 2.5, -1.0, -1.0, -1.0, &[], [0x4f6f92, 0x1f2a3c, 0xf0a050, 0xffe39a]));
+            let l = || crate::draw::encode(&list(42, s, 2.5, -1.0, -1.0, -1.0, &[], [0x4f6f92, 0x1f2a3c, 0xf0a050, 0xffe39a], crate::theme::palette("site-light")));
             assert!(l() == l() && !l().is_empty(), "scene {s}");
         }
         assert_eq!(mix(0, 0xffffff, 0.5), 0x808080);
@@ -298,8 +305,8 @@ mod tests {
         let link = run(6, 0.0, -1.0, -1.0); // the link: reach ring round the radar, pin on the target
         assert!((link.dots[0][0] - (0.125 + 80.6 / 160.0)).abs() < 1e-5 && (link.light[0] - 0.65625).abs() < 1e-5 && (link.light[3] - 0.61).abs() < 1e-6);
         assert_eq!(link.dots.last().unwrap()[3], 0.5); // below the required Pd the target is accent, not light
-        let seeded = |stage: &[f32]| crate::draw::encode(&list(42, 7, 2.5, -1.0, -1.0, -1.0, stage, [0; 4])); // scene 7: the staged seed's thumbnail
-        let thumb = |seed| crate::draw::encode(&list(seed, THUMB, 2.5, -1.0, -1.0, -1.0, &[], [0; 4]));
+        let seeded = |stage: &[f32]| crate::draw::encode(&list(42, 7, 2.5, -1.0, -1.0, -1.0, stage, [0; 4], [0; 11])); // scene 7: the staged seed's thumbnail
+        let thumb = |seed| crate::draw::encode(&list(seed, THUMB, 2.5, -1.0, -1.0, -1.0, &[], [0; 4], [0; 11]));
         assert!(seeded(&[65_535.0, 65_535.0]) == thumb(u32::MAX) && seeded(&[0.0, 41_213.0]) == thumb(41_213) && seeded(&[]) == thumb(42));
     }
 }

@@ -5,7 +5,7 @@ palette: #4f6f92 #1f2a3c #f0a050 #ffe39a
 thumb: 41213
 ---
 
-<!-- skill: The seed goes to scene 7 through the stage, as its high and low 16 bits. The parts and their names come from engine::thumb: change them there, never here. Add an example seed only after you see its animation on the page. -->
+<!-- skill: The seed goes to scene 7 through the stage, as its high and low 16 bits. The parts and their names come from engine::thumb: change them there, never here. Every colour is a theme token. Add an example seed only after you see its animation on the page, in a light and a dark theme. -->
 
 ## Your seed {scene=7 t=3}
 
@@ -21,26 +21,27 @@ let example = choice("Example", &EXAMPLES.map(|s| format!("{s}: {}", named(s))),
 let typed = field(&format!("Seed (from example {})", example + 1), &EXAMPLES[example].to_string());
 let seed = seed_of(typed.trim());
 stage(&[(seed >> 16) as f64, (seed & 0xffff) as f64]);
-println!("Seed {seed}: {}, variety {}.", named(seed), seed / 1000);
+println!("Seed {seed}: {}, variety {}.", named(seed), parts(seed).4);
 ```
 
-## One digit, one part
+## One number, five parts
 
-Each digit of the seed picks one part of the animation:
+The seed is cut by remainders into five parts. Each part picks one thing in the animation:
 
-- The last digit (the units) picks the motion.
-- The tens digit picks the backdrop.
-- The hundreds digit picks the character. The digits 5 to 9 give the same characters as 0 to 4.
-- All the other digits (the variety) pick the colours, the size, the speed and the small details.
+- The seed mod 20 picks the motion (20 motions).
+- The seed ÷ 20, mod 20, picks the backdrop (20 backdrops).
+- The seed ÷ 400, mod 15, picks the character: one of 5 moods in one of 5 tints (15 characters).
+- The seed ÷ 6000, mod 6, picks the composition: who is on the stage, and where (6 compositions).
+- The seed ÷ 36000 is the variety: the tint of the backdrop's dots, the tempo, the size, a mirror and the small details.
 
-Change one digit to change one part.
+Change the part and only that part changes: add 1 to the seed to change the motion, add 20 for the backdrop. That makes 20 × 20 × 15 × 6 × 54 = 1,944,000 different animations. Every colour comes from the theme you chose, so the animation follows the theme live. Characters keep a contrast of 3 to 1 with the backdrop in every theme.
 
 ```rust
 //| caption: All the parts. A dot (●) marks the parts of your seed.
-let (m, b, ..) = parts(seed);
+let (m, b, c, k, _) = parts(seed);
 let mark = |on: bool, name: &str| if on { format!("● {name}") } else { name.to_string() };
-let rows: Vec<Vec<String>> = (0..10).map(|d| vec![d.to_string(), mark(d == m, MOTIONS[d]), mark(d == b, BACKDROPS[d]), mark(d as u32 == seed / 100 % 10, CHARACTERS[d % 5])]).collect();
-table(&["Digit", "Motion", "Backdrop", "Character"], &rows);
+let rows: Vec<Vec<String>> = (0..20).map(|d| vec![d.to_string(), mark(d == m, MOTIONS[d]), mark(d == b, BACKDROPS[d]), CHARACTERS.get(d).map_or(String::new(), |n| mark(d == c, n)), COMPOSITIONS.get(d).map_or(String::new(), |n| mark(d == k, n))]).collect();
+table(&["Part", "Motion", "Backdrop", "Character", "Composition"], &rows);
 ```
 
 ## The same seed, the same animation
@@ -51,12 +52,12 @@ Each frame comes from the seed, the time and the pointer only, so one seed alway
 
 ```rust
 //| caption: The examples, the parts in words, and the seed of a text.
-use engine::thumb::{BACKDROPS, CHARACTERS, MOTIONS, parts};
+use engine::thumb::{BACKDROPS, CHARACTERS, COMPOSITIONS, MOTIONS, parts};
 const EXAMPLES: [u32; 6] = [41213, 12108, 26457, 77189, 90376, 61434];
 /// The parts of a seed in words: motion, backdrop, character.
 fn named(seed: u32) -> String {
-    let (m, b, c, _) = parts(seed);
-    format!("{}, {}, {}", MOTIONS[m], BACKDROPS[b], CHARACTERS[c])
+    let (m, b, c, k, _) = parts(seed);
+    format!("{} {}, {}, {}", COMPOSITIONS[k], MOTIONS[m], BACKDROPS[b], CHARACTERS[c])
 }
 /// The seed of a text: the number itself, or else the 32-bit FNV-1a hash of its bytes.
 fn seed_of(s: &str) -> u32 {
