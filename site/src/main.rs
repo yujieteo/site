@@ -99,7 +99,7 @@ fn dot() -> String {
     };
     let states: String = STATES.iter().enumerate().map(|(i, &(s, g, pulse))| {
         let mut o = vec![];
-        scene::face(&mut o, [0.5, 0.5, r, 0.0, 0.0, 0.0, 0.0, g, sq, pulse], scene::CAST[4], |_| ());
+        scene::face(&mut o, [0.5, 0.5, r, 0.0, 0.0, 0.0, 0.0, g, sq, pulse], scene::CAST[4], scene::INK, |_| ());
         format!(r#"<g data-s="{s}"{}>{}</g>"#, if i == 0 { r#" class="on""# } else { "" }, o.iter().map(svg).collect::<String>())
     }).collect();
     let (ex, ey) = (scene::GAZE.0 * r * (1.0 + sq), scene::GAZE.1 * r * (1.0 - sq));
@@ -232,11 +232,11 @@ fn main() {
         }
     }
     // Doors and cards are seeded thumbnails: notes doze at night, stories stroll over a hill,
-    // and play leaps clean out of its tile (see engine::thumb for the digits).
+    // and play leaps clean out of its tile (see engine::thumb for the parts of a seed).
     const DOORS: [(&str, u32, &str, &str); 3] = [
-        ("notes", 7_020, "Notes", "A working log, sanitised."),
-        ("stories", 3_434, "Stories", "Visual explanations, told in order."),
-        ("play", 5_113, "Play", "Toys to play with."),
+        ("notes", 252_040, "Notes", "A working log, sanitised."),
+        ("stories", 109_664, "Stories", "Visual explanations, told in order."),
+        ("play", 180_423, "Play", "Toys to play with."),
     ];
     let doors: String = DOORS.iter().map(|(dir, seed, name, line)| format!(
         r#"<a class="door" href="{dir}/index.html">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, thumb(*seed, "data-bleed"))).collect();

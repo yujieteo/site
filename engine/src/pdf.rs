@@ -513,7 +513,7 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
         match b {
             B::H(2, t, _) if let Some(c) = chapters.iter().find(|c| c.at == at) => {
                 (skip, n) = (false, n + 1);
-                let ops = c.scene.map(|sn| scene::list(seed, sn, c.t, c.p, -1.0, -1.0, stage, [sc[0], sc[1], sc[2], sc[3]]));
+                let ops = c.scene.map(|sn| scene::list(seed, sn, c.t, c.p, -1.0, -1.0, stage, [sc[0], sc[1], sc[2], sc[3]], pal));
                 if slides {
                     (p.x, p.col) = (mx, w - 2.0 * mx);
                     notes.push(vec![]);

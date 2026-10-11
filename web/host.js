@@ -37,11 +37,14 @@
   // A chapter's frame is a still (its own t) in the handout and article; elsewhere it plays.
   const still = (cv) => cv.dataset.t && /handout|article/.test(html.dataset.view);
   const colour = (cv, v) => parseInt(getComputedStyle(cv).getPropertyValue(v).trim().slice(1), 16) || 0;
+  // The scene's own colours, then the reader's theme (a thumbnail takes every colour from it).
+  const TOKENS = ["bg", "surface", "fg", "fg2", "muted", "line", "accent", "accent-text", "warm", "green", "chrome"];
   const pal = (cv) => ["--sky", "--shade", "--glow", "--light"].map((v) => colour(cv, v));
+  const theme = () => TOKENS.map((v) => colour(html, "--" + v));
   // One frame of a scene into ctx at (x, y), s pixels to the unit square.
   function paint(ctx, d, t, pal, x, y, s, [px, py] = [-1, -1]) {
     const seed = +(d.seed || html.dataset.seed || 1), p = d.progress === undefined ? -1 : +d.progress;
-    const ops = new Float32Array(call("paint", new Uint8Array(stage.buffer), seed, +d.scene, t, p, px, py, ...pal).buffer);
+    const ops = new Float32Array(call("paint", new Uint8Array(new Float32Array([...stage, ...theme()]).buffer), seed, +d.scene, t, p, px, py, ...pal).buffer);
     ctx.save(); ctx.setTransform(s, 0, 0, s, x, y);
     let clipped = false;
     for (let i = 0; i < ops.length; i += 10) {
@@ -101,6 +104,8 @@
   };
   $$("canvas[data-scene]").forEach(watch);
   new ResizeObserver(redraw).observe(document.body);
+  new MutationObserver(redraw).observe(html, { attributes: true, attributeFilter: ["data-theme", "data-mode"] });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
   motion?.addEventListener("click", () => setPlaying(!playing));
   reduce.addEventListener("change", () => setPlaying(!reduce.matches));
   setPlaying(playing);
