@@ -2,13 +2,13 @@
 # pages that the site embeds. scripts/visuals.sh fetches them into visuals/ (not committed) and checks
 # every hash; the build refuses any other path.
 # sha256 path
-commit 09ab9a8a74deb77d846b4c820bef7811d1b7aacd
+commit d9fa13a8ae7471c26ad7c3ab0e20c697bcd18182
 2da71d90953d25ba95d7086e03160bfb222ff676689356afb1459d749083e5a6 viz/theorem-explorer/raw.json
 b5a5313da12ea9c5e4248390377ef4c14e9418fd8fd99bb931f4c0c0cd7f0cd9 viz/theorem-learner/raw.json
 cc1f911865193727be1aa81c385ff59f670caff22bdc1a9facede9b0c4562918 viz/beamdiag/raw.json
 6815f21c1cd9ac7ed82c178a1e585c74b037e067da98c34b955ecf1849691e50 viz/beamdiag/index.html
-d33294ab56a225ae804b0a5f8ea7cfdac0402cc427c6dd86ed2e80af1221e164 viz/links/index.html
-b645f7a79f544430849286f55e8168828f895dd3ae77f0b48b80940782e05a5e viz/links/links.json
+212edbb6a14426c835c1542f9c0018ad856856be64f552cb3bf85374dc951ce6 viz/links/index.html
+c69d032ff3ceb5786a9d7b5572d91f14ff88ff02ee14a1beff83f553ac17bd0f viz/links/links.json
 de4357e58497298e50681c18b385b2cfd3006488dd31374a1e385c6eac5a5f30 viz/monte-carlo-workbench/data/laws.json
 a8cbf7352659bf752e1528630d551fb9a15a18ea2187b155395f26652880775c viz/monte-carlo-workbench/data/theory.json
 046925b9f5687b88cfb1f984c622172d0a685df38a4667e1e0de938a6da449f3 viz/monte-carlo-workbench/data/glossary.json
