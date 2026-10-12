@@ -64,6 +64,8 @@ dialog::backdrop { background: rgb(0 0 0 / 0.4); }
 @media (prefers-reduced-motion: no-preference) { .dot .eyes { transition: translate 0.2s ease-out; } }
 .find ol { list-style: none; margin: 0; padding: 0.5rem; max-height: 60vh; overflow-y: auto; }
 .find ol:empty { display: none; }
+.find p { margin: 0; padding: 0.75rem 1rem; color: var(--muted); }
+@media (pointer: coarse) { .search, .mode, .fams button, .modes button { min-width: 2.75rem; min-height: 2.75rem; } .find a { padding-block: 0.75rem; } }
 .find a { display: block; padding: 0.5rem 0.75rem; border-radius: 6px; color: var(--fg); text-decoration: none; }
 .find a:is(:hover, :focus) { background: var(--surface); outline: none; }
 .find small { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
