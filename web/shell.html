@@ -71,8 +71,7 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
   ol.addEventListener("focusin", (e) => { const b = e.target.getBoundingClientRect(); look(b.x + b.width / 3, b.y + b.height / 2); });
   ol.addEventListener("click", (e) => e.target.closest("a") && be("pick"));
   icon.addEventListener("click", open);
-  addEventListener("keydown", (e) => { // "/" opens search, but types a slash wherever text is edited (the Vim area too)
-    if (e.key === "/" && !(e.metaKey || e.ctrlKey || e.altKey || e.defaultPrevented || d.open || e.target.closest?.("input,textarea,select,[contenteditable],.vim"))) { e.preventDefault(); return open(); }
+  addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() !== "k" || !(e.metaKey || e.ctrlKey) || e.defaultPrevented) return;
     e.preventDefault();
     d.open ? d.close() : open();

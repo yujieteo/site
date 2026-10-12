@@ -234,6 +234,13 @@
 
   // A pager's button steps its slider. A Known box adds or drops its id in the kept text, which the browser stores.
   article.addEventListener("click", ({ target: t }) => {
+    if (t.dataset.clear) {
+      for (const item of t.dataset.clear.split(" ")) {
+        const [k, v = ""] = item.split(":"), el = $(`[data-k="${k}"]`, article);
+        if (el.tagName === "SELECT") el.selectedIndex = +v; else el.value = v;
+      }
+      run();
+    }
     const s = t.dataset.d && $(`[data-k="${t.dataset.for}"]`, article);
     if (s) { s.value = +s.value + +t.dataset.d; s.dispatchEvent(new Event("input", { bubbles: true })); }
   });
