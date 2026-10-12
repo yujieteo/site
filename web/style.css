@@ -53,9 +53,9 @@ main:focus { outline: none; }
 .fams i { flex: none; width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1px solid var(--line);
   background: conic-gradient(var(--a) 0 25%, var(--b) 0 50%, var(--c) 0 75%, var(--d) 0); }
 .modes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-:is(.look, .sift) [aria-pressed=true] { color: var(--fg); border-color: var(--fg); }
+.look [aria-pressed=true] { color: var(--fg); border-color: var(--fg); }
 /* The search fields: large text over a rule. */
-:is(.find, .sift) input { font: inherit; font-size: 1.125rem; color: var(--fg); background: none; border: 0; border-bottom: 1px solid var(--line); outline: none; }
+.find input { font: inherit; font-size: 1.125rem; color: var(--fg); background: none; border: 0; border-bottom: 1px solid var(--line); outline: none; }
 .find input { width: 100%; padding: 0.875rem 1rem 0.875rem 3.75rem; }
 /* The dot (built from engine::scene::face) sits at the field's left end: one drawing per state, and
    only the one marked .on shows. --gx and --gy turn its eyes, which glide only when motion is welcome. */
@@ -75,32 +75,6 @@ main:focus { outline: none; }
 
 details { border-top: 1px solid var(--line); padding: 1rem 0; }
 
-/* Notes: a switch between its sources (UniiChat, Links), the current one in the text colour. */
-.sources { display: flex; gap: 1.25rem; margin-bottom: 2rem; color: var(--muted); }
-.sources [aria-current] { color: var(--fg); text-decoration: underline; text-underline-offset: 0.3em; }
-/* UniiChat: a search, its hits, then the summary tree (each summary opens onto its two halves). */
-.notes { max-width: 40rem; }
-.notes .lede { margin-bottom: 2rem; }
-.sift { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
-.sift input { flex: 1 1 100%; border-radius: 0; padding: 0.5rem 0; }
-.sift input:focus-visible { border-color: var(--fg); }
-.sift button { font-size: 0.875rem; }
-.sift output { color: var(--muted); font-size: 0.875rem; }
-.hits, .tree, .tree ol { list-style: none; margin: 0; padding: 0; }
-.hits { margin-bottom: 3rem; }
-.hits a { display: block; padding: 0.5rem 0; overflow-wrap: anywhere; text-decoration: none; }
-.hits a:hover { color: var(--fg); }
-.notes :is(.hits, .tree) span { display: block; font: 0.75rem/1.6 var(--mono); color: var(--muted); }
-.tree ol { padding-left: clamp(0.375rem, 2vw, 1rem); border-left: 1px solid var(--line); }
-.tree details { border: 0; padding: 0; }
-.tree summary { cursor: pointer; list-style: none; }
-.tree summary::-webkit-details-marker { display: none; }
-.tree summary span::before { content: "+ "; }
-.tree [open] > summary span::before { content: "\2212  "; }
-.tree li { scroll-margin-top: 1rem; }
-.tree :is(summary, li:not(:has(> details))) { display: block; padding: 0.5rem 0.5rem 0.5rem 0; overflow-wrap: anywhere; }
-.tree li:not(:has(> details)) { white-space: pre-line; color: var(--fg2); }
-.tree :is(li:target:not(:has(> details)), li:target > details > summary) { background: var(--surface); }
 @media print { .tools, .top nav { display: none; } }
 /* Fades, as on openai.com: a page fades in as it opens, and a section fades in as the reader scrolls to it.
    Only when motion is welcome; a browser without these features shows everything at once. */
