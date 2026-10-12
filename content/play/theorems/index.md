@@ -139,6 +139,7 @@ To study one subject, type arXiv topics, such as math.FA. The list then holds th
 //| caption: Words from the name, the aliases, the key concepts or the statement. Empty finds every record. Topics are arXiv categories, archives or groups, with commas between them.
 let catalogue_query = field("Find in the catalogue", "");
 let topics = field("Topics", "");
+html("<button type=\"button\" data-clear=\"600 601 700:1 705:1 707:1\">Clear catalogue filters</button>");
 ```
 
 ```rust
@@ -199,7 +200,8 @@ let concept_query = field("Find a concept", "compact");
 
 ```rust
 //| caption: The concepts that match, the most named on arXiv first, and the one that you pick.
-let mut _hits: Vec<usize> = (0..concept_index().len()).filter(|&i| norm(&concept_query).split_whitespace().all(|w| concept_index()[i].0.contains(w))).collect();
+let _words = norm(&concept_query);
+let mut _hits: Vec<usize> = (0..concept_index().len()).filter(|&i| _words.split_whitespace().all(|w| concept_index()[i].0.contains(w))).collect();
 _hits.sort_by(|a, b| concept_index()[*b].1.total_cmp(&concept_index()[*a].1));
 _hits.truncate(30);
 match _hits.get(choice("Concept", &_hits.iter().map(|&i| text(&get(db().concepts[i])["n"])).collect::<Vec<_>>(), 0)) {
