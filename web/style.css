@@ -37,6 +37,9 @@ main { overflow-x: clip; max-width: 64rem; margin: 0 auto; padding: 2rem 16px 6r
 button { font: inherit; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 99px; padding: 0.25rem 0.75rem; cursor: pointer; }
 dialog { width: min(34rem, calc(100% - 32px)); padding: 0; color: var(--fg2); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
 dialog::backdrop { background: rgb(0 0 0 / 0.4); }
+.skip { position: absolute; left: 0.5rem; top: -4rem; padding: 0.5rem 0.75rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; z-index: 9; }
+.skip:focus { top: 0.5rem; }
+main:focus { outline: none; }
 /* Search: a small icon in the header; Ctrl K or ⌘K anywhere. */
 .search, .mode { border: 0; padding: 0.25rem; line-height: 0; }
 .search svg, .mode svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }

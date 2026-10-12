@@ -13,12 +13,13 @@ try {
 </script>
 <title>{{title}}</title>
 <style>{{style}}</style>
+<a class="skip" href="#main">Skip to content</a>
 <header class="top"><a href="{{root}}index.html">Yu Jie</a><nav>
 <a href="{{root}}notes/index.html">Notes</a><a href="{{root}}stories/index.html">Stories</a><a href="{{root}}play/index.html">Play</a>
 <button type="button" class="search" aria-label="Search" aria-keyshortcuts="Control+K Meta+K"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.75" cy="6.75" r="4.75"/><path d="m10.25 10.25 4 4"/></svg></button>
 <button type="button" class="mode" aria-label="Theme" title="Theme"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button>
 </nav></header>
-<main>{{body}}</main>
+<main id="main" tabindex="-1">{{body}}</main>
 <dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search notes, stories, play" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol><p hidden>No match. Try fewer or shorter words.</p></form></dialog>
 <dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="fams">{{themes}}</div>
 <div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div><button class="x" aria-label="Close">×</button></form></dialog>
@@ -70,7 +71,8 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
   ol.addEventListener("focusin", (e) => { const b = e.target.getBoundingClientRect(); look(b.x + b.width / 3, b.y + b.height / 2); });
   ol.addEventListener("click", (e) => e.target.closest("a") && be("pick"));
   icon.addEventListener("click", open);
-  addEventListener("keydown", (e) => {
+  addEventListener("keydown", (e) => { // "/" opens search, but types a slash wherever text is edited (the Vim area too)
+    if (e.key === "/" && !(e.metaKey || e.ctrlKey || e.altKey || e.defaultPrevented || d.open || e.target.closest?.("input,textarea,select,[contenteditable],.vim"))) { e.preventDefault(); return open(); }
     if (e.key.toLowerCase() !== "k" || !(e.metaKey || e.ctrlKey) || e.defaultPrevented) return;
     e.preventDefault();
     d.open ? d.close() : open();
