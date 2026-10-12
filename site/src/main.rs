@@ -1,24 +1,17 @@
-//! Builds dist/: the landing page, Notes (UniiChat and Links), Stories and Play. Every page is one
-//! self-contained HTML file; every story and toy is a notebook (`book`).
-//! Usage: site [notes.json]  (default ../site/data/uniichat/memory.json)
+//! Builds dist/: the landing page, Stories and Play. Every page is one self-contained
+//! HTML file; every story and toy is a notebook (`book`).
 
 mod book;
 mod cells;
 
 use book::{FONTS, font};
 use engine::{doc, draw::{Op, Sh}, pack, scene, theme};
-use std::{collections::HashMap, fmt::Write, fs, path::Path};
+use std::{fs, path::Path};
 
 const SHELL: &str = include_str!("../../web/shell.html");
 const STYLE: &str = concat!(include_str!("../../web/style.css"), include_str!("../../web/book.css"));
 pub const HOST: &str = include_str!("../../web/host.js");
-const NOTES: &str = include_str!("../../web/notes.js");
 const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
-/// The paper links: a sealed visuals page, pinned in visuals.lock, that Notes' Links page runs in a frame.
-const LINKS: &str = "viz/links/index.html";
-/// Its records (title, url, category, tags, note), from which the builder writes the search entries of the links.
-const LINKS_DATA: &str = "viz/links/links.json";
-
 use doc::esc;
 
 fn font_css(n: usize) -> String {
@@ -44,18 +37,6 @@ impl Page {
 /// Search entries (title, path from the root, text to match) as JSON for every page's Ctrl/Cmd-K.
 fn index(entries: &[(String, String, String)]) -> String {
     format!("[{}]", entries.iter().map(|(t, h, x)| format!("[{},{},{}]", pack::json(t), pack::json(h), pack::json(x))).collect::<Vec<_>>().join(","))
-}
-
-/// The links' search entries (title, url, category and tags) as a script that the search loads on the first
-/// word typed: `self.linksIndex`, in the shape of `index`. A link's note is left out to keep it small.
-fn links_index() -> String {
-    let v: serde_json::Value = serde_json::from_str(&fs::read_to_string(format!("visuals/{LINKS_DATA}")).unwrap()).expect("links.json is not JSON");
-    let s = |l: &serde_json::Value, k: &str| l[k].as_str().unwrap_or("").to_string();
-    let found: Vec<_> = v.as_array().expect("links.json is not a list").iter().map(|l| {
-        let tags: Vec<_> = l["tags"].as_array().into_iter().flatten().filter_map(|t| t.as_str()).collect();
-        (s(l, "title"), s(l, "url"), format!("{} {}", s(l, "category"), tags.join(" ")))
-    }).collect();
-    format!("self.linksIndex={};", index(&found))
 }
 
 fn render(p: &Page, wasm: &str, index: &str) -> String {
@@ -106,117 +87,7 @@ fn dot() -> String {
     format!(r#"<svg class="dot" viewBox="0 0 1 1" style="--ex:{ex}px;--ey:{ey}px" stroke-linecap="round" aria-hidden="true">{states}</svg>"#)
 }
 
-/// Redact private details from a log line; None when it must not be published at all.
-fn sanitize(text: &str) -> Option<String> {
-    const SECRETS: [&str; 8] = ["sk-", "ghp_", "gho_", "github_pat_", "AKIA", "PRIVATE KEY", "password", "token="];
-    // A marker counts only at the start of a word, so "task-based" does not hold a key.
-    let marked = |s: &str| text.match_indices(s).any(|(i, _)| !text[..i].ends_with(char::is_alphanumeric));
-    if SECRETS.iter().any(|s| marked(s)) {
-        return None;
-    }
-    let mut t = text.trim();
-    if t.starts_with('[') {
-        t = t.split_once("] ").map_or(t, |x| x.1); // drop "[codex 9949]"-style session tags
-    }
-    let mut out = String::new();
-    for word in t.split_inclusive(char::is_whitespace) {
-        let core = word.trim_matches(|c: char| !c.is_alphanumeric() && !"~/@_-".contains(c));
-        let (lead, tail) = word.split_once(core).unwrap_or((word, ""));
-        let private = ["~/", "/Users/", "/home/", "/tmp/", "/root/"].iter().any(|p| core.contains(p));
-        let email = core.split_once('@').is_some_and(|(a, b)| !a.is_empty() && b.contains('.'));
-        let r = match () {
-            _ if core.is_empty() => word.into(),
-            _ if private => format!("{lead}[private path]{tail}"),
-            _ if email => format!("{lead}[email]{tail}"),
-            _ => word.into(),
-        };
-        out.push_str(&r.replace("teoyujie.org", "[site]").replace("Teoyujie.org", "[site]"));
-    }
-    Some(out)
-}
-
-/// The largest aligned blocks that tile notes 0..n, as (first, size): UniiChat summarises each
-/// aligned block of 2, 4, 8, ... notes, so these are the tree's roots.
-fn roots(n: usize) -> Vec<(usize, usize)> {
-    let (mut v, mut lo) = (vec![], 0);
-    while lo < n {
-        let mut size = 1;
-        while lo % (size * 2) == 0 && lo + size * 2 <= n { size *= 2 }
-        v.push((lo, size));
-        lo += size;
-    }
-    v
-}
-
-type Note = (String, &'static str, Option<String>);
-
-/// One branch of the summary tree: a summary that opens onto its two halves, down to the notes.
-fn branch(h: &mut String, notes: &[Note], sums: &HashMap<(usize, usize), Option<String>>, lo: usize, size: usize, root: bool) {
-    const HELD: &str = "<i>Withheld.</i>";
-    if size == 1 {
-        let (date, kind, text) = &notes[lo];
-        let text = text.as_deref().map_or(HELD.into(), esc);
-        let kind = if kind.is_empty() { "" } else { " · " }.to_string() + kind;
-        write!(h, r#"<li id="n{lo}"><span>#{lo} · {}{kind}</span>{text}</li>"#, esc(date)).unwrap();
-        return;
-    }
-    let hi = lo + size - 1;
-    let text = match sums.get(&(lo, hi)) { Some(Some(t)) => esc(t), Some(None) => HELD.into(), None => "<i>No summary yet.</i>".into() };
-    let (a, b) = (&notes[lo].0, &notes[hi].0);
-    let dates = if a == b { esc(a) } else { format!("{} – {}", esc(a), esc(b)) };
-    let open = if root { " open" } else { "" };
-    write!(h, r#"<li id="s{lo}-{hi}"><details{open}><summary><span>#{lo}–{hi} · {dates}</span>{text}</summary><ol>"#).unwrap();
-    branch(h, notes, sums, lo, size / 2, false);
-    branch(h, notes, sums, lo + size / 2, size / 2, false);
-    h.push_str("</ol></details></li>");
-}
-
-/// The switch between the sources of Notes, `on` the current one; `up` leads from the page to notes/.
-fn sources(up: &str, on: usize) -> String {
-    let link = |i: usize, href: &str, name: &str| format!(r#"<a href="{up}{href}"{}>{name}</a>"#, if i == on { r#" aria-current="page""# } else { "" });
-    format!(r#"<nav class="sources" aria-label="Notes sources">{}{}</nav>"#, link(0, "index.html", "UniiChat"), link(1, "links/index.html", "Links"))
-}
-
-/// The Notes page body: the UniiChat log as its summary tree, oldest first, with a search over
-/// notes and summaries (web/notes.js). Also one site-search entry per day.
-fn notes(path: &str) -> (String, Vec<(String, String, String)>) {
-    let Ok(raw) = fs::read_to_string(path) else {
-        return (format!("<p class=\"muted\">No notes export at {}.</p>", esc(path)), vec![]);
-    };
-    let v: serde_json::Value = serde_json::from_str(&raw).expect("notes export is not JSON");
-    // A note keeps its place in the tree even when it is withheld (a kind not published, or sanitize refuses it).
-    let notes: Vec<Note> = v["memories"].as_array().expect("notes export has no memories").iter().map(|m| {
-        let kind = match m["kind"].as_str() { Some("note") => "note", Some("user") => "asked", Some("unii") => "answered", _ => "" };
-        let text = m["text"].as_str().filter(|_| !kind.is_empty()).and_then(sanitize);
-        (m["date"].as_str().unwrap_or("").to_string(), kind, text)
-    }).collect();
-    let sums: HashMap<_, _> = v["nodes"].as_array().into_iter().flatten()
-        .filter_map(|n| Some(((n["lo"].as_u64()? as usize, n["hi"].as_u64()? as usize), n["text"].as_str().and_then(sanitize)))).collect();
-    let (mut found, mut day) = (vec![], None);
-    for (i, (date, _, text)) in notes.iter().enumerate() {
-        if day != Some(date) {
-            found.push((format!("Notes · {date}"), format!("notes/index.html#n{i}"), String::new()));
-            day = Some(date);
-        }
-        let x: &mut String = &mut found.last_mut().unwrap().2;
-        if let Some(t) = text.as_ref().filter(|_| x.len() < 400) { *x += &format!("{t} ") }
-    }
-    // Every aligned block lies inside one root, so each well-formed summary is shown.
-    let aligned = |lo: usize, hi: usize| lo < hi && hi < notes.len() && (hi - lo + 1).is_power_of_two() && lo % (hi - lo + 1) == 0;
-    let shown = sums.iter().filter(|(k, t)| t.is_some() && aligned(k.0, k.1)).count();
-    let mut tree = String::new();
-    for (lo, size) in roots(notes.len()) { branch(&mut tree, &notes, &sums, lo, size, true) }
-    let search = concat!(
-        r#"<form class="sift" role="search"><input type="search" name="q" placeholder="Search notes and summaries" aria-label="Search notes and summaries" "#,
-        r#"autocomplete="off" spellcheck="false"><button type="button" value="s" aria-pressed="true">Summaries</button>"#,
-        r#"<button type="button" value="n" aria-pressed="true">Notes</button><output aria-live="polite"></output></form>"#
-    );
-    let lede = format!("{} notes and {shown} summaries from UniiChat, oldest first. Each summary stands for the notes beneath it.", notes.len());
-    (format!("<p class=\"lede\">{lede}</p>\n{search}\n<ol class=\"hits\" hidden></ol><ol class=\"tree\">{tree}</ol>"), found)
-}
-
 fn main() {
-    let notes_path = std::env::args().nth(1).unwrap_or("../site/data/uniichat/memory.json".into());
     let engine_wasm = fs::read(WASM).expect("build the engine first: see README");
     let wasm = pack::base64(&engine_wasm);
     let (mut stories, mut pages, mut files) = (vec![], vec![], vec![]);
@@ -231,10 +102,9 @@ fn main() {
             files.extend(f.into_iter().map(|(n, b)| (format!("{door}/{slug}/{n}"), b)));
         }
     }
-    // Doors and cards are seeded thumbnails: notes doze at night, stories stroll over a hill,
+    // Doors and cards are seeded thumbnails: stories stroll over a hill,
     // and play leaps clean out of its tile (see engine::thumb for the parts of a seed).
-    const DOORS: [(&str, u32, &str, &str); 3] = [
-        ("notes", 252_040, "Notes", "A working log, sanitised."),
+    const DOORS: [(&str, u32, &str, &str); 2] = [
         ("stories", 109_664, "Stories", "Visual explanations, told in order."),
         ("play", 180_423, "Play", "Toys to play with."),
     ];
@@ -243,12 +113,8 @@ fn main() {
     let cards = |door: &str| -> String { stories.iter().filter(|s| s.door == door).map(|s| format!(
         r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
         s.slug, s.thumb.map_or(String::new(), |seed| thumb(seed, "")), esc(&s.title), esc(&s.summary))).collect() };
-    let (notes, mut found) = notes(&notes_path);
+    let mut found = vec![];
     found.splice(0..0, DOORS.iter().map(|(dir, _, name, line)| (name.to_string(), format!("{dir}/index.html"), line.to_string())));
-    let lede = "Links to papers, lecture notes, slides, books and talks, with their tags. Search them, filter them, and get BibTeX for the ones you pick.";
-    found.insert(1, ("Notes · Links".into(), "notes/links/index.html".into(), lede.into()));
-    book::pin("notes", LINKS);
-    let links = pack::base64(&fs::read(format!("visuals/{LINKS}")).unwrap());
     for s in &stories {
         let page = format!("{}/{}/index.html", s.door, s.slug);
         found.push((s.title.clone(), page.clone(), s.summary.clone()));
@@ -256,11 +122,7 @@ fn main() {
     }
     let index = index(&found);
     pages.extend([
-        Page::new("index.html", "Yu Jie", format!(r#"<p class="lede">Notes, stories and toys.</p><div class="doors">{doors}</div>"#)),
-        Page { script: if notes.contains("class=\"tree\"") { format!("<script>{NOTES}</script>") } else { String::new() },
-            ..Page::new("notes/index.html", "Notes", format!(r#"<h1>Notes</h1>{}<div class="notes">{notes}</div>"#, sources("", 0))) },
-        Page { script: format!(r#"<script id="tool:{LINKS}" type="application/octet-stream">{links}</script><script>{NOTES}</script>"#),
-            ..Page::new("notes/links/index.html", "Links", format!(r#"<h1>Notes</h1>{}<p class="lede">{lede}</p><figure class="tool"><iframe data-tool="{LINKS}" title="Paper links"></iframe></figure>"#, sources("../", 1))) },
+        Page::new("index.html", "Yu Jie", format!(r#"<p class="lede">Stories and toys.</p><div class="doors">{doors}</div>"#)),
         Page::new("stories/index.html", "Stories", format!(r#"<h1>Stories</h1><ul class="list">{}</ul>"#, cards("stories"))),
         Page::new("play/index.html", "Play", format!(r#"<h1>Play</h1><ul class="list">{}</ul>"#, cards("play"))),
     ]);
@@ -272,31 +134,11 @@ fn main() {
         Some(v) => files.extend(v),
         None => eprintln!("kokoro/ incomplete: narration export needs scripts/kokoro.sh"),
     }
-    files.push(("links-index.js".into(), links_index().into_bytes()));
     let pages: Vec<(String, Vec<u8>)> = pages.iter().map(|p| (p.path.clone(), render(p, &wasm, &index).into_bytes())).collect();
     for (path, bytes) in pages.iter().chain(&files) {
         let out = Path::new("dist").join(path);
         fs::create_dir_all(out.parent().unwrap()).unwrap();
         fs::write(&out, bytes).unwrap();
         println!("{} {}", out.display(), bytes.len());
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn sanitize_redacts_and_refuses() {
-        assert_eq!(sanitize("[pi d3d2] see ~/notes/a.md and `/Users/me/x`.").unwrap(), "see [private path] and `[private path]`.");
-        assert_eq!(sanitize("mail me@x.org at teoyujie.org").unwrap(), "mail [email] at [site]");
-        assert!(sanitize("key ghp_abc").is_none());
-    }
-
-    #[test]
-    fn notes_tile_into_summary_roots() {
-        assert_eq!(roots(546), [(0, 512), (512, 32), (544, 2)]);
-        assert_eq!(roots(37), [(0, 32), (32, 4), (36, 1)]);
-        assert!(roots(0).is_empty());
     }
 }

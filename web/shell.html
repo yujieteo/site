@@ -15,12 +15,12 @@ try {
 <style>{{style}}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top"><a href="{{root}}index.html">Yu Jie</a><nav>
-<a href="{{root}}notes/index.html">Notes</a><a href="{{root}}stories/index.html">Stories</a><a href="{{root}}play/index.html">Play</a>
+<a href="{{root}}stories/index.html">Stories</a><a href="{{root}}play/index.html">Play</a>
 <button type="button" class="search" aria-label="Search" aria-keyshortcuts="Control+K Meta+K"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.75" cy="6.75" r="4.75"/><path d="m10.25 10.25 4 4"/></svg></button>
 <button type="button" class="mode" aria-label="Theme" title="Theme"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button>
 </nav></header>
 <main id="main" tabindex="-1">{{body}}</main>
-<dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search notes, stories, play" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol><p hidden>No match. Try fewer or shorter words.</p></form></dialog>
+<dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search stories, play" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol><p hidden>No match. Try fewer or shorter words.</p></form></dialog>
 <dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="fams">{{themes}}</div>
 <div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div><button class="x" aria-label="Close">×</button></form></dialog>
 <script id="index" type="application/json">{{index}}</script>
@@ -28,25 +28,20 @@ try {
 // Any dialog closes on a click on its backdrop.
 document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (e) => e.target === d && d.close()));
 // Search: Ctrl K (⌘K on a Mac) or the header's icon. Every word must appear; the builder writes the index.
-// The links (links-index.js, large) load on the first word typed, and a link opens its own address.
 (() => {
   const $ = (s, r = document) => r.querySelector(s), d = $(".find"), q = $("input", d), ol = $("ol", d), none = $("p", d), icon = $(".search");
   const root = $(".top > a").getAttribute("href").replace(/index\.html$/, ""), all = JSON.parse($("#index").textContent);
-  let links = [], loading;
   icon.title = `Search (${/Mac|iP/.test(navigator.platform) ? "⌘" : "Ctrl "}K)`;
   const show = () => {
     const words = q.value.toLowerCase().split(/\s+/).filter(Boolean);
-    if (words.length && !loading) {
-      loading = document.head.appendChild(Object.assign(document.createElement("script"), { src: root + "links-index.js", onload: () => { links = self.linksIndex; show(); } }));
-    }
     const hit = ([title, , text]) => words.every((w) => (title + " " + text).toLowerCase().includes(w));
-    ol.replaceChildren(...all.concat(links).filter(hit).slice(0, 12).map(([title, href, text]) => {
+    ol.replaceChildren(...all.filter(hit).slice(0, 12).map(([title, href, text]) => {
       const li = document.createElement("li");
       const a = li.appendChild(Object.assign(document.createElement("a"), { href: /^https?:/.test(href) ? href : root + href, textContent: title }));
       if (text) a.appendChild(Object.assign(document.createElement("small"), { textContent: text.slice(0, 120) }));
       return li;
     }));
-    none.hidden = !(words.length && links.length && !ol.children.length); // only once the links have loaded
+    none.hidden = !(words.length && !ol.children.length);
   };
   // The dot (drawn by the builder from engine::scene::face) wakes as the dialog opens. Its eyes follow the caret,
   // a focused hit or the pointer; it smiles at hits, frets at none, glows at a pick and sleeps when the dialog closes.

@@ -1,12 +1,12 @@
 # newsite
 
-Three doors: **Notes**, **Stories**, **Play**. Extreme minimalism; every page is one self-contained
+Two doors: **Stories** and **Play**. Extreme minimalism; every page is one self-contained
 HTML file, and every story is a notebook.
 
 ## Build
 
 ```sh
-nix develop -c ./build.sh [path/to/uniichat/memory.json]
+nix develop -c ./build.sh
 ```
 
 Tests the crates, compiles `engine` to `wasm32-unknown-unknown`, compiles each notebook's cells, then
@@ -33,7 +33,7 @@ against `visuals.lock`; files already there and matching need no network.
 | `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, and each sealed artifact that a notebook or the Links page of Notes embeds, with its SHA-256. Visuals owns the data. |
 | `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search and its dot (drawn at build time by `scene::face`). |
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
-| `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (notes, doors, index). |
+| `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (doors, index). |
 | `content/stories/<slug>/`, `content/play/<slug>/` | A notebook (a story, or a tool in Play): `index.md` and its assets (images, `Cargo.lock`, `say.lock`). |
 | `fonts/` | Embedded font subsets (Fira Sans, Fira Mono, Fira Math); `fonts.txt` holds their hashes. |
 
@@ -107,19 +107,6 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   podcast, captions and timings; the captions' notes keep the voice, IPA, phonemes and each line's
   audio hash. The podcast is byte-identical across runs in one browser; the video is recorded in
   real time (MP4 where the browser records it, else WebM), so it is not byte-reproducible.
-
-Notes are read at build time from a UniiChat export (default `../site/data/uniichat/memory.json`), never
-committed here: its notes and its summaries, one per aligned block of 2, 4, 8, ... notes. The page is the
-summary tree, oldest first (each summary opens onto its two halves, down to the notes), with a search
-over notes and summaries (every word must appear) whose hits open the tree where they are. Each line is
-sanitised again: session tags dropped, paths and emails redacted, any line with a credential pattern
-withheld.
-
-Notes has a second source, Links: the paper links, the sealed artifact `viz/links` of yujieteo/visuals,
-pinned in `visuals.lock`. Its page (`notes/links/`) carries the artifact's bytes and runs it in a frame,
-as a notebook does. A switch at the top of each Notes page moves between UniiChat and Links.
-Ctrl K also finds each link by title, category and tags: the builder writes them from `viz/links/links.json` (pinned in
-`visuals.lock`) to `links-index.js`, which the search loads on the first word typed. A hit opens the link itself.
 
 ## Budget
 
