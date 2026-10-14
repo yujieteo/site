@@ -87,6 +87,18 @@ fn dot() -> String {
     format!(r#"<svg class="dot" viewBox="0 0 1 1" style="--ex:{ex}px;--ey:{ey}px" stroke-linecap="round" aria-hidden="true">{states}</svg>"#)
 }
 
+/// Plain pages (an app's privacy policy, its support page): `content/pages/<path>.html` holds the
+/// body; the title is its `<h1>`. They wear the shell and the reader's theme, and stay out of search.
+fn plain(dir: &Path, base: &Path) -> Vec<Page> {
+    let mut entries: Vec<_> = fs::read_dir(dir).into_iter().flatten().flatten().map(|e| e.path()).collect();
+    entries.sort();
+    entries.iter().flat_map(|p| if p.is_dir() { plain(p, base) } else if p.extension().is_some_and(|x| x == "html") {
+        let body = fs::read_to_string(p).unwrap();
+        let title = body.split_once("<h1>").and_then(|(_, r)| r.split_once("</h1>")).map_or("", |(t, _)| t).to_string();
+        vec![Page::new(&p.strip_prefix(base).unwrap().to_string_lossy(), &title, body)]
+    } else { vec![] }).collect()
+}
+
 fn main() {
     let engine_wasm = fs::read(WASM).expect("build the engine first: see README");
     let wasm = pack::base64(&engine_wasm);
@@ -126,6 +138,7 @@ fn main() {
         Page::new("stories/index.html", "Stories", format!(r#"<h1>Stories</h1><ul class="list">{}</ul>"#, cards("stories"))),
         Page::new("play/index.html", "Play", format!(r#"<h1>Play</h1><ul class="list">{}</ul>"#, cards("play"))),
     ]);
+    pages.extend(plain(Path::new("content/pages"), Path::new("content/pages")));
     // The voice (kokoro.lock, scripts/kokoro.sh) is served beside the site when every pinned file
     // is present and matches; the build reads the Misaki lexicons itself, so they are not served.
     let pinned = |(h, p): (&str, &str)| fs::read(format!("kokoro/{p}")).ok().filter(|b| pack::sha256(b) == h).map(|b| (format!("kokoro/{p}"), b));
