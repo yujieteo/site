@@ -1,11 +1,11 @@
-//! PDF: the four print forms from the same parse, cell outputs and scenes as the page.
-//! Fonts are the embedded OpenType (CFF) subsets, addressed by glyph ID with a ToUnicode map;
-//! scenes are their display lists as vector paths; plots are the cells' own SVG; PNGs (grey,
+//! PDF: the four print forms from the same parse and cell outputs as the page.
+//! Fonts are embedded OpenType (CFF) subsets, addressed by glyph ID with a ToUnicode map;
+//! plots are the cells' own SVG; PNGs (grey,
 //! RGB or palette; transparency as a colour key, or the palette's leading entries under half
 //! alpha) pass through undecoded. Geometry is fixed per form and nothing reads a clock, so
 //! equal input gives equal bytes.
 
-use crate::{cell, doc::{self, B, Doc, M, Sp}, draw::{Op, Sh}, pack, scene, theme};
+use crate::{cell, doc::{self, B, Doc, M, Sp}, pack, theme};
 use std::collections::BTreeMap;
 
 pub const FORMS: [&str; 4] = ["notebook", "slides", "handout", "article"];
@@ -13,7 +13,7 @@ pub const FORMS: [&str; 4] = ["notebook", "slides", "handout", "article"];
 const A4: (f32, f32, f32, f32) = (595.28, 841.89, 56.69, 62.36);
 
 /// Font slots (`St.0`): body, heading, mono, maths.
-const FILES: [&str; 4] = ["sans", "sans", "mono", "math"];
+const FILES: [&str; 4] = ["mono.otf", "mono.otf", "mono.otf", "math.otf"];
 
 fn be(b: &[u8], o: usize, n: usize) -> usize { b.get(o..o + n).map_or(0, |s| s.iter().fold(0, |a, &x| a << 8 | x as usize)) }
 
@@ -25,7 +25,7 @@ fn stream(dict: &str, data: &[u8]) -> Vec<u8> { [format!("<<{dict}/Length {}>>st
 fn utf16(s: &str) -> String { s.encode_utf16().map(|u| format!("{u:04X}")).collect() }
 
 /// An OpenType font: character map, advances, metrics (bbox, ascent, descent), glyphs used.
-struct Font { data: Vec<u8>, map: BTreeMap<u32, u16>, used: BTreeMap<u16, char>, hm: usize, nh: usize, m: [i16; 6] }
+struct Font { data: Vec<u8>, map: BTreeMap<u32, u16>, used: BTreeMap<u16, char>, hm: usize, nh: usize, em: usize, m: [i16; 6] }
 
 impl Font {
     fn new(data: Vec<u8>) -> Font {
@@ -49,10 +49,11 @@ impl Font {
             }
         }
         let hd = t(b"head");
-        let m = [hd + 36, hd + 38, hd + 40, hd + 42, hh + 4, hh + 6].map(|o| be(b, o, 2) as u16 as i16);
-        Font { hm: t(b"hmtx"), nh: be(b, hh + 34, 2).max(1), map, used: BTreeMap::new(), m, data }
+        let em = be(b, hd + 18, 2).max(1);
+        let m = [hd + 36, hd + 38, hd + 40, hd + 42, hh + 4, hh + 6].map(|o| (be(b, o, 2) as u16 as i16 as i32 * 1000 / em as i32) as i16);
+        Font { hm: t(b"hmtx"), nh: be(b, hh + 34, 2).max(1), map, used: BTreeMap::new(), em, m, data }
     }
-    fn adv(&self, g: usize) -> usize { be(&self.data, self.hm + 4 * g.min(self.nh - 1), 2) }
+    fn adv(&self, g: usize) -> f32 { be(&self.data, self.hm + 4 * g.min(self.nh - 1), 2) as f32 * 1000.0 / self.em as f32 }
 }
 
 /// Text style: font slot (0 body, 1 heading, 2 mono, 3 maths), size, colour, bits (1 bold, 2 italic).
@@ -116,11 +117,11 @@ impl Pdf<'_> {
     fn font(&mut self, k: usize) -> usize {
         let file = FILES[k];
         if let Some(i) = self.fonts.iter().position(|f| f.0 == file) { return i }
-        self.fonts.push((file, Font::new((self.get)(&format!("fonts/{file}.otf")).unwrap_or_default())));
+        self.fonts.push((file, Font::new((self.get)(&format!("fonts/{file}")).unwrap_or_default())));
         self.fonts.len() - 1
     }
     /// A run of text as pieces, each in the first font with its characters (the style's, then
-    /// sans, then maths): font, glyph IDs as hex, width; and the whole width.
+    /// body, then maths): font, glyph IDs as hex, width; and the whole width.
     fn run(&mut self, st: St, s: &str) -> (Vec<(usize, String, f32)>, f32) {
         let mut v: Vec<(usize, String, f32)> = vec![];
         for c in s.chars() {
@@ -129,7 +130,7 @@ impl Pdf<'_> {
             let f = &mut self.fonts[i].1;
             let g = f.map.get(&(c as u32)).copied().unwrap_or(0);
             f.used.insert(g, c);
-            let w = f.adv(g as usize) as f32 * st.1 / 1000.0;
+            let w = f.adv(g as usize) * st.1 / 1000.0;
             match v.last_mut() { Some(p) if p.0 == i => { w!(p.1, "{g:04X}"); p.2 += w } _ => v.push((i, format!("{g:04X}"), w)) }
         }
         let w = v.iter().map(|p| p.2).sum();
@@ -155,7 +156,7 @@ impl Pdf<'_> {
         w!(self.out(), "{} RG {w:.2} w 1 J 1 j {a} m {} l S\n", rgb(c), rest.join(" l "));
     }
 
-    /// TeX maths in Fira Math: italic letters, spaced relations, fractions, roots, scripts, and
+    /// TeX maths in TeX Gyre Pagella Math: italic letters, spaced relations, fractions, roots, scripts, and
     /// in display style (`d`) large operators with their limits above and below.
     fn mbox(&mut self, m: &M, s: f32, d: bool) -> Bx {
         let mut glyph = |t: String, s: f32, pad: f32| Bx(self.run(St(3, s, 0, 0), &t).1 + 2.0 * pad, 0.75 * s, 0.25 * s, vec![(pad, 0.0, s, t)], vec![]);
@@ -301,41 +302,6 @@ impl Pdf<'_> {
         draw(self, self.x + (self.col - w) / 2.0, self.y + 6.0);
         self.y += h + 10.0;
         true
-    }
-    /// A scene's display list in a square of side `s`. Discs are round-capped dots.
-    fn frame(&mut self, ops: &[Op], x: f32, y: f32, s: f32) {
-        // A unit circle as four Bézier quarters: the start, then two controls and an end each.
-        const C: f32 = 0.5523;
-        const K: [(f32, f32); 13] =
-            [(1.0, 0.0), (1.0, C), (C, 1.0), (0.0, 1.0), (-C, 1.0), (-1.0, C), (-1.0, 0.0), (-1.0, -C), (-C, -1.0), (0.0, -1.0), (C, -1.0), (1.0, -C), (1.0, 0.0)];
-        let (h, mut o, mut clipped) = (self.h, String::from("q\n"), false);
-        let pt = |a: f32, b: f32| format!("{:.2} {:.2}", x + a * s, h - y - b * s);
-        let ell = |cx: f32, cy: f32, rx: f32, ry: f32| {
-            let op = |i: usize| if i == 0 { " m" } else if i % 3 == 0 { " c" } else { "" };
-            K.iter().enumerate().map(|(i, k)| pt(cx + k.0 * rx, cy + k.1 * ry) + op(i)).collect::<Vec<_>>().join(" ")
-        };
-        let path = |sh: &Sh| match *sh {
-            Sh::Rect(a, b, c, d, _) => format!("{} {:.2} {:.2} re", pt(a, b + d), c * s, d * s),
-            Sh::Ell(cx, cy, rx, ry) => ell(cx, cy, rx, ry),
-            Sh::Seg(ax, ay, bx, by, _) => format!("{} m {} l", pt(ax, ay), pt(bx, by)),
-            Sh::Ring(cx, cy, r, _) => ell(cx, cy, r, r),
-        };
-        for op in ops {
-            if clipped && matches!(op, Op::Clip(_)) { o += "Q\n"; clipped = false }
-            match op {
-                Op::Clip(sh) => if let Some(sh) = sh { w!(o, "q {} W n\n", path(sh)); clipped = true },
-                Op::Fill(sh, c, a, screen) => {
-                    let g = format!("/G{}{}", (a * 100.0).round(), *screen as u8);
-                    self.gs.entry(g.clone()).or_insert(format!("<</ca {a:.2}/CA {a:.2}/BM/{}>>", if *screen { "Screen" } else { "Normal" }));
-                    match *sh {
-                        Sh::Ell(cx, cy, rx, ry) if rx == ry => w!(o, "{g} gs {} RG {:.2} w 1 J {} m {2} l S\n", rgb(*c), 2.0 * rx * s, pt(cx, cy)),
-                        Sh::Seg(.., w) | Sh::Ring(.., w) => w!(o, "{g} gs {} RG {:.2} w 1 J {} S\n", rgb(*c), w * s, path(sh)),
-                        _ => w!(o, "{g} gs {} rg {} f\n", rgb(*c), path(sh)),
-                    }
-                }
-            }
-        }
-        *self.out() += &(o + if clipped { "Q\nQ\n" } else { "Q\n" });
     }
     /// A cell's SVG plot (`nb::Plot`, 640 by 400 units): grid, rules, lines, dots, labels.
     fn plot(&mut self, svg: &str, x: f32, y: f32, w: f32) {
@@ -494,16 +460,14 @@ impl Pdf<'_> {
     }
 }
 
-/// One form (`FORMS`) of a notebook. `out` is each cell's output HTML, `stage` the scenes' data;
-/// `get` resolves `fonts/<name>.otf` and the notebook's assets.
-pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Option<Vec<u8>>, form: usize) -> Vec<u8> {
+/// One form (`FORMS`) of a notebook. `out` is each cell's output HTML.
+/// `get` resolves the fonts and notebook assets. The unused stage slot keeps the Rust interface stable.
+pub fn write(d: &Doc, out: &[String], _stage: &[f32], get: &dyn Fn(&str) -> Option<Vec<u8>>, form: usize) -> Vec<u8> {
     let slides = form == 1 || form == 2; // a handout lays out the slides, then sets them beside their narration
     let (w, h, m, mx) = if slides { (720.0, 405.0, 36.0, 36.0) } else { A4 };
     let pal = theme::palette(theme::export(match d.get("theme") { "" => "site", t => t }));
     let mut p = Pdf { get, fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, x: mx, col: w - 2.0 * mx, y: 0.0, slides, fig: 0 };
     let (fg, fg2, muted, text) = (pal[2], pal[3], pal[4], St(0, if slides { 13.0 } else { 11.0 }, pal[3], 0));
-    let (seed, hex) = (d.get("seed").parse().unwrap_or(1), |c: &str| u32::from_str_radix(c.trim_start_matches('#'), 16).ok());
-    let sc: Vec<u32> = d.get("palette").split_whitespace().filter_map(hex).chain([0; 4]).collect();
     p.page();
     p.para(d.get("title"), St(1, if slides { 32.0 } else { 22.0 }, fg, 0), 0.0);
     p.para(d.get("summary"), St(1, 13.0, fg2, 0), 0.0);
@@ -511,27 +475,17 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
     let (chapters, mut k, mut n, mut skip, mut notes) = (d.chapters(), 0, 0, false, vec![vec![]]);
     for (at, b) in d.blocks.iter().enumerate() {
         match b {
-            B::H(2, t, _) if let Some(c) = chapters.iter().find(|c| c.at == at) => {
+            B::H(2, t, _) if chapters.iter().any(|c| c.at == at) => {
                 (skip, n) = (false, n + 1);
-                let ops = c.scene.map(|sn| scene::list(seed, sn, c.t, c.p, -1.0, -1.0, stage, [sc[0], sc[1], sc[2], sc[3]], pal));
                 if slides {
                     (p.x, p.col) = (mx, w - 2.0 * mx);
                     notes.push(vec![]);
                     p.page();
                     p.para(t, St(1, 26.0, fg, 0), 0.0);
-                    let s = h - p.y - m;
-                    if let Some(ops) = ops {
-                        p.frame(&ops, w - mx - s, p.y, s); // the scene on the right, the text beside it
-                        p.col = w - 3.0 * mx - s;
-                    }
                     continue;
                 }
-                let s = if ops.is_some() { p.col * 0.45 } else { 0.0 };
-                p.need(s + 66.0);
+                p.need(66.0);
                 p.heading(&if form == 3 { format!("{n}  {t}") } else { t.clone() }, 14.0);
-                if let Some(ops) = ops && p.figure(s, s, &mut |p, x, y| p.frame(&ops, x, y, s)) {
-                    p.caption(&format!("{t}, at t = {} s.", c.t), true)
-                }
             }
             // On slides, a part (`#`) is left out with what follows it, up to the next heading.
             B::H(1, _, _) if slides => skip = true,
@@ -580,6 +534,26 @@ pub fn write(d: &Doc, out: &[String], stage: &[f32], get: &dyn Fn(&str) -> Optio
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn embedded_text_and_math_fonts() {
+        use super::*;
+        let text = include_bytes!("../../fonts/mono.otf");
+        let math = include_bytes!("../../fonts/math.otf");
+        let f = Font::new(text.to_vec());
+        assert_eq!(f.em, 2048);
+        let widths: Vec<_> = "ilMW01".chars().map(|c| f.adv(f.map[&(c as u32)] as usize)).collect();
+        assert!(widths.iter().all(|w| (w - widths[0]).abs() < 0.01));
+        assert!((widths[0] - 600.0).abs() < 1.0);
+        let m = Font::new(math.to_vec());
+        assert!("∑∫√α𝑥".chars().all(|c| m.map.contains_key(&(c as u32))));
+        let d = doc::parse("---\ntitle: Font check\n---\n## Text\n\nOffice, minimum, 0123. $x^2 + \\alpha$");
+        let get = |p: &str| match p { "fonts/mono.otf" => Some(text.to_vec()), "fonts/math.otf" => Some(math.to_vec()), _ => None };
+        let pdf = write(&d, &[], &[], &get, 0);
+        for key in ["/FontFile3", "/CIDFontType0"] {
+            assert!(pdf.windows(key.len()).any(|w| w == key.as_bytes()), "{key}");
+        }
+    }
+
     #[test]
     fn malformed_input_does_not_panic() {
         let png = |t: &[u8], d: &[u8]| [b"\x89PNG\r\n\x1a\n", &(d.len() as u32).to_be_bytes()[..], t, d, &[0; 4]].concat();

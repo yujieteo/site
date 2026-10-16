@@ -1,8 +1,7 @@
 ---
 title: Theorems
 summary: Find 1 of 2,561 theorems and read its proof 1 step at a time. Sort the catalogue of 3,137 results.
-thumb: 1479
-theme: site
+theme: penumbra-light
 seed: 20261010
 ---
 

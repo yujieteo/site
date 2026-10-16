@@ -1,8 +1,7 @@
 ---
 title: Toulmin arguments
 summary: Build an essay 1 Toulmin argument at a time: claim, grounds, warrant, backing, qualifier and rebuttals. A pilot-style checklist checks each argument, and the notebook writes it as a paragraph in 2 orders.
-thumb: 2416
-theme: site
+theme: penumbra-light
 seed: 20261016
 ---
 

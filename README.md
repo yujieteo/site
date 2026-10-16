@@ -28,14 +28,14 @@ against `visuals.lock`; files already there and matching need no network.
 | Path | Owns |
 | --- | --- |
 | `engine/` | Rust, native and WebAssembly. `doc` (Markdown, TeX to MathML), `cell` (cell data flow), `nb` (the cells' runtime: text, controls, plots, stage), `draw` (display lists), `pdf` (the PDF views), `theme`, `pack` (SHA-256, ZIP, base64), `scene` (the dot scenes: a frame is a pure function of seed, scene, time, progress, pointer and stage), `thumb` (seeded thumbnails), `say` (narration: sentences, Kokoro phonemes, podcast, captions, timings). |
-| `web/host.js` | The browser boundary: one clock, Canvas execution of display lists, the run worker, the voice worker, the video recorder, tools, the agent API. |
+| `web/host.js` | The browser boundary: the run worker, the voice worker, the video recorder, tools, embedded artifacts and the agent API. |
 | `kokoro.lock`, `scripts/kokoro.sh` | The narration's pinned files: kokoro-js 1.2.1, ONNX Runtime Web, Kokoro-82M v1.0 (q8) with two US voices, and the Misaki 0.9.4 lexicons the build reads. |
 | `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, and each sealed artifact that a notebook or the Links page of Notes embeds, with its SHA-256. Visuals owns the data. |
-| `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search and its dot (drawn at build time by `scene::face`). |
+| `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search. |
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (doors, index). |
 | `content/stories/<slug>/`, `content/play/<slug>/` | A notebook (a story, or a tool in Play): `index.md` and its assets (images, `Cargo.lock`, `say.lock`). |
-| `fonts/` | Embedded font subsets (Fira Sans, Fira Mono, Fira Math); `fonts.txt` holds their hashes. |
+| `fonts/` | Embedded font subsets (Liga Courier Prime Sans and TeX Gyre Pagella Math); `fonts.txt` holds their hashes. |
 
 ## Notebooks
 
@@ -43,25 +43,20 @@ against `visuals.lock`; files already there and matching need no network.
 ---
 title: One radar, one target
 summary: One line for the Stories index.
-palette: #2f4a5c #13222c #f2a541 #fbe8a6   (scene sky, shade, glow, light)
-thumb: 41213                                (optional: a seeded thumbnail for the index card)
-theme: site                                 (the exports' family; the page wears the reader's theme)
+theme: penumbra-light                                 (the export theme; the page uses the reader's choice)
 seed: 20261003
 voice: af_heart                             (narration: af_heart or am_michael)
 pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes for words, comma separated)
 ---
 ```
 
-- Each `##` heading is a chapter. A chapter shows a scene only when its heading names one
-  (`## The link {scene=6 t=7}`); scenes are not inherited, and a frame equal to the previous
-  chapter's is dropped, so no picture repeats from slide to slide. `#` headings fold.
+- Each `##` heading is a chapter. `#` headings fold. Chapters have no decorative dot scenes.
 - ```` ```rust ```` fences are cells. Cells run in data-flow order, never in page order: a cell that
   uses `x` runs after the cell whose top-level `let x` defines it, each name has one defining cell,
   and cycles are errors. Items (`fn`, `struct`, `use`, `const`) are shared by all cells. Every run is
   a clean run, so outputs never depend on what ran before; the page keeps one instance, so a `static`
   may hold what a cell parsed from `data!` bytes, and nothing else. `//| caption: …` captions a cell.
-- In cells: `println!`, `html`, `table`, `slider`, `choice`, `field` (a text box), `stage` (numbers
-  for data scenes), `Plot` and `data!("path")`: the bytes of a file pinned in `visuals.lock`, compiled
+- In cells: `println!`, `html`, `table`, `slider`, `choice`, `field` (a text box), `stage` (numeric cell output), `Plot` and `data!("path")`: the bytes of a file pinned in `visuals.lock`, compiled
   in. The page redraws a cell's controls when a key, label, range or option changes, so keep a
   `field` apart from a `choice` whose options follow it. A control's key is 100 × its cell + its place
   in the cell; a slider or text box keeps the page's value only while its label stays the same.
@@ -70,22 +65,15 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
 - `![name](viz/<slug>/index.html)` embeds a sealed artifact of yujieteo/visuals, pinned in `visuals.lock`:
   the page carries its bytes and runs it in a frame of the page's origin, which follows the reader's theme
   and grows to fit it. The PDFs name it only.
-- A thumbnail is one seed (`engine/src/thumb.rs`), cut by remainders so a known seed gives a known
-  picture: the seed mod 20 the motion (doze, hop, bounce, leap, stroll, trampoline, orbit, dance, juggle,
-  skate, pulse, peek, zigzag, swing, hover, chase, startle, roll, bloom, sway), ÷ 20 mod 20 the backdrop
-  (polka to bubbles), ÷ 400 mod 15 the character (5 moods in 5 tints), ÷ 6000 mod 6 the composition
-  (solo, pair, trio, line, mirror, pet); the rest is the variety (tint, tempo, size, mirror, details).
-  That is 1,944,000 kinds of picture. Every colour is a token of the reader's theme (the export theme in
-  PDFs) and a character keeps 3:1 against its backdrop. The landing page's doors are seeds too. The
-  generator has its own budget of 500 lines.
-- A chapter is a slide (title, scene, body) followed by its narration. Render (a dialog) switches the
-  view in place: Notebook (code, controls, outputs, live scenes), Slides (one 16:9 slide per chapter),
+- A chapter is a slide (title and body) followed by its narration. Render (a dialog) switches the
+  view in place: Notebook (code, controls and outputs), Slides (one 16:9 slide per chapter),
   Handout (each slide with its narration beside it) and Article (continuous prose, numbered sections).
   Export is a dialog too. The theme is the reader's, for the whole site: the header's button opens a
-  dialog of the 19 families (`engine/src/theme.rs`; Rose Pine is the default; sources in `docs/themes.md`), Auto, Light or Dark (Auto follows the
-  device), remembered in the browser. The header is translucent, and sections and pages fade (not under reduced motion). Exports keep the notebook's own `theme`.
+  dialog with Penumbra Light and Penumbra Dark ++ (`engine/src/theme.rs`, sources in `docs/themes.md`).
+  Penumbra Light is the default, even on a dark device. The browser stores an explicit choice.
+  The header is translucent. Sections and pages fade, except under reduced motion. Exports use the notebook's `theme`.
 - Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
-  (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document, outputs and display lists,
+  (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document and outputs,
   in the export theme with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,
   assets, manifest) and `manifest.json` with every version and hash. Edit, Run, Export and Save (one
   editable HTML file) work in the page, and the page's PDFs are byte-identical to the build's. Edit

@@ -1,8 +1,7 @@
 ---
 title: Beam diagram
 summary: Build a straight beam with pins, fixed supports, forces, couples and distributed loads. Get its reactions, shear force, bending moment and deflection, the same answer by hand, and a NASTRAN deck.
-thumb: 4136
-theme: site
+theme: penumbra-light
 seed: 20261011
 ---
 

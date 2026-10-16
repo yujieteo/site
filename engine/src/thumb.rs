@@ -326,7 +326,7 @@ mod tests {
         assert_eq!(distinct.len(), 20, "every motion differs");
     }
 
-    /// Every colour is a theme token; bodies keep 3:1 against the backdrop in all 38 schemes; themes recolour live.
+    /// Every colour is a theme token. Bodies keep 3:1 against both theme backgrounds.
     #[test]
     fn colours_come_from_the_theme() {
         let mut th = [0x123456; 11];
@@ -335,19 +335,17 @@ mod tests {
             let ops = list(seed, th);
             assert!(ops.iter().all(|op| !matches!(op, crate::draw::Op::Fill(_, c, ..) if *c != 0x123456)), "seed {seed}");
         }
-        for (_, l, d, ..) in THEMES {
-            for id in [l, d] {
-                th = palette(id);
-                for seed in 0..5 {
-                    let (_, bodies) = super::look(seed * 36_000 + seed, &th);
-                    for c in bodies {
-                        for back in [th[0], th[1]] {
-                            assert!(super::ratio(c, back) >= 3.0, "{id}: body {c:06x} on {back:06x}");
-                        }
+        for (id, _, _, _) in THEMES {
+            th = palette(id);
+            for seed in 0..5 {
+                let (_, bodies) = super::look(seed * 36_000 + seed, &th);
+                for c in bodies {
+                    for back in [th[0], th[1]] {
+                        assert!(super::ratio(c, back) >= 3.0, "{id}: body {c:06x} on {back:06x}");
                     }
                 }
             }
         }
-        assert_ne!(crate::draw::encode(&list(41_213, palette("rose-pine"))), crate::draw::encode(&list(41_213, palette("solarized-light"))));
+        assert_ne!(crate::draw::encode(&list(41_213, palette("penumbra-dark-plus-plus"))), crate::draw::encode(&list(41_213, palette("penumbra-light"))));
     }
 }

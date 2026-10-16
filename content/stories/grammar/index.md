@@ -1,9 +1,7 @@
 ---
 title: How English grammar works
 summary: Ask 2 questions of every expression: what is it, and what does it do? See 206 examples as trees after the Cambridge Grammar, and search all of them.
-palette: #4a3b5c #221a2c #e8a33d #f6ecd9
-thumb: 30489
-theme: site
+theme: penumbra-light
 seed: 20261010
 voice: af_heart
 ---
@@ -31,7 +29,7 @@ explore(&["category-and-function"]);
 Every expression has two labels. Its category says what it is. Its function says what it does.
 ```
 
-## Constituents {scene=4}
+## Constituents
 
 If the same words make constituents in 2 ways, the sentence has 2 meanings.
 
@@ -173,7 +171,7 @@ html(&(about(_c, true) + &card(example(_x), _node)));
 Choose a chapter of the Cambridge Grammar, then a concept, then one of its examples.
 ```
 
-## Find {scene=2}
+## Find
 
 A concept or an example matches if its text contains every word that you type.
 

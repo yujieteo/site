@@ -1,8 +1,7 @@
 ---
 title: Monte Carlo laws
 summary: Read 60 probability laws, draw from 39 of them and compare each sample with the exact law. Then run the law of large numbers, and read 24 limit theorems and a glossary of 363 terms.
-thumb: 6389
-theme: site
+theme: penumbra-light
 seed: 20261012
 ---
 

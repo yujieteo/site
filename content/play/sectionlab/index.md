@@ -1,8 +1,7 @@
 ---
 title: Section lab
 summary: Build a cross-section from library shapes, holes and materials. Get its section properties, its torsion constant where a measured formula exists, its Ramberg–Osgood moment–curvature curve, and the same properties by hand.
-thumb: 2456
-theme: site
+theme: penumbra-light
 seed: 20261016
 ---
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"{{attrs}}>
+<html lang="en" data-theme="penumbra-light"{{attrs}}>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
@@ -7,8 +7,9 @@
 // The reader's theme, before the first paint (see the theme dialog below).
 try {
   const h = document.documentElement, m = localStorage.getItem("mode"), t = localStorage.getItem("theme");
-  if (m === "light" || m === "dark") h.dataset.mode = m;
-  if (t) h.dataset.theme = t;
+  const mode = t === "penumbra" && ["light", "dark", "dark-plus-plus"].includes(m) ? "penumbra-" + m : m;
+  h.dataset.mode = {{modes}}.includes(mode) ? mode : "penumbra-light";
+  h.dataset.theme = h.dataset.mode;
 } catch (e) {}
 </script>
 <title>{{title}}</title>
@@ -20,9 +21,8 @@ try {
 <button type="button" class="mode" aria-label="Theme" title="Theme"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button>
 </nav></header>
 <main id="main" tabindex="-1">{{body}}</main>
-<dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search stories, play" aria-label="Search" autocomplete="off" spellcheck="false">{{dot}}<ol></ol><p hidden>No match. Try fewer or shorter words.</p></form></dialog>
-<dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="fams">{{themes}}</div>
-<div class="modes"><button type="button" value="auto">Auto</button><button type="button" value="light">Light</button><button type="button" value="dark">Dark</button></div><button class="x" aria-label="Close">×</button></form></dialog>
+<dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search stories, play" aria-label="Search" autocomplete="off" spellcheck="false"><ol></ol><p hidden>No match. Try fewer or shorter words.</p></form></dialog>
+<dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="modes">{{themes}}</div><button class="x" aria-label="Close">×</button></form></dialog>
 <script id="index" type="application/json">{{index}}</script>
 <script>
 // Any dialog closes on a click on its backdrop.
@@ -43,28 +43,7 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
     }));
     none.hidden = !(words.length && !ol.children.length);
   };
-  // The dot (drawn by the builder from engine::scene::face) wakes as the dialog opens. Its eyes follow the caret,
-  // a focused hit or the pointer; it smiles at hits, frets at none, glows at a pick and sleeps when the dialog closes.
-  const dot = $(".dot", d), calm = matchMedia("(prefers-reduced-motion: reduce)");
-  let ctx;
-  const be = (s) => { $(".on", dot).classList.remove("on"); $(`[data-s=${s}]`, dot).classList.add("on"); };
-  const react = () => be(!q.value.trim() ? "look" : ol.children.length ? "hit" : "miss");
-  const look = (x, y) => {
-    const b = dot.getBoundingClientRect(), dx = x - b.x - b.width / 2, dy = y - b.y - b.height / 2, k = Math.max(Math.hypot(dx, dy), 3 * b.width);
-    dot.style.setProperty("--gx", dx / k); dot.style.setProperty("--gy", dy / k);
-  };
-  const caret = () => {
-    const s = getComputedStyle(q), b = q.getBoundingClientRect();
-    (ctx ||= document.createElement("canvas").getContext("2d")).font = `${s.fontSize} ${s.fontFamily}`;
-    const w = ctx.measureText(q.value.slice(0, q.selectionEnd ?? Infinity)).width - q.scrollLeft;
-    look(b.x + parseFloat(s.paddingLeft) + Math.min(Math.max(w, 0), q.clientWidth), b.y + b.height / 2);
-  };
-  const wake = () => d.open && $("[data-s=sleep].on", dot) && (react(), caret());
-  const open = () => { if (!d.open) d.showModal(); q.select(); show(); calm.matches ? wake() : setTimeout(wake, 180); };
-  d.addEventListener("close", () => be("sleep"));
-  d.addEventListener("pointermove", (e) => look(e.clientX, e.clientY));
-  ol.addEventListener("focusin", (e) => { const b = e.target.getBoundingClientRect(); look(b.x + b.width / 3, b.y + b.height / 2); });
-  ol.addEventListener("click", (e) => e.target.closest("a") && be("pick"));
+  const open = () => { if (!d.open) d.showModal(); q.select(); show(); };
   icon.addEventListener("click", open);
   addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() !== "k" || !(e.metaKey || e.ctrlKey) || e.defaultPrevented) return;
@@ -72,28 +51,20 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
     d.open ? d.close() : open();
   });
   q.addEventListener("input", show);
-  q.addEventListener("input", () => { react(); caret(); });
   q.addEventListener("keydown", (e) => { if (e.key === "ArrowDown") { e.preventDefault(); $("a", ol)?.focus(); } });
   $("form", d).addEventListener("submit", () => { const a = $("a", ol); if (a) location.href = a.href; });
 })();
-// Theme: a family, light, dark or the device's (Auto), picked in the header's dialog and
-// remembered for every page. Exports keep their own theme.
+// The explicit theme choice applies to every page in this browser.
 (() => {
   const h = document.documentElement, d = document.querySelector(".look");
-  const keys = { fams: ["theme", "rose-pine"], modes: ["mode", "auto"] };
-  const chosen = (b) => { const [k, v] = keys[b.parentNode.className]; return b.value === (h.dataset[k] || v); };
-  const show = () => d.querySelectorAll("button[value]").forEach((b) => b.setAttribute("aria-pressed", chosen(b)));
-  const set = (k, v) => {
-    v ? (h.dataset[k] = v) : delete h.dataset[k];
-    try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {}
-    show();
-  };
+  const show = () => d.querySelectorAll("button[value]").forEach((b) => b.setAttribute("aria-pressed", b.value === (h.dataset.mode || "penumbra-light")));
   document.querySelector(".mode").addEventListener("click", () => (show(), d.showModal()));
   d.addEventListener("click", (e) => {
-    const b = e.target !== d && e.target.closest("button[value]"); // not the close button;
+    const b = e.target.closest(".modes button");
     if (!b) return;
-    const [k, v] = keys[b.parentNode.className];
-    set(k, b.value === v ? "" : b.value);
+    h.dataset.mode = b.value; h.dataset.theme = b.value;
+    try { localStorage.setItem("theme", b.value); localStorage.setItem("mode", b.value); } catch (e) {}
+    show();
   });
 })();
 </script>

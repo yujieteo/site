@@ -6,11 +6,11 @@ use engine::{doc::{self, esc}, pack, pdf, say, theme};
 use std::{fmt::Write, fs, path::Path};
 
 const TOOLCHAIN: &str = include_str!("../../rust-toolchain.toml");
-/// Embedded fonts: CSS family, file under fonts/. Text pages use the first two.
-pub const FONTS: [(&str, &str); 3] = [("Fira Sans", "sans"), ("Fira Mono", "mono"), ("Fira Math", "math")];
+/// Embedded fonts: CSS family and file under fonts/.
+pub const FONTS: [(&str, &str); 2] = [("Liga Courier Prime Sans", "mono.otf"), ("TeX Gyre Pagella Math", "math.otf")];
 /// Views: page, name, what it is. The Render dialog switches between them in place.
 const VIEWS: [(&str, &str, &str); 4] = [
-    ("index", "Notebook", "Code, controls, outputs and live scenes"),
+    ("index", "Notebook", "Code, controls and outputs"),
     ("slides", "Slides", "One chapter per slide"),
     ("handout", "Handout", "Each slide with its narration beside it"),
     ("article", "Article", "Continuous prose, numbered sections"),
@@ -19,7 +19,7 @@ const MEDIA: [(&str, &str, &str); 3] =
     [("video", "Video", "The slides, narrated"), ("podcast", "Podcast", "The narration as WAV"), ("captions", "Captions", "WebVTT subtitles")];
 
 pub fn font(file: &str) -> Vec<u8> {
-    fs::read(format!("fonts/{file}.otf")).expect("fonts/ is part of the source")
+    fs::read(format!("fonts/{file}")).expect("fonts/ is part of the source")
 }
 
 /// Text for an inline <script>: the host reverses this.
@@ -27,13 +27,8 @@ fn raw(s: &str) -> String {
     s.replace("</", "<\\/")
 }
 
-/// A scene palette (sky, shade, glow, light) as CSS custom properties.
-fn vars(palette: &str) -> String {
-    ["--sky", "--shade", "--glow", "--light"].iter().zip(palette.split_whitespace()).map(|(k, v)| format!("{k}:{v};")).collect()
-}
-
 /// What the landing page and search know of a story.
-pub struct Story { pub door: String, pub slug: String, pub title: String, pub summary: String, pub thumb: Option<u32>, pub chapters: Vec<String> }
+pub struct Story { pub door: String, pub slug: String, pub title: String, pub summary: String, pub chapters: Vec<String> }
 
 /// The narration pins (kokoro.lock): sha256 and path under kokoro/.
 pub fn pins() -> impl Iterator<Item = (&'static str, &'static str)> {
@@ -134,7 +129,7 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
 
     // The source export and the manifest that every HTML form carries.
     let source: Vec<(&str, &[u8])> = std::iter::once(("index.md", src.as_bytes())).chain(files.iter().map(|f| (f.0.as_str(), f.1.as_slice()))).collect();
-    let theme_id = match d.get("theme") { "" => "site", t => t };
+    let theme_id = theme::export(d.get("theme"));
     let export_theme = theme::export(theme_id);
     let cargo_lock = files.iter().find(|f| f.0 == "Cargo.lock").map(|f| String::from_utf8_lossy(&f.1).into_owned()).unwrap_or_default();
     let crates: Vec<String> = cargo_lock.split("[[package]]").skip(1).map(|p| {
@@ -144,7 +139,7 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
     let hashes = |v: &[(&str, &[u8])]| v.iter().map(|(n, b)| format!("{}:{}", pack::json(n), pack::json(&pack::sha256(b)))).collect::<Vec<_>>().join(",");
     let fonts: Vec<String> = FONTS.iter().map(|(fam, f)| {
         let b = font(f);
-        format!("{{\"family\":{},\"file\":\"{f}.otf\",\"bytes\":{},\"sha256\":\"{}\"}}", pack::json(fam), b.len(), pack::sha256(&b))
+        format!("{{\"family\":{},\"file\":\"{f}\",\"bytes\":{},\"sha256\":\"{}\"}}", pack::json(fam), b.len(), pack::sha256(&b))
     }).collect();
     let narrated = !say::sentences(&d).is_empty();
     let voice = if !narrated { String::new() } else {
@@ -185,7 +180,7 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
         tool("edit", "", "Edit"),
         tool("open", r#" data-arg="render""#, "Render"),
         tool("open", r#" data-arg="export""#, "Export"),
-        r#"<button type="button" data-motion hidden>Pause</button><span class="sp" data-engine-status role="status"></span>"#.into(),
+        r#"<span class="sp" data-engine-status role="status"></span>"#.into(),
     ].concat();
     let narration = if narrated { group("Narration", media) } else { String::new() };
     let tools = format!(r#"<nav class="tools" aria-label="Notebook">{tools}</nav>{}{}"#,
@@ -208,13 +203,13 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
     // The page wears the reader's theme (the header's); `theme`, `print` and `colors` are the exports'.
     let attrs = format!(" data-seed=\"{}\"", d.get("seed").parse::<u32>().unwrap_or(1));
     let chapters = d.chapters().into_iter().map(|c| c.title).collect();
-    let (title, summary, thumb) = (d.get("title").into(), d.get("summary").into(), d.get("thumb").parse().ok());
-    let s = Story { door: door.into(), slug: slug.into(), title, summary, thumb, chapters };
-    let (title, summary, style) = (esc(&s.title), esc(&s.summary), esc(&vars(d.get("palette"))));
-    let body = format!(r#"<h1>{title}</h1><p class="lede">{summary}</p>{tools}<article data-article style="{style}">{article}</article>"#);
+    let (title, summary) = (d.get("title").into(), d.get("summary").into());
+    let s = Story { door: door.into(), slug: slug.into(), title, summary, chapters };
+    let (title, summary) = (esc(&s.title), esc(&s.summary));
+    let body = format!(r#"<h1>{title}</h1><p class="lede">{summary}</p>{tools}<article data-article>{article}</article>"#);
     let pages = VIEWS.iter().map(|(f, ..)| {
         let attrs = format!("{attrs} data-view=\"{f}\"");
-        Page { path: format!("{door}/{slug}/{f}.html"), title: s.title.clone(), body: body.clone(), attrs, fonts: 3, script: script.clone() }
+        Page { path: format!("{door}/{slug}/{f}.html"), title: s.title.clone(), body: body.clone(), attrs, fonts: 2, script: script.clone() }
     }).collect();
     let mut out = exports;
     out.push(("manifest.json".into(), manifest.into_bytes()));

@@ -22,11 +22,11 @@ dialog .x { position: absolute; top: 0.75rem; right: 0.75rem; border: 0; font-si
 .pad button { min-height: 2.75rem; padding: 0; border: 1px solid var(--line); border-radius: 4px; font: 1rem var(--mono); }
 .pad [aria-pressed=true] { background: var(--fg); color: var(--bg); }
 .code { font: 0.8125rem/1.55 var(--mono); margin: 1rem 0 0.5rem; overflow-x: auto; }
-.code .k { color: var(--accent-text); } .code .s { color: var(--green); }
-.code .n { color: var(--warm); } .code .c { color: var(--muted); }
+.code .k { color: var(--fg); font-weight: 700; } .code .s { color: var(--fg2); }
+.code .n { color: var(--fg); } .code .c { color: var(--muted); }
 .cell { margin: 1.5rem 0; }
 .out pre, .err { font: 0.8125rem/1.55 var(--mono); color: var(--fg); white-space: pre-wrap; overflow-wrap: anywhere; margin: 0.5rem 0; }
-.err { color: var(--warm); }
+.err { color: var(--fg); border-left: 2px solid var(--warm); padding-left: 0.5rem; }
 .stale .out, .stale .ctls { opacity: 0.45; }
 .ran .out { animation: ran 0.9s ease-out; }
 @keyframes ran { from { background: var(--surface); box-shadow: inset 2px 0 var(--accent); } }
@@ -46,13 +46,13 @@ dialog .x { position: absolute; top: 0.75rem; right: 0.75rem; border: 0; font-si
   .ctls:has(label + label) :is(select, [type=search]) { grid-column: span 2; }
 }
 .caption, figcaption { font-size: 0.875rem; color: var(--muted); }
-.plot { display: block; width: 100%; height: auto; font: 15px var(--sans); }
+.plot { display: block; width: 100%; height: auto; font: 15px var(--text); }
 .plot .gr { stroke: var(--line); } .plot .ax { fill: var(--muted); } .plot .rl { stroke: var(--fg2); stroke-dasharray: 4 4; }
 .plot path { fill: none; stroke-width: 2; stroke-linejoin: round; }
 .l0 { stroke: var(--accent); } .l1 { stroke: var(--warm); } .l2 { stroke: var(--green); } .l3 { stroke: var(--fg2); }
 .d0 { fill: var(--accent); } .d1 { fill: var(--warm); } .d2 { fill: var(--green); } .d3 { fill: var(--fg2); }
 .say { color: var(--muted); font-style: italic; border-left: 2px solid var(--line); padding-left: 1rem; margin: 1.5rem 0; }
-math { font-family: var(--math); }
+math { font-family: var(--math); font-feature-settings: normal; }
 /* Nothing wider than the column is cut off: long words, URLs and inline code wrap, wide equations scroll. */
 :is(.out, p, li) { overflow-wrap: break-word; }
 :is(.eq, math[display=block]) { overflow-x: auto; }
@@ -67,14 +67,11 @@ figure.tool iframe { display: block; width: 100%; height: 40rem; border: 0; }
 /* Views: one body, four layouts. A chapter is a slide (title, scene, body), then its narration. */
 .chapter, article > :not(section) { max-width: 40rem; }
 .chapter { padding: 2rem 0; }
-.chapter .frame { max-width: min(20rem, 60%); margin: 1rem 0; }
-/* Slides and the handout: the slide is a 16:9 card that scales as a whole, its scene at the right. */
+/* Slides and the handout: the slide is a 16:9 card that scales as a whole. */
 :is([data-view=slides], [data-view=handout]) .slide {
   position: relative; aspect-ratio: 16 / 9; overflow: hidden; container-type: inline-size; background: var(--surface); border-radius: 6px;
-  & > * { font-size: 2.3cqi; margin: 0 56cqi 1.2cqi 4cqi; }
-  &:not(:has(> .frame)) > * { margin-right: 4cqi; }
+  & > * { font-size: 2.3cqi; margin: 0 4cqi 1.2cqi; }
   & h2 { font-size: 4.4cqi; margin-top: 3.5cqi; }
-  & .frame { position: absolute; top: 3.125cqi; right: 3.125cqi; width: 50cqi; max-width: none; margin: 0; }
   & :is(.out, .caption, .ctls) { display: none; }
 }
 :is([data-view=slides], [data-view=handout], [data-view=article]) .code { display: none; }

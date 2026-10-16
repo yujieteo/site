@@ -323,11 +323,8 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
         if let B::H(l @ (1 | 2), ..) = b { shut!(); sec = *l == 2 }
         match b {
             B::H(1, h, _) => { w!(o, "{}<details><summary>{}</summary>", if det { "</details>" } else { "" }, inline(h)); det = true }
-            B::H(2, h, _) if let Some((n, c)) = chapters.iter().enumerate().find(|c| c.1.at == at) => {
+            B::H(2, h, _) if let Some((n, _)) = chapters.iter().enumerate().find(|c| c.1.at == at) => {
                 w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide\"><h2>{}</h2>", n + 1, inline(h));
-                if let Some(sc) = c.scene {
-                    w!(o, "<canvas class=\"frame\" data-scene=\"{sc}\" data-t=\"{}\" data-progress=\"{}\" aria-hidden=\"true\"></canvas>", c.t, c.p);
-                }
             }
             B::H(n, h, _) => w!(o, "<h{n}>{}</h{n}>", inline(h)),
             B::P(p) => w!(o, "<p>{}</p>", inline(p)),
@@ -389,7 +386,7 @@ mod tests {
         assert!(mathml("\\tfrac12 \\sqrt2", false).contains("<mfrac><mn>1</mn><mn>2</mn></mfrac><msqrt><mn>2</mn></msqrt>"));
         assert!(mathml("\\frac{1}{\\sqrt{2}} \\text{ dB}", true).contains("<mfrac><mrow><mn>1</mn></mrow><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></mfrac><mtext>\u{a0}dB</mtext>"));
         let html = article(&d, &Run { out: vec!["O".into()], ctl: vec!["C".into()], map: vec![Some(0)], stale: vec![true] }, &|s| format!("data:{s}"));
-        assert!(html.contains("id=\"c1\"><div class=\"slide\"><h2>One</h2><canvas class=\"frame\" data-scene=\"8\"") && html.contains("class=\"cell stale\"") && html.contains("data-out=\"0\">O</div>"));
+        assert!(!html.contains("<canvas") && html.contains("id=\"c1\"><div class=\"slide\"><h2>One</h2>") && html.contains("class=\"cell stale\"") && html.contains("data-out=\"0\">O</div>"));
         assert!(html.contains("src=\"data:a.png\"") && html.contains("<details><summary>Notes</summary><p>End.</p></details><section class=\"refs\">"));
     }
 }

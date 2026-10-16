@@ -1,9 +1,7 @@
 ---
 title: One radar, one target
 summary: R1 holds its beam where T3 was. Does R1 see T3 in the next 2 minutes?
-palette: #2f4a5c #13222c #f2a541 #fbe8a6
-thumb: 26457
-theme: site
+theme: penumbra-light
 seed: 20261003
 voice: af_heart
 pronounce: gigahertz ɡˈɪɡəhˌɜɹts
@@ -15,7 +13,7 @@ Does the ground radar R1 detect the aircraft T3?
 
 <!-- skill: Narration lives in say blocks, one per chapter, written to be heard: short sentences, numbers rounded as spoken, no symbols. -->
 
-## The link {scene=6}
+## The link
 
 The preset is synthetic, except the 10 GHz carrier.
 
@@ -131,16 +129,15 @@ $$
 P_r = \frac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 R^4 L}, \quad \rho_1 = \frac{P_r \tau}{k T_s}
 $$
 
-Below the required $P_d$, the target dot in the first chapter is amber.
-
 ```rust
 //| caption: The link at the chosen time. The preset's reference values at t = 0 are asserted, so a drift fails the build.
 /// Everything the detector sees at time t.
 struct At { r: f64, off: f64, g: f64, pr: f64, rho1: f64, pd: f64, margin: f64, rmax: f64 }
+fn gain(l: &Link, off: f64) -> f64 { l.g0 - (12.0 * (off / l.beam) * (off / l.beam)).min(l.floor) }
 fn budget(l: &Link, eta: f64, req_db: f64, r1: (V, V), t3: (V, V), bore: V, t: f64) -> At {
     let los = sub(at(t3.0, t3.1, t), at(r1.0, r1.1, t));
     let (r, off) = (len(los), angle(bore, los));
-    let g = l.g0 - (12.0 * (off / l.beam) * (off / l.beam)).min(l.floor);
+    let g = gain(l, off);
     let (gl, lambda) = (pow(10.0, g / 10.0), C / l.f);
     let k = l.pt * gl * gl * lambda * lambda * l.rcs / (pow(4.0 * std::f64::consts::PI, 3.0) * pow(10.0, l.loss / 10.0));
     let (pr, noise) = (k / pow(r, 4.0), K * l.ts);
@@ -159,8 +156,6 @@ for (got, want, tol) in [(zero.r, 87_678.0, 0.5), (zero.pr, 1.9251e-16, 5e-21), 
 println!("t = {t:.0} s: R = {:.3} km, {:.3}° off the beam, G = {:.2} dBi", now.r / 1e3, now.off, now.g);
 println!("Pr = {:.4e} W, ρ_1 = {:.5}, ρ_N = {:.3}", now.pr, now.rho1, link.pulses * now.rho1);
 println!("Pd = {:.5}, margin {:.4} dB, R_max = {:.3} km", now.pd, now.margin, now.rmax / 1e3);
-let (a, b) = (at(r1.0, r1.1, t), at(t3.0, t3.1, t));
-stage(&[40.0, 10.0, 160.0, a[0] / 1e3, a[1] / 1e3, b[0] / 1e3, b[1] / 1e3, bore[0], bore[1], now.rmax / 1e3, now.pd, t3.1[0] / 1e3, t3.1[1] / 1e3]);
 ```
 
 ```say
@@ -183,7 +178,14 @@ Plot::new().line(&times, &path.iter().map(|a| a.pd).collect::<Vec<_>>()).rule(li
 Plot::new().line(&times, &path.iter().map(|a| a.margin).collect::<Vec<_>>()).rule(0.0).dots(&[t], &[now.margin]).labels("time (s)", "margin (dB)").show();
 ```
 
-![The gain pattern: 30 dBi on the axis, falling 12 dB at the beam edge, floored 30 dB down.](beam.png)
+```rust
+//| caption: The gain pattern: 30 dBi on the axis, 12 dB less at the beam edge, with a floor 30 dB below the peak.
+let angles: Vec<f64> = (-20..=20).map(f64::from).collect();
+let gains: Vec<f64> = angles.iter().map(|&a| gain(&link, a)).collect();
+assert_eq!(gain(&link, 0.0), link.g0);
+assert_eq!(gain(&link, link.beam), link.g0 - 12.0);
+Plot::new().line(&angles, &gains).labels("off axis (degrees)", "gain (dBi)").show();
+```
 
 ```say
 T three flies away and off the beam. In two minutes, the detection probability falls close to zero.
