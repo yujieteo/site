@@ -62,6 +62,7 @@
         root.dataset.theme = html.dataset.theme; root.dataset.mode = html.dataset.mode || "light";
       };
       sync();
+      d.defaultView.addEventListener("storage", sync); // after the page's own listener, which would clear the mode
       new MutationObserver(sync).observe(html, { attributes: true, attributeFilter: ["data-theme", "data-mode"] });
       new ResizeObserver(fit).observe(d.documentElement);
     }, { once: true });
