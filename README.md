@@ -56,7 +56,7 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   and cycles are errors. Items (`fn`, `struct`, `use`, `const`) are shared by all cells. Every run is
   a clean run, so outputs never depend on what ran before; the page keeps one instance, so a `static`
   may hold what a cell parsed from `data!` bytes, and nothing else. `//| caption: …` captions a cell.
-- In cells: `println!`, `html`, `table`, `slider`, `choice`, `field` (a text box), `stage` (numeric cell output), `Plot` and `data!("path")`: the bytes of a file pinned in `visuals.lock`, compiled
+- In cells: `println!`, `html`, `table`, `slider`, `choice`, `field` (a text box), `gloss` (a gloss in a cell's HTML, as `^[…]` in the text), `stage` (numeric cell output), `Plot` and `data!("path")`: the bytes of a file pinned in `visuals.lock`, compiled
   in. The page redraws a cell's controls when a key, label, range or option changes, so keep a
   `field` apart from a `choice` whose options follow it. A control's key is 100 × its cell + its place
   in the cell; a slider or text box keeps the page's value only while its label stays the same.
@@ -65,9 +65,10 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   `^^[…]` is a long note: a red number in the text and the note above or below its chapter. A note may
   open with its kind: `def.`, `cf.`, `crit.` or `nota`.
 - On a wide screen, every chapter is set in two balanced columns, as in a codex, and the page scrolls.
-  A block that reads badly when split (a short paragraph, an equation, a code listing, controls, a plot)
-  stays whole in one column; embedded tools take the full width. The Article PDF runs in two columns
-  throughout.
+  A block that reads badly when split (a short paragraph, an equation, a control, a plot) stays whole
+  in one column. Embedded tools, and a cell's output with a table or a displayed formula, take the full
+  width. A control takes two lines, and code wraps: nothing scrolls sideways in a column. The Article PDF
+  runs in two columns throughout.
 - A post needs no cells: a notebook of front matter (`title`, `summary`) and Markdown is a story.
 - ```` ```toml ```` fences add pinned crates; ```` ```say ```` fences are narration; `$…$` and `$$`
   are TeX; `<!-- … -->` comments are agent skills, exposed as text through `window.notebook.skills()`.

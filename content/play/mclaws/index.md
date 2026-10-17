@@ -33,7 +33,7 @@ html(&about(entry));
 
 ## Draw a sample
 
-Each sampler is exact, and only the gamma and zeta laws use rejection. For a vector parameter, the histogram shows 1 component, or a sum for the multivariate normal law.
+Each sampler is exact.^[nota Only the gamma and zeta laws use rejection.] For a vector parameter, the histogram shows 1 component, or a sum for the multivariate normal law.
 
 ```rust
 //| caption: The sample size and the seed.
@@ -51,7 +51,7 @@ let sample: Result<Vec<f64>, String> = match spec {
 };
 ```
 
-In the χ² test row, a p-value below about 0.001 at several seeds shows an error in a sampler or a formula. The histogram has 40 equal bins from the 0.5 % to the 99.5 % quantile of the sample. A discrete law shows each value up to the 99.5 % quantile.
+In the χ² test row, a p-value below about 0.001 at several seeds shows an error in a sampler or a formula.^^[The histogram has 40 equal bins from the 0.5 % to the 99.5 % quantile of the sample. A discrete law shows each value up to the 99.5 % quantile.]
 
 ```rust
 //| caption: The sample against the exact law: histogram and PMF or PDF.
@@ -79,7 +79,7 @@ match &sample {
 
 ## The law of large numbers
 
-The mean of n draws tends to the exact mean when $\mathbb{E}|X| < \infty$, and the CLT band needs a finite variance. To see a failure, try the Cauchy law, or a Pareto law with $\alpha \le 2$.
+The mean of n draws tends to the exact mean when $\mathbb{E}|X| < \infty$, and the CLT band needs a finite variance.^[nota To see a failure, try the Cauchy law, or a Pareto law with $\alpha \le 2$.]
 
 ```rust
 //| caption: The running mean of one sample against log10 n, with the exact mean and the CLT band μ ± 1.96 σ / sqrt(n).
@@ -106,7 +106,7 @@ if let (Ok(xs), Some(_)) = (&sample, spec) {
 }
 ```
 
-Each of the 400 intervals $\bar X_n \pm 1.96\, s_n/\sqrt{n}$ uses n new draws and their standard deviation $s_n$. With a finite variance, the fraction that holds the exact mean tends to 95 %, but slowly for a skewed law. With an infinite variance, it stays below 95 %.
+Each of the 400 intervals $\bar X_n \pm 1.96\, s_n/\sqrt{n}$ uses n new draws.^[def. $s_n$ is the standard deviation of the n draws of an interval.] With a finite variance, the fraction that holds the exact mean tends to 95 %.^[crit. For a skewed law, the fraction comes near 95 % slowly.] With an infinite variance, it stays below 95 %.
 
 ```rust
 //| caption: How often the CLT interval holds the exact mean.
@@ -119,8 +119,8 @@ if let (Ok(_), Some(_)) = (&sample, spec) {
                 let (m, v) = stats(&draws(id, &params, seed * 1000 + r, each));
                 (m - mu).abs() <= 1.96 * (v / each as f64).sqrt()
             }).count();
-            println!("{hits} of 400 intervals ({} %) hold the exact mean {}.", sig(hits as f64 / 4.0), sig(mu));
-            println!("The count of a correct 95 % interval is 380 ± 9 (one standard deviation).");
+            html(&format!("<p>{hits} of 400 intervals ({} %) hold the exact mean {}.{}</p>", sig(hits as f64 / 4.0), sig(mu),
+                gloss("nota The count of a correct 95 % interval is 380 ± 9 (one standard deviation).")));
         }
     }
 }
@@ -139,7 +139,7 @@ html(&theorem(th));
 
 ## Glossary
 
-A term matches when every word is in the term or its definition. Matches in the term come first.
+A term matches when every word is in the term or its definition.^[nota Matches in the term come first.]
 
 ```rust
 //| caption: The terms that match.
@@ -151,7 +151,7 @@ table(&["Term", "Definition"], &found.iter().take(30).map(|g| vec![fit(s(&g["ter
 
 ## Published run limits
 
-These limits are for the workbench page, which ran in 4 workers. This notebook runs in 1 thread, so its samples are smaller.
+These limits are for the workbench page, which ran in 4 workers.^[crit. This notebook runs in 1 thread, so its samples are smaller.]
 
 ```rust
 //| caption: The limits and the measured speeds, as the data gives them.
@@ -285,9 +285,11 @@ fn display(t: &str) -> String { lines(t).iter().map(|l| mathml(l, true)).collect
 /// A transform is TeX, except 4 that the data gives as sentences.
 fn tex_or_text(t: &str) -> String { if !t.contains('\\') && t.ends_with('.') { esc(&fit(t)) } else { math(t) } }
 fn para(t: &str) -> String { format!("<p>{}</p>", esc(&fit(t))) }
+/// Text from the data as the Markdown of a gloss: fitted, with a backslash before each mark that starts Markdown.
+fn md(t: &str) -> String { fit(t).chars().map(|c| if "\\`$*[]".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
 fn bullets<'a>(v: impl Iterator<Item = &'a Value>) -> String { format!("<ul>{}</ul>", v.map(|x| format!("<li>{}</li>", esc(&fit(s(x))))).collect::<String>()) }
 
-/// The page of a law.
+/// The page of a law, with the existence of its moments beside the variance.
 fn about(l: &Value) -> String {
     let mut h = para(s(&l["convention"]));
     for k in ["pmf", "pdf", "formula"] { if let Some(t) = l[k].as_str() { h += &display(t) } }
@@ -297,7 +299,7 @@ fn about(l: &Value) -> String {
     }
     h += &format!("</table><p>Support: {}</p>", math(s(&l["support"])));
     let m = &l["moments"];
-    h += &format!("<h3>Moments</h3><p>Mean: {}</p><p>Variance: {}</p>{}", math(s(&m["mean"])), math(s(&m["variance"])), para(s(&m["existence"])));
+    h += &format!("<h3>Moments</h3><p>Mean: {}</p><p>Variance: {}{}</p>", math(s(&m["mean"])), math(s(&m["variance"])), gloss(&format!("crit. {}", md(s(&m["existence"])))));
     h += "<h3>Transforms</h3>";
     for (k, name) in [("pgf", "PGF"), ("lt", "Laplace transform"), ("mgf", "MGF"), ("cf", "Characteristic function"), ("generator", "Generator")] {
         if let Some(t) = l["transforms"][k].as_str() { h += &format!("<p>{name}: {}</p>", tex_or_text(t)) }
@@ -320,15 +322,16 @@ fn about(l: &Value) -> String {
     h + &format!("<h3>Related laws</h3><ul>{links}</ul>")
 }
 
-/// The page of a theorem. Its experiment is in another notebook of this series, except the laws of large
-/// numbers, which the chapter above runs.
+/// The page of a theorem: its statement, assumptions and proof, with its reference beside the proof, and its
+/// counterexample, with its experiment beside it. The experiment is in another notebook of this series, except
+/// the laws of large numbers, which the chapter above runs.
 fn theorem(t: &Value) -> String {
     let e = t["experiment"].as_object().unwrap();
     let (kind, name) = e.iter().find(|(k, _)| *k != "settings").map(|(k, v)| (k.as_str(), s(v))).unwrap();
-    let place = match kind { "model" => r#"<a href="../mcmodels/index.html">the Monte Carlo models notebook</a>"#, "physics" => r#"<a href="../mcphysics/index.html">the Monte Carlo physics notebook</a>"#, _ => r#"<a href="../mcchains/index.html">the Monte Carlo chains and rare events notebook</a>"# };
-    format!("{}<h3>Assumptions</h3>{}<h3>Proof</h3>{}<h3>Counterexample</h3>{}<h3>Reference</h3>{}{}",
-        display(s(&t["statement"])), bullets(t["assumptions"].as_array().unwrap().iter()), para(s(&t["proof"])),
-        para(s(&t["counterexample"])), para(s(&t["reference"])), format!("<p>Its experiment, {}, is in {place} of this series.</p>", esc(&fit(name))))
+    let place = match kind { "model" => "[the Monte Carlo models notebook](../mcmodels/index.html)", "physics" => "[the Monte Carlo physics notebook](../mcphysics/index.html)", _ => "[the Monte Carlo chains and rare events notebook](../mcchains/index.html)" };
+    format!("{}<h3>Assumptions</h3>{}<h3>Proof</h3><p>{}{}</p><h3>Counterexample</h3><p>{}{}</p>",
+        display(s(&t["statement"])), bullets(t["assumptions"].as_array().unwrap().iter()), esc(&fit(s(&t["proof"]))), gloss(&format!("cf. {}", md(s(&t["reference"])))),
+        esc(&fit(s(&t["counterexample"]))), gloss(&format!("cf. Its experiment, {}, is in {place} of this series.", md(name))))
 }
 
 /// The glossary terms that hold every word: those with the words in the term first.

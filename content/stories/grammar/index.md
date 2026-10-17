@@ -6,7 +6,7 @@ seed: 20261010
 voice: af_heart
 ---
 
-This story draws English grammar as trees, in the framework of *The Cambridge Grammar of the English Language* (Huddleston and Pullum, 2002).
+This story draws English grammar as trees, in the framework of *The Cambridge Grammar of the English Language*.^[cf. Huddleston and Pullum, 2002. Notes and sources tells what the data takes from the book.]
 
 <!-- skill: This story ports visuals/viz/english-grammar. Read the data only through data!, from concepts.json, examples.json and raw.json pinned in visuals.lock; never copy data into this file. A tree is drawn from the example's bracket notation by tree() and svg() in "The code"; svg() keeps within the 640 by 400 units of a plot, so the PDFs draw it too. The text cites counts of the pinned data (84 concepts, 206 examples, 52 contrasts, 16 confusions, 20 chapters): when the pin changes, update them. -->
 
@@ -18,7 +18,7 @@ serde_json = "=1.0.151"
 
 ## Two questions
 
-An expression has a category, what it is, and a function, what it does.
+An expression has a category, what it is,^[def. A category is a kind of expression, such as noun, NP or clause.] and a function, what it does.^[def. A function is the role of an expression in a larger one, such as subject, head or object. The two vary independently.]
 
 ```rust
 //| caption: Each node shows its function above its category, and the box marks the part that the text explains. Det is determiner, Mod modifier, Comp complement, PredComp predicative complement, NP noun phrase, VP verb phrase, AdjP adjective phrase, PP preposition phrase, Nom nominal, D determinative.
@@ -31,7 +31,7 @@ Every expression has two labels. Its category says what it is. Its function says
 
 ## Constituents
 
-If the same words make constituents in 2 ways, the sentence has 2 meanings.
+If the same words make constituents in 2 ways, the sentence has 2 meanings.^[def. A constituent is a group of words that acts as one unit in a larger expression.]
 
 ```rust
 //| caption: Compare the first two examples: one sentence, two trees.
@@ -44,7 +44,7 @@ Words make groups inside groups. If the same words can make groups in two ways, 
 
 ## Heads and dependents
 
-The head sets the kind of constituent, and it selects its complements.
+The head sets the kind of constituent, and it selects its complements.^[cf. Complements and Adjuncts, below: a complement is a dependent that the head selects.]
 
 ```rust
 //| caption: The head, and the dependents around it.
@@ -57,7 +57,7 @@ In each group, one part is the head. The head sets the kind of phrase.
 
 ## Words
 
-A tree in a word has bases and affixes, not words.
+A tree in a word has bases and affixes, not words.^[def. A lexeme is a word as a dictionary item: takes and took are forms of the lexeme take. Kindness is a new lexeme, made from the base kind and the affix -ness.]
 
 ```rust
 //| caption: Forms of a lexeme, and words built of parts.
@@ -70,7 +70,7 @@ Words have parts too. Takes and took are forms of one verb. Kindness is a new wo
 
 ## The clause
 
-Syntax, not meaning, identifies the subject: its position, the agreement of the verb, and the tag question.
+Syntax, not meaning, identifies the subject: its position, the agreement of the verb, and the tag question.^[def. A tag question repeats the subject as a pronoun after the clause: Kim laughed, didn't she?]
 
 ```rust
 //| caption: Subject, predicate and predicator.
@@ -83,7 +83,7 @@ A simple clause has two parts. The subject comes first, and the verb agrees with
 
 ## Complements
 
-The verb shows if a preposition phrase is a complement or an adjunct.
+The verb shows if a preposition phrase is a complement or an adjunct.^[nota Rely selects on: in relied on Kim, the PP is a complement, and no other preposition will do.]
 
 ```rust
 //| caption: Objects, predicative complements, and complements against adjuncts.
@@ -96,7 +96,7 @@ The verb chooses what follows it. An object is a second participant. A predicati
 
 ## The noun phrase
 
-Determiner is a function, not a category: a genitive phrase can be a determiner.
+Determiner is a function, not a category: a genitive phrase can be a determiner.^[def. Determinative (D) is the category of words such as the and this. Determiner (Det) is a function, as of Kim's in Kim's book.]
 
 ```rust
 //| caption: The parts of a noun phrase, and the determiner function.
@@ -109,7 +109,7 @@ Most noun phrases start with a determiner, for example the. Determiner is a job,
 
 ## Adjuncts
 
-The verb does not select adjuncts, and many adjuncts can move to the front of the clause.
+The verb does not select adjuncts, and many adjuncts can move to the front of the clause.^[nota Adjuncts tell how, where, when or why.]
 
 ```rust
 //| caption: Adjuncts of several kinds, and their positions.
@@ -122,7 +122,7 @@ Adjuncts add what the verb does not need. They tell how, where, when or why.
 
 ## Look alike, differ
 
-Each of the 52 contrasts boxes 2 parts that look alike but have different analyses.
+Each of the 52 contrasts boxes 2 parts that look alike but have different analyses.^[cf. Easy to confuse, next, pairs terms, not sentences.]
 
 ```rust
 //| caption: The contrast, then each side.
@@ -154,7 +154,7 @@ Some pairs of terms are easy to confuse. Each pair here has an example that show
 
 ## The whole book
 
-The 84 concepts follow the 20 chapters of the Cambridge Grammar.
+The 84 concepts follow the 20 chapters of the Cambridge Grammar.^[nota A concept's glosses give its place in the book, its other places, its other names and the related concepts.]
 
 ```rust
 //| caption: A chapter of the book, a concept in it, and one of its examples.
@@ -173,7 +173,7 @@ Choose a chapter of the Cambridge Grammar, then a concept, then one of its examp
 
 ## Find
 
-A concept or an example matches if its text contains every word that you type.
+A concept or an example matches if its text contains every word that you type.^^[A concept matches by its name, its other names and its abbreviations first, then by what it is and its note. An example matches by its sentence first, then by its tree, its explanation, its usage and its context. The closer matches come first, and the choice shows at most 40 examples.]
 
 ```rust
 //| caption: The search.
@@ -203,9 +203,9 @@ Last, search everything. Type a grammar term, or a word from a sentence.
 
 # Notes and sources
 
-The data comes from the English Grammar tool of [yujieteo/visuals](https://github.com/yujieteo/visuals), pinned in `visuals.lock`. That tool cites [*The Cambridge Grammar of the English Language*](https://doi.org/10.1017/9781316423530) only for its chapters, sections and first pages. Its sentences, analyses and explanations are its own. Nobody has checked them against the book, and the authors and the publisher do not endorse them.
+The data comes from the English Grammar tool of [yujieteo/visuals](https://github.com/yujieteo/visuals).^[nota The data is pinned in `visuals.lock`.] That tool cites [*The Cambridge Grammar of the English Language*](https://doi.org/10.1017/9781316423530) only for its chapters, sections and first pages. Its sentences, analyses and explanations are its own.^[crit. Nobody has checked them against the book. The authors and the publisher do not endorse them.]
 
-Punctuation marks are not constituents, so a cited mark boxes the constituent that it bounds. A gap (__) shows an understood element. Antecedents are links in the text, not branches.
+Punctuation marks are not constituents, so a cited mark boxes the constituent that it bounds.^[def. A gap (__) in a tree shows an understood element.] Antecedents are links in the text, not branches.
 
 # The code
 
@@ -356,22 +356,33 @@ fn figure(e: &Value, node: &str) -> String {
     }
     h + ".</p>"
 }
-/// The figure, the explanation, notes on usage and context, and the question to predict.
+/// Data text as Markdown for a gloss: its marker characters stay literal.
+fn md(t: &str) -> String { t.chars().map(|c| if "\\`$*[]".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
+/// The figure, the explanation with its notes on usage and context as glosses, and the question to predict.
 fn card(e: &Value, node: &str) -> String {
-    let mut h = figure(e, node) + &format!("<p>{}</p>", esc(s(&e["explanation"])));
-    for k in ["usage", "context"] { if let Some(t) = e[k].as_str() { h += &format!("<p class=\"caption\">{}</p>", esc(t)) } }
+    let notes: String = ["usage", "context"].iter().filter_map(|k| e[*k].as_str()).map(|t| gloss(&md(&format!("nota {t}")))).collect();
+    let mut h = figure(e, node) + &format!("<p>{}{notes}</p>", esc(s(&e["explanation"])));
     if let Some(p) = e.get("predict") { h += &format!("<details><summary>{}</summary><p>{}</p></details>", esc(s(&p["question"])), esc(s(&p["answer"]))) }
     h
 }
-/// A concept: its name and place in the book, what it is and, in full, its note, references, related concepts and other names.
+/// A concept: its name, with its place in the book as a gloss, and what it is. In full, also its other places
+/// in the book, its other names and abbreviations, its note, and the related concepts, as glosses where they fit.
 fn about(c: &Value, full: bool) -> String {
     let join = |v: &Value, f: &dyn Fn(&Value) -> String| list(v).iter().map(f).collect::<Vec<_>>().join("; ");
-    let mut h = format!("<p><b>{}</b> ({}). {}</p>", esc(s(&c["name"])), esc(&cite(&c["loc"])), esc(s(&c["orientation"])));
+    let g = |k: &str, parts: &[(&str, String)]| {
+        let t: Vec<String> = parts.iter().filter(|p| !p.1.is_empty()).map(|(l, v)| if l.is_empty() { format!("{v}.") } else { format!("{l}: {v}.") }).collect();
+        if t.is_empty() { String::new() } else { gloss(&md(&format!("{k} {}", t.join(" ")))) }
+    };
+    let (also, names) = if full {
+        (join(&c["refs"], &|r| cite(r)), g("def.", &[("Other names", join(&c["aliases"], &|a| s(a).into())), ("Abbreviations", join(&c["abbr"], &|a| s(a).into()))]))
+    } else { (String::new(), String::new()) };
+    let at = g("cf.", &[("", format!("The Cambridge Grammar, {}", cite(&c["loc"]))), ("Also in the book", also)]);
+    let mut h = format!("<p><b>{}</b>{at}. {}{names}</p>", esc(s(&c["name"])), esc(s(&c["orientation"])));
     if full {
-        if let Some(t) = c["note"].as_str() { h += &format!("<p>{}</p>", esc(t)) }
-        for (label, v) in [("Also in the book", join(&c["refs"], &|r| cite(r))), ("Related", join(&c["related"], &|r| s(&concept(s(r))["name"]).into())),
-            ("Other names", join(&c["aliases"], &|a| s(a).into())), ("Abbreviations", join(&c["abbr"], &|a| s(a).into()))] {
-            if !v.is_empty() { h += &format!("<p class=\"caption\">{label}: {}.</p>", esc(&v)) }
+        let related = g("cf.", &[("Related", join(&c["related"], &|r| s(&concept(s(r))["name"]).into()))]);
+        match c["note"].as_str() {
+            Some(t) => h += &format!("<p>{}{related}</p>", esc(t)),
+            None => h = h.replacen("</p>", &format!("{related}</p>"), 1),
         }
     }
     h

@@ -5,7 +5,7 @@ theme: penumbra-light
 seed: 20261013
 ---
 
-Run a model text and read each estimate with its 95 % interval. For discrete variables with a small joint support, the notebook also gives the exact value by enumeration.
+Run a model text and read each estimate with its 95 % interval.^[nota For discrete variables with a small joint support, the notebook also gives the exact value by enumeration.]
 
 <!-- skill: This notebook ports the models, methods, data sets and groups of visuals/viz/monte-carlo-workbench, with the law names of laws.json. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. The model engine is in "The code": the core functions at the root, then the modules expr (the expression language), cat (the 39 catalogue laws), built (the constructed and custom laws), dep (the copulas and processes) and model (the model text, the runs, the intervals, the decision, the enumeration and multilevel Monte Carlo). -->
 
@@ -17,7 +17,7 @@ serde_json = "=1.0.151"
 
 ## A model
 
-A decision model compares 2 to 4 alternatives. An experiment shows 1 property of a law or a method, and a law input defines a custom law. 3 law inputs fail their checks on purpose, so the notebook does not run them.
+A decision model compares 2 to 4 alternatives. The Model menu also holds experiments^[def. An experiment shows 1 property of a law or a method.] and law inputs.^[def. A law input defines a custom law. 3 law inputs fail their checks on purpose, so the notebook does not run them.]
 
 ```rust
 //| caption: The law and the model.
@@ -35,9 +35,9 @@ html(&about(entry));
 
 The model text has 1 statement on each line:
 
-- `title:`, `problem:`, `initial:`, `dynamics:`, `observation:`, `censoring:`, `truncation:` and `selection:` describe the model in words. A censoring line also adds the observed time `T_obs` and the event indicator `T_event`.
+- `title:`, `problem:`, `initial:`, `dynamics:`, `observation:`, `censoring:`, `truncation:` and `selection:` describe the model in words.^[nota A censoring line also adds the observed time `T_obs` and the event indicator `T_event`.]
 - `param p = 0.3 "note"` sets a parameter.
-- `X ~ binomial(n = 10, p = p) repeat 3 {unit} "note"` draws a random variable, and `repeat` makes a vector of independent copies.
+- `X ~ binomial(n = 10, p = p) repeat 3 {unit} "note"` draws a random variable.^[def. `repeat` makes a vector of independent copies.]
 - `name := expression` defines a value from earlier names.
 - `prob q = condition`, `mean q = expression` and `ratio q = E[a] / E[b]` are the quantities to estimate.
 - `alt "label": a = 1; b = 2` is an alternative. `maximise q` or `minimise q` is the objective, and `require q <= 0.05` is a constraint.
@@ -46,7 +46,7 @@ The model text has 1 statement on each line:
 
 ## Settings
 
-The method sets the sampler of every law and the estimator. The parameter settings apply to all the alternatives. A comparison method runs the same replicates again and gives the variance ratio. An assumption failure breaks 1 assumption of 1 method on purpose.
+The method sets the sampler of every law and the estimator.^[crit. An assumption failure breaks 1 assumption of 1 method on purpose.] The parameter settings apply to all the alternatives. A comparison method runs the same replicates again and gives the variance ratio.^[cf. The chapter Methods defines the variance ratio.]
 
 ```rust
 //| caption: The settings of the run.
@@ -102,7 +102,7 @@ if let (Ok(m), Some(Ok(st)), false) = (&compiled, &stats, compare == "none") {
 
 ## The law of the focus variable
 
-A logarithmic vertical axis shows a tail that a linear axis hides. The tail plot shows a power law as a straight line. A sample PDF has 40 bins between the 0.5 % and 99.5 % quantiles.
+A logarithmic vertical axis shows a tail that a linear axis hides. The tail plot shows a power law as a straight line.^[nota A sample PDF has 40 bins between the 0.5 % and 99.5 % quantiles.]
 
 ```rust
 //| caption: The plot, the axis and the alternative.
@@ -145,7 +145,7 @@ if let (Ok(m), Some(Ok(st))) = (&compiled, &stats) {
 
 ## Multilevel Monte Carlo
 
-Multilevel Monte Carlo (Giles, 2008) adds the differences between time grids to the quantity on the coarsest grid. A fine path and its coarse path use the same Brownian increments, so their difference has a small variance. The sample sizes give the lowest cost for the target error ε, and the notebook adds levels until its bias test passes.
+Multilevel Monte Carlo^[cf. Giles, 2008.] adds the differences between time grids to the quantity on the coarsest grid. A fine path and its coarse path use the same Brownian increments, so their difference has a small variance.^^[The sample sizes give the lowest cost for the target error ε. The notebook adds levels until its bias test passes.]
 
 ```rust
 //| caption: The levels and the estimate for the target ε of the model.
@@ -160,7 +160,7 @@ match (&compiled, entry["settings"]["mlmc_eps"].as_f64()) {
 
 ## A parameter sweep
 
-The sweep runs the model at 9 values of 1 parameter, from half to twice its value, with 2^12 replicates at each value. If the value is not positive, the sweep goes from −1 to +1 around it.
+The sweep runs the model at 9 values of 1 parameter,^[nota The sweep uses 2^12 replicates at each value.] from half to twice its value.^[crit. If the value is not positive, the sweep goes from −1 to +1 around it.]
 
 ```rust
 //| caption: The swept parameter.
@@ -176,9 +176,7 @@ if let (Ok(m), true) = (&compiled, sweep > 0) {
 
 ## A guided interview
 
-Answer the interview to find a law for your quantity. Each rule reads the answers and supports or excludes candidate laws with a weight, records an assumption, or stops with "insufficient evidence".
-
-"I do not know" is a valid answer. The interview then keeps more candidates and records the assumption. The numbers that you type give the parameters of the model by moment matching.
+Answer the interview to find a law for your quantity.^[nota The numbers that you type give the parameters of the model by moment matching.] Each rule reads the answers and supports or excludes candidate laws with a weight, records an assumption, or stops with "insufficient evidence".^[nota "I do not know" is a valid answer. The interview then keeps more candidates and records the assumption.]
 
 ```rust
 //| caption: The answers.
@@ -207,7 +205,7 @@ A rule that you switch off stays in the rule path, but it has no effect.
 rule_path(&iv_eval);
 ```
 
-The score of a candidate is the sum of the weights of the rules that support it, and 2 or more is strong support. Only the rejection tests on the data can separate candidates with the same score.
+The score of a candidate is the sum of the weights of the rules that support it, and 2 or more is strong support.^[crit. Only the rejection tests on the data can separate candidates with the same score.]
 
 ```rust
 //| caption: The candidates.
@@ -250,7 +248,7 @@ if let Some(Ok(b)) = &iv_built {
 
 ## Methods
 
-Each card runs its 3 examples with 2^12 replicates and seed 2026. A variance ratio is the variance of the other method over the variance of this method, for the same number of model evaluations. A ratio above 1 is a gain.
+Each card runs its 3 examples with 2^12 replicates and seed 2026. A variance ratio^[def. The variance ratio is the variance of the other method over the variance of this method, for the same number of model evaluations.] above 1 is a gain.
 
 ```rust
 //| caption: The method card.
@@ -265,7 +263,7 @@ examples(card);
 
 ## Data sets
 
-A p-value measures the fit of the data to 1 law, and it does not prove the law. Each fit is by maximum likelihood. The χ² test of a count pools its cells to an expected count of at least 5.
+A p-value measures the fit of the data to 1 law, and it does not prove the law.^[nota Each fit is by maximum likelihood. The χ² test of a count pools its cells to an expected count of at least 5.]
 
 ```rust
 //| caption: The data set.
@@ -372,29 +370,39 @@ fn fit(t: &str) -> String {
 fn bullets<S: AsRef<str>>(v: &[S]) -> String { format!("<ul>{}</ul>", v.iter().map(|x| format!("<li>{}</li>", esc(&fit(x.as_ref())))).collect::<String>()) }
 fn texts(v: &Value) -> Vec<&str> { v.as_array().map_or(vec![], |a| a.iter().map(s).collect()) }
 fn para(t: &str) -> String { format!("<p>{}</p>", esc(&fit(t))) }
+/// Text from the data as the Markdown of a gloss: a backslash before each character that starts a marker.
+fn md(t: &str) -> String { fit(t).chars().map(|c| if "\\`$*[]".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
+/// A gloss of a kind (def., cf., crit. or nota) with a label, from text of the data.
+fn side(kind: &str, label: &str, t: &str) -> String { gloss(&format!("{kind} *{label}.* {}", md(t))) }
 
-/// The page of a model: its question, its reasons and its text.
+/// The page of a model: its question, its reasons and its text. The side lines (inputs, dependence, method, data and
+/// a failed check) are glosses beside the paragraphs.
 fn about(m: &Value) -> String {
+    let side_of = |k: &str, kind: &str, label: &str| m[k].as_str().map_or(String::new(), |t| side(kind, label, t));
+    let data = match (m["data"]["dataset"].as_str(), m["data"]["text"].as_str()) {
+        (Some(d), _) => gloss(&format!("cf. *Data.* {}, in the chapter Data sets.", md(s(&list(2).iter().find(|x| x["id"] == d).unwrap()["title"])))),
+        (_, Some(t)) => side("cf.", "Data", t),
+        _ => String::new(),
+    };
+    let fails = m["fails"].as_str().map_or(String::new(), |f| gloss(&format!("crit. This law input fails its {f} check on purpose.")));
     let mut h = String::new();
-    for (k, name) in [("decision", ""), ("reason", "Why this law"), ("inputs", "Inputs"), ("dependence", "Dependence"), ("method", "Method"),
-        ("diagnostics", "Diagnostics"), ("interpretation", "Interpretation"), ("observe", "What to observe")] {
-        if let Some(t) = m[k].as_str() { h += &format!("<p>{}{}</p>", if name.is_empty() { String::new() } else { format!("<strong>{name}.</strong> ") }, esc(&fit(t))) }
+    for (k, name, notes) in [("decision", "", side_of("inputs", "nota", "Inputs")), ("reason", "Why this law", side_of("dependence", "crit.", "Dependence")),
+        ("diagnostics", "Diagnostics", side_of("method", "nota", "Method")), ("interpretation", "Interpretation", data), ("observe", "What to observe", fails)] {
+        if let Some(t) = m[k].as_str() { h += &format!("<p>{}{}{notes}</p>", if name.is_empty() { String::new() } else { format!("<strong>{name}.</strong> ") }, esc(&fit(t))) }
     }
-    match (m["data"]["dataset"].as_str(), m["data"]["text"].as_str()) {
-        (Some(d), _) => h += &format!("<p><strong>Data.</strong> {}, in the chapter Data sets.</p>", esc(&fit(s(&list(2).iter().find(|x| x["id"] == d).unwrap()["title"])))),
-        (_, Some(t)) => h += &format!("<p><strong>Data.</strong> {}</p>", esc(&fit(t))),
-        _ => {}
-    }
-    if let Some(f) = m["fails"].as_str() { h += &format!("<p>This law input fails its {f} check on purpose.</p>") }
     h + &format!("<pre>{}</pre>", esc(&fit(s(&m["dsl"]))))
 }
 
-/// A method card: the estimator, the assumptions, the settings and the 3 examples.
+/// A method card: the estimator, where it suits, where it fails and the comparison; its settings and its assumptions
+/// are 2 glosses.
 fn method_card(m: &Value) -> String {
     let with = list(1).iter().find(|x| x["id"] == m["comparison"]["with"]).map_or("", |x| s(&x["name"]));
-    format!("<p><strong>{}.</strong> {}.</p>{}{}<h3>Assumptions</h3>{}<h3>Settings</h3>{}<h3>Where it suits</h3>{}<h3>Where it fails</h3>{}<h3>Comparison with {}</h3>{}",
-        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), mathml(s(&m["estimator"]), true), para(s(&m["estimatorText"])), bullets(&texts(&m["assumptions"])),
-        bullets(&texts(&m["settings"])), para(s(&m["suitable"]["text"])), para(s(&m["failure"]["text"])), esc(&with.to_lowercase()), para(s(&m["comparison"]["text"])))
+    let notes = |k: &str, kind: &str, label: &str| side(kind, label, &texts(&m[k]).join(" "));
+    let part = |label: &str, t: &str| format!("<p><strong>{}.</strong> {}</p>", esc(label), esc(&fit(t)));
+    format!("<p><strong>{}.</strong> {}.{}</p>{}<p>{}{}</p>{}{}{}",
+        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), notes("settings", "nota", "Settings"), mathml(s(&m["estimator"]), true),
+        esc(&fit(s(&m["estimatorText"]))), notes("assumptions", "crit.", "Assumptions"), part("Where it suits", s(&m["suitable"]["text"])),
+        part("Where it fails", s(&m["failure"]["text"])), part(&format!("Comparison with {}", with.to_lowercase()), s(&m["comparison"]["text"])))
 }
 ```
 
@@ -676,7 +684,9 @@ fn examples(card: &Value) {
 //| caption: The data sets and their fits.
 /// A data set: its source, its values, and the fit of its law.
 fn dataset(d: &Value) {
-    html(&format!("<p>Unit: {}.</p><p>Source: {}</p><p>Date: {}. Licence: {}</p>", esc(&fit(s(&d["unit"]))), esc(&fit(s(&d["source"]))), esc(&fit(s(&d["date"]))), esc(&fit(s(&d["licence"])))));
+    let more = if d["kind"] == "trials" { " The Monte Carlo chains and rare events notebook of this series fits a logistic model to these flights." } else { "" };
+    html(&format!("<p>Unit: {}.{}</p>", esc(&fit(s(&d["unit"]))),
+        gloss(&format!("cf. *Source.* {} Date: {}. Licence: {}{more}", md(s(&d["source"])), md(s(&d["date"])), md(s(&d["licence"]))))));
     let (v, c) = (nums(&d["values"]), d["counts"].as_array().map(|_| nums(&d["counts"])).unwrap_or_default());
     match s(&d["kind"]) {
         "series" => series(&nums(&d["years"]), &v),
@@ -684,7 +694,6 @@ fn dataset(d: &Value) {
             let h = format!("O-rings with thermal distress, of {}", d["atRisk"]);
             table(&["Flight", "Temperature at launch, °F", &h],
                 &nums(&d["flights"]).iter().zip(&v).zip(&c).map(|((f, t), k)| vec![fmt(*f), fmt(*t), fmt(*k)]).collect::<Vec<_>>());
-            println!("The Monte Carlo chains and rare events notebook of this series fits a logistic model to these flights.");
         }
         _ => counts(&v, &c, d["trials"].as_f64()),
     }
@@ -857,12 +866,12 @@ fn answer_controls(start: &str) -> (String, Vec<String>) {
 
 /// The status line, the reasons for insufficient evidence, the notices, the answer text and the unresolved assumptions.
 fn interview_status(r: &interview::Eval, notes: &[String]) {
-    let mut h = para(&interview::headline(r));
+    let mut h = format!("<p>{}{}</p>", esc(&fit(&interview::headline(r))), gloss(&format!("nota The laws of the pool: {} ({} laws).", md(&r.pool.label), r.pool.size)));
     let why: Vec<String> = r.insufficient.iter().map(|n| format!("{} (rule {})", n.text, n.from)).collect();
     if !why.is_empty() { h += &bullets(&why) }
     let all: Vec<&String> = notes.iter().chain(&r.notices).collect();
     if !all.is_empty() { h += &format!("<p>Notices:</p>{}", bullets(&all)) }
-    h += &format!("<p>The answer text: <code>{}</code>. The laws of the pool: {} ({} laws).</p>", esc(or(&r.canonical, "no answers")), esc(&fit(&r.pool.label)), r.pool.size);
+    h += &format!("<p>The answer text: <code>{}</code>.</p>", esc(or(&r.canonical, "no answers")));
     if !r.assumptions.is_empty() { h += &format!("<p>Assumptions that the answers do not settle:</p>{}", bullets(&r.assumptions.iter().map(|n| format!("{} (rule {})", n.text, n.from)).collect::<Vec<_>>())) }
     html(&h);
 }
@@ -892,22 +901,23 @@ fn candidates(r: &interview::Eval) {
     if !r.components.is_empty() { println!("Model components that the answers ask for: {}.", r.components.iter().map(|c| fit(&c.name)).collect::<Vec<_>>().join(", ")) }
 }
 
-/// A candidate's card: its reasons, its competing explanations, the tests that can reject it and its sampling methods.
+/// A candidate's card: its reasons (the basis of each as a gloss), its competing explanations and the tests that can
+/// reject it; its sampling methods as a gloss.
 fn iv_card(c: &interview::Card) -> String {
-    let reasons: Vec<String> = c.reasons.iter().map(|x| format!("Rule {} ({}{}, {}: {}): {}", x.rule, if x.delta > 0.0 { "+" } else { "" }, fmt(x.delta), x.basis, x.source, x.text)).collect();
+    let reasons: String = c.reasons.iter().map(|x| format!("<li>Rule {} ({}{}): {}{}</li>", x.rule, if x.delta > 0.0 { "+" } else { "" }, fmt(x.delta), esc(&fit(&x.text)),
+        gloss(&format!("cf. {}: {}", md(&x.basis), md(&x.source))))).collect();
     let comp: Vec<String> = c.competing.iter().map(|x| format!("{}: {}{}", x.name, x.text, x.score.map_or(String::new(), |v| format!(" (score {})", fmt(v))))).collect();
-    format!("<p><strong>{}</strong>, rank {} with score {}.</p><h3>Reasons</h3>{}<h3>Competing explanations</h3>{}<h3>Tests that can reject it</h3>{}{}",
-        esc(&fit(&c.name)), c.rank, fmt(c.score), bullets(&reasons), bullets(&comp), bullets(&c.tests), c.methods.as_ref().map_or(String::new(), |m| para(m)))
+    format!("<p><strong>{}</strong>, rank {} with score {}.{}</p><h3>Reasons</h3><ul>{reasons}</ul><h3>Competing explanations</h3>{}<h3>Tests that can reject it</h3>{}",
+        esc(&fit(&c.name)), c.rank, fmt(c.score), c.methods.as_ref().map_or(String::new(), |m| gloss(&format!("nota {}", md(m)))), bullets(&comp), bullets(&c.tests))
 }
 
 /// The model text of a candidate, its parameters, its mean and variance, and the sampling methods of its law.
 fn built_html(b: &interview::Built) -> String {
     let v = |x: &V| match x { V::N(n) => fmt(*n), V::L(l) => format!("[{}]", l.iter().map(|y| fmt(*y)).collect::<Vec<_>>().join(", ")) };
-    let mut h = format!("<pre>{}</pre>", esc(&b.text));
-    if !b.illustrative.is_empty() { h += &para(&format!("Illustrative values, because the answers give no numbers for them: {}.", b.illustrative.join(", "))) }
-    h += &para(&format!("Parameters: {}. Mean {}, variance {}{}.", b.params.iter().map(|p| format!("{} = {}", p.0, v(&p.1))).collect::<Vec<_>>().join(", "), opt(b.mean), opt(b.variance),
-        b.component.map_or(String::new(), |k| format!(" (of entry {k})"))));
-    h + &bullets(&b.methods.iter().map(|m| format!("{}: {}", m.name, m.unavailable.as_deref().unwrap_or("available"))).collect::<Vec<_>>())
+    let shown = if b.illustrative.is_empty() { String::new() } else { gloss(&format!("crit. Illustrative values, because the answers give no numbers for them: {}.", md(&b.illustrative.join(", ")))) };
+    let samplers = b.methods.iter().map(|m| format!("{}: {}.", m.name, m.unavailable.as_deref().map_or("available", |u| u.trim_end_matches('.')))).collect::<Vec<_>>().join(" ");
+    format!("<pre>{}</pre><p>{}{shown}{}</p>", esc(&b.text), esc(&fit(&format!("Parameters: {}. Mean {}, variance {}{}.", b.params.iter().map(|p| format!("{} = {}", p.0, v(&p.1))).collect::<Vec<_>>().join(", "),
+        opt(b.mean), opt(b.variance), b.component.map_or(String::new(), |k| format!(" (of entry {k})"))))), gloss(&format!("nota *Sampling methods.* {}", md(&samplers))))
 }
 ```
 

@@ -127,6 +127,11 @@ pub fn kept(label: &str) -> String {
     v
 }
 
+/// A gloss in HTML that a cell writes, as `^[…]` in the text: `g` is Markdown and may open with def., cf.,
+/// crit. or nota. The page sets it in the margin beside its line; the PDF sets it after the paragraph,
+/// from the Markdown that the siglum keeps.
+pub fn gloss(g: &str) -> String { crate::doc::gloss(g).replacen("\"sig\"", &format!("\"sig\" data-g=\"{}\"", esc(g)), 1) + "<!--/g-->" }
+
 /// A table of text: a header, then rows. It scrolls sideways on a narrow page.
 pub fn table<S: AsRef<str>>(head: &[&str], rows: &[Vec<S>]) {
     let tr = |tag: &str, r: &mut dyn Iterator<Item = &str>| {

@@ -5,7 +5,7 @@ theme: penumbra-light
 seed: 20261016
 ---
 
-Build an essay 1 argument at a time. The boxes start with a template essay on surgical safety checklists: change it, or write your own.
+Build an essay 1 argument at a time.^[nota The boxes start with a template essay on surgical safety checklists: change it, or write your own.]
 
 <!-- skill: This notebook ports visuals/viz/toulmin. The parts, the checklist, the prompts, the paragraph lead-ins, the limits and the template essay come only through data!("viz/toulmin/raw.json"), pinned in visuals.lock. Never copy them into this file. A cell cannot read the Markdown that a reader writes in Edit mode before a rebuild, so each argument is a set of text boxes (field) that start from the template, and the Markdown keeps the guidance. -->
 
@@ -17,34 +17,25 @@ serde_json = "=1.0.151"
 
 ## The six parts
 
-Stephen Toulmin (*The Uses of Argument*, 1958) divided an argument into 6 parts. His example is about Harry, a man born in Bermuda.
+Stephen Toulmin divided an argument into 6 parts.^[cf. Stephen Toulmin, *The Uses of Argument*, 1958.] His example is about Harry, a man born in Bermuda.
 
 ```rust
 //| caption: The parts, why each one matters, and Harry's argument.
+let _chips = arr(&raw()["constants"]["qualifierChips"]).iter().map(st).collect::<Vec<_>>().join(", ");
 for p in arr(&raw()["parts"]) {
-    html(&format!("<p><b>{}</b>: {} {} <i>Harry:</i> {}</p>", esc(st(&p["name"])), esc(st(&p["def"])), esc(st(&p["why"])), esc(st(&p["example"]))));
+    let chips = if st(&p["key"]) == "qualifier" { gloss(&format!("nota Qualifiers to try: {_chips}.")) } else { String::new() };
+    html(&format!("<p><b>{}</b>: {}{}{chips} <i>Harry:</i> {}</p>", esc(st(&p["name"])), esc(st(&p["def"])), gloss(&format!("nota {}", st(&p["why"]))), esc(st(&p["example"]))));
 }
-println!("Qualifiers to try: {}.", arr(&raw()["constants"]["qualifierChips"]).iter().map(st).collect::<Vec<_>>().join(", "));
 list("Sources", arr(&raw()["sources"]).iter().map(|s| [st(&s["label"]), st(&s["url"])].join(" ").trim().to_string()).collect());
 ```
 
 ## How to use it
 
-Each argument has a chapter of 1-line boxes. A source is optional. If the label is empty, the start of the claim names the argument.
+Each argument has a chapter of 1-line boxes.^[crit. A cell cannot read your Markdown edits until the next build, so the arguments are text boxes.] A source is optional.^[nota If the label is empty, the start of the claim names the argument.] To add an argument, copy a chapter in Edit mode.^^[Then change the number of the new chapter in its 3 cells. Add the chapter to the list in the last cell. The new chapter runs after the next build.]
 
 An automatic line of the checklist is CLEAR if its part has text, and OPEN if not. A confirm line is a question: change the argument until your answer is yes.
 
-A cell cannot read your Markdown edits until the next build, so the arguments are text boxes.
-
-Before you reload the page, copy your essay from the last chapter or export a PDF. The page does not keep the boxes: a reload starts them again from the template.
-
-To add an argument:
-
-1. In Edit mode, copy a chapter.
-2. Change its number in its 3 cells.
-3. Add it to the list in the last cell.
-
-The new chapter runs after the next build.
+Before you reload the page, copy your essay from the last chapter or export a PDF.^[crit. The page does not keep the boxes: a reload starts them again from the template.]
 
 ```rust
 //| caption: The limits. A box over its limit gets a note, and the checks use only the text up to the limit.
@@ -121,7 +112,7 @@ let arg3 = tail(&start3, 3, size3.1);
 
 ## The essay
 
-The pre-flight shows the open lines of each argument, but it does not stop the essay.
+The pre-flight shows the open lines of each argument.^[nota The pre-flight does not stop the essay.]
 
 ```rust
 //| caption: The pre-flight and the whole essay.
