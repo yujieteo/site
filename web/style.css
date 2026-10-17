@@ -106,7 +106,10 @@ summary { font: 1.25rem/1.3 var(--head); color: var(--fg); cursor: pointer; }
    chapter is cut between the two columns. */
 @supports (initial-letter: 2) {
   :is([data-view=index], [data-view=article]) .chapter .slide > p:first-of-type::first-letter, .list p::first-letter { float: none; initial-letter: 2; margin: 0 0.1em 0 0; }
-  :is([data-view=index], [data-view=article]) .chapter:first-of-type .slide > p:first-of-type::first-letter { initial-letter: 3; margin: 0 0.4em 0 0; }
+  /* Padding or a border on a sunk initial lets a gloss's float push the next lines over it, so the frame
+     is drawn as rings of shadow, with margins for its room. */
+  :is([data-view=index], [data-view=article]) .chapter:first-of-type .slide > p:first-of-type::first-letter { initial-letter: 3; padding: 0; border: 0; margin: 0 calc(1.1rem + 3px) 0 calc(0.45rem + 3px);
+    box-shadow: 0 0 0 0.45rem var(--surface), 0 0 0 calc(0.45rem + 1px) var(--accent), 0 0 0 calc(0.45rem + 2px) var(--surface), 0 0 0 calc(0.45rem + 3px) var(--accent); }
 }
 /* Glosses (`^[…]` in the source): commentary in the outer margin beside the line that calls it,
    keyed by a red siglum; its kind (def., cf., crit., nota) as a label. On a narrow screen the
