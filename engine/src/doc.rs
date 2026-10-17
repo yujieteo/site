@@ -168,22 +168,6 @@ fn magna(bs: &[B]) -> Vec<String> {
     texts.flat_map(|s| spans(s)).filter_map(|x| if let Sp::G(g, true) = x { Some(g) } else { None }).collect()
 }
 
-/// Whether a chapter (the blocks up to the next part or chapter) is long, plain prose, which sets in two
-/// columns: 120 words or more, and no cells, figures or code.
-fn columns(bs: &[B]) -> bool {
-    let mut words = 0;
-    for b in bs.iter().take_while(|b| !matches!(b, B::H(1 | 2, ..))) {
-        words += match b {
-            B::P(s) => s.split_whitespace().count(),
-            B::L(_, i) => i.iter().map(|s| s.split_whitespace().count()).sum(),
-            B::M(_) | B::H(..) | B::Com(_) => 0,
-            B::C(l, ..) if l == "say" => 0,
-            _ => return false,
-        }
-    }
-    words >= 120
-}
-
 /// Long notes as one block, numbered from `n + 1`.
 fn margin(v: &[String], n: usize) -> String {
     if v.is_empty() { return String::new() }
@@ -374,8 +358,7 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
         match b {
             B::H(1, h, _) => { w!(o, "{}<details><summary>{}</summary>", if det { "</details>" } else { "" }, inline(h)); det = true }
             B::H(2, h, _) if let Some((n, _)) = chapters.iter().enumerate().find(|c| c.1.at == at) => {
-                let cols = if columns(&d.blocks[at + 1..]) { " cols" } else { "" };
-                w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide{cols}\"><h2>{}</h2>", n + 1, inline(h));
+                w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide\"><h2>{}</h2>", n + 1, inline(h));
                 // Its long notes: the first half above its text, the rest below.
                 let v = magna(&d.blocks[at + 1..]);
                 let (a, b) = v.split_at(v.len() / 2);
@@ -441,9 +424,6 @@ mod tests {
         let scenes: Vec<_> = parse("## A {scene=1}\n\n## B\n\n## C {scene=1}\n\n## D {scene=1}\n\n## E {scene=1 t=2}").chapters().iter().map(|c| c.scene).collect();
         assert_eq!(scenes, [Some(1), None, Some(1), None, Some(1)]);
         assert_eq!(inline("*a* **b** `c<` \\*"), "<em>a</em> <strong>b</strong> <code>c&lt;</code> *");
-        let long = format!("## L\n\n{}\n\n$$\nx\n$$\n\n## S\n\nshort\n\n```rust\nlet a = 1;\n```", "word ".repeat(120));
-        let h = article(&parse(&long), &Run::default(), &|s| s.into());
-        assert!(h.contains("<div class=\"slide cols\"><h2>L</h2>") && h.contains("<div class=\"slide\"><h2>S</h2>"));
         let d2 = parse("## A\n\nx^^[one] y^[s] z^^[cf. two]\n\n## B\n\nw^^[three]");
         let h = article(&d2, &Run::default(), &|s| s.into());
         assert!(h.contains("<h2>A</h2><aside class=\"magna\" role=\"note\"><p><span class=\"mn\">1</span>one</p></aside><p>x<sup class=\"sig mg\"></sup>"));
