@@ -40,7 +40,6 @@ fn render(p: &Page, index: &str) -> String {
         .replace("{{style}}", &(font_css(p.fonts) + &theme::css() + STYLE)).replace("{{body}}", &p.body).replace("{{script}}", &p.script)
         .replace("{{index}}", index)
         .replace("{{modes}}", &format!("[{}]", theme::THEMES.iter().map(|t| pack::json(t.0)).collect::<Vec<_>>().join(",")))
-        .replace("{{themes}}", &theme::THEMES.iter().map(|(id, label, ..)| format!(r#"<button type="button" value="{id}">{label}</button>"#)).collect::<String>())
 }
 
 /// Plain pages (an app's privacy policy, its support page): `content/pages/<path>.html` holds the

@@ -18,11 +18,10 @@ try {
 <header class="top"><a href="{{root}}index.html">Yu Jie</a><nav>
 <a href="{{root}}stories/index.html">Stories</a><a href="{{root}}play/index.html">Play</a>
 <button type="button" class="search" aria-label="Search" aria-keyshortcuts="Control+K Meta+K"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.75" cy="6.75" r="4.75"/><path d="m10.25 10.25 4 4"/></svg></button>
-<button type="button" class="mode" aria-label="Theme" title="Theme"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button>
+<button type="button" class="mode" aria-label="Dark mode" aria-pressed="false" title="Light or dark"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 2.5a5.5 5.5 0 0 0 0 11z"/></svg></button>
 </nav></header>
 <main id="main" tabindex="-1">{{body}}</main>
 <dialog class="find" aria-label="Search"><form method="dialog"><input type="search" name="q" placeholder="Search stories, play" aria-label="Search" autocomplete="off" spellcheck="false"><ol></ol><p hidden>No match. Try fewer or shorter words.</p></form></dialog>
-<dialog class="look" aria-label="Theme"><form method="dialog"><h2>Theme</h2><p class="muted">For every page, in this browser.</p><div class="modes">{{themes}}</div><button class="x" aria-label="Close">×</button></form></dialog>
 <script id="index" type="application/json">{{index}}</script>
 <script>
 // Any dialog closes on a click on its backdrop.
@@ -54,16 +53,15 @@ document.querySelectorAll("dialog").forEach((d) => d.addEventListener("click", (
   q.addEventListener("keydown", (e) => { if (e.key === "ArrowDown") { e.preventDefault(); $("a", ol)?.focus(); } });
   $("form", d).addEventListener("submit", () => { const a = $("a", ol); if (a) location.href = a.href; });
 })();
-// The explicit theme choice applies to every page in this browser.
+// The theme button turns light to dark and back at once; the choice applies to every page in this browser.
 (() => {
-  const h = document.documentElement, d = document.querySelector(".look");
-  const show = () => d.querySelectorAll("button[value]").forEach((b) => b.setAttribute("aria-pressed", b.value === (h.dataset.mode || "penumbra-light")));
-  document.querySelector(".mode").addEventListener("click", () => (show(), d.showModal()));
-  d.addEventListener("click", (e) => {
-    const b = e.target.closest(".modes button");
-    if (!b) return;
-    h.dataset.mode = b.value; h.dataset.theme = b.value;
-    try { localStorage.setItem("theme", b.value); localStorage.setItem("mode", b.value); } catch (e) {}
+  const h = document.documentElement, b = document.querySelector(".mode"), modes = {{modes}};
+  const show = () => b.setAttribute("aria-pressed", h.dataset.mode !== modes[0]);
+  show();
+  b.addEventListener("click", () => {
+    const m = modes[(modes.indexOf(h.dataset.mode) + 1) % modes.length];
+    h.dataset.mode = m; h.dataset.theme = m;
+    try { localStorage.setItem("theme", m); localStorage.setItem("mode", m); } catch (e) {}
     show();
   });
 })();

@@ -78,8 +78,8 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
 - A chapter is a slide (title and body) followed by its narration. Render (a dialog) switches the
   view in place: Notebook (code, controls and outputs), Slides (one 16:9 slide per chapter),
   Handout (each slide with its narration beside it) and Article (continuous prose, numbered sections).
-  Export is a dialog too. The theme is the reader's, for the whole site: the header's button opens a
-  dialog with Penumbra Light and Penumbra Dark ++ (`engine/src/theme.rs`, sources in `docs/themes.md`).
+  Export is a dialog too. The theme is the reader's, for the whole site: the header's button turns
+  Penumbra Light to Penumbra Dark ++ and back at once (`engine/src/theme.rs`, sources in `docs/themes.md`).
   Penumbra Light is the default, even on a dark device. The browser stores an explicit choice.
   The header is translucent. Sections and pages fade, except under reduced motion. Exports use the notebook's `theme`.
 - Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
