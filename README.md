@@ -31,11 +31,11 @@ against `visuals.lock`; files already there and matching need no network.
 | `web/host.js` | The browser boundary: the run worker, the voice worker, the video recorder, tools, embedded artifacts and the agent API. |
 | `kokoro.lock`, `scripts/kokoro.sh` | The narration's pinned files: kokoro-js 1.2.1, ONNX Runtime Web, Kokoro-82M v1.0 (q8) with two US voices, and the Misaki 0.9.4 lexicons the build reads. |
 | `visuals.lock`, `scripts/visuals.sh` | The yujieteo/visuals data at one pinned commit: each file that a cell reads through `data!`, and each sealed artifact that a notebook or the Links page of Notes embeds, with its SHA-256. Visuals owns the data. |
-| `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search. |
+| `web/shell.html`, `web/style.css` | The one page shell every page shares, with Ctrl K / ⌘K search, and the manuscript look: the Van de Graaf canon, rubrics, initials and glosses. |
 | `web/book.css` | A notebook's views, tools, dialogs, editor and cells. |
 | `site/` | The builder: `book` (a notebook's views, manifest and exports), `cells` (compiles cells), `main` (doors, index). |
 | `content/stories/<slug>/`, `content/play/<slug>/` | A notebook (a story, or a tool in Play): `index.md` and its assets (images, `Cargo.lock`, `say.lock`). |
-| `fonts/` | Embedded font subsets (Liga Courier Prime Sans and TeX Gyre Pagella Math); `fonts.txt` holds their hashes. |
+| `fonts/` | Embedded font subsets of six families (EB Garamond, Bodoni Moda, Libre Franklin, News Cycle, Courier Prime, STIX Two Math); `fonts.txt` holds their roles, sources and hashes. |
 
 ## Notebooks
 
@@ -60,6 +60,9 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   in. The page redraws a cell's controls when a key, label, range or option changes, so keep a
   `field` apart from a `choice` whose options follow it. A control's key is 100 × its cell + its place
   in the cell; a slider or text box keeps the page's value only while its label stays the same.
+- `^[…]` is a gloss: a red siglum in the text and the gloss beside it in the outer margin (between the
+  words on a phone, after its paragraph in the PDFs). A gloss may open with its kind: `def.`, `cf.`,
+  `crit.` or `nota`.
 - ```` ```toml ```` fences add pinned crates; ```` ```say ```` fences are narration; `$…$` and `$$`
   are TeX; `<!-- … -->` comments are agent skills, exposed as text through `window.notebook.skills()`.
 - `![name](viz/<slug>/index.html)` embeds a sealed artifact of yujieteo/visuals, pinned in `visuals.lock`:
@@ -74,7 +77,7 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   The header is translucent. Sections and pages fade, except under reduced motion. Exports use the notebook's `theme`.
 - Views: `index.html` (notebook), `slides.html`, `handout.html`, `article.html`, each also a PDF
   (`notebook.pdf`, …) drawn by `engine/src/pdf.rs` from the same document and outputs,
-  in the export theme with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,
+  in the export theme on the Van de Graaf canon, with the subset fonts embedded. Exports: the four PDFs, source ZIP (Markdown,
   assets, manifest) and `manifest.json` with every version and hash. Edit, Run, Export and Save (one
   editable HTML file) work in the page, and the page's PDFs are byte-identical to the build's. Edit
   opens the Markdown in insert mode (Esc for Vim) and the page follows the text as it changes; the

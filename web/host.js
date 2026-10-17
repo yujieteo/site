@@ -52,8 +52,8 @@
       const d = f.contentDocument, fit = () => (f.style.height = Math.ceil(d.documentElement.getBoundingClientRect().height) + "px");
       const style = d.head.appendChild(d.createElement("style"));
       const faces = [...document.styleSheets[0].cssRules].filter((r) => r.type === CSSRule.FONT_FACE_RULE).map((r) => r.cssText).join("\n");
-      style.textContent = faces + `:root{--sans:var(--text);}
-        *{font-family:var(--text)!important;font-feature-settings:"calt" 1,"liga" 1!important;}
+      style.textContent = faces + `:root{--sans:var(--ui);}
+        *{font-family:var(--ui)!important;}
         math,math *{font-family:var(--math)!important;font-feature-settings:normal!important;}`;
       const sync = () => {
         const css = getComputedStyle(html), root = d.documentElement;
@@ -388,7 +388,7 @@
     pdf: (form) => {
       if ($(".stale", article) || result.err) return say("Export stopped: outputs are stale or failed. Run first; code edits need a rebuild.");
       const css = $("style").textContent;
-      const font = (f) => ["fonts/" + f.file, b64(css.split(`"${f.family}";src:url(data:`)[1].split(";base64,")[1].split(")")[0])];
+      const font = (f) => ["fonts/" + f.file, b64(css.split(`/*${f.file}*/`)[1].split(";base64,")[1].split(")")[0])];
       const fonts = JSON.parse(manifest).source.font.files.map(font);
       const input = bundle([["src", source], ...result.out.map((o) => ["o", o]), ...fonts, ["assets", assets]]);
       download(["notebook", "slides", "handout", "article"][form] + ".pdf", call("pdf", input, +form));

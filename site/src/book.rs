@@ -6,8 +6,13 @@ use engine::{doc::{self, esc}, pack, pdf, say, theme};
 use std::{fmt::Write, fs, path::Path};
 
 const TOOLCHAIN: &str = include_str!("../../rust-toolchain.toml");
-/// Embedded fonts: CSS family and file under fonts/.
-pub const FONTS: [(&str, &str); 2] = [("Liga Courier Prime Sans", "mono.otf"), ("TeX Gyre Pagella Math", "math.otf")];
+/// Embedded fonts (fonts/fonts.txt): CSS family, file under fonts/, and the face's other descriptors.
+/// Pages without code embed the first six; notebooks embed all.
+pub const FONTS: [(&str, &str, &str); 9] = [
+    ("EB Garamond", "text.ttf", ""), ("EB Garamond", "italic.ttf", "font-style:italic;"), ("EB Garamond", "bold.ttf", "font-weight:600;"),
+    ("Bodoni Moda", "head.ttf", ""), ("Libre Franklin", "ui.ttf", ""), ("Site Small", "small.ttf", ""),
+    ("Courier Prime", "mono.ttf", ""), ("Courier Prime", "monobold.ttf", "font-weight:700;"), ("Site Math", "math.ttf", ""),
+];
 /// Views: page, name, what it is. The Render dialog switches between them in place.
 const VIEWS: [(&str, &str, &str); 4] = [
     ("index", "Notebook", "Code, controls and outputs"),
@@ -137,7 +142,7 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
         format!("{{\"name\":{},\"version\":{},\"checksum\":{}}}", pack::json(&get("name")), pack::json(&get("version")), pack::json(&get("checksum")))
     }).collect();
     let hashes = |v: &[(&str, &[u8])]| v.iter().map(|(n, b)| format!("{}:{}", pack::json(n), pack::json(&pack::sha256(b)))).collect::<Vec<_>>().join(",");
-    let fonts: Vec<String> = FONTS.iter().map(|(fam, f)| {
+    let fonts: Vec<String> = FONTS.iter().map(|(fam, f, _)| {
         let b = font(f);
         format!("{{\"family\":{},\"file\":\"{f}\",\"bytes\":{},\"sha256\":\"{}\"}}", pack::json(fam), b.len(), pack::sha256(&b))
     }).collect();
@@ -209,7 +214,7 @@ pub fn notebook(door: &str, slug: &str, engine_wasm: &[u8]) -> (Story, Vec<Page>
     let body = format!(r#"<h1>{title}</h1><p class="lede">{summary}</p>{tools}<article data-article>{article}</article>"#);
     let pages = VIEWS.iter().map(|(f, ..)| {
         let attrs = format!("{attrs} data-view=\"{f}\"");
-        Page { path: format!("{door}/{slug}/{f}.html"), title: s.title.clone(), body: body.clone(), attrs, fonts: 2, script: script.clone() }
+        Page { path: format!("{door}/{slug}/{f}.html"), title: s.title.clone(), body: body.clone(), attrs, fonts: FONTS.len(), script: script.clone() }
     }).collect();
     let mut out = exports;
     out.push(("manifest.json".into(), manifest.into_bytes()));
