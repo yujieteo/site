@@ -13,7 +13,6 @@
      2 outside (the glosses' column) and 3 below. A phone halves the unit and keeps the ratios. */
   --u: calc(min(100vw, 67.5rem) / 9);
   --edge: max(0px, (100vw - 67.5rem) / 2);
-  --rule: color-mix(in srgb, var(--line) 60%, transparent);
 }
 @media (max-width: 40rem) { :root { --u: calc(100vw / 18); } }
 * { box-sizing: border-box; min-width: 0; }
@@ -41,12 +40,9 @@ header.top { position: sticky; top: 0; z-index: 5; background: var(--bg); view-t
 .top nav { display: flex; align-items: center; gap: 1.25rem; color: var(--muted); }
 .top nav > a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 footer.top { color: var(--muted); }
-/* The leaf: the text block takes six units, the glosses the outer two. Ruling marks the block's
-   edges and the glosses' outer edge, as a scribe pricked and ruled a page. */
-main { overflow-x: clip; max-width: 67.5rem; margin: 0 auto; padding: calc(1.5 * var(--u)) calc(2 * var(--u)) calc(3 * var(--u)) var(--u);
-  background: linear-gradient(var(--rule), var(--rule)) var(--u) 0 / 1px 100% no-repeat,
-    linear-gradient(var(--rule), var(--rule)) calc(100% - 2 * var(--u)) 0 / 1px 100% no-repeat,
-    linear-gradient(var(--rule), var(--rule)) calc(100% - 0.75rem) 0 / 1px 100% no-repeat; }
+/* The leaf: the text block takes six units, the glosses the outer two. No lines divide the page:
+   the margins and the gutter alone set the block apart. */
+main { overflow-x: clip; max-width: 67.5rem; margin: 0 auto; padding: calc(1.5 * var(--u)) calc(2 * var(--u)) calc(3 * var(--u)) var(--u); }
 .lede { font: italic 1.5rem/1.35 var(--text); color: var(--fg2); max-width: 32rem; margin-bottom: 4rem; text-wrap: balance; }
 .doors { display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
 .door h2 { margin-top: 1rem; }
@@ -81,7 +77,7 @@ dialog h2 { color: var(--fg); font: 600 1.125rem/1.3 var(--ui); letter-spacing: 
 .find a:is(:hover, :focus) { background: var(--surface); outline: none; }
 .find small { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 
-details { border-top: 1px solid var(--line); padding: 1rem 0; }
+details { padding: 1rem 0; }
 summary { font: 1.25rem/1.3 var(--head); color: var(--fg); cursor: pointer; }
 
 /* The text block: justified, hyphenated, close-set prose in the darker ink (a textura column).
@@ -121,7 +117,7 @@ main { counter-reset: gloss magna; }
 /* Long notes (`^^[…]`): numbered, set small above and below their chapter, as the masora magna fills
    a codex's top and bottom margins. */
 .sig.mg::after { counter-increment: magna; content: counter(magna); }
-.magna { margin: 0.25rem 0 1.25rem; padding: 0.35rem 0; border-block: 1px solid var(--rule); color: var(--fg2); font: italic 0.8125rem/1.35 var(--text); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.magna { margin: 0.25rem 0 1.25rem; padding: 0.35rem 0; color: var(--fg2); font: italic 0.8125rem/1.35 var(--text); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 .magna p { margin: 0 0 0.25rem; break-inside: avoid; }
 .mn { color: var(--warm); font-style: normal; margin-right: 0.45em; }
 .gk { font: 0.6875rem/1 var(--small); font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 0.45em; }
@@ -131,8 +127,6 @@ main { counter-reset: gloss magna; }
   .gloss::after { content: "]"; color: var(--warm); }
 }
 @media (max-width: 40rem) {
-  main { background: linear-gradient(var(--rule), var(--rule)) var(--u) 0 / 1px 100% no-repeat,
-    linear-gradient(var(--rule), var(--rule)) calc(100% - 2 * var(--u)) 0 / 1px 100% no-repeat; }
   .top { padding-inline: var(--u) 0.5rem; }
   h1 { font-size: 2.25rem; }
   .lede { font-size: 1.25rem; margin-bottom: 3rem; }

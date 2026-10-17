@@ -38,9 +38,9 @@ face. Theme changes apply to both at once.
 
 The page follows the Van de Graaf canon: the leaf is nine units wide, with margins of one unit inside,
 one and a half above, two outside (where the glosses go) and three below. A phone halves the unit.
-Faint ruling marks the text block's edges. On a wide screen, every chapter takes two columns:
-the gutter (1.2 units) and the outer margin hold its glosses, its long notes stand above and below it,
-and its number hangs in the inner margin. Slides and the handout use the full width.
+No lines divide the page or its tables: the margins and the gutter set the text block apart. On a
+wide screen, every chapter takes two columns: the gutter (1.2 units) and the outer margin hold its
+glosses, its long notes stand above and below it, and its number hangs in the inner margin. Slides and the handout use the full width.
 
 The site has no decorative dot drawings or animation loop. Data diagrams and plots remain.
 The header uses the theme background at 80% over a 14 px blur. Pages and sections retain their CSS fades.
