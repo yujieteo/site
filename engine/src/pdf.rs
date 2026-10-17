@@ -110,14 +110,16 @@ fn strip(h: &str) -> String {
 fn lit(s: &str) -> String { s.chars().map(|c| if "\\`$*[".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
 
 /// The writer: page geometry (width, height, margins above and below; column left and width), the
-/// cursor's y (from the top), pages as (content, annotations), and the shared resources. `gl` counts
-/// the glosses; `lead` (a mark and its colour) and `cap` (an initial's colour and depth in lines)
-/// wait for the next paragraph.
+/// cursor's y (from the top), pages as (content, annotations), and the shared resources. `gl` and `mg`
+/// count the glosses and long notes; `lead` (a mark and its colour) and `cap` (an initial's colour and
+/// depth in lines) wait for the next paragraph. `cols` (left, column width, gutter) sets two columns,
+/// the cursor in the second when `c2`; `top` is where the columns start on this page.
 struct Pdf<'a> {
     get: &'a dyn Fn(&str) -> Option<Vec<u8>>, fonts: Vec<(&'static str, Font)>, pages: Vec<(String, String)>,
     gs: BTreeMap<String, String>, imgs: Vec<Vec<u8>>, pal: [u32; 11],
     w: f32, h: f32, m: f32, mb: f32, x: f32, col: f32, y: f32, slides: bool, fig: usize,
-    gl: usize, lead: Option<(String, u32)>, cap: Option<(u32, usize)>,
+    gl: usize, mg: usize, lead: Option<(String, u32)>, cap: Option<(u32, usize)>,
+    cols: Option<(f32, f32, f32)>, c2: bool, top: f32,
 }
 
 impl Pdf<'_> {
@@ -128,12 +130,18 @@ impl Pdf<'_> {
         self.pages.push((format!("{} rg 0 0 {} {} re f\n", rgb(self.pal[0]), self.w, self.h), String::new()));
         let (_, mb, x, col) = canon(self.w, self.h);
         if !self.slides && n != "1" { let x = x + (col - self.run(st, &n).1) / 2.0; self.put(x, self.h - 0.6 * mb, st, &n); }
-        self.y = self.m;
+        (self.y, self.top) = (self.m, self.m);
     }
-    /// Room for `h` more points: on a slide there is no next page, so the rest is dropped.
+    /// Room for `h` more points: on a slide there is no next page, so the rest is dropped. In two
+    /// columns, the first runs on into the second and the second onto the next page.
     fn need(&mut self, h: f32) -> bool {
         let fits = self.y + h <= self.h - self.mb;
-        if !fits && !self.slides { self.page() }
+        match self.cols {
+            _ if fits || self.slides => {}
+            Some((x, w, g)) if !self.c2 => (self.x, self.y, self.c2) = (x + w + g, self.top, true),
+            Some((x, ..)) => { (self.x, self.c2) = (x, false); self.page() }
+            None => self.page(),
+        }
         fits || !self.slides
     }
     /// A font slot's font, loaded on first use: fonts are numbered in the order they are needed.
@@ -261,9 +269,9 @@ impl Pdf<'_> {
                 Sp::M(m) => { v.last_mut().unwrap().push((st, String::new(), None, Some(doc::tex(&m)))); continue }
                 Sp::T(t, b) => (t, b),
                 Sp::A(t, _) => (t, 0),
-                Sp::G(_) => {
-                    self.gl += 1;
-                    v.last_mut().unwrap().push((St(0, 0.7 * st.1, self.pal[8], 2), siglum(self.gl), None, None));
+                Sp::G(_, long) => {
+                    let n = if long { self.mg += 1; self.mg.to_string() } else { self.gl += 1; siglum(self.gl) };
+                    v.last_mut().unwrap().push((St(0, 0.7 * st.1, self.pal[8], 2), n, None, None));
                     continue
                 }
             };
@@ -299,6 +307,7 @@ impl Pdf<'_> {
         let s = cap.map_or(s, |(ch, ..)| &s[ch.len_utf8()..]);
         let mut words = self.words(s, st);
         if let Some((t, c)) = self.lead.take() { words.insert(0, vec![(St(st.0, st.1, c, 0), t, None, None)]) }
+        let words: Vec<Vec<Piece>> = words.into_iter().flat_map(|w| self.fit(w, self.col - indent)).collect();
         let wid: Vec<f32> = words.iter().map(|w| w.iter().map(|p| self.piece(p, None)).sum()).collect();
         let (space, mut i, mut ln, mut drop) = (self.run(st, " ").1, 0, 0, (0.0, 0));
         if let Some((ch, c, n)) = cap && self.need(n as f32 * lead) {
@@ -329,6 +338,18 @@ impl Pdf<'_> {
         }
         // A paragraph shorter than its initial still clears it.
         self.y += drop.1.saturating_sub(ln) as f32 * lead + 0.45 * st.1;
+    }
+    /// A word wider than the column (a long URL) breaks where it reaches the edge.
+    fn fit(&mut self, w: Vec<Piece>, col: f32) -> Vec<Vec<Piece>> {
+        let [(st, t, u, None)] = &w[..] else { return vec![w] };
+        if self.run(*st, t).1 <= col { return vec![w] }
+        let (mut out, mut cur) = (vec![], String::new());
+        for c in t.chars() {
+            if !cur.is_empty() && self.run(*st, &format!("{cur}{c}")).1 > col { out.push(vec![(*st, std::mem::take(&mut cur), u.clone(), None)]) }
+            cur.push(c);
+        }
+        out.push(vec![(*st, cur, u.clone(), None)]);
+        out
     }
     /// A heading: a rubric, in the heading face and the theme's red.
     fn heading(&mut self, t: &str, size: f32) {
@@ -531,13 +552,15 @@ pub fn write(d: &Doc, out: &[String], _stage: &[f32], get: &dyn Fn(&str) -> Opti
     let ((w, h), slides) = (if slides { (720.0, 405.0) } else { A4 }, slides);
     let (m, mb, mx, col) = if slides { (36.0, 36.0, 36.0, 648.0) } else { canon(w, h) };
     let pal = theme::palette(theme::export(match d.get("theme") { "" => "site", t => t }));
-    let mut p = Pdf { get, fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, mb, x: mx, col, y: 0.0, slides, fig: 0, gl: 0, lead: None, cap: None };
+    let mut p = Pdf { get, fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, mb, x: mx, col, y: 0.0, slides, fig: 0, gl: 0, mg: 0, lead: None, cap: None, cols: None, c2: false, top: 0.0 };
     let (fg, fg2, muted, red) = (pal[2], pal[3], pal[4], pal[8]);
     let text = St(0, if slides { 13.0 } else { 11.0 }, fg, 0);
     p.page();
     p.para(d.get("title"), St(1, if slides { 32.0 } else { 24.0 }, red, 0), 0.0);
     p.para(d.get("summary"), St(0, 13.0, fg2, 2), 0.0);
     p.para(&format!("[Interactive version](index.html) · {}", FORMS[form]), St(7, 9.0, muted, 0), 0.0);
+    // The article runs in two columns, as a codex does.
+    if form == 3 { (p.cols, p.col, p.top) = (Some((mx, (col - 20.0) / 2.0, 20.0)), (col - 20.0) / 2.0, p.y) }
     let (chapters, mut k, mut n, mut skip, mut notes, mut after) = (d.chapters(), 0, 0, false, vec![vec![]], false);
     for (at, b) in d.blocks.iter().enumerate() {
         let follows = std::mem::take(&mut after);
@@ -564,11 +587,14 @@ pub fn write(d: &Doc, out: &[String], _stage: &[f32], get: &dyn Fn(&str) -> Opti
             // paragraph, small and indented, each after its siglum.
             B::P(t) => {
                 if follows && !slides { (p.y, p.lead) = (p.y - 0.45 * text.1, Some(("¶".into(), red))) }
-                let g0 = p.gl;
+                let (mut gl, mut mg) = (p.gl, p.mg);
                 p.para(t, text, 0.0);
-                let glosses: Vec<String> = doc::spans(t).into_iter().filter_map(|s| if let Sp::G(g) = s { Some(g) } else { None }).collect();
-                for (i, g) in glosses.iter().enumerate() { p.lead = Some((siglum(g0 + i + 1), red)); p.para(g, St(0, 8.5, fg2, 2), 18.0) }
-                after = glosses.is_empty();
+                let notes: Vec<(String, bool)> = doc::spans(t).into_iter().filter_map(|s| if let Sp::G(g, l) = s { Some((g, l)) } else { None }).collect();
+                for (g, long) in &notes {
+                    p.lead = Some((if *long { mg += 1; mg.to_string() } else { gl += 1; siglum(gl) }, red));
+                    p.para(g, St(0, 8.5, fg2, 2), 12.0);
+                }
+                after = notes.is_empty();
             }
             B::L(ord, items) => for (i, t) in items.iter().enumerate() {
                 if !p.need(1.35 * text.1) { break }

@@ -105,9 +105,10 @@ pub fn parse(src: &str) -> Doc {
     Doc { meta, blocks }
 }
 
-/// An inline run: text with style bits (1 strong, 2 em, 4 code), TeX, a link, or a gloss (`^[…]`).
+/// An inline run: text with style bits (1 strong, 2 em, 4 code), TeX, a link, or a note: a gloss
+/// (`^[…]`, short, beside its line) or a long note (`^^[…]`, above or below its chapter; `true`).
 #[derive(Debug, PartialEq)]
-pub enum Sp { T(String, u8), M(String), A(String, String), G(String) }
+pub enum Sp { T(String, u8), M(String), A(String, String), G(String, bool) }
 
 /// The kinds a gloss may open with: definition, cross-reference, critique, note.
 const GLOSS: [&str; 4] = ["def.", "cf.", "crit.", "nota"];
@@ -121,12 +122,13 @@ pub fn spans(s: &str) -> Vec<Sp> {
     let text = |a: usize, b: usize| c[a..b].iter().collect::<String>();
     macro_rules! flush { () => { if !cur.is_empty() { v.push(Sp::T(std::mem::take(&mut cur), st)); } } }
     while i < c.len() {
+        let k = i + 1 + (c.get(i + 1) == Some(&'^')) as usize; // where a note's `[` would be
         // A marker ends the pending text: the span it makes (if any), where to go on, and the style after it.
         let (sp, next, after) = match c[i] {
             '\\' if i + 1 < c.len() => { cur.push(c[i + 1]); i += 2; continue }
             '`' if let Some(j) = close('`', i + 1) => (Some(Sp::T(text(i + 1, j), st | 4)), j + 1, st),
             '$' if let Some(j) = close('$', i + 1) => (Some(Sp::M(text(i + 1, j))), j + 1, st),
-            '^' if c.get(i + 1) == Some(&'[') && let Some(j) = shut(i + 2) => (Some(Sp::G(text(i + 2, j))), j + 1, st),
+            '^' if c.get(k) == Some(&'[') && let Some(j) = shut(k + 1) => (Some(Sp::G(text(k + 1, j), k > i + 1)), j + 1, st),
             '*' => { let two = c.get(i + 1) == Some(&'*'); (None, i + 1 + two as usize, st ^ if two { 1 } else { 2 }) }
             '[' if let Some(j) = close(']', i + 1) && c.get(j + 1) == Some(&'(') && let Some(k) = close(')', j + 2) => {
                 (Some(Sp::A(text(i + 1, j), text(j + 2, k))), k + 1, st)
@@ -146,13 +148,47 @@ pub fn inline(s: &str) -> String {
         Sp::T(t, st) => [(4, "code"), (2, "em"), (1, "strong")].iter().fold(esc(t), |h, (b, tag)| if st & b > 0 { format!("<{tag}>{h}</{tag}>") } else { h }),
         Sp::M(m) => mathml(m, false),
         Sp::A(t, u) => format!("<a href=\"{}\">{}</a>", esc(u), inline(t)), // a link's text has its own styles
-        // A gloss: its siglum here, its text in the margin, its kind (if it opens with one) as a label.
-        Sp::G(g) => {
-            let (k, g) = GLOSS.iter().find_map(|k| Some((*k, g.strip_prefix(k)?.strip_prefix(' ')?))).unwrap_or(("", g));
-            let k = if k.is_empty() { k.into() } else { format!("<span class=\"gk\">{k}</span>") };
-            format!("<sup class=\"sig\"></sup><span class=\"gloss\" role=\"note\">{k}{}</span>", inline(g))
-        }
+        // A gloss: its siglum here and its text beside it. A long note leaves only its number (`article` sets it).
+        Sp::G(g, false) => format!("<sup class=\"sig\"></sup><span class=\"gloss\" role=\"note\">{}</span>", note(g)),
+        Sp::G(_, true) => "<sup class=\"sig mg\"></sup>".into(),
     }).collect()
+}
+
+/// A note's body: its kind (if it opens with one) as a label, then its text.
+fn note(g: &str) -> String {
+    let (k, g) = GLOSS.iter().find_map(|k| Some((*k, g.strip_prefix(k)?.strip_prefix(' ')?))).unwrap_or(("", g));
+    let k = if k.is_empty() { k.into() } else { format!("<span class=\"gk\">{k}</span>") };
+    k + &inline(g)
+}
+
+/// The long notes (`^^[…]`) of the paragraphs and lists in `bs`, up to the next part or chapter.
+fn magna(bs: &[B]) -> Vec<String> {
+    let texts = bs.iter().take_while(|b| !matches!(b, B::H(1 | 2, ..)))
+        .flat_map(|b| match b { B::P(s) => std::slice::from_ref(s), B::L(_, i) => i.as_slice(), _ => &[] });
+    texts.flat_map(|s| spans(s)).filter_map(|x| if let Sp::G(g, true) = x { Some(g) } else { None }).collect()
+}
+
+/// Whether a chapter (the blocks up to the next part or chapter) is long, plain prose, which sets in two
+/// columns: 120 words or more, and no cells, figures or code.
+fn columns(bs: &[B]) -> bool {
+    let mut words = 0;
+    for b in bs.iter().take_while(|b| !matches!(b, B::H(1 | 2, ..))) {
+        words += match b {
+            B::P(s) => s.split_whitespace().count(),
+            B::L(_, i) => i.iter().map(|s| s.split_whitespace().count()).sum(),
+            B::M(_) | B::H(..) | B::Com(_) => 0,
+            B::C(l, ..) if l == "say" => 0,
+            _ => return false,
+        }
+    }
+    words >= 120
+}
+
+/// Long notes as one block, numbered from `n + 1`.
+fn margin(v: &[String], n: usize) -> String {
+    if v.is_empty() { return String::new() }
+    let ps: String = v.iter().enumerate().map(|(i, g)| format!("<p><span class=\"mn\">{}</span>{}</p>", n + i + 1, note(g))).collect();
+    format!("<aside class=\"magna\" role=\"note\">{ps}</aside>")
 }
 
 /// TeX maths: identifier, number, operator, text, row, fraction, root, scripts (base, sub, sup).
@@ -327,8 +363,10 @@ pub struct Run { pub out: Vec<String>, pub ctl: Vec<String>, pub map: Vec<Option
 /// A chapter is a slide (title, scene, body) followed by its narration, every `say` in one aside.
 pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
     let (mut o, mut k, mut sec, mut det, mut say) = (String::new(), 0, false, false, String::new());
+    // Long notes so far, and the block of them that waits for the end of the open chapter.
+    let (mut mg, mut below) = (0, String::new());
     let aside = |s: &str| if s.is_empty() { s.into() } else { format!("<aside class=\"say\">{s}</aside>") };
-    macro_rules! shut { () => { if std::mem::take(&mut sec) { w!(o, "</div>{}</section>", aside(&std::mem::take(&mut say))) } } }
+    macro_rules! shut { () => { if std::mem::take(&mut sec) { w!(o, "{}</div>{}</section>", std::mem::take(&mut below), aside(&std::mem::take(&mut say))) } } }
     let chapters = d.chapters();
     for (at, b) in d.blocks.iter().enumerate() {
         // A `#` or `##` heading closes the open section; every `##` is a chapter (`Doc::chapters`) and opens one.
@@ -336,7 +374,12 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
         match b {
             B::H(1, h, _) => { w!(o, "{}<details><summary>{}</summary>", if det { "</details>" } else { "" }, inline(h)); det = true }
             B::H(2, h, _) if let Some((n, _)) = chapters.iter().enumerate().find(|c| c.1.at == at) => {
-                w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide\"><h2>{}</h2>", n + 1, inline(h));
+                let cols = if columns(&d.blocks[at + 1..]) { " cols" } else { "" };
+                w!(o, "<section class=\"chapter\" id=\"c{}\"><div class=\"slide{cols}\"><h2>{}</h2>", n + 1, inline(h));
+                // Its long notes: the first half above its text, the rest below.
+                let v = magna(&d.blocks[at + 1..]);
+                let (a, b) = v.split_at(v.len() / 2);
+                (o, below, mg) = (o + &margin(a, mg), margin(b, mg + a.len()), mg + v.len());
             }
             B::H(n, h, _) => w!(o, "<h{n}>{}</h{n}>", inline(h)),
             B::P(p) => w!(o, "<p>{}</p>", inline(p)),
@@ -368,6 +411,11 @@ pub fn article(d: &Doc, run: &Run, img: &dyn Fn(&str) -> String) -> String {
             B::Img(alt, src) if src.ends_with(".html") => w!(o, "<figure class=\"tool\"><iframe data-tool=\"{}\" title=\"{}\"></iframe></figure>", esc(src), esc(alt)),
             B::Img(alt, src) => w!(o, "<figure><img src=\"{}\" alt=\"{}\"><figcaption>{}</figcaption></figure>", img(src), esc(alt), inline(alt)),
         }
+        // Outside a chapter, a paragraph's long notes follow it.
+        if !sec && matches!(b, B::P(_) | B::L(..)) {
+            let v = magna(std::slice::from_ref(b));
+            (o, mg) = (o + &margin(&v, mg), mg + v.len());
+        }
     }
     shut!();
     o += if det { "</details>" } else { "" };
@@ -393,6 +441,14 @@ mod tests {
         let scenes: Vec<_> = parse("## A {scene=1}\n\n## B\n\n## C {scene=1}\n\n## D {scene=1}\n\n## E {scene=1 t=2}").chapters().iter().map(|c| c.scene).collect();
         assert_eq!(scenes, [Some(1), None, Some(1), None, Some(1)]);
         assert_eq!(inline("*a* **b** `c<` \\*"), "<em>a</em> <strong>b</strong> <code>c&lt;</code> *");
+        let long = format!("## L\n\n{}\n\n$$\nx\n$$\n\n## S\n\nshort\n\n```rust\nlet a = 1;\n```", "word ".repeat(120));
+        let h = article(&parse(&long), &Run::default(), &|s| s.into());
+        assert!(h.contains("<div class=\"slide cols\"><h2>L</h2>") && h.contains("<div class=\"slide\"><h2>S</h2>"));
+        let d2 = parse("## A\n\nx^^[one] y^[s] z^^[cf. two]\n\n## B\n\nw^^[three]");
+        let h = article(&d2, &Run::default(), &|s| s.into());
+        assert!(h.contains("<h2>A</h2><aside class=\"magna\" role=\"note\"><p><span class=\"mn\">1</span>one</p></aside><p>x<sup class=\"sig mg\"></sup>"));
+        assert!(h.contains("<p><span class=\"mn\">2</span><span class=\"gk\">cf.</span>two</p></aside></div>"));
+        assert!(h.contains("<h2>B</h2><p>w<sup class=\"sig mg\"></sup></p><aside class=\"magna\" role=\"note\"><p><span class=\"mn\">3</span>three</p></aside></div>"));
         assert_eq!(inline("a^[cf. [l](u)] b^[c]"), "a<sup class=\"sig\"></sup><span class=\"gloss\" role=\"note\"><span class=\"gk\">cf.</span><a href=\"u\">l</a></span> b<sup class=\"sig\"></sup><span class=\"gloss\" role=\"note\">c</span>");
         assert_eq!(mathml("x_i^2 - \\alpha", false), "<math><mrow><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><mi>α</mi></mrow></math>");
         assert_eq!(mathml("f\\colon \\mathbb{R}^n \\to \\mathbf{v}, \\bar{x} \\mapsto \\sup", false), "<math><mrow><mi>f</mi><mo>:</mo><msup><mrow><mi>ℝ</mi></mrow><mi>n</mi></msup><mo>→</mo><mrow><mi>𝐯</mi></mrow><mo>,</mo><mrow><mi>𝑥\u{304}</mi></mrow><mo>↦</mo><mi>sup</mi><mspace width=\"0.17em\"/></mrow></math>");
