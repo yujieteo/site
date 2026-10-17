@@ -5,7 +5,7 @@ mod book;
 mod cells;
 
 use book::{FONTS, font};
-use engine::{doc, draw::{Op, Sh}, pack, scene, theme};
+use engine::{doc, pack, theme};
 use std::{fs, path::Path};
 
 const SHELL: &str = include_str!("../../web/shell.html");
@@ -15,17 +15,12 @@ const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
 use doc::esc;
 
 fn font_css(n: usize) -> String {
-    let face = |fam: &str, f: &str| format!("@font-face{{font-family:\"{fam}\";src:url({}) format(\"opentype\")}}\n", pack::data_url("f.otf", &font(f)));
+    let face = |fam: &str, f: &str| format!("@font-face{{font-family:\"{fam}\";src:url({})}}\n", pack::data_url(f, &font(f)));
     FONTS[..n].iter().map(|(fam, f)| face(fam, f)).collect()
 }
 
-/// A seeded thumbnail (`engine::thumb`): the seed alone picks its picture, palette and motion.
-fn thumb(seed: u32, extra: &str) -> String {
-    format!(r#"<canvas class="frame" data-scene="{}" data-seed="{seed}" {extra} aria-hidden="true"></canvas>"#, engine::scene::THUMB)
-}
-
 /// One HTML page: its path under dist/, title, body, attributes on <html>, how many `FONTS` it
-/// embeds, and its scripts (by default the engine and host when it has a canvas).
+/// embeds, and its notebook scripts.
 pub struct Page { pub path: String, pub title: String, pub body: String, pub attrs: String, pub fonts: usize, pub script: String }
 
 impl Page {
@@ -39,52 +34,13 @@ fn index(entries: &[(String, String, String)]) -> String {
     format!("[{}]", entries.iter().map(|(t, h, x)| format!("[{},{},{}]", pack::json(t), pack::json(h), pack::json(x))).collect::<Vec<_>>().join(","))
 }
 
-fn render(p: &Page, wasm: &str, index: &str) -> String {
+fn render(p: &Page, index: &str) -> String {
     let root = "../".repeat(p.path.matches('/').count());
-    let footer = r#"<footer class="top"><span data-engine-status role="status"></span><button type="button" data-motion hidden>Pause</button></footer>"#;
-    let script = match () {
-        _ if !p.script.is_empty() => p.script.clone(),
-        _ if p.body.contains("<canvas") => format!("{footer}<script id=\"wasm\" type=\"application/octet-stream\">{wasm}</script>\n<script>{HOST}</script>"),
-        _ => String::new(),
-    };
-    SHELL.replace("{{dot}}", &dot()).replace("{{attrs}}", &p.attrs).replace("{{title}}", &esc(&p.title)).replace("{{root}}", &root)
-        .replace("{{style}}", &(font_css(p.fonts) + &theme::css() + STYLE)).replace("{{body}}", &p.body).replace("{{script}}", &script)
-        .replace("{{index}}", index).replace("{{themes}}", &themes())
-}
-
-/// The header's theme dialog: one button per family, its swatch the light and dark background and accent.
-fn themes() -> String {
-    theme::THEMES.iter().map(|(f, _, _, l, d)| {
-        let (l, d) = (if l.is_empty() { d } else { l }, if d.is_empty() { l } else { d }); // one scheme: both swatches show it
-        let c = |p: &str, i: usize| p.split(' ').nth(i).unwrap_or("000000").to_string();
-        let name: Vec<String> = f.split('-').map(|w| w[..1].to_uppercase() + &w[1..]).collect();
-        let name = match *f { "github" => vec!["GitHub".into()], "vscode-plus" => vec!["VS Code Plus".into()], "xcode" => vec!["Xcode".into()], _ => name };
-        let swatch = format!("--a:#{};--b:#{};--c:#{};--d:#{}", c(l, 0), c(l, 6), c(d, 0), c(d, 6));
-        format!(r#"<button type="button" value="{f}" style="{swatch}"><i></i>{}</button>"#, name.join(" "))
-    }).collect()
-}
-
-/// The search dialog's dot, the curious one: one drawing (`scene::face`) for each of the dialog's
-/// states, of which the dialog shows one (the first, asleep, until it opens). Its eyes are drawn
-/// looking ahead; the dialog turns them with --gx and --gy (-1 to 1), as far as `scene::GAZE` lets them.
-fn dot() -> String {
-    const STATES: [(&str, f32, f32); 5] = [("sleep", 1.0, 0.0), ("look", 5.0, 0.0), ("hit", 2.0, 0.0), ("miss", 3.0, 0.0), ("pick", 2.0, 1.0)];
-    let (r, sq) = (0.4, 0.04);
-    let svg = |op: &Op| match *op {
-        Op::Fill(Sh::Ell(x, y, a, b), c, al, _) => format!(r##"<ellipse cx="{x}" cy="{y}" rx="{a}" ry="{b}" fill="#{c:06x}" opacity="{al}"/>"##),
-        Op::Fill(Sh::Seg(x, y, u, v, w), c, ..) => format!(r##"<path d="M{x} {y}L{u} {v}" stroke="#{c:06x}" stroke-width="{w}"/>"##),
-        Op::Fill(Sh::Ring(x, y, rr, w), c, ..) => format!(r##"<circle cx="{x}" cy="{y}" r="{rr}" fill="none" stroke="#{c:06x}" stroke-width="{w}"/>"##),
-        Op::Clip(Some(_)) => r#"<g class="eyes">"#.into(), // what is drawn on the body: here only the eyes
-        Op::Clip(None) => "</g>".into(),
-        _ => String::new(),
-    };
-    let states: String = STATES.iter().enumerate().map(|(i, &(s, g, pulse))| {
-        let mut o = vec![];
-        scene::face(&mut o, [0.5, 0.5, r, 0.0, 0.0, 0.0, 0.0, g, sq, pulse], scene::CAST[4], scene::INK, |_| ());
-        format!(r#"<g data-s="{s}"{}>{}</g>"#, if i == 0 { r#" class="on""# } else { "" }, o.iter().map(svg).collect::<String>())
-    }).collect();
-    let (ex, ey) = (scene::GAZE.0 * r * (1.0 + sq), scene::GAZE.1 * r * (1.0 - sq));
-    format!(r#"<svg class="dot" viewBox="0 0 1 1" style="--ex:{ex}px;--ey:{ey}px" stroke-linecap="round" aria-hidden="true">{states}</svg>"#)
+    SHELL.replace("{{attrs}}", &p.attrs).replace("{{title}}", &esc(&p.title)).replace("{{root}}", &root)
+        .replace("{{style}}", &(font_css(p.fonts) + &theme::css() + STYLE)).replace("{{body}}", &p.body).replace("{{script}}", &p.script)
+        .replace("{{index}}", index)
+        .replace("{{modes}}", &format!("[{}]", theme::THEMES.iter().map(|t| pack::json(t.0)).collect::<Vec<_>>().join(",")))
+        .replace("{{themes}}", &theme::THEMES.iter().map(|(id, label, ..)| format!(r#"<button type="button" value="{id}">{label}</button>"#)).collect::<String>())
 }
 
 /// Plain pages (an app's privacy policy, its support page): `content/pages/<path>.html` holds the
@@ -101,7 +57,6 @@ fn plain(dir: &Path, base: &Path) -> Vec<Page> {
 
 fn main() {
     let engine_wasm = fs::read(WASM).expect("build the engine first: see README");
-    let wasm = pack::base64(&engine_wasm);
     let (mut stories, mut pages, mut files) = (vec![], vec![], vec![]);
     for door in ["stories", "play"] {
         let mut slugs: Vec<String> = fs::read_dir(format!("content/{door}")).into_iter().flatten().flatten()
@@ -114,19 +69,17 @@ fn main() {
             files.extend(f.into_iter().map(|(n, b)| (format!("{door}/{slug}/{n}"), b)));
         }
     }
-    // Doors and cards are seeded thumbnails: stories stroll over a hill,
-    // and play leaps clean out of its tile (see engine::thumb for the parts of a seed).
-    const DOORS: [(&str, u32, &str, &str); 2] = [
-        ("stories", 109_664, "Stories", "Visual explanations, told in order."),
-        ("play", 180_423, "Play", "Toys to play with."),
+    const DOORS: [(&str, &str, &str); 2] = [
+        ("stories", "Stories", "Visual explanations, told in order."),
+        ("play", "Play", "Toys to play with."),
     ];
-    let doors: String = DOORS.iter().map(|(dir, seed, name, line)| format!(
-        r#"<a class="door" href="{dir}/index.html">{}<h2>{name}</h2><p class="muted">{line}</p></a>"#, thumb(*seed, "data-bleed"))).collect();
+    let doors: String = DOORS.iter().map(|(dir, name, line)| format!(
+        r#"<a class="door" href="{dir}/index.html"><h2>{name}</h2><p class="muted">{line}</p></a>"#)).collect();
     let cards = |door: &str| -> String { stories.iter().filter(|s| s.door == door).map(|s| format!(
-        r#"<li><a href="{0}/index.html">{1}<h2>{2}</h2><p class="muted">{3}</p></a></li>"#,
-        s.slug, s.thumb.map_or(String::new(), |seed| thumb(seed, "")), esc(&s.title), esc(&s.summary))).collect() };
+        r#"<li><a href="{0}/index.html"><h2>{1}</h2><p class="muted">{2}</p></a></li>"#,
+        s.slug, esc(&s.title), esc(&s.summary))).collect() };
     let mut found = vec![];
-    found.splice(0..0, DOORS.iter().map(|(dir, _, name, line)| (name.to_string(), format!("{dir}/index.html"), line.to_string())));
+    found.splice(0..0, DOORS.iter().map(|(dir, name, line)| (name.to_string(), format!("{dir}/index.html"), line.to_string())));
     for s in &stories {
         let page = format!("{}/{}/index.html", s.door, s.slug);
         found.push((s.title.clone(), page.clone(), s.summary.clone()));
@@ -147,7 +100,7 @@ fn main() {
         Some(v) => files.extend(v),
         None => eprintln!("kokoro/ incomplete: narration export needs scripts/kokoro.sh"),
     }
-    let pages: Vec<(String, Vec<u8>)> = pages.iter().map(|p| (p.path.clone(), render(p, &wasm, &index).into_bytes())).collect();
+    let pages: Vec<(String, Vec<u8>)> = pages.iter().map(|p| (p.path.clone(), render(p, &index).into_bytes())).collect();
     for (path, bytes) in pages.iter().chain(&files) {
         let out = Path::new("dist").join(path);
         fs::create_dir_all(out.parent().unwrap()).unwrap();

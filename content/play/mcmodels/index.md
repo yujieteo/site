@@ -1,8 +1,7 @@
 ---
 title: Monte Carlo models
 summary: Run 252 Monte Carlo models with 7 sampling methods, common random numbers and multilevel Monte Carlo. Read each estimate with its 95 % interval and, for a small support, the exact value. Then read 9 method cards and 5 real data sets, and answer a guided interview.
-thumb: 7213
-theme: site
+theme: penumbra-light
 seed: 20261013
 ---
 

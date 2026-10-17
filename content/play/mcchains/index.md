@@ -1,8 +1,7 @@
 ---
 title: Monte Carlo chains and rare events
 summary: Run Markov chains, sequential Monte Carlo, particle filters and quasi-Monte Carlo on 11 examples. Then estimate rare-event probabilities with importance sampling, the cross-entropy method and splitting, against crude Monte Carlo.
-thumb: 7814
-theme: site
+theme: penumbra-light
 seed: 20261014
 ---
 

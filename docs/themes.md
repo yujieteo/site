@@ -1,38 +1,33 @@
 # Themes
 
-The Theme dialog offers 19 families, Auto, Light or Dark. Rose Pine is the default.
-A family with one scheme (marked "one") wears it in light and dark mode. `engine/src/theme.rs` holds the palettes.
+The site offers 2 themes, Penumbra Light and Penumbra Dark ++.
+Penumbra Light is the default on every device. The browser stores an explicit choice for all pages.
+Unsupported theme choices reset to Light. Notebook PDFs use `theme: penumbra-light` by default.
+A source can request any preset ID from `engine/src/theme.rs` for its exports.
 
-The captain chose 15 themes from the appearance settings of the Codex app: Absolutely, Catppuccin, Everforest, GitHub,
-Gruvbox, Linear, Notion, One, Proof, Raycast, Rose Pine, Solarized, Vercel, VS Code Plus and Xcode.
-Each has a light and a dark side, except Proof, which has a light side only in the app. Four families that were here before stay:
-the site's own pair, Dracula, Nord and Tokyo Night (`site`, `dracula`, `nord`, `tokyo-night`).
+The palettes use the official sRGB values from [Penumbra](https://github.com/nealmckee/penumbra/blob/b2a4b15c10b14fdd990d0bdc29e7b044afc718af/penumbra.tsv).
+Penumbra Light uses the balanced set. Dark ++ uses the contrast++ set. Accents use the six-colour palette.
+`engine/src/theme.rs` defines the colours and menu labels for pages, diagrams, plots and PDFs.
 
-Token map: `bg` and `fg` from the editor background and foreground; `surface` from the side bar; `line` from a border;
-`muted` from the comment or description colour; `accent`, `accent-text`, `warm` and `green` from the link, keyword, number
-and string colours. Where a text colour was below 4.5:1 on `bg` or `surface`, the build keeps its hue and moves it toward
-`fg` in steps of 2% until it passes (the list of shifts is in the PR). A theme with no `surface` or `line` of its own uses a mix of `bg` and `fg`.
+| Penumbra token | Light | Dark ++ |
+| --- | --- | --- |
+| `bg` | sun | shade |
+| `surface`, `chrome` | sun- | shade- |
+| `fg` | shade | sky+ |
+| `fg2`, `muted`, `accent-text` | sky- | sky |
+| `line` | sky+ | shade+ |
+| `accent` | blue | blue |
+| `warm` | red | red |
+| `green` | green | green |
 
-| Theme | Source |
-| --- | --- |
-| Absolutely (light, dark) | Built-in values of the Codex app: its `absolutely-light` and `absolutely-dark` code themes, read from the installed app (`bg`, `fg`, `sideBar`, accent `#cc7d5e`) |
-| Catppuccin | existing: [catppuccin/palette](https://github.com/catppuccin/palette) (Latte, Mocha) |
-| Everforest (light, dark) | Shiki `everforest-light` and `everforest-dark`, which Codex uses; they follow [sainnhe/everforest](https://github.com/sainnhe/everforest) |
-| GitHub (light, dark) | Shiki `github-light-default` and `github-dark-default`, which Codex uses; from [primer/github-vscode-theme](https://github.com/primer/github-vscode-theme) |
-| Gruvbox | existing: [morhetz/gruvbox](https://github.com/morhetz/gruvbox) |
-| Linear (light, dark) | [linear.app](https://linear.app) style sheet (`#08090a`, `#d0d6e0`, `#62666d`, `#8fa4ff`, `#89d196`, `#ffc47c`, `#e2e4e7`) and the brand blue `#5e6ad2`. The light surface is a mix. |
-| Notion (light, dark) | [notion.com](https://www.notion.com) (`#097fe8`) and Notion's published text colours (`#37352f`, `#787774`, `#2383e2`, `#529cca`). Recalled, not checked against a file: see the PR. |
-| One (light, dark) | Shiki `one-light` and `one-dark-pro`, which Codex uses; from Atom One and [Binaryify/OneDark-Pro](https://github.com/Binaryify/OneDark-Pro) |
-| Proof (light only) | Built-in values of the Codex app: its `proof-light` code theme, read from the installed app (`#f5f3ed`, `#2f312d`, accent `#3d755d`) |
-| Raycast (light, dark) | Accent `#ff6363` from [raycast.com](https://www.raycast.com). Neutrals are recalled, not checked against a file: see the PR. |
-| Rose Pine | [official palette](https://github.com/rose-pine/palette) (`dist/css/rose-pine.css`, commit 92af52b); Moon is not added |
-| Solarized | existing: [Ethan Schoonover](https://ethanschoonover.com/solarized/) |
-| Vercel (light, dark) | Geist colours (`#000`, `#ededed`, `#a1a1a1`, `#0070f3`; [vercel.com/geist/colors](https://vercel.com/geist/colors)). Recalled, not checked against a file: see the PR. |
-| VS Code Plus (light, dark) | Shiki `light-plus` and `dark-plus`, which Codex uses: the Light+ and Dark+ themes of VS Code |
-| Xcode (light, dark) | Xcode "Default" light and dark source-editor colours. Recalled, not checked against a file: see the PR. |
+Text uses the stronger base colours to keep at least 4.5:1 contrast on the background and surface.
 
-## Header and fades
+[Liga Courier Prime Sans](https://github.com/nanxstats/courier-prime-sans-ligaturized) supplies text and code, including inline code and embedded HTML artifacts.
+Pages enable `calt` and `liga`. The code ligatures retain the width of their original character sequences.
+TeX Gyre Pagella Math supplies Palatino-style math in pages, embedded artifacts and PDFs.
+Both fonts are local subsets. `fonts/fonts.txt` records their sources, licences and hashes.
+Embedded artifacts receive the same fonts and theme variables from their parent page. Theme changes apply to both at once.
 
-The header is the theme's `bg` at 80% over a 14 px blur (`backdrop-filter`), solid where the browser lacks it.
-Sections fade in as they scroll into view (CSS `animation-timeline: view()`), and pages fade on navigation
-(`@view-transition`; a 0.4 s fade-in where that is missing). `prefers-reduced-motion: reduce` turns them all off.
+The site has no decorative dot drawings or animation loop. Data diagrams and plots remain.
+The header uses the theme background at 80% over a 14 px blur. Pages and sections retain their CSS fades.
+The device's reduced-motion preference disables these fades.

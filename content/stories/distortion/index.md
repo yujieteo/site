@@ -1,8 +1,7 @@
 ---
 title: How thin walls distort
 summary: Pull, bend, shear, twist and compress 4 thin-walled shapes, and see a small square on their skin change shape.
-thumb: 7396
-theme: site
+theme: penumbra-light
 seed: 20261010
 voice: af_heart
 pronounce: Poisson pwɑsˈOn

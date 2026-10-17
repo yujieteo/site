@@ -1,8 +1,7 @@
 ---
 title: Monte Carlo in statistical physics
 summary: Run simulated annealing and parallel tempering on energy landscapes, and drive BTW and Manna sandpiles. Compare each run with the exact values of the finite system.
-thumb: 9127
-theme: site
+theme: penumbra-light
 seed: 20261015
 ---
 
