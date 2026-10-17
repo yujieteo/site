@@ -120,6 +120,7 @@ main { counter-reset: gloss magna; }
 .gloss { float: right; clear: right; width: calc(2 * var(--u) - 3rem); margin: 0.3em calc(1.25rem - 2 * var(--u)) 0.75rem 0; color: var(--fg2);
   font: italic 0.875rem/1.36 var(--text); text-align: left; text-indent: 0; hyphens: auto; -webkit-hyphens: auto; }
 .gloss::before { content: counter(gloss, lower-alpha) "\2002"; color: var(--warm); }
+.gloss, .magna { overflow-wrap: anywhere; } :is(.gloss, .magna) em { font-style: normal; } /* a long word breaks; a label in a gloss stands upright */
 /* Long notes (`^^[…]`): numbered, set small above and below their chapter, as the masora magna fills
    a codex's top and bottom margins. */
 .sig.mg::after { counter-increment: magna; content: counter(magna); }
@@ -150,6 +151,9 @@ main { counter-reset: gloss magna; }
   :root { --gut: calc(1.2 * var(--u)); }
   :is([data-view=index], [data-view=article]) :is(.chapter .slide, .magna) { columns: 2; column-gap: var(--gut); }
   :is([data-view=index], [data-view=article]) .slide > :is(h2, .magna, figure.tool) { column-span: all; }
+  /* A cell's output with a table or a displayed formula takes the full width, as a wide table or equation
+     does in a two-column journal; its code and controls stay in the columns. */
+  :is([data-view=index], [data-view=article]) .slide > .cell > .out:has(table, math[display=block]) { column-span: all; }
   :is([data-view=index], [data-view=article]) .slide > p { font-size: 1.0625rem; line-height: 1.38; orphans: 3; widows: 3; }
   :is([data-view=index], [data-view=article]) .slide :is(li, .eq, .out pre, .ctls label, .out > *, .caption, figure, table, .gloss) { break-inside: avoid; }
   :is([data-view=index], [data-view=article]) .slide .code { font-size: 0.75rem; orphans: 4; widows: 4; }

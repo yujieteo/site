@@ -117,8 +117,21 @@ pub fn spans(s: &str) -> Vec<Sp> {
     let c: Vec<char> = s.chars().collect();
     let (mut v, mut cur, mut st, mut i) = (vec![], String::new(), 0u8, 0);
     let close = |d: char, from: usize| (from..c.len()).find(|&j| c[j] == d);
-    // The `]` that closes a `[` before `from`, past any nested pairs.
-    let shut = |from: usize| { let mut d = 1; (from..c.len()).find(|&j| { d += (c[j] == '[') as i32 - (c[j] == ']') as i32; d == 0 }) };
+    // The `]` that closes a `[` before `from`, past any nested pairs, escaped brackets and maths.
+    let shut = |from: usize| {
+        let (mut d, mut j) = (1, from);
+        while j < c.len() {
+            match c[j] {
+                '\\' => j += 1,
+                '$' => j = close('$', j + 1).unwrap_or(j),
+                '[' => d += 1,
+                ']' => { d -= 1; if d == 0 { return Some(j) } }
+                _ => {}
+            }
+            j += 1;
+        }
+        None
+    };
     let text = |a: usize, b: usize| c[a..b].iter().collect::<String>();
     macro_rules! flush { () => { if !cur.is_empty() { v.push(Sp::T(std::mem::take(&mut cur), st)); } } }
     while i < c.len() {

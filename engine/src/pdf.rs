@@ -100,6 +100,18 @@ fn italic(c: char) -> char {
     }
 }
 
+/// A line of code in pieces of at most `per` characters, each broken after a space where one is in its second half.
+fn wrap(l: &[char], per: usize) -> Vec<String> {
+    let (mut v, mut a) = (vec![], 0);
+    while l.len() - a > per {
+        let b = (a + per / 2 + 1..=a + per).rev().find(|&i| l[i - 1] == ' ').unwrap_or(a + per);
+        v.push(l[a..b].iter().collect());
+        a = b;
+    }
+    v.push(l[a..].iter().collect());
+    v
+}
+
 /// HTML as text: each `<` drops what follows up to its `>`, and the escapes are undone.
 fn strip(h: &str) -> String {
     let s: String = h.split('<').enumerate().map(|(i, p)| if i == 0 { p } else { p.split_once('>').map_or("", |x| x.1) }).collect();
@@ -369,7 +381,7 @@ impl Pdf<'_> {
         let st = St(2, 8.0, self.pal[2], 0);
         let per = ((self.col - 12.0) / self.run(st, "0").1).max(1.0) as usize;
         for l in text.lines().map(|l| l.chars().collect::<Vec<_>>()) {
-            for part in l.chunks(per).map(|p| p.iter().collect::<String>()).chain(l.is_empty().then(String::new)) {
+            for part in wrap(&l, per) {
                 if !self.need(10.5) { return }
                 let (s, x, y, w) = (rgb(self.pal[1]), self.x, self.h - self.y - 10.5, self.col);
                 if bg { w!(self.out(), "{s} rg {x:.2} {y:.2} {w:.2} 10.5 re f\n") }
