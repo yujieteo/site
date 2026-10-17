@@ -19,13 +19,13 @@ serde_json = "=1.0.151"
 
 ## The beam diagram creator
 
-The creator is a sealed page from yujieteo/visuals. Drag a support or a load, or type exact values in its tables.
+In the creator, drag a support or a load, or type exact values in its tables.^[cf. The creator is a sealed page from yujieteo/visuals.]
 
 ![Beam diagram creator](viz/beamdiag/index.html)
 
 ## The beam
 
-The beam is straight, from x = 0 at its left end to x = L. Forces and distributed loads are positive up, and couples are positive counter-clockwise.
+The beam is straight, from x = 0 at its left end to x = L.^[def. Forces and distributed loads are positive up. Couples are positive counter-clockwise.]
 
 ```rust
 //| caption: The example to start from, and the units of every number on this page.
@@ -33,7 +33,7 @@ let example = &list("presets")[choice("Example", &labels("presets"), 0)];
 let unit = &UNITS[choice("Units", &UNITS.iter().map(|u| u.name).collect::<Vec<_>>(), 0)];
 ```
 
-An empty box keeps that part of the example. A length alone scales the supports and the loads.
+An empty box keeps that part of the example.^[nota If you give only a length, the supports and the loads scale with it.]
 
 ```rust
 //| caption: The length, the supports and the loads.
@@ -66,7 +66,7 @@ match &model {
 
 ## Reactions
 
-A plane beam has 2 equations of equilibrium. A pin gives 1 unknown reaction, and a fixed support gives 2. Each unknown after the second needs 1 condition of compatibility.
+A plane beam has 2 equations of equilibrium.^[def. A pin gives 1 unknown reaction, and a fixed support gives 2.] Each unknown after the second needs 1 condition of compatibility.
 
 ```rust
 //| caption: The support reactions: forces + up, couples + counter-clockwise.
@@ -83,7 +83,7 @@ if let Ok(m) = &model {
 
 ## Shear, moment and deflection
 
-The shear force V at a section is the sum of the upward forces to its left. The bending moment M is positive when it sags the beam. Then $dM/dx = V$, $dV/dx = q$ and $EI \frac{d^2 v}{dx^2} = M$.
+The shear force V^[def. V at a section is the sum of the upward forces to its left.] and the bending moment M^[def. M is positive when it sags the beam.] obey $dM/dx = V$, $dV/dx = q$ and $EI \frac{d^2 v}{dx^2} = M$.^[def. q is the distributed load and v is the deflection, both positive up. EI is the product of E and I.]
 
 ```rust
 //| caption: The section to read.
@@ -145,7 +145,7 @@ if let Ok(m) = &model {
 
 ## Values at supports and loads
 
-At a point force, V jumps by the force, and at a couple C, M jumps by −C.
+At a point force, V jumps by the force, and at a couple C, M jumps by −C.^[nota The table gives V and M just left and just right of each point, so a jump shows as 2 different values.]
 
 ```rust
 //| caption: V, M, θ and v at each end, support and load.
@@ -161,7 +161,7 @@ if let Ok(m) = &model {
 
 ## By hand
 
-Macaulay's method writes M for the whole beam as 1 expression, with the reactions as unknowns. The bracket $\langle x - a \rangle^n$, written <x − a>^n below, is $(x - a)^n$ when $x > a$, and zero before. The conditions below give each unknown.
+Macaulay's method writes M for the whole beam as 1 expression, with the reactions as unknowns.^[def. The bracket $\langle x - a \rangle^n$ is $(x - a)^n$ when $x > a$, and zero before. The text below writes it as <x − a>^n.] The conditions below give each unknown.
 
 ```rust
 //| caption: The beam by Macaulay's method, in the units of this page.
@@ -170,7 +170,7 @@ if let Ok(m) = &model { println!("{}", by_hand(m, unit)) }
 
 ## NASTRAN deck
 
-The deck is an MSC Nastran SOL 101 linear static bulk data file (`.bdf`), in the units of this page. It has a grid at each end, support and load, and the number of bars that you choose between 2 grids.
+The deck is an MSC Nastran bulk data file (`.bdf`) for a linear static analysis, in the units of this page.^[def. SOL 101 is the linear static solution sequence of MSC Nastran. The deck uses it.] It has a grid at each end, support and load, and the number of bars that you choose between 2 grids.
 
 ```rust
 //| caption: The deck, and a link that saves it.
@@ -194,14 +194,15 @@ table(&["Card", "Use"], &raw()["nastran"]["cards"].as_array().unwrap().iter().ma
 
 ## Method and assumptions
 
-The solver puts a node at each end and each support, with Euler–Bernoulli beam elements between them. Each load enters as its exact fixed-end actions, so the nodal deflections and the reactions are exact. Statics then gives V and M, and integrals of $M/EI$ give the slope and the deflection.
+The solver puts a node at each end and each support, with Euler–Bernoulli beam elements between them. The nodal deflections and the reactions are exact.^^[Each load enters as its exact fixed-end actions. Thus the nodal values are exact. Then statics gives V and M, and integrals of $M/EI$ give the slope and the deflection.]
 
 ```rust
 //| caption: The assumptions of the model, and the NASTRAN references.
 let _items: String = list("assumptions").iter().map(|s| format!("<li>{}</li>", engine::doc::esc(s.as_str().unwrap()))).collect();
 html(&format!("<h3>Assumptions</h3><ul>{_items}</ul>"));
-let _refs: String = list("sources").iter().filter(|s| s["id"] != "code").map(|s| format!("<li><a href=\"{}\">{}</a></li>", engine::doc::esc(s["url"].as_str().unwrap()), engine::doc::esc(s["title"].as_str().unwrap()))).collect();
-html(&format!("<h3>Sources</h3><ul>{_refs}</ul>"));
+// The NASTRAN references, as 1 gloss: each reference names its card after the common title.
+let _refs: Vec<String> = list("sources").iter().filter(|s| s["id"] != "code").map(|s| format!("[{}]({})", s["title"].as_str().unwrap().trim_start_matches("MSC Nastran Quick Reference Guide: "), s["url"].as_str().unwrap())).collect();
+html(&format!("<p>The cards of the NASTRAN deck follow the MSC Nastran Quick Reference Guide.{}</p>", gloss(&format!("cf. MSC Nastran Quick Reference Guide: {}.", _refs.join(", ")))));
 ```
 
 # The code

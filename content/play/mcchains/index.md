@@ -5,7 +5,7 @@ theme: penumbra-light
 seed: 20261014
 ---
 
-Each example has a reference value, so you can see when a method works and when it fails. The Chains chapters run methods that do not draw independent values from the law. The Rare events chapters estimate a small probability p. Crude Monte Carlo needs about 100/p replicates, so these methods change the law or split the paths.
+Each example has a reference value, so you can see when a method works and when it fails. The Chains chapters run methods that do not draw independent values from the law. The Rare events chapters estimate a small probability p. Crude Monte Carlo needs too many replicates for a small p,^[crit. Crude Monte Carlo needs about 100/p replicates.] so these methods change the law or split the paths.
 
 <!-- skill: This notebook ports the Markov chain, sequential and quasi-Monte Carlo laboratory (chains.json) and the rare-event laboratory (rare.json) of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. The engines are in "The code": the core functions at the root, then the modules chains and rare. -->
 
@@ -17,7 +17,7 @@ serde_json = "=1.0.151"
 
 ## Chains: an example
 
-3 of the 11 examples fail on purpose: 2 modes far apart, Neal's funnel and a discontinuous integrand in 8 dimensions. The page knows a target law only up to a constant. A particle filter follows the hidden state of a state-space model. An integral example compares randomised Sobol points with independent points.
+3 of the 11 examples fail on purpose: 2 modes far apart, Neal's funnel and a discontinuous integrand in 8 dimensions. The examples are target laws,^[def. The page knows a target law only up to a constant.] state-space models^[def. A particle filter follows the hidden state of a state-space model.] and integrals. An integral example compares randomised Sobol points with independent points.
 
 ```rust
 //| caption: The example and its parameters.
@@ -34,7 +34,7 @@ html(&about_example(example));
 
 ## Chains: settings
 
-Each interval comes from the spread of R independent runs, so it does not depend on a theory of the method. The size 2^k gives the draws of a Markov chain after 2^k warm-up iterations. It also gives the particles of a particle method, or the Sobol points of each randomisation.
+Each interval comes from the spread of R independent runs, so it does not depend on a theory of the method. The size 2^k gives the draws of a Markov chain,^[nota The draws come after 2^k warm-up iterations.] the particles of a particle method, or the Sobol points of each randomisation.
 
 ```rust
 //| caption: The method and its settings.
@@ -68,7 +68,7 @@ let ch_path = PATH[choice("Path of the option", &PATH.map(|x| x.1), PATH.iter().
 
 ## Chains: estimates
 
-A reference outside the interval is a sign of a bias, such as a chain that stays in 1 mode. For a Markov chain, the MCSE (Monte Carlo standard error) comes from the effective sample size of the pooled chains. If the MCSE and the interval disagree, the chains do not mix, or the runs are too few.
+A reference outside the interval is a sign of a bias, such as a chain that stays in 1 mode. For a Markov chain, the table also gives the MCSE.^[def. The MCSE (Monte Carlo standard error) comes from the effective sample size of the pooled chains.] If the MCSE and the interval disagree, the chains do not mix, or the runs are too few.
 
 ```rust
 //| caption: Run the laboratory.
@@ -92,9 +92,9 @@ match (&ch_lab.0, &ch_lab.1) {
 
 ## Chains: diagnostics
 
-A good diagnostic does not prove that an estimate is correct. For example, 2 chains in the same wrong mode give R-hat near 1. The notebook keeps 3 kinds of diagnostic apart:
+A good diagnostic does not prove that an estimate is correct.^[crit. For example, 2 chains in the same wrong mode give R-hat near 1.] The notebook keeps 3 kinds of diagnostic apart:
 
-- Markov-chain diagnostics tell if the chains mix. Split R-hat is near 1 when the chains agree.
+- Markov-chain diagnostics tell if the chains mix.^[def. Split R-hat is near 1 when the chains agree.]
 - Weight degeneracy tells if the particles still represent the law.
 - The estimation error tells how far the estimate is from the reference.
 
@@ -147,7 +147,7 @@ about_rare(rare_ex, &rare_law, &rare_params);
 
 ## Rare events: settings
 
-An assumption failure breaks 1 assumption of 1 method on purpose. Each method runs R independent replications of N = 2^k paths, and the comparison method uses its own stream. A path draws the n claims of a sum, the ladder heights of a ruin walk, or the events of T years.
+An assumption failure breaks 1 assumption of 1 method on purpose. Each method runs R independent replications of N = 2^k paths,^[def. A path draws the n claims of a sum, the ladder heights of a ruin walk, or the events of T years.] and the comparison method uses its own stream.
 
 ```rust
 //| caption: The method and its settings.
@@ -171,7 +171,7 @@ let rare_options = options_text(&rare::OPTIONS.iter().enumerate().map(|(i, o)| {
 
 ## Rare events: estimates
 
-Each method gives the interval that fits it, and the table names it. The relative error is the standard error divided by the estimate. The work counts the random draws of a method, so you can compare methods of different cost.
+Each method gives the interval that fits it, and the table names it, with the relative error of the estimate.^[def. The relative error is the standard error divided by the estimate.] The work of each method lets you compare methods of different cost.^[def. The work counts the random draws of a method.]
 
 ```rust
 //| caption: Run the rare-event laboratory.
@@ -191,7 +191,7 @@ match &*rare_lab {
 
 ## Rare events: the decision
 
-The target is met when the whole interval of the first method is below it, and not met when the whole interval is above it. If the interval holds the target, run more replications before a decision. The catastrophe test chooses the cheapest policy that meets the target.
+The target is met when the whole interval of the first method is below it, and not met when the whole interval is above it. If the interval holds the target, run more replications before a decision.^[nota The catastrophe test chooses the cheapest policy that meets the target.]
 
 ```rust
 //| caption: The decision.
@@ -200,7 +200,7 @@ if let Ok(l) = &*rare_lab { rare_decision(l) }
 
 ## Rare events: diagnostics
 
-A change of measure can give a wrong answer with a narrow interval. Thus read the diagnostics of each method with its estimate.
+Read the diagnostics of each method with its estimate.^[crit. A change of measure can give a wrong answer with a narrow interval.]
 
 ```rust
 //| caption: The diagnostics of each method.
@@ -219,7 +219,7 @@ if let Ok(l) = &*rare_lab { rare_figure(l, rare_plot) }
 
 ## Rare events: a sweep
 
-A sweep runs the first method at several values of 1 parameter, with at most 2^11 paths and 8 replications for each value.
+A sweep runs the first method at several values of 1 parameter.^[nota Each value has at most 2^11 paths and 8 replications.]
 
 ```rust
 //| caption: The sweep.
@@ -319,6 +319,12 @@ fn fit(t: &str) -> String {
 }
 fn bullets<S: AsRef<str>>(v: &[S]) -> String { format!("<ul>{}</ul>", v.iter().map(|x| format!("<li>{}</li>", esc(&fit(x.as_ref())))).collect::<String>()) }
 fn para(t: &str) -> String { format!("<p>{}</p>", esc(&fit(t))) }
+/// Text from the data as the Markdown of a gloss: each character that starts a marker is kept literal.
+fn md(t: &str) -> String { fit(t).chars().map(|c| if "\\`$*[]".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
+/// A gloss of kind `kind` that opens with its name in bold, such as "**Inputs.**".
+fn note(kind: &str, name: &str, t: &str) -> String { gloss(&format!("{kind} **{name}.** {}", md(t))) }
+/// The assumptions of a method card, each a gloss: a condition that the method needs.
+fn assumed(v: &Value) -> String { texts(v).iter().map(|a| gloss(&format!("crit. {}", md(a)))).collect() }
 /// TeX from the data in the engine's TeX, which has no environments: a cases block gives "a  c, b  d" after a brace.
 fn display(t: &str) -> String {
     let t = match (t.find("\\begin{cases}"), t.find("\\end{cases}")) {
@@ -364,18 +370,28 @@ fn example_title(x: &Value) -> String {
 fn param_hint(x: &Value) -> String {
     x["params"].as_array().into_iter().flatten().map(|p| format!("{}={}", s(&p["name"]), p["value"])).collect::<Vec<_>>().join("; ")
 }
-/// The page of an example: its question, parameters, quantities, decision rule and what to observe.
+/// The page of an example: its question, parameters, quantities, decision rule and what to observe. Its data, inputs,
+/// dependence, method and diagnostics are glosses beside the problem, the reason and the interpretation; a field
+/// whose paragraph is missing keeps a paragraph of its own.
 fn about_example(x: &Value) -> String {
-    let mut h = para(s(&x["problem"]));
+    let g = |kind: &str, name: &str, k: &str| x[k].as_str().map_or(String::new(), |t| note(kind, name, t));
+    let data = x["data"]["text"].as_str().map_or(String::new(), |t| note("cf.", "Data", t));
+    let mut h = format!("<p>{}{data}</p>", esc(&fit(s(&x["problem"]))));
     let ps: Vec<String> = x["params"].as_array().into_iter().flatten().map(|p| format!("{} = {}: {}", s(&p["name"]), p["value"], s(&p["note"]))).collect();
     h += &format!("<h3>Parameters</h3>{}", bullets(&ps));
     let qs: Vec<String> = x["quantities"].as_array().into_iter().flatten().map(|q| format!("{}: {}", s(&q["name"]), s(&q["note"]))).collect();
     h += &format!("<h3>Quantities</h3>{}", bullets(&qs));
     for (k, name) in [("rule", "Decision rule"), ("decision", "Decision"), ("reason", "Why this model"), ("inputs", "Inputs"), ("dependence", "Dependence"),
         ("method", "Method"), ("diagnostics", "Diagnostics"), ("interpretation", "Interpretation"), ("observe", "What to observe")] {
-        if let Some(t) = x[k].as_str() { h += &format!("<p><strong>{name}.</strong> {}</p>", esc(&fit(t))) }
+        let at = match k { "inputs" | "dependence" => "reason", "method" | "diagnostics" => "interpretation", _ => k };
+        if at != k && x[at].is_string() { continue } // a gloss of the paragraph `at`
+        let notes = match k {
+            "reason" => g("cf.", "Inputs", "inputs") + &g("crit.", "Dependence", "dependence"),
+            "interpretation" => g("nota", "Method", "method") + &g("nota", "Diagnostics", "diagnostics"),
+            _ => String::new(),
+        };
+        if let Some(t) = x[k].as_str() { h += &format!("<p><strong>{name}.</strong> {}{notes}</p>", esc(&fit(t))) }
     }
-    if let Some(t) = x["data"]["text"].as_str() { h += &format!("<p><strong>Data.</strong> {}</p>", esc(&fit(t))) }
     h
 }
 /// The figures that apply to the family and the method.
@@ -552,14 +568,17 @@ fn figure(lab: &chains::Lab, blocks: &[chains::Block], sm: &chains::Summary, plo
 fn card_settings(part: &Value) -> String {
     part["settings"].as_object().map_or(String::new(), |o| o.iter().map(|(k, v)| format!("{}: {}", k.trim_start_matches("c_"), v.as_str().map_or(v.to_string(), String::from))).collect::<Vec<_>>().join("; "))
 }
-/// A method card of the chain laboratory.
+/// A method card of the chain laboratory: its assumptions are glosses beside the estimator, and the settings of
+/// each example a gloss beside the example.
 fn chain_card(m: &Value) -> String {
     let ex = |part: &str| list(0, "examples").iter().find(|e| e["id"] == m[part]["example"]).map_or(String::new(), |e| fit(s(&e["title"])));
     let with = list(0, "methods").iter().find(|x| x["id"] == m["comparison"]["with"]).map_or("", |x| s(&x["name"]));
-    format!("<p><strong>{}.</strong> {}.</p>{}{}<h3>Assumptions</h3>{}<h3>Settings</h3>{}<h3>Where it works: {}</h3>{}<p>Settings: {}.</p><h3>Where it fails: {}</h3>{}<p>Settings: {}.</p><h3>Comparison with {}: {}</h3>{}",
-        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), display(s(&m["estimator"])), para(s(&m["estimatorText"])), bullets(&texts(&m["assumptions"])), bullets(&texts(&m["settings"])),
-        esc(&ex("suitable")), para(s(&m["suitable"]["text"])), esc(&card_settings(&m["suitable"])), esc(&ex("failure")), para(s(&m["failure"]["text"])), esc(&card_settings(&m["failure"])),
-        esc(&fit(with)), esc(&ex("comparison")), para(s(&m["comparison"]["text"])))
+    let text = |part: &str| esc(&fit(s(&m[part]["text"])));
+    let set = |part: &str| gloss(&format!("nota Settings: {}.", md(&card_settings(&m[part]))));
+    format!("<p><strong>{}.</strong> {}.</p>{}<p>{}{}</p><h3>Settings</h3>{}<h3>Where it works: {}</h3><p>{}{}</p><h3>Where it fails: {}</h3><p>{}{}</p><h3>Comparison with {}: {}</h3><p>{}</p>",
+        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), display(s(&m["estimator"])), esc(&fit(s(&m["estimatorText"]))), assumed(&m["assumptions"]), bullets(&texts(&m["settings"])),
+        esc(&ex("suitable")), text("suitable"), set("suitable"), esc(&ex("failure")), text("failure"), set("failure"),
+        esc(&fit(with)), esc(&ex("comparison")), text("comparison"))
 }
 ```
 
@@ -598,14 +617,13 @@ fn quantity_label(c: &rare::Prob, q: &rare::Quantity) -> String {
 /// The page of a rare-event example: the problem, the parameters with their values, the model and what to observe.
 fn about_rare(p: &rare::Preset, law: &str, params: &str) {
     let pr = list(1, "problems").iter().find(|x| x["id"] == p.record.problem.as_str()).unwrap();
-    html(&format!("<p><strong>{}.</strong> {}</p>{}", esc(&fit(s(&pr["title"]))), esc(&fit(s(&pr["statement"]))), para(s(&pr["decision"]))));
+    html(&format!("<p><strong>{}.</strong> {}{}</p>{}", esc(&fit(s(&pr["title"]))), esc(&fit(s(&pr["statement"]))), note("cf.", "Data", s(&pr["data"])), para(s(&pr["decision"]))));
     let rows: Vec<Vec<String>> = rare::params_for(&p.record.problem, law).iter()
         .map(|x| vec![x.name.into(), fmt(param_value(params, x)), x.unit.into(), fit(x.text)]).collect();
     table(&["Parameter", "Value", "Unit", "Meaning"], &rows);
-    let mut h = String::new();
-    for (k, name) in [("reason", "Why this model"), ("inputs", "Inputs"), ("dependence", "Dependence"), ("interpretation", "Interpretation"), ("data", "Data")] {
-        h += &format!("<p><strong>{name}.</strong> {}</p>", esc(&fit(s(&pr[k]))));
-    }
+    // The inputs and the dependence are glosses beside the reason; the data is a gloss beside the statement.
+    let h = format!("<p><strong>Why this model.</strong> {}{}{}</p><p><strong>Interpretation.</strong> {}</p>", esc(&fit(s(&pr["reason"]))),
+        note("cf.", "Inputs", s(&pr["inputs"])), note("crit.", "Dependence", s(&pr["dependence"])), esc(&fit(s(&pr["interpretation"]))));
     html(&(h + &format!("<p><strong>What to observe with the example's own settings.</strong> {}</p>", esc(&fit(&p.observe)))));
 }
 
@@ -701,12 +719,12 @@ fn rare_diagnostics(l: &RareLab) {
         println!("{name}: {}", items.join(" "));
     }
     let pr = list(1, "problems").iter().find(|x| x["id"] == c.problem).unwrap();
-    println!("{}", fit(s(&pr["diagnostics"])));
     let rows: Vec<String> = c.methods.iter().map(|m| {
         let card = list(1, "methods").iter().find(|x| x["id"] == *m).unwrap();
         format!("{}: {}", rare_name(m), s(&card["assumptions"][0]))
     }).collect();
-    html(&format!("<p>The first assumption of each method of this run:</p>{}", bullets(&rows)));
+    // How to read the diagnostics of the problem is a gloss beside the assumptions.
+    html(&format!("<p>The first assumption of each method of this run:{}</p>{}", gloss(&format!("nota {}", md(s(&pr["diagnostics"])))), bullets(&rows)));
 }
 
 /// A rare-event figure: convergence, comparison, stages or tail.
@@ -858,11 +876,11 @@ fn show_sweep(problem: &str, name: &str, rows: &[SweepRow]) {
     }
 }
 
-/// A method card of the rare-event laboratory.
+/// A method card of the rare-event laboratory: its assumptions are glosses beside the estimator.
 fn rare_card_html(m: &Value) -> String {
     let ex = |part: &str| rare_examples().iter().find(|p| p.id == s(&m[part]["preset"])).map_or(String::new(), |p| fit(&p.title));
-    format!("<p><strong>{}.</strong> {}.</p>{}{}<h3>Assumptions</h3>{}<h3>Settings</h3>{}<h3>Where it works: {}</h3>{}<h3>Where it fails: {}</h3>{}<h3>Comparison with {}: {}</h3>{}",
-        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), display(s(&m["estimator"])), para(s(&m["estimatorText"])), bullets(&texts(&m["assumptions"])), bullets(&texts(&m["settings"])),
+    format!("<p><strong>{}.</strong> {}.</p>{}<p>{}{}</p><h3>Settings</h3>{}<h3>Where it works: {}</h3>{}<h3>Where it fails: {}</h3>{}<h3>Comparison with {}: {}</h3>{}",
+        esc(&fit(s(&m["name"]))), esc(&fit(s(&m["family"]))), display(s(&m["estimator"])), esc(&fit(s(&m["estimatorText"]))), assumed(&m["assumptions"]), bullets(&texts(&m["settings"])),
         esc(&ex("suitable")), para(s(&m["suitable"]["text"])), esc(&ex("failure")), para(s(&m["failure"]["text"])),
         esc(&rare_name(s(&m["comparison"]["with"])).to_lowercase()), esc(&ex("comparison")), para(s(&m["comparison"]["text"])))
 }

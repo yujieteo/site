@@ -9,7 +9,7 @@ Find a theorem and read its proof 1 step at a time.
 
 <!-- skill: This notebook ports visuals/viz/theorem-explorer and visuals/viz/theorem-learner. Read the data only through data!, from the files pinned in visuals.lock; never copy data into this file. The scores follow te-rubric/1 in the explorer's raw.json: overall = sum of w_i r_i / 4 when every weighted component is known, else unknown. Keep that rule as it is. -->
 
-<!-- skill: Every text from the data is Markdown with TeX, or a list of segments: a string, or [word, concept index]. Render it with seg(), never by string replacement. A text box and a choice whose options change go in different cells: the page redraws the controls of a cell when its options change, and a redraw takes the focus from the text box. -->
+<!-- skill: Every text from the data is Markdown with TeX, or a list of segments: a string, or [word, concept index]. Render it with seg(), never by string replacement; a gloss takes Markdown, which mdseg() gives from the same text. A text box and a choice whose options change go in different cells: the page redraws the controls of a cell when its options change, and a redraw takes the focus from the text box. -->
 
 ```toml
 base64 = "=0.22.1"
@@ -19,7 +19,7 @@ serde_json = { version = "=1.0.151", features = ["raw_value"] }
 
 ## Find a theorem
 
-A theorem matches when its name, an alias, a key concept or its statement holds every word. Only theorems with a proof are here.
+A theorem matches when its name, an alias, a key concept or its statement holds every word.^[crit. Only theorems with a proof are here.]
 
 ```rust
 //| caption: Words from the name or the statement.
@@ -36,7 +36,7 @@ if let Some(k) = theorem { html(&statement(&db().theorems[k])) }
 
 ## Its proof, step by step
 
-Move the Step slider to read 1 step in full. A proof has 3 to 7 steps.
+Move the Step slider to read 1 step in full.^[nota A proof has 3 to 7 steps.]
 
 ```rust
 //| caption: One proof, one step at a time. Step 0 shows the outline.
@@ -73,7 +73,7 @@ match _here.get(choice("Move", &_here.iter().map(|&m| text(&db().moves[m]["n"]))
 
 ## Why it matters
 
-The Theorem Explorer scores each result from 0 to 4 on 7 components, and the weights make 1 overall score.
+The Theorem Explorer scores each result from 0 to 4 on 7 components.^[nota The weights make 1 overall score.]
 
 ```rust
 //| caption: The explorer's record of the theorem that you picked.
@@ -104,7 +104,7 @@ match record {
 
 ## On arXiv
 
-The counts stop at August 2020 and read only titles and abstracts. The rate per 10,000 papers removes the effect of arXiv growth.
+The rate per 10,000 papers removes the effect of arXiv growth.^[crit. The counts stop at August 2020 and read only titles and abstracts.]
 
 ```rust
 //| caption: Papers that name the theorem, per 10,000 papers: all of arXiv, and the mathematics group.
@@ -130,9 +130,9 @@ if _counts.is_empty() { println!("No paper names this theorem.") } else {
 
 ## The catalogue
 
-The catalogue has every named result, with or without a proof. Records with an unknown score go last. To read a proof, type its name in the Theorem box.
+The catalogue has every named result, with or without a proof.^[nota Records with an unknown score go last.] To read a proof, type its name in the Theorem box.
 
-To study one subject, type arXiv topics, such as math.FA. The list then holds the records of those topics and every prerequisite that they need, at any depth, even when the prerequisite has another topic. Sort by dependency to read the basic results first. Tick Known on a row to hide it. The ticks stay in this browser.
+To study one subject, type arXiv topics, such as math.FA.^^[The list then holds the records of those topics and every prerequisite that they need, at any depth, even when the prerequisite has another topic.] Sort by dependency to read the basic results first. Tick Known on a row to hide it.^[nota The ticks stay in this browser.]
 
 ```rust
 //| caption: Words from the name, the aliases, the key concepts or the statement. Empty finds every record. Topics are arXiv categories, archives or groups, with commas between them.
@@ -208,12 +208,12 @@ match _hits.get(choice("Concept", &_hits.iter().map(|&i| text(&get(db().concepts
     Some(&i) => {
         let c = get(db().concepts[i]);
         let level = c["lv"].as_u64().and_then(|l| LEVELS.get(l as usize)).unwrap_or(&"unknown");
-        html(&format!("<h3>{}</h3><p class=\"muted\">{} · {level} level</p><p>{}</p>", seg(&c["n"]), seg(&c["k"]), if c["adef"].is_array() { seg(&c["adef"]) } else { seg(&c["def"]) }));
-        if c["rem"].is_array() { html(&format!("<h4>Reminder</h4><p>{}</p>", seg(&c["rem"]))) }
+        let needs: Vec<String> = c["rq"].as_array().or(c["pre"].as_array()).into_iter().flatten().map(|n| md(&concept_name(n))).collect();
+        let side = if c["rem"].is_array() { gloss(&format!("nota {}", mdseg(&c["rem"]))) } else { String::new() }
+            + &if needs.is_empty() { String::new() } else { gloss(&format!("cf. Needs first: {}.", needs.join(", "))) };
+        html(&format!("<h3>{}</h3><p class=\"muted\">{} · {level} level</p><p>{}{side}</p>", seg(&c["n"]), seg(&c["k"]), if c["adef"].is_array() { seg(&c["adef"]) } else { seg(&c["def"]) }));
         let ex: String = arr(&c["ex"]).iter().map(|e| format!("<li>{}</li>", seg(e))).collect();
         if !ex.is_empty() { html(&format!("<h4>Examples</h4><ul>{ex}</ul>")) }
-        let needs: Vec<String> = c["rq"].as_array().or(c["pre"].as_array()).into_iter().flatten().map(concept_name).collect();
-        if !needs.is_empty() { println!("Needs first: {}.", needs.join(", ")) }
         let links: Vec<Vec<String>> = db().links.iter().filter(|l| l["from"] == i || l["to"] == i).map(|l| {
             let out = l["from"] == i;
             vec![text(&l["type"]), if out { "to" } else { "from" }.into(), concept_name(&l[if out { "to" } else { "from" }])]
@@ -225,7 +225,7 @@ match _hits.get(choice("Concept", &_hits.iter().map(|&i| text(&get(db().concepts
 
 ## About the data
 
-The scores are judgements of a language model on public evidence, not measurements. A proof marked "authored, not checked" can have errors. Compare it with its source. The data is from yujieteo/visuals, pinned in `visuals.lock`.
+The scores are judgements of a language model on public evidence, not measurements.^[cf. The data is from yujieteo/visuals, pinned in `visuals.lock`.] A proof marked "authored, not checked" can have errors. Compare it with its source.
 
 # The code that reads the data
 
@@ -280,6 +280,17 @@ fn get(r: Raw) -> Value { serde_json::from_str(r.get()).unwrap() }
 fn text(v: &Value) -> String { v.as_str().unwrap_or("").to_string() }
 fn arr(v: &Value) -> &[Value] { v.as_array().map_or(&[], Vec::as_slice) }
 
+/// Learner text as Markdown for a gloss: a string as it is, a [word, concept] mark in italics.
+fn mdseg(v: &Value) -> String {
+    match v {
+        Value::String(t) => t.clone(),
+        Value::Array(a) => a.iter().map(|s| match s { Value::Array(m) => format!("*{}*", mdseg(&m[0])), s => mdseg(s) }).collect(),
+        _ => String::new(),
+    }
+}
+/// A name as literal Markdown: a backslash before each mark that starts Markdown.
+fn md(t: &str) -> String { t.chars().map(|c| if "\\`$*[]".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
+
 /// Learner text as HTML: a string (Markdown and TeX), or a list of strings and [word, concept] marks.
 fn seg(v: &Value) -> String {
     match v {
@@ -330,21 +341,22 @@ fn search(words: &str) -> Vec<usize> {
 
 const LEVELS: [&str; 4] = ["school", "undergraduate", "graduate", "research"];
 
-/// A theorem's name, kind, level, statement, hypotheses, conclusion and key concepts, as HTML.
+/// A theorem's name, kind, level, statement (its key concepts beside it), hypotheses and conclusion, as HTML.
 fn statement(t: &Value) -> String {
     let level = t["lv"].as_u64().and_then(|l| LEVELS.get(l as usize)).unwrap_or(&"unknown");
     let mut o = format!("<h3>{}</h3><p class=\"muted\">{} · {level} level</p>", seg(&t["n"]), esc(&text(&t["t"])));
-    o += &format!("<h4>Statement</h4><p>{}</p>", if t["st"].is_null() { "unknown".into() } else { seg(&t["st"]) });
+    let kc: Vec<String> = arr(&t["kc"]).iter().map(|c| md(&concept_name(c))).collect();
+    let kc = if kc.is_empty() { String::new() } else { gloss(&format!("cf. Key concepts: {}.", listed(&kc, ""))) };
+    o += &format!("<h4>Statement</h4><p>{}{kc}</p>", if t["st"].is_null() { "unknown".into() } else { seg(&t["st"]) });
     let hy: String = arr(&t["hy"]).iter().enumerate().map(|(i, h)| format!("<li>H{}. {}</li>", i + 1, seg(&h["seg"]))).collect();
     if !hy.is_empty() { o += &format!("<h4>Hypotheses</h4><ul>{hy}</ul>") }
     if !t["cn"].is_null() { o += &format!("<h4>Conclusion</h4><p>{}</p>", seg(&t["cn"])) }
-    let kc: Vec<String> = arr(&t["kc"]).iter().map(concept_name).collect();
-    if !kc.is_empty() { o += &format!("<p class=\"muted\">Key concepts: {}.</p>", esc(&listed(&kc, ""))) }
     o
 }
 
-/// A proof of theorem `t` as HTML. Step 0 gives the outline: the roles of the hypotheses, and every step with
-/// what it needs and what it gives. Step k gives step k in full: its argument, its hypotheses, concepts and citations.
+/// A proof of theorem `t` as HTML. Step 0 gives the outline, with the scope and the source beside the summary: the
+/// roles of the hypotheses, and every step with what it needs and what it gives. Step k gives step k in full: its
+/// argument, with its citations beside it, its hypotheses and concepts.
 fn walk(t: &Value, p: &Value, k: usize) -> String {
     let (steps, hyps, roles) = (arr(&p["stp"]), arr(&t["hy"]), arr(&p["ro"]));
     let edges: Vec<(usize, usize)> = arr(&p["ed"]).iter().map(|e| (e[0].as_u64().unwrap_or(0) as usize, e[1].as_u64().unwrap_or(0) as usize)).collect();
@@ -361,7 +373,8 @@ fn walk(t: &Value, p: &Value, k: usize) -> String {
     let status = if vf["lean"] == true { "checked by Lean" } else if vf["checked"] == true { "checked against the formal proof" } else { "authored, not checked" };
     let mut o = String::new();
     if k == 0 {
-        o += &format!("<h3>{}</h3><p class=\"muted\">{status} · {} steps</p><p>{}</p><h4>Scope</h4><p>{}</p>", seg(&p["n"]), steps.len(), seg(&p["sl"]), seg(&p["sc"]));
+        let source = p["src"]["note"].as_str().map_or(String::new(), |note| gloss(&format!("cf. {note}")));
+        o += &format!("<h3>{}</h3><p class=\"muted\">{status} · {} steps</p><p>{}{}{source}</p>", seg(&p["n"]), steps.len(), seg(&p["sl"]), gloss(&format!("crit. Scope: {}", mdseg(&p["sc"]))));
         let hr: String = hyps.iter().enumerate().filter_map(|(i, h)| {
             let r = roles.iter().find(|r| r["h"] == h["id"])?;
             let used: Vec<String> = arr(&r["st"]).iter().filter_map(Value::as_u64).map(|s| format!("step {}", s + 1)).collect();
@@ -371,17 +384,16 @@ fn walk(t: &Value, p: &Value, k: usize) -> String {
         if !hr.is_empty() { o += &format!("<h4>What each hypothesis does</h4><ul>{hr}</ul>") }
         let ol: String = steps.iter().enumerate().map(|(s, st)| format!("<li>{} <span class=\"muted\">{}</span></li>", seg(&st["sl"]), io(s))).collect();
         o += &format!("<h4>The steps</h4><ol>{ol}</ol>");
-        if let Some(note) = p["src"]["note"].as_str() { o += &format!("<h4>Source</h4><p>{}</p>", engine::doc::inline(note)) }
     } else {
         let st = &steps[k - 1];
-        o += &format!("<h3>Step {k} of {}</h3><p>{}</p><p>{}</p><p class=\"muted\">{}</p>", steps.len(), seg(&st["sl"]), seg(&st["dt"]), io(k - 1));
+        let lm: Vec<String> = arr(&st["lm"]).iter().filter_map(Value::as_u64).map(|t| md(&theorem_name(t))).collect();
+        let cites = if lm.is_empty() { String::new() } else { gloss(&format!("cf. This step cites {}.", listed(&lm, ""))) };
+        o += &format!("<h3>Step {k} of {}</h3><p>{}</p><p>{}{cites}</p><p class=\"muted\">{}</p>", steps.len(), seg(&st["sl"]), seg(&st["dt"]), io(k - 1));
         let used: String = roles.iter().filter(|r| at(r, k - 1)).map(|r| format!("<li>{}. {}</li>", h_name(&r["h"]), seg(&r["why"]))).collect();
         if !used.is_empty() { o += &format!("<h4>The hypotheses that this step uses</h4><ul>{used}</ul>") }
         let cs: String = arr(&st["cs"]).iter().map(|c| format!("<li>{}{}</li>", esc(&concept_name(c)),
             p["cw"].get(c.to_string()).map_or(String::new(), |w| format!(": {}", seg(w))))).collect();
         if !cs.is_empty() { o += &format!("<h4>Concepts at this step</h4><ul>{cs}</ul>") }
-        let lm: Vec<String> = arr(&st["lm"]).iter().filter_map(Value::as_u64).map(theorem_name).collect();
-        if !lm.is_empty() { o += &format!("<p class=\"muted\">This step cites {}.</p>", esc(&listed(&lm, ""))) }
         let ol: String = steps.iter().enumerate().map(|(s, st)| format!("<li{}>{}</li>", if s + 1 == k { "" } else { " class=\"muted\"" }, seg(&st["sl"]))).collect();
         o += &format!("<h4>All the steps</h4><ol>{ol}</ol>");
     }

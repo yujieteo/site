@@ -7,7 +7,7 @@ voice: af_heart
 pronounce: gigahertz ɡˈɪɡəhˌɜɹts
 ---
 
-Does the ground radar R1 detect the aircraft T3?
+Does the ground radar R1 detect the aircraft T3?^[cf. The radar network preset of yujieteo/visuals, link R1 to R1 through T3. See Notes and sources.]
 
 <!-- skill: This notebook ports visuals/viz/radar-network, link R1 > R1:T3. Keep every number traceable to data/preset.json there. The controls start at the preset; the t = 0 assertions in "The budget" pin the preset's reference values whatever the controls say. If a parameter changes, recompute them from the reference, never loosen the tolerance. -->
 
@@ -15,7 +15,7 @@ Does the ground radar R1 detect the aircraft T3?
 
 ## The link
 
-The preset is synthetic, except the 10 GHz carrier.
+The preset is synthetic, except the 10 GHz carrier.^[def. The carrier is the frequency of the radar wave. At 10 GHz, the wavelength is about 3 cm.]^^[The preset sends pulses of 100 kW and 10 µs. The antenna gain is 30 dBi on the axis. The losses are 6 dB, the system noise temperature is 600 K and the target cross-section is 1 m². The detector adds 64 pulses and asks for $P_d = 0.9$ at $P_{fa} = 10^{-6}$. The controls start at these values.]
 
 ```toml
 libm = "=0.2.16"
@@ -49,7 +49,7 @@ R one sends a hundred kilowatt pulse at ten gigahertz. It adds sixty four pulses
 
 ## Geometry
 
-The beam stays where T3 was at the start, so the gain falls as T3 flies off its axis.
+The beam stays where T3 was at the start,^[nota R1 does not track T3. The beam keeps the boresight, the direction of T3 at t = 0.] so the gain falls as T3 flies off its axis.^^[R1 starts at (−20 km, 0, 100 m) and moves at 20 m/s along $x$. T3 starts at (65 km, 20 km, 8 km) and flies at (350, 100, 0) m/s. The code finds the angle off the boresight with atan2 of the cross and dot products, so the angle stays exact near zero.]
 
 ```rust
 //| caption: Positions in metres, velocities in metres per second.
@@ -76,13 +76,13 @@ The beam stays where T three was at the start, and T three slowly leaves it.
 
 ## Detection
 
-The false-alarm rate alone sets the threshold:
+The false-alarm rate alone sets the threshold:^[def. $P_{fa}$ is the probability that noise alone crosses the threshold $\eta$.]
 
 $$
 \eta = -\ln P_{fa}
 $$
 
-For a steady target, $P_d$ is Marcum's $Q_1$:
+For a steady target, $P_d$ is Marcum's $Q_1$:^[def. A steady target gives the same echo on each pulse (Swerling 0). $P_d$ is the probability of detection, and $\rho_N$ the signal-to-noise ratio of the $N$ pulses together.]^^[The pulses add coherently, so $\rho_N = N \rho_1$. The code adds the series in logarithms, so that no term underflows. It finds the required signal-to-noise ratio per pulse by bisection in decibels, from −60 dB to 90 dB.]
 
 $$
 P_d = \sum_{j=0}^{\infty} \frac{e^{-\rho_N} \rho_N^j}{j!} \, e^{-\eta} \sum_{i=0}^{j} \frac{\eta^i}{i!}
@@ -123,7 +123,7 @@ For nine detections in ten, with one false alarm in a million, each pulse needs 
 
 ## The budget
 
-The radar equation gives the signal-to-noise ratio:
+The radar equation gives the signal-to-noise ratio:^[def. $P_t$ is the transmit power, $G$ the antenna gain, $\lambda$ the wavelength, $\sigma$ the target cross-section, $R$ the range and $L$ the losses. $\tau$ is the pulse length, $k$ the Boltzmann constant and $T_s$ the system noise temperature.]^[nota At t = 0 the build asserts the reference values of the preset: R = 87.678 km, $\rho_1$ = 0.23239, $P_d$ = 0.61462. A change in them stops the build.]
 
 $$
 P_r = \frac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 R^4 L}, \quad \rho_1 = \frac{P_r \tau}{k T_s}
@@ -164,7 +164,7 @@ At the start, T three is about eighty eight kilometres away, but R one reaches o
 
 ## Two minutes
 
-T3 flies away and off the beam, so the margin only falls.
+T3 flies away and off the beam, so the margin only falls.^[def. The margin is the signal-to-noise ratio per pulse above the required one, in decibels.]^[crit. At the preset, the margin never gets to zero, so $P_d$ stays below 0.9 for all of the 2 minutes. The gain falls by 12 dB at 10° off the axis, to a floor 30 dB below the peak.]
 
 ```rust
 //| caption: $P_d$ over two minutes. The rule is the required 0.9; the dot is the chosen time.
@@ -193,4 +193,4 @@ T three flies away and off the beam. In two minutes, the detection probability f
 
 # Notes and sources
 
-The numbers come from the radar network preset in [yujieteo/visuals](https://github.com/yujieteo/visuals/tree/32181d1596676077435fa563d03b9f3816fee234/viz/radar-network), link R1 to R1 through T3. The model has only thermal noise: no clutter and no interference.
+The numbers come from the radar network preset in [yujieteo/visuals](https://github.com/yujieteo/visuals/tree/32181d1596676077435fa563d03b9f3816fee234/viz/radar-network), link R1 to R1 through T3. The model has only thermal noise.^[crit. It has no clutter and no interference.]

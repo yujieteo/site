@@ -5,7 +5,7 @@ theme: penumbra-light
 seed: 20261016
 ---
 
-The solver is a port of the Section Lab of yujieteo/visuals, and it agrees with independent Python references.
+The solver agrees with independent Python references.^[cf. The solver is a port of the Section Lab of yujieteo/visuals.]
 
 <!-- skill: This notebook ports visuals/viz/sectionlab. The examples, the materials, the method, the conventions, the assumptions and the measured torsion accuracy come only through data!, from the files pinned in visuals.lock. It was compared with every case of reference/fixtures.json, reference/reference.json and reference/torsion-accuracy.json of visuals, to the tolerances of the JS tests; compare it again after a change to the solver. -->
 
@@ -27,10 +27,10 @@ Choose an example. Then change its parts in the Parts box. A semicolon separates
 `id: shape dimensions r radii at x y turn material`
 
 - The dimensions follow the shape, in mm, in the order of the table below.
-- `r` gives 1 radius for each corner, in the order of the table. Without `r`, the corners are sharp.
-- `at x y` puts the centre of the box of the part at (x, y). Without it, the centre is at (0, 0).
+- `r` gives 1 radius for each corner, in the order of the table.^[nota Without `r`, the corners are sharp.]
+- `at x y` puts the centre of the box of the part at (x, y).^[nota Without `at`, the centre is at (0, 0).]
 - `turn` turns the part 90° counter-clockwise about that centre.
-- A hole has a minus sign before its shape and no material, for example `bolt: -circle 6 at 0 -40`.
+- A hole has a minus sign before its shape and no material.^[nota For example, `bolt: -circle 6 at 0 -40`.]
 
 ```rust
 //| caption: The shapes of the catalogue: the dimensions in the order that a part takes them, and the corners in the order of its radii.
@@ -44,7 +44,7 @@ let ex = from_json(&example["model"])?;
 println!("{}", s(&example["note"]));
 ```
 
-The Materials box adds or changes a material, as `id E σ0.2 n ε_lim`, with E and σ0.2 in MPa. For a different law in compression, add `c E σ0.2 n ε_lim` after it. The library materials are always available. An empty E_base box keeps the value of the example.
+The Materials box adds or changes a material, as `id E σ0.2 n ε_lim`.^[def. E and σ0.2 are in MPa. n is the exponent of the Ramberg–Osgood law, and ε_lim is the limit strain.] For a different law in compression, add `c E σ0.2 n ε_lim` after it.^[nota The library materials are always available.] An empty E_base box keeps the value of the example.
 
 ```rust
 //| caption: The parts, more materials and E_base. A new example fills the Parts box again.
@@ -72,7 +72,7 @@ match &sec {
 
 ## Section properties
 
-Every property is about the centroid of the section after its transformation to E_base. Each solid part counts its modular ratio n_i = E_i / E_base, and each hole counts −n_i of its part. Thus A, S and I are in E_base-equivalent mm², mm³ and mm^4. The last chapter gives the conventions for the axes, S and Q.
+Every property is about the centroid of the section after its transformation to E_base.^[def. Each solid part counts its modular ratio n_i = E_i / E_base, and each hole counts −n_i of its part.] Thus A, S and I are in E_base-equivalent mm², mm³ and mm^4.^[cf. The last chapter gives the conventions for the axes, S and Q.]
 
 ```rust
 //| caption: The section properties, about the centroid.
@@ -83,7 +83,7 @@ if let Ok(c) = &sec {
 
 ## Torsion
 
-The torsion constant J comes only from a closed-form formula with a measured accuracy. The reference is a numerical Prandtl solution: linear finite elements, 3 uniform refinements and Richardson extrapolation. A formula with a measured error more than its stated accuracy is not used. Every other section shows n/a.
+The torsion constant J comes only from a closed-form formula with a measured accuracy.^^[The reference for the accuracy is a numerical Prandtl solution: linear finite elements, 3 uniform refinements and Richardson extrapolation.] Every other section shows n/a.^[crit. A formula with a measured error more than its stated accuracy is not used.]
 
 ```rust
 //| caption: The torsion constant of this section, or why there is none.
@@ -105,7 +105,7 @@ table(&["Formula", "Method", "Stated", "Measured", "Cases", "Where it holds"], &
 
 ## Moment–curvature
 
-Each material follows the Ramberg–Osgood law $\varepsilon = \sigma / E + 0.002 (\sigma / \sigma_{0.2})^n$, or a different law in compression if you give one. Plane sections stay plane: $\varepsilon = \varepsilon_0 - \kappa v$, with v across the neutral axis from the elastic centroid. The solver cuts each part into 160 strips and finds the $\varepsilon_0$ that carries the axial force N. The curve stops where the first fibre reaches its ε_lim, at the moment M_lim. The last chapter defines M_el, M_p and the modes (a) and (b).
+Each material follows the Ramberg–Osgood law $\varepsilon = \sigma / E + 0.002 (\sigma / \sigma_{0.2})^n$, or a different law in compression if you give one. Plane sections stay plane.^[def. $\varepsilon = \varepsilon_0 - \kappa v$, with v across the neutral axis from the elastic centroid.]^^[The solver cuts each part into 160 strips and finds the $\varepsilon_0$ that carries the axial force N.] The curve stops where the first fibre reaches its ε_lim, at the moment M_lim.^[cf. The last chapter defines M_el, M_p and the modes (a) and (b).]
 
 ```rust
 //| caption: The axis of bending, the mode and the axial force.
@@ -159,7 +159,7 @@ if let (Ok(c), Ok(r)) = (&sec, &pl) {
 
 ## By hand
 
-The steps below work the same properties on paper, by composite parts. Q, M_el, M_p and the moment–curvature curve need numerical integration and iteration, so the steps quote them. All numbers are in mm, N and MPa.
+The steps below work the same properties on paper, by composite parts.^[nota All numbers are in mm, N and MPa.] Q, M_el, M_p and the moment–curvature curve need numerical integration and iteration, so the steps quote them.
 
 ```rust
 //| caption: The section properties by hand, by composite parts.
@@ -170,10 +170,16 @@ if let Ok(c) = &sec { by_hand(c, &pl) }
 
 ```rust
 //| caption: The method, the conventions, the assumptions and the sources of the solver.
-for (k, h) in [("method", "Method"), ("conventions", "Conventions"), ("assumptions", "Assumptions")] {
-    html(&format!("<h3>{h}</h3><ul>{}</ul>", list(k).iter().map(|x| format!("<li>{}</li>", esc(s(x)))).collect::<String>()));
+// Each source is a gloss beside the first method or assumption that has a word (5 letters or more) of its label.
+let _lists = [("method", "Method"), ("conventions", "Conventions"), ("assumptions", "Assumptions")];
+let _at = |label: &str| label.split_whitespace().map(|w| w.trim_matches(|c: char| ",:;()".contains(c))).filter(|w| w.chars().count() >= 5)
+    .find_map(|w| [0, 2].into_iter().find_map(|l| list(_lists[l].0).iter().position(|x| s(x).contains(w)).map(|i| (l, i))));
+let _src: Vec<(Option<(usize, usize)>, String)> = list("sources").iter().map(|x| (_at(s(&x["label"])), gloss(&format!("cf. {}", s(&x["label"]))))).collect();
+for (l, (k, h)) in _lists.iter().enumerate() {
+    html(&format!("<h3>{h}</h3><ul>{}</ul>", list(k).iter().enumerate().map(|(i, x)| format!("<li>{}{}</li>", esc(s(x)), _src.iter().filter(|g| g.0 == Some((l, i))).map(|g| g.1.as_str()).collect::<String>())).collect::<String>()));
 }
-html(&format!("<h3>Sources</h3><ul>{}</ul>", list("sources").iter().map(|x| format!("<li>{}</li>", esc(s(&x["label"])))).collect::<String>()));
+let _rest: String = _src.iter().filter(|g| g.0.is_none()).map(|g| g.1.as_str()).collect();
+if !_rest.is_empty() { html(&format!("<p>Other sources.{_rest}</p>")) }
 ```
 
 # The code
@@ -1233,7 +1239,7 @@ fn by_hand(sec: &Sec, pl: &Result<Pl, String>) {
     let h3 = |t: &str| html(&format!("<h3>{}</h3>", esc(t)));
     let para = |t: &str| html(&format!("<p>{}</p>", esc(t)));
     h3("Parts and modular ratios");
-    para(&format!("Each part counts n_i = E_i / E_base times, with E_base = {} MPa; a hole counts −n_i of the part that it is cut from. A_i is the part's own area and (x_i, y_i) its centroid.", fmt(m.e_base, 6)));
+    html(&format!("<p>{}{}</p>", esc(&format!("Each part counts n_i = E_i / E_base times, with E_base = {} MPa; a hole counts −n_i of the part that it is cut from.", fmt(m.e_base, 6))), gloss("def. A_i is the area of the part itself, and (x_i, y_i) is its centroid.")));
     let mut mats: Vec<usize> = sec.q.iter().filter(|q| !m.parts[q.i].hole).map(|q| q.mat).collect();
     mats.sort();
     mats.dedup();
@@ -1256,7 +1262,8 @@ fn by_hand(sec: &Sec, pl: &Result<Pl, String>) {
         if let Some((what, lines, _)) = c { para(&format!("{}, {what}, about its own centroid:", name(i))); lines.iter().for_each(|l| html(&eq(l))) }
     }
     let n_closed = shut.iter().flatten().count();
-    para(if n_closed == ps.len() { "Every part's values are the closed forms above." } else { "The parts without a closed form above are integrated over their exact boundary of lines and circular arcs, by Green's theorem, as the solver does: fillets and rounded corners have no short closed form." });
+    if n_closed == ps.len() { para("Every part's values are the closed forms above.") }
+    else { html(&format!("<p>{}{}</p>", esc("The parts without a closed form above are integrated over their exact boundary of lines and circular arcs, by Green's theorem, as the solver does."), gloss("nota Fillets and rounded corners have no short closed form."))) }
     table(&["Part", "I_x,i (mm^4)", "I_y,i (mm^4)", "I_xy,i (mm^4)"], &ps.iter().enumerate().map(|(i, q)| vec![name(i), fmt(q.ix, 6), fmt(q.iy, 6), fmt(q.ixy, 6)]).collect::<Vec<_>>());
     h3("Parallel-axis theorem");
     para("Each part's own values move to the section's centroid with d_x,i = x_i − x_c and d_y,i = y_i − y_c.");
@@ -1283,10 +1290,10 @@ fn by_hand(sec: &Sec, pl: &Result<Pl, String>) {
     html(&eq(&fill("r_y = \\sqrt{\\frac{I_y}{A}} = \\sqrt{\\frac{#}{#}} = #", &[t6(iy), t6(a), tq(p.g("ry"), "mm")])));
     html(&eq(&fill("I_p = I_x + I_y = # + # = #", &[t6(ix), t6(iy), tq(p.g("Ip"), "mm}^{4")])));
     html(&eq(&fill("r_p = \\sqrt{\\frac{I_p}{A}} = \\sqrt{\\frac{#}{#}} = #", &[t6(p.g("Ip")), t6(a), tq(p.g("rp"), "mm")])));
-    para(&format!("The first moments Q_x = {} mm³ and Q_y = {} mm³, of the area on one side of each centroidal axis, come from the solver, which integrates each part cut at the axis along its exact boundary.", fmt(p.g("Qx"), 6), fmt(p.g("Qy"), 6)));
+    html(&format!("<p>{}{}</p>", esc(&format!("The first moments Q_x = {} mm³ and Q_y = {} mm³, of the area on one side of each centroidal axis, come from the solver.", fmt(p.g("Qx"), 6), fmt(p.g("Qy"), 6))), gloss("nota The solver cuts each part at the axis and integrates it along its exact boundary.")));
     h3("Torsion constant");
     match torsion(m) {
-        Err(e) => para(&format!("No torsion constant here. {e} The notebook gives J only from a closed-form formula whose accuracy has been measured against a numerical Prandtl solution.")),
+        Err(e) => html(&format!("<p>{}{}</p>", esc(&format!("No torsion constant here. {e}")), gloss("nota The notebook gives J only from a closed-form formula whose accuracy has been measured against a numerical Prandtl solution."))),
         Ok((t, a)) => {
             let (pt, dd) = (&m.parts[0], &m.parts[0].d);
             para(&format!("{}: {}.", if t.method == "exact" { "Exact solution" } else { t.method }, t.text));
@@ -1312,7 +1319,7 @@ fn by_hand(sec: &Sec, pl: &Result<Pl, String>) {
                     let cut = (2.0 - PI / 2.0) * (ri + tt / 2.0);
                     html(&eq(&fill("r_m = r_i + \\frac{t}{2} = # + \\frac{#}{2} = #", &[t6(ri), t6(tt), tq(ri + tt / 2.0, "mm")])));
                     html(&eq(&fill("L = L_{sharp} - k \\left(2 - \\frac{\\pi}{2}\\right) r_m = # - # \\times # = #", &[t6(l + k * cut), t6(k), t6(cut), tq(l, "mm")])));
-                    para(&format!("L_sharp is the mid-line length with sharp corners, and k = {k} is the number of 90° bends: the arc of each bend replaces two tangent lengths."));
+                    html(&format!("<p>{}{}</p>", esc(&format!("L_sharp is the mid-line length with sharp corners, and k = {k} is the number of 90° bends.")), gloss("nota The arc of each bend replaces 2 tangent lengths.")));
                     html(&eq(&fill("J = \\frac{L t^3}{3} = \\frac{# \\times #^3}{3} = #", &[t6(l), t6(tt), j])));
                 }
                 _ => {
@@ -1339,7 +1346,8 @@ fn by_hand(sec: &Sec, pl: &Result<Pl, String>) {
         Err(e) => para(&format!("The fibre solver could not complete the moment–curvature analysis: {e}")),
         Ok(r) => {
             let na = |v: Option<f64>| v.map_or("n/a".into(), |v| format!("{} N·mm", fmt(v, 6)));
-            para(&format!("M_el, M_p and the moment–curvature curve come from the fibre solver: Ramberg–Osgood stresses integrated over strips through every part, with the neutral axis found by iteration. They are quoted here, not derived by hand: the first-yield moment at N = 0 is M_el = {}, the fully plastic moment at N = 0 is M_p = {}, and the allowable moment at ε_lim is M_lim = {} N·mm.", na(r.mel), na(r.mp), fmt(r.lim.m, 6)));
+            html(&format!("<p>{}{}{}</p>", esc("M_el, M_p and the moment–curvature curve come from the fibre solver."), gloss("nota The fibre solver integrates Ramberg–Osgood stresses over strips through every part, and finds the neutral axis by iteration."),
+                esc(&format!(" They are quoted here, not derived by hand: the first-yield moment at N = 0 is M_el = {}, the fully plastic moment at N = 0 is M_p = {}, and the allowable moment at ε_lim is M_lim = {} N·mm.", na(r.mel), na(r.mp), fmt(r.lim.m, 6)))));
             match (&r.zp, r.mp) {
                 (Ok(z), Some(mp)) => html(&eq(&fill("Z_p = \\frac{M_p}{\\sigma_{0.2}} = \\frac{#}{#} = #", &[t6(mp), t6(mp / z), tq(*z, "mm}^{3")]))),
                 (z, _) => para(&format!("Z_p: n/a ({}).", z.as_ref().err().copied().unwrap_or("no M_p"))),

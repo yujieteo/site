@@ -5,7 +5,7 @@ theme: penumbra-light
 seed: 20261015
 ---
 
-Compare each Monte Carlo run on a small finite system with its exact values. A landscape has an exact analysis on its grid. A sandpile has exact values from Dhar's theory.
+Compare each Monte Carlo run on a small finite system with its exact values.^[cf. A landscape has an exact analysis on its grid. A sandpile has exact values from Dhar's theory.]
 
 <!-- skill: This notebook ports the statistical-physics laboratory (physics.json) of visuals/viz/monte-carlo-workbench. Read the data only through data!, from the file pinned in visuals.lock; never copy data into this file. The engine is the module physics in "The code". -->
 
@@ -22,7 +22,7 @@ println!("{}", fit(&cat().statement));
 
 ## An example
 
-In a landscape example, a Metropolis chain moves on a 61 × 61 grid of [−2, 2]² and accepts a step with probability min(1, exp(−ΔV/T)). In a sandpile example, each drive adds grains, and the lattice relaxes fully after each drive.
+In a landscape example, a Metropolis chain moves on a 61 × 61 grid of [−2, 2]².^[def. The chain accepts a step with probability min(1, exp(−ΔV/T)).] In a sandpile example, each drive adds grains, and the lattice relaxes fully after each drive.
 
 ```rust
 //| caption: The example.
@@ -37,7 +37,7 @@ about(ph_ex, &ph_state);
 
 ## Settings
 
-A size setting k gives 2^k replicates, steps, chains or drives. Each replicate or chain has its own random stream, so the same seed gives the same run.
+A size setting k gives 2^k replicates, steps, chains or drives.^[nota Each replicate or chain has its own random stream, so the same seed gives the same run.]
 
 ```rust
 //| caption: The settings of the example.
@@ -57,7 +57,7 @@ match ph_state.as_ref().map_err(String::clone).and_then(physics::job_of) {
 
 ## Results
 
-The Claim column gives the kind of each row. A theorem holds for the stated dynamics, a numerical value comes from a solve, and an observation holds only for this finite run.
+The Claim column gives the kind of each row: a theorem, a numerical value or an observation.^[def. A theorem holds for the stated dynamics. A numerical value comes from a solve.]^[crit. An observation holds only for this finite run.]
 
 ```rust
 //| caption: Run the experiment.
@@ -74,7 +74,7 @@ match &*ph_out {
 
 ## Figures
 
-Each example has its own figures. Most of them plot the run against the exact values.
+Each example has its own figures.^[nota Most of them plot the run against the exact values.]
 
 ```rust
 //| caption: The figure.
@@ -95,7 +95,7 @@ if let Ok(o) = &*ph_out { diagnostics(ph_ex, o) }
 
 ## Methods
 
-Each method card shows an example where the method works and an example where it fails. The settings of a card are changes to the settings of its example.
+Each method card shows an example where the method works and an example where it fails.^[nota The settings of a card are changes to the settings of its example.]
 
 ```rust
 //| caption: The method card.
@@ -160,6 +160,8 @@ fn fit(t: &str) -> String {
 }
 fn bullets<S: AsRef<str>>(v: &[S]) -> String { format!("<ul>{}</ul>", v.iter().map(|x| format!("<li>{}</li>", esc(&fit(x.as_ref())))).collect::<String>()) }
 fn para(t: &str) -> String { format!("<p>{}</p>", esc(&fit(t))) }
+/// Text from the data as the Markdown of a gloss of kind `kind`: each character that starts a marker is kept literal.
+fn note(kind: &str, t: &str) -> String { gloss(&format!("{kind} {}", fit(t).chars().map(|c| if "\\`$*[]".contains(c) { format!("\\{c}") } else { c.into() }).collect::<String>())) }
 /// A number with 4 significant digits.
 fn fmt(x: f64) -> String {
     if !x.is_finite() { return if x.is_nan() { "–".into() } else if x > 0.0 { "∞".into() } else { "−∞".into() } }
@@ -247,17 +249,26 @@ fn figure_controls(id: &str, s: Option<&physics::State>) -> (f64, f64, usize) {
 }
 
 /// The question, the model, the exact analysis of a landscape or the dynamics of a sandpile, and what to observe.
+/// The assumptions of a landscape and the definitions of the sizes of an avalanche are glosses.
 fn about(x: &physics::Example, s: &Result<physics::State, String>) {
     let mut h = para(&x.problem);
     match s.as_ref().map_err(String::clone).and_then(physics::job_of) {
-        Ok(physics::Job::Sand(j)) => h += &bullets(&physics::dynamics(&j)),
+        Ok(physics::Job::Sand(j)) => {
+            let mut d = physics::dynamics(&j);
+            let update = d.pop().unwrap_or_default();
+            let (rule, sizes) = update.split_once(" The size").map_or((update.clone(), String::new()), |(a, b)| (a.into(), format!("The size{b}")));
+            d.push(rule);
+            let n = d.len();
+            h += &format!("<ul>{}</ul>", d.iter().enumerate().map(|(i, t)| format!("<li>{}{}</li>", esc(&fit(t)), if i + 1 == n && !sizes.is_empty() { note("def.", &sizes) } else { String::new() })).collect::<String>());
+        }
         Ok(_) => {
             let id = s.as_ref().unwrap().text("ph_land");
             if let (Some(l), Ok(land)) = (physics::LANDSCAPES.iter().find(|l| l.0 == id), physics::landscape(id)) {
                 let (g, t) = (physics::coords(land.global_node), physics::coords(land.trap_node));
-                h += &format!("{}{}", mathml(l.2, true), bullets(&[format!("{}. {}", l.1, l.3), x.assumptions.clone(),
-                    format!("The exact analysis of the grid finds {} local minima. The global minimum is at ({:.2}, {:.2}), with V = {:.3}. The trap is the other minimum with the largest stability level. It is at ({:.2}, {:.2}), with V = {:.3}, and its stability level is V_m = d* = {:.3}.",
-                        land.minima.len(), g.0, g.1, land.v[land.global_node], t.0, t.1, land.v[land.trap_node], land.dstar)]));
+                h += &format!("{}<ul><li>{}{}</li><li>{}{}</li></ul>", mathml(l.2, true), esc(&fit(&format!("{}. {}", l.1, l.3))), note("def.", &x.assumptions),
+                    esc(&fit(&format!("The exact analysis of the grid finds {} local minima. The global minimum is at ({:.2}, {:.2}), with V = {:.3}. The trap is at ({:.2}, {:.2}), with V = {:.3}, and its stability level is V_m = d* = {:.3}.",
+                        land.minima.len(), g.0, g.1, land.v[land.global_node], t.0, t.1, land.v[land.trap_node], land.dstar))),
+                    note("def.", "The trap is the other minimum with the largest stability level."));
             }
         }
         Err(_) => {}
@@ -507,7 +518,9 @@ fn sand_figure(s: &physics::State, d: &physics::SandOut, plot: &str, tau: f64, d
 
 /// The diagnostics of a run, then the example's own text on diagnostics and interpretation.
 fn diagnostics(x: &physics::Example, o: &physics::Out) {
+    // Each item with its gloss (a caveat), if any.
     let mut out: Vec<String> = vec![];
+    let mut notes: Vec<String> = vec![];
     match &o.detail {
         physics::Detail::Exit(d) => for t in &d.temps {
             out.push(format!("T = {}: {} replicates, {}. The exact mean is {}{}.", fmt(t.t), t.n, if t.censored > 0 { format!("{} censored at the step limit", t.censored) } else { "none censored".into() }, fmt(t.reference),
@@ -521,31 +534,38 @@ fn diagnostics(x: &physics::Example, o: &physics::Out) {
             out.push(format!("The swap rates from T_min up are {}.", d.swaps.iter().map(|v| opt(*v)).collect::<Vec<_>>().join(", ")));
             out.push(format!("Each replica made {} round trips from T_min to T_max and back, on average over the chains.", fmt(d.trips)));
             out.push(format!("The exact mean energy at T_min is {}.", fmt(d.exact_energy)));
-            out.push("The t interval measures the spread between chains, not a bias that every chain shares. The single chains at T_min can agree with each other and still miss the exact value, when they all start in one well.".into());
+            notes.resize(out.len() - 1, String::new());
+            notes.push(note("crit.", "The t interval measures the spread between chains, not a bias that every chain shares. The single chains at T_min can agree with each other and still miss the exact value, when they all start in one well."));
         }
         physics::Detail::Sand(d) => {
             for z in d.sizes.iter().filter(|z| z.chains > 0) {
                 let b = &z.balance;
-                out.push(format!("L = {}: {} chains, {} recorded drives, {} of them with no toppling, and a largest avalanche of {} topplings. Grains: {} added = {} lost at the boundary + {} lost in the bulk + {} change of the mass: {}.{} The mean height in the first and the second half of the drives is {} and {}: close values support a stationary state, and do not prove it.",
+                out.push(format!("L = {}: {} chains, {} recorded drives, {} of them with no toppling, and a largest avalanche of {} topplings. Grains: {} added = {} lost at the boundary + {} lost in the bulk + {} change of the mass: {}.{} The mean height in the first and the second half of the drives is {} and {}.",
                     z.l, z.chains, z.drives, fmt(z.zero as f64 / z.drives as f64), z.max_s, b.added, b.lost_edge, b.lost_bulk, b.mass_change, if b.exact { "exact" } else { "not exact" },
                     z.recurrent.map_or(String::new(), |r| format!(" The burning test after the warm-up of {} drives finds {r} of {} chains recurrent.", z.burn, z.chains)), opt(z.density[0].est), opt(z.density[1].est)));
+                notes.resize(out.len() - 1, String::new());
+                notes.push(note("crit.", "Close values of the two mean heights support a stationary state, and do not prove it."));
             }
             if d.fixed { out.push("This dynamics uses no random number: with the BTW rule, a drive at the centre and ε = 0, every chain repeats the same orbit, so the page gives no interval.".into()) }
         }
     }
-    html(&format!("{}{}{}", bullets(&out), para(&x.diagnostics), para(&x.interpretation)));
+    notes.resize(out.len(), String::new());
+    let items: String = out.iter().zip(&notes).map(|(t, n)| format!("<li>{}{n}</li>", esc(&fit(t)))).collect();
+    // How the run supports its intervals is a gloss beside the interpretation.
+    html(&format!("<ul>{items}</ul><p>{}{}</p>", esc(&fit(&x.interpretation)), note("nota", &x.diagnostics)));
 }
 
-/// A method card: the estimator, its assumptions and settings, and its three examples with their settings.
+/// A method card: the estimator with its assumptions as glosses, its settings, and its three examples, each with
+/// its settings as a gloss.
 fn card(m: &physics::Method) -> String {
     let c = cat();
     let ex = |l: &physics::Link| c.examples.iter().find(|x| x.id == l.example).map_or(String::new(), |x| fit(&x.title));
     let set = |l: &physics::Link| l.settings.as_object().filter(|o| !o.is_empty()).map_or("the settings of the example".into(), |o| o.iter().map(|(k, v)| format!("{} = {}", physics::FIELDS.iter().find(|f| f.0 == k).map_or(k.as_str(), |f| f.1), v.as_str().map_or(v.to_string(), String::from))).collect::<Vec<_>>().join("; "));
     let with = c.methods.iter().find(|x| x.id == m.with).map_or(String::new(), |x| x.name.to_lowercase());
-    format!("<p><strong>{}.</strong> {}.</p>{}{}<h3>Assumptions</h3>{}<h3>Settings</h3>{}<h3>Where it works: {}</h3>{}<p>Settings: {}.</p><h3>Where it fails: {}</h3>{}<p>Settings: {}.</p><h3>Comparison with {}: {}</h3>{}<p>Settings: {}.</p>",
-        esc(&fit(&m.name)), esc(&fit(&m.family)), mathml(&m.estimator, true), para(&m.estimator_text), bullets(&m.assumptions), bullets(&m.settings),
-        esc(&ex(&m.suitable)), para(&m.suitable.text), esc(&fit(&set(&m.suitable))), esc(&ex(&m.failure)), para(&m.failure.text), esc(&fit(&set(&m.failure))),
-        esc(&with), esc(&ex(&m.comparison)), para(&m.comparison.text), esc(&fit(&set(&m.comparison))))
+    let part = |l: &physics::Link| format!("<p>{}{}</p>", esc(&fit(&l.text)), note("nota", &format!("Settings: {}.", set(l))));
+    format!("<p><strong>{}.</strong> {}.</p>{}<p>{}{}</p><h3>Settings</h3>{}<h3>Where it works: {}</h3>{}<h3>Where it fails: {}</h3>{}<h3>Comparison with {}: {}</h3>{}",
+        esc(&fit(&m.name)), esc(&fit(&m.family)), mathml(&m.estimator, true), esc(&fit(&m.estimator_text)), m.assumptions.iter().map(|a| note("crit.", a)).collect::<String>(), bullets(&m.settings),
+        esc(&ex(&m.suitable)), part(&m.suitable), esc(&ex(&m.failure)), part(&m.failure), esc(&with), esc(&ex(&m.comparison)), part(&m.comparison))
 }
 ```
 
