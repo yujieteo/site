@@ -19,6 +19,7 @@
 * { box-sizing: border-box; min-width: 0; }
 input, select, textarea, button { font: inherit; color: inherit; }
 code, pre, kbd, samp { font-family: var(--mono); }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; } /* code wraps on every page; it never scrolls sideways */
 body { margin: 0; background: var(--bg); color: var(--fg); font: 1.125rem/1.45 var(--text); font-kerning: normal; font-variant-numeric: oldstyle-nums proportional-nums; }
 a { color: inherit; text-decoration: none; }
 a:hover, article a { text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; text-decoration-color: var(--warm); }
@@ -101,6 +102,12 @@ summary { font: 1.25rem/1.3 var(--head); color: var(--fg); cursor: pointer; }
 :is([data-view=index], [data-view=article]) .chapter:first-of-type .slide > p:first-of-type::first-letter {
   font-size: 3.35em; line-height: 1; padding: 0.12em 0.2em 0.02em; margin: 0.1em 0.4em 0 0; background: var(--surface); border: 3px double var(--accent); }
 :is([data-view=index], [data-view=article]) .chapter:first-of-type .slide > p:first-of-type::first-line { font-variant-caps: small-caps; letter-spacing: 0.03em; }
+/* Where the browser sinks an initial into its lines, the initial stays whole: a floated initial in a short
+   chapter is cut between the two columns. */
+@supports (initial-letter: 2) {
+  :is([data-view=index], [data-view=article]) .chapter .slide > p:first-of-type::first-letter, .list p::first-letter { float: none; initial-letter: 2; margin: 0 0.1em 0 0; }
+  :is([data-view=index], [data-view=article]) .chapter:first-of-type .slide > p:first-of-type::first-letter { initial-letter: 3; margin: 0 0.4em 0 0; }
+}
 /* Glosses (`^[…]` in the source): commentary in the outer margin beside the line that calls it,
    keyed by a red siglum; its kind (def., cf., crit., nota) as a label. On a narrow screen the
    gloss runs between the words, in brackets, as an interlinear gloss. */
@@ -141,8 +148,8 @@ main { counter-reset: gloss magna; }
   :is([data-view=index], [data-view=article]) :is(.chapter .slide, .magna) { columns: 2; column-gap: var(--gut); }
   :is([data-view=index], [data-view=article]) .slide > :is(h2, .magna, figure.tool) { column-span: all; }
   :is([data-view=index], [data-view=article]) .slide > p { font-size: 1.0625rem; line-height: 1.38; orphans: 3; widows: 3; }
-  :is([data-view=index], [data-view=article]) .slide :is(li, .eq, pre, .ctls, .ctls label, .out > *, .caption, figure, table, .gloss) { break-inside: avoid; }
-  :is([data-view=index], [data-view=article]) .slide .code { font-size: 0.75rem; }
+  :is([data-view=index], [data-view=article]) .slide :is(li, .eq, .out pre, .ctls label, .out > *, .caption, figure, table, .gloss) { break-inside: avoid; }
+  :is([data-view=index], [data-view=article]) .slide .code { font-size: 0.75rem; orphans: 4; widows: 4; }
   :is([data-view=index], [data-view=article]) .slide .out svg { min-width: 0 !important; max-width: 100% !important; height: auto; }
   :is([data-view=index], [data-view=article]) .slide .plot[viewBox="0 0 640 400"] { font-size: 21px; padding-top: 0.75rem; }
   :is([data-view=index], [data-view=article]) .chapter:first-of-type .slide > p:first-of-type { text-align: left; }
