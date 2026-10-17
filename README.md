@@ -60,9 +60,14 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   in. The page redraws a cell's controls when a key, label, range or option changes, so keep a
   `field` apart from a `choice` whose options follow it. A control's key is 100 × its cell + its place
   in the cell; a slider or text box keeps the page's value only while its label stays the same.
-- `^[…]` is a gloss: a red siglum in the text and the gloss beside it in the outer margin (between the
-  words on a phone, after its paragraph in the PDFs). A gloss may open with its kind: `def.`, `cf.`,
-  `crit.` or `nota`.
+- `^[…]` is a gloss: a red siglum in the text and the gloss beside its line, in the outer margin, or in
+  the gutter of a two-column chapter (between the words on a phone, after its paragraph in the PDFs).
+  `^^[…]` is a long note: a red number in the text and the note above or below its chapter. A note may
+  open with its kind: `def.`, `cf.`, `crit.` or `nota`.
+- A chapter of plain prose (120 words or more, and no cells, figures or code) is set in two balanced
+  columns on a wide screen, as in a codex; other chapters keep one column. The Article PDF runs in two
+  columns throughout.
+- A post needs no cells: a notebook of front matter (`title`, `summary`) and Markdown is a story.
 - ```` ```toml ```` fences add pinned crates; ```` ```say ```` fences are narration; `$…$` and `$$`
   are TeX; `<!-- … -->` comments are agent skills, exposed as text through `window.notebook.skills()`.
 - `![name](viz/<slug>/index.html)` embeds a sealed artifact of yujieteo/visuals, pinned in `visuals.lock`:

@@ -104,12 +104,18 @@ summary { font: 1.25rem/1.3 var(--head); color: var(--fg); cursor: pointer; }
 /* Glosses (`^[…]` in the source): commentary in the outer margin beside the line that calls it,
    keyed by a red siglum; its kind (def., cf., crit., nota) as a label. On a narrow screen the
    gloss runs between the words, in brackets, as an interlinear gloss. */
-main { counter-reset: gloss; }
+main { counter-reset: gloss magna; }
 .sig { font: italic 0.7em/0 var(--text); color: var(--warm); margin-left: 0.05em; }
 .sig::after { counter-increment: gloss; content: counter(gloss, lower-alpha); }
 .gloss { float: right; clear: right; width: calc(2 * var(--u) - 3rem); margin: 0.3em calc(1.25rem - 2 * var(--u)) 0.75rem 0; color: var(--fg2);
   font: italic 0.875rem/1.36 var(--text); text-align: left; text-indent: 0; hyphens: auto; -webkit-hyphens: auto; }
 .gloss::before { content: counter(gloss, lower-alpha) "\2002"; color: var(--warm); }
+/* Long notes (`^^[…]`): numbered, set small above and below their chapter, as the masora magna fills
+   a codex's top and bottom margins. */
+.sig.mg::after { counter-increment: magna; content: counter(magna); }
+.magna { margin: 0.25rem 0 1.25rem; padding: 0.35rem 0; border-block: 1px solid var(--rule); color: var(--fg2); font: italic 0.8125rem/1.35 var(--text); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.magna p { margin: 0 0 0.25rem; break-inside: avoid; }
+.mn { color: var(--warm); font-style: normal; margin-right: 0.45em; }
 .gk { font: 0.6875rem/1 var(--small); font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 0.45em; }
 @media (max-width: 48rem) {
   .gloss { float: none; width: auto; margin: 0; font-size: 0.85em; }
@@ -124,8 +130,23 @@ main { counter-reset: gloss; }
   .lede { font-size: 1.25rem; margin-bottom: 3rem; }
   :is([data-view=index], [data-view=article]) .slide > p, .list p { font-size: 1.09375rem; }
 }
-/* Slides and the handout use the full width, without the canon or its ruling. */
+/* Two columns per section on a wide screen, as in a codex, for a chapter of plain prose of 120 words or
+   more (the builder marks it `cols`). A short note floats out of its column into the gutter (from the
+   first column) or the outer margin (from the second); long notes stand above and below; the section's
+   number hangs in the inner margin. Other chapters keep one column. */
+@media (min-width: 64rem) {
+  :root { --gut: calc(1.2 * var(--u)); }
+  :is([data-view=index], [data-view=article]) .slide.cols { columns: 2; column-gap: var(--gut); }
+  .slide.cols > :is(h2, .magna) { column-span: all; }
+  :is([data-view=index], [data-view=article]) .slide.cols > p { font-size: 1.0625rem; line-height: 1.38; }
+  :is([data-view=index], [data-view=article]) .slide.cols .gloss { width: calc(var(--gut) - 1.5rem); margin-right: calc(0.75rem - var(--gut)); font-size: 0.75rem; break-inside: avoid; }
+  :is([data-view=index], [data-view=article]) .magna { columns: 2; column-gap: var(--gut); }
+  [data-view=article] .chapter h2 { position: relative; }
+  [data-view=article] .chapter h2::before { position: absolute; right: 100%; padding-right: 0.75rem; white-space: nowrap; }
+}
+/* Slides and the handout use the full width, without the canon, its ruling or the long notes. */
 :is([data-view=slides], [data-view=handout]) main { max-width: 90rem; padding: 2rem 16px 6rem; background: none; }
+:is([data-view=slides], [data-view=handout]) .magna { display: none; }
 
 @media print { .tools, .top nav { display: none; } }
 /* Fades, as on openai.com: a page fades in as it opens, and a section fades in as the reader scrolls to it.
