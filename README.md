@@ -65,9 +65,10 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   `^^[…]` is a long note: a red number in the text and the note above or below its chapter. A note may
   open with its kind: `def.`, `cf.`, `crit.` or `nota`.
 - On a wide screen, every chapter is set in two balanced columns, as in a codex, and the page scrolls.
-  A block that reads badly when split (a short paragraph, an equation, a code listing, controls, a plot)
-  stays whole in one column; embedded tools take the full width. The Article PDF runs in two columns
-  throughout.
+  A block that reads badly when split (a short paragraph, an equation, a control, a plot) stays whole
+  in one column. Embedded tools, and a cell's output with a table or a displayed formula, take the full
+  width. A control takes two lines, and code wraps: nothing scrolls sideways in a column. The Article PDF
+  runs in two columns throughout.
 - A post needs no cells: a notebook of front matter (`title`, `summary`) and Markdown is a story.
 - ```` ```toml ```` fences add pinned crates; ```` ```say ```` fences are narration; `$…$` and `$$`
   are TeX; `<!-- … -->` comments are agent skills, exposed as text through `window.notebook.skills()`.
