@@ -56,7 +56,7 @@ pronounce: gigahertz ɡˈɪɡəhˌɜɹts            (optional: Kokoro phonemes f
   and cycles are errors. Items (`fn`, `struct`, `use`, `const`) are shared by all cells. Every run is
   a clean run, so outputs never depend on what ran before; the page keeps one instance, so a `static`
   may hold what a cell parsed from `data!` bytes, and nothing else. `//| caption: …` captions a cell.
-- In cells: `println!`, `html`, `table`, `slider`, `choice`, `field` (a text box), `stage` (numeric cell output), `Plot` and `data!("path")`: the bytes of a file pinned in `visuals.lock`, compiled
+- In cells: `println!`, `html`, `table`, `slider`, `choice`, `field` (a text box), `gloss` (a gloss in a cell's HTML, as `^[…]` in the text), `stage` (numeric cell output), `Plot` and `data!("path")`: the bytes of a file pinned in `visuals.lock`, compiled
   in. The page redraws a cell's controls when a key, label, range or option changes, so keep a
   `field` apart from a `choice` whose options follow it. A control's key is 100 × its cell + its place
   in the cell; a slider or text box keeps the page's value only while its label stays the same.

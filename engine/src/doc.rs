@@ -149,10 +149,13 @@ pub fn inline(s: &str) -> String {
         Sp::M(m) => mathml(m, false),
         Sp::A(t, u) => format!("<a href=\"{}\">{}</a>", esc(u), inline(t)), // a link's text has its own styles
         // A gloss: its siglum here and its text beside it. A long note leaves only its number (`article` sets it).
-        Sp::G(g, false) => format!("<sup class=\"sig\"></sup><span class=\"gloss\" role=\"note\">{}</span>", note(g)),
+        Sp::G(g, false) => gloss(g),
         Sp::G(_, true) => "<sup class=\"sig mg\"></sup>".into(),
     }).collect()
 }
+
+/// A gloss (`^[…]`, Markdown): its siglum here and its text beside it.
+pub fn gloss(g: &str) -> String { format!("<sup class=\"sig\"></sup><span class=\"gloss\" role=\"note\">{}</span>", note(g)) }
 
 /// A note's body: its kind (if it opens with one) as a label, then its text.
 fn note(g: &str) -> String {

@@ -109,6 +109,13 @@ fn strip(h: &str) -> String {
 /// Text that `doc::spans` keeps literal: a backslash before each character that starts a marker.
 fn lit(s: &str) -> String { s.chars().map(|c| if "\\`$*[".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
 
+/// Output HTML as a paragraph's Markdown: literal text, but a gloss from `nb::gloss` as `^[…]` again.
+fn glossed(h: &str) -> String {
+    let Some((a, b)) = h.split_once("<sup class=\"sig\" data-g=\"") else { return lit(&strip(h)) };
+    let (g, rest) = b.split_once('"').unwrap_or((b, ""));
+    format!("{}^[{}]{}", lit(&strip(a)), strip(g), glossed(rest.split_once("<!--/g-->").map_or("", |x| x.1)))
+}
+
 /// The writer: page geometry (width, height, margins above and below; column left and width), the
 /// cursor's y (from the top), pages as (content, annotations), and the shared resources. `gl` and `mg`
 /// count the glosses and long notes; `lead` (a mark and its colour) and `cap` (an initial's colour and
@@ -408,6 +415,18 @@ impl Pdf<'_> {
             }
         }
     }
+    /// A paragraph, then its glosses and long notes, small and indented, each after its siglum or
+    /// number; whether it has any.
+    fn noted(&mut self, t: &str, st: St, ind: f32) -> bool {
+        let (mut gl, mut mg) = (self.gl, self.mg);
+        self.para(t, st, ind);
+        let notes: Vec<(String, bool)> = doc::spans(t).into_iter().filter_map(|s| if let Sp::G(g, l) = s { Some((g, l)) } else { None }).collect();
+        for (g, long) in &notes {
+            self.lead = Some((if *long { mg += 1; mg.to_string() } else { gl += 1; siglum(gl) }, self.pal[8]));
+            self.para(g, St(0, 8.5, self.pal[3], 2), ind + 12.0);
+        }
+        !notes.is_empty()
+    }
     /// A cell's output: text as code, plots as figures, any other HTML as text.
     fn output(&mut self, h: &str, caption: &str) {
         let (mut rest, mut fig) = (h, false);
@@ -428,7 +447,7 @@ impl Pdf<'_> {
                     self.code(&rows.filter(|r| !r.is_empty()).collect::<Vec<_>>().join("\n"), false)
                 }
                 (Some(_), _) => fig |= self.figure(w, w * 0.625, &mut |p, x, y| p.plot(a, x, y, w)),
-                (None, t) => if !t.trim().is_empty() { self.para(&lit(&t), St(0, 10.0, self.pal[3], 0), 0.0) },
+                (None, t) => if !t.trim().is_empty() { self.noted(&glossed(a), St(0, 10.0, self.pal[3], 0), 0.0); },
             }
             rest = b;
         }
@@ -583,23 +602,15 @@ pub fn write(d: &Doc, out: &[String], _stage: &[f32], get: &dyn Fn(&str) -> Opti
             B::H(1, _, _) if slides => skip = true,
             B::H(l, t, _) => { skip = false; p.heading(t, if *l == 1 { 16.0 } else { 12.0 }) }
             _ if skip || (slides && matches!(b, B::Img(..))) => {}
-            // Paragraphs run on: a red pilcrow opens each that follows another. Glosses follow their
-            // paragraph, small and indented, each after its siglum.
+            // Paragraphs run on: a red pilcrow opens each that follows another.
             B::P(t) => {
                 if follows && !slides { (p.y, p.lead) = (p.y - 0.45 * text.1, Some(("¶".into(), red))) }
-                let (mut gl, mut mg) = (p.gl, p.mg);
-                p.para(t, text, 0.0);
-                let notes: Vec<(String, bool)> = doc::spans(t).into_iter().filter_map(|s| if let Sp::G(g, l) = s { Some((g, l)) } else { None }).collect();
-                for (g, long) in &notes {
-                    p.lead = Some((if *long { mg += 1; mg.to_string() } else { gl += 1; siglum(gl) }, red));
-                    p.para(g, St(0, 8.5, fg2, 2), 12.0);
-                }
-                after = notes.is_empty();
+                after = !p.noted(t, text, 0.0);
             }
             B::L(ord, items) => for (i, t) in items.iter().enumerate() {
                 if !p.need(1.35 * text.1) { break }
                 p.put(p.x + 2.0, p.y + 1.35 * text.1, text, &if *ord { format!("{}.", i + 1) } else { "•".into() });
-                p.para(t, text, 16.0);
+                p.noted(t, text, 16.0);
             },
             B::C(l, s, _) if l == "rust" => {
                 let (caption, code) = cell::opts(s);

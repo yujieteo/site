@@ -159,7 +159,7 @@ main { counter-reset: gloss magna; }
 }
 /* Slides and the handout use the full width, without the canon, its ruling or the long notes. */
 :is([data-view=slides], [data-view=handout]) main { max-width: 90rem; padding: 2rem 16px 6rem; background: none; }
-:is([data-view=slides], [data-view=handout]) .magna { display: none; }
+:is([data-view=slides], [data-view=handout]) :is(.magna, .gloss, .sig) { display: none; }
 
 @media print { .tools, .top nav { display: none; } }
 /* Fades, as on openai.com: a page fades in as it opens, and a section fades in as the reader scrolls to it.
