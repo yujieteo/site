@@ -130,17 +130,23 @@ main { counter-reset: gloss magna; }
   .lede { font-size: 1.25rem; margin-bottom: 3rem; }
   :is([data-view=index], [data-view=article]) .slide > p, .list p { font-size: 1.09375rem; }
 }
-/* Two columns per section on a wide screen, as in a codex, for a chapter of plain prose of 120 words or
-   more (the builder marks it `cols`). A short note floats out of its column into the gutter (from the
-   first column) or the outer margin (from the second); long notes stand above and below; the section's
-   number hangs in the inner margin. Other chapters keep one column. */
+/* Every chapter in two columns on a wide screen, as in a codex; the page scrolls. The columns balance
+   on the blocks' real heights, and a block that would read badly when split (a short paragraph, an
+   equation, a code listing, controls, a plot, a table) stays whole in one column. A short note floats
+   out of its column into the gutter (from the first column) or the outer margin (from the second); long
+   notes stand above and below; the section's number hangs in the inner margin. Embedded tools take the
+   full width. */
 @media (min-width: 64rem) {
   :root { --gut: calc(1.2 * var(--u)); }
-  :is([data-view=index], [data-view=article]) .slide.cols { columns: 2; column-gap: var(--gut); }
-  .slide.cols > :is(h2, .magna) { column-span: all; }
-  :is([data-view=index], [data-view=article]) .slide.cols > p { font-size: 1.0625rem; line-height: 1.38; }
-  :is([data-view=index], [data-view=article]) .slide.cols .gloss { width: calc(var(--gut) - 1.5rem); margin-right: calc(0.75rem - var(--gut)); font-size: 0.75rem; break-inside: avoid; }
-  :is([data-view=index], [data-view=article]) .magna { columns: 2; column-gap: var(--gut); }
+  :is([data-view=index], [data-view=article]) :is(.chapter .slide, .magna) { columns: 2; column-gap: var(--gut); }
+  :is([data-view=index], [data-view=article]) .slide > :is(h2, .magna, figure.tool) { column-span: all; }
+  :is([data-view=index], [data-view=article]) .slide > p { font-size: 1.0625rem; line-height: 1.38; orphans: 3; widows: 3; }
+  :is([data-view=index], [data-view=article]) .slide :is(li, .eq, pre, .ctls, .ctls label, .out > *, .caption, figure, table, .gloss) { break-inside: avoid; }
+  :is([data-view=index], [data-view=article]) .slide .code { font-size: 0.75rem; }
+  :is([data-view=index], [data-view=article]) .slide .out svg { min-width: 0 !important; max-width: 100% !important; height: auto; }
+  :is([data-view=index], [data-view=article]) .slide .plot[viewBox="0 0 640 400"] { font-size: 21px; padding-top: 0.75rem; }
+  :is([data-view=index], [data-view=article]) .chapter:first-of-type .slide > p:first-of-type { text-align: left; }
+  :is([data-view=index], [data-view=article]) .slide .gloss { width: calc(var(--gut) - 1.5rem); margin-right: calc(0.75rem - var(--gut)); font-size: 0.75rem; }
   [data-view=article] .chapter h2 { position: relative; }
   [data-view=article] .chapter h2::before { position: absolute; right: 100%; padding-right: 0.75rem; white-space: nowrap; }
 }
