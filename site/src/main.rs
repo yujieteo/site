@@ -14,9 +14,9 @@ pub const HOST: &str = include_str!("../../web/host.js");
 const WASM: &str = "target/wasm32-unknown-unknown/release/engine.wasm";
 use doc::esc;
 
+/// The first `n` fonts as @font-face rules, each marked with its file for the page's PDF export.
 fn font_css(n: usize) -> String {
-    let face = |fam: &str, f: &str| format!("@font-face{{font-family:\"{fam}\";src:url({})}}\n", pack::data_url(f, &font(f)));
-    FONTS[..n].iter().map(|(fam, f)| face(fam, f)).collect()
+    FONTS[..n].iter().map(|(fam, f, d)| format!("@font-face{{/*{f}*/font-family:\"{fam}\";{d}src:url({})}}\n", pack::data_url(f, &font(f)))).collect()
 }
 
 /// One HTML page: its path under dist/, title, body, attributes on <html>, how many `FONTS` it
@@ -25,7 +25,7 @@ pub struct Page { pub path: String, pub title: String, pub body: String, pub att
 
 impl Page {
     fn new(path: &str, title: &str, body: String) -> Page {
-        Page { path: path.into(), title: title.into(), body, attrs: String::new(), fonts: 2, script: String::new() }
+        Page { path: path.into(), title: title.into(), body, attrs: String::new(), fonts: 6, script: String::new() }
     }
 }
 
@@ -51,7 +51,8 @@ fn plain(dir: &Path, base: &Path) -> Vec<Page> {
     entries.iter().flat_map(|p| if p.is_dir() { plain(p, base) } else if p.extension().is_some_and(|x| x == "html") {
         let body = fs::read_to_string(p).unwrap();
         let title = body.split_once("<h1>").and_then(|(_, r)| r.split_once("</h1>")).map_or("", |(t, _)| t).to_string();
-        vec![Page::new(&p.strip_prefix(base).unwrap().to_string_lossy(), &title, body)]
+        let fonts = if body.contains("<code") || body.contains("<pre") { FONTS.len() } else { 6 };
+        vec![Page { fonts, ..Page::new(&p.strip_prefix(base).unwrap().to_string_lossy(), &title, body) }]
     } else { vec![] }).collect()
 }
 

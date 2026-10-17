@@ -1,5 +1,5 @@
 //! PDF: the four print forms from the same parse and cell outputs as the page.
-//! Fonts are embedded OpenType (CFF) subsets, addressed by glyph ID with a ToUnicode map;
+//! Fonts are embedded OpenType subsets (TrueType or CFF outlines), addressed by glyph ID with a ToUnicode map;
 //! plots are the cells' own SVG; PNGs (grey,
 //! RGB or palette; transparency as a colour key, or the palette's leading entries under half
 //! alpha) pass through undecoded. Geometry is fixed per form and nothing reads a clock, so
@@ -9,11 +9,29 @@ use crate::{cell, doc::{self, B, Doc, M, Sp}, pack, theme};
 use std::collections::BTreeMap;
 
 pub const FORMS: [&str; 4] = ["notebook", "slides", "handout", "article"];
-/// Portrait page: width, height, margin above and below, margin either side (points).
-const A4: (f32, f32, f32, f32) = (595.28, 841.89, 56.69, 62.36);
+/// Portrait page: width and height (points).
+const A4: (f32, f32) = (595.28, 841.89);
 
-/// Font slots (`St.0`): body, heading, mono, maths.
-const FILES: [&str; 4] = ["mono.otf", "mono.otf", "mono.otf", "math.otf"];
+/// The Van de Graaf canon: margins above, below and inside (left), and the text block's width.
+/// A ninth of the page above and inside, two ninths below and outside.
+fn canon(w: f32, h: f32) -> (f32, f32, f32, f32) { (h / 9.0, 2.0 * h / 9.0, w / 9.0, 2.0 * w / 3.0) }
+
+/// Font slots (`St.0`): body, heading, mono, maths; then the faces a style picks (`face`): italic,
+/// bold and mono bold; and small text.
+const FILES: [&str; 8] = ["text.ttf", "head.ttf", "mono.ttf", "math.ttf", "italic.ttf", "bold.ttf", "monobold.ttf", "small.ttf"];
+
+/// The slot that draws a style, and the style bits it still fakes (1 bold strokes, 2 italic slants).
+fn face(st: St) -> (usize, u8) {
+    match (st.0, st.3 & 3) {
+        (0, 1) => (5, 0),
+        (0, b) if b & 2 > 0 => (4, b & 1),
+        (2, b) if b & 1 > 0 => (6, b & 2),
+        (k, b) => (k, b),
+    }
+}
+
+/// A gloss's siglum: a, b, …, z, then a again.
+fn siglum(n: usize) -> String { char::from(b'a' + ((n.max(1) - 1) % 26) as u8).into() }
 
 fn be(b: &[u8], o: usize, n: usize) -> usize { b.get(o..o + n).map_or(0, |s| s.iter().fold(0, |a, &x| a << 8 | x as usize)) }
 
@@ -24,8 +42,9 @@ fn stream(dict: &str, data: &[u8]) -> Vec<u8> { [format!("<<{dict}/Length {}>>st
 /// A string as hex UTF-16 units.
 fn utf16(s: &str) -> String { s.encode_utf16().map(|u| format!("{u:04X}")).collect() }
 
-/// An OpenType font: character map, advances, metrics (bbox, ascent, descent), glyphs used.
-struct Font { data: Vec<u8>, map: BTreeMap<u32, u16>, used: BTreeMap<u16, char>, hm: usize, nh: usize, em: usize, m: [i16; 6] }
+/// An OpenType font: character map, advances, metrics (bbox, ascent, descent), glyphs used,
+/// and whether its outlines are TrueType.
+struct Font { data: Vec<u8>, map: BTreeMap<u32, u16>, used: BTreeMap<u16, char>, hm: usize, nh: usize, em: usize, m: [i16; 6], tt: bool }
 
 impl Font {
     fn new(data: Vec<u8>) -> Font {
@@ -51,7 +70,7 @@ impl Font {
         let hd = t(b"head");
         let em = be(b, hd + 18, 2).max(1);
         let m = [hd + 36, hd + 38, hd + 40, hd + 42, hh + 4, hh + 6].map(|o| (be(b, o, 2) as u16 as i16 as i32 * 1000 / em as i32) as i16);
-        Font { hm: t(b"hmtx"), nh: be(b, hh + 34, 2).max(1), map, used: BTreeMap::new(), em, m, data }
+        Font { hm: t(b"hmtx"), nh: be(b, hh + 34, 2).max(1), map, used: BTreeMap::new(), em, m, tt: t(b"glyf") > 0, data }
     }
     fn adv(&self, g: usize) -> f32 { be(&self.data, self.hm + 4 * g.min(self.nh - 1), 2) as f32 * 1000.0 / self.em as f32 }
 }
@@ -90,26 +109,30 @@ fn strip(h: &str) -> String {
 /// Text that `doc::spans` keeps literal: a backslash before each character that starts a marker.
 fn lit(s: &str) -> String { s.chars().map(|c| if "\\`$*[".contains(c) { format!("\\{c}") } else { c.into() }).collect() }
 
-/// The writer: page geometry (width, height, margin; column left and width), the cursor's y
-/// (from the top), pages as (content, annotations), and the shared resources.
+/// The writer: page geometry (width, height, margins above and below; column left and width), the
+/// cursor's y (from the top), pages as (content, annotations), and the shared resources. `gl` counts
+/// the glosses; `lead` (a mark and its colour) and `cap` (an initial's colour and depth in lines)
+/// wait for the next paragraph.
 struct Pdf<'a> {
     get: &'a dyn Fn(&str) -> Option<Vec<u8>>, fonts: Vec<(&'static str, Font)>, pages: Vec<(String, String)>,
     gs: BTreeMap<String, String>, imgs: Vec<Vec<u8>>, pal: [u32; 11],
-    w: f32, h: f32, m: f32, x: f32, col: f32, y: f32, slides: bool, fig: usize,
+    w: f32, h: f32, m: f32, mb: f32, x: f32, col: f32, y: f32, slides: bool, fig: usize,
+    gl: usize, lead: Option<(String, u32)>, cap: Option<(u32, usize)>,
 }
 
 impl Pdf<'_> {
     fn out(&mut self) -> &mut String { &mut self.pages.last_mut().unwrap().0 }
-    /// A new page, numbered at the foot from the second on (not on slides).
+    /// A new page, numbered from the second on under the text block (not on slides).
     fn page(&mut self) {
-        let (n, st) = ((self.pages.len() + 1).to_string(), St(0, 9.0, self.pal[4], 0));
+        let (n, st) = ((self.pages.len() + 1).to_string(), St(7, 9.0, self.pal[4], 0));
         self.pages.push((format!("{} rg 0 0 {} {} re f\n", rgb(self.pal[0]), self.w, self.h), String::new()));
-        if !self.slides && n != "1" { let x = (self.w - self.run(st, &n).1) / 2.0; self.put(x, self.h - self.m / 2.0, st, &n); }
+        let (_, mb, x, col) = canon(self.w, self.h);
+        if !self.slides && n != "1" { let x = x + (col - self.run(st, &n).1) / 2.0; self.put(x, self.h - 0.6 * mb, st, &n); }
         self.y = self.m;
     }
     /// Room for `h` more points: on a slide there is no next page, so the rest is dropped.
     fn need(&mut self, h: f32) -> bool {
-        let fits = self.y + h <= self.h - self.m;
+        let fits = self.y + h <= self.h - self.mb;
         if !fits && !self.slides { self.page() }
         fits || !self.slides
     }
@@ -123,10 +146,10 @@ impl Pdf<'_> {
     /// A run of text as pieces, each in the first font with its characters (the style's, then
     /// body, then maths): font, glyph IDs as hex, width; and the whole width.
     fn run(&mut self, st: St, s: &str) -> (Vec<(usize, String, f32)>, f32) {
-        let mut v: Vec<(usize, String, f32)> = vec![];
+        let (mut v, k0): (Vec<(usize, String, f32)>, _) = (vec![], face(st).0);
         for c in s.chars() {
-            let mut i = self.font(st.0);
-            for k in [0, 3, st.0] { if !self.fonts[i].1.map.contains_key(&(c as u32)) { i = self.font(k) } }
+            let mut i = self.font(k0);
+            for k in [0, 3, k0] { if !self.fonts[i].1.map.contains_key(&(c as u32)) { i = self.font(k) } }
             let f = &mut self.fonts[i].1;
             let g = f.map.get(&(c as u32)).copied().unwrap_or(0);
             f.used.insert(g, c);
@@ -138,7 +161,8 @@ impl Pdf<'_> {
     }
     fn put(&mut self, mut x: f32, y: f32, st: St, s: &str) -> f32 {
         let ((v, w), c, h) = (self.run(st, s), rgb(st.2), self.h);
-        let (fill, slant) = ((st.3 & 1) * 2, (st.3 & 2) as f32 * 0.1); // bold also strokes; italic slants
+        let fake = face(st).1;
+        let (fill, slant) = ((fake & 1) * 2, (fake & 2) as f32 * 0.1); // a faked bold also strokes; a faked italic slants
         for (i, hex, pw) in v {
             w!(self.out(), "BT /F{i} {} Tf {fill} Tr 0.3 w {c} rg {c} RG 1 0 {slant} 1 {x:.2} {:.2} Tm <{hex}> Tj ET\n", st.1, h - y);
             x += pw;
@@ -150,13 +174,19 @@ impl Pdf<'_> {
         let rect = format!("{:.1} {:.1} {:.1} {:.1}", r[0], h - r[1], r[2], h - r[3]);
         w!(self.pages.last_mut().unwrap().1, "<</Type/Annot/Subtype/Link/Rect[{rect}]/Border[0 0 0]/A<</S/URI/URI({u})>>>>");
     }
+    /// A rectangle (left, top, width, height), filled in `fill` and ruled in `rule` when given.
+    fn rect(&mut self, r: [f32; 4], fill: Option<u32>, rule: Option<u32>) {
+        let b = format!("{:.2} {:.2} {:.2} {:.2} re", r[0], self.h - r[1] - r[3], r[2], r[3]);
+        if let Some(c) = fill { w!(self.out(), "{} rg {b} f\n", rgb(c)) }
+        if let Some(c) = rule { w!(self.out(), "{} RG 0.6 w {b} S\n", rgb(c)) }
+    }
     fn stroke(&mut self, pts: &[(f32, f32)], w: f32, c: u32) {
         let p: Vec<String> = pts.iter().map(|q| format!("{:.2} {:.2}", q.0, self.h - q.1)).collect();
         let Some((a, rest)) = p.split_first().filter(|r| !r.1.is_empty()) else { return };
         w!(self.out(), "{} RG {w:.2} w 1 J 1 j {a} m {} l S\n", rgb(c), rest.join(" l "));
     }
 
-    /// TeX maths in TeX Gyre Pagella Math: italic letters, spaced relations, fractions, roots, scripts, and
+    /// TeX maths in STIX Two Math: italic letters, spaced relations, fractions, roots, scripts, and
     /// in display style (`d`) large operators with their limits above and below.
     fn mbox(&mut self, m: &M, s: f32, d: bool) -> Bx {
         let mut glyph = |t: String, s: f32, pad: f32| Bx(self.run(St(3, s, 0, 0), &t).1 + 2.0 * pad, 0.75 * s, 0.25 * s, vec![(pad, 0.0, s, t)], vec![]);
@@ -218,7 +248,8 @@ impl Pdf<'_> {
     }
 
     /// Inline Markdown as words of styled pieces: text (code in mono, links coloured) or maths.
-    fn words(&self, s: &str, st: St) -> Vec<Vec<Piece>> {
+    /// A gloss leaves its siglum, a small red letter; `write` sets the gloss after the paragraph.
+    fn words(&mut self, s: &str, st: St) -> Vec<Vec<Piece>> {
         let mut v: Vec<Vec<Piece>> = vec![vec![]];
         // A link's text has its own styles: its runs keep the link.
         let runs = doc::spans(s).into_iter().flat_map(|sp| match sp {
@@ -230,6 +261,11 @@ impl Pdf<'_> {
                 Sp::M(m) => { v.last_mut().unwrap().push((st, String::new(), None, Some(doc::tex(&m)))); continue }
                 Sp::T(t, b) => (t, b),
                 Sp::A(t, _) => (t, 0),
+                Sp::G(_) => {
+                    self.gl += 1;
+                    v.last_mut().unwrap().push((St(0, 0.7 * st.1, self.pal[8], 2), siglum(self.gl), None, None));
+                    continue
+                }
             };
             let (font, size) = if bits & 4 > 0 { (2, st.1 * 0.9) } else { (st.0, st.1) };
             let s2 = St(font, size, if href.is_some() { self.pal[7] } else { st.2 }, st.3 | bits & 3);
@@ -255,26 +291,50 @@ impl Pdf<'_> {
         w
     }
     /// A justified paragraph `indent` points in. A line that would stretch too far stays ragged.
+    /// A waiting `lead` opens it; a waiting `cap` sets its first letter as an initial, `n` lines
+    /// deep, framed twice on the surface colour when 3 deep (the illuminated initial).
     fn para(&mut self, s: &str, st: St, indent: f32) {
-        let words = self.words(s, st);
+        let lead = 1.35 * st.1;
+        let cap = self.cap.take().and_then(|(c, n)| Some((s.chars().next().filter(|x| x.is_alphabetic())?, c, n)));
+        let s = cap.map_or(s, |(ch, ..)| &s[ch.len_utf8()..]);
+        let mut words = self.words(s, st);
+        if let Some((t, c)) = self.lead.take() { words.insert(0, vec![(St(st.0, st.1, c, 0), t, None, None)]) }
         let wid: Vec<f32> = words.iter().map(|w| w.iter().map(|p| self.piece(p, None)).sum()).collect();
-        let (space, lead, col, mut i) = (self.run(st, " ").1, 1.35 * st.1, self.col - indent, 0);
+        let (space, mut i, mut ln, mut drop) = (self.run(st, " ").1, 0, 0, (0.0, 0));
+        if let Some((ch, c, n)) = cap && self.need(n as f32 * lead) {
+            // The letter runs from the first line's cap height (0.65 em) to the last line's baseline.
+            let (framed, x, base) = (n > 2, self.x + indent, self.y + n as f32 * lead);
+            let k = St(0, ((n - 1) as f32 * lead + 0.65 * st.1) / 0.65 * if framed { 0.72 } else { 1.0 }, c, 1);
+            let (t, pad) = (ch.to_string(), if framed { 0.35 * st.1 } else { 0.0 });
+            let w = self.run(k, &t).1 + 2.0 * pad;
+            if framed {
+                let (top, ht) = (self.y + lead - 0.85 * st.1, (n - 1) as f32 * lead + 1.1 * st.1);
+                self.rect([x, top, w, ht], Some(self.pal[1]), Some(self.pal[6]));
+                self.rect([x + 1.5, top + 1.5, w - 3.0, ht - 3.0], None, Some(self.pal[6]));
+            }
+            self.put(x + pad, base - if framed { 0.3 * st.1 } else { 0.0 }, k, &t);
+            drop = (w + 0.35 * st.1, n);
+        }
         while i < words.len() {
-            let (mut j, mut used) = (i + 1, wid[i]);
+            let ind = indent + if ln < drop.1 { drop.0 } else { 0.0 };
+            let (col, (mut j, mut used)) = (self.col - ind, (i + 1, wid[i]));
             while j < words.len() && used + space + wid[j] <= col { (used, j) = (used + space + wid[j], j + 1) }
             if !self.need(lead) { return }
             self.y += lead;
-            let extra = if j < words.len() && j > i + 1 { (col - used) / (j - i - 1) as f32 } else { 0.0 };
-            let (gap, mut x) = (space + if extra < 3.0 * space { extra } else { 0.0 }, self.x + indent);
+            // Text justifies; headings (the heading face) stay ragged.
+            let extra = if st.0 != 1 && j < words.len() && j > i + 1 { (col - used) / (j - i - 1) as f32 } else { 0.0 };
+            let (gap, mut x) = (space + if extra < 3.0 * space { extra } else { 0.0 }, self.x + ind);
             for w in &words[i..j] { w.iter().for_each(|p| x += self.piece(p, Some((x, self.y)))); x += gap }
-            i = j;
+            (i, ln) = (j, ln + 1);
         }
-        self.y += 0.45 * st.1;
+        // A paragraph shorter than its initial still clears it.
+        self.y += drop.1.saturating_sub(ln) as f32 * lead + 0.45 * st.1;
     }
+    /// A heading: a rubric, in the heading face and the theme's red.
     fn heading(&mut self, t: &str, size: f32) {
         if !self.need(3.0 * size) { return }
         self.y += 0.6 * size;
-        self.para(t, St(1, size, self.pal[2], 0), 0.0);
+        self.para(t, St(1, size, self.pal[8], 0), 0.0);
     }
     /// Monospaced lines, wrapped at the column, on the surface colour when `bg`.
     fn code(&mut self, text: &str, bg: bool) {
@@ -293,7 +353,7 @@ impl Pdf<'_> {
     }
     fn caption(&mut self, t: &str, figure: bool) {
         self.fig += figure as usize;
-        self.para(&if figure { format!("**Figure {}.** {t}", self.fig) } else { t.into() }, St(0, 9.0, self.pal[4], 0), 0.0);
+        self.para(&if figure { format!("**Figure {}.** {t}", self.fig) } else { t.into() }, St(7, 9.0, self.pal[4], 0), 0.0);
         self.y += 4.0;
     }
     /// A figure `w` by `h` at the column's centre: `draw` gets its left and top.
@@ -319,7 +379,7 @@ impl Pdf<'_> {
                 }
                 Some("circle") => self.stroke(&[at(f("cx"), f("cy")); 2], 2.0 * k * f("r"), c),
                 Some("text") => {
-                    let (t, st, (u, v)) = (strip(e.split_once('>').map_or("", |s| s.1)), St(0, 15.0 * k, c, 0), at(f("x"), f("y")));
+                    let (t, st, (u, v)) = (strip(e.split_once('>').map_or("", |s| s.1)), St(7, 15.0 * k, c, 0), at(f("x"), f("y")));
                     let tw = self.run(st, &t).1 * match a("text-anchor") { "middle" => 0.5, "end" => 1.0, _ => 0.0 };
                     self.put(u - tw, v, st, &t);
                 }
@@ -388,8 +448,9 @@ impl Pdf<'_> {
     /// The handout: each slide page drawn small, as a bordered box, with its narration beside it.
     fn handout(&mut self, notes: Vec<Vec<String>>) {
         let (slides, sw, sh) = (std::mem::take(&mut self.pages), self.w, self.h);
-        (self.w, self.h, self.m, self.x, self.col, self.slides) = (A4.0, A4.1, A4.2, A4.3, A4.0 - 2.0 * A4.3, false);
-        let (x0, bw) = (self.x, 0.56 * (self.w - 2.0 * self.x));
+        (self.w, self.h, self.slides) = (A4.0, A4.1, false);
+        (self.m, self.mb, self.x, self.col) = canon(A4.0, A4.1);
+        let (x0, col0, bw) = (self.x, self.col, 0.56 * self.col);
         let (k, line) = (bw / sw, rgb(self.pal[5]));
         self.page();
         for ((c, _), say) in slides.iter().zip(notes) {
@@ -397,9 +458,9 @@ impl Pdf<'_> {
             let (y, pg, b) = (self.y, self.pages.len(), self.h - self.y - sh * k);
             w!(self.out(), "q q {k:.5} 0 0 {k:.5} {x0:.2} {b:.2} cm 0 0 {sw} {sh} re W n\n{c}Q "); // the slide, scaled and clipped
             w!(self.out(), "{line} RG 0.5 w {x0:.2} {b:.2} {bw:.2} {:.2} re S Q\n", sh * k); // and its border
-            (self.x, self.col) = (x0 + bw + 14.0, self.w - 2.0 * x0 - bw - 14.0);
+            (self.x, self.col) = (x0 + bw + 14.0, col0 - bw - 14.0);
             say.iter().for_each(|t| self.para(t, St(0, 9.5, self.pal[3], 0), 0.0));
-            (self.x, self.col) = (x0, self.w - 2.0 * x0);
+            (self.x, self.col) = (x0, col0);
             self.y = if self.pages.len() == pg { self.y.max(y + sh * k) } else { self.y } + 14.0;
         }
     }
@@ -418,12 +479,14 @@ impl Pdf<'_> {
         let mut add = |b: Vec<u8>| (objs.push(b), objs.len()).1;
         let mut fonts = String::new();
         for (i, (_, f)) in self.fonts.iter().enumerate() {
-            let file = add(stream("/Subtype/OpenType", &f.data));
+            // TrueType outlines go in as FontFile2 under a CIDFontType2; CFF as OpenType FontFile3 under a CIDFontType0.
+            let (file, ff, kind) = if f.tt { (format!("/Length1 {}", f.data.len()), 2, "2/CIDToGIDMap/Identity") } else { ("/Subtype/OpenType".into(), 3, "0") };
+            let file = add(stream(&file, &f.data));
             let [x0, y0, x1, y1, asc, desc] = f.m;
             let desc = add(format!("<</Type/FontDescriptor/FontName/F{i}/Flags 4/FontBBox[{x0} {y0} {x1} {y1}]/ItalicAngle 0\
-                /Ascent {asc}/Descent {desc}/CapHeight {asc}/StemV 80/FontFile3 {file} 0 R>>").into());
+                /Ascent {asc}/Descent {desc}/CapHeight {asc}/StemV 80/FontFile{ff} {file} 0 R>>").into());
             let ws: Vec<String> = (0..f.nh).map(|g| f.adv(g).to_string()).collect();
-            let cid = add(format!("<</Type/Font/Subtype/CIDFontType0/BaseFont/F{i}/CIDSystemInfo<</Registry(Adobe)/Ordering(Identity)\
+            let cid = add(format!("<</Type/Font/Subtype/CIDFontType{kind}/BaseFont/F{i}/CIDSystemInfo<</Registry(Adobe)/Ordering(Identity)\
                 /Supplement 0>>/FontDescriptor {desc} 0 R/DW {}/W[0[{}]]>>", f.adv(f.nh), ws.join(" ")).into());
             // ToUnicode: each glyph used back to its character, in blocks of at most 100.
             let map: Vec<String> = f.used.iter().filter(|u| *u.0 > 0).map(|(g, c)| format!("<{g:04X}><{}>", utf16(&c.to_string()))).collect();
@@ -464,34 +527,49 @@ impl Pdf<'_> {
 /// `get` resolves the fonts and notebook assets. The unused stage slot keeps the Rust interface stable.
 pub fn write(d: &Doc, out: &[String], _stage: &[f32], get: &dyn Fn(&str) -> Option<Vec<u8>>, form: usize) -> Vec<u8> {
     let slides = form == 1 || form == 2; // a handout lays out the slides, then sets them beside their narration
-    let (w, h, m, mx) = if slides { (720.0, 405.0, 36.0, 36.0) } else { A4 };
+    // Slides keep a narrow even margin; printed pages take the canon.
+    let ((w, h), slides) = (if slides { (720.0, 405.0) } else { A4 }, slides);
+    let (m, mb, mx, col) = if slides { (36.0, 36.0, 36.0, 648.0) } else { canon(w, h) };
     let pal = theme::palette(theme::export(match d.get("theme") { "" => "site", t => t }));
-    let mut p = Pdf { get, fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, x: mx, col: w - 2.0 * mx, y: 0.0, slides, fig: 0 };
-    let (fg, fg2, muted, text) = (pal[2], pal[3], pal[4], St(0, if slides { 13.0 } else { 11.0 }, pal[3], 0));
+    let mut p = Pdf { get, fonts: vec![], pages: vec![], gs: BTreeMap::new(), imgs: vec![], pal, w, h, m, mb, x: mx, col, y: 0.0, slides, fig: 0, gl: 0, lead: None, cap: None };
+    let (fg, fg2, muted, red) = (pal[2], pal[3], pal[4], pal[8]);
+    let text = St(0, if slides { 13.0 } else { 11.0 }, fg, 0);
     p.page();
-    p.para(d.get("title"), St(1, if slides { 32.0 } else { 22.0 }, fg, 0), 0.0);
-    p.para(d.get("summary"), St(1, 13.0, fg2, 0), 0.0);
-    p.para(&format!("[Interactive version](index.html) · {}", FORMS[form]), St(0, 9.0, muted, 0), 0.0);
-    let (chapters, mut k, mut n, mut skip, mut notes) = (d.chapters(), 0, 0, false, vec![vec![]]);
+    p.para(d.get("title"), St(1, if slides { 32.0 } else { 24.0 }, red, 0), 0.0);
+    p.para(d.get("summary"), St(0, 13.0, fg2, 2), 0.0);
+    p.para(&format!("[Interactive version](index.html) · {}", FORMS[form]), St(7, 9.0, muted, 0), 0.0);
+    let (chapters, mut k, mut n, mut skip, mut notes, mut after) = (d.chapters(), 0, 0, false, vec![vec![]], false);
     for (at, b) in d.blocks.iter().enumerate() {
+        let follows = std::mem::take(&mut after);
         match b {
             B::H(2, t, _) if chapters.iter().any(|c| c.at == at) => {
                 (skip, n) = (false, n + 1);
                 if slides {
-                    (p.x, p.col) = (mx, w - 2.0 * mx);
+                    (p.x, p.col) = (mx, col);
                     notes.push(vec![]);
                     p.page();
-                    p.para(t, St(1, 26.0, fg, 0), 0.0);
+                    p.para(t, St(1, 26.0, red, 0), 0.0);
                     continue;
                 }
                 p.need(66.0);
-                p.heading(&if form == 3 { format!("{n}  {t}") } else { t.clone() }, 14.0);
+                p.heading(&if form == 3 { format!("§\u{2009}{n}\u{2003}{t}") } else { t.clone() }, 14.0);
+                // Each chapter opens with a versal, red and blue in turn; the first with the illuminated initial.
+                p.cap = Some((if n % 2 == 1 { red } else { pal[6] }, if n == 1 { 3 } else { 2 }));
             }
             // On slides, a part (`#`) is left out with what follows it, up to the next heading.
             B::H(1, _, _) if slides => skip = true,
             B::H(l, t, _) => { skip = false; p.heading(t, if *l == 1 { 16.0 } else { 12.0 }) }
             _ if skip || (slides && matches!(b, B::Img(..))) => {}
-            B::P(t) => p.para(t, text, 0.0),
+            // Paragraphs run on: a red pilcrow opens each that follows another. Glosses follow their
+            // paragraph, small and indented, each after its siglum.
+            B::P(t) => {
+                if follows && !slides { (p.y, p.lead) = (p.y - 0.45 * text.1, Some(("¶".into(), red))) }
+                let g0 = p.gl;
+                p.para(t, text, 0.0);
+                let glosses: Vec<String> = doc::spans(t).into_iter().filter_map(|s| if let Sp::G(g) = s { Some(g) } else { None }).collect();
+                for (i, g) in glosses.iter().enumerate() { p.lead = Some((siglum(g0 + i + 1), red)); p.para(g, St(0, 8.5, fg2, 2), 18.0) }
+                after = glosses.is_empty();
+            }
             B::L(ord, items) => for (i, t) in items.iter().enumerate() {
                 if !p.need(1.35 * text.1) { break }
                 p.put(p.x + 2.0, p.y + 1.35 * text.1, text, &if *ord { format!("{}.", i + 1) } else { "•".into() });
@@ -527,7 +605,7 @@ pub fn write(d: &Doc, out: &[String], _stage: &[f32], get: &dyn Fn(&str) -> Opti
     let refs = d.links();
     if form != 1 && !refs.is_empty() {
         p.heading("References", 12.0);
-        refs.iter().enumerate().for_each(|(i, (t, u))| p.para(&format!("{}. {t}: [{u}]({u})", i + 1), St(0, 9.0, fg2, 0), 0.0));
+        refs.iter().enumerate().for_each(|(i, (t, u))| p.para(&format!("{}. {t}: [{u}]({u})", i + 1), St(7, 9.0, fg2, 0), 0.0));
     }
     p.finish(d.get("title"))
 }
@@ -537,19 +615,17 @@ mod tests {
     #[test]
     fn embedded_text_and_math_fonts() {
         use super::*;
-        let text = include_bytes!("../../fonts/mono.otf");
-        let math = include_bytes!("../../fonts/math.otf");
-        let f = Font::new(text.to_vec());
-        assert_eq!(f.em, 2048);
-        let widths: Vec<_> = "ilMW01".chars().map(|c| f.adv(f.map[&(c as u32)] as usize)).collect();
-        assert!(widths.iter().all(|w| (w - widths[0]).abs() < 0.01));
-        assert!((widths[0] - 600.0).abs() < 1.0);
-        let m = Font::new(math.to_vec());
-        assert!("∑∫√α𝑥".chars().all(|c| m.map.contains_key(&(c as u32))));
-        let d = doc::parse("---\ntitle: Font check\n---\n## Text\n\nOffice, minimum, 0123. $x^2 + \\alpha$");
-        let get = |p: &str| match p { "fonts/mono.otf" => Some(text.to_vec()), "fonts/math.otf" => Some(math.to_vec()), _ => None };
-        let pdf = write(&d, &[], &[], &get, 0);
-        for key in ["/FontFile3", "/CIDFontType0"] {
+        let read = |f: &str| std::fs::read(format!("{}/../fonts/{f}", env!("CARGO_MANIFEST_DIR"))).ok();
+        let [text, mono, math] = [FILES[0], FILES[2], FILES[3]].map(|f| Font::new(read(f).unwrap()));
+        let w = |f: &Font, s: &str| s.chars().map(|c| f.adv(f.map[&(c as u32)] as usize)).collect::<Vec<_>>();
+        let (t, m) = (w(&text, "iM"), w(&mono, "ilMW01"));
+        assert!(text.tt && t[0] < 0.5 * t[1], "the text face is proportional");
+        assert!(m.iter().all(|x| (x - m[0]).abs() < 0.01) && (m[0] - 600.0).abs() < 1.0, "the code face is monospaced");
+        assert!("∑∫√α𝑥".chars().all(|c| math.map.contains_key(&(c as u32))));
+        assert!("¶§❧".chars().all(|c| text.map.contains_key(&(c as u32))));
+        let d = doc::parse("---\ntitle: Font check\n---\n## Text\n\nOffice, *minimum*, **0123**.^[def. A gloss.] $x^2 + \\alpha$\n\nMore.");
+        let pdf = write(&d, &[], &[], &|p| read(p.strip_prefix("fonts/")?), 0);
+        for key in ["/FontFile2", "/CIDFontType2/CIDToGIDMap/Identity", "/F4 ", "/F5 "] {
             assert!(pdf.windows(key.len()).any(|w| w == key.as_bytes()), "{key}");
         }
     }

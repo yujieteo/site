@@ -22,11 +22,22 @@ Penumbra Light uses the balanced set. Dark ++ uses the contrast++ set. Accents u
 
 Text uses the stronger base colours to keep at least 4.5:1 contrast on the background and surface.
 
-[Liga Courier Prime Sans](https://github.com/nanxstats/courier-prime-sans-ligaturized) supplies text and code, including inline code and embedded HTML artifacts.
-Pages enable `calt` and `liga`. The code ligatures retain the width of their original character sequences.
-TeX Gyre Pagella Math supplies Palatino-style math in pages, embedded artifacts and PDFs.
-Both fonts are local subsets. `fonts/fonts.txt` records their sources, licences and hashes.
-Embedded artifacts receive the same fonts and theme variables from their parent page. Theme changes apply to both at once.
+The pages and PDFs set prose as a manuscript does. Headings are rubrics: `warm` (Penumbra red), at 24 px
+and larger, where 3:1 is enough. Red also marks pilcrows, sigla and initials; `accent` (Penumbra blue)
+takes every other initial. Prose uses `fg`, glosses and asides `fg2`. On Penumbra Light the red is 3.2:1,
+so small red marks only repeat what the text already says; on Dark ++ it is 7.4:1.
+
+Six embedded subsets (`fonts/fonts.txt`) set the type: EB Garamond for text, Bodoni Moda for headings,
+Libre Franklin for the interface, News Cycle for small text, Courier Prime for code, and STIX Two Math for
+maths. They stand in for Bembo or Garamond, Didot, Akzidenz-Grotesk, News Gothic and MathTime Pro II or
+Times New Roman: each is the oldest design still in continuous use with a free version.
+`fonts/fonts.txt` records their sources, licences and hashes, and why each was chosen.
+Embedded artifacts receive the same fonts and theme variables from their parent page, in the interface
+face. Theme changes apply to both at once.
+
+The page follows the Van de Graaf canon: the leaf is nine units wide, with margins of one unit inside,
+one and a half above, two outside (where the glosses go) and three below. A phone halves the unit.
+Faint ruling marks the text block's edges. Slides and the handout use the full width.
 
 The site has no decorative dot drawings or animation loop. Data diagrams and plots remain.
 The header uses the theme background at 80% over a 14 px blur. Pages and sections retain their CSS fades.

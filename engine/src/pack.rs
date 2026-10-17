@@ -66,7 +66,7 @@ pub fn base64(b: &[u8]) -> String {
 /// A data URL for an asset, typed by its extension.
 pub fn data_url(name: &str, b: &[u8]) -> String {
     let t = match name.rsplit('.').next().unwrap_or("") {
-        "png" => "image/png", "jpg" | "jpeg" => "image/jpeg", "svg" => "image/svg+xml", "otf" => "font/otf", "wasm" => "application/wasm",
+        "png" => "image/png", "jpg" | "jpeg" => "image/jpeg", "svg" => "image/svg+xml", "otf" => "font/otf", "ttf" => "font/ttf", "wasm" => "application/wasm",
         _ => "application/octet-stream",
     };
     format!("data:{t};base64,{}", base64(b))
