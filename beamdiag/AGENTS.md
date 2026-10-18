@@ -25,9 +25,9 @@ Tests are disposable. Check changes in the built page, and do not commit regress
 | `random.json` | The seeded random beams and exact answers, frozen on 2026-10-10. |
 | `src/` | The solver, shared hand calculation, figure, PDF writer, page events and builders. |
 
-`reference.py` is in the yujieteo/visuals Git history at commit 32181d1. Never edit `reference.json` by hand.
-To add a case, restore that script, add the beam to `fixtures.json`, then run the script.
-Commit both data files.
+`reference.py` writes `reference.json` from `fixtures.json`. Never edit `reference.json` by hand.
+To add a case, add the beam to `fixtures.json`, then run `python3 beamdiag/reference.py`.
+Commit both data files. `python3 beamdiag/reference.py --check` exits 1 if `reference.json` is out of date.
 
 Loads are positive upward. Couples are positive counter-clockwise. M is positive when the beam sags.
 The data uses SI units (m, N, Pa). The default display origin is the centre.
