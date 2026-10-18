@@ -1,0 +1,16 @@
+# The beam diagram creator builds to WebAssembly. scripts/build-beam.sh writes its page to
+# public/play/beamdiag.
+[workspace]
+resolver = "3"
+members = ["beamdiag"]
+
+[workspace.package]
+edition = "2024"
+license = "MIT"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+debug = false
+strip = true

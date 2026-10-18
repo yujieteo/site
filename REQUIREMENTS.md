@@ -1,7 +1,7 @@
 # Site requirements
 
 Agreed with the owner on 2026-10-18. When the site and this file disagree, change the site.
-The beam tool's own requirements are in yujieteo/visuals, `viz/beamdiag/REQUIREMENTS.md`.
+The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Purpose
 
@@ -27,7 +27,7 @@ The beam tool's own requirements are in yujieteo/visuals, `viz/beamdiag/REQUIREM
 
 ## Build and deploy
 
-8. There is no build, no Nix, no CI, no line budget and no reproducibility check.
-9. The beam page is copied from yujieteo/visuals at a pinned commit, with its SHA-256 in `beam.lock`.
+8. Only the beam page has a build. There is no Nix, no CI, no line budget and no reproducibility check.
+9. The beam page is built from `beamdiag/` into `public/play/beamdiag/` and committed.
 10. To deploy, an agent commits to `main`, runs `scripts/check.sh`, then copies `public/` to the
     VPS with `scripts/deploy.sh`. The deploy stops if the check fails.
