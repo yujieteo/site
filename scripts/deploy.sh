@@ -8,7 +8,7 @@ dest=${SITE_DEST:-$(cat .deploy 2>/dev/null || true)}
 [ -z "$(git status --porcelain)" ] || { echo "Commit first."; exit 1; }
 scripts/check.sh
 if [ "${1:-}" = --yes ]; then
-  rsync -rlptz --delete --chmod=D755,F644 public/ "$dest/"
+  rsync -rlptz --delete --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r public/ "$dest/"
   echo "deployed $(git rev-parse --short HEAD) to $dest"
 else
   rsync -rlptzn --delete --itemize-changes public/ "$dest/"
