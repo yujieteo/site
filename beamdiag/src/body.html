@@ -1,0 +1,95 @@
+<div class="bd">
+<a href="/">Home</a>
+
+<h1>Beam diagram creator</h1>
+
+
+<div class="toolbar" role="group" aria-label="Start from, and units">
+
+  <div class="group" role="group" aria-label="Support conditions at the two ends">
+    <span class="label">Ends</span>
+    <button class="btn" type="button" data-act="ends" data-arg="pin,pin">Pin–pin</button>
+    <button class="btn" type="button" data-act="ends" data-arg="fixed,fixed">Fixed–fixed</button>
+    <button class="btn" type="button" data-act="ends" data-arg="fixed,pin">Fixed–pin</button>
+    <button class="btn" type="button" data-act="ends" data-arg="fixed,">Cantilever</button>
+  </div>
+  <div class="group"><label class="label" for="units">Units</label><select id="units" data-field="units" title="Consistent unit convention for every input, result, diagram">{{units}}</select></div>
+</div>
+
+
+<div class="app">
+  <div class="figure">
+    {{error}}
+    <div id="plots" class="{{stale}}">{{figure}}</div>
+    <p id="readout" class="readout">{{readout}}</p>
+    
+    <ul id="stats" class="stats {{stale}}">{{stats}}</ul>
+    <ul id="reactions" class="reactions" aria-label="Support reactions">{{reactions}}</ul>
+    <div class="export" role="group" aria-label="Save the diagrams and results">
+
+      <button class="btn primary" type="button" data-act="save-image">Save PNG</button>
+      <button class="btn" type="button" data-act="save-pdf">Save PDF</button>
+      <span id="figure-status" class="small muted" role="status"></span>
+    </div>
+    
+    
+  </div>
+
+  <div class="panel">
+    <div class="card">
+      <h3>Beam</h3>
+      <div class="row">
+        <label class="f"><span>Length L ({{length}})</span><input id="length" type="number" step="any" min="0.001" data-field="length" value="{{len}}"></label>
+      </div>
+      <label class="f origin"><span>Measure x from</span><select id="origin" data-field="origin">{{origins}}</select></label>
+    </div>
+    <div class="card">
+      <h3>Supports</h3>
+      <ul id="supports" class="items">{{supports}}</ul>
+      <div class="adds"><button class="btn" type="button" data-act="add-support">+ Support</button></div>
+    </div>
+    <div class="card">
+      <h3>Loads</h3>
+      
+      <ul id="loads" class="items">{{loads}}</ul>
+      <div class="adds">
+        <button class="btn" type="button" data-act="add" data-arg="point">+ Point force</button>
+        <button class="btn" type="button" data-act="add" data-arg="dist">+ Distributed</button>
+        <button class="btn" type="button" data-act="add" data-arg="moment">+ Couple</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Section</h3>
+      <label class="f"><span>Shape</span><select id="shape" data-field="section.shape">{{shapes}}</select></label>
+      <div id="section-fields">{{fields}}</div>
+      <p id="section-derived" class="derived">{{derived}}</p>
+    </div>
+    <div class="card">
+      <h3>Material</h3>
+      <label class="f"><span>Preset</span><select id="material" data-field="material">{{materials}}</select></label>
+      <details><summary>E and ν</summary><div class="row">
+        <label class="f"><span>Young's modulus E ({{stress}})</span><input id="E" type="number" step="1" data-field="material.E" value="{{e}}"></label>
+        <label class="f"><span>Poisson's ratio ν</span><input id="nu" type="number" step="0.01" data-field="material.nu" value="{{nu}}"></label>
+      </div></details>
+    </div>
+  </div>
+</div>
+
+<section id="values" aria-labelledby="values-h">
+  <h2 id="values-h">Values at supports and loads</h2>
+  
+  <div class="table-wrap"><table>
+    <thead><tr><th class="num" scope="col">x ({{length}})</th><th scope="col">What is here</th><th class="num" scope="col">V x⁻ ({{force}})</th><th class="num" scope="col">V x⁺ ({{force}})</th><th class="num" scope="col">M x⁻ ({{moment}})</th><th class="num" scope="col">M x⁺ ({{moment}})</th><th class="num" scope="col">v ({{length}})</th><th class="num" scope="col">θ ({{angle}})</th></tr></thead>
+    <tbody id="table" class="{{stale}}">{{table}}</tbody>
+  </table></div>
+</section>
+
+<section id="hand" aria-labelledby="hand-h">
+  <h2 id="hand-h">Hand calculations</h2>
+  
+
+  <div id="hand-point">{{point}}</div>
+  <div id="hand-body">{{hand}}</div>
+</section>
+
+</div>

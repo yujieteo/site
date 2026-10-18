@@ -1,0 +1,5 @@
+# The Rust compiler for the beam crate. rustup reads this file from any folder below it.
+[toolchain]
+channel = "1.97.0"
+profile = "minimal"
+targets = ["wasm32-unknown-unknown"]

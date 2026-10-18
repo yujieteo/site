@@ -1,0 +1,4 @@
+# The module's panic messages name its source files. Keep the paths the module had in
+# yujieteo/visuals, so the moved source builds the same bytes.
+[target.wasm32-unknown-unknown]
+rustflags = ["--remap-path-prefix=beamdiag=viz/beamdiag"]
