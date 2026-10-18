@@ -1,5 +1,2 @@
-target/
-dist/
-kokoro/
-visuals/
-.claude/
+.DS_Store
+.deploy

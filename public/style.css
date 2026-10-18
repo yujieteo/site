@@ -1,0 +1,7 @@
+body { margin: 0 auto; max-width: 40rem; padding: 1rem; font: 16px/1.5 system-ui, sans-serif; color: #000; background: #fff; }
+a { color: #000; }
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.125rem; margin-top: 1.5rem; }
+code { font-family: ui-monospace, monospace; }
+.muted { color: #444; }
+nav { margin-bottom: 1rem; }
