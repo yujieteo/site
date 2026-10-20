@@ -112,6 +112,28 @@ pub fn inline(s: &str) -> String {
     out + &esc(&s[last..])
 }
 
+/// Text with inline $maths$ and every ×10ⁿ number typeset.
+pub fn rich(s: &str) -> String {
+    let marked: String = s.split('$').enumerate().map(|(i, seg)| if i % 2 == 1 { format!("${seg}$") } else { mark_powers(seg) }).collect();
+    inline(&marked)
+}
+
+fn mark_powers(s: &str) -> String {
+    const SUP: &str = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻";
+    let (mut out, mut rest) = (String::new(), s);
+    while let Some(at) = rest.find("×10") {
+        let exp_len: usize = rest[at + "×10".len()..].chars().take_while(|c| SUP.contains(*c)).map(char::len_utf8).sum();
+        let head = &rest[..at];
+        let start = head.char_indices().rev().take_while(|(_, c)| c.is_ascii_digit() || matches!(c, '.' | ',' | '−')).last().map_or(at, |(i, _)| i);
+        let end = at + "×10".len() + exp_len;
+        if exp_len == 0 || start == at { out += &rest[..end]; rest = &rest[end..]; continue }
+        out += &rest[..start];
+        out += &format!("${}$", crate::fmt::tex_number(&rest[start..end]));
+        rest = &rest[end..];
+    }
+    out + rest
+}
+
 /// Unicode maths for the PDF, from the same equation as the page.
 pub fn unicode(src: &str) -> String {
     fn flat(ns: &[Node]) -> String {

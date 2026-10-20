@@ -48,7 +48,7 @@ const STYLE: &str = r#"
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.6rem 1.25rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
 .stats li { border-top: 1px solid var(--line); padding-top: 0.4rem; }
 .stats b { display: block; font-weight: 400; font-size: 1.35rem; line-height: 1.2; color: var(--fg); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.stats span { font-size: 0.8125rem; color: var(--muted); }
+.stats li > span { font-size: 0.8125rem; color: var(--muted); }
 .reactions { list-style: none; margin: 0.75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; font-size: 0.875rem; }
 .reactions li { border: 1px solid var(--line); border-radius: 6px; padding: 0.25rem 0.6rem; font-variant-numeric: tabular-nums; }
 .reactions li i { display: inline-block; width: 0.9rem; height: 2px; background: var(--green); vertical-align: middle; margin-right: 0.35rem; }
@@ -58,7 +58,7 @@ const STYLE: &str = r#"
 .row + .row { margin-top: 0.5rem; }
 label.f.origin { margin-top: 0.5rem; }
 label.f { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.75rem; color: var(--muted); }
-label.f span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; max-height: 28rem; overflow-y: auto; overscroll-behavior: contain; }
 .item { border-top: 1px solid var(--line); padding-top: 0.5rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.4rem; align-items: end; }
 .item:first-child { border-top: 0; padding-top: 0; }
@@ -209,23 +209,30 @@ async function pdfFonts() {
   }));
   send({ev:"fonts", w:plots.clientWidth, fonts:await fontPromise});
 }
-let katexPromise, handVisible = false;
+let katexPromise, mathTimer = 0;
 function math() {
-  if (!handVisible || !window.katex) return;
-  all("[data-tex]").forEach(e => { try { katex.render(e.dataset.tex,e,{displayMode:e.classList.contains("eq"),throwOnError:false}); } catch {} });
+  if (!window.katex) return;
+  clearTimeout(mathTimer);
+  mathTimer = setTimeout(() => {
+    all("[data-tex]").forEach(e => {
+      if (e.dataset.rendered === e.dataset.tex) return;
+      try { katex.render(e.dataset.tex,e,{displayMode:e.classList.contains("eq"),throwOnError:false}); e.dataset.rendered=e.dataset.tex; } catch {}
+    });
+  }, 80);
 }
-async function hand() {
-  handVisible = true;
+async function loadMath() {
   katexPromise ||= new Promise((resolve,reject) => {
     const css=document.createElement("link"); css.rel="stylesheet"; css.href="katex/katex.min.css"; document.head.append(css);
     const js=document.createElement("script"); js.src="katex/katex.min.js"; js.onload=resolve; js.onerror=reject; document.head.append(js);
   });
-  send({ev:"hand-visible"}); await katexPromise; math();
+  await katexPromise; math();
 }
+function hand() { send({ev:"hand-visible"}); math(); }
 WebAssembly.instantiateStreaming(fetch("beamdiag.wasm.gz").then(r => { if (!r.ok) throw new Error("Solver could not load"); return new Response(r.body.pipeThrough(new DecompressionStream("gzip")),{headers:{"Content-Type":"application/wasm"}}); })).then(({ instance }) => {
   wasm = instance.exports;
   send({ ev: "start", w: plots.clientWidth, date:new Date().toISOString().slice(0,10) });
-  new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) hand().catch(console.error); }).observe(document.getElementById("hand"));
+  requestAnimationFrame(() => requestAnimationFrame(() => loadMath().catch(console.error)));
+  new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) hand(); }).observe(document.getElementById("hand"));
   if (typeof ResizeObserver !== "undefined") new ResizeObserver(() => { const w = plots.clientWidth; if (w) send({ ev: "width", w }); }).observe(plots);
 
 }).catch((e) => { const b = document.getElementById("error"); b.hidden = false; b.textContent = `This page could not start its solver: ${e.message}.`; });

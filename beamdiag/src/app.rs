@@ -66,10 +66,10 @@ impl Default for Data { fn default() -> Data { Data::new() } }
 
 /// Each shape's fields: key, label, quantity, note.
 pub const SECTION_FIELDS: [(&str, &[(&str, &str, Q, &str)]); 4] = [
-    ("rect", &[("b", "Width b", Q::Length, ""), ("h", "Depth h", Q::Length, "")]),
-    ("circle", &[("d", "Diameter d", Q::Length, "")]),
-    ("tube", &[("d", "Outside D", Q::Length, ""), ("t", "Wall t", Q::Length, "")]),
-    ("custom", &[("A", "Area A", Q::Area, ""), ("I", "I, in plane", Q::Inertia, ""), ("c", "Fibre c", Q::Length, ", optional"), ("Iy", "Iy, out of plane", Q::Inertia, ""), ("J", "Torsion J", Q::Inertia, "")]),
+    ("rect", &[("b", "Width $b$", Q::Length, ""), ("h", "Depth $h$", Q::Length, "")]),
+    ("circle", &[("d", "Diameter $d$", Q::Length, "")]),
+    ("tube", &[("d", "Outside $D$", Q::Length, ""), ("t", "Wall $t$", Q::Length, "")]),
+    ("custom", &[("A", "Area $A$", Q::Area, ""), ("I", "$I$, in plane", Q::Inertia, ""), ("c", "Fibre $c$", Q::Length, ", optional"), ("Iy", "$I_y$, out of plane", Q::Inertia, ""), ("J", "Torsion $J$", Q::Inertia, "")]),
 ];
 const SECTION_DEFAULTS: [(&str, &[(&str, f64)]); 4] = [
     ("rect", &[("b", 0.1), ("h", 0.2)]), ("circle", &[("d", 0.15)]), ("tube", &[("d", 0.1683), ("t", 0.008)]),
@@ -340,7 +340,7 @@ impl App {
         // Re-deriving a long beam on every drag step is wasted work: the view catches up when the drag ends.
         if self.active.is_some() && self.error.is_none() { self.hand_stale = true } else { self.render_hand() }
         let s = self.section_summary();
-        self.text("#section-derived", s);
+        self.html("#section-derived", tex::rich(&s));
     }
 
     fn mark_invalid(&mut self, field: Option<&str>) {
@@ -357,7 +357,7 @@ impl App {
     /* ---------- the editor ---------- */
 
     fn num_input(&self, label: &str, value: f64, field: &str) -> String {
-        format!("<label class=\"f\"><span>{}</span><input type=\"number\" step=\"any\" value=\"{}\" name=\"{field}\" data-field=\"{field}\"></label>", esc(label), tidy(value))
+        format!("<label class=\"f\"><span>{}</span><input type=\"number\" step=\"any\" value=\"{}\" name=\"{field}\" data-field=\"{field}\"></label>", tex::rich(label), tidy(value))
     }
     fn remove_button(label: &str, act: &str, i: usize) -> String {
         format!("<button type=\"button\" class=\"btn icon\" aria-label=\"{}\" data-act=\"{act}\" data-arg=\"{i}\">×</button>", esc(label))
@@ -368,7 +368,7 @@ impl App {
         self.st.supports.iter().enumerate().map(|(i, s)| {
             let kinds = options(&[("pin".into(), "Pin".into()), ("fixed".into(), "Fixed".into())], s.kind.name());
             format!("<li class=\"item\"><div class=\"fields\"><label class=\"f\"><span>Support {}</span><select name=\"supports.{i}.kind\" data-field=\"supports.{i}.kind\">{kinds}</select></label>{}</div>{}</li>",
-                i + 1, self.num_input(&format!("x ({len})"), self.show_x(s.x, l), &format!("supports.{i}.x")), Self::remove_button(&format!("Remove support {}", i + 1), "remove-support", i))
+                i + 1, self.num_input(&format!("$x$ ({len})"), self.show_x(s.x, l), &format!("supports.{i}.x")), Self::remove_button(&format!("Remove support {}", i + 1), "remove-support", i))
         }).collect()
     }
 
@@ -379,9 +379,9 @@ impl App {
         self.st.loads.iter().enumerate().map(|(i, ld)| {
             let f = |k: &str| format!("loads.{i}.{k}");
             let fields = match ld.kind {
-                LK::Point => self.num_input(&format!("x ({len})"), self.show_x(ld.x, l), &f("x")) + &self.num_input(&format!("F ({force})"), self.show(ld.f, Q::Force), &f("F")),
-                LK::Moment => self.num_input(&format!("x ({len})"), self.show_x(ld.x, l), &f("x")) + &self.num_input(&format!("C ({moment})"), self.show(ld.c, Q::Moment), &f("C")),
-                LK::Dist => [("from x₁", ld.x1, "x1", true), ("to x₂", ld.x2, "x2", true), ("q₁", ld.q1, "q1", false), ("q₂", ld.q2, "q2", false)].iter()
+                LK::Point => self.num_input(&format!("$x$ ({len})"), self.show_x(ld.x, l), &f("x")) + &self.num_input(&format!("$F$ ({force})"), self.show(ld.f, Q::Force), &f("F")),
+                LK::Moment => self.num_input(&format!("$x$ ({len})"), self.show_x(ld.x, l), &f("x")) + &self.num_input(&format!("$C$ ({moment})"), self.show(ld.c, Q::Moment), &f("C")),
+                LK::Dist => [("from $x_1$", ld.x1, "x1", true), ("to $x_2$", ld.x2, "x2", true), ("$q_1$", ld.q1, "q1", false), ("$q_2$", ld.q2, "q2", false)].iter()
                     .map(|&(label, v, k, pos)| if pos { self.num_input(&format!("{label} ({len})"), self.show_x(v, l), &f(k)) } else { self.num_input(&format!("{label} ({q})"), self.show(v, Q::Distributed), &f(k)) })
                     .collect(),
             };
@@ -444,9 +444,9 @@ impl App {
     pub fn section_summary(&self) -> String {
         let Ok(s) = section_properties(&self.st.section) else { return String::new() };
         let ei = self.st.mat.1 * s.i;
-        let mut t = format!("A = {} {} · I = {} {}", sci(self.show(s.a, Q::Area)), self.sym(Q::Area), sci(self.show(s.i, Q::Inertia)), self.sym(Q::Inertia));
-        if let Some(c) = s.c.filter(|c| *c != 0.0 && !c.is_nan()) { t += &format!(" · c = {} {}", sig(self.show(c, Q::Length), 4), self.sym(Q::Length)) }
-        if ei.is_finite() { t += &format!(" · EI = {} {}", sci(self.show(ei, Q::Rigidity)), self.sym(Q::Rigidity)) }
+        let mut t = format!("$A$ = {} {} · $I$ = {} {}", sci(self.show(s.a, Q::Area)), self.sym(Q::Area), sci(self.show(s.i, Q::Inertia)), self.sym(Q::Inertia));
+        if let Some(c) = s.c.filter(|c| *c != 0.0 && !c.is_nan()) { t += &format!(" · $c$ = {} {}", sig(self.show(c, Q::Length), 4), self.sym(Q::Length)) }
+        if ei.is_finite() { t += &format!(" · $EI$ = {} {}", sci(self.show(ei, Q::Rigidity)), self.sym(Q::Rigidity)) }
         t
     }
 
@@ -780,7 +780,7 @@ impl App {
     }
     pub fn readout_html(&self) -> String {
         let Some(c) = self.cursor.filter(|_| self.sol.is_some()) else { return String::new() };
-        self.readout(c).iter().map(|(k, v)| format!("<span><span class=\"k\">{k} </span><b>{}</b></span>", esc(v))).collect()
+        self.readout(c).iter().map(|(k, v)| format!("<span><span class=\"k\">{} </span><b>{}</b></span>", tex::html(k), tex::rich(v))).collect()
     }
 
     fn set_cursor(&mut self, x: f64) {
@@ -823,16 +823,16 @@ impl App {
         let mut items = vec![
             if deg > 0 { (format!("Indeterminate, degree {deg}"), "more reactions than equilibrium can find: solved with compatibility".into()) }
             else { ("Determinate".into(), "reactions follow from equilibrium alone".into()) },
-            (format!("{} {}", sig(self.show(e.v_shear.value, Q::Force), 4), self.sym(Q::Force)), format!("largest shear, at x = {}", self.at_text(e.v_shear.x))),
+            (format!("{} {}", sig(self.show(e.v_shear.value, Q::Force), 4), self.sym(Q::Force)), format!("largest shear, at $x$ = {}", self.at_text(e.v_shear.x))),
             (format!("{} {}", sig(self.show(e.m.value, Q::Moment), 4), self.sym(Q::Moment)),
-                format!("largest moment ({}), at x = {}", if e.m.value >= 0.0 { "sagging" } else { "hogging" }, self.at_text(e.m.x))),
-            (format!("{} {}", sig(self.show(e.v.value, Q::Length), 4), self.sym(Q::Length)), format!("largest deflection, at x = {} (L/{})", self.at_text(e.v.x), span_ratio(m.length, e.v.value))),
+                format!("largest moment ({}), at $x$ = {}", if e.m.value >= 0.0 { "sagging" } else { "hogging" }, self.at_text(e.m.x))),
+            (format!("{} {}", sig(self.show(e.v.value, Q::Length), 4), self.sym(Q::Length)), format!("largest deflection, at $x$ = {} ($L/{}$)", self.at_text(e.v.x), span_ratio(m.length, e.v.value))),
         ];
         if let Some(c) = m.section.c.filter(|c| *c != 0.0 && !c.is_nan()) {
-            items.push((format!("{} {}", sig(self.show(e.m.value.abs() * c / m.section.i, Q::Stress), 4), self.sym(Q::Stress)), "peak bending stress |M|·c / I".into()));
+            items.push((format!("{} {}", sig(self.show(e.m.value.abs() * c / m.section.i, Q::Stress), 4), self.sym(Q::Stress)), "peak bending stress $|M|\\cdot c / I$".into()));
         }
         let resid = residual(&r.equilibrium);
-        items.push((if resid < 1e-9 { "Balanced".into() } else { format!("Residual {}", sci(resid)) }, format!("ΣF and ΣM of loads and reactions, relative error {}", sci(resid))));
+        items.push((if resid < 1e-9 { "Balanced".into() } else { format!("Residual {}", sci(resid)) }, format!("$\\sum F$ and $\\sum M$ of loads and reactions, relative error {}", sci(resid))));
         items
     }
 
@@ -845,11 +845,11 @@ impl App {
 
     pub fn stats_html(&self) -> String {
         if !self.solved() { return String::new() }
-        self.stat_items().iter().map(|(b, s)| format!("<li><b>{}</b><span>{}</span></li>", esc(b), esc(s))).collect()
+        self.stat_items().iter().map(|(b, s)| format!("<li><b>{}</b><span>{}</span></li>", tex::rich(b), tex::rich(s))).collect()
     }
     pub fn reactions_html(&self) -> String {
         if !self.solved() { return String::new() }
-        (0..self.r().reactions.len()).map(|i| format!("<li><i></i>{}</li>", esc(&self.reaction_text(i)))).collect()
+        (0..self.r().reactions.len()).map(|i| format!("<li><i></i>{}</li>", tex::rich(&self.reaction_text(i)))).collect()
     }
 
     /// Values at every support and load, one row of [text, numeric] cells each.
@@ -870,7 +870,7 @@ impl App {
     }
     pub fn table_html(&self) -> String {
         if !self.solved() { return String::new() }
-        self.table_rows().iter().map(|row| format!("<tr>{}</tr>", row.iter().map(|(v, num)| format!("<td{}>{}</td>", if *num { " class=\"num\"" } else { "" }, esc(v))).collect::<String>())).collect()
+        self.table_rows().iter().map(|row| format!("<tr>{}</tr>", row.iter().map(|(v, num)| format!("<td{}>{}</td>", if *num { " class=\"num\"" } else { "" }, tex::rich(v))).collect::<String>())).collect()
     }
 
     /* ---------- the NASTRAN deck ---------- */
@@ -946,7 +946,7 @@ impl App {
         report.text("4. Shear force, moment and deflection", true);
         report.diagram(vec![fig.list[1].clone()], 219.0, fig.h - 219.0);
         report.text("5. Largest values", true);
-        for (value, label) in self.stat_items() { report.text(&format!("{value}: {label}"), false); }
+        for (value, label) in self.stat_items() { report.text(&tex::plain(&format!("{value}: {label}")), false); }
         report.text("6. Hand calculation (Macaulay)", true);
         let (u, mid) = (self.u, self.mid);
         let steps = hand::steps(self.sol.as_mut().unwrap().derivation(u, mid), None);
@@ -987,9 +987,9 @@ impl App {
         }
         let s = &self.st.section;
         lines.push(format!("Section: {}", self.d.sections.iter().find(|x| x.0 == s.shape).map_or(s.shape.clone(), |x| x.1.clone())));
-        let dims: Vec<String> = fields_of(&s.shape).iter().filter_map(|&(k, label, q, _)| dim_of(s, k).map(|x| format!("{label} = {}", v(x, q)))).collect();
+        let dims: Vec<String> = fields_of(&s.shape).iter().filter_map(|&(k, label, q, _)| dim_of(s, k).map(|x| format!("{} = {}", tex::plain(label), v(x, q)))).collect();
         if !dims.is_empty() { lines.push(dims.join(", ")) }
-        lines.push(self.section_summary());
+        lines.push(tex::plain(&self.section_summary()));
         let mat = self.d.materials.iter().find(|m| m.id == self.st.mat.0).map_or("custom", |m| m.label.as_str());
         lines.push(format!("Material: {mat}, E = {}, ν = {}", v(self.st.mat.1, Q::Stress), sig(self.st.mat.2, 4)));
         lines
@@ -1017,7 +1017,7 @@ impl App {
             for line in lines { for part in wrap(line, 68) { c.text(x, yy, part, "body", draw::Anchor::Start); yy += 17.0 } }
             yy
         };
-        let mut results: Vec<String> = self.stat_items().iter().map(|(b, s)| format!("{b}: {s}")).collect();
+        let mut results: Vec<String> = self.stat_items().iter().map(|(b, s)| tex::plain(&format!("{b}: {s}"))).collect();
         results.push("Reactions (force + up, couple + counter-clockwise):".into());
         results.extend((0..self.r().reactions.len()).map(|i| format!("  {}", self.reaction_text(i))));
         let a = column(&mut c, left, "BEAM, SECTION AND MATERIAL", &self.model_lines());
@@ -1112,7 +1112,7 @@ impl App {
             ("stats", self.stats_html()), ("reactions", self.reactions_html()), ("length", unit(Q::Length)), ("force", unit(Q::Force)), ("moment", unit(Q::Moment)),
             ("stress", unit(Q::Stress)), ("angle", unit(Q::Angle)), ("len", tidy(self.show(self.st.length, Q::Length))), ("div", js(self.st.divisions)),
             ("origins", origin("left", "Left end, + to the right") + &origin("mid", "Mid-span, − left, + right")), ("supports", self.supports_html()), ("loads", self.loads_html()),
-            ("shapes", self.shape_options()), ("fields", self.section_fields_html()), ("derived", esc(&self.section_summary())), ("materials", self.material_options()),
+            ("shapes", self.shape_options()), ("fields", self.section_fields_html()), ("derived", tex::rich(&self.section_summary())), ("materials", self.material_options()),
             ("e", tidy(self.show(self.st.mat.1, Q::Stress))), ("nu", tidy(self.st.mat.2)), ("table", self.table_html()), ("point", point), ("hand", hand),
             ("system", esc(self.u.label)), ("run", items(n.get("run"))), ("status", esc(n.s("status"))),
             ("cards", n.get("cards").arr().unwrap_or(&[]).iter().map(|c| format!("<tr><td><code>{}</code></td><td>{}</td></tr>", esc(c.s("card")), esc(c.s("use")))).collect()),
