@@ -67,9 +67,9 @@
     <div class="card">
       <h3>Material</h3>
       <label class="f"><span>Preset</span><select id="material" data-field="material">{{materials}}</select></label>
-      <details><summary>E and ν</summary><div class="row">
-        <label class="f"><span>Young's modulus E ({{stress}})</span><input id="E" type="number" step="1" data-field="material.E" value="{{e}}"></label>
-        <label class="f"><span>Poisson's ratio ν</span><input id="nu" type="number" step="0.01" data-field="material.nu" value="{{nu}}"></label>
+      <details><summary><span data-tex="E">E</span> and <span data-tex="\nu">ν</span></summary><div class="row">
+        <label class="f"><span>Young's modulus <span data-tex="E">E</span> ({{stress}})</span><input id="E" type="number" step="1" data-field="material.E" value="{{e}}"></label>
+        <label class="f"><span>Poisson's ratio <span data-tex="\nu">ν</span></span><input id="nu" type="number" step="0.01" data-field="material.nu" value="{{nu}}"></label>
       </div></details>
     </div>
   </div>
@@ -79,7 +79,7 @@
   <h2 id="values-h">Values at supports and loads</h2>
   
   <div class="table-wrap"><table>
-    <thead><tr><th class="num" scope="col">x ({{length}})</th><th scope="col">What is here</th><th class="num" scope="col">V x⁻ ({{force}})</th><th class="num" scope="col">V x⁺ ({{force}})</th><th class="num" scope="col">M x⁻ ({{moment}})</th><th class="num" scope="col">M x⁺ ({{moment}})</th><th class="num" scope="col">v ({{length}})</th><th class="num" scope="col">θ ({{angle}})</th></tr></thead>
+    <thead><tr><th class="num" scope="col"><span data-tex="x">x</span> ({{length}})</th><th scope="col">What is here</th><th class="num" scope="col"><span data-tex="V\,x^{-}">V x⁻</span> ({{force}})</th><th class="num" scope="col"><span data-tex="V\,x^{+}">V x⁺</span> ({{force}})</th><th class="num" scope="col"><span data-tex="M\,x^{-}">M x⁻</span> ({{moment}})</th><th class="num" scope="col"><span data-tex="M\,x^{+}">M x⁺</span> ({{moment}})</th><th class="num" scope="col"><span data-tex="v">v</span> ({{length}})</th><th class="num" scope="col"><span data-tex="\theta">θ</span> ({{angle}})</th></tr></thead>
     <tbody id="table" class="{{stale}}">{{table}}</tbody>
   </table></div>
 </section>

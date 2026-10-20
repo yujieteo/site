@@ -210,38 +210,10 @@ async function pdfFonts() {
   send({ev:"fonts", w:plots.clientWidth, fonts:await fontPromise});
 }
 let katexPromise, mathTimer = 0;
-const mathToken = /\|M\|·c\s*\/\s*I|[VM] x[⁻⁺]|L\/\d+|(?:[−-]?\d[\d,.]*(?:[eE][+-]?\d+)?(?:×10[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|\b(?:EI|Iy|[xVMvLFEACIcbhDdtqrJ]|mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)\b|[θνΣ])(?:[₀₁₂₃₄₅₆₇₈₉⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|[=·×→|/+−]/g;
-function pageMath(root) {
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
-    acceptNode(n) {
-      if (n.nodeType === Node.ELEMENT_NODE) return n.matches('svg,button,input,select,[data-tex],.katex,script,style') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_SKIP;
-      return NodeFilter.FILTER_ACCEPT;
-    }
-  });
-  const nodes = [];
-  while (walker.nextNode()) {
-    const n = walker.currentNode;
-    nodes.push(n);
-  }
-  for (const n of nodes) {
-    const parts = document.createDocumentFragment(); let from = 0;
-    for (const m of n.data.matchAll(mathToken)) {
-      parts.append(n.data.slice(from,m.index));
-      const span = document.createElement('span');
-      span.dataset.tex = m[0].replace(/^Iy$/,'I_y').replace(/[₀₁₂₃₄₅₆₇₈₉]+/g,s=>'_{'+Array.from(s,c=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(c)).join('')+'}')
-        .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g,s=>'^{'+Array.from(s,c=>'0123456789-+'['⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺'.indexOf(c)]).join('')+'}')
-        .replace(/×/g,'\\times ').replace(/·/g,'\\cdot ').replace(/θ/g,'\\theta ').replace(/ν/g,'\\nu ').replace(/Σ/g,'\\sum ').replace(/→/g,'\\to ').replace(/−/g,'-');
-      if (/^(mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)(\^|$)/.test(span.dataset.tex)) span.dataset.tex = span.dataset.tex.replace(/^([a-zA-Z]+)/,'\\mathrm{$1}');
-      span.textContent = m[0]; parts.append(span); from = m.index+m[0].length;
-    }
-    if (from) { parts.append(n.data.slice(from)); n.replaceWith(parts); }
-  }
-}
 function math() {
   if (!window.katex) return;
   clearTimeout(mathTimer);
   mathTimer = setTimeout(() => {
-    pageMath(document.querySelector('main'));
     all("[data-tex]").forEach(e => {
       if (e.dataset.rendered === e.dataset.tex) return;
       try { katex.render(e.dataset.tex,e,{displayMode:e.classList.contains("eq"),throwOnError:false}); e.dataset.rendered=e.dataset.tex; } catch {}
