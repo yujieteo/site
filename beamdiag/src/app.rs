@@ -400,7 +400,7 @@ impl App {
     }
 
     pub fn material_options(&self) -> String {
-        let mut list: Vec<(String, String)> = self.d.materials.iter().map(|m| (m.id.clone(), m.label.clone())).collect();
+        let mut list: Vec<(String, String)> = self.d.materials.iter().map(|m| (m.id.clone(), format!("{} (E {} {})", m.label, sig(self.show(m.e, Q::Stress), 4), self.sym(Q::Stress)))).collect();
         list.push(("custom".into(), "Custom".into()));
         options(&list, &self.st.mat.0)
     }
@@ -1111,7 +1111,7 @@ impl App {
             ("stale", if self.error.is_some() { "stale".into() } else { String::new() }), ("figure", figure), ("readout", self.readout_html()),
             ("stats", self.stats_html()), ("reactions", self.reactions_html()), ("length", unit(Q::Length)), ("force", unit(Q::Force)), ("moment", unit(Q::Moment)),
             ("stress", unit(Q::Stress)), ("angle", unit(Q::Angle)), ("len", tidy(self.show(self.st.length, Q::Length))), ("div", js(self.st.divisions)),
-            ("origins", origin("left", "Left end") + &origin("mid", "Mid-span")), ("supports", self.supports_html()), ("loads", self.loads_html()),
+            ("origins", origin("left", "Left end, + to the right") + &origin("mid", "Mid-span, − left, + right")), ("supports", self.supports_html()), ("loads", self.loads_html()),
             ("shapes", self.shape_options()), ("fields", self.section_fields_html()), ("derived", tex::rich(&self.section_summary())), ("materials", self.material_options()),
             ("e", tidy(self.show(self.st.mat.1, Q::Stress))), ("nu", tidy(self.st.mat.2)), ("table", self.table_html()), ("point", point), ("hand", hand),
             ("system", esc(self.u.label)), ("run", items(n.get("run"))), ("status", esc(n.s("status"))),
