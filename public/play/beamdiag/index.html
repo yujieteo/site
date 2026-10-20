@@ -39,7 +39,7 @@
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.6rem 1.25rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
 .stats li { border-top: 1px solid var(--line); padding-top: 0.4rem; }
 .stats b { display: block; font-weight: 400; font-size: 1.35rem; line-height: 1.2; color: var(--fg); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.stats span { font-size: 0.8125rem; color: var(--muted); }
+.stats li > span { font-size: 0.8125rem; color: var(--muted); }
 .reactions { list-style: none; margin: 0.75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; font-size: 0.875rem; }
 .reactions li { border: 1px solid var(--line); border-radius: 6px; padding: 0.25rem 0.6rem; font-variant-numeric: tabular-nums; }
 .reactions li i { display: inline-block; width: 0.9rem; height: 2px; background: var(--green); vertical-align: middle; margin-right: 0.35rem; }
@@ -293,7 +293,7 @@ async function pdfFonts() {
   send({ev:"fonts", w:plots.clientWidth, fonts:await fontPromise});
 }
 let katexPromise, mathTimer = 0;
-const mathToken = /(?:[−-]?\d[\d,.]*(?:[eE][+-]?\d+)?(?:×10[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|\b(?:EI|Iy|[xVMvLFEACIcbhDdtqrJ]|mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)\b|[θνΣ])(?:[₀₁₂₃₄₅₆₇₈₉⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|[=·×→|/+−]/g;
+const mathToken = /\|M\|·c\s*\/\s*I|[VM] x[⁻⁺]|L\/\d+|(?:[−-]?\d[\d,.]*(?:[eE][+-]?\d+)?(?:×10[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|\b(?:EI|Iy|[xVMvLFEACIcbhDdtqrJ]|mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)\b|[θνΣ])(?:[₀₁₂₃₄₅₆₇₈₉⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|[=·×→|/+−]/g;
 function pageMath(root) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
     acceptNode(n) {
@@ -311,7 +311,7 @@ function pageMath(root) {
     for (const m of n.data.matchAll(mathToken)) {
       parts.append(n.data.slice(from,m.index));
       const span = document.createElement('span');
-      span.dataset.tex = m[0].replace(/[₀₁₂₃₄₅₆₇₈₉]+/g,s=>'_{'+Array.from(s,c=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(c)).join('')+'}')
+      span.dataset.tex = m[0].replace(/^Iy$/,'I_y').replace(/[₀₁₂₃₄₅₆₇₈₉]+/g,s=>'_{'+Array.from(s,c=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(c)).join('')+'}')
         .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g,s=>'^{'+Array.from(s,c=>'0123456789-+'['⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺'.indexOf(c)]).join('')+'}')
         .replace(/×/g,'\\times ').replace(/·/g,'\\cdot ').replace(/θ/g,'\\theta ').replace(/ν/g,'\\nu ').replace(/Σ/g,'\\sum ').replace(/→/g,'\\to ').replace(/−/g,'-');
       if (/^(mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)(\^|$)/.test(span.dataset.tex)) span.dataset.tex = span.dataset.tex.replace(/^([a-zA-Z]+)/,'\\mathrm{$1}');
