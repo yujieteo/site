@@ -49,7 +49,7 @@
 .row + .row { margin-top: 0.5rem; }
 label.f.origin { margin-top: 0.5rem; }
 label.f { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.75rem; color: var(--muted); }
-label.f span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; max-height: 28rem; overflow-y: auto; overscroll-behavior: contain; }
 .item { border-top: 1px solid var(--line); padding-top: 0.5rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.4rem; align-items: end; }
 .item:first-child { border-top: 0; padding-top: 0; }
@@ -130,7 +130,7 @@ pre.deck { font: 12px/1.45 var(--mono); background: var(--surface); border-radiu
       <div class="row">
         <label class="f"><span>Length L (<span data-unit="length">mm</span>)</span><input id="length" type="number" step="any" min="0.001" data-field="length" value="6000"></label>
       </div>
-      <label class="f origin"><span>Measure x from</span><select id="origin" data-field="origin"><option value="left">Left end, + to the right</option><option value="mid" selected>Mid-span, − left, + right</option></select></label>
+      <label class="f origin"><span>Measure x from</span><select id="origin" data-field="origin"><option value="left">Left end</option><option value="mid" selected>Mid-span</option></select></label>
     </div>
     <div class="card">
       <h3>Supports</h3>
@@ -149,13 +149,13 @@ pre.deck { font: 12px/1.45 var(--mono); background: var(--surface); border-radiu
     </div>
     <div class="card">
       <h3>Section</h3>
-      <label class="f"><span>Shape</span><select id="shape" data-field="section.shape"><option value="rect" selected>Solid rectangle b × h</option><option value="circle">Solid circle, diameter d</option><option value="tube">Circular tube D × t</option><option value="custom">Custom A and I</option></select></label>
+      <label class="f"><span>Shape</span><select id="shape" data-field="section.shape"><option value="rect" selected>Solid rectangle</option><option value="circle">Solid circle</option><option value="tube">Circular tube</option><option value="custom">Custom</option></select></label>
       <div id="section-fields"><div class="row"><label class="f"><span>Width b (mm)</span><input type="number" step="any" value="100" name="section.b" data-field="section.b"></label><label class="f"><span>Depth h (mm)</span><input type="number" step="any" value="200" name="section.h" data-field="section.h"></label></div></div>
       <p id="section-derived" class="derived">A = 20000 mm² · I = 6.667×10⁷ mm⁴ · c = 100 mm · EI = 1.333×10¹³ N·mm²</p>
     </div>
     <div class="card">
       <h3>Material</h3>
-      <label class="f"><span>Preset</span><select id="material" data-field="material"><option value="steel" selected>Structural steel (E 200000 MPa)</option><option value="aluminium">Aluminium alloy (E 69000 MPa)</option><option value="concrete">Concrete (uncracked, C30/37) (E 33000 MPa)</option><option value="timber">Softwood timber (C24, along grain) (E 11000 MPa)</option><option value="custom">Custom</option></select></label>
+      <label class="f"><span>Preset</span><select id="material" data-field="material"><option value="steel" selected>Structural steel</option><option value="aluminium">Aluminium alloy</option><option value="concrete">Concrete (uncracked, C30/37)</option><option value="timber">Softwood timber (C24, along grain)</option><option value="custom">Custom</option></select></label>
       <details><summary>E and ν</summary><div class="row">
         <label class="f"><span>Young's modulus E (<span data-unit="stress">MPa</span>)</span><input id="E" type="number" step="1" data-field="material.E" value="200000"></label>
         <label class="f"><span>Poisson's ratio ν</span><input id="nu" type="number" step="0.01" data-field="material.nu" value="0.3"></label>
@@ -292,23 +292,58 @@ async function pdfFonts() {
   }));
   send({ev:"fonts", w:plots.clientWidth, fonts:await fontPromise});
 }
-let katexPromise, handVisible = false;
-function math() {
-  if (!handVisible || !window.katex) return;
-  all("[data-tex]").forEach(e => { try { katex.render(e.dataset.tex,e,{displayMode:e.classList.contains("eq"),throwOnError:false}); } catch {} });
+let katexPromise, mathTimer = 0;
+const mathToken = /(?:[−-]?\d[\d,.]*(?:[eE][+-]?\d+)?(?:×10[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|\b(?:EI|Iy|[xVMvLFEACIcbhDdtqrJ]|mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)\b|[θνΣ])(?:[₀₁₂₃₄₅₆₇₈₉⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|[=·×→|/+−]/g;
+function pageMath(root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+    acceptNode(n) {
+      if (n.nodeType === Node.ELEMENT_NODE) return n.matches('svg,button,input,select,[data-tex],.katex,script,style') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_SKIP;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  while (walker.nextNode()) {
+    const n = walker.currentNode;
+    nodes.push(n);
+  }
+  for (const n of nodes) {
+    const parts = document.createDocumentFragment(); let from = 0;
+    for (const m of n.data.matchAll(mathToken)) {
+      parts.append(n.data.slice(from,m.index));
+      const span = document.createElement('span');
+      span.dataset.tex = m[0].replace(/[₀₁₂₃₄₅₆₇₈₉]+/g,s=>'_{'+Array.from(s,c=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(c)).join('')+'}')
+        .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g,s=>'^{'+Array.from(s,c=>'0123456789-+'['⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺'.indexOf(c)]).join('')+'}')
+        .replace(/×/g,'\\times ').replace(/·/g,'\\cdot ').replace(/θ/g,'\\theta ').replace(/ν/g,'\\nu ').replace(/Σ/g,'\\sum ').replace(/→/g,'\\to ').replace(/−/g,'-');
+      if (/^(mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)(\^|$)/.test(span.dataset.tex)) span.dataset.tex = span.dataset.tex.replace(/^([a-zA-Z]+)/,'\\mathrm{$1}');
+      span.textContent = m[0]; parts.append(span); from = m.index+m[0].length;
+    }
+    if (from) { parts.append(n.data.slice(from)); n.replaceWith(parts); }
+  }
 }
-async function hand() {
-  handVisible = true;
+function math() {
+  if (!window.katex) return;
+  clearTimeout(mathTimer);
+  mathTimer = setTimeout(() => {
+    pageMath(document.querySelector('main'));
+    all("[data-tex]").forEach(e => {
+      if (e.dataset.rendered === e.dataset.tex) return;
+      try { katex.render(e.dataset.tex,e,{displayMode:e.classList.contains("eq"),throwOnError:false}); e.dataset.rendered=e.dataset.tex; } catch {}
+    });
+  }, 80);
+}
+async function loadMath() {
   katexPromise ||= new Promise((resolve,reject) => {
     const css=document.createElement("link"); css.rel="stylesheet"; css.href="katex/katex.min.css"; document.head.append(css);
     const js=document.createElement("script"); js.src="katex/katex.min.js"; js.onload=resolve; js.onerror=reject; document.head.append(js);
   });
-  send({ev:"hand-visible"}); await katexPromise; math();
+  await katexPromise; math();
 }
+function hand() { send({ev:"hand-visible"}); math(); }
 WebAssembly.instantiateStreaming(fetch("beamdiag.wasm.gz").then(r => { if (!r.ok) throw new Error("Solver could not load"); return new Response(r.body.pipeThrough(new DecompressionStream("gzip")),{headers:{"Content-Type":"application/wasm"}}); })).then(({ instance }) => {
   wasm = instance.exports;
   send({ ev: "start", w: plots.clientWidth, date:new Date().toISOString().slice(0,10) });
-  new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) hand().catch(console.error); }).observe(document.getElementById("hand"));
+  requestAnimationFrame(() => requestAnimationFrame(() => loadMath().catch(console.error)));
+  new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) hand(); }).observe(document.getElementById("hand"));
   if (typeof ResizeObserver !== "undefined") new ResizeObserver(() => { const w = plots.clientWidth; if (w) send({ ev: "width", w }); }).observe(plots);
 
 }).catch((e) => { const b = document.getElementById("error"); b.hidden = false; b.textContent = `This page could not start its solver: ${e.message}.`; });

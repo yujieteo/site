@@ -58,7 +58,7 @@ const STYLE: &str = r#"
 .row + .row { margin-top: 0.5rem; }
 label.f.origin { margin-top: 0.5rem; }
 label.f { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.75rem; color: var(--muted); }
-label.f span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; max-height: 28rem; overflow-y: auto; overscroll-behavior: contain; }
 .item { border-top: 1px solid var(--line); padding-top: 0.5rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.4rem; align-items: end; }
 .item:first-child { border-top: 0; padding-top: 0; }
@@ -209,23 +209,58 @@ async function pdfFonts() {
   }));
   send({ev:"fonts", w:plots.clientWidth, fonts:await fontPromise});
 }
-let katexPromise, handVisible = false;
-function math() {
-  if (!handVisible || !window.katex) return;
-  all("[data-tex]").forEach(e => { try { katex.render(e.dataset.tex,e,{displayMode:e.classList.contains("eq"),throwOnError:false}); } catch {} });
+let katexPromise, mathTimer = 0;
+const mathToken = /(?:[−-]?\d[\d,.]*(?:[eE][+-]?\d+)?(?:×10[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|\b(?:EI|Iy|[xVMvLFEACIcbhDdtqrJ]|mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)\b|[θνΣ])(?:[₀₁₂₃₄₅₆₇₈₉⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?|[=·×→|/+−]/g;
+function pageMath(root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+    acceptNode(n) {
+      if (n.nodeType === Node.ELEMENT_NODE) return n.matches('svg,button,input,select,[data-tex],.katex,script,style') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_SKIP;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  while (walker.nextNode()) {
+    const n = walker.currentNode;
+    nodes.push(n);
+  }
+  for (const n of nodes) {
+    const parts = document.createDocumentFragment(); let from = 0;
+    for (const m of n.data.matchAll(mathToken)) {
+      parts.append(n.data.slice(from,m.index));
+      const span = document.createElement('span');
+      span.dataset.tex = m[0].replace(/[₀₁₂₃₄₅₆₇₈₉]+/g,s=>'_{'+Array.from(s,c=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(c)).join('')+'}')
+        .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g,s=>'^{'+Array.from(s,c=>'0123456789-+'['⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺'.indexOf(c)]).join('')+'}')
+        .replace(/×/g,'\\times ').replace(/·/g,'\\cdot ').replace(/θ/g,'\\theta ').replace(/ν/g,'\\nu ').replace(/Σ/g,'\\sum ').replace(/→/g,'\\to ').replace(/−/g,'-');
+      if (/^(mm|MPa|kPa|Pa|kN|N|m|rad|lbf|kip|psi|ksi)(\^|$)/.test(span.dataset.tex)) span.dataset.tex = span.dataset.tex.replace(/^([a-zA-Z]+)/,'\\mathrm{$1}');
+      span.textContent = m[0]; parts.append(span); from = m.index+m[0].length;
+    }
+    if (from) { parts.append(n.data.slice(from)); n.replaceWith(parts); }
+  }
 }
-async function hand() {
-  handVisible = true;
+function math() {
+  if (!window.katex) return;
+  clearTimeout(mathTimer);
+  mathTimer = setTimeout(() => {
+    pageMath(document.querySelector('main'));
+    all("[data-tex]").forEach(e => {
+      if (e.dataset.rendered === e.dataset.tex) return;
+      try { katex.render(e.dataset.tex,e,{displayMode:e.classList.contains("eq"),throwOnError:false}); e.dataset.rendered=e.dataset.tex; } catch {}
+    });
+  }, 80);
+}
+async function loadMath() {
   katexPromise ||= new Promise((resolve,reject) => {
     const css=document.createElement("link"); css.rel="stylesheet"; css.href="katex/katex.min.css"; document.head.append(css);
     const js=document.createElement("script"); js.src="katex/katex.min.js"; js.onload=resolve; js.onerror=reject; document.head.append(js);
   });
-  send({ev:"hand-visible"}); await katexPromise; math();
+  await katexPromise; math();
 }
+function hand() { send({ev:"hand-visible"}); math(); }
 WebAssembly.instantiateStreaming(fetch("beamdiag.wasm.gz").then(r => { if (!r.ok) throw new Error("Solver could not load"); return new Response(r.body.pipeThrough(new DecompressionStream("gzip")),{headers:{"Content-Type":"application/wasm"}}); })).then(({ instance }) => {
   wasm = instance.exports;
   send({ ev: "start", w: plots.clientWidth, date:new Date().toISOString().slice(0,10) });
-  new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) hand().catch(console.error); }).observe(document.getElementById("hand"));
+  requestAnimationFrame(() => requestAnimationFrame(() => loadMath().catch(console.error)));
+  new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) hand(); }).observe(document.getElementById("hand"));
   if (typeof ResizeObserver !== "undefined") new ResizeObserver(() => { const w = plots.clientWidth; if (w) send({ ev: "width", w }); }).observe(plots);
 
 }).catch((e) => { const b = document.getElementById("error"); b.hidden = false; b.textContent = `This page could not start its solver: ${e.message}.`; });

@@ -12,7 +12,7 @@ scripts/build-beam.sh
 The builder needs `gzip`. It writes the raw module and `beamdiag.wasm.gz`.
 The page streams the compressed module through `DecompressionStream` into WebAssembly.
 Serve `.gz` as a file, without an HTTP `Content-Encoding` header.
-KaTeX loads when the hand calculation enters the view. PDF fonts load on the first Save PDF.
+KaTeX loads after the first draw and replaces plain HTML maths. PDF fonts load on the first Save PDF.
 The pinned KaTeX version and archive hash are in `public/play/beamdiag/katex/lock.txt`.
 The PDF fonts are in `public/play/beamdiag/fonts/`. `fonts.txt` gives their sources.
 Tests are disposable. Check changes in the built page, and do not commit regression tests.

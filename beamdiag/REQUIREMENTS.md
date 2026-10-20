@@ -24,8 +24,7 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
    - Material, with E and ν folded behind it (a `<details>`)
 3. The figure keeps its drag handles and its cursor on the diagrams. On a phone, the tables are
    the main input, and the page works fully: build a beam and save the PDF.
-4. The page shows the reactions, the largest values and the hand calculation. The hand
-   calculation's equations are drawn with KaTeX.
+4. The page shows the reactions, the largest values and the hand calculation. All maths in HTML text uses KaTeX. Input values stay plain. The figure and PDF keep Unicode maths.
 5. Two export buttons only: **Save PDF** and **Save PNG**.
 6. Removed: the example preset select, the image format select, SVG export, Divisions, the
    NASTRAN deck and `bdf.rs`, the beamdswitch deck and `deck.rs` / `report.rs` (unless the PDF
@@ -34,7 +33,7 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
 7. Look: black on white, system fonts (`system-ui`, `ui-monospace`), one small stylesheet. No
    themes, no dark mode, no site header, no fades. A plain text link to `/` at the top is allowed.
 8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 300 KB loads before the
-   first draw. KaTeX loads when the hand calculation comes into view. The PDF fonts load on the
+   first draw. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The PDF fonts load on the
    first "Save PDF".
 9. Typing in a field never lags: solve on input, draw at most once per animation frame, and build
    the hand calculation only when it is visible.
