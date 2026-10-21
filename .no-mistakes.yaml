@@ -1,0 +1,3 @@
+# The no-mistakes test step runs this command. AGENTS.md runs the same check before each deploy.
+commands:
+  test: scripts/check.sh
