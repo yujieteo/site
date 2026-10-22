@@ -1,16 +1,14 @@
 #!/bin/sh
-# Check, then copy public/ to the server; files that are not in public/ are deleted there, so old
-# URLs return 404. Without --yes it only shows what would change.
+# Check, then replace the site on the server with public/; files that are not in public/ go away,
+# so old URLs return 404. The server is reached only over the VPN.
 set -eu
 cd "$(dirname "$0")/.."
-dest=${SITE_DEST:-$(cat .deploy 2>/dev/null || true)}
-[ -n "$dest" ] || { echo "Set SITE_DEST, or write user@host:/path/to/webroot to .deploy"; exit 1; }
 [ -z "$(git status --porcelain)" ] || { echo "Commit first."; exit 1; }
 scripts/check.sh
-if [ "${1:-}" = --yes ]; then
-  rsync -rlptz --delete --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r public/ "$dest/"
-  echo "deployed $(git rev-parse --short HEAD) to $dest"
-else
-  rsync -rlptzn --delete --itemize-changes public/ "$dest/"
-  echo "Dry run. Run scripts/deploy.sh --yes to deploy."
-fi
+tar --no-mac-metadata -czf - -C public . | ssh deploy@10.8.0.1 site
+for path in / /lullapixie/privacy.html /lullapixie/support.html /marklove/privacy.html \
+  /marklove/support.html /play/beamdiag/; do
+  code=$(curl -s -o /dev/null -w '%{http_code}' "https://teoyujie.org$path")
+  [ "$code" = 200 ] || { echo "$path returned $code"; exit 1; }
+done
+echo "deployed $(git rev-parse --short HEAD)"

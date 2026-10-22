@@ -6,5 +6,5 @@
 3. Never edit `public/play/beamdiag/index.html`. Change the beam in `beamdiag/`, then run
    `scripts/build-beam.sh` and commit the page with the source.
 4. Never change or remove the five URLs in REQUIREMENTS.md: the App Store links to them.
-5. Commit to `main`. Run `scripts/check.sh`, then `scripts/deploy.sh` (dry run), then
-   `scripts/deploy.sh --yes`.
+5. Commit to `main`. Turn on the VPN, then run `scripts/deploy.sh`. It runs the check, deploys and
+   tests the URLs.
