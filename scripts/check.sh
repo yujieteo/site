@@ -1,5 +1,5 @@
 #!/bin/sh
-# Check the pages and local links, that beamdiag/ builds the beam page, and the native PDF.
+# Check the pages, local links and home page, that beamdiag/ builds the beam page, and the native PDF.
 set -eu
 cd "$(dirname "$0")/.."
 python3 - <<'PY'
@@ -35,6 +35,42 @@ class Links(HTMLParser):
 
 for page in root.rglob('*.html'):
     Links().feed(page.read_text())
+
+# Each selected exploration on the home page is one <li> with a kind, a title (h3) and a link.
+class Explorations(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.entries, self.inside, self.field = [], False, None
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'ol' and attrs.get('class') == 'featured':
+            self.inside = True
+        elif self.inside and tag == 'li':
+            self.entries.append({'kind': '', 'h3': ''})
+        elif self.inside and tag == 'a':
+            self.entries[-1]['href'] = attrs.get('href')
+        elif self.inside and (tag == 'h3' or attrs.get('class') == 'kind'):
+            self.field = 'h3' if tag == 'h3' else 'kind'
+    def handle_endtag(self, tag):
+        self.field = None
+        if tag == 'ol':
+            self.inside = False
+    def handle_data(self, data):
+        if self.field:
+            self.entries[-1][self.field] += data
+
+home = (root / 'index.html').read_text()
+for path in ('/lullapixie/privacy.html', '/lullapixie/support.html', '/marklove/privacy.html',
+             '/marklove/support.html', '/contact.asc', 'mailto:contact@teoyujie.org'):
+    assert f'href="{path}"' in home, f'home page has no link to {path}'
+explorations = Explorations()
+explorations.feed(home)
+assert explorations.entries, 'home page has no selected explorations'
+for entry in explorations.entries:
+    assert entry['kind'] in ('Experiment', 'Project', 'Essay'), f'bad kind: {entry}'
+    assert entry['h3'].strip() and entry.get('href'), f'no title or link: {entry}'
+    if entry['kind'] == 'Project':
+        assert entry['href'].startswith('https://'), f'project is not a link to its repository: {entry}'
 PY
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT HUP INT TERM
