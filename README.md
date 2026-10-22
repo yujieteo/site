@@ -1,7 +1,8 @@
 # site
 
-The website at teoyujie.org: the beam diagram tool, and the privacy and support pages of
-Lullapixie and Marklove. `REQUIREMENTS.md` says what the site must do.
+The website at teoyujie.org: the beam diagram tool, the privacy and support pages of
+Lullapixie and Marklove, and the OpenPGP key of contact@teoyujie.org. `REQUIREMENTS.md` says
+what the site must do.
 
 | Path | Holds |
 | --- | --- |
@@ -9,7 +10,7 @@ Lullapixie and Marklove. `REQUIREMENTS.md` says what the site must do.
 | `beamdiag/` | The beam diagram creator, a Rust crate that builds to WebAssembly. `beamdiag/REQUIREMENTS.md` is its contract. |
 | `public/play/beamdiag/` | The built beam page. `index.html` and `beamdiag.wasm*` come from `scripts/build-beam.sh`. Never edit them by hand. |
 | `scripts/build-beam.sh [folder]` | Builds the beam page into `public/play/beamdiag/` or into the folder. |
-| `scripts/check.sh` | Pages exist, links resolve, `beamdiag/` builds the beam page and a PDF. |
+| `scripts/check.sh` | Pages and WKD key files exist, links resolve, `beamdiag/` builds the beam page and a PDF. |
 | `scripts/deploy.sh [--yes]` | Runs the check, then rsyncs `public/` to the server. Without `--yes`, a dry run. |
 
 The deploy target is `SITE_DEST`, or one line `user@host:/path/to/webroot` in `.deploy` (not committed).
