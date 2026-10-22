@@ -1,7 +1,7 @@
 # Beam diagram creator (beamdiag)
 
 The crate builds the standalone beam page into `public/play/beamdiag/`, which the site serves at `/play/beamdiag/`.
-The page uses black on white and system fonts. It has no site header or theme.
+The page uses the site stylesheet `/style.css` and the site header and footer, in `src/body.html`.
 
 Never edit `public/play/beamdiag/index.html` by hand. After a change to `src/` or `raw.json`, rebuild:
 

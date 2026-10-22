@@ -6,7 +6,7 @@
 use beamdiag::app::App;
 use beamdiag::draw;
 
-const BASE: &str = r#":root{--bg:#fff;--surface:#fff;--fg:#000;--fg2:#000;--muted:#000;--line:#000;--accent:#000;--accent-text:#000;--warm:#000;--green:#000;--chrome:#fff;--sans:system-ui,sans-serif;--mono:ui-monospace,monospace;--math:system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:#fff;color:#000;font:16px/1.5 system-ui,sans-serif}main{max-width:1280px;margin:auto;padding:16px}button{font:inherit;background:#fff;color:#000;border:1px solid;padding:6px 10px;cursor:pointer}a{color:#000}"#;
+const BASE: &str = r#":root{--surface:var(--bg);--fg:var(--ink);--fg2:var(--ink);--accent-text:var(--accent);--warm:var(--accent);--green:var(--ink);--chrome:var(--bg);--mono:ui-monospace,monospace;--math:system-ui,sans-serif}button{font:inherit;background:none;color:inherit;border:1px solid var(--line);border-radius:6px;padding:6px 10px;cursor:pointer}button:hover{border-color:var(--ink)}"#;
 const STYLE: &str = r#"
 .bd .eyebrow { font: 0.75rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; margin: 0 0 0.75rem; }
 .bd .lede { max-width: 44rem; margin-bottom: 2rem; }
@@ -66,7 +66,7 @@ label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 .item .tag { grid-column: 1 / -1; font: 0.72rem var(--mono); color: var(--fg); letter-spacing: 0.03em; }
 .adds { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
 .derived, .note { font-size: 0.8125rem; color: var(--muted); margin: 0.5rem 0 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.table-wrap { overflow-x: auto; margin-top: 0.5rem; border: 1px solid var(--line); border-radius: 6px; }
+.table-wrap { position: relative; overflow-x: auto; margin-top: 0.5rem; border: 1px solid var(--line); border-radius: 6px; }
 .bd table { border-collapse: collapse; width: 100%; font-size: 0.8125rem; min-width: 40rem; }
 .bd table.cards { min-width: 30rem; }
 .bd th, .bd td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -249,7 +249,7 @@ fn main() {
     let style = format!("{STYLE}{}", draw::css());
     let script = format!("<script>{HOST}</script>");
     let description = "Create beam diagrams, read reactions and hand calculations, and save PNG or A4 PDF reports.";
-    let html = format!(r#"<!doctype html><html lang="en"><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beam diagram creator</title><meta name="description" content="{description}"><style>{BASE}{style}</style><main>{body}</main>{script}</html>"#);
+    let html = format!(r#"<!doctype html><html lang="en"><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beam diagram creator</title><meta name="description" content="{description}"><link rel="stylesheet" href="/style.css"><style>{BASE}{style}</style>{body}{script}</html>"#);
     assert!(!html.contains("/Users/") && !html.contains("/home/"), "no home paths in the page");
     let folder = std::path::Path::new(out).parent().unwrap();
     std::fs::create_dir_all(folder).unwrap();
