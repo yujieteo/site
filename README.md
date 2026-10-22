@@ -1,7 +1,8 @@
 # site
 
-The website at teoyujie.org: the beam diagram tool, and the privacy and support pages of
-Lullapixie and Marklove. `REQUIREMENTS.md` says what the site must do.
+The website at teoyujie.org: the beam diagram tool, the privacy and support pages of
+Lullapixie and Marklove, and the OpenPGP key of contact@teoyujie.org. `REQUIREMENTS.md` says
+what the site must do.
 
 | Path | Holds |
 | --- | --- |

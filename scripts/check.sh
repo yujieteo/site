@@ -10,7 +10,9 @@ from urllib.parse import urlsplit, unquote
 root = Path('public').resolve()
 for name in ('index.html', 'style.css', 'lullapixie/privacy.html',
              'lullapixie/support.html', 'marklove/privacy.html',
-             'marklove/support.html', 'play/beamdiag/index.html'):
+             'marklove/support.html', 'play/beamdiag/index.html',
+             '.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19',
+             '.well-known/openpgpkey/teoyujie.org/hu/dj3498u4hyyarh35rkjfnghbjxug6b19'):
     assert (root / name).stat().st_size, f'missing or empty: {name}'
 
 class Links(HTMLParser):

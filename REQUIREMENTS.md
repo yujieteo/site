@@ -5,9 +5,12 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Purpose
 
-1. The site does two jobs only:
+1. The site does three jobs only:
    - host the privacy and support pages of Lullapixie and Marklove
    - host the beam diagram tool
+   - publish the OpenPGP public key of contact@teoyujie.org at `/contact.asc`, and for WKD at
+     `/.well-known/openpgpkey/` (direct method) and `/.well-known/openpgpkey/teoyujie.org/`
+     (advanced method, served at openpgpkey.teoyujie.org)
 2. The site has no stories, blog, notebooks, other tools or experiments.
 
 ## URLs
@@ -16,7 +19,8 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    - `/lullapixie/privacy.html`, `/lullapixie/support.html`
    - `/marklove/privacy.html`, `/marklove/support.html`
    - `/play/beamdiag/`
-4. The home page `/` is a list of links to these pages and nothing else.
+4. The home page `/` is a list of links to these pages, and one line with contact@teoyujie.org,
+   a link to its key and the key fingerprint. It has nothing else.
 5. Every other old URL returns 404.
 
 ## Look
