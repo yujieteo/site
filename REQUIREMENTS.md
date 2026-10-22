@@ -1,6 +1,6 @@
 # Site requirements
 
-Agreed with the owner on 2026-10-18, and changed on 2026-10-23 for the new home page.
+Agreed with the owner on 2026-10-18, and changed on 2026-10-23 for the new home page and its look on all pages.
 When the site and this file disagree, change the site.
 The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
@@ -33,11 +33,12 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Look
 
-6. The home page has an editorial look: a warm neutral background, a large serif heading and a
-   calm grid. Its fonts are Source Serif 4 and DM Sans, open licence, in `public/fonts/`. The art
-   is random walks and the normal density on a canvas, with slow motion. Under
-   `prefers-reduced-motion` it is a still frame. The other pages use one plain stylesheet: black
-   on white, system fonts, no themes, no dark mode, no decoration.
+6. The site has an editorial look: a warm neutral background, large serif headings and a calm
+   grid. Its fonts are Source Serif 4 and DM Sans, open licence, in `public/fonts/`. All pages
+   use the one stylesheet `public/style.css`, and have the header and footer of the home page.
+   There are no themes and no dark mode. The art on the home page is random walks and the
+   normal density on a canvas, with slow motion. Under `prefers-reduced-motion` it is a still
+   frame.
 7. Each policy and support page is plain HTML of a few KB.
 
 ## Build and deploy

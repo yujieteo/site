@@ -1,6 +1,6 @@
 # Beam diagram creator: requirements
 
-Agreed with the owner on 2026-10-18. When the code and this file disagree, change the code.
+Agreed with the owner on 2026-10-18, and changed on 2026-10-23 for the site look. When the code and this file disagree, change the code.
 
 ## The job
 
@@ -30,10 +30,10 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
    NASTRAN deck and `bdf.rs`, the beamdswitch deck and `deck.rs` / `report.rs` (unless the PDF
    reuses its numbers), the Markdown and clipboard exports, the WebMCP tools and `tools.json`, and
    all explanation text (method, signs, assumptions, sources) on the page.
-7. Look: black on white, system fonts (`system-ui`, `ui-monospace`), one small stylesheet. No
-   themes, no dark mode, no site header, no fades. A plain text link to `/` at the top is allowed.
-8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 300 KB loads before the
-   first draw. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The PDF fonts load on the
+7. Look: the site look, with the site stylesheet `/style.css`, header and footer. The page adds
+   only the styles of the tool. No themes, no dark mode, no fades.
+8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 400 KB loads before the
+   first draw, with the two site fonts. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The PDF fonts load on the
    first "Save PDF".
 9. Typing in a field never lags: solve on input, draw at most once per animation frame, and build
    the hand calculation only when it is visible.

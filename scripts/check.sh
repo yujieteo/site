@@ -23,8 +23,6 @@ class Links(HTMLParser):
             url = urlsplit(value)
             if url.scheme or url.netloc or not url.path:
                 continue
-            if page == root / 'play/beamdiag/index.html' and tag == 'a' and key == 'href':
-                assert value == '/', f'beam page link is not /: {value}'
             path = unquote(url.path)
             target = root / path.lstrip('/') if path.startswith('/') else page.parent / path
             target = target.resolve()
