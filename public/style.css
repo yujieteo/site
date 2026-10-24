@@ -36,6 +36,8 @@ main.page { padding-top: clamp(1.5rem, 5vw, 3rem); padding-bottom: 4rem; }
 main.page h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
 main.page > article { max-width: 42rem; }
 main.page > article h2 { font-size: 1.5rem; margin: 2.5rem 0 0.5rem; }
+main.page figure { margin: 2rem 0; }
+main.page figure svg { display: block; max-width: 100%; height: auto; }
 .muted { color: var(--muted); }
 code { font: 0.95em ui-monospace, monospace; overflow-wrap: anywhere; }
 @media (min-width: 52rem) { .hero { grid-template-columns: 7fr 5fr; } }
