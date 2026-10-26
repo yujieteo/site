@@ -21,10 +21,19 @@ const PRESETS = [
 ];
 
 const $ = (id) => document.getElementById(id);
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const fmt = (x, d = 1) => x.toLocaleString("en-GB", { minimumFractionDigits: d, maximumFractionDigits: d });
 const sign = (x, d = 1) => (x > 0 ? "+" : x < 0 ? "−" : "") + fmt(Math.abs(x), d);
 
-const eng = await loadEngine();
+let eng;
+try {
+  eng = await loadEngine();
+} catch (error) {
+  $("fire").textContent = "GOOSE UNAVAILABLE";
+  $("banner").setAttribute("role", "alert");
+  $("banner").textContent = "The solver could not load. Reload the page to try again.";
+  throw error;
+}
 
 const st = {
   phase: "idle",          // idle | approach | sim | done | wall
@@ -59,13 +68,21 @@ try { st.muted = localStorage.getItem("goosestrike-muted") === "1"; } catch { /*
 
 let audio = null;
 function ac() {
-  if (!audio) audio = new (window.AudioContext || window.webkitAudioContext)();
+  try {
+    if (!audio) audio = new (window.AudioContext || window.webkitAudioContext)();
+  } catch {
+    st.muted = true;
+    showMute();
+    return null;
+  }
   return audio;
 }
 
 function honk(pitch = 1, when = 0) {
   if (st.muted) return;
-  const a = ac(), t = a.currentTime + when;
+  const a = ac();
+  if (!a) return;
+  const t = a.currentTime + when;
   const osc = a.createOscillator(), osc2 = a.createOscillator();
   const bp = a.createBiquadFilter(), g = a.createGain();
   osc.type = "sawtooth"; osc2.type = "square";
@@ -83,7 +100,9 @@ function honk(pitch = 1, when = 0) {
 
 function splat() {
   if (st.muted) return;
-  const a = ac(), t = a.currentTime;
+  const a = ac();
+  if (!a) return;
+  const t = a.currentTime;
   const n = Math.floor(a.sampleRate * 0.5);
   const buf = a.createBuffer(1, n, a.sampleRate);
   const d = buf.getChannelData(0);
@@ -164,16 +183,22 @@ function setupRun(mode) {
   const pr = PRESETS[st.preset];
   eng.setup(mode, pr.cells, pr.spacing, st.speed);
   st.mode = mode;
+  legend();
   readState();
   st.elems = eng.elements();
   st.skinNe = mode === 0 ? skinElements(pr.cells) : 0;
   st.init = st.parts.slice();
   st.ke0 = eng.birdKE();
+  $("energyTitle").textContent = `Goose energy at start: ${fmt(st.ke0 / 1e3, 1)} kJ`;
   st.peakF = 0;
+  st.frameSim = 0;
+  st.msPerStep = 0;
   st.hist = [];
   st.splatted = false;
   st.solverPhase = -1;
   paintGoose();
+  drawForceChart();
+  telemetry();
 }
 
 // ---------------------------------------------------------------------------
@@ -415,6 +440,7 @@ function blob(pts) {
 // body toward the beak, v toward the back. Thus they keep their shape from
 // all sides. Sizes are in bird diameters.
 function decorations(offsetZ, flap) {
+  const now = reducedMotion.matches ? 0 : performance.now();
   const A = st.anchors, D = eng.birdD(), P = st.parts;
   const wp = (i) => [P[3 * i], P[3 * i + 1], P[3 * i + 2] + offsetZ];
   const pt = (w) => { const o = [0, 0, 0]; proj(w[0], w[1], w[2], o, 0); return o; };
@@ -440,7 +466,7 @@ function decorations(offsetZ, flap) {
   // wings: soft feathers on the sides, flapping in the approach, limp after it
   for (const i of A.wings) {
     const c = sp(i), k = scale(c[2]);
-    const up = dizzy ? -0.05 + 0.03 * Math.sin(performance.now() / 40) : 0.25 + 0.2 * flap;
+    const up = dizzy ? -0.05 + 0.03 * Math.sin(now / 40) : 0.25 + 0.2 * flap;
     part(c, feather, [at(c, k, 0.18, 0.02), at(c, k, -0.2, 0.12 + up), at(c, k, -0.5, 0.1 + 0.8 * up), at(c, k, -0.3, -0.12)], -0.03);
   }
   // a tuft of feathers on the head
@@ -479,7 +505,7 @@ function decorations(offsetZ, flap) {
         ctx.beginPath(); ctx.arc(c[0], c[1], rr * 0.82, 0, 2 * Math.PI); ctx.fill();
         ctx.strokeStyle = GOOSE.ink; ctx.lineWidth = Math.max(DPR, 0.16 * rr);
         ctx.beginPath();
-        const turn = performance.now() / 120;
+        const turn = now / 120;
         for (let k = 0; k <= 40; k++) {
           const a = turn + k * 0.45, q = rr * 0.7 * k / 40;
           const x = c[0] + q * Math.cos(a), y = c[1] + q * Math.sin(a);
@@ -500,7 +526,7 @@ function drawStars(offsetZ) {
   let cx = 0, cy = 0, cz = 0;
   for (let i = 0; i < np; i++) { cx += P[3 * i]; cy += P[3 * i + 1]; cz += P[3 * i + 2]; }
   cx /= np; cy /= np; cz /= np;
-  const D = eng.birdD(), t = performance.now() / 500, o = [0, 0, 0];
+  const D = eng.birdD(), t = reducedMotion.matches ? 0 : performance.now() / 500, o = [0, 0, 0];
   for (let k = 0; k < 3; k++) {
     const a = t + k * 2.094;
     proj(cx + 0.6 * D * Math.cos(a), cy + 0.9 * D, cz + offsetZ + 0.6 * D * Math.sin(a), o, 0);
@@ -521,7 +547,17 @@ function drawStars(offsetZ) {
 // ---------------------------------------------------------------------------
 // charts
 
+const chartData = new WeakMap();
+const chartResize = new ResizeObserver((entries) => {
+  for (const { target } of entries) {
+    const data = chartData.get(target);
+    if (data) chart(target, data.series, data.opt);
+  }
+});
+
 function chart(cv, series, opt) {
+  if (!chartData.has(cv)) chartResize.observe(cv);
+  chartData.set(cv, { series, opt });
   const dpr = DPR, r = cv.getBoundingClientRect();
   cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
   const c = cv.getContext("2d");
@@ -582,16 +618,52 @@ function fire() {
   startGif();
   $("verdict").hidden = true;
   setBusy(true);
+  const view = canvas.getBoundingClientRect();
+  if (view.top < 0 || view.bottom > window.innerHeight) {
+    canvas.scrollIntoView({ behavior: "instant", block: "nearest" });
+  }
   honk(Math.sqrt(st.speed / V_C));
   honk(Math.sqrt(st.speed / V_C) * 1.06, 0.3);
 }
 
 function setBusy(b) {
+  const focusStop = b && (document.activeElement === $("fire") || document.activeElement === $("wilbeck"));
+  const focusFire = !b && document.activeElement === $("stop");
   $("fire").disabled = b;
   $("wilbeck").disabled = b;
+  $("stop").disabled = !b;
   $("gif").disabled = b || !st.gif;
   $("fire").textContent = b ? "GOOSE IN FLIGHT" : "FIRE THE GOOSE";
-  for (const el of document.querySelectorAll("#presets input, #speed")) el.disabled = b;
+  const runName = st.mode === 1 ? "Wall check" : "Panel run";
+  $("runStatus").textContent = b
+    ? `${runName} active. Press Escape or Stop and reset to stop.`
+    : st.phase === "done" ? `${runName} complete. Results appear below.` : "";
+  for (const el of document.querySelectorAll("#presets input, #speed, #speedNumber, #snap")) el.disabled = b;
+  if (focusStop) $("stop").focus({ preventScroll: true });
+  if (focusFire) $("fire").focus({ preventScroll: true });
+}
+
+function clearWallChart() {
+  const chart = $("wallChart");
+  chartResize.unobserve(chart);
+  chartData.delete(chart);
+  chart.getContext("2d").clearRect(0, 0, chart.width, chart.height);
+}
+
+function stopRun() {
+  if (st.phase !== "approach" && st.phase !== "sim" && st.phase !== "wall") return;
+  if (st.mode === 1) {
+    st.wall = null;
+    clearWallChart();
+    $("wilbeckOut").textContent = "Wall check stopped. No result.";
+  }
+  st.gif = null;
+  st.gifHold = false;
+  $("bubble").hidden = true;
+  preview();
+  setBusy(false);
+  $("runStatus").textContent = "Run stopped. Goose reset.";
+  $("banner").textContent = "Run stopped. Goose reset. Select a speed or resolution, then press FIRE.";
 }
 
 // Runs the solver one phase at a time for BUDGET_MS. A frame can end in the
@@ -630,7 +702,12 @@ function telemetry() {
     ["bird", `${fmt(eng.np(), 0)} particles, ${fmt(BIRD_MASS, 3)} kg`],
     ["panel", `${fmt(eng.nn(), 0)} nodes, ${fmt(eng.ne(), 0)} shells`],
   ];
-  $("tele").innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+  const tele = $("tele");
+  if (!tele.children.length) tele.innerHTML = rows.map(([k]) => `<dt>${k}</dt><dd></dd>`).join("");
+  rows.forEach(([, v], i) => {
+    const cell = tele.children[2 * i + 1];
+    if (cell.textContent !== v) cell.textContent = v;
+  });
   $("honkBar").style.width = `${Math.min(100, eng.contactForce() / 3e5 * 100)}%`;
 
   const parts = [
@@ -654,6 +731,7 @@ function verdict() {
   v.innerHTML = `
     <div class="stamp">${breached ? "SKIN BREACHED" : "SKIN HELD"}</div>
     <h2>${breached ? "The goose tore the skin." : "The skin held. The goose did not."}</h2>
+    <p>This run: ${pr.name} at ${fmt(st.speed, 2)} m/s (${fmt(st.speed / KT, 1)} kt), ${fmt(pr.spacing * 1e3, 1)} mm bird lattice.</p>
     <p>Eroded shell elements: ${fmt(skin, 0)} in the 2024-T3 skin, ${fmt(stiff, 0)} in the 7075-T6 stringers and frames.
       An element erodes when its plastic strain reaches the failure strain of its material. Maximum deflection ${fmt(eng.maxDeflection() * 1e3, 1)} mm.
       Peak contact force ${fmt(st.peakF / 1e3, 1)} kN. Maximum plastic strain ${fmt(eng.maxPlasticStrain() * 100, 1)} %.
@@ -662,8 +740,7 @@ function verdict() {
       That needs a residual strength analysis of the damaged structure, which this page does not do.
       This is not a certification analysis.</p>
     <p class="hint">Measured at V<sub>C</sub> only: the deflection converges with the mesh (${PRESETS.map((p) => fmt(p.defl, 1)).join(", ")} mm at ${PRESETS.map((p) => fmt(p.spacing * 1e3, 1)).join(", ")} mm).
-      The skin erosion does not (${PRESETS.map((p) => p.skin).join(", ")} skin elements): erosion depends on the element size, so a tear prediction needs a mesh-calibrated failure model.
-      This run: ${pr.name}, ${fmt(pr.spacing * 1e3, 1)} mm bird lattice.</p>`;
+      The skin erosion does not (${PRESETS.map((p) => p.skin).join(", ")} skin elements): erosion depends on the element size, so a tear prediction needs a mesh-calibrated failure model.</p>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -676,14 +753,17 @@ function wallCheck() {
   const [ph, us] = hugoniot(v);
   st.wall = { ph, us, ps: stagnation(v), tl: eng.birdL() / v, area: Math.PI * eng.sensorR() ** 2, xs: [], ys: [], peak: 0, plat: 0, platN: 0 };
   st.phase = "wall";
+  clearWallChart();
+  $("wilbeckOut").textContent = "Wall check active. No result yet.";
   startGif();
   $("verdict").hidden = true;
-  $("wallChart").scrollIntoView({ behavior: "smooth", block: "center" });
+  $("wallChart").scrollIntoView({ behavior: reducedMotion.matches ? "instant" : "smooth", block: "center" });
   setBusy(true);
   honk(0.8);
 }
 
 function wallSample() {
+  st.peakF = Math.max(st.peakF, eng.contactForce());
   const w = st.wall, tc = eng.tContact();
   if (tc < 0) return;
   const t = eng.time() - tc, p = eng.centerForce() / w.area;
@@ -719,23 +799,27 @@ function frame(now) {
   lastFrame = now;
   let offsetZ = 0, flap = 0;
   const banner = $("banner");
+  let bannerText;
   if (st.phase === "approach") {
     const s = Math.min(1, (now - st.t0) / 1000 / APPROACH_S);
     offsetZ = APPROACH_M * (1 - s);
-    flap = Math.sin(now / 70);
-    banner.textContent = `APPROACH: cartoon, not simulated (the real ${fmt(APPROACH_M, 1)} m takes ${fmt(APPROACH_M / st.speed * 1e3, 1)} ms at ${fmt(st.speed, 1)} m/s)`;
+    flap = reducedMotion.matches ? 0 : Math.sin(now / 70);
+    bannerText = `APPROACH: cartoon, not simulated (the real ${fmt(APPROACH_M, 1)} m takes ${fmt(APPROACH_M / st.speed * 1e3, 1)} ms at ${fmt(st.speed, 1)} m/s)`;
     if (s >= 1) st.phase = "sim";
   } else if (st.phase === "sim") {
-    stepSolver(T_END, () => { st.peakF = Math.max(st.peakF, eng.contactForce()); });
+    stepSolver(T_END, () => {
+      const f = eng.contactForce();
+      st.peakF = Math.max(st.peakF, f);
+      st.hist.push({ t: eng.time(), f });
+    });
     readState();
-    st.hist.push({ t: eng.time(), f: eng.contactForce() });
     if (eng.tContact() >= 0 && !st.splatted) {
       st.splatted = true;
       splat(); honk(1.35); honk(1.5, 0.18);
       const b = $("bubble"); b.hidden = false; b.style.animation = "none"; void b.offsetWidth; b.style.animation = "";
       setTimeout(() => { b.hidden = true; }, 900);
     }
-    banner.textContent = `SIMULATING in Goose → WebAssembly · t = ${fmt(eng.time() * 1e6, 0)} µs of ${fmt(T_END * 1e6, 0)} µs · goose is now a fluid`;
+    bannerText = `SIMULATING in Goose → WebAssembly · t = ${fmt(eng.time() * 1e6, 0)} µs of ${fmt(T_END * 1e6, 0)} µs · goose is now a fluid`;
     telemetry();
     drawForceChart();
     if (eng.time() >= T_END) {
@@ -744,13 +828,14 @@ function frame(now) {
   } else if (st.phase === "wall") {
     stepSolver(1.5 * st.wall.tl, wallSample);
     readState();
-    banner.textContent = `CONTROL EXPERIMENT: goose vs. rigid wall · ${fmt(eng.time() * 1e6, 0)} µs · colour = pressure`;
+    telemetry();
+    bannerText = `CONTROL EXPERIMENT: goose vs. rigid wall · ${fmt(eng.time() * 1e6, 0)} µs · colour = pressure`;
     drawWallChart();
     if (eng.time() >= 1.5 * st.wall.tl) { st.phase = "done"; st.solverPhase = -1; st.gifHold = true; setBusy(false); }
   } else if (st.phase === "done") {
-    banner.textContent = "Done. Drag to orbit. Scroll to zoom. Fire again for another goose.";
+    bannerText = "Done. Drag to orbit. Scroll to zoom. Fire again for another goose.";
   }
-  legend();
+  if (bannerText !== undefined && banner.textContent !== bannerText) banner.textContent = bannerText;
   if (st.nodes) render(offsetZ, flap);
   captureGif(now);
   codeView(now);
@@ -770,7 +855,7 @@ function legend() {
 
 function startGif() {
   const h = Math.round(GIF_W * H / W) & ~1;
-  st.gif = { rec: new GifRecorder(GIF_W, h + 28), h, cv: document.createElement("canvas"), next: 0, simNext: 0, title: st.mode === 0 ? PRESETS[st.preset].name : "Rigid wall check" };
+  st.gif = { rec: new GifRecorder(GIF_W, h + 28), h, cv: document.createElement("canvas"), next: 0, simNext: 0, speed: st.speed, title: st.mode === 0 ? PRESETS[st.preset].name : "Rigid wall check" };
   st.gif.cv.width = GIF_W; st.gif.cv.height = h + 28;
   st.gifHold = false;
   $("gif").disabled = true;
@@ -795,7 +880,9 @@ function captureGif(now) {
   const css = getComputedStyle(document.body);
   c.fillStyle = css.getPropertyValue("--stage");
   c.fillRect(0, 0, GIF_W, g.h);
-  c.drawImage(canvas, 0, 0, GIF_W, g.h);
+  const scale = Math.min(GIF_W / canvas.width, g.h / canvas.height);
+  const w = canvas.width * scale, h = canvas.height * scale;
+  c.drawImage(canvas, (GIF_W - w) / 2, (g.h - h) / 2, w, h);
   // the caption: what it is, the time, and the colour bar with its numbers
   c.fillStyle = css.getPropertyValue("--bg");
   c.fillRect(0, g.h, GIF_W, 28);
@@ -821,15 +908,24 @@ async function exportGif() {
   const b = $("gif");
   b.disabled = true; b.textContent = "Making the GIF…";
   await new Promise((r) => setTimeout(r, 30));      // let the button text show
-  const bytes = g.rec.encode();
-  const url = URL.createObjectURL(new Blob([bytes], { type: "image/gif" }));
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `goosestrike-${g.title.toLowerCase().replace(/ /g, "-")}-${fmt(st.speed, 0)}ms.gif`;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 10000);
-  b.textContent = `Export GIF (${fmt(bytes.length / 1e6, 1)} MB)`;
-  b.disabled = false;
+  try {
+    const bytes = g.rec.encode();
+    const url = URL.createObjectURL(new Blob([bytes], { type: "image/gif" }));
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `goosestrike-${g.title.toLowerCase().replace(/ /g, "-")}-${g.speed.toFixed(2)}mps.gif`;
+    a.click();
+    if (st.gif === g) {
+      b.textContent = `Export GIF (${fmt(bytes.length / 1e6, 1)} MB)`;
+      b.disabled = false;
+    }
+  } catch {
+    if (st.gif === g) {
+      b.textContent = "GIF export failed. Retry";
+      b.disabled = false;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -885,21 +981,22 @@ async function loadCode() {
 // scrolls the source pane to the first function of phase k
 function scrollCode(k) {
   const el = code.lines[code.ranges[k][1]?.[0] ?? code.ranges[k][0][0]];
-  $("code").scrollTo({ top: el.offsetTop - $("code").offsetTop - 8, behavior: "smooth" });
+  $("code").scrollTo({ top: el.offsetTop - $("code").offsetTop - 8, behavior: reducedMotion.matches ? "instant" : "smooth" });
 }
 
 function codeView(now) {
   if (!code.lines || now - code.last < 120) return;   // a readable rate
   code.last = now;
   const k = st.phase === "sim" || st.phase === "wall" ? st.solverPhase : -1;
-  code.chips.forEach((b, i) => b.classList.toggle("on", i === k));
   // the source pane moves at most once a second, so that the eye can follow
-  if (k >= 0 && k !== code.scrolledK && now - code.scrolled > 1000) {
+  const sourceFocused = document.activeElement === $("code") || document.activeElement === $("step") || code.chips.includes(document.activeElement);
+  if (!sourceFocused && k >= 0 && k !== code.scrolledK && now - code.scrolled > 1000) {
     scrollCode(k); code.scrolled = now; code.scrolledK = k;
   }
   if (k === code.shown) return;
-  for (const l of code.lines) l.classList.remove("on");
-  for (const l of code.step.lines) l.classList.remove("on");
+  code.chips.forEach((b, i) => b.classList.toggle("on", i === k));
+  for (const l of $("code").querySelectorAll(".on")) l.classList.remove("on");
+  for (const l of $("step").querySelectorAll(".on")) l.classList.remove("on");
   if (k >= 0) {
     for (const [a, b] of code.ranges[k]) for (let i = a; i <= b; i++) code.lines[i].classList.add("on");
     const [a, b] = code.ranges[k][0];
@@ -914,15 +1011,22 @@ function codeView(now) {
 
 function showSpeed() {
   const v = st.speed;
+  $("speedNumber").value = v.toFixed(2);
+  $("speedEntryStatus").textContent = "";
   $("speedOut").textContent = `${fmt(v, 2)} m/s = ${fmt(v / KT, 1)} kt`;
   const on = Math.abs(v - V_C) < 0.005;
   const sc = $("specCheck");
   sc.className = "hint " + (on ? "ok" : "off");
   sc.innerHTML = on
     ? "On spec: 4 lb at V<sub>C</sub> = 350 KCAS, sea level. 14 CFR 25.571(e)(1)."
-    : `Off spec: the rule asks for V<sub>C</sub> = ${fmt(V_C, 2)} m/s. <a href="#" id="snap">Snap to V<sub>C</sub></a>. Science continues anyway.`;
+    : `Off spec: the rule asks for V<sub>C</sub> = ${fmt(V_C, 2)} m/s. <button type="button" id="snap">Snap to V<sub>C</sub></button>. Science continues anyway.`;
   const snap = $("snap");
-  if (snap) snap.onclick = (e) => { e.preventDefault(); st.speed = V_C; $("speed").value = V_C; showSpeed(); };
+  if (snap) snap.onclick = () => {
+    const focusSpeed = document.activeElement === snap;
+    st.speed = V_C; $("speed").value = V_C; showSpeed();
+    if (focusSpeed) $("speedNumber").focus({ preventScroll: true });
+    if (st.phase === "idle") preview();
+  };
 }
 
 function buildPresets() {
@@ -938,13 +1042,35 @@ function buildPresets() {
 function preview() {
   setupRun(0);
   st.phase = "idle";
-  telemetry();
+  $("runStatus").textContent = "";
+  $("verdict").hidden = true;
   $("banner").textContent = "Goose loaded. Goose is unaware. Press FIRE.";
 }
 
 $("speed").value = V_C;
+for (const attr of ["min", "max", "step"]) $("speedNumber")[attr] = $("speed")[attr];
+$("speedNumber").onchange = (e) => {
+  const input = e.target;
+  if (!input.checkValidity()) {
+    input.value = st.speed.toFixed(2);
+    $("speedEntryStatus").textContent = `Enter a speed from ${input.min} to ${input.max} m/s in steps of ${input.step} m/s. The control kept the previous speed.`;
+    return;
+  }
+  st.speed = input.valueAsNumber;
+  $("speed").value = st.speed;
+  showSpeed();
+  if (st.phase === "idle") preview();
+};
 $("speed").oninput = (e) => { st.speed = +e.target.value; showSpeed(); };
+// Update the idle preview on release, so a drag does not repeat solver setup.
+$("speed").onchange = () => { if (st.phase === "idle") preview(); };
 $("fire").onclick = fire;
+$("stop").onclick = stopRun;
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape" || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || $("stop").disabled) return;
+  e.preventDefault();
+  stopRun();
+});
 $("wilbeck").onclick = wallCheck;
 $("gif").onclick = exportGif;
 $("mute").onclick = () => {
@@ -956,25 +1082,90 @@ function showMute() {
   $("mute").setAttribute("aria-pressed", String(st.muted));
   $("mute").textContent = st.muted ? "🔇 Honks off" : "🔊 Honks on";
 }
-$("btnCostume").onclick = () => { st.costume = !st.costume; $("btnCostume").setAttribute("aria-pressed", String(st.costume)); };
-$("btnPov").onclick = () => { st.pov = !st.pov; $("btnPov").setAttribute("aria-pressed", String(st.pov)); };
-$("btnReset").onclick = () => { st.yaw = 1.0; st.pitch = 0.25; st.dist = 1.3; st.pov = false; $("btnPov").setAttribute("aria-pressed", "false"); };
+$("btnCostume").onclick = () => {
+  st.costume = !st.costume;
+  $("btnCostume").setAttribute("aria-pressed", String(st.costume));
+  legend();
+};
+$("btnPov").onclick = () => { drag = null; st.pov = !st.pov; $("btnPov").setAttribute("aria-pressed", String(st.pov)); showZoom(); };
+function resetCamera() {
+  drag = null;
+  st.yaw = 1.0; st.pitch = 0.25; st.dist = 1.3; st.pov = false;
+  $("btnPov").setAttribute("aria-pressed", "false");
+  showZoom();
+}
+$("btnReset").onclick = resetCamera;
+$("btnZoomIn").onclick = () => zoom(1 / 1.2);
+$("btnZoomOut").onclick = () => zoom(1.2);
+
+function showZoom() {
+  const focused = document.activeElement;
+  const zoomIn = $("btnZoomIn"), zoomOut = $("btnZoomOut");
+  canvas.style.touchAction = st.pov ? "pan-y pinch-zoom" : "pinch-zoom";
+  zoomIn.disabled = st.pov || st.dist <= 0.4;
+  zoomOut.disabled = st.pov || st.dist >= 5;
+  if ((focused === zoomIn || focused === zoomOut) && focused.disabled) {
+    canvas.focus({ preventScroll: true });
+  }
+}
+
+function zoom(factor) {
+  if (st.pov) return;
+  st.dist = Math.max(0.4, Math.min(5, st.dist * factor));
+  showZoom();
+}
 
 let drag = null;
-canvas.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, y: e.clientY }; canvas.setPointerCapture(e.pointerId); });
-canvas.addEventListener("pointermove", (e) => {
-  if (!drag || st.pov) return;
-  st.yaw += (e.clientX - drag.x) * 0.008;
-  st.pitch = Math.max(-1.45, Math.min(1.45, st.pitch + (e.clientY - drag.y) * 0.008));
-  drag = { x: e.clientX, y: e.clientY };
-});
-canvas.addEventListener("pointerup", () => { drag = null; });
-canvas.addEventListener("wheel", (e) => {
+window.addEventListener("blur", () => { drag = null; });
+function rotate(dx, dy) {
+  if (st.pov) return;
+  st.yaw += dx;
+  st.pitch = Math.max(-1.45, Math.min(1.45, st.pitch + dy));
+}
+
+canvas.addEventListener("keydown", (e) => {
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.key === "Home") {
+    e.preventDefault();
+    resetCamera();
+    return;
+  }
+  if (st.pov) return;
+  if (e.key === "+" || e.key === "-") {
+    e.preventDefault();
+    zoom(e.key === "+" ? 1 / 1.2 : 1.2);
+    return;
+  }
+  const turns = { ArrowLeft: [-0.1, 0], ArrowRight: [0.1, 0], ArrowUp: [0, -0.1], ArrowDown: [0, 0.1] };
+  const turn = turns[e.key];
+  if (!turn) return;
   e.preventDefault();
-  st.dist = Math.max(0.4, Math.min(5, st.dist * Math.exp(e.deltaY * 0.001)));
+  rotate(...turn);
+});
+canvas.addEventListener("pointerdown", (e) => {
+  if (e.button !== 0 || drag || st.pov) return;
+  drag = { pointerId: e.pointerId, x: e.clientX, y: e.clientY };
+  canvas.setPointerCapture(e.pointerId);
+});
+canvas.addEventListener("pointermove", (e) => {
+  if (!drag || drag.pointerId !== e.pointerId || st.pov) return;
+  rotate((e.clientX - drag.x) * 0.008, (e.clientY - drag.y) * 0.008);
+  drag.x = e.clientX; drag.y = e.clientY;
+});
+for (const event of ["pointerup", "pointercancel", "lostpointercapture"]) {
+  canvas.addEventListener(event, (e) => { if (drag?.pointerId === e.pointerId) drag = null; });
+}
+canvas.addEventListener("wheel", (e) => {
+  if (st.pov || e.ctrlKey || e.metaKey) return;
+  e.preventDefault();
+  // Camera scale: 16 CSS pixels per wheel line, one view height per page.
+  const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? canvas.clientHeight : 1;
+  zoom(Math.exp(e.deltaY * unit * 0.001));
 }, { passive: false });
 
-loadCode();
+loadCode().catch(() => {
+  $("codeState").textContent = "The source code could not load. The solver can still run. Reload the page to try again.";
+});
 showSpeed();
 showMute();
 buildPresets();

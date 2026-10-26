@@ -9,7 +9,7 @@
 <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<!-- Copied from github.com/yujieteo/goosestrike web/ at fdf181e. Only the page look changed. -->
+<!-- Copied from github.com/yujieteo/goosestrike web/ at c17690b. Only the page look changed. -->
 <style>
 :root { --good: #4f7a4a; --bad: #a8432a; --stage: #e9e3d6; --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
 
@@ -32,10 +32,12 @@ main > section { border-top: 1px solid var(--ink); padding-top: 1.25rem; }
 .telemetry { grid-column: 2; grid-row: 2 / span 3; }
 .code, .verdict, .wilbeck, .receipts { grid-column: 1; }
 
-#view { display: block; aspect-ratio: auto; width: 100%; height: 100%; min-height: 480px; touch-action: none; cursor: grab; }
+#view { display: block; aspect-ratio: auto; width: 100%; height: 100%; min-height: 480px; touch-action: pinch-zoom; cursor: grab; }
 #view:active { cursor: grabbing; }
+#view:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
 
-.viewbar { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+.viewbar { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+.camera-hint { flex-basis: 100%; margin: 0; font-size: 12px; color: var(--muted); pointer-events: none; }
 .banner {
   position: absolute; left: 14px; top: 12px; right: 14px;
   font: 500 13px var(--mono); color: var(--ink);
@@ -66,7 +68,7 @@ button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent);
 button:disabled { opacity: 0.45; cursor: not-allowed; }
 button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
 button[aria-pressed="true"]:hover:not(:disabled) { color: var(--bg); background: var(--accent); }
-.viewbar button { background: #f4f1eae6; }
+.viewbar button { background: #f4f1eae6; min-height: 44px; }
 .viewbar button[aria-pressed="true"] { background: var(--ink); }
 
 .cannon { display: flex; gap: 8px; align-items: stretch; }
@@ -78,13 +80,18 @@ button[aria-pressed="true"]:hover:not(:disabled) { color: var(--bg); background:
 .fire:active:not(:disabled) { transform: translateY(1px); }
 .small { font-size: 0.8rem; }
 .wide { display: block; width: 100%; margin-top: 8px; }
+#stop { min-height: 44px; }
 
 .field { display: block; margin-top: 1.25rem; font-weight: 500; }
 .field output { float: right; font: 500 13px var(--mono); }
 .field input { width: 100%; margin-top: 6px; accent-color: var(--accent); }
+.speed-entry { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.85rem; }
+.speed-entry input { width: 7rem; min-height: 44px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--ink); font: inherit; }
+.speed-entry input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .hint { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); }
 .hint.ok { color: var(--good); }
 .hint.off { color: var(--bad); }
+#snap { font: inherit; color: inherit; border: 0; border-radius: 0; padding: 0; text-decoration: underline; text-underline-offset: 0.2em; }
 
 .presets { margin: 1rem 0 0; border: 0; border-top: 1px solid var(--line); padding: 0.75rem 0 0; }
 .presets legend { font-weight: 500; padding: 0; float: left; width: 100%; margin-bottom: 4px; }
@@ -121,6 +128,7 @@ dl#tele dd { margin: 0; text-align: right; font: 500 12.5px var(--mono); }
 }
 .panes { display: grid; gap: 0.75rem; }
 .source.short { height: auto; }
+.source:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .source .ln { display: block; padding: 0 12px 0 0; border-left: 3px solid transparent; transition: background 120ms ease; }
 .source .ln::before { content: attr(data-n); display: inline-block; width: 3.5em; padding-right: 1em; text-align: right; color: #a7a194; user-select: none; }
 .source .ln.on { background: color-mix(in srgb, var(--accent) 16%, transparent); border-left-color: var(--accent); }
@@ -147,7 +155,10 @@ summary { cursor: pointer; font-weight: 500; }
   .stage, .controls, .telemetry, .code, .verdict, .wilbeck, .receipts { grid-column: 1; grid-row: auto; }
   .stage, #view { min-height: 360px; }
 }
-@media (prefers-reduced-motion: reduce) { button, .source .ln { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  button, .source .ln { transition: none; }
+  .bubble { animation: none; }
+}
 </style>
 </head>
 <body>
@@ -164,14 +175,17 @@ summary { cursor: pointer; font-weight: 500; }
 
 <main class="wrap">
   <section class="stage">
-    <canvas id="view" aria-label="3D view of the goose and the panel"></canvas>
+    <canvas id="view" tabindex="0" aria-label="3D view of the goose and the panel" aria-describedby="cameraHint"></canvas>
     <div id="bubble" class="bubble" hidden>HONK!</div>
     <div id="banner" class="banner"></div>
     <div class="legend" id="legend"></div>
     <div class="viewbar">
+      <p id="cameraHint" class="camera-hint">Drag the view or use arrow keys to rotate. Use + and - keys to zoom. Press Home to reset the camera. Passenger POV fixes the camera.</p>
       <button id="btnCostume" aria-pressed="true">Goose costume</button>
       <button id="btnPov" aria-pressed="false">Passenger POV</button>
       <button id="btnReset">Reset camera</button>
+      <button id="btnZoomIn" aria-label="Zoom in">Zoom +</button>
+      <button id="btnZoomOut" aria-label="Zoom out">Zoom −</button>
     </div>
   </section>
 
@@ -181,11 +195,17 @@ summary { cursor: pointer; font-weight: 500; }
       <button id="fire" class="fire" disabled>LOADING GOOSE…</button>
       <button id="mute" class="small" aria-pressed="false">🔊 Honks on</button>
     </div>
+    <button id="stop" class="wide" aria-keyshortcuts="Escape" disabled>Stop and reset (Esc)</button>
+    <p class="hint" id="runStatus" role="status" aria-atomic="true"></p>
     <button id="gif" class="wide" disabled>Export GIF</button>
 
     <label class="field">Goose speed <output id="speedOut"></output>
       <input id="speed" type="range" min="50" max="250" step="0.01">
     </label>
+    <label class="speed-entry">Set speed (m/s)
+      <input id="speedNumber" type="number" inputmode="decimal" required aria-describedby="speedEntryStatus">
+    </label>
+    <p class="hint" id="speedEntryStatus" role="status"></p>
     <p class="hint" id="specCheck"></p>
 
     <fieldset class="presets">
@@ -202,7 +222,7 @@ summary { cursor: pointer; font-weight: 500; }
       <div class="meter"><div id="honkBar"></div></div>
     </div>
     <div class="energy">
-      <span>Where the goose's 29.4&nbsp;kJ went</span>
+      <span id="energyTitle">Goose energy</span>
       <div class="ebar" id="ebar"></div>
       <ul class="ekey" id="ekey"></ul>
     </div>
@@ -213,11 +233,12 @@ summary { cursor: pointer; font-weight: 500; }
     <h2>The Goose code that runs</h2>
     <p class="hint">The page runs each time step of <code>sim/strike.goose</code> in five phases, one call to
       <code>step_phase</code> each. The lit lines are the phase that ran last, as the solver reports it.
-      The source scrolls to the phase that runs, at most once a second. <span id="codeState"></span></p>
+      The source scrolls to the phase that runs, at most once a second.
+      Automatic scroll pauses while a source pane or phase button has focus. <span id="codeState" role="status"></span></p>
     <ol class="phases" id="phases"></ol>
     <div class="panes">
-      <pre id="step" class="source short" aria-label="run_phase in sim/strike.goose"></pre>
-      <pre id="code" class="source" aria-label="Source of sim/strike.goose"></pre>
+      <pre id="step" class="source short" tabindex="0" role="region" aria-label="run_phase in sim/strike.goose"></pre>
+      <pre id="code" class="source" tabindex="0" role="region" aria-label="Source of sim/strike.goose"></pre>
     </div>
   </section>
 
