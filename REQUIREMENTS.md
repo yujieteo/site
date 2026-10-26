@@ -15,6 +15,7 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
      (advanced method, served at openpgpkey.teoyujie.org)
 2. An exploration is an experiment or an essay on this site, or a project in its own repository.
    A project is a link to its repository and one line of text: the site copies nothing from it.
+   The one exception is the experiment page `/play/goosestrike/`, copied from its repository.
    Essays are optional. There is no CMS, database, GitHub API feed, automatic ranking, scheduled
    sync or publishing schedule. The site stays complete with no new content.
 
