@@ -69,9 +69,10 @@ explorations = Explorations()
 explorations.feed(home)
 assert explorations.entries, 'home page has no selected explorations'
 for entry in explorations.entries:
-    assert entry['kind'] in ('Experiment', 'Project', 'Essay'), f'bad kind: {entry}'
+    kind = entry['kind'].split(' · ')[0]  # an essay shows its year: Essay · 2022
+    assert kind in ('Experiment', 'Project', 'Essay'), f'bad kind: {entry}'
     assert entry['h3'].strip() and entry.get('href'), f'no title or link: {entry}'
-    if entry['kind'] == 'Project':
+    if kind == 'Project':
         assert entry['href'].startswith('https://'), f'project is not a link to its repository: {entry}'
 PY
 tmp=$(mktemp -d)
