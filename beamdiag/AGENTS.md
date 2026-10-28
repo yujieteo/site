@@ -13,7 +13,7 @@ GOOSE=/path/to/goose scripts/build-beam.sh
 The builder needs `emcc`, `cc` and `gzip`. With `GOOSE` set, it also writes `c.sha256`, the hash of the Goose inputs. Without `GOOSE`, it stops if that hash differs. It writes the raw module and `beamdiag.wasm.gz`.
 The page streams the compressed module through `DecompressionStream` into WebAssembly.
 Serve `.gz` as a file, without an HTTP `Content-Encoding` header.
-KaTeX loads after the first draw and replaces plain HTML maths. PDF fonts load on the first Save PDF.
+KaTeX loads after the first draw and replaces plain HTML maths. The report fonts load on the first Save PDF or Save PNG.
 The pinned KaTeX version and archive hash are in `public/play/beamdiag/katex/lock.txt`.
 The PDF fonts are in `public/play/beamdiag/fonts/`. `fonts.txt` gives their sources.
 Tests are disposable. Check changes in the built page, and do not commit regression tests.
