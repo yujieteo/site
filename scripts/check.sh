@@ -24,7 +24,7 @@ class Links(HTMLParser):
             if url.scheme or url.netloc or not url.path:
                 continue
             path = unquote(url.path)
-            if path == '/log' or path.startswith('/log/'):
+            if path in ('/log', '/log/feed.xml'):
                 continue  # the server makes /log and /log/feed.xml from the entries
             target = root / path.lstrip('/') if path.startswith('/') else page.parent / path
             target = target.resolve()
