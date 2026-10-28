@@ -39,6 +39,11 @@ main.page > article h2 { font-size: 1.5rem; margin: 2.5rem 0 0.5rem; }
 main.page figure { margin: 2rem 0; }
 main.page figure svg { display: block; max-width: 100%; height: auto; }
 .muted { color: var(--muted); }
+.log { max-width: 42rem; }
+.log > article { border-top: 1px solid var(--line); padding: 1.25rem 0; }
+.log > article h2 { font-size: 1.5rem; margin: 0.25rem 0 0.5rem; }
+.log > article time { font-size: 0.875rem; color: var(--muted); }
+.log > article p { margin: 0.5rem 0 0; }
 code { font: 0.95em ui-monospace, monospace; overflow-wrap: anywhere; }
 @media (min-width: 52rem) { .hero { grid-template-columns: 7fr 5fr; } }
 @media (prefers-reduced-motion: reduce) { .featured a, .go { transition: none; } }
