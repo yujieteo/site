@@ -1,6 +1,6 @@
 # Beam diagram creator (beamdiag)
 
-The crate builds the standalone beam page into `public/play/beamdiag/`, which the site serves at `/play/beamdiag/`.
+The Goose program builds the standalone beam page into `public/play/beamdiag/`, which the site serves at `/play/beamdiag/`.
 The page uses the site stylesheet `/style.css` and the site header and footer, in `src/body.html`.
 
 Never edit `public/play/beamdiag/index.html` by hand. After a change to `src/` or `raw.json`, rebuild:
@@ -9,7 +9,8 @@ Never edit `public/play/beamdiag/index.html` by hand. After a change to `src/` o
 scripts/build-beam.sh
 ```
 
-The builder needs `gzip`. It writes the raw module and `beamdiag.wasm.gz`.
+`src/*.goose` is the source. Goose (v2026.3) makes the C in `c/`, and the C is committed, so a machine without Goose can build.
+The builder needs `emcc`, `cc` and `gzip`. To make the C again, set `GOOSE=/path/to/goose`. It writes the raw module and `beamdiag.wasm.gz`.
 The page streams the compressed module through `DecompressionStream` into WebAssembly.
 Serve `.gz` as a file, without an HTTP `Content-Encoding` header.
 KaTeX loads after the first draw and replaces plain HTML maths. PDF fonts load on the first Save PDF.
