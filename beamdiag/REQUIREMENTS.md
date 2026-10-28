@@ -55,4 +55,5 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
 13. One list of steps from `hand.goose` feeds both the page (LaTeX for KaTeX) and the PDF (Unicode), so
     the two always show the same numbers.
 14. The diagrams in the PDF are the same drawing as the PNG.
-15. Fonts: any that are clear and have every glyph used. The embedded Fira subsets are fine.
+15. Fonts: the PDF and the saved figures use the site fonts, DM Sans and Source Serif 4 (the report heading). Fira Math covers maths glyphs they lack.
+    Reason: the PDF used Fira, so it looked unlike the site.

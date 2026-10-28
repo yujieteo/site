@@ -102,8 +102,8 @@ plots.addEventListener("keydown", (e) => {
 });
 let fontPromise;
 async function pdfFonts() {
-  fontPromise ||= Promise.all(["sans", "mono", "math"].map(async n => {
-    const r = await fetch(`fonts/${n}.otf`); if (!r.ok) throw new Error("PDF font could not load");
+  fontPromise ||= Promise.all(["sans", "serif", "math"].map(async n => {
+    const r = await fetch(`fonts/${n}.${n === "math" ? "otf" : "ttf"}`); if (!r.ok) throw new Error("PDF font could not load");
     const b = new Uint8Array(await r.arrayBuffer()); let s = ""; for (const x of b) s += String.fromCharCode(x); return btoa(s);
   }));
   send({ev:"fonts", w:plots.clientWidth, fonts:await fontPromise});
