@@ -1,24 +1,32 @@
 # Site requirements
 
-Agreed with the owner on 2026-10-18, and changed on 2026-10-23 for the new home page and its look on all pages.
+Agreed with the owner on 2026-10-18, changed on 2026-10-23 for the new home page and its look on all pages,
+and changed on 2026-10-28 for the log.
 When the site and this file disagree, change the site.
 The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Purpose
 
-1. The site does four jobs only:
+1. The site does five jobs only:
    - show the identity of Yu Jie Teo through a small, hand-picked collection of explorations
    - host the privacy and support pages of Lullapixie and Marklove
    - host the beam diagram tool
    - publish the OpenPGP public key of contact@teoyujie.org at `/contact.asc`, and for WKD at
      `/.well-known/openpgpkey/` (direct method) and `/.well-known/openpgpkey/teoyujie.org/`
      (advanced method, served at openpgpkey.teoyujie.org)
+   - publish the log at `/log`: the media entries from the pond app, newest first, with RSS at
+     `/log/feed.xml`. The server makes both at request time from its entry store and
+     `public/log/template.html`. The entries go in place of `<!-- pond:entries -->`.
+     `media-plan.md` is the master copy of the media plan, and the app edits it.
+   Reason: the captain approved the pond design on 2026-10-28.
 2. An exploration is an experiment or an essay on this site, or a project in its own repository.
    A project is a link to its repository and one line of text: the site copies nothing from it.
    The exceptions are the experiment pages `/play/goosestrike/`, `/play/theorem-explorer/` and
    `/play/theorem-learner/`, each copied from its repository.
    Essays are optional. There is no CMS, database, GitHub API feed, automatic ranking, scheduled
-   sync or publishing schedule. The site stays complete with no new content.
+   sync or publishing schedule. The one exception is the store of signed log entries on the server.
+   The site stays complete with no new content.
+   Reason: the captain approved the pond design on 2026-10-28.
 
 ## URLs
 
@@ -26,11 +34,12 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    - `/lullapixie/privacy.html`, `/lullapixie/support.html`
    - `/marklove/privacy.html`, `/marklove/support.html`
    - `/play/beamdiag/`
-4. The home page `/` has the site name, the links "Explorations" and "GitHub ↗", the heading
+4. The home page `/` has the site name, the links "Explorations", "Log" and "GitHub ↗", the heading
    "Ideas, experiments, and things built along the way.", the art, and "Selected explorations".
    Each selected exploration is one `<li>` in `public/index.html`: to add or remove one, change
    only that entry. The footer links the policy and support pages, and has one line with
    contact@teoyujie.org, a link to its key and the key fingerprint.
+   Reason for "Log": the captain approved the pond design on 2026-10-28.
 5. Every other old URL returns 404.
 
 ## Look
