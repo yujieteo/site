@@ -10,7 +10,7 @@ from urllib.parse import urlsplit, unquote
 root = Path('public').resolve()
 for name in ('index.html', 'style.css', 'lullapixie/privacy.html',
              'lullapixie/support.html', 'marklove/privacy.html',
-             'marklove/support.html', 'play/beamdiag/index.html',
+             'marklove/support.html', 'play/beamdiag/index.html', 'log/template.html',
              '.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19',
              '.well-known/openpgpkey/teoyujie.org/hu/dj3498u4hyyarh35rkjfnghbjxug6b19'):
     assert (root / name).stat().st_size, f'missing or empty: {name}'
@@ -24,6 +24,8 @@ class Links(HTMLParser):
             if url.scheme or url.netloc or not url.path:
                 continue
             path = unquote(url.path)
+            if path == '/log' or path.startswith('/log/'):
+                continue  # the server makes /log and /log/feed.xml from the entries
             target = root / path.lstrip('/') if path.startswith('/') else page.parent / path
             target = target.resolve()
             assert target.is_relative_to(root), f'link leaves public: {value}'
@@ -56,6 +58,8 @@ class Explorations(HTMLParser):
     def handle_data(self, data):
         if self.field:
             self.entries[-1][self.field] += data
+
+assert (root / 'log/template.html').read_text().count('<!-- pond:entries -->') == 1, 'log template needs one <!-- pond:entries -->'
 
 home = (root / 'index.html').read_text()
 for path in ('/lullapixie/privacy.html', '/lullapixie/support.html', '/marklove/privacy.html',
