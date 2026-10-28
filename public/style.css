@@ -45,6 +45,6 @@ main.page figure svg { display: block; max-width: 100%; height: auto; }
 .log > article time { font-size: 0.875rem; color: var(--muted); }
 .log > article p { margin: 0.5rem 0 0; }
 code { font: 0.95em ui-monospace, monospace; overflow-wrap: anywhere; }
-@media (min-width: 52rem) { .hero { grid-template-columns: 7fr 5fr; } }
+@media (min-width: 52rem) { .hero { grid-template-columns: 7fr 5fr; } nav { margin-right: -0.75rem; } nav a { padding-inline: 0.75rem; } }
 @media (width < 52rem) { canvas { aspect-ratio: 5 / 2; } }
 @media (prefers-reduced-motion: reduce) { .featured a, .go { transition: none; } }
