@@ -22,10 +22,11 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 2. An exploration is an experiment or an essay on this site, or a project in its own repository.
    A project is a link to its repository and one line of text: the site copies nothing from it.
    The exceptions are the experiment pages `/play/goosestrike/`, `/play/theorem-explorer/`,
-   `/play/theorem-learner/` and `/play/neurons/`, each copied from its repository.
+   `/play/theorem-learner/`, `/play/neurons/` and `/play/marklove/`, each copied from its repository.
    `/play/neurons/` gets the model weights from huggingface.co when the visitor loads them.
    The server never hosts the weights.
    Reason: the captain asked for the neuron explorer under Play on 2026-10-28.
+   Reason for `/play/marklove/`: the captain asked for the Marklove web build under Play on 2026-10-29.
    Essays are optional. There is no CMS, database, GitHub API feed, automatic ranking, scheduled
    sync or publishing schedule. The one exception is the store of signed log entries on the server.
    The site stays complete with no new content.
@@ -50,6 +51,8 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 6. The site has an editorial look: a warm neutral background, large serif headings and a calm
    grid. Its fonts are Source Serif 4 and DM Sans, open licence, in `public/fonts/`. All pages
    use the one stylesheet `public/style.css`, and have the header and footer of the home page.
+   The exception is `/play/marklove/`, a full-screen editor with its own look from its repository.
+   Reason: the site header and footer take the space of the editor.
    There are no themes and no dark mode. The art on the home page is random walks and the
    normal density on a canvas, with slow motion. Under `prefers-reduced-motion` it is a still
    frame.
