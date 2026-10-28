@@ -1,9 +1,10 @@
 // A display list as a vector PDF in the print palette, one page per run of ops between page breaks. Text
-// is set in the embedded Fira subsets (OpenType CFF), addressed by glyph ID with a ToUnicode map, as the
-// site's PDFs are; a character missing from a font falls back to Fira Sans, then Fira Math. Nothing reads
+// is set in the embedded subsets of the site's fonts, DM Sans and Source Serif 4 (TrueType), and Fira Math
+// (OpenType CFF) for maths, addressed by glyph ID with a ToUnicode map, as the site's PDFs are; a character
+// missing from a font falls back to DM Sans, then Fira Math. Nothing reads
 // a clock, so equal figures give equal bytes.
 //
-// The three fonts (sans, mono, maths) are OpenType bytes. A character's glyph is read from the font's cmap
+// The three fonts (sans, serif, maths) are OpenType bytes. A character's glyph is read from the font's cmap
 // on demand and remembered in pdf_cache.
 
 import std;
@@ -173,8 +174,7 @@ fn pdf_hex4(out: u8[>..]&, v: i64) {
 }
 
 // The pieces of s, and the whole width. The glyph IDs of the pieces are in pdf_glyphs.
-fn pdf_run(mono: bool, size: f64, spacing: f64, s: u8[:], v: PPiece[>..]&) -> f64 {
-    let first = if mono { 1 } else { 0 };
+fn pdf_run(first: i64, size: f64, spacing: f64, s: u8[:], v: PPiece[>..]&) -> f64 {
     var cps: i64[>..] = [];
     each_utf8(s) { cps.push(it); };
     for c0 in cps {
@@ -277,7 +277,7 @@ fn pdf_text(op: DOp) {
     let spacing = TEXT_SPACING[si];
     var runs: PPiece[>..] = [];
     pdf_glyphs.clear();
-    let w = pdf_run(TEXT_MONO[si], size, spacing, draw_ref(op.s0, op.s1), runs);
+    let w = pdf_run(if TEXT_SERIF[si] { 1 } else { 0 }, size, spacing, draw_ref(op.s0, op.s1), runs);
     let start = if op.anchor == ANC_START { op.a } else if op.anchor == ANC_MIDDLE { op.a - w / 2.0 } else { op.a - w };
     let tc = spacing * size;
     pdf_c.append("q ");
@@ -497,7 +497,7 @@ fn pdf_utf16_cp(out: u8[>..]&, c: i64) {
 var pdf_pool: u8[>..] = [];
 
 // The figure (CSS px, 96 to the inch) as PDF pages of the same size in points. The list holds the pages
-// separated by page breaks (draw_page); fonts are the OpenType bytes of sans, mono and maths.
+// separated by page breaks (draw_page); fonts are the font bytes of sans, serif and maths.
 fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8[:], font2: u8[:]) -> u8[>..] {
     pdf_data.clear();
     let o0 = pdf_data.len;
@@ -559,13 +559,15 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         while g < 65536 { if pdf_used[i * 65536 + g] != 0 { any = true; } g++; }
         if !any { i++; continue; }
         let off = pdf_font[i].off;
-        let file = pdf_add_stream("/Subtype/OpenType", pdf_data[off..off + pdf_font[i].len]);
+        let truetype = i < 2;
+        let kind: u8[>..] = if truetype { str("/Length1 ", pdf_font[i].len) } else { str("/Subtype/OpenType") };
+        let file = pdf_add_stream(kind, pdf_data[off..off + pdf_font[i].len]);
         let at = pdf_ob.len;
         format(pdf_ob, "<</Type/FontDescriptor/FontName/F", i, "/Flags 4/FontBBox[", pdf_font[i].m0, " ", pdf_font[i].m1, " ", pdf_font[i].m2, " ", pdf_font[i].m3,
-            "]/ItalicAngle 0/Ascent ", pdf_font[i].m4, "/Descent ", pdf_font[i].m5, "/CapHeight ", pdf_font[i].m4, "/StemV 80/FontFile3 ", file, " 0 R>>");
+            "]/ItalicAngle 0/Ascent ", pdf_font[i].m4, "/Descent ", pdf_font[i].m5, "/CapHeight ", pdf_font[i].m4, "/StemV 80/", if truetype { "FontFile2 " } else { "FontFile3 " }, file, " 0 R>>");
         let d = pdf_add_from(at);
         let at2 = pdf_ob.len;
-        format(pdf_ob, "<</Type/Font/Subtype/CIDFontType0/BaseFont/F", i, "/CIDSystemInfo<</Registry(Adobe)/Ordering(Identity)/Supplement 0>>/FontDescriptor ", d, " 0 R/W[0[");
+        format(pdf_ob, "<</Type/Font/Subtype/", if truetype { "CIDFontType2/CIDToGIDMap/Identity" } else { "CIDFontType0" }, "/BaseFont/F", i, "/CIDSystemInfo<</Registry(Adobe)/Ordering(Identity)/Supplement 0>>/FontDescriptor ", d, " 0 R/W[0[");
         let scale = 1000.0 / pdf_font[i].em;
         var gi = 0;
         while gi < pdf_font[i].nh {

@@ -86,7 +86,7 @@ function run(cmds) {
 document.addEventListener("input", (e) => { const t = e.target; if (t.tagName === "INPUT" && t.dataset.field) send({ ev: "input", field: t.dataset.field, value: t.value }); });
 document.addEventListener("change", (e) => { const t = e.target; if (t.dataset && t.dataset.field) send({ ev: t.tagName === "SELECT" ? "change" : "done", field: t.dataset.field, value: t.value }); });
 document.addEventListener("focusout", (e) => { const f = e.target.dataset && e.target.dataset.field; if (f) send({ ev: "done", field: f }); });
-document.addEventListener("click", (e) => { const b = e.target.closest && e.target.closest("[data-act]"); if (b) { const go=()=>send({ ev:"click",act:b.dataset.act,arg:b.dataset.arg||"" }); if(b.dataset.act==="save-pdf") pdfFonts().then(go).catch(e=>{document.getElementById("figure-status").textContent=e.message}); else go(); } });
+document.addEventListener("click", (e) => { const b = e.target.closest && e.target.closest("[data-act]"); if (b) { const go=()=>send({ ev:"click",act:b.dataset.act,arg:b.dataset.arg||"" }); if(b.dataset.act.startsWith("save-")) pdfFonts().then(go).catch(e=>{document.getElementById("figure-status").textContent=e.message}); else go(); } });
 const frac = (e) => { const r = plots.getBoundingClientRect(); return (e.clientX - r.left) / r.width; };
 plots.addEventListener("pointerdown", (e) => {
   const h = e.target.closest("[data-key]");
@@ -102,8 +102,8 @@ plots.addEventListener("keydown", (e) => {
 });
 let fontPromise;
 async function pdfFonts() {
-  fontPromise ||= Promise.all(["sans", "mono", "math"].map(async n => {
-    const r = await fetch(`fonts/${n}.otf`); if (!r.ok) throw new Error("PDF font could not load");
+  fontPromise ||= Promise.all(["sans", "serif", "math"].map(async n => {
+    const r = await fetch(`fonts/${n}.${n === "math" ? "otf" : "ttf"}`); if (!r.ok) throw new Error("Font could not load");
     const b = new Uint8Array(await r.arrayBuffer()); let s = ""; for (const x of b) s += String.fromCharCode(x); return btoa(s);
   }));
   send({ev:"fonts", w:plots.clientWidth, fonts:await fontPromise});

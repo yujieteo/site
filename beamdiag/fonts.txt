@@ -1,7 +1,8 @@
-file      family              upstream (nixpkgs 26.05)                    licence  bytes  sha256
-sans.otf  Fira Sans           fira-sans 4.301, FiraSans-Regular            OFL-1.1  43588  2c21f287f2ddbbcf909a964318e3fdcda1407c999945ad012bb6efd6559eff84
-mono.otf  Fira Mono           fira-mono 3.2, FiraMono-Regular              OFL-1.1  16540  4dcd2a46935bd9453a61e1b7c0a85b21220b8998cc26306ce7a608b4e49e1697
-math.otf  Fira Math           fira-math 0.3.4-unstable-2023-10-09          OFL-1.1  95040  63e10b5f90945ab508749d4ac52abdaaf9a6b57342990f557ce122f873c36818
-The files are in public/play/beamdiag/fonts/. Subsets cut with hb-subset (harfbuzz 13.2.1). Latin, Greek and typographic marks;
-Fira Math adds the mathematical operators, arrows, combining accents, the letterlike and double-struck
-capitals, and the bold and italic alphabets.
+file       family           upstream                                                         licence
+sans.ttf   DM Sans          public/fonts/dm-sans.woff2, instance at wght 400                 OFL-1.1
+serif.ttf  Source Serif 4   public/fonts/source-serif-4.woff2, instance at opsz 20           OFL-1.1
+math.otf   Fira Math        fira-math 0.3.4-unstable-2023-10-09 (nixpkgs 26.05)             OFL-1.1
+The files are in public/play/beamdiag/fonts/. sans.ttf and serif.ttf are the site's own fonts, made static with fontTools
+instancer and cut to their own glyphs with its subsetter (no layout tables, TrueType outlines for PDF embedding).
+math.otf (sha256 63e10b5f90945ab508749d4ac52abdaaf9a6b57342990f557ce122f873c36818) covers the mathematical operators, Greek,
+arrows and alphabets the site fonts lack. It is cut with hb-subset (harfbuzz 13.2.1).

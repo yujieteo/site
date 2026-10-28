@@ -87,7 +87,7 @@ pre.deck { font: 12px/1.45 var(--mono); background: var(--surface); border-radiu
 #hand-point:empty { display: none; }
 #hand-point .calc { border-top: 0; }
 @media (forced-colors: active) { #plots .area { fill: none; } }
-.bd-fig text.tick{font:11px var(--mono);fill:var(--muted)}.bd-fig text.title{font:11px var(--mono);fill:var(--muted);letter-spacing:0.06em}.bd-fig text.val{font:11.5px var(--sans);fill:var(--fg)}.bd-fig text.axlabel{font:11px var(--mono);fill:var(--fg)}.bd-fig text.axlabel.halo{font:11px var(--mono);fill:var(--fg);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round}.bd-fig text.head{font:18px var(--sans);fill:var(--fg)}.bd-fig text.body{font:12px var(--sans);fill:var(--fg)}.bd-fig text.note{font:12px var(--sans);fill:var(--muted)}.bd-fig text.cell{font:11.5px var(--sans);fill:var(--fg)}</style><header class="wrap">
+.bd-fig text.tick{font:11px var(--mono);fill:var(--muted)}.bd-fig text.title{font:11px var(--mono);fill:var(--muted);letter-spacing:0.06em}.bd-fig text.val{font:11.5px var(--sans);fill:var(--fg)}.bd-fig text.axlabel{font:11px var(--mono);fill:var(--fg)}.bd-fig text.axlabel.halo{font:11px var(--mono);fill:var(--fg);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round}.bd-fig text.head{font:18px var(--serif);fill:var(--fg)}.bd-fig text.body{font:12px var(--sans);fill:var(--fg)}.bd-fig text.note{font:12px var(--sans);fill:var(--muted)}.bd-fig text.cell{font:11.5px var(--sans);fill:var(--fg)}</style><header class="wrap">
 <a class="name" href="/">teoyujie.org</a>
 <nav><a href="/#explorations">Explorations</a> <a href="/log">Log</a> <a href="https://github.com/yujieteo">GitHub ↗</a></nav>
 </header>
@@ -282,7 +282,7 @@ function run(cmds) {
 document.addEventListener("input", (e) => { const t = e.target; if (t.tagName === "INPUT" && t.dataset.field) send({ ev: "input", field: t.dataset.field, value: t.value }); });
 document.addEventListener("change", (e) => { const t = e.target; if (t.dataset && t.dataset.field) send({ ev: t.tagName === "SELECT" ? "change" : "done", field: t.dataset.field, value: t.value }); });
 document.addEventListener("focusout", (e) => { const f = e.target.dataset && e.target.dataset.field; if (f) send({ ev: "done", field: f }); });
-document.addEventListener("click", (e) => { const b = e.target.closest && e.target.closest("[data-act]"); if (b) { const go=()=>send({ ev:"click",act:b.dataset.act,arg:b.dataset.arg||"" }); if(b.dataset.act==="save-pdf") pdfFonts().then(go).catch(e=>{document.getElementById("figure-status").textContent=e.message}); else go(); } });
+document.addEventListener("click", (e) => { const b = e.target.closest && e.target.closest("[data-act]"); if (b) { const go=()=>send({ ev:"click",act:b.dataset.act,arg:b.dataset.arg||"" }); if(b.dataset.act.startsWith("save-")) pdfFonts().then(go).catch(e=>{document.getElementById("figure-status").textContent=e.message}); else go(); } });
 const frac = (e) => { const r = plots.getBoundingClientRect(); return (e.clientX - r.left) / r.width; };
 plots.addEventListener("pointerdown", (e) => {
   const h = e.target.closest("[data-key]");
@@ -298,8 +298,8 @@ plots.addEventListener("keydown", (e) => {
 });
 let fontPromise;
 async function pdfFonts() {
-  fontPromise ||= Promise.all(["sans", "mono", "math"].map(async n => {
-    const r = await fetch(`fonts/${n}.otf`); if (!r.ok) throw new Error("PDF font could not load");
+  fontPromise ||= Promise.all(["sans", "serif", "math"].map(async n => {
+    const r = await fetch(`fonts/${n}.${n === "math" ? "otf" : "ttf"}`); if (!r.ok) throw new Error("Font could not load");
     const b = new Uint8Array(await r.arrayBuffer()); let s = ""; for (const x of b) s += String.fromCharCode(x); return btoa(s);
   }));
   send({ev:"fonts", w:plots.clientWidth, fonts:await fontPromise});

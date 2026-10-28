@@ -220,6 +220,8 @@ fn draw_page_range(list: DOp[:], k: i64) -> i64, i64 {
 // Text styles by class: monospace, size (px), colour token, letter spacing (em), halo.
 let TEXT_CLASS: const u8[:][9] = ["tick", "title", "val", "axlabel", "axlabel halo", "head", "body", "note", "cell"];
 let TEXT_MONO: bool[9] = [true, true, false, true, true, false, false, false, false];
+// Report headings are set in the site's serif, the rest of the report in its sans.
+let TEXT_SERIF: bool[9] = [false, false, false, false, false, true, false, false, false];
 let TEXT_SIZE: f64[9] = [11.0, 11.0, 11.5, 11.0, 11.0, 18.0, 12.0, 12.0, 11.5];
 let TEXT_COLOR: i64[9] = [COL_MUTED, COL_MUTED, COL_FG, COL_FG, COL_FG, COL_FG, COL_FG, COL_MUTED, COL_FG];
 let TEXT_SPACING: f64[9] = [0.0, 0.06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
@@ -248,7 +250,7 @@ fn draw_css() -> u8[>..] {
         out.append("{font:");
         out.append(js(TEXT_SIZE[i]));
         out.append("px var(--");
-        out.append(if TEXT_MONO[i] { "mono" } else { "sans" });
+        out.append(if TEXT_SERIF[i] { "serif" } else if TEXT_MONO[i] { "mono" } else { "sans" });
         out.append(");fill:var(--");
         out.append(PALETTE_NAMES[TEXT_COLOR[i]]);
         out.append(")");
