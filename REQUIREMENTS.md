@@ -21,8 +21,11 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    Reason: the captain approved the pond design on 2026-10-28.
 2. An exploration is an experiment or an essay on this site, or a project in its own repository.
    A project is a link to its repository and one line of text: the site copies nothing from it.
-   The exceptions are the experiment pages `/play/goosestrike/`, `/play/theorem-explorer/` and
-   `/play/theorem-learner/`, each copied from its repository.
+   The exceptions are the experiment pages `/play/goosestrike/`, `/play/theorem-explorer/`,
+   `/play/theorem-learner/` and `/play/neurons/`, each copied from its repository.
+   `/play/neurons/` gets the model weights from huggingface.co when the visitor loads them.
+   The server never hosts the weights.
+   Reason: the captain asked for the neuron explorer under Play on 2026-10-28.
    Essays are optional. There is no CMS, database, GitHub API feed, automatic ranking, scheduled
    sync or publishing schedule. The one exception is the store of signed log entries on the server.
    The site stays complete with no new content.
