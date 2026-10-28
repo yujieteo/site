@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Neurons</title>
-<meta name="description" content="Read and steer the MLP neurons of SmolLM2-135M in the browser. The model runs in Goose, compiled to WebAssembly.">
+<meta name="description" content="Read, steer, lens and swap the MLP neurons of SmolLM2-135M in the browser. The model runs in Goose, compiled to WebAssembly.">
 <link rel="icon" href="data:,">
 <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
-<!-- Copied from github.com/yujieteo/neurons web/ at d354730. Only the page look and the .mjs names changed. -->
+<!-- Copied from github.com/yujieteo/neurons web/ at 2efe799. Only the page look and the .mjs names changed. -->
 <style>
 :root { --accent-rgb: 196, 97, 63; --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
 main a:hover { color: var(--accent); }
@@ -90,6 +90,8 @@ td b { font-weight: 500; }
 .steer { margin-top: 1rem; }
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
 .gen { white-space: pre-wrap; margin: 0.25rem 0 0; min-height: 3rem; font-size: 0.95rem; }
+.probe { margin-top: 0.5rem; }
+.probe td:not(:first-child) { font: 0.8rem var(--mono); }
 .answer { margin-top: 1rem; }
 .answer p { margin: 0 0 0.75rem; white-space: pre-wrap; }
 
@@ -150,6 +152,18 @@ td b { font-weight: 500; }
         <div><span class="kind">Steered</span><p id="genSteer" class="gen"></p></div>
       </div>
     </div>
+    <h3>Jacobian lens</h3>
+    <p class="hint">How much each next-token logit and each neuron of the later layers changes for each unit of
+      change of this neuron, at the selected token of your text.</p>
+    <button id="lens" disabled>Compute the lens</button>
+    <div id="lensOut"></div>
+    <h3>Swap</h3>
+    <p class="hint">This neuron's value at the selected token of your text and its value at the last token of the
+      other text change places. Then the model predicts the next token of each text.</p>
+    <label class="field" for="swapText">Other text</label>
+    <input id="swapText" value="The Colosseum is in Rome, the capital of">
+    <button id="swap" disabled>Swap</button>
+    <div id="swapOut"></div>
   </section>
 
   <section class="index" aria-labelledby="indexTitle">
