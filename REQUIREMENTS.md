@@ -24,11 +24,16 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    The exceptions are the experiment pages `/play/goosestrike/`, `/play/theorem-explorer/`,
    `/play/theorem-learner/`, `/play/neurons/` and `/play/marklove/`, each copied from its repository.
    `/play/neurons/` gets the model weights from huggingface.co when the visitor loads them.
+   It also talks to the room relay on the server when a visitor opens or shares a room.
    The server never hosts the weights.
    Reason: the captain asked for the neuron explorer under Play on 2026-10-28.
    Reason for `/play/marklove/`: the captain asked for the Marklove web build under Play on 2026-10-29.
    Essays are optional. There is no CMS, database, GitHub API feed, automatic ranking, scheduled
-   sync or publishing schedule. The one exception is the store of signed log entries on the server.
+   sync or publishing schedule. There are two exceptions. The first is the store of signed log
+   entries on the server. The second is the room relay on `POST /play/neurons/room`. It keeps the
+   views, names and notes of a room for a few days, with no accounts.
+   Reason for the room relay: the captain asked for co-editing through a share link in the neuron
+   explorer (server PR https://github.com/yujieteo/server/pull/8).
    The site stays complete with no new content.
    Reason: the captain approved the pond design on 2026-10-28.
 
