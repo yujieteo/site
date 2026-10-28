@@ -1,5 +1,5 @@
 #!/bin/sh
-# Check the pages, local links and home page, that beamdiag/ builds the beam page, and the native PDF.
+# Check the pages, local links and home page, and that beamdiag/ builds the beam page.
 set -eu
 cd "$(dirname "$0")/.."
 python3 - <<'PY'
@@ -79,8 +79,4 @@ tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT HUP INT TERM
 scripts/build-beam.sh "$tmp"
 for f in index.html beamdiag.wasm beamdiag.wasm.gz; do [ -s "$tmp/$f" ]; done
-cargo=${CARGO:-$(command -v cargo || printf /Users/yj/.cargo/bin/cargo)}
-"$cargo" run --locked -q --release -p beamdiag --bin pdf -- "$tmp/example.pdf"
-[ "$(head -c 5 "$tmp/example.pdf")" = '%PDF-' ]
-printf 'example PDF: %s bytes\n' "$(wc -c < "$tmp/example.pdf" | tr -d ' ')"
 echo 'check: ok'

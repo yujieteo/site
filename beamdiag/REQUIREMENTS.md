@@ -40,7 +40,7 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
 
 ## The PDF
 
-10. The Rust PDF writer (`pdf.rs`, in WebAssembly) makes one A4 PDF: vector, black on white, page
+10. The PDF writer (`pdf.goose`, in WebAssembly) makes one A4 PDF: vector, black on white, page
     numbers, nothing from the web page (no buttons, handles, cursor or colours).
 11. Contents, in this order:
     1. heading: the beam, the date, the units
@@ -51,8 +51,8 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
     6. the hand calculation (Macaulay's method)
     7. method and assumptions (the text removed from the page)
 12. The hand calculation uses Unicode maths with superscripts and subscripts (for example
-    `EI·v″ = M(x)`, `⟨x − 2⟩²`), fractions inline. No TeX in Rust.
-13. One list of steps from `hand.rs` feeds both the page (LaTeX for KaTeX) and the PDF (Unicode), so
+    `EI·v″ = M(x)`, `⟨x − 2⟩²`), fractions inline. No TeX in the program.
+13. One list of steps from `hand.goose` feeds both the page (LaTeX for KaTeX) and the PDF (Unicode), so
     the two always show the same numbers.
 14. The diagrams in the PDF are the same drawing as the PNG.
 15. Fonts: any that are clear and have every glyph used. The embedded Fira subsets are fine.
