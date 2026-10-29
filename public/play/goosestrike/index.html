@@ -3,166 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="data:,">
-<title>Goose strike</title>
-<meta name="description" content="A 4 lb goose strikes a stiffened fuselage panel under 14 CFR 25.571(e)(1), solved in Goose compiled to WebAssembly.">
-<link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/play/style.css">
-<!-- Copied from github.com/yujieteo/goosestrike web/ at c17690b. Only the page look changed. -->
+<title>Goose Strike</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%BF%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/shared/kowalski.css">
+<link rel="stylesheet" href="style.css">
+<!-- Copied from github.com/yujieteo/goosestrike web/ at 66e211a. Only the site header and footer and the .mjs names changed. -->
 <style>
-:root { --good: #4f7a4a; --bad: #a8432a; --stage: #e9e3d6; --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
-
-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-.intro { padding-top: clamp(1.5rem, 4vw, 3rem); padding-bottom: 1.5rem; }
-h1 { font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.06; letter-spacing: -0.015em; margin: 0.5rem 0 0; }
-.lede { font-size: 1.2rem; color: var(--muted); margin: 1rem 0 0; max-width: 46rem; text-wrap: pretty; }
-h2 { font-size: 1.6rem; line-height: 1.2; margin: 0 0 0.5rem; }
-
-main {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 22rem;
-  gap: 2rem 2.5rem;
-  padding-bottom: 4rem;
-}
-main > section { border-top: 1px solid var(--ink); padding-top: 1.25rem; }
-.stage { grid-column: 1; grid-row: 1 / span 2; position: relative; padding: 0; overflow: hidden; min-height: 480px; background: var(--stage); border-top: 0; border-radius: 4px; }
-.controls { grid-column: 2; grid-row: 1; }
-.telemetry { grid-column: 2; grid-row: 2 / span 3; }
-.code, .verdict, .wilbeck, .receipts { grid-column: 1; }
-
-#view { display: block; aspect-ratio: auto; width: 100%; height: 100%; min-height: 480px; touch-action: pinch-zoom; cursor: grab; }
-#view:active { cursor: grabbing; }
-#view:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
-
-.viewbar { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
-.camera-hint { flex-basis: 100%; margin: 0; font-size: 12px; color: var(--muted); pointer-events: none; }
-.banner {
-  position: absolute; left: 14px; top: 12px; right: 14px;
-  font: 500 13px var(--mono); color: var(--ink);
-  pointer-events: none;
-}
-.legend { position: absolute; right: 14px; top: 52px; font-size: 12px; color: var(--ink); text-align: right; pointer-events: none; }
-.legend .ramp { width: 180px; height: 10px; border-radius: 5px; margin: 3px 0 1px auto; }
-.legend .ticks { display: flex; justify-content: space-between; width: 180px; margin: 0 0 8px auto; font-family: var(--mono); }
-
-.bubble {
-  position: absolute; left: 50%; top: 22%; transform: translate(-50%, 0) rotate(-6deg);
-  background: #fffdf8; color: var(--ink); font: 400 44px/1 var(--serif); padding: 10px 22px;
-  border: 3px solid var(--ink); border-radius: 26px; pointer-events: none;
-  animation: pop 0.9s ease-out forwards;
-}
-@keyframes pop {
-  0% { transform: translate(-50%, 0) scale(0.2) rotate(-6deg); opacity: 0; }
-  20% { transform: translate(-50%, 0) scale(1.15) rotate(-6deg); opacity: 1; }
-  80% { opacity: 1; }
-  100% { transform: translate(-50%, -30px) scale(1) rotate(-3deg); opacity: 0; }
-}
-
-button {
-  font: inherit; font-size: 0.9rem; color: var(--ink); background: transparent; border: 1px solid var(--ink);
-  border-radius: 999px; padding: 6px 14px; cursor: pointer; transition: border-color 160ms ease, color 160ms ease;
-}
-button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
-button:disabled { opacity: 0.45; cursor: not-allowed; }
-button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
-button[aria-pressed="true"]:hover:not(:disabled) { color: var(--bg); background: var(--accent); }
-.viewbar button { background: #f4f1eae6; min-height: 44px; }
-.viewbar button[aria-pressed="true"] { background: var(--ink); }
-
-.cannon { display: flex; gap: 8px; align-items: stretch; }
-.fire {
-  flex: 1; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; padding: 14px;
-  color: #fff; background: var(--accent); border-color: var(--accent);
-}
-.fire:hover:not(:disabled) { color: #fff; background: #a94f31; border-color: #a94f31; }
-.fire:active:not(:disabled) { transform: translateY(1px); }
-.small { font-size: 0.8rem; }
-.wide { display: block; width: 100%; margin-top: 8px; }
-#stop { min-height: 44px; }
-
-.field { display: block; margin-top: 1.25rem; font-weight: 500; }
-.field output { float: right; font: 500 13px var(--mono); }
-.field input { width: 100%; margin-top: 6px; accent-color: var(--accent); }
-.speed-entry { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.85rem; }
-.speed-entry input { width: 7rem; min-height: 44px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--ink); font: inherit; }
-.speed-entry input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.hint { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); }
-.hint.ok { color: var(--good); }
-.hint.off { color: var(--bad); }
-#snap { font: inherit; color: inherit; border: 0; border-radius: 0; padding: 0; text-decoration: underline; text-underline-offset: 0.2em; }
-
-.presets { margin: 1rem 0 0; border: 0; border-top: 1px solid var(--line); padding: 0.75rem 0 0; }
-.presets legend { font-weight: 500; padding: 0; float: left; width: 100%; margin-bottom: 4px; }
-.preset { display: block; padding: 6px 4px; border-radius: 4px; cursor: pointer; clear: left; }
-.preset:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
-.preset input { accent-color: var(--accent); }
-.preset b { font-weight: 500; }
-.preset small { display: block; margin-left: 22px; color: var(--muted); font-family: var(--mono); font-size: 11.5px; }
-
-dl#tele { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 0; font-size: 0.85rem; }
-dl#tele dt { color: var(--muted); }
-dl#tele dd { margin: 0; text-align: right; font: 500 12.5px var(--mono); }
-
-.honk, .energy { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); }
-.meter { height: 10px; border-radius: 5px; background: var(--line); overflow: hidden; margin-top: 4px; }
-#honkBar { height: 100%; width: 0; background: linear-gradient(90deg, #e2b54f, #c4613f, #6e2a22); transition: width 80ms linear; }
-.ebar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: var(--line); margin-top: 4px; }
-.ebar div { height: 100%; }
-.ekey { list-style: none; margin: 6px 0 0; padding: 0; font: 12px var(--mono); color: var(--ink); }
-.ekey li { display: flex; justify-content: space-between; gap: 6px; }
-.ekey i { display: inline-block; width: 10px; height: 10px; border-radius: 5px; margin-right: 6px; vertical-align: -1px; }
-
-.chart { display: block; aspect-ratio: auto; width: 100%; height: 150px; margin-top: 1rem; }
-.chart.tall { height: 240px; }
-.mono { font: 13px var(--mono); white-space: pre-wrap; }
-
-.phases { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0.75rem 0; padding: 0; }
-.phases button { display: flex; align-items: baseline; gap: 6px; border-color: var(--line); font-size: 0.85rem; }
-.phases button span { font: 500 11px var(--mono); color: var(--muted); }
-.phases button.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
-.source {
-  height: 22rem; overflow: auto; margin: 0; padding: 8px 0; background: #fbf9f4; border: 1px solid var(--line); border-radius: 4px;
-  font: 12px/1.5 var(--mono); counter-reset: none; tab-size: 4;
-}
-.panes { display: grid; gap: 0.75rem; }
-.source.short { height: auto; }
-.source:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.source .ln { display: block; padding: 0 12px 0 0; border-left: 3px solid transparent; transition: background 120ms ease; }
-.source .ln::before { content: attr(data-n); display: inline-block; width: 3.5em; padding-right: 1em; text-align: right; color: #a7a194; user-select: none; }
-.source .ln.on { background: color-mix(in srgb, var(--accent) 16%, transparent); border-left-color: var(--accent); }
-.source b { font-weight: 600; }
-.source i { font-style: normal; color: var(--muted); }
-
-.verdict { border-top: 3px solid var(--ink); }
-.verdict.breached { border-top-color: var(--bad); }
-.verdict.held { border-top-color: var(--good); }
-.verdict .stamp {
-  display: inline-block; transform: rotate(-3deg); border: 2px solid currentColor; border-radius: 4px;
-  padding: 2px 10px; font-weight: 600; letter-spacing: 0.08em; margin-bottom: 6px;
-}
-.verdict.breached .stamp { color: var(--bad); }
-.verdict.held .stamp { color: var(--good); }
-
-blockquote { margin: 8px 0; padding: 4px 14px; border-left: 2px solid var(--accent); color: var(--muted); font-family: var(--serif); font-size: 1.05rem; }
-details { margin-bottom: 8px; }
-summary { cursor: pointer; font-weight: 500; }
-.disclaimer { font-size: 0.85rem; color: var(--muted); }
-
-@media (max-width: 900px) {
-  main { grid-template-columns: minmax(0, 1fr); }
-  .stage, .controls, .telemetry, .code, .verdict, .wilbeck, .receipts { grid-column: 1; grid-row: auto; }
-  .stage, #view { min-height: 360px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  button, .source .ln { transition: none; }
-  .bubble { animation: none; }
-}
+header.site { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem 1.5rem; padding-bottom: 0; }
+.name, nav a { font-weight: 500; text-decoration: none; }
+nav { display: flex; gap: 1rem; color: var(--muted); }
+.intro { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+footer.wrap { border-top: 1px solid var(--line); padding-top: 2rem; padding-bottom: 3rem; font-size: var(--small); color: var(--muted); }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+footer code { overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
-<header class="wrap">
+<header class="wrap site">
 <a class="name" href="/">teoyujie.org</a>
 <nav><a href="/#explorations">Explorations</a> <a href="/log">Log</a> <a href="https://github.com/yujieteo">GitHub ↗</a></nav>
 </header>
@@ -170,7 +27,7 @@ summary { cursor: pointer; font-weight: 500; }
   <span class="kind">Experiment · Ballistic Waterfowl Laboratory</span>
   <h1>Goose strike</h1>
   <p class="lede">One 4&nbsp;lb goose. One fuselage panel. 14&nbsp;CFR&nbsp;25.571(e)(1). Explicit dynamics in
-    <a href="https://github.com/aardappel/goose">Goose</a>, compiled to WebAssembly.</p>
+    <a href="https://github.com/aardappel/goose">Goose</a>, compiled to WebAssembly, with a solver on the GPU (WebGPU) if your browser has WebGPU.</p>
 </div>
 
 <main class="wrap">
@@ -208,6 +65,11 @@ summary { cursor: pointer; font-weight: 500; }
     <p class="hint" id="speedEntryStatus" role="status"></p>
     <p class="hint" id="specCheck"></p>
 
+    <label class="field">Skin thickness <output id="skinOut"></output>
+      <input id="skin" type="range" min="0.8" max="3.2" step="0.1" aria-describedby="skinHint">
+    </label>
+    <p class="hint" id="skinHint">The default is 1.6 mm. The stringers and frames do not change.</p>
+
     <fieldset class="presets">
       <legend>Goose resolution</legend>
       <div id="presets"></div>
@@ -231,9 +93,10 @@ summary { cursor: pointer; font-weight: 500; }
 
   <section class="code">
     <h2>The Goose code that runs</h2>
-    <p class="hint">The page runs each time step of <code>sim/strike.goose</code> in five phases, one call to
+    <p class="hint">On the CPU, the page runs each time step of <code>sim/strike.goose</code> in five phases, one call to
       <code>step_phase</code> each. The lit lines are the phase that ran last, as the solver reports it.
       The source scrolls to the phase that runs, at most once a second.
+      On the GPU, this Goose code makes the set-up. Then the WGSL kernels of <code>web/strike.wgsl</code> do the five phases of each step.
       Automatic scroll pauses while a source pane or phase button has focus. <span id="codeState" role="status"></span></p>
     <ol class="phases" id="phases"></ol>
     <div class="panes">
@@ -279,7 +142,7 @@ summary { cursor: pointer; font-weight: 500; }
     <details>
       <summary>Panel and method</summary>
       <p>Curved panel, radius 1.975&nbsp;m, 1.067&nbsp;m × 0.760&nbsp;m, clamped edges. Skin 2024-T3,
-        1.6&nbsp;mm. Four Z stringers and two Z frames, 7075-T6. The geometry is a representative
+        1.6&nbsp;mm (you can change it). Four Z stringers and two Z frames, 7075-T6. The geometry is a representative
         assumption, not a drawing of a real aeroplane. Normal impact at mid-bay.</p>
       <p>Bird: SPH. Panel: Belytschko-Lin-Tsay shells, J2 plasticity, erosion at the failure
         plastic strain. Contact: penalty. Central differences with a stable time step.
