@@ -219,12 +219,12 @@ fn draw_page_range(list: DOp[:], k: i64) -> i64, i64 {
 
 // Text styles by class: monospace, size (px), colour token, letter spacing (em), halo.
 let TEXT_CLASS: const u8[:][9] = ["tick", "title", "val", "axlabel", "axlabel halo", "head", "body", "note", "cell"];
-let TEXT_MONO: bool[9] = [true, true, false, true, true, false, false, false, false];
+let TEXT_MONO: bool[9] = [true, false, false, true, true, false, false, false, false];
 // Report headings are set in the site's sans at the weight of its page headings (600), the rest of the report at 400.
 let TEXT_HEAD: bool[9] = [false, false, false, false, false, true, false, false, false];
 let TEXT_SIZE: f64[9] = [11.0, 11.0, 11.5, 11.0, 11.0, 18.0, 12.0, 12.0, 11.5];
 let TEXT_COLOR: i64[9] = [COL_MUTED, COL_MUTED, COL_FG, COL_FG, COL_FG, COL_FG, COL_FG, COL_MUTED, COL_FG];
-let TEXT_SPACING: f64[9] = [0.0, 0.06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+let TEXT_SPACING: f64[9] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
 let TEXT_HALO: bool[9] = [false, false, false, false, true, false, false, false, false];
 
 // The row of TEXT_CLASS for a class; an unknown class is styled as "val".

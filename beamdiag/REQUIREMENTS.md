@@ -32,8 +32,10 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
    all explanation text (method, signs, assumptions, sources) on the page.
 7. Look: the site look, with the site stylesheet `/style.css`, header and footer. The page adds
    only the styles of the tool, and its controls follow the interaction rules of `/shared/kowalski.css`.
-   No themes, no dark mode, no fades.
+   No themes, no dark mode, and no fades except the hover fade of `.button` and of the heading anchor.
    Reason: the captain asked for the shared stylesheet and its interaction rules on all pages on 2026-10-29.
+   Reason for the two fades: on 2026-10-29 the captain asked for the buttons of Sonner and animations.dev,
+   which fade on hover, and for the look of the article https://emilkowal.ski/ui/building-a-toast-component.
 8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 400 KB loads before the
    first draw, with the two fonts of `/shared/kowalski.css`. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the
    first "Save PDF" or "Save PNG".
