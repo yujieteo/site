@@ -67,9 +67,13 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    of the home page. Hover styles apply only under `(hover: hover) and (pointer: fine)`.
    Reason: the captain chose mockup A of the design board and asked for his interaction rules in one
    shared stylesheet on 2026-10-29.
-   The exceptions are the tools under `/play/`. `/play/marklove/` is a full-screen editor with its own
-   look from its repository.
+   The exceptions are the tools under `/play/`. `/play/marklove/` is a full-screen editor without the
+   site header and footer.
    Reason: the site header and footer take the space of the editor.
+   It links `/shared/kowalski.css` and uses his interaction rules. It keeps its document themes, dark
+   themes included: the rule below of no themes and no dark mode is not for its documents.
+   Reason: the captain asked for his interaction rules on all pages, Marklove included, on 2026-10-29
+   (marklove-web PR https://github.com/yujieteo/marklove-web/pull/3).
    The other tools keep the previous look until each moves to the new one: they use
    `public/play/style.css` with Source Serif 4 and DM Sans.
    Reason: the captain put the port of the tools out of this change on 2026-10-29.
