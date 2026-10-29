@@ -74,17 +74,20 @@
   padding-left: max(var(--app-gutter), env(safe-area-inset-left));
   padding-right: max(var(--app-gutter), env(safe-area-inset-right));
 }
-main.wrap {
-  padding-top: clamp(0.5rem, 3vw, 1.5rem);
-  /* Room under the content for the floating view switcher, so nothing ends behind it. */
-  padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
-}
+main.wrap { padding-top: clamp(0.5rem, 3vw, 1.5rem); }
 
 /* The site header: the name on the left, the site links on the right. */
 .site { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-6); padding-bottom: var(--space-3); }
 .site .name { font-weight: 500; text-decoration: none; }
 .site nav { display: flex; gap: var(--space-6); color: var(--muted); font-weight: 500; }
 .site nav a { text-decoration: none; }
+
+/* The site footer, as on the home page. Its bottom padding is the room for the floating view switcher, so nothing
+   ends behind it. */
+footer.wrap { margin-top: 64px; padding-bottom: calc(6.5rem + env(safe-area-inset-bottom)); color: var(--muted); }
+footer ul { list-style: none; margin: 0; padding: 0; }
+footer code { font: var(--code) var(--mono); font-size: 0.857143em; overflow-wrap: anywhere; border: 1px solid var(--line);
+  border-radius: var(--radius); background: var(--chip); padding: 2px 3.6px; }
 
 /* Page title: eyebrow, title, lede. All text is 16px, as on the site; weight gives the levels. */
 .eyebrow {
@@ -448,7 +451,7 @@ ul.outline li.known > button.link { color: var(--muted); }
 <body>
 <header class="site wrap">
 <a class="name" href="https://teoyujie.org/">teoyujie.org</a>
-<nav aria-label="Site"><a href="https://teoyujie.org/#explorations">Explorations</a> <a href="https://github.com/yujieteo">GitHub ↗</a></nav>
+<nav aria-label="Site"><a href="https://teoyujie.org/#explorations">Explorations</a> <a href="https://teoyujie.org/log">Log</a> <a href="https://github.com/yujieteo">GitHub ↗</a></nav>
 </header>
 <main class="wrap">
 <header class="title">
@@ -1192,6 +1195,13 @@ FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 </details>
 </main>
+<footer class="wrap">
+<ul>
+<li>Lullapixie: <a href="https://teoyujie.org/lullapixie/privacy.html">Privacy policy</a> · <a href="https://teoyujie.org/lullapixie/support.html">Support</a></li>
+<li>Marklove: <a href="https://teoyujie.org/marklove/privacy.html">Privacy policy</a> · <a href="https://teoyujie.org/marklove/support.html">Support</a></li>
+<li>Email: <a href="mailto:contact@teoyujie.org">contact@teoyujie.org</a> · <a href="https://teoyujie.org/contact.asc">OpenPGP key</a> (fingerprint <code>5E76 96A3 DDD7 6435 07DD 3EB8 F24F 7F0D 78EB E270</code>)</li>
+</ul>
+</footer>
 <div id="undo" class="undo no-print" role="status" aria-live="polite" hidden><span id="undo-text"></span><button type="button" id="undo-do">Undo</button></div>
 <dialog id="palette" aria-label="Commands">
 <label class="label" for="palette-input">Command</label>
