@@ -22,19 +22,26 @@ export const MAX_SOURCE_BYTES = 512 * 1024;
 export class TooLarge extends Error {}
 
 let M = null;
+let wasm = null;
+
+// The server sends .wasm as application/octet-stream, so give each module the bytes.
+async function wasmBinary() {
+    wasm ??= fetch(new URL("marklove.wasm", import.meta.url)).then((r) => {
+        if (!r.ok) throw new Error("marklove.wasm: " + r.status);
+        return r.arrayBuffer();
+    });
+    return wasm;
+}
 let lenPtr = 0;
 
 export async function load() {
     if (M) return;
-    // The server sends .wasm as application/octet-stream, so give the module the bytes.
-    const wasm = await fetch(new URL("marklove.wasm", import.meta.url));
-    if (!wasm.ok) throw new Error("marklove.wasm: " + wasm.status);
-    M = await createModule({ wasmBinary: await wasm.arrayBuffer() });
+    M = await createModule({ wasmBinary: await wasmBinary() });
     M._goose_init(0, 0);
     lenPtr = M._malloc(8);
 }
 
-function put(inputs) {
+function put(inputs, m = M) {
     const all = inputs.map((v) => {
         if (typeof v !== "string") return v;
         const b = encoder.encode(v);
@@ -43,16 +50,33 @@ function put(inputs) {
         return b;
     });
     all.forEach((b, i) => {
-        const p = M._ml_in_alloc(i, b.length);
-        M.HEAPU8.set(b, p);
+        const p = m._ml_in_alloc(i, b.length);
+        m.HEAPU8.set(b, p);
     });
+}
+
+function result(m, p, len) {
+    const n = Number(new BigInt64Array(m.HEAPU8.buffer, len, 1)[0]);
+    return m.HEAPU8.slice(p, p + n);
 }
 
 function bytes(name, inputs, ...ints) {
     put(inputs);
-    const p = M["_" + name](...ints, lenPtr);
-    const n = Number(new BigInt64Array(M.HEAPU8.buffer, lenPtr, 1)[0]);
-    return M.HEAPU8.slice(p, p + n);
+    return result(M, M["_" + name](...ints, lenPtr), lenPtr);
+}
+
+// A second core for the page layouts (web/pages.js), so that the preview
+// does not change its state. hooks go into the module (Module.mlMeasure).
+// The result calls an export and gives the bytes of its result.
+export async function instance(hooks) {
+    const m = await createModule({ ...hooks, wasmBinary: await wasmBinary() });
+    m._goose_init(0, 0);
+    const len = m._malloc(8);
+    const call = (name, inputs, ...ints) => {
+        put(inputs, m);
+        return result(m, m["_" + name](...ints, len), len);
+    };
+    return call;
 }
 
 const text = (name, inputs, ...ints) => decoder.decode(bytes(name, inputs, ...ints));
@@ -66,7 +90,7 @@ function plain(name, inputs, ...ints) {
 // A document: the source, the assets ({path: url}) and the page parts.
 // The page parts come from the app, not from the user, so they go in as
 // bytes, with no limit: the embedded fonts are larger than 512 KB.
-function docArgs(d) {
+export function docArgs(d) {
     if (encoder.encode(d.source).length > MAX_SOURCE_BYTES)
         throw new TooLarge("The Markdown file is larger than 512 KB. Split it into more projects.");
     const assets = Object.entries(d.assets || {}).map(([k, v]) => k + "\t" + v + "\n").join("");
@@ -74,6 +98,7 @@ function docArgs(d) {
     return [d.source, assets, part(d.fonts), part(d.style), part(d.script), d.appearance || ""];
 }
 
+export const meta = (source, key) => text("ml_meta", [...docArgs({ source }), key]);
 export const page = (d, kind, opts) => text("ml_page", docArgs(d), kind, opts);
 export const textOutput = (d, kind, opts) => text("ml_text", docArgs(d), kind, opts);
 export const outline = (d, opts) => json("ml_outline", docArgs(d), opts);

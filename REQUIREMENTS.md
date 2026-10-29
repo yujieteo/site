@@ -27,6 +27,12 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    It also talks to the room relay on the server when a visitor opens or shares a room.
    The server never hosts the weights.
    Reason: the captain asked for the neuron explorer under Play on 2026-10-28.
+   `/play/marklove/` imports kokoro-js 1.2.1 (pinned) from cdn.jsdelivr.net when the visitor uses
+   the voice. Then it gets the Kokoro-82M model (`onnx-community/Kokoro-82M-v1.0-ONNX`, q8) from
+   huggingface.co. The model has no pinned revision: it follows the main branch.
+   The server never hosts the model.
+   Reason: the captain asked for narrated video and podcast export with the Kokoro voice in
+   `/play/marklove/` on 2026-10-29 (marklove-web PR https://github.com/yujieteo/marklove-web/pull/2).
    Reason for `/play/marklove/`: the captain asked for the Marklove web build under Play on 2026-10-29.
    Essays are optional. There is no CMS, database, GitHub API feed, automatic ranking, scheduled
    sync or publishing schedule. There are two exceptions. The first is the store of signed log
