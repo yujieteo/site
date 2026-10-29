@@ -1,25 +1,20 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beam diagram creator</title><meta name="description" content="Create beam diagrams, read reactions and hand calculations, and save PNG or A4 PDF reports."><link rel="stylesheet" href="/play/style.css"><style>:root{--surface:var(--bg);--fg:var(--ink);--fg2:var(--ink);--accent-text:var(--accent);--warm:var(--accent);--green:var(--ink);--chrome:var(--bg);--mono:ui-monospace,monospace;--math:system-ui,sans-serif}button{font:inherit;background:none;color:inherit;border:1px solid var(--line);border-radius:6px;padding:6px 10px;cursor:pointer}button:hover{border-color:var(--ink)}
-.bd .eyebrow { font: 0.75rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; margin: 0 0 0.75rem; }
-.bd .lede { max-width: 44rem; margin-bottom: 2rem; }
-:root[data-embed] .bd > .eyebrow, :root[data-embed] .bd > h1, :root[data-embed] .bd > .lede { display: none; }
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beam diagram creator</title><meta name="description" content="Create beam diagrams, read reactions and hand calculations, and save PNG or A4 PDF reports."><link rel="stylesheet" href="/style.css"><style>:root{--surface:var(--bg);--fg:var(--ink);--fg2:var(--ink);--accent-text:var(--accent);--warm:var(--accent);--green:var(--ink);--chrome:var(--bg);--math:system-ui,sans-serif}button{font:inherit;background:none;color:inherit;border:1px solid var(--line);border-radius:var(--radius);padding:6px 10px;cursor:pointer}@media (hover:hover) and (pointer:fine){button:hover{border-color:var(--ink)}}
 .bd section { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
 .bd h3 { margin-top: 1.5rem; }
 .bd p { max-width: 68ch; }
 .bd code { font: 0.875em var(--mono); }
 .bd .small { font-size: 0.875rem; }
-.btn { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 2.25rem; font-size: 0.875rem; white-space: nowrap; }
-.btn:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 0.35rem; min-height: var(--tap); font-size: 0.875rem; white-space: nowrap; }
 .btn.primary { color: var(--fg); border-color: var(--fg); }
-.btn.icon { padding: 0; width: 2.25rem; justify-content: center; border-radius: 6px; }
+.btn.icon { padding: 0; width: var(--tap); justify-content: center; border-radius: var(--radius); }
 .toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; margin: 0 0 0.75rem; padding: 0.6rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .toolbar .group { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
 .label, .card h3 { font: 0.7rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0.2rem 0 0; }
 .card h3 { margin: 0 0 0.6rem; }
-.bd select, .bd input { font: inherit; font-size: 0.875rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 0.3rem 0.5rem; min-height: 2.25rem; width: 100%; font-variant-numeric: tabular-nums; }
+.bd select, .bd input { font: inherit; font-size: 0.875rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.3rem 0.5rem; min-height: var(--tap); width: 100%; font-variant-numeric: tabular-nums; }
 .toolbar select { width: auto; max-width: 100%; }
 [aria-invalid="true"] { border-color: var(--warm) !important; box-shadow: 0 0 0 1px var(--warm); }
-.app { display: grid; gap: 1.25rem 1.75rem; grid-template-columns: minmax(0, 1fr) minmax(0, 19rem); align-items: start; }
-@media (max-width: 60rem) { .app { grid-template-columns: minmax(0, 1fr); } }
+.app { display: grid; gap: 1.25rem; }
 #plots { position: relative; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 #plots svg { display: block; width: 100%; height: auto; overflow: visible; }
 #plots.stale svg, .stats.stale, tbody.stale { opacity: 0.35; }
@@ -31,9 +26,8 @@
 #plots .cursor { stroke: var(--fg); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.6; pointer-events: none; }
 .readout { display: flex; flex-wrap: wrap; gap: 0.15rem 1rem; font-size: 0.875rem; margin: 0.5rem 0 0; min-height: 2.8em; font-variant-numeric: tabular-nums; }
 .readout b { font-weight: 400; color: var(--fg); }
-.readout .k, .hint { color: var(--muted); }
-.hint { font-size: 0.8125rem; margin: 0.25rem 0 0; }
-.error { border: 1px solid var(--warm); border-radius: 6px; padding: 0.55rem 0.8rem; margin: 0 0 0.75rem; font-size: 0.9375rem; }
+.readout .k { color: var(--muted); }
+.error { border: 1px solid var(--warm); border-radius: var(--radius); padding: 0.55rem 0.8rem; margin: 0 0 0.75rem; font-size: 0.9375rem; }
 .error[hidden] { display: none; }
 .error b { font-weight: 400; color: var(--warm); }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.6rem 1.25rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
@@ -41,7 +35,7 @@
 .stats b { display: block; font-weight: 400; font-size: 1.35rem; line-height: 1.2; color: var(--fg); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .stats li > span { font-size: 0.8125rem; color: var(--muted); }
 .reactions { list-style: none; margin: 0.75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; font-size: 0.875rem; }
-.reactions li { border: 1px solid var(--line); border-radius: 6px; padding: 0.25rem 0.6rem; font-variant-numeric: tabular-nums; }
+.reactions li { border: 1px solid var(--line); border-radius: var(--radius); padding: 0.25rem 0.6rem; font-variant-numeric: tabular-nums; }
 .reactions li i { display: inline-block; width: 0.9rem; height: 2px; background: var(--green); vertical-align: middle; margin-right: 0.35rem; }
 .panel { display: flex; flex-direction: column; gap: 1rem; }
 .card { border: 1px solid var(--line); border-radius: 8px; padding: 0.85rem; }
@@ -57,7 +51,7 @@ label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 .item .tag { grid-column: 1 / -1; font: 0.72rem var(--mono); color: var(--fg); letter-spacing: 0.03em; }
 .adds { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
 .derived, .note { font-size: 0.8125rem; color: var(--muted); margin: 0.5rem 0 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.table-wrap { position: relative; overflow-x: auto; margin-top: 0.5rem; border: 1px solid var(--line); border-radius: 6px; }
+.table-wrap { position: relative; overflow-x: auto; margin-top: 0.5rem; border: 1px solid var(--line); border-radius: var(--radius); }
 .bd table { border-collapse: collapse; width: 100%; font-size: 0.8125rem; min-width: 40rem; }
 .bd table.cards { min-width: 30rem; }
 .bd th, .bd td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -67,18 +61,14 @@ label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 .method li { margin: 0.35rem 0; }
 .sources li { overflow-wrap: anywhere; }
 .sources a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 0.2em; }
-pre.deck { font: 12px/1.45 var(--mono); background: var(--surface); border-radius: 6px; padding: 0.75rem; overflow: auto; max-height: 26rem; margin: 0.5rem 0 0; }
 .export { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: end; margin-top: 0.75rem; }
-.export label.f { width: min(100%, 16rem); }
-.export label.format { width: 7rem; }
-.bd summary { cursor: pointer; color: var(--fg); }
+.bd summary { cursor: pointer; color: var(--fg); line-height: var(--tap); touch-action: manipulation; user-select: none; -webkit-user-select: none; }
 .calc { border-top: 1px solid var(--line); padding: 0.75rem 0 0.25rem; }
 .calc h4, .calc > summary { font-size: 1rem; font-weight: 400; color: var(--fg); margin: 0 0 0.35rem; }
 .calc p, .calc li { font-size: 0.9375rem; }
 .calc ul { padding-left: 1.2rem; margin: 0.4rem 0; }
 .calc .table-wrap table { min-width: 0; width: auto; }
-.hand-part { margin-top: 1.5rem; }
-.eq { font: 1rem/1.9 var(--math); color: var(--fg); margin: 0.35rem 0; padding: 0.35rem 0.6rem; background: var(--surface); border-radius: 6px; overflow-x: auto; white-space: nowrap; }
+.eq { font: 1rem/1.9 var(--math); color: var(--fg); margin: 0.35rem 0; padding: 0.35rem 0.6rem; background: var(--surface); border-radius: var(--radius); overflow-x: auto; white-space: nowrap; }
 .math { font-family: var(--math); white-space: nowrap; }
 .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 0.15em; line-height: 1.25; }
 .frac > span + span { border-top: 1px solid currentColor; }
@@ -87,7 +77,7 @@ pre.deck { font: 12px/1.45 var(--mono); background: var(--surface); border-radiu
 #hand-point:empty { display: none; }
 #hand-point .calc { border-top: 0; }
 @media (forced-colors: active) { #plots .area { fill: none; } }
-.bd-fig text.tick{font:11px var(--mono);fill:var(--muted)}.bd-fig text.title{font:11px var(--mono);fill:var(--muted);letter-spacing:0.06em}.bd-fig text.val{font:11.5px var(--sans);fill:var(--fg)}.bd-fig text.axlabel{font:11px var(--mono);fill:var(--fg)}.bd-fig text.axlabel.halo{font:11px var(--mono);fill:var(--fg);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round}.bd-fig text.head{font:18px var(--serif);fill:var(--fg)}.bd-fig text.body{font:12px var(--sans);fill:var(--fg)}.bd-fig text.note{font:12px var(--sans);fill:var(--muted)}.bd-fig text.cell{font:11.5px var(--sans);fill:var(--fg)}</style><header class="wrap">
+.bd-fig text.tick{font:11px var(--mono);fill:var(--muted)}.bd-fig text.title{font:11px var(--mono);fill:var(--muted);letter-spacing:0.06em}.bd-fig text.val{font:11.5px var(--sans);fill:var(--fg)}.bd-fig text.axlabel{font:11px var(--mono);fill:var(--fg)}.bd-fig text.axlabel.halo{font:11px var(--mono);fill:var(--fg);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round}.bd-fig text.head{font:600 18px var(--sans);fill:var(--fg)}.bd-fig text.body{font:12px var(--sans);fill:var(--fg)}.bd-fig text.note{font:12px var(--sans);fill:var(--muted)}.bd-fig text.cell{font:11.5px var(--sans);fill:var(--fg)}</style><header class="wrap">
 <a class="name" href="/">teoyujie.org</a>
 <nav><a href="/#explorations">Explorations</a> <a href="/log">Log</a> <a href="https://github.com/yujieteo">GitHub ↗</a></nav>
 </header>
@@ -298,7 +288,7 @@ plots.addEventListener("keydown", (e) => {
 });
 let fontPromise;
 async function pdfFonts() {
-  fontPromise ||= Promise.all(["sans", "serif", "math"].map(async n => {
+  fontPromise ||= Promise.all(["sans", "head", "math"].map(async n => {
     const r = await fetch(`fonts/${n}.${n === "math" ? "otf" : "ttf"}`); if (!r.ok) throw new Error("Font could not load");
     const b = new Uint8Array(await r.arrayBuffer()); let s = ""; for (const x of b) s += String.fromCharCode(x); return btoa(s);
   }));

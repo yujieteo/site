@@ -748,14 +748,15 @@ fn take_fonts(fonts: i64) {
         f = jm_next(f);
     }
     if n != 3 || !good { return; }
-    let names: const u8[:][3] = ["DM Sans", "Source Serif 4", "Fira Math"];
+    let names: const u8[:][3] = ["Inter", "Inter", "Fira Math"];
+    let weights: const u8[:][3] = ["400", "600", "400"];
     let mimes: const u8[:][3] = ["ttf", "ttf", "otf"];
     let formats: const u8[:][3] = ["truetype", "truetype", "opentype"];
     font_css.clear();
     font_data.clear();
     var i = 0;
     while i < 3 {
-        font_css.append(str("@font-face{font-family:\"", names[i], "\";src:url(data:font/", mimes[i], ";base64,", strs[i], ") format(\"", formats[i], "\")}"));
+        font_css.append(str("@font-face{font-family:\"", names[i], "\";font-weight:", weights[i], ";src:url(data:font/", mimes[i], ";base64,", strs[i], ") format(\"", formats[i], "\")}"));
         let before = font_data.len;
         b64_decode(font_data, strs[i]);
         font_len[i] = font_data.len - before;
@@ -1667,8 +1668,7 @@ fn print_svg(list: DOp[:], w: f64, h: f64) -> u8[>..] {
         var end = find(tail, ")");
         if end < 0 { end = 0; }
         let k = tail[..end];
-        if k == "sans" || k == "mono" { out.append("\"DM Sans\",sans-serif"); }
-        else if k == "serif" { out.append("\"Source Serif 4\",serif"); }
+        if k == "sans" || k == "mono" { out.append("\"Inter\",sans-serif"); }
         else {
             let pi = palette_index(k);
             if pi >= 0 { out.append(print_color(pi)); } else { out.append(s[at + i..at + i + 7 + end]); }
