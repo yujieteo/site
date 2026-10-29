@@ -65,19 +65,8 @@ function common(m) {
   };
 }
 
-// The server sends .wasm as application/octet-stream, so instantiate each module from its bytes.
-function wasmLoad(name) {
-  return (imports, done) => {
-    fetch(new URL(name, import.meta.url))
-      .then((r) => { if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.arrayBuffer(); })
-      .then((b) => WebAssembly.instantiate(b, imports))
-      .then((r) => done(r.instance, r.module));
-    return {};
-  };
-}
-
 export async function loadEngine() {
-  const m = await createModule({ instantiateWasm: wasmLoad("strike.wasm") });
+  const m = await createModule();
   m._goose_init(0, 0);
   return {
     ...common(m),
@@ -111,7 +100,7 @@ export async function loadGpuEngine(gpu = globalThis.navigator?.gpu) {
   const device = await adapter.requestDevice();
   const wgsl = new TextEncoder().encode(await text("strike.wgsl"));
   const { default: createGpuModule } = await import("./strike-gpu.js");
-  const m = await createGpuModule({ preinitializedWebGPUDevice: device, instantiateWasm: wasmLoad("strike-gpu.wasm") });
+  const m = await createGpuModule({ preinitializedWebGPUDevice: device });
   m._goose_init(0, 0);
   // a const u8[:] argument is a pointer to { data, len }
   const src = m._malloc(wgsl.length), sl = m._malloc(12);
