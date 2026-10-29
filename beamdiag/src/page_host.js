@@ -102,7 +102,7 @@ plots.addEventListener("keydown", (e) => {
 });
 let fontPromise;
 async function pdfFonts() {
-  fontPromise ||= Promise.all(["sans", "serif", "math"].map(async n => {
+  fontPromise ||= Promise.all(["sans", "head", "math"].map(async n => {
     const r = await fetch(`fonts/${n}.${n === "math" ? "otf" : "ttf"}`); if (!r.ok) throw new Error("Font could not load");
     const b = new Uint8Array(await r.arrayBuffer()); let s = ""; for (const x of b) s += String.fromCharCode(x); return btoa(s);
   }));

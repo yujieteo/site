@@ -1,8 +1,10 @@
 file       family           upstream                                                         licence
-sans.ttf   DM Sans          public/fonts/dm-sans.woff2, instance at wght 400                 OFL-1.1
-serif.ttf  Source Serif 4   public/fonts/source-serif-4.woff2, instance at opsz 20           OFL-1.1
+sans.ttf   Inter            public/fonts/inter.woff2, instance at wght 400, opsz 14          OFL-1.1
+head.ttf   Inter            public/fonts/inter.woff2, instance at wght 600, opsz 18          OFL-1.1
 math.otf   Fira Math        fira-math 0.3.4-unstable-2023-10-09 (nixpkgs 26.05)             OFL-1.1
-The files are in public/play/beamdiag/fonts/. sans.ttf and serif.ttf are the site's own fonts, made static with fontTools
-instancer and cut to their own glyphs with its subsetter (no layout tables, TrueType outlines for PDF embedding).
+The files are in public/play/beamdiag/fonts/. sans.ttf and head.ttf are the site's own font, made static with the fontTools 4.61.1
+instancer and cut with its subsetter to the characters of the previous sans.ttf (no layout tables, TrueType outlines for PDF
+embedding). The cmap maps each character to its cv01 and ss03 glyph, as the site sets them. head.ttf is for the report headings,
+at the weight of the page headings.
 math.otf (sha256 63e10b5f90945ab508749d4ac52abdaaf9a6b57342990f557ce122f873c36818) covers the mathematical operators, Greek,
 arrows and alphabets the site fonts lack. It is cut with hb-subset (harfbuzz 13.2.1).

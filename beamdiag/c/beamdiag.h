@@ -262,16 +262,6 @@ struct At_g {
     double theta_g;
 };
 
-typedef struct Readout_g Readout_g;
-typedef struct { uint8_t len; uint8_t e[8]; } l8_u8;
-
-typedef struct { uint8_t len; uint8_t e[200]; } l200_u8;
-
-struct Readout_g {
-    l8_u8 k_g;
-    l200_u8 v_g;
-};
-
 typedef struct Sample_g Sample_g;
 typedef struct { Sample_g *data; int64_t len; } sl_Sample_g;
 
@@ -339,8 +329,6 @@ struct EvRec_g {
     l2048_u8 what_g;
 };
 
-typedef struct { uint8_t len; uint8_t e[48]; } l48_u8;
-
 typedef struct Cells_g Cells_g;
 typedef struct HAct_g HAct_g;
 typedef struct { HAct_g *data; int64_t len; } sl_HAct_g;
@@ -352,10 +340,6 @@ struct HAct_g {
     uint8_t couple_g;
     double arm_g;
 };
-
-typedef struct { uint8_t e[4]; } a4_u8;
-
-typedef struct { double e[8]; } a8_f64;
 
 typedef struct { DOp_g *data; int64_t len; } sl_DOp_g;
 
@@ -409,6 +393,8 @@ struct StatItem_g {
     l400_u8 w_g;
 };
 
+typedef struct { uint8_t len; uint8_t e[48]; } l48_u8;
+
 typedef struct { l48_u8 e[8]; } a8_l48_u8;
 
 struct Cells_g {
@@ -422,6 +408,16 @@ typedef struct { double e[16]; } a16_f64;
 typedef struct { uint8_t len; int64_t e[144]; } l144_i64;
 
 typedef struct { sl_u8 e[6]; } a6_sl_u8;
+
+typedef struct Readout_g Readout_g;
+typedef struct { uint8_t len; uint8_t e[8]; } l8_u8;
+
+typedef struct { uint8_t len; uint8_t e[200]; } l200_u8;
+
+struct Readout_g {
+    l8_u8 k_g;
+    l200_u8 v_g;
+};
 
 typedef struct DSeg_g DSeg_g;
 struct DSeg_g {
@@ -510,6 +506,8 @@ typedef struct { double e[2]; } a2_f64;
 
 typedef struct { sl_u8 e[3]; } a3_sl_u8;
 
+typedef struct { uint8_t e[4]; } a4_u8;
+
 typedef struct Attach_g Attach_g;
 struct Attach_g {
     uint8_t load_g;
@@ -518,6 +516,8 @@ struct Attach_g {
     int64_t end_g;
     double at_g;
 };
+
+typedef struct { double e[8]; } a8_f64;
 
 typedef struct { int64_t e[7]; } a7_i64;
 

@@ -1,10 +1,10 @@
 // A display list as a vector PDF in the print palette, one page per run of ops between page breaks. Text
-// is set in the embedded subsets of the site's fonts, DM Sans and Source Serif 4 (TrueType), and Fira Math
+// is set in the embedded subsets of the site's font, Inter at 400 and at 600 for headings (TrueType), and Fira Math
 // (OpenType CFF) for maths, addressed by glyph ID with a ToUnicode map, as the site's PDFs are; a character
-// missing from a font falls back to DM Sans, then Fira Math. Nothing reads
+// missing from a font falls back to Inter 400, then Fira Math. Nothing reads
 // a clock, so equal figures give equal bytes.
 //
-// The three fonts (sans, serif, maths) are OpenType bytes. A character's glyph is read from the font's cmap
+// The three fonts (sans, heading, maths) are OpenType bytes. A character's glyph is read from the font's cmap
 // on demand and remembered in pdf_cache.
 
 import std;
@@ -277,7 +277,7 @@ fn pdf_text(op: DOp) {
     let spacing = TEXT_SPACING[si];
     var runs: PPiece[>..] = [];
     pdf_glyphs.clear();
-    let w = pdf_run(if TEXT_SERIF[si] { 1 } else { 0 }, size, spacing, draw_ref(op.s0, op.s1), runs);
+    let w = pdf_run(if TEXT_HEAD[si] { 1 } else { 0 }, size, spacing, draw_ref(op.s0, op.s1), runs);
     let start = if op.anchor == ANC_START { op.a } else if op.anchor == ANC_MIDDLE { op.a - w / 2.0 } else { op.a - w };
     let tc = spacing * size;
     pdf_c.append("q ");
@@ -497,7 +497,7 @@ fn pdf_utf16_cp(out: u8[>..]&, c: i64) {
 var pdf_pool: u8[>..] = [];
 
 // The figure (CSS px, 96 to the inch) as PDF pages of the same size in points. The list holds the pages
-// separated by page breaks (draw_page); fonts are the font bytes of sans, serif and maths.
+// separated by page breaks (draw_page); fonts are the font bytes of sans, heading and maths.
 fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8[:], font2: u8[:]) -> u8[>..] {
     pdf_data.clear();
     let o0 = pdf_data.len;

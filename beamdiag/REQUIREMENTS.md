@@ -1,6 +1,6 @@
 # Beam diagram creator: requirements
 
-Agreed with the owner on 2026-10-18, and changed on 2026-10-23 for the site look. When the code and this file disagree, change the code.
+Agreed with the owner on 2026-10-18, and changed on 2026-10-23 and 2026-10-29 for the site look. When the code and this file disagree, change the code.
 
 ## The job
 
@@ -30,10 +30,12 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
    NASTRAN deck and `bdf.rs`, the beamdswitch deck and `deck.rs` / `report.rs` (unless the PDF
    reuses its numbers), the Markdown and clipboard exports, the WebMCP tools and `tools.json`, and
    all explanation text (method, signs, assumptions, sources) on the page.
-7. Look: the previous site look, with the tools stylesheet `/play/style.css`, header and footer. The page adds
-   only the styles of the tool. No themes, no dark mode, no fades.
+7. Look: the site look, with the site stylesheet `/style.css`, header and footer. The page adds
+   only the styles of the tool, and its controls follow the interaction rules of `/shared/kowalski.css`.
+   No themes, no dark mode, no fades.
+   Reason: the captain asked for the shared stylesheet and its interaction rules on all pages on 2026-10-29.
 8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 400 KB loads before the
-   first draw, with the two fonts of `/play/style.css`. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the
+   first draw, with the two fonts of `/shared/kowalski.css`. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the
    first "Save PDF" or "Save PNG".
 9. Typing in a field never lags: solve on input, draw at most once per animation frame, and build
    the hand calculation only when it is visible.
@@ -55,5 +57,5 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
 13. One list of steps from `hand.goose` feeds both the page (LaTeX for KaTeX) and the PDF (Unicode), so
     the two always show the same numbers.
 14. The diagrams in the PDF are the same drawing as the PNG.
-15. Fonts: the PDF and the saved figures use the fonts of `/play/style.css`, DM Sans and Source Serif 4 (the report heading). Fira Math covers maths glyphs they lack.
+15. Fonts: the PDF and the saved figures use the site font, Inter, at 400 and at 600 for the report heading. Fira Math covers maths glyphs it lacks.
     Reason: the PDF used Fira, so it looked unlike the site.
