@@ -101,8 +101,8 @@ fn fig_tick_labels(ticks: f64[:], ls: i64[>..]&, ln: i64[>..]&) {
 
 // Width of an 11px monospace axis label, rounded up.
 fn fig_label_width(s: u8[:]) -> f64 { return 7.0 * (fig_chars(s) as f64); }
-// Width of a panel title: an axis label with 0.06em letter spacing, rounded up.
-fn fig_title_width(s: u8[:]) -> f64 { return 7.3 * (fig_chars(s) as f64); }
+// Width of a panel title in 11px Inter, rounded up.
+fn fig_title_width(s: u8[:]) -> f64 { return 6.5 * (fig_chars(s) as f64); }
 
 // A filled arrowhead with its tip at (x, y), pointing down (dir 1) or up (−1), as the segments just added.
 fn fig_head(x: f64, tip: f64, dir: f64, size: f64) {
@@ -163,9 +163,9 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
     var k = 0;
     while k < 3 {
         let at = fig_text.len;
-        if k == 0 { format(fig_text, "SHEAR FORCE V (", sym(FORCE), ")"); }
-        else if k == 1 { format(fig_text, "BENDING MOMENT M (", sym(MOMENT), ") · SAGGING +"); }
-        else { format(fig_text, "DEFLECTION v (", sym(LENGTH), ")"); }
+        if k == 0 { format(fig_text, "Shear force V (", sym(FORCE), ")"); }
+        else if k == 1 { format(fig_text, "Bending moment M (", sym(MOMENT), ") · sagging +"); }
+        else { format(fig_text, "Deflection v (", sym(LENGTH), ")"); }
         let h = if k == 0 { hv } else if k == 1 { hm } else { hd };
         let color = if k == 0 { COL_ACCENT } else if k == 1 { COL_WARM } else { COL_FG };
         let q = if k == 0 { FORCE } else if k == 1 { MOMENT } else { LENGTH };
@@ -511,11 +511,11 @@ fn draw_diagram(c: DOp[>..]&, p: FigPanel, pts: Sample[:], lay: FigLay, narrow: 
     fig_x_ticks(c, lay, bot, narrow);
     draw_close(c);
     // The title starts just right of the value axis. On a figure as narrow as a phone's, the moment's title would
-    // run past the right edge: it then drops "BENDING", and starts further left if it still does not fit.
+    // run past the right edge: it then drops "Bending", and starts further left if it still does not fit.
     let full = fig_text[p.t0..p.t0 + p.t1];
     var title: u8[>..] = [];
     if ml + 8.0 + fig_title_width(full) > w - 4.0 {
-        let at = find(full, "BENDING ");
+        let at = find(full, "Bending ");
         if at >= 0 { title.append(full[..at]); title.append(full[at + 8..]); } else { title.append(full); }
     } else {
         title.append(full);

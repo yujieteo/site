@@ -1,1 +1,1 @@
-:root{--surface:var(--bg);--fg:var(--ink);--fg2:var(--ink);--accent-text:var(--accent);--warm:var(--accent);--green:var(--ink);--chrome:var(--bg);--math:system-ui,sans-serif}button{font:inherit;background:none;color:inherit;border:1px solid var(--line);border-radius:var(--radius);padding:6px 10px;cursor:pointer}@media (hover:hover) and (pointer:fine){button:hover{border-color:var(--ink)}}
+:root{--surface:var(--bg);--fg:var(--ink);--fg2:var(--ink);--accent-text:var(--accent);--warm:var(--accent);--green:var(--ink);--chrome:var(--bg);--math:system-ui,sans-serif}

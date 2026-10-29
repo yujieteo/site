@@ -2,6 +2,11 @@
 /* The site pages. The tokens, fonts and interaction rules are in /shared/kowalski.css. */
 p { margin: 0; line-height: var(--leading-prose); }
 h1, h2, h3 { margin: 0; font-size: inherit; font-weight: inherit; }
+h1, h2, h3, h4 { text-wrap: balance; }
+h2 { position: relative; }
+h2[id], section[id] { scroll-margin-top: 32px; }
+.anchor { position: absolute; left: -24px; width: 24px; color: var(--muted); text-decoration: none; opacity: 0; transition: opacity 150ms ease; }
+.anchor:focus-visible { opacity: 1; }
 .wrap { max-width: var(--column); margin: 0 auto; padding: 0 var(--gutter); }
 header.wrap { display: flex; flex-direction: column; align-items: flex-start; padding-top: 48px; margin-bottom: 128px; }
 .name { font-weight: 500; text-decoration: none; }
@@ -26,11 +31,15 @@ main.page > article p { margin-bottom: 26px; opacity: 0.9; }
 main.page > article h2 { font-weight: 550; margin: 48px 0 20px; }
 main.page figure { margin: 2rem 0; }
 main.page figure svg { display: block; max-width: 100%; height: auto; }
+.frame { margin: 0; padding: 24px; background: #fff; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+.caption, main.page figcaption { margin: 16px 0 32px; text-align: center; font-size: 12px; line-height: 1rem; color: var(--muted); }
+main.page figcaption { margin-bottom: 0; }
 .muted { color: var(--muted); }
 .log > article { border-top: 1px solid var(--line); padding: 1.25rem 0; }
 .log > article h2 { font-weight: 500; margin: 0.25rem 0 0.5rem; }
 .log > article time { font-size: var(--small); color: var(--muted); }
 .log > article p { margin: 0.5rem 0 0; }
+@media (max-width: 639px) { .frame { margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); border-radius: 0; } }
 @media (min-width: 640px) {
   header.wrap { padding-top: 128px; }
   #today > h2 { margin-bottom: 24px; }
@@ -41,4 +50,4 @@ main.page figure svg { display: block; max-width: 100%; height: auto; }
   .featured a { padding-block: 12px; }
 }
 @media (min-width: 768px) { header.wrap { padding-top: 64px; } main.page > article h2 { margin-top: 56px; } }
-@media (hover: hover) and (pointer: fine) { .featured a:hover { background: var(--hover); } }
+@media (hover: hover) and (pointer: fine) { .featured a:hover { background: var(--hover); } h2:hover .anchor { opacity: 1; } }

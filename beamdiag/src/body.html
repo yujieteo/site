@@ -6,40 +6,38 @@
 <div class="bd">
 
 <h1>Beam diagram creator</h1>
+<p>Create beam diagrams, read reactions and hand calculations, and save PNG or A4 PDF reports.</p>
 
-
+<div class="frame">
 <div class="toolbar" role="group" aria-label="Start from, and units">
 
   <div class="group" role="group" aria-label="Support conditions at the two ends">
     <span class="label">Ends</span>
-    <button class="btn" type="button" data-act="ends" data-arg="pin,pin">Pin–pin</button>
-    <button class="btn" type="button" data-act="ends" data-arg="fixed,fixed">Fixed–fixed</button>
-    <button class="btn" type="button" data-act="ends" data-arg="fixed,pin">Fixed–pin</button>
-    <button class="btn" type="button" data-act="ends" data-arg="fixed,">Cantilever</button>
+    <button class="button" type="button" data-act="ends" data-arg="pin,pin">Pin–pin</button>
+    <button class="button" type="button" data-act="ends" data-arg="fixed,fixed">Fixed–fixed</button>
+    <button class="button" type="button" data-act="ends" data-arg="fixed,pin">Fixed–pin</button>
+    <button class="button" type="button" data-act="ends" data-arg="fixed,">Cantilever</button>
   </div>
   <div class="group"><label class="label" for="units">Units</label><select id="units" data-field="units" title="Consistent unit convention for every input, result, diagram">{{units}}</select></div>
 </div>
 
-
-<div class="app">
   <div class="figure">
     {{error}}
     <div id="plots" class="{{stale}}">{{figure}}</div>
     <p id="readout" class="readout">{{readout}}</p>
-    
-    <ul id="stats" class="stats {{stale}}">{{stats}}</ul>
+      <ul id="stats" class="stats {{stale}}">{{stats}}</ul>
     <ul id="reactions" class="reactions" aria-label="Support reactions">{{reactions}}</ul>
     <div class="export" role="group" aria-label="Save the diagrams and results">
 
-      <button class="btn primary" type="button" data-act="save-image">Save PNG</button>
-      <button class="btn" type="button" data-act="save-pdf">Save PDF</button>
-      <span id="figure-status" class="small muted" role="status"></span>
+      <button class="button" type="button" data-act="save-image">Save PNG</button>
+      <button class="button" type="button" data-act="save-pdf">Save PDF</button>
+      <span id="figure-status" class="muted" role="status"></span>
     </div>
-    
-    
   </div>
+</div>
+<p class="caption">The beam, its reactions, and the shear force, bending moment and deflection along it.</p>
 
-  <div class="panel">
+<div class="frame panel">
     <div class="card">
       <h3>Beam</h3>
       <div class="row">
@@ -50,16 +48,15 @@
     <div class="card">
       <h3>Supports</h3>
       <ul id="supports" class="items">{{supports}}</ul>
-      <div class="adds"><button class="btn" type="button" data-act="add-support">+ Support</button></div>
+      <div class="adds"><button class="button" type="button" data-act="add-support">+ Support</button></div>
     </div>
     <div class="card">
       <h3>Loads</h3>
-      
-      <ul id="loads" class="items">{{loads}}</ul>
+          <ul id="loads" class="items">{{loads}}</ul>
       <div class="adds">
-        <button class="btn" type="button" data-act="add" data-arg="point">+ Point force</button>
-        <button class="btn" type="button" data-act="add" data-arg="dist">+ Distributed</button>
-        <button class="btn" type="button" data-act="add" data-arg="moment">+ Couple</button>
+        <button class="button" type="button" data-act="add" data-arg="point">+ Point force</button>
+        <button class="button" type="button" data-act="add" data-arg="dist">+ Distributed</button>
+        <button class="button" type="button" data-act="add" data-arg="moment">+ Couple</button>
       </div>
     </div>
     <div class="card">
@@ -76,23 +73,22 @@
         <label class="f"><span>Poisson's ratio <span data-tex="\nu">ν</span></span><input id="nu" type="number" step="0.01" data-field="material.nu" value="{{nu}}"></label>
       </div></details>
     </div>
-  </div>
 </div>
+<p class="caption">The beam, its supports and loads, the section and the material.</p>
 
 <section id="values" aria-labelledby="values-h">
-  <h2 id="values-h">Values at supports and loads</h2>
-  
-  <div class="table-wrap"><table>
+  <h2 id="values-h"><a class="anchor" href="#values" aria-label="Link to this section">#</a>Values at supports and loads</h2>
+  <div class="table-wrap frame"><table>
     <thead><tr><th class="num" scope="col"><span data-tex="x">x</span> ({{length}})</th><th scope="col">What is here</th><th class="num" scope="col"><span data-tex="V\,x^{-}">V x⁻</span> ({{force}})</th><th class="num" scope="col"><span data-tex="V\,x^{+}">V x⁺</span> ({{force}})</th><th class="num" scope="col"><span data-tex="M\,x^{-}">M x⁻</span> ({{moment}})</th><th class="num" scope="col"><span data-tex="M\,x^{+}">M x⁺</span> ({{moment}})</th><th class="num" scope="col"><span data-tex="v">v</span> ({{length}})</th><th class="num" scope="col"><span data-tex="\theta">θ</span> ({{angle}})</th></tr></thead>
     <tbody id="table" class="{{stale}}">{{table}}</tbody>
   </table></div>
+  <p class="caption">Shear force, bending moment, deflection and slope at each support and load.</p>
 </section>
 
 <section id="hand" aria-labelledby="hand-h">
-  <h2 id="hand-h">Hand calculations</h2>
-  
+  <h2 id="hand-h"><a class="anchor" href="#hand" aria-label="Link to this section">#</a>Hand calculations</h2>
 
-  <div id="hand-point">{{point}}</div>
+  <div id="hand-point" class="frame">{{point}}</div>
   <div id="hand-body">{{hand}}</div>
 </section>
 

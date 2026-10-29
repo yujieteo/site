@@ -491,7 +491,7 @@ fn num_input(label: u8[:], v: f64, field: u8[:]) -> u8[>..] {
         "\" data-field=\"", field, "\"></label>");
 }
 fn remove_button(label: u8[:], act: u8[:], i: i64) -> u8[>..] {
-    return str("<button type=\"button\" class=\"btn icon\" aria-label=\"", esc(label), "\" data-act=\"", act, "\" data-arg=\"", i, "\">×</button>");
+    return str("<button type=\"button\" class=\"button icon\" aria-label=\"", esc(label), "\" data-act=\"", act, "\" data-arg=\"", i, "\">×</button>");
 }
 
 fn supports_html() -> u8[>..] {
@@ -1590,10 +1590,10 @@ fn export_figure(list: DOp[>..]&) {
     line_add(results, "Reactions (force + up, couple + counter-clockwise):");
     var i = 0;
     while i < g_rea.len { line_add(results, str("  ", reaction_text(i))); i++; }
-    let a = export_column(c, left, y, "BEAM, SECTION AND MATERIAL", model);
-    let b = export_column(c, mid, y, "RESULTS", results);
+    let a = export_column(c, left, y, "Beam, section and material", model);
+    let b = export_column(c, mid, y, "Results", results);
     y = rmax(a, b) + 14.0;
-    draw_text(c, left, y, "VALUES AT SUPPORTS AND LOADS", "title", ANC_START);
+    draw_text(c, left, y, "Values at supports and loads", "title", ANC_START);
     y += 20.0;
     // x, what, V x⁻, V x⁺, M x⁻, M x⁺, v, θ: numbers right-aligned at these edges, "what" from its left.
     let cols: f64[8] = [92.0, 104.0, 520.0, 600.0, 690.0, 780.0, 860.0, w - left];
