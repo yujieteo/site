@@ -8,12 +8,22 @@
 <meta name="theme-color" content="#fdfdfc">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="/shared/kowalski.css">
-<!-- Copied from github.com/yujieteo/neurons web/ at d84d0ff. Only this stylesheet link and the .mjs names changed. -->
+<!-- Copied from github.com/yujieteo/neurons web/ at d84d0ff. Only the site header and footer, this stylesheet link and the .mjs names changed. -->
 <link rel="stylesheet" href="style.css">
+<style>
+/* the site header and footer */
+.top { gap: 20px; }
+.top nav { display: flex; flex-wrap: wrap; gap: 0 20px; color: var(--muted); }
+.top nav a { font-weight: 400; }
+@media (hover: hover) and (pointer: fine) { .top nav a:hover { color: var(--ink); } }
+footer { padding-bottom: 64px; color: var(--muted); }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+</style>
 </head>
 <body>
 <header class="column top">
-  <a href="https://teoyujie.org/">Yu Jie Teo</a>
+  <a class="tap" href="/">teoyujie.org</a>
+  <nav><a class="tap" href="/#explorations">Explorations</a> <a class="tap" href="/log">Log</a> <a class="tap" href="https://github.com/yujieteo">GitHub ↗</a></nav>
   <h1>Neurons</h1>
 </header>
 
@@ -166,6 +176,13 @@
       Source: <a href="https://github.com/yujieteo/neurons">github.com/yujieteo/neurons</a>.</p>
   </section>
 </main>
+<footer class="column">
+<ul>
+<li>Lullapixie: <a class="tap" href="/lullapixie/privacy.html">Privacy policy</a> · <a class="tap" href="/lullapixie/support.html">Support</a></li>
+<li>Marklove: <a class="tap" href="/marklove/privacy.html">Privacy policy</a> · <a class="tap" href="/marklove/support.html">Support</a></li>
+<li>Email: <a class="tap" href="mailto:contact@teoyujie.org">contact@teoyujie.org</a> · <a class="tap" href="/contact.asc">OpenPGP key</a> (fingerprint <code>5E76 96A3 DDD7 6435 07DD 3EB8 F24F 7F0D 78EB E270</code>)</li>
+</ul>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
