@@ -30,10 +30,10 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
    NASTRAN deck and `bdf.rs`, the beamdswitch deck and `deck.rs` / `report.rs` (unless the PDF
    reuses its numbers), the Markdown and clipboard exports, the WebMCP tools and `tools.json`, and
    all explanation text (method, signs, assumptions, sources) on the page.
-7. Look: the site look, with the tools stylesheet `/play/style.css`, header and footer. The page adds
+7. Look: the previous site look, with the tools stylesheet `/play/style.css`, header and footer. The page adds
    only the styles of the tool. No themes, no dark mode, no fades.
 8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 400 KB loads before the
-   first draw, with the two site fonts. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the
+   first draw, with the two fonts of `/play/style.css`. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the
    first "Save PDF" or "Save PNG".
 9. Typing in a field never lags: solve on input, draw at most once per animation frame, and build
    the hand calculation only when it is visible.
@@ -55,5 +55,5 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
 13. One list of steps from `hand.goose` feeds both the page (LaTeX for KaTeX) and the PDF (Unicode), so
     the two always show the same numbers.
 14. The diagrams in the PDF are the same drawing as the PNG.
-15. Fonts: the PDF and the saved figures use the site fonts, DM Sans and Source Serif 4 (the report heading). Fira Math covers maths glyphs they lack.
+15. Fonts: the PDF and the saved figures use the fonts of `/play/style.css`, DM Sans and Source Serif 4 (the report heading). Fira Math covers maths glyphs they lack.
     Reason: the PDF used Fira, so it looked unlike the site.
