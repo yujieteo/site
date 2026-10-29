@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fdfdfc">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="data:,">
 <title>Theorem Explorer: which result to learn next</title>
 <meta name="description" content="A sortable, evidence-linked catalog of mathematical results from mathlib4, Wikidata, Wikipedia, nLab and the TheoremSearch dataset, and of 11,913 mathematical concepts from nLab, mathlib and the results, with rubric scores, prerequisite trees that join results to concepts, popularity per arXiv category, archive and group, concrete comparisons, field shares over time and JSON, CSV and beamdswitch exports. Works offline.">
@@ -15,9 +17,10 @@
 <style>
 /* House style for the theorem apps: the Kowalski look of teoyujie.org. The page links /shared/kowalski.css first, which
    gives the palette (--bg, --ink, --muted, --line, --hover, --select, --underline, --underline-hover), Inter at 16px,
-   the links, the press, the tap areas, the touch baseline and the reduced-motion rule; its header names the source of
-   each interaction rule. This file keeps only what the apps need beyond it: the app tokens as aliases of the shared
-   ones, the data colours, the type scale, the z-layers and the controls. Light only, as on the site. */
+   the column (--column, --gutter), the links, the .button look, the press, the tap areas, the touch baseline and the
+   reduced-motion rule; its header names the source of each interaction rule. This file keeps only what the apps need
+   beyond it: the app tokens as aliases of the shared ones, the data colours, the type scale, the z-layers, the frames
+   and the layout of the controls. Light only, as on the site. */
 
 :root {
   /* Neutrals: aliases of the shared tokens. */
@@ -51,7 +54,11 @@
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;
-  --app-gutter: clamp(1rem, 4vw, 3rem);
+  /* The article page of emilkowal.ski (emilkowal.ski/ui/building-a-toast-component): white frames with a 1px
+     inset line, 12px gray captions. */
+  --frame: #fff;
+  --frame-line: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --caption: #82827c;
   /* The z-layers: one position for each kind of object, the only place that sets them. A raised item is a sticky
      table header; floating controls are the view switcher and the undo notice; a sheet is the concept reminder;
      the command palette is a dialog and lives in the browser's top layer. Shadows show the height. */
@@ -65,14 +72,14 @@
   --glass: color-mix(in srgb, var(--bg) 86%, transparent);
 }
 
-/* The app's .wrap: 72rem and a fluid gutter, with the safe-area insets added. Wider than the site's prose column,
-   because the tables and charts need the room. */
+/* The .wrap: one centred column of 692px with 24px gutters, as on the article page, with the safe-area insets added.
+   Wide tables and drawings scroll inside their own frame. */
 .wrap {
   width: 100%;
-  max-width: 72rem;
+  max-width: var(--column);
   margin: 0 auto;
-  padding-left: max(var(--app-gutter), env(safe-area-inset-left));
-  padding-right: max(var(--app-gutter), env(safe-area-inset-right));
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
 }
 main.wrap { padding-top: clamp(0.5rem, 3vw, 1.5rem); }
 
@@ -81,6 +88,8 @@ main.wrap { padding-top: clamp(0.5rem, 3vw, 1.5rem); }
 .site .name { font-weight: 500; text-decoration: none; }
 .site nav { display: flex; gap: var(--space-6); color: var(--muted); font-weight: 500; }
 .site nav a { text-decoration: none; }
+.site a { white-space: nowrap; }
+@media (max-width: 40rem) { .site { gap: var(--space-3); } .site nav { gap: var(--space-3); } }
 
 /* The site footer, as on the home page. Its bottom padding is the room for the floating view switcher, so nothing
    ends behind it. */
@@ -102,55 +111,62 @@ footer code { font: var(--code) var(--mono); font-size: 0.857143em; overflow-wra
 .eyebrow a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4 { font-size: inherit; line-height: var(--leading); }
 h1 { max-width: 40ch; margin: 0.35rem 0 var(--space-4); font-weight: 600; text-wrap: balance; }
-h2 { margin: 0 0 var(--space-2); font-weight: 550; }
-h3 { margin: var(--space-4) 0 var(--space-2); font-weight: 500; }
+h2 { position: relative; margin: 56px 0 20px; font-weight: 550; }
+h3 { margin: 32px 0 12px; font-weight: 550; }
+/* The '#' link of a heading: at its left, shown on hover and on focus, as on the article page. */
+.anchor { position: absolute; right: 100%; padding-right: 0.4em; color: var(--muted); text-decoration: none; opacity: 0; }
+@media (hover: hover) and (pointer: fine) { h2:hover .anchor { opacity: 1; } }
+@media (max-width: 40rem) { .anchor { display: none; } }
 h4 { margin: var(--space-3) 0 var(--space-1); font-weight: 500; }
-.lede { max-width: 66ch; margin: 0 0 var(--space-4); color: var(--muted); line-height: var(--leading-prose); text-wrap: pretty; }
 .note { margin: var(--space-1) 0 0; color: var(--muted); font-size: var(--small); }
 .label { color: var(--muted); font-size: var(--small); font-weight: 500; }
 .num, output, input[type="number"] { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+/* Tabular figures in tables, so that the digits of a column line up (rsms.me/inter: "tnum" for tabular data). */
+table { font-variant-numeric: tabular-nums; }
+/* Paragraphs 26px apart, as on the article page, and no one-word last line (shud.in and paco.me: text-wrap: pretty). */
+p { margin: 0 0 26px; text-wrap: pretty; }
 
-/* Panels: flat and ruled, as on the site. */
+/* A frame holds each interactive part (a control panel, a chart, a result), as on the article page: 12px corners,
+   a 1px inset line, white inside. On a phone it fills the width, with a hairline above and below. A caption sits
+   under its frame, centred, in 12px gray. */
 .card {
   min-width: 0;
-  padding: var(--space-4);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: transparent;
+  margin: 32px 0 35px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--frame);
+  box-shadow: var(--frame-line);
 }
+.card .card { margin: 16px 0; }
+.card > :first-child, .card .eyebrow + h2 { margin-top: 0; }
+.card > :last-child, .card > details:last-child > :last-child { margin-bottom: 0; }
+@media (max-width: 640px) {
+  .card:not(.card .card) {
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+figure { margin: 32px 0; }
+figure.inset { margin: 0 0 var(--space-4); }
+figure > .card { margin: 0; }
+.card + figcaption { margin: 12px 0 0; color: var(--caption); font-size: 12px; text-align: center; }
+/* Code: a block has 12px corners, the page gray and a hairline, in 12px text; inline code has 6px corners. */
+pre { overflow: auto; margin: 0 0 26px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); font: 12px/1.6 var(--mono); }
+:not(pre) > code { padding: 1px 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--chip); font: 0.8125em var(--mono); }
 .inset { padding: var(--space-3); border-radius: var(--radius); background: var(--surface); }
-.callout {
-  padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--focus);
-  border-radius: var(--radius);
-}
-hr, .rule { height: 0; margin: var(--space-6) 0; border: 0; border-top: 1px solid var(--border); }
+.callout { padding: 12px 16px; border-radius: 12px; background: var(--chip); }
 
-/* Controls: 6px corners and a hairline that darkens under a fine pointer. */
+/* Controls. A real button has the class .button; /shared/kowalski.css gives its look (Sonner's .button), its hover
+   fade, the selected state [data-active=true] and the focus ring. This file adds only the layout of the label inside
+   it, so that a 44px button keeps its label centred. */
 button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
-button, .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  min-height: 2.25rem;
-  padding: 0.25rem 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: transparent;
-  color: var(--ink);
-  font-size: var(--small);
-  white-space: nowrap;
-  cursor: pointer;
-}
-button[aria-pressed="true"], button[aria-selected="true"], .btn.on {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--bg);
-}
-button.primary { border-color: var(--ink); background: var(--ink); color: var(--bg); }
-button:disabled { border-color: var(--grid); background: transparent; color: var(--faint); cursor: default; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
+.button:disabled { color: var(--faint); cursor: default; }
+label.button { -webkit-user-select: none; user-select: none; touch-action: manipulation; }
 input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea {
   min-height: 2.25rem;
   padding: 0.35rem 0.6rem;
@@ -161,12 +177,12 @@ input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, te
 input:disabled, select:disabled { background: var(--surface); color: var(--muted); }
 input[type="range"], input[type="checkbox"], input[type="radio"] { accent-color: var(--ink); }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-.seg { display: inline-flex; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); }
-.seg > button { min-height: 2.1rem; border: 0; border-radius: 0; }
-/* Hover changes colour at once, and only under a fine pointer (shared rules 4 and 5). */
+.seg { display: inline-flex; gap: var(--space-1); }
+/* iOS zooms the page into a field with text under 16px (mobile-native rule 4). */
+@media (pointer: coarse) { input, select, textarea { font-size: 16px; } }
+/* Hover only under a fine pointer (shared rule 4). */
 @media (hover: hover) and (pointer: fine) {
   .site nav a:hover, .eyebrow a:hover { color: var(--ink); }
-  button:hover, .btn:hover { border-color: var(--ink); }
   input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):hover, select:hover { border-color: var(--control); }
 }
 /* Press: an SVG node with role="button" scales about its own centre, not the drawing's origin (shared rule 1). */
@@ -177,7 +193,7 @@ button.link::after, button.cw::after { content: none; }
 button.link, button.cw { -webkit-user-select: text; user-select: text; }
 /* Tap targets of 44px on a phone or a touch screen (shared rule 8). */
 @media (pointer: coarse), (max-width: 40rem) {
-  button, .btn, select, .seg > button,
+  .button, select,
   input:not([type="range"]):not([type="checkbox"]):not([type="radio"]) { min-height: var(--tap); }
   input[type="range"] { height: var(--tap); }
   summary { display: flex; align-items: center; min-height: var(--tap); }
@@ -240,9 +256,9 @@ nav.tabs {
   box-shadow: var(--shadow-float);
 }
 nav.tabs::-webkit-scrollbar { display: none; }
-nav.tabs button { flex: none; min-height: var(--tap); border-color: transparent; }
-@media (hover: hover) and (pointer: fine) { nav.tabs button:hover { border-color: var(--border); } }
-nav.tabs button[aria-pressed="true"] { border-color: var(--ink); }
+/* A control that keyboard focus scrolls to stays above the floating switcher (paco.me: scroll-padding). */
+html { scroll-padding-bottom: calc(6.5rem + env(safe-area-inset-bottom)); }
+nav.tabs .button { flex: none; min-height: var(--tap); }
 
 /* The undo notice floats above the switcher for 8 seconds after an action that clears something. */
 .undo {
@@ -256,33 +272,25 @@ nav.tabs button[aria-pressed="true"] { border-color: var(--ink); }
   gap: var(--space-3);
   width: max-content;
   max-width: calc(100% - 2 * var(--space-3));
-  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
-  border: 1px solid var(--ink);
-  border-radius: var(--radius);
-  background: var(--ink);
-  color: var(--bg);
-  box-shadow: var(--shadow-float);
-  font-size: var(--small);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  border: 1px solid var(--gray4);
+  border-radius: 8px;
+  background: var(--frame);
+  color: var(--ink);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
 }
 .undo[hidden] { display: none; }
-.undo button { min-height: var(--tap); border-color: var(--bg); background: transparent; color: var(--bg); }
-@media (hover: hover) and (pointer: fine) { .undo button:hover { background: var(--bg); color: var(--ink); } }
+.undo .button { min-height: var(--tap); }
 
 /* Tools and exports: closed by default; the same commands are in the palette (Ctrl+K). */
-details.tools { margin-top: var(--space-8); padding-top: var(--space-3); border-top: 1px solid var(--border); }
+details.tools { margin-top: 56px; }
 details.tools > summary { cursor: pointer; color: var(--muted); font-size: var(--small); min-height: var(--tap); display: flex; align-items: center; }
 .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 0; }
-.toolbar label.btn:focus-within { outline: 2px solid var(--focus); outline-offset: 3px; }
+label.button:focus-within { outline: 2px solid var(--focus); outline-offset: 3px; }
 #notice:empty, #export-status:empty { display: none; }
 #notice { margin: 0 0 var(--space-4); }
-.lab {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
-  gap: var(--space-6);
-  align-items: start;
-}
 .lab > * { min-width: 0; }
-@media (max-width: 56rem) { .lab { grid-template-columns: minmax(0, 1fr); } }
 .field { display: grid; gap: var(--space-1); margin: 0 0 var(--space-4); }
 .field input[type="range"] { width: 100%; }
 .readout { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--space-1) var(--space-3); margin: 0; }
@@ -294,16 +302,15 @@ details.tools > summary { cursor: pointer; color: var(--muted); font-size: var(-
   width: min(100% - 2rem, 32rem);
   padding: var(--space-4);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg);
+  border-radius: 12px;
+  background: var(--frame);
   color: var(--ink);
   box-shadow: var(--shadow-sheet);
 }
 #palette::backdrop { background: rgb(0 0 0 / 0.3); }
 #palette input { width: 100%; }
 #palette ul { margin: var(--space-3) 0 0; padding: 0; list-style: none; }
-#palette li button { width: 100%; justify-content: flex-start; border-color: transparent; }
-#palette li button[aria-selected="true"] { border-color: var(--control); background: var(--surface); color: var(--ink); }
+#palette li .button { width: 100%; justify-content: flex-start; }
 .licences { margin-top: var(--space-8); color: var(--muted); font-size: var(--small); }
 .licences pre { max-height: 20rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: var(--text-xs); }
 @media print { nav.tabs, .undo { display: none; } }
@@ -324,16 +331,15 @@ details.intro .lede { margin-top: var(--space-2); }
 :root { --signal: var(--c1); --formal: var(--c4); --pre: var(--c2); }
 .chart .series { stroke: var(--signal); }
 .examples, .tabs, .actions, .row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
-.examples { margin: 0 0 var(--space-3); }
+/* 4px of padding keeps the 2px focus ring inside the scroll box; the negative margin keeps the buttons on the column edge. */
+.examples { margin: 0 -4px var(--space-3); padding: 4px; }
 .tabs { margin: var(--space-4) 0; }
-figure { margin: 0 0 var(--space-4); }
 section[hidden], article[hidden] { display: none; }
 .weights .row > .field { margin: 0; }
 #custom-weights input, #concept-weights input { width: 4.5rem; }
 
 /* Buttons that act as links inside text and tables. */
 button.link { min-height: 0; max-width: 100%; padding: 0; white-space: normal; overflow-wrap: anywhere; border: 0; background: none; color: inherit; text-align: left; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
-.chip { min-height: 0; padding: var(--space-1) var(--space-2); border-radius: 999px; font-size: var(--small); }
 #chips { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; list-style: none; }
 
 /* Tables: wide tables scroll inside their own box, never the page. */
@@ -346,19 +352,19 @@ tr.best th, tr.best td { background: var(--surface); }
 tr.ref td, tr.ref th { color: var(--muted); }
 
 /* The virtual catalog table: fixed rows, a scrolling box, a sticky header. */
-#table-wrap, #formal-wrap, #concept-wrap { max-width: 100%; max-height: 70vh; overflow: auto; border: 1px solid var(--border); border-radius: var(--radius); }
-#catalog thead th, #concept-table thead th { position: sticky; top: 0; z-index: var(--z-raised); background: var(--bg); white-space: nowrap; }
+#table-wrap, #formal-wrap, #concept-wrap { max-width: 100%; max-height: 70vh; overflow: auto; border-radius: 12px; background: var(--frame); box-shadow: var(--frame-line); }
+#catalog thead th, #concept-table thead th { position: sticky; top: 0; z-index: var(--z-raised); background: var(--frame); white-space: nowrap; }
 #catalog tbody tr:not(.spacer), #concept-table tbody tr:not(.spacer) { height: 46px; }
 #catalog tbody tr.sel, #concept-table tbody tr.sel { background: var(--surface); }
 #catalog tr.spacer td, #concept-table tr.spacer td { padding: 0; border: 0; }
 #catalog th.name, #concept-table th.name { min-width: 14rem; max-width: 26rem; font-weight: 400; }
 #catalog .preview, #concept-table .preview { display: block; overflow: hidden; color: var(--muted); font-size: var(--text-xs); white-space: nowrap; text-overflow: ellipsis; max-width: 26rem; }
-button.sort { min-height: 0; padding: 0; border: 0; background: none; font-weight: 600; }
+button.sort { min-height: 0; padding: 0; border: 0; background: none; font-weight: 600; cursor: pointer; }
 .cols #col-boxes { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
 
 /* Learn next. */
 #recs { padding-left: var(--space-6); }
-.rec { margin: 0 0 var(--space-4); padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius); }
+.rec { margin: 0 0 var(--space-4); padding: 16px; border-radius: 12px; background: var(--frame); box-shadow: var(--frame-line); }
 .rec p { margin: var(--space-1) 0; }
 .rec-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); font-weight: 600; }
 .rules dt { font-weight: 600; }
@@ -370,7 +376,7 @@ button.sort { min-height: 0; padding: 0; border: 0; background: none; font-weigh
 .two > * { min-width: 0; }
 .inset { padding: var(--space-2) var(--space-3); background: var(--surface); border-radius: var(--radius); }
 blockquote { margin: 0; overflow-wrap: anywhere; }
-pre.lean, code { font-family: var(--mono); font-size: var(--small); white-space: pre-wrap; overflow-wrap: anywhere; }
+pre.lean, code { white-space: pre-wrap; overflow-wrap: anywhere; }
 ul.next li, ul.evidence li { margin: 0 0 var(--space-1); overflow-wrap: anywhere; }
 .readout dd { overflow-wrap: anywhere; }
 .relations h4 { margin: var(--space-3) 0 0; }
@@ -409,7 +415,7 @@ table.data:not(.catalog) { display: block; max-width: 100%; overflow-x: auto; }
 @media (max-width: 40rem) { .facts { grid-template-columns: minmax(0, 40%) minmax(0, 1fr); } }
 
 /* The prerequisite tree: a wide drawing scrolls inside its own box. */
-.tree-scroll { max-width: 100%; max-height: 75vh; overflow: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+.tree-scroll { max-width: 100%; max-height: 75vh; overflow: auto; }
 .chart.tree { display: block; width: auto; max-width: none; }
 .tree .edge { fill: none; stroke: var(--faint); stroke-width: 1.2; }
 .tree .edge.pre { stroke: var(--pre); stroke-dasharray: 4 3; }
@@ -470,31 +476,31 @@ ul.outline li.known > button.link { color: var(--muted); }
 
 <div class="examples no-print" role="group" aria-label="Examples">
 <span class="label">Examples:</span>
-<button type="button" data-example="calibration">Calibration cases</button>
-<button type="button" data-example="tail-bounds">Tail bounds</button>
-<button type="button" data-example="local-lemma">Union bound against the local lemma</button>
-<button type="button" data-example="learn-probability">Learn probability</button>
-<button type="button" data-example="azuma-path">Path to Azuma-Hoeffding</button>
-<button type="button" data-example="atiyah-singer">Atiyah-Singer relations</button>
-<button type="button" data-example="applied-fields">Application fields</button>
-<button type="button" data-example="no-simplicity">Without simplicity</button>
-<button type="button" data-example="concepts">Concept catalog</button>
-<button type="button" data-example="spectral-tree">Prerequisite tree</button>
-<button type="button" data-example="tag-popularity">Popularity by arXiv tag</button>
-<button type="button" data-example="sources">Sources and rubric</button>
-<button type="button" id="restore-view" hidden>Restore the saved view</button>
+<button type="button" class="button" data-example="calibration">Calibration cases</button>
+<button type="button" class="button" data-example="tail-bounds">Tail bounds</button>
+<button type="button" class="button" data-example="local-lemma">Union bound against the local lemma</button>
+<button type="button" class="button" data-example="learn-probability">Learn probability</button>
+<button type="button" class="button" data-example="azuma-path">Path to Azuma-Hoeffding</button>
+<button type="button" class="button" data-example="atiyah-singer">Atiyah-Singer relations</button>
+<button type="button" class="button" data-example="applied-fields">Application fields</button>
+<button type="button" class="button" data-example="no-simplicity">Without simplicity</button>
+<button type="button" class="button" data-example="concepts">Concept catalog</button>
+<button type="button" class="button" data-example="spectral-tree">Prerequisite tree</button>
+<button type="button" class="button" data-example="tag-popularity">Popularity by arXiv tag</button>
+<button type="button" class="button" data-example="sources">Sources and rubric</button>
+<button type="button" class="button" id="restore-view" hidden>Restore the saved view</button>
 </div>
 
 <nav class="tabs no-print" aria-label="Views">
-<button type="button" data-field="view" value="learn">Learn next</button>
-<button type="button" data-field="view" value="catalog">Catalog and scores</button>
-<button type="button" data-field="view" value="concepts">Concepts</button>
-<button type="button" data-field="view" value="compare">Comparisons</button>
-<button type="button" data-field="view" value="connections">Connections and paths</button>
-<button type="button" data-field="view" value="tree">Prerequisite tree</button>
-<button type="button" data-field="view" value="fields">Fields over time</button>
-<button type="button" data-field="view" value="popularity">Popularity by arXiv tag</button>
-<button type="button" data-field="view" value="about">Sources and rubric</button>
+<button type="button" class="button" data-field="view" value="learn">Learn next</button>
+<button type="button" class="button" data-field="view" value="catalog">Catalog and scores</button>
+<button type="button" class="button" data-field="view" value="concepts">Concepts</button>
+<button type="button" class="button" data-field="view" value="compare">Comparisons</button>
+<button type="button" class="button" data-field="view" value="connections">Connections and paths</button>
+<button type="button" class="button" data-field="view" value="tree">Prerequisite tree</button>
+<button type="button" class="button" data-field="view" value="fields">Fields over time</button>
+<button type="button" class="button" data-field="view" value="popularity">Popularity by arXiv tag</button>
+<button type="button" class="button" data-field="view" value="about">Sources and rubric</button>
 </nav>
 
 <section id="weights" class="card weights no-print" aria-label="Rubric weights">
@@ -544,9 +550,9 @@ ul.outline li.known > button.link { color: var(--muted); }
 <h3>Your profile</h3>
 <div class="field"><span class="label">Learning depth</span>
 <div class="seg" role="group" aria-label="Learning depth">
-<button type="button" data-field="depth" value="understand">Understand</button>
-<button type="button" data-field="depth" value="apply">Apply</button>
-<button type="button" data-field="depth" value="prove">Prove</button>
+<button type="button" class="button" data-field="depth" value="understand">Understand</button>
+<button type="button" class="button" data-field="depth" value="apply">Apply</button>
+<button type="button" class="button" data-field="depth" value="prove">Prove</button>
 </div></div>
 <label class="field">Reader level
 <select data-field="reader">
@@ -563,10 +569,10 @@ ul.outline li.known > button.link { color: var(--muted); }
 <p id="interests-line" class="note"></p>
 <p class="label">Known results: <span id="known-count" class="num">0</span></p>
 <div class="actions">
-<button type="button" id="save-profile">Save profile JSON</button>
-<label class="btn" for="load-profile">Load profile JSON</label>
+<button type="button" class="button" id="save-profile">Save profile JSON</button>
+<label class="button press" for="load-profile">Load profile JSON</label>
 <input type="file" id="load-profile" class="visually-hidden" accept="application/json,.json">
-<button type="button" id="reset-known">Clear known results</button>
+<button type="button" class="button" id="reset-known">Clear known results</button>
 </div>
 <p id="profile-status" class="note" role="status" aria-live="polite"></p>
 </div>
@@ -637,15 +643,15 @@ ul.outline li.known > button.link { color: var(--muted); }
 <div class="chips-row">
 <p id="filter-count" class="note" aria-live="polite"></p>
 <ul id="chips" class="chips" aria-label="Active filters"></ul>
-<button type="button" id="clear-filters">Reset filters</button>
+<button type="button" class="button" id="clear-filters">Reset filters</button>
 </div>
 <div class="row table-tools no-print">
 <details class="cols">
 <summary>Visible columns</summary>
 <div id="col-boxes" class="col-boxes"></div>
 </details>
-<button type="button" id="save-csv">Save table CSV</button>
-<button type="button" id="copy-csv">Copy table CSV</button>
+<button type="button" class="button" id="save-csv">Save table CSV</button>
+<button type="button" class="button" id="copy-csv">Copy table CSV</button>
 </div>
 <div id="table-wrap" class="table-wrap" tabindex="0" role="region" aria-label="Catalog table: scroll for more rows">
 <table id="catalog" class="catalog">
@@ -654,17 +660,19 @@ ul.outline li.known > button.link { color: var(--muted); }
 </table>
 </div>
 <p class="note">Scores are 0 to 4 per component. u: unknown, na: not applicable. A weighted u or na makes the aggregate unknown; the interval shows its range with 0 and 4 in place of the missing scores. The table draws only the rows near the scroll position; every row stays available through search, sort and the CSV export.</p>
-<figure class="card">
-<figcaption class="label">Impact against effort (ordinal; no ratio)</figcaption>
+<figure>
+<div class="card">
 <svg id="effort-chart" class="chart" viewBox="0 0 640 300" role="img" aria-label="Aggregate score against judged effort band for the filtered results"></svg>
 <p id="effort-note" class="note"></p>
 <details><summary>Table: results per effort band and score range</summary><div id="effort-table"></div></details>
+</div>
+<figcaption>Impact against effort (ordinal; no ratio)</figcaption>
 </figure>
 <section id="formal-lib" class="card" aria-labelledby="h-formal" hidden>
 <h3 id="h-formal">Formal library: every mathlib theorem</h3>
 <p class="note">The pinned mathlib build holds these theorems, named and unnamed, with technical lemmas. They are measured, not scored: no judge assessed them, so they have no rubric score. A linked theorem is the formal statement of a catalog result. This list decodes only when you open it.</p>
 <div class="row no-print">
-<button type="button" id="formal-open">Show the formal library</button>
+<button type="button" class="button" id="formal-open">Show the formal library</button>
 <label for="formal-q">Name or module contains</label>
 <input id="formal-q" type="search" autocomplete="off" spellcheck="false" disabled>
 <label for="formal-link">Show</label>
@@ -703,19 +711,19 @@ ul.outline li.known > button.link { color: var(--muted); }
 <select data-field="csort"><option value="score">Aggregate score</option><option value="lo">Interval low end</option><option value="hi">Interval high end</option><option value="name">Name</option><option value="papers">arXiv papers that name it</option><option value="results">Catalog results that name it</option><option value="backlinks">nLab backlinks</option><option value="files">mathlib files that mention it</option><option value="level">Reader level</option><option value="uni">Unifying power</option><option value="res">Research influence</option><option value="pra">Practical impact</option><option value="rea">Reach</option><option value="lpb">Low prerequisite burden</option><option value="exa">Example accessibility</option><option value="cmp">Computability</option></select></label>
 <div class="field"><span class="label">Direction</span>
 <div class="seg" role="group" aria-label="Concept sort direction">
-<button type="button" data-field="cdir" value="desc">Descending</button>
-<button type="button" data-field="cdir" value="asc">Ascending</button>
+<button type="button" class="button" data-field="cdir" value="desc">Descending</button>
+<button type="button" class="button" data-field="cdir" value="asc">Ascending</button>
 </div></div>
 </div>
 </details>
 <div class="chips-row">
 <p id="concept-count" class="note" aria-live="polite"></p>
 <ul id="concept-chips" class="chips" aria-label="Active concept filters"></ul>
-<button type="button" id="clear-concept-filters">Reset filters</button>
+<button type="button" class="button" id="clear-concept-filters">Reset filters</button>
 </div>
 <div class="row table-tools no-print">
-<button type="button" id="save-concept-csv">Save concept CSV</button>
-<button type="button" id="copy-concept-csv">Copy concept CSV</button>
+<button type="button" class="button" id="save-concept-csv">Save concept CSV</button>
+<button type="button" class="button" id="copy-concept-csv">Copy concept CSV</button>
 </div>
 <div id="concept-wrap" class="table-wrap" tabindex="0" role="region" aria-label="Concept table: scroll for more rows">
 <table id="concept-table" class="catalog">
@@ -731,10 +739,10 @@ ul.outline li.known > button.link { color: var(--muted); }
 <section id="view-compare" class="view" aria-labelledby="h-compare">
 <h2 id="h-compare">Comparisons</h2>
 <div class="seg wrap" role="group" aria-label="Comparison case">
-<button type="button" data-field="cmp" value="tail-binomial">Tail of a binomial</button>
-<button type="button" data-field="cmp" value="existence-ksat">Existence for k-SAT</button>
-<button type="button" data-field="cmp" value="union-three">Union of three events</button>
-<button type="button" data-field="cmp" value="euler-genus-two">Euler characteristic, genus 2</button>
+<button type="button" class="button" data-field="cmp" value="tail-binomial">Tail of a binomial</button>
+<button type="button" class="button" data-field="cmp" value="existence-ksat">Existence for k-SAT</button>
+<button type="button" class="button" data-field="cmp" value="union-three">Union of three events</button>
+<button type="button" class="button" data-field="cmp" value="euler-genus-two">Euler characteristic, genus 2</button>
 </div>
 <div id="case"></div>
 <h3>Pinned results</h3>
@@ -752,10 +760,12 @@ ul.outline li.known > button.link { color: var(--muted); }
 <h3>Prerequisite path</h3>
 <div id="path"></div>
 </div>
-<figure class="card">
-<figcaption class="label">Relations of the selected result</figcaption>
+<figure>
+<div class="card">
 <svg id="graph" class="chart" viewBox="0 0 420 420" role="img" aria-label="The selected result and its related results, grouped by relation type"></svg>
 <p class="note">The lists below give the same relations as text.</p>
+</div>
+<figcaption>Relations of the selected result</figcaption>
 </figure>
 </div>
 <div id="relations"></div>
@@ -772,16 +782,18 @@ ul.outline li.known > button.link { color: var(--muted); }
 <input id="tdepth" type="range" data-field="tdepth" min="1" max="8" step="1"></label>
 <div class="field"><span class="label">Members</span>
 <div class="seg wrap" role="group" aria-label="Tree members">
-<button type="button" data-field="tshow" value="both">Results and concepts</button>
-<button type="button" data-field="tshow" value="results">Results only</button>
-<button type="button" data-field="tshow" value="concepts">Concepts only</button>
+<button type="button" class="button" data-field="tshow" value="both">Results and concepts</button>
+<button type="button" class="button" data-field="tshow" value="results">Results only</button>
+<button type="button" class="button" data-field="tshow" value="concepts">Concepts only</button>
 </div></div>
 </div>
 <p id="tree-summary" class="note"></p>
-<figure class="card">
-<figcaption class="label">The tree, root on the left, prerequisites to the right</figcaption>
+<figure>
+<div class="card">
 <div class="tree-scroll" tabindex="0" role="region" aria-label="Prerequisite tree drawing: scroll sideways for deeper levels"><svg id="tree-chart" class="chart tree" role="img" aria-label="The prerequisite tree; the outline below gives the same tree as text"></svg></div>
 <p class="note">Squares are results, circles concepts. A filled mark is known. A dashed edge is documented or judged only; a solid edge has a formal reference in mathlib. An item met again is drawn once and referred to.</p>
+</div>
+<figcaption>The tree, root on the left, prerequisites to the right</figcaption>
 </figure>
 <div class="lab">
 <div>
@@ -816,8 +828,8 @@ ul.outline li.known > button.link { color: var(--muted); }
 <select data-field="flevel"><option value="group">Group</option><option value="archive">Archive</option><option value="category">Category</option></select></label>
 <div class="field"><span class="label">Mode</span>
 <div class="seg" role="group" aria-label="Evidence mode">
-<button type="button" data-field="mode" value="historical">Historical</button>
-<button type="button" data-field="mode" value="retrospective">Retrospective</button>
+<button type="button" class="button" data-field="mode" value="historical">Historical</button>
+<button type="button" class="button" data-field="mode" value="retrospective">Retrospective</button>
 </div></div>
 </div>
 <div id="history"></div>
@@ -831,14 +843,14 @@ ul.outline li.known > button.link { color: var(--muted); }
 <input id="ptags" type="text" list="taxonomy-ids" autocomplete="off" placeholder="math.AG, math.PR, hep-th, cs.LG, q-fin, q-bio"></label>
 <div class="field"><span class="label">Popularity of</span>
 <div class="seg wrap" role="group" aria-label="Popularity of">
-<button type="button" data-field="pkind" value="concepts">Concepts</button>
-<button type="button" data-field="pkind" value="results">Results</button>
+<button type="button" class="button" data-field="pkind" value="concepts">Concepts</button>
+<button type="button" class="button" data-field="pkind" value="results">Results</button>
 </div></div>
 <div class="field"><span class="label">Measure</span>
 <div class="seg wrap" role="group" aria-label="Popularity measure">
-<button type="button" data-field="pmetric" value="rate">Rate per 10,000 papers</button>
-<button type="button" data-field="pmetric" value="count">Paper count</button>
-<button type="button" data-field="pmetric" value="lift">Lift over all papers</button>
+<button type="button" class="button" data-field="pmetric" value="rate">Rate per 10,000 papers</button>
+<button type="button" class="button" data-field="pmetric" value="count">Paper count</button>
+<button type="button" class="button" data-field="pmetric" value="lift">Lift over all papers</button>
 </div></div>
 <label class="field"><span>Rows: <output data-field="pn"></output></span>
 <input id="pn" type="range" data-field="pn" min="5" max="40" step="1"></label>
@@ -849,10 +861,12 @@ ul.outline li.known > button.link { color: var(--muted); }
 </div>
 <div class="chips-row no-print" id="tag-presets" role="group" aria-label="Tag sets"></div>
 <p id="pop-summary" class="note"></p>
-<figure class="card">
-<figcaption id="pop-caption" class="label"></figcaption>
+<figure>
+<div class="card">
 <div class="table-scroll"><svg id="pop-chart" class="chart heat" role="img" aria-label="Popularity of the top items in each selected arXiv tag; the table below gives the same values"></svg></div>
 <details><summary>Table: the matrix values and counts</summary><div id="pop-table"></div></details>
+</div>
+<figcaption id="pop-caption"></figcaption>
 </figure>
 <h3>Top 10 in each tag</h3>
 <div id="pop-tags" class="tag-grid"></div>
@@ -860,8 +874,12 @@ ul.outline li.known > button.link { color: var(--muted); }
 <label class="field" for="psel">Item
 <input id="psel" type="text" list="pop-names" autocomplete="off" placeholder="Type a concept or result name"></label>
 <datalist id="pop-names"></datalist>
-<figure class="card"><svg id="pop-trend" class="chart" viewBox="0 0 640 260" role="img" aria-label="The item's rate per year bin in each selected tag; the table below gives the same values"></svg>
-<details><summary>Table: rate per year bin</summary><div id="pop-trend-table"></div></details></figure>
+<figure>
+<div class="card">
+<svg id="pop-trend" class="chart" viewBox="0 0 640 260" role="img" aria-label="The item's rate per year bin in each selected tag; the table below gives the same values"></svg>
+<details><summary>Table: rate per year bin</summary><div id="pop-trend-table"></div></details>
+</div>
+</figure>
 <h3>Where it is most over-represented</h3>
 <div id="pop-distinct"></div>
 <p id="pop-method" class="note"></p>
@@ -884,15 +902,15 @@ ul.outline li.known > button.link { color: var(--muted); }
 <details class="tools no-print">
 <summary>Tools and exports</summary>
 <div class="toolbar" role="toolbar" aria-label="View and exports">
-<button type="button" id="reset">Reset the view</button>
-<button type="button" id="open-palette" aria-keyshortcuts="Control+K Meta+K">Commands (Ctrl+K)</button>
-<button type="button" id="save-json">Save view JSON</button>
-<label class="btn press" for="load-json">Load view JSON</label>
+<button type="button" class="button" id="reset">Reset the view</button>
+<button type="button" class="button" id="open-palette" aria-keyshortcuts="Control+K Meta+K">Commands (Ctrl+K)</button>
+<button type="button" class="button" id="save-json">Save view JSON</button>
+<label class="button press" for="load-json">Load view JSON</label>
 <input type="file" id="load-json" class="visually-hidden" accept="application/json,.json">
-<button type="button" id="copy-markdown">Copy Markdown record</button>
-<button type="button" id="save-markdown">Save Markdown record</button>
-<button type="button" id="save-beamdswitch">Save beamdswitch deck</button>
-<button type="button" id="copy-beamdswitch">Copy deck</button>
+<button type="button" class="button" id="copy-markdown">Copy Markdown record</button>
+<button type="button" class="button" id="save-markdown">Save Markdown record</button>
+<button type="button" class="button" id="save-beamdswitch">Save beamdswitch deck</button>
+<button type="button" class="button" id="copy-beamdswitch">Copy deck</button>
 </div>
 </details>
 <details class="licences">
@@ -1202,7 +1220,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 <li>Email: <a href="mailto:contact@teoyujie.org">contact@teoyujie.org</a> · <a href="https://teoyujie.org/contact.asc">OpenPGP key</a> (fingerprint <code>5E76 96A3 DDD7 6435 07DD 3EB8 F24F 7F0D 78EB E270</code>)</li>
 </ul>
 </footer>
-<div id="undo" class="undo no-print" role="status" aria-live="polite" hidden><span id="undo-text"></span><button type="button" id="undo-do">Undo</button></div>
+<div id="undo" class="undo no-print" role="status" aria-live="polite" hidden><span id="undo-text"></span><button type="button" class="button" id="undo-do">Undo</button></div>
 <dialog id="palette" aria-label="Commands">
 <label class="label" for="palette-input">Command</label>
 <input id="palette-input" type="text" role="combobox" aria-controls="palette-list" aria-expanded="true" autocomplete="off">
@@ -1241,6 +1259,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
   /** @typedef {Record<string, Field>} Fields */
   /** @typedef {Record<string, any>} State */
   /** @typedef {{ state: State, notices: string[] }} Normalized */
+
+  /** A count and its noun: "1 proof", "2 proofs" (ui-cheatsheet.md: pluralize with Intl.PluralRules). */
+  const PLURAL = new Intl.PluralRules("en");
+  /** @param {number} n @param {string} one @param {string} [other] */
+  function count(n, one, other = `${one}s`) { return `${n.toLocaleString("en")} ${PLURAL.select(n) === "one" ? one : other}`; }
 
   /* ---------- state ---------- */
 
@@ -1417,7 +1440,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         if (value === undefined) continue;
         if (el instanceof HTMLInputElement && el.type === "checkbox") el.checked = Boolean(value);
         else if (el instanceof HTMLInputElement || el instanceof HTMLSelectElement) { if (el !== document.activeElement || el.value !== "") el.value = text(value); }
-        else if (el instanceof HTMLButtonElement) el.setAttribute("aria-pressed", String(el.value === text(value)));
+        else if (el instanceof HTMLButtonElement) { const on = String(el.value === text(value)); el.setAttribute("aria-pressed", on); el.dataset.active = on; }
         else el.textContent = text(value);
       }
       spec.render(state, derived);
@@ -1571,6 +1594,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     });
 
     palette(commands);
+    anchors();
     registerTools(app);
     // A view that draws at its measured width (so chart text keeps its size on a phone) redraws on a resize.
     let frame = 0;
@@ -1581,6 +1605,23 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     document.documentElement.dataset.ready = "true";
     api.app = app;
     return app;
+  }
+
+  /**
+   * A '#' link at the left of each section heading, as on the article page of emilkowal.ski. The URL fragment holds
+   * the view's state, so the link scrolls to its heading and leaves the fragment as it is.
+   */
+  function anchors() {
+    for (const heading of document.querySelectorAll("main h2[id]")) {
+      const a = document.createElement("a");
+      a.className = "anchor";
+      a.href = `#${heading.id}`;
+      a.textContent = "#";
+      a.setAttribute("aria-hidden", "true");
+      a.tabIndex = -1;
+      a.addEventListener("click", (e) => { e.preventDefault(); heading.scrollIntoView({ block: "start" }); });
+      heading.prepend(a);
+    }
   }
 
   /**
@@ -1599,9 +1640,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         const li = document.createElement("li");
         const b = document.createElement("button");
         b.type = "button";
+        b.className = "button";
         b.textContent = c.label;
         b.setAttribute("role", "option");
         b.setAttribute("aria-selected", String(i === 0));
+        b.dataset.active = String(i === 0);
         b.addEventListener("click", () => run(c));
         li.append(b);
         return li;
@@ -1650,7 +1693,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     for (const tool of tools) mc.registerTool(tool);
   }
 
-  const api = { VERSION, SECTIONS, defaults, coerce, normalize, toHash, fromHash, toJson, fromJson, markdown, start, app: /** @type {any} */ (null) };
+  const api = { VERSION, SECTIONS, count, defaults, coerce, normalize, toHash, fromHash, toJson, fromJson, markdown, start, app: /** @type {any} */ (null) };
   return api;
 });
 </script>
@@ -3279,7 +3322,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
             "",
             ...pathSteps.slice(half).map((/** @type {any} */ st, /** @type {number} */ k) => `${half + k + 1}. ${st.name} (${Model.bandLabel(st.band)})`),
             "",
-            `${s.path.supported} edges have a formal reference; ${s.path.uncertain} are judged only. ${s.path.cycles.length ? `Cycles: ${s.path.cycles.length}.` : "No cycle."} This is not a guaranteed curriculum.`,
+            `Edges with a formal reference: ${s.path.supported}; edges judged only: ${s.path.uncertain}. ${s.path.cycles.length ? `Cycles: ${s.path.cycles.length}.` : "No cycle."} This is not a guaranteed curriculum.`,
           ].join("\n")
           : `No unknown prerequisite result is recorded for ${s.name}.${s.path.knownStops.length ? ` Known prerequisites: ${s.path.knownStops.length}.` : ""}`,
         narration: say(pathSteps.length > 1
@@ -3686,7 +3729,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     $("result").hidden = !["learn", "catalog", "connections"].includes(state.view);
     for (const b of document.querySelectorAll("[data-example]")) {
       const ex = Model.EXAMPLES.find((/** @type {KitExample} */ e) => e.id === b.getAttribute("data-example"));
-      b.setAttribute("aria-pressed", String(ex !== undefined && Object.entries(ex.state).every(([k, v]) => state[k] === v)));
+      const on = String(ex !== undefined && Object.entries(ex.state).every(([k, v]) => state[k] === v));
+      b.setAttribute("aria-pressed", on);
+      b.dataset.active = on;
     }
   }
 
@@ -3721,9 +3766,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         h("p", null, h("strong", { text: "Opens: " }), r.laterCount ? [r.later.map((/** @type {any} */ m, /** @type {number} */ j) => [j ? ", " : "", openBtn(m.id, m.name)]), r.laterCount > r.later.length ? ` and ${r.laterCount - r.later.length} more` : ""] : "no later result has this as its only missing prerequisite", "."),
         h("p", { class: "note", text: `Components (0 to 1): ${comps}.` }),
         h("div", { class: "actions" },
-          h("button", { type: "button", onclick: () => setKnown(r.id, depth), text: `Mark known (${state.depth})` }),
-          h("button", { type: "button", onclick: () => togglePin(r.id), text: Model.splitList(state.pins).includes(r.id) ? "Unpin" : "Pin" }),
-          h("button", { type: "button", onclick: () => app.set({ view: "connections", sel: r.id }), text: "Show the path" })));
+          h("button", { type: "button", class: "button", onclick: () => setKnown(r.id, depth), text: `Mark known (${state.depth})` }),
+          h("button", { type: "button", class: "button", onclick: () => togglePin(r.id), text: Model.splitList(state.pins).includes(r.id) ? "Unpin" : "Pin" }),
+          h("button", { type: "button", class: "button", onclick: () => app.set({ view: "connections", sel: r.id }), text: "Show the path" })));
     }));
   }
 
@@ -3853,7 +3898,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     for (const key of ["grp", "arch", "cat", "acat"]) $(`f-${key}`).value = state[key];
     $("filter-count").textContent = `${d.counts.shown} of ${d.counts.records} records shown (${d.counts.shownUnknown} with an unknown aggregate). ${d.counts.formalUnnamed.toLocaleString("en")} unnamed mathlib theorems stay unscored: ${D.packs.formal ? "the formal library below lists them" : "the full build (pipeline/fullbuild.py) lists them in its formal library"}.`;
     put($("chips"), ...d.filters.map((/** @type {any} */ f) => h("li", null,
-      h("button", { type: "button", class: "chip", "aria-label": `Remove the filter ${f.label}: ${f.value}`, onclick: () => app.set({ [f.key]: Model.FIELDS[f.key].default }) }, `${f.label}: ${f.value} ×`))));
+      h("button", { type: "button", class: "button chip", "aria-label": `Remove the filter ${f.label}: ${f.value}`, onclick: () => app.set({ [f.key]: Model.FIELDS[f.key].default }) }, `${f.label}: ${f.value} ×`))));
     $("clear-filters").disabled = d.filters.length === 0;
     const cols = Model.splitList(state.cols).filter((c) => c in COLS);
     for (const box of document.querySelectorAll("#col-boxes input")) if (box instanceof HTMLInputElement) box.checked = cols.includes(box.value);
@@ -4078,7 +4123,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       const x = X(c.reference.value);
       out.append(svg("line", { class: "ref", x1: x, x2: x, y1: P.t, y2: H - P.b }), svg("text", { class: "direct-label", x: x + 4, y: H - P.b - 8 }, `exact ${c.reference.text}`));
     }
-    return h("figure", null, h("figcaption", { class: "label", text: `${c.metric.name}, log scale (${c.metric.direction} is better)` }), out);
+    return h("figure", null, h("div", { class: "card" }, out), h("figcaption", { text: `${c.metric.name}, log scale (${c.metric.direction} is better)` }));
   }
 
   function renderPinned(/** @type {any} */ state, /** @type {any} */ d) {
@@ -4095,7 +4140,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         p.scores.map((/** @type {string} */ v) => h("td", { class: "num", text: v })),
         h("td", { text: p.conf }), h("td", { text: p.consistency }), h("td", { text: p.level }), h("td", { text: p.effort.join("/") }),
         h("td", { text: p.formal ? p.decl : "no" }), h("td", null, hypothesesOf(p.i)),
-        h("td", null, h("button", { type: "button", onclick: () => togglePin(p.id), text: "Unpin" }))))))));
+        h("td", null, h("button", { type: "button", class: "button", onclick: () => togglePin(p.id), text: "Unpin" }))))))));
   }
 
   /* ---------- connections ---------- */
@@ -4107,11 +4152,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     const p = s.path;
     const target = p.steps[p.steps.length - 1];
     put($("path"), 
-      h("p", { class: "note", text: `The path to ${s.name} at the ${state.depth} depth: each prerequisite comes before the results that need it. It stops at results you know (${p.knownStops.length}). ${p.supported} edges have a formal reference in mathlib (supported); ${p.uncertain} are judged only (uncertain). This is not a guaranteed curriculum, and it gives no minimum study time.` }),
+      h("p", { class: "note", text: `The path to ${s.name} at the ${state.depth} depth: each prerequisite comes before the results that need it. It stops at results you know (${p.knownStops.length}). Edges with a formal reference in mathlib (supported): ${p.supported}; edges judged only (uncertain): ${p.uncertain}. This is not a guaranteed curriculum, and it gives no minimum study time.` }),
       p.cycles.length ? h("p", { class: "callout", text: `Cycle in the judged prerequisites: ${p.cycles.map((/** @type {string[]} */ c) => c.map((id) => IX.rows[rowOf(id)].n).join(" and ")).join("; ")}. The path keeps every result of the cycle; study them together.` }) : null,
       h("ol", { class: "path" }, p.steps.map((/** @type {any} */ st) => h("li", { class: st === target ? "target" : null },
         openBtn(st.id, st.name), ` (${Model.LEVEL_NAMES[Model.LEVELS.indexOf(st.level)]} level, ${Model.bandLabel(st.band)}${st.cycle ? ", in a prerequisite cycle" : ""}) `,
-        h("button", { type: "button", onclick: () => setKnown(st.id, st.id in known ? null : Model.DEPTHS.indexOf(state.depth)), text: st.id in known ? "Unmark known" : `Mark known (${state.depth})` })))),
+        h("button", { type: "button", class: "button", onclick: () => setKnown(st.id, st.id in known ? null : Model.DEPTHS.indexOf(state.depth)), text: st.id in known ? "Unmark known" : `Mark known (${state.depth})` })))),
       p.knownStops.length ? h("p", { class: "note" }, "Known prerequisites (the path stops here): ", p.knownStops.map((/** @type {string} */ id, /** @type {number} */ j) => [j ? ", " : "", openBtn(id)])) : null,
       DET[s.i].cn.length ? h("p", { class: "note", text: `Prerequisite concepts that are not catalog results: ${DET[s.i].cn.join(", ")}.` }) : null);
     drawGraph(s);
@@ -4275,7 +4320,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     for (const [id, key] of [["cq", "cq"], ["ctag", "ctag"]]) { const el = $(id); if (document.activeElement !== el) el.value = state[key]; }
     $("concept-count").textContent = `${c.counts.shown.toLocaleString("en")} of ${c.counts.concepts.toLocaleString("en")} concepts shown (${c.counts.shownUnknown.toLocaleString("en")} with an unknown aggregate, shown as an interval).`;
     put($("concept-chips"), ...c.filters.map((/** @type {any} */ f) => h("li", null,
-      h("button", { type: "button", class: "chip", "aria-label": `Remove the filter ${f.label}: ${f.value}`, onclick: () => app.set({ [f.key]: Model.FIELDS[f.key].default }) }, `${f.label}: ${f.value} ×`))));
+      h("button", { type: "button", class: "button chip", "aria-label": `Remove the filter ${f.label}: ${f.value}`, onclick: () => app.set({ [f.key]: Model.FIELDS[f.key].default }) }, `${f.label}: ${f.value} ×`))));
     $("clear-concept-filters").disabled = c.filters.length === 0;
     $("concept-table").setAttribute("aria-rowcount", String(c.order.length + 1));
     conceptModel = { order: c.order, weights: c.weights, ok: c.weightsOk, sel: c.selected.id };
@@ -4302,9 +4347,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       s.definition ? h("figure", { class: "inset" }, prose(s.definition), h("figcaption", { class: "note", text: s.definitionBasis === "judge" ? "Definition written by the judge (tc-judge-prompt/1)." : `${s.definitionBasis}.` })) : h("p", { class: "note", text: "No definition text is in the snapshot for this concept." }),
       h("p", { class: "note", text: `arXiv categories (judged): ${s.cats.join(", ") || "unclassified"}.` }),
       h("div", { class: "actions" },
-        h("button", { type: "button", onclick: () => app.set({ view: "tree", troot: s.id }), text: "Show its prerequisite tree" }),
-        h("button", { type: "button", onclick: () => app.set({ view: "popularity", pkind: "concepts", psel: s.id }), text: "Show its popularity by tag" }),
-        h("button", { type: "button", onclick: () => setKnown(s.id, s.known ? null : depth), text: s.known ? "Unmark known" : `Mark known (${state.depth})` })),
+        h("button", { type: "button", class: "button", onclick: () => app.set({ view: "tree", troot: s.id }), text: "Show its prerequisite tree" }),
+        h("button", { type: "button", class: "button", onclick: () => app.set({ view: "popularity", pkind: "concepts", psel: s.id }), text: "Show its popularity by tag" }),
+        h("button", { type: "button", class: "button", onclick: () => setKnown(s.id, s.known ? null : depth), text: s.known ? "Unmark known" : `Mark known (${state.depth})` })),
       h("h3", { text: "Scores" }),
       h("p", null, "Aggregate under the active concept weights: ", h("strong", { class: "num", text: fmt(s.score) }),
         s.score === null ? ` (interval ${num(s.lo, 2)} to ${num(s.hi, 2)}; missing: ${s.missing.join(", ")})` : ` (rank ${s.rank} of the scored concepts)`, `. Confidence ${s.conf}.`),
@@ -4330,16 +4375,16 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     const rootEl = $("troot");
     if (!t) { put($("tree-outline"), h("p", { class: "note", text: "No tree: the root is not in this snapshot." })); return; }
     if (document.activeElement !== rootEl) rootEl.value = t.root.name;
-    $("tree-summary").textContent = `${t.root.name} (${t.root.kind}): ${t.unique} distinct items to depth ${t.depth}${t.truncated ? `, cut at ${Model.TREE_NODES} nodes` : ""}; ${t.studyCount} unknown (${t.results} results, ${t.concepts} concepts). Results need their judged prerequisite results and their key concepts; concepts need their prerequisite concepts. A count after an item is the number of its prerequisites below the depth.`;
+    $("tree-summary").textContent = `${t.root.name} (${t.root.kind}): ${t.unique} distinct items to depth ${t.depth}${t.truncated ? `, cut at ${Model.TREE_NODES} nodes` : ""}; ${t.studyCount} unknown (${VisualKit.count(t.results, "result")}, ${VisualKit.count(t.concepts, "concept")}). Results need their judged prerequisite results and their key concepts; concepts need their prerequisite concepts. A count after an item is the number of its prerequisites below the depth.`;
     drawTree(t);
     /** @param {any} n */
     const item = (n) => h("li", { class: n.known ? "known" : null },
       treeBtn(n.id, n.name), h("span", { class: "note", text: ` ${n.kind}${n.level ? `, ${Model.LEVEL_NAMES[Model.LEVELS.indexOf(n.level)]}` : ""}${n.edge ? `; ${n.edge}` : ""}${n.known ? "; known" : ""}${n.ref ? "; shown above" : ""}${n.cycle ? "; closes a cycle" : ""}${n.more ? `; ${n.more} more below` : ""} ` }),
-      h("button", { type: "button", onclick: () => setKnown(n.id, n.id in known ? null : Model.DEPTHS.indexOf(state.depth)), text: n.id in known ? "Unmark known" : `Mark known (${state.depth})` }),
+      h("button", { type: "button", class: "button", onclick: () => setKnown(n.id, n.id in known ? null : Model.DEPTHS.indexOf(state.depth)), text: n.id in known ? "Unmark known" : `Mark known (${state.depth})` }),
       n.children.length ? h("ul", null, n.children.map(item)) : null);
     put($("tree-outline"), h("ul", { class: "outline" }, item(t.root)));
     put($("tree-study"), ...t.study.map((/** @type {any} */ n) => h("li", null, treeBtn(n.id, n.name), h("span", { class: "note", text: ` ${n.kind}${n.level ? `, ${Model.LEVEL_NAMES[Model.LEVELS.indexOf(n.level)]}` : ""}, ${Model.bandLabel(n.band)} ` }),
-      h("button", { type: "button", onclick: () => setKnown(n.id, n.id in known ? null : Model.DEPTHS.indexOf(state.depth)), text: n.id in known ? "Unmark known" : `Mark known (${state.depth})` }))));
+      h("button", { type: "button", class: "button", onclick: () => setKnown(n.id, n.id in known ? null : Model.DEPTHS.indexOf(state.depth)), text: n.id in known ? "Unmark known" : `Mark known (${state.depth})` }))));
   }
 
   /** A left-to-right tidy tree: one column per depth, leaves stacked, each parent centred on its children. @param {any} t */
@@ -4451,7 +4496,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       r.values.forEach((/** @type {number | null} */ v, /** @type {number} */ j) => {
         const cell = svg("rect", { class: v === null ? "cell nodata" : "cell", x: L + j * cw + 1, y: y + 1, width: cw - 2, height: cellH - 2 });
         if (v !== null) cell.setAttribute("fill-opacity", String(Math.min(1, 0.06 + 0.94 * (v / max[j]))));
-        cell.append(svg("title", {}, `${r.name} in ${p.tags[j].id}: ${v === null ? "no data" : num(v, 2)} (${r.counts[j]} papers)`));
+        cell.append(svg("title", {}, `${r.name} in ${p.tags[j].id}: ${v === null ? "no data" : num(v, 2)} (${VisualKit.count(r.counts[j], "paper")})`));
         marks.push(cell);
         if (v !== null) marks.push(svg("text", { class: `cell-label${v / max[j] > 0.55 ? " on-dark" : ""}`, x: L + j * cw + cw / 2, y: y + 15, "text-anchor": "middle" }, num(v, p.metric === "count" ? 0 : 1)));
       });
@@ -4740,7 +4785,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       $("concept-wrap").addEventListener("scroll", () => { cancelAnimationFrame(conceptFrame); conceptFrame = requestAnimationFrame(drawConceptRows); });
       $("save-concept-csv").addEventListener("click", () => { const c = Model.derive({ ...a.state, view: "concepts" }, D).concepts; save(`${Model.SLUG}-concepts.csv`, Model.conceptCsv(a.state, c, D), "text/csv"); });
       $("copy-concept-csv").addEventListener("click", () => { const c = Model.derive({ ...a.state, view: "concepts" }, D).concepts; copy(Model.conceptCsv(a.state, c, D), "Copied the concept CSV."); });
-      put($("tag-presets"), h("span", { class: "label", text: "Tag sets: " }), ...TAG_SETS.map(([label, tags]) => h("button", { type: "button", onclick: () => a.set({ ptags: tags }), text: label })));
+      put($("tag-presets"), h("span", { class: "label", text: "Tag sets: " }), ...TAG_SETS.map(([label, tags]) => h("button", { type: "button", class: "button", onclick: () => a.set({ ptags: tags }), text: label })));
       // The name lists fill on first focus: about 13,000 concept names and 2,000 result names.
       /** Find a result or concept by its name or id. @param {string} raw @param {"both" | "concepts" | "results"} kind */
       const findItem = (raw, kind) => {
