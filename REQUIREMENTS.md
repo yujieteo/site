@@ -1,7 +1,7 @@
 # Site requirements
 
 Agreed with the owner on 2026-10-18, changed on 2026-10-23 for the new home page and its look on all pages,
-and changed on 2026-10-28 for the log.
+changed on 2026-10-28 for the log, and changed on 2026-10-29 for the home layout of emilkowal.ski.
 When the site and this file disagree, change the site.
 The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
@@ -49,11 +49,14 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    - `/lullapixie/privacy.html`, `/lullapixie/support.html`
    - `/marklove/privacy.html`, `/marklove/support.html`
    - `/play/beamdiag/`
-4. The home page `/` has the site name, the links "Explorations", "Log" and "GitHub ↗", the heading
-   "Ideas, experiments, and things built along the way.", the art, and "Selected explorations".
-   Each selected exploration is one `<li>` in `public/index.html`: to add or remove one, change
+4. The home page `/` has the layout of the emilkowal.ski home page. The header has the name
+   "Yu Jie Teo" and the tagline "Mechanical Engineer" under it, with no nav. Then come the sections
+   "Today" (one short paragraph), "Explorations" and "Log" (one link to `/log`).
+   Each exploration is one `<li>` in `public/index.html`: to add or remove one, change
    only that entry. The footer links the policy and support pages, and has one line with
-   contact@teoyujie.org, a link to its key and the key fingerprint.
+   contact@teoyujie.org, a link to its key and the key fingerprint, and one line with GitHub.
+   Reason: on 2026-10-29 the captain asked for the owner name and a tagline that says who the owner is, for a
+   Today section, and for Explorations, Log and GitHub out of the header.
    Reason for "Log": the captain approved the pond design on 2026-10-28.
 5. Every other old URL returns 404.
 
@@ -73,9 +76,8 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    The other tools keep the previous look until each moves to the new one: they use
    `public/play/style.css` with Source Serif 4 and DM Sans.
    Reason: the captain put the port of the tools out of this change on 2026-10-29.
-   There are no themes and no dark mode. The art on the home page is random walks and the
-   normal density on a canvas, with slow motion. Under `prefers-reduced-motion` it is a still
-   frame.
+   There are no themes and no dark mode. There is no art or animation on the home page.
+   Reason: the captain asked to remove the animation from the home page on 2026-10-29.
 7. Each policy and support page is plain HTML of a few KB.
 
 ## Build and deploy
