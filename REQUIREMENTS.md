@@ -77,9 +77,6 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    themes included: the rule below of no themes and no dark mode is not for its documents.
    Reason: the captain asked for his interaction rules on all pages, Marklove included, on 2026-10-29
    (marklove-web PR https://github.com/yujieteo/marklove-web/pull/3).
-   The other tools keep the previous look until each moves to the new one: they use
-   `public/play/style.css` with Source Serif 4 and DM Sans.
-   Reason: the captain put the port of the tools out of this change on 2026-10-29.
    There are no themes and no dark mode. There is no art or animation on the home page.
    Reason: the captain asked to remove the animation from the home page on 2026-10-29.
 7. Each policy and support page is plain HTML of a few KB.
