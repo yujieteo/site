@@ -1,4 +1,4 @@
-.bd > p, .bd section p:not(.caption) { margin: 0 0 26px; }
+.bd > p:not(.caption), .bd section p:not(.caption) { margin: 0 0 26px; }
 .bd h1 { margin-bottom: 32px; }
 .bd h3 { font-weight: 550; margin: 0 0 12px; }
 .bd section h2 { font-weight: 550; margin: 48px 0 20px; }
