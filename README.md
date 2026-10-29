@@ -9,9 +9,9 @@ template of the log at `/log`.
 | --- | --- |
 | `public/` | Everything the server serves, as it is served. |
 | `beamdiag/` | The beam diagram creator, a Goose program that builds to WebAssembly. `beamdiag/REQUIREMENTS.md` is its contract. |
-| `public/fonts/` | The site fonts, Inter (Google Fonts v20, variable) and IBM Plex Mono (weight 400), with their OFL licences. Source Serif 4 (weight 400, all optical sizes) and DM Sans, Latin, from Fontsource 5.3.0, are for the tools under `/play/`. |
+| `public/fonts/` | The site fonts, Inter (Google Fonts v20, variable) and IBM Plex Mono (weight 400), with their OFL licences. Source Serif 4 (weight 400, all optical sizes) and DM Sans, Latin, from Fontsource 5.3.0, are for `public/play/style.css`. |
 | `public/shared/kowalski.css` | The tokens and interaction rules of the site look. `public/style.css` imports it. |
-| `public/play/style.css` | The previous site stylesheet. The tools under `/play/` use it until each moves to the new look. |
+| `public/play/style.css` | The previous site stylesheet. No page uses it now. |
 | `public/play/beamdiag/` | The built beam page. `index.html` and `beamdiag.wasm*` come from `scripts/build-beam.sh`. Never edit them by hand. |
 | `media-plan.md` | The master copy of the media plan. The pond app edits it. |
 | `scripts/build-beam.sh [folder]` | Builds the beam page into `public/play/beamdiag/` or into the folder. |
