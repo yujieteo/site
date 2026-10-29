@@ -30,8 +30,8 @@ a, button, [role="button"] { touch-action: manipulation; }
 button, [role="button"] { user-select: none; -webkit-user-select: none; }
 button, [role="button"], .press { transition: transform var(--press-duration) var(--ease-out); }
 button:active, [role="button"]:active, .press:active { transform: scale(var(--press)); }
-button, [role="button"], .tap, nav a { position: relative; }
-button::after, [role="button"]::after, .tap::after, nav a::after { content: ""; position: absolute; left: 50%; top: 50%;
+button, [role="button"], .tap { position: relative; }
+button::after, [role="button"]::after, .tap::after { content: ""; position: absolute; left: 50%; top: 50%;
   width: max(100%, var(--tap)); height: max(100%, var(--tap)); transform: translate(-50%, -50%); }
 @media (hover: hover) and (pointer: fine) { a:hover { text-decoration-color: var(--underline-hover); } }
 @media (prefers-reduced-motion: reduce) { :root { --press: 1; } }
