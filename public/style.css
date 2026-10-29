@@ -1,50 +1,49 @@
-@font-face { font-family: "Source Serif 4"; src: url(/fonts/source-serif-4.woff2) format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "DM Sans"; src: url(/fonts/dm-sans.woff2) format("woff2"); font-weight: 100 1000; font-display: swap; }
-:root { --bg: #f4f1ea; --ink: #1c1b18; --muted: #5c5950; --line: #d8d2c4; --accent: #c4613f;
-  --serif: "Source Serif 4", Georgia, serif; --sans: "DM Sans", system-ui, sans-serif; }
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 var(--sans); }
-a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.wrap { max-width: 72rem; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 3rem); }
-header.wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem; padding-top: 1.5rem; padding-bottom: 1.5rem; }
-.name { font-weight: 500; text-decoration: none; padding-block: 0.6rem; margin-block: -0.6rem; }
-nav { display: flex; margin-right: -0.5rem; }
-nav a { padding: 0.6rem 0.5rem; margin-block: -0.6rem; white-space: nowrap; text-decoration: none; }
-nav a:hover { text-decoration: underline; }
-.hero { display: grid; gap: 2rem 4rem; align-items: center; padding-top: clamp(1rem, 4vw, 3rem); padding-bottom: clamp(2rem, 4vw, 3rem); }
-h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
-h1 { font-size: clamp(2.5rem, 6vw, 4.75rem); line-height: 1.06; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
-.lede { font-size: 1.25rem; color: var(--muted); margin: 1.5rem 0 0; text-wrap: pretty; }
-figure { margin: 0; }
-canvas { display: block; width: 100%; aspect-ratio: 5 / 4; }
-figcaption { font-size: 0.875rem; color: var(--muted); margin-top: 0.75rem; }
-#explorations { border-top: 1px solid var(--line); padding-top: 2rem; padding-bottom: 5rem; }
-h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; margin: 0; }
-#explorations > p { color: var(--muted); margin: 0.5rem 0 1.5rem; }
-.featured { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
-.featured a { display: flex; flex-direction: column; height: 100%; padding: 1.25rem 0 0; border-top: 1px solid var(--ink); text-decoration: none; transition: border-color 160ms ease; }
-.featured a:hover { border-top-color: var(--accent); }
-.kind { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
-h3 { font-size: 1.75rem; line-height: 1.2; margin: 0.75rem 0 0.5rem; }
-.featured p { margin: 0 0 1.5rem; color: var(--muted); }
-.go { margin-top: auto; font-weight: 500; transition: transform 160ms ease; }
-.featured a:hover .go { transform: translateX(0.25rem); }
-footer { border-top: 1px solid var(--line); padding-top: 2rem; padding-bottom: 3rem; font-size: 0.875rem; color: var(--muted); }
-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-main.page { padding-top: clamp(1.5rem, 5vw, 3rem); padding-bottom: 4rem; }
-main.page h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
-main.page > article { max-width: 42rem; }
-main.page > article h2 { font-size: 1.5rem; margin: 2.5rem 0 0.5rem; }
+@import url(/shared/kowalski.css);
+/* The site pages. The tokens, fonts and interaction rules are in /shared/kowalski.css. */
+p { margin: 0; line-height: var(--leading-prose); }
+h1, h2, h3 { margin: 0; font-size: inherit; font-weight: inherit; }
+.wrap { max-width: var(--column); margin: 0 auto; padding: 0 var(--gutter); }
+header.wrap { display: flex; flex-direction: column; align-items: flex-start; padding-top: 48px; margin-bottom: 128px; }
+.name { font-weight: 500; text-decoration: none; }
+nav { font-weight: 500; line-height: 1; color: var(--muted); }
+nav a { text-decoration: none; }
+.hero h1, #explorations h2 { font-weight: 500; margin-bottom: 20px; }
+.lede, #explorations > p { color: var(--muted); }
+.hero figure { margin: 2rem 0 0; }
+canvas { display: block; width: 100%; aspect-ratio: 5 / 2; }
+figcaption { font-size: var(--small); line-height: 1.25rem; color: var(--muted); margin-top: 0.75rem; }
+#explorations { margin-top: 64px; }
+#explorations > p { margin-bottom: 20px; }
+.featured { list-style: none; margin: 0 0 -12px; padding: 0; display: flex; flex-direction: column; gap: 20px; }
+.featured a { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; margin: 0 -16px; padding: 0 16px; border-radius: var(--radius); text-decoration: none;
+  transition: transform var(--press-duration) var(--ease-out); }
+.featured a:active { transform: scale(var(--press)); }
+.featured h3 { grid-area: 1 / 1; }
+.kind { grid-area: 1 / 2; color: var(--muted); }
+.featured p { grid-column: 1 / -1; line-height: var(--leading); color: var(--muted); }
+.go { display: none; }
+footer.wrap { margin-top: 64px; padding-bottom: 48px; color: var(--muted); }
+footer ul { list-style: none; margin: 0; padding: 0; }
+code { font: var(--code) var(--mono); overflow-wrap: anywhere; }
+li > code, p > code { border: 1px solid var(--line); border-radius: var(--radius); background: var(--chip); padding: 2px 3.6px; font-size: 0.857143em; }
+main.page h1 { font-weight: 600; margin-bottom: 32px; }
+main.page > article p { margin-bottom: 26px; opacity: 0.9; }
+main.page > article h2 { font-weight: 550; margin: 48px 0 20px; }
 main.page figure { margin: 2rem 0; }
 main.page figure svg { display: block; max-width: 100%; height: auto; }
 .muted { color: var(--muted); }
-.log { max-width: 42rem; }
 .log > article { border-top: 1px solid var(--line); padding: 1.25rem 0; }
-.log > article h2 { font-size: 1.5rem; margin: 0.25rem 0 0.5rem; }
-.log > article time { font-size: 0.875rem; color: var(--muted); }
+.log > article h2 { font-weight: 500; margin: 0.25rem 0 0.5rem; }
+.log > article time { font-size: var(--small); color: var(--muted); }
 .log > article p { margin: 0.5rem 0 0; }
-code { font: 0.95em ui-monospace, monospace; overflow-wrap: anywhere; }
-@media (min-width: 52rem) { .hero { grid-template-columns: 7fr 5fr; } nav { margin-right: -0.75rem; } nav a { padding-inline: 0.75rem; } }
-@media (width < 52rem) { canvas { aspect-ratio: 5 / 2; } }
-@media (prefers-reduced-motion: reduce) { .featured a, .go { transition: none; } }
+@media (min-width: 640px) {
+  header.wrap { padding-top: 128px; }
+  .hero h1 { margin-bottom: 24px; }
+  #explorations h2, #explorations > p { margin-bottom: 16px; }
+  #explorations, footer.wrap { margin-top: 128px; }
+  footer.wrap { padding-bottom: 128px; }
+  .featured { gap: 4px; }
+  .featured a { padding-block: 12px; }
+}
+@media (min-width: 768px) { header.wrap { padding-top: 64px; } main.page > article h2 { margin-top: 56px; } }
+@media (hover: hover) and (pointer: fine) { .featured a:hover { background: var(--hover); } }

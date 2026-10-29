@@ -3746,7 +3746,7 @@ static const uint8_t gs_str1[5] = "usage";
 static const uint8_t gs_str2[6] = "../../";
 static const uint8_t gs_str3[91] = "Create beam diagrams, read reactions and hand calculations, and save PNG or A4 PDF reports.";
 static const uint8_t gs_str4[220] = "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><link rel=\"icon\" href=\"data:,\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Beam diagram creator</title><meta name=\"description\" content=\"";
-static const uint8_t gs_str5[50] = "\"><link rel=\"stylesheet\" href=\"/style.css\"><style>";
+static const uint8_t gs_str5[55] = "\"><link rel=\"stylesheet\" href=\"/play/style.css\"><style>";
 static const uint8_t gs_str6[12] = ".bd-fig text";
 static const uint8_t gs_str7[1] = ".";
 static const uint8_t gs_str8[6] = "{font:";
@@ -7524,7 +7524,7 @@ static void main_g(int64_t gs_sp) {
     gs_memcpy(t145, (const uint8_t *)(t56.data), (size_t)t55);
     t145 += t55;
     t53 += t55;
-    int64_t t57 = 50;
+    int64_t t57 = 55;
     gs_memcpy(t145, (const uint8_t *)(((uint8_t *)gs_str5)), (size_t)t57);
     t145 += t57;
     t53 += t57;
