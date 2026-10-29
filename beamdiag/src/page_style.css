@@ -38,7 +38,7 @@
 label.f.origin { margin-top: 0.5rem; }
 label.f { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.75rem; color: var(--muted); }
 label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; max-height: 28rem; overflow-y: auto; overscroll-behavior: contain; }
+.items { list-style: none; margin: 0; padding: 0 5px 5px 0; display: flex; flex-direction: column; gap: 0.5rem; max-height: 28rem; overflow-y: auto; overscroll-behavior: contain; }
 .item { border-top: 1px solid var(--line); padding-top: 0.5rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.4rem; align-items: end; }
 .item:first-child { border-top: 0; padding-top: 0; }
 .item .fields { display: grid; gap: 0.4rem; grid-template-columns: repeat(auto-fit, minmax(5.2rem, 1fr)); }
