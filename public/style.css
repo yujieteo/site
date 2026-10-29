@@ -32,7 +32,7 @@ main.page > article h2 { font-weight: 550; margin: 48px 0 20px; }
 main.page figure { margin: 2rem 0; }
 main.page figure svg { display: block; max-width: 100%; height: auto; }
 .frame { margin: 0; padding: 24px; background: #fff; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
-.caption, main.page figcaption { margin: 16px 0 32px; text-align: center; font-size: 12px; line-height: 1rem; color: #82827c; }
+.caption, main.page figcaption { margin: 16px 0 32px; text-align: center; font-size: 12px; line-height: 1rem; color: var(--muted); }
 main.page figcaption { margin-bottom: 0; }
 .muted { color: var(--muted); }
 .log > article { border-top: 1px solid var(--line); padding: 1.25rem 0; }
