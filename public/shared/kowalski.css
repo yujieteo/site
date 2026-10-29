@@ -44,7 +44,7 @@ button::after, [role="button"]::after, .tap::after { content: ""; position: abso
   color: var(--ink); font: 500 13px/var(--leading) var(--sans); white-space: nowrap; cursor: pointer;
   transition: transform var(--press-duration) var(--ease-out), background-color var(--fade-duration), border-color var(--fade-duration),
     box-shadow var(--fade-duration); }
-@media (hover: hover) and (pointer: fine) { .button:hover { background: var(--gray2); border-color: var(--gray4); } }
+@media (hover: hover) and (pointer: fine) { .button:hover:not(:disabled) { background: var(--gray2); border-color: var(--gray4); } }
 .button[data-active=true] { background: var(--gray3); border-color: var(--gray7); }
 .button:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
 @media (prefers-reduced-motion: reduce) { :root { --press: 1; } }
