@@ -1,7 +1,7 @@
 # Beam diagram creator (beamdiag)
 
 The Goose program builds the standalone beam page into `public/play/beamdiag/`, which the site serves at `/play/beamdiag/`.
-The page uses the site stylesheet `/style.css` and the site header and footer, in `src/body.html`.
+The page uses the tools stylesheet `/play/style.css` and the site header and footer, in `src/body.html`.
 
 Never edit `public/play/beamdiag/index.html` by hand. After a change to `src/` or `raw.json`, make the C again and rebuild:
 

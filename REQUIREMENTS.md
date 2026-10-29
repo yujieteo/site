@@ -59,11 +59,20 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Look
 
-6. The site has an editorial look: a warm neutral background, large serif headings and a calm
-   grid. Its fonts are Source Serif 4 and DM Sans, open licence, in `public/fonts/`. All pages
-   use the one stylesheet `public/style.css`, and have the header and footer of the home page.
-   The exception is `/play/marklove/`, a full-screen editor with its own look from its repository.
+6. The site has the look of emilkowal.ski, light only: a near-white background, one 692 px column,
+   16 px Inter for all text, IBM Plex Mono for code, and quiet underlined links. Both fonts have an
+   open licence and are in `public/fonts/`. The tokens and his interaction rules are in
+   `/shared/kowalski.css`. This URL does not change: the tools link it when they move to the look.
+   All pages use the stylesheet `public/style.css`, which imports it, and have the header and footer
+   of the home page. Hover styles apply only under `(hover: hover) and (pointer: fine)`.
+   Reason: the captain chose mockup A of the design board and asked for his interaction rules in one
+   shared stylesheet on 2026-10-29.
+   The exceptions are the tools under `/play/`. `/play/marklove/` is a full-screen editor with its own
+   look from its repository.
    Reason: the site header and footer take the space of the editor.
+   The other tools keep the previous look until each moves to the new one: they use
+   `public/play/style.css` with Source Serif 4 and DM Sans.
+   Reason: the captain put the port of the tools out of this change on 2026-10-29.
    There are no themes and no dark mode. The art on the home page is random walks and the
    normal density on a canvas, with slow motion. Under `prefers-reduced-motion` it is a still
    frame.

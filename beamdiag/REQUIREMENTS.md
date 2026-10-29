@@ -30,7 +30,7 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
    NASTRAN deck and `bdf.rs`, the beamdswitch deck and `deck.rs` / `report.rs` (unless the PDF
    reuses its numbers), the Markdown and clipboard exports, the WebMCP tools and `tools.json`, and
    all explanation text (method, signs, assumptions, sources) on the page.
-7. Look: the site look, with the site stylesheet `/style.css`, header and footer. The page adds
+7. Look: the site look, with the tools stylesheet `/play/style.css`, header and footer. The page adds
    only the styles of the tool. No themes, no dark mode, no fades.
 8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 400 KB loads before the
    first draw, with the two site fonts. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the

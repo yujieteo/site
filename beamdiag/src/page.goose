@@ -15,7 +15,7 @@ fn main() {
     let body = body("../../");
     let description = "Create beam diagrams, read reactions and hand calculations, and save PNG or A4 PDF reports.";
     let html = str("<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><link rel=\"icon\" href=\"data:,\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Beam diagram creator</title><meta name=\"description\" content=\"", description,
-        "\"><link rel=\"stylesheet\" href=\"/style.css\"><style>", BASE, STYLE, draw_css(), "</style>", body, "<script>", HOST, "</script></html>");
+        "\"><link rel=\"stylesheet\" href=\"/play/style.css\"><style>", BASE, STYLE, draw_css(), "</style>", body, "<script>", HOST, "</script></html>");
     if find(html, "/Users/") >= 0 || find(html, "/home/") >= 0 { abort("no home paths in the page"); }
     if !write_file(a[1], html) { abort("index.html"); }
 }
