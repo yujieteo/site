@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fdfdfc">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="data:,">
 <title>Theorem Learner: proofs from concepts to results</title>
 <meta name="description" content="Learn mathematics from basic concepts to advanced results. Each theorem has its exact statement and one or more separate proofs; each proof shows how its hypotheses feed its steps and conclusion, with a small diagram, terse step slogans and concept reminders on every concept word. A theory graph joins concepts, proof mechanisms, proofs and theorems without one fixed order. Works offline.">
@@ -15,9 +17,10 @@
 <style>
 /* House style for the theorem apps: the Kowalski look of teoyujie.org. The page links /shared/kowalski.css first, which
    gives the palette (--bg, --ink, --muted, --line, --hover, --select, --underline, --underline-hover), Inter at 16px,
-   the links, the press, the tap areas, the touch baseline and the reduced-motion rule; its header names the source of
-   each interaction rule. This file keeps only what the apps need beyond it: the app tokens as aliases of the shared
-   ones, the data colours, the type scale, the z-layers and the controls. Light only, as on the site. */
+   the column (--column, --gutter), the links, the .button look, the press, the tap areas, the touch baseline and the
+   reduced-motion rule; its header names the source of each interaction rule. This file keeps only what the apps need
+   beyond it: the app tokens as aliases of the shared ones, the data colours, the type scale, the z-layers, the frames
+   and the layout of the controls. Light only, as on the site. */
 
 :root {
   /* Neutrals: aliases of the shared tokens. */
@@ -51,7 +54,11 @@
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;
-  --app-gutter: clamp(1rem, 4vw, 3rem);
+  /* The article page of emilkowal.ski (emilkowal.ski/ui/building-a-toast-component): white frames with a 1px
+     inset line, 12px gray captions. */
+  --frame: #fff;
+  --frame-line: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --caption: #82827c;
   /* The z-layers: one position for each kind of object, the only place that sets them. A raised item is a sticky
      table header; floating controls are the view switcher and the undo notice; a sheet is the concept reminder;
      the command palette is a dialog and lives in the browser's top layer. Shadows show the height. */
@@ -65,14 +72,14 @@
   --glass: color-mix(in srgb, var(--bg) 86%, transparent);
 }
 
-/* The app's .wrap: 72rem and a fluid gutter, with the safe-area insets added. Wider than the site's prose column,
-   because the tables and charts need the room. */
+/* The .wrap: one centred column of 692px with 24px gutters, as on the article page, with the safe-area insets added.
+   Wide tables and drawings scroll inside their own frame. */
 .wrap {
   width: 100%;
-  max-width: 72rem;
+  max-width: var(--column);
   margin: 0 auto;
-  padding-left: max(var(--app-gutter), env(safe-area-inset-left));
-  padding-right: max(var(--app-gutter), env(safe-area-inset-right));
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
 }
 main.wrap { padding-top: clamp(0.5rem, 3vw, 1.5rem); }
 
@@ -81,6 +88,8 @@ main.wrap { padding-top: clamp(0.5rem, 3vw, 1.5rem); }
 .site .name { font-weight: 500; text-decoration: none; }
 .site nav { display: flex; gap: var(--space-6); color: var(--muted); font-weight: 500; }
 .site nav a { text-decoration: none; }
+.site a { white-space: nowrap; }
+@media (max-width: 40rem) { .site { gap: var(--space-3); } .site nav { gap: var(--space-3); } }
 
 /* The site footer, as on the home page. Its bottom padding is the room for the floating view switcher, so nothing
    ends behind it. */
@@ -102,55 +111,62 @@ footer code { font: var(--code) var(--mono); font-size: 0.857143em; overflow-wra
 .eyebrow a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4 { font-size: inherit; line-height: var(--leading); }
 h1 { max-width: 40ch; margin: 0.35rem 0 var(--space-4); font-weight: 600; text-wrap: balance; }
-h2 { margin: 0 0 var(--space-2); font-weight: 550; }
-h3 { margin: var(--space-4) 0 var(--space-2); font-weight: 500; }
+h2 { position: relative; margin: 56px 0 20px; font-weight: 550; }
+h3 { margin: 32px 0 12px; font-weight: 550; }
+/* The '#' link of a heading: at its left, shown on hover and on focus, as on the article page. */
+.anchor { position: absolute; right: 100%; padding-right: 0.4em; color: var(--muted); text-decoration: none; opacity: 0; }
+@media (hover: hover) and (pointer: fine) { h2:hover .anchor { opacity: 1; } }
+@media (max-width: 40rem) { .anchor { display: none; } }
 h4 { margin: var(--space-3) 0 var(--space-1); font-weight: 500; }
-.lede { max-width: 66ch; margin: 0 0 var(--space-4); color: var(--muted); line-height: var(--leading-prose); text-wrap: pretty; }
 .note { margin: var(--space-1) 0 0; color: var(--muted); font-size: var(--small); }
 .label { color: var(--muted); font-size: var(--small); font-weight: 500; }
 .num, output, input[type="number"] { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+/* Tabular figures in tables, so that the digits of a column line up (rsms.me/inter: "tnum" for tabular data). */
+table { font-variant-numeric: tabular-nums; }
+/* Paragraphs 26px apart, as on the article page, and no one-word last line (shud.in and paco.me: text-wrap: pretty). */
+p { margin: 0 0 26px; text-wrap: pretty; }
 
-/* Panels: flat and ruled, as on the site. */
+/* A frame holds each interactive part (a control panel, a chart, a result), as on the article page: 12px corners,
+   a 1px inset line, white inside. On a phone it fills the width, with a hairline above and below. A caption sits
+   under its frame, centred, in 12px gray. */
 .card {
   min-width: 0;
-  padding: var(--space-4);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: transparent;
+  margin: 32px 0 35px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--frame);
+  box-shadow: var(--frame-line);
 }
+.card .card { margin: 16px 0; }
+.card > :first-child, .card .eyebrow + h2 { margin-top: 0; }
+.card > :last-child, .card > details:last-child > :last-child { margin-bottom: 0; }
+@media (max-width: 640px) {
+  .card:not(.card .card) {
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+figure { margin: 32px 0; }
+figure.inset { margin: 0 0 var(--space-4); }
+figure > .card { margin: 0; }
+.card + figcaption { margin: 12px 0 0; color: var(--caption); font-size: 12px; text-align: center; }
+/* Code: a block has 12px corners, the page gray and a hairline, in 12px text; inline code has 6px corners. */
+pre { overflow: auto; margin: 0 0 26px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); font: 12px/1.6 var(--mono); }
+:not(pre) > code { padding: 1px 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--chip); font: 0.8125em var(--mono); }
 .inset { padding: var(--space-3); border-radius: var(--radius); background: var(--surface); }
-.callout {
-  padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--focus);
-  border-radius: var(--radius);
-}
-hr, .rule { height: 0; margin: var(--space-6) 0; border: 0; border-top: 1px solid var(--border); }
+.callout { padding: 12px 16px; border-radius: 12px; background: var(--chip); }
 
-/* Controls: 6px corners and a hairline that darkens under a fine pointer. */
+/* Controls. A real button has the class .button; /shared/kowalski.css gives its look (Sonner's .button), its hover
+   fade, the selected state [data-active=true] and the focus ring. This file adds only the layout of the label inside
+   it, so that a 44px button keeps its label centred. */
 button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
-button, .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  min-height: 2.25rem;
-  padding: 0.25rem 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: transparent;
-  color: var(--ink);
-  font-size: var(--small);
-  white-space: nowrap;
-  cursor: pointer;
-}
-button[aria-pressed="true"], button[aria-selected="true"], .btn.on {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--bg);
-}
-button.primary { border-color: var(--ink); background: var(--ink); color: var(--bg); }
-button:disabled { border-color: var(--grid); background: transparent; color: var(--faint); cursor: default; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
+.button:disabled { color: var(--faint); cursor: default; }
+label.button { -webkit-user-select: none; user-select: none; touch-action: manipulation; }
 input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea {
   min-height: 2.25rem;
   padding: 0.35rem 0.6rem;
@@ -161,12 +177,12 @@ input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, te
 input:disabled, select:disabled { background: var(--surface); color: var(--muted); }
 input[type="range"], input[type="checkbox"], input[type="radio"] { accent-color: var(--ink); }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-.seg { display: inline-flex; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); }
-.seg > button { min-height: 2.1rem; border: 0; border-radius: 0; }
-/* Hover changes colour at once, and only under a fine pointer (shared rules 4 and 5). */
+.seg { display: inline-flex; gap: var(--space-1); }
+/* iOS zooms the page into a field with text under 16px (mobile-native rule 4). */
+@media (pointer: coarse) { input, select, textarea { font-size: 16px; } }
+/* Hover only under a fine pointer (shared rule 4). */
 @media (hover: hover) and (pointer: fine) {
   .site nav a:hover, .eyebrow a:hover { color: var(--ink); }
-  button:hover, .btn:hover { border-color: var(--ink); }
   input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):hover, select:hover { border-color: var(--control); }
 }
 /* Press: an SVG node with role="button" scales about its own centre, not the drawing's origin (shared rule 1). */
@@ -177,7 +193,7 @@ button.link::after, button.cw::after { content: none; }
 button.link, button.cw { -webkit-user-select: text; user-select: text; }
 /* Tap targets of 44px on a phone or a touch screen (shared rule 8). */
 @media (pointer: coarse), (max-width: 40rem) {
-  button, .btn, select, .seg > button,
+  .button, select,
   input:not([type="range"]):not([type="checkbox"]):not([type="radio"]) { min-height: var(--tap); }
   input[type="range"] { height: var(--tap); }
   summary { display: flex; align-items: center; min-height: var(--tap); }
@@ -240,9 +256,9 @@ nav.tabs {
   box-shadow: var(--shadow-float);
 }
 nav.tabs::-webkit-scrollbar { display: none; }
-nav.tabs button { flex: none; min-height: var(--tap); border-color: transparent; }
-@media (hover: hover) and (pointer: fine) { nav.tabs button:hover { border-color: var(--border); } }
-nav.tabs button[aria-pressed="true"] { border-color: var(--ink); }
+/* A control that keyboard focus scrolls to stays above the floating switcher (paco.me: scroll-padding). */
+html { scroll-padding-bottom: calc(6.5rem + env(safe-area-inset-bottom)); }
+nav.tabs .button { flex: none; min-height: var(--tap); }
 
 /* The undo notice floats above the switcher for 8 seconds after an action that clears something. */
 .undo {
@@ -256,33 +272,25 @@ nav.tabs button[aria-pressed="true"] { border-color: var(--ink); }
   gap: var(--space-3);
   width: max-content;
   max-width: calc(100% - 2 * var(--space-3));
-  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4);
-  border: 1px solid var(--ink);
-  border-radius: var(--radius);
-  background: var(--ink);
-  color: var(--bg);
-  box-shadow: var(--shadow-float);
-  font-size: var(--small);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  border: 1px solid var(--gray4);
+  border-radius: 8px;
+  background: var(--frame);
+  color: var(--ink);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
 }
 .undo[hidden] { display: none; }
-.undo button { min-height: var(--tap); border-color: var(--bg); background: transparent; color: var(--bg); }
-@media (hover: hover) and (pointer: fine) { .undo button:hover { background: var(--bg); color: var(--ink); } }
+.undo .button { min-height: var(--tap); }
 
 /* Tools and exports: closed by default; the same commands are in the palette (Ctrl+K). */
-details.tools { margin-top: var(--space-8); padding-top: var(--space-3); border-top: 1px solid var(--border); }
+details.tools { margin-top: 56px; }
 details.tools > summary { cursor: pointer; color: var(--muted); font-size: var(--small); min-height: var(--tap); display: flex; align-items: center; }
 .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 0; }
-.toolbar label.btn:focus-within { outline: 2px solid var(--focus); outline-offset: 3px; }
+label.button:focus-within { outline: 2px solid var(--focus); outline-offset: 3px; }
 #notice:empty, #export-status:empty { display: none; }
 #notice { margin: 0 0 var(--space-4); }
-.lab {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
-  gap: var(--space-6);
-  align-items: start;
-}
 .lab > * { min-width: 0; }
-@media (max-width: 56rem) { .lab { grid-template-columns: minmax(0, 1fr); } }
 .field { display: grid; gap: var(--space-1); margin: 0 0 var(--space-4); }
 .field input[type="range"] { width: 100%; }
 .readout { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--space-1) var(--space-3); margin: 0; }
@@ -294,16 +302,15 @@ details.tools > summary { cursor: pointer; color: var(--muted); font-size: var(-
   width: min(100% - 2rem, 32rem);
   padding: var(--space-4);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg);
+  border-radius: 12px;
+  background: var(--frame);
   color: var(--ink);
   box-shadow: var(--shadow-sheet);
 }
 #palette::backdrop { background: rgb(0 0 0 / 0.3); }
 #palette input { width: 100%; }
 #palette ul { margin: var(--space-3) 0 0; padding: 0; list-style: none; }
-#palette li button { width: 100%; justify-content: flex-start; border-color: transparent; }
-#palette li button[aria-selected="true"] { border-color: var(--control); background: var(--surface); color: var(--ink); }
+#palette li .button { width: 100%; justify-content: flex-start; }
 .licences { margin-top: var(--space-8); color: var(--muted); font-size: var(--small); }
 .licences pre { max-height: 20rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: var(--text-xs); }
 @media print { nav.tabs, .undo { display: none; } }
@@ -322,7 +329,6 @@ details.intro .lede { margin-top: var(--space-2); }
 /* Theorem Learner: proofs from concepts to results: the visual's own rules, after the style guide's tokens and the kit's layout. Domain colours are
    aliases of the tokens, so they follow the palette; no state depends on colour alone (outlines, weights, dashes and text say it too). */
 :root { --signal: var(--c1); --role: var(--c2); --flow: var(--c1); --hl-bg: var(--surface); }
-figure { margin: 0 0 var(--space-4); }
 section[hidden], article[hidden] { display: none; }
 .tabs, .actions, .row, .proof-picker { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
 .tabs { margin: var(--space-3) 0 var(--space-4); }
@@ -336,19 +342,18 @@ button.link { min-height: 0; max-width: 100%; padding: 0; white-space: normal; o
 .table-scroll { max-width: 100%; overflow-x: auto; }
 table.data { border-collapse: collapse; width: 100%; font-size: var(--small); }
 table.data th, table.data td { padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--grid); text-align: left; vertical-align: top; }
-pre.lean, code { font-family: var(--mono); font-size: var(--small); white-space: pre-wrap; overflow-wrap: anywhere; }
+pre.lean, code { white-space: pre-wrap; overflow-wrap: anywhere; }
 .readout dd { overflow-wrap: anywhere; }
 
 /* The proof surface. */
 .surface h2 { margin: var(--space-1) 0 var(--space-2); overflow-wrap: anywhere; }
-.statement { font-size: var(--text-lg); line-height: var(--leading-prose); margin: 0 0 var(--space-3); overflow-wrap: anywhere; }
-.slogan { margin: var(--space-2) 0 var(--space-3); padding-left: var(--space-3); border-left: 3px solid var(--focus); font-style: italic; overflow-wrap: anywhere; }
+.statement { margin: 0 0 var(--space-3); overflow-wrap: anywhere; }
+.slogan { margin: var(--space-2) 0 var(--space-3); color: var(--muted); font-style: italic; overflow-wrap: anywhere; }
 .proof-picker { margin: var(--space-2) 0; }
-.proof-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--space-4); align-items: start; }
-@media (max-width: 52rem) { .proof-grid { grid-template-columns: minmax(0, 1fr); } }
+.proof-grid > * { min-width: 0; }
 .proof-text h3 { margin: var(--space-3) 0 var(--space-2); }
 ul.hyps, ol.steps { list-style: none; margin: 0; padding: 0; }
-ul.hyps li, ol.steps li { margin: 0 0 var(--space-2); padding: var(--space-2); border: 1px solid var(--border); border-radius: var(--radius); overflow-wrap: anywhere; }
+ul.hyps li, ol.steps li { margin: 0 0 var(--space-2); padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--frame); overflow-wrap: anywhere; }
 ul.hyps li.hl, ol.steps li.hl { border: 2px solid var(--signal); background: var(--hl-bg); }
 ol.steps li.input { border: 2px dashed var(--role); }
 ol.steps li.output { border: 2px dotted var(--signal); }
@@ -356,12 +361,12 @@ ul.hyps li.dim, ol.steps li.dim { opacity: 0.55; }
 .role { margin: var(--space-1) 0 0; font-size: var(--small); }
 .step-head { display: flex; gap: var(--space-2); align-items: baseline; }
 .step-slogan { font-weight: 600; min-width: 0; }
-.chip-btn { min-height: 1.75rem; min-width: 2.2rem; padding: 0 var(--space-2); border-radius: 999px; font-family: var(--mono); font-size: var(--small); flex: none; }
+.chip-btn { min-width: 2.2rem; padding: 4px 8px; font-family: var(--mono); flex: none; }
 .io { margin: var(--space-1) 0 0; }
 details.arg summary, details.more summary { cursor: pointer; color: var(--muted); font-size: var(--small); }
-details.more { margin: var(--space-2) 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius); }
+details.more { margin: var(--space-2) 0; padding: var(--space-2) var(--space-3); border-radius: 12px; background: var(--frame); box-shadow: var(--frame-line); }
 details.more[open] summary { margin-bottom: var(--space-2); }
-.conclusion { margin: var(--space-3) 0; padding: var(--space-2); border: 2px solid var(--ink); border-radius: var(--radius); overflow-wrap: anywhere; }
+.conclusion { margin: var(--space-3) 0; padding: 12px 16px; border-radius: 12px; background: var(--frame); box-shadow: var(--frame-line); font-weight: 500; overflow-wrap: anywhere; }
 ul.evidence li { margin: 0 0 var(--space-1); overflow-wrap: anywhere; }
 
 /* Concept words: real buttons inside the text, underlined with dots, focusable. */
@@ -371,7 +376,7 @@ button.cw[aria-expanded="true"] { background: var(--surface); }
 @media (pointer: coarse) { button.cw { min-height: 0; padding: 2px 1px; } }
 
 /* The reminder: fixed, placed beside its word by the script and kept inside the viewport. */
-.reminder { position: fixed; z-index: var(--z-sheet); max-width: min(22.5rem, calc(100vw - 16px)); max-height: min(70vh, 32rem); overflow: auto; padding: var(--space-2) var(--space-3); background: var(--bg); color: var(--ink); border: 1px solid var(--control); border-radius: var(--radius); box-shadow: var(--shadow-sheet); font-size: var(--small); }
+.reminder { position: fixed; z-index: var(--z-sheet); max-width: min(22.5rem, calc(100vw - 16px)); max-height: min(70dvh, 32rem); overflow: auto; padding: var(--space-2) var(--space-3); background: var(--frame); color: var(--ink); border: 1px solid var(--gray4); border-radius: 12px; box-shadow: var(--shadow-sheet); font-size: var(--small); }
 .reminder.pinned { border: 2px solid var(--signal); }
 .reminder p { margin: 0 0 var(--space-1); }
 .reminder .label { display: inline; }
@@ -379,8 +384,6 @@ button.cw[aria-expanded="true"] { background: var(--surface); }
 .reminder .actions button { min-height: 2.2rem; }
 
 /* The proof diagram. */
-.diagram { position: sticky; top: var(--space-2); z-index: var(--z-raised); }
-@media (max-width: 52rem) { .diagram { position: static; } }
 .pdiag { max-width: 22rem; margin: 0 auto; }
 .pdiag .pnode rect { fill: var(--bg); stroke: var(--control); stroke-width: 1.2; }
 .pdiag .pnode.h rect { stroke: var(--role); stroke-dasharray: 4 3; }
@@ -401,7 +404,7 @@ button.cw[aria-expanded="true"] { background: var(--surface); }
 .pdiag .arrowhead { fill: var(--muted); }
 
 /* The theory graph and the tree: wide drawings scroll inside their own box. */
-.scroll-box { max-width: 100%; max-height: 75vh; overflow: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+.scroll-box { max-width: 100%; max-height: 75vh; overflow: auto; }
 .chart.graph, .chart.tree { display: block; width: auto; max-width: none; }
 .gedge { fill: none; stroke: var(--muted); stroke-width: 1.4; }
 .gedge.defines { stroke-dasharray: none; }
@@ -470,12 +473,12 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <p id="loading" class="callout" role="status" aria-live="polite">Decoding the theorems and proofs. This takes a few seconds on a slow device.</p>
 
 <nav class="tabs no-print" aria-label="Views">
-<button type="button" data-field="view" value="proof">Proof</button>
-<button type="button" data-field="view" value="graph">Theory graph</button>
-<button type="button" data-field="view" value="tree">Prerequisite tree</button>
-<button type="button" data-field="view" value="concepts">Concepts</button>
-<button type="button" data-field="view" value="find">Find</button>
-<button type="button" data-field="view" value="about">Sources and coverage</button>
+<button type="button" class="button" data-field="view" value="proof">Proof</button>
+<button type="button" class="button" data-field="view" value="graph">Theory graph</button>
+<button type="button" class="button" data-field="view" value="tree">Prerequisite tree</button>
+<button type="button" class="button" data-field="view" value="concepts">Concepts</button>
+<button type="button" class="button" data-field="view" value="find">Find</button>
+<button type="button" class="button" data-field="view" value="about">Sources and coverage</button>
 </nav>
 
 <!-- The proof surface: the default view -->
@@ -501,13 +504,15 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <label class="field grow" for="gpick">Focus (a concept, theorem, proof or mechanism)
 <input id="gpick" type="text" list="node-names" autocomplete="off" placeholder="Type a name"></label>
 <datalist id="node-names"></datalist>
-<button type="button" id="graph-reset">Clear the expanded nodes</button>
+<button type="button" class="button" id="graph-reset">Clear the expanded nodes</button>
 </div>
 <div id="graph-entry"></div>
-<figure class="card" id="graph-figure">
-<figcaption class="label">The neighbourhood, focus on the left</figcaption>
+<figure id="graph-figure">
+<div class="card">
 <div class="scroll-box" tabindex="0" role="region" aria-label="Theory graph drawing: scroll for more"><svg id="graph-chart" class="chart graph" role="img" aria-label="The theory graph neighbourhood; the lists below give the same edges as text"></svg></div>
 <div id="graph-legend" class="legend"></div>
+</div>
+<figcaption>The neighbourhood, focus on the left</figcaption>
 </figure>
 <div id="graph-lists"></div>
 </section>
@@ -522,16 +527,18 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <input id="tdepth" type="range" data-field="tdepth" min="1" max="6" step="1"></label>
 <div class="field"><span class="label">Members</span>
 <div class="seg wrap" role="group" aria-label="Tree members">
-<button type="button" data-field="tshow" value="both">Both</button>
-<button type="button" data-field="tshow" value="results">Theorems</button>
-<button type="button" data-field="tshow" value="concepts">Concepts</button>
+<button type="button" class="button" data-field="tshow" value="both">Both</button>
+<button type="button" class="button" data-field="tshow" value="results">Theorems</button>
+<button type="button" class="button" data-field="tshow" value="concepts">Concepts</button>
 </div></div>
 </div>
 <p id="tree-summary" class="note"></p>
-<figure class="card">
-<figcaption class="label">Root on the left, prerequisites to the right</figcaption>
+<figure>
+<div class="card">
 <div class="scroll-box" tabindex="0" role="region" aria-label="Prerequisite tree drawing: scroll for more"><svg id="tree-chart" class="chart tree" role="img" aria-label="The prerequisite tree; the outline below gives the same tree as text"></svg></div>
 <p class="note">Squares are theorems, circles concepts. A filled mark is known. An item met again is drawn once and referred to with an arrow.</p>
+</div>
+<figcaption>Root on the left, prerequisites to the right</figcaption>
 </figure>
 <div class="two">
 <div><h3>Outline</h3><div id="tree-outline"></div></div>
@@ -558,17 +565,17 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <input id="fq" type="search" autocomplete="off" placeholder="compact, IsCompact.exists_isMinOn, Topology.Order"></label>
 <div class="field"><span class="label">In</span>
 <div class="seg wrap" role="group" aria-label="Search in">
-<button type="button" data-field="fkind" value="all">All</button>
-<button type="button" data-field="fkind" value="theorems">Theorems</button>
-<button type="button" data-field="fkind" value="concepts">Concepts</button>
-<button type="button" data-field="fkind" value="declarations">Lean declarations</button>
+<button type="button" class="button" data-field="fkind" value="all">All</button>
+<button type="button" class="button" data-field="fkind" value="theorems">Theorems</button>
+<button type="button" class="button" data-field="fkind" value="concepts">Concepts</button>
+<button type="button" class="button" data-field="fkind" value="declarations">Lean declarations</button>
 </div></div>
 </div>
 <p id="find-count" class="note" aria-live="polite"></p>
 <ol id="find-results" class="find-results"></ol>
 <div class="row pager no-print">
-<button type="button" id="find-prev">Previous page</button>
-<button type="button" id="find-next">Next page</button>
+<button type="button" class="button" id="find-prev">Previous page</button>
+<button type="button" class="button" id="find-next">Next page</button>
 </div>
 </section>
 
@@ -585,13 +592,13 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <select data-field="preset"><option value="balanced">Balanced</option><option value="practitioner">Practitioner</option><option value="researcher">Researcher</option></select></label>
 <div class="field"><span class="label">Learning depth (for study estimates)</span>
 <div class="seg wrap" role="group" aria-label="Learning depth">
-<button type="button" data-field="depth" value="understand">Understand</button>
-<button type="button" data-field="depth" value="apply">Apply</button>
-<button type="button" data-field="depth" value="prove">Prove</button>
+<button type="button" class="button" data-field="depth" value="understand">Understand</button>
+<button type="button" class="button" data-field="depth" value="apply">Apply</button>
+<button type="button" class="button" data-field="depth" value="prove">Prove</button>
 </div></div>
 </div>
 <p id="known-line" class="note"></p>
-<div class="actions"><button type="button" id="reset-known">Clear the items marked known</button></div>
+<div class="actions"><button type="button" class="button" id="reset-known">Clear the items marked known</button></div>
 </details>
 
 <div id="reminder" class="reminder" hidden></div>
@@ -604,15 +611,15 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <details class="tools no-print">
 <summary>Tools and exports</summary>
 <div class="toolbar" role="toolbar" aria-label="View and exports">
-<button type="button" id="reset">Reset the view</button>
-<button type="button" id="open-palette" aria-keyshortcuts="Control+K Meta+K">Commands (Ctrl+K)</button>
-<button type="button" id="save-json">Save view JSON</button>
-<label class="btn press" for="load-json">Load view JSON</label>
+<button type="button" class="button" id="reset">Reset the view</button>
+<button type="button" class="button" id="open-palette" aria-keyshortcuts="Control+K Meta+K">Commands (Ctrl+K)</button>
+<button type="button" class="button" id="save-json">Save view JSON</button>
+<label class="button press" for="load-json">Load view JSON</label>
 <input type="file" id="load-json" class="visually-hidden" accept="application/json,.json">
-<button type="button" id="copy-markdown">Copy Markdown record</button>
-<button type="button" id="save-markdown">Save Markdown record</button>
-<button type="button" id="save-beamdswitch">Save beamdswitch deck</button>
-<button type="button" id="copy-beamdswitch">Copy deck</button>
+<button type="button" class="button" id="copy-markdown">Copy Markdown record</button>
+<button type="button" class="button" id="save-markdown">Save Markdown record</button>
+<button type="button" class="button" id="save-beamdswitch">Save beamdswitch deck</button>
+<button type="button" class="button" id="copy-beamdswitch">Copy deck</button>
 </div>
 </details>
 <details class="licences">
@@ -922,7 +929,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 <li>Email: <a href="mailto:contact@teoyujie.org">contact@teoyujie.org</a> · <a href="https://teoyujie.org/contact.asc">OpenPGP key</a> (fingerprint <code>5E76 96A3 DDD7 6435 07DD 3EB8 F24F 7F0D 78EB E270</code>)</li>
 </ul>
 </footer>
-<div id="undo" class="undo no-print" role="status" aria-live="polite" hidden><span id="undo-text"></span><button type="button" id="undo-do">Undo</button></div>
+<div id="undo" class="undo no-print" role="status" aria-live="polite" hidden><span id="undo-text"></span><button type="button" class="button" id="undo-do">Undo</button></div>
 <dialog id="palette" aria-label="Commands">
 <label class="label" for="palette-input">Command</label>
 <input id="palette-input" type="text" role="combobox" aria-controls="palette-list" aria-expanded="true" autocomplete="off">
@@ -961,6 +968,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
   /** @typedef {Record<string, Field>} Fields */
   /** @typedef {Record<string, any>} State */
   /** @typedef {{ state: State, notices: string[] }} Normalized */
+
+  /** A count and its noun: "1 proof", "2 proofs" (ui-cheatsheet.md: pluralize with Intl.PluralRules). */
+  const PLURAL = new Intl.PluralRules("en");
+  /** @param {number} n @param {string} one @param {string} [other] */
+  function count(n, one, other = `${one}s`) { return `${n.toLocaleString("en")} ${PLURAL.select(n) === "one" ? one : other}`; }
 
   /* ---------- state ---------- */
 
@@ -1137,7 +1149,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         if (value === undefined) continue;
         if (el instanceof HTMLInputElement && el.type === "checkbox") el.checked = Boolean(value);
         else if (el instanceof HTMLInputElement || el instanceof HTMLSelectElement) { if (el !== document.activeElement || el.value !== "") el.value = text(value); }
-        else if (el instanceof HTMLButtonElement) el.setAttribute("aria-pressed", String(el.value === text(value)));
+        else if (el instanceof HTMLButtonElement) { const on = String(el.value === text(value)); el.setAttribute("aria-pressed", on); el.dataset.active = on; }
         else el.textContent = text(value);
       }
       spec.render(state, derived);
@@ -1291,6 +1303,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     });
 
     palette(commands);
+    anchors();
     registerTools(app);
     // A view that draws at its measured width (so chart text keeps its size on a phone) redraws on a resize.
     let frame = 0;
@@ -1301,6 +1314,23 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     document.documentElement.dataset.ready = "true";
     api.app = app;
     return app;
+  }
+
+  /**
+   * A '#' link at the left of each section heading, as on the article page of emilkowal.ski. The URL fragment holds
+   * the view's state, so the link scrolls to its heading and leaves the fragment as it is.
+   */
+  function anchors() {
+    for (const heading of document.querySelectorAll("main h2[id]")) {
+      const a = document.createElement("a");
+      a.className = "anchor";
+      a.href = `#${heading.id}`;
+      a.textContent = "#";
+      a.setAttribute("aria-hidden", "true");
+      a.tabIndex = -1;
+      a.addEventListener("click", (e) => { e.preventDefault(); heading.scrollIntoView({ block: "start" }); });
+      heading.prepend(a);
+    }
   }
 
   /**
@@ -1319,9 +1349,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         const li = document.createElement("li");
         const b = document.createElement("button");
         b.type = "button";
+        b.className = "button";
         b.textContent = c.label;
         b.setAttribute("role", "option");
         b.setAttribute("aria-selected", String(i === 0));
+        b.dataset.active = String(i === 0);
         b.addEventListener("click", () => run(c));
         li.append(b);
         return li;
@@ -1370,7 +1402,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     for (const tool of tools) mc.registerTool(tool);
   }
 
-  const api = { VERSION, SECTIONS, defaults, coerce, normalize, toHash, fromHash, toJson, fromJson, markdown, start, app: /** @type {any} */ (null) };
+  const api = { VERSION, SECTIONS, count, defaults, coerce, normalize, toHash, fromHash, toJson, fromJson, markdown, start, app: /** @type {any} */ (null) };
   return api;
 });
 </script>
@@ -2330,13 +2362,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     } else {
       parts.push(h("div", { class: "proof-picker", role: "group", "aria-label": `Proofs of ${s.name}` },
         h("span", { class: "label", text: s.proofs.length > 1 ? `${s.proofs.length} proofs:` : "Proof:" }),
-        s.proofs.map((/** @type {any} */ q) => h("button", { type: "button", "aria-pressed": String(q.slug === p.slug), onclick: () => app.set({ proof: q.slug, step: "", hyp: "" }) }, q.name))));
+        s.proofs.map((/** @type {any} */ q) => h("button", { type: "button", class: "button", "aria-pressed": String(q.slug === p.slug), "data-active": String(q.slug === p.slug), onclick: () => app.set({ proof: q.slug, step: "", hyp: "" }) }, q.name))));
       parts.push(h("p", { class: "slogan" }, segs(p.slogan, "the proof slogan")));
       const hyps = h("ul", { class: "hyps" }, s.hypotheses.map((/** @type {any} */ hy, /** @type {number} */ k) => {
         const role = p.roles.find((/** @type {any} */ r) => r.h === hy.id);
         const on = hl.hyps.includes(hy.id);
         return h("li", { class: [on ? "hl" : "", hl.mode !== "none" && !on ? "dim" : ""].filter(Boolean).join(" ") || null },
-          h("button", { type: "button", class: "chip-btn", "aria-pressed": String(state.hyp === hy.id), "aria-label": `Highlight the steps that use hypothesis ${k + 1}`, onclick: () => app.set({ hyp: state.hyp === hy.id ? "" : hy.id, step: "" }) }, `H${k + 1}`),
+          h("button", { type: "button", class: "button chip-btn", "aria-pressed": String(state.hyp === hy.id), "data-active": String(state.hyp === hy.id), "aria-label": `Highlight the steps that use hypothesis ${k + 1}`, onclick: () => app.set({ hyp: state.hyp === hy.id ? "" : hy.id, step: "" }) }, `H${k + 1}`),
           " ", h("span", null, segs(hy.seg, `hypothesis ${k + 1}`)),
           role ? h("p", { class: "role" }, h("span", { class: "label", text: "Role: " }), segs(role.why, `the role of hypothesis ${k + 1}`),
             role.unused ? h("span", { class: "note", text: " Not used in this proof." }) : h("span", { class: "note", text: ` Used at ${role.steps.map((/** @type {number} */ x) => `step ${x + 1}`).join(", ")}.` })) : null);
@@ -2346,7 +2378,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         const gives = st.conclusion ? ["the conclusion"] : st.outputs.map((/** @type {number} */ x) => `step ${x + 1}`);
         return h("li", { class: stepCls(st.k) || null, id: `step-${st.number}` },
           h("div", { class: "step-head" },
-            h("button", { type: "button", class: "chip-btn", "aria-pressed": String(state.step === st.id), "aria-label": `Highlight the inputs and outputs of step ${st.number}`, onclick: () => app.set({ step: state.step === st.id ? "" : st.id, hyp: "" }) }, String(st.number)),
+            h("button", { type: "button", class: "button chip-btn", "aria-pressed": String(state.step === st.id), "data-active": String(state.step === st.id), "aria-label": `Highlight the inputs and outputs of step ${st.number}`, onclick: () => app.set({ step: state.step === st.id ? "" : st.id, hyp: "" }) }, String(st.number)),
             h("span", { class: "step-slogan" }, segs(st.slogan, `step ${st.number}`))),
           h("p", { class: "io note", text: `Needs: ${needs.join(", ") || "nothing earlier"}. Gives: ${gives.join(", ") || "nothing later"}.` }),
           h("details", { class: "arg" }, h("summary", { text: "Full argument" }), h("p", null, segs(st.detail, `step ${st.number}`)),
@@ -2355,8 +2387,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       parts.push(h("div", { class: "proof-grid" },
         h("div", { class: "proof-text" }, h("h3", { text: "Hypotheses and their roles" }), hyps, h("h3", { text: "Steps" }), steps,
           s.conclusion ? h("p", { class: "conclusion" }, h("span", { class: "label", text: "Conclusion: " }), segs(s.conclusion, "the conclusion")) : null),
-        h("figure", { class: "diagram card" }, h("figcaption", { class: "label", text: `Diagram of the ${p.name} proof` }), proofDiagram(state, s),
-          h("p", { class: "note", text: "Dashed lines: a hypothesis used at a step. Solid arrows: a step whose output the next step uses. Select a hypothesis or a step to highlight it." }))));
+        h("figure", { class: "diagram" }, h("div", { class: "card" }, proofDiagram(state, s),
+          h("p", { class: "note", text: "Dashed lines: a hypothesis used at a step. Solid arrows: a step whose output the next step uses. Select a hypothesis or a step to highlight it." })),
+          h("figcaption", { text: `Diagram of the ${p.name} proof` }))));
       parts.push(disclosures(state, s));
     }
     if (!s.proofs.length) parts.push(disclosures(state, s));
@@ -2367,7 +2400,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       const k = p.steps.findIndex((/** @type {any} */ st) => st.id === state.step);
       walk.max = String(p.steps.length);
       walk.value = String(k + 1);
-      $("walk-value").textContent = k >= 0 ? `step ${k + 1} of ${p.steps.length}` : `the whole proof (${p.steps.length} steps)`;
+      $("walk-value").textContent = k >= 0 ? `step ${k + 1} of ${p.steps.length}` : `the whole proof (${VisualKit.count(p.steps.length, "step")})`;
     }
   }
 
@@ -2393,7 +2426,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       h("p", null, `Aggregate under the ${state.preset} weights: `, h("strong", { class: "num", text: Model.scoreLabel(s.score.v) }), s.score.v === null ? ` (interval ${s.score.lo} to ${s.score.hi})` : "", `. Confidence ${s.confidence}. These are judged scores from the Theorem Explorer (te-rubric/1).`),
       table(["Component", "Score (0 to 4)"], comp),
       h("p", { class: "note", text: `Study estimate (judged band) to understand: ${Model.bandLabel(s.effort[0])}; to apply: ${Model.bandLabel(s.effort[1])}; to prove: ${Model.bandLabel(s.effort[2])}.` }),
-      known[s.id] !== undefined ? h("p", null, `Marked known (${Model.DEPTHS[known[s.id]]}). `, h("button", { type: "button", class: "link", onclick: () => setKnown(s.id, null) }, "Unmark known")) : h("button", { type: "button", onclick: () => setKnown(s.id, Model.DEPTHS.indexOf(state.depth)) }, `Mark known (${state.depth})`)));
+      known[s.id] !== undefined ? h("p", null, `Marked known (${Model.DEPTHS[known[s.id]]}). `, h("button", { type: "button", class: "link", onclick: () => setKnown(s.id, null) }, "Unmark known")) : h("button", { type: "button", class: "button", onclick: () => setKnown(s.id, Model.DEPTHS.indexOf(state.depth)) }, `Mark known (${state.depth})`)));
     if (s.note) out.push(h("details", { class: "more" }, h("summary", { text: "Catalog note (Theorem Explorer judge)" }), h("p", { "data-math": "", text: tex(s.note) })));
     return out;
   }
@@ -2535,9 +2568,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       h("p", null, h("span", { class: "label", text: "Used at " }), r.usedAt.length ? r.usedAt.map((/** @type {any} */ u, /** @type {number} */ j) => [j ? "; " : "", h("a", { href: `#step-${u.number}`, onclick: (/** @type {Event} */ ev) => { ev.preventDefault(); $(`step-${u.number}`)?.scrollIntoView({ block: "center" }); } }, `step ${u.number}`)]) : "no step of this proof", r.hyps.length ? `; hypotheses ${r.hyps.join(", ")}` : ""),
       r.examples.length ? h("details", null, h("summary", { text: "Examples" }), h("ul", null, r.examples.map((/** @type {any[]} */ e) => h("li", null, segsPlain(e))))) : null,
       h("div", { class: "actions" },
-        h("button", { type: "button", onclick: () => app.set({ concept: app.state.concept === r.id ? "" : r.id, step: "", hyp: "" }, "replace") }, app.state.concept === r.id ? "Stop highlighting" : "Highlight its steps"),
-        h("button", { type: "button", onclick: () => { closePop(false); app.set({ view: "concepts", concept: r.id }); } }, "Open the concept page"),
-        h("button", { type: "button", class: "close", "aria-label": "Close the reminder (Escape)", onclick: () => closePop(true) }, "Close"))];
+        h("button", { type: "button", class: "button", onclick: () => app.set({ concept: app.state.concept === r.id ? "" : r.id, step: "", hyp: "" }, "replace") }, app.state.concept === r.id ? "Stop highlighting" : "Highlight its steps"),
+        h("button", { type: "button", class: "button", onclick: () => { closePop(false); app.set({ view: "concepts", concept: r.id }); } }, "Open the concept page"),
+        h("button", { type: "button", class: "button close", "aria-label": "Close the reminder (Escape)", onclick: () => closePop(true) }, "Close"))];
   }
   /** Segments inside a reminder: text only (concept words are plain there), TeX typeset. @param {any[]} sg @param {number} [max] */
   function segsPlain(sg, max) {
@@ -2644,7 +2677,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     const gpick = $("gpick");
     if (document.activeElement !== gpick) gpick.value = g.focus ? Model.nodeLabel(IX, g.focus) : "";
     put($("graph-entry"), g.focus ? null : [h("h3", { text: "Start with a basic concept" }),
-      h("ul", { class: "entry" }, g.entry.map((/** @type {any} */ e) => h("li", null, go(e.id, e.name, { gfocus: e.id, gopen: "" }), h("span", { class: "note", text: ` used in ${e.uses} proofs` }))))]);
+      h("ul", { class: "entry" }, g.entry.map((/** @type {any} */ e) => h("li", null, go(e.id, e.name, { gfocus: e.id, gopen: "" }), h("span", { class: "note", text: ` used in ${VisualKit.count(e.uses, "proof")}` }))))]);
     $("graph-figure").hidden = !g.focus;
     if (!g.focus) { put($("graph-lists")); return; }
     drawGraph(state, g);
@@ -2652,8 +2685,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     put($("graph-lists"), g.lists.map((/** @type {any} */ l) => h("section", { class: "card" },
       h("h3", null, `${l.kind}: `, l.label),
       h("div", { class: "actions" },
-        l.id !== g.focus ? h("button", { type: "button", onclick: () => app.set({ gfocus: l.id, gopen: "" }) }, "Make it the focus") : null,
-        l.id !== g.focus ? h("button", { type: "button", onclick: () => app.set({ gopen: g.open.filter((/** @type {string} */ x) => x !== l.id).join(",") }) }, "Collapse") : null,
+        l.id !== g.focus ? h("button", { type: "button", class: "button", onclick: () => app.set({ gfocus: l.id, gopen: "" }) }, "Make it the focus") : null,
+        l.id !== g.focus ? h("button", { type: "button", class: "button", onclick: () => app.set({ gopen: g.open.filter((/** @type {string} */ x) => x !== l.id).join(",") }) }, "Collapse") : null,
         openBtnFor(l.id, l.kind, l.label)),
       l.groups.length ? l.groups.map((/** @type {any} */ gr) => h("details", { open: gr.total <= 12 ? true : null },
         h("summary", { text: `${gr.dir === "out" ? "" : "← "}${/** @type {any} */ (Model.EDGE_TYPES)[gr.type].label}${gr.dir === "out" ? " →" : ""} (${gr.total})` }),
@@ -2663,11 +2696,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
   }
   /** @param {string} id @param {string} kind @param {string} label */
   function openBtnFor(id, kind, label) {
-    if (kind === "theorem") return h("button", { type: "button", onclick: () => app.set({ view: "proof", sel: id, proof: "", step: "", hyp: "" }) }, "Open the theorem");
-    if (kind === "concept") return h("button", { type: "button", onclick: () => app.set({ view: "concepts", concept: id }) }, "Open the concept");
+    if (kind === "theorem") return h("button", { type: "button", class: "button", onclick: () => app.set({ view: "proof", sel: id, proof: "", step: "", hyp: "" }) }, "Open the theorem");
+    if (kind === "concept") return h("button", { type: "button", class: "button", onclick: () => app.set({ view: "concepts", concept: id }) }, "Open the concept");
     if (kind === "proof") {
       const p = IX.proofs[IX.proofById.get(id)];
-      return h("button", { type: "button", onclick: () => app.set({ view: "proof", sel: IX.theorems[p.th].id, proof: Model.slugOf(id), step: "", hyp: "" }) }, "Open the proof");
+      return h("button", { type: "button", class: "button", onclick: () => app.set({ view: "proof", sel: IX.theorems[p.th].id, proof: Model.slugOf(id), step: "", hyp: "" }) }, "Open the proof");
     }
     return h("span", { class: "note", text: label ? "" : "" });
   }
@@ -2742,11 +2775,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     const item = (n) => h("li", { class: n.known ? "known" : null },
       h("button", { type: "button", class: "link", onclick: () => app.set({ troot: n.id }) }, n.name),
       h("span", { class: "note", text: ` ${n.kind}${n.level ? `, ${Model.LEVEL_NAMES[Model.LEVELS.indexOf(n.level)]}` : ""}${n.edge ? `; ${n.edge}` : ""}${n.known ? "; known" : ""}${n.ref ? "; shown above" : ""}${n.cycle ? "; closes a cycle" : ""}${n.more ? `; ${n.more} more below` : ""} ` }),
-      h("button", { type: "button", onclick: () => setKnown(n.id, n.id in known ? null : Model.DEPTHS.indexOf(state.depth)) }, n.id in known ? "Unmark known" : `Mark known (${state.depth})`),
+      h("button", { type: "button", class: "button", onclick: () => setKnown(n.id, n.id in known ? null : Model.DEPTHS.indexOf(state.depth)) }, n.id in known ? "Unmark known" : `Mark known (${state.depth})`),
       n.children.length ? h("ul", null, n.children.map(item)) : null);
     put($("tree-outline"), h("ul", { class: "outline" }, item(t.root)));
     put($("tree-study"), ...t.study.map((/** @type {any} */ n) => h("li", null, h("button", { type: "button", class: "link", onclick: () => app.set(n.kind === "theorem" ? { view: "proof", sel: n.id, proof: "", step: "", hyp: "" } : { view: "concepts", concept: n.id }) }, n.name),
-      h("span", { class: "note", text: ` ${n.kind}, ${Model.bandLabel(n.band)} ` }), h("button", { type: "button", onclick: () => setKnown(n.id, Model.DEPTHS.indexOf(state.depth)) }, `Mark known (${state.depth})`))));
+      h("span", { class: "note", text: ` ${n.kind}, ${Model.bandLabel(n.band)} ` }), h("button", { type: "button", class: "button", onclick: () => setKnown(n.id, Model.DEPTHS.indexOf(state.depth)) }, `Mark known (${state.depth})`))));
   }
   /** @param {any} t */
   function drawTree(t) {
@@ -2840,7 +2873,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     $("find-count").textContent = f.query ? `${f.total.toLocaleString("en")} results; page ${f.page + 1} of ${f.pages}, ${f.size} per page.` : "Type a word: every word must match.";
     put($("find-results"), ...f.items.map((/** @type {any} */ it) => h("li", null,
       it.kind === "theorem" ? theoremBtn(it.id, it.name) : conceptBtn(it.id, it.name),
-      h("span", { class: "note", text: ` ${it.kind}, ${it.type}${it.kind === "theorem" ? `, ${it.proofs} proofs` : `, used in ${it.proofs} proofs`}${it.decl ? `, ${it.decl}` : ""}` }))));
+      h("span", { class: "note", text: ` ${it.kind}, ${it.type}${it.kind === "theorem" ? `, ${VisualKit.count(it.proofs, "proof")}` : `, used in ${VisualKit.count(it.proofs, "proof")}`}${it.decl ? `, ${it.decl}` : ""}` }))));
     $("find-prev").disabled = f.page <= 0;
     $("find-next").disabled = f.page >= f.pages - 1;
   }
@@ -2885,7 +2918,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
     if (state.view === "concepts") renderConcept(state, d);
     if (state.view === "find") renderFind(state, d);
     if (state.view === "about") renderAbout();
-    $("known-line").textContent = `${Object.keys(known).length} items marked known${storageOk ? ", kept in this browser" : "; local storage is not available, so the marks last only while this tab is open"}.`;
+    $("known-line").textContent = `${VisualKit.count(Object.keys(known).length, "item")} marked known${storageOk ? ", kept in this browser" : "; local storage is not available, so the marks last only while this tab is open"}.`;
     typeset();
     repin();
   }
@@ -2996,7 +3029,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       $("reset-known").addEventListener("click", () => {
         const was = known;
         known = {}; D.profile = { known }; try { localStorage.setItem(PROFILE_KEY, "{}"); } catch { storageOk = false; } a.set({}, "replace");
-        a.undoable(`Cleared ${Object.keys(was).length} items marked known.`, () => { known = was; D.profile = { known }; try { localStorage.setItem(PROFILE_KEY, JSON.stringify(known)); } catch { storageOk = false; } a.set({}, "replace"); });
+        a.undoable(`Cleared ${VisualKit.count(Object.keys(was).length, "item")} marked known.`, () => { known = was; D.profile = { known }; try { localStorage.setItem(PROFILE_KEY, JSON.stringify(known)); } catch { storageOk = false; } a.set({}, "replace"); });
       });
       $("deck-fallback").addEventListener("toggle", () => {
         if (!$("deck-fallback").open) return;
