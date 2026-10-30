@@ -55,10 +55,10 @@
   --space-8: 2rem;
   --space-12: 3rem;
   /* The article page of emilkowal.ski (emilkowal.ski/ui/building-a-toast-component): white frames with a 1px
-     inset line, 12px gray captions. */
+     inset line, 12px captions in --muted (4.5:1 or more on --bg). */
   --frame: #fff;
   --frame-line: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-  --caption: #82827c;
+  --caption: var(--muted);
   /* The z-layers: one position for each kind of object, the only place that sets them. A raised item is a sticky
      table header; floating controls are the view switcher and the undo notice; a sheet is the concept reminder;
      the command palette is a dialog and lives in the browser's top layer. Shadows show the height. */
@@ -83,13 +83,10 @@
 }
 main.wrap { padding-top: clamp(0.5rem, 3vw, 1.5rem); }
 
-/* The site header: the name on the left, the site links on the right. */
-.site { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-6); padding-bottom: var(--space-3); }
-.site .name { font-weight: 500; text-decoration: none; }
-.site nav { display: flex; gap: var(--space-6); color: var(--muted); font-weight: 500; }
-.site nav a { text-decoration: none; }
-.site a { white-space: nowrap; }
-@media (max-width: 40rem) { .site { gap: var(--space-3); } .site nav { gap: var(--space-3); } }
+/* The site header, as on the home page: the name above the tagline, with no nav. */
+.site { display: flex; flex-direction: column; align-items: flex-start; padding-top: var(--space-6); padding-bottom: var(--space-3); }
+.site .name { font-weight: 500; text-decoration: none; white-space: nowrap; }
+.site .tagline { font-weight: 500; line-height: 1; color: var(--muted); }
 
 /* The site footer, as on the home page. Its bottom padding is the room for the floating view switcher, so nothing
    ends behind it. */
@@ -165,7 +162,6 @@ pre { overflow: auto; margin: 0 0 26px; padding: 16px; border: 1px solid var(--l
    it, so that a 44px button keeps its label centred. */
 button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
-.button:disabled { color: var(--faint); cursor: default; }
 label.button { -webkit-user-select: none; user-select: none; touch-action: manipulation; }
 input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea {
   min-height: 2.25rem;
@@ -182,7 +178,7 @@ input[type="range"], input[type="checkbox"], input[type="radio"] { accent-color:
 @media (pointer: coarse) { input, select, textarea { font-size: 16px; } }
 /* Hover only under a fine pointer (shared rule 4). */
 @media (hover: hover) and (pointer: fine) {
-  .site nav a:hover, .eyebrow a:hover { color: var(--ink); }
+  .eyebrow a:hover { color: var(--ink); }
   input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):hover, select:hover { border-color: var(--control); }
 }
 /* Press: an SVG node with role="button" scales about its own centre, not the drawing's origin (shared rule 1). */
@@ -191,13 +187,16 @@ svg [role="button"] { transform-box: fill-box; transform-origin: center; }
    selectable, unlike a control (shared rule 7), so a copied statement keeps its words. */
 button.link::after, button.cw::after { content: none; }
 button.link, button.cw { -webkit-user-select: text; user-select: text; }
+/* A button.link looks and acts as a link of /shared/kowalski.css: its underline and hover, and no press. */
+button.link { text-decoration: underline 0.08em var(--underline); text-underline-position: from-font; }
+button.link:active { transform: none; }
+@media (hover: hover) and (pointer: fine) { button.link:hover { text-decoration-color: var(--underline-hover); } }
 /* Tap targets of 44px on a phone or a touch screen (shared rule 8). */
 @media (pointer: coarse), (max-width: 40rem) {
   .button, select,
   input:not([type="range"]):not([type="checkbox"]):not([type="radio"]) { min-height: var(--tap); }
   input[type="range"] { height: var(--tap); }
   summary { display: flex; align-items: center; min-height: var(--tap); }
-  .site a { display: inline-flex; align-items: center; min-height: var(--tap); }
   input[type="checkbox"], input[type="radio"] { width: 1.5rem; height: 1.5rem; }
 }
 
@@ -338,7 +337,7 @@ section[hidden], article[hidden] { display: none; }
 .seg.wrap { flex-wrap: wrap; }
 .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: var(--space-4); }
 .two > * { min-width: 0; }
-button.link { min-height: 0; max-width: 100%; padding: 0; white-space: normal; overflow-wrap: anywhere; border: 0; background: none; color: inherit; text-align: left; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+button.link { min-height: 0; max-width: 100%; padding: 0; white-space: normal; overflow-wrap: anywhere; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; }
 .table-scroll { max-width: 100%; overflow-x: auto; }
 table.data { border-collapse: collapse; width: 100%; font-size: var(--small); }
 table.data th, table.data td { padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--grid); text-align: left; vertical-align: top; }
@@ -455,8 +454,8 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 </head>
 <body>
 <header class="site wrap">
-<a class="name" href="https://teoyujie.org/">teoyujie.org</a>
-<nav aria-label="Site"><a href="https://teoyujie.org/#explorations">Explorations</a> <a href="https://github.com/yujieteo">GitHub ↗</a></nav>
+<a class="name" href="https://teoyujie.org/">Yu Jie Teo</a>
+<span class="tagline">Mechanical Engineer</span>
 </header>
 <main class="wrap">
 <header class="title">
