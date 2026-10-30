@@ -2,24 +2,24 @@
 .bd h1 { margin-bottom: 32px; }
 .bd h3 { font-weight: 550; margin: 0 0 12px; }
 .bd section h2 { font-weight: 550; margin: 48px 0 20px; }
-.bd code { font: 0.875em var(--mono); }
+.bd code { font: 0.8125rem var(--mono); }
 .icon { width: 34px; padding-inline: 0; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; margin: 0 0 16px; }
 .toolbar .group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.label { font-size: 13px; color: var(--muted); margin-right: 4px; }
+.label { font-size: 0.8125rem; color: var(--muted); margin-right: 4px; }
 .bd select, .bd input { font: inherit; font-size: 0.875rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.3rem 0.5rem; min-height: 36px; width: 100%; font-variant-numeric: tabular-nums; }
-@media (pointer: coarse) { .bd select, .bd input { font-size: 16px; } }
+@media (pointer: coarse) { .bd select, .bd input { font-size: 1rem; } }
 .toolbar select { width: auto; max-width: 100%; }
 .bd [aria-invalid="true"] { border-color: var(--warm); box-shadow: 0 0 0 1px var(--warm); }
-#plots { position: relative; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-#plots svg { display: block; width: 100%; height: auto; overflow: visible; }
-#plots.stale svg, .stats.stale, tbody.stale { opacity: 0.35; }
-#plots .handle { cursor: grab; }
-#plots .handle:focus, #plots .plotarea { outline: none; }
-#plots .ring, #plots .box { fill: none; stroke: none; }
-#plots .handle:focus-visible .ring, #plots .handle.active .ring, #plots .plotarea:focus-visible .box { stroke: var(--fg); stroke-width: 2; }
-#plots .hit { fill: transparent; }
-#plots .cursor { stroke: var(--fg); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.6; pointer-events: none; }
+.plots { position: relative; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.plots svg { display: block; width: 100%; height: auto; overflow: visible; }
+.plots.stale svg, .stats.stale, tbody.stale { opacity: 0.35; }
+.plots .handle { cursor: grab; }
+.plots .handle:focus, .plots .plotarea { outline: none; }
+.plots .ring, .plots .box { fill: none; stroke: none; }
+.plots .handle:focus-visible .ring, .plots .handle.active .ring, .plots .plotarea:focus-visible .box { stroke: var(--fg); stroke-width: 2; }
+.plots .hit { fill: transparent; }
+.plots .cursor { stroke: var(--fg); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.6; pointer-events: none; }
 .readout { display: flex; flex-wrap: wrap; gap: 0.15rem 1rem; font-size: 0.875rem; margin: 0.5rem 0 0; min-height: 2.8em; font-variant-numeric: tabular-nums; }
 .readout b { font-weight: 400; color: var(--fg); }
 .readout .k { color: var(--muted); }
@@ -48,11 +48,11 @@ label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 .table-wrap { position: relative; overflow-x: auto; padding: 0; }
 .bd table { border-collapse: collapse; width: 100%; font-size: 0.8125rem; min-width: 40rem; }
 .bd th, .bd td { text-align: left; padding: 0.4rem 0.6rem; vertical-align: top; }
-.bd tr + tr td, .bd tbody tr:first-child td { border-top: 1px solid var(--line); }
+tr + tr > td, tbody > tr:first-child > td { border-top: 1px solid var(--line); }
 .bd th { font-weight: 500; color: var(--fg); }
 .bd .num { text-align: right; font-variant-numeric: tabular-nums; }
 .export { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 20px; font-size: 0.875rem; }
-.bd summary { cursor: pointer; color: var(--fg); line-height: var(--tap); touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.bd summary { cursor: pointer; color: var(--fg); padding-block: 10px; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
 .calc h4 { font-size: 1rem; font-weight: 550; color: var(--fg); margin: 0 0 12px; }
 .calc p, .calc li { font-size: 0.9375rem; }
 .calc .table-wrap table { min-width: 0; width: auto; }
@@ -60,8 +60,28 @@ label.f > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 .math { font-family: var(--math); white-space: nowrap; }
 .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 0.15em; line-height: 1.25; }
 .frac > span + span { border-top: 1px solid currentColor; }
-.eq sup, .eq sub, .math sup, .math sub { font-size: 0.72em; line-height: 0; }
-#hand-point { margin-bottom: 32px; }
-#hand-point .calc > :last-child { margin-bottom: 0; }
-#hand-point:empty { display: none; }
-@media (forced-colors: active) { #plots .area { fill: none; } }
+.eq sup, .eq sub, .math sup, .math sub { font-size: 0.72rem; line-height: 0; }
+.hand-point { margin-bottom: 32px; }
+.hand-point .calc > :last-child { margin-bottom: 0; }
+.hand-point:empty { display: none; }
+@media (forced-colors: active) { .plots .area { fill: none; } }
+/* The toaster is fixed, and each toast is absolute: the toasts are a stack of layers at the same place. The press and
+   swipe give feedback, and the enter and exit keep the sense of where a toast comes from. Enter 250 ms, exit 200 ms. */
+.toaster { position: fixed; z-index: 10; right: 24px; bottom: calc(24px + env(safe-area-inset-bottom)); width: 356px; }
+.toasts { position: relative; margin: 0; padding: 0; list-style: none; }
+.toast { position: absolute; z-index: calc(100 - var(--i)); right: 0; bottom: 0; width: 100%; padding: 14px 16px; background: var(--card); border: 1px solid var(--gray4);
+  border-radius: 8px; box-shadow: var(--shadow); font-size: 0.8125rem; color: var(--ink); touch-action: none;
+  user-select: none; -webkit-user-select: none; transform-origin: top; --swipe: 0px;
+  transform: translateY(calc(var(--swipe) - var(--i) * 14px)) scale(calc(1 - var(--i) * 0.05));
+  transition: transform 250ms var(--ease-out), opacity 250ms var(--ease-out); }
+.toast::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 14px; }
+.toast > p { margin: 0; line-height: var(--leading); transition: opacity 250ms var(--ease-out); }
+.toasts:not([data-expanded]) > .toast:not([data-front]) > p { opacity: 0; }
+.toast[data-hidden], .toast[data-removed] { opacity: 0; pointer-events: none; }
+.toasts[data-expanded] > .toast { transform: translateY(calc(var(--swipe) - var(--y))); }
+.toast[data-swiping] { transition: none; }
+.toast[data-removed] { transition-duration: 200ms; }
+.toast[data-swiped] { transform: translateY(calc(var(--swipe) + 100%)); }
+@starting-style { .toast { opacity: 0; transform: translateY(100%); } }
+@media (max-width: 600px) { .toaster { right: 16px; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: auto; } }
+@media (prefers-reduced-motion: reduce) { .toast { transition-property: opacity; } }

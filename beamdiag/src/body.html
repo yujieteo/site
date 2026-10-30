@@ -23,7 +23,7 @@
 
   <div class="figure">
     {{error}}
-    <div id="plots" class="{{stale}}">{{figure}}</div>
+    <div id="plots" class="plots {{stale}}">{{figure}}</div>
     <p id="readout" class="readout">{{readout}}</p>
       <ul id="stats" class="stats {{stale}}">{{stats}}</ul>
     <ul id="reactions" class="reactions" aria-label="Support reactions">{{reactions}}</ul>
@@ -31,7 +31,6 @@
 
       <button class="button" type="button" data-act="save-image">Save PNG</button>
       <button class="button" type="button" data-act="save-pdf">Save PDF</button>
-      <span id="figure-status" class="muted" role="status"></span>
     </div>
   </div>
 </div>
@@ -88,7 +87,7 @@
 <section id="hand" aria-labelledby="hand-h">
   <h2 id="hand-h"><a class="anchor" href="#hand" aria-label="Link to this section">#</a>Hand calculations</h2>
 
-  <div id="hand-point" class="frame">{{point}}</div>
+  <div id="hand-point" class="hand-point frame">{{point}}</div>
   <div id="hand-body">{{hand}}</div>
 </section>
 
@@ -102,3 +101,4 @@
 <li>Code: <a href="https://github.com/yujieteo">GitHub ↗</a></li>
 </ul>
 </footer>
+<section class="toaster" aria-label="Notifications"><ol class="toasts" aria-live="polite"></ol></section>

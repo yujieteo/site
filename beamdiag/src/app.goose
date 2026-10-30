@@ -76,6 +76,7 @@ fn attr_off(sel: u8[:], name: u8[:]) {
 fn cls(sel: u8[:], name: u8[:], on: bool) { cmd_begin("cls", sel); cmd_str("name", name); cmd_bool("on", on); cmd_end(); }
 fn hidden(sel: u8[:], on: bool) { cmd_begin("hidden", sel); cmd_bool("on", on); cmd_end(); }
 fn focus(sel: u8[:]) { cmd_begin("focus", sel); cmd_end(); }
+fn toast(v: u8[:]) { cmd_begin("toast", v); cmd_end(); }
 fn prevent() {
     if cmd_n > 0 { cmds.push(','); }
     cmd_n++;
@@ -1028,7 +1029,7 @@ fn round1(si: f64, q: i64) -> f64 { return take(prec(show(si, q), 1), q); }
 
 fn on_result(tag: u8[:], ok: bool, msg: u8[:]) {
     if tag == "png" {
-        if ok { text("#figure-status", "Saved beamdiag.png."); } else { text("#figure-status", str("Could not save: ", msg, ".")); }
+        if ok { toast("Saved beamdiag.png."); } else { toast(str("Could not save: ", msg, ".")); }
     }
 }
 
@@ -1681,7 +1682,7 @@ fn print_svg(list: DOp[:], w: f64, h: f64) -> u8[>..] {
 
 fn save_figure(kind: u8[:]) {
     flush();
-    if !solved() { text("#figure-status", "Fix the beam first: there is no solution to save."); return; }
+    if !solved() { toast("Fix the beam first: there is no solution to save."); return; }
     var list: DOp[>..] = [];
     export_figure(list);
     let name = str("beamdiag.", kind);
@@ -1691,7 +1692,6 @@ fn save_figure(kind: u8[:]) {
         save(name, "application/pdf", enc, true);
     } else {
         let s = print_svg(list, ex_w, ex_h);
-        text("#figure-status", "Drawing…");
         cmd_begin("raster", s);
         cmds.append(",\"w\":");
         cmds.append(js(ex_w));
@@ -1702,7 +1702,7 @@ fn save_figure(kind: u8[:]) {
         cmd_end();
         return;
     }
-    text("#figure-status", str("Saved ", name, "."));
+    toast(str("Saved ", name, "."));
 }
 
 // ---------- the page as it opens ----------
