@@ -64,6 +64,7 @@ function run(cmds) {
     else if ("copy" in c) copy(c);
     else if ("raster" in c) raster(c);
     else if ("html" in c) htmlFrame(c.html,c.v);
+    else if ("toast" in c) toast(c.toast);
     else if ("text" in c) all(c.text).forEach((e) => { e.textContent = c.v; });
     else if ("attr" in c) all(c.attr).forEach((e) => (c.v == null ? e.removeAttribute(c.name) : e.setAttribute(c.name, c.v)));
     else if ("value" in c) all(c.value).forEach((e) => { e.value = c.v; });
@@ -86,7 +87,7 @@ function run(cmds) {
 document.addEventListener("input", (e) => { const t = e.target; if (t.tagName === "INPUT" && t.dataset.field) send({ ev: "input", field: t.dataset.field, value: t.value }); });
 document.addEventListener("change", (e) => { const t = e.target; if (t.dataset && t.dataset.field) send({ ev: t.tagName === "SELECT" ? "change" : "done", field: t.dataset.field, value: t.value }); });
 document.addEventListener("focusout", (e) => { const f = e.target.dataset && e.target.dataset.field; if (f) send({ ev: "done", field: f }); });
-document.addEventListener("click", (e) => { const b = e.target.closest && e.target.closest("[data-act]"); if (b) { const go=()=>send({ ev:"click",act:b.dataset.act,arg:b.dataset.arg||"" }); if(b.dataset.act.startsWith("save-")) pdfFonts().then(go).catch(e=>{document.getElementById("figure-status").textContent=e.message}); else go(); } });
+document.addEventListener("click", (e) => { const b = e.target.closest && e.target.closest("[data-act]"); if (b) { const go=()=>send({ ev:"click",act:b.dataset.act,arg:b.dataset.arg||"" }); if(b.dataset.act.startsWith("save-")) { toast("Drawing…", true); pdfFonts().then(go).catch(e=>toast(`${e.message}.`)); } else go(); } });
 const frac = (e) => { const r = plots.getBoundingClientRect(); return (e.clientX - r.left) / r.width; };
 plots.addEventListener("pointerdown", (e) => {
   const h = e.target.closest("[data-key]");
@@ -100,6 +101,65 @@ plots.addEventListener("keydown", (e) => {
   const h = e.target.closest("[data-key]"), target = h ? h.dataset.key : e.target.id === "plotarea" ? "plot" : "";
   if (target && send({ ev: "key", key: e.key, shift: e.shiftKey, target }).prevent) e.preventDefault();
 });
+// Toasts, after Sonner (https://emilkowal.ski/ui/building-a-toast-component). The newest is in front. A toast closes after
+// 4 s, and the timer stops while the pointer is on the stack or the tab is hidden. A loading toast stays until the next
+// toast takes its place. Swipe down to close: past 45 px, or faster than 0.11 px/ms. An upward swipe gets friction.
+const toaster = document.querySelector(".toasts"), GAP = 14;
+let toasts = [], expanded = false;
+function layout() {
+  const hs = toasts.map((t) => { t.el.style.height = ""; return t.el.offsetHeight; });
+  let y = 0;
+  toasts.forEach((t, i) => {
+    t.el.style.setProperty("--i", i); t.el.style.setProperty("--y", `${y}px`); y += hs[i] + GAP;
+    if (i && !expanded) t.el.style.height = `${hs[0]}px`;
+    t.el.toggleAttribute("data-front", !i); t.el.toggleAttribute("data-hidden", i > 2);
+  });
+  toaster.toggleAttribute("data-expanded", expanded);
+}
+function tick() {
+  const on = !expanded && !document.hidden;
+  for (const t of toasts) {
+    if (t.loading) continue;
+    if (on && !t.timer) { t.start = Date.now(); t.timer = setTimeout(() => dismiss(t), t.left); }
+    else if (!on && t.timer) { clearTimeout(t.timer); t.timer = 0; t.left -= Date.now() - t.start; }
+  }
+}
+function dismiss(t) {
+  clearTimeout(t.timer); toasts = toasts.filter((x) => x !== t);
+  if (!toasts.length) expanded = false;
+  t.el.setAttribute("data-removed", ""); setTimeout(() => t.el.remove(), 200);
+  layout(); tick();
+}
+function toast(msg, loading = false) {
+  let t = toasts.find((x) => x.loading);
+  if (!t) {
+    const el = document.createElement("li");
+    el.className = "toast"; el.append(document.createElement("p")); toaster.prepend(el);
+    t = { el, left: 4000, timer: 0 }; toasts.unshift(t); swipe(t);
+  }
+  t.el.firstChild.textContent = msg; t.loading = loading;
+  layout(); tick();
+}
+function swipe(t) {
+  let y0 = null, t0 = 0, d = 0;
+  t.el.addEventListener("pointerdown", (e) => { y0 = e.clientY; t0 = Date.now(); d = 0; t.el.setPointerCapture(e.pointerId); t.el.setAttribute("data-swiping", ""); });
+  t.el.addEventListener("pointermove", (e) => {
+    if (y0 === null) return;
+    const raw = e.clientY - y0;
+    d = raw >= 0 ? raw : -12 * (1 - Math.exp(raw / 60));
+    t.el.style.setProperty("--swipe", `${d}px`);
+  });
+  const up = () => {
+    if (y0 === null) return;
+    y0 = null; t.el.removeAttribute("data-swiping");
+    if (d >= 45 || (d > 0 && d / (Date.now() - t0) > 0.11)) { t.el.setAttribute("data-swiped", ""); dismiss(t); }
+    else t.el.style.setProperty("--swipe", "0px");
+  };
+  t.el.addEventListener("pointerup", up); t.el.addEventListener("pointercancel", up);
+}
+toaster.addEventListener("pointerenter", () => { expanded = true; layout(); tick(); });
+toaster.addEventListener("pointerleave", () => { expanded = false; layout(); tick(); });
+document.addEventListener("visibilitychange", tick);
 let fontPromise;
 async function pdfFonts() {
   fontPromise ||= Promise.all(["sans", "head", "math"].map(async n => {

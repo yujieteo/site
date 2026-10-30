@@ -32,7 +32,10 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
    all explanation text (method, signs, assumptions, sources) on the page.
 7. Look: the site look, with the site stylesheet `/style.css`, header and footer. The page adds
    only the styles of the tool, and its controls follow the interaction rules of `/shared/kowalski.css`.
-   No themes, no dark mode, and no fades except the hover fade of `.button` and of the heading anchor.
+   No themes, no dark mode, and no fades except the hover fade of `.button` and of the heading anchor, and the
+   toast that tells the result of Save PNG and Save PDF.
+   Reason for the toast: the Website Design Audit Standard of 2026-10-30 asks for a toast where the site needs one
+   (rules K1 to K5), and a save needs a loading state and a result (rule L9).
    Reason: the captain asked for the shared stylesheet and its interaction rules on all pages on 2026-10-29.
    Reason for the two fades: on 2026-10-29 the captain asked for the buttons of Sonner and animations.dev,
    which fade on hover, and for the look of the article https://emilkowal.ski/ui/building-a-toast-component.
