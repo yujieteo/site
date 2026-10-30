@@ -221,8 +221,8 @@ button.link:active { transform: none; }
   box-shadow: var(--shadow-sheet);
 }
 
-/* Print: mark controls that mean nothing on paper with .no-print. */
-@media print { .no-print { display: none !important; } }
+/* Print: mark controls that mean nothing on paper with .no-print. :root lifts the rule above the one-class display rules of the apps. */
+@media print { :root .no-print { display: none; } }
 /* The shared layout of the theorem apps, after the style tokens (style-tokens.css) and before an app's own
    src/style.css. Content fills the page. The controls that move between views float above it in a second layer: the
    view switcher at the bottom edge, in reach of a thumb, and the undo notice above it. The z-layers are the --z-*
@@ -287,8 +287,8 @@ details.tools { margin-top: 56px; }
 details.tools > summary { cursor: pointer; color: var(--muted); font-size: var(--small); min-height: var(--tap); display: flex; align-items: center; }
 .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 0; }
 label.button:focus-within { outline: 2px solid var(--focus); outline-offset: 3px; }
-#notice:empty, #export-status:empty { display: none; }
-#notice { margin: 0 0 var(--space-4); }
+.notice:empty, .export-status:empty { display: none; }
+.notice { margin: 0 0 var(--space-4); }
 .lab > * { min-width: 0; }
 .field { display: grid; gap: var(--space-1); margin: 0 0 var(--space-4); }
 .field input[type="range"] { width: 100%; }
@@ -297,7 +297,7 @@ label.button:focus-within { outline: 2px solid var(--focus); outline-offset: 3px
 .readout dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; }
 .formula { overflow-x: auto; font-family: var(--math); }
 /* The command palette is a dialog: the browser's top layer, above every --z-* layer. */
-#palette {
+.palette {
   width: min(100% - 2rem, 32rem);
   padding: var(--space-4);
   border: 1px solid var(--border);
@@ -306,10 +306,10 @@ label.button:focus-within { outline: 2px solid var(--focus); outline-offset: 3px
   color: var(--ink);
   box-shadow: var(--shadow-sheet);
 }
-#palette::backdrop { background: rgb(0 0 0 / 0.3); }
-#palette input { width: 100%; }
-#palette ul { margin: var(--space-3) 0 0; padding: 0; list-style: none; }
-#palette li .button { width: 100%; justify-content: flex-start; }
+.palette::backdrop { background: rgb(0 0 0 / 0.3); }
+.palette input { width: 100%; }
+.palette ul { margin: var(--space-3) 0 0; padding: 0; list-style: none; }
+.palette li .button { width: 100%; justify-content: flex-start; }
 .licences { margin-top: var(--space-8); color: var(--muted); font-size: var(--small); }
 .licences pre { max-height: 20rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: var(--text-xs); }
 @media print { nav.tabs, .undo { display: none; } }
@@ -319,7 +319,7 @@ details.intro { margin: 0 0 var(--space-3); }
 details.intro > summary { display: flex; align-items: center; min-height: var(--tap); color: var(--muted); font-size: var(--small); cursor: pointer; }
 details.intro .lede { margin-top: var(--space-2); }
 /* Shortcut buttons: one row that scrolls sideways, not a block of wrapped buttons. */
-.examples { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: thin; padding-bottom: var(--space-1); }
+.examples { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; padding-bottom: var(--space-1); }
 .examples > * { flex: none; }
 /* Chips, sort headers and sorted-table buttons are tap targets too; a word inside a paragraph is not. */
 @media (pointer: coarse), (max-width: 40rem) {
@@ -329,42 +329,42 @@ details.intro .lede { margin-top: var(--space-2); }
    aliases of the tokens, so they follow the palette. */
 :root { --signal: var(--c1); --formal: var(--c4); --pre: var(--c2); }
 .chart .series { stroke: var(--signal); }
-.examples, .tabs, .actions, .row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.tabs, .actions, .row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
 /* 4px of padding keeps the 2px focus ring inside the scroll box; the negative margin keeps the buttons on the column edge. */
-.examples { margin: 0 -4px var(--space-3); padding: 4px; }
+.examples { display: flex; gap: var(--space-2); align-items: center; margin: 0 -4px var(--space-3); padding: 4px; }
 .tabs { margin: var(--space-4) 0; }
 /* Segmented controls wrap at phone width instead of widening the page. */
 .seg { flex-wrap: wrap; }
 section[hidden], article[hidden] { display: none; }
 .weights .row > .field { margin: 0; }
-#custom-weights input, #concept-weights input { width: 4.5rem; }
+.weight-inputs input { width: 4.5rem; }
 
 /* Buttons that act as links inside text and tables. */
 button.link { min-height: 0; max-width: 100%; padding: 0; white-space: normal; overflow-wrap: anywhere; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; }
-#chips { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; list-style: none; }
+.result-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; list-style: none; }
 
 /* Tables: wide tables scroll inside their own box, never the page. */
 .table-scroll { max-width: 100%; overflow-x: auto; }
-table.data, #catalog, #concept-table { border-collapse: collapse; width: 100%; font-size: var(--small); }
-table.data th, table.data td, #catalog th, #catalog td, #concept-table th, #concept-table td { padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--grid); text-align: left; vertical-align: top; }
+table.data, .virtual-table { border-collapse: collapse; width: 100%; font-size: var(--small); }
+table.data th, table.data td, .virtual-table th, .virtual-table td { padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--grid); text-align: left; vertical-align: top; }
 table.data caption { text-align: left; color: var(--muted); }
 td.num, .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 tr.best th, tr.best td { background: var(--surface); }
 tr.ref td, tr.ref th { color: var(--muted); }
 
 /* The virtual catalog table: fixed rows, a scrolling box, a sticky header. */
-#table-wrap, #formal-wrap, #concept-wrap { max-width: 100%; max-height: 70vh; overflow: auto; border-radius: 12px; background: var(--frame); box-shadow: var(--frame-line); }
-#catalog thead th, #concept-table thead th { position: sticky; top: 0; z-index: var(--z-raised); background: var(--frame); white-space: nowrap; }
-#catalog tbody tr:not(.spacer), #concept-table tbody tr:not(.spacer) { height: 46px; }
-#catalog tbody tr.sel, #concept-table tbody tr.sel { background: var(--surface); }
-#catalog tr.spacer td, #concept-table tr.spacer td { padding: 0; border: 0; }
-#catalog th.name, #concept-table th.name { min-width: 14rem; max-width: 26rem; font-weight: 400; }
-#catalog .preview, #concept-table .preview { display: block; overflow: hidden; color: var(--muted); font-size: var(--text-xs); white-space: nowrap; text-overflow: ellipsis; max-width: 26rem; }
+.table-wrap { max-width: 100%; max-height: 70vh; overflow: auto; border-radius: 12px; background: var(--frame); box-shadow: var(--frame-line); }
+.virtual-table thead th { position: sticky; top: 0; z-index: var(--z-raised); background: var(--frame); white-space: nowrap; }
+.virtual-table tbody tr:not(.spacer) { height: 46px; }
+.virtual-table tbody tr.sel { background: var(--surface); }
+.virtual-table tr.spacer td { padding: 0; border: 0; }
+.virtual-table th.name { min-width: 14rem; max-width: 26rem; font-weight: 400; }
+.virtual-table .preview { display: block; overflow: hidden; color: var(--muted); font-size: var(--text-xs); white-space: nowrap; text-overflow: ellipsis; max-width: 26rem; }
 button.sort { min-height: 0; padding: 0; border: 0; background: none; font-weight: 600; cursor: pointer; }
-.cols #col-boxes { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
+.cols .col-boxes { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
 
 /* Learn next. */
-#recs { padding-left: var(--space-6); }
+.recs { padding-left: var(--space-6); }
 .rec { margin: 0 0 var(--space-4); padding: 16px; border-radius: 12px; background: var(--frame); box-shadow: var(--frame-line); }
 .rec p { margin: var(--space-1) 0; }
 .rec-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); font-weight: 600; }
@@ -389,19 +389,19 @@ details.hyps summary { font-size: var(--text-xs); color: var(--muted); }
 .chart .hl-fill { fill: var(--hl); }
 .chart .cell { fill: var(--signal); }
 .chart .cell.nodata { fill: none; stroke: var(--grid); stroke-dasharray: 2 2; }
-#graph .edge { stroke: var(--faint); stroke-width: 1; }
-#graph .edge.formal { stroke: var(--formal); stroke-width: 2.5; }
-#graph .edge.pre { stroke: var(--pre); stroke-dasharray: 4 3; }
-#graph .node circle { fill: var(--signal); }
-#graph .node text { fill: var(--ink); }
-#graph .node:focus-visible circle { stroke: var(--focus); stroke-width: 3; }
-#graph { max-width: 30rem; margin: 0 auto; }
+.graph .edge { stroke: var(--faint); stroke-width: 1; }
+.graph .edge.formal { stroke: var(--formal); stroke-width: 2.5; }
+.graph .edge.pre { stroke: var(--pre); stroke-dasharray: 4 3; }
+.graph .node circle { fill: var(--signal); }
+.graph .node text { fill: var(--ink); }
+.graph .node:focus-visible circle { stroke: var(--focus); stroke-width: 3; }
+.graph { max-width: 30rem; margin: 0 auto; }
 ol.path li.target { font-weight: 600; }
 ul.marks { color: var(--muted); font-size: var(--small); }
-#deck-text { width: 100%; min-height: 12rem; font-family: var(--mono); font-size: var(--text-xs); }
+.deck-text { width: 100%; min-height: 12rem; font-family: var(--mono); font-size: var(--text-xs); }
 
 @media print {
-  #table-wrap { max-height: none; overflow: visible; }
+  .catalog-wrap { max-height: none; overflow: visible; }
 }
 .filter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: 0 var(--space-3); }
 .filter-grid > * { min-width: 0; }
@@ -432,27 +432,27 @@ ul.outline li { margin: var(--space-1) 0; overflow-wrap: anywhere; }
 ul.outline li.known > button.link { color: var(--muted); }
 
 /* Popularity by arXiv tag. */
-#pop-chart { display: block; width: auto; max-width: none; }
+.pop-chart { display: block; width: auto; max-width: none; }
 .chart .cell-label { font-size: 11px; fill: var(--ink); font-family: var(--mono); }
 .chart .cell-label.on-dark { fill: var(--bg); }
 .tag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: var(--space-3); }
 .tag-grid h4 { margin: 0; }
 .tag-grid ol { margin: var(--space-2) 0 0; padding-left: var(--space-5); font-size: var(--small); }
-#pop-trend .series { fill: none; stroke: var(--c1); stroke-width: 2; }
-#pop-trend .series.s1 { stroke: var(--c2); }
-#pop-trend .series.s2 { stroke: var(--c3); }
-#pop-trend .series.s3 { stroke: var(--c4); }
-#pop-trend .series.s4 { stroke: var(--c1); stroke-dasharray: 1 3; }
-#pop-trend .series.s5 { stroke: var(--c2); stroke-dasharray: 1 3; }
-#pop-trend .series.all { stroke: var(--muted); stroke-dasharray: 5 4; }
-#pop-trend .direct-label { font-size: 11px; fill: var(--c1); }
-#pop-trend .direct-label.s1, #pop-trend .direct-label.s5 { fill: var(--c2); }
-#pop-trend .direct-label.s2 { fill: var(--c3); }
-#pop-trend .direct-label.s3 { fill: var(--c4); }
-#pop-trend .direct-label.all { fill: var(--muted); }
-#concept-table td { white-space: nowrap; }
-#tag-presets { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
-#ptags { width: 100%; }
+.pop-trend .series { fill: none; stroke: var(--c1); stroke-width: 2; }
+.pop-trend .series.s1 { stroke: var(--c2); }
+.pop-trend .series.s2 { stroke: var(--c3); }
+.pop-trend .series.s3 { stroke: var(--c4); }
+.pop-trend .series.s4 { stroke: var(--c1); stroke-dasharray: 1 3; }
+.pop-trend .series.s5 { stroke: var(--c2); stroke-dasharray: 1 3; }
+.pop-trend .series.all { stroke: var(--muted); stroke-dasharray: 5 4; }
+.pop-trend .direct-label { font-size: 11px; fill: var(--c1); }
+.pop-trend .direct-label.s1, .pop-trend .direct-label.s5 { fill: var(--c2); }
+.pop-trend .direct-label.s2 { fill: var(--c3); }
+.pop-trend .direct-label.s3 { fill: var(--c4); }
+.pop-trend .direct-label.all { fill: var(--muted); }
+.concept-table td { white-space: nowrap; }
+.tag-presets { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.ptags { width: 100%; }
 </style>
 </head>
 <body>
@@ -466,8 +466,8 @@ ul.outline li.known > button.link { color: var(--muted); }
 <h1>Theorem Explorer: which result to learn next</h1>
 </header>
 <noscript><p class="callout">The controls, the shareable link and the exports need JavaScript. The text and the record below stay readable without it.</p></noscript>
-<p id="notice" class="callout" role="status" aria-live="polite"></p>
-<p id="export-status" class="note" role="status" aria-live="polite"></p>
+<p id="notice" class="callout notice" role="status" aria-live="polite"></p>
+<p id="export-status" class="note export-status" role="status" aria-live="polite"></p>
 <details class="intro">
 <summary>What this page does</summary>
 <p class="lede">A catalog of named mathematical results from mathlib4, Wikidata, Wikipedia, nLab and the TheoremSearch dataset, and a catalog of the mathematical concepts they are stated about, from nLab, mathlib and the results themselves. Each result and each concept has rubric scores with their evidence. Prerequisite trees join results to concepts, and arXiv popularity is shown per tag: category, archive or group. Use it to find what to learn next. The file works offline and never refreshes its sources.</p>
@@ -643,7 +643,7 @@ ul.outline li.known > button.link { color: var(--muted); }
 </details>
 <div class="chips-row">
 <p id="filter-count" class="note" aria-live="polite"></p>
-<ul id="chips" class="chips" aria-label="Active filters"></ul>
+<ul id="chips" class="chips result-chips" aria-label="Active filters"></ul>
 <button type="button" class="button" id="clear-filters">Reset filters</button>
 </div>
 <div class="row table-tools no-print">
@@ -654,8 +654,8 @@ ul.outline li.known > button.link { color: var(--muted); }
 <button type="button" class="button" id="save-csv">Save table CSV</button>
 <button type="button" class="button" id="copy-csv">Copy table CSV</button>
 </div>
-<div id="table-wrap" class="table-wrap" tabindex="0" role="region" aria-label="Catalog table: scroll for more rows">
-<table id="catalog" class="catalog">
+<div id="table-wrap" class="table-wrap catalog-wrap" tabindex="0" role="region" aria-label="Catalog table: scroll for more rows">
+<table id="catalog" class="catalog virtual-table">
 <thead id="catalog-head"></thead>
 <tbody id="catalog-body"></tbody>
 </table>
@@ -727,7 +727,7 @@ ul.outline li.known > button.link { color: var(--muted); }
 <button type="button" class="button" id="copy-concept-csv">Copy concept CSV</button>
 </div>
 <div id="concept-wrap" class="table-wrap" tabindex="0" role="region" aria-label="Concept table: scroll for more rows">
-<table id="concept-table" class="catalog">
+<table id="concept-table" class="catalog virtual-table concept-table">
 <thead><tr><th scope="col">Concept</th><th scope="col">Kind</th><th scope="col">Score</th><th scope="col" title="Unifying power">uni</th><th scope="col" title="Research influence">res</th><th scope="col" title="Practical impact">pra</th><th scope="col" title="Reach">rea</th><th scope="col" title="Low prerequisite burden">lpb</th><th scope="col" title="Example accessibility">exa</th><th scope="col" title="Computability">cmp</th><th scope="col">Level</th><th scope="col">arXiv papers</th><th scope="col">Results</th><th scope="col">nLab backlinks</th><th scope="col">Categories</th></tr></thead>
 <tbody id="concept-body"></tbody>
 </table>
@@ -763,7 +763,7 @@ ul.outline li.known > button.link { color: var(--muted); }
 </div>
 <figure>
 <div class="card">
-<svg id="graph" class="chart" viewBox="0 0 420 420" role="img" aria-label="The selected result and its related results, grouped by relation type"></svg>
+<svg id="graph" class="chart graph" viewBox="0 0 420 420" role="img" aria-label="The selected result and its related results, grouped by relation type"></svg>
 <p class="note">The lists below give the same relations as text.</p>
 </div>
 <figcaption>Relations of the selected result</figcaption>
@@ -841,7 +841,7 @@ ul.outline li.known > button.link { color: var(--muted); }
 <h2 id="h-popularity">Popularity by arXiv tag</h2>
 <div class="row">
 <label class="field wide" for="ptags">arXiv tags (categories, archives or groups, comma-separated, at most 12)
-<input id="ptags" type="text" list="taxonomy-ids" autocomplete="off" placeholder="math.AG, math.PR, hep-th, cs.LG, q-fin, q-bio"></label>
+<input id="ptags" class="ptags" type="text" list="taxonomy-ids" autocomplete="off" placeholder="math.AG, math.PR, hep-th, cs.LG, q-fin, q-bio"></label>
 <div class="field"><span class="label">Popularity of</span>
 <div class="seg wrap" role="group" aria-label="Popularity of">
 <button type="button" class="button" data-field="pkind" value="concepts">Concepts</button>
@@ -860,11 +860,11 @@ ul.outline li.known > button.link { color: var(--muted); }
 <label class="field">Papers to year (2100: any)
 <input type="number" data-field="py1" min="0" max="2100" step="1"></label>
 </div>
-<div class="chips-row no-print" id="tag-presets" role="group" aria-label="Tag sets"></div>
+<div class="chips-row tag-presets no-print" id="tag-presets" role="group" aria-label="Tag sets"></div>
 <p id="pop-summary" class="note"></p>
 <figure>
 <div class="card">
-<div class="table-scroll"><svg id="pop-chart" class="chart heat" role="img" aria-label="Popularity of the top items in each selected arXiv tag; the table below gives the same values"></svg></div>
+<div class="table-scroll"><svg id="pop-chart" class="chart heat pop-chart" role="img" aria-label="Popularity of the top items in each selected arXiv tag; the table below gives the same values"></svg></div>
 <details><summary>Table: the matrix values and counts</summary><div id="pop-table"></div></details>
 </div>
 <figcaption id="pop-caption"></figcaption>
@@ -877,7 +877,7 @@ ul.outline li.known > button.link { color: var(--muted); }
 <datalist id="pop-names"></datalist>
 <figure>
 <div class="card">
-<svg id="pop-trend" class="chart" viewBox="0 0 640 260" role="img" aria-label="The item's rate per year bin in each selected tag; the table below gives the same values"></svg>
+<svg id="pop-trend" class="chart pop-trend" viewBox="0 0 640 260" role="img" aria-label="The item's rate per year bin in each selected tag; the table below gives the same values"></svg>
 <details><summary>Table: rate per year bin</summary><div id="pop-trend-table"></div></details>
 </div>
 </figure>
@@ -898,7 +898,7 @@ ul.outline li.known > button.link { color: var(--muted); }
 <details class="card no-print" id="deck-fallback">
 <summary>Show the beamdswitch deck as text</summary>
 <p class="note">Select the text and copy it if the Save and Copy buttons do not work in this browser.</p>
-<textarea id="deck-text" readonly rows="14" aria-label="Beamdswitch deck text"></textarea>
+<textarea id="deck-text" class="deck-text" readonly rows="14" aria-label="Beamdswitch deck text"></textarea>
 </details>
 <details class="tools no-print">
 <summary>Tools and exports</summary>
@@ -1222,7 +1222,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 </ul>
 </footer>
 <div id="undo" class="undo no-print" role="status" aria-live="polite" hidden><span id="undo-text"></span><button type="button" class="button" id="undo-do">Undo</button></div>
-<dialog id="palette" aria-label="Commands">
+<dialog id="palette" class="palette" aria-label="Commands">
 <label class="label" for="palette-input">Command</label>
 <input id="palette-input" type="text" role="combobox" aria-controls="palette-list" aria-expanded="true" autocomplete="off">
 <ul id="palette-list" role="listbox" aria-label="Matching commands"></ul>

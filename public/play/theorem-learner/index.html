@@ -221,8 +221,8 @@ button.link:active { transform: none; }
   box-shadow: var(--shadow-sheet);
 }
 
-/* Print: mark controls that mean nothing on paper with .no-print. */
-@media print { .no-print { display: none !important; } }
+/* Print: mark controls that mean nothing on paper with .no-print. :root lifts the rule above the one-class display rules of the apps. */
+@media print { :root .no-print { display: none; } }
 /* The shared layout of the theorem apps, after the style tokens (style-tokens.css) and before an app's own
    src/style.css. Content fills the page. The controls that move between views float above it in a second layer: the
    view switcher at the bottom edge, in reach of a thumb, and the undo notice above it. The z-layers are the --z-*
@@ -287,8 +287,8 @@ details.tools { margin-top: 56px; }
 details.tools > summary { cursor: pointer; color: var(--muted); font-size: var(--small); min-height: var(--tap); display: flex; align-items: center; }
 .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 0; }
 label.button:focus-within { outline: 2px solid var(--focus); outline-offset: 3px; }
-#notice:empty, #export-status:empty { display: none; }
-#notice { margin: 0 0 var(--space-4); }
+.notice:empty, .export-status:empty { display: none; }
+.notice { margin: 0 0 var(--space-4); }
 .lab > * { min-width: 0; }
 .field { display: grid; gap: var(--space-1); margin: 0 0 var(--space-4); }
 .field input[type="range"] { width: 100%; }
@@ -297,7 +297,7 @@ label.button:focus-within { outline: 2px solid var(--focus); outline-offset: 3px
 .readout dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; }
 .formula { overflow-x: auto; font-family: var(--math); }
 /* The command palette is a dialog: the browser's top layer, above every --z-* layer. */
-#palette {
+.palette {
   width: min(100% - 2rem, 32rem);
   padding: var(--space-4);
   border: 1px solid var(--border);
@@ -306,10 +306,10 @@ label.button:focus-within { outline: 2px solid var(--focus); outline-offset: 3px
   color: var(--ink);
   box-shadow: var(--shadow-sheet);
 }
-#palette::backdrop { background: rgb(0 0 0 / 0.3); }
-#palette input { width: 100%; }
-#palette ul { margin: var(--space-3) 0 0; padding: 0; list-style: none; }
-#palette li .button { width: 100%; justify-content: flex-start; }
+.palette::backdrop { background: rgb(0 0 0 / 0.3); }
+.palette input { width: 100%; }
+.palette ul { margin: var(--space-3) 0 0; padding: 0; list-style: none; }
+.palette li .button { width: 100%; justify-content: flex-start; }
 .licences { margin-top: var(--space-8); color: var(--muted); font-size: var(--small); }
 .licences pre { max-height: 20rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: var(--text-xs); }
 @media print { nav.tabs, .undo { display: none; } }
@@ -319,7 +319,7 @@ details.intro { margin: 0 0 var(--space-3); }
 details.intro > summary { display: flex; align-items: center; min-height: var(--tap); color: var(--muted); font-size: var(--small); cursor: pointer; }
 details.intro .lede { margin-top: var(--space-2); }
 /* Shortcut buttons: one row that scrolls sideways, not a block of wrapped buttons. */
-.examples { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: thin; padding-bottom: var(--space-1); }
+.examples { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; padding-bottom: var(--space-1); }
 .examples > * { flex: none; }
 /* Chips, sort headers and sorted-table buttons are tap targets too; a word inside a paragraph is not. */
 @media (pointer: coarse), (max-width: 40rem) {
@@ -422,8 +422,8 @@ button.cw[aria-expanded="true"] { background: var(--surface); }
 .legend { display: grid; gap: var(--space-1); margin-top: var(--space-2); font-size: var(--small); }
 .legend-row { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
 .legend-item { display: inline-flex; align-items: center; gap: var(--space-1); }
-#graph-lists { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: var(--space-3); }
-#graph-lists h3 { margin-top: 0; overflow-wrap: anywhere; }
+.graph-lists { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: var(--space-3); }
+.graph-lists h3 { margin-top: 0; overflow-wrap: anywhere; }
 ul.edge-list, ul.entry { margin: var(--space-1) 0; padding-left: var(--space-4); font-size: var(--small); }
 ul.edge-list li, ul.entry li { overflow-wrap: anywhere; }
 .tedge { fill: none; stroke: var(--signal); stroke-width: 1.2; stroke-dasharray: 4 3; }
@@ -442,7 +442,7 @@ ol.study li { margin: 0 0 var(--space-1); overflow-wrap: anywhere; }
 .lift-steps { margin: var(--space-1) 0; padding-left: var(--space-5); }
 ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anywhere; }
 .pager { margin-top: var(--space-2); }
-#deck-text { width: 100%; min-height: 12rem; font-family: var(--mono); font-size: var(--text-xs); }
+.deck-text { width: 100%; min-height: 12rem; font-family: var(--mono); font-size: var(--text-xs); }
 
 @media print {
   .reminder, .scroll-box { position: static; max-height: none; overflow: visible; }
@@ -463,8 +463,8 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <h1>Theorem Learner: proofs from concepts to results</h1>
 </header>
 <noscript><p class="callout">The controls, the shareable link and the exports need JavaScript. The text and the record below stay readable without it.</p></noscript>
-<p id="notice" class="callout" role="status" aria-live="polite"></p>
-<p id="export-status" class="note" role="status" aria-live="polite"></p>
+<p id="notice" class="callout notice" role="status" aria-live="polite"></p>
+<p id="export-status" class="note export-status" role="status" aria-live="polite"></p>
 <details class="intro">
 <summary>What this page does</summary>
 <p class="lede">Learn mathematics from basic concepts to advanced results. Pick a theorem, choose one of its proofs, and follow how each hypothesis feeds the steps and the conclusion. Every marked concept word opens a reminder in place.</p>
@@ -513,7 +513,7 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 </div>
 <figcaption>The neighbourhood, focus on the left</figcaption>
 </figure>
-<div id="graph-lists"></div>
+<div id="graph-lists" class="graph-lists"></div>
 </section>
 
 <!-- The prerequisite tree -->
@@ -605,7 +605,7 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <details class="card no-print" id="deck-fallback">
 <summary>Show the beamdswitch deck as text</summary>
 <p class="note">Select the text and copy it if the Save and Copy buttons do not work in this browser.</p>
-<textarea id="deck-text" readonly rows="14" aria-label="Beamdswitch deck text"></textarea>
+<textarea id="deck-text" class="deck-text" readonly rows="14" aria-label="Beamdswitch deck text"></textarea>
 </details>
 <details class="tools no-print">
 <summary>Tools and exports</summary>
@@ -929,7 +929,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 </ul>
 </footer>
 <div id="undo" class="undo no-print" role="status" aria-live="polite" hidden><span id="undo-text"></span><button type="button" class="button" id="undo-do">Undo</button></div>
-<dialog id="palette" aria-label="Commands">
+<dialog id="palette" class="palette" aria-label="Commands">
 <label class="label" for="palette-input">Command</label>
 <input id="palette-input" type="text" role="combobox" aria-controls="palette-list" aria-expanded="true" autocomplete="off">
 <ul id="palette-list" role="listbox" aria-label="Matching commands"></ul>
