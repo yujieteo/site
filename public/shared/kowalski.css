@@ -11,7 +11,9 @@
    9. .button: the look of Sonner's .button, with the light gray scale of its site. The hover background and border fade
        over 150 ms. [data-active=true] is the selected state. :focus-visible gets his layered ring at once: a keyboard action
        has no animation. Measured on
-       https://sonner.emilkowal.ski/ and https://animations.dev/. Skills: https://github.com/emilkowalski/skills/tree/a81dbca07f2217b7103e510c0f13f8d5b017afc9 */
+       https://sonner.emilkowal.ski/ and https://animations.dev/. Skills: https://github.com/emilkowalski/skills/tree/a81dbca07f2217b7103e510c0f13f8d5b017afc9
+   10. Disabled: one look for every button, opacity 0.45 and cursor not-allowed, with no hover and no press. The references use
+       disabled:opacity-50 or -60 with disabled:cursor-not-allowed and enabled:active:scale-[0.97]: https://animations.dev/ and https://aiforui.dev/ */
 @font-face { font-family: "Inter"; src: url(/fonts/inter.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
 /* Arial with the metrics of Inter, so the text does not move when Inter loads. Values from next/font. */
 @font-face { font-family: "Inter Fallback"; src: local("Arial"); size-adjust: 107.12%; ascent-override: 90.44%; descent-override: 22.52%; line-gap-override: 0%; }
@@ -36,7 +38,8 @@ a, button, [role="button"] { touch-action: manipulation; }
 button, [role="button"] { user-select: none; -webkit-user-select: none; }
 /* Purpose of the press: feedback that the control took the click. */
 button, [role="button"], .press { transition: transform var(--press-duration) var(--ease-out); }
-button:active, [role="button"]:active, .press:active { transform: scale(var(--press)); }
+button:enabled:active, [role="button"]:not([aria-disabled=true]):active, .press:active { transform: scale(var(--press)); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
 /* The ::after hit area is absolute: it is a layer over the control, out of the flow. */
 button, [role="button"], .tap { position: relative; }
 button::after, [role="button"]::after, .tap::after { content: ""; position: absolute; left: 50%; top: 50%;
