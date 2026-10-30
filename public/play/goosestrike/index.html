@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%BF%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="/shared/kowalski.css">
 <link rel="stylesheet" href="style.css">
-<!-- Copied from github.com/yujieteo/goosestrike web/ at f89dd05. Only the site header and footer and the .mjs names changed. -->
+<!-- Copied from github.com/yujieteo/goosestrike web/ at 281a414. Only the site header and footer and the .mjs names changed. -->
 <style>
 header.site { display: flex; flex-direction: column; align-items: flex-start; padding-top: 48px; }
 .name { font-weight: 500; text-decoration: none; }
@@ -60,7 +60,7 @@ footer code { overflow-wrap: anywhere; }
       <p class="hint" id="runStatus" role="status" aria-atomic="true"></p>
       <button id="gif" class="button wide" disabled>Export GIF</button>
 
-      <label class="field">Goose speed <output id="speedOut"></output>
+      <label class="field" for="speed">Goose speed <output id="speedOut"></output>
         <input id="speed" type="range" min="50" max="250" step="0.01">
       </label>
       <label class="speed-entry">Set speed (m/s)
@@ -69,7 +69,7 @@ footer code { overflow-wrap: anywhere; }
       <p class="hint" id="speedEntryStatus" role="status"></p>
       <p class="hint" id="specCheck"></p>
 
-      <label class="field">Skin thickness <output id="skinOut"></output>
+      <label class="field" for="skin">Skin thickness <output id="skinOut"></output>
         <input id="skin" type="range" min="0.8" max="3.2" step="0.1" aria-describedby="skinHint">
       </label>
       <p class="hint" id="skinHint">The default is 1.6 mm. The stringers and frames do not change.</p>
