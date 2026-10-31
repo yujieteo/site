@@ -6,7 +6,7 @@
    4. Hover styles only under (hover: hover) and (pointer: fine): a tap leaves a fake hover. https://github.com/emilkowalski/skills/blob/a81dbca07f2217b7103e510c0f13f8d5b017afc9/skills/mobile-native/SKILL.md#1-hover-state-stuck-after-tap
    5. Link hover colour changes are instant, with no transition. Measured on emilkowal.ski: https://emilkowal.ski/_next/static/css/747876a3d8c444e8.css
    6. Reduced motion is fewer and gentler, not zero: keep opacity and colour, drop transform. https://github.com/emilkowalski/skills/blob/a81dbca07f2217b7103e510c0f13f8d5b017afc9/skills/emil-design-eng/SKILL.md#prefers-reduced-motion
-   7. Touch baseline: no tap highlight, no text inflation, touch-action: manipulation, user-select: none on controls only. https://github.com/emilkowalski/skills/blob/a81dbca07f2217b7103e510c0f13f8d5b017afc9/skills/mobile-native/SKILL.md#baseline
+   7. Touch baseline: no tap highlight, no text inflation, touch-action: manipulation, user-select: none and no long-press callout on controls only. https://github.com/emilkowalski/skills/blob/a81dbca07f2217b7103e510c0f13f8d5b017afc9/skills/mobile-native/SKILL.md#baseline
    8. Tap areas are 44 px or more (WCAG 2.5.5, not one of his files). https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
    9. .button: the look of Sonner's .button, with the light gray scale of its site. The hover background and border fade
        over 150 ms. [data-active=true] is the selected state. :focus-visible gets his layered ring at once: a keyboard action
@@ -35,7 +35,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font: var(--text)/va
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 a { color: inherit; text-decoration: underline 0.08em var(--underline); text-underline-position: from-font; }
 a, button, [role="button"] { touch-action: manipulation; }
-button, [role="button"] { user-select: none; -webkit-user-select: none; }
+button, [role="button"] { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
 /* Purpose of the press: feedback that the control took the click. */
 button, [role="button"], .press { transition: transform var(--press-duration) var(--ease-out); }
 button:enabled:active, [role="button"]:not([aria-disabled=true]):active, .press:active { transform: scale(var(--press)); }
