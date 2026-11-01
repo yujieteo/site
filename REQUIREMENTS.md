@@ -49,8 +49,7 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Look
 
-6. The site has the look of emilkowal.ski, light only: a near-white background, one 692 px column,
-   The column width, fonts, tokens and interaction rules are in
+6. The site has the look of emilkowal.ski, light only. The tokens, column width, fonts and interaction rules are in
    `/shared/kowalski.css`. This URL does not change: the tools link it when they move to the look.
    All pages use the stylesheet `public/style.css`, which imports it, and have the header and footer
    of the home page. Hover styles apply only under `(hover: hover) and (pointer: fine)`.
