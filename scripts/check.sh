@@ -8,12 +8,15 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 
 root = Path('public').resolve()
-for name in ('index.html', 'style.css', 'lullapixie/privacy.html',
-             'lullapixie/support.html', 'marklove/privacy.html',
-             'marklove/support.html', 'play/beamdiag/index.html', 'log/template.html',
+fixed = Path('fixed-urls.txt').read_text().split()
+pages = [u.lstrip('/') + ('index.html' if u.endswith('/') else '') for u in fixed]
+for name in ['index.html', 'style.css', 'log/template.html'] + pages + [
              '.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19',
-             '.well-known/openpgpkey/teoyujie.org/hu/dj3498u4hyyarh35rkjfnghbjxug6b19'):
+             '.well-known/openpgpkey/teoyujie.org/hu/dj3498u4hyyarh35rkjfnghbjxug6b19']:
     assert (root / name).stat().st_size, f'missing or empty: {name}'
+for name in pages:
+    if name.endswith('.html') and 'beamdiag' not in name:
+        assert (root / name).stat().st_size <= 6000, f'policy or support page over 6000 bytes: {name}'
 
 class Links(HTMLParser):
     def handle_starttag(self, tag, attrs):
@@ -78,5 +81,5 @@ PY
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT HUP INT TERM
 scripts/build-beam.sh "$tmp"
-for f in index.html beamdiag.wasm beamdiag.wasm.gz; do [ -s "$tmp/$f" ]; done
+for f in index.html beamdiag.wasm.gz; do [ -s "$tmp/$f" ]; done
 echo 'check: ok'

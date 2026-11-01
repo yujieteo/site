@@ -1,6 +1,6 @@
 #!/bin/sh
 # Build the beam page from beamdiag/ into a folder, by default public/play/beamdiag.
-# It writes index.html, beamdiag.wasm and beamdiag.wasm.gz; fonts/ and katex/ are committed there.
+# It writes index.html and beamdiag.wasm.gz; fonts/ and katex/ are committed there.
 #
 # The program is Goose (beamdiag/src/*.goose). Goose makes C, and the C is committed in beamdiag/c/,
 # so a machine without Goose can build: it needs emcc (Emscripten), cc and gzip.
@@ -32,5 +32,4 @@ trap 'rm -rf "$tmp"' EXIT HUP INT TERM
 cc -O1 -w "$gen/page.c" "$src/shim.c" -lm -o "$tmp/page"
 mkdir -p "$out"
 "$tmp/page" "$out/index.html"
-cp "$tmp/beamdiag.wasm" "$out/beamdiag.wasm"
 gzip -n -9 -c "$tmp/beamdiag.wasm" > "$out/beamdiag.wasm.gz"
