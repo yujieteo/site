@@ -442,7 +442,6 @@ ol.study li { margin: 0 0 var(--space-1); overflow-wrap: anywhere; }
 .lift-steps { margin: var(--space-1) 0; padding-left: var(--space-5); }
 ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anywhere; }
 .pager { margin-top: var(--space-2); }
-.deck-text { width: 100%; min-height: 12rem; font-family: var(--mono); font-size: var(--text-xs); }
 
 @media print {
   .reminder, .scroll-box { position: static; max-height: none; overflow: visible; }
@@ -601,12 +600,6 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 </details>
 
 <div id="reminder" class="reminder" hidden></div>
-
-<details class="card no-print" id="deck-fallback">
-<summary>Show the beamdswitch deck as text</summary>
-<p class="note">Select the text and copy it if the Save and Copy buttons do not work in this browser.</p>
-<textarea id="deck-text" class="deck-text" readonly rows="14" aria-label="Beamdswitch deck text"></textarea>
-</details>
 <details class="tools no-print">
 <summary>Tools and exports</summary>
 <div class="toolbar" role="toolbar" aria-label="View and exports">
@@ -617,8 +610,6 @@ ul.uses li, ol.find-results li { margin: 0 0 var(--space-1); overflow-wrap: anyw
 <input type="file" id="load-json" class="visually-hidden" accept="application/json,.json">
 <button type="button" class="button" id="copy-markdown">Copy Markdown record</button>
 <button type="button" class="button" id="save-markdown">Save Markdown record</button>
-<button type="button" class="button" id="save-beamdswitch">Save beamdswitch deck</button>
-<button type="button" class="button" id="copy-beamdswitch">Copy deck</button>
 </div>
 </details>
 <details class="licences">
@@ -943,7 +934,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
  *
  *   state     versioned semantic state from a field schema: normalize, URL fragment, JSON import and export
  *             (§5, §12, §13, §14), with a notice for every value it resets
- *   export    the Markdown record of a beamdswitch report, and the deck through the site's template (§14, §15)
+ *   export    the Markdown record of a report (§14, §15)
  *   app       state -> render(), Back and Forward, Reset, the toolbar, the Cmd/Ctrl+K command palette and the
  *             read-only WebMCP tools (§8 to §11)
  *
@@ -1085,8 +1076,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
   const SECTIONS = [["setup", "Set-up"], ["method", "Method"], ["results", "Results"], ["checks", "Checks and takeaway"]];
 
   /**
-   * The Markdown record of a beamdswitch report (§14): the same frames as the deck, in the same order, without
-   * narration, so the record and the deck never disagree.
+   * The Markdown record of a report (§14): its frames, in order.
    * @param {any} report
    */
   function markdown(report) {
@@ -1124,7 +1114,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
   /**
    * Run a visual: the state, the URL, the toolbar, the palette and the WebMCP tools. `spec.render(state, derived)`
    * draws the page from the state alone; `spec.derive(state)` computes everything else; `spec.report(state, derived)`
-   * is the beamdswitch report both exports write. `spec.bind(app)` connects the domain's own controls through
+   * is the report the Markdown record writes. `spec.bind(app)` connects the domain's own controls through
    * app.set(). `spec.tools` are the domain's read-only WebMCP tools and `spec.commands` its palette entries.
    * @param {{ slug: string, title: string, summary: string, schemaVersion: number, fields: Fields,
    *   derive(state: State): any, render(state: State, derived: any): void, report(state: State, derived: any): any,
@@ -1213,7 +1203,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       json() { return toJson(spec, state); },
       report() { return spec.report(state, derived); },
       markdown() { return markdown(app.report()); },
-      deck() { return /** @type {any} */ (globalThis).Beamdswitch.deck(app.report()); },
     };
 
     function typeset() {
@@ -1275,7 +1264,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       { label: "Reset the view", run: () => app.reset() },
       { label: "Save view JSON", run: () => saveAs(`Saved ${spec.slug}-view.json.`, app.json, `${spec.slug}-view.json`, "application/json") },
       { label: "Save Markdown record", run: () => saveAs(`Saved ${spec.slug}-record.md.`, app.markdown, `${spec.slug}-record.md`, "text/markdown") },
-      { label: "Save beamdswitch deck", run: () => saveAs(`Saved ${spec.slug}-beamdswitch.md: open it in beamdswitch.`, app.deck, `${spec.slug}-beamdswitch.md`, "text/markdown") },
       ...(spec.commands ?? []),
     ];
     /** @type {[string, () => void][]} */
@@ -1284,8 +1272,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
       ["save-json", commands[1].run],
       ["save-markdown", commands[2].run],
       ["copy-markdown", () => copy("Copied the Markdown record.", app.markdown)],
-      ["save-beamdswitch", commands[3].run],
-      ["copy-beamdswitch", () => copy("Copied the beamdswitch deck: paste it into beamdswitch.", app.deck)],
     ];
     for (const [id, run] of buttons) byId(id)?.addEventListener("click", run);
     const file = byId("load-json");
@@ -1394,7 +1380,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         execute: async () => out({ visual: spec.slug, title: spec.title, summary: spec.summary, schemaVersion: spec.schemaVersion, fields: spec.fields }) },
       { name: "get_state", description: "Return the current view: its semantic state, what the page derives from it, the JSON a reader can save, and the URL that restores it.", inputSchema: none, annotations: ro,
         execute: async () => out({ state: app.state, derived: app.derived, json: JSON.parse(app.json()), url: location.href }) },
-      { name: "get_markdown", description: "Return the Markdown record of the current view: the same frames, in the same order, as the narrated beamdswitch deck, without narration.", inputSchema: none, annotations: ro,
+      { name: "get_markdown", description: "Return the Markdown record of the current view: its frames, in order.", inputSchema: none, annotations: ro,
         execute: async () => out({ markdown: app.markdown() }) },
       ...(spec.tools ?? []),
     ];
@@ -1403,98 +1389,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 
   const api = { VERSION, SECTIONS, count, defaults, coerce, normalize, toHash, fromHash, toJson, fromJson, markdown, start, app: /** @type {any} */ (null) };
   return api;
-});
-</script>
-<script id="beamdswitch">
-/* The standard beamdswitch report template, shared by every visualisation.
- *
- * beamdswitch (https://teoyujie.org/visuals/beamdswitch/) turns one Markdown deck into slides, a
- * handout, narration and a video. `deck(report)` writes a report in its deck syntax, always in the
- * same order (templates/beamdswitch-report.md shows the skeleton):
- *
- *   front matter and title slide
- *   # Set-up               what was modelled, its units and conventions
- *   # Method               how the tool solved it
- *   # Results              the numbers, with key equations and plots
- *   # Checks and takeaway  what confirms the numbers, ending on one ::: key frame
- *
- * A report is plain data, so it can be built and tested without a page:
- *   { meta: { title, subtitle, author, date, voice }, narration, notes,
- *     setup, method, results, checks: [frame, ...] }
- * and each frame is
- *   { title, body, narration, notes, key, plot: { x: [a, b], xlabel, ylabel, curves: ["expr", ...] } }
- * `body` is Markdown (LaTeX maths in $...$ or $$...$$); `narration` is plain spoken prose, one
- * caption per sentence; `key`, `plot` and `notes` are optional. Every frame must be narrated, and
- * the last checks frame must carry a key. The visualisation supplies every number already
- * formatted, so the deck says exactly what its page shows. Every deck names its narrator: `meta.voice`
- * when the visualisation picks one, else DEFAULT_VOICE, beamdswitch's British female default.
- */
-(function (root, factory) {
-  const api = factory();
-  if (typeof module === "object" && module.exports) module.exports = api;
-  else root.Beamdswitch = api;
-})(typeof self !== "undefined" ? self : this, function () {
-  "use strict";
-
-  const DEFAULT_VOICE = "bf_emma";
-  const SECTIONS = [["setup", "Set-up"], ["method", "Method"], ["results", "Results"], ["checks", "Checks and takeaway"]];
-
-  const oneLine = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
-  /* Markdown lines that would end a frame or a div early are refused rather than written. */
-  function block(text, what) {
-    const s = String(text ?? "").replace(/\r\n?/g, "\n").trim();
-    for (const line of s.split("\n"))
-      if (/^#{1,2}\s/.test(line) || /^\s*:{3,}/.test(line)) throw new Error(`${what} must not contain a heading or a ::: line: ${line}`);
-    return s;
-  }
-  /* Narration is read aloud: no maths, markup or line structure. */
-  function spoken(text, what) {
-    const s = oneLine(text);
-    if (!s) throw new Error(`${what} needs a narration.`);
-    if (/[$\\`*_#|<>]/.test(s)) throw new Error(`${what} narration must be plain spoken prose: ${s}`);
-    return s;
-  }
-  const div = (name, text) => [`::: ${name}`, text, ":::"];
-
-  function frame(f, where) {
-    const title = oneLine(f.title), what = `Frame "${title}" in ${where}`;
-    if (!title) throw new Error(`A frame in ${where} needs a title.`);
-    const out = [`## ${title}`, ""];
-    if (f.body) out.push(block(f.body, what), "");
-    if (f.plot) {
-      const p = f.plot, lines = [`x: ${p.x[0]}, ${p.x[1]}`];
-      if (p.xlabel) lines.push(`xlabel: ${oneLine(p.xlabel)}`);
-      if (p.ylabel) lines.push(`ylabel: ${oneLine(p.ylabel)}`);
-      for (const c of p.curves) lines.push(`y = ${oneLine(c)}`);
-      out.push(...div("plot", lines.join("\n")), "");
-    }
-    if (f.key) out.push(...div("key", block(f.key, what)), "");
-    if (f.notes) out.push(...div("notes", block(f.notes, what)), "");
-    out.push(...div("narration", spoken(f.narration, what)), "");
-    return out;
-  }
-
-  function deck(report) {
-    const meta = report.meta || {};
-    if (!oneLine(meta.title)) throw new Error("The report needs a title.");
-    const checks = report.checks || [];
-    if (!checks.length || !checks.at(-1).key) throw new Error("The last checks frame must carry a ::: key.");
-    const fm = { ...meta, voice: oneLine(meta.voice) || DEFAULT_VOICE };
-    const out = ["---"];
-    for (const k of ["title", "subtitle", "author", "date", "voice"]) if (oneLine(fm[k])) out.push(`${k}: ${oneLine(fm[k])}`);
-    out.push("---", "");
-    if (report.notes) out.push(...div("notes", block(report.notes, "The title slide")), "");
-    out.push(...div("narration", spoken(report.narration, "The title slide")), "");
-    SECTIONS.forEach(([id, title], i) => {
-      const frames = report[id] || [];
-      if (!frames.length) throw new Error(`The ${title} section needs at least one frame.`);
-      out.push(`# ${title}`, "", ...div("narration", `Part ${i + 1}. ${title}.`), "");
-      for (const f of frames) out.push(...frame(f, title));
-    });
-    return out.join("\n");
-  }
-
-  return { DEFAULT_VOICE, SECTIONS, deck };
 });
 </script>
 <script id="model">
@@ -2093,8 +1987,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
 </script>
 <script id="report">
 /* Theorem Learner: proofs from concepts to results: the report adapter. report(state, derived, data) turns the
- * selected proof into the plain-data report that the site's beamdswitch template (Beamdswitch.deck) writes as a
- * narrated deck and that the kit writes as the Markdown record. It reads the same proof objects as the page, so the
+ * selected proof into the plain-data report that the kit writes as the Markdown record. It reads the same proof objects as the page, so the
  * slides and the page agree. Order: the exact statement; the concept reminders, one concept per slide; the hypotheses
  * and their roles; the steps, one per slide (slogan, inputs, output, speaker notes); the conclusion; the alternative
  * proofs and theory connections; the evidence and verification status. Narration is plain spoken prose in
@@ -2225,7 +2118,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
  * draws the proof surface (statement, proofs, slogans, hypothesis roles, steps and the proof diagram), the concept
  * reminders, the theory graph, the prerequisite tree, the concept page, the paged search and the sources, and adds
  * the domain WebMCP tools and palette commands. The kit (VisualKit.start) owns the state, the URL, Back and Forward,
- * Reset, the view JSON, the Markdown and beamdswitch exports and the shared WebMCP tools. Nothing here reads the
+ * Reset, the view JSON, the Markdown export and the shared WebMCP tools. Nothing here reads the
  * network.
  */
 (async function () {
@@ -3029,10 +2922,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
         const was = known;
         known = {}; D.profile = { known }; try { localStorage.setItem(PROFILE_KEY, "{}"); } catch { storageOk = false; } a.set({}, "replace");
         a.undoable(`Cleared ${VisualKit.count(Object.keys(was).length, "item")} marked known.`, () => { known = was; D.profile = { known }; try { localStorage.setItem(PROFILE_KEY, JSON.stringify(known)); } catch { storageOk = false; } a.set({}, "replace"); });
-      });
-      $("deck-fallback").addEventListener("toggle", () => {
-        if (!$("deck-fallback").open) return;
-        try { $("deck-text").value = a.deck(); } catch (e) { $("deck-text").value = `The deck could not be written: ${String(e)}`; }
       });
     },
   });
