@@ -1,6 +1,6 @@
 @import url(/shared/kowalski.css);
 /* The site pages. The tokens, fonts and interaction rules are in /shared/kowalski.css. */
-p { margin: 0; line-height: var(--leading-prose); }
+p { margin: 0; line-height: var(--leading-prose); text-wrap: pretty; }
 h1, h2, h3 { margin: 0; font-size: inherit; font-weight: inherit; }
 h1, h2, h3, h4 { text-wrap: balance; }
 h2 { position: relative; }
@@ -20,6 +20,7 @@ main > section + section { margin-top: 64px; }
 .featured a { overflow-wrap: anywhere; display: grid; grid-template-columns: 1fr auto; column-gap: 16px; margin: 0 -16px; padding: 0 16px; border-radius: var(--radius); text-decoration: none;
   transition: transform var(--press-duration) var(--ease-out); } /* Purpose of the press: feedback that the link took the click. */
 .featured a:active { transform: scale(var(--press)); }
+.featured a:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
 .featured h3 { grid-area: 1 / 1; }
 .kind { grid-area: 1 / 2; color: var(--muted); }
 .featured p { grid-column: 1 / -1; line-height: var(--leading); color: var(--muted); }
