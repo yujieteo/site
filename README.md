@@ -11,7 +11,7 @@ template of the log at `/log`.
 | `beamdiag/` | The beam diagram creator, a Goose program that builds to WebAssembly. `beamdiag/REQUIREMENTS.md` is its contract. |
 | `public/fonts/` | The site fonts, Inter (Google Fonts v20, variable) and IBM Plex Mono (weight 400), with their OFL licences. |
 | `public/shared/kowalski.css` | The tokens and interaction rules of the site look. `public/style.css` imports it. |
-| `public/play/beamdiag/` | The built beam page. `index.html` and `beamdiag.wasm*` come from `scripts/build-beam.sh`. Never edit them by hand. |
+| `public/play/beamdiag/` | The built beam page. `index.html` and `beamdiag.wasm.gz` come from `scripts/build-beam.sh`. Never edit them by hand. |
 | `media-plan.md` | The master copy of the media plan. The pond app edits it. |
 | `scripts/build-beam.sh [folder]` | Builds the beam page into `public/play/beamdiag/` or into the folder. |
 | `scripts/check.sh` | Pages and WKD key files exist, links resolve, the home page keeps its links and each selected exploration has a kind, a title and a link, the log template has one entries slot, `beamdiag/` builds the beam page. |

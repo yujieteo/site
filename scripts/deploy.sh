@@ -6,8 +6,7 @@ cd "$(dirname "$0")/.."
 [ -z "$(git status --porcelain)" ] || { echo "Commit first."; exit 1; }
 scripts/check.sh
 tar --no-mac-metadata -czf - -C public . | ssh deploy@10.8.0.1 site
-for path in / /lullapixie/privacy.html /lullapixie/support.html /marklove/privacy.html \
-  /marklove/support.html /play/beamdiag/; do
+for path in / $(cat fixed-urls.txt); do
   code=$(curl -s -o /dev/null -w '%{http_code}' "https://teoyujie.org$path")
   [ "$code" = 200 ] || { echo "$path returned $code"; exit 1; }
 done

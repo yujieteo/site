@@ -10,7 +10,7 @@ GOOSE=/path/to/goose scripts/build-beam.sh
 ```
 
 `src/*.goose` is the source. Goose (v2026.3) makes the C in `c/`, and the C is committed, so a machine without Goose can build.
-The builder needs `emcc`, `cc` and `gzip`. With `GOOSE` set, it also writes `c.sha256`, the hash of the Goose inputs. Without `GOOSE`, it stops if that hash differs. It writes the raw module and `beamdiag.wasm.gz`.
+The builder needs `emcc`, `cc` and `gzip`. With `GOOSE` set, it also writes `c.sha256`, the hash of the Goose inputs. Without `GOOSE`, it stops if that hash differs. It writes `beamdiag.wasm.gz`.
 The page streams the compressed module through `DecompressionStream` into WebAssembly.
 Serve `.gz` as a file, without an HTTP `Content-Encoding` header.
 KaTeX loads after the first draw and replaces plain HTML maths. The report fonts load on the first Save PDF or Save PNG.

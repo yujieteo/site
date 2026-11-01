@@ -27,8 +27,7 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
 4. The page shows the reactions, the largest values and the hand calculation. All maths in HTML text uses KaTeX. Input values stay plain. The figure and PDF keep Unicode maths.
 5. Two export buttons only: **Save PDF** and **Save PNG**.
 6. Removed: the example preset select, the image format select, SVG export, Divisions, the
-   NASTRAN deck and `bdf.rs`, the beamdswitch deck and `deck.rs` / `report.rs` (unless the PDF
-   reuses its numbers), the Markdown and clipboard exports, the WebMCP tools and `tools.json`, and
+   NASTRAN deck and `bdf.rs`, the Markdown and clipboard exports, the WebMCP tools and `tools.json`, and
    all explanation text (method, signs, assumptions, sources) on the page.
 7. Look: the site look, with the site stylesheet `/style.css`, header and footer. The page adds
    only the styles of the tool, and its controls follow the interaction rules of `/shared/kowalski.css`.
