@@ -1,5 +1,5 @@
 #!/bin/sh
-# Check the pages, local links and home page, and that beamdiag/ builds the beam page.
+# Check the pages, local links and home page, the wallpaper module, and that beamdiag/ builds the beam page.
 set -eu
 cd "$(dirname "$0")/.."
 python3 - <<'PY'
@@ -78,6 +78,12 @@ for entry in explorations.entries:
     if kind == 'Project':
         assert entry['href'].startswith('https://'), f'project is not a link to its repository: {entry}'
 PY
+# The committed wallpaper module must come from the committed sources (scripts/build-wallpaper.sh writes the hash).
+[ "$(cat wallpaper/wallpaper.goose wallpaper/host.c | shasum -a 256 | cut -d' ' -f1)" = "$(cat wallpaper/wasm.sha256)" ] ||
+  { echo 'check: wallpaper/ changed after the last build. Run scripts/build-wallpaper.sh' >&2; exit 1; }
+# Budget of the first load of the wallpaper page: 40 KB gzipped (2026-11-02: 34 KB).
+[ $(( $(gzip -9 -c public/play/wallpaper/index.html | wc -c) + $(wc -c < public/play/wallpaper/wallpaper.wasm.gz) )) -le 40960 ] ||
+  { echo 'check: the wallpaper page is over its 40 KB budget' >&2; exit 1; }
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT HUP INT TERM
 scripts/build-beam.sh "$tmp"
