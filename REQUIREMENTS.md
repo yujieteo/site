@@ -69,9 +69,13 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Build and deploy
 
-8. Only the beam page has a build. There is no CI.
+8. Only the beam page and the wallpaper module have a build. There is no CI.
    Reason: the owner declined CI.
+   Reason for the wallpaper build: on 2026-11-02 the captain asked for a wallpaper maker with "code to be in Goose -> C -> wasm".
 9. The beam page is built from `beamdiag/` into `public/play/beamdiag/` and committed.
+   `scripts/build-wallpaper.sh` builds `wallpaper/` into `public/play/wallpaper/wallpaper.wasm.gz`, and the module is
+   committed with `wallpaper/wasm.sha256`. `scripts/check.sh` fails when the hash differs from the sources.
+   Reason: a module older than its sources deploys wrong wallpapers, and the check costs one hash.
 10. To deploy, an agent commits to `main`, turns on the VPN and runs `scripts/deploy.sh`. It runs
     `scripts/check.sh`, replaces the site on the server with `public/` and tests the URLs. The deploy
     stops if the check fails.
