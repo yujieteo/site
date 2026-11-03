@@ -359,7 +359,6 @@ fn e_typed_in_psi_matches_a_preset_to_rounding() {
 
 fn figure_spans_are_halved_and_a_force_arrow_is_capped() {
     expect(fig_half_span(1.5e308, -1.5e308) == 1.5e308, "a span at the limit of a double does not overflow");
-    expect(1.5e308 - -1.5e308 > 1.7e308, "the same span subtracted whole overflows");
     expect(fig_force_arrow_length(1e9, 1.0) == fig_force_arrow_length(1.0, 1.0), "a force beyond the largest force gets the longest arrow");
     expect(fig_force_arrow_length(0.5, 1.0) < fig_force_arrow_length(1.0, 1.0), "a smaller force gets a shorter arrow");
 }

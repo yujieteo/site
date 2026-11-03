@@ -111,7 +111,7 @@ let FIG_FORCE_RATIO_CAP = 1.0;
 
 fn fig_half_span(hi: f64, lo: f64) -> f64 { return hi / FIG_SPAN_DIVISOR - lo / FIG_SPAN_DIVISOR; }
 fn fig_panel_y(p: FigPanel, v: f64) -> f64 {
-    return p.bottom - (v / FIG_SPAN_DIVISOR - p.lo / FIG_SPAN_DIVISOR) / fig_half_span(p.hi, p.lo) * (p.bottom - p.top);
+    return p.bottom - fig_half_span(v, p.lo) / fig_half_span(p.hi, p.lo) * (p.bottom - p.top);
 }
 fn fig_force_arrow_length(f: f64, fmax: f64) -> f64 {
     let ratio = abs(f) / fmax;
