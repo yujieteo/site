@@ -1,5 +1,6 @@
 #!/bin/sh
 set -eu
+export LC_ALL=C
 cd "$(dirname "$0")/.."
 out=${1:-public/play/beamdiag}
 src=beamdiag/src
