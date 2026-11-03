@@ -79,3 +79,12 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 10. To deploy, an agent commits to `main`, turns on the VPN and runs `scripts/deploy.sh`. It runs
     `scripts/check.sh`, replaces the site on the server with `public/` and tests the URLs. The deploy
     stops if the check fails.
+
+## Guardrails
+
+11. `scripts/check.sh` fails on a comment in `scripts/*.sh` and `wallpaper/`, on a home page first load over
+    100 KB gzipped (102400 bytes; 93327 on 2026-11-03), and when `wallpaper/test.mjs` fails.
+    The budget is the first load rounded up to the next 10 KB, until the owner sets one.
+    `beamdiag/` and the pages copied from other repositories are not in the comment rule.
+    Reason: the captain asked for the guardrails pass on 2026-11-03.
+    Reason for the test: it holds the wallpaper pixels for one seed, so a rename or a rebuild cannot change them.
