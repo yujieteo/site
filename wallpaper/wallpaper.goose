@@ -1,10 +1,9 @@
-
 import std;
 import math;
 
 struct Lab { l: f64, a: f64, b: f64 }
 
-let AREA_NUMBERS: f64[25] = [
+let AREAS_CENTRE_XY_SPREAD_XY_ALPHA: f64[25] = [
     0.30, 0.40, 0.42, 0.48, 0.95,
     0.34, 1.08, 0.45, 0.24, 0.90,
     0.66, 0.84, 0.20, 0.23, 0.98,
@@ -63,7 +62,7 @@ fn turn_hue_and_scale_chroma(c: Lab, hue: f64, chroma: f64) -> Lab {
     return Lab { l: c.l, a: (c.a * cos(t) - c.b * sin(t)) * chroma, b: (c.a * sin(t) + c.b * cos(t)) * chroma };
 }
 
-export fn wp_shift(r: f64, g: f64, b: f64, hue: f64, chroma: f64) -> i64 {
+export fn wp_swatch_rrggbb(r: f64, g: f64, b: f64, hue: f64, chroma: f64) -> i64 {
     let c = turn_hue_and_scale_chroma(oklab_from_srgb(r, g, b), hue, chroma);
     var v: i64 = 0;
     for ch in 3 { v = v * 256 + (srgb_from_linear(linear_channel_from_oklab(c, ch)) + 0.5) as i64; }
@@ -80,43 +79,43 @@ fn splitmix64_next() -> u64 {
 
 fn uniform_above_zero_to_one() -> f64 { return ((splitmix64_next() >> 11) + 1) / 9007199254740992.0; }
 
-export fn wp_render(px: u8[:], w: i64, h: i64, seed: i64, cols: const f64[:], hue: f64, chroma: f64) {
+export fn wp_render(rgba_px: u8[:], w: i64, h: i64, seed: i64, srgb_six_ground_first: const f64[:], hue: f64, chroma: f64) {
     var c: Lab[6] = [Lab { l: 0.0, a: 0.0, b: 0.0 }; 6];
-    for i in 6 { c[i] = turn_hue_and_scale_chroma(oklab_from_srgb(cols[3 * i], cols[3 * i + 1], cols[3 * i + 2]), hue, chroma); }
+    for i in 6 { c[i] = turn_hue_and_scale_chroma(oklab_from_srgb(srgb_six_ground_first[3 * i], srgb_six_ground_first[3 * i + 1], srgb_six_ground_first[3 * i + 2]), hue, chroma); }
     rng = seed as! u64;
-    let p0 = 2.0 * PI * uniform_above_zero_to_one();
-    let p1 = 2.0 * PI * uniform_above_zero_to_one();
+    let phase_du = 2.0 * PI * uniform_above_zero_to_one();
+    let phase_bend_u = 2.0 * PI * uniform_above_zero_to_one();
     var bend_u: f64[>..] = [];
-    for x in w { bend_u.push(BEND * sin(6.0 * ((x + 0.5) / w) + p1)); }
-    var spare = 0.0;
-    var have_spare = false;
+    for x in w { bend_u.push(BEND * sin(6.0 * ((x + 0.5) / w) + phase_bend_u)); }
+    var box_muller_spare = 0.0;
+    var have_box_muller_spare = false;
     var o = 0;
     for y in h {
         let fy = (y + 0.5) / h;
-        let du = BEND * sin(7.0 * fy + p0);
+        let du = BEND * sin(7.0 * fy + phase_du);
         for x in w {
             let fx = (x + 0.5) / w;
             let u = fx + du;
             let v = fy + bend_u[x];
             var k = c[0];
             for i in 5 {
-                let dx = (u - AREA_NUMBERS[5 * i]) / AREA_NUMBERS[5 * i + 2];
-                let dy = (v - AREA_NUMBERS[5 * i + 1]) / AREA_NUMBERS[5 * i + 3];
-                let a = AREA_NUMBERS[5 * i + 4] * exp(-0.5 * (dx * dx + dy * dy));
+                let dx = (u - AREAS_CENTRE_XY_SPREAD_XY_ALPHA[5 * i]) / AREAS_CENTRE_XY_SPREAD_XY_ALPHA[5 * i + 2];
+                let dy = (v - AREAS_CENTRE_XY_SPREAD_XY_ALPHA[5 * i + 1]) / AREAS_CENTRE_XY_SPREAD_XY_ALPHA[5 * i + 3];
+                let a = AREAS_CENTRE_XY_SPREAD_XY_ALPHA[5 * i + 4] * exp(-0.5 * (dx * dx + dy * dy));
                 let t = c[i + 1];
                 k = Lab { l: k.l + (t.l - k.l) * a, a: k.a + (t.a - k.a) * a, b: k.b + (t.b - k.b) * a };
             }
-            var n = spare;
-            if have_spare { have_spare = false; } else {
+            var box_muller_normal = box_muller_spare;
+            if have_box_muller_spare { have_box_muller_spare = false; } else {
                 let r = sqrt(-2.0 * log(uniform_above_zero_to_one()));
                 let t = 2.0 * PI * uniform_above_zero_to_one();
-                n = r * cos(t);
-                spare = r * sin(t);
-                have_spare = true;
+                box_muller_normal = r * cos(t);
+                box_muller_spare = r * sin(t);
+                have_box_muller_spare = true;
             }
-            let g = GRAIN * n;
-            for ch in 3 { px[o + ch] = clamp(srgb_from_linear(linear_channel_from_oklab(k, ch)) + g + 0.5, 0.0, 255.0) as u8; }
-            px[o + 3] = 255;
+            let g = GRAIN * box_muller_normal;
+            for ch in 3 { rgba_px[o + ch] = clamp(srgb_from_linear(linear_channel_from_oklab(k, ch)) + g + 0.5, 0.0, 255.0) as u8; }
+            rgba_px[o + 3] = 255;
             o += 4;
         }
     }

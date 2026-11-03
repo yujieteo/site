@@ -27,5 +27,5 @@ void wp_draw(int64_t w, int64_t h, int64_t seed, double hue, double chroma) {
 
 int64_t wp_colour(double r, double g, double b, double hue, double chroma) {
     start();
-    return wp_shift(r, g, b, hue, chroma);
+    return wp_swatch_rrggbb(r, g, b, hue, chroma);
 }

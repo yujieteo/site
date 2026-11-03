@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 cd "$(dirname "$0")/.."
-! grep -nE '(^|[[:space:]])(#|//)([[:space:]]|$)' scripts/*.sh wallpaper/wallpaper.goose wallpaper/host.c | grep -v ':1:#!' ||
+! grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/* | grep -vE '^[^:]+:(1:#!|[0-9]+:#include )' ||
   { echo 'check: comments are not allowed in scripts/ and wallpaper/. Name the code better or write a test.' >&2; exit 1; }
 python3 - <<'PY'
 import gzip
@@ -11,6 +11,7 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 
 root = Path('public').resolve()
+SERVER_MADE_PATHS = ('/log', '/log/feed.xml')
 fixed = Path('fixed-urls.txt').read_text().split()
 pages = [u.lstrip('/') + ('index.html' if u.endswith('/') else '') for u in fixed]
 for name in ['index.html', 'style.css', 'log/template.html'] + pages + [
@@ -30,7 +31,7 @@ class Links(HTMLParser):
             if url.scheme or url.netloc or not url.path:
                 continue
             path = unquote(url.path)
-            if path in ('/log', '/log/feed.xml'):
+            if path in SERVER_MADE_PATHS:
                 continue
             target = root / path.lstrip('/') if path.startswith('/') else page.parent / path
             target = target.resolve()
@@ -74,10 +75,10 @@ explorations = Explorations()
 explorations.feed(home)
 assert explorations.entries, 'home page has no selected explorations'
 for entry in explorations.entries:
-    kind = entry['kind'].split(' · ')[0]
-    assert kind in ('Experiment', 'Project', 'Essay'), f'bad kind: {entry}'
+    kind_without_essay_year = entry['kind'].split(' · ')[0]
+    assert kind_without_essay_year in ('Experiment', 'Project', 'Essay'), f'bad kind: {entry}'
     assert entry['h3'].strip() and entry.get('href'), f'no title or link: {entry}'
-    if kind == 'Project':
+    if kind_without_essay_year == 'Project':
         assert entry['href'].startswith('https://'), f'project is not a link to its repository: {entry}'
 class FirstLoad(HTMLParser):
     def __init__(self):
@@ -100,7 +101,7 @@ while queue:
         continue
     loaded.append(name)
     if name.endswith('.css'):
-        queue += [u.lstrip('/') for u in re.findall(r'(?:@import url|url)\((/[^)]+)\)', (root / name).read_text())]
+        queue += [u.lstrip('/') for u in re.findall(r'url\((/[^)]+)\)', (root / name).read_text())]
 home_first_load = sum(len(gzip.compress((root / name).read_bytes(), 9, mtime=0)) for name in loaded)
 assert home_first_load <= HOME_FIRST_LOAD_BUDGET, f'home page first load is {home_first_load} bytes gzipped, over the budget of {HOME_FIRST_LOAD_BUDGET}'
 print(f'check: home page first load {home_first_load} of {HOME_FIRST_LOAD_BUDGET} bytes gzipped')
