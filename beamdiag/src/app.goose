@@ -1,6 +1,6 @@
 import std;
 import math;
-import .jv;
+import .wasm_json;
 import .num;
 import .engine;
 import .fmt;
@@ -725,6 +725,9 @@ fn take_fonts(fonts: i64) {
     has_fonts = true;
 }
 
+let TYPED_POSITION_TOLERANCE = 1e-9;
+let PSI_PRESET_TOLERANCE = 1e-9;
+
 fn take_x(v: f64, me: i64, me_i: i64) -> f64 {
     let is_length = me == 0;
     let x = if is_length { take(v, LENGTH) } else { typed(take(v, LENGTH), app_attach) };
@@ -744,7 +747,7 @@ fn take_x(v: f64, me: i64, me_i: i64) -> f64 {
         }
         i++;
     }
-    for p in at { if abs(p - x) <= 1e-9 * l { return p; } }
+    for p in at { if abs(p - x) <= TYPED_POSITION_TOLERANCE * l { return p; } }
     return x;
 }
 
@@ -797,7 +800,7 @@ fn on_input(field: u8[:], val: u8[:]) {
         var mi = -1;
         var k2 = 0;
         for m in materials {
-            if abs(m.e - st_e) <= 1e-9 * m.e && m.nu == st_nu { mi = k2; break; }
+            if abs(m.e - st_e) <= PSI_PRESET_TOLERANCE * m.e && m.nu == st_nu { mi = k2; break; }
             k2++;
         }
         set_material(mi);

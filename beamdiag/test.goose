@@ -3,7 +3,7 @@ import math;
 import os;
 import .src.engine;
 import .src.num;
-import .src.jv;
+import .src.wasm_json;
 import .src.app;
 import .src.state;
 import .src.data;
@@ -16,6 +16,16 @@ let RANDOM: const u8[:] = embed_file("random.json");
 let NAN = 0.0 / 0.0;
 
 var failures = 0;
+var replay_hash: u64 = 7;
+var replay_count = 0;
+let REPLAY_MODULUS: u64 = 4294967291;
+let REPLAY_COUNT = 27546;
+let REPLAY_HASH: u64 = 4006951827;
+
+fn replay_add(x: f64) {
+    for c in js(x) { replay_hash = (replay_hash * 131 + (c as u64)) % REPLAY_MODULUS; }
+    replay_count++;
+}
 
 fn expect(ok: bool, what: u8[:]) {
     if !ok { write_stderr(str("beam test: ", what, "\n")); failures++; }
@@ -78,6 +88,8 @@ fn solver_matches_exact_macaulay_answers(id: u8[:], model: i64, answer: i64) {
     while r >= 0 {
         expect(k < g_rea.len && g_rea[k].x == num(r, "x"), str(id, ": reaction ", k, " is not at x = ", num(r, "x")));
         if k < g_rea.len {
+            replay_add(g_rea[k].fy);
+            replay_add(g_rea[k].mz);
             expect(near(g_rea[k].fy, num(r, "Fy"), fy_scale), str(id, ": reaction force ", k));
             expect(near(g_rea[k].mz, num(r, "Mz"), mz_scale), str(id, ": reaction moment ", k));
         }
@@ -94,6 +106,12 @@ fn solver_matches_exact_macaulay_answers(id: u8[:], model: i64, answer: i64) {
         let x = num(p, "x");
         let a = at(x);
         let where = str(id, " at x = ", x, ": ");
+        replay_add(a.v_left);
+        replay_add(a.v_right);
+        replay_add(a.m_left);
+        replay_add(a.m_right);
+        replay_add(a.v);
+        replay_add(a.theta);
         expect(near(a.v_left, num(p, "Vleft"), v_scale) && near(a.v_right, num(p, "Vright"), v_scale), str(where, "shear"));
         expect(near(a.m_left, num(p, "Mleft"), m_scale) && near(a.m_right, num(p, "Mright"), m_scale), str(where, "moment"));
         expect(near(a.v, num(p, "v"), d_scale), str(where, "deflection"));
@@ -310,6 +328,73 @@ fn solver_messages_read_in_the_chosen_convention() {
         "Positions −1000 mm and −999.999 mm are too close together; make them equal or separate them.", "two positions from the left end");
 }
 
+fn results_match_the_replaced_javascript_engine_bit_for_bit() {
+    if replay_count != REPLAY_COUNT || replay_hash != REPLAY_HASH {
+        expect(false, str("solver results changed: ", replay_count, " values with hash ", replay_hash, ", want ", REPLAY_COUNT, " with ", REPLAY_HASH));
+    }
+}
+
+fn typed_positions_land_on_a_position_within_the_tolerance() {
+    let l = show(st_length, LENGTH);
+    let p = st_sup[0].x;
+    let shown = show_x(p, app_attach);
+    expect(take_x(shown + 0.5 * TYPED_POSITION_TOLERANCE * l, 2, -1) == p, "a position typed within the tolerance lands on the position");
+    expect(take_x(shown + 2.0 * TYPED_POSITION_TOLERANCE * l, 2, -1) != p, "a position typed beyond the tolerance stays where it was typed");
+}
+
+fn e_typed_in_psi_matches_a_preset_to_rounding() {
+    handle_event("{\"ev\":\"change\",\"field\":\"units\",\"value\":\"lbf-in\"}");
+    var i = 0;
+    while i < materials.len {
+        var id: u8[>..] = [];
+        id.append(materials[i].id);
+        st_nu = materials[i].nu;
+        let typed = to_precision(show(materials[i].e, STRESS), 10);
+        handle_event(str("{\"ev\":\"input\",\"field\":\"material.E\",\"value\":\"", typed, "\"}"));
+        expect(st_mat_id == id, str("E of ", id, " typed in psi to 10 figures matches the preset"));
+        i++;
+    }
+    handle_event("{\"ev\":\"change\",\"field\":\"units\",\"value\":\"N-mm\"}");
+}
+
+fn figure_spans_are_halved_and_a_force_arrow_is_capped() {
+    expect(fig_half_span(1.5e308, -1.5e308) == 1.5e308, "a span at the limit of a double does not overflow");
+    expect(fig_force_arrow_length(1e9, 1.0) == fig_force_arrow_length(1.0, 1.0), "a force beyond the largest force gets the longest arrow");
+    expect(fig_force_arrow_length(0.5, 1.0) < fig_force_arrow_length(1.0, 1.0), "a smaller force gets a shorter arrow");
+}
+
+fn contains(text: u8[:], part: u8[:]) -> bool {
+    if part.len > text.len { return false; }
+    var i = 0;
+    while i + part.len <= text.len { if text[i..i + part.len] == part { return true; } i++; }
+    return false;
+}
+
+fn a_drag_derives_the_hand_calculation_only_when_it_ends() {
+    handle_event("{\"ev\":\"start\",\"w\":800}");
+    handle_event("{\"ev\":\"hand-visible\"}");
+    expect(!hand_stale, "the hand calculation is current before a drag");
+    handle_event("{\"ev\":\"down\",\"key\":\"s0\"}");
+    let during = handle_event("{\"ev\":\"move\",\"frac\":0.3}");
+    expect(hand_stale && !contains(during, "#hand-body"), "a drag step leaves the hand calculation alone");
+    let after = handle_event("{\"ev\":\"up\"}");
+    expect(!hand_stale && contains(after, "#hand-body"), "the end of a drag derives the hand calculation again");
+}
+
+fn a_beam_too_large_for_the_units_keeps_the_last_solved_beam() {
+    handle_event("{\"ev\":\"start\",\"w\":800}");
+    expect(app_u == unit_index("N-mm") && app_has_sol && !app_has_error, "the example beam solves in N-mm");
+    let fy = g_rea[0].fy;
+    let ml = g_ext.m.value;
+    handle_event("{\"ev\":\"input\",\"field\":\"loads.0.q1\",\"value\":\"1e303\"}");
+    handle_event("{\"ev\":\"input\",\"field\":\"loads.0.q2\",\"value\":\"1e303\"}");
+    expect(app_has_error, "a load of 1e303 N/mm gives moments that overflow in N·mm");
+    expect(app_has_sol && g_rea[0].fy == fy && g_ext.m.value == ml, "the last solved beam stays");
+    handle_event("{\"ev\":\"input\",\"field\":\"loads.0.q1\",\"value\":\"-10\"}");
+    handle_event("{\"ev\":\"input\",\"field\":\"loads.0.q2\",\"value\":\"-10\"}");
+    expect(!app_has_error && g_rea[0].fy == fy, "a load that fits solves again");
+}
+
 fn main() {
     let fixtures = jm_parse_raw(FIXTURES);
     let reference = jm_parse_raw(REFERENCE);
@@ -354,6 +439,12 @@ fn main() {
     a_unit_or_origin_change_keeps_the_beam();
     typed_lengths_drop_conversion_noise();
     solver_messages_read_in_the_chosen_convention();
+    results_match_the_replaced_javascript_engine_bit_for_bit();
+    typed_positions_land_on_a_position_within_the_tolerance();
+    e_typed_in_psi_matches_a_preset_to_rounding();
+    figure_spans_are_halved_and_a_force_arrow_is_capped();
+    a_drag_derives_the_hand_calculation_only_when_it_ends();
+    a_beam_too_large_for_the_units_keeps_the_last_solved_beam();
     if failures > 0 { write_stderr(str("beam test: ", failures, " failed\n")); exit(1); }
     print(str("beam test: ok, ", cases, " exact beams\n"));
 }

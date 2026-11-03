@@ -1,5 +1,5 @@
 import std;
-import .jv;
+import .wasm_json;
 import .engine;
 
 let RAW: const u8[:] = embed_file("../raw.json");

@@ -106,8 +106,16 @@ fn fig_shift(a: i64, by: f64) -> f64 {
 fn fig_panel_get(p: FigPanel, s: Sample) -> f64 {
     return show(if p.key == 0 { s.shear } else if p.key == 1 { s.m } else { s.v }, p.q);
 }
+let FIG_SPAN_DIVISOR = 2.0;
+let FIG_FORCE_RATIO_CAP = 1.0;
+
+fn fig_half_span(hi: f64, lo: f64) -> f64 { return hi / FIG_SPAN_DIVISOR - lo / FIG_SPAN_DIVISOR; }
 fn fig_panel_y(p: FigPanel, v: f64) -> f64 {
-    return p.bottom - (v / 2.0 - p.lo / 2.0) / (p.hi / 2.0 - p.lo / 2.0) * (p.bottom - p.top);
+    return p.bottom - fig_half_span(v, p.lo) / fig_half_span(p.hi, p.lo) * (p.bottom - p.top);
+}
+fn fig_force_arrow_length(f: f64, fmax: f64) -> f64 {
+    let ratio = abs(f) / fmax;
+    return 18.0 + 30.0 * (if is_nan(ratio) { 0.0 } else { fig_fmin(ratio, FIG_FORCE_RATIO_CAP) });
 }
 
 fn fig_arrow_path(c: DOp[>..]&, x: f64, y: f64, deg: f64, size: f64, along: f64, col: i64) {
@@ -160,7 +168,7 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         var hi = 0.0;
         for s in pts { let v = fig_panel_get(p, s); lo = jmin(lo, v); hi = jmax(hi, v); }
         if !(hi - lo >= 1e-9) { lo = -1.0; hi = 1.0; }
-        let gap = (hi / 2.0 - lo / 2.0) * 0.4;
+        let gap = fig_half_span(hi, lo) * 0.4;
         p.lo = lo - gap;
         p.hi = hi + gap;
         p.k0 = fig_ticks.len;
@@ -402,8 +410,7 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         fig_open_handle(c, interactive, key, label, ld.x, l);
         let a = fig_anchor_at(ld.x, l);
         if ld.kind == POINT {
-            let ratio = abs(ld.f) / fmax;
-            let len = 18.0 + 30.0 * (if is_nan(ratio) { 0.0 } else { fig_fmin(ratio, 1.0) });
+            let len = fig_force_arrow_length(ld.f, fmax);
             let down = ld.f <= 0.0;
             let y0 = yb - 6.0 - len;
             let y1 = yb - 6.0;
