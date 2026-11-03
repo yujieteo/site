@@ -136,8 +136,15 @@ node wallpaper/test.mjs
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT HUP INT TERM
 scripts/build-beam.sh "$tmp"
-"${GOOSE:-goose}" --standalone -q -o "$tmp/test.c" beamdiag/test.goose
-cc -O1 -w "$tmp/test.c" beamdiag/src/shim.c -lm -o "$tmp/test"
+test_hash=$(cat beamdiag/test.goose beamdiag/src/*.goose beamdiag/src/body.html beamdiag/fixtures.json beamdiag/reference.json beamdiag/random.json beamdiag/raw.json | shasum -a 256 | cut -d' ' -f1)
+if [ -n "${GOOSE:-}" ]; then
+  "$GOOSE" --standalone -q -o beamdiag/c/test.c beamdiag/test.goose
+  echo "$test_hash" > beamdiag/c/test.sha256
+elif [ "$test_hash" != "$(cat beamdiag/c/test.sha256)" ]; then
+  echo 'check: beamdiag/c/test.c is older than beamdiag/test.goose or its inputs. Rebuild with GOOSE=/path/to/goose scripts/check.sh' >&2
+  exit 1
+fi
+cc -O1 -w beamdiag/c/test.c beamdiag/src/shim.c -lm -o "$tmp/test"
 "$tmp/test"
 for f in index.html beamdiag.wasm.gz; do [ -s "$tmp/$f" ]; done
 echo 'check: ok'
