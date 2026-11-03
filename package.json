@@ -1,0 +1,12 @@
+{
+  "name": "site",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "1.4.4",
+    "fast-check": "4.10.2",
+    "knip": "6.44.1",
+    "typescript": "7.0.2",
+    "typescript-scanner": "npm:typescript@5.9.3"
+  }
+}

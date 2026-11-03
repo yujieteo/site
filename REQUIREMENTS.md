@@ -82,14 +82,21 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Guardrails
 
-11. `scripts/check.sh` fails on a comment in `scripts/*.sh`, `wallpaper/` and the sources of `beamdiag/`, on a home
-    page first load over 100 KB gzipped (102400 bytes; 93327 on 2026-11-03), on a beam page first load over
-    590 KB gzipped (604160 bytes; 602778 on 2026-11-03), and when `wallpaper/test.mjs` or `beamdiag/test.goose` fails.
+11. `scripts/check.sh` fails on a comment in `scripts/*.sh`, `wallpaper/` and the sources of `beamdiag/`, on a TypeScript
+    comment with no `https://` source, on `any`, a non-null assertion or a cast in the TypeScript, on a type error
+    (`tsc --noEmit`, strict, `noUncheckedIndexedAccess`), on an unreferenced TypeScript file, export or dependency (`knip`),
+    on a page first load over the gzipped budget of its route in `scripts/check-site.ts`, on a home
+    page first load over 100 KB gzipped (102400 bytes; 93332 on 2026-11-03), on a beam page first load over
+    590 KB gzipped (604160 bytes; 603514 on 2026-11-03), and when `bun test` or `beamdiag/test.goose` fails.
     The home budget is the first load rounded up to the next 10 KB, until the owner sets one. The beam budget is set the same way.
+    The other routes have the largest first load of 2026-11-03 rounded up to the next 10 KB, and the default is the home budget.
     The beam first load is the gzipped page, its stylesheets and fonts, KaTeX with all its font files (the most a browser
     downloads) and `beamdiag.wasm.gz`. The report fonts load on a save and are not counted.
     Source credits stay as comments: Sonner, Roark and Dekker in `beamdiag/`, Oklab and splitmix64 in `wallpaper/`. They are attribution notices for copied formulas and constants, like licence headers, and the exception list is in `scripts/check.sh`. The pages copied from other
     repositories, `beamdiag/c/` (made by Goose) and the KaTeX files are not in the comment rule.
     Reason: the captain asked for the guardrails pass on 2026-11-03, and for a separate beam page limit and fewer beam comments the same day.
+    Reason for TypeScript, Bun and the replay: on 2026-11-03 the captain asked that everyone uses Bun and that everything that can be type checked is type checked, with process replay.
+    `scripts/check.sh --replay` replays the inputs of `bun test` on `main` and on `HEAD` and fails on a difference unless `--accept` is given. It is a local command and not in CI.
+    Reason for the sanitizers: `beamdiag/c/test.c` runs under ASan and UBSan. The alignment check is off, because Goose makes 73-byte packed nodes with 8-byte stores, until Goose is fixed.
     Reason for the test: it holds the wallpaper pixels for one seed, so a rename or a rebuild cannot change them.
     Reason for the beam test: on 2026-11-03 the captain ruled that the facts of the removed beam comments go into code that runs, not a README. It also holds the solver to the frozen exact answers in `reference.json` and `random.json`.
