@@ -33,7 +33,7 @@ main.page h1 { font-weight: 600; margin-bottom: 32px; }
 main.page > article p { margin-bottom: 26px; opacity: 0.9; }
 main.page > article h2 { font-weight: 550; margin: 48px 0 20px; }
 main.page figure { margin: 2rem 0; }
-main.page figure svg { display: block; max-width: 100%; height: auto; }
+main.page figure svg { display: block; max-width: 100%; height: auto; margin-inline: auto; } /* A figure sets its own width attribute: 2 CSS px per pt (schematic-emil web scale). */
 .frame { margin: 0; padding: 24px; background: var(--card); border-radius: 12px; box-shadow: inset 0 0 0 1px var(--card-edge); }
 .caption, main.page figcaption { text-align: center; font-size: 0.75rem; line-height: 1.3333; color: var(--muted); }
 .caption { margin: 16px 0 32px; }
