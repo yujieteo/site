@@ -6,6 +6,11 @@ emcc=${EMCC:-emcc}
 export EM_CACHE="${EM_CACHE:-$HOME/.cache/beamdiag-emcache}"
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT HUP INT TERM
+GOOSE_PINNED_VERSION=v2026.3
+case $("$goose" --version) in
+  "goose $GOOSE_PINNED_VERSION"*) ;;
+  *) echo "build-wallpaper: needs goose $GOOSE_PINNED_VERSION, found: $("$goose" --version)" >&2; exit 1 ;;
+esac
 "$goose" --standalone -q --header "$tmp/wallpaper.h" -o "$tmp/wallpaper.c" wallpaper/wallpaper.goose
 "$emcc" -O3 -flto -sMALLOC=emmalloc "-DGS_STACK_RESERVE=(4ull<<20)" -I"$tmp" wallpaper/host.c "$tmp/wallpaper.c" \
   -o "$tmp/wallpaper.wasm" --no-entry -sSTANDALONE_WASM -sALLOW_MEMORY_GROWTH=1 -sMAXIMUM_MEMORY=4GB \

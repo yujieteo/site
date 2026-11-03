@@ -1,22 +1,10 @@
 # Beam diagram source notes
 
-`scripts/check.sh` bans comments in `beamdiag/` sources (`src/*.goose`, `src/*.c`, `src/page_host.js`, `src/page_style.css`, `reference.py`). It lists the few exceptions.
-This file holds the facts that the removed comments held. `AGENTS.md` describes the folder, and `REQUIREMENTS.md` is the contract.
-
-Vendored third-party files are not site code and keep their own comments: `public/play/beamdiag/katex/` (KaTeX, MIT, pinned in `lock.txt`) and `public/play/beamdiag/fonts/` (see `fonts.txt`).
-`beamdiag/c/` is made by Goose and has no hand-written comments.
-
-## Kept comments
-
-| Where | Why it stays |
-| --- | --- |
-| `src/page_host.js`, "Toasts, after Sonner" | The source credit: the toast follows https://emilkowal.ski/ui/building-a-toast-component. |
-| `src/engine.goose`, "Roark's series approximation" | The source of the torsion constant of a solid rectangle. |
-| `src/engine.goose`, "Dekker's product" | The name and source of the exact product used for correctly rounded powers. |
+These facts came from comments that `scripts/check.sh` bans. Each one waits for a name, a constant, a check or a test in the code.
 
 ## Conventions
 
-- Units are SI: m, N, N/m, N·m, Pa, m², m⁴. `UNIT_IDS` lists the consistent unit systems. `to_units` and `from_units` convert at the edge, and the solver sees only SI. A system gives the SI size of one unit of every quantity. Stress is force per length squared, so E·I/L³ stays in the system. lbf = 4.4482216152605 N and in = 0.0254 m exactly by definition, written as JavaScript computed them. `ascii` names the system where text must stay ASCII.
+- Units are SI: m, N, N/m, N·m, Pa, m², m⁴. `UNIT_IDS` lists the consistent unit systems. `to_units` and `from_units` convert at the edge, and the solver sees only SI. A system gives the SI size of one unit of every quantity. Stress is force per length squared, so E·I/L³ stays in the system. `ascii` names the system where text must stay ASCII.
 - Axes: x along the beam from its left end, +y up. Rotations and couples are counter-clockwise positive (+z out of the page). Point force F is positive up, couple C positive counter-clockwise, distributed load q varies linearly from x1 to x2 (N/m, positive up).
 - Supports: a pin restrains deflection. A fixed support restrains deflection and slope. With only pins and fixed supports the structure is stable exactly when it has a fixed support or two separate pins.
 - V(x) is the sum of the upward forces left of the section. M(x) is positive when the beam sags. dM/dx = V and dV/dx = q. Section shape codes are 0 none, 1 rect, 2 circle, 3 tube, 4 custom. Bending is about the horizontal axis, with the depth along y.
@@ -27,7 +15,6 @@ Vendored third-party files are not site code and keep their own comments: `publi
 
 - Method: linear-elastic Euler–Bernoulli beam, direct stiffness. Two-node Hermite elements run between the supports and the beam ends only. Consistent (work-equivalent) nodal loads come from every point force, couple and distributed load inside each element. Nodal deflections and reactions are then exact, and indeterminate supports need no equilibrium-only shortcut. V and M are recovered exactly by statics from the loads and reactions. Deflection comes from integrating M/EI exactly from the nearest event on the left.
 - The arithmetic follows the JavaScript engine it replaced, operation for operation, so the numbers are the ones the page has always shown. Powers are correctly rounded because JavaScript's `**` takes the platform `pow`, whose last bit varies. `dd_pow` computes x^n in double-double arithmetic, so its rounding to one double is x^n correctly rounded (x·x for a square, as everywhere). The reciprocal 1/(h + l) is correctly rounded as q plus the remainder of 1 − q·(h + l).
-- `jmax` and `jmin` give NaN when either side is NaN (Math.max, Math.min).
 - The beam being worked on is in globals: the model (`g_m`, `g_sup`, `g_loads`) and its solution (`g_rea`, `g_disp`, `g_eq`, `g_ext`). A failure leaves its message and field in `err_msg` and `err_field`; `fail` returns false so a caller can `return fail(...)`.
 - An unchecked model comes from the page or a test: NaN stands for a missing or non-numeric value, and a `has_` flag false for a value left out, which takes its default. `validate` checks and normalises `in_x`, `in_sup` and `in_loads` into `g_m`, `g_sup` and `g_loads`; the unit only sets how lengths are written in messages. A bad load kind from the page is −1; fields a kind does not use are ignored. A whole number is written as JavaScript's String, else six significant figures.
 - `distinct` equals `[...new Set(xs)].sort((a, b) => a - b)` (−0 is 0). `events` lists ends, supports, point actions and load ends, and fails with the error set when two are too close. `intensity` takes the load starting at x (RIGHT) or ending there (LEFT).
@@ -120,18 +107,10 @@ JavaScript's number to text conversions, digit for digit: `String(x)`, `toPrecis
 
 ## page_host.js and page_style.css
 
-- The toast, after Sonner (https://emilkowal.ski/ui/building-a-toast-component): the newest toast is in front. A toast closes after 4 s, and the timer stops while the pointer is on the stack or the tab is hidden. A loading toast stays until the next toast takes its place. Swiping down closes it, past 45 px or faster than 0.11 px/ms; an upward swipe gets friction. The toaster is fixed and each toast is absolute: the toasts are a stack of layers at the same place. A toast's `::after` starts inside the 1 px border, and it covers the border, the 14 px gap and a subpixel margin so the pointer does not leave the stack.
+- The toast, after Sonner (https://emilkowal.ski/ui/building-a-toast-component): the newest toast is in front. The timer stops while the pointer is on the stack or the tab is hidden. A loading toast stays until the next toast takes its place. The toaster is fixed and each toast is absolute: the toasts are a stack of layers at the same place. A toast's `::after` starts inside the 1 px border, and it covers the border, the 14 px gap and a subpixel margin so the pointer does not leave the stack.
 - Saved PNG pixels are doubled for a sharp print, within what every browser's canvas allows. A focused element that was drawn again keeps the focus.
 - Some sizes follow their parent text, so a rem value is wrong there.
-
-## shim.c and host.c
-
-`shim.c` gives Goose the C library calls it needs: the exact decimal expansion `"%.{prec}e"` of x into a buffer (the length is returned without the NUL), `"%.{prec}f"` of x, and the double nearest the decimal text in the buffer (NUL-terminated by the formatters above). `host.c` is the C side of the WebAssembly interface.
 
 ## reference.py
 
 `reference.py` writes the exact Macaulay answers (`reference.json`) from `fixtures.json`; `--check` exits 1 if `reference.json` is out of date. Unknowns are R_i for each support, M_i for each fixed support, then C1 and C2. Known load terms of M(x) are (coef, a, power) triples meaning coef·⟨x − a⟩^power. The equations are the sum of vertical forces and the sum of moments about x = 0. The support conditions come from EI v = Σ coef ⟨x − a⟩^(p+2) / ((p+1)(p+2)) + C1 x + C2. The NASTRAN bulk data reader reads the subset BEAMDIAG wrote: an exponent may lack the E (1.0+5), blank CP, CD and PS fields on a GRID take their values from GRDSET, and the bars must form one chain from x0 to x0 + L.
-
-## Build
-
-`raw.json`, the Goose files, `body.html`, `page_base.css`, `page_style.css` and `page_host.js` feed `c.sha256`. `page.goose` builds the standalone page, and `scripts/build-beam.sh` makes the WebAssembly files.

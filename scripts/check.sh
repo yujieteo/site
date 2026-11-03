@@ -1,12 +1,15 @@
 #!/bin/sh
 set -eu
 cd "$(dirname "$0")/.."
-comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/* | grep -vE '^[^:]+:(1:#!|[0-9]+:#include )'
+comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/* | grep -vE '^[^:]+:(1:#!|[0-9]+:#include )|// (Oklab, after Björn Ottosson|splitmix64, after Sebastiano Vigna):'
   grep -nE '(^|[[:space:]])(//|/\*)' beamdiag/src/*.goose beamdiag/src/*.c beamdiag/src/page_host.js beamdiag/src/page_style.css |
     grep -vE "Roark's series|Dekker's product|Toasts, after Sonner"
   grep -nE '(^|[[:space:]])#' beamdiag/reference.py; } || true)
 [ -z "$comments" ] || { echo "$comments" >&2
-  echo 'check: comments are not allowed in scripts/, wallpaper/ and beamdiag/. Name the code better or write a test. beamdiag/README.md lists the three source credits that stay.' >&2; exit 1; }
+  echo 'check: comments are not allowed in scripts/, wallpaper/ and beamdiag/. Name the code better or write a test. Five source credits stay: Sonner, Roark, Dekker, Oklab and splitmix64.' >&2; exit 1; }
+grep -qF '    0.0254, 4.4482216152605, 6894.757293168361,' beamdiag/src/engine.goose &&
+  grep -qF '    0.0254, 4448.2216152605, 6894757.293168361,' beamdiag/src/engine.goose ||
+  { echo 'check: the lbf-in and kip-in rows of UNIT_FACTOR in beamdiag/src/engine.goose must give in = 0.0254 m and lbf = 4.4482216152605 N exactly, as JavaScript computed them' >&2; exit 1; }
 python3 - <<'PY'
 import gzip
 import re

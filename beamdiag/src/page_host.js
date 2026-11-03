@@ -100,7 +100,7 @@ plots.addEventListener("keydown", (e) => {
   if (target && send({ ev: "key", key: e.key, shift: e.shiftKey, target }).prevent) e.preventDefault();
 });
 // Toasts, after Sonner (https://emilkowal.ski/ui/building-a-toast-component).
-const toaster = document.querySelector(".toasts"), GAP = 14;
+const toaster = document.querySelector(".toasts"), GAP = 14, TOAST_MS = 4000, SWIPE_CLOSE_PX = 45, SWIPE_CLOSE_PX_PER_MS = 0.11, SWIPE_UP_MAX_PX = 12, SWIPE_UP_SCALE_PX = 60;
 let toasts = [], expanded = false;
 function layout() {
   const hs = toasts.map((t) => { t.el.style.height = ""; return t.el.offsetHeight; });
@@ -131,7 +131,7 @@ function toast(msg, loading = false) {
   if (!t) {
     const el = document.createElement("li");
     el.className = "toast"; el.append(document.createElement("p")); toaster.prepend(el);
-    t = { el, left: 4000, timer: 0 }; toasts.unshift(t); swipe(t);
+    t = { el, left: TOAST_MS, timer: 0 }; toasts.unshift(t); swipe(t);
   }
   t.el.firstChild.textContent = msg; t.loading = loading;
   layout(); tick();
@@ -142,13 +142,13 @@ function swipe(t) {
   t.el.addEventListener("pointermove", (e) => {
     if (y0 === null) return;
     const raw = e.clientY - y0;
-    d = raw >= 0 ? raw : -12 * (1 - Math.exp(raw / 60));
+    d = raw >= 0 ? raw : -SWIPE_UP_MAX_PX * (1 - Math.exp(raw / SWIPE_UP_SCALE_PX));
     t.el.style.setProperty("--swipe", `${d}px`);
   });
   const up = () => {
     if (y0 === null) return;
     y0 = null; t.el.removeAttribute("data-swiping");
-    if (d >= 45 || (d > 0 && d / (Date.now() - t0) > 0.11)) { t.el.setAttribute("data-swiped", ""); dismiss(t); }
+    if (d >= SWIPE_CLOSE_PX || (d > 0 && d / (Date.now() - t0) > SWIPE_CLOSE_PX_PER_MS)) { t.el.setAttribute("data-swiped", ""); dismiss(t); }
     else t.el.style.setProperty("--swipe", "0px");
   };
   t.el.addEventListener("pointerup", up); t.el.addEventListener("pointercancel", up);

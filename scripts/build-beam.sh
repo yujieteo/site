@@ -8,6 +8,11 @@ emcc=${EMCC:-$(command -v emcc || printf /nix/store/xngbhym5r9y657i2lyajh9xd5yg9
 export EM_CACHE="${EM_CACHE:-$HOME/.cache/beamdiag-emcache}"
 hash=$(cat "$src"/*.goose "$src"/body.html "$src"/page_base.css "$src"/page_style.css "$src"/page_host.js beamdiag/raw.json | shasum -a 256 | cut -d' ' -f1)
 if [ -n "${GOOSE:-}" ]; then
+  GOOSE_PINNED_VERSION=v2026.3
+  case $("$GOOSE" --version) in
+    "goose $GOOSE_PINNED_VERSION"*) ;;
+    *) echo "build-beam: needs goose $GOOSE_PINNED_VERSION, found: $("$GOOSE" --version)" >&2; exit 1 ;;
+  esac
   (cd "$src" && "$GOOSE" --standalone --header "../c/beamdiag.h" -o "../c/beamdiag.c" wasm.goose &&
     "$GOOSE" --standalone -o "../c/page.c" page.goose)
   echo "$hash" > beamdiag/c.sha256
