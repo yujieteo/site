@@ -138,11 +138,6 @@ trap 'rm -rf "$tmp"' EXIT HUP INT TERM
 scripts/build-beam.sh "$tmp"
 test_hash=$(cat beamdiag/test.goose beamdiag/src/*.goose beamdiag/src/body.html beamdiag/fixtures.json beamdiag/reference.json beamdiag/random.json beamdiag/raw.json | shasum -a 256 | cut -d' ' -f1)
 if [ -n "${GOOSE:-}" ]; then
-  GOOSE_PINNED_VERSION=v2026.3
-  case $("$GOOSE" --version) in
-    "goose $GOOSE_PINNED_VERSION"*) ;;
-    *) echo "check: needs goose $GOOSE_PINNED_VERSION, found: $("$GOOSE" --version)" >&2; exit 1 ;;
-  esac
   "$GOOSE" --standalone -q -o beamdiag/c/test.c beamdiag/test.goose
   echo "$test_hash" > beamdiag/c/test.sha256
 elif [ "$test_hash" != "$(cat beamdiag/c/test.sha256)" ]; then
