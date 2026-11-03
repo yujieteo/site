@@ -12,4 +12,3 @@
 | E typed in psi matches a preset only to rounding, so presets are recognised within 1e-9. | This is the reason for the 1e-9 in the material match. |
 | The figure halves spans before it subtracts them, so loads near the limit of a double do not overflow. A point force or couple is capped, because during an unsolved edit F can be more than the largest force of the solved model. | These are the reasons for the halves and the cap in `figure.goose`. |
 | Some sizes in `page_style.css` follow their parent text, so a rem value is wrong there. | CSS has no names for this, and a check cannot tell which sizes must follow their parent. |
-| Nothing on the page uses `mesh` in `engine.goose` since `REQUIREMENTS.md` removed NASTRAN. | Removing it changes `c/beamdiag.c`. Remove it in a change that can rebuild the beam page. |
