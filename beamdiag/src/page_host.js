@@ -46,7 +46,6 @@ function copy(c) {
 function raster(c) {
   const fail = (msg) => send({ ev: "result", tag: "png", ok: false, msg }), img = new Image();
   img.onload = () => {
-    // Twice the pixels for a sharp print, within what every browser's canvas allows.
     const scale = Math.min(2, Math.sqrt(16e6 / (c.w * c.h))), cv = document.createElement("canvas");
     cv.width = Math.round(c.w * scale); cv.height = Math.round(c.h * scale);
     const g = cv.getContext("2d");
@@ -76,7 +75,6 @@ function run(cmds) {
     else if ("prevent" in c) out.prevent = true;
     else if ("reply" in c) out.reply = c.reply;
   }
-  // A focused element that was drawn again keeps the focus.
   if (a && a !== document.body && !a.isConnected) {
     const [key, field, id] = mark, again = key ? plots.querySelector(`[data-key="${key}"]`) : field ? document.querySelector(`[data-field="${field}"]`) : id ? document.getElementById(id) : null;
     again?.focus({ preventScroll: true });
@@ -101,9 +99,7 @@ plots.addEventListener("keydown", (e) => {
   const h = e.target.closest("[data-key]"), target = h ? h.dataset.key : e.target.id === "plotarea" ? "plot" : "";
   if (target && send({ ev: "key", key: e.key, shift: e.shiftKey, target }).prevent) e.preventDefault();
 });
-// Toasts, after Sonner (https://emilkowal.ski/ui/building-a-toast-component). The newest is in front. A toast closes after
-// 4 s, and the timer stops while the pointer is on the stack or the tab is hidden. A loading toast stays until the next
-// toast takes its place. Swipe down to close: past 45 px, or faster than 0.11 px/ms. An upward swipe gets friction.
+// Toasts, after Sonner (https://emilkowal.ski/ui/building-a-toast-component).
 const toaster = document.querySelector(".toasts"), GAP = 14;
 let toasts = [], expanded = false;
 function layout() {

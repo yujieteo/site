@@ -1,12 +1,3 @@
-// The small TeX subset of the hand calculations, drawn as HTML without a maths library: text,
-// fractions, superscripts and subscripts.
-//
-// The Rust builds a node tree and flattens it. Here one recursive pass writes the flat text directly
-// (mode TEX_TEXT for accessible labels, TEX_UNICODE for the PDF and the page's first draw). The result is
-// the same: both end by closing up all runs of white space, so merging neighbouring strings first is
-// not needed. The source is read byte by byte; only a character that is consumed as one unit (after
-// ^ _ \frac \left \right or a backslash) is stepped over whole.
-
 import std;
 import math;
 import .fmt;
@@ -14,11 +5,9 @@ import .fmt;
 let TEX_TEXT = 0;
 let TEX_UNICODE = 1;
 
-var tex_i: i64 = 0;             // the read position in the source being parsed
+var tex_i: i64 = 0;
 
-// ---------- small helpers ----------
 
-// HTML text and attribute escaping.
 fn tex_esc(s: u8[:]) -> u8[>..] {
     var out: u8[>..] = [];
     for c in s {
@@ -34,7 +23,6 @@ fn tex_esc(s: u8[:]) -> u8[>..] {
 fn tex_alpha(c: u8) -> bool { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
 fn tex_clen(b: u8) -> i64 { return if b >= 240 { 4 } else if b >= 224 { 3 } else if b >= 192 { 2 } else { 1 }; }
 
-// Byte length of the white space character at i (Rust's char::is_whitespace), 0 if none.
 fn tex_ws(s: u8[:], i: i64) -> i64 {
     let c = s[i];
     if c == 32 || (c >= 9 && c <= 13) { return 1; }
@@ -51,7 +39,6 @@ fn tex_ws(s: u8[:], i: i64) -> i64 {
     return 0;
 }
 
-// s.split_whitespace().collect::<Vec<_>>().join(" ")
 fn tex_squeeze(s: u8[:]) -> u8[>..] {
     var out: u8[>..] = [];
     var pending = false;
@@ -70,9 +57,7 @@ fn tex_squeeze(s: u8[:]) -> u8[>..] {
     return out;
 }
 
-// ---------- the parser ----------
 
-// The next character, with - ' = set as TeX maths sets them.
 fn tex_put_char(s: u8[:], out: u8[>..]&) {
     let c = s[tex_i];
     if c == '-' { out.append("−"); tex_i++; return; }
@@ -84,7 +69,6 @@ fn tex_put_char(s: u8[:], out: u8[>..]&) {
     tex_i += n;
 }
 
-// The name of a symbol command; false when unknown.
 fn tex_symbol(out: u8[>..]&, name: u8[:]) -> bool {
     if name == "langle" { out.append("⟨"); }
     else if name == "rangle" { out.append("⟩"); }
@@ -119,7 +103,6 @@ let TEX_PLAIN_DIGITS: const u8[:] = "0123456789-+in";
 let TEX_SUP: const u8[:][14] = ["⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", "⁻", "⁺", "ⁱ", "ⁿ"];
 let TEX_SUB: const u8[:][14] = ["₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", "₋", "₊", "ᵢ", "ₙ"];
 
-// The text written since start becomes superscript or subscript characters (digits, - + i n), in place.
 fn tex_small(out: u8[>..]&, start: i64, sup: bool) {
     var inner: u8[>..] = [];
     inner.append(out[start..]);
@@ -155,7 +138,6 @@ recursive fn tex_command(s: u8[:], out: u8[>..]&, mode: i64) {
         if tex_i > s.len { tex_i = s.len; }
     }
     let name = s[start..tex_i];
-    // As in TeX, a control word swallows the spaces after it.
     if word { while tex_i < s.len && s[tex_i] == ' ' { tex_i++; } }
     let has_brace = tex_i < s.len && s[tex_i] == '{';
     if name == "frac" {
@@ -187,7 +169,6 @@ recursive fn tex_command(s: u8[:], out: u8[>..]&, mode: i64) {
     }
 }
 
-// Reads to the end character (a code, or -1 for none), which it consumes.
 recursive fn tex_seq(s: u8[:], out: u8[>..]&, end: i64, mode: i64) {
     while tex_i < s.len {
         let c = s[tex_i];
@@ -220,12 +201,9 @@ fn tex_flat(src: u8[:], mode: i64) -> u8[>..] {
     return tex_squeeze(out);
 }
 
-// ---------- the forms ----------
 
-// Plain text of a TeX string, for accessible labels.
 fn tex_text(src: u8[:]) -> u8[>..] { return tex_flat(src, TEX_TEXT); }
 
-// Unicode maths for the PDF, from the same equation as the page.
 fn tex_unicode(src: u8[:]) -> u8[>..] { return tex_flat(src, TEX_UNICODE); }
 
 fn tex_html(src: u8[:]) -> u8[>..] {
@@ -233,7 +211,6 @@ fn tex_html(src: u8[:]) -> u8[>..] {
     return str("<span data-tex=\"", tex_esc(src), "\">", tex_esc(u), "</span>");
 }
 
-// Text with inline $maths$.
 fn tex_inline(s: u8[:]) -> u8[>..] {
     var out: u8[>..] = [];
     var from = 0;
@@ -259,7 +236,6 @@ fn tex_inline(s: u8[:]) -> u8[>..] {
     return out;
 }
 
-// The length of the ⁰¹²³⁴⁵⁶⁷⁸⁹⁻ characters that start s, in bytes.
 fn tex_sup_run(s: u8[:]) -> i64 {
     var i = 0;
     while i < s.len {
@@ -277,7 +253,6 @@ fn tex_mark_powers(s: u8[:]) -> u8[>..] {
         let found = find(rest, "×10");
         if found < 0 { break; }
         let exp_len = tex_sup_run(rest[found + 4..]);
-        // the digits, points, commas and minus signs just before
         var start = found;
         while true {
             if start >= 1 && ((rest[start - 1] >= '0' && rest[start - 1] <= '9') || rest[start - 1] == '.' || rest[start - 1] == ',') { start -= 1; }
@@ -300,7 +275,6 @@ fn tex_mark_powers(s: u8[:]) -> u8[>..] {
     return out;
 }
 
-// Text with inline $maths$ and every ×10ⁿ number typeset.
 fn tex_rich(s: u8[:]) -> u8[>..] {
     var marked: u8[>..] = [];
     var from = 0;

@@ -82,9 +82,13 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Guardrails
 
-11. `scripts/check.sh` fails on a comment in `scripts/*.sh` and `wallpaper/`, on a home page first load over
-    100 KB gzipped (102400 bytes; 93327 on 2026-11-03), and when `wallpaper/test.mjs` fails.
-    The budget is the first load rounded up to the next 10 KB, until the owner sets one.
-    `beamdiag/` and the pages copied from other repositories are not in the comment rule.
-    Reason: the captain asked for the guardrails pass on 2026-11-03.
+11. `scripts/check.sh` fails on a comment in `scripts/*.sh`, `wallpaper/` and the sources of `beamdiag/`, on a home
+    page first load over 100 KB gzipped (102400 bytes; 93327 on 2026-11-03), on a beam page first load over
+    590 KB gzipped (604160 bytes; 602778 on 2026-11-03), and when `wallpaper/test.mjs` fails.
+    The home budget is the first load rounded up to the next 10 KB, until the owner sets one. The beam budget is set the same way.
+    The beam first load is the gzipped page, its stylesheets and fonts, KaTeX with all its font files (the most a browser
+    downloads) and `beamdiag.wasm.gz`. The report fonts load on a save and are not counted.
+    Three source credits stay as comments in `beamdiag/`; `beamdiag/README.md` lists them. The pages copied from other
+    repositories, `beamdiag/c/` (made by Goose) and the KaTeX files are not in the comment rule.
+    Reason: the captain asked for the guardrails pass on 2026-11-03, and for a separate beam page limit and fewer beam comments the same day.
     Reason for the test: it holds the wallpaper pixels for one seed, so a rename or a rebuild cannot change them.

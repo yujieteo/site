@@ -17,8 +17,8 @@ Units and signs match engine.js: SI; x along the beam, +y up; couples and
 rotations counter-clockwise positive; V = sum of upward forces left of the
 section; M sagging positive.
 
-    python reference.py              # rewrite reference.json from fixtures.json
-    python reference.py --check      # exit 1 if reference.json is out of date
+    python reference.py
+    python reference.py --check
 """
 
 import json
@@ -67,7 +67,6 @@ class Beam:
         self.EI = F(model["material"]["E"]) * F(model["section"]["I"])
         self.supports = sorted(({"kind": s["kind"], "x": F(s["x"])} for s in model["supports"]), key=lambda s: s["x"])
         self.loads = model["loads"]
-        # Unknowns: R_i for each support, M_i for each fixed support, then C1, C2.
         unknowns = []
         for i, s in enumerate(self.supports):
             unknowns.append(("R", i))
@@ -77,7 +76,6 @@ class Beam:
         index = {u: k for k, u in enumerate(unknowns)}
         n = len(unknowns)
 
-        # Known load terms of M(x): list of (coef, a, power) meaning coef*<x-a>^power.
         known = []
         for load in self.loads:
             if load["kind"] == "point":
@@ -91,7 +89,6 @@ class Beam:
         self.known = known
 
         rows, rhs = [], []
-        # Equilibrium: sum of vertical forces, and sum of moments about x = 0.
         force_row, moment_row = [Fraction(0)] * n, [Fraction(0)] * n
         load_force, load_moment = self.load_resultants()
         for i, s in enumerate(self.supports):
@@ -102,7 +99,6 @@ class Beam:
         rows += [force_row, moment_row]
         rhs += [-load_force, -load_moment]
 
-        # Support conditions from EI v = sum coef <x-a>^(p+2) / ((p+1)(p+2)) + C1 x + C2.
         def ev(x, derivative):
             row = [Fraction(0)] * n
             k = 1 if derivative else 2
@@ -225,7 +221,6 @@ def solve_fixture(model):
     return {"reactions": reactions, "points": points}
 
 
-# ---------- NASTRAN bulk data reader (the subset BEAMDIAG writes) ----------
 
 def _fields(entry_lines):
     """Split one entry (a head line plus continuations) into its data fields."""
@@ -248,7 +243,6 @@ def _real(text):
     if not text:
         return 0.0
     if "E" not in text:
-        # NASTRAN allows an exponent without E, e.g. 1.0+5.
         for i in range(len(text) - 1, 0, -1):
             if text[i] in "+-" and text[i - 1] != "E":
                 text = text[:i] + "E" + text[i:]
@@ -314,7 +308,6 @@ def model_from_bdf(text):
         else:
             raise ValueError(f"unexpected bulk entry {name}")
 
-    # Blank CP, CD and PS fields on a GRID take their values from GRDSET.
     for g in grids.values():
         for key in ("cp", "cd", "ps"):
             g[key] = g[key] or grdset[key]
@@ -335,7 +328,6 @@ def model_from_bdf(text):
         if not xs[b["gb"]] > xs[b["ga"]]:
             raise ValueError("CBAR must run in +X")
         bars_by_eid[b["eid"]] = b
-    # The bars must form one chain from x0 to x0 + L.
     chain = sorted((xs[b["ga"]], xs[b["gb"]]) for b in bars)
     for (a0, a1), (b0, _b1) in zip(chain, chain[1:]):
         if a1 != b0:
