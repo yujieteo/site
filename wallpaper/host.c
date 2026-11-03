@@ -1,5 +1,3 @@
-// The C side of the WebAssembly interface. The page writes six colours into wp_colours(), gets room for
-// the pixels from wp_pixels(), and calls wp_draw. wp_shift (in Goose) gives a colour after the Oklch turn.
 #include <stdint.h>
 #include <stdlib.h>
 #include "wallpaper.h"

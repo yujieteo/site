@@ -1,6 +1,4 @@
 #!/bin/sh
-# Check, then replace the site on the server with public/; files that are not in public/ go away,
-# so old URLs return 404. The server is reached only over the VPN.
 set -eu
 cd "$(dirname "$0")/.."
 [ -z "$(git status --porcelain)" ] || { echo "Commit first."; exit 1; }

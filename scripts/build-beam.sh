@@ -1,12 +1,4 @@
 #!/bin/sh
-# Build the beam page from beamdiag/ into a folder, by default public/play/beamdiag.
-# It writes index.html and beamdiag.wasm.gz; fonts/ and katex/ are committed there.
-#
-# The program is Goose (beamdiag/src/*.goose). Goose makes C, and the C is committed in beamdiag/c/,
-# so a machine without Goose can build: it needs emcc (Emscripten), cc and gzip.
-# To make the C again after a change to beamdiag/src or beamdiag/raw.json, set GOOSE to the goose
-# binary (v2026.3): GOOSE=/path/to/goose scripts/build-beam.sh
-# beamdiag/c.sha256 holds the hash of the Goose inputs for the committed C. Without GOOSE, the build stops if it differs.
 set -eu
 cd "$(dirname "$0")/.."
 out=${1:-public/play/beamdiag}
@@ -25,7 +17,6 @@ elif [ "$hash" != "$(cat beamdiag/c.sha256)" ]; then
 fi
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT HUP INT TERM
-# Each Goose data stack gets 512 KB of the module's memory. The module has no entry point: the page calls alloc, handle and out_len.
 "$emcc" -Oz -flto -sMALLOC=emmalloc "-DGS_STACK_RESERVE=(512ull<<10)" -I"$gen" "$src/host.c" "$gen/beamdiag.c" "$src/shim.c" \
   -o "$tmp/beamdiag.wasm" --no-entry -sSTANDALONE_WASM -sALLOW_MEMORY_GROWTH=1 \
   -sEXPORTED_FUNCTIONS=_alloc,_handle,_out_len -sERROR_ON_UNDEFINED_SYMBOLS=1
