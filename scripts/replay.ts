@@ -7,8 +7,6 @@ import {
   drawWallpaper, loadWallpaper, parseReplayInput, runBeamSession,
 } from "./replay-lib";
 
-const LARGE_CHANGE_SHARE = 0.2;
-const LARGE_CHANGE_MIN_COMPARED = 10;
 const MAX_DIFF_LINES = 40;
 const PAGE_C = "beamdiag/c/page.c";
 const PAGE_SHIM = "beamdiag/src/shim.c";
@@ -74,11 +72,8 @@ function defaultBase(): string {
 }
 
 async function main(): Promise<number> {
-  const args = process.argv.slice(2);
-  const accept = args.includes("--accept");
-  const baseIndex = args.indexOf("--base");
-  const base = baseIndex >= 0 ? args[baseIndex + 1] ?? "" : defaultBase();
-  if (!base) throw new Error("--base needs a revision");
+  const accept = process.argv.slice(2).includes("--accept");
+  const base = defaultBase();
   if (run(["git", "status", "--porcelain"], ".").trim() !== "") throw new Error("replay: commit first. The replay runs the committed branch.");
   const inputs = readInputs();
   const work = mkdtempSync(join(tmpdir(), "site-replay-"));
@@ -88,18 +83,14 @@ async function main(): Promise<number> {
     const differences: Difference[] = [];
     const baseOutputs = await outputs(baseCopy, inputs);
     const headOutputs = await outputs(headCopy, inputs);
-    let compared = 0, stoppedEarly = false;
     for (const [index, input] of inputs.entries()) {
-      compared++;
       if (baseOutputs[index] !== headOutputs[index]) differences.push({ what: describe(input), detail: "output differs" });
-      if (compared >= LARGE_CHANGE_MIN_COMPARED && differences.length / compared > LARGE_CHANGE_SHARE) { stoppedEarly = true; break; }
     }
     const baseHtml = buildPage(baseCopy, join(work, "base"));
     const headHtml = buildPage(headCopy, join(work, "head"));
     const pageDiff = run(["diff", "-u", baseHtml, headHtml], work);
     if (pageDiff) differences.push({ what: "beam page index.html", detail: pageDiff.split("\n").slice(0, MAX_DIFF_LINES).join("\n") });
-    console.log(`replay: ${compared} of ${inputs.length} captured inputs compared against ${base}, plus the beam page`);
-    if (stoppedEarly) console.log(`replay: large change. More than ${LARGE_CHANGE_SHARE * 100}% of the outputs differ, so the replay stopped early.`);
+    console.log(`replay: ${inputs.length} captured inputs compared against ${base}, plus the beam page`);
     for (const difference of differences) console.log(`replay: DIFF ${difference.what}\n${difference.detail}`);
     if (differences.length === 0) { console.log("replay: no output differs"); return 0; }
     if (accept) { console.log("replay: the diff above is accepted on this run"); return 0; }

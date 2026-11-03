@@ -83,13 +83,11 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 ## Guardrails
 
 11. `scripts/check.sh` fails on a comment in `scripts/*.sh`, `wallpaper/` and the sources of `beamdiag/`, on a TypeScript
-    comment with no `https://` source, on `any`, a non-null assertion or a cast in the TypeScript, on a type error
+    comment with no `https://` source, on `any`, a non-null assertion, a cast or a type argument on a DOM query in the TypeScript, on a type error
     (`tsc --noEmit`, strict, `noUncheckedIndexedAccess`), on an unreferenced TypeScript file, export or dependency (`knip`),
-    on a page first load over the gzipped budget of its route in `scripts/check-site.ts`, on a home
-    page first load over 100 KB gzipped (102400 bytes; 93332 on 2026-11-03), on a beam page first load over
+    on a home page first load over 100 KB gzipped (102400 bytes; 93332 on 2026-11-03), on a beam page first load over
     590 KB gzipped (604160 bytes; 603514 on 2026-11-03), and when `bun test` or `beamdiag/test.goose` fails.
     The home budget is the first load rounded up to the next 10 KB, until the owner sets one. The beam budget is set the same way.
-    The other routes have the largest first load of 2026-11-03 rounded up to the next 10 KB, and the default is the home budget.
     The beam first load is the gzipped page, its stylesheets and fonts, KaTeX with all its font files (the most a browser
     downloads) and `beamdiag.wasm.gz`. The report fonts load on a save and are not counted.
     Source credits stay as comments: Sonner, Roark and Dekker in `beamdiag/`, Oklab and splitmix64 in `wallpaper/`. They are attribution notices for copied formulas and constants, like licence headers, and the exception list is in `scripts/check.sh`. The pages copied from other

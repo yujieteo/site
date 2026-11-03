@@ -46,7 +46,11 @@ function isFormField(element: Element): element is FormField {
   return element instanceof HTMLInputElement || element instanceof HTMLSelectElement;
 }
 
-const all = (selector: string): HTMLElement[] => [...document.querySelectorAll<HTMLElement>(selector)];
+function isStyled(element: unknown): element is HTMLElement | SVGElement {
+  return element instanceof HTMLElement || element instanceof SVGElement;
+}
+
+const all = (selector: string): (HTMLElement | SVGElement)[] => [...document.querySelectorAll(selector)].filter(isStyled);
 const plots = required(document.getElementById("plots"), "plots element");
 const enc = new TextEncoder(), dec = new TextDecoder();
 let wasm: SolverExports | null = null, frame = 0;
@@ -61,7 +65,8 @@ function htmlFrame(selector: string, value: string): void {
       if (s === "#plots") {
         const template = document.createElement("template");
         template.innerHTML = v;
-        for (const next of template.content.querySelectorAll<HTMLElement>("[data-key]")) {
+        for (const next of template.content.querySelectorAll("[data-key]")) {
+          if (!isStyled(next)) continue;
           const old = e.querySelector(`[data-key="${next.dataset["key"]}"]`);
           if (old) { for (const a of next.attributes) old.setAttribute(a.name, a.value); old.innerHTML = next.innerHTML; next.replaceWith(old); }
         }
@@ -69,8 +74,8 @@ function htmlFrame(selector: string, value: string): void {
       } else e.innerHTML = v;
     });
     if (active && !active.isConnected) {
-      const again = field ? document.querySelector<HTMLElement>(`[data-field="${field}"]`) : key ? document.querySelector<HTMLElement>(`[data-key="${key}"]`) : id ? document.getElementById(id) : null;
-      again?.focus({ preventScroll: true });
+      const again = field ? document.querySelector(`[data-field="${field}"]`) : key ? document.querySelector(`[data-key="${key}"]`) : id ? document.getElementById(id) : null;
+      if (isStyled(again)) again.focus({ preventScroll: true });
     }
     htmlQueue.clear(); frame = 0; math();
   });
@@ -127,14 +132,14 @@ function run(cmds: Command[]): Reply {
       case "attr": all(c.selector).forEach((e) => (c.value === null ? e.removeAttribute(c.name) : e.setAttribute(c.name, c.value))); break;
       case "value": all(c.selector).filter(isFormField).forEach((e) => { e.value = c.value; }); break;
       case "cls": all(c.selector).forEach((e) => e.classList.toggle(c.name, c.on)); break;
-      case "hidden": all(c.selector).forEach((e) => { e.hidden = c.on; }); break;
-      case "focus": requestAnimationFrame(() => document.querySelector<HTMLElement>(c.selector)?.focus()); break;
+      case "hidden": all(c.selector).forEach((e) => { if (e instanceof HTMLElement) e.hidden = c.on; }); break;
+      case "focus": requestAnimationFrame(() => { const e = document.querySelector(c.selector); if (isStyled(e)) e.focus(); }); break;
       case "prevent": out.prevent = true; break;
     }
   }
   if (a && a !== document.body && !a.isConnected && mark) {
-    const [key, field, id] = mark, again = key ? plots.querySelector<HTMLElement>(`[data-key="${key}"]`) : field ? document.querySelector<HTMLElement>(`[data-field="${field}"]`) : id ? document.getElementById(id) : null;
-    again?.focus({ preventScroll: true });
+    const [key, field, id] = mark, again = key ? plots.querySelector(`[data-key="${key}"]`) : field ? document.querySelector(`[data-field="${field}"]`) : id ? document.getElementById(id) : null;
+    if (isStyled(again)) again.focus({ preventScroll: true });
   }
   math();
   return out;
@@ -149,17 +154,19 @@ document.addEventListener("change", (e) => {
 });
 document.addEventListener("focusout", (e) => { const t = e.target; const f = t instanceof HTMLElement ? t.dataset["field"] : undefined; if (f) send({ ev: "done", field: f }); });
 document.addEventListener("click", (e) => {
-  const b = e.target instanceof Element ? e.target.closest<HTMLElement>("[data-act]") : null;
-  const act = b?.dataset["act"];
-  if (!b || act === undefined) return;
+  const b = e.target instanceof Element ? e.target.closest("[data-act]") : null;
+  if (!isStyled(b)) return;
+  const act = b.dataset["act"];
+  if (act === undefined) return;
   const go = () => send({ ev: "click", act, arg: b.dataset["arg"] || "" });
   if (act.startsWith("save-")) { toast("Drawing…", true); pdfFonts().then(go).catch((error: unknown) => toast(`${error instanceof Error ? error.message : String(error)}.`)); } else go();
 });
 const frac = (e: PointerEvent): number => { const r = plots.getBoundingClientRect(); return (e.clientX - r.left) / r.width; };
 plots.addEventListener("pointerdown", (e) => {
-  const h = e.target instanceof Element ? e.target.closest<HTMLElement>("[data-key]") : null;
-  const key = h?.dataset["key"];
-  if (!h || key === undefined || !wasm) return;
+  const h = e.target instanceof Element ? e.target.closest("[data-key]") : null;
+  if (!isStyled(h)) return;
+  const key = h.dataset["key"];
+  if (key === undefined || !wasm) return;
   plots.setPointerCapture(e.pointerId); e.preventDefault(); h.focus({ preventScroll: true });
   send({ ev: "down", key });
 });
@@ -167,11 +174,11 @@ plots.addEventListener("pointermove", (e) => send({ ev: "move", frac: frac(e) })
 for (const t of ["pointerup", "pointercancel"]) plots.addEventListener(t, () => send({ ev: "up" }));
 plots.addEventListener("keydown", (e) => {
   const t = e.target instanceof Element ? e.target : null;
-  const h = t?.closest<HTMLElement>("[data-key]"), target = h ? h.dataset["key"] ?? "" : t?.id === "plotarea" ? "plot" : "";
+  const h = t?.closest("[data-key]"), target = isStyled(h) ? h.dataset["key"] ?? "" : t?.id === "plotarea" ? "plot" : "";
   if (target && send({ ev: "key", key: e.key, shift: e.shiftKey, target }).prevent) e.preventDefault();
 });
 // Toasts, after Sonner (https://emilkowal.ski/ui/building-a-toast-component).
-const toaster = required(document.querySelector<HTMLElement>(".toasts"), "toast list"), GAP = 14, TOAST_MS = 4000, SWIPE_CLOSE_PX = 45, SWIPE_CLOSE_PX_PER_MS = 0.11, SWIPE_UP_MAX_PX = 12, SWIPE_UP_SCALE_PX = 60;
+const toaster = required(document.querySelector(".toasts"), "toast list"), GAP = 14, TOAST_MS = 4000, SWIPE_CLOSE_PX = 45, SWIPE_CLOSE_PX_PER_MS = 0.11, SWIPE_UP_MAX_PX = 12, SWIPE_UP_SCALE_PX = 60;
 let toasts: Toast[] = [], expanded = false;
 function layout(): void {
   const hs = toasts.map((t) => { t.el.style.height = ""; return t.el.offsetHeight; });
@@ -245,7 +252,7 @@ function math(): void {
   mathTimer = window.setTimeout(() => {
     all("[data-tex]").forEach((e) => {
       const tex = e.dataset["tex"];
-      if (tex === undefined || e.dataset["rendered"] === tex) return;
+      if (!(e instanceof HTMLElement) || tex === undefined || e.dataset["rendered"] === tex) return;
       try { katex.render(tex, e, { displayMode: e.classList.contains("eq"), throwOnError: false }); e.dataset["rendered"] = tex; } catch {}
     });
   }, 80);

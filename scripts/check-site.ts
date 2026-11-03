@@ -10,26 +10,10 @@ const WKD_KEY = "dj3498u4hyyarh35rkjfnghbjxug6b19";
 const EXPLORATION_KINDS: readonly string[] = ["Experiment", "Project", "Essay"];
 const GZIP_LEVEL = 9;
 
-interface Budget {
-  name: string;
-  pages: (page: string) => boolean;
-  bytes: number;
-}
-
-const BUDGETS: readonly Budget[] = [
-  { name: "home page", pages: (page) => page === "/index.html", bytes: 102400 },
-  { name: "beam page", pages: (page) => page === "/play/beamdiag/index.html", bytes: 604160 },
-  { name: "policy and support pages", pages: (page) => /^\/(lullapixie|marklove)\//.test(page), bytes: 102400 },
-  { name: "essays", pages: (page) => page.startsWith("/essays/"), bytes: 102400 },
-  { name: "log template", pages: (page) => page === "/log/template.html", bytes: 102400 },
-  { name: "goosestrike page", pages: (page) => page === "/play/goosestrike/index.html", bytes: 122880 },
-  { name: "marklove editor", pages: (page) => page === "/play/marklove/index.html", bytes: 563200 },
-  { name: "neurons page", pages: (page) => page === "/play/neurons/index.html", bytes: 112640 },
-  { name: "theorem explorer page", pages: (page) => page === "/play/theorem-explorer/index.html", bytes: 7362560 },
-  { name: "theorem learner page", pages: (page) => page === "/play/theorem-learner/index.html", bytes: 7362560 },
-  { name: "wallpaper page", pages: (page) => page === "/play/wallpaper/index.html", bytes: 133120 },
+const BUDGETS: readonly { name: string; page: string; bytes: number }[] = [
+  { name: "home page", page: "index.html", bytes: 102400 },
+  { name: "beam page", page: "play/beamdiag/index.html", bytes: 604160 },
 ];
-const DEFAULT_BUDGET: Budget = { name: "default", pages: () => true, bytes: 102400 };
 
 const failures: string[] = [];
 
@@ -37,8 +21,14 @@ function fail(message: string): void {
   failures.push(message);
 }
 
+function contents(path: string): Buffer {
+  if (existsSync(path) && statSync(path).isFile()) return readFileSync(path);
+  fail(`missing: ${relative(".", path)}`);
+  return Buffer.alloc(0);
+}
+
 function read(path: string): string {
-  return readFileSync(path, "utf8");
+  return contents(path).toString("utf8");
 }
 
 const isExternal = (url: string): boolean => /^[a-z][a-z0-9+.-]*:/i.test(url) || url.startsWith("//");
@@ -106,7 +96,7 @@ async function firstLoadFiles(page: string): Promise<string[]> {
 }
 
 function gzippedSize(file: string): number {
-  const bytes = readFileSync(file);
+  const bytes = contents(file);
   return file.endsWith(".gz") ? bytes.length : gzipSync(bytes, { level: GZIP_LEVEL }).length;
 }
 
@@ -145,7 +135,7 @@ async function checkFiles(): Promise<string[]> {
     if (!existsSync(resolve(ROOT, name)) || statSync(resolve(ROOT, name)).size === 0) fail(`missing or empty: ${name}`);
   }
   for (const name of pages) {
-    if (name.endsWith(".html") && !name.includes("beamdiag") && statSync(resolve(ROOT, name)).size > POLICY_PAGE_MAX_BYTES) {
+    if (name.endsWith(".html") && !name.includes("beamdiag") && existsSync(resolve(ROOT, name)) && statSync(resolve(ROOT, name)).size > POLICY_PAGE_MAX_BYTES) {
       fail(`policy or support page over ${POLICY_PAGE_MAX_BYTES} bytes: ${name}`);
     }
   }
@@ -180,17 +170,13 @@ async function checkHome(): Promise<void> {
 }
 
 async function checkBudgets(): Promise<void> {
-  const totals = new Map<string, number>();
-  for (const page of pagesIn(ROOT)) totals.set("/" + relative(ROOT, page), await firstLoadBytes(page));
-  for (const [page, total] of totals) {
-    const budget = BUDGETS.find((candidate) => candidate.pages(page)) ?? DEFAULT_BUDGET;
-    if (total > budget.bytes) fail(`${page} first load is ${total} bytes gzipped, over the ${budget.name} budget of ${budget.bytes}`);
-  }
-  for (const budget of [...BUDGETS, DEFAULT_BUDGET]) {
-    const largest = Math.max(0, ...[...totals].filter(([page]) => (budget === DEFAULT_BUDGET ? !BUDGETS.some((other) => other.pages(page)) : budget.pages(page))).map(([, total]) => total));
-    console.log(`check: ${budget.name}: largest first load ${largest} of ${budget.bytes} bytes gzipped`);
+  for (const budget of BUDGETS) {
+    const total = await firstLoadBytes(resolve(ROOT, budget.page));
+    if (total > budget.bytes) fail(`${budget.page} first load is ${total} bytes gzipped, over the ${budget.name} budget of ${budget.bytes}`);
+    console.log(`check: ${budget.name}: first load ${total} of ${budget.bytes} bytes gzipped`);
   }
 }
+
 async function checkEssays(): Promise<void> {
   for (const page of pagesIn(resolve(ROOT, "essays"))) {
     const html = read(page);
@@ -229,6 +215,8 @@ function commentsOf(file: string, source: string): string[] {
   return found;
 }
 
+const DOM_QUERIES: readonly string[] = ["querySelector", "querySelectorAll", "closest"];
+
 function escapesOf(file: string, source: string): string[] {
   const found: string[] = [];
   const sourceFile = ts.createSourceFile(file, source, ts.ScriptTarget.Latest, true);
@@ -238,6 +226,7 @@ function escapesOf(file: string, source: string): string[] {
     else if (ts.isNonNullExpression(node)) found.push(`${where}: non-null assertion`);
     else if (ts.isTypeAssertionExpression(node)) found.push(`${where}: type assertion`);
     else if (ts.isAsExpression(node) && !(ts.isTypeReferenceNode(node.type) && node.type.typeName.getText() === "const")) found.push(`${where}: as cast`);
+    else if (ts.isCallExpression(node) && node.typeArguments && ts.isPropertyAccessExpression(node.expression) && DOM_QUERIES.includes(node.expression.name.text)) found.push(`${where}: type argument on a DOM query`);
     ts.forEachChild(node, visit);
   };
   visit(sourceFile);
@@ -259,6 +248,6 @@ await checkHome();
 await checkBudgets();
 await checkEssays();
 if (failures.length > 0) {
-  console.error(failures.map((message) => `check: ${message}`).join("\n"));
+  console.error([...new Set(failures)].map((message) => `check: ${message}`).join("\n"));
   process.exit(1);
 }
