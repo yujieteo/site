@@ -1,5 +1,6 @@
 #!/bin/sh
 set -eu
+export LC_ALL=C
 cd "$(dirname "$0")/.."
 comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/* | grep -vE '^[^:]+:(1:#!|[0-9]+:#include )|// (Oklab, after Björn Ottosson|splitmix64, after Sebastiano Vigna):'
   grep -nE '(^|[[:space:]])(//|/\*)' beamdiag/src/*.goose beamdiag/src/*.c beamdiag/src/page_host.js beamdiag/src/page_style.css beamdiag/test.goose |
