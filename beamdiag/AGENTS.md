@@ -16,7 +16,7 @@ Serve `.gz` as a file, without an HTTP `Content-Encoding` header.
 KaTeX loads after the first draw and replaces plain HTML maths. The report fonts load on the first Save PDF or Save PNG.
 The pinned KaTeX version and archive hash are in `public/play/beamdiag/katex/lock.txt`.
 The PDF fonts are in `public/play/beamdiag/fonts/`. `fonts.txt` gives their sources.
-Tests are disposable. Check changes in the built page, and do not commit regression tests.
+`test.goose` holds the solver to `reference.json` and `random.json`, and holds the facts that the removed comments held. `scripts/check.sh` runs it. Check other changes in the built page.
 
 | File | Holds |
 | --- | --- |
