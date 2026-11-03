@@ -1,5 +1,3 @@
-// The C side of the WebAssembly interface: alloc gives the host room for an event, handle runs it and
-// returns the address of the commands, and out_len their length.
 #include <stdint.h>
 #include <stdlib.h>
 #include "beamdiag.h"

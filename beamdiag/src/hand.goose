@@ -1,26 +1,3 @@
-// Hand calculations: a readable, step-by-step derivation of the stiffness solver's answer.
-//
-// The direct stiffness method in engine.goose is authoritative. This writes the same answer the way it is
-// worked by hand, so it can be followed and checked on paper:
-//
-//   reactions   statically determinate: equilibrium, sum of forces and of moments about a support;
-//               indeterminate: compatibility (the force method) through Macaulay's double
-//               integration of EI v'' = M(x): two equilibrium equations, plus v = 0 at every
-//               support and v' = 0 at every fixed support, in the reactions and the two
-//               integration constants
-//   segments    between consecutive supports and load points, V(x) and M(x) by the method of
-//               sections, then EI θ and EI v by integrating M, continuous from segment to segment
-//   a point     V, M, θ, v and the bending stress at any chosen x
-//   checks      peak bending stress, and the sums of forces and moments of loads and reactions
-//
-// Every number shown is the solver's value at that step, written with the page's formatters, in the
-// page's unit convention and origin of x. Where a written-out system would be too large to follow (more
-// than 8 unknowns), the set-up and equations are stated generally and the solver's values are listed.
-//
-// The solved beam is the engine's globals (g_m, g_sup, g_loads, g_rea, g_disp, g_eq, g_ext).
-// hand_derive(u, mid) reads them into the hand_* globals; call hand_invalidate() when the solution changes
-// and hand_ensure(u, mid) before reading. The steps are built on first use.
-
 import std;
 import math;
 import .engine;
@@ -30,22 +7,14 @@ import .tex;
 let HAND_WRITE_UNKNOWNS = 8;
 let HAND_WRITE_TERMS = 14;
 
-// ---------- the derivation ----------
 
 struct HReaction { i: i64, kind: i64, x: f64, xi: f64, fy: f64, mz: f64 }
-// A load in display units: positions from the display origin. n is the 1-based place in the model's list.
 struct HLoad { dist: bool, moment: bool, n: i64, x: f64, xi: f64, f: f64, c: f64, xi1: f64, xi2: f64, q1: f64, q2: f64 }
-// kind 0 reaction R, 1 support moment M, 2 constant C_1, 3 constant C_2; r is the reaction it belongs to or -1
 struct HUnknown { kind: i64, r: i64 }
-// kind 0 sum of forces, 1 sum of moments, 2 v = 0 at support sup, 3 theta = 0 at support sup
 struct HRow { kind: i64, sup: i64 }
-// A Macaulay term: coefficient, position, power
 struct HTerm { k: f64, a: f64, p: i64 }
-// kind 0 R, 1 M, 2 P, 3 C; n is the reaction or load number
 struct HJump { seg: i64, kind: i64, n: i64, value: f64, moment: bool }
 struct HStat { seg: i64, s: f64, x: f64, m: f64 }
-// One segment between consecutive events. poly holds V, M, EI θ and EI v as polynomials in s = x − a,
-// at offsets 0, 3, 7 and 12 with 3, 4, 5 and 6 coefficients.
 struct HSeg {
     index: i64, a: f64, b: f64, xa: f64, xb: f64, h: f64, qa: f64, qb: f64, k: f64,
     sv: f64, sm: f64, st: f64, sd: f64, ev: f64, em: f64, et: f64, ed: f64, bv: f64, bm: f64,
@@ -56,9 +25,9 @@ struct HAct { f: f64, mo: f64, has_f: bool, couple: bool, arm: f64 }
 var hand_valid: bool = false;
 var hand_u: i64 = 0;
 var hand_mid: bool = false;
-var hand_len: f64 = 0.0;              // the beam length, SI
-var hand_scale: f64[4];               // largest |V|, |M|, |v| and |v|/L, SI
-var hand_dlen: f64 = 0.0;             // the length in display units
+var hand_len: f64 = 0.0;
+var hand_scale: f64[4];
+var hand_dlen: f64 = 0.0;
 var hand_o: f64 = 0.0;
 var hand_ei: f64 = 0.0;
 var hand_deg: i64 = 0;
@@ -69,7 +38,7 @@ var hand_rea: HReaction[>..] = [];
 var hand_loads: HLoad[>..] = [];
 var hand_unk: HUnknown[>..] = [];
 var hand_rows: HRow[>..] = [];
-var hand_coef: f64[>..] = [];         // row r, unknown k at r * (unknown count) + k
+var hand_coef: f64[>..] = [];
 var hand_rhs: f64[>..] = [];
 var hand_solver: f64[>..] = [];
 var hand_known: HTerm[>..] = [];
@@ -85,19 +54,15 @@ var hand_resid: f64 = 0.0;
 fn hand_invalidate() { hand_valid = false; }
 fn hand_current(u: i64, mid: bool) -> bool { return hand_valid && hand_u == u && hand_mid == mid; }
 
-// ---------- the view: unit system and origin ----------
 
 fn hand_show(si: f64, q: i64) -> f64 { return to_units(si, q, hand_u); }
 fn hand_sym(q: i64) -> const u8[:] { return unit_symbol(hand_u, q); }
-// The display coordinate of a position measured from the left end, as the page shows it.
 fn hand_x(x: f64) -> f64 { return hand_show(from_origin(x, hand_len, hand_mid), LENGTH); }
 fn hand_pos(x: f64) -> u8[>..] { return sig4(hand_x(x)); }
 
 fn hand_tex_p(t: u8[:]) -> u8[>..] { return if starts_with(t, "−") { str("(", tex_number(t), ")") } else { tex_number(t) }; }
 fn hand_tq(t: u8[:], q: i64) -> u8[>..] { return str(tex_number(t), "\\ ", tex_unit(hand_sym(q))); }
 
-// A display value as the page writes it (shortNf), cleaned of round-off far below the largest value
-// of the same kind on this beam.
 fn hand_vtext(value: f64, q: i64) -> u8[>..] {
     var scale = 0.0;
     if q == FORCE { scale = hand_show(hand_scale[0], q); }
@@ -107,9 +72,7 @@ fn hand_vtext(value: f64, q: i64) -> u8[>..] {
     return snf(if abs(value) <= 1e-10 * abs(scale) { 0.0 } else { value });
 }
 
-// ---------- writing equations ----------
 
-// Appends the term "k s" to a TeX sum: zero coefficients are left out, 1 is written as the symbol.
 fn hand_term(out: u8[>..]&, k: f64, s: u8[:]) {
     if k == 0.0 { return; }
     let t = sig4(abs(k));
@@ -128,7 +91,6 @@ fn hand_power_name(v: u8[:], n: i64) -> u8[>..] {
     return str(v, "^{", n, "}");
 }
 
-// A polynomial in s with coefficients [c0, c1, ...], dropping terms that are round-off at s = h.
 fn hand_poly(coef: f64[:], h: f64) -> u8[>..] {
     var size = abs(coef[0]) * pw(h, 0);
     var n = 1;
@@ -147,7 +109,6 @@ fn hand_poly(coef: f64[:], h: f64) -> u8[>..] {
     return out;
 }
 
-// The bracket <x − a>ⁿ in the display coordinate.
 fn hand_bracket(a: f64, n: i64) -> u8[>..] {
     let t = sig4(abs(a));
     let inner = if a == 0.0 || t == "0" { str("x") } else { str("x ", if a > 0.0 { "-" } else { "+" }, " ", tex_number(t)) };
@@ -155,7 +116,6 @@ fn hand_bracket(a: f64, n: i64) -> u8[>..] {
     return str("\\langle ", inner, "\\rangle", pw_text);
 }
 
-// ---------- load resultants ----------
 
 fn hand_act_f_text(a: HAct) -> u8[>..] { return tex_number(sig4(a.f)); }
 fn hand_act_m_text(a: HAct) -> u8[>..] {
@@ -163,7 +123,6 @@ fn hand_act_m_text(a: HAct) -> u8[>..] {
     return str(hand_tex_p(sig4(a.f)), " \\times ", hand_tex_p(sig4(a.arm)));
 }
 
-// A sum of already formatted terms (the forces or the moments), written out when short and then totalled.
 fn hand_sum_of(acts: HAct[:], use_f: bool, total: u8[:]) -> u8[>..] {
     var count = 0;
     for a in acts { if !use_f || a.has_f { count++; } }
@@ -181,9 +140,6 @@ fn hand_sum_of(acts: HAct[:], use_f: bool, total: u8[:]) -> u8[>..] {
     return str(body, " = ", tex_number(total));
 }
 
-// Each load's vertical force and its moment about the display coordinate `reference`,
-// counter-clockwise positive. A trapezoid is a rectangle plus a triangle, here split into two triangles
-// so a load whose ends have opposite signs needs no special case.
 fn hand_actions(reference: f64) -> HAct[>..] {
     var out: HAct[>..] = [];
     for l in hand_loads {
@@ -210,7 +166,6 @@ fn hand_push_part(out: HAct[>..]&, w: f64, where: f64, reference: f64) {
     out.push(HAct { f: w, mo: w * (where - reference), has_f: true, couple: false, arm: where - reference });
 }
 
-// Macaulay terms of M(x) from the loads, display units.
 fn hand_load_terms(out: HTerm[>..]&) {
     var all: HTerm[>..] = [];
     for l in hand_loads {
@@ -229,10 +184,8 @@ fn hand_load_terms(out: HTerm[>..]&) {
     for t in all { if t.k != 0.0 { out.push(t); } }
 }
 
-// <d>ⁿ for d = x − a: zero left of a.
 fn hand_mac(d: f64, n: i64) -> f64 { return if d > 0.0 { pw(d, n) } else { 0.0 }; }
 
-// The k-fold integral of the terms at x.
 fn hand_integrated(terms: HTerm[:], k: i64, x: f64) -> f64 {
     var acc = 0.0;
     for t in terms {
@@ -245,7 +198,6 @@ fn hand_integrated(terms: HTerm[:], k: i64, x: f64) -> f64 {
     return acc;
 }
 
-// ---------- the derivation ----------
 
 fn hand_uname(k: i64) -> u8[>..] {
     let u = hand_unk[k];
@@ -272,7 +224,6 @@ fn hand_row_what(r: i64) -> u8[>..] {
 
 fn hand_coef_at(r: i64, k: i64) -> f64 { return hand_coef[r * hand_unk.len + k]; }
 
-// Derives the hand calculation of the solved beam in unit system u (an index into UNIT_IDS) and the origin.
 fn hand_derive(u: i64, mid: bool) {
     hand_u = u;
     hand_mid = mid;
@@ -283,7 +234,6 @@ fn hand_derive(u: i64, mid: bool) {
     hand_scale[1] = abs(g_ext.m.value);
     hand_scale[2] = abs(g_ext.v.value);
     hand_scale[3] = abs(g_ext.v.value) / l;
-    // the model in display units; only its length, rigidity and loads are used
     hand_dlen = scale_value(g_m.length, LENGTH, u, false, false);
     hand_o = if mid { hand_dlen / 2.0 } else { 0.0 };
     hand_ei = scale_value(g_m.e, STRESS, u, false, false) * scale_value(g_m.section.i, INERTIA, u, false, false);
@@ -320,7 +270,6 @@ fn hand_derive(u: i64, mid: bool) {
     let xi0 = -hand_o;
     hand_ends0 = xi0;
     hand_ends1 = hand_dlen - hand_o;
-    // Unknowns: each reaction force and fixed-support moment, then the integration constants.
     hand_unk.clear();
     j = 0;
     while j < hand_rea.len {
@@ -341,12 +290,10 @@ fn hand_derive(u: i64, mid: bool) {
     hand_rows.clear();
     hand_coef.clear();
     hand_rhs.clear();
-    // vertical equilibrium
     hand_rows.push(HRow { kind: 0, sup: -1 });
     var k = 0;
     while k < n { hand_coef.push(if hand_unk[k].kind == 0 { 1.0 } else { 0.0 }); k++; }
     hand_rhs.push(-hand_sum_f);
-    // moments about the left end
     hand_rows.push(HRow { kind: 1, sup: -1 });
     k = 0;
     while k < n {
@@ -388,8 +335,6 @@ fn hand_derive(u: i64, mid: bool) {
         }
         j++;
     }
-    // The solver's values of the unknowns, in display units: the integration constants are EI θ and EI v
-    // at the left end, re-expressed for brackets measured in the display coordinate.
     let theta0 = g_disp[0].theta;
     let v0 = hand_show(g_disp[0].v, LENGTH);
     hand_solver.clear();
@@ -403,7 +348,6 @@ fn hand_derive(u: i64, mid: bool) {
         k++;
     }
     hand_written = hand_deg == 0 || n <= HAND_WRITE_UNKNOWNS;
-    // Segment by segment
     hand_segs.clear();
     hand_jumps.clear();
     hand_stat.clear();
@@ -461,12 +405,10 @@ fn hand_segment(a: f64, b: f64, e: i64) {
             else { hand_jumps.push(HJump { seg: sn, kind: 2, n: ld.n, value: ld.f, moment: false }); }
         }
     }
-    // Polynomials in s = x − a from the solver's values at a⁺.
     seg.poly[0] = sv; seg.poly[1] = qa; seg.poly[2] = k / 2.0;
     seg.poly[3] = sm; seg.poly[4] = sv; seg.poly[5] = qa / 2.0; seg.poly[6] = k / 6.0;
     seg.poly[7] = ei * st; seg.poly[8] = sm; seg.poly[9] = sv / 2.0; seg.poly[10] = qa / 6.0; seg.poly[11] = k / 24.0;
     seg.poly[12] = ei * sd; seg.poly[13] = ei * st; seg.poly[14] = sm / 2.0; seg.poly[15] = sv / 6.0; seg.poly[16] = qa / 24.0; seg.poly[17] = k / 120.0;
-    // Zero shear inside the segment: the bending moment is stationary there.
     let a2 = k / 2.0;
     let a1 = qa;
     let a0 = sv;
@@ -486,7 +428,6 @@ fn hand_segment(a: f64, b: f64, e: i64) {
             }
         }
     }
-    // keep those inside, in increasing order
     var roots: f64[>..] = [];
     if nr >= 1 && r1 > 1e-9 * h && r1 < h * (1.0 - 1e-9) { roots.push(r1); }
     if nr >= 2 && r2 > 1e-9 * h && r2 < h * (1.0 - 1e-9) { roots.push(r2); }
@@ -508,10 +449,7 @@ fn hand_segment(a: f64, b: f64, e: i64) {
     hand_segs.push(seg);
 }
 
-// ---------- the steps ----------
 
-// One ordered list feeds the page and the PDF. An equation step holds its LaTeX and its unicode text;
-// any other step holds text.
 struct HStep { eq: bool, t0: i64, tl: i64, u0: i64, ul: i64 }
 
 var hand_steps: HStep[>..] = [];
@@ -607,7 +545,6 @@ fn hand_reaction_frames() {
         return;
     }
 
-    // Indeterminate: the written system, or its general form when too large to follow.
     var names: u8[>..] = [];
     var k = 0;
     while k < n {
@@ -656,7 +593,6 @@ fn hand_reaction_frames() {
 fn hand_deflection_frame() {
     let deg = hand_deg;
     let n = hand_unk.len;
-    // Terms at the right end vanish everywhere on the beam, so they are left out.
     var all: HTerm[>..] = [];
     for t in hand_known { all.push(t); }
     for re in hand_rea {
@@ -728,7 +664,6 @@ fn hand_segment_frame(si: i64) {
     let ht = sig4(seg.h);
     hs_text(str("Segment ", seg.index, ": x = ", xa, " to ", xb, " ", l));
     hs_text(str("Cut the beam at $x$ between ", xa, " and ", xb, " ", l, " and keep the part to the left of the cut, with $s = x - ", hand_tex_p(xa), "$ running from 0 to ", ht, " ", l, "."));
-    // Start values: what the previous segment ends with, plus the jumps at x = a.
     let vs = hand_vtext(seg.sv, FORCE);
     let ms = hand_vtext(seg.sm, MOMENT);
     let at_text = str(tex_number(xa), "^{+}");
@@ -763,7 +698,6 @@ fn hand_segment_frame(si: i64) {
     } else {
         hs_eq(str("M(", at_text, ") = M(", xa_tex, "^{-}) - ", mnames, " = ", hand_tex_p(hand_vtext(seg.bm, MOMENT)), " - ", mvals, " = ", hand_tq(ms, MOMENT)));
     }
-    // The section equations.
     let loaded = seg.qa != 0.0 || seg.k != 0.0;
     if loaded {
         let qc = [seg.qa, seg.k];
@@ -775,7 +709,6 @@ fn hand_segment_frame(si: i64) {
     hs_eq(str("M(s) = M(", at_text, ") + \\int_0^s V\\,ds = ", hand_poly(seg.poly[3..7], seg.h)));
     hs_eq(str("EI\\,\\theta(s) = EI\\,\\theta(", xa_tex, ") + \\int_0^s M\\,ds = ", hand_poly(seg.poly[7..12], seg.h)));
     hs_eq(str("EI\\,v(s) = EI\\,v(", xa_tex, ") + \\int_0^s \\theta\\,EI\\,ds = ", hand_poly(seg.poly[12..18], seg.h)));
-    // Values at both ends, as the solver gives them.
     hs_text(str("At | x = ", xa, "⁺ | x = ", xb, "⁻"));
     hand_table_row(str("V (", hand_sym(FORCE), ")"), FORCE, seg.sv, seg.ev);
     hand_table_row(str("M (", hand_sym(MOMENT), ")"), MOMENT, seg.sm, seg.em);
@@ -833,21 +766,16 @@ fn hand_make_steps() {
     hand_steps_ok = true;
 }
 
-// Derives the hand calculation unless it is current for this unit system and origin.
 fn hand_ensure(u: i64, mid: bool) { if !hand_current(u, mid) { hand_derive(u, mid); } }
 
-// The steps of the current derivation, built on first use.
 fn hand_step_count() -> i64 {
     if !hand_steps_ok { hand_make_steps(); }
     return hand_steps.len;
 }
 fn hand_step_is_eq(i: i64) -> bool { return hand_steps[i].eq; }
-// The text of a text step, or the LaTeX of an equation step.
 fn hand_step_text(i: i64) -> u8[:] { let s = hand_steps[i]; return hand_buf[s.t0..s.t0 + s.tl]; }
-// The unicode form of an equation step ("" for a text step).
 fn hand_step_unicode(i: i64) -> u8[:] { let s = hand_steps[i]; return hand_buf[s.u0..s.u0 + s.ul]; }
 
-// The steps as the page shows them: a paragraph for text, an equation block for LaTeX.
 fn hand_steps_html() -> u8[>..] {
     var out: u8[>..] = [];
     let n = hand_step_count();
@@ -863,9 +791,7 @@ fn hand_steps_html() -> u8[>..] {
     return out;
 }
 
-// ---------- the point at the cursor ----------
 
-// The frame for the chosen x: paragraphs and equations only. Blocks are (eq, start, length) into hand_pt_buf.
 var hand_pt: HStep[>..] = [];
 var hand_pt_buf: u8[>..] = [];
 var hand_pt_title: u8[>..] = [];
@@ -886,8 +812,6 @@ fn hand_pt_sub(out: u8[>..]&, seg: HSeg, off: i64, count: i64, st: u8[:]) {
     hand_zero_if_empty(out);
 }
 
-// V, M, θ, v and σ at a chosen x (SI, measured from the left end), from the segment it lies in.
-// The result is in hand_pt (blocks) and hand_pt_title.
 fn hand_point_frame(x0: f64) {
     hand_pt.clear();
     hand_pt_buf.clear();
@@ -940,7 +864,6 @@ fn hand_pt_count() -> i64 { return hand_pt.len; }
 fn hand_pt_is_eq(i: i64) -> bool { return hand_pt[i].eq; }
 fn hand_pt_text(i: i64) -> u8[:] { let b = hand_pt[i]; return hand_pt_buf[b.t0..b.t0 + b.tl]; }
 
-// The point frame as the cursor panel shows it: an article with a title, paragraphs and equations.
 fn hand_point_html(x: f64) -> u8[>..] {
     hand_point_frame(x);
     var out: u8[>..] = [];

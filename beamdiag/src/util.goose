@@ -1,10 +1,7 @@
-// Small helpers: base64, HTML escaping, SHA-256 and the print palette.
-
 import std;
 
 let BASE64_ALPHABET: const u8[:] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-// Standard base64 with padding.
 fn base64(b: u8[:]) -> u8[>..] {
     var s: u8[>..] = [];
     var i = 0;
@@ -26,7 +23,6 @@ fn base64(b: u8[:]) -> u8[>..] {
     return s;
 }
 
-// HTML text and attribute escaping.
 fn esc_to(out: u8[>..]&, s: u8[:]) {
     for c in s {
         if c == '&' { out.append("&amp;"); }
@@ -55,7 +51,6 @@ fn sha_rotr(x: u32, n: u32) -> u32 { return (x >> n) | (x << (32 - n)); }
 
 let UTIL_HEX: const u8[:] = "0123456789abcdef";
 
-// The SHA-256 of data, as 64 lowercase hex digits.
 fn sha256(data: u8[:]) -> u8[>..] {
     var h: u32[8] = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
     var msg: u8[>..] = [];
@@ -119,15 +114,12 @@ fn sha256(data: u8[:]) -> u8[>..] {
     return out;
 }
 
-// The colour tokens a figure paints with, and their print values (all black, or white for the grounds).
 let PALETTE_NAMES: const u8[:][11] = ["bg", "surface", "fg", "fg2", "muted", "line", "accent", "accent-text", "warm", "green", "chrome"];
 
-// The hex colour of token i of PALETTE_NAMES in the print palette.
 fn print_color(i: i64) -> const u8[:] {
     return if i == 0 || i == 1 || i == 10 { "#ffffff" } else { "#000000" };
 }
 
-// The index of a token in PALETTE_NAMES, or -1.
 fn palette_index(name: u8[:]) -> i64 {
     var i = 0;
     while i < 11 {

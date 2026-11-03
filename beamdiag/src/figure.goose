@@ -1,11 +1,3 @@
-// The beam and its shear force, bending moment and deflection diagrams, as a display list. The page's
-// figure is interactive: supports and loads are handles, and the diagrams are a slider with a cursor.
-// A saved figure is the same drawing without them.
-//
-// figure() appends to a list (draw.goose) the groups: the beam, the diagrams (a slider on the page) and,
-// on the page, the cursor line. The caller supplies readout_text(c): the aria text of the readout at
-// section c, "x 1.5 m, V 3 kN, ..." (the readout's name and value joined by a space, the pairs by ", ").
-
 import std;
 import math;
 import .num;
@@ -15,15 +7,11 @@ import .state;
 import .util;
 import .draw;
 
-// A drawn figure: its size, margins and the length it spans.
 struct Fig { w: f64, h: f64, ml: f64, mr: f64, l: f64 }
 
-// The figure's x scale (the page's own is lay_* in state.goose; a saved figure must not touch it).
 struct FigLay { ml: f64, mr: f64, w: f64, l: f64 }
 fn fig_x(lay: FigLay, x: f64) -> f64 { return lay.ml + (x / lay.l) * (lay.w - lay.ml - lay.mr); }
 
-// A diagram of one quantity, with its place in the figure and its axis. key is 0 for V, 1 for M, 2 for v.
-// Its title is fig_text[t0..t0 + t1]; its ticks and their labels are the entries k0.. of fig_ticks.
 struct FigPanel { key: i64, t0: i64, t1: i64, h: f64, color: i64, q: i64, top: f64, bottom: f64, lo: f64, hi: f64, k0: i64, kn: i64 }
 
 var fig_panels: FigPanel[3];
@@ -32,7 +20,6 @@ var fig_ticks: f64[>..] = [];
 var fig_ls: i64[>..] = [];
 var fig_ln: i64[>..] = [];
 
-// f64::max and f64::min of Rust: a NaN argument is ignored.
 fn fig_fmax(a: f64, b: f64) -> f64 {
     if is_nan(a) { return b; }
     if is_nan(b) { return a; }
@@ -44,19 +31,16 @@ fn fig_fmin(a: f64, b: f64) -> f64 {
     return if a < b { a } else { b };
 }
 
-// The number as a field holds it: ten significant figures, "" for NaN or infinity.
 fn fig_tidy(x: f64) -> u8[>..] {
     if finite(x) { return js(prec(x, 10)); }
     return "";
 }
 
-// JavaScript's Math.round: halves round up.
 fn fig_js_round(x: f64) -> f64 {
     let f = floor(x);
     return if x - f >= 0.5 { f + 1.0 } else { f };
 }
 
-// The number of characters (Unicode scalars) of s.
 fn fig_chars(s: u8[:]) -> i64 {
     var n = 0;
     for c in s { if (c & 0xc0) != 0x80 { n++; } }
@@ -69,7 +53,6 @@ fn fig_nice_ticks(lo0: f64, hi0: f64, count: f64, out: f64[>..]&) {
     if lo == hi { lo -= 1.0; hi += 1.0; }
     let raw = hi / count - lo / count;
     let p = pw(10.0, floor(log10(raw)) as i64);
-    // 10·p is at least raw, so a step is always found.
     var step = 0.0 / 0.0;
     let mults: f64[5] = [1.0, 2.0, 2.5, 5.0, 10.0];
     var m = 0;
@@ -87,7 +70,6 @@ fn fig_nice_ticks(lo0: f64, hi0: f64, count: f64, out: f64[>..]&) {
     }
 }
 
-// Tick labels on one axis share a format: plain below 10⁵, otherwise a power of ten.
 fn fig_tick_labels(ticks: f64[:], ls: i64[>..]&, ln: i64[>..]&) {
     var big = -1.0 / 0.0;
     for t in ticks { big = fig_fmax(big, abs(t)); }
@@ -99,12 +81,9 @@ fn fig_tick_labels(ticks: f64[:], ls: i64[>..]&, ln: i64[>..]&) {
     }
 }
 
-// Width of an 11px monospace axis label, rounded up.
 fn fig_label_width(s: u8[:]) -> f64 { return 7.0 * (fig_chars(s) as f64); }
-// Width of a panel title in 11px Inter, rounded up.
 fn fig_title_width(s: u8[:]) -> f64 { return 6.5 * (fig_chars(s) as f64); }
 
-// A filled arrowhead with its tip at (x, y), pointing down (dir 1) or up (−1), as the segments just added.
 fn fig_head(x: f64, tip: f64, dir: f64, size: f64) {
     let y = tip - dir * size * 1.6;
     draw_seg_m(x, tip);
@@ -131,7 +110,6 @@ fn fig_panel_y(p: FigPanel, v: f64) -> f64 {
     return p.bottom - (v / 2.0 - p.lo / 2.0) / (p.hi / 2.0 - p.lo / 2.0) * (p.bottom - p.top);
 }
 
-// A filled arrowhead as a path.
 fn fig_arrow_path(c: DOp[>..]&, x: f64, y: f64, deg: f64, size: f64, along: f64, col: i64) {
     let s = draw_seg_start();
     draw_arrow(x, y, deg, size, along);
@@ -143,11 +121,8 @@ fn fig_head_path(c: DOp[>..]&, x: f64, tip: f64, dir: f64, size: f64, col: i64) 
     draw_path(c, s, paint_fill(col));
 }
 
-// The beam and its diagrams at width w, appended to the list c. On the page (interactive) supports and
-// loads are handles and the diagrams a slider with a cursor.
 fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
     let narrow = w < 520.0;
-    // The right margin holds the x axis's arrowhead and its label.
     var x_label: u8[>..] = [];
     format(x_label, "x (", sym(LENGTH), ")");
     let mr = 16.0 + fig_label_width(x_label);
@@ -172,7 +147,6 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         fig_panels[k] = FigPanel { key: k, t0: at, t1: fig_text.len - at, h: h, color: color, q: q, top: 0.0, bottom: 0.0, lo: 0.0, hi: 0.0, k0: 0, kn: 0 };
         k++;
     }
-    // The beam panel first, from the top.
     var y = yb + 124.0 + 10.0;
     var pts: Sample[>..] = [];
     diagram(800, pts);
@@ -186,7 +160,6 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         var hi = 0.0;
         for s in pts { let v = fig_panel_get(p, s); lo = jmin(lo, v); hi = jmax(hi, v); }
         if !(hi - lo >= 1e-9) { lo = -1.0; hi = 1.0; }
-        // Halved before subtracting so the span of loads near the double limit cannot overflow.
         let gap = (hi / 2.0 - lo / 2.0) * 0.4;
         p.lo = lo - gap;
         p.hi = hi + gap;
@@ -198,7 +171,6 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         k++;
     }
     let h = y;
-    // Widen the left margin only when a tick label would not fit the usual one.
     var widest = -1.0 / 0.0;
     var i = 0;
     while i < fig_ls.len { widest = fig_fmax(widest, fig_label_width(fig_text[fig_ls[i]..fig_ls[i] + fig_ln[i]])); i++; }
@@ -239,7 +211,6 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
     return Fig { w: w, h: h, ml: ml, mr: mr, l: l };
 }
 
-// The x axis at height y: an arrow to the right, labelled past its tip.
 fn fig_x_axis(c: DOp[>..]&, lay: FigLay, y: f64, label: u8[:]) {
     let w = lay.w;
     let mr = lay.mr;
@@ -248,7 +219,6 @@ fn fig_x_axis(c: DOp[>..]&, lay: FigLay, y: f64, label: u8[:]) {
     draw_text(c, w - mr + 14.0, y + 4.0, label, "axlabel", ANC_START);
 }
 
-// Position ticks at height y, numbered in the chosen convention and drawn at their place on the beam.
 fn fig_x_ticks(c: DOp[>..]&, lay: FigLay, y: f64, narrow: bool) {
     let l = lay.l;
     let o = offset(l);
@@ -261,7 +231,6 @@ fn fig_x_ticks(c: DOp[>..]&, lay: FigLay, y: f64, narrow: bool) {
     }
 }
 
-// A support or load handle: on the page, a slider to drag or move with the arrow keys.
 fn fig_open_handle(c: DOp[>..]&, interactive: bool, key: u8[:], label: u8[:], x: f64, l: f64) {
     if !interactive { draw_open(c, ""); return; }
     var a: u8[>..] = [];
@@ -294,7 +263,6 @@ fn fig_grip(c: DOp[>..]&, interactive: bool, r0: f64, r1: f64, r2: f64, r3: f64,
 fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool, x_label: u8[:]) {
     let l = g_m.length;
     draw_open(c, "");
-    // Distributed loads: arrows scaled to the largest intensity.
     var qmax = 1e-12;
     var fmax = 1e-12;
     for ld in g_loads {
@@ -341,8 +309,6 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         draw_text(c, (px1 + px2) / 2.0, jmin(top1, top2) - 6.0, label, "val", ANC_MIDDLE);
     }
     draw_rect(c, fig_x(lay, 0.0), yb - 4.0, fig_x(lay, l) - fig_x(lay, 0.0), 8.0, 2.0, paint_both(COL_SURFACE, COL_FG, 1.5), "");
-    // Supports and their reactions. With many close supports, label only those whose text has room;
-    // every reaction is still listed below the figure and in the table.
     let force = sym(FORCE);
     let moment = sym(MOMENT);
     var labelled: f64[>..] = [];
@@ -423,7 +389,6 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
             }
         }
     }
-    // Point forces and couples
     i = 0;
     while i < st_loads.len {
         let ld = st_loads[i];
@@ -437,7 +402,6 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         fig_open_handle(c, interactive, key, label, ld.x, l);
         let a = fig_anchor_at(ld.x, l);
         if ld.kind == POINT {
-            // Capped: while an edit is unsolved, F can exceed the largest force of the solved model.
             let ratio = abs(ld.f) / fmax;
             let len = 18.0 + 30.0 * (if is_nan(ratio) { 0.0 } else { fig_fmin(ratio, 1.0) });
             let down = ld.f <= 0.0;
@@ -474,7 +438,6 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
             draw_close(c);
         }
     }
-    // Axes: x along the beam from the chosen origin, y up through it.
     let ya = yb + 104.0;
     let xo = fig_x(lay, offset(l));
     draw_open(c, " class=\"axes\"");
@@ -503,15 +466,12 @@ fn draw_diagram(c: DOp[>..]&, p: FigPanel, pts: Sample[:], lay: FigLay, narrow: 
     }
     draw_line(c, ml, fig_panel_y(p, 0.0), w - mr, fig_panel_y(p, 0.0), COL_MUTED, 1.0);
     draw_close(c);
-    // Axes: the value up the left edge, labelled by the panel title at its tip; x along the zero line.
     draw_open(c, " class=\"axes\"");
     draw_line(c, ml, bot, ml, top + 4.0, COL_FG, 1.0);
     fig_arrow_path(c, ml, top - 1.0, 0.0, 3.5, 1.6, COL_FG);
     fig_x_axis(c, lay, fig_panel_y(p, 0.0), x_label);
     fig_x_ticks(c, lay, bot, narrow);
     draw_close(c);
-    // The title starts just right of the value axis. On a figure as narrow as a phone's, the moment's title would
-    // run past the right edge: it then drops "Bending", and starts further left if it still does not fit.
     let full = fig_text[p.t0..p.t0 + p.t1];
     var title: u8[>..] = [];
     if ml + 8.0 + fig_title_width(full) > w - 4.0 {
@@ -538,7 +498,6 @@ fn draw_diagram(c: DOp[>..]&, p: FigPanel, pts: Sample[:], lay: FigLay, narrow: 
         draw_path_cls(c, sg, draw_segs.len - sg, paint_opacity(paint_fill(p.color), 0.14), "area");
     }
     draw_path_cls(c, sg, line_n, paint_round(paint_stroke(p.color, 2.0)), "");
-    // Label the extremes.
     let ex = if p.key == 0 { g_ext.v_shear } else if p.key == 1 { g_ext.m } else { g_ext.v };
     if abs(ex.value) > 0.0 {
         let v = show(ex.value, p.q);

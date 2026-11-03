@@ -1,8 +1,12 @@
 #!/bin/sh
 set -eu
 cd "$(dirname "$0")/.."
-! grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/* | grep -vE '^[^:]+:(1:#!|[0-9]+:#include )' ||
-  { echo 'check: comments are not allowed in scripts/ and wallpaper/. Name the code better or write a test.' >&2; exit 1; }
+comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/* | grep -vE '^[^:]+:(1:#!|[0-9]+:#include )'
+  grep -nE '(^|[[:space:]])(//|/\*)' beamdiag/src/*.goose beamdiag/src/*.c beamdiag/src/page_host.js beamdiag/src/page_style.css |
+    grep -vE "Roark's series|Dekker's product|Toasts, after Sonner"
+  grep -nE '(^|[[:space:]])#' beamdiag/reference.py; } || true)
+[ -z "$comments" ] || { echo "$comments" >&2
+  echo 'check: comments are not allowed in scripts/, wallpaper/ and beamdiag/. Name the code better or write a test. beamdiag/README.md lists the three source credits that stay.' >&2; exit 1; }
 python3 - <<'PY'
 import gzip
 import re
@@ -87,24 +91,37 @@ class FirstLoad(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         url = attrs.get('href') if tag == 'link' else attrs.get('src') if tag in ('script', 'img') else None
-        if url and url.startswith('/'):
-            self.files.append(url.lstrip('/'))
+        if url and not urlsplit(url).scheme and not url.startswith(('data:', '#')):
+            self.files.append(url)
+
+def first_load_bytes(page_name):
+    page = root / page_name
+    html = page.read_text()
+    parser = FirstLoad()
+    parser.feed(html)
+    queue = [(page.parent / u if not u.startswith('/') else root / u.lstrip('/')).resolve() for u in parser.files]
+    queue += [(page.parent / u).resolve() for u in re.findall(r'(?:fetch\(|\.href=|\.src=)"([^":]*)"', html)]
+    loaded = [page]
+    while queue:
+        file = queue.pop(0)
+        if file in loaded:
+            continue
+        loaded.append(file)
+        if file.suffix == '.css':
+            for u in re.findall(r'url\(([^)]+)\)', file.read_text()):
+                u = u.strip('\'"')
+                if not urlsplit(u).scheme:
+                    queue.append((root / u.lstrip('/') if u.startswith('/') else file.parent / u).resolve())
+    return sum(len(file.read_bytes()) if file.name.endswith('.gz') else len(gzip.compress(file.read_bytes(), 9, mtime=0)) for file in loaded)
 
 HOME_FIRST_LOAD_BUDGET = 102400
-first_load = FirstLoad()
-first_load.feed(home)
-loaded = ['index.html']
-queue = list(first_load.files)
-while queue:
-    name = queue.pop(0)
-    if name in loaded:
-        continue
-    loaded.append(name)
-    if name.endswith('.css'):
-        queue += [u.lstrip('/') for u in re.findall(r'url\((/[^)]+)\)', (root / name).read_text())]
-home_first_load = sum(len(gzip.compress((root / name).read_bytes(), 9, mtime=0)) for name in loaded)
+home_first_load = first_load_bytes('index.html')
 assert home_first_load <= HOME_FIRST_LOAD_BUDGET, f'home page first load is {home_first_load} bytes gzipped, over the budget of {HOME_FIRST_LOAD_BUDGET}'
 print(f'check: home page first load {home_first_load} of {HOME_FIRST_LOAD_BUDGET} bytes gzipped')
+BEAM_FIRST_LOAD_BUDGET = 604160
+beam_first_load = first_load_bytes('play/beamdiag/index.html')
+assert beam_first_load <= BEAM_FIRST_LOAD_BUDGET, f'beam page first load is {beam_first_load} bytes gzipped, over the budget of {BEAM_FIRST_LOAD_BUDGET}'
+print(f'check: beam page first load {beam_first_load} of {BEAM_FIRST_LOAD_BUDGET} bytes gzipped')
 for page in (root / 'essays').rglob('index.html'):
     html = page.read_text()
     for fig in re.findall(r'<figure>(.*?)</figure>', html, re.S):

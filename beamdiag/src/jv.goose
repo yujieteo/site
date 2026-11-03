@@ -1,8 +1,3 @@
-// A small JSON reader for the page's events and raw.json. The standard library's json tree reads back
-// wrong on WebAssembly (its nodes hold slices behind relative offsets), so this one keeps only integers
-// and numbers in its nodes and the decoded text in two pools. A node is an index; -1 is none.
-// raw.json is read once (nodes below j_mark, text in jp_raw); each event is read after it (jp_ev).
-
 import std;
 import .num;
 
@@ -53,7 +48,6 @@ fn j_hex4() -> i64 {
     return v;
 }
 
-// A string at j_pos (on its opening quote), decoded onto the end of out; returns where it starts in out.
 fn j_string(out: u8[>..]&) -> i64 {
     let start = out.len;
     j_pos++;
@@ -178,14 +172,12 @@ fn j_run(src: u8[:], raw: bool) -> i64 {
     return root;
 }
 
-// raw.json: kept for the life of the program.
 fn jm_parse_raw(src: u8[:]) -> i64 {
     let root = j_run(src, true);
     j_mark = jn.len;
     return root;
 }
 
-// One event: the previous event's nodes and text are dropped.
 fn jm_parse_event(src: u8[:]) -> i64 {
     jn.resize(j_mark);
     jp_ev.resize(0);
@@ -215,8 +207,6 @@ fn jm_first(n: i64) -> i64 {
 fn jm_next(n: i64) -> i64 { return jn[n].next; }
 
 fn jm_is_string(n: i64) -> bool { return n >= 0 && jn[n].kind == J_STR; }
-// The text of a string node: of an event, or (jm_rtext) of raw.json. Separate so that what raw.json's users keep
-// never points into the pool an event drops.
 fn jm_text(n: i64) -> const u8[:] {
     if n < j_mark || n >= jn.len || jn[n].kind != J_STR { return ""; }
     let o = jn[n].so;

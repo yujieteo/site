@@ -1,40 +1,13 @@
-// Linear-elastic Euler–Bernoulli beam, direct stiffness method.
-//
-// Units are SI throughout: m, N, N/m, N·m, Pa, m², m⁴. UNIT_IDS lists the consistent unit conventions a
-// caller may enter and read values in; to_units and from_units convert at that edge, and the solver
-// itself never sees anything but SI. Axes: x along the beam from its left end, +y up. Rotations and
-// couples are counter-clockwise positive (+z out of the page).
-// Loads: point force F (+ up), couple C (+ CCW), linearly varying distributed load q from x1 to x2
-// (N/m, + up). Supports: a pin restrains deflection; a fixed support restrains deflection and slope.
-// Internal forces use the usual beam convention: V(x) is the sum of the upward forces left of the
-// section, M(x) is positive when sagging, dM/dx = V, dV/dx = q.
-//
-// The stiffness system uses two-node Hermite elements between the supports and the beam ends only,
-// loaded by consistent (work-equivalent) nodal loads from every point force, couple and distributed
-// load inside each element. Nodal deflections and support reactions are then exact, and statically
-// indeterminate supports are solved without any equilibrium-only shortcut. V and M are recovered
-// exactly by statics from the loads and the reactions, and deflection by integrating M/EI exactly
-// from the nearest event on the left.
-//
-// The arithmetic follows the JavaScript engine it replaced operation for operation, so the numbers are
-// the ones the page has always shown. Powers are correctly rounded: JavaScript's ** takes the
-// platform's pow, whose last bit varies between systems.
-//
-// The beam being worked on is held in globals: the model (g_m, g_sup, g_loads) and its solution
-// (g_rea, g_disp, g_eq, g_ext). A failure leaves its message and field in err_msg and err_field.
-
 import std;
 import math;
 import .num;
 
 let PI_ = 3.141592653589793;
 
-// ---------- errors ----------
 
 var err_msg: u8[>..] = [];
 var err_field: u8[>..] = [];
 
-// Records the failure and returns false, so a caller can `return fail(...)`.
 fn fail(message: u8[:], field: u8[:]) -> bool {
     err_msg.clear();
     err_msg.append(message);
@@ -43,9 +16,8 @@ fn fail(message: u8[:], field: u8[:]) -> bool {
     return false;
 }
 
-// ---------- arithmetic ----------
 
-// a·b as an exact sum of two doubles (Dekker's product, no fused multiply-add needed).
+// Dekker's product.
 fn split_hi(v: f64) -> f64 { let c = 134217729.0 * v; return c - (c - v); }
 
 fn two_prod(a: f64, b: f64) -> f64, f64 {
@@ -58,7 +30,6 @@ fn two_prod(a: f64, b: f64) -> f64, f64 {
     return p, ((ah * bh - p) + ah * bl + al * bh) + al * bl;
 }
 
-// x^n (n >= 1) in double-double arithmetic: its rounding to one double is x^n correctly rounded.
 fn dd_pow(x: f64, n: i64) -> f64, f64 {
     var h = x;
     var l = 0.0;
@@ -74,7 +45,6 @@ fn dd_pow(x: f64, n: i64) -> f64, f64 {
     return h, l;
 }
 
-// x^n for a whole n, correctly rounded (x·x for a square, as everywhere).
 fn pw(x: f64, n: i64) -> f64 {
     if n == 0 { return 1.0; }
     if n == 1 { return x; }
@@ -83,7 +53,6 @@ fn pw(x: f64, n: i64) -> f64 {
     if n < 0 {
         let h, l = dd_pow(x, -n);
         if is_inf(h) || is_nan(h) || h == 0.0 { return 1.0 / h; }
-        // 1 / (h + l), correctly rounded: q, then the remainder of 1 − q·(h + l).
         let q = 1.0 / h;
         let p, e = two_prod(q, h);
         return q + ((1.0 - p) - e - q * l) / h;
@@ -92,14 +61,12 @@ fn pw(x: f64, n: i64) -> f64 {
     return h;
 }
 
-// Math.max and Math.min, which give NaN when either side is NaN.
 fn jmax(a: f64, b: f64) -> f64 { if is_nan(a) || is_nan(b) { return a + b; } return if a > b { a } else { b }; }
 fn jmin(a: f64, b: f64) -> f64 { if is_nan(a) || is_nan(b) { return a + b; } return if a < b { a } else { b }; }
 
 fn finite(x: f64) -> bool { return !is_nan(x) && !is_inf(x); }
 fn is_whole(x: f64) -> bool { return x == trunc(x); }
 
-// ---------- unit conventions ----------
 
 let LENGTH = 0;
 let FORCE = 1;
@@ -111,10 +78,6 @@ let INERTIA = 6;
 let RIGIDITY = 7;
 let ANGLE = 8;
 
-// A consistent unit system: each gives the SI size of one unit of every quantity, and stress is always
-// force per length squared, so E·I/L³ and every other product stays in the system without extra
-// factors. ASCII names the system in comments that should stay plain ASCII. The products are written as
-// JavaScript computed them: lbf = 4.4482216152605 N and in = 0.0254 m, exactly by definition.
 let UNIT_COUNT = 5;
 let UNIT_IDS: const u8[:][5] = ["kN-m", "N-m", "N-mm", "lbf-in", "kip-in"];
 let UNIT_LABELS: const u8[:][5] = ["SI: kN, m, kPa", "SI: N, m, Pa", "SI: N, mm, MPa", "US customary: lbf, in, psi", "US customary: kip, in, ksi"];
@@ -139,17 +102,14 @@ let SI = 1;
 
 fn unit_factor(u: i64, q: i64) -> f64 { return UNIT_FACTOR[u * 9 + q]; }
 fn unit_symbol(u: i64, q: i64) -> const u8[:] { return UNIT_SYMBOL[u * 9 + q]; }
-// The index of the unit system with this id, or -1.
 fn unit_index(id: u8[:]) -> i64 {
     var i = 0;
     while i < UNIT_COUNT { if UNIT_IDS[i] == id { return i; } i++; }
     return -1;
 }
-// An SI value in unit u, and back.
 fn to_units(v: f64, q: i64, u: i64) -> f64 { return v / unit_factor(u, q); }
 fn from_units(v: f64, q: i64, u: i64) -> f64 { return v * unit_factor(u, q); }
 
-// ---------- the model ----------
 
 let PIN = 0;
 let FIXED = 1;
@@ -159,15 +119,12 @@ let DIST = 2;
 
 struct Support { kind: i64, x: f64 }
 
-// A load of any kind: the fields its kind does not use are ignored. A bad kind from the page is -1.
 struct Load { kind: i64, x: f64, f: f64, c: f64, x1: f64, x2: f64, q1: f64, q2: f64 }
 
 struct Section { a: f64, i: f64, iy: f64, j: f64, c: f64, has_c: bool }
 
 struct Model { length: f64, e: f64, nu: f64, section: Section, divisions: i64 }
 
-// An unchecked model, as it comes from the page, a WebMCP tool or a test: NaN stands for a value that
-// is missing or not a number, a has_ flag false for one left out (which takes its default).
 struct Input {
     length: f64, e: f64, nu: f64, a: f64, i: f64,
     iy: f64, has_iy: bool, j: f64, has_j: bool, c: f64, has_c: bool,
@@ -182,13 +139,11 @@ var g_m: Model;
 var g_sup: Support[>..] = [];
 var g_loads: Load[>..] = [];
 
-// A whole number written as JavaScript's String, else six significant figures.
 fn fmt(x: f64) -> u8[>..] {
     if finite(x) && x == trunc(x) { return js(x); }
     return js(prec(x, 6));
 }
 
-// A length in unit u with its symbol, as messages quote it.
 fn length_text(u: i64, x: f64) -> u8[>..] {
     var out = fmt(to_units(x, LENGTH, u));
     out.append(" ");
@@ -202,8 +157,6 @@ fn number(v: f64, label: u8[:], field: u8[:], positive: bool) -> bool {
     return true;
 }
 
-// Check and normalise the input in in_x, in_sup and in_loads into g_m, g_sup and g_loads. The error
-// names the offending field. u only sets how lengths are written in the messages.
 fn validate(u: i64) -> bool {
     let input = in_x;
     if !number(input.length, "Beam length", "length", true) { return false; }
@@ -255,8 +208,6 @@ fn validate(u: i64) -> bool {
         }
         k++;
     }
-    // With only pins and fixed supports the structure is stable exactly when it has a fixed support or
-    // two separate pins; anything less can move rigidly.
     var any_fixed = false;
     for s in g_sup { if s.kind == FIXED { any_fixed = true; } }
     if !any_fixed && g_sup.len < 2 {
@@ -295,7 +246,6 @@ fn validate(u: i64) -> bool {
     return events(g_m, g_sup, g_loads, u, ev);
 }
 
-// A position on the beam: finite, between 0 and its length.
 fn at_number(v: f64, label: u8[:], field: u8[:], length: f64, u: i64) -> bool {
     if !number(v, label, field, false) { return false; }
     if v < 0.0 || v > length {
@@ -304,14 +254,11 @@ fn at_number(v: f64, label: u8[:], field: u8[:], length: f64, u: i64) -> bool {
     return true;
 }
 
-// Distinct values in increasing order, as [...new Set(xs)].sort((a, b) => a - b) (−0 is 0).
 fn distinct(xs: f64[>..]&) {
     sort(xs);
     dedup(xs);
 }
 
-// Positions where something happens: ends, supports, point actions, load ends. False, with the error
-// set, when two are too close together.
 fn events(m: Model&, sup: Support[:], loads: Load[:], u: i64, out: f64[>..]&) -> bool {
     out.clear();
     out.push(0.0);
@@ -332,7 +279,6 @@ fn events(m: Model&, sup: Support[:], loads: Load[:], u: i64, out: f64[>..]&) ->
     return true;
 }
 
-// The NASTRAN mesh: every event, and divisions elements between consecutive ones.
 fn mesh(out: f64[>..]&) {
     var ev: f64[>..] = [];
     events(g_m, g_sup, g_loads, SI, ev);
@@ -353,7 +299,6 @@ fn mesh(out: f64[>..]&) {
 let LEFT = 0;
 let RIGHT = 1;
 
-// Distributed-load intensity at x, taking the load starting at x (RIGHT) or ending there (LEFT).
 fn intensity(loads: Load[:], x: f64, side: i64) -> f64 {
     var q = 0.0;
     for l in loads {
@@ -365,16 +310,12 @@ fn intensity(loads: Load[:], x: f64, side: i64) -> f64 {
     return q;
 }
 
-// Re-express a value in unit u (back converts the other way); round keeps 15 significant figures.
 fn scale_value(v: f64, q: i64, u: i64, back: bool, round: bool) -> f64 {
     let w = if back { from_units(v, q, u) } else { to_units(v, q, u) };
     return if round { prec(w, 15) } else { w };
 }
 
-// ---------- the stiffness solution ----------
 
-// Beam DOFs only couple within one element, so a symmetric banded row keeps K[i][i..=i+BAND], BAND = 3.
-// The band is stored flat, four to a row.
 
 fn entry(k: f64[:], i: i64, j: i64) -> f64 {
     let d = if i > j { i - j } else { j - i };
@@ -384,9 +325,6 @@ fn entry(k: f64[:], i: i64, j: i64) -> f64 {
 
 fn singular() -> bool { return fail("The stiffness matrix is singular: the supports do not hold the beam in place.", "supports"); }
 
-// Solve K u = f for symmetric positive definite banded K by LDLᵀ elimination. The system is first
-// scaled to a unit diagonal, which makes the pivot test independent of units and element lengths; a
-// vanishing scaled pivot means a mechanism. The result goes in sol.
 fn solve_banded(k: f64[:], f: f64[:], sol: f64[>..]&) -> bool {
     let n = f.len;
     var d: f64[>..] = [];
@@ -447,8 +385,6 @@ fn solve_banded(k: f64[:], f: f64[:], sol: f64[>..]&) -> bool {
     return true;
 }
 
-// Hermite shape functions on an element of length l at ξ ∈ [0, 1] (values and x-derivatives), ordered
-// v_i, θ_i, v_j, θ_j.
 fn hermite(l: f64, t: f64) -> f64[4] {
     return [1.0 - 3.0 * t * t + 2.0 * pw(t, 3), l * (t - 2.0 * t * t + pw(t, 3)), 3.0 * t * t - 2.0 * pw(t, 3), l * (pw(t, 3) - t * t)];
 }
@@ -464,14 +400,11 @@ struct Equilibrium { fy: f64, mz: f64, scale_f: f64, scale_m: f64 }
 struct Extreme { x: f64, value: f64 }
 struct Extremes { v_shear: Extreme, m: Extreme, v: Extreme }
 
-// A solved beam: the reactions in order of x, the deflection and slope at every event, the
-// out-of-balance of loads and reactions, and the largest V, M and v.
 var g_rea: Reaction[>..] = [];
 var g_disp: Displacement[>..] = [];
 var g_eq: Equilibrium;
 var g_ext: Extremes;
 
-// The element with stations[e] < x < stations[e + 1].
 fn element(stations: f64[:], x: f64) -> i64 {
     var lo = 0;
     var hi = stations.len - 2;
@@ -482,7 +415,6 @@ fn element(stations: f64[:], x: f64) -> i64 {
     return lo;
 }
 
-// The index of the station at x, or -1.
 fn station_index(stations: f64[:], x: f64) -> i64 {
     var i = 0;
     while i < stations.len { if stations[i] == x { return i; } i++; }
@@ -494,11 +426,9 @@ fn spread(f: f64[>..]&, e: i64, w: f64[4], value: f64) {
     while i < 4 { f[2 * e + i] += w[i] * value; i++; }
 }
 
-// Solves the model in in_x, in_sup and in_loads, and leaves the answer in the globals.
 fn solve(u: i64) -> bool {
     if !validate(u) { return false; }
     let ei = g_m.e * g_m.section.i;
-    // Stiffness stations: the ends and every support. Loads between them enter as consistent nodal loads.
     var stations: f64[>..] = [];
     stations.push(0.0);
     stations.push(g_m.length);
@@ -528,7 +458,6 @@ fn solve(u: i64) -> bool {
     }
     for ld in g_loads {
         if ld.kind == DIST {
-            // ∫ N q dx over each element's share of the load: N is cubic and q linear, so 5-point Gauss is exact.
             var el = 0;
             while el < ns - 1 {
                 let a = stations[el];
@@ -572,7 +501,6 @@ fn solve(u: i64) -> bool {
         fixed[2 * i] = true;
         if s.kind == FIXED { fixed[2 * i + 1] = true; }
     }
-    // Dropping constrained DOFs keeps the free system banded with the same band.
     var free: i64[>..] = [];
     z = 0;
     while z < n { if !fixed[z] { free.push(z); } z++; }
@@ -607,13 +535,10 @@ fn solve(u: i64) -> bool {
             mz: if s.kind == FIXED { residual(k, f, sol, n, 2 * i + 1) } else { 0.0 } });
     }
     stable_sort(g_rea) { p, q => p.x < q.x };
-    // Deflection at every event: stations take the solved values; other events integrate M/EI exactly
-    // from the previous event (nothing happens strictly between two events).
     g_disp.clear();
     var ev: f64[>..] = [];
     events(g_m, g_sup, g_loads, SI, ev);
     for x in ev {
-        // x = 0 is a station, so every other event has one before it.
         let i = station_index(stations, x);
         if i >= 0 {
             g_disp.push(Displacement { x: x, v: sol[2 * i], theta: sol[2 * i + 1] });
@@ -635,7 +560,6 @@ fn residual(k: f64[:], f: f64[:], sol: f64[:], n: i64, i: i64) -> f64 {
     return s;
 }
 
-// Resultant force and moment about x = 0 of all loads and reactions (they should vanish).
 fn equilibrium() -> Equilibrium {
     var q = Equilibrium { fy: 0.0, mz: 0.0, scale_f: 0.0, scale_m: 0.0 };
     for re in g_rea { eq_add(q, re.fy, re.x, re.mz); }
@@ -645,7 +569,6 @@ fn equilibrium() -> Equilibrium {
         } else if l.kind == COUPLE {
             eq_add(q, 0.0, 0.0, l.c);
         } else {
-            // A trapezoid is two triangles: q1 peaking at x1 and q2 peaking at x2.
             let b = l.x2 - l.x1;
             eq_add(q, l.q1 * b / 2.0, l.x1 + b / 3.0, 0.0);
             eq_add(q, l.q2 * b / 2.0, l.x1 + 2.0 * b / 3.0, 0.0);
@@ -661,7 +584,6 @@ fn eq_add(q: Equilibrium&, f: f64, x: f64, c: f64) {
     q.scale_m += abs(f * x) + abs(c);
 }
 
-// Exact V and M at x from the left free body: LEFT gives the limit x⁻, RIGHT gives x⁺.
 fn internal(x: f64, side: i64) -> f64, f64 {
     return internal_of(g_rea, g_loads, x, side);
 }
@@ -686,18 +608,15 @@ fn internal_of(rea: Reaction[:], loads: Load[:], x: f64, side: i64) -> f64, f64 
         } else if x > l.x1 {
             let b = jmin(x, l.x2) - l.x1;
             let s = (l.q2 - l.q1) / (l.x2 - l.x1);
-            let qb = l.q1 + s * b;     // intensity at the end of the loaded part
+            let qb = l.q1 + s * b;
             v += (l.q1 + qb) * b / 2.0;
-            // Rectangle q1 plus triangle (qb − q1), each about the section at x.
             m += l.q1 * b * (x - l.x1 - b / 2.0) + (qb - l.q1) * b / 2.0 * (x - l.x1 - 2.0 * b / 3.0);
         }
     }
     return v, m;
 }
 
-// Deflection and slope at x: values at the events, integrated exactly from M/EI between them.
 fn deflection(x: f64) -> f64, f64 {
-    // The segment containing x: the last one whose start is at or before x.
     var lo = 0;
     var hi = g_disp.len - 2;
     while lo < hi {
@@ -711,8 +630,6 @@ fn deflection(x: f64) -> f64, f64 {
 let GAUSS3_X: f64[3] = [-0.7745966692414834, 0.0, 0.7745966692414834];
 let GAUSS3_W: f64[3] = [5.0 / 9.0, 8.0 / 9.0, 5.0 / 9.0];
 
-// v and θ at x from their values at an earlier point with no event between: θ' = M/EI, v' = θ. M is
-// at most cubic there, so 3-point Gauss integrates M and (x − t)M exactly.
 fn integrate(from: Displacement, x: f64) -> f64, f64 {
     let ei = g_m.e * g_m.section.i;
     let x0 = from.x;
@@ -731,7 +648,6 @@ fn integrate(from: Displacement, x: f64) -> f64, f64 {
     return from.v + from.theta * s + dv * s / 2.0 / ei, from.theta + dt * s / 2.0 / ei;
 }
 
-// Values at x with both one-sided limits of V and M.
 struct At { x: f64, v_left: f64, v_right: f64, m_left: f64, m_right: f64, v: f64, theta: f64 }
 
 fn at(x: f64) -> At {
@@ -746,12 +662,8 @@ fn at(x: f64) -> At {
     return At { x: x, v_left: vl, v_right: vr, m_left: ml, m_right: mr, v: v, theta: theta };
 }
 
-// One point of the diagrams.
 struct Sample { x: f64, shear: f64, m: f64, v: f64, theta: f64 }
 
-// Mesh-independent plot samples: about count regular points plus per-segment critical points and
-// event limits. Each segment runs from its right limit at the start to its left limit at the end, so
-// jumps appear as two points at the same x.
 fn diagram(count: i64, pts: Sample[>..]&) {
     pts.clear();
     let l = g_m.length;
@@ -778,7 +690,6 @@ fn diagram(count: i64, pts: Sample[>..]&) {
         }
         e++;
     }
-    // Close the diagrams to zero at the free ends of the beam.
     let atlv, atlt = deflection(l);
     pts.push(Sample { x: l, shear: 0.0, m: 0.0, v: atlv, theta: atlt });
 }
@@ -816,7 +727,6 @@ fn critical_points(a: f64, b: f64, xs: f64[>..]&) {
     let ra0, ra1 = internal(a, RIGHT);
     let qa = intensity(g_loads, a, RIGHT);
     let qb = intensity(g_loads, b, LEFT);
-    // q is linear and V quadratic inside a segment: V(s) = C + B s + A s².
     let aa = (qb - qa) / (2.0 * h);
     let bb = qa;
     let cc = ra0;
@@ -887,10 +797,7 @@ fn extremes() -> Extremes {
     return Extremes { v_shear: bs, m: bm, v: bv };
 }
 
-// ---------- sections ----------
 
-// A shape and its dimensions (m), as the page and the WebMCP tools give them: a has_ flag false is left out.
-// The shape is 0 for none, 1 rect, 2 circle, 3 tube, 4 custom.
 struct Shape {
     shape: i64,
     b: f64, has_b: bool, h: f64, has_h: bool, d: f64, has_d: bool, t: f64, has_t: bool,
@@ -901,7 +808,6 @@ fn pos(v: f64, has: bool, label: u8[:], field: u8[:]) -> bool {
     return number(if has { v } else { 0.0 / 0.0 }, label, field, true);
 }
 
-// Section properties (m, m², m⁴) from a shape. Bending is about the horizontal axis, depth along y.
 fn section_properties(spec: Shape&, out: Section&) -> bool {
     if spec.shape == 1 {
         if !pos(spec.b, spec.has_b, "Section width b", "section.b") { return false; }
@@ -911,7 +817,7 @@ fn section_properties(spec: Shape&, out: Section&) -> bool {
         let long = jmax(b, h);
         let short = jmin(b, h);
         let r = short / long;
-        // Saint-Venant torsion constant of a solid rectangle (Roark's series approximation).
+        // Roark's series approximation.
         let j = long * pw(short, 3) * (1.0 / 3.0 - 0.21 * r * (1.0 - pw(r, 4) / 12.0));
         out = Section { a: b * h, i: b * pw(h, 3) / 12.0, iy: h * pw(b, 3) / 12.0, j: j, c: h / 2.0, has_c: true };
         return true;
@@ -958,8 +864,6 @@ fn section_properties(spec: Shape&, out: Section&) -> bool {
     return fail("Choose a rectangle, solid circle, tube or custom section.", "section.shape");
 }
 
-// Degree of static indeterminacy for transverse loading: reaction components minus the two
-// equilibrium equations.
 fn indeterminacy(sup: Support[:]) -> i64 {
     var t = 0;
     for s in sup { t += if s.kind == FIXED { 2 } else { 1 }; }

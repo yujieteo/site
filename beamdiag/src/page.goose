@@ -1,5 +1,3 @@
-// Builds the standalone page: page <index.html>. scripts/build-beam.sh makes the WebAssembly files.
-
 import std;
 import os;
 import .app;

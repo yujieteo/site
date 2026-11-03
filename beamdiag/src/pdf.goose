@@ -1,29 +1,16 @@
-// A display list as a vector PDF in the print palette, one page per run of ops between page breaks. Text
-// is set in the embedded subsets of the site's font, Inter at 400 and at 600 for headings (TrueType), and Fira Math
-// (OpenType CFF) for maths, addressed by glyph ID with a ToUnicode map, as the site's PDFs are; a character
-// missing from a font falls back to Inter 400, then Fira Math. Nothing reads
-// a clock, so equal figures give equal bytes.
-//
-// The three fonts (sans, heading, maths) are OpenType bytes. A character's glyph is read from the font's cmap
-// on demand and remembered in pdf_cache.
-
 import std;
 import math;
 import .num;
 import .util;
 import .draw;
 
-// An OpenType font in pdf_data: where it sits, its tables, metrics (bbox, ascent, descent, units per em).
 struct PFont { off: i64, len: i64, cm: i64, ntab: i64, hm: i64, nh: i64, m0: i64, m1: i64, m2: i64, m3: i64, m4: i64, m5: i64, em: f64 }
 
 var pdf_data: u8[>..] = [];
 var pdf_font: PFont[3];
-// Per font and 16-bit character: 0 not looked up, 1 not in the font, else the glyph ID + 2.
 var pdf_cache: i32[196608];
-// Per font and glyph ID: the character set with it (0 when the glyph is unused).
 var pdf_used: i32[196608];
 
-// The big-endian number of n bytes at o in font f; 0 when they are not all in the font.
 fn pdf_be(f: i64, o: i64, n: i64) -> i64 {
     if o < 0 || o + n > pdf_font[f].len { return 0; }
     var a = 0;
@@ -36,7 +23,6 @@ fn pdf_be(f: i64, o: i64, n: i64) -> i64 {
     return a;
 }
 
-// The offset of a table, or 0.
 fn pdf_table(f: i64, tag: u8[:]) -> i64 {
     var i = 0;
     let n = pdf_be(f, 4, 2);
@@ -74,14 +60,11 @@ fn pdf_font_init(f: i64, off: i64, len: i64) {
     pdf_font[f].em = (if em > 1 { em } else { 1 }) as f64;
 }
 
-// The advance width of glyph g.
 fn pdf_adv(f: i64, g: i64) -> i64 {
     let last = pdf_font[f].nh - 1;
     return pdf_be(f, pdf_font[f].hm + 4 * (if g < last { g } else { last }), 2);
 }
 
-// The glyph for character c from the cmap: whether the font maps it, and the glyph ID. Later format 12
-// groups replace earlier ones; a format 4 segment fills only a character not yet mapped.
 fn pdf_lookup_cmap(f: i64, c: i64) -> bool, i64 {
     var present = false;
     var gid = 0;
@@ -137,19 +120,16 @@ fn pdf_lookup(f: i64, c: i64) -> bool, i64 {
     return pdf_lookup_cmap(f, c);
 }
 
-// A run of text: pieces in the first font with each character (the style's, then sans, then maths).
 struct PPiece { font: i64, script: i64, g0: i64, g1: i64, width: f64 }
 
 var pdf_glyphs: u8[>..] = [];
 
-// Size and rise (in ems) of level text, superscripts and subscripts.
 let PDF_SCRIPT_SIZE: f64[3] = [1.0, 0.7, 0.7];
 let PDF_SCRIPT_RISE: f64[3] = [0.0, 0.4, -0.15];
 let PDF_SUP_CPS: i64[14] = [0x2070, 0xb9, 0xb2, 0xb3, 0x2074, 0x2075, 0x2076, 0x2077, 0x2078, 0x2079, 0x207b, 0x207a, 0x2071, 0x207f];
 let PDF_SUB_CPS: i64[14] = [0x2080, 0x2081, 0x2082, 0x2083, 0x2084, 0x2085, 0x2086, 0x2087, 0x2088, 0x2089, 0x208b, 0x208a, 0x1d62, 0x2099];
 let PDF_BASE_CPS: i64[14] = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 0x2212, 43, 105, 110];
 
-// The subsets lack most script digits, so these are base digits, small and moved: the character, its script.
 fn pdf_script(c: i64) -> i64, i64 {
     var k = 0;
     while k < 14 {
@@ -173,7 +153,6 @@ fn pdf_hex4(out: u8[>..]&, v: i64) {
     out.push(d[v & 15]);
 }
 
-// The pieces of s, and the whole width. The glyph IDs of the pieces are in pdf_glyphs.
 fn pdf_run(first: i64, size: f64, spacing: f64, s: u8[:], v: PPiece[>..]&) -> f64 {
     var cps: i64[>..] = [];
     each_utf8(s) { cps.push(it); };
@@ -206,7 +185,6 @@ fn pdf_run(first: i64, size: f64, spacing: f64, s: u8[:], v: PPiece[>..]&) -> f6
     return total;
 }
 
-// ---------- content streams ----------
 
 var pdf_c: u8[>..] = [];
 
@@ -243,13 +221,11 @@ fn pdf_cv(a: f64, b: f64, c: f64, d: f64, x: f64, y: f64) {
 }
 fn pdf_h() { pdf_c.append("h "); }
 
-// Words of a class string.
 fn pdf_has_word(cls: u8[:], w: u8[:]) -> bool {
     for part in split(cls, ' ') { if part == w { return true; } }
     return false;
 }
 
-// Classes drawn only on the page: grips, focus rings, the plot frame and the cursor.
 let PDF_PAGE_ONLY: const u8[:][4] = ["ring", "hit", "box", "cursor"];
 
 fn pdf_page_only_class(cls: u8[:]) -> bool {
@@ -270,7 +246,6 @@ fn pdf_page_only_group(attrs: u8[:]) -> bool {
     return false;
 }
 
-// Text at its baseline; the page's CTM flips y, so each run's matrix flips it back.
 fn pdf_text(op: DOp) {
     let si = text_style_index(draw_ref(op.cls0, op.cls1));
     let size = TEXT_SIZE[si];
@@ -385,7 +360,6 @@ fn pdf_item(op: DOp) {
     pdf_c.append(if p.fill >= 0 && p.stroke >= 0 { "B Q\n" } else if p.fill >= 0 { "f Q\n" } else { "S Q\n" });
 }
 
-// A word that reads as a number, and the number.
 fn pdf_number(w: u8[:]) -> bool, f64 {
     var digit = false;
     for c in w {
@@ -398,8 +372,6 @@ fn pdf_number(w: u8[:]) -> bool, f64 {
     return true, read_double(w);
 }
 
-// The ops from..to of a list (one page) as content. A group of a page-only class is skipped with
-// everything in it; a transform group is a saved graphics state with that translation.
 fn pdf_nodes(list: DOp[:], from: i64, to: i64) {
     var skip = 0;
     var marks: i64[>..<] = [];
@@ -450,20 +422,17 @@ fn pdf_nodes(list: DOp[:], from: i64, to: i64) {
     }
 }
 
-// ---------- objects ----------
 
 var pdf_ob: u8[>..] = [];
 var pdf_ob_s: i64[>..] = [];
 var pdf_ob_n: i64[>..] = [];
 
-// Adds an object whose body is in pdf_ob from at; its number.
 fn pdf_add_from(at: i64) -> i64 {
     pdf_ob_s.push(at);
     pdf_ob_n.push(pdf_ob.len - at);
     return pdf_ob_s.len;
 }
 
-// The body "<<dict/Length n>>stream\ndata\nendstream" added as an object.
 fn pdf_add_stream(dict: u8[:], data: u8[:]) -> i64 {
     let at = pdf_ob.len;
     format(pdf_ob, "<<", dict, "/Length ", data.len, ">>stream\n");
@@ -496,8 +465,6 @@ fn pdf_utf16_cp(out: u8[>..]&, c: i64) {
 
 var pdf_pool: u8[>..] = [];
 
-// The figure (CSS px, 96 to the inch) as PDF pages of the same size in points. The list holds the pages
-// separated by page breaks (draw_page); fonts are the font bytes of sans, heading and maths.
 fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8[:], font2: u8[:]) -> u8[>..] {
     pdf_data.clear();
     let o0 = pdf_data.len;
@@ -535,7 +502,6 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         pdf_pool.append(pdf_c);
         k++;
     }
-    // The opacities used anywhere, in order of first use.
     var alphas: i64[>..] = [];
     for op in list {
         if op.kind == OP_ITEM && op.paint.has_op {
@@ -577,7 +543,6 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         }
         pdf_ob.append("]]>>");
         let cid = pdf_add_from(at2);
-        // ToUnicode: each glyph used back to its character, in blocks of at most 100.
         var cmap: u8[>..] = [];
         var inblock = 0;
         var blk: u8[>..] = [];
@@ -632,7 +597,6 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         format(kids, page, " 0 R");
         k++;
     }
-    // The four fixed objects.
     var at = pdf_ob.len;
     pdf_ob.append("<</Type/Catalog/Pages 2 0 R/Lang(en)>>");
     pdf_ob_s[0] = at;

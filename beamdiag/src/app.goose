@@ -1,7 +1,3 @@
-// The page: its events (a click, a typed value, a drag) and the commands it sends back (set this element's
-// HTML, value or class; save a file; copy text). This program owns every number, word and drawing; the host
-// in the page only moves events in and applies the commands. The state is in state.goose.
-
 import std;
 import math;
 import .jv;
@@ -17,7 +13,6 @@ import .draw;
 import .figure;
 import .pdf;
 
-// Rust's f64::total_cmp as a less-than: -0 before 0, NaN after every number.
 fn total_less(a: f64, b: f64) -> bool {
     if is_nan(a) { return false; }
     if is_nan(b) { return true; }
@@ -25,16 +20,13 @@ fn total_less(a: f64, b: f64) -> bool {
     return a < b;
 }
 
-// Rust's f64::min and f64::max: a NaN gives way to the other number.
 fn rmin(a: f64, b: f64) -> f64 { if is_nan(a) { return b; } if is_nan(b) { return a; } return if a < b { a } else { b }; }
 fn rmax(a: f64, b: f64) -> f64 { if is_nan(a) { return b; } if is_nan(b) { return a; } return if a > b { a } else { b }; }
 
-// ---------- commands ----------
 
 var cmds: u8[>..] = [];
 var cmd_n: i64 = 0;
 
-// A JSON string, escaped as JSON.stringify does.
 fn quote(out: u8[>..]&, s: u8[:]) {
     out.push('"');
     for c in s {
@@ -90,9 +82,7 @@ fn save(name: u8[:], mime: u8[:], data: u8[:], b64: bool) {
     cmd_end();
 }
 
-// ---------- small helpers ----------
 
-// Length of a run of characters that are not white space, in bytes.
 fn word(s: u8[:]) -> i64 {
     var i = 0;
     while i < s.len && !is_space(s[i]) { i++; }
@@ -111,7 +101,6 @@ fn lower_eq(s: u8[:], lit: u8[:]) -> bool {
     return true;
 }
 
-// Rust's str::parse::<f64>, which accepts decimal text, "inf", "infinity" and "nan"; else false.
 fn parse_f64(s: u8[:]) -> f64, bool {
     if s.len == 0 { return 0.0, false; }
     var i = 0;
@@ -139,17 +128,14 @@ fn parse_f64(s: u8[:]) -> f64, bool {
     return read_double(s), true;
 }
 
-// JavaScript's Number(s) for a field's value: "" is 0.
 fn number_of(s: u8[:]) -> f64 {
     let t = trim(s);
     if t.len == 0 { return 0.0; }
     let v, ok = parse_f64(t);
     return if ok { v } else { NAN_ };
 }
-// A number field: "" is NaN, as the page reads it.
 fn field_number(s: u8[:]) -> f64 { return if s.len == 0 { NAN_ } else { number_of(s) }; }
 
-// An index written in decimal digits, or -1.
 fn parse_index(s: u8[:]) -> i64 {
     if s.len == 0 || s.len > 9 { return -1; }
     var v = 0;
@@ -160,22 +146,18 @@ fn parse_index(s: u8[:]) -> i64 {
     return v;
 }
 
-// +x.toPrecision(10) for a field, "" for a value that is not a number.
 fn tidy(x: f64) -> u8[>..] { return if finite(x) { js(prec(x, 10)) } else { "" }; }
-// JavaScript's Math.round: halves round up.
 fn js_round(x: f64) -> f64 {
     let f = floor(x);
     return if x - f >= 0.5 { f + 1.0 } else { f };
 }
 
-// The UTF-16 length of a text, as JavaScript counts it.
 fn utf16_len(s: u8[:]) -> i64 {
     var n = 0;
     each_utf8(s) { cp => n += if cp >= 65536 { 2 } else { 1 }; };
     return n;
 }
 
-// Break text into lines of at most n characters, at spaces. The lines come back separated by newlines.
 fn wrap(s: u8[:], n: i64, out: u8[>..]&) {
     out.clear();
     var line: u8[>..] = [];
@@ -214,26 +196,23 @@ fn options_item(out: u8[>..]&, v: u8[:], label: u8[:], selected: u8[:]) {
     out.append("</option>");
 }
 
-// ---------- the page's state beyond state.goose ----------
 
 var app_date: u8[>..] = [];
 var hand_visible: bool = false;
 var hand_stale: bool = false;
 var pending: bool = false;
 var font_css: u8[>..] = [];
-var font_data: u8[>..] = [];          // the three fonts' bytes, one after the other
+var font_data: u8[>..] = [];
 var font_len: i64[3] = [0, 0, 0];
 var has_fonts: bool = false;
 
-// Where a support or load end sat when a length edit began: at an end (0 or 1), or at a shown position.
-struct Attach { load: bool, i: i64, key: i64, end: i64, at: f64 }      // key 0 is x, 1 is x1, 2 is x2; end is -1 for none
+struct Attach { load: bool, i: i64, key: i64, end: i64, at: f64 }
 var length_edit: Attach[>..] = [];
 var has_length_edit: bool = false;
 
 fn key_name(k: i64) -> const u8[:] { return if k == 1 { "x1" } else if k == 2 { "x2" } else { "x" }; }
 
 fn from_preset(i: i64) {
-    // Every preset names one of the materials.
     var mi = 0;
     var k = 0;
     while k < materials.len { if materials[k].id == presets[i].material { mi = k; break; } k++; }
@@ -256,9 +235,7 @@ fn from_preset(i: i64) {
     st_shape_name.append(SHAPE_NAMES[presets[i].section.shape]);
 }
 
-// ---------- the model ----------
 
-// Fills in_x, in_sup and in_loads from the edited beam. False, with the error set, while the section is invalid.
 fn make_input() -> bool {
     var s = Section { a: 0.0, i: 0.0, iy: 0.0, j: 0.0, c: 0.0, has_c: false };
     if !section_properties(st_section, s) { return false; }
@@ -271,12 +248,10 @@ fn make_input() -> bool {
     return true;
 }
 
-// Whether a solved beam's diagrams stay finite when converted to the current convention.
 fn showable() -> bool {
     return finite(show(g_ext.v_shear.value, FORCE)) && finite(show(g_ext.m.value, MOMENT)) && finite(show(g_ext.v.value, LENGTH));
 }
 
-// A copy of the solved beam, to put back when a new solution fails.
 var sv_m: Model;
 var sv_sup: Support[>..] = [];
 var sv_loads: Load[>..] = [];
@@ -313,7 +288,6 @@ fn restore() {
 }
 
 fn update_soon() { update(true); }
-// Apply a re-solve still waiting on paused typing, so an export or a drag starts from what was typed.
 fn flush() { if pending { update(true); } }
 
 fn update(keep_form: bool) {
@@ -335,12 +309,11 @@ fn update(keep_form: bool) {
         ok = fail(str("The results are too large to show in ", UNIT_LABELS[app_u], "; choose a convention with larger units."), "");
     } else if ok {
         app_has_sol = true;
-        hand_valid = false;      // the hand calculation starts over for a new solution
+        hand_valid = false;
     } else if app_has_sol {
         restore();
     }
     if !ok { app_has_error = true; }
-    // A beam solved in one convention can overflow when shown in another (10³⁰⁶ N·m is Infinity in N·mm).
     if app_has_sol && !showable() { app_has_sol = false; app_has_layout = false; }
     if app_has_error {
         hidden("#error", false);
@@ -365,7 +338,6 @@ fn update(keep_form: bool) {
             html("#table", table_html());
         }
     }
-    // Re-deriving a long beam on every drag step is wasted work: the view catches up when the drag ends.
     if app_active.len > 0 && !app_has_error { hand_stale = true; } else { render_hand(); }
     html("#section-derived", tex_rich(section_summary()));
 }
@@ -386,7 +358,6 @@ fn mark_invalid(field: u8[:]) {
     attr(sel, "aria-invalid", "true");
 }
 
-// The solver's messages quote left-end positions; restate them in the chosen convention.
 fn at_message(n: u8[:]) -> u8[>..] {
     var out = sig(show_x(from_units(number_of(n), LENGTH, app_u), app_attach), 6);
     out.append(" ");
@@ -399,7 +370,6 @@ fn in_convention(m0: u8[:]) -> u8[>..] {
     m.append(m0);
     let o = offset(app_attach);
     if o == 0.0 || is_nan(o) { return m; }
-    // "between 0 and (\S+) \S+\.$"
     let pat1 = "between 0 and ";
     var from = 0;
     loop {
@@ -424,7 +394,6 @@ fn in_convention(m0: u8[:]) -> u8[>..] {
         }
         from = i + pat1.len;
     }
-    // "position x = (\S+) \S+\."
     let pat2 = "position x = ";
     from = 0;
     loop {
@@ -453,10 +422,8 @@ fn in_convention(m0: u8[:]) -> u8[>..] {
         if hit { break; }
         from = i + pat2.len;
     }
-    // "^Positions (\S+) \S+ and (\S+) \S+ are"
     if starts_with(m, "Positions ") {
         let rest = m[10..];
-        // splitn(6, ' ')
         var w: const u8[:][6];
         var n = 0;
         var start = 0;
@@ -485,7 +452,6 @@ fn in_convention(m0: u8[:]) -> u8[>..] {
     return m;
 }
 
-// ---------- the editor ----------
 
 fn num_input(label: u8[:], v: f64, field: u8[:]) -> u8[>..] {
     return str("<label class=\"f\"><span>", tex_rich(label), "</span><input type=\"number\" step=\"any\" value=\"", tidy(v), "\" name=\"", field,
@@ -618,10 +584,8 @@ fn build_form() {
     text("#preset-note", preset_note());
 }
 
-// A, I, c and EI of the current section, or "" while it is invalid.
 fn section_summary() -> u8[>..] {
     var s = Section { a: 0.0, i: 0.0, iy: 0.0, j: 0.0, c: 0.0, has_c: false };
-    // A failure here is not the beam's error: keep the message the page shows.
     let keep_msg = copy(err_msg);
     let keep_field = copy(err_field);
     let ok = section_properties(st_section, s);
@@ -639,7 +603,6 @@ fn section_summary() -> u8[>..] {
     return t;
 }
 
-// ---------- events ----------
 
 fn b64_val(c: u8) -> u32 {
     if c >= 'A' && c <= 'Z' { return (c - 'A') as u32; }
@@ -649,7 +612,6 @@ fn b64_val(c: u8) -> u32 {
     return 63;
 }
 
-// The bytes of base64 text, the way the page's fonts arrive: anything but letters, digits, + and / is skipped.
 fn b64_decode(out: u8[>..]&, s: u8[:]) {
     var chunk: u8[4] = [0; 4];
     var n = 0;
@@ -670,12 +632,10 @@ fn b64_flush(out: u8[>..]&, chunk: u8[4]&, n: i64) {
     while i < n - 1 { out.push(((v >> ((16 - 8 * i) as u32)) & 255) as u8); i++; }
 }
 
-// One string, number or flag of the event.
 fn ev_s(root: i64, key: u8[:]) -> const u8[:] { return jm_text(jm_member(root, key)); }
 fn ev_f(root: i64, key: u8[:]) -> f64 { return jnum(root, key); }
 fn ev_true(root: i64, key: u8[:]) -> bool { return jm_flag(jm_member(root, key)); }
 
-// One event from the host, as JSON; the commands for it, as a JSON array.
 fn handle_event(txt: u8[:]) -> const u8[:] {
     cmds.clear();
     cmd_n = 0;
@@ -736,7 +696,6 @@ fn handle_event(txt: u8[:]) -> const u8[:] {
     return cmds;
 }
 
-// Three non-empty font strings, as the host sends them.
 fn take_fonts(fonts: i64) {
     var n = 0;
     var good = true;
@@ -766,9 +725,6 @@ fn take_fonts(fonts: i64) {
     has_fonts = true;
 }
 
-// A typed position (or length) lands exactly on any other position on the beam within 1e-9·L of it:
-// fields show 10 significant figures, so typing back a shown value must give the position it shows.
-// me says which field is being edited: 0 the length, 1 a support's x, 2 a load's x, 3 its x1, 4 its x2.
 fn take_x(v: f64, me: i64, me_i: i64) -> f64 {
     let is_length = me == 0;
     let x = if is_length { take(v, LENGTH) } else { typed(take(v, LENGTH), app_attach) };
@@ -838,7 +794,6 @@ fn on_input(field: u8[:], val: u8[:]) {
         if k == "c" && is_nan(v) { dim_set(st_section, k, 0.0, false); } else { dim_set(st_section, k, take(v, q), true); }
     } else if parts.len == 2 && parts[0] == "material" && (parts[1] == "E" || parts[1] == "nu") {
         if parts[1] == "E" { st_e = if val.len == 0 { NAN_ } else { take(v, STRESS) }; } else { st_nu = v; }
-        // E typed in psi only matches a preset to rounding, so presets are recognised within 1e-9.
         var mi = -1;
         var k2 = 0;
         for m in materials {
@@ -853,8 +808,6 @@ fn on_input(field: u8[:], val: u8[:]) {
     update_soon();
 }
 
-// Keep supports and loads at either end attached to it. Measured from mid-span, everything else
-// keeps the position it was given, so it moves with the middle of the beam.
 fn attach_add(load: bool, i: i64, key: i64, x: f64, l: f64) {
     let end = if x == 0.0 { 0 } else if x == l { 1 } else { -1 };
     length_edit.push(Attach { load: load, i: i, key: key, end: end, at: shown(x, l) });
@@ -895,14 +848,12 @@ fn edit_length(v0: f64) {
             } else {
                 st_sup[a.i].x = x;
             }
-            // From mid-span a left-end entry keeps its place on the beam but reads differently, so refresh it too.
             value(str("[data-field=\"", if a.load { "loads" } else { "supports" }, ".", a.i, ".", key_name(a.key), "\"]"), tidy(show_x(x, app_attach)));
         }
     }
     update_soon();
 }
 
-// Names the material the state matches (index into materials), or "custom" for -1. The page value follows in on_input.
 fn set_material(mi: i64) {
     st_mat_id.clear();
     if mi >= 0 { st_mat_id.append(materials[mi].id); } else { st_mat_id.append("custom"); }
@@ -966,7 +917,6 @@ fn on_click(act: u8[:], arg: u8[:]) {
         st_preset.clear();
         update(false);
     } else if act == "add-support" {
-        // Try the usual spots first, then the middle of the widest gap between supports and ends.
         let cand: f64[5] = [l / 2.0, l / 4.0, 3.0 * l / 4.0, l, 0.0];
         var x = 0.0;
         var done = false;
@@ -1024,7 +974,6 @@ fn on_click(act: u8[:], arg: u8[:]) {
     }
 }
 
-// A default in SI, rounded to one significant figure in the current convention (−10 kN is −2000 lbf).
 fn round1(si: f64, q: i64) -> f64 { return take(prec(show(si, q), 1), q); }
 
 fn on_result(tag: u8[:], ok: bool, msg: u8[:]) {
@@ -1033,16 +982,12 @@ fn on_result(tag: u8[:], ok: bool, msg: u8[:]) {
     }
 }
 
-// ---------- moving supports, loads and the cursor ----------
 
-// Steps and snapping work in the current length unit, so a dragged support lands on 24 in, not 0.6 m.
 fn step_for(l: f64) -> f64 {
     let raw = show(l, LENGTH) / 100.0;
     let e0 = floor(log10(raw));
     let e = if is_nan(e0) { 0 } else if e0 < -400.0 { -400 } else if e0 > 400.0 { 400 } else { e0 as i64 };
-    // A zero length makes e0 −∞: Rust's cast gives i32::MIN, and its 10^MIN is 0.1 (the negation of MIN wraps).
     let p = if e0 <= -2147483648.0 { 0.1 } else { pw(10.0, e) };
-    // 10·p is at least raw, so a step is always found.
     let ms: f64[4] = [1.0, 2.0, 5.0, 10.0];
     for m in ms {
         let s = m * p;
@@ -1054,10 +999,8 @@ fn snap(x: f64, step: f64) -> f64 {
     let s = show(step, LENGTH);
     return take(prec(js_round(show(x, LENGTH) / s) * s, 12), LENGTH);
 }
-// Snap a beam position to the step as it reads in the chosen origin.
 fn snap_shown(x: f64, step: f64) -> f64 { return typed(snap(shown(x, app_attach), step), app_attach); }
 
-// The position slot of a handle key ("s0", "l2"): its value, or false for none.
 fn handle_get(key: u8[:]) -> f64, bool {
     if key.len < 2 { return 0.0, false; }
     let i = parse_index(key[1..]);
@@ -1135,7 +1078,6 @@ fn on_key(key: u8[:], shift: bool, target: u8[:]) {
     set_cursor(next);
 }
 
-// Supports, loads and the ends, left to right, with what is at each.
 struct EvRec { x: f64, what: u8[..2048] }
 
 fn ev_has(what: u8[:], item: u8[:]) -> bool {
@@ -1184,7 +1126,6 @@ fn snap_event(x: f64, px: f64) -> f64 {
     return if dist <= px { best } else { x };
 }
 
-// Round-off far below the largest value of the same quantity on this beam reads as zero.
 fn clean(v: f64, key: u8[:]) -> f64 {
     var scale = abs(g_ext.v.value) / g_m.length;
     if key == "V" { scale = abs(g_ext.v_shear.value); }
@@ -1195,7 +1136,6 @@ fn clean(v: f64, key: u8[:]) -> f64 {
 
 fn jump(p: f64, q: f64) -> bool { return abs(p - q) > 1e-9 * (abs(p) + abs(q) + 1.0); }
 
-// The readout at the cursor: x, V, M, v and θ, with a jump shown as "left → right".
 struct Readout { k: u8[..8], v: u8[..200] }
 fn readout(c: f64, out: Readout[>..]&) {
     out.clear();
@@ -1228,7 +1168,6 @@ fn readout_html() -> u8[>..] {
     return out;
 }
 
-// "k v, k v": the readout as the plot announces it.
 fn readout_text(c: f64) -> u8[>..] {
     var rs: Readout[>..] = [];
     readout(c, rs);
@@ -1265,9 +1204,7 @@ fn render() {
     if app_has_cursor { set_cursor(app_cursor); }
 }
 
-// ---------- results ----------
 
-// The headline results, as value and what it is; shown under the figure and in saved figures.
 struct StatItem { v: u8[..160], w: u8[..400] }
 
 fn stat_add(items: StatItem[>..]&, v: u8[:], w: u8[:]) {
@@ -1323,7 +1260,6 @@ fn reactions_html() -> u8[>..] {
     return out;
 }
 
-// Values at every support and load: the cells of event i, from x to θ. The cell for "what is here" is empty.
 struct Cells { c: u8[..48][8] }
 
 fn table_cells(x: f64, cells: Cells&) {
@@ -1368,14 +1304,12 @@ fn table_html() -> u8[>..] {
     return out;
 }
 
-// ---------- the hand calculations ----------
 
 fn hand_body() -> u8[>..] {
     if !solved() { return "<p class=\"muted\">Fix the beam first: there is no solution to work by hand.</p>"; }
     hand_ensure(app_u, app_mid);
     return hand_steps_html();
 }
-// The selected point's frame follows the cursor on the diagrams.
 fn hand_point() -> u8[>..] {
     if solved() && app_has_cursor {
         hand_ensure(app_u, app_mid);
@@ -1394,11 +1328,8 @@ fn render_hand_point() {
     html("#hand-point", hand_point());
 }
 
-// ---------- the page as it opens ----------
 
-// ---------- the figure ----------
 
-// The page's figure at width w, as SVG; it sets the layout the pointer is read against.
 fn figure_svg(w: f64) -> u8[>..] {
     draw_reset();
     var list: DOp[>..] = [];
@@ -1411,9 +1342,6 @@ fn figure_svg(w: f64) -> u8[>..] {
     return draw_svg(list, f.w, f.h, " role=\"group\" aria-label=\"Beam, shear force, bending moment and deflection diagrams\"", "");
 }
 
-// ---------- saving the figure ----------
-// The image and the PDF are drawn from the same display list as the page, entirely in this page: nothing is
-// uploaded. Saved figures always use the site's light colours, which print well.
 
 fn section_label(i: i64) -> const u8[:] { return section_options[i].label; }
 
@@ -1424,7 +1352,6 @@ fn line_add(out: u8[>..]&, s: u8[:]) {
     out.append(s);
 }
 
-// The model in words, one line each, separated by newlines.
 fn model_lines(out: u8[>..]&) {
     out.clear();
     let l = g_m.length;
@@ -1477,7 +1404,6 @@ fn model_lines(out: u8[>..]&) {
     line_add(out, str("Material: ", if mi >= 0 { materials[mi].label } else { "custom" }, ", E = ", val_unit(st_e, STRESS), ", ν = ", sig(st_nu, 4)));
 }
 
-// A4 report. Each row and diagram stays on one page.
 var rp: DOp[>..] = [];
 var rp_y: f64 = 54.0;
 
@@ -1562,7 +1488,6 @@ fn pdf_report(date: u8[:]) -> u8[>..] {
     return pdf_pages(out, 794.0, 1123.0, "Beam diagram report", f0, f1, f2);
 }
 
-// The beam and its diagrams with every result under them: display list, width, height.
 var ex_w: f64 = 0.0;
 var ex_h: f64 = 0.0;
 fn export_figure(list: DOp[>..]&) {
@@ -1581,7 +1506,6 @@ fn export_figure(list: DOp[>..]&) {
     wrap(str("Units ", UNIT_LABELS[app_u], ". x from the ", origin, ", positive to the right; y and forces positive up; couples positive counter-clockwise; bending moment positive sagging."), 140, note);
     each_split(note, '\n') { draw_text(c, left, y, it, "note", ANC_START); y += 16.0; };
     y += 12.0;
-    // The two columns: the model, and the results.
     var model: u8[>..] = [];
     model_lines(model);
     var results: u8[>..] = [];
@@ -1596,7 +1520,6 @@ fn export_figure(list: DOp[>..]&) {
     y = rmax(a, b) + 14.0;
     draw_text(c, left, y, "Values at supports and loads", "title", ANC_START);
     y += 20.0;
-    // x, what, V x⁻, V x⁺, M x⁻, M x⁺, v, θ: numbers right-aligned at these edges, "what" from its left.
     let cols: f64[8] = [92.0, 104.0, 520.0, 600.0, 690.0, 780.0, 860.0, w - left];
     let uq = [LENGTH, FORCE, FORCE, MOMENT, MOMENT, LENGTH, ANGLE];
     var head: Cells = Cells { c: [fit(""); 8] };
@@ -1654,7 +1577,6 @@ fn export_row(c: DOp[>..]&, cols: f64[8], w: f64, left: f64, y0: f64, row: Cells
     return y;
 }
 
-// A saved SVG: the print palette and the embedded fonts, so it looks the same anywhere.
 fn print_svg(list: DOp[:], w: f64, h: f64) -> u8[>..] {
     let defs = str("<style>", font_css, draw_css(), "</style>");
     let s = draw_svg(list, w, h, "", defs);
@@ -1705,7 +1627,6 @@ fn save_figure(kind: u8[:]) {
     toast(str("Saved ", name, "."));
 }
 
-// ---------- the page as it opens ----------
 
 fn q_name(q: i64) -> const u8[:] {
     let names: const u8[:][9] = ["length", "force", "stress", "moment", "distributed", "area", "inertia", "rigidity", "angle"];
@@ -1726,7 +1647,6 @@ fn origin_option(v: u8[:], label: u8[:]) -> u8[>..] {
 
 let BODY: const u8[:] = embed_file("body.html");
 
-// Every region of the page, filled in as the script would, so the page reads before it runs.
 fn body(root: u8[:]) -> u8[>..] {
     let figure = if app_has_sol { figure_svg(700.0) } else { str("") };
     let d = raw_root();
@@ -1799,7 +1719,6 @@ fn body(root: u8[:]) -> u8[>..] {
 
 var app_started: bool = false;
 
-// The page opens on a solved beam in N, mm and MPa, with the centre as origin.
 fn app_init() {
     if app_started { return; }
     app_started = true;

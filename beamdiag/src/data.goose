@@ -1,7 +1,3 @@
-// raw.json: presets, materials, sections, and the method, conventions, NASTRAN notes and sources; and the
-// section shapes' fields. Strings are slices of the embedded file or of its decoded text, which live as long
-// as the program.
-
 import std;
 import .jv;
 import .engine;
@@ -11,13 +7,11 @@ let NAN_ = 0.0 / 0.0;
 
 var raw_root_node: i64 = -1;
 
-// JSON members the way the page reads them: a missing or mistyped string is "", a number NaN.
 fn jstr(n: i64, key: u8[:]) -> const u8[:] { return jm_rtext(jm_member(n, key)); }
 fn jnum(n: i64, key: u8[:]) -> f64 {
     let v, ok = jm_number(jm_member(n, key));
     return if ok { v } else { NAN_ };
 }
-// A number left out (false) or given (true, NaN when it is not a number).
 fn jopt(n: i64, key: u8[:]) -> f64, bool {
     let m = jm_member(n, key);
     if m < 0 { return NAN_, false; }
@@ -32,7 +26,6 @@ fn shape_code(name: u8[:]) -> i64 {
     return 0;
 }
 
-// A section shape and its dimensions (m), as presets give them.
 fn shape_of(n: i64) -> Shape {
     var out = Shape { shape: shape_code(jstr(n, "shape")), b: 0.0, has_b: false, h: 0.0, has_h: false, d: 0.0, has_d: false, t: 0.0, has_t: false,
         a: 0.0, has_a: false, i: 0.0, has_i: false, iy: 0.0, has_iy: false, j: 0.0, has_j: false, c: 0.0, has_c: false };
@@ -48,7 +41,6 @@ fn shape_of(n: i64) -> Shape {
     return out;
 }
 
-// A dimension by its key: "b", "h", "d", "t", "A", "I", "Iy", "J" or "c".
 fn dim_get(s: Shape&, k: u8[:]) -> f64, bool {
     if k == "b" { return s.b, s.has_b; }
     if k == "h" { return s.h, s.has_h; }
@@ -73,7 +65,6 @@ fn dim_set(s: Shape&, k: u8[:], v: f64, has: bool) {
     else if k == "c" { s.c = v; s.has_c = has; }
 }
 
-// Each shape's fields: key, label, quantity, note. Shape code s (1..4) owns entries FIELD_AT[s - 1] up to FIELD_AT[s].
 let FIELD_AT: i64[5] = [0, 2, 3, 5, 10];
 let FIELD_KEY: const u8[:][10] = ["b", "h", "d", "d", "t", "A", "I", "c", "Iy", "J"];
 let FIELD_LABEL: const u8[:][10] = ["Width $b$", "Depth $h$", "Diameter $d$", "Outside $D$", "Wall $t$", "Area $A$", "$I$, in plane", "Fibre $c$", "$I_y$, out of plane", "Torsion $J$"];
@@ -99,7 +90,6 @@ var section_options: SectionOption[>..] = [];
 
 fn kind_of(s: u8[:]) -> i64 { return if s == "fixed" { FIXED } else { PIN }; }
 
-// A load as the page edits it: the fields its kind does not use are ignored.
 fn load_of(n: i64) -> Load {
     let k = jstr(n, "kind");
     let kind = if k == "point" { POINT } else if k == "moment" { COUPLE } else { DIST };
