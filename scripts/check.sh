@@ -77,6 +77,13 @@ for entry in explorations.entries:
     assert entry['h3'].strip() and entry.get('href'), f'no title or link: {entry}'
     if kind == 'Project':
         assert entry['href'].startswith('https://'), f'project is not a link to its repository: {entry}'
+# Each essay figure has a caption, and its svg has alt text (role img and an aria-label).
+import re
+for page in (root / 'essays').rglob('index.html'):
+    html = page.read_text()
+    for fig in re.findall(r'<figure>(.*?)</figure>', html, re.S):
+        assert '<figcaption>' in fig, f'figure without caption in {page}'
+        assert re.search(r'<svg[^>]*role="img"[^>]*aria-label="[^"]+"', fig), f'figure svg without alt text in {page}'
 PY
 # The committed wallpaper module must come from the committed sources (scripts/build-wallpaper.sh writes the hash).
 [ "$(cat wallpaper/wallpaper.goose wallpaper/host.c | shasum -a 256 | cut -d' ' -f1)" = "$(cat wallpaper/wasm.sha256)" ] ||
