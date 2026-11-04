@@ -10,7 +10,7 @@ The plan has two parts:
 **Create while you consume.** You make something in the same slot in which you consume. Creation is part of the slot time, not extra time.
 
 - **Two panes:** the media on one side, and your editor or sketchbook on the other side. On a phone or a tablet, use split view.
-- **Write as you go:** write your notes in the form of the final piece (a review paragraph, a caption, a reply). Do not write them as raw notes for later.
+- **Write as you go:** write the final piece (a review paragraph, a caption, a reply), not raw notes.
 - **Pause to draw:** when a frame, a figure or a scene catches you, pause and sketch it before you continue.
 - **Finish on the weekend:** the weekend slot only finishes and publishes what you started during the week.
 
@@ -152,17 +152,17 @@ The weekend monthly slot holds these items.
 - [ ] Nature (12): one nature documentary or field guide.
 - [ ] Science and technology (13): one explainer series or one paper outside your field.
 - [ ] Make: publish one piece about something that you read, watched or attended this quarter.
-- [ ] Make: make one thing in a domain from the grid (a photo series, a song cover, a sketch, a short video). Use a different domain each quarter.
+- [ ] Make: make one thing from the grid (a photo series, a song cover, a sketch, a short video). Use a different domain each quarter.
 - [ ] Review: read the surprise log. If most of the surprises came from one domain or one culture, change next quarter's live events and chart countries. Give less time to a cell that gave no surprise for two quarters.
 - [ ] Review: look at the shelf list, and add or remove books.
 
 ### Yearly
 
 - [ ] Grid check: each of the 68 cells has at least one tick. Plan the empty cells into next year's monthly slots.
-- [ ] Text (1): about 12 history books and 12 novels from the shelf list, one of each in turn. Also read 2 plays or screenplays.
+- [ ] Text (1): about 12 history books and 12 novels from the shelf list, one of each in turn, and 2 plays or screenplays.
 - [ ] Ritual and faith (14): services or festivals of at least 2 faiths that are not your own.
 - [ ] Design, fashion and craft (10): one design week, fashion show or craft market.
-- [ ] Culture: one longer contact with a culture that you do not know. Choose a trip, a course, or all the albums of one artist.
+- [ ] Culture: one longer contact with a culture that you do not know (a trip, a course, or all the albums of one artist).
 - [ ] People (17): one long interview with an older person, recorded as oral history.
 - [ ] Make: one essay that updates "Tuning in to information flows". Write what you tuned in to, what you tuned out, and what the surprise log showed.
 - [ ] Rest: one break of a few days with no devices. This is a break, not a way to live.

@@ -10,8 +10,8 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    - show the identity of Yu Jie Teo through a small, hand-picked collection of explorations
    - host the privacy and support pages of Lullapixie and Marklove
    - host the beam diagram tool
-   - publish the OpenPGP public key of <contact@teoyujie.org> at `/contact.asc`, and for WKD at
-     `/.well-known/openpgpkey/` (direct method) and `/.well-known/openpgpkey/teoyujie.org/`
+   - publish the OpenPGP public key of <contact@teoyujie.org> at `/contact.asc`
+   - publish it for WKD at `/.well-known/openpgpkey/` (direct method) and `/.well-known/openpgpkey/teoyujie.org/`
      (advanced method, served at openpgpkey.teoyujie.org)
    - publish the log at `/log`: the media entries from the pond app, newest first, with RSS at
      `/log/feed.xml`. The server makes both at request time from its entry store and
@@ -30,7 +30,7 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    sync or publishing schedule. The one exception is the store of signed log entries on the server.
    The server repository owns the room relay of `/play/neurons/`.
    The site stays complete with no new content.
-   Reason: the captain approved the pond design on 2026-10-28.
+   Reason: the pond design in item 1.
 
 ## URLs
 
@@ -65,7 +65,7 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    There are no themes and no dark mode. There is no art or animation on the home page.
    Reason: the captain asked to remove the animation from the home page on 2026-10-29.
 2. Each policy and support page is plain HTML of 6000 bytes or fewer. `scripts/check.sh` measures it.
-   Reason: a page that is too big is a wrong-result fault the check can find; the largest page is 5551 bytes.
+   Reason: a page that is too big is a wrong-result fault the check can find. The largest page is 5551 bytes.
 
 ## Build and deploy
 
@@ -88,19 +88,19 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    - `any`, a non-null assertion, a cast or a type argument on a DOM query in the TypeScript
    - a type error (`tsc --noEmit`, strict, `noUncheckedIndexedAccess`)
    - an unreferenced TypeScript file, export or dependency (`knip`)
-   - a home page first load over 100 KB gzipped (102400 bytes; 93332 on 2026-11-03)
-   - a beam page first load over 590 KB gzipped (604160 bytes; 603514 on 2026-11-03)
+   - a home page first load over 100 KB gzipped (102400 bytes, and 93332 on 2026-11-03)
+   - a beam page first load over 590 KB gzipped (604160 bytes, and 603514 on 2026-11-03)
    - `bun test` or `beamdiag/test.goose` fails
 
-   The home budget is the first load rounded up to the next 10 KB, until the owner sets one. The beam budget is set the same way.
+   The home budget is the first load rounded up to the next 10 KB, until the owner sets one. The beam budget uses the same rule.
    The beam first load is the gzipped page, its stylesheets and fonts, KaTeX with all its font files (the most a browser
-   downloads) and `beamdiag.wasm.gz`. The report fonts load on a save and are not counted.
+   downloads) and `beamdiag.wasm.gz`. The report fonts load on a save, and the budget does not count them.
    Source credits stay as comments: Sonner, Roark and Dekker in `beamdiag/`, Oklab and splitmix64 in `wallpaper/`. They are attribution notices for copied formulas and constants, like licence headers, and the exception list is in `scripts/check.sh`. The pages copied from other
    repositories, `beamdiag/c/` (made by Goose) and the KaTeX files are not in the comment rule.
    Reason: the captain asked for the guardrails pass on 2026-11-03, and for a separate beam page limit and fewer beam comments the same day.
    Reason for TypeScript, Bun and the replay: on 2026-11-03 the captain asked that everyone uses Bun.
    The captain also asked that everything that can be type checked is type checked, with process replay.
-   `scripts/check.sh --replay` replays the inputs of `bun test` on `main` and on `HEAD` and fails on a difference unless `--accept` is given. It is a local command and not in CI.
+   `scripts/check.sh --replay` replays the inputs of `bun test` on `main` and on `HEAD` and fails on a difference unless you give `--accept`. It is a local command and not in CI.
    Reason for the sanitizers: `beamdiag/c/test.c` runs under ASan and UBSan. The alignment check is off, because Goose makes 73-byte packed nodes with 8-byte stores, until Goose is fixed.
    Reason for the test: it holds the wallpaper pixels for one seed, so a rename or a rebuild cannot change them.
    Reason for the beam test: on 2026-11-03 the captain ruled that the facts of the removed beam comments go into code that runs.
