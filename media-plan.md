@@ -152,7 +152,7 @@ The weekend monthly slot holds these items.
 - [ ] Nature (12): one nature documentary or field guide.
 - [ ] Science and technology (13): one explainer series or one paper outside your field.
 - [ ] Make: publish one piece about something that you read, watched or attended this quarter.
-- [ ] Make: make one thing from the grid (a photo series, a song cover, a sketch, a short video). Use a different domain each quarter.
+- [ ] Make: make one thing in a domain from the grid (a photo series, a song cover, a sketch, a short video). Use a different domain each quarter.
 - [ ] Review: read the surprise log. If most of the surprises came from one domain or one culture, change next quarter's live events and chart countries. Give less time to a cell that gave no surprise for two quarters.
 - [ ] Review: look at the shelf list, and add or remove books.
 
