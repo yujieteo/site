@@ -1,6 +1,6 @@
 # Beam diagram creator: requirements
 
-Agreed with the owner on 2026-10-18. Changed on 2026-10-23 and 2026-10-29 for the site look. When the code and this file disagree, change the code.
+Agreed with the owner on 2026-10-18, and changed on 2026-10-23 and 2026-10-29 for the site look. When the code and this file disagree, change the code.
 
 ## The job
 
@@ -8,7 +8,7 @@ An engineer enters a straight beam (supports, loads, section, material).
 The engineer gets its reactions, shear force, bending moment and deflection, the hand calculation, and a clean A4 PDF report.
 
 **Test for ease of use:** a new user opens the page, adds a load and saves the PDF.
-The user needs less than 1 minute and has no instructions.
+The user needs less than 1 minute, with no instructions.
 
 ## The page
 
@@ -22,35 +22,31 @@ The user needs less than 1 minute and has no instructions.
    - the loads table and "+ Point force", "+ Distributed", "+ Couple"
    - Section: shape and its dimensions
    - Material, with E and ν folded behind it (a `<details>`)
-3. The figure keeps its drag handles and its cursor on the diagrams.
-   On a phone, the tables are
-   the main input. The page works fully: build a beam and save the PDF.
-4. The page shows the reactions, the largest values and the hand calculation. All maths in HTML text uses KaTeX.
-   Input values stay plain. The figure and PDF keep Unicode maths.
+3. The figure keeps its drag handles and its cursor on the diagrams. On a phone, the tables are
+   the main input, and the page works fully: build a beam and save the PDF.
+4. The page shows the reactions, the largest values and the hand calculation. All maths in HTML text uses KaTeX. Input values stay plain. The figure and PDF keep Unicode maths.
 5. Two export buttons only: **Save PDF** and **Save PNG**.
 6. Removed: the example preset select, the image format select, SVG export and Divisions.
-   Also removed: the NASTRAN deck and `bdf.rs`, the Markdown and clipboard exports, and the WebMCP tools and `tools.json`.
+   Also removed: the NASTRAN deck and `bdf.rs`, the Markdown and clipboard exports, the WebMCP tools and `tools.json`.
    Also removed: all explanation text (method, signs, assumptions, sources) on the page.
 7. Look: the site look, with the site stylesheet `/style.css`, header and footer. The page adds
    only the styles of the tool, and its controls follow the interaction rules of `/shared/kowalski.css`.
-   There are no themes and no dark mode.
-   The only fades are the hover fade of `.button` and of the heading anchor.
-   The toast that tells the result of Save PNG and Save PDF also fades.
+   No themes, no dark mode, and no fades except the hover fade of `.button` and of the heading anchor.
+   The toast that tells the result of Save PNG and Save PDF may fade too.
    Reason for the toast: the Website Design Audit Standard of 2026-10-30 asks for a toast where the site needs one (rules K1 to K5).
    A save needs a loading state and a result (rule L9).
    Reason: the captain asked for the shared stylesheet and its interaction rules on all pages on 2026-10-29.
    Reason for the two fades: on 2026-10-29 the captain asked for the buttons of Sonner and animations.dev, which fade on hover.
    The captain also asked for the look of the article <https://emilkowal.ski/ui/building-a-toast-component>.
-8. Speed: the solved example draws in less than 1 s on a 4G phone.
-   Less than 400 KB loads before the first draw, with the two fonts of `/shared/kowalski.css`.
-   KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it.
-   The report fonts load on the first "Save PDF" or "Save PNG".
-9. Typing in a field never lags. Solve on input and draw at most once per animation frame.
+8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 400 KB loads before the
+   first draw, with the two fonts of `/shared/kowalski.css`. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the
+   first "Save PDF" or "Save PNG".
+9. Typing in a field never lags: solve on input, draw at most once per animation frame.
    Build the hand calculation only when it is visible.
 
 ## The PDF
 
-1. The PDF writer (`pdf.goose`, in WebAssembly) makes one A4 PDF with vector graphics, black on white, and page numbers.
+1. The PDF writer (`pdf.goose`, in WebAssembly) makes one A4 PDF: vector, black on white, page numbers.
    It has nothing from the web page (no buttons, handles, cursor or colours).
 2. Contents, in this order:
     1. heading: the beam, the date, the units
@@ -65,6 +61,5 @@ The user needs less than 1 minute and has no instructions.
 4. One list of steps from `hand.goose` feeds both the page (LaTeX for KaTeX) and the PDF (Unicode), so
     the two always show the same numbers.
 5. The diagrams in the PDF are the same drawing as the PNG.
-6. Fonts: the PDF and the saved figures use the site font, Inter, at 400 and at 600 for the report heading.
-   Fira Math covers the maths glyphs that Inter lacks.
+6. Fonts: the PDF and the saved figures use the site font, Inter, at 400 and at 600 for the report heading. Fira Math covers maths glyphs it lacks.
     Reason: the PDF used Fira, so it looked unlike the site.
