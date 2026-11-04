@@ -10,7 +10,7 @@ The plan has two parts:
 **Create while you consume.** You make something in the same slot in which you consume. Creation is part of the slot time, not extra time.
 
 - **Two panes:** the media on one side, and your editor or sketchbook on the other side. On a phone or a tablet, use split view.
-- **Write as you go:** write the final piece (a review paragraph, a caption, a reply), not raw notes.
+- **Write as you go:** write your notes in the form of the final piece (a review paragraph, a caption, a reply), not as raw notes for later.
 - **Pause to draw:** when a frame, a figure or a scene catches you, pause and sketch it before you continue.
 - **Finish on the weekend:** the weekend slot only finishes and publishes what you started during the week.
 
@@ -102,7 +102,7 @@ Weekdays have a hard limit of 60 minutes of media each day. Each weekday has a c
 - [ ] Spoken word (3): one podcast episode.
 - [ ] Film and video (5): one show episode.
 - [ ] Text (1): fiction or history, 30 minutes.
-- [ ] Publish "This week's finds" (30 minutes). Pick the best Hacker News comments, RSS posts and tweets from the clips that you made while you read. Add one line of your own view to each. End with the surprise of the week and the grid cell that it came from. This replaces the separate surprise log.
+- [ ] Publish "This week's finds" (30 minutes): the best Hacker News comments, RSS posts and tweets from the clips that you made while you read, each with one line of your own view. End with the surprise of the week and the grid cell that it came from. This replaces the separate surprise log.
 - [ ] Plan next week: choose the chart country, and the papers and articles for Monday and Wednesday.
 - [ ] Monthly slot: see the table below.
 
@@ -164,5 +164,5 @@ The weekend monthly slot holds these items.
 - [ ] Design, fashion and craft (10): one design week, fashion show or craft market.
 - [ ] Culture: one longer contact with a culture that you do not know (a trip, a course, or all the albums of one artist).
 - [ ] People (17): one long interview with an older person, recorded as oral history.
-- [ ] Make: one essay that updates "Tuning in to information flows". Write what you tuned in to, what you tuned out, and what the surprise log showed.
+- [ ] Make: one essay that updates "Tuning in to information flows": what you tuned in to, what you tuned out, and what the surprise log showed.
 - [ ] Rest: one break of a few days with no devices. This is a break, not a way to live.

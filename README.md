@@ -7,11 +7,6 @@ privacy and support pages of Lullapixie and Marklove. It also holds the OpenPGP 
 template of the log at `/log`.
 `REQUIREMENTS.md` says what the site must do.
 
-```sh
-scripts/check.sh
-scripts/deploy.sh
-```
-
 | Path | Holds |
 | --- | --- |
 | `public/` | Everything the server serves, in the form that it serves it. |

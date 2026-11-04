@@ -72,9 +72,8 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 1. Only the beam page and the wallpaper module have a build. There is no CI.
    Reason: the owner declined CI.
    Reason for the wallpaper build: on 2026-11-02 the captain asked for a wallpaper maker with "code to be in Goose -> C -> wasm".
-2. The beam page is built from `beamdiag/` into `public/play/beamdiag/` and committed.
-   `scripts/build-wallpaper.sh` builds `wallpaper/` into `public/play/wallpaper/wallpaper.wasm.gz`, and the module is
-   committed with `wallpaper/wasm.sha256`. `scripts/check.sh` fails when the hash differs from the sources.
+2. The beam page is the build of `beamdiag/` into `public/play/beamdiag/`, and an agent commits it.
+   `scripts/build-wallpaper.sh` builds `wallpaper/` into `public/play/wallpaper/wallpaper.wasm.gz`, and an agent commits the module with `wallpaper/wasm.sha256`. `scripts/check.sh` fails when the hash differs from the sources.
    Reason: a module older than its sources deploys wrong wallpapers, and the check costs one hash.
 3. To deploy, an agent commits to `main`, turns on the VPN and runs `scripts/deploy.sh`. It runs
     `scripts/check.sh`, replaces the site on the server with `public/` and tests the URLs. The deploy
@@ -101,7 +100,7 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    Reason for TypeScript, Bun and the replay: on 2026-11-03 the captain asked that everyone uses Bun.
    The captain also asked that everything that can be type checked is type checked, with process replay.
    `scripts/check.sh --replay` replays the inputs of `bun test` on `main` and on `HEAD` and fails on a difference unless you give `--accept`. It is a local command and not in CI.
-   Reason for the sanitizers: `beamdiag/c/test.c` runs under ASan and UBSan. The alignment check is off, because Goose makes 73-byte packed nodes with 8-byte stores, until Goose is fixed.
+   Reason for the sanitizers: `beamdiag/c/test.c` runs under ASan and UBSan. The alignment check is off, because Goose makes 73-byte packed nodes with 8-byte stores, until someone fixes Goose.
    Reason for the test: it holds the wallpaper pixels for one seed, so a rename or a rebuild cannot change them.
    Reason for the beam test: on 2026-11-03 the captain ruled that the facts of the removed beam comments go into code that runs.
    They do not go into a README. The test also holds the solver to the frozen exact answers in `reference.json` and `random.json`.
