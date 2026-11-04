@@ -4,11 +4,11 @@ Agreed with the owner on 2026-10-18, and changed on 2026-10-23 and 2026-10-29 fo
 
 ## The job
 
-An engineer enters a straight beam (supports, loads, section, material) and gets its reactions,
-shear force, bending moment and deflection, the hand calculation, and a clean A4 PDF report.
+An engineer enters a straight beam (supports, loads, section, material).
+The engineer gets its reactions, shear force, bending moment and deflection, the hand calculation, and a clean A4 PDF report.
 
-**Test for ease of use:** a new user opens the page, adds a load and saves the PDF in less than
-1 minute, with no instructions.
+**Test for ease of use:** a new user opens the page, adds a load and saves the PDF.
+The user needs less than 1 minute, with no instructions.
 
 ## The page
 
@@ -26,29 +26,29 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
    the main input, and the page works fully: build a beam and save the PDF.
 4. The page shows the reactions, the largest values and the hand calculation. All maths in HTML text uses KaTeX. Input values stay plain. The figure and PDF keep Unicode maths.
 5. Two export buttons only: **Save PDF** and **Save PNG**.
-6. Removed: the example preset select, the image format select, SVG export, Divisions, the
-   NASTRAN deck and `bdf.rs`, the Markdown and clipboard exports, the WebMCP tools and `tools.json`, and
-   all explanation text (method, signs, assumptions, sources) on the page.
+6. Removed: the example preset select, the image format select, SVG export and Divisions.
+   Also removed: the NASTRAN deck and `bdf.rs`, the Markdown and clipboard exports, the WebMCP tools and `tools.json`.
+   Also removed: all explanation text (method, signs, assumptions, sources) on the page.
 7. Look: the site look, with the site stylesheet `/style.css`, header and footer. The page adds
    only the styles of the tool, and its controls follow the interaction rules of `/shared/kowalski.css`.
-   No themes, no dark mode, and no fades except the hover fade of `.button` and of the heading anchor, and the
-   toast that tells the result of Save PNG and Save PDF.
-   Reason for the toast: the Website Design Audit Standard of 2026-10-30 asks for a toast where the site needs one
-   (rules K1 to K5), and a save needs a loading state and a result (rule L9).
+   No themes, no dark mode, and no fades except the hover fade of `.button` and of the heading anchor.
+   The toast that tells the result of Save PNG and Save PDF may fade too.
+   Reason for the toast: the Website Design Audit Standard of 2026-10-30 asks for a toast where the site needs one (rules K1 to K5).
+   A save needs a loading state and a result (rule L9).
    Reason: the captain asked for the shared stylesheet and its interaction rules on all pages on 2026-10-29.
-   Reason for the two fades: on 2026-10-29 the captain asked for the buttons of Sonner and animations.dev,
-   which fade on hover, and for the look of the article https://emilkowal.ski/ui/building-a-toast-component.
+   Reason for the two fades: on 2026-10-29 the captain asked for the buttons of Sonner and animations.dev, which fade on hover.
+   The captain also asked for the look of the article <https://emilkowal.ski/ui/building-a-toast-component>.
 8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 400 KB loads before the
    first draw, with the two fonts of `/shared/kowalski.css`. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the
    first "Save PDF" or "Save PNG".
-9. Typing in a field never lags: solve on input, draw at most once per animation frame, and build
-   the hand calculation only when it is visible.
+9. Typing in a field never lags: solve on input, draw at most once per animation frame.
+   Build the hand calculation only when it is visible.
 
 ## The PDF
 
-10. The PDF writer (`pdf.goose`, in WebAssembly) makes one A4 PDF: vector, black on white, page
-    numbers, nothing from the web page (no buttons, handles, cursor or colours).
-11. Contents, in this order:
+1. The PDF writer (`pdf.goose`, in WebAssembly) makes one A4 PDF: vector, black on white, page numbers.
+   It has nothing from the web page (no buttons, handles, cursor or colours).
+2. Contents, in this order:
     1. heading: the beam, the date, the units
     2. input: the beam sketch, supports, loads, section, material
     3. reactions
@@ -56,10 +56,10 @@ shear force, bending moment and deflection, the hand calculation, and a clean A4
     5. largest values and where they occur
     6. the hand calculation (Macaulay's method)
     7. method and assumptions (the text removed from the page)
-12. The hand calculation uses Unicode maths with superscripts and subscripts (for example
+3. The hand calculation uses Unicode maths with superscripts and subscripts (for example
     `EI·v″ = M(x)`, `⟨x − 2⟩²`), fractions inline. No TeX in the program.
-13. One list of steps from `hand.goose` feeds both the page (LaTeX for KaTeX) and the PDF (Unicode), so
+4. One list of steps from `hand.goose` feeds both the page (LaTeX for KaTeX) and the PDF (Unicode), so
     the two always show the same numbers.
-14. The diagrams in the PDF are the same drawing as the PNG.
-15. Fonts: the PDF and the saved figures use the site font, Inter, at 400 and at 600 for the report heading. Fira Math covers maths glyphs it lacks.
+5. The diagrams in the PDF are the same drawing as the PNG.
+6. Fonts: the PDF and the saved figures use the site font, Inter, at 400 and at 600 for the report heading. Fira Math covers maths glyphs it lacks.
     Reason: the PDF used Fira, so it looked unlike the site.

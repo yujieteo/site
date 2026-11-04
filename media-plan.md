@@ -4,7 +4,7 @@ Based on "Tuning in to information flows".
 
 The plan has two parts:
 
-1. **The grid** lists every media domain in four ways: at home (recorded), live (you attend), take part (you do it), and create (you make something from it). The grid is the completeness check.
+1. **The grid** lists every media domain in four ways. The ways are at home (recorded), live (you attend), take part (you do it), and create (you make something from it). The grid is the completeness check.
 2. **The checklist** puts the grid into a Monday to Sunday plan, and then monthly, quarterly and yearly slots. Weekdays have a limit of 60 minutes of media each day.
 
 **Create while you consume.** You make something in the same slot in which you consume. Creation is part of the slot time, not extra time.
@@ -28,11 +28,11 @@ The plan has two parts:
 
 At the end of each year, each cell of the grid must have at least one tick. If a domain is missing from the grid, add a row.
 
-**Post as you go (in the style of @jwt0625, "outside five sigma").** That account posts what it reads and uses in its own fields (photonics, RF, nanofabrication, robotics): papers, standards, product pages, videos and old articles, with a short title and a link, and sometimes one line of opinion. Do the same, but across all the domains of the grid.
+**Post as you go (in the style of @jwt0625, "outside five sigma").** That account posts what it reads and uses in its own fields (photonics, RF, nanofabrication, robotics). It posts papers, standards, product pages, videos and old articles, with a short title and a link, and sometimes one line of opinion. Do the same, but across all the domains of the grid.
 
 - **One post for each find, at the moment you find it.** This is the "create while you consume" step in its smallest form.
 - **The format:** `<Year> - <Title>` and a link, for example "1987 - IEEE Standard on Piezoelectricity". For a paper: `<Team or author> <Year>: <title>`, the link, and the arXiv link. Add one line of your own view when you have one. A video clip or a sketch is a post too.
-- **Old sources:** at least one post each week is an old source: a paper, a standard, a manual, a magazine article or a filing that is more than 20 years old (for example from archive.org, Bitsavers or an old journal issue).
+- **Old sources:** at least one post each week is an old source. An old source is a paper, a standard, a manual, a magazine article or a filing that is more than 20 years old. Sources come, for example, from archive.org, Bitsavers or an old journal issue.
 - **Your own work:** post what you build (femahoy, Toybox, the theorems pages) with a clip or a picture, and link the code.
 - **Short thoughts:** a single sentence that you thought of is a post too.
 - **Spread:** add the grid domain number to each post in your own log. On Sunday, check that the week's posts cover at least 4 domains.
@@ -119,7 +119,6 @@ Weekdays have a hard limit of 60 minutes of media each day. Each weekday has a c
 ### Monthly
 
 The weekend monthly slot holds these items.
-
 
 - [ ] Live: 2 live events from the Live column. Use a different domain each time, and do not repeat a domain in the same quarter.
 - [ ] Take part: 1 activity from the Take part column. Use a different domain each month.
