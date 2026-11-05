@@ -20,7 +20,7 @@ if [ -n "${GOOSE:-}" ]; then
   bun_version=$(bun --version)
   [ "${bun_version}" = "${BUN_PINNED_VERSION}" ] || { echo "build-beam: needs bun ${BUN_PINNED_VERSION}, found: ${bun_version}" >&2; exit 1; }
   bun build "${src}/page_host.ts" --format=iife --target=browser --minify-whitespace --minify-syntax --outfile "${src}/page_host.js" >/dev/null
-  (cd "${src}" && "${GOOSE}" --standalone --header "../c/beamdiag.h" -o "../c/beamdiag.c" wasm.goose &&
+  (cd "${src}" && "${GOOSE}" -O0 --standalone --header "../c/beamdiag.h" -o "../c/beamdiag.c" wasm.goose &&
     "${GOOSE}" --standalone -o "../c/page.c" page.goose)
   echo "${hash}" > beamdiag/c.sha256
 elif [ "${hash}" != "${built_hash}" ]; then

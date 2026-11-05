@@ -20,10 +20,15 @@ fn base64(b: u8[:]) -> u8[>..] {
         }
         i += 3;
     }
+    assert(s.len % 4 == 0);
+    assert(s.len >= b.len);
+    assert(b.len == 0 || s.len > 0);
     return s;
 }
 
 fn esc_to(out: u8[>..]&, s: u8[:]) {
+    let before = out.len;
+    assert(before >= 0);
     for c in s {
         if c == '&' { out.append("&amp;"); }
         else if c == '<' { out.append("&lt;"); }
@@ -31,10 +36,13 @@ fn esc_to(out: u8[>..]&, s: u8[:]) {
         else if c == '"' { out.append("&quot;"); }
         else { out.push(c); }
     }
+    assert(before + s.len <= out.len);
 }
 fn esc(s: u8[:]) -> u8[>..] {
     var out: u8[>..] = [];
     esc_to(out, s);
+    assert(out.len >= s.len);
+    assert(s.len == 0 || out.len > 0);
     return out;
 }
 
@@ -47,12 +55,11 @@ let SHA256_K: u32[64] = [
     0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
 ];
 
-fn sha_rotr(x: u32, n: u32) -> u32 { return (x >> n) | (x << (32 - n)); }
+fn sha_rotr(x: u32, n: u32) -> u32 { assert(n > 0); assert(n < 32); return (x >> n) | (x << (32 - n)); }
 
 let UTIL_HEX: const u8[:] = "0123456789abcdef";
 
-fn sha256(data: u8[:]) -> u8[>..] {
-    var h: u32[8] = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
+fn sha_pad(data: u8[:]) -> u8[>..] {
     var msg: u8[>..] = [];
     msg.append(data);
     msg.push(0x80);
@@ -63,42 +70,56 @@ fn sha256(data: u8[:]) -> u8[>..] {
         msg.push(((bits >> ((7 - k) * 8) as u64) & 255) as u8);
         k++;
     }
+    assert(msg.len % 64 == 0);
+    assert(msg.len > data.len);
+    return msg;
+}
+
+fn sha_block(h: u32[8]&, msg: u8[:], at: i64) {
+    assert(at >= 0);
+    assert(at + 64 <= msg.len);
     var w: u32[64] = [0; 64];
+    var i = 0;
+    while i < 16 {
+        let o = at + 4 * i;
+        w[i] = ((msg[o] as u32) << 24) | ((msg[o + 1] as u32) << 16) | ((msg[o + 2] as u32) << 8) | (msg[o + 3] as u32);
+        i++;
+    }
+    while i < 64 {
+        let s0 = sha_rotr(w[i - 15], 7) ^ sha_rotr(w[i - 15], 18) ^ (w[i - 15] >> 3);
+        let s1 = sha_rotr(w[i - 2], 17) ^ sha_rotr(w[i - 2], 19) ^ (w[i - 2] >> 10);
+        w[i] = w[i - 16] + s0 + w[i - 7] + s1;
+        i++;
+    }
+    var v: u32[8] = h;
+    i = 0;
+    while i < 64 {
+        let s1 = sha_rotr(v[4], 6) ^ sha_rotr(v[4], 11) ^ sha_rotr(v[4], 25);
+        let ch = (v[4] & v[5]) ^ (~v[4] & v[6]);
+        let t1 = v[7] + s1 + ch + SHA256_K[i] + w[i];
+        let s0 = sha_rotr(v[0], 2) ^ sha_rotr(v[0], 13) ^ sha_rotr(v[0], 22);
+        let maj = (v[0] & v[1]) ^ (v[0] & v[2]) ^ (v[1] & v[2]);
+        let t2 = s0 + maj;
+        v[7] = v[6];
+        v[6] = v[5];
+        v[5] = v[4];
+        v[4] = v[3] + t1;
+        v[3] = v[2];
+        v[2] = v[1];
+        v[1] = v[0];
+        v[0] = t1 + t2;
+        i++;
+    }
+    i = 0;
+    while i < 8 { h[i] = h[i] + v[i]; i++; }
+}
+
+fn sha256(data: u8[:]) -> u8[>..] {
+    var h: u32[8] = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
+    let msg = sha_pad(data);
     var at = 0;
     while at < msg.len {
-        var i = 0;
-        while i < 16 {
-            let o = at + 4 * i;
-            w[i] = ((msg[o] as u32) << 24) | ((msg[o + 1] as u32) << 16) | ((msg[o + 2] as u32) << 8) | (msg[o + 3] as u32);
-            i++;
-        }
-        while i < 64 {
-            let s0 = sha_rotr(w[i - 15], 7) ^ sha_rotr(w[i - 15], 18) ^ (w[i - 15] >> 3);
-            let s1 = sha_rotr(w[i - 2], 17) ^ sha_rotr(w[i - 2], 19) ^ (w[i - 2] >> 10);
-            w[i] = w[i - 16] + s0 + w[i - 7] + s1;
-            i++;
-        }
-        var v: u32[8] = h;
-        i = 0;
-        while i < 64 {
-            let s1 = sha_rotr(v[4], 6) ^ sha_rotr(v[4], 11) ^ sha_rotr(v[4], 25);
-            let ch = (v[4] & v[5]) ^ (~v[4] & v[6]);
-            let t1 = v[7] + s1 + ch + SHA256_K[i] + w[i];
-            let s0 = sha_rotr(v[0], 2) ^ sha_rotr(v[0], 13) ^ sha_rotr(v[0], 22);
-            let maj = (v[0] & v[1]) ^ (v[0] & v[2]) ^ (v[1] & v[2]);
-            let t2 = s0 + maj;
-            v[7] = v[6];
-            v[6] = v[5];
-            v[5] = v[4];
-            v[4] = v[3] + t1;
-            v[3] = v[2];
-            v[2] = v[1];
-            v[1] = v[0];
-            v[0] = t1 + t2;
-            i++;
-        }
-        i = 0;
-        while i < 8 { h[i] = h[i] + v[i]; i++; }
+        sha_block(h, msg, at);
         at += 64;
     }
     var out: u8[>..] = [];
@@ -111,12 +132,16 @@ fn sha256(data: u8[:]) -> u8[>..] {
         }
         j++;
     }
+    assert(out.len == 64);
+    assert(msg.len % 64 == 0);
     return out;
 }
 
 let PALETTE_NAMES: const u8[:][11] = ["bg", "surface", "fg", "fg2", "muted", "line", "accent", "accent-text", "warm", "green", "chrome"];
 
 fn print_color(i: i64) -> const u8[:] {
+    assert(i >= 0);
+    assert(i < 11);
     return if i == 0 || i == 1 || i == 10 { "#ffffff" } else { "#000000" };
 }
 
@@ -126,5 +151,7 @@ fn palette_index(name: u8[:]) -> i64 {
         if PALETTE_NAMES[i] == name { return i; }
         i++;
     }
+    assert(i == 11);
+    assert(name.len < 100000);
     return -1;
 }

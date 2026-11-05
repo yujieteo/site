@@ -7,12 +7,20 @@ let NAN_ = 0.0 / 0.0;
 
 var raw_root_node: i64 = -1;
 
-fn jstr(n: i64, key: u8[:]) -> const u8[:] { return jm_rtext(jm_member(n, key)); }
+fn jstr(n: i64, key: u8[:]) -> const u8[:] {
+    assert(key.len > 0);
+    assert(n >= -1);
+    return jm_rtext(jm_member(n, key));
+}
 fn jnum(n: i64, key: u8[:]) -> f64 {
+    assert(key.len > 0);
+    assert(n >= -1);
     let v, ok = jm_number(jm_member(n, key));
     return if ok { v } else { NAN_ };
 }
 fn jopt(n: i64, key: u8[:]) -> f64, bool {
+    assert(key.len > 0);
+    assert(n >= -1);
     let m = jm_member(n, key);
     if m < 0 { return NAN_, false; }
     let v, ok = jm_number(m);
@@ -21,12 +29,16 @@ fn jopt(n: i64, key: u8[:]) -> f64, bool {
 
 let SHAPE_NAMES: const u8[:][5] = ["", "rect", "circle", "tube", "custom"];
 fn shape_code(name: u8[:]) -> i64 {
+    assert(SHAPE_NAMES.len == 5);
+    assert(name.len >= 0);
     var i = 1;
     while i < 5 { if SHAPE_NAMES[i] == name { return i; } i++; }
     return 0;
 }
 
 fn shape_of(n: i64) -> Shape {
+    assert(n >= -1);
+    assert(SHAPE_NAMES.len == 5);
     var out = Shape { shape: shape_code(jstr(n, "shape")), b: 0.0, has_b: false, h: 0.0, has_h: false, d: 0.0, has_d: false, t: 0.0, has_t: false,
         a: 0.0, has_a: false, i: 0.0, has_i: false, iy: 0.0, has_iy: false, j: 0.0, has_j: false, c: 0.0, has_c: false };
     out.b, out.has_b = jopt(n, "b");
@@ -42,6 +54,8 @@ fn shape_of(n: i64) -> Shape {
 }
 
 fn dim_get(s: Shape&, k: u8[:]) -> f64, bool {
+    assert(k.len > 0);
+    assert(k.len <= 2);
     if k == "b" { return s.b, s.has_b; }
     if k == "h" { return s.h, s.has_h; }
     if k == "d" { return s.d, s.has_d; }
@@ -54,6 +68,8 @@ fn dim_get(s: Shape&, k: u8[:]) -> f64, bool {
     return NAN_, false;
 }
 fn dim_set(s: Shape&, k: u8[:], v: f64, has: bool) {
+    assert(k.len > 0);
+    assert(k.len <= 2);
     if k == "b" { s.b = v; s.has_b = has; }
     else if k == "h" { s.h = v; s.has_h = has; }
     else if k == "d" { s.d = v; s.has_d = has; }
@@ -88,19 +104,29 @@ var preset_loads: Load[>..] = [];
 var materials: Material[>..] = [];
 var section_options: SectionOption[>..] = [];
 
-fn kind_of(s: u8[:]) -> i64 { return if s == "fixed" { FIXED } else { PIN }; }
+fn kind_of(s: u8[:]) -> i64 {
+    assert(s.len >= 0);
+    assert(PIN != FIXED);
+    return if s == "fixed" { FIXED } else { PIN };
+}
 
 fn load_of(n: i64) -> Load {
+    assert(n >= 0);
+    assert(POINT != COUPLE);
     let k = jstr(n, "kind");
     let kind = if k == "point" { POINT } else if k == "moment" { COUPLE } else { DIST };
     return Load { kind: kind, x: jnum(n, "x"), f: jnum(n, "F"), c: jnum(n, "C"), x1: jnum(n, "x1"), x2: jnum(n, "x2"), q1: jnum(n, "q1"), q2: jnum(n, "q2") };
 }
 
 fn load_name(l: Load&) -> const u8[:] {
+    assert(l.kind >= POINT);
+    assert(l.kind <= DIST);
     return if l.kind == POINT { "Point force" } else if l.kind == COUPLE { "Couple" } else { "Distributed load" };
 }
 
 fn data_init() {
+    assert(RAW.len > 0);
+    assert(raw_root_node == -1);
     let root = jm_parse_raw(RAW);
     if root < 0 { abort("raw.json"); }
     raw_root_node = root;
@@ -129,4 +155,8 @@ fn data_init() {
     }
 }
 
-fn raw_root() -> i64 { return raw_root_node; }
+fn raw_root() -> i64 {
+    assert(raw_root_node >= 0);
+    assert(raw_root_node < 1000000000);
+    return raw_root_node;
+}

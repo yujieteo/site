@@ -16,18 +16,20 @@ import .pdf;
 fn total_less(a: f64, b: f64) -> bool {
     if is_nan(a) { return false; }
     if is_nan(b) { return true; }
+    assert(!is_nan(a));
     if a == b { return a == 0.0 && 1.0 / a < 1.0 / b; }
     return a < b;
 }
 
-fn rmin(a: f64, b: f64) -> f64 { if is_nan(a) { return b; } if is_nan(b) { return a; } return if a < b { a } else { b }; }
-fn rmax(a: f64, b: f64) -> f64 { if is_nan(a) { return b; } if is_nan(b) { return a; } return if a > b { a } else { b }; }
+fn rmin(a: f64, b: f64) -> f64 {  if is_nan(a) { return b; } if is_nan(b) { return a; } assert(!is_nan(a)); assert(!is_nan(b)); return if a < b { a } else { b }; }
+fn rmax(a: f64, b: f64) -> f64 {  if is_nan(a) { return b; } if is_nan(b) { return a; } assert(!is_nan(a)); assert(!is_nan(b)); return if a > b { a } else { b }; }
 
 
 var cmds: u8[>..] = [];
 var cmd_n: i64 = 0;
 
 fn quote(out: u8[>..]&, s: u8[:]) {
+    let q0 = out.len;
     out.push('"');
     for c in s {
         if c == '"' { out.append("\\\""); }
@@ -41,6 +43,8 @@ fn quote(out: u8[>..]&, s: u8[:]) {
         else { out.push(c); }
     }
     out.push('"');
+    assert(out.len >= q0 + s.len + 2);
+    assert(out.len > q0);
 }
 
 fn cmd_begin(key: u8[:], sel: u8[:]) {
@@ -51,30 +55,36 @@ fn cmd_begin(key: u8[:], sel: u8[:]) {
     cmds.push(':');
     quote(cmds, sel);
 }
-fn cmd_str(key: u8[:], v: u8[:]) { cmds.push(','); quote(cmds, key); cmds.push(':'); quote(cmds, v); }
-fn cmd_bool(key: u8[:], v: bool) { cmds.push(','); quote(cmds, key); cmds.push(':'); cmds.append(if v { "true" } else { "false" }); }
-fn cmd_end() { cmds.push('}'); }
+fn cmd_str(key: u8[:], v: u8[:]) { assert(key.len > 0); assert(cmds.len > 0); cmds.push(','); quote(cmds, key); cmds.push(':'); quote(cmds, v); }
+fn cmd_bool(key: u8[:], v: bool) { assert(key.len > 0); assert(cmds.len > 0); cmds.push(','); quote(cmds, key); cmds.push(':'); cmds.append(if v { "true" } else { "false" }); }
+fn cmd_end() { assert(cmds.len > 0); assert(cmd_n > 0); cmds.push('}'); }
 
-fn html(sel: u8[:], v: u8[:]) { cmd_begin("html", sel); cmd_str("v", v); cmd_end(); }
-fn text(sel: u8[:], v: u8[:]) { cmd_begin("text", sel); cmd_str("v", v); cmd_end(); }
-fn value(sel: u8[:], v: u8[:]) { cmd_begin("value", sel); cmd_str("v", v); cmd_end(); }
-fn attr(sel: u8[:], name: u8[:], v: u8[:]) { cmd_begin("attr", sel); cmd_str("name", name); cmd_str("v", v); cmd_end(); }
+fn html(sel: u8[:], v: u8[:]) { assert(sel.len > 0); assert(cmd_n >= 0); cmd_begin("html", sel); cmd_str("v", v); cmd_end(); }
+fn text(sel: u8[:], v: u8[:]) { assert(sel.len > 0); assert(cmd_n >= 0); cmd_begin("text", sel); cmd_str("v", v); cmd_end(); }
+fn value(sel: u8[:], v: u8[:]) { assert(sel.len > 0); assert(cmd_n >= 0); cmd_begin("value", sel); cmd_str("v", v); cmd_end(); }
+fn attr(sel: u8[:], name: u8[:], v: u8[:]) { assert(sel.len > 0); assert(name.len > 0); cmd_begin("attr", sel); cmd_str("name", name); cmd_str("v", v); cmd_end(); }
 fn attr_off(sel: u8[:], name: u8[:]) {
+    assert(sel.len > 0);
+    assert(name.len > 0);
     cmd_begin("attr", sel);
     cmd_str("name", name);
     cmds.append(",\"v\":null");
     cmd_end();
 }
-fn cls(sel: u8[:], name: u8[:], on: bool) { cmd_begin("cls", sel); cmd_str("name", name); cmd_bool("on", on); cmd_end(); }
-fn hidden(sel: u8[:], on: bool) { cmd_begin("hidden", sel); cmd_bool("on", on); cmd_end(); }
-fn focus(sel: u8[:]) { cmd_begin("focus", sel); cmd_end(); }
-fn toast(v: u8[:]) { cmd_begin("toast", v); cmd_end(); }
+fn cls(sel: u8[:], name: u8[:], on: bool) { assert(sel.len > 0); assert(name.len > 0); cmd_begin("cls", sel); cmd_str("name", name); cmd_bool("on", on); cmd_end(); }
+fn hidden(sel: u8[:], on: bool) { assert(sel.len > 0); assert(cmd_n >= 0); cmd_begin("hidden", sel); cmd_bool("on", on); cmd_end(); }
+fn focus(sel: u8[:]) { assert(sel.len > 0); assert(cmd_n >= 0); cmd_begin("focus", sel); cmd_end(); }
+fn toast(v: u8[:]) { assert(v.len > 0); assert(cmd_n >= 0); cmd_begin("toast", v); cmd_end(); }
 fn prevent() {
+    assert(cmd_n >= 0);
+    assert(cmds.len > 0);
     if cmd_n > 0 { cmds.push(','); }
     cmd_n++;
     cmds.append("{\"prevent\":true}");
 }
 fn save(name: u8[:], mime: u8[:], data: u8[:], b64: bool) {
+    assert(name.len > 0);
+    assert(mime.len > 0);
     cmd_begin("save", name);
     cmd_str("mime", mime);
     cmd_str("data", data);
@@ -86,6 +96,8 @@ fn save(name: u8[:], mime: u8[:], data: u8[:], b64: bool) {
 fn word(s: u8[:]) -> i64 {
     var i = 0;
     while i < s.len && !is_space(s[i]) { i++; }
+    assert(i >= 0);
+    assert(i <= s.len);
     return i;
 }
 
@@ -132,9 +144,11 @@ fn number_of(s: u8[:]) -> f64 {
     let t = trim(s);
     if t.len == 0 { return 0.0; }
     let v, ok = parse_f64(t);
+    assert(t.len > 0);
+    assert(t.len <= s.len);
     return if ok { v } else { NAN_ };
 }
-fn field_number(s: u8[:]) -> f64 { return if s.len == 0 { NAN_ } else { number_of(s) }; }
+fn field_number(s: u8[:]) -> f64 { assert(s.len < 1073741824); assert(s.len >= 0); return if s.len == 0 { NAN_ } else { number_of(s) }; }
 
 fn parse_index(s: u8[:]) -> i64 {
     if s.len == 0 || s.len > 9 { return -1; }
@@ -146,19 +160,24 @@ fn parse_index(s: u8[:]) -> i64 {
     return v;
 }
 
-fn tidy(x: f64) -> u8[>..] { return if finite(x) { js(prec(x, 10)) } else { "" }; }
+fn tidy(x: f64) -> u8[>..] { assert(app_u >= 0); assert(app_u < UNIT_COUNT); return if finite(x) { js(prec(x, 10)) } else { "" }; }
 fn js_round(x: f64) -> f64 {
     let f = floor(x);
+    assert(!(f > x));
+    assert(!(x - f > 1.0));
     return if x - f >= 0.5 { f + 1.0 } else { f };
 }
 
 fn utf16_len(s: u8[:]) -> i64 {
     var n = 0;
     each_utf8(s) { cp => n += if cp >= 65536 { 2 } else { 1 }; };
+    assert(n >= 0);
+    assert(n <= 2 * s.len);
     return n;
 }
 
 fn wrap(s: u8[:], n: i64, out: u8[>..]&) {
+    assert(n > 0);
     out.clear();
     var line: u8[>..] = [];
     var first = true;
@@ -184,9 +203,11 @@ fn wrap(s: u8[:], n: i64, out: u8[>..]&) {
     };
     if lines > 0 { out.push('\n'); }
     out.append(line);
+    assert(lines >= 0);
 }
 
 fn options_item(out: u8[>..]&, v: u8[:], label: u8[:], selected: u8[:]) {
+    assert(v.len < 1073741824);
     out.append("<option value=\"");
     out.append(esc(v));
     out.append("\"");
@@ -194,6 +215,7 @@ fn options_item(out: u8[>..]&, v: u8[:], label: u8[:], selected: u8[:]) {
     out.append(">");
     out.append(esc(label));
     out.append("</option>");
+    assert(out.len > 0);
 }
 
 
@@ -210,9 +232,11 @@ struct Attach { load: bool, i: i64, key: i64, end: i64, at: f64 }
 var length_edit: Attach[>..] = [];
 var has_length_edit: bool = false;
 
-fn key_name(k: i64) -> const u8[:] { return if k == 1 { "x1" } else if k == 2 { "x2" } else { "x" }; }
+fn key_name(k: i64) -> const u8[:] { assert(k >= 0); assert(k <= 2); return if k == 1 { "x1" } else if k == 2 { "x2" } else { "x" }; }
 
 fn from_preset(i: i64) {
+    assert(i >= 0);
+    assert(i < presets.len);
     var mi = 0;
     var k = 0;
     while k < materials.len { if materials[k].id == presets[i].material { mi = k; break; } k++; }
@@ -245,10 +269,13 @@ fn make_input() -> bool {
     for sp in st_sup { in_sup.push(sp); }
     in_loads.clear();
     for l in st_loads { in_loads.push(l); }
+    assert(in_sup.len == st_sup.len);
     return true;
 }
 
 fn showable() -> bool {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     return finite(show(g_ext.v_shear.value, FORCE)) && finite(show(g_ext.m.value, MOMENT)) && finite(show(g_ext.v.value, LENGTH));
 }
 
@@ -272,6 +299,8 @@ fn snapshot() {
     for x in g_disp { sv_disp.push(x); }
     sv_eq = g_eq;
     sv_ext = g_ext;
+    assert(sv_sup.len == g_sup.len);
+    assert(sv_loads.len == g_loads.len);
 }
 fn restore() {
     g_m = sv_m;
@@ -285,12 +314,16 @@ fn restore() {
     for x in sv_disp { g_disp.push(x); }
     g_eq = sv_eq;
     g_ext = sv_ext;
+    assert(g_sup.len == sv_sup.len);
+    assert(g_loads.len == sv_loads.len);
 }
 
-fn update_soon() { update(true); }
-fn flush() { if pending { update(true); } }
+fn update_soon() { assert(app_u >= 0); assert(app_u < UNIT_COUNT); update(true); }
+fn flush() { assert(app_u >= 0); assert(app_u < UNIT_COUNT); if pending { update(true); } }
 
 fn update(keep_form: bool) {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     pending = false;
     if finite(st_length) && st_length > 0.0 { app_attach = st_length; }
     if !keep_form {
@@ -343,6 +376,7 @@ fn update(keep_form: bool) {
 }
 
 fn mark_invalid(field: u8[:]) {
+    assert(cmd_n >= 0);
     attr_off("[data-field]", "aria-invalid");
     if field.len == 0 { return; }
     var sel: u8[>..] = [];
@@ -356,23 +390,24 @@ fn mark_invalid(field: u8[:]) {
         sel.append("\"]");
     }
     attr(sel, "aria-invalid", "true");
+    assert(sel.len > 0);
 }
 
 fn at_message(n: u8[:]) -> u8[>..] {
+    assert(n.len > 0);
     var out = sig(show_x(from_units(number_of(n), LENGTH, app_u), app_attach), 6);
     out.append(" ");
     out.append(sym(LENGTH));
+    assert(out.len >= 2);
     return out;
 }
 
-fn in_convention(m0: u8[:]) -> u8[>..] {
+fn convention_between(m0: u8[:]) -> u8[>..] {
     var m: u8[>..] = [];
     m.append(m0);
-    let o = offset(app_attach);
-    if o == 0.0 || is_nan(o) { return m; }
     let pat1 = "between 0 and ";
     var from = 0;
-    loop {
+    while from <= m.len {
         let rel = find(m[from..], pat1);
         if rel < 0 { break; }
         let i = from + rel;
@@ -394,9 +429,17 @@ fn in_convention(m0: u8[:]) -> u8[>..] {
         }
         from = i + pat1.len;
     }
+    assert(from >= 0);
+    assert(m.len > 0 || m0.len == 0);
+    return m;
+}
+
+fn convention_position(m0: u8[:]) -> u8[>..] {
+    var m: u8[>..] = [];
+    m.append(m0);
     let pat2 = "position x = ";
-    from = 0;
-    loop {
+    var from = 0;
+    while from <= m.len {
         let rel = find(m[from..], pat2);
         if rel < 0 { break; }
         let i = from + rel;
@@ -422,42 +465,64 @@ fn in_convention(m0: u8[:]) -> u8[>..] {
         if hit { break; }
         from = i + pat2.len;
     }
-    if starts_with(m, "Positions ") {
-        let rest = m[10..];
-        var w: const u8[:][6];
-        var n = 0;
-        var start = 0;
-        var i = 0;
-        while i < rest.len && n < 5 {
-            if rest[i] == ' ' { w[n] = rest[start..i]; n++; start = i + 1; }
-            i++;
-        }
-        if n == 5 {
-            w[5] = rest[start..];
-            var good = w[2] == "and" && starts_with(w[5], "are");
-            var k = 0;
-            while k < 5 { if w[k].len == 0 || word(w[k]) != w[k].len { good = false; } k++; }
-            if good {
-                var r: u8[>..] = [];
-                r.append("Positions ");
-                r.append(at_message(w[0]));
-                r.append(" and ");
-                r.append(at_message(w[3]));
-                r.append(" ");
-                r.append(w[5]);
-                return r;
-            }
-        }
-    }
+    assert(from >= 0);
+    assert(m.len > 0 || m0.len == 0);
     return m;
+}
+
+fn convention_positions(m: u8[:]) -> u8[>..] {
+    var out: u8[>..] = [];
+    out.append(m);
+    if !starts_with(m, "Positions ") { return out; }
+    let rest = m[10..];
+    var w: const u8[:][6];
+    var n = 0;
+    var start = 0;
+    var i = 0;
+    while i < rest.len && n < 5 {
+        if rest[i] == ' ' { w[n] = rest[start..i]; n++; start = i + 1; }
+        i++;
+    }
+    if n != 5 { return out; }
+    w[5] = rest[start..];
+    var good = w[2] == "and" && starts_with(w[5], "are");
+    var k = 0;
+    while k < 5 { if w[k].len == 0 || word(w[k]) != w[k].len { good = false; } k++; }
+    if !good { return out; }
+    var r: u8[>..] = [];
+    r.append("Positions ");
+    r.append(at_message(w[0]));
+    r.append(" and ");
+    r.append(at_message(w[3]));
+    r.append(" ");
+    r.append(w[5]);
+    assert(r.len > 0);
+    assert(starts_with(m, "Positions "));
+    return r;
+}
+
+fn in_convention(m0: u8[:]) -> u8[>..] {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
+    var m: u8[>..] = [];
+    m.append(m0);
+    let o = offset(app_attach);
+    if o == 0.0 || is_nan(o) { return m; }
+    let m1 = convention_between(m);
+    let m2 = convention_position(m1);
+    return convention_positions(m2);
 }
 
 
 fn num_input(label: u8[:], v: f64, field: u8[:]) -> u8[>..] {
+    assert(field.len > 0);
+    assert(label.len > 0);
     return str("<label class=\"f\"><span>", tex_rich(label), "</span><input type=\"number\" step=\"any\" value=\"", tidy(v), "\" name=\"", field,
         "\" data-field=\"", field, "\"></label>");
 }
 fn remove_button(label: u8[:], act: u8[:], i: i64) -> u8[>..] {
+    assert(i >= 0);
+    assert(act.len > 0);
     return str("<button type=\"button\" class=\"button icon\" aria-label=\"", esc(label), "\" data-act=\"", act, "\" data-arg=\"", i, "\">×</button>");
 }
 
@@ -476,6 +541,8 @@ fn supports_html() -> u8[>..] {
             remove_button(str("Remove support ", i + 1), "remove-support", i), "</li>"));
         i++;
     }
+    assert(i == st_sup.len);
+    assert(out.len > 0 || st_sup.len == 0);
     return out;
 }
 
@@ -506,6 +573,8 @@ fn loads_html() -> u8[>..] {
             remove_button(str("Remove load ", i + 1, ", ", load_name(ld)), "remove-load", i), "</li>"));
         i++;
     }
+    assert(i == st_loads.len);
+    assert(out.len > 0);
     return out;
 }
 
@@ -528,6 +597,8 @@ fn section_fields_html() -> u8[>..] {
         out.append("</div>");
         k += 2;
     }
+    assert(k >= to);
+    assert(sc >= 1 && sc <= 4);
     return out;
 }
 
@@ -537,15 +608,21 @@ fn material_options() -> u8[>..] {
         options_item(out, m.id, str(m.label, " (E ", sig(show(m.e, STRESS), 4), " ", sym(STRESS), ")"), st_mat_id);
     }
     options_item(out, "custom", "Custom", st_mat_id);
+    assert(out.len > 30);
+    assert(materials.len < 1000000);
     return out;
 }
 fn preset_options() -> u8[>..] {
     var out: u8[>..] = [];
     options_item(out, "", "Custom", st_preset);
     for p in presets { options_item(out, p.id, p.label, st_preset); }
+    assert(out.len > 30);
+    assert(presets.len < 1000000);
     return out;
 }
 fn unit_options() -> u8[>..] {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     var out: u8[>..] = [];
     var i = 0;
     while i < UNIT_COUNT { options_item(out, UNIT_IDS[i], UNIT_LABELS[i], UNIT_IDS[app_u]); i++; }
@@ -554,14 +631,20 @@ fn unit_options() -> u8[>..] {
 fn shape_options() -> u8[>..] {
     var out: u8[>..] = [];
     for s in section_options { options_item(out, s.id, s.label, st_shape_name); }
+    assert(out.len > 0);
+    assert(section_options.len > 0);
     return out;
 }
 fn preset_note() -> const u8[:] {
+    assert(st_preset.len < 1073741824);
+    assert(presets.len < 1000000);
     for p in presets { if st_preset.len > 0 && p.id == st_preset { return p.note; } }
     return "";
 }
 
 fn build_form() {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     value("#units", UNIT_IDS[app_u]);
     var q = 0;
     while q < 9 {
@@ -600,6 +683,8 @@ fn section_summary() -> u8[>..] {
     var t = str("$A$ = ", sci(show(s.a, AREA)), " ", sym(AREA), " · $I$ = ", sci(show(s.i, INERTIA)), " ", sym(INERTIA));
     if s.has_c && s.c != 0.0 && !is_nan(s.c) { t.append(str(" · $c$ = ", sig(show(s.c, LENGTH), 4), " ", sym(LENGTH))); }
     if finite(ei) { t.append(str(" · $EI$ = ", sci(show(ei, RIGIDITY)), " ", sym(RIGIDITY))); }
+    assert(t.len > 0);
+    assert(ok);
     return t;
 }
 
@@ -609,10 +694,13 @@ fn b64_val(c: u8) -> u32 {
     if c >= 'a' && c <= 'z' { return (c - 'a') as u32 + 26; }
     if c >= '0' && c <= '9' { return (c - '0') as u32 + 52; }
     if c == '+' { return 62; }
+    assert(c == '/');
+    assert(!(c >= '0' && c <= '9'));
     return 63;
 }
 
 fn b64_decode(out: u8[>..]&, s: u8[:]) {
+    let o0 = out.len;
     var chunk: u8[4] = [0; 4];
     var n = 0;
     for c in s {
@@ -623,8 +711,12 @@ fn b64_decode(out: u8[>..]&, s: u8[:]) {
         }
     }
     if n > 0 { b64_flush(out, chunk, n); }
+    assert(n <= 3);
+    assert(out.len >= o0);
 }
 fn b64_flush(out: u8[>..]&, chunk: u8[4]&, n: i64) {
+    assert(n >= 1);
+    assert(n <= 4);
     var v: u32 = 0;
     var i = 0;
     while i < n { v = v | (b64_val(chunk[i]) << ((18 - 6 * i) as u32)); i++; }
@@ -632,11 +724,22 @@ fn b64_flush(out: u8[>..]&, chunk: u8[4]&, n: i64) {
     while i < n - 1 { out.push(((v >> ((16 - 8 * i) as u32)) & 255) as u8); i++; }
 }
 
-fn ev_s(root: i64, key: u8[:]) -> const u8[:] { return jm_text(jm_member(root, key)); }
-fn ev_f(root: i64, key: u8[:]) -> f64 { return jnum(root, key); }
-fn ev_true(root: i64, key: u8[:]) -> bool { return jm_flag(jm_member(root, key)); }
+fn ev_s(root: i64, key: u8[:]) -> const u8[:] { assert(root >= 0); assert(key.len > 0); return jm_text(jm_member(root, key)); }
+fn ev_f(root: i64, key: u8[:]) -> f64 { assert(root >= 0); assert(key.len > 0); return jnum(root, key); }
+fn ev_true(root: i64, key: u8[:]) -> bool { assert(root >= 0); assert(key.len > 0); return jm_flag(jm_member(root, key)); }
+
+fn on_down(key: u8[:]) {
+    assert(key.len < 1073741824);
+    assert(app_active.len < 1073741824);
+    if app_has_layout {
+        app_active.clear();
+        app_active.append(key);
+        cls(str("[data-key=\"", app_active, "\"]"), "active", true);
+    }
+}
 
 fn handle_event(txt: u8[:]) -> const u8[:] {
+    assert(txt.len < 1073741824);
     cmds.clear();
     cmd_n = 0;
     cmds.push('[');
@@ -665,11 +768,7 @@ fn handle_event(txt: u8[:]) -> const u8[:] {
         } else if ev == "click" {
             on_click(ev_s(e, "act"), ev_s(e, "arg"));
         } else if ev == "down" {
-            if app_has_layout {
-                app_active.clear();
-                app_active.append(ev_s(e, "key"));
-                cls(str("[data-key=\"", app_active, "\"]"), "active", true);
-            }
+            on_down(ev_s(e, "key"));
         } else if ev == "move" {
             on_move(ev_f(e, "frac"));
         } else if ev == "up" {
@@ -693,10 +792,12 @@ fn handle_event(txt: u8[:]) -> const u8[:] {
         }
     }
     cmds.push(']');
+    assert(cmds.len >= 2);
     return cmds;
 }
 
 fn take_fonts(fonts: i64) {
+    assert(fonts >= 0);
     var n = 0;
     var good = true;
     var strs: const u8[:][3];
@@ -723,12 +824,15 @@ fn take_fonts(fonts: i64) {
         i++;
     }
     has_fonts = true;
+    assert(has_fonts);
 }
 
 let TYPED_POSITION_TOLERANCE = 1e-9;
 let PSI_PRESET_TOLERANCE = 1e-9;
 
 fn take_x(v: f64, me: i64, me_i: i64) -> f64 {
+    assert(me >= 0);
+    assert(me <= 4);
     let is_length = me == 0;
     let x = if is_length { take(v, LENGTH) } else { typed(take(v, LENGTH), app_attach) };
     let l = if is_length { x } else { st_length };
@@ -752,6 +856,7 @@ fn take_x(v: f64, me: i64, me_i: i64) -> f64 {
 }
 
 fn on_input(field: u8[:], val: u8[:]) {
+    assert(field.len > 0); assert(val.len < 1073741824);
     let v = field_number(val);
     let parts = split(field, '.');
     if parts.len == 1 && parts[0] == "length" {
@@ -812,11 +917,14 @@ fn on_input(field: u8[:], val: u8[:]) {
 }
 
 fn attach_add(load: bool, i: i64, key: i64, x: f64, l: f64) {
+    assert(i >= 0);
+    assert(key >= 0 && key <= 2);
     let end = if x == 0.0 { 0 } else if x == l { 1 } else { -1 };
     length_edit.push(Attach { load: load, i: i, key: key, end: end, at: shown(x, l) });
 }
 
 fn edit_length(v0: f64) {
+    assert(app_u < UNIT_COUNT);
     let v = if is_nan(v0) { v0 } else { take_x(v0, 0, 0) };
     if !has_length_edit {
         let l = app_attach;
@@ -855,14 +963,19 @@ fn edit_length(v0: f64) {
         }
     }
     update_soon();
+    assert(has_length_edit);
 }
 
 fn set_material(mi: i64) {
+    assert(mi >= -1);
+    assert(mi < materials.len);
     st_mat_id.clear();
     if mi >= 0 { st_mat_id.append(materials[mi].id); } else { st_mat_id.append("custom"); }
 }
 
 fn on_change(field: u8[:], val: u8[:]) {
+    assert(field.len > 0);
+    assert(val.len < 1073741824);
     if field == "units" {
         flush();
         let u = unit_index(val);
@@ -904,72 +1017,104 @@ fn on_change(field: u8[:], val: u8[:]) {
     }
 }
 
-fn on_click(act: u8[:], arg: u8[:]) {
+fn click_ends(arg: u8[:]) {
+    assert(arg.len < 1073741824);
     let l = st_length;
+    let comma = find(arg, ",");
+    let left_kind = kind_of(if comma >= 0 { arg[..comma] } else { arg });
+    let has_right = comma >= 0 && arg.len > comma + 1;
+    let right_kind = kind_of(if has_right { arg[comma + 1..] } else { "" });
+    var s: Support[>..] = [];
+    s.push(Support { kind: left_kind, x: 0.0 });
+    for sp in st_sup { if sp.x > 0.0 && sp.x < l { s.push(sp); } }
+    if has_right { s.push(Support { kind: right_kind, x: l }); }
+    st_sup.clear();
+    for sp in s { st_sup.push(sp); }
+    st_preset.clear();
+    update(false);
+    assert(st_sup.len >= 1);
+}
+
+fn widest_gap_middle(l: f64) -> f64 {
+    var xs: f64[>..] = [];
+    xs.push(0.0);
+    xs.push(l);
+    for s in st_sup { xs.push(s.x); }
+    stable_sort(xs) { a, b => total_less(a, b) };
+    dedup(xs);
+    var best = 0;
+    var i = 1;
+    while i < xs.len {
+        if xs[i] - xs[i - 1] > xs[best + 1] - xs[best] { best = i - 1; }
+        i++;
+    }
+    assert(best >= 0);
+    assert(best + 1 < xs.len);
+    return (xs[best] + xs[best + 1]) / 2.0;
+}
+
+fn click_add_support() {
+    assert(st_sup.len < 1000000);
+    let l = st_length;
+    let cand: f64[5] = [l / 2.0, l / 4.0, 3.0 * l / 4.0, l, 0.0];
+    var x = 0.0;
+    var done = false;
+    for c in cand {
+        var taken = false;
+        for s in st_sup { if s.x == c { taken = true; } }
+        if !taken { x = c; done = true; break; }
+    }
+    if !done { x = widest_gap_middle(l); }
+    st_sup.push(Support { kind: PIN, x: prec(x, 10) });
+    st_preset.clear();
+    update(false);
+    focus("#supports li:last-child input");
+    assert(st_sup.len > 0);
+}
+
+fn click_add(arg: u8[:]) {
+    assert(st_loads.len < 1000000);
+    let l = st_length;
+    let q = round1(-5e3, DISTRIBUTED);
+    let n = NAN_;
+    if arg == "point" {
+        st_loads.push(Load { kind: POINT, x: prec(l / 2.0, 10), f: round1(-10e3, FORCE), c: n, x1: n, x2: n, q1: n, q2: n });
+    } else if arg == "moment" {
+        st_loads.push(Load { kind: COUPLE, x: prec(l / 2.0, 10), f: n, c: round1(10e3, MOMENT), x1: n, x2: n, q1: n, q2: n });
+    } else {
+        st_loads.push(Load { kind: DIST, x: n, f: n, c: n, x1: 0.0, x2: l, q1: q, q2: q });
+    }
+    st_preset.clear();
+    update(false);
+    focus("#loads .item:last-child input");
+    assert(st_loads.len > 0);
+}
+
+fn click_remove(act: u8[:], arg: u8[:]) {
+    assert(act.len > 0);
+    let i = parse_index(arg);
+    if i < 0 { return; }
+    if act == "remove-support" {
+        if i < st_sup.len { st_sup.remove_at(i); }
+    } else if i < st_loads.len {
+        st_loads.remove_at(i);
+    }
+    st_preset.clear();
+    update(false);
+    assert(st_preset.len == 0);
+}
+
+fn on_click(act: u8[:], arg: u8[:]) {
+    assert(act.len > 0);
+    assert(arg.len < 1073741824);
     if act == "ends" {
-        let comma = find(arg, ",");
-        let left_kind = kind_of(if comma >= 0 { arg[..comma] } else { arg });
-        let has_right = comma >= 0 && arg.len > comma + 1;
-        let right_kind = kind_of(if has_right { arg[comma + 1..] } else { "" });
-        var s: Support[>..] = [];
-        s.push(Support { kind: left_kind, x: 0.0 });
-        for sp in st_sup { if sp.x > 0.0 && sp.x < l { s.push(sp); } }
-        if has_right { s.push(Support { kind: right_kind, x: l }); }
-        st_sup.clear();
-        for sp in s { st_sup.push(sp); }
-        st_preset.clear();
-        update(false);
+        click_ends(arg);
     } else if act == "add-support" {
-        let cand: f64[5] = [l / 2.0, l / 4.0, 3.0 * l / 4.0, l, 0.0];
-        var x = 0.0;
-        var done = false;
-        for c in cand {
-            var taken = false;
-            for s in st_sup { if s.x == c { taken = true; } }
-            if !taken { x = c; done = true; break; }
-        }
-        if !done {
-            var xs: f64[>..] = [];
-            xs.push(0.0);
-            xs.push(l);
-            for s in st_sup { xs.push(s.x); }
-            stable_sort(xs) { a, b => total_less(a, b) };
-            dedup(xs);
-            var best = 0;
-            var i = 1;
-            while i < xs.len {
-                if xs[i] - xs[i - 1] > xs[best + 1] - xs[best] { best = i - 1; }
-                i++;
-            }
-            x = (xs[best] + xs[best + 1]) / 2.0;
-        }
-        st_sup.push(Support { kind: PIN, x: prec(x, 10) });
-        st_preset.clear();
-        update(false);
-        focus("#supports li:last-child input");
+        click_add_support();
     } else if act == "add" {
-        let q = round1(-5e3, DISTRIBUTED);
-        let n = NAN_;
-        if arg == "point" {
-            st_loads.push(Load { kind: POINT, x: prec(l / 2.0, 10), f: round1(-10e3, FORCE), c: n, x1: n, x2: n, q1: n, q2: n });
-        } else if arg == "moment" {
-            st_loads.push(Load { kind: COUPLE, x: prec(l / 2.0, 10), f: n, c: round1(10e3, MOMENT), x1: n, x2: n, q1: n, q2: n });
-        } else {
-            st_loads.push(Load { kind: DIST, x: n, f: n, c: n, x1: 0.0, x2: l, q1: q, q2: q });
-        }
-        st_preset.clear();
-        update(false);
-        focus("#loads .item:last-child input");
+        click_add(arg);
     } else if act == "remove-support" || act == "remove-load" {
-        let i = parse_index(arg);
-        if i < 0 { return; }
-        if act == "remove-support" {
-            if i < st_sup.len { st_sup.remove_at(i); }
-        } else if i < st_loads.len {
-            st_loads.remove_at(i);
-        }
-        st_preset.clear();
-        update(false);
+        click_remove(act, arg);
     } else if act == "save-image" {
         save_figure("png");
     } else if act == "save-pdf" {
@@ -977,9 +1122,11 @@ fn on_click(act: u8[:], arg: u8[:]) {
     }
 }
 
-fn round1(si: f64, q: i64) -> f64 { return take(prec(show(si, q), 1), q); }
+fn round1(si: f64, q: i64) -> f64 { assert(q >= 0); assert(q < 9); return take(prec(show(si, q), 1), q); }
 
 fn on_result(tag: u8[:], ok: bool, msg: u8[:]) {
+    assert(tag.len > 0);
+    assert(msg.len < 1073741824);
     if tag == "png" {
         if ok { toast("Saved beamdiag.png."); } else { toast(str("Could not save: ", msg, ".")); }
     }
@@ -987,6 +1134,8 @@ fn on_result(tag: u8[:], ok: bool, msg: u8[:]) {
 
 
 fn step_for(l: f64) -> f64 {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     let raw = show(l, LENGTH) / 100.0;
     let e0 = floor(log10(raw));
     let e = if is_nan(e0) { 0 } else if e0 < -400.0 { -400 } else if e0 > 400.0 { 400 } else { e0 as i64 };
@@ -999,10 +1148,12 @@ fn step_for(l: f64) -> f64 {
     return NAN_;
 }
 fn snap(x: f64, step: f64) -> f64 {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     let s = show(step, LENGTH);
     return take(prec(js_round(show(x, LENGTH) / s) * s, 12), LENGTH);
 }
-fn snap_shown(x: f64, step: f64) -> f64 { return typed(snap(shown(x, app_attach), step), app_attach); }
+fn snap_shown(x: f64, step: f64) -> f64 { assert(app_u >= 0); assert(app_u < UNIT_COUNT); return typed(snap(shown(x, app_attach), step), app_attach); }
 
 fn handle_get(key: u8[:]) -> f64, bool {
     if key.len < 2 { return 0.0, false; }
@@ -1017,10 +1168,13 @@ fn handle_get(key: u8[:]) -> f64, bool {
 }
 fn handle_set(key: u8[:], x: f64) {
     let i = parse_index(key[1..]);
+    assert(i >= 0);
+    assert(if key[0] == 's' { i < st_sup.len } else { i < st_loads.len });
     if key[0] == 's' { st_sup[i].x = x; } else { st_loads[i].x = x; }
 }
 
 fn move_handle(key: u8[:], x0: f64) {
+    assert(key.len >= 2);
     let l = st_length;
     let x = rmin(l, rmax(0.0, x0));
     let cur, ok = handle_get(key);
@@ -1028,10 +1182,13 @@ fn move_handle(key: u8[:], x0: f64) {
     handle_set(key, x);
     value(str("[data-field=\"", if key[0] == 's' { "supports" } else { "loads" }, ".", key[1..], ".x\"]"), tidy(show_x(x, app_attach)));
     update(true);
+    assert(st_sup.len + st_loads.len > 0);
 }
 
 fn on_move(frac: f64) {
     if !app_has_layout { return; }
+    assert(app_has_sol);
+    assert(app_has_layout);
     let x = ((frac * lay_w - lay_ml) / (lay_w - lay_ml - lay_mr)) * lay_l;
     if app_active.len > 0 {
         let k = copy(app_active);
@@ -1042,6 +1199,8 @@ fn on_move(frac: f64) {
 }
 
 fn on_key(key: u8[:], shift: bool, target: u8[:]) {
+    assert(key.len > 0);
+    assert(target.len > 0);
     let l = st_length;
     let fine = if shift { 10.0 } else { 1.0 };
     let step = step_for(l) / fine;
@@ -1084,11 +1243,15 @@ fn on_key(key: u8[:], shift: bool, target: u8[:]) {
 struct EvRec { x: f64, what: u8[..2048] }
 
 fn ev_has(what: u8[:], item: u8[:]) -> bool {
+    assert(item.len > 0);
+    assert(what.len <= 2048);
     var found = false;
     each_split(what, ", ") { if it == item { found = true; } };
     return found;
 }
 fn ev_add(evs: EvRec[>..]&, x: f64, item: u8[:]) {
+    assert(item.len > 0);
+    assert(evs.len < 1000000);
     for &e in evs {
         if e.x == x {
             if !ev_has(e.what, item) && e.what.len + 2 + item.len <= 2048 {
@@ -1114,6 +1277,8 @@ fn events_list(evs: EvRec[>..]&) {
         else { ev_add(evs, l.x1, "distributed load starts"); ev_add(evs, l.x2, "distributed load ends"); }
     }
     stable_sort(evs) { a, b => a.x < b.x };
+    assert(evs.len >= 1);
+    assert(evs.len <= 2 + g_sup.len + 2 * g_loads.len);
 }
 
 fn snap_event(x: f64, px: f64) -> f64 {
@@ -1126,10 +1291,14 @@ fn snap_event(x: f64, px: f64) -> f64 {
         let d = abs(lay_x(e.x) - lay_x(x));
         if d < dist { dist = d; best = e.x; }
     }
+    assert(!(dist < 0.0));
+    assert(evs.len >= 1);
     return if dist <= px { best } else { x };
 }
 
 fn clean(v: f64, key: u8[:]) -> f64 {
+    assert(key.len > 0);
+    assert(key.len <= 5);
     var scale = abs(g_ext.v.value) / g_m.length;
     if key == "V" { scale = abs(g_ext.v_shear.value); }
     else if key == "M" { scale = abs(g_ext.m.value); }
@@ -1137,10 +1306,11 @@ fn clean(v: f64, key: u8[:]) -> f64 {
     return if abs(v) <= 1e-10 * scale { 0.0 } else { v };
 }
 
-fn jump(p: f64, q: f64) -> bool { return abs(p - q) > 1e-9 * (abs(p) + abs(q) + 1.0); }
+fn jump(p: f64, q: f64) -> bool { assert(app_u >= 0); assert(app_u < UNIT_COUNT); return abs(p - q) > 1e-9 * (abs(p) + abs(q) + 1.0); }
 
 struct Readout { k: u8[..8], v: u8[..200] }
 fn readout(c: f64, out: Readout[>..]&) {
+    assert(app_has_sol);
     out.clear();
     let l = g_m.length;
     let a = at(c);
@@ -1153,9 +1323,12 @@ fn readout(c: f64, out: Readout[>..]&) {
     out.push(rd("M", str(if jm { str(rf(a.m_left, "M", MOMENT), " → ", rf(a.m_right, "M", MOMENT)) } else { rf(m, "M", MOMENT) }, " ", sym(MOMENT))));
     out.push(rd("v", str(rf(a.v, "v", LENGTH), " ", sym(LENGTH))));
     out.push(rd("θ", str(rf(a.theta, "theta", ANGLE), " ", sym(ANGLE))));
+    assert(out.len == 5);
 }
-fn rf(v: f64, key: u8[:], q: i64) -> u8[>..] { return short_nf(show(clean(v, key), q), 3); }
+fn rf(v: f64, key: u8[:], q: i64) -> u8[>..] { assert(key.len > 0); assert(q >= 0); return short_nf(show(clean(v, key), q), 3); }
 fn rd(k: u8[:], v: u8[:]) -> Readout {
+    assert(k.len <= 8);
+    assert(v.len <= 200);
     var r = Readout { k: "", v: "" };
     r.k.append(k);
     r.v.append(v);
@@ -1168,6 +1341,8 @@ fn readout_html() -> u8[>..] {
     var rs: Readout[>..] = [];
     readout(app_cursor, rs);
     for r in rs { out.append(str("<span><span class=\"k\">", tex_html(r.k), " </span><b>", tex_rich(r.v), "</b></span>")); }
+    assert(rs.len == 5);
+    assert(out.len > 0);
     return out;
 }
 
@@ -1183,6 +1358,8 @@ fn readout_text(c: f64) -> u8[>..] {
         out.append(" ");
         out.append(r.v);
     }
+    assert(rs.len == 5);
+    assert(out.len > 0);
     return out;
 }
 
@@ -1199,9 +1376,13 @@ fn set_cursor(x: f64) {
     attr("#plotarea", "aria-valuenow", tidy(show_x(c, l)));
     attr("#plotarea", "aria-valuetext", readout_text(c));
     if app_active.len == 0 { render_hand_point(); }
+    assert(app_has_cursor);
+    assert(app_has_sol);
 }
 
 fn render() {
+    assert(app_has_sol);
+    assert(app_u >= 0);
     let w = rmax(if app_width > 0.0 { app_width } else { 700.0 }, 300.0);
     html("#plots", figure_svg(w));
     if app_has_cursor { set_cursor(app_cursor); }
@@ -1211,6 +1392,8 @@ fn render() {
 struct StatItem { v: u8[..160], w: u8[..400] }
 
 fn stat_add(items: StatItem[>..]&, v: u8[:], w: u8[:]) {
+    assert(v.len <= 160);
+    assert(w.len <= 400);
     var it = StatItem { v: "", w: "" };
     it.v.append(v);
     it.w.append(w);
@@ -1238,9 +1421,13 @@ fn stat_items(items: StatItem[>..]&) {
     let balance: u8[>..] = if resid < 1e-9 { str("Balanced") } else { str("Residual ", sci(resid)) };
     stat_add(items, balance,
         str("$\\sum F$ and $\\sum M$ of loads and reactions, relative error ", sci(resid)));
+    assert(items.len >= 5);
+    assert(items.len <= 6);
 }
 
 fn reaction_text(i: i64) -> u8[>..] {
+    assert(i >= 0);
+    assert(i < g_rea.len);
     let r = g_rea[i];
     var t = str(if r.kind == PIN { "Pin" } else { "Fixed" }, " at ", at_text(r.x), ": ", short_nf(show(r.fy, FORCE), 3), " ", sym(FORCE));
     if r.kind == FIXED { t.append(str(", ", short_nf(show(r.mz, MOMENT), 3), " ", sym(MOMENT))); }
@@ -1253,6 +1440,8 @@ fn stats_html() -> u8[>..] {
     var items: StatItem[>..] = [];
     stat_items(items);
     for it in items { out.append(str("<li><b>", tex_rich(it.v), "</b><span>", tex_rich(it.w), "</span></li>")); }
+    assert(items.len >= 5);
+    assert(out.len > 0);
     return out;
 }
 fn reactions_html() -> u8[>..] {
@@ -1260,6 +1449,8 @@ fn reactions_html() -> u8[>..] {
     if !solved() { return out; }
     var i = 0;
     while i < g_rea.len { out.append(str("<li><i></i>", tex_rich(reaction_text(i)), "</li>")); i++; }
+    assert(i == g_rea.len);
+    assert(out.len > 0 || g_rea.len == 0);
     return out;
 }
 
@@ -1280,10 +1471,14 @@ fn table_cells(x: f64, cells: Cells&) {
     if x < l { cells.c[5] = fit(nf(show(clean(a.m_right, "M"), MOMENT), 3)); }
     cells.c[6] = fit(nf(show(clean(a.v, "v"), LENGTH), 3));
     cells.c[7] = fit(nf(show(clean(a.theta, "theta"), ANGLE), 3));
+    assert(cells.c[0].len > 0);
+    assert(cells.c[1].len == 0);
 }
 fn fit(s: u8[:]) -> u8[..48] {
+    assert(s.len <= 48);
     var r: u8[..48] = "";
     r.append(s);
+    assert(r.len == s.len);
     return r;
 }
 
@@ -1304,16 +1499,22 @@ fn table_html() -> u8[>..] {
         }
         out.append("</tr>");
     }
+    assert(evs.len >= 1);
+    assert(out.len > 0);
     return out;
 }
 
 
 fn hand_body() -> u8[>..] {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     if !solved() { return "<p class=\"muted\">Fix the beam first: there is no solution to work by hand.</p>"; }
     hand_ensure(app_u, app_mid);
     return hand_steps_html();
 }
 fn hand_point() -> u8[>..] {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     if solved() && app_has_cursor {
         hand_ensure(app_u, app_mid);
         return hand_point_html(app_cursor);
@@ -1325,8 +1526,12 @@ fn render_hand() {
     hand_stale = false;
     html("#hand-body", hand_body());
     render_hand_point();
+    assert(!hand_stale);
+    assert(hand_visible);
 }
 fn render_hand_point() {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     if !hand_visible { return; }
     html("#hand-point", hand_point());
 }
@@ -1334,6 +1539,7 @@ fn render_hand_point() {
 
 
 fn figure_svg(w: f64) -> u8[>..] {
+    assert(w > 0.0);
     draw_reset();
     var list: DOp[>..] = [];
     let f = figure(w, true, list);
@@ -1342,17 +1548,20 @@ fn figure_svg(w: f64) -> u8[>..] {
     lay_w = f.w;
     lay_l = f.l;
     app_has_layout = true;
+    assert(app_has_layout);
     return draw_svg(list, f.w, f.h, " role=\"group\" aria-label=\"Beam, shear force, bending moment and deflection diagrams\"", "");
 }
 
 
-fn section_label(i: i64) -> const u8[:] { return section_options[i].label; }
+fn section_label(i: i64) -> const u8[:] { assert(i >= 0); assert(i < section_options.len); return section_options[i].label; }
 
-fn val_unit(si: f64, q: i64) -> u8[>..] { return str(sig(show(si, q), 4), " ", sym(q)); }
+fn val_unit(si: f64, q: i64) -> u8[>..] { assert(q >= 0); assert(q < 9); return str(sig(show(si, q), 4), " ", sym(q)); }
 
 fn line_add(out: u8[>..]&, s: u8[:]) {
+    assert(s.len < 1073741824);
     if out.len > 0 { out.push('\n'); }
     out.append(s);
+    assert(out.len >= s.len);
 }
 
 fn model_lines(out: u8[>..]&) {
@@ -1405,6 +1614,8 @@ fn model_lines(out: u8[>..]&) {
     oi = 0;
     for m in materials { if m.id == st_mat_id { mi = oi; } oi++; }
     line_add(out, str("Material: ", if mi >= 0 { materials[mi].label } else { "custom" }, ", E = ", val_unit(st_e, STRESS), ", ν = ", sig(st_nu, 4)));
+    assert(out.len > 0);
+    assert(i == st_loads.len);
 }
 
 var rp: DOp[>..] = [];
@@ -1413,8 +1624,11 @@ var rp_y: f64 = 54.0;
 fn rp_page() {
     draw_page(rp);
     rp_y = 54.0;
+    assert(rp_y > 0.0);
+    assert(rp_y == 54.0);
 }
 fn rp_text(s: u8[:], heading: bool) {
+    assert(rp_y >= 54.0);
     var w: u8[>..] = [];
     wrap(s, if heading { 65 } else { 90 }, w);
     var n = 0;
@@ -1426,8 +1640,11 @@ fn rp_text(s: u8[:], heading: bool) {
         rp_y += 19.0;
     };
     rp_y += 10.0;
+    assert(rp_y >= 64.0);
 }
 fn rp_diagram(fl: DOp[:], k: i64, offset: f64, height: f64) {
+    assert(k >= 0);
+    assert(k <= 1);
     if rp_y + height > 1060.0 { rp_page(); }
     draw_open(rp, str(" transform=\"translate(40 ", js(rp_y - offset), ")\""));
     let a, b = draw_node(fl, k);
@@ -1436,9 +1653,10 @@ fn rp_diagram(fl: DOp[:], k: i64, offset: f64, height: f64) {
     rp_y += height + 20.0;
 }
 
-fn raw_text(key: u8[:]) -> const u8[:] { return jstr(raw_root(), key); }
+fn raw_text(key: u8[:]) -> const u8[:] { assert(key.len > 0); assert(key.len < 64); return jstr(raw_root(), key); }
 
 fn pdf_report(date: u8[:]) -> u8[>..] {
+    assert(date.len < 1073741824);
     draw_reset();
     rp.clear();
     rp_y = 54.0;
@@ -1488,6 +1706,7 @@ fn pdf_report(date: u8[:]) -> u8[>..] {
     let f0 = font_data[..font_len[0]];
     let f1 = font_data[font_len[0]..font_len[0] + font_len[1]];
     let f2 = font_data[font_len[0] + font_len[1]..];
+    assert(count >= 1);
     return pdf_pages(out, 794.0, 1123.0, "Beam diagram report", f0, f1, f2);
 }
 
@@ -1550,9 +1769,12 @@ fn export_figure(list: DOp[>..]&) {
     draw_close(list);
     ex_w = w;
     ex_h = h;
+    assert(ex_w > 0.0);
+    assert(ex_h > 0.0);
 }
 
 fn export_column(c: DOp[>..]&, x: f64, y0: f64, title: u8[:], lines: u8[:]) -> f64 {
+    assert(title.len > 0);
     var yy = y0;
     draw_text(c, x, yy, title, "title", ANC_START);
     yy += 18.0;
@@ -1561,10 +1783,12 @@ fn export_column(c: DOp[>..]&, x: f64, y0: f64, title: u8[:], lines: u8[:]) -> f
         wrap(it, 68, parts);
         each_split(parts, '\n') { draw_text(c, x, yy, it, "body", ANC_START); yy += 17.0; };
     };
+    assert(yy > y0);
     return yy;
 }
 
 fn export_row(c: DOp[>..]&, cols: f64[8], w: f64, left: f64, y0: f64, row: Cells&, what_text: u8[:], cls_: u8[:]) -> f64 {
+    assert(cls_.len > 0);
     var y = y0;
     var what: u8[>..] = [];
     wrap(what_text, 48, what);
@@ -1577,16 +1801,19 @@ fn export_row(c: DOp[>..]&, cols: f64[8], w: f64, left: f64, y0: f64, row: Cells
     each_split(what, '\n') { draw_text(c, cols[1], y + 16.0 * n as f64, it, cls_, ANC_START); n++; };
     y += 16.0 * n as f64 + 6.0;
     draw_line(c, left, y - 13.0, w - left, y - 13.0, COL_LINE, 1.0);
+    assert(n >= 0);
     return y;
 }
 
 fn print_svg(list: DOp[:], w: f64, h: f64) -> u8[>..] {
+    assert(w > 0.0);
+    assert(h > 0.0);
     let defs = str("<style>", font_css, draw_css(), "</style>");
     let s = draw_svg(list, w, h, "", defs);
     var out: u8[>..] = [];
     out.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     var at = 0;
-    loop {
+    while at <= s.len {
         let i = find(s[at..], "var(--");
         if i < 0 { break; }
         out.append(s[at..at + i]);
@@ -1606,6 +1833,7 @@ fn print_svg(list: DOp[:], w: f64, h: f64) -> u8[>..] {
 }
 
 fn save_figure(kind: u8[:]) {
+    assert(kind == "png" || kind == "pdf");
     flush();
     if !solved() { toast("Fix the beam first: there is no solution to save."); return; }
     var list: DOp[>..] = [];
@@ -1628,29 +1856,81 @@ fn save_figure(kind: u8[:]) {
         return;
     }
     toast(str("Saved ", name, "."));
+    assert(kind == "pdf");
 }
 
 
 fn q_name(q: i64) -> const u8[:] {
+    assert(q >= 0);
+    assert(q < 9);
     let names: const u8[:][9] = ["length", "force", "stress", "moment", "distributed", "area", "inertia", "rigidity", "angle"];
     return names[q];
 }
-fn unit_span(q: i64) -> u8[>..] { return str("<span data-unit=\"", q_name(q), "\">", sym(q), "</span>"); }
+fn unit_span(q: i64) -> u8[>..] { assert(q >= 0); assert(q < 9); return str("<span data-unit=\"", q_name(q), "\">", sym(q), "</span>"); }
 
 fn list_items(key: u8[:], parent: i64) -> u8[>..] {
+    assert(key.len > 0);
     var out: u8[>..] = [];
     var t = jm_first(jm_member(parent, key));
     while t >= 0 { out.append(str("<li>", esc(jm_rtext(t)), "</li>")); t = jm_next(t); }
+    assert(t < 0);
     return out;
 }
 
 fn origin_option(v: u8[:], label: u8[:]) -> u8[>..] {
+    assert(v.len > 0);
+    assert(label.len > 0);
     return str("<option value=\"", v, "\"", if (v == "mid") == app_mid { " selected" } else { "" }, ">", label, "</option>");
+}
+
+fn template_value(name: u8[:], root: u8[:], error: u8[:], figure: u8[:], cards: u8[:], sources: u8[:], n: i64, d: i64) -> u8[>..] {
+    assert(name.len > 0);
+    assert(name.len < 64);
+    var v: u8[>..] = [];
+    if name == "root" { v.append(root); }
+    else if name == "presets" { v.append(preset_options()); }
+    else if name == "units" { v.append(unit_options()); }
+    else if name == "note" { v.append(esc(preset_note())); }
+    else if name == "error" { v.append(error); }
+    else if name == "stale" { if app_has_error { v.append("stale"); } }
+    else if name == "figure" { v.append(figure); }
+    else if name == "readout" { v.append(readout_html()); }
+    else if name == "stats" { v.append(stats_html()); }
+    else if name == "reactions" { v.append(reactions_html()); }
+    else if name == "length" { v.append(unit_span(LENGTH)); }
+    else if name == "force" { v.append(unit_span(FORCE)); }
+    else if name == "moment" { v.append(unit_span(MOMENT)); }
+    else if name == "stress" { v.append(unit_span(STRESS)); }
+    else if name == "angle" { v.append(unit_span(ANGLE)); }
+    else if name == "len" { v.append(tidy(show(st_length, LENGTH))); }
+    else if name == "div" { v.append(js(st_divisions)); }
+    else if name == "origins" { v.append(origin_option("left", "Left end, + to the right")); v.append(origin_option("mid", "Mid-span, − left, + right")); }
+    else if name == "supports" { v.append(supports_html()); }
+    else if name == "loads" { v.append(loads_html()); }
+    else if name == "shapes" { v.append(shape_options()); }
+    else if name == "fields" { v.append(section_fields_html()); }
+    else if name == "derived" { v.append(tex_rich(section_summary())); }
+    else if name == "materials" { v.append(material_options()); }
+    else if name == "e" { v.append(tidy(show(st_e, STRESS))); }
+    else if name == "nu" { v.append(tidy(st_nu)); }
+    else if name == "table" { v.append(table_html()); }
+    else if name == "point" || name == "hand" { }
+    else if name == "system" { v.append(esc(UNIT_LABELS[app_u])); }
+    else if name == "run" { v.append(list_items("run", n)); }
+    else if name == "status" { v.append(esc(jstr(n, "status"))); }
+    else if name == "cards" { v.append(cards); }
+    else if name == "method" { v.append(esc(raw_text("method"))); }
+    else if name == "conventions" { v.append(list_items("conventions", d)); }
+    else if name == "assumptions" { v.append(list_items("assumptions", d)); }
+    else if name == "sources" { v.append(sources); }
+    else { abort(str("no value for {{", name, "}}")); }
+    return v;
 }
 
 let BODY: const u8[:] = embed_file("body.html");
 
 fn body(root: u8[:]) -> u8[>..] {
+    assert(root.len < 1073741824);
     let figure = if app_has_sol { figure_svg(700.0) } else { str("") };
     let d = raw_root();
     let n = jm_member(d, "nastran");
@@ -1669,7 +1949,7 @@ fn body(root: u8[:]) -> u8[>..] {
     let tmpl = BODY;
     var out: u8[>..] = [];
     var at = 0;
-    loop {
+    while at <= tmpl.len {
         let i = find(tmpl[at..], "{{");
         if i < 0 { break; }
         out.append(tmpl[at..at + i]);
@@ -1677,46 +1957,11 @@ fn body(root: u8[:]) -> u8[>..] {
         let j = find(tail, "}}");
         if j < 0 { abort("an open {{"); }
         let name = tail[..j];
-        if name == "root" { out.append(root); }
-        else if name == "presets" { out.append(preset_options()); }
-        else if name == "units" { out.append(unit_options()); }
-        else if name == "note" { out.append(esc(preset_note())); }
-        else if name == "error" { out.append(error); }
-        else if name == "stale" { if app_has_error { out.append("stale"); } }
-        else if name == "figure" { out.append(figure); }
-        else if name == "readout" { out.append(readout_html()); }
-        else if name == "stats" { out.append(stats_html()); }
-        else if name == "reactions" { out.append(reactions_html()); }
-        else if name == "length" { out.append(unit_span(LENGTH)); }
-        else if name == "force" { out.append(unit_span(FORCE)); }
-        else if name == "moment" { out.append(unit_span(MOMENT)); }
-        else if name == "stress" { out.append(unit_span(STRESS)); }
-        else if name == "angle" { out.append(unit_span(ANGLE)); }
-        else if name == "len" { out.append(tidy(show(st_length, LENGTH))); }
-        else if name == "div" { out.append(js(st_divisions)); }
-        else if name == "origins" { out.append(origin_option("left", "Left end, + to the right")); out.append(origin_option("mid", "Mid-span, − left, + right")); }
-        else if name == "supports" { out.append(supports_html()); }
-        else if name == "loads" { out.append(loads_html()); }
-        else if name == "shapes" { out.append(shape_options()); }
-        else if name == "fields" { out.append(section_fields_html()); }
-        else if name == "derived" { out.append(tex_rich(section_summary())); }
-        else if name == "materials" { out.append(material_options()); }
-        else if name == "e" { out.append(tidy(show(st_e, STRESS))); }
-        else if name == "nu" { out.append(tidy(st_nu)); }
-        else if name == "table" { out.append(table_html()); }
-        else if name == "point" || name == "hand" { }
-        else if name == "system" { out.append(esc(UNIT_LABELS[app_u])); }
-        else if name == "run" { out.append(list_items("run", n)); }
-        else if name == "status" { out.append(esc(jstr(n, "status"))); }
-        else if name == "cards" { out.append(cards); }
-        else if name == "method" { out.append(esc(raw_text("method"))); }
-        else if name == "conventions" { out.append(list_items("conventions", d)); }
-        else if name == "assumptions" { out.append(list_items("assumptions", d)); }
-        else if name == "sources" { out.append(sources); }
-        else { abort(str("no value for {{", name, "}}")); }
+        out.append(template_value(name, root, error, figure, cards, sources, n, d));
         at = at + i + 2 + j + 2;
     }
     out.append(tmpl[at..]);
+    assert(out.len > 0);
     return out;
 }
 
@@ -1732,4 +1977,6 @@ fn app_init() {
     update(false);
     cmds.clear();
     cmd_n = 0;
+    assert(app_started);
+    assert(cmd_n == 0);
 }

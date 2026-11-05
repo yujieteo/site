@@ -12,6 +12,8 @@ var pdf_cache: i32[196608];
 var pdf_used: i32[196608];
 
 fn pdf_be(f: i64, o: i64, n: i64) -> i64 {
+    assert(f >= 0);
+    assert(f < 3);
     if o < 0 || o + n > pdf_font[f].len { return 0; }
     var a = 0;
     var k = 0;
@@ -24,6 +26,8 @@ fn pdf_be(f: i64, o: i64, n: i64) -> i64 {
 }
 
 fn pdf_table(f: i64, tag: u8[:]) -> i64 {
+    assert(f >= 0);
+    assert(f < 3);
     var i = 0;
     let n = pdf_be(f, 4, 2);
     while i < n {
@@ -35,11 +39,15 @@ fn pdf_table(f: i64, tag: u8[:]) -> i64 {
 }
 
 fn pdf_i16(f: i64, o: i64) -> i64 {
+    assert(f >= 0);
+    assert(f < 3);
     let v = pdf_be(f, o, 2);
     return if v >= 32768 { v - 65536 } else { v };
 }
 
 fn pdf_font_init(f: i64, off: i64, len: i64) {
+    assert(f >= 0);
+    assert(f < 3);
     pdf_font[f].off = off;
     pdf_font[f].len = len;
     let cm = pdf_table(f, "cmap");
@@ -61,11 +69,15 @@ fn pdf_font_init(f: i64, off: i64, len: i64) {
 }
 
 fn pdf_adv(f: i64, g: i64) -> i64 {
+    assert(f >= 0);
+    assert(f < 3);
     let last = pdf_font[f].nh - 1;
     return pdf_be(f, pdf_font[f].hm + 4 * (if g < last { g } else { last }), 2);
 }
 
 fn pdf_lookup_cmap(f: i64, c: i64) -> bool, i64 {
+    assert(f >= 0);
+    assert(f < 3);
     var present = false;
     var gid = 0;
     let cm = pdf_font[f].cm;
@@ -108,6 +120,7 @@ fn pdf_lookup_cmap(f: i64, c: i64) -> bool, i64 {
 }
 
 fn pdf_lookup(f: i64, c: i64) -> bool, i64 {
+    assert(f >= 0);
     if c < 65536 {
         let k = f * 65536 + c;
         let v = pdf_cache[k] as i64;
@@ -131,6 +144,8 @@ let PDF_SUB_CPS: i64[14] = [0x2080, 0x2081, 0x2082, 0x2083, 0x2084, 0x2085, 0x20
 let PDF_BASE_CPS: i64[14] = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 0x2212, 43, 105, 110];
 
 fn pdf_script(c: i64) -> i64, i64 {
+    assert(c >= 0);
+    assert(c < 0x110000);
     var k = 0;
     while k < 14 {
         if PDF_SUP_CPS[k] == c { return PDF_BASE_CPS[k], 1; }
@@ -146,6 +161,8 @@ fn pdf_script(c: i64) -> i64, i64 {
 }
 
 fn pdf_hex4(out: u8[>..]&, v: i64) {
+    assert(v >= 0);
+    assert(v < 65536);
     let d = "0123456789ABCDEF";
     out.push(d[(v >> 12) & 15]);
     out.push(d[(v >> 8) & 15]);
@@ -154,6 +171,8 @@ fn pdf_hex4(out: u8[>..]&, v: i64) {
 }
 
 fn pdf_run(first: i64, size: f64, spacing: f64, s: u8[:], v: PPiece[>..]&) -> f64 {
+    assert(first >= 0);
+    assert(first < 3);
     var cps: i64[>..] = [];
     each_utf8(s) { cps.push(it); };
     for c0 in cps {
@@ -188,10 +207,22 @@ fn pdf_run(first: i64, size: f64, spacing: f64, s: u8[:], v: PPiece[>..]&) -> f6
 
 var pdf_c: u8[>..] = [];
 
-fn pdf_f(x: f64) { draw_n_to(pdf_c, x); }
-fn pdf_pair(x: f64, y: f64, op: u8[:]) { pdf_f(x); pdf_c.push(' '); pdf_f(y); pdf_c.push(' '); pdf_c.append(op); }
+fn pdf_f(x: f64) {
+    let before = pdf_c.len;
+    draw_n_to(pdf_c, x);
+    assert(pdf_c.len > before);
+    assert(pdf_c.len > 0);
+}
+fn pdf_pair(x: f64, y: f64, op: u8[:]) {
+    assert(op.len > 0);
+    let before = pdf_c.len;
+    pdf_f(x); pdf_c.push(' '); pdf_f(y); pdf_c.push(' '); pdf_c.append(op);
+    assert(pdf_c.len > before + op.len);
+}
 
 fn pdf_rgb(tok: i64) {
+    assert(tok >= 0);
+    assert(tok < 11);
     let hex = print_color(tok);
     var v = 0;
     var i = 1;
@@ -210,18 +241,40 @@ fn pdf_rgb(tok: i64) {
 fn pdf_min(a: f64, b: f64) -> f64 {
     if is_nan(a) { return b; }
     if is_nan(b) { return a; }
-    return if a < b { a } else { b };
+    let r = if a < b { a } else { b };
+    assert(r <= a);
+    assert(r <= b);
+    return r;
 }
 
-fn pdf_m(x: f64, y: f64) { pdf_pair(x, y, "m "); }
-fn pdf_l(x: f64, y: f64) { pdf_pair(x, y, "l "); }
+fn pdf_m(x: f64, y: f64) {
+    let before = pdf_c.len;
+    pdf_pair(x, y, "m ");
+    assert(pdf_c.len > before);
+    assert(pdf_c[pdf_c.len - 1] == ' ');
+}
+fn pdf_l(x: f64, y: f64) {
+    let before = pdf_c.len;
+    pdf_pair(x, y, "l ");
+    assert(pdf_c.len > before);
+    assert(pdf_c[pdf_c.len - 1] == ' ');
+}
 fn pdf_cv(a: f64, b: f64, c: f64, d: f64, x: f64, y: f64) {
     pdf_f(a); pdf_c.push(' '); pdf_f(b); pdf_c.push(' '); pdf_f(c); pdf_c.push(' '); pdf_f(d); pdf_c.push(' ');
     pdf_f(x); pdf_c.push(' '); pdf_f(y); pdf_c.append(" c ");
+    assert(pdf_c.len > 0);
+    assert(pdf_c[pdf_c.len - 1] == ' ');
 }
-fn pdf_h() { pdf_c.append("h "); }
+fn pdf_h() {
+    let before = pdf_c.len;
+    pdf_c.append("h ");
+    assert(pdf_c.len == before + 2);
+    assert(pdf_c[pdf_c.len - 2] == 'h');
+}
 
 fn pdf_has_word(cls: u8[:], w: u8[:]) -> bool {
+    assert(w.len > 0);
+    assert(find(w, " ") < 0);
     for part in split(cls, ' ') { if part == w { return true; } }
     return false;
 }
@@ -229,6 +282,8 @@ fn pdf_has_word(cls: u8[:], w: u8[:]) -> bool {
 let PDF_PAGE_ONLY: const u8[:][4] = ["ring", "hit", "box", "cursor"];
 
 fn pdf_page_only_class(cls: u8[:]) -> bool {
+    assert(PDF_PAGE_ONLY[0] == "ring");
+    assert(PDF_PAGE_ONLY[3] == "cursor");
     var i = 0;
     while i < 4 {
         if pdf_has_word(cls, PDF_PAGE_ONLY[i]) { return true; }
@@ -238,6 +293,8 @@ fn pdf_page_only_class(cls: u8[:]) -> bool {
 }
 
 fn pdf_page_only_group(attrs: u8[:]) -> bool {
+    assert(PDF_PAGE_ONLY[0] == "ring");
+    assert(PDF_PAGE_ONLY[3] == "cursor");
     var i = 0;
     while i < 4 {
         if find(attrs, str("class=\"", PDF_PAGE_ONLY[i], "\"")) >= 0 { return true; }
@@ -247,6 +304,8 @@ fn pdf_page_only_group(attrs: u8[:]) -> bool {
 }
 
 fn pdf_text(op: DOp) {
+    assert(op.shape == SH_TEXT);
+    assert(op.kind == OP_ITEM);
     let si = text_style_index(draw_ref(op.cls0, op.cls1));
     let size = TEXT_SIZE[si];
     let spacing = TEXT_SPACING[si];
@@ -292,6 +351,9 @@ fn pdf_text(op: DOp) {
 }
 
 fn pdf_path(p0: i64, n: i64) {
+    assert(p0 >= 0);
+    assert(n >= 0);
+    assert(p0 + n <= draw_segs.len);
     var i = p0;
     while i < p0 + n {
         let s = draw_segs[i];
@@ -304,6 +366,8 @@ fn pdf_path(p0: i64, n: i64) {
 }
 
 fn pdf_item(op: DOp) {
+    assert(op.kind == OP_ITEM);
+    assert(op.shape >= SH_LINE);
     if pdf_page_only_class(draw_ref(op.cls0, op.cls1)) { return; }
     if op.shape == SH_TEXT { pdf_text(op); return; }
     let p = op.paint;
@@ -373,6 +437,9 @@ fn pdf_number(w: u8[:]) -> bool, f64 {
 }
 
 fn pdf_nodes(list: DOp[:], from: i64, to: i64) {
+    assert(from >= 0);
+    assert(from <= to);
+    assert(to <= list.len);
     var skip = 0;
     var marks: i64[>..<] = [];
     var i = from;
@@ -428,12 +495,17 @@ var pdf_ob_s: i64[>..] = [];
 var pdf_ob_n: i64[>..] = [];
 
 fn pdf_add_from(at: i64) -> i64 {
+    assert(at >= 0);
+    assert(at <= pdf_ob.len);
+    assert(pdf_ob_s.len == pdf_ob_n.len);
     pdf_ob_s.push(at);
     pdf_ob_n.push(pdf_ob.len - at);
     return pdf_ob_s.len;
 }
 
 fn pdf_add_stream(dict: u8[:], data: u8[:]) -> i64 {
+    assert(pdf_ob_s.len == pdf_ob_n.len);
+    assert(dict.len >= 0);
     let at = pdf_ob.len;
     format(pdf_ob, "<<", dict, "/Length ", data.len, ">>stream\n");
     pdf_ob.append(data);
@@ -454,6 +526,8 @@ fn pdf_utf16(out: u8[>..]&, s: u8[:]) {
 }
 
 fn pdf_utf16_cp(out: u8[>..]&, c: i64) {
+    assert(c >= 0);
+    assert(c < 0x110000);
     if c < 0x10000 {
         pdf_hex4(out, c);
     } else {
@@ -465,7 +539,7 @@ fn pdf_utf16_cp(out: u8[>..]&, c: i64) {
 
 var pdf_pool: u8[>..] = [];
 
-fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8[:], font2: u8[:]) -> u8[>..] {
+fn pdf_init_fonts(font0: u8[:], font1: u8[:], font2: u8[:]) {
     pdf_data.clear();
     let o0 = pdf_data.len;
     pdf_data.append(font0);
@@ -478,13 +552,14 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
     pdf_font_init(2, o2, font2.len);
     var z = 0;
     while z < 196608 { pdf_cache[z] = 0; pdf_used[z] = 0; z++; }
+    assert(pdf_data.len == font0.len + font1.len + font2.len);
+    assert(pdf_font[2].off + pdf_font[2].len == pdf_data.len);
+}
 
-    let pw = w * 0.75;
-    let ph = h * 0.75;
+fn pdf_render_pages(list: DOp[:], pw: f64, ph: f64, pages: i64, cstart: i64[>..]&, clen: i64[>..]&) {
+    assert(pages >= 0);
+    assert(cstart.len == clen.len);
     pdf_pool.clear();
-    var cstart: i64[>..] = [];
-    var clen: i64[>..] = [];
-    let pages = draw_page_count(list);
     var k = 0;
     while k < pages {
         let from, to = draw_page_range(list, k);
@@ -502,6 +577,10 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         pdf_pool.append(pdf_c);
         k++;
     }
+    assert(cstart.len == pages);
+}
+
+fn pdf_alphas(list: DOp[:]) -> i64[>..] {
     var alphas: i64[>..] = [];
     for op in list {
         if op.kind == OP_ITEM && op.paint.has_op {
@@ -511,79 +590,86 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
             if !seen { alphas.push(a); }
         }
     }
+    assert(alphas.len <= list.len);
+    assert(alphas.len >= 0);
+    return alphas;
+}
 
-    pdf_ob.clear();
-    pdf_ob_s.clear();
-    pdf_ob_n.clear();
-    var i = 0;
-    while i < 4 { pdf_ob_s.push(0); pdf_ob_n.push(0); i++; }
-    var fonts: u8[>..] = [];
-    i = 0;
-    while i < 3 {
-        var any = false;
-        var g = 0;
-        while g < 65536 { if pdf_used[i * 65536 + g] != 0 { any = true; } g++; }
-        if !any { i++; continue; }
-        let off = pdf_font[i].off;
-        let truetype = i < 2;
-        let kind: u8[>..] = if truetype { str("/Length1 ", pdf_font[i].len) } else { str("/Subtype/OpenType") };
-        let file = pdf_add_stream(kind, pdf_data[off..off + pdf_font[i].len]);
-        let at = pdf_ob.len;
-        format(pdf_ob, "<</Type/FontDescriptor/FontName/F", i, "/Flags 4/FontBBox[", pdf_font[i].m0, " ", pdf_font[i].m1, " ", pdf_font[i].m2, " ", pdf_font[i].m3,
-            "]/ItalicAngle 0/Ascent ", pdf_font[i].m4, "/Descent ", pdf_font[i].m5, "/CapHeight ", pdf_font[i].m4, "/StemV 80/", if truetype { "FontFile2 " } else { "FontFile3 " }, file, " 0 R>>");
-        let d = pdf_add_from(at);
-        let at2 = pdf_ob.len;
-        format(pdf_ob, "<</Type/Font/Subtype/", if truetype { "CIDFontType2/CIDToGIDMap/Identity" } else { "CIDFontType0" }, "/BaseFont/F", i, "/CIDSystemInfo<</Registry(Adobe)/Ordering(Identity)/Supplement 0>>/FontDescriptor ", d, " 0 R/W[0[");
-        let scale = 1000.0 / pdf_font[i].em;
-        var gi = 0;
-        while gi < pdf_font[i].nh {
-            if gi > 0 { pdf_ob.push(' '); }
-            draw_n_to(pdf_ob, (pdf_adv(i, gi) as f64) * scale);
-            gi++;
-        }
-        pdf_ob.append("]]>>");
-        let cid = pdf_add_from(at2);
-        var cmap: u8[>..] = [];
-        var inblock = 0;
-        var blk: u8[>..] = [];
-        g = 1;
-        while g < 65536 {
-            let c = pdf_used[i * 65536 + g] as i64;
-            if c != 0 {
-                if inblock > 0 { blk.push('\n'); }
-                blk.push('<');
-                pdf_hex4(blk, g);
-                blk.append("><");
-                pdf_utf16_cp(blk, c);
-                blk.push('>');
-                inblock++;
-                if inblock == 100 {
-                    format(cmap, inblock, " beginbfchar\n", blk, "\nendbfchar\n");
-                    blk.clear();
-                    inblock = 0;
-                }
+fn pdf_font_used(i: i64) -> bool {
+    assert(i >= 0);
+    assert(i < 3);
+    var g = 0;
+    while g < 65536 { if pdf_used[i * 65536 + g] != 0 { return true; } g++; }
+    return false;
+}
+
+fn pdf_tounicode(i: i64) -> u8[>..] {
+    assert(i >= 0);
+    assert(i < 3);
+    var cmap: u8[>..] = [];
+    var inblock = 0;
+    var blk: u8[>..] = [];
+    var g = 1;
+    while g < 65536 {
+        let c = pdf_used[i * 65536 + g] as i64;
+        if c != 0 {
+            if inblock > 0 { blk.push('\n'); }
+            blk.push('<');
+            pdf_hex4(blk, g);
+            blk.append("><");
+            pdf_utf16_cp(blk, c);
+            blk.push('>');
+            inblock++;
+            if inblock == 100 {
+                format(cmap, inblock, " beginbfchar\n", blk, "\nendbfchar\n");
+                blk.clear();
+                inblock = 0;
             }
-            g++;
         }
-        if inblock > 0 { format(cmap, inblock, " beginbfchar\n", blk, "\nendbfchar\n"); }
-        var cm: u8[>..] = [];
-        format(cm, "/CIDInit/ProcSet findresource begin 12 dict begin begincmap/CIDSystemInfo<</Registry(Adobe)/Ordering(UCS)/Supplement 0>>def/CMapName/Adobe-Identity-UCS def/CMapType 2 def\n1 begincodespacerange <0000><FFFF> endcodespacerange\n",
-            cmap, "endcmap CMapName currentdict/CMap defineresource pop end end");
-        let tu = pdf_add_stream("", cm);
-        let at3 = pdf_ob.len;
-        format(pdf_ob, "<</Type/Font/Subtype/Type0/BaseFont/F", i, "/Encoding/Identity-H/DescendantFonts[", cid, " 0 R]/ToUnicode ", tu, " 0 R>>");
-        let fo = pdf_add_from(at3);
-        format(fonts, "/F", i, " ", fo, " 0 R");
-        i++;
+        g++;
     }
-    var gs: u8[>..] = [];
-    for a in alphas {
-        format(gs, "/A", a, "<</ca ");
-        draw_n_to(gs, (a as f64) / 100.0);
-        gs.append(">>");
+    if inblock > 0 { format(cmap, inblock, " beginbfchar\n", blk, "\nendbfchar\n"); }
+    var cm: u8[>..] = [];
+    format(cm, "/CIDInit/ProcSet findresource begin 12 dict begin begincmap/CIDSystemInfo<</Registry(Adobe)/Ordering(UCS)/Supplement 0>>def/CMapName/Adobe-Identity-UCS def/CMapType 2 def\n1 begincodespacerange <0000><FFFF> endcodespacerange\n",
+        cmap, "endcmap CMapName currentdict/CMap defineresource pop end end");
+    return cm;
+}
+
+fn pdf_font_objects(i: i64) -> i64 {
+    assert(i >= 0);
+    assert(i < 3);
+    let off = pdf_font[i].off;
+    let truetype = i < 2;
+    let kind: u8[>..] = if truetype { str("/Length1 ", pdf_font[i].len) } else { str("/Subtype/OpenType") };
+    let file = pdf_add_stream(kind, pdf_data[off..off + pdf_font[i].len]);
+    let at = pdf_ob.len;
+    format(pdf_ob, "<</Type/FontDescriptor/FontName/F", i, "/Flags 4/FontBBox[", pdf_font[i].m0, " ", pdf_font[i].m1, " ", pdf_font[i].m2, " ", pdf_font[i].m3,
+        "]/ItalicAngle 0/Ascent ", pdf_font[i].m4, "/Descent ", pdf_font[i].m5, "/CapHeight ", pdf_font[i].m4, "/StemV 80/", if truetype { "FontFile2 " } else { "FontFile3 " }, file, " 0 R>>");
+    let d = pdf_add_from(at);
+    let at2 = pdf_ob.len;
+    format(pdf_ob, "<</Type/Font/Subtype/", if truetype { "CIDFontType2/CIDToGIDMap/Identity" } else { "CIDFontType0" }, "/BaseFont/F", i, "/CIDSystemInfo<</Registry(Adobe)/Ordering(Identity)/Supplement 0>>/FontDescriptor ", d, " 0 R/W[0[");
+    let scale = 1000.0 / pdf_font[i].em;
+    var gi = 0;
+    while gi < pdf_font[i].nh {
+        if gi > 0 { pdf_ob.push(' '); }
+        draw_n_to(pdf_ob, (pdf_adv(i, gi) as f64) * scale);
+        gi++;
     }
+    pdf_ob.append("]]>>");
+    let cid = pdf_add_from(at2);
+    let tu = pdf_add_stream("", pdf_tounicode(i));
+    let at3 = pdf_ob.len;
+    format(pdf_ob, "<</Type/Font/Subtype/Type0/BaseFont/F", i, "/Encoding/Identity-H/DescendantFonts[", cid, " 0 R]/ToUnicode ", tu, " 0 R>>");
+    let object = pdf_add_from(at3);
+    assert(object > 0);
+    return object;
+}
+
+fn pdf_page_objects(pages: i64, pw: f64, ph: f64, cstart: i64[:], clen: i64[:]) -> u8[>..] {
+    assert(cstart.len == pages);
+    assert(clen.len == pages);
     var kids: u8[>..] = [];
-    k = 0;
+    var k = 0;
     while k < pages {
         let content = pdf_add_stream("", pdf_pool[cstart[k]..cstart[k] + clen[k]]);
         let at = pdf_ob.len;
@@ -597,6 +683,12 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         format(kids, page, " 0 R");
         k++;
     }
+    return kids;
+}
+
+fn pdf_fixed_objects(pages: i64, kids: u8[:], title: u8[:], fonts: u8[:], gs: u8[:]) {
+    assert(pages >= 0);
+    assert(pdf_ob_s.len >= 4);
     var at = pdf_ob.len;
     pdf_ob.append("<</Type/Catalog/Pages 2 0 R/Lang(en)>>");
     pdf_ob_s[0] = at;
@@ -615,7 +707,11 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
     format(pdf_ob, "<</Font<<", fonts, ">>/ExtGState<<", gs, ">>>>");
     pdf_ob_s[3] = at;
     pdf_ob_n[3] = pdf_ob.len - at;
+}
 
+fn pdf_serialize() -> u8[>..] {
+    assert(pdf_ob_s.len == pdf_ob_n.len);
+    assert(pdf_ob_s.len >= 4);
     var o: u8[>..] = [];
     o.append("%PDF-1.7\n%");
     o.push(0xe2);
@@ -624,7 +720,7 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
     o.push(0xd3);
     o.push('\n');
     var xref: u8[>..] = [];
-    i = 0;
+    var i = 0;
     while i < pdf_ob_s.len {
         format_int(xref, o.len, 10, 10, '0');
         xref.append(" 00000 n \n");
@@ -638,4 +734,38 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
     let start = o.len;
     format(o, "xref\n0 ", n, "\n0000000000 65535 f \n", xref, "trailer\n<</Size ", n, "/Root 1 0 R/Info 3 0 R/ID[<", digest[..32], "><", digest[..32], ">]>>\nstartxref\n", start, "\n%%EOF\n");
     return o;
+}
+
+fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8[:], font2: u8[:]) -> u8[>..] {
+    pdf_init_fonts(font0, font1, font2);
+    let pw = w * 0.75;
+    let ph = h * 0.75;
+    var cstart: i64[>..] = [];
+    var clen: i64[>..] = [];
+    let pages = draw_page_count(list);
+    pdf_render_pages(list, pw, ph, pages, cstart, clen);
+    let alphas = pdf_alphas(list);
+    pdf_ob.clear();
+    pdf_ob_s.clear();
+    pdf_ob_n.clear();
+    var i = 0;
+    while i < 4 { pdf_ob_s.push(0); pdf_ob_n.push(0); i++; }
+    var fonts: u8[>..] = [];
+    i = 0;
+    while i < 3 {
+        if pdf_font_used(i) {
+            let fo = pdf_font_objects(i);
+            format(fonts, "/F", i, " ", fo, " 0 R");
+        }
+        i++;
+    }
+    var gs: u8[>..] = [];
+    for a in alphas {
+        format(gs, "/A", a, "<</ca ");
+        draw_n_to(gs, (a as f64) / 100.0);
+        gs.append(">>");
+    }
+    let kids = pdf_page_objects(pages, pw, ph, cstart, clen);
+    pdf_fixed_objects(pages, kids, title, fonts, gs);
+    return pdf_serialize();
 }

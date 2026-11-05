@@ -18,8 +18,11 @@ printf '%s\n' "${shell_files}" | xargs uvx --from shellcheck-py==0.11.0.1 shellc
 bun install --frozen-lockfile >/dev/null
 node_modules/.bin/tsc --noEmit
 node_modules/.bin/knip
-jpl=$(bun scripts/jpl.ts)
-[ -z "${jpl}" ] || { echo "${jpl}" >&2; exit 1; }
+uvx ruff@0.17.3 check --config ruff.toml beamdiag/reference.py
+uvx pyright@1.1.414 -p pyrightconfig.json
+POWER10_CHECK_PIN=5029251
+POWER10_CHECK_REPO=${POWER10_CHECK_REPO:-git+https://github.com/yujieteo/power10-check}
+uvx --from "${POWER10_CHECK_REPO}@${POWER10_CHECK_PIN}" power10-check --require-version 0.1.0
 bun scripts/check-site.ts
 wallpaper_hash=$(cat wallpaper/wallpaper.goose wallpaper/host.c | shasum -a 256 | cut -d' ' -f1)
 wallpaper_built=$(cat wallpaper/wasm.sha256)

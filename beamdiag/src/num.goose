@@ -8,6 +8,8 @@ extern fn bd_strtod(inp: u8[1200]&) -> f64;
 struct Digits { d: u8[..400], e: i64 }
 
 fn read_sci(buf: u8[1200]&, n: i64) -> Digits {
+    assert(n >= 0);
+    assert(n <= 1200);
     var r = Digits { d: "", e: 0 };
     var i = 0;
     while i < n && buf[i] != 'e' {
@@ -25,6 +27,8 @@ fn read_sci(buf: u8[1200]&, n: i64) -> Digits {
 }
 
 fn reads(d: Digits&, x: f64) -> bool {
+    assert(d.d.len > 0);
+    assert(d.d.len <= 400);
     var buf: u8[1200] = [0; 1200];
     var t: u8[>..] = [];
     t.push(d.d[0]);
@@ -37,6 +41,8 @@ fn reads(d: Digits&, x: f64) -> bool {
 }
 
 fn drop_one(d: u8[..400]&) -> bool {
+    assert(d.len > 0);
+    assert(d.len <= 400);
     var i = d.len - 1;
     while i >= 0 {
         if d[i] == '0' { d[i] = '9'; } else { d[i] -= 1; return !(i == 0 && d[0] == '0'); }
@@ -46,9 +52,11 @@ fn drop_one(d: u8[..400]&) -> bool {
 }
 
 fn shortest(x: f64) -> Digits {
+    assert(x > 0.0);
+    assert(!is_inf(x));
     var buf: u8[1200] = [0; 1200];
     var p = 0;
-    loop {
+    while p <= 16 {
         let n = bd_fmt_e(x, p, buf);
         var r = read_sci(buf, n);
         if reads(r, x) || p >= 16 {
@@ -62,14 +70,17 @@ fn shortest(x: f64) -> Digits {
         if drop_one(dn.d) && reads(dn, x) { dn.e += 1; return dn; }
         p++;
     }
+    abort("shortest: no digits read back");
 }
 
 fn digs(out: u8[>..]&, d: Digits&, from: i64, to: i64) {
+    assert(from >= 0);
+    assert(to <= d.d.len);
     var i = from;
     while i < to { out.push(d.d[i]); i++; }
 }
 
-fn zeros(out: u8[>..]&, n: i64) { var i = 0; while i < n { out.push('0'); i++; } }
+fn zeros(out: u8[>..]&, n: i64) { assert(n >= 0); assert(n <= 1000); var i = 0; while i < n { out.push('0'); i++; } }
 
 fn js(x: f64) -> u8[>..] {
     var out: u8[>..] = [];
@@ -79,6 +90,8 @@ fn js(x: f64) -> u8[>..] {
     let s = shortest(if x < 0.0 { -x } else { x });
     let k = s.d.len;
     let n = s.e;
+    assert(k > 0);
+    assert(k <= 400);
     if x < 0.0 { out.push('-'); }
     if k <= n && n <= 21 {
         digs(out, s, 0, k);
@@ -102,6 +115,8 @@ fn js(x: f64) -> u8[>..] {
 }
 
 fn bump(d: u8[..400]&) -> bool {
+    assert(d.len > 0);
+    assert(d.len <= 400);
     var i = d.len - 1;
     while i >= 0 {
         if d[i] == '9' { d[i] = '0'; } else { d[i] += 1; return false; }
@@ -111,6 +126,9 @@ fn bump(d: u8[..400]&) -> bool {
 }
 
 fn round_sig(x: f64, p: i64) -> Digits {
+    assert(p > 0);
+    assert(p < 400);
+    assert(x > 0.0);
     var buf: u8[1200] = [0; 1200];
     var n = bd_fmt_e(x, p + 1, buf);
     var r = read_sci(buf, n);
@@ -136,6 +154,8 @@ fn round_sig(x: f64, p: i64) -> Digits {
 }
 
 fn read_sci_prefix(buf: u8[1200]&, n: i64, m: i64) -> Digits {
+    assert(n >= 0);
+    assert(m > 0);
     var r = Digits { d: "", e: 0 };
     var i = 0;
     while i < n && buf[i] != 'e' {
@@ -153,6 +173,8 @@ fn read_sci_prefix(buf: u8[1200]&, n: i64, m: i64) -> Digits {
 }
 
 fn to_precision(x: f64, p: i64) -> u8[>..] {
+    assert(p >= 1);
+    assert(p <= 100);
     if is_nan(x) || is_inf(x) { return js(x); }
     var out: u8[>..] = [];
     if x < 0.0 { out.push('-'); }
@@ -185,6 +207,8 @@ fn to_precision(x: f64, p: i64) -> u8[>..] {
 }
 
 fn prec(x: f64, p: i64) -> f64 {
+    assert(p >= 1);
+    assert(p <= 30);
     if is_nan(x) || is_inf(x) { return x; }
     var buf: u8[1200] = [0; 1200];
     var s = Digits { d: "", e: 0 };
@@ -203,6 +227,8 @@ fn prec(x: f64, p: i64) -> f64 {
 }
 
 fn to_exponential(x: f64, f: i64) -> u8[>..] {
+    assert(f >= 0);
+    assert(f <= 30);
     if is_nan(x) || is_inf(x) { return js(x); }
     var out: u8[>..] = [];
     if x < 0.0 { out.push('-'); }
@@ -222,6 +248,8 @@ fn to_exponential(x: f64, f: i64) -> u8[>..] {
 }
 
 fn fixed_text(out: u8[>..]&, d0: u8[..400], f: i64) {
+    assert(f >= 0);
+    assert(d0.len > 0);
     var d = d0;
     var skip = 0;
     while d.len - skip > 1 && d[skip] == '0' && d.len - skip > f + 1 { skip++; }
@@ -240,6 +268,8 @@ fn fixed_text(out: u8[>..]&, d0: u8[..400], f: i64) {
 }
 
 fn locale(x: f64, f: i64) -> u8[>..] {
+    assert(f >= 0);
+    assert(f <= 20);
     var out: u8[>..] = [];
     if is_nan(x) { out.append("NaN"); return out; }
     if is_inf(x) { out.append(if x > 0.0 { "∞" } else { "-∞" }); return out; }
@@ -276,8 +306,10 @@ fn locale(x: f64, f: i64) -> u8[>..] {
 
 fn read_double(s: u8[:]) -> f64 {
     if s.len >= 1199 { return 0.0; }
+    assert(s.len < 1199);
     var buf: u8[1200] = [0; 1200];
     var k = 0;
     for c in s { buf[k] = c; k++; }
+    assert(k == s.len);
     return bd_strtod(buf);
 }

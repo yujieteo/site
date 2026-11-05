@@ -5,6 +5,10 @@
 import * as C from "./core.js";
 import { announce } from "./ui.js";
 
+function assert(condition, message) {
+    if (!condition) throw new Error(message);
+}
+
 const enc = new TextEncoder();
 
 export const editor = {
@@ -18,26 +22,46 @@ export const editor = {
 // --- set up -----------------------------------------------------------------
 
 export function init({ textarea, highlight, box, placeholder }) {
+    assert(textarea && highlight && box, "the editor needs its elements");
+    assert(placeholder, "the editor needs a placeholder");
     Object.assign(editor, { ta: textarea, pre: highlight, box, placeholder });
     const typo = C.typography().editor;
     editor.boldRoles = new Set(typo.bold);
     editor.italicRoles = new Set(typo.italic);
-    textarea.addEventListener("input", () => { paint(); editor.onChange(textarea.value); });
+    textarea.addEventListener("input", () => {
+        assert(editor.ta === textarea, "the editor keeps its text area");
+        assert(typeof textarea.value === "string", "the text is a string");
+        paint();
+        editor.onChange(textarea.value);
+    });
     textarea.addEventListener("scroll", syncScroll);
-    document.addEventListener("selectionchange", () => { if (document.activeElement === textarea) editor.onSelect(); });
+    document.addEventListener("selectionchange", () => {
+        assert(editor.ta === textarea, "the editor keeps its text area");
+        assert(typeof editor.onSelect === "function", "there is a selection handler");
+        if (document.activeElement === textarea) editor.onSelect();
+    });
     textarea.addEventListener("keydown", vimKeydown);
-    new ResizeObserver(() => { applyMetrics(); syncScroll(); }).observe(box);
+    new ResizeObserver(() => {
+        assert(editor.box === box, "the editor keeps its box");
+        assert(editor.pre === highlight, "the editor keeps its mirror");
+        applyMetrics();
+        syncScroll();
+    }).observe(box);
 }
 
 let metrics = { scale: 1, spacing: 1.4, wrap: true };
 
 export function setMetrics(m) {
+    assert(typeof m === "object" && m !== null, "metrics are an object");
+    assert(editor.box !== null, "the editor is set up");
     metrics = { ...metrics, ...m };
     applyMetrics();
 }
 
 // EditorMetrics: a line of at most 76 characters, in the middle of the view.
 function applyMetrics() {
+    assert(editor.box !== null && editor.ta !== null, "the editor is set up");
+    assert(typeof metrics === "object", "the metrics are an object");
     const size = 15 * metrics.scale;
     const width = editor.box.clientWidth;
     const narrow = width < 600;
@@ -54,25 +78,39 @@ function applyMetrics() {
 }
 
 function syncScroll() {
+    assert(editor.pre !== null, "the mirror exists");
+    assert(editor.ta !== null, "the text area exists");
     editor.pre.scrollTop = editor.ta.scrollTop;
     editor.pre.scrollLeft = editor.ta.scrollLeft;
 }
 
 // --- the text -----------------------------------------------------------------
 
-export const text = () => editor.ta.value;
+export function text() {
+    assert(editor.ta !== null, "the editor is set up");
+    assert(typeof editor.ta.value === "string", "the text is a string");
+    return editor.ta.value;
+}
 
 // Opens a new text: no Undo history from the previous project.
 export function setText(t) {
+    assert(typeof t === "string", "the text is a string");
+    assert(editor.ta !== null, "the editor is set up");
     editor.ta.value = t;
     editor.ta.setSelectionRange(0, 0);
     editor.ta.scrollTop = 0;
     paint();
 }
 
-export function selection() { return [editor.ta.selectionStart, editor.ta.selectionEnd]; }
+export function selection() {
+    assert(editor.ta !== null, "the editor is set up");
+    assert(editor.ta.selectionStart <= editor.ta.selectionEnd, "the selection is ordered");
+    return [editor.ta.selectionStart, editor.ta.selectionEnd];
+}
 
 export function setSelection(s, e = s, reveal = true) {
+    assert(typeof s === "number" && typeof e === "number", "offsets are numbers");
+    assert(editor.ta !== null, "the editor is set up");
     const n = editor.ta.value.length;
     s = Math.max(0, Math.min(s, n));
     e = Math.max(s, Math.min(e, n));
@@ -81,12 +119,18 @@ export function setSelection(s, e = s, reveal = true) {
     editor.onSelect();
 }
 
-export function focus() { editor.ta.focus({ preventScroll: true }); }
+export function focus() {
+    assert(editor.ta !== null, "the editor is set up");
+    assert(typeof editor.ta.focus === "function", "the text area can focus");
+    editor.ta.focus({ preventScroll: true });
+}
 
 // Scrolls so that the selection is in view: the textarea scrolls only to the
 // caret when it has focus, so this measures the line in the mirror.
 export function revealSelection() {
+    assert(editor.ta !== null, "the editor is set up");
     const [s] = selection();
+    assert(s >= 0, "the selection start is not negative");
     const y = offsetTop(s);
     const ta = editor.ta;
     if (y < ta.scrollTop + 20 || y > ta.scrollTop + ta.clientHeight - 60) ta.scrollTop = Math.max(0, y - ta.clientHeight / 3);
@@ -95,6 +139,8 @@ export function revealSelection() {
 
 // The vertical position of a UTF-16 offset in the text, from the mirror.
 export function offsetTop(offset) {
+    assert(typeof offset === "number" && offset >= 0, "the offset is not negative");
+    assert(editor.pre !== null, "the mirror exists");
     const pre = editor.pre;
     const mark = document.createElement("span");
     const t = editor.ta.value;
@@ -103,10 +149,12 @@ export function offsetTop(offset) {
     pre.append(mark, t.slice(offset) + " ");
     const y = mark.offsetTop;
     pre.replaceChildren(...saved);
+    assert(Number.isFinite(y), "the position is finite");
     return y;
 }
 
 export function caretRect() {
+    assert(editor.pre !== null && editor.ta !== null, "the editor is set up");
     const pre = editor.pre;
     const [s] = selection();
     const mark = document.createElement("span");
@@ -117,11 +165,14 @@ export function caretRect() {
     pre.append(mark, t.slice(s) + " ");
     const r = { top: mark.offsetTop - editor.ta.scrollTop, left: mark.offsetLeft - editor.ta.scrollLeft, height: mark.offsetHeight };
     pre.replaceChildren(...saved);
+    assert(Number.isFinite(r.top) && Number.isFinite(r.left), "the caret position is finite");
     return r;
 }
 
 // Replaces text as one undoable step.
 export function replaceRange(s, e, t) {
+    assert(typeof t === "string", "the new text is a string");
+    assert(typeof s === "number" && typeof e === "number", "offsets are numbers");
     const ta = editor.ta;
     if (editor.readOnly) return;
     ta.focus({ preventScroll: true });
@@ -138,15 +189,22 @@ export function replaceRange(s, e, t) {
 // Replaces only the part that changed, so the scroll position stays and one
 // Undo restores the text (FindState.replaceChangedPart).
 export function replaceAll(next, { undoable = true } = {}) {
+    assert(typeof next === "string", "the new text is a string");
+    assert(editor.ta !== null, "the editor is set up");
     const old = editor.ta.value;
     if (old === next) return;
     let p = 0;
     while (p < old.length && p < next.length && old.charCodeAt(p) === next.charCodeAt(p)) p++;
     let q = 0;
     while (q < old.length - p && q < next.length - p && old.charCodeAt(old.length - 1 - q) === next.charCodeAt(next.length - 1 - q)) q++;
-    const isTrail = (c) => c >= 0xDC00 && c <= 0xDFFF;
+    const isTrail = (c) => {
+        assert(typeof c === "number", "a code unit is a number");
+        assert(c !== null, "a code unit is not null");
+        return c >= 0xDC00 && c <= 0xDFFF;
+    };
     while (p > 0 && (isTrail(old.charCodeAt(p)) || isTrail(next.charCodeAt(p)))) p--;
     while (q > 0 && (isTrail(old.charCodeAt(old.length - q)) || isTrail(next.charCodeAt(next.length - q)))) q--;
+    assert(p >= 0 && q >= 0, "the changed part is bounded");
     const middle = next.slice(p, next.length - q);
     if (undoable) replaceRange(p, old.length - q, middle);
     else {
@@ -162,14 +220,20 @@ export function replaceAll(next, { undoable = true } = {}) {
 
 // A template with a placeholder between ⟦ and ⟧ (Snippet).
 export function snippet(template, block = true) {
+    assert(typeof template === "string", "a template is a string");
     const o = template.indexOf("⟦"), c = template.indexOf("⟧");
     if (o >= 0 && c > o) {
-        return { text: template.slice(0, o) + template.slice(o + 1, c) + template.slice(c + 1), sel: [o, c - o - 1], block };
+        const out = template.slice(0, o) + template.slice(o + 1, c) + template.slice(c + 1);
+        assert(out.length === template.length - 2, "the marks are removed");
+        return { text: out, sel: [o, c - o - 1], block };
     }
+    assert(o < 0 || c <= o, "no placeholder was found");
     return { text: template, sel: [template.length, 0], block };
 }
 
 export function insert(sn) {
+    assert(typeof sn.text === "string", "a snippet has text");
+    assert(Array.isArray(sn.sel) && sn.sel.length === 2, "a snippet has a selection");
     const t = text();
     const [s, e] = selection();
     let prefix = "", suffix = "";
@@ -179,6 +243,7 @@ export function insert(sn) {
         const after = t.slice(e);
         if (!after.startsWith("\n")) suffix = after ? "\n\n" : "\n";
     }
+    assert(s <= e, "the selection is ordered");
     replaceRange(s, e, prefix + sn.text + suffix);
     const start = s + prefix.length + sn.sel[0];
     setSelection(start, start + sn.sel[1]);
@@ -186,7 +251,9 @@ export function insert(sn) {
 }
 
 export function frontMatterLines(date = new Date()) {
+    assert(date instanceof Date, "the date is a Date");
     const lang = (navigator.language || "en").split("-")[0];
+    assert(lang.length > 0, "the language is not empty");
     return [
         "title: ⟦Title⟧", "subtitle: Subtitle", "author: Name", "institute: Institute",
         "date: " + date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }),
@@ -197,8 +264,17 @@ export function frontMatterLines(date = new Date()) {
 // Title and Details: adds the front matter, or the keys that it does not have.
 export function insertFrontMatter() {
     const t = text();
-    const lines = frontMatterLines().map((l) => l.replace("⟦", "").replace("⟧", ""));
-    const key = (l) => (l.split(":")[0] || "").trim().toLowerCase();
+    assert(typeof t === "string", "the text is a string");
+    const lines = frontMatterLines().map((l) => {
+        assert(typeof l === "string", "a line is a string");
+        assert(l.includes(":"), "a line has a key");
+        return l.replace("⟦", "").replace("⟧", "");
+    });
+    const key = (l) => {
+        assert(typeof l === "string", "a line is a string");
+        assert(l.length >= 0, "a line has a length");
+        return (l.split(":")[0] || "").trim().toLowerCase();
+    };
     if (t.startsWith("---\n")) {
         const close = t.indexOf("\n---", 3);
         if (close >= 0) {
@@ -216,7 +292,9 @@ export function insertFrontMatter() {
 }
 
 function selectTitleValue() {
+    assert(editor.ta !== null, "the editor is set up");
     const t = text();
+    assert(typeof t === "string", "the text is a string");
     const i = t.slice(0, 4000).indexOf("\ntitle:");
     if (i >= 0) {
         let s = i + 7;
@@ -229,6 +307,8 @@ function selectTitleValue() {
 }
 
 export function wrapSelectionInLines(start, end) {
+    assert(typeof start === "string", "the opening line is a string");
+    assert(typeof end === "string", "the closing line is a string");
     const t = text();
     const [s, e] = selection();
     if (s === e) { insert(snippet(start + "\n⟦⟧\n" + end)); return; }
@@ -237,6 +317,7 @@ export function wrapSelectionInLines(start, end) {
     le = le < 0 ? t.length : le + 1;
     let body = t.slice(ls, le);
     if (!body.endsWith("\n")) body += "\n";
+    assert(body.endsWith("\n"), "the body ends a line");
     const rep = start + "\n" + body + end + "\n";
     replaceRange(ls, le, rep);
     setSelection(ls, ls + rep.length);
@@ -247,17 +328,22 @@ export function wrapSelectionInLines(start, end) {
 let roleColors = {};
 
 export function setPalette(roles) {
+    assert(typeof roles === "object" && roles !== null, "roles are an object");
+    assert(!Array.isArray(roles), "roles are not a list");
     roleColors = roles;
     let css = "";
     for (const [role, color] of Object.entries(roles)) css += `.highlight .r-${role}{color:${color}}`;
     let st = document.getElementById("role-colors");
     if (!st) { st = document.createElement("style"); st.id = "role-colors"; document.head.append(st); }
     st.textContent = css;
+    assert(st.id === "role-colors", "the palette style has its id");
     paint();
 }
 
 // UTF-8 byte offset to UTF-16 offset, for each byte boundary.
 export function byteMap(t) {
+    assert(typeof t === "string", "the text is a string");
+    assert(t.length >= 0, "the text has a length");
     const map = new Uint32Array(enc.encode(t).length + 1);
     let b = 0;
     for (let i = 0; i < t.length; i++) {
@@ -271,30 +357,42 @@ export function byteMap(t) {
         b += n;
     }
     map[b] = t.length;
+    assert(map[0] === 0, "the first byte is the first character");
     return map;
 }
 
 let paintTimer = 0;
 
 export function paint() {
+    assert(editor.ta !== null && editor.pre !== null, "the editor is set up");
+    assert(editor.placeholder !== null, "the placeholder exists");
     const t = editor.ta.value;
     editor.placeholder.hidden = t.length > 0 || editor.readOnly;
     cancelAnimationFrame(paintTimer);
     if (t.length > 60000) {
         editor.pre.textContent = t + " ";
-        paintTimer = requestAnimationFrame(() => paintNow(t));
+        paintTimer = requestAnimationFrame(() => {
+            assert(typeof t === "string", "the text is a string");
+            assert(editor.ta !== null, "the editor is set up");
+            paintNow(t);
+        });
     } else paintNow(t);
     syncScroll();
 }
 
 const ROLE_NAMES = [];
 function roleIndex(name) {
+    assert(typeof name === "string", "a role name is a string");
+    assert(ROLE_NAMES.length < 100000, "the role names stay few");
     let i = ROLE_NAMES.indexOf(name);
     if (i < 0) { ROLE_NAMES.push(name); i = ROLE_NAMES.length - 1; }
+    assert(ROLE_NAMES[i] === name, "the index names the role");
     return i;
 }
 
 function paintNow(t) {
+    assert(typeof t === "string", "the text is a string");
+    assert(editor.pre !== null, "the mirror exists");
     if (t !== editor.ta.value) return;
     let spans = [];
     try { spans = t.length ? C.highlightMarkdown(t) : []; } catch { spans = []; }
@@ -307,6 +405,7 @@ function paintNow(t) {
             roles.fill(roleIndex(role), a, b);
         }
     }
+    assert(roles.length === n, "each character has a role");
     const marks = new Uint8Array(n);
     for (const [a, b] of editor.findHits) marks.fill(1, a, b);
     const vc = editor.vim && editor.vimMode !== "insert" ? editor.vimCursor : -1;
@@ -314,7 +413,14 @@ function paintNow(t) {
     const c = editor.vim && editor.vimMode !== "insert" ? editor.vimCursor : -1;
     // A cursor on a line break or at the end: a space with the cursor color.
     const extra = c >= 0 && (c >= n || t[c] === "\n") ? c : -1;
-    const cursorSpan = () => { const sp = document.createElement("span"); sp.className = "vim-cursor"; sp.textContent = " "; return sp; };
+    const cursorSpan = () => {
+        assert(editor.vim, "only Vim mode draws a cursor span");
+        assert(extra >= 0, "a cursor span has a position");
+        const sp = document.createElement("span");
+        sp.className = "vim-cursor";
+        sp.textContent = " ";
+        return sp;
+    };
     const frag = document.createDocumentFragment();
     let i = 0;
     while (i < n) {
@@ -340,10 +446,13 @@ function paintNow(t) {
     }
     if (extra >= n) frag.append(cursorSpan());
     frag.append(" ");
+    assert(i === n, "every character was painted");
     editor.pre.replaceChildren(frag);
 }
 
 export function setFindHits(hits) {
+    assert(Array.isArray(hits), "hits are a list");
+    assert(editor.ta !== null, "the editor is set up");
     editor.findHits = hits;
     paint();
 }
@@ -351,11 +460,13 @@ export function setFindHits(hits) {
 // --- status ---------------------------------------------------------------------
 
 export function lineStatus() {
+    assert(editor.ta !== null, "the editor is set up");
     const t = editor.ta.value;
     const loc = editor.ta.selectionStart;
     let lines = 1, line = 1;
     for (let i = t.indexOf("\n"); i >= 0; i = t.indexOf("\n", i + 1)) { lines++; if (i < loc) line++; }
     const words = (t.match(/[^\s]+/g) || []).length;
+    assert(line >= 1 && line <= lines, "the line is within the lines");
     return { line, lines, words };
 }
 
@@ -363,9 +474,15 @@ export function lineStatus() {
 
 const MODE_NAMES = { normal: "NORMAL", insert: "INSERT", visual: "VISUAL", "visual-line": "VISUAL LINE", command: "COMMAND" };
 const MODE_SPOKEN = { normal: "Normal mode", insert: "Insert mode", visual: "Visual mode", "visual-line": "Visual line mode", command: "Command line" };
-export const vimModeName = (m) => MODE_NAMES[m] || "NORMAL";
+export function vimModeName(m) {
+    assert(typeof m === "string", "a mode is a string");
+    assert(Object.keys(MODE_NAMES).length === 5, "there are five modes");
+    return MODE_NAMES[m] || "NORMAL";
+}
 
 export function setVim(on) {
+    assert(typeof editor.onVimState === "function", "there is a Vim state handler");
+    assert(editor.box !== null, "the editor is set up");
     editor.vim = on;
     if (on) {
         C.vimReset();
@@ -379,6 +496,8 @@ export function setVim(on) {
 }
 
 function keyName(e) {
+    assert(typeof e.key === "string", "a key event has a key");
+    assert(typeof e.ctrlKey === "boolean", "a key event has a Control flag");
     if (e.metaKey || e.altKey && e.key.length !== 1) return null;
     const named = ["Escape", "Enter", "Backspace", "Tab", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
     if (e.ctrlKey) {
@@ -392,6 +511,8 @@ function keyName(e) {
 }
 
 function vimKeydown(e) {
+    assert(e && typeof e.preventDefault === "function", "the event can be stopped");
+    assert(typeof editor.vimPrevKey === "string", "the previous key is a string");
     if (!editor.vim || editor.readOnly || e.isComposing) return;
     const key = keyName(e);
     if (!key) return;
@@ -416,6 +537,8 @@ function vimKeydown(e) {
 }
 
 async function clipboardKey(key) {
+    assert(key === "p" || key === "P", "only paste keys read the clipboard");
+    assert(editor.vim, "Vim mode is on");
     let clip = "";
     try { clip = await navigator.clipboard.readText(); } catch { /* no permission: the register is empty */ }
     try { C.vimClipboard(clip); } catch (err) { vimMessage(err.message); return; }
@@ -424,6 +547,8 @@ async function clipboardKey(key) {
 
 // Returns true when the key had an effect in Vim.
 function runVimKey(key) {
+    assert(typeof key === "string" && key.length > 0, "a key has a name");
+    assert(editor.ta !== null, "the editor is set up");
     const t = editor.ta.value;
     const [s16, e16] = selection();
     let r;
@@ -434,6 +559,7 @@ function runVimKey(key) {
         vimInsert();
         return false;
     }
+    assert(typeof r === "object" && r !== null, "the engine gave a result");
     if (!r.handled) return false;
     applyVim(r);
     return true;
@@ -441,6 +567,8 @@ function runVimKey(key) {
 
 // The engine does not run on a text over 512 KB: wait in Insert mode, so each key goes to the browser.
 export function vimInsert() {
+    assert(typeof editor.vimMode === "string", "the Vim mode is a string");
+    assert(editor.box !== null, "the editor is set up");
     if (!editor.vim || editor.vimMode === "insert") return;
     editor.vimMode = "insert";
     editor.box.classList.toggle("vim-normal", false);
@@ -449,11 +577,15 @@ export function vimInsert() {
 }
 
 function vimMessage(m) {
+    assert(typeof m === "string", "a message is a string");
+    assert(typeof editor.onVimState === "function", "there is a Vim state handler");
     editor.vimStatus = m;
     editor.onVimState();
 }
 
 function applyVim(r) {
+    assert(typeof r.mode === "string", "a Vim result has a mode");
+    assert(Array.isArray(r.sel) && r.sel.length === 2, "a Vim result has a selection");
     const old = editor.ta.value;
     let t = old;
     if (r.text !== null && r.text !== undefined) {
@@ -474,11 +606,14 @@ function applyVim(r) {
     revealCaret();
     editor.onSelect();
     editor.onVimState();
+    assert(editor.vimMode === r.mode, "the mode was applied");
     if (r.action) editor.onVimAction(r.action, r.clip);
 }
 
 function revealCaret() {
+    assert(editor.ta !== null, "the editor is set up");
     const ta = editor.ta;
+    assert(typeof editor.vimCursor === "number", "the Vim cursor is a number");
     const y = offsetTop(editor.vimCursor >= 0 ? editor.vimCursor : ta.selectionStart);
     if (y < ta.scrollTop + 10 || y > ta.scrollTop + ta.clientHeight - 40) ta.scrollTop = Math.max(0, y - ta.clientHeight / 3);
     syncScroll();
@@ -486,6 +621,8 @@ function revealCaret() {
 
 // The cursor moved by mouse or by a toolbar command: the engine reads it at the next key.
 export function syncVimCursor() {
+    assert(typeof editor.vimMode === "string", "the Vim mode is a string");
+    assert(editor.ta !== null, "the editor is set up");
     if (!editor.vim) return;
     const c = editor.ta.selectionStart;
     if (c !== editor.vimCursor && editor.vimMode !== "insert") { editor.vimCursor = c; paint(); }

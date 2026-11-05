@@ -10,7 +10,11 @@ import .draw;
 struct Fig { w: f64, h: f64, ml: f64, mr: f64, l: f64 }
 
 struct FigLay { ml: f64, mr: f64, w: f64, l: f64 }
-fn fig_x(lay: FigLay, x: f64) -> f64 { return lay.ml + (x / lay.l) * (lay.w - lay.ml - lay.mr); }
+fn fig_x(lay: FigLay, x: f64) -> f64 {
+    assert(lay.l > 0.0);
+    assert(lay.ml > 0.0);
+    return lay.ml + (x / lay.l) * (lay.w - lay.ml - lay.mr);
+}
 
 struct FigPanel { key: i64, t0: i64, t1: i64, h: f64, color: i64, q: i64, top: f64, bottom: f64, lo: f64, hi: f64, k0: i64, kn: i64 }
 
@@ -21,33 +25,46 @@ var fig_ls: i64[>..] = [];
 var fig_ln: i64[>..] = [];
 
 fn fig_fmax(a: f64, b: f64) -> f64 {
-    if is_nan(a) { return b; }
-    if is_nan(b) { return a; }
-    return if a > b { a } else { b };
+    var r = a;
+    if is_nan(a) { r = b; } else if !is_nan(b) { r = if a > b { a } else { b }; }
+    assert(is_nan(r) || is_nan(a) || r >= a);
+    assert(is_nan(r) || is_nan(b) || r >= b);
+    return r;
 }
 fn fig_fmin(a: f64, b: f64) -> f64 {
-    if is_nan(a) { return b; }
-    if is_nan(b) { return a; }
-    return if a < b { a } else { b };
+    var r = a;
+    if is_nan(a) { r = b; } else if !is_nan(b) { r = if a < b { a } else { b }; }
+    assert(is_nan(r) || is_nan(a) || r <= a);
+    assert(is_nan(r) || is_nan(b) || r <= b);
+    return r;
 }
 
 fn fig_tidy(x: f64) -> u8[>..] {
-    if finite(x) { return js(prec(x, 10)); }
-    return "";
+    var out: u8[>..] = [];
+    if finite(x) { out.append(js(prec(x, 10))); }
+    assert(finite(x) || out.len == 0);
+    assert(out.len < 400);
+    return out;
 }
 
 fn fig_js_round(x: f64) -> f64 {
     let f = floor(x);
-    return if x - f >= 0.5 { f + 1.0 } else { f };
+    let r = if x - f >= 0.5 { f + 1.0 } else { f };
+    assert(is_nan(r) || r >= f);
+    assert(is_nan(r) || r <= f + 1.0);
+    return r;
 }
 
 fn fig_chars(s: u8[:]) -> i64 {
     var n = 0;
     for c in s { if (c & 0xc0) != 0x80 { n++; } }
+    assert(n >= 0);
+    assert(n <= s.len);
     return n;
 }
 
 fn fig_nice_ticks(lo0: f64, hi0: f64, count: f64, out: f64[>..]&) {
+    assert(count > 0.0);
     var lo = lo0;
     var hi = hi0;
     if lo == hi { lo -= 1.0; hi += 1.0; }
@@ -68,6 +85,7 @@ fn fig_nice_ticks(lo0: f64, hi0: f64, count: f64, out: f64[>..]&) {
         n++;
         t += step;
     }
+    assert(n <= 100);
 }
 
 fn fig_tick_labels(ticks: f64[:], ls: i64[>..]&, ln: i64[>..]&) {
@@ -79,10 +97,22 @@ fn fig_tick_labels(ticks: f64[:], ls: i64[>..]&, ln: i64[>..]&) {
         ls.push(at);
         ln.push(fig_text.len - at);
     }
+    assert(ls.len == ln.len);
+    assert(ls.len >= ticks.len);
 }
 
-fn fig_label_width(s: u8[:]) -> f64 { return 7.0 * (fig_chars(s) as f64); }
-fn fig_title_width(s: u8[:]) -> f64 { return 6.5 * (fig_chars(s) as f64); }
+fn fig_label_width(s: u8[:]) -> f64 {
+    let r = 7.0 * (fig_chars(s) as f64);
+    assert(r >= 0.0);
+    assert(r <= 7.0 * (s.len as f64));
+    return r;
+}
+fn fig_title_width(s: u8[:]) -> f64 {
+    let r = 6.5 * (fig_chars(s) as f64);
+    assert(r >= 0.0);
+    assert(r <= 6.5 * (s.len as f64));
+    return r;
+}
 
 fn fig_head(x: f64, tip: f64, dir: f64, size: f64) {
     let y = tip - dir * size * 1.6;
@@ -90,32 +120,50 @@ fn fig_head(x: f64, tip: f64, dir: f64, size: f64) {
     draw_seg_l(x - size, y);
     draw_seg_l(x + size, y);
     draw_seg_z();
+    assert(draw_segs.len >= 4);
+    assert(draw_segs[draw_segs.len - 1].k == 3);
 }
 
 fn fig_anchor_at(x: f64, l: f64) -> i64 {
-    if x <= 0.08 * l { return ANC_START; }
-    if x >= 0.92 * l { return ANC_END; }
-    return ANC_MIDDLE;
+    assert(l > 0.0);
+    var r = ANC_MIDDLE;
+    if x <= 0.08 * l { r = ANC_START; } else if x >= 0.92 * l { r = ANC_END; }
+    assert(r >= ANC_START);
+    return r;
 }
 fn fig_shift(a: i64, by: f64) -> f64 {
+    assert(a >= ANC_START);
+    assert(a <= ANC_END);
     if a == ANC_START { return by; }
     if a == ANC_END { return -by; }
     return 0.0;
 }
 
 fn fig_panel_get(p: FigPanel, s: Sample) -> f64 {
+    assert(p.key >= 0);
+    assert(p.key <= 2);
     return show(if p.key == 0 { s.shear } else if p.key == 1 { s.m } else { s.v }, p.q);
 }
 let FIG_SPAN_DIVISOR = 2.0;
 let FIG_FORCE_RATIO_CAP = 1.0;
 
-fn fig_half_span(hi: f64, lo: f64) -> f64 { return hi / FIG_SPAN_DIVISOR - lo / FIG_SPAN_DIVISOR; }
+fn fig_half_span(hi: f64, lo: f64) -> f64 {
+    let r = hi / FIG_SPAN_DIVISOR - lo / FIG_SPAN_DIVISOR;
+    assert(!is_nan(r) || is_nan(hi) || is_nan(lo) || is_inf(hi) || is_inf(lo));
+    assert(!(hi >= lo) || r >= 0.0);
+    return r;
+}
 fn fig_panel_y(p: FigPanel, v: f64) -> f64 {
+    assert(p.top < p.bottom);
+    assert(p.kn >= 0);
     return p.bottom - fig_half_span(v, p.lo) / fig_half_span(p.hi, p.lo) * (p.bottom - p.top);
 }
 fn fig_force_arrow_length(f: f64, fmax: f64) -> f64 {
+    assert(fmax > 0.0);
     let ratio = abs(f) / fmax;
-    return 18.0 + 30.0 * (if is_nan(ratio) { 0.0 } else { fig_fmin(ratio, FIG_FORCE_RATIO_CAP) });
+    let r = 18.0 + 30.0 * (if is_nan(ratio) { 0.0 } else { fig_fmin(ratio, FIG_FORCE_RATIO_CAP) });
+    assert(r >= 18.0);
+    return r;
 }
 
 fn fig_arrow_path(c: DOp[>..]&, x: f64, y: f64, deg: f64, size: f64, along: f64, col: i64) {
@@ -129,17 +177,7 @@ fn fig_head_path(c: DOp[>..]&, x: f64, tip: f64, dir: f64, size: f64, col: i64) 
     draw_path(c, s, paint_fill(col));
 }
 
-fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
-    let narrow = w < 520.0;
-    var x_label: u8[>..] = [];
-    format(x_label, "x (", sym(LENGTH), ")");
-    let mr = 16.0 + fig_label_width(x_label);
-    let l = g_m.length;
-    let yb = if narrow { 75.0 } else { 85.0 };
-    fig_text.clear();
-    fig_ticks.clear();
-    fig_ls.clear();
-    fig_ln.clear();
+fn fig_setup_panels(narrow: bool) {
     let hv = if narrow { 130.0 } else { 160.0 };
     let hm = if narrow { 130.0 } else { 160.0 };
     let hd = if narrow { 110.0 } else { 130.0 };
@@ -155,10 +193,13 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         fig_panels[k] = FigPanel { key: k, t0: at, t1: fig_text.len - at, h: h, color: color, q: q, top: 0.0, bottom: 0.0, lo: 0.0, hi: 0.0, k0: 0, kn: 0 };
         k++;
     }
-    var y = yb + 124.0 + 10.0;
-    var pts: Sample[>..] = [];
-    diagram(800, pts);
-    k = 0;
+    assert(fig_panels[2].key == 2);
+    assert(fig_text.len > 0);
+}
+
+fn fig_fit_panels(narrow: bool, pts: Sample[:], y0: f64) -> f64 {
+    var k = 0;
+    var y = y0;
     while k < 3 {
         var p = fig_panels[k];
         p.top = y + 22.0;
@@ -178,6 +219,46 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         fig_panels[k] = p;
         k++;
     }
+    assert(k == 3);
+    assert(fig_ls.len == fig_ln.len);
+    return y;
+}
+
+fn fig_plot_attrs(l: f64) -> u8[>..] {
+    var attrs: u8[>..] = [];
+    attrs.append(" class=\"plotarea\" id=\"plotarea\" tabindex=\"0\" role=\"slider\" aria-label=\"Section position along the beam\" aria-valuemin=\"");
+    attrs.append(fig_tidy(show_x(0.0, l)));
+    attrs.append("\" aria-valuemax=\"");
+    attrs.append(fig_tidy(show_x(l, l)));
+    attrs.append("\"");
+    if app_has_cursor {
+        attrs.append(" aria-valuenow=\"");
+        attrs.append(fig_tidy(show_x(app_cursor, l)));
+        attrs.append("\" aria-valuetext=\"");
+        esc_to(attrs, readout_text(app_cursor));
+        attrs.append("\"");
+    }
+    assert(l > 0.0);
+    assert(attrs.len > 0);
+    return attrs;
+}
+
+fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
+    let narrow = w < 520.0;
+    var x_label: u8[>..] = [];
+    format(x_label, "x (", sym(LENGTH), ")");
+    let mr = 16.0 + fig_label_width(x_label);
+    let l = g_m.length;
+    let yb = if narrow { 75.0 } else { 85.0 };
+    fig_text.clear();
+    fig_ticks.clear();
+    fig_ls.clear();
+    fig_ln.clear();
+    fig_setup_panels(narrow);
+    var pts: Sample[>..] = [];
+    diagram(800, pts);
+    let y = fig_fit_panels(narrow, pts, yb + 124.0 + 10.0);
+    var k = 0;
     let h = y;
     var widest = -1.0 / 0.0;
     var i = 0;
@@ -186,19 +267,7 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
     let lay = FigLay { ml: ml, mr: mr, w: w, l: l };
     draw_beam(c, lay, yb, narrow, interactive, x_label);
     if interactive {
-        var attrs: u8[>..] = [];
-        attrs.append(" class=\"plotarea\" id=\"plotarea\" tabindex=\"0\" role=\"slider\" aria-label=\"Section position along the beam\" aria-valuemin=\"");
-        attrs.append(fig_tidy(show_x(0.0, l)));
-        attrs.append("\" aria-valuemax=\"");
-        attrs.append(fig_tidy(show_x(l, l)));
-        attrs.append("\"");
-        if app_has_cursor {
-            attrs.append(" aria-valuenow=\"");
-            attrs.append(fig_tidy(show_x(app_cursor, l)));
-            attrs.append("\" aria-valuetext=\"");
-            esc_to(attrs, readout_text(app_cursor));
-            attrs.append("\"");
-        }
+        let attrs = fig_plot_attrs(l);
         draw_open(c, attrs);
     } else {
         draw_open(c, "");
@@ -216,6 +285,8 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         let x = fig_x(lay, if app_has_cursor { app_cursor } else { l / 2.0 });
         draw_line_cls(c, x, 8.0, x, fig_panels[2].bottom, paint_none(), "cursor");
     }
+    assert(fig_ls.len == fig_ln.len);
+    assert(l > 0.0);
     return Fig { w: w, h: h, ml: ml, mr: mr, l: l };
 }
 
@@ -225,9 +296,12 @@ fn fig_x_axis(c: DOp[>..]&, lay: FigLay, y: f64, label: u8[:]) {
     draw_line(c, fig_x(lay, 0.0), y, w - mr + 6.0, y, COL_FG, 1.0);
     fig_arrow_path(c, w - mr + 10.0, y, 90.0, 3.5, 1.6, COL_FG);
     draw_text(c, w - mr + 14.0, y + 4.0, label, "axlabel", ANC_START);
+    assert(c.len > 0);
+    assert(c[c.len - 1].shape == SH_TEXT);
 }
 
 fn fig_x_ticks(c: DOp[>..]&, lay: FigLay, y: f64, narrow: bool) {
+    assert(lay.l > 0.0);
     let l = lay.l;
     let o = offset(l);
     var ticks: f64[>..] = [];
@@ -237,9 +311,12 @@ fn fig_x_ticks(c: DOp[>..]&, lay: FigLay, y: f64, narrow: bool) {
         draw_line(c, px, y, px, y + 4.0, COL_MUTED, 1.0);
         draw_text(c, px, y + 15.0, sig(t, 4), "tick", ANC_MIDDLE);
     }
+    assert(ticks.len <= 100);
 }
 
 fn fig_open_handle(c: DOp[>..]&, interactive: bool, key: u8[:], label: u8[:], x: f64, l: f64) {
+    assert(l > 0.0);
+    assert(label.len > 0);
     if !interactive { draw_open(c, ""); return; }
     var a: u8[>..] = [];
     a.append(" class=\"handle");
@@ -263,20 +340,15 @@ fn fig_open_handle(c: DOp[>..]&, interactive: bool, key: u8[:], label: u8[:], x:
 }
 
 fn fig_grip(c: DOp[>..]&, interactive: bool, r0: f64, r1: f64, r2: f64, r3: f64, h0: f64, h1: f64, h2: f64, h3: f64) {
+    assert(c.len > 0);
     if !interactive { return; }
     draw_rect(c, r0, r1, r2, r3, 6.0, paint_none(), "ring");
     draw_rect(c, h0, h1, h2, h3, 0.0, paint_none(), "hit");
+    assert(c[c.len - 1].shape == SH_RECT);
 }
 
-fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool, x_label: u8[:]) {
-    let l = g_m.length;
-    draw_open(c, "");
-    var qmax = 1e-12;
-    var fmax = 1e-12;
-    for ld in g_loads {
-        if ld.kind == DIST { qmax = jmax(jmax(qmax, abs(ld.q1)), abs(ld.q2)); }
-        else if ld.kind == POINT { fmax = jmax(fmax, abs(ld.f)); }
-    }
+fn draw_dist_loads(c: DOp[>..]&, lay: FigLay, yb: f64, qmax: f64) {
+    assert(qmax > 0.0);
     for ld in g_loads {
         if ld.kind != DIST { continue; }
         let x1 = ld.x1;
@@ -316,9 +388,11 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         }
         draw_text(c, (px1 + px2) / 2.0, jmin(top1, top2) - 6.0, label, "val", ANC_MIDDLE);
     }
-    draw_rect(c, fig_x(lay, 0.0), yb - 4.0, fig_x(lay, l) - fig_x(lay, 0.0), 8.0, 2.0, paint_both(COL_SURFACE, COL_FG, 1.5), "");
+    assert(c.len > 0);
+}
+
+fn label_reactions(lay: FigLay, l: f64) -> f64[>..] {
     let force = sym(FORCE);
-    let moment = sym(MOMENT);
     var labelled: f64[>..] = [];
     var free_from = -1.0 / 0.0;
     for rr in g_rea {
@@ -328,6 +402,82 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         let left = if a == ANC_START { x } else if a == ANC_END { x - w } else { x - w / 2.0 };
         if left >= free_from { labelled.push(rr.x); free_from = left + w + 6.0; }
     }
+    assert(labelled.len <= g_rea.len);
+    assert(l > 0.0);
+    return labelled;
+}
+
+fn draw_support_symbol(c: DOp[>..]&, s: Support, x: f64, yb: f64, l: f64) {
+    assert(s.kind == PIN || s.kind == FIXED);
+    assert(l > 0.0);
+    if s.kind == PIN {
+        let sg = draw_seg_start();
+        draw_seg_m(x, yb + 4.0);
+        draw_seg_l(x - 10.0, yb + 20.0);
+        draw_seg_l(x + 10.0, yb + 20.0);
+        draw_seg_z();
+        draw_path(c, sg, paint_both(COL_BG, COL_FG, 1.5));
+        draw_line(c, x - 14.0, yb + 23.0, x + 14.0, yb + 23.0, COL_FG, 1.5);
+        var k = -12;
+        while k <= 8 {
+            let kf = k as f64;
+            draw_line(c, x + kf, yb + 27.0, x + kf + 4.0, yb + 23.0, COL_FG, 1.0);
+            k += 5;
+        }
+    } else {
+        let side = if s.x <= 0.0 { -1.0 } else if s.x >= l { 1.0 } else { 0.0 };
+        if side != 0.0 {
+            draw_line(c, x, yb - 20.0, x, yb + 20.0, COL_FG, 2.0);
+            var k = -20;
+            while k < 20 {
+                let kf = k as f64;
+                draw_line(c, x, yb + kf + 6.0, x + side * 6.0, yb + kf, COL_FG, 1.0);
+                k += 6;
+            }
+        } else {
+            draw_rect(c, x - 7.0, yb - 12.0, 14.0, 24.0, 0.0, paint_both(COL_BG, COL_FG, 1.5), "");
+            draw_line(c, x - 7.0, yb - 12.0, x + 7.0, yb + 12.0, COL_FG, 1.0);
+            draw_line(c, x + 7.0, yb - 12.0, x - 7.0, yb + 12.0, COL_FG, 1.0);
+        }
+    }
+    assert(c.len > 0);
+}
+
+fn draw_reaction(c: DOp[>..]&, s: Support, x: f64, yb: f64, labelled: f64[:], l: f64) {
+    assert(l > 0.0);
+    assert(labelled.len <= g_rea.len);
+    let force = sym(FORCE);
+    let moment = sym(MOMENT);
+    var found = false;
+    var rr = Reaction { kind: 0, x: 0.0, fy: 0.0, mz: 0.0 };
+    for r in g_rea {
+        if !found && r.x == s.x { found = true; rr = r; }
+    }
+    if !found { return; }
+    let up = rr.fy >= 0.0;
+    let ya = yb + 34.0;
+    let len = 20.0;
+    draw_line(c, x, if up { ya + len } else { ya }, x, if up { ya } else { ya + len }, COL_GREEN, 2.0);
+    fig_head_path(c, x, if up { ya - 1.0 } else { ya + len + 1.0 }, if up { -1.0 } else { 1.0 }, 4.0, COL_GREEN);
+    var is_labelled = false;
+    for lx in labelled { if lx == rr.x { is_labelled = true; } }
+    if is_labelled {
+        let a = fig_anchor_at(s.x, l);
+        let tx = x - fig_shift(a, 2.0);
+        var t: u8[>..] = [];
+        format(t, short_nf(show(abs(rr.fy), FORCE), 2), " ", force, " ", if up { "↑" } else { "↓" });
+        draw_text(c, tx, ya + len + 14.0, t, "val react", a);
+        if s.kind == FIXED && abs(rr.mz) > 1e-9 * (abs(rr.fy) + 1.0) {
+            var t2: u8[>..] = [];
+            format(t2, short_nf(show(abs(rr.mz), MOMENT), 2), " ", moment, " ", if rr.mz > 0.0 { "↺" } else { "↻" });
+            draw_text(c, tx, ya + len + 28.0, t2, "val react", a);
+        }
+    }
+}
+
+fn draw_supports(c: DOp[>..]&, lay: FigLay, yb: f64, interactive: bool) {
+    let l = g_m.length;
+    let labelled = label_reactions(lay, l);
     var i = 0;
     while i < st_sup.len {
         let s = st_sup[i];
@@ -339,65 +489,65 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         var label: u8[>..] = [];
         format(label, if s.kind == PIN { "Pin" } else { "Fixed" }, " support ", i, ", position");
         fig_open_handle(c, interactive, key, label, s.x, l);
-        if s.kind == PIN {
-            let sg = draw_seg_start();
-            draw_seg_m(x, yb + 4.0);
-            draw_seg_l(x - 10.0, yb + 20.0);
-            draw_seg_l(x + 10.0, yb + 20.0);
-            draw_seg_z();
-            draw_path(c, sg, paint_both(COL_BG, COL_FG, 1.5));
-            draw_line(c, x - 14.0, yb + 23.0, x + 14.0, yb + 23.0, COL_FG, 1.5);
-            var k = -12;
-            while k <= 8 {
-                let kf = k as f64;
-                draw_line(c, x + kf, yb + 27.0, x + kf + 4.0, yb + 23.0, COL_FG, 1.0);
-                k += 5;
-            }
-        } else {
-            let side = if s.x <= 0.0 { -1.0 } else if s.x >= l { 1.0 } else { 0.0 };
-            if side != 0.0 {
-                draw_line(c, x, yb - 20.0, x, yb + 20.0, COL_FG, 2.0);
-                var k = -20;
-                while k < 20 {
-                    let kf = k as f64;
-                    draw_line(c, x, yb + kf + 6.0, x + side * 6.0, yb + kf, COL_FG, 1.0);
-                    k += 6;
-                }
-            } else {
-                draw_rect(c, x - 7.0, yb - 12.0, 14.0, 24.0, 0.0, paint_both(COL_BG, COL_FG, 1.5), "");
-                draw_line(c, x - 7.0, yb - 12.0, x + 7.0, yb + 12.0, COL_FG, 1.0);
-                draw_line(c, x + 7.0, yb - 12.0, x - 7.0, yb + 12.0, COL_FG, 1.0);
-            }
-        }
+        draw_support_symbol(c, s, x, yb, l);
         fig_grip(c, interactive, x - 16.0, yb - 22.0, 32.0, 52.0, x - 16.0, yb - 22.0, 32.0, 52.0);
         draw_close(c);
-        var found = false;
-        var rr = Reaction { kind: 0, x: 0.0, fy: 0.0, mz: 0.0 };
-        for r in g_rea {
-            if !found && r.x == s.x { found = true; rr = r; }
-        }
-        if !found { continue; }
-        let up = rr.fy >= 0.0;
-        let ya = yb + 34.0;
-        let len = 20.0;
-        draw_line(c, x, if up { ya + len } else { ya }, x, if up { ya } else { ya + len }, COL_GREEN, 2.0);
-        fig_head_path(c, x, if up { ya - 1.0 } else { ya + len + 1.0 }, if up { -1.0 } else { 1.0 }, 4.0, COL_GREEN);
-        var is_labelled = false;
-        for lx in labelled { if lx == rr.x { is_labelled = true; } }
-        if is_labelled {
-            let a = fig_anchor_at(s.x, l);
-            let tx = x - fig_shift(a, 2.0);
-            var t: u8[>..] = [];
-            format(t, short_nf(show(abs(rr.fy), FORCE), 2), " ", force, " ", if up { "↑" } else { "↓" });
-            draw_text(c, tx, ya + len + 14.0, t, "val react", a);
-            if s.kind == FIXED && abs(rr.mz) > 1e-9 * (abs(rr.fy) + 1.0) {
-                var t2: u8[>..] = [];
-                format(t2, short_nf(show(abs(rr.mz), MOMENT), 2), " ", moment, " ", if rr.mz > 0.0 { "↺" } else { "↻" });
-                draw_text(c, tx, ya + len + 28.0, t2, "val react", a);
-            }
-        }
+        draw_reaction(c, s, x, yb, labelled, l);
     }
-    i = 0;
+    assert(i == st_sup.len);
+    assert(labelled.len <= g_rea.len);
+}
+
+fn draw_point_load(c: DOp[>..]&, ld: Load, x: f64, yb: f64, fmax: f64, a: i64, interactive: bool) {
+    assert(a >= ANC_START && a <= ANC_END);
+    assert(ld.kind == POINT);
+    let force = sym(FORCE);
+    let len = fig_force_arrow_length(ld.f, fmax);
+    let down = ld.f <= 0.0;
+    let y0 = yb - 6.0 - len;
+    let y1 = yb - 6.0;
+    draw_line(c, x, if down { y0 } else { y1 - 1.0 }, x, if down { y1 - 7.0 } else { y0 + 7.0 }, COL_FG, 2.0);
+    var t: u8[>..] = [];
+    format(t, short(show(abs(ld.f), FORCE), 3), " ", force, " ", if down { "↓" } else { "↑" });
+    draw_text(c, x, y0 - 6.0, t, "val", a);
+    fig_grip(c, interactive, x - 14.0, y0 - 4.0, 28.0, len + 6.0, x - 16.0, y0 - 20.0, 32.0, len + 22.0);
+    draw_close(c);
+    fig_head_path(c, x, if down { y1 } else { y0 }, if down { 1.0 } else { -1.0 }, 5.0, COL_FG);
+    assert(c.len > 0);
+}
+
+fn draw_couple(c: DOp[>..]&, ld: Load, x: f64, yb: f64, a: i64, interactive: bool) {
+    assert(a >= ANC_START && a <= ANC_END);
+    assert(ld.kind != DIST);
+    let moment = sym(MOMENT);
+    let rr = 14.0;
+    let ccw = ld.c >= 0.0;
+    let k = 0.5522847498 * rr;
+    let s = if ccw { -1.0 } else { 1.0 };
+    let sg = draw_seg_start();
+    draw_seg_m(x + rr, yb);
+    draw_seg_c(x + rr, yb + s * k, x + k, yb + s * rr, x, yb + s * rr);
+    draw_seg_c(x - k, yb + s * rr, x - rr, yb + s * k, x - rr, yb);
+    draw_path(c, sg, paint_stroke(COL_FG, 2.0));
+    let tx = x - rr;
+    let sg2 = draw_seg_start();
+    draw_seg_m(tx, yb - s);
+    draw_seg_l(tx + 5.0 * s, yb + 7.0 * s);
+    draw_seg_l(tx - 5.0 * s, yb + 7.0 * s);
+    draw_seg_z();
+    draw_path(c, sg2, paint_fill(COL_FG));
+    var t: u8[>..] = [];
+    format(t, short(show(abs(ld.c), MOMENT), 3), " ", moment, " ", if ccw { "↺" } else { "↻" });
+    draw_text(c, x, yb - rr - 8.0, t, "val", a);
+    fig_grip(c, interactive, x - rr - 5.0, yb - rr - 5.0, 2.0 * rr + 10.0, rr + 12.0, x - rr - 6.0, yb - rr - 22.0, 2.0 * rr + 12.0, rr + 30.0);
+    draw_close(c);
+
+    assert(c.len > 0);
+}
+
+fn draw_loads(c: DOp[>..]&, lay: FigLay, yb: f64, fmax: f64, interactive: bool) {
+    let l = g_m.length;
+    var i = 0;
     while i < st_loads.len {
         let ld = st_loads[i];
         i++;
@@ -410,41 +560,18 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         fig_open_handle(c, interactive, key, label, ld.x, l);
         let a = fig_anchor_at(ld.x, l);
         if ld.kind == POINT {
-            let len = fig_force_arrow_length(ld.f, fmax);
-            let down = ld.f <= 0.0;
-            let y0 = yb - 6.0 - len;
-            let y1 = yb - 6.0;
-            draw_line(c, x, if down { y0 } else { y1 - 1.0 }, x, if down { y1 - 7.0 } else { y0 + 7.0 }, COL_FG, 2.0);
-            var t: u8[>..] = [];
-            format(t, short(show(abs(ld.f), FORCE), 3), " ", force, " ", if down { "↓" } else { "↑" });
-            draw_text(c, x, y0 - 6.0, t, "val", a);
-            fig_grip(c, interactive, x - 14.0, y0 - 4.0, 28.0, len + 6.0, x - 16.0, y0 - 20.0, 32.0, len + 22.0);
-            draw_close(c);
-            fig_head_path(c, x, if down { y1 } else { y0 }, if down { 1.0 } else { -1.0 }, 5.0, COL_FG);
+            draw_point_load(c, ld, x, yb, fmax, a, interactive);
         } else {
-            let rr = 14.0;
-            let ccw = ld.c >= 0.0;
-            let k = 0.5522847498 * rr;
-            let s = if ccw { -1.0 } else { 1.0 };
-            let sg = draw_seg_start();
-            draw_seg_m(x + rr, yb);
-            draw_seg_c(x + rr, yb + s * k, x + k, yb + s * rr, x, yb + s * rr);
-            draw_seg_c(x - k, yb + s * rr, x - rr, yb + s * k, x - rr, yb);
-            draw_path(c, sg, paint_stroke(COL_FG, 2.0));
-            let tx = x - rr;
-            let sg2 = draw_seg_start();
-            draw_seg_m(tx, yb - s);
-            draw_seg_l(tx + 5.0 * s, yb + 7.0 * s);
-            draw_seg_l(tx - 5.0 * s, yb + 7.0 * s);
-            draw_seg_z();
-            draw_path(c, sg2, paint_fill(COL_FG));
-            var t: u8[>..] = [];
-            format(t, short(show(abs(ld.c), MOMENT), 3), " ", moment, " ", if ccw { "↺" } else { "↻" });
-            draw_text(c, x, yb - rr - 8.0, t, "val", a);
-            fig_grip(c, interactive, x - rr - 5.0, yb - rr - 5.0, 2.0 * rr + 10.0, rr + 12.0, x - rr - 6.0, yb - rr - 22.0, 2.0 * rr + 12.0, rr + 30.0);
-            draw_close(c);
+            draw_couple(c, ld, x, yb, a, interactive);
         }
     }
+    assert(i == st_loads.len);
+    assert(c.len > 0);
+}
+
+fn draw_axes(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, x_label: u8[:]) {
+    assert(yb > 0.0);
+    let l = g_m.length;
     let ya = yb + 104.0;
     let xo = fig_x(lay, offset(l));
     draw_open(c, " class=\"axes\"");
@@ -455,9 +582,52 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
     draw_text(c, xo - 6.0, ya - 8.0, "y", "axlabel halo", ANC_END);
     draw_close(c);
     draw_close(c);
+    assert(c.len > 0);
+}
+
+
+fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool, x_label: u8[:]) {
+    assert(yb > 0.0);
+    let l = g_m.length;
+    draw_open(c, "");
+    var qmax = 1e-12;
+    var fmax = 1e-12;
+    for ld in g_loads {
+        if ld.kind == DIST { qmax = jmax(jmax(qmax, abs(ld.q1)), abs(ld.q2)); }
+        else if ld.kind == POINT { fmax = jmax(fmax, abs(ld.f)); }
+    }
+    draw_dist_loads(c, lay, yb, qmax);
+    draw_rect(c, fig_x(lay, 0.0), yb - 4.0, fig_x(lay, l) - fig_x(lay, 0.0), 8.0, 2.0, paint_both(COL_SURFACE, COL_FG, 1.5), "");
+    draw_supports(c, lay, yb, interactive);
+    draw_loads(c, lay, yb, fmax, interactive);
+    draw_axes(c, lay, yb, narrow, x_label);
+    assert(c.len > 0);
+    assert(qmax > 0.0);
+}
+
+fn draw_extreme(c: DOp[>..]&, p: FigPanel, lay: FigLay) {
+    assert(p.key >= 0 && p.key <= 2);
+    assert(lay.l > 0.0);
+    let ml = lay.ml;
+    let w = lay.w;
+    let mr = lay.mr;
+    let ex = if p.key == 0 { g_ext.v_shear } else if p.key == 1 { g_ext.m } else { g_ext.v };
+    if abs(ex.value) > 0.0 {
+        let v = show(ex.value, p.q);
+        let x = fig_x(lay, ex.x);
+        let yv = fig_panel_y(p, v);
+        draw_circle(c, x, yv, 3.5, paint_both(p.color, COL_BG, 2.0), "");
+        let a = if x < ml + 60.0 { ANC_START } else if x > w - mr - 60.0 { ANC_END } else { ANC_MIDDLE };
+        var tx: u8[>..] = [];
+        format(tx, short(v, 4), " ", sym(p.q));
+        draw_text(c, x + fig_shift(a, 6.0), if v >= 0.0 { yv - 8.0 } else { yv + 16.0 }, tx, "val", a);
+    }
+    assert(c.len > 0);
 }
 
 fn draw_diagram(c: DOp[>..]&, p: FigPanel, pts: Sample[:], lay: FigLay, narrow: bool, x_label: u8[:]) {
+    assert(p.kn >= 0);
+    assert(p.k0 + p.kn <= fig_ticks.len);
     let ml = lay.ml;
     let w = lay.w;
     let mr = lay.mr;
@@ -505,15 +675,6 @@ fn draw_diagram(c: DOp[>..]&, p: FigPanel, pts: Sample[:], lay: FigLay, narrow: 
         draw_path_cls(c, sg, draw_segs.len - sg, paint_opacity(paint_fill(p.color), 0.14), "area");
     }
     draw_path_cls(c, sg, line_n, paint_round(paint_stroke(p.color, 2.0)), "");
-    let ex = if p.key == 0 { g_ext.v_shear } else if p.key == 1 { g_ext.m } else { g_ext.v };
-    if abs(ex.value) > 0.0 {
-        let v = show(ex.value, p.q);
-        let x = fig_x(lay, ex.x);
-        let yv = fig_panel_y(p, v);
-        draw_circle(c, x, yv, 3.5, paint_both(p.color, COL_BG, 2.0), "");
-        let a = if x < ml + 60.0 { ANC_START } else if x > w - mr - 60.0 { ANC_END } else { ANC_MIDDLE };
-        var tx: u8[>..] = [];
-        format(tx, short(v, 4), " ", sym(p.q));
-        draw_text(c, x + fig_shift(a, 6.0), if v >= 0.0 { yv - 8.0 } else { yv + 16.0 }, tx, "val", a);
-    }
+    draw_extreme(c, p, lay);
+    assert(i == pts.len);
 }

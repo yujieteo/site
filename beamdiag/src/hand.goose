@@ -51,19 +51,53 @@ var hand_sum_r: f64 = 0.0;
 var hand_sum_mr: f64 = 0.0;
 var hand_resid: f64 = 0.0;
 
-fn hand_invalidate() { hand_valid = false; }
-fn hand_current(u: i64, mid: bool) -> bool { return hand_valid && hand_u == u && hand_mid == mid; }
+fn hand_invalidate() {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
+    hand_valid = false;
+}
+fn hand_current(u: i64, mid: bool) -> bool {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
+    return hand_valid && hand_u == u && hand_mid == mid;
+}
 
 
-fn hand_show(si: f64, q: i64) -> f64 { return to_units(si, q, hand_u); }
-fn hand_sym(q: i64) -> const u8[:] { return unit_symbol(hand_u, q); }
-fn hand_x(x: f64) -> f64 { return hand_show(from_origin(x, hand_len, hand_mid), LENGTH); }
-fn hand_pos(x: f64) -> u8[>..] { return sig4(hand_x(x)); }
+fn hand_show(si: f64, q: i64) -> f64 {
+    assert(q >= 0);
+    assert(q <= ANGLE);
+    return to_units(si, q, hand_u);
+}
+fn hand_sym(q: i64) -> const u8[:] {
+    assert(q >= 0);
+    assert(q <= ANGLE);
+    return unit_symbol(hand_u, q);
+}
+fn hand_x(x: f64) -> f64 {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
+    return hand_show(from_origin(x, hand_len, hand_mid), LENGTH);
+}
+fn hand_pos(x: f64) -> u8[>..] {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
+    return sig4(hand_x(x));
+}
 
-fn hand_tex_p(t: u8[:]) -> u8[>..] { return if starts_with(t, "−") { str("(", tex_number(t), ")") } else { tex_number(t) }; }
-fn hand_tq(t: u8[:], q: i64) -> u8[>..] { return str(tex_number(t), "\\ ", tex_unit(hand_sym(q))); }
+fn hand_tex_p(t: u8[:]) -> u8[>..] {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
+    return if starts_with(t, "−") { str("(", tex_number(t), ")") } else { tex_number(t) };
+}
+fn hand_tq(t: u8[:], q: i64) -> u8[>..] {
+    assert(q >= 0);
+    assert(q <= ANGLE);
+    return str(tex_number(t), "\\ ", tex_unit(hand_sym(q)));
+}
 
 fn hand_vtext(value: f64, q: i64) -> u8[>..] {
+    assert(q >= 0);
+    assert(q <= ANGLE);
     var scale = 0.0;
     if q == FORCE { scale = hand_show(hand_scale[0], q); }
     else if q == MOMENT { scale = hand_show(hand_scale[1], q); }
@@ -74,6 +108,8 @@ fn hand_vtext(value: f64, q: i64) -> u8[>..] {
 
 
 fn hand_term(out: u8[>..]&, k: f64, s: u8[:]) {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
     if k == 0.0 { return; }
     let t = sig4(abs(k));
     let body = if s.len == 0 { tex_number(t) } else if t == "1" { str(s) } else { str(tex_number(t), "\\,", s) };
@@ -83,15 +119,23 @@ fn hand_term(out: u8[>..]&, k: f64, s: u8[:]) {
     out.append(body);
 }
 
-fn hand_zero_if_empty(out: u8[>..]&) { if out.len == 0 { out.append("0"); } }
+fn hand_zero_if_empty(out: u8[>..]&) {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
+    if out.len == 0 { out.append("0"); }
+}
 
 fn hand_power_name(v: u8[:], n: i64) -> u8[>..] {
+    assert(n >= 0);
+    assert(n <= 8);
     if n == 0 { return ""; }
     if n == 1 { return str(v); }
     return str(v, "^{", n, "}");
 }
 
 fn hand_poly(coef: f64[:], h: f64) -> u8[>..] {
+    assert(coef.len > 0);
+    assert(coef.len <= 6);
     var size = abs(coef[0]) * pw(h, 0);
     var n = 1;
     while n < coef.len {
@@ -110,6 +154,8 @@ fn hand_poly(coef: f64[:], h: f64) -> u8[>..] {
 }
 
 fn hand_bracket(a: f64, n: i64) -> u8[>..] {
+    assert(n >= 0);
+    assert(n <= 5);
     let t = sig4(abs(a));
     let inner = if a == 0.0 || t == "0" { str("x") } else { str("x ", if a > 0.0 { "-" } else { "+" }, " ", tex_number(t)) };
     let pw_text = if n == 1 { str("") } else { str("^{", n, "}") };
@@ -117,13 +163,21 @@ fn hand_bracket(a: f64, n: i64) -> u8[>..] {
 }
 
 
-fn hand_act_f_text(a: HAct) -> u8[>..] { return tex_number(sig4(a.f)); }
+fn hand_act_f_text(a: HAct) -> u8[>..] {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
+    return tex_number(sig4(a.f));
+}
 fn hand_act_m_text(a: HAct) -> u8[>..] {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
     if a.couple { return tex_number(sig4(a.mo)); }
     return str(hand_tex_p(sig4(a.f)), " \\times ", hand_tex_p(sig4(a.arm)));
 }
 
 fn hand_sum_of(acts: HAct[:], use_f: bool, total: u8[:]) -> u8[>..] {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
     var count = 0;
     for a in acts { if !use_f || a.has_f { count++; } }
     if count > HAND_WRITE_TERMS || count <= 1 { return tex_number(total); }
@@ -141,6 +195,8 @@ fn hand_sum_of(acts: HAct[:], use_f: bool, total: u8[:]) -> u8[>..] {
 }
 
 fn hand_actions(reference: f64) -> HAct[>..] {
+    assert(hand_loads.len == g_loads.len);
+    assert(hand_len > 0.0);
     var out: HAct[>..] = [];
     for l in hand_loads {
         if !l.dist && !l.moment {
@@ -162,11 +218,15 @@ fn hand_actions(reference: f64) -> HAct[>..] {
 }
 
 fn hand_push_part(out: HAct[>..]&, w: f64, where: f64, reference: f64) {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
     if w == 0.0 { return; }
     out.push(HAct { f: w, mo: w * (where - reference), has_f: true, couple: false, arm: where - reference });
 }
 
 fn hand_load_terms(out: HTerm[>..]&) {
+    assert(hand_loads.len == g_loads.len);
+    assert(hand_u >= 0);
     var all: HTerm[>..] = [];
     for l in hand_loads {
         if !l.dist && !l.moment {
@@ -184,9 +244,15 @@ fn hand_load_terms(out: HTerm[>..]&) {
     for t in all { if t.k != 0.0 { out.push(t); } }
 }
 
-fn hand_mac(d: f64, n: i64) -> f64 { return if d > 0.0 { pw(d, n) } else { 0.0 }; }
+fn hand_mac(d: f64, n: i64) -> f64 {
+    assert(n >= 0);
+    assert(n <= 5);
+    return if d > 0.0 { pw(d, n) } else { 0.0 };
+}
 
 fn hand_integrated(terms: HTerm[:], k: i64, x: f64) -> f64 {
+    assert(k >= 1);
+    assert(k <= 2);
     var acc = 0.0;
     for t in terms {
         var den = 1.0;
@@ -200,6 +266,8 @@ fn hand_integrated(terms: HTerm[:], k: i64, x: f64) -> f64 {
 
 
 fn hand_uname(k: i64) -> u8[>..] {
+    assert(k >= 0);
+    assert(k < hand_unk.len);
     let u = hand_unk[k];
     if u.kind == 0 { return str("R_{", hand_rea[u.r].i, "}"); }
     if u.kind == 1 { return str("M_{", hand_rea[u.r].i, "}"); }
@@ -207,6 +275,8 @@ fn hand_uname(k: i64) -> u8[>..] {
 }
 
 fn hand_row_label(r: i64) -> u8[>..] {
+    assert(r >= 0);
+    assert(r < hand_rows.len);
     let w = hand_rows[r];
     if w.kind == 0 { return "\\sum F_y = 0"; }
     if w.kind == 1 { return str("\\sum M_{x = ", tex_number(sig4(-hand_o)), "} = 0"); }
@@ -215,6 +285,8 @@ fn hand_row_label(r: i64) -> u8[>..] {
 }
 
 fn hand_row_what(r: i64) -> u8[>..] {
+    assert(r >= 0);
+    assert(r < hand_rows.len);
     let w = hand_rows[r];
     if w.kind == 0 { return "vertical equilibrium"; }
     if w.kind == 1 { return "moments about the left end"; }
@@ -222,21 +294,16 @@ fn hand_row_what(r: i64) -> u8[>..] {
     return if w.kind == 2 { str("no deflection at support ", i) } else { str("no rotation at fixed support ", i) };
 }
 
-fn hand_coef_at(r: i64, k: i64) -> f64 { return hand_coef[r * hand_unk.len + k]; }
+fn hand_coef_at(r: i64, k: i64) -> f64 {
+    assert(r >= 0 && r < hand_rows.len);
+    assert(k >= 0 && k < hand_unk.len);
+    assert(hand_coef.len == hand_rows.len * hand_unk.len);
+    return hand_coef[r * hand_unk.len + k];
+}
 
-fn hand_derive(u: i64, mid: bool) {
-    hand_u = u;
-    hand_mid = mid;
-    hand_len = g_m.length;
-    hand_steps_ok = false;
-    let l = hand_len;
-    hand_scale[0] = abs(g_ext.v_shear.value);
-    hand_scale[1] = abs(g_ext.m.value);
-    hand_scale[2] = abs(g_ext.v.value);
-    hand_scale[3] = abs(g_ext.v.value) / l;
-    hand_dlen = scale_value(g_m.length, LENGTH, u, false, false);
-    hand_o = if mid { hand_dlen / 2.0 } else { 0.0 };
-    hand_ei = scale_value(g_m.e, STRESS, u, false, false) * scale_value(g_m.section.i, INERTIA, u, false, false);
+fn hand_collect(u: i64) {
+    assert(u >= 0);
+    assert(u < UNIT_COUNT);
     hand_rea.clear();
     var j = 0;
     for re in g_rea {
@@ -266,47 +333,16 @@ fn hand_derive(u: i64, mid: bool) {
         hand_loads.push(h);
         j++;
     }
-    hand_deg = indeterminacy(g_sup);
-    let xi0 = -hand_o;
-    hand_ends0 = xi0;
-    hand_ends1 = hand_dlen - hand_o;
-    hand_unk.clear();
-    j = 0;
-    while j < hand_rea.len {
-        hand_unk.push(HUnknown { kind: 0, r: j });
-        if hand_rea[j].kind == FIXED { hand_unk.push(HUnknown { kind: 1, r: j }); }
-        j++;
-    }
-    hand_unk.push(HUnknown { kind: 2, r: -1 });
-    hand_unk.push(HUnknown { kind: 3, r: -1 });
-    hand_known.clear();
-    hand_load_terms(hand_known);
-    let about0 = hand_actions(xi0);
-    hand_sum_f = 0.0;
-    hand_sum_m0 = 0.0;
-    for a in about0 { hand_sum_f = hand_sum_f + a.f; }
-    for a in about0 { hand_sum_m0 = hand_sum_m0 + a.mo; }
-    let n = hand_unk.len;
-    hand_rows.clear();
-    hand_coef.clear();
-    hand_rhs.clear();
-    hand_rows.push(HRow { kind: 0, sup: -1 });
-    var k = 0;
-    while k < n { hand_coef.push(if hand_unk[k].kind == 0 { 1.0 } else { 0.0 }); k++; }
-    hand_rhs.push(-hand_sum_f);
-    hand_rows.push(HRow { kind: 1, sup: -1 });
-    k = 0;
-    while k < n {
-        let w = hand_unk[k];
-        hand_coef.push(if w.kind == 0 { hand_rea[w.r].xi - xi0 } else if w.kind == 1 { 1.0 } else { 0.0 });
-        k++;
-    }
-    hand_rhs.push(-hand_sum_m0);
-    j = 0;
+}
+
+fn hand_support_rows(n: i64) {
+    assert(n >= 2);
+    assert(n == hand_unk.len);
+    var j = 0;
     while j < hand_rea.len {
         let ax = hand_rea[j].xi;
         hand_rows.push(HRow { kind: 2, sup: j });
-        k = 0;
+        var k = 0;
         while k < n {
             let w = hand_unk[k];
             var cv = 0.0;
@@ -335,10 +371,36 @@ fn hand_derive(u: i64, mid: bool) {
         }
         j++;
     }
+}
+
+fn hand_build_rows(xi0: f64, n: i64) {
+    assert(n == hand_unk.len);
+    assert(hand_rea.len > 0);
+    hand_rows.clear();
+    hand_coef.clear();
+    hand_rhs.clear();
+    hand_rows.push(HRow { kind: 0, sup: -1 });
+    var k = 0;
+    while k < n { hand_coef.push(if hand_unk[k].kind == 0 { 1.0 } else { 0.0 }); k++; }
+    hand_rhs.push(-hand_sum_f);
+    hand_rows.push(HRow { kind: 1, sup: -1 });
+    k = 0;
+    while k < n {
+        let w = hand_unk[k];
+        hand_coef.push(if w.kind == 0 { hand_rea[w.r].xi - xi0 } else if w.kind == 1 { 1.0 } else { 0.0 });
+        k++;
+    }
+    hand_rhs.push(-hand_sum_m0);
+    hand_support_rows(n);
+}
+
+fn hand_seed_solver(n: i64, xi0: f64) {
+    assert(n == hand_unk.len);
+    assert(g_disp.len > 0);
     let theta0 = g_disp[0].theta;
     let v0 = hand_show(g_disp[0].v, LENGTH);
     hand_solver.clear();
-    k = 0;
+    var k = 0;
     while k < n {
         let w = hand_unk[k];
         if w.kind == 0 { hand_solver.push(hand_rea[w.r].fy); }
@@ -347,6 +409,47 @@ fn hand_derive(u: i64, mid: bool) {
         else { hand_solver.push(hand_ei * v0 - hand_ei * theta0 * xi0); }
         k++;
     }
+}
+
+fn hand_derive(u: i64, mid: bool) {
+    assert(u >= 0);
+    assert(u < UNIT_COUNT);
+    hand_u = u;
+    hand_mid = mid;
+    hand_len = g_m.length;
+    hand_steps_ok = false;
+    let l = hand_len;
+    hand_scale[0] = abs(g_ext.v_shear.value);
+    hand_scale[1] = abs(g_ext.m.value);
+    hand_scale[2] = abs(g_ext.v.value);
+    hand_scale[3] = abs(g_ext.v.value) / l;
+    hand_dlen = scale_value(g_m.length, LENGTH, u, false, false);
+    hand_o = if mid { hand_dlen / 2.0 } else { 0.0 };
+    hand_ei = scale_value(g_m.e, STRESS, u, false, false) * scale_value(g_m.section.i, INERTIA, u, false, false);
+    hand_collect(u);
+    hand_deg = indeterminacy(g_sup);
+    let xi0 = -hand_o;
+    hand_ends0 = xi0;
+    hand_ends1 = hand_dlen - hand_o;
+    hand_unk.clear();
+    var j = 0;
+    while j < hand_rea.len {
+        hand_unk.push(HUnknown { kind: 0, r: j });
+        if hand_rea[j].kind == FIXED { hand_unk.push(HUnknown { kind: 1, r: j }); }
+        j++;
+    }
+    hand_unk.push(HUnknown { kind: 2, r: -1 });
+    hand_unk.push(HUnknown { kind: 3, r: -1 });
+    hand_known.clear();
+    hand_load_terms(hand_known);
+    let about0 = hand_actions(xi0);
+    hand_sum_f = 0.0;
+    hand_sum_m0 = 0.0;
+    for a in about0 { hand_sum_f = hand_sum_f + a.f; }
+    for a in about0 { hand_sum_m0 = hand_sum_m0 + a.mo; }
+    let n = hand_unk.len;
+    hand_build_rows(xi0, n);
+    hand_seed_solver(n, xi0);
     hand_written = hand_deg == 0 || n <= HAND_WRITE_UNKNOWNS;
     hand_segs.clear();
     hand_jumps.clear();
@@ -364,32 +467,9 @@ fn hand_derive(u: i64, mid: bool) {
     hand_valid = true;
 }
 
-fn hand_segment(a: f64, b: f64, e: i64) {
-    let h = hand_show(b - a, LENGTH);
-    let qa = hand_show(intensity(g_loads, a, RIGHT), DISTRIBUTED);
-    let qb = hand_show(intensity(g_loads, b, LEFT), DISTRIBUTED);
-    let k = (qb - qa) / h;
-    let sv0, sm0 = internal(a, RIGHT);
-    let ev0, em0 = internal(b, LEFT);
-    var bv0 = 0.0;
-    var bm0 = 0.0;
-    if e != 0 { bv0, bm0 = internal(a, LEFT); }
-    let dva, dta = deflection(a);
-    let dvb, dtb = deflection(b);
-    let sv = hand_show(sv0, FORCE);
-    let sm = hand_show(sm0, MOMENT);
-    let st = dta;
-    let sd = hand_show(dva, LENGTH);
-    let ei = hand_ei;
-    var seg = HSeg {
-        index: e + 1, a: a, b: b, xa: hand_x(a), xb: hand_x(b), h: h, qa: qa, qb: qb, k: k,
-        sv: sv, sm: sm, st: st, sd: sd,
-        ev: hand_show(ev0, FORCE), em: hand_show(em0, MOMENT), et: dtb, ed: hand_show(dvb, LENGTH),
-        bv: hand_show(bv0, FORCE), bm: hand_show(bm0, MOMENT),
-        poly: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-        support_at_end: -1,
-    };
-    let sn = hand_segs.len;
+fn hand_seg_jumps(a: f64, sn: i64) {
+    assert(sn >= 0);
+    assert(sn == hand_segs.len);
     var j = 0;
     while j < hand_rea.len {
         let re = hand_rea[j];
@@ -405,10 +485,11 @@ fn hand_segment(a: f64, b: f64, e: i64) {
             else { hand_jumps.push(HJump { seg: sn, kind: 2, n: ld.n, value: ld.f, moment: false }); }
         }
     }
-    seg.poly[0] = sv; seg.poly[1] = qa; seg.poly[2] = k / 2.0;
-    seg.poly[3] = sm; seg.poly[4] = sv; seg.poly[5] = qa / 2.0; seg.poly[6] = k / 6.0;
-    seg.poly[7] = ei * st; seg.poly[8] = sm; seg.poly[9] = sv / 2.0; seg.poly[10] = qa / 6.0; seg.poly[11] = k / 24.0;
-    seg.poly[12] = ei * sd; seg.poly[13] = ei * st; seg.poly[14] = sm / 2.0; seg.poly[15] = sv / 6.0; seg.poly[16] = qa / 24.0; seg.poly[17] = k / 120.0;
+}
+
+fn hand_seg_stationary(a: f64, b: f64, h: f64, sv: f64, qa: f64, k: f64, sn: i64) {
+    assert(sn >= 0);
+    assert(sn == hand_segs.len);
     let a2 = k / 2.0;
     let a1 = qa;
     let a0 = sv;
@@ -441,7 +522,43 @@ fn hand_segment(a: f64, b: f64, e: i64) {
         let sv2, sm2 = internal(x, RIGHT);
         hand_stat.push(HStat { seg: sn, s: s, x: x, m: hand_show(sm2, MOMENT) });
     }
-    j = 0;
+}
+
+fn hand_segment(a: f64, b: f64, e: i64) {
+    assert(e >= 0);
+    assert(e < g_disp.len - 1);
+    let h = hand_show(b - a, LENGTH);
+    let qa = hand_show(intensity(g_loads, a, RIGHT), DISTRIBUTED);
+    let qb = hand_show(intensity(g_loads, b, LEFT), DISTRIBUTED);
+    let k = (qb - qa) / h;
+    let sv0, sm0 = internal(a, RIGHT);
+    let ev0, em0 = internal(b, LEFT);
+    var bv0 = 0.0;
+    var bm0 = 0.0;
+    if e != 0 { bv0, bm0 = internal(a, LEFT); }
+    let dva, dta = deflection(a);
+    let dvb, dtb = deflection(b);
+    let sv = hand_show(sv0, FORCE);
+    let sm = hand_show(sm0, MOMENT);
+    let st = dta;
+    let sd = hand_show(dva, LENGTH);
+    let ei = hand_ei;
+    var seg = HSeg {
+        index: e + 1, a: a, b: b, xa: hand_x(a), xb: hand_x(b), h: h, qa: qa, qb: qb, k: k,
+        sv: sv, sm: sm, st: st, sd: sd,
+        ev: hand_show(ev0, FORCE), em: hand_show(em0, MOMENT), et: dtb, ed: hand_show(dvb, LENGTH),
+        bv: hand_show(bv0, FORCE), bm: hand_show(bm0, MOMENT),
+        poly: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        support_at_end: -1,
+    };
+    let sn = hand_segs.len;
+    hand_seg_jumps(a, sn);
+    seg.poly[0] = sv; seg.poly[1] = qa; seg.poly[2] = k / 2.0;
+    seg.poly[3] = sm; seg.poly[4] = sv; seg.poly[5] = qa / 2.0; seg.poly[6] = k / 6.0;
+    seg.poly[7] = ei * st; seg.poly[8] = sm; seg.poly[9] = sv / 2.0; seg.poly[10] = qa / 6.0; seg.poly[11] = k / 24.0;
+    seg.poly[12] = ei * sd; seg.poly[13] = ei * st; seg.poly[14] = sm / 2.0; seg.poly[15] = sv / 6.0; seg.poly[16] = qa / 24.0; seg.poly[17] = k / 120.0;
+    hand_seg_stationary(a, b, h, sv, qa, k, sn);
+    var j = 0;
     while j < hand_rea.len {
         if hand_rea[j].x == b { seg.support_at_end = j; break; }
         j++;
@@ -457,12 +574,16 @@ var hand_buf: u8[>..] = [];
 var hand_steps_ok: bool = false;
 
 fn hs_text(s: u8[:]) {
+    assert(hand_buf.len >= 0);
+    assert(s.len < 1000000);
     let t0 = hand_buf.len;
     hand_buf.append(s);
     hand_steps.push(HStep { eq: false, t0: t0, tl: s.len, u0: 0, ul: 0 });
 }
 
 fn hs_eq(s: u8[:]) {
+    assert(hand_buf.len >= 0);
+    assert(s.len < 1000000);
     let u = tex_unicode(s);
     let t0 = hand_buf.len;
     hand_buf.append(s);
@@ -472,16 +593,28 @@ fn hs_eq(s: u8[:]) {
 }
 
 fn hand_constants(with_theta: u8[:], has_theta: bool) -> u8[>..] {
+    assert(hand_solver.len >= 2);
+    assert(hand_solver.len == hand_unk.len);
     let n = hand_solver.len;
     let th = if has_theta { str("EI\\,\\theta(", with_theta, ") = ") } else { str("") };
     let unit = tex_unit(str(hand_sym(FORCE), "·", hand_sym(LENGTH), "³"));
     return str("C_1 = ", th, hand_tq(sig4(hand_solver[n - 2]), RIGIDITY), ", \\qquad C_2 = ", tex_number(sig4(hand_solver[n - 1])), "\\ ", unit);
 }
 
-fn hand_rq(k: i64) -> i64 { return if hand_unk[k].kind == 1 { MOMENT } else { FORCE }; }
-fn hand_rtext(k: i64) -> u8[>..] { return hand_vtext(hand_solver[k], hand_rq(k)); }
+fn hand_rq(k: i64) -> i64 {
+    assert(k >= 0);
+    assert(k < hand_unk.len);
+    return if hand_unk[k].kind == 1 { MOMENT } else { FORCE };
+}
+fn hand_rtext(k: i64) -> u8[>..] {
+    assert(k >= 0);
+    assert(k < hand_solver.len);
+    return hand_vtext(hand_solver[k], hand_rq(k));
+}
 
 fn hand_first_unknown(kind: i64, r: i64) -> i64 {
+    assert(hand_unk.len > 0);
+    assert(kind <= 3);
     var k = 0;
     while k < hand_unk.len {
         if (kind < 0 || hand_unk[k].kind == kind) && (r < 0 || hand_unk[k].r == r) { return k; }
@@ -491,6 +624,8 @@ fn hand_first_unknown(kind: i64, r: i64) -> i64 {
 }
 
 fn hand_authority_frame() {
+    assert(hand_valid);
+    assert(g_sup.len > 0);
     hs_text("Hand calculations: method, and how they relate to the solver");
     var r = 0;
     for s in g_sup { r += if s.kind == FIXED { 2 } else { 1 }; }
@@ -509,39 +644,48 @@ fn hand_authority_frame() {
     hs_text(str("$EI = ", hand_tq(sci(hand_ei), RIGIDITY), "$."));
 }
 
+fn hand_determinate_frames() {
+    assert(hand_rea.len >= 1);
+    assert(hand_rea.len <= 2);
+    let nr = hand_rea.len;
+    let reference = hand_rea[0];
+    let acts = hand_actions(reference.xi);
+    var sum_f = 0.0;
+    var sum_m = 0.0;
+    for a in acts { sum_f = sum_f + a.f; }
+    for a in acts { sum_m = sum_m + a.mo; }
+    let s_f = snf(sum_f);
+    let s_m = snf(sum_m);
+    hs_text("Reactions by equilibrium");
+    hs_text(str("Each load's vertical force and its moment about support 1 at x = ", sig4(reference.xi), " ", hand_sym(LENGTH), " (counter-clockwise positive; a distributed load acts through its resultant):"));
+    hs_eq(str("\\sum_j F_j = ", hand_sum_of(acts, true, s_f), "\\ ", tex_unit(hand_sym(FORCE))));
+    hs_eq(str("\\sum_j m_j = ", hand_sum_of(acts, false, s_m), "\\ ", tex_unit(hand_sym(MOMENT))));
+    if nr == 2 {
+        let k1 = hand_first_unknown(-1, 0);
+        let k2 = hand_first_unknown(-1, 1);
+        let span = sig4(hand_rea[1].xi - reference.xi);
+        hs_text("Moments about support 1, where $R_1$ has no arm:");
+        hs_eq(str("R_2 \\times ", hand_tex_p(span), " + \\sum_j m_j = 0 \\quad\\Rightarrow\\quad R_2 = -\\frac{", tex_number(s_m), "}{", tex_number(span), "} = ", hand_tq(hand_rtext(k2), FORCE)));
+        hs_text("Vertical equilibrium then gives $R_1$:");
+        hs_eq(str("R_1 + R_2 + \\sum_j F_j = 0 \\quad\\Rightarrow\\quad R_1 = -", hand_tex_p(s_f), " - ", hand_tex_p(hand_rtext(k2)), " = ", hand_tq(hand_rtext(k1), FORCE)));
+    } else {
+        let k_r = hand_first_unknown(0, -1);
+        let k_m = hand_first_unknown(1, -1);
+        hs_text("Vertical equilibrium and moments about the fixed support:");
+        hs_eq(str("R_1 + \\sum_j F_j = 0 \\quad\\Rightarrow\\quad R_1 = -", hand_tex_p(s_f), " = ", hand_tq(hand_rtext(k_r), FORCE)));
+        hs_eq(str("M_1 + \\sum_j m_j = 0 \\quad\\Rightarrow\\quad M_1 = -", hand_tex_p(s_m), " = ", hand_tq(hand_rtext(k_m), MOMENT)));
+    }
+    if acts.len > HAND_WRITE_TERMS { hs_text(str("The ", acts.len, " load terms are summed without being listed one by one.")); }
+}
+
 fn hand_reaction_frames() {
+    assert(hand_valid);
+    assert(hand_unk.len >= 3);
     let deg = hand_deg;
     let n = hand_unk.len;
     let nr = hand_rea.len;
     if deg == 0 {
-        let reference = hand_rea[0];
-        let acts = hand_actions(reference.xi);
-        var sum_f = 0.0;
-        var sum_m = 0.0;
-        for a in acts { sum_f = sum_f + a.f; }
-        for a in acts { sum_m = sum_m + a.mo; }
-        let s_f = snf(sum_f);
-        let s_m = snf(sum_m);
-        hs_text("Reactions by equilibrium");
-        hs_text(str("Each load's vertical force and its moment about support 1 at x = ", sig4(reference.xi), " ", hand_sym(LENGTH), " (counter-clockwise positive; a distributed load acts through its resultant):"));
-        hs_eq(str("\\sum_j F_j = ", hand_sum_of(acts, true, s_f), "\\ ", tex_unit(hand_sym(FORCE))));
-        hs_eq(str("\\sum_j m_j = ", hand_sum_of(acts, false, s_m), "\\ ", tex_unit(hand_sym(MOMENT))));
-        if nr == 2 {
-            let k1 = hand_first_unknown(-1, 0);
-            let k2 = hand_first_unknown(-1, 1);
-            let span = sig4(hand_rea[1].xi - reference.xi);
-            hs_text("Moments about support 1, where $R_1$ has no arm:");
-            hs_eq(str("R_2 \\times ", hand_tex_p(span), " + \\sum_j m_j = 0 \\quad\\Rightarrow\\quad R_2 = -\\frac{", tex_number(s_m), "}{", tex_number(span), "} = ", hand_tq(hand_rtext(k2), FORCE)));
-            hs_text("Vertical equilibrium then gives $R_1$:");
-            hs_eq(str("R_1 + R_2 + \\sum_j F_j = 0 \\quad\\Rightarrow\\quad R_1 = -", hand_tex_p(s_f), " - ", hand_tex_p(hand_rtext(k2)), " = ", hand_tq(hand_rtext(k1), FORCE)));
-        } else {
-            let k_r = hand_first_unknown(0, -1);
-            let k_m = hand_first_unknown(1, -1);
-            hs_text("Vertical equilibrium and moments about the fixed support:");
-            hs_eq(str("R_1 + \\sum_j F_j = 0 \\quad\\Rightarrow\\quad R_1 = -", hand_tex_p(s_f), " = ", hand_tq(hand_rtext(k_r), FORCE)));
-            hs_eq(str("M_1 + \\sum_j m_j = 0 \\quad\\Rightarrow\\quad M_1 = -", hand_tex_p(s_m), " = ", hand_tq(hand_rtext(k_m), MOMENT)));
-        }
-        if acts.len > HAND_WRITE_TERMS { hs_text(str("The ", acts.len, " load terms are summed without being listed one by one.")); }
+        hand_determinate_frames();
         return;
     }
 
@@ -591,6 +735,8 @@ fn hand_reaction_frames() {
 }
 
 fn hand_deflection_frame() {
+    assert(hand_rows.len >= 2);
+    assert(hand_segs.len > 0);
     let deg = hand_deg;
     let n = hand_unk.len;
     var all: HTerm[>..] = [];
@@ -647,16 +793,44 @@ fn hand_deflection_frame() {
 }
 
 fn hand_jump_name(j: HJump) -> u8[>..] {
+    assert(j.kind >= 0);
+    assert(j.kind <= 3);
     if j.kind == 0 { return str("R_{", j.n, "}"); }
     if j.kind == 1 { return str("M_{", j.n, "}"); }
     return if j.kind == 2 { str("P_{", j.n, "}") } else { str("C_{", j.n, "}") };
 }
 
 fn hand_table_row(name: u8[:], q: i64, s: f64, e: f64) {
+    assert(q >= 0);
+    assert(q <= ANGLE);
     hs_text(str(name, " | ", hand_vtext(s, q), " | ", hand_vtext(e, q)));
 }
 
+fn hand_segment_tail(si: i64, seg: HSeg, xa: u8[:], xb: u8[:], l: u8[:]) {
+    assert(si >= 0);
+    assert(si < hand_segs.len);
+    hs_text(str("At | x = ", xa, "⁺ | x = ", xb, "⁻"));
+    hand_table_row(str("V (", hand_sym(FORCE), ")"), FORCE, seg.sv, seg.ev);
+    hand_table_row(str("M (", hand_sym(MOMENT), ")"), MOMENT, seg.sm, seg.em);
+    hand_table_row("θ (rad)", ANGLE, seg.st, seg.et);
+    hand_table_row(str("v (", l, ")"), LENGTH, seg.sd, seg.ed);
+    for st in hand_stat {
+        if st.seg != si { continue; }
+        hs_text(str("$V = 0$ at $s$ = ", sig4(st.s), " ", l, " (x = ", sig4(hand_x(st.x)), " ", l, "), where $M$ is stationary: $M$ = ", hand_vtext(st.m, MOMENT), " ", hand_sym(MOMENT), "."));
+    }
+    if seg.qa * seg.qb < 0.0 {
+        hs_text(str("$q = 0$ at $s$ = ", sig4(-seg.qa / seg.k), " ", l, ", where $V$ is stationary."));
+    }
+    if seg.support_at_end >= 0 {
+        let sup = hand_rea[seg.support_at_end];
+        let extra = if sup.kind == FIXED { str(" and $\\theta$ = ", hand_vtext(seg.et, ANGLE)) } else { str("") };
+        hs_text(str("Support ", sup.i, " at x = ", xb, " ", l, ": $v$ = ", hand_vtext(seg.ed, LENGTH), extra, ", as the boundary condition requires."));
+    }
+}
+
 fn hand_segment_frame(si: i64) {
+    assert(si >= 0);
+    assert(si < hand_segs.len);
     let seg = hand_segs[si];
     let l = hand_sym(LENGTH);
     let xa = sig4(seg.xa);
@@ -709,26 +883,12 @@ fn hand_segment_frame(si: i64) {
     hs_eq(str("M(s) = M(", at_text, ") + \\int_0^s V\\,ds = ", hand_poly(seg.poly[3..7], seg.h)));
     hs_eq(str("EI\\,\\theta(s) = EI\\,\\theta(", xa_tex, ") + \\int_0^s M\\,ds = ", hand_poly(seg.poly[7..12], seg.h)));
     hs_eq(str("EI\\,v(s) = EI\\,v(", xa_tex, ") + \\int_0^s \\theta\\,EI\\,ds = ", hand_poly(seg.poly[12..18], seg.h)));
-    hs_text(str("At | x = ", xa, "⁺ | x = ", xb, "⁻"));
-    hand_table_row(str("V (", hand_sym(FORCE), ")"), FORCE, seg.sv, seg.ev);
-    hand_table_row(str("M (", hand_sym(MOMENT), ")"), MOMENT, seg.sm, seg.em);
-    hand_table_row("θ (rad)", ANGLE, seg.st, seg.et);
-    hand_table_row(str("v (", l, ")"), LENGTH, seg.sd, seg.ed);
-    for st in hand_stat {
-        if st.seg != si { continue; }
-        hs_text(str("$V = 0$ at $s$ = ", sig4(st.s), " ", l, " (x = ", sig4(hand_x(st.x)), " ", l, "), where $M$ is stationary: $M$ = ", hand_vtext(st.m, MOMENT), " ", hand_sym(MOMENT), "."));
-    }
-    if seg.qa * seg.qb < 0.0 {
-        hs_text(str("$q = 0$ at $s$ = ", sig4(-seg.qa / seg.k), " ", l, ", where $V$ is stationary."));
-    }
-    if seg.support_at_end >= 0 {
-        let sup = hand_rea[seg.support_at_end];
-        let extra = if sup.kind == FIXED { str(" and $\\theta$ = ", hand_vtext(seg.et, ANGLE)) } else { str("") };
-        hs_text(str("Support ", sup.i, " at x = ", xb, " ", l, ": $v$ = ", hand_vtext(seg.ed, LENGTH), extra, ", as the boundary condition requires."));
-    }
+    hand_segment_tail(si, seg, xa, xb, l);
 }
 
 fn hand_checks_frame() {
+    assert(hand_valid);
+    assert(hand_rea.len > 0);
     hs_text(if g_m.section.has_c { "Bending stress and the equilibrium check" } else { "Equilibrium check" });
     if g_m.section.has_c {
         let fibre = g_m.section.c;
@@ -752,6 +912,8 @@ fn hand_checks_frame() {
 }
 
 fn hand_make_steps() {
+    assert(hand_valid);
+    assert(hand_segs.len > 0);
     hand_steps.clear();
     hand_buf.clear();
     hs_text("Method and reactions");
@@ -766,17 +928,37 @@ fn hand_make_steps() {
     hand_steps_ok = true;
 }
 
-fn hand_ensure(u: i64, mid: bool) { if !hand_current(u, mid) { hand_derive(u, mid); } }
+fn hand_ensure(u: i64, mid: bool) {
+    assert(u >= 0);
+    assert(u < UNIT_COUNT);
+    if !hand_current(u, mid) { hand_derive(u, mid); }
+}
 
 fn hand_step_count() -> i64 {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
     if !hand_steps_ok { hand_make_steps(); }
     return hand_steps.len;
 }
-fn hand_step_is_eq(i: i64) -> bool { return hand_steps[i].eq; }
-fn hand_step_text(i: i64) -> u8[:] { let s = hand_steps[i]; return hand_buf[s.t0..s.t0 + s.tl]; }
-fn hand_step_unicode(i: i64) -> u8[:] { let s = hand_steps[i]; return hand_buf[s.u0..s.u0 + s.ul]; }
+fn hand_step_is_eq(i: i64) -> bool {
+    assert(i >= 0);
+    assert(i < hand_steps.len);
+    return hand_steps[i].eq;
+}
+fn hand_step_text(i: i64) -> u8[:] {
+    assert(i >= 0);
+    assert(i < hand_steps.len);
+    let s = hand_steps[i]; return hand_buf[s.t0..s.t0 + s.tl];
+}
+fn hand_step_unicode(i: i64) -> u8[:] {
+    assert(i >= 0);
+    assert(i < hand_steps.len);
+    let s = hand_steps[i]; return hand_buf[s.u0..s.u0 + s.ul];
+}
 
 fn hand_steps_html() -> u8[>..] {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
     var out: u8[>..] = [];
     let n = hand_step_count();
     var i = 0;
@@ -797,12 +979,17 @@ var hand_pt_buf: u8[>..] = [];
 var hand_pt_title: u8[>..] = [];
 
 fn hp_add(is_eq: bool, s: u8[:]) {
+    assert(s.len < 1000000);
+    assert(hand_pt_buf.len >= 0);
     let t0 = hand_pt_buf.len;
     hand_pt_buf.append(s);
     hand_pt.push(HStep { eq: is_eq, t0: t0, tl: s.len, u0: 0, ul: 0 });
 }
 
 fn hand_pt_sub(out: u8[>..]&, seg: HSeg, off: i64, count: i64, st: u8[:]) {
+    assert(count > 0);
+    assert(off >= 0);
+    assert(off + count <= 18);
     var n = 0;
     while n < count {
         let part = if n == 0 { str("") } else if n == 1 { str("(", tex_number(st), ")") } else { str("(", tex_number(st), ")^{", n, "}") };
@@ -813,6 +1000,8 @@ fn hand_pt_sub(out: u8[>..]&, seg: HSeg, off: i64, count: i64, st: u8[:]) {
 }
 
 fn hand_point_frame(x0: f64) {
+    assert(hand_valid);
+    assert(hand_segs.len > 0);
     hand_pt.clear();
     hand_pt_buf.clear();
     hand_pt_title.clear();
@@ -860,11 +1049,25 @@ fn hand_point_frame(x0: f64) {
     hand_pt_title.append(str("At the selected point x = ", xt, " ", l));
 }
 
-fn hand_pt_count() -> i64 { return hand_pt.len; }
-fn hand_pt_is_eq(i: i64) -> bool { return hand_pt[i].eq; }
-fn hand_pt_text(i: i64) -> u8[:] { let b = hand_pt[i]; return hand_pt_buf[b.t0..b.t0 + b.tl]; }
+fn hand_pt_count() -> i64 {
+    assert(hand_u >= 0);
+    assert(hand_u < UNIT_COUNT);
+    return hand_pt.len;
+}
+fn hand_pt_is_eq(i: i64) -> bool {
+    assert(i >= 0);
+    assert(i < hand_pt.len);
+    return hand_pt[i].eq;
+}
+fn hand_pt_text(i: i64) -> u8[:] {
+    assert(i >= 0);
+    assert(i < hand_pt.len);
+    let b = hand_pt[i]; return hand_pt_buf[b.t0..b.t0 + b.tl];
+}
 
 fn hand_point_html(x: f64) -> u8[>..] {
+    assert(hand_valid);
+    assert(hand_segs.len > 0);
     hand_point_frame(x);
     var out: u8[>..] = [];
     out.append(str("<article class=\"calc\"><h4>", tex_esc(hand_pt_title), "</h4>"));

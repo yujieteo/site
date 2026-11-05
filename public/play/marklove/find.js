@@ -6,6 +6,10 @@ import * as E from "./editor.js";
 import { h, announce, attachMenu, dialog, section, footnote } from "./ui.js";
 import { settings, setSetting } from "./store.js";
 
+function assert(condition, message) {
+    if (!condition) throw new Error(message);
+}
+
 export const find = {
     open: false, showsReplace: false, showsCommand: false, matchCase: false,
     query: "", replacement: "", command: "",
@@ -16,12 +20,31 @@ export const find = {
 let bar = null;
 let app = null;
 const els = {};
+assert(typeof find === "object" && find !== null, "the find state exists");
+assert(Array.isArray(find.matches), "the matches are a list");
+assert(find.current === -1, "no match is current at the start");
 
 export const SYNTAXES = [["sam", "Sam (Plan 9)"], ["vim", "Vim"], ["plain", "Plain text"]];
-const syntax = () => (SYNTAXES.some((s) => s[0] === settings.findSyntax) ? settings.findSyntax : "sam");
-const usesSam = () => syntax() === "sam";
+function syntax() {
+    assert(SYNTAXES.length === 3, "there are three syntaxes");
+    assert(typeof settings === "object" && settings !== null, "the settings exist");
+    const chosen = SYNTAXES.some((s) => s[0] === settings.findSyntax) ? settings.findSyntax : "sam";
+    assert(SYNTAXES.some((s) => s[0] === chosen), "the syntax is one of the three");
+    return chosen;
+}
+
+function usesSam() {
+    assert(typeof syntax === "function", "the syntax can be asked");
+    assert(SYNTAXES.length > 0, "there are syntaxes");
+    assert(SYNTAXES[0][0] === "sam", "sam is the first syntax");
+    return syntax() === "sam";
+}
 
 export function initFind(el, appRef) {
+    assert(el && typeof el.replaceChildren === "function", "the bar is an element");
+    assert(appRef && typeof appRef.readOnly === "function", "the app can say it is read-only");
+    assert(typeof appRef.openSettings === "function", "the app can open the settings");
+    assert(els !== null && typeof els === "object", "the element table exists");
     bar = el;
     app = appRef;
 }
@@ -29,12 +52,21 @@ export function initFind(el, appRef) {
 // --- matching -------------------------------------------------------------------
 
 function toU16(t, pairs) {
+    assert(typeof t === "string", "the text is a string");
+    assert(Array.isArray(pairs), "the pairs are a list");
     if (!pairs.length) return [];
     const map = E.byteMap(t);
-    return pairs.map(([s, e]) => [map[s], map[e]]);
+    const out = pairs.map(([s, e]) => [map[s], map[e]]);
+    assert(out.length === pairs.length, "every pair is mapped");
+    assert(out.every((p) => p.length === 2), "every mapped pair has two ends");
+    return out;
 }
 
 export function refresh(select = false) {
+    assert(Array.isArray(find.matches), "the matches are a list");
+    assert(typeof select === "boolean", "select is a flag");
+    assert(typeof find.query === "string", "the query is a string");
+    assert(typeof find.matchCase === "boolean", "match case is a flag");
     find.error = "";
     if (!find.open || !find.query) { find.matches = []; find.current = -1; E.setFindHits([]); render(); return; }
     const t = E.text();
@@ -44,23 +76,33 @@ export function refresh(select = false) {
     else find.matches = toU16(t, r.matches);
     const caret = E.selection()[0];
     find.current = find.matches.length ? Math.max(0, find.matches.findIndex(([s]) => s >= caret)) : -1;
+    assert(find.current >= -1 && find.current < Math.max(find.matches.length, 1), "the current match is in range");
+    assert(typeof find.error === "string", "the error is a string");
     E.setFindHits(find.matches);
     if (select && find.current >= 0) show(find.current);
     render();
 }
 
 function show(i) {
+    assert(Number.isInteger(i), "the index is an integer");
+    assert(Array.isArray(find.matches), "the matches are a list");
     if (i < 0 || i >= find.matches.length) return;
     find.current = i;
     const [s, e] = find.matches[i];
+    assert(find.current === i, "the current match is the shown one");
     E.setSelection(s, e);
     render();
 }
 
 export function next(forward = true) {
+    assert(typeof forward === "boolean", "forward is a flag");
+    assert(typeof find.query === "string", "the query is a string");
+    assert(typeof find.matchCase === "boolean", "match case is a flag");
+    assert(Array.isArray(find.matches), "the matches are a list");
     refresh();
     if (!find.matches.length) return;
     const [cs, ce] = E.selection();
+    assert(Number.isFinite(cs) && Number.isFinite(ce), "the selection is finite");
     let i;
     if (forward) {
         i = find.matches.findIndex(([s]) => s > cs || (s === cs && cs === ce));
@@ -70,12 +112,18 @@ export function next(forward = true) {
         find.matches.forEach(([s], k) => { if (s < cs) i = k; });
         if (i < 0) i = find.matches.length - 1;
     }
+    assert(i >= 0 && i < find.matches.length, "the next match is in range");
     show(i);
 }
 
 function replaceCurrent() {
+    assert(typeof find.matchCase === "boolean", "match case is a flag");
+    assert(typeof find.query === "string", "the query is a string");
+    assert(typeof find.replacement === "string", "the replacement is a string");
     const t = E.text();
     const [s, e] = E.selection();
+    assert(typeof t === "string", "the text is a string");
+    assert(Number.isFinite(s) && Number.isFinite(e), "the selection is finite");
     let r;
     try { r = C.replace(t, find.query, find.replacement, syntax(), !find.matchCase, C.utf8Offset(t, s), C.utf8Offset(t, e), false); }
     catch (err) { r = { error: err.message }; }
@@ -88,6 +136,9 @@ function replaceCurrent() {
 }
 
 function replaceAllMatches() {
+    assert(typeof find.matchCase === "boolean", "match case is a flag");
+    assert(typeof find.query === "string", "the query is a string");
+    assert(typeof find.replacement === "string", "the replacement is a string");
     const t = E.text();
     let r;
     try { r = C.replace(t, find.query, find.replacement, syntax(), !find.matchCase, 0, 0, true); }
@@ -95,13 +146,20 @@ function replaceAllMatches() {
     if (r.error) { find.error = r.error; render(); return; }
     if (r.count) E.replaceAll(r.text);
     find.lastCount = r.count || 0;
+    assert(Number.isInteger(find.lastCount), "the count is an integer");
+    assert(find.lastCount >= 0, "the count is not negative");
     announce(find.lastCount + (find.lastCount === 1 ? " replacement." : " replacements."));
     refresh();
 }
 
 function runCommand() {
+    assert(Array.isArray(find.commandOutput), "the output is a list");
+    assert(typeof find.command === "string", "the command is a string");
+    assert(typeof find.matchCase === "boolean", "match case is a flag");
     const t = E.text();
     const [s, e] = E.selection();
+    assert(typeof t === "string", "the text is a string");
+    assert(Number.isFinite(s) && Number.isFinite(e), "the selection is finite");
     let r;
     try { r = C.sam(find.command, t, C.utf8Offset(t, s), C.utf8Offset(t, e), !find.matchCase); }
     catch (err) { r = { error: err.message }; }
@@ -119,10 +177,15 @@ function runCommand() {
         else find.commandStatus = r.summary;
         announce(find.commandStatus);
     }
+    assert(Array.isArray(find.commandOutput), "the output is a list");
+    assert(typeof find.commandError === "string", "the command error is a string");
     refresh();
 }
 
 function statusText() {
+    assert(typeof find.query === "string", "the query is a string");
+    assert(Array.isArray(find.matches), "the matches are a list");
+    assert(typeof find.current === "number", "the current match is a number");
     if (find.error) return find.error;
     if (!find.query) return "";
     if (!find.matches.length) return "No matches";
@@ -133,28 +196,56 @@ function statusText() {
 // --- the bar ------------------------------------------------------------------
 
 export function openFind({ replace = false, command = false } = {}) {
+    assert(typeof replace === "boolean", "replace is a flag");
+    assert(typeof command === "boolean", "command is a flag");
+    assert(app !== null && bar !== null, "Find is set up");
+    assert(typeof find.showsReplace === "boolean", "showsReplace is a flag");
     if (app.readOnly()) return;
     find.open = true;
     if (replace) find.showsReplace = true;
     if (command && usesSam()) find.showsCommand = true;
     build();
+    assert(els.query && els.replace && els.command, "the bar has its fields");
     bar.hidden = false;
     const target = command && find.showsCommand ? els.command : replace ? els.replace : els.query;
     const sel = E.text().slice(...E.selection());
     if (!command && sel && !sel.includes("\n") && !replace) { find.query = sel; els.query.value = sel; }
+    assert(target && typeof target.focus === "function", "the target can be focused");
     target.focus();
     target.select?.();
     refresh(true);
 }
 
 export function closeFind() {
+    assert(bar !== null, "Find is set up");
+    assert(typeof find.open === "boolean", "open is a flag");
     find.open = false;
     bar.hidden = true;
+    assert(find.open === false && bar.hidden === true, "Find is closed");
     E.setFindHits([]);
     E.focus();
 }
 
+function checkBeforeBuild() {
+    assert(bar !== null, "Find is set up");
+    assert(app !== null, "the app is known");
+    assert(typeof find.showsReplace === "boolean", "showsReplace is a flag");
+    assert(typeof find.showsCommand === "boolean", "showsCommand is a flag");
+    assert(typeof find.replacement === "string", "the replacement is a string");
+    assert(typeof find.command === "string", "the command is a string");
+}
+
+function checkAfterBuild() {
+    assert(typeof els.query.value === "string", "the query field has a value");
+    assert(typeof els.status.textContent === "string", "the status has text");
+    assert(els.query && els.status && els.prev && els.next, "the bar has its main controls");
+    assert(els.replace && els.command, "the bar has its replace and command fields");
+    assert(typeof els.query.focus === "function", "the query can be focused");
+    assert(bar.childNodes.length > 0, "the bar has rows");
+}
+
 function build() {
+    checkBeforeBuild();
     bar.replaceChildren();
     const q = h("input", {
         type: "text", value: find.query, placeholder: { sam: "Find (Sam)", vim: "Find (Vim)", plain: "Find" }[syntax()], "aria-label": "Find",
@@ -207,11 +298,18 @@ function build() {
         bar.append(h("div", { class: "find-row" }, h("span", { class: "glyph", "aria-hidden": "true" }, "»"), c, run), cstatus, out);
         Object.assign(els, { command: c, cstatus, out });
     } else els.command = q;
-    bar.onkeydown = (e) => { if (e.key === "Escape") { e.preventDefault(); closeFind(); } };
+    checkAfterBuild();
+    bar.onkeydown = (e) => { assert(e && typeof e.key === "string", "a key event has a key"); assert(typeof e.preventDefault === "function", "a key event can be prevented"); if (e.key === "Escape") { e.preventDefault(); closeFind(); } };
     render();
 }
 
 function render() {
+    assert(find.commandStatus !== null, "the command status is set");
+    assert(typeof find.commandError === "string", "the command error is a string");
+    assert(typeof find.error === "string", "the error is a string");
+    assert(Array.isArray(find.matches), "the matches are a list");
+    assert(Array.isArray(find.commandOutput), "the output is a list");
+    assert(typeof els === "object", "the element table exists");
     if (!bar || bar.hidden && !find.open) return;
     if (!els.status) return;
     const st = statusText();
@@ -233,12 +331,17 @@ function render() {
 // The text changed: the matches move.
 let refreshTimer = 0;
 export function textChanged() {
+    assert(typeof find.open === "boolean", "open is a flag");
+    assert(typeof find.query === "string", "the query is a string");
     if (!find.open || !find.query) return;
     clearTimeout(refreshTimer);
-    refreshTimer = setTimeout(() => refresh(false), 120);
+    refreshTimer = setTimeout(() => { assert(typeof find.open === "boolean", "open is a flag"); assert(typeof refresh === "function", "refresh exists"); refresh(false); }, 120);
+    assert(refreshTimer !== undefined, "the timer is set");
 }
 
 export function syntaxChanged() {
+    assert(typeof find.open === "boolean", "open is a flag");
+    assert(SYNTAXES.length === 3, "there are three syntaxes");
     if (find.open) { build(); refresh(true); }
 }
 
@@ -285,17 +388,31 @@ const REFERENCE = [
 
 // Text with `code` parts.
 function richText(s) {
+    assert(typeof s === "string", "the text is a string");
+    assert(typeof h === "function", "the element maker exists");
     const p = h("p", {});
-    s.split("`").forEach((part, i) => p.append(i % 2 ? h("code", { text: part }) : part));
+    s.split("`").forEach((part, i) => {
+        assert(typeof part === "string", "a part is a string");
+        assert(Number.isInteger(i), "the index is an integer");
+        p.append(i % 2 ? h("code", { text: part }) : part);
+    });
+    assert(p.childNodes.length > 0, "the paragraph has content");
     return p;
 }
 
 function lesson([title, text, sample, command]) {
+    assert(typeof title === "string", "the title is a string");
+    assert(Array.isArray(text), "the text is a list");
+    assert(typeof sample === "string", "the sample is a string");
+    assert(typeof command === "string", "the command is a string");
     const result = h("div", {});
     const input = h("textarea", { rows: "1", "aria-label": "Command for " + title, spellcheck: "false", autocapitalize: "off", class: "lesson-cmd" });
     input.value = command;
     const reset = h("button", { type: "button", class: "button", hidden: true, onclick: () => { input.value = command; update(); } }, "Reset");
     function update() {
+        assert(typeof input.value === "string", "the input has a value");
+        assert(typeof sample === "string", "the sample is a string");
+        assert(typeof command === "string", "the command is a string");
         reset.hidden = input.value === command;
         input.rows = Math.min(5, input.value.split("\n").length);
         result.replaceChildren();
@@ -307,10 +424,12 @@ function lesson([title, text, sample, command]) {
         const code = h("pre", { class: "code", "aria-label": "Result" }, t.slice(0, a), b > a ? h("mark", { text: t.slice(a, b) }) : null, t.slice(b));
         result.append(h("p", { class: "cap-label", text: "Result" }), code);
         if (r.printed && r.printed.length) result.append(h("pre", { class: "code", "aria-label": "Output", text: r.printed.join("\n") }));
+        assert(Array.isArray(r.selection), "the selection is a pair");
         result.append(footnote(r.summary));
     }
     input.addEventListener("input", update);
     update();
+    assert(result.childNodes.length > 0, "the result is filled");
     return section(title, h("div", { class: "group" },
         text.map(richText),
         h("p", { class: "cap-label", text: "Sample text" }), h("pre", { class: "code", "aria-label": "Sample text", text: sample }),
@@ -319,11 +438,15 @@ function lesson([title, text, sample, command]) {
 }
 
 export function samTutorial() {
+    assert(LESSONS.length > 0, "there are lessons");
+    assert(REFERENCE.length > 0, "there is a reference");
+    assert(app !== null, "the app is known");
     const body = h("div", {},
         section("Structural editing", h("div", { class: "group" }, h("p", { text: "Sam is the text editor of Plan 9. Its commands select text first, then change it. In Marklove, open Find and use the Sam pattern syntax (Settings). Type a command in the command line and select Run." }))),
         LESSONS.map(lesson),
         section("Reference", h("div", { class: "group" }, REFERENCE.map(([k, v]) => h("div", { class: "find-row" }, h("strong", { class: "code-key", style: { fontFamily: "var(--mono)", minWidth: "9em" }, text: k }), h("span", { class: "row-hint", text: v })))),
             footnote("Marklove does not have sam's file commands, such as w, e, and q. Marklove saves each change for you.")));
+    assert(body && typeof body.append === "function", "the body is an element");
     dialog({
         title: "Sam Tutorial", body, wide: true,
         buttons: [

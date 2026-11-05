@@ -9,20 +9,24 @@ var err_msg: u8[>..] = [];
 var err_field: u8[>..] = [];
 
 fn fail(message: u8[:], field: u8[:]) -> bool {
+    assert(message.len > 0);
     err_msg.clear();
     err_msg.append(message);
     err_field.clear();
     err_field.append(field);
+    assert(err_msg.len == message.len);
     return false;
 }
 
 
 // Dekker's product.
-fn split_hi(v: f64) -> f64 { let c = 134217729.0 * v; return c - (c - v); }
+fn split_hi(v: f64) -> f64 { let c = 134217729.0 * v; assert(is_nan(c) == is_nan(v)); assert(!is_inf(v) || is_inf(c)); return c - (c - v); }
 
 fn two_prod(a: f64, b: f64) -> f64, f64 {
     let p = a * b;
     if !finite(p) || p == 0.0 { return p, 0.0; }
+    assert(finite(p));
+    assert(p != 0.0);
     let ah = split_hi(a);
     let al = a - ah;
     let bh = split_hi(b);
@@ -31,6 +35,8 @@ fn two_prod(a: f64, b: f64) -> f64, f64 {
 }
 
 fn dd_pow(x: f64, n: i64) -> f64, f64 {
+    assert(n >= 1);
+    assert(n <= 1100);
     var h = x;
     var l = 0.0;
     var k = 1;
@@ -46,6 +52,8 @@ fn dd_pow(x: f64, n: i64) -> f64, f64 {
 }
 
 fn pw(x: f64, n: i64) -> f64 {
+    assert(n >= -1100);
+    assert(n <= 1100);
     if n == 0 { return 1.0; }
     if n == 1 { return x; }
     if n == 2 { return x * x; }
@@ -61,11 +69,11 @@ fn pw(x: f64, n: i64) -> f64 {
     return h;
 }
 
-fn jmax(a: f64, b: f64) -> f64 { if is_nan(a) || is_nan(b) { return a + b; } return if a > b { a } else { b }; }
-fn jmin(a: f64, b: f64) -> f64 { if is_nan(a) || is_nan(b) { return a + b; } return if a < b { a } else { b }; }
+fn jmax(a: f64, b: f64) -> f64 { if is_nan(a) || is_nan(b) { return a + b; } let r = if a > b { a } else { b }; assert(r >= a); assert(r >= b); return r; }
+fn jmin(a: f64, b: f64) -> f64 { if is_nan(a) || is_nan(b) { return a + b; } let r = if a < b { a } else { b }; assert(r <= a); assert(r <= b); return r; }
 
-fn finite(x: f64) -> bool { return !is_nan(x) && !is_inf(x); }
-fn is_whole(x: f64) -> bool { return x == trunc(x); }
+fn finite(x: f64) -> bool { let r = !is_nan(x) && !is_inf(x); assert(!r || x == x); assert(!r || abs(x) < 1.7976931348623157e308); return r; }
+fn is_whole(x: f64) -> bool { let r = x == trunc(x); assert(!r || !is_nan(x)); assert(!r || is_inf(x) || abs(x - trunc(x)) == 0.0); return r; }
 
 
 let LENGTH = 0;
@@ -100,15 +108,17 @@ let QUANTITY_NAMES: const u8[:][9] = ["length", "force", "stress", "moment", "di
 let DEFAULT_UNITS = "N-mm";
 let SI = 1;
 
-fn unit_factor(u: i64, q: i64) -> f64 { return UNIT_FACTOR[u * 9 + q]; }
-fn unit_symbol(u: i64, q: i64) -> const u8[:] { return UNIT_SYMBOL[u * 9 + q]; }
+fn unit_factor(u: i64, q: i64) -> f64 { assert(u >= 0); assert(u < UNIT_COUNT); assert(q >= 0); assert(q <= ANGLE); return UNIT_FACTOR[u * 9 + q]; }
+fn unit_symbol(u: i64, q: i64) -> const u8[:] { assert(u >= 0); assert(u < UNIT_COUNT); assert(q >= 0); assert(q <= ANGLE); return UNIT_SYMBOL[u * 9 + q]; }
 fn unit_index(id: u8[:]) -> i64 {
     var i = 0;
+    assert(UNIT_IDS.len == UNIT_COUNT);
     while i < UNIT_COUNT { if UNIT_IDS[i] == id { return i; } i++; }
+    assert(i == UNIT_COUNT);
     return -1;
 }
-fn to_units(v: f64, q: i64, u: i64) -> f64 { return v / unit_factor(u, q); }
-fn from_units(v: f64, q: i64, u: i64) -> f64 { return v * unit_factor(u, q); }
+fn to_units(v: f64, q: i64, u: i64) -> f64 { assert(u >= 0); assert(u < UNIT_COUNT); return v / unit_factor(u, q); }
+fn from_units(v: f64, q: i64, u: i64) -> f64 { assert(u >= 0); assert(u < UNIT_COUNT); return v * unit_factor(u, q); }
 
 
 let PIN = 0;
@@ -140,11 +150,16 @@ var g_sup: Support[>..] = [];
 var g_loads: Load[>..] = [];
 
 fn fmt(x: f64) -> u8[>..] {
-    if finite(x) && x == trunc(x) { return js(x); }
-    return js(prec(x, 6));
+    var r: u8[>..] = [];
+    if finite(x) && x == trunc(x) { r = js(x); } else { r = js(prec(x, 6)); }
+    assert(r.len > 0);
+    assert(r.len < 400);
+    return r;
 }
 
 fn length_text(u: i64, x: f64) -> u8[>..] {
+    assert(u >= 0);
+    assert(u < UNIT_COUNT);
     var out = fmt(to_units(x, LENGTH, u));
     out.append(" ");
     out.append(unit_symbol(u, LENGTH));
@@ -154,6 +169,65 @@ fn length_text(u: i64, x: f64) -> u8[>..] {
 fn number(v: f64, label: u8[:], field: u8[:], positive: bool) -> bool {
     if !finite(v) { return fail(str(label, " must be a finite number."), field); }
     if positive && !(v > 0.0) { return fail(str(label, " must be greater than zero."), field); }
+    return true;
+}
+
+fn validate_supports(length: f64, u: i64) -> bool {
+    if !in_x.has_supports || in_sup.len == 0 { return fail("Add at least one support.", "supports"); }
+    g_sup.clear();
+    var n = 0;
+    for s in in_sup {
+        if s.kind < 0 {
+            return fail(str("Support ", n + 1, " must be a pin or fixed support."), str("supports.", n, ".kind"));
+        }
+        if !at_number(s.x, str("Support ", n + 1, " position"), str("supports.", n, ".x"), length, u) { return false; }
+        g_sup.push(Support { kind: s.kind, x: s.x });
+        n++;
+    }
+    var sorted: f64[>..] = [];
+    for s in g_sup { sorted.push(s.x); }
+    sort(sorted);
+    var k = 1;
+    while k < sorted.len {
+        if sorted[k] == sorted[k - 1] {
+            return fail(str("Two supports share the position x = ", length_text(u, sorted[k]), "."), "supports");
+        }
+        k++;
+    }
+    var any_fixed = false;
+    for s in g_sup { if s.kind == FIXED { any_fixed = true; } }
+    if !any_fixed && g_sup.len < 2 {
+        return fail("Mechanism: a single pin lets the beam rotate freely. Add a second support or make it fixed.", "supports");
+    }
+    return true;
+}
+
+fn validate_loads(length: f64, u: i64) -> bool {
+    if !in_x.has_loads { return fail("Loads must be a list.", "loads"); }
+    g_loads.clear();
+    var n = 0;
+    for l in in_loads {
+        let label = str("Load ", n + 1);
+        if l.kind == POINT {
+            if !at_number(l.x, str(label, " position"), str("loads.", n, ".x"), length, u) { return false; }
+            if !number(l.f, str(label, " force"), str("loads.", n, ".F"), false) { return false; }
+            g_loads.push(Load { kind: POINT, x: l.x, f: l.f, c: 0.0, x1: 0.0, x2: 0.0, q1: 0.0, q2: 0.0 });
+        } else if l.kind == COUPLE {
+            if !at_number(l.x, str(label, " position"), str("loads.", n, ".x"), length, u) { return false; }
+            if !number(l.c, str(label, " couple"), str("loads.", n, ".C"), false) { return false; }
+            g_loads.push(Load { kind: COUPLE, x: l.x, f: 0.0, c: l.c, x1: 0.0, x2: 0.0, q1: 0.0, q2: 0.0 });
+        } else if l.kind == DIST {
+            if !at_number(l.x1, str(label, " start"), str("loads.", n, ".x1"), length, u) { return false; }
+            if !at_number(l.x2, str(label, " end"), str("loads.", n, ".x2"), length, u) { return false; }
+            if !(l.x2 > l.x1) { return fail(str(label, " must end to the right of where it starts."), str("loads.", n, ".x2")); }
+            if !number(l.q1, str(label, " start intensity"), str("loads.", n, ".q1"), false) { return false; }
+            if !number(l.q2, str(label, " end intensity"), str("loads.", n, ".q2"), false) { return false; }
+            g_loads.push(Load { kind: DIST, x: 0.0, f: 0.0, c: 0.0, x1: l.x1, x2: l.x2, q1: l.q1, q2: l.q2 });
+        } else {
+            return fail(str(label, " must be a point force, a couple or a distributed load."), str("loads.", n, ".kind"));
+        }
+        n++;
+    }
     return true;
 }
 
@@ -187,57 +261,8 @@ fn validate(u: i64) -> bool {
     if !(finite(divisions) && divisions == trunc(divisions)) || divisions < 1.0 {
         return fail("Elements per segment must be a whole number, at least 1.", "divisions");
     }
-    if !input.has_supports || in_sup.len == 0 { return fail("Add at least one support.", "supports"); }
-    g_sup.clear();
-    var n = 0;
-    for s in in_sup {
-        if s.kind < 0 {
-            return fail(str("Support ", n + 1, " must be a pin or fixed support."), str("supports.", n, ".kind"));
-        }
-        if !at_number(s.x, str("Support ", n + 1, " position"), str("supports.", n, ".x"), length, u) { return false; }
-        g_sup.push(Support { kind: s.kind, x: s.x });
-        n++;
-    }
-    var sorted: f64[>..] = [];
-    for s in g_sup { sorted.push(s.x); }
-    sort(sorted);
-    var k = 1;
-    while k < sorted.len {
-        if sorted[k] == sorted[k - 1] {
-            return fail(str("Two supports share the position x = ", length_text(u, sorted[k]), "."), "supports");
-        }
-        k++;
-    }
-    var any_fixed = false;
-    for s in g_sup { if s.kind == FIXED { any_fixed = true; } }
-    if !any_fixed && g_sup.len < 2 {
-        return fail("Mechanism: a single pin lets the beam rotate freely. Add a second support or make it fixed.", "supports");
-    }
-    if !input.has_loads { return fail("Loads must be a list.", "loads"); }
-    g_loads.clear();
-    n = 0;
-    for l in in_loads {
-        let label = str("Load ", n + 1);
-        if l.kind == POINT {
-            if !at_number(l.x, str(label, " position"), str("loads.", n, ".x"), length, u) { return false; }
-            if !number(l.f, str(label, " force"), str("loads.", n, ".F"), false) { return false; }
-            g_loads.push(Load { kind: POINT, x: l.x, f: l.f, c: 0.0, x1: 0.0, x2: 0.0, q1: 0.0, q2: 0.0 });
-        } else if l.kind == COUPLE {
-            if !at_number(l.x, str(label, " position"), str("loads.", n, ".x"), length, u) { return false; }
-            if !number(l.c, str(label, " couple"), str("loads.", n, ".C"), false) { return false; }
-            g_loads.push(Load { kind: COUPLE, x: l.x, f: 0.0, c: l.c, x1: 0.0, x2: 0.0, q1: 0.0, q2: 0.0 });
-        } else if l.kind == DIST {
-            if !at_number(l.x1, str(label, " start"), str("loads.", n, ".x1"), length, u) { return false; }
-            if !at_number(l.x2, str(label, " end"), str("loads.", n, ".x2"), length, u) { return false; }
-            if !(l.x2 > l.x1) { return fail(str(label, " must end to the right of where it starts."), str("loads.", n, ".x2")); }
-            if !number(l.q1, str(label, " start intensity"), str("loads.", n, ".q1"), false) { return false; }
-            if !number(l.q2, str(label, " end intensity"), str("loads.", n, ".q2"), false) { return false; }
-            g_loads.push(Load { kind: DIST, x: 0.0, f: 0.0, c: 0.0, x1: l.x1, x2: l.x2, q1: l.q1, q2: l.q2 });
-        } else {
-            return fail(str(label, " must be a point force, a couple or a distributed load."), str("loads.", n, ".kind"));
-        }
-        n++;
-    }
+    if !validate_supports(length, u) { return false; }
+    if !validate_loads(length, u) { return false; }
     let dv = if divisions < 1e9 { divisions } else { 1e9 };
     g_m = Model { length: length, e: e, nu: nu,
         section: Section { a: a, i: i, iy: iy, j: j, c: c, has_c: input.has_c },
@@ -255,8 +280,11 @@ fn at_number(v: f64, label: u8[:], field: u8[:], length: f64, u: i64) -> bool {
 }
 
 fn distinct(xs: f64[>..]&) {
+    let before = xs.len;
     sort(xs);
     dedup(xs);
+    assert(xs.len <= before);
+    assert(xs.len > 0 || before == 0);
 }
 
 fn events(m: Model&, sup: Support[:], loads: Load[:], u: i64, out: f64[>..]&) -> bool {
@@ -268,6 +296,7 @@ fn events(m: Model&, sup: Support[:], loads: Load[:], u: i64, out: f64[>..]&) ->
         if l.kind == DIST { out.push(l.x1); out.push(l.x2); } else { out.push(l.x); }
     }
     distinct(out);
+    assert(out.len >= 2);
     var k = 1;
     while k < out.len {
         if out[k] - out[k - 1] < 1e-6 * m.length {
@@ -282,6 +311,7 @@ fn events(m: Model&, sup: Support[:], loads: Load[:], u: i64, out: f64[>..]&) ->
 fn mesh(out: f64[>..]&) {
     var ev: f64[>..] = [];
     events(g_m, g_sup, g_loads, SI, ev);
+    assert(ev.len >= 2);
     out.clear();
     out.push(ev[0]);
     var i = 1;
@@ -294,12 +324,15 @@ fn mesh(out: f64[>..]&) {
         out.push(ev[i]);
         i++;
     }
+    assert(out.len >= ev.len);
 }
 
 let LEFT = 0;
 let RIGHT = 1;
 
 fn intensity(loads: Load[:], x: f64, side: i64) -> f64 {
+    assert(side >= 0);
+    assert(side <= 1);
     var q = 0.0;
     for l in loads {
         if l.kind == DIST {
@@ -311,6 +344,8 @@ fn intensity(loads: Load[:], x: f64, side: i64) -> f64 {
 }
 
 fn scale_value(v: f64, q: i64, u: i64, back: bool, round: bool) -> f64 {
+    assert(u >= 0);
+    assert(u < UNIT_COUNT);
     let w = if back { from_units(v, q, u) } else { to_units(v, q, u) };
     return if round { prec(w, 15) } else { w };
 }
@@ -318,14 +353,17 @@ fn scale_value(v: f64, q: i64, u: i64, back: bool, round: bool) -> f64 {
 
 
 fn entry(k: f64[:], i: i64, j: i64) -> f64 {
+    assert(i >= 0);
+    assert(j >= 0);
     let d = if i > j { i - j } else { j - i };
     if d > 3 { return 0.0; }
     return if i <= j { k[i * 4 + (j - i)] } else { k[j * 4 + (i - j)] };
 }
 
-fn singular() -> bool { return fail("The stiffness matrix is singular: the supports do not hold the beam in place.", "supports"); }
+fn singular() -> bool { let r = fail("The stiffness matrix is singular: the supports do not hold the beam in place.", "supports"); assert(!r); assert(err_msg.len > 0); return r; }
 
 fn solve_banded(k: f64[:], f: f64[:], sol: f64[>..]&) -> bool {
+    assert(k.len == f.len * 4); assert(f.len > 0);
     let n = f.len;
     var d: f64[>..] = [];
     var r = 0;
@@ -386,9 +424,13 @@ fn solve_banded(k: f64[:], f: f64[:], sol: f64[>..]&) -> bool {
 }
 
 fn hermite(l: f64, t: f64) -> f64[4] {
+    assert(l > 0.0);
+    assert(t > -1e-6 && t < 1.000001);
     return [1.0 - 3.0 * t * t + 2.0 * pw(t, 3), l * (t - 2.0 * t * t + pw(t, 3)), 3.0 * t * t - 2.0 * pw(t, 3), l * (pw(t, 3) - t * t)];
 }
 fn hermite_slope(l: f64, t: f64) -> f64[4] {
+    assert(l > 0.0);
+    assert(t > -1e-6 && t < 1.000001);
     return [(6.0 * t * t - 6.0 * t) / l, 1.0 - 4.0 * t + 3.0 * t * t, (6.0 * t - 6.0 * t * t) / l, 3.0 * t * t - 2.0 * t];
 }
 let GAUSS5_X: f64[5] = [-0.9061798459386640, -0.5384693101056831, 0.0, 0.5384693101056831, 0.9061798459386640];
@@ -406,6 +448,8 @@ var g_eq: Equilibrium;
 var g_ext: Extremes;
 
 fn element(stations: f64[:], x: f64) -> i64 {
+    assert(stations.len >= 2);
+    assert(x == x);
     var lo = 0;
     var hi = stations.len - 2;
     while lo < hi {
@@ -416,32 +460,24 @@ fn element(stations: f64[:], x: f64) -> i64 {
 }
 
 fn station_index(stations: f64[:], x: f64) -> i64 {
+    assert(stations.len > 0);
     var i = 0;
     while i < stations.len { if stations[i] == x { return i; } i++; }
+    assert(i == stations.len);
     return -1;
 }
 
 fn spread(f: f64[>..]&, e: i64, w: f64[4], value: f64) {
+    assert(e >= 0);
+    assert(2 * e + 4 <= f.len);
     var i = 0;
     while i < 4 { f[2 * e + i] += w[i] * value; i++; }
 }
 
-fn solve(u: i64) -> bool {
-    if !validate(u) { return false; }
-    let ei = g_m.e * g_m.section.i;
-    var stations: f64[>..] = [];
-    stations.push(0.0);
-    stations.push(g_m.length);
-    for s in g_sup { stations.push(s.x); }
-    distinct(stations);
+fn assemble_stiffness(stations: f64[:], ei: f64, k: f64[>..]&) {
     let ns = stations.len;
-    let n = ns * 2;
-    var k: f64[>..] = [];
-    var f: f64[>..] = [];
-    var z = 0;
-    while z < n * 4 { k.push(0.0); z++; }
-    z = 0;
-    while z < n { f.push(0.0); z++; }
+    assert(ns >= 2);
+    assert(k.len == ns * 8);
     var e = 0;
     while e < ns - 1 {
         let l = stations[e + 1] - stations[e];
@@ -456,6 +492,12 @@ fn solve(u: i64) -> bool {
         }
         e++;
     }
+}
+
+fn assemble_loads(stations: f64[:], f: f64[>..]&) {
+    let ns = stations.len;
+    assert(ns >= 2);
+    assert(f.len == ns * 2);
     for ld in g_loads {
         if ld.kind == DIST {
             var el = 0;
@@ -493,6 +535,11 @@ fn solve(u: i64) -> bool {
             }
         }
     }
+}
+
+fn solve_free(stations: f64[:], k: f64[:], f: f64[:], sol: f64[>..]&) -> bool {
+    let n = stations.len * 2;
+    var z = 0;
     var fixed: bool[>..] = [];
     z = 0;
     while z < n { fixed.push(false); z++; }
@@ -504,7 +551,6 @@ fn solve(u: i64) -> bool {
     var free: i64[>..] = [];
     z = 0;
     while z < n { if !fixed[z] { free.push(z); } z++; }
-    var sol: f64[>..] = [];
     z = 0;
     while z < n { sol.push(0.0); z++; }
     if free.len > 0 {
@@ -528,6 +574,13 @@ fn solve(u: i64) -> bool {
     for v in sol {
         if !finite(v) { return fail("The solution overflowed; check that E, I and the loads use consistent units.", "section.I"); }
     }
+    return true;
+}
+
+fn collect_results(stations: f64[:], k: f64[:], f: f64[:], sol: f64[:]) {
+    let n = stations.len * 2;
+    assert(sol.len == n);
+    assert(k.len == n * 4);
     g_rea.clear();
     for s in g_sup {
         let i = station_index(stations, s.x);
@@ -547,12 +600,37 @@ fn solve(u: i64) -> bool {
             g_disp.push(Displacement { x: x, v: v, theta: theta });
         }
     }
+}
+
+fn solve(u: i64) -> bool {
+    if !validate(u) { return false; }
+    let ei = g_m.e * g_m.section.i;
+    var stations: f64[>..] = [];
+    stations.push(0.0);
+    stations.push(g_m.length);
+    for s in g_sup { stations.push(s.x); }
+    distinct(stations);
+    let ns = stations.len;
+    let n = ns * 2;
+    var k: f64[>..] = [];
+    var f: f64[>..] = [];
+    var z = 0;
+    while z < n * 4 { k.push(0.0); z++; }
+    z = 0;
+    while z < n { f.push(0.0); z++; }
+    assemble_stiffness(stations, ei, k);
+    assemble_loads(stations, f);
+    var sol: f64[>..] = [];
+    if !solve_free(stations, k, f, sol) { return false; }
+    collect_results(stations, k, f, sol);
     g_eq = equilibrium();
     g_ext = extremes();
     return true;
 }
 
 fn residual(k: f64[:], f: f64[:], sol: f64[:], n: i64, i: i64) -> f64 {
+    assert(i >= 0);
+    assert(i < n);
     var s = -f[i];
     var j = if i > 3 { i - 3 } else { 0 };
     let top = min(n - 1, i + 3);
@@ -574,6 +652,8 @@ fn equilibrium() -> Equilibrium {
             eq_add(q, l.q2 * b / 2.0, l.x1 + 2.0 * b / 3.0, 0.0);
         }
     }
+    assert(!(q.scale_f < 0.0));
+    assert(!(q.scale_m < 0.0));
     return q;
 }
 
@@ -582,13 +662,19 @@ fn eq_add(q: Equilibrium&, f: f64, x: f64, c: f64) {
     q.mz += f * x + c;
     q.scale_f += abs(f);
     q.scale_m += abs(f * x) + abs(c);
+    assert(!(q.scale_f < 0.0));
+    assert(!(q.scale_m < 0.0));
 }
 
 fn internal(x: f64, side: i64) -> f64, f64 {
+    assert(side >= 0);
+    assert(side <= 1);
     return internal_of(g_rea, g_loads, x, side);
 }
 
 fn internal_of(rea: Reaction[:], loads: Load[:], x: f64, side: i64) -> f64, f64 {
+    assert(side >= 0);
+    assert(side <= 1);
     var v = 0.0;
     var m = 0.0;
     for re in rea {
@@ -617,12 +703,14 @@ fn internal_of(rea: Reaction[:], loads: Load[:], x: f64, side: i64) -> f64, f64 
 }
 
 fn deflection(x: f64) -> f64, f64 {
+    assert(g_disp.len >= 2);
     var lo = 0;
     var hi = g_disp.len - 2;
     while lo < hi {
         let mid = (lo + hi + 1) >> 1;
         if g_disp[mid].x <= x { lo = mid; } else { hi = mid - 1; }
     }
+    assert(lo >= 0);
     if x == g_disp[lo + 1].x { return g_disp[lo + 1].v, g_disp[lo + 1].theta; }
     return integrate(g_disp[lo], x);
 }
@@ -632,6 +720,8 @@ let GAUSS3_W: f64[3] = [5.0 / 9.0, 8.0 / 9.0, 5.0 / 9.0];
 
 fn integrate(from: Displacement, x: f64) -> f64, f64 {
     let ei = g_m.e * g_m.section.i;
+    assert(ei > 0.0);
+    assert(!is_nan(x));
     let x0 = from.x;
     let s = x - from.x;
     if s == 0.0 { return from.v, from.theta; }
@@ -652,6 +742,8 @@ struct At { x: f64, v_left: f64, v_right: f64, m_left: f64, m_right: f64, v: f64
 
 fn at(x: f64) -> At {
     let l = g_m.length;
+    assert(l > 0.0);
+    assert(g_disp.len >= 2);
     var vl = 0.0;
     var ml = 0.0;
     var vr = 0.0;
@@ -665,6 +757,8 @@ fn at(x: f64) -> At {
 struct Sample { x: f64, shear: f64, m: f64, v: f64, theta: f64 }
 
 fn diagram(count: i64, pts: Sample[>..]&) {
+    assert(count > 0);
+    assert(g_disp.len >= 2);
     pts.clear();
     let l = g_m.length;
     let at0v, at0t = deflection(0.0);
@@ -695,16 +789,22 @@ fn diagram(count: i64, pts: Sample[>..]&) {
 }
 
 fn moment_at(x: f64, b: f64) -> f64 {
+    assert(!is_nan(x));
+    assert(!is_nan(b));
     let sv, m = internal(x, if x == b { LEFT } else { RIGHT });
     return m;
 }
 
 fn slope_at(x: f64) -> f64 {
+    assert(!is_nan(x));
+    assert(g_disp.len >= 2);
     let v, t = deflection(x);
     return t;
 }
 
 fn bisect(lo0: f64, hi0: f64, b: f64, slope: bool) -> f64 {
+    assert(!is_nan(lo0));
+    assert(!is_nan(hi0));
     var lo = lo0;
     var hi = hi0;
     var vlo = if slope { slope_at(lo) } else { moment_at(lo, b) };
@@ -721,6 +821,8 @@ fn bisect(lo0: f64, hi0: f64, b: f64, slope: bool) -> f64 {
 }
 
 fn critical_points(a: f64, b: f64, xs: f64[>..]&) {
+    assert(b > a);
+    assert(g_disp.len >= 2);
     let h = b - a;
     xs.push(a);
     xs.push(b);
@@ -774,12 +876,16 @@ fn critical_points(a: f64, b: f64, xs: f64[>..]&) {
 }
 
 fn better(have: bool, best: Extreme, value: f64) -> bool {
-    return !have || abs(value) > abs(best.value) + 1e-12 * abs(value);
+    let r = !have || abs(value) > abs(best.value) + 1e-12 * abs(value);
+    assert(have || r);
+    assert(!have || !is_nan(best.value) || !r);
+    return r;
 }
 
 fn extremes() -> Extremes {
     var pts: Sample[>..] = [];
     diagram(800, pts);
+    assert(pts.len >= 2);
     var hs = false;
     var hm = false;
     var hv = false;
@@ -794,6 +900,7 @@ fn extremes() -> Extremes {
         if better(hv, bv, p.v) { bv = Extreme { x: p.x, value: p.v }; hv = true; }
         i++;
     }
+    assert(i == pts.len - 1);
     return Extremes { v_shear: bs, m: bm, v: bv };
 }
 
@@ -805,6 +912,8 @@ struct Shape {
 }
 
 fn pos(v: f64, has: bool, label: u8[:], field: u8[:]) -> bool {
+    assert(label.len > 0);
+    assert(field.len > 0);
     return number(if has { v } else { 0.0 / 0.0 }, label, field, true);
 }
 
@@ -867,5 +976,7 @@ fn section_properties(spec: Shape&, out: Section&) -> bool {
 fn indeterminacy(sup: Support[:]) -> i64 {
     var t = 0;
     for s in sup { t += if s.kind == FIXED { 2 } else { 1 }; }
+    assert(t >= sup.len);
+    assert(t <= 2 * sup.len);
     return t - 2;
 }

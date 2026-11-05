@@ -30,33 +30,50 @@ export class CommandParseError extends Error {}
 
 type Fields = Readonly<Record<string, unknown>>;
 
+export function assert(condition: unknown): asserts condition {
+  if (typeof condition === "function") throw new TypeError("an assertion is a value");
+  if (!condition) throw new Error("assertion failed");
+}
+
 function isFields(value: unknown): value is Fields {
+  assert(arguments.length === 1);
+  assert(typeof value !== "function");
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 function str(fields: Fields, key: string): string {
+  assert(key.length > 0);
   const value = fields[key];
   if (typeof value !== "string") throw new CommandParseError(`command field ${key} is not a string`);
+  assert(typeof value === "string");
   return value;
 }
 
 function num(fields: Fields, key: string): number {
+  assert(key.length > 0);
   const value = fields[key];
   if (typeof value !== "number") throw new CommandParseError(`command field ${key} is not a number`);
+  assert(typeof value === "number");
   return value;
 }
 
 function bool(fields: Fields, key: string): boolean {
+  assert(key.length > 0);
   const value = fields[key];
   if (typeof value !== "boolean") throw new CommandParseError(`command field ${key} is not a boolean`);
+  assert(typeof value === "boolean");
   return value;
 }
 
 function nullableStr(fields: Fields, key: string): string | null {
+  assert(key.length > 0);
+  assert(isFields(fields));
   return fields[key] === null ? null : str(fields, key);
 }
 
 function parseCommand(fields: Fields): Command {
+  assert(isFields(fields));
+  assert(typeof fields === "object");
   if ("save" in fields) return { kind: "save", name: str(fields, "save"), mime: str(fields, "mime"), data: str(fields, "data"), b64: bool(fields, "b64") };
   if ("raster" in fields) return { kind: "raster", svg: str(fields, "raster"), w: num(fields, "w"), h: num(fields, "h"), name: str(fields, "name"), bg: str(fields, "bg") };
   if ("html" in fields) return { kind: "html", selector: str(fields, "html"), html: str(fields, "v") };
@@ -73,8 +90,11 @@ function parseCommand(fields: Fields): Command {
 
 export function parseCommands(json: unknown): Command[] {
   if (!Array.isArray(json)) throw new CommandParseError("commands are not a list");
-  return json.map((item: unknown) => {
+  const out: Command[] = [];
+  for (const item of json) {
     if (!isFields(item)) throw new CommandParseError("command is not an object");
-    return parseCommand(item);
-  });
+    out.push(parseCommand(item));
+  }
+  assert(out.length === json.length);
+  return out;
 }

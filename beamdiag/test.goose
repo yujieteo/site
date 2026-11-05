@@ -23,24 +23,34 @@ let REPLAY_COUNT = 27546;
 let REPLAY_HASH: u64 = 4006951827;
 
 fn replay_add(x: f64) {
+    assert(replay_count >= 0);
+    assert(replay_hash < REPLAY_MODULUS);
     for c in js(x) { replay_hash = (replay_hash * 131 + (c as u64)) % REPLAY_MODULUS; }
     replay_count++;
 }
 
 fn expect(ok: bool, what: u8[:]) {
+    assert(what.len > 0);
+    assert(failures >= 0);
     if !ok { write_stderr(str("beam test: ", what, "\n")); failures++; }
 }
 
 fn same_text(got: u8[:], want: u8[:], what: u8[:]) {
+    assert(what.len > 0);
+    assert(failures >= 0);
     expect(got == want, str(what, ": got ", got, ", want ", want));
 }
 
 fn num(n: i64, key: u8[:]) -> f64 {
+    assert(key.len > 0);
+    assert(key.len < 64);
     let v, ok = jm_number(jm_member(n, key));
     return if ok { v } else { NAN };
 }
 
 fn load_model(m: i64) {
+    assert(m >= 0);
+    assert(in_sup.len >= 0);
     let section = jm_member(m, "section");
     let material = jm_member(m, "material");
     let divisions = jm_member(m, "divisions");
@@ -63,20 +73,28 @@ fn load_model(m: i64) {
             x1: num(l, "x1"), x2: num(l, "x2"), q1: num(l, "q1"), q2: num(l, "q2") });
         l = jm_next(l);
     }
+    assert(in_x.has_supports);
+    assert(in_x.has_loads);
 }
 
 fn largest(list: i64, key: u8[:]) -> f64 {
+    assert(key.len > 0);
     var big = 0.0;
     var n = jm_first(list);
     while n >= 0 { big = max(big, abs(num(n, key))); n = jm_next(n); }
+    assert(!(big < 0.0));
     return big;
 }
 
 fn near(got: f64, want: f64, scale: f64) -> bool {
+    assert(!(scale < 0.0));
+    assert(abs(want) >= 0.0 || is_nan(want));
     return abs(got - want) <= 1e-8 * scale + 1e-300;
 }
 
 fn solver_matches_exact_macaulay_answers(id: u8[:], model: i64, answer: i64) {
+    assert(model >= 0);
+    assert(answer >= 0);
     load_model(model);
     if !solve(SI) { expect(false, str(id, ": does not solve: ", err_msg)); return; }
     let reactions = jm_member(answer, "reactions");
@@ -125,6 +143,8 @@ fn solver_matches_exact_macaulay_answers(id: u8[:], model: i64, answer: i64) {
 fn us_units_use_the_exact_inch_and_pound_force() {
     let lbf_in = unit_index("lbf-in");
     let kip_in = unit_index("kip-in");
+    assert(lbf_in >= 0);
+    assert(kip_in >= 0);
     expect(from_units(1.0, LENGTH, lbf_in) == 0.0254 && from_units(1.0, LENGTH, kip_in) == 0.0254, "1 in is 0.0254 m");
     expect(from_units(1.0, FORCE, lbf_in) == 4.4482216152605, "1 lbf is 4.4482216152605 N");
     expect(from_units(1.0, FORCE, kip_in) == 4448.2216152605, "1 kip is 1000 lbf");
@@ -133,6 +153,7 @@ fn us_units_use_the_exact_inch_and_pound_force() {
 fn same(got: f64, want: f64) -> bool { return abs(got - want) <= 4e-16 * abs(want); }
 
 fn each_unit_system_is_consistent() {
+    assert(UNIT_COUNT == 5);
     var u = 0;
     while u < UNIT_COUNT {
         let l = unit_factor(u, LENGTH);
@@ -148,9 +169,12 @@ fn each_unit_system_is_consistent() {
         expect(to_units(from_units(1.0, LENGTH, u), LENGTH, u) == 1.0, str(id, ": to_units undoes from_units"));
         u++;
     }
+    assert(u == UNIT_COUNT);
 }
 
 fn powers_are_correctly_rounded() {
+    assert(pw(2.0, 0) == 1.0);
+    assert(pw(2.0, 10) == 1024.0);
     expect(pw(1.1, 3) == 1.3310000000000004, "1.1^3");
     expect(pw(1.1, -3) == 0.7513148009015775, "1.1^-3");
     expect(pw(3.0, -5) == 0.00411522633744856, "3^-5");
@@ -159,6 +183,8 @@ fn powers_are_correctly_rounded() {
 }
 
 fn jmax_and_jmin_give_nan_when_either_side_is_nan() {
+    assert(jmax(1.0, 1.0) == 1.0);
+    assert(jmin(1.0, 1.0) == 1.0);
     expect(is_nan(jmax(NAN, 1.0)) && is_nan(jmax(1.0, NAN)), "jmax with NaN");
     expect(is_nan(jmin(NAN, 1.0)) && is_nan(jmin(1.0, NAN)), "jmin with NaN");
     expect(jmax(1.0, 2.0) == 2.0 && jmin(1.0, 2.0) == 1.0, "jmax and jmin of numbers");
@@ -167,10 +193,14 @@ fn jmax_and_jmin_give_nan_when_either_side_is_nan() {
 fn distinct_sorts_and_drops_repeats_with_minus_zero_as_zero() {
     var xs: f64[>..] = [3.0, -0.0, 1.0, 0.0, 3.0, 2.0];
     distinct(xs);
+    assert(xs.len <= 6);
+    assert(xs.len >= 1);
     expect(xs.len == 4 && xs[0] == 0.0 && xs[1] == 1.0 && xs[2] == 2.0 && xs[3] == 3.0, "distinct of 3, -0, 1, 0, 3, 2");
 }
 
 fn simple_beam(kinds: i64[:], xs: f64[:]) -> bool {
+    assert(kinds.len == xs.len);
+    assert(kinds.len > 0);
     in_x = Input { length: 4.0, e: 2e11, nu: 0.3, a: 0.005, i: 8e-5, iy: 0.0, has_iy: false, j: 0.0, has_j: false, c: 0.0, has_c: false,
         divisions: 4.0, has_divisions: true, has_supports: true, has_loads: true };
     in_sup.clear();
@@ -182,6 +212,8 @@ fn simple_beam(kinds: i64[:], xs: f64[:]) -> bool {
 }
 
 fn a_beam_is_stable_with_a_fixed_support_or_two_pins() {
+    assert(PIN != FIXED);
+    assert(POINT != COUPLE);
     expect(!simple_beam([PIN], [0.0]) && err_field == "supports", "one pin is a mechanism");
     expect(simple_beam([FIXED], [0.0]), "one fixed support holds the beam");
     expect(simple_beam([PIN, PIN], [0.0, 3.0]), "two pins hold the beam");
@@ -190,11 +222,15 @@ fn a_beam_is_stable_with_a_fixed_support_or_two_pins() {
 
 fn indeterminacy_is_reaction_components_minus_two() {
     let sup: Support[3] = [Support { kind: FIXED, x: 0.0 }, Support { kind: PIN, x: 1.0 }, Support { kind: PIN, x: 2.0 }];
+    assert(sup.len == 3);
+    assert(sup[0].kind == FIXED);
     expect(indeterminacy(sup[0..2]) == 1 && indeterminacy(sup[0..3]) == 2 && indeterminacy(sup[1..3]) == 0, "indeterminacy");
 }
 
 fn signs_follow_up_positive_and_sagging_positive() {
     expect(simple_beam([PIN, PIN], [0.0, 4.0]), "a pinned beam with a downward force solves");
+    assert(g_rea.len == 2);
+    assert(g_disp.len > 0);
     expect(g_rea[0].fy > 0.0 && g_rea[1].fy > 0.0, "a downward force gives upward reactions");
     let a = at(2.5);
     expect(a.m_left > 0.0, "a simply supported beam under a downward force sags, so M > 0");
@@ -203,6 +239,8 @@ fn signs_follow_up_positive_and_sagging_positive() {
 }
 
 fn numbers_read_as_javascript_writes_them() {
+    assert(js(1.0) == "1");
+    assert(js(0.5) == "0.5");
     same_text(js(0.1 + 0.2), "0.30000000000000004", "String(0.1 + 0.2)");
     same_text(js(1e21), "1e+21", "String(1e21)");
     same_text(js(1e-7), "1e-7", "String(1e-7)");
@@ -231,6 +269,8 @@ fn numbers_read_as_javascript_writes_them() {
 }
 
 fn gauss_rules_are_exact_to_their_degree() {
+    assert(GAUSS5_X.len == 5);
+    assert(GAUSS3_X.len == 3);
     var k = 0;
     while k <= 9 {
         var g5 = 0.0;
@@ -250,6 +290,8 @@ fn diagrams_close_at_the_ends_and_show_a_jump_as_two_points() {
     expect(simple_beam([PIN, PIN], [0.0, 4.0]), "a pinned beam solves");
     var pts: Sample[>..] = [];
     diagram(40, pts);
+    assert(pts.len >= 2);
+    assert(pts.len > 0);
     let last = pts[pts.len - 1];
     expect(pts[0].x == 0.0 && pts[0].shear == 0.0 && pts[0].m == 0.0, "the diagrams start at zero");
     expect(last.x == 4.0 && last.shear == 0.0 && last.m == 0.0, "the diagrams end at zero");
@@ -257,6 +299,8 @@ fn diagrams_close_at_the_ends_and_show_a_jump_as_two_points() {
 }
 
 fn rust_and_javascript_parity_helpers() {
+    assert(total_less(1.0, 2.0));
+    assert(!total_less(2.0, 1.0));
     expect(total_less(-0.0, 0.0) && !total_less(0.0, -0.0), "total_cmp puts -0 before 0");
     expect(total_less(1e308, NAN) && !total_less(NAN, 1e308), "total_cmp puts NaN after every number");
     expect(rmin(NAN, 1.0) == 1.0 && rmin(1.0, NAN) == 1.0 && rmax(NAN, 1.0) == 1.0 && rmax(1.0, NAN) == 1.0, "f64::min and f64::max let a NaN give way");
@@ -278,26 +322,36 @@ fn rust_and_javascript_parity_helpers() {
 fn json_text_escapes_as_json_stringify() {
     var out: u8[>..] = [];
     quote(out, "a\"b\\\n\t\x1f");
+    assert(out.len > 0);
+    assert(out[0] == '"');
     same_text(out, "\"a\\\"b\\\\\\n\\t\\u001f\"", "JSON.stringify of a string with a quote, a backslash and control characters");
 }
 
 fn base64_decoding_skips_other_characters() {
     var out: u8[>..] = [];
     b64_decode(out, "aGVs\nbG8=");
+    assert(out.len == 5);
+    assert(out[0] == 'h');
     same_text(out, "hello", "base64 of hello with a newline and padding");
 }
 
 fn wrap_breaks_lines_at_spaces() {
     var out: u8[>..] = [];
     wrap("the quick brown fox", 9, out);
+    assert(out.len > 0);
+    assert(out.len <= 20);
     same_text(out, "the quick\nbrown fox", "wrap at 9 characters");
 }
 
 fn tex_white_space_closes_up_as_rust_split_whitespace() {
+    assert(tex_squeeze(" a ") == "a");
+    assert(tex_squeeze("a b") == "a b");
     same_text(tex_squeeze("  a \t  b  "), "a b", "white space between and around words");
 }
 
 fn every_preset_names_a_known_material() {
+    assert(presets.len > 0);
+    assert(materials.len > 0);
     for p in presets {
         var found = false;
         for m in materials { if m.id == p.material { found = true; } }
@@ -306,6 +360,8 @@ fn every_preset_names_a_known_material() {
 }
 
 fn a_unit_or_origin_change_keeps_the_beam() {
+    assert(st_sup.len > 0);
+    assert(st_length > 0.0);
     let length = st_length;
     let x = st_sup[st_sup.len - 1].x;
     handle_event("{\"ev\":\"change\",\"field\":\"units\",\"value\":\"lbf-in\"}");
@@ -316,12 +372,16 @@ fn a_unit_or_origin_change_keeps_the_beam() {
 }
 
 fn typed_lengths_drop_conversion_noise() {
+    assert(app_u >= 0);
+    assert(app_u < UNIT_COUNT);
     expect(take(2300.0, LENGTH) == 2.3, "2300 mm is 2.3 m");
     expect(step_for(0.0) == take(0.1, LENGTH), "a zero length still gets a step");
 }
 
 fn solver_messages_read_in_the_chosen_convention() {
     app_attach = 4.0;
+    assert(app_attach == 4.0);
+    assert(in_convention("") == "");
     same_text(in_convention("Load 1 position must lie on the beam, between 0 and 4000 mm."), "Load 1 position must lie on the beam, between −2000 mm and 2000 mm.", "a range from the left end");
     same_text(in_convention("Two supports share the position x = 1000 mm."), "Two supports share the position x = −1000 mm.", "a position from the left end");
     same_text(in_convention("Positions 1000 mm and 1000.001 mm are too close together; make them equal or separate them."),
@@ -329,12 +389,16 @@ fn solver_messages_read_in_the_chosen_convention() {
 }
 
 fn results_match_the_replaced_javascript_engine_bit_for_bit() {
+    assert(replay_count >= 0);
+    assert(REPLAY_MODULUS > 1);
     if replay_count != REPLAY_COUNT || replay_hash != REPLAY_HASH {
         expect(false, str("solver results changed: ", replay_count, " values with hash ", replay_hash, ", want ", REPLAY_COUNT, " with ", REPLAY_HASH));
     }
 }
 
 fn typed_positions_land_on_a_position_within_the_tolerance() {
+    assert(st_sup.len > 0);
+    assert(st_length > 0.0);
     let l = show(st_length, LENGTH);
     let p = st_sup[0].x;
     let shown = show_x(p, app_attach);
@@ -343,6 +407,8 @@ fn typed_positions_land_on_a_position_within_the_tolerance() {
 }
 
 fn e_typed_in_psi_matches_a_preset_to_rounding() {
+    assert(materials.len > 0);
+    assert(app_u >= 0);
     handle_event("{\"ev\":\"change\",\"field\":\"units\",\"value\":\"lbf-in\"}");
     var i = 0;
     while i < materials.len {
@@ -358,6 +424,8 @@ fn e_typed_in_psi_matches_a_preset_to_rounding() {
 }
 
 fn figure_spans_are_halved_and_a_force_arrow_is_capped() {
+    assert(fig_half_span(2.0, 0.0) == 1.0);
+    assert(fig_force_arrow_length(1.0, 1.0) > 0.0);
     expect(fig_half_span(1.5e308, -1.5e308) == 1.5e308, "a span at the limit of a double does not overflow");
     expect(fig_force_arrow_length(1e9, 1.0) == fig_force_arrow_length(1.0, 1.0), "a force beyond the largest force gets the longest arrow");
     expect(fig_force_arrow_length(0.5, 1.0) < fig_force_arrow_length(1.0, 1.0), "a smaller force gets a shorter arrow");
@@ -365,13 +433,16 @@ fn figure_spans_are_halved_and_a_force_arrow_is_capped() {
 
 fn contains(text: u8[:], part: u8[:]) -> bool {
     if part.len > text.len { return false; }
+    assert(part.len <= text.len);
     var i = 0;
     while i + part.len <= text.len { if text[i..i + part.len] == part { return true; } i++; }
+    assert(i + part.len > text.len);
     return false;
 }
 
 fn a_drag_derives_the_hand_calculation_only_when_it_ends() {
     handle_event("{\"ev\":\"start\",\"w\":800}");
+    assert(st_sup.len > 0);
     handle_event("{\"ev\":\"hand-visible\"}");
     expect(!hand_stale, "the hand calculation is current before a drag");
     handle_event("{\"ev\":\"down\",\"key\":\"s0\"}");
@@ -379,11 +450,14 @@ fn a_drag_derives_the_hand_calculation_only_when_it_ends() {
     expect(hand_stale && !contains(during, "#hand-body"), "a drag step leaves the hand calculation alone");
     let after = handle_event("{\"ev\":\"up\"}");
     expect(!hand_stale && contains(after, "#hand-body"), "the end of a drag derives the hand calculation again");
+    assert(!hand_stale);
 }
 
 fn a_beam_too_large_for_the_units_keeps_the_last_solved_beam() {
     handle_event("{\"ev\":\"start\",\"w\":800}");
     expect(app_u == unit_index("N-mm") && app_has_sol && !app_has_error, "the example beam solves in N-mm");
+    assert(g_rea.len > 0);
+    assert(app_u >= 0);
     let fy = g_rea[0].fy;
     let ml = g_ext.m.value;
     handle_event("{\"ev\":\"input\",\"field\":\"loads.0.q1\",\"value\":\"1e303\"}");
@@ -400,6 +474,8 @@ fn main() {
     let reference = jm_parse_raw(REFERENCE);
     let random = jm_parse_raw(RANDOM);
     expect(fixtures >= 0 && reference >= 0 && random >= 0, "the test data reads as JSON");
+    assert(FIXTURES.len > 0);
+    assert(REFERENCE.len > 0);
     var f = jm_first(jm_member(fixtures, "cases"));
     var r = jm_first(jm_member(reference, "cases"));
     var cases = 0;
@@ -418,6 +494,8 @@ fn main() {
         c = jm_next(c);
         cases++;
     }
+    assert(cases > 0);
+    assert(failures >= 0);
     us_units_use_the_exact_inch_and_pound_force();
     each_unit_system_is_consistent();
     powers_are_correctly_rounded();

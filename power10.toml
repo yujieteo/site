@@ -1,0 +1,2 @@
+version = "0.1.0"
+exclude = ["beamdiag/c/*", "public/play/beamdiag/*", "public/play/goosestrike/strike.js", "public/play/goosestrike/strike-gpu.js", "public/play/neurons/engine.js", "public/play/marklove/marklove.js"]
