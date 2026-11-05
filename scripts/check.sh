@@ -31,7 +31,17 @@ elif [ "$test_hash" != "$(cat beamdiag/c/test.sha256)" ]; then
   exit 1
 fi
 GOOSE_PACKED_STRUCT_MISALIGNED_STORES=-fno-sanitize=alignment
-cc -O1 -w -g -fsanitize=undefined,address -fno-sanitize-recover=all $GOOSE_PACKED_STRUCT_MISALIGNED_STORES beamdiag/c/test.c beamdiag/src/shim.c -lm -o "$tmp/test"
+. scripts/cflags.sh
+cc -O1 $GOOSE_C_WARNINGS -g -fsanitize=undefined,address -fno-sanitize-recover=all $GOOSE_PACKED_STRUCT_MISALIGNED_STORES beamdiag/c/test.c beamdiag/src/shim.c -lm -o "$tmp/test"
+analyze() { clang -w --analyze -Xclang -analyzer-output=text -Xclang -analyzer-disable-checker -Xclang deadcode.DeadStores "-DGS_STACK_RESERVE=(512ull<<10)" -Ibeamdiag/c "$@" 2>&1 |
+  sed -n 's/^\([^:]*\):[0-9]*:[0-9]*: warning: \(.*\)$/\1: \2/p'; }
+for f in beamdiag/c/test.c beamdiag/c/page.c beamdiag/c/beamdiag.c; do analyze "$f" > "$tmp/$(basename "$f").analysis" & done
+for f in beamdiag/src/shim.c beamdiag/src/host.c; do clang -Wall -Wextra -Wpedantic -Werror -Ibeamdiag/c -fsyntax-only "$f"; done
+clang $GOOSE_C_WARNINGS -O1 "-DGS_STACK_RESERVE=(512ull<<10)" -Ibeamdiag/c -fsyntax-only beamdiag/c/beamdiag.c
+wait
+cat "$tmp"/*.analysis | sort -u > "$tmp/analysis.txt"
+diff -u beamdiag/analyzer-known.txt "$tmp/analysis.txt" ||
+  { echo 'check: clang --analyze findings differ from beamdiag/analyzer-known.txt. Fix the new ones; remove the fixed ones from the list. The list only shrinks.' >&2; exit 1; }
 "$tmp/test"
 for f in index.html beamdiag.wasm.gz; do [ -s "$tmp/$f" ]; done
 cmp -s "$tmp/index.html" public/play/beamdiag/index.html ||

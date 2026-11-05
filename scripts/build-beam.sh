@@ -29,7 +29,8 @@ trap 'rm -rf "$tmp"' EXIT HUP INT TERM
 "$emcc" -Oz -flto -sMALLOC=emmalloc "-DGS_STACK_RESERVE=(512ull<<10)" -I"$gen" "$src/host.c" "$gen/beamdiag.c" "$src/shim.c" \
   -o "$tmp/beamdiag.wasm" --no-entry -sSTANDALONE_WASM -sALLOW_MEMORY_GROWTH=1 \
   -sEXPORTED_FUNCTIONS=_alloc,_handle,_out_len -sERROR_ON_UNDEFINED_SYMBOLS=1
-cc -O1 -w "$gen/page.c" "$src/shim.c" -lm -o "$tmp/page"
+. scripts/cflags.sh
+cc -O1 $GOOSE_C_WARNINGS "$gen/page.c" "$src/shim.c" -lm -o "$tmp/page"
 mkdir -p "$out"
 "$tmp/page" "$out/index.html"
 gzip -n -9 -c "$tmp/beamdiag.wasm" > "$out/beamdiag.wasm.gz"
