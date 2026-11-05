@@ -1,1 +1,6 @@
-GOOSE_C_WARNINGS="-Wall -Wextra -Wpedantic -Werror -Wno-unused-variable -Wno-unused-function -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unterminated-string-initialization -Wno-unused-label -Wno-parentheses-equality"
+#!/bin/sh
+goose_cc() {
+  tool=$1
+  shift
+  "${tool}" -Wall -Wextra -Wpedantic -Werror -Wno-unused-variable -Wno-unused-function -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unterminated-string-initialization -Wno-unused-label -Wno-parentheses-equality "$@"
+}
