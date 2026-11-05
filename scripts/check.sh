@@ -11,6 +11,8 @@ comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/*.goose
 bun install --frozen-lockfile >/dev/null
 node_modules/.bin/tsc --noEmit
 node_modules/.bin/knip
+jpl=$(bun scripts/jpl.ts)
+[ -z "$jpl" ] || { echo "$jpl" >&2; exit 1; }
 bun scripts/check-site.ts
 [ "$(cat wallpaper/wallpaper.goose wallpaper/host.c | shasum -a 256 | cut -d' ' -f1)" = "$(cat wallpaper/wasm.sha256)" ] ||
   { echo 'check: wallpaper/ changed after the last build. Run scripts/build-wallpaper.sh' >&2; exit 1; }
