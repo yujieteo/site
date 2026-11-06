@@ -365,14 +365,10 @@ fn at_message(n: u8[:]) -> u8[>..] {
     return out;
 }
 
-fn in_convention(m0: u8[:]) -> u8[>..] {
-    var m: u8[>..] = [];
-    m.append(m0);
-    let o = offset(app_attach);
-    if o == 0.0 || is_nan(o) { return m; }
+fn convention_between(m: u8[>..]&) {
     let pat1 = "between 0 and ";
     var from = 0;
-    loop {
+    while from <= m.len {
         let rel = find(m[from..], pat1);
         if rel < 0 { break; }
         let i = from + rel;
@@ -394,9 +390,12 @@ fn in_convention(m0: u8[:]) -> u8[>..] {
         }
         from = i + pat1.len;
     }
+}
+
+fn convention_position(m: u8[>..]&) {
     let pat2 = "position x = ";
-    from = 0;
-    loop {
+    var from = 0;
+    while from <= m.len {
         let rel = find(m[from..], pat2);
         if rel < 0 { break; }
         let i = from + rel;
@@ -422,6 +421,15 @@ fn in_convention(m0: u8[:]) -> u8[>..] {
         if hit { break; }
         from = i + pat2.len;
     }
+}
+
+fn in_convention(m0: u8[:]) -> u8[>..] {
+    var m: u8[>..] = [];
+    m.append(m0);
+    let o = offset(app_attach);
+    if o == 0.0 || is_nan(o) { return m; }
+    convention_between(m);
+    convention_position(m);
     if starts_with(m, "Positions ") {
         let rest = m[10..];
         var w: const u8[:][6];
@@ -904,6 +912,36 @@ fn on_change(field: u8[:], val: u8[:]) {
     }
 }
 
+fn add_support(l: f64) {
+    let cand: f64[5] = [l / 2.0, l / 4.0, 3.0 * l / 4.0, l, 0.0];
+    var x = 0.0;
+    var done = false;
+    for c in cand {
+        var taken = false;
+        for s in st_sup { if s.x == c { taken = true; } }
+        if !taken { x = c; done = true; break; }
+    }
+    if !done {
+        var xs: f64[>..] = [];
+        xs.push(0.0);
+        xs.push(l);
+        for s in st_sup { xs.push(s.x); }
+        stable_sort(xs) { a, b => total_less(a, b) };
+        dedup(xs);
+        var best = 0;
+        var i = 1;
+        while i < xs.len {
+            if xs[i] - xs[i - 1] > xs[best + 1] - xs[best] { best = i - 1; }
+            i++;
+        }
+        x = (xs[best] + xs[best + 1]) / 2.0;
+    }
+    st_sup.push(Support { kind: PIN, x: prec(x, 10) });
+    st_preset.clear();
+    update(false);
+    focus("#supports li:last-child input");
+}
+
 fn on_click(act: u8[:], arg: u8[:]) {
     let l = st_length;
     if act == "ends" {
@@ -920,33 +958,7 @@ fn on_click(act: u8[:], arg: u8[:]) {
         st_preset.clear();
         update(false);
     } else if act == "add-support" {
-        let cand: f64[5] = [l / 2.0, l / 4.0, 3.0 * l / 4.0, l, 0.0];
-        var x = 0.0;
-        var done = false;
-        for c in cand {
-            var taken = false;
-            for s in st_sup { if s.x == c { taken = true; } }
-            if !taken { x = c; done = true; break; }
-        }
-        if !done {
-            var xs: f64[>..] = [];
-            xs.push(0.0);
-            xs.push(l);
-            for s in st_sup { xs.push(s.x); }
-            stable_sort(xs) { a, b => total_less(a, b) };
-            dedup(xs);
-            var best = 0;
-            var i = 1;
-            while i < xs.len {
-                if xs[i] - xs[i - 1] > xs[best + 1] - xs[best] { best = i - 1; }
-                i++;
-            }
-            x = (xs[best] + xs[best + 1]) / 2.0;
-        }
-        st_sup.push(Support { kind: PIN, x: prec(x, 10) });
-        st_preset.clear();
-        update(false);
-        focus("#supports li:last-child input");
+        add_support(l);
     } else if act == "add" {
         let q = round1(-5e3, DISTRIBUTED);
         let n = NAN_;
@@ -1586,7 +1598,7 @@ fn print_svg(list: DOp[:], w: f64, h: f64) -> u8[>..] {
     var out: u8[>..] = [];
     out.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     var at = 0;
-    loop {
+    while at <= s.len {
         let i = find(s[at..], "var(--");
         if i < 0 { break; }
         out.append(s[at..at + i]);
@@ -1648,28 +1660,43 @@ fn origin_option(v: u8[:], label: u8[:]) -> u8[>..] {
     return str("<option value=\"", v, "\"", if (v == "mid") == app_mid { " selected" } else { "" }, ">", label, "</option>");
 }
 
-let BODY: const u8[:] = embed_file("body.html");
-
-fn body(root: u8[:]) -> u8[>..] {
-    let figure = if app_has_sol { figure_svg(700.0) } else { str("") };
-    let d = raw_root();
-    let n = jm_member(d, "nastran");
+fn body_error() -> u8[>..] {
     var error: u8[>..] = [];
     if app_has_error {
         error.append(str("<div id=\"error\" class=\"error\" role=\"alert\"><b>Can't solve this beam: </b>", esc(in_convention(err_msg)), "</div>"));
     } else {
         error.append("<div id=\"error\" class=\"error\" role=\"alert\" hidden></div>");
     }
+    return error;
+}
+
+fn body_cards(n: i64) -> u8[>..] {
     var cards: u8[>..] = [];
     var cd = jm_first(jm_member(n, "cards"));
     while cd >= 0 { cards.append(str("<tr><td><code>", esc(jstr(cd, "card")), "</code></td><td>", esc(jstr(cd, "use")), "</td></tr>")); cd = jm_next(cd); }
+    return cards;
+}
+
+fn body_sources(d: i64) -> u8[>..] {
     var sources: u8[>..] = [];
     var sc = jm_first(jm_member(d, "sources"));
     while sc >= 0 { sources.append(str("<li><a href=\"", esc(jstr(sc, "url")), "\" rel=\"noopener\">", esc(jstr(sc, "title")), "</a></li>")); sc = jm_next(sc); }
+    return sources;
+}
+
+let BODY: const u8[:] = embed_file("body.html");
+
+fn body(root: u8[:]) -> u8[>..] {
+    let figure = if app_has_sol { figure_svg(700.0) } else { str("") };
+    let d = raw_root();
+    let n = jm_member(d, "nastran");
+    let error = body_error();
+    let cards = body_cards(n);
+    let sources = body_sources(d);
     let tmpl = BODY;
     var out: u8[>..] = [];
     var at = 0;
-    loop {
+    while at <= tmpl.len {
         let i = find(tmpl[at..], "{{");
         if i < 0 { break; }
         out.append(tmpl[at..at + i]);

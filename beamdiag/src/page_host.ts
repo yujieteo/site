@@ -145,38 +145,44 @@ function run(cmds: Command[]): Reply {
   return out;
 }
 
-document.addEventListener("input", (e) => { const t = e.target; if (t instanceof HTMLInputElement && t.dataset["field"]) send({ ev: "input", field: t.dataset["field"], value: t.value }); });
-document.addEventListener("change", (e) => {
-  const t = e.target;
-  if (!(t instanceof HTMLElement) || !t.dataset["field"]) return;
-  const value = isFormField(t) ? t.value : "";
-  send(t.tagName === "SELECT" ? { ev: "change", field: t.dataset["field"], value } : { ev: "done", field: t.dataset["field"], value });
-});
-document.addEventListener("focusout", (e) => { const t = e.target; const f = t instanceof HTMLElement ? t.dataset["field"] : undefined; if (f) send({ ev: "done", field: f }); });
-document.addEventListener("click", (e) => {
-  const b = e.target instanceof Element ? e.target.closest("[data-act]") : null;
-  if (!isStyled(b)) return;
-  const act = b.dataset["act"];
-  if (act === undefined) return;
-  const go = () => send({ ev: "click", act, arg: b.dataset["arg"] || "" });
-  if (act.startsWith("save-")) { toast("Drawing…", true); pdfFonts().then(go).catch((error: unknown) => toast(`${error instanceof Error ? error.message : String(error)}.`)); } else go();
-});
+function listenInputs(): void {
+  document.addEventListener("input", (e) => { const t = e.target; if (t instanceof HTMLInputElement && t.dataset["field"]) send({ ev: "input", field: t.dataset["field"], value: t.value }); });
+  document.addEventListener("change", (e) => {
+    const t = e.target;
+    if (!(t instanceof HTMLElement) || !t.dataset["field"]) return;
+    const value = isFormField(t) ? t.value : "";
+    send(t.tagName === "SELECT" ? { ev: "change", field: t.dataset["field"], value } : { ev: "done", field: t.dataset["field"], value });
+  });
+  document.addEventListener("focusout", (e) => { const t = e.target; const f = t instanceof HTMLElement ? t.dataset["field"] : undefined; if (f) send({ ev: "done", field: f }); });
+  document.addEventListener("click", (e) => {
+    const b = e.target instanceof Element ? e.target.closest("[data-act]") : null;
+    if (!isStyled(b)) return;
+    const act = b.dataset["act"];
+    if (act === undefined) return;
+    const go = () => send({ ev: "click", act, arg: b.dataset["arg"] || "" });
+    if (act.startsWith("save-")) { toast("Drawing…", true); pdfFonts().then(go).catch((error: unknown) => toast(`${error instanceof Error ? error.message : String(error)}.`)); } else go();
+  });
+}
+listenInputs();
 const frac = (e: PointerEvent): number => { const r = plots.getBoundingClientRect(); return (e.clientX - r.left) / r.width; };
-plots.addEventListener("pointerdown", (e) => {
-  const h = e.target instanceof Element ? e.target.closest("[data-key]") : null;
-  if (!isStyled(h)) return;
-  const key = h.dataset["key"];
-  if (key === undefined || !wasm) return;
-  plots.setPointerCapture(e.pointerId); e.preventDefault(); h.focus({ preventScroll: true });
-  send({ ev: "down", key });
-});
-plots.addEventListener("pointermove", (e) => send({ ev: "move", frac: frac(e) }));
-for (const t of ["pointerup", "pointercancel"]) plots.addEventListener(t, () => send({ ev: "up" }));
-plots.addEventListener("keydown", (e) => {
-  const t = e.target instanceof Element ? e.target : null;
-  const h = t?.closest("[data-key]"), target = isStyled(h) ? h.dataset["key"] ?? "" : t?.id === "plotarea" ? "plot" : "";
-  if (target && send({ ev: "key", key: e.key, shift: e.shiftKey, target }).prevent) e.preventDefault();
-});
+function listenPlots(): void {
+  plots.addEventListener("pointerdown", (e) => {
+    const h = e.target instanceof Element ? e.target.closest("[data-key]") : null;
+    if (!isStyled(h)) return;
+    const key = h.dataset["key"];
+    if (key === undefined || !wasm) return;
+    plots.setPointerCapture(e.pointerId); e.preventDefault(); h.focus({ preventScroll: true });
+    send({ ev: "down", key });
+  });
+  plots.addEventListener("pointermove", (e) => send({ ev: "move", frac: frac(e) }));
+  for (const t of ["pointerup", "pointercancel"]) plots.addEventListener(t, () => send({ ev: "up" }));
+  plots.addEventListener("keydown", (e) => {
+    const t = e.target instanceof Element ? e.target : null;
+    const h = t?.closest("[data-key]"), target = isStyled(h) ? h.dataset["key"] ?? "" : t?.id === "plotarea" ? "plot" : "";
+    if (target && send({ ev: "key", key: e.key, shift: e.shiftKey, target }).prevent) e.preventDefault();
+  });
+}
+listenPlots();
 // Toasts, after Sonner (https://emilkowal.ski/ui/building-a-toast-component).
 const toaster = required(document.querySelector(".toasts"), "toast list"), GAP = 14, TOAST_MS = 4000, SWIPE_CLOSE_PX = 45, SWIPE_CLOSE_PX_PER_MS = 0.11, SWIPE_UP_MAX_PX = 12, SWIPE_UP_SCALE_PX = 60;
 let toasts: Toast[] = [], expanded = false;

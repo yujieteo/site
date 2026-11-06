@@ -29,6 +29,25 @@ test("the swatch colour after the Oklch turn", () => {
   expect(wasm.wp_colour(10, 200, 30, 40, 1.1)).toBe(54454n);
 });
 
+for (const [name, width, height] of [
+  ["signed byte-count overflow", 1n << 62n, 4n],
+  ["the wasm32 allocation limit", 1n << 30n, 1n],
+] as const) {
+  test(`wallpaper allocation rejects ${name}`, async () => {
+    const instance = await loadWallpaper(WALLPAPER_WASM);
+    expect(() => instance.wp_pixels(width, height)).toThrow();
+  });
+}
+
+test("wallpaper allocation preserves empty images", async () => {
+  const instance = await loadWallpaper(WALLPAPER_WASM);
+  for (const [width, height] of [[0n, 4n], [4n, 0n]] as const) {
+    instance.wp_pixels(width, height);
+    expect(() => instance.wp_draw(width, height, 0n, 0, 1)).not.toThrow();
+  }
+  expect(instance.wp_pixels(2n, 3n)).toBeGreaterThan(0);
+});
+
 test("any colours, size and seed draw the same wallpaper twice", async () => {
   const colour = fc.integer({ min: 0, max: 255 });
   const input = fc.record({

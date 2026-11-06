@@ -2,6 +2,7 @@
 set -eu
 export LC_ALL=C
 cd "$(dirname "$0")/.."
+. scripts/cflags.sh
 out=${1:-public/play/beamdiag}
 src=beamdiag/src
 gen=beamdiag/c
@@ -10,12 +11,7 @@ export EM_CACHE="${EM_CACHE:-${HOME}/.cache/beamdiag-emcache}"
 hash=$(cat "${src}"/*.goose "${src}"/body.html "${src}"/page_base.css "${src}"/page_style.css "${src}"/commands.ts "${src}"/page_host.ts beamdiag/raw.json | shasum -a 256 | cut -d' ' -f1)
 built_hash=$(cat beamdiag/c.sha256)
 if [ -n "${GOOSE:-}" ]; then
-  GOOSE_PINNED_VERSION=v2026.3
-  goose_version=$("${GOOSE}" --version)
-  case ${goose_version} in
-    "goose ${GOOSE_PINNED_VERSION}"*) ;;
-    *) echo "build-beam: needs goose ${GOOSE_PINNED_VERSION}, found: ${goose_version}" >&2; exit 1 ;;
-  esac
+  require_goose "${GOOSE}"
   BUN_PINNED_VERSION=1.4.4
   bun_version=$(bun --version)
   [ "${bun_version}" = "${BUN_PINNED_VERSION}" ] || { echo "build-beam: needs bun ${BUN_PINNED_VERSION}, found: ${bun_version}" >&2; exit 1; }
@@ -32,7 +28,6 @@ trap 'rm -rf "${tmp}"' EXIT HUP INT TERM
 "${emcc}" -Oz -flto -sMALLOC=emmalloc "-DGS_STACK_RESERVE=(512ull<<10)" -I"${gen}" "${src}/host.c" "${gen}/beamdiag.c" "${src}/shim.c" \
   -o "${tmp}/beamdiag.wasm" --no-entry -sSTANDALONE_WASM -sALLOW_MEMORY_GROWTH=1 \
   -sEXPORTED_FUNCTIONS=_alloc,_handle,_out_len -sERROR_ON_UNDEFINED_SYMBOLS=1
-. scripts/cflags.sh
 goose_cc cc -O1 "${gen}/page.c" "${src}/shim.c" -lm -o "${tmp}/page"
 mkdir -p "${out}"
 "${tmp}/page" "${out}/index.html"

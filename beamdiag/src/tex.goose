@@ -215,7 +215,7 @@ fn tex_inline(s: u8[:]) -> u8[>..] {
     var out: u8[>..] = [];
     var from = 0;
     var last = 0;
-    while true {
+    while from <= s.len {
         let k0 = find(s[from..], "$");
         if k0 < 0 { break; }
         let a = k0 + from;
@@ -249,12 +249,12 @@ fn tex_sup_run(s: u8[:]) -> i64 {
 fn tex_mark_powers(s: u8[:]) -> u8[>..] {
     var out: u8[>..] = [];
     var rest = s;
-    while true {
+    while rest.len > 0 {
         let found = find(rest, "×10");
         if found < 0 { break; }
         let exp_len = tex_sup_run(rest[found + 4..]);
         var start = found;
-        while true {
+        while start > 0 {
             if start >= 1 && ((rest[start - 1] >= '0' && rest[start - 1] <= '9') || rest[start - 1] == '.' || rest[start - 1] == ',') { start -= 1; }
             else if start >= 3 && starts_with(rest[start - 3..], "−") { start -= 3; }
             else { break; }
@@ -279,7 +279,7 @@ fn tex_rich(s: u8[:]) -> u8[>..] {
     var marked: u8[>..] = [];
     var from = 0;
     var odd = false;
-    while true {
+    while from <= s.len {
         let k = find(s[from..], "$");
         let seg = if k < 0 { s[from..] } else { s[from..from + k] };
         if odd { marked.append("$"); marked.append(seg); marked.append("$"); }
@@ -295,7 +295,7 @@ fn tex_plain(src: u8[:]) -> u8[>..] {
     var out: u8[>..] = [];
     var from = 0;
     var odd = false;
-    while true {
+    while from <= src.len {
         let k = find(src[from..], "$");
         let seg = if k < 0 { src[from..] } else { src[from..from + k] };
         if odd { out.append(tex_unicode(seg)); } else { out.append(seg); }

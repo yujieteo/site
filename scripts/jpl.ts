@@ -6,10 +6,6 @@ const JPL_MAX_LINES = 60;
 const JPL_GOOSE_GLOBS = ["beamdiag/test.goose", "beamdiag/src/*.goose", "wallpaper/*.goose"];
 const JPL_TS_GLOBS = ["beamdiag/*.ts", "beamdiag/src/*.ts", "wallpaper/*.ts", "scripts/*.ts"];
 const JPL_LONG_FUNCTIONS: Record<string, number> = {
-  "beamdiag/src/app.goose:in_convention": 86,
-  "beamdiag/src/app.goose:on_click": 72,
-  "beamdiag/src/app.goose:body": 69,
-  "beamdiag/src/engine.goose:validate": 88,
   "beamdiag/src/engine.goose:solve": 125,
   "beamdiag/src/figure.goose:figure": 89,
   "beamdiag/src/figure.goose:draw_beam": 188,
@@ -18,7 +14,6 @@ const JPL_LONG_FUNCTIONS: Record<string, number> = {
   "beamdiag/src/hand.goose:hand_reaction_frames": 80,
   "beamdiag/src/hand.goose:hand_segment_frame": 71,
   "beamdiag/src/pdf.goose:pdf_pages": 174,
-  "beamdiag/src/util.goose:sha256": 62,
 };
 
 type Fn = { file: string; name: string; start: number; lines: number; calls: Set<string> };

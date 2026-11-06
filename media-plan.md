@@ -164,5 +164,5 @@ The weekend monthly slot holds these items.
 - [ ] Design, fashion and craft (10): one design week, fashion show or craft market.
 - [ ] Culture: one longer contact with a culture that you do not know (a trip, a course, or all the albums of one artist).
 - [ ] People (17): one long interview with an older person, recorded as oral history.
-- [ ] Make: one essay that updates "Tuning in to information flows": what you tuned in to, what you tuned out, and what the surprise log showed.
+- [ ] Make: write one essay that updates "Tuning in to information flows". Describe what you tuned in to and what you tuned out. Include the results from the surprise log.
 - [ ] Rest: one break of a few days with no devices. This is a break, not a way to live.

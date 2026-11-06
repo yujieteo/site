@@ -51,7 +51,7 @@ fn j_hex4() -> i64 {
 fn j_string(out: u8[>..]&) -> i64 {
     let start = out.len;
     j_pos++;
-    while true {
+    while j_pos <= j_src.len {
         if j_pos >= j_src.len { j_bad = true; return start; }
         let c = j_src[j_pos];
         j_pos++;
@@ -108,7 +108,7 @@ recursive fn j_value(raw: bool) -> i64 {
         let obj = c == '{';
         let idx = j_node(if obj { J_OBJ } else { J_ARR });
         j_pos++;
-        while true {
+        while j_pos <= j_src.len {
             j_ws();
             if j_pos >= j_src.len { j_bad = true; return -1; }
             let d = j_src[j_pos];
