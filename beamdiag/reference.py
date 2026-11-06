@@ -46,6 +46,10 @@ def mac(x, a, n):
 
 def solve_exact(matrix, rhs):
     n = len(rhs)
+    if len(matrix) != n:
+        raise ValueError("matrix row count must match the right-hand side")
+    if any(len(row) != n for row in matrix):
+        raise ValueError("matrix must be square")
     a = [row[:] + [r] for row, r in zip(matrix, rhs)]
     for c in range(n):
         p = next((r for r in range(c, n) if a[r][c] != 0), None)
@@ -99,27 +103,12 @@ class Beam:
         rows += [force_row, moment_row]
         rhs += [-load_force, -load_moment]
 
-        def ev(x, derivative):
-            row = [Fraction(0)] * n
-            k = 1 if derivative else 2
-            for i, s in enumerate(self.supports):
-                row[index[("R", i)]] += integrate(1, s["x"], 1, k, x)
-                if s["kind"] == "fixed":
-                    row[index[("M", i)]] += integrate(-1, s["x"], 0, k, x)
-            if derivative:
-                row[index[("C1", None)]] = Fraction(1)
-            else:
-                row[index[("C1", None)]] = x
-                row[index[("C2", None)]] = Fraction(1)
-            known_value = sum((integrate(c, a, p, k, x) for c, a, p in known), Fraction(0))
-            return row, -known_value
-
         for s in self.supports:
-            r, b = ev(s["x"], False)
+            r, b = self._condition_row(s["x"], False, index, n)
             rows.append(r)
             rhs.append(b)
             if s["kind"] == "fixed":
-                r, b = ev(s["x"], True)
+                r, b = self._condition_row(s["x"], True, index, n)
                 rows.append(r)
                 rhs.append(b)
         if len(rows) != n:
@@ -136,6 +125,21 @@ class Beam:
         for r in self.reactions:
             self.terms.append((r["Fy"], r["x"], 1))
             self.terms.append((-r["Mz"], r["x"], 0))
+
+    def _condition_row(self, x, derivative, index, n):
+        row = [Fraction(0)] * n
+        k = 1 if derivative else 2
+        for i, s in enumerate(self.supports):
+            row[index[("R", i)]] += integrate(1, s["x"], 1, k, x)
+            if s["kind"] == "fixed":
+                row[index[("M", i)]] += integrate(-1, s["x"], 0, k, x)
+        if derivative:
+            row[index[("C1", None)]] = Fraction(1)
+        else:
+            row[index[("C1", None)]] = x
+            row[index[("C2", None)]] = Fraction(1)
+        known_value = sum((integrate(c, a, p, k, x) for c, a, p in self.known), Fraction(0))
+        return row, -known_value
 
     def load_resultants(self):
         force = moment = Fraction(0)
@@ -271,14 +275,7 @@ def read_bdf(text):
     return executive_case, [_fields(e) for e in entries]
 
 
-def model_from_bdf(text):
-    """Rebuild the planar beam model a BEAMDIAG deck encodes, checking its assumptions."""
-    executive_case, entries = read_bdf(text)
-    case = {}
-    for line in executive_case:
-        if "=" in line:
-            key, value = (part.strip().upper() for part in line.split("=", 1))
-            case[key] = value
+def _bulk_entries(entries):
     grids, bars, spc1, forces, moments, ploads = {}, [], [], [], [], []
     mat = prop = None
     params, grdset = {}, {"cp": "", "cd": "", "ps": ""}
@@ -307,7 +304,35 @@ def model_from_bdf(text):
             params[f[1].upper()] = f[2]
         else:
             raise ValueError(f"unexpected bulk entry {name}")
+    return grids, bars, spc1, forces, moments, ploads, mat, prop, params, grdset
 
+
+def _bdf_supports(spc1, spc_set, xs, x0):
+    supports = []
+    for s in spc1:
+        if s["sid"] != spc_set:
+            continue
+        kind = {"12": "pin", "126": "fixed"}.get(s["c"])
+        if kind is None:
+            raise ValueError(f"unexpected SPC1 components {s['c']}")
+        supports += [{"kind": kind, "x": xs[g] - x0} for g in s["grids"]]
+    return supports
+
+
+def _bdf_case(executive_case):
+    case = {}
+    for line in executive_case:
+        if "=" in line:
+            key, value = (part.strip().upper() for part in line.split("=", 1))
+            case[key] = value
+    return case
+
+
+def model_from_bdf(text):
+    """Rebuild the planar beam model from a BEAMDIAG deck and check its assumptions."""
+    executive_case, entries = read_bdf(text)
+    case = _bdf_case(executive_case)
+    grids, bars, spc1, forces, moments, ploads, mat, prop, params, grdset = _bulk_entries(entries)
     for g in grids.values():
         for key in ("cp", "cd", "ps"):
             g[key] = g[key] or grdset[key]
@@ -333,14 +358,7 @@ def model_from_bdf(text):
         if a1 != b0:
             raise ValueError("CBAR elements must form one continuous chain")
 
-    supports = []
-    for s in spc1:
-        if s["sid"] != spc_set:
-            continue
-        kind = {"12": "pin", "126": "fixed"}.get(s["c"])
-        if kind is None:
-            raise ValueError(f"unexpected SPC1 components {s['c']}")
-        supports += [{"kind": kind, "x": xs[g] - x0} for g in s["grids"]]
+    supports = _bdf_supports(spc1, spc_set, xs, x0)
     loads = []
     for f in forces:
         if f["sid"] != load_set or f["cid"] != 0 or f["n"] != (0.0, 1.0, 0.0):
