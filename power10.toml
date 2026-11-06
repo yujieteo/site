@@ -1,0 +1,10 @@
+version = "0.2.1"
+exclude = [
+  "beamdiag/c/*",
+  "public/play/beamdiag/katex/*",
+  "public/play/goosestrike/*",
+  "public/play/theorem-explorer/*",
+  "public/play/theorem-learner/*",
+  "public/play/neurons/*",
+  "public/play/marklove/*",
+]

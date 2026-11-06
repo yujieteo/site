@@ -39,8 +39,8 @@ The user needs less than 1 minute, with no instructions.
    Reason for the two fades: on 2026-10-29 the captain asked for the buttons of Sonner and animations.dev, which fade on hover.
    The captain also asked for the look of the article <https://emilkowal.ski/ui/building-a-toast-component>.
 8. Speed: the solved example draws in less than 1 s on a 4G phone. Less than 400 KB loads before the
-   first draw, with the two fonts of `/shared/kowalski.css`. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it. The report fonts load on the
-   first "Save PDF" or "Save PNG".
+   first draw, with the two fonts of `/shared/kowalski.css`. KaTeX loads after the first draw. Plain text appears first, then KaTeX replaces it.
+   Report-font requests follow the load rule in `AGENTS.md`.
 9. Typing in a field never lags: solve on input, draw at most once per animation frame.
    Build the hand calculation only when it is visible.
 

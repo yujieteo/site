@@ -9,10 +9,10 @@ The plan has two parts:
 
 **Create while you consume.** You make something in the same slot in which you consume. Creation is part of the slot time, not extra time.
 
-- **Two panes:** the media on one side, and your editor or sketchbook on the other side. On a phone or a tablet, use split view.
-- **Write as you go:** write your notes in the form of the final piece (a review paragraph, a caption, a reply), not as raw notes for later.
-- **Pause to draw:** when a frame, a figure or a scene catches you, pause and sketch it before you continue.
-- **Finish on the weekend:** the weekend slot only finishes and publishes what you started during the week.
+- Two panes: the media on one side, and your editor or sketchbook on the other side. On a phone or a tablet, use split view.
+- Write as you go: write your notes as part of the final piece, not as raw notes for later. Use a review paragraph, a caption or a reply.
+- Pause to draw: when a frame, a figure or a scene catches you, pause and sketch it before you continue.
+- Finish on the weekend: the weekend slot only finishes and publishes what you started during the week.
 
 | Mode | Create while you consume |
 |---|---|
@@ -30,13 +30,13 @@ At the end of each year, each cell of the grid must have at least one tick. If a
 
 **Post as you go (in the style of @jwt0625, "outside five sigma").** That account posts what it reads and uses in its own fields (photonics, RF, nanofabrication, robotics). It posts papers, standards, product pages, videos and old articles, with a short title and a link, and sometimes one line of opinion. Do the same, but across all the domains of the grid.
 
-- **One post for each find, at the moment you find it.** This is the "create while you consume" step in its smallest form.
-- **The format:** `<Year> - <Title>` and a link, for example "1987 - IEEE Standard on Piezoelectricity". For a paper: `<Team or author> <Year>: <title>`, the link, and the arXiv link. Add one line of your own view when you have one. A video clip or a sketch is a post too.
-- **Old sources:** at least one post each week is an old source. An old source is a paper, a standard, a manual, a magazine article or a filing that is more than 20 years old. Sources come, for example, from archive.org, Bitsavers or an old journal issue.
-- **Your own work:** post what you build (femahoy, Toybox, the theorems pages) with a clip or a picture, and link the code.
-- **Short thoughts:** a single sentence that you thought of is a post too.
-- **Spread:** add the grid domain number to each post in your own log. On Sunday, check that the week's posts cover at least 4 domains.
-- **One home:** post each entry to the log at teoyujie.org/log.
+- One post for each find, at the moment you find it. This is the "create while you consume" step in its smallest form.
+- The format: `<Year> - <Title>` and a link, for example "1987 - IEEE Standard on Piezoelectricity". For a paper: `<Team or author> <Year>: <title>`, the link, and the arXiv link. Add one line of your own view when you have one. A video clip or a sketch is a post too.
+- Old sources: at least one post each week is an old source. An old source is a paper, a standard, a manual, a magazine article or a filing that is more than 20 years old. Sources come, for example, from archive.org, Bitsavers or an old journal issue.
+- Your own work: post what you build (femahoy, Toybox, the theorems pages) with a clip or a picture, and link the code.
+- Short thoughts: a single sentence that you thought of is a post too.
+- Spread: add the grid domain number to each post in your own log. On Sunday, check that the week's posts cover at least 4 domains.
+- One home: post each entry to the log at teoyujie.org/log.
 
 ## 1. The grid
 
@@ -66,14 +66,14 @@ At the end of each year, each cell of the grid must have at least one tick. If a
 
 Weekdays have a hard limit of 60 minutes of media each day. Each weekday has a core of 35 minutes and one theme slot of 25 minutes. You create during the theme slot, in the same 25 minutes. The weekend holds the longer items and the monthly slot.
 
-**Weekday core (35 minutes, Monday to Friday)**
+#### Weekday core (35 minutes, Monday to Friday)
 
 - [ ] Text (1): news and blogs from one RSS reader, 10 minutes. No news outside this slot.
 - [ ] Text (1): textbook, one section or one exercise, 15 minutes.
 - [ ] Text (1): fiction or history, 10 minutes before sleep.
 - [ ] People (17): ask one person one real question, and write one line about the answer. This is a conversation, not media time.
 
-**Weekday theme slot (25 minutes, create while you consume)**
+#### Weekday theme slot (25 minutes, create while you consume)
 
 | Day | Theme slot | What you create in the slot |
 |---|---|---|
@@ -83,7 +83,7 @@ Weekdays have a hard limit of 60 minutes of media each day. Each weekday has a c
 | Thursday | Film and video (5): one anime episode. | A gesture sketch of one frame, drawn on pause. It becomes fan art. |
 | Friday | Online communities (16): forums and social text, 15 minutes, timed. Then Film and video (5): short video from a region or a language that you do not know, 10 minutes, timed. | The best Hacker News comment, RSS post or tweet, with one line of your own view. |
 
-**Saturday (about 2 hours, plus the monthly slot)**
+#### Saturday (about 2 hours, plus the monthly slot)
 
 - [ ] Music (2): Malay, Tamil or Chinese radio, 20 minutes (for example during errands).
 - [ ] Film and video (5): one drama episode.
@@ -97,16 +97,16 @@ Weekdays have a hard limit of 60 minutes of media each day. Each weekday has a c
   - Week 4: a free choice from the Create column, in the month's spotlight domain.
 - [ ] Monthly slot: see the table below.
 
-**Sunday (about 2 hours, plus the monthly slot)**
+#### Sunday (about 2 hours, plus the monthly slot)
 
 - [ ] Spoken word (3): one podcast episode.
 - [ ] Film and video (5): one show episode.
 - [ ] Text (1): fiction or history, 30 minutes.
-- [ ] Publish "This week's finds" (30 minutes): the best Hacker News comments, RSS posts and tweets from the clips that you made while you read, each with one line of your own view. End with the surprise of the week and the grid cell that it came from. This replaces the separate surprise log.
+- [ ] Publish "This week's finds" (30 minutes): use the best Hacker News comments, RSS posts and tweets from your clips. Add one line of your own view to each. End with the surprise of the week and the grid cell that it came from. This replaces the separate surprise log.
 - [ ] Plan next week: choose the chart country, and the papers and articles for Monday and Wednesday.
 - [ ] Monthly slot: see the table below.
 
-**Monthly slot (by week of the month)**
+#### Monthly slot (by week of the month)
 
 | Week | Saturday | Sunday |
 |---|---|---|
@@ -152,14 +152,14 @@ The weekend monthly slot holds these items.
 - [ ] Nature (12): one nature documentary or field guide.
 - [ ] Science and technology (13): one explainer series or one paper outside your field.
 - [ ] Make: publish one piece about something that you read, watched or attended this quarter.
-- [ ] Make: make one thing in a domain from the grid (a photo series, a song cover, a sketch, a short video). Use a different domain each quarter.
+- [ ] Make: make one thing in a domain from the grid. Choose a photo series, a song cover, a sketch or a short video. Use a different domain each quarter.
 - [ ] Review: read the surprise log. If most of the surprises came from one domain or one culture, change next quarter's live events and chart countries. Give less time to a cell that gave no surprise for two quarters.
 - [ ] Review: look at the shelf list, and add or remove books.
 
 ### Yearly
 
 - [ ] Grid check: each of the 68 cells has at least one tick. Plan the empty cells into next year's monthly slots.
-- [ ] Text (1): about 12 history books and 12 novels from the shelf list, one of each in turn, and 2 plays or screenplays.
+- [ ] Text (1): read about 12 history books and 12 novels from the shelf list. Alternate between history and novels. Also read 2 plays or screenplays.
 - [ ] Ritual and faith (14): services or festivals of at least 2 faiths that are not your own.
 - [ ] Design, fashion and craft (10): one design week, fashion show or craft market.
 - [ ] Culture: one longer contact with a culture that you do not know (a trip, a course, or all the albums of one artist).

@@ -10,8 +10,8 @@ comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/*.goose
   echo 'check: comments are not allowed in scripts/*.sh, wallpaper/ and beamdiag/ (TypeScript comments need an https:// source in scripts/check-site.ts). Name the code better or write a test. The source credits that stay: Sonner, Roark, Dekker, Oklab and splitmix64.' >&2; exit 1; }
 shell_files=$(git ls-files | while read -r f; do
   case ${f} in
-    *.sh) echo "${f}" ;;
-    *) head -n 1 "${f}" | grep -aE '^#!.*(sh|bash|ksh)( |$)' >/dev/null && echo "${f}" || true ;;
+    (*.sh) echo "${f}" ;;
+    (*) head -n 1 "${f}" | grep -aE '^#!.*(sh|bash|ksh)( |$)' >/dev/null && echo "${f}" || true ;;
   esac
 done)
 printf '%s\n' "${shell_files}" | xargs uvx --from shellcheck-py==0.11.0.1 shellcheck -o all
