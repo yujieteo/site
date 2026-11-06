@@ -13,7 +13,9 @@ When the site and this file disagree, change the site.
 
 1. `/` lists the posts, newest first. It says "No posts yet." when there are none.
 2. A post is at `/essays/NAME/`. Its text version is at `/essays/NAME/index.md`.
-3. Every other URL returns 404.
+3. The OpenPGP key of <contact@teoyujie.org> is at `/contact.asc`. The footer of each page links to it.
+4. WKD serves the key from `/.well-known/openpgpkey/`. The files are in `static/public/`.
+5. Every other URL returns 404.
 
 ## Post kit
 
