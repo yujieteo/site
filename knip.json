@@ -1,4 +1,0 @@
-{
-  "entry": ["scripts/check-site.ts", "scripts/replay.ts", "beamdiag/src/page_host.ts", "**/*.test.ts"],
-  "project": ["beamdiag/**/*.ts", "wallpaper/**/*.ts", "scripts/**/*.ts"]
-}

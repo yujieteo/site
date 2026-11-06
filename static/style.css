@@ -1,0 +1,50 @@
+
+p { margin: 0; line-height: var(--leading-prose); text-wrap: pretty; }
+h1, h2, h3 { margin: 0; font-size: inherit; font-weight: inherit; text-wrap: balance; }
+h2[id] { scroll-margin-top: 32px; }
+.wrap { max-width: var(--column); margin: 0 auto; padding: 0 var(--gutter); }
+header.wrap { display: flex; flex-direction: column; align-items: flex-start; padding-top: 48px; margin-bottom: 96px; }
+.name { font-weight: 500; text-decoration: none; }
+.tagline { font-weight: 500; line-height: 1; color: var(--muted); }
+main > section > h2 { font-weight: 500; margin-bottom: 20px; }
+.featured { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.featured a { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; margin: 0 -16px; padding: 12px 16px; border-radius: var(--radius); text-decoration: none;
+  transition: transform var(--press-duration) var(--ease-out); }
+.featured a:active { transform: scale(var(--press)); }
+.featured a:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
+.featured h3 { grid-area: 1 / 1; }
+.kind { grid-area: 1 / 2; color: var(--muted); font-variant-numeric: tabular-nums; }
+.featured p { grid-column: 1 / -1; line-height: var(--leading); color: var(--muted); }
+footer.wrap { margin-top: 96px; padding-bottom: 64px; color: var(--muted); }
+footer ul { list-style: none; margin: 0; padding: 0; }
+code { font: var(--code) var(--mono); overflow-wrap: anywhere; }
+.muted { color: var(--muted); }
+main.page h1 { font-weight: 600; margin-bottom: 12px; }
+main.page .meta { font-size: var(--small); margin-bottom: 32px; }
+main.page article > p { margin-bottom: 26px; opacity: 0.9; }
+main.page article > h2 { font-weight: 550; margin: 48px 0 20px; }
+.summary, .toc { margin-bottom: 32px; padding: 16px 20px; background: var(--chip); border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
+.summary h2, .toc h2 { font-size: var(--small); font-weight: 550; color: var(--muted); margin-bottom: 8px; }
+.summary ul, .toc ol { margin: 0; padding-left: 1.2em; }
+.summary li, .toc li { line-height: var(--leading); }
+main.page figure { margin: 2rem 0; }
+main.page figure svg { display: block; max-width: 100%; height: auto; margin-inline: auto; }
+.frame { padding: 24px; background: var(--card); border-radius: 12px; box-shadow: inset 0 0 0 1px var(--card-edge); }
+main.page figcaption { margin: 16px 0 0; text-align: center; font-size: 0.75rem; line-height: 1.3333; color: var(--muted); }
+.controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; font-size: var(--small); }
+.controls input[type=range] { width: 200px; accent-color: var(--ink); }
+.controls output { font-variant-numeric: tabular-nums; color: var(--muted); }
+.spin { transform-origin: 150px 100px; animation: spin var(--period) linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+figure[data-paused] .spin { animation-play-state: paused; }
+.fn { position: relative; }
+.fn-ref { margin: 0 1px; padding: 0 5px; min-width: 20px; height: 20px; vertical-align: super; font: 500 0.6875rem/1 var(--sans); color: var(--ink);
+  background: var(--gray3); border: 1px solid var(--gray7); border-radius: 10px; cursor: pointer; }
+.fn-ref:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
+.fn-note { position: absolute; left: 50%; bottom: calc(100% + 8px); z-index: 2; width: max-content; max-width: min(280px, 80vw); padding: 10px 12px; transform: translateX(-50%) translateY(4px);
+  background: var(--card); color: var(--ink); font-size: var(--small); line-height: var(--leading); border-radius: var(--radius); box-shadow: var(--shadow), inset 0 0 0 1px var(--card-edge);
+  opacity: 0; visibility: hidden; transition: opacity 150ms var(--ease-out), transform 150ms var(--ease-out), visibility 150ms; }
+.fn[data-open] .fn-note, .fn:focus-within .fn-note { opacity: 1; visibility: visible; transform: translateX(-50%); }
+@media (hover: hover) and (pointer: fine) { .featured a:hover { background: var(--hover); } .fn:hover .fn-note { opacity: 1; visibility: visible; transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .fn-note { transform: translateX(-50%); } }
+@media (min-width: 640px) { header.wrap { padding-top: 96px; } }

@@ -1,3 +1,4 @@
 .DS_Store
 node_modules/
-beamdiag/src/page_host.js
+evals/model/results/
+dist/

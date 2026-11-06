@@ -1,0 +1,3 @@
+cmd="bun src/build.ts --drafts --out /tmp/site-bench-out"
+runs=10
+units=1

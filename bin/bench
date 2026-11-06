@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -u
+[ "${BASH_VERSINFO[0]}" -ge 5 ] || { echo "bench: needs bash 5. Run: nix develop" >&2; exit 2; }
+root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+
+rss_kb() {
+  case "$(uname)" in
+    Darwin) awk '/maximum resident set size/ { printf "%d", $1 / 1024 }' "$1" ;;
+    *) awk -F': ' '/Maximum resident set size/ { print $2 }' "$1" ;;
+  esac
+}
+
+gpu_mb() {
+  command -v nvidia-smi >/dev/null || { echo na; return; }
+  nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits | head -n 1
+}
+
+time_flag() { [ "$(uname)" = Darwin ] && echo -l || echo -v; }
+
+one_run() {
+  local cmd=$1 t0 t1 st tmp bytes
+  tmp=$(mktemp)
+  t0=$EPOCHREALTIME
+  /usr/bin/time "$(time_flag)" -o "$tmp.t" bash -c "$cmd" > "$tmp" 2>/dev/null
+  st=$?
+  t1=$EPOCHREALTIME
+  bytes=$(wc -c < "$tmp" | tr -d ' ')
+  awk -v a="$t0" -v b="$t1" -v s="$st" -v r="$(rss_kb "$tmp.t")" -v o="$bytes" -v g="$(gpu_mb)" \
+    'BEGIN { printf "%.3f\t%s\t%s\t%s\t%s\n", (b - a) * 1000, r, o, g, s }'
+  rm -f "$tmp" "$tmp.t"
+}
+
+summary() {
+  sort -n "$1" | awk -F'\t' -v units="$2" '
+    function pct(p,   i) { i = int(p * n + 0.999999); if (i < 1) i = 1; return w[i] }
+    { w[++n] = $1; total += $1; if ($2 + 0 > rss) rss = $2 + 0; bytes += $3; gpu = $4; if ($5 != 0) bad++ }
+    END {
+      printf "latency_ms p50=%.1f p95=%.1f p99=%.1f\n", pct(0.5), pct(0.95), pct(0.99)
+      printf "throughput_per_s %.2f\n", n * units / (total / 1000)
+      printf "error_rate %.3f\n", bad / n
+      printf "max_rss_kb %d\n", rss
+      printf "bytes_out_per_run %d\n", bytes / n
+      printf "gpu_mem_mb %s\n", gpu
+    }'
+}
+
+main() {
+  local spec=${1:?usage: bin/bench NAME [samples-file]} samples i
+  local cmd runs units
+  cd "$root" && . "$root/evals/bench/$spec.bench"
+  runs=${BENCH_RUNS:-$runs}
+  samples=${2:-$(mktemp)}
+  : > "$samples"
+  for ((i = 0; i < runs; i++)); do one_run "$cmd" >> "$samples"; done
+  echo "bench $spec ($runs runs)"
+  summary "$samples" "$units"
+}
+
+main "$@"
