@@ -157,6 +157,63 @@ fn number(v: f64, label: u8[:], field: u8[:], positive: bool) -> bool {
     return true;
 }
 
+fn validate_supports(length: f64, u: i64) -> bool {
+    g_sup.clear();
+    var n = 0;
+    for s in in_sup {
+        if s.kind < 0 {
+            return fail(str("Support ", n + 1, " must be a pin or fixed support."), str("supports.", n, ".kind"));
+        }
+        if !at_number(s.x, str("Support ", n + 1, " position"), str("supports.", n, ".x"), length, u) { return false; }
+        g_sup.push(Support { kind: s.kind, x: s.x });
+        n++;
+    }
+    var sorted: f64[>..] = [];
+    for s in g_sup { sorted.push(s.x); }
+    sort(sorted);
+    var k = 1;
+    while k < sorted.len {
+        if sorted[k] == sorted[k - 1] {
+            return fail(str("Two supports share the position x = ", length_text(u, sorted[k]), "."), "supports");
+        }
+        k++;
+    }
+    var any_fixed = false;
+    for s in g_sup { if s.kind == FIXED { any_fixed = true; } }
+    if !any_fixed && g_sup.len < 2 {
+        return fail("Mechanism: a single pin lets the beam rotate freely. Add a second support or make it fixed.", "supports");
+    }
+    return true;
+}
+
+fn validate_loads(length: f64, u: i64) -> bool {
+    g_loads.clear();
+    var n = 0;
+    for l in in_loads {
+        let label = str("Load ", n + 1);
+        if l.kind == POINT {
+            if !at_number(l.x, str(label, " position"), str("loads.", n, ".x"), length, u) { return false; }
+            if !number(l.f, str(label, " force"), str("loads.", n, ".F"), false) { return false; }
+            g_loads.push(Load { kind: POINT, x: l.x, f: l.f, c: 0.0, x1: 0.0, x2: 0.0, q1: 0.0, q2: 0.0 });
+        } else if l.kind == COUPLE {
+            if !at_number(l.x, str(label, " position"), str("loads.", n, ".x"), length, u) { return false; }
+            if !number(l.c, str(label, " couple"), str("loads.", n, ".C"), false) { return false; }
+            g_loads.push(Load { kind: COUPLE, x: l.x, f: 0.0, c: l.c, x1: 0.0, x2: 0.0, q1: 0.0, q2: 0.0 });
+        } else if l.kind == DIST {
+            if !at_number(l.x1, str(label, " start"), str("loads.", n, ".x1"), length, u) { return false; }
+            if !at_number(l.x2, str(label, " end"), str("loads.", n, ".x2"), length, u) { return false; }
+            if !(l.x2 > l.x1) { return fail(str(label, " must end to the right of where it starts."), str("loads.", n, ".x2")); }
+            if !number(l.q1, str(label, " start intensity"), str("loads.", n, ".q1"), false) { return false; }
+            if !number(l.q2, str(label, " end intensity"), str("loads.", n, ".q2"), false) { return false; }
+            g_loads.push(Load { kind: DIST, x: 0.0, f: 0.0, c: 0.0, x1: l.x1, x2: l.x2, q1: l.q1, q2: l.q2 });
+        } else {
+            return fail(str(label, " must be a point force, a couple or a distributed load."), str("loads.", n, ".kind"));
+        }
+        n++;
+    }
+    return true;
+}
+
 fn validate(u: i64) -> bool {
     let input = in_x;
     if !number(input.length, "Beam length", "length", true) { return false; }
@@ -188,56 +245,9 @@ fn validate(u: i64) -> bool {
         return fail("Elements per segment must be a whole number, at least 1.", "divisions");
     }
     if !input.has_supports || in_sup.len == 0 { return fail("Add at least one support.", "supports"); }
-    g_sup.clear();
-    var n = 0;
-    for s in in_sup {
-        if s.kind < 0 {
-            return fail(str("Support ", n + 1, " must be a pin or fixed support."), str("supports.", n, ".kind"));
-        }
-        if !at_number(s.x, str("Support ", n + 1, " position"), str("supports.", n, ".x"), length, u) { return false; }
-        g_sup.push(Support { kind: s.kind, x: s.x });
-        n++;
-    }
-    var sorted: f64[>..] = [];
-    for s in g_sup { sorted.push(s.x); }
-    sort(sorted);
-    var k = 1;
-    while k < sorted.len {
-        if sorted[k] == sorted[k - 1] {
-            return fail(str("Two supports share the position x = ", length_text(u, sorted[k]), "."), "supports");
-        }
-        k++;
-    }
-    var any_fixed = false;
-    for s in g_sup { if s.kind == FIXED { any_fixed = true; } }
-    if !any_fixed && g_sup.len < 2 {
-        return fail("Mechanism: a single pin lets the beam rotate freely. Add a second support or make it fixed.", "supports");
-    }
+    if !validate_supports(length, u) { return false; }
     if !input.has_loads { return fail("Loads must be a list.", "loads"); }
-    g_loads.clear();
-    n = 0;
-    for l in in_loads {
-        let label = str("Load ", n + 1);
-        if l.kind == POINT {
-            if !at_number(l.x, str(label, " position"), str("loads.", n, ".x"), length, u) { return false; }
-            if !number(l.f, str(label, " force"), str("loads.", n, ".F"), false) { return false; }
-            g_loads.push(Load { kind: POINT, x: l.x, f: l.f, c: 0.0, x1: 0.0, x2: 0.0, q1: 0.0, q2: 0.0 });
-        } else if l.kind == COUPLE {
-            if !at_number(l.x, str(label, " position"), str("loads.", n, ".x"), length, u) { return false; }
-            if !number(l.c, str(label, " couple"), str("loads.", n, ".C"), false) { return false; }
-            g_loads.push(Load { kind: COUPLE, x: l.x, f: 0.0, c: l.c, x1: 0.0, x2: 0.0, q1: 0.0, q2: 0.0 });
-        } else if l.kind == DIST {
-            if !at_number(l.x1, str(label, " start"), str("loads.", n, ".x1"), length, u) { return false; }
-            if !at_number(l.x2, str(label, " end"), str("loads.", n, ".x2"), length, u) { return false; }
-            if !(l.x2 > l.x1) { return fail(str(label, " must end to the right of where it starts."), str("loads.", n, ".x2")); }
-            if !number(l.q1, str(label, " start intensity"), str("loads.", n, ".q1"), false) { return false; }
-            if !number(l.q2, str(label, " end intensity"), str("loads.", n, ".q2"), false) { return false; }
-            g_loads.push(Load { kind: DIST, x: 0.0, f: 0.0, c: 0.0, x1: l.x1, x2: l.x2, q1: l.q1, q2: l.q2 });
-        } else {
-            return fail(str(label, " must be a point force, a couple or a distributed load."), str("loads.", n, ".kind"));
-        }
-        n++;
-    }
+    if !validate_loads(length, u) { return false; }
     let dv = if divisions < 1e9 { divisions } else { 1e9 };
     g_m = Model { length: length, e: e, nu: nu,
         section: Section { a: a, i: i, iy: iy, j: j, c: c, has_c: input.has_c },
@@ -426,22 +436,11 @@ fn spread(f: f64[>..]&, e: i64, w: f64[4], value: f64) {
     while i < 4 { f[2 * e + i] += w[i] * value; i++; }
 }
 
-fn solve(u: i64) -> bool {
-    if !validate(u) { return false; }
+fn assemble_stiffness(stations: f64[:], k: f64[>..]&) {
     let ei = g_m.e * g_m.section.i;
-    var stations: f64[>..] = [];
-    stations.push(0.0);
-    stations.push(g_m.length);
-    for s in g_sup { stations.push(s.x); }
-    distinct(stations);
     let ns = stations.len;
-    let n = ns * 2;
-    var k: f64[>..] = [];
-    var f: f64[>..] = [];
     var z = 0;
-    while z < n * 4 { k.push(0.0); z++; }
-    z = 0;
-    while z < n { f.push(0.0); z++; }
+    while z < ns * 8 { k.push(0.0); z++; }
     var e = 0;
     while e < ns - 1 {
         let l = stations[e + 1] - stations[e];
@@ -456,6 +455,12 @@ fn solve(u: i64) -> bool {
         }
         e++;
     }
+}
+
+fn assemble_loads(stations: f64[:], f: f64[>..]&) {
+    let ns = stations.len;
+    var z = 0;
+    while z < ns * 2 { f.push(0.0); z++; }
     for ld in g_loads {
         if ld.kind == DIST {
             var el = 0;
@@ -493,8 +498,12 @@ fn solve(u: i64) -> bool {
             }
         }
     }
+}
+
+fn solve_displacements(stations: f64[:], k: f64[:], f: f64[:], sol: f64[>..]&) -> bool {
+    let n = stations.len * 2;
     var fixed: bool[>..] = [];
-    z = 0;
+    var z = 0;
     while z < n { fixed.push(false); z++; }
     for s in g_sup {
         let i = station_index(stations, s.x);
@@ -504,7 +513,6 @@ fn solve(u: i64) -> bool {
     var free: i64[>..] = [];
     z = 0;
     while z < n { if !fixed[z] { free.push(z); } z++; }
-    var sol: f64[>..] = [];
     z = 0;
     while z < n { sol.push(0.0); z++; }
     if free.len > 0 {
@@ -528,6 +536,11 @@ fn solve(u: i64) -> bool {
     for v in sol {
         if !finite(v) { return fail("The solution overflowed; check that E, I and the loads use consistent units.", "section.I"); }
     }
+    return true;
+}
+
+fn collect_solution(stations: f64[:], k: f64[:], f: f64[:], sol: f64[:]) {
+    let n = stations.len * 2;
     g_rea.clear();
     for s in g_sup {
         let i = station_index(stations, s.x);
@@ -549,6 +562,22 @@ fn solve(u: i64) -> bool {
     }
     g_eq = equilibrium();
     g_ext = extremes();
+}
+
+fn solve(u: i64) -> bool {
+    if !validate(u) { return false; }
+    var stations: f64[>..] = [];
+    stations.push(0.0);
+    stations.push(g_m.length);
+    for s in g_sup { stations.push(s.x); }
+    distinct(stations);
+    var k: f64[>..] = [];
+    var f: f64[>..] = [];
+    var sol: f64[>..] = [];
+    assemble_stiffness(stations, k);
+    assemble_loads(stations, f);
+    if !solve_displacements(stations, k, f, sol) { return false; }
+    collect_solution(stations, k, f, sol);
     return true;
 }
 

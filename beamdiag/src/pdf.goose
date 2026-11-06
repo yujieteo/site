@@ -465,7 +465,7 @@ fn pdf_utf16_cp(out: u8[>..]&, c: i64) {
 
 var pdf_pool: u8[>..] = [];
 
-fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8[:], font2: u8[:]) -> u8[>..] {
+fn pdf_prepare_fonts(font0: u8[:], font1: u8[:], font2: u8[:]) {
     pdf_data.clear();
     let o0 = pdf_data.len;
     pdf_data.append(font0);
@@ -479,11 +479,10 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
     var z = 0;
     while z < 196608 { pdf_cache[z] = 0; pdf_used[z] = 0; z++; }
 
-    let pw = w * 0.75;
-    let ph = h * 0.75;
+}
+
+fn pdf_page_streams(list: DOp[:], pw: f64, ph: f64, cstart: i64[>..]&, clen: i64[>..]&) {
     pdf_pool.clear();
-    var cstart: i64[>..] = [];
-    var clen: i64[>..] = [];
     let pages = draw_page_count(list);
     var k = 0;
     while k < pages {
@@ -502,6 +501,9 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         pdf_pool.append(pdf_c);
         k++;
     }
+}
+
+fn pdf_alphas(list: DOp[:]) -> i64[>..] {
     var alphas: i64[>..] = [];
     for op in list {
         if op.kind == OP_ITEM && op.paint.has_op {
@@ -512,6 +514,10 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         }
     }
 
+    return alphas;
+}
+
+fn pdf_font_objects() -> u8[>..] {
     pdf_ob.clear();
     pdf_ob_s.clear();
     pdf_ob_n.clear();
@@ -543,10 +549,21 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         }
         pdf_ob.append("]]>>");
         let cid = pdf_add_from(at2);
+        let tu = pdf_unicode_map(i);
+        let at3 = pdf_ob.len;
+        format(pdf_ob, "<</Type/Font/Subtype/Type0/BaseFont/F", i, "/Encoding/Identity-H/DescendantFonts[", cid, " 0 R]/ToUnicode ", tu, " 0 R>>");
+        let fo = pdf_add_from(at3);
+        format(fonts, "/F", i, " ", fo, " 0 R");
+        i++;
+    }
+    return fonts;
+}
+
+fn pdf_unicode_map(i: i64) -> i64 {
         var cmap: u8[>..] = [];
         var inblock = 0;
         var blk: u8[>..] = [];
-        g = 1;
+        var g = 1;
         while g < 65536 {
             let c = pdf_used[i * 65536 + g] as i64;
             if c != 0 {
@@ -569,21 +586,23 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         var cm: u8[>..] = [];
         format(cm, "/CIDInit/ProcSet findresource begin 12 dict begin begincmap/CIDSystemInfo<</Registry(Adobe)/Ordering(UCS)/Supplement 0>>def/CMapName/Adobe-Identity-UCS def/CMapType 2 def\n1 begincodespacerange <0000><FFFF> endcodespacerange\n",
             cmap, "endcmap CMapName currentdict/CMap defineresource pop end end");
-        let tu = pdf_add_stream("", cm);
-        let at3 = pdf_ob.len;
-        format(pdf_ob, "<</Type/Font/Subtype/Type0/BaseFont/F", i, "/Encoding/Identity-H/DescendantFonts[", cid, " 0 R]/ToUnicode ", tu, " 0 R>>");
-        let fo = pdf_add_from(at3);
-        format(fonts, "/F", i, " ", fo, " 0 R");
-        i++;
-    }
+        return pdf_add_stream("", cm);
+}
+
+fn pdf_graphics_states(alphas: i64[:]) -> u8[>..] {
     var gs: u8[>..] = [];
     for a in alphas {
         format(gs, "/A", a, "<</ca ");
         draw_n_to(gs, (a as f64) / 100.0);
         gs.append(">>");
     }
+    return gs;
+}
+
+fn pdf_page_objects(pw: f64, ph: f64, cstart: i64[:], clen: i64[:]) -> u8[>..] {
+    let pages = cstart.len;
     var kids: u8[>..] = [];
-    k = 0;
+    var k = 0;
     while k < pages {
         let content = pdf_add_stream("", pdf_pool[cstart[k]..cstart[k] + clen[k]]);
         let at = pdf_ob.len;
@@ -597,6 +616,10 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
         format(kids, page, " 0 R");
         k++;
     }
+    return kids;
+}
+
+fn pdf_root_objects(kids: u8[:], pages: i64, title: u8[:], fonts: u8[:], gs: u8[:]) {
     var at = pdf_ob.len;
     pdf_ob.append("<</Type/Catalog/Pages 2 0 R/Lang(en)>>");
     pdf_ob_s[0] = at;
@@ -616,6 +639,9 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
     pdf_ob_s[3] = at;
     pdf_ob_n[3] = pdf_ob.len - at;
 
+}
+
+fn pdf_document() -> u8[>..] {
     var o: u8[>..] = [];
     o.append("%PDF-1.7\n%");
     o.push(0xe2);
@@ -624,7 +650,7 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
     o.push(0xd3);
     o.push('\n');
     var xref: u8[>..] = [];
-    i = 0;
+    var i = 0;
     while i < pdf_ob_s.len {
         format_int(xref, o.len, 10, 10, '0');
         xref.append(" 00000 n \n");
@@ -638,4 +664,19 @@ fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8
     let start = o.len;
     format(o, "xref\n0 ", n, "\n0000000000 65535 f \n", xref, "trailer\n<</Size ", n, "/Root 1 0 R/Info 3 0 R/ID[<", digest[..32], "><", digest[..32], ">]>>\nstartxref\n", start, "\n%%EOF\n");
     return o;
+}
+
+fn pdf_pages(list: DOp[:], w: f64, h: f64, title: u8[:], font0: u8[:], font1: u8[:], font2: u8[:]) -> u8[>..] {
+    pdf_prepare_fonts(font0, font1, font2);
+    let pw = w * 0.75;
+    let ph = h * 0.75;
+    var cstart: i64[>..] = [];
+    var clen: i64[>..] = [];
+    pdf_page_streams(list, pw, ph, cstart, clen);
+    let alphas = pdf_alphas(list);
+    let fonts = pdf_font_objects();
+    let gs = pdf_graphics_states(alphas);
+    let kids = pdf_page_objects(pw, ph, cstart, clen);
+    pdf_root_objects(kids, cstart.len, title, fonts, gs);
+    return pdf_document();
 }

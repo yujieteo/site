@@ -224,7 +224,7 @@ fn hand_row_what(r: i64) -> u8[>..] {
 
 fn hand_coef_at(r: i64, k: i64) -> f64 { return hand_coef[r * hand_unk.len + k]; }
 
-fn hand_derive(u: i64, mid: bool) {
+fn hand_prepare_inputs(u: i64, mid: bool) {
     hand_u = u;
     hand_mid = mid;
     hand_len = g_m.length;
@@ -267,11 +267,13 @@ fn hand_derive(u: i64, mid: bool) {
         j++;
     }
     hand_deg = indeterminacy(g_sup);
-    let xi0 = -hand_o;
-    hand_ends0 = xi0;
+    hand_ends0 = -hand_o;
     hand_ends1 = hand_dlen - hand_o;
+}
+
+fn hand_prepare_unknowns() {
     hand_unk.clear();
-    j = 0;
+    var j = 0;
     while j < hand_rea.len {
         hand_unk.push(HUnknown { kind: 0, r: j });
         if hand_rea[j].kind == FIXED { hand_unk.push(HUnknown { kind: 1, r: j }); }
@@ -281,6 +283,10 @@ fn hand_derive(u: i64, mid: bool) {
     hand_unk.push(HUnknown { kind: 3, r: -1 });
     hand_known.clear();
     hand_load_terms(hand_known);
+}
+
+fn hand_equilibrium_rows() {
+    let xi0 = hand_ends0;
     let about0 = hand_actions(xi0);
     hand_sum_f = 0.0;
     hand_sum_m0 = 0.0;
@@ -302,11 +308,15 @@ fn hand_derive(u: i64, mid: bool) {
         k++;
     }
     hand_rhs.push(-hand_sum_m0);
-    j = 0;
+}
+
+fn hand_compatibility_rows() {
+    let n = hand_unk.len;
+    var j = 0;
     while j < hand_rea.len {
         let ax = hand_rea[j].xi;
         hand_rows.push(HRow { kind: 2, sup: j });
-        k = 0;
+        var k = 0;
         while k < n {
             let w = hand_unk[k];
             var cv = 0.0;
@@ -335,10 +345,15 @@ fn hand_derive(u: i64, mid: bool) {
         }
         j++;
     }
+}
+
+fn hand_solver_values() {
+    let n = hand_unk.len;
+    let xi0 = hand_ends0;
     let theta0 = g_disp[0].theta;
     let v0 = hand_show(g_disp[0].v, LENGTH);
     hand_solver.clear();
-    k = 0;
+    var k = 0;
     while k < n {
         let w = hand_unk[k];
         if w.kind == 0 { hand_solver.push(hand_rea[w.r].fy); }
@@ -347,7 +362,16 @@ fn hand_derive(u: i64, mid: bool) {
         else { hand_solver.push(hand_ei * v0 - hand_ei * theta0 * xi0); }
         k++;
     }
-    hand_written = hand_deg == 0 || n <= HAND_WRITE_UNKNOWNS;
+}
+
+fn hand_derive(u: i64, mid: bool) {
+    hand_prepare_inputs(u, mid);
+    hand_prepare_unknowns();
+    hand_equilibrium_rows();
+    hand_compatibility_rows();
+    hand_solver_values();
+    let xi0 = hand_ends0;
+    hand_written = hand_deg == 0 || hand_unk.len <= HAND_WRITE_UNKNOWNS;
     hand_segs.clear();
     hand_jumps.clear();
     hand_stat.clear();
@@ -409,6 +433,16 @@ fn hand_segment(a: f64, b: f64, e: i64) {
     seg.poly[3] = sm; seg.poly[4] = sv; seg.poly[5] = qa / 2.0; seg.poly[6] = k / 6.0;
     seg.poly[7] = ei * st; seg.poly[8] = sm; seg.poly[9] = sv / 2.0; seg.poly[10] = qa / 6.0; seg.poly[11] = k / 24.0;
     seg.poly[12] = ei * sd; seg.poly[13] = ei * st; seg.poly[14] = sm / 2.0; seg.poly[15] = sv / 6.0; seg.poly[16] = qa / 24.0; seg.poly[17] = k / 120.0;
+    hand_stationary_points(a, b, h, k, qa, sv, sn);
+    j = 0;
+    while j < hand_rea.len {
+        if hand_rea[j].x == b { seg.support_at_end = j; break; }
+        j++;
+    }
+    hand_segs.push(seg);
+}
+
+fn hand_stationary_points(a: f64, b: f64, h: f64, k: f64, qa: f64, sv: f64, sn: i64) {
     let a2 = k / 2.0;
     let a1 = qa;
     let a0 = sv;
@@ -441,12 +475,6 @@ fn hand_segment(a: f64, b: f64, e: i64) {
         let sv2, sm2 = internal(x, RIGHT);
         hand_stat.push(HStat { seg: sn, s: s, x: x, m: hand_show(sm2, MOMENT) });
     }
-    j = 0;
-    while j < hand_rea.len {
-        if hand_rea[j].x == b { seg.support_at_end = j; break; }
-        j++;
-    }
-    hand_segs.push(seg);
 }
 
 
@@ -509,11 +537,8 @@ fn hand_authority_frame() {
     hs_text(str("$EI = ", hand_tq(sci(hand_ei), RIGIDITY), "$."));
 }
 
-fn hand_reaction_frames() {
-    let deg = hand_deg;
-    let n = hand_unk.len;
+fn hand_determinate_reactions() {
     let nr = hand_rea.len;
-    if deg == 0 {
         let reference = hand_rea[0];
         let acts = hand_actions(reference.xi);
         var sum_f = 0.0;
@@ -542,9 +567,12 @@ fn hand_reaction_frames() {
             hs_eq(str("M_1 + \\sum_j m_j = 0 \\quad\\Rightarrow\\quad M_1 = -", hand_tex_p(s_m), " = ", hand_tq(hand_rtext(k_m), MOMENT)));
         }
         if acts.len > HAND_WRITE_TERMS { hs_text(str("The ", acts.len, " load terms are summed without being listed one by one.")); }
-        return;
-    }
+}
 
+fn hand_reaction_frames() {
+    if hand_deg == 0 { hand_determinate_reactions(); return; }
+    let n = hand_unk.len;
+    let nr = hand_rea.len;
     var names: u8[>..] = [];
     var k = 0;
     while k < n {
@@ -656,18 +684,9 @@ fn hand_table_row(name: u8[:], q: i64, s: f64, e: f64) {
     hs_text(str(name, " | ", hand_vtext(s, q), " | ", hand_vtext(e, q)));
 }
 
-fn hand_segment_frame(si: i64) {
-    let seg = hand_segs[si];
-    let l = hand_sym(LENGTH);
-    let xa = sig4(seg.xa);
-    let xb = sig4(seg.xb);
-    let ht = sig4(seg.h);
-    hs_text(str("Segment ", seg.index, ": x = ", xa, " to ", xb, " ", l));
-    hs_text(str("Cut the beam at $x$ between ", xa, " and ", xb, " ", l, " and keep the part to the left of the cut, with $s = x - ", hand_tex_p(xa), "$ running from 0 to ", ht, " ", l, "."));
+fn hand_segment_jumps(si: i64, seg: HSeg, xa: u8[:], at_text: u8[:], xa_tex: u8[:]) {
     let vs = hand_vtext(seg.sv, FORCE);
     let ms = hand_vtext(seg.sm, MOMENT);
-    let at_text = str(tex_number(xa), "^{+}");
-    let xa_tex = tex_number(xa);
     var vnames: u8[>..] = [];
     var vvals: u8[>..] = [];
     var mnames: u8[>..] = [];
@@ -698,6 +717,19 @@ fn hand_segment_frame(si: i64) {
     } else {
         hs_eq(str("M(", at_text, ") = M(", xa_tex, "^{-}) - ", mnames, " = ", hand_tex_p(hand_vtext(seg.bm, MOMENT)), " - ", mvals, " = ", hand_tq(ms, MOMENT)));
     }
+}
+
+fn hand_segment_frame(si: i64) {
+    let seg = hand_segs[si];
+    let l = hand_sym(LENGTH);
+    let xa = sig4(seg.xa);
+    let xb = sig4(seg.xb);
+    let ht = sig4(seg.h);
+    hs_text(str("Segment ", seg.index, ": x = ", xa, " to ", xb, " ", l));
+    hs_text(str("Cut the beam at $x$ between ", xa, " and ", xb, " ", l, " and keep the part to the left of the cut, with $s = x - ", hand_tex_p(xa), "$ running from 0 to ", ht, " ", l, "."));
+    let at_text = str(tex_number(xa), "^{+}");
+    let xa_tex = tex_number(xa);
+    hand_segment_jumps(si, seg, xa, at_text, xa_tex);
     let loaded = seg.qa != 0.0 || seg.k != 0.0;
     if loaded {
         let qc = [seg.qa, seg.k];

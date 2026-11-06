@@ -30,7 +30,7 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    sync or publishing schedule. The one exception is the store of signed log entries on the server.
    The server repository owns the room relay of `/play/neurons/`.
    The site stays complete with no new content.
-   Reason: the captain approved the pond design on 2026-10-28.
+   Reason: see the pond design approval in item 1.
 
 ## URLs
 

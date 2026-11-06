@@ -1,6 +1,6 @@
 # Agents
 
-1. Read REQUIREMENTS.md. Keep the site to what it says. Prefer deleting to adding.
+1. Read REQUIREMENTS.md. Keep the site to what it says. Prefer deletion to addition.
 2. Edit pages in `public/` by hand. No generator, no framework, no build step. The beam page and the
    wallpaper module (`scripts/build-wallpaper.sh`) are the exceptions.
 3. Never edit `public/play/beamdiag/index.html`. Change the beam in `beamdiag/`, then run

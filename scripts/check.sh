@@ -10,8 +10,8 @@ comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/*.goose
   echo 'check: comments are not allowed in scripts/*.sh, wallpaper/ and beamdiag/ (TypeScript comments need an https:// source in scripts/check-site.ts). Name the code better or write a test. The source credits that stay: Sonner, Roark, Dekker, Oklab and splitmix64.' >&2; exit 1; }
 shell_files=$(git ls-files | while read -r f; do
   case ${f} in
-    *.sh) echo "${f}" ;;
-    *) head -n 1 "${f}" | grep -aE '^#!.*(sh|bash|ksh)( |$)' >/dev/null && echo "${f}" || true ;;
+    (*.sh) echo "${f}" ;;
+    (*) head -n 1 "${f}" | grep -aE '^#!.*(sh|bash|ksh)( |$)' >/dev/null && echo "${f}" || true ;;
   esac
 done)
 printf '%s\n' "${shell_files}" | xargs uvx --from shellcheck-py==0.11.0.1 shellcheck -o all
@@ -36,7 +36,7 @@ scripts/build-beam.sh "${tmp}"
 test_hash=$(cat beamdiag/test.goose beamdiag/src/*.goose beamdiag/src/body.html beamdiag/fixtures.json beamdiag/reference.json beamdiag/random.json beamdiag/raw.json | shasum -a 256 | cut -d' ' -f1)
 built_test_hash=$(cat beamdiag/c/test.sha256)
 if [ -n "${GOOSE:-}" ]; then
-  "${GOOSE}" --standalone -q -o beamdiag/c/test.c beamdiag/test.goose
+  "${GOOSE}" --standalone -o beamdiag/c/test.c beamdiag/test.goose
   echo "${test_hash}" > beamdiag/c/test.sha256
 elif [ "${test_hash}" != "${built_test_hash}" ]; then
   echo 'check: beamdiag/c/test.c is older than beamdiag/test.goose or its inputs. Rebuild with GOOSE=/path/to/goose scripts/check.sh' >&2
@@ -58,6 +58,28 @@ diff -u beamdiag/analyzer-known.txt "${tmp}/analysis.txt" ||
 for f in index.html beamdiag.wasm.gz; do [ -s "${tmp}/${f}" ]; done
 cmp -s "${tmp}/index.html" public/play/beamdiag/index.html ||
   { echo 'check: public/play/beamdiag/index.html is not the page that beamdiag/c/ builds. Run scripts/build-beam.sh' >&2; exit 1; }
+checker_goose=${GOOSE:-}
+if [ -z "${checker_goose}" ]; then
+  goose_os=$(uname -s)
+  goose_arch=$(uname -m)
+  goose_platform=${goose_os}-${goose_arch}
+  goose_release=$(awk '$1 == "version" { print $2 }' goose.lock)
+  goose_archive=$(awk -v platform="${goose_platform}" '$1 == platform { print $3 }' goose.lock)
+  goose_artifact=$(awk -v platform="${goose_platform}" '$1 == platform { print $4 }' goose.lock)
+  [ -n "${goose_archive}" ] && [ -n "${goose_artifact}" ] ||
+    { echo "check: no official Goose artifact for ${goose_platform} in goose.lock" >&2; exit 1; }
+  curl -fsSL "https://github.com/aardappel/goose/releases/download/${goose_release}/goose-${goose_release}-${goose_artifact}.tar.gz" -o "${tmp}/goose.tar.gz"
+  printf '%s  %s\n' "${goose_archive}" "${tmp}/goose.tar.gz" | shasum -a 256 -c -
+  tar -xzf "${tmp}/goose.tar.gz" -C "${tmp}"
+  checker_goose=${tmp}/goose-${goose_release}-${goose_artifact}/goose
+fi
+require_goose "${checker_goose}"
+curl -fsSL https://api.github.com/repos/yujieteo/goosemarklint/tarball/803793d42e1877416b17b0afc31887ba940a6114 -o "${tmp}/goosemarklint.tar.gz"
+printf '%s  %s\n' e3b0fe189ae509878462570fe58d247a9dc20df4de25751dc698488968a79990 "${tmp}/goosemarklint.tar.gz" | shasum -a 256 -c -
+mkdir "${tmp}/goosemarklint"
+tar -xzf "${tmp}/goosemarklint.tar.gz" -C "${tmp}/goosemarklint" --strip-components=1
+(cd "${tmp}/goosemarklint" && GOOSE_HOME="${tmp}/goose-home" "${checker_goose}" build src/main.goose -o "${tmp}/goosemarklint-bin")
+"${tmp}/goosemarklint-bin" check .
 echo 'check: ok'
 if [ "${1:-}" = "--replay" ]; then
   shift

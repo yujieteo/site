@@ -101,6 +101,10 @@ fn sha256(data: u8[:]) -> u8[>..] {
         while i < 8 { h[i] = h[i] + v[i]; i++; }
         at += 64;
     }
+    return sha256_hex(h);
+}
+
+fn sha256_hex(h: u32[8]) -> u8[>..] {
     var out: u8[>..] = [];
     var j = 0;
     while j < 8 {
