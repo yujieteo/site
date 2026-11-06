@@ -30,6 +30,7 @@ function renderBody(post: Post): { html: string; toc: ReturnType<typeof headings
 
 async function buildAssets(out: string): Promise<void> {
   cpSync("static/fonts", `${out}/fonts`, { recursive: true });
+  cpSync("static/public", out, { recursive: true });
   const css = readFileSync("static/kowalski.css", "utf8") + readFileSync("static/style.css", "utf8");
   writeFileSync(`${out}/style.css`, css);
   const built = await Bun.build({ entrypoints: ["src/kit/kit.ts"], minify: true, target: "browser" });

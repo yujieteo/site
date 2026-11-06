@@ -9,7 +9,7 @@ const HEAD = `<meta charset="utf-8">
 <link rel="stylesheet" href="/style.css">`;
 
 const FOOT = `<footer class="wrap"><ul>
-<li>Email: <a href="mailto:contact@teoyujie.org">contact@teoyujie.org</a></li>
+<li>Email: <a href="mailto:contact@teoyujie.org">contact@teoyujie.org</a> · <a href="/contact.asc">OpenPGP key</a> (fingerprint <code>5E76 96A3 DDD7 6435 07DD 3EB8 F24F 7F0D 78EB E270</code>)</li>
 <li>Code: <a href="https://github.com/yujieteo">GitHub ↗</a></li>
 </ul></footer>`;
 
