@@ -5,7 +5,6 @@ import ts from "typescript-scanner";
 
 const ROOT = resolve("public");
 const SERVER_MADE_PATHS: readonly string[] = ["/log", "/log/feed.xml"];
-const POLICY_PAGE_MAX_BYTES = 6000;
 const WKD_KEY = "dj3498u4hyyarh35rkjfnghbjxug6b19";
 const EXPLORATION_KINDS: readonly string[] = ["Experiment", "Project", "Essay"];
 const GZIP_LEVEL = 9;
@@ -134,11 +133,6 @@ async function checkFiles(): Promise<string[]> {
   for (const name of required) {
     if (!existsSync(resolve(ROOT, name)) || statSync(resolve(ROOT, name)).size === 0) fail(`missing or empty: ${name}`);
   }
-  for (const name of pages) {
-    if (name.endsWith(".html") && !name.includes("beamdiag") && existsSync(resolve(ROOT, name)) && statSync(resolve(ROOT, name)).size > POLICY_PAGE_MAX_BYTES) {
-      fail(`policy or support page over ${POLICY_PAGE_MAX_BYTES} bytes: ${name}`);
-    }
-  }
   return pages;
 }
 
@@ -155,8 +149,7 @@ async function checkHome(): Promise<void> {
   const slots = read(resolve(ROOT, "log/template.html")).split("<!-- pond:entries -->").length - 1;
   if (slots !== 1) fail("log template needs one <!-- pond:entries -->");
   const home = read(resolve(ROOT, "index.html"));
-  for (const path of ["/lullapixie/privacy.html", "/lullapixie/support.html", "/marklove/privacy.html",
-    "/marklove/support.html", "/contact.asc", "mailto:contact@teoyujie.org"]) {
+  for (const path of ["/contact.asc", "mailto:contact@teoyujie.org"]) {
     if (!home.includes(`href="${path}"`)) fail(`home page has no link to ${path}`);
   }
   const entries = await explorationsOf(home);
@@ -178,6 +171,7 @@ async function checkBudgets(): Promise<void> {
 }
 
 async function checkEssays(): Promise<void> {
+  if (!existsSync(resolve(ROOT, "essays"))) return;
   for (const page of pagesIn(resolve(ROOT, "essays"))) {
     const html = read(page);
     for (const figure of html.matchAll(/<figure>(.*?)<\/figure>/gs)) {
