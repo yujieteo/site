@@ -6,7 +6,7 @@ rounds=${AB_ROUNDS:-4}
 per_round=${AB_RUNS_PER_ROUND:-10}
 
 verdict() {
-  awk -F'\t' -v min="$min_effect" '
+  awk -F'\t' -v min="${min_effect}" '
     FNR == 1 { f++ }
     { v[f, ++n[f]] = $1 + 0 }
     function med(k,   i, j, t, a) {
@@ -31,33 +31,34 @@ verdict() {
 
 collect() {
   local dir=$1 name=$2 out=$3
-  BENCH_RUNS=$per_round "$dir/bin/bench" "$name" "$out.part" > /dev/null
-  cat "$out.part" >> "$out"
+  BENCH_RUNS=${per_round} "${dir}/bin/bench" "${name}" "${out}.part" > /dev/null
+  cat "${out}.part" >> "${out}"
 }
 
 compare() {
   local base=$1 name=$2 b c i
   b=$(mktemp); c=$(mktemp)
   for ((i = 0; i < rounds; i++)); do
-    collect "$base" "$name" "$b"
-    collect "$root" "$name" "$c"
+    collect "${base}" "${name}" "${b}"
+    collect "${root}" "${name}" "${c}"
   done
-  verdict "$b" "$c"
+  verdict "${b}" "${c}"
 }
 
 main() {
   local name=${1:?usage: bin/ab NAME [BASE_REF|--dir PATH]} base tmp out
-  if [ "${2:-}" = --dir ]; then
+  if [[ "${2:-}" = --dir ]]; then
     base=$3
   else
     tmp=$(mktemp -d)
-    git -C "$root" archive "${2:-HEAD}" | tar -x -C "$tmp"
-    base=$tmp
+    git -C "${root}" archive -o "${tmp}.tar" "${2:-HEAD}"
+    tar -xf "${tmp}.tar" -C "${tmp}"
+    base=${tmp}
   fi
-  echo "ab $name: base interleaved with current, $rounds rounds"
-  out=$(compare "$base" "$name")
-  echo "$out"
-  case "$out" in *"verdict: worse"*) [ -z "${AB_FAIL_ON_WORSE:-}" ] || exit 1 ;; esac
+  echo "ab ${name}: base interleaved with current, ${rounds} rounds"
+  out=$(compare "${base}" "${name}")
+  echo "${out}"
+  case "${out}" in *"verdict: worse"*) [[ -z "${AB_FAIL_ON_WORSE:-}" ]] || exit 1 ;; *) ;; esac
 }
 
 main "$@"

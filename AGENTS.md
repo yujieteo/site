@@ -4,7 +4,7 @@ This repository is the site of Yu Jie Teo. It was built from project-blueprint. 
 
 1. Keep the site to posts. Prefer deletion to addition.
 2. Run `./gate` before you say you are done. Never turn a check off.
-3. Less code is better. Delete before you add.
+3. Less code is better. Delete before you add. No JavaScript, not even in skills: strict TypeScript only.
 4. No comments. Make the code say it. Allowed: a shebang, a source credit, a build directive.
 5. No function values, no callbacks. Max 350 lines a file, 35 lines a function.
 6. No native tests. Tests are evals in `evals/`.

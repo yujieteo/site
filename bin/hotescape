@@ -4,10 +4,10 @@ dir=${1:-.}
 
 main() {
   local out hits
-  out=$(cd "$dir" && go build -gcflags=-m=1 ./... 2>&1) || { printf '%s\n' "$out"; echo "hotescape: the build failed, so nothing was proved"; exit 1; }
-  hits=$(printf '%s\n' "$out" | grep -E '\.hot\.go:[0-9]+:[0-9]+: .*(escapes to heap|moved to heap)')
-  if [ -n "$hits" ]; then
-    printf '%s\n' "$hits"
+  out=$(cd "${dir}" && go build -gcflags=-m=1 ./... 2>&1) || { printf '%s\n' "${out}"; echo "hotescape: the build failed, so nothing was proved"; exit 1; }
+  hits=$(printf '%s\n' "${out}" | grep -E '\.hot\.go:[0-9]+:[0-9]+: .*(escapes to heap|moved to heap)')
+  if [[ -n "${hits}" ]]; then
+    printf '%s\n' "${hits}"
     echo "hotescape: the Go compiler puts these values on the heap"
     exit 1
   fi

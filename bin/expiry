@@ -15,24 +15,31 @@ add_months() {
   }'
 }
 
-today() { echo "${EXPIRY_TODAY:-$(date +%F)}"; }
+today() {
+  local d
+  d=$(date +%F)
+  echo "${EXPIRY_TODAY:-${d}}"
+}
 
 create() {
-  add_months "${1:-$(today)}" 3 > "$root/EXPIRY"
-  cat "$root/EXPIRY"
+  local start
+  start=$(today)
+  add_months "${1:-${start}}" 3 > "${root}/EXPIRY"
+  cat "${root}/EXPIRY"
 }
 
 check() {
-  local file=$root/EXPIRY due
-  if [ ! -f "$file" ]; then
+  local file=${root}/EXPIRY due now
+  if [[ ! -f "${file}" ]]; then
     echo "expiry: no EXPIRY file. Run bin/expiry create." >&2
     return 0
   fi
-  due=$(sed -n 1p "$file")
-  if [ "$(today)" \> "$due" ] || [ "$(today)" = "$due" ]; then
-    echo "expiry: this project expired on $due. Rethink the playbook, or rebuild the program from what you learned." >&2
+  due=$(sed -n 1p "${file}")
+  now=$(today)
+  if [[ "${now}" > "${due}" ]] || [[ "${now}" = "${due}" ]]; then
+    echo "expiry: this project expired on ${due}. Rethink the playbook, or rebuild the program from what you learned." >&2
   else
-    echo "expiry: this project runs until $due."
+    echo "expiry: this project runs until ${due}."
   fi
   return 0
 }

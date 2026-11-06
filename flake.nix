@@ -12,7 +12,7 @@
             bashInteractive git jq shellcheck gnutar
             go golangci-lint
             bun nodejs
-            python3 ruff pyright
+            python3 ruff basedpyright
             rustc cargo clippy rustfmt
           ];
         };

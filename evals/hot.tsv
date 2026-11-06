@@ -1,2 +1,2 @@
-node	evals/hot/steady.mjs
-node	evals/hot/compound.mjs
+node	evals/hot/steady.ts
+node	evals/hot/compound.ts

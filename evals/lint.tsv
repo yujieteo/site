@@ -61,3 +61,7 @@ evals/lint/fixtures/go/fakecredit.go	comment
 evals/lint/fixtures/rs/hot_println.hot.rs	hotalloc
 evals/lint/fixtures/rs/maporelse.rs	fnvalue
 evals/lint/fixtures/py/inline.py	comment
+evals/lint/fixtures/js/comment.js	nojs
+evals/lint/fixtures/js/arrow.mjs	nojs
+evals/lint/fixtures/js/common.cjs	nojs
+evals/lint/fixtures/js/view.jsx	nojs

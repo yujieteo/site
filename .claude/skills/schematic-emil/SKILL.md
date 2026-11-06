@@ -23,10 +23,10 @@ If the request names no venue, infer it: a blog post is `web`, a paper is `journ
 ## Process
 
 1. Run the upstream `schematic-figure` skill with `style=schematic-emil`. For a patent sheet, run the upstream `patent-drawing` skill. Keep all upstream steps, options and defaults (also depth `full`).
-2. Build `style.ts` from this folder into `figure/emil.js` with `bun build <skill-folder>/style.ts --outfile figure/emil.js`. Copy `fonts/` to `figure/fonts/`. Run the upstream tools with `--root <project>`.
+2. Copy `style.ts` to `figure/emil.ts` and `tokens.ts` to `figure/tokens.ts`; the render step bundles them. Copy `fonts/` to `figure/fonts/`. Run the upstream tools with `--root <project>`.
 3. In `figure/figure.js`, call `E.useEmil(F, L, venue)` first in `draw()`. It sets the font, the gray and colour tokens, the text sizes and the line weights for the venue. It returns `{s, r, line, text}`: the scale, the corner radii in pt, and the sizes.
 4. Draw with the tokens in `tokens.ts` (`style.ts` exports them). Do not write a hex value that is not a token.
-5. Run the upstream gate, `node tools/check.mjs --root <project> --fig figure/figure.js`. A FAIL stops delivery.
+5. Run the upstream gate, `bun tools/check.ts --root <project> --fig figure/figure.js`. A FAIL stops delivery.
 
 ## Style rules
 
@@ -51,7 +51,7 @@ If the request names no venue, infer it: a blog post is `web`, a paper is `journ
 Make two versions of each sheet from one figure file. Use a query on the figure path to select the version:
 
 ```js
-import * as E from './emil.js';
+import * as E from './emil.ts';
 const COLOUR = /[?&]v=colour/.test(import.meta.url);
 export const figure = E.patentFigure({ sheet: 'letter', sheetId: '1/1', name: 'fig1' }, COLOUR);
 export default function draw(F, L) {

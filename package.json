@@ -3,7 +3,10 @@
   "type": "module",
   "scripts": { "build": "bun src/build.ts" },
   "devDependencies": {
-    "@types/bun": "1.4.4",
+    "@types/bun": "^1.4.4",
+    "@types/node": "latest",
+    "oxlint": "latest",
+    "oxlint-tsgolint": "latest",
     "typescript": "7.0.2"
   }
 }

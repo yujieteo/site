@@ -70,22 +70,16 @@ const VENUES = new Map<string, { scale: number; lineMin: number }>([
   ["patent-colour", { scale: 1, lineMin: 0.35 }],
 ]);
 
-export function useEmil(F: Figure, L: Library, venue: string): Look {
-  const S = L.STYLE;
-  S.font.family = "Inter, sans-serif";
-  S.font.math = "Inter, sans-serif";
-  F.svg.style.fontFeatureSettings = INTER_FEATURES;
-  if (venue === "patent") {
-    const sheetNumber = F.svg.querySelector("text[data-role=sheet]");
-    sheetNumber?.setAttribute("font-family", S.font.family);
-    const box = sheetNumber?.getBBox();
-    if (sheetNumber && box && F.sight && box.y < F.sight.y) sheetNumber.setAttribute("y", String(Number(sheetNumber.getAttribute("y")) + F.sight.y - box.y + 0.5));
-    return { s: 1, r: { card: 0, chip: 0 }, line: S.line, text: S.text };
+function placeSheetNumber(F: Figure, S: Library["STYLE"]): void {
+  const sheetNumber = F.svg.querySelector("text[data-role=sheet]");
+  sheetNumber?.setAttribute("font-family", S.font.family);
+  const box = sheetNumber?.getBBox();
+  if (sheetNumber !== null && box !== undefined && F.sight !== undefined && box.y < F.sight.y) {
+    sheetNumber.setAttribute("y", String(Number(sheetNumber.getAttribute("y")) + F.sight.y - box.y + 0.5));
   }
-  const found = VENUES.get(venue);
-  if (found === undefined) throw new Error(`useEmil: unknown venue "${venue}"`);
-  const s = found.scale;
-  const c = S.color;
+}
+
+function paintColors(c: Record<string, string>): void {
   Object.assign(c, {
     text: gray[1200], ink: gray[1200], mid: gray[900], light: gray[800], faint: gray[400], paper: gray[100],
     blue: hue.blue[9], sky: hue.sky[9], green: hue.grass[9], yellow: hue.amber[9], orange: hue.orange[9], vermillion: hue.tomato[9], purple: hue.violet[9],
@@ -93,20 +87,42 @@ export function useEmil(F: Figure, L: Library, venue: string): Look {
     metal: gray[700], silicon: gray[900], substrate: gray[500], gold: hue.amber[9],
     tintBlue: hue.blue[3], tintOrange: hue.orange[3], tintGreen: hue.grass[3], tintGrey: gray[300],
   });
+}
+
+function sizeFromPatent(F: Figure, L: Library): void {
+  const P = L.PATENT;
+  const S = L.STYLE;
+  Object.assign(S.text, { panel: P.text.fig, title: P.text.legend, label: P.text.numeral, small: P.text.numeral, tick: P.text.numeral, min: P.text.numeral, max: P.text.fig });
+  Object.assign(S.line, P.line);
+  Object.assign(S.arrow, P.arrow);
+  giveSight(F, L);
+}
+
+function sizeFromPx(S: Library["STYLE"], found: { scale: number; lineMin: number }): void {
+  const s = found.scale;
   const min = found.lineMin;
-  const ln = (px: number): number => Math.max(min, px * s);
-  if (venue === "patent-colour") {
-    const P = L.PATENT;
-    Object.assign(S.text, { panel: P.text.fig, title: P.text.legend, label: P.text.numeral, small: P.text.numeral, tick: P.text.numeral, min: P.text.numeral, max: P.text.fig });
-    Object.assign(S.line, P.line);
-    Object.assign(S.arrow, P.arrow);
-    giveSight(F, L);
-  } else {
-    Object.assign(S.text, { panel: PX.title * s, title: PX.title * s, label: PX.label * s, small: PX.small * s, tick: PX.small * s, min: PX.small * s, max: PX.title * s });
-    Object.assign(S.line, { hair: ln(PX.hair), thin: ln(PX.thin), normal: ln(PX.normal), bold: ln(PX.bold), min });
+  Object.assign(S.text, { panel: PX.title * s, title: PX.title * s, label: PX.label * s, small: PX.small * s, tick: PX.small * s, min: PX.small * s, max: PX.title * s });
+  Object.assign(S.line, {
+    hair: Math.max(min, PX.hair * s), thin: Math.max(min, PX.thin * s), normal: Math.max(min, PX.normal * s), bold: Math.max(min, PX.bold * s), min,
+  });
+}
+
+export function useEmil(F: Figure, L: Library, venue: string): Look {
+  const S = L.STYLE;
+  S.font.family = "Inter, sans-serif";
+  S.font.math = "Inter, sans-serif";
+  F.svg.style.fontFeatureSettings = INTER_FEATURES;
+  if (venue === "patent") {
+    placeSheetNumber(F, S);
+    return { s: 1, r: { card: 0, chip: 0 }, line: S.line, text: S.text };
   }
+  const found = VENUES.get(venue);
+  if (found === undefined) throw new Error(`useEmil: unknown venue "${venue}"`);
+  paintColors(S.color);
+  if (venue === "patent-colour") sizeFromPatent(F, L);
+  else sizeFromPx(S, found);
   F.svg.querySelector("[data-role=background]")?.setAttribute("fill", gray[100]);
-  return { s, r: { card: PX.card * s, chip: PX.chip * s }, line: S.line, text: S.text };
+  return { s: found.scale, r: { card: PX.card * found.scale, chip: PX.chip * found.scale }, line: S.line, text: S.text };
 }
 
 function giveSight(F: Figure, L: Library): void {
@@ -126,18 +142,24 @@ const ENTRANCE_CSS = `@media screen and (prefers-reduced-motion: no-preference) 
 
 const PANEL_STAGGER_MS = 60;
 
+function darkDeclarations(used: Set<TokenName>): string {
+  const parts: string[] = [];
+  for (const n of [...used].toSorted()) parts.push(`--color-${n}: ${dark(n)};`);
+  return parts.join(" ");
+}
+
 export function emilTheme(F: Figure, { animate = false }: { animate?: boolean } = {}): void {
   const used = new Set<TokenName>();
   for (const e of [F.svg, ...F.svg.querySelectorAll("*")]) {
     for (const a of THEMED_ATTRIBUTES) {
       const h = hex(e.getAttribute(a) ?? "");
-      if (!h) continue;
+      if (h === null) continue;
       const n = token(h);
       used.add(n);
       e.style.setProperty(a, `var(--color-${n}, ${light(n)})`);
     }
   }
-  const darkValues = [...used].sort().map((n) => `--color-${n}: ${dark(n)};`).join(" ");
+  const darkValues = darkDeclarations(used);
   let css = `@media (prefers-color-scheme: dark) { svg:root { ${darkValues} } }\n.dark svg { ${darkValues} }\n`;
   if (animate) {
     css += ENTRANCE_CSS;

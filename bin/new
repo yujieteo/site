@@ -20,24 +20,30 @@ short_of() {
 }
 
 copy_starter() {
-  mkdir -p "$target"
-  git -C "$root" ls-files -co --exclude-standard | grep -v -e '^SPEC.md$' -e '^langs/' -e '^EXPIRY$' | while IFS= read -r f; do
-    mkdir -p "$target/$(dirname "$f")"
-    cp "$root/$f" "$target/$f"
-  done
-  cp -R "$root/langs/$lang/." "$target/"
+  mkdir -p "${target}"
+  local listed
+  listed=$(git -C "${root}" ls-files -co --exclude-standard)
+  while IFS= read -r f; do
+    case "${f}" in SPEC.md|EXPIRY|langs/*) continue ;; *) ;; esac
+    mkdir -p "${target}/$(dirname "${f}")"
+    cp "${root}/${f}" "${target}/${f}"
+  done <<< "${listed}"
+  [[ -d "${root}/langs/${lang}" ]] && cp -R "${root}/langs/${lang}/." "${target}/"
+  return 0
 }
 
 main() {
   local short
-  [ -n "$target" ] && [ -n "$lang" ] || usage
-  short=$(short_of "$lang")
-  [ ! -e "$target/rules.conf" ] || { echo "new: $target already has a starter" >&2; exit 1; }
+  [[ -n "${target}" ]] && [[ -n "${lang}" ]] || usage
+  short=$(short_of "${lang}")
+  [[ ! -e "${target}/rules.conf" ]] || { echo "new: ${target} already has a starter" >&2; exit 1; }
   copy_starter
-  sed -i.bak "s/^lang=.*/lang=$short/" "$target/rules.conf" && rm -f "$target/rules.conf.bak"
-  "$target/bin/expiry" create > /dev/null
-  git -C "$target" init -q 2> /dev/null
-  echo "new: started $target for $lang. Expiry: $(cat "$target/EXPIRY"). Run ./gate there."
+  sed -i.bak "s/^lang=.*/lang=${short}/" "${target}/rules.conf" && rm -f "${target}/rules.conf.bak"
+  "${target}/bin/expiry" create > /dev/null
+  git -C "${target}" init -q 2> /dev/null
+  local expiry
+  expiry=$(< "${target}/EXPIRY")
+  echo "new: started ${target} for ${lang}. Expiry: ${expiry}. Run ./gate there."
 }
 
 main

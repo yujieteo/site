@@ -13,14 +13,14 @@ main() {
   local dir out
   dir=$(mktemp -d)
   out=$(mktemp -d)
-  make_post "$dir/ok" 80 '::figure kind=orbit alt="Dots." caption="Dots."'
-  builds "$dir/ok" "$out" || fail "a good post did not build"
-  make_post "$dir/noalt" 80 '::figure kind=orbit caption="Dots."'
-  builds "$dir/noalt" "$out" && fail "a figure with no alt text built"
-  make_post "$dir/nocaption" 80 '::figure kind=orbit alt="Dots."'
-  builds "$dir/nocaption" "$out" && fail "a figure with no caption built"
-  make_post "$dir/small" 10 'Text.'
-  builds "$dir/small" "$out" && fail "a post over its download limit built"
+  make_post "${dir}/ok" 80 '::figure kind=orbit alt="Dots." caption="Dots."'
+  builds "${dir}/ok" "${out}" || fail "a good post did not build"
+  make_post "${dir}/noalt" 80 '::figure kind=orbit caption="Dots."'
+  builds "${dir}/noalt" "${out}" && fail "a figure with no alt text built"
+  make_post "${dir}/nocaption" 80 '::figure kind=orbit alt="Dots."'
+  builds "${dir}/nocaption" "${out}" && fail "a figure with no caption built"
+  make_post "${dir}/small" 10 'Text.'
+  builds "${dir}/small" "${out}" && fail "a post over its download limit built"
   echo OK
 }
 

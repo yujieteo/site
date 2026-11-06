@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-cd "$root" || exit 1
+cd "${root}" || exit 1
 
 fail() {
   echo "$1"

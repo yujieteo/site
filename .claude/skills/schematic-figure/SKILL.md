@@ -38,13 +38,13 @@ The user may give any of these. Infer the rest (step 0).
 
 ## 2. Build
 
-Follow steps 3-8 of `reference/process.md`: sources, look-up of real objects (standard and full depth), text, the layout at thumbnail size, the panel-by-panel build with render, look and fix, and the gate. Read `reference/lib-api.md` before you write code, `reference/style.md` before you choose sizes or colours, and `reference/principles.md` (P1-P31) before the plan.
+Follow steps 3-8 of `reference/process.md`: sources, look-up of real objects (standard and full depth), text, the layout at thumbnail size, the panel-by-panel build with render, look and fix, and the gate. Read `reference/lib-api.md` and `reference/ts-port.md` before you write code, `reference/style.md` before you choose sizes or colours, and `reference/principles.md` (P1-P31) before the plan.
 
 ## 3. Check (by depth)
 
 | Depth | Checks |
 |---|---|
-| draft | The gate (`node tools/check.mjs`) with no FAIL. |
+| draft | The gate (`bun tools/check.ts`) with no FAIL. |
 | standard | The gate, then the faithfulness pass of step 9 (every count, polarity, direction, order and connection against the facts), then your own cold read of the thumbnail. |
 | full | The standard checks, then two drafts and a choice (step 6), your own critique pass for physics and claim errors (step 9), and your own reader test (step 10). |
 
@@ -74,5 +74,6 @@ The rules of each mode (what you may look at, the revise-scope diff) are in `ref
 | `reference/principles.md` | P1-P31, each with its reason and its exceptions. |
 | `reference/style.md` | Formats, sizes, calibrations and the rubric. |
 | `reference/lib-api.md`, `reference/lib-<domain>.md` | The drawing library and the domain parts. |
+| `reference/ts-port.md` | How the TypeScript port changed the API. |
 | `templates/spec-card.md` | The spec card. |
 | `foundation/` | The engine, the tools, the Blender kits and the demos. |
