@@ -2,6 +2,7 @@ import std;
 import .num;
 
 struct JNode { kind: i64, ko: i64, kl: i64, so: i64, sl: i64, num: f64, flag: bool, next: i64, first: i64, last: i64 }
+struct JParseFrame { node: i64, ko: i64, kl: i64 }
 
 let J_NULL = 0;
 let J_BOOL = 1;
@@ -9,6 +10,8 @@ let J_NUM = 2;
 let J_STR = 3;
 let J_ARR = 4;
 let J_OBJ = 5;
+let J_OBJECT_OPEN = 123;
+let J_OBJECT_CLOSE = 125;
 
 var jn: JNode[>..] = [];
 var jp_raw: u8[>..] = [];
@@ -100,44 +103,8 @@ fn j_literal(word: u8[:]) -> bool {
     return true;
 }
 
-recursive fn j_value(raw: bool) -> i64 {
-    j_ws();
-    if j_pos >= j_src.len { j_bad = true; return -1; }
+fn j_scalar(raw: bool) -> i64 {
     let c = j_src[j_pos];
-    if c == '{' || c == '[' {
-        let obj = c == '{';
-        let idx = j_node(if obj { J_OBJ } else { J_ARR });
-        j_pos++;
-        while j_pos <= j_src.len {
-            j_ws();
-            if j_pos >= j_src.len { j_bad = true; return -1; }
-            let d = j_src[j_pos];
-            if d == '}' || d == ']' { j_pos++; break; }
-            if d == ',' { j_pos++; continue; }
-            var ko = 0;
-            var kl = 0;
-            if obj {
-                if d != '"' { j_bad = true; return -1; }
-                if raw {
-                    ko = j_string(jp_raw);
-                    kl = jp_raw.len - ko;
-                } else {
-                    ko = j_string(jp_ev);
-                    kl = jp_ev.len - ko;
-                }
-                j_ws();
-                if j_pos >= j_src.len || j_src[j_pos] != ':' { j_bad = true; return -1; }
-                j_pos++;
-            }
-            let child = j_value(raw);
-            if child < 0 || j_bad { j_bad = true; return -1; }
-            jn[child].ko = ko;
-            jn[child].kl = kl;
-            if jn[idx].first < 0 { jn[idx].first = child; } else { jn[jn[idx].last].next = child; }
-            jn[idx].last = child;
-        }
-        return idx;
-    }
     if c == '"' {
         let idx = j_node(J_STR);
         j_pool_string(raw, idx);
@@ -159,6 +126,72 @@ recursive fn j_value(raw: bool) -> i64 {
     let idx = j_node(J_NUM);
     jn[idx].num = read_double(j_src[start..j_pos]);
     return idx;
+}
+
+fn j_key(raw: bool, frame: JParseFrame&) -> bool {
+    frame.ko = 0;
+    frame.kl = 0;
+    if jn[frame.node].kind != J_OBJ { return true; }
+    if j_src[j_pos] != '"' { return false; }
+    if raw {
+        frame.ko = j_string(jp_raw);
+        frame.kl = jp_raw.len - frame.ko;
+    } else {
+        frame.ko = j_string(jp_ev);
+        frame.kl = jp_ev.len - frame.ko;
+    }
+    j_ws();
+    if j_pos >= j_src.len || j_src[j_pos] != ':' { return false; }
+    j_pos++;
+    return true;
+}
+
+fn j_attach(frame: JParseFrame, child: i64) {
+    jn[child].ko = frame.ko;
+    jn[child].kl = frame.kl;
+    if jn[frame.node].first < 0 { jn[frame.node].first = child; }
+    else { jn[jn[frame.node].last].next = child; }
+    jn[frame.node].last = child;
+}
+
+fn j_value(raw: bool) -> i64 {
+    var parents: JParseFrame[>..] = [];
+    var value = -1;
+    var need_value = true;
+    while need_value || parents.len > 0 {
+        if need_value {
+            j_ws();
+            if j_pos >= j_src.len { j_bad = true; return -1; }
+            let c = j_src[j_pos];
+            if c == J_OBJECT_OPEN || c == '[' {
+                let idx = j_node(if c == J_OBJECT_OPEN { J_OBJ } else { J_ARR });
+                j_pos++;
+                parents.push(JParseFrame { node: idx, ko: 0, kl: 0 });
+            } else {
+                value = j_scalar(raw);
+                if value < 0 { return -1; }
+            }
+            need_value = false;
+        }
+        if value >= 0 {
+            if j_bad { return -1; }
+            if parents.len == 0 { return value; }
+            j_attach(parents[parents.len - 1], value);
+            value = -1;
+        }
+        j_ws();
+        if j_pos >= j_src.len { j_bad = true; return -1; }
+        let d = j_src[j_pos];
+        if d == J_OBJECT_CLOSE || d == ']' {
+            j_pos++;
+            value = parents.pop().node;
+            continue;
+        }
+        if d == ',' { j_pos++; continue; }
+        if !j_key(raw, parents[parents.len - 1]) { j_bad = true; return -1; }
+        need_value = true;
+    }
+    return value;
 }
 
 fn j_run(src: u8[:], raw: bool) -> i64 {

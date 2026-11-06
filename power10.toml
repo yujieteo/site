@@ -1,6 +1,7 @@
 version = "0.2.1"
 exclude = [
   "beamdiag/c/*",
+  "beamdiag/src/page_host.js",
   "public/play/beamdiag/katex/*",
   "public/play/goosestrike/*",
   "public/play/theorem-explorer/*",

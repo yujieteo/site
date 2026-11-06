@@ -48,20 +48,34 @@ fn drop_one(d: u8[..400]&) -> bool {
 fn shortest(x: f64) -> Digits {
     var buf: u8[1200] = [0; 1200];
     var p = 0;
-    loop {
+    let max_precision = 16;
+    var done = false;
+    var result = Digits { d: "", e: 0 };
+    while !done && p <= max_precision {
         let n = bd_fmt_e(x, p, buf);
         var r = read_sci(buf, n);
-        if reads(r, x) || p >= 16 {
+        if reads(r, x) || p >= max_precision {
             r.e += 1;
-            return r;
+            result = r;
+            done = true;
+        } else {
+            var up = r;
+            if bump(up.d) { up.d = "1"; var i = 0; while i < p { up.d.push('0'); i++; } up.e += 1; }
+            if reads(up, x) {
+                up.e += 1;
+                result = up;
+                done = true;
+            } else {
+                var dn = r;
+                if drop_one(dn.d) && reads(dn, x) {
+                    dn.e += 1;
+                    result = dn;
+                    done = true;
+                } else { p++; }
+            }
         }
-        var up = r;
-        if bump(up.d) { up.d = "1"; var i = 0; while i < p { up.d.push('0'); i++; } up.e += 1; }
-        if reads(up, x) { up.e += 1; return up; }
-        var dn = r;
-        if drop_one(dn.d) && reads(dn, x) { dn.e += 1; return dn; }
-        p++;
     }
+    return result;
 }
 
 fn digs(out: u8[>..]&, d: Digits&, from: i64, to: i64) {

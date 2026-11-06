@@ -436,22 +436,11 @@ fn spread(f: f64[>..]&, e: i64, w: f64[4], value: f64) {
     while i < 4 { f[2 * e + i] += w[i] * value; i++; }
 }
 
-fn solve(u: i64) -> bool {
-    if !validate(u) { return false; }
+fn assemble_stiffness(stations: f64[:], k: f64[>..]&) {
     let ei = g_m.e * g_m.section.i;
-    var stations: f64[>..] = [];
-    stations.push(0.0);
-    stations.push(g_m.length);
-    for s in g_sup { stations.push(s.x); }
-    distinct(stations);
     let ns = stations.len;
-    let n = ns * 2;
-    var k: f64[>..] = [];
-    var f: f64[>..] = [];
     var z = 0;
-    while z < n * 4 { k.push(0.0); z++; }
-    z = 0;
-    while z < n { f.push(0.0); z++; }
+    while z < ns * 8 { k.push(0.0); z++; }
     var e = 0;
     while e < ns - 1 {
         let l = stations[e + 1] - stations[e];
@@ -466,6 +455,12 @@ fn solve(u: i64) -> bool {
         }
         e++;
     }
+}
+
+fn assemble_loads(stations: f64[:], f: f64[>..]&) {
+    let ns = stations.len;
+    var z = 0;
+    while z < ns * 2 { f.push(0.0); z++; }
     for ld in g_loads {
         if ld.kind == DIST {
             var el = 0;
@@ -503,8 +498,12 @@ fn solve(u: i64) -> bool {
             }
         }
     }
+}
+
+fn solve_displacements(stations: f64[:], k: f64[:], f: f64[:], sol: f64[>..]&) -> bool {
+    let n = stations.len * 2;
     var fixed: bool[>..] = [];
-    z = 0;
+    var z = 0;
     while z < n { fixed.push(false); z++; }
     for s in g_sup {
         let i = station_index(stations, s.x);
@@ -514,7 +513,6 @@ fn solve(u: i64) -> bool {
     var free: i64[>..] = [];
     z = 0;
     while z < n { if !fixed[z] { free.push(z); } z++; }
-    var sol: f64[>..] = [];
     z = 0;
     while z < n { sol.push(0.0); z++; }
     if free.len > 0 {
@@ -538,6 +536,11 @@ fn solve(u: i64) -> bool {
     for v in sol {
         if !finite(v) { return fail("The solution overflowed; check that E, I and the loads use consistent units.", "section.I"); }
     }
+    return true;
+}
+
+fn collect_solution(stations: f64[:], k: f64[:], f: f64[:], sol: f64[:]) {
+    let n = stations.len * 2;
     g_rea.clear();
     for s in g_sup {
         let i = station_index(stations, s.x);
@@ -559,6 +562,22 @@ fn solve(u: i64) -> bool {
     }
     g_eq = equilibrium();
     g_ext = extremes();
+}
+
+fn solve(u: i64) -> bool {
+    if !validate(u) { return false; }
+    var stations: f64[>..] = [];
+    stations.push(0.0);
+    stations.push(g_m.length);
+    for s in g_sup { stations.push(s.x); }
+    distinct(stations);
+    var k: f64[>..] = [];
+    var f: f64[>..] = [];
+    var sol: f64[>..] = [];
+    assemble_stiffness(stations, k);
+    assemble_loads(stations, f);
+    if !solve_displacements(stations, k, f, sol) { return false; }
+    collect_solution(stations, k, f, sol);
     return true;
 }
 

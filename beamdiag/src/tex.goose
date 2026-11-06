@@ -4,6 +4,16 @@ import .fmt;
 
 let TEX_TEXT = 0;
 let TEX_UNICODE = 1;
+let TEX_GROUP_OPEN = 123;
+let TEX_GROUP_CLOSE = 125;
+let TEX_TASK_SEQUENCE = 0;
+let TEX_TASK_ATOM = 1;
+let TEX_TASK_COMMAND = 2;
+let TEX_TASK_FRAC_MIDDLE = 3;
+let TEX_TASK_FRAC_END = 4;
+let TEX_TASK_SUP = 5;
+let TEX_TASK_SUB = 6;
+struct TexTask { kind: i64, arg: i64 }
 
 var tex_i: i64 = 0;
 
@@ -120,15 +130,15 @@ fn tex_small(out: u8[>..]&, start: i64, sup: bool) {
     }
 }
 
-recursive fn tex_atom(s: u8[:], out: u8[>..]&, mode: i64) {
+fn tex_atom(s: u8[:], out: u8[>..]&, tasks: TexTask[>..]&) {
     if tex_i >= s.len { return; }
     let c = s[tex_i];
-    if c == '{' { tex_i++; tex_seq(s, out, 125, mode); }
-    else if c == '\\' { tex_command(s, out, mode); }
+    if c == TEX_GROUP_OPEN { tex_i++; tasks.push(TexTask { kind: TEX_TASK_SEQUENCE, arg: TEX_GROUP_CLOSE }); }
+    else if c == '\\' { tasks.push(TexTask { kind: TEX_TASK_COMMAND, arg: 0 }); }
     else { tex_put_char(s, out); }
 }
 
-recursive fn tex_command(s: u8[:], out: u8[>..]&, mode: i64) {
+fn tex_command(s: u8[:], out: u8[>..]&, tasks: TexTask[>..]&) {
     tex_i++;
     let start = tex_i;
     while tex_i < s.len && tex_alpha(s[tex_i]) { tex_i++; }
@@ -139,27 +149,25 @@ recursive fn tex_command(s: u8[:], out: u8[>..]&, mode: i64) {
     }
     let name = s[start..tex_i];
     if word { while tex_i < s.len && s[tex_i] == ' ' { tex_i++; } }
-    let has_brace = tex_i < s.len && s[tex_i] == '{';
+    let has_brace = tex_i < s.len && s[tex_i] == TEX_GROUP_OPEN;
     if name == "frac" {
         out.append("(");
-        tex_atom(s, out, mode);
-        out.append(")/(");
-        tex_atom(s, out, mode);
-        out.append(")");
+        tasks.push(TexTask { kind: TEX_TASK_FRAC_MIDDLE, arg: 0 });
+        tasks.push(TexTask { kind: TEX_TASK_ATOM, arg: 0 });
     } else if name == "mathrm" {
-        tex_atom(s, out, mode);
+        tasks.push(TexTask { kind: TEX_TASK_ATOM, arg: 0 });
     } else if name == "text" && has_brace {
         tex_i++;
         var depth = 1;
         while tex_i < s.len {
             let c = s[tex_i];
             tex_i++;
-            if c == '{' { depth++; }
-            else if c == '}' { depth--; if depth == 0 { break; } }
+            if c == TEX_GROUP_OPEN { depth++; }
+            else if c == TEX_GROUP_CLOSE { depth--; if depth == 0 { break; } }
             out.push(c);
         }
     } else if name == "text" {
-        tex_atom(s, out, mode);
+        tasks.push(TexTask { kind: TEX_TASK_ATOM, arg: 0 });
     } else if name == "left" || name == "right" {
         if tex_i < s.len {
             if s[tex_i] == '.' { tex_i++; } else { tex_put_char(s, out); }
@@ -169,35 +177,42 @@ recursive fn tex_command(s: u8[:], out: u8[>..]&, mode: i64) {
     }
 }
 
-recursive fn tex_seq(s: u8[:], out: u8[>..]&, end: i64, mode: i64) {
-    while tex_i < s.len {
-        let c = s[tex_i];
-        if (c as i64) == end { tex_i++; break; }
-        if c == '^' || c == '_' {
-            tex_i++;
-            if mode == TEX_TEXT {
-                out.push(c);
-                tex_atom(s, out, mode);
-            } else {
-                let start = out.len;
-                tex_atom(s, out, mode);
-                tex_small(out, start, c == '^');
-            }
-        } else if c == '\\' {
-            tex_command(s, out, mode);
-        } else if c == '{' {
-            tex_i++;
-            tex_seq(s, out, 125, mode);
-        } else {
-            tex_put_char(s, out);
-        }
+fn tex_seq(s: u8[:], out: u8[>..]&, end: i64, mode: i64, tasks: TexTask[>..]&) {
+    if tex_i >= s.len { return; }
+    let c = s[tex_i];
+    if (c as i64) == end { tex_i++; return; }
+    tasks.push(TexTask { kind: TEX_TASK_SEQUENCE, arg: end });
+    if c == '^' || c == '_' {
+        tex_i++;
+        if mode == TEX_TEXT { out.push(c); }
+        else { tasks.push(TexTask { kind: if c == '^' { TEX_TASK_SUP } else { TEX_TASK_SUB }, arg: out.len }); }
+        tasks.push(TexTask { kind: TEX_TASK_ATOM, arg: 0 });
+    } else if c == '\\' {
+        tasks.push(TexTask { kind: TEX_TASK_COMMAND, arg: 0 });
+    } else if c == TEX_GROUP_OPEN {
+        tex_i++;
+        tasks.push(TexTask { kind: TEX_TASK_SEQUENCE, arg: TEX_GROUP_CLOSE });
+    } else {
+        tex_put_char(s, out);
     }
 }
 
 fn tex_flat(src: u8[:], mode: i64) -> u8[>..] {
     tex_i = 0;
     var out: u8[>..] = [];
-    tex_seq(src, out, -1, mode);
+    var tasks: TexTask[>..] = [TexTask { kind: TEX_TASK_SEQUENCE, arg: -1 }];
+    while tasks.len > 0 {
+        let task = tasks.pop();
+        if task.kind == TEX_TASK_SEQUENCE { tex_seq(src, out, task.arg, mode, tasks); }
+        else if task.kind == TEX_TASK_ATOM { tex_atom(src, out, tasks); }
+        else if task.kind == TEX_TASK_COMMAND { tex_command(src, out, tasks); }
+        else if task.kind == TEX_TASK_FRAC_MIDDLE {
+            out.append(")/(");
+            tasks.push(TexTask { kind: TEX_TASK_FRAC_END, arg: 0 });
+            tasks.push(TexTask { kind: TEX_TASK_ATOM, arg: 0 });
+        } else if task.kind == TEX_TASK_FRAC_END { out.append(")"); }
+        else { tex_small(out, task.arg, task.kind == TEX_TASK_SUP); }
+    }
     return tex_squeeze(out);
 }
 

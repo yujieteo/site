@@ -129,13 +129,7 @@ fn fig_head_path(c: DOp[>..]&, x: f64, tip: f64, dir: f64, size: f64, col: i64) 
     draw_path(c, s, paint_fill(col));
 }
 
-fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
-    let narrow = w < 520.0;
-    var x_label: u8[>..] = [];
-    format(x_label, "x (", sym(LENGTH), ")");
-    let mr = 16.0 + fig_label_width(x_label);
-    let l = g_m.length;
-    let yb = if narrow { 75.0 } else { 85.0 };
+fn fig_prepare_panels(narrow: bool, yb: f64, pts: Sample[:]) -> f64 {
     fig_text.clear();
     fig_ticks.clear();
     fig_ls.clear();
@@ -156,8 +150,6 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         k++;
     }
     var y = yb + 124.0 + 10.0;
-    var pts: Sample[>..] = [];
-    diagram(800, pts);
     k = 0;
     while k < 3 {
         var p = fig_panels[k];
@@ -178,13 +170,10 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
         fig_panels[k] = p;
         k++;
     }
-    let h = y;
-    var widest = -1.0 / 0.0;
-    var i = 0;
-    while i < fig_ls.len { widest = fig_fmax(widest, fig_label_width(fig_text[fig_ls[i]..fig_ls[i] + fig_ln[i]])); i++; }
-    let ml = fig_fmax(if narrow { 48.0 } else { 64.0 }, 12.0 + widest);
-    let lay = FigLay { ml: ml, mr: mr, w: w, l: l };
-    draw_beam(c, lay, yb, narrow, interactive, x_label);
+    return y;
+}
+
+fn fig_open_plot(c: DOp[>..]&, interactive: bool, l: f64) {
     if interactive {
         var attrs: u8[>..] = [];
         attrs.append(" class=\"plotarea\" id=\"plotarea\" tabindex=\"0\" role=\"slider\" aria-label=\"Section position along the beam\" aria-valuemin=\"");
@@ -203,7 +192,26 @@ fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
     } else {
         draw_open(c, "");
     }
-    k = 0;
+}
+
+fn figure(w: f64, interactive: bool, c: DOp[>..]&) -> Fig {
+    let narrow = w < 520.0;
+    var x_label: u8[>..] = [];
+    format(x_label, "x (", sym(LENGTH), ")");
+    let mr = 16.0 + fig_label_width(x_label);
+    let l = g_m.length;
+    let yb = if narrow { 75.0 } else { 85.0 };
+    var pts: Sample[>..] = [];
+    diagram(800, pts);
+    let h = fig_prepare_panels(narrow, yb, pts);
+    var widest = -1.0 / 0.0;
+    var i = 0;
+    while i < fig_ls.len { widest = fig_fmax(widest, fig_label_width(fig_text[fig_ls[i]..fig_ls[i] + fig_ln[i]])); i++; }
+    let ml = fig_fmax(if narrow { 48.0 } else { 64.0 }, 12.0 + widest);
+    let lay = FigLay { ml: ml, mr: mr, w: w, l: l };
+    draw_beam(c, lay, yb, narrow, interactive, x_label);
+    fig_open_plot(c, interactive, l);
+    var k = 0;
     while k < 3 {
         draw_diagram(c, fig_panels[k], pts, lay, narrow, x_label);
         k++;
@@ -268,15 +276,7 @@ fn fig_grip(c: DOp[>..]&, interactive: bool, r0: f64, r1: f64, r2: f64, r3: f64,
     draw_rect(c, h0, h1, h2, h3, 0.0, paint_none(), "hit");
 }
 
-fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool, x_label: u8[:]) {
-    let l = g_m.length;
-    draw_open(c, "");
-    var qmax = 1e-12;
-    var fmax = 1e-12;
-    for ld in g_loads {
-        if ld.kind == DIST { qmax = jmax(jmax(qmax, abs(ld.q1)), abs(ld.q2)); }
-        else if ld.kind == POINT { fmax = jmax(fmax, abs(ld.f)); }
-    }
+fn fig_distributed(c: DOp[>..]&, lay: FigLay, yb: f64, qmax: f64) {
     for ld in g_loads {
         if ld.kind != DIST { continue; }
         let x1 = ld.x1;
@@ -316,9 +316,11 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         }
         draw_text(c, (px1 + px2) / 2.0, jmin(top1, top2) - 6.0, label, "val", ANC_MIDDLE);
     }
-    draw_rect(c, fig_x(lay, 0.0), yb - 4.0, fig_x(lay, l) - fig_x(lay, 0.0), 8.0, 2.0, paint_both(COL_SURFACE, COL_FG, 1.5), "");
+}
+
+fn fig_reaction_labels(lay: FigLay) -> f64[>..] {
+    let l = lay.l;
     let force = sym(FORCE);
-    let moment = sym(MOMENT);
     var labelled: f64[>..] = [];
     var free_from = -1.0 / 0.0;
     for rr in g_rea {
@@ -328,6 +330,11 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         let left = if a == ANC_START { x } else if a == ANC_END { x - w } else { x - w / 2.0 };
         if left >= free_from { labelled.push(rr.x); free_from = left + w + 6.0; }
     }
+    return labelled;
+}
+
+fn fig_supports(c: DOp[>..]&, lay: FigLay, yb: f64, interactive: bool, labelled: f64[:]) {
+    let l = lay.l;
     var i = 0;
     while i < st_sup.len {
         let s = st_sup[i];
@@ -371,12 +378,21 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
         }
         fig_grip(c, interactive, x - 16.0, yb - 22.0, 32.0, 52.0, x - 16.0, yb - 22.0, 32.0, 52.0);
         draw_close(c);
+        fig_reaction(c, lay, yb, s, labelled);
+    }
+}
+
+fn fig_reaction(c: DOp[>..]&, lay: FigLay, yb: f64, s: Support, labelled: f64[:]) {
+        let x = fig_x(lay, s.x);
+        let l = lay.l;
+        let force = sym(FORCE);
+        let moment = sym(MOMENT);
         var found = false;
         var rr = Reaction { kind: 0, x: 0.0, fy: 0.0, mz: 0.0 };
         for r in g_rea {
             if !found && r.x == s.x { found = true; rr = r; }
         }
-        if !found { continue; }
+        if !found { return; }
         let up = rr.fy >= 0.0;
         let ya = yb + 34.0;
         let len = 20.0;
@@ -396,8 +412,13 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
                 draw_text(c, tx, ya + len + 28.0, t2, "val react", a);
             }
         }
-    }
-    i = 0;
+}
+
+fn fig_point_loads(c: DOp[>..]&, lay: FigLay, yb: f64, interactive: bool, fmax: f64) {
+    let l = lay.l;
+    let force = sym(FORCE);
+    let moment = sym(MOMENT);
+    var i = 0;
     while i < st_loads.len {
         let ld = st_loads[i];
         i++;
@@ -445,6 +466,22 @@ fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool
             draw_close(c);
         }
     }
+}
+
+fn draw_beam(c: DOp[>..]&, lay: FigLay, yb: f64, narrow: bool, interactive: bool, x_label: u8[:]) {
+    let l = g_m.length;
+    draw_open(c, "");
+    var qmax = 1e-12;
+    var fmax = 1e-12;
+    for ld in g_loads {
+        if ld.kind == DIST { qmax = jmax(jmax(qmax, abs(ld.q1)), abs(ld.q2)); }
+        else if ld.kind == POINT { fmax = jmax(fmax, abs(ld.f)); }
+    }
+    fig_distributed(c, lay, yb, qmax);
+    draw_rect(c, fig_x(lay, 0.0), yb - 4.0, fig_x(lay, l) - fig_x(lay, 0.0), 8.0, 2.0, paint_both(COL_SURFACE, COL_FG, 1.5), "");
+    let labelled = fig_reaction_labels(lay);
+    fig_supports(c, lay, yb, interactive, labelled);
+    fig_point_loads(c, lay, yb, interactive, fmax);
     let ya = yb + 104.0;
     let xo = fig_x(lay, offset(l));
     draw_open(c, " class=\"axes\"");

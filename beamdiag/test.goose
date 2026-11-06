@@ -395,6 +395,66 @@ fn a_beam_too_large_for_the_units_keeps_the_last_solved_beam() {
     expect(!app_has_error && g_rea[0].fy == fy, "a load that fits solves again");
 }
 
+fn json_nested_nodes_keep_keys_and_string_pools() {
+    var src: u8[>..] = [];
+    for _ in 128 { src.push('['); }
+    src.append("{\"key\":\"\\u0061\\uD83D\\uDE00\"}");
+    for _ in 128 { src.push(']'); }
+    for raw in [false, true] {
+        var node = if raw { jm_parse_raw(src) } else { jm_parse_event(src) };
+        expect(node >= 0, "nested JSON parses in raw and event modes");
+        for _ in 128 { node = jm_first(node); }
+        let leaf = jm_member(node, "key");
+        same_text(if raw { jm_rtext(leaf) } else { jm_text(leaf) }, "a😀", "nested JSON keeps keys and UTF-16 surrogate pairs");
+    }
+}
+
+fn json_errors_do_not_corrupt_raw_nodes_or_the_next_event() {
+    let raw = jm_parse_raw("{\"raw\":\"stable\"}");
+    let bad: const u8[:][6] = ["", "{\"a\":}", "[1", "\"unterminated", "{\"a\" 1}", "true false"];
+    for src in bad { expect(jm_parse_event(src) < 0, str("malformed JSON fails: ", src)); }
+    let event = jm_parse_event("{\"ok\":\"yes\"}");
+    same_text(jm_text(jm_member(event, "ok")), "yes", "a valid event parses after malformed JSON");
+    same_text(jm_rtext(jm_member(raw, "raw")), "stable", "event parses preserve the raw string pool");
+}
+
+fn tex_tasks_keep_nested_fractions_and_scripts() {
+    let src = "\\frac{1}{\\frac{x^{12}}{y_3}}";
+    same_text(tex_unicode(src), "(1)/((x¹²)/(y₃))", "nested fractions retain superscripts and subscripts");
+    same_text(tex_text(src), "(1)/((x^12)/(y_3))", "text mode retains caret and underscore notation");
+    same_text(tex_unicode("\\text{a{b}c}"), "a{b}c", "text commands retain nested literal braces");
+    var nested: u8[>..] = [];
+    var expected: u8[>..] = [];
+    for _ in 128 { nested.append("\\frac{1}{"); expected.append("(1)/("); }
+    nested.append("2");
+    expected.append("2");
+    for _ in 128 { nested.push('}'); expected.push(')'); }
+    same_text(tex_unicode(nested), expected, "nested fraction tasks resume in their original order");
+}
+
+fn tex_incomplete_commands_keep_their_previous_text() {
+    same_text(tex_unicode("\\frac"), "()/()", "a fraction without atoms keeps both empty operands");
+    same_text(tex_unicode("{x"), "x", "an open group keeps its text");
+    same_text(tex_unicode("x}"), "x}", "a closing brace outside a group stays literal");
+    same_text(tex_unicode("\\text{abc"), "abc", "an open text command keeps its text");
+    same_text(tex_unicode("\\mathrm"), "", "an empty roman atom stays empty");
+}
+
+fn parser_regressions() {
+    let nested_start = clock();
+    json_nested_nodes_keep_keys_and_string_pools();
+    print(str("beam test: JSON nesting ", clock() - nested_start, " s\n"));
+    let errors_start = clock();
+    json_errors_do_not_corrupt_raw_nodes_or_the_next_event();
+    print(str("beam test: JSON error recovery ", clock() - errors_start, " s\n"));
+    let fractions_start = clock();
+    tex_tasks_keep_nested_fractions_and_scripts();
+    print(str("beam test: TeX fractions and scripts ", clock() - fractions_start, " s\n"));
+    let incomplete_start = clock();
+    tex_incomplete_commands_keep_their_previous_text();
+    print(str("beam test: incomplete TeX ", clock() - incomplete_start, " s\n"));
+}
+
 fn main() {
     let fixtures = jm_parse_raw(FIXTURES);
     let reference = jm_parse_raw(REFERENCE);
@@ -445,6 +505,7 @@ fn main() {
     figure_spans_are_halved_and_a_force_arrow_is_capped();
     a_drag_derives_the_hand_calculation_only_when_it_ends();
     a_beam_too_large_for_the_units_keeps_the_last_solved_beam();
+    parser_regressions();
     if failures > 0 { write_stderr(str("beam test: ", failures, " failed\n")); exit(1); }
     print(str("beam test: ok, ", cases, " exact beams\n"));
 }

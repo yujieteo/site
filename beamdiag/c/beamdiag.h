@@ -233,6 +233,17 @@ struct Fig_g {
     double l_g;
 };
 
+typedef struct Sample_g Sample_g;
+typedef struct { Sample_g *data; int64_t len; } sl_Sample_g;
+
+struct Sample_g {
+    double x_g;
+    double shear_g;
+    double m_g;
+    double v_g;
+    double theta_g;
+};
+
 typedef struct FigLay_g FigLay_g;
 struct FigLay_g {
     double ml_g;
@@ -270,17 +281,6 @@ typedef struct { uint8_t len; uint8_t e[200]; } l200_u8;
 struct Readout_g {
     l8_u8 k_g;
     l200_u8 v_g;
-};
-
-typedef struct Sample_g Sample_g;
-typedef struct { Sample_g *data; int64_t len; } sl_Sample_g;
-
-struct Sample_g {
-    double x_g;
-    double shear_g;
-    double m_g;
-    double v_g;
-    double theta_g;
 };
 
 typedef struct DOp_g DOp_g;
@@ -401,6 +401,13 @@ struct SectionOption_g {
     sl_u8 label_g;
 };
 
+typedef struct JParseFrame_g JParseFrame_g;
+struct JParseFrame_g {
+    int64_t node_g;
+    int64_t ko_g;
+    int64_t kl_g;
+};
+
 typedef struct StatItem_g StatItem_g;
 typedef struct { uint8_t len; uint8_t e[160]; } l160_u8;
 
@@ -417,6 +424,12 @@ struct Cells_g {
 
 typedef struct { uint8_t len; uint8_t e[64]; } l64_u8;
 
+typedef struct TexTask_g TexTask_g;
+struct TexTask_g {
+    int64_t kind_g;
+    int64_t arg_g;
+};
+
 typedef struct { double e[16]; } a16_f64;
 
 typedef struct { uint8_t len; int64_t e[144]; } l144_i64;
@@ -432,6 +445,12 @@ struct DSeg_g {
     double d_g;
     double e_g;
     double f_g;
+};
+
+typedef struct HUnknown_g HUnknown_g;
+struct HUnknown_g {
+    int64_t kind_g;
+    int64_t r_g;
 };
 
 typedef struct HReaction_g HReaction_g;
@@ -457,12 +476,6 @@ struct HLoad_g {
     double xi2_g;
     double q1_g;
     double q2_g;
-};
-
-typedef struct HUnknown_g HUnknown_g;
-struct HUnknown_g {
-    int64_t kind_g;
-    int64_t r_g;
 };
 
 typedef struct HTerm_g HTerm_g;
@@ -520,6 +533,8 @@ struct Attach_g {
 };
 
 typedef struct { int64_t e[7]; } a7_i64;
+
+typedef struct { int64_t *data; int64_t len; } sl_i64;
 
 typedef struct PPiece_g PPiece_g;
 struct PPiece_g {

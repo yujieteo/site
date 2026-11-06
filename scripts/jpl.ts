@@ -5,16 +5,7 @@ import { fileURLToPath } from "node:url";
 const JPL_MAX_LINES = 60;
 const JPL_GOOSE_GLOBS = ["beamdiag/test.goose", "beamdiag/src/*.goose", "wallpaper/*.goose"];
 const JPL_TS_GLOBS = ["beamdiag/*.ts", "beamdiag/src/*.ts", "wallpaper/*.ts", "scripts/*.ts"];
-const JPL_LONG_FUNCTIONS: Record<string, number> = {
-  "beamdiag/src/engine.goose:solve": 125,
-  "beamdiag/src/figure.goose:figure": 89,
-  "beamdiag/src/figure.goose:draw_beam": 188,
-  "beamdiag/src/hand.goose:hand_derive": 139,
-  "beamdiag/src/hand.goose:hand_segment": 84,
-  "beamdiag/src/hand.goose:hand_reaction_frames": 80,
-  "beamdiag/src/hand.goose:hand_segment_frame": 71,
-  "beamdiag/src/pdf.goose:pdf_pages": 174,
-};
+const JPL_LONG_FUNCTIONS: Record<string, number> = {};
 
 type Fn = { file: string; name: string; start: number; lines: number; calls: Set<string> };
 
