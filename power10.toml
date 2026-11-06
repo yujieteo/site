@@ -7,5 +7,4 @@ exclude = [
   "public/play/theorem-explorer/*",
   "public/play/theorem-learner/*",
   "public/play/neurons/*",
-  "public/play/marklove/*",
 ]

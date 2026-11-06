@@ -2,8 +2,7 @@
 
 This is the personal website of Teo Yu Jie, at <https://teoyujie.org/>.
 
-It holds a home page of selected explorations, the beam diagram tool, the
-privacy and support pages of Lullapixie and Marklove. It also holds the OpenPGP key of <contact@teoyujie.org>, and the
+It holds a home page of selected explorations, the beam diagram tool. It also holds the OpenPGP key of <contact@teoyujie.org>, and the
 template of the log at `/log`.
 `REQUIREMENTS.md` says what the site must do.
 

@@ -6,9 +6,8 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 
 ## Purpose
 
-1. The site does five jobs only:
+1. The site does four jobs only:
    - show the identity of Yu Jie Teo through a small, hand-picked collection of explorations
-   - host the privacy and support pages of Lullapixie and Marklove
    - host the beam diagram tool
    - publish the OpenPGP public key of <contact@teoyujie.org> at `/contact.asc`
    - publish it for WKD at `/.well-known/openpgpkey/` (direct method) and `/.well-known/openpgpkey/teoyujie.org/`
@@ -21,12 +20,12 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
 2. An exploration is an experiment or an essay on this site, or a project in its own repository.
    A project is a link to its repository and one line of text: the site copies nothing from it.
    The exceptions are the experiment pages `/play/goosestrike/`, `/play/theorem-explorer/`,
-   `/play/theorem-learner/`, `/play/neurons/` and `/play/marklove/`, each copied from its repository.
+   `/play/theorem-learner/`, and `/play/neurons/`, each copied from its repository.
    `/play/neurons/` gets the model weights from huggingface.co when the visitor loads them.
    The server never hosts the weights.
    Reason: the captain asked for the neuron explorer under Play on 2026-10-28.
-   Reason for `/play/marklove/`: the captain asked for the Marklove web build under Play on 2026-10-29.
-   Essays are optional. There is no CMS, database, GitHub API feed, automatic ranking, scheduled
+   There are no essays yet. Essays are optional, and live at `/essays/name/`.
+   There is no CMS, database, GitHub API feed, automatic ranking, scheduled
    sync or publishing schedule. The one exception is the store of signed log entries on the server.
    The server repository owns the room relay of `/play/neurons/`.
    The site stays complete with no new content.
@@ -40,7 +39,7 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    "Yu Jie Teo" and the tagline "Mechanical Engineer" under it, with no nav. Then come the sections
    "Today" (one short paragraph), "Explorations" and "Log" (one link to `/log`).
    Each exploration is one `<li>` in `public/index.html`: to add or remove one, change
-   only that entry. The footer links the policy and support pages. It has one line with
+   only that entry. The footer has one line with
    <contact@teoyujie.org>, a link to its key and the key fingerprint. It also has one line with GitHub.
    Reason: on 2026-10-29 the captain asked for the owner name and a tagline that says who the owner is.
    The captain also asked for a Today section, and for Explorations, Log and GitHub out of the header.
@@ -55,17 +54,9 @@ The beam tool's own requirements are in `beamdiag/REQUIREMENTS.md`.
    of the home page. Hover styles apply only under `(hover: hover) and (pointer: fine)`.
    Reason: the captain chose mockup A of the design board and asked for his interaction rules in one
    shared stylesheet on 2026-10-29.
-   The exceptions are the tools under `/play/`. `/play/marklove/` is a full-screen editor without the
-   site header and footer.
-   Reason: the site header and footer take the space of the editor.
-   It links `/shared/kowalski.css` and uses his interaction rules. It keeps its document themes, dark
-   themes included: the rule below of no themes and no dark mode is not for its documents.
-   Reason: the captain asked for his interaction rules on all pages, Marklove included, on 2026-10-29
-   (marklove-web PR <https://github.com/yujieteo/marklove-web/pull/3>).
+   The exceptions are the tools under `/play/`.
    There are no themes and no dark mode. There is no art or animation on the home page.
    Reason: the captain asked to remove the animation from the home page on 2026-10-29.
-2. Each policy and support page is plain HTML of 6000 bytes or fewer. `scripts/check.sh` measures it.
-   Reason: a page that is too big is a wrong-result fault the check can find. The largest page is 5551 bytes.
 
 ## Build and deploy
 
