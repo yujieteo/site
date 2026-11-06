@@ -1,0 +1,2 @@
+node	evals/hot/steady.mjs
+node	evals/hot/compound.mjs

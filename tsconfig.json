@@ -19,7 +19,8 @@
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": false,
-    "noEmit": true
+    "noEmit": true,
+    "allowImportingTsExtensions": true
   },
-  "include": ["beamdiag/src/*.ts", "wallpaper/*.ts", "beamdiag/*.ts", "scripts/*.ts"]
+  "include": ["src/**/*.ts"]
 }
