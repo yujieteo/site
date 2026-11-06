@@ -28,7 +28,7 @@ fn linear_from_srgb_channel(c: f64) -> f64 {
     return if x <= 0.04045 { x / 12.92 } else { pow((x + 0.055) / 1.055, 2.4) };
 }
 
-// Oklab, after Björn Ottosson (https://bottosson.github.io/posts/oklab/).
+// Oklab, after Björn Ottosson: https://bottosson.github.io/posts/oklab/
 fn oklab_from_srgb(r: f64, g: f64, b: f64) -> Lab {
     let lr = linear_from_srgb_channel(r); let lg = linear_from_srgb_channel(g); let lb = linear_from_srgb_channel(b);
     let l = cbrt(0.4122214708 * lr + 0.5363325363 * lg + 0.0514459929 * lb);
@@ -70,7 +70,7 @@ export fn wp_swatch_rrggbb(r: f64, g: f64, b: f64, hue: f64, chroma: f64) -> i64
     return v;
 }
 
-// splitmix64, after Sebastiano Vigna (https://prng.di.unimi.it/splitmix64.c).
+// splitmix64, after Sebastiano Vigna: https://prng.di.unimi.it/splitmix64.c
 fn splitmix64_next() -> u64 {
     rng += 0x9e3779b97f4a7c15;
     var z = rng;

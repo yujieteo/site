@@ -2,7 +2,7 @@
 set -eu
 export LC_ALL=C
 cd "$(dirname "$0")/.."
-comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/*.goose wallpaper/*.c | grep -vE '^[^:]+:(1:#!|[0-9]+:#include )|// (Oklab, after Björn Ottosson|splitmix64, after Sebastiano Vigna)(:| \()'
+comments=$({ grep -nE '(^|[[:space:]])(#|//|/\*)' scripts/*.sh wallpaper/*.goose wallpaper/*.c | grep -vE '^[^:]+:(1:#!|[0-9]+:#include )|// (Oklab, after Björn Ottosson|splitmix64, after Sebastiano Vigna):'
   grep -nE '(^|[[:space:]])(//|/\*)' beamdiag/src/*.goose beamdiag/src/*.c beamdiag/src/page_style.css beamdiag/test.goose |
     grep -vE "Roark's series|Dekker's product"
   grep -nE '(^|[[:space:]])#' beamdiag/reference.py; } || true)
