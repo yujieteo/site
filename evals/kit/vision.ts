@@ -28,7 +28,7 @@ async function answer(page: Page, index: number): Promise<void> {
 async function doubleCommit(page: Page): Promise<string> {
   await page.evaluate("document.querySelector('#vrc-0 .vr-verdicts button').click(); const b = document.querySelector('#vrc-0 .vr-commit'); b.click(); b.click();");
   await page.waitForTimeout(450);
-  const entries = await page.evaluate("ledger.length");
+  const entries = String(await page.evaluate("ledger.length"));
   const progress = await page.innerText("#vr-progress");
   return `${entries}:${progress}`;
 }

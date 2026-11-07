@@ -7,25 +7,22 @@ import { launch, serve } from "../../.claude/skills/schematic-figure/foundation/
 const CASES = ["routes", "exception", "silent", "dropped", "launch"];
 const EXPRESSIONS: Record<string, string> = { exception: "throw", silent: "silent", dropped: "drop" };
 
-interface Request1 {
-  id: number;
-  params: { expression: string };
-}
-
 function reply(id: number, expression: string): string | null {
   if (expression === "silent") return null;
   if (expression === "throw") return JSON.stringify({ id, result: { result: { type: "object" }, exceptionDetails: { text: "Uncaught", exception: { description: "Error: x" } } } });
   return JSON.stringify({ id, result: { result: { type: "number", value: 1 } } });
 }
 
-function onMessage(ws: ServerWebSocket<undefined>, data: string | Buffer): void {
-  const m = JSON.parse(String(data)) as Request1;
-  if (m.params.expression === "drop") ws.close();
-  const out = reply(m.id, m.params.expression);
+function onMessage(ws: ServerWebSocket, data: string | Buffer): void {
+  const text = String(data);
+  const id = Number(/"id":(\d+)/.exec(text)?.[1] ?? 0);
+  const expression = /"expression":"([^"]*)"/.exec(text)?.[1] ?? "";
+  if (expression === "drop") ws.close();
+  const out = reply(id, expression);
   if (out !== null) ws.send(out);
 }
 
-function onFetch(req: Request, server: { port: number | undefined; upgrade: (r: Request) => boolean }): Response | undefined {
+function onFetch(req: Request, server: { port: number | undefined; upgrade(r: Request): boolean }): Response | undefined {
   if (req.url.endsWith("/json/list")) {
     const pages = process.env["FAKE_PAGES"] === "1";
     return Response.json(pages ? [{ type: "page", webSocketDebuggerUrl: `ws://127.0.0.1:${server.port}/page` }] : []);
@@ -41,7 +38,9 @@ function fakeChrome(dir: string, port: number): string {
 }
 
 function profiles(): number {
-  return readdirSync(tmpdir()).filter((n) => n.startsWith("schem-cdp-")).length;
+  let count = 0;
+  for (const name of readdirSync(tmpdir())) if (name.startsWith("schem-cdp-")) count++;
+  return count;
 }
 
 async function outcome(work: Promise<unknown>): Promise<string> {
@@ -93,7 +92,7 @@ async function session(name: string): Promise<void> {
     console.log(await outcome(cdp.evaluate(EXPRESSIONS[name] ?? "ok")));
     cdp.close();
   }
-  server.stop(true);
+  await server.stop(true);
 }
 
 const name = process.argv[2] ?? "";

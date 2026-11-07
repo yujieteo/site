@@ -1,23 +1,18 @@
 // Source: https://github.com/lgwrightlab/schematic-figure (MIT), foundation/tools/lib/cdp.mjs
 import { spawn } from 'node:child_process';
 import type { ChildProcess } from 'node:child_process';
-import { createServer } from 'node:http';
-import type { IncomingMessage, Server, ServerResponse } from 'node:http';
-import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { BUNDLE_URL } from './static-server.ts';
+export { serve } from './static-server.ts';
+import type { StaticServer } from './static-server.ts';
+export type { StaticServer };
 import { tmpdir } from 'node:os';
-import { dirname, extname, join, normalize, relative, resolve, sep } from 'node:path';
+import { dirname, join, relative, resolve, sep } from 'node:path';
 import { once } from 'node:events';
 import { setInterval as every } from 'node:timers/promises';
 import { asNumber, asString, describeError, field, isRecord } from './guards.ts';
 import { parseManifest } from './manifest.ts';
 import type { Manifest } from './manifest.ts';
-
-const MIME: Record<string, string> = {
-  '.js': 'text/javascript', '.mjs': 'text/javascript', '.html': 'text/html', '.json': 'application/json',
-  '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.otf': 'font/otf', '.ttf': 'font/ttf', '.woff2': 'font/woff2',
-};
-const BUNDLE_URL = '/__bundle/';
-
 
 function chromeCandidates(): string[] {
   const env = process.env;
@@ -43,59 +38,6 @@ export function findChrome(): string {
   if (set !== undefined && set !== '') return set;
   for (const c of chromeCandidates()) if (existsSync(c)) return c;
   throw new Error('No Chromium browser found (Chrome, Edge or Chromium). Install one or set CHROME to its executable.');
-}
-
-export interface StaticServer {
-  port: number;
-  srv: Server;
-}
-
-interface Routes {
-  root: string;
-  proj: string | null;
-  bundle: Bundle | null;
-}
-
-function resolveFile(routes: Routes, u: string): string | null {
-  if (u.startsWith(BUNDLE_URL)) return join(routes.bundle?.dir ?? '', u.slice(BUNDLE_URL.length));
-  let base = routes.root;
-  const proj = routes.proj;
-  const foundationOnly = u.startsWith('/engine/') || u.startsWith('/fonts/');
-  if (proj !== null && !foundationOnly && existsSync(normalize(join(proj, u)))) base = proj;
-  const f = normalize(join(base, u));
-  return f.startsWith(base) ? f : null;
-}
-
-function handle(routes: Routes, req: IncomingMessage, res: ServerResponse): void {
-  const u = decodeURIComponent(new URL(req.url ?? '/', 'http://x').pathname);
-  const f = resolveFile(routes, u);
-  if (f === null || !existsSync(f)) {
-    res.writeHead(404);
-    res.end();
-    return;
-  }
-  res.writeHead(200, { 'content-type': MIME[extname(f)] ?? 'application/octet-stream', 'cache-control': 'no-store' });
-  res.end(u === '/engine/page.html' ? pageHtml(routes, f) : readFileSync(f));
-}
-
-function pageHtml(routes: Routes, f: string): string {
-  const b = routes.bundle;
-  const html = readFileSync(f, 'utf8');
-  if (b === null) return html;
-  return html.replace(`${BUNDLE_URL}page.js`, `${BUNDLE_URL}${b.pageJs}`).replace(`${BUNDLE_URL}inpage.js`, `${BUNDLE_URL}${b.toolsJs}`);
-}
-
-export function serve(root: string, projectRoot: string | null, bundle: Bundle | null): Promise<StaticServer> {
-  const routes: Routes = { root: resolve(root), proj: projectRoot === null ? null : resolve(projectRoot), bundle };
-  return listen(createServer((req, res) => handle(routes, req, res)));
-}
-
-async function listen(srv: Server): Promise<StaticServer> {
-  srv.listen(0, '127.0.0.1');
-  await once(srv, 'listening');
-  const a = srv.address();
-  if (a === null || typeof a === 'string') throw new Error('server has no port');
-  return { srv, port: a.port };
 }
 
 export interface Session {
