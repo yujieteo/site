@@ -35,21 +35,27 @@ function finish(s: Strike, steps: number, begin: number, stopped: boolean): Resu
 }
 
 export function runLive(s: Strike, skinMm: number, live: Live, stop: Stop, tick: (us: number) => void): Promise<Result> {
+  if (stop.now) return Promise.resolve({ steps: 0, seconds: 0, deflection: 0, skin: 0, stiffeners: 0, stopped: true });
   s.setSkin(skinMm / MM);
   s.setup(CELLS, SPACING, SPEED);
   const begin = performance.now();
   let steps = 0;
   live.us.length = 0;
   live.deflection.length = 0;
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const timer = setInterval(() => {
-      steps += s.advance(BATCH, T_END);
-      live.us.push(Math.round(s.time() * US));
-      live.deflection.push(s.maxDeflection() * MM);
-      tick(s.time() * US);
-      if (s.time() < T_END && !stop.now) return;
-      clearInterval(timer);
-      resolve(finish(s, steps, begin, stop.now));
+      try {
+        steps += s.advance(BATCH, T_END);
+        live.us.push(Math.round(s.time() * US));
+        live.deflection.push(s.maxDeflection() * MM);
+        tick(s.time() * US);
+        if (s.time() < T_END && !stop.now) return;
+        clearInterval(timer);
+        resolve(finish(s, steps, begin, stop.now));
+      } catch (error) {
+        clearInterval(timer);
+        reject(error);
+      }
     }, 0);
   });
 }

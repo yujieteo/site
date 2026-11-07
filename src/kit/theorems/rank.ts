@@ -99,6 +99,9 @@ function draw(figure: HTMLElement, root: Element): void {
   if (!list || !note || !chart) return;
   if (total === 0) {
     note.textContent = "Every weight is zero, so nothing can be ranked. Move any slider.";
+    list.innerHTML = "";
+    chart.innerHTML = "";
+    hideTooltips(figure);
     return;
   }
   const rows = ranked(weights);

@@ -22,7 +22,10 @@ function wireNotes(): void {
     else closeNotes(null);
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeNotes(null);
+    if (event.key !== "Escape") return;
+    closeNotes(null);
+    const held = document.activeElement;
+    if (held instanceof HTMLElement && held.closest(".fn")) held.blur();
   });
 }
 
@@ -38,7 +41,7 @@ function watchLazy(): void {
         const kind = entry.target.getAttribute("data-kind") ?? "";
         if (!entry.isIntersecting || seen.has(kind)) continue;
         seen.add(kind);
-        void import(`/kit/${kind}.js`);
+        import(`/kit/${kind}.js`).catch(() => seen.delete(kind));
       }
     },
     { rootMargin: MARGIN },

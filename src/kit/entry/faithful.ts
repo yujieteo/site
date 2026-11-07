@@ -9,6 +9,7 @@ function wireFaithful(figure: Element): void {
   if (!(width instanceof HTMLInputElement) || !(shift instanceof HTMLInputElement) || !out) return;
   let chart = plotWidth(figure);
   const draw = (): void => {
+    hideTooltips(figure);
     const next = faithfulBins(Number(width.value), Number(shift.value), chart);
     const bins = figure.querySelector("[data-bins]");
     if (bins) bins.innerHTML = next.svg;

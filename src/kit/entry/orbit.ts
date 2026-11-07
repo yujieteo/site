@@ -1,6 +1,6 @@
 
 function wirePause(): void {
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const query = matchMedia("(prefers-reduced-motion: reduce)");
   for (const button of document.querySelectorAll(".fig-pause")) {
     const figure = button.closest("figure");
     if (!figure) continue;
@@ -10,7 +10,8 @@ function wirePause(): void {
       button.setAttribute("aria-pressed", String(paused));
       button.textContent = paused ? "Play" : "Pause";
     };
-    set(reduced);
+    set(query.matches);
+    query.addEventListener("change", (event) => set(event.matches));
     button.addEventListener("click", () => set(!figure.hasAttribute("data-paused")));
   }
 }

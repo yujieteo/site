@@ -2,7 +2,7 @@
 import type {
   Anchor, Figure, FigureOpts, GroupOpts, Handle, HouseStyle, Panel, PanelOpts, Parent, PatentSheet, Rect, Relation,
 } from './types.ts';
-import { PATENT, STYLE, usePatentProfile } from './style.ts';
+import { PATENT, STYLE, useJournalProfile, usePatentProfile } from './style.ts';
 import { NS, el, mm, toRoot } from './core-dom.ts';
 import { text } from './core-text.ts';
 
@@ -125,11 +125,13 @@ export function createFigure(host: Parent, o: FigureOpts = {}): Figure {
   let background = o.background ?? '#fff';
   const format = o.format ?? 'journal';
   const sheet = o.sheet ?? 'letter';
-  if (o.illustrate !== undefined) STYLE.illustrate = o.illustrate;
   if (format === 'patent') {
     usePatentProfile();
     [width, height] = PATENT.sheets[sheet];
     background = '#fff';
+  } else {
+    useJournalProfile();
+    if (o.illustrate !== undefined) STYLE.illustrate = o.illustrate;
   }
   const W = mm(width);
   const H = mm(height);

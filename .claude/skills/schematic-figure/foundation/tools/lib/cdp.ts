@@ -1,22 +1,18 @@
 // Source: https://github.com/lgwrightlab/schematic-figure (MIT), foundation/tools/lib/cdp.mjs
 import { spawn } from 'node:child_process';
 import type { ChildProcess } from 'node:child_process';
-import { createServer } from 'node:http';
-import type { IncomingMessage, Server, ServerResponse } from 'node:http';
-import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { BUNDLE_URL } from './static-server.ts';
+export { serve } from './static-server.ts';
+import type { StaticServer } from './static-server.ts';
+export type { StaticServer };
 import { tmpdir } from 'node:os';
-import { dirname, extname, join, normalize, relative, resolve, sep } from 'node:path';
+import { dirname, join, relative, resolve, sep } from 'node:path';
 import { once } from 'node:events';
 import { setInterval as every } from 'node:timers/promises';
 import { asNumber, asString, describeError, field, isRecord } from './guards.ts';
 import { parseManifest } from './manifest.ts';
 import type { Manifest } from './manifest.ts';
-
-const MIME: Record<string, string> = {
-  '.js': 'text/javascript', '.mjs': 'text/javascript', '.html': 'text/html', '.json': 'application/json',
-  '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.otf': 'font/otf', '.ttf': 'font/ttf', '.woff2': 'font/woff2',
-};
-const BUNDLE_URL = '/__bundle/';
 
 function chromeCandidates(): string[] {
   const env = process.env;
@@ -42,61 +38,6 @@ export function findChrome(): string {
   if (set !== undefined && set !== '') return set;
   for (const c of chromeCandidates()) if (existsSync(c)) return c;
   throw new Error('No Chromium browser found (Chrome, Edge or Chromium). Install one or set CHROME to its executable.');
-}
-
-export interface StaticServer {
-  port: number;
-  srv: Server;
-}
-
-interface Routes {
-  root: string;
-  proj: string | null;
-  bundle: Bundle | null;
-}
-
-let routes: Routes = { root: '', proj: null, bundle: null };
-
-function resolveFile(u: string): string | null {
-  if (u.startsWith(BUNDLE_URL)) return join(routes.bundle?.dir ?? '', u.slice(BUNDLE_URL.length));
-  let base = routes.root;
-  const proj = routes.proj;
-  const foundationOnly = u.startsWith('/engine/') || u.startsWith('/fonts/');
-  if (proj !== null && !foundationOnly && existsSync(normalize(join(proj, u)))) base = proj;
-  const f = normalize(join(base, u));
-  return f.startsWith(base) ? f : null;
-}
-
-function handle(req: IncomingMessage, res: ServerResponse): void {
-  const u = decodeURIComponent(new URL(req.url ?? '/', 'http://x').pathname);
-  const f = resolveFile(u);
-  if (f === null || !existsSync(f)) {
-    res.writeHead(404);
-    res.end();
-    return;
-  }
-  res.writeHead(200, { 'content-type': MIME[extname(f)] ?? 'application/octet-stream', 'cache-control': 'no-store' });
-  res.end(u === '/engine/page.html' ? pageHtml(f) : readFileSync(f));
-}
-
-function pageHtml(f: string): string {
-  const b = routes.bundle;
-  const html = readFileSync(f, 'utf8');
-  if (b === null) return html;
-  return html.replace(`${BUNDLE_URL}page.js`, `${BUNDLE_URL}${b.pageJs}`).replace(`${BUNDLE_URL}inpage.js`, `${BUNDLE_URL}${b.toolsJs}`);
-}
-
-export function serve(root: string, projectRoot: string | null, bundle: Bundle | null): Promise<StaticServer> {
-  routes = { root: resolve(root), proj: projectRoot === null ? null : resolve(projectRoot), bundle };
-  return listen(createServer(handle));
-}
-
-async function listen(srv: Server): Promise<StaticServer> {
-  srv.listen(0, '127.0.0.1');
-  await once(srv, 'listening');
-  const a = srv.address();
-  if (a === null || typeof a === 'string') throw new Error('server has no port');
-  return { srv, port: a.port };
 }
 
 export interface Session {
@@ -126,11 +67,27 @@ async function pumpStderr(proc: ChildProcess): Promise<void> {
 }
 
 async function startChrome(): Promise<Session> {
+  const started = spawnChrome();
+  try {
+    return await connect(started);
+  } catch (e) {
+    started.proc.kill();
+    rmSync(started.profile, { recursive: true, force: true });
+    throw e;
+  }
+}
+
+function spawnChrome(): { proc: ChildProcess; profile: string } {
   const profile = mkdtempSync(join(tmpdir(), 'schem-cdp-'));
   debugPort = '';
   const proc = spawn(findChrome(), ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`, '--no-first-run',
     '--disable-gpu', '--hide-scrollbars', '--font-render-hinting=none', '--no-proxy-server', 'about:blank']);
   void pumpStderr(proc);
+  return { proc, profile };
+}
+
+async function connect(started: { proc: ChildProcess; profile: string }): Promise<Session> {
+  const { proc, profile } = started;
   let waited = 0;
   for await (const tick of every(50, 1)) {
     waited += tick;
@@ -151,8 +108,12 @@ async function startChrome(): Promise<Session> {
 async function call(s: Session, method: string, params: Record<string, unknown>): Promise<unknown> {
   const id = ++nextId;
   s.ws.send(JSON.stringify({ id, method, params }));
+  const limit = Number(process.env["CDP_CALL_TIMEOUT_MS"] ?? 120000);
+  const started = Date.now();
   for await (const tick of every(1, id)) {
     if (replies.has(tick)) break;
+    if (s.ws.readyState !== WebSocket.OPEN) throw new Error(`${method}: connection closed`);
+    if (Date.now() - started > limit) throw new Error(`${method}: no reply in ${limit} ms`);
   }
   const m = replies.get(id);
   replies.delete(id);
@@ -169,6 +130,12 @@ function closeSession(s: Session): void {
   rmSync(s.profile, { recursive: true, force: true });
 }
 
+function exceptionText(thrown: unknown): string {
+  const ex = field(thrown, 'exception');
+  const text = isRecord(ex) ? ex['description'] : undefined;
+  return typeof text === 'string' ? text : JSON.stringify(thrown);
+}
+
 export class Cdp {
   private readonly session: Session;
 
@@ -182,6 +149,8 @@ export class Cdp {
 
   async evaluate(expression: string): Promise<unknown> {
     const r = await call(this.session, 'Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
+    const thrown = field(r, 'exceptionDetails');
+    if (thrown !== undefined) throw new Error(`evaluate: ${exceptionText(thrown)}`);
     return field(field(r, 'result'), 'value');
   }
 

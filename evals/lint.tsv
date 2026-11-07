@@ -20,6 +20,7 @@ evals/lint/fixtures/py/glob.py	scope
 evals/lint/fixtures/py/good.py	ok
 evals/lint/fixtures/py/lambda.py	fnvalue
 evals/lint/fixtures/py/loop.py	loop
+evals/lint/fixtures/py/nested_recurse.py	recurse
 evals/lint/fixtures/py/pyhot.hot.py	pyhot
 evals/lint/fixtures/py/recurse.py	recurse
 evals/lint/fixtures/py/shebang.py	ok
@@ -55,6 +56,8 @@ evals/lint/fixtures/ts/loop.ts	loop
 evals/lint/fixtures/ts/recurse.ts	recurse
 evals/lint/fixtures/ts/scope.ts	scope
 evals/lint/fixtures/ts/suppress.ts	suppress
+evals/lint/fixtures/ts/template.ts	loop
+evals/lint/fixtures/ts/template_ok.ts	ok
 evals/lint/fixtures/js/comment.js	comment
 evals/lint/fixtures/js/arrow.mjs	fnvalue
 evals/lint/fixtures/go/fakecredit.go	comment

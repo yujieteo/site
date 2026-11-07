@@ -13,6 +13,7 @@ function wireChoose(figure: Element, choose: (target: EventTarget | null) => voi
   figure.addEventListener("click", (event) => choose(event.target));
   figure.addEventListener("keydown", (event) => {
     if (!(event instanceof KeyboardEvent) || (event.key !== "Enter" && event.key !== " ")) return;
+    if (!(event.target instanceof Element) || !event.target.closest("[data-i]")) return;
     event.preventDefault();
     choose(event.target);
   });
@@ -26,6 +27,7 @@ function wireMap(figure: Element): void {
   const note = figure.querySelector("[data-note]");
   const draw = (): void => {
     hideTooltips(figure);
+    refit(on);
     swapChart(figure, mapSvg(chart, on, selected));
     if (note) note.textContent = mapNote(on, selected);
   };
@@ -34,7 +36,6 @@ function wireMap(figure: Element): void {
     if (!(box instanceof HTMLInputElement) || !box.hasAttribute("data-axis")) return;
     on[Number(box.getAttribute("data-axis"))] = box.checked ? 1 : 0;
     keepOne(on, box);
-    refit(on);
     draw();
   });
   const choose = (target: EventTarget | null): void => {
@@ -43,7 +44,7 @@ function wireMap(figure: Element): void {
     const i = Number(point.getAttribute("data-i"));
     selected = selected === i ? -1 : i;
     draw();
-    if (selected >= 0) figure.querySelector<SVGElement>(`[data-i="${selected}"]`)?.focus();
+    figure.querySelector<SVGElement>(`[data-i="${i}"]`)?.focus();
   };
   wireChoose(figure, choose);
   watch(figure, (width) => {

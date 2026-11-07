@@ -25,11 +25,10 @@ copy_starter() {
   listed=$(git -C "${root}" ls-files -co --exclude-standard)
   while IFS= read -r f; do
     case "${f}" in SPEC.md|EXPIRY|langs/*) continue ;; *) ;; esac
-    mkdir -p "${target}/$(dirname "${f}")"
-    cp "${root}/${f}" "${target}/${f}"
+    mkdir -p "${target}/$(dirname "${f}")" || return 1
+    cp -P "${root}/${f}" "${target}/${f}" || return 1
   done <<< "${listed}"
-  [[ -d "${root}/langs/${lang}" ]] && cp -R "${root}/langs/${lang}/." "${target}/"
-  return 0
+  [[ ! -d "${root}/langs/${lang}" ]] || cp -R "${root}/langs/${lang}/." "${target}/"
 }
 
 main() {
@@ -37,10 +36,10 @@ main() {
   [[ -n "${target}" ]] && [[ -n "${lang}" ]] || usage
   short=$(short_of "${lang}")
   [[ ! -e "${target}/rules.conf" ]] || { echo "new: ${target} already has a starter" >&2; exit 1; }
-  copy_starter
-  sed -i.bak "s/^lang=.*/lang=${short}/" "${target}/rules.conf" && rm -f "${target}/rules.conf.bak"
-  "${target}/bin/expiry" create > /dev/null
-  git -C "${target}" init -q 2> /dev/null
+  copy_starter || { echo "new: could not copy the starter into ${target}" >&2; exit 1; }
+  sed -i.bak "s/^lang=.*/lang=${short}/" "${target}/rules.conf" && rm -f "${target}/rules.conf.bak" || exit 1
+  "${target}/bin/expiry" create > /dev/null || exit 1
+  git -C "${target}" init -q 2> /dev/null || exit 1
   local expiry
   expiry=$(< "${target}/EXPIRY")
   echo "new: started ${target} for ${lang}. Expiry: ${expiry}. Run ./gate there."

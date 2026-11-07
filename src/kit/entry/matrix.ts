@@ -23,6 +23,7 @@ function wireMatrix(figure: Element): void {
   figure.addEventListener("click", (event) => choose(event.target));
   figure.addEventListener("keydown", (event) => {
     if (!(event instanceof KeyboardEvent) || (event.key !== "Enter" && event.key !== " ")) return;
+    if (!(event.target instanceof Element) || !event.target.closest("[data-col]")) return;
     event.preventDefault();
     choose(event.target);
   });

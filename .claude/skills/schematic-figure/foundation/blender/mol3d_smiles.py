@@ -67,6 +67,16 @@ def _bond(st: ParseState, a: int, b: int, order: float | None) -> None:
     st.bonds.append((a, b, order))
 
 
+def _close_ring(st: ParseState, prev: int, j: int, bo: float | None) -> None:
+    if j == prev or any({a, b} == {j, prev} for a, b, _ in st.bonds):
+        msg = "ring closure repeats a bond in " + st.smi
+        raise ValueError(msg)
+    if st.pend is not None and bo is not None and st.pend != bo:
+        msg = "ring bond orders disagree in " + st.smi
+        raise ValueError(msg)
+    _bond(st, prev, j, st.pend if st.pend is not None else bo)
+
+
 def _ring_digit(st: ParseState) -> None:
     ch = st.smi[st.i]
     if ch == "%":
@@ -83,7 +93,7 @@ def _ring_digit(st: ParseState) -> None:
         if j is None:
             msg = "ring bond without an atom in " + st.smi
             raise ValueError(msg)
-        _bond(st, st.prev, j, st.pend if st.pend is not None else bo)
+        _close_ring(st, st.prev, j, bo)
     else:
         st.ring[num] = (st.prev, st.pend)
     st.pend = None
@@ -124,18 +134,40 @@ def _atom(st: ParseState) -> None:
     st.prev = idx
 
 
+def _need_no_bond(st: ParseState) -> None:
+    if st.pend is not None:
+        msg = "bond symbol without an atom after it in " + st.smi
+        raise ValueError(msg)
+
+
+def _close_branch(st: ParseState) -> None:
+    _need_no_bond(st)
+    if not st.stack or st.smi[st.i - 1] == "(":
+        msg = "unbalanced or empty branch in " + st.smi
+        raise ValueError(msg)
+    st.prev = st.stack.pop()
+    st.i += 1
+
+
+def _bond_mark(st: ParseState) -> None:
+    if st.prev is None or st.pend is not None:
+        msg = "misplaced bond symbol in " + st.smi
+        raise ValueError(msg)
+    st.pend = BOND_MARKS[st.smi[st.i]]
+    st.i += 1
+
+
 def _step(st: ParseState) -> None:
     ch = st.smi[st.i]
     if ch == "(":
         st.stack.append(st.prev)
         st.i += 1
     elif ch == ")":
-        st.prev = st.stack.pop()
-        st.i += 1
+        _close_branch(st)
     elif ch in BOND_MARKS:
-        st.pend = BOND_MARKS[ch]
-        st.i += 1
+        _bond_mark(st)
     elif ch == ".":
+        _need_no_bond(st)
         st.prev = None
         st.i += 1
     elif ch.isdigit() or ch == "%":
@@ -147,8 +179,9 @@ def _step(st: ParseState) -> None:
 def _run(st: ParseState) -> None:
     while st.i < len(st.smi):
         _step(st)
-    if st.ring:
-        msg = "unclosed ring in " + st.smi
+    _need_no_bond(st)
+    if st.ring or st.stack:
+        msg = "unclosed ring or branch in " + st.smi
         raise ValueError(msg)
 
 

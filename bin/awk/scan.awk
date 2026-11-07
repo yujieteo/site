@@ -4,12 +4,26 @@ function emit(r, msg) {
   if (on(r)) { print file ":" FNR ": " r ": " msg; found++ }
 }
 
-function scrub(s) {
+function templates(s,   out, i) {
+  out = ""
+  while (length(s) > 0) {
+    i = index(s, "`")
+    if (i == 0) return intpl ? out : out s
+    if (intpl) out = out "``"
+    else out = out substr(s, 1, i - 1)
+    intpl = !intpl
+    s = substr(s, i + 1)
+  }
+  return out
+}
+
+function scrub(s,   tpl) {
+  tpl = lang == "go" || lang == "ts"
   gsub(/\\./, "", s)
+  if (tpl) s = templates(s)
   gsub(/"[^"]*"/, "\"\"", s)
   if (lang == "go" || lang == "rs") gsub(/'(\\.|[^'\\])'/, "''", s)
   else gsub(/'[^']*'/, "''", s)
-  if (lang == "go" || lang == "ts") gsub(/`[^`]*`/, "``", s)
   return s
 }
 

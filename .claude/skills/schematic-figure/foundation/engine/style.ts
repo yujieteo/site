@@ -131,9 +131,27 @@ const PALETTE_KEYS: readonly PaletteKey[] = [
   'substrate', 'gold', 'tintBlue', 'tintOrange', 'tintGreen', 'tintGrey',
 ];
 
+const JOURNAL = structuredClone({ text: STYLE.text, line: STYLE.line, arrow: STYLE.arrow, color: STYLE.color });
+
+function resetForced(): void {
+  Object.assign(STYLE.patentForced, { stroke: 0, fill: 0, text: 0, opacity: 0, width: 0 });
+}
+
+export function useJournalProfile(): HouseStyle {
+  STYLE.format = 'journal';
+  STYLE.illustrate = false;
+  Object.assign(STYLE.text, JOURNAL.text);
+  Object.assign(STYLE.line, JOURNAL.line);
+  Object.assign(STYLE.arrow, JOURNAL.arrow);
+  Object.assign(STYLE.color, JOURNAL.color);
+  resetForced();
+  return STYLE;
+}
+
 export function usePatentProfile(): HouseStyle {
   STYLE.format = 'patent';
   STYLE.illustrate = false;
+  resetForced();
   const t = PATENT.text;
   Object.assign(STYLE.text, {
     panel: t.fig, title: t.legend, label: t.numeral, small: t.numeral,

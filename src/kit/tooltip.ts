@@ -45,6 +45,8 @@ function hover(t: Tip, mark: Element): void {
   else t.timer = window.setTimeout(() => show(t, mark, false), DELAY);
 }
 
+const tips = new WeakMap<Element, Tip>();
+
 export function wireTooltips(figure: Element): void {
   const frame = figure.querySelector(".frame");
   if (!frame) return;
@@ -53,6 +55,7 @@ export function wireTooltips(figure: Element): void {
   node.setAttribute("role", "tooltip");
   frame.append(node);
   const t: Tip = { frame, node, timer: 0, closedAt: -WARM };
+  tips.set(figure, t);
   const fine = matchMedia("(hover: hover) and (pointer: fine)");
   frame.addEventListener("pointerover", (event) => {
     const mark = markOf(event);
@@ -71,10 +74,12 @@ export function wireTooltips(figure: Element): void {
   });
   frame.addEventListener("focusout", () => hide(t));
   document.addEventListener("pointerdown", (event) => {
-    if (!mouse(event) && !markOf(event)) hide(t);
+    const mark = markOf(event);
+    if (!mouse(event) && !(mark && frame.contains(mark))) hide(t);
   });
 }
 
 export function hideTooltips(figure: Element): void {
-  figure.querySelector(".tip")?.removeAttribute("data-open");
+  const t = tips.get(figure);
+  if (t) hide(t);
 }

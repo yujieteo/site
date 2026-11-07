@@ -76,6 +76,7 @@ function track_py(s) {
 
 function start_fn(s, n) {
   fnname = n
+  nest = ""
   fnstart = FNR
   depth = 0
   opened = 0
@@ -95,9 +96,16 @@ function recursion(s) {
     emit("recurse", fnname " calls itself")
 }
 
+function track_nested(s,   n) {
+  n = match_name(s, "^[ \t]*(async[ \t]+)?def[ \t]+")
+  if (n != "") { nest = n; nestindent = indent_of(s); return }
+  if (nest != "" && s !~ /^[ \t]*$/ && indent_of(s) <= nestindent) nest = ""
+  if (nest != "" && s ~ ("(^|[^A-Za-z0-9_.])" nest "[ \t]*\\(")) emit("recurse", nest " calls itself")
+}
+
 function track_function(s,   n) {
   if (fnname != "") {
-    if (lang == "py") track_py(raw)
+    if (lang == "py") { track_py(raw); track_nested(s) }
     if (fnname != "") recursion(s)
     if (fnname != "" && lang != "py" && lang != "sh" && lang != "awk" && FNR > fnstart) track_brace(s)
     if (fnname != "" && (lang == "sh" || lang == "awk")) track_end_marker(raw)

@@ -8,7 +8,7 @@ per_round=${AB_RUNS_PER_ROUND:-10}
 verdict() {
   awk -F'\t' -v min="${min_effect}" '
     FNR == 1 { f++ }
-    { v[f, ++n[f]] = $1 + 0 }
+    { v[f, ++n[f]] = $1 + 0; bad += ($5 + 0 != 0) }
     function med(k,   i, j, t, a) {
       for (i = 1; i <= n[k]; i++) a[i] = v[k, i]
       for (i = 2; i <= n[k]; i++) { t = a[i]; for (j = i - 1; j >= 1 && a[j] > t; j--) a[j + 1] = a[j]; a[j + 1] = t }
@@ -23,7 +23,8 @@ verdict() {
       u = u_stat(); mu = n[1] * n[2] / 2; sd = sqrt(n[1] * n[2] * (n[1] + n[2] + 1) / 12)
       z = (u - mu) / sd
       printf "p50 base=%.1fms current=%.1fms change=%+.1f%% z=%.2f\n", mb, mc, d * 100, z
-      if (z * z > 3.84 && d > min) print "verdict: worse"
+      if (bad > 0) print "verdict: invalid, " bad " runs failed"
+      else if (z * z > 3.84 && d > min) print "verdict: worse"
       else if (z * z > 3.84 && d < -min) print "verdict: better"
       else print "verdict: no difference"
     }' "$1" "$2"
@@ -58,7 +59,7 @@ main() {
   echo "ab ${name}: base interleaved with current, ${rounds} rounds"
   out=$(compare "${base}" "${name}")
   echo "${out}"
-  case "${out}" in *"verdict: worse"*) [[ -z "${AB_FAIL_ON_WORSE:-}" ]] || exit 1 ;; *) ;; esac
+  case "${out}" in *"verdict: invalid"*) exit 1 ;; *"verdict: worse"*) [[ -z "${AB_FAIL_ON_WORSE:-}" ]] || exit 1 ;; *) ;; esac
 }
 
 main "$@"

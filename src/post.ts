@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
-import { FIGURE_KINDS, figureHtml } from "./figures.ts";
+import { FIGURE_KINDS, LAZY_KINDS, figureHtml } from "./figures.ts";
 
 export interface Post {
   slug: string;
@@ -19,27 +19,27 @@ export interface Heading {
 const DEFAULT_BUDGET_KB = 80;
 const WORDS_PER_MINUTE = 220;
 
-function validYaml(text: string): boolean {
+function isDraft(text: string): boolean | undefined {
   try {
-    Bun.YAML.parse(text);
-    return true;
+    const parsed: unknown = Bun.YAML.parse(text);
+    return typeof parsed === "object" && parsed !== null && "draft" in parsed && parsed.draft === true;
   } catch {
-    return false;
+    return undefined;
   }
 }
 
 export function parsePost(slug: string, raw: string): Post {
   const parts = raw.split("\n---\n");
   const head = (parts[0] ?? "").replace(/^---\n/, "");
-  if (!validYaml(head)) throw new Error(`${slug}: the front matter is not valid YAML`);
-  const post: Post = { slug, title: "", date: "", draft: false, budgetKb: DEFAULT_BUDGET_KB, summary: [], source: parts.slice(1).join("\n---\n").trim() };
+  const draft = isDraft(head);
+  if (draft === undefined) throw new Error(`${slug}: the front matter is not valid YAML`);
+  const post: Post = { slug, title: "", date: "", draft, budgetKb: DEFAULT_BUDGET_KB, summary: [], source: parts.slice(1).join("\n---\n").trim() };
   for (const line of head.split("\n")) {
     const at = line.indexOf(": ");
     const key = line.slice(0, at);
     const value = line.slice(at + 2).trim();
     if (key === "title") post.title = value;
     if (key === "date") post.date = value;
-    if (key === "draft") post.draft = value === "true";
     if (key === "budget_kb") post.budgetKb = Number(value);
     if (key === "summary") post.summary.push(value);
   }
@@ -63,13 +63,18 @@ export function footnotes(source: string): { body: string; notes: Map<string, st
   return { body: kept.join("\n"), notes };
 }
 
+function noteHtml(id: string, number: number, text: string): string {
+  return `<span class="fn"><button class="fn-ref" type="button" aria-expanded="false" aria-controls="${id}">${number}</button><span class="fn-note" id="${id}" role="note">${text}</span></span>`;
+}
+
 export function footnoteHtml(body: string, notes: Map<string, string>): string {
   let out = body;
   let number = 0;
   for (const [id, text] of notes) {
     number++;
-    const html = `<span class="fn"><button class="fn-ref" type="button" aria-expanded="false" aria-controls="fn-${number}">${number}</button><span class="fn-note" id="fn-${number}" role="note">${text}</span></span>`;
-    out = out.split(`[^${id}]`).join(html);
+    const uses = out.split(`[^${id}]`);
+    out = uses[0] ?? "";
+    for (let use = 1; use < uses.length; use++) out += noteHtml(use === 1 ? `fn-${number}` : `fn-${number}-${use}`, number, text) + (uses[use] ?? "");
   }
   return out;
 }
@@ -100,6 +105,7 @@ export function figures(source: string, slug: string, dir: string): string {
     const caption = a.get("caption") ?? "";
     if (!FIGURE_KINDS.includes(kind)) throw new Error(`${slug}: figure ${index} has an unknown kind "${kind}"`);
     if (alt === "" || caption === "") throw new Error(`${slug}: figure ${index} needs alt text and a caption`);
+    if (a.get("lazy") === "true" && !LAZY_KINDS.includes(kind)) throw new Error(`${slug}: figure ${index} cannot be lazy: a ${kind} figure does not fill itself in`);
     const src = a.get("src") ?? "";
     if (kind === "schematic" && !/^[\w-]+\.svg$/.test(src)) throw new Error(`${slug}: figure ${index} needs src=NAME.svg`);
     const svg = kind === "schematic" ? withTall(`${dir}/${slug}/${src}`) : "";
