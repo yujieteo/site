@@ -36,10 +36,4 @@ function report(): void {
   document.body.append(result);
 }
 
-function wait(tries: number): void {
-  document.querySelector("figure[data-kind=map]")?.scrollIntoView({ block: "center" });
-  if (document.querySelectorAll(DOTS).length === WANT || tries === 0) setTimeout(report, 300);
-  else setTimeout(wait, 200, tries - 1);
-}
-
-window.addEventListener("load", () => wait(40));
+report();
