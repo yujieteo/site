@@ -1,3 +1,4 @@
 node	evals/hot/steady.ts
 node	evals/hot/compound.ts
 node	evals/hot/stats.ts
+node	evals/hot/pca.ts

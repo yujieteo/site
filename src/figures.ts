@@ -6,14 +6,19 @@ import { faithfulFigure } from "./kit/faithful.ts";
 import { figureWidth } from "./kit/scale.ts";
 import { birdFigure } from "./kit/bird.ts";
 import { convergeFigure } from "./kit/converge.ts";
+import { mapFigure } from "./kit/map.ts";
+import { matrixFigure } from "./kit/matrix.ts";
 import { metalFigure } from "./kit/metal.ts";
+import { pairFigure } from "./kit/pair.ts";
+import { problemsFigure } from "./kit/problems.ts";
+import { stackFigure } from "./kit/stack.ts";
 import { strikeFigure } from "./kit/strike-fig.ts";
 import { tradeFigure } from "./kit/trade.ts";
 import { wilbeckFigure } from "./kit/wilbeck.ts";
 
 const LAZY_HEIGHT = 420;
 
-export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic", "wilbeck", "metal", "converge", "trade", "strike", "bird"];
+export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic", "wilbeck", "metal", "converge", "trade", "strike", "bird", "map", "matrix", "pair", "stack", "problems"];
 
 const COMPOUND_START_RATE = 5;
 const BAR_WIDTH = 40;
@@ -67,6 +72,11 @@ function inner(kind: string, id: string, svg: string, width: number): string {
   if (kind === "converge") return convergeFigure(id, width);
   if (kind === "trade") return tradeFigure(id, width);
   if (kind === "strike") return strikeFigure(id, width);
+  if (kind === "map") return mapFigure(id, width);
+  if (kind === "matrix") return matrixFigure(id, width);
+  if (kind === "pair") return pairFigure(id, width);
+  if (kind === "stack") return stackFigure(id, width);
+  if (kind === "problems") return problemsFigure(id, width);
   return compound(id);
 }
 
