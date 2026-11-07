@@ -9,7 +9,7 @@ listed=$(find dist -type f)
 mapfile -t sent <<< "${listed}"
 echo "deploy: sending ${#sent[@]} files"
 archive=$(mktemp)
-tar --no-mac-metadata -czf "${archive}" -C dist .
+bin/pack dist "${archive}"
 ssh deploy@10.8.0.1 site < "${archive}"
 rm -f "${archive}"
 code=$(curl -s -o /dev/null -w '%{http_code}' https://teoyujie.org/)
