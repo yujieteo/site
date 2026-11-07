@@ -178,7 +178,13 @@ It looks like paperwork. It is the most useful thing in the tool. When a languag
 
 Press Next to read one idea from a real hunt, one line at a time.
 
-::figure kind=schematic src=idea.svg alt="A card with four lines that appear one at a time: the problem, the evidence, today's fix and the gain, followed by what happened to the idea." caption="One idea from a real hunt. Next shows each line in turn, and then what happened to the idea."
+::figure kind=schematic src=idea.svg alt="A card with four lines that appear one at a time: the problem, the evidence, today's fix and the gain, followed by what happened to the idea." caption="One idea from a real hunt: a packer that puts a WebAssembly app in one HTML file. Next shows each line in turn, and then what happened to the idea."
+
+This idea came from a hunt whose seed asked for a general tool that turns any program into a single HTML file interface, with a focus on small size. The tool made five candidates. Three went to the graveyard, one is still in the grill, and this one survived.
+
+Read the fourth line again. It names a size, a module, a baseline and a time limit. A reader could run it tomorrow and show that it is wrong. That is the whole point. The first line is a plain pain with a number in it, the second is a link, and the third names what people use today, so the claim has something to beat.
+
+Notice also what the last box says. Survived does not mean true. It means nobody found the thing already built, and the gain is a claim with a test. The size gain is still unmeasured, and the decoder is slower. The tool left both facts on the card.
 
 I want you to notice how little room there is. Each line is a sentence or two. There is no place to hide.
 
@@ -212,7 +218,7 @@ What I would most like to know, and cannot tell from this data, is whether dista
 
 ## Data and methods
 
-The scores, axes, definitions and the paradigm and repository lists come from `data/repo-scores.json` in the snowmobile repository at commit bc05041, checked against its sources on 27 October 2026. Each of the 11 repositories is pinned to the revision named in that file. The survey shares and the 73 links come from `src/seeds/practical-problems.json` and `src/seeds/problem-links.json` at the same commit. The 49 paradigm names and their layers come from `src/seeds/start.json`. The description of the tool is its README at that commit. The page reads none of these files at run time. A script turned them into the typed tables the figures use, and a check in this repository confirms that the numbers quoted in this post match what the figures compute.
+The scores, axes, definitions and the paradigm and repository lists come from `data/repo-scores.json` in the snowmobile repository at commit bc05041, checked against its sources on 27 October 2026. Each of the 11 repositories is pinned to the revision named in that file. The survey shares and the 73 links come from `src/seeds/practical-problems.json` and `src/seeds/problem-links.json` at the same commit. The 49 paradigm names and their layers come from `src/seeds/start.json`. The four-line figure is hunt 8, idea 36, from `snowmobile-hunts.json`, an export of the snowmobile database on my own computer. The export holds 14 hunts and 70 ideas, and I picked one idea that survived. The description of the tool is its README at that commit. The page reads none of these files at run time. A script turned them into the typed tables the figures use, and a check in this repository confirms that the numbers quoted in this post match what the figures compute.
 
 The two directions of the map are fitted in your browser to the 27 paradigms. They do not use the repositories. Distances are straight-line on the axes you keep, on the raw 0 to 10 scores, with no scaling.
 
