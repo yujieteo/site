@@ -1,7 +1,6 @@
 ---
 title: Only Twenty-Nine Theorems Can Win
 date: 2026-11-07
-draft: true
 budget_kb: 80
 summary: I built a machine to tell me which theorem to learn next. It scored 2,740 results on seven dials. Only 29 of them can ever reach its top ten, whatever weights you choose.
 summary: Five perfect scores sit in every top ten. The weights only ever fight over the other five seats, and a tie at the cutoff goes to the higher default score, then to the earlier name.
