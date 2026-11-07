@@ -27,7 +27,7 @@ main() {
   old=${tmp}/old
   new=${tmp}/new
   (cd "${tmp}/base" && EVAL_OUT=${old} bin/eval > /dev/null)
-  (cd "${root}" && EVAL_OUT=${new} bin/eval > /dev/null)
+  (cd "${root}" && EVAL_OUT=${new} bin/eval > /dev/null) || { echo "replay: the evals of this tree fail. Run bin/eval." >&2; exit 1; }
   echo "replay: same inputs through the code of ${base} and the code in this tree"
   if diff -r "${old}" "${new}"; then
     echo "replay: no output differs"

@@ -38,11 +38,12 @@ run_lint() {
 }
 
 intent_case() {
-  local id=$1 script=$2 got tail3
+  local id=$1 script=$2 got tail3 code
   got=$(bash "${script}" 2>&1)
+  code=$?
   tail3=$(awk '{ l[NR] = $0 } END { for (i = (NR > 3 ? NR - 2 : 1); i <= NR; i++) printf "%s ", l[i] }' <<< "${got}")
   record "intent-${id}" "${got}"
-  if [[ "${got##*$'\n'}" = OK ]]; then report "intent ${id}" ok
+  if [[ "${code}" -eq 0 && "${got##*$'\n'}" = OK ]]; then report "intent ${id}" ok
   else report "intent ${id}" bad "${tail3}"; fi
 }
 
