@@ -86,3 +86,48 @@ main.page figure[data-wide] { position: relative; left: 50%; width: min(960px, c
 .tip[data-open] { opacity: 1; visibility: visible; transform: none; }
 .tip[data-instant] { transition-duration: 0ms; }
 @media (prefers-reduced-motion: reduce) { .tip { transform: none; } }
+.chart .line { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.chart .line.shock, .chart .line.good { stroke: var(--series-1); }
+.chart .line.steady, .chart .line.bad { stroke: var(--series-2); }
+.chart .line.mid, .chart .line.skin { stroke: var(--series-3); }
+.chart .line.stiff { stroke: var(--series-4); }
+.chart .line.live { stroke: var(--series-4); stroke-width: 3; stroke-dasharray: 1 5; }
+.chart .line.good { stroke: var(--series-4); }
+.chart .line.skin { stroke: var(--ink); stroke-width: 3; }
+.chart .dot.shock, .chart tspan.shock, .chart .key.shock { fill: var(--series-1); }
+.chart .dot.steady, .chart tspan.steady, .chart .key.steady { fill: var(--series-2); }
+.chart .dot.skin, .chart .key.skin { fill: var(--series-3); }
+.chart .dot.stiff, .chart .key.stiff { fill: var(--series-4); }
+.chart .dot { stroke: var(--card); stroke-width: 2; }
+.chart .key { font-weight: 550; }
+.chart .cursor, .chart .ref { stroke: var(--underline-hover); stroke-dasharray: 3 4; }
+.chart .hit { fill: transparent; stroke: none; cursor: pointer; outline: none; }
+.chart .hit:focus-visible, .chart .bar:focus-visible { stroke: var(--ink); stroke-width: 2; }
+.chart .hit.skin { fill: var(--series-3); }
+.chart .hit.stiff { fill: var(--series-4); }
+.chart .bar { outline: none; }
+.chart .bar.cpu { fill: var(--series-1); }
+.chart .bar.gpu { fill: var(--series-2); }
+.chart .key.cpu { fill: var(--series-1); }
+.chart .key.gpu { fill: var(--series-2); }
+.chart .note { font-style: italic; }
+.chart .goose circle { fill: var(--underline); }
+.chart .ring { fill: none; stroke: var(--series-2); stroke-width: 2; }
+.chart .clamp { fill: var(--ink); }
+.chart .pt.good { fill: var(--series-4); }
+.chart .pt.bad { fill: var(--series-2); }
+.chart .pt.mid { fill: var(--series-3); }
+.chart .pt[data-on=true] { stroke: var(--ink); stroke-width: 2; }
+.chart .verdict { font-weight: 550; }
+.chart .verdict.good { fill: var(--series-4); }
+.chart .verdict.bad { fill: var(--series-2); }
+.chart .verdict.mid { fill: var(--series-3); }
+main.page figure[data-lazy] .frame { background: var(--chip); }
+main.page blockquote { margin: 2rem 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--series-2); font-size: 1.125rem; line-height: 1.5; font-weight: 500; }
+main.page blockquote p { margin: 0; }
+main.page table { width: 100%; margin: 2rem 0; border-collapse: collapse; font-size: var(--small); font-variant-numeric: tabular-nums; }
+main.page th, main.page td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); }
+main.page th { color: var(--muted); font-weight: 550; }
+main.page math { font-size: 1.1em; }
+main.page .formula { display: block; margin: 2rem 0; text-align: center; padding: 18px; background: var(--chip); border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
+main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }

@@ -1,5 +1,5 @@
 import { gzipSync } from "node:zlib";
-import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { homePage, postPage } from "./pages.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, parsePost, textVersion, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
@@ -38,6 +38,7 @@ async function buildAssets(out: string): Promise<void> {
   for (const kind of FIGURE_KINDS) entrypoints.push(`src/kit/entry/${kind}.ts`);
   const built = await Bun.build({ entrypoints, outdir: `${out}/kit`, root: "src/kit/entry", minify: true, splitting: true, target: "browser" });
   if (!built.success) throw new Error("the kit did not build");
+  copyFileSync("src/kit/strike.wasm", `${out}/kit/strike.wasm`);
 }
 
 function withChunks(out: string, scripts: string[]): string[] {

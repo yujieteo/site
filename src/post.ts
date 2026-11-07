@@ -88,7 +88,7 @@ export function figures(source: string, slug: string, dir: string): string {
     const src = a.get("src") ?? "";
     if (kind === "schematic" && !/^[\w-]+\.svg$/.test(src)) throw new Error(`${slug}: figure ${index} needs src=NAME.svg`);
     const svg = kind === "schematic" ? readFileSync(`${dir}/${slug}/${src}`, "utf8") : "";
-    out.push(figureHtml(kind, `${slug}-${index}`, alt, caption, svg, a.get("wide") === "true"));
+    out.push(figureHtml(kind, `${slug}-${index}`, alt, caption, svg, a.get("wide") === "true", a.get("lazy") === "true"));
   }
   return out.join("\n");
 }
@@ -96,7 +96,8 @@ export function figures(source: string, slug: string, dir: string): string {
 export function figureKinds(source: string): string[] {
   const kinds: string[] = [];
   for (const line of source.split("\n")) {
-    const kind = line.startsWith("::figure ") ? (parseAttributes(line.slice(9)).get("kind") ?? "") : "";
+    const a = line.startsWith("::figure ") ? parseAttributes(line.slice(9)) : undefined;
+    const kind = a?.get("lazy") === "true" ? "" : (a?.get("kind") ?? "");
     if (kind !== "" && !kinds.includes(kind)) kinds.push(kind);
   }
   return kinds;

@@ -4,8 +4,16 @@ import { barHeight, CHART_HEIGHT, COMPOUND_MAX_RATE, COMPOUND_START } from "./ki
 import { YEARS, fillBalances } from "./kit/compound.hot.ts";
 import { faithfulFigure } from "./kit/faithful.ts";
 import { figureWidth } from "./kit/scale.ts";
+import { birdFigure } from "./kit/bird.ts";
+import { convergeFigure } from "./kit/converge.ts";
+import { metalFigure } from "./kit/metal.ts";
+import { strikeFigure } from "./kit/strike-fig.ts";
+import { tradeFigure } from "./kit/trade.ts";
+import { wilbeckFigure } from "./kit/wilbeck.ts";
 
-export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic"];
+const LAZY_HEIGHT = 420;
+
+export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic", "wilbeck", "metal", "converge", "trade", "strike", "bird"];
 
 const COMPOUND_START_RATE = 5;
 const BAR_WIDTH = 40;
@@ -53,10 +61,17 @@ function inner(kind: string, id: string, svg: string, width: number): string {
   if (kind === "anscombe") return anscombeFigure(id, width);
   if (kind === "berkeley") return berkeleyFigure(width);
   if (kind === "mix") return mixFigure(id, width);
+  if (kind === "bird") return birdFigure(id, width);
+  if (kind === "wilbeck") return wilbeckFigure(id, width);
+  if (kind === "metal") return metalFigure(id, width);
+  if (kind === "converge") return convergeFigure(id, width);
+  if (kind === "trade") return tradeFigure(id, width);
+  if (kind === "strike") return strikeFigure(id, width);
   return compound(id);
 }
 
-export function figureHtml(kind: string, id: string, alt: string, caption: string, svg: string, wide: boolean): string {
+export function figureHtml(kind: string, id: string, alt: string, caption: string, svg: string, wide: boolean, lazy: boolean): string {
+  if (lazy) return `<figure id="${id}" data-kind="${kind}" data-lazy${wide ? " data-wide" : ""}><div class="frame" role="img" aria-label="${escapeAttribute(alt)}" style="min-height:${LAZY_HEIGHT}px"></div><figcaption>${caption}</figcaption></figure>`;
   const body = inner(kind, id, svg, figureWidth(wide)).replace("ALT", escapeAttribute(alt));
   return `<figure id="${id}" data-kind="${kind}"${wide ? " data-wide" : ""}><div class="frame">${body}</div><figcaption>${caption}</figcaption></figure>`;
 }
