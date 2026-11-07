@@ -27,3 +27,23 @@ function wireNotes(): void {
 }
 
 wireNotes();
+
+const MARGIN = "900px 0px";
+
+function watchLazy(): void {
+  const seen = new Set<string>();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const kind = entry.target.getAttribute("data-kind") ?? "";
+        if (!entry.isIntersecting || seen.has(kind)) continue;
+        seen.add(kind);
+        void import(`/kit/${kind}.js`);
+      }
+    },
+    { rootMargin: MARGIN },
+  );
+  for (const figure of document.querySelectorAll("figure[data-lazy]")) observer.observe(figure);
+}
+
+watchLazy();

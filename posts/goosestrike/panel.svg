@@ -1,0 +1,7 @@
+<svg viewBox="0 0 580 400" width="580" fill="none" stroke="var(--ink)" stroke-width="1.5" font-family="Inter, sans-serif" font-size="12">
+<g data-label="The skin: 2024-T3 aluminium sheet, 1.6 mm thick, 1.0668 m along the fuselage by 0.760 m around it."><rect x="50" y="30" width="480" height="342" fill="var(--chip)"/><text x="290" y="388" text-anchor="middle" fill="var(--muted)" stroke="none">1067 mm along the fuselage</text><text x="38" y="201" text-anchor="middle" fill="var(--muted)" stroke="none" transform="rotate(-90 38 201)">760 mm around it</text></g>
+<g data-label="Four stringer bays across the panel, 190 mm each. The stringers are 7075-T6 Z sections inside the skin, running along the fuselage." stroke="var(--series-3)" stroke-width="3"><path d="M50 115.5H530M50 201H530M50 286.5H530"/></g>
+<g data-label="Two frame bays along the panel, 533 mm each. The frames are deeper 7075-T6 Z sections that run around the fuselage." stroke="var(--series-4)" stroke-width="5"><path d="M290 30V372"/></g>
+<g data-label="The edges are clamped, where the next frames and stringers would be." stroke="var(--ink)" stroke-width="7"><path d="M50 30V372M530 30V372M50 30H530M50 372H530"/></g>
+<g data-label="The bird flies at 180 m/s into the middle of the skin: a 4 lb cylinder, 113 mm across and 226 mm long." fill="var(--series-2)" fill-opacity="0.35" stroke="var(--series-2)" stroke-width="2"><circle cx="290" cy="201" r="25.5"/><text x="290" y="245" text-anchor="middle" fill="var(--series-2)" stroke="none" font-weight="600">bird, 113 mm across</text></g>
+</svg>
