@@ -3,13 +3,18 @@
 need bun
 
 main() {
-  local out files index
+  local out files index empty
   out=$(mktemp -d)
+  empty=$(mktemp -d)
+  mkdir "${empty}/posts" "${empty}/out"
+  bun src/build.ts --posts "${empty}/posts" --out "${empty}/out" > /dev/null || fail "empty build failed"
+  has "$(cat "${empty}/out/index.html" || true)" 'No posts yet'
+
   bun src/build.ts --out "${out}" > /dev/null || fail "build failed"
   files=$(cd "${out}" && find . -type f)
   has "${files}" './index.html'
   index=$(cat "${out}/index.html")
-  has "${index}" 'No posts yet'
+  has "${index}" 'href="/essays/charts-choose-first/"'
   has "${index}" 'href="/contact.asc"'
   cmp -s static/public/contact.asc "${out}/contact.asc" || fail "the OpenPGP key is not served"
   has "${files}" './.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19'

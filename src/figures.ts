@@ -1,7 +1,10 @@
+import { anscombeFigure } from "./kit/anscombe.ts";
+import { berkeleyFigure, mixFigure } from "./kit/berkeley.ts";
 import { barHeight, CHART_HEIGHT, COMPOUND_MAX_RATE, COMPOUND_START } from "./kit/chart.ts";
 import { YEARS, fillBalances } from "./kit/compound.hot.ts";
+import { faithfulFigure } from "./kit/faithful.ts";
 
-export const FIGURE_KINDS: readonly string[] = ["orbit", "compound"];
+export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix"];
 
 const COMPOUND_START_RATE = 5;
 const BAR_WIDTH = 40;
@@ -37,7 +40,15 @@ function escapeAttribute(text: string): string {
   return text.split("&").join("&amp;").split('"').join("&quot;").split("<").join("&lt;");
 }
 
+function inner(kind: string, id: string): string {
+  if (kind === "orbit") return orbit();
+  if (kind === "faithful") return faithfulFigure(id);
+  if (kind === "anscombe") return anscombeFigure(id);
+  if (kind === "berkeley") return berkeleyFigure();
+  if (kind === "mix") return mixFigure(id);
+  return compound(id);
+}
+
 export function figureHtml(kind: string, id: string, alt: string, caption: string): string {
-  const inner = kind === "orbit" ? orbit() : compound(id);
-  return `<figure id="${id}" data-kind="${kind}"><div class="frame">${inner.replace("ALT", escapeAttribute(alt))}</div><figcaption>${caption}</figcaption></figure>`;
+  return `<figure id="${id}" data-kind="${kind}"><div class="frame">${inner(kind, id).replace("ALT", escapeAttribute(alt))}</div><figcaption>${caption}</figcaption></figure>`;
 }
