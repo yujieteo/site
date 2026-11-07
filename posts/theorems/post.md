@@ -37,7 +37,7 @@ A link is a judgment, not a law. A proof may use a different route. A tree can a
 
 Take the claim that each whole number above one has one prime factor list, up to order. The proof has two jobs. It must show that a list exists. Then it must show that no other list can differ.
 
-Press Next to follow four moves. The first two build the list. A third move proves a tool about prime divisors: if a prime <math aria-label="p divides a times b"><mi>p</mi><mo>∣</mo><mi>a</mi><mi>b</mi></math>, then <math aria-label="p divides a or p divides b"><mi>p</mi><mo>∣</mo><mi>a</mi><mtext> or </mtext><mi>p</mi><mo>∣</mo><mi>b</mi></math>. The last move uses it to match and cancel the primes.
+Press Next to follow four moves. The first two build the list. A third move proves a tool about prime divisors: if a prime <math aria-label="p divides a times b"><mi>p</mi><mo>∣</mo><mi>a</mi><mi>b</mi></math>, then <math aria-label="p divides a"><mi>p</mi><mo>∣</mo><mi>a</mi></math> or <math aria-label="p divides b"><mi>p</mi><mo>∣</mo><mi>b</mi></math>. The last move uses it to match and cancel the primes.
 
 ::figure kind=schematic src=proof.svg alt="Four proof steps join least divisor and existence with Euclid's lemma and matching by cancellation." caption="A proof of unique prime factors, shown one move at a time."
 

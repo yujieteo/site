@@ -5,6 +5,7 @@ import { svgHead } from "./scale.ts";
 const HEIGHT = 230;
 const TOP = 20;
 const BOTTOM = 190;
+const LEFT = 58;
 
 export function trendSvg(width: number, result: number, field: number): string {
   const points = TRENDS[result]?.[1][field] ?? [];
@@ -15,13 +16,13 @@ export function trendSvg(width: number, result: number, field: number): string {
   for (let i = 0; i < points.length; i++) {
     const value = points[i];
     if (value === null || value === undefined) { previous = ""; continue; }
-    const x = 40 + (width - 55) * i / 14;
+    const x = LEFT + (width - LEFT - 15) * i / 14;
     const y = BOTTOM - value / max * (BOTTOM - TOP);
     if (previous) lines.push(`<line x1="${previous.split(",")[0]}" y1="${previous.split(",")[1]}" x2="${x}" y2="${y}"/>`);
     previous = `${x},${y}`;
     marks.push(`<circle class="pt" tabindex="0" cx="${x}" cy="${y}" r="4" data-tip="${1991 + i * 2}–${1992 + i * 2}: ${value} per 10,000 papers"/>`);
   }
-  return `${svgHead(width, HEIGHT)}<text x="40" y="14">Mentions per 10,000 papers</text><text x="34" y="${TOP + 4}" text-anchor="end">${max.toFixed(1)}</text><text x="34" y="${BOTTOM + 4}" text-anchor="end">0</text><line class="base" x1="40" x2="${width - 15}" y1="${BOTTOM}" y2="${BOTTOM}"/><g class="fit">${lines.join("")}</g>${marks.join("")}<text x="40" y="218">1991</text><text x="${width - 15}" y="218" text-anchor="end">2020</text></svg>`;
+  return `${svgHead(width, HEIGHT)}<text x="${LEFT}" y="14">Mentions per 10,000 papers</text><text x="${LEFT - 6}" y="${TOP + 4}" text-anchor="end">${max.toFixed(1)}</text><text x="${LEFT - 6}" y="${BOTTOM + 4}" text-anchor="end">0</text><line class="base" x1="${LEFT}" x2="${width - 15}" y1="${BOTTOM}" y2="${BOTTOM}"/><g class="fit">${lines.join("")}</g>${marks.join("")}<text x="${LEFT}" y="218">1991</text><text x="${width - 15}" y="218" text-anchor="end">2020</text></svg>`;
 }
 
 export function trendFigure(id: string, width: number): string {

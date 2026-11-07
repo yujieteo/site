@@ -17,5 +17,5 @@ export function ranking(weights: readonly number[]): string {
 
 export function rankFigure(id: string): string {
   const sliders = LABELS.map((name, i) => `<label for="${id}-w${i}">${name} <input id="${id}-w${i}" type="range" min="0" max="100" value="${START[i]}" data-weight><output>${START[i]}</output></label>`).join("");
-  return `<div role="group" aria-label="ALT"><p>Weights are shares of their total.</p><div class="theorem-weights">${sliders}</div><div data-ranking aria-live="polite">${ranking(START)}</div></div>`;
+  return `<div role="group" aria-label="ALT"><p>Weights are shares of their total.</p><div class="theorem-weights">${sliders}</div><div data-ranking>${ranking(START)}</div></div>`;
 }
